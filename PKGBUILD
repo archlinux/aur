@@ -5,7 +5,7 @@ pkgver=1.0.23
 pkgrel=1
 pkgdesc='Unofficial desktop version of Telegram messaging app (removed ad)'
 arch=('x86_64')
-url="https://github.com/TDesktop-x64/tdesktop"
+url="https://github.com/qwq233/64gram-aur"
 license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
          'qt5-imageformats' 'qt5-svg' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'glibmm'
@@ -20,13 +20,13 @@ provides=("64gram-desktop-no-ad")
 conflicts=("telegram-desktop" "tdesktop-x64" "64gram-desktop")
 replaces=("tdesktop-x64")
 source=(
+        "https://github.com/TDesktop-x64/tdesktop/releases/download/v$pkgver/64Gram-$pkgver-full.tar.gz"
         "fix-ffmpeg-build-for-tgcalls.patch"
         "remove-ad.patch"
         )
-sha512sums=(
-        "6866bf7169210e7ce3fe91a9aab5940a56ab213a43283b50188368e03981881bae66e5aff1e28dba756325f8dcde58b3a69809fd09e5e2d68b882d13da2e309e"
-        "23ef22dd165804b91b0eb357b98145c6fd29c8b82e9c93d0c0daf8f9ef6966bc44150a70e51bd9b978bd6e86f1cb6cd594a06215b6c3e83a74fecc4dd8250358"
-        )
+sha512sums=('db552183d4c64ed9d1ee2911723cd49d80bc1b4cb8212497a6dc0e2595ae935a6b8375dd7cc2def45415d0f62196a5fd1b92375bfacc7e7cddee42f763532e67'
+            '5f87b047179b570846440dc0315c156438e6bdd1e95326a6e239e1e9f0d110af368f283c0c242438e06f8da7d0494cb5b46db61b0ae65c1a9d9242de27caf34c'
+            'de0662d33062a8c169003095f73ce69f352c21873620841fd53c075ec18990d643fe0a88536aa3f5b9cca2d52a69c01d3e2ce0b279549f0c0ceb0a907e7e3ff7')
 
 prepare() {
     echo -e "Please enter the API ID and API HASH\nYou can get one from https://my.telegram.org/apps"
@@ -35,11 +35,10 @@ prepare() {
     echo -n -e "API HASH: " 
     read _API_HASH
 
-    git clone https://github.com/TDesktop-x64/tdesktop tdesktop-$pkgver -b v$pkgver --recurse-submodules
-    cd tdesktop-$pkgver
-    git am ../remove-ad.patch
+    cd $_pkgname-$pkgver-full
+    patch -p1 < ../remove-ad.patch
     cd Telegram/ThirdParty/tgcalls
-    git am ../../../../fix-ffmpeg-build-for-tgcalls.patch
+    patch -p1 < ../../../../fix-ffmpeg-build-for-tgcalls.patch
     cd ../../../
 
     cmake . \
@@ -55,11 +54,11 @@ prepare() {
 }
 
 build() {
-    cd tdesktop-$pkgver
+    cd $_pkgname-$pkgver-full
     ninja -C build
 }
 
 package() {
-    cd tdesktop-$pkgver
+    cd $_pkgname-$pkgver-full
     DESTDIR=$pkgdir ninja -C build install
 }
