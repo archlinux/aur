@@ -3,13 +3,13 @@
 _pkgbase=pip_search
 pkgname=python-pip_search
 pkgrel=1
-pkgver=0.0.10
+pkgver=0.0.11
 pkgdesc="Searching thought pip when hard times strike."
 url=https://github.com/victorgarric/pip_search
 arch=('any')
 depends=('python-pip' 'python-rich' 'python-bs4')
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/victorgarric/${_pkgbase}/releases/download/${pkgver}/${_pkgbase}-${pkgver}.tar.gz")
-sha256sums=('322e0f8c8695dbf0c07628cbc4c701cfed9575ccc4ecaa823f1d34aab4e65280')
+sha256sums=('aad2e71aac70bea6dd2022773c67bb37a6374c8e109c214ef19dea05227b7028')
 
 build() {
 	cd ${_pkgbase}-${pkgver}
