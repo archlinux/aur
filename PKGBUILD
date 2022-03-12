@@ -2,16 +2,16 @@
 pkgbase=python-ci_watson
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="CI helper for STScI Jenkins"
 arch=('any')
 url="https://ci_watson.readthedocs.io"
 license=('BSD')
-makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-installer' 'python-sphinx_rtd_theme' 'python-numpydoc' 'python-sphinx-automodapi')
+makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-installer' 'python-sphinx_rtd_theme' 'python-numpydoc' 'python-sphinx-automodapi' 'python-crds')
 checkdepends=('python-pytest-astropy-header' 'python-astropy')
 source=("https://github.com/spacetelescope/${_pyname}/archive/${pkgver}.tar.gz")
-md5sums=('549ac916cb03e78f002a9fe64b187d4a')
+md5sums=('bf36328cafcc5aad94d95bb5f7f46fac')
 
 prepare() {
     export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
@@ -36,7 +36,7 @@ check() {
 }
 
 package_python-ci_watson() {
-    depends=('python>=3.5' 'python-pytest>=3')
+    depends=('python>=3.5' 'python-pytest>=3' 'python-crds')
     optdepends=('python-ci_watson-doc: Documentation for CI Watson')
     cd ${srcdir}/${_pyname}-${pkgver}
 
