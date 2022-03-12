@@ -1,42 +1,53 @@
-# Contributor: Thorsten Töpper <atsutane-tu@freethoughts.de>
-# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Maintainer: Thorsten Töpper <atsutane-tu@freethoughts.de>
+# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Juergen Hoetzel <juergen@archlinux.org>
 # Contributor: Gregor Ibic <gregor.ibic@intelicom.si>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=dia-git
-pkgver=6621.bda0a93c
-pkgrel=1
+_pkgname=dia
+pkgver=6667.e866497fe
+pkgrel=2
 pkgdesc="A GTK+ based diagram creation program (GIT VERSION)"
 arch=('x86_64')
 license=('GPL')
 url="http://live.gnome.org/Dia"
-depends=('libxslt' 'gtk2' 'python' 'poppler' 'graphene')
-makedepends=('git' 'cmake' 'meson' 'intltool' 'dblatex' 'docbook-xsl')
+depends=('poppler' 'python' 'libxslt' 'gtk2' 'freetype2' 'python2' 'graphene')
+makedepends=('git' 'cmake' 'meson' 'intltool' 'dblatex' 'python' 'docbook-xsl')
+optdepends=('python2')
 provides=('dia')
 conflicts=('dia')
 options=('docs' '!emptydirs')
-source=("git+https://gitlab.gnome.org/GNOME/dia.git" poppler_fix.patch)
-sha256sums=('SKIP'
-            'e3e80a5770e91110a47f3da1eaeab8f692408899aead71ff7c3726369ef9fa4c')
-
-prepare() {
-  cd ${pkgname%-git}
-  git apply "$srcdir"/poppler_fix.patch
-}
+source=("git+https://gitlab.gnome.org/GNOME/dia.git" "pdf-import.patch")
+md5sums=('SKIP' 'dbf8336aeaa854be4a60d4588c8fb0b2')
 
 pkgver() {
-  cd ${pkgname%-git}
+  cd "${srcdir}/${_pkgname}"
   printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd "${srcdir}/${_pkgname}"
+  for file in `find -type f -name '*.py'`; do
+      sed -i 's_#!/usr/bin/env python_#!/usr/bin/env python2_' "$file"
+  done
+  sed -i "s/cc.find_library('emf'/cc.find_library('EMF'/g" meson.build
+  sed -i "s/cc.find_library('ogdf'/cc.find_library('OGDF'/g" meson.build
+  sed -i 's/python23/python3/g' build-aux/*.py
+  sed -i 's|#include "tool-icons.h"||g' objects/standard/outline.c
+  sed -i 's/22.0.0/99.0.0/g' meson.build
+  sed -i '/  sheet,/d' sheets/meson.build
+  patch -p0 < ../pdf-import.patch
+}
+
 build() {
-  cd ${pkgname%-git}
-  meson --prefix /usr --buildtype=plain  . build 
+  cd "${srcdir}/${_pkgname}"
+
+  export PYTHON=/usr/bin/python2
+  arch-meson . build
   ninja -j1 -C build
 }
 
 package() {
-  cd ${pkgname%-git}
+  cd "${srcdir}/${_pkgname}"
   DESTDIR="${pkgdir}" ninja -C build install
 }
