@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=hm-git
-pkgver=16.24.r0.gfd452ecd
+pkgver=16.24.r14.gd7b65046
 pkgrel=1
 pkgdesc='HEVC Test Model - the reference software for HEVC (git version)'
 arch=('x86_64')
@@ -27,6 +27,9 @@ pkgver() {
 }
 
 build() {
+    # fix kvazaar tests
+    export CXXFLAGS+=' -Wp,-U_GLIBCXX_ASSERTIONS'
+    
     local -a _common_opts=(
         '-DCMAKE_BUILD_TYPE:STRING=Release'
         '-DCMAKE_INSTALL_PREFIX:PATH=/usr'
