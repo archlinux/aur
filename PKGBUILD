@@ -2,7 +2,7 @@
 
 pkgname=yubico-piv-tool
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to interact with the PIV applet on a YubiKey NEO"
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 license=('GPL3')
@@ -13,10 +13,12 @@ source=(
  "https://developers.yubico.com/yubico-piv-tool/Releases/${pkgname}-${pkgver}.tar.gz"
  "https://developers.yubico.com/yubico-piv-tool/Releases/${pkgname}-${pkgver}.tar.gz.sig"
  "ykcs11-test-unassigned-var.patch"
+ "ykcs11-test-unassigned-var-2.patch"
 )
 md5sums=('b05ccce29454183f7f58dea00ef169e2'
          'SKIP'
-         '66f948d5e90ef34fbff35791a173d928')
+         '66f948d5e90ef34fbff35791a173d928'
+         '8af04f56db48101a7f446f654fc4af6e')
 validpgpkeys=('0A3B0262BCA1705307D5FF06BCA00FD4B2168C0A'
               '20EE325B86A81BCBD3E56798F04367096FBA95E8'
               'B70D62AA6A31AD6B9E4F9F4BDC8888925D25CA7A'
@@ -35,6 +37,7 @@ options=(!libtool)
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   patch -Np1 -i "${srcdir}/ykcs11-test-unassigned-var.patch"
+  patch -Np1 -i "${srcdir}/ykcs11-test-unassigned-var-2.patch"
 }
 
 build() {
