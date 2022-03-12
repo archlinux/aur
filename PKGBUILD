@@ -17,7 +17,7 @@ depends=(gtk3 libxt mime-types dbus-glib ffmpeg4.4 nss ttf-font libpulse
          kfiredragonhelper)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils
              rust xorg-server-xwayland xorg-server-xvfb ccache
-             autoconf2.13 clang llvm jack nodejs cbindgen nasm
+             autoconf2.13 clang llvm jack nodejs cbindgen nasm pciutils
              python-setuptools python-psutil python-zstandard git binutils
              lld dump_syms wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi)
 optdepends=('firejail-git: Sandboxing the browser using the included profiles'
@@ -285,7 +285,6 @@ ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 ac_add_options --enable-linker=lld
-ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
 END
 
