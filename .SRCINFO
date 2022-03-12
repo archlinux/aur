@@ -1,0 +1,17 @@
+pkgbase = chowmatrix-bin
+	pkgdesc = Matrix delay effect
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://chowdsp.com/
+	arch = x86_64
+	groups = vst3-plugins
+	groups = lv2-plugins
+	groups = pro-audio
+	license = BSD
+	depends = libglvnd
+	depends = freetype2
+	depends = alsa-lib
+	source = https://github.com/Chowdhury-DSP/ChowMatrix/releases/download/v1.3.0/ChowMatrix-Linux-x64-1.3.0.deb
+	sha256sums = 332749bba2fcfefeb68c105b9f55fd71aa7a8bfb524f592cbb68cc6c0581a767
+
+pkgname = chowmatrix-bin
