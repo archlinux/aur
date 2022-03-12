@@ -2,8 +2,9 @@
 
 pkgname=rubik-git
 pkgdesc="A keyboard driven virtual Rubik's cube made in rust."
-pkgver=r18.e534ef9
+pkgver=v1.1.0.r8.g5db3b0f
 pkgrel=1
+epoch=1
 _reponame=rubik
 arch=('x86_64')
 url="https://github.com/alansartorio/rubik"
@@ -14,7 +15,7 @@ license=('MIT')
 
 pkgver() {
     cd "$srcdir/$_reponame"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -24,12 +25,12 @@ prepare() {
 
 build() {
 	cd "$srcdir/$_reponame"
-	env CARGO_INCREMENTAL=0 cargo build --release --locked --offline
+	env CARGO_INCREMENTAL=0 cargo build --release --locked --offline --bin rubik
 }
 
 check() {
 	cd "$srcdir/$_reponame"
-	env CARGO_INCREMENTAL=0 cargo test --locked --offline
+	env CARGO_INCREMENTAL=0 cargo test --locked --offline --bin rubik
 }
 
 package() {
