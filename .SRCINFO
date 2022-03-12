@@ -1,0 +1,22 @@
+pkgbase = lei-git
+	pkgdesc = The "local email interface" from public-inbox
+	pkgver = 1.7.0.r31.3eec2f779204
+	pkgrel = 1
+	url = https://public-inbox.org
+	arch = any
+	license = AGPL
+	makedepends = git
+	depends = perl
+	depends = perl-inline-c
+	depends = perl-dbd-sqlite
+	depends = perl-search-xapian
+	provides = lei
+	conflicts = lei
+	conflicts = public-inbox-git
+	conflicts = public-inbox
+	options = !emptydirs
+	options = purge
+	source = lei::git+https://public-inbox.org/
+	sha256sums = SKIP
+
+pkgname = lei-git
