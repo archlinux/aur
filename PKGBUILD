@@ -5,7 +5,7 @@ _arch=aarch64
 _target=$_arch-unknown-linux-gnu
 pkgname=$_arch-binutils
 pkgver=2.37
-pkgrel=1
+pkgrel=2
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the ARM64 target'
 arch=('x86_64')
 url='https://www.gnu.org/software/binutils/'
@@ -16,31 +16,33 @@ sha256sums=('820d9724f020a3e69cb337893a0b63c2db161dadcb0e06fc11dc29eb1e84a32c'
           'SKIP')
 validpgpkeys=(3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F)
 
-prepare() {
-  cd binutils-$pkgver
-}
-
 build() {
   cd binutils-$pkgver
 
-  ./configure --target=$_target \
-              --with-sysroot=/usr/$_target/sys-root \
-              --prefix=/usr \
-              --disable-multilib \
-              --disable-nls \
-              --enable-gold \
-              --enable-plugins \
-              --enable-deterministic-archives \
-              --enable-relro \
-              --with-pic \
-              --with-system-zlib
+  ./configure \
+   --target=$_target \
+   --with-sysroot=/usr/$_target/sys-root \
+   --prefix=/usr \
+   --enable-deterministic-archives \
+   --enable-gold \
+   --enable-install-libiberty \
+   --enable-ld=default \
+   --enable-lto \
+   --enable-plugins \
+   --enable-relro \
+   --enable-shared \
+   --enable-threads \
+   --disable-gdb \
+   --disable-gdbserver \
+   --disable-libdecnumber \
+   --disable-readline \
+   --disable-sim \
+   --disable-werror \
+   --with-debuginfod \
+   --with-pic \
+   --with-system-zlib 
 
   make
-}
-
-check() {
-  cd binutils-$pkgver
-  make -k check || true
 }
 
 package() {
@@ -48,12 +50,6 @@ package() {
 
   make DESTDIR="$pkgdir" install
 
-  # Remove file conflicting with host binutils and manpages for MS Windows tools
-  rm "$pkgdir"/usr/share/man/man1/$_target-{dlltool,windres,windmc}*
-
-  # Remove info documents that conflict with host version
-  rm -r "$pkgdir"/usr/share/info
-
-  #Remove .so that conflict with host version
-  rm -r "$pkgdir"/usr/lib
+  # Remove files that conflict with host version
+  rm -r "$pkgdir"/usr/{include,lib,share}
 }
