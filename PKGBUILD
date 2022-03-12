@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgrel=1
-pkgver=6.2.r.50
+pkgver=pkgver
 _pkgbase=dwm
 pkgname=dwm-nu1ll1nux
 pkgdesc="Concise Build of Suckless DWM"
@@ -24,7 +24,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${_pkgbase}"
-  printf "6.2.r.""$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "6.2.r.""$(git rev-list --count HEAD)"
 }
 
 build() {
