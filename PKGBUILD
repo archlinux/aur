@@ -24,10 +24,10 @@ pkgver() {
 
 build() {
     cd "$_pkgname"
-	python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$_pkgname"
-	python -m installer --destdir="$pkgdir" dist/*.whl
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
