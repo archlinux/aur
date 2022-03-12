@@ -3,7 +3,7 @@
 _pkgname=gamescope
 pkgname=${_pkgname}-git
 pkgver=3.11.27.r0.ga913f85
-pkgrel=3
+pkgrel=4
 pkgdesc="Micro-compositor formerly known as steamcompmgr"
 arch=(x86_64)
 url="https://github.com/Plagman/gamescope"
@@ -47,10 +47,9 @@ prepare() {
     git config submodule.subprojects/libliftoff.active "false"
     git submodule update
 
-    # HACK: manually clone stb into subprojects
-    rm -rf "subprojects/stb"
-    git clone "$srcdir/stb" "subprojects/stb"
-    cp "subprojects/packagefiles/stb/meson.build" "subprojects/stb/"
+    # make stb.wrap use our local clone
+    sed -i "s|https://github.com/nothings/stb.git|$srcdir/stb|" "subprojects/stb.wrap"
+    meson subprojects download
 }
 
 build() {
