@@ -1,0 +1,16 @@
+pkgbase = crash-bandicoot-2-e3
+	pkgdesc = An early prototype of Crash Bandicoot 2: Cortex Strikes Back for the PlayStation.
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://hiddenpalace.org/Crash_Bandicoot_2:_Cortex_Strikes_Back_(Jun_15,_1997_prototype)
+	arch = any
+	license = custom
+	depends = duckstation
+	source = SCES-00967.7z::https://files.hiddenpalace.org/f/fb/Crash_Bandicoot_2_Cortex_Strikes_Back_%28Jun_15%2C_1997_prototype%29.7z
+	source = psx-template.desktop
+	source = com.naughtydog.CrashBandicoot2E3.png::https://files.hiddenpalace.org/3/3a/Crash2-Jun15-1.png
+	sha256sums = f24d4864b5bd5db053fce90ad9fa3487f0519e88c0f7d764d9e3aed3df165b7a
+	sha256sums = fdfbc31089c3e1b63e92ff58618262b72d1f8baba11a1688f0b8ab3a932d70c6
+	sha256sums = 33bc90d5f1a7c606c59d076acea0263b5f28116eb50a65f30707c3536187c685
+
+pkgname = crash-bandicoot-2-e3
