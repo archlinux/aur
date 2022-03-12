@@ -1,7 +1,7 @@
 # Maintainer: Jordan Day < jordanday444 at gmail dot com >
 
 pkgname=hypr-git
-pkgver=0.0.r327.6104017
+pkgver=0.0.r328.fac4928
 pkgrel=1
 pkgdesc="Hypr is a Linux tiling window manager for Xorg. It's written in XCB with modern C++ and aims to provide easily readable and expandable code."
 arch=('x86_64')
