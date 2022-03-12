@@ -2,7 +2,7 @@
 
 pkgname=ch34x-dkms-git
 _pkgname=ch34x
-pkgver=r16.c6b4bc9
+pkgver=r44.845e6f5
 pkgrel=1
 pkgdesc='CH341SER driver with fixed bug'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('git')
 install=${pkgname}.install
 source=("git+https://github.com/juliagoda/CH341SER.git" "dkms.conf" "blacklist-ch34x-dkms-git.conf")
 sha1sums=('SKIP'
-          'cbce8f44f307b2a656c34f184871da3bb11d8565'
+          'caaa4d1bbf824ceea3855e7b4d8557aa80978231'
           'f16e2741c39103594dd6bcee562bfda6d2818318')
 
 pkgver() {
