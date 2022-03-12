@@ -5,7 +5,7 @@
 pkgname=anyk
 pkgver=3.14.0
 subver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Form fill program of the Hungarian tax office (Általános Nyomtatványkitöltő (ÁNYK))'
 arch=('any')
 url='https://www.nav.gov.hu/nav/letoltesek/nyomtatvanykitolto_programok/nyomtatvany_apeh/keretprogramok/abevjava_install.html'
@@ -24,7 +24,7 @@ md5sums=('2a06bd9dc2bb602b98d01ede57281b49'
          '5dae655a84d5dd76401011f5629d8f0f'
          '86e4d78220da7d2d7a9015067d48ab9f'
          '2e0fae11fbaa20d376a1228ac0262209'
-         'b13f867247c573d73509520ffd02de56')
+         'b6a3cc94de751f437d9f4a0e67afe85a')
 
 package() {
     install -d -m 755 "${pkgdir}/usr/bin"
@@ -37,18 +37,18 @@ package() {
     install -m 644 "${srcdir}"/abevjavapath.cfg "${pkgdir}"/etc
 
     install -D "${srcdir}/${pkgname}".desktop "${pkgdir}"/usr/share/applications/"${pkgname}".desktop
-	  install -Dm 644 "${srcdir}"/application/abevjava.png "${pkgdir}"/usr/share/pixmaps/abevjava.png
+	install -Dm 644 "${srcdir}"/application/abevjava.png "${pkgdir}"/usr/share/pixmaps/abevjava.png
 
     cp -r "${srcdir}"/application/* "${pkgdir}"/usr/share/abevjava
 
     # Create anyk group and set download folder writable for group members
     install -Dm 644 "${srcdir}/anyk.sysusers" "${pkgdir}/usr/lib/sysusers.d/anyk.conf"
     
-    chgrp -R 169 "${pkgdir}/usr/share/abevjava/abev"
-    chgrp -R 169 "${pkgdir}/usr/share/abevjava/eroforrasok"
-    chgrp -R 169 "${pkgdir}/usr/share/abevjava/nyomtatvanyok"
-    chgrp -R 169 "${pkgdir}/usr/share/abevjava/upgrade"
-    chgrp -R 169 "${pkgdir}/usr/share/abevjava/segitseg"
+    chgrp -R 569 "${pkgdir}/usr/share/abevjava/abev"
+    chgrp -R 569 "${pkgdir}/usr/share/abevjava/eroforrasok"
+    chgrp -R 569 "${pkgdir}/usr/share/abevjava/nyomtatvanyok"
+    chgrp -R 569 "${pkgdir}/usr/share/abevjava/upgrade"
+    chgrp -R 569 "${pkgdir}/usr/share/abevjava/segitseg"
 
     chmod -R g=u "${pkgdir}/usr/share/abevjava/abev"
     chmod -R g=u "${pkgdir}/usr/share/abevjava/eroforrasok"
