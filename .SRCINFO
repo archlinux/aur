@@ -1,6 +1,6 @@
 pkgbase = isoimagewriter-git
 	pkgdesc = Tool to write a .iso file to a USB disk
-	pkgver = 0.8.r21.g081a939
+	pkgver = 0.8.r42.gf253244
 	pkgrel = 1
 	url = https://community.kde.org/ISOImageWriter
 	arch = x86_64
@@ -16,10 +16,10 @@ pkgbase = isoimagewriter-git
 	depends = kiconthemes
 	depends = kcrash
 	depends = qgpgme
+	depends = solid
 	provides = isoimagewriter
 	conflicts = isoimagewriter
 	source = git+https://invent.kde.org/utilities/isoimagewriter.git
 	sha512sums = SKIP
 
 pkgname = isoimagewriter-git
-
