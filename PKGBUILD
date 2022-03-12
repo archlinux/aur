@@ -26,7 +26,7 @@ build() {
   go build -o build .
 }
 
-test() {
+check() {
   cd "$pkgname-$pkgver"
   go test ./...
 }
