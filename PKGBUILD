@@ -4,13 +4,13 @@
 
 pkgname=libreoffice-extension-hwp2odt
 _extname=Hwp2Odt
-pkgver=0.3.8
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="LibreOffice extension that import hwp file and present in OpenDocumentText format"
 arch=(any)
 url="https://github.com/k2webtech/hwp2odt"
 license=(custom)
-sha512sums=('afcae6e5487750a71e6b6990bdca776f52ed3c5d84f5879a751666fc9b6fe0611ba4d12c79dc5fbd66fe67ae560eaf77d4aaf46ef9c43ce3bcef4f3497e96e8a')
+sha512sums=('4d4d8ee209ca34d288ad9a6c676a638002b813e3769d8a8669570595c931dcaaac4d00d3047cb87e77d196c93a78835e10527a71833c1184218b030d01da577f')
 # About license, please check this https://github.com/k2webtech/hwp2odt/issues/1
 depends=(libreoffice)
 groups=('libreoffice-extensions')
