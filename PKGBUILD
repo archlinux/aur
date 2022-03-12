@@ -11,7 +11,7 @@ pkgname=${_pkgname}-${_lang,,}
 pkgdesc="Standalone Web Browser from Mozilla — Nightly build (${_lang})"
 url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
 _version=100.0a1
-pkgver=100.0a1.20220309
+pkgver=100.0a1.20220312
 pkgrel=1
 arch=(i686 x86_64)
 conflicts=('firefox-nightly')
@@ -37,7 +37,7 @@ source_x86_64=("${_filename}-x86_64.tar.bz2"::"${_urlsrc}/${_src}-x86_64.tar.bz2
                "${_filename}-x86_64.tar.bz2.asc"::"${_urlsrc}/${_src}-x86_64.tar.bz2.asc"
                "${_filename}-x86_64.txt"::"${_url}/${_srctxt}-x86_64.txt")
 sha512sums=(
-    '42426e7b510bd88cbf7b246bf66d7768afa5d71389bf15f7a4231dc24f99fd73284dd9a0a8eb4342b42337c2c7dd843e570a93afa7d3b44c97ecbf5e38e433ac'
+    '87c181628c3be0762000ff3b5cb841ed2c2371937e4aab7f8f441c608dd08d349085036880c8e8aaed40d01fe258ea9be159741e9fad9f493c96fb9be4cc0de3'
     '59d53a3f225e4e28ea25459dba0f3eb96b0e896a96bee992fd45148de3276e141649a0db7e6abad7f4ad341ea244222d31d2ac943f6b7d63c2b7365f702e537c'
 )
 sha512sums_i686=(SKIP SKIP SKIP)
