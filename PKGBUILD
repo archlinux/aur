@@ -35,7 +35,7 @@ build() {
   go build -o build cmd/dstp/main.go
 }
 
-test() {
+check() {
   cd "${pkgname/-git/}"
   go test ./...
 }
