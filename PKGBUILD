@@ -40,6 +40,7 @@ depends=(
     'srt'
     'xz'
     'zlib'
+    'zvbi'
 )
 makedepends=('git' 'nasm' 'clang' 'ffnvcodec-headers' 'amf-headers-git' 'opencl-headers')
 optdepends=('intel-media-driver: for Intel VAAPI support (Broadwell and newer)'

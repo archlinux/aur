@@ -43,6 +43,7 @@ pkgbase = jellyfin-ffmpeg
 	depends = srt
 	depends = xz
 	depends = zlib
+	depends = zvbi
 	optdepends = intel-media-driver: for Intel VAAPI support (Broadwell and newer)
 	optdepends = intel-media-sdk: for Intel Quick Sync Video
 	optdepends = intel-compute-runtime: for Intel OpenCL runtime based Tonemapping
