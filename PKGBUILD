@@ -12,11 +12,6 @@ provides=('yoku')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/misobarisic/yoku/archive/v${pkgver}.tar.gz")
 sha256sums=("10cb7b993794f2e2c16d2de71d4dcbc58a6fa6821e287df04fbca3a62731185f")
 
-pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 build() {
   cd "$srcdir/$_pkgname"
   cargo build --release
