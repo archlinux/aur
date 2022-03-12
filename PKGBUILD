@@ -22,7 +22,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${_pkgbase}"
-  printf "0.8.5.r""$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "0.8.5.r""$(git rev-list --count HEAD)"
 }
 
 prepare() {
