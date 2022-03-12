@@ -14,10 +14,10 @@
 
 #PKGEXT=.pkg.tar
 pkgname=vmware-workstation
-pkgver=16.2.1
-_buildver=18811642
+pkgver=16.2.3
+_buildver=19376536
 _pkgver=${pkgver}_${_buildver}
-pkgrel=4
+pkgrel=1
 pkgdesc='The industry standard for running multiple operating systems as virtual machines on a single Linux PC.'
 arch=(x86_64)
 url='https://www.vmware.com/products/workstation-for-linux.html'
@@ -56,7 +56,7 @@ backup=(
   'etc/conf.d/vmware'
 )
 source=(
-  "https://download3.vmware.com/software/wkst/file/VMware-Workstation-Full-${_pkgver/_/-}.${CARCH}.bundle"
+  "https://download3.vmware.com/software/WKST-${pkgver//./}-LX-New/VMware-Workstation-Full-${_pkgver/_/-}.${CARCH}.bundle"
 
   'vmware-bootstrap'
   'vmware-vix-bootstrap'
@@ -76,7 +76,7 @@ source=(
   'vmnet.patch'
 )
 sha256sums=(
-  'd0b80fec76cc75881bae041dc7841a937c53735256f02ed60d3db5e6415a8d52'
+  'f891352a745f6b071a05a9e723212bd533594c5ed85d1618685315ab4fdeadb3'
 
   '12e7b16abf8d7e858532edabb8868919c678063c566a6535855b194aac72d55e'
   'da1698bf4e73ae466c1c7fc93891eba4b9c4581856649635e6532275dbfea141'
@@ -109,7 +109,9 @@ _isovirtualprinterimages=(Linux Windows)
 
 if [ -n "$_enable_macOS_guests" ]; then
 
-_vmware_fusion_ver=12.2.1_18811640
+_vmware_fusion_ver=12.2.3
+_vmware_fusion_buildver=19436697
+_vmware_fusion_ver_full=${_vmware_fusion_ver}_${_vmware_fusion_buildver}
 # List of VMware Fusion versions: https://softwareupdate.vmware.com/cds/vmw-desktop/fusion/
 
 _unlocker_ver=3.0.7
@@ -122,12 +124,12 @@ makedepends+=(
 )
 
 source+=(
-  "https://download3.vmware.com/software/fusion/file/VMware-Fusion-${_vmware_fusion_ver/_/-}_x86.dmg"
+  "https://download3.vmware.com/software/FUS-${_vmware_fusion_ver//./}-New/VMware-Fusion-${_vmware_fusion_ver_full/_/-}_x86.dmg"
   "unlocker-${_unlocker_ver}.py::https://raw.githubusercontent.com/DrDonk/unlocker/v${_unlocker_ver}/unlocker.py"
   "efi-patches-${_unlocker_ver}.txt::https://raw.githubusercontent.com/DrDonk/unlocker/v${_unlocker_ver}/uefipatch/efi-patches.txt"
 )
 sha256sums+=(
-  'bb87e0a7db38beaf29ec9fd1191a092fd0bcc9f24c4bdc3ceebf65ff52289a52'
+  '8cd01bd0e7d18b32bfa159bcce54bd885151e3d92d97e5d4a20bcbc09a1c3f4b'
   '8a61e03d0edbbf60c1c84a43aa87a6e950f82d2c71b968888f019345c2f684f3'
   '392c1effcdec516000e9f8ffc97f2586524d8953d3e7d6f2c5f93f2acd809d91'
 )
@@ -154,7 +156,7 @@ _create_database_file() {
 if [ -n "$_enable_macOS_guests" ]; then
   for isoimage in ${_fusion_isoimages[@]}
   do
-	sqlite3 "$database_filename" "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES(\"vmware-tools-$isoimage\",\"1\",\"${_vmware_fusion_ver#*_}\",1,\"$isoimage\",\"$isoimage\",1);"
+	sqlite3 "$database_filename" "INSERT INTO components(name,version,buildNumber,component_core_id,longName,description,type) VALUES(\"vmware-tools-$isoimage\",\"1\",\"${_vmware_fusion_ver_full#*_}\",1,\"$isoimage\",\"$isoimage\",1);"
   done
 fi
 }
@@ -168,8 +170,8 @@ prepare() {
     --extract "$extracted_dir"
 
 if [ -n "$_enable_macOS_guests" ]; then
-  dmg2img -s VMware-Fusion-${_vmware_fusion_ver/_/-}_x86.dmg VMware-Fusion-${_vmware_fusion_ver/_/-}_x86.iso
-  7z e -y VMware-Fusion-${_vmware_fusion_ver/_/-}_x86.iso VMware\ Fusion/VMware\ Fusion.app/Contents/Library/isoimages/\* -o"fusion-isoimages" > /dev/null 2>&1 || true
+  dmg2img -s VMware-Fusion-${_vmware_fusion_ver_full/_/-}_x86.dmg VMware-Fusion-${_vmware_fusion_ver_full/_/-}_x86.iso
+  7z e -y VMware-Fusion-${_vmware_fusion_ver_full/_/-}_x86.iso VMware\ Fusion/VMware\ Fusion.app/Contents/Library/isoimages/\* -o"fusion-isoimages" > /dev/null 2>&1 || true
 
   sed -i -e "s|/usr/lib/vmware/|${pkgdir}/usr/lib/vmware/|" "$srcdir/unlocker-${_unlocker_ver}.py"
 fi
