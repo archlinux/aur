@@ -8,14 +8,14 @@ pkgver=3.3.3
 _tag="blivet-${pkgver}"
 pkgrel=5
 pkgdesc='A DBus service and python module for management of the system storage configuration'
-arch=('any')
+arch=('pentium4' 'x86_64')
 license=('LGPL2.1')
 depends=('python'
          'python-six'
          'python-pyparted'
          'python-pyudev'
          'python-gobject'
-         'python-selinux'
+         'libselinux'
          'libblockdev'
          'parted'
          'lsof'
