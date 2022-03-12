@@ -1,6 +1,6 @@
 pkgbase = therion
 	pkgdesc = Cave surveying: processes survey data and generates maps or 3D models of caves
-	pkgver = 6.0.5
+	pkgver = 6.0.6
 	pkgrel = 1
 	url = http://therion.speleo.sk
 	changelog = CHANGELOG
@@ -27,9 +27,9 @@ pkgbase = therion
 	depends = zlib
 	backup = etc/therion.ini
 	backup = etc/xtherion.ini
-	source = http://github.com/therion/therion/archive/v6.0.5.tar.gz
+	source = http://github.com/therion/therion/archive/v6.0.6.tar.gz
 	source = therion_ini.patch
-	sha256sums = d9ac96ce7aba5f2614098583116fd40a644e7792f691eb89617911d87e1ec684
+	sha256sums = 911eca50c6e4a60cbd3e1349b04b9aea4c4daa0ca13b72426a76efc951585c24
 	sha256sums = 0639b0c4c9660af33675bf948ca4678d441167f77f7818cc015b7738a53fb8f3
 
 pkgname = therion
