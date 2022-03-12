@@ -2,7 +2,7 @@
 _base=matadi
 pkgname=python-${_base}
 pkgdesc="Material Definition with Automatic Differentiation"
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 arch=('any')
 url="https://github.com/adtzlr/${_base}"
@@ -11,7 +11,7 @@ depends=(casadi)
 makedepends=(python-setuptools)
 checkdepends=(python-pytest)
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('7b8809f982be9679de9654fce61de95e196ac35e030e660ccf6aa24bbe48d0e91fa5e8143b72a990b4d0852172801ccd1725a906989184b9ef907c4d1321a075')
+sha512sums=('8b6963fc5893b013256e674f3d1c5540bad266ce7e8aa81d4460c300dc6513f011758826269f0c759fd09455d2eca1d0deb7d1ca593c082f99ab02c9506dd2b9')
 
 build() {
   cd "${_base}-${pkgver}"
