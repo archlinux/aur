@@ -7,7 +7,7 @@ pkgname=(
   vbam-wx
 )
 pkgver=2.1.4.r453.65b5affe
-pkgrel=1
+pkgrel=2
 pkgdesc='Nintendo GameBoy Advance emulator'
 arch=(x86_64)
 url=https://vba-m.com
@@ -25,6 +25,7 @@ depends=(
 )
 makedepends=(
   cmake
+  doctest
   ffmpeg
   git
   libglvnd
@@ -46,6 +47,7 @@ validpgpkeys=(A0C0E526E36FD2138C149D4D08AB596679D86240) # Rafael Kitover <rkitov
 prepare() {
   cd visualboyadvance-m
   patch -Np1 -i ../vbam-ffmpeg5.0.patch
+  sed -e 's|${CMAKE_SOURCE_DIR}/third_party|/usr|' -i src/wx/tests/CMakeLists.txt # Unbundle doctest (bundled one is not glibc 2.34 compatible)
 }
 
 pkgver() {
