@@ -11,7 +11,7 @@
 
 pkgname=cycles-standalone
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Blender Cycles rendering engine, standalone version"
 arch=(x86_64)
 url="https://github.com/blender/cycles.git"
@@ -20,17 +20,17 @@ depends=(libglvnd openexr glew pugixml freeglut openimageio tbb openvdb embree o
 makedepends=(cmake git boost llvm)
 optdepends=(cuda optix)
 provides=(cycles)
-source=("git+https://github.com/blender/cycles.git#commit=d52abf84fc7b765d9bf9d2d6b4751088eff4d848"
+source=("git+https://github.com/blender/cycles.git#commit=e801066323feb555ed1d4e2628110d3c0f7241e4"
         0001-SelectCudaComputeArch.patch
         0002-OpenEXR3.patch
         0003-Remove-FindClang.patch
-        0004-Add-CMake-option-to-control-CUDA-host-compiler.patch
+        0004-FindOpenImageIO.patch
         cycles_wrap.sh)
 sha256sums=('SKIP'
-            'f34cf1e2868b7c4ac14bd63e0ebffb1564136031dde36118ac41a19e96bd7cf4'
-            '26f9f68bf25442e70d7d6cc47e06e24f3ce9418a9851497736f5a30e25df152f'
-            'c6336a9a1b6c10d9ac3bdc5f85bc6963c6f661f99bf63b75124a22488bd12394'
-            '23103eacc357c684290509e8efb9aee6427c89ef548b948fc791f42644f822cc'
+            '66c02b42e1b5c29aa0755d81fe684ddfd9d1b8f1d576e6873228de276b5d7c36'
+            '8e982140e10367fa04f0548b0567014401ada3c1df1385c4478b2bac8509fa23'
+            '8023662b9578f535a4094ec47f76c134ebf3472d352759775a60d0590d6e6b27'
+            '95a893fa34f2ad40bfc44ee3253408c96bc8ed5ebaa03d4117613d7641489be5'
             '00afc4aab5541d147b013c31ab91d78e272654a75cae60b39cf70c23a2612c96')
 
 prepare() {
@@ -40,7 +40,7 @@ prepare() {
     fi
     git -C "$_src_root_dir" apply -v "${srcdir}"/0002-OpenEXR3.patch
     git -C "$_src_root_dir" apply -v "${srcdir}"/0003-Remove-FindClang.patch
-    git -C "$_src_root_dir" apply -v "${srcdir}"/0004-Add-CMake-option-to-control-CUDA-host-compiler.patch
+    git -C "$_src_root_dir" apply -v "${srcdir}"/0004-FindOpenImageIO.patch
 }
 
 build() {
