@@ -1,11 +1,11 @@
 pkgbase = template-for-java-cli-app-github-integrated-aur
 	pkgdesc = Template for creating aur package
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/mezlogo/template-for-java-cli-app-github-integrated-aur
 	arch = x86_64
 	license = unknown
-	source = template-for-java-cli-app-github-integrated-aur-0.0.4.zip::https://github.com/mezlogo/template-for-java-cli-app-github-integrated/releases/download/v0.0.4/mycliapp.zip
-	md5sums = a249ea0f34a01b4a6a70905d045ede65
+	source = template-for-java-cli-app-github-integrated-aur-0.0.5.zip::https://github.com/mezlogo/template-for-java-cli-app-github-integrated/releases/download/v0.0.5/mycliapp.zip
+	md5sums = c36e7f11054a39a5f57e3404b9b45f47
 
 pkgname = template-for-java-cli-app-github-integrated-aur
