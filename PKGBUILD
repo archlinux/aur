@@ -1,8 +1,8 @@
 # Maintainer: ROllerozxa <temporaryemail4meh [gee mail]>
 # Contributor: ConfuZzled <theconfuzzleddude@gmail.com>
 pkgname=lunar-magic
-pkgver=3.30
-_pkgver=330
+pkgver=3.31
+_pkgver=331
 pkgrel=2
 pkgdesc='Level editor for Super Mario World'
 url='https://fusoya.eludevisibility.org/lm/index.html'
@@ -14,10 +14,10 @@ source=("https://fusoya.eludevisibility.org/lm/download/lm${_pkgver}.zip"
 		"${pkgname}.desktop"
 		"${pkgname}.png")
 noextract=("lm${_pkgver}.zip")
-sha256sums=('ac27a9cd61946d6ec4cd7414cd8a1de057bfca3de3e06fc9b3be194445050dc2'
-			'c1f2ef084107f4947b008bc6fbd6da820b48568a20229ebaaaf5834e31b4ce89'
-			'33fa325303281102f1fa875053ea84ef50d2adff510d7a17efc9c2df72975efa'
-			'91317fb39eb5f92dbc11e74bb2179832e8f254c40ecabb16c11cbf0fddd45fad')
+sha256sums=('8d7f81deb5c4c8e78a3e0c102b73fe0dbf0f027eb61c06bf95cdee86cb0c8eba'
+            'c1f2ef084107f4947b008bc6fbd6da820b48568a20229ebaaaf5834e31b4ce89'
+            '33fa325303281102f1fa875053ea84ef50d2adff510d7a17efc9c2df72975efa'
+            '91317fb39eb5f92dbc11e74bb2179832e8f254c40ecabb16c11cbf0fddd45fad')
 license=('custom')
 
 package() {
