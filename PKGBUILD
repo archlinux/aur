@@ -1,4 +1,4 @@
-# Maintainer: nyxkn <nyxkn [at] yahoo [dot] com>
+# Maintainer: nyxkn <dev@nyxkn.net>
 
 pkgname=brother-dcp1610w
 pkgver=3.0.1
