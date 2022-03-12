@@ -17,11 +17,10 @@ package() {
     install -d "$pkgdir/usr/share/fcitx5/table/"
     install -m644 "$srcdir/bamini/tamil-bamini.main.dict" "$pkgdir/usr/share/fcitx5/table/tamil-bamini.main.dict"
 
-    #source this file to check if the environment variables are already configured
-    source /etc/environment
+    mkdir -p "$pkgdir/etc/"
 
     if [ "$GTK_IM_MODULE" = "" ];then
-        echo "GTK_IM_MODULE=fcitx">> /etc/environment
+        echo "GTK_IM_MODULE=fcitx">> "$pkgdir/etc/environment"
     else
         echo "GTK_IM_MODULE is already set"
     fi
@@ -29,7 +28,7 @@ package() {
 
 
     if [ "$QT_IM_MODULE" = "" ];then
-        echo "QT_IM_MODULE=fcitx">> /etc/environment
+        echo "QT_IM_MODULE=fcitx">> "$pkgdir/etc/environment"
     else
         echo "QT_IM_MODULE is already set"
     fi
@@ -38,7 +37,7 @@ package() {
 
 
     if [ "$XMODIFIERS" = "" ];then
-        echo "XMODIFIERS=@im=fcitx">> /etc/environment
+        echo "XMODIFIERS=@im=fcitx">> "$pkgdir/etc/environment"
     else
         echo "XMODIFIERS is already set"
     fi

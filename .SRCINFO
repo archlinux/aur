@@ -11,3 +11,16 @@ pkgbase = fcitx5-table-bamini
 	sha256sums = SKIP
 
 pkgname = fcitx5-table-bamini
+pkgbase = fcitx5-table-bamini
+	pkgdesc = Bamini tamil language keymap using table
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/Thenujan-0/bamini
+	arch = any
+	license = GPL
+	depends = fcitx5
+	depends = fcitx5-table-other
+	source = bamini::git://github.com/Thenujan-0/bamini.git
+	sha256sums = SKIP
+
+pkgname = fcitx5-table-bamini
