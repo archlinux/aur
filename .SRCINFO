@@ -1,11 +1,12 @@
 pkgbase = cbang-git
 	pkgdesc = A library of cross-platform C++ utilities
-	pkgver = 1.6.0.r134.g18f1e963
+	pkgver = r1345.38c036a1
 	pkgrel = 1
 	url = https://github.com/CauldronDevelopmentLLC/cbang
 	arch = x86_64
 	license = LGPL2.1
 	checkdepends = python2
+	checkdepends = python2-six
 	makedepends = git
 	makedepends = scons
 	depends = v8-r
@@ -23,4 +24,3 @@ pkgbase = cbang-git
 	sha256sums = SKIP
 
 pkgname = cbang-git
-

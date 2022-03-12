@@ -2,7 +2,7 @@
 # Contributor: greyltc
 
 pkgname=cbang-git
-pkgver=1.6.0.r134.g18f1e963
+pkgver=r1345.38c036a1
 pkgrel=1
 pkgdesc="A library of cross-platform C++ utilities"
 arch=('x86_64')
@@ -24,6 +24,7 @@ makedepends=(
 )
 checkdepends=(
   'python2'
+  'python2-six'
 )
 optdepends=(
   'mariadb-libs: MariaDB database support'
@@ -35,7 +36,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
-  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
