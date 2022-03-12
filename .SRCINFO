@@ -1,6 +1,6 @@
 pkgbase = python-psygnal
 	pkgdesc = Pure python implementation of Qt Signals.
-	pkgver = 0.2.0
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://github.com/tlambert03/psygnal
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-psygnal
 	depends = python
 	depends = python-typing_extensions
 	provides = python-psygnal
-	source = https://files.pythonhosted.org/packages/source/p/psygnal/psygnal-0.2.0.tar.gz
-	sha256sums = 7339e6bb8784bc10330625239996b200e15ce38d78f67713bdb19479f97d2153
+	source = https://files.pythonhosted.org/packages/source/p/psygnal/psygnal-0.3.3.tar.gz
+	sha256sums = dda19ce8c3b81145ac36d0a5810c52b1c7a1b6fd1745e9a3a6d48499a6213598
 
 pkgname = python-psygnal

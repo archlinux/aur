@@ -3,7 +3,7 @@
 _name='psygnal'
 _author='tlambert03'
 pkgname="python-${_name}"
-pkgver=0.2.0
+pkgver=0.3.3
 pkgrel=1
 pkgdesc='Pure python implementation of Qt Signals.'
 arch=('any')
@@ -17,7 +17,7 @@ depends=(
   'python-typing_extensions'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('7339e6bb8784bc10330625239996b200e15ce38d78f67713bdb19479f97d2153')
+sha256sums=('dda19ce8c3b81145ac36d0a5810c52b1c7a1b6fd1745e9a3a6d48499a6213598')
 provides=("python-${_name}")
 
 build() {
