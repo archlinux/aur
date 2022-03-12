@@ -17,9 +17,9 @@
 #
 pkgbase="zfs-linux"
 pkgname=("zfs-linux" "zfs-linux-headers")
-_zfsver="2.1.2"
-_kernelver="5.16.12.arch1-1"
-_kernelver_full="5.16.12.arch1-1"
+_zfsver="2.1.3"
+_kernelver="5.16.13.arch1-1"
+_kernelver_full="5.16.13.arch1-1"
 _extramodules="${_kernelver_full/.arch/-arch}"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
@@ -28,7 +28,7 @@ makedepends=("linux-headers=${_kernelver}")
 arch=("x86_64")
 url="https://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${_zfsver}/zfs-${_zfsver}.tar.gz")
-sha256sums=("258cf1d17a1f668a3b99b61eaf14be06c614df42503db0319bef1b9fc4c8b9e7")
+sha256sums=("b61b644547793f409cafd6538a52d78f2f72b0cd013e88340882457c8c9b43fd")
 license=("CDDL")
 depends=("kmod" "zfs-utils=${_zfsver}" "linux=${_kernelver}")
 
@@ -51,7 +51,7 @@ package_zfs-linux() {
     conflicts=("zfs-dkms" "zfs-dkms-git" "zfs-dkms-rc" "spl-dkms" "spl-dkms-git" 'zfs-linux-git' 'zfs-linux-rc' 'spl-linux')
     replaces=("spl-linux")
     cd "${srcdir}/zfs-${_zfsver}"
-    make DESTDIR="${pkgdir}" INSTALL_MOD_PATH=/usr install
+    make DESTDIR="${pkgdir}" INSTALL_MOD_PATH=${pkgdir}/usr install
     # Remove src dir
     rm -r "${pkgdir}"/usr/src
 }
