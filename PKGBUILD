@@ -4,7 +4,7 @@
 
 pkgname=mplayer-gui
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Media player for Linux - latest stable release'
 url='http://www.mplayerhq.hu/'
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ sha512sums=('SKIP' 'SKIP')
 
 build() {
   cd "MPlayer-1.5"
-  ./configure --prefix=/usr --enable-runtime-cpudetection --enable-gui  --disable-vidix --enable-gl --language=ru --language-msg=ru
+  ./configure --prefix=/usr --enable-runtime-cpudetection --enable-gui  --disable-vidix --enable-gl --language=all --language-msg=all
   make
 }
 

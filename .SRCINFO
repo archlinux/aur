@@ -1,7 +1,7 @@
 pkgbase = mplayer-gui
 	pkgdesc = Media player for Linux - latest stable release
 	pkgver = 1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.mplayerhq.hu/
 	install = mplayer-gui.install
 	arch = i686
