@@ -1,6 +1,6 @@
 # Maintainer: foldex <foldex (a) pm |dot| me>
 pkgname=r2mod_cli
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="A Risk of Rain 2 Mod Manager."
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/foldex/r2mod_cli"
 license=('GPL3')
 depends=('curl' 'gawk' 'jq' 'p7zip' 'sed')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('90e3a96a3e7c020065843a7cacab008bce61036f29d5ba34737cb5971a4a537b')
+sha256sums=('b3da00030d1c7c2c860f6cce9bd9a4dc882a53e3c0ce0e4a1f42af1f07442822')
 
 package() {
     cd "$pkgname-$pkgver"

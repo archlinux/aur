@@ -1,6 +1,6 @@
 pkgbase = r2mod_cli
 	pkgdesc = A Risk of Rain 2 Mod Manager.
-	pkgver = 1.2.1
+	pkgver = 1.2.2
 	pkgrel = 1
 	url = https://github.com/foldex/r2mod_cli
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = r2mod_cli
 	depends = jq
 	depends = p7zip
 	depends = sed
-	source = r2mod_cli-1.2.1.tar.gz::https://github.com/foldex/r2mod_cli/archive/v1.2.1.tar.gz
-	sha256sums = 90e3a96a3e7c020065843a7cacab008bce61036f29d5ba34737cb5971a4a537b
+	source = r2mod_cli-1.2.2.tar.gz::https://github.com/foldex/r2mod_cli/archive/v1.2.2.tar.gz
+	sha256sums = b3da00030d1c7c2c860f6cce9bd9a4dc882a53e3c0ce0e4a1f42af1f07442822
 
 pkgname = r2mod_cli
