@@ -1,8 +1,8 @@
-# Maintainer: Doug Newgard <scimmia at archlinux dot info>
+# Maintainer: Mike Pento <mpento darkforge net>
 
 _pkgname=econnman
 pkgname=$_pkgname-git
-pkgver=1.1.0.r25.g18e7be6
+pkgver=1.1.0.r27.g463913a
 pkgrel=1
 pkgdesc="Enlightenment ConnMan user interface - Development version"
 arch=('any')
