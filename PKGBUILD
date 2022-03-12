@@ -3,7 +3,7 @@
 libyaml_version=0.2.5
 
 pkgname=zigmod
-pkgver=r76
+pkgver=r77
 pkgrel=1
 epoch=1
 pkgdesc="A package manager for the Zig programming language"
@@ -16,7 +16,7 @@ source=(
   "https://github.com/yaml/libyaml/releases/download/${libyaml_version}/yaml-${libyaml_version}.tar.gz"
 )
 sha256sums=(
-  '3e1ccfc796dceb178aab1ea6b2b598308285d03c3cea31337eb5559631bdd27a'
+  'c3d216a2a61bd2639a42b76b3199c142a72526593fa6104c3168587997f144ef'
   'c642ae9b75fee120b2d96c712538bd2cf283228d2337df2cf2988e3c02678ef4'
 )
 
