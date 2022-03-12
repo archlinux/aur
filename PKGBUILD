@@ -3,11 +3,11 @@
 pkgname=todesk-bin
 _pkgname=${pkgname%-bin}
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote control and team work"
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://www.todesk.com/"
-license=('unknown')
+license=('custom')
 depends=('gtk3')
 optdepends=("noto-fonts-cjk: Chinese display support")
 makedepends=('tar')
@@ -21,9 +21,11 @@ conflicts=("${_pkgname}")
 # emptydirs: leave /opt/todesk/config empty dir
 options=('!strip' 'emptydirs')
 install="${_pkgname}.install"
+source=('license.html')
 source_x86_64=("https://dl.todesk.com/linux/${_pkgname}_${pkgver}_amd64.deb")
 source_aarch64=("https://dl.todesk.com/linux/${_pkgname}_${pkgver}_aarch64.deb")
 source_armv7h=("https://dl.todesk.com/linux/${_pkgname}_${pkgver}_armv7l.deb")
+sha256sums=('402b2db2586c723af990beb0f96249b9680880f4f30e58a7cbe7cbd20b979a0b')
 sha256sums_x86_64=('5f680225a1366439b7bec8e39e5c88291f68ddee2a311921fd874b036a6a3057')
 sha256sums_aarch64=('4497ed0ceec012273fe97e187e9786f55ddfbbe22889de593dc1a5f133dde151')
 sha256sums_armv7h=('0a467cb8f8f636ea9d8c6fa1ef3a79bfee4a36fe3bed2b01b42e2006912e2a57')
@@ -68,5 +70,8 @@ package() {
   # icon
   # find usr/share/icons -type f -exec install -Dm644 {} ${pkgdir}/{} \;
   _install 644 usr/share/icons
+
+  # license
+  install -Dm644 ${srcdir}/license.html -t ${pkgdir}/usr/share/licenses/${pkgname}/
 }
 # vim: set sw=2 ts=2 et:
