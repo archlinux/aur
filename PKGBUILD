@@ -3,7 +3,7 @@
 
 pkgname=openzwave
 pkgver=1.6
-pkgrel=4
+pkgrel=5
 pkgdesc='A C++ library to control Z-Wave Networks via a USB Z-Wave Controller'
 arch=(x86_64)
 url=http://www.openzwave.net
@@ -40,11 +40,13 @@ prepare() {
   cd open-zwave
 
   patch -Np1 -i ../openzwave-system-libs.patch
+  sed -e 's/-Werror//' -i cpp/build/Makefile
+  find -name Makefile | xargs sed -e 's/-Wno-format//' -i
 }
 
 build() {
-  export CFLAGS="$CFLAGS -Wno-stringop-truncation -Wno-maybe-uninitialized"
-  export CXXFLAGS="$CXXFLAGS -Wno-stringop-truncation -Wno-maybe-uninitialized"
+  export CFLAGS="$CFLAGS -Wno-stringop-truncation -Wno-maybe-uninitialized -Wformat"
+  export CXXFLAGS="$CXXFLAGS -Wno-stringop-truncation -Wno-maybe-uninitialized -Wformat"
   make -C open-zwave
 }
 
