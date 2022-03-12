@@ -26,9 +26,9 @@ build() {
   go build -o build ./cmd/${pkgname}
 }
 
-test() {
+check() {
   cd "$pkgname-$pkgver"
-  go test ./...
+  go test -v ./ ./scripts/...
 }
 
 package() {
