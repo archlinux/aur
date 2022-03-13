@@ -1,8 +1,8 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=sangnom
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r42.0.g55a93f5
+pkgver=42.0.g55a93f5
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (Fork)(GIT version)"
 arch=('x86_64')
@@ -12,18 +12,15 @@ depends=('vapoursynth')
 makedepends=('git'
              'meson'
              )
-provides=("vapoursynth-plugin-${_plug}"
-          "vapoursynth-plugin-${_plug}-hg"
-          )
-conflicts=("vapoursynth-plugin-${_plug}"
-           "vapoursynth-plugin-${_plug}-hg"
-           )
+provides=("vapoursynth-plugin-${_plug}")
+conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/dubhater/vapoursynth-sangnom.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d r)"
 }
 
 prepare() {

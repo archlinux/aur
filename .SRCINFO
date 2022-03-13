@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-sangnom-git
 	pkgdesc = Plugin for Vapoursynth: sangnom (Fork)(GIT version)
-	pkgver = r42.0.g55a93f5
+	pkgver = 42.0.g55a93f5
 	pkgrel = 1
 	url = https://github.com/dubhater/vapoursynth-sangnom
 	arch = x86_64
@@ -9,11 +9,9 @@ pkgbase = vapoursynth-plugin-sangnom-git
 	makedepends = meson
 	depends = vapoursynth
 	provides = vapoursynth-plugin-sangnom
-	provides = vapoursynth-plugin-sangnom-hg
 	conflicts = vapoursynth-plugin-sangnom
-	conflicts = vapoursynth-plugin-sangnom-hg
+	options = debug
 	source = sangnom::git+https://github.com/dubhater/vapoursynth-sangnom.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-sangnom-git
-
