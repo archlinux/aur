@@ -1,6 +1,6 @@
 pkgbase = lsd-print-git
 	pkgdesc = Just a normal print tool, but we gave it lsd
-	pkgver = r5.bf5e2a8
+	pkgver = r6.1d2ad80
 	pkgrel = 1
 	url = https://github.com/SkwalExe/lsd-print
 	install = lsd-print.install

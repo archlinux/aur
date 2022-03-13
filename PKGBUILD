@@ -1,6 +1,6 @@
 # Maintainer: Léopold Koprivnik Ibghy <skwal.net@gmail.com>
 pkgname="lsd-print-git"
-pkgver=r5.bf5e2a8
+pkgver=r6.1d2ad80
 pkgrel=1
 pkgdesc="Just a normal print tool, but we gave it lsd"
 arch=("any")
@@ -20,7 +20,7 @@ pkgver() {
 prepare() {
 	cd lsd-print
               
-        sudo rm -rf /usr/bin/lsd-print
+        # sudo rm -rf /usr/bin/lsd-print
 }
 
 build() {
