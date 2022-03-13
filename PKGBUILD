@@ -1,7 +1,7 @@
 # Maintainer: Alexey Rychkov <dev at nightfog.net>
 
 pkgname='simple-bcachefs-tools-git'
-pkgver=r795.e87deba
+pkgver=r858.bf7924f
 pkgrel=1
 pkgdesc="BCacheFS filesystem utilities"
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=('bcachefs-tools')
 source=("${pkgname}::git+https://evilpiepirate.org/git/bcachefs-tools.git"
         "disable-initramfs-output.patch")
 sha256sums=('SKIP'
-            '0161fa749e588e353babbde0bec53f80c822658238e116655e03b4125343e6b2')
+            '13ca1e1a3c03f321fdf04d2d93367a443924bc19ea6b72f256c8a0ebaf64fe48')
 
 prepare() {
   cd "$pkgname"
