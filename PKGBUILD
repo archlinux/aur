@@ -1,7 +1,7 @@
 # Maintainer: SpacingBat3 <aur@spacingbat3.anonaddy.com>
 pkgname=argonone-c-git
-pkgver=r92.23ce704
-pkgrel=1
+pkgver=r152.e7671c1
+pkgrel=2
 pkgdesc="A replacement daemon for Argon One Raspberry Pi cases, written in C."
 
 _gitauthor=DarkElvenAngel
@@ -10,18 +10,18 @@ arch=('aarch64' 'armv7h' 'armv6h' 'arm')
 url="https://gitlab.com/DarkElvenAngel/argononed"
 license=('MIT')
 depends=('linux' 'dtc')
-optdepends=('bash-completion: CLI command completion in the BASH shell'
+optdepends=(
+      'bash-completion: CLI command completion in the BASH shell'
 			'systemd: Run daemon at system boot'
-			'bash-completion: Argonone CLI command completion'
-			#'openrc: Run daemon at start (update-rc)' #todo
-			'logrotate')
+			'logrotate: Automatic logs rotation'
+)
 install=install
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" "argonone" "argonone-git" "argonone-rpi4")
-replaces=("argonone" "argonone-git" "argonone-rpi4")
 source=("${pkgname}::git+https://gitlab.com/${_gitauthor}/${_gitname}.git")
 md5sums=('SKIP')
+backup=('etc/logrotate.d/argononed')
 
 _BIN_DIR="${pkgname}/build"
 _COMMON_DIR="${pkgname}/OS/_common"
@@ -51,7 +51,7 @@ package() {
 	install -Dm755 "${srcdir}/${_BIN_DIR}/argononed" "${pkgdir}/usr/bin/argononed"
 	install -Dm755 "${srcdir}/${_BIN_DIR}/argonone-cli" "${pkgdir}/usr/bin/argonone-cli"
 	install -Dm755 "${srcdir}/${_BIN_DIR}/argonone-shutdown" "${pkgdir}/usr/lib/systemd/system-shutdown/argonone-shutdown"
-	install -Dm644 "${srcdir}/${_COMMON_DIR}/argononed.service" "${pkgdir}/etc/systemd/system/argononed.service"
+	install -Dm644 "${srcdir}/${_COMMON_DIR}/argononed.service" "${pkgdir}/usr/lib/systemd/system/argononed.service"
 	install -Dm644 "${srcdir}/${_COMMON_DIR}/argononed.logrotate" "${pkgdir}/etc/logrotate.d/argononed"
 	install -Dm644 "${srcdir}/${_COMMON_DIR}/argonone-cli-complete.bash" "${pkgdir}/usr/share/bash-completion/completions/argonone-cli"
 	install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
