@@ -1,4 +1,4 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=msmoosh
 pkgname=vapoursynth-plugin-${_plug}-git
@@ -14,6 +14,7 @@ provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/dubhater/vapoursynth-${_plug}.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
@@ -22,14 +23,14 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  cd "${_plug}"
-  ./autogen.sh
 }
 
 build() {
-  cd build
-  ../"${_plug}"/configure \
+  cd "${_plug}"
+  ./autogen.sh
+
+  cd "${srcdir}/build"
+  "../${_plug}/configure" \
     --prefix=/usr \
     --libdir=/usr/lib/vapoursynth
 
