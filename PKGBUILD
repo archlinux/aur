@@ -1,8 +1,8 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=muvsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v0.3.0.115.g64fb1cc
+pkgver=0.4.0.9.g8023d21
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -10,27 +10,29 @@ url='https://forum.doom9.org/showthread.php?t=171956'
 license=('GPL')
 depends=('vapoursynth-plugin-havsfunc-git'
          'vapoursynth-plugin-mvsfunc-git'
-         'vapoursynth-plugin-fmtconv'
+         'vapoursynth-plugin-nnedi3_resample-git'
+         'vapoursynth-plugin-awarpsharp2-git'
+         'vapoursynth-plugin-bilateral-git'
+         'vapoursynth-plugin-cas-git'
+         'vapoursynth-plugin-ctmf-git'
+         'vapoursynth-plugin-descale-git'
+         'vapoursynth-plugin-dfttest-git'
          'vapoursynth-plugin-eedi2-git'
+         'vapoursynth-plugin-miscfilters-git'
+         'vapoursynth-plugin-mvtools-git'
          'vapoursynth-plugin-nnedi3-git'
-         'vapoursynth-plugin-mvtools'
+         'vapoursynth-plugin-removegrain-git'
          'vapoursynth-plugin-sangnom-git'
          'vapoursynth-plugin-tcanny-git'
-         'vapoursynth-plugin-awarpsharp2-git'
-         'vapoursynth-plugin-dfttest-git'
-#          'vapoursynth-plugin-vsfilter-git'        # windows only
-#          'vapoursynth-plugin-vsfiltermod-git'     # windows only
-         'vapoursynth-plugin-bilateral-git'
-         'vapoursynth-plugin-median-git'
-         'vapoursynth-plugin-ctmf-git'
-         'vapoursynth-plugin-histogram-git'
-         'vapoursynth-plugin-cas-git'
-         )
-optdepends=('python-numpy: For use muvsfunc_numpy'
-            'python-tensorflow: For use super_resolution function with TensorFlow as backend (muvsfunc_numpy)'
+         'vapoursynth-plugin-temporalmedian-git'
+#          'vapoursynth-plugin-vsfilter-git'     # windows only
+#          'vapoursynth-plugin-vsfiltermod-git'  # windows only
+          )
+optdepends=('python-matplotlib'
+            'python-numpy'
+            'vapoursynth-plugin-vsakarin-git'
 #             'mxnet: For use super_resolution function with MxNET as backend (muvsfunc_numpy)'
 #             'vapoursynth-plugin-vsmxnet-git: For use super_resolution function with MxNET as backend (SuperRes)'
-            'vapoursynth-plugin-vcm-git: For use with GPS function (muvsfunc_misc)'
             )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
@@ -42,7 +44,7 @@ _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["pure
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 package(){
