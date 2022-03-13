@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-bestaudiosource-git
 	pkgdesc = Plugin for Vapoursynth: bestaudiosource (GIT version)
-	pkgver = r37
-	pkgrel = 2
+	pkgver = r37.87d6cba
+	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?p=1896898
 	arch = x86_64
 	license = GPL

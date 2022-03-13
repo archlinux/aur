@@ -2,8 +2,8 @@
 
 _plug=bestaudiosource
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r37
-pkgrel=2
+pkgver=r37.87d6cba
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?p=1896898'
@@ -23,8 +23,8 @@ options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  printf "r%s" "$(git rev-list --count HEAD)"
 #   echo "$(git describe --long --tags | tr - .)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
