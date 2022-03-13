@@ -10,7 +10,7 @@ url="https://artax.karlin.mff.cuni.cz/~mikulas/vyplody/spadfs/"
 license=(unknown)
 optdepends=('spadfs-dkms: DKMS kernel module')
 source=(https://artax.karlin.mff.cuni.cz/~mikulas/vyplody/spadfs/download/spadfs-${pkgver}.tar.gz)
-sha256sums=('98e903de83938bd58600316fb5cd9c9e4cc4ca5ee9c909a901a9e5e79705abc2')
+sha256sums=('e5827d116512f163979ccc1b3cc7f82a043299152d4a773b28a6cb9172cd1ca5')
 
 package() {
 	cd spadfs-${pkgver}
