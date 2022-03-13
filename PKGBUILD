@@ -4,9 +4,9 @@
 pkgbase=python-pytorch
 pkgname=("python-pytorch" "python-pytorch-cuda")
 _pkgname="pytorch"
-pkgver=1.11.0rc5
-_pkgver=1.11.0-rc5
-pkgrel=2
+pkgver=1.11.0
+_pkgver=1.11.0
+pkgrel=1
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -58,15 +58,10 @@ source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v
         "${pkgname}-protobuf::git+https://github.com/protocolbuffers/protobuf.git"
         "${pkgname}-XNNPACK::git+https://github.com/google/XNNPACK.git"
         "${pkgname}-flatbuffers::git+https://github.com/google/flatbuffers.git"
-        https://github.com/oneapi-src/oneDNN/commit/1fe0f2594a1bfc6386fd8f6537f971d5ae9c1214.patch
-        fix_old_nnapi_lite_interpreter_config.patch
-        fix-jit-frontend-nullptr-deref.patch
         fix_include_system.patch
         use-system-libuv.patch
         fix-building-for-torchvision.patch
-        fix_c10.patch
-        ffmpeg4.4.patch
-        66219.patch)
+        ffmpeg4.4.patch)
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -106,15 +101,10 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '7728e99500d8034c837bbbe2b48b780d8563de4e56fff38a96766caad08cce05'
-            '21476edfa61573892a325cb8a91e13f601142e39b34e24e4575d2cdebb063b3f'
-            'c272684a4c747f034163fcfd9dbb7264d5fe821dd25a060f0b791760ad0083ae'
             '557761502bbd994d9795bef46779e4b8c60ba0b45e7d60841f477d3b7f28a00a'
             'cd9ac4aaa9f946ac5eafc57cf66c5c16b3ea7ac8af32c2558fad0705411bb669'
             '600bd6a4bbcec9f99ab815d82cee1c2875530b2b75f4010da5ba72ce9bf31aff'
-            '4d0d7da4a3fb099ed75f3007559fad04ac96eed87c523b274fb3bb6020e6b9b8'
-            '75001b59e76831b0c93a547f851cb980e00b0d8cc7b66fb507eaeac217dc6ff9'
-            'd86efbe915386989d75d313fc76785e6d9c5638b983f17e98cca32174ac1fcee')
+            '75001b59e76831b0c93a547f851cb980e00b0d8cc7b66fb507eaeac217dc6ff9')
 options=('!lto')
 
 get_pyver () {
@@ -176,24 +166,6 @@ prepare() {
 
   # fix https://github.com/pytorch/vision/issues/3695
   patch -Np1 -i "${srcdir}/fix-building-for-torchvision.patch"
-
-  # cuda 11.4.1 fix
-  # patch -Np1 -i "${srcdir}/fix_c10.patch"
-
-  # https://discuss.pytorch.org/t/about-build-android-sh-lite-and-nnapi/133581
-  # patch -Np1 -i "${srcdir}/fix_old_nnapi_lite_interpreter_config.patch"
-
-  # fix nullptr dereference
-  # patch -Np1 -i "${srcdir}/fix-jit-frontend-nullptr-deref.patch"
-
-  # disable vec tests
-  # sed -e '/set(ATen_VEC_TEST_SRCS ${ATen_VEC_TEST_SRCS} PARENT_SCOPE)/d' -i aten/CMakeLists.txt
-
-  # https://github.com/pytorch/pytorch/issues/67153, https://github.com/pytorch/pytorch/pull/66219
-  # patch -Np1 -i "${srcdir}/66219.patch"
-
-  # fix ideep/mkl-dnn
-  # patch -Np1 -d third_party/ideep/mkl-dnn -i "${srcdir}/1fe0f2594a1bfc6386fd8f6537f971d5ae9c1214.patch"
 
   # remove local nccl
   # rm -rf third_party/nccl/nccl
