@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-finedehalo-git
 	pkgdesc = Plugin for Vapoursynth: finedehalo (GIT version)
-	pkgver = r3
-	pkgrel = 3
+	pkgver = r3.879cd79
+	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=173672
 	arch = any
 	license = GPL
