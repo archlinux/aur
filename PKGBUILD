@@ -2,7 +2,7 @@
 
 pkgname=logtalk
 pkgver=3.53.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Object-Oriented Logic Programming Language'
 arch=('x86_64' 'i686')
 url='http://logtalk.org/'
