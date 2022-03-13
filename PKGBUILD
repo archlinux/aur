@@ -1,29 +1,34 @@
 # Maintainer: siphr <archlinux@techtum.dev>
+
+_pypkgname=urdu_digit
 pkgname=urdu-digit
-pkgver=0.2
-pkgrel=3
+pkgver=0.0.17
+pkgrel=1
 pkgdesc="Convert English digits to Urdu ones."
-depends=(python)
-arch=(x86_64)
-source=("https://github.com/siphr/urdu-digit.git")
+depends=(python python-beautifulsoup4)
+arch=(any)
+source=("https://github.com/siphr/urdu-digit/archive/refs/tags/$pkgver.tar.gz")
 url=https://www.techtum.dev/work-urdu-digit-211001.html
 license=('MIT')
 
 build() {
-    echo "PREPARING..."
-    pip install urdu-digit
-    pip install bs4
+    echo "BUILDING..."
+    cd "$srcdir/$pkgname-$pkgver/pip/"
+    python setup.py build
     
-    echo "echo `date`" > urdu-digit 
-    echo "python -m urdu_digit \$@" >> urdu-digit
-
-    chmod +x $srcdir/urdu-digit
+    echo -e '#!/bin/sh\n\nexec python -m urdu_digit.urdu_digit "$@"' > urdu-digit 
 }
 
 package() {
     echo "INSTALLING..."
+    cd "$srcdir/$pkgname-$pkgver/pip"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
     mkdir -p $pkgdir/usr/bin
-    cp "$srcdir/urdu-digit" "$pkgdir/usr/bin/urdu-digit"
-    echo 'Finsihed setting up urdu-digit.'
+    cp urdu-digit "$pkgdir/usr/bin/urdu-digit"
+    chmod +x $pkgdir/usr/bin/urdu-digit
+
+    install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    echo 'Finished setting up urdu-digit.'
 }
-md5sums=('SKIP')
+md5sums=('a1a1956fa68c89aced0d19784c5ab7f2')

@@ -1,11 +1,13 @@
 pkgbase = urdu-digit
 	pkgdesc = Convert English digits to Urdu ones.
-	pkgver = 0.2
-	pkgrel = 3
+	pkgver = 0.0.17
+	pkgrel = 1
 	url = https://www.techtum.dev/work-urdu-digit-211001.html
-	arch = x86_64
+	arch = any
 	license = MIT
 	depends = python
-	source = https://github.com/siphr/urdu-digit.git
+	depends = python-beautifulsoup4
+	source = https://github.com/siphr/urdu-digit/archive/refs/tags/0.0.17.tar.gz
+	md5sums = a1a1956fa68c89aced0d19784c5ab7f2
 
 pkgname = urdu-digit
