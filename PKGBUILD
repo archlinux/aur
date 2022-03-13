@@ -3,7 +3,7 @@
 pkgbase=non-daw
 pkgname=(non-mixer non-timeline)
 pkgver=1.3.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Non DAW"
 arch=(x86_64)
 url="https://non.tuxfamily.org/"
@@ -25,12 +25,12 @@ build() {
   export LINKFLAGS="$LDFLAGS"
   (
     cd ${pkgname[0]}-$pkgver
-    waf configure --prefix=/usr --project=mixer
+    waf configure --prefix=/usr --project=mixer --disable-native-cpu-optimization
     waf build -vv
   )
   (
     cd ${pkgname[1]}-$pkgver
-    waf configure --prefix=/usr --project=timeline
+    waf configure --prefix=/usr --project=timeline --disable-native-cpu-optimization
     waf build -vv
   )
 }
