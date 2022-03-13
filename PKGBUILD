@@ -9,8 +9,8 @@ url="https://gitlab.com/qYp/${pkgname}"
 license=('MIT')
 makedepends=(git)                 
 source=(
-  "https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-any.pkg.tar.zst"
-  "https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-any.pkg.tar.zst.sig"
+  "https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst"
+  "https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
 )
 sha256sums=(
   '39d84cbb8f8015e30973d61560235c29029b70d1be7a3d5257b727b112e1e684'
