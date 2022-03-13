@@ -1,6 +1,6 @@
 pkgbase = python-catkin_tools
 	pkgdesc = Command line tools for working with catkin
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://github.com/catkin/catkin_tools
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-catkin_tools
 	provides = python-catkin-tools
 	conflicts = python2-catkin_tools
 	conflicts = python-catkin-tools
-	source = https://github.com/catkin/catkin_tools/archive/0.8.2.tar.gz
-	sha256sums = 7ee44ec424b46932fc2de2ebf720220d41b0716aee84ad519f3db9da48c10eb2
+	source = https://github.com/catkin/catkin_tools/archive/0.8.3.tar.gz
+	sha256sums = 414bb4258b2638312149140425fb860cac08369bf258bff103a068aa1bb24d57
 
 pkgname = python-catkin_tools
