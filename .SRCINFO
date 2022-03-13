@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-ttempsmooth-git
 	pkgdesc = Plugin for Vapoursynth: ttempsmooth (GIT version)
-	pkgver = r4.1.0.gf26e5c8
+	pkgver = 4.1.0.gf26e5c8
 	pkgrel = 1
 	url = https://github.com/HomeOfVapourSynthEvolution/VapourSynth-TTempSmooth
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = vapoursynth-plugin-ttempsmooth-git
 	depends = vapoursynth-plugin-misc-git
 	provides = vapoursynth-plugin-ttempsmooth
 	conflicts = vapoursynth-plugin-ttempsmooth
+	options = debug
 	source = ttempsmooth::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-TTempSmooth.git
 	sha256sums = SKIP
 
