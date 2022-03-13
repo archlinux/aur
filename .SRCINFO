@@ -1,0 +1,17 @@
+pkgbase = aarch64-none-linux-gnu-gcc-10.3-bin
+	pkgdesc = GNU Cross Compilation Toolchain for AArch64 (GCC 9.2)
+	pkgver = 10.3
+	pkgrel = 2021.07
+	url = https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	depends = binutils
+	conflicts = aarch64-linux-gnu-gcc
+	options = !emptydirs
+	options = !strip
+	options = staticlibs
+	source = https://developer.arm.com/-/media/Files/downloads/gnu-a/10.3-2021.07/binrel/gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu.tar.xz
+	md5sums = 07bbe2b5277b75ba36a924e9136366a4
+
+pkgname = aarch64-none-linux-gnu-gcc-10.3-bin
