@@ -1,14 +1,14 @@
 # Maintainer: Lex Black <autumn-wind at web dot de>
 
 pkgname=libscrypt
-pkgver=1.21
-pkgrel=2
+pkgver=1.22
+pkgrel=1
 pkgdesc="shared library that implements scrypt() functionality - a replacement for bcrypt()"
 arch=(i686 x86_64)
 license=('BSD')
 url="https://github.com/technion/libscrypt"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/technion/$pkgname/archive/v${pkgver}.tar.gz")
-sha1sums=('eb75c5c75094055c3e9a5b90da5a3e37fc1b5e20')
+sha1sums=('01e1789bcd029ebf6d94c907b7d41889cde3a788')
 
 
 build() {

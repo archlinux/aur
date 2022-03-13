@@ -1,13 +1,12 @@
 pkgbase = libscrypt
 	pkgdesc = shared library that implements scrypt() functionality - a replacement for bcrypt()
-	pkgver = 1.21
-	pkgrel = 2
+	pkgver = 1.22
+	pkgrel = 1
 	url = https://github.com/technion/libscrypt
 	arch = i686
 	arch = x86_64
 	license = BSD
-	source = libscrypt-1.21.tar.gz::https://github.com/technion/libscrypt/archive/v1.21.tar.gz
-	sha1sums = eb75c5c75094055c3e9a5b90da5a3e37fc1b5e20
+	source = libscrypt-1.22.tar.gz::https://github.com/technion/libscrypt/archive/v1.22.tar.gz
+	sha1sums = 01e1789bcd029ebf6d94c907b7d41889cde3a788
 
 pkgname = libscrypt
-
