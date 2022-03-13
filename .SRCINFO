@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-minideen-git
 	pkgdesc = Plugin for Vapoursynth: minideen (GIT version)
-	pkgver = v1.3.g0355cff
-	pkgrel = 2
+	pkgver = 2.0.g8b915c5
+	pkgrel = 1
 	url = https://github.com/dubhater/vapoursynth-minideen
 	arch = x86_64
 	license = GPL
@@ -10,8 +10,8 @@ pkgbase = vapoursynth-plugin-minideen-git
 	depends = vapoursynth
 	provides = vapoursynth-plugin-minideen
 	conflicts = vapoursynth-plugin-minideen
+	options = debug
 	source = minideen::git+https://github.com/dubhater/vapoursynth-minideen.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-minideen-git
-
