@@ -1,9 +1,9 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: Mikuro Kagamine <mikurok@forgecrushing.com>
 
 _plug=znedi3
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r2.1.4.g643e4b4
+pkgver=2.1.4.g643e4b4
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT Version)"
 arch=('x86_64')
@@ -21,10 +21,11 @@ source=("${_plug}::git+https://github.com/JeremyMahieu/${_plug}.git"
 sha256sums=('SKIP'
             'SKIP'
             )
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d r)"
 }
 
 prepare() {
@@ -47,9 +48,9 @@ prepare() {
 }
 
 build() {
+  cd "${_plug}"
   CXXFLAGS+=" $(pkg-config --cflags vapoursynth)"
   CPPFLAGS+=" -DNNEDI3_WEIGHTS_PATH=\\\"/usr/lib/vapoursynth/nnedi3_weights.bin\\\""
-  cd "${_plug}"
   LC_ALL=C make V=1 X86=1
 }
 
