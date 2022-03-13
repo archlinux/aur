@@ -2,7 +2,7 @@
 pkgname=saucer-cli-git
 _gitname=saucer-cli
 pkgver=r7.4a6f1f8
-pkgrel=1
+pkgrel=2
 pkgdesc="A cli program to simplify working with saucer"
 arch=('any')
 url="https://github.com/saucer/saucer-cli"
