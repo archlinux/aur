@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-mcdegrainsharp-git
 	pkgdesc = Plugin for Vapoursynth: mcdegrainsharp (GIT version)
-	pkgver = r6
+	pkgver = r6.abdc093
 	pkgrel = 1
 	url = https://gist.github.com/4re
 	arch = any
