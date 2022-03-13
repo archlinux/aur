@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-gtk4
 	pkgdesc = GObject-based multi-platform GUI toolkit (mingw-w64)
-	pkgver = 4.4.1
-	pkgrel = 2
+	pkgver = 4.6.1
+	pkgrel = 1
 	url = https://www.gtk.org
 	install = mingw-w64-gtk4.install
 	arch = any
@@ -21,16 +21,17 @@ pkgbase = mingw-w64-gtk4
 	depends = mingw-w64-gst-plugins-bad>=1.12.3
 	depends = mingw-w64-harfbuzz>=2.1.0
 	depends = mingw-w64-libepoxy>=1.4
-	depends = mingw-w64-librsvg>=2.46.0
-	depends = mingw-w64-pango>=1.47.0
+	depends = mingw-w64-libjpeg-turbo
+	depends = mingw-w64-libpng
+	depends = mingw-w64-librsvg>=2.52.0
+	depends = mingw-w64-libtiff
+	depends = mingw-w64-pango>=1.50.0
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://download.gnome.org/sources/gtk/4.4/gtk-4.4.1.tar.xz
-	source = gtk4-merge-3999-fix-find_library.patch
-	source = gtk4-merge-4000-fix-includes.patch
-	sha256sums = 0faada983dc6b0bc409cb34c1713c1f3267e67c093f86b1e3b17db6100a3ddf4
-	sha256sums = fca9be9278d60eeb28c9a41b2571e880e0ac4a6bf7baa90e87007d18b581052e
-	sha256sums = 6d043e449774f3c3bef58478dbea6359cf43301bdf573ca0cced14520cb87742
+	source = https://download.gnome.org/sources/gtk/4.6/gtk-4.6.1.tar.xz
+	source = gtk4-merge-4565-fix-cross-compilation.patch
+	sha256sums = d85508d21cbbcd63d568a7862af5ecd63b978d7d5799cbe404c91d2389d0ec5f
+	sha256sums = 63d2cb66e347d640511c32925f15f7caa6845730be36d466faf04997315c2aa5
 
 pkgname = mingw-w64-gtk4

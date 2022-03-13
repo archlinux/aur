@@ -1,8 +1,8 @@
 # Maintainer: lantw44 (at) gmail (dot) com
 
 pkgname=mingw-w64-gtk4
-pkgver=4.4.1
-pkgrel=2
+pkgver=4.6.1
+pkgrel=1
 pkgdesc='GObject-based multi-platform GUI toolkit (mingw-w64)'
 arch=('any')
 url='https://www.gtk.org'
@@ -25,17 +25,18 @@ depends=(
   'mingw-w64-gst-plugins-bad>=1.12.3'
   'mingw-w64-harfbuzz>=2.1.0'
   'mingw-w64-libepoxy>=1.4'
-  'mingw-w64-librsvg>=2.46.0'
-  'mingw-w64-pango>=1.47.0')
+  'mingw-w64-libjpeg-turbo'
+  'mingw-w64-libpng'
+  'mingw-w64-librsvg>=2.52.0'
+  'mingw-w64-libtiff'
+  'mingw-w64-pango>=1.50.0')
 options=('!strip' '!buildflags' 'staticlibs')
 source=(
   "https://download.gnome.org/sources/gtk/${pkgver%.*}/gtk-${pkgver}.tar.xz"
-  'gtk4-merge-3999-fix-find_library.patch'
-  'gtk4-merge-4000-fix-includes.patch')
+  'gtk4-merge-4565-fix-cross-compilation.patch')
 sha256sums=(
-  '0faada983dc6b0bc409cb34c1713c1f3267e67c093f86b1e3b17db6100a3ddf4'
-  'fca9be9278d60eeb28c9a41b2571e880e0ac4a6bf7baa90e87007d18b581052e'
-  '6d043e449774f3c3bef58478dbea6359cf43301bdf573ca0cced14520cb87742')
+  'd85508d21cbbcd63d568a7862af5ecd63b978d7d5799cbe404c91d2389d0ec5f'
+  '63d2cb66e347d640511c32925f15f7caa6845730be36d466faf04997315c2aa5')
 
 _architectures=('i686-w64-mingw32' 'x86_64-w64-mingw32')
 
