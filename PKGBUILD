@@ -7,8 +7,8 @@
 # Maintainer: Pu Anlai
 pkgname=albion-sr-gog
 _pkgname=Albion-Linux
-pkgver=1.7.1
-pkgrel=2
+pkgver=1.7.2
+pkgrel=1
 pkgdesc="Linux port of the role-playing game Albion using the GOG version"
 arch=("x86_64")
 url="https://github.com/M-HT/SR"
@@ -20,8 +20,8 @@ install="albion-sr-gog.install"
 source=("setup_albion.exe::gog://setup_albion.exe"
         "${pkgname}-${pkgver}.tar.gz::https://github.com/M-HT/SR/releases/download/albion_v${pkgver}/${_pkgname}-x86-v${pkgver}-sdl2.tar.gz"
         "albion.desktop")
-sha1sums=('e716ed57e7957808ff66ad9da1c914f9cf6bfee8'
-          '6ebfc6f8895eb2685698a24430495b585f09b2a3'
+sha1sums=('SKIP'
+          '003df68f16cff4359fb655d2924ba6411caa82fb'
           'b307af4b606f2510e1664ce96765cdc7f652bb06')
 noextract=("${pkgname}-${pkgver}.tar.gz"
            "setup_albion.exe")
