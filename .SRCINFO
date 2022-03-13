@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-waifu2x-ncnn-vulkan-git
 	pkgdesc = Plugin for Vapoursynth: waifu2x-ncnn-vulkan (GIT version)
-	pkgver = r4.0.gc20cc47
+	pkgver = 4.0.gc20cc47
 	pkgrel = 1
 	url = https://github.com/Nlzy/vapoursynth-waifu2x-ncnn-vulkan
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = vapoursynth-plugin-waifu2x-ncnn-vulkan-git
 	depends = vulkan-icd-loader
 	provides = vapoursynth-plugin-waifu2x-ncnn-vulkan
 	conflicts = vapoursynth-plugin-waifu2x-ncnn-vulkan
+	options = debug
 	source = waifu2x-ncnn-vulkan::git+https://github.com/Nlzy/VapourSynth-waifu2x-ncnn-vulkan.git
 	source = git+https://github.com/Tencent/ncnn.git
 	source = git+https://github.com/KhronosGroup/glslang.git

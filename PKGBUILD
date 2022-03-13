@@ -2,7 +2,7 @@
 
 _plug=waifu2x-ncnn-vulkan
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r4.0.gc20cc47
+pkgver=4.0.gc20cc47
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -27,16 +27,15 @@ sha256sums=('SKIP'
             'SKIP'
             'e3b7b0b71ca606031821ac5d63b4ff25ab6874e8521521585de4a308b2f974c9'
             )
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d r)"
 }
 
 prepare() {
-  mkdir -p build
-
-  cd ${_plug}
+  cd "${_plug}"
   git config submodule.deps/ncnn.url "${srcdir}/ncnn"
   git submodule update --init deps/ncnn
 
@@ -50,12 +49,11 @@ prepare() {
 }
 
 build() {
-  cd build
-  cmake "../${_plug}" \
+  cmake -S "${_plug}" -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
 
-  make
+  cmake --build build
 }
 
 package(){
