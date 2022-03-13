@@ -1,11 +1,12 @@
 pkgbase = vapoursynth-plugin-vctrans
 	pkgdesc = Plugin for Vapoursynth: vctrans
 	pkgver = 20210717
-	pkgrel = 1
+	pkgrel = 2
 	url = https://forum.doom9.org/showthread.php?t=172594
 	arch = x86_64
 	license = GPL
 	depends = vapoursynth
+	options = debug
 	source = vctrans-20210717.7z::http://www.avisynth.nl/users/vcmohan/vctrans/vctrans_src.7z
 	source = vctrans_doc-20210717.7z::http://www.avisynth.nl/users/vcmohan/vctrans/vctrans.7z
 	sha256sums = 631ebb3a2071b48f53d10ce8f3f5a1a830fe141d265eb559699cc7116de20e50
