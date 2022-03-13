@@ -7,7 +7,6 @@ pkgbase = halide
 	license = MIT
 	makedepends = cmake
 	makedepends = ninja
-	makedepends = git
 	makedepends = clang
 	depends = llvm
 	depends = lld
@@ -15,7 +14,7 @@ pkgbase = halide
 	optdepends = emscripten: WebAssembly backend.
 	optdepends = libpng: PNG support in the Image IO Utility.
 	optdepends = libjpeg: JPEG support in the Image IO Utility.
-	source = git+https://github.com/halide/Halide.git#tag=v13.0.4
+	source = https://github.com/halide/Halide/archive/refs/tags/v13.0.4.tar.gz
 	md5sums = SKIP
 
 pkgname = halide

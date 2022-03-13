@@ -7,17 +7,17 @@ arch=('x86_64')
 url="https://halide-lang.org/"
 license=('MIT')
 depends=('llvm' 'lld')
-makedepends=('cmake' 'ninja' 'git' 'clang')
+makedepends=('cmake' 'ninja' 'clang')
 optdepends=(
   'cuda: NVidia PTX backend.'
   'emscripten: WebAssembly backend.'
   'libpng: PNG support in the Image IO Utility.'
   'libjpeg: JPEG support in the Image IO Utility.')
-source=("git+https://github.com/halide/Halide.git#tag=v$pkgver")
+source=("https://github.com/halide/Halide/archive/refs/tags/v$pkgver.tar.gz")
 md5sums=('SKIP')
 
 build() {
-  cmake -B build -S Halide \
+  cmake -B build -S "Halide-$pkgver" \
     -GNinja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
@@ -32,5 +32,5 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
-  install -Dm644 "Halide/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "Halide-$pkgver/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
