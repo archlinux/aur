@@ -1,0 +1,22 @@
+message () {
+	printf "\n\n"
+    printf "\t\033[93mThanks for using skwal-dotfiles !\n"
+	printf "\t\033[93mDon't forget to star our github repo !\n"
+	printf "\t\033[92mhttps://github.com/SkwalExe/dotfiles\n"
+	printf "\n"
+	printf "\t\033[93mExecute skwal-dotfiles-install to start the install script\n"
+	printf "\n\n"
+}
+
+post_install() {
+	message
+}
+
+
+post_upgrade() {
+	message
+}
+
+post_remove() {
+	message
+}
