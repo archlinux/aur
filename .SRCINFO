@@ -1,0 +1,17 @@
+pkgbase = vapoursynth-plugin-miscfilters-git
+	pkgdesc = Plugin for Vapoursynth: miscfilters (GIT version)
+	pkgver = 2.5.g07e0589
+	pkgrel = 1
+	url = https://github.com/vapoursynth/vs-miscfilters-obsolete
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = meson
+	depends = vapoursynth
+	provides = vapoursynth-plugin-miscfilters
+	conflicts = vapoursynth-plugin-miscfilters
+	options = debug
+	source = miscfilters::git+https://github.com/vapoursynth/vs-miscfilters-obsolete.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-miscfilters-git
