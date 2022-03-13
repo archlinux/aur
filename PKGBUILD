@@ -1,8 +1,8 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=eedi2
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r7.1.0.g9d82bc5
+pkgver=7.1.1.g36be83a
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -16,10 +16,11 @@ provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-EEDI2.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d r)"
 }
 
 prepare() {
