@@ -11,7 +11,7 @@ depends=('dkms')
 optdepends=('spadfs-utils: mkfs and fsck')
 source=("https://artax.karlin.mff.cuni.cz/~mikulas/vyplody/spadfs/download/spadfs-${pkgver}.tar.gz"
         'dkms.conf')
-sha256sums=('98e903de83938bd58600316fb5cd9c9e4cc4ca5ee9c909a901a9e5e79705abc2'
+sha256sums=('e5827d116512f163979ccc1b3cc7f82a043299152d4a773b28a6cb9172cd1ca5'
             'c19fff6f84ad626459cb08f4accba1320635f9cd7d5a63505b3db527650ecd8d')
 
 package() {
