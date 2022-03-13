@@ -1,15 +1,14 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=waifu2x-caffe
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r14.1.g89f5401
-pkgrel=2
+pkgver=14.1.g89f5401
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (NVIDIA users only)(static libcaffe)(GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=173673'
 license=('MIT')
 depends=('vapoursynth'
-         'cuda'
          'boost-libs'
          'libopenblas'
          'google-glog'
@@ -18,10 +17,12 @@ depends=('vapoursynth'
          'protobuf'
          'cudnn'
          'opencv'
+         'nvidia-utils'
          )
 makedepends=('git'
              'boost'
              'meson'
+              'cuda'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -31,19 +32,22 @@ source=("${_plug}::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth
 sha256sums=('SKIP'
             'SKIP'
             )
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d r)"
 }
 
 prepare() {
   mkdir -p fakeroot build
 
-  # CUDA 11.1.x not support compute_30 (Kepler boards)
-  # CUDA 11.1.x add support to new boards (Ampere boards)
+  # CUDA 11.6.x not support compute_30/35/37 (Kepler boards)
+  # CUDA 11.6.x add support to new boards (Ampere boards)
   sed -e 's|-gencode arch=compute_30,code=sm_30||g' \
-      -e 's|-gencode arch=compute_75,code=compute_75|-gencode arch=compute_80,code=sm_80 \\\n\t\t-gencode arch=compute_86,code=sm_86|g' \
+      -e 's|-gencode arch=compute_35,code=sm_35||g' \
+      -e 's|-gencode arch=compute_37,code=sm_37||g' \
+      -e 's|code=compute_75|code=sm_75 \\\n\t\t-gencode arch=compute_80,code=sm_80 \\\n\t\t-gencode arch=compute_86,code=sm_86 \\\n\t\t-gencode arch=compute_87,code=compute_87|g' \
       -i caffe/Makefile.config
 
   # set CUDA directory

@@ -1,15 +1,15 @@
 pkgbase = vapoursynth-plugin-waifu2x-caffe-git
 	pkgdesc = Plugin for Vapoursynth: waifu2x-caffe (NVIDIA users only)(static libcaffe)(GIT version)
-	pkgver = r14.1.g89f5401
-	pkgrel = 2
+	pkgver = 14.1.g89f5401
+	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=173673
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = boost
 	makedepends = meson
+	makedepends = cuda
 	depends = vapoursynth
-	depends = cuda
 	depends = boost-libs
 	depends = libopenblas
 	depends = google-glog
@@ -18,12 +18,13 @@ pkgbase = vapoursynth-plugin-waifu2x-caffe-git
 	depends = protobuf
 	depends = cudnn
 	depends = opencv
+	depends = nvidia-utils
 	provides = vapoursynth-plugin-waifu2x-caffe
 	conflicts = vapoursynth-plugin-waifu2x-caffe
+	options = debug
 	source = waifu2x-caffe::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-Waifu2x-caffe.git
 	source = git+https://github.com/HolyWu/caffe.git#branch=lltcggie/custom
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-waifu2x-caffe-git
-
