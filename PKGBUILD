@@ -1,8 +1,8 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=ocr
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=R1.2.gb5dd774
+pkgver=1.2.gb5dd774
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -18,10 +18,11 @@ provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/vapoursynth/vs-ocr.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d R)"
 }
 
 prepare() {
@@ -30,7 +31,9 @@ prepare() {
 
 build() {
   cd build
-  arch-meson "../${_plug}" --libdir /usr/lib/vapoursynth
+  arch-meson "../${_plug}" \
+    --libdir /usr/lib/vapoursynth
+
   ninja
 }
 
