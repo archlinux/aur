@@ -1,7 +1,7 @@
 pkgbase = cloudflared-bin
 	pkgdesc = An Argo Tunnel client which proxies any local webserver through the Cloudflare network
 	pkgver = 2022.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://developers.cloudflare.com/argo-tunnel/
 	arch = x86_64
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = cloudflared-bin
 	depends = glibc
 	provides = cloudflared
 	conflicts = cloudflared
-	source = https://raw.githubusercontent.com/cloudflare/cloudflared/master/LICENSE
+	source = https://raw.githubusercontent.com/cloudflare/cloudflared/2022.3.1/LICENSE
 	source = cloudflared.yml
 	source = cloudflared@.service
 	source = cloudflared-dns.service
