@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-rgsf-git
 	pkgdesc = Plugin for Vapoursynth: rgsf (GIT version)
-	pkgver = r5.0.g657d1e7
+	pkgver = 5.0.g657d1e7
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=172270
 	arch = i686
