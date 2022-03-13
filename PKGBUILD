@@ -2,7 +2,7 @@
 pkgname='swhkd-git'
 _pkgname="swhkd"
 pkgver=1
-pkgrel=1
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/waycrate/swhkd"
 pkgdesc="A display server independent hotkey daemon inspired by sxhkd."
