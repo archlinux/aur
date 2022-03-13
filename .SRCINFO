@@ -1,12 +1,10 @@
 pkgbase = yoku-bin
 	pkgdesc = Markdown based TUI todo
 	pkgver = 0.1.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/misobarisic/yoku
 	arch = x86_64
 	license = GPL3
-	makedepends = cargo
-	makedepends = rust
 	provides = yoku
 	conflicts = yoku-bin
 	conflicts = yoku-git
