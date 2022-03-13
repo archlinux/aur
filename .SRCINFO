@@ -1,0 +1,12 @@
+pkgbase = stew
+	pkgdesc = An independent package manager for compiled binaries
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/marwanhawari/stew
+	arch = any
+	license = MIT
+	makedepends = go
+	source = stew-0.3.0.tar.gz::https://github.com/marwanhawari/stew/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 722a117a82cee93d610eee81144badcbf663570dd4a23a8211486c095837812a
+
+pkgname = stew
