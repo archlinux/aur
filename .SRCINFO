@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-colorbars-git
 	pkgdesc = Plugin for Vapoursynth: colorbars (GIT version)
-	pkgver = R2.1.g5250820
-	pkgrel = 2
+	pkgver = R3.1.g0e1f01b
+	pkgrel = 1
 	url = https://github.com/ifb/vapoursynth-colorbars
 	arch = x86_64
 	license = GPL
@@ -9,9 +9,8 @@ pkgbase = vapoursynth-plugin-colorbars-git
 	depends = vapoursynth
 	provides = vapoursynth-plugin-colorbars
 	conflicts = vapoursynth-plugin-colorbars
+	options = debug
 	source = colorbars::git+https://github.com/ifb/vapoursynth-colorbars.git
-	source = https://patch-diff.githubusercontent.com/raw/ifb/vapoursynth-colorbars/pull/8.diff
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-colorbars-git

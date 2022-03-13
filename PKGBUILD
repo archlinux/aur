@@ -2,8 +2,8 @@
 
 _plug=colorbars
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=R2.1.g5250820
-pkgrel=2
+pkgver=R3.1.g0e1f01b
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/ifb/vapoursynth-colorbars'
@@ -12,12 +12,9 @@ depends=('vapoursynth')
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
-source=("${_plug}::git+https://github.com/ifb/vapoursynth-${_plug}.git"
-        'https://patch-diff.githubusercontent.com/raw/ifb/vapoursynth-colorbars/pull/8.diff'
-        )
-sha256sums=('SKIP'
-            'SKIP'
-            )
+source=("${_plug}::git+https://github.com/ifb/vapoursynth-${_plug}.git")
+sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
@@ -26,8 +23,6 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  patch -d "${_plug}" -p1 -i "${srcdir}/8.diff"
 }
 
 build() {
