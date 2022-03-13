@@ -3,17 +3,17 @@
 # Contributor: Christian Holme <cholme at gmx dot com>
 
 pkgname=idlex
-pkgver=1.18
-pkgrel=2
+pkgver=1.22
+pkgrel=1
 pkgdesc="Extensions to IDLE, the Python IDE"
 arch=('any')
 url="http://idlex.sourceforge.net/"
 license=('NCSA')
-depends=('python')
+depends=('python' 'tk')
 options=(!emptydirs)
 source=($pkgname.desktop "https://downloads.sourceforge.net/project/idlex/$pkgname-$pkgver.zip")
 md5sums=('94c7662b5e4bf4bf94121a8f7c374d6d'
-         '9efbaa83eebb95a50369028fb00a1ab9')
+         'cdf84fea7b29be0bfb2f2f5012c1c52b')
 
 build() {
     cd "$pkgname-$pkgver"

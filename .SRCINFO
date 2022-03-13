@@ -1,16 +1,16 @@
 pkgbase = idlex
 	pkgdesc = Extensions to IDLE, the Python IDE
-	pkgver = 1.18
-	pkgrel = 2
+	pkgver = 1.22
+	pkgrel = 1
 	url = http://idlex.sourceforge.net/
 	arch = any
 	license = NCSA
 	depends = python
+	depends = tk
 	options = !emptydirs
 	source = idlex.desktop
-	source = https://downloads.sourceforge.net/project/idlex/idlex-1.18.zip
+	source = https://downloads.sourceforge.net/project/idlex/idlex-1.22.zip
 	md5sums = 94c7662b5e4bf4bf94121a8f7c374d6d
-	md5sums = 9efbaa83eebb95a50369028fb00a1ab9
+	md5sums = cdf84fea7b29be0bfb2f2f5012c1c52b
 
 pkgname = idlex
-
