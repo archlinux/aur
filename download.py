@@ -46,6 +46,7 @@ def wait_downloading():
         print("Waiting for download interrupted by timeout")
 
 
+print("Download start..")
 options = webdriver.FirefoxOptions()
 options.headless = True
 options.set_preference("browser.download.folderList", 2)
@@ -54,15 +55,18 @@ options.set_preference("browser.download.dir", os.getcwd())
 options.set_preference(
     "browser.helperApps.neverAsk.saveToDisk", "application/octet-stream")
 
-browser = webdriver.Firefox(options=options)
-browser.implicitly_wait(60)
+try:
+    browser = webdriver.Firefox(options=options)
+    browser.implicitly_wait(60)
 
-browser.get(
-    'https://supportportal.gemalto.com/csm?id=kb_article_view&sysparm_article=KB0018315#')
-browser.find_element(By.LINK_TEXT, "DOW0003342").click()
-sleep(10)
-browser.find_element(By.CSS_SELECTOR, ".btn-success").click()
+    browser.get(
+        'https://supportportal.gemalto.com/csm?id=kb_article_view&sysparm_article=KB0018315#')
+    browser.find_element(By.LINK_TEXT, "DOW0003342").click()
 
-wait_downloading()
+    browser.find_element(By.CSS_SELECTOR, ".btn-success").click()
+except:
+    pass
+else:
+    wait_downloading()
 
 browser.quit()

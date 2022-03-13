@@ -16,7 +16,7 @@ source=(
         "0001-patch.patch"
         "download.py")
 sha256sums=('6fcb6c4fcba1d01c1b3e68258e95297c323b2cbe8ee75c0a14ac0e9006926312'
-            'a3f8107436cb6242b040d2c761653685770bbbdb21e99f76daeb3629e2b95757')
+            'ad5b14c3eea8acd0195cd2d610958ada9eda05b152a09cf37fa08b934c70593b')
 makedepends=('libarchive'
             'python'
             'python-pip'
