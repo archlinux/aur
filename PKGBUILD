@@ -2,7 +2,7 @@
 
 _target=mips64el-linux-gnu
 pkgname="${_target}-binutils"
-pkgver=2.37
+pkgver=2.38
 pkgrel=1
 pkgdesc='Tools to assemble and manipulate binary and object files for the MIPS64EL target (for the toolchain with GNU C library and multilib ABI)'
 arch=('x86_64')
@@ -10,20 +10,17 @@ url='https://www.gnu.org/software/binutils/'
 license=('GPL')
 depends=('libelf' 'zlib')
 options=('!emptydirs' 'staticlibs' '!distcc' '!ccache')
-_patchver='f26867fe4daec7299f59a82ae4a0d70cceb3e082'
+_patchver='3dea562e9d615384cc5e786eff46ac1f8f41e18e'
 source=("https://ftp.gnu.org/gnu/binutils/binutils-${pkgver}.tar.xz"{,.sig}
-        "010-binutils-mips64-default-to-64-emulation-g${_patchver:0:7}.patch"::"https://raw.githubusercontent.com/openembedded/openembedded-core/${_patchver}/meta/recipes-devtools/binutils/binutils/0009-Change-default-emulation-for-mips64-linux.patch"
-        '020-binutils-build-fix.patch')
-sha256sums=('820d9724f020a3e69cb337893a0b63c2db161dadcb0e06fc11dc29eb1e84a32c'
+        "010-binutils-mips64-default-to-64-emulation-g${_patchver:0:7}.patch"::"https://raw.githubusercontent.com/openembedded/openembedded-core/${_patchver}/meta/recipes-devtools/binutils/binutils/0009-Change-default-emulation-for-mips64-linux.patch")
+sha256sums=('e316477a914f567eccc34d5d29785b8b0f5a10208d36bbacedcc39048ecfe024'
             'SKIP'
-            '2e0c71612d770d3b9531fa66211ac7ef810ddbe6253efe440ec1a069b08926b9'
-            '510296287d6e59b879e139e0b671ccc4d1ce5254b259a09dae4a20bacfe9cf63')
+            '2e0c71612d770d3b9531fa66211ac7ef810ddbe6253efe440ec1a069b08926b9')
 validpgpkeys=('3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F') # Nick Clifton
 
 prepare() {
     mkdir -p build
     patch -d "binutils-${pkgver}" -Np1 -i "${srcdir}/010-binutils-mips64-default-to-64-emulation-g${_patchver:0:7}.patch"
-    patch -d "binutils-${pkgver}" -Np1 -i "${srcdir}/020-binutils-build-fix.patch"
 }
 
 build() {
