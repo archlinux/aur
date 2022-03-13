@@ -1,0 +1,44 @@
+From bf2d69e857366267dc9cc710ba325db1b6940003 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sun, 13 Mar 2022 15:12:37 +0100
+Subject: [PATCH 2/2] ApprovalTests: fix path rewriting for debug builds
+
+---
+ tools/scripts/approvalTests.py | 20 +++++++++++++-------
+ 1 file changed, 13 insertions(+), 7 deletions(-)
+
+diff --git a/tools/scripts/approvalTests.py b/tools/scripts/approvalTests.py
+index 36bbdd2f..8b39679c 100755
+--- a/tools/scripts/approvalTests.py
++++ b/tools/scripts/approvalTests.py
+@@ -72,14 +72,20 @@ def diffFiles(fileA, fileB):
+ 
+ 
+ def normalizeFilepath(line):
+-    # Sometimes the path separators used by compiler and Python can differ,
+-    # so we try to match the path with both forward and backward path
+-    # separators, to make the paths relative to Catch2 repo root.
+-    forwardSlashPath = catchPath.replace('\\', '/')
+-    if forwardSlashPath in line:
++    # makepkg applies -ffile-prefix-map=, which rewrites all occurences of $srcdir to $dbgsrcdir
++    basePaths = [catchPath]
++    dbgsrcdir = os.getenv('dbgsrcdir')
++    if dbgsrcdir is not None:
++        basePaths.append(dbgsrcdir + '/Catch2')
++
++    for basePath in basePaths:
++        # Sometimes the path separators used by compiler and Python can differ,
++        # so we try to match the path with both forward and backward path
++        # separators, to make the paths relative to Catch2 repo root.
++        forwardSlashPath = basePath.replace('\\', '/')
+         line = line.replace(forwardSlashPath + '/', '')
+-    backwardSlashPath = catchPath.replace('/', '\\')
+-    if backwardSlashPath in line:
++
++        backwardSlashPath = basePath.replace('/', '\\')
+         line = line.replace(backwardSlashPath + '\\', '')
+ 
+     m = langFilenameParser.match(line)
+-- 
+2.35.1
+
