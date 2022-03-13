@@ -2,7 +2,7 @@
 
 _plug=bm3dcuda
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=2.6.1.gf9504cd
+pkgver=R2.6.1.gf9504cd
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -23,7 +23,7 @@ options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - . | tr -d R)"
+  echo "$(git describe --long --tags | tr - .)"
 }
 
 build() {
