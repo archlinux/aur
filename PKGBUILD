@@ -1,6 +1,6 @@
 # Maintainer: Christian Pfeiffer <cpfeiffer at live dot de>
 pkgname=libigl
-pkgver=2.3.0
+pkgver=2.4.0
 _pkgtag=$pkgver
 pkgrel=1
 pkgdesc="Simple C++ geometry processing library."
@@ -10,7 +10,7 @@ depends=('eigen')
 makedepends=('cmake')
 license=('GPL3')
 source=("$url/archive/v$pkgver.tar.gz")
-sha512sums=('41fbb3660e61457c3d6c52de4d17e0bfa56eb48eab82013c8095ce753c24ecff389365f91dbcf316cc422c09f713745251e32bddf4deff23fe5e428b9797da19')
+sha512sums=('f9e19c6d9a7fa2afe12c0a4042c3cc46606413d7f79b20e2464021fc0c5d9730e0ab2c192e5b4f161f3bc3a42a654929a2e77baac44c3eddad486f709cf909a1')
 
 prepare() {
 	mkdir -p "$srcdir/build-$_pkgtag"
