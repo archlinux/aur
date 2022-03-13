@@ -1,6 +1,6 @@
 pkgbase = termius-app
         pkgdesc = Desktop SSH Client
-        pkgver = 7.34.1
+        pkgver = 7.35.6
         pkgrel = 1
         url = https://termius.com/
         arch = x86_64
