@@ -1,4 +1,4 @@
-# Maintainer: Nico <d3sox at protonmail dot com>
+# Maintainer: Curve <curve.platin at gmail.com>
 pkgname=saucer-cli-git
 _gitname=saucer-cli
 pkgver=r7.4a6f1f8
@@ -29,5 +29,4 @@ build() {
 package() {
   # install binary
   install -Dm 755 "${srcdir}/$_gitname/build/saucer" "${pkgdir}/usr/bin/saucer"
-  mkdir -p "${pkgdir}/usr/bin/"
 }
