@@ -2,7 +2,7 @@
 # parts are based on [extra] packet 'kismet' -> https://www.archlinux.org/packages/extra/x86_64/kismet/
 
 pkgname=kismet-git
-pkgver=r9448.8a24a1eb
+pkgver=r11004.f8e5795a
 pkgrel=1
 pkgdesc="802.11 layer2 wireless network detector, sniffer, and intrusion detection system"
 url="https://www.kismetwireless.net/"
