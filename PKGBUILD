@@ -1,9 +1,9 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: Mikuro Kagamine <mikurok@forgecrushing.com>
 
 _plug=timecube
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r2a.0.gd3982b2
+pkgver=3.1.0.g22acabc
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -20,10 +20,11 @@ source=("${_plug}::git+https://github.com/sekrit-twc/${_plug}.git"
 sha256sums=('SKIP'
             'SKIP'
             )
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d r)"
 }
 
 prepare() {
