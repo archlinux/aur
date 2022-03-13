@@ -1,13 +1,13 @@
 pkgbase = port-bin
 	pkgdesc = A ship runner and manager for Urbit OS
-	pkgver = 1.7.1
+	pkgver = 1.8.0
 	pkgrel = 1
 	url = https://github.com/urbit/port
 	arch = x86_64
 	license = MIT
 	license = custom:chromium
 	conflicts = port
-	source = https://github.com/urbit/port/releases/download/v1.7.1/port-linux-x64-1.7.1.zip
-	sha512sums = 50b1d74a06014e27550c02e6818df4b0af37656a29bc6a2c2672a91996a981aa14e702ef5f34581c8a0da0b26c2154d5fdc4066e3c55d1a31e9609a15e3778fc
+	source = https://github.com/urbit/port/releases/download/v1.8.0/port-linux-x64-1.8.0.zip
+	sha512sums = f31be4eb6757a9732233bbe8e30184cd8b2934ba05716941d7fe71a8cfe859cf11fe0479d657dcca776afd1b19b6fc9999c34ad2cd1274a9385491a02d3eaa3c
 
 pkgname = port-bin
