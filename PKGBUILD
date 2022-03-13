@@ -1,8 +1,8 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=fmtconv
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r24.19.g67dab4a
+pkgver=28.11.g70414b2
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -14,22 +14,22 @@ provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("git+https://github.com/EleonoreMizo/${_plug}.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d r)"
 }
 
 prepare() {
-  cd "${_plug}"
-  rm -fr src/VapourSynth.h
-
-  cd build/unix
-  ./autogen.sh
+  rm -fr "${_plug}/src/VapourSynth.h"
 }
 
 build() {
   cd "${_plug}/build/unix"
+
+  ./autogen.sh
+
   CPPFLAGS+=" $(pkg-config --cflags vapoursynth)" \
   ./configure \
     --prefix=/usr \
