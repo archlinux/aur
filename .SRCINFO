@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-hdr2sdr-git
 	pkgdesc = Plugin for Vapoursynth: hdr2sdr (GIT version)
-	pkgver = r3
+	pkgver = r3.afc6b8d
 	pkgrel = 1
 	url = https://gist.github.com/4re
 	arch = any
