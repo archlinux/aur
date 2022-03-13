@@ -1,6 +1,6 @@
 # Maintainer: KspLite <ksplite@outlook.com>
 pkgname=64gram-desktop-bin
-pkgver=1.0.17
+pkgver=1.0.24
 pkgrel=1
 epoch=1
 pkgdesc="Unofficial desktop version of Telegram messaging app - binary version"
@@ -17,7 +17,7 @@ source=(
 	${url}/raw/dev/Telegram/Resources/art/icon{16,32,48,64,128,256,512}.png
 	"${url}/releases/download/v${pkgver}/64Gram_${pkgver}_linux.zip"
 )
-sha256sums=('f996d501e570a86d4383712642f40c6b696654a43fe5a1648d8fe66a958b5b60'
+sha256sums=('eb4eecddec493771d7c3c27a98acb9946cd501450acd9415167b3c2b790b1157'
             'ea1f36152b143cc2664daef5026656d55be2230ed42d43628e17ef7d2fff718c'
             '9e4180c78c895783b4559c5e1a7868a2c9aa30a29969fe5dbe9a4ce4cf5cde6c'
             '041b78681a35f07c3c929662fc66b6592c88588dc7297a5394ef7f923f2118e2'
@@ -25,7 +25,7 @@ sha256sums=('f996d501e570a86d4383712642f40c6b696654a43fe5a1648d8fe66a958b5b60'
             '731431e47a5bc91c697d25c3a54fe7ba004752f5b66e0f282c47588ff7a314e6'
             '3fb1400c7dc9bbc3b5cb3ffedcbf4a9b09c53e28b57a7ff33a8a6b9048864090'
             'e297771c75bd2f81d637a3234f83568be62092f67d16946be23895fa92fa7119'
-            'a789a4704d0e5bad67b3d35c619dff3433e694f347e793f26f2fc597b1e69c4e')
+            '8ce460f39bfd3c66c441415221b9d95ef9aa7a8ce42215a2c52828a92134aae4')
 
 package() {
 
