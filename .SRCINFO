@@ -1,6 +1,6 @@
 pkgbase = python-adb-enhanced
 	pkgdesc = Swiss-army knife for Android testing and development
-	pkgver = 2.5.13
+	pkgver = 2.5.14
 	pkgrel = 1
 	url = https://github.com/ashishb/adb-enhanced
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-adb-enhanced
 	depends = java-runtime
 	depends = python-psutil
 	depends = python-docopt
-	source = python-adb-enhanced-2.5.13.tar.gz::https://github.com/ashishb/adb-enhanced/archive/2.5.13.tar.gz
-	sha256sums = 46c5ed36e7f3c93eb73ac8b76b9189827150280874aedb6ffd95c55bb86a92cd
+	source = python-adb-enhanced-2.5.14.tar.gz::https://github.com/ashishb/adb-enhanced/archive/2.5.14.tar.gz
+	sha256sums = 0ce379b02be2023a29512f5cd923c6eeeb537858830b5e62c3f5c7e99f232954
 
 pkgname = python-adb-enhanced
