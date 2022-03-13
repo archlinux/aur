@@ -1,8 +1,8 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=tc2cfr
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v0.0.1.3.gf5f52f3
+pkgver=0.0.1.3.gf5f52f3
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -18,10 +18,11 @@ source=("git+https://github.com/gnaggnoyil/${_plug}.git"
 sha256sums=('SKIP'
             '6c9b13d19f757f6c741d58fc349a70f7450351db8c66210ab47ec4939ee026c0'
             )
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 prepare() {
