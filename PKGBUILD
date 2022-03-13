@@ -10,7 +10,7 @@ pkgname=(
 	#"rust-mailchecker"
 )
 _pkgname="mailchecker"
-pkgver="4.1.13"
+pkgver="4.1.14"
 pkgrel="1"
 pkgdesc='Cross-language email validation. Backed by a database of over 30 000 throwable email domains.'
 arch=('any')
@@ -18,7 +18,7 @@ url='https://github.com/FGRibreau/mailchecker/'
 license=('MIT')
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha256sums=(
-  'e089d993c0d499bd27a0d444e6c57f75703ce15ea6d178471a161ed1f5770aed'
+  'c00b6dec5754080a20a9fa1239de92c879caa50996c487baa9c91ced42bce0e2'
 )
 makedepends=(
 'python-setuptools'
