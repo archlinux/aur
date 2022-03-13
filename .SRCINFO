@@ -9,8 +9,8 @@ pkgbase = vapoursynth-plugin-dotkill-git
 	depends = vapoursynth
 	provides = vapoursynth-plugin-dotkill
 	conflicts = vapoursynth-plugin-dotkill
+	options = debug
 	source = dotkill::git+https://github.com/myrsloik/DotKill.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-dotkill-git
-
