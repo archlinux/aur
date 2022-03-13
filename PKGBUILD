@@ -1,7 +1,7 @@
 # maintainer: BrainDamage
 pkgname=helio-workstation
-pkgver=3.8
-pkgrel=6
+pkgver=3.9
+pkgrel=1
 pkgdesc="One music sequencer for all major platforms, desktop and mobile"
 arch=('x86_64')
 url="https://helio.fm/"
