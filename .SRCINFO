@@ -1,5 +1,5 @@
 pkgbase = aarch64-none-linux-gnu-gcc-10.3-bin
-	pkgdesc = GNU Cross Compilation Toolchain for AArch64 (GCC 9.2)
+	pkgdesc = GNU Cross Compilation Toolchain for AArch64 (GCC 10.3)
 	pkgver = 10.3
 	pkgrel = 2021.07
 	url = https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-a/downloads
