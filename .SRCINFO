@@ -1,6 +1,6 @@
 pkgbase = gtk3-ubuntu
 	pkgdesc = GObject-based multi-platform toolkit
-	pkgver = 3.24.31
+	pkgver = 3.24.33
 	pkgrel = 1
 	url = http://www.gtk.org/
 	arch = x86_64
@@ -42,20 +42,20 @@ pkgbase = gtk3-ubuntu
 	depends = shared-mime-info
 	depends = tracker3
 	depends = wayland
-	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=ab45bde94c7bbd140b12fa0dd6203f7b98d1a715
+	source = git+https://gitlab.gnome.org/GNOME/gtk.git#commit=8ff9b2f83ff491cbfcbf9b30c706bd917679e7cc
 	source = gtk-query-immodules-3.0.hook
 	source = add_ubuntu_headers_to_meson_build.patch
-	source = https://launchpad.net/ubuntu/+archive/primary/+files/gtk+3.0_3.24.23-1ubuntu1.debian.tar.xz
+	source = https://launchpad.net/ubuntu/+archive/primary/+files/gtk+3.0_3.24.32-0ubuntu1.debian.tar.xz
 	sha256sums = SKIP
 	sha256sums = de46e5514ff39a7a65e01e485e874775ab1c0ad20b8e94ada43f4a6af1370845
 	sha256sums = 5d283c23657a2301fec22cec5130ea7d5edb659e0e50e7a2a5e87fea234893af
-	sha256sums = 7c4626cdc2112bd00e806cb3b1aae5c4dc557b9af1804f2e59b24eb95b255760
+	sha256sums = 92202444872319ed2fcfde966b6229b3e280d67adf22d07ed625eb794c770c3b
 
 pkgname = gtk3-ubuntu
 	install = gtk3.install
 	optdepends = evince: Default print preview command
-	provides = gtk3=3.24.31
-	provides = gtk3-print-backends=3.24.31
+	provides = gtk3=3.24.33
+	provides = gtk3-print-backends=3.24.33
 	provides = libgtk-3.so
 	provides = libgdk-3.so
 	provides = libgailutil-3.so
