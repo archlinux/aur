@@ -1,6 +1,6 @@
 pkgbase = influxdb-cli
 	pkgdesc = InfluxDB command line interface
-	pkgver = 1.8.4
+	pkgver = 2.1.1
 	pkgrel = 1
 	url = https://github.com/InfluxData/influxdb
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = influxdb-cli
 	makedepends = xmlto
 	makedepends = dep
 	conflicts = influxdb
-	source = influxdb-cli-1.8.4.tar.gz::https://github.com/influxdata/influxdb/archive/v1.8.4.tar.gz
+	source = influxdb-cli-2.1.1.tar.gz::https://github.com/influxdata/influxdb/archive/v2.1.1.tar.gz
 	source = fix-go114.patch::https://github.com/Foxboron/influxdb/commit/f8453b48862b50fe44021e320332f75e32457f29.patch
 	source = fix-go115.patch::https://github.com/influxdata/influxdb/commit/3a03ad500a4b2bba65a4af74995ad54e88de7210.patch
 	sha256sums = 9f2c135c8f9f50ca469196e6b4e575e26f1a338538788e71b664212e03b4df7b
