@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-remapframes-git
 	pkgdesc = Plugin for Vapoursynth: remapframes (GIT version)
-	pkgver = v1.1.0.g4676f0d
+	pkgver = 1.1.0.g4676f0d
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=174727
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = vapoursynth-plugin-remapframes-git
 	depends = vapoursynth
 	provides = vapoursynth-plugin-remapframes
 	conflicts = vapoursynth-plugin-remapframes
+	options = debug
 	source = remapframes::git+https://github.com/Irrational-Encoding-Wizardry/Vapoursynth-RemapFrames.git
 	sha256sums = SKIP
 
