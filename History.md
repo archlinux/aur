@@ -1,4 +1,56 @@
 
+uuu_1.4.165 / 2021-09-28
+========================
+
+  * Fixed new line in help and minor typos
+
+1.4.164 / 2021-09-24
+====================
+
+  * fixed assert when use wic file, instead wic.bz2
+
+1.4.163 / 2021-09-20
+====================
+
+  * fix linux build failure
+  * fix 8mp ROMAPI download size is wrong when extract from wic file
+  * sdp just request 8M data
+  * sdps can return failure early when wic have not include terminate tags
+  * Add support extract boot loader from wic image
+  * fix buildin script bz2 have not replaced with bz2\* if path included space
+  * fix build error at vs2017
+  * Fix formatting
+  * Add 'upload' fastboot command support
+  * fixed #284: deadloop when using built-in script with filename include _
+  * jump command -ivt should be flow 0
+  * fix block SDPV: write -f u-boot.itb
+  * Fix sdp jump command ivt implement to support uboot plugin
+  * Fix some spelling errors
+  * issue #278 - instructions for out of source build
+
+uuu_1.4.149 / 2021-08-03
+========================
+
+  * CMake: Support version 3.4 again
+  * Fix a potential crash if open usb device 400ms after detect attached
+  * retry open usb device at windows platform
+  * Increase const'ness of built-in scripts
+  * Utilize regular expression to detect arguments
+  * Minor adjustments all around the code
+  * Reduce visibility where applicable
+  * Spread some const around buildincmd
+  * Rename member variables too
+  * Rename classes and move Arg into BuiltInScript
+  * Completely document buildincmd
+  * Reorder buildincmd.h
+  * Move definitions into source file
+  * Do not introduce namespace std in buildincmd.h
+  * fixed #274 struct stat64 is deprecated on macOS
+  * add bcd version check
+  * Add basic if and error cmd support
+  * Fix a build warning
+  * try fix uuu return success even ucp failure
+
 uuu_1.4.139 / 2021-06-02
 ========================
 
