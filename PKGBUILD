@@ -2,16 +2,16 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 # Arch Linux kernel source
-_ver=5.15.arch1
+_ver=5.16.arch1
 _srcname=archlinux-linux
 _srcurl="https://github.com/archlinux/linux.git"
 # Bcachefs kernel source
-_bcachefstag=v5.15
+_bcachefstag=v5.16
 _bcachefsname=bcachefs-linux
 _bcachefsurl="https://evilpiepirate.org/git/bcachefs.git"
 
 pkgbase=linux-simple-bcachefs-git
-pkgver=5.15.arch1.r1022
+pkgver=5.16.arch1.r1232
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${_ver%.*}-${_ver##*.}
@@ -25,7 +25,7 @@ makedepends=(
 options=('!strip')
 source=(config         # the main kernel config file
 )
-sha256sums=('8a0bdb434ac26c16e3a96f127d68c5585f3c33ee9ed01e12a33e3a36889c9aeb'
+sha256sums=('7cbba374356a189faac71001c5344ce8f02434684b1ce1accefc0cc4bd6718e5'
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -159,11 +159,11 @@ _package-headers() {
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
+  # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
