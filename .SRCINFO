@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-lib-libp2p-git
 	pkgdesc = Library for Vapoursynth: libp2p (GIT version)
-	pkgver = r2.1.g770cc31
+	pkgver = 2.1.g770cc31
 	pkgrel = 1
 	url = https://github.com/DJATOM/LibP2P-Vapoursynth
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = vapoursynth-lib-libp2p-git
 	depends = vapoursynth
 	provides = vapoursynth-lib-libp2p
 	conflicts = vapoursynth-lib-libp2p
+	options = debug
 	source = libp2p::git+https://github.com/DJATOM/LibP2P-Vapoursynth.git
 	sha256sums = SKIP
 

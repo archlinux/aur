@@ -2,7 +2,7 @@
 
 _plug=libp2p
 pkgname=vapoursynth-lib-${_plug}-git
-pkgver=r2.1.g770cc31
+pkgver=2.1.g770cc31
 pkgrel=1
 pkgdesc="Library for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -16,10 +16,11 @@ provides=("vapoursynth-lib-${_plug}")
 conflicts=("vapoursynth-lib-${_plug}")
 source=("${_plug}::git+https://github.com/DJATOM/LibP2P-Vapoursynth.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d r)"
 }
 
 prepare() {
