@@ -12,6 +12,7 @@ ExecStart=/usr/bin/woodpecker-server
 RestartSec=5
 Restart=on-failure
 SyslogIdentifier=woodpecker-server
+WorkingDirectory=/var/lib/woodpecker
 
 [Install]
 WantedBy=multi-user.target
