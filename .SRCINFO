@@ -1,6 +1,6 @@
 pkgbase = foosynth-plugin-delogohd-git
 	pkgdesc = Plugin for Vapoursynth: delogohd (Dual interface for Vapoursynth/Avisynth) (GIT version)
-	pkgver = r12.0.g7e39809
+	pkgver = 12.0.g7e39809
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=176658
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = foosynth-plugin-delogohd-git
 	makedepends = vapoursynth
 	makedepends = avisynthplus
 	depends = gcc-libs
+	options = debug
 	source = delogohd::git+https://github.com/HomeOfAviSynthPlusEvolution/DelogoHD.git
 	sha256sums = SKIP
 

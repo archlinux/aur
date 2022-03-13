@@ -5,7 +5,7 @@ pkgbase="foosynth-plugin-${_plug}-git"
 pkgname=("avisynth-plugin-${_plug}-git"
          "vapoursynth-plugin-${_plug}-git"
          )
-pkgver=r12.0.g7e39809
+pkgver=12.0.g7e39809
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
@@ -19,10 +19,11 @@ makedepends=('git'
              )
 source=("${_plug}::git+https://github.com/HomeOfAviSynthPlusEvolution/DelogoHD.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d r)"
 }
 
 prepare() {
@@ -31,19 +32,18 @@ prepare() {
   # unbundled
   rm -fr include/{VapourSynth,VSHelper,avisynth}.h
   rm -fr include/avs
-
+  
   mkdir -p build
-
 }
 
 build() {
   cd "${_plug}/build"
-  cmake .. \
+  cmake -S .. -B . \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_CXX_FLAGS="${CXXFLAGS} $(pkg-config --cflags vapoursynth avisynth)"
 
-  make
+  cmake --build .
 }
 
 package_avisynth-plugin-delogohd-git() {
