@@ -1,7 +1,7 @@
 pkgbase = melonds
 	pkgdesc = DS emulator, sorta
 	pkgver = 0.9.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://melonds.kuribo64.net/
 	arch = x86_64
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = melonds
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
+	makedepends = git
 	makedepends = cmake
 	makedepends = pkg-config
 	depends = libepoxy
