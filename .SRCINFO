@@ -1,0 +1,17 @@
+pkgbase = pkgdl
+	pkgdesc = Simple script making simultaneously downloading packages from various sources a breeze
+	pkgver = 1.0.r3
+	pkgrel = 1
+	url = https://gitlab.com/qYp/pkgdl
+	arch = x86_64
+	license = MIT
+	depends = paru
+	optdepends = npm: To download node packages
+	optdepends = snapd: To install snap packages
+	optdepends = flatpak: To install flatpak packages
+	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/pkgdl-1.0.r3-1-x86_64.pkg.tar.zst
+	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/pkgdl-1.0.r3-1-x86_64.pkg.tar.zst.sig
+	sha256sums = b91949cd6e5753da0ccd68c91f33d2e8c41a411ad811c2734955776ec23df9b2
+	sha256sums = 954f5d75e18681921528c360f5b0b19dac484ee4755b4fcaf990d574e25eb49a
+
+pkgname = pkgdl
