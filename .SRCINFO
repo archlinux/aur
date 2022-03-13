@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-warpsharpsupport-git
 	pkgdesc = Plugin for Vapoursynth: warpsharpsupport (GIT version)
-	pkgver = R1.0.g42f3b5e
-	pkgrel = 3
+	pkgver = 1.0.g42f3b5e
+	pkgrel = 1
 	url = https://github.com/myrsloik/WarpSharpSupport.git
 	arch = any
 	license = GPL

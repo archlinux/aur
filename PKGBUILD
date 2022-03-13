@@ -1,9 +1,9 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=warpsharpsupport
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=R1.0.g42f3b5e
-pkgrel=3
+pkgver=1.0.g42f3b5e
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/myrsloik/WarpSharpSupport.git'
@@ -19,7 +19,7 @@ _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["pure
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d R)"
 }
 
 package() {
