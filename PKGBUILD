@@ -2,7 +2,7 @@
 # Contributor: Jeremy Symon <jtsymon@gmail.com>
 
 pkgname=itch-setup-git
-pkgver=1.24.0.r18.gc718b87
+pkgver=1.26.0.r12.gc718b87
 pkgrel=1
 pkgdesc="Installer for the itch.io desktop app"
 arch=(x86_64)
@@ -25,7 +25,7 @@ options=(!lto)
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
