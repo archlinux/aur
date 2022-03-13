@@ -1,8 +1,8 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=iccconvert
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=3.2.5.gfb1e7da
+pkgver=4.0.1.gf8ff065
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -24,6 +24,7 @@ source=("${_plug}::git+https://github.com/YomikoR/VapourSynth-ICCConvert.git"
 sha256sums=('SKIP'
             'SKIP'
             )
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
