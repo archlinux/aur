@@ -1,7 +1,7 @@
 pkgbase = foosynth-plugin-knlmeanscl-git
 	pkgdesc = Plugin for Vapoursynth: knlmeanscl (GIT version)
 	pkgver = 1.1.1.r571.c4af339
-	pkgrel = 1
+	pkgrel = 2
 	url = https://forum.doom9.org/showthread.php?t=171379
 	arch = x86_64
 	license = GPL3
@@ -14,6 +14,7 @@ pkgbase = foosynth-plugin-knlmeanscl-git
 	depends = opencl-icd-loader
 	provides = vapoursynth-plugin-knlmeanscl
 	conflicts = vapoursynth-plugin-knlmeanscl
+	options = debug
 	source = knlmeanscl::git+https://github.com/pinterf/KNLMeansCL.git
 	sha256sums = SKIP
 

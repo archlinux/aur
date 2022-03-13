@@ -6,7 +6,7 @@ pkgname=("avisynth-plugin-${_plug}-git"
          "vapoursynth-plugin-${_plug}-git"
         )
 pkgver=1.1.1.r571.c4af339
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=171379'
@@ -23,6 +23,7 @@ conflicts=("vapoursynth-plugin-${_plug}")
 provides=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/pinterf/KNLMeansCL.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
