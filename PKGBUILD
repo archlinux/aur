@@ -1,8 +1,8 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=temporalsoften
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v1.0.0.g36a94c0
+pkgver=1.0.0.g36a94c0
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -17,19 +17,19 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 prepare() {
   mkdir -p build
-
-  cd "${_plug}"
-  ./autogen.sh
 }
 
 build() {
-  cd build
-  ../"${_plug}"/configure \
+  cd "${_plug}"
+  ./autogen.sh
+
+  cd "${srcdir}/build"
+  "../${_plug}/configure" \
     --prefix=/usr \
     --libdir=/usr/lib/vapoursynth
 
