@@ -2,7 +2,7 @@
 
 _plug=astdr
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v3.1.g29c34ac
+pkgver=3.1.g29c34ac
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -30,7 +30,7 @@ _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["pure
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 package(){
