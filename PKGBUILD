@@ -4,16 +4,17 @@
 _arch=aarch64
 _target=$_arch-unknown-linux-gnu
 pkgname=$_arch-binutils
-pkgver=2.37
-pkgrel=2
+pkgver=2.38
+pkgrel=1
 pkgdesc='A set of programs to assemble and manipulate binary and object files for the ARM64 target'
 arch=('x86_64')
 url='https://www.gnu.org/software/binutils/'
 license=(GPL)
 depends=('zlib' 'elfutils')
 source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig})
-sha256sums=('820d9724f020a3e69cb337893a0b63c2db161dadcb0e06fc11dc29eb1e84a32c'
+sha256sums=('e316477a914f567eccc34d5d29785b8b0f5a10208d36bbacedcc39048ecfe024'
           'SKIP')
+
 validpgpkeys=(3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F)
 
 build() {
