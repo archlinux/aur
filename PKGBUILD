@@ -1,5 +1,5 @@
 # Maintainer:  Dave <orangechannel@pm.me>
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=acsuite
 pkgname=vapoursynth-tools-${_plug}-git
@@ -13,7 +13,8 @@ depends=('vapoursynth'
          'ffmpeg'
          )
 makedepends=('git'
-             'python-setuptools'
+             'python-pip'
+             'python-wheel'
              )
 provides=("vapoursynth-tools-${_plug}"
           "vapoursynth-plugin-${_plug}-git"
@@ -24,16 +25,19 @@ conflicts=("vapoursynth-tools-${_plug}"
 source=("${_plug}::git+https://github.com/OrangeChannel/acsuite.git")
 sha256sums=('SKIP')
 
-# _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
-
 pkgver() {
   cd "${_plug}"
   git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
-package(){
+build() {
   cd "${_plug}"
-  python setup.py install --root="$pkgdir/" --optimize=1
+  pip wheel --no-deps . -w dist
+}
+
+package() {
+  cd "${_plug}"
+  pip install -I --root "${pkgdir}" --no-warn-script-location --no-deps dist/*.whl
 
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/tools/${_plug}/README.md"
   install -Dm644 UNLICENSE "${pkgdir}/usr/share/licenses/${pkgname}/UNLICENSE"
