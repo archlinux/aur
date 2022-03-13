@@ -2,7 +2,7 @@
 # https://aur.archlinux.org/packages/port-bin/
 
 pkgname=port
-pkgver=1.7.1
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="A ship runner and manager for Urbit OS"
 arch=("x86_64")
@@ -16,6 +16,7 @@ sha512sums=("SKIP")
 package() {
 	pushd "$srcdir"/port
 	yarn
+	#npx electron-rebuild@latest
 	npx electron-rebuild
 	yarn make --targets=@electron-forge/maker-zip
 	popd
