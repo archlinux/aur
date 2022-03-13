@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-bilateralgpu-git
 	pkgdesc = Plugin for Vapoursynth: bilateralgpu (GIT version)
-	pkgver = r8.0.g1661823
+	pkgver = 8.5.g5b10bd2
 	pkgrel = 1
 	url = https://github.com/WolframRhodium/VapourSynth-BilateralGPU
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = vapoursynth-plugin-bilateralgpu-git
 	depends = nvidia-utils
 	provides = vapoursynth-plugin-bilateralgpu
 	conflicts = vapoursynth-plugin-bilateralgpu
+	options = debug
 	source = bilateralgpu::git+https://github.com/WolframRhodium/VapourSynth-BilateralGPU.git
 	sha256sums = SKIP
 
