@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-knlm-git
 	pkgdesc = Plugin for Vapoursynth: knlm (GIT version)
-	pkgver = r4
+	pkgver = r4.7e359a8
 	pkgrel = 1
 	url = https://gist.github.com/4re
 	arch = any
