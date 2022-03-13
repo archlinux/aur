@@ -12,7 +12,8 @@ pkgbase = onedrive
 	depends = glibc
 	depends = sqlite
 	source = onedrive-1.1.4.tar.gz::https://github.com/skilion/onedrive/archive/v1.1.4.tar.gz
+	source = https://github.com/skilion/onedrive/commit/8001e1c025ddd6c2532b03305c59e407457d059b.patch
 	sha256sums = c6ef18c5798ce70c32843f2bed73600af5ad342fd20239c973887e9e751a35b6
+	sha256sums = 9c744314c920a73a5997fa861187b097964e47cb44ce47ff45ffebff8346fc8b
 
 pkgname = onedrive
-

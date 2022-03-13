@@ -10,12 +10,17 @@ url='https://github.com/skilion/onedrive'
 license=('GPL3')
 depends=('curl' 'gcc-libs' 'glibc' 'sqlite')
 makedepends=('dmd')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/skilion/onedrive/archive/v$pkgver.tar.gz")
-sha256sums=('c6ef18c5798ce70c32843f2bed73600af5ad342fd20239c973887e9e751a35b6')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/skilion/onedrive/archive/v$pkgver.tar.gz"
+        'https://github.com/skilion/onedrive/commit/8001e1c025ddd6c2532b03305c59e407457d059b.patch')
+sha256sums=('c6ef18c5798ce70c32843f2bed73600af5ad342fd20239c973887e9e751a35b6'
+            '9c744314c920a73a5997fa861187b097964e47cb44ce47ff45ffebff8346fc8b')
 
 prepare() {
-  printf 'v%s\n' "$pkgver" > $pkgname-$pkgver/version
-  sed -i '/^onedrive:/ s/version //' $pkgname-$pkgver/Makefile
+  cd $pkgname-$pkgver
+
+  printf 'v%s\n' "$pkgver" > version
+  sed -i '/^onedrive:/ s/version //' Makefile
+  patch -Np 1 < ../8001e1c025ddd6c2532b03305c59e407457d059b.patch
 }
 
 build() {
