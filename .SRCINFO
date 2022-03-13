@@ -8,7 +8,7 @@ pkgbase = concise-keyring
 	makedepends = git
 	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/concise-keyring-1.0.2-1-any.pkg.tar.zst
 	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/concise-keyring-1.0.2-1-any.pkg.tar.zst.sig
-	md5sums = 2946c1d65244eac4076b9a0b1069d8d9
-	md5sums = 20541511c9a0f3fa1967f9c56b76389f
+	sha256sums = 39d84cbb8f8015e30973d61560235c29029b70d1be7a3d5257b727b112e1e684
+	sha256sums = b385831574ba7bbd0f7a55843407feea1103efb11d6c1539eab2711ccb6e3228
 
 pkgname = concise-keyring
