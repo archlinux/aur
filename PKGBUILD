@@ -3,7 +3,7 @@
 
 _pkgname='rapidfuzz'
 pkgname="python-${_pkgname}"
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc='Rapid fuzzy string matching in Python and C++ using the Levenshtein Distance'
 arch=('x86_64')
@@ -18,7 +18,7 @@ makedepends=(
 )
 optdepends=('python-numpy')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('b926bca71a113ab8fc91bd03609f0f1836159be0d201e76070132a75e88c2be3')
+sha256sums=('93bf42784fd74ebf1a8e89ca1596e9bea7f3ac4a61b825ecc6eb2d9893ad6844')
 
 build() {
   cd "${_pkgname}-${pkgver}"
@@ -31,8 +31,6 @@ build() {
 package() {
   cd "${_pkgname}-${pkgver}"
   python setup.py --skip-cmake install --root="$pkgdir" --optimize=1 --skip-build
-  # remove unnecessary files (upstream issue #201)
-  rm -r "$pkgdir/usr/include" "$pkgdir/usr/lib/cmake"
 
   install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
