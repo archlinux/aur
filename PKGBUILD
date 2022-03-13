@@ -24,7 +24,7 @@ sha256sums_aarch64=("b5239d1fd729f5c0293e49ac9abc1026549edc0bc8d3ecfffe25143bdc5
 
 package() {
   cd "${srcdir}"
-  
+
   # Install binary
   install -Dm0755 melonDS "${pkgdir}/usr/bin/melonDS"
 
