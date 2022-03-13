@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-dctfilter-git
 	pkgdesc = Plugin for Vapoursynth: dctfilter (GIT version)
-	pkgver = r2.1.1.g3c9cbea
+	pkgver = 2.1.1.g3c9cbea
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=171039
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = vapoursynth-plugin-dctfilter-git
 	depends = fftw
 	provides = vapoursynth-plugin-dctfilter
 	conflicts = vapoursynth-plugin-dctfilter
+	options = debug
 	source = dctfilter::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-DCTFilter.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-dctfilter-git
-
