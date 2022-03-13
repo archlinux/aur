@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-ccd-git
 	pkgdesc = Plugin for Vapoursynth: ccd (GIT version)
-	pkgver = v0.3.1.5.g4256058
+	pkgver = 0.3.1.5.g4256058
 	pkgrel = 1
 	url = https://github.com/End-of-Eternity/vs-ccd
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = vapoursynth-plugin-ccd-git
 	depends = vapoursynth
 	provides = vapoursynth-plugin-ccd
 	conflicts = vapoursynth-plugin-ccd
+	options = debug
 	source = ccd::git+https://github.com/End-of-Eternity/vs-ccd.git
 	sha256sums = SKIP
 
