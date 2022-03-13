@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 _use_suffix=1
-pkgver=16.0.10
-_commit=b9f411220987e60e5cffbbabc832265675ed51f6
+pkgver=16.1.0
+_commit=5a4bdde636734a0675fdd1a858543df1d0c08d96
 _chromiumver=96.0.4664.174
 _gcc_patchset=4
 # shellcheck disable=SC2034
@@ -28,7 +28,8 @@ depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libxslt' 'minizip' 'nss' 're2'
 # shellcheck disable=SC2034
 makedepends=('clang' 'git' 'gn' 'gperf' 'harfbuzz-icu' 'http-parser'
              'java-runtime-headless' 'jsoncpp' 'libnotify' 'lld' 'llvm' 'ninja'
-             'npm' 'pciutils' 'pipewire' 'python' 'wget' 'yarn')
+             'npm' 'pciutils' 'pipewire' 'python' 'python-httplib2' 'wget'
+             'python-pyparsing' 'python-six' 'yarn')
 # shellcheck disable=SC2034
 optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'libappindicator-gtk3: StatusNotifierItem support'
