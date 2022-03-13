@@ -1,7 +1,7 @@
 # Maintainer: nontlikeuname
 
 pkgname=meson-git
-pkgver=0.55.0.r73.6006987ce
+pkgver=0.62.0rc1.r19.69ade4f4
 pkgrel=1
 pkgdesc="SCons-like build system that use python as a front-end language and Ninja as a building backend"
 arch=(any)
@@ -28,7 +28,6 @@ package() {
   for _f in data/syntax-highlighting/vim/*/*; do
     install -Dt "${pkgdir}/usr/share/vim/vimfiles/$(basename "$(dirname "$_f")")" -m644 "$_f"
   done
-  install -Dt "${pkgdir}/usr/share/emacs/site-lisp" -m644 data/syntax-highlighting/emacs/*
   install -Dt "${pkgdir}/usr/share/zsh/site-functions" -m644 data/shell-completions/zsh/*
 
   # Arch packaging helper
