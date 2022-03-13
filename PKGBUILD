@@ -2,7 +2,7 @@
 
 _target=mips64el-linux-gnu
 pkgname="${_target}-glibc"
-pkgver=2.34
+pkgver=2.35
 pkgrel=1
 pkgdesc='GNU C library for the MIPS64EL target with multilib ABI'
 arch=('any')
@@ -10,11 +10,11 @@ url='https://www.gnu.org/software/libc/'
 license=('GPL' 'LGPL')
 depends=("${_target}-linux-api-headers")
 makedepends=("${_target}-gcc-bootstrap" 'python')
-options=('!emptydirs' '!strip' 'staticlibs')
+options=('!emptydirs' '!strip' 'staticlibs' '!lto')
 source=("https://ftp.gnu.org/gnu/glibc/glibc-${pkgver}.tar.xz"{,.sig}
         'sdt-config.h'
         'sdt.h')
-sha256sums=('44d26a1fe20b8853a48f470ead01e4279e869ac149b195dda4e44a195d981ab2'
+sha256sums=('5123732f6b67ccd319305efd399971d58592122bcc2a6518a1bd2510dd0cf52e'
             'SKIP'
             'cdc234959c6fdb43f000d3bb7d1080b0103f4080f5e67bcfe8ae1aaf477812f0'
             '774061aff612a377714a509918a9e0e0aafce708b87d2d7e06b1bd1f6542fe70')
@@ -42,7 +42,7 @@ prepare() {
 build() {
     # when using --enable-static-pie:
     # configure: error: the architecture does not support static PIE
-    # (independently if gcc/gcc-bootstrap was configure with or wihtout default-pie)
+    # (independently if gcc/gcc-bootstrap was configured with or wihtout default-pie)
     
     local _configure_flags=(
         "--build=${CHOST}"
