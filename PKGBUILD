@@ -1,7 +1,7 @@
 # Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=smoothuv
-pkgname="vapoursynth-plugin-${_plug}-git"
+pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=2.1.gd75886e
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
