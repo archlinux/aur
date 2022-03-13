@@ -1,8 +1,8 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=mvsfunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v10.r64.b9218ff
+pkgver=10.r64.b9218ff
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -22,7 +22,7 @@ _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["pure
 pkgver() {
   cd "${_plug}"
   _ver="$(cat mvsfunc.py | grep -m1 MvsFuncVersion | grep -o "[[:digit:]]*")"
-  echo "v${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  echo "${_ver}.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 package() {
