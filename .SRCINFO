@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-vshelpers-git
 	pkgdesc = Plugin for Vapoursynth: vshelpers (GIT version)
-	pkgver = r2
-	pkgrel = 3
+	pkgver = r2.87a0135
+	pkgrel = 1
 	url = https://gist.github.com/4re
 	arch = any
 	license = GPL
