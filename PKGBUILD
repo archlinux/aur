@@ -1,6 +1,6 @@
 pkgname=blhelisuite32-bin
 _pkgname=blhelisuite32
-pkgver=1.0.3.2
+pkgver=1.0.3.6
 pkgrel=1
 pkgdesc="Configuration tool for BLHeli_32 based ESCs"
 arch=('x86_64')
@@ -14,8 +14,8 @@ conflicts=("${_pkgname}")
 
 # Check Google Drive folder: https://drive.google.com/drive/folders/1Y1bUMnRRolmMD_lezL0FYd3aMBrNzCig
 # Right click the corresponding file and select "Copy Link" to obtain the sharing link.
-GDRIVENAME="BLHeliSuite32xLinux64_1032.zip"
-GDRIVELINK="https://drive.google.com/file/d/1lKL-eiQFpUT3HEED4d2JKDW_mz4YWTHW/view?usp=sharing"
+GDRIVENAME="BLHeliSuite32xLinux64_1036.zip"
+GDRIVELINK="https://drive.google.com/file/d/1ksKBeeaEk_m-9pRudMHiKz6f8Bw008Qf/view?usp=sharing"
 
 # Files larger than 25MB requires confirmation key from cookie.
 GDRIVELINK="https://drive.google.com/uc?export=download&id=$(echo "$GDRIVELINK" | cut -d'/' -f 6)"
@@ -27,7 +27,7 @@ if [ -n "$CONFIRMKEY" ] ; then
 fi
 
 source=("$GDRIVENAME::$GDRIVELINK")
-sha256sums=('06e5fb5851fe7358d9af2112c12fbaa9b7777698db7757ccbd455c9aabe1a07b')
+sha256sums=('b0751b756be0ffa2681083fbb22b9c3f7a88d976013c12523081feca7441cc06')
 
 package() {
   mkdir -p "${pkgdir}/opt/${_pkgname}"
