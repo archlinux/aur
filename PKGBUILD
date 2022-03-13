@@ -2,7 +2,7 @@
 
 _plug=curve
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r1.0.g75b8e93
+pkgver=3.0.g5edf283
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT Version)"
 arch=('x86_64')
@@ -16,10 +16,11 @@ provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-Curve.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d r)"
 }
 
 prepare() {
