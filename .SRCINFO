@@ -1,15 +1,13 @@
 pkgbase = dosbox-x
 	pkgdesc = x86 emulator with builtin DOS, with patches with more features
 	pkgver = 0.83.23
-	pkgrel = 3
+	pkgrel = 4
 	url = http://dosbox-x.com
 	arch = i686
 	arch = x86_64
 	arch = aarch64
 	license = GPL
 	makedepends = glu
-	makedepends = libpcap
-	makedepends = libslirp
 	depends = fluidsynth
 	depends = libxkbfile
 	depends = libpng
