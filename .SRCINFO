@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-matchhistogram-git
 	pkgdesc = Plugin for Vapoursynth: matchhistogram (Fork)(GIT version)
-	pkgver = v2.0.g8deffae
+	pkgver = 2.0.g8deffae
 	pkgrel = 1
 	url = https://github.com/dubhater/vapoursynth-matchhistogram
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = vapoursynth-plugin-matchhistogram-git
 	depends = vapoursynth
 	provides = vapoursynth-plugin-matchhistogram
 	conflicts = vapoursynth-plugin-matchhistogram
+	options = debug
 	source = matchhistogram::git+https://github.com/dubhater/vapoursynth-matchhistogram.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-matchhistogram-git
-
