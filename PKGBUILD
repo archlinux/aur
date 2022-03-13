@@ -7,6 +7,7 @@ pkgname=("${pkgbase}-git"
          "${pkgbase}-client-git"
          "${pkgbase}-client-light-git"
          "${pkgbase}-core-git"
+         "${pkgbase}-common-git"
         )
 
 pkgver=0.14.0
@@ -80,6 +81,7 @@ build() {
 }
 
 _build() {
+  [[ $1 == common-git ]] && ln -sf git common-git && return 0
   local -n _build_opts="_build_${1//-/_}"
   if ((${#_build_opts[@]} == 0));then
     error 'No build option configured: %s' "$pkgbase-$1"
@@ -101,56 +103,69 @@ _build() {
 }
 
 _install() {
-  make -C "${FUNCNAME[1]#package_$pkgbase-*}" DESTDIR="$1" install
+  make -C "${pkgname#$pkgbase-*}" DESTDIR="$pkgdir" install
+  case "${pkgname#$pkgbase-*}" in
+    common*) rm -rf "$pkgdir/usr"/{bin,lib,share/applications} ;;
+    *) rm -rf "$pkgdir/usr/share"/{icons,knotifications5,quassel} ;;
+  esac
+}
+
+package_quassel-common-git() {
+  depends=('hicolor-icon-theme')
+  pkgdesc='Common files for Quassel'
+  provides=("${pkgbase}-common")
+  conflicts=("${pkgbase}-common")
+
+  _install
 }
 
 package_quassel-client-git() {
 
-  depends=('hicolor-icon-theme' 'knotifyconfig' 'qt5-base' 'qt5-webkit')
+  depends=("${pkgbase}-common-git" 'knotifyconfig' 'qt5-base' 'qt5-webkit')
   pkgdesc='KDE-based distributed IRC client (client only)'
-  provides=('quassel-client')
-  conflicts=('quassel-client')
+  provides=("${pkgbase}-client")
+  conflicts=("${pkgbase}-client")
 
-  _install "$pkgdir"
+  _install
 }
 
 package_quassel-client-light-git() {
  
   pkgdesc='Qt-based distributed IRC client (client only, w/o kde deps)'
-  depends=('hicolor-icon-theme' 'qt5-base')
-  provides=('quassel-client')
-  conflicts=('quassel-client')
+  depends=("${pkgbase}-common-git" 'qt5-base')
+  provides=("${pkgbase}-client")
+  conflicts=("${pkgbase}-client")
 
-  _install "$pkgdir"
+  _install
 }
 
 package_quassel-core-git() {
 
   pkgdesc='KDE/Qt-based distributed IRC client (core only)'
   depends=('icu' 'qca' 'qt5-script')
-  provides=('quassel-core')
-  conflicts=('quassel-core')
+  provides=("${pkgbase}-core")
+  conflicts=("${pkgbase}-core")
 
-  _install "$pkgdir"
+  _install
 }
 
 package_quassel-git() {
 
   pkgdesc='KDE-based IRC client (monolithic version)'
-  depends=('hicolor-icon-theme' 'knotifyconfig' 'qca' 'qt5-base'
+  depends=("${pkgbase}-common-git" 'knotifyconfig' 'qca' 'qt5-base'
            'qt5-script' 'qt5-webkit')
-  provides=('quassel-monolithic')
-  conflicts=('quassel-monolithic')
+  provides=("${pkgbase}-monolithic")
+  conflicts=("${pkgbase}-monolithic")
 
-  _install "$pkgdir"
+  _install
 }
 
 package_quassel-light-git() {
 
   pkgdesc='Qt-based IRC client (monolithic version, w/o kde deps)'
-  depends=('hicolor-icon-theme' 'qt5-base')
-  provides=('quassel-monolithic')
-  conflicts=('quassel-monolithic')
+  depends=("${pkgbase}-common-git" 'qt5-base')
+  provides=("${pkgbase}-monolithic")
+  conflicts=("${pkgbase}-monolithic")
 
-  _install "$pkgdir"
+  _install
 }
