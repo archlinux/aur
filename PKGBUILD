@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.939
+pkgver=mainline.0.950
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
@@ -120,6 +120,7 @@ package() {
 		'libfmt.so'
 		'libhttplib.so'
 		'libINIReader.so'
+		'libopus.so'
 		'libswscale.so'
 		'libusb-1.0.so'
 	)
