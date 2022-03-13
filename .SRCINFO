@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-fluxsmooth-git
 	pkgdesc = Plugin for Vapoursynth: fluxsmooth (GIT version)
-	pkgver = v2.1.gf1c22a4
-	pkgrel = 2
+	pkgver = 2.1.gf1c22a4
+	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=173795
 	arch = x86_64
 	license = GPL
@@ -10,8 +10,8 @@ pkgbase = vapoursynth-plugin-fluxsmooth-git
 	depends = vapoursynth
 	provides = vapoursynth-plugin-fluxsmooth
 	conflicts = vapoursynth-plugin-fluxsmooth
+	options = debug
 	source = fluxsmooth::git+https://github.com/dubhater/vapoursynth-fluxsmooth.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-fluxsmooth-git
-
