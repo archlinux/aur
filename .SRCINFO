@@ -10,8 +10,8 @@ pkgbase = labwc-git
 	makedepends = scdoc
 	depends = pango
 	depends = seatd
-	depends = wlroots>=0.15
-	depends = wlroots<0.16
+	depends = wlroots>=0.16
+	depends = wlroots<0.17
 	depends = wayland
 	depends = wayland-protocols
 	depends = xorg-xwayland
