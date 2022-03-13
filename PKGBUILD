@@ -9,7 +9,7 @@ pkgver=1.10.g3f4e137
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth/Avisynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
-url='https://github.com/AmusementClub/VapourSynth-EEDI2CUDA'
+url='https://github.com/sl1pkn07/VapourSynth-EEDI2CUDA'
 license=('GPL2')
 makedepends=('git'
              'cmake'
@@ -18,12 +18,13 @@ makedepends=('git'
              'cuda'
              'boost'
              )
-source=("${_plug}::git+https://github.com/AmusementClub/VapourSynth-EEDI2CUDA.git"
+source=("${_plug}::git+https://github.com/sl1pkn07/VapourSynth-EEDI2CUDA.git"
         'git+https://github.com/boostorg/sync.git'
         )
 sha256sums=('SKIP'
             'SKIP'
             )
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
@@ -31,14 +32,12 @@ pkgver() {
 }
 
 prepare() {
-  cd "${_plug}"
-  mkdir -p build-{vs,avs}
+  mkdir -p "${_plug}"/build-{vs,avs}
 }
 
 build() {
-
   cd "${srcdir}/${_plug}/build-vs"
-  cmake .. \
+  cmake -S .. -B . \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_AVISYNTHPLUS_BINDING=OFF \
@@ -46,10 +45,10 @@ build() {
     -DBoost_INCLUDE_DIRS="${srcdir}/sync/include" \
     -DCMAKE_CUDA_FLAGS_RELEASE="-O2 -DNDEBUG $(pkg-config --cflags vapoursynth)"
 
-  make
+  cmake --build .
 
   cd "${srcdir}/${_plug}/build-avs"
-  cmake .. \
+  cmake -S .. -B . \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DENABLE_VAPOURSYNTH_API3_BINDING=OFF \
@@ -58,7 +57,7 @@ build() {
     -DBoost_INCLUDE_DIRS="${srcdir}/sync/include" \
     -DCMAKE_CUDA_FLAGS_RELEASE="-O2 -DNDEBUG $(pkg-config --cflags avisynth)"
 
-  make
+  cmake --build .
 }
 
 package_avisynth-plugin-eedi2cuda-git() {
