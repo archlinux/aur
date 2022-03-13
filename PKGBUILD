@@ -2,12 +2,12 @@
 
 pkgname=changedetection.io
 pkgver=0.39.10
-pkgrel=1
+pkgrel=2
 pkgdesc='change monitoring of web pages'
 arch=('any')
 url='https://github.com/dgtlmoon/changedetection.io'
 license=('Apache 2.0')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-pip')
 depends=(# see https://github.com/dgtlmoon/changedetection.io/blob/master/requirements.txt
          'python-flask'
          'python-eventlet'
@@ -38,6 +38,7 @@ sha512sums=('9f981452aa319c96d5e5804da17a3c8366e142e38b26faaef818ac7158f762f0f1b
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1
+  # command per https://wiki.archlinux.org/title/Python_package_guidelines (now removed from page?)
   PIP_CONFIG_FILE=/dev/null pip install --isolated --target="$pkgdir/usr/lib/changedetection.io" --ignore-installed --no-deps inscriptis
   python -O -m compileall -s ${pkgdir} "${pkgdir}/usr/lib/changedetection.io"
   install -Dm644 "${srcdir}/sysusers" "${pkgdir}/usr/lib/sysusers.d/changedetection.io.conf"
