@@ -1,12 +1,12 @@
 # Maintainer: Léopold Koprivnik Ibghy <skwal.net@gmail.com>
 pkgname="lsd-print-git"
-pkgver=r3.e188733
+pkgver=r5.bf5e2a8
 pkgrel=1
 pkgdesc="Just a normal print tool, but we gave it lsd"
-arch=(x86_64 i686)
+arch=("any")
 url="https://github.com/SkwalExe/lsd-print"
 license=('MIT')
-makedepends=("git" "rustup")
+makedepends=("git" "cargo")
 provides=("lsd-print")
 install=lsd-print.install
 source=("git+$url")
@@ -19,8 +19,7 @@ pkgver() {
 
 prepare() {
 	cd lsd-print
-        rustup install stable
-      
+              
         sudo rm -rf /usr/bin/lsd-print
 }
 
