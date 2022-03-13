@@ -1,7 +1,7 @@
 pkgbase = ydotool
 	pkgdesc = Generic command-line automation tool (no X!)
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ReimuNotMoe/ydotool
 	install = ydotool.install
 	arch = x86_64
@@ -10,8 +10,6 @@ pkgbase = ydotool
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = scdoc
-	depends = libevdevplus
-	depends = libuinputplus
 	source = ydotool-1.0.1.tar.gz::https://github.com/ReimuNotMoe/ydotool/archive/v1.0.1.tar.gz
 	source = 80-uinput.rules
 	sha256sums = 02311cdc608f205711b06a95e5fd71093b2294f4920efc526f5e98a2ddab42b8

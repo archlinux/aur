@@ -2,10 +2,10 @@
 
 pkgname=ydotool
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic command-line automation tool (no X!)"
 arch=('x86_64' 'aarch64')
-depends=('libevdevplus' 'libuinputplus')
+depends=()
 makedepends=('cmake' 'ninja' 'scdoc')
 url="https://github.com/ReimuNotMoe/ydotool"
 license=('AGPL3')
@@ -24,7 +24,6 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_MANDIR=/usr/share/man \
     -DCMAKE_BUILD_TYPE=Release \
-    -DCXXOPTS_ENABLE_INSTALL=OFF \
     -G Ninja \
     -S "$pkgname-$pkgver" -B build
   ninja -C build
