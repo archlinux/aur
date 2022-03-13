@@ -34,22 +34,12 @@ source=(
   0014-x86-sgx-Keep-record-of-SGX-page-type.patch
   0015-x86-sgx-Support-relaxing-of-enclave-page-permissions.patch
   0016-x86-sgx-Support-restricting-of-enclave-page-permissi.patch
-  0017-selftests-sgx-Add-test-for-EPCM-permission-changes.patch
-  0018-selftests-sgx-Add-test-for-TCS-page-permission-chang.patch
   0019-x86-sgx-Support-adding-of-pages-to-an-initialized-en.patch
   0020-x86-sgx-Tighten-accessible-memory-range-after-enclav.patch
-  0021-selftests-sgx-Test-two-different-SGX2-EAUG-flows.patch
   0022-x86-sgx-Support-modifying-SGX-page-type.patch
   0023-x86-sgx-Support-complete-page-removal.patch
   0024-Documentation-x86-Introduce-enclave-runtime-manageme.patch
-  0025-selftests-sgx-Introduce-dynamic-entry-point.patch
-  0026-selftests-sgx-Introduce-TCS-initialization-enclave-o.patch
-  0027-selftests-sgx-Test-complete-changing-of-page-type-fl.patch
-  0028-selftests-sgx-Test-faulty-enclave-behavior.patch
-  0029-selftests-sgx-Test-invalid-access-to-removed-enclave.patch
-  0030-selftests-sgx-Test-reclaiming-of-untouched-page.patch
   0031-x86-sgx-Free-up-EPC-pages-directly-to-support-large-.patch
-  0032-selftests-sgx-Page-removal-stress-test.patch
   0033-x86-sgx-Enable-PROT_EXEC-for-EAUG-d-pages.patch
   0034-Revert-x86-sgx-x86-sgx-Add-sgx_encl_page-vm_run_prot.patch
 )
