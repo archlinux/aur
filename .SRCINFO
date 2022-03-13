@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-smoothuv-git
 	pkgdesc = Plugin for Vapoursynth: smoothuv (GIT version)
-	pkgver = v2.0.g0ba81c9
-	pkgrel = 2
+	pkgver = 2.1.gd75886e
+	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=175520
 	arch = x86_64
 	license = GPL
@@ -10,6 +10,7 @@ pkgbase = vapoursynth-plugin-smoothuv-git
 	depends = vapoursynth
 	provides = vapoursynth-plugin-smoothuv
 	conflicts = vapoursynth-plugin-smoothuv
+	options = debug
 	source = smoothuv::git+https://github.com/dubhater/vapoursynth-smoothuv.git
 	sha256sums = SKIP
 
