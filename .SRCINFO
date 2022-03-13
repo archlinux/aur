@@ -1,14 +1,13 @@
 pkgbase = athens-git
 	pkgdesc = Open-source knowledge graph
-	pkgver = v2.0.0.beta.20
-	pkgrel = 1
+	pkgver = v2.0.0.beta.20.r1.g4f1cab12
+	pkgrel = 2
 	url = https://github.com/athensresearch/athens
 	arch = i686
 	arch = x86_64
 	license = Eclipse Public License - v 1.0
 	makedepends = git
 	makedepends = nodejs
-	makedepends = leiningen
 	makedepends = yarn
 	makedepends = jq
 	depends = electron

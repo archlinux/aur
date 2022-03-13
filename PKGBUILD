@@ -2,23 +2,23 @@
 # Contributor: Westofer Raymond <westoferraymond@gmail.com>
 pkgname=athens-git
 _pkgname=athens
-pkgver=v2.0.0.beta.20
-pkgrel=1
+pkgver=v2.0.0.beta.20.r1.g4f1cab12
+pkgrel=2
 pkgdesc="Open-source knowledge graph"
 arch=('i686' 'x86_64')
 url="https://github.com/athensresearch/athens"
 license=('Eclipse Public License - v 1.0')
 groups=()
 depends=("electron")
-makedepends=("git" "nodejs" "leiningen" "yarn" "jq")
+makedepends=("git" "nodejs" "yarn" "jq")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=
 source=('athens::git+https://github.com/athensresearch/athens' 'athens.sh' 'athens.desktop')
 noextract=()
 md5sums=('SKIP'
-         'a11ab00f8e3f2be1320a5e67dcded1d1'
-         'dc18f4e2bdea985fff72911e868dfce9')
+    'a11ab00f8e3f2be1320a5e67dcded1d1'
+    'dc18f4e2bdea985fff72911e868dfce9')
 
 pkgver() {
     cd "$srcdir/${_pkgname}"
@@ -37,8 +37,7 @@ build() {
     cd "$srcdir/${_pkgname}"
     local i686=ia32 x86_64=x64
 
-    yarn --cache-folder "${srcdir}/yarn-cache"
-    lein compile
+    yarn prod
 
     yarn --cache-folder "${srcdir}/yarn-cache" run \
         electron-builder --linux --"${!CARCH}" --dir \
