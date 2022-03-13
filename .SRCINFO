@@ -1,0 +1,23 @@
+pkgbase = ukpdate-git
+	pkgdesc = UEFI Unified Kernel Image manager tool
+	pkgver = 0.r116.7350200
+	pkgrel = 1
+	url = https://github.com/osimarr/ukpdate
+	install = ukpdate.install
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash>=4.4
+	depends = systemd
+	depends = binutils
+	depends = sbsigntools
+	provides = ukpdate
+	conflicts = sbupdate
+	conflicts = ukpdate
+	backup = etc/ukpdate.conf
+	source = git+https://github.com/osimarr/ukpdate.git?signed
+	validpgpkeys = 96F281C741F4F2693E96885BF6532C30466E8B3E,
+	validpgpkeys = 9CE1B36F586373C8A5DD89E447EDFD24F02ADC29
+	sha256sums = SKIP
+
+pkgname = ukpdate-git
