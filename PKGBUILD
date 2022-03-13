@@ -2,7 +2,7 @@
 
 pkgname=non-sequencer
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful, lightweight, real-time, pattern-based MIDI sequencer"
 arch=(x86_64)
 url="https://non.tuxfamily.org/"
@@ -20,7 +20,7 @@ build() {
 
   export LINKFLAGS="$LDFLAGS"
   CXXFLAGS+=" -std=c++14"
-  waf configure --prefix=/usr --project=sequencer
+  waf configure --prefix=/usr --project=sequencer --disable-native-cpu-optimization
   waf
 }
 
