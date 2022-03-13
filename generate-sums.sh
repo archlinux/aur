@@ -17,7 +17,6 @@ for kern in ${!KERNEL_ARCH[@]}; do
     _arch="${_arch/#armv7*/armv7*}"
     _arch="${_arch/%*86/i*86}"
     echo "    ${_arch})"
-    CARCH="${arch}" makepkg -Crsfo &>/dev/null ||:  # not sure how to override kernel here
     case "${arch}" in
       x86_64)   _CARCH="64";;
       i*86)     _CARCH="32";;
@@ -34,6 +33,8 @@ for kern in ${!KERNEL_ARCH[@]}; do
       mips)     _CARCH="mips32";;
       riscv64)  _CARCH="riscv64";;
     esac
+    curl -sSLo "xray-bin-${VERSION}-${kern}-${_CARCH}.tar.gz" "https://github.com/XTLS/Xray-core/releases/download/v${VERSION}/Xray-${kern}-${_CARCH}.zip"
+    #CARCH="${arch}" makepkg -Crsfo &>/dev/null ||:  # not sure how to override kernel here
     cat <<EOF
       _CARCH="${_CARCH}"
       sha512sums+=('$(sha512sum xray-bin-${VERSION}-${kern}-${_CARCH}.tar.gz | awk '{print $1}')')
