@@ -1,14 +1,8 @@
-# Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
-# Contributor: Morten Linderud <foxboron@archlinux.org>
-# Contributor: Nicolas Leclercq <nicolas.private@gmail.com>
-# Contributor: Adam S Levy <adam@aslevy.com>
-# Contributor: Charles B. Johnson <mail@cbjohnson.info>
-# Contributor: Daichi Shinozaki <dsdseg@gmail.com>
-# Contributor: Ben Alex <ben.alex@acegi.com.au>
+# Maintainer: Rodney van den Velden <rodney@dfagaming.nl>
 
 _pkgname=influxdb
 pkgname=influxdb-cli
-pkgver=1.8.4
+pkgver=2.1.1
 pkgrel=1
 pkgdesc='InfluxDB command line interface'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
