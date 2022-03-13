@@ -16,154 +16,141 @@ license=('GPL')
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 makedepends=('git' 'cmake' 'extra-cmake-modules' 'hicolor-icon-theme'
              'knotifyconfig' 'python' 'qca' 'qt5-base' 'qt5-script'
-             'qt5-tools' 'qt5-webkit' 'boost')
+             'qt5-tools' 'qt5-webkit' 'boost' 'rsync')
 source=(
   'git+https://github.com/quassel/quassel.git'
 )
 md5sums=('SKIP')
+## Common build options
+_build_common=(
+  -Wno-dev
+  -DCMAKE_INSTALL_PREFIX=/usr
+  -DCMAKE_INSTALL_LIBDIR=lib
+  -DHAVE_SSL=ON
+)
+_build_client_common=(
+  -DWANT_MONO=OFF
+  -DWANT_CORE=OFF
+  -DWANT_QTCLIENT=ON
+)
+_build_mono_common=(
+  -DWANT_MONO=ON
+  -DWANT_CORE=OFF
+  -DWANT_QTCLIENT=OFF
+)
 
-_builddir="${startdir}/build"
-_cmakecache="CMakeCache.txt"
+## pkg specific build options
+_build_git=(
+  "${_build_mono_common[@]}"
+  -DWITH_KDE=ON
+  -DWITH_WEBKIT=ON
+)
+_build_light_git=(
+  "${_build_mono_common[@]}"
+  -DWITH_KDE=OFF
+  -DWITH_WEBKIT=OFF
+)
+_build_client_git=(
+  "${_build_client_common[@]}"
+  -DWITH_KDE=ON
+  -DWITH_WEBKIT=ON
+)
+_build_client_light_git=(
+  "${_build_client_common[@]}"
+  -DWITH_KDE=OFF
+  -DWITH_WEBKIT=OFF
+)
+_build_core_git=(
+  -DWANT_MONO=OFF
+  -DWANT_CORE=ON
+  -DWANT_QTCLIENT=OFF
+)
 
 pkgver() {
-  pushd "${srcdir}/${pkgbase}" > /dev/null
   #git describe --always | sed 's/-beta/.0.beta/; s/-/./g;'
-  git describe --always | sed 's/-/./g;'
-  popd > /dev/null
+  git -C "${srcdir}/${pkgbase}" describe --always \
+  | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
-_prepare_build() {
-  msg 'Preparing build directory...'
-  mkdir -p "$_builddir"
-  pushd "$_builddir" > /dev/null
-  rm -f "$_cmakecache"
-  popd > /dev/null
+build() {
+  local pkg
+  for pkg in "${pkgname[@]#$pkgbase-*}";do
+    _build "${pkg}"
+  done
 }
 
 _build() {
-  pushd "$_builddir" > /dev/null
+  local -n _build_opts="_build_${1//-/_}"
+  if ((${#_build_opts[@]} == 0));then
+    error 'No build option configured: %s' "$pkgbase-$1"
+    return 1
+  fi
 
-  msg 'Compiling...'
-  make
+  msg2 'Preparing build directory: %s...' "$pkgbase-$1"
+  if [[ -d git && ! -d "$1" ]];then
+    rm -f "$1"
+    rsync -aqzP --del git/ "$1"/
+    rm -f "$1/CMakeCache.txt"
+  fi
+  cmake -S "${srcdir}/${pkgbase}" \
+        -B "${srcdir}/$1" \
+        "${_build_common[@]}" \
+        "${_build_opts[@]}"
+  msg2 'Compiling: %s...' "$pkgbase-$1"
+  make -C "$1"
+}
 
-  make DESTDIR="$pkgdir" install
+_install() {
+  make -C "${FUNCNAME[1]#package_$pkgbase-*}" DESTDIR="$1" install
 }
 
 package_quassel-client-git() {
+
   depends=('hicolor-icon-theme' 'knotifyconfig' 'qt5-base' 'qt5-webkit')
   pkgdesc='KDE-based distributed IRC client (client only)'
   provides=('quassel-client')
   conflicts=('quassel-client')
 
-  _prepare_build
-
-  pushd "$_builddir" >/dev/null
-
-  msg 'Configuring build options...'
-  cmake -DWANT_MONO=OFF             \
-        -DWANT_CORE=OFF             \
-        -DWANT_QTCLIENT=ON          \
-        -DHAVE_SSL=ON               \
-        -DWITH_KDE=ON               \
-        -DWITH_WEBKIT=ON            \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib  \
-        "${srcdir}/${pkgbase}"
-
-  popd >/dev/null
-  _build
+  _install "$pkgdir"
 }
 
 package_quassel-client-light-git() {
-  pkgdesc='Qt-based distributed IRC client (client only)'
+ 
+  pkgdesc='Qt-based distributed IRC client (client only, w/o kde deps)'
   depends=('hicolor-icon-theme' 'qt5-base')
   provides=('quassel-client')
   conflicts=('quassel-client')
 
-  _prepare_build
-
-  pushd "$_builddir" >/dev/null
-
-  msg 'Configuring build options...'
-  cmake -DWANT_MONO=OFF             \
-        -DWANT_CORE=OFF             \
-        -DWANT_QTCLIENT=ON          \
-        -DHAVE_SSL=ON               \
-        -DWITH_KDE=OFF              \
-        -DWITH_WEBKIT=OFF           \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib  \
-        "${srcdir}/${pkgbase}"
-
-  popd >/dev/null
-  _build
+  _install "$pkgdir"
 }
 
 package_quassel-core-git() {
+
   pkgdesc='KDE/Qt-based distributed IRC client (core only)'
   depends=('icu' 'qca' 'qt5-script')
   provides=('quassel-core')
   conflicts=('quassel-core')
 
-  _prepare_build
-
-  pushd "$_builddir" >/dev/null
-
-  msg 'Configuring build options...'
-  cmake -DWANT_MONO=OFF             \
-        -DWANT_CORE=ON              \
-        -DWANT_QTCLIENT=OFF         \
-        -DHAVE_SSL=ON               \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib  \
-        "${srcdir}/${pkgbase}"
-
-  popd >/dev/null
-  _build
+  _install "$pkgdir"
 }
 
 package_quassel-git() {
+
   pkgdesc='KDE-based IRC client (monolithic version)'
   depends=('hicolor-icon-theme' 'knotifyconfig' 'qca' 'qt5-base'
            'qt5-script' 'qt5-webkit')
+  provides=('quassel-monolithic')
+  conflicts=('quassel-monolithic')
 
-  _prepare_build
-
-  pushd "$_builddir" >/dev/null
-
-  msg 'Configuring build options...'
-  cmake -DWANT_MONO=ON              \
-        -DWANT_CORE=OFF             \
-        -DWANT_QTCLIENT=OFF         \
-        -DHAVE_SSL=ON               \
-        -DWITH_KDE=ON               \
-        -DWITH_WEBKIT=ON            \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib  \
-        "${srcdir}/${pkgbase}"
-
-  popd >/dev/null
-  _build
+  _install "$pkgdir"
 }
 
 package_quassel-light-git() {
-  pkgdesc='Qt-based IRC client (monolithic version)'
+
+  pkgdesc='Qt-based IRC client (monolithic version, w/o kde deps)'
   depends=('hicolor-icon-theme' 'qt5-base')
-  _prepare_build
+  provides=('quassel-monolithic')
+  conflicts=('quassel-monolithic')
 
-  pushd "$_builddir" >/dev/null
-
-  msg 'Configuring build options...'
-  cmake -DWANT_MONO=ON              \
-        -DWANT_CORE=OFF             \
-        -DWANT_QTCLIENT=OFF         \
-        -DHAVE_SSL=ON               \
-        -DWITH_KDE=OFF              \
-        -DWITH_WEBKIT=OFF           \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_INSTALL_LIBDIR=lib  \
-        "${srcdir}/${pkgbase}"
-
-  popd >/dev/null
-  _build
+  _install "$pkgdir"
 }
