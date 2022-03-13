@@ -2,7 +2,7 @@
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=magrittr
-_cranver=2.0.1
+_cranver=2.0.2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(MIT)
 depends=(r)
 optdepends=(r-covr r-knitr r-rlang r-rmarkdown r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('75c265d51cc2b34beb27040edb09823c7b954d3990a7a931e40690b75d4aad5f')
+sha256sums=('7be6fd0d0da75b92d8bad0136076da96260ee84bf639ef632a24668acdc163a6')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
