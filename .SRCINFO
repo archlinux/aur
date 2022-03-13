@@ -1,0 +1,23 @@
+pkgbase = itch-setup-bin
+	pkgdesc = Installer for the itch.io desktop app
+	pkgver = 1.26.0
+	pkgrel = 1
+	url = https://itch.io/
+	arch = x86_64
+	license = MIT
+	depends = gtk3
+	provides = itch-setup
+	conflicts = itch-setup
+	conflicts = itch
+	source = itch-25.5.1.tar.gz::https://github.com/itchio/itch/archive/refs/tags/v25.5.1.tar.gz
+	source = itch-setup-LICENSE::https://raw.githubusercontent.com/itchio/itch-setup/master/LICENSE
+	source = itch.desktop
+	source = itch.sh
+	sha256sums = 0a7094bff90992e3788fd9f9df43a4a3c9233bfcf0f5da037e59af6b365a3249
+	sha256sums = d50905ab2e78d6ed3773959d6fb3c1c2fee724cf497f1c441cacb3765eac30ff
+	sha256sums = 593d3d46e379fc634ace8a97bb738a9bda1b29ea78d99e5542be47acb2865731
+	sha256sums = 985cf842686598dd7e4e153f6fd7c9ee901fd200403893235e2974b108653bcf
+	source_x86_64 = itch-setup-2022-03-13-20-amd64::https://itch.io/app/download?platform=linux
+	sha256sums_x86_64 = c7a13db7234ca908bcfb60ed5369b5c02b0a795e5e5490f68eeacb5a637a2162
+
+pkgname = itch-setup-bin
