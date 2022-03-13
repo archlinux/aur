@@ -1,4 +1,4 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=genericfilters
 pkgname=vapoursynth-plugin-${_plug}-git
@@ -14,6 +14,7 @@ provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/myrsloik/GenericFilters.git")
 sha256sums=('SKIP')
+optionsss=('debug')
 
 pkgver() {
   cd "${_plug}"
