@@ -2,52 +2,31 @@ include:
   - project: "common/gitlab-helper"
     ref: master
     file: "ci-helper.yml"
-  - project: "common/gitlab-helper"
-    ref: master
-    file: "container-helper.yml"
-  - project: "common/gitlab-helper"
-    ref: master
-    file: "deploy-helper.yml"
 
-workflow: !reference [.common, workflow]
+workflow: !reference [ .common, workflow ]
 
 variables:
   PKG_NAME: "eccodes"
 
 stages:
-  - prepareBuild
+  - containerize
   - build
   - test
   - deploy
 
-docker-build-and-test:
-  stage: prepareBuild
-  extends: .container-build-and-push
-  variables: !reference [.arch-build-and-test, variables]
+container-build-and-test:
+  extends: .arch-containerize
   needs: []
 
 build-eccodes:
-  stage: build
-  image: !reference [.arch-build-and-test, variables, IMAGE_NAME]
+  extends: .arch-build
   needs:
-    - job: "docker-build-and-test"
+    - job: "container-build-and-test"
       artifacts: no
-  artifacts: !reference [.arch-build-and-test, artifacts]
-  script:
-    - !reference [.arch-build, script]
-
+  
 test-eccodes:
-  stage: test
-  image: !reference [.arch-build-and-test, variables, IMAGE_NAME]
+  extends: .arch-test
   needs: ["build-eccodes"]
-  script:
-    - !reference [.arch-test, script]
 
 deploy-eccodes:
-  stage: deploy
-  extends: .git-ssh-push-remote
-  variables: !reference [.arch-deploy, variables]
-  before_script:
-    - !reference [.arch-deploy, before_script]
-  rules:
-    - !reference [.arch-deploy, rules]
+  extends: .arch-deploy
