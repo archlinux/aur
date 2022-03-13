@@ -1,7 +1,7 @@
-# Maintainer : Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=fsrcnn-ncnn-vulkan
-pkgname=vapoursynth-plugin-${_plug}-git
+pkgname="vapoursynth-plugin-${_plug}-git"
 pkgver=r3.c9dad37
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
@@ -28,6 +28,7 @@ sha256sums=('SKIP'
 #             'e3b7b0b71ca606031821ac5d63b4ff25ab6874e8521521585de4a308b2f974c9'
             'f966efbae46f821beae06b3641c15c1ef113f9344ca21b543ba68362541fb5f3'
             )
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
@@ -64,7 +65,6 @@ build() {
 
 package(){
   install -Dm755 "build/libvs_fsrcnn_vulkan.so" "${pkgdir}/usr/lib/vapoursynth/libvs_fsrcnn_vulkan.so"
-
 
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
   install -Dm644 "${_plug}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"

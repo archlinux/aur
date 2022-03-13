@@ -15,6 +15,7 @@ pkgbase = vapoursynth-plugin-fsrcnn-ncnn-vulkan-git
 	depends = glslang
 	provides = vapoursynth-plugin-fsrcnn-ncnn-vulkan
 	conflicts = vapoursynth-plugin-fsrcnn-ncnn-vulkan
+	options = debug
 	source = fsrcnn-ncnn-vulkan::git+https://github.com/Sg4Dylan/vapoursynth-fsrcnn-ncnn-vulkan.git
 	source = esee.patch
 	sha256sums = SKIP
