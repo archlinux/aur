@@ -2,6 +2,38 @@
 
 ## 接口更新说明
 
+1.4.65 fix: fix spot_hist_sge interface
+
+    1. 修复 spot_hist_sge 接口的数据输出格式
+
+1.4.64 fix: fix bond_china_close_return interface
+
+    1. 修复 bond_china_close_return 接口，修改文档增加描述信息
+
+1.4.63 fix: fix macro_china_swap_rate interface
+
+    1. 修复 macro_china_swap_rate 接口，并规范返回数据的类型
+
+1.4.62 fix: fix option_finance_board interface
+
+    1. 修复 option_finance_board 参数为 华泰柏瑞沪深300ETF期权 时的文档说明
+
+1.4.61 fix: fix get_dce_daily interface
+
+    1. 修复 get_dce_daily 接口的索引问题
+
+1.4.60 fix: fix stock_zh_a_hist_163 interface
+    
+    1. 修复 stock_zh_a_hist_163 接口的冗余变量问题
+
+1.4.59 add: add stock_zh_a_hist_163 interface
+
+    1. 新增 stock_zh_a_hist_163 接口，用于获取沪深 A 股票的日频率量价数据，主要可以获取总市值和流通市值数据
+
+1.4.58 fix: fix stock_zh_kcb_daily interface
+
+    1. 修复 stock_zh_kcb_daily 返回数据的类型
+
 1.4.57 fix: fix bond_spot_quote interface
 
     1. 修复 bond_spot_quote 接口数据错位问题
@@ -67,6 +99,22 @@
     3. 修改 air_quality_hist 接口的请求日期格式，从 '2022-01-01' 为 '20220101'
 
 ## 版本更新说明
+
+1.4.65 fix: fix spot_hist_sge interface
+
+1.4.64 fix: fix bond_china_close_return interface
+
+1.4.63 fix: fix macro_china_swap_rate interface
+
+1.4.62 fix: fix option_finance_board interface
+
+1.4.61 fix: fix get_dce_daily interface
+
+1.4.60 fix: fix stock_zh_a_hist_163 interface
+
+1.4.59 add: add stock_zh_a_hist_163 interface
+
+1.4.58 fix: fix stock_zh_kcb_daily interface
 
 1.4.57 fix: fix bond_spot_quote interface
 
