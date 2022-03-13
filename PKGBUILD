@@ -3,7 +3,7 @@
 _pkgname=zterm
 
 pkgname="${_pkgname}"
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A simple terminal emulator using Vte and Gtk+ writting using the Zig programming language"
 url="https://codeberg.org/jeang3nie/zterm"
@@ -17,7 +17,7 @@ source=(
   "${url}/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-  'e767ceac4b656999a9bca065e4108e08f4e777bc7873b4ebca23e0aa29a766d4'
+  'fdd32d9bfe1a0e6562461dc805a0c916a0c1fb76f8ded116783b76d9cbb7124f'
 )
 
 build() {
@@ -28,9 +28,7 @@ build() {
 
 package() {
   cd "${srcdir}/${_pkgname}"
-  install -D -m755 zig-out/bin/zt "${pkgdir}/usr/bin/zt"
+  zig build -p ${pkgdir}/usr -Drelease-safe=true
   install -D -m644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -D -m644 LICENSE.md "${pkgdir}/usr/share/licenses/${_pkgname}/README.md"
-  install -D -m644 data/zterm.desktop "${pkgdir}/usr/share/applications/zterm.desktop"
-  install -D -m644 data/zterm.svg "${pkgdir}/usr/share/icons/hicolor/scalable/apps/zterm.svg"
 }
