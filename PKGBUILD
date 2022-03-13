@@ -1,14 +1,14 @@
 # Maintainer: Yufan You <ouuansteve at gmail>
 
-_npmname=server
+_npmname=vue-language-server
 _npmscope=@volar
 pkgname=volar-server-bin
 _pkgname=volar-server
-pkgver=0.32.1
+pkgver=0.33.0
 pkgrel=1
-pkgdesc='Fast Vue Language Support Extension'
+pkgdesc='Explore high-performance tooling for Vue'
 arch=('any')
-url='https://github.com/johnsoncodehk/volar/tree/master/packages/server'
+url="https://github.com/johnsoncodehk/volar/tree/master/packages/$_npmname"
 license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
@@ -16,7 +16,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(https://registry.npmjs.org/$_npmscope/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('4b5809d8c32bc57ccf1b1ba3fb137ab0f78e7cdc06ffc1106188df5b8d1687b8')
+sha256sums=('b0f30c783a1780178167fe82add075e0099759226e56626987661abc17eb1583')
 
 package() {
     cd "$srcdir"
@@ -26,4 +26,5 @@ package() {
     npm install -g --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"
     chown -R root:root "${pkgdir}"
     install -Dm644 "$_npmdir/$_npmscope/$_npmname/LICENSE" -t "$pkgdir/usr/share/licenses/$_pkgname"
+    ln -s /usr/bin/vue-language-server "$pkgdir/usr/bin/volar-server"
 }
