@@ -17,6 +17,6 @@ pkgbase = aksusbd-bin
 	source = 0001-patch.patch
 	source = download.py
 	sha256sums = 6fcb6c4fcba1d01c1b3e68258e95297c323b2cbe8ee75c0a14ac0e9006926312
-	sha256sums = a3f8107436cb6242b040d2c761653685770bbbdb21e99f76daeb3629e2b95757
+	sha256sums = ad5b14c3eea8acd0195cd2d610958ada9eda05b152a09cf37fa08b934c70593b
 
 pkgname = aksusbd-bin
