@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-cmedian-git
 	pkgdesc = Plugin for Vapoursynth: cmedian (GIT version)
-	pkgver = v1.0.gc19dd5c
+	pkgver = 1.0.gc19dd5c
 	pkgrel = 1
 	url = https://github.com/4re/vapoursynth-cmedian
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = vapoursynth-plugin-cmedian-git
 	provides = vapoursynth-plugin-cmedian
 	conflicts = vapoursynth-plugin-cmedian-hg
 	conflicts = vapoursynth-plugin-cmedian
+	options = debug
 	source = cmedian::git+https://github.com/4re/vapoursynth-cmedian.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-cmedian-git
-

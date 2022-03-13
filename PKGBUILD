@@ -2,7 +2,7 @@
 
 _plug=cmedian
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v1.0.gc19dd5c
+pkgver=1.0.gc19dd5c
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -17,10 +17,11 @@ conflicts=("vapoursynth-plugin-${_plug}-hg"
            "vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/4re/vapoursynth-cmedian.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 prepare() {
