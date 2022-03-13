@@ -1,8 +1,8 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=nnedi3
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v12.0.g8c35822
+pkgver=12.0.g8c35822
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -18,25 +18,24 @@ provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/dubhater/vapoursynth-${_plug}.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 prepare() {
   mkdir -p build
 
-  cd "${_plug}"
-
   sed 's|$(pkgdatadir)|/usr/lib/vapoursynth|g' \
-    -i Makefile.am
-
-  ./autogen.sh
+    -i "${_plug}/Makefile.am"
 }
 
 build() {
-  cd build
+  cd "${_plug}"
+  ./autogen.sh
+  cd "${srcdir}/build"
   ../"${_plug}"/configure \
     --prefix=/usr \
     --libdir=/usr/lib/vapoursynth
