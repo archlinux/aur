@@ -2,7 +2,7 @@
 
 _plug=depan
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r1.0.ge248fa9
+pkgver=1.0.ge248fa9
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}. (GIT Version)"
 arch=('x86_64')
@@ -18,12 +18,12 @@ conflicts=("vapoursynth-plugin-${_plug}")
 source=('https://www.dropbox.com/s/d72bougsis2se58/vapoursynth-depan-1.tar.gz')
 #sha256sums=('SKIP')
 sha256sums=('bca09707018b2011e6300900006d71b21b2290c4bd8ba34b27c844d6ff03b6d6')
-
+options=('debug')
 
 pkgver() {
   #cd "${_plug}"
   #points to latest knowed commit
-  echo "r1.0.ge248fa9"
+  echo "1.0.ge248fa9"
   #echo "$(git describe --long --tags | tr - .)"
 }
 
