@@ -1,0 +1,9 @@
+pkgbase = ttf-font-nerd-dummy
+	pkgdesc = Dummy package to provide ttf-font-nerd for headless machines
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = any
+	license = MIT OR Apache 2.0
+	provides = ttf-font-nerd
+
+pkgname = ttf-font-nerd-dummy

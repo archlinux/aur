@@ -1,0 +1,23 @@
+# Maintainer: Gaoyang Zhang <gy@blurgy.xyz>
+pkgname=ttf-font-nerd-dummy
+pkgver=0.1.0
+pkgrel=1
+epoch=
+pkgdesc="Dummy package to provide ttf-font-nerd for headless machines"
+arch=("any")
+# url=
+license=('MIT OR Apache 2.0')
+groups=()
+depends=()
+makedepends=()
+checkdepends=()
+optdepends=()
+provides=("ttf-font-nerd")
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=
+changelog=
+noextract=()
+validpgpkeys=()
