@@ -1,8 +1,8 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=vmaf
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r9.0.gf675a90
+pkgver=9.0.gf675a90
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -21,10 +21,11 @@ source=("${_plug}::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth
 sha256sums=('SKIP'
             'SKIP'
             )
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d r)"
 }
 
 prepare() {
@@ -43,7 +44,8 @@ build() {
   ninja install
 
   cd "${srcdir}/build"
-  PKG_CONFIG_PATH="${srcdir}/fakeroot/usr/lib/pkgconfig" arch-meson "../${_plug}" \
+  PKG_CONFIG_PATH="${srcdir}/fakeroot/usr/lib/pkgconfig" \
+  arch-meson "../${_plug}" \
     --libdir /usr/lib/vapoursynth
 
   ninja
