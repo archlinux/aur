@@ -1,0 +1,53 @@
+From 540a78e1061199c6120c9b4587be34d285b40b9a Mon Sep 17 00:00:00 2001
+From: Eivind Uggedal <eivind@uggedal.com>
+Date: Mon, 12 Apr 2021 13:20:13 +0000
+Subject: [PATCH] Fix libmpv initialization on wayland
+
+This makes the x11 specific initialization of libmpv conditional on
+actually running under x11 (or forcing XWayland with
+QT_QPA_PLATFORM=xcb).
+
+In the future, libmpv wayland awareness could be added, but the
+current implementation seems to work ok.
+
+Should fix #9.
+---
+ src/player/PlayerQuickItem.cpp | 13 ++++++++++---
+ 1 file changed, 10 insertions(+), 3 deletions(-)
+
+diff --git a/src/player/PlayerQuickItem.cpp b/src/player/PlayerQuickItem.cpp
+index 0acae27..19a62c5 100644
+--- a/src/player/PlayerQuickItem.cpp
++++ b/src/player/PlayerQuickItem.cpp
+@@ -3,6 +3,7 @@
+ #include <stdexcept>
+
+ #include <QCoreApplication>
++#include <QGuiApplication>
+ #include <QOpenGLContext>
+ #include <QRunnable>
+
+@@ -101,14 +102,20 @@ mpv_opengl_init_params opengl_params = {
+ #endif
+ };
+
++  const QString platformName = QGuiApplication::platformName();
++
+   mpv_render_param params[] = {
+     {MPV_RENDER_PARAM_API_TYPE, (void*)MPV_RENDER_API_TYPE_OPENGL},
+     {MPV_RENDER_PARAM_OPENGL_INIT_PARAMS, &opengl_params},
+-#ifdef USE_X11EXTRAS
+-    {MPV_RENDER_PARAM_X11_DISPLAY, QX11Info::display()},
+-#endif
++    {MPV_RENDER_PARAM_INVALID},
+     {MPV_RENDER_PARAM_INVALID},
+   };
++#ifdef USE_X11EXTRAS
++  if (platformName.contains("xcb")) {
++    params[2].type = MPV_RENDER_PARAM_X11_DISPLAY;
++    params[2].data = QX11Info::display();
++  }
++#endif
+   int err = mpv_render_context_create(&m_mpvGL, m_mpv, params);
+
+   if (err >= 0) {

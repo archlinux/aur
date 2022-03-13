@@ -1,0 +1,63 @@
+From 6ae471023a30b1f16d2ed54bf48717af1483352e Mon Sep 17 00:00:00 2001
+From: Eivind Uggedal <eivind@uggedal.com>
+Date: Tue, 13 Apr 2021 06:14:22 +0000
+Subject: [PATCH] Fix hwdec for wayland
+
+Passing the wayland display to libmpv should improve stability and
+enable direct rendering. This seems to be needed for hw decoding to work
+on wayland.
+
+Should properly fix #9.
+---
+ CMakeModules/QtConfiguration.cmake | 7 ++++++-
+ src/player/PlayerQuickItem.cpp     | 5 +++++
+ 2 files changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeModules/QtConfiguration.cmake b/CMakeModules/QtConfiguration.cmake
+index 61d1602..8fe9073 100644
+--- a/CMakeModules/QtConfiguration.cmake
++++ b/CMakeModules/QtConfiguration.cmake
+@@ -26,7 +26,7 @@ set(components Core Network WebChannel Qml Quick Xml WebEngine Widgets)
+
+ if(UNIX AND (NOT APPLE) AND ((NOT BUILD_TARGET STREQUAL "RPI")))
+   add_definitions(-DUSE_X11EXTRAS)
+-  set(components ${components} X11Extras)
++  set(components ${components} X11Extras Gui)
+ endif()
+
+ if(LINUX_DBUS)
+@@ -47,6 +47,11 @@ foreach(COMP ${components})
+ 		include_directories(${${mod}_PRIVATE_INCLUDE_DIRS})
+ 	endif(OPENELEC)
+
++	# Need private interfaces for qpa/qplatformnativeinterface.h:
++	if(${mod} STREQUAL Qt5Gui)
++		include_directories(${Qt5Gui_PRIVATE_INCLUDE_DIRS})
++	endif()
++
+ 	list(APPEND QT5_LIBRARIES ${${mod}_LIBRARIES})
+ 	list(APPEND QT5_CFLAGS ${${mod}_EXECUTABLE_COMPILE_FLAGS})
+ endforeach(COMP ${components})
+diff --git a/src/player/PlayerQuickItem.cpp b/src/player/PlayerQuickItem.cpp
+index 19a62c5..655ac40 100644
+--- a/src/player/PlayerQuickItem.cpp
++++ b/src/player/PlayerQuickItem.cpp
+@@ -26,6 +26,7 @@
+
+ #ifdef USE_X11EXTRAS
+ #include <QX11Info>
++#include <qpa/qplatformnativeinterface.h>
+ #endif
+
+ ///////////////////////////////////////////////////////////////////////////////////////////////////
+@@ -114,6 +115,10 @@ mpv_opengl_init_params opengl_params = {
+   if (platformName.contains("xcb")) {
+     params[2].type = MPV_RENDER_PARAM_X11_DISPLAY;
+     params[2].data = QX11Info::display();
++  } else if (platformName.contains("wayland")) {
++    QPlatformNativeInterface *native = QGuiApplication::platformNativeInterface();
++    params[2].type = MPV_RENDER_PARAM_WL_DISPLAY;
++    params[2].data = native->nativeResourceForWindow("display", NULL);
+   }
+ #endif
+   int err = mpv_render_context_create(&m_mpvGL, m_mpv, params);

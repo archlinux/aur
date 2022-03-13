@@ -11,20 +11,23 @@ _fullname="$pkgname-$_fullver"
 _web_buildid=183-045db5be50e175
 _web_desktop_ver=4.29.2-e50e175
 _web_tv_ver=4.29.6-045db5b
-pkgrel=2
+pkgrel=3
 pkgdesc='Next generation Plex Desktop Client'
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('GPL')
 url='https://github.com/plexinc/plex-media-player'
 depends=('mpv' 'qt5-webengine' 'libcec' 'sdl2' 'qt5-x11extras' 'qt5-quickcontrols' 'p8-platform' 'protobuf' 'python')
 makedepends=('cmake')
+conflicts=('jellyfin-media-player')
 source=("$_fullname.tar.gz::https://github.com/plexinc/plex-media-player/archive/v${_fullver}.tar.gz"
         "buildid-${_web_buildid}.cmake::https://artifacts.plex.tv/web-client-pmp/${_web_buildid}/buildid.cmake"
         "web-client-desktop-${_web_buildid}-${_web_desktop_ver}.tar.xz::https://artifacts.plex.tv/web-client-pmp/${_web_buildid}/web-client-desktop-${_web_desktop_ver}.tar.xz"
         "web-client-desktop-${_web_buildid}-${_web_desktop_ver}.tar.xz.sha1::https://artifacts.plex.tv/web-client-pmp/${_web_buildid}/web-client-desktop-${_web_desktop_ver}.tar.xz.sha1"
         "web-client-tv-${_web_buildid}-${_web_tv_ver}.tar.xz::https://artifacts.plex.tv/web-client-pmp/${_web_buildid}/web-client-tv-${_web_tv_ver}.tar.xz"
         "web-client-tv-${_web_buildid}-${_web_tv_ver}.tar.xz.sha1::https://artifacts.plex.tv/web-client-pmp/${_web_buildid}/web-client-tv-${_web_tv_ver}.tar.xz.sha1"
-        'plex.patch')
+        'plex.patch'
+        'plex-wayland.patch'
+        'plex-wayland-hwdec.patch')
 noextract=("web-client-desktop-${_web_buildid}-${_web_desktop_ver}.tar.xz"
            "web-client-tv-${_web_buildid}-${_web_tv_ver}.tar.xz")
 sha512sums=('86fc3cd4c37700a1881ccd2aa43c0aa5e7ff20eacc643e3babef6acfab4b355903b69988b9d8821c87269fc5d6bdc8803e115ef867f5f388a1e9b6cad8fd321e'
@@ -33,10 +36,14 @@ sha512sums=('86fc3cd4c37700a1881ccd2aa43c0aa5e7ff20eacc643e3babef6acfab4b355903b
             '3f2de45e29303445bca976d61e343acabc29edbca0c9dcddeff9134d75c317a8f678a122e6c429fea0801b49fe40d2b30a4f44cd8fdcc040b3c9ab5b15f04d0e'
             'd60cc01f6b9abf579b3fa2e5b5c9b19e71a986578b0ca46173572324fb54573c97f09ac0ef1654a0b04d68eee20ab3d81ab19a85a761ba638b2b543548ff94ac'
             '442c2e5a31eed30167009bdaf263c66bea482d4ad03e168c9d9eb5e9f4e40f771dee9bc6913d6be46f7d86feb961603f172bb6497fac28c4f5d36a1f05d0ec66'
+            'SKIP'
+            'SKIP'
             'SKIP')
 prepare() {
     cd "${srcdir}/$_fullname"
     patch --forward --strip=1 --input="${srcdir}/plex.patch"
+    patch --forward --strip=1 --input="${srcdir}/plex-wayland.patch"
+    patch --forward --strip=1 --input="${srcdir}/plex-wayland-hwdec.patch"
     # All this git version junk fails, just remove it we already have the version
     sed -i 's|include(GetGitRevisionDescription)||
             s|get_git_head_revision(REFSPEC FULL_GIT_REVISION)||' \
