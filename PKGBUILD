@@ -2,7 +2,7 @@
 
 _plug=dpid
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r4.10.g9eda70b
+pkgver=5.3.g5c7513a
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -18,15 +18,15 @@ provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/WolframRhodium/VapourSynth-dpid.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d r)"
 }
 
 prepare() {
   mkdir -p build
-
 }
 
 build() {
