@@ -1,0 +1,81 @@
+From f32bd3f04ae2ca0952d7d4912407e99f06ba608f Mon Sep 17 00:00:00 2001
+From: Konarev Alexander <avkonarev@gmail.com>
+Date: Sun, 13 Mar 2022 13:37:24 +0300
+Subject: [PATCH] patch
+
+---
+ etc/udev/rules.d/80-hasp.rules         | 4 ++--
+ var/hasplm/init/aksusbd.service        | 2 +-
+ var/hasplm/init/aksusbd_x86_64.service | 2 +-
+ var/hasplm/init/hasplmd.service        | 2 +-
+ var/hasplm/init/hasplmd_x86_64.service | 2 +-
+ 5 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/etc/udev/rules.d/80-hasp.rules b/etc/udev/rules.d/80-hasp.rules
+index b929049..8e81959 100644
+--- a/etc/udev/rules.d/80-hasp.rules
++++ b/etc/udev/rules.d/80-hasp.rules
+@@ -1,6 +1,6 @@
+ # HASP rules
+-ACTION=="add|change|bind", SUBSYSTEM=="usb", ATTRS{idVendor}=="0529", ATTRS{idProduct}=="0001", MODE="664", ENV{HASP}="1", SYMLINK+="aks/hasp/%k", RUN+="/usr/sbin/aksusbd_x86_64 -c $root/aks/hasp/$kernel"
+-ACTION=="remove", ENV{HASP}=="1", RUN+="/usr/sbin/aksusbd_x86_64 -r $root/aks/hasp/$kernel"
++ACTION=="add|change|bind", SUBSYSTEM=="usb", ATTRS{idVendor}=="0529", ATTRS{idProduct}=="0001", MODE="664", ENV{HASP}="1", SYMLINK+="aks/hasp/%k", RUN+="/usr/bin/aksusbd_x86_64 -c $root/aks/hasp/$kernel"
++ACTION=="remove", ENV{HASP}=="1", RUN+="/usr/bin/aksusbd_x86_64 -r $root/aks/hasp/$kernel"
+ 
+ # SENTINEL rules
+ ACTION=="add|change|bind", SUBSYSTEM=="usb", ATTRS{idVendor}=="0529", ATTRS{idProduct}=="0003", KERNEL!="hiddev*", MODE="666", GROUP="plugdev", ENV{SENTINELHID}="1", SYMLINK+="aks/sentinelhid/%k"
+diff --git a/var/hasplm/init/aksusbd.service b/var/hasplm/init/aksusbd.service
+index 14e30da..93cebd1 100644
+--- a/var/hasplm/init/aksusbd.service
++++ b/var/hasplm/init/aksusbd.service
+@@ -5,7 +5,7 @@ Requires=hasplmd.service
+ 
+ [Service]
+ Type=forking
+-ExecStart=/usr/sbin/aksusbd
++ExecStart=/usr/bin/aksusbd
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/var/hasplm/init/aksusbd_x86_64.service b/var/hasplm/init/aksusbd_x86_64.service
+index 0298baf..2c4d4b4 100644
+--- a/var/hasplm/init/aksusbd_x86_64.service
++++ b/var/hasplm/init/aksusbd_x86_64.service
+@@ -5,7 +5,7 @@ Requires=hasplmd.service
+ 
+ [Service]
+ Type=forking
+-ExecStart=/usr/sbin/aksusbd_x86_64
++ExecStart=/usr/bin/aksusbd_x86_64
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/var/hasplm/init/hasplmd.service b/var/hasplm/init/hasplmd.service
+index 7564492..4de88c0 100644
+--- a/var/hasplm/init/hasplmd.service
++++ b/var/hasplm/init/hasplmd.service
+@@ -5,7 +5,7 @@ After=aksusbd.service
+ 
+ [Service]
+ Type=forking
+-ExecStart=/usr/sbin/hasplmd -s
++ExecStart=/usr/bin/hasplmd -s
+ 
+ [Install]
+ WantedBy=multi-user.target
+diff --git a/var/hasplm/init/hasplmd_x86_64.service b/var/hasplm/init/hasplmd_x86_64.service
+index 9961c5c..78900c4 100644
+--- a/var/hasplm/init/hasplmd_x86_64.service
++++ b/var/hasplm/init/hasplmd_x86_64.service
+@@ -5,7 +5,7 @@ After=aksusbd.service
+ 
+ [Service]
+ Type=forking
+-ExecStart=/usr/sbin/hasplmd_x86_64 -s
++ExecStart=/usr/bin/hasplmd_x86_64 -s
+ 
+ [Install]
+ WantedBy=multi-user.target
+-- 
+2.35.1
+
