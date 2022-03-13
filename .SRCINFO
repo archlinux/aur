@@ -1,22 +1,23 @@
 pkgbase = melonds-bin
 	pkgdesc = DS emulator, sorta
-	pkgver = 0.9.3
-	pkgrel = 2
-	url = http://melonds.kuribo64.net/
+	pkgver = 0.9.4
+	pkgrel = 1
+	url = http://melonds.kuribo64.net
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
+	makedepends = git
 	depends = libepoxy
 	depends = libslirp
 	depends = qt5-base
 	depends = sdl2
 	provides = melonds
 	conflicts = melonds
-	source = https://github.com/Arisotura/melonDS/archive/refs/tags/0.9.3.tar.gz
-	sha256sums = c50a3855c1f77f58a2b15045687dc399b845224a970fe68ff95919c939ac634f
-	source_x86_64 = https://melonds.kuribo64.net/downloads/melonDS_0.9.3_linux_x64.7z
-	sha256sums_x86_64 = 41d3f4f42ba3c3e263df9db6e73229068eeb85eb6a8f2ee46d2fe482df57b130
-	source_aarch64 = https://melonds.kuribo64.net/downloads/melonDS_0.9.3_linux_arm64.7z
-	sha256sums_aarch64 = 2f900d036808e790dc33ee79ba46c93adda9fd25ae2af8e074c9918ad9e3fd62
+	source = melonds-git::git+https://github.com/Arisotura/melonDS.git#tag=0.9.4
+	sha256sums = SKIP
+	source_x86_64 = http://melonds.kuribo64.net/downloads/melonDS_0.9.4_linux_x64.7z
+	sha256sums_x86_64 = b1a8a1759acce339ec76591ad7d917e18dc932b6bd4b44fd3a4cf783b13d6f36
+	source_aarch64 = http://melonds.kuribo64.net/downloads/melonDS_0.9.4_linux_arm64.7z
+	sha256sums_aarch64 = b5239d1fd729f5c0293e49ac9abc1026549edc0bc8d3ecfffe25143bdc51bf0d
 
 pkgname = melonds-bin
