@@ -3,7 +3,7 @@
 
 _plug=waifu2x-w2xc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r8.1.g170bf24
+pkgver=8.3.ga9f064a
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -19,10 +19,11 @@ provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-${_plug}.git")
 sha1sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d r)"
 }
 
 prepare() {
@@ -44,7 +45,6 @@ package(){
   DESTDIR="${pkgdir}" ninja -C build install
 
   mv "${pkgdir}/usr/lib/vapoursynth/models" "${pkgdir}/usr/lib/vapoursynth/${_plug}-models"
-  chmod -R a+w "${pkgdir}/usr/lib/vapoursynth/${_plug}-models"
 
   install -Dm644 "${_plug}/README.md" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README"
 }

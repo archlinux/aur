@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-waifu2x-w2xc-git
 	pkgdesc = Plugin for Vapoursynth: waifu2x-w2xc (GIT version)
-	pkgver = r8.1.g170bf24
+	pkgver = 8.3.ga9f064a
 	pkgrel = 1
 	url = https://github.com/HomeOfVapourSynthEvolution/VapourSynth-Waifu2x-w2xc
 	arch = x86_64
@@ -11,8 +11,8 @@ pkgbase = vapoursynth-plugin-waifu2x-w2xc-git
 	depends = waifu2x-converter-cpp
 	provides = vapoursynth-plugin-waifu2x-w2xc
 	conflicts = vapoursynth-plugin-waifu2x-w2xc
+	options = debug
 	source = waifu2x-w2xc::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-waifu2x-w2xc.git
 	sha1sums = SKIP
 
 pkgname = vapoursynth-plugin-waifu2x-w2xc-git
-
