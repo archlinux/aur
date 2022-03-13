@@ -26,8 +26,6 @@ pkgver() {
 
 build() {
     cd "$srcdir/$pkgname/gui"
-    yarn config set registry https://registry.npm.taobao.org
-    yarn config set sass_binary_site https://cdn.npm.taobao.org/dist/node-sass -g
     yarn --check-files
     export OUTPUT_DIR="$srcdir/$pkgname/service/server/router/web"
     yarn build
