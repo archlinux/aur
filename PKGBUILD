@@ -1,7 +1,7 @@
 # Maintainer: Ayatale <ayatale@qq.com>
 
 pkgname=ttf-sarasa-ui-sc
-pkgver=0.35.9
+pkgver=0.36.0
 pkgrel=1
 pkgdesc="A CJK programming font based on Iosevka and Source Han Sans. (123M/248M, only Sarasa UI SC inside)"
 arch=("any")
@@ -10,9 +10,9 @@ license=("OFL")
 makedepends=("p7zip")
 provides=("ttf-sarasa-ui-sc")
 conflicts=("ttf-sarasa-gothic")
-source=("$url/releases/download/v$pkgver/sarasa-gothic-ttf-$pkgver.7z"
-        "LICENSE-$pkgver::$url/raw/v${pkgver}/LICENSE")
-sha256sums=("31ea201f695819c888da2b64f8f93b2819bc07497cf598da6995e70277122459"
+source=("https://github.com/be5invis/Sarasa-Gothic/releases/download/v$pkgver/sarasa-gothic-ttf-$pkgver.7z"
+        "LICENSE-$pkgver::https://raw.githubusercontent.com/be5invis/Sarasa-Gothic/v${pkgver}/LICENSE")
+sha256sums=("a8366b532ebac177af0cb93950727caa7cb9fffe9577392677e94a86cef5543c"
             "9caccb70771a676613a8a9a9863f20c49c861383af99c1dd7cc354226b375832")
 noextract=("sarasa-gothic-ttf-$pkgver.7z")
 
@@ -22,7 +22,7 @@ prepare() {
     fi
     mkdir "sarasa-$pkgver"
     cd "sarasa-$pkgver"
-    7za x "$srcdir/sarasa-gothic-ttf-$pkgver.7z" "sarasa-ui-sc*.ttf"
+    7z x "$srcdir/sarasa-gothic-ttf-$pkgver.7z" "sarasa-ui-sc*.ttf"
 }
 
 package() {
