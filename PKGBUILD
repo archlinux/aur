@@ -15,7 +15,7 @@ optdepends=(
 	'yap: Prolog backend for logtalk'
 )
 source=("https://logtalk.org/files/logtalk-${pkgver}.tar.bz2")
-sha256sums=('fef7883e6e7511d23a0bad5e27d14188cc4484850424690d33f4b673787b2fe1')
+sha256sums=('31d59739f9bf125dc19b39ef059f0670a7234015b22fdab1918a9bef5c7f32b0')
 conflicts=()
 provides=('logtalk')
 install=logtalk.install
