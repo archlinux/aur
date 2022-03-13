@@ -3,7 +3,7 @@
 
 pkgname=woodpecker-agent
 pkgver=0.15.0
-pkgrel=7
+pkgrel=8
 pkgdesc="A community fork of the Drone CI system. Agent program."
 arch=(x86_64 armv7h aarch64)
 url="https://woodpecker-ci.org/"
@@ -24,7 +24,7 @@ sha256sums=('b1a64d5e47f003ce8bc785375663239b45532d80d6e17b358344b7e3cba930c4'
             '77d03cc1faec8ad0f313e3965b272545d3c4067c640f7cb30d80cbfcfc49720c'
             '936166e115b8b3560105ce104f78c4f6c10cbebd31a4e4aeaabb2a620da92556'
             'd2f5b398731030864da4b07e147d5bd3f4dd588f03a9ac06e9d73038e033d208'
-            '8f39980e87b13def1a8f9d00d97556d007240163104d33c472085f98be03fb3c')
+            'cf84eb651a1d22641dfc8a66dac997e675d7d1d0740f2af1803124b4ab7b3a31')
 
 
 prepare() {
