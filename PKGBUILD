@@ -3,7 +3,7 @@
 _plug=svpflow1
 pkgname=vapoursynth-plugin-${_plug}
 pkgver=4.2.0.142
-pkgrel=2
+pkgrel=3
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('x86_64')
 url='https://www.svp-team.com/wiki/Plugins:_SVPflow'
@@ -17,6 +17,7 @@ makedepends=('nasm'
              )
 source=("svpflow1-src-${pkgver}.zip::http://www.svp-team.com/files/gpl/svpflow1-src.zip")
 sha256sums=('ea68862fa05c114cf7e5386faf8c4c22d3c350978bc5e1a8fb1bd0d2c7f0e4c8')
+options=('debug')
 
 build() {
   cd svpflow1-src/svpflow1
