@@ -14,7 +14,7 @@ sha256sums=('b2fed28ba7282e4878640395284e43f08a029a6c27632df73267c8043c71b60c')
 
 check() {
   cd ${srcdir}/$pkgname-$pkgver
-  SHELL=/usr/bin/bash bash ./test_runner
+  SHELL=/usr/bin/bash bash ./test_runner -s /bin/bash
 }
 
 package() {
