@@ -2,8 +2,8 @@
 
 _plug=vautodeint
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v0.0.1.0.g70bcc3d
-pkgrel=2
+pkgver=0.0.1.0.g70bcc3d
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/gnaggnoyil/VAutoDeint'
@@ -14,12 +14,13 @@ provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/gnaggnoyil/VAutoDeint.git")
 sha256sums=('SKIP')
+options=('debug')
 
 _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 prepare() {
