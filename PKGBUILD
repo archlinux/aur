@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=downzemall
 pkgver=2.5.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A mass download manager based on the Qt5 framework and written in C/C++"
 arch=('x86_64')
 url="https://setvisible.github.io/DownZemAll"
@@ -37,7 +37,7 @@ check() {
 
 package() {
   cd "DownZemAll-$pkgver"
-  install -Dm755 build/{launcher,DownZemAll} -t "$pkgdir/opt/$pkgname"
+  install -Dm755 ../build/{launcher,DownZemAll} -t "$pkgdir/opt/$pkgname"
   install -Dm644 src/locale/*.qm -t "$pkgdir/opt/$pkgname/locale"
 
   install -Dm644 web-extension/launcher/unix/launcher-manifest-chrome.json \
