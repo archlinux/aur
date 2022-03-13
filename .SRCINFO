@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-templinearapproximate-git
 	pkgdesc = Plugin for Vapoursynth: templinearapproximate (GIT version)
-	pkgver = r3.6.g604688d
-	pkgrel = 2
+	pkgver = 3.6.g604688d
+	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=169782
 	arch = x86_64
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = vapoursynth-plugin-templinearapproximate-git
 	depends = vapoursynth
 	provides = vapoursynth-plugin-templinearapproximate
 	conflicts = vapoursynth-plugin-templinearapproximate
+	options = debug
 	source = templinearapproximate::git+https://bitbucket.org/mystery_keeper/templinearapproximate-vapoursynth.git
 	sha256sums = SKIP
 

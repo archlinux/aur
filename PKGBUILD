@@ -1,9 +1,9 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=templinearapproximate
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r3.6.g604688d
-pkgrel=2
+pkgver=3.6.g604688d
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://forum.doom9.org/showthread.php?t=169782'
@@ -14,12 +14,13 @@ provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://bitbucket.org/mystery_keeper/${_plug}-vapoursynth.git")
 sha256sums=('SKIP')
+options=('debug')
 
 _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d r)"
 }
 
 prepare() {
