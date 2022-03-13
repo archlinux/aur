@@ -2,7 +2,7 @@
 
 _plug=sangnommod
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v0.1.fix.3.gf956a1e
+pkgver=0.1.fix.3.gf956a1e
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -14,10 +14,11 @@ provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-SangNomMod.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 build() {
