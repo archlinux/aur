@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-adjust-git
 	pkgdesc = Plugin for Vapoursynth: adjust (GIT version)
-	pkgver = v1.1.ga3af7cb
+	pkgver = 1.1.ga3af7cb
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=171956
 	arch = any
