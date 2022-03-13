@@ -1,6 +1,6 @@
 pkgbase = python-av
 	pkgdesc = Pythonic bindings for FFmpeg
-	pkgver = 9.0.0
+	pkgver = 9.0.1
 	pkgrel = 1
 	url = https://docs.mikeboers.com/pyav/
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = python-av
 	makedepends = pkgconf
 	depends = python
 	depends = ffmpeg4.4
-	source = https://files.pythonhosted.org/packages/source/a/av/av-9.0.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/a/av/av-9.0.1.tar.gz
 	source = 01-build-with-ffmpeg4.4.patch
-	sha256sums = 785b7434542e24dff32e6d78764ccd998bb1c85a48a602a2b5c8ee0d7676fbd8
+	sha256sums = 2016c62264a0d00aeceb0f40b62df9f9e976067ca5f3a9bdbf532fe5ec53419f
 	sha256sums = 46f75e0b9c22409d0935063aca5a7b6d8f22559abcd0691d783e351862f11c25
 
 pkgname = python-av
