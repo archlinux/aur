@@ -1,10 +1,10 @@
 # Maintainer: zaps166 <spaz16@wp.pl>
 
 pkgname=nfs2se-git
-pkgver=1.2.3
+pkgver=v1.2.4.r13.g9423c45
 pkgrel=1
 pkgdesc='Cross-platform wrapper for the Need For Speed™ II SE game with 3D acceleration and TCP protocol!'
-arch=('i686' 'x86_64' 'armv7' 'armv7h')
+arch=('x86_64')
 url='https://github.com/zaps166/NFSIISE'
 license=('MIT')
 
@@ -18,11 +18,6 @@ machine=$(uname -m)
 if [ $machine == "x86_64" ]; then
 	depends=('lib32-sdl2' 'lib32-libgl')
 	makedepends=('gcc-multilib' 'yasm')
-	optdepends=('lib32-libpulse: Required for PulseAudio')
-	SUBMODULE=src/Asm
-elif [ $machine == "i686" ]; then
-	depends=('sdl2' 'libgl')
-	makedepends=('gcc' 'yasm')
 	SUBMODULE=src/Asm
 else
 	depends=('sdl2' 'libgl')
@@ -35,7 +30,8 @@ install=nfs2se-git.install
 
 pkgver()
 {
-	$srcdir/NFSIISE/version
+	cd $srcdir/NFSIISE
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare()
