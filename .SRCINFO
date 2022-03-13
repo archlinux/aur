@@ -15,6 +15,7 @@ pkgbase = fastgame-git
 	depends = fmt
 	depends = libsigc++-3.0
 	depends = libadwaita
+	depends = udisks2
 	provides = fastgame
 	conflicts = fastgame
 	source = git+https://github.com/wwmm/fastgame.git
