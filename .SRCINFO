@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-surfaceblur-git
 	pkgdesc = Plugin for Vapoursynth: surfaceblur (GIT version)
-	pkgver = r0.1.gf8fac49
-	pkgrel = 2
+	pkgver = 0.1.gf8fac49
+	pkgrel = 1
 	url = https://github.com/MoePus/VapourSynth-surfaceBlur
 	arch = x86_64
 	license = GPL
@@ -9,8 +9,8 @@ pkgbase = vapoursynth-plugin-surfaceblur-git
 	depends = vapoursynth
 	provides = vapoursynth-plugin-surfaceblur
 	conflicts = vapoursynth-plugin-surfaceblur
+	options = debug
 	source = surfaceblur::git+https://github.com/MoePus/VapourSynth-surfaceBlur.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-surfaceblur-git
-
