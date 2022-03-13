@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-eedi3m-git
 	pkgdesc = Plugin for Vapoursynth: eedi3m (GIT version)
-	pkgver = r4.7.gd11bdb3
+	pkgver = 4.7.gd11bdb3
 	pkgrel = 1
 	url = https://github.com/HomeOfVapourSynthEvolution/VapourSynth-EEDI3
 	arch = x86_64
@@ -15,6 +15,7 @@ pkgbase = vapoursynth-plugin-eedi3m-git
 	provides = vapoursynth-plugin-eedi3m
 	conflicts = vapoursynth-plugin-eedi3m
 	conflicts = vapoursynth-plugin-eedi3cl-git
+	options = debug
 	source = eedi3m::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-EEDI3.git
 	sha256sums = SKIP
 
