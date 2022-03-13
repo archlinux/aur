@@ -2,8 +2,8 @@
 
 _plug=xclean
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r0
-pkgrel=6
+pkgver=r53.137b82a
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('any')
 url='https://forum.doom9.org/showthread.php?t=183245'
@@ -20,6 +20,12 @@ source=("${_plug}::git+https://github.com/mysteryx93/xClean.git")
 sha256sums=('SKIP')
 
 _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
+
+pkgver() {
+  cd "${_plug}"
+#   echo "$(git describe --long --tags | tr - .)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package(){
   cd "${_plug}"

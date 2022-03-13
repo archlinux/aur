@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-xclean-git
 	pkgdesc = Plugin for Vapoursynth: xclean
-	pkgver = r0
-	pkgrel = 6
+	pkgver = r53.137b82a
+	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=183245
 	arch = any
 	license = GPL
