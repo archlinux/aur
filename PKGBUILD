@@ -2,7 +2,7 @@
 
 pkgname="python-unicorn-binance-websocket-api"
 _pkgname=${pkgname#python-}
-pkgver=1.40.2
+pkgver=1.40.5
 pkgrel=1
 pkgdesc="An unofficial Python API to use the Binance REST API"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python-cheroot' 'python-colorama' 'python-flask' 'python-flask-restful' 'python-psutil' 'python-requests' 'python-ujson' 'python-unicorn-fy' 'python-websocket-client' 'python-websockets')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('b82cf13c24e7163f513800b09460a8594de2f35fefe213c8947ae72709ac9346')
+sha256sums=('8bc62f5af495608d6cd708c459ce9ef0e4e5ca60639e78f0f2e3998f644a19dc')
 
 build() {
   cd $_pkgname-$pkgver
