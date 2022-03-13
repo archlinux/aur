@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-eoefunc-git
 	pkgdesc = Plugin for Vapoursynth: eoefunc (GIT version)
-	pkgver = r34
+	pkgver = r34.56559d7
 	pkgrel = 1
 	url = https://gitlab.com/arjraj/EoEfunc
 	arch = any

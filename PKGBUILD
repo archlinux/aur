@@ -1,8 +1,8 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=eoefunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r34
+pkgver=r34.56559d7
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -21,8 +21,8 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  printf "r%s" "$(git rev-list --count HEAD)"
 #   echo "$(git describe --long --tags | tr - .)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
