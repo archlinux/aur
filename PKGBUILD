@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'qt6-5compat'
          'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'xxhash' 'libdbusmenu-qt5' 'kwayland'
          'glibmm' 'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'libtg_owt' 
-         'xz')
+         'xz' 'qt6-base')
 makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl'
              'extra-cmake-modules' 'gtk3' 'webkit2gtk' 'abseil-cpp')
 optdepends=('gtk3: GTK environment integration'

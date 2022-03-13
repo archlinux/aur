@@ -22,6 +22,7 @@ pkgbase = 64gram-desktop-no-ad
 	depends = lz4
 	depends = minizip
 	depends = openal
+    depends = qt6-base
 	depends = qt6-imageformats
 	depends = qt6-svg
 	depends = qt6-wayland
