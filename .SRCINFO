@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-tcpclip-git
 	pkgdesc = Plugin for Vapoursynth: tcpclip (GIT version)
-	pkgver = r38
+	pkgver = 2.4.0.1.gd7b3c1a
 	pkgrel = 1
 	url = https://github.com/Beatrice-Raws/VapourSynth-TCPClip
 	arch = any

@@ -1,8 +1,8 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=tcpclip
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r38
+pkgver=2.4.0.1.gd7b3c1a
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -19,8 +19,7 @@ _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["pure
 
 pkgver() {
   cd "${_plug}"
-#   echo "$(git describe --long --tags | tr - .)"
-  printf "r%s" "$(git rev-list --count HEAD)"
+  echo "$(git describe --long --tags | tr - .)"
 }
 
 package(){
@@ -29,7 +28,7 @@ package(){
   python -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/TCPClip.py"
   python -OO -m compileall -q -f -d "${_site_packages}" "${pkgdir}${_site_packages}/TCPClip.py"
 
-
   install -Dm644 README.md "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/README.md"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/README.md"
+  exit
 }
