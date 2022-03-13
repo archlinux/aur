@@ -2,7 +2,7 @@
 # Current Maintainer : Mark Lee <mark@markelee.com>
 # Contributor: Familia < carlosfamilia at gmail dot com >
 pkgname=rstudio-server-bin
-pkgver=2021.09.2_382
+pkgver=2022.02.0_443
 pkgrel=1
 pkgdesc="A integrated development environment (IDE) for R (binary version from RStudio official website)"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 url="http://www.rstudio.org/"
 depends=('r>=3.0.1' 'glibc>=2.7' 'libedit' 'psmisc' 'openssl-1.0')
 conflicts=('rstudio-server' 'rstudio-server-git')
-sha256sums=('4941e198d855a3d0531b6fe969db3373ee24d0bed815f276f04cc3b349a9d1bb'
+sha256sums=('2828ef2f8fc93c0dfa125735709d7121ceb060bdd2d08d1f248d6e2b4bc838c0'
             '24b0545aa2a576c7d7480c0ef77d7641e2ebaadae856fd2a18f57871bd25fd88'
             '993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92')
 provides=("rstudio-server=${pkgver}")
