@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-tbilateral-git
 	pkgdesc = Plugin for Vapoursynth: tbilateral (Fork)(GIT version)
-	pkgver = v2.0.g2796911
+	pkgver = 4.0.gcdde360
 	pkgrel = 1
 	url = https://github.com/dubhater/vapoursynth-tbilateral
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = vapoursynth-plugin-tbilateral-git
 	depends = vapoursynth
 	provides = vapoursynth-plugin-tbilateral
 	conflicts = vapoursynth-plugin-tbilateral
+	options = debug
 	source = tbilateral::git+https://github.com/dubhater/vapoursynth-tbilateral.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-tbilateral-git
-
