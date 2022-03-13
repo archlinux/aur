@@ -1,6 +1,6 @@
 pkgbase = dappy
 	pkgdesc = Secure browser and name system based on blockchain
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://dappy.tech/
 	install = dappy.install
@@ -17,9 +17,9 @@ pkgbase = dappy
 	depends = libsecret
 	options = !emptydirs
 	options = !strip
-	source = https://github.com/fabcotech/dappy/releases/download/0.5.3/dappy-0.5.3-linux-amd64.deb
+	source = https://github.com/fabcotech/dappy/releases/download/0.5.4/dappy-0.5.4-linux-amd64.deb
 	source = https://raw.githubusercontent.com/fabcotech/dappy/master/LICENSE
-	sha256sums = da76dd9e577c21488f760ddc709611fde574f66efcefacc61608c4fbeb22a63f
+	sha256sums = d7f792017e1629fefd1bde083ab3b35c2064d57adb26765a780950752e107f7b
 	sha256sums = SKIP
 
 pkgname = dappy
