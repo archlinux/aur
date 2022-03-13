@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-finesharp-git
 	pkgdesc = Plugin for Vapoursynth: finesharp (GIT Version)
-	pkgver = r14
+	pkgver = r14.892023c
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=166524
 	arch = any

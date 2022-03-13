@@ -1,8 +1,8 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=finesharp
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r14
+pkgver=r14.892023c
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT Version)"
 arch=('any')
@@ -19,7 +19,7 @@ _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["pure
 
 pkgver() {
   cd "${_plug}"
-  printf "r%s" "$(git rev-list --count HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
