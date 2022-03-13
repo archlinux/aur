@@ -1,0 +1,13 @@
+pkgbase = opman-git
+	pkgdesc = Opinionated ArchLinux Package Manager (WIP)
+	pkgver = r5.b83bef5
+	pkgrel = 1
+	url = https://github.com/CRISPYricePC/opman
+	arch = any
+	license = MIT
+	makedepends = cargo
+	provides = opman
+	source = opman::git+https://github.com/CRISPYricePC/opman.git
+	md5sums = SKIP
+
+pkgname = opman-git
