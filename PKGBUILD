@@ -2,7 +2,7 @@
 # Contributor: jackoneill <cantabile dot desu at gmail dot com>
 
 pkgname=vapoursynth-git
-pkgver=R57.62.gd06204ca
+pkgver=R57.63.g1e0c6cb9
 pkgrel=1
 pkgdesc="A video processing framework with simplicity in mind. (GIT version)"
 arch=('x86_64')
@@ -15,28 +15,10 @@ makedepends=('git'
              'cython'
              'python-sphinx'
              'python-sphinx_rtd_theme'
-             'imagemagick'
-             'libass.so'
-             'tesseract'
-             'libavformat.so'
-             'libavcodec.so'
-             'libavutil.so'
-             'curl'
-             'libarchive'
+             'zimg-git'
              )
 provides=('vapoursynth')
-conflicts=('vapoursynth'
-           'vapoursynth-plugin-miscfilters'
-           )
-optdepends=('imagemagick: imwri plugin'
-            'tesseract: OCR plugin'
-            'libarchive: OCR plugin'
-            'curl: OCR plugin'
-            'libass.so: subtext plugin'
-            'libavformat.so: subtext plugin'
-            'libavcodec.so: subtext plugin'
-            'libavutil.so: subtext plugin'
-            )
+conflicts=('vapoursynth')
 source=('git+https://github.com/vapoursynth/vapoursynth.git' #branch=doodle1'
         'vapoursynth.xml'
         'wtfpl.txt::http://www.wtfpl.net/txt/COPYING'
@@ -74,8 +56,8 @@ check() {
   make -C build DESTDIR="${srcdir}/fakeroot" install
   cd vapoursynth
   _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')" \
-  LD_LIBRARY_PATH="${srcdir}/fakeroot/usr/lib" \
   PYTHONPATH="${srcdir}/fakeroot${_site_packages}:${_site_packages}" \
+  LD_LIBRARY_PATH="${srcdir}/fakeroot/usr/lib" \
   python -m unittest discover -s test -p "*test.py" -v
 }
 
