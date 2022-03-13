@@ -2,7 +2,7 @@
 
 _plug=beziercurve
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r2.13.geadfc13
+pkgver=3.0.g866d68e
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -16,10 +16,11 @@ provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/kewenyu/VapourSynth-BezierCurve.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d r)"
 }
 
 prepare() {
