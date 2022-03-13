@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-dfmderainbow-git
 	pkgdesc = Plugin for Vapoursynth: dfmderainbow (GIT version)
-	pkgver = v2.1.g61bafd9
+	pkgver = 2.1.g61bafd9
 	pkgrel = 1
 	url = https://github.com/dubhater/vapoursynth-dfmderainbow
 	arch = any
