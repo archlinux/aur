@@ -1,12 +1,12 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=readmpls
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r4.0.g205f816
+pkgver=5.1.g81d4fbb
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
-url='https://forum.doom9.org/showthread.php?t=174580'
+url='https://github.com/HomeOfVapourSynthEvolution/VapourSynth-ReadMpls'
 license=('GPL3')
 depends=('libbluray.so'
          'vapoursynth'
@@ -18,10 +18,11 @@ provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-ReadMpls.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d r)"
 }
 
 prepare() {
