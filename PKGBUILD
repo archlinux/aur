@@ -2,7 +2,7 @@
 # ---
 _pkgname=BetterBin
 pkgname=betterbin
-pkgver=1.0.r68
+pkgver=1.0.r69
 pkgrel=1
 pkgdesc='Various useful shell scripts to increace productivity and efficiency in your workflow'
 arch=(x86_64)
@@ -11,8 +11,8 @@ license=('MIT')
 depends=()
 makedepends=(git)                 
 source=(
-  "https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-${arch}.pkg.tar.zst"
-  "https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-${arch}.pkg.tar.zst.sig")
+  "https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}.pkg.tar.zst"
+  "https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}.pkg.tar.zst.sig")
 md5sums=(
   '882429c3a102dd7a999b78e77746e40c'
   '3bb588cb0bb9d923de205329dd5173d9')
