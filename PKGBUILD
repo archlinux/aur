@@ -8,21 +8,36 @@ pkgdesc="802.11 layer2 wireless network detector, sniffer, and intrusion detecti
 url="https://www.kismetwireless.net/"
 arch=('x86_64')
 license=('GPL')
-depends=('libmicrohttpd'
+depends=('bluez-libs'
+         'gcc-libs'
+         'glibc'
+         'libcap'
+         'libelf'
+         'libnl'
          'libnm'
+         'libcap-ng'
+         'libpcap'
+         'libprotobuf-c.so'
          'libusb'
          'libusb-1.0.so'
+         'libwebsockets'
          'lm_sensors'
+         'pcre'
          'protobuf-c'
-         'python')
+         'python'
+         'python-setuptools'
+         'python-protobuf'
+         'python-pyserial'
+         'python-numpy'
+         'sqlite'
+         'systemd'
+         'zlib'
+         libpcap.so libprotobuf.so libnm.so libwebsockets.so libsensors.so)
 makedepends=('git' 'python-setuptools')
 optdepends=('festival: text-to-speech support'
             'flite:  alternative/lightweight text-to-speech support'
             'gpsd: log coordinates of detected networks'
             'hackrf: use with HackRF compatible software defined radio (SDR)'
-            'python-numpy: needed by some captures/plugins'
-            'python-protobuf: needed by some captures/plugins'
-            'python-pyserial: needed by some captures/plugins'
             'sox: provide the default kismet sound playback binary'
             'wireshark-cli: provide OUI files used to determine device manufacturer'
             'wireshark-cli: mergecap, to merge multiple capture files')
@@ -33,7 +48,6 @@ backup=(etc/kismet/kismet.conf
         etc/kismet/kismet_httpd.conf
         etc/kismet/kismet_logging.conf
         etc/kismet/kismet_memory.conf
-        etc/kismet/kismet_storage.conf
         etc/kismet/kismet_uav.conf)
 conflicts=('kismet')
 install=${pkgname}.install
