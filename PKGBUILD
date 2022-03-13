@@ -71,7 +71,8 @@ build() {
     cd "$srcdir/kismet"
     ./configure --prefix=/usr \
                 --localstatedir=/var \
-                --sysconfdir=/etc/kismet
+                --sysconfdir=/etc/kismet \
+                --with-suidgroup=315
     make all plugins
 }
 
