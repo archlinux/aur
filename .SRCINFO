@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-nnedi3cl-git
 	pkgdesc = Plugin for Vapoursynth: nnedi3cl (GIT version)
-	pkgver = r8.0.geb2a810
+	pkgver = 8.0.geb2a810
 	pkgrel = 1
 	url = https://github.com/HomeOfVapourSynthEvolution/VapourSynth-NNEDI3CL
 	arch = x86_64
@@ -14,6 +14,7 @@ pkgbase = vapoursynth-plugin-nnedi3cl-git
 	depends = opencl-icd-loader
 	provides = vapoursynth-plugin-nnedi3cl
 	conflicts = vapoursynth-plugin-nnedi3cl
+	options = debug
 	source = nnedi3cl::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-NNEDI3CL.git
 	sha256sums = SKIP
 
