@@ -14,7 +14,7 @@ pkgname="${_target}-gcc-bootstrap"
 pkgver=11.2.0
 _islver=0.24
 _majorver="${pkgver%%.*}"
-pkgrel=3
+pkgrel=4
 pkgdesc='The GNU Compiler Collection - bootstrap/stage1 cross compiler for the MIPS64EL target (for the toolchain with GNU C library and multilib ABI)'
 arch=('x86_64')
 url='https://gcc.gnu.org/'
@@ -25,16 +25,14 @@ provides=('mips64el-linux-gnuabi64-gcc-bootstrap' 'mips64el-linux-gnuabi32-gcc-b
           'mips64el-linux-gnuabin32-gcc-bootstrap')
 conflicts=('mips64el-linux-gnuabi64-gcc-bootstrap' 'mips64el-linux-gnuabi32-gcc-bootstrap'
            'mips64el-linux-gnuabin32-gcc-bootstrap')
-options=('!emptydirs')
+options=('!emptydirs' '!lto')
 source=("https://sourceware.org/pub/gcc/releases/gcc-${pkgver}/gcc-${pkgver}.tar.xz"{,.sig}
         #"http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
         "https://sourceforge.net/projects/libisl/files/isl-${_islver}.tar.xz"
-        '010-gcc-fix-build.patch'
-        '020-gcc11-Wno-format-security.patch')
+        '010-gcc11-Wno-format-security.patch')
 sha256sums=('d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
             'SKIP'
             '043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad'
-            '6b3a5608bcb7bba042b25aab518c7f8dc50180174d53d5f4bbe381c9b0132e27'
             '504e4b5a08eb25b6c35f19fdbe0c743ae4e9015d0af4759e74150006c283585e')
 validpgpkeys=('13975A70E63C361C73AE69EF6EEB81F8981C74C7'  # Richard Guenther <richard.guenther@gmail.com>
               '33C235A34C46AA3FFB293709A328C3A2C3C45C06') # Jakub Jelinek <jakub@redhat.com>
@@ -48,8 +46,7 @@ prepare() {
     # link isl for in-tree build
     ln -s "../isl-${_islver}" "gcc-${pkgver}/isl"
     
-    patch -d "gcc-${pkgver}" -Np1 -i "${srcdir}/010-gcc-fix-build.patch"
-    patch -d "gcc-${pkgver}" -Np0 -i "${srcdir}/020-gcc11-Wno-format-security.patch"
+    patch -d "gcc-${pkgver}" -Np0 -i "${srcdir}/010-gcc11-Wno-format-security.patch"
 }
 
 build() {
