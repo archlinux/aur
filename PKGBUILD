@@ -2,7 +2,7 @@
 # Last images added on 2022-03-06
 
 pkgname="trougnouf-backgrounds"
-pkgver=2.2
+pkgver=2.3
 pkgrel=1
 pkgdesc="Wallpapers made of photographs posted by User:Trougnouf on Wikimedia Commons, with GNOME integration and transitions built-in to match the time pictures were taken"
 url='https://commons.wikimedia.org/wiki/User:Trougnouf'
@@ -16,11 +16,13 @@ _images=(
   'Mont_des_Arts_during_morning_civil_twilight_(DSCF7450).jpg'
   '1987,_European_year_of_the_environment_at_Place_Schuman_by_Fred_Bellefroid_and_Herman_Dottermans_(DSCF7552).jpg'
   'Tent_camping_along_the_Sulayr_trail_in_La_Taha,_Sierra_Nevada_National_Park_(DSCF5147).jpg'
+  'GR129_in_Thuin_(DSC_0158).jpg'
+  'Fagne_wallonne_(DSCF6607-DSCF6627).jpg'
   'Mossy_forest_in_Lierneux_(DSC01260).jpg'
   'Inside_an_abandoned_military_building_in_Fort_de_la_Chartreuse,_Liege,_Belgium_(DSCF3343).jpg'
   'Lemonnier_premetro_station_rails_tunnel_in_Brussels,_BE_(DSCF5655).jpg'  # 12h21
   'Pears_covered_in_snow_at_Marché_de_Boitsfort_(Belgium).jpg'
-  'Fagne_Tirifaye_with_the_Hill_river_in_Waimes,_Belgium_(DSCF3679).jpg'
+  'Canadian_geese_flying_from_Le_Rondeau,_Rambouillet_(DSC_7090).jpg'
   'Mute_swan_in_the_Semois_river_(DSC_8387).jpg'  # 13h27
   'View_through_the_shattered_glass_of_a_door_in_the_SNCB_B22490_type-K3_carriage,_looking_at_a_yellow_H._Weyhausen_KG_backhoe_loader_in_As,_Belgium_(DSCF3088-hdr).jpg'
   'Stawamus_Chief_Provincial_Park,_BC_(DSCF7828).jpg'
@@ -58,12 +60,14 @@ _stimes=(
   7800 # 3h46 to 5h56 = 130 minutes       Stuor_Dáhtá_lake_along_the_Kungsleden_trail_during_golden_hour_in_Kvikkjokk-Kabla_fjällurskog_(DSCF2557).jpg
   7560 # 5h56 to 8h02 = 126 minutes       Mont_des_Arts_during_morning_civil_twilight_(DSCF7450).jpg
   960  # 8h02 to 8h18 = 16 minutes        1987,_European_year_of_the_environment_at_Place_Schuman_by_Fred_Bellefroid_and_Herman_Dottermans_(DSCF7552).jpg
-  6780 # 8h18 to 10h11 = 113 minutes      Tent_camping_along_the_Sulayr_trail_in_La_Taha,_Sierra_Nevada_National_Park_(DSCF5147).jpg
+  4140 # 8h18 to 9h27 = 69 minutes        Tent_camping_along_the_Sulayr_trail_in_La_Taha,_Sierra_Nevada_National_Park_(DSCF5147).jpg
+  480  # 9h27 to 9h35 = 8 minutes         GR129_in_Thuin_(DSC_0158).jpg
+  2160 # 9h35 to 10h11 = 36 minutes       Fagne_wallonne_(DSCF6607-DSCF6627).jpg
   300  # 10h11 to 10h16 = 5 minutes       Mossy forest in Lierneux (DSC01260).jpg
   7500 # 10h16 to 12h21 = 125 minutes     Inside_an_abandoned_military_building_in_Fort_de_la_Chartreuse,_Liege,_Belgium_(DSCF3343).jpg
   600  # 12h21 to 12h31 = 10 minutes      Lemonnier_premetro_station_rails_tunnel_in_Brussels,_BE_(DSCF5655).jpg
-  2160 # 12h31 to 13h07 = 36 minutes      Pears_covered_in_snow_at_Marché_de_Boitsfort_(Belgium).jpg
-  1200 # 13h07 to 13h27 = 20 minutes      Fagne_Tirifaye_with_the_Hill_river_in_Waimes,_Belgium_(DSCF3679).jpg
+  2220 # 12h31 to 13h08 = 37 minutes      Pears_covered_in_snow_at_Marché_de_Boitsfort_(Belgium).jpg
+  1140 # 13h08 to 13h27 = 19 minutes      Canadian_geese_flying_from_Le_Rondeau,_Rambouillet_(DSC_7090).jpg
   1380 # 13h27 to 13h50 = 23 minutes      Mute swan in the Semois river (DSC 8387).jpg
   1080 # 13h50 to 14h08 = 18 minutes      View_through_the_shattered_glass_of_a_door_in_the_SNCB_B22490_type-K3_carriage,_looking_at_a_yellow_H._Weyhausen_KG_backhoe_loader_in_As,_Belgium_(DSCF3088-hdr).jpg
   720  # 14h08 to 14h20 = 12 minutes      Stawamus_Chief_Provincial_Park,_BC_(DSCF7828).jpg
@@ -100,11 +104,13 @@ sha256sums=('4e51508df22826986f7d6aafdf43db7178b7615c4bd77bb9f68c0aefa8211990'
             '2f8b487dc492033d8559808b78aaa52f1bee2d3e76ed2e77e8bb2cda43daa72e'
             '578d1aec14fe9a686dc86af9ed4df4eeacf3f851b681e3800cd1bfba4b5b6684'
             'c9fd7d91284b2dbbc094b66f4ae816203f429da82e13985f6545372d36c4dc3a'
+            'f07c4025e1c9e04a114974886b140eb1654f94217b7a61b9f19cb131eb6668d7'
+            '8fef489be84366d39ddd43b02bfc687d4f1182d385681a7e0e0fa76b416e2466'
             '5a77d7afb3848709cd60dbfa46aca61d053c338c946fcd5025a787bbf2fab49e'
             '60da898f8fb43491594e7466f44294db43795d61de124f590eb2be2d42ea208a'
             'ea23392a1914371d3fe41751bf14c7a3341d4d7c5c87c712150e21fbcaaa9dd7'
             '0381dac0c5cfdb7d3068d9758222708fcc281f4b45d115d93ed524894d723ccd'
-            '34e13f84a99c20b7ba7280db25d6993675b17f953a327c144e57ad04abefd08f'
+            'e3d8465e1d2b8f26baba496e378c263d739b3931a9388cd6ee6818cfb44600bd'
             '2a510c4dd858737a322c67584510a1ead5414d555515745ff5403f4851d1b026'
             '4890081d1a7cdacb036da85e54f900c5effc40741c2a76816ad316b41931ad2b'
             '799cf4bd62c5ac685acf28fe0fd8555db2fe318020767cc8dee3e377abb18a68'
