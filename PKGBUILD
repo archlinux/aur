@@ -17,7 +17,7 @@ depends=(gtk3 libxt mime-types dbus-glib ffmpeg4.4 nss ttf-font libpulse
          kfiredragonhelper)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils
              rust xorg-server-xwayland xorg-server-xvfb ccache
-             autoconf2.13 clang llvm jack nodejs cbindgen nasm pciutils
+             autoconf2.13 clang llvm jack nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard git binutils
              lld dump_syms wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi)
 optdepends=('firejail-git: Sandboxing the browser using the included profiles'
@@ -117,7 +117,7 @@ prepare() {
   patch -Np1 -i ${_patches_dir}/librewolf/mozilla-kde_after_unity.patch
 
   # Remove Mozilla VPN ads
-  patch -Np1 -i ${_patches_dir}/librewolf/mozilla-vpn-ad.patch
+  patch -Np1 -i ${_patches_dir}/librewolf/mozilla-vpn-ad2.patch
 
   # Allow SearchEngines option in non-ESR builds
   patch -Np1 -i ${_patches_dir}/sed-patches/allow-searchengines-non-esr.patch
@@ -133,6 +133,9 @@ prepare() {
   # Remove references to Firefox from the settings UI, change text in some of the links,
   # explain that we force en-US and suggest enabling history near the session restore checkbox.
   patch -Np1 -i ${_patches_dir}/librewolf-ui/pref-naming.patch
+
+  # Privacy preferences
+  patch -Np1 -i ${_patches_dir}/librewolf-ui/privacy-preferences.patch
 
   # Remove Firefox references in the urlbar, when suggesting opened tabs.
   patch -Np1 -i ${_patches_dir}/librewolf-ui/remove-branding-urlbar.patch
@@ -159,7 +162,6 @@ prepare() {
   echo "---- Fixing build issues"
   # Needed patch to have build working
   patch -Np1 -i ${_patches_dir}/misc/fix-wayland.patch
-  patch -Np1 -i ${_patches_dir}/misc/fix-psutil.patch
 
   cat >../mozconfig <<END
 ac_add_options --enable-application=browser
@@ -207,27 +209,13 @@ ac_add_options --with-system-zlib
 # Features
 ac_add_options --disable-crashreporter
 ac_add_options --disable-debug
-ac_add_options --disable-debug-js-modules
-ac_add_options --disable-debug-symbols
-ac_add_options --disable-gpsd
-ac_add_options --disable-ipdl-tests
-ac_add_options --disable-necko-wifi
-ac_add_options --disable-rust-tests
-ac_add_options --disable-synth-speechd
 ac_add_options --disable-tests
-ac_add_options --disable-trace-logging
 ac_add_options --disable-updater
-ac_add_options --disable-warnings-as-errors
-ac_add_options --disable-webspeech
-ac_add_options --disable-webspeechtestbackend
 ac_add_options --enable-alsa
 ac_add_options --enable-jack
-ac_add_options --enable-optimize
-ac_add_options --enable-pulseaudio
-ac_add_options --enable-strip
 
 # Disables crash reporting, telemetry and other data gathering tools
-mk_add_options MOZ_CRASHREPORTER=0
+#mk_add_options MOZ_CRASHREPORTER=0 supposed to be obsolete
 mk_add_options MOZ_DATA_REPORTING=0
 mk_add_options MOZ_SERVICES_HEALTHREPORT=0
 mk_add_options MOZ_TELEMETRY_REPORTING=0
