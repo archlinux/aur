@@ -39,6 +39,5 @@ package(){
   DESTDIR="${pkgdir}" ninja -C build install
 
   install -Dm644 "${_plug}/docs/misc.rst" "${pkgdir}/usr/share/doc/vapoursynth/plugins/${_plug}/readme.rst"
-  exit
 }
 
