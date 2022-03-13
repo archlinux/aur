@@ -1,0 +1,13 @@
+pkgbase = libvterm-014
+	pkgdesc = Abstract library implementation of a VT220/xterm/ECMA-48 terminal emulator
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://github.com/neovim/libvterm
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = glibc
+	source = https://www.leonerd.org.uk/code/libvterm/libvterm-0.1.4.tar.gz
+	sha256sums = SKIP
+
+pkgname = libvterm-014
