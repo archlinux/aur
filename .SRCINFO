@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-fieldhint-git
 	pkgdesc = Plugin for Vapoursynth: fieldhint (GIT version)
-	pkgver = v3.1.g1e78532
+	pkgver = 3.1.g1e78532
 	pkgrel = 1
 	url = https://github.com/dubhater/vapoursynth-fieldhint
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = vapoursynth-plugin-fieldhint-git
 	depends = vapoursynth
 	provides = vapoursynth-plugin-fieldhint
 	conflicts = vapoursynth-plugin-fieldhint
+	options = debug
 	source = fieldhint::git+https://github.com/dubhater/vapoursynth-fieldhint.git
 	sha256sums = SKIP
 
