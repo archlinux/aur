@@ -1,13 +1,19 @@
-pkgbase = cross-mips-elf-binutils
-	pkgdesc = A set of programs to assemble and manipulate binary and object files for the MIPS architecture
-	pkgver = 2.37
+pkgbase = mips-elf-binutils
+	pkgdesc = A set of programs to assemble and manipulate binary and object files for the MIPS ELF (bare-metal) architecture
+	pkgver = 2.38
 	pkgrel = 1
 	url = http://www.gnu.org/software/binutils/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = zlib
-	source = https://ftp.gnu.org/gnu/binutils/binutils-2.37.tar.bz2
-	sha256sums = 67fc1a4030d08ee877a4867d3dcab35828148f87e1fd05da6db585ed5a166bd4
+	provides = cross-mips-elf-binutils
+	conflicts = cross-mips-elf-binutils
+	replaces = cross-mips-elf-binutils
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.38.tar.bz2
+	source = https://ftp.gnu.org/gnu/binutils/binutils-2.38.tar.bz2.sig
+	validpgpkeys = 3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F
+	sha1sums = 50e0acc9ffe920e90b699e8e5db0aa9449c22cb4
+	sha1sums = SKIP
 
-pkgname = cross-mips-elf-binutils
+pkgname = mips-elf-binutils

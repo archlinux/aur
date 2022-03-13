@@ -1,61 +1,54 @@
-# Maintainer;  Marcin (CTRL) Wieczorek <marcin@marcin.co>
-# Contributor: Eole Dev <Eole Dev at-symbol outlook . fr>
+# Maintainer: Angelo Elias Dalzotto <angelodalzotto97@gmail.com>
 
-pkgname=cross-mips-elf-binutils
-_pkgname=binutils
 _target="mips-elf"
-pkgver=2.37
+pkgname=$_target-binutils
+pkgver=2.38
 pkgrel=1
-pkgdesc="A set of programs to assemble and manipulate binary and object files for the MIPS architecture"
-url="http://www.gnu.org/software/binutils/"
+pkgdesc="A set of programs to assemble and manipulate binary and object files for the MIPS ELF (bare-metal) architecture"
 arch=('i686' 'x86_64')
+url="http://www.gnu.org/software/binutils/"
 license=('GPL')
 depends=('zlib')
-source=("https://ftp.gnu.org/gnu/binutils/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('67fc1a4030d08ee877a4867d3dcab35828148f87e1fd05da6db585ed5a166bd4')
-_sysroot="/usr/lib/cross-${_target}"
+replaces=('cross-mips-elf-binutils')
+conflicts=('cross-mips-elf-binutils')
+provides=('cross-mips-elf-binutils')
+source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.bz2{,.sig})
+sha1sums=('50e0acc9ffe920e90b699e8e5db0aa9449c22cb4'
+		  'SKIP')
+validpgpkeys=('3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F')	# Nick Clifton (Chief Binutils Maintainer) <nickc@redhat.com>
 
 prepare() {
-	cd ${srcdir}/${_pkgname}-${pkgver}
-
+	cd binutils-$pkgver
 	sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
 }
 
 
 build() {
-
-	cd ${srcdir}/${_pkgname}-${pkgver}
+	cd binutils-$pkgver
 	
-	./configure \
-		"--prefix=${_sysroot}" \
-		"--bindir=/usr/bin" "--program-prefix=${_target}-" \
-		"--with-sysroot=${_sysroot}" \
-		"--target=${_target}" "--build=$CHOST" "--host=$CHOST" \
-		--disable-werror \
-		"--disable-nls" \
-		--with-gcc --with-gnu-as --with-gnu-ld \
-		--without-included-gettext
+	./configure --target=$_target \
+				--with-sysroot=/usr/$_target \
+				--prefix=/usr \
+				--with-gnu-as \
+				--with-gnu-ld \
+				--disable-nls \
+				--enable-ld=default \
+				--enable-gold \
+				--enable-plugins \
+				--enable-deterministic-archives
+
 	make
 }
 
 package() {
-	cd ${srcdir}/${_pkgname}-${pkgver}
+	cd binutils-$pkgver
 	
-	make DESTDIR=${pkgdir} install
+	make DESTDIR="$pkgdir" install
 	
-	msg "Removing duplicit files..."
-	# remove these files as they are already in the system
-	# (with native binutils)
-	rm -Rf ${pkgdir}${_sysroot}/share/{man,info}
-	# remove conflicting binaries
-	find ${pkgdir}/usr/bin/ -type f -not -name 'mips-elf-*' -delete
-	
-	msg "Creating out-of-path executables..."
-	# symlink executables to single directory with no-arch-prefix name
-	mkdir -p ${pkgdir}/usr/bin/cross/${_target}/;
-	cd ${pkgdir}/usr/bin/cross/${_target}/;
-	for bin in ${pkgdir}/usr/bin/${_target}-*; do
-		bbin=`basename "$bin"`;
-		ln -s "/usr/bin/${bbin}" `echo "$bbin" | sed "s#^${_target}-##"`;
-	done
+	# Remove file conflicting with host binutils and manpages for MS Windows tools
+	rm "$pkgdir"/usr/share/man/man1/mips-elf-{dlltool,windres,windmc}*
+	rm "$pkgdir"/usr/lib/bfd-plugins/libdep.so
+
+	# Remove info documents that conflict with host version
+ 	rm -r "$pkgdir"/usr/share/info
 }
