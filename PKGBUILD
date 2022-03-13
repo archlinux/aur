@@ -10,8 +10,8 @@ url='https://forum.doom9.org/showthread.php?t=183245'
 license=('GPL')
 depends=('vapoursynth-plugin-rgsf-git'
          'vapoursynth-plugin-knlmeanscl-git'
-         'vapoursynth-plugin-fmtconv'
-         'vapoursynth-plugin-mvtools'
+         'vapoursynth-plugin-fmtconv-git'
+         'vapoursynth-plugin-mvtools-git'
          'vapoursynth-plugin-mvtools_sf-git'
          'vapoursynth-plugin-temporalmedian-git'
          )
