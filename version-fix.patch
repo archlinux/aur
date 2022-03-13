@@ -2,8 +2,8 @@ diff --git a/build.sbt b/build.sbt
 index aa383b99d..f78ecbe5c 100644
 --- a/build.sbt
 +++ b/build.sbt
-@@ -39,0 +39,0 @@ usefulTasks := Welcome.tasks
-
+@@ -39,10 +39,7 @@ usefulTasks := Welcome.tasks
+ 
  inThisBuild(
    List(
 -    version ~= { dynVer =>
