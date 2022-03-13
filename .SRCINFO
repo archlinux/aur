@@ -1,5 +1,6 @@
 pkgbase = simplex-chat-git
-	pkgver = v1.3.1.r18.gc6a49b0
+	pkgdesc = a 100% private-by-design chat platform
+	pkgver = v1.3.1.r34.g22ff17ae
 	pkgrel = 1
 	url = https://github.com/simplex-chat/simplex-chat
 	arch = x86_64
