@@ -1,7 +1,7 @@
 pkgbase = pysavetube
 	pkgdesc = Videos Downloader.
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/yucefsourani/pysavetube
 	arch = any
 	license = GPL3
@@ -12,6 +12,7 @@ pkgbase = pysavetube
 	depends = python-gobject
 	depends = gettext
 	depends = libhandy
+	depends = gnome-icon-theme
 	source = pysavetube::git+https://github.com/yucefsourani/pysavetube.git
 	sha256sums = SKIP
 
