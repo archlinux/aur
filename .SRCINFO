@@ -1,7 +1,7 @@
 pkgbase = python-pipdate
 	pkgdesc = Updates all pip-installed packages
 	pkgver = 0.5.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nschloe/pipdate
 	arch = any
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = python-pipdate
 	depends = python-rich
 	depends = python-requests
 	depends = python-setuptools
-	optdepends = python-importlib_metadata: REQUIRED for python<3.8
+	optdepends = python-importlib-metadata: REQUIRED for python<3.8
 	source = python-pipdate-0.5.5.tar.gz::https://github.com/nschloe/pipdate/archive/0.5.5.tar.gz
 	sha256sums = 507f15f656b45a46f7ad32f1ceb4e5cc8fcd9c3e6293ee7004921d1e3d1bd291
 
