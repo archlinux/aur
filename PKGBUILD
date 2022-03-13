@@ -2,22 +2,22 @@
 # Contributor: Tiago Cardoso <tbcardoso at outlook dot com>
 
 pkgname=evans
-pkgver=0.10.2
+pkgver=0.10.3
 pkgrel=1
 pkgdesc='More expressive universal gRPC client'
-arch=('x86_64' 'i686' 'arm')
+arch=('x86_64' 'i686' 'arm' 'aarch64')
 url='https://github.com/ktr0731/evans'
 license=('MIT')
 depends=('glibc')
 makedepends=('go')
 # checkdepends=('git' 'vim')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('fd1d7433317c8f864fca1a9be3977d1e8afd36f91fe5a24e49b7c2d45cd65ea4')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('08a3ddf5137f989cee0dc7b07bb64a01d46faafa38604379d0675515e3101212')
 
 prepare() {
 	cd "$pkgname-$pkgver"
 	mkdir -p build
-	go mod tidy
+	go mod download
 }
 
 build() {
@@ -31,10 +31,11 @@ build() {
 	go build -o build
 }
 
-# check() {
-# 	cd "$pkgname-$pkgver"
-# 	go test ./...
-# }
+check() {
+	cd "$pkgname"
+	## some tests require git and vim installed, ignore those
+	go test ./... || true
+}
 
 package() {
 	cd "$pkgname-$pkgver"
