@@ -3,9 +3,9 @@
 
 pkgname=alist-bin
 _pkgname=${pkgname%-bin}
-pkgver=2.1.3
+pkgver=2.2.0
 _pkgver=${pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc="Another file list program that supports multiple storage"
 arch=("aarch64" "arm" "armv6h" "armv7h"  "i686" "x86_64")
 url="https://github.com/Xhofe/alist"
@@ -23,12 +23,12 @@ source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz"::"${url}/releases/download/v${_
 sha256sums=('b96d55f7e83310a7556a5b023be60e12f44c484e3e136f1488d737126c9ed34f'
 'ba9cd5b593313183ad8c0f008a6edba539063193c416d3893a5344e104a3fff1'
 )
-sha256sums_aarch64=('2bb54a6830f22c588d29d434856f4d2a544906c7e5d9c730f633bc58d1970e6f')
-sha256sums_arm=('69abfadf266a2a43dfd5cffa0dbddc4e4440bc746d6baf171d0ff9147ab38bc5')
-sha256sums_armv6h=('3fc26c5bb86f940bb05a38167fa61544de0b84bdb6eb82afaeb0dfe9442926d4')
-sha256sums_armv7h=('c9749e48195d328939f3bad94d75b559d68d1ef5da55665af77120d0cb3e1130')
-sha256sums_i686=('f963bca4afcc9474f07482cd0efdd5c02b9f3611fe9d54e0819b543589df166d')
-sha256sums_x86_64=('8058dc641bf79c68091ec2098285472cd827fe7429bec89d455cf9e0e922e0e2')
+sha256sums_aarch64=('d975385cb31736233e52e6fbc2f1bb2566fe06fa2a478c223d359938c4010220')
+sha256sums_arm=('f63d1b49c7c3fd322bceb30881435e5abcb3517b2b1fc5b388b16d51ae862de5')
+sha256sums_armv6h=('d8df62e2a01673aee9ff893e0e596b3937a7e1ddf1efa7177603b5de135ae53a')
+sha256sums_armv7h=('a7598bcdb2858c9517c23dab6131308276e1732e6b44ed163589aabc188af318')
+sha256sums_i686=('63d2871eae404f1be001016bda5b5dc6de36f86a0496c56bcea2238fd686a6aa')
+sha256sums_x86_64=('6ffd7d711b75949e7963b60bb5c5dbbd213fd1b58616f632812fbaa7cbeeaa5d')
 
 package() {
     install -Dm755 alist-linux* ${pkgdir}/usr/bin/alist
