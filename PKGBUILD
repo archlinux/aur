@@ -3,11 +3,11 @@
 pkgname=betterzsh
 pkgver=1.0.r5
 pkgrel=1
-pkgdesc='Configurations to enhance user experience within the ZSH shell.'
+pkgdesc="Configuration's aimed at enhancing user experience in the ZSH shell."
 arch=(any)
 url="https://gitlab.com/qYp/${pkgname}"
 license=('MIT')
-depends=(zsh xorg-xset zsh-fast-syntax-highlighting zsh-autopair-git zsh-autosuggestions-git)
+depends=(zsh xorg-xset zsh-autosuggestions-git zsh-fast-syntax-highlighting zsh-autopair-git zsh-completions)
 optdepends=('starship: Adds very useful git functionality to the terminal')
 makedepends=(git)                 
 source=("git+${url}.git")
