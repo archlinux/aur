@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-cas-git
 	pkgdesc = Plugin for Vapoursynth: cas (GIT version)
-	pkgver = r2.0.gd0df8c2
+	pkgver = 2.0.gd0df8c2
 	pkgrel = 1
 	url = https://github.com/HomeOfVapourSynthEvolution/VapourSynth-CAS
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = vapoursynth-plugin-cas-git
 	depends = vapoursynth
 	provides = vapoursynth-plugin-cas
 	conflicts = vapoursynth-plugin-cas
+	options = debug
 	source = cas::git+https://github.com/HomeOfVapourSynthEvolution/VapourSynth-CAS.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-cas-git
-
