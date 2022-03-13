@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-vfrtocfr-git
 	pkgdesc = Plugin for Vapoursynth: vfrtocfr (GIT version)
-	pkgver = v1.0.9.gd00a374
+	pkgver = 1.0.9.gd00a374
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=174711
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = vapoursynth-plugin-vfrtocfr-git
 	depends = vapoursynth
 	provides = vapoursynth-plugin-vfrtocfr
 	conflicts = vapoursynth-plugin-vfrtocfr
+	options = debug
 	source = vfrtocfr::git+https://github.com/Irrational-Encoding-Wizardry/Vapoursynth-VFRToCFR.git
 	sha256sums = SKIP
 
