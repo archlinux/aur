@@ -1,8 +1,8 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=vardefunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=0.6.1.6.gc167850
+pkgver=0.6.2.1.g0ddc6ae
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -33,6 +33,7 @@ pkgver() {
   cd "${_plug}"
   echo "$(git describe --long --tags | tr - .)"
 }
+
 build() {
   cd "${_plug}"
   pip wheel --no-deps . -w dist
