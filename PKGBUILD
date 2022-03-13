@@ -2,7 +2,7 @@
 
 pkgname='hunspell-pt_pt'
 _pkgname='hunspell-pt_PT'
-pkgver=20211125
+pkgver=20220304
 pkgrel=1
 pkgdesc="Portuguese (European, post-orthographic agreement) hunspell dictionaries"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://natura.di.uminho.pt/download/sources/Dictionaries/hunspell/"
 license=('GPL' 'LGPL' 'MPL')
 optdepends=('hunspell:	the spell checking libraries and apps')
 source=("http://natura.di.uminho.pt/download/sources/Dictionaries/hunspell/$_pkgname-$pkgver.tar.gz")
-sha256sums=('800a4a065c6bcbb6db7d18a526b3dd97daeaf5c37a16f232ac50374c77945ed0')
+sha256sums=('b11991b2afed23444a8824c0340c0f0c42a2914e0b52c941372909475c58467e')
 
 package() {
   cd $srcdir/$_pkgname-$pkgver
