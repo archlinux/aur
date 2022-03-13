@@ -1,7 +1,7 @@
 # Maintainer: Léopold Koprivnik Ibghy <skwal.net@gmail.com>
 pkgname="skwal-dotfiles-git"
 pkgver=r22.5902e45
-pkgrel=1
+pkgrel=2
 pkgdesc="installation tool for skwal dotfiles"
 arch=("any")
 url="https://github.com/SkwalExe/dotfiles"
@@ -20,7 +20,7 @@ pkgver() {
 prepare() {
 	cd dotfiles
       
-	sudo rm -rf /usr/bin/skwal-dotfiles-install
+	# sudo rm -rf /usr/bin/skwal-dotfiles-install
 }
 
 build() {

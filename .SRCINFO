@@ -1,7 +1,7 @@
 pkgbase = skwal-dotfiles-git
 	pkgdesc = installation tool for skwal dotfiles
 	pkgver = r22.5902e45
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SkwalExe/dotfiles
 	install = skwal-dotfiles.install
 	arch = any
