@@ -2,8 +2,8 @@
 
 _plug=scoll
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r2
-pkgrel=3
+pkgver=r2.3fb6aba
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://gist.github.com/4re'
@@ -25,7 +25,7 @@ _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["pure
 
 pkgver() {
   cd "${_plug}"
-  printf "r%s" "$(git rev-list --count HEAD)"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {

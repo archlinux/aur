@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-scoll-git
 	pkgdesc = Plugin for Vapoursynth: scoll (GIT version)
-	pkgver = r2
-	pkgrel = 3
+	pkgver = r2.3fb6aba
+	pkgrel = 1
 	url = https://gist.github.com/4re
 	arch = any
 	license = GPL
