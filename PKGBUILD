@@ -1,9 +1,9 @@
 pkgname="md-git"
-pkgver="1.10"
-pkgrel="2"
+pkgver=1.11
+pkgrel=1
 pkgdesc="Simple MarkDown Reader"
 
-arch=("x86_64" "i686")
+arch=("x86_64" "i686" "x86" "arm")
 
 makedepends=("git" "binutils" "make" "gcc")
 depends=()
@@ -42,12 +42,10 @@ package() {
 	mkdir -p "${pkgdir}/usr/bin/"
 	mkdir -p "${pkgdir}/usr/doc/md/"
 
-	strip -s ${srcdir}/md/bin/md	
-
 	chown root:root ${srcdir}/md/bin/md
 	chmod a+x ${srcdir}/md/bin/md
 
-	cp "${srcdir}/md/doc/CommandLine.md" "${pkgdir}/usr/doc/md/CommandLine.md"
+	cp ${srcdir}/md/doc/* ${pkgdir}/usr/doc/md/
 	cp "${srcdir}/md/face" "${pkgdir}/usr/doc/md/face"
 	
 	mv "${srcdir}/md/bin/md" "${pkgdir}/usr/bin"
