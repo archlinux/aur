@@ -1,8 +1,8 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=rife-ncnn-vulkan
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r1.15.gf821053
+pkgver=2.0.gc2f08c5
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -11,6 +11,7 @@ license=('MIT')
 depends=('vapoursynth')
 makedepends=('git'
              'meson'
+             'cmake'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -22,10 +23,11 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             )
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d r)"
 }
 
 prepare() {
