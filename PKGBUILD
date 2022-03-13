@@ -1,44 +1,60 @@
-# Maintainer: Jeremy Symon <jtsymon@gmail.com>
-pkgname='itch-setup-git'
-_gitname='itch-setup'
-pkgdesc='An installer for the itch.io desktop app'
-arch=('x86_64' 'i686')
-url='https://itch.io/'
-license=('MIT')
-depends=()
-makedepends=('git' 'go-pie' 'npm')
-provides=('itch' 'kitch')
-pkgver=1.24.0.r0.g083c5ca
-pkgrel=2
-source=(
-  "git+https://github.com/itchio/${_gitname}.git"
-)
-sha256sums=(
-  'SKIP'
-)
+# Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Jeremy Symon <jtsymon@gmail.com>
+
+pkgname=itch-setup-git
+pkgver=1.24.0.r18.gc718b87
+pkgrel=1
+pkgdesc="Installer for the itch.io desktop app"
+arch=(x86_64)
+url="https://itch.io/"
+license=(MIT)
+depends=(gtk3)
+makedepends=(git go npm nodejs-lts-fermium)
+provides=(itch-setup)
+conflicts=(itch-setup)
+_itchver=25.5.1
+source=("git+https://github.com/itchio/itch-setup.git"
+        "itch-${_itchver}.tar.gz::https://github.com/itchio/itch/archive/refs/tags/v${_itchver}.tar.gz"
+        'itch.desktop'
+        'itch.sh')
+sha256sums=('SKIP'
+            '0a7094bff90992e3788fd9f9df43a4a3c9233bfcf0f5da037e59af6b365a3249'
+            '593d3d46e379fc634ace8a97bb738a9bda1b29ea78d99e5542be47acb2865731'
+            '985cf842686598dd7e4e153f6fd7c9ee901fd200403893235e2974b108653bcf')
+options=(!lto)
 
 pkgver() {
-  cd "$_gitname"
+  cd "${srcdir}/${pkgname%-git}"
   git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-prepare() {
-  cd "$srcdir/$_gitname"
-  npm install
-}
-
 build() {
-  export GOPATH="$srcdir"
-  export GOBIN="$GOPATH/bin"
-  mkdir -p $GOPATH $GOBIN
-  cd "$_gitname"
-  go get -v -u
-  go build
-  go clean -modcache
+  cd "${srcdir}/${pkgname%-git}"
+  npm install
+
+  go build \
+    -gcflags "all=-trimpath=${PWD}" \
+    -asmflags "all=-trimpath=${PWD}" \
+    -ldflags "-X main.Version=v${pkgver} -extldflags ${LDFLAGS}" \
+    -buildmode=pie \
+    .
 }
 
 package() {
-  install -Dm755 "bin/itch-setup" "$pkgdir/usr/bin/itch"
-  ln -s "itch" "$pkgdir/usr/bin/kitch"
-  install -Dm644 "$_gitname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${srcdir}/${pkgname%-git}"
+  install -Dm755 itch-setup -t "${pkgdir}/usr/bin/"
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+
+  install -Dm755 ../itch.sh "${pkgdir}/usr/bin/itch"
+  install -Dm644 ../itch.desktop -t "${pkgdir}/usr/share/applications/"
+
+  cd "${srcdir}/itch-${_itchver}"
+  for icon in release/images/itch-icons/icon*.png
+  do
+    iconsize="${icon#release/images/itch-icons/icon}"
+    iconsize="${iconsize%.png}"
+    icondir="${pkgdir}/usr/share/icons/hicolor/${iconsize}x${iconsize}/apps/"
+    install -d "${icondir}"
+    install -Dm644 "$icon" "$icondir/itch.png"
+  done
 }

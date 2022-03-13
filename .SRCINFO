@@ -1,18 +1,25 @@
 pkgbase = itch-setup-git
-	pkgdesc = An installer for the itch.io desktop app
-	pkgver = 1.24.0.r0.g083c5ca
-	pkgrel = 2
+	pkgdesc = Installer for the itch.io desktop app
+	pkgver = 1.24.0.r18.gc718b87
+	pkgrel = 1
 	url = https://itch.io/
 	arch = x86_64
-	arch = i686
 	license = MIT
 	makedepends = git
-	makedepends = go-pie
+	makedepends = go
 	makedepends = npm
-	provides = itch
-	provides = kitch
+	makedepends = nodejs-lts-fermium
+	depends = gtk3
+	provides = itch-setup
+	conflicts = itch-setup
+	options = !lto
 	source = git+https://github.com/itchio/itch-setup.git
+	source = itch-25.5.1.tar.gz::https://github.com/itchio/itch/archive/refs/tags/v25.5.1.tar.gz
+	source = itch.desktop
+	source = itch.sh
 	sha256sums = SKIP
+	sha256sums = 0a7094bff90992e3788fd9f9df43a4a3c9233bfcf0f5da037e59af6b365a3249
+	sha256sums = 593d3d46e379fc634ace8a97bb738a9bda1b29ea78d99e5542be47acb2865731
+	sha256sums = 985cf842686598dd7e4e153f6fd7c9ee901fd200403893235e2974b108653bcf
 
 pkgname = itch-setup-git
-
