@@ -1,8 +1,8 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=httpit
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="Rapid HTTP(S) benchmark tool"
 arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/gonetx/httpit"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('6f9b4b28e000b3d07ae02e58345730f7e52d076a6dd417c615a24ae0b719b3de')
+sha256sums=('1dcc896d9fa1088d182b14f20cee8393ecc5a271a75fa2abb866a5fd7da36126')
 
 prepare() {
 	cd "$pkgname-$pkgver"
