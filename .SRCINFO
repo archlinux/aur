@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-median-git
 	pkgdesc = Plugin for Vapoursynth: median (Fork)(GIT version)
-	pkgver = v4.0.g9a2065c
+	pkgver = 4.0.g9a2065c
 	pkgrel = 1
 	url = https://github.com/dubhater/vapoursynth-median
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = vapoursynth-plugin-median-git
 	provides = vapoursynth-plugin-median-hg
 	conflicts = vapoursynth-plugin-median
 	conflicts = vapoursynth-plugin-median-hg
+	options = debug
 	source = median::git+https://github.com/dubhater/vapoursynth-median.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-median-git
-
