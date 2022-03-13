@@ -1,6 +1,6 @@
 pkgbase = r-openssl
 	pkgdesc = Toolkit for Encryption, Signatures and Certificates Based on OpenSSL
-	pkgver = 1.4.6
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=openssl
 	arch = i686
@@ -8,7 +8,8 @@ pkgbase = r-openssl
 	license = MIT
 	depends = r
 	depends = r-askpass
-	depends = openssl>=1.0.1
+	depends = openssl>=1.0.2
+	optdepends = r-curl
 	optdepends = r-testthat
 	optdepends = r-digest
 	optdepends = r-knitr
@@ -16,7 +17,7 @@ pkgbase = r-openssl
 	optdepends = r-jsonlite
 	optdepends = r-jose
 	optdepends = r-sodium
-	source = https://cran.r-project.org/src/contrib/openssl_1.4.6.tar.gz
-	sha256sums = 43b832af70e71770168b997107c52c8f406f8c33e9ef9b289610bccea2f34359
+	source = https://cran.r-project.org/src/contrib/openssl_2.0.0.tar.gz
+	sha256sums = eb28fde65f33ffb780abb85ab17d724ae55c2b9dbe171155d3dd2d7154ff564b
 
 pkgname = r-openssl
