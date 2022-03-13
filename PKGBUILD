@@ -2,7 +2,7 @@
 
 _plug=continuityfixer
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v6.0.gf1bc9a9
+pkgver=6.2.gf34d05b
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -14,10 +14,11 @@ provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/MonoS/VS-ContinuityFixer.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - . | tr V v)"
+  echo "$(git describe --long --tags | tr - . | tr -d V)"
 }
 
 prepare() {
