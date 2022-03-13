@@ -13,7 +13,7 @@ conflicts=('influxdb')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/influxdata/influxdb/archive/v${pkgver}.tar.gz"
         "fix-go114.patch::https://github.com/Foxboron/influxdb/commit/f8453b48862b50fe44021e320332f75e32457f29.patch"
         "fix-go115.patch::https://github.com/influxdata/influxdb/commit/3a03ad500a4b2bba65a4af74995ad54e88de7210.patch")
-sha256sums=('9f2c135c8f9f50ca469196e6b4e575e26f1a338538788e71b664212e03b4df7b'
+sha256sums=('0253741b3d2883435f6a49b72ec2647f56bcbbed9281f97c93f93ce3777d4e64'
             'f7194a068dfa1a68efe7b22f67a619697b605155cfde0ea61ef0e98a7473c89e'
             'f32363bf14e34aff8bb06d4345d8e2031a31a04c0e13bbc55a345f6e679eccb4')
 
