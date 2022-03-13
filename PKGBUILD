@@ -1,24 +1,25 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: Mikuro Kagamine <mikurok@forgecrushing.com>
 
 _plug=edgefixer
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r1.8.gfb00a01
+pkgver=2.0.gd4a1dce
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
 url='https://github.com/sekrit-twc/EdgeFixer'
-license=('GPL2')
+license=('GPL')
 depends=('vapoursynth')
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/sekrit-twc/EdgeFixer.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d r)"
 }
 
 prepare() {
