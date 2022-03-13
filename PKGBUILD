@@ -1,8 +1,10 @@
+# Maintainer: Grey Christoforo <first name at last name dot net>
+# Maintainer: peippo <christoph+aur@christophfink.com>
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _cranname=withr
-_cranver=2.4.3
+_cranver=2.5.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +15,7 @@ license=(MIT)
 depends=('r>=3.2.0')
 optdepends=(r-callr r-covr r-dbi r-knitr r-rmarkdown r-rsqlite r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('9bdac7459ccc6c2d599ecfd132a7f0aa68d958942d9fe7dbb0442c9eda129d4c')
+sha256sums=('37317b3ed790a08407072993a05ab255f6305f95a12a16e0e28aa6aa80fc8bc0')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
