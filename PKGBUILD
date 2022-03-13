@@ -2,7 +2,7 @@
 
 _plug=debandshit
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v0.4.5.0.g84ae878
+pkgver=0.4.5.0.g84ae878
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -15,6 +15,7 @@ depends=('vapoursynth-plugin-mvsfunc-git'
 makedepends=('git'
              'python-pip'
              'python-wheel'
+             'python-setuptools'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -23,7 +24,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 build() {
