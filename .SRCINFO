@@ -8,7 +8,7 @@ pkgbase = osvr-core-git
 	makedepends = git
 	makedepends = cmake
 	depends = jsoncpp
-	depends = markdown
+	depends = discount
 	depends = boost
 	depends = opencv
 	depends = osvr-libfunctionality-git
@@ -29,4 +29,3 @@ pkgbase = osvr-core-git
 	md5sums = ae0e5847c89cc40840548a9b1bd9e49f
 
 pkgname = osvr-core-git
-

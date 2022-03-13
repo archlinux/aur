@@ -6,7 +6,7 @@ arch=(i686 x86_64)
 url="https://github.com/OSVR/OSVR-Core"
 #license=('GPL')
 makedepends=('git' 'cmake')
-depends=('jsoncpp' 'markdown' 'boost' 'opencv' 'osvr-libfunctionality-git' 'libuvc') #TODO: add more deps
+depends=('jsoncpp' 'discount' 'boost' 'opencv' 'osvr-libfunctionality-git' 'libuvc') #TODO: add more deps
 source=("osvr-core::git+https://github.com/OSVR/OSVR-Core.git"
 	"json-schemas::git+https://github.com/OSVR/OSVR-JSON-Schemas.git"
 	"vendor-discount-windows-bins::git+https://github.com/OSVR/discount.git"
