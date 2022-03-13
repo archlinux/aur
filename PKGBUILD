@@ -64,9 +64,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/kismet"
     # patch setup.py install command
-    find . -name Makefile.in -exec sed -i 's/setup.py install/setup.py install --root="$(DESTDIR)" -O1/' {} \;
-    # include submodule for docs
-    git submodule update --init docs
+    find . -name Makefile.in -exec sed -i 's/setup.py install/setup.py install -O1/' {} \;
 }
 
 build() {
@@ -85,10 +83,6 @@ package() {
     chmod u+w "${pkgdir}"/usr/bin/kismet*
     chmod o-x "${pkgdir}"/usr/bin/kismet_cap*
     chown 0:315 "${pkgdir}"/usr/bin/kismet_cap*
-
-    # include docs in /usr/share/doc/
-    mkdir -p ${pkgdir}/usr/share/doc/$pkgname
-    cp -r docs/* "$pkgdir/usr/share/doc/$pkgname/"
 
     # create group kismet via sysusers
     cd "$srcdir"
