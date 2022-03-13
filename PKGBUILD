@@ -1,9 +1,9 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=scenechange
 pkgname=vapoursynth-plugin-${_plug}
 pkgver=0.2.0_2
-pkgrel=8
+pkgrel=9
 pkgdesc="Plugin for Vapoursynth: ${_plug}"
 arch=('x86_64')
 url='http://forum.doom9.org/showthread.php?t=166769'
@@ -11,6 +11,7 @@ license=('LGPL2.1')
 depends=('vapoursynth-plugin-temporalsoften2-git')
 source=("https://sl1pkn07.wtf/${_plug}/${_plug}-${pkgver/_/-}.7z")
 sha256sums=('138ef3bd565e54dab556080e0ae3a426ef00f62f340e8eb6c2cb134dbf14332c')
+options=('debug')
 
 _site_packages="$(python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')"
 

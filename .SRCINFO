@@ -1,11 +1,12 @@
 pkgbase = vapoursynth-plugin-scenechange
 	pkgdesc = Plugin for Vapoursynth: scenechange
 	pkgver = 0.2.0_2
-	pkgrel = 8
+	pkgrel = 9
 	url = http://forum.doom9.org/showthread.php?t=166769
 	arch = x86_64
 	license = LGPL2.1
 	depends = vapoursynth-plugin-temporalsoften2-git
+	options = debug
 	source = https://sl1pkn07.wtf/scenechange/scenechange-0.2.0-2.7z
 	sha256sums = 138ef3bd565e54dab556080e0ae3a426ef00f62f340e8eb6c2cb134dbf14332c
 
