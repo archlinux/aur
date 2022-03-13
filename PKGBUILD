@@ -10,6 +10,7 @@ url="https://www.leonerd.org.uk/code/libvterm/"
 license=('MIT')
 depends=('glibc')
 provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
 source=("https://www.leonerd.org.uk/code/libvterm/$_pkgname-$pkgver.tar.gz")
 noextract=()
 sha256sums=('bc70349e95559c667672fc8c55b9527d9db9ada0fb80a3beda533418d782d3dd')
