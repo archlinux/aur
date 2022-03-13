@@ -3,17 +3,17 @@
 _arch=powerpc
 _target=$_arch-none-eabi
 pkgname=$_target-toolchain
-pkgver=20211101
+pkgver=20220313
 pkgrel=1
 pkgdesc="A complete gcc/binutils/newlib toolchain for $_target"
-depends=('zlib' 'bash' 'libmpc')
+depends=('zlib' 'bash' 'libmpc' 'libisl')
 url="http://www.gnu.org"
 conflicts=($_target-elf-gcc $_arch-elf-binutils $_arch-elf-newlib)
 arch=('x86_64')
 depends=(libelf)
 _gcc=gcc-11.2.0
-_binutils=binutils-2.37
-_newlib=newlib-4.1.0
+_binutils=binutils-2.38
+_newlib=newlib-4.2.0.20211231
 license=('GPL' 'BSD')
 options=('!strip')
 
@@ -22,8 +22,8 @@ source=("http://gnuftp.uib.no/gcc/${_gcc}/${_gcc}.tar.xz"
 	"ftp://sourceware.org/pub/newlib/${_newlib}.tar.gz")
 
 sha512sums=('d53a0a966230895c54f01aea38696f818817b505f1e2bfa65e508753fcd01b2aedb4a61434f41f3a2ddbbd9f41384b96153c684ded3f0fa97c82758d9de5c7cf'
-            '5c11aeef6935860a6819ed3a3c93371f052e52b4bdc5033da36037c1544d013b7f12cb8d561ec954fe7469a68f1b66f1a3cd53d5a3af7293635a90d69edd15e7'
-            '6a24b64bb8136e4cd9d21b8720a36f87a34397fd952520af66903e183455c5cf19bb0ee4607c12a05d139c6c59382263383cb62c461a839f969d23d3bc4b1d34')
+            '8bf0b0d193c9c010e0518ee2b2e5a830898af206510992483b427477ed178396cd210235e85fd7bd99a96fc6d5eedbeccbd48317a10f752b7336ada8b2bb826d'
+            '0c3efd7b74a6b8457a717cbb6aa6c5ff268eeaba375535465c6bd6502c3d32b54a9bc3ba7f2c6990f78e29152eee2f62acb39b674d24f9ddf440374a1ec9d2e8')
 
 CFLAGS=${CFLAGS/-Werror=format-security/}
 CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
@@ -81,6 +81,3 @@ package()
 	chown -R root:root "$pkgdir"
 
 }
-
-
-
