@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-nrdb-git
 	pkgdesc = Plugin for Vapoursynth: nrdb (GIT version)
-	pkgver = v2.2.gdd2f56a
+	pkgver = 2.2.gdd2f56a
 	pkgrel = 1
 	url = https://github.com/dubhater/vapoursynth-nrdb
 	arch = any
