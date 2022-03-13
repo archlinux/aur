@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Categories=Network;Email;
+Terminal=false
+Exec=/opt/sieve-app/sieve
+Name=Sieve
+Comment=Sieve script editor
+Icon=/opt/sieve-app/resources/app/libs/icons/linux.png

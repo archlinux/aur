@@ -1,0 +1,14 @@
+pkgbase = sieve-app-bin
+	pkgdesc = Sieve script editor app version
+	pkgver = 0.6.1
+	pkgrel = 1
+	url = https://github.com/thsmi/sieve/
+	arch = x86_64
+	license = AGPL-3.0
+	noextract = sieve-0.6.1-linux-x64.zip
+	source = https://github.com/thsmi/sieve/releases/download/0.6.1/sieve-0.6.1-linux-x64.zip
+	source = sieve-app.desktop
+	sha256sums = 8b146c4681d6395c146d20e6337db6ad58d098bf6621b7c79d48cc81d7c82abe
+	sha256sums = cdd12628fcd3ff6d23cbb746e6cbdacc441fc93ed223796ef6db144b152f14a1
+
+pkgname = sieve-app-bin
