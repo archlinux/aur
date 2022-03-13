@@ -1,0 +1,11 @@
+pkgbase = ttf-chango
+	pkgdesc = Chango TTF Font from Fontstage
+	pkgver = 1
+	pkgrel = 1
+	url = https://www.1001fonts.com/users/fontstage/
+	arch = any
+	license = custom:SIL Open Font License v1.1
+	source = chango.zip::https://dl.1001fonts.com/download/chango.zip
+	sha256sums = ac73c1db32b06a615b9f7f4eba14333db19426b0363b305aba8aa5bd9bd254cb
+
+pkgname = ttf-chango
