@@ -9,8 +9,8 @@ pkgname=('virtualbox-svn'
          'virtualbox-guest-utils-svn'
          'virtualbox-guest-utils-nox-svn'
          'virtualbox-ext-vnc-svn')
-pkgver=93465
-pkgrel=2
+pkgver=93537
+pkgrel=3
 arch=('x86_64')
 url='http://virtualbox.org'
 license=('GPL' 'custom')
@@ -28,7 +28,6 @@ makedepends=('subversion'
              'jdk8-openjdk'
              'libidl2'
              'libpulse'
-             'libstdc++5'
              'libvncserver'
              'libvpx'
              'libxcomposite'
