@@ -1,8 +1,8 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=vsakarin
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=v0.92.5.g67cea7d
+pkgver=0.92.8.gde866cb
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -18,10 +18,11 @@ provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/akarinVS/vapoursynth-plugin.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 prepare(){
@@ -30,7 +31,6 @@ prepare(){
 
 build() {
   cd build
-
   arch-meson "../${_plug}" \
     --buildtype=release
 
