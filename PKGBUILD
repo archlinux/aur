@@ -2,7 +2,7 @@
 
 _name=spsdk
 pkgname=python-spsdk
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc="NXP Secure Provisioning SDK"
 arch=(any)
@@ -46,9 +46,9 @@ source=(
   $_name-$pkgver.tar.gz::https://github.com/NXPmicro/$_name/archive/refs/tags/$pkgver.tar.gz
   $pkgname-1.6.0-remove_pypemicro.patch
 )
-sha512sums=('6db59ffc83bb09e9323d3c3717837c75ed7ed759e8464288c8920a68e4d108e04067d98f24c28131ff81e4df5b171bb96f454aaade52e0891e79b076fbcb716c'
+sha512sums=('e2592503323bd205624cbf7a5c0f19983ee219126ec7e01b58091a7556f232d3c70b3770fbaa97b5da7b7f56c4a372952d56839f291ea8fa92b4a64c9bab953c'
             '7bfb3739053284ba0b4084c1f84e37e307233fa7b52adf403fa5c574393d71e08ea02bdc927106b036d1055f6efd6c326b534d697c1d5f6c097def53dbafc560')
-b2sums=('79255018e711e4005e058c09986cbe8e44796c2bfd0e94fd8f62ef06ad01c269ed207a18c32e76e2c6f2b069edac3907d5fbaf466823609b50a94c1573f1c350'
+b2sums=('fe76d882b83035bf0087538c613e00b292feceb456f73cbfc7c28dcc3dae6691703c56de06163acd4093a42d51cb47046354e074b3bb360f9b5ea5a6689699fe'
         '2c68116494b5e7ff51e59ec79dd3e354e2a8035ab35e29b27a097d7baa47e48c71a2cdac651920c76cd29097c5e8710e74106e41a4b3d5f543e259ef7404beac')
 
 prepare() {
