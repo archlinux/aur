@@ -1,6 +1,6 @@
 pkgbase = libreddit
 	pkgdesc = Alternative private front-end to Reddit
-	pkgver = 0.21.7
+	pkgver = 0.22.0
 	pkgrel = 1
 	url = https://github.com/spikecodes/libreddit
 	arch = x86_64
@@ -8,9 +8,11 @@ pkgbase = libreddit
 	makedepends = git
 	makedepends = cargo
 	depends = gcc-libs
+	options = !lto
 	backup = etc/libreddit.conf
-	source = libreddit::git+https://github.com/spikecodes/libreddit#commit=977cd07?signed
+	source = libreddit::git+https://github.com/spikecodes/libreddit#commit=8cfbde2?signed
 	validpgpkeys = AD4B24F40D358202591EE1F4004CECFF9B463BCB
+	validpgpkeys = 5DE3E0509C47EA3CF04A42D34AEE18F83AFDEB23
 	sha256sums = SKIP
 
 pkgname = libreddit
