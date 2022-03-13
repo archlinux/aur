@@ -6,7 +6,9 @@ pkgbase = concise-keyring
 	arch = any
 	license = MIT
 	makedepends = git
-	source = git+https://gitlab.com/qYp/concise-keyring.git
-	md5sums = SKIP
+	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/concise-keyring-1.0.2-1-any.pkg.tar.zst
+	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/concise-keyring-1.0.2-1-any.pkg.tar.zst.sig
+	md5sums = 2946c1d65244eac4076b9a0b1069d8d9
+	md5sums = 20541511c9a0f3fa1967f9c56b76389f
 
 pkgname = concise-keyring
