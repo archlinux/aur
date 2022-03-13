@@ -1,8 +1,8 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=minsharp
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=r4.2.gf90c5a7
+pkgver=4.2.gf90c5a7
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -14,10 +14,11 @@ provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/IFeelBloated/minsrp.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d r)"
 }
 
 prepare() {
@@ -25,15 +26,15 @@ prepare() {
 
   cd "${_plug}"
   rm -fr src/VapourSynth.h src/VSHelper.h
-
-  cd build/unix
-  ./autogen.sh
 }
 
 build() {
-  cd build
+  cd "${_plug}/build/unix"
+  ./autogen.sh
+
+  cd "${srcdir}/build"
   CXXFLAGS+=" $(pkg-config --cflags vapoursynth)" \
-  ../"${_plug}"/build/unix/configure \
+  "../${_plug}/build/unix/configure" \
     --prefix=/usr \
     --libdir=/usr/lib/vapoursynth
 
