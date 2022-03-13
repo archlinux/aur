@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-colorbars-git
 	pkgdesc = Plugin for Vapoursynth: colorbars (GIT version)
-	pkgver = R3.1.g0e1f01b
+	pkgver = 3.1.g0e1f01b
 	pkgrel = 1
 	url = https://github.com/ifb/vapoursynth-colorbars
 	arch = x86_64
