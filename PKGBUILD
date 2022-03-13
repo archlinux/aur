@@ -75,7 +75,8 @@ prepare() {
 
 build() {
   cd caffe
-  NVCC_APPEND_FLAGS="-Wno-deprecated-gpu-targets" make lib
+  NVCC_APPEND_FLAGS="-Wno-deprecated-gpu-targets" \
+  make lib
 
   install -Dm644 build/lib/libcaffe.a "${srcdir}/fakeroot/lib/libcaffe.a"
   cp -R include "${srcdir}/fakeroot"
