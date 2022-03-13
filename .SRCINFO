@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-xaa-git
 	pkgdesc = Plugin for Vapoursynth: xaa (GIT version)
-	pkgver = v3.2.g6a39c63
+	pkgver = 3.2.g6a39c63
 	pkgrel = 1
 	url = https://github.com/dubhater/vapoursynth-xaa
 	arch = x86_64
