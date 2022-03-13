@@ -1,6 +1,6 @@
 pkgbase = vapoursynth-plugin-lostfunc-git
 	pkgdesc = Plugin for Vapoursynth: lostfunc (GIT version)
-	pkgver = v1.0.g0a68168
+	pkgver = 1.0.g0a68168
 	pkgrel = 1
 	url = https://github.com/theChaosCoder/lostfunc
 	arch = x86_64
