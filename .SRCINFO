@@ -1,6 +1,6 @@
 pkgbase = raven-reader-bin
 	pkgdesc = Electron-based RSS reader -- All your articles in one place. Beautiful.
-	pkgver = 1.0.71
+	pkgver = 1.0.72
 	pkgrel = 1
 	url = https://github.com/hello-efficiency-inc/raven-reader/releases
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = raven-reader-bin
 	depends = libdbusmenu-glib
 	provides = raven-reader
 	conflicts = raven-reader
-	source = raven-reader-1.0.71.AppImage::https://github.com/hello-efficiency-inc/raven-reader/releases/download/v1.0.71/Raven-Reader-1.0.71.AppImage
-	md5sums = 489cf35c0cf6eed7a3da0efc15798f6c
+	source = raven-reader-1.0.72.AppImage::https://github.com/hello-efficiency-inc/raven-reader/releases/download/v1.0.72/Raven-Reader-1.0.72.AppImage
+	md5sums = 740858d2333e9e44091989a11c501d3c
 
 pkgname = raven-reader-bin
 
