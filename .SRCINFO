@@ -1,0 +1,15 @@
+pkgbase = python-jarowinkler
+	pkgdesc = A library for fast approximate string matching using Jaro and Jaro-Winkler similarity
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://github.com/maxbachmann/JaroWinkler
+	arch = x86_64
+	license = MIT
+	makedepends = python-rapidfuzz-capi
+	makedepends = python-scikit-build
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/j/jarowinkler/jarowinkler-1.0.2.tar.gz
+	sha256sums = 788ac33e6ffdbd78fd913b481e37cfa149288575f087a1aae1a4ce219cb1c654
+
+pkgname = python-jarowinkler
