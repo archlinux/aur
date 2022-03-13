@@ -8,8 +8,8 @@
 # Since upstream uploads can happen at any time, there may be a time for this build to fail since the version has changed, but I aim to keep it updated at least once a week. I'll automate it later: to do.
 
 pkgname=firefox-kde-opensuse-rpm
-pkgver="97.0.1.965.3" 
-_pkgver="97.0.1-965.3"
+pkgver="98.0.968.1"
+_pkgver="98.0-968.1"
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE - Binary from OBS"
 arch=(x86_64)
@@ -21,7 +21,7 @@ makedepends=("gzip")
 provides=("firefox=${pkgver}")
 conflicts=("firefox" "firefox-kde-opensuse" "firefox-kde-opensuse-bin")
 source_x86_64=(https://download.opensuse.org/repositories/mozilla:/Factory/openSUSE_Factory/x86_64/MozillaFirefox-${_pkgver}.x86_64.rpm)
-sha512sums_x86_64=('0c1340e2416448245b999fe8bda11be23db6b3ac7eaa6b807a9dc9521b52e2e07141158d6fe6e65e439db3761872029c98d3e533ff6b106df15e4a6790be37b9')
+sha512sums_x86_64=('556ac85e261e581234463f44a112b62eb3c0ad82a1408ec8446cd72eadc592885f8e83e1a1c06b639635ea02eccdb560db77d49e6566fb6100a0531db13921c3')
 
 prepare() {
     cd "usr"
