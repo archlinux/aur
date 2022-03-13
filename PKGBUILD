@@ -1,21 +1,21 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=hilbish-git
-pkgver=0.5.1.r64.gb97e1ef
+pkgver=1.0.4.r3.g0113a4e
 pkgrel=1
 pkgdesc="The flower shell for Lua users"
-arch=('x86_64' 'aarch64')
+arch=('x86_64' 'i686' 'aarch64')
 url="https://github.com/rosettea/hilbish"
 license=('MIT')
-depends=('readline' 'lua-lunacolors' 'lua-succulent')
-makedepends=('git' 'go>=1.16')
+depends=('lua-lunacolors' 'lua-succulent' 'lua-inspect')
+makedepends=('git' 'go')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-install="$pkgname.install"
+install=hilbish.install
 options=('!emptydirs')
 source=("$pkgname::git+$url?signed")
 sha256sums=('SKIP')
-validpgpkeys=('098F50DFBCEEC71A4EAB6DA450EE40A2809851F5')
+validpgpkeys=('784DF7A14968C5094E16839C904FC49417B44DCD') ## TorchedSammy
 
 pkgver() {
 	git -C "$pkgname" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
@@ -24,6 +24,7 @@ pkgver() {
 prepare() {
 	cd "$pkgname"
 	sed -i '\|/etc/shells|d' Makefile
+	go mod download
 }
 
 build() {
@@ -31,15 +32,16 @@ build() {
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
 	cd "$pkgname"
-	make dev
+	# make dev
+	go build -ldflags "-linkmode=external -X main.version=$pkgver"
 }
 
 package() {
 	cd "$pkgname"
 	DESTDIR="$pkgdir/" make install
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
