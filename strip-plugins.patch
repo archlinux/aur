@@ -1,0 +1,67 @@
+--- a/plugins/meson.build	2022-03-13 18:12:05.535887567 +0900
++++ b/plugins/meson.build	2022-03-13 18:13:02.256222368 +0900
+@@ -6,36 +6,36 @@
+ # subdir('dummy')
+ 
+ subdir('common')
+-subdir('a11y-keyboard')
+-subdir('a11y-settings')
+-subdir('automount')
++#subdir('a11y-keyboard')
++#subdir('a11y-settings')
++#subdir('automount')
+ subdir('background')
+-subdir('clipboard')
+-subdir('cursor')
+-subdir('datetime')
+-subdir('housekeeping')
+-subdir('keyboard')
+-subdir('media-keys')
+-subdir('mouse')
+-subdir('orientation')
+-subdir('power')
+-subdir('screensaver-proxy')
+-subdir('sound')
+-subdir('xrandr')
+-subdir('xsettings')
++#subdir('clipboard')
++#subdir('cursor')
++#subdir('datetime')
++#subdir('housekeeping')
++#subdir('keyboard')
++#subdir('media-keys')
++#subdir('mouse')
++#subdir('orientation')
++#subdir('power')
++#subdir('screensaver-proxy')
++#subdir('sound')
++#subdir('xrandr')
++#subdir('xsettings')
+ 
+-if colord.found()
+-    subdir('color')
+-endif
++#if colord.found()
++#    subdir('color')
++#endif
+ 
+-if cups.found()
+-    subdir('print-notifications')
+-endif
++#if cups.found()
++#    subdir('print-notifications')
++#endif
+ 
+-if nss.found()
+-    subdir('smartcard')
+-endif
++#if nss.found()
++#    subdir('smartcard')
++#endif
+ 
+-if wacom.found()
+-    subdir('wacom')
+-endif
++#if wacom.found()
++#    subdir('wacom')
++#endif
