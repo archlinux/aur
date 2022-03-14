@@ -24,12 +24,13 @@ build() {
 
 package_suwudo() {
     cd $pkgname
-    echo $pwd
 
     echo "
 [1;91m!! ERROR !![0m
 
 It is currently not able to patch the sudo library. Do it yourself by executing
+
+    $PWD
 
     sudo cp $HOME/.cache/yay/suwudo/suwudo/ sudoers.so /usr/lib/sudo/sudoers.so
 
