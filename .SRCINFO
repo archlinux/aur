@@ -1,6 +1,6 @@
 pkgbase = rescached-git
 	pkgdesc = Resolver/DNS cache daemon
-	pkgver = 4.1.0.r0.gfb234bb
+	pkgver = 4.3.0.r0.g36b08fe
 	pkgrel = 1
 	url = https://github.com/shuLhan/rescached-go
 	install = rescached.install

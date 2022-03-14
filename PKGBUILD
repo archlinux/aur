@@ -1,6 +1,6 @@
 # Maintainer: shulhan <ms@kilabit.info>
 pkgname=rescached-git
-pkgver=4.1.0.r0.gfb234bb
+pkgver=4.3.0.r0.g36b08fe
 pkgrel=1
 pkgdesc="Resolver/DNS cache daemon"
 arch=('i686' 'x86_64' 'armv7h')
@@ -13,11 +13,9 @@ makedepends=('git' 'go>=1.16')
 
 source=(
 	"$pkgname::git+https://github.com/shuLhan/rescached-go.git"
+	## For testing on local.
+	#"$pkgname::git+file:///home/ms/go/src/github.com/shuLhan/rescached-go"
 )
-## For testing on local.
-#source=(
-#	"$pkgname::git+file:///home/ms/go/src/github.com/shuLhan/rescached-go"
-#)
 sha1sums=(
 	'SKIP'
 )
@@ -52,7 +50,7 @@ build() {
 package() {
 	cd "$pkgname"
 	make PREFIX="$pkgdir" install
-	rm -f ${pkgdir}/usr/share/rescached/LICENSE
-	rmdir ${pkgdir}/usr/share/rescached
-	install -Dm644 $srcdir/$pkgname/LICENSE "${pkgdir}/usr/share/licenses/rescached/LICENSE"
+	rm -rf ${pkgdir}/usr/share/rescached/
+	install -Dm644 $srcdir/$pkgname/COPYING \
+		"${pkgdir}/usr/share/licenses/rescached/COPYING"
 }
