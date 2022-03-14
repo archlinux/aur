@@ -1,6 +1,6 @@
 # Maintainer: CoolFool <coolfool149@gmail.com>
 pkgname=aurishem
-pkgver=1.0.0
+pkgver=1.0.0.r0.g482b61c
 pkgrel=1
 pkgdesc="Safe and Easy way to build and install packages directly from Arch User Repository"
 arch=("any")
@@ -8,8 +8,15 @@ url="https://github.com/coolfool/aurishem"
 license=('MIT')
 depends=('python-pydbus' 'python-gobject')
 makedepends=('git')
-source=("git://github.com/coolfool/${pkgname}")
+conflicts=('aurishem')
+provides=('aurishem')
+source=("git+https://github.com/coolfool/aurishem.git")
 sha1sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname%-git}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 package() {
     install -D "$srcdir/aurishem/source/aurishem.desktop" "$pkgdir/usr/share/applications/aurishem.desktop"
