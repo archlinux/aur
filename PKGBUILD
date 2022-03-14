@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-extensions-sync-git
 pkgver=16.r0.g46727b4
-pkgrel=1
+pkgrel=2
 pkgdesc="Sync all extensions and their configurations across all gnome instances"
 arch=('any')
 url="https://github.com/oae/gnome-shell-extensions-sync"
@@ -10,7 +10,10 @@ install=${pkgname%-git}.install
 license=('GPL3')
 groups=('gnome-shell-extensions')
 depends=('gnome-shell>=40')
-makedepends=('git' 'glib2' 'yarn' 'appstream')
+makedepends=('git'
+             'glib2'
+             'yarn'
+             'appstream')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}.git")
@@ -42,5 +45,9 @@ package() {
      install -Dm 644 {} ${destdir}/{} \;
   install -Dm644 "${srcdir}/${pkgname%-git}/dist/schemas/${schema}" \
     "${pkgdir}/usr/share/glib-2.0/schemas/${schema}"
+# rebuild compiled GSettings schemas if missing
+  if [[ ! -f "${destdir}/schemas/gschemas.compiled" ]]; then
+    glib-compile-schemas "${destdir}/schemas"
+  fi
 }
 
