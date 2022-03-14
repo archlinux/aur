@@ -8,7 +8,7 @@
 
 pkgname=jabref
 pkgver=5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical Java application for managing BibTeX and biblatex (.bib) databases"
 arch=(any)
 url="https://www.jabref.org/"
