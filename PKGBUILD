@@ -5,7 +5,7 @@
 # Contributor: Fabio Zanini <iosonofabio@gmail.com>
 
 pkgname=modeller
-pkgver=9.23
+pkgver=10.2
 pkgrel=1
 pkgdesc="3D Structure Homology Modeller"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ optdepends=('python: python support'
 backup=("etc/$pkgname/config.py")
 source=("http://www.salilab.org/modeller/$pkgver/$pkgname-$pkgver.tar.gz"{,.sign}
         "LICENSE")
-sha256sums=('7fa0b268a2c3feb400d96962cd61d617b91fa6295b4bcc11eb466df20f5dabc3'
+sha256sums=('c55686b733ed709cb6d3635c4d3067b07161d0cdba2241494cb3e6154f3df8d2'
             'SKIP'
             '7d1fb18e362298bc606d6d99852479dc107ad336e1bcd33362fdeef18cf207fe')
 validpgpkeys=('9F7FF1477E5A2463732EC9781CC7D059745E6093')
@@ -56,11 +56,12 @@ package() {
         bin/modscript > "$pkgdir/$_MODINSTALL/bin/mod$pkgver"
     sed 's|@TOPDIR@|"'"$_MODINSTALL"'"|; s|@EXETYPE@|'"$_EXECUTABLE_TYPE"'|' \
         bin/modpy.sh.in > "$pkgdir/$_MODINSTALL/bin/modpy.sh"
-    sed '1s/^.*$/&2/' bin/modslave.py > "$pkgdir/$_MODINSTALL/bin/modslave.py"
+    # sed '1s/^.*$/&2/' bin/modslave.py > "$pkgdir/$_MODINSTALL/bin/modslave.py"
 
     # create symlinks
     install -dm755 "$pkgdir/usr/bin"
-    for _f in mod$pkgver modpy.sh modslave.py; do
+    # for _f in mod$pkgver modpy.sh modslave.py; do
+    for _f in mod$pkgver modpy.sh; do
       chmod +x "$pkgdir/$_MODINSTALL/bin/$_f"
       ln -sf "$_MODINSTALL/bin/$_f"  "$pkgdir/usr/bin/"
     done
