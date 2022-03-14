@@ -12,6 +12,8 @@ md5sums=('77d5cdbb840ee3d816bf70d321f41f98')
 
 prepare() {
     sed -i "s#click==6.7#click#g" "$srcdir/pyaxmlparser-$pkgver/setup.py"
+    # fix man path
+    sed -i "s#'man/man1'#'share/man/man1'#g" "$srcdir/pyaxmlparser-$pkgver/setup.py"
 }
 
 build() {
