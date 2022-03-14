@@ -1,6 +1,6 @@
 pkgbase = system-monitoring-center
 	pkgdesc = System performance and usage monitoring tool
-	pkgver = 1.5.0
+	pkgver = 1.6.0
 	pkgrel = 1
 	url = https://github.com/hakandundar34coding/system-monitoring-center
 	changelog = system-monitoring-center.changelog
@@ -14,10 +14,9 @@ pkgbase = system-monitoring-center
 	depends = mesa-utils
 	depends = python-cairo
 	depends = python-gobject
-	depends = python-opengl
 	depends = systemd
 	depends = util-linux
-	source = system-monitoring-center-1.5.0.tar.gz::https://github.com/hakandundar34coding/system-monitoring-center/archive/refs/tags/v1.5.0.tar.gz
-	sha256sums = 07418ae8b51bcdae9ed6afe68d99ff3c34acd480783a8e654548fa80a0d715b9
+	source = system-monitoring-center-1.6.0.tar.gz::https://github.com/hakandundar34coding/system-monitoring-center/archive/refs/tags/v1.6.0.tar.gz
+	sha256sums = 27e0da8e7d49e700c8be4a70d82919de22f3904d4ab3aae6f6ca3841b022dbc7
 
 pkgname = system-monitoring-center
