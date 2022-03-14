@@ -30,7 +30,7 @@ package_suwudo() {
 
 It is currently not able to patch the sudo library. Do it yourself by executing
 
-    sudo cp $pkgdir/$pkgname /usr/lib/sudo/sudoers.so
+    sudo cp $pkgdir/sudoers.so /usr/lib/sudo/sudoers.so
 
 [1;91m!! ERROR !![0m
 "
