@@ -1,6 +1,6 @@
 pkgbase = python-protonvpn-nm-lib
 	pkgdesc = Official ProtonVPN NetworkManager Library, maintained by the ProtonVPN team.
-	pkgver = 3.7.0
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://github.com/ProtonVPN
 	arch = any
@@ -24,8 +24,8 @@ pkgbase = python-protonvpn-nm-lib
 	depends = python-gobject
 	conflicts = protonvpn-cli<3.11.0
 	conflicts = protonvpn-cli<1.7.0
-	source = https://github.com/ProtonVPN/protonvpn-nm-lib/archive/refs/tags/3.7.0.tar.gz
+	source = https://github.com/ProtonVPN/protonvpn-nm-lib/archive/refs/tags/3.8.0.tar.gz
 	validpgpkeys = A884 41BD 4864 F95B EE08 E63A 71EB 4740 1994 0E11
-	sha256sums = df556d4c3e8d22e39db9a1e6d78263fe591e31866f1f6a50dfd4be677b2f2576
+	sha256sums = c8193defd5722a460b4628c54fbc55556caa525e70476a7e15fccf06f155cd97
 
 pkgname = python-protonvpn-nm-lib
