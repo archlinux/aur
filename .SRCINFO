@@ -1,6 +1,6 @@
 pkgbase = earthly-bin
 	pkgdesc = Build automation for the container era
-	pkgver = 0.6.5
+	pkgver = 0.6.10
 	pkgrel = 1
 	url = https://earthly.dev
 	install = earthly-bin.install
@@ -11,7 +11,7 @@ pkgbase = earthly-bin
 	depends = git
 	provides = earthly
 	conflicts = earthly
-	source = earthly-bin-0.6.5::https://github.com/earthly/earthly/releases/download/v0.6.5/earthly-linux-amd64
-	sha512sums = d933c5c364f582717bb14b07f700378f440f7812cc700e6997c8322f738c150dfe214aea4d021232d09aba2f0309f72ceb64d9b8a8f0ee5037b3faf0a21483ff
+	source = earthly-bin-0.6.10::https://github.com/earthly/earthly/releases/download/v0.6.10/earthly-linux-amd64
+	sha512sums = ba87575fcbaad29d2b3935aaa294c1a6ff93249c49b21ec6587a03298b5e1d93fbc0428a0a7149e172f521c0bec0b7ba78b309cc0ad28b80260dcb85af3c8102
 
 pkgname = earthly-bin
