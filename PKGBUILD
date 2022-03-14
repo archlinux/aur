@@ -7,9 +7,9 @@
 # https://github.com/gsavin/arch
 #
 
-pkgname=platformio
+pkgname=('platformio' 'platformio-udev-rules')
 pkgver=5.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform code builder and library manager"
 arch=('any')
 url="https://github.com/platformio/platformio-core/"
@@ -38,8 +38,17 @@ conflicts=('platformio-git')
 source=("https://github.com/platformio/platformio-core/archive/v${pkgver}.tar.gz")
 sha256sums=('26cc5b61d113250519257c156ae693ab8f6aea891283b28f1c4c67ffc81fb574')
 
-package() {
+package_platformio() {
     cd "$srcdir/platformio-core-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1
+}
+
+package_platformio-udev-rules() {
+    depends=('udev')
+    optdepends=()
+    pkgdesc="udev rules for PlatformIO supported boards/devices"
+    url="https://docs.platformio.org/en/latest/faq.html#platformio-udev-rules"
+
+    cd "$srcdir/platformio-core-$pkgver"
     install -m644 -Dt "$pkgdir/usr/lib/udev/rules.d" "scripts/99-platformio-udev.rules"
 }

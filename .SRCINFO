@@ -1,7 +1,7 @@
 pkgbase = platformio
 	pkgdesc = A cross-platform code builder and library manager
 	pkgver = 5.2.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/platformio/platformio-core/
 	arch = any
 	license = Apache
@@ -28,3 +28,9 @@ pkgbase = platformio
 	sha256sums = 26cc5b61d113250519257c156ae693ab8f6aea891283b28f1c4c67ffc81fb574
 
 pkgname = platformio
+
+pkgname = platformio-udev-rules
+	pkgdesc = udev rules for PlatformIO supported boards/devices
+	url = https://docs.platformio.org/en/latest/faq.html#platformio-udev-rules
+	depends = udev
+	optdepends = 
