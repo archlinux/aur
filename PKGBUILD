@@ -19,9 +19,6 @@ prepare() {
 	unzip -o ./client.jar "assets/*" -d $srcdir
 }
 
-# Texture_Converter.py is a dirty script. It tries to always place in the src folder, no matter the input.
-# So this has some hacky logic to fix the flaws.
-
 build() {
   cd $srcdir/mineclone2/tools
   mkdir -p $srcdir/out
