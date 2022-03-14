@@ -2,7 +2,7 @@
 
 pkgname=pcsx-redux-git
 _pkgname=pcsx-redux
-pkgver=r2997.1cb4aeb5
+pkgver=r3011.a29b8d28
 pkgrel=1
 pkgdesc='Modern fork of the pcsxr PlayStation 1 emulator focused on reverse engineering and homebrew development'
 arch=('x86_64' 'aarch64')
@@ -15,6 +15,7 @@ depends=('ffmpeg'
          'sdl2'
          'zlib'
          'capstone'
+         'curl'
          )
 options=('!buildflags')
 makedepends=('git'
