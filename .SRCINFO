@@ -1,7 +1,7 @@
 pkgbase = mineclone2-mojang-textures
 	pkgdesc = Downloads & converts textures from Minecraft for usage with mineclone
 	pkgver = 0.72.0
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL3
 	license = custom:proprietary mojang textures

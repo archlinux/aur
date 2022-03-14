@@ -1,7 +1,7 @@
 # Maintainer: dada513 <dada513@protonmail.com>
 pkgname=mineclone2-mojang-textures
 pkgver=0.72.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Downloads & converts textures from Minecraft for usage with mineclone"
 license=('GPL3' 'custom:proprietary mojang textures')
 depends=('minetest')
@@ -19,9 +19,16 @@ prepare() {
 	unzip -o ./client.jar "assets/*" -d $srcdir
 }
 
-package() {
+# Texture_Converter.py is a dirty script. It tries to always place in the src folder, no matter the input.
+# So this has some hacky logic to fix the flaws.
+
+build() {
   cd $srcdir/mineclone2/tools
-  mkdir -p $pkgdir/usr/share/minetest/textures/Minecraft
-  python Texture_Converter.py -i $srcdir -o $pkgdir/usr/share/minetest/textures/Minecraft
+  mkdir -p $srcdir/out
+  python Texture_Converter.py -i $srcdir -o $srcdir/out
 }
 
+package() {
+  mkdir -p $pkgdir/usr/share/minetest/textures/
+  mv $srcdir/out/src $pkgdir/usr/share/minetest/textures/Minecraft
+}
