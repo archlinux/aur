@@ -2,7 +2,7 @@
 
 # Maintainer: Manuel Reimer <manuel.reimer@gmx.de>
 pkgname=w_scan2
-pkgver=1.0.12
+pkgver=1.0.14
 pkgrel=1
 pkgdesc="w_scan fork (Small channel scan tool for vdr)"
 url="https://github.com/stefantalpalaru/w_scan2"
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=('gcc-libs' 'glibc')
 #gcc-libs is somehow needed on arm architecture
 source=("$pkgname-$pkgver.tar.gz::https://github.com/stefantalpalaru/w_scan2/archive/$pkgver.tar.gz")
-sha256sums=('a97390b2c8c4a419c73fd8424f026fc9831b25ff65e6bc17e4c02911c3e9f51b')
+sha256sums=('3749c44300646b280a88e73fae5fb6a8d2c57b6840586cc6c77f5e202b3d4f5e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
