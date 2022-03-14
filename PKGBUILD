@@ -26,17 +26,12 @@ package_suwudo() {
     cd $pkgname
 
     echo "
-[1;91m!! ERROR !![0m
+Attention:
+Due to limitations of pacman and the aur it is currently not able to install this part automatically
 
-It is currently not able to patch the sudo library. Do it yourself by executing
-
-    sudo cp $HOME/.cache/yay/suwudo/src/suwudo/sudoers.so /usr/lib/sudo/sudoers.so
-
-Yes, there is supposed to be an error about SIGSEV :D
-
-[1;91m!! ERROR !![0m
-"
-    install -D -m644 "sudoers.so" "$pkgdir/usr/lib/sudo/sudoers.so"
-
+Do it yourself by executing the following:
+    sudo cp $HOME/.cache/yay/suwudo/src/suwudo/sudoers.so /usr/lib/sudo/sudoers.so &>/dev/null | cat"
     exit 1
+
+    install -D -m644 "sudoers.so" "$pkgdir/usr/lib/sudo/sudoers.so"
 }
