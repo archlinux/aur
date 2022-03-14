@@ -1,6 +1,6 @@
 pkgbase = aurishem
 	pkgdesc = Safe and Easy way to build and install packages directly from Arch User Repository
-	pkgver = 1.0.0.r0.g482b61c
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/coolfool/aurishem
 	arch = any

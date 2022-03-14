@@ -1,6 +1,6 @@
 # Maintainer: CoolFool <coolfool149@gmail.com>
 pkgname=aurishem
-pkgver=1.0.0.r0.g482b61c
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Safe and Easy way to build and install packages directly from Arch User Repository"
 arch=("any")
