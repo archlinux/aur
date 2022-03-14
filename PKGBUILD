@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=vdu_controls
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Visual Display Unit virtual control panel - a GUI front end to ddcutil"
 arch=('any')
@@ -10,8 +10,8 @@ depends=('ddcutil' 'python' 'python-pyqt5' 'qt5-multimedia')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('71c40cb8ea7837a69207e4d6f69010113c685f4db220e577d063fa23d9965e6d'
-            'e2a7db639d78f066d8214fea9751d5fe4cb14a8835dc2cd5d96d45049abcdab8')
+sha256sums=('ed2e428a79e9619b8fc1026002df67eb15c6ed836dc867ce3a2f23c97e16357c'
+            'b29047aeba56c9d26b5b21fb8ced269a69b587ee79835d4b56653934fbb550d5')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -24,10 +24,7 @@ package() {
 
   mv "$pkgdir/usr/bin/$pkgname.py" "$pkgdir/usr/bin/$pkgname"
 
-  # Remove duplicate GPL3 license
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  rm "${pkgdir}${site_packages}/vdu_controls_digitaltrails-$pkgver.dist-info/LICENSE.md"
-
   install -Dm644 "docs/_build/man/$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
+  install -Dm644 "$pkgname.png" -t "$pkgdir/usr/share/icons/hicolor/256x256/apps/"
   install -Dm644 "$srcdir/$pkgname.desktop" -t "$pkgdir/usr/share/applications/"
 }
