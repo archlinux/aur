@@ -6,9 +6,9 @@
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=openssh-dotconfig
-pkgver=8.8p1
+pkgver=8.9p1
 pkgrel=1
-pkgdesc='Premier connectivity tool for remote login with the SSH protocol'
+pkgdesc='Premier connectivity tool for remote login with the SSH protocol - but moved $HOME/.ssh to $HOME/.config/ssh'
 url='https://www.openssh.com/portable.html'
 license=('custom:BSD')
 arch=('x86_64')
@@ -17,17 +17,28 @@ makedepends=('linux-headers' 'libfido2')
 optdepends=('xorg-xauth: X11 forwarding'
             'x11-ssh-askpass: input passphrase in X'
             'libfido2: FIDO/U2F support')
-validpgpkeys=('7168B983815A5EEF59A4ADFD2A3F414E736060BA')
+options=('debug')
 #source=("git://anongit.mindrot.org/openssh.git?signed#tag=V_8_2_P1"
 source=("https://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/${pkgname%-*}-${pkgver}.tar.gz"
+        'sshdgenkeys.service'
+        'sshd.service'
         'sshd.conf'
-        'sshd.pam'
-        'glibc-2.31.patch')
-sha256sums=('4590890ea9bb9ace4f71ae331785a3a5823232435161960ed5fc86588f331fe9'
+        'sshd.pam')
+sha1sums=('205cdf0040a238047e2c49f43460e03d76e5d650'
+          'caaa801da59a5d14c0c29c43e9de5fef281ea03e'
+          '8640ac6593602e74a863263223e92ab5c4711588'
+          'c9b2e4ce259cd62ddb00364d3ee6f00a8bf2d05f'
+          'd93dca5ebda4610ff7647187f8928a3de28703f3')
+sha256sums=('fd497654b7ab1686dac672fb83dfb4ba4096e8b5ffcdaccd262380ae58bec5e7'
+            '4031577db6416fcbaacf8a26a024ecd3939e5c10fe6a86ee3f0eea5093d533b7'
+            'e40f8b7c8e5e2ecf3084b3511a6c36d5b5c9f9e61f2bb13e3726c71dc7d4fbc7'
             '4effac1186cc62617f44385415103021f72f674f8b8e26447fc1139c670090f6'
-            'cbe71695511d3a62419299f45d3ca4efa3afaeada53f6ee439ec14cfb718c775'
-            '25b4a4d9e2d9d3289ef30636a30e85fa1c71dd930d5efd712cca1a01a5019f93')
-
+            '64576021515c0a98b0aaf0a0ae02e0f5ebe8ee525b1e647ab68f369f81ecd846')
+b2sums=('02934da7f7a2954141888e63e81e38fad4fb8558ddd1032de44f69684802c62771fdd7e9e470e0715059635999c8f9d2ab95f6351217e236573ead83a867f59b'
+        '62f89107d3648a359b0307497a9f105d7ff1dddddb38a64afe3261000b5db494a5530e4b60a9aa1d7be4413599e54b72e2f53f0de8c1ff263a46a70bc5695c29'
+        '07ad5c7fb557411a6646ff6830bc9d564c07cbddc4ce819641d31c05dbdf677bfd8a99907cf529a7ee383b8c250936a6423f4b4b97ba0f1c14f627bbd629bd4e'
+        '27571f728c3c10834a81652f3917188436474b588f8b047462e44b6c7a424f60d06ce8cb74839b691870177d7261592207d7f35d4ae6c79af87d6a7ea156d395'
+        '557d015bca7008ce824111f235da67b7e0051a693aaab666e97b78e753ed7928b72274af03d7fde12033986b733d5f996faf2a4feb6ecf53f39accae31334930')
 backup=('etc/ssh/ssh_config' 'etc/ssh/sshd_config' 'etc/pam.d/sshd')
 provides=('openssh')
 conflicts=('openssh')
@@ -35,7 +46,6 @@ conflicts=('openssh')
 prepare() {
 	cd "${srcdir}/${pkgname%-*}-${pkgver}"
 
-	patch -p1 -i ../glibc-2.31.patch
     grep -rl "\.ssh" * | xargs sed -i 's/\.ssh/.config\/ssh/g'
 
 	autoreconf
@@ -85,6 +95,8 @@ package() {
 	ln -sf ssh.1.gz "${pkgdir}"/usr/share/man/man1/slogin.1.gz
 	install -Dm644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname%-*}/LICENCE"
 
+    install -Dm644 ../sshdgenkeys.service "${pkgdir}"/usr/lib/systemd/system/sshdgenkeys.service
+	install -Dm644 ../sshd.service "${pkgdir}"/usr/lib/systemd/system/sshd.service
 	install -Dm644 ../sshd.conf "${pkgdir}"/usr/lib/tmpfiles.d/sshd.conf
 	install -Dm644 ../sshd.pam "${pkgdir}"/etc/pam.d/sshd
 
