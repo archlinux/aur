@@ -2,15 +2,15 @@
 
 _pkgname='hist'
 pkgname="python-${_pkgname}"
-pkgver='2.6.0'
-pkgrel=2
+pkgver='2.6.1'
+pkgrel=1
 pkgdesc="Python bindings for Boost's Histogram library."
 arch=('any')
 url='https://github.com/scikit-hep/hist'
 license=('custom:BSD3')
 depends=('python-boost-histogram' 'python-histoprint' 'python-typing_extensions')
 makedepends=('git' 'python-setuptools' 'python-setuptools-scm')
-checkdepends=('python-pytest' 'python-pytest-benchmark' 'python-pytest-mpl' 'python-iminuit' 'python-mplhep' 'python-scipy')
+checkdepends=('python-pytest' 'python-pytest-benchmark' 'python-pytest-mpl' 'python-iminuit' 'python-mplhep' 'python-scipy' 'python-jinja')
 source=("${pkgname}-${pkgver}::git+${url}#tag=v${pkgver}")
 sha256sums=('SKIP')
 
