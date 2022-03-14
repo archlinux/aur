@@ -8,7 +8,7 @@
 
 pkgname=discord_arch_electron_wayland
 pkgver=0.0.17
-pkgrel=3
+pkgrel=4
 pkgdesc="Discord (popular voice + video app) using system electron (v13) and set up for wayland"
 arch=('x86_64')
 provides=('discord')
@@ -29,7 +29,7 @@ prepare() {
 	cat >>"$srcdir"/discord <<'EOF'
 #!/bin/sh
 
-if [ "$XDG_SESSION_TYPE" == wayland ]; then
+if [ "$(loginctl show-session "$XDG_SESSION_ID" -p Type --value)" = wayland ]; then
 	# Using wayland
 	exec electron13 --enable-features=UseOzonePlatform \
 		--ozone-platform=wayland /usr/lib/discord/app.asar \$@
