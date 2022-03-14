@@ -5,7 +5,7 @@ pkgbase="foosynth-plugin-${_plug}-git"
 pkgname=("avisynth-plugin-${_plug}-git"
          "vapoursynth-plugin-${_plug}-git"
          )
-pkgver=r7.8.g8e8ae4e
+pkgver=7.9.gb801b97
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
@@ -23,23 +23,24 @@ provides=("avisynth-plugin-${_plug}")
 conflicts=("avisynth-plugin-${_plug}")
 source=("${_plug}::git+https://github.com/HomeOfAviSynthPlusEvolution/neo_DFTTest.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d r)"
 }
 
 prepare() {
-  mkdir -p "${_plug}/build"
+  rm -fr "${_plug}/include/"{avs*,vs*}
 }
 
 build() {
-  cd "${_plug}/build"
-  cmake .. \
+  cd "${_plug}"
+  cmake -S . -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
 
-  make
+  cmake --build build
 }
 
 package_avisynth-plugin-neo_dfttest-git() {
