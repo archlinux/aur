@@ -6,7 +6,7 @@
 pkgname=kotatogram-desktop-beta
 _pkgname=kotatogram-desktop
 pkgver=1.4.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Kotatogram – experimental Telegram Desktop fork - Beta version'
 arch=('x86_64')
 url="https://kotatogram.github.io"
@@ -60,7 +60,6 @@ source=("${_pkgname}::git+https://github.com/kotatogram/${_pkgname}.git#tag=k${p
         "block-sponsored_messages.patch"
         )
 
-
 b2sums=('SKIP'
         'SKIP'
         'SKIP'
@@ -94,7 +93,7 @@ b2sums=('SKIP'
         'SKIP'
         'SKIP'
         'SKIP'
-        '462900e97b9d7a9d40bc02d3dc7dacd3060cc19af02135065628e38e83835a2fb438581ca78001aaffc27d8b0473a78d39509c35f50e4ebb25607fe9c6bae264'
+        '63c912c53b7c259d97162f96acdb67a88b625c99ac2144869abc88a08d96e940bfdefcf9478c3c20a95f03c19ac16428e3fa6f6a2fa16a879de29b2856b4b617'
         '96a703e3c7e4a2e2229c386daa24af0ca0228d130a35a6ba25e5da4885297d5d0b33fe37f26f71955cac01e3250dc4f811ebb6ff0fe58f3f7e5d5380a970347f')
 
 prepare() {
@@ -138,7 +137,7 @@ prepare() {
     git submodule update --init
 
     #patches
-    #patch -p1 < "${srcdir}/0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch"
+    patch -p1 < "${srcdir}/0001-Add-an-option-to-hide-messages-from-blocked-users-in.patch"
     patch -p1 < "${srcdir}/block-sponsored_messages.patch"
 }
 
