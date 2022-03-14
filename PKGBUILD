@@ -1,11 +1,11 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=neo_minideen
 pkgbase="foosynth-plugin-${_plug}-git"
 pkgname=("avisynth-plugin-${_plug}-git"
          "vapoursynth-plugin-${_plug}-git"
          )
-pkgver=r11.0.g0342ed5
+pkgver=11.0.g0342ed5
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth/Avisynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
@@ -18,20 +18,20 @@ makedepends=('git'
              )
 source=("${_plug}::git+https://github.com/HomeOfAviSynthPlusEvolution/minideen.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d r)"
 }
 
 prepare() {
-  cd "${_plug}"
-  mkdir -p build
+  mkdir -p "${_plug}/build"
 }
 
 build() {
   cd "${_plug}/build"
-  cmake .. \
+  cmake -S .. -B . \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
 
