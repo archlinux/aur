@@ -3,7 +3,6 @@ pkgbase = rbfeeder-git
 	pkgver = 1.0.7.g3d9e533
 	pkgrel = 1
 	url = https://www.radarbox.com/sharing-data
-	install = rbfeeder.install
 	arch = x86_64
 	arch = armv6h
 	arch = armv7h

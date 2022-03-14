@@ -1,4 +1,0 @@
-post_install() {
-  touch /var/log/rbfeeder.log
-  chown rbfeeder. /etc/rbfeeder.ini /var/log/rbfeeder.log
-}
