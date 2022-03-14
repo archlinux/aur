@@ -2,7 +2,7 @@
 # Contributor: Bjorn Neergaard (neersighted) <bjorn@neersighted.com>
 pkgroot=ucsf-chimera
 pkgname=ucsf-chimera
-pkgver=1.14
+pkgver=1.16
 pkgrel=1
 pkgdesc='Extensible molecular modeling system'
 url='https://rbvi.ucsf.edu/chimera/'
