@@ -4,14 +4,14 @@
 # Contributor: megadriver <megadriver at gmx dot com>
 
 pkgname=ttf-unifont
-pkgver=14.0.01
+pkgver=14.0.02
 pkgrel=1
 pkgdesc="TrueType version of the GNU Unifont"
 url="https://unifoundry.com/unifont.html"
 arch=('any')
 license=('GPL')
 source=("https://ftpmirror.gnu.org/gnu/unifont/unifont-$pkgver/unifont-$pkgver.tar.gz"{,.sig})
-sha256sums=('7ad1daeecc466685cdb3c60bdd57d6f3553131f076c1a18ab2f95e2020b26d72'
+sha256sums=('401bb9c3741372c1316fec87c392887037e9e828fae64fd7bee2775bbe4545f7'
             'SKIP')
 validpgpkeys=('95D2E9AB8740D8046387FD151A09227B1F435A33') # Paul Hardy
 
