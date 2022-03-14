@@ -1,7 +1,7 @@
 # Maintainer: siphr <archlinux@techtum.dev>
 
 pkgname=spcs
-pkgver=0.0.1
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="Pakistan Sindh Police Complaints Status."
 depends=(python python-beautifulsoup4)
