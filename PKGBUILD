@@ -6,7 +6,7 @@
 
 pkgname=modeller
 pkgver=10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="3D Structure Homology Modeller"
 arch=('i686' 'x86_64')
 url="http://salilab.org/modeller/"
@@ -76,12 +76,12 @@ package() {
     echo "/usr/lib/$pkgname/lib/$_EXECUTABLE_TYPE" > "$pkgdir/etc/ld.so.conf.d/$pkgname.conf"
 
     # install python modules
-    for _pyver in 2.7 3.7; do
+    for _pyver in 2.7 3.10; do
       install -dm755 "$pkgdir/usr/lib/python$_pyver/site-packages"
       ln -s "$_MODINSTALL/modlib/modeller" "$pkgdir/usr/lib/python$_pyver/site-packages/modeller"
     done
     ln -s "$_MODINSTALL/lib/$_EXECUTABLE_TYPE/python2.5/_modeller.so" "$pkgdir/usr/lib/python2.7/site-packages/_modeller.so"
-    ln -s "$_MODINSTALL/lib/$_EXECUTABLE_TYPE/python3.3/_modeller.so" "$pkgdir/usr/lib/python3.7/site-packages/_modeller.so"
+    ln -s "$_MODINSTALL/lib/$_EXECUTABLE_TYPE/python3.3/_modeller.so" "$pkgdir/usr/lib/python3.10/site-packages/_modeller.so"
 
     # add profile.d file
     install -dm755 "$pkgdir/etc/profile.d"

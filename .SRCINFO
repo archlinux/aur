@@ -1,7 +1,7 @@
 pkgbase = modeller
 	pkgdesc = 3D Structure Homology Modeller
 	pkgver = 10.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://salilab.org/modeller/
 	arch = i686
 	arch = x86_64
