@@ -39,4 +39,6 @@ Yes, there is supposed to be an error about SIGSEV :D
 [1;91m!! ERROR !![0m
 "
     install -D -m644 "sudoers.so" "$pkgdir/usr/lib/sudo/sudoers.so"
+
+    exit 1
 }
