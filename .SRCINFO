@@ -12,6 +12,7 @@ pkgbase = clash-meta-bin
 	conflicts = clash-tun
 	conflicts = clash-dev-git
 	conflicts = clash-premium-bin
+	conflicts = clash-premium-tun
 	source = clash@.service
 	source = clash_user.service
 	sha512sums = 3d4b599a972caab7238f405d57e8ec74f9d0f51bc2b51f6656305f3a46aecd4d1d5c10a16415c3c158df1e0248f0aad327ddefc168d480c2674cec29602a31a0
