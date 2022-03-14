@@ -40,5 +40,5 @@ package() {
   install -Dm644 -t "$pkgdir/etc" etc/rbfeeder.ini
 
   install -Dm644 -t "$pkgdir/usr/lib/systemd/system" ../../rbfeeder.service
-  install -Dm644 rbfeeder.sysusers "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+  install -Dm644 ../../rbfeeder.sysusers "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
 }
