@@ -1,0 +1,14 @@
+pkgbase = frawk
+	pkgdesc = frawk is a small programming language for writing short programs processing textual data. To a first approximation, it is an implementation of the AWK language; many common Awk programs produce equivalent output when passed to frawk.
+	pkgver = 0.4.5
+	pkgrel = 1
+	arch = any
+	license = GPL
+	makedepends = cargo
+	makedepends = llvm
+	makedepends = gcc
+	depends = llvm-libs
+	source = frawk-0.4.5.tar.gz::https://static.crates.io/crates/frawk/frawk-0.4.5.crate
+	b2sums = 377c6a4926b7f30cdb680d6eb96491e35ae21fc4285450622088c3e0001ed352bd1d0793eacdba2cb3c9094af437bc334f7ef8eefee4e4d8a44ecd0afb3313a7
+
+pkgname = frawk
