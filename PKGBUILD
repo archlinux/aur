@@ -1,7 +1,7 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 
 pkgname=gnome-shell-extension-status-area-horizontal-spacing-git
-pkgver=r86.400dabd
+pkgver=r88.6be7d49
 pkgrel=1
 pkgdesc="A GNOME shell extension that reduces the horizontal spacing between icons/indicators in the status area."
 arch=('any')
@@ -9,7 +9,8 @@ url="https://gitlab.com/p91paul/status-area-horizontal-spacing-gnome-shell-exten
 install="${pkgname%-git}.install"
 license=('unknown')
 depends=('gnome-shell>=40')
-makedepends=('git' 'glib2')
+makedepends=('git'
+             'glib2')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!strip')
