@@ -2,14 +2,15 @@
 
 pkgname=gnome-shell-extension-compiz-alike-windows-effect-git
 pkgver=r48.21acc46
-pkgrel=1
+pkgrel=2
 pkgdesc="Wobbly windows effect inspired by the Compiz ones"
 arch=('any')
 url="https://github.com/hermes83/compiz-alike-windows-effect"
 install="${pkgname}.install"
 license=('GPL3')
 depends=('gnome-shell>=3.28')
-makedepends=('git' 'glib2')
+makedepends=('git'
+             'glib2')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('!strip')
@@ -39,4 +40,8 @@ package() {
   sed -i "s_/extensions/ncom/github/hermes83_/extensions_g" ${schema}
   install -Dm644 "${srcdir}/${pkgname%-git}/schemas/${schema}" \
     "${pkgdir}/usr/share/glib-2.0/schemas/${schema}"
+# rebuild compiled GSettings schemas if missing
+  if [[ ! -f "${destdir}/schemas/gschemas.compiled" ]]; then
+    glib-compile-schemas "${destdir}/schemas"
+  fi
 }
