@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-ogg
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="OCaml binding to libogg"
 arch=('i686' 'x86_64')
@@ -28,4 +28,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('2f21b52d6237704c98fff618af3a9faf2adfbf2cbcff0aa08297dc6f101b2fa2')
+sha256sums=('5d26d17fffc3d4261cf62f85865587f8455fde6ab78a10ad106d58a882241add')
