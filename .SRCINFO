@@ -1,0 +1,16 @@
+pkgbase = bettervim
+	pkgdesc = Configuration's aimed at enhancing user experience in the neoVim text editor.
+	pkgver = 1.0.r7
+	pkgrel = 1
+	url = https://gitlab.com/qYp/bettervim
+	arch = x86_64
+	license = MIT
+	depends = neovim
+	depends = python-pynvim
+	depends = neovim-plug
+	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/bettervim-1.0.r7-1-x86_64.pkg.tar.zst
+	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/bettervim-1.0.r7-1-x86_64.pkg.tar.zst.sig
+	sha256sums = 063f97c12d15b687d9353cde065840bafdf7396a9c0f8031e452d1584901d2f5
+	sha256sums = 813605c142555d4b459a9fb13e7ca26e864a6d3817f269dff2b87beb21871ff9
+
+pkgname = bettervim
