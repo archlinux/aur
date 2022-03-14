@@ -1,9 +1,9 @@
 # Maintainer: Connor Etherington <nu1l@null.net>
 # ---
 pkgname=pkgdl
-pkgver=1.0.r3
+pkgver=1.0.r4
 pkgrel=1
-pkgdesc='Simple script making simultaneously downloading packages from various sources a breeze'
+pkgdesc='Seamlessly download multiple packages simultaneously from various sources'
 arch=(x86_64)
 url="https://gitlab.com/qYp/${pkgname}"
 license=('MIT')
@@ -19,13 +19,9 @@ source=(
   "https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha256sums=(
-  'b91949cd6e5753da0ccd68c91f33d2e8c41a411ad811c2734955776ec23df9b2'
-  '954f5d75e18681921528c360f5b0b19dac484ee4755b4fcaf990d574e25eb49a'
+  'aec250c4d357ac70e5fd408104f581c562947fef4caa422c32c06ec87621e4cf'
+  '4c8dfa9bdf9267ad5d5173f1df709e63999095624a644a5cfc1b56b4ffe1adae'
   )
-
-pkgver() {
-  printf "1.0.r$(git rev-list --count HEAD)"
-}
 
 package() {
   install -Dm775 usr/bin/${pkgname} "${pkgdir}/usr/bin/${pkgname}"
