@@ -1,13 +1,13 @@
 pkgbase = linux-on-drugs-git
 	pkgdesc = Gives drugs to your terminal
 	pkgver = r7.23db4b7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SkwalExe/linux-on-drugs
 	install = linux-on-drugs.install
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = rustup
+	makedepends = cargo
 	provides = linux-on-drugs
 	source = git+https://github.com/SkwalExe/linux-on-drugs
 	md5sums = SKIP

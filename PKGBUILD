@@ -1,12 +1,12 @@
 # Maintainer: Léopold Koprivnik Ibghy <skwal.net@gmail.com>
 pkgname="linux-on-drugs-git"
 pkgver="r7.23db4b7"
-pkgrel=1
+pkgrel=2
 pkgdesc="Gives drugs to your terminal"
 arch=('any')
 url="https://github.com/SkwalExe/linux-on-drugs"
 license=('MIT')
-makedepends=("git" "rustup")
+makedepends=("git" "cargo")
 provides=("linux-on-drugs")
 install=linux-on-drugs.install
 source=("git+$url")
@@ -19,9 +19,8 @@ pkgver() {
 
 prepare() {
 	cd linux-on-drugs
-        rustup install stable
-      
-        sudo rm -rf /usr/bin/linux-on-drugs
+             
+        # sudo rm -rf /usr/bin/linux-on-drugs
 }
 
 build() {
