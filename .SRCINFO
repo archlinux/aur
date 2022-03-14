@@ -1,18 +1,18 @@
 pkgbase = md-git
 	pkgdesc = Simple MarkDown Reader
-	pkgver = 1.11
+	pkgver = 1.12
 	pkgrel = 1
 	url = https://github.com/Noah-Arcouette/md.git
-	arch = x86_64
-	arch = i686
-	arch = x86
-	arch = arm
+	arch = any
 	license = MIT
 	makedepends = git
 	makedepends = binutils
 	makedepends = make
 	makedepends = gcc
+	makedepends = gzip
+	depends = glibc
 	provides = md
+	conflicts = md
 	source = git+https://github.com/Noah-Arcouette/md.git
 	sha256sums = SKIP
 
