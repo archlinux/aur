@@ -1,0 +1,13 @@
+pkgbase = omegat-plugin-epwing
+	pkgdesc = EPWING dictionary plugin for OmegaT
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://github.com/miurahr/omegat-plugin-epwing/
+	arch = any
+	license = GPL3
+	depends = omegat
+	options = !strip
+	source = https://github.com/miurahr/omegat-plugin-epwing/releases/download/v2.2.1/omegat-plugin-epwing-2.2.1.zip
+	sha256sums = 38dc8745b1a3eae3c464cc762ea231bf29b25c89650ff7048793a851f4d32f03
+
+pkgname = omegat-plugin-epwing
