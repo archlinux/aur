@@ -1,0 +1,14 @@
+[Unit]
+Description=RBFeeder Service
+After=network-online.target
+
+[Service]
+Type=simple
+User=rbfeeder
+Group=rbfeeder
+ExecStart=/usr/bin/rbfeeder
+ExecStop=/bin/kill -TERM $MAINPID
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
