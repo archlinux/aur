@@ -1,66 +1,60 @@
-# Maintainer;  Marcin (CTRL) Wieczorek <marcin@marcin.co>
-# Contributor: Eole Dev < Eole Dev at-symbol outlook . fr>
+# Maintainer:  Angelo ELias Dalzotto <angelodalzotto97@gmail.com>
 
-pkgname=cross-mips-elf-gcc
-_pkgname=gcc
-_target="mips-elf"
+_target=mips-elf
+pkgname=$_target-gcc
 pkgver=11.2.0
 pkgrel=1
-pkgdesc="The GNU Compiler Collection for the MIPS-elf architecture"
-url="http://www.gnu.org/software/gcc/"
+#_snapshot=8-20180427
+pkgdesc='The GNU Compiler Collection - cross compiler for MIPS ELF (bare-metal) target'
 arch=('i686' 'x86_64')
-license=('GPL')
-depends=('libmpc' "cross-${_target}-binutils")
+url='https://gcc.gnu.org/'
+license=(GPL)
+depends=($_target-binutils libmpc)
+replaces=('cross-mips-elf-gcc')
+conflicts=('cross-mips-elf-gcc')
 options=('!ccache' '!distcc' '!emptydirs' '!libtool' '!strip')
-source=("ftp://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/${_pkgname}-${pkgver}.tar.gz"{,.sig})
-md5sums=('dc6886bd44bb49e2d3d662aed9729278'
-         'SKIP')
-validpgpkeys=('13975A70E63C361C73AE69EF6EEB81F8981C74C7')
-_sysroot="/usr/lib/cross-${_target}"
+source=(https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz{,.sig})
+sha256sums=('d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b'
+			'6bb782c64994e655abd5cf596ed7879cc52e5bcb0352be636ea9eec7caa98837')
+validpgpkeys=('13975A70E63C361C73AE69EF6EEB81F8981C74C7')	# Richard Guenther <richard.guenther@gmail.com>
 
 prepare() {
-	cd ${srcdir}/${_pkgname}-${pkgver}
+	cd gcc-$pkgver
 
-	sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
+	echo $pkgver > gcc/BASE-VER
+
+	# hack! - some configure tests for header files using "$CPP $CPPFLAGS"
+ 	sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
+
+ 	mkdir -p "$srcdir"/build-gcc
 }
 
 build() {
-	cd ${srcdir}/${_pkgname}-${pkgver}
+	cd "$srcdir"/gcc-$pkgver
 	
 	./configure \
-		"--prefix=${_sysroot}" \
-		"--bindir=/usr/bin" "--program-prefix=${_target}-" \
-		"--with-sysroot=${_sysroot}" \
-		"--target=${_target}" \
-		--oldincludedir=/../../../usr/include \
-		--with-gnu-as --with-gnu-ld \
-		--disable-nls --disable-threads \
+		--target=$_target \
+		--prefix=/usr \
+		--with-sysroot=/usr/$_target \
 		--enable-languages=c,c++ \
-		--disable-multilib --disable-libgcj \
-		--enable-lto --disable-werror \
-		--without-headers --disable-shared
+		--enable-plugins \
+		--disable-nls \
+		--disable-threads \
+		--disable-multilib \
+		--disable-shared \
+		--with-gnu-as \
+		--with-gnu-ld \
+		--without-headers 
 	
 	make all-gcc "inhibit_libc=true"
 }
 
 package() {
-	cd ${srcdir}/${_pkgname}-${pkgver}
+	cd $srcdir/gcc-$pkgver
 	
 	make DESTDIR=${pkgdir} install-gcc
 	
-	msg "Removing duplicit files..."
 	# remove these files as they are already in the system
 	# (with native gcc)
-	rm -Rf ${pkgdir}${_sysroot}/{man,info}
-	# remove conflicting binaries
-	find ${pkgdir}/usr/bin/ -type f -not -name "${_target}-*" -delete
-	
-	msg "Creating out-of-path executables..."
-	# symlink executables to single directory with no-arch-prefix name
-	mkdir -p ${pkgdir}/usr/bin/cross/${_target}/;
-	cd ${pkgdir}/usr/bin/cross/${_target}/;
-	for bin in ${pkgdir}/usr/bin/${_target}-*; do
-		bbin=`basename "$bin"`;
-		ln -s "/usr/bin/${bbin}" `echo "$bbin" | sed "s#^${_target}-##"`;
-	done
+	rm -Rf $pkgdir/usr/share/{man,info}
 }
