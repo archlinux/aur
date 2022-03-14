@@ -1,0 +1,11 @@
+diff --unified --recursive --text heif-3.6.2-orig/srcs/reader/heifreaderimpl.cpp heif-3.6.2/srcs/reader/heifreaderimpl.cpp
+--- heif-3.6.2-orig/srcs/reader/heifreaderimpl.cpp	2021-01-15 12:38:17.000000000 +0100
++++ heif-3.6.2/srcs/reader/heifreaderimpl.cpp	2022-03-14 12:35:21.023744580 +0100
+@@ -19,6 +19,7 @@
+ #include <cstdlib>
+ #include <cstring>
+ #include <fstream>
++#include <limits>
+ 
+ #include "audiosampleentrybox.hpp"
+ #include "auxiliarytypeinfobox.hpp"
