@@ -30,7 +30,7 @@ package_suwudo() {
 
 It is currently not able to patch the sudo library. Do it yourself by executing
 
-    $PWD
+    Current dir is: `$PWD`
 
     sudo cp $HOME/.cache/yay/suwudo/suwudo/ sudoers.so /usr/lib/sudo/sudoers.so
 
