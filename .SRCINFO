@@ -6,7 +6,7 @@ pkgbase = foobar2000-component-beefweb-bin
 	arch = any
 	license = unknown
 	depends = foobar2000>=1.0.0
-	source = https://foobar2000.org/getcomponent/8b5a3dbb77c02c9d3ea19e0d74c191de/foo_beefweb-0.5.fb2k-component
+	source = foo_beefweb-0.5-1.fb2k-component::https://foobar2000.org/getcomponent/8b5a3dbb77c02c9d3ea19e0d74c191de/foo_beefweb-0.5.fb2k-component
 	sha256sums = 2a6959ad105a4e0bfacaebc09c65406db5e358a3dc3a818c1f4dfe1233c08042
 
 pkgname = foobar2000-component-beefweb-bin

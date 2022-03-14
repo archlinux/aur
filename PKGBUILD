@@ -10,7 +10,7 @@ arch=('any')
 url="https://www.foobar2000.org/components/view/${_fooname}"
 license=('unknown')
 depends=('foobar2000>=1.0.0')
-source=("https://foobar2000.org/getcomponent/${_buildhash}/${_fooname}-${pkgver}.fb2k-component")
+source=("${_fooname}-${pkgver}-${pkgrel}.fb2k-component::https://foobar2000.org/getcomponent/${_buildhash}/${_fooname}-${pkgver}.fb2k-component")
 sha256sums=('2a6959ad105a4e0bfacaebc09c65406db5e358a3dc3a818c1f4dfe1233c08042')
 
 package() {
