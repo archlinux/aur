@@ -1,7 +1,7 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 
 pkgname=gnome-shell-extension-compiz-windows-effect-git
-pkgver=r17.41128b2
+pkgver=r18.d72dd59
 pkgrel=1
 pkgdesc="Compiz wobbly windows effect with libanimation engine."
 arch=('any')
@@ -10,7 +10,8 @@ install=${pkgname%-git}.install
 license=('GPL3')
 depends=("gnome-shell>=3.28")
 optdepends=("libanimation-gnome-shell-git")
-makedepends=('git' 'glib2')
+makedepends=('git'
+             'glib2')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}.git")
@@ -38,4 +39,8 @@ package() {
      install -Dm 644 {} ${destdir}/{} \;
   install -Dm644 "${srcdir}/${pkgname%-git}/schemas/${schema}" \
     "${pkgdir}/usr/share/glib-2.0/schemas/${schema}"
+# rebuild compiled GSettings schemas if missing
+  if [[ ! -f "${destdir}/schemas/gschemas.compiled" ]]; then
+    glib-compile-schemas "${destdir}/schemas"
+  fi
 }
