@@ -1,7 +1,7 @@
 # Maintainer: bauh developers <bauh4linux@gmail.com>
 
 pkgname=bauh
-pkgver=0.9.28
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Graphical interface for managing your applications (AppImage, Flatpak, Snap, Arch/AUR, Web)"
 arch=('any')
@@ -39,7 +39,7 @@ optdepends=('flatpak: required for Flatpak support'
             'util-linux: to install AUR packages as the root user')
 makedepends=('git' 'python' 'python-pip' 'python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('0c497ed61b1c072dca7d2480ab63fae4e58ab19c0037e613d5ddf6902e60bcbba67d5103226b2aabf08a69c4ee79e68ddde3d42ce22b74502d5b5764a767018a')
+sha512sums=('47bcdc2050ac0976691de6e0d67e9bab97b1e1126c3e20654ebda62024f99ae85f245b2b16d1d8a868a7447cf62fb9ae599464b304fa0187847852c18d4ba49f')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -57,4 +57,7 @@ package() {
   mkdir -p $pkgdir/usr/share/applications
   mv bauh/desktop/bauh.desktop $pkgdir/usr/share/applications/
   mv bauh/desktop/bauh_tray.desktop $pkgdir/usr/share/applications/
+
+  mkdir -p $pkgdir/etc/bauh/
+  echo "debian" > $pkgdir/etc/bauh/gems.forbidden
 }
