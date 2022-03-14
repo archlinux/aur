@@ -1,14 +1,16 @@
 # Maintainer: Christian Schendel <doppelhelix at gmail dot com>
 pkgname=gnome-shell-extension-useless-gaps-git
-pkgver=r14.672d14e
-pkgrel=2
+pkgver=r18.e5029a3
+pkgrel=1
 pkgdesc="Useless Gaps is a GNOME Shell Extension which for aesthetic purposes adds 'useless gaps' around windows."
 arch=(any)
 url="https://github.com/mipmip/gnome-shell-extensions-useless-gaps"
 install=${pkgname%-git}.install
 license=('GPL3')
 depends=('gnome-shell>=40')
-makedepends=('git' 'glib2' 'gettext')
+makedepends=('git'
+             'glib2'
+             'gettext')
 conflicts=("${pkgname%-git}")
 provides=(${pkgname%-git})
 source=("${pkgname%-git}::git+${url}.git")
@@ -50,5 +52,9 @@ package() {
   cp -r * "${destdir}"
   install -Dm644 "schemas/${schema}" \
     "${pkgdir}/usr/share/glib-2.0/schemas/${schema}"
+# rebuild compiled GSettings schemas if missing
+  if [[ ! -f "${destdir}/schemas/gschemas.compiled" ]]; then
+    glib-compile-schemas "${destdir}/schemas"
+  fi
 }
 
