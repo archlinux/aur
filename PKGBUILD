@@ -8,7 +8,7 @@
 
 pkgname=discord_arch_electron_wayland
 pkgver=0.0.17
-pkgrel=2
+pkgrel=3
 pkgdesc="Discord (popular voice + video app) using system electron (v13) and set up for wayland"
 arch=('x86_64')
 provides=('discord')
@@ -26,10 +26,17 @@ sha256sums=('3462732e5d5d9bb75f901f7ca5047782fe2f96576b208ea538c593ba2a031315')
 
 prepare() {
 	# create launcher script
-	cat >>"$srcdir"/discord <<EOF
+	cat >>"$srcdir"/discord <<'EOF'
 #!/bin/sh
-exec electron13 --enable-features=UseOzonePlatform --ozone-platform=wayland \
-	/usr/lib/discord/app.asar \$@
+
+if [ "$XDG_SESSION_TYPE" == wayland ]; then
+	# Using wayland
+	exec electron13 --enable-features=UseOzonePlatform \
+		--ozone-platform=wayland /usr/lib/discord/app.asar \$@
+else
+	# Using x11
+	exec electron13 /usr/lib/discord/app.asar \$@
+fi
 EOF
 
 	# fix the .desktop file
