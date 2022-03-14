@@ -1,7 +1,7 @@
 # Maintainer: Felipe Balbi <felipe.balbi@microsoft.com>
 pkgname=azure-sphere-sdk
-pkgmajor=21
-pkgminor=10
+pkgmajor=22
+pkgminor=02
 pkgver=${pkgmajor}.${pkgminor}
 pkgrel=1
 pkgdesc="Azure Sphere SDK Preview for Linux"
@@ -21,9 +21,9 @@ options=(!strip staticlibs)
 source=("${pkgname}-${pkgver}.tar.gz::https://software-download.microsoft.com/download/pr/Azure_Sphere_SDK_Bundle_${pkgmajor}${pkgminor}.tar.gz"
         "azure-sphere-sdk.udev"
         "azure-sphere-sdk.sysusers")
-sha256sums=('669edd6d4985231607cb637b484c60a460abe1d075b8a9ee1a8e3dc3deabd7c4'
+sha256sums=('13d9d754c2afc125e57ca743d54d545759907ec925b1eff5001da2d6840af25f'
             '649ec04bdd0c052838bf3364fdd32313264891c4f7f60039cb644ef79c3c589f'
-            '323c5e51b6bcf92c7e024cfd6bd6843cb57531317c6ef887b1bced81e920d43e')
+            '0afb48362c9684940c02d45136998267cbda7196ce04ab9933687f82165af9d4')
 
 prepare() {
   tar -zxf "Azure_Sphere_SDK.tar.gz"
@@ -32,11 +32,18 @@ prepare() {
 build() {
   find "${srcdir}" -type d -exec chmod 755 {} \;
   find "${srcdir}" -type f -exec chmod 644 {} \;
+
+  mkdir -p "${srcdir}"/azurespheresdk/Tools_v2
+  tar -zxf "${srcdir}"/azurespheresdk/Tools_v2_Installer/azsphere-cli-v2.tar.gz -C "${srcdir}"/azurespheresdk/Tools_v2
+  cp "${srcdir}"/azurespheresdk/Tools_v2_Installer/azsphere.completion "${srcdir}"/azurespheresdk/Tools_v2/azsphere.completion
+  rm -rf "${srcdir}"/azurespheresdk/Tools_v2_Installer
+
+  chmod 755 "${srcdir}"/azurespheresdk/Tools_v2/azsphere
   chmod 755 "${srcdir}"/azurespheresdk/Tools/azsphere
   chmod 755 "${srcdir}"/azurespheresdk/DeviceConnection/azsphere_slattach
   chmod 755 "${srcdir}"/azurespheresdk/DeviceConnection/azsphere_connect.sh
 
-  for sysroot in `ls ${srcdir}/azurespheresdk/Sysroots/`; do
+  for sysroot in $(ls "${srcdir}"/azurespheresdk/Sysroots/); do
     chmod 755 "${srcdir}"/azurespheresdk/Sysroots/"${sysroot}"/tools/exp23-appsdk-linux-blanca.sh
   done
 }
@@ -49,14 +56,18 @@ package() {
 
   mkdir -p "${pkgdir}"/opt/azurespheresdk
 
-  for DIR in BoardConfigPresets CMakeFiles DebugTools DeviceConnection HardwareDefinitions Sysroots \
-             Tools Tools_v2_Installer; do
-    cp -r "${srcdir}"/azurespheresdk/"${DIR}" "${pkgdir}"/opt/azurespheresdk
+  for DIRPATH in $(ls -d "${srcdir}"/azurespheresdk/*/); do
+    cp -r "${DIRPATH}" "${pkgdir}"/opt/azurespheresdk
   done
+  echo "${pkgver}" > "${pkgdir}"/opt/azurespheresdk/VERSION
 
   mkdir -p "${pkgdir}"/usr/bin
-  ln -s ../../opt/azurespheresdk/Tools/azsphere "${pkgdir}"/usr/bin/azsphere
+  mkdir -p "${pkgdir}"/usr/share/bash-completion/completions
+  ln -s ../../../../opt/azurespheresdk/Tools_v2/azsphere.completion \
+     "${pkgdir}"/usr/share/bash-completion/completions/azsphere
+  ln -s ../../opt/azurespheresdk/Tools/azsphere "${pkgdir}"/usr/bin/azsphere_v1
+  ln -s ../../opt/azurespheresdk/Tools_v2/azsphere "${pkgdir}"/usr/bin/azsphere_v2
+  ln -s azsphere_v2 "${pkgdir}"/usr/bin/azsphere
   ln -s ../../opt/azurespheresdk/DeviceConnection/azsphere_connect.sh "${pkgdir}"/usr/bin/azsphere_connect.sh
   ln -s ../../opt/azurespheresdk/DeviceConnection/azsphere_slattach "${pkgdir}"/usr/bin/azsphere_slattach
 }
-
