@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=Dwarf Fortress
+Name=Dwarf Fortress (Ironhand tileset)
 GenericName=Dwarf Fortress
-Comment=A single-player fantasy game.
+Comment=Build a fortress and try to help your dwarves survive against a deeply generated world.
 Exec=dwarffortress
 Icon=/usr/share/pixmaps/dwarffortress.png
 Terminal=false

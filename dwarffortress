@@ -1,20 +1,21 @@
-#!/bin/bash
-export SDL_DISABLE_LOCK_KEYS=1 # Work around for bug in Debian/Ubuntu SDL patch.
-#export SDL_VIDEO_CENTERED=1    # Centre the screen.  Messes up resizing.
+#!/usr/bin/env bash
 
-pkgname=dwarffortress #To be set by PKGBUILD
+# Debian/Ubuntu patch bug
+export SDL_DISABLE_LOCK_KEYS=1
 
-if [[ ! -d "$HOME/.$pkgname" ]]; then
-    mkdir -p "$HOME/.$pkgname/data"
-    ln -s /opt/"$pkgname"/raw "$HOME/.$pkgname/raw"
-    ln -s /opt/"$pkgname"/libs "$HOME/.$pkgname/libs"
-    cp -rn /opt/"$pkgname"/data/init "$HOME/.$pkgname/data/init"
+# Force xwayland
+[ "$SDL_VIDEODRIVER" == wayland ] && export SDL_VIDEODRIVER=x11
+
+if [ ! -d "$HOME"/.dwarffortress ]; then
+    mkdir -p "$HOME"/.dwarffortress/data
+    ln -s /opt/dwarffortress/raw "$HOME"/.dwarffortress/raw
+    ln -s /opt/dwarffortress/libs "$HOME"/.dwarffortress/libs
+    cp -rn /opt/dwarffortress/data/init "$HOME"/.dwarffortress/data/init
+    for i in announcement art dipscript help index initial_movies movies \
+        shader.fs shader.vs sound speech; do
+        cp -r /opt/dwarffortress/data/"$i" "$HOME"/.dwarffortress/data/"$i"
+    done
 fi
 
-for link in announcement art dipscript help index initial_movies movies shader.fs shader.vs sound speech; do
-    cp -r /opt/"$pkgname"/data/$link "$HOME/.$pkgname/data/$link"
-done
-
-cd "$HOME/.$pkgname"
+cd "$HOME"/.dwarffortress || exit
 exec ./libs/Dwarf_Fortress "$@"
-

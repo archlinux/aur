@@ -1,9 +1,11 @@
-post_upgrade() {
-    echo "You might have delete your ~/.dwarffortress directory to get the new file layout."
-    echo "Of course, you can backup your saves."
-    echo "This might also be necessary if you have custom keybinds."
+post_install() {
+    cat <<EOF
+You might have delete your ~/.dwarffortress directory to get the new file
+layout. Of course, you can back up your saves. This might also be necessary if
+you have custom keybinds."
+EOF
 }
 
-post_install() {
-    post_upgrade
+post_upgrade() {
+    post_install
 }
