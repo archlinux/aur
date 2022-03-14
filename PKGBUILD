@@ -1,5 +1,6 @@
 # Maintainer: Efaile <seebeckemily3403@gmail.com>
 
+# uwu
 pkgname=suwudo
 pkgver=0.1
 pkgrel=1
