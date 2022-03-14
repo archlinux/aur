@@ -22,6 +22,7 @@ source_x86_64=("${pkgname}-x86_64-${pkgver}.gz::${url}/download/${pkgver}/Clash.
 package() {
     cd ${srcdir}
     install -Dm755 "${pkgname}-${CARCH}-${pkgver}" "${pkgdir}/usr/bin/clash"
+    install -Dm644 "clash.service" "${pkgdir}/usr/lib/systemd/system/clash.service"
     install -Dm644 "clash@.service" "${pkgdir}/usr/lib/systemd/system/clash@.service"
     install -Dm644 "clash_user.service" "${pkgdir}/usr/lib/systemd/user/clash.service"
 }

@@ -7,4 +7,5 @@
 !.SRCINFO
 !clash@.service
 !clash.service
+!clash_user.service
 !clash-meta-bin.install
