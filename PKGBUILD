@@ -2,7 +2,7 @@
 
 pkgname=rime-opencc-emoji-symbols-git
 pkgver=20220209.r40.45a0c6b
-pkgrel=2
+pkgrel=3
 pkgdesc="Rime 输入法 Emoji 与符号滤镜"
 arch=('any')
 url="https://github.com/rtransformation/rime-opencc_emoji_symbols"
@@ -12,9 +12,9 @@ depends=('librime' 'rime-prelude')
 provides=('rime-opencc-emoji-symbols')
 conflicts=('rime-opencc-emoji-symbols')
 source=("rime-opencc_emoji_symbols::git+https://github.com/rtransformation/rime-opencc_emoji_symbols.git"
-	"es_modify.patch")
+	"https://raw.githubusercontent.com/so1ar/rime-cloverpinyin/main/src/es_modify.patch")
 sha256sums=('SKIP'
-            'SKIP')
+            '49ac12950a3a30c433a5a6717cd3c2c42ca4713a4f79e42e3084bab73397eb2f')
 
 pkgver() {
     cd "$srcdir"/rime-opencc_emoji_symbols
