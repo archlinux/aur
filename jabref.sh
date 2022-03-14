@@ -1,5 +1,12 @@
 #!/bin/bash
 
+# JabRef may need some custom options to work and look properly on certain
+# systems. You can set them via the JABREF_OPTIONS environment variable.
+#     -Dglass.gtk.uiScale=144dpi   scale up the UI to look better on high DPI displays
+#     -Djdk.gtk.version=2          workaround for misbehaving menus, e.g. on i3wm
+# You can for example run JabRef as follows:
+#     JABREF_OPTIONS="-Dglass.gtk.uiScale=144dpi -Djdk.gtk.version=2" jabref
+
 # This script has been created based on the instructions at
 # https://devdocs.jabref.org/getting-into-the-code/guidelines-for-setting-up-a-local-workspace,
 # the output of `./gradlew -d run` and the contents of build/scripts/JabRef in the build
@@ -30,5 +37,6 @@ ROOT=/usr/share/java/jabref
 --add-opens javafx.base/com.sun.javafx.event=com.jfoenix \
 --module-path ${ROOT}/lib \
 --patch-module org.jabref=${ROOT}/resources/main \
+${JABREF_OPTIONS} \
 --module org.jabref/org.jabref.gui.JabRefLauncher \
 "$@"

@@ -20,7 +20,7 @@ source=(${pkgname}-${pkgver}.tar.gz::https://github.com/JabRef/jabref/archive/v$
         jabref.sh
         jabref.desktop)
 sha256sums=('af0d7c5566aec94ffa8b5912c116956ccf17331e5b46bb5adbd6afeaa85ac230'
-            '52f6b327c2019d0f0a57ecd9a5401ae04dde9a80a58490b43f8000caf724e5dd'
+            'c29242ebb35401b229761328b4e7a3ded81907607ef6af87cff838416599f24d'
             'c6c95fc980630bc72bd4adcc93c710702fe4fced3fcb26c3067eea0f3aad5c68')
 
 # Note on supported Java versions:
