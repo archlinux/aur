@@ -1,7 +1,7 @@
 # Maintainer: siphr <archlinux@techtum.dev>
 
 pkgname=pyfrx
-pkgver=0.0.5
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="Forex Rates and Conversions."
 depends=(python python-beautifulsoup4)
@@ -15,7 +15,7 @@ build() {
     cd "$srcdir/$pkgname-$pkgver/pip/"
     python setup.py build
     
-    echo -e '#!/bin/sh\n\nexec python -m pyfrx.main "$@"' > _pyfrx
+    echo -e '#!/bin/sh\n\nexec python -m pyfrx.pyfrx "$@"' > _pyfrx
 
 }
 
@@ -31,4 +31,4 @@ package() {
     install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     echo 'Finished setting up pyfrx.'
 }
-md5sums=('dff4ba45b9368d5c1f1f3ba46d33e75a')
+md5sums=('6600c2b627aff4e476d4505edb27316f')
