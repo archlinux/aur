@@ -5,7 +5,7 @@
 _pkgver=47_05
 pkgname=dwarffortress-ironhand
 pkgver="0.${_pkgver/_/.}"
-pkgrel=2
+pkgrel=3
 pkgdesc="Build a fortress and try to help your dwarves survive against a deeply generated world."
 arch=('x86_64' 'i686')
 url="http://www.bay12games.com/dwarves/"

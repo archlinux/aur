@@ -1,7 +1,7 @@
 pkgbase = dwarffortress-ironhand
 	pkgdesc = Build a fortress and try to help your dwarves survive against a deeply generated world.
 	pkgver = 0.47.05
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.bay12games.com/dwarves/
 	install = dwarffortress.install
 	arch = x86_64
