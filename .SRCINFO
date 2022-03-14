@@ -1,0 +1,19 @@
+pkgbase = geogram-git
+	pkgdesc = a programming library with geometric algorithms
+	pkgver = r117.eb6a4483
+	pkgrel = 1
+	url = https://github.com/BrunoLevy/geogram
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	depends = glfw-x11
+	provides = geogram-git
+	provides = geogram
+	conflicts = geogram-git
+	conflicts = geogram
+	source = git+https://github.com/BrunoLevy/geogram.git
+	source = CMakeOptions.txt
+	md5sums = SKIP
+	md5sums = b6d8637ef7b6fdcdf490b4def8b350f9
+
+pkgname = geogram-git
