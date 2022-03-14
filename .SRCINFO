@@ -1,7 +1,7 @@
 pkgbase = perfmode
 	pkgdesc = A fan-control utility for ASUS TUF Gaming series of Laptops
 	pkgver = 3.2.5
-	pkgrel = 8
+	pkgrel = 9
 	url = https://github.com/icebarf/perfmode
 	arch = x86_64
 	license = GPL
