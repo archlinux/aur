@@ -140,6 +140,9 @@ package() {
 	# put in eval.
 	eval 'options=()'
 	cd "${pkgdir}/usr/bin"
-	tidy_strip
+	# tidy_strip may exit with a non-zero return value even if all operations
+	# are successful. Therefore, we have to ignore its return value to prevent
+	# makepkg from reporting it as an error.
+	tidy_strip || true
 	eval 'options=("!strip")'
 }
