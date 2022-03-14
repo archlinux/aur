@@ -6,8 +6,8 @@
 pkgname=emacs-pretest
 _pkgname=emacs
 pkgver=28.0
-_pkgver=28.0.91
-pkgrel=0.91
+_pkgver=28.0.92
+pkgrel=0.92
 pkgdesc="The extensible, customizable, self-documenting real-time display editor -- pretest version"
 arch=('x86_64')
 url="http://www.gnu.org/software/emacs/emacs.html"
@@ -25,7 +25,7 @@ conflicts=('emacs')
 #source=(https://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz{,.sig}) # PGP keyserver are all but dead.
 #validpgpkeys=('28D3BED851FDF3AB57FEF93C233587A47C207910')
 source=(https://alpha.gnu.org/gnu/emacs/pretest/$_pkgname-$_pkgver.tar.xz)
-b2sums=('94cfd907cb602ab698ffaa5c29aa1db2ff1b8538e1d6a0e20aa72ac1cb77e3c07759cf28cbe47027b155a08ce305c9c6ae01a6b82eb3468b2f4d4b49d51a3430')
+b2sums=('3a0a1e6cec79dd56c36d7f3227654f10e1d0d1a7b933a269e25bdd0da6bcec6653500ee0775b70bafdb09bb59d0976474535b82316eee592fafc8fa9e4d7c0e7')
 
 build() {
   cd "$srcdir"/$_pkgname-$_pkgver
