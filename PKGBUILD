@@ -1,5 +1,5 @@
 pkgname="md-git"
-pkgver=1.12
+pkgver=1.12.r615d1bd10
 pkgrel=1
 pkgdesc="Simple MarkDown Reader"
 
@@ -44,6 +44,7 @@ package() {
 	# setup dirs
 	mkdir -p "${pkgdir}/usr/bin/"
 	mkdir -p "${pkgdir}/usr/doc/md/"
+	mkdir -p "${pkgdir}/usr/share/man/man1/"
 
 	# make binary root owned and executable
 	chown root:root ${srcdir}/md/bin/md
