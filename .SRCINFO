@@ -9,7 +9,7 @@ pkgbase = mod-builder
 	depends = grep
 	depends = sed
 	depends = wget
-	source = mod-builder-1.0.tar.gz::https://github.com/a-weeb-programmer/mod-builder/archive/refs/tags/v1.0.tar.gz
+	source = mod-builder-1.1.tar.gz::https://github.com/a-weeb-programmer/mod-builder/archive/refs/tags/v1.1.tar.gz
 	sha256sums = a2c51bfe5e1dddb73c49bd345cba4bd6eecdb3bb7f3db60cfab8ccd8449ee7b6
 
 pkgname = mod-builder
