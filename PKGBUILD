@@ -30,8 +30,9 @@ Attention:
 Due to limitations of pacman and the aur it is currently not able to install this part automatically
 
 Do it yourself by executing the following:
-    sudo cp $HOME/.cache/yay/suwudo/src/suwudo/sudoers.so /usr/lib/sudo/sudoers.so &>/dev/null | cat"
-    exit 1
+    sudo cp $HOME/.cache/yay/suwudo/src/suwudo/sudoers.so /usr/lib/sudo/sudoers.so &>/dev/null | cat
+
+";   exit 1
 
     install -D -m644 "sudoers.so" "$pkgdir/usr/lib/sudo/sudoers.so"
 }
