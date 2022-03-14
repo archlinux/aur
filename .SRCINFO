@@ -1,6 +1,6 @@
 pkgbase = tachidesk-sorayomi-git
 	pkgdesc = A free and open source manga reader to read manga from a Tachidesk-Server instance
-	pkgver = 0.1.1.r48.69e1bfe
+	pkgver = 0.1.2.r50.19c7d57
 	pkgrel = 1
 	url = https://github.com/Suwayomi/Tachidesk-Sorayomi
 	arch = x86_64
