@@ -1,12 +1,13 @@
 pkgbase = pksg
 	pkgdesc = Pakistan SUI Gass Bill and Tariff.
-	pkgver = 0.0
-	pkgrel = 2
+	pkgver = 0.0.5
+	pkgrel = 1
 	url = https://www.techtum.dev/work-psg-220228.html
-	arch = x86_64
+	arch = any
 	license = MIT
 	depends = python
-	source = https://github.com/siphr/psg.git
-	md5sums = SKIP
+	depends = python-beautifulsoup4
+	source = https://github.com/siphr/psg/archive/refs/tags/0.0.5.tar.gz
+	md5sums = 80d27050b2074843618825e5a462fde8
 
 pkgname = pksg
