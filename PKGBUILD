@@ -4,8 +4,8 @@
 
 pkgname=franz
 #pkgver=${_pkgver//-/_} # Leaving it here for possible dev/beta package :)
-pkgver=5.7.0
-pkgrel=9
+pkgver=5.8.0
+pkgrel=1
 # Due to the previous "_beta" naming
 epoch=1
 pkgdesc='Free messaging app for services like WhatsApp, Slack, Messenger and many more.'
@@ -13,10 +13,10 @@ arch=(x86_64 i686)
 url='https://meetfranz.com'
 license=(Apache)
 # Allow to easily switch between Electron versions.
-# Expected one is 'electron12' (Electron 12). May change soon.
+# Expected one is 'electron14' (Electron 14). May change soon.
 # This is automatically replaced in `franz.sh` with the package name, as
-# the executable matches the package name (as of 2020-11-15).
-_electron='electron12'
+# the executable matches the package name (as of 2022-03-14).
+_electron='electron14'
 depends=($_electron)
 makedepends=(expac git nvm python python2)
 source=("git+https://github.com/meetfranz/$pkgname#tag=v$pkgver"
@@ -68,7 +68,12 @@ prepare() {
   nvm install
 
   echo "--> Install modules dependencies with lerna"
-  npx --package="lerna@^3.8.0" lerna bootstrap
+  # The author still uses old dependencies resolution.
+  # Luckily it is "documented" in the Appveyor CI file.
+  # About the double double escape, that is because the first '--' is for
+  # npm exec, while the second is for lerna.
+  # See: https://github.com/lerna/lerna/issues/2921
+  npm exec --yes -- lerna bootstrap -- --legacy-peer-deps
 }
 
 build() {
@@ -79,8 +84,20 @@ build() {
 
   # Actually build the package
   echo "--> Building the package"
-  npx gulp build
-  npx electron-builder --linux dir
+  npm exec lerna run build
+  npm exec gulp build
+  npm exec -- electron-builder --linux dir
+}
+
+check() {
+  cd "$pkgname"
+
+  # Be sure we are correctly setup
+  _ensure_nvm_setup
+
+  # Run the tests
+  echo "--> Running the tests"
+  npm run test
 }
 
 package() {
