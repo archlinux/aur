@@ -1,0 +1,19 @@
+pkgbase = gyrolock
+	pkgdesc = GyrLock lock sessions when laptop move
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/cyrinux/gyrolock
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = make
+	options = !strip
+	options = !emptydirs
+	options = !lto
+	source = gyrolock-0.1-src.tar.gz::https://github.com/cyrinux/gyrolock/releases/download/v0.1/gyrolock-0.1-src.tar.gz
+	source = gyrolock-0.1-src.tar.gz.asc::https://github.com/cyrinux/gyrolock/releases/download/v0.1/gyrolock-0.1-src.tar.gz.asc
+	validpgpkeys = C5DFDE230E7B3DA1E6B5D5316A11D19BDD5F8B5E
+	sha256sums = aa8e8b9a854ddfba2f0c72b58c11948d0f62f1ddf713576706c7c7125228f251
+	sha256sums = SKIP
+
+pkgname = gyrolock
