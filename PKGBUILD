@@ -15,7 +15,7 @@ build() {
     cd "$srcdir/$pkgname-$pkgver/pip/"
     python setup.py build
     
-    echo -e '#!/bin/sh\n\nexec python -m pyfrx "$@"' > _pyfrx
+    echo -e '#!/bin/sh\n\nexec python -m pyfrx.main "$@"' > _pyfrx
 
 }
 
