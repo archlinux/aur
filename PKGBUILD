@@ -1,18 +1,20 @@
 # Maintainer: Christian Schendel <doppelhelix at gmail dot com>
 pkgname=gnome-shell-extension-applications-overview-tooltip-git
 pkgver=14.r1.gda94859
-pkgrel=1
+pkgrel=2
 pkgdesc="Shows a tooltip over applications icons on applications overview"
 arch=(any)
 url="https://github.com/RaphaelRochet/applications-overview-tooltip"
 install=${pkgname%-git}.install
 license=('unknown')
 depends=('gnome-shell>=3.38')
-makedepends=('git' 'glib2')
+makedepends=('git'
+             'glib2')
 conflicts=("${pkgname%-git}")
 provides=(${pkgname%-git})
 source=("${pkgname%-git}::git+${url}.git")
 sha256sums=('SKIP')
+options=('!strip')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
@@ -29,4 +31,8 @@ package() {
      install -Dm 644 {} ${destdir}/{} \;
   install -Dm644 "${srcdir}/${pkgname%-git}/schemas/${schema}" \
     "${pkgdir}/usr/share/glib-2.0/schemas/${schema}"
+# rebuild compiled GSettings schemas if missing
+  if [[ ! -f "${destdir}/schemas/gschemas.compiled" ]]; then
+    glib-compile-schemas "${destdir}/schemas"
+  fi
 }
