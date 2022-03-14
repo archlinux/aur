@@ -4,7 +4,7 @@ pkgname=tachidesk-sorayomi-bin
 __pkgname="${pkgname%-bin}"
 __PkgName="$(echo "$__pkgname" | sed -e "s/\b./\u\0/g")"
 __binname="$(echo "$__pkgname" | tr - _)"
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='A free and open source manga reader to read manga from a Tachidesk-Server instance'
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('tachidesk-server')
 provides=("$__pkgname")
 conflicts=("$__pkgname")
 source=("$url/releases/download/$pkgver/$__pkgname-$pkgver-linux-x64.tar.gz")
-sha256sums=('331ca1ffcbf459d44d01fcc0e7cc6fab3a90a0e81fb852df791d7795127dbd97')
+sha256sums=('e6663151f54196531ab27b836ff28ec4ab0e8d62029cea6db33aa094ed49e2ad')
 
 package() {
     cd "$srcdir/"
