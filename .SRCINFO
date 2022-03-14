@@ -9,6 +9,7 @@ pkgbase = foosynth-plugin-neo_tmedian-git
 	makedepends = cmake
 	makedepends = avisynthplus
 	makedepends = vapoursynth
+	options = debug
 	source = neo_tmedian::git+https://github.com/HomeOfAviSynthPlusEvolution/neo_TMedian.git
 	sha256sums = SKIP
 

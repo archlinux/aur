@@ -1,4 +1,4 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=neo_tmedian
 pkgbase="foosynth-plugin-${_plug}-git"
@@ -18,6 +18,7 @@ makedepends=('git'
              )
 source=("${_plug}::git+https://github.com/HomeOfAviSynthPlusEvolution/neo_TMedian.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
