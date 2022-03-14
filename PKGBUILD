@@ -1,28 +1,34 @@
 # Maintainer: siphr <archlinux@techtum.dev>
+
 pkgname=pyfrx
-pkgver=0.0
-pkgrel=2
+pkgver=0.0.5
+pkgrel=1
 pkgdesc="Forex Rates and Conversions."
-depends=(python)
-arch=(x86_64)
-source=("https://github.com/siphr/pyfrx.git")
+depends=(python python-beautifulsoup4)
+arch=(any)
+source=("https://github.com/siphr/pyfrx/archive/refs/tags/$pkgver.tar.gz")
 url=https://www.techtum.dev/work-pyfrx-220105.html
 license=('MIT')
 
 build() {
-    echo "PREPARING..."
-    pip install pyfrx
+    echo "BUILDING..."
+    cd "$srcdir/$pkgname-$pkgver/pip/"
+    python setup.py build
     
-    echo "echo BUILD DATE: `date`" > pyfrx
-    echo "python -m pyfrx \$@" >> pyfrx
+    echo -e '#!/bin/sh\n\nexec python -m pyfrx "$@"' > _pyfrx
 
-    chmod +x $srcdir/pyfrx
 }
 
 package() {
     echo "INSTALLING..."
+    cd "$srcdir/$pkgname-$pkgver/pip/"
+    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
     mkdir -p $pkgdir/usr/bin
-    cp "$srcdir/pyfrx" "$pkgdir/usr/bin/pyfrx"
+    cp _pyfrx "$pkgdir/usr/bin/pyfrx"
+    chmod +x $pkgdir/usr/bin/pyfrx
+
+    install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     echo 'Finished setting up pyfrx.'
 }
-md5sums=('SKIP')
+md5sums=('dff4ba45b9368d5c1f1f3ba46d33e75a')
