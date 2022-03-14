@@ -25,12 +25,14 @@ build() {
 package_suwudo() {
     cd $pkgname
 
-    echo "ERROR:
+    echo "
+    [1;91m!! ERROR !![0m
 
-    It is currently not able to patch the sudo library. Do it yourself with
+    It is currently not able to patch the sudo library. Do it yourself by executing
 
-    sudo cp $pkgdir/$pkgname
+    sudo cp $pkgdir/$pkgname /usr/lib/sudo/sudoers.so
 
+    [1;91m!! ERROR !![0m
     "
     install -D -m644 "sudoers.so" "$pkgdir/usr/lib/sudo/sudoers.so"
 }
