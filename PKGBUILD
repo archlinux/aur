@@ -5,7 +5,7 @@ pkgbase="foosynth-plugin-${_plug}-git"
 pkgname=("avisynth-plugin-${_plug}-git"
          "vapoursynth-plugin-${_plug}-git"
          )
-pkgver=r11.0.g5def131
+pkgver=12.0.g23522f5
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth/Avisynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
@@ -20,24 +20,24 @@ makedepends=('git'
              )
 source=("${_plug}::git+https://github.com/HomeOfAviSynthPlusEvolution/neo_FFT3D.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d r)"
 }
 
 prepare() {
-  cd "${_plug}"
-  mkdir -p build
+  mkdir -p "${_plug}/build"
 }
 
 build() {
   cd "${_plug}/build"
-  cmake .. \
+  cmake -S .. -B . \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
 
-  make
+  cmake --build .
 }
 
 package_avisynth-plugin-neo_fft3dfilter-git() {
