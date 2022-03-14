@@ -1,7 +1,7 @@
-# Maintainer: kpcyrd <git@rxv.cc>
+# Maintainer: M0ustach3 <pablobondialuttiau@gmail.com>
 
 pkgname=recon-ng
-pkgver=5.1.1
+pkgver=5.1.2
 pkgrel=1
 pkgdesc='A full-featured Web Reconnaissance framework written in Python'
 url="https://github.com/lanmaster53/recon-ng"
@@ -12,7 +12,7 @@ depends=('python' 'python-pyaml' 'python-dnspython' 'python-lxml' 'python-mechan
          'python-dicttoxml' 'python-xlsxwriter' 'python-unicodecsv' 'python-rq')
 source=("https://github.com/lanmaster53/${pkgname}/archive/v${pkgver}/recon-ng-${pkgver}.tar.gz"
         opt-in-analytics.patch)
-sha256sums=('470e293e931c23a0dc76e6915098e04db7f2e254a0639bb2c0383e0758c4fbc2'
+sha256sums=('18d05030b994c9b37f624628251d3376d590f3d1eec155f67aca88fa5f3490cc'
             '72d1e10a2b4bdbacb85bc8d3b430e406fc0ec5b7bf5cad85476cd29281053385')
 
 prepare() {
@@ -28,7 +28,7 @@ package() {
   cp -ra --no-preserve=owner . "${pkgdir}/opt/${pkgname}"
 
   install -d "${pkgdir}/usr/bin"
-  for bin in recon-ng recon-cli recon-rpc recon-web; do
+  for bin in recon-ng recon-cli recon-web; do
     cat > "${pkgdir}/usr/bin/${bin}" << EOF
 #!/bin/sh
 cd /opt/recon-ng
