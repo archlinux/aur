@@ -1,4 +1,4 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=neo_gradient-mask
 pkgbase="foosynth-plugin-${_plug}-git"
@@ -6,7 +6,7 @@ pkgname=("avisynth-plugin-${_plug}-git"
          "vapoursynth-plugin-${_plug}-git"
          )
 pkgver=r2.d460f60
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth/Avisynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
 url='https://github.com/HomeOfAviSynthPlusEvolution/neo_Gradient_Mask'
@@ -19,6 +19,7 @@ makedepends=('git'
              )
 source=("${_plug}::git+https://github.com/HomeOfAviSynthPlusEvolution/neo_Gradient_Mask.git")
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd "${_plug}"
@@ -34,11 +35,11 @@ prepare() {
 
 build() {
   cd "${_plug}/build"
-  cmake .. \
+  cmake -S .. -B . \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
 
-  make
+  cmake --build .
 }
 
 package_avisynth-plugin-neo_gradient-mask-git() {
