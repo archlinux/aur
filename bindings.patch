@@ -1,0 +1,16 @@
+diff '--color=auto' --unified --recursive --text osqp-python/src/bindings.cpp.in osqp-python-mod/src/bindings.cpp.in
+--- osqp-python/src/bindings.cpp.in	2022-03-14 07:58:48.062196670 +0100
++++ osqp-python-mod/src/bindings.cpp.in	2022-03-14 07:58:38.719480111 +0100
+@@ -286,9 +286,9 @@
+     m.attr("OSQP_ALGEBRA") = OSQP_ALGEBRA;
+ 
+     // Enum values that are directly accessible
+-    py::enum_<linsys_solver_type>(m, "linsys_solver_type", py::module_local())
+-    .value("DIRECT_SOLVER", DIRECT_SOLVER)
+-    .value("INDIRECT_SOLVER", INDIRECT_SOLVER)
++    py::enum_<osqp_linsys_solver_type>(m, "linsys_solver_type", py::module_local())
++    .value("DIRECT_SOLVER", OSQP_DIRECT_SOLVER)
++    .value("INDIRECT_SOLVER", OSQP_INDIRECT_SOLVER)
+     .export_values();
+ 
+     // Enum values that are directly accessible

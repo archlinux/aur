@@ -1,11 +1,15 @@
 pkgbase = python-osqp
 	pkgdesc = Python interface for OSQP (Operator Splitting QP Solver)
 	pkgver = v0.7.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://github.com/oxfordcontrol/osqp-python
 	arch = x86_64
 	license = Apache
-	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-oldest-supported-numpy
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-pytest
 	makedepends = cmake
 	depends = python-numpy
@@ -16,8 +20,10 @@ pkgbase = python-osqp
 	source = git://github.com/oxfordcontrol/osqp-python.git#tag=v0.7.9
 	source = git://github.com/oxfordcontrol/osqp.git
 	source = git://github.com/oxfordcontrol/qdldl.git
+	source = bindings.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 005c08e6843ae9df1e32399aa79844097641045e468ad260f99e41064841c676
 
 pkgname = python-osqp

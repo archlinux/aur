@@ -2,7 +2,7 @@
 pkgname=('python-osqp')
 _module='osqp-python'
 pkgver=v0.7.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface for OSQP (Operator Splitting QP Solver)"
 url="http://github.com/oxfordcontrol/osqp-python"
 depends=(
@@ -10,7 +10,11 @@ depends=(
     'python-scipy'
     'python-qdldl'
     ) 
-makedepends=('python-setuptools'
+makedepends=('python-setuptools-scm'
+	     'python-oldest-supported-numpy'
+	     'python-wheel'
+	     'python-build'
+	     'python-installer'
 	     'python-pytest'
 	     'cmake')
 provides=('python-osqp')
@@ -20,22 +24,25 @@ arch=('x86_64')
 source=("git://github.com/oxfordcontrol/osqp-python.git#tag=${pkgver}"
 	"git://github.com/oxfordcontrol/osqp.git"
 	"git://github.com/oxfordcontrol/qdldl.git"
+	"bindings.patch"
 )
-sha256sums=(
-	'SKIP'
-	'SKIP'
-	'SKIP'
-)
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            '005c08e6843ae9df1e32399aa79844097641045e468ad260f99e41064841c676')
 
 
 prepare() {
 	cd osqp-python
 	git submodule init
 	git config submodule.osqp.url ${srcdir}/osqp
+
 	cd ../osqp/
 	git config submodule.qdldl.url ${srcdir}/qdldl
+
 	cd ../osqp-python/
 	git submodule update --init --recursive
+	patch --forward --strip=1 --input="${srcdir}/bindings.patch"
 }
 #pkgver() {
   #cd osqp-python
@@ -43,12 +50,12 @@ prepare() {
 #}
 build() {
     cd osqp-python
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd osqp-python
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 #check() {
