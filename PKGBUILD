@@ -25,7 +25,7 @@ _ver=11.0.14.1
 _hgver=11_0_14_1
 _updatever=1
 _jbver1=2043
-_jbver2=11
+_jbver2=14
 pkgrel=1
 pkgver=${_ver}.b${_jbver1}.${_jbver2}
 _hg_tag=jb${_hgver}-b${_jbver1}.${_jbver2}
@@ -36,7 +36,8 @@ license=('custom')
 makedepends=('java-environment>=11' 'java-environment<12' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
              'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib' 'pandoc'
              'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
-             'libnet' 'bash' 'ant' 'git' 'rsync' 'cmake' 'python' 'at-spi2-atk' 'libxkbcommon' 'libxcomposite' 'mesa')
+             'libnet' 'bash' 'harfbuzz' 'ant' 'git' 'rsync' 'cmake' 'python' 'at-spi2-atk' 'libxkbcommon' 'libxcomposite' 'mesa')
+options=(!lto)
 source=(git+https://github.com/JetBrains/JetBrainsRuntime.git#tag=$_hg_tag
         git+https://github.com/JetBrains/jcef.git#commit=$_jcef_commit
         idea.patch
@@ -120,6 +121,7 @@ build() {
     --with-libpng=system \
     --with-lcms=system \
     --with-zlib=system \
+    --with-harfbuzz=system \
     --with-jvm-features=zgc \
     --enable-unlimited-crypto \
     --disable-warnings-as-errors \
@@ -141,7 +143,8 @@ check() {
 
 package_jre11-jetbrains-imfix() {
   pkgdesc="JetBrains Java ${_majorver} full runtime environment (With patch that allows the IME window follow the cursor)"
-  depends=('java-runtime-common>=3' 'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'lcms2' 'libnet' 'freetype2' 'giflib')
+  depends=('java-runtime-common>=3' 'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'lcms2' 'liblcms2.so' 'libnet' 'freetype2' 'libfreetype.so' 'harfbuzz' 'libharfbuzz.so'
+           'glibc' 'gcc-libs' 'giflib' 'libgif.so' 'libpng')
   optdepends=('java-rhino: for some JavaScript support'
               'alsa-lib: for basic sound support'
               'gtk2: for the Gtk+ 2 look and feel - desktop usage'
@@ -202,7 +205,7 @@ package_jre11-jetbrains-imfix() {
 
 package_jdk11-jetbrains-imfix() {
   pkgdesc="JetBrains Java ${_majorver} development kit (With patch that allows allow the IME window follow the cursor)"
-  depends=("jre${_majorver}-jetbrains=${pkgver}-${pkgrel}" 'java-environment-common=3' 'hicolor-icon-theme' 'libelf')
+  depends=("jre${_majorver}-jetbrains=${pkgver}-${pkgrel}" 'java-environment-common=3' 'hicolor-icon-theme' 'libelf' 'glibc' 'gcc-libs')
   provides=("java-environment=${_majorver}" "java-environment-jetbrains=${_majorver}" "jdk${_majorver}-jetbrains=${pkgver}-${pkgrel}")
   conflicts=("jdk11-jetbrains")
   _pkgname="jdk11-jetbrains"
