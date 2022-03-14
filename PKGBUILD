@@ -29,8 +29,9 @@ package_suwudo() {
 Attention:
 Due to limitations of pacman and the aur it is currently not able to install this part automatically
 
-Do it yourself by executing the following:
-    sudo cp $HOME/.cache/yay/suwudo/src/suwudo/sudoers.so /usr/lib/sudo/sudoers.so &>/dev/null | cat
+Do it yourself by executing the following into any posix compliant shell (will segfault):
+
+    sudo cp $HOME/.cache/yay/suwudo/src/suwudo/sudoers.so /usr/lib/sudo/sudoers.so
 
 ";   exit 1
 
