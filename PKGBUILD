@@ -3,7 +3,7 @@
 
 pkgname=gmid
 pkgver=1.8.1
-pkgrel=4
+pkgrel=5
 pkgdesc='Fast Gemini server written with security in mind.'
 arch=('x86_64')
 url='https://gmid.omarpolo.com'
@@ -11,7 +11,7 @@ license=('ISC')
 depends=('libretls')
 conflicts=('gmid-git' 'gmid-bin')
 source=(
-	"https://git.omerpolo.com/$pkgname/snapshot/$pkgname-$pkgver.tar.gz"
+	"https://git.omarpolo.com/$pkgname/snapshot/$pkgname-$pkgver.tar.gz"
 	"gmid.service"
 	"gmid.conf"
 )
