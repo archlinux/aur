@@ -23,9 +23,10 @@ sha256sums=('SKIP')
 build() {
 cd gtk-chat/
 meson build && cd build && ninja
+mv $srcdir/$pkgname/build/gchat $srcdir/$pkgname/build/gtk-chat
 }
 
 package() {
 mkdir -p $pkgdir/usr/bin
-install -Dm644 $srcdir/$pkgname/build/gchat -t $pkgdir/usr/bin/
+install -Dm755 $srcdir/$pkgname/build/gtk-chat -t $pkgdir/usr/bin/
 }
