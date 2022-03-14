@@ -1,3 +1,5 @@
+# Maintainer: Emil Velikov <emil.l.velikov@gmail.com>
+
 pkgname=umr-git
 epoch=1
 pkgver=r332.5909d8c
