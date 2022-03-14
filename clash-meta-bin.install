@@ -1,0 +1,10 @@
+post_install(){
+    post_upgrade
+}
+post_upgrade(){
+    cat << EOF
+    This is the core of Clash Meta by MetaCubeX forked from Clash by Dreamacro.
+    You can find the manual at https://github.com/Dreamacro/clash/wiki/configuration
+EOF
+
+}
