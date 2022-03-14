@@ -1,9 +1,9 @@
 # Maintainer: MedzikUser <nivua1fn@duck.com>
 _repo='MedzikUser/imgurs'
-_ver=v0.5.1
+_ver=v0.6.0
 
 pkgname='imgurs'
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='CLI for Imgur API written in Rust'
 arch=('x86_64')
@@ -16,9 +16,8 @@ optdepends=(
   'xsel: Clipboard support'
 )
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/${_ver}.tar.gz")
-sha256sums=('SKIP')
-options=(!lto)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$_ver.tar.gz")
+sha512sums=('51ea57145c8a2d316c686c351d8842ea186430a190bd70aaec244db76127a9244522463bfcbf235ea4e2104c68a1e69d3a7d5c467a5c850625402aa2334c9f7c')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
