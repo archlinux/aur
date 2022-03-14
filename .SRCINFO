@@ -1,13 +1,13 @@
 pkgbase = discordrpc
 	pkgdesc = Fast Discord RPC Client written in Rust
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/MedzikUser/discordrpc
 	arch = x86_64
-	license = BSD3
+	license = GPL3
 	makedepends = cargo
 	optdepends = discord: Discord IPC socket (discord client stable)
-	source = discordrpc-0.2.0.tar.gz::https://github.com/MedzikUser/discordrpc/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = SKIP
+	source = discordrpc-0.2.1.tar.gz::https://github.com/MedzikUser/discordrpc/archive/refs/tags/v0.2.1.tar.gz
+	sha512sums = 137f982c9e24eb247b748524c46e8b7f103cab769ba8d69ea84bf394e2c04956839738e75267ec59bce1c243ab436bf3d0b780740806333f6deb4eddf1fbd87f
 
 pkgname = discordrpc
