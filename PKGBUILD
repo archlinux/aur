@@ -5,7 +5,7 @@
 pkgname=lib32-intel-gmmlib
 tarname=${pkgname/lib32-/}
 
-pkgver=21.1.1
+pkgver=21.3.5
 pkgrel=1
 pkgdesc="Intel Graphics Memory Management Library"
 arch=(x86_64)
@@ -18,7 +18,7 @@ conflicts=(lib32-intel-gmmlib)
 replaces=(lib32-intel-gmmlib)
 options=(!emptydirs)
 source=("https://github.com/${tarname/-//}/archive/${tarname}-${pkgver}.tar.gz")
-sha256sums=('b996f09264e05ebca0dc275ea32791ba22769fe04147592371b4a61cdf508763')
+sha256sums=('248b8643ec2a40cc0b6125f038575bffecb095c2d52457e6b6328a93a1698d95')
 
 build() {
   export CC="gcc -m32"
