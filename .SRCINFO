@@ -1,0 +1,22 @@
+pkgbase = srb2-uncapped-git
+	pkgdesc = Custom SRB2 build that uses interpolation to achieve over 35fps.
+	pkgver = r12702.649b89bbd
+	pkgrel = 1
+	url = https://mb.srb2.org/addons/srb2-uncapped.3040/
+	arch = x86_64
+	license = GPL2
+	makedepends = mesa
+	makedepends = glu
+	makedepends = git
+	depends = sdl2
+	depends = sdl2_mixer
+	depends = libpng
+	depends = libgme
+	depends = srb2
+	depends = srb2-data>=2.2.10
+	source = git+https://git.do.srb2.org/katsy/SRB2.git#branch=uncapped
+	source = srb2-uncapped.desktop
+	sha256sums = SKIP
+	sha256sums = f78909e066b0341d1289c0f9c6a6c46c2da325a7bc390e4b2a37d4799cdb2bd1
+
+pkgname = srb2-uncapped-git
