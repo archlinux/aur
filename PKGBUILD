@@ -1,10 +1,12 @@
 # Maintainer: David Cohen <dacohen@pm.me>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
-# This PKGBUILD script and the config file are based on Arch's linux package 5.16.11-arch1
+# This PKGBUILD script and the config file are based on official Arch's linux package
+# Refer to config file to get the exact versions it's based on. Any changes to the config
+# will be on config.extra file.
 
 pkgbase=linux-mainline-git
-pkgver=v5.17.rc7.r0.ffb217a13a2e
+pkgver=v5.17.rc8.r0.09688c0166e7
 pkgrel=1
 pkgdesc="Linus Torvalds' Mainline Linux"
 url="https://www.kernel.org"
@@ -27,7 +29,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 sha256sums=('SKIP'
-            'a7e88715c86f2ea77e80cb0535d827406676cb8227a9367dd98931f511b06f31'
+            '937b8c12653d7b18be9b5673e9fa7fba9512c2b5c947e5d489a5e0749a0a8253'
             '6c593d021527cef8f328cbce0da5a5dcd0d418468d93ff7aef43c700aad51349')
 
 export KBUILD_BUILD_HOST=archlinux

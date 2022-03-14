@@ -1,6 +1,6 @@
 pkgbase = linux-mainline-git
 	pkgdesc = Linus Torvalds' Mainline Linux
-	pkgver = v5.17.rc7.r0.ffb217a13a2e
+	pkgver = v5.17.rc8.r0.09688c0166e7
 	pkgrel = 1
 	url = https://www.kernel.org
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = linux-mainline-git
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	sha256sums = SKIP
-	sha256sums = a7e88715c86f2ea77e80cb0535d827406676cb8227a9367dd98931f511b06f31
+	sha256sums = 937b8c12653d7b18be9b5673e9fa7fba9512c2b5c947e5d489a5e0749a0a8253
 	sha256sums = 6c593d021527cef8f328cbce0da5a5dcd0d418468d93ff7aef43c700aad51349
 
 pkgname = linux-mainline-git
