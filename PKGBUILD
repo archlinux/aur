@@ -1,8 +1,8 @@
 # Maintainer: Campbell Jones <dev at serebit dot com>
 
 pkgname=budgie-control-center-git
-pkgver=v1.0.0.r0.ga0bc23403
-pkgrel=1
+pkgver=v1.0.0.r2.g5cb3b3deb
+pkgrel=2
 pkgdesc="Budgie's main interface to configure various aspects of the desktop, latest git"
 url="https://github.com/BuddiesOfBudgie/budgie-control-center"
 license=(GPL2)
@@ -30,7 +30,7 @@ pkgver() {
 prepare() {
     cd "$srcdir/$pkgname"
     git submodule update --init
-    meson build -Ddocumentation=true
+    meson build --prefix=/usr --sysconfdir=/etc -Ddocumentation=true
 }
 
 
