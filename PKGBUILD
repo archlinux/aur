@@ -2,7 +2,7 @@
 
 pkgname=clash-meta-bin
 pkgver=v1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Clash Meta binary provided by MetaCubeX"
 provides=("clash")
 conflicts=("clash" "clash-tun" "clash-dev-git" "clash-premium-bin" "clash-premium-tun")

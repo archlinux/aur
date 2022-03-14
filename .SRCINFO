@@ -1,7 +1,7 @@
 pkgbase = clash-meta-bin
 	pkgdesc = Clash Meta binary provided by MetaCubeX
 	pkgver = v1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MetaCubeX/Clash.Meta/releases
 	install = clash-meta-bin.install
 	arch = x86_64
