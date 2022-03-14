@@ -10,7 +10,7 @@ pkgrel=1
 
 pkgdesc='Electron based multi-platform client for Mastodon, Misskey & Pleroma'
 arch=('x86_64')
-url="https://$_name.org"
+url="https://$_name.social"
 license=('MIT')
 
 provides=("$_name")
