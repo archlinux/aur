@@ -9,8 +9,8 @@ url='https://support.hp.com/'
 license=('custom')
 depends=('libcups' 'sane')
 optdepends=('hal: hardware abstraction layer')
-source=("ftp://ftp.hp.com/pub/softlib/software13/printers/MFP170/uld-hp_V${pkgver}.tar.gz"
-	"ftp://ftp.hp.com/pub/softlib/software13/printers/IPG/M433/uld-hp.tar.gz"
+source=("https://ftp.hp.com/pub/softlib/software13/printers/MFP170/uld-hp_V${pkgver}.tar.gz"
+	"https://ftp.hp.com/pub/softlib/software13/printers/IPG/M433/uld-hp.tar.gz"
        'fulfill_template.sh')
 install="${pkgname}.install"
 md5sums=('b20c5f5273f8d18077fe553919c7e3e9'
