@@ -1,6 +1,6 @@
 pkgbase = ldns-git
 	pkgdesc = C library for DNS programming
-	pkgver = 1.7.0.r92.g9b8fa9db
+	pkgver = 1.8.1.r11.g552a32db
 	pkgrel = 1
 	url = https://www.nlnetlabs.nl/projects/ldns/about/
 	arch = i686
@@ -15,8 +15,7 @@ pkgbase = ldns-git
 	provides = ldns
 	conflicts = ldns
 	options = staticlibs
-	source = git+https://git.nlnetlabs.nl/ldns
+	source = git+https://github.com/NLnetLabs/ldns.git
 	sha256sums = SKIP
 
 pkgname = ldns-git
-

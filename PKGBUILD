@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ldns-git
-pkgver=1.7.0.r92.g9b8fa9db
+pkgver=1.8.1.r11.g552a32db
 pkgrel=1
 pkgdesc="C library for DNS programming"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('git' 'libpcap')
 provides=('ldns')
 conflicts=('ldns')
 options=('staticlibs')
-source=("git+https://git.nlnetlabs.nl/ldns")
+source=("git+https://github.com/NLnetLabs/ldns.git")
 sha256sums=('SKIP')
 
 
@@ -42,5 +42,5 @@ package() {
   cd "ldns"
 
   make DESTDIR="$pkgdir" install
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/ldns/LICENSE"
+  install -Dm644 "LICENSE" -t "$pkgdir/usr/share/licenses/ldns"
 }
