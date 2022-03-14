@@ -2,7 +2,7 @@
 
 pkgname=foobar2000-component-beefweb-bin
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 _buildhash='8b5a3dbb77c02c9d3ea19e0d74c191de'
 _fooname='foo_beefweb'
 pkgdesc='A web interface/REST API component for foobar2000'
