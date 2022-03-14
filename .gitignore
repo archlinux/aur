@@ -1,7 +1,0 @@
-*.tar
-*.tar.xz
-*.tar.gz
-*.tgz
-pkg/
-src/
-
