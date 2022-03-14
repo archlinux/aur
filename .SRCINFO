@@ -1,0 +1,18 @@
+pkgbase = suwudo
+	pkgdesc = girl-ify your sudo experience!
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/Emily3403/Suwudo
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL3
+	provides = suwudo
+	source = suwudo::git+https://github.com/Emily3403/Suwudo.git
+	sha256sums = SKIP
+
+pkgname = suwudo
