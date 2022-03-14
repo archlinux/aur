@@ -1,13 +1,16 @@
 pkgbase = python-matrix-synapse-ldap3
 	pkgdesc = An LDAP3 auth provider for Synapse
-	pkgver = 0.1.5
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/matrix-org/matrix-synapse-ldap3
 	arch = any
 	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	source = python-matrix-synapse-ldap3-0.1.5.tar.gz::https://github.com/matrix-org/matrix-synapse-ldap3/archive/v0.1.5.tar.gz
-	sha256sums = 9e50e52eeba572bda73f30f2e7ebefba953a3cd8ebf69e0a89273f243b51b715
+	makedepends = python-wheel
+	source = python-matrix-synapse-ldap3-0.2.0.tar.gz::https://github.com/matrix-org/matrix-synapse-ldap3/archive/v0.2.0.tar.gz
+	sha256sums = d5e70e91bcbb799cad7bef8e51c458959c68b1effd75585c89f175dc0721e3f3
 
 pkgname = python-matrix-synapse-ldap3
 	depends = python
