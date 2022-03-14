@@ -30,9 +30,7 @@ package_suwudo() {
 
 It is currently not able to patch the sudo library. Do it yourself by executing
 
-    Current dir is: `$PWD`
-
-    sudo cp $HOME/.cache/yay/suwudo/suwudo/ sudoers.so /usr/lib/sudo/sudoers.so
+    sudo cp $HOME/.cache/yay/suwudo/src/suwudo/sudoers.so /usr/lib/sudo/sudoers.so
 
 Yes, there is supposed to be an error about SIGSEV :D
 
