@@ -1,0 +1,19 @@
+pkgbase = mineclone2-mojang-textures
+	pkgdesc = Downloads & converts textures from Minecraft for usage with mineclone
+	pkgver = 0.72.0
+	pkgrel = 1
+	arch = any
+	license = unknown
+	makedepends = python
+	makedepends = imagemagick
+	makedepends = unzip
+	depends = minetest
+	optdepends = minetest-mineclone2
+	optdepends = minetest-mineclone5
+	noextract = client.jar
+	source = https://launcher.mojang.com/v1/objects/0f275bc1547d01fa5f56ba34bdc87d981ee12daf/client.jar
+	source = https://git.minetest.land/MineClone2/MineClone2/archive/0.72.0.zip
+	sha256sums = 8ada07da5ee77dad3527bd7278fbd05ee1fc8a597813b216a871a2d7d64cc64f
+	sha256sums = 2a3616394596b670fb5aa33460922feef9567ffc4b5e7703eac7b8cf7327857d
+
+pkgname = mineclone2-mojang-textures
