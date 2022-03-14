@@ -1,19 +1,18 @@
 pkgbase = betterzsh
-	pkgdesc = Configuration's aimed at enhancing user experience in the ZSH shell.
-	pkgver = 1.0.r5
+	pkgdesc = Configurations to enhance user experience with the ZSH shell.
+	pkgver = 1.0.r7
 	pkgrel = 1
 	url = https://gitlab.com/qYp/betterzsh
 	arch = any
 	license = MIT
-	makedepends = git
 	depends = zsh
-	depends = xorg-xset
-	depends = zsh-autosuggestions-git
 	depends = zsh-fast-syntax-highlighting
+	depends = zsh-autosuggestions-git
 	depends = zsh-autopair-git
-	depends = zsh-completions
 	optdepends = starship: Adds very useful git functionality to the terminal
-	source = git+https://gitlab.com/qYp/betterzsh.git
-	md5sums = SKIP
+	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/betterzsh-1.0.r7-1-any.pkg.tar.zst
+	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/betterzsh-1.0.r7-1-any.pkg.tar.zst.sig
+	sha256sums = 1714f36bcd073c1d6d51ddd22b4a969918df764496447e025d47d373f7d123ba
+	sha256sums = c4aadb5189b999b671a761d1f4f396bfa3fadf2efcd669acacc7d20c992a4e42
 
 pkgname = betterzsh
