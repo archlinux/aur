@@ -3,11 +3,11 @@
 
 pkgname=tsar-git
 _gitname=tsar
-pkgver=0.404.14c1392
+pkgver=0.408.0224ccb
 pkgrel=1
 pkgdesc="Taobao System Activity Reporter"
 arch=('x86_64')
-url="http://tsar.taobao.org/"
+url="https://github.com/alibaba/tsar"
 license=('Apache')
 depends=('glibc' 'luajit' 'cron')
 makedepends=('git')
