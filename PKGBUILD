@@ -1,6 +1,7 @@
 # Maintainer: XavierCLL <xavier.corredor.llano (a) gmail.com>
-# Contributor Tavian Barnes <tavianator@tavianator.com>
-# Contributor jhorcl
+# Contributor: Tavian Barnes <tavianator@tavianator.com>
+# Contributor: jhorcl
+# Contributor: flbzh <frederic_lebouc (a) yahoo.fr>
 pkgname=mozillavpn
 pkgver=2.7.0
 _debian_series=impish1
@@ -39,9 +40,12 @@ sha256sums=('0aca5cc0752d30b7b120d8cf277cac6ef4e085db5f9d68fec3450030b0b1215b'
 
 build() {
     cd "${pkgname}-${pkgver}"
-    qmake PREFIX=/usr CONFIG+=production
     python scripts/importLanguages.py
-    make
+    qmake PREFIX=/usr CONFIG+=debug \
+        QMAKE_LFLAGS='-Wl,--sort-common,--as-needed,-z,relro,-z,now -pipe -march=x86-64 -mtune=generic -pipe -fno-plt -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS -std=gnu++1z -pthread -flto=4 -fno-fat-lto-objects -fuse-linker-plugin -fPIC' \
+        QMAKE_CFLAGS='-pipe -march=x86-64 -mtune=generic -fno-plt -fexceptions -Wformat -Werror=format-security -fstack-clash-protection -fcf-protection -pthread -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)' \
+        QMAKE_CXXFLAGS='-pipe -march=x86-64 -mtune=generic -fno-plt -fexceptions -Wformat -Werror=format-security -fstack-clash-protection -fcf-protection -Wp,-D_GLIBCXX_ASSERTIONS -std=gnu++1z -pthread -Wall -Wextra -D_REENTRANT -fPIC $(DEFINES)'
+    make all
 }
 
 package() {
