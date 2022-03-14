@@ -1,7 +1,7 @@
 pkgbase = arsse
 	pkgdesc = Multi-protocol RSS/Atom newsfeed synchronization server
 	pkgver = 0.10.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://thearsse.com/
 	arch = any
 	license = MIT
@@ -19,7 +19,7 @@ pkgbase = arsse
 	backup = etc/webapps/arsse/apache/example.conf
 	backup = etc/webapps/arsse/apache/arsse.conf
 	backup = etc/webapps/arsse/apache/arsse-loc.conf
-	source = arsse-0.10.1.tar.gz::https://thearsse.com/releases/0.10.1
+	source = arsse-0.10.1.tar.gz::https://thearsse.com/releases/0.10.1.tar.gz
 	md5sums = 4bdc37ed7d59b59f694337c3ab2550c4
 
 pkgname = arsse
