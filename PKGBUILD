@@ -2,7 +2,8 @@
 
 _pkgname=rbfeeder
 pkgname=$_pkgname-git
-pkgver=1.0.7
+_pkgver=1.0.7
+pkgver=$_pkgver.g3d9e533
 pkgrel=1
 pkgdesc="Software for uploading ADS-B data to RadarBox24.com"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -16,7 +17,7 @@ backup=('etc/rbfeeder.ini')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  echo $pkgver.g$(git rev-parse --short HEAD)
+  echo $_pkgver.g$(git rev-parse --short HEAD)
 }
 
 build() {

@@ -1,6 +1,6 @@
 pkgbase = rbfeeder-git
 	pkgdesc = Software for uploading ADS-B data to RadarBox24.com
-	pkgver = 1.0.7
+	pkgver = 1.0.7.g3d9e533
 	pkgrel = 1
 	url = https://www.radarbox.com/sharing-data
 	arch = x86_64
