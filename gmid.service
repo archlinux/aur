@@ -1,0 +1,22 @@
+[Unit]
+Description=The gmid Gemini server
+Documentation=https://gmid.omarpolo.com/
+Documentation=man:gg(1) man:gmid(1)
+After=network-online.target syslog.target 
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=gmid
+Group=nobody
+ExecStart=/usr/bin/gmid -f -c /etc/gmid.conf
+ExecStop=/bin/kill -TERM $MAINPID
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=30
+StandardOutput=journal
+StandardError=inherit
+SyslogIdentifier=gmid
+
+[Install]
+WantedBy=multi-user.target
