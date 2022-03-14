@@ -3,7 +3,7 @@
 # Previous Maintainer: Stephan Wienczny <stephan@wienczny.de>
 
 pkgname=dbeaver-ee
-pkgver=21.3.0
+pkgver=22.0.0
 pkgrel=1
 pkgdesc="A universal database tool for developers and database administrators. Enterprise Edition includes NoSQL database support"
 arch=('x86_64')
@@ -13,10 +13,10 @@ depends=('java-runtime>=1.8' 'gtk3' 'gtk-update-icon-cache')
 install=dbeaver-ee.install
 
 source=(dbeaver-ee.desktop dbeaver-ee.install)
-source_x86_64=(http://dbeaver.com/files/${pkgver}/dbeaver-ee-${pkgver}-linux.gtk.x86_64.tar.gz)
+source_x86_64=(http://dbeaver.com/files/${pkgver}/dbeaver-ee-${pkgver}-linux.gtk.x86_64-nojdk.tar.gz)
 sha256sums=('453912912ae8377b16ef74a3e7d93ea588792ee8f7054a573e9fe9b93cd9265f'
             '0c2a75baa39459fa56159e982d9f28c966837561bd52dffd24bac87b8d65555f')
-sha256sums_x86_64=('58544ea53996ab35a89daa1569a410211ba4661b5a95c63857cd54048bb656b9')
+sha256sums_x86_64=('3be04dd98fbb17948e90553b9d0d277fca6505cb9c3fdee9e62fd8a930932835')
 
 noextract=("dbeaver-ee-${pkgver}-linux.gtk.x86_64.tar.gz")
 
@@ -24,7 +24,7 @@ prepare() {
     mkdir -p $srcdir/$pkgname
     cd $srcdir/$pkgname
     if [ "$CARCH" = "x86_64" ]; then
-        tar -xf "$srcdir/dbeaver-ee-${pkgver}-linux.gtk.x86_64.tar.gz"
+        tar -xf "$srcdir/dbeaver-ee-${pkgver}-linux.gtk.x86_64-nojdk.tar.gz"
     else
         tar -xf "$srcdir/dbeaver-ee-${pkgver}-linux.gtk.x86.tar.gz"
     fi
