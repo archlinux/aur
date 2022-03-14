@@ -1,0 +1,21 @@
+pkgbase = discord_arch_electron_wayland
+	pkgdesc = Discord (popular voice + video app) using system electron (v13) and set up for wayland
+	pkgver = 0.0.17
+	pkgrel = 1
+	url = https://discordapp.com
+	arch = x86_64
+	license = custom
+	makedepends = asar
+	depends = electron13
+	optdepends = libpulse: Pulseaudio support
+	optdepends = xdg-utils: Open files
+	provides = discord
+	conflicts = discord
+	source = https://dl.discordapp.net/apps/linux/0.0.17/discord-0.0.17.tar.gz
+	source = LICENSE.html::https://discordapp.com/terms
+	source = OSS-LICENSES.html::https://discordapp.com/licenses
+	sha256sums = 3462732e5d5d9bb75f901f7ca5047782fe2f96576b208ea538c593ba2a031315
+	sha256sums = 50756158704d6f09ca821af21bccb794ab3c9d6dd851134e99187cf1bd4e6322
+	sha256sums = 1305bac53fc05f2efb68907a4447eb92f45817a74297b2e57baf1d880c428bc8
+
+pkgname = discord_arch_electron_wayland
