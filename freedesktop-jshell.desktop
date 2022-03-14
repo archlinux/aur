@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=JetBrains Java 17 Shell
+Comment=JetBrains Java 17 Shell
+Keywords=java;shell
+Exec=/usr/lib/jvm/java-17-jetbrains/bin/jshell
+Terminal=true
+Type=Application
+Icon=java17-jetbrains
+Categories=Application;System;
