@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=apptainer-git
-pkgver=0.1.1.r177.g7b55e6389
+pkgver=1.0.0.r137.ga7df110a8
 pkgrel=1
 pkgdesc="Application containers for Linux"
 arch=('i686' 'x86_64')
@@ -40,9 +40,6 @@ export GOFLAGS="-buildmode=pie -ldflags=-linkmode=external -trimpath -mod=readon
 prepare() {
   cd "apptainer"
 
-  # provide version to build script
-  echo "$pkgver" > VERSION
-
   # fix bash completion path
   sed \
     -e "s|/etc/bash_completion.d|/usr/share/bash-completion/completions|" \
@@ -63,6 +60,9 @@ pkgver() {
 
 build() {
   cd "apptainer"
+
+  # provide version to build script
+  echo "$pkgver" > VERSION
 
   ./mconfig \
     --prefix="/usr" \
