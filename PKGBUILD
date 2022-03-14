@@ -2,7 +2,7 @@
 
 pkgname=camotics-git
 pkgver=r953.9963b38
-pkgrel=1
+pkgrel=2
 pkgdesc="3-axis NC machining simulation software"
 arch=('x86_64')
 url="http://camotics.org/"
@@ -47,16 +47,6 @@ build() {
 package() {
   cd "${pkgname%-*}"
   CBANG_HOME=/opt/cbang scons install cxxstd="c++14" install_prefix="$pkgdir/usr" linkflags=$LDFLAGS
-  
-  install -d "$pkgdir/usr/share/${pkgname%-*}"/tpl_lib
-  cp -a tpl_lib/ "$pkgdir/usr/share/${pkgname%-*}"
-  install -Dm644 -t "$pkgdir"/usr/share/applications CAMotics.desktop
-  install -Dm644 -t "$pkgdir"/usr/share/pixmaps images/camotics.png
-  install -Dm644 -t "$pkgdir/usr/share/doc/${pkgname%-*}" README.md CHANGELOG.md COPYING LICENSE
-
-  # install examples and machines
-  install -d "$pkgdir/usr/share/doc/${pkgname%-*}"/{examples,machines}
-  cp -a {examples/,machines/} "$pkgdir/usr/share/doc/${pkgname%-*}"
 }
 
 # vim:set ts=2 sw=2 et:
