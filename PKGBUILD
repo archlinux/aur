@@ -1,7 +1,7 @@
 # Maintainer: Duologic <jeroen@simplsitic.be>
 
 pkgname=vcluster-bin
-pkgver=0.3.3
+pkgver=0.6.0
 pkgrel=0
 pkgdesc='Create fully functional virtual Kubernetes clusters'
 arch=('x86_64')
@@ -20,4 +20,4 @@ package() {
   install -Dm 755 "$srcdir/vcluster-$pkgver" "$pkgdir/usr/bin/vcluster"
 }
 
-sha256sums=('1dfa0d160a3c9714086e94f54b9a8d76f46948426b583fbdf136c04d9772b514')
+sha256sums=('e4be91adf7bdb073c65aa46ddb6e1fdf49d2f71bd5f72f8aa82ad718d78f602c')
