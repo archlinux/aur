@@ -1,0 +1,10 @@
+# ignore everything
+*
+
+# but these
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!clash@.service
+!clash.service
+!clash-meta-bin.install
