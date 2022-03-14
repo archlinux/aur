@@ -1,12 +1,12 @@
 pkgbase = circle
 	pkgdesc = a C++ compiler with many novel language features
-	pkgver = build_161
+	pkgver = build_162
 	pkgrel = 1
 	url = https://circle-lang.org
 	arch = any
 	license = custom
 	depends = gcc>=10.2
-	source = https://www.circle-lang.org/linux/build_161.tgz
-	sha256sums = 7ac55b7766845ec602691fa0e873182d697a0253ce3afbdac72885cf0a5cf454
+	source = https://www.circle-lang.org/linux/build_162.tgz
+	sha256sums = 02b93ddb69ca488c706156d73f782e70811017c516c59dec072fd7f7f1588e00
 
 pkgname = circle
