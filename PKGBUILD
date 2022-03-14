@@ -29,4 +29,5 @@ build() {
 package() {
 	cd umr
 	make DESTDIR="$pkgdir" install
+	install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 LICENSE
 }
