@@ -7,6 +7,7 @@ pkgrel=1
 pkgdesc="CERNPhone Desktop Application"
 arch=('x86_64')
 url="https://cernphone.docs.cern.ch/"
+license=('custom')
 depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
 _appimage="${pkgname}.AppImage"
@@ -42,4 +43,5 @@ package() {
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${pkgname}"
+
 }
