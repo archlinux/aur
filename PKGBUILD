@@ -1,5 +1,5 @@
 pkgname=cmos-git
-pkgver=v1.0.r2.g2ccf439
+pkgver=v1.0.r10.ga680c89
 pkgrel=1
 pkgdesc='Small markdown renderer based on CommonMark libcmark'
 arch=(x86_64)
@@ -30,6 +30,8 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
+  cd "${pkgname}"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
 
 # vim: ts=2 sw=2 et
