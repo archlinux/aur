@@ -1,0 +1,26 @@
+pkgbase = xrootd4
+	pkgdesc = Software framework for fast, low latency, scalable and fault tolerant data access.
+	pkgver = 4.12.6
+	pkgrel = 3
+	url = https://xrootd.slac.stanford.edu/
+	arch = x86_64
+	license = LGPL3
+	checkdepends = cppunit
+	makedepends = cmake
+	makedepends = systemd
+	depends = ceph
+	depends = curl
+	depends = libxml2
+	depends = openssl
+	depends = perl
+	depends = python
+	provides = xrootd
+	conflicts = xrootd
+	source = https://xrootd.slac.stanford.edu//download/v4.12.6/xrootd-4.12.6.tar.gz
+	source = stat_ver.patch
+	source = cxx17.patch
+	sha256sums = 1a9056ab7aeeaafa586ea77e442960c71d233c9ba60c7f9db9262c1410954ac4
+	sha256sums = 9e8e17ea1a6a07a4d636d07c397fcfde5a6a398fea2fbb89a763044a481698af
+	sha256sums = ad423ea5c78c89e4f048da5c0ffd0fe263a3005e6de638077fbd770de89603eb
+
+pkgname = xrootd4

@@ -1,0 +1,125 @@
+From 5298c732c394d7ac3c24abc7d01a4631f573e692 Mon Sep 17 00:00:00 2001
+From: Michal Simon <michal.simon@cern.ch>
+Date: Mon, 2 Nov 2020 09:47:25 +0100
+Subject: [PATCH] [XrdPosix] Fix _STAT_VER problem on Fedora rawhide.
+
+---
+ src/XrdPosix/XrdPosix.cc          | 10 +++++++---
+ src/XrdPosix/XrdPosixLinkage.hh   | 10 +++++-----
+ src/XrdPosix/XrdPosixPreload32.cc |  4 ++--
+ 3 files changed, 14 insertions(+), 10 deletions(-)
+
+diff --git a/src/XrdPosix/XrdPosix.cc b/src/XrdPosix/XrdPosix.cc
+index 290f9fe7314..f582eb4617c 100644
+--- a/src/XrdPosix/XrdPosix.cc
++++ b/src/XrdPosix/XrdPosix.cc
+@@ -375,7 +375,7 @@ int XrdPosix_Fstat(int fildes, struct stat *buf)
+ //
+    return (Xroot.myFD(fildes)
+           ? Xroot.Fstat(fildes, buf)
+-#ifdef __linux__
++#if defined(__linux__) and defined(_STAT_VER)
+           : Xunix.Fstat64(_STAT_VER, fildes, (struct stat64 *)buf));
+ #else
+           : Xunix.Fstat64(           fildes, (struct stat64 *)buf));
+@@ -387,7 +387,11 @@ int XrdPosix_FstatV(int ver, int fildes, struct stat *buf)
+ {
+    return (Xroot.myFD(fildes)
+           ? Xroot.Fstat(fildes, buf)
++#ifdef _STAT_VER
+           : Xunix.Fstat64(ver, fildes, (struct stat64 *)buf));
++#else
++          : Xunix.Fstat64(     fildes, (struct stat64 *)buf));
++#endif
+ }
+ #endif
+ }
+@@ -559,7 +563,7 @@ int XrdPosix_Lstat(const char *path, struct stat *buf)
+ // Return the results of an open of a Unix file
+ //
+    return (!(myPath = XrootPath.URL(path, buff, sizeof(buff)))
+-#ifdef __linux__
++#if defined(__linux__) and defined(_STAT_VER)
+           ? Xunix.Lstat64(_STAT_VER, path, (struct stat64 *)buf)
+ #else
+           ? Xunix.Lstat64(           path, (struct stat64 *)buf)
+@@ -887,7 +891,7 @@ int XrdPosix_Stat(const char *path, struct stat *buf)
+ // Return the results of an open of a Unix file
+ //
+    return (!(myPath = XrootPath.URL(path, buff, sizeof(buff)))
+-#ifdef __linux__
++#if defined(__linux__) and defined(_STAT_VER)
+           ? Xunix.Stat64(_STAT_VER, path, (struct stat64 *)buf)
+ #else
+           ? Xunix.Stat64(           path, (struct stat64 *)buf)
+diff --git a/src/XrdPosix/XrdPosixLinkage.hh b/src/XrdPosix/XrdPosixLinkage.hh
+index f298d098250..241222fa79c 100644
+--- a/src/XrdPosix/XrdPosixLinkage.hh
++++ b/src/XrdPosix/XrdPosixLinkage.hh
+@@ -116,7 +116,7 @@
+ #define Retv_Fseeko64 int
+ #define Args_Fseeko64 FILE *, off64_t, int
+ 
+-#ifdef __linux__
++#if defined(__linux__) and defined(_STAT_VER)
+ #define Symb_Fstat UNIX_PFX "__fxstat"
+ #define Retv_Fstat int
+ #define Args_Fstat int, int, struct stat *
+@@ -126,7 +126,7 @@
+ #define Args_Fstat int, struct stat *
+ #endif
+ 
+-#ifdef __linux__
++#if defined(__linux__) and defined(_STAT_VER)
+ #define Symb_Fstat64 UNIX_PFX "__fxstat64"
+ #define Retv_Fstat64 int
+ #define Args_Fstat64 int, int, struct stat64 *
+@@ -184,7 +184,7 @@
+ #define Retv_Lseek64 off64_t
+ #define Args_Lseek64 int, off64_t, int
+ 
+-#ifdef __linux__
++#if defined(__linux__) and defined(_STAT_VER)
+ #define Symb_Lstat UNIX_PFX "__lxstat"
+ #define Retv_Lstat int
+ #define Args_Lstat int, const char *, struct stat *
+@@ -194,7 +194,7 @@
+ #define Args_Lstat const char *, struct stat *
+ #endif
+ 
+-#ifdef __linux__
++#if defined(__linux__) and defined(_STAT_VER)
+ #define Symb_Lstat64 UNIX_PFX "__lxstat64"
+ #define Retv_Lstat64 int
+ #define Args_Lstat64 int, const char *, struct stat64 *
+@@ -290,7 +290,7 @@
+ #define Args_Stat const char *, struct stat *
+ #endif
+ 
+-#ifdef __linux__
++#if defined(__linux__) and defined(_STAT_VER)
+ #define Symb_Stat64 UNIX_PFX "__xstat64"
+ #define Retv_Stat64 int
+ #define Args_Stat64 int, const char *, struct stat64 *
+diff --git a/src/XrdPosix/XrdPosixPreload32.cc b/src/XrdPosix/XrdPosixPreload32.cc
+index 20364aaad54..fa2343afcef 100644
+--- a/src/XrdPosix/XrdPosixPreload32.cc
++++ b/src/XrdPosix/XrdPosixPreload32.cc
+@@ -230,7 +230,7 @@ int     fstat(         int fildes, struct stat *buf)
+ {
+    static int Init = Xunix.Init(&Init);
+ 
+-#ifdef __linux__
++#if defined(__linux__) and defined(_STAT_VER)
+    if (!XrdPosixXrootd::myFD(fildes)) return Xunix.Fstat(ver, fildes, buf);
+ #else
+    if (!XrdPosixXrootd::myFD(fildes)) return Xunix.Fstat(     fildes, buf);
+@@ -315,7 +315,7 @@ int        lstat(         const char *path, struct stat *buf)
+    static int Init = Xunix.Init(&Init);
+ 
+    if (!XrdPosix_isMyPath(path))
+-#ifdef __linux__
++#if defined(__linux__) and defined(_STAT_VER)
+       return Xunix.Lstat(ver, path, buf);
+ #else
+       return Xunix.Lstat(     path, buf);

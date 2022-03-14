@@ -1,0 +1,56 @@
+diff --git a/bindings/python/setup.py.in b/bindings/python/setup.py.in
+index 74fbe36a6..6bedbead8 100644
+--- a/bindings/python/setup.py.in
++++ b/bindings/python/setup.py.in
+@@ -8,15 +8,15 @@
+ # Remove the "-Wstrict-prototypes" compiler option, which isn't valid for C++.
+ cfg_vars = sysconfig.get_config_vars()
+ opt = cfg_vars["OPT"]
+-cfg_vars["OPT"] = " ".join( flag for flag in opt.split() if flag not in ['-Wstrict-prototypes' ${CLANG_PROHIBITED} ] ) + " --std=c++0x"
++cfg_vars["OPT"] = " ".join( flag for flag in opt.split() if flag not in ['-Wstrict-prototypes' ${CLANG_PROHIBITED} ] ) + " --std=c++17"
+
+ cflags = cfg_vars["CFLAGS"]
+-cfg_vars["CFLAGS"] =  " ".join( flag for flag in cflags.split() if flag not in ['-Wstrict-prototypes' ${CLANG_PROHIBITED} ] ) + " --std=c++0x"
++cfg_vars["CFLAGS"] =  " ".join( flag for flag in cflags.split() if flag not in ['-Wstrict-prototypes' ${CLANG_PROHIBITED} ] ) + " --std=c++17"
+
+ # pypy doesn't define PY_CFLAGS so skip it if it's missing
+ if "PY_CFLAGS" in cfg_vars:
+   py_cflags = cfg_vars["PY_CFLAGS"]
+-  cfg_vars["PY_CFLAGS"] = " ".join( flag for flag in py_cflags.split() if flag not in ['-Wstrict-prototypes' ${CLANG_PROHIBITED} ] ) + " --std=c++0x"
++  cfg_vars["PY_CFLAGS"] = " ".join( flag for flag in py_cflags.split() if flag not in ['-Wstrict-prototypes' ${CLANG_PROHIBITED} ] ) + " --std=c++17"
+
+ ccl=cfg_vars["CC"].split()
+ ccl[0]="${CMAKE_C_COMPILER}"
+diff --git a/cmake/XRootDOSDefs.cmake b/cmake/XRootDOSDefs.cmake
+index 4933fd13f..20d8c524b 100644
+--- a/cmake/XRootDOSDefs.cmake
++++ b/cmake/XRootDOSDefs.cmake
+@@ -21,13 +21,13 @@ add_definitions( -DUSE_LIBC_SEMAPHORE=${USE_LIBC_SEMAPHORE} )
+ #-------------------------------------------------------------------------------
+ # Enable c++0x / c++11
+ #-------------------------------------------------------------------------------
+-set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x -DOPENSSL_NO_FILENAMES" )
++set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -DOPENSSL_NO_FILENAMES" )
+ 
+ #-------------------------------------------------------------------------------
+ # GCC
+ #-------------------------------------------------------------------------------
+ if( CMAKE_COMPILER_IS_GNUCXX )
+-  set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x" )
++  set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17" )
+   set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra" )
+   #-----------------------------------------------------------------------------
+   # Set -Werror only for Debug (or undefined) build type or if we have been
+diff --git a/src/XrdSsi/XrdSsiAtomics.hh b/src/XrdSsi/XrdSsiAtomics.hh
+index ffe0a938e..ce23083e7 100644
+--- a/src/XrdSsi/XrdSsiAtomics.hh
++++ b/src/XrdSsi/XrdSsiAtomics.hh
+@@ -34,7 +34,7 @@
+ #undef NEED_ATOMIC_MUTEX
+ 
+ //-----------------------------------------------------------------------------
+-//! Use native atomics at the c11 or higher level (-std=c++0x -lstdc++)
++//! Use native atomics at the c11 or higher level (-std=c++17 -lstdc++)
+ //-----------------------------------------------------------------------------
+ #if __cplusplus >= 201103L
+ #include <atomic>
