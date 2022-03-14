@@ -1,6 +1,6 @@
 # Maintainer: Efaile <seebeckemily3403@gmail.com>
+# Attention: Currently it is not possible to install!
 
-# uwu
 pkgname=suwudo
 pkgver=0.1
 pkgrel=1
@@ -9,12 +9,12 @@ url='https://github.com/Emily3403/Suwudo'
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('GPL3')
 provides=('suwudo')
-source=("$pkgname::git+https://github.com/Emily3403/Suwudo.git" '/usr/lib/sudo/sudoers.so')
+source=("$pkgname::git+https://github.com/Emily3403/Suwudo.git")
+# source=("$pkgname::git+https://github.com/Emily3403/Suwudo.git" '/usr/lib/sudo/sudoers.so')
 sha256sums=('SKIP')
 
 pkgver() {
-    cd $pkgname
-    cat VERSION
+    echo '0.1'
 }
 
 build() {
@@ -25,5 +25,5 @@ build() {
 package_suwudo() {
     cd $pkgname
 
-    install -D -m644 "sudoers.so" "$pkgdir/usr/lib/sudo/sudoers.so"
+#     install -D -m644 "sudoers.so" "$pkgdir/usr/lib/sudo/sudoers.so"
 }
