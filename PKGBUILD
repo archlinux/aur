@@ -30,6 +30,7 @@ options=('!strip')
 prepare(){
   cd $srcdir
   python -m venv venv
+  source venv/bin/activate
   pip install selenium
   python download.py
   
