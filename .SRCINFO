@@ -6,7 +6,7 @@ pkgbase = foobar2000-component-wave-minibar-mod-bin
 	arch = any
 	license = unknown
 	depends = foobar2000>=1.0.0
-	source = https://www.foobar2000.org/getcomponent/244550eef454aa5ee131956d27d36b42/foo_wave_minibar_mod.fb2k-component
+	source = foo_wave_minibar_mod-10.0.46-1.fb2k-component::https://www.foobar2000.org/getcomponent/244550eef454aa5ee131956d27d36b42/foo_wave_minibar_mod.fb2k-component
 	sha256sums = fc3c4dcea37ce3a054555039c1fc344718d408ca0d7bc611b3bfa972850cedbf
 
 pkgname = foobar2000-component-wave-minibar-mod-bin
