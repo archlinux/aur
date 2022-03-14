@@ -1,7 +1,7 @@
 # Maintainer: Thiago Almeida <echo "dGhpYWdvYWxtZWlkYXNhQGdtYWlsLmNvbQo=" | base64 -d>
 
 pkgname="qrcp-bin"
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Transfer files over wifi from your computer to your mobile device by scanning a QR code without leaving the terminal."
 url="https://github.com/claudiodangelis/qrcp"
@@ -11,8 +11,8 @@ provides=('qrcp')
 conflicts=('qrcp-git' 'qr-filetransfer-git' 'qrcp')
 source_x86_64=("$pkgname-$pkgver.tar.gz::$url/releases/download/${pkgver}/${pkgname/-bin/}_${pkgver}_linux_x86_64.tar.gz")
 source_i386=("$pkgname-$pkgver.tar.gz::$url/releases/download/${pkgver}/${pkgname/-bin/}_${pkgver}_linux_i386.tar.gz")
-sha256sums_x86_64=(b303b95b6dc9163654708eb825523777064d1691e228650629090f7bb3fbb830)
-sha256sums_i386=(bbe724acb5451433a398b6ffb0f4b795d5b20def169ddb063aa76918d1656177)
+sha256sums_x86_64=(b5a44ee46a05a83769143d94831d2302abb4dcdf88dd10eda88267583075fcff)
+sha256sums_i386=(ad09c4ebc7f35fe96a88f5d96e877341ff5000c08c929b3d54ebd995981ad8b7)
 
 
 build() {
