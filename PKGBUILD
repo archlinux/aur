@@ -5,7 +5,7 @@ pkgbase="foosynth-plugin-${_plug}-git"
 pkgname=("avisynth-plugin-${_plug}-git"
          "vapoursynth-plugin-${_plug}-git"
          )
-pkgver=r2.0.g9b6a893
+pkgver=2.0.g9b6a893
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth/Avisynth: ${_plug} (Dual interface for Vapoursynth/Avisynth) (GIT version)"
 arch=('x86_64')
@@ -21,21 +21,20 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_plug}"
-  echo "$(git describe --long --tags | tr - .)"
+  echo "$(git describe --long --tags | tr - . | tr -d r)"
 }
 
 prepare() {
-  cd "${_plug}"
-  mkdir -p build
+  mkdir -p "${_plug}/build"
 }
 
 build() {
   cd "${_plug}/build"
-  cmake .. \
+  cmake -S .. -B . \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr
 
-  make
+  cmake --build .
 }
 
 package_avisynth-plugin-neo_tmedian-git() {

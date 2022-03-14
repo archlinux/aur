@@ -1,6 +1,6 @@
 pkgbase = foosynth-plugin-neo_tmedian-git
 	pkgdesc = Plugin for Vapoursynth/Avisynth: neo_tmedian (Dual interface for Vapoursynth/Avisynth) (GIT version)
-	pkgver = r2.0.g9b6a893
+	pkgver = 2.0.g9b6a893
 	pkgrel = 1
 	url = https://github.com/HomeOfAviSynthPlusEvolution/neo_TMedian
 	arch = x86_64
