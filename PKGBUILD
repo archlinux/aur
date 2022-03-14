@@ -1,23 +1,25 @@
-# Maintainer: Greg Fitzgerald <gregf@hugops.pw>
+# Maintainer: Amin Vakil <info AT aminvakil DOT com>
 
 pkgname=ansible-cmdb
-pkgver=1.21
+pkgver=1.31
 pkgrel=1
-pkgdesc=" Generate host overview from ansible fact gathering output"
+pkgdesc="Generate host overview from ansible fact gathering output."
 arch=('any')
 url="https://github.com/fboender/ansible-cmdb"
 license=('GPL3')
-depends=('python2' 'ansible' 'python2-mako' 'python2-ushlex' 'python2-jsonxs')
-source=("https://github.com/fboender/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('2597746718a9652956c2427e3a251ade9e5bf39aa84e443b08ca2fc4feaf61417b2afd2ae6eef087784f920aa9ec7f5867cb75fb07075c4fd3c8f429323d221c')
+depends=('python' 'python-mako' 'python-pyyaml')
+# depends=('python' 'python-mako' 'python-pyyaml' 'python-ushlex' 'python-jsonxs')
+makedepends=('python-setuptools')
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('8de9a02e3f0740967537850f6263756dca1bf506cd95c1f2ef7f4ee6d9ff23b8')
 
 build() {
-    cd $srcdir/${pkgname}-${pkgver}
-    python2 setup.py build
+  cd "$srcdir/${pkgname}-${pkgver}"
+  python setup.py build
 }
 
 package() {
-    cd $srcdir/${pkgname}-${pkgver}
-    python2 setup.py install --root="$pkgdir" --optimize=1
+  cd "$srcdir/${pkgname}-${pkgver}"
+  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir/" --optimize=1
 }
-
