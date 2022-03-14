@@ -2,7 +2,7 @@
 
 pkgname=foobar2000-component-wave-minibar-mod-bin
 pkgver=10.0.46
-pkgrel=1
+pkgrel=2
 _buildhash='244550eef454aa5ee131956d27d36b42'
 _fooname='foo_wave_minibar_mod'
 pkgdesc='A seekbar waveform component for foobar2000'
