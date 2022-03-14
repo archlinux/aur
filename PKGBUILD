@@ -17,11 +17,11 @@ install=${_pkgname}.install
 package() {
 
 	# Install files
-	install -Dm600 ${srcdir}/config.json ${pkgdir}/etc/goshimmer/config.json
+	#install -Dm600 ${srcdir}/config.json ${pkgdir}/etc/goshimmer/config.json
 	install -D ${srcdir}/goshimmer ${pkgdir}/usr/bin/goshimmer
-	install -D ${srcdir}/snapshot.bin ${pkgdir}/var/lib/goshimmer/snapshot.bin
-	install -D ${srcdir}/README.md ${pkgdir}/var/lib/goshimmer/README.md
-	install -D ${srcdir}/LICENSE ${pkgdir}/var/lib/goshimmer/LICENSE
+	#install -D ${srcdir}/snapshot.bin ${pkgdir}/var/lib/goshimmer/snapshot.bin
+	#install -D ${srcdir}/README.md ${pkgdir}/var/lib/goshimmer/README.md
+	#install -D ${srcdir}/LICENSE ${pkgdir}/var/lib/goshimmer/LICENSE
 	
 	# Install systemd service
 	install -D ${srcdir}/goshimmer.service ${pkgdir}/usr/lib/systemd/system/goshimmer.service
