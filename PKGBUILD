@@ -29,7 +29,7 @@ package_suwudo() {
 
     It is currently not able to patch the sudo library. Do it yourself with
 
-    sudo cp
+    sudo cp $pkgname
 
     "
     install -D -m644 "sudoers.so" "$pkgdir/usr/lib/sudo/sudoers.so"
