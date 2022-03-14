@@ -41,8 +41,9 @@ package() {
   make DESTDIR="$pkgdir/" install
 
   mv "$pkgdir/usr/sbin" "$pkgdir/usr/bin"
-  sed -e 's/^\(RUN_AS=\)nobody/#\1postsrsd/;s/\(\/etc\/postsrsd\)\(\.secret\)/\1\/postsrsd\2/' \
-      -e 's/^\(# is \).*$/\1localhost\.localdomain/'< postsrsd.default > "$pkgdir/etc/postsrsd/postsrsd"
+  sed -i -e 's/^\(RUN_AS=\)nobody/#\1postsrsd/;s/\(\/etc\/postsrsd\)\(\.secret\)/\1\/postsrsd\2/' \
+      -e 's/^\(# is \).*$/\1localhost\.localdomain/' \
+      "$pkgdir/etc/postsrsd/postsrsd"
   mkdir -p "$pkgdir/usr/lib/systemd/system"
   install -Dm644 "$srcdir/sysusers.d-postsrsd.conf" "$pkgdir/usr/lib/sysusers.d/postsrsd.conf"
   install -Dm644 "$srcdir/tmpfiles.d-postsrsd.conf" "$pkgdir/usr/lib/tmpfiles.d/postsrsd.conf"
