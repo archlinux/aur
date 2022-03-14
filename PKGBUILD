@@ -1,5 +1,8 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
+## You must import the GPG keys separately before installing
+## Keys are located at https://github.com/torchedsammy.gpg
+
 pkgname=hilbish-git
 pkgver=1.0.4.r3.g0113a4e
 pkgrel=1
