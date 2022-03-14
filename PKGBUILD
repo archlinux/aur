@@ -2,15 +2,15 @@
 # Contributor: Det
 # Contributor: josephgbr
 
-_bundleid=245048
-_hash=d3c52aa6bfa54d3ca74e617f18309292
+_bundleid=245795
+_hash=df5ad55fdd604472a86a45a217032c7d
 _major=8
-_minor=301
+_minor=321
 _pkgname=jre
 
 pkgname=bin32-jre
 pkgver=${_major}u${_minor}
-pkgrel=4
+pkgrel=1
 pkgdesc="Oracle Java $_major Runtime Enviroment (32-bit)"
 arch=('x86_64')
 url="https://www.java.com/en/download/linux_manual.jsp"
@@ -59,7 +59,7 @@ source=(
   "http://download.oracle.com/otn-pub/java/jce/$_major/jce_policy-$_major.zip"
   "policytool32-$_jname.desktop"
 )
-sha256sums=('ee377427586a998e676e5de623f3298d51dbb648c578934e7829736fec2987ba'
+sha256sums=('b3811c0986a08581394ac48405aaa6c8bfc523553eb3cc7f040eb545da0d282f'
             '9c64997edfce44e29296bfbd0cf90abf8b6b9ef2ea64733adae3bdac9ae2c5a6'
             'b92df5151b7b21fbdce2be8717b3b83e58bd290111b47c8c81c657ab2ccb0db8')
 
