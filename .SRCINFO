@@ -1,0 +1,15 @@
+pkgbase = xxh-appimage
+	pkgdesc = Bring your favorite shell wherever you go through the ssh.
+	pkgver = 0.8.10
+	pkgrel = 1
+	url = https://github.com/xxh/xxh
+	arch = x86_64
+	license = custom:Unlicense
+	noextract = xxh-appimage-0.8.10.AppImage
+	options = !strip
+	source_x86_64 = xxh-appimage-0.8.10.AppImage::https://github.com/xxh/xxh/releases/download/0.8.10-release2/xxh-x86_64.AppImage
+	source_x86_64 = https://raw.githubusercontent.com/xxh/xxh/0.8.10-release2/LICENSE
+	sha256sums_x86_64 = 11aa407d68219a0ebe8af7f4b5b6b8d207014d6c4b78ec5d9b128a187427f0c1
+	sha256sums_x86_64 = 0dd080bac3912ce8c4da834a99e7a91fa9bdd076f5260ec6dccb6ee3bd4a10e3
+
+pkgname = xxh-appimage
