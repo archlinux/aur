@@ -7,6 +7,6 @@ pkgbase = pacman-hook-list-systemd-units
 	makedepends = pacutils
 	depends = systemd
 	source = list-systemd-units.sh
-	sha512sums = b8ea4e94d0caa68ff2dc828559ff1610258ecba9f0620e13911c73349128318b4df6a22ea31917803d935fa1b31f70b1347b85d9f684cca1d6135663195b89fe
+	sha512sums = 0f62364a8bbeb876ebc03c6f242db0cef8cc70564a1b969f5de09e15afd511b24a0d49c495265f8bfa968bba0cacb6d0efa079c2eff990640df6fbac97f48f17
 
 pkgname = pacman-hook-list-systemd-units
