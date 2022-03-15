@@ -5,7 +5,7 @@ pkgbase = tallyard-git
 	url = https://tallyard.xyz
 	arch = x86_64
 	license = AGPL3
-	makedepends = go>=1.11
+	makedepends = go>=1.13
 	depends = libolm
 	source = git+https://git.hnitbjorg.xyz/~edwargix/tallyard
 	sha256sums = SKIP
