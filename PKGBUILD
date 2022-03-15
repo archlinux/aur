@@ -3,7 +3,7 @@
 # Contributor: Jeremy Asuncion <jeremyasuncion808@gmail.com>
 
 pkgname=lab
-pkgver=0.23.0
+pkgver=0.24.0
 pkgrel=1
 pkgdesc='A hub-like tool for GitLab'
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('git')
 optdepends=('hub')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/zaquestion/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('8f20d5f1931e9b5daa0aa2d30fc3176d82dcca91b368905a1e1c05e2b36254b9')
+sha256sums=('e71d9d5c9f1c8872bf4317fd2fbbe7b93d11742522616f855e17574ff02d50b3')
 
 prepare() {
     cd "$pkgname-$pkgver"
