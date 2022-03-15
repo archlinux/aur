@@ -1,13 +1,14 @@
 pkgbase = openmpt
 	pkgdesc = Open-source audio module tracker
 	pkgver = 1.30.03.00
-	pkgrel = 2
+	pkgrel = 3
 	url = https://openmpt.org/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = gendesk
 	makedepends = imagemagick
+	makedepends = unzip
 	depends = wine
 	optdepends = bash-completion: tab completion support
 	optdepends = ccache: for Wine native host support

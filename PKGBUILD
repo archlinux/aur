@@ -2,13 +2,13 @@
 # Contributor: Simon Thorpe <simon at hivetechnology dot com dot au>
 pkgname=openmpt
 pkgver=1.30.03.00
-pkgrel=2
+pkgrel=3
 pkgdesc="Open-source audio module tracker"
 arch=('i686' 'x86_64')
 url="https://openmpt.org/"
 license=('BSD')
 depends=('wine')
-makedepends=('gendesk' 'imagemagick')
+makedepends=('gendesk' 'imagemagick' 'unzip')
 optdepends=(
   'bash-completion: tab completion support'
   'ccache: for Wine native host support'
