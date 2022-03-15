@@ -2,15 +2,15 @@ pkgbase = xabber-websocket
 	pkgdesc = WebSocket XMPP client interface
 	pkgver = 0.3.1
 	pkgrel = 1
-	url = https://github.com/redsolution/xabber-websocket/
+	url = https://github.com/redsolution/xabber-websocket
 	arch = i686
 	arch = x86_64
 	license = GPL
+	makedepends = erlang
 	makedepends = git
-	source = git://github.com/redsolution/xabber-websocket/#tag=0.3.1
+	source = git+https://github.com/redsolution/xabber-websocket.git#tag=0.3.1
 	source = xabber_ws.service
-	sha256sums = SKIP
-	sha256sums = f6fab136e5daa9bad3631e5c2f24f99892d9ad331a14d2ce9e5734e0457e2c52
+	sha512sums = SKIP
+	sha512sums = 7eee228b133d31ee59f46a7853733aa5c739a74f837caff7d3046fa1c690a191bde77848bb20fb82b8144b6256ae8bbd09aa2c039b9b70384ffeec3376e5aae1
 
 pkgname = xabber-websocket
-
