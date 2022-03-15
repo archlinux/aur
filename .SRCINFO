@@ -1,6 +1,6 @@
 pkgbase = cqrlogo-git
 	pkgdesc = CGI QR-Code logo for web services - git checkout
-	pkgver = 0.5.3.r0.g485ef31
+	pkgver = 0.5.5.r1.gb2bc264
 	pkgrel = 1
 	url = https://github.com/eworm-de/cqrlogo
 	install = cqrlogo.install
@@ -11,7 +11,7 @@ pkgbase = cqrlogo-git
 	checkdepends = pngcheck
 	makedepends = fcgi
 	makedepends = git
-	makedepends = markdown
+	makedepends = discount
 	depends = iniparser
 	depends = libpng
 	depends = qrencode
@@ -25,8 +25,7 @@ pkgbase = cqrlogo-git
 	backup = etc/cqrlogo.conf
 	backup = etc/httpd/conf/extra/cqrlogo.conf
 	backup = etc/lighttpd/conf.d/cqrlogo.conf
-	source = git://github.com/eworm-de/cqrlogo.git
+	source = git+https://github.com/eworm-de/cqrlogo.git
 	sha256sums = SKIP
 
 pkgname = cqrlogo-git
-
