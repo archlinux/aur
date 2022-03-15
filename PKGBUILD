@@ -32,11 +32,8 @@ build() {
 package() {
   cd "${srcdir}"/mesa
   for _arch in ${_architectures}; do
-    install -d "$pkgdir"/usr/${_arch}/bin
-    install -m755 build-${_arch}/src/gallium/targets/libgl-gdi/opengl32.dll "$pkgdir"/usr/${_arch}/bin
-    install -m755 build-${_arch}/src/gallium/targets/wgl/libgallium_wgl.dll "$pkgdir"/usr/${_arch}/bin
-    install -m755 build-${_arch}/src/gallium/targets/lavapipe/vulkan_lvp.dll "$pkgdir"/usr/${_arch}/bin
-    install -m644 build-${_arch}/src/gallium/targets/lavapipe/lvp_icd.*.json "$pkgdir"/usr/${_arch}/bin
+    DESTDIR="$pkgdir" ninja -C build-${_arch} install
+    rm -r "$pkgdir"/usr/${_arch}/{lib,include}
     ${_arch}-strip --strip-unneeded "$pkgdir"/usr/${_arch}/bin/*.dll
   done
 }
