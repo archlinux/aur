@@ -3,7 +3,7 @@
 # Contributor: bruceutut <zttt183525594@gmail.com>
 
 # 方法参考
-# https://github.com/jiyeme/wechat-devtools
+# https://github.com/msojocs/wechat-web-devtools-linux
 # https://github.com/dragonation/wechat-devtools
 # https://github.com/cytle/wechat_web_devtools
 
@@ -32,7 +32,7 @@ makedepends=('p7zip' 'python2' 'openssl' 'gcc' 'make' 'libssh2' 'krb5')
 source=("nwjs-v${_nwjs_ver}.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs_ver}/nwjs-sdk-v${_nwjs_ver}-linux-x64.tar.gz"
         "${_wechat_devtools_exe}::${_wechat_devtools_url}"
         "node-v${_node_version}.tar.gz::https://npm.taobao.org/mirrors/node/v${_node_version}/node-v${_node_version}-linux-x64.tar.gz"
-        "compiler.tar.gz::https://download.fastgit.org/msojocs/wechat-web-devtools-linux/releases/download/v1.05.2203070-3/compiler.tar.gz"
+        "compiler.tar.gz::https://github.rc1844.workers.dev/msojocs/wechat-web-devtools-linux/releases/download/v1.05.2203070-3/compiler.tar.gz"
         "wechat-devtools.desktop"
         "logo.svg"
         "fix-cli.sh"
@@ -47,7 +47,7 @@ md5sums=(b6f49803c51d0abacca2d1e566c7fe19   # nwjs
          "${_wechat_devtools_md5}"
          2280bfbbf29981fd5adce334f40146ff   # nodejs
          9650f811d5c4d2ca124dcfa6d0b32c4c   # compiler
-         1abd6b4ebbbb918f601a6c5dbad55a05   # desktop
+         01ea705bfe43f5f9683f0dbefb3f1574   # desktop
          0f4353664123320280ea4d6bb295dce2   # svg
          "SKIP"
          "SKIP"
