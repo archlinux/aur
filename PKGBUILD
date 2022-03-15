@@ -10,7 +10,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libssh
-pkgver=0.9.3
+pkgver=0.9.6
 pkgrel=1
 arch=('any')
 pkgdesc="Library for accessing ssh client services through C libraries (android)"
@@ -18,14 +18,15 @@ license=('LGPL')
 url="https://www.libssh.org/"
 depends=("android-${_android_arch}-zlib"
          "android-${_android_arch}-openssl")
+groups=(android-libssh)
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-cmake'
              'doxygen'
              'python')
 source=("https://www.libssh.org/files/${pkgver%.*}/libssh-$pkgver.tar.xz"
         'staticlibfix.patch')
-sha256sums=('2c8b5f894dced58b3d629f16f3afa6562c20b4bdc894639163cf657833688f0c'
-            'befd0650f7f6fd1d92872b8e2676a201b1449b009706de7fdbdd400b716fddf8')
+md5sums=('0174df377361221a31a9576afbaba330'
+         'cb8d77a8779db385ac57f4d2c885a31b')
 
 prepare() {
     cd "${srcdir}/libssh-${pkgver}"
