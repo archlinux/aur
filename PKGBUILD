@@ -2,7 +2,7 @@
 pkgname=libigl
 pkgver=2.4.0
 _pkgtag=$pkgver
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple C++ geometry processing library."
 arch=('any')
 url="https://github.com/libigl/libigl"
@@ -21,7 +21,6 @@ build() {
 	cmake -DCMAKE_INSTALL_PREFIX=/usr \
 		-DLIBIGL_BUILD_TESTS=OFF \
 		-DLIBIGL_BUILD_TUTORIALS=OFF \
-		-DLIBIGL_SKIP_DOWNLOAD=ON \
 		-DLIBIGL_USE_STATIC_LIBRARY=OFF \
 		-DLIBIGL_COPYLEFT_CGAL=OFF \
 		-DLIBIGL_COPYLEFT_COMISO=OFF \
@@ -35,6 +34,9 @@ build() {
 		-DLIBIGL_PREDICATES=OFF \
 		-DLIBIGL_COPYLEFT_TETGEN=OFF \
 		-DLIBIGL_RESTRICTED_TRIANGLE=OFF \
+		-DLIBIGL_XML=OFF \
+		-DFETCHCONTENT_SOURCE_DIR_EIGEN=/usr/include/eigen3 \
+		-DFETCHCONTENT_UPDATES_DISCONNECTED=ON \
 		"${srcdir}/${pkgname}-${pkgver}"
 	make
 }
@@ -42,6 +44,8 @@ build() {
 package() {
 	cd "$srcdir/build-$_pkgtag"
 	make DESTDIR="${pkgdir}" install
-	# Install won't install all headers.
-	cp -r ${srcdir}/${pkgname}-${pkgver}/include/igl ${pkgdir}/usr/include
+
+	# do not install Eigen
+	echo "remove Eigen from package"
+	rm -r "${pkgdir}/usr/lib/cmake/eigen" "${pkgdir}/usr/include/Eigen"
 }

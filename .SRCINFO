@@ -1,7 +1,7 @@
 pkgbase = libigl
 	pkgdesc = Simple C++ geometry processing library.
 	pkgver = 2.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/libigl/libigl
 	arch = any
 	license = GPL3
