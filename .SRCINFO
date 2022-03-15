@@ -11,17 +11,21 @@ pkgbase = juno-ocean-theme-git
 	optdepends = ttf-roboto: default font for gnome-shell
 	optdepends = gtk-engine-murrine: GTK2 support
 	optdepends = gnome-themes-extra: GTK2 support
+	conflicts = juno-ocean-theme
 	source = juno-ocean::git+https://github.com/EliverLara/Juno.git#branch=ocean
 	sha256sums = SKIP
 
 pkgname = juno-ocean-gtk-theme-git
 	provides = juno-ocean-gtk-theme
+	conflicts = juno-ocean-theme
 	conflicts = juno-ocean-gtk-theme
 
 pkgname = juno-ocean-kde-theme-git
 	provides = 
+	conflicts = juno-ocean-theme
 	conflicts = 
 
 pkgname = juno-ocean-kvantum-theme-git
 	provides = 
+	conflicts = juno-ocean-theme
 	conflicts = 
