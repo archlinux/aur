@@ -1,36 +1,35 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
-pkgname=emacs-j-mode-git
-pkgver=1.1.1.8.g6f7f598
+_base=j-mode
+pkgname=emacs-${_base}-git
+pkgver=1.1.1.10.ge8725ac
 pkgrel=1
 pkgdesc="Emacs-mode for the J language"
-arch=('any')
-url="https://github.com/zellio/j-mode"
-license=('GPL3')
-makedepends=('git')
-provides=('emacs-j-mode')
-conflicts=('emacs-j-mode')
-install=$pkgname.install
-source=("git://github.com/zellio/j-mode.git")
-md5sums=('SKIP')
-_gitname="j-mode"
+arch=(any)
+url="https://github.com/zellio/${_base}"
+license=(GPL3)
+depends=(emacs)
+makedepends=(git)
+provides=(emacs-${_base})
+conflicts=(emacs-${_base})
+install=${pkgname}.install
+source=(git+${url})
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_gitname"
-  git describe --tags | sed 's|-|.|g' |sed 's+^v++'
+  cd ${_base}
+  git describe --tags | sed 's|-|.|g' | sed 's+^v++'
 }
 
 build() {
-  cd "$srcdir/$_gitname"
-  for _i in *.el 
-  do
+  cd ${_base}
+  for _i in *.el; do
     emacs --batch -q --eval "(byte-compile-file \"${_i}\")"
   done
 }
 
 package() {
-  cd "$srcdir/$_gitname"
-  for _i in *.el *.elc
-  do
+  cd ${_base}
+  for _i in *.el *.elc; do
     install -Dm644 ${_i} "$pkgdir"/usr/share/emacs/site-lisp/${_i}
-  done 
+  done
 }
