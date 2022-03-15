@@ -2,13 +2,13 @@
 pkgname=python-todoist-python
 _name=${pkgname#python-}
 pkgver=8.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc="The official Todoist Python API library"
 arch=(any)
 url="https://github.com/Doist/$_name"
 license=('MIT')
 groups=()
-depends=('python-requests')
+depends=(python-requests)
 makedepends=(python-build python-installer)
 provides=()
 conflicts=()
