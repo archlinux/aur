@@ -1,0 +1,25 @@
+pkgbase = gnucobol-svn
+	pkgdesc = A free/libre COBOL compiler
+	pkgver = r4571
+	pkgrel = 1
+	url = https://gnucobol.sourceforge.io/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = subversion
+	makedepends = gcc
+	makedepends = help2man
+	makedepends = rsync
+	depends = cjson
+	depends = db
+	depends = gmp
+	depends = libxml2
+	depends = ncurses
+	provides = gnucobol
+	conflicts = gnucobol
+	options = staticlibs
+	source = svn+https://svn.code.sf.net/p/gnucobol/code/trunk
+	sha256sums = SKIP
+
+pkgname = gnucobol-svn
