@@ -1,16 +1,15 @@
 pkgbase = poweradmin
 	pkgdesc = web-based DNS administration tool for PowerDNS server
-	pkgver = v2.1.6.r411.gb27f28b
+	pkgver = 2.2.2.r23.g8041cd4
 	pkgrel = 1
-	url = http://www.poweradmin.org/
+	url = https://www.poweradmin.org
 	arch = any
 	license = GPL
 	makedepends = git
 	depends = powerdns
 	depends = php
-	backup = etc/webapps/poweradmin/config.inc.php
-	source = git://github.com/poweradmin/poweradmin.git
+	backup = etc/webapps/${pkgname}/config.inc.php
+	source = git+https://github.com/poweradmin/poweradmin.git
 	md5sums = SKIP
 
 pkgname = poweradmin
-
