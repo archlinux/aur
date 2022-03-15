@@ -2,6 +2,7 @@
 
 pkgbase=juno-ocean-theme-git
 __pkgname="${pkgbase%-theme-git}"
+__Pkgname="${__pkgname^}"
 __PkgName="$(echo "$__pkgname" | sed -e "s/\b./\u\0/g")"
 pkgname=(
     "$__pkgname-gtk-theme-git"
@@ -68,40 +69,36 @@ build() {
     echo
     popd
     msg2 "Done!"
-
-    #resize unnecessary big images
-    image="cinnamon/thumbnail.png"
-    convert "$image" -verbose -resize "x360>" "$image"
 }
 
 package_juno-ocean-gtk-theme-git() {
     provides=("${pkgname[0]%-git}")
     conflicts=("${pkgname[0]%-git}" "${pkgbase%-git}")
 
-    mkdir -p "$pkgdir/usr/share/themes/"
-    cp -a "$srcdir/$__pkgname/" "$pkgdir/usr/share/themes/"
-    cd "$pkgdir/usr/share/themes/$__pkgname"
-    rm -r ".git"* "Art/" "kde/" "src/" *".json" "Gulpfile.js" "README.md"
+    mkdir -p "$pkgdir/usr/share/themes"
+    cp -a "$srcdir/$__pkgname" "$pkgdir/usr/share/themes/$__Pkgname"
+    cd "$pkgdir/usr/share/themes/$__Pkgname"
+    rm -r ".git"* "Art/" "kde/" "src/" *".json" "Gulpfile.js"
 }
 package_juno-ocean-kde-theme-git() {
     provides=("${pkgname[1]%-git}")
     conflicts=("${pkgname[1]%-git}" "${pkgbase%-git}")
 
-    mkdir -p "$pkgdir/usr/share/"
-    cd "$pkgdir/usr/share/" 
+    mkdir -p "$pkgdir/usr/share"
+    cd "$pkgdir/usr/share" 
     cp -a "$srcdir/$__pkgname/kde/"* "./"
     rm -r "kvantum/"
     mkdir -p "aurorae/themes" 
     mkdir -p "sddm/themes"
-    mv "sddm/${__PkgName#Juno-}/" "sddm/themes/"
-    mv "aurorae/${__PkgName#Juno-}/" "aurorae/themes/"
+    mv "sddm/${__PkgName#Juno-}" "sddm/themes/"
+    mv "aurorae/${__PkgName#Juno-}" "aurorae/themes/"
 }
 package_juno-ocean-kvantum-theme-git() {
     provides=("${pkgname[2]%-git}")
     conflicts=("${pkgname[2]%-git}" "${pkgbase%-git}")
 
-    mkdir -p "$pkgdir/usr/share/Kvantum/"
-    cd "$pkgdir/usr/share/Kvantum/"
-    cp -a "$srcdir/$__pkgname/kde/kvantum/${__PkgName#Juno-}/" "./"
+    mkdir -p "$pkgdir/usr/share/Kvantum"
+    cd "$pkgdir/usr/share/Kvantum"
+    cp -a "$srcdir/$__pkgname/kde/kvantum/${__PkgName#Juno-}" "./"
     cp -a "$srcdir/$__pkgname/LICENSE" "./${__PkgName#Juno-}/"
 }
