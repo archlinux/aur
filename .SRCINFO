@@ -1,20 +1,18 @@
 pkgbase = basemark
 	pkgdesc = Basemark GPU - Graphics performance evaluation tool
 	pkgver = 1.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.basemark.com/products/basemark-gpu/
 	arch = x86_64
 	license = custom
-	depends = libxinerama
-	depends = libxi
 	depends = xdg-utils
-	depends = hicolor-icon-theme
-	depends = freetype2
 	depends = libgl
 	depends = libxrandr
-	depends = libxcursor
-	depends = libcurl-compat
-	depends = openssl-1.0
+	depends = gtk3
+	depends = alsa-lib
+	depends = mesa
+	depends = nss
+	depends = vulkan-icd-loader
 	optdepends = vulkan-icd-loader
 	source = https://cdn.downloads.basemark.com/BasemarkGPU-linux-x64-1.2.3.tar.gz
 	source = basemark
@@ -28,4 +26,3 @@ pkgbase = basemark
 	sha256sums = 9a9228a9d95c67e0bbe22a73edd3f2087cc386d9e4df74ce18aa7b23172aeef9
 
 pkgname = basemark
-
