@@ -1,31 +1,32 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
-pkgname=emacs-newlisp-mode-git
+_base=newlisp-mode
+pkgname=emacs-${_base}-git
 pkgver=56.ac23be4
 pkgrel=1
 pkgdesc="newLISP editing mode for Emacs"
-arch=('any')
-url="https://github.com/kosh04/newlisp-mode"
-license=('GPL3')
-depends=('emacs')
-makedepends=('git')
-provides=('emacs-newlisp')
-conflicts=('emacs-newlisp')
-install=emacs-newlisp-mode.install
-source=('git://github.com/kosh04/newlisp-mode.git')
-md5sums=('SKIP')
+arch=(any)
+url="https://github.com/kosh04/${_base}"
+license=(GPL3)
+depends=(emacs)
+makedepends=(git)
+provides=(emacs-newlisp)
+conflicts=(emacs-newlisp)
+install=emacs-${_base}.install
+source=(git+${url})
+sha512sums=('SKIP')
 
 pkgver() {
-  cd $srcdir/newlisp-mode
+  cd ${_base}
   printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd $srcdir/newlisp-mode
-  emacs -Q -batch -L . -f batch-byte-compile newlisp-mode.el
+  cd ${_base}
+  emacs -Q -batch -L . -f batch-byte-compile ${_base}.el
 }
 
 package() {
-  cd "$srcdir/newlisp-mode"
-  install -Dm644 newlisp-mode.el $pkgdir/usr/share/emacs/site-lisp/newlisp-mode.el
-  install -Dm644 newlisp-mode.elc $pkgdir/usr/share/emacs/site-lisp/newlisp-mode.elc
+  cd ${_base}
+  install -Dm644 ${_base}.el ${pkgdir}/usr/share/emacs/site-lisp/${_base}.el
+  install -Dm644 ${_base}.elc $pkgdir/usr/share/emacs/site-lisp/${_base}.elc
 }
