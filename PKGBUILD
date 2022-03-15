@@ -7,7 +7,7 @@ pkgdesc="A peer-to-peer voting system that ensures voter privacy while preventin
 url="https://tallyard.xyz"
 license=('AGPL3')
 depends=('libolm')
-makedepends=('go>=1.11')
+makedepends=('go>=1.13')
 source=("$pkgname-v$pkgver.tar.gz::https://git.hnitbjorg.xyz/~edwargix/tallyard/archive/v$pkgver.tar.gz")
 sha256sums=('613529ba96f1d86681bed868934ddbf0ae4492631887048c55b4678c003badc2')
 
