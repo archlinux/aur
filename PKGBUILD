@@ -1,6 +1,6 @@
 # Maintainer: David Florness <david at florness dot com>
 pkgname=tallyard
-pkgver=0.4.1
+pkgver=0.4.3
 pkgrel=1
 arch=('x86_64')
 pkgdesc="A peer-to-peer voting system that ensures voter privacy while preventing double-voting"
@@ -9,7 +9,7 @@ license=('AGPL3')
 depends=('libolm')
 makedepends=('go>=1.11')
 source=("$pkgname-v$pkgver.tar.gz::https://git.hnitbjorg.xyz/~edwargix/tallyard/archive/v$pkgver.tar.gz")
-sha256sums=('56d9aa2ae639dcd3a430e2db9dbf3951f16dcb6cf4b125b00428ed574751d796')
+sha256sums=('613529ba96f1d86681bed868934ddbf0ae4492631887048c55b4678c003badc2')
 
 build() {
   cd "$srcdir/$pkgname-v$pkgver"
