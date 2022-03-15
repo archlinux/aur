@@ -9,6 +9,6 @@ pkgbase = betterbin
 	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/betterbin-1.0.r70-1-x86_64.pkg.tar.zst
 	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/betterbin-1.0.r70-1-x86_64.pkg.tar.zst.sig
 	sha256sums = f6f0c3513740b06f0e3113056e9fe4856dec30398ba8d6c2a6694fe67e782a4b
-	sha256sums = 6def19cb05b11b466a67bbc9b15a0013dbb2ca616013f661bd3c1a4b68df0172
+	sha256sums = e89d48d8b5d6fc9c252e9b1c77489f237e41275f7d1db44965e110d7e3709fcd
 
 pkgname = betterbin
