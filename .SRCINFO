@@ -1,6 +1,6 @@
 pkgbase = leapp-bin
 	pkgdesc = Leapp is a Desktop DevTool that handles the management and security of your cloud credentials for you, converted from .deb package
-	pkgver = 0.9.0
+	pkgver = 0.10.0
 	pkgrel = 1
 	url = https://www.leapp.cloud/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = leapp-bin
 	depends = libsecret
 	depends = at-spi2-core
 	provides = leapp
-	source = Leapp_0.9.0_amd64.deb::https://asset.noovolari.com/latest/Leapp_0.9.0_amd64.deb
-	sha512sums = b4d80713d7d1a08cac7a030556a20562e666475f93f1e057e99a9d9c2ed59e09657cf19fba5bbc11929a798d34e193adf7f6178f8c166b32010268d901bbff53
+	source = Leapp_0.10.0_amd64.deb::https://asset.noovolari.com/latest/Leapp_0.10.0_amd64.deb
+	sha512sums = 3e551595fd792de63c1564e725af20a791ff451ea11f4f12d2b00f12fb65199960634ff316b3181b683525d97cf68abf8a528ce289ae0fa89db95bfd2480cf3c
 
 pkgname = leapp-bin
