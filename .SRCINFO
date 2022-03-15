@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-cli11
 	pkgdesc = Command line parser for C++11 (mingw-w64)
-	pkgver = 2.0.0
+	pkgver = 2.1.2
 	pkgrel = 1
 	url = https://github.com/CLIUtils/CLI11
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = mingw-w64-cli11
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://github.com/CLIUtils/CLI11/archive/v2.0.0.zip
-	sha256sums = e488c75ca5077c302dfea153c4b67bda7fff53c470a8cedf9d7efbea169cca4a
+	source = https://github.com/CLIUtils/CLI11/archive/v2.1.2.zip
+	sha256sums = 01321456ee9987a833b49325ca99570fdfaa9c44bcab9e4d735b4afb554bad49
 
 pkgname = mingw-w64-cli11

@@ -1,6 +1,6 @@
 pkgname=mingw-w64-cli11
 _pkgname=CLI11
-pkgver=2.0.0
+pkgver=2.1.2
 pkgrel=1
 pkgdesc='Command line parser for C++11 (mingw-w64)'
 arch=('any')
@@ -10,7 +10,7 @@ depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/CLIUtils/CLI11/archive/v${pkgver}.zip")
-sha256sums=('e488c75ca5077c302dfea153c4b67bda7fff53c470a8cedf9d7efbea169cca4a')
+sha256sums=('01321456ee9987a833b49325ca99570fdfaa9c44bcab9e4d735b4afb554bad49')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
