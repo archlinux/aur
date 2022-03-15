@@ -2,7 +2,7 @@
 # Contributor: FirstAirBender <noblechuk5 [at] web [dot] de>
 
 pkgname=pacman-hook-list-systemd-units
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Prints new systemd units on package installation or upgrade."
 arch=('any')
