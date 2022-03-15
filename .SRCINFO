@@ -1,6 +1,6 @@
 pkgbase = sway-git
 	pkgdesc = Tiling Wayland compositor and replacement for the i3 window manager
-	pkgver = r6607.28cadf55
+	pkgver = r6891.3dffe7f3
 	pkgrel = 1
 	url = https://swaywm.org
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = sway-git
 	depends = json-c
 	depends = pango
 	depends = polkit
-	depends = pcre
+	depends = pcre2
 	depends = swaybg-git
 	depends = ttf-font
 	depends = wlroots-git
@@ -40,4 +40,3 @@ pkgbase = sway-git
 	sha512sums = 57590bc0d14c87289a4a9cd67991c6a841e54244d2a6186b5da5a08e633de2e8631959fa8c77ede211b0a5f315d920f2c1350951a53d6f2e9e81859056cb3c9e
 
 pkgname = sway-git
-

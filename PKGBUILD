@@ -2,7 +2,7 @@
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 pkgname=sway-git
 _pkgname=sway
-pkgver=r6607.28cadf55
+pkgver=r6891.3dffe7f3
 pkgrel=1
 license=("MIT")
 pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager"
@@ -18,7 +18,7 @@ depends=(
 	"json-c"
 	"pango"
 	"polkit"
-	"pcre"
+	"pcre2"
 	"swaybg-git"
 	"ttf-font"
 	"wlroots-git"
