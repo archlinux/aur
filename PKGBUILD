@@ -9,7 +9,7 @@ url='https://github.com/tuberry/color-picker'
 license=('GPL3')
 depends=('gnome-shell>=41')
 source=("https://extensions.gnome.org/extension-data/color-pickertuberry.v${pkgver}.shell-extension.zip")
-sha256sums=('6e324ae413867538c9a7b407130026d38b6db048f3923e935089330f2152d57c')
+sha256sums=('c8b7e269f214ce97b81930cdd9ca34b28d8d7f8736b69d5ea76d6f3f9dd73de9')
 
 package() {
     local _uuid="color-picker@tuberry"
