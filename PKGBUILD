@@ -7,7 +7,7 @@
 set -u
 _pkgname='relax-and-recover'
 pkgname="${_pkgname}-git"
-pkgver=2.6.r257.g983b75c0
+pkgver=2.6.r808.gc673df65
 pkgrel=1
 pkgdesc='bootable Linux disaster recovery, formerly rear'
 arch=('any')
@@ -26,7 +26,7 @@ backup=('etc/rear/local.conf')
 _srcdir="${_pkgname^^}"
 _giturl="https://github.com/rear/rear"
 _verwatch=("${_giturl}/releases.atom" "\s\+<title>rear-\([^>]\+\)</title>.*" 'f') # RSS
-source=("${_srcdir}::${_giturl//https:/git:}.git")
+source=("${_srcdir}::${_giturl//https:/git+https:}.git")
 md5sums=('SKIP')
 sha256sums=('SKIP')
 

@@ -1,6 +1,6 @@
 pkgbase = relax-and-recover-git
 	pkgdesc = bootable Linux disaster recovery, formerly rear
-	pkgver = 2.6.r257.g983b75c0
+	pkgver = 2.6.r808.gc673df65
 	pkgrel = 1
 	url = http://relax-and-recover.org/
 	arch = any
@@ -28,9 +28,8 @@ pkgbase = relax-and-recover-git
 	conflicts = relax-and-recover
 	replaces = rear
 	backup = etc/rear/local.conf
-	source = RELAX-AND-RECOVER::git://github.com/rear/rear.git
+	source = RELAX-AND-RECOVER::git+https://github.com/rear/rear.git
 	md5sums = SKIP
 	sha256sums = SKIP
 
 pkgname = relax-and-recover-git
-
