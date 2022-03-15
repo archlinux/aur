@@ -1,14 +1,13 @@
 pkgbase = python2-mipp
 	pkgdesc = Meteorological Ingest-Processing Package (MIPP)
-	pkgver = v1.1.0
+	pkgver = 1.1.0
 	pkgrel = 1
-	url = https://mipp.readthedocs.org/
+	url = https://github.com/pytroll/mipp
 	arch = any
 	license = LGPL3
-	makedepends = git
+	makedepends = python2-setuptools
 	depends = python2
-	source = git://github.com/loerum/mipp.git
-	md5sums = SKIP
+	source = https://github.com/pytroll/mipp/archive/v1.1.0.tar.gz
+	sha512sums = 89e91582aa62817aa747f25ccb8308cb84226236f418eece0e91315c87c48acf5d3493ad63ba2b5485bfa7842579e6ef0e996fbeb836fcff6e21a1e7fdb7e764
 
 pkgname = python2-mipp
-

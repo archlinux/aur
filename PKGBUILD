@@ -1,40 +1,32 @@
 # Contributor: Graziano Giuliani <graziano.giuliani@gmail.com>
-# Maintainer: Graziano Giuliani <graziano.giuliani@gmail.com>
-
-_gitname=mipp
-
-pkgname=python2-mipp
+_base=mipp
+pkgname=python2-${_base}
 pkgrel=1
-pkgver=v1.1.0
+pkgver=1.1.0
 pkgdesc="Meteorological Ingest-Processing Package (MIPP)"
-arch=('any')
-url="https://mipp.readthedocs.org/"
-license=('LGPL3')
-depends=('python2')
-makedepends=('git')
-source=(git://github.com/loerum/$_gitname.git)
-md5sums=('SKIP')
+arch=(any)
+url="https://github.com/pytroll/${_base}"
+license=(LGPL3)
+depends=(python2)
+makedepends=(python2-setuptools)
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('89e91582aa62817aa747f25ccb8308cb84226236f418eece0e91315c87c48acf5d3493ad63ba2b5485bfa7842579e6ef0e996fbeb836fcff6e21a1e7fdb7e764')
 
-pkgver() {
-  cd $srcdir/$_gitname
-  # Use the tag of the last commit
-  git describe --always | sed 's|-|.|g'
+prepare() {
+  cd ${_base}-${pkgver}
+  # We enforce this to be a strictly python2 package
+  sed -i -e "s|^#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
+    -e "s|^#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
+    -e "s|^#![ ]*/bin/env python$|#!/usr/bin/env python2|" \
+    $(find ${srcdir} -name '*.py')
 }
 
 build() {
-  cd "$srcdir/$_gitname"
-  # We enforce this to be a strictly python2 package
-  sed -i -e "s|^#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
-         -e "s|^#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
-         -e "s|^#![ ]*/bin/env python$|#!/usr/bin/env python2|" \
-         $(find ${srcdir} -name '*.py')
+  cd ${_base}-${pkgver}
   python2 setup.py build_ext --inplace
-  python2 setup.py build
 }
 
 package() {
-  cd "$srcdir/$_gitname"
+  cd ${_base}-${pkgver}
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
-
-# vim:set ts=2 sw=2 et:
