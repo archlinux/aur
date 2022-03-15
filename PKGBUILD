@@ -2,6 +2,7 @@
 pkgname=revolt-desktop-git
 pkgver=1.0.3.r0.g9f239d3
 pkgrel=1
+epoch=1
 pkgdesc="User-first, privacy focused chat platform."
 arch=("x86_64")
 url="https://revolt.chat"
