@@ -1,0 +1,20 @@
+pkgbase = tkpath-fossil
+	pkgdesc = 2D drawing widget for the Tk GUI toolkit
+	pkgver = 0.3.3
+	pkgrel = 1
+	url = http://chiselapp.com/user/rene/repository/tkpath
+	arch = x86_64
+	license = BSD
+	makedepends = fossil
+	makedepends = md4c
+	depends = cairo
+	depends = tk
+	depends = libx11
+	provides = tkpath
+	conflicts = tkpath
+	conflicts = tkpath-fossil
+	conflicts = tkpath-git
+	source = fossil+http://chiselapp.com/user/rene/repository/tkpath
+	md5sums = SKIP
+
+pkgname = tkpath-fossil
