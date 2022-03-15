@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=python-turkish-morphology
-pkgver=1.2.4
-pkgrel=2
+pkgver=1.2.5
+pkgrel=1
 pkgdesc='A two-level morphological analyzer for Turkish'
 arch=(any)
 url="https://github.com/google-research/${pkgname#python-}"
@@ -10,17 +10,19 @@ license=(Apache)
 depends=(absl-py
          python
          python-protobuf)
-makedepends=(python-setuptools)
+makedepends=(python-{build,installer}
+             python-setuptools
+             python-wheel)
 _archive="${pkgname#python-}-$pkgver"
-source=("$_archive.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('0570fcce32ea8bacf8e12cb83232c1458920f71fed71d5ba270b511144ef5f5d')
+source=("$url/archive/v$pkgver/$_archive.tar.gz")
+sha256sums=('665fb87b7088650a561003aac793905565b816fd81cfed7fd01418ba0f05fad2')
 
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build
 }
 
 package() {
 	cd "$_archive"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 }
