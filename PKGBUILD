@@ -14,7 +14,6 @@ pkgdesc="GTK themes inspired by epic VSCode themes"
 arch=("any")
 url="https://github.com/EliverLara/Juno"
 license=("GPL3")
-conflicts=("${pkgbase%-git}")
 makedepends=("git" "inkscape" "optipng")
 optdepends=(
     "ttf-roboto: default font for gnome-shell"
@@ -77,7 +76,7 @@ build() {
 
 package_juno-ocean-gtk-theme-git() {
     provides=("${pkgname[0]%-git}")
-    conflicts+=("${pkgname[0]%-git}")
+    conflicts=("${pkgname[0]%-git}" "${pkgbase%-git}")
 
     mkdir -p "$pkgdir/usr/share/themes/"
     cp -a "$srcdir/$__pkgname/" "$pkgdir/usr/share/themes/"
@@ -86,7 +85,7 @@ package_juno-ocean-gtk-theme-git() {
 }
 package_juno-ocean-kde-theme-git() {
     provides=("${pkgname[1]%-git}")
-    conflicts+=("${pkgname[1]%-git}")
+    conflicts=("${pkgname[1]%-git}" "${pkgbase%-git}")
 
     mkdir -p "$pkgdir/usr/share/"
     cd "$pkgdir/usr/share/" 
@@ -99,7 +98,7 @@ package_juno-ocean-kde-theme-git() {
 }
 package_juno-ocean-kvantum-theme-git() {
     provides=("${pkgname[2]%-git}")
-    conflicts+=("${pkgname[2]%-git}")
+    conflicts=("${pkgname[2]%-git}" "${pkgbase%-git}")
 
     mkdir -p "$pkgdir/usr/share/Kvantum/"
     cd "$pkgdir/usr/share/Kvantum/"
