@@ -8,8 +8,8 @@
 #######################
 
 pkgname=rstudio-desktop-daily-bin
-pkgver=2022.06.0.daily.152
-pkgver_url=2022.06.0-daily-152
+pkgver=2022.06.0.daily.209
+pkgver_url=2022.06.0-daily-209
 pkgrel=1
 pkgdesc="An integrated development environment (IDE) for R (binary version from RStudio official repository)"
 arch=('x86_64')
@@ -24,7 +24,7 @@ conflicts=('rstudio-desktop' 'rstudio-desktop-git' 'rstudio-desktop-bin')
 provides=("rstudio-desktop-daily=${pkgver}")
 options=(!strip)
 
-sha256sums_x86_64=('96f741894610dd689a5144118016b6ad7ce1fb8b96cf84d6446cee312cc23ce5')
+sha256sums_x86_64=('0610c86af0f709efdb567cea107e08586e2e9a218b446a6b94a66a779a462ac4')
 source_x86_64=("https://s3.amazonaws.com/rstudio-ide-build/desktop/bionic/amd64/rstudio-${pkgver_url}-amd64.deb")
 
 package() {
@@ -56,5 +56,5 @@ exec /usr/lib/rstudio/bin/rstudio "$@"
 ' > "$pkgdir/usr/bin/rstudio-daily-bin"
   chmod 755 "$pkgdir/usr/bin/rstudio-daily-bin"
 
-  sed -i 's|/usr/lib/rstudio/bin/rstudio|/usr/bin/rstudio-daily-bin|' "$pkgdir/usr/share/applications/rstudio.desktop"
+  sed -i 's|/usr/lib/rstudio/bin/rstudio|/usr/bin/rstudio-daily-bin --disable-seccomp-filter-sandbox|' "$pkgdir/usr/share/applications/rstudio.desktop"
 }

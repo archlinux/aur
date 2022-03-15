@@ -1,3 +1,4 @@
+*.zst
 *.pkg.tar.xz
 .Rhistory
 pkg/
