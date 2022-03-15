@@ -15,16 +15,14 @@ md5sums=('065e5d3488223e128536fca6a1198554')
 
 
 build() {
-  cd "$pkgname-${pkgver}"
-  arch-meson ../build
-  ninja -v -C ../build
+  arch-meson "$pkgname-$pkgver" build
+  meson compile -C build
 }
 
 package() {
-  cd "$pkgname-${pkgver}"
-  DESTDIR="${pkgdir}" meson install -C ../build
+  meson install -C build --destdir "$pkgdir"
 
   mkdir -p $pkgdir/usr/share/licenses/$pkgname
-  install -m 644 LICENSE $pkgdir/usr/share/licenses/$pkgname
+  install -m 644 "$pkgname-${pkgver}"/LICENSE $pkgdir/usr/share/licenses/$pkgname
 }
 
