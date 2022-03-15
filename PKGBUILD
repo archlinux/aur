@@ -1,7 +1,7 @@
 # Maintainer: eggy <eggyrules at gmail dot com>
 
 pkgname=mandown-git
-pkgver=r78.259b9e6
+pkgver=r85.b7a92f7
 pkgrel=1
 pkgdesc="Comic/manga downloader and EPUB/CBZ converter application and Python library"
 url="https://github.com/potatoeggy/mandown"
@@ -16,7 +16,7 @@ depends=(
 	"python-natsort"
 	"python-lxml"
 )
-makedepends=("git" "python-setuptools" "python-dephell")
+makedepends=("git" "python-build" "python-installer")
 optdepends=(
 	"python-pillow: Image processing"
 )
@@ -30,17 +30,12 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-    cd "$srcdir/mandown"
-    dephell deps convert --from pyproject.toml --to setup.py
-}
-
 build() {
     cd "$srcdir/mandown"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$srcdir/mandown"
-    python setup.py install --root="$pkgdir" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
