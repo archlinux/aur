@@ -1,0 +1,19 @@
+pkgbase = tetrio-plus-bin
+	pkgdesc = TETR.IO desktop client with Plus: Custom skins, sounds, backgrounds, and more!
+	pkgver = 8.0.0
+	pkgrel = 3
+	url = https://gitlab.com/UniQMG/tetrio-plus
+	arch = x86_64
+	license = custom
+	depends = libxss
+	conflicts = tetrio-desktop
+	source = tetrio-plus-bin-8.0.0::https://tetr.io/about/desktop/builds/TETR.IO%20Setup.deb
+	source = tetrio-plus_0.23.7_app.asar.zip::https://gitlab.com/UniQMG/tetrio-plus/uploads/e51f2fd7a1370bf4ceeecd371204c2e1/tetrio-plus_0.23.7_app.asar.zip
+	source = MIT
+	source = LICENSE
+	sha256sums = ae07110f88692e1485f7ef1d3ab5eff95774746631b17833e28cc09ba1a38bda
+	sha256sums = 34b8477a0388db80c545bd752a835f79016cba7380f61b43835d68934951d40e
+	sha256sums = dd0322404982ad4e880b219cb39ffdb47ab44ed41fa89c3949657bf6d57dc6ed
+	sha256sums = 5e721783706e2018878ca127ec6ed5d6a1298ee9cc6a853329e25fafe45265f9
+
+pkgname = tetrio-plus-bin
