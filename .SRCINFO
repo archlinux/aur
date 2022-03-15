@@ -1,0 +1,11 @@
+pkgbase = python-mulpyplexer
+	pkgdesc = A module that multiplexes interactions with lists of python objects.
+	pkgver = 0.09
+	pkgrel = 1
+	url = https://github.com/zardus/mulpyplexer
+	arch = any
+	license = BSD
+	source = https://files.pythonhosted.org/packages/source/m/mulpyplexer/mulpyplexer-0.09.tar.gz
+	sha256sums = 144e9e9bf66d3988f60542c9d3d4c94857438f7908f60e53f4c1cb1622fbbd30
+
+pkgname = python-mulpyplexer
