@@ -2,6 +2,7 @@ pkgbase = gytparse
 	pkgdesc = Browse, stream and download Youtube videos
 	pkgver = 0.1.0
 	pkgrel = 1
+	url = https://github.com/foucault/gytparse
 	arch = any
 	license = MPL2
 	makedepends = git

@@ -4,6 +4,7 @@ pkgname=gytparse
 pkgver=0.1.0
 pkgrel=1
 arch=(any)
+url='https://github.com/foucault/gytparse'
 pkgdesc="Browse, stream and download Youtube videos"
 license=(MPL2)
 depends=(libadwaita python-gobject python-requests yt-dlp mpv)
