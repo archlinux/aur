@@ -1,0 +1,13 @@
+pkgbase = omegat-round-theme
+	pkgdesc = Round themes for OmegaT
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/miurahr/omegat-round-theme/
+	arch = any
+	license = GPL3
+	depends = omegat
+	options = !strip
+	source = https://github.com/miurahr/omegat-round-theme/releases/download/v0.1.0/omegat-round-theme-0.1.0.zip
+	sha256sums = eae58701fceffd52f4a3073161639d65a3cc8afd893ad6a1ffd8c0a9102234e2
+
+pkgname = omegat-round-theme
