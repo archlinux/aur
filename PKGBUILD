@@ -7,7 +7,7 @@
 # Contributor: teratomata <teratomat@gmail.com>
 
 pkgname=mathematica
-pkgver=13.0.0
+pkgver=13.0.1
 pkgrel=1
 pkgdesc="A computational software program used in scientific, engineering, and mathematical fields and other areas of technical computing."
 arch=('x86_64')
@@ -71,7 +71,7 @@ optdepends=(
     'zlib'
 )
 source=("local://Mathematica_${pkgver}_BNDL_LINUX.sh")
-md5sums=('e02f7c8926a51412a8d578de408e4b24')
+md5sums=('cdeae74ad72420c1dea5027f7f8c569e')
 options=("!strip")
 
 ## To build this package you need to place the mathematica-installer into your
@@ -87,7 +87,7 @@ options=("!strip")
 # PKGEXT='.pkg.tar'
 
 prepare() {
-    warning "Building Mathematica takes more than 20GiB of space for 'makepkg', and another 10GiB for the pkg tarball."
+    warning "Building Mathematica takes more than 24GiB of space for 'makepkg'."
     warning "Building in a tmpfs (e.g. /tmp when mounted into RAM) may not work."
 
     if [ $(echo "${srcdir}" | wc -w) -ne 1 ]; then
@@ -107,6 +107,7 @@ package() {
              -targetdir=${pkgdir}/opt/Mathematica \
              -auto
     msg2 "Errors related to 'xdg-icon-resource' and 'xdg-desktop-menu' are to be expected during Mathematica's installation."
+    rm ${pkgdir}/opt/Mathematica/InstallErrors
 
     msg2 "Fixing symbolic links"
     cd ${pkgdir}/opt/Mathematica/Executables
