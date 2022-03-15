@@ -1,7 +1,7 @@
 # Maintainer: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname='dprint-bin'
-pkgver='0.23.0'
+pkgver='0.23.1'
 pkgrel='1'
 pkgdesc='Pluggable and configurable code formatting platform written in Rust.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=(
   "$pkgver.LICENSE::$_repo/raw/$pkgver/LICENSE"
 )
 sha256sums=(
-  '488b0e78e5e607b5ad18ca02cadc55b23ee8ecde214c72881501097ba9b8d17b'
+  'c57923a76ce8b5b134371f337db437a59b4ea5a86875c55339d366ad409bfd2a'
   'SKIP'
 )
 
