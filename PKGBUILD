@@ -6,12 +6,12 @@
 
 pkgname=obs-studio-browser
 pkgver=27.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Free and open source software for video recording and live streaming. Built with browser, vst plugins."
 arch=("i686" "x86_64")
 url="https://github.com/obsproject/obs-studio"
 license=("GPL2")
-depends=("ffmpeg" "jack" "jansson" "libxinerama" "libxkbcommon-x11"
+depends=("ffmpeg" "pciutils" "jansson" "libxinerama"
          "qt5-svg" "qt5-x11extras" "curl" "gtk-update-icon-cache" "mbedtls"
          "pipewire" "libxcomposite")
 makedepends=("cmake" "git" "libfdk-aac" "x264"
