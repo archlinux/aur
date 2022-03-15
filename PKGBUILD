@@ -15,12 +15,10 @@ b2sums=('bb7008b60e180fa9f936cb2a09e4ce616e70c2238dceb32e29f4cd8396a2ca2f0f58b43
 
 
 build() {
-  cd "$pkgname-$pkgver"
-  arch-meson -Dman-pages=enabled ../build
-  ninja -v -C ../build
+  arch-meson -Dman-pages=enabled "$_pkgname" build
+  meson compile -C build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  DESTDIR="${pkgdir}" meson install -C ../build
+  meson install -C build --destdir "$pkgdir"
 }
