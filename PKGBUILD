@@ -2,7 +2,7 @@
 
 _name=pyrodigal
 pkgname=python-${_name}
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="Cython bindings to Prodigal, an ORF finder for genomes and metagenomes"
 url="https://github.com/althonos/pyrodigal"
@@ -13,18 +13,18 @@ makedepends=('python-setuptools' 'cython' 'python-build' 'python-installer')
 depends=('python')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('e54d032100e2b01543d6a22ec7ae8972a72951168025a6454efef40cd70f1e50')
+sha256sums=(0b4a590e7835f85656d7f5fc361ee9124ff1a5091a9935c795de1eb348be307a)
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
-    python -m build --wheel --no-isolation    
+    python -m build --wheel --no-isolation
 }
 
 check() {
     local pyver=$(python -c 'import sys; print("{}.{}".format(*sys.version_info[:2]))')
     local machine=$(python -c 'import platform; print(platform.machine())')
     cd "${srcdir}/${_name}-${pkgver}/build/lib.linux-${machine}-${pyver}"
-    python -m unittest ${_name}.tests.test_orf_finder
+    python -m unittest ${_name}.tests
 }
 
 package() {
@@ -33,4 +33,3 @@ package() {
     python -m installer --destdir="$pkgdir" "${srcdir}/${_name}-${pkgver}/dist/${_name}-${pkgver}-cp${abitag}-cp${abitag}-linux_${machine}.whl"
     install -Dm644  ${srcdir}/${_name}-${pkgver}/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
-
