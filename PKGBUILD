@@ -16,7 +16,7 @@
 # Maintainer: Samuel Littley <samuellittley@google.com>
 
 pkgname='google-guest-agent'
-pkgver=20201217.02
+pkgver=20220304.00
 pkgrel=1
 pkgdesc='Guest Agent for Google Compute Engine'
 arch=('x86_64')
@@ -25,7 +25,7 @@ license=('Apache')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GoogleCloudPlatform/guest-agent/archive/$pkgver.tar.gz"
         'google-guest-agent.install')
-sha256sums=('7f1fac0a9d8ab0af202950fe6f7b6284c30b093611c7819bfc1e1a87c59390a8'
+sha256sums=('19ce39559b565d004592a8419430816eed8dfda903b04b5f024c04ab7d887bf7'
             'bf8dd6ae04242160cd78e781015fd456c73c208ba09049fc56cc0f716038c5f2')
 install='google-guest-agent.install'
 backup=('etc/default/instance_configs.cfg')
