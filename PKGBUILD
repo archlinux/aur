@@ -22,7 +22,7 @@ build() {
 package() {
   meson install -C build --destdir "$pkgdir"
 
-  mkdir -p $pkgdir/usr/share/licenses/$pkgname
-  install -m 644 "$pkgname-${pkgver}"/LICENSE $pkgdir/usr/share/licenses/$pkgname
+  mkdir -p "$pkgdir"/usr/share/licenses/$pkgname
+  install -m 644 "$pkgname-${pkgver}"/LICENSE "$pkgdir"/usr/share/licenses/$pkgname
 }
 
