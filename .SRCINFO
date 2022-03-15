@@ -1,9 +1,10 @@
 pkgbase = android-armv7a-eabi-x264-bootstrap
 	pkgdesc = Free library for encoding H264/AVC video streams (android)
 	pkgver = 157.r72db4377
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.videolan.org/developers/x264.html
 	arch = any
+	groups = android-x264-bootstrap
 	license = GPL
 	makedepends = android-configure
 	makedepends = yasm
@@ -21,4 +22,3 @@ pkgbase = android-armv7a-eabi-x264-bootstrap
 	md5sums = SKIP
 
 pkgname = android-armv7a-eabi-x264-bootstrap
-
