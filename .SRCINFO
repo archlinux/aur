@@ -1,13 +1,13 @@
 pkgbase = python-sipsimple
 	pkgdesc = SIP SIMPLE SDK is a Python library for desktop operating
 	pkgver = 5.2.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AGProjects/python3-sipsimple
 	arch = aarch64
 	arch = x86_64
 	license = GPL-3+
 	depends = cython
-	depends = ffmpeg
+	depends = ffmpeg4.4
 	depends = openssl
 	depends = python-dateutil
 	depends = python-dnspython
