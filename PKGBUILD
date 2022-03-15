@@ -2,8 +2,8 @@
 _base=scikit-fem
 pkgname=python-${_base}
 pkgdesc="Simple finite element assemblers"
-pkgver=5.2.0
-pkgrel=2
+pkgver=6.0.0
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/kinnala/${_base}"
 license=('custom:BSD-3-clause')
@@ -12,7 +12,7 @@ makedepends=(python-setuptools python-wheel)
 checkdepends=(python-pytest python-matplotlib python-pacopy python-h5py python-meshio python-pyamg)
 optdepends=('python-meshio: for import/export any mesh format')
 source=(${url}/archive/${pkgver}.tar.gz)
-sha512sums=('380911e1e0af2e0373898a5e40be265d2d0616294d0b4d4166c07a94ef145bb1061d406e1e605eaba724199fc6cc2f1977b75e44563ffb74caa9eb64323a5b0f')
+sha512sums=('dd61c4a00711b2628efcf718aca5bf3cf696002db910d39fc2c8ea4d351556ce512f09ab18aedcb1ddf78ed4d036b77008b8f8f923bc6c6cb468eb751d8b250a')
 
 build() {
   cd "${_base}-${pkgver}"
@@ -22,7 +22,7 @@ build() {
 check() {
   cd "${_base}-${pkgver}"
   python -c "from setuptools import setup; setup();" install --root="${PWD}/tmp_install" --optimize=1 --skip-build
-  MPLBACKEND=Agg PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest -k 'not Ex23 and not saveload_cycle_tags'
+  MPLBACKEND=Agg PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest -k 'not Ex23'
 }
 
 package() {
