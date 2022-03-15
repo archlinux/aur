@@ -1,6 +1,6 @@
 pkgbase = snakemake
 	pkgdesc = Python-based language and execution environment for GNU Make-like workflows
-	pkgver = 6.13.1
+	pkgver = 7.2.1
 	pkgrel = 1
 	url = https://snakemake.readthedocs.io
 	arch = any
@@ -23,13 +23,12 @@ pkgbase = snakemake
 	depends = python-connection_pool
 	depends = python-pulp>=2.0
 	depends = python-smart_open>=3.0
-	depends = python-filelock
 	depends = python-stopit
 	depends = python-tabulate
-	optdepends = python-jinja: For report generation
-	optdepends = python-networkx: For report generation
+	depends = python-yte
+	depends = python-jinja
+	depends = python-retry
 	optdepends = python-pygments: For report generation
-	optdepends = python-pygraphviz: For report generation
 	optdepends = python-biopython: For GenBank/NCBI Entrez support
 	optdepends = python-easywebdav: For WebDAV support
 	optdepends = python-pysftp: For SFTP support
@@ -39,7 +38,7 @@ pkgbase = snakemake
 	optdepends = python-ftputil: For FTP support
 	optdepends = python-xrootd: For XRootD support
 	optdepends = slacker: For messaging
-	source = https://files.pythonhosted.org/packages/source/s/snakemake/snakemake-6.13.1.tar.gz
-	sha256sums = 22f57dcd8b1ca8a30aaa45c5d2c0f56d381d4731abd0988f24f9de46b7d9827c
+	source = https://files.pythonhosted.org/packages/source/s/snakemake/snakemake-7.2.1.tar.gz
+	sha256sums = 63036918e4dbdf764cb53e26e136963512219bc9ab08c62f5545835e63376bdf
 
 pkgname = snakemake

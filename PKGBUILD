@@ -2,7 +2,7 @@
 # Contributor: Kyle Meyer <kyle@kyleam.com>
 
 pkgname=snakemake
-pkgver=6.13.1
+pkgver=7.2.1
 pkgrel=1
 pkgdesc='Python-based language and execution environment for GNU Make-like workflows'
 arch=(any)
@@ -25,16 +25,15 @@ depends=(
 	python-connection_pool
 	'python-pulp>=2.0'
 	'python-smart_open>=3.0'
-	python-filelock
 	python-stopit
 	python-tabulate
+	python-yte
+	python-jinja
+	python-retry
 )
 makedepends=(python-setuptools)
 optdepends=(
-	'python-jinja: For report generation'
-	'python-networkx: For report generation'
 	'python-pygments: For report generation'
-	'python-pygraphviz: For report generation'
 	'python-biopython: For GenBank/NCBI Entrez support'
 	'python-easywebdav: For WebDAV support'
 	'python-pysftp: For SFTP support'
@@ -47,7 +46,7 @@ optdepends=(
 )
 license=(MIT)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('22f57dcd8b1ca8a30aaa45c5d2c0f56d381d4731abd0988f24f9de46b7d9827c')
+sha256sums=('63036918e4dbdf764cb53e26e136963512219bc9ab08c62f5545835e63376bdf')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
