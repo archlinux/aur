@@ -1,4 +1,3 @@
-rbfeeder.old のみに存在: .git
 diff --color -u -r rbfeeder.old/airnav_sk.c rbfeeder/airnav_sk.c
 --- rbfeeder.old/airnav_sk.c	2022-03-15 11:35:59.813155598 +0900
 +++ rbfeeder/airnav_sk.c	2022-03-15 11:38:10.997174707 +0900
