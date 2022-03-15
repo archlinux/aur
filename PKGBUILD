@@ -15,7 +15,7 @@ b2sums=('bb7008b60e180fa9f936cb2a09e4ce616e70c2238dceb32e29f4cd8396a2ca2f0f58b43
 
 
 build() {
-  arch-meson -Dman-pages=enabled "$_pkgname" build
+  arch-meson -Dman-pages=enabled "$pkgname-$pkgver" build
   meson compile -C build
 }
 
