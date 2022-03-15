@@ -4,7 +4,7 @@
 
 pkgname=pamac-all
 pkgver=10.3.0
-pkgrel=2
+pkgrel=5
 _pkgfixver=$pkgver
 
 pkgdesc="A Gtk3 frontend for libalpm (everything in one package - snap, flatpak, appindicator)"
