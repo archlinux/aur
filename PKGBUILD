@@ -2,7 +2,7 @@
 # Contributor: Angel_Caido
 
 pkgname=dualsub-git
-pkgver=v1.0.0.r28.g26d11c2
+pkgver=v1.0.0.r38.gb38e912
 pkgrel=1
 pkgdesc="tool for merging and translating subtitles"
 url="https://github.com/bonigarcia/dualsub"
@@ -14,7 +14,7 @@ md5sums=('SKIP'
          '38af0208f8ec2831c38d72fce55e2a63'
          '3aef26346ba8deac17cea0e0336ea0af')
 
-source=("${pkgname}"::'git://github.com/bonigarcia/dualsub' dualsub.png dualsub.desktop)
+source=("${pkgname}"::'git+https://github.com/bonigarcia/dualsub' dualsub.png dualsub.desktop)
 
 pkgver() {
   cd "$pkgname"
