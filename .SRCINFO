@@ -1,10 +1,10 @@
-pkgbase = emacs-yasnippet-latex-git
+pkgbase = emacs-yasnippets-latex-git
 	pkgdesc = LaTeX snippets for emacs yasnippets
 	pkgver = 2014_02_18
 	pkgrel = 1
-	url = https://github.com/madsdk/yasnippets-latex/
+	url = https://github.com/madsdk/yasnippets-latex
 	arch = any
-	license = GPLv3
+	license = GPL3
 	makedepends = git
 	depends = emacs-yasnippet
 	depends = auctex
@@ -12,8 +12,7 @@ pkgbase = emacs-yasnippet-latex-git
 	provides = emacs-yasnippet-latex-git
 	conflicts = emacs-yasnippet-latex
 	conflicts = emacs-yasnippet-latex-git
-	source = git://github.com/madsdk/yasnippets-latex.git
-	md5sums = SKIP
+	source = git+https://github.com/madsdk/yasnippets-latex
+	sha512sums = SKIP
 
-pkgname = emacs-yasnippet-latex-git
-
+pkgname = emacs-yasnippets-latex-git
