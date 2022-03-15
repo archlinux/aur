@@ -15,13 +15,12 @@ b2sums=('6384e7b1b816a051b657d68cbc47792a20a6d016a6c4feefdf5bf8ddd87a9658959d426
 
 
 build() {
-  cd $pkgname-$pkgver
-  meson build --prefix=/usr
-  ninja -C build
+  meson --prefix=/usr "$pkgname-$pkgver" build
+  meson compile -C build
 }
 
 package() {
-  cd $pkgname-$pkgver
-  DESTDIR="$pkgdir" ninja -C build install
-  install -vDm644 mpvpaper.man "$pkgdir"/usr/share/man/man1/${pkgname}.1
+  meson install -C build --destdir "$pkgdir"
+
+  install -vDm644 "$pkgname-$pkgver"/mpvpaper.man "$pkgdir"/usr/share/man/man1/${pkgname}.1
 }
