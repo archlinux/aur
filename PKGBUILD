@@ -2,12 +2,12 @@
 
 pkgname=cqrlogo
 pkgver=0.5.5
-pkgrel=1
-pkgdesc="CGI QR-Code logo for web services"
+pkgrel=2
+pkgdesc='CGI QR-Code logo for web services'
 arch=('i686' 'x86_64')
-url="https://github.com/eworm-de/cqrlogo"
+url='https://github.com/eworm-de/cqrlogo'
 depends=('iniparser' 'libpng' 'qrencode')
-makedepends=('fcgi' 'markdown')
+makedepends=('fcgi' 'discount')
 optdepends=('apache: for apache web server inclusion'
 	'fcgi: for FastCGI version'
 	'lighttpd: for lighttpd web server inclusion'
