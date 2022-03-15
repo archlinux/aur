@@ -1,6 +1,6 @@
 pkgbase = ruby-excon
 	pkgdesc = EXtended http(s) CONnections
-	pkgver = 0.91.0
+	pkgver = 0.92.0
 	pkgrel = 1
 	url = https://github.com/excon/excon
 	arch = any
@@ -8,10 +8,10 @@ pkgbase = ruby-excon
 	makedepends = rubygems
 	makedepends = ruby-rdoc
 	depends = ruby
-	noextract = excon-0.91.0.gem
+	noextract = excon-0.92.0.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/excon-0.91.0.gem
-	sha512sums = 5a047aa011ff9d29abe8642153fbb05a6cd1170be84126cbbf4f3ae4717b8110ebaa36ecc3e269135c7b5b40a84faeba5bf49f4cdd15e7a9f5239eae8cab429b
-	b2sums = 407f448a7229cc1e0f064551f56b94a81775629d430da7d48e896a8640e519717ff59fbf76d1059b09256d7614e88bc89dc8f5859d312b825675a80be4fcf32d
+	source = https://rubygems.org/downloads/excon-0.92.0.gem
+	sha512sums = 939a13c0e0596462f371b768f332043340fa63956bcf00e07974207214e18f8113356e7ac075fe714e3ce89d5fdac5d940dc2975f38cd7cb354d1e817f508481
+	b2sums = 9a9f5325e59e8e869c3e96167c05877788e1977f3b68c7a6a9c5e874885456046603f7019fe0c157628505a7f4cc492e3e895772a6872081f8be172de3b10391
 
 pkgname = ruby-excon
