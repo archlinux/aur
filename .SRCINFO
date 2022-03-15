@@ -1,0 +1,13 @@
+pkgbase = systemd-service-podman-system-prune-git
+	pkgdesc = Systemd service to force a podman system prune
+	pkgver = r2.9b61206
+	pkgrel = 1
+	url = https://github.com/greboid/systemd-podman-system-prune
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = systemd-service-podman-system-prune
+	source = systemd-service-podman-system-prune-git::git+https://github.com/greboid/systemd-podman-system-prune.git
+	md5sums = SKIP
+
+pkgname = systemd-service-podman-system-prune-git
