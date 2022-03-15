@@ -1,7 +1,7 @@
 pkgbase = ethoscope-node
 	pkgdesc = A platform for monitoring animal behaviour in real time from a raspberry pi
 	pkgver = r1969.g0521648
-	pkgrel = 1
+	pkgrel = 2
 	url = http://lab.gilest.ro/ethoscope
 	install = ethoscope-node.install
 	arch = any
@@ -38,4 +38,3 @@ pkgbase = ethoscope-node
 	md5sums = SKIP
 
 pkgname = ethoscope-node
-

@@ -6,8 +6,8 @@
 # arg 1:  the new package version
 post_install() {
     #echo "changing the remote GIT source to local BARE created during installation"
-    #cd /opt/ethoscope-node
-    #git remote set-url origin /srv/git/ethoscope.git
+    cd /opt/ethoscope-node
+    git remote set-url origin /srv/git/ethoscope.git
 
     #setting branch
     git checkout dev

@@ -2,7 +2,7 @@
 
 pkgname=ethoscope-node
 pkgver=r1969.g0521648
-pkgrel=1
+pkgrel=2
 pkgdesc="A platform for monitoring animal behaviour in real time from a raspberry pi"
 arch=('any')
 url="http://lab.gilest.ro/ethoscope"
@@ -50,6 +50,7 @@ package() {
   #install service files
   cd "${srcdir}"/"${pkgname}"/scripts/
   install -D --mode=0755 ethoscope_node.service ethoscope_backup.service ethoscope_video_backup.service "${pkgdir}/usr/lib/systemd/system/"
+  
   cd "${srcdir}"/"${pkgname}"/scripts/ethoscope_updater/
   install -D --mode=0755 ethoscope_update_node.service "${pkgdir}/usr/lib/systemd/system/"
 
