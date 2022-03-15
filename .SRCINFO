@@ -1,15 +1,12 @@
 pkgbase = toml11
-	pkgdesc = A C++11 header-only toml parser/encoder depending only on C++ standard library
-	pkgver = 3.7.0
+	pkgdesc = C++11 header-only toml parser/encoder
+	pkgver = 3.7.1
 	pkgrel = 1
 	url = https://github.com/ToruNiina/toml11
 	arch = any
 	license = MIT
-	makedepends = git
 	makedepends = cmake
-	provides = toml11
-	conflicts = toml11
-	source = toml11-3.7.0::https://github.com/ToruNiina/toml11/archive/refs/tags/v3.7.0.tar.gz
-	sha256sums = a0b6bec77c0e418eea7d270a4437510884f2fe8f61e7ab121729624f04c4b58e
+	source = toml11-3.7.1.tar.gz::https://github.com/ToruNiina/toml11/archive/v3.7.1.tar.gz
+	sha256sums = afeaa9aa0416d4b6b2cd3897ca55d9317084103077b32a852247d8efd4cf6068
 
 pkgname = toml11
