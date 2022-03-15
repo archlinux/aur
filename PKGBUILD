@@ -7,12 +7,12 @@ _srcname=linux-5.16
 _major=5.16
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=12
+_minor=14
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 _fullver=$_major.$_minor
 #_fullver=$_major
-_rcver=2
+_rcver=1
 _rcpatch=patch-${_major}.${_minorc}-rc${_rcver}
 pkgver=${_major}.${_minorc}rc${_rcver}
 arch=(x86_64)
@@ -43,11 +43,11 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
-b2sums=('8b94d602ac90251a5bb6aed8dc5c36325b32e34d4940d087810731773dcdec4f1fc1e7cafb611f6d032b69430b1aa185f7d797169ac9ec4334b88a0ed2c3565b'
+b2sums=('4661296f66304b9f7068c35c1142c039604f04fdfa4b9f1341547c6bcdd52341c26ed02e48357f014bda7fafc7ca50c150d8eb3653546e00ddd71166810b70d7'
         'SKIP'
-        '762f7605607116d5c25535079f029d666a715c8d2fcb8f6f91fee8a2aefbf62e7ee9767de50b6dd4f9c16f88b5dc8b4a40f0d8f0a766c6a913978b1f96c8c0b7'
+        '151fa2d87c04de862913c360fb8bdb4d2cf4cbc7ca9777b97ee3f03005e8d5ef72b307fa5787ae53157291773158bca6b499cb1e71f6dc5098f424e15ff6c948'
         'SKIP'
-        'b837c6c0d9b5e39047ebddececa28f7fbe078b8c6d8d95028cb6bf5265f7b754415e3eed779d5bce075b1163f9b5fdd28b06f2552abf99061a436e3665aa0c8a'
+        'f37b180eac2737e7398654c9cf2d3b0ee93b194804d22827ad776a605692ddc098cba8ca7ba7dc2f2959cabc4eca92c73cdacbfa34182fdb98ab9199f161b5c4'
         'fcbd8714ac56ee03e8c61615773fbc104db77a2ebe761b3e94449889733b0c61779c54f891998fe46c9fe6238517c82c39d9073f053760590396552a6ae28e98'
         'b742a79eb3829e0798f01e0a4f76164a2a5ed53c1eeb751735e28ec60976a58c3383a48a17c8165aa7b0c38996f9c99ab34912b0f116d3e76efa6de43a11f330'
         '146afd039830cc2f8752f048e62df32ef9216c608b7cd98bccaac963fcd167d7215ef0f8f21de165fc6dc00b76f0e30bda03b9f83c2b94458634322765e0389d'
