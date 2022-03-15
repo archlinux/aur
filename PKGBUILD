@@ -16,8 +16,8 @@
 # Maintainer: Samuel Littley <samuellittley@google.com>
 
 pkgname='google-compute-engine'
-pkgver=20210113.00
-pkgrel=2
+pkgver=20220211.00
+pkgrel=1
 pkgdesc='Linux Guest Environment for Google Compute Engine'
 arch=('any')
 url='https://github.com/GoogleCloudPlatform/guest-configs'
@@ -26,9 +26,9 @@ depends=('google-compute-engine-oslogin' 'google-guest-agent')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GoogleCloudPlatform/guest-configs/archive/$pkgver.tar.gz"
         'google-compute-engine.install'
         'google_set_hostname.patch')
-sha256sums=('4d30fcfa368507f219ecf7e884442e5b556fbaec3f3367dc5c8b116f63be2977'
+sha256sums=('eeb95c321a6e73a48e4cb988270b5ce210fb0654951deb153a48ad04dbc74947'
             '9b31cc5146d83374cc8f8da9f0ce924bbafeb932d0cf0ce60e4aec71d1f981b7'
-            '5cef3677dd373e81370ef6730643ba9dd20fb3bf47260e825ad37417da4fc6c3')
+            'f54b3bb58e1c4eb0b9d0c7d8f38244dbd1f6b9b9db8fe9880d4562c35eced704')
 install='google-compute-engine.install'
 
 prepare() {

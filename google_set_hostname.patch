@@ -1,10 +1,10 @@
-diff --unified --recursive --text guest-configs-20210113.00.orig/src/usr/bin/google_set_hostname guest-configs-20210113.00/src/usr/bin/google_set_hostname
---- guest-configs-20210113.00.orig/src/usr/bin/google_set_hostname	2021-01-24 16:23:33.145413281 +0000
-+++ guest-configs-20210113.00/src/usr/bin/google_set_hostname	2021-01-24 16:20:26.670408935 +0000
-@@ -37,7 +37,7 @@
+diff --unified --recursive --text guest-configs-20220211.00.orig/src/usr/bin/google_set_hostname guest-configs-20220211.00/src/usr/bin/google_set_hostname
+--- guest-configs-20220211.00.orig/src/usr/bin/google_set_hostname	2021-01-24 16:23:33.145413281 +0000
++++ guest-configs-20220211.00/src/usr/bin/google_set_hostname	2021-01-24 16:20:26.670408935 +0000
+@@ -43,7 +43,7 @@
  # unqualified domain name.
  
- if [ -n "$new_host_name" ]; then
+ if [ -n "$new_host_name" ] && ! echo "$new_host_name" | grep -iq "metadata.google.internal"; then
 -  hostname "${new_host_name%%.*}"
 +  hostnamectl set-hostname "${new_host_name%%.*}"
  
