@@ -1,8 +1,8 @@
 pkgbase = gaupol-git
-	pkgdesc = An editor for text-based subtitles (devel tree)
-	pkgver = 20180218.2292
+	pkgdesc = Editor for text-based subtitles (devel tree)
+	pkgver = 20220221.2510
 	pkgrel = 1
-	url = http://home.gna.org/gaupol
+	url = https://otsaloma.io/gaupol
 	install = gaupol.install
 	arch = any
 	license = GPL
@@ -12,7 +12,14 @@ pkgbase = gaupol-git
 	depends = gtk3
 	depends = gst-plugins-base
 	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = gst-plugins-ugly
+	depends = gst-libav
+	depends = gst-plugin-gtk
+	depends = gspell
 	depends = iso-codes
+	depends = python-chardet
+	depends = python-cairo
 	depends = desktop-file-utils
 	depends = hicolor-icon-theme
 	optdepends = python-pyenchant: spell-checking
@@ -25,8 +32,7 @@ pkgbase = gaupol-git
 	optdepends = gst-libav: extra media codecs
 	provides = gaupol
 	conflicts = gaupol
-	source = git://github.com/otsaloma/gaupol.git
+	source = git+https://github.com/otsaloma/gaupol
 	sha1sums = SKIP
 
 pkgname = gaupol-git
-
