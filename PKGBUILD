@@ -5,7 +5,7 @@ DOC_DIRS=(opt/hydrus/help)
 
 pkgname=hydrus-git
 _pkgname=hydrus
-pkgver=459.3.r0.g0dfba5a8
+pkgver=476.r2.gd5166b4a
 pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
