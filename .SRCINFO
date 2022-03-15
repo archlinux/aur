@@ -1,14 +1,14 @@
 pkgbase = picolibc
 	pkgdesc = A C library designed for embedded 32 and 64 bit systems
-	pkgver = 1.7.4
-	pkgrel = 2
+	pkgver = 1.7.5
+	pkgrel = 1
 	url = https://keithp.com/picolibc/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = glibc
 	makedepends = meson
-	source = picolibc-1.7.4-src.tar.gz::https://github.com/picolibc/picolibc/archive/refs/tags/1.7.4.tar.gz
-	sha256sums = f7f08f2e4d03920080b7876c3f0c3cd955a548c3c6bfb3c269a8a450c7c14a84
+	source = picolibc-1.7.5-src.tar.gz::https://github.com/picolibc/picolibc/archive/refs/tags/1.7.5.tar.gz
+	sha256sums = 4643477cca54914f8281de40b548ca3901541a05170ceec08b547677cb369c63
 
 pkgname = picolibc
