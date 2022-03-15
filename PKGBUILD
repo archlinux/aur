@@ -6,12 +6,13 @@ _android_arch=aarch64
 
 pkgname=android-${_android_arch}-x264-bootstrap
 pkgver=157.r72db4377
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='Free library for encoding H264/AVC video streams (android)'
 license=('GPL')
 url='https://www.videolan.org/developers/x264.html'
 depends=('android-ndk')
+groups=(android-x264-bootstrap)
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-configure' 'yasm' 'git')
 provides=(${pkgname%-bootstrap})
@@ -49,6 +50,10 @@ build() {
                  --enable-pic
                  --disable-asm
                  --host=i686-linux"
+            ;;
+        x86-64)
+             configue_opts+="
+                 --disable-asm"
             ;;
         *)
             ;;
