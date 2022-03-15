@@ -2,8 +2,7 @@
 # Contributor : Daniel Chesters <daniel.chesters@gmail.com>
 
 pkgname=kalker
-pkgver=1.0.1
-_specialrel=2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A calculator program that supports user-defined variables, functions, derivation, and integration."
 url="https://github.com/PaddiM8/kalker"
@@ -11,22 +10,18 @@ depends=('gcc-libs')
 makedepends=('cargo')
 arch=('i686' 'x86_64')
 license=('MIT')
-#source=("$pkgname-$pkgver.tar.gz::https://github.com/PaddiM8/$pkgname/archive/v$pkgver.tar.gz")
-# For this release, I have to use a non standard version since upstream has to fix Cargo.lock file
-source=("$pkgname-$pkgver.tar.gz::https://github.com/PaddiM8/$pkgname/archive/v$pkgver-$_specialrel.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/PaddiM8/$pkgname/archive/v$pkgver.tar.gz")
 
 build() {
-#  cd "$pkgname-$pkgver"
-  cd "$pkgname-$pkgver-$_specialrel"
+  cd "$pkgname-$pkgver"
   cargo build --release
 }
 
 package() {
-#  cd "$pkgname-$pkgver"
-  cd "$pkgname-$pkgver-$_specialrel"
+  cd "$pkgname-$pkgver"
   install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
-b2sums=('c1aef5709551351d2c821e56633db472e75e02022b7f2d4444948848204381b93bc06c75324dcde571bc9dec05449c7c3b329ae83ba6e99642f260238eaece0c')
+b2sums=('955c504e58a62d4f46d82bdb91b675a22e247be57caf5364b86824d63cfed264877a3b563a3456771f15765b3a808dc1f149283c539901b89030f629cf7421c8')
