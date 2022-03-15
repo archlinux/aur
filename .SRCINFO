@@ -1,10 +1,12 @@
 pkgbase = r-doparallel
 	pkgdesc = Foreach Parallel Adaptor for the 'parallel' Package
 	pkgver = 1.0.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cran.r-project.org/package=doParallel
 	arch = any
 	license = GPL2
+	checkdepends = r-caret
+	checkdepends = r-mlbench
 	checkdepends = r-runit
 	depends = r-foreach
 	depends = r-iterators
