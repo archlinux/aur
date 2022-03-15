@@ -1,6 +1,6 @@
 pkgbase = lfcd
 	pkgdesc = A wrapper for the lf file manager, with built in image previews and on-exit directory changing
-	pkgver = 1.0.r1
+	pkgver = 1.0.r2
 	pkgrel = 1
 	url = https://gitlab.com/qYp/lfcd
 	arch = any
@@ -12,9 +12,7 @@ pkgbase = lfcd
 	depends = ueberzug
 	depends = graphicsmagick
 	depends = ghostscript
-	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/lfcd-1.0.r1-1-any.pkg.tar.zst
-	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/lfcd-1.0.r1-1-any.pkg.tar.zst.sig
-	sha256sums = b4ee44caed86525232aae6d26b34a0ac70ff3af407630a554f7b53d18d69fff8
-	sha256sums = e8bc380abaf009b6dc15a3b95e4373d241596e0d14f0214d746d65c0b3a22a92
+	source = git+https://gitlab.com/qYp/lfcd.git
+	sha256sums = SKIP
 
 pkgname = lfcd
