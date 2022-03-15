@@ -1,6 +1,6 @@
 pkgbase = labwc-git
 	pkgdesc = stacking wayland compositor with look and feel from openbox (git version)
-	pkgver = 0.5.0.r1.g68d897e
+	pkgver = 0.5.0.r76.g5fd5024
 	pkgrel = 1
 	url = https://github.com/labwc/labwc
 	arch = x86_64
