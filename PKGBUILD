@@ -3,7 +3,7 @@
 _pkgname=pureline
 pkgname=bash-pureline-git
 pkgver=r202.5fdae57
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple but powerful Powerline style prompt for the Bash shell written in Bash script"
 url="https://github.com/chris-marsh/pureline"
 arch=('any')
