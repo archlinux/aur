@@ -10,7 +10,7 @@
 pkgname=rstudio-desktop-preview-bin
 pkgver=2022.02.0.443
 pkgver_url=2022.02.0-443
-pkgrel=1
+pkgrel=2
 pkgdesc="An integrated development environment (IDE) for R (binary version from RStudio official repository)"
 arch=('x86_64')
 license=('GPL')
@@ -54,5 +54,5 @@ exec /usr/lib/rstudio/bin/rstudio "$@"
 ' > "$pkgdir/usr/bin/rstudio-bin"
   chmod 755 "$pkgdir/usr/bin/rstudio-bin"
 
-  sed -i 's|/usr/lib/rstudio/bin/rstudio|/usr/bin/rstudio-bin|' "$pkgdir/usr/share/applications/rstudio.desktop"
+  sed -i 's|/usr/lib/rstudio/bin/rstudio|/usr/bin/rstudio-bin --disable-seccomp-filter-sandbox|' "$pkgdir/usr/share/applications/rstudio.desktop"
 }
