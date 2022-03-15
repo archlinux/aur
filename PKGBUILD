@@ -17,8 +17,8 @@ depends=("python" "python-opencv" "python-beautifulsoup4" "python-yaml"
          "python-lz4>=0.10.1" "python-numpy" "python-twisted" "python-pillow"
          "python-pysocks" "python-psutil" "python-send2trash" "python-html5lib"
          "python-requests" "python-qtpy" "emoji-font" "python-mpv"
-         "python-service-identity" "qt5-python-bindings")
-makedepends=("git")
+         "python-service-identity" "qt5-python-bindings" "fmt" "pyside2")
+makedepends=("git" "mkdocs" "mkdocs-material")
 optdepends=("ffmpeg: show duration and other information on video thumbnails"
             "miniupnpc: automatic port forwarding"
             "desktop-file-utils: to add Hydrus to your desktop environment menus"
@@ -55,6 +55,9 @@ build() {
 
   echo "Compiling .py files..."
   python -OO -m compileall -fq .
+
+  msg 'Building documentation...'
+  mkdocs build -d help
 }
 
 package() {
