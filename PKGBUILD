@@ -2,7 +2,7 @@
 
 _name=pyhmmer
 pkgname=python-${_name}
-pkgver=0.4.11
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Cython bindings and Python interface to HMMER3"
 url="https://github.com/althonos/pyhmmer"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'cython' 'python-build' 'python-installer')
 depends=('python' 'python-psutil')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=('0066839b6c2b1e62662de7d4a9f5b6ed0cc1080ea55d64160b3902b52da6aa4b')
+sha256sums=('1d644b618b622c3194381faeb898c721b641a3e1a586a574ea6ba04e9ade71de')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
@@ -24,7 +24,7 @@ check() {
     local pyver=$(python -c 'import sys; print("{}.{}".format(*sys.version_info[:2]))')
     local machine=$(python -c 'import platform; print(platform.machine())')
     cd "${srcdir}/${_name}-${pkgver}/build/lib.linux-${machine}-${pyver}"
-    python -c 'import pyhmmer' # attempt importing, PyHMMER doesn't ship tests
+    python -m unittest pyhmmer.tests
 }
 
 package() {
