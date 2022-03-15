@@ -1,11 +1,13 @@
 diff --color -u -r rbfeeder.old/airnav_sk.c rbfeeder/airnav_sk.c
---- rbfeeder.old/airnav_sk.c	2022-03-15 11:07:47.693132988 +0900
-+++ rbfeeder/airnav_sk.c	2022-03-15 11:06:37.395480944 +0900
-@@ -31,6 +31,7 @@
+--- rbfeeder.old/airnav_sk.c	2022-03-15 11:27:54.934027893 +0900
++++ rbfeeder/airnav_sk.c	2022-03-15 11:28:18.624569904 +0900
+@@ -31,8 +31,7 @@
              memset(cserial, 0, 60);
              sprintf(cserial, "%016llx", cpuserial);
          } else {
+-            airnav_log("CPU Serial empty.\n");
+-            return 0;
 +            cserial = net_get_mac_address(0);
-             airnav_log("CPU Serial empty.\n");
-             return 0;
          }
+     } else if (client_type == CLIENT_TYPE__PC_X64 || client_type == CLIENT_TYPE__PC_X86) {
+         cserial = net_get_mac_address(0);
