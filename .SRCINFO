@@ -1,7 +1,7 @@
 pkgbase = gtknodes-git
 	pkgdesc = A GTK-based library to create functional flow graphs with the ability to pass arbitrary data between connected elements.
 	pkgver = 0.1
-	pkgrel = 7
+	pkgrel = 8
 	url = https://github.com/aluntzer/gtknodes
 	arch = x86_64
 	license = LGPL
@@ -14,7 +14,7 @@ pkgbase = gtknodes-git
 	makedepends = automake
 	makedepends = libtool
 	depends = gtk3
-	source = git://github.com/aluntzer/gtknodes.git
+	source = git+https://github.com/aluntzer/gtknodes.git
 	md5sums = SKIP
 
 pkgname = gtknodes-git
