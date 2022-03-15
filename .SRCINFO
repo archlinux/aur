@@ -1,7 +1,7 @@
 pkgbase = cproxy
 	pkgdesc = Easy per application transparent proxy built on cgroup.
 	pkgver = 4.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NOBLES5E/cproxy
 	arch = x86_64
 	license = AGPL

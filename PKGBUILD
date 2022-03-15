@@ -1,6 +1,6 @@
 pkgname=cproxy
 pkgver=4.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy per application transparent proxy built on cgroup."
 url="https://github.com/NOBLES5E/cproxy"
 arch=(x86_64)
@@ -31,5 +31,6 @@ check() {
 package() {
   cd $pkgname-$pkgver
   install -Dt "$pkgdir/usr/bin" target/release/cproxy
+  chmod +s "$pkgdir/usr/bin/cproxy"
   install -Dt "$pkgdir/usr/share/doc/$pkgname" -m644 README.md
 }
