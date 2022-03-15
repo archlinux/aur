@@ -18,6 +18,8 @@ prepare() {
   sed -i "/MFTranscodeContainerType_MPEG4/d" VTK/IO/Movie/vtkMP4Writer.cxx
   # We have a patched libharu
   sed -i "s|2.4.0|2.3.0|" VTK/ThirdParty/libharu/CMakeLists.txt
+  # _isatty
+  curl -L https://github.com/gsjaardema/seacas/commit/175e2ecf.patch | patch -p6 -d VTK/ThirdParty/ioss/vtkioss
 }
 
 build() {
