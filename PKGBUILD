@@ -22,15 +22,13 @@ pkgver() {
 }
 
 build() {
-  cd "$_pkgname"
-  arch-meson ../build
-  ninja -v -C ../build
+  arch-meson "$_pkgname" build
+  meson compile -C build
 }
 
 package() {
-  cd "$_pkgname"
-  DESTDIR="${pkgdir}" meson install -C ../build
+  meson install -C build --destdir "$pkgdir"
 
-  mkdir -p $pkgdir/usr/share/licenses/$pkgname
-  install -m 644 LICENSE $pkgdir/usr/share/licenses/$pkgname
+  mkdir -p "$pkgdir"/usr/share/licenses/$pkgname
+  install -m 644 "$_pkgname"/LICENSE "$pkgdir"/usr/share/licenses/$pkgname
 }
