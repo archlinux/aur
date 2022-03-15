@@ -1,10 +1,10 @@
 pkgbase = doas-sudo-shim
 	pkgdesc = A shim for the sudo command that utilizes doas
 	pkgver = 0.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jirutka/doas-sudo-shim
 	arch = any
-	license = MIT
+	license = ISC
 	makedepends = asciidoctor
 	depends = doas
 	conflicts = sudo

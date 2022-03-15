@@ -2,11 +2,11 @@
 
 pkgname=doas-sudo-shim
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A shim for the sudo command that utilizes doas"
 arch=(any)
 url="https://github.com/jirutka/doas-sudo-shim"
-license=(MIT)
+license=(ISC)
 conflicts=(sudo)
 depends=(doas)
 makedepends=(asciidoctor)
