@@ -6,7 +6,7 @@ pkgbase = rwp
 	arch = any
 	license = MIT
 	depends = python
-	source = https://github.com/siphr/rwpk/archive/refs/tags/0.0.2.tar.gz
-	md5sums = cd3a065a587dab26ab6e04ad5cf27a85
+	source = https://github.com/siphr/rwp/archive/refs/tags/0.0.2.tar.gz
+	md5sums = 2ffcf63debe85830782c08fce6d411ba
 
 pkgname = rwp
