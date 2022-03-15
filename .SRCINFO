@@ -1,13 +1,13 @@
 pkgbase = zoho-mail-desktop
 	pkgdesc = The desktop version of your favorite mailsuite!
-	pkgver = 1.3.2
-	pkgrel = 2
-	url = https://www.zoho.com/mail/
+	pkgver = 1.4.1
+	pkgrel = 1
+	url = https://www.zoho.com/mail/desktop
 	arch = x86_64
 	license = custom
-	source = https://downloads.zohocdn.com/zmail-desktop/linux/zoho-mail-desktop-x64-v1.3.2.AppImage
+	source = https://downloads.zohocdn.com/zmail-desktop/linux/zoho-mail-desktop-x64-v1.4.1.AppImage
 	source = zoho-mail-desktop.desktop
-	sha256sums = d57b105779c2e33e6df5426bdcab05ec0db8e311adbbcd0f2bb38c982d11fcca
+	sha256sums = d33a0cbe363248f25b03fe6197541279eec4db6b1c7d5820237c83cff0601309
 	sha256sums = SKIP
 
 pkgname = zoho-mail-desktop
