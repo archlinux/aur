@@ -5,8 +5,8 @@
 
 pkgname=spotify-dev
 _pkgname=spotify
-pkgver=1.1.72.439
-_commit=gc253025e
+pkgver=1.1.80.699
+_commit=gc3dac750
 pkgrel=1
 pkgdesc='A proprietary music streaming service'
 arch=('x86_64')
@@ -36,7 +36,7 @@ source=("${_pkgname}-Release::http://repository.spotify.com/dists/testing/Releas
 	'LICENSE')
 sha512sums=('SKIP'
 	'SKIP'
-	'65cec95448d936b7be93b0d16f29927a298b5b56aa2bc4834a5d357e341c78486fa69e61b3b6cf9fbe7da88c8d3b6ce3bccb5e963ed1b5a23320c0c808ccb385'
+	'ea3ad8b5e320f42945fe0fdc764fb50fa145805f49ff4762f81e76c38e84a4a4da3039848882332315ab694aa0c9cfb808a6ad0b4ac7ec625ef5fe1e8a646734'
 	'SKIP'
 	'2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615')
 validpgpkeys=('F9A211976ED662F00E59361E5E3C45D7B312C643')
@@ -78,7 +78,7 @@ package() {
     install -d -m 755 "${_pkgopt}/locales"
 
     # Install files in rootdir
-    for _rfile in $(find "${_srcshare}" -maxdepth 1 -type f -name "*.pak" -o -name "*.dat" -o -name "*.bin" -o -name "libcef.so"); do
+    for _rfile in $(find "${_srcshare}" -maxdepth 1 -type f -name "*.pak" -o -name "*.dat" -o -name "*.bin" -o -name "libcef.so" -o -name "*.json"); do
         install -D -m 644 "${_rfile}" "${_pkgopt}"
     done
 
