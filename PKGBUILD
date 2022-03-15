@@ -9,7 +9,7 @@ pkgname=(
 )
 pkgver=r149.6d73f68
 pkgrel=1
-pkgdesc="GTK themes inspired by epic VSCode themes"
+pkgdesc="GTK themes inspired by epic vscode themes"
 arch=("any")
 url="https://github.com/EliverLara/Juno"
 license=("GPL3")
