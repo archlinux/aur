@@ -1,3 +1,4 @@
 postinstall() {
-echo "to play chess, load /usr/share/emacs/site-lisp/chess.elc"
-echo "e.g. put (load-file \"/usr/share/emacs/site-lisp/chess.elc\") into your start file"
+  echo "to play chess, load /usr/share/emacs/site-lisp/chess.elc"
+  echo "e.g. put (load-file \"/usr/share/emacs/site-lisp/chess.elc\") into your start file"
+}
