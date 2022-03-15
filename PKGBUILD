@@ -4,10 +4,11 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Contributor: Julian Schacher <jspp@posteo.net>
 
-_electron=electron15
+_electron=electron17
+_nodeversion=14
 pkgname=schildichat-desktop-git
 _pkgname=schildichat-desktop
-pkgver=1.9.8.sc.1.r6.7a96f32
+pkgver=1.10.6.sc.0.test.3.r0.3957463
 pkgrel=1
 pkgdesc="A Matrix client based on Element with a more traditional instant messaging experience"
 arch=(x86_64)
@@ -15,8 +16,8 @@ url="https://schildi.chat"
 license=(Apache)
 conflicts=(schildichat-desktop schildichat-desktop-bin)
 provides=(schildichat-desktop=${pkgver})
-makedepends=(npm git yarn python rust sqlcipher ${_electron} nvm)
-depends=(sqlcipher ${_electron})
+makedepends=(npm git yarn python rust tcl ${_electron} nvm libxcrypt-compat asar)
+depends=(${_electron})
 source=(git+https://github.com/SchildiChat/schildichat-desktop.git#branch=sc
         git+https://github.com/SchildiChat/matrix-js-sdk.git
         git+https://github.com/SchildiChat/matrix-react-sdk.git
@@ -32,7 +33,7 @@ sha256sums=('SKIP'
             'SKIP'
             'e44bd0eec6693a08c368cbeb7707241221c77efa940d4100716c8cd1e1813724'
             '6450af411fea039cb76357ff4ea7f1ef336601315de4d27b848a75d7960cef17'
-            'd4ae02a9ee2d8f2ede579594d667c36e513b4a74fa6d96562e917788efe6fe7a')
+            '8084211fe11ba23be956ef4b8bb0fffaa6aaa721b79f9753ecc3574666ef95ce')
 
 pkgver() {
   cd ${_pkgname}
@@ -43,7 +44,7 @@ prepare() {
   cd ${srcdir}/${_pkgname}
   export npm_config_cache="${srcdir}/npm_cache"
   _ensure_local_nvm
-  nvm install 14
+  nvm install ${_nodeversion}
 
   git submodule init
   git config submodule.matrix-js-sdk.url $srcdir/matrix-js-sdk
@@ -55,13 +56,17 @@ prepare() {
   # Specify electron version in launcher
   sed -i "s|@ELECTRON@|${_electron}|" ../schildichat-desktop.sh
 
-  _electron_dist=/usr/lib/${_electron}
+  # _electron_dist=/usr/lib/${_electron}
+  _electron_dist=/usr/lib/electron # there's no /usr/lib/electron17 if 17 is current
   _electron_ver=$(cat ${_electron_dist}/version)
 
   cd element-desktop
   patch -p1 < ${srcdir}/autolaunch.patch
+  # patch -p1 < ${srcdir}/encapsulate-sqlcipher.diff
+  # seems like it's already implemented upstream, see: https://github.com/SchildiChat/element-desktop/commit/5c2a4c9c
   sed -i 's|"target": "deb"|"target": "dir"|' package.json
-  sed -i "s|\"electronVersion\": \"13.5.2\"|\"electronVersion\": \"${_electron_ver}\"|" package.json
+  sed -i "s|\"electronVersion\": \".*\"|\"electronVersion\": \"${_electron_ver}\"|" package.json # removed?
+  sed -i "s|\"electron\": \".*\"|\"electron\": \"\^${_electron_ver}\"|" package.json
   sed -i 's|"https://packages.element.io/desktop/update/"|null|' element.io/release/config.json
   cd ${srcdir}/${_pkgname}
   make setup
@@ -71,13 +76,12 @@ build() {
   cd ${srcdir}/${_pkgname}
   export npm_config_cache="$srcdir/npm_cache"
   _ensure_local_nvm
-  nvm use 14
+  nvm use ${_nodeversion}
 
   # yarn --cwd element-desktop run build:64 --linux -c.linux.target=dir -c.electronDist=${_electron_dist} -c.electronVersion=${_electron_ver}
   # let's use the ready-made build script instead - otherwise, we'd have to do a lot more work to get the webapp build etc.
   make pacman
 }
-
 
 package() {
   cd ${srcdir}/${_pkgname}
@@ -86,6 +90,13 @@ package() {
 
   cp -r element-desktop/dist/linux-unpacked/resources{,.pak} "${pkgdir}"/usr/lib/${_pkgname}/
   cp -r element-desktop/dist/linux-unpacked/locales "${pkgdir}"/usr/lib/${_pkgname}/
+
+  # crashes (at least on wayland) when remaining packed. might be some issue with the webapp.asar location, but inconclusive
+  # workaround by extracting app.asar
+
+  install -d "${pkgdir}"/usr/lib/${_pkgname}/resources/app
+  asar e "${pkgdir}"/usr/lib/${_pkgname}/resources/app.asar "${pkgdir}"/usr/lib/${_pkgname}/resources/app
+  rm "${pkgdir}"/usr/lib/${_pkgname}/resources/app.asar
 
   # Required extras
   install -Dm644 ../schildichat-desktop.desktop -t "${pkgdir}"/usr/share/applications/
