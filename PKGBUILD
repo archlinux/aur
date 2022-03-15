@@ -1,7 +1,7 @@
 # Maintainer: Dringsim <dringsim@qq.com>
 
 pkgname=ttf-babelstone-marchen
-pkgver=9.002
+pkgver=9.003
 pkgrel=1
 pkgdesc="BabelStone Font for sMar-chen script"
 url="https://www.babelstone.co.uk/Fonts/Marchen.html"
@@ -9,7 +9,7 @@ arch=(any)
 license=(OFL)
 source=("https://www.babelstone.co.uk/Fonts/Download/BabelStoneMarchen.ttf"
             "https://www.babelstone.co.uk/Fonts/BabelStoneOFL.txt")
-md5sums=('6444f703be0700f8bdbb97e5478070ba'
+md5sums=('9b31c772f05bb6e9c3ed3b908b7265f5'
            'f516c91719ef90db6c942f8ac6efde47')
 
 package() {
