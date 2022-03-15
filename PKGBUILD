@@ -2,7 +2,7 @@
 # Contributor: Drew DeVault <sir@cmpwn.com>
 pkgname=sway-hidpi-git
 _pkgname=sway
-pkgver=r6660.1a0f86be
+pkgver=r6891.3dffe7f3
 pkgrel=1
 license=("MIT")
 pkgdesc="Tiling Wayland compositor and replacement for the i3 window manager, with XWayland HiDPI (git version)"
@@ -18,7 +18,7 @@ depends=(
   "json-c"
   "pango"
   "polkit"
-  "pcre"
+  "pcre2"
   "swaybg-git"
   "ttf-font"
   "wlroots-hidpi-git"

@@ -1,6 +1,6 @@
 pkgbase = sway-hidpi-git
 	pkgdesc = Tiling Wayland compositor and replacement for the i3 window manager, with XWayland HiDPI (git version)
-	pkgver = r6660.1a0f86be
+	pkgver = r6891.3dffe7f3
 	pkgrel = 1
 	url = https://swaywm.org
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = sway-hidpi-git
 	depends = json-c
 	depends = pango
 	depends = polkit
-	depends = pcre
+	depends = pcre2
 	depends = swaybg-git
 	depends = ttf-font
 	depends = wlroots-hidpi-git
@@ -45,4 +45,3 @@ pkgbase = sway-hidpi-git
 	sha512sums = 00baf52f67945175f6386847408f94d0db1f8c68afd5fb0ca359fc6aeeae85912d5fc44bc33857d0d13971a4bfa26ea71c8078c3672bc7d516bdbc04de480d97
 
 pkgname = sway-hidpi-git
-
