@@ -15,7 +15,7 @@ provides=('nats')
 
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 
-sha256sums=('c560bc20be8f331aef5151e5a85703e0303a27f745619237bb00e72565e205b6')
+sha256sums=('eee77e2a1e85e9098e02f1a1c0ba53ad366abf4dc7e4bdf80c73cf625eaf83d7')
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}/nats"
