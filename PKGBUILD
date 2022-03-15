@@ -5,13 +5,13 @@ pkgname=sunloginclient
 _pkgname=sunlogin
 _debname=SunloginClient
 pkgver=11.0.1.44968
-pkgrel=1
+pkgrel=2
 pkgdesc="Proprietary software that supports remote control of mobile devices, Windows, Mac, Linux and other systems.(GUI version)"
 arch=("x86_64" "aarch64")
 url="https://sunlogin.oray.com"
 depends=("libappindicator-gtk3"
          'xorg-xhost'
-         'libxcrypt-compat')
+         'libcrypt.so=1-64')
 license=('custom')
 provides=('sunlogin')
 source=("runsunloginclient.service"
