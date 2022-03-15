@@ -1,12 +1,13 @@
 pkgbase = python-pur
 	pkgdesc = Update packages in a requirements.txt file to latest versions.
 	pkgver = 6.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/pur
 	arch = any
 	license = BSD license
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-click
 	source = https://files.pythonhosted.org/packages/source/p/pur/pur-6.0.1.tar.gz
 	sha256sums = b8f701f8ed0dd424e2fab694866e5cac3954b5fa8dc2c1cd02c12b1d3c7660d7
