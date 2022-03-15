@@ -11,10 +11,9 @@ pkgbase = i2c-ch341-dkms
 	optdepends = linux-headers: build the module against Arch kernel
 	optdepends = linux-ck-headers: build the module against Linux-ck kernel
 	optdepends = linux-lts-headers: build the module against LTS Arch kernel
-	source = git://github.com/gmarco/i2c-ch341.git
+	source = git+https://github.com/gmarco/i2c-ch341
 	source = dkms.conf.in
-	md5sums = SKIP
-	md5sums = 4d3cb44f5d9d97cb4b72a9e2470789e2
+	sha512sums = SKIP
+	sha512sums = 8381debabec448a1d5ab9eb95bd79473378f704cf1304621802d9114fe2d92585fc9c3da970f63dbf9fdea7337c8a6993540ce01dc60fc58669be8ac64c61139
 
 pkgname = i2c-ch341-dkms
-
