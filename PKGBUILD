@@ -10,7 +10,7 @@ arch=('i686' 'x86_64')
 url='http://www.opendesktop.org/content/show.php?content=118523'
 depends=()
 optdepends=('fbsplash: A userspace implementation of a splash screen for Linux')
-source=("arch-black-${pkgver}-${pkgrel}.tar.gz::http://www.sourceshark.com/sourcecode/khotnewstuff/bootsplashs/downloads/118523-arch-black.tar.gz")
+source=("arch-black-${pkgver}-${pkgrel}.tar.gz::https://distribute.kde.org/khotnewstuff/bootsplashs/downloads/118523-arch-black.tar.gz")
 install=${pkgname}.install
 md5sums=('dd9b9f564d733039fc828d6958245f73')
 
