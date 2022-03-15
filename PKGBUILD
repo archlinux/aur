@@ -2,7 +2,7 @@
 # Contributor: Kyle Meyer <kyle@kyleam.com>
 
 pkgname=snakemake
-pkgver=7.2.1
+pkgver=7.8.0
 pkgrel=1
 pkgdesc='Python-based language and execution environment for GNU Make-like workflows'
 arch=(any)
@@ -31,7 +31,7 @@ depends=(
 	python-jinja
 	python-retry
 )
-makedepends=(python-setuptools)
+makedepends=(python-setuptools python-build python-installer)
 optdepends=(
 	'python-pygments: For report generation'
 	'python-biopython: For GenBank/NCBI Entrez support'
@@ -46,16 +46,16 @@ optdepends=(
 )
 license=(MIT)
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha256sums=('63036918e4dbdf764cb53e26e136963512219bc9ab08c62f5545835e63376bdf')
+sha256sums=('31808725cf72733495c0f0e2a2f1c6d58fc9a27f90946792e8017c3b746923da')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "$srcdir/$pkgname-$pkgver"
-	python setup.py install --skip-build -O1 --root="$pkgdir" || exit 1
+	python -m installer --destdir="$pkgdir" dist/*.whl
 	local pyver=$(python -c 'import sys; print("{}.{}".format(*sys.version_info[:2]))')
 	
 	install -d "$pkgdir/etc/bash_completion.d"
