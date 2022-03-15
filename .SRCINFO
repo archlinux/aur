@@ -1,19 +1,25 @@
 pkgbase = pyresample
 	pkgdesc = Geospatial image resampling in Python
-	pkgver = v1.13.2.5.ged5ed23
+	pkgver = 1.22.3
 	pkgrel = 1
-	url = http://pyresample.readthedocs.org
-	arch = i686
-	arch = x86_64
+	url = https://github.com/pytroll/pyresample
+	arch = any
 	license = LGPL3
-	makedepends = git
-	depends = python-numpy
+	makedepends = cython
+	depends = python-setuptools
 	depends = python-pyproj
 	depends = python-configobj
+	depends = python-pykdtree
+	depends = python-yaml
 	optdepends = python-numexpr: used to optimize some bottlenecks
-	options = !emptydirs
-	source = git://github.com/pytroll/pyresample.git
-	md5sums = SKIP
+	optdepends = python-matplotlib
+	optdepends = python-rasterio
+	optdepends = python-cartopy
+	optdepends = python-dask
+	optdepends = python-xarray
+	optdepends = python-shapely
+	optdepends = python-zarr
+	source = https://github.com/pytroll/pyresample/archive/v1.22.3.tar.gz
+	sha512sums = 12f3a7039a0dcf611bba546d2e3fd2f44b95620959a3240e36c690cdccc27f35e4d5c10a924568368ef57c90aba765f4446fdb460fa6b168d238c43e8e5001b2
 
 pkgname = pyresample
-
