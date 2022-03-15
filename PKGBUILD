@@ -15,8 +15,8 @@ source=(
   "https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha256sums=(
-  'f6f0c3513740b06f0e3113056e9fe4856dec30398ba8d6c2a6694fe67e782a4b'
-  'e89d48d8b5d6fc9c252e9b1c77489f237e41275f7d1db44965e110d7e3709fcd'
+  'e4ac7db33ca26f3f8e1e400be3c13835a66dd8ec0c6a81def0fb27f3147a2d8b'
+  '3e4b02f62d41be964e7b0d4ba8fe7482aafdd57cf6e79424fdf6cb1ce34776e0'
   )
 
 package() {
