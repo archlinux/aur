@@ -1,7 +1,7 @@
 pkgbase = weblate-wlc
 	pkgdesc = Weblate commandline client
 	pkgver = 1.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://weblate.org
 	install = weblate-wlc.install
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = weblate-wlc
 	depends = python-dateutil
 	depends = python-requests
 	depends = python-xdg
+	depends = python-argcomplete
 	source = https://github.com/WeblateOrg/wlc/archive/1.12.tar.gz
 	md5sums = 1ab5310f6f09167ac9ed0f3c0aff6cb5
 
