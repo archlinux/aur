@@ -1,6 +1,6 @@
 pkgname=fusedav-git
 _gitname=fusedav
-pkgver=v2.0.26+618
+pkgver=v2.0.51+1031
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="A webdav filesystem based on FUSE"
@@ -9,7 +9,8 @@ license=('GPL')
 depends=('libsystemd' 'expat' 'fuse' 'curl' 'glib2' 'leveldb' 'jemalloc' 'uriparser')
 makedepends=('git' 'autoconf')
 
-source=('git://github.com/pantheon-systems/fusedav.git' 'libsystemd.patch')
+source=('git+https://github.com/pantheon-systems/fusedav.git')
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_gitname
@@ -20,7 +21,7 @@ pkgver() {
 
 build() {
   cd $_gitname
-  patch -p1 < ${srcdir}/libsystemd.patch
+  echo $pkgver > VERSION
 
   autoreconf --force --install --symlink
   LEVELDB_LIBS='-L/usr/lib -lleveldb' LEVELDB_CFLAGS='-I/usr/include' ./configure --prefix=/usr
@@ -41,5 +42,3 @@ package() {
 }
 
 # vim:set ts=2 sw=2 et:
-md5sums=('SKIP'
-         'fe087994e80a346d773b0a721f5fd771')
