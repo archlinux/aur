@@ -1,0 +1,14 @@
+pkgbase = tl-optional-git
+	pkgdesc = C++11/14/17 std::optional with functional-style extensions and reference support
+	pkgver = v1.0.0.r20.gc28fcf7
+	pkgrel = 1
+	url = https://github.com/TartanLlama/optional
+	arch = any
+	license = CC0
+	makedepends = cmake
+	provides = tl-optional
+	conflicts = tl-optional
+	source = tl-optional-git::git+https://github.com/TartanLlama/optional.git#branch=master
+	sha256sums = SKIP
+
+pkgname = tl-optional-git
