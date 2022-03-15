@@ -19,8 +19,8 @@ source=(
   "https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha256sums=(
-  'aec250c4d357ac70e5fd408104f581c562947fef4caa422c32c06ec87621e4cf'
-  '4c8dfa9bdf9267ad5d5173f1df709e63999095624a644a5cfc1b56b4ffe1adae'
+  '08a10b07ce1e17b244da755b903420b21b022fed33661c0551050315ac82399d'
+  '85efc65905f51fe77f3052d6a5582c0b5ff716846fd4330d144a0a8adf070350'
   )
 
 package() {
@@ -28,3 +28,4 @@ package() {
   install -Dm644 usr/share/doc/${pkgname}/README "${pkgdir}/usr/share/doc/${pkgname}/README"
   install -Dm644 usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
