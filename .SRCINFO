@@ -1,7 +1,7 @@
 pkgbase = bash-pureline-git
 	pkgdesc = A simple but powerful Powerline style prompt for the Bash shell written in Bash script
-	pkgver = r202.5fdae57
-	pkgrel = 2
+	pkgver = r212.9abbdc4
+	pkgrel = 1
 	url = https://github.com/chris-marsh/pureline
 	install = bash-pureline-git.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = bash-pureline-git
 	makedepends = git
 	depends = sh
 	provides = bash-pureline
-	source = https://github.com/chris-marsh/pureline.git
+	source = git+https://github.com/chris-marsh/pureline.git
 	md5sums = SKIP
 
 pkgname = bash-pureline-git

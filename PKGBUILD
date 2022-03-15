@@ -2,8 +2,8 @@
 
 _pkgname=pureline
 pkgname=bash-pureline-git
-pkgver=r202.5fdae57
-pkgrel=2
+pkgver=r212.9abbdc4
+pkgrel=1
 pkgdesc="A simple but powerful Powerline style prompt for the Bash shell written in Bash script"
 url="https://github.com/chris-marsh/pureline"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('sh')
 provides=('bash-pureline')
 install=bash-pureline-git.install
 makedepends=('git')
-source=(https://github.com/chris-marsh/pureline.git)
+source=(git+https://github.com/chris-marsh/pureline.git)
 md5sums=('SKIP')
 
 pkgver() {
