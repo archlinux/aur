@@ -2,7 +2,7 @@
 pkgname=tela-icon-theme-kde-accent-git
 _gitname=tela-icon-theme
 pkgver=2022.02.21.r3.gc440cc0d
-pkgrel=1
+pkgrel=2
 pkgdesc="A flat colorful design icon theme."
 arch=('any')
 url="https://www.pling.com/p/1279924"

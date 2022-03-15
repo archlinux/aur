@@ -1,17 +1,17 @@
 pkgbase = tela-icon-theme-kde-accent-git
 	pkgdesc = A flat colorful design icon theme.
-	pkgver = 2021.12.25.r4.g651b107f
-	pkgrel = 1
+	pkgver = 2022.02.21.r3.gc440cc0d
+	pkgrel = 2
 	url = https://www.pling.com/p/1279924
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = hicolor-icon-theme
 	depends = gtk-update-icon-cache
-	provides = tela-icon-theme-kde-accent
-	conflicts = tela-icon-theme-kde-accent
+	provides = tela-icon-theme
+	conflicts = tela-icon-theme
 	options = !strip
-	source = tela-icon-theme-kde-accent::git+https://github.com/vinceliuice/Tela-icon-theme.git
+	source = tela-icon-theme::git+https://github.com/vinceliuice/Tela-icon-theme.git
 	sha256sums = SKIP
 
 pkgname = tela-icon-theme-kde-accent-git
