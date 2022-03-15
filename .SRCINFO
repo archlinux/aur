@@ -1,7 +1,7 @@
 pkgbase = nginx-libressl
 	pkgdesc = lightweight HTTP server, statically linked against LibreSSL.
-	pkgver = 1.20.1
-	pkgrel = 1
+	pkgver = 1.20.2
+	pkgrel = 3
 	url = http://nginx.org
 	arch = i686
 	arch = x86_64
@@ -34,13 +34,12 @@ pkgbase = nginx-libressl
 	source = nginx.conf
 	source = nginx.logrotate
 	source = nginx.service
-	source = http://nginx.org/download/nginx-1.20.1.tar.gz
-	source = http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.3.3.tar.gz
+	source = http://nginx.org/download/nginx-1.20.2.tar.gz
+	source = http://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.5.1.tar.gz
 	sha256sums = 8d8e314da10411b29157066ea313fc080a145d2075df0c99a1d500ffc7e8b7d1
 	sha256sums = adcf6507abb2d4edbc50bd92f498ba297927eed0460d71633df94f79637aa786
 	sha256sums = 225228970d779e1403ba4314e3cd8d0d7d16f8c6d48d7a22f8384db040eb0bdf
-	sha256sums = e462e11533d5c30baa05df7652160ff5979591d291736cfa5edb9fd2edb48c49
-	sha256sums = a471565b36ccd1a70d0bd7d37c6e95c43a26a62829b487d9d2cdebfe58be3066
+	sha256sums = 958876757782190a1653e14dc26dfc7ba263de310e04c113e11e97d1bef45a42
+	sha256sums = a7d0026f67622275ec8f8239ded422a653d5ccc84df55dea2acd406017185608
 
 pkgname = nginx-libressl
-
