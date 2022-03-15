@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Synthesizer V Studio
+Terminal=false
+Type=Application
+Comment=All you need for a high-quality singing synthesis software
+Exec=/usr/bin/synthv-studio
+Icon=synthv-studio
+Categories=AudioVideo;

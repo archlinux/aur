@@ -1,0 +1,16 @@
+pkgbase = synthv-studio-bin
+	pkgdesc = Synthesizer V studio by Dreamtonics
+	pkgver = 1
+	pkgrel = 1
+	url = https://dreamtonics.com/synthesizerv
+	arch = x86_64
+	license = custom
+	provides = synthv-studio
+	source = synthv-studio.sh
+	source = synthv-studio.png
+	source = synthv-studio.desktop
+	sha256sums = 83a419a9c281fbca976bc683ba584a7e0bf4ac5cc249c3a0ed0cfff92f2215af
+	sha256sums = f0f0180bbd5a029655089c5f8d5948c093622dd978e8aa6a4c47689b5936351b
+	sha256sums = 710f95ca38ab0e69c0431feb7f323bf84b4b4b822248a465ed5e525b36070871
+
+pkgname = synthv-studio-bin
