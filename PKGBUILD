@@ -2,7 +2,7 @@
 
 pkgname=kora-icon-theme
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="SVG icon theme suitable for every desktop environment (dark and light versions, HiDPI support)"
 arch=("any")
 url="https://github.com/bikass/kora"
@@ -16,7 +16,6 @@ optdepends=(
     "hicolor-icon-theme: fallback Freedesktop.org Hicolor icon theme"
     "breeze-icons: fallback Breeze icon theme for Plasma Desktop"
     "adwaita-icon-theme: fallback Adwaita icon theme for Gnome Desktop")
-install="$pkgname.install"
 source=("https://github.com/bikass/kora/archive/v$pkgver.tar.gz")
 sha256sums=('a37de513e1ff1d980d8fb85df9b2bc5924811712492c924be2be38917abef27e')
 
@@ -48,13 +47,6 @@ package() {
     cp -dr --no-preserve=mode "kora-light" "$pkgdir/$_iconpath/kora-light"
     cp -dr --no-preserve=mode "kora-light-panel" "$pkgdir/$_iconpath/kora-light-panel"
     cp -dr --no-preserve=mode "kora-pgrey" "$pkgdir/$_iconpath/kora-pgrey"
-    
-    # Create empty icon cache files, they will be filled during post_install and
-    # post_upgrade scripts
-    touch -a "$pkgdir/$_iconpath/kora/$_iconcache"
-    touch -a "$pkgdir/$_iconpath/kora-light/$_iconcache"
-    touch -a "$pkgdir/$_iconpath/kora-light-panel/$_iconcache"
-    touch -a "$pkgdir/$_iconpath/kora-pgrey/$_iconcache"
     
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
