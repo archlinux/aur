@@ -1,7 +1,7 @@
 # Contributor: karnath <karnathtorjian@gmail.com>
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 _base=yasnippets-latex
-pkgname=emacs-${_base}-git
+pkgname=emacs-${_base/s-l/-l}-git
 pkgver=2014_02_18
 pkgrel=1
 pkgdesc="LaTeX snippets for emacs yasnippets"

@@ -1,4 +1,4 @@
-pkgbase = emacs-yasnippets-latex-git
+pkgbase = emacs-yasnippet-latex-git
 	pkgdesc = LaTeX snippets for emacs yasnippets
 	pkgver = 2014_02_18
 	pkgrel = 1
@@ -15,4 +15,4 @@ pkgbase = emacs-yasnippets-latex-git
 	source = git+https://github.com/madsdk/yasnippets-latex
 	sha512sums = SKIP
 
-pkgname = emacs-yasnippets-latex-git
+pkgname = emacs-yasnippet-latex-git
