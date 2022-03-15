@@ -7,7 +7,7 @@ pkgdesc="XEP-0198: Reliability and fast reconnects for Prosody"
 arch=('any')
 url="http://modules.prosody.im/mod_smacks.html"
 license=('MIT')
-depends=('prosody' 'lua52-dbi')
+depends=('prosody<0.12' 'lua52-dbi')
 source=("mod_smacks_$_commit.lua::https://hg.prosody.im/prosody-modules/raw-file/$_commit/mod_smacks/mod_smacks.lua")
 sha1sums=('38229a365c0be99372f110743c3251e65462ec61')
 
