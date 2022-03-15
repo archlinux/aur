@@ -8,7 +8,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-openssl
 pkgver=${_pkgver/[a-z]/.${_pkgver//[0-9.]/}}
-pkgrel=3
+pkgrel=2
 pkgdesc="The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (mingw-w64)"
 arch=('any')
 url="https://www.openssl.org"
@@ -49,14 +49,14 @@ build() {
       no-ssl3-method \
       zlib-dynamic \
       "${CFLAGS}"
-    make
+    make LIBDIR=lib
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/build-${_arch}"
-    make -j1 DESTDIR="${pkgdir}" install_sw
+    make -j1 DESTDIR="${pkgdir}" LIBDIR=lib install_sw
     install -m644 ms/applink.c "${pkgdir}/usr/${_arch}/include/openssl/"
     find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
