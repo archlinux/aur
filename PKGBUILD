@@ -6,7 +6,7 @@
 
 pkgname=lib32-imlib2
 _pkgname=imlib2
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc='Library that does image file loading and saving as well as rendering, manipulation, arbitrary polygon support, lib32'
 url='https://sourceforge.net/projects/enlightenment/'
@@ -15,7 +15,7 @@ license=('BSD')
 # this could link against lib32-libheif if exists...
 depends=('lib32-libtiff' 'lib32-giflib' 'lib32-bzip2' 'lib32-freetype2' 'lib32-libxext' 'lib32-libpng' 'lib32-libid3tag' 'lib32-libjpeg-turbo' 'lib32-libwebp' 'lib32-librsvg' 'lib32-xz' "${_pkgname}")
 source=("https://downloads.sourceforge.net/project/enlightenment/imlib2-src/$pkgver/$_pkgname-$pkgver.tar.xz")
-sha512sums=('e4e4dbd58b9413d11a2ca645b7351c5b441b330d579b6d9f53db445e4d10e30cfeb77158d018ce14d37b536314f238b8ddf7366d293975709d9c11765e7c5735')
+sha512sums=('68366298eb3badc7e76ca3b8d73ac0d1489384061cd523cf58bbc9059720b835a82bed6fe87fcf53ed1b43de0c1b6a9e270e25463a30709b568c5b2f3fd06835')
 
 build() {
   cd "$_pkgname-$pkgver"
@@ -32,7 +32,8 @@ build() {
     --enable-mmx \
     --disable-amd64 \
     --libdir=/usr/lib32 \
-    --libexecdir=/usr/lib32 
+    --libexecdir=/usr/lib32 \
+    --without-heif
 
   make
 }
