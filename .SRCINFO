@@ -1,7 +1,7 @@
 pkgbase = mediatracker
 	pkgdesc = Self hosted platform for tracking movies, tv shows, video games, books and audiobooks.
-	pkgver = 0.0.7
-	pkgrel = 2
+	pkgver = 0.0.8
+	pkgrel = 1
 	url = https://github.com/bonukai/MediaTracker.git
 	arch = i686
 	arch = x86_64
@@ -10,8 +10,8 @@ pkgbase = mediatracker
 	depends = nodejs
 	depends = sqlite
 	conflicts = mediatracker-git
-	source = https://github.com/bonukai/MediaTracker/archive/refs/tags/v0.0.7.tar.gz
-	md5sums = abed68c5bbffcb7d99812370a134adc6
+	source = https://github.com/bonukai/MediaTracker/archive/refs/tags/v0.0.8.tar.gz
+	md5sums = f6d7ac49ef89f90896bf434934e2f575
 
 pkgname = mediatracker
 	install = mediatracker.install
