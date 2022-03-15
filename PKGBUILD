@@ -1,11 +1,11 @@
 pkgname=python-wandb
 pkgver=0.12.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Weights and Biases - organize and analyze machine learning experiments'
 arch=('any')
 url='https://wandb.ai'
 license=('MIT')
-depends=('python>=3.7' 'python-gitpython' 'python-dateutil' 'python-requests' 'python-click' 'python-promise' 'python-shortuuid' 'python-six' 'python-watchdog' 'python-psutil' 'python-sentry_sdk' 'python-protobuf' 'python-pyaml' 'python-configparser' 'python-docker-pycreds' 'python-subprocess32' 'python-yaspin')
+depends=('python>=3.7' 'python-gitpython' 'python-dateutil' 'python-requests' 'python-click' 'python-promise' 'python-shortuuid' 'python-six' 'python-watchdog' 'python-psutil' 'python-sentry_sdk' 'python-protobuf' 'python-pyaml' 'python-docker-pycreds' 'python-yaspin')
 makedepends=('git' 'python-setuptools')
 provides=('python-wandb')
 conflicts=("python-wandb-git")
