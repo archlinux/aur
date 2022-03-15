@@ -1,6 +1,6 @@
 pkgbase = juno-standard-buttons-theme-git
-	pkgdesc = GTK themes inspired by epic vscode themes
-	pkgver = r147.1bba343
+	pkgdesc = GTK themes inspired by epic VSCode themes
+	pkgver = r148.f0704a4
 	pkgrel = 1
 	url = https://github.com/EliverLara/Juno
 	arch = any
@@ -11,9 +11,10 @@ pkgbase = juno-standard-buttons-theme-git
 	optdepends = ttf-roboto: default font for gnome-shell
 	optdepends = gtk-engine-murrine: GTK2 support
 	optdepends = gnome-themes-extra: GTK2 support
-	provides = juno-standard-buttons-theme
-	conflicts = juno-standard-buttons-theme
-	source = Juno-standard-buttons::git+https://github.com/EliverLara/Juno.git#branch=standard-buttons
+	source = juno-standard-buttons::git+https://github.com/EliverLara/Juno.git#branch=standard-buttons
 	sha256sums = SKIP
 
-pkgname = juno-standard-buttons-theme-git
+pkgname = juno-standard-buttons-gtk-theme-git
+	provides = juno-standard-buttons-gtk-theme
+	conflicts = juno-standard-buttons-gtk-theme
+	conflicts = juno-standard-buttons-theme
