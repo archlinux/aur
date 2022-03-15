@@ -5,3 +5,4 @@ src/
 *.tar.*
 emacs-git
 *.local
+local
