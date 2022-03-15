@@ -19,13 +19,10 @@ sha256sums=('c33ac656c0895b81fc9491d2921fa0d6a8c8224169bd35efc7d45137663d0a12')
 
 
 build() {
-    cd "${_pkgname}-${pkgver/%.1/-1}"
-    meson build --prefix=/usr
-    cd build
-    ninja
+    meson --prefix=/usr "${_pkgname}-${pkgver/%.1/-1}" build
+    meson compile -C build
 }
 
 package() {
-    cd "${_pkgname}-${pkgver/%.1/-1}/build"
-    DESTDIR="${pkgdir}" ninja install
+    meson install -C build --destdir "$pkgdir"
 }
