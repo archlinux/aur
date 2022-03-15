@@ -1,19 +1,17 @@
-# Maintainer: Lionel Peller <errpell@protonmail.com>
+# Maintainer: redstrate <josh@redstrate.com>
+# Contributor: Lionel Peller <errpell@protonmail.com>
 pkgname=trinity-matrix-git
-pkgver=r56.1cc861e
+pkgver=r1.303001a
 pkgrel=1
 pkgdesc="Qt5 QML Matrix client"
 arch=('x86_64')
-url="https://github.com/invghost/Trinity.git"
+url="https://git.sr.ht/~redstrate/trinity"
 license=('GPL3')
-depends=('qt5-graphicaleffects' 'qt5-quickcontrols2' 'qt5-webengine' 'cmark')
-makedepends=('git')
+depends=('qt5-graphicaleffects' 'qt5-quickcontrols2' 'qt5-webengine' 'cmark' 'libolm')
+makedepends=('git' 'cmake')
 install=
-source=('trinity-matrix-git::git+https://github.com/invghost/Trinity.git')
+source=('trinity-matrix-git::git+https://git.sr.ht/~redstrate/trinity')
 md5sums=('SKIP')
-
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
 
 pkgver() {
 	cd "$pkgname"
@@ -35,3 +33,4 @@ package() {
     make install
     find "$pkgdir" -type d -name ".git" -exec rm -r '{}' +
 }
+
