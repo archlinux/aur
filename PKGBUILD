@@ -2,11 +2,12 @@
 
 pkgname=markdown-link-check
 pkgver=3.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="checks that all of the hyperlinks in a markdown text to determine if they are alive or dead"
 arch=('any')
 url="https://github.com/tcort/markdown-link-check"
 license=('ICS')
+depends=('nodejs')
 makedepends=('npm')
 
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
