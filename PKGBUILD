@@ -1,38 +1,36 @@
 # Contributor: Paige Aran <paige.aran@gmail.com>
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
-
-pkgname=racket-git
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
+_base=racket
+pkgname=${_base}-git
 pkgver=7.0.0.12.38897.369eb65ec2
 pkgrel=1
 pkgdesc="Minimal Racket installation, without DrRacket, from git"
 arch=('i686' 'x86_64')
-url="http://racket-lang.org/"
-license=('LGPL')
-depends=('bash' 'libffi')
-makedepends=('git')
-provides=('racket')
-conflicts=('racket')
+url="https://${_base}-lang.org"
+license=('Apache' 'GPL3' 'LGPL3' 'custom')
+depends=(bash libffi)
+makedepends=(git)
+provides=(${_base})
+conflicts=(${_base})
 options=('!strip' '!emptydirs')
-source=("git://github.com/racket/racket.git")
-_gitname="racket"
+source=(git+https://github.com/${_base}/${_base}.git)
 md5sums=('SKIP')
 
 pkgver() {
-  cd $_gitname
+  cd ${_base}
   printf %s.%s.%s \
-	 $(grep ' MZSCHEME_VERSION ' \
-		${srcdir}/${_gitname}/${_gitname}/src/racket/src/schvers.h \
-		| cut -d '"' -f 2) "$(git rev-list --count HEAD)" $(git log -1 --format='%h')
+    $(grep ' MZSCHEME_VERSION ' \
+      ${srcdir}/${_gitname}/${_gitname}/src/racket/src/schvers.h |
+      cut -d '"' -f 2) "$(git rev-list --count HEAD)" $(git log -1 --format='%h')
 }
 
 build() {
-  cd $_gitname
-
+  cd ${_base}
   make in-place
 }
 
 package() {
-  cd $_gitname/$_gitname
+  cd ${_base}/${_base}
   install -d "$pkgdir"/usr/share/doc/racket
   install -d "$pkgdir"/usr/lib
   install -d "$pkgdir"/usr/share/racket/
