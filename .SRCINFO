@@ -1,6 +1,6 @@
 pkgbase = juno-mirage-standard-buttons-theme-git
 	pkgdesc = GTK themes inspired by epic vscode themes
-	pkgver = r155.4e2516f
+	pkgver = r156.11dd089
 	pkgrel = 1
 	url = https://github.com/EliverLara/Juno
 	arch = any
@@ -11,9 +11,10 @@ pkgbase = juno-mirage-standard-buttons-theme-git
 	optdepends = ttf-roboto: default font for gnome-shell
 	optdepends = gtk-engine-murrine: GTK2 support
 	optdepends = gnome-themes-extra: GTK2 support
-	provides = juno-mirage-standard-buttons-theme
-	conflicts = juno-mirage-standard-buttons-theme
-	source = Juno-mirage-standard-buttons::git+https://github.com/EliverLara/Juno.git#branch=mirage-standard-buttons
+	source = juno-mirage-standard-buttons::git+https://github.com/EliverLara/Juno.git#branch=mirage-standard-buttons
 	sha256sums = SKIP
 
-pkgname = juno-mirage-standard-buttons-theme-git
+pkgname = juno-mirage-standard-buttons-gtk-theme-git
+	provides = juno-mirage-standard-buttons-gtk-theme
+	conflicts = juno-mirage-standard-buttons-gtk-theme
+	conflicts = juno-mirage-standard-buttons-theme
