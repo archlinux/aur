@@ -1,32 +1,37 @@
 # Maintainer: Bruno Pagani <archange@archlinux.org>
 
 pkgname=prusa-slicer
-pkgver=2.3.3
-pkgrel=4
+pkgver=2.4.1
+pkgrel=1
 pkgdesc="G-code generator for 3D printers (Prusa fork of Slic3r)"
 arch=(x86_64)
 url="https://github.com/prusa3d/PrusaSlicer"
 license=(AGPL3)
-depends=(boost-libs curl glew tbb nlopt wxgtk3 qhull openvdb cgal imath)
-makedepends=(cmake boost cereal eigen expat gtest libpng systemd)
+depends=(boost-libs curl glew intel-tbb mpfr nlopt wxgtk3 qhull openvdb)
+makedepends=(cmake boost cereal cgal eigen expat gtest libpng systemd)
+checkdepends=(catch2)
 replaces=(slic3r-prusa3d)
 source=(${url}/archive/version_${pkgver}/${pkgname}-${pkgver}.tar.gz
-        prusa-slicer-openexr3.patch
-        prusa-slicer-tbb-2021.patch)
-sha256sums=('deda209505f740ac3d6f59cb2a960f4df908269ee09bd30cd4edb9fc472d29ac'
-            '1ef7c22f641b7c18de212202c21f14f6533834a36d7fe0c2b322bc9a13804c6b'
-            '468340ea2cdfc12a9706a49095111e6a8cdd9f5e00b43abd11c682599463bccc')
+        ${pkgname}-fix-lcereal-p1.patch::${url}/commit/0ffcfd8393457fd035576436752267c9a1e6bbcc.patch
+        ${pkgname}-fix-lcereal-p2.patch::${url}/commit/cc788ebb643b6d4048f3550235ac3e9d3697ada0.patch
+        use-system-catch2.patch)
+sha256sums=('a0ba9de6f7c8159d033ea69a2c5ebd6172a97f29902303e9897249447ce5e498'
+            'e110c3ca7cd8034f878b22e4992c442cc200a7c001d570dc2c9eef8a6af41786'
+            'eb5bce1cb5b3970a1aa92fd9b7fe1943da4d7bb2c9908890811090914fef91c4'
+            '3639dc2d290dc9a7d16259e0b421f8d21f16fb4abe46bbb3fab9328930fc5758')
 
 prepare() {
   cd PrusaSlicer-version_${pkgver}
-  patch -p1 < ../prusa-slicer-openexr3.patch # Fix build with openEXR 3
-  patch -p1 < ../prusa-slicer-tbb-2021.patch # Fix build with TBB 2021
+  patch -p1 < ../use-system-catch2.patch # Borrowed from Debian
+  patch -p1 < ../${pkgname}-fix-lcereal-p1.patch
+  patch -p1 < ../${pkgname}-fix-lcereal-p2.patch
 }
 
 build() {
   cmake -B build -S PrusaSlicer-version_${pkgver} \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
+    -DOPENVDB_FIND_MODULE_PATH=/usr/lib/cmake/OpenVDB \
     -DSLIC3R_FHS=ON \
     -DSLIC3R_PCH=OFF \
     -DSLIC3R_WX_STABLE=ON \
@@ -43,13 +48,8 @@ check() {
 package() {
   make -C build DESTDIR="${pkgdir}" install
 
-  # Desktop files
-  mv "${pkgdir}"/usr/share/{PrusaSlicer/,}applications
-
   # Desktop icons
-  for i in 32 128 192 ; do
-    mkdir -p "${pkgdir}"/usr/share/icons/hicolor/${i}x${i}/apps/
-    ln -s /usr/share/PrusaSlicer/icons/PrusaSlicer_${i}px.png "${pkgdir}"/usr/share/icons/hicolor/${i}x${i}/apps/PrusaSlicer.png
-    ln -s /usr/share/PrusaSlicer/icons/PrusaSlicer-gcodeviewer_${i}px.png "${pkgdir}"/usr/share/icons/hicolor/${i}x${i}/apps/PrusaSlicer-gcodeviewer.png
-  done
+  mkdir -p "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/
+  ln -s /usr/share/PrusaSlicer/icons/PrusaSlicer.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/PrusaSlicer.svg
+  ln -s /usr/share/PrusaSlicer/icons/PrusaSlicer-gcodeviewer.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/PrusaSlicer-gcodeviewer.svg
 }
