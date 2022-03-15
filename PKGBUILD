@@ -12,7 +12,7 @@ depends=('sh')
 provides=('bash-pureline')
 install=bash-pureline-git.install
 makedepends=('git')
-source=(https://github.com/chris-marsh/pureline)
+source=(https://github.com/chris-marsh/pureline.git)
 md5sums=('SKIP')
 
 pkgver() {
