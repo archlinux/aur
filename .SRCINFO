@@ -1,21 +1,18 @@
 pkgbase = wapanel
-	pkgdesc = Simple panel/status bar/task bar for your custom stacking Wayland-based desktop.
+	pkgdesc = Wayland panel and taskbar
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Firstbober/wapanel
 	arch = x86_64
 	license = MIT
 	makedepends = meson
 	makedepends = toml11
-	makedepends = pkgconf
 	depends = gtk-layer-shell
 	depends = gtk3
-	depends = wayland
 	depends = wayland-protocols
 	depends = libpulse
 	depends = xdg-utils
-	depends = wlroots
-	source = https://github.com/Firstbober/wapanel/archive/refs/tags/1.1.0.tar.gz
+	source = wapanel-1.1.0.tar.gz::https://github.com/Firstbober/wapanel/archive/1.1.0.tar.gz
 	sha256sums = 4f2f11f0d001b4507b5b1dc6622df68a9e786f590cabf603bc5a3b296039f0a5
 
 pkgname = wapanel
