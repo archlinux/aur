@@ -1,4 +1,6 @@
-# Maintainer: Michael Serajnik <m at mser dot at>
+# Previous maintainer: Michael Serajnik <m at mser dot at>
+# Maintainer: Score_Under <seejay 11@gmail com>
+options=(!strip)  # Don't strip libs because there aren't any
 DOC_DIRS=("opt/hydrus/help")
 pkgname=hydrus-git
 _pkgname=hydrus
@@ -6,8 +8,11 @@ pkgver=459.3.r0.g0dfba5a8
 pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=("any")
-url="http://hydrusnetwork.github.io/hydrus/"
 license=("WTFPL")
+install="hydrus.install"
+provides=("hydrus")
+conflicts=("hydrus" "hydrus-docs" "hydrus-sources")
+url="http://hydrusnetwork.github.io/hydrus/"
 depends=("python" "python-opencv" "python-beautifulsoup4" "python-yaml"
          "python-lz4>=0.10.1" "python-numpy" "python-twisted" "python-pillow"
          "python-pysocks" "python-psutil" "python-send2trash" "python-html5lib"
@@ -20,10 +25,6 @@ optdepends=("ffmpeg: show duration and other information on video thumbnails"
             "python-cloudscraper: bypass cloudflare \"checking your browser\" challenges"
             "python-pyqt5-chart: display bandwidth usage charts"
             "python-pyopenssl: to generate certificates for accessing client API and server via HTTPS")
-options=(!strip)  # Don't strip libs because there aren't any
-install="hydrus.install"
-provides=("hydrus")
-conflicts=("hydrus" "hydrus-docs" "hydrus-sources")
 source=("git+https://github.com/hydrusnetwork/${_pkgname}.git"
         "paths-in-opt.patch"
         "hydrus-client"
