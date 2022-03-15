@@ -10,8 +10,7 @@ pkgbase = mm-common-git
 	depends = bash
 	provides = mm-common
 	conflicts = mm-common
-	source = git://github.com/GNOME/mm-common
-	md5sums = SKIP
+	source = git+https://github.com/GNOME/mm-common
+	sha512sums = SKIP
 
 pkgname = mm-common-git
-
