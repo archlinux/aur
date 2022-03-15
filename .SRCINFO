@@ -1,0 +1,19 @@
+pkgbase = textsnatcher
+	pkgdesc = Snatch Text with just a Drag
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://textsnatcher.rf.gd
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = vala
+	depends = granite
+	depends = libhandy
+	depends = libportal
+	depends = tesseract
+	optdepends = scrot: screenshot access on Xorg
+	optdepends = xdg-desktop-portal: screenshot access on Wayland
+	source = textsnatcher-2.0.0.tar.gz::https://github.com/RajSolai/TextSnatcher/archive/refs/tags/v2.0.0.tar.gz
+	sha256sums = 0467a720b96ddfcdef822d7ed794d9ad3973fc39223851b4a82ba2de7715f220
+
+pkgname = textsnatcher
