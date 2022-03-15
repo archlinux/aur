@@ -1,4 +1,4 @@
 *.tar.zst
 /pkg
 /src
-netease-music-tui-0.1.4.tar.gz
+netease-music-tui-*.tar.gz
