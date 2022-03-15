@@ -1,5 +1,5 @@
 pkgbase = juno-ocean-theme-git
-	pkgdesc = GTK themes inspired by epic VSCode themes
+	pkgdesc = GTK themes inspired by epic vscode themes
 	pkgver = r169.891f91e
 	pkgrel = 1
 	url = https://github.com/EliverLara/Juno
