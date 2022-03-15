@@ -23,18 +23,14 @@ pkgver() {
 }
 
 build() {
-  cd "$_gitname"
-  arch-meson build
-
-  cd build
-  ninja
+  arch-meson "$_gitname" build
+  meson compile -C build
 }
 
 package() {
-  cd "$_gitname/build"
+  meson install -C build --destdir "$pkgdir"
 
-  DESTDIR="$pkgdir" ninja install
-  install -Dm664 ../LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -Dm664 "$_gitname"/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
