@@ -6,14 +6,14 @@ pkgbase = emacs-mmm-mode-git
 	arch = any
 	license = GPL
 	makedepends = git
+	depends = emacs
 	provides = emacs-mmm-mode
 	provides = mmm-mode
 	conflicts = emacs-mmm-mode
 	conflicts = mmm-mode
-	source = git://github.com/purcell/mmm-mode.git
+	source = git+https://github.com/purcell/mmm-mode.git
 	source = diacritics.patch
-	md5sums = SKIP
-	md5sums = f4aad5924cde6afade50e46ec7a072d4
+	sha512sums = SKIP
+	sha512sums = ad92d6bdf85f15c6cee892fa0813a37151f32ceb2c81b2d43ab76cda58479539b3f468bed422b88cc4bc7b7b3b5a79a13e747f163edfc5a6644a9b95936d7285
 
 pkgname = emacs-mmm-mode-git
-
