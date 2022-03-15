@@ -2,7 +2,7 @@
 
 pkgname=crc-bin
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Red Hat CodeReady Containers is a tool that manages a local OpenShift 4.x cluster optimized for testing and development purposes"
 url=https://github.com/code-ready/crc
 arch=("x86_64")
