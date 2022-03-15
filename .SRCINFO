@@ -1,0 +1,21 @@
+pkgbase = xbindjoy-git
+	pkgdesc = Tool for making your joysticks and gamepads more useful
+	pkgver = r93.e599772
+	pkgrel = 1
+	url = https://github.com/saulrh/XBindJoy
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = libev
+	depends = libxtst
+	depends = guile
+	provides = xbindjoy-git
+	conflicts = xbindjoy-git
+	source = git+https://github.com/saulrh/XBindJoy.git
+	source = gcc10.patch
+	source = guile22.patch
+	sha256sums = SKIP
+	sha256sums = fe60cd4f60ad3406e86e13951706766e499cfc2602fae188c76cec215918c838
+	sha256sums = 7a4cc5332bc6257c768c5482711e286f6aed57f100b39cc88320c8c4092471b6
+
+pkgname = xbindjoy-git

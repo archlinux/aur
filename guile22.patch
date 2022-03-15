@@ -1,0 +1,61 @@
+diff --git a/Makefile b/Makefile
+index a89ceda..b426a14 100644
+--- a/Makefile
++++ b/Makefile
+@@ -28,12 +28,12 @@ src := $(wildcard src/*.c)
+ obj := $(src:.c=.o)
+ dep := $(obj:.o=.d)
+ mod := saulrh/xbindjoy.scm
+-solib := libguilexbindjoy.so
++solib := guile-xbindjoy.so
+ 
+ # compiler flags. we use pkg-config to get the includes for guile. set the variable dbg if we want
+ # to compile with debug flags (default to none). ldflags pull in the libraries we need.
+-CFLAGS := -std=c11 `pkg-config --cflags guile-2.0` -fPIC $(dbg)
+-LDFLAGS := -lX11 -lXtst -lev `pkg-config --libs guile-2.0`
++CFLAGS += -std=c11 `pkg-config --cflags guile-2.2` -fPIC $(dbg)
++LDFLAGS += -lX11 -lXtst -lev `pkg-config --libs guile-2.2`
+ 
+ # our final shared library.
+ $(solib): $(obj)
+@@ -55,8 +55,14 @@ test: $(solib)
+ run: $(solib)
+ 	@LD_LIBRARY_PATH=. rlwrap guile -L . -x "saulrh xbindjoy" --
+ 
++install: $(solib)
++	install -d $(DESTDIR)$(PREFIX)/lib/guile/2.2/extensions/
++	install -m 644 $(solib) $(DESTDIR)$(PREFIX)/lib/guile/2.2/extensions/
++	install -d $(DESTDIR)$(PREFIX)/share/guile/site/2.2/saulrh/
++	install -m 644 $(mod) $(DESTDIR)$(PREFIX)/share/guile/site/2.2/saulrh/
++
+ # clean out object files and compilation products
+ .PHONY: clean
+ clean:
+-	rm -f $(obj) libguilexbindjoy.so
++	rm -f $(obj) $(solib)
+ 	rm -f $(dep)
+diff --git a/examples/generic.scm b/examples/generic.scm
+index 53168c8..53b6e44 100755
+--- a/examples/generic.scm
++++ b/examples/generic.scm
+@@ -35,7 +35,6 @@
+ ;;; but we're not going to do that, because this is an example that we want people to be able to
+ ;;; run right after they grab the code. so we just use the first joystick that's plugged in.
+ (define jsd "/dev/input/js0")
+-
+ (define naxes (get-js-num-axes jsd))
+ (define nbuttons (get-js-num-buttons jsd))
+ (init-xbindjoy nbuttons naxes)
+diff --git a/saulrh/xbindjoy.scm b/saulrh/xbindjoy.scm
+index 856d79d..0803471 100644
+--- a/saulrh/xbindjoy.scm
++++ b/saulrh/xbindjoy.scm
+@@ -50,7 +50,7 @@
+             ))
+ 
+ ;;; load up the library that provides the low-level stuff
+-(load-extension "libguilexbindjoy.so" "init_xbindjoy")
++(load-extension "guile-xbindjoy.so" "init_xbindjoy")
+ 
+ 
+ ;;; 

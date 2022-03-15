@@ -1,0 +1,39 @@
+diff --git a/src/xbindjoy.c b/src/xbindjoy.c
+index 70d5b66..f1021e1 100644
+--- a/src/xbindjoy.c
++++ b/src/xbindjoy.c
+@@ -40,6 +40,9 @@
+ // /////////////////////////////////////////////////////////////////////////////
+ // variables
+ 
++int verbose;
++Display* display;
++
+ // the file descriptor for our joystick
+ int jsfd;
+ 
+@@ -79,7 +82,7 @@ static void timer_callback(EV_P_ ev_timer* w, int revents) {
+ 	last_time.tv_nsec = cur_time.tv_nsec;
+ }
+ 
+-static void sigint_callback(EV_P_ ev_timer* w, int revents) {
++static void sigint_callback(EV_P_ ev_signal* w, int revents) {
+ 	ev_break(loop, EVBREAK_ALL);
+ }
+ 
+diff --git a/src/xbindjoy.h b/src/xbindjoy.h
+index 7d257dc..ff4b848 100644
+--- a/src/xbindjoy.h
++++ b/src/xbindjoy.h
+@@ -21,8 +21,9 @@
+ 
+ #include<X11/Xlib.h>
+ 
+-int verbose;
+-Display* display;
++extern int verbose;
++extern Display* display;
++
+ 
+ typedef enum {
+ 	PRESS,
