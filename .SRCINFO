@@ -1,6 +1,6 @@
 pkgbase = juno-mirage-theme-git
 	pkgdesc = GTK themes inspired by epic vscode themes
-	pkgver = r154.ac200ba
+	pkgver = r155.a4af806
 	pkgrel = 1
 	url = https://github.com/EliverLara/Juno
 	arch = any
@@ -11,9 +11,10 @@ pkgbase = juno-mirage-theme-git
 	optdepends = ttf-roboto: default font for gnome-shell
 	optdepends = gtk-engine-murrine: GTK2 support
 	optdepends = gnome-themes-extra: GTK2 support
-	provides = juno-mirage-theme
-	conflicts = juno-mirage-theme
-	source = Juno-mirage::git+https://github.com/EliverLara/Juno.git#branch=mirage
+	source = juno-mirage::git+https://github.com/EliverLara/Juno.git#branch=mirage
 	sha256sums = SKIP
 
-pkgname = juno-mirage-theme-git
+pkgname = juno-mirage-gtk-theme-git
+	provides = juno-mirage-gtk-theme
+	conflicts = juno-mirage-gtk-theme
+	conflicts = juno-mirage-theme

@@ -1,37 +1,34 @@
 # Maintainer: Mahor Foruzesh <mahorforuzesh at pm dot me>
-# Original PKGBUILD from https://aur.archlinux.org/packages/juno-theme-git
-# I've only changed pkgname and url
 
-_pkgname=Juno-mirage
-pkgname=juno-mirage-theme-git
-pkgver=r154.ac200ba
+pkgbase=juno-mirage-theme-git
+__pkgname="${pkgbase%-theme-git}"
+__Pkgname="${__pkgname^}"
+__PkgName="$(echo "$__pkgname" | sed -e "s/\b./\u\0/g")"
+pkgname=(
+    "$__pkgname-gtk-theme-git"
+)
+pkgver=r155.a4af806
 pkgrel=1
 pkgdesc="GTK themes inspired by epic vscode themes"
+arch=("any")
 url="https://github.com/EliverLara/Juno"
-license=(GPL3)
-conflicts=("${pkgname%-*}")
-provides=("${pkgname%-*}")
-arch=(any)
-makedepends=(
-    git
-    inkscape
-    optipng
-)
+license=("GPL3")
+makedepends=("git" "inkscape" "optipng")
 optdepends=(
     "ttf-roboto: default font for gnome-shell"
     "gtk-engine-murrine: GTK2 support"
     "gnome-themes-extra: GTK2 support"
 )
-source=("${_pkgname}::git+${url}.git#branch=${_pkgname#*-}")
-sha256sums=(SKIP)
+source=("$__pkgname::git+$url.git#branch=${__pkgname#juno-}")
+sha256sums=("SKIP")
 
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
+    cd "$srcdir/$__pkgname"
     echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}"
+    cd "$srcdir/$__pkgname"
 
     export THEME_FONT_FACE="${THEME_FONT_FACE:-Roboto}"
     export THEME_FONT_SIZE="${THEME_FONT_SIZE:-10}"
@@ -40,16 +37,16 @@ build() {
     msg2 "- THEME_FONT_FACE (default font family is Roboto)"
     msg2 "- THEME_FONT_SIZE (default font point size is 10)"
     msg2 ""
-    msg2 "Setting gnome-shell font face to ${THEME_FONT_FACE}"
-    msg2 "Setting gnome-shell font size to ${THEME_FONT_SIZE}"
+    msg2 "Setting gnome-shell font face to $THEME_FONT_FACE"
+    msg2 "Setting gnome-shell font size to $THEME_FONT_SIZE"
 
-    if [ "${THEME_FONT_FACE}" != "Roboto" ]; then
-        sed -i -re "s/font-family: (.*);/font-family: ${THEME_FONT_FACE}, \1;/" \
-            "${srcdir}/${_pkgname}/gnome-shell/gnome-shell.css"
+    if [ "$THEME_FONT_FACE" != "Roboto" ]; then
+        sed -i -re "s/font-family: (.*);/font-family: $THEME_FONT_FACE, \1;/" \
+            "$srcdir/$__pkgname/gnome-shell/gnome-shell.css"
     fi
-    if [ "${THEME_FONT_SIZE}" != "10" ]; then
+    if [ "$THEME_FONT_SIZE" != "10" ]; then
         sed -i -re "s/font-size: (.*);/font-size: ${THEME_FONT_SIZE}pt;/" \
-            "${srcdir}/${_pkgname}/gnome-shell/gnome-shell.css"
+            "$srcdir/$__pkgname/gnome-shell/gnome-shell.css"
     fi
 
     msg2 "Rendering assets, please wait"
@@ -72,8 +69,12 @@ build() {
     msg2 "Done!"
 }
 
-package() {
-    cd "${srcdir}/${_pkgname}"
-    mkdir -p "${pkgdir}/usr/share/themes/${_pkgname}"
-    cp -a "${srcdir}/${_pkgname}/"* "${pkgdir}/usr/share/themes/${_pkgname}/"
+package_juno-mirage-gtk-theme-git() {
+    provides=("${pkgname[0]%-git}")
+    conflicts=("${pkgname[0]%-git}" "${pkgbase%-git}")
+
+    mkdir -p "$pkgdir/usr/share/themes"
+    cp -a "$srcdir/$__pkgname" "$pkgdir/usr/share/themes/$__Pkgname"
+    cd "$pkgdir/usr/share/themes/$__Pkgname"
+    rm -r ".git"* "Art/" "kde/" "src/" *".json" "Gulpfile.js"
 }
