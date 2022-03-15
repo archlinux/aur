@@ -22,20 +22,20 @@ _unused_components=(
   'vmware-horizon-url-redirection')
 pkgver=2111.1
 _build1=8.4.1
-_build2=53939787
-_cart='CART22FH2'
-pkgrel=3
+_build2=19480456
+_cart="CART23FQ1_LIN64_${pkgver/./_}"
+pkgrel=4
 pkgdesc='VMware Horizon Client connect to VMware Horizon virtual desktop'
 arch=('x86_64')
 url='https://www.vmware.com/go/viewclients'
 license=('custom')
 makedepends=('libxslt' 'patchelf' 'librsvg')
-source=("${pkgbase}-${pkgver}-${_build1}-${_build2}-x86_64.bundle::https://download3.vmware.com/software/view/viewclients/${_cart}/VMware-Horizon-Client-${pkgver}-${_build1}-${_build2}.x64.bundle"
+source=("${pkgbase}-${pkgver}-${_build1}-${_build2}-x86_64.bundle::https://download3.vmware.com/software/${_cart}/VMware-Horizon-Client-${pkgver}-${_build1}-${_build2}.x64.bundle"
         "vmware-bundle.eclass-${pkgver}::https://gitweb.gentoo.org/proj/vmware.git/plain/eclass/vmware-bundle.eclass"
         'vmware-horizon-usb'
         'vmware-horizon-usb.service'
         'vmware-horizon.svg')
-sha256sums=('901a48ede481b5ad5954c48ea362d396d06cbc04df917a11864afd34725fafc3'
+sha256sums=('e48249e9eb195de0ed2e591ef08180d2f20a426216c54f00a2d0ec5b8996c890'
             'd6863e92b891fc506fc8e81714a47ca3f9f74b7fe68bdf48be058d5e0d433033'
             '008b60ebf45f7d1e033c8ad8ce1688d5e1c59fc0668493067fb89b563b1dc00f'
             'a897c1b9e8928fc222880ebbfc7bb6aff940bff4acf4e4e0cd4002fff81c7226'
