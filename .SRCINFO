@@ -11,6 +11,6 @@ pkgbase = yoku
 	conflicts = yoku
 	conflicts = yoku-bin
 	source = yoku-0.1.1.tar.gz::https://github.com/misobarisic/yoku/archive/v0.1.1.tar.gz
-	sha256sums = 61ad230c25b6cc44311c8a1c4ba274d8b616ab5ac74d561a95a42d888b7957a1
+	sha256sums = d0bc5c84e39b5dd61b52d669d96f2f7a98798f9ed05bcbd8fa9a972f17dcf602
 
 pkgname = yoku
