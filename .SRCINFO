@@ -1,6 +1,6 @@
 pkgbase = webcamoid-git
 	pkgdesc = Webcamoid is a full featured webcam capture application.
-	pkgver = 9.0.0.r2.g40df7956
+	pkgver = 9.0.0.r32.g0c1dffeb
 	pkgrel = 1
 	url = https://webcamoid.github.io/
 	install = webcamoid.install
@@ -40,7 +40,7 @@ pkgbase = webcamoid-git
 	optdepends = polkit: Root privileges for virtual camera module (Recommended)
 	provides = webcamoid
 	conflicts = webcamoid
-	source = git://github.com/webcamoid/webcamoid.git
+	source = git+https://github.com/webcamoid/webcamoid.git
 	md5sums = SKIP
 
 pkgname = webcamoid-git

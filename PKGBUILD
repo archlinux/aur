@@ -2,7 +2,7 @@
 
 pkgrealname=webcamoid
 pkgname=webcamoid-git
-pkgver=9.0.0.r2.g40df7956
+pkgver=9.0.0.r32.g0c1dffeb
 pkgrel=1
 pkgdesc="Webcamoid is a full featured webcam capture application."
 url='https://webcamoid.github.io/'
@@ -40,7 +40,7 @@ makedepends=('alsa-lib'
 provides=('webcamoid')
 conflicts=('webcamoid')
 install="${pkgrealname}.install"
-source=("git://github.com/${pkgrealname}/${pkgrealname}.git")
+source=("git+https://github.com/${pkgrealname}/${pkgrealname}.git")
 md5sums=('SKIP')
 
 pkgver() {
