@@ -9,8 +9,8 @@ pkgdesc="Software for uploading ADS-B data to RadarBox24.com"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.radarbox.com/sharing-data"
 license=('GPL2')
-depends=('dump1090')
-makedepends=('git' 'pkgconf' 'protobuf-c' 'jansson')
+depends=('dump1090' 'protobuf-c' 'jansson')
+makedepends=('git' 'pkgconf')
 source=(
         'git://github.com/airnavsystems/rbfeeder.git'
         'rbfeeder.service'
