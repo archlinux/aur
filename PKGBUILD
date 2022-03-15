@@ -5,7 +5,7 @@ _zrtpcppver='6b3cd8e6783642292bad0c21e3e5e5ce45ff3e03'
 _pkgname=python3-sipsimple
 pkgname=python-sipsimple
 pkgver=5.2.6
-pkgrel=2
+pkgrel=1
 pkgdesc='SIP SIMPLE SDK is a Python library for desktop operating'
 license=('GPL-3+')
 arch=('aarch64' 'x86_64')
@@ -53,6 +53,7 @@ prepare() {
   ./get_dependencies.sh
   chmod +x deps/pjsip/configure
   chmod +x deps/pjsip/aconfigure
+  sed -i 's|export PKG_CONFIG_PATH=$FFMPEG_PREFIX/lib/pkgconfig|export PKG_CONFIG_PATH=$FFMPEG_PREFIX/pkgconfig|' deps/pjsip/aconfigure
 }
 
 build() {
