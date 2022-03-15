@@ -1,12 +1,13 @@
 pkgbase = typora
 	pkgdesc = A minimal markdown editor and reader.
 	pkgver = 1.1.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://typora.io/
 	arch = x86_64
 	license = custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."
 	depends = gtk3
-	depends = libxss
+	depends = nss
+	depends = alsa-lib
 	optdepends = noto-fonts-emoji: Or some other emoji font to see emojis
 	optdepends = pandoc: Import/export for extra file formats
 	source = https://typora.io/linux/typora_1.1.5_amd64.deb
