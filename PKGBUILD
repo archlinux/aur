@@ -1,7 +1,7 @@
 # Maintainer: Mišo Barišić <me@misobarisic.com>
 pkgname="yoku"
-pkgver=0.1.0
-pkgrel=4
+pkgver=0.1.1
+pkgrel=0
 pkgdesc="Markdown based TUI todo"
 arch=('x86_64')
 url="https://github.com/misobarisic/yoku"
@@ -10,7 +10,7 @@ makedepends=('cargo' 'rust')
 conflicts=('yoku' 'yoku-bin')
 provides=('yoku')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/misobarisic/yoku/archive/v${pkgver}.tar.gz")
-sha256sums=("10cb7b993794f2e2c16d2de71d4dcbc58a6fa6821e287df04fbca3a62731185f")
+sha256sums=("61ad230c25b6cc44311c8a1c4ba274d8b616ab5ac74d561a95a42d888b7957a1")
 
 build() {
   mv $srcdir/$pkgname-$pkgver $srcdir/$pkgname
