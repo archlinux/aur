@@ -1,9 +1,0 @@
-post_install() {
-  cat <<EOF
-
-Samhain requires extensive setup before it can operate properly.
-
-Reference: https://www.la-samhna.de/samhain/manual/
-
-EOF
-}
