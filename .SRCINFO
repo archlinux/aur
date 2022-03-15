@@ -9,8 +9,7 @@ pkgbase = bash-pureline-git
 	makedepends = git
 	depends = sh
 	provides = bash-pureline
-	source = git://github.com/chris-marsh/pureline
+	source = https://github.com/chris-marsh/pureline
 	md5sums = SKIP
 
 pkgname = bash-pureline-git
-
