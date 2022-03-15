@@ -5,7 +5,7 @@
 _android_arch=x86
 
 pkgname=android-${_android_arch}-lcms2
-pkgver=2.12
+pkgver=2.13.1
 pkgrel=1
 pkgdesc="Small-footprint color management engine, version 2 (android)"
 arch=('any')
@@ -13,10 +13,11 @@ url="http://www.littlecms.com"
 license=('MIT')
 depends=('android-ndk'
          "android-${_android_arch}-libtiff")
+groups=(android-lcms2)
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-configure')
 source=("https://downloads.sourceforge.net/sourceforge/lcms/lcms2-${pkgver}.tar.gz")
-md5sums=('8cb583c8447461896320b43ea9a688e0')
+md5sums=('47a99e781b89c958a773e2012e81ae8c')
 
 prepare() {
     cd "${srcdir}"/lcms2-${pkgver}
