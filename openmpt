@@ -1,0 +1,3 @@
+#!/bin/bash
+[[ "$1" == "" ]] && wine /usr/share/openmpt/OpenMPT.exe
+[[ "$1" != "" ]] && wine /usr/share/openmpt/OpenMPT.exe "$(winepath -w "$1")"

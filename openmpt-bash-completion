@@ -1,0 +1,8 @@
+_openmpt() {
+  local cur prev words cword split
+  _init_completion -s || return
+  # This list of supported file extensions was taken from the features page of the website. There is probably a more complete list somewhere.
+  _filedir '@(669|amf|ams|dbm|digi|dmf|dsm|far|gdm|ice|st26|imf|it|itp|j2b|m15|stk|mdl|med|mo3|mod|mptm|mt2|mtm|okt|plm|psm|ptm|s3m|stm|ult|umx|wow|xm)'
+}
+
+complete -F _openmpt openmpt

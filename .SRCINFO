@@ -1,7 +1,7 @@
 pkgbase = openmpt
 	pkgdesc = Open-source audio module tracker
 	pkgver = 1.30.03.00
-	pkgrel = 1
+	pkgrel = 2
 	url = https://openmpt.org/
 	arch = i686
 	arch = x86_64
@@ -11,9 +11,16 @@ pkgbase = openmpt
 	depends = wine
 	optdepends = bash-completion: tab completion support
 	optdepends = ccache: for Wine native host support
-	source_i686 = https://download.openmpt.org/archive/openmpt/1.30/OpenMPT-1.30.03.00-portable-x86.zip
+	noextract = openmpt-1.30.03.00.zip
+	source = openmpt
+	source = openmpt-bash-completion
+	source = x-mptm.xml
+	sha256sums = 8b3da74d09640985e324441e459d0ac43f956dd95b89e0003b0ad2df46742685
+	sha256sums = 602639496997a74fab0914b1cff519dff207524ba0adf516ecc55466a4e83253
+	sha256sums = 44065d91a46203dae1378d6d99e70d882d28f66e3a584236242937856a9a8d56
+	source_i686 = openmpt-1.30.03.00.zip::https://download.openmpt.org/archive/openmpt/1.30/OpenMPT-1.30.03.00-portable-x86.zip
 	sha256sums_i686 = cd58328f677ab226ee825a8500b085ece7e37d4359a666b488f6d02fbd7b94e7
-	source_x86_64 = https://download.openmpt.org/archive/openmpt/1.30/OpenMPT-1.30.03.00-portable-amd64.zip
+	source_x86_64 = openmpt-1.30.03.00.zip::https://download.openmpt.org/archive/openmpt/1.30/OpenMPT-1.30.03.00-portable-amd64.zip
 	sha256sums_x86_64 = 0c247f6a69262e075adb970d5073a2b356f9fd308225d0918ccd5eb5926ef2c2
 
 pkgname = openmpt
