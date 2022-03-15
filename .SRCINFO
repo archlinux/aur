@@ -1,9 +1,10 @@
 pkgbase = android-x86-x264
 	pkgdesc = Free library for encoding H264/AVC video streams (android)
 	pkgver = 157.r72db4377
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.videolan.org/developers/x264.html
 	arch = any
+	groups = android-x264
 	license = GPL
 	makedepends = android-configure
 	makedepends = git
@@ -21,4 +22,3 @@ pkgbase = android-x86-x264
 	md5sums = SKIP
 
 pkgname = android-x86-x264
-

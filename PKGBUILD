@@ -5,7 +5,7 @@ _android_arch=x86
 
 pkgname=android-${_android_arch}-x264
 pkgver=157.r72db4377
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='Free library for encoding H264/AVC video streams (android)'
 license=('GPL')
@@ -13,6 +13,7 @@ url='https://www.videolan.org/developers/x264.html'
 depends=('android-ndk'
          "android-${_android_arch}-ffmpeg"
          "android-${_android_arch}-l-smash")
+groups=(android-x264)
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-configure' 'git' 'nasm')
 _commit=72db437770fd1ce3961f624dd57a8e75ff65ae0b
@@ -49,6 +50,10 @@ build() {
              configue_opts+="
                  --disable-asm
                  --host=i686-linux"
+            ;;
+        x86-64)
+             configue_opts+="
+                 --disable-asm"
             ;;
         *)
             ;;
