@@ -1,7 +1,7 @@
 pkgbase = sawfish-pager-git
 	pkgdesc = A pager for the git-version of sawfish
-	pkgver = 0.90.4.5.g2c017bb
-	pkgrel = 2
+	pkgver = 0.90.4.7.g42591a2
+	pkgrel = 1
 	url = http://sawfish.wikia.com
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,7 @@ pkgbase = sawfish-pager-git
 	provides = sawfish-pager
 	conflicts = sawfish-pager
 	options = !libtool
-	source = git://github.com/SawfishWM/sawfish-pager.git
+	source = git+https://github.com/SawfishWM/sawfish-pager.git
 	md5sums = SKIP
 
 pkgname = sawfish-pager-git
-

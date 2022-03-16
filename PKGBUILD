@@ -2,8 +2,8 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=sawfish-pager-git
-pkgver=0.90.4.5.g2c017bb
-pkgrel=2
+pkgver=0.90.4.7.g42591a2
+pkgrel=1
 pkgdesc='A pager for the git-version of sawfish'
 arch=('i686' 'x86_64')
 url='http://sawfish.wikia.com'
@@ -13,7 +13,7 @@ makedepends=('git' 'rep-gtk-git' 'gettext')
 provides=('sawfish-pager')
 conflicts=('sawfish-pager')
 options=('!libtool')
-source=(git://github.com/SawfishWM/sawfish-pager.git)
+source=(git+https://github.com/SawfishWM/sawfish-pager.git)
 md5sums=('SKIP')
 
 pkgver() {
