@@ -3,7 +3,7 @@
 
 pkgname=gtrayicon
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A user configurable GTK2 status icon and menu for the system tray (notification area)"
 arch=('i686' 'x86_64')
 url="http://gtrayicon.sourceforge.net/"
@@ -28,6 +28,7 @@ package() {
   make DESTDIR="${pkgdir}/" install
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
   install -Dm644 {README,ChangeLog} -t "${pkgdir}"/usr/share/doc/"${pkgname}"
-  rm "${pkgdir}/usr/share/${pkgname}"/{README,ChangeLog,LICENSE}
+  install -Dm644 sample.menu -t "${pkgdir}"/usr/share/doc/"${pkgname}"/examples
+  rm "${pkgdir}/usr/share/${pkgname}"/{README,ChangeLog,LICENSE,sample.menu}
   install -Dm644 Debian/"${pkgname}".1 "${pkgdir}/usr/share/man/man1/${pkgname}.1"
 }
