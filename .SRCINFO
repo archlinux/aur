@@ -1,6 +1,6 @@
 pkgbase = intel-oneapi-dal
 	pkgdesc = Intel® oneAPI Data Analytics Library
-	pkgver = 2021.5.1
+	pkgver = 2021.5.1_803
 	pkgrel = 1
 	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
 	arch = x86_64
@@ -31,3 +31,8 @@ pkgname = intel-oneapi-dal
 	depends = intel-oneapi-common-licensing=2022.0.0
 	depends = intel-oneapi-tbb>=2021.5.0
 	depends = intel-oneapi-compiler>=2022.0.1
+
+pkgname = intel-oneapi-dal-static
+	pkgdesc = Intel® oneAPI Data Analytics Library (static libs)
+	depends = intel-oneapi-dal=2021.5.1_803
+	options = staticlibs
