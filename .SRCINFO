@@ -1,13 +1,15 @@
 pkgbase = assetfinder-git
 	pkgdesc = Find domains and subdomains related to a given domain
-	pkgver = r17.e0a2b33
+	pkgver = r19.4e95d87
 	pkgrel = 1
 	url = https://github.com/tomnomnom/assetfinder
 	arch = any
 	license = MIT
 	makedepends = go
 	makedepends = git
+	provides = assetfinder
 	conflicts = assetfinder
+	source = git+https://github.com/tomnomnom/assetfinder.git
+	sha256sums = SKIP
 
 pkgname = assetfinder-git
-
