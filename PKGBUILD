@@ -2,11 +2,13 @@
 
 pkgname=python-mulpyplexer
 pkgver=0.09
-pkgrel=1
+pkgrel=2
 pkgdesc="A module that multiplexes interactions with lists of python objects."
 arch=('any')
 url="https://github.com/zardus/mulpyplexer"
 license=('BSD')
+depends=('python')
+conflicts=('python-mulpyplexer-git')
 _name=${pkgname#python-}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('144e9e9bf66d3988f60542c9d3d4c94857438f7908f60e53f4c1cb1622fbbd30')
