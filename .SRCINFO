@@ -1,6 +1,6 @@
 pkgbase = intel-oneapi-dpl
 	pkgdesc = Intel® oneAPI DPC++ Library 2021.6.0 for Linux*
-	pkgver = 2021.6.0
+	pkgver = 2021.6.0_501
 	pkgrel = 1
 	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
 	arch = x86_64
