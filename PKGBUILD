@@ -10,7 +10,7 @@ _buildstamp='Arch Linux'
 
 _pkgname=audacious
 pkgname="$_pkgname-git"
-pkgver=4.1.r1.g499d4f6c2
+pkgver=4.2.beta1.r0.ge4755ce26
 pkgrel=1
 epoch=1
 pkgdesc="Lightweight, advanced audio player focused on audio quality (git version)"
@@ -23,7 +23,7 @@ optdepends=('unzip: zipped skins support')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 install="$_pkgname.install"
-source=("git://github.com/audacious-media-player/$_pkgname.git")
+source=("git+https://github.com/audacious-media-player/$_pkgname.git")
 sha256sums=('SKIP')
 
 if [ "$_use_meson" = 1 ]; then

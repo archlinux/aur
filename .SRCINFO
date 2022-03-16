@@ -1,6 +1,6 @@
 pkgbase = audacious-git
 	pkgdesc = Lightweight, advanced audio player focused on audio quality (git version)
-	pkgver = 4.1.r1.g499d4f6c2
+	pkgver = 4.2.beta1.r0.ge4755ce26
 	pkgrel = 1
 	epoch = 1
 	url = https://audacious-media-player.org/
@@ -17,8 +17,7 @@ pkgbase = audacious-git
 	optdepends = unzip: zipped skins support
 	provides = audacious
 	conflicts = audacious
-	source = git://github.com/audacious-media-player/audacious.git
+	source = git+https://github.com/audacious-media-player/audacious.git
 	sha256sums = SKIP
 
 pkgname = audacious-git
-
