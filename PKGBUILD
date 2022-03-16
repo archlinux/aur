@@ -1,9 +1,11 @@
 # Maintainer : Jingbei Li <i@jingbei.li>
 # Contributor: Intel Corporation <http://www.intel.com/software/products/support>
 
-pkgname=intel-oneapi-compiler
-pkgver=2022.0.2
+pkgbase=intel-oneapi-compiler
+pkgname=(intel-oneapi-compiler intel-oneapi-compiler-static)
+_pkgver=2022.0.2
 _debpkgrel=3658
+pkgver=${_pkgver}_${_debpkgrel}
 pkgrel=1
 pkgdesc="Intel® oneAPI Compiler"
 arch=('x86_64')
@@ -121,23 +123,43 @@ build() {
 	rm -r opt/intel/oneapi/conda_channel
 }
 
-package() {
+package_intel-oneapi-compiler() {
 	depends=(
-		'intel-oneapi-dpcpp-debugger=2021.5.0'
-		'intel-oneapi-mpi=2021.5.1'
-		'intel-oneapi-dpl=2021.6.0'
-		'intel-oneapi-tbb=2021.5.1'
-		'intel-oneapi-dev-utilities=2021.5.2'
+		'intel-oneapi-dpcpp-debugger>=2021.5.0'
+		'intel-oneapi-mpi>=2021.5.1'
+		'intel-oneapi-dpl>=2021.6.0'
+		'intel-oneapi-tbb>=2021.5.1'
+		'intel-oneapi-dev-utilities>=2021.5.2'
+
+		'intel-oneapi-dpcpp-debugger<2021.5.1'
+		'intel-oneapi-mpi<2021.5.2'
+		'intel-oneapi-dpl<2021.6.1'
+		'intel-oneapi-tbb<2021.5.2'
+		'intel-oneapi-dev-utilities<2021.5.3'
 
 		'intel-oneapi-common-vars>=2022.0.0'
 		'intel-oneapi-common-licensing=2022.0.0'
 	)
-	mv ${srcdir}/opt ${pkgdir}
-	ln -sfT "$pkgver" ${pkgdir}/opt/intel/oneapi/compiler/latest
+	cp -r ${srcdir}/opt ${pkgdir}
+	ln -sfT "${_pkgver}" ${pkgdir}/opt/intel/oneapi/compiler/latest
 
-	cd ${pkgdir}/opt/intel/oneapi/compiler/$pkgver/linux/lib
+	cd ${pkgdir}/opt/intel/oneapi/compiler/${_pkgver}/linux/lib
 	ln -sf ./libffi.so.6.0.1 libffi.so.6.0
 	ln -sf ./libffi.so.6.0 libffi.so.6
 
 	install -Dm644 ${srcdir}/${pkgname}.conf ${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf
 }
+
+package_intel-oneapi-compiler-static() {
+	pkgdesc="$pkgdesc (static libs)"
+	depends=("$pkgbase=$pkgver")
+	options=(staticlibs)
+	cd ${srcdir}
+	for _file in $(find . -name '*.a'); do
+		_filename=$(echo $_file | sed "s/.a$//g")
+		if [ -f "$_filename.so" ]; then
+			cp --parents ${_file} ${pkgdir}/
+		fi
+	done
+}
+

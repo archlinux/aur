@@ -1,6 +1,6 @@
 pkgbase = intel-oneapi-compiler
 	pkgdesc = Intel® oneAPI Compiler
-	pkgver = 2022.0.2
+	pkgver = 2022.0.2_3658
 	pkgrel = 1
 	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
 	arch = x86_64
@@ -69,10 +69,20 @@ pkgbase = intel-oneapi-compiler
 	sha256sums = 272e9a6015f25f777e092d5c8c4c435e08d4fe640ba7f15d09cd36e07654b83f
 
 pkgname = intel-oneapi-compiler
-	depends = intel-oneapi-dpcpp-debugger=2021.5.0
-	depends = intel-oneapi-mpi=2021.5.1
-	depends = intel-oneapi-dpl=2021.6.0
-	depends = intel-oneapi-tbb=2021.5.1
-	depends = intel-oneapi-dev-utilities=2021.5.2
+	depends = intel-oneapi-dpcpp-debugger>=2021.5.0
+	depends = intel-oneapi-mpi>=2021.5.1
+	depends = intel-oneapi-dpl>=2021.6.0
+	depends = intel-oneapi-tbb>=2021.5.1
+	depends = intel-oneapi-dev-utilities>=2021.5.2
+	depends = intel-oneapi-dpcpp-debugger<2021.5.1
+	depends = intel-oneapi-mpi<2021.5.2
+	depends = intel-oneapi-dpl<2021.6.1
+	depends = intel-oneapi-tbb<2021.5.2
+	depends = intel-oneapi-dev-utilities<2021.5.3
 	depends = intel-oneapi-common-vars>=2022.0.0
 	depends = intel-oneapi-common-licensing=2022.0.0
+
+pkgname = intel-oneapi-compiler-static
+	pkgdesc = Intel® oneAPI Compiler (static libs)
+	depends = intel-oneapi-compiler=2022.0.2_3658
+	options = staticlibs
