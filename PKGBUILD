@@ -2,8 +2,8 @@
 
 _basename=jitsi-meet
 _pkgname=prosody
-_tag=5923
-_version=1.0.5923
+_tag=5956
+_version=1.0.5956
 
 pkgname=${_basename}-${_pkgname}-nightly
 pkgver=${_version}
@@ -15,6 +15,7 @@ license=('Apache')
 depends=()
 optdepends=("prosody" "lua52" "lua52-sec" "lua52-zip" "lua52-event")
 makedepends=(
+        "git"
 )
 options=('!strip')
 backup=(
