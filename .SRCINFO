@@ -1,6 +1,6 @@
 pkgbase = carla-bridges-win64-git
 	pkgdesc = Carla win64 bridge
-	pkgver = 4606.db6dadd6d
+	pkgver = 6278.975821819
 	pkgrel = 1
 	url = http://kxstudio.sf.net/carla
 	arch = i686
@@ -15,8 +15,7 @@ pkgbase = carla-bridges-win64-git
 	depends = carla-git
 	provides = carla-bridges-win64
 	conflicts = carla-bridges-win64
-	source = carla-bridges-win64-git::git://github.com/falkTX/Carla.git
+	source = carla-bridges-win64-git::git+https://github.com/falkTX/Carla.git
 	md5sums = SKIP
 
 pkgname = carla-bridges-win64-git
-
