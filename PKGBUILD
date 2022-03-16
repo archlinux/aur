@@ -5,7 +5,7 @@
 pkgname=mozillavpn
 pkgver=2.7.0
 _debian_series=impish1
-pkgrel=2
+pkgrel=3
 pkgdesc="A fast, secure and easy to use VPN. Built by the makers of Firefox."
 arch=('i686' 'x86_64')
 url="https://vpn.mozilla.org/"
@@ -24,6 +24,7 @@ depends=('polkit'
          'qt6-imageformats'
          'qt6-networkauth'
          'qt6-svg'
+         'qt6-5compat'
          'hicolor-icon-theme'
          'wireguard-tools'
          'WIREGUARD-MODULE'
@@ -38,6 +39,7 @@ sha256sums=('0aca5cc0752d30b7b120d8cf277cac6ef4e085db5f9d68fec3450030b0b1215b'
 
 build() {
     cd "${pkgname}-${pkgver}"
+    export PATH=/usr/lib/qt6/bin/:$PATH
     python scripts/importLanguages.py
     qmake6 PREFIX=/usr CONFIG-=debug CONFIG+=release CONFIG-=debug_and_release CONFIG+=webextension
     make
