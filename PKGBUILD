@@ -7,7 +7,7 @@
 
 _pkgname=mumble
 pkgname="$_pkgname-git"
-pkgver=1.4.0.development.snapshot.006.r549.g7b55ed7ef
+pkgver=1.4.0.development.snapshot.006.r560.g681d0018d
 pkgrel=1
 epoch=1
 pkgdesc='An Open Source, low-latency, high quality voice chat software (git version)'
@@ -25,10 +25,10 @@ optdepends=('speech-dispatcher: Text-to-Speech support'
             'pipewire: PipeWire audio support')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=('git://github.com/mumble-voip/mumble.git'
-        'git://github.com/mumble-voip/celt-0.7.0.git'
-        'git://github.com/mumble-voip/opus.git'
-        'git://github.com/mumble-voip/speex.git')
+source=('git+https://github.com/mumble-voip/mumble.git'
+        'git+https://github.com/mumble-voip/celt-0.7.0.git'
+        'git+https://github.com/mumble-voip/opus.git'
+        'git+https://github.com/mumble-voip/speex.git')
 sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
