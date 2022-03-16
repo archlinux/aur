@@ -1,7 +1,7 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 pkgname=jitsi-videobridge-git
-pkgver=2.1+497+g9f27e9877
+pkgver=2.1+642+gcb2982547
 pkgrel=1
 pkgdesc="Jitsi Meet Videobridge git build"
 arch=('any')
@@ -10,14 +10,15 @@ license=('Apache')
 depends=("java-runtime" "bash")
 optdepends=("prosody")
 makedepends=(
+        "git"
         "java-environment"
         "unzip" "maven"
 )
 options=('!strip')
 backup=(
   "etc/${pkgname}/config"
-  "etc/${pkgname}/log4j2.xml"
   "etc/${pkgname}/logging.properties"
+  "etc/${pkgname}/callstats-java-sdk.properties"
   "etc/${pkgname}/sip-communicator.properties"
   "etc/${pkgname}/jvb.conf"
 )
@@ -57,10 +58,8 @@ package() {
         install -Dm755 -t "${DESTDIR}" "jvb/resources/jvb.sh"
 
         install -dm700 "${CONFDIR}"
-        install -Dm600 -t "${CONFDIR}" "jvb/lib/logging.properties" "config/log4j2.xml" "config/callstats-java-sdk.properties"
+        install -Dm600 -t "${CONFDIR}" "jvb/lib/logging.properties" "config/callstats-java-sdk.properties"
         install -Dm600 "jvb/src/main/resources/reference.conf" "${CONFDIR}/jvb.conf"
-        sed -i 's@logs@/var/log/'$pkgname'@' "${CONFDIR}/log4j2.xml"
-
         install -Dm644 "config/20-jvb-udp-buffers.conf" "${pkgdir}/etc/sysctl.d/${pkgname}.conf"
 
         cd "$srcdir"
