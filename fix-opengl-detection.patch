@@ -1,0 +1,13 @@
+diff --git a/src/location/configure.json b/src/location/configure.json
+index 6d01a9a3..d1e623a1 100644
+--- a/src/location/configure.json
++++ b/src/location/configure.json
+@@ -9,7 +9,7 @@
+             "label": "Qt.labs.location experimental QML plugin",
+             "purpose": "Provides experimental QtLocation QML types",
+             "section": "Location",
+-            "condition": "config.opengl",
++            "condition": "features.opengl",
+             "output": [ "privateFeature" ]
+         },
+         "geoservices_osm": {
