@@ -4,10 +4,10 @@
 pkgname=imagescan
 pkgver=3.65.0
 _utsushiver=${pkgver/3./0.}
-pkgrel=4
-pkgdesc="EPSON Image Scan v3 front-end for scanners and all-in-ones"
+pkgrel=5
+pkgdesc='EPSON Image Scan v3 front-end for scanners and all-in-ones'
 arch=(x86_64)
-url="http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX"
+url='http://download.ebz.epson.net/dsc/search/01/search/?OSC=LX'
 license=(GPL3)
 depends=(sane gtkmm graphicsmagick boost-libs)
 makedepends=(boost systemd)
@@ -22,6 +22,7 @@ prepare() {
 
   patch -Np1 -i ${srcdir}/boost-1.74.patch # Fix build with boost 1.74
   rm -r upstream/boost # Remove vendored libraries
+  sed -e 's|&& (SANE_MINOR == 0)||' -i sane/version.hpp # Fix build with sane 1.1
 }
 
 build() {
