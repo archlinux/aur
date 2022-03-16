@@ -1,26 +1,28 @@
 # Contributor : Jingbei Li <i@jingbei.li>
 # Contributor: Intel Corporation <http://www.intel.com/software/products/support>
 
-pkgname=intel-oneapi-mkl
-pkgver=2022.0.2
+pkgbase=intel-oneapi-mkl
+pkgname=(intel-oneapi-mkl intel-oneapi-mkl-static)
+_pkgver=2022.0.2
 _debpkgrel=136
+pkgver=${_pkgver}_${_debpkgrel}
 pkgrel=1
 pkgdesc="Intel® oneAPI Math Kernel Library"
 arch=('x86_64')
 url='https://software.intel.com/content/www/us/en/develop/tools/oneapi.html'
 license=("custom")
 source=(
-	"https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb"
-	"https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-devel-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb"
-	"https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-common-${pkgver}-${pkgver}-${_debpkgrel}_all.deb"
-	"https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-common-devel-${pkgver}-${pkgver}-${_debpkgrel}_all.deb"
+	"https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-${_pkgver}-${_pkgver}-${_debpkgrel}_amd64.deb"
+	"https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-devel-${_pkgver}-${_pkgver}-${_debpkgrel}_amd64.deb"
+	"https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-common-${_pkgver}-${_pkgver}-${_debpkgrel}_all.deb"
+	"https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-common-devel-${_pkgver}-${_pkgver}-${_debpkgrel}_all.deb"
 	"${pkgname}.conf"
 )
 noextract=(
-	"${pkgname}-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb"
-	"${pkgname}-devel-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb"
-	"${pkgname}-common-${pkgver}-${pkgver}-${_debpkgrel}_all.deb"
-	"${pkgname}-common-devel-${pkgver}-${pkgver}-${_debpkgrel}_all.deb"
+	"${pkgname}-${_pkgver}-${_pkgver}-${_debpkgrel}_amd64.deb"
+	"${pkgname}-devel-${_pkgver}-${_pkgver}-${_debpkgrel}_amd64.deb"
+	"${pkgname}-common-${_pkgver}-${_pkgver}-${_debpkgrel}_all.deb"
+	"${pkgname}-common-devel-${_pkgver}-${_pkgver}-${_debpkgrel}_all.deb"
 )
 sha256sums=('0d01beddf0d6b8f2fd017322a1ef150bc3d483f9f0a3fe774f08977037327bcf'
             '9041a804d7b41813c1816d15bba749fbca59cb56603d66b8b9fe99fc133b48fe'
@@ -29,26 +31,40 @@ sha256sums=('0d01beddf0d6b8f2fd017322a1ef150bc3d483f9f0a3fe774f08977037327bcf'
             'f2932e9ab3d2c75bc354f55322e2a2821877b84f0e3d5dbbefa233144d14ba09')
 
 build() {
-	ar x ${pkgname}-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb
+	ar x ${pkgname}-${_pkgver}-${_pkgver}-${_debpkgrel}_amd64.deb
 	tar xvf data.tar.xz
 
-	ar x ${pkgname}-devel-${pkgver}-${pkgver}-${_debpkgrel}_amd64.deb
+	ar x ${pkgname}-devel-${_pkgver}-${_pkgver}-${_debpkgrel}_amd64.deb
 	tar xvf data.tar.xz
 
-	ar x ${pkgname}-common-${pkgver}-${pkgver}-${_debpkgrel}_all.deb
+	ar x ${pkgname}-common-${_pkgver}-${_pkgver}-${_debpkgrel}_all.deb
 	tar xvf data.tar.xz
 
-	ar x ${pkgname}-common-devel-${pkgver}-${pkgver}-${_debpkgrel}_all.deb
+	ar x ${pkgname}-common-devel-${_pkgver}-${_pkgver}-${_debpkgrel}_all.deb
 	tar xvf data.tar.xz
 
 	rm -r opt/intel/oneapi/conda_channel
 }
 
-package() {
+package_intel-oneapi-mkl() {
 	depends=('intel-oneapi-common-vars>=2022.0.0' 'intel-oneapi-common-licensing=2022.0.0'
-    'intel-oneapi-tbb=2021.5.1' 'intel-oneapi-compiler=2022.0.2' )
+    'intel-oneapi-tbb>=2021.5.1' 'intel-oneapi-compiler>=2022.0.2' 
+	'intel-oneapi-tbb<2021.5.2' 'intel-oneapi-compiler<2022.0.3' )
 	mv ${srcdir}/opt ${pkgdir}
-	ln -sfT "$pkgver" ${pkgdir}/opt/intel/oneapi/mkl/latest
+	ln -sfT "$_pkgver" ${pkgdir}/opt/intel/oneapi/mkl/latest
 
 	install -Dm644 ${pkgname}.conf ${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf
+}
+
+package_intel-oneapi-mkl-static() {
+	pkgdesc="$pkgdesc (static libs)"
+	depends=("$pkgbase=$pkgver")
+	options=(staticlibs)
+	cd ${srcdir}
+	for _file in $(find . -name '*.a'); do
+		_filename=$(echo $_file | sed "s/.a$//g")
+		if [ -f "$_filename.so" ]; then
+			cp --parents ${_file} ${pkgdir}/
+		fi
+	done
 }
