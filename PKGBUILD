@@ -50,7 +50,7 @@ package_intel-oneapi-mkl() {
 	depends=('intel-oneapi-common-vars>=2022.0.0' 'intel-oneapi-common-licensing=2022.0.0'
     'intel-oneapi-tbb>=2021.5.1' 'intel-oneapi-compiler>=2022.0.2' 
 	'intel-oneapi-tbb<2021.5.2' 'intel-oneapi-compiler<2022.0.3' )
-	mv ${srcdir}/opt ${pkgdir}
+	cp -r ${srcdir}/opt ${pkgdir}
 	ln -sfT "$_pkgver" ${pkgdir}/opt/intel/oneapi/mkl/latest
 
 	install -Dm644 ${pkgname}.conf ${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf
