@@ -63,9 +63,9 @@ post_install() {
     echo 'driftfile /var/lib/ntp/ntp.drift' >> /etc/ntp.conf
     
     echo "enabling DEVICE specific systemd service files"
-    systemctl enable ethoscope_device.service ethoscope_update.service 
+    systemctl enable ethoscope_device.service ethoscope_listener.service ethoscope_update.service 
     systemctl enable ntpd.service mysqld.service sshd.service mysqld.service avahi-daemon.service
-    systemctl enable fake-hwclock fake-hwclock-save.timer
+    #systemctl enable fake-hwclock fake-hwclock-save.timer
     
     echo "Set up mysql database"
     mysql_install_db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
@@ -125,16 +125,16 @@ post_install() {
 post_upgrade() {
     echo "changing the remote GIT source to BARE on node"
     cd /opt/ethoscope-device
-    git remote set-url origin git://node/srv/git/ethoscope.git
+    git remote set-url origin git://node/ethoscope.git
 
     #setting branch
-    git checkout python3.7
+    git checkout dev
 }
 
 # arg 1:  the old package version
 pre_remove() {
     echo "disabling systemd service files"
-    systemctl disable ethoscope_device.service ethoscope_update.service
+    systemctl disable ethoscope_device.service ethoscope_listener.service ethoscope_update.service
 }
 
 ## arg 1:  the old package version
