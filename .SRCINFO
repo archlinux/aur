@@ -1,14 +1,14 @@
 pkgbase = deno-bin
 	pkgdesc = A modern runtime for JavaScript and TypeScript.
-	pkgver = 1.19.2
-	pkgrel = 2
+	pkgver = 1.19.3
+	pkgrel = 1
 	url = https://deno.land
 	arch = x86_64
 	license = MIT
 	provides = deno
 	conflicts = deno
 	conflicts = deno-git
-	source = https://github.com/denoland/deno/releases/download/v1.19.2/deno-x86_64-unknown-linux-gnu.zip
-	sha256sums = 6864d019f0ced1657843fde73022bd53b13dc2e14923393a6ec9cde2097ca867
+	source = https://github.com/denoland/deno/releases/download/v1.19.3/deno-x86_64-unknown-linux-gnu.zip
+	sha256sums = fc70e7e7730d3fcdadf3ab0dfe1aa1ed0da587e5ef78cd5e060f98b3393cd883
 
 pkgname = deno-bin
