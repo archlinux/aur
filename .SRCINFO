@@ -1,6 +1,6 @@
 pkgbase = intel-oneapi-ippcp
 	pkgdesc = Intel® Integrated Performance Primitives Cryptography common
-	pkgver = 2021.5.1
+	pkgver = 2021.5.1_462
 	pkgrel = 1
 	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
 	arch = x86_64
@@ -23,3 +23,8 @@ pkgbase = intel-oneapi-ippcp
 pkgname = intel-oneapi-ippcp
 	depends = intel-oneapi-common-vars>=2022.0.0
 	depends = intel-oneapi-common-licensing=2022.0.0
+
+pkgname = intel-oneapi-ippcp-static
+	pkgdesc = Intel® Integrated Performance Primitives Cryptography common (static libs)
+	depends = intel-oneapi-ippcp=2021.5.1_462
+	options = staticlibs
