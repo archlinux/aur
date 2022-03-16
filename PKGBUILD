@@ -4,7 +4,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=99.0.4844.51
+pkgver=99.0.4844.74
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=3
@@ -31,7 +31,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         use-FT_Done_MM_Var-in-CFX_Font-AdjustMMParams.patch
         sql-make-VirtualCursor-standard-layout-type.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('97c52e57eca0dc8b752d274047f38c88aaa86036c0587b26b056efbd3fb2bae3'
+sha256sums=('2d5f464730fde0260d1b00db1b38210344952ec91a5b3c544c99c43e76ffbb98'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '9cd2570e92e9bfeff3faf0d5b56334535cb2313f99ab0d9019b74d18ae1c7d0a'
             'edf4d973ff197409d319bb6fbbaa529e53bc62347d26b0733c45a116a1b23f37'
