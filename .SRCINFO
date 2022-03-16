@@ -1,6 +1,6 @@
 pkgbase = sawfish-git
 	pkgdesc = A window manager extensible using a Lisp-based scripting language.
-	pkgver = 1.12.90.17.g3e078042
+	pkgver = 1.13.0.1.g7f8b7bdd
 	pkgrel = 1
 	url = http://sawfish.wikia.com
 	arch = i686
@@ -17,10 +17,9 @@ pkgbase = sawfish-git
 	provides = sawfish=1.11
 	conflicts = sawfish
 	options = !libtool
-	source = git://github.com/SawfishWM/sawfish.git
+	source = git+https://github.com/SawfishWM/sawfish.git
 	source = arch_poweroff_defaults.patch
 	sha1sums = SKIP
 	sha1sums = 73dbf5f93c0124c11f0254267d662f86be1f2767
 
 pkgname = sawfish-git
-
