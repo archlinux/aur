@@ -2,14 +2,14 @@
 # Contributor: Colin Pitrat <colin dot pitrat at gmail dot com>
 pkgname=caprice32-git
 pkgver=4.5.0.r505.gbb3b23a
-pkgrel=1
+pkgrel=2
 pkgdesc="An emulator of the Amstrad CPC 8bit home computer range (CPC 464, 664, 6128)"
 arch=('i686' 'x86_64')
 url="https://github.com/ColinPitrat/caprice32"
 license=('GPL2')
 makedepends=('git' 'glu')
 depends=('sdl2' 'freetype2')
-source=(git://github.com/ColinPitrat/caprice32
+source=(git+https://github.com/ColinPitrat/caprice32
 caprice32.desktop)
 sha256sums=('SKIP'
             '6ebca670aad7cf21582297725d242d2fc7b730e6ddf50b6710c3851d5c7cfa15')
