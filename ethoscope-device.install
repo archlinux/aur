@@ -10,7 +10,7 @@ post_install() {
     git remote set-url origin git://node/ethoscope.git
 
     echo "setting GIT branch"
-    git checkout python3.7
+    git checkout dev
     
     echo "installing python package"
     cd /opt/ethoscope-device/src
@@ -106,7 +106,9 @@ post_install() {
     echo "generating locale"
     echo "en_GB.UTF-8 UTF-8" >> /etc/locale.gen
     locale-gen
-    
+
+    echo "disable bluetooth"
+    echo 'dtoverlay=pi3-disable-bt' >> /boot/config.txt
    
     echo "Please reboot this PI now."
     
