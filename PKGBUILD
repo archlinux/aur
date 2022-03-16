@@ -2,7 +2,7 @@
 
 pkgname=python-numpy-git
 _pkgname=numpy
-pkgver=v1.23.0.dev0.r229.g0302205105
+pkgver=v1.23.0.dev0.r907.gf6efa62e3c
 pkgrel=1
 pkgdesc="Scientific tools for Python - git version"
 arch=('x86_64')
@@ -15,7 +15,7 @@ checkdepends=('python-pytest' 'python-hypothesis')
 conflicts=('python-numpy')
 provides=('python-numpy')
 options=('staticlibs')
-source=("git://github.com/numpy/numpy.git")
+source=("git+https://github.com/numpy/numpy.git")
 sha512sums=('SKIP')
 
 pkgver() {
