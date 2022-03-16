@@ -1,0 +1,25 @@
+pkgbase = python-dymos
+	pkgdesc = Open-source optimization of dynamic multidisciplinary systems
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/openmdao/dymos
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	checkdepends = python-pep8
+	checkdepends = python-testflo
+	checkdepends = python-matplotlib
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-openmdao
+	depends = python-numpy
+	depends = python-scipy
+	optdepends = ipython
+	optdepends = python-notebook
+	optdepends = python-tabulate
+	source = python-dymos-1.4.0.tar.gz::https://files.pythonhosted.org/packages/source/d/dymos/dymos-1.4.0.tar.gz
+	sha256sums = ebda14a3f857e4fc2ed2a7d5c7c88be1edd8286b1ca92b7288ccf70b83930c2b
+
+pkgname = python-dymos
