@@ -2,7 +2,7 @@
 pkgname=c64-debugger-git
 pkgver=0.64.58.6.r63.f97772e
 pkgrel=1
-pkgdesc="Commodore 64 and Atari XL/XE debugger that works in real time"
+pkgdesc="Commodore 64, Atari XL/XE and NES debugger that works in real time"
 arch=('x86_64' 'i686' 'pentium4')
 url="https://sourceforge.net/projects/c64-debugger/"
 license=('unknown')
