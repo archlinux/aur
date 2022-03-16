@@ -12,7 +12,7 @@ sha256sums=("9e6bfbdb37b1c41f6d7254d3f1560a42d2dc316a68a36cfbacee0aba95835afb"
             "SKIP")
 validpgpkeys=("F9403D7EAE2AC5F4C361015E654C5927EE163067") # Phoenix Devs <pdevs@example.com>
 options=(!strip)
- 
+
 package() {
   mkdir -p "$pkgdir/opt/${_pkgbasename}"
   mkdir -p "$pkgdir/usr/bin"
