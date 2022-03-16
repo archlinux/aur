@@ -28,7 +28,7 @@ package() {
   #setting python3 branch
   cd "${srcdir}/${pkgname}"
   git checkout dev
-  
+
   #cp node server and node updater
   cd "${srcdir}"
   cp -R --no-dereference --preserve=mode,links -v * "${pkgdir}/opt/${pkgname}"
@@ -36,17 +36,11 @@ package() {
 
   #changing the remote GIT source to local BARE created during installation
   cd "${pkgdir}/opt/${pkgname}"
-  git remote set-url origin /srv/git/ethoscope.git
+  git remote set-url origin git://node/ethoscope.git
   
-  #install python package
-  #cd "${srcdir}/${pkgname}/src"
-  #PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps -e .
-  #install is not upgrade friendly and develop won't accept the option "root"
-  #python setup.py install --root="$pkgdir/"
-
   #install service files
   cd "${srcdir}"/"${pkgname}"/scripts/
-  install -D --mode=0755 ethoscope_device.service "${pkgdir}/usr/lib/systemd/system/"
+  install -D --mode=0755 ethoscope_device.service ethoscope_listener.service "${pkgdir}/usr/lib/systemd/system/"
   cd "${srcdir}"/"${pkgname}"/scripts/ethoscope_updater/
   install -D --mode=0755 ethoscope_update.service "${pkgdir}/usr/lib/systemd/system/"
 
