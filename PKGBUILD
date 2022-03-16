@@ -1,20 +1,21 @@
-# Maintainer: Maxime Gauduin <alucryd@archlinux.org>
+# Maintainer: Fabian Maurer <dark.shadow4@web.de>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Gerardo Exequiel Pozzi <vmlinuz386@yahoo.com.ar>
 # Contributor: Tod Jackson <tod.jackson@gmail.com>
 
 pkgname=lib32-libbsd
-pkgver=0.10.0
-pkgrel=2
+pkgver=0.11.5
+pkgrel=1
 pkgdesc='Provides useful functions commonly found on BSD systems like strlcpy()'
 arch=('x86_64')
 url='http://libbsd.freedesktop.org'
 license=('custom')
-depends=('lib32-glibc' 'libbsd')
+depends=('lib32-glibc' 'libbsd' 'lib32-libmd')
 makedepends=('gcc-multilib' 'lib32-gcc-libs')
 source=("https://libbsd.freedesktop.org/releases/libbsd-${pkgver}.tar.xz")
-sha256sums=('34b8adc726883d0e85b3118fa13605e179a62b31ba51f676136ecb2d0bc1a887')
+sha256sums=('1a9c952525635c1bb6770cb22e969b938d8e6a9d7912362b98ee8370599b0efd')
 
 build() {
   cd libbsd-${pkgver}
