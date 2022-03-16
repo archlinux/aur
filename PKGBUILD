@@ -1,9 +1,9 @@
 # Maintainer: Mélanie Chauvel (ariasuni) <perso@hack-libre.org>
 
 pkgbase='hunspell-fr'
-pkgname=($pkgbase-{'classical','comprehensive','modern','revised'})
-pkgver=6.4.1
-pkgrel=2
+pkgname=($pkgbase-{'classical','comprehensive','revised'})
+pkgver=7.0
+pkgrel=1
 pkgdesc="French Hunspell dictionary"
 arch=(any)
 _base_url="https://grammalecte.net"
@@ -13,7 +13,7 @@ makedepends=('qt5-webengine')
 conflicts=('hunspell-fr')
 provides=('hunspell-fr')
 source=("${_base_url}/download/fr/hunspell-french-dictionaries-v${pkgver}.zip")
-sha256sums=('744e77a3bd115144fa3131485231638d41c21e65ed757bfc576ccec1dcc9c6cc')
+sha256sums=('eb7ac36dc14b9c3e3c0cabae0f90304a137da8e6ae607bcaf56d65720fbd097f')
 
 package_hunspell-fr-classical() {
   pkgdesc+=" (classical variant)"
@@ -23,11 +23,6 @@ package_hunspell-fr-classical() {
 package_hunspell-fr-comprehensive() {
   pkgdesc+=" (comprehensive variant)"
   _package 'toutesvariantes'
-}
-
-package_hunspell-fr-modern() {
-  pkgdesc+=" (modern variant)"
-  _package 'moderne'
 }
 
 package_hunspell-fr-revised() {
