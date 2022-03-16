@@ -1,14 +1,14 @@
 # Maintainer: Oliver Ford <dev.aur@ojford.com>
 
 pkgname=cyberark-summon
-pkgver=0.8.3
-pkgrel=4
+pkgver=0.9.1
+pkgrel=1
 pkgdesc='CLI that provides on-demand secrets access for common DevOps tools'
 arch=('x86_64' 'i686')
 url='https://github.com/cyberark/summon'
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/cyberark/summon/releases/download/v${pkgver}/summon-linux-amd64.tar.gz")
-sha256sums=('fc0e0feaf6ef4fb641a41762a2c76d1a282fec3f852e1141af6e3f8ab24f074f')
+sha256sums=('fc53167b12bea5003e3c6177ad08a0b98c3f9e12145f0b3187a440afeffa064b')
 
 conflicts=(
     'summon'
