@@ -2,7 +2,7 @@
 
 pkgname=man-pages-id-git
 _gitname=manpages-l10n
-pkgver=r18108.9abf390d26
+pkgver=r18173.4a86328d31
 pkgrel=1
 pkgdesc="Indonesian man pages (Git version)"
 arch=('any')
