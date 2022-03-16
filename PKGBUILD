@@ -6,13 +6,13 @@ pkgname="${_pkgname}-git"
 pkgver=0.5.r88.gf984b81
 pkgrel=1
 pkgdesc='CLI tool for kernel development'
-arch=('x86_64')
+arch=('all') # change to all
 url='https://github.com/kworkflow/kworkflow'
 source=("git+https://github.com/kworkflow/kworkflow")
 license=('GPL2')
 depends=(bc qemu bash git tar libpulse python-virtualenv
 	 bzip2 lzip lzop zstd xz
-	 perl-authen-sasl perl-io-socket-ssl)
+	 perl-authen-sasl perl-io-socket-ssl rsync pv)
 optdepends=('pipewire-pulse: PipeWire backend'
 	    'pulseaudio: PulseAudio backend'
 	    'dunst: Desktop notifications support'
