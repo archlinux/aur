@@ -40,8 +40,8 @@ install=upbge.install
 # More info:
 #   http://wiki.blender.org/index.php/Dev:Doc/Tools/Git
 source=(
-  "git://github.com/UPBGE/upbge.git"
-  "blender-addons.git::git://github.com/UPBGE/blender-addons.git"
+  "https://github.com/UPBGE/upbge.git"
+  "blender-addons.git::https://github.com/UPBGE/blender-addons.git"
   "blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git"
   "blender-translations.git::git://git.blender.org/blender-translations.git"
   "blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git"
