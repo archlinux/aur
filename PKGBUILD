@@ -1,6 +1,6 @@
 # Maintainer: drakkan <nicola.murino at gmail dot com>
 pkgname=mingw-w64-ffmpeg-minimal
-pkgver=4.4.1
+pkgver=5.0
 pkgrel=1
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
@@ -52,6 +52,7 @@ package() {
     ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
 
     mv "${pkgdir}"/usr/${_arch}/bin/*.lib "${pkgdir}"/usr/${_arch}/lib/
+    rm -rf "${pkgdir}"/usr/${_arch}/share
   done
 }
 
