@@ -6,7 +6,7 @@
 _pkgname=cool-retro-term
 pkgname=$_pkgname-git
 pkgver=1.1.0.r118.g74ae511
-pkgrel=1
+pkgrel=2
 pkgdesc='A good looking terminal emulator which mimics the old cathode display - git version'
 arch=('i686' 'x86_64')
 url='https://github.com/Swordfish90/cool-retro-term'
@@ -15,7 +15,7 @@ depends=('hicolor-icon-theme' 'qt5-declarative')
 makedepends=('git' 'qt5-quickcontrols' 'qt5-quickcontrols2' 'qt5-graphicaleffects' 'qmltermwidget-git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git://github.com/Swordfish90/cool-retro-term.git")
+source=("git+https://github.com/Swordfish90/cool-retro-term.git")
 sha256sums=('SKIP')
 
 prepare() {
