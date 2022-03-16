@@ -1,6 +1,6 @@
 # Maintainer: J. Nathanael Philipp <nathanael@philipp.land>
 pkgname=coordcon
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="Commandline tool to convert geo coordinates"
 arch=("any")
@@ -8,7 +8,7 @@ url="https://github.com/jnphilipp/coordcon"
 license=("GPL3+")
 makedepends=("git" "help2man" "python" "python-virtualenv")
 depends=("python" "python-utm")
-source=("git://github.com/jnphilipp/coordcon.git")
+source=("git+https://github.com/jnphilipp/coordcon.git")
 md5sums=(SKIP)
 
 check() {
