@@ -1,8 +1,7 @@
 # Contributor : Jingbei Li <i@jingbei.li>
 # Contributor: Intel Corporation <http://www.intel.com/software/products/support>
 
-pkgbase=intel-oneapi-dal
-pkgname=(intel-oneapi-dal intel-oneapi-dal-static)
+pkgname=intel-oneapi-dal
 _pkgver=2021.5.1
 _debpkgrel=803
 pkgver=${_pkgver}_${_debpkgrel}
@@ -58,24 +57,11 @@ build() {
 	rm -r opt/intel/oneapi/conda_channel
 }
 
-package_intel-oneapi-dal() {
+package() {
 	depends=('intel-oneapi-common-vars>=2022.0.0' 'intel-oneapi-common-licensing=2022.0.0'
     'intel-oneapi-tbb>=2021.5.0' 'intel-oneapi-compiler>=2022.0.1')
 	mv ${srcdir}/opt ${pkgdir}
 	ln -sfT "$_pkgver" ${pkgdir}/opt/intel/oneapi/dal/latest
 
 	install -Dm644 ${pkgname}.conf ${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf
-}
-
-package_intel-oneapi-dal-static() {
-	pkgdesc="$pkgdesc (static libs)"
-	depends=("$pkgbase=$pkgver")
-	options=(staticlibs)
-	cd ${srcdir}
-	for _file in $(find . -name '*.a'); do
-		_filename=$(echo $_file | sed "s/.a$//g")
-		if [ -f "$_filename.so" ]; then
-			cp --parents ${_file} ${pkgdir}/
-		fi
-	done
 }
