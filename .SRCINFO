@@ -1,6 +1,6 @@
 pkgbase = goshs-bin
 	pkgdesc = Replacement for Python's SimpleHTTPServer
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/patrickhener/goshs
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = goshs-bin
 	license = MIT
 	provides = goshs
 	conflicts = goshs
-	source = https://github.com/patrickhener/goshs/releases/download/v0.1.7/goshs_0.1.7_Linux_x86_64.tar.gz
+	source = https://github.com/patrickhener/goshs/releases/download/v0.1.8/goshs_0.1.8_Linux_x86_64.tar.gz
 	sha512sums = SKIP
 
 pkgname = goshs-bin

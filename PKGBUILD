@@ -1,6 +1,6 @@
 # Maintainer: IIpho3nix <iipho3nix at gmail dot com>
 pkgname=goshs-bin
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 pkgdesc="Replacement for Python's SimpleHTTPServer"
 arch=("x86_64" "i386" "arm64")
