@@ -1,7 +1,7 @@
 # Maintainer: redstrate <josh@redstrate.com>
 # Contributor: Lionel Peller <errpell@protonmail.com>
 pkgname=trinity-matrix-git
-pkgver=r1.303001a
+pkgver=r4.77adaeb
 pkgrel=1
 pkgdesc="Qt5 QML Matrix client"
 arch=('x86_64')
