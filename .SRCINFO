@@ -1,6 +1,6 @@
 pkgbase = grisbi-git
 	pkgdesc = Personal financial management program - Development version
-	pkgver = 2.0.5.r256.gfcdad7609
+	pkgver = 2.0.5.r270.g995c53e71
 	pkgrel = 1
 	epoch = 1
 	url = http://www.grisbi.org
@@ -14,7 +14,7 @@ pkgbase = grisbi-git
 	provides = grisbi
 	conflicts = grisbi
 	replaces = grisbi
-	source = git://github.com/grisbi/grisbi.git
+	source = grisbi-git::git+https://github.com/grisbi/grisbi.git
 	sha256sums = SKIP
 
 pkgname = grisbi-git

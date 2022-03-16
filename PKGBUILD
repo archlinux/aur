@@ -2,7 +2,7 @@
 #Contributor: Maël Leclair <mael.leclair@gmail.com>
 pkgname=grisbi-git
 _pkgname=grisbi
-pkgver=2.0.5.r256.gfcdad7609
+pkgver=2.0.5.r270.g995c53e71
 pkgrel=1
 epoch=1
 pkgdesc="Personal financial management program - Development version"
@@ -15,22 +15,22 @@ makedepends=('git' 'intltool' 'libgsf')
 provides=('grisbi')
 conflicts=('grisbi')
 replaces=('grisbi')
-source=(git://github.com/grisbi/grisbi.git)
+source=("$pkgname"::'git+https://github.com/grisbi/grisbi.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
+  cd "$pkgname"
   git describe --long --tags | sed 's/upstream_version_//;s/\([^-]*-g\)/r\1/;s/-/./g;s/_/./g'
 }
 
 build() {
-  cd "$_pkgname"
+  cd "$pkgname"
   ./autogen.sh
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$_pkgname"
+  cd "$pkgname"
   make DESTDIR="$pkgdir/" install
 }
