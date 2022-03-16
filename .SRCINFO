@@ -6,9 +6,7 @@ pkgbase = betterbin
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/betterbin-1.0.r70-1-x86_64.pkg.tar.zst
-	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/betterbin-1.0.r70-1-x86_64.pkg.tar.zst.sig
-	sha256sums = e4ac7db33ca26f3f8e1e400be3c13835a66dd8ec0c6a81def0fb27f3147a2d8b
-	sha256sums = 3e4b02f62d41be964e7b0d4ba8fe7482aafdd57cf6e79424fdf6cb1ce34776e0
+	source = git+https://gitlab.com/qYp/betterbin.git
+	md5sums = SKIP
 
 pkgname = betterbin
