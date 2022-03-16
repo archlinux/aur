@@ -1,7 +1,7 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 pkgname=jicofo-git
-pkgver=1.0.749+1+ge79f74c7
+pkgver=1.0.867+0+g15eb0348
 pkgrel=1
 pkgdesc="JItsi Meet COnference FOcus git build"
 arch=('any')
@@ -10,6 +10,7 @@ license=('Apache')
 depends=("java-runtime" "bash")
 optdepends=("prosody")
 makedepends=(
+        "git"
         "java-environment"
         "unzip" "maven"
 )

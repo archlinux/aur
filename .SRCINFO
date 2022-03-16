@@ -1,11 +1,12 @@
 pkgbase = jicofo-git
 	pkgdesc = JItsi Meet COnference FOcus git build
-	pkgver = 1.0.749+1+ge79f74c7
+	pkgver = 1.0.867+0+g15eb0348
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	install = install
 	arch = any
 	license = Apache
+	makedepends = git
 	makedepends = java-environment
 	makedepends = unzip
 	makedepends = maven
@@ -31,4 +32,3 @@ pkgbase = jicofo-git
 	sha256sums = b678d6312313b73dabc590f846cbd38de251ba4fd33ae0d523e4e8722f54c0ac
 
 pkgname = jicofo-git
-
