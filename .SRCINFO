@@ -1,13 +1,14 @@
 pkgbase = mqtt-explorer
 	pkgdesc = A comprehensive and easy-to-use MQTT Client
 	pkgver = 0.3.5
-	pkgrel = 6
+	pkgrel = 7
 	url = https://mqtt-explorer.com/
 	arch = any
 	license = CCPL:by-nd
 	depends = npm
 	depends = yarn
 	depends = git
+	depends = sed
 	options = !strip
 	backup = ~/.config/MQTT-Explorer/settings.json
 	source = mqtt-explorer-0.3.5.tar.gz::https://github.com/thomasnordquist/MQTT-Explorer/archive/v0.3.5.tar.gz
