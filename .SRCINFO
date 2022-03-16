@@ -1,6 +1,6 @@
 pkgbase = bch-firmware-tool
 	pkgdesc = HARDWARIO Firmware Tool
-	pkgver = 1.7.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/hardwario/bch-firmware-tool
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = bch-firmware-tool
 	depends = python-click>=7.0
 	depends = python-intelhex>=2.2.1
 	depends = libftdi
-	source = https://github.com/hardwario/bch-firmware-tool/archive/refs/tags/v1.7.0.tar.gz
-	sha256sums = ab7562bd40197c8f05bd54f2d48c064128091881c43bbc4898e655555377c8c4
+	source = https://github.com/hardwario/bch-firmware-tool/archive/refs/tags/v1.8.1.tar.gz
+	sha256sums = 611a08251e1c5b329c870ce20fbd106df0104c4f1c294bde67d4e9d3012249b8
 
 pkgname = bch-firmware-tool
