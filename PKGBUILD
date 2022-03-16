@@ -5,7 +5,7 @@ _zrtpcppver='6b3cd8e6783642292bad0c21e3e5e5ce45ff3e03'
 _pkgname=python3-sipsimple
 pkgname=python-sipsimple
 pkgver=5.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc='SIP SIMPLE SDK is a Python library for desktop operating'
 license=('GPL-3+')
 arch=('aarch64' 'x86_64')
@@ -59,7 +59,8 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   export SIPSIMPLE_FFMPEG_PATH=/usr/lib/ffmpeg4.4/
-  export LDFLAGS="$LDFLAGS -L/usr/lib/ffmpeg4.4"
+  export LDFLAGS="$LDFLAGS -L/usr/lib/ffmpeg4.4 "
+  export CFLAGS="$CFLAGS -I/usr/include/ffmpeg4.4"
   python3 setup.py build
 }
 
