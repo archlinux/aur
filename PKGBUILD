@@ -3,16 +3,17 @@
 
 pkgname=nextcloud-app-previewgenerator
 pkgdesc='Nextcloud app that allows admins to pre-generate previews'
-pkgver=3.4.0
+pkgver=4.0.0
 pkgrel=1
 arch=(any)
 license=(AGPL)
 url="https://github.com/nextcloud/${pkgname##*-}"
-depends=(nextcloud)
+depends=('nextcloud>=21'
+         'php>=7.3')
 options=('!strip')
 _archive="${pkgname##*-}-$pkgver"
-source=("$_archive.tgz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b43a2c3332eeb13cfeb9e8a8a9dcd64d793d90870f518c0068c5d9268679a6e5')
+source=("$url/archive/refs/tags/v$pkgver/$_archive.tar.gz")
+sha256sums=('4ed05867dfa39761a130cfa9a35c4cb0d9ada20033f3a2eb4749267d19b46d0b')
 
 package() {
 	local appdir="$pkgdir/usr/share/webapps/nextcloud/apps"
