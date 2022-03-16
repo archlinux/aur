@@ -1,7 +1,7 @@
 pkgbase = python310
 	pkgdesc = Major release 3.10 of the Python high-level programming language
-	pkgver = 3.10.2
-	pkgrel = 2
+	pkgver = 3.10.3
+	pkgrel = 1
 	url = https://www.python.org/
 	arch = i686
 	arch = x86_64
@@ -21,12 +21,12 @@ pkgbase = python310
 	optdepends = mpdecimal: for decimal
 	optdepends = xz: for lzma
 	optdepends = tk: for tkinter
-	provides = python=3.10.2
+	provides = python=3.10.3
 	provides = python310-pip
 	provides = python310-setuptools
-	source = https://www.python.org/ftp/python/3.10.2/Python-3.10.2.tar.xz
+	source = https://www.python.org/ftp/python/3.10.3/Python-3.10.3.tar.xz
 	validpgpkeys = 0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D
 	validpgpkeys = E3FF2839C048B25C084DEBE9B26995E310250568
-	sha256sums = 17de3ac7da9f2519aa9d64378c603a73a0e9ad58dffa8812e45160c086de64c7
+	sha256sums = 596c72de998dc39205bc4f70ef0dbf7edec740a306d09b49a9bd0a77806730dc
 
 pkgname = python310
