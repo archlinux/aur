@@ -1,4 +1,5 @@
-falcon-sensor-*.pkg.*
+falcon-sensor-*.pkg.tar.zst
+falcon-sensor-*.pkg.tar.xz
 falcon-sensor*.deb
 falcon-sensor*.rpm
 ubuntu*.deb

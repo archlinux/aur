@@ -15,9 +15,7 @@ source=(
   "LICENSE"
 )
 sha256sums=(
-  # PKG
   "3a21f0d70e1d0cba66e86a00266293d2c47a851a89298ca6cb513bd3fbd5e93c"
-  # LICENSE
   "76dbcf8027846d9a8c2fbd9ca2a163c171bbc75161b46a24f59bf64dd44fc6e9"
 )
 
