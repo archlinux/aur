@@ -1,7 +1,7 @@
 _pkgname=realcugan-ncnn-vulkan
 pkgname=$_pkgname-git
 pkgver=20220217.r0.g6b95b75
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="ncnn implementation of Real-CUGAN converter. Runs fast on Intel / AMD / Nvidia / Apple-Silicon with Vulkan API."
 arch=('x86_64')
@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("git://github.com/nihui/$_pkgname" "model-path.patch")
+source=("git+https://github.com/nihui/$_pkgname" "model-path.patch")
 noextract=()
 md5sums=('SKIP' '8e1edd929f5ade6af986b0eda55b5fb5')
 validpgpkeys=()
