@@ -1,6 +1,6 @@
 pkgbase = upgrade
 	pkgdesc = Automate system upgrades
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 0
 	url = https://github.com/dnut/upgrade
 	install = upgrade.install
@@ -15,7 +15,7 @@ pkgbase = upgrade
 	depends = paru
 	depends = kernel-modules-hook
 	backup = etc/upgrade.conf
-	source = git+https://github.com/dnut/upgrade
+	source = git+https://github.com/dnut/upgrade#tag=0.1.1
 	sha256sums = SKIP
 
 pkgname = upgrade
