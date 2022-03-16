@@ -1,7 +1,7 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 pkgname=jitsi-meet-git
-pkgver=1.0.5001+3+g7396db71f
+pkgver=1.0.5957+0+g3b05fd70a
 pkgrel=1
 pkgdesc="Jitsi Meet Web git build"
 arch=('any')
@@ -10,6 +10,7 @@ license=('Apache')
 depends=()
 optdepends=("nginx")
 makedepends=(
+        "git"
         "python" "python2"
         "nodejs" "npm"
 )
@@ -31,7 +32,7 @@ pkgver() {
 
 build() {
         cd "$pkgname"
-        npm install
+        npm install --no-package-lock
         make
         make source-package
 }

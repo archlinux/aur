@@ -1,11 +1,12 @@
 pkgbase = jitsi-meet-git
 	pkgdesc = Jitsi Meet Web git build
-	pkgver = 1.0.5001+3+g7396db71f
+	pkgver = 1.0.5957+0+g3b05fd70a
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	install = install
 	arch = any
 	license = Apache
+	makedepends = git
 	makedepends = python
 	makedepends = python2
 	makedepends = nodejs
@@ -19,4 +20,3 @@ pkgbase = jitsi-meet-git
 	sha256sums = SKIP
 
 pkgname = jitsi-meet-git
-
