@@ -25,8 +25,8 @@ prepare() {
   cd "$srcdir/${pkgname%-git}"
   find . -type f -exec sed -i 's/sbin/bin/g' {} \;
 
-  sed -i 's/qr(^virtlogd)} = 0/qr(^virtlogd) => 0/g' "ex/$pkgname.conf"
-  sed -i 's/qr(^virtlockd)} = 0/qr(^virtlockd) => 0/g' "ex/$pkgname.conf"
+  sed -i 's/qr(^virtlogd)} = 0/qr(^virtlogd) => 0/g' "ex/${pkgname%-git}.conf"
+  sed -i 's/qr(^virtlockd)} = 0/qr(^virtlockd) => 0/g' "ex/${pkgname%-git}.conf"
 }
 
 build() {
