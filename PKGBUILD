@@ -1,25 +1,40 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: pfm <vorticity at mail dot ru>
-_base=pem
-pkgname=python-${_base}
+
+pkgname=python-pem
 pkgver=21.2.0
-pkgrel=1
-pkgdesc="Parsing and splitting of PEM files"
-arch=(any)
-url="https://github.com/hynek/${_base}"
-license=(MIT)
-depends=(python)
-makedepends=(python-setuptools)
-source=(${url}/archive/${pkgver}.tar.gz)
-sha512sums=('7e6f6d46bd1c8ab5c84b0edee182fbec7ae3c37e2005854ff1bc6f43cb47490a1f3bb0ac97cbc9e8c0ff830d4f22fcddd52f68206452a16ba862354a75491b18')
+pkgrel=2
+pkgdesc="Parsing and splitting PEM files"
+arch=('any')
+url="https://github.com/hynek/pem"
+license=('MIT')
+depends=('python')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+checkdepends=('python-pytest' 'python-certifi' 'python-pretend' 'python-pyopenssl')
+changelog=CHANGELOG.rst
+source=(
+	"$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pem/pem-$pkgver.tar.gz"
+	"$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/pem/pem-$pkgver.tar.gz.asc")
+sha256sums=('c491833b092662626fd58a87375d450637d4ee94996ad9bbbd42593428e93e5a'
+            'SKIP')
+validpgpkeys=('C2A04F86ACE28ADCF817DBB7AE2536227F69F181') ## Hynek Schlawack
 
 build() {
-  cd ${_base}-${pkgver}
-  export PYTHONHASHSEED=0
-  python setup.py build
+	cd "pem-$pkgver"
+	python -m build --wheel --no-isolation
+}
+
+check() {
+	cd "pem-$pkgver"
+	PYTHONPATH=./src pytest -x --disable-warnings
 }
 
 package() {
-  cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	export PYTHONHASHSEED=0
+	cd "pem-$pkgver"
+	python -m installer --destdir="$pkgdir/" dist/*.whl
+
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s "$_site/pem-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
 }
