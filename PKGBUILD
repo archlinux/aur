@@ -2,7 +2,7 @@
 # Contributor: Cosku Bas <cosku.bas@gmail.com>
 
 pkgname=quetoo-git
-pkgver=r7014.a44ea59c9
+pkgver=r7429.5b66280d8
 pkgrel=1
 pkgdesc="Quetoo is a Free first person shooter for Mac, PC and Linux."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="http://quetoo.org"
 license=('GPL2')
 makedepends=('git' 'clang' 'autoconf' 'automake' 'check')
 depends=('quetoo-data-git' 'objectivelymvc-git' 'curl' 'sdl2' 'sdl2_image' 'sdl2_mixer' 'physfs' 'openal' 'libsndfile')
-source=(git://github.com/jdolan/quetoo
+source=(git+https://github.com/jdolan/quetoo
 		quetoo.desktop
 		quetoo.png)
 sha1sums=('SKIP'
@@ -22,14 +22,12 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-
 build() {
 	cd quetoo
 	autoreconf -i
 	./configure --prefix=/usr
 	make
 }
-
 
 package() {
 	cd quetoo
