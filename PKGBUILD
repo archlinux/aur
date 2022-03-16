@@ -4,14 +4,14 @@ _name='alias-tips'
 
 pkgname="${_name}-git"
 pkgver=r109.45e4e97
-pkgrel=1
+pkgrel=2
 pkgdesc='An oh-my-zsh plugin to help remembering those aliases you defined once'
 arch=('any')
 license=('unknown')
 url='https://github.com/djui/alias-tips'
 depends=('zsh')
 makedepends=('git')
-source=("${_name}::git+https://github.com/djui/alias-tips")
+source=('git+https://github.com/djui/alias-tips.git')
 sha512sums=('SKIP')
 
 pkgver() {
