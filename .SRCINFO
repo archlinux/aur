@@ -1,6 +1,6 @@
 pkgbase = stm32cubemonitor
 	pkgdesc = Graphical software for helping debug and diagnose STM32 applications while they are running by reading and displaying their variables in real-time
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://www.st.com/en/development-tools/stm32cubemonitor.html
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = stm32cubemonitor
 	depends = util-linux-libs
 	depends = stlink
 	options = !strip
-	source = en.STM32CubeMon-Lin-1.3.0.zip::https://www.st.com/content/ccc/resource/technical/software/sw_development_suite/group0/9e/83/1e/82/c0/42/49/38/STM32CubeMon-Lin/files/STM32CubeMon-Lin.zip/jcr:content/translations/en.STM32CubeMon-Lin.zip
-	sha256sums = 8140a65873e986e552b2a24fbd17fb301a698e6e5f3fb3b1038fc51e4c30d014
+	source = en.STM32CubeMon-Lin_v1-4-0-1.4.0.zip::https://www.st.com/content/ccc/resource/technical/software/sw_development_suite/group0/b1/14/a0/74/6d/ac/4d/4c/STM32CubeMon-Lin_v1-4-0/files/STM32CubeMon-Lin_v1-4-0.zip/jcr:content/translations/en.STM32CubeMon-Lin_v1-4-0.zip
+	sha256sums = 3051deac09174cc5a906911c580e30c33f58d47707fdc536903ce27a42b5bc0f
 
 pkgname = stm32cubemonitor
