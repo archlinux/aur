@@ -1,7 +1,7 @@
 # Maintainer: Dylan Delgado <dylan1496 at live dot com>
 
 pkgname=ipython-git
-pkgver=7.12.0.r1042.g4e5c2e243
+pkgver=8.1.1.r17.g47ccec77b
 pkgrel=1
 pkgdesc="An enhanced Interactive Python shell - git version"
 arch=('any')
@@ -19,7 +19,7 @@ provides=('ipython')
 
 # new optional thing: ipyparallel
 
-source=("git://github.com/ipython/ipython.git"
+source=("git+https://github.com/ipython/ipython.git"
         "ipython.png")
 md5sums=('SKIP'
          '2901d65f1b1fe354e72850085cd1c072')
