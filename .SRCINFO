@@ -1,6 +1,6 @@
 pkgbase = intel-oneapi-dpcpp-ct
 	pkgdesc = Intel® DPC++ Compatibility Tool
-	pkgver = 2022.0.0
+	pkgver = 2022.0.0_96
 	pkgrel = 1
 	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
 	arch = x86_64
