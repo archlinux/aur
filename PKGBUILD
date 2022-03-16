@@ -5,7 +5,7 @@
 
 _pkgname=libxfce4ui
 pkgname=${_pkgname}-devel
-pkgver=4.17.4
+pkgver=4.17.5
 pkgrel=1
 pkgdesc="Commonly used Xfce widgets among Xfce applications (Development version)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -19,7 +19,7 @@ optdepends=('glade: Glade designer plugin')
 provides=("${_pkgname}=${pkgver}")
 conflicts=("${_pkgname}")
 source=("https://archive.xfce.org/src/xfce/${_pkgname}/${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2")
-sha256sums=('530f22446b2b80859f38a9cdc1234de22f2504bd3b8b47b87d9efd8bb5fe96f0')
+sha256sums=('4cd60dafb330560850df499535a2a6b0143550179e9bbd426956e5323ead784d')
 
 build() {
   cd "${_pkgname}-${pkgver}"
