@@ -1,5 +1,4 @@
-*.tar.xz
-/gopass/
-/pkg/
-/src/
-/usr/bin/gopass
+*
+!/.SRCINFO
+!/.gitignore
+!/PKGBUILD

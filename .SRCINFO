@@ -1,7 +1,7 @@
 pkgbase = gopass-git
 	pkgdesc = The slightly more awesome standard unix password manager for teams.
-	pkgver = 1.10.1.r32.g93539afc
-	pkgrel = 2
+	pkgver = 1.13.0.r91.g8b6768c2
+	pkgrel = 1
 	url = https://github.com/gopasspw/gopass
 	arch = x86_64
 	arch = i686
@@ -15,8 +15,8 @@ pkgbase = gopass-git
 	optdepends = xclip: clipboard support
 	provides = gopass
 	conflicts = gopass
+	options = !lto
 	source = git+https://github.com/gopasspw/gopass
 	sha256sums = SKIP
 
 pkgname = gopass-git
-
