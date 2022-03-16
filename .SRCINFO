@@ -1,6 +1,6 @@
 pkgbase = intel-oneapi-ccl
 	pkgdesc = Intel® oneAPI Collective Communications Library
-	pkgver = 2021.5.1
+	pkgver = 2021.5.1_494
 	pkgrel = 1
 	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
 	arch = x86_64
@@ -17,3 +17,8 @@ pkgbase = intel-oneapi-ccl
 pkgname = intel-oneapi-ccl
 	depends = intel-oneapi-common-vars>=2022.0.0
 	depends = intel-oneapi-common-licensing=2022.0.0
+
+pkgname = intel-oneapi-ccl-static
+	pkgdesc = Intel® oneAPI Collective Communications Library (static libs)
+	depends = intel-oneapi-ccl=2021.5.1_494
+	options = staticlibs
