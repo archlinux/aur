@@ -1,0 +1,10 @@
+pkgbase = toxext
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/$pkgname/$pkgname
+	arch = x86_64
+	license = GPL3
+	source = https://github.com/toxext/toxext/archive/refs/tags/v0.0.3.tar.gz
+	sha512sums = 34612e789fb928f9dc79181a61126e3f781ef134d3b5cad2b48c17f1fc3521f0fb6713b0e42e73a789e3eb9b1a566f2d4cbd38a9b26f8f9f6015890be045e4ed
+
+pkgname = toxext
