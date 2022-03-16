@@ -3,7 +3,7 @@
 pkgname=toxext
 pkgver=0.0.3
 pkgrel=1
-pkgdesc=''
+pkgdesc='An extension library for tox'
 arch=('x86_64')
 url='https://github.com/$pkgname/$pkgname'
 license=('GPL3')
