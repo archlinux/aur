@@ -1,6 +1,6 @@
 pkgbase = minetest-mod-pipeworks-git
 	pkgdesc = Mob Framework Mod (former animals mod) provides a framework for creating mobs in Minetest
-	pkgver = 491.32f331e
+	pkgver = 833.5aa0501872c6
 	pkgrel = 1
 	url = https://forum.minetest.net/viewtopic.php?id=2155
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = minetest-mod-pipeworks-git
 	depends = minetest-common
 	optdepends = mesecons-git
 	provides = minetest-mod-pipeworks
-	source = minetest-mod-pipeworks::git+https://gitlab.com/VanessaE/pipeworks.git
+	source = minetest-mod-pipeworks::git+https://github.com/mt-mods/pipeworks.git
 	sha512sums = SKIP
 
 pkgname = minetest-mod-pipeworks-git
-

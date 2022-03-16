@@ -2,7 +2,7 @@
 
 pkgname=minetest-mod-pipeworks-git
 _gitname=${pkgname%-git*}
-pkgver=491.32f331e
+pkgver=833.5aa0501872c6
 pkgrel=1
 pkgdesc="Mob Framework Mod (former animals mod) provides a framework for creating mobs in Minetest"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=('mesecons-git')
 makedepends=()
 provides=("$_gitname")
 conflicts=()
-source=("$_gitname::git+https://gitlab.com/VanessaE/pipeworks.git")
+source=("$_gitname::git+https://github.com/mt-mods/pipeworks.git")
 sha512sums=('SKIP')
 
 pkgver() {
