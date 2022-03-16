@@ -2,7 +2,7 @@
 
 pkgname='dprint-bin'
 pkgver='0.23.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Pluggable and configurable code formatting platform written in Rust.'
 arch=('x86_64')
 url='https://dprint.dev/'
