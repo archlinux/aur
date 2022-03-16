@@ -1,7 +1,7 @@
 pkgbase = xrandr-watch-git
 	pkgdesc = xrandr event watcher
 	pkgver = r23.56fc8c7
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/pastleo/xrandr-watcher
 	arch = x86_64
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = xrandr-watch-git
 	depends = nodejs
 	provides = xrandr-watch
 	conflicts = xrandr-watch
-	source = git://github.com/pastleo/xrandr-watcher.git#branch=src
+	source = git+https://github.com/pastleo/xrandr-watcher.git#branch=src
 	source = default-handler-hint.sh
 	source = xrandr-watcher.service
 	md5sums = SKIP
