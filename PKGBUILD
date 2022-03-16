@@ -3,7 +3,7 @@
 
 _name=scipy
 pkgname=python-scipy-git
-pkgver=v0.17pre.r12521.g9021bb77ae
+pkgver=v0.17pre.r13106.gef53758eff
 pkgrel=1
 pkgdesc="SciPy is open-source software for mathematics, science and engineering. Git version"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=(python-numpy)
 makedepends=(gcc-fortran python-setuptools pybind11 python-pythran)
 checkdepends=(python-pytest)
 optdepends=('python-pillow: Image saving module')
-source=("git://github.com/scipy/scipy.git")
+source=("git+https://github.com/scipy/scipy.git")
 sha256sums=('SKIP')
 
 pkgver() {
