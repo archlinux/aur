@@ -1,7 +1,7 @@
 # Maintainer: Gaoyang Zhang <gy@blurgy.xyz>
 pkgname=dt-cli
 pkgver=0.7.5
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="\$HOME, \$HOME everywhere"
 arch=("any")
@@ -10,8 +10,9 @@ license=('MIT OR Apache 2.0')
 groups=()
 depends=()
 makedepends=(
-    rustup
-    curl
+    'rust'
+    'cargo'
+    'git'
 )
 checkdepends=()
 optdepends=()
@@ -30,10 +31,6 @@ b2sums=(
 )
 noextract=()
 validpgpkeys=()
-
-prepare() {
-    rustup toolchain update stable
-}
 
 build() {
     cd "dt-$pkgver"
