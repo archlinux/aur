@@ -59,7 +59,8 @@ prepare() {
   cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
 
   patch --strip=1 < "${srcdir}/grpc.patch"
-  patch --strip=1 < "${srcdir}/py310.patch"
+  #patch --strip=1 < "${srcdir}/py310.patch"
+  sed -i "s/9)]/9), (3, 10)]/" python/setup.py
 
   # https://aur.archlinux.org/packages/py-spy#comment-781521
   sed -i "/py-spy/d" python/setup.py
