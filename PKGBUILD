@@ -3,14 +3,14 @@
 
 pkgname=bart-git
 _pkgname=bart
-pkgver=0.7.00.r130.gdd40a4d
+pkgver=0.7.00.r358.ge35c79c
 pkgrel=1
 pkgdesc="Berkeley Advanced Reconstruction Toolbox (BART) for Computational Magnetic Resonance Imaging"
 arch=('x86_64')
 url="https://mrirecon.github.io/bart/"
 license=('BSD')
 makedepends=('git')
-depends=('gcc10' 'gcc10-libs' 'openblas-lapack' 'fftw' 'libpng')
+depends=('gcc>=11.2.0' 'openblas-lapack' 'fftw' 'libpng')
 optdepends=('octave' 'python3')
 source=('bart::git+https://github.com/mrirecon/bart.git')
 sha512sums=('SKIP')
@@ -26,16 +26,13 @@ pkgver() {
 build() {
     cd "$_pkgname"
 
-    # Add linking flag, seems needed for Arch. Will open PR / issue upstream
-    #sed -i 's;BLAS_L := -L$(BLAS_BASE)/lib -llapacke -lblas;BLAS_L := -L$(BLAS_BASE)/lib -llapacke -lopenblas -lcblas;' Makefile
-
-    make CC=gcc-10
-    make CC=gcc-10 doc/commands.txt
+    make
+    make doc/commands.txt
 }
 
 package() {
     cd "$_pkgname"
-    make CC=gcc-10 PREFIX="$pkgdir"/usr install
+    make PREFIX="$pkgdir"/usr install
 
     # Also install the libs, the viewer needs this and its not done by the Makefile atm
     install -d "$pkgdir"/usr/lib/bart
