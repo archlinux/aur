@@ -5,7 +5,7 @@
 pkgbase=unicorn-git
 pkgname=('unicorn-git' 'python-unicorn-git' 'ruby-unicorn-git')
 pkgver=2.0.0.rc6.r0.gc10639fd
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight, multi-platform, multi-architecture CPU emulator framework based on QEMU'
 url='http://www.unicorn-engine.org'
 arch=('i686' 'x86_64')
@@ -51,7 +51,10 @@ package_unicorn-git() {
   provides=('unicorn')
   conflicts=('unicorn')
   cd ${pkgbase}
-  make DESTDIR="${pkgdir}" install
+  (mkdir -p build
+    cd build
+    make DESTDIR="${pkgdir}" install
+  )
   install -Dm 644 samples/*.c -t "${pkgdir}/usr/share/doc/${pkgname}/samples"
 }
 
