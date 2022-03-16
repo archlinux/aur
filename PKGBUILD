@@ -7,9 +7,9 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
- 
+
 pkgname=ungoogled-chromium
-pkgver=99.0.4844.51
+pkgver=99.0.4844.74
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=3
@@ -36,7 +36,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         use-FT_Done_MM_Var-in-CFX_Font-AdjustMMParams.patch
         sql-make-VirtualCursor-standard-layout-type.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('97c52e57eca0dc8b752d274047f38c88aaa86036c0587b26b056efbd3fb2bae3'
+sha256sums=('2d5f464730fde0260d1b00db1b38210344952ec91a5b3c544c99c43e76ffbb98'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '9cd2570e92e9bfeff3faf0d5b56334535cb2313f99ab0d9019b74d18ae1c7d0a'
             'edf4d973ff197409d319bb6fbbaa529e53bc62347d26b0733c45a116a1b23f37'
@@ -52,7 +52,7 @@ source=(${source[@]}
         chromium-drirc-disable-10bpc-color-configs.conf
         wayland-egl.patch)
 sha256sums=(${sha256sums[@]}
-            '8aa65f6d96cb1400b83092adab9a64e0d81a7f12bd6ee5e2b090d2d9407e645d'
+            '1f885f41ea316dbec1eba1ae20409e20a5f88e5fce1889a552b69b718fb924ca'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             '34d08ea93cb4762cb33c7cffe931358008af32265fc720f2762f0179c3973574')
 
@@ -193,9 +193,6 @@ build() {
   # Let Chromium set its own symbol level
   CFLAGS=${CFLAGS/-g }
   CXXFLAGS=${CXXFLAGS/-g }
-  # -fvar-tracking-assignments is not recognized by clang
-  CFLAGS=${CFLAGS/-fvar-tracking-assignments}
-  CXXFLAGS=${CXXFLAGS/-fvar-tracking-assignments}
 
   # https://github.com/ungoogled-software/ungoogled-chromium-archlinux/issues/123
   CFLAGS=${CFLAGS/-fexceptions}
