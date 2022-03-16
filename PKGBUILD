@@ -1,7 +1,7 @@
 # Maintainer: Moritz Poldrack <moritz at poldrack dot dev>
 pkgname=ttf-font-awesome-pro
 provides=('ttf-font-awesome')
-pkgver=5.15.2
+pkgver=5.15.4
 pkgrel=1
 pkgdesc='The Pro Version of the famous FontAwesome Icons. Requires an active Subscription!'
 arch=('any')
@@ -32,6 +32,7 @@ build() {
 	rm -rf "${srcdir}"
 	mkdir -p "${srcdir}"
 	cd "${srcdir}"
+	npm init -y
 	npm install @fortawesome/fontawesome-pro@${pkgver}
 }
 
@@ -45,3 +46,4 @@ package() {
 	install "${srcdir}/node_modules/@fortawesome/fontawesome-pro/webfonts/fa-solid-900.ttf" "${pkgdir}/usr/share/fonts/TTF/"
 	install "../LICENSE" "${pkgdir}/usr/share/licenses/ttf-font-awesome-pro/"
 }
+
