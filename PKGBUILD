@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=sys76-kb
 pkgver=0.3.1
-pkgrel=4
+pkgrel=5
 pkgdesc="RGB keyboardcontroller for System76 laptops"
 arch=('x86_64')
 url="https://github.com/bambash/sys76-kb"
@@ -30,7 +30,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -v -o build .
+  go build -v -buildvcs=false -o build .
 }
 
 package() {
