@@ -5,14 +5,14 @@
 
 pkgname=insomnia
 pkgver=2022.1.1
-pkgrel=1
+pkgrel=2
 _nodeversion=12.18.3
 pkgdesc="Cross-platform HTTP and GraphQL Client"
 url="https://github.com/Kong/insomnia"
 arch=('any')
 license=('MIT')
 depends=()
-makedepends=('npm' 'nvm' 'fontconfig' 'libxcrypt-compat' 'rpm-tools')
+makedepends=('npm' 'nvm' 'fontconfig')
 source=(
   "https://github.com/Kong/insomnia/archive/refs/tags/core@${pkgver}.tar.gz"
   "insomnia.desktop"
@@ -41,7 +41,7 @@ build() {
   _ensure_local_nvm
   cd ${pkgname}-core-${pkgver}
   npm run bootstrap  
-  GIT_TAG="core@${pkgver}" npm run app-package
+  GIT_TAG="core@${pkgver}" BUILD_TARGETS="tar.gz" npm run app-package
 }
 
 package() {
