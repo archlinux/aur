@@ -1,0 +1,16 @@
+pkgbase = gmaptool-static-bin
+	pkgdesc = Program for splitting, merging and manipulating maps in Garmin format.
+	pkgver = 0.8.220.853b
+	pkgrel = 1
+	url = http://www.gmaptool.eu/en/content/gmaptool
+	arch = x86_64
+	arch = i686
+	license = custom: CC BY-SA 3.0
+	license = LGPL2.1
+	provides = gmaptool=0.8.220.853b
+	provides = gmaptool-static=0.8.220.853b
+	conflicts = gmaptool
+	source = http://www.gmaptool.eu/sites/default/files/lgmt08220.zip
+	sha256sums = 1bfb6cf8e3c13f841000fa025084c9c3d6f7a468a4a0d68753f01f8ab2069660
+
+pkgname = gmaptool-static-bin
