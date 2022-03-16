@@ -4,7 +4,7 @@
 _pkgname=trezord
 pkgname="${_pkgname}-git"
 _gitname="${_pkgname}-go"
-pkgver=2.0.30.r6.gbb4eb07
+pkgver=2.0.31.r5.g106e5e9
 pkgrel=1
 pkgdesc='Trezor Communication Daemon aka Trezor Bridge (written in Go)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ conflicts=("${_pkgname}" 'trezor-bridge-bin')
 makedepends=('git' 'go')
 depends=('trezor-udev')
 source=(
-    "git://github.com/trezor/${_gitname}.git"
+    "git+https://github.com/trezor/${_gitname}.git"
     "${_pkgname}.sysusers"
 )
 sha256sums=('SKIP'
