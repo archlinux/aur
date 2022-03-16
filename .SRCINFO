@@ -1,0 +1,18 @@
+pkgbase = libredefender-git
+	pkgdesc = Light-weight antivirus scanner for Linux (-git version)
+	pkgver = 0.5.2.r6.g1e3bb7f
+	pkgrel = 1
+	url = https://github.com/kpcyrd/libredefender
+	arch = x86_64
+	license = GPL2
+	makedepends = cargo
+	makedepends = clang
+	makedepends = git
+	depends = libclamav.so
+	depends = hicolor-icon-theme
+	provides = libredefender
+	conflicts = libredefender
+	source = git+https://github.com/kpcyrd/libredefender.git
+	b2sums = SKIP
+
+pkgname = libredefender-git
