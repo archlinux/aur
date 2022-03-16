@@ -1,0 +1,27 @@
+pkgbase = new-session-manager-git
+	pkgdesc = Audio session manager
+	pkgver = 1.5.3.r13.g7099c9f
+	pkgrel = 1
+	url = https://github.com/jackaudio/new-session-manager
+	arch = x86_64
+	license = GPL3
+	makedepends = fltk
+	makedepends = git
+	makedepends = jack
+	makedepends = liblo
+	makedepends = meson
+	depends = gcc-libs
+	depends = glibc
+	optdepends = fltk: for nsm-legacy-gui
+	provides = new-session-manager
+	conflicts = new-session-manager
+	options = debug
+	source = git+https://github.com/jackaudio/new-session-manager
+	sha512sums = SKIP
+	b2sums = SKIP
+
+pkgname = new-session-manager-git
+	depends = gcc-libs
+	depends = glibc
+	depends = libjack.so
+	depends = liblo.so
