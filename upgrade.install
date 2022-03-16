@@ -1,0 +1,14 @@
+
+post_install() {
+    groupadd upgraders
+    useradd -mG upgraders upgrade
+    echo 'upgrade ALL=(ALL) NOPASSWD: /usr/bin/pacman' >> /etc/sudoers
+    echo '%upgraders ALL=(ALL) /usr/bin/upgrade' >> /etc/sudoers
+    systemctl enable --now upgrade.timer
+}
+
+post_remove() {
+    userdel upgrade
+    sed -i '/^upgrade /d' /etc/sudoers
+    sed -i '/^%upgraders /d' /etc/sudoers
+}

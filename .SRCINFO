@@ -1,0 +1,21 @@
+pkgbase = upgrade
+	pkgdesc = Automate system upgrades
+	pkgver = 0.1.0
+	pkgrel = 0
+	url = https://github.com/dnut/upgrade
+	install = upgrade.install
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL3
+	depends = paru
+	depends = kernel-modules-hook
+	backup = etc/upgrade.conf
+	source = git+https://github.com/dnut/upgrade
+	sha256sums = SKIP
+
+pkgname = upgrade
