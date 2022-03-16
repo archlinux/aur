@@ -1,22 +1,27 @@
 # Maintainer: Ben Wolsieffer <benwolsieffer@gmail.com>
 pkgname=qdriverstation-git
-pkgver=r14.a351123
+pkgver=r1271.c18daf7
 pkgrel=1
 pkgdesc="Open source clone of the FRC Driver Station"
 arch=('i686' 'x86_64')
 url="https://github.com/FRC-Utilities/qdriverstation"
 license=('MIT')
 groups=()
-depends=('qt5-svg' 'qt5-quickcontrols2')
+depends=('sdl2' 'qt5-multimedia' 'qt5-quickcontrols')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 replaces=()
 backup=()
 options=()
-source=('qdriverstation::git+https://github.com/FRC-Utilities/QDriverStation.git')
-noextract=()
-md5sums=('SKIP')
+source=(
+	"qdriverstation::git+https://github.com/FRC-Utilities/QDriverStation.git"
+	"git+https://github.com/alex-spataru/QJoysticks.git"
+	"git+https://github.com/FRC-Utilities/LibDS.git"
+)
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
@@ -25,7 +30,10 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
-	git submodule update --init
+	git submodule init
+	git config submodule.lib/QJoysticks.url "$srcdir/QJoysticks"
+	git config submodule.lib/LibDS.url "$srcdir/LibDS"
+	git submodule update
 }
 
 build() {
