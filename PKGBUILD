@@ -2,16 +2,14 @@
 # Contributor: Cosku Bas <cosku.bas@gmail.com>
 
 pkgname=objectively-git
-pkgver=r668.7baa846
+pkgver=r673.2cf2a1c
 pkgrel=1
 pkgdesc="Ultra-lightweight object oriented framework for GNU C."
 arch=('i686' 'x86_64')
 url="https://github.com/jdolan/Objectively"
 license=('zlib')
-
 makedepends=('git' 'clang' 'autoconf' 'automake' 'check')
-
-source=(git://github.com/jdolan/Objectively)
+source=(git+https://github.com/jdolan/Objectively)
 sha1sums=('SKIP')
 
 pkgver() {
