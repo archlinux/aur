@@ -16,6 +16,6 @@ pkgbase = copasi-bin
 	source_i686 = copasi-bin-4.35.258.sh::https://github.com/copasi/COPASI/releases/download/Build-258/COPASI-4.35.258-Linux-32bit.sh
 	sha256sums_i686 = 53f29582f14af7bad60aae173c1818c43b3535c7a652e675af0cf4b7ff5ef269
 	source_x86_64 = copasi-bin-4.35.258.sh::https://github.com/copasi/COPASI/releases/download/Build-258/COPASI-4.35.258-Linux-64bit.sh
-	sha256sums_x86_64 = 53f29582f14af7bad60aae173c1818c43b3535c7a652e675af0cf4b7ff5ef269
+	sha256sums_x86_64 = f4e6b5fba0d230053edc89c5bcfc676e737d6aac67cc91b927794761ad65e02d
 
 pkgname = copasi-bin
