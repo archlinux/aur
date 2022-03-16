@@ -1,4 +1,5 @@
-# Maintainer: Tom Bebbington <tombebb@protonmail.com>
+# Maintainer: Archfae <archfae ta protonmail dot com>
+# Contributor: Tom Bebbington <tombebb@protonmail.com>
 
 pkgname=kode-studio-bin
 _pkgname=kode-studio
