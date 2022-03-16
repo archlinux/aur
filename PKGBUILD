@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=cod
 pkgver=0.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A completion daemon for bash/zsh"
 arch=('any')
 url="https://github.com/dim-an/cod"
@@ -29,7 +29,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -v -o build .
+  go build -v -buildvcs=false -o build .
 }
 
 package() {
