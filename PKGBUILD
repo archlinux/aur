@@ -1,6 +1,6 @@
 # Maintainer: Drew Nutter <dnut@users.noreply.github.com>
 pkgname=upgrade
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=0
 pkgdesc='Automate system upgrades'
 url='https://github.com/dnut/upgrade'
