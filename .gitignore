@@ -1,0 +1,4 @@
+*~
+*.log
+imagescan-bundle-fedora-*.x64.rpm.tar.gz
+imagescan-plugin-networkscan-*-x86_64.pkg.tar.*
