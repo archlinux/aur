@@ -1,6 +1,6 @@
 pkgbase = wirespider
         pkgdesc = Wirespider distributes wireguard tunnel configurations and routes
-        pkgver = 0.3.0
+        pkgver = 0.3.1
         pkgrel = 1
         url = https://github.com/SFTtech/wirespider
         arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = wirespider
         makedepends = rustfmt
         depends = gcc-libs
         depends = wireguard-tools
-        source = wirespider-0.3.0.tar.gz::https://github.com/SFTtech/wirespider/archive/refs/tags/v0.3.0.tar.gz
-        sha512sums = 1ad7d8a9b11bff37c995275cfaf5983eecc593f44392e5372735c8b5c6d6940d0f5409dba62d3d60cb984a87887f929b6b4f01b743396d335d2dca0f77c79810
+        source = wirespider-0.3.1.tar.gz::https://github.com/SFTtech/wirespider/archive/refs/tags/v0.3.1.tar.gz
+        sha512sums = b90b5ebf2e228458ed8b49af48ca31d58e8b3389340de03710bc1632cc8d071d880122e1bdc350cdd569236d27e56255f6323b0e30cb7456d3ff752aa095aeee
 
 pkgname = wirespider

@@ -1,5 +1,5 @@
 pkgname=wirespider
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="Wirespider distributes wireguard tunnel configurations and routes"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('GPL3' 'custom')
 depends=('gcc-libs' 'wireguard-tools')
 makedepends=('cargo' 'rustfmt')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/SFTtech/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('1ad7d8a9b11bff37c995275cfaf5983eecc593f44392e5372735c8b5c6d6940d0f5409dba62d3d60cb984a87887f929b6b4f01b743396d335d2dca0f77c79810')
+sha512sums=('b90b5ebf2e228458ed8b49af48ca31d58e8b3389340de03710bc1632cc8d071d880122e1bdc350cdd569236d27e56255f6323b0e30cb7456d3ff752aa095aeee')
 
 build() {
   cd "$pkgname-$pkgver"
