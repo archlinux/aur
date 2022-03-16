@@ -1,7 +1,7 @@
 # Maintainer: David Horvath <horvath.david987 at gmail dot com>
 pkgname='mqtt-explorer'
 pkgver=0.3.5
-pkgrel=6
+pkgrel=7
 pkgdesc="A comprehensive and easy-to-use MQTT Client"
 arch=('any')
 url="https://mqtt-explorer.com/"
@@ -9,7 +9,8 @@ license=('CCPL:by-nd')
 groups=()
 depends=('npm'
          'yarn'
-	     'git')
+	     'git'
+		 'sed')
 makedepends=()
 checkdepends=()
 optdepends=()
@@ -26,7 +27,7 @@ validpgpkeys=("4AEE18F83AFDEB23")
 
 build() {
 	cd "MQTT-Explorer-${pkgver}"
-	yarn
+	yarn || sed -i 's/node-gyp rebuild/node-gyp rebuild --openssl_fips=X/' app/package.json
 	yarn build
 }
 
