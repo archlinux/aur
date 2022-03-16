@@ -1,7 +1,7 @@
 pkgbase = qt5-styleplugins
 	pkgdesc = Additional style plugins for Qt5
 	pkgver = 5.0.0.20170311
-	pkgrel = 26
+	pkgrel = 27
 	url = https://github.com/qt/qtstyleplugins
 	arch = x86_64
 	arch = aarch64
@@ -16,4 +16,3 @@ pkgbase = qt5-styleplugins
 	sha512sums = c39b468c93eaada7d49df9547627fbf91d50292523566ef93287ce0e958b29e6c3635f6e77ad42c4f449a062cc63b68e9f2a24c89524165649f776d205fb5382
 
 pkgname = qt5-styleplugins
-
