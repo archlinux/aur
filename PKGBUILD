@@ -1,6 +1,8 @@
 # Maintainer: Jared Johnson <jaredj@gmx.com>
 pkgname=fvim
-pkgver=0.3.496_gf879203
+# get this with `git describe --tags` in fvim repo
+_pkgtag="v0.3.512+g2c1625b"
+pkgver=$(echo "${_pkgtag}" | tail -c +2 | sed -e "s/\+/_/g")
 _pkgver=$(echo "${pkgver}" | sed -e "s/_/-/g")
 pkgrel=1
 pkgdesc="Cross platform Neovim front-end UI, built with F# + Avalonia"
@@ -13,7 +15,7 @@ makedepends=('dotnet-host' 'dotnet-sdk' 'dotnet-runtime')
 optdepends=()
 provides=('fvim')
 conflicts=('fvim')
-source=("https://github.com/yatli/fvim/archive/refs/tags/v0.3.496+gf879203.tar.gz")
+source=("https://github.com/yatli/fvim/archive/refs/tags/${_pkgtag}.tar.gz")
 md5sums=('SKIP')
 options=('staticlibs')
 
