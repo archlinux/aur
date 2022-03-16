@@ -1,6 +1,6 @@
 pkgname=otf-operator-mono-lig
 _pkgname=operator-mono-lig
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=1
 pkgdesc='Add ligatures to Operator Mono similar to Fira Code'
 arch=('x86_64' 'arm64')
@@ -17,7 +17,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	"hoefler-co-eula.md"
 )
-sha256sums=('10e9fc495b629bacb8269a8ac08b7231c514d2e1e76561ea3184fc09500f441a'
+sha256sums=('f66cc609655e9cc3426bc0e6c058c6528db9ccc25a58c841c34ba6a99dbd249a'
             '820160042b3a26add024ad21f0cb93e2898d96f4558a6b2cdd0c988c7601eadd')
 
 prepare(){
