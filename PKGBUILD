@@ -8,7 +8,7 @@ pkgdesc="Berkeley Advanced Reconstruction Toolbox (BART) for Computational Magne
 arch=('x86_64')
 url="https://mrirecon.github.io/bart/"
 license=('BSD')
-depends=('gcc10' 'gcc10-libs' 'openblas-lapack' 'fftw' 'libpng')
+depends=('gcc>=11.2.0' 'openblas-lapack' 'fftw' 'libpng')
 optdepends=('octave' 'python3')
 source=("https://github.com/mrirecon/bart/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('53eec57f1e81d7d8cecfcca4828b28fedb8ae8fd1e38de652b9c8263309c74726d36e18ec683d511e11047d711903541ce1784051f79b9e00cc07ee29381c642')
@@ -17,12 +17,12 @@ conflicts=('bart-git')
 build() {
     cd "$pkgname"-"$pkgver"
 
-    make CC=gcc-10
+    make
 }
 
 package() {
     cd "$pkgname"-"$pkgver"
-    make CC=gcc-10 PREFIX="$pkgdir"/usr install
+    make PREFIX="$pkgdir"/usr install
 
     # Also install the libs, the viewer needs this and its not done by the Makefile atm
     install -d "$pkgdir"/usr/lib/bart
