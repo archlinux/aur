@@ -1,7 +1,7 @@
 pkgbase = catppuccin-grub-theme-git
 	pkgdesc = Catppuccin GRUB theme.
 	pkgver = r24.3f62cd4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/catppuccin/grub
 	install = catppuccin-grub-theme.install
 	arch = any
