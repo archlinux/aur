@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=needrestart-git
-pkgver=3.5.r40.ge617625
+pkgver=3.5.r62.geb3531a
 pkgrel=1
 pkgdesc='Restart daemons after library updates.'
 arch=('any')
@@ -23,7 +23,10 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname%-git}"
-  sed -i -e 's|/usr/sbin|/usr/bin|' Makefile
+  find . -type f -exec sed -i 's/sbin/bin/g' {} \;
+
+  sed -i 's/qr(^virtlogd)} = 0/qr(^virtlogd) => 0/g' "ex/$pkgname.conf"
+  sed -i 's/qr(^virtlockd)} = 0/qr(^virtlockd) => 0/g' "ex/$pkgname.conf"
 }
 
 build() {
