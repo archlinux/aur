@@ -1,10 +1,11 @@
 pkgbase = jitsi-meet-prosody-git
 	pkgdesc = Jitsi Meet Prosody Plugins git build
-	pkgver = 1.0.5001+3+g7396db71f
+	pkgver = 1.0.5957+0+g3b05fd70a
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	arch = any
 	license = Apache
+	makedepends = git
 	optdepends = prosody
 	optdepends = lua52
 	optdepends = lua52-sec
@@ -15,4 +16,3 @@ pkgbase = jitsi-meet-prosody-git
 	sha256sums = SKIP
 
 pkgname = jitsi-meet-prosody-git
-

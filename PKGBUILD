@@ -1,7 +1,7 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 pkgname=jitsi-meet-prosody-git
-pkgver=1.0.5001+3+g7396db71f
+pkgver=1.0.5957+0+g3b05fd70a
 pkgrel=1
 pkgdesc="Jitsi Meet Prosody Plugins git build"
 arch=('any')
@@ -10,6 +10,7 @@ license=('Apache')
 depends=()
 optdepends=("prosody" "lua52" "lua52-sec" "lua52-zip" "lua52-event")
 makedepends=(
+        "git"
 )
 options=('!strip')
 backup=(
