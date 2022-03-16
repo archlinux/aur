@@ -1,7 +1,7 @@
 # Maintainer: jakob <grandchild@gmx.net>
 
 pkgname=mingw-w64-libgit2
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="A portable, pure C implementation of the Git core methods (mingw-w64)"
 arch=(any)
@@ -11,7 +11,7 @@ options=(staticlibs !buildflags !strip)
 license=(GPL)
 url="https://github.com/libgit2/libgit2"
 source=("https://github.com/libgit2/libgit2/archive/v${pkgver}.tar.gz")
-sha256sums=('fccd371a271133e29d002dd207490d22a0c9b06992b874b8edb8366532a94f54')
+sha256sums=('901c2b4492976b86477569502a41c31b274b69adc177149c02099ea88404ef19')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
