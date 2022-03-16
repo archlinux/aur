@@ -40,7 +40,7 @@ pkgbase = audacious-plugins-git
 	depends = qt5-x11extras
 	provides = audacious-plugins
 	conflicts = audacious-plugins
-	source = git://github.com/audacious-media-player/audacious-plugins.git
+	source = git+https://github.com/audacious-media-player/audacious-plugins.git
 	sha256sums = SKIP
 
 pkgname = audacious-plugins-git

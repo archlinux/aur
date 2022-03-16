@@ -25,7 +25,7 @@ depends=('audacious-git'
          'libvorbis' 'lirc' 'mpg123' 'neon' 'wavpack' 'libbs2b' 'libopenmpt'
          'qt5-x11extras')
 makedepends=('glib2' 'python' 'git')
-source=("git://github.com/audacious-media-player/$_pkgname.git")
+source=("git+https://github.com/audacious-media-player/$_pkgname.git")
 sha256sums=('SKIP')
 
 if [ "$_use_meson" = 1 ]; then
