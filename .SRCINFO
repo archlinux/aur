@@ -1,7 +1,7 @@
 pkgbase = gdm-settings
 	pkgdesc = A settings app for Gnome's Login Manager (GDM)
-	pkgver = 0.3+alpha
-	pkgrel = 3
+	pkgver = 0.4
+	pkgrel = 1
 	url = https://github.com/realmazharhussain/gdm-settings
 	arch = any
 	license = AGPL3
@@ -13,7 +13,7 @@ pkgbase = gdm-settings
 	depends = libadwaita
 	depends = glib2
 	depends = python-gobject
-	source = gdm-settings-0.3-alpha.tar.gz::https://github.com/realmazharhussain/gdm-settings/archive/refs/tags/v0.3-alpha.tar.gz
+	source = gdm-settings-0.4.tar.gz::https://github.com/realmazharhussain/gdm-settings/archive/refs/tags/v0.4.tar.gz
 	md5sums = SKIP
 
 pkgname = gdm-settings

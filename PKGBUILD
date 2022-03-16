@@ -1,8 +1,8 @@
 # Maintainer: Mazhar Hussain <mmazharhussainkgb1145@gmail.com>
 pkgname=gdm-settings
-__pkgver='0.3-alpha'
+__pkgver='0.4'
 pkgver=${__pkgver/-/+}
-pkgrel=3
+pkgrel=1
 pkgdesc="A settings app for Gnome's Login Manager (GDM)"
 arch=(any)
 url="https://github.com/realmazharhussain/gdm-settings"
