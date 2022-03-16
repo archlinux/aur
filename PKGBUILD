@@ -60,7 +60,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.16.4.arch1
+pkgver=5.16.14.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -90,7 +90,7 @@ _repo_url="https://github.com/archlinux/linux.git"
 
 _reponame_kernel_patch="kernel_compiler_patch"
 _repo_url_kernel_patch="https://github.com/graysky2/${_reponame_kernel_patch}.git"
-_kernel_patch_name="more-uarches-for-kernel-5.15+.patch"
+_kernel_patch_name="more-uarches-for-kernel-5.15-5.16.patch"
 
 _pkgdesc_extra="~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG"
 
@@ -113,8 +113,8 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '78d02ef92e4f7b936318fda65fa0183158dca4365872063f12b36fd7503596b961dcd9eae339bca8381f2dca555e3e684712024e4900aebe1f9a9cd7551b73e0'
-            '1007d9b41372eb4747db4214eac90d8c079220e6d9b693649318053d184c032a8d0b4edbee851386218b91083306288f4ceeeb61b5bf89776ce3beeaee20e2ca'
+            '90f8c978bde10c80770431c3d8686b6f8c10e2c9645dddb9e8772312eb0cb1129bcfc6af5b86477c5616b723da25f629859092b1af178da7bd71c7b89e1de97d'
+            'b95591e917d0b7b6b7fa7af62aac8f850aad7717e76f7ba17edfdb7ecbd53e31cf2c9409e1225f0aa6636564249c23a7f5c2bfc1e521cd1eec25a6e081b2122c'
             '889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57')
 
 export KBUILD_BUILD_HOST=archlinux
