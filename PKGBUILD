@@ -3,7 +3,7 @@
 
 pkgname=waifu2x-ncnn-vulkan
 pkgver=20210521
-pkgrel=1
+pkgrel=2
 pkgdesc="waifu2x converter ncnn version, runs fast on intel / amd / nvidia GPU with vulkan"
 url="https://github.com/nihui/waifu2x-ncnn-vulkan"
 license=('MIT')
@@ -13,7 +13,7 @@ conflicts=('waifu2x-ncnn-vulkan-git')
 # provides=('waifu2x-ncnn-vulkan')
 arch=('i686' 'x86_64')
 source=(
-    "git://github.com/nihui/waifu2x-ncnn-vulkan.git#tag=${pkgver}"
+    "git+https://github.com/nihui/waifu2x-ncnn-vulkan.git#tag=${pkgver}"
 )
 sha256sums=(
     'SKIP'
