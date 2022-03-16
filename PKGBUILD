@@ -7,16 +7,14 @@ pkgdesc='The Pro Version of the famous FontAwesome Icons. Requires an active Sub
 arch=('any')
 url='https://fontawesome.com'
 license=('custom:Font Awesome Pro License')
-makedepends=('npm')
+makedepends=(
+	'grep'
+	'npm'
+)
 
 prepare() {
 	getToken=0
-	if [ ! -f ~/.npmrc ]; then
-		getToken=1
-	else
-		/usr/bin/grep '//npm.fontawesome.com/:_authToken' < ~/.npmrc > /dev/null 2>&1
-		getToken=$?
-	fi
+	npm config get | grep '//npm.fontawesome.com/:_authToken' > /dev/null 2>&1 || getToken=1
 
 	if [ $getToken != 0 ]; then
 		echo "Please enter your 'Pro npm Package Token'. You may find it under https://fontawesome.com/account"
