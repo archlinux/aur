@@ -1,5 +1,5 @@
 pkgbase = scafetch
-	pkgdesc = Scafetch is a command-line tool to display information about your remote Git repositories in an aesthetic and visually pleasing way.
+	pkgdesc = A command-line tool to display information about your remote Git repositories in an aesthetic and visually pleasing way.
 	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/iddev5/passphrase

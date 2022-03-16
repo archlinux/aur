@@ -1,8 +1,8 @@
-# Maintainer: thecashewtrader <thecashewtrader@protonmail.com>
+# Maintainer: thecashewtrader <thecashewtrader at protonmail dot com>
 pkgname=scafetch
 pkgrel=1
 pkgver=0.1
-pkgdesc="Scafetch is a command-line tool to display information about your remote Git repositories in an aesthetic and visually pleasing way."
+pkgdesc="A command-line tool to display information about your remote Git repositories in an aesthetic and visually pleasing way."
 arch=('any')
 url="https://github.com/iddev5/scafetch/${pkgname}"
 license=('MIT')
