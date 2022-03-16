@@ -5,7 +5,7 @@
 
 pkgname=wtfutil
 pkgver=0.41.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Personal information dashboard for your terminal"
 arch=('x86_64' 'aarch64' 'armv6h')
 url="https://wtfutil.com"
@@ -34,6 +34,7 @@ build() {
     -mod=readonly \
     -modcacherw \
     -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" ${flags}" \
+    -buildvcs=false \
     -o bin/"$pkgname"
 }
 
@@ -45,7 +46,7 @@ check() {
 
 package() {
   cd "wtf-$pkgver"
-  install -Dm755 "bin/$pkgname" -t "$pkgdir/usr/bin"
-  install -Dm644 {README,CHANGELOG}.md -t "$pkgdir/usr/share/doc/$pkgname"
-  cp -r _sample_configs "$pkgdir/usr/share/doc/$pkgname/sample_configs"
+  install -Dm755 "bin/$pkgname" -t "$pkgdir/usr/bin/"
+  install -Dm644 {README,CHANGELOG}.md -t "$pkgdir/usr/share/doc/$pkgname/"
+  cp -r _sample_configs "$pkgdir/usr/share/doc/$pkgname/sample_configs/"
 }
