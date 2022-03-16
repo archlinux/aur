@@ -2,7 +2,7 @@
 Name=Macast
 Comment=DLNA Media Renderer
 Exec=/usr/bin/macast-gui
-Icon=/usr/share/icons/Macast.png
+Icon=macast
 Terminal=false
 Type=Application
 Categories=Video;AudioVideo;
