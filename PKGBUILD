@@ -2,9 +2,9 @@
 options=(!strip)  # Don't strip libs because there aren't any
 DOC_DIRS=(opt/hydrus/help)
 
-pkgbase=hydrus
-pkgname=(hydrus)
-pkgver=476
+pkgname=hydrus
+_pkgname=hydrus
+pkgver=477
 pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
@@ -24,7 +24,7 @@ optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'python-cloudscraper: bypass cloudflare "checking your browser" challenges'
             'python-pyqt5-chart: display bandwidth usage charts'
             'python-pyopenssl: to generate certificates for accessing client API and server via HTTPS')
-source=("${pkgbase}::git+https://github.com/hydrusnetwork/${pkgbase}.git#commit=15fae4670f3d4c26868a81ceb48082ed79224c3e"
+source=("${_pkgname}::git+https://github.com/hydrusnetwork/${_pkgname}.git#commit=39f15229e46d642897962b04f4c8c7251625b573"
         paths-in-opt.patch
         hydrus-client
         hydrus-server
@@ -36,7 +36,7 @@ sha256sums=('SKIP'
             '9b8c2603a8040ae80152ff9a718ad3e8803fdc3029a939e3c0e932ea35ded923')
 
 prepare() {
-  cd "$pkgbase"
+  cd "${srcdir}/${_pkgname}"
   git apply < ../paths-in-opt.patch
 
   # Remove unit tests
@@ -45,7 +45,7 @@ prepare() {
 }
 
 build() {
-  cd "$pkgbase"
+  cd "${srcdir}/${_pkgname}"
 
   msg 'Compiling .py files...'
   python -OO -m compileall -fq .
@@ -54,8 +54,8 @@ build() {
   mkdocs build -d help
 }
 
-package_hydrus() {
-  cd "$pkgbase"
+package() {
+  cd "${srcdir}/${_pkgname}"
 
   # Create /opt/hydrus and copy hydrus files to there
   install -m755 -d "${pkgdir}/opt/hydrus"
@@ -72,10 +72,10 @@ package_hydrus() {
 
   # Install .desktop shortcut
   install -d -m755 "${pkgdir}/usr/share/applications"
-  install -m644 ../hydrus.desktop "${pkgdir}/usr/share/applications/${pkgbase}.desktop"
+  install -m644 ../hydrus.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 
   # Install license files
-  install -d -m755 "${pkgdir}/usr/share/licenses/${pkgbase}"
-  install -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgbase}/"
-  install -m644 license.txt "${pkgdir}/usr/share/licenses/${pkgbase}/"
+  install -d -m755 "${pkgdir}/usr/share/licenses/${_pkgname}"
+  install -m644 COPYING "${pkgdir}/usr/share/licenses/${_pkgname}/"
+  install -m644 license.txt "${pkgdir}/usr/share/licenses/${_pkgname}/"
 }
