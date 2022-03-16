@@ -1,6 +1,6 @@
 # Maintainer: Mazhar Hussain <mmazharhussainkgb1145@gmail.com>
 pkgname=gdm-settings-git
-pkgver=0.3+alpha+39+g08892d6
+pkgver=0.4+0+gb9b41f3
 pkgrel=1
 epoch=1
 pkgdesc="A settings app for Gnome's Login Manager (GDM)"
