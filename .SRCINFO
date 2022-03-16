@@ -12,8 +12,3 @@ pkgbase = intel-oneapi-advisor
 pkgname = intel-oneapi-advisor
 	depends = intel-oneapi-common-vars>=2022.0.0
 	depends = intel-oneapi-common-licensing=2022.0.0
-
-pkgname = intel-oneapi-advisor-static
-	pkgdesc = Intel® Advisor (static libs)
-	depends = intel-oneapi-advisor=2022.0.0_92
-	options = staticlibs
