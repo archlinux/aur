@@ -1,7 +1,7 @@
 pkgbase = stint-git
 	pkgdesc = Simple, suckless-style color grabber for X11
 	pkgver = 20120807
-	pkgrel = 2
+	pkgrel = 5
 	url = https://github.com/djpohly/stint
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = stint-git
 	makedepends = git
 	depends = libx11
 	provides = stint
-	source = git://github.com/djpohly/stint.git
+	source = git+https://github.com/djpohly/stint.git
 	sha256sums = SKIP
 
 pkgname = stint-git
-

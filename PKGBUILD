@@ -2,7 +2,7 @@
 pkgname=stint-git
 _pkgname=stint
 pkgver=20120807
-pkgrel=2
+pkgrel=5
 pkgdesc="Simple, suckless-style color grabber for X11"
 arch=(i686 x86_64)
 url="https://github.com/djpohly/stint"
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('libx11')
 makedepends=('git')
 provides=("$_pkgname")
-source=('git://github.com/djpohly/stint.git')
+source=('git+https://github.com/djpohly/stint.git')
 sha256sums=('SKIP')
 
 build() {
