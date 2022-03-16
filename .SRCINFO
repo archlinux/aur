@@ -47,9 +47,7 @@ pkgbase = baresip
 	optdepends = speexdsp: (speex_aec, speex_pp modules)
 	optdepends = v4l-utils: (v4l2 module)
 	source = baresip-1.1.0.tar.gz::https://github.com/baresip/baresip/archive/v1.1.0.tar.gz
-	source = baresip-flags.patch
-	sha256sums = f9230b27c4a62f31223847bc485c51f3d960f8a09f36998dedb73358e1784b4e
-	sha256sums = 43835240d0cffd2754b7dc36f62340b2fccf5966a3e4b81f0a179428f607b914
+	sha256sums = 6feaa431b52b81a28238420bfc4efe3550ddef624fc6c1601ac144ef406d9b32
 
 pkgname = baresip
 

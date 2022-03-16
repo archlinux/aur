@@ -2,7 +2,7 @@
 # Contributor: Dmitrij D. Czarkoff <czarkoff at gmail dot com>
 
 pkgname=baresip
-pkgver=1.1.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="portable and modular SIP User-Agent with audio and video support"
 arch=('i686' 'x86_64' 'armv6h')
@@ -30,19 +30,12 @@ optdepends=('alsa-lib: (alsa module)'
             'speexdsp: (speex_aec, speex_pp modules)'
             'v4l-utils: (v4l2 module)')
 makedepends=(${optdepends[@]/%:*/})
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/baresip/baresip/archive/v${pkgver}.tar.gz"
-        "baresip-flags.patch")
-sha256sums=('f9230b27c4a62f31223847bc485c51f3d960f8a09f36998dedb73358e1784b4e'
-            '43835240d0cffd2754b7dc36f62340b2fccf5966a3e4b81f0a179428f607b914')
-
-prepare() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  patch -Np1 -i ${srcdir}/baresip-flags.patch
-}
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/baresip/baresip/archive/v${pkgver}.tar.gz")
+sha256sums=("6feaa431b52b81a28238420bfc4efe3550ddef624fc6c1601ac144ef406d9b32")
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  make V=1 USE_GST= USE_GST_VIDEO= PREFIX="/usr"
+  make V=1 USE_GST= USE_GST_VIDEO= DESTDIR="/usr" PREFIX="/usr"
 }
 
 package() {
