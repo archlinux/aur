@@ -9,6 +9,8 @@ license=('GPL3')
 depends=('qt5-base' 'quazip-qt5' 'qtkeychain-qt5' 'libxcomposite') # this x11 dependency is going to be removed in a future release
 makedepends=('git' 'cmake')
 install=
+provides=('astra-launcher')
+conflicts=('astra-launcher-git')
 source=(https://git.sr.ht/~redstrate/astra/archive/$pkgver-beta.tar.gz) # sorry about the -beta on tags, this will be removed in the near future
 md5sums=('306b4578140b8ee9cc8133af11fc973f')
 
