@@ -1,0 +1,38 @@
+From 8c1d2203259170d29592529f89e0e2e1c23881fc Mon Sep 17 00:00:00 2001
+From: Fabian Greffrath <fabian@greffrath.com>
+Date: Thu, 9 Dec 2021 22:10:15 +0100
+Subject: [PATCH] only remove overlaps with pathops if this is available
+
+Fixes #55
+---
+ scripts/make-static-fonts.py | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/scripts/make-static-fonts.py b/scripts/make-static-fonts.py
+index 6f500fe7..23e1e7f3 100644
+--- a/scripts/make-static-fonts.py
++++ b/scripts/make-static-fonts.py
+@@ -12,6 +12,11 @@ import ufo2ft
+ 
+ import instantiator
+ 
++try:
++    import pathops
++    have_pathops = True
++except ImportError:
++    have_pathops = False
+ 
+ def generate_and_write_autohinted_instance(
+     instantiator: instantiator.Instantiator,
+@@ -31,7 +36,7 @@ def generate_and_write_autohinted_instance(
+     instance_font = ufo2ft.compileOTF(
+         instance,
+         removeOverlaps=True,
+-        overlapsBackend="pathops",
++        overlapsBackend="pathops" if have_pathops else "booleanOperations",
+         inplace=True,
+         useProductionNames=True,
+         optimizeCFF=ufo2ft.CFFOptimization.NONE,
+-- 
+GitLab
+

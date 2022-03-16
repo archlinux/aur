@@ -1,0 +1,12 @@
+diff '--color=auto' --unified --recursive a/requirements.txt b/requirements.txt
+--- a/requirements.txt	2021-09-13 22:43:08.000000000 +0200
++++ b/requirements.txt	2022-03-12 00:01:15.913279760 +0100
+@@ -18,7 +18,7 @@
+     # via statmake
+ cffsubr==0.2.8
+     # via ufo2ft
+-cu2qu==1.6.7
++cu2qu==1.6.7.post1
+     # via ufo2ft
+ fontmath==0.8.1
+     # via -r requirements.in

@@ -1,0 +1,12 @@
+diff '--color=auto' --unified --recursive a/requirements.txt b/requirements.txt
+--- a/requirements.txt	2021-09-13 22:43:08.000000000 +0200
++++ b/requirements.txt	2022-03-12 00:05:55.509187345 +0100
+@@ -45,8 +45,6 @@
+     # via fs
+ six==1.16.0
+     # via fs
+-skia-pathops==0.6.0.post2
+-    # via -r requirements.in
+ statmake==0.3.0
+     # via -r requirements.in
+ ufo2ft[cffsubr]==2.23.0

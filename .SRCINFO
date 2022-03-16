@@ -1,0 +1,22 @@
+pkgbase = cantarell-static-fonts
+	pkgdesc = Humanist sans serif font - static fonts
+	pkgver = 0.303.1
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/cantarell-fonts
+	arch = any
+	license = custom:SIL
+	makedepends = meson
+	makedepends = appstream-glib
+	makedepends = python
+	provides = cantarell-fonts
+	conflicts = cantarell-fonts
+	source = https://download.gnome.org/sources/cantarell-fonts/0.303/cantarell-fonts-0.303.1.tar.xz
+	source = only_remove_overlaps_with_pathops_if_available.patch
+	source = do_not_require_pathops.patch
+	source = bump_cu2qu.patch
+	sha256sums = f9463a0659c63e57e381fdd753cf1929225395c5b49135989424761830530411
+	sha256sums = 5ebb937d0583773ec383537db8f5d3891f9c8fb7d1b5a9d8f1d16219e17858c8
+	sha256sums = 037a9ee76801b3b401f5afe592b10c37eb0407e8a8245df8831d001d9f2fdfb9
+	sha256sums = 6bef6ec695177082881dc1ef2c95013f0f294c237e38e4e6b3eacfe52363dcbf
+
+pkgname = cantarell-static-fonts
