@@ -2,36 +2,38 @@
 
 pkgbase=lightway-core-git
 pkgname=('lightway-core-git' 'lightway-core-doc-git')
-pkgver=r3.g58e8b98
+pkgver=1.1.r0.g19b2cdc
 pkgrel=1
 pkgdesc='A VPN protocol by ExpressVPN (git version)'
 arch=('x86_64')
 url='https://www.expressvpn.com/lightway/'
 license=('GPL2')
-makedepends=('git' 'ruby-ceedling' 'doxygen')
+makedepends=('git' 'ruby-ceedling' 'doxygen' 'graphviz')
 source=('git+https://github.com/expressvpn/lightway-core.git'
-        'git+https://github.com/wolfSSL/wolfssl.git')
+        'git+https://github.com/wolfSSL/wolfssl.git'
+        '010-lighway-core-disable-werror-on-wolfssl.patch')
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            '60e4d5490192bc1ed6840665345e854eca5715a898824b90fa012245272f619b')
 
 prepare() {
     local _wolfssl_commit
     _wolfssl_commit="$(awk '/he_wolfssl_commit/ { print $3 }' lightway-core/unix.yml)"
     git -C wolfssl config --local advice.detachedHead false
-    git -C wolfssl checkout "$_wolfssl_commit"
+    git -C wolfssl checkout --quiet "$_wolfssl_commit"
     
-    sed -i 's/\-Werror//' wolfssl/m4/ax_harden_compiler_flags.m4
+    patch -d wolfssl -Np1 -i "${srcdir}/010-lighway-core-disable-werror-on-wolfssl.patch"
     
     mkdir -p lightway-core/third_party
     cp -af wolfssl lightway-core/third_party
 }
 
 pkgver() {
-    printf 'r%s.g%s' "$(git -C lightway-core rev-list --count HEAD)" \
-                     "$(git -C lightway-core rev-parse --short HEAD)"
+    git -C lightway-core describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
+    export CFLAGS+=' -ffat-lto-objects'
     cd lightway-core
     ceedling release project:linux
     doxygen

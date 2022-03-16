@@ -1,6 +1,6 @@
 pkgbase = lightway-core-git
 	pkgdesc = A VPN protocol by ExpressVPN (git version)
-	pkgver = r3.g58e8b98
+	pkgver = 1.1.r0.g19b2cdc
 	pkgrel = 1
 	url = https://www.expressvpn.com/lightway/
 	arch = x86_64
@@ -8,10 +8,13 @@ pkgbase = lightway-core-git
 	makedepends = git
 	makedepends = ruby-ceedling
 	makedepends = doxygen
+	makedepends = graphviz
 	source = git+https://github.com/expressvpn/lightway-core.git
 	source = git+https://github.com/wolfSSL/wolfssl.git
+	source = 010-lighway-core-disable-werror-on-wolfssl.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 60e4d5490192bc1ed6840665345e854eca5715a898824b90fa012245272f619b
 
 pkgname = lightway-core-git
 	provides = lightway-core
