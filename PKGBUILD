@@ -6,7 +6,7 @@ _version=1.0.862
 
 pkgname=${_basename}
 pkgver=${_version}
-pkgrel=1
+pkgrel=2
 pkgdesc="JItsi Meet COnference FOcus"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -14,6 +14,7 @@ license=('Apache')
 depends=("java-runtime" "bash")
 optdepends=("prosody")
 makedepends=(
+        "git"
         "java-environment"
         "unzip" "maven"
 )
