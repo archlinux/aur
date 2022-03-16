@@ -7,7 +7,7 @@ _pkgvcs='-git'
 pkgname="${_pkgname}${_pkgvariant}${_pkgvcs}"
 epoch=0
 pkgver=3.18.0.303+r11455.20211110.8c0ef328f
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK+ based e-mail client. With patch to show 'protected headers' (currently only IETF draft, not enigmail flavour), without network manager dependency. Latest git checkout."
 arch=(
   'i686'
@@ -224,12 +224,12 @@ package() {
 
   # Install more information files:
   msg2 "Installing further documentation ..."
-  install -D -v -m644 COPYING "${pkgdir}/usr/share/lincenses/${pkgname}/COPYING"
+  install -D -v -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
   for _docfile in ABOUT-NLS AUTHORS ChangeLog* INSTALL NEWS README RELEASE_NOTES TODO version; do
     install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
   done
   ln -sv "/usr/lib/claws-mail/tools/README" "${pkgdir}/usr/share/doc/claws-mail/README-tools"
-  ln -sv "/usr/share/lincenses/${pkgname}/COPYING" "${pkgdir}/usr/share/doc/${_pkgname}/COPYING"
+  ln -sv "/usr/share/licenses/${pkgname}/COPYING" "${pkgdir}/usr/share/doc/${_pkgname}/COPYING"
 
 
   cd tools
