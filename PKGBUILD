@@ -2,7 +2,7 @@
 pkgname=upgrade
 pkgver=0.1.1
 pkgrel=0
-pkgdesc='Automate system upgrades'
+pkgdesc='Simplify system upgrades'
 url='https://github.com/dnut/upgrade'
 source=("git+https://github.com/dnut/upgrade#tag=$pkgver")
 backup=("etc/upgrade.ini")
