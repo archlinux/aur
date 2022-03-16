@@ -1,6 +1,6 @@
 # Maintainer: Joermungand <joermungand at gmail dot com>
 pkgname=carla-bridges-win32-git
-pkgver=4606.db6dadd6d
+pkgver=6278.975821819
 pkgrel=1
 pkgdesc="Carla win32 bridge"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ conflicts=('carla-bridges-win32')
 provides=('carla-bridges-win32')
 depends=('mingw-w64-crt' 'mingw-w64-winpthreads' 'mingw-w64-pkg-config' 'wine' 'carla-git')
 makedepends=('git' 'mingw-w64-gcc' 'gcc-multilib')
-source=("$pkgname"::'git://github.com/falkTX/Carla.git')
+source=("$pkgname"::'git+https://github.com/falkTX/Carla.git')
 md5sums=('SKIP')
 
   _path=$PATH
