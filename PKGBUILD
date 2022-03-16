@@ -3,8 +3,8 @@
 _pkgname=vulkan-icd-loader
 pkgname=mingw-w64-${_pkgname}
 _dirname=Vulkan-Loader
-pkgver=1.3.207
-pkgrel=2
+pkgver=1.3.208
+pkgrel=1
 pkgdesc="Vulkan Installable Client Driver (ICD) Loader (mingw-w64)"
 arch=(any)
 url="https://www.khronos.org/vulkan/"
@@ -13,31 +13,39 @@ license=('APACHE')
 makedepends=(mingw-w64-cmake mingw-w64-vulkan-headers python-lxml)
 depends=(mingw-w64-crt)
 options=(!buildflags staticlibs !strip)
-source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/${_dirname}/archive/v${pkgver}.tar.gz")
-sha256sums=('f638a69ffc8afb6ff018a70ef0451b08a869081a417a23538a13a5fbc97aef97')
+source=(
+  "${_pkgname}-${pkgver}.tar.gz::https://github.com/KhronosGroup/${_dirname}/archive/v${pkgver}.tar.gz"
+  'https://github.com/KhronosGroup/Vulkan-Loader/pull/710.patch')
+sha256sums=('be1a45779fb52a9e0d227eba758e4615c88eb530b7a1ae3fe5f5374fe2db9c5e'
+            '55736dff82300a74834beb9c832c8c2937158f7ada5993a01d832664f72c38a9')
 
+_srcdir="${_dirname}-${pkgver}"
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+_flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG' -DUSE_MASM=OFF -DJWASM_FOUND=0 )
 
 prepare() {
-  cd "${srcdir}/${_dirname}-${pkgver}"
-  curl -L https://github.com/KhronosGroup/Vulkan-Loader/pull/710.patch | patch -p1
+  cd "${_srcdir}"
+  patch -p1 -i '../710.patch'
   sed -i "s|NO_CMAKE_FIND_ROOT_PATH||g" cmake/FindVulkanHeaders.cmake
 }
 
 build() {
-  cd "${srcdir}/${_dirname}-${pkgver}"
   for _arch in ${_architectures}; do
-    mkdir -p build-${_arch} && pushd build-${_arch}
-    ${_arch}-cmake -DBUILD_TESTS=OFF -DUSE_MASM=OFF -DJWASM_FOUND=0 ..
-    make
-    popd
+    ${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}-static" "${_flags[@]}" -DBUILD_TESTS=OFF \
+      -DBUILD_SHARED_LIBS=OFF -DCMAKE_INSTALL_PREFIX="/usr/${_arch}/static"
+		cmake --build "build-${_arch}-static"
+    
+    ${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DBUILD_TESTS=OFF
+		cmake --build "build-${_arch}"
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
-    cd "${srcdir}"/${_dirname}-${pkgver}/build-${_arch}
-    make DESTDIR="${pkgdir}" install
+    DESTDIR="${pkgdir}" cmake --install "build-${_arch}-static"
+    ${_arch}-strip -g "$pkgdir/usr/${_arch}/static/lib/"*.a
+    
+    DESTDIR="${pkgdir}" cmake --install "build-${_arch}"
     ${_arch}-strip --strip-unneeded "${pkgdir}/usr/${_arch}/bin/"*.dll
     ${_arch}-strip -g "${pkgdir}/usr/${_arch}/lib/"*.a
   done
