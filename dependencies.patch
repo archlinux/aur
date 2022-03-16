@@ -1,0 +1,10 @@
+--- src/flakehell-v.0.9.0/pyproject.toml	2022-03-16 12:15:55.490562938 +0100
++++ pyproject.toml	2022-03-16 12:15:50.027229932 +0100
+@@ -178,3 +178,7 @@
+ [build-system]
+ requires = ["flit_core >=2,<4"]
+ build-backend = "flit_core.buildapi"
++
++[tool.poetry.dev-dependencies]
++flakehell = "^0.9.0"
++flake8 = "3.9.0"
