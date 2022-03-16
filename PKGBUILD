@@ -17,7 +17,7 @@ source_i686=($pkgname-$pkgver.sh::$_source/COPASI-$pkgver-Linux-32bit.sh)
 source_x86_64=($pkgname-$pkgver.sh::$_source/COPASI-$pkgver-Linux-64bit.sh)
 sha256sums=('9576e4a9b2c7e74c91d0e1c0b39fcb20531e8fb4f21c5e8ac95b048609702923')
 sha256sums_i686=('f4e6b5fba0d230053edc89c5bcfc676e737d6aac67cc91b927794761ad65e02d')
-sha256sums_x86_64=('53f29582f14af7bad60aae173c1818c43b3535c7a652e675af0cf4b7ff5ef269')
+sha256sums_x86_64=('f4e6b5fba0d230053edc89c5bcfc676e737d6aac67cc91b927794761ad65e02d')
 
 package() {
 
