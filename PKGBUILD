@@ -2,7 +2,7 @@
 
 pkgname=python-noiseprotocol-git
 _pkgname=noiseprotocol
-pkgver=v0.2.2.r18.g7337544
+pkgver=0.3.1.r0.g7337544
 pkgrel=1
 pkgdesc="A Python implementation of Noise Protocol Framework"
 arch=('any')
@@ -11,12 +11,12 @@ makedepends=('python-setuptools' 'git')
 url="https://github.com/plizonczyk/noiseprotocol"
 license=('MIT')
 options=('!emptydirs')
-source=(git://github.com/plizonczyk/noiseprotocol.git)
+source=(git+https://github.com/plizonczyk/noiseprotocol.git)
 sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
