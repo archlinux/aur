@@ -3,7 +3,7 @@
 
 pkgname=bitcoin-git
 _gitname=bitcoin
-pkgver=0.21.1.r28725
+pkgver=23.0rc2.r32956
 pkgrel=1
 pkgdesc="Bitcoin is a peer-to-peer network based digital currency. This package provides bitcoin-core binaries: bitcoind, bitcoin-qt, bitcoin-tx, and bitcoin-cli"
 arch=('x86_64')
@@ -13,8 +13,8 @@ depends=('qt5-base' 'miniupnpc' 'openssl' 'protobuf' 'boost-libs' 'db4.8' 'qrenc
 makedepends=('qt5-tools' 'pkg-config' 'git' 'boost' 'gcc' 'gcc-libs' 'make' 'automake' 'autoconf' 'libtool' 'python3')
 provides=('bitcoin' 'bitcoin-qt' 'bitcoind' 'bitcoin-bin' 'bitcoin-daemon' 'bitcoin-tx' 'bitcoin-cli' 'bitcoin-core')
 conflicts=('bitcoin' 'bitcoin-qt' 'bitcoind' 'bitcoin-bin' 'bitcoin-daemon' 'bitcoin-core' 'bitcoin-core-git' 'bitcoin-cli' 'bitcoin-tx')
-source=('git://github.com/bitcoin/bitcoin.git'
-        'packaging::git://github.com/bitcoin-core/packaging.git')
+source=('git+https://github.com/bitcoin/bitcoin.git'
+        'packaging::git+https://github.com/bitcoin-core/packaging.git')
 
 sha256sums=('SKIP'
             'SKIP')

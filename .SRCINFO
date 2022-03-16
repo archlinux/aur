@@ -1,6 +1,6 @@
 pkgbase = bitcoin-git
 	pkgdesc = Bitcoin is a peer-to-peer network based digital currency. This package provides bitcoin-core binaries: bitcoind, bitcoin-qt, bitcoin-tx, and bitcoin-cli
-	pkgver = 0.21.1.r28725
+	pkgver = 23.0rc2.r32956
 	pkgrel = 1
 	url = https://bitcoin.org
 	arch = x86_64
@@ -43,10 +43,9 @@ pkgbase = bitcoin-git
 	conflicts = bitcoin-core-git
 	conflicts = bitcoin-cli
 	conflicts = bitcoin-tx
-	source = git://github.com/bitcoin/bitcoin.git
-	source = packaging::git://github.com/bitcoin-core/packaging.git
+	source = git+https://github.com/bitcoin/bitcoin.git
+	source = packaging::git+https://github.com/bitcoin-core/packaging.git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = bitcoin-git
-
