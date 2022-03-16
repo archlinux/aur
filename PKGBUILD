@@ -2,7 +2,7 @@
 
 _gitname="weather-widget-2"
 pkgname=plasma5-applets-weather-widget-2-git
-pkgver=r93.9c26dd1
+pkgver=r191.02b7367
 pkgrel=1
 pkgdesc="An updated version of the plasma-applet-weather-widget by Kotelnik"
 arch=('x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/blackadderkate/$_gitname"
 license=('GPL')
 depends=('plasma-workspace' 'qt5-graphicaleffects' 'qt5-xmlpatterns')
 makedepends=('git' 'extra-cmake-modules')
-source=("git+$url.git#branch=placeSearch")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -24,7 +24,6 @@ prepare() {
 
 build() {
     cd build
-
     cmake ../$_gitname \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
