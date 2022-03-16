@@ -1,13 +1,13 @@
 pkgbase = python-flakehell
 	pkgdesc = Flake8 wrapper to make it nice, legacy-friendly, configurable.
-	pkgver = 0.6.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://flakehell.readthedocs.io/
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python
-	depends = python-setuptools
-	depends = python-dephell
 	depends = python-attrs
 	depends = python-entrypoints
 	depends = python-typing-extensions
@@ -20,8 +20,7 @@ pkgbase = python-flakehell
 	depends = flake8
 	depends = python-mccabe
 	depends = python-flake8-commas
-	source = https://github.com/life4/flakehell/archive/v.0.6.0.tar.gz
-	sha512sums = 5b2274b3ed6bd610db098dce3b6678dd886dfb7c308b688896c282c468ca16abee3b84afbe0998ec83be7291e0f481dc7d4c8d71b028595be4500f13bebdcad7
+	source = https://github.com/flakehell/flakehell/archive/refs/tags/v.0.9.0.tar.gz
+	sha512sums = 8733d9cf5b19abf6170104837521e2950deeb5ea334e004ff920b4135a243bc51acbe95e907000f57220fbc7589bbaa43745fec27a6e0405dee08792f5dded79
 
 pkgname = python-flakehell
-
