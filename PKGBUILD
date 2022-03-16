@@ -2,8 +2,8 @@
 
 _basename=jitsi
 _pkgname=videobridge
-_tag=2.1-640-ga61d65f9
-_version=2.1+640+ga61d65f9
+_tag=2.1-642-gcb298254
+_version=2.1+642+gcb298254
 
 pkgname=${_basename}-${_pkgname}-nightly
 pkgver=${_version}
@@ -15,6 +15,7 @@ license=('Apache')
 depends=("java-runtime" "bash")
 optdepends=("prosody")
 makedepends=(
+        "git"
         "java-environment"
         "unzip" "maven"
 )
