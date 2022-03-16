@@ -1,6 +1,6 @@
 pkgbase = pademelon-desktop
 	pkgdesc = Providing a modular desktop environment with pademelon
-	pkgver = 1.0.3
+	pkgver = 1.0.4
 	pkgrel = 1
 	url = https://github.com/jzbor/pademelon
 	arch = x86_64
