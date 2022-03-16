@@ -4,7 +4,7 @@ _title="Crash Bandicoot"
 _rom_filename="${_title} (Europe) (EDC)"
 pkgname=crash-bandicoot
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="1996 platform video game developed by Naughty Dog and published by Sony Computer Entertainment for the PlayStation."
 arch=('any')
 url="https://en.wikipedia.org/wiki/Crash_Bandicoot_(video_game)"
@@ -17,7 +17,7 @@ source=("${_uuid}.bin::https://archive.org/download/redump.psx/Crash%20Bandicoot
         "${_app_id}.png::https://upload.wikimedia.org/wikipedia/en/4/44/Crash_Bandicoot_Cover.png")
 sha256sums=("a086b6fdd8d908393ff8a7e29be1e7add7cc0a495a221f526c6aa0e784329a54"
 	    "866e0e0e9450d605b2b906a069ec74e2d51131fbd65f13d03462943f685bd51e"
-	    "9ad40ca67c657bf4340be69d7aeba0df93b7f7805599b619efe422ec6fc5c49d"
+	    "fdfbc31089c3e1b63e92ff58618262b72d1f8baba11a1688f0b8ab3a932d70c6"
 	    "7cdc92303677967e8213e45934f2c5a45fa3a6b684dd01b8ecc5b03ba10e07b4")
 
 prepare() {
