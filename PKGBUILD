@@ -20,7 +20,7 @@
 ((DISABLE_CUDA)) && optdepends+=("cuda: CUDA support in Cycles") || { makedepends+=("cuda") ; ((DISABLE_OPTIX)) || makedepends+=("optix>=7.0"); }
 
 pkgname=upbge-git
-pkgver=118308.bf76dc98bc0
+pkgver=118348.3bedead3c16
 pkgrel=1
 pkgdesc="Uchronia Project Blender Game Engine fork of Blender Game Engine"
 arch=("i686" "x86_64")
@@ -40,8 +40,8 @@ install=upbge.install
 # More info:
 #   http://wiki.blender.org/index.php/Dev:Doc/Tools/Git
 source=(
-  "https://github.com/UPBGE/upbge.git"
-  "blender-addons.git::https://github.com/UPBGE/blender-addons.git"
+  "upbge::git+https://github.com/UPBGE/upbge.git"
+  "blender-addons.git::git+https://github.com/UPBGE/blender-addons.git"
   "blender-addons-contrib.git::git://git.blender.org/blender-addons-contrib.git"
   "blender-translations.git::git://git.blender.org/blender-translations.git"
   "blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git"
