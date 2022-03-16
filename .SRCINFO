@@ -1,10 +1,11 @@
 pkgbase = ttf-font-awesome-pro
 	pkgdesc = The Pro Version of the famous FontAwesome Icons. Requires an active Subscription!
-	pkgver = 6.0.0
+	pkgver = 6.1.0
 	pkgrel = 1
 	url = https://fontawesome.com
 	arch = any
 	license = custom:Font Awesome Pro License
+	makedepends = grep
 	makedepends = npm
 	provides = ttf-font-awesome
 
