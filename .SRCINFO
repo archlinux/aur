@@ -11,6 +11,8 @@ pkgbase = astra-launcher
 	depends = quazip-qt5
 	depends = qtkeychain-qt5
 	depends = libxcomposite
+	provides = astra-launcher
+	conflicts = astra-launcher-git
 	source = https://git.sr.ht/~redstrate/astra/archive/v0.3.1-beta.tar.gz
 	md5sums = 306b4578140b8ee9cc8133af11fc973f
 
