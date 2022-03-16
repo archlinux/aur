@@ -7,7 +7,7 @@ _version=2.1+634+gff8609ad
 
 pkgname=${_basename}-${_pkgname}
 pkgver=${_version}
-pkgrel=1
+pkgrel=2
 pkgdesc="Jitsi Meet Videobridge"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -15,6 +15,7 @@ license=('Apache')
 depends=("java-runtime" "bash")
 optdepends=("prosody")
 makedepends=(
+        "git"
         "java-environment"
         "unzip" "maven"
 )
