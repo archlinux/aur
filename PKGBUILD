@@ -2,9 +2,8 @@
 # Co-Maintainers: robertfoster, stafwag, Solskogen
 
 pkgname=edk2-avmf
-#pkgver=20210527gite1999b264f1f
 pkgver=20211126gitbb1bba3d7767
-pkgrel=2
+pkgrel=1
 fedora_ver=36
 pkgdesc="QEMU ARM/AARCH64 Virtual Machine Firmware (Tianocore UEFI firmware)."
 arch=('any')
