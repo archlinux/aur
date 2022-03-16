@@ -9,6 +9,7 @@ pkgbase = janus-gateway
 	makedepends = curl
 	makedepends = duktape
 	makedepends = ffmpeg
+	makedepends = gengetopt
 	makedepends = libogg
 	makedepends = librabbitmq-c
 	makedepends = libwebsockets

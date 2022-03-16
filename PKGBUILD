@@ -37,6 +37,7 @@ makedepends=(
   'curl'
   'duktape'
   'ffmpeg'
+  'gengetopt'
   'libogg'
   'librabbitmq-c'
   'libwebsockets'
