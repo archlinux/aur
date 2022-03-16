@@ -49,5 +49,10 @@ package_intel-oneapi-ccl-static() {
 	depends=("intel-oneapi-ccl=$pkgver")
 	options=(staticlibs)
 	cd ${srcdir}
-	find . -name '*.a' | xargs cp --parents -t ${pkgdir}/
+	for _file in $(find . -name '*.a'); do
+		_filename=$(echo $_file | sed "s/.a$//g")
+		if [ -f "$_filename.so" ]; then
+			cp --parents ${_file} ${pkgdir}/
+		fi
+	done
 }
