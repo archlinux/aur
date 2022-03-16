@@ -2,7 +2,7 @@
 
 pkgname=man-pages-uk-git
 _gitname=manpages-l10n
-pkgver=r18112.612b63cdbd
+pkgver=r18173.4a86328d31
 pkgrel=1
 pkgdesc="Ukrainian man pages (Git version)"
 arch=('any')
