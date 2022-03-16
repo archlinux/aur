@@ -2,20 +2,20 @@
 # Contributor: Alexandros Theodotou <alex at zrythm dot org>
 
 pkgname=zrythm
-_pkgver=1.0.0-alpha.30.2.1
+_pkgver=1.0.0-beta.1.0.1
 pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc='a highly automated and intuitive digital audio workstation'
 arch=('x86_64' 'i686')
 url="https://www.zrythm.org"
 license=('AGPL3')
-depends=('gtk4' 'graphviz' 'carla' 'fluidsynth' 'vamp-plugin-sdk' 'guile' 'libaudec' 'xxhash' 'libcyaml' 'libadwaita' 'reproc' 'libbacktrace' 'rubberband' 'gtksourceview5' 'fftw' 'sratom' 'serd' 'portaudio' 'breeze-icons' 'rtmidi' 'rtaudio' 'lsp-dsp-lib' 'sdl2')
+depends=('gtk4' 'graphviz' 'carla' 'fluidsynth' 'vamp-plugin-sdk' 'guile' 'libaudec' 'xxhash' 'libcyaml' 'libadwaita' 'reproc' 'libbacktrace' 'rubberband' 'gtksourceview5' 'fftw' 'sratom' 'serd' 'portaudio' 'breeze-icons' 'rtmidi' 'rtaudio' 'lsp-dsp-lib' 'sdl2' 'chromaprint')
 makedepends=('meson' 'cmake' 'ruby-sass' 'help2man' 'sassc')
 optdepends=('realtime-privileges: allow memory locking')
 conflicts=('zrythm-git')
 options=('debug')
 source=("https://www.zrythm.org/releases/$pkgname-$_pkgver.tar.xz"{,.asc})
-sha256sums=('0ccdaa96be09022a711b6365173cbcb52fc7b0486248d09200ab3c1a7b036ff7'
+sha256sums=('072e86da138430761db0cda30fc82feffc15776bbfcfa064c6c8a6f7365163f3'
             'SKIP')
 validpgpkeys=('48132384AD3DF7D86E254B83022EAE42313D70F3')
 
