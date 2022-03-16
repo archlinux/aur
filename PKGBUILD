@@ -8,7 +8,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-openssl
 pkgver=${_pkgver/[a-z]/.${_pkgver//[0-9.]/}}
-pkgrel=2
+pkgrel=4
 pkgdesc="The Open Source toolkit for Secure Sockets Layer and Transport Layer Security (mingw-w64)"
 arch=('any')
 url="https://www.openssl.org"
