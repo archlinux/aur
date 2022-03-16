@@ -1,7 +1,7 @@
 # Maintainer: Spyros Stathopoulos <spystath@gmail.com>
 
 pkgname=gytparse
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 arch=(any)
 url='https://github.com/foucault/gytparse'
@@ -10,9 +10,9 @@ license=(MPL2)
 depends=(libadwaita python-gobject python-requests yt-dlp mpv)
 optdepends=('python-pysocks: Browse and download through SOCKS5 proxies')
 makedepends=(git meson gobject-introspection)
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/foucault/gytparse/archive/refs/tags/0.1.0.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/foucault/gytparse/archive/refs/tags/${pkgver}.tar.gz")
 _pyver=$(python -V | awk '{print $2}' | awk -F. '{print $1"."$2}')
-sha256sums=('5e2db560d47a59de93ee9faede223b616d1af9bf70c9881262c08bf990c9c846')
+sha256sums=('329c9ea71d398ec823ba5c5052f922d0754b2d7f0e337e596380d172e46bf4e7')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
