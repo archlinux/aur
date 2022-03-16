@@ -1,0 +1,16 @@
+pkgbase = gopass-summon-provider-git
+	pkgdesc = summon provider for gopass
+	pkgver = 1.12.0.r22.g486cadc
+	pkgrel = 1
+	url = https://github.com/gopasspw/gopass-summon-provider
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	makedepends = git
+	depends = glibc
+	provides = gopass-summon-provider
+	conflicts = gopass-summon-provider
+	source = git+https://github.com/gopasspw/gopass-summon-provider
+	sha512sums = SKIP
+
+pkgname = gopass-summon-provider-git
