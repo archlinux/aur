@@ -1,8 +1,8 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 _basename=jicofo
-_tag=865
-_version=1.0+865
+_tag=867
+_version=1.0+867
 
 pkgname=${_basename}-nightly
 pkgver=${_version}
@@ -14,6 +14,7 @@ license=('Apache')
 depends=("java-runtime" "bash")
 optdepends=("prosody")
 makedepends=(
+        "git"
         "java-environment"
         "unzip" "maven"
 )
