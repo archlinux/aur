@@ -1,7 +1,7 @@
 # Maintainer: Grigory Romodanovskiy <greg2008200 at gmail dot com>
 pkgname=xbindjoy-git
 _gitname=XBindJoy
-pkgver=r93.e599772
+pkgver=r95.5ffef01
 pkgrel=1
 pkgdesc="Tool for making your joysticks and gamepads more useful"
 arch=(x86_64)
@@ -16,11 +16,10 @@ replaces=()
 backup=()
 options=()
 install=
-source=("git+${url}.git" 'gcc10.patch' 'guile22.patch')
+source=("git+${url}.git" 'arch-package.patch')
 noextract=()
 sha256sums=('SKIP'
-            'fe60cd4f60ad3406e86e13951706766e499cfc2602fae188c76cec215918c838'
-            '7a4cc5332bc6257c768c5482711e286f6aed57f100b39cc88320c8c4092471b6')
+            '5cadaa5e7f38015f62ebfbc73d594915ed7d8289ffa2a74b09b84ad9fff44f81')
 
 pkgver() {
    cd ${_gitname}
@@ -31,8 +30,7 @@ pkgver() {
 
 prepare() {
 	cd "${_gitname}"
-	git apply "${srcdir}/gcc10.patch"
-	git apply "${srcdir}/guile22.patch"
+	git apply "${srcdir}/arch-package.patch"
 }
 
 build() {

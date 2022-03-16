@@ -1,5 +1,5 @@
 diff --git a/Makefile b/Makefile
-index a89ceda..b426a14 100644
+index a89ceda..b7834d8 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -28,12 +28,12 @@ src := $(wildcard src/*.c)
@@ -34,18 +34,6 @@ index a89ceda..b426a14 100644
 -	rm -f $(obj) libguilexbindjoy.so
 +	rm -f $(obj) $(solib)
  	rm -f $(dep)
-diff --git a/examples/generic.scm b/examples/generic.scm
-index 53168c8..53b6e44 100755
---- a/examples/generic.scm
-+++ b/examples/generic.scm
-@@ -35,7 +35,6 @@
- ;;; but we're not going to do that, because this is an example that we want people to be able to
- ;;; run right after they grab the code. so we just use the first joystick that's plugged in.
- (define jsd "/dev/input/js0")
--
- (define naxes (get-js-num-axes jsd))
- (define nbuttons (get-js-num-buttons jsd))
- (init-xbindjoy nbuttons naxes)
 diff --git a/saulrh/xbindjoy.scm b/saulrh/xbindjoy.scm
 index 856d79d..0803471 100644
 --- a/saulrh/xbindjoy.scm
