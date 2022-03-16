@@ -1,6 +1,6 @@
 pkgbase = astra-launcher-git
 	pkgdesc = A cross-platform FFXIV launcher
-	pkgver = v0.3.1.beta.r21.g94a740a
+	pkgver = 0.3.1.beta.r25.gc460f2d
 	pkgrel = 1
 	url = https://git.sr.ht/~redstrate/astra
 	arch = x86_64
