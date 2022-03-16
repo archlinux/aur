@@ -3,7 +3,7 @@
 pkgname=tldr++
 _pkgver=1.0.0-alpha
 pkgver=${_pkgver//-/.}
-pkgrel=3
+pkgrel=4
 pkgdesc="Community driven man pages improved with smart user interaction"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://isacikgoz.me/tldr"
@@ -33,7 +33,7 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -v -o build ./cmd/...
+  go build -v -buildvcs=false -o build ./cmd/...
 }
 
 package() {
