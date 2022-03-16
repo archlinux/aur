@@ -1,17 +1,15 @@
 pkgbase = rgepp
 	pkgdesc = Template-based C++ class library for solving renormaliztion group equations in quantum field theory
-	pkgver = r24.1d9b740
+	pkgver = r32.65b23c8
 	pkgrel = 1
-	url = www.github.com/Herren/RGEpp
+	url = https://github.com/Herren/RGEpp
 	arch = x86_64
 	license = MIT
 	makedepends = clang
+	makedepends = cmake
 	depends = boost
 	depends = eigen
-	source = git://github.com/Herren/RGEpp.git
-	source = make.patch
-	md5sums = SKIP
+	source = git+https://github.com/Herren/RGEpp.git
 	md5sums = SKIP
 
 pkgname = rgepp
-
