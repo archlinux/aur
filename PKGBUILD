@@ -1,7 +1,7 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
 pkgname=quadlet
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="An opinionated tool for easily running podman system containers under systemd"
 arch=(x86_64)
