@@ -1,15 +1,16 @@
 pkgbase = jinko-git
 	pkgdesc = Jinko is a small and safe interpreted language with fast Rust and C FFI
-	pkgver = 0.2.0.r11.gc7ee50e
+	pkgver = 0.3.0.jinx4.r112.g4d8bbc7
 	pkgrel = 1
-	url = https://github.com/CohenArthur/jinko
+	url = https://github.com/jinko-core/jinko
 	arch = any
 	license = GPLv2
 	makedepends = rust
 	makedepends = git
+	depends = wget
 	provides = jinko
 	conflicts = jinko
-	source = git+https://github.com/CohenArthur/jinko
+	source = git+https://github.com/jinko-core/jinko
 	sha512sums = SKIP
 
 pkgname = jinko-git
