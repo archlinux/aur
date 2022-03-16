@@ -20,7 +20,7 @@ optdepends=('oracle-instantclient-basic: support for oracle databases'
             'boost-libs')
 options=('staticlibs')
 source=("http://downloads.sourceforge.net/project/soci/soci/${pkgname}-${pkgver}/${pkgname}-${pkgver}.zip")
-sha1sums=('5510e6daf988626d1a9a5092046bb32cf02ecae2')
+sha1sums=('e76d5862f90cfa8a0f9fe6ce477c3c7fa669af62')
 
 build() {
     rm -rf "${srcdir}/${pkgname}-${pkgver}-build"
