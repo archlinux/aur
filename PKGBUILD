@@ -4,7 +4,7 @@
 pkgname=sudo-git
 _pkgname=sudo
 pkgrel=1
-pkgver=1.9.9.r11348.gdabd8d80a
+pkgver=1.9.10.r11521.ge2692f109
 pkgdesc="Give certain users the ability to run some commands as root - git version"
 arch=('x86_64')
 url="https://www.sudo.ws/sudo/"
@@ -17,7 +17,7 @@ backup=('etc/pam.d/sudo'
         'etc/sudo_logsrvd.conf'
         'etc/sudoers')
 install=$_pkgname.install
-source=("git://github.com/sudo-project/sudo.git"
+source=("git+https://github.com/sudo-project/sudo.git"
         sudo_logsrvd.service
         sudo.pam)
 sha256sums=('SKIP'
