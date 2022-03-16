@@ -1,5 +1,5 @@
 pkgname=cloudflare-dynamic-dns
-pkgver=1.2.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Updates AAAA records at Cloudflare according to the current IPv6 address'
 arch=('any')
