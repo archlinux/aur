@@ -1,27 +1,25 @@
 # Maintainer: Antonio Vázquez Blanco <antoniovazquezblanco@gmail.com>
+# Maintainer: crave <crave@invalid>
 pkgname=graudit
-pkgver=1.9
 pkgrel=1
+pkgver=3.4
 pkgdesc="Grep rough source code auditing tool."
 arch=(any)
-url="https://github.com/wireghoul/graudit"
+url="https://github.com/wireghoul/$pkgname"
 license=('GPL')
-source=(http://www.justanotherhacker.com/projects/${pkgname}-${pkgver}_src.tar.gz)
-md5sums=('bc7d05f29c87fc21fa3d16da690aead1')
+provides=("$pkgname")
+conflicts=("$pkgname-git")
+
+source=("https://codeload.github.com/wireghoul/${pkgname}/tar.gz/refs/tags/v$pkgver")
+sha512sums=('631f6753d3d30f6b0f457791bf953f080f642c181c3bd9d1d3b04ee34c54bee1a42a155a60462b1dfb11d3b3305cb507772627b0b8cb348c7a1453f2add8dd50')
 
 build() {
-  cd "$pkgname-$pkgver"
-
-  # TODO: Should only use /usr as prefix but makefile doesn't support DESTDIR...
-  ./configure --prefix "$pkgdir/usr/bin" --dbdir "$pkgdir/usr/share/graudit"
-
-  # TODO: In the future should make here...
+  tar xvf "v$pkgver"
+  cd -- "$srcdir/$pkgname-$pkgver"
+  patch Makefile ../../Makefile.patch
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-
-  # TODO: Should use DESTDIR but it is not supported yet...
-  # make DESTDIR="$pkgdir/" install
-  make install
+  cd -- "$srcdir/$pkgname-$pkgver"
+  prefix="$pkgdir/usr" make install
 }
