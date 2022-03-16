@@ -1,8 +1,8 @@
 # Maintainer: Deon Spengler <deon@spengler.co.za>
 
 pkgname=mautrix-googlechat
-pkgver=0.3.0
-pkgrel=3
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="A Matrix-Google Chat puppeting bridge."
 url="https://github.com/mautrix/googlechat"
 depends=(python
@@ -28,7 +28,7 @@ source=("https://github.com/mautrix/googlechat/archive/refs/tags/v${pkgver}.tar.
         "mautrix-googlechat.tmpfiles"
         "log-path.patch")
 backup=("etc/${pkgname}/config.yaml")
-sha256sums=('82c2b3c5acea8a85b0753ccb9c67576b42680f37312832fee537492a9363814e'
+sha256sums=('612d963ef432b4a211ee9fefb2fbd17989241e3f7ffe72c190e038e57ad395d3'
             'a24774abbdf132a18b89709734a58cf14c674176121cb6e9a5f28d39a73c8bc2'
             '0bbaf8d7cec830e86bf65e7d1f01822f3ab3e057fa805c9f17ee91f99f8a11cf'
             '6653023ceb1bfcfed001f0c722ef82c2584d1a84100d7d38a1641d47b23e544a'
