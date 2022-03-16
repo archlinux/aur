@@ -1,11 +1,12 @@
 pkgbase = jitsi-meet
 	pkgdesc = Jitsi Meet Web
 	pkgver = 1.0.5913
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jitsi.org/jitsi-meet/
 	install = install
 	arch = any
 	license = Apache
+	makedepends = git
 	makedepends = python
 	makedepends = python2
 	makedepends = nodejs

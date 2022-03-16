@@ -7,7 +7,7 @@ _version=1.0.5913
 
 pkgname=${_basename}-${_pkgname}
 pkgver=${_version}
-pkgrel=1
+pkgrel=2
 pkgdesc="Jitsi Meet Web"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -15,6 +15,7 @@ license=('Apache')
 depends=()
 optdepends=("nginx")
 makedepends=(
+        "git"
         "python" "python2"
         "nodejs" "npm"
 )
