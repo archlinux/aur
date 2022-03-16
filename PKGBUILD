@@ -60,8 +60,8 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.15.25.arch1.r1046098.79b1c2e3ed09
-_srcver_tag=v5.15.25.arch1
+pkgver=v5.16.14.arch1.r1061551.7b6fc21abe08
+_srcver_tag=v5.16.14.arch1
 pkgrel=1
 pkgdesc="Linux"
 url="https://github.com/koverstreet/bcachefs"
@@ -96,14 +96,13 @@ _repo_url_upstream="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux
 
 _reponame_kernel_patch="kernel_compiler_patch"
 _repo_url_kernel_patch="https://github.com/graysky2/${_reponame_kernel_patch}.git"
-_kernel_patch_name="more-uarches-for-kernel-5.15+.patch"
+_kernel_patch_name="more-uarches-for-kernel-5.15-5.16.patch"
 
 _pkgdesc_extra="~ featuring Kent Overstreet's bcachefs filesystem"
 
 source=(
     "${_reponame}::git+${_repo_url}#branch=master"
     "${_reponame_arch}::git+${_repo_url_arch}"
-    arch_patches.patch
     "${_reponame_upstream}::git+${_repo_url_upstream}"
     "git+${_repo_url_kernel_patch}"
     config # kernel config file
@@ -112,13 +111,13 @@ validpgpkeys=(
     "ABAF11C65A2970B130ABE3C479BE3E4300411886"  # Linus Torvalds
     "647F28654894E3BD457199BE38DBBDC86092693E"  # Greg Kroah-Hartman
     "A2FF3A36AAA56654109064AB19802F8B0D70FC30"  # Jan Alexander Steffens ~ heftig
+    "C7E7849466FE2358343588377258734B41C31549"  # David Runge <dvzrv@archlinux.org>
 )
 sha512sums=('SKIP'
             'SKIP'
-            '115933f6e9d745afe7f39372a14b89aa64dea783b7750a0aa816931d1d59c93091619902444c4e468b49f83568359f2b8d49dbe0d2deeed69814ddb56a3a137d'
             'SKIP'
             'SKIP'
-            '06d9c515e5f729061b23f26eed4d82d5b4eb2141b3918dbcc7ebbd8166467cec6dd1df388131d87783cc4aeb3ed1c9226a4a5e2f9ec06423eac86092381073fa')
+            '90f8c978bde10c80770431c3d8686b6f8c10e2c9645dddb9e8772312eb0cb1129bcfc6af5b86477c5616b723da25f629859092b1af178da7bd71c7b89e1de97d')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -132,19 +131,18 @@ prepare() {
     echo "-$pkgrel" > localversion.10-pkgrel
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
-    #msg2 "Fetch and merge stable tag from Arch vanilla kernel repository..."
-    #git remote add arch_stable "${srcdir}/${_reponame_arch}" || true
-    #git fetch arch_stable "${_srcver_tag%.*}-${_srcver_tag##*.}"
-    #git merge --no-edit --no-commit FETCH_HEAD
-
-    msg2 "Fetch and merge tag ${_srcver_tag//.arch*/} from Linux stable upstream repository..."
-    git remote add upstream_stable "${srcdir}/${_reponame_upstream}" || true
-    git fetch upstream_stable ${_srcver_tag//.arch*/}
+    msg2 "Fetch and merge stable tag from Arch vanilla kernel repository..."
+    git remote add arch_stable "${srcdir}/${_reponame_arch}" || true
+    git fetch arch_stable "${_srcver_tag%.*}-${_srcver_tag##*.}"
     git merge --no-edit --no-commit FETCH_HEAD
+
+    #msg2 "Fetch and merge tag ${_srcver_tag//.arch*/} from Linux stable upstream repository..."
+    #git remote add upstream_stable "${srcdir}/${_reponame_upstream}" || true
+    #git fetch upstream_stable ${_srcver_tag//.arch*/}
+    #git merge --no-edit --no-commit FETCH_HEAD
 
     FullPatchesArray=(
         $_reponame_kernel_patch/$_kernel_patch_name
-        arch_patches.patch
     )
 
     for MyPatch in "${FullPatchesArray[@]}"
@@ -254,11 +252,11 @@ _package-headers() {
     install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
     cp -t "$builddir" -a scripts
 
-    # add objtool for external module building and enabled VALIDATION_STACK option
+    # required when STACK_VALIDATION is enabled
     install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-    # add xfs and shmem for aufs building
-    mkdir -p "$builddir"/{fs/xfs,mm}
+    # required when DEBUG_INFO_BTF_MODULES is enabled
+    install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
     msg2 "Installing headers..."
     cp -t "$builddir" -a include
