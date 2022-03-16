@@ -3,14 +3,14 @@ _base=fenicsprecice
 pkgname=python-${_base}
 pkgdesc="FEniCS-preCICE adapter is a preCICE adapter for the open source computing platform FEniCS"
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/precice/${_base/precice/-adapter}"
 license=(LGPL3)
 depends=(python-pyprecice python-dolfin python-scipy)
 makedepends=(python-setuptools)
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('d4040c455da6fd08291b7b07da25147c6ad36fc88b76b171c3b40ca4ae8f485736ce78b9d34f369017c024063dc3cbbbb50019bc2bfb9b2bec6623c3bbe87599')
+sha512sums=('fb5a1b84c6e5cd66876a0c323881d16359d1e3e55eef054deba07c65a5a87148ee06fdb9a16eedda9120255cf161238767a1791b1994cf03ddb5943e22df00ff')
 
 build() {
   if [ -z "$(ldconfig -p | grep libcuda.so.1)" ]; then
