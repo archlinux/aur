@@ -1,7 +1,7 @@
 pkgbase = arandr-indicator-git
 	pkgdesc = Quick and simple tray icon menu for changing the monitor layout.
 	pkgver = r16.20200824.189890e
-	pkgrel = 5
+	pkgrel = 6
 	epoch = 2
 	url = https://github.com/AdrianVollmer/arandr-indicator/tree/port-python3
 	arch = any
