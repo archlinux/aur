@@ -1,7 +1,7 @@
 # Maintainer: Angelo Theodorou <encelo@gmail.com>
 
 pkgname=spookyghost-git
-pkgver=r68.16a8011
+pkgver=r71.d3660bf
 pkgrel=1
 pkgdesc="A procedural sprite animation tool made with the nCine"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'cmake')
 conflicts=('spookyghost')
 provides=('spookyghost')
 options=(!strip)
-source=('git://github.com/SpookyGhost2D/SpookyGhost')
+source=('git+https://github.com/SpookyGhost2D/SpookyGhost')
 md5sums=('SKIP')
 
 pkgver() {
@@ -50,7 +50,6 @@ build() {
         -DNCPROJECT_BUILD_ANDROID=OFF\
         -DNCPROJECT_STRIP_BINARIES=ON\
         -DNCPROJECT_DATA_DIR_DIST=ON\
-        -DNCPROJECT_DEFAULT_DATA_DIR=/usr/share/spookyghost/data\
         -DCMAKE_INSTALL_PREFIX=/usr\
         -DCUSTOM_ITCHIO_BUILD=OFF
   make
