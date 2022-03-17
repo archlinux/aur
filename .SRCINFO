@@ -28,3 +28,18 @@ pkgbase = hyp2mat-git
 	md5sums = SKIP
 
 pkgname = hyp2mat-git
+pkgbase = hyp2mat-git
+	pkgdesc = Utility to convert HyperLynx pcb files to matlab for electromagnetic simulation
+	pkgver = 20200722
+	pkgrel = 1
+	url = https://github.com/koendv/hyp2mat
+	arch = x86_64
+	license = LGPL3
+	makedepends = help2man
+	makedepends = groff
+	makedepends = gengetopt
+	depends = zlib
+	source = git+https://github.com/koendv/hyp2mat
+	md5sums = SKIP
+
+pkgname = hyp2mat-git
