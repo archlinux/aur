@@ -1,0 +1,13 @@
+pkgbase = demon-terminal
+	pkgdesc = A simple minimalistic terminal written in C++.
+	pkgver = 0.1
+	pkgrel = 2
+	url = https://github.com/demonkingswarn/demon-terminal
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = gcc
+	source = git+https://github.com/demonkingswarn/demon-terminal
+	sha256sums = SKIP
+
+pkgname = demon-terminal
