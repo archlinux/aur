@@ -1,15 +1,16 @@
-# Maintainer: timescam <rex.ky.ng at gmail dot com>
+# Maintainer: timescam <timescam at duck dot com>
+# Contributor: Celestial Walrus <aur@celestial.cf>
 
 pkgname=cava-git
 _pkgname=cava
-pkgver=r246.d654130
-pkgrel=3
+pkgver=r738.bed649f
+pkgrel=4
 pkgdesc='Console-based Audio Visualizer for Alsa. Development version.'
 arch=('i686' 'x86_64')
 url='https://github.com/karlstav/cava'
 license=('MIT')
 depends=("fftw" "ncurses" "alsa-lib" "iniparser" "pulseaudio")
-makedepends=('git')
+makedepends=('git' 'xxd')
 source=('git+https://github.com/karlstav/cava.git')
 conflicts=($_pkgname)
 provides=($_pkgname)
