@@ -1,7 +1,7 @@
-# Contributor: Angelo Theodorou <encelo@gmail.com>
+# Maintainer: Angelo Theodorou <encelo@gmail.com>
 
 pkgname=ncparticleeditor-git
-pkgver=r77.03c08b6
+pkgver=r80.0cf203e
 pkgrel=1
 pkgdesc="A particle editor made with the nCine"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'cmake')
 conflicts=('ncparticleeditor')
 provides=('ncparticleeditor')
 options=(!strip)
-source=('git://github.com/nCine/ncParticleEditor')
+source=('git+https://github.com/nCine/ncParticleEditor')
 md5sums=('SKIP')
 
 pkgver() {
@@ -35,7 +35,6 @@ build() {
         -DCMAKE_PREFIX_PATH=/usr/lib/cmake/nCine\
         -DNCPROJECT_BUILD_ANDROID=OFF\
         -DNCPROJECT_STRIP_BINARIES=ON\
-        -DNCPROJECT_DEFAULT_DATA_DIR=/usr/share/ncparticleeditor/data\
         -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
