@@ -2,7 +2,7 @@
 # Contributor: skydrome <skydrome@i2pmail.org>
 
 pkgname='rutorrent-git'
-pkgver=r2999.3830f834
+pkgver=4.0.beta.1.r162.ga8611597
 pkgrel=1
 pkgdesc="Web frontend to rTorrent in PHP designed to resemble uTorrent"
 url="https://github.com/Novik/ruTorrent"
@@ -36,10 +36,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/rutorrent"
-
-    _gitrev=$(git rev-parse --short HEAD)
-    _gitcount=$(git rev-list --count HEAD)
-    echo "r${_gitcount}.${_gitrev}"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
