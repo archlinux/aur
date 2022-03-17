@@ -1,7 +1,7 @@
 pkgbase = lapce-bin
 	pkgdesc = Lightning-fast and Powerful Code Editor written in Rust
 	pkgver = 0.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lapce/lapce
 	arch = x86_64
 	license = Apache
