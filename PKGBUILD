@@ -1,8 +1,8 @@
 # Maintainer: Campbell Jones <dev at serebit dot com>
 
 pkgname=budgie-control-center
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc="Budgie's main interface to configure various aspects of the desktop"
 url="https://github.com/BuddiesOfBudgie/budgie-control-center"
 license=(GPL2)
@@ -19,7 +19,7 @@ optdepends=('system-config-printer: Printer settings'
             'power-profiles-daemon: Power profiles support')
 conflicts=(gnome-control-center)
 source=("https://github.com/BuddiesOfBudgie/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz"{,.asc})
-sha256sums=('3255fef11533ccb4eb79e3cdd12392de38229d5368350e437ac3cb09e30b3bad'
+sha256sums=('6c049d02600f6650238b4376a7eac77d8fcd786e9c603c4e4ec87cad0022028a'
             'SKIP')
 validpgpkeys=('1E1FB0017C998A8AE2C498A6C2EAA8A26ADC59EE' # David Mohammed <fossfreedom at ubuntu dot com>
               '0E0D97562A4EC8BD8E329DCDAA7A2325E04B609B') # Joshua Strobl <me at joshuastrobl dot com>
