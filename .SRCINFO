@@ -1,0 +1,12 @@
+pkgbase = ctb-git
+	pkgdesc = Circuit Toolbox for Matlab/Octave
+	pkgver = 20150618
+	pkgrel = 1
+	url = https://github.com/thliebig/CTB
+	arch = x86_64
+	license = LGPL3
+	makedepends = make
+	source = git+https://github.com/thliebig/CTB
+	md5sums = SKIP
+
+pkgname = ctb-git
