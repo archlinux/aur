@@ -5,7 +5,7 @@ pkgver=0.0.2
 pkgrel=1
 pkgdesc="A dope new programming language that still doesnt have a std library."
 arch=('x86_64')
-url="https://github.com/whistle-lang/whistle"
+url="https://whistle.js.org/"
 license=('MIT')
 makedepends=('git' 'cargo')
 source=("git+https://github.com/whistle-lang/whistle#tag=v$pkgver")
