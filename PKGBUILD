@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="webtrees"
-_pkgver=2.1.0-alpha.2
+_pkgver=2.1.0-beta.1
 pkgver="${_pkgver/-/.}"
 pkgrel=1
 pkgdesc="The web’s leading online collaborative genealogy application"
@@ -11,7 +11,7 @@ arch=("any")
 depends=("php")
 optdepends=("php-sqlite: sqlite3 database support")
 source=("$pkgname-$pkgver.zip::https://github.com/fisharebest/webtrees/releases/download/$_pkgver/$pkgname-$_pkgver.zip")
-sha256sums=('c0a27206580d842464758585c13b28ccf1674fe38a80b891c09b522a5069c7ae')
+sha256sums=('ca918c8b0c4fff2d3277d402753eb2731f3c19911fc410978ba07d01f11e95bf')
 options=("!strip")
 
 package(){
