@@ -1,12 +1,23 @@
 Changelog for AirVPN Suite
 
+Version 1.2.0 RC 3 - 17 March 2022
+
+- [ProMIND] updated to OpenVPN3 AirVPN 3.8.1
+- [ProMIND] vpnclient.hpp: changed references of ClientAPI::OpenVPNClient class to ClientAPI::OpenVPNClientHelper to conform to the new OpenVPN3 client class names
+- [ProMIND] vpnclient.hpp: added private members event_error and event_fatal_error to reflect client's event errors
+- [ProMIND] vpnclient.hpp: added public methods eventError() and eventFatalError()
+- [ProMIND] vpnclient.hpp: get_connection_stats() added topology, cipher, ping and ping_restart values from OpenVPN3 options
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
 Version 1.2.0 RC 2 - 8 March 2022
 
 - [ProMIND] vpnclient.hpp: added methods init(), initSupportedDataCiphers(), isDataCipherSupported() and getSupportedDataCiphers()
-- [ProMIND] vpnclient.hpp: added cipher member to struct EventData
 - [ProMIND] vpnclient.hpp: added getPushedDns() method
 - [ProMIND] airvpntools.cpp: added normalizeBoolValue() method for the normalization of "simple" bools to extended values conforming to Suite's option parser and to be used to extend OpenVPN3 "simple" bool options
-- [ProMIND] lohher.hpp: flushLog() is now synchronized and thread safe by using a semaphore
+- [ProMIND] logger.hpp: class is now synchronized and thread safe
 
 
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
