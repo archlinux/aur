@@ -1,12 +1,12 @@
 # Maintainer: Nícolas F. R. A. Prado <n at nfraprado dot net>
 pkgname=lei-git
-pkgver=1.7.0.r31.3eec2f779204
+pkgver=1.7.0.r32.f1e4e14793d1
 pkgrel=1
 pkgdesc='The "local email interface" from public-inbox'
 arch=('any')
 url="https://public-inbox.org"
 license=('AGPL')
-depends=(perl perl-inline-c perl-dbd-sqlite perl-search-xapian)
+depends=(perl perl-inline-c perl-dbd-sqlite perl-search-xapian perl-uri)
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}" public-inbox-git public-inbox)
