@@ -6,7 +6,7 @@ _pkgvariant=nosystemd
 _pkgsource=git
 pkgname="${_pkgname}-${_pkgvariant}-${_pkgsource}"
 pkgver=1.9.2.129+r4767.20211104.c7aa6316
-pkgrel=1
+pkgrel=2
 pkgdesc="UPnP Media Server (Based on MediaTomb). Build without systemd dependencies."
 url="https://gerbera.io/"
 license=('GPL2')
@@ -45,7 +45,7 @@ optdepends=(
 install="gerbera.install"
 options=('emptydirs')
 source=(
-  "${_pkgname}::git+git://github.com/gerbera/gerbera.git"
+  "${_pkgname}::git+https://github.com/gerbera/gerbera.git"
   "gerbera.sysusers"
   "gerbera.tmpfiles"
   "${install}"
