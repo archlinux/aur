@@ -1,11 +1,11 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=invader-git
-pkgver=0.45.0.r3640.c31ab4ef
+pkgver=0.48.0.r3854.9d38745d
 pkgrel=1
 pkgdesc="An open source toolkit for creating maps and assets for Halo: Combat Evolved (git build)"
 depends=('libtiff' 'libarchive' 'libsquish' 'flac' 'freetype2' 'libsamplerate'
-         'libvorbis' 'qt5-base' 'qt5-multimedia' 'zlib')
+         'libvorbis' 'qt6-base' 'sdl2' 'zlib')
 makedepends=('cmake' 'git' 'ninja' 'python')
 arch=('x86_64')
 url="https://invader.opencarnage.net"
