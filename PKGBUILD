@@ -2,7 +2,7 @@
 pkgname='kfreestyle2d-git'
 pkgver=0.0.1.eef59af
 pkgrel=1
-arch=('x86_64')
+arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64' )
 url=https://github.com/whereswaldon/kfreestyle2d
 license=('MIT')
 depends=('make' 'gcc')
