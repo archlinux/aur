@@ -1,16 +1,16 @@
 # Maintainer: ebiadsu <ebiadsu@posteo.de>
 
 pkgname=python-ovh
-pkgver=0.5.0
-pkgrel=2
-pkgdesc="Official OVH.com API wrapper"
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="lightweight wrapper around OVH's APIs"
 arch=("x86_64")
 url="https://api.ovh.com"
 license=('custom')
 depends=("python")
 makedepends=("python-setuptools" "python-sphinx")
 source=("https://github.com/ovh/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('169f7481cfb85f140885abe616f9d626421961e83e82810b53f93ae7b6ece368')
+sha256sums=('f7125d659acb5bf4b5bdfb9cef5c5951e9290ff3aadd6397ef0330f5c7831490')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
