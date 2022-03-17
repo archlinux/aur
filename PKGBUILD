@@ -3,7 +3,7 @@
 _pkgname=perl-multidimensional
 pkgname="${_pkgname}-git"
 pkgver=0.014.2+r62.20200501.g41b2e74
-pkgrel=1
+pkgrel=2
 pkgdesc='disables multidimensional array emulation.'
 arch=(
   'arm'
@@ -35,7 +35,7 @@ conflicts=(
 )
 options=('!emptydirs')
 source=(
-  "${_pkgname}::git+git://github.com/ilmari/multidimensional.git"
+  "${_pkgname}::git+https://github.com/ilmari/multidimensional.git"
   'Makefile.PL.MakeMaker'
   'Makefile.add-b-hooks-op-check-include.patch'
   'LICENSE.PerlArtistic.txt'

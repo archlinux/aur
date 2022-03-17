@@ -1,7 +1,7 @@
 pkgbase = perl-multidimensional-git
 	pkgdesc = disables multidimensional array emulation.
 	pkgver = 0.014.2+r62.20200501.g41b2e74
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/pod/multidimensional
 	arch = arm
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = perl-multidimensional-git
 	provides = perl-multidimensional=0.014.2+r62.20200501.g41b2e74
 	conflicts = perl-multidimensional
 	options = !emptydirs
-	source = perl-multidimensional::git+git://github.com/ilmari/multidimensional.git
+	source = perl-multidimensional::git+https://github.com/ilmari/multidimensional.git
 	source = Makefile.PL.MakeMaker
 	source = Makefile.add-b-hooks-op-check-include.patch
 	source = LICENSE.PerlArtistic.txt
