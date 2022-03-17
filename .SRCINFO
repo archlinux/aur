@@ -1,18 +1,18 @@
 pkgbase = rpmlint-git
 	pkgdesc = A tool for checking common errors in rpm packages.
-	pkgver = 1.10.r184.g3682eaf
+	pkgver = 2.2.0.49.g65d344b0
 	pkgrel = 1
 	url = https://github.com/rpm-software-management/rpmlint
 	arch = any
 	license = GPL2
 	makedepends = git
 	depends = python
+	depends = python-toml
+	depends = python-zstandard
 	depends = rpm-org
 	depends = cpio
-	depends = desktop-file-utils
 	conflicts = rpmlint
-	source = rpmlint-git::git+https://github.com/rpm-software-management/rpmlint.git#branch=master
+	source = rpmlint-git::git+https://github.com/rpm-software-management/rpmlint.git#branch=main
 	sha256sums = SKIP
 
 pkgname = rpmlint-git
-
