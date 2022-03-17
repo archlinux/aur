@@ -1,0 +1,20 @@
+pkgbase = python-cepa
+	pkgdesc = Python controller library for Tor
+	pkgver = 1.8.3
+	pkgrel = 1
+	url = https://pypi.org/project/cepa/
+	arch = any
+	license = LGPL3
+	checkdepends = tor
+	checkdepends = python-mock
+	depends = python
+	depends = python-cryptography
+	depends = python-pynacl
+	depends = procps-ng
+	optdepends = tor: tor-server to talk to
+	provides = python-stem
+	replaces = python-stem
+	source = https://files.pythonhosted.org/packages/6f/84/0379c1160237dccb38876a2439e0e56147276273d3e9e9305b3c0dc14b01/cepa-1.8.3.tar.gz
+	sha256sums = 1dc6f0b324d37a2ed2ca274648ece8fd2c96a1d2f440f58c0ca17afd4b5ede7a
+
+pkgname = python-cepa
