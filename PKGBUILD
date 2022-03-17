@@ -3,7 +3,7 @@
 
 pkgname=dump978-fa-git
 _gitname=dump978
-pkgver=3.8.0.r0.g5421a45
+pkgver=7.2.r0.g6782809
 pkgrel=1
 epoch=1
 pkgdesc="FlightAware/Mutability fork of dump978, a simple Mode S decoder for RTLSDR devices."
@@ -13,7 +13,7 @@ license=('BSD')
 depends=('rtl-sdr' 'bladerf>=2.0.2' 'soapyrtlsdr' 'boost-libs')
 makedepends=('git' 'boost')
 backup=('etc/default/dump978')
-source=('dump978::git+git://github.com/flightaware/dump978'
+source=('dump978::git+https://github.com/flightaware/dump978'
         'dump978.default'
         'dump978.sysusers'
 	'dump978.service')
