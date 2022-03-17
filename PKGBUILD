@@ -1,12 +1,13 @@
-# Maintainer: my <liyp [AT] liyp.cc>
+# Maintainer: xmengnet <my [AT] liyp.cc>
 # Maintainer: xfangfang <xfangfang [AT] 126.com>
 _pkgname=macast
 pkgname=${_pkgname}-bin
 pkgver=0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="DLNA Media Renderer"
 arch=("x86_64")
-conflicts=('macast-git')
+conflicts=('macast')
+provides=('macast')
 url="https://github.com/xfangfang/Macast"
 license=('GPL3')
 depends=('python'
