@@ -2,8 +2,8 @@
 
 pkgname=haste-server-git
 _gitname=haste-server
-pkgver=r384.5d2965f
-pkgrel=3
+pkgver=r399.7286385
+pkgrel=1
 pkgdesc="Prettiest, easiest to use pastebin ever made"
 arch=('any')
 url="https://github.com/toptal/haste-server"
@@ -13,7 +13,7 @@ makedepends=('git' 'npm')
 provides=('haste-server')
 conflicts=('haste-server')
 options=(!emptydirs)
-source=('git://github.com/toptal/haste-server.git')
+source=('git+https://github.com/toptal/haste-server.git')
 sha256sums=('SKIP')
 
 pkgver() {
