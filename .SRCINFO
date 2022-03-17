@@ -1,16 +1,16 @@
 pkgbase = insomnia
 	pkgdesc = Cross-platform HTTP and GraphQL Client
-	pkgver = 2022.1.1
-	pkgrel = 2
+	pkgver = 2022.2.0
+	pkgrel = 1
 	url = https://github.com/Kong/insomnia
 	arch = any
 	license = MIT
 	makedepends = npm
 	makedepends = nvm
 	makedepends = fontconfig
-	source = https://github.com/Kong/insomnia/archive/refs/tags/core@2022.1.1.tar.gz
+	source = https://github.com/Kong/insomnia/archive/refs/tags/core@2022.2.0.tar.gz
 	source = insomnia.desktop
-	b2sums = a5aaf5bca2182243d1ed9426e35b28bfe119faa7974496a962f4dfba83e3336bf586e97e9844a8362f53266845c8c89a2459bec61fd2b8efff45aa49cbc7fe05
+	b2sums = 268430d02d349e05be025885a25701b6dd7db8e4243a7b807488955f762c6d10bddc21d563059e3a66dc4dfea9e1019c3a0e3a2564a969e267bad52bac9eecc8
 	b2sums = 38c2edd681b012931e25498a4a65007cc2a2152c9bbc5505dbb7cf03e1143a7365c41e9ad7eb2318c8ea894dccad0e0b6601cf76f680ea4085d12b5059e61a6e
 
 pkgname = insomnia

@@ -4,8 +4,8 @@
 # Contributor: vscncls <lucaslou4@protonmail.com>
 
 pkgname=insomnia
-pkgver=2022.1.1
-pkgrel=2
+pkgver=2022.2.0
+pkgrel=1
 _nodeversion=12.18.3
 pkgdesc="Cross-platform HTTP and GraphQL Client"
 url="https://github.com/Kong/insomnia"
@@ -17,7 +17,7 @@ source=(
   "https://github.com/Kong/insomnia/archive/refs/tags/core@${pkgver}.tar.gz"
   "insomnia.desktop"
 )
-b2sums=('a5aaf5bca2182243d1ed9426e35b28bfe119faa7974496a962f4dfba83e3336bf586e97e9844a8362f53266845c8c89a2459bec61fd2b8efff45aa49cbc7fe05'
+b2sums=('268430d02d349e05be025885a25701b6dd7db8e4243a7b807488955f762c6d10bddc21d563059e3a66dc4dfea9e1019c3a0e3a2564a969e267bad52bac9eecc8'
         '38c2edd681b012931e25498a4a65007cc2a2152c9bbc5505dbb7cf03e1143a7365c41e9ad7eb2318c8ea894dccad0e0b6601cf76f680ea4085d12b5059e61a6e')
 
 _ensure_local_nvm() {
@@ -49,7 +49,7 @@ package() {
   cd ${pkgname}-core-${pkgver}
   install -d "${pkgdir}/opt/insomnia"
   cp -r "packages/insomnia-app/dist/linux-unpacked/." "$pkgdir/opt/insomnia"
-  install -Dm644 packages/insomnia-app/app/ui/images/insomnia-core-logo.png "${pkgdir}/usr/share/pixmaps/insomnia.png"
+  install -Dm644 packages/insomnia-app/app/ui/images/insomnia-logo.svg "${pkgdir}/usr/share/pixmaps/insomnia.svg"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
