@@ -2,7 +2,7 @@
 
 pkgname=casile
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
 url="https://github.com/sile-typesetter/$pkgname"
@@ -45,7 +45,7 @@ depends=(bc
          yq
          zint
          zsh)
-_lua_deps=(colors
+_lua_deps=(colors-git
            filesystem
            yaml)
 _perl_deps=(yaml
