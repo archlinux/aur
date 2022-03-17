@@ -3,7 +3,7 @@
 pkgbase=python-matrix-synapse-ldap3
 pkgname=(python-matrix-synapse-ldap3)
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An LDAP3 auth provider for Synapse'
 license=('Apache')
 arch=('any')
@@ -22,5 +22,5 @@ package_python-matrix-synapse-ldap3() {
 	replaces=('python2-matrix-synapse-ldap3')
 
 	cd "matrix-synapse-ldap3-${pkgver}"
-	python -m installer --destdir="${pgkdir}" dist/*.whl
+	python -m installer --destdir="${pkgdir}" dist/*.whl
 }
