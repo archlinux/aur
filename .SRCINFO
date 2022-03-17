@@ -1,6 +1,6 @@
 pkgbase = lei-git
 	pkgdesc = The "local email interface" from public-inbox
-	pkgver = 1.7.0.r31.3eec2f779204
+	pkgver = 1.7.0.r32.f1e4e14793d1
 	pkgrel = 1
 	url = https://public-inbox.org
 	arch = any
@@ -10,6 +10,7 @@ pkgbase = lei-git
 	depends = perl-inline-c
 	depends = perl-dbd-sqlite
 	depends = perl-search-xapian
+	depends = perl-uri
 	provides = lei
 	conflicts = lei
 	conflicts = public-inbox-git
