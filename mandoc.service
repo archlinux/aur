@@ -1,0 +1,11 @@
+[Unit]
+Description=Update manpage database
+RequiresMountsFor=/usr/share/man
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/makewhatis
+CPUSchedulingPolicy=batch
+Nice=19
+IOSchedulingClass=idle
+IOSchedulingPriority=7

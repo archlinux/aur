@@ -1,0 +1,20 @@
+pkgbase = mandoc-noconflict
+	pkgdesc = A suite of tools compiling mdoc from the OpenBSD project - does not conflict with man-db
+	pkgver = 1.14.6
+	pkgrel = 1
+	url = https://mdocml.bsd.lv/
+	arch = x86_64
+	license = ISC
+	depends = zlib
+	provides = mandoc
+	conflicts = mandoc
+	source = https://mdocml.bsd.lv//snapshots/mandoc-1.14.6.tar.gz
+	source = configure.local
+	source = mandoc.service
+	source = mandoc.timer
+	sha256sums = 8bf0d570f01e70a6e124884088870cbed7537f36328d512909eb10cd53179d9c
+	sha256sums = 23cd0e478aa08890bb2c18ff376e9c7ec84e45693f1b5457ecf7615f9c032a18
+	sha256sums = 2091411d5f87a3c371a5ba74b4773d1e454046446fa2cb045485979e52419bb6
+	sha256sums = 74d6a02b97a17fffddcc0a3dc830e811348b1f6c6b84f867882c776d50f00ea4
+
+pkgname = mandoc-noconflict

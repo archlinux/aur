@@ -1,0 +1,24 @@
+# Arch $MANPATH.
+MANPATH_DEFAULT=/usr/local/share/man:/usr/share/man
+
+# Arch paths.
+PREFIX=/usr
+SBINDIR=$PREFIX/bin
+MANDIR=$PREFIX/share/man
+
+# These conflict with man(7) and mdoc(7) from man-pages.
+MANM_MAN=mandoc_man
+MANM_MDOC=mandoc_mdoc
+
+# These conflict with binaries and manpages from groff.
+BINM_SOELIM=msoelim
+MANM_ROFF=mandoc_roff
+
+# These conflict with binaries and manpages from man-db.
+BINM_APROPOS=mapropos
+BINM_CATMAN=mcatman
+BINM_MAN=mman
+BINM_WHATIS=mwhatis
+
+# catman(8) is disabled by default.
+BUILD_CATMAN=1
