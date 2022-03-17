@@ -2,10 +2,10 @@
 # Contributor: jingutech
 # Contributor: Bruce Zhang
 pkgname=listen1-desktop
-pkgver=2.21.7
+pkgver=2.22.1
 pkgrel=1
-listen1_commit=445b3293f62ccf45b514eca35fa14c63a051810f
-pkgdesc="one for all free music in china (Build from source)"
+listen1_commit=bd77ca7b1f7ab2da470c6c5ebdf628020ff9b807
+pkgdesc="One for all free music in China (Build from source)"
 arch=('x86_64' 'i686')
 url="https://github.com/listen1/listen1_desktop"
 license=('MIT')
@@ -17,7 +17,7 @@ source=(
 	"$pkgname-$pkgver.src.tar.gz::https://github.com/listen1/listen1_desktop/archive/v$pkgver.tar.gz"
 	"git+https://github.com/listen1/listen1_chrome_extension.git#commit=$listen1_commit"
 )
-sha256sums=('babe1255bf1d74c261bb6d82fb94f2128c6f1a0b52220d2bbce5817e19bb0a7e'
+sha256sums=('d85c091a6d6cf36561bb7f8f98fd993b63d59ba708e61d910ce7b603697f4717'
             'SKIP')
 
 prepare() {
@@ -55,7 +55,7 @@ Terminal=false
 Type=Application
 Icon=listen1
 StartupWMClass=Listen1
-X-AppImage-Version=2.21.7
+X-AppImage-Version=2.22.1
 Categories=Utility;
 X-AppImage-BuildId=1HvKDJ3EUJMJwm6YxKB8wQfQx3p
 " > "$srcdir/listen1.desktop"

@@ -1,5 +1,5 @@
 src
 pkg
 *.src.tar.gz
-*.pkg.tar.xz
+*.pkg.tar.zst
 listen1_chrome_extension
