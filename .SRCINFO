@@ -1,0 +1,16 @@
+pkgbase = kfreestyle2d-git
+	pkgver = 0.0.1.eef59af
+	pkgrel = 1
+	url = https://github.com/whereswaldon/kfreestyle2d
+	install = kfreestyle2d-git.install
+	arch = x86_64
+	license = MIT
+	depends = make
+	depends = gcc
+	provides = kfreestyle2d
+	source = git+https://github.com/whereswaldon/kfreestyle2d.git
+	source = uinput.conf
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = kfreestyle2d-git

@@ -1,0 +1,8 @@
+post_install() {
+  modprobe uinput
+  systemctl daemon-reload
+  udevadm control --reload
+  udevadm trigger
+  # Sometimes it fails after install
+  systemctl restart kfreestyle2d.service
+}
