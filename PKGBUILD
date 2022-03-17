@@ -10,7 +10,7 @@ _pkgvariantsuffix='-nosystemd'
 _vcssuffix='-git'
 pkgname="${_pkgname}${_pkgvariantsuffix}${_vcssuffix}"
 pkgver=0.40.0.23+r2038.20211122.ef209bc
-pkgrel=1
+pkgrel=2
 pkgdesc="X.Org Wacom tablet driver. Without systemd dependency. Git checkout."
 arch=(
   'i686'
@@ -37,8 +37,8 @@ provides=(
   "${_pkgname}${_vcssuffix}=${pkgver}"
 )
 source=(
-  "${_pkgname}::git+git://github.com/linuxwacom/xf86-input-wacom.git"  # Official upstream source
-  # "${_pkgname}::git+git://github.com/whot/xf86-input-wacom.git#branch=wip/detect-tool-changes"  # Contains fixes for eraser issue with lenovo m14t: https://github.com/linuxwacom/xf86-input-wacom/issues/186, see https://github.com/linuxwacom/xf86-input-wacom/pull/188
+  "${_pkgname}::git+https://github.com/linuxwacom/xf86-input-wacom.git"  # Official upstream source
+  # "${_pkgname}::git+https://github.com/whot/xf86-input-wacom.git#branch=wip/detect-tool-changes"  # Contains fixes for eraser issue with lenovo m14t: https://github.com/linuxwacom/xf86-input-wacom/issues/186, see https://github.com/linuxwacom/xf86-input-wacom/pull/188
 )
 sha256sums=(
   'SKIP'
