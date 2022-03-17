@@ -1,7 +1,7 @@
 # Maintainer: skrewball <skrewball at joickle dot com>
 
 pkgname=gnome-shell-extension-clipboard-history
-pkgver=8
+pkgver=10
 pkgrel=1
 pkgdesc="Save items you've copied into an easily accessible, searchable history panel."
 arch=(any)
@@ -9,7 +9,7 @@ url='https://github.com/SUPERCILEX/gnome-clipboard-history'
 license=('MIT')
 depends=('gnome-shell>=40')
 source=("https://extensions.gnome.org/extension-data/clipboard-historyalexsaveau.dev.v${pkgver}.shell-extension.zip")
-sha256sums=('c2970feef3aad779f3cfaaba06d150f1d7a3cd9fa9badf29a2f1ada0624e1720')
+sha256sums=('eaed8b0c6e9f927ac00cf3b6b0b84e2d9b3e164350ba926d7943a279485dc34e')
 
 package() {
     local _uuid="clipboard-history@alexsaveau.dev"
