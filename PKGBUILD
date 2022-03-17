@@ -3,8 +3,8 @@
 # Contributors: edacval
 
 pkgname=pycharm-professional
-pkgver=2021.3.2
-pkgrel=2
+pkgver=2021.3.3
+pkgrel=1
 pkgdesc="Python IDE for Professional Developers. Professional Edition"
 arch=('x86_64')
 url='https://www.jetbrains.com/pycharm/'
@@ -18,7 +18,7 @@ source=("https://download.jetbrains.com/python/$pkgname-$pkgver.tar.gz"
         "pycharm-professional.desktop"
         "charm.desktop"
         "charm")
-sha256sums=('6bd9573a84c1f2ae6b9b6612f0859aee21133f479ace43602dc0af879f9d9e67'
+sha256sums=('0135af18088581891717bf5d6156902a166adb853fd0415ad52c6414f3a8cfc7'
             'a75264959b06a45ea0801729bc1688bfbd52da3c5fbf3d5b1ad9267860439291'
             '6996b38a3c2ba1e472838d7046a4c54a27822fd647be9ca590457e8c6a2d50c8'
             '039f0d1dc447fb26bb9df35b3a85145a47ce42193c8b2d56bf7bdf090fff0da9')
