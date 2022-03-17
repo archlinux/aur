@@ -7,7 +7,7 @@
 
 pkgname=lxc-git
 _pkgname=lxc
-pkgver=4.0.0.r1482.gd75ddd9b1
+pkgver=4.0.0.r2198.g30ebf0964
 pkgrel=1
 pkgdesc="Linux Containers git version"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -19,16 +19,14 @@ optdepends=('dnsmasq: lxc-net.service'
   'lua-filesystem: lxc-top'
   'lua-alt-getopt: lxc-top')
 license=('LGPL')
-options=('emptydirs')
+options=('emptydirs' 'debug')
 backup=('etc/lxc/default.conf'
   'etc/default/lxc')
 provides=($_pkgname)
 conflicts=($_pkgname lxc-git)
 
 source=(
-  git://github.com/lxc/lxc
-  # to build from the stable branch instead of master use
-  # git://github.com/lxc/lxc#branch=stable-4.0
+  lxc::git+https://github.com/lxc/lxc.git
   lxc.tmpfiles.d
   lxc.service
   lxc-auto.service)

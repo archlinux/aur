@@ -1,6 +1,6 @@
 pkgbase = lxc-git
 	pkgdesc = Linux Containers git version
-	pkgver = 4.0.0.r1482.gd75ddd9b1
+	pkgver = 4.0.0.r2198.g30ebf0964
 	pkgrel = 1
 	url = https://linuxcontainers.org
 	arch = x86_64
@@ -28,9 +28,10 @@ pkgbase = lxc-git
 	conflicts = lxc
 	conflicts = lxc-git
 	options = emptydirs
+	options = debug
 	backup = etc/lxc/default.conf
 	backup = etc/default/lxc
-	source = git://github.com/lxc/lxc
+	source = lxc::git+https://github.com/lxc/lxc.git
 	source = lxc.tmpfiles.d
 	source = lxc.service
 	source = lxc-auto.service
@@ -40,4 +41,3 @@ pkgbase = lxc-git
 	sha256sums = b31f8d6b301ab9901b43f2696bcd0babb32b96e4a59fab63a2d642e43bf26bb3
 
 pkgname = lxc-git
-
