@@ -1,12 +1,12 @@
 pkgbase = whatismyip
 	pkgdesc = A bash script getting the public ip of the default route [using AWS]
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.0.2
+	pkgrel = 1
 	arch = any
 	license = GPL
 	depends = curl
 	depends = cowsay
-	source = whatismyip
+	source = https://tilde.club/~xiajo/files/aur/whatismyip/1.0.2/whatismyip
 	md5sums = 55f4c372735e91101fb5baa62b6332cf
 
 pkgname = whatismyip
