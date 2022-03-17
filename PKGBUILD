@@ -2,7 +2,7 @@
 
 _npmname=autocannon
 pkgname=nodejs-$_npmname
-pkgver=7.7.0
+pkgver=7.7.1
 pkgrel=1
 
 pkgdesc="fast HTTP/1.1 benchmarking tool written in Node.js"
@@ -19,7 +19,7 @@ options=(strip emptydirs zipman)
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${pkgver}.tgz"
 	"https://raw.githubusercontent.com/mcollina/autocannon/master/LICENSE")
 noextract=("${_npmname}-${pkgver}.tgz")
-b2sums=('29721e5e7abb4aa15b08a47d35179ac5352b60d9a01741e334ea8319a2ed4587ff3e99a2485331722fd4a9b7988a21488a106edbbf75b9bfdf9f3faf07decbd8'
+b2sums=('430e0792765fd5d56b1e65e5fbd328f247dae4bc10b5b6fc71db1fe37be08a817c6634b246c384d90a569339908ab81f21e7be1c7a489b86b8f1f58eb60bfec1'
 	'ac1f56051dfc2f729db4d635ff40ab143314a29b3a3259967e1d83ab1b26cb53059a29d3ec52f1358e588b90cadbcc4a63cf3feb485770b085b7cbfd8313e43a')
 
 # Document: https://wiki.archlinux.org/title/Node.js_package_guidelines
