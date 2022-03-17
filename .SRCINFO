@@ -6,6 +6,8 @@ pkgbase = zenstates-openrc
 	license = MIT
 	depends = openrc
 	source = https://tilde.club/~xiajo/files/aur/zenstates-openrc/1.0.0/zen.start
+	source = https://tilde.club/~xiajo/files/aur/zenstates-openrc/1.0.0/zenstates.py
 	md5sums = bd1ea88f1b8e2afa502760a77bc8502f
+	md5sums = 7bcefe209016716473f37a48b014f3d1
 
 pkgname = zenstates-openrc
