@@ -1,7 +1,7 @@
 # Maintainer: Claudia Pellegrino <aur@cpellegrino.de>
 
 pkgname=aws-credential-1password
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc='AWS credential helper using 1Password for storage'
 arch=('any')
@@ -16,7 +16,7 @@ source=(
 )
 
 sha512sums=(
-  '8b3456f1bc473816dcb281a9b00d48effece992ea18f5b0939c087067b6e7745f354b138736e9bd7868eda8953909c0cf9867f669dd73a0f056f6d89138fbf08'
+  'cf33c9bb033a2ae2509028057e267ddfa9e1f82993ebd3561c0e411775a46c7e3c22f913414d95ba53027e87677c177adeec23b90703b5bddd1294489aad8756'
 )
 
 noextract=("${pkgname}-${pkgver}.tar.gz")
