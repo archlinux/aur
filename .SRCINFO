@@ -1,6 +1,6 @@
 pkgbase = dwm-layoutconfigrules-git
 	pkgdesc = dwm with layoutconfigrules patch applied
-	pkgver = 0.r1786.c5e4c56
+	pkgver = 0.r1816.bcfb194
 	pkgrel = 1
 	url = https://github.com/cdown/dwm
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = dwm-layoutconfigrules-git
 	depends = libxft
 	provides = dwm
 	conflicts = dwm
-	source = git://github.com/cdown/dwm.git
+	source = git+https://github.com/cdown/dwm.git
 	md5sums = SKIP
 
 pkgname = dwm-layoutconfigrules-git

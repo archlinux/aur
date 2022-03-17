@@ -2,7 +2,7 @@
 
 pkgname=dwm-layoutconfigrules-git
 _gitname=dwm
-pkgver=0.r1786.c5e4c56
+pkgver=0.r1816.bcfb194
 pkgrel=1
 pkgdesc="dwm with layoutconfigrules patch applied"
 license=('MIT')
@@ -13,7 +13,7 @@ makedepends=('git')
 conflicts=('dwm')
 provides=('dwm')
 
-source=('git://github.com/cdown/dwm.git')
+source=('git+https://github.com/cdown/dwm.git')
 md5sums=('SKIP')
 
 pkgver() {
