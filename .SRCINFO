@@ -1,6 +1,6 @@
 pkgbase = esptool-git
 	pkgdesc = A cute Python utility to communicate with the ROM bootloader in Espressif ESP8266
-	pkgver = 3.0.r26.gdb4df64
+	pkgver = 3.2.r59.gb3ccbaf
 	pkgrel = 1
 	url = https://github.com/espressif/esptool
 	arch = any
@@ -10,7 +10,6 @@ pkgbase = esptool-git
 	makedepends = python-wheel
 	depends = python-pyserial
 	depends = python-ecdsa
-	depends = python-pyaes
 	depends = python-cryptography
 	depends = python-bitstring
 	depends = python-reedsolo
@@ -20,4 +19,3 @@ pkgbase = esptool-git
 	md5sums = SKIP
 
 pkgname = esptool-git
-
