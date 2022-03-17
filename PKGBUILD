@@ -5,13 +5,13 @@ pkgbase=python-sunpy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=3.1.4
+pkgver=3.1.5
 pkgrel=1
 pkgdesc="Python library for solar physics"
 arch=('i686' 'x86_64')
 url="https://sunpy.org"
 license=('BSD')
-makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-installer' 'python-oldest-supported-numpy' 'python-extension-helpers' 'python-numpy')
+makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-installer' 'python-extension-helpers' 'python-numpy')
 #'python-sunpy-sphinx-theme'
 #'python-parfive' 'python-astroquery' 'python-reproject' 'python-ruamel-yaml' 'python-jplephem' 'python-sphinx-automodapi' 'python-sphinx-changelog' 'python-sphinx-gallery>=0.9.0' 'python-sphinxext-opengraph'
 #'python-scikit-image' 'python-h5netcdf' 'python-sqlalchemy' 'python-lxml' 'python-zeep' 'python-drms' 'python-aioftp' 'python-asdf' 'python-cdflib' 'python-mpl-animators' 'graphviz')
@@ -63,7 +63,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #        "http://data.sunpy.org/sunpy/v1/aiacalibim5.fits.gz"
 #        "http://data.sunpy.org/sunpy/v1/glg_cspec_n5_110607_v00.pha")
 ##       "http://netdrms01.nispdc.nso.edu/VSO/WSDL/VSOi_rpc_literal.wsdl")
-md5sums=('cb2e3ba0dfc236ba77a713b1ef1289e9')
+md5sums=('db5d2c48072a219d70d84137c8f953e6')
 #        'bde3bd7a691b38e2e4c4e1d17b143b24'
 #        '01efaf052d81efc32a92050a249aa557'
 #        'ead6d3ce4c183c471d76bf1bc3be44a3'
@@ -94,12 +94,13 @@ md5sums=('cb2e3ba0dfc236ba77a713b1ef1289e9')
 #        '09e93384ceff4aecfef1ad4b0ca89290')
 
 prepare() {
-#   cd ${srcdir}/${_pyname}-${pkgver}
+    cd ${srcdir}/${_pyname}-${pkgver}
 
 #   mkdir -p ${HOME}/.local/share/${_pyname}
 #   cp -v ${srcdir}/*.fit* ${HOME}/.local/share/${_pyname}
 #   cp -v ${srcdir}/*.txt ${HOME}/.local/share/${_pyname}
 #   cp -v ${srcdir}/*.pha ${HOME}/.local/share/${_pyname}
+    sed -i "/oldest-supported-numpy/d" pyproject.toml
     export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
 }
 
