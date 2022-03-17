@@ -13,8 +13,7 @@ url="https://www.mozilla.org/${_lang}/${_name}/${_channel}"
 
 # Apparently there is an alternate URL - https://archive.mozilla.org/pub/
 _base_url="https://ftp.mozilla.org/pub/${_name}/${_channel}"
-_version=$(curl -s ${_base_url}/latest-mozilla-central-l10n/ | grep "${_lang}.linux-${CARCH}.checksums" | sort | tail -n 1 | sed "s/^.*>firefox-//; s/\.${_lang}.*//")
-
+_version=$(curl "${CURL_OPTS[@]}" ${_base_url}/latest-mozilla-central-l10n/ | grep "${_lang}.linux-${CARCH}.checksums" | sed "s/^.*>firefox-//; s/\.${_lang}.*//" | sort -n | tail -n 1)
 _build_id_raw="$(curl -s "${_base_url}/latest-mozilla-central-l10n/${_name}-${_version}.${_lang}.linux-${CARCH}.checksums" | grep '.partial.mar' | cut -d' ' -f4 | grep -E -o '[[:digit:]]{14}' | sort | tail -n1)"
 declare -A _build_id
 _build_id=(
