@@ -3,7 +3,7 @@
 
 pkgname=python-ufo2ft
 _pyname=${pkgname#python-}
-pkgver=2.25.3
+pkgver=2.26.0
 pkgrel=1
 pkgdesc='A bridge from UFOs to FontTools objects'
 arch=(any)
@@ -12,6 +12,7 @@ license=(MIT)
 _pydeps=(booleanoperations
          cffsubr
          cu2qu
+         lxml # for fonttools[lxml]
          defcon
          fonttools
          fs) # for fonttools[ufo]
@@ -24,11 +25,10 @@ checkdepends=(python-compreffor
               python-pytest
               python-skia-pathops)
 optdepends=(python-compreffor
-            'python-lxml: enables faster UFO parsing'
             python-skia-pathops)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
-sha256sums=('e0eb84a25f98a2bbce78ae5b8f7dcfa3c57d283d2dadc81331709343e27babde')
+sha256sums=('d56400b35ca95ad2ce6e00733edaadbc78e42a70d6a21bb73db2376c5ec1d128')
 
 build() {
 	cd "$_archive"
