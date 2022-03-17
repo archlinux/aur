@@ -4,7 +4,7 @@ _pkgname='wikidoc'
 pkgname="${_pkgname}-git"
 epoch=1
 pkgver=r34.20180311.7fb66a4
-pkgrel=2
+pkgrel=3
 pkgdesc='Python script allows to create nice looking PDF files from a github wiki. Requires mardown-formatted wiki.'
 arch=('any')
 url='https://github.com/jobisoft/wikidoc'
@@ -25,7 +25,7 @@ conflicts=(
 )
 
 source=(
-  "${_pkgname}::git+git://github.com/jobisoft/wikidoc.git"
+  "${_pkgname}::git+https://github.com/jobisoft/wikidoc.git"
 )
 sha256sums=(
   'SKIP'
