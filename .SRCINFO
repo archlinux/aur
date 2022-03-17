@@ -1,6 +1,6 @@
 pkgbase = ncine-git
 	pkgdesc = A cross-platform 2D game engine
-	pkgver = r334.1b7de7d
+	pkgver = r388.0dc4a59
 	pkgrel = 1
 	url = http://ncine.github.io
 	arch = i686
@@ -17,8 +17,7 @@ pkgbase = ncine-git
 	provides = ncine
 	conflicts = ncine
 	options = !strip
-	source = git://github.com/nCine/nCine
+	source = git+https://github.com/nCine/nCine
 	md5sums = SKIP
 
 pkgname = ncine-git
-

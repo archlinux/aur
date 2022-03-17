@@ -1,7 +1,7 @@
 # Maintainer: Angelo Theodorou <encelo at gmail dot com>
 
 pkgname=ncine-git
-pkgver=r334.1b7de7d
+pkgver=r388.0dc4a59
 pkgrel=1
 pkgdesc="A cross-platform 2D game engine"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('git' 'cmake')
 conflicts=('ncine')
 provides=('ncine')
 options=(!strip)
-source=('git://github.com/nCine/nCine')
+source=('git+https://github.com/nCine/nCine')
 md5sums=('SKIP')
 
 pkgver() {
@@ -44,7 +44,6 @@ build() {
         -DNCINE_STARTUP_TEST=apptest_camera\
         -DNCINE_BUILD_ANDROID=OFF\
         -DNCINE_STRIP_BINARIES=ON\
-        -DNCINE_TESTS_DATA_DIR=/usr/share/ncine/data\
         -DNCINE_ADDRESS_SANITIZER=OFF\
         -DNCINE_GCC_HARDENING=ON\
         -DCMAKE_INSTALL_PREFIX=/usr
