@@ -1,0 +1,13 @@
+pkgbase = ttf-babelstone-roman
+	pkgdesc = BabelStone Font for Latin script
+	pkgver = 14.001
+	pkgrel = 1
+	url = https://www.babelstone.co.uk/Fonts/Roman.html
+	arch = any
+	license = OFL
+	source = https://www.babelstone.co.uk/Fonts/Download/BabelStoneRoman.ttf
+	source = https://www.babelstone.co.uk/Fonts/BabelStoneOFL.txt
+	md5sums = fce23951dd7a2e68bfdab8d06a90d8f7
+	md5sums = f516c91719ef90db6c942f8ac6efde47
+
+pkgname = ttf-babelstone-roman
