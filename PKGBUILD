@@ -28,15 +28,15 @@ prepare() {
 }
 
 package() {
-  msg2 'Installing the license'
+  echo >&2 'Packaging the license'
   install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
     "${srcdir}/LICENSE"
 
-  msg2 'Installing `aws-credential-1password`'
+  echo >&2 'Packaging `aws-credential-1password`'
   install -D -m 755 -t "${pkgdir}/usr/bin" \
     "${srcdir}/aws-credential-1password"
 
-  msg2 'Installing documentation'
+  echo >&2 'Packaging documentation'
   install -D -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
     "${srcdir}/README.md"
 }
