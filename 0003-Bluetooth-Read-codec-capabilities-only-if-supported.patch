@@ -1,4 +1,4 @@
-From 002d105f8a78b19624fc5e3eccbb77af8b1a3a77 Mon Sep 17 00:00:00 2001
+From 259811877bb044c65cda70291f0ff2e88d124655 Mon Sep 17 00:00:00 2001
 From: Kiran K <kiran.k@intel.com>
 Date: Tue, 5 Oct 2021 20:15:56 +0530
 Subject: [PATCH 3/8] Bluetooth: Read codec capabilities only if supported

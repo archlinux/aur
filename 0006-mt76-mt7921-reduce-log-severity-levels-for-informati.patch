@@ -1,4 +1,4 @@
-From 3f214da518342648eee58bb01645d5e768f8120c Mon Sep 17 00:00:00 2001
+From 6dee1fe4a4890f47f3d7d3fb0b6790cf5d00c9db Mon Sep 17 00:00:00 2001
 From: Tzung-Bi Shih <tzungbi@google.com>
 Date: Fri, 10 Dec 2021 17:17:46 +0800
 Subject: [PATCH 6/8] mt76: mt7921: reduce log severity levels for informative
