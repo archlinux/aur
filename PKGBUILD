@@ -27,6 +27,6 @@ package() {
     then
         gopath="$HOME/go"
     fi;
-    GOPATH="$gopath" go get -u github.com/arduino/arduino-cli
+    GOPATH="$gopath" GO111MODULE=on go install github.com/arduino/arduino-cli@latest
     install -Dm755 "$gopath/bin/arduino-cli" "$pkgdir/usr/bin/arduino-cli"
 }
