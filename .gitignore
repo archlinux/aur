@@ -1,4 +1,6 @@
 *.tar.xz
+*.tar.zst
+goldendict-webengine-git
 goldendict
 pkg
 src
