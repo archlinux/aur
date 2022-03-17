@@ -1,28 +1,38 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
-# Maintainer: Joel Almeoda <aullidolunar at gmail d0t c0m>
+# Maintainer: Letu Ren <fantasquex at gmail dot com>
+# Contributor: Dimitris Kiziridis <ragouel at outlook dot com>
+# Contributor: Joel Almeoda <aullidolunar at gmail d0t c0m>
 
 pkgname=qualcoder
-pkgver=2.5
+_pkgname=QualCoder
+pkgver=2.9
 pkgrel=1
-pkgdesc="Qualitative data analysis software written in python3 and pyqt5"
+pkgdesc="Qualitative data analysis for text, images, audio, video. Cross platform. Python 3.6 or newer and PyQt5."
 arch=('any')
 url='https://github.com/ccbogel/QualCoder'
 license=('MIT')
 depends=('python-pyqt5'
          'python-lxml'
          'python-pillow'
-         'python-pdfminer'
+         'python-ebooklib'
+         'python-pdfminer.six'
          'python-ply'
          'python-chardet'
          'python-openpyxl'
-         'python-ebooklib')
+         'python-pydub'
+         'python-speechrecognition')
 makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.deb::https://github.com/ccbogel/QualCoder/releases/download/${pkgver}/qualcoder-${pkgver}.deb")
-sha256sums=('db2f389d6fce1a56008974ce5d81eac75a3545fac94ef9fb37a67b7da3ecb87e')
+_name=${pkgname#python-}
+source=("https://github.com/ccbogel/QualCoder/archive/refs/tags/2.9.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+    cd "${_pkgname}-${pkgver}"
+    python setup.py build
+}
 
 package() {
-	tar xvf data.tar.xz -C "${pkgdir}"
-	install -Dm644 "${pkgdir}/usr/share/doc/qualcoder/copyright" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	rm "${pkgdir}/usr/share/doc/qualcoder/copyright"
-	chmod 755 "${pkgdir}/usr/bin/qualcoder"
+    cd "${_pkgname}-${pkgver}"
+    python setup.py install --root="$pkgdir" --optimize=1
+    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
