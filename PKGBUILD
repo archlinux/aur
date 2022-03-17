@@ -1,40 +1,29 @@
-# Maintainer: cyberxndr <cyberxndr@gmail.com>
+# Maintainer: fft
+# Contributor: cyberxndr <cyberxndr@gmail.com>
 
 pkgname=mytetra
-pkgver=1.44.31
+pkgver=1.44.160
 pkgrel=1
 pkgdesc="Personal manager for data memorization and structuring notes"
 arch=('x86_64')
 url="https://github.com/xintrea/mytetra_dev"
 license=('GPL3')
-source=("https://webhamster.ru/db/data/articles/105/mytetra_1_44_31_lin_64.tar.gz"
-        "https://gist.githubusercontent.com/cyberxndr/498db38606e53a56efb32d79a2c73b4a/raw/82f2a036d300058f6253732609654e73a8b8e020/mytetra.desktop")
-noextract=( "mytetra.desktop")
+depends=('hicolor-icon-theme' 'qt5-base')
+source=("https://github.com/xintrea/mytetra_dev/archive/refs/tags/v.${pkgver}.tar.gz")
 
-md5sums=('b2894692f4fde8d35f1cb2ea48758222'
-         '52f0675d8fa88fa9a388e0f4a54fa7e6')
+sha256sums=('301c297bc359197e07afa2302841a0f7e24c5589ea0b0f5e13b9c2ff6806a562')
 
-prepare(){
-    cd mytetra_1_44_31_lin_64
-    echo '#!/bin/sh' > mytetra.run
-    echo 'PROGDIR="/opt/mytetra"' >> mytetra.run
-    echo 'LD_LIBRARY_PATH=$PROGDIR/lib:${LD_LIBRARY_PATH}' >> mytetra.run
-    echo 'export LD_LIBRARY_PATH' >> mytetra.run
-    echo '$PROGDIR/mytetra' >> mytetra.run 
+build(){
+    cd "mytetra_dev-v.${pkgver}"
+    qmake
+    make
 }
 
 
-
 package(){
-    install -Dm 644 mytetra_1_44_31_lin_64/mytetra.png "${pkgdir}/usr/share/pixmaps/mytetra.png"
-    install -Dm 644 mytetra.desktop "${pkgdir}/usr/share/applications/mytetra.desktop"
-
-    cd mytetra_1_44_31_lin_64
-
-    mkdir -p "${pkgdir}/opt/mytetra"
-    cp * "${pkgdir}/opt/mytetra/" -r
-
-    mkdir -p "${pkgdir}/usr/bin/"
-    ln -s /opt/mytetra/mytetra.run "${pkgdir}/usr/bin/mytetra" 
+	cd "mytetra_dev-v.${pkgver}/app"
+	make install INSTALL_ROOT="${pkgdir}"
+	mkdir -p "${pkgdir}/usr/bin/"
+	mv "${pkgdir}/mytetra" "${pkgdir}/usr/bin/"
 }
 

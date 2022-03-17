@@ -1,15 +1,13 @@
 pkgbase = mytetra
 	pkgdesc = Personal manager for data memorization and structuring notes
-	pkgver = 1.44.31
+	pkgver = 1.44.160
 	pkgrel = 1
 	url = https://github.com/xintrea/mytetra_dev
 	arch = x86_64
 	license = GPL3
-	noextract = mytetra.desktop
-	source = https://webhamster.ru/db/data/articles/105/mytetra_1_44_31_lin_64.tar.gz
-	source = https://gist.githubusercontent.com/cyberxndr/498db38606e53a56efb32d79a2c73b4a/raw/82f2a036d300058f6253732609654e73a8b8e020/mytetra.desktop
-	md5sums = b2894692f4fde8d35f1cb2ea48758222
-	md5sums = 52f0675d8fa88fa9a388e0f4a54fa7e6
+	depends = hicolor-icon-theme
+	depends = qt5-base
+	source = https://github.com/xintrea/mytetra_dev/archive/refs/tags/v.1.44.160.tar.gz
+	sha256sums = 301c297bc359197e07afa2302841a0f7e24c5589ea0b0f5e13b9c2ff6806a562
 
 pkgname = mytetra
-
