@@ -1,0 +1,14 @@
+pkgbase = python-pandas-stubs
+	pkgdesc = Type annotations for Pandas
+	pkgver = 1.2.0.50
+	pkgrel = 1
+	url = https://pypi.org/project/pandas-stubs
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	source = https://files.pythonhosted.org/packages/source/p/pandas-stubs/pandas-stubs-1.2.0.50.tar.gz
+	sha256sums = fdeaee677603a73b7a44eb01d12ef504b7af94db4d671e295a30157da0219ca5
+
+pkgname = python-pandas-stubs
