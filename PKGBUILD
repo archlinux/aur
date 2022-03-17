@@ -3,13 +3,14 @@
 _pkgbase=mosmetro-python
 pkgname=${_pkgbase}-git
 pkgver=0.1.1.r3.g3e31949
-pkgrel=1
+pkgrel=2
 pkgdesc="A script for automatic authorization in Moscow Transport free networks (git version)"
 arch=('any')
 url='https://github.com/mosmetro-android/mosmetro-python'
 license=('GPL3')
 depends=('python-requests' 'python-furl' 'python-user_agent' 'python-beautifulsoup4')
 makedepends=('python-setuptools')
+optdepends=('networkmanager: for auto-enable hook')
 provides=("${_pkgbase}")
 conflicts=("${_pkgbase}")
 source=("git+${url}.git"
