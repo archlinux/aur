@@ -1,0 +1,18 @@
+pkgbase = passphrase2pgp
+	pkgdesc = Predictable, passphrase-based PGP key generator
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/skeeto/passphrase2pgp
+	arch = x86_64
+	license = Unlicense
+	checkdepends = bash
+	checkdepends = gnupg
+	checkdepends = openssh
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	options = !lto
+	source = passphrase2pgp::git+https://github.com/skeeto/passphrase2pgp.git#commit=89270b52ec9eb7d922b8c5e20912c9b9f1bd3d8a
+	b2sums = SKIP
+
+pkgname = passphrase2pgp
