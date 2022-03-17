@@ -1,12 +1,13 @@
 pkgbase = catppuccin-grub-theme-git
-	pkgdesc = Catppuccin GRUB theme.
+	pkgdesc = Soothing pastel theme for GRUB2.
 	pkgver = r24.3f62cd4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/catppuccin/grub
-	install = catppuccin-grub-theme.install
+	install = catppuccin-grub-theme-git.install
 	arch = any
 	license = MIT
-	source = https://github.com/catppuccin/grub/archive/3f62cd4174465631b40269a7c5631e5ee86dec45.zip
-	sha256sums = 6f73b676cdc4bf11dbe38fa31f3981db4f5b8afd68f5fbf05154c8e27f4d7848
+	makedepends = git
+	source = catppuccin-grub-theme-git::git+https://github.com/catppuccin/grub.git
+	sha256sums = SKIP
 
 pkgname = catppuccin-grub-theme-git
