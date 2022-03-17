@@ -1,7 +1,7 @@
 # Maintainer: Lukas Grossar <lukas.grossar@gmail.com>
 
 pkgname=velero-bin
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="Backup client for Kubernetes"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('kubectl')
 replaces=('ark-bin')
 license=('Apache')
 source=("https://github.com/vmware-tanzu/velero/releases/download/v${pkgver}/velero-v${pkgver}-linux-amd64.tar.gz")
-sha256sums=('0530082cb8d1412e926e4afcef72a7eff45f8820a6480d5358b70b4d8ffcbf78')
+sha256sums=('b50952735b1dcec595ce6b84cbc5f1eb184c5c756708c8cb9196fa53f36ca6de')
 
 package() {
   install -Dm 755 "$srcdir/velero-v${pkgver}-linux-amd64/velero" -t "$pkgdir/usr/bin"
