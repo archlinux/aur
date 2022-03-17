@@ -1,8 +1,9 @@
 # Maintainer: Roman Mishin <xtradev (a) yandex (.) ru>
 
+_commit=cf5bf508d8482cf02f895d91ce9572d67235e58f
 pkgname=bracmat-git
 pkgver=6.9.3.r252
-pkgrel=1
+pkgrel=2
 pkgdesc='Programming language for symbolic computation with pattern matching features'
 arch=('i686' 'x86_64')
 url='https://github.com/BartJongejan/Bracmat'
@@ -10,7 +11,7 @@ license=('GPL2')
 makedepends=('git')
 provides=('bracmat')
 conflicts=('bracmat')
-source=("git+$url.git"
+source=("git+$url.git#commit=$_commit"
         'path-to-help.patch')
 md5sums=('SKIP'
          '99837b2909221895b234f4cf5efd6864')
