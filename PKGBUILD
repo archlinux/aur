@@ -16,7 +16,7 @@ source=("ftp://ftp5.gwdg.de/pub/linux/slackware/slackware-11.0/extra/source/ham/
 build() {
 	cd "$srcdir/$pkgname-$pkgver/"
 	./configure --prefix=/usr --datadir=/usr/share --mandir=/usr/share/man
-		make
+	make
 	}
 
 
