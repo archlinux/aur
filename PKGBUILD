@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile
-pkgver=0.7.3
-pkgrel=2
+pkgver=0.7.4
+pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
 url="https://github.com/sile-typesetter/$pkgname"
@@ -42,6 +42,7 @@ depends=(bc
          tex-gyre-fonts
          texlive-core
          ttf-hack
+         xorg-server-xvfb
          yq
          zint
          zsh)
@@ -66,7 +67,7 @@ makedepends=(autoconf-archive
              yarn)
 _archive="$pkgname-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.xz")
-sha256sums=('025d1c0fbe10a6018fbc7911f1d18385510f6da81b0fd6ed3eaf76ea53133b28')
+sha256sums=('18475a27803f725e73071e06dab72511695346586888e940a516598d4097892c')
 
 prepare() {
 	cd "$_archive"
