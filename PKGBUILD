@@ -26,9 +26,6 @@ prepare() {
   sed -i "s|2.4.0|2.3.0|" ThirdParty/libharu/CMakeLists.txt
   sed -i "s|set(HPDF_DLL 1)|set(HPDF_DLL 0)|g" ThirdParty/libharu/CMakeLists.txt
   sed -i "27i#undef STRICT" ThirdParty/libproj/vtk_libproj.h.in
-
-  # _isatty
-  curl -L https://github.com/gsjaardema/seacas/commit/175e2ecf.patch | patch -p6 -d ThirdParty/ioss/vtkioss
 }
 
 build() {
