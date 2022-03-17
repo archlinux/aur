@@ -1,9 +1,9 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=libphidget
-pkgver=1.10.20220211
+pkgver=1.9.20220203
 pkgrel=1
-epoch=1
+epoch=2
 url=https://www.phidgets.com
 pkgdesc="user-space access library for the Phidget devices"
 conflicts=('libphidget')
@@ -11,8 +11,8 @@ provides=('libphidget')
 arch=('x86_64')
 license=('GPL')
 depends=('libusb')
-source=("https://www.phidgets.com/downloads/${pkgname#lib}/libraries/linux/${pkgname}22/${pkgname}22-$pkgver.tar.gz")
-sha256sums=('1c5bda131f8a438967afd3213156d153e85bc9bdfe12275b24e3cf80253aae60')
+source=("https://www.phidgets.com/downloads/${pkgname#lib}22/libraries/linux/${pkgname}22/${pkgname}22-$pkgver.tar.gz")
+sha256sums=('089d590bbc9dad9cc4b190a1acab96838fdddb4afab3315679009cb622852e06')
 
 build() {
   cd ${pkgname}22-$pkgver
@@ -24,3 +24,4 @@ package() {
    cd ${pkgname}22-$pkgver
    make DESTDIR="$pkgdir/" install
 }
+
