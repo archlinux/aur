@@ -9,7 +9,7 @@ license=('GPL')
 depends=('sdl2_image' 'sdl2_mixer' 'libmng' 'libtheora' 'tolua++')
 makedepends=('git' 'cmake' 'glu')
 changelog=stratagus.changelog
-source=("stratagus::git://github.com/Wargus/stratagus.git#tag=v${pkgver}")
+source=("stratagus::git+https://github.com/Wargus/stratagus.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
 build() {
