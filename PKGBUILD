@@ -10,7 +10,7 @@ options=('!emptydirs')
 depends=()
 url='https://metacpan.org/pod/Text::Layout'
 source=("https://cpan.metacpan.org/authors/id/J/JV/JV/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('5dd7fba13f234487c2525673bbc4626fe38f686580f29635063ee3f73faebc40c964de219c8dffa821ab4475b002fe18519671a838c9a2f14e86f99b88c89fc7')
+sha512sums=('6a9818245531284c68ceca115f05cdc819816802a882457834d104d6d634e230d4b751889e0bf5cb7afd0a47c5e4a602278cf81c82889319f1590c28d295cc5f')
 _distdir="${_pkgname}-${pkgver}"
 
 build() {
