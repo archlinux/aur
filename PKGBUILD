@@ -11,6 +11,13 @@ makedepends=(python-build python-installer python-wheel)
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
 sha256sums=('fdeaee677603a73b7a44eb01d12ef504b7af94db4d671e295a30157da0219ca5')
 
+prepare() {
+    cd ${srcdir}/${_pkgname}-${pkgver}/third_party/3/pandas/_libs
+    rm index.pyi missing.pyi properties.pyi sparse.pyi
+    cd tslibs
+    rm nattype.pyi np_datetime.pyi parsing.pyi period.pyi timedeltas.pyi timestamps.pyi timezones.pyi tzconversion.pyi
+}
+
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
     python -m build --wheel --no-isolation
