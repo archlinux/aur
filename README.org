@@ -1,2 +1,2 @@
-* scafetch-aur
+* scafetch-git-aur
 AUR PKGBUILD for [[https://github.com/iddev5/scafetch][scafetch]].
