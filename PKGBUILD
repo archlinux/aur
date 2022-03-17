@@ -10,27 +10,37 @@ arch=('any')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
 makedepends=('qt5-tools' 'python' 'pciutils' 'libxtst' 'libxcursor' 'libxrandr' 'libxss' 'libxcomposite'
-             'gperf' 'nss' 'clang')
+             'gperf' 'nss' 'clang' 'nodejs')
 groups=('qt' 'qt5')
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${pkgver}/single/${_pkgfqn}.tar.xz"
-         qt5-webengine-python3.patch)
+         qt5-webengine-python3.patch
+         no-qmake.patch)
 sha256sums=('b7412734698a87f4a0ae20751bab32b1b07fdc351476ad8e35328dbe10efdedb'
-            '5ad3f81a32f612872f48098354120459c7650c398cd653c3ff5e6641dfc5c615')
+            '398c996cb5b606695ac93645143df39e23fa67e768b09e0da6dbd37342a43f32'
+            '7893df4981d6611c5aaeb4cc69bc77d14b4251842b205591a563f9a7184dfb0a')
 
 prepare() {
   cd ${_pkgfqn/opensource-/}
 
   ln -s /usr/bin qttools/
-  ln -s /usr/bin/{rcc,uic,moc} qtbase/bin/
+  ln -s /usr/bin/{rcc,uic,moc,qmake} qtbase/bin/
 
+  patch -d qtbase -p1 < "$srcdir"/no-qmake.patch # Use system qmake
   patch -d qtwebengine -p1 < "$srcdir"/qt5-webengine-python3.patch # Fix build with Python 3
 }
 
 build() {
   cd ${_pkgfqn/opensource-/}
 
-  qmake CONFIG+="confirm-license opensource"
+  ./configure -confirm-license -opensource \
+    -prefix /usr \
+    -docdir /usr/share/doc/qt \
+    -headerdir /usr/include/qt \
+    -archdatadir /usr/lib/qt \
+    -datadir /usr/share/qt \
+    -sysconfdir /etc/xdg \
+    -nomake examples
   make docs
 }
 
