@@ -3,7 +3,7 @@
 
 pkgname=tachidesk
 pkgver=0.6.2_r1074
-pkgrel=2
+pkgrel=3
 __pkgname=tachidesk-server
 __PkgName=Tachidesk-Server
 __pkgver="${pkgver%_*}"
@@ -39,5 +39,5 @@ package() {
     install -Dm755 "$srcdir/$__pkgname-browser-launcher.sh"  "$pkgdir/usr/bin/$__pkgname-browser"
     install -Dm755 "$srcdir/$__pkgname-debug-launcher.sh"    "$pkgdir/usr/bin/$__pkgname-debug"
     install -Dm755 "$srcdir/$__pkgname-electron-launcher.sh" "$pkgdir/usr/bin/$__pkgname-electron"
-    ln -s  "$srcdir/usr/bin/$__pkgname-browser-launcher"     "$pkgdir/usr/bin/$pkgname" # keep backwards compatibility
+    ln -sr  "$pkgdir/usr/bin/$__pkgname-browser" "$pkgdir/usr/bin/$pkgname" # keep backwards compatibility
 }

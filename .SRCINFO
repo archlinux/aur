@@ -1,7 +1,7 @@
 pkgbase = tachidesk
 	pkgdesc = A free and open source manga reader that runs extensions built for Tachiyomi
 	pkgver = 0.6.2_r1074
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Suwayomi/Tachidesk-Server
 	arch = any
 	license = MPL2
