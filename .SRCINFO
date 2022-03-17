@@ -1,7 +1,7 @@
 pkgbase = perl-strictures-git
 	pkgdesc = Turn on strict and make most warnings fatal.
 	pkgver = 2.000006.0+r214.20190310.ga767ae1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/pod/strictures
 	arch = any
 	license = PerlArtistic
@@ -11,7 +11,7 @@ pkgbase = perl-strictures-git
 	provides = perl-strictures=2.000006.0+r214.20190310.ga767ae1
 	conflicts = perl-strictures
 	options = !emptydirs
-	source = perl-strictures::git+git://github.com/p5sagit/strictures
+	source = perl-strictures::git+https://github.com/p5sagit/strictures
 	source = LICENSE.PerlArtistic.txt
 	sha256sums = SKIP
 	sha256sums = 916a330e64df209a924120bfddea0373db385eb3854e96d1a3dda6e0ea130c80

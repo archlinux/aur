@@ -3,7 +3,7 @@
 _pkgname=perl-strictures
 pkgname="${_pkgname}-git"
 pkgver=2.000006.0+r214.20190310.ga767ae1
-pkgrel=1
+pkgrel=2
 pkgdesc='Turn on strict and make most warnings fatal.'
 arch=(
   'any'
@@ -29,7 +29,7 @@ conflicts=(
 )
 options=('!emptydirs')
 source=(
-  "${_pkgname}::git+git://github.com/p5sagit/strictures"
+  "${_pkgname}::git+https://github.com/p5sagit/strictures"
   'LICENSE.PerlArtistic.txt'
 )
 sha256sums=(
