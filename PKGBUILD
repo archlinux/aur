@@ -11,7 +11,7 @@ source=(git+https://github.com/demonkingswarn/${pkgname})
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$(_pkgname)"
+    cd "$(pkgname)"
 	printf "0.1_r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
