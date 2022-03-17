@@ -1,0 +1,17 @@
+pkgbase = github-wikito-converter-git
+	pkgdesc = Generate HTML & PDF documentation from your Github wiki or any other markdown-based wiki.
+	pkgver = r97.20210426.2a1959d
+	pkgrel = 2
+	epoch = 1
+	url = https://github.com/yakivmospan/github-wikito-converter
+	arch = any
+	license = cusrtom: MIT
+	makedepends = git
+	makedepends = npm
+	depends = wkhtmltopdf
+	provides = github-wikito-converter=r97.20210426.2a1959d
+	conflicts = github-wikito-converter
+	source = github-wikito-converter::git+https://github.com/yakivmospan/github-wikito-converter.git
+	sha256sums = SKIP
+
+pkgname = github-wikito-converter-git
