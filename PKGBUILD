@@ -4,7 +4,7 @@
 pkgname=python-cepa
 _pypiname=${pkgname#*-}
 pkgver=1.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Python controller library for Tor'
 url='https://pypi.org/project/cepa/'
 arch=('any')
