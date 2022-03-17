@@ -1,0 +1,11 @@
+pkgbase = zenstates-openrc
+	pkgdesc = An openrc script to automatically disable c6 states
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = openrc
+	source = https://tilde.club/~xiajo/files/aur/zenstates-openrc/1.0.0/zen.start
+	md5sums = bd1ea88f1b8e2afa502760a77bc8502f
+
+pkgname = zenstates-openrc
