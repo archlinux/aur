@@ -1,7 +1,7 @@
 # Maintainer: Ciappi <marco.scopesi@gmail.com>
 pkgname=lfortran
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern interactive LLVM-based Fortran compiler"
 arch=('x86_64')
 url="https://lfortran.org"
@@ -18,9 +18,15 @@ backup=()
 options=()
 install=
 changelog=
-source=("https://lfortran.github.io/tarballs/release/"$pkgname-$pkgver.tar.gz)
-sha256sums=('fc3c1d592c56ae2636065ec0228db747f154f65a0867f6311bc8091efd5c13a7')
+source=("https://lfortran.github.io/tarballs/release/"$pkgname-$pkgver.tar.gz "doctest.patch")
+sha256sums=('fc3c1d592c56ae2636065ec0228db747f154f65a0867f6311bc8091efd5c13a7'
+            'c0a8eabdefe530e65a22ac5b19948c7cbf77d8c46a7afeef8792e9e38006c5d5')
 noextract=()
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  patch --forward --strip=1 --input="${srcdir}/doctest.patch"
+}
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
