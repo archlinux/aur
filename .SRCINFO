@@ -1,7 +1,7 @@
 pkgbase = g810-led-git
 	pkgdesc = Linux led controller for Logitech G213, G410, G413. G512, G513, G610, G810, G815, G910 and GPRO Keyboards
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MatMoul/g810-led
 	install = g810-led-git.install
 	arch = any
@@ -25,8 +25,7 @@ pkgbase = g810-led-git
 	backup = etc/g810-led/profile
 	backup = etc/g810-led/reboot
 	backup = etc/udev/rules.d/g810-led.rules
-	source = git://github.com/MatMoul/g810-led.git
+	source = git+https://github.com/MatMoul/g810-led.git
 	md5sums = SKIP
 
 pkgname = g810-led-git
-
