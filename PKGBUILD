@@ -9,7 +9,7 @@
 # Contributor: Kamil Biduś <kamil.bidus@gmail.com>
 
 pkgname=aseprite-skia-bin
-pkgver=1.2.34
+pkgver=1.2.34.1
 pkgrel=1
 pkgdesc='Create animated sprites and pixel art'
 arch=('x86_64')
