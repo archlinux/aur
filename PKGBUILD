@@ -11,11 +11,11 @@ source=(git+https://github.com/iddev5/scafetch)
 sha256sums=('SKIP')
 
 check() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/scafetch"
     gyro build test
 }
 
 package() {
-    cd "${srcdir}/${pkgname}"
+    cd "${srcdir}/scafetch"
 	gyro build install -Drelease-fast --prefix "${pkgdir}/usr"
 }
