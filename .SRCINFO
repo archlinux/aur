@@ -1,6 +1,6 @@
 pkgbase = python-pdfkit
-	pkgdesc = Wkhtmltopdf python wrapper to convert html to pdf using the webkit rendering engine and qt
-	pkgver = 0.6.1
+	pkgdesc = Wkhtmltopdf python wrapper to convert html to pdf
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/JazzCore/python-pdfkit
 	arch = any
@@ -8,10 +8,7 @@ pkgbase = python-pdfkit
 	makedepends = python-setuptools
 	depends = python
 	depends = wkhtmltopdf
-	source = https://files.pythonhosted.org/packages/source/p/pdfkit/pdfkit-0.6.1.tar.gz
-	sha256sums = ef1da35b78d534197e7ce4a604a4a190e9aa769e56634957535f3479a50d8cd1
+	source = https://files.pythonhosted.org/packages/source/p/pdfkit/pdfkit-1.0.0.tar.gz
+	sha256sums = 992f821e1e18fc8a0e701ecae24b51a2d598296a180caee0a24c0af181da02a9
 
 pkgname = python-pdfkit
-	depends = python
-	depends = wkhtmltopdf
-
