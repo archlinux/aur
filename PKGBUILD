@@ -3,7 +3,7 @@
 _pkgname=perl-gis-distance
 pkgname="${_pkgname}-git"
 pkgver=0.19.3+r109.20210309.ge160e93
-pkgrel=2
+pkgrel=3
 pkgdesc='GIS::Distance -- Perl interface to calculate calculate geographic distances.'
 arch=(
   'any'
@@ -35,7 +35,7 @@ conflicts=(
 )
 options=('!emptydirs')
 source=(
-  "${_pkgname}::git+git://github.com/bluefeet/GIS-Distance.git"
+  "${_pkgname}::git+https://github.com/bluefeet/GIS-Distance.git"
 )
 sha256sums=(
   'SKIP'
