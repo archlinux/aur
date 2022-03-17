@@ -4,7 +4,7 @@
 _pkgname=xst
 pkgname=${_pkgname}-git
 epoch=1
-pkgver=0.8.4.r9.g079cf8c
+pkgver=0.8.4.1.r34.g293b895
 pkgrel=1
 pkgdesc='st fork fork with xresources support and other patches'
 url='https://github.com/neeasade/xst'
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64')
 license=('MIT')
 depends=('libxft')
 makedepends=('ncurses' 'libxext' 'git')
-source=("git://github.com/gnotclub/${_pkgname}.git")
+source=("git+https://github.com/gnotclub/${_pkgname}.git")
 sha1sums=('SKIP')
 
 provides=(

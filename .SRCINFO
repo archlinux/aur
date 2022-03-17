@@ -1,6 +1,6 @@
 pkgbase = xst-git
 	pkgdesc = st fork fork with xresources support and other patches
-	pkgver = 0.8.4.r9.g079cf8c
+	pkgver = 0.8.4.1.r34.g293b895
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/neeasade/xst
@@ -13,8 +13,7 @@ pkgbase = xst-git
 	depends = libxft
 	provides = xst
 	conflicts = xst
-	source = git://github.com/gnotclub/xst.git
+	source = git+https://github.com/gnotclub/xst.git
 	sha1sums = SKIP
 
 pkgname = xst-git
-
