@@ -1,7 +1,7 @@
 # Maintainer: sum01 <sum01@protonmail.com>
 pkgname=cpp-httplib-compiled
 _pkgname='cpp-httplib'
-pkgver=0.10.3
+pkgver=0.10.4
 pkgrel=1
 pkgdesc='A C++ HTTP/HTTPS server and client library (compiled version)'
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ conflicts=('cpp-httplib')
 depends=('openssl>=1.1.1' 'zlib' 'brotli')
 makedepends=('cmake>=3.14' 'python>=3')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/yhirose/cpp-httplib/archive/v$pkgver.tar.gz")
-sha512sums=('c04d0d023f4a2ff9c3c4984b628ce9bf3797c5cb1dd9b235d44246a124f73c6e86598e94b1c092c3c574d4e421498001f77ad8b305ef3ae9e91c186abd67e466')
+sha512sums=('b004a89657014bb312cf968dd3791e21d11e0207d0b2b441235bb914f8e570a9112e9d781501fccb6c79de574f5970bdec6db979fe3257eaa5a5f06252261328')
 build() {
 	mkdir -p "$srcdir/$_pkgname-$pkgver/build"
 	cd "$srcdir/$_pkgname-$pkgver/build"
@@ -27,7 +27,7 @@ build() {
 }
 package() {
 	cd "$srcdir/$_pkgname-$pkgver/build"
+	DESTDIR="$pkgdir" cmake --build . --target install
 	install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	cmake --build . --target install DESTDIR="$pkgdir"
 	install -Dm644 '../README.md' "$pkgdir/usr/share/doc/$pkgname/README.md"
 }
