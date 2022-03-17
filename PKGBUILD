@@ -2,12 +2,12 @@
 
 pkgname=logcli-git
 _pkgname=logcli
-pkgver=2.1.0.r1298.gd74fc2c06
+pkgver=2.1.0.r1335.g5105552e7
 pkgrel=1
 pkgdesc="LogCLI allows users to run LogQL queries against a Loki server"
 arch=('x86_64')
 depends=("glibc")
-makedepends=("go" "git")
+makedepends=("go<2:1.18" "git")
 provides=("logcli")
 url="https://github.com/grafana/loki"
 license=('AGPL')
