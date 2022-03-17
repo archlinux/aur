@@ -1,0 +1,76 @@
+From e91e5ad64d20eb4a7df377effc12ec21ba6f5f7c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Johannes=20L=C3=B6thberg?= <johannes@kyriasis.com>
+Date: Fri, 18 Mar 2022 00:02:43 +0100
+Subject: [PATCH] Remove mupdf linking detection
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Johannes Löthberg <johannes@kyriasis.com>
+---
+ meson.build | 40 ++++++++++++++--------------------------
+ 1 file changed, 14 insertions(+), 26 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index c8c19dc..8174431 100644
+--- a/meson.build
++++ b/meson.build
+@@ -19,8 +19,6 @@ zathura = dependency('zathura', version: '>=0.3.9')
+ girara = dependency('girara-gtk3')
+ glib = dependency('glib-2.0')
+ cairo = dependency('cairo')
+-mupdf = dependency('mupdf', required: false)
+-mupdfthird = cc.find_library('mupdf-third')
+ 
+ build_dependencies = [
+   zathura,
+@@ -29,32 +27,22 @@ build_dependencies = [
+   cairo,
+ ]
+ 
+-if not mupdf.found()
+-  # normal build of mupdf
+-  mupdf = cc.find_library('mupdf')
+-  build_dependencies += [mupdf, mupdfthird]
+-else
+-  # build from Debian's libmupdf-dev
+-  build_dependencies += [mupdf, mupdfthird]
++mupdf = cc.find_library('mupdf')
++mupdfthird = cc.find_library('mupdf-third')
+ 
+-  libjpeg = dependency('libjpeg')
+-  libjbig2dec = cc.find_library('jbig2dec')
+-  libopenjp2 = dependency('libopenjp2')
+-  gumbo = dependency('gumbo')
+-  tesseract = dependency('tesseract')
+-  leptonica = dependency('lept')
+-  mujs = dependency('mujs')
++libjpeg = dependency('libjpeg')
++libjbig2dec = cc.find_library('jbig2dec')
++libopenjp2 = dependency('libopenjp2')
++gumbo = dependency('gumbo')
+ 
+-  build_dependencies += [
+-    libjpeg,
+-    libjbig2dec,
+-    libopenjp2,
+-    gumbo,
+-    tesseract,
+-    leptonica,
+-    mujs
+-  ]
+-endif
++build_dependencies += [
++  mupdf,
++  mupdfthird,
++  libjpeg,
++  libjbig2dec,
++  libopenjp2,
++  gumbo,
++]
+ 
+ if get_option('plugindir') == ''
+   plugindir = zathura.get_pkgconfig_variable('plugindir')
+-- 
+2.35.1
+
