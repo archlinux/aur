@@ -1,0 +1,14 @@
+pkgbase = lerc
+	pkgdesc = Limited Error Raster Compression library
+	pkgver = 3.0
+	pkgrel = 1
+	url = https://github.com/Esri/lerc
+	arch = x86_64
+	license = Apache-2.0
+	makedepends = cmake
+	depends = python
+	depends = python-numpy
+	source = https://github.com/Esri/lerc/archive/refs/tags/v3.0.tar.gz
+	sha512sums = 8e04d890c4d46528641b354ec3f47f2b0563e1740927ac894925a30f7de2b235cb3517ce7e477886bd3eb50ebd6c6e78f22d73d5500877e552d9e684e626293b
+
+pkgname = lerc
