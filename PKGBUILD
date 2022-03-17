@@ -1,6 +1,7 @@
 # Maintainer: Magnus Groß - For email contact info see email of respective AUR commits
 pkgname=veloren-nightly-bin
-pkgver=0.12.0.20220218
+_pkgver=0.12.0
+pkgver=0.12.0.20220309
 pkgrel=1
 pkgdesc="An open-world, open-source multiplayer voxel RPG"
 arch=('x86_64')
@@ -19,7 +20,7 @@ download_url='https://download.veloren.net/latest/linux'
 pkgver() {
 	cd "$srcdir"
 	binary_version="$(./veloren-server-cli --version)"
-	printf "$binary_version" | grep -Eo 'v[[:digit:]]\.[[:digit:]]+\.[[:digit:]]+' | sed 's/^v//' | tr '\n' '.' && printf "$binary_version" | grep -Eo '[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}' | sed 's/-//g'
+	printf "$_pkgver." && printf "$binary_version" | grep -Eo '[[:digit:]]{4}-[[:digit:]]{2}-[[:digit:]]{2}' | sed 's/-//g'
 }
 
 prepare() {
