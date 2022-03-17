@@ -6,7 +6,7 @@ pkgdesc="An Electron based Mastodon, Pleroma and Misskey client"
 arch=('x86_64')
 url="https://whalebird.social"
 license=('MIT')
-depends=('electron>=16.0.8' 'electron<17.0.0')
+depends=('electron16>=16.0.8' 'electron16<17.0.0')
 makedepends=('yarn' 'tar' 'nodejs>=16.0.0')
 provides=('whalebird')
 source=("https://github.com/h3poteto/whalebird-desktop/archive/refs/tags/$pkgver.tar.gz"

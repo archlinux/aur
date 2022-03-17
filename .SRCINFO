@@ -8,8 +8,8 @@ pkgbase = whalebird
 	makedepends = yarn
 	makedepends = tar
 	makedepends = nodejs>=16.0.0
-	depends = electron>=16.0.8
-	depends = electron<17.0.0
+	depends = electron16>=16.0.8
+	depends = electron16<17.0.0
 	provides = whalebird
 	source = https://github.com/h3poteto/whalebird-desktop/archive/refs/tags/4.5.2.tar.gz
 	source = whalebird.desktop
