@@ -1,17 +1,16 @@
 # Maintainer: Roman Mishin <xtradev (a) yandex (.) ru>
-# Keywords: TCL Tk 2D canvas SVG
+# Keywords: TCL Tk 2D canvas SVG anti-aliasing
 
 pkgname=tkpath-fossil
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='2D drawing widget for the Tk GUI toolkit'
 arch=('x86_64')
 url='http://chiselapp.com/user/rene/repository/tkpath'
 license=('BSD')
 depends=('cairo' 'tk' 'libx11')
 makedepends=('fossil' 'md4c')
-provides=('tkpath')
-conflicts=('tkpath' 'tkpath-fossil' 'tkpath-git')
+provides=("tkpath=$pkgver")
 source=("fossil+$url")
 md5sums=('SKIP')
 
