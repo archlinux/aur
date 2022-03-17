@@ -3,7 +3,7 @@
 _pkgname=perl-bareword-filehandles
 pkgname="${_pkgname}-git"
 pkgver=0.007.2+r38.20200501.g957063d
-pkgrel=2
+pkgrel=3
 pkgdesc='disables bareword filehandles.'
 arch=(
   'arm'
@@ -35,7 +35,7 @@ conflicts=(
 )
 options=('!emptydirs')
 source=(
-  "${_pkgname}::git+git://github.com/ilmari/bareword-filehandles.git"
+  "${_pkgname}::git+https://github.com/ilmari/bareword-filehandles.git"
   'Makefile.PL.MakeMaker'
   'Makefile.add-b-hooks-op-check-include.patch'
   'LICENSE.PerlArtistic.txt'
