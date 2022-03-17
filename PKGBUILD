@@ -1,7 +1,7 @@
 # Maintainer: calzonealamuerte <wilburn22 at messageden dot com>
 
 pkgname=cliphist-bin
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='clipboard history “manager” for wayland'
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('cliphist')
 depends=('wl-clipboard')
 optdepends=('xdg-utils: for image mime inferance')
 source=("${url}/releases/download/v${pkgver}/v${pkgver}-linux-amd64")
-sha256sums=('b33dbe4a615d38689e2342ad9f8c6c41260b63a327b33032b97f699312501116')
+sha256sums=('3aa354dfc38193fac8e7790f22700ea9c0ecb648700eba1898f4a53df874b55a')
 
 package() {
   install -Dm755 "${srcdir}"/v${pkgver}-linux-amd64 "${pkgdir}/usr/bin/cliphist"
