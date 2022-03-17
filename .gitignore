@@ -9,3 +9,4 @@
 !clash.service
 !clash_user.service
 !clash-meta-bin.install
+!config.yaml
