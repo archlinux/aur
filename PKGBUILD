@@ -1,9 +1,9 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# Based on [extra]'s thunderbird by Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Based on community/firefox-developer-edition by Andrew Crerar <crerar@archlinux.org>
 
 pkgname=thunderbird-beta
 _pkgname=thunderbird
-pkgver=96.0b2
+pkgver=99.0b1
 pkgrel=1
 pkgdesc='Beta version of standalone mail and news reader from mozilla.org'
 arch=('x86_64')
@@ -13,27 +13,19 @@ depends=('gtk3' 'libxt' 'mime-types' 'dbus-glib' 'ffmpeg' 'ttf-font' 'libpulse' 
 makedepends=('unzip' 'zip' 'diffutils' 'python-setuptools' 'yasm' 'mesa' 'imake' 'inetutils'
              'xorg-server-xvfb' 'autoconf2.13' 'rust' 'clang' 'llvm' 'jack' 'nodejs'
              'python-psutil' 'cbindgen' 'nasm' 'lld' 'python-zstandard' 'dump_syms'
-             'wasi-compiler-rt' 'wasi-libc' 'wasi-libc++' 'wasi-libc++abi' 'libotr')
-optdepends=('networkmanager: Location detection via available WiFi networks'
-            'libnotify: Notification integration'
-            'pulseaudio: Audio support'
-            'speech-dispatcher: Text-to-Speech'
-            'hunspell-en_US: Spell checking, American English'
-            'xdg-desktop-portal: Screensharing with Wayland'
+             'libotr' 'hunspell'
+             'wasi-compiler-rt' 'wasi-libc' 'wasi-libc++' 'wasi-libc++abi')
+optdepends=('libnotify: Notification integration'
             'libcanberra: sound support'
             'libotr: OTR support for active one-to-one chats')
-options=(!emptydirs !makeflags !strip)
+options=(!emptydirs !makeflags !strip !lto !debug)
 provides=("thunderbird=$pkgver")
 source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz{,.asc}
         install-dir.patch
-        0001-Use-remoting-name-for-GDK-application-names.patch
-        add-missing-stub-for-wl_proxy_marshal_flags.patch
         "$pkgname".desktop)
-sha256sums=('32222dc4b2e32c559d700785287bbcf72280907499a91dfd4b6a322547031702'
+sha256sums=('8af52f5ebecd0d22d346c2e8422eefc69784710eea4f7d9181dad0d87071c50e'
             'SKIP'
             'c959c9f2b60a42dc937f744c018196906727d468d8f1d7402fb4f743484c414b'
-            '51cca2cab0fa9798f96b81ed24c238b2a7c98524f589ec500224bac9797b66fb'
-            'dd056c42b3a969cd57fc58be4d83491d806a087d86a2a8594de069d6de9fe04c'
             '336db628f428ea5efd2a58231fdb202db1521b604c8317b7151d1aa40793f3d3')
 validpgpkeys=(
   14F26682D0916CDD81E37B6D61B7B526D98F0353 # Mozilla Software Releases <release@mozilla.com>
@@ -66,7 +58,7 @@ prepare() {
 
   echo -n "$_google_api_key" > google-api-key
   echo -n "$_mozilla_api_key" > mozilla-api-key
-  cat > ../mozconfig << END
+  cat > .mozconfig << END
 ac_add_options --enable-application=comm/mail
 mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 
@@ -117,7 +109,6 @@ build() {
   export MACH_USE_SYSTEM_PYTHON=1
 
   echo "Building thunderbird..."
-  cat >.mozconfig ../mozconfig
   ./mach build
 
   echo "Building symbol archive..."
@@ -183,5 +174,12 @@ END
   local nssckbi="$pkgdir/usr/lib/$pkgname/libnssckbi.so"
   if [[ -e $nssckbi ]]; then
     ln -srfv "$pkgdir/usr/lib/libnssckbi.so" "$nssckbi"
+  fi
+
+  export SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE="$startdir/.crash-stats-api.token"
+  if [[ -f $SOCORRO_SYMBOL_UPLOAD_TOKEN_FILE ]]; then
+    make -C obj uploadsymbols
+  else
+    cp -fvt "$startdir" obj/dist/*crashreporter-symbols-full.tar.zst
   fi
 }
