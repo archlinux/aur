@@ -3,7 +3,7 @@
 _pkgname=perl-geo-proj4
 pkgname="${_pkgname}-git"
 pkgver=1.10.0.2+r25.20210515.g417cc66
-pkgrel=2
+pkgrel=3
 pkgdesc='One location on the globe, in any coordinate system. This package tries to hide the maths and the coordinate system in which the point is represented.'
 arch=(
   'arm'
@@ -32,7 +32,7 @@ conflicts=(
 )
 options=('!emptydirs')
 source=(
-  "${_pkgname}::git+git://github.com/markov2/perl5-Geo-Proj4.git"
+  "${_pkgname}::git+https://github.com/markov2/perl5-Geo-Proj4.git"
   'LICENSE.PerlArtistic.txt'
 )
 sha256sums=(
