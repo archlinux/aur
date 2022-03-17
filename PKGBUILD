@@ -3,7 +3,7 @@
 _pkgbase=mangohud
 pkgbase=$_pkgbase-git
 pkgname=('mangohud-git' 'lib32-mangohud-git' 'mangohud-common-git')
-pkgver=0.6.6.1.r9.g23ed317
+pkgver=0.6.6.1.r181.g284ae0d
 pkgrel=1
 url='https://github.com/flightlessmango/MangoHud'
 license=('MIT')
@@ -11,7 +11,6 @@ arch=('x86_64')
 makedepends=('git' 'dbus' 'meson' 'python-mako' 'glslang' 'libglvnd' 'lib32-libglvnd'
              'vulkan-headers' 'vulkan-icd-loader'  'lib32-vulkan-icd-loader'
              'libxnvctrl')
-replaces=('vulkan-mesa-layer-mango' 'lib32-vulkan-mesa-layer-mango')
 source=("$_pkgbase::git+$url")
 sha512sums=('SKIP')
 
@@ -22,18 +21,25 @@ pkgver() {
 
 
 build() {
-    arch-meson --wrap-mode=forcefallback \
-    -Dappend_libdir_mangohud=false \
-    -Duse_system_vulkan=enabled "$_pkgbase" build64
+    __meson_opts=(
+        --wrap-mode=forcefallback
+        -Dappend_libdir_mangohud=false
+        -Duse_system_vulkan=enabled
+        "$_pkgbase"
+    )
+    arch-meson "${__meson_opts[@]}" build64
 
     ninja -C build64
 
-    export CC="gcc -m32"
-    export CXX="g++ -m32"
-    export PKG_CONFIG_PATH="/usr/lib32/pkgconfig"
-    export LLVM_CONFIG="/usr/bin/llvm-config32"
-    arch-meson -Dappend_libdir_mangohud=false -Duse_system_vulkan=enabled "$_pkgbase" build32 --libdir lib32
+    export \
+        CC="gcc -m32" \
+        CXX="g++ -m32" \
+        PKG_CONFIG_PATH="/usr/lib32/pkgconfig" \
+        LLVM_CONFIG="/usr/bin/llvm-config32"
+
+    arch-meson "${__meson_opts[@]}" build32 --libdir lib32
     ninja -C build32
+    unset CC CXX PKG_CONFIG_PATH LLVM_CONFIG
 }
 
 package_mangohud-git() {
@@ -41,11 +47,12 @@ package_mangohud-git() {
     depends=('gcc-libs' 'dbus' 'mangohud-common-git')
     conflicts=('mangohud')
     provides=("mangohud=$pkgver")
+    replaces=('vulkan-mesa-layer-mango')
     optdepends=('bash: mangohud helper script'
                 'libxnvctrl: support for older NVIDIA GPUs')
     
     DESTDIR="$pkgdir" ninja -C build64 install
-    rm -r "$pkgdir/usr/bin" "$pkgdir/usr/share/doc" "$pkgdir/usr/share/man"
+    rm -r "$pkgdir/usr/bin" "$pkgdir/usr/share/doc" "$pkgdir/usr/share/man"  "$pkgdir/usr/share/vulkan/implicit_layer.d/libMangoApp.json"
 }
 
 package_lib32-mangohud-git() {
@@ -53,10 +60,11 @@ package_lib32-mangohud-git() {
     depends=('lib32-gcc-libs' 'lib32-dbus' 'mangohud-common-git')
     conflicts=('lib32-mangohud')
     provides=("lib32-mangohud=$pkgver")
+    replaces=('lib32-vulkan-mesa-layer-mango')
     optdepends=('lib32-libxnvctrl: support for older NVIDIA GPUs')
 
     DESTDIR="$pkgdir" ninja -C build32 install
-    rm -r "$pkgdir/usr/bin" "$pkgdir/usr/share/doc" "$pkgdir/usr/share/man"
+    rm -r "$pkgdir/usr/bin" "$pkgdir/usr/share/doc" "$pkgdir/usr/share/man" "$pkgdir/usr/share/vulkan/implicit_layer.d/libMangoApp.json"
     mv "$pkgdir/usr/share/vulkan/implicit_layer.d/MangoHud.json" "$pkgdir/usr/share/vulkan/implicit_layer.d/MangoHud.x86.json"
 }
 

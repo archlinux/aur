@@ -1,5 +1,5 @@
 pkgbase = mangohud-git
-	pkgver = 0.6.6.1.r9.g23ed317
+	pkgver = 0.6.6.1.r160.gd4064bf
 	pkgrel = 1
 	url = https://github.com/flightlessmango/MangoHud
 	arch = x86_64
@@ -15,8 +15,6 @@ pkgbase = mangohud-git
 	makedepends = vulkan-icd-loader
 	makedepends = lib32-vulkan-icd-loader
 	makedepends = libxnvctrl
-	replaces = vulkan-mesa-layer-mango
-	replaces = lib32-vulkan-mesa-layer-mango
 	source = mangohud::git+https://github.com/flightlessmango/MangoHud
 	sha512sums = SKIP
 
@@ -27,8 +25,9 @@ pkgname = mangohud-git
 	depends = mangohud-common-git
 	optdepends = bash: mangohud helper script
 	optdepends = libxnvctrl: support for older NVIDIA GPUs
-	provides = mangohud=0.6.6.1.r9.g23ed317
+	provides = mangohud=0.6.6.1.r160.gd4064bf
 	conflicts = mangohud
+	replaces = vulkan-mesa-layer-mango
 
 pkgname = lib32-mangohud-git
 	pkgdesc = A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more (32-bit)
@@ -36,10 +35,11 @@ pkgname = lib32-mangohud-git
 	depends = lib32-dbus
 	depends = mangohud-common-git
 	optdepends = lib32-libxnvctrl: support for older NVIDIA GPUs
-	provides = lib32-mangohud=0.6.6.1.r9.g23ed317
+	provides = lib32-mangohud=0.6.6.1.r160.gd4064bf
 	conflicts = lib32-mangohud
+	replaces = lib32-vulkan-mesa-layer-mango
 
 pkgname = mangohud-common-git
 	pkgdesc = A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more
-	provides = mangohud-common=0.6.6.1.r9.g23ed317
+	provides = mangohud-common=0.6.6.1.r160.gd4064bf
 	conflicts = mangohud-common
