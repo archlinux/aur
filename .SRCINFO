@@ -1,14 +1,14 @@
 pkgbase = scafetch
 	pkgdesc = A command-line tool to display information about your remote Git repositories in an aesthetic and visually pleasing way.
-	pkgver = 0.1
-	pkgrel = 1
+	pkgver = 0.1.1
+	pkgrel = 2
 	url = https://github.com/iddev5/scafetch
 	arch = any
 	license = MIT
 	makedepends = zig-master-bin
 	makedepends = git
 	makedepends = gyro-bin
-	source = git+https://github.com/iddev5/scafetch
+	source = git+https://github.com/iddev5/scafetch#tag=0.1.1
 	sha256sums = SKIP
 
 pkgname = scafetch
