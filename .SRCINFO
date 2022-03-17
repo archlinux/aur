@@ -1,6 +1,6 @@
 pkgbase = nctracer-git
 	pkgdesc = An ImGui front-end to the pmTracer library made with the nCine
-	pkgver = r30.e85ca8e
+	pkgver = r33.64e6bc8
 	pkgrel = 1
 	url = http://ncine.github.io
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = nctracer-git
 	provides = nctracer
 	conflicts = nctracer
 	options = !strip
-	source = git://github.com/encelo/ncTracer
+	source = git+https://github.com/encelo/ncTracer
 	md5sums = SKIP
 
 pkgname = nctracer-git
