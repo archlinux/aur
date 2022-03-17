@@ -1,0 +1,16 @@
+pkgbase = yosys-uhdm-plugin
+	pkgdesc = UDHM plugin for Yosys (SystemVerilog support)
+	pkgver = d13a016
+	pkgrel = 1
+	url = https://github.com/antmicro/yosys-uhdm-plugin-integration/releases
+	arch = x86_64
+	license = ISC License
+	makedepends = jq
+	makedepends = curl
+	makedepends = wget
+	depends = oss-cad-suite-build-bin
+	provides = yosys-uhdm-plugin
+	source = https://api.github.com/repos/antmicro/yosys-uhdm-plugin-integration/releases/latest
+	sha512sums = SKIP
+
+pkgname = yosys-uhdm-plugin
