@@ -2,7 +2,7 @@
 # Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
 
 pkgname=fwupd-git
-pkgver=1.7.2.r11.g6e651269b
+pkgver=1.7.6.r62.g4074150d2
 pkgrel=1
 pkgdesc="Simple daemon to allow session software to update firmware"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ depends=(
     'polkit' 'shared-mime-info' 'tpm2-tss' 'flashrom'
     'libjcat' 'fwupd-efi' 'gcab' 'libarchive.so'
     'libjson-glib-1.0.so' 'libgudev-1.0.so' 'libmm-glib.so'
-    'libqmi-glib.so' 'libprotobuf-c.so')
+    'libqmi-glib.so' 'libprotobuf-c.so' 'libcbor')
 optdepends=(
     'udisks2: UEFI firmware upgrade support'
 )
@@ -47,13 +47,13 @@ pkgver() {
 build() {
 
     arch-meson "${srcdir}/${pkgname}" "${srcdir}/build" \
-        -D plugin_flashrom=true \
-        -D plugin_modem_manager=true \
+        -D plugin_flashrom=enabled \
+        -D plugin_modem_manager=enabled \
         -D plugin_intel_spi=true \
         -D b_lto=false \
-        -D lzma=true \
+        -D lzma=enabled \
         -D docs=gtkdoc \
-        -D supported_build=true \
+        -D supported_build=enabled \
         -D efi_binary=false
 
     meson compile -C "${srcdir}/build" -j 0
