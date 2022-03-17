@@ -1,6 +1,6 @@
 --- a/configure.ac
 +++ b/configure.ac
-@@ -598,7 +598,7 @@ int main(int argc,char * argv[]) {
+@@ -616,7 +616,7 @@ int main(int argc,char * argv[]) {
  dnl Some target detection and actions for them
  case "$host" in
      *-*-cygwin* | *-*-mingw32*)
@@ -546,7 +546,7 @@
  void MOUSE_Init(Section*);
  void SBLASTER_Init(Section*);
  void GUS_Init(Section*);
-@@ -753,6 +754,17 @@ void DOSBOX_Init(void) {
+@@ -749,6 +750,17 @@ void DOSBOX_Init(void) {
  	Pmulti_remain->Set_help("see serial1");
  
  
@@ -574,7 +574,7 @@
  
  #define MAPPERFILE "mapper-" VERSION ".map"
  //#define DISABLE_JOYSTICK
-@@ -612,6 +613,10 @@ check_gotbpp:
+@@ -620,6 +621,10 @@ check_gotbpp:
  
  
  void GFX_ResetScreen(void) {
@@ -585,7 +585,7 @@
  	GFX_Stop();
  	if (sdl.draw.callback)
  		(sdl.draw.callback)( GFX_CallBackReset );
-@@ -1227,6 +1232,9 @@ void GFX_SwitchFullScreen(void) {
+@@ -1249,6 +1254,9 @@ void GFX_SwitchFullScreen(void) {
  		sticky_keys(true); //restore sticky keys to default state in windowed mode.
  #endif
  	}
@@ -595,7 +595,7 @@
  	GFX_ResetScreen();
  }
  
-@@ -2117,7 +2125,7 @@ void GFX_Events() {
+@@ -2184,7 +2192,7 @@ void GFX_Events() {
  			throw(0);
  			break;
  		case SDL_VIDEOEXPOSE:
@@ -604,7 +604,7 @@
  			break;
  #ifdef WIN32
  		case SDL_KEYDOWN:
-@@ -2577,6 +2585,7 @@ int main(int argc, char* argv[]) {
+@@ -2669,6 +2677,7 @@ int main(int argc, char* argv[]) {
  			if (strcmp(sdl_drv_name,"windib")==0) LOG_MSG("SDL_Init: Starting up with SDL windib video driver.\n          Try to update your video card and directx drivers!");
  		}
  #endif
