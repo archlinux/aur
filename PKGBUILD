@@ -1,28 +1,26 @@
+# Maintainer: Letu Ren <fantasquex at gmail dot com>
 # Contributor:: Ocelot <1112345@airmail.cc>
-_base=censys
-pkgname=python-${_base}
-pkgdesc="An easy-to-use and lightweight API wrapper for Censys APIs"
-pkgver=2.1.1
+
+pkgname=python-censys
+pkgver=2.1.3
 pkgrel=1
-url="https://github.com/${_base}/${_base}-python"
-license=(Apache)
-arch=("any")
-depends=(python-requests python-backoff python-rich)
-makedepends=(python-build python-install python-poetry)
-source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('87bc66dc58906ca6032994b453e0a7ffa48e37fb198cf7bc3c424ef9debb938ac8c6d8fe38ddb418322fe4d6b4373be8f1ad11ca1c35a9c0cb2fef8a6659f0ed')
+pkgdesc="An easy-to-use and lightweight API wrapper for Censys APIs."
+arch=('any')
+url="https://github.com/censys/censys-python"
+license=('APACHE')
+depends=('python' 'python-requests' 'python-backoff' 'python-rich')
+makedepends=('python-build' 'python-installer')
+_name=${pkgname#python-}
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('50bc63625fc6db0bf94a5fab5280a9d4c48aed3b4eca43b86bdf9668bf3bc980')
 
 build() {
-  cd "${_base}-python-${pkgver}"
-  # Note: set `GIT_CEILING_DIRECTORIES` to prevent poetry
-  # from incorrectly using a parent git checkout info.
-  # https://github.com/pypa/build/issues/384#issuecomment-947675975
-  GIT_CEILING_DIRECTORIES="${PWD}/.." python -m build --wheel --skip-dependency-check --no-isolation
+    cd "${_name}-${pkgver}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${_base}-python-${pkgver}"
-  export PYTHONHASHSEED=0
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    cd "${_name}-${pkgver}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
+
