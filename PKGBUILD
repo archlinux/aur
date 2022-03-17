@@ -10,7 +10,7 @@ _pkgvariantsuffix='-nosystemd'
 _vcssuffix='-git'
 pkgname="${_pkgname}${_pkgvariantsuffix}${_vcssuffix}"
 pkgver=0.40.0.23+r2038.20211122.ef209bc
-pkgrel=2
+pkgrel=3
 pkgdesc="X.Org Wacom tablet driver. Without systemd dependency. Git checkout."
 arch=(
   'i686'
