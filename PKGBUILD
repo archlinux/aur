@@ -2,7 +2,7 @@
 
 _pkgname='wiki2pdf'
 pkgname="${_pkgname}-git"
-epoch=1
+epoch=2
 pkgver=1.0.5.r6.20171207.19e936a
 pkgrel=1
 pkgdesc='Github Wiki to pdf Converter allows you to generate HTML & PDF documentation from your Github wiki or any other markdown-based wiki.'
@@ -27,7 +27,7 @@ conflicts=(
 )
 
 source=(
-  "${_pkgname}::git+git://github.com/madajaju/wiki2pdf.git"
+  "${_pkgname}::git+https://github.com/madajaju/wiki2pdf.git"
 )
 sha256sums=(
   'SKIP'
