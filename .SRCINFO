@@ -1,7 +1,7 @@
 pkgbase = demon-terminal
 	pkgdesc = A simple minimalistic terminal written in C++.
-	pkgver = 0.1
-	pkgrel = 2
+	pkgver = 0.1_r2.bfc5367
+	pkgrel = 1
 	url = https://github.com/demonkingswarn/demon-terminal
 	arch = any
 	license = MIT

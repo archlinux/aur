@@ -1,7 +1,7 @@
 # Maintainer: demonkingswarn <demonkingswarn at protonmail dot com>
 pkgname=demon-terminal
-pkgrel=2
-pkgver=0.1
+pkgrel=1
+pkgver=0.1_r2.bfc5367
 pkgdesc="A simple minimalistic terminal written in C++."
 arch=('any')
 url="https://github.com/demonkingswarn/${pkgname}"
@@ -18,7 +18,8 @@ pkgver() {
 package() {
     cd "${srcdir}/${pkgname}"
 	g++ $(pkg-config --cflags --libs Qt5Widgets qtermwidget5) -fPIC -o dt demon-term.cpp
-	sudo cp dt /usr/local/bin/dt
-	sudo cp dt.desktop /usr/local/share/applications/dt.desktop
+	cp dt $HOME/.local/bin/dt
+	mkdir -p $HOME/.local/share/applications
+	cp dt.desktop $HOME/.local/share/applications/dt.desktop
 }
 
