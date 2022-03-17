@@ -10,6 +10,7 @@ pkgbase = mozillavpn
 	makedepends = go
 	makedepends = flex
 	makedepends = python-yaml
+	makedepends = clang
 	depends = polkit
 	depends = libxcb
 	depends = libxmu
