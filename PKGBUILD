@@ -2,7 +2,9 @@
 # PKGBUILD adapted from: Daniel Landau <aur@landau.fi> https://aur.archlinux.org/packages/qcsxcad
 
 _pkgname=QCSXCAD
-pkgname=qcsxcad
+pkgname=qcsxcad-git
+provides=("qcsxcad")
+conflicts=("qcsxcad")
 pkgver=20220317
 pkgrel=1
 pkgdesc="Qt-GUI for CSXCAD"

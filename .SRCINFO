@@ -1,4 +1,4 @@
-pkgbase = qcsxcad
+pkgbase = qcsxcad-git
 	pkgdesc = Qt-GUI for CSXCAD
 	pkgver = 20220317
 	pkgrel = 1
@@ -23,7 +23,9 @@ pkgbase = qcsxcad
 	depends = openmp
 	depends = eigen
 	depends = utf8cpp
+	provides = qcsxcad
+	conflicts = qcsxcad
 	source = git+https://github.com/thliebig/QCSXCAD
 	md5sums = SKIP
 
-pkgname = qcsxcad
+pkgname = qcsxcad-git
