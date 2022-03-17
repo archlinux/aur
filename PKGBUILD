@@ -2,7 +2,7 @@
 
 pkgname=stylish-haskell-bin
 _pkgname=stylish-haskell
-pkgver=0.14.0.0
+pkgver=0.14.0.1
 pkgrel=1
 pkgdesc='Haskell code prettifier. Packaged from upstream binary release.'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('BSD')
 provides=('stylish-haskell')
 source=("${url}/releases/download/v${pkgver}/${_pkgname}-v${pkgver}-linux-${arch}.tar.gz")
 
-sha256sums=('0eca9cebc94bb4f53a1fd712b45d58599f417f6f5d87cb324f9e5637f8bf79b9')
+sha256sums=('87f922598c4ea58fb70590c10d39cbe1f22d4e6411a8b7d0edd7c5bbebc4ce10')
 
 package() {
   cd "$srcdir/${_pkgname}-v${pkgver}-linux-${arch}"
