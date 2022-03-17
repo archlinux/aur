@@ -1,0 +1,14 @@
+pkgbase = findpkg
+	pkgdesc = A fast command not found hook
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Alexendoo/findpkg
+	arch = any
+	license = MIT
+	makedepends = cargo
+	depends = pacman
+	options = emptydirs
+	source = findpkg-1.0.0.tar.gz::https://github.com/Alexendoo/findpkg/archive/v1.0.0.tar.gz
+	sha256sums = 0418c327b8211077b5fe9308bb434faa5a81d8f2f8a64032626f7404d5f310b3
+
+pkgname = findpkg
