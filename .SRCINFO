@@ -1,0 +1,13 @@
+pkgbase = whistle
+	pkgdesc = A dope new programming language that still doesnt have a std library.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/whistle-lang/whistle
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	provides = whistle
+	source = whistle::git+https://github.com/whistle-lang/whistle
+	sha512sums = SKIP
+
+pkgname = whistle
