@@ -1,0 +1,19 @@
+pkgbase = mosmetro-python
+	pkgdesc = A script for automatic authorization in Moscow Transport free networks
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/mosmetro-android/mosmetro-python
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python-requests
+	depends = python-furl
+	depends = python-user_agent
+	depends = python-beautifulsoup4
+	optdepends = networkmanager: for auto-enable hook
+	source = https://github.com/mosmetro-android/mosmetro-python/archive/0.1.1.tar.gz
+	source = mosmetro-python.sh
+	sha256sums = 91b0262fba26d93f956e1535538a95596d1a4ac6f7587b7d838612365d714d2a
+	sha256sums = 3eb717c73ab5ede1b2b0fea55ca7761fd61fb891bedecd93d0c3603cf0258a07
+
+pkgname = mosmetro-python
