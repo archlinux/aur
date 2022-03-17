@@ -1,8 +1,8 @@
 # Maintainer: Andrew Kozik <andrewkoz at live dot com>
 
 pkgname=mingw-w64-lzlib
-pkgver=1.12
-pkgrel=3
+pkgver=1.13
+pkgrel=1
 pkgdesc="A library providing in-memory LZMA compression and decompression functions (mingw-w64)"
 arch=('any')
 url="https://www.nongnu.org/lzip/lzlib.html"
@@ -12,7 +12,7 @@ makedepends=('mingw-w64-configure' 'mingw-w64-make')
 options=('!strip' 'staticlibs' '!buildflags')
 source=(http://download.savannah.gnu.org/releases/lzip/lzlib/lzlib-${pkgver}.tar.gz{,.sig})
 validpgpkeys=('1D41C14B272A2219A739FA4F8FE99503132D7742') # Antonio Diaz Diaz
-sha256sums=('8e5d84242eb52cf1dcc98e58bd9ba8ef1aefa501431abdd0273a22bf4ce337b1'
+sha256sums=('a1ab58f3148ba4b2674e938438166042137a9275bed747306641acfddc9ffb80'
             'SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"

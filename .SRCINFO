@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-lzlib
 	pkgdesc = A library providing in-memory LZMA compression and decompression functions (mingw-w64)
-	pkgver = 1.12
-	pkgrel = 3
+	pkgver = 1.13
+	pkgrel = 1
 	url = https://www.nongnu.org/lzip/lzlib.html
 	arch = any
 	license = 2-clause BSD
@@ -11,11 +11,10 @@ pkgbase = mingw-w64-lzlib
 	options = !strip
 	options = staticlibs
 	options = !buildflags
-	source = http://download.savannah.gnu.org/releases/lzip/lzlib/lzlib-1.12.tar.gz
-	source = http://download.savannah.gnu.org/releases/lzip/lzlib/lzlib-1.12.tar.gz.sig
+	source = http://download.savannah.gnu.org/releases/lzip/lzlib/lzlib-1.13.tar.gz
+	source = http://download.savannah.gnu.org/releases/lzip/lzlib/lzlib-1.13.tar.gz.sig
 	validpgpkeys = 1D41C14B272A2219A739FA4F8FE99503132D7742
-	sha256sums = 8e5d84242eb52cf1dcc98e58bd9ba8ef1aefa501431abdd0273a22bf4ce337b1
+	sha256sums = a1ab58f3148ba4b2674e938438166042137a9275bed747306641acfddc9ffb80
 	sha256sums = SKIP
 
 pkgname = mingw-w64-lzlib
-
