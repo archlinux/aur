@@ -7,7 +7,7 @@
 
 pkgname=xpdf-motif
 pkgver=3.04
-pkgrel=2
+pkgrel=3
 pkgdesc='Viewer for Portable Document Format (PDF) files, legacy version without qt'
 url='http://www.foolabs.com/xpdf/'
 license=('GPL2')
@@ -18,12 +18,14 @@ provides=('xpdf')
 optdepends=('gsfonts: providing the 14 standard postscript fonts'
 	    'poppler: tools that used to be included in xpdf'
             'desktop-file-utils: for desktop environments')
-source=(https://xpdfreader-dl.s3.amazonaws.com/old/${pkgname%-motif}-${pkgver%_*}.tar.gz
+source=(https://dl.xpdfreader.com/old/${pkgname%-motif}-${pkgver%_*}.tar.gz{,.sig}
 	'02-permissions.patch'
         'desktop')
-sha1sums=('b9b1dbb0335742a09d0442c60fd02f4f934618bd'
-          'f192728680aaf575c178ce25c4aefa92e798a879'
-          '17ebbfe457cb92e97b12b7362e8ce961526012d9')
+sha256sums=('11390c74733abcb262aaca4db68710f13ffffd42bfe2a0861a5dfc912b2977e5'
+            'SKIP'
+            '5f6b730c3d9b99a138a17826c5131ca70315928687757717583056c2429fc3e7'
+            '571b528aa130c04106e40f86b17a557f2814d377aab13c29bad08e7dc55087d3')
+validpgpkeys=('22CCDF00E35F018434DCD4C5429CCA86671B682D') # Derek B. Noonburg
 backup=('etc/xpdfrc')
 
 build() {
