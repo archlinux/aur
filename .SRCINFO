@@ -1,14 +1,14 @@
 pkgbase = intellij-idea-ultimate-edition
 	pkgdesc = An intelligent IDE for Java, Groovy and other programming languages with advanced refactoring features intensely focused on developer productivity.
-	pkgver = 2021.3.2
+	pkgver = 2021.3.3
 	pkgrel = 1
 	url = https://www.jetbrains.com/idea/
 	arch = any
 	license = Commercial
 	options = !strip
-	source = https://download.jetbrains.com/idea/ideaIU-2021.3.2.tar.gz
+	source = https://download.jetbrains.com/idea/ideaIU-2021.3.3.tar.gz
 	source = jetbrains-idea.desktop
-	sha256sums = 0b3230fbd899cc82377c2be0fb036337202f341c3c236252dd8eedc37248341c
+	sha256sums = cdf65a9900f4436da5306ad2eb27f2b32346b3d56e8f07aac6815b402b1d6c99
 	sha256sums = 83af2ba8f9f14275a6684e79d6d4bd9b48cd852c047dacfc81324588fa2ff92b
 
 pkgname = intellij-idea-ultimate-edition
@@ -17,7 +17,6 @@ pkgname = intellij-idea-ultimate-edition
 	optdepends = intellij-idea-ultimate-edition-jre: JetBrains custom JRE (Recommended)
 	optdepends = java-environment: Required if intellij-idea-ultimate-edition-jre is not installed
 	optdepends = libdbusmenu-glib: For global menu support
-	backup = opt/intellij-idea-ultimate-edition/bin/idea.vmoptions
 	backup = opt/intellij-idea-ultimate-edition/bin/idea64.vmoptions
 	backup = opt/intellij-idea-ultimate-edition/bin/idea.properties
 
