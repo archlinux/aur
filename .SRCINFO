@@ -1,7 +1,7 @@
 pkgbase = mosmetro-python-git
 	pkgdesc = A script for automatic authorization in Moscow Transport free networks (git version)
 	pkgver = 0.1.1.r3.g3e31949
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mosmetro-android/mosmetro-python
 	arch = any
 	license = GPL3
