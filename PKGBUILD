@@ -1,7 +1,7 @@
 # Maintainer: Jorge Israel Peña <jorge.israel.p@gmail.com>
 
 pkgname=syncplay-git
-pkgver=1.6.9.r3.gd71b7fc
+pkgver=1.7.0.snapshot1.r17.ge4322e1
 pkgrel=1
 pkgdesc="synchronize watching movies on mplayer2, vlc, mpv, and mpc-hc on many computers"
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('git')
 provides=('syncplay')
 conflicts=('syncplay')
 backup=("etc/syncplay/server.conf")
-source=("$pkgname"::'git://github.com/Syncplay/syncplay.git'
+source=("$pkgname"::'git+https://github.com/Syncplay/syncplay.git'
         syncplay@.service
         server.conf)
 sha256sums=('SKIP'
