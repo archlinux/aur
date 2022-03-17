@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=m64p
-pkgver=20220219
+pkgver=20220314
 pkgrel=1
 pkgdesc='Mupen64Plus with custom plugins and Qt5 GUI'
 arch=('x86_64')
@@ -14,8 +14,7 @@ optdepends=('p7zip: for 7z/zip support')
 makedepends=('git' 'cmake' 'nasm' 'python' 'zip' 'icoutils')
 provides=('mupen64plus-gui')
 conflicts=('mupen64plus-gui' 'mupen64plus')
-_tag="v$(sed -E 's/^([0-9]{4})([0-9]{2})/\1.\2./' <<< "$pkgver" |
-         awk -F'.' 'OFS="." { for(N=2; N<=3; N++) sub(/^0/, "", $N); print }')"
+_tag="v$(sed -E 's/^([0-9]{4})([0-9]{2})/\1.\2./' <<< "$pkgver")"
 source=("git+https://github.com/loganmc10/m64p.git#tag=${_tag}"
         '010-m64p-remove-build-jobs-limitation.patch'
         '020-m64p-change-optimizations.patch'
