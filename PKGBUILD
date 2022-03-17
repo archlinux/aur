@@ -14,7 +14,7 @@ license=('MIT')
 groups=('vim-plugins')
 makedepends=('git')
 install='vimdoc.install'
-source=("git://github.com/terryma/vim-multiple-cursors.git")
+source=("git+https://github.com/terryma/vim-multiple-cursors.git")
 md5sums=('SKIP')
 
 package() {
@@ -25,4 +25,3 @@ package() {
     install -Dm755 autoload/multiple_cursors.vim "$_installpath/autoload/multiple_cursors.vim"
     install -Dm644 MIT-LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
