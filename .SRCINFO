@@ -1,7 +1,7 @@
 pkgbase = claws-mail-gtk2-protectedheaders-nonm-git
 	pkgdesc = A GTK+ based e-mail client. With patch to show 'protected headers' (currently only IETF draft, not enigmail flavour), without network manager dependency. Latest git checkout.
 	pkgver = 3.18.0.303+r11455.20211110.8c0ef328f
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
 	url = http://thewildbeast.co.uk/claws-mail/bugzilla/show_bug.cgi?id=4426
 	arch = i686
@@ -69,7 +69,7 @@ pkgbase = claws-mail-gtk2-protectedheaders-nonm-git
 	replaces = claws-mail-extra-plugins
 	replaces = sylpheed-claws
 	options = emptydirs
-	source = claws-mail::git://github.com/ahngoo8Gongi/claws-mail.git#branch=protected-headers-21
+	source = claws-mail::https://github.com/ahngoo8Gongi/claws-mail.git#branch=protected-headers-21
 	sha256sums = SKIP
 
 pkgname = claws-mail-gtk2-protectedheaders-nonm-git
