@@ -1,4 +1,4 @@
-# Maintainer: fft <anonim288@gmail.com>
+# Maintainer: fft
 
 pkgname=open-numismat-git
 tag_ver=1.8.10
