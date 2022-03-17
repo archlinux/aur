@@ -1,0 +1,13 @@
+pkgbase = ttf-babelstone-zanabazar
+	pkgdesc = BabelStone Font for Zanabazar Square script
+	pkgver = 10.002
+	pkgrel = 1
+	url = https://www.babelstone.co.uk/Fonts/Zanabazar.html
+	arch = any
+	license = OFL
+	source = https://www.babelstone.co.uk/Fonts/Download/BabelStoneZanabazar.ttf
+	source = https://www.babelstone.co.uk/Fonts/BabelStoneOFL.txt
+	md5sums = 79bea5f34d05300fecbc871138998244
+	md5sums = f516c91719ef90db6c942f8ac6efde47
+
+pkgname = ttf-babelstone-zanabazar
