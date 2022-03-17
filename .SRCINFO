@@ -1,0 +1,15 @@
+pkgbase = dfcgen-gtk
+	pkgdesc = A free tool for the design of time-discrete (digital) filters/systems.
+	pkgver = 0.5
+	pkgrel = 0
+	url = http://www.dfcgen.de/
+	arch = x86_64
+	arch = i686
+	license = GPLv2
+	depends = gtk2
+	depends = gsl
+	provides = dfcgen-gtk
+	source = http://www.dfcgen.de/dfcgen-gtk/dfcgen-gtk-0.5.tar.gz
+	sha512sums = 5d1f807a8894d6fc8acab40e0132281d4b961dd3403fbdcda4f9a3cd0130ae0289b897d29d3a231bf1cfa21039d2b842a6389feaece4996aae7470f8ce923929
+
+pkgname = dfcgen-gtk
