@@ -1,7 +1,7 @@
 pkgbase = demeter
 	pkgdesc = Demeter is a comprehensive system for processing and analyzing X-ray Absorption Spectroscopy data.
 	pkgver = 0.9.27
-	pkgrel = 3
+	pkgrel = 4
 	url = https://bruceravel.github.io/demeter/
 	arch = i686
 	arch = x86_64
@@ -13,6 +13,8 @@ pkgbase = demeter
 	makedepends = python-pybtex
 	makedepends = python-sphinxcontrib-bibtex
 	makedepends = python-sphinxcontrib-blockdiag
+	makedepends = gendesk
+	makedepends = perl-module-build-tiny
 	depends = ifeffit
 	depends = pgplot
 	depends = perl-archive-zip

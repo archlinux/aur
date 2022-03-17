@@ -1,7 +1,7 @@
 # Maintainer: András Wacha <awacha at gmail>
 pkgname=demeter
 pkgver=0.9.27
-pkgrel=3
+pkgrel=4
 pkgdesc="Demeter is a comprehensive system for processing and analyzing X-ray Absorption Spectroscopy data."
 arch=('i686' 'x86_64')
 url="https://bruceravel.github.io/demeter/"
@@ -20,7 +20,7 @@ depends=('ifeffit' 'pgplot' 'perl-archive-zip' 'perl-capture-tiny'
 	'perl-pod-projectdocs' 'perl-file-monitor-lite' 
 	'perl-graphics-gnuplotif' 'perl-term-sk' 'perl-term-twiddle' 'perl-file-copy-recursive' 
 	'perl-rpc-xml' 'perl-yaml-tiny')
-makedepends=('perl-module-build' 'imagemagick' 'perl-file-copy-recursive' 'python-sphinx' 'python-pybtex' 'python-sphinxcontrib-bibtex' 'python-sphinxcontrib-blockdiag')
+makedepends=('perl-module-build' 'imagemagick' 'perl-file-copy-recursive' 'python-sphinx' 'python-pybtex' 'python-sphinxcontrib-bibtex' 'python-sphinxcontrib-blockdiag' 'gendesk' 'perl-module-build-tiny')
 source=("https://github.com/bruceravel/${pkgname}/archive/${pkgver}.tar.gz")
 sha512sums=('9cc4f0f862fbea3d569079435208707e848cf61762aa901bd7ad199aed0330ca651658ce99e26d7fb8eafaa3874432d3478c1af48042d0ef91a26f48685b61f0')
 
