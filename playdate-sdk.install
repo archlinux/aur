@@ -13,13 +13,13 @@ post_install() {
     echo >&2
     printf >&2 '    cp -r -t %s %s\n' \
       '"${XDG_DATA_HOME:-"${HOME}/.local/share"}/Zeal/Zeal/docsets/"' \
-      '/opt/playdate-sdk/Playdate.docset'
+      '/opt/playdate-sdk/PlaydateSDK.docset'
   fi
 
   echo >&2
   echo >&2 'Before you use the SDK, run this on your user account:'
   echo >&2
-  echo >&2 '    mkdir "${XDG_DATA_HOME:-"${HOME}/.local/share"}/playdate-sdk"'
+  echo >&2 '    mkdir -p "${XDG_DATA_HOME:-"${HOME}/.local/share"}/playdate-sdk"'
   echo >&2 '    cp -rvt "${XDG_DATA_HOME:-"${HOME}/.local/share"}/playdate-sdk" /opt/playdate-sdk/{bin,Disk,Examples}'
 }
 
