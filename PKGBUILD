@@ -2,12 +2,13 @@
 
 pkgname=apipost-bin
 _pkgname=${pkgname%-bin}
+_pathname=ApiPost6
 pkgver=6.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An API debugging and management tool that supports team collaboration and can generate documents directly."
 arch=('x86_64')
 url="https://www.apipost.cn/"
-license=('custom')
+license=('unknown')
 depends=('electron8')
 makedepends=('tar')
 provides=("${_pkgname}")
@@ -29,7 +30,7 @@ package() {
   cd ${srcdir}
 
   install -dm755 ${pkgdir}/usr/lib/
-  cp -a opt/ApiPost6/resources/app ${pkgdir}/usr/lib/${_pkgname}
+  cp -a opt/${_pathname}/resources/app ${pkgdir}/usr/lib/${_pkgname}
 
   # wrapper
   install -Dm755 ${srcdir}/${_pkgname}.sh ${pkgdir}/usr/bin/${_pkgname}
@@ -39,6 +40,6 @@ package() {
   _install 644 usr/share/icons
 
   # fix
-  sed -i "s|/opt/ApiPost6/apipost6|${_pkgname}|g" ${pkgdir}/usr/share/applications/${_pkgname}6.desktop
+  sed -i "s|/opt/${_pathname}/apipost6|${_pkgname}|g" ${pkgdir}/usr/share/applications/${_pkgname}6.desktop
 }
 # vim: set sw=2 ts=2 et:
