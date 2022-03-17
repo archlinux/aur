@@ -2,7 +2,7 @@
 
 pkgname=gytparse
 pkgver=0.1.1
-pkgrel=2
+pkgrel=3
 arch=(any)
 url='https://github.com/foucault/gytparse'
 pkgdesc="Browse, stream and download Youtube videos"
@@ -17,8 +17,8 @@ sha256sums=('c0486d9aa2ca4e3c9ee74be1120231c0267a7a9c57ff267ed98aa6781228d863')
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   meson . _build \
-    -Dpython.purelibdir=/usr/lib/python${_pyver} \
-    -Dpython.platlibdir=/usr/lib/python${_pyver} \
+    -Dpython.purelibdir=/usr/lib/python${_pyver}/site-packages \
+    -Dpython.platlibdir=/usr/lib/python${_pyver}/site-packages \
     -Dprefix=/usr
 }
 
