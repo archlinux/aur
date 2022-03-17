@@ -2,14 +2,14 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 _base=racket
 pkgname=${_base}-git
-pkgver=7.0.0.12.38897.369eb65ec2
+pkgver=8.4.0.8.r593.8f5eee4
 pkgrel=1
 pkgdesc="Minimal Racket installation, without DrRacket, from git"
 arch=('i686' 'x86_64')
 url="https://${_base}-lang.org"
 license=('Apache' 'GPL3' 'LGPL3' 'custom')
 depends=(bash libffi)
-makedepends=(git)
+makedepends=(git awk)
 provides=(${_base})
 conflicts=(${_base})
 options=('!strip' '!emptydirs')
@@ -17,11 +17,16 @@ source=(git+https://github.com/${_base}/${_base}.git)
 md5sums=('SKIP')
 
 pkgver() {
-  cd ${_base}
-  printf %s.%s.%s \
-    $(grep ' MZSCHEME_VERSION ' \
-      ${srcdir}/${_gitname}/${_gitname}/src/racket/src/schvers.h |
-      cut -d '"' -f 2) "$(git rev-list --count HEAD)" $(git log -1 --format='%h')
+  printf %s.%s.%s.%s.r%s.%s \
+  $(awk '/ MZSCHEME_VERSION_X / {print $3}' \
+	 "${srcdir}"/${_base}/${_base}/src/version/${_base}_version.h) \
+  $(awk '/ MZSCHEME_VERSION_Y /{print $3}' \
+	"${srcdir}"/${_base}/${_base}/src/version/${_base}_version.h) \
+  $(awk '/ MZSCHEME_VERSION_Z / {print $3}'  \
+	"${srcdir}"/${_base}/${_base}/src/version/${_base}_version.h| head -1) \
+  $(awk '/ MZSCHEME_VERSION_W / {print $3}'  \
+	"${srcdir}"/${_base}/${_base}/src/version/${_base}_version.h| head -1) \
+  "$(git rev-list --count HEAD)" $(git log -1 --format='%h')
 }
 
 build() {
