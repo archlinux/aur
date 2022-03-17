@@ -1,6 +1,6 @@
 # Maintainer: larte <lauri.arte@gmail.com>
 pkgname=k8stail
-pkgver=0.6.0
+pkgver=0.7.0
 pkgrel=1
 pkgdesc="Watch kubernetes logstreams filtering with namespace and labels, like tail -f"
 arch=('x86_64' 'i686')
@@ -10,7 +10,7 @@ depends=('glibc')
 makedepends=('go' 'go-bindata' 'make' 'glide')
 _archive=k8stail-$pkgver
 source=($_archive.tar.gz::https://github.com/dtan4/k8stail/archive/v$pkgver.tar.gz)
-md5sums=('18b257d9b02e7c4602b2641a00f7cca9')
+md5sums=('f4d8cb3b40d4ca62ad0757047006d1f7')
 
 
 prepare() {
@@ -31,7 +31,6 @@ build() {
         export GOBIN="$srcdir/bin"
         export PATH=$PATH:$GOPATH/bin
 
-        make deps
         make install
         #GOPATH=$srcdir/go go install -ldflags="-s -w -X \"main.Version=$pkgver\" -X \"main.Revision=aur-pkgbuild\""
 }
@@ -43,7 +42,7 @@ check() {
 
 package() {
    mkdir -p "$pkgdir/usr/bin"
-   install -p -m755 "$srcdir/bin/$pkgname-$pkgver" "$pkgdir/usr/bin/k8stail"
+   install -p -m755 "$srcdir/bin/$pkgname" "$pkgdir/usr/bin/k8stail"
    install -Dm644 $srcdir/$_archive/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 
 }
