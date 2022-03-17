@@ -2,7 +2,7 @@
 
 pkgname=mosmetro-python
 pkgver=0.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A script for automatic authorization in Moscow Transport free networks"
 arch=('any')
 url='https://github.com/mosmetro-android/mosmetro-python'
@@ -22,7 +22,7 @@ build() {
 
 package() {
 	cd "${srcdir}"
-	install -Dm755 'mosmetro-python.sh' -t "${pkgdir}/etc/NetworkManager/dispatcher.d/"
+	install -Dm755 'mosmetro-python.sh' -t "${pkgdir}/usr/lib/NetworkManager/dispatcher.d/"
 
 	cd "${pkgname}-${pkgver}"
 	python setup.py install --root="${pkgdir}" --optimize=1
