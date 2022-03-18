@@ -4,11 +4,10 @@ _phpbase=80
 pkgname=php80-imagick
 _name=imagick
 pkgver=3.7.0
-pkgrel=1
-_commit=c5b8086b5d96c7030e6d4e6ea9a5ef49055d8273
+pkgrel=2
 pkgdesc="PHP 8.0 extension to create and modify images using the ImageMagick library"
 arch=('x86_64')
-url="https://github.com/mkoppanen/imagick"
+url="https://github.com/imagick/imagick"
 license=('PHP')
 depends=('imagemagick' 'ttf-font')
 makedepends=("php${_phpbase}" 'librsvg')
@@ -19,7 +18,7 @@ source=(
   "${_name}.ini"
 )
 sha512sums=('67cf7e76ee59dcf2fbb6230956344033022ea2b93f82fcdb949998638ce9990004948fddf13e7f4649b2115ce6f402a1eb4f95aa36a3b6a26f3f016b0e958bc3'
-            '1463505bd6b2572e21f6bbc242c2e0bf8b881b839ac38e38c230f09b4bf4c4698cafba1a026da8f615ee2b2980ab74dc68284afd70bb732db6fb70b5efba2bfc')
+            '4b22a3a3b425632b7012c34e171315b1bf5310fd0ed411eeda59e7224266698890ac2d5e6af536542acbfa31408446e3eb6539b004b2ba1b4ea9387102097ffc')
 
 prepare() {
   mv -v "${_name}-${pkgver}" "${pkgname}-${pkgver}"
@@ -32,14 +31,13 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  ./configure --prefix=/usr --with-php-config=/usr/bin/php-config${_phpbase}
+  ./configure --prefix=/usr
   make
 }
 
 check() {
   cd "$pkgname-$pkgver"
   export NO_INTERACTION="true"
-  export TEST_PHPDBG_EXECUTABLE="phpdbg${_phpbase}"
   make -k test
 }
 
