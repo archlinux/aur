@@ -3,8 +3,8 @@
 
 pkgname=libindi-qsi
 pkgver=1.9.5
-pkgrel=1
-pkgdesc="3rd party drivers for INDI, support for ZWO devices: ASI cameras, EFW filter wheel, ASI ST4 port and ASI focuser"
+pkgrel=2
+pkgdesc="3rd party drivers for INDI, support for QSI cameras"
 url="http://www.indilib.org/index.php?title=Main_Page"
 license=(LGPL2.1)
 arch=(i686 x86_64)
