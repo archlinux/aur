@@ -23,7 +23,8 @@ build() {
   cmake -B build \
         -S "$_dirname" \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm \
-        -DCMAKE_CXX_COMPILER=hipcc
+        -DCMAKE_CXX_COMPILER=hipcc \
+        -DAMDGPU_TARGETS=${AMDGPU_TARGETS}
   make -C build
 }
 
