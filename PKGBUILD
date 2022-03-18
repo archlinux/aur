@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('dump1090' 'protobuf-c' 'jansson')
 makedepends=('git' 'pkgconf')
 source=(
-        'git://github.com/airnavsystems/rbfeeder.git'
+        'git+https://github.com/airnavsystems/rbfeeder.git'
         'rbfeeder.service'
         'rbfeeder.sysusers'
         'rbfeeder.tmpfiles'
