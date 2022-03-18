@@ -46,7 +46,8 @@ build() {
   -DROCCLR_PATH="$srcdir/$_dirrocclr" \
   -DHIP_PLATFORM=amd \
   -DOFFLOAD_ARCH_STR='' \
-  -DCMAKE_INSTALL_PREFIX=/opt/rocm/hip
+  -DCMAKE_INSTALL_PREFIX=/opt/rocm/hip \
+  -DAMDGPU_TARGETS=${AMDGPU_TARGETS}
 
   make
 }
