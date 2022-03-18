@@ -2,7 +2,7 @@
 # Reference: PKGBUILD(5)
 
 pkgname=osc-cli-git
-pkgver=v1.5.0.r14.g04b02c8
+pkgver=v1.6.0.r115.gafffb5f
 pkgrel=1
 pkgdesc='Outscale CLI'
 
@@ -18,7 +18,7 @@ pkgver() {
 makedepends=('python-setuptools')
 depends=(python-fire python-requests python-xmltodict)
 
-source=("git://github.com/outscale/osc-cli.git")
+source=("git+https://github.com/outscale/osc-cli.git")
 sha256sums=("SKIP")
 
 build() {
