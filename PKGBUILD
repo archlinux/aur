@@ -7,7 +7,7 @@ _pkgvcs='-git'
 pkgname="${_pkgname}${_pkgvariant}${_pkgvcs}"
 epoch=0
 pkgver=3.18.0.303+r11455.20211110.8c0ef328f
-pkgrel=3
+pkgrel=4
 pkgdesc="A GTK+ based e-mail client. With patch to show 'protected headers' (currently only IETF draft, not enigmail flavour), without network manager dependency. Latest git checkout."
 arch=(
   'i686'
@@ -96,8 +96,8 @@ provides=(
 )
 options=('emptydirs')
 source=(
-  # "${_pkgname}::git://git.claws-mail.org/claws.git" # Vanilla source from main upstream. Select only one main source!
-  "${_pkgname}::https://github.com/ahngoo8Gongi/claws-mail.git#branch=protected-headers-21" # Source where protected headers support get's developed. Select only one main source!
+  # "${_pkgname}::git+git://git.claws-mail.org/claws.git" # Vanilla source from main upstream. Select only one main source!
+  "${_pkgname}::git+https://github.com/ahngoo8Gongi/claws-mail.git#branch=protected-headers-21" # Source where protected headers support get's developed. Select only one main source!
   # 'protectedheaders-ietf.patch::https://www.thewildbeast.co.uk/claws-mail/bugzilla/attachment.cgi?id=2260' # https://www.thewildbeast.co.uk/claws-mail/bugzilla/show_bug.cgi?id=4426#c17
 )
 sha256sums=(
