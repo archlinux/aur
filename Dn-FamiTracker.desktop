@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Dn-FamiTracker
+Comment=Fork of Dn-FamiTracker (a NES tracker) that incorporates numerous fixes and features.
+Exec=Dn-FamiTracker
+Icon=Dn-FamiTracker
+Terminal=false
+StartupNotify=false
+Categories=Wine;AudioVideo;Audio;
