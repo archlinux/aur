@@ -2,7 +2,7 @@
 
 pkgname=gnatcoverage-git
 pkgver=r4612.aefb23f8
-pkgrel=1
+pkgrel=2
 pkgdesc="Source and object coverage analysis tool"
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/gnatcoverage"
@@ -13,7 +13,7 @@ makedepends=('git' 'gnatcoll-core-git' 'gcc-ada' 'binutils' 'valgrind'
 'gnat_util')
 depends=()
 optdeps=()
-source=(gnatcoverage::git://github.com/AdaCore/gnatcoverage
+source=(gnatcoverage::git+https://github.com/AdaCore/gnatcoverage
 https://ftp.gnu.org/gnu/binutils/binutils-2.31.1.tar.xz)
 
 md5sums=('SKIP')

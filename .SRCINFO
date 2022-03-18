@@ -1,7 +1,7 @@
 pkgbase = gnatcoverage-git
 	pkgdesc = Source and object coverage analysis tool
 	pkgver = r4612.aefb23f8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AdaCore/gnatcoverage
 	arch = i686
 	arch = x86_64
@@ -13,10 +13,9 @@ pkgbase = gnatcoverage-git
 	makedepends = valgrind
 	makedepends = gnat_util
 	provides = gnatcoverage
-	source = gnatcoverage::git://github.com/AdaCore/gnatcoverage
+	source = gnatcoverage::git+https://github.com/AdaCore/gnatcoverage
 	source = https://ftp.gnu.org/gnu/binutils/binutils-2.31.1.tar.xz
 	md5sums = SKIP
 	md5sums = 5b7c9d4ce96f507d95c1b9a255e52418
 
 pkgname = gnatcoverage-git
-
