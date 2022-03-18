@@ -1,0 +1,18 @@
+pkgbase = haskell-lambdabot-irc-plugins
+	pkgdesc = IRC plugins for lambdabot.
+	pkgver = 5.3.0.2
+	pkgrel = 1
+	url = https://wiki.haskell.org/Lambdabot
+	arch = x86_64
+	license = custom:GPL
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-safesemaphore
+	depends = haskell-lambdabot-core
+	depends = haskell-lifted-base
+	depends = haskell-network
+	depends = haskell-split
+	source = https://hackage.haskell.org/packages/archive/lambdabot-irc-plugins/5.3.0.2/lambdabot-irc-plugins-5.3.0.2.tar.gz
+	sha256sums = 117f50ee74a2f1a271225c8fc07937e3b3f83766d859d2e0c69a1c02db3994df
+
+pkgname = haskell-lambdabot-irc-plugins
