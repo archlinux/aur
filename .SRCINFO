@@ -1,6 +1,6 @@
 pkgbase = xorg-server-git
 	pkgver = 21.1.99.1.r177.g9e5a37961
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xorg.freedesktop.org
 	arch = x86_64
 	groups = xorg

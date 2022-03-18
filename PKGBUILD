@@ -15,7 +15,7 @@ pkgname=(
 )
 _pkgbase='xserver'
 pkgver=21.1.99.1.r177.g9e5a37961
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('custom')
 groups=('xorg')
@@ -27,7 +27,8 @@ makedepends=('xorgproto-git' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms'
              'libxshmfence' 'libunwind' 'systemd' 'meson' 'git')
-source=(git+https://gitlab.freedesktop.org/xorg/xserver.git
+_srcurl=git+https://gitlab.freedesktop.org/xorg/xserver.git
+source=($_srcurl
         xvfb-run # with updates from FC master
         xvfb-run.1)
 sha512sums=('SKIP'
