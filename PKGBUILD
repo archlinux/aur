@@ -1,7 +1,8 @@
 # Maintainer: JustKidding <jk@vin.ovh>
 # Co-maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# Contributor: AndyRTR <andyrtr@archlinux.org>
-# Contributor: Jan de Groot <jgc@archlinux.org>
+# Based on extra/xorg-server by
+# AndyRTR <andyrtr@archlinux.org>
+# Jan de Groot <jgc@archlinux.org>
 
 pkgbase=xorg-server-git
 pkgname=(
@@ -13,7 +14,7 @@ pkgname=(
   'xorg-server-xvfb-git'
 )
 _pkgbase='xserver'
-pkgver=21.1.99.1.r173.g7d2014e7d
+pkgver=21.1.99.1.r177.g9e5a37961
 pkgrel=1
 arch=('x86_64')
 license=('custom')
@@ -26,8 +27,7 @@ makedepends=('xorgproto-git' 'pixman' 'libx11' 'mesa' 'mesa-libgl' 'xtrans'
              'xorg-xkbcomp' 'xorg-util-macros' 'xorg-font-util' 'libepoxy'
              'xcb-util' 'xcb-util-image' 'xcb-util-renderutil' 'xcb-util-wm' 'xcb-util-keysyms'
              'libxshmfence' 'libunwind' 'systemd' 'meson' 'git')
-_srcurl=git+https://gitlab.freedesktop.org/xorg/xserver.git
-source=($_srcurl
+source=(git+https://gitlab.freedesktop.org/xorg/xserver.git
         xvfb-run # with updates from FC master
         xvfb-run.1)
 sha512sums=('SKIP'
@@ -36,8 +36,14 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd "${_pkgbase}"
+
+  # replace latest tag with version from meson
+  local _meson_ver=`grep -m 1 version meson.build | cut -d\' -f 2`
   # cutting off 'xorg.server.' prefix that presents in the git tag
-  git describe --long --tags | sed "s/$(git describe --long --tags | cut -d- -f3)/$(grep -m 1 version meson.build | awk '{print $2}' | sed "s/'//g;s/,//g")/g" | sed 's/^xorg.server.//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  local _git_ver=`git describe --long --tags | sed 's/^xorg.server.//;s/\([^-]*-g\)/r\1/;s/-/./g'`
+  local _git_tag=`git describe --tags --abbrev=0 | sed 's/^xorg.server.//'`
+
+  printf "${_git_ver/$_git_tag/$_meson_ver}"
 }
 
 build() {
@@ -71,6 +77,10 @@ build() {
   DESTDIR="${srcdir}/fakeinstall" ninja -C build install
 }
 
+check() {
+  meson test -C build
+}
+
 _install() {
   local src f dir
   for src; do
@@ -86,7 +96,6 @@ _install() {
 package_xorg-server-common-git() {
   pkgdesc="Xorg server common files (git version)"
   depends=(xkeyboard-config xorg-xkbcomp xorg-setxkbmap)
-  _pkgname='xorg-server-common'
   provides=('xorg-server-common')
   conflicts=('xorg-server-common')
 
@@ -103,7 +112,6 @@ package_xorg-server-git() {
   depends=(libepoxy libxfont2 pixman xorg-server-common-git libunwind
            dbus libgl xf86-input-libinput nettle
            libpciaccess libdrm libxshmfence libxcvt) # FS#52949
-  _pkgname='xorg-server'
   # see xorg-server-*/hw/xfree86/common/xf86Module.h for ABI versions - we provide major numbers that drivers can depend on
   # and /usr/lib/pkgconfig/xorg-server.pc in xorg-server-devel pkg
   provides=('X-ABI-VIDEODRV_VERSION=25.3' 'X-ABI-XINPUT_VERSION=24.4' 'X-ABI-EXTENSION_VERSION=10.0' 'x-server' 'xorg-server')
@@ -131,7 +139,6 @@ package_xorg-server-xephyr-git() {
   depends=(libxfont2 libgl libepoxy libunwind systemd-libs libxv pixman xorg-server-common-git
            xcb-util-image xcb-util-renderutil xcb-util-wm xcb-util-keysyms
            nettle libtirpc)
-  _pkgname='xorg-server-xephyr'
   provides=('xorg-server-xephyr')
   conflicts=('xorg-server-xephyr')
 
@@ -146,7 +153,6 @@ package_xorg-server-xvfb-git() {
   pkgdesc="Virtual framebuffer X server (git version)"
   depends=(libxfont2 libunwind pixman xorg-server-common-git xorg-xauth
            libgl nettle libtirpc systemd-libs)
-  _pkgname='xorg-server-xvfb'
   provides=('xorg-server-xvfb')
   conflicts=('xorg-server-xvfb')
 
@@ -163,7 +169,6 @@ package_xorg-server-xvfb-git() {
 package_xorg-server-xnest-git() {
   pkgdesc="A nested X server that runs as an X application (git version)"
   depends=(libxfont2 libxext pixman xorg-server-common-git nettle libtirpc systemd-libs)
-  _pkgname='xorg-server-xnest'
   provides=('xorg-server-xnest')
   conflicts=('xorg-server-xnest')
 
@@ -179,7 +184,6 @@ package_xorg-server-devel-git() {
   depends=('xorgproto-git' 'mesa' 'libpciaccess'
            # not technically required but almost every Xorg pkg needs it to build
            'xorg-util-macros')
-  _pkgname='xorg-server-devel'
   provides=('xorg-server-devel')
   conflicts=('xorg-server-devel')
 
