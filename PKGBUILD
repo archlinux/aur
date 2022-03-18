@@ -2,7 +2,7 @@
 
 _pkgname=lv2lint
 pkgname="${_pkgname}-git"
-pkgver=0.13.1.r244.29dc320
+pkgver=0.14.0.r4.g7fd756b
 pkgrel=1
 pkgdesc="Check whether a given LV2 plugin is up to the specification"
 arch=('i686' 'x86_64')
@@ -19,8 +19,10 @@ md5sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${_pkgname}"
 
-  ver=$(cat VERSION)
-  echo "$ver.r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  ( set -o pipefail
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {

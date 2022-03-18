@@ -1,6 +1,6 @@
 pkgbase = lv2lint-git
 	pkgdesc = Check whether a given LV2 plugin is up to the specification
-	pkgver = 0.13.1.r244.29dc320
+	pkgver = 0.14.0.r4.g7fd756b
 	pkgrel = 1
 	url = https://github.com/OpenMusicKontrollers/lv2lint
 	arch = i686
@@ -17,4 +17,3 @@ pkgbase = lv2lint-git
 	md5sums = SKIP
 
 pkgname = lv2lint-git
-
