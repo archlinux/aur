@@ -2,7 +2,7 @@
 # Contributor: Dan McCurry <dan.mc at protonmail dot com>
 pkgname=profex
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 year=2022
 month=03
 pkgdesc="A program for Rietveld refinement of powder X-ray diffraction data."
@@ -20,7 +20,7 @@ source=("https://www.profex-xrd.org/wp-content/uploads/${year}/${month}/${pkgnam
 	'profex.desktop')
 sha256sums=('333d77a4b8690183bf43df1776fa4976c330f09af4799c0360bc694e47cf0c7a'
 '8d4e73987458eb9d1453c3bfe839a90ea1f5c15a0872ea5a35d0b532231d9194')
-prepare() {
+makeprepare() {
 	cd "$pkgname-$pkgver"
 }
 
