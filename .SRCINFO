@@ -26,16 +26,16 @@ pkgbase = chatterino2-homies-git
 	conflicts = chatterino2-7tv-git
 	conflicts = chatterino2-dankerino-bin
 	conflicts = chatterino2-dankerino-git
-	source = https://github.com/itzAlex/chatterino7
-	source = https://github.com/Chatterino/libcommuni#branch=chatterino-cmake
-	source = https://github.com/jiakuan/qBreakpad
-	source = https://github.com/mohabouje/WinToast
-	source = https://github.com/pajlada/settings
-	source = https://github.com/pajlada/signals
-	source = https://github.com/pajlada/serialize
-	source = https://github.com/Tencent/rapidjson
-	source = https://github.com/Chatterino/qtkeychain
-	source = https://github.com/zaphoyd/websocketpp
+	source = git+https://github.com/itzAlex/chatterino7
+	source = git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake
+	source = git+https://github.com/jiakuan/qBreakpad
+	source = git+https://github.com/mohabouje/WinToast
+	source = git+https://github.com/pajlada/settings
+	source = git+https://github.com/pajlada/signals
+	source = git+https://github.com/pajlada/serialize
+	source = git+https://github.com/Tencent/rapidjson
+	source = git+https://github.com/Chatterino/qtkeychain
+	source = git+https://github.com/zaphoyd/websocketpp
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
