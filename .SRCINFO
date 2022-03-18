@@ -1,0 +1,14 @@
+pkgbase = haskell-src-exts-simple
+	pkgdesc = A simplified view on the haskell-src-exts AST
+	pkgver = 1.23.0.0
+	pkgrel = 1
+	url = https://github.com/int-e/haskell-src-exts-simple
+	arch = x86_64
+	license = custom: MIT
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-src-exts
+	source = https://hackage.haskell.org/packages/archive/haskell-src-exts-simple/1.23.0.0/haskell-src-exts-simple-1.23.0.0.tar.gz
+	sha256sums = f57029fa5b81ddd604027e909739dc85c3bf819592dc1c95d3a9cb3aa392cdc9
+
+pkgname = haskell-src-exts-simple
