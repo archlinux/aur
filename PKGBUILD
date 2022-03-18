@@ -1,7 +1,7 @@
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=python-pandas-stubs
 _pkgname=${pkgname:7}
-pkgver=1.2.0.50
+pkgver=1.2.0.53
 pkgrel=1
 pkgdesc="Type annotations for Pandas"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://pypi.org/project/pandas-stubs"
 license=('MIT')
 makedepends=(python-build python-installer python-wheel)
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('fdeaee677603a73b7a44eb01d12ef504b7af94db4d671e295a30157da0219ca5')
+sha256sums=('04d9f4dbc2fd9f38a491e533a076867c86fbfc5d7999116ce32852054e1d44db')
 
 prepare() {
     cd ${srcdir}/${_pkgname}-${pkgver}/third_party/3/pandas/_libs
