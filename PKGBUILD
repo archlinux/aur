@@ -2,7 +2,7 @@
 # Reference: PKGBUILD(5)
 
 pkgname=python-diagrams-git
-pkgver=v0.17.0.r35.gdfd8e0a
+pkgver=v0.21.1.r0.geaf3e98
 pkgrel=1
 pkgdesc='Diagram as Code'
 
@@ -19,7 +19,7 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-source=("git://github.com/mingrammer/diagrams.git")
+source=("git+https://github.com/mingrammer/diagrams.git")
 sha256sums=("SKIP")
 
 prepare() {
