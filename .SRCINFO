@@ -1,14 +1,15 @@
 pkgbase = go-pkgs-git
 	pkgdesc = Command gopkgs list your installed Go packages for import
-	pkgver = 20160408.11_01f4431
+	pkgver = r14.81e90e2
 	pkgrel = 1
+	epoch = 1
+	url = https://github.com/tpng/gopkgs
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = MIT
 	makedepends = go
 	makedepends = git
-	source = git://github.com/tpng/gopkgs.git
+	source = git+https://github.com/tpng/gopkgs
 	md5sums = SKIP
 
 pkgname = go-pkgs-git
-
