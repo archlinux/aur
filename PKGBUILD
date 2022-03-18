@@ -29,7 +29,7 @@ build() {
     cmake   -B build \
             -S "$_dirname" \
             -DCMAKE_INSTALL_PREFIX=/opt/rocm \
-            -DAMDGPU_TARGETS=${AMDGPU_TARGETS}
+            -DAMDGPU_TARGETS=${AMDGPU_TARGETS:-gfx803;gfx900;gfx906:xnack-;gfx908:xnack-;gfx1010;gfx1030}
     make -C build
 }
 
