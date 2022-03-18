@@ -1,6 +1,6 @@
 pkgbase = xcursor-simp1e
 	pkgdesc = An aesthetic cursor theme
-	pkgver = 0.0.20211003
+	pkgver = 5.0
 	pkgrel = 1
 	url = https://gitlab.com/zoli111/simp1e/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = xcursor-simp1e
 	makedepends = librsvg
 	makedepends = python-pillow
 	makedepends = xorg-xcursorgen
-	source = xcursor-simp1e::git+https://gitlab.com/zoli111/simp1e/#commit=6a9e969b0239a58fc96af787c4986c273eb6d0eb
+	source = xcursor-simp1e::git+https://gitlab.com/zoli111/simp1e/#commit=599160278e64b8cddf0a6ca4fdc946e8c8b81b94
 	source = builder_script::git+https://github.com/mxre/cursor
 	sha512sums = SKIP
 	sha512sums = SKIP
@@ -22,4 +22,19 @@ pkgname = xcursor-simp1e-breeze-snow
 
 pkgname = xcursor-simp1e-dark
 
-pkgname = xcursor-simp1e-solarized
+pkgname = xcursor-simp1e-catpuccin
+
+pkgname = xcursor-simp1e-solarized-dark
+
+pkgname = xcursor-simp1e-solarized-light
+	replaces = xcursor-simp1e-solarized
+
+pkgname = xcursor-simp1e-gruvbox-dark
+
+pkgname = xcursor-simp1e-gruvbox-light
+
+pkgname = xcursor-simp1e-nord-dark
+
+pkgname = xcursor-simp1e-nord-light
+
+pkgname = xcursor-simp1e-tokyo-night
