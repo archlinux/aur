@@ -16,16 +16,16 @@ optdepends=('streamlink: For piping streams to video players'
 provides=('chatterino')
 conflicts=('chatterino2-git' 'chatterino2-appimage' 'chatterino2-nightly-appimage' 'chatterino2-7tv-git' 'chatterino2-dankerino-bin' 'chatterino2-dankerino-git')
 install=$pkgname.install
-source=("git://github.com/itzAlex/chatterino7"
-        "git://github.com/Chatterino/libcommuni#branch=chatterino-cmake"
-        "git://github.com/jiakuan/qBreakpad"
-        "git://github.com/mohabouje/WinToast"
-        "git://github.com/pajlada/settings"
-        "git://github.com/pajlada/signals"
-        "git://github.com/pajlada/serialize"
-        "git://github.com/Tencent/rapidjson"
-        "git://github.com/Chatterino/qtkeychain"
-        "git://github.com/zaphoyd/websocketpp")
+source=("https://github.com/itzAlex/chatterino7"
+        "https://github.com/Chatterino/libcommuni#branch=chatterino-cmake"
+        "https://github.com/jiakuan/qBreakpad"
+        "https://github.com/mohabouje/WinToast"
+        "https://github.com/pajlada/settings"
+        "https://github.com/pajlada/signals"
+        "https://github.com/pajlada/serialize"
+        "https://github.com/Tencent/rapidjson"
+        "https://github.com/Chatterino/qtkeychain"
+        "https://github.com/zaphoyd/websocketpp")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
