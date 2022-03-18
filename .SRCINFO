@@ -1,0 +1,15 @@
+pkgbase = haskell-iospec
+	pkgdesc = A pure specification of the IO monad.
+	pkgver = 0.3.1.1
+	pkgrel = 1
+	url = https://github.com/lambdabot/IOSpec
+	arch = x86_64
+	license = custom: BSD3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-quickcheck
+	depends = haskell-stream
+	source = https://hackage.haskell.org/packages/archive/IOSpec/0.3.1.1/IOSpec-0.3.1.1.tar.gz
+	sha256sums = 345c14a6f24b526cdf10a51b808c43305b9d03dad8a3902bd1c0922aad3ccef0
+
+pkgname = haskell-iospec
