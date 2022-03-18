@@ -23,7 +23,8 @@ build() {
   cmake -Wno-dev -S "$_dirname" \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm \
         -Drocprim_DIR=/opt/rocm/rocprim/rocprim/lib/cmake/rocprim \
-        -DBUILD_CLIENTS_SAMPLES=OFF
+        -DBUILD_CLIENTS_SAMPLES=OFF \
+        -DAMDGPU_TARGETS=${AMDGPU_TARGETS}
   make
 }
 
