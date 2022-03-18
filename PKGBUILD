@@ -24,7 +24,8 @@ build() {
   CXXFLAGS="${CXXFLAGS} -fcf-protection=none" \
   cmake -Wno-dev -S "$_dirname" \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm \
-        -DBUILD_TEST=OFF
+        -DBUILD_TEST=OFF \
+        -DAMDGPU_TARGETS=${AMDGPU_TARGETS}
   make
 }
 
