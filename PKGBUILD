@@ -20,7 +20,7 @@ _node_version="16.1.0"
 
 pkgname=wechat-devtools
 pkgver="${_wechat_devtools_ver}"  # 主版本号
-pkgrel=3   # 修订版本号release
+pkgrel=5   # 修订版本号release
 epoch=2    # 大版本迭代强制更新（维护者变更，尽量不用）
 pkgdesc="WeChat Devtools For Linux. "
 arch=("x86_64")
@@ -32,7 +32,7 @@ makedepends=('p7zip' 'python2' 'openssl' 'gcc' 'make' 'libssh2' 'krb5')
 source=("nwjs-v${_nwjs_ver}.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs_ver}/nwjs-sdk-v${_nwjs_ver}-linux-x64.tar.gz"
         "${_wechat_devtools_exe}::${_wechat_devtools_url}"
         "node-v${_node_version}.tar.gz::https://npm.taobao.org/mirrors/node/v${_node_version}/node-v${_node_version}-linux-x64.tar.gz"
-        "compiler.tar.gz::https://github.rc1844.workers.dev/msojocs/wechat-web-devtools-linux/releases/download/v1.05.2203070-3/compiler.tar.gz"
+        "compiler.tar.gz::https://github.rc1844.workers.dev/msojocs/wechat-web-devtools-linux/releases/download/v1.05.2203070-5/compiler.tar.gz"
         "wechat-devtools.desktop"
         "logo.svg"
         "fix-cli.sh"
@@ -46,7 +46,7 @@ source=("nwjs-v${_nwjs_ver}.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs
 md5sums=(b6f49803c51d0abacca2d1e566c7fe19   # nwjs
          "${_wechat_devtools_md5}"
          2280bfbbf29981fd5adce334f40146ff   # nodejs
-         9650f811d5c4d2ca124dcfa6d0b32c4c   # compiler
+         35c3516b2815e4b91079e1c073f9243c   # compiler
          01ea705bfe43f5f9683f0dbefb3f1574   # desktop
          0f4353664123320280ea4d6bb295dce2   # svg
          "SKIP"
