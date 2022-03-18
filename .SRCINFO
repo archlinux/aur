@@ -1,0 +1,15 @@
+pkgbase = haskell-lambdabot-social-plugins
+	pkgdesc = Social plugins for Lambdabot
+	pkgver = 5.3.0.2
+	pkgrel = 1
+	url = https://wiki.haskell.org/Lambdabot
+	arch = x86_64
+	license = custom:GPL
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-lambdabot-core
+	depends = haskell-split
+	source = https://hackage.haskell.org/packages/archive/lambdabot-social-plugins/5.3.0.2/lambdabot-social-plugins-5.3.0.2.tar.gz
+	sha256sums = a28e26ae58c23323e37e7ae56f0c8dfa17aef43d6c90412be8d63261ca0fd483
+
+pkgname = haskell-lambdabot-social-plugins
