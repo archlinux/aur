@@ -1,19 +1,13 @@
-_update() {
-  #glib-compile-schemas '/usr/share/glib-2.0/schemas/' 2>&1
-}
-
 post_install() {
   #touch /usr/share/backgrounds/linuxmint/default_background.jpg
   #gsettings reset-recursively org.cinnamon
-  _update
-
-  systemctl restart lightdm
+  nohup cinnamon --replace > /dev/null 2>&1 &
 }
 
 post_upgrade() {
-  _update
+  nohup cinnamon --replace > /dev/null 2>&1 &
 }
 
 post_remove() {
-  _update
+  nohup cinnamon --replace > /dev/null 2>&1 &
 }
