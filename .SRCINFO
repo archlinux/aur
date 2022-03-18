@@ -1,0 +1,14 @@
+pkgbase = haskell-data-memocombinators
+	pkgdesc = Combinators for building memo tables.
+	pkgver = 0.5.1
+	pkgrel = 1
+	url = http://github.com/luqui/data-memocombinators
+	arch = x86_64
+	license = custom: BSD3
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-data-inttrie
+	source = https://hackage.haskell.org/packages/archive/data-memocombinators/0.5.1/data-memocombinators-0.5.1.tar.gz
+	sha256sums = b4341d2024b84a43f92edc39f6d6766bf4f0f00a40fd834b9f6f8e987b606ed7
+
+pkgname = haskell-data-memocombinators
