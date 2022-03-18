@@ -3,7 +3,7 @@
 
 pkgbase=qbittorrent-git
 pkgname=(qbittorrent-git qbittorrent-nox-git)
-pkgver=4.4.0rc1.r182.ga21bff1db
+pkgver=4.5.0.alpha1.r238.gcf061b7d3
 pkgrel=1
 arch=(x86_64)
 url='https://www.qbittorrent.org'
@@ -17,7 +17,22 @@ sha256sums=('SKIP')
 pkgver() {
   cd $pkgbase
 
-  git describe --long --tags | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  # replace latest tag with version from cmake
+  local _major=`grep -m 1 QBT_VERSION_MAJOR src/base/version.h.in | cut -d' ' -f3`
+  local _minor=`grep -m 1 QBT_VERSION_MINOR src/base/version.h.in | cut -d' ' -f3`
+  local _bugfix=`grep -m 1 QBT_VERSION_BUGFIX src/base/version.h.in | cut -d' ' -f3`
+  local _build=`grep -m 1 QBT_VERSION_BUILD src/base/version.h.in | cut -d' ' -f3`
+  local _status=`grep -m 1 QBT_VERSION_STATUS src/base/version.h.in | cut -d' ' -f3 | sed 's/"//g'`
+  local _cmake_ver=`printf "${_major}.${_minor}.${_bugfix}"`
+
+  [[ "${_build}" -ne 0 ]] && _cmake_ver=`printf "${_cmake_ver}.${_build}"`
+  [[ -n "${_status}" ]] && _cmake_ver=`printf "${_cmake_ver}.${_status}"`
+
+  # cutting off 'release-' prefix that presents in the git tag
+  local _git_ver=`git describe --long --tags | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g'`
+  local _git_tag=`git describe --tags --abbrev=0 | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g'`
+
+  printf "${_git_ver/$_git_tag/$_cmake_ver}"
 }
 
 build() {
