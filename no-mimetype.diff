@@ -1,0 +1,12 @@
+diff --git i/data/org.gnome.baobab.desktop.in w/data/org.gnome.baobab.desktop.in
+index b5e2a05..219eb2e 100644
+--- i/data/org.gnome.baobab.desktop.in
++++ w/data/org.gnome.baobab.desktop.in
+@@ -10,7 +10,6 @@ Icon=org.gnome.baobab
+ Terminal=false
+ Type=Application
+ StartupNotify=true
+-MimeType=inode/directory;
+ Categories=GTK;GNOME;System;Filesystem;X-GNOME-Utilities;
+ DBusActivatable=true
+ X-GNOME-UsesNotifications=true

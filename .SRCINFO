@@ -1,0 +1,28 @@
+pkgbase = baobab-gtk3
+	pkgdesc = A graphical directory tree analyzer (last GTK3 version)
+	pkgver = 41.0
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/DiskUsageAnalyzer
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = GPL2
+	makedepends = vala
+	makedepends = gobject-introspection
+	makedepends = yelp-tools
+	makedepends = appstream-glib
+	makedepends = meson
+	depends = dconf
+	depends = gtk3
+	depends = gsettings-desktop-schemas
+	depends = librsvg
+	depends = libhandy
+	provides = baobab=41.0
+	conflicts = baobab
+	source = https://gitlab.gnome.org/GNOME/baobab/-/archive/41.0/baobab-41.0.tar.bz2
+	source = no-mimetype.diff
+	sha256sums = 5e3892f0abb87152b3cc48899b1f00960a5b72fcaad662bd357ae405c6ac8e7a
+	sha256sums = 958a85fe3a2001d16ebcf71b51888f260508af87224a0de3410a6bbe685e59d0
+
+pkgname = baobab-gtk3
