@@ -1,7 +1,7 @@
 # Maintainer: Timo Sarawinski <timo@it-kraut.net>
 pkgname=php80-apcu
 pkgver=5.1.21
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 pkgdesc='A userland caching module for PHP 8.0'
 url='https://pecl.php.net/package/APCu'
@@ -27,12 +27,13 @@ build() {
 }
 
 check() {
-       cd $srcdir/apcu-$pkgver
+       cd "$srcdir/apcu-$pkgver"
 
        export REPORT_EXIT_STATUS=1
        export NO_INTERACTION=1
        export SKIP_ONLINE_TESTS=1
        export SKIP_SLOW_TESTS=1
+       export TEST_PHPDBG_EXECUTABLE=phpdbg80
        make test
 }
 
