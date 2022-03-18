@@ -1,0 +1,15 @@
+pkgbase = kak-case-git
+	pkgdesc = Case convention conversion for Kakoune
+	pkgver = r11.6f15118
+	pkgrel = 1
+	url = https://gitlab.com/FlyingWombat/case.kak
+	arch = any
+	license = custom
+	makedepends = git
+	depends = kakoune
+	provides = kak-case
+	conflicts = kak-case
+	source = git+https://gitlab.com/FlyingWombat/case.kak
+	sha256sums = SKIP
+
+pkgname = kak-case-git
