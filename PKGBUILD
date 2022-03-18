@@ -3,7 +3,7 @@
 # Contributor: Bogdan <d0xi at inbox dot ru>
 pkgname=cheat
 pkgver=4.2.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Allows you to create and view interactive cheatsheets on the command-line"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/cheat/cheat"
@@ -28,11 +28,11 @@ prepare() {
   cd "$pkgname-$pkgver"
   export GOPATH="$srcdir/gopath"
 
-  # create directory for build output
-  mkdir -p build
-
   # download dependencies
   go mod download -x
+
+  # create directory for build output
+  mkdir -p build
 }
 
 build() {
@@ -43,10 +43,13 @@ build() {
   export CGO_CXXFLAGS="${CXXFLAGS}"
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  go build -o build -v "./cmd/$pkgname"
+  go build -v -o build "./cmd/$pkgname"
 
   # Generate man page
   pandoc -s -t man "doc/$pkgname.1.md" -o "doc/$pkgname.1"
+
+  # Clean module cache for makepkg -C
+  go clean -modcache
 }
 
 package() {
