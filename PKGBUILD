@@ -1,7 +1,7 @@
 # Maintainer: Jakub Jirutka <jakub@jirutka.cz>
 
 pkgname=tty-copy
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Copy content to system clipboard via TTY and terminal using ANSI OSC52 sequence"
 arch=(any)
@@ -9,7 +9,7 @@ url="https://github.com/jirutka/tty-copy"
 license=(MIT)
 makedepends=(asciidoctor)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jirutka/tty-copy/archive/v$pkgver.tar.gz")
-sha256sums=('ff3326f1bbc4633a528009156d91a93fd7b649143894eb4e6afe09cdd06b8f90')
+sha256sums=('88db18987ff8e8a045de5a759d541982a14f83dd2f8dc933f3d33536cf374fa2')
 
 build() {
   cd $pkgname-$pkgver

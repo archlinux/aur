@@ -1,12 +1,12 @@
 pkgbase = tty-copy
 	pkgdesc = Copy content to system clipboard via TTY and terminal using ANSI OSC52 sequence
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/jirutka/tty-copy
 	arch = any
 	license = MIT
 	makedepends = asciidoctor
-	source = tty-copy-0.2.0.tar.gz::https://github.com/jirutka/tty-copy/archive/v0.2.0.tar.gz
-	sha256sums = ff3326f1bbc4633a528009156d91a93fd7b649143894eb4e6afe09cdd06b8f90
+	source = tty-copy-0.2.1.tar.gz::https://github.com/jirutka/tty-copy/archive/v0.2.1.tar.gz
+	sha256sums = 88db18987ff8e8a045de5a759d541982a14f83dd2f8dc933f3d33536cf374fa2
 
 pkgname = tty-copy
