@@ -1,7 +1,7 @@
 # Maintainer: Konstantin Gizdov < arch at kge dot pw >
 pkgname=vale-bin
 _pkgname=vale
-pkgver=2.10.6
+pkgver=2.15.3
 pkgrel=1
 pkgdesc="A customizable, syntax-aware linter for prose"
 provides=('vale')
@@ -13,9 +13,9 @@ source=("${_pkgname}-${pkgver}-bin.tar.gz::${url}/releases/download/v${pkgver}/$
         "${_pkgname}-${pkgver}_LICENSE::https://raw.githubusercontent.com/errata-ai/${_pkgname}/v${pkgver}/LICENSE"
         "${_pkgname}-${pkgver}_README.md::https://raw.githubusercontent.com/errata-ai/${_pkgname}/v${pkgver}/README.md")
 
-sha256sums=('6d64d9115965a4729b5a33d150db674e42ec8edff5016bb6ce017dd9055befe2'
-            '631d478b9cbc45c5bfa3a52b66b9ea9cfbaac17482d54182326cf15941788e4a'
-            '3690df8dc28df89a5aff3e524c5900e28214e3b4dad83696dd6694eba684f027')
+sha256sums=('8ea8f3961b699b7938aa0606c1520a17d1c97ebf23bfab1b326e9d4a679929bd'
+            'a47705b82ea39864e55f418911a5046bbc66533755d4dd9302bb76abe38fadb3'
+            '8efbedd9f8fdd0f29285cfca1b53d71cc7607e48ad83e319fff66214f4301632')
 
 package() {
     install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
