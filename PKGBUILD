@@ -8,7 +8,7 @@ arch=("x86_64")
 url="https://joinpeertube.org/"
 license=("AGPL")
 depends=("nodejs>=14" "nodejs" "ffmpeg>=4.4.1" "postgresql" "openssl" "redis" "npm")
-makedepends=("yarn" "python2" "git")
+makedepends=("yarn" "python" "git")
 backup=("etc/peertube/production.yaml")
 options=("!strip")
 source=("https://github.com/Chocobozzz/PeerTube/releases/download/v$pkgver/$pkgname-v$pkgver.tar.xz"
