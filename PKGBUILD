@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-custom-hot-corners-extended-git
 _pkgname=custom-hot-corners-extended
-pkgver=Ext.v15.fixed.r5.g143b546
+pkgver=15.fixed.r14.g2adc099
 pkgrel=1
 pkgdesc="A GNOME Shell Extension that allows you to use corners and edges as triggers for various actions - git"
 arch=('any')
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${_pkgname}"
-  git describe --tags | sed 's/[^-]*-g/r&/;s/-/./g'
+  git describe --tags | sed 's/[^-]*-g/r&/;s/Ext.v*//;s/-/./g'
 }
 
 build() {
