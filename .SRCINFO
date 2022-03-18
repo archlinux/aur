@@ -1,0 +1,13 @@
+pkgbase = amd-vulkan-prefixes
+	pkgdesc = Select needed vulkan implementation with vk_radv, vk_amdvlk or vk_pro prefix
+	pkgver = 1
+	pkgrel = 1
+	url = https://gitlab.com/AndrewShark/amd-vulkan-prefixes
+	arch = any
+	license = GPL
+	source = https://gitlab.com/AndrewShark/amd-vulkan-prefixes/-/raw/main/amd_vulkan_prefixes.sh
+	source = https://gitlab.com/AndrewShark/amd-vulkan-prefixes/-/raw/main/amd_vulkan_prefixes.bash-completion
+	sha256sums = 0ae2ff8bac00b0ce0330bafcfc8142576f432706843f6a681d357e410fdafae3
+	sha256sums = aaf96ea2ae87c7dab678e8a33986199256312dd70004aec87b5fd0f8b65ebaef
+
+pkgname = amd-vulkan-prefixes
