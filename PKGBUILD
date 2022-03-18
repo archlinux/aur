@@ -2,7 +2,7 @@
 
 pkgname=dsq
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="CLI tool for running SQL queries against JSON/CSV/Excel/Parquet and more"
 arch=('x86_64')
 url="https://github.com/multiprocessio/dsq"
@@ -26,9 +26,6 @@ prepare() {
 
   # download dependencies
   go mod download
-
-  # skip failing tests
-  sed -e "s:'parquet', ::" -i scripts/test.py
 }
 
 build() {
@@ -39,9 +36,10 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
 
+  # PIE currently disabled due to upstream issue
+  # https://github.com/multiprocessio/dsq/issues/34
   go build -v \
     -trimpath \
-    -buildmode=pie \
     -mod=readonly \
     -modcacherw \
     -ldflags "-linkmode external -extldflags ${LDFLAGS} \
