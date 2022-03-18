@@ -20,7 +20,8 @@ build() {
   CXXFLAGS="${CXXFLAGS} -fcf-protection=none" \
   cmake -B build \
         -S "$_dirname" \
-        -DROCM_PATH=/opt/rocm
+        -DROCM_PATH=/opt/rocm \
+        -DAMDGPU_TARGETS=${AMDGPU_TARGETS}
   make -C build
 }
 
