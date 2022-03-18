@@ -1,0 +1,22 @@
+pkgbase = python-mujoco
+	pkgdesc = Mujoco's Python bindings
+	pkgver = 2.1.2.post1
+	pkgrel = 1
+	url = https://github.com/deepmind/mujoco
+	arch = x86_64
+	license = LGPL3
+	makedepends = python-setuptools
+	makedepends = pybind11
+	makedepends = abseil-cpp
+	makedepends = eigen3
+	makedepends = cmake
+	depends = python
+	depends = mujoco-bin>=2.1.2
+	depends = absl-py
+	depends = python-glfw
+	depends = python-numpy
+	depends = python-opengl
+	source = git+https://github.com/deepmind/mujoco.git#tag=2.1.2.post1
+	sha256sums = SKIP
+
+pkgname = python-mujoco
