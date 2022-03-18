@@ -47,7 +47,7 @@ build() {
   -DHIP_PLATFORM=amd \
   -DOFFLOAD_ARCH_STR='' \
   -DCMAKE_INSTALL_PREFIX=/opt/rocm/hip \
-  -DAMDGPU_TARGETS=${AMDGPU_TARGETS}
+  -DAMDGPU_TARGETS=${AMDGPU_TARGETS:-gfx900;gfx906;gfx908;gfx90a;gfx1030}
 
   make
 }
