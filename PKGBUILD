@@ -38,7 +38,7 @@ build() {
         -DBUILD_CLIENTS_BENCHMARKS=OFF \
         -DBUILD_CLIENTS_SAMPLES=OFF \
         -DBUILD_TESTING=OFF \
-        -DAMDGPU_TARGETS=${AMDGPU_TARGETS}
+        -DAMDGPU_TARGETS=${AMDGPU_TARGETS:-gfx803;gfx900;gfx906:xnack-;gfx908:xnack-;gfx90a:xnack+;gfx90a:xnack-;gfx1010;gfx1012;gfx1030}
 
   make -C build
 }
