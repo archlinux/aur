@@ -25,8 +25,7 @@ package() {
   # Copy extension files into place.
   find -maxdepth 1 \( -iname '*.js*' -or -iname '*.css' -or -iname '*.ui' \) -exec install -Dm644 -t "${_destdir}" '{}' +
   find -maxdepth 2 \( -iname '*.svg*' \) -exec install -Dm644 -t "${_destdir}/icons" '{}' +
-  find -maxdepth 3 \( -iname 'material*.svg*' \) -exec install -Dm644 -t "${_destdir}/icons/material-icons" '{}' +
-  find -name 'LICENSE' -exec install -Dm644 -t "${_destdir}/icons/material-icons" '{}' +
+  install -Dm644 -t "${_destdir}/icons/material-icons" icons/material-icons/*
   find -name '*.xml' -exec install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas/" '{}' +
   cd locale
   for locale in */
