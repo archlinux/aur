@@ -1,6 +1,6 @@
 pkgbase = ocenaudio-bin
 	pkgdesc = Cross-platform, easy to use, fast and functional audio editor
-	pkgver = 3.11.6
+	pkgver = 3.11.7
 	pkgrel = 1
 	url = https://www.ocenaudio.com/
 	arch = i686
@@ -12,9 +12,9 @@ pkgbase = ocenaudio-bin
 	depends = qt5-base
 	provides = ocenaudio
 	conflicts = ocenaudio
-	source_i686 = ocenaudio-3.11.6_i686.deb::https://www.ocenaudio.com/downloads/index.php/ocenaudio_debian32.deb?version=v3.11.6
-	sha256sums_i686 = fd684051b854750252acc0e60a39b8f25b4f6de0cf2e3c36489a6a187b28cf65
-	source_x86_64 = ocenaudio-3.11.6_x86_64.tar.xz::https://www.ocenaudio.com/downloads/index.php/ocenaudio_archlinux.pkg.tar.xz?version=v3.11.6
-	sha256sums_x86_64 = 74b6640d11ec5f1355d7eeabc69ce7cf4a107a2f30060de8153385b00cf6f30d
+	source_i686 = ocenaudio-3.11.7_i686.deb::https://www.ocenaudio.com/downloads/index.php/ocenaudio_debian32.deb?version=v3.11.7
+	sha256sums_i686 = 50fbde7d2fdcd0f62c41f589cb4dfb8f003fd115dfd894d68a78fa89ba621a96
+	source_x86_64 = ocenaudio-3.11.7_x86_64.tar.xz::https://www.ocenaudio.com/downloads/index.php/ocenaudio_archlinux.pkg.tar.xz?version=v3.11.7
+	sha256sums_x86_64 = d873a0ef496cf6ac91f7e78077ef43e48a95210c30b7529b1451072c7eca11e8
 
 pkgname = ocenaudio-bin
