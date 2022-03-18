@@ -13,6 +13,8 @@ pkgbase = telegram-tdlib-purple-minimal-git
 	provides = telegram-tdlib-purple=0.7.9.r496.80a9163
 	conflicts = telegram-tdlib-purple
 	source = telegram-tdlib-purple-minimal-git::git+https://github.com/ars3niy/tdlib-purple
+	source = PR154-fix-build-with-tdlib-1.8.0.patch
 	sha256sums = SKIP
+	sha256sums = 04c6c003b79d35177027dd2e5a7635738d5f96a92abdad1824900710109e41c8
 
 pkgname = telegram-tdlib-purple-minimal-git

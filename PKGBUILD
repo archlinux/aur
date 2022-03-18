@@ -11,14 +11,21 @@ depends=(libpurple telegram-tdlib)
 makedepends=(cmake git)
 conflicts=(telegram-tdlib-purple)
 provides=(telegram-tdlib-purple="${pkgver}")
-source=($pkgname::git+"$url")
-sha256sums=(SKIP)
+source=($pkgname::git+"$url" PR154-fix-build-with-tdlib-1.8.0.patch)
+sha256sums=(SKIP 04c6c003b79d35177027dd2e5a7635738d5f96a92abdad1824900710109e41c8)
 
 pkgver() {
 	cd $pkgname
 	ver=$(awk '/^\s*set\(VERSION / {sub(")","",$2); print $2}' CMakeLists.txt)
 	[[ -n "$ver" ]] || { echo >&2 "ERROR: Failed to parse version from CMakeLists.txt"; exit 1; }
 	printf "%s.r%s.%s" "$ver" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd $pkgname
+	# See https://github.com/ars3niy/tdlib-purple/pull/154
+	p=PR154-fix-build-with-tdlib-1.8.0.patch
+	patch --dry-run -tNp1 -R -i "$srcdir"/$p || patch -tNp1 -i "$srcdir"/$p
 }
 
 build() {
