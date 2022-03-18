@@ -1,0 +1,25 @@
+@@ -, +, @@ 
+---
+ src/common/unmime.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+--- a/src/common/unmime.c	
++++ a/src/common/unmime.c	
+@@ -112,6 +112,17 @@ gchar *unmime_header(const gchar *encoded_str, gboolean addr_field)
+ 		memcpy(charset, eword_begin_p + 2, len);
+ 		charset[len] = '\0';
+ 		encoding = g_ascii_toupper(*(encoding_begin_p + 1));
++		/* use supersets transparently when possible */
++		if (!strcasecmp(charset, CS_ISO_8859_1))
++			strncpy(charset, CS_WINDOWS_1252, sizeof(charset));
++		else if (!strcasecmp(charset, CS_X_GBK))
++			strncpy(charset, CS_GB18030, sizeof(charset));
++		else if (!strcasecmp(charset, CS_GBK))
++			strncpy(charset, CS_GB18030, sizeof(charset));
++		else if (!strcasecmp(charset, CS_GB2312))
++			strncpy(charset, CS_GB18030, sizeof(charset));
++		else if (!strcasecmp(charset, CS_X_VIET_VPS))
++			strncpy(charset, CS_WINDOWS_874, sizeof(charset));
+ 
+ 		if (encoding == 'B') {
+ 			gchar *tmp;
+-- 
