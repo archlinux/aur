@@ -1,0 +1,16 @@
+pkgbase = haskell-lambdabot-trusted
+	pkgdesc = Lambdabot trusted code.
+	pkgver = 5.3.0.2
+	pkgrel = 1
+	url = https://wiki.haskell.org/Lambdabot
+	arch = x86_64
+	license = custom:GPL
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-quickcheck
+	depends = haskell-quickcheck-safe
+	depends = haskell-oeis
+	source = https://hackage.haskell.org/packages/archive/lambdabot-trusted/5.3.0.2/lambdabot-trusted-5.3.0.2.tar.gz
+	sha256sums = 0d593bf63b83731df364f9b6a04d9225918f8d1c449fe9545499d2725a558fd7
+
+pkgname = haskell-lambdabot-trusted
