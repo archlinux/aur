@@ -5,13 +5,13 @@
 
 pkgname=vte3-git
 
-pkgver=0.69.0.6.58cb92a
+pkgver=0.69.0.8.9381607
 pkgrel=1
 pkgdesc="Virtual Terminal Emulator widget for use with GTK3"
 arch=('x86_64')
 license=('LGPL')
 options=('!emptydirs')
-makedepends=('intltool' 'gobject-introspection' 'vala' 'gtk-doc' 'gperf' 'meson' 'ninja')
+makedepends=('intltool' 'gobject-introspection' 'vala' 'gtk-doc' 'gperf' 'meson' 'ninja' 'git')
 url="http://www.gnome.org"
 depends=('gtk3' 'vte-common' 'glibc' 'pcre2')
 
@@ -29,10 +29,11 @@ prepare() {
 
 pkgver() {
   version=$(grep "\#define VERSION " build/config.h | sed 's/\#define VERSION //' | sed 's/\"//g')
-  hash=$(git log --pretty=format:'%h' -n 1)
-  revision=$(git rev-list --count HEAD)
+  hash=$(git -C $SRCDEST log --pretty=format:'%h' -n 1)
+  revision=$(git -C $SRCDEST  rev-list --count HEAD)
   echo $version.$revision.$hash
 }
+
 
 build() {
   ninja -C build
