@@ -1,0 +1,15 @@
+pkgbase = haskell-prim-uniq
+	pkgdesc = Opaque unique identifiers in primitive state monads
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/obsidiansystems/prim-uniq
+	arch = x86_64
+	license = custom:PublicDomain
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-dependent-sum
+	depends = haskell-primitive
+	source = https://hackage.haskell.org/packages/archive/prim-uniq/0.2/prim-uniq-0.2.tar.gz
+	sha256sums = bbadfebdc4def5cc8a9db3458df710c45f2b4e72ee5d2e6c42562b77c7a6f2d0
+
+pkgname = haskell-prim-uniq
