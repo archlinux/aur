@@ -15,10 +15,10 @@ sha256sums=('c8b7e269f214ce97b81930cdd9ca34b28d8d7f8736b69d5ea76d6f3f9dd73de9'
 
 package() {
     local _uuid="color-picker@tuberry"
-    local _destdir="$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
+    local _destdir="${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
     
-    install -Dm644 -t "$_destdir" metadata.json *.js *.css
-    install -Dm644 -t "$_destdir/icons" icons/*.svg
+    install -Dm644 -t "${_destdir}" metadata.json *.js *.css
+    install -Dm644 -t "${_destdir}/icons" icons/*.svg
     install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas/" org.gnome.shell.extensions.color-picker.gschema.xml
     
     cd locale
