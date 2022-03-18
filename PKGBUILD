@@ -12,7 +12,7 @@
 
 pkgbase=bcompare
 pkgname=('bcompare' 'bcompare-kde5' 'bcompare-kde4' 'bcompare-nautilus' 'bcompare-thunar' 'bcompare-cinnamon' 'bcompare-mate')
-pkgver=4.4.1.26165
+pkgver=4.4.2.26348
 pkgrel=1
 arch=('i686' 'x86_64')
 url='https://www.scootersoftware.com'
@@ -22,8 +22,8 @@ depends=('fontconfig' 'libsm' 'libxcursor' 'libxft' 'libxinerama'  'libxrandr' '
 makedepends=('sed')
 source_x86_64=("https://www.scootersoftware.com/${pkgbase}-${pkgver}.x86_64.tar.gz")
 source_i686=("https://www.scootersoftware.com/${pkgbase}-${pkgver}.i386.tar.gz")
-sha256sums_i686=('fbaf3ad34dd3e8d3dce12bc7bd99c4f97808f1ac3e2309d92917a4f5a0864eef')
-sha256sums_x86_64=('a3cbf492c64e5f15b2486bcea73ca86b1dad36858274f01b41340dd2cf69f90c')
+sha256sums_i686=('ebced62bf163c89e613ca548f4708f2890f5cf5e7f83e8799bf1e29bf4fcc0b5')
+sha256sums_x86_64=('ad994a2c6729411c21f57d344be6605b14655d4ca8a5a67a881670e7d87f48a7')
 options=('!strip') # Do not strip binaries because it breaks them down
 
  prepare() {
@@ -99,6 +99,11 @@ package_bcompare() {
   rm -rf "${pkgdir}/usr/lib/nemo"
 
   #Clean unneded files
+  if [ "$CARCH" = "x86_64" ]; then
+    rm "${pkgdir}/usr/lib/beyondcompare/bcmount32"
+  elif [ "$CARCH" = "i686" ]; then
+    rm "${pkgdir}/usr/lib/beyondcompare/bcmount64"
+  fi
   pushd usr/lib/beyondcompare/ > /dev/null
   rm -f uninstall.sh RPM-GPG-KEY-scootersoftware scootersoftware.repo kde_context_menu
   mv help "${pkgdir}/usr/share/doc/beyondcompare"
