@@ -48,15 +48,31 @@
 #Send a verification email when adding an email integration.
 #EMAIL_USE_VERIFICATION=True
 
-#The database engine to use. Possible values: sqlite, postgres, mysql.
-#DB="sqlite"
+# Uncomment to use Postgres:
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'HOST': 'your-database-host-here',
+#         'PORT': 'your-database-port-here',
+#         'NAME': 'your-database-name-here',
+#         'USER': 'your-database-user-here',
+#         'PASSWORD': 'your-database-password-here',
+#         'TEST': {'CHARSET': 'UTF8'}
+#     }
+# }
 
-#Database settings.
-#DB_CONN_MAX_AGE=0
-#DB_HOST=""
-#DB_PORT=""
-#DB_USER=""
-#DB_PASSWORD=""
+# Uncomment to use MySQL:
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'HOST': 'your-database-host-here',
+#         'PORT': 'your-database-port-here',
+#         'NAME': 'your-database-name-here',
+#         'USER': 'your-database-user-here',
+#         'PASSWORD': 'your-database-password-here',
+#         'TEST': {'CHARSET': 'UTF8'}
+#     }
+# }
 
 #Set this to hc (or your database name, if something different) for PostgreSQL or MySQL.
 #DB_NAME="/usr/share/webapps/healthchecks/hc.sqlite"
