@@ -1,7 +1,7 @@
 # Maintainer: TingPing tingping@tingping.se
 
 pkgname=hexchat-git
-pkgver=2.14.2.r25.g308838da
+pkgver=2.16.1.r2.g94efa378
 pkgrel=1
 pkgdesc='A GTK+ based IRC client'
 arch=('i686' 'x86_64' 'armv6h')
@@ -17,7 +17,7 @@ optdepends=('enchant: for spell check'
 provides=('hexchat')
 conflicts=('hexchat' 'hexchat-lua-git')
 replaces=('hexchat-lua-git')
-source=('git://github.com/hexchat/hexchat.git')
+source=('git+https://github.com/hexchat/hexchat.git')
 md5sums=('SKIP')
 _gitname='hexchat'
 
