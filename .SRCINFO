@@ -1,0 +1,16 @@
+pkgbase = awm-git
+	pkgdesc = A floating window manager written with XCB.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/abxxbo/awm.git
+	arch = x86_64
+	arch = x86
+	license = GPL
+	makedepends = libxcb
+	makedepends = xcb-util
+	makedepends = xcb-util-keysyms
+	makedepends = xcb-util-wm
+	source = git+https://github.com/abxxbo/awm.git
+	md5sums = SKIP
+
+pkgname = awm-git
