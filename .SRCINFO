@@ -1,13 +1,12 @@
 pkgbase = whatami-git
 	pkgdesc = Get ready for some painful insults...
-	pkgver = r25.8e23e7a
+	pkgver = r30.5b49380
 	pkgrel = 1
 	url = https://github.com/kz6fittycent/whatami
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	source = git://github.com/kz6fittycent/whatami.git
+	source = git+https://github.com/kz6fittycent/whatami.git
 	sha256sums = SKIP
 
 pkgname = whatami-git
-
