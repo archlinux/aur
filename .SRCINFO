@@ -1,6 +1,6 @@
 pkgbase = pow-git
 	pkgdesc = A lightning fast AUR search utility written in C.
-	pkgver = r27.da7188d
+	pkgver = r39.7d20037
 	pkgrel = 1
 	url = https://git.envs.net/Slips/pow
 	arch = i386
@@ -8,7 +8,7 @@ pkgbase = pow-git
 	license = GPL3
 	makedepends = git
 	makedepends = scdoc
-	makedepends = gcc
+	makedepends = tcc
 	depends = json-c
 	provides = pow
 	conflicts = pow
