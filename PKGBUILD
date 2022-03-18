@@ -1,7 +1,7 @@
 # Maintainer: Gordian Edenhofer <gordian.edenhofer@gmail.com>
 
 pkgname=munge-git
-pkgver=0.5.14.r16.gcdfdf73
+pkgver=0.5.14.r53.g0c37cc0
 pkgrel=1
 pkgdesc="An authentication service for creating and validating credentials. It is designed to be highly scalable for use in an HPC cluster environment."
 arch=('i686' 'x86_64' 'armv7h')
@@ -49,15 +49,6 @@ package() {
 
 	install -D -m644 ../munge.sysusers "${pkgdir}/usr/lib/sysusers.d/munge.conf"
 	install -D -m644 ../munge.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/munge.conf"
-
-	# Remove obsolete init script (Arch Linux uses SystemD)
-	rm -f "${pkgdir}"/etc/init.d/munge
-	rmdir "${pkgdir}"/etc/init.d
-
-	# It is bad practice to put package-files in /run
-	# The dir /var/run/munge will be created by systemd-tmpfiles
-	rmdir "${pkgdir}"/var/run/munge
-	rmdir "${pkgdir}"/var/run
 
 	# Securing the installation (this is optional)
 	chmod 0700 "${pkgdir}"/etc/munge
