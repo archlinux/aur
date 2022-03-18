@@ -11,7 +11,7 @@ makedepends=('git' 'cargo')
 provides=('bombadil')
 conflict=('bombadil-bin')
 url='https://github.com/oknozor/toml-bombadil'
-source=("$pkgname"::"git://github.com/oknozor/toml-bombadil.git")
+source=("$pkgname"::"git+https://github.com/oknozor/toml-bombadil.git")
 sha256sums=('SKIP')
 
 pkgver() {

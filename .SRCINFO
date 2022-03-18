@@ -9,7 +9,7 @@ pkgbase = bombadil-git
 	makedepends = cargo
 	provides = bombadil
 	options = !lto
-	source = bombadil-git::git://github.com/oknozor/toml-bombadil.git
+	source = bombadil-git::git+https://github.com/oknozor/toml-bombadil.git
 	sha256sums = SKIP
 
 pkgname = bombadil-git
