@@ -1,6 +1,6 @@
 # Maintainer:  antman666 <945360554@qq.com>
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Contributor: graysky <graysky AT archlinux DOT us>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 ### BUILD OPTIONS
 # Set the next two variables to ANYTHING that is not null to enable them
@@ -8,18 +8,37 @@
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
-# Only compile active modules to VASTLY reduce the number of modules built and
-# the build time.
+# Only compile select modules to reduce the number of modules built
 #
 # To keep track of which modules are needed for your specific system/hardware,
 # give module_db a try: https://aur.archlinux.org/packages/modprobed-db
 # This PKGBUILD reads the database kept if it exists
-#
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
 
+# optimization (default O3)
+if [ -z ${_use_O3+x} ];then
+  _use_O3=y
+fi
+
+# cpufreq gov (available:performance,ondemand,conservative,userspace,schedutil,powersave)
+if [ -z ${_cpufreq+x} ]; then
+  _cpufreq=performance
+fi
+
+# LRU setting
+if [ -z ${_use_lru+x} ]; then
+  _use_lru=y
+fi
+
+# zram setting
+if [ -z ${_use_zram+x} ]; then
+  _use_zram=y
+fi
+
 # Optionally select a sub architecture by number or leave blank which will
-# require user interaction during the build.
+# require user interaction during the build. Note that the generic (default)
+# option is 36.
 #
 #  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
 #  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3) (NEW)
@@ -62,7 +81,6 @@ _localmodcfg=
 #  39. Generic-x86-64-v4 (GENERIC_CPU4) (NEW)
 #  40. Intel-Native optimizations autodetected by GCC (MNATIVE_INTEL) (NEW)
 #  41. AMD-Native optimizations autodetected by GCC (MNATIVE_AMD) (NEW)
-## It will select by itself
 if [ -z ${_subarch+x} ]; then
   cpu=`grep vendor_id /proc/cpuinfo | awk -F: '{print $2}' | tail -1`
   if [ $cpu == 'GenuineIntel' ]; then
@@ -75,9 +93,8 @@ if [ -z ${_subarch+x} ]; then
 fi
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
-
 pkgbase=linux-ck-uksm
-pkgver=5.16.12
+pkgver=5.16.15
 pkgrel=1
 _major=5.16
 arch=(x86_64)
@@ -94,7 +111,7 @@ _jobs=$(nproc)
 # https://ck-hack.blogspot.com/2021/08/514-and-future-of-muqss-and-ck-once.html
 # thankfully xanmod keeps the hrtimer patches up to date
 _commit=c8fd0bce08e6219df068e717c53aa08a7fbb496d
-_xan=linux-5.15.y-xanmod
+_xan=linux-5.16.y-xanmod
 
 source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar".{xz,sign}
         config         # the main kernel config file
@@ -114,14 +131,14 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar".{xz,s
         "0012-amd.patch::${_patches_url}/amd64-patches/0001-amd64-patches.patch"
         "0013-cpufreq.patch::${_patches_url}/cpufreq-patches-v5/0001-cpufreq-patches.patch"
         "0014-f2fs.patch::${_patches_url}/f2fs-patches-v4/0001-f2fs-patches.patch"
+        "0015-O3.patch::https://github.com/xanmod/linux-patches/raw/master/linux-5.16.y-xanmod/xanmod/0011-XANMOD-init-Kconfig-Enable-O3-KBUILD_CFLAGS-optimiza.patch"
 )
 
 validpgpkeys=(
-              'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
-              '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
+  'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
+  '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-
-b2sums=('762f7605607116d5c25535079f029d666a715c8d2fcb8f6f91fee8a2aefbf62e7ee9767de50b6dd4f9c16f88b5dc8b4a40f0d8f0a766c6a913978b1f96c8c0b7'
+b2sums=('5b14c19cca863da26f226b30f7a04d5767c90a882f9ff06241659f54632410868863a00e6ba91d82272e315d20238d3edcb7d4b6475bcb0162dfc47b6890ecc5'
         'SKIP'
         '67bfa31e67ba32e55d8619a7a1b6a1c4dcb11db6a9777347c43bc35b781e8392c31f3c48e267e538e7d1739f3edbd1ecc9781fcdad04f66651058cf3c63a338d'
         '534091fb5034226d48f18da2114305860e67ee49a1d726b049a240ce61df83e840a9a255e5b8fa9279ec07dd69fb0aea6e2e48962792c2b5367db577a4423d8d'
@@ -139,7 +156,8 @@ b2sums=('762f7605607116d5c25535079f029d666a715c8d2fcb8f6f91fee8a2aefbf62e7ee9767
         'd6e61164d63927177c2c9158de46b8884e0557269b97e0f57f3dd6cdce4febf932b03624ba8282df9a60fb133086292594ba09f191154f98d8c1e5b29bba65d9'
         'eae5453f2ff6f3d7258be9838d8eaf3ea42741dde28f5e85644438fa2725ca45db122eb7298ebadc2c1379309dc3712083013d2439b8c02ce076333b58866dd5'
         '827be1d9fe6762364553b452d123648e5f44e2caf12c451860c65bfa91ae6b40d776a4d329a20064bc7be381f7118b9db2bc516cc16a398e717f11e6e4416add'
-        '47edd0997d84b7afe127435b074452474ceb8bb34d8f65750e20e782a87eb4f2220e750de5a22eca7f82d76ee606eabc3441f9ba8280e14770f949d9962aa76e')
+        '47edd0997d84b7afe127435b074452474ceb8bb34d8f65750e20e782a87eb4f2220e750de5a22eca7f82d76ee606eabc3441f9ba8280e14770f949d9962aa76e'
+        'ed60acb2899a24e727d42428e7ce0dc045e130ba1e84b675077019a613a6ae8add7d4d1d0477998194c5163cded0775ed0713b68f88237b092faa75dfab80167')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -148,7 +166,7 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 prepare() {
   cd linux-${pkgver}
 
-  msg2 "Setting version..."
+  echo "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
@@ -158,11 +176,11 @@ prepare() {
     src="${src%%::*}"
     src="${src##*/}"
     [[ $src = 0*.patch ]] || continue
-    msg2 "Applying patch $src..."
+    echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
 
-  msg2 "Setting config..."
+  echo "Setting config..."
   cp ../config .config
 
   # disable CONFIG_DEBUG_INFO=y at build time otherwise memory usage blows up
@@ -186,25 +204,127 @@ prepare() {
   # FS#66613
   # https://bugzilla.kernel.org/show_bug.cgi?id=207173#c6
   scripts/config --disable CONFIG_KVM_WERROR
+  
+  # ck recommends 1000 Hz tick and the hrtimer patches in lieu of ck1
   scripts/config --enable CONFIG_HZ_1000
 
-  scripts/config --enable CONFIG_FTRACE
-  scripts/config --enable CONFIG_FTRACE_SYSCALLS
+  # these are ck's htrimer patches
+  echo "Patching with ck hrtimer patches..."
 
-  # ck patchset itself
-  msg2 "Patching with ck hrtimer patches..."
-  for i in ../linux-patches-"$_commit"/"$_xan"/ck-hrtimer/0*.patch; do
+  #for i in ../linux-patches-"$_commit"/"$_xan"/ck-hrtimer/0*.patch; do
+  for i in ../linux-patches-"$_commit"/linux-5.15.y-xanmod/ck-hrtimer/0*.patch; do
     patch -Np1 -i $i
   done
 
+  if [ "$_cpufreq" == "performance" ]; then
+    msg2 "Change cpu freq into performance"
+    scripts/config --enable CONFIG_CPU_FREQ_GOV_PERFORMANCE
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+    scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
+  elif [ "$_cpufreq" == "ondemand" ]; then
+    msg2 "Change cpu freq into ondemand"
+    scripts/config --enable CONFIG_CPU_FREQ_GOV_ONDEMAND
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+    scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND
+  elif [ "$_cpufreq" == "conservative" ]; then
+    msg2 "Change cpu freq into ondemand"
+    scripts/config --enable CONFIG_CPU_FREQ_GOV_CONSERVATIVE
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+    scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_CONSERVATIVE
+  elif [ "$_cpufreq" == "userspace" ]; then
+    msg2 "Change cpu freq into ondemand"
+    scripts/config --enable CONFIG_CPU_FREQ_GOV_USERSPACE
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+    scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_USERSPACE
+  elif [ "$_cpufreq" == "schedutil" ]; then
+    msg2 "Change cpu freq into ondemand"
+    scripts/config --enable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
+    scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+  else
+    error "Invalid value: $_cpufreq"
+  fi
+
+  if [ "$_use_lru" == "y" ]; then
+    msg2 "Enable LRU"
+    scripts/config --enable CONFIG_LRU_GEN
+    scripts/config --set-val CONFIG_NR_LRU_GENS 7
+    scripts/config --set-val CONFIG_TIERS_PER_GEN 4
+    scripts/config --enable CONFIG_LRU_GEN_ENABLED
+    scripts/config --disable CONFIG_LRU_GEN_STATS
+  fi
+
+  if [ "$_use_O3" == "y" ]; then
+    msg2 "Enable O3"
+    scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_SIZE
+    scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
+  fi
+
+  if [ "$_subarch" == 98 ] || [ "$_subarch" == 99 ]; then
+    scripts/config --disable CONFIG_CPU_SUP_HYGON
+    scripts/config --disable CONFIG_CPU_SUP_CENTAUR
+    scripts/config --disable CONFIG_CPU_SUP_ZHAOXIN
+    scripts/config --disable CONFIG_AGP_SIS
+    scripts/config --disable CONFIG_AGP_VIA
+    scripts/config --set-val CONFIG_NR_CPUS ${_jobs}
+    if [ "$_subarch" == 98 ]; then
+      msg2 "Setting for Intel CPU"
+      scripts/config --disable CONFIG_CPU_SUP_AMD
+      scripts/config --disable CONFIG_AMD_MEM_ENCRYPT
+      scripts/config --disable CONFIG_X86_AMD_PSTATE
+      scripts/config --disable CONFIG_X86_ACPI_CPUFREQ_CPB
+      scripts/config --disable CONFIG_X86_POWERNOW_K8
+      scripts/config --disable CONFIG_X86_AMD_FREQ_SENSITIVITY
+      scripts/config --disable CONFIG_AGP_AMD64
+      scripts/config --enable CONFIG_CPU_SUP_INTEL
+      scripts/config --enable CONFIG_X86_MCE_INTEL
+      scripts/config --enable CONFIG_PERF_EVENTS_INTEL_UNCORE
+      scripts/config --enable CONFIG_PERF_EVENTS_INTEL_RAPL
+      scripts/config --enable CONFIG_PERF_EVENTS_INTEL_CSTATE
+      scripts/config --enable CONFIG_MICROCODE_INTEL
+      scripts/config --enable CONFIG_X86_INTEL_PSTATE
+      scripts/config --enable CONFIG_X86_SPEEDSTEP_CENTRINO
+      scripts/config --modules CONFIG_X86_P4_CLOCKMOD
+      scripts/config --enable CONFIG_INTEL_IDLE
+      scripts/config --enable CONFIG_AGP_INTEL
+    elif [ "$_subarch" == 99 ]; then
+      msg2 "Setting for AMD CPU"
+      scripts/config --disable CONFIG_CPU_SUP_INTEL
+      scripts/config --disable CONFIG_INTEL_IDLE
+      scripts/config --disable CONFIG_AGP_INTEL
+      scripts/config --enable CONFIG_CPU_SUP_AMD
+      scripts/config --enable CONFIG_X86_MCE_AMD
+      scripts/config --enable CONFIG_PERF_EVENTS_INTEL_RAPL
+      scripts/config --enable CONFIG_PERF_EVENTS_AMD_POWER
+      scripts/config --enable CONFIG_PERF_EVENTS_AMD_UNCORE
+      scripts/config --enable CONFIG_MICROCODE_AMD
+      scripts/config --enable CONFIG_AMD_MEM_ENCRYPT
+      scripts/config --enable CONFIG_X86_AMD_PSTATE
+      scripts/config --enable CONFIG_X86_ACPI_CPUFREQ_CPB
+      scripts/config --enable CONFIG_X86_POWERNOW_K8
+      scripts/config --modules CONFIG_X86_AMD_FREQ_SENSITIVITY
+      scripts/config --enable CONFIG_AGP_AMD64
+    fi
+  fi
+
+  if [ "$_use_zram" == "y" ]; then
+    msg2 "Enable zram compression to LZ4"
+    scripts/config --enable CONFIG_ZSMALLOC
+    scripts/config --enable CONFIG_ZRAM
+    scripts/config --disable CONFIG_ZRAM_DEF_COMP_LZORLE
+    scripts/config --enable CONFIIG_ZRAM_DEF_COMP_LZ4
+    scripts/config --set-str CONFIG_ZRAM_DEF_COMP lz4
+
+    scripts/config --disable CONFIG_ZSWAP
+  fi
+
   # non-interactively apply ck1 default options
   # this isn't redundant if we want a clean selection of subarch below
-  msg2 "Applying config..."
   make olddefconfig
+  diff -u ../config .config || :
 
   # https://github.com/graysky2/kernel_gcc_patch
   # make sure to apply after olddefconfig to allow the next section
-  msg2 "Patching to enable GCC optimization for other uarchs..."
+  echo "Patching to enable GCC optimization for other uarchs..."
   patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.15+.patch"
 
   if [ -n "$_subarch" ]; then
@@ -228,7 +348,7 @@ prepare() {
     fi
 
   make -s kernelrelease > version
-  msg2 "Prepared $pkgbase version $(<version)"
+  echo "Prepared $pkgbase version $(<version)"
 
   [[ -z "$_makenconfig" ]] || make nconfig
 
@@ -241,11 +361,11 @@ prepare() {
 
 build() {
   cd linux-${pkgver}
-  make -j${_jobs} all
+  make all
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with ck's hrtimer,bbr2 patches,etc"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with ck's hrtimer patches"
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
@@ -294,11 +414,11 @@ _package-headers() {
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
+  # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  #install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
@@ -308,13 +428,16 @@ _package-headers() {
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/13146
+  # https://bugs.archlinux.org/task/13146
   install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # http://bugs.archlinux.org/task/20402
+  # https://bugs.archlinux.org/task/20402
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
@@ -358,7 +481,6 @@ _package-headers() {
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
-
 }
 
 pkgname=("$pkgbase" "$pkgbase-headers")
