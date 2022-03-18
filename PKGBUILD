@@ -1,7 +1,7 @@
 # Maintainer: c0repwn3r <core@coredoes.dev>
 pkgname=i386-elf-gdb
 pkgver=11.1
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="GNU debugger crosscompiled for i386 development"
 arch=(x86_64)

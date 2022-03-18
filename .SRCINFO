@@ -1,7 +1,7 @@
 pkgbase = i386-elf-gdb
 	pkgdesc = GNU debugger crosscompiled for i386 development
 	pkgver = 11.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.gnu.org/software/gdb
 	arch = x86_64
 	groups = i386-elf-toolchain
