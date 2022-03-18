@@ -1,0 +1,131 @@
+From 4fabc3770f5b91987825c8aac22714042ec1c52c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Na=C3=AFm=20Favier?= <n@monade.li>
+Date: Tue, 22 Feb 2022 18:52:56 +0100
+Subject: [PATCH] Support GHC 9
+
+---
+ .../lambdabot-novelty-plugins.cabal           |  7 +++---
+ .../src/Lambdabot/Plugin/Novelty/Dice.hs      | 25 ++++++++++---------
+ .../Lambdabot/Plugin/Novelty/Numberwang.hs    |  6 +++--
+ .../src/Lambdabot/Plugin/Novelty/Quote.hs     |  5 ++--
+ 4 files changed, 24 insertions(+), 19 deletions(-)
+
+diff --git a/lambdabot-novelty-plugins/lambdabot-novelty-plugins.cabal b/lambdabot-novelty-plugins/lambdabot-novelty-plugins.cabal
+index 69c8447..88cc5cd 100644
+--- a/lambdabot-novelty-plugins/lambdabot-novelty-plugins.cabal
++++ b/lambdabot-novelty-plugins/lambdabot-novelty-plugins.cabal
+@@ -66,12 +66,13 @@ library
+                         binary                  >= 0.5,
+                         bytestring              >= 0.9,
+                         containers              >= 0.4,
+-                        dice                    >= 0.1,
++                        -- dice                    >= 0.1,
+                         directory               >= 1.1,
+                         lambdabot-core          >= 5.3 && < 5.4,
+-                        misfortune              >= 0.1,
++                        -- misfortune              >= 0.1,
++                        mwc-random              >= 0.15.0.0,
+                         process                 >= 1.1,
+-                        random-fu               >= 0.2.6.2,
++                        random-fu               >= 0.3.0.0,
+                         regex-tdfa              >= 1.1,
+ 
+                         -- runtime dependencies
+diff --git a/lambdabot-novelty-plugins/src/Lambdabot/Plugin/Novelty/Dice.hs b/lambdabot-novelty-plugins/src/Lambdabot/Plugin/Novelty/Dice.hs
+index 246f234..a71d0cf 100644
+--- a/lambdabot-novelty-plugins/src/Lambdabot/Plugin/Novelty/Dice.hs
++++ b/lambdabot-novelty-plugins/src/Lambdabot/Plugin/Novelty/Dice.hs
+@@ -8,7 +8,7 @@ import Lambdabot.Plugin
+ import Lambdabot.Util
+ 
+ import Data.List
+-import Data.Random.Dice (rollEm)
++-- import Data.Random.Dice (rollEm)
+ 
+ type Dice = ModuleT () LB
+ 
+@@ -26,14 +26,15 @@ dicePlugin = newModule
+ 
+ doDice :: Bool -> String -> Cmd Dice ()
+ doDice printErrs text = do
+-    user <- showNick =<< getSender
+-    result <- io (rollEm text)
+-    case result of
+-        Left err    -> if printErrs
+-            then say (trimError err)
+-            else return ()
+-        Right str   -> 
+-            say (limitStr 75 (user ++ ": " ++ str))
+-    
+-    where
+-        trimError = concat . intersperse ": " . tail . lines . show
++    say "dice is temporarily disabled"
++    -- user <- showNick =<< getSender
++    -- result <- io (rollEm text)
++    -- case result of
++    --     Left err    -> if printErrs
++    --         then say (trimError err)
++    --         else return ()
++    --     Right str   ->
++    --         say (limitStr 75 (user ++ ": " ++ str))
++    --
++    -- where
++    --     trimError = concat . intersperse ": " . tail . lines . show
+diff --git a/lambdabot-novelty-plugins/src/Lambdabot/Plugin/Novelty/Numberwang.hs b/lambdabot-novelty-plugins/src/Lambdabot/Plugin/Novelty/Numberwang.hs
+index ae41eb4..7264278 100644
+--- a/lambdabot-novelty-plugins/src/Lambdabot/Plugin/Novelty/Numberwang.hs
++++ b/lambdabot-novelty-plugins/src/Lambdabot/Plugin/Novelty/Numberwang.hs
+@@ -7,7 +7,9 @@ import Control.Monad
+ import Data.Random
+ import Data.Random.Distribution.Poisson
+ import Lambdabot.Plugin
++import Lambdabot.Util
+ import Numeric
++import System.Random.MWC
+ 
+ 
+ data NumberwangState = State
+@@ -23,7 +25,7 @@ conDist = poisson (32  :: Double)
+ 
+ numberwangPlugin :: Module NumberwangState
+ numberwangPlugin = newModule
+-    { moduleDefState = sample (State <$> cmdDist <*> conDist)
++    { moduleDefState = io $ flip sampleFrom (State <$> cmdDist <*> conDist) =<< createSystemRandom
+     , moduleCmds = return
+         [ (command "numberwang")
+             { help = say "@numberwang <number>: Determines if it is Numberwang."
+@@ -61,7 +63,7 @@ checkNumberwang :: (MonadLBState m, LBState m ~ NumberwangState) =>
+ checkNumberwang cmd l = withState cmd $ \ n setN nDist -> do
+     if n <= l
+         then do
+-            setN =<< lb (sample nDist)
++            setN =<< io (flip sampleFrom nDist =<< createSystemRandom)
+             return True
+         else do
+             setN (n - l)
+diff --git a/lambdabot-novelty-plugins/src/Lambdabot/Plugin/Novelty/Quote.hs b/lambdabot-novelty-plugins/src/Lambdabot/Plugin/Novelty/Quote.hs
+index 022dbfd..fe93505 100644
+--- a/lambdabot-novelty-plugins/src/Lambdabot/Plugin/Novelty/Quote.hs
++++ b/lambdabot-novelty-plugins/src/Lambdabot/Plugin/Novelty/Quote.hs
+@@ -9,7 +9,7 @@ import Lambdabot.Util
+ 
+ import qualified Data.ByteString.Char8 as P
+ import Data.Char
+-import Data.Fortune
++-- import Data.Fortune
+ import Data.List
+ import qualified Data.Map as M
+ import Data.Maybe
+@@ -107,7 +107,8 @@ quotePlugin = newModule
+     }
+ 
+ fortune :: [FilePath] -> Cmd Quote ()
+-fortune xs = io (resolveFortuneFiles All xs >>= randomFortune) >>= say
++-- fortune xs = io (resolveFortuneFiles All xs >>= randomFortune) >>= say
++fortune _ = say "fortune is temporarily disabled"
+ 
+ ------------------------------------------------------------------------
+ 
+-- 
+2.35.1
+

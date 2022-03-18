@@ -1,0 +1,22 @@
+pkgbase = haskell-lambdabot-novelty-plugins
+	pkgdesc = Novelty plugins for Lambdabot
+	pkgver = 5.3.0.2
+	pkgrel = 1
+	url = https://wiki.haskell.org/Lambdabot
+	arch = x86_64
+	license = custom:GPL
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-brainfuck
+	depends = dice
+	depends = haskell-lambdabot-core
+	depends = misfortune
+	depends = haskell-random-fu
+	depends = haskell-regex-tdfa
+	depends = unlambda
+	source = https://hackage.haskell.org/packages/archive/lambdabot-novelty-plugins/5.3.0.2/lambdabot-novelty-plugins-5.3.0.2.tar.gz
+	source = 0001-Support-GHC-9.patch
+	sha256sums = e0648f10e4761e982d6d1d09b70fd9655070867a99f09f9619e5cc0027d43827
+	sha256sums = e3210154fe1ac2e4125a51526060efefb332e59239235317c6428e0626b254bc
+
+pkgname = haskell-lambdabot-novelty-plugins
