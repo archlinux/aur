@@ -1,6 +1,6 @@
 pkgname=python-opentsne
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.6.2
+pkgrel=1
 pkgdesc="Extensible, parallel implementations of t-SNE"
 url="https://opentsne.readthedocs.io/en/latest/"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=(
   'python-hnswlib: for fast approximate nearest neightbors'
 )
 source=("https://pypi.io/packages/source/o/openTSNE/openTSNE-${pkgver}.tar.gz")
-sha256sums=('79e7c84f485cc5bcdb03c172823968a055239ed9d2a8d8e7f7ba676e4d95b907')
+sha256sums=('92ea18afd4e34df8fb536c813c36533de892d96511f6683721003398b4fcf2e9')
 
 build() {
   cd "${srcdir}/openTSNE-$pkgver"
