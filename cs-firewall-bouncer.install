@@ -1,4 +1,12 @@
 post_install() {
+	fwcount=`pacman -Qi iptables nftables 2>&1 | grep Name | wc -l`
+	if [ ${fwcount} -lt 1 ]; then
+		echo -e "\n\n\nWarning: IPTables and|or NFTables is missing"
+		echo "Warning: This means that only IPSET is available"
+		echo "         and might not provide any useful protection"
+		echo "         Installation might fail"
+		sleep 5
+	fi
 	echo "Running cs-firewall-bouncer installation script"
 	cd /usr/local/installers/cs-firewall-bouncer
 	sh ./install.sh 
