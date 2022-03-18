@@ -1,0 +1,12 @@
+pkgbase = python-pyxbe
+	pkgdesc = Library to work with XBE files
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/mborgerson/pyxbe
+	arch = any
+	license = MIT
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pyxbe/pyxbe-0.0.3.tar.gz
+	sha256sums = c60435c877173f07fa83e5422ca7f40a10552f70a84c4c94c83b78768910d96d
+
+pkgname = python-pyxbe
