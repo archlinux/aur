@@ -1,0 +1,16 @@
+pkgbase = haskell-quickcheck-safe
+	pkgdesc = Safe reimplementation of QuickCheck's core
+	pkgver = 0.1.0.6
+	pkgrel = 1
+	url = https://github.com/int-e/QuickCheck-safe
+	arch = x86_64
+	license = custom: MIT
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-quickcheck
+	source = https://hackage.haskell.org/packages/archive/QuickCheck-safe/0.1.0.6/QuickCheck-safe-0.1.0.6.tar.gz
+	source = remove-overrestrictive-version-checks.patch
+	sha256sums = 7786a89eca0ccc8fa9ece6ef0995fafb1bc25d1d3df7024625d5181c8d4606b9
+	sha256sums = 08a09c9e7d64a5546ed9c0aaf954f578c50da6608dccce22440119bc41951ffe
+
+pkgname = haskell-quickcheck-safe
