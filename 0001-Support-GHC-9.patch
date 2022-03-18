@@ -1,0 +1,225 @@
+From 26edbdb319d61e37bf421fd5bc47c04521b3c9f0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Na=C3=AFm=20Favier?= <n@monade.li>
+Date: Tue, 22 Feb 2022 18:25:11 +0100
+Subject: [PATCH] Support GHC 9
+
+---
+ dice.cabal              |  3 +-
+ src/Data/Random/Dice.hs | 64 +++++++++++++++++++----------------------
+ 2 files changed, 32 insertions(+), 35 deletions(-)
+
+diff --git a/dice.cabal b/dice.cabal
+index 56d6b63..68ca236 100644
+--- a/dice.cabal
++++ b/dice.cabal
+@@ -28,8 +28,9 @@ source-repository head
+ Library
+   hs-source-dirs:       src
+   exposed-modules:      Data.Random.Dice
+-  build-depends:        base >= 3 && < 5, random-fu, parsec, transformers
++  build-depends:        base >= 3 && < 5, random-fu >= 0.3.0.0, mwc-random, parsec, mtl
+ 
+ Executable dice
+   hs-source-dirs:       src
++  other-modules:        Data.Random.Dice
+   main-is:              Dice.hs
+diff --git a/src/Data/Random/Dice.hs b/src/Data/Random/Dice.hs
+index 8cb5a33..3a2ec8f 100644
+--- a/src/Data/Random/Dice.hs
++++ b/src/Data/Random/Dice.hs
+@@ -1,11 +1,13 @@
+ {-# LANGUAGE CPP #-}
++{-# LANGUAGE FlexibleContexts #-}
+ module Data.Random.Dice where
+ 
+ import Data.Random
+ import Data.Random.Distribution.Uniform (integralUniform)
++import System.Random.MWC (createSystemRandom, UniformRange)
+ 
+ import Control.Monad
+-import Control.Monad.Trans.Error
++import Control.Monad.Except
+ import Data.Functor.Identity
+ import Data.Ratio
+ import Data.List
+@@ -32,7 +34,7 @@ instance Functor Expr where
+     fmap f = foldExpr (\s x -> Const s (f x)) Plus Minus Times Divide
+ 
+ foldExpr c (+) (-) (*) (/) {-(#)-} = fold
+-    where 
++    where
+         fold (Const  s a) = c s a
+         fold (Plus   x y) = fold x + fold y
+         fold (Minus  x y) = fold x - fold y
+@@ -45,24 +47,16 @@ evalExprWithDiv (/) = foldExpr (const return) (liftM2 (+)) (liftM2 (-)) (liftM2
+     where
+         divM x y = join (liftM2 (/) x y)
+ 
+-#if __GLASGOW_HASKELL__ < 808
+-evalFractionalExpr :: (Eq a, Fractional a, Monad m) => Expr a -> m a
+-#else
+-evalFractionalExpr :: (Eq a, Fractional a, MonadFail m) => Expr a -> m a
+-#endif
++evalFractionalExpr :: (Eq a, Fractional a, MonadError String m) => Expr a -> m a
+ evalFractionalExpr = evalExprWithDiv divM
+     where
+-        divM x 0 = fail "Divide by zero!"
++        divM x 0 = throwError "Divide by zero!"
+         divM x y = return (x / y)
+ 
+-#if __GLASGOW_HASKELL__ < 808
+-evalIntegralExpr :: (Integral a, Monad m) => Expr a -> m a
+-#else
+-evalIntegralExpr :: (Integral a, MonadFail m) => Expr a -> m a
+-#endif
++evalIntegralExpr :: (Integral a, MonadError String m) => Expr a -> m a
+ evalIntegralExpr = evalExprWithDiv divM
+     where
+-        divM x 0 = fail "Divide by zero!"
++        divM x 0 = throwError "Divide by zero!"
+         divM x y = return (div x y)
+ 
+ ----------------------------------------------------------------
+@@ -86,7 +80,7 @@ runExpr (Divide x y) = commute Divide x y
+ 
+ fmtIntegralExpr :: (Show a, Integral a) => Expr a -> String
+ fmtIntegralExpr (Const _ e) = show e
+-fmtIntegralExpr e = 
++fmtIntegralExpr e =
+     showParen True (fmtExprPrec showScalarConst e 0)
+     . showString " => "
+     . showError (evalIntegralExpr e)
+@@ -95,7 +89,7 @@ fmtIntegralExpr e =
+ fmtIntegralListExpr :: (Show a, Integral a) => Expr [a] -> String
+ fmtIntegralListExpr (Const _ []) = "0"
+ fmtIntegralListExpr (Const _ [e]) = show e
+-fmtIntegralListExpr e = 
++fmtIntegralListExpr e =
+     showParen True (fmtExprPrec showListConst e 0)
+     . showString " => "
+     . showError (evalIntegralExpr (fmap sum e))
+@@ -104,7 +98,7 @@ fmtIntegralListExpr e =
+ fmtSimple :: (Integral a, Show a) => Expr [a] -> String
+ fmtSimple (Const _ []) = "0"
+ fmtSimple (Const _ [e]) = show e
+-fmtSimple e = 
++fmtSimple e =
+     showParen False (fmtExprPrec showSimpleListConst e 0)
+     . showString " => "
+     . showError (evalIntegralExpr (fmap sum e))
+@@ -130,11 +124,11 @@ showSimpleListConst = showSimpleConst showsPrec
+ 
+ showSimpleRationalConst = showSimpleConst showRational
+ 
+-showError :: Show a => ErrorT String Identity a -> ShowS
++showError :: Show a => ExceptT String Identity a -> ShowS
+ showError = showErrorWith shows
+ 
+-showErrorWith f (ErrorT (Identity (Left  e))) = showString e
+-showErrorWith f (ErrorT (Identity (Right x))) = f x
++showErrorWith f (ExceptT (Identity (Left  e))) = showString e
++showErrorWith f (ExceptT (Identity (Right x))) = f x
+ 
+ showDouble :: Double -> ShowS
+ showDouble d = showString (trim (printf "%.04g" d))
+@@ -143,12 +137,12 @@ showDouble d = showString (trim (printf "%.04g" d))
+ showRational p d
+     | denominator d == 1    = shows (numerator d)
+     | otherwise             = showParen (p > 7)
+-        ( shows (numerator d) 
++        ( shows (numerator d)
+         . showChar '/'
+         . shows (denominator d)
+         )
+ 
+-showRationalWithDouble d 
++showRationalWithDouble d
+     | isInt     = showRational 0 d
+     | otherwise = showRational 0 d
+                 . showString " => "
+@@ -171,7 +165,9 @@ rollEm :: String -> IO (Either ParseError String)
+ rollEm str = case parseExpr "rollEm" str of
+     Left err    -> return (Left err)
+     Right ex    -> do
+-        ex <- sample $ runExpr ex :: IO (Expr [Integer])
++        ex <- do
++          mwc <- createSystemRandom
++          sampleFrom mwc $ runExpr ex :: IO (Expr [Integer])
+         return (Right (fmtSimpleRational (fmap (summarizeRollsOver 3) ex)))
+ --        return (Right (fmtIntegralListExpr ex))
+ 
+@@ -180,7 +176,7 @@ summarizeRollsOver n xs
+     | null (drop n xs)  = xs
+     | otherwise         = [sum xs]
+ 
+-roll :: (Integral a) => a -> a -> RVar [a]
++roll :: (Integral a, UniformRange a) => a -> a -> RVar [a]
+ roll count sides
+     | count > 100   = do
+         x <- stdNormal :: RVar Double
+@@ -196,38 +192,38 @@ roll count sides
+ ----------------------------------------------------------------
+ -- The parser
+ 
+-parseExpr :: (Integral a) => String -> String -> Either ParseError (Expr (RVar [a]))
++parseExpr :: (Integral a, UniformRange a) => String -> String -> Either ParseError (Expr (RVar [a]))
+ parseExpr src str = runParser expr False src str
+ 
+ -- a token-lexer thing
+ diceLang :: TokenParser st
+-diceLang = makeTokenParser 
++diceLang = makeTokenParser
+     (haskellStyle { reservedOpNames = ["*","/","+","-"{-,"#"-}] })
+ 
+-expr :: (Integral a) => CharParser Bool (Expr (RVar [a]))
++expr :: (Integral a, UniformRange a) => CharParser Bool (Expr (RVar [a]))
+ expr = do
+     whiteSpace diceLang
+     e <- term
+     eof
+-    
++
+     hasRolls <- getState
+     if hasRolls
+         then return e
+         else fail "no rolls in expression"
+ 
+-term :: (Integral a) => CharParser Bool (Expr (RVar [a]))
++term :: (Integral a, UniformRange a) => CharParser Bool (Expr (RVar [a]))
+ term = buildExpressionParser table primExp
+     where   table =
+-                [ [binary "*" Times AssocLeft, binary "/" Divide AssocLeft ] 
++                [ [binary "*" Times AssocLeft, binary "/" Divide AssocLeft ]
+                 , [binary "+" Plus  AssocLeft, binary "-" Minus  AssocLeft ]
+ --                , [binary "#" Repeat AssocRight]
+                 ]
+             binary name fun assoc = Infix (do{ reservedOp diceLang name; return fun }) assoc
+ 
+-primExp :: (Integral a) => CharParser Bool (Expr (RVar [a]))
++primExp :: (Integral a, UniformRange a) => CharParser Bool (Expr (RVar [a]))
+ primExp = try dieExp <|> numExp <|> parens diceLang term
+ 
+-dieExp :: (Integral a) => CharParser Bool (Expr (RVar [a]))
++dieExp :: (Integral a, UniformRange a) => CharParser Bool (Expr (RVar [a]))
+ dieExp = do
+     (cStr, count) <- option ("", 1) number
+     (sStr, sides) <- char 'd' >> positiveNumber
+@@ -235,7 +231,7 @@ dieExp = do
+     return (Const (cStr ++ 'd' : sStr) (roll (fromInteger count) (fromInteger sides)))
+ 
+ numExp :: Num a => CharParser st (Expr (RVar [a]))
+-numExp = do 
++numExp = do
+     (str, num) <- number
+     return (Const str (return [fromInteger num]))
+ 
+@@ -249,4 +245,4 @@ positiveNumber :: CharParser st (String, Integer)
+ positiveNumber = do
+     (s,n) <- number
+     guard (n>0)
+-    return (s,n)
+\ No newline at end of file
++    return (s,n)
+-- 
+2.35.1
+
