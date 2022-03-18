@@ -9,6 +9,7 @@ url="https://github.com/lh3/bioawk"
 license=('GPL')
 provides=("bioawk")
 conflicts=("bioawk")
+makedepends=('bison' 'make' 'gcc')
 source=("git+https://github.com/lh3/bioawk.git")
 md5sums=('SKIP')
 
