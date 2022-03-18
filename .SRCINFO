@@ -5,8 +5,7 @@ pkgbase = little-space-git
 	url = https://github.com/cosmo-ray/little-space/tree/little-space
 	arch = any
 	depends = yirl-git
-	source = git://github.com/cosmo-ray/little-space.git#branch=little-space
+	source = git+https://github.com/cosmo-ray/little-space.git#branch=little-space
 	sha256sums = SKIP
 
 pkgname = little-space-git
-

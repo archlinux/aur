@@ -1,7 +1,7 @@
 # Maintainer: Matthias Gatto <uso.cosmo.ray at gmail dot com>
 
 pkgname=little-space-git
-pkgver=r14.b4ca8ba
+pkgver=r15.49ca64d
 pkgrel=1
 pkgdesc="Small Shoot'em UP"
 
@@ -21,7 +21,7 @@ depends=(yirl-git)
 
 #default branch is little mage, another game using he same engine
 #but scale for desktop screen
-source=(git://github.com/cosmo-ray/little-space.git#branch=little-space)
+source=(git+https://github.com/cosmo-ray/little-space.git#branch=little-space)
 sha256sums=("SKIP")
 
 build() {
