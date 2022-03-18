@@ -3,9 +3,9 @@
 
 pkgname=qt5-location
 _basever=5.15.3
-pkgver=5.15.3+kde+r0
-pkgrel=2
-_commit=1bf01b84e30aab2b87a19184ce42160e6c92d8b1
+pkgver=5.15.3+kde+r1
+pkgrel=1
+_commit=81c540ab62b3074790978698747cad469dfb3303
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -14,10 +14,8 @@ depends=('qt5-declarative')
 makedepends=('git')
 groups=('qt' 'qt5')
 _pkgfqn=${pkgname/5-/}
-source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit
-        fix-opengl-detection.patch)
-sha256sums=('SKIP'
-            '84954d1bd528852d5cb60a5618bc2f9d34da0f459cde7d54b319b88fa9a4c11c')
+source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
+sha256sums=('SKIP')
 options=(debug)
 
 pkgver() {
@@ -27,8 +25,6 @@ pkgver() {
 
 prepare() {
   mkdir -p build
-
-  patch -d $_pkgfqn -p1 < fix-opengl-detection.patch
 }
 
 build() {
