@@ -1,0 +1,27 @@
+From ee09a378dd1a94809c419c5d9a980dbc99af3590 Mon Sep 17 00:00:00 2001
+From: KokaKiwi <kokakiwi+aur@kokakiwi.net>
+Date: Fri, 18 Mar 2022 17:13:20 +0100
+Subject: [PATCH] Make ZKG state dir configurable
+
+---
+ CMakeLists.txt | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0f36d4c05..fe353da36 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -580,7 +580,9 @@ if ( INSTALL_ZKG )
+     # An etc/zkg directory for zkg's config file simplifies zkg's
+     # config file code.
+     set(ZEEK_ZKG_CONFIG_DIR "${ZEEK_ETC_INSTALL_DIR}/zkg")
+-    set(ZEEK_ZKG_STATE_DIR "${ZEEK_ROOT_DIR}/var/lib/zkg")
++    if ( NOT ZEEK_ZKG_STATE_DIR )
++        set(ZEEK_ZKG_STATE_DIR "${ZEEK_ROOT_DIR}/var/lib/zkg")
++    endif ()
+ 
+     configure_file(
+         ${CMAKE_CURRENT_SOURCE_DIR}/zkg-config.in
+-- 
+2.35.1
+
