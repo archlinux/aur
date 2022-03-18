@@ -14,7 +14,7 @@ prepare() {
   cd "$pkgname-$pkgver"
   export GOPATH="$srcdir/gopath"
 
- # download dependencies
+  # download dependencies
   go mod download -x
 
   # create directory for build output
