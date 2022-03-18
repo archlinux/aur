@@ -1,18 +1,17 @@
 pkgbase = gpsmaster
 	pkgdesc = Create, view, edit and analyse GPX files.
-	pkgver = 0.63.35
+	pkgver = 0.63.38
 	pkgrel = 1
 	url = http://gpsmaster.org/
 	arch = any
 	license = GPL2
 	depends = java-runtime
-	noextract = GpsMaster_0.63.35.JDK7-8.jar
-	source = http://www.gpsmaster.org/download/GpsMaster_0.63.35.JDK7-8.jar
+	noextract = GpsMaster_0.63.38.JDK11-and-higher.jar
+	source = http://www.gpsmaster.org/download/GpsMaster_0.63.38.JDK11-and-higher.jar
 	source = gpsmaster.sh
 	source = gpsmaster.desktop
-	md5sums = e81d40a1e867cdbce3301fb72ef27958
+	md5sums = 9c449e2f8a369c87acd28d03a770fe90
 	md5sums = ee58fda742aa0a9472a10b367e186f73
 	md5sums = 2466049ed8dac363e62f5e47767898b3
 
 pkgname = gpsmaster
-
