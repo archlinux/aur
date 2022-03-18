@@ -1,7 +1,7 @@
 # Maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
 pkgname=zsh-completions-git
-pkgver=0.14.0.r0.g173ae72
+pkgver=0.33.0.r57.g55d07cc
 pkgrel=1
 pkgdesc="Additional completion definitions for Zsh"
 arch=(any)
@@ -12,7 +12,7 @@ makedepends=(git)
 provides=(zsh-completions)
 conflicts=(zsh-completions)
 
-source=('git://github.com/zsh-users/zsh-completions.git')
+source=('git+https://github.com/zsh-users/zsh-completions.git')
 md5sums=('SKIP')
 
 pkgver() {
