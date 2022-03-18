@@ -10,8 +10,8 @@ makedepends=('git' 'cargo')
 conflicts=()
 provides=('geil')
 options=(!lto)
-url='https://github.com/nukesor/geil'
-source=("$pkgname"::"git://github.com/nukesor/geil.git")
+url='https://github.com/Nukesor/geil'
+source=("$pkgname"::"git+https://github.com/Nukesor/geil.git")
 sha256sums=('SKIP')
 
 pkgver() {
