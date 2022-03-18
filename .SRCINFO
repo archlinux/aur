@@ -1,14 +1,16 @@
 pkgbase = go-symbols-git
 	pkgdesc = A utility for extracting a JSON representation of the package symbols from a go source tree.
-	pkgver = 20151212.3_b75dfef
+	pkgver = r3.b75dfef
 	pkgrel = 1
+	epoch = 1
+	url = https://github.com/newhook/go-symbols
 	arch = i686
 	arch = x86_64
-	license = GPL
+	license = MIT
 	makedepends = go
 	makedepends = git
-	source = git://github.com/newhook/go-symbols.git
+	depends = glibc
+	source = git+https://github.com/newhook/go-symbols
 	md5sums = SKIP
 
 pkgname = go-symbols-git
-
