@@ -1,7 +1,7 @@
 # Maintainer: Drew Noel <dnoel@gdssecurity.com>
 pkgname=ysoserial-git
 pkgrel=1
-pkgver=0.0.5.r61.g3009984
+pkgver=0.0.5.r81.g8eb5cbf
 pkgdesc="Tool to generate payloads that exploit unsafe Java object deserialization"
 arch=("any")
 url="https://github.com/frohoff/ysoserial"
@@ -9,7 +9,7 @@ license=('MIT')
 depends=("java-environment=8")
 makedepends=("maven")
 provides=("ysoserial")
-source=("git://github.com/frohoff/ysoserial.git" "0001-Force-1.8.patch" "ysoserial.command")
+source=("git+https://github.com/frohoff/ysoserial.git" "0001-Force-1.8.patch" "ysoserial.command")
 md5sums=('SKIP'
          'af0fe7db4bd0c93d89f03fc8188930bd'
          'd9fb33a927b0ee7864b80257ab6a2269')
