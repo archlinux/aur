@@ -27,13 +27,13 @@ pkgver() {
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-
+# ;s/\"yarn\": \".*\"/\"yarn\": \"$(yarn -v)\"/g"
 
 prepare() {
   export _electronDist=/usr/lib/electron16
   export _electronVer="$(tail /usr/lib/electron16/version)"
   cd "${srcdir}/${pkgname%-git}"
-  sed -i "s/\"electron\": \".*\"/\"electron\": \"$_electronVer\"/g;s/\"yarn\": \".*\"/\"yarn\": \"$(yarn -v)\"/g" package.json
+  sed -i "s/\"electron\": \".*\"/\"electron\": \"$_electronVer\"/g" package.json
 }
 
 build() {

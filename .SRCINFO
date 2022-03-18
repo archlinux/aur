@@ -24,6 +24,6 @@ pkgbase = teams-for-linux-git
 	source = teams-for-linux.sh
 	sha256sums = SKIP
 	sha256sums = 9e9ea701b445953383b70133cb52ac6a6ec2872bba419b079a7d0ca13e50dac2
-	sha256sums = e5ba7be73f89985062f1b87fa262bbcae1b8b73a33948c018f370782d58d54f9
+	sha256sums = 4939a6b1421c6f2cd981bc103a62d80fa6c6d28463755d83263af06f6ecc538b
 
 pkgname = teams-for-linux-git
