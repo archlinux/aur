@@ -1,7 +1,7 @@
 # Maintainer: c0repwn3r <core@coredoes.dev>
 pkgname=i386-elf-gcc
 pkgver=11.2.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="GNU gcc for the i386- toolchain"
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="https://www.gnu.org/software/gcc"
 license=('GPL')
 groups=(i386-elf-toolchain)
 makedepends=(gmp mpfr gcc)
-depends=(xz libmpc)
+depends=(xz libmpc i386-elf-binutils)
 source=(
     "http://ftpmirror.gnu.org/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
     "gcc11-Wno-format-security.patch" # https://bugs.archlinux.org/task/70701
