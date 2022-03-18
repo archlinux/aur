@@ -1,6 +1,6 @@
 # Maintainer: diced <pranaco2@gmail.com>
 pkgname='fu'
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 makedepends=('rust' 'cargo')
 arch=('x86_64')
