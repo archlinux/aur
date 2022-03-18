@@ -34,4 +34,6 @@ package() {
     # Remove conflicting files
     rm -rf $pkgdir/usr/share/locale/
     rm -rf $pkgdir/usr/share/gdb
+    rm -rf $pkgdir/usr/include/gdb
+    rm -rf $pkgdir/usr/share/info/dir
 }
