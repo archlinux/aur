@@ -1,5 +1,5 @@
 pkgname=kcbench
-pkgver=0.9.1
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="Linux kernel compile benchmark"
 arch=(any)
@@ -8,7 +8,7 @@ depends=(
   bc binutils bison curl flex gcc libelf make openssl perl pkg-config time
 )
 makedepends=(git)
-_commit=4de36c6b90947083759d895d0883082cde7584f7
+_commit=400de84e91e0042e81579cc1a15b982b3f875e23
 source=("git+https://gitlab.com/knurd42/kcbench.git#commit=$_commit")
 sha256sums=('SKIP')
 
