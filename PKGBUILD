@@ -1,21 +1,17 @@
-# Maintainer : antman666 <945360554@qq.com>
+# Maintainer : AntMan666 <945360554@qq.com>
 # Contributor: zhullyb <zhullyb@outlook.com>
 # Contributor: Yeqin Su <hougelangley1987@gmail.com>
+# Contributor: Joan Figueras <ffigue at gmail dot com>
 # Contributor: Torge Matthies <openglfreak at googlemail dot com>
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: Yoshi2889 <rick.2889 at gmail dot com>
-# Contributor: Tobias Powalowski <tpowa@archlinux.org>
-# Contributor: Thomas Baechler <thomas@archlinux.org>
-# Contributor: Joan Figueras <ffigue at gmail dot com>
 
 ##
-## This package include headers by default
 ## The following variables can be customized at build time. Use env or export to change at your wish
 ##
-##   Example: env _microarchitecture=25 use_numa=n use_tracers=n use_pds=n makepkg -sc
+##   Example: env _microarchitecture=98 use_numa=n use_tracers=n makepkg -sc
 ##
 ## Look inside 'choose-gcc-optimization.sh' to choose your microarchitecture
-## Valid numbers between: 0 to 42
+## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 98 => Intel native
 ##                                                 99 => AMD native
@@ -35,7 +31,6 @@ fi
 ## Archlinux and Xanmod enable it by default.
 ## Set variable "use_numa" to: n to disable (possibly increase performance)
 ##                             y to enable  (stock default)
-## Here keeps default is ok
 if [ -z ${use_numa+x} ]; then
   use_numa=n
 fi
@@ -58,13 +53,38 @@ if [ -z ${_compress_modules+x} ]; then
   _compress_modules=n
 fi
 
-## Setting some security options
+# Setting some security options
 use_selinux=n
 use_tomoyo=n
 use_yama=n
-use_apparmor=
+use_apparmor=y
 
-# Compile ONLY used modules to VASTLYreduce the number of modules built
+# kvm settings
+if [ -z ${_use_kvm+x} ]; then
+  _use_kvm=y
+fi
+
+# optimization (default O3)
+if [ -z ${_use_O3+x} ];then
+  _use_O3=y
+fi
+
+# cpufreq gov (available:performance,ondemand,conservative,userspace,schedutil,powersave)
+if [ -z ${_cpufreq+x} ]; then
+  _cpufreq=performance
+fi
+
+# LRU setting
+if [ -z ${_use_lru+x} ]; then
+  _use_lru=y
+fi
+
+# zram setting
+if [ -z ${_use_zram+x} ]; then
+  _use_zram=y
+fi
+
+# Compile ONLY used modules to VASTLY reduce the number of modules built
 # and the build time.
 #
 # To keep track of which modules are needed for your specific system/hardware,
@@ -77,32 +97,32 @@ if [ -z ${_localmodcfg} ]; then
 fi
 
 # Tweak kernel options prior to a build via nconfig
-_makenconfig=
+if [ -z ${_makenconfig} ]; then
+  _makenconfig=n
+fi
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-xanmod-tt-uksm-cjktty
-replaces=("linux-xanmod-cacule-uksm-cjktty")
 _major=5.15
-pkgver=${_major}.26
+pkgver=${_major}.29
 _branch=5.x
 xanmod=1
 pkgrel=${xanmod}
 pkgdesc='Linux Xanmod. Development branch with the Task Type CPU Scheduler by Hamad Al Marri'
-_patches_url="https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/${_major}"
-_jobs=$(nproc)
 url="http://www.xanmod.org/"
 arch=(x86_64)
+
 license=(GPL2)
 makedepends=(
   bc cpio kmod libelf perl tar xz
 )
-
+_patches_url="https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/${_major}"
+_jobs=$(nproc)
 if [ "${_compiler}" = "clang" ]; then
   makedepends+=(clang llvm lld python)
   _LLVM=1
 fi
-
 options=('!strip')
 _srcname="linux-${pkgver}-xanmod${xanmod}"
 
@@ -111,8 +131,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v${_branch}/linux-${_major}.tar
         choose-gcc-optimization.sh
         "0001-cjktty.patch::https://raw.githubusercontent.com/zhmars/cjktty-patches/master/v${_branch}/cjktty-${_major}.patch"
         "0002-UKSM.patch::${_patches_url}/uksm-patches/0001-UKSM-for-${_major}.patch"
-        )
-
+       )
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
     '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman
@@ -126,28 +145,27 @@ for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
 
-b2sums=('3921274b23f7938abdf3ed9334534b4581e13d7484303d3a5280eddb038999aaa8b836666a487472d9c4a219af0f06b9fecccaf348fb5510ab8762f4ef4b7e83'
-        'SKIP'
-        '29e1dc357f8167a47a94c0b32f327018976914ec1dad6648e2d8358938dcc4bd1b958fe53a746560a093ddf8e537cb1d0dac84c4f2305d3bee365ea35687929a'
-        '610a717e50339b45573dfd0b00da20ef3797053d93a5116673756f8644fbd4fbca9e82587225ebb94a5c51b0e5f1b92329d515c8c60466b41c6845ed06a7405a'
-        '2b765bd1aad8086a94ec9285e4d789eacdff05fcc71013286384a51de6f6cc153cecffd4430cfc08daae4692583577b5eb07f971eb00bcd1ca796063865c20f7'
-        '33ecbb3c7c3887b187fe951dd1fb897ab5378ecb1e01fa290c31782b10925b5874f0ded96b7a8a2693497fbee2965e9b5e9ff421934fce8a98508af4425ca260')
+sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
+            'SKIP'
+            'e73faf67d94911c160ae6e3cd800f378ae6987f5ffe96e5d003f5143efd84255'
+            '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
+            '97a525e28a270c5e6e5a4fc4ab4920c42ceef2f9921857497ab3c56ec343803e'
+            'cb348cc3ba1a453ac6057ecc08000a2ccddc47b70491caaf71db34a3d630f77c')
 
 export KBUILD_BUILD_HOST=${KBUILD_BUILD_HOST:-archlinux}
 export KBUILD_BUILD_USER=${KBUILD_BUILD_USER:-makepkg}
 export KBUILD_BUILD_TIMESTAMP=${KBUILD_BUILD_TIMESTAMP:-$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})}
 
 prepare() {
-
   cd linux-${_major}
 
-  msg2 "Apply Xanmod patch"
+  # Apply Xanmod patch
   patch -Np1 -i ../patch-${pkgver}-xanmod${xanmod}-tt
 
   msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
-  echo "${pkgbase#linux-xanmod}" > localversion
+  #echo "${pkgbase#linux-xanmod}" > localversion.20-pkgname
 
   # Archlinux patches
   local src
@@ -162,12 +180,11 @@ prepare() {
   # Applying configuration
   cp -vf CONFIGS/xanmod/${_compiler}/config .config
 
-  # enable LTO_CLANG_THIN
+  # enable LTO_CLANG_FULL
   if [ "${_compiler}" = "clang" ]; then
     msg2 "Enable LTO_CLANG_FULL"
     scripts/config --disable LTO_CLANG_THIN
     scripts/config --enable LTO_CLANG_FULL
-    _LLVM=1
   fi
 
   # CONFIG_STACK_VALIDATION gives better stack traces. Also is enabled in all official kernel packages by Archlinux team
@@ -179,7 +196,7 @@ prepare() {
 
   # User set. See at the top of this file
   if [ "$use_tracers" = "n" ]; then
-    msg2 "Disabling FUNCTION_TRACER/GRAPH_TRACER..."
+    msg2 "Disabling FUNCTION_TRACER/GRAPH_TRACER only if we are not compiling with clang..."
     if [ "${_compiler}" = "gcc" ]; then
       scripts/config --disable CONFIG_FUNCTION_TRACER \
                      --disable CONFIG_STACK_TRACER
@@ -191,11 +208,11 @@ prepare() {
     scripts/config --disable CONFIG_NUMA
   fi
 
-  # Compress modules by default (following Arch's kernel)
+  # NOT compress modules by default (may increase disk space)
   if [ "$_compress_modules" = "y" ]; then
     scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
   fi
-  
+
   if [ "$use_selinux" = "n" ]; then
     msg2 "Disabling SELinux..."
     scripts/config --disable CONFIG_SECURITY_SELINUX
@@ -218,62 +235,128 @@ prepare() {
     scripts/config --set-str CONFIG_LSM lockdown,integrity,apparmor
   fi
 
-  scripts/config --disable CONFIG_DEFAULT_SECURITY_APPARMOR
-  scripts/config --enable CONFIG_DEFAULT_SECURITY_DAC
-  scripts/config --enable CONFIG_FTRACE
-  scripts/config --enable CONFIG_FTRACE_SYSCALLS
+  if [ "$_cpufreq" == "performance" ]; then
+    msg2 "Change cpu freq into performance"
+    scripts/config --enable CONFIG_CPU_FREQ_GOV_PERFORMANCE
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+    scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
+  elif [ "$_cpufreq" == "ondemand" ]; then
+    msg2 "Change cpu freq into ondemand"
+    scripts/config --enable CONFIG_CPU_FREQ_GOV_ONDEMAND
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+    scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND
+  elif [ "$_cpufreq" == "conservative" ]; then
+    msg2 "Change cpu freq into ondemand"
+    scripts/config --enable CONFIG_CPU_FREQ_GOV_CONSERVATIVE
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+    scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_CONSERVATIVE
+  elif [ "$_cpufreq" == "userspace" ]; then
+    msg2 "Change cpu freq into ondemand"
+    scripts/config --enable CONFIG_CPU_FREQ_GOV_USERSPACE
+    scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+    scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_USERSPACE
+  elif [ "$_cpufreq" == "schedutil" ]; then
+    msg2 "Change cpu freq into ondemand"
+    scripts/config --enable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
+    scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+  else
+    error "Invalid value: $_cpufreq"
+  fi
 
-  scripts/config --disable CONFIG_KVM_WERROR
-  scripts/config --enable CONFIG_KVM
-  scripts/config --enable CONFIG_KVM_AMD
-  scripts/config --enable CONFIG_KVM_INTEL
+  if [ "$_use_lru" == "y" ]; then
+    msg2 "Enable LRU"
+    scripts/config --enable CONFIG_LRU_GEN
+    scripts/config --set-val CONFIG_NR_LRU_GENS 7
+    scripts/config --set-val CONFIG_TIERS_PER_GEN 4
+    scripts/config --enable CONFIG_LRU_GEN_ENABLED
+    scripts/config --disable CONFIG_LRU_GEN_STATS
+  fi
+
+  if [ "$_use_O3" == "y" ]; then
+    msg2 "Enable O3"
+    scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_SIZE
+    scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
+  fi
+
+  if [ "$_microarchitecture" == 98 ] || [ "$_microarchitecture" == 99 ]; then
+    scripts/config --disable CONFIG_CPU_SUP_HYGON
+    scripts/config --disable CONFIG_CPU_SUP_CENTAUR
+    scripts/config --disable CONFIG_CPU_SUP_ZHAOXIN
+    scripts/config --disable CONFIG_AGP_SIS
+    scripts/config --disable CONFIG_AGP_VIA
+    scripts/config --set-val CONFIG_NR_CPUS ${_jobs}
+    if [ "$_microarchitecture" == 98 ]; then
+      msg2 "Setting for Intel CPU"
+      scripts/config --disable CONFIG_CPU_SUP_AMD
+      scripts/config --disable CONFIG_AMD_MEM_ENCRYPT
+      scripts/config --disable CONFIG_X86_AMD_PSTATE
+      scripts/config --disable CONFIG_X86_ACPI_CPUFREQ_CPB
+      scripts/config --disable CONFIG_X86_POWERNOW_K8
+      scripts/config --disable CONFIG_X86_AMD_FREQ_SENSITIVITY
+      scripts/config --disable CONFIG_AGP_AMD64
+      scripts/config --enable CONFIG_CPU_SUP_INTEL
+      scripts/config --enable CONFIG_X86_MCE_INTEL
+      scripts/config --enable CONFIG_PERF_EVENTS_INTEL_UNCORE
+      scripts/config --enable CONFIG_PERF_EVENTS_INTEL_RAPL
+      scripts/config --enable CONFIG_PERF_EVENTS_INTEL_CSTATE
+      scripts/config --enable CONFIG_MICROCODE_INTEL
+      scripts/config --enable CONFIG_X86_INTEL_PSTATE
+      scripts/config --enable CONFIG_X86_SPEEDSTEP_CENTRINO
+      scripts/config --modules CONFIG_X86_P4_CLOCKMOD
+      scripts/config --enable CONFIG_INTEL_IDLE
+      scripts/config --enable CONFIG_AGP_INTEL
+    elif [ "$_microarchitecture" == 99 ]; then
+      msg2 "Setting for AMD CPU"
+      scripts/config --disable CONFIG_CPU_SUP_INTEL
+      scripts/config --disable CONFIG_INTEL_IDLE
+      scripts/config --disable CONFIG_AGP_INTEL
+      scripts/config --enable CONFIG_CPU_SUP_AMD
+      scripts/config --enable CONFIG_X86_MCE_AMD
+      scripts/config --enable CONFIG_PERF_EVENTS_INTEL_RAPL
+      scripts/config --enable CONFIG_PERF_EVENTS_AMD_POWER
+      scripts/config --enable CONFIG_PERF_EVENTS_AMD_UNCORE
+      scripts/config --enable CONFIG_MICROCODE_AMD
+      scripts/config --enable CONFIG_AMD_MEM_ENCRYPT
+      scripts/config --enable CONFIG_X86_AMD_PSTATE
+      scripts/config --enable CONFIG_X86_ACPI_CPUFREQ_CPB
+      scripts/config --enable CONFIG_X86_POWERNOW_K8
+      scripts/config --modules CONFIG_X86_AMD_FREQ_SENSITIVITY
+      scripts/config --enable CONFIG_AGP_AMD64
+    fi
+  fi
+
+  if [ "$_use_zram" == "y" ]; then
+    msg2 "Enable zram compression to LZ4"
+    scripts/config --enable CONFIG_ZSMALLOC
+    scripts/config --enable CONFIG_ZRAM
+    scripts/config --disable CONFIG_ZRAM_DEF_COMP_LZORLE
+    scripts/config --enable CONFIIG_ZRAM_DEF_COMP_LZ4
+    scripts/config --set-str CONFIG_ZRAM_DEF_COMP lz4
+
+    scripts/config --disable CONFIG_ZSWAP
+  fi
+
+  if [ "$_use_kvm" == "y" ]; then
+    scripts/config --disable CONFIG_KVM_WERROR
+    scripts/config --enable CONFIG_KVM
+    if [ "$_microarchitecture" == 98 ]; then
+      scripts/config --enable CONFIG_KVM_INTEL
+    elif [ "$_microarchitecture" == 99 ]; then
+      scripts/config --enable CONFIG_KVM_AMD
+    fi
+  fi
+
   scripts/config --disable CONFIG_X86_X32
-  scripts/config --disable CONFIG_MQ_IOSCHED_DEADLINE
-  scripts/config --disable CONFIG_MQ_IOSCHED_KYBER
-  scripts/config --module CONFIG_EXT4_FS
-  scripts/config --set-val CONFIG_KERNEL_ZSTD_LEVEL 3
-  scripts/config --enable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
-  scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_SIZE
-  scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
-
-  msg2 "Change cpu freq into ondemand"
-  scripts/config --enable CONFIG_CPU_FREQ_GOV_ONDEMAND
-  scripts/config --enable CONFIG_CPU_FREQ_GOV_PERFORMANCE
-  scripts/config --enable CONFIG_CPU_FREQ_GOV_CONSERVATIVE
-  scripts/config --enable CONFIG_CPU_FREQ_GOV_USERSPACE
-  scripts/config --enable CONFIG_CPU_FREQ_GOV_SCHEDUTIL
-  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
-  scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_ONDEMAND
-
-  msg2 "Enable LRU"
-  scripts/config --enable CONFIG_LRU_GEN
-  scripts/config --set-val CONFIG_NR_LRU_GENS 7
-  scripts/config --set-val CONFIG_TIERS_PER_GEN 4
-  scripts/config --enable CONFIG_LRU_GEN_ENABLED
-  scripts/config --disable CONFIG_LRU_GEN_STATS
-
-  msg2 "Enable zram compression to ZSTD"
-  scripts/config --disable CONFIG_ZRAM_DEF_COMP_LZORLE
-  scripts/config --enable CONFIG_ZRAM_DEF_COMP_ZSTD
-  scripts/config --set-str CONFIG_ZRAM_DEF_COMP zstd
-
-  scripts/config --disable CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZ4
-  scripts/config --enable CONFIG_ZSWAP_COMPRESSOR_DEFAULT_ZSTD
-  scripts/config --set-str CONFIG_ZSWAP_COMPRESSOR_DEFAULT zstd
-
-  msg2 "Change module compression to ZSTD"
-  scripts/config --disable CONFIG_MODULE_COMPRESS_NONE
-  scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
-  scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD_ULTRA
-  scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 3
+  scripts/config --disable CONFIG_STACKPROTECTOR_STRONG
 
   # Let's user choose microarchitecture optimization in GCC
+  # If you're using this PKGBUILD, if will use native by default
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
   # This is intended for the people that want to build this package with their own config
-  # Put the file "myconfig" at the package folder to use this feature
-  # If it's a full config, will be replaced
-  # If not, you should use scripts/config commands, one by line
+  # Put the file "myconfig" at the package folder (this will take preference) or "${XDG_CONFIG_HOME}/linux-xanmod/myconfig"
+  # If we detect partial file with scripts/config commands, we execute as a script
+  # If not, it's a full config, will be replaced
   for _myconfig in "${SRCDEST}/myconfig" "${HOME}/.config/linux-xanmod/myconfig" "${XDG_CONFIG_HOME}/linux-xanmod/myconfig" ; do
     if [ -f "${_myconfig}" ] && [ "$(wc -l <"${_myconfig}")" -gt "0" ]; then
       if grep -q 'scripts/config' "${_myconfig}"; then
@@ -295,23 +378,24 @@ prepare() {
   if [ "$_localmodcfg" = "y" ]; then
     if [ -f $HOME/.config/modprobed.db ]; then
       msg2 "Running Steven Rostedt's make localmodconfig now"
-      make LSMOD=$HOME/.config/modprobed.db LLVM=$_LLVM LLVM_IAS=$_LLVM localmodconfig
+      make LLVM=$_LLVM LLVM_IAS=$_LLVM LSMOD=$HOME/.config/modprobed.db localmodconfig
     else
       msg2 "No modprobed.db data found"
-      exit
+      exit 1
     fi
   fi
-  
-  msg2 "Applying default config..."
+
   make LLVM=$_LLVM LLVM_IAS=$_LLVM olddefconfig
 
   make -s kernelrelease > version
   msg2 "Prepared %s version %s" "$pkgbase" "$(<version)"
 
-  [[ -z "$_makenconfig" ]] || make nconfig
+  if [ "$_makenconfig" = "y" ]; then
+    make LLVM=$_LLVM LLVM_IAS=$_LLVM nconfig
+  fi
 
   # save configuration for later reuse
-  cat .config > "${startdir}/config.last"
+  cat .config > "${SRCDEST}/config.last"
 }
 
 build() {
@@ -324,8 +408,10 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
-  replaces=()
+  provides=(VIRTUALBOX-GUEST-MODULES
+            WIREGUARD-MODULE
+            KSMBD-MODULE
+            NTFS3-MODULE)
 
   cd linux-${_major}
   local kernver="$(<version)"
@@ -340,14 +426,15 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   msg2 "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
 }
 
 _package-headers() {
-  pkgdesc="Header files and scripts for building modules for Xanmod Linux kernel"
+  pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  depends=(pahole)
 
   cd linux-${_major}
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -359,11 +446,11 @@ _package-headers() {
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
+  # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  if [ -f "$builddir/tools/bpf/resolve_btfids" ]; then install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids ; fi
 
   msg2 "Installing headers..."
   cp -t "$builddir" -a include
@@ -373,15 +460,18 @@ _package-headers() {
   install -Dt "$builddir/drivers/md" -m644 drivers/md/*.h
   install -Dt "$builddir/net/mac80211" -m644 net/mac80211/*.h
 
-  # http://bugs.archlinux.org/task/13146
+  # https://bugs.archlinux.org/task/13146
   install -Dt "$builddir/drivers/media/i2c" -m644 drivers/media/i2c/msp3400-driver.h
 
-  # http://bugs.archlinux.org/task/20402
+  # https://bugs.archlinux.org/task/20402
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
 
-  msg2 "Installing KConfig files..."
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
+
+  echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
 
   msg2 "Removing unneeded architectures..."
@@ -416,6 +506,9 @@ _package-headers() {
     esac
   done < <(find "$builddir" -type f -perm -u+x ! -name vmlinux -print0)
 
+  msg2 "Stripping vmlinux..."
+  strip -v $STRIP_STATIC "$builddir/vmlinux"
+  
   msg2 "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
   ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
