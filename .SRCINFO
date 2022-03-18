@@ -1,7 +1,7 @@
 pkgbase = cod-git
 	pkgdesc = A completion daemon for bash/zsh
 	pkgver = 0.1.0.r2.gde10c9b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/dim-an/cod
 	arch = any
 	license = Apache
