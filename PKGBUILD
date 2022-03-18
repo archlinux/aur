@@ -3,7 +3,7 @@
 
 pkgname=libindi_3rdparty
 pkgver=1.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="3rd party drivers for INDI, a distributed control protocol designed to operate astronomical instrumentation"
 provides=('libindi_3rdparty')
 url="http://www.indilib.org/index.php?title=Main_Page"
@@ -12,8 +12,8 @@ arch=(i686 x86_64)
 depends=(libvorbis libusb openal libnova libjpeg libindi libgphoto2 libftdi-compat cfitsio dcraw libftdi rtl-sdr gpsd)
 makedepends=(cmake boost)
 conflicts=(libqhy-git)
-source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz" "celestronaux-auxproto.diff" "ffmpeg-5.diff")
-sha256sums=("a4a7db8ff9998ffe0688eab6657e132b82a64b3f7a3b5cc7309b9c900edbd0df" "fef4fe62933872bbf6424e8ee538363d38288ed12fce0222fd566bcb5a4bf372" "5a9881a46cf971e9cf31ebf76ae376d66f1463d2c7b8bc847eb97ff11c07f37c")
+source=("https://github.com/indilib/indi-3rdparty/archive/v${pkgver}.tar.gz" "celestronaux-auxproto.diff")
+sha256sums=("a4a7db8ff9998ffe0688eab6657e132b82a64b3f7a3b5cc7309b9c900edbd0df" "fef4fe62933872bbf6424e8ee538363d38288ed12fce0222fd566bcb5a4bf372")
 
 
 prepare() {
@@ -29,8 +29,12 @@ build() {
   cmake -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
-    -DWITH_ASICAM=On \
+    -DWITH_ASICAM=Off \
     -DWITH_QHY=Off \
+    -DWITH_GPSD=Off \
+    -DWITH_QSI=Off \
+    -DWITH_EQMOD=Off \
+    -DWITH_GPSNMEA=Off \
     ../indi-3rdparty-${pkgver}
   make DESTDIR="/tmp/${pkgname}_${pkgver}" install                                                   # Install libraries to temp directory for use in INDI driver build
 
@@ -44,14 +48,14 @@ build() {
     -DAPOGEE_INCLUDE_DIR:PATH="/tmp/${pkgname}_${pkgver}/usr/include/libapogee;/tmp/${pkgname}_${pkgver}/usr/include" \
     -DFLI_LIBRARIES=/tmp/${pkgname}_${pkgver}/usr/lib/libfli.so \
     -DFLI_INCLUDE_DIR:PATH=/tmp/${pkgname}_${pkgver}/usr/include \
-    -DQSI_LIBRARIES=/tmp/${pkgname}_${pkgver}/usr/lib/libqsiapi.so \
-    -DQSI_INCLUDE_DIR:PATH=/tmp/${pkgname}_${pkgver}/usr/include \
-    -DQHY_LIBRARIES=/tmp/${pkgname}_${pkgver}/usr/lib/libqhyccd.so \
-    -DQHY_INCLUDE_DIR:PATH=/tmp/${pkgname}_${pkgver}/usr/include/libqhy \
     -DSBIG_LIBRARIES=/tmp/${pkgname}_${pkgver}/usr/lib/libsbig.so \
     -DSBIG_INCLUDE_DIR:PATH=/tmp/${pkgname}_${pkgver}/usr/include/libsbig \
-    -DWITH_ASICAM=On \
+    -DWITH_ASICAM=Off \
     -DWITH_QHY=Off \
+    -DWITH_GPSD=Off \
+    -DWITH_QSI=Off \
+    -DWITH_EQMOD=Off \
+    -DWITH_GPSNMEA=Off \
     ../indi-3rdparty-${pkgver}
 }
 
