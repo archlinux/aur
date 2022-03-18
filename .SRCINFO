@@ -1,15 +1,14 @@
 pkgbase = bioawk-git
 	pkgdesc = BWK awk modified for biological data
 	pkgver = 1.0.0.r51.fd40150
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lh3/bioawk
 	arch = i686
 	arch = x86_64
 	license = GPL
 	provides = bioawk
 	conflicts = bioawk
-	source = git://github.com/lh3/bioawk.git
+	source = git+https://github.com/lh3/bioawk.git
 	md5sums = SKIP
 
 pkgname = bioawk-git
-

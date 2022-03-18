@@ -1,15 +1,15 @@
-# Maintainer: alienzj <lovelornpig@gmail.com>
+# Maintainer: alienzj <alienchuj@gmail.com>
 
 pkgname=bioawk-git
 pkgver=1.0.0.r51.fd40150
-pkgrel=1
+pkgrel=2
 pkgdesc="BWK awk modified for biological data"
 arch=('i686' 'x86_64')
 url="https://github.com/lh3/bioawk"
 license=('GPL')
 provides=("bioawk")
 conflicts=("bioawk")
-source=("git://github.com/lh3/bioawk.git")
+source=("git+https://github.com/lh3/bioawk.git")
 md5sums=('SKIP')
 
 prepare() {
