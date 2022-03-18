@@ -14,7 +14,6 @@ sha256sums=('95d18be01c83bc529ad4311a5c59507d0e1568160638d9823b6c02aa6261c7e8')
 prepare() {
   cd "$pkgname-$pkgver"
   export GOPATH="$srcdir/gopath"
-  go clean -modcache
 
   # download dependencies
   go mod download -x
@@ -33,6 +32,7 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   go build -v -buildvcs=false -o build .
 
+  # Clean module cache for makepkg -C
   go clean -modcache
 }
 
