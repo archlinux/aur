@@ -10,8 +10,8 @@ options=('!lto')
 makedepends=('git' 'cargo')
 conflicts=('pueue')
 provides=('pueue')
-url='https://github.com/nukesor/pueue'
-source=("$pkgname"::"git://github.com/nukesor/pueue.git#branch=development")
+url='https://github.com/Nukesor/pueue'
+source=("$pkgname"::"git+https://github.com/Nukesor/pueue.git#branch=development")
 sha256sums=('SKIP')
 
 pkgver() {
