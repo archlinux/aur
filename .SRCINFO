@@ -20,7 +20,7 @@ pkgbase = sidef-git
 	provides = sidef
 	conflicts = sidef
 	options = !emptydirs
-	source = git://github.com/trizen/sidef.git
+	source = git+https://github.com/trizen/sidef.git
 	sha512sums = SKIP
 
 pkgname = sidef-git

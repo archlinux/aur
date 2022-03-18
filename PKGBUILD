@@ -19,7 +19,7 @@ depends=(
     'perl-math-prime-util-gmp>=0.52' 'perl-term-readline-gnu' 'perl-algorithm-combinatorics' 'perl-algorithm-loops'
 )
 optdepends=('perl-math-prime-util: for better performance in several functions')
-source=('git://github.com/trizen/sidef.git')
+source=('git+https://github.com/trizen/sidef.git')
 sha512sums=('SKIP')
 
 pkgver() {
