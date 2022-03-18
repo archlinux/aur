@@ -1,7 +1,7 @@
 # Maintainer: c0repwn3r <core@coredoes.dev>
 pkgname=i386-elf-gdb
 pkgver=11.1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="GNU debugger crosscompiled for i386 development"
 arch=(x86_64)
@@ -9,7 +9,7 @@ url="https://www.gnu.org/software/gdb"
 license=('GPL')
 groups=(i386-elf-toolchain)
 makedepends=(gmp mpfr)
-depends=(xz libmpc i386-elf-gcc)
+depends=(xz libmpc i386-elf-gcc gdb) # GDB is included to prevent conflicts with it - otherwise this package won't function
 source=(
     "http://ftpmirror.gnu.org/gdb/gdb-$pkgver.tar.xz"
 )
@@ -33,4 +33,5 @@ package() {
     make install DESTDIR=$pkgdir
     # Remove conflicting files
     rm -rf $pkgdir/usr/share/locale/
+    rm -rf $pkgdir/usr/share/gdb
 }
