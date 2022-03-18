@@ -9,4 +9,4 @@ Icon=/opt/vcvrack/res/icon.png
 Type=Application
 Terminal=false
 Categories=AudioVideo;Audio;
-Keywords:music;multimedia;synthesizer,midi
+Keywords=music;multimedia;synthesizer;midi;
