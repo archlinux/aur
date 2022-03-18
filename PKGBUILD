@@ -1,12 +1,12 @@
 # Maintainer: Samuel Collins <samuel.collins@live.co.uk>
 # Co-Maintainer: Bradley Garrod <bradleybredgarrod@gmail.com>
 
-pkgname=gitlab-glab-git
+pkgname=glab-git
 _reponame=glab
-pkgver=1.15.0.r30.g9371da9
-pkgrel=2
+pkgver=1.22.0.r37.gf405b97
+pkgrel=1
 epoch=
-pkgdesc="An open source GitLab CLI tool written in Go"
+pkgdesc="Cli tool to help work seamlessly with Gitlab from the command line"
 arch=(x86_64)
 url="https://github.com/profclems/glab"
 license=('MIT')
@@ -15,9 +15,9 @@ depends=(glibc)
 makedepends=(go)
 checkdepends=()
 optdepends=()
-provides=(gitlab-glab)
-conflicts=(gitlab-glab)
-replaces=()
+provides=(glab)
+conflicts=(glab)
+replaces=(gitlab-glab-git)
 backup=()
 options=()
 install=
