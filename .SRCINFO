@@ -1,12 +1,12 @@
 pkgbase = php80-igbinary
 	pkgdesc = A drop in replacement for the standard php serializer (PHP 8.0)
 	pkgver = 3.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/igbinary/igbinary
 	arch = x86_64
 	license = BSD
+	makedepends = php80
 	depends = glibc
-	depends = php80
 	backup = etc/php80/conf.d/igbinary.ini
 	source = php80-igbinary-3.2.7.tar.gz::https://github.com/igbinary/igbinary/archive/3.2.7.tar.gz
 	sha512sums = 1bdb60fa4ac76ef405b55b4a7e7f07c73ccc945a3fad8635934cf83a05ae554ac1a0b64c4b55229f0bd2a3269189d3266a492b064a0338fdb2bf4dfe5c3733e4

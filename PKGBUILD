@@ -2,12 +2,13 @@
 _name=igbinary
 pkgname=php80-igbinary
 pkgver=3.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A drop in replacement for the standard php serializer (PHP 8.0)"
 arch=('x86_64')
 url="https://github.com/igbinary/igbinary"
 license=('BSD')
-depends=('glibc' 'php80')
+depends=('glibc')
+makedepends=('php80')
 backup=("etc/php80/conf.d/${_name}.ini")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${_name}/${_name}/archive/${pkgver}.tar.gz")
 sha512sums=('1bdb60fa4ac76ef405b55b4a7e7f07c73ccc945a3fad8635934cf83a05ae554ac1a0b64c4b55229f0bd2a3269189d3266a492b064a0338fdb2bf4dfe5c3733e4')
@@ -23,17 +24,13 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  ./configure --prefix=/usr \
-              --with-php-config=/usr/bin/php-config80 \
-              --enable-igbinary
+  ./configure --prefix=/usr --enable-igbinary
   make
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  export TEST_PHP_EXECUTABLE=/usr/bin/php80
   export TEST_PHPDBG_EXECUTABLE=/usr/bin/phpdbg80
-  #export TEST_PHP_ARGS="-d extension=${srcdir}/${pkgname}-${pkgver}/modules/igbinary.so"
   NO_INTERACTION=1 make -k test
 }
 
@@ -42,6 +39,5 @@ package() {
   make INSTALL_ROOT="$pkgdir/" install
   install -vDm 644 "${_name}.php.ini" "${pkgdir}/etc/php80/conf.d/${_name}.ini"
   install -vDm 644 COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -vDm 644 {CREDITS,NEWS,README.md} \
-    -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -vDm 644 {CREDITS,NEWS,README.md} -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
