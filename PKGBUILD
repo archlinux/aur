@@ -2,7 +2,7 @@
 
 _gemname=tzinfo-data
 pkgname=ruby-$_gemname
-pkgver=1.2021.5
+pkgver=1.2022.1
 pkgrel=1
 pkgdesc='Timezone data for ruby-tzinfo'
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=('ruby' 'ruby-tzinfo')
 options=('!emptydirs')
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=("$_gemname-$pkgver.gem")
-sha512sums=('3a3ae86947fa7a674d5dfb4feb9cea4778e950374aab4d2e96bb23a4e2736979071176957373c5605bb50cb053ea35801532f22d9eeb147478388b445faf1bc0')
-b2sums=('5f5814315af51d2a3cd835a50984b05f46239f03a7d1199970e3eb5f49130fbfc22f96aa930280181350a6d3a93bf39eda62046ff8853352f04ffc72429d4a2f')
+sha512sums=('9f337b056bfac7a0a5f18e99d4e0e64ce185d3779aa6098b1f8a73ae6113c423edc5f007efddfc55f1092b43800d782c16d0c3ea49663281e0fe10305def2817')
+b2sums=('8820473ef8ca8d8cb503a04d0759a4fde3544526ddeae8fd5763fcbf86a802283a5f3cf8e17c6c29e72a967a51c2828ee5a712793a2126d757a8261ba8fc8e9d')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
