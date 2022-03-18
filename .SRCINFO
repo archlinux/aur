@@ -1,7 +1,7 @@
 pkgbase = icalingua-plus-plus
 	pkgdesc = A branch of deleted Icalingua,with limited support
 	pkgver = 2.5.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Icalingua-plus-plus/Icalingua-plus-plus
 	arch = aarch64
 	arch = x86_64

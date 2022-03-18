@@ -1,7 +1,7 @@
 pkgname=icalingua-plus-plus
 _pkgname=icalingua
 pkgver=2.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A branch of deleted Icalingua,with limited support'
 license=('AGPL3')
 depends=('ffmpeg' 'electron' 'libappindicator-gtk3')
