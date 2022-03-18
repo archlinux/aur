@@ -12,6 +12,8 @@ pkgbase = python-poetry-core-git
 	depends = python-lark-parser
 	depends = python-packaging
 	depends = python-tomlkit
+	provides = poetry-core
+	conflicts = poetry-core
 	source = git+https://github.com/python-poetry/poetry-core
 	sha512sums = SKIP
 

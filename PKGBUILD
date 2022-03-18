@@ -14,6 +14,8 @@ makedepends=(python-{build,installer} git)
 # checkdepends=(python-pytest python-pytest-mock python-virtualenv)
 source=(git+${url})
 sha512sums=('SKIP')
+provides=(${_pkgname})
+conflicts=(${_pkgname})
 
 pkgver() {
   cd ${_pkgname}
