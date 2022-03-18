@@ -2,7 +2,7 @@
 pkgname=golangci-lint-bin
 pkgdesc='Linters Runner for Go. 5x faster than gometalinter.'
 pkgver=1.45.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686' 'aarch64' 'armv6h' 'armv7h')
 url=https://github.com/golangci/golangci-lint
 license=('GPL3')
@@ -23,7 +23,12 @@ sha256sums_armv7h=('6431699fbd2b67ca1bc95bd9a5ec61e292b0113fc4cd0099911b22cce7ef
 package() {
   local x86_64=amd64 i686=386 aarch64=arm64 armv6h=armv6 armv7h=armv7
   cd "golangci-lint-${pkgver}-linux-${!CARCH}"
+
+	# Bin
   install -Dm755 golangci-lint -t "$pkgdir"/usr/bin
+  
+	# Completions
   ./golangci-lint completion bash | install -Dm644 /dev/stdin "$pkgdir"/usr/share/bash-completion/completions/golangci-lint
   ./golangci-lint completion zsh | install -Dm644 /dev/stdin "$pkgdir"/usr/share/zsh/site-functions/_golangci-lint
+  ./golangci-lint completion fish | install -Dm644 /dev/stdin "$pkgdir"/usr/share/fi sh/completions/golangci-lint.fish
 }
