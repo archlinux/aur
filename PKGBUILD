@@ -1,7 +1,7 @@
 # Maintainer: Matthias Gatto <uso.cosmo.ray at gmail dot com>
 
 pkgname=yirl-git
-pkgver=r1835.b7a4054
+pkgver=r2109.4fa4384e
 pkgrel=1
 pkgdesc='Modular Game Engine'
 
@@ -21,7 +21,7 @@ makedepends=(gcc make autoconf)
 # hopefully I should be able to remove glib2 and add sdl2-mixer soon
 depends=(lua json-c sdl2 sdl2_image sdl2_ttf sdl2_mixer glib2)
 
-source=(git://github.com/cosmo-ray/yirl.git)
+source=(git+https://github.com/cosmo-ray/yirl.git)
 
 options=(!buildflags)
 

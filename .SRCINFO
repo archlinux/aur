@@ -1,6 +1,6 @@
 pkgbase = yirl-git
 	pkgdesc = Modular Game Engine
-	pkgver = r1835.b7a4054
+	pkgver = r2109.4fa4384e
 	pkgrel = 1
 	url = http://github.com/cosmo-ray/yirl
 	arch = x86_64
@@ -16,8 +16,7 @@ pkgbase = yirl-git
 	depends = sdl2_mixer
 	depends = glib2
 	options = !buildflags
-	source = git://github.com/cosmo-ray/yirl.git
+	source = git+https://github.com/cosmo-ray/yirl.git
 	sha256sums = SKIP
 
 pkgname = yirl-git
-
