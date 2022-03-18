@@ -37,7 +37,8 @@ build() {
         -DBUILD_CLIENTS_TESTS=OFF \
         -DBUILD_CLIENTS_BENCHMARKS=OFF \
         -DBUILD_CLIENTS_SAMPLES=OFF \
-        -DBUILD_TESTING=OFF
+        -DBUILD_TESTING=OFF \
+        -DAMDGPU_TARGETS=${AMDGPU_TARGETS}
 
   make -C build
 }
