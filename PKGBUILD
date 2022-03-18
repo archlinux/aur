@@ -1,24 +1,24 @@
 # Maintainer: Artem Senichev <artemsen@gmail.com>
+# Contributor: Artem Senichev <artemsen@gmail.com>
 
 pkgname=swaykbdd
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Per-window keyboard layouts for Sway (KBDD replacement)'
 arch=('x86_64')
 license=('MIT')
-makedepends=('meson' 'ninja')
+makedepends=('meson')
 depends=('json-c')
 url='https://github.com/artemsen/swaykbdd'
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-md5sums=('d7371d58205468ac73dfdbe9975f8c41')
+md5sums=('eaf8771ae0ddac09c0e89bdfd895ce85')
 
 build() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    meson --prefix=/usr "${srcdir}/build"
-    ninja -C "${srcdir}/build"
+  arch-meson ${pkgname}-${pkgver} build
+  meson compile -C build
 }
 
 package(){
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    DESTDIR="${pkgdir}" ninja -C "${srcdir}/build" install
+  meson install -C build --destdir "${pkgdir}"
+  install -Dm644 ${pkgname}-${pkgver}/LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
 }
