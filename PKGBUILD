@@ -1,7 +1,7 @@
 # Maintainer: vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com>
 
 pkgname=listen1-desktop-appimage
-pkgver=2.21.7
+pkgver=2.22.1
 pkgrel=2
 pkgdesc="One for all free music in China"
 arch=("x86_64")
@@ -13,7 +13,7 @@ options=("!strip")
 provides=("listen1")
 conflicts=("listen1")
 source=("https://github.com/listen1/listen1_desktop/releases/download/v${pkgver}/${_pkgname}")
-sha512sums=("a46ab8da9a3e80d937f1c0a7691316f7df894bfd9b17f1417e2de8d06e0507d40ea46c77aab750e0fdbc376e53bd699cd54b59f1826746f62a8c1e17d1f69fc3")
+sha512sums=("8454d3239f4395edd0e415bae69d288323ec196b1113cba37d4e4075b81544d77b641ad555cd11d2bb5aa4ba6a797ecd36f511b986ddc16f6fb4398ab70efd53")
 
 _installdir=/opt/appimages
 _installname=listen1
@@ -21,7 +21,7 @@ _installname=listen1
 prepare() {
     cd ${srcdir}
     chmod a+x ${_pkgname}
-    ${srcdir}/${_pkgname} --appimage-extract
+    ${srcdir}/${_pkgname} --appimage-extract >/dev/null
     sed -i "s+^Categories.*+Categories=Audio;AudioVideo+" "squashfs-root/listen1.desktop"
     sed -i "s+AppRun+env DESKTOPINTEGRATION=no ${_installdir}/${_installname}.AppImage+" "squashfs-root/listen1.desktop"
     sed -i "s/[[:space:]]%U$//" "squashfs-root/listen1.desktop"
