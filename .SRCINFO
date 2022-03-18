@@ -8,7 +8,7 @@ pkgbase = python-mujoco
 	makedepends = python-setuptools
 	makedepends = pybind11
 	makedepends = abseil-cpp
-	makedepends = eigen3
+	makedepends = eigen
 	makedepends = cmake
 	depends = python
 	depends = mujoco-bin>=2.1.2

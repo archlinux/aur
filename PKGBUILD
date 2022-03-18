@@ -3,7 +3,7 @@ pkgver=2.1.2.post1
 pkgrel=1
 pkgdesc="Mujoco's Python bindings"
 depends=('python' 'mujoco-bin>=2.1.2' 'absl-py' 'python-glfw' 'python-numpy' 'python-opengl')
-makedepends=('python-setuptools' 'pybind11' 'abseil-cpp' 'eigen3' 'cmake')
+makedepends=('python-setuptools' 'pybind11' 'abseil-cpp' 'eigen' 'cmake')
 arch=('x86_64')
 url="https://github.com/deepmind/mujoco"
 license=('LGPL3')
