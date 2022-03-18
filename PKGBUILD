@@ -3,7 +3,7 @@
 
 pkgname="trougnouf-backgrounds"
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Wallpapers made of photographs posted by User:Trougnouf on Wikimedia Commons, with GNOME integration and transitions built-in to match the time pictures were taken"
 url='https://commons.wikimedia.org/wiki/User:Trougnouf'
 _url='https://commons.wikimedia.org/wiki/Special:Redirect/file/'
@@ -110,7 +110,7 @@ sha256sums=('4e51508df22826986f7d6aafdf43db7178b7615c4bd77bb9f68c0aefa8211990'
             '60da898f8fb43491594e7466f44294db43795d61de124f590eb2be2d42ea208a'
             'ea23392a1914371d3fe41751bf14c7a3341d4d7c5c87c712150e21fbcaaa9dd7'
             '0381dac0c5cfdb7d3068d9758222708fcc281f4b45d115d93ed524894d723ccd'
-            'e3d8465e1d2b8f26baba496e378c263d739b3931a9388cd6ee6818cfb44600bd'
+            '995e55218358d8da826c5a5f45063b3c4dcc581e83372254e144ed44a5a46e2e'
             '2a510c4dd858737a322c67584510a1ead5414d555515745ff5403f4851d1b026'
             '4890081d1a7cdacb036da85e54f900c5effc40741c2a76816ad316b41931ad2b'
             '799cf4bd62c5ac685acf28fe0fd8555db2fe318020767cc8dee3e377abb18a68'
