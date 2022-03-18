@@ -11,7 +11,7 @@
  
 --- a/Source/UnitTest/cmake_core.cmake
 +++ b/Source/UnitTest/cmake_core.cmake
-@@ -126,4 +126,4 @@ target_link_libraries(${ASTC_TEST}
+@@ -135,4 +135,4 @@ target_link_libraries(${ASTC_TEST}
  add_test(NAME ${ASTC_TEST}
           COMMAND ${ASTC_TEST})
  
