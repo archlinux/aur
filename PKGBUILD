@@ -1,7 +1,7 @@
 # Maintainer: Sukanka <su975853527@gmail.com>
 
 pkgname=mpfrc++
-pkgver=3.6.8
+pkgver=3.6.9
 pkgrel=1
 pkgdesc='Multiple-precision floating-point library  for C++'
 arch=(x86_64)
@@ -10,7 +10,7 @@ license=(GPL3)
 depends=('mpfr')
 provides=('mpreal')
 source=("https://github.com/advanpix/mpreal/archive/mpfrc++-${pkgver}.tar.gz")
-sha256sums=('2b10063a1b0f6b1e2c3b02ac948152d18eaf3d8893dff296b40e226ba7ed062b')
+sha256sums=('7ff631e530778f459d74aff624868a7a2aed91c0f694ed32bd6c3501dc7f8540')
 
 
 package() {
