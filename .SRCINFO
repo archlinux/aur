@@ -1,13 +1,13 @@
 pkgbase = socketw
 	pkgdesc = a cross platform streaming socket C++ library
-	pkgver = 3.10.27
+	pkgver = 3.11.0
 	pkgrel = 1
 	url = http://rigsofrods.github.io/socketw/
 	arch = i686
 	arch = x86_64
 	license = GPL-2
 	depends = openssl
-	source = https://github.com/RigsOfRods/socketw/archive/3.10.27.tar.gz
-	sha512sums = 2434e4e3ccb8a93a8fc08ca42e3af0b2e3ba420043b290c4b3f23c14f172e4cdc6a7f32e8abfaa11ecc0adc7f864ea07d03e444c62a286a83b62077a8b05673e
+	source = https://github.com/RigsOfRods/socketw/archive/3.11.0.tar.gz
+	sha512sums = de873c01e0f219c3fbc0630a685843677ec827dd1055f6949bcb942082305caeb7a2cfcf125d49901db784ff4226b200da1f8a59585270d20b70fa7a5a96a29c
 
 pkgname = socketw
