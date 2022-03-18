@@ -3,8 +3,8 @@
 
 pkgname=libqsi
 pkgver=1.9.5
-pkgrel=2
-pkgdesc="libqsi used by INDI ASI drivers. Please note that for sake of simplicity package version is the version of libindi not a version of used ASI SDKs from ZWO. This package contains ASI Camera SDK, ASI EFW SDK, ASI EAF SDK and USBST4 SDK."
+pkgrel=3
+pkgdesc="libqsi used by INDI QSI drivers. Please note that for sake of simplicity package version follows libindi versionning."
 url="http://www.indilib.org/index.php?title=Main_Page"
 license=(MIT)
 arch=(i686 x86_64)
