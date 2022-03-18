@@ -1,7 +1,7 @@
 # Maintainer: Matthias Gatto <uso.cosmo.ray at gmail dot com>
 
 pkgname=sukeban-git
-pkgver=r666.602304d
+pkgver=r1033.c768775
 pkgrel=1
 pkgdesc="FOSS JRPG about school and stuff, still heavilly in devlopement"
 
@@ -19,7 +19,7 @@ pkgver() {
 
 depends=(yirl-git)
 
-source=(git://github.com/ArthurRobein/Pre-Hangover-Quest.git)
+source=(git+https://github.com/ArthurRobein/Pre-Hangover-Quest.git)
 sha256sums=("SKIP")
 
 build() {
