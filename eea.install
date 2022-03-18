@@ -5,10 +5,9 @@ pre_install() {
 	SYSTEMD_CAT="$(which systemd-cat 2>/dev/null || true)"
 	print_error() {
 		errorstr="ESET Endpoint Antivirus error: $1"
+		echo "$errorstr" 1>&2
 		if [ -n "$SYSTEMD_CAT" ]; then
 			printf "%s" "$errorstr" | $SYSTEMD_CAT -t "eea" -p err
-		else
-			echo "$errorstr" 1>&2
 		fi
 	}
 
@@ -45,10 +44,9 @@ pre_upgrade() {
 	SYSTEMD_CAT="$(which systemd-cat 2>/dev/null || true)"
 	print_error() {
 		errorstr="ESET Endpoint Antivirus error: $1"
+		echo "$errorstr" 1>&2
 		if [ -n "$SYSTEMD_CAT" ]; then
 			printf "%s" "$errorstr" | $SYSTEMD_CAT -t "eea" -p err
-		else
-			echo "$errorstr" 1>&2
 		fi
 	}
 
@@ -111,10 +109,9 @@ post_install() {
 	SYSTEMD_CAT="$(which systemd-cat 2>/dev/null || true)"
 	print_error() {
 		errorstr="ESET Endpoint Antivirus error: $1"
+		echo "$errorstr" 1>&2
 		if [ -n "$SYSTEMD_CAT" ]; then
 			printf "%s" "$errorstr" | $SYSTEMD_CAT -t "eea" -p err
-		else
-			echo "$errorstr" 1>&2
 		fi
 	}
 
@@ -132,19 +129,21 @@ post_install() {
 	}
 
 
-	if true; then
+	if true || false; then
 		# first install and upgrade (deb only)
+		# yum: run for "1" (install) and "2" (upgrade)
 		# check if users have been already created
-		if ! grep eset-eea-daemons /etc/group >/dev/null; then
-			# create users and groups
-			for g in eset-eea-daemons; do
-				groupadd -r $g
-			done
 
-			for ug in eset-eea-updated:eset-eea-daemons eset-eea-licensed:eset-eea-daemons eset-eea-logd:eset-eea-daemons eset-eea-confd:eset-eea-daemons eset-eea-scand:eset-eea-daemons; do
+		# create users and groups
+		for g in eset-eea-daemons; do
+			groupadd -r -f $g
+		done
+
+		for ug in eset-eea-confd:eset-eea-daemons eset-eea-updated:eset-eea-daemons eset-eea-scand:eset-eea-daemons eset-eea-logd:eset-eea-daemons eset-eea-licensed:eset-eea-daemons eset-eea-econnd:eset-eea-daemons; do
+			if ! id "${ug%:*}" > /dev/null 2>&1; then
 				useradd -d '/opt/eset/eea' -M -N -r -s /sbin/nologin -g "${ug#*:}" "${ug%:*}"
-			done
-		fi
+			fi
+		done
 	fi
 
 	#################################### Upgrade & Install ####################################
@@ -171,7 +170,9 @@ post_install() {
 	# extract modules from tar
 	tar -xf /var/opt/eset/eea/lib/modules_eea.tar -C /var/opt/eset/eea/lib
 	# compile modules
-	if ! /opt/eset/eea/bin/upd --compile-nups ; then
+	/opt/eset/eea/bin/upd --compile-nups
+	upd_return_code=$?
+	if [ $upd_return_code -ne 0 ] && [ $upd_return_code -ne 10 ]; then
 		print_error 'Module compilation failed.'
 	fi
 
@@ -205,10 +206,9 @@ post_upgrade() {
 	SYSTEMD_CAT="$(which systemd-cat 2>/dev/null || true)"
 	print_error() {
 		errorstr="ESET Endpoint Antivirus error: $1"
+		echo "$errorstr" 1>&2
 		if [ -n "$SYSTEMD_CAT" ]; then
 			printf "%s" "$errorstr" | $SYSTEMD_CAT -t "eea" -p err
-		else
-			echo "$errorstr" 1>&2
 		fi
 	}
 
@@ -226,19 +226,21 @@ post_upgrade() {
 	}
 
 
-	if true; then
+	if true || false; then
 		# first install and upgrade (deb only)
+		# yum: run for "1" (install) and "2" (upgrade)
 		# check if users have been already created
-		if ! grep eset-eea-daemons /etc/group >/dev/null; then
-			# create users and groups
-			for g in eset-eea-daemons; do
-				groupadd -r $g
-			done
 
-			for ug in eset-eea-updated:eset-eea-daemons eset-eea-licensed:eset-eea-daemons eset-eea-logd:eset-eea-daemons eset-eea-confd:eset-eea-daemons eset-eea-scand:eset-eea-daemons; do
+		# create users and groups
+		for g in eset-eea-daemons; do
+			groupadd -r -f $g
+		done
+
+		for ug in eset-eea-confd:eset-eea-daemons eset-eea-updated:eset-eea-daemons eset-eea-scand:eset-eea-daemons eset-eea-logd:eset-eea-daemons eset-eea-licensed:eset-eea-daemons eset-eea-econnd:eset-eea-daemons; do
+			if ! id "${ug%:*}" > /dev/null 2>&1; then
 				useradd -d '/opt/eset/eea' -M -N -r -s /sbin/nologin -g "${ug#*:}" "${ug%:*}"
-			done
-		fi
+			fi
+		done
 	fi
 
 	#################################### Upgrade & Install ####################################
@@ -265,7 +267,9 @@ post_upgrade() {
 	# extract modules from tar
 	tar -xf /var/opt/eset/eea/lib/modules_eea.tar -C /var/opt/eset/eea/lib
 	# compile modules
-	if ! /opt/eset/eea/bin/upd --compile-nups ; then
+	/opt/eset/eea/bin/upd --compile-nups
+	upd_return_code=$?
+	if [ $upd_return_code -ne 0 ] && [ $upd_return_code -ne 10 ]; then
 		print_error 'Module compilation failed.'
 	fi
 
@@ -299,10 +303,9 @@ pre_remove() {
 	SYSTEMD_CAT="$(which systemd-cat 2>/dev/null || true)"
 	print_error() {
 		errorstr="ESET Endpoint Antivirus error: $1"
+		echo "$errorstr" 1>&2
 		if [ -n "$SYSTEMD_CAT" ]; then
 			printf "%s" "$errorstr" | $SYSTEMD_CAT -t "eea" -p err
-		else
-			echo "$errorstr" 1>&2
 		fi
 	}
 
@@ -351,7 +354,7 @@ post_remove() {
 
 	#################################### Uninstall ####################################
 	# remove users and groups
-	for ug in eset-eea-updated:eset-eea-daemons eset-eea-licensed:eset-eea-daemons eset-eea-logd:eset-eea-daemons eset-eea-confd:eset-eea-daemons eset-eea-scand:eset-eea-daemons; do
+	for ug in eset-eea-confd:eset-eea-daemons eset-eea-updated:eset-eea-daemons eset-eea-scand:eset-eea-daemons eset-eea-logd:eset-eea-daemons eset-eea-licensed:eset-eea-daemons eset-eea-econnd:eset-eea-daemons; do
 		usr=${ug%:*}
 		userdel $usr 2>/dev/null || true
 	done
