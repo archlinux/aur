@@ -1,80 +1,85 @@
-# Maintainer: Thiago França<tfsthiagobr98@outlook.com>
-
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Thiago França<tfsthiagobr98@outlook.com>
 _pkgname=poetry
-pkgname=python-poetry-git
-pkgver=1.1.0.r85.g855bc88b
+pkgname=python-${_pkgname}-git
+pkgver=1.2.0b1.r0.gdca6ff26
 pkgrel=1
 pkgdesc="Python dependency management and packaging made easy"
-arch=('any')
-url="https://python-poetry.org/"
-license=('MIT')
-_deps=('cachecontrol' 'cachy' 'cleo-git' 'html5lib' 'jsonschema' 'lockfile'
-       'pkginfo' 'pyparsing' 'pyrsistent' 'requests' 'requests-toolbelt'
-       'shellingham' 'tomlkit' 'keyring' 'pexpect' 'poetry-core-git' 'virtualenv>=20.0.26')
+arch=(any)
+url="https://python-poetry.org"
+license=(MIT)
+_deps=(cachecontrol
+  cachy
+  cleo
+  html5lib
+  keyring
+  lockfile
+  packaging
+  pexpect
+  pkginfo
+  poetry-core-git
+  requests
+  requests-toolbelt
+  shellingham
+  tomlkit
+  virtualenv)
 depends=("${_deps[@]/#/python-}")
-makedepends=('python-dephell')
-checkdepends=('git' 'python-pytest' 'python-pytest-mock' 'python-httpretty')
-provides=('poetry' 'python-poetry')
-conflicts=('poetry' 'python-poetry')
-replaces=('poetry')
-source=("${_pkgname}"::"git+https://github.com/python-${_pkgname}/${_pkgname}.git"
-        "poetry-completions-generator")
-sha256sums=('SKIP'
-            'e44c71a3b804b5c2bf07573ed465aee275a5844f10e37ee63c7395c9213a2b6d')
-            
+makedepends=(python-{build,installer} git)
+checkdepends=(python-httpretty
+  python-pytest
+  python-pytest-mock)
+provides=(poetry python-poetry)
+conflicts=(poetry python-poetry)
+source=(git+https://github.com/python-${_pkgname}/${_pkgname}.git
+  poetry-completions-generator)
+sha512sums=('SKIP'
+  'db6169f5a6ab8c22c1b32ac2bdb7403ead806da70cd851f596049320fffeda26c43e4ae4c5407c5105582b163b5a81ae14d4190fcfa1eb9f25d4e5c5a2dd2cf0')
+
 pkgver() {
-    cd "${srcdir}/${_pkgname}"
-    ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' \
-    || printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+  cd ${_pkgname}
+  (
+    set -o pipefail
+    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 prepare() {
-    cd "${srcdir}"/${_pkgname}
-
-    dephell deps convert --level DEBUG --from pyproject.toml --to setup.py
+  cd ${_pkgname}
 }
 
 build() {
-    cd "${srcdir}"/${_pkgname}
-    python setup.py build
+  cd ${_pkgname}
+  python -m build -wn
 }
 
 # check() {
-#     cd "${srcdir}"/${_pkgname}
-    
-#     pytest \
-#         -vv \
-#         -k 'not test_execute_executes_a_batch_of_operations' \
-#         -k 'not test_default_with_excluded_data ' \
-#         -k 'not test_builder_should_execute_build_scripts' \
-#         -k 'not test_execute_executes_a_batch_of_operations' \
-#         --ignore tests/packages/test_locker.py \
-#         --ignore tests/console/commands/test_add.py \
-#         --ignore tests/console/commands/test_export.py \
-#         --ignore tests/console/commands/test_show.py
+#   cd ${_pkgname}
+#   pytest \
+#     -vv \
+#     -k 'not test_execute_executes_a_batch_of_operations' \
+#     -k 'not test_default_with_excluded_data ' \
+#     -k 'not test_builder_should_execute_build_scripts' \
+#     -k 'not test_execute_executes_a_batch_of_operations' \
+#     --ignore tests/packages/test_locker.py \
+#     --ignore tests/console/commands/test_add.py \
+#     --ignore tests/console/commands/test_export.py \
+#     --ignore tests/console/commands/test_show.py
 # }
 
 package() {
-    cd "${srcdir}"/${_pkgname}
-
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-    
-    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
-
-    rm "${pkgdir}"/usr/lib/python3.*/site-packages/poetry/__init__.py
-    rm "${pkgdir}"/usr/lib/python3.*/site-packages/poetry/__pycache__/__init__.cpython-*.opt-1.pyc
-    rm "${pkgdir}"/usr/lib/python3.*/site-packages/poetry/__pycache__/__init__.cpython-*.pyc
-
-    # install completions, which for some crazy reason hardcode the filename
-    # used to invoke which is __main__.py if we use python -m poetry, and also
-    # adds the full directory path???
-    install -m755 "${srcdir}"/poetry-completions-generator ./poetry-completions-generator
-    ./poetry-completions-generator completions bash | sed "\|${srcdir}|d" | \
-        install -Dm644 /dev/stdin "${pkgdir}"/usr/share/bash-completion/completions/poetry
-    ./poetry-completions-generator completions zsh | sed "\|${srcdir}|d" | \
-        install -Dm644 /dev/stdin "${pkgdir}"/usr/share/zsh/site-functions/_poetry
-    ./poetry-completions-generator completions fish | \
-        install -Dm644 /dev/stdin "${pkgdir}"/usr/share/fish/vendor_completions.d/poetry.fish
+  cd ${_pkgname}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer -d "$pkgdir" dist/*.whl
+  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+  # install completions, which for some crazy reason hardcode the filename
+  # used to invoke which is __main__.py if we use python -m poetry, and also
+  # adds the full directory path???
+  ./poetry-completions-generator completions bash |
+    sed "#$srcdir#d" |
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/poetry"
+  ./poetry-completions-generator completions zsh |
+    sed "#$srcdir#d" |
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_poetry"
+  ./poetry-completions-generator completions fish |
+    install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/poetry.fish"
 }
