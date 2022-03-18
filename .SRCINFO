@@ -1,6 +1,6 @@
 pkgbase = chatterino2-dankerino-git
 	pkgdesc = A fork of Chatterino2 with features (or fixes) that are not accepted into the upstream repo (7tv emotes included)
-	pkgver = r3569.608965eb
+	pkgver = r3693.0c3cafa4
 	pkgrel = 1
 	url = https://github.com/Mm2PL/dankerino
 	install = chatterino2-dankerino-git.install
@@ -24,16 +24,16 @@ pkgbase = chatterino2-dankerino-git
 	conflicts = chatterino2-appimage
 	conflicts = chatterino2-nightly-appimage
 	conflicts = chatterino2-7tv-git
-	source = git://github.com/Mm2PL/dankerino
-	source = git://github.com/Chatterino/libcommuni#branch=chatterino-cmake
-	source = git://github.com/jiakuan/qBreakpad
-	source = git://github.com/mohabouje/WinToast
-	source = git://github.com/pajlada/settings
-	source = git://github.com/pajlada/signals
-	source = git://github.com/pajlada/serialize
-	source = git://github.com/Tencent/rapidjson
-	source = git://github.com/Chatterino/qtkeychain
-	source = git://github.com/zaphoyd/websocketpp
+	source = git+https://github.com/Mm2PL/dankerino
+	source = git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake
+	source = git+https://github.com/jiakuan/qBreakpad
+	source = git+https://github.com/mohabouje/WinToast
+	source = git+https://github.com/pajlada/settings
+	source = git+https://github.com/pajlada/signals
+	source = git+https://github.com/pajlada/serialize
+	source = git+https://github.com/Tencent/rapidjson
+	source = git+https://github.com/Chatterino/qtkeychain
+	source = git+https://github.com/zaphoyd/websocketpp
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

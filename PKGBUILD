@@ -2,7 +2,7 @@
 
 pkgname=chatterino2-dankerino-git
 _pkgname=dankerino
-pkgver=r3569.608965eb
+pkgver=r3693.0c3cafa4
 pkgrel=1
 pkgdesc='A fork of Chatterino2 with features (or fixes) that are not accepted into the upstream repo (7tv emotes included)'
 arch=('any')
@@ -16,16 +16,16 @@ optdepends=('streamlink: For piping streams to video players'
 provides=('chatterino')
 conflicts=('chatterino2-git' 'chatterino2-appimage' 'chatterino2-nightly-appimage' 'chatterino2-7tv-git')
 install=$pkgname.install
-source=("git://github.com/Mm2PL/dankerino"
-        "git://github.com/Chatterino/libcommuni#branch=chatterino-cmake"
-        "git://github.com/jiakuan/qBreakpad"
-        "git://github.com/mohabouje/WinToast"
-        "git://github.com/pajlada/settings"
-        "git://github.com/pajlada/signals"
-        "git://github.com/pajlada/serialize"
-        "git://github.com/Tencent/rapidjson"
-        "git://github.com/Chatterino/qtkeychain"
-        "git://github.com/zaphoyd/websocketpp")
+source=("git+https://github.com/Mm2PL/dankerino"
+        "git+https://github.com/Chatterino/libcommuni#branch=chatterino-cmake"
+        "git+https://github.com/jiakuan/qBreakpad"
+        "git+https://github.com/mohabouje/WinToast"
+        "git+https://github.com/pajlada/settings"
+        "git+https://github.com/pajlada/signals"
+        "git+https://github.com/pajlada/serialize"
+        "git+https://github.com/Tencent/rapidjson"
+        "git+https://github.com/Chatterino/qtkeychain"
+        "git+https://github.com/zaphoyd/websocketpp")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
