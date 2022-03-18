@@ -1,0 +1,19 @@
+pkgbase = haskell-oeis
+	pkgdesc = Interface to the Online Encyclopedia of Integer Sequences (OEIS)
+	pkgver = 0.3.10
+	pkgrel = 1
+	url = git://github.com/niteria/oeis.git
+	arch = x86_64
+	license = custom: BSD3
+	makedepends = ghc
+	makedepends = haskell-hunit
+	makedepends = haskell-test-framework
+	makedepends = haskell-test-framework-hunit
+	depends = ghc-libs
+	depends = haskell-http
+	depends = haskell-network
+	depends = haskell-network-uri
+	source = https://hackage.haskell.org/packages/archive/oeis/0.3.10/oeis-0.3.10.tar.gz
+	sha256sums = bbfa724d9f69f14bcc95a5ecbd94a3e0ec1b072b69a5413c70174d2406884529
+
+pkgname = haskell-oeis
