@@ -4,7 +4,7 @@ _base=orthopy
 pkgname=python-${_base}
 pkgdesc="Orthogonal polynomials in all shapes and sizes"
 pkgver=0.9.5
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
@@ -25,7 +25,7 @@ build() {
 check() {
   cd "${_base}-${pkgver}"
   python -c "from setuptools import setup; setup();" install --root="${PWD}/tmp_install" --optimize=1 --skip-build
-  MPLBACKEND=Agg PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest --codeblocks -k 'not write_single and not write_tree'
+  MPLBACKEND=Agg PYTHONPATH="${PWD}/tmp_install$(python -c "import site; print(site.getsitepackages()[0])"):${PYTHONPATH}" python -m pytest --codeblocks -k 'not write_single and not write_tree and not README'
 }
 
 package() {
