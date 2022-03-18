@@ -1,7 +1,7 @@
 # Maintainer: Étienne Deparis <etienne@depar.is>
 
 pkgname=goodvibes
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Lightweight internet radio player"
 arch=('i686' 'x86_64')
@@ -10,14 +10,7 @@ license=('GPL')
 depends=("libkeybinder3" "gst-plugins-base" "gst-plugins-bad" "gst-plugins-good" "gst-plugins-ugly")
 makedepends=("meson")
 source=("https://gitlab.com/${pkgname}/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz")
-sha256sums=('14a2c70fa69eb5d69338df3782637e705b0baca5365e5a4fc2d2e45ac6c18414')
-
-prepare() {
-    # Remove broken weird git thing
-    sed -i 140,161d "$pkgname-v$pkgver/meson.build"
-    # Remove tests
-    sed -i 94,104d "$pkgname-v$pkgver/meson.build"
-}
+sha256sums=('9940c56cb18064f966c2f881fbc7876004eba06f1ea249e01c652477853017cf')
 
 build() {
     arch-meson -D tests=false "$pkgname-v$pkgver" build
