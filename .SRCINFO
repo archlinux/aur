@@ -1,7 +1,7 @@
 pkgbase = xorgproto-git
 	pkgdesc = combined X.Org X11 Protocol headers (git version)
-	pkgver = 2021.4.99.2.1.r2708.ga0ed054
-	pkgrel = 2
+	pkgver = 2021.5.1.r2711.g914d8f5
+	pkgrel = 1
 	url = https://xorg.freedesktop.org/
 	arch = any
 	license = custom

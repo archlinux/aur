@@ -1,10 +1,10 @@
 # Maintainer: Yurii Kolesnykov
-# Based on [extra]'s xorgproto by AndyRTR <andyrtr@archlinux.org>
+# Based on extra/xorgproto by AndyRTR <andyrtr@archlinux.org>
 
 _pkgname=xorgproto
 pkgname=$_pkgname-git
-pkgver=2021.4.99.2.1.r2708.ga0ed054
-pkgrel=2
+pkgver=2021.5.1.r2711.g914d8f5
+pkgrel=1
 pkgdesc='combined X.Org X11 Protocol headers (git version)'
 arch=('any')
 url="https://xorg.freedesktop.org/"
@@ -26,8 +26,7 @@ pkgver() {
 }
 
 prepare() {
-  rm -rf build
-  mkdir build
+  mkdir -p build
 }
 
 build() {
