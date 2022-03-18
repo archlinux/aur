@@ -2,7 +2,7 @@
 # Reference: PKGBUILD(5)
 
 pkgname=whatami-git
-pkgver=r25.8e23e7a
+pkgver=r30.5b49380
 pkgrel=1
 pkgdesc='Get ready for some painful insults...'
 
@@ -19,7 +19,7 @@ pkgver() {
 makedepends=('python-setuptools')
 depends=()
 
-source=("git://github.com/kz6fittycent/whatami.git")
+source=("git+https://github.com/kz6fittycent/whatami.git")
 sha256sums=("SKIP")
 
 build() {
