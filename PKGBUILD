@@ -2,13 +2,13 @@
 # Based on Aaron Paden <aaronbpaden@gmail.com> PKGBUILD for pcem
 pkgname=pcem-git
 _pkgname=pcem
-pkgver=17.r127.g60c5656
+pkgver=17.r130.g513c906
 pkgrel=1
 pkgdesc="Emulator for various IBM PC computers and clones - development version"
 url="http://pcem-emulator.co.uk/"
 arch=('x86_64' 'i686')
 license=('GPL2')
-depends=('wxgtk2' 'openal' 'sdl2' 'alsa-lib')
+depends=('wxgtk3' 'openal' 'sdl2' 'alsa-lib')
 makedepends=('git' 'ninja' 'meson')
 conflicts=('pcem')
 source=("git+https://github.com/sarah-walker-pcem/pcem.git")
