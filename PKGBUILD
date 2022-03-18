@@ -2,7 +2,7 @@
 
 pkgbase=gnome-software-git
 pkgname=(gnome-software-git gnome-software-packagekit-plugin-git)
-pkgver=42.rc+r3+g733e266b2
+pkgver=42.0+r12+g0d856448e
 pkgrel=1
 pkgdesc='GNOME Software Tools'
 arch=(x86_64 aarch64)
