@@ -1,6 +1,6 @@
 # Maintainer: Marcel Unbehaun <f.rostze.ux at gmail dot com>
 
-pkgname=boatswain
+pkgname=boatswain-git
 pkgver=0.1.0.r113.0896d65
 pkgrel=1
 pkgdesc='Control Elgato Stream Deck devices'

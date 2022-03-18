@@ -1,4 +1,4 @@
-pkgbase = boatswain
+pkgbase = boatswain-git
 	pkgdesc = Control Elgato Stream Deck devices
 	pkgver = 0.1.0.r113.0896d65
 	pkgrel = 1
@@ -26,4 +26,4 @@ pkgbase = boatswain
 	source = git+https://gitlab.gnome.org/feaneron/boatswain.git
 	sha1sums = SKIP
 
-pkgname = boatswain
+pkgname = boatswain-git
