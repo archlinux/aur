@@ -1,0 +1,12 @@
+pkgbase = edrawinfo-cn
+	pkgdesc = 亿图信息图软件是一款集信息图，海报，传单，彩页，杂志，证书，板报，宣传册等设计于一身的图文设计软件。
+	pkgver = 8.6
+	pkgrel = 1
+	url = https://www.edrawsoft.cn/download-edrawinfo/
+	arch = x86_64
+	license = Commercial
+	options = !strip
+	source_x86_64 = edrawinfo-64-8.6.run.gz::https://www.edrawsoft.com/archives/edrawinfo-64.run.gz
+	sha256sums_x86_64 = 6ff695c83de59e3964d607aa52c6ab75321472600013d3877f3fa9d5cf4d4deb
+
+pkgname = edrawinfo-cn
