@@ -1,0 +1,8 @@
+post_install() {
+	echo "Note: bemenu's wayland backend only works"
+	echo ' in compositors which implement wlr-layer-shell.'
+}
+
+post_upgrade() {
+	post_install
+}

@@ -1,42 +1,72 @@
-# Maintainer: Danny Bautista <aur at pyrolagus.de>
-# https://github.com/Earnestly/pkgbuilds/tree/master/bemenu-git
-pkgname=bemenu-git
-_pkgname="bemenu"
-pkgver=r382.d9f4d1b
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Ivy Foster <iff@archlinux.org>
+# Contributor: Christian Rebischke <chris.rebischke@archlinux.org>
+# Contributor: Danny Bautista <aur at pyrolagus.de>
+
+_pkgbase=bemenu
+pkgbase=bemenu-git
+pkgname=(bemenu-git bemenu-ncurses-git bemenu-x11-git bemenu-wayland-git)
+pkgver=0.6.7.r1.g81b5091
 pkgrel=1
 
 # Wayland without wlroots is not supported.
 # https://github.com/Cloudef/bemenu/issues/79#issuecomment-572867783
-pkgdesc='Dynamic menu library and client program inspired by dmenu with support for wlroots-based wayland compositors'
+pkgdesc='Dynamic menu library and client program inspired by dmenu'
 url='https://github.com/Cloudef/bemenu'
 arch=(x86_64)
 license=(GPL3 LGPL3)
-provides=('bemenu')
-conflicts=('bemenu')
-depends=(pango)
-makedepends=(cmake libxinerama libxkbcommon ncurses wayland wlroots)
-optdepends=(
-    'libxinerama: For the x11 backend'
-    'libxkbcommon: For the wayland backend'
-    'ncurses: For the curses backend'
-    'wayland: For the wayland backend'
-    'wayland-protocols: For the wayland backend'
-    'wlroots: For the wayland backend'
-)
-source=("$_pkgname::git+https://github.com/Cloudef/bemenu")
+
+makedepends=(libxinerama libxkbcommon ncurses pango wayland wayland-protocols wlroots scdoc)
+
+source=(git+https://github.com/Cloudef/bemenu)
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_pkgname"
-    printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$_pkgbase"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd "$_pkgname"
-    make PREFIX="$pkgdir/usr"
+	cd "$_pkgbase"
+	make PREFIX=/usr
 }
 
 package_bemenu-git() {
-    cd "$_pkgname"
-    make install PREFIX="$pkgdir/usr"
+	depends=(bemenu-renderer-git)
+	provides=(libbemenu-git bemenu)
+	conflicts=('bemenu')
+
+	cd "$_pkgbase"
+	make DESTDIR="$pkgdir" PREFIX=/usr install-base install-docs
+}
+
+package_bemenu-ncurses-git() {
+	pkgdesc='ncurses renderer for bemenu'
+	provides=(bemenu-renderer-git bemenu-ncurses)
+	conflicts=(bemenu-ncurses)
+	depends=(libbemenu-git ncurses)
+
+	cd "$_pkgbase"
+	make DESTDIR="$pkgdir" PREFIX=/usr install-curses
+}
+
+package_bemenu-wayland-git() {
+	pkgdesc='Wayland (wlroots-based compositors) renderer for bemenu'
+	provides=(bemenu-renderer-git bemenu-wayland)
+	conflicts=(bemenu-wayland)
+	depends=(libbemenu libxkbcommon pango wayland)
+	install=bemenu-wayland-git.install
+
+	cd "$_pkgbase"
+	make DESTDIR="$pkgdir" PREFIX=/usr install-wayland
+}
+
+package_bemenu-x11-git() {
+	pkgdesc='X11 renderer for bemenu'
+	provides=(bemenu-renderer-git bemenu-x11)
+	conflicts=(bemenu-x11)
+	depends=(libbemenu libxinerama pango)
+
+	cd "$_pkgbase"
+	make DESTDIR="$pkgdir" PREFIX=/usr install-x11
 }
