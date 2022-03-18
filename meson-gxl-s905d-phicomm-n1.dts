@@ -32,6 +32,24 @@
             };
         };
     };
+
+    sound {
+        model = "Phicomm-N1";
+        /delete-property/ audio-aux-devs;
+        /delete-property/ audio-widgets;
+        /delete-property/ audio-routing;
+
+        /* disable SPDIF */
+        /delete-node/ dai-link-1;
+        /delete-node/ dai-link-3;
+
+        /* disable ACODEC */
+        dai-link-2 {
+            /delete-node/ code-1;
+        };
+
+        /delete-node/ dai-link-5;
+    };
 };
 
 &cvbs_vdac_port {
