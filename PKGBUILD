@@ -24,7 +24,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/opt/rocm \
         -Drocprim_DIR=/opt/rocm/rocprim/rocprim/lib/cmake/rocprim \
         -DBUILD_CLIENTS_SAMPLES=OFF \
-        -DAMDGPU_TARGETS=${AMDGPU_TARGETS}
+        -DAMDGPU_TARGETS=${AMDGPU_TARGETS:-gfx803;gfx900:xnack-;gfx906:xnack-;gfx908:xnack-;gfx90a:xnack-;gfx90a:xnack+;gfx1030}
   make
 }
 
