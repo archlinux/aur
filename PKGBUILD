@@ -5,7 +5,7 @@
 
 pkgname=wtfutil
 pkgver=0.41.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Personal information dashboard for your terminal"
 arch=('x86_64' 'aarch64' 'armv6h')
 url="https://wtfutil.com"
@@ -42,6 +42,9 @@ check() {
   cd "wtf-$pkgver"
   export GOPATH="$srcdir/gopath"
   go test ./...
+
+  # Clean module cache for makepkg -C
+  go clean -modcache
 }
 
 package() {
