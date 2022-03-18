@@ -1,0 +1,24 @@
+pkgbase = rmlui-git
+	pkgdesc = The HTML/CSS User Interface library evolved (git checkout)
+	pkgver = 4.3+28+g48aacadd
+	pkgrel = 1
+	url = https://mikke89.github.io/RmlUiDoc/
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	license = MIT
+	makedepends = cmake
+	makedepends = mesa
+	makedepends = boost
+	makedepends = git
+	depends = boost-libs
+	depends = freetype2
+	depends = libgl
+	depends = glu
+	provides = rmlui=4.3
+	conflicts = rmlui
+	source = rmlui::git+https://github.com/mikke89/RmlUi.git
+	sha256sums = SKIP
+
+pkgname = rmlui-git
