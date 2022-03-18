@@ -1,14 +1,14 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# Based on testing/systemd by:
-# Maintainer: Christian Hesse <mail@eworm.de>
-# Maintainer: Dave Reisner <dreisner@archlinux.org>
-# Maintainer: Tom Gundersen <teg@jklm.no>
+# Based on core/systemd by:
+# Christian Hesse <mail@eworm.de>
+# Dave Reisner <dreisner@archlinux.org>
+# Tom Gundersen <teg@jklm.no>
 
 _pkgbase=systemd
 pkgbase=$_pkgbase-git
 pkgname=('systemd-git' 'systemd-libs-git' 'systemd-resolvconf-git' 'systemd-sysvcompat-git')
 pkgdesc='systemd (git version)'
-pkgver=250.r310.g007721e939
+pkgver=250.r1414.gad337e55a3
 pkgrel=1
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
@@ -18,7 +18,6 @@ makedepends=('acl' 'cryptsetup' 'docbook-xsl' 'gperf' 'lz4' 'xz' 'pam' 'libelf'
              'python-jinja' 'python-lxml' 'quota-tools' 'shadow' 'gnu-efi-libs' 'git'
              'meson' 'libseccomp' 'pcre2' 'audit' 'kexec-tools' 'libxkbcommon'
              'bash-completion' 'p11-kit' 'systemd' 'libfido2' 'tpm2-tss' 'rsync')
-options=('!ccache')
 source=('git+https://github.com/systemd/systemd'
         '0001-Use-Arch-Linux-device-access-groups.patch'
         'initcpio-hook-udev'
@@ -41,7 +40,7 @@ source=('git+https://github.com/systemd/systemd'
 sha512sums=('SKIP'
             'cc0c2ffb5f7c3a7176cd68f3dddd85ca000dcc4cdf3044746a20147234adb6811800fd28a4713faa6a59bf8c02be9fd43c2d6aa6695fd1dbf03ae773a91d090c'
             'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
-            '5479c8ef963ff247381392907c13308b4ae3a9383c867bd4c8a318b159f23acdb4be5f4ddae0dab4665f4927d3f30166077b1d3aaa2cde6bf53d023b7abb939c'
+            'aeefb607471cffb5ed4c3d9f36dc0954a9a08cee4b7b4ff55468b561e089e3d8448398906a7df328049ba51b712e4d50698b96bc152bdb03a35ce39c3f51a7cb'
             'a8c7e4a2cc9c9987e3c957a1fc3afe8281f2281fffd2e890913dcf00cf704024fb80d86cb75f9314b99b0e03bac275b22de93307bfc226d8be9435497e95b7e6'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
             'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
@@ -72,17 +71,16 @@ pkgver() {
 build() {
   local _timeservers=({0..3}.arch.pool.ntp.org)
   local _nameservers=(
-    # We use these public name services, ordered by their
-    # privacy policy (hopefully):
+    # We use these public name services, ordered by their privacy policy (hopefully):
     #  * Cloudflare (https://1.1.1.1/)
-    #  * Quad9 without filtering (https://www.quad9.net/)
+    #  * Quad9 (https://www.quad9.net/)
     #  * Google (https://developers.google.com/speed/public-dns/)
-    1.1.1.1#cloudflare-dns.com
-    9.9.9.10#dns.quad9.net
-    8.8.8.8#dns.google
-    2606:4700:4700::1111#cloudflare-dns.com
-    2620:fe::10#dns.quad9.net
-    2001:4860:4860::8888#dns.google
+    '1.1.1.1#cloudflare-dns.com'
+    '9.9.9.9#dns.quad9.net'
+    '8.8.8.8#dns.google'
+    '2606:4700:4700::1111#cloudflare-dns.com'
+    '2620:fe::9#dns.quad9.net'
+    '2001:4860:4860::8888#dns.google'
   )
 
   local _meson_options=(
@@ -119,12 +117,12 @@ build() {
     -Dsbat-distro-summary='Arch Linux AUR'
     -Dsbat-distro-pkgname="${pkgname}"
     -Dsbat-distro-version="${pkgver}"
-    -Dsbat-distro-url="https://aur.archlinux.org/packages/systemd-git/"
+    -Dsbat-distro-url="https://aur.archlinux.org/pkgbase/${pkgname}"
   )
 
   arch-meson "$_pkgbase" build "${_meson_options[@]}"
 
-  ninja -C build
+  meson compile -C build
 }
 
 check() {
