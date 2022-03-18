@@ -1,4 +1,4 @@
-pkgbase = linux-xanmod-tt
+pkgbase = linux-xanmod-tt-uksm-cjktty
 	pkgdesc = Linux Xanmod. Development branch with the Task Type CPU Scheduler by Hamad Al Marri
 	pkgver = 5.15.29
 	pkgrel = 1
@@ -28,7 +28,7 @@ pkgbase = linux-xanmod-tt
 	sha256sums = 97a525e28a270c5e6e5a4fc4ab4920c42ceef2f9921857497ab3c56ec343803e
 	sha256sums = cb348cc3ba1a453ac6057ecc08000a2ccddc47b70491caaf71db34a3d630f77c
 
-pkgname = linux-xanmod-tt
+pkgname = linux-xanmod-tt-uksm-cjktty
 	pkgdesc = The Linux kernel and modules with Xanmod patches
 	depends = coreutils
 	depends = kmod
@@ -40,6 +40,6 @@ pkgname = linux-xanmod-tt
 	provides = KSMBD-MODULE
 	provides = NTFS3-MODULE
 
-pkgname = linux-xanmod-tt-headers
+pkgname = linux-xanmod-tt-uksm-cjktty-headers
 	pkgdesc = Headers and scripts for building modules for the Linux Xanmod. Development branch with the Task Type CPU Scheduler by Hamad Al Marri kernel
 	depends = pahole
