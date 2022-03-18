@@ -3,10 +3,10 @@
 _pkgname=ddstats-rust
 pkgname=${_pkgname}-bin
 pkgver=4
-pkgrel=2
+pkgrel=3
 source=("https://github.com/lsaa/ddstats-rust/releases/download/v0.6.10-181/ddstats-rust-linux-x86_64.zip")
 arch=('x86_64')
-sha256sums=('SKIP')
+sha256sums=('1656e6caf40dc95f6cdfad286a0f6246672d1feee38ded01955a58ad60e7cdae')
 b2sums=('SKIP')
 
 package() {
