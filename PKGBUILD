@@ -1,7 +1,7 @@
 # Maintainer: Matthias Gatto <uso.cosmo.ray at gmail dot com>
 
 pkgname=json-search-git
-pkgver=r12.3fb20c6
+pkgver=r35.4f394e4
 pkgrel=1
 pkgdesc='Util to seach though json files'
 
@@ -18,7 +18,7 @@ makedepends=(gcc make)
 
 depends=(json-c)
 
-source=(git://github.com/cosmo-ray/json-search.git)
+source=(git+https://github.com/cosmo-ray/json-search.git)
 sha256sums=("SKIP")
 
 build() {
