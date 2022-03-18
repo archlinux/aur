@@ -16,7 +16,7 @@
 _phpbase="80"
 _suffix=""
 pkgver="8.0.17"
-pkgrel="1"
+pkgrel="2"
 pkgbase="php80"
 pkgdesc="PHP 8.0.17 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
@@ -210,20 +210,20 @@ _sapi_depends=(
     "argon2"
 )
 _ext_depends_snmp=(
-    "php80=8.0.16"
+    "php80=8.0.17"
     "net-snmp"
     "openssl"
 )
 _ext_depends_ftp=(
-    "php80=8.0.16"
+    "php80=8.0.17"
     "openssl"
 )
 _ext_depends_intl=(
-    "php80=8.0.16"
+    "php80=8.0.17"
     "icu"
 )
 _ext_depends_imap=(
-    "php80=8.0.16"
+    "php80=8.0.17"
     "pam"
     "krb5"
     "c-client"
@@ -231,45 +231,45 @@ _ext_depends_imap=(
     "openssl"
 )
 _ext_depends_gd=(
-    "php80=8.0.16"
+    "php80=8.0.17"
     "gd"
 )
 _ext_depends_mysql=(
-    "php80=8.0.16"
-    "php80-pdo=8.0.16"
-    "php80-openssl=8.0.16"
+    "php80=8.0.17"
+    "php80-pdo=8.0.17"
+    "php80-openssl=8.0.17"
 )
 _ext_depends_dba=(
-    "php80=8.0.16"
+    "php80=8.0.17"
     "db"
     "lmdb"
 )
 _ext_depends_odbc=(
-    "php80=8.0.16"
+    "php80=8.0.17"
     "unixodbc"
-    "php80-pdo=8.0.16"
+    "php80-pdo=8.0.17"
 )
 _ext_depends_pgsql=(
-    "php80=8.0.16"
+    "php80=8.0.17"
     "postgresql-libs"
-    "php80-pdo=8.0.16"
+    "php80-pdo=8.0.17"
 )
 _ext_depends_firebird=(
-    "php80=8.0.16"
+    "php80=8.0.17"
     "libfbclient"
-    "php80-pdo=8.0.16"
+    "php80-pdo=8.0.17"
 )
 _ext_depends_sqlite=(
-    "php80=8.0.16"
+    "php80=8.0.17"
     "sqlite"
-    "php80-pdo=8.0.16"
+    "php80-pdo=8.0.17"
 )
 _ext_depends_mbstring=(
-    "php80=8.0.16"
+    "php80=8.0.17"
     "oniguruma"
 )
 _ext_depends_openssl=(
-    "php80=8.0.16"
+    "php80=8.0.17"
     "krb5"
     "e2fsprogs"
     "openssl"

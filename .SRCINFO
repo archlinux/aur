@@ -1,7 +1,7 @@
 pkgbase = php80
 	pkgdesc = PHP 8.0.17 compiled as to not conflict with mainline php
 	pkgver = 8.0.17
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.php.net
 	arch = x86_64
 	license = PHP
@@ -209,7 +209,7 @@ pkgname = php80-simplexml
 
 pkgname = php80-openssl
 	pkgdesc = OpenSSL module for php80
-	depends = php80=8.0.16
+	depends = php80=8.0.17
 	depends = krb5
 	depends = e2fsprogs
 	depends = openssl
@@ -220,9 +220,9 @@ pkgname = php80-pdo
 
 pkgname = php80-mysql
 	pkgdesc = MySQL modules for php80
-	depends = php80=8.0.16
-	depends = php80-pdo=8.0.16
-	depends = php80-openssl=8.0.16
+	depends = php80=8.0.17
+	depends = php80-pdo=8.0.17
+	depends = php80-openssl=8.0.17
 
 pkgname = php80-phar
 	pkgdesc = phar module for php80
@@ -262,27 +262,27 @@ pkgname = php80-tokenizer
 
 pkgname = php80-dba
 	pkgdesc = dba module for php80
-	depends = php80=8.0.16
+	depends = php80=8.0.17
 	depends = db
 	depends = lmdb
 
 pkgname = php80-pgsql
 	pkgdesc = PostgreSQL modules for php80
-	depends = php80=8.0.16
+	depends = php80=8.0.17
 	depends = postgresql-libs
-	depends = php80-pdo=8.0.16
+	depends = php80-pdo=8.0.17
 
 pkgname = php80-odbc
 	pkgdesc = ODBC modules for php80
-	depends = php80=8.0.16
+	depends = php80=8.0.17
 	depends = unixodbc
-	depends = php80-pdo=8.0.16
+	depends = php80-pdo=8.0.17
 
 pkgname = php80-firebird
 	pkgdesc = pdo_firebird module for php80
-	depends = php80=8.0.16
+	depends = php80=8.0.17
 	depends = libfbclient
-	depends = php80-pdo=8.0.16
+	depends = php80-pdo=8.0.17
 
 pkgname = php80-dblib
 	pkgdesc = pdo_dblib module for php80
@@ -291,13 +291,13 @@ pkgname = php80-dblib
 
 pkgname = php80-sqlite
 	pkgdesc = sqlite module for php80
-	depends = php80=8.0.16
+	depends = php80=8.0.17
 	depends = sqlite
-	depends = php80-pdo=8.0.16
+	depends = php80-pdo=8.0.17
 
 pkgname = php80-gd
 	pkgdesc = gd module for php80
-	depends = php80=8.0.16
+	depends = php80=8.0.17
 	depends = gd
 
 pkgname = php80-exif
@@ -342,7 +342,7 @@ pkgname = php80-ctype
 
 pkgname = php80-mbstring
 	pkgdesc = mbstring module for php80
-	depends = php80=8.0.16
+	depends = php80=8.0.17
 	depends = oniguruma
 
 pkgname = php80-pspell
@@ -362,7 +362,7 @@ pkgname = php80-enchant
 
 pkgname = php80-intl
 	pkgdesc = intl module for php80
-	depends = php80=8.0.16
+	depends = php80=8.0.17
 	depends = icu
 
 pkgname = php80-calendar
@@ -380,7 +380,7 @@ pkgname = php80-soap
 
 pkgname = php80-ftp
 	pkgdesc = FTP module for php80
-	depends = php80=8.0.16
+	depends = php80=8.0.17
 	depends = openssl
 
 pkgname = php80-curl
@@ -390,7 +390,7 @@ pkgname = php80-curl
 
 pkgname = php80-snmp
 	pkgdesc = snmp module for php80
-	depends = php80=8.0.16
+	depends = php80=8.0.17
 	depends = net-snmp
 	depends = openssl
 
@@ -402,7 +402,7 @@ pkgname = php80-ldap
 
 pkgname = php80-imap
 	pkgdesc = imap module for php80
-	depends = php80=8.0.16
+	depends = php80=8.0.17
 	depends = pam
 	depends = krb5
 	depends = c-client
