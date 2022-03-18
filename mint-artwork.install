@@ -1,13 +1,13 @@
 post_install() {
   #touch /usr/share/backgrounds/linuxmint/default_background.jpg
   #gsettings reset-recursively org.cinnamon
-  nohup cinnamon --replace > /dev/null 2>&1 &
+  cinnamon-dbus-command RestartCinnamon 0
 }
 
 post_upgrade() {
-  nohup cinnamon --replace > /dev/null 2>&1 &
+  cinnamon-dbus-command RestartCinnamon 0
 }
 
 post_remove() {
-  nohup cinnamon --replace > /dev/null 2>&1 &
+  cinnamon-dbus-command RestartCinnamon 0
 }

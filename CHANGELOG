@@ -1,3 +1,4 @@
+Discovered official method to restart Cinnamon, updated
 Switched method for restarting Cinnamon to nohup, fixed INSTALL & conflicts
 Removed post_upgrade and glib-compile-schemas calls
 1.5.6 - Updated to 1.5.6 Upstream
