@@ -4,7 +4,7 @@
 
 # Package Information
 pkgname="mstickereditor"
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='import sticker packs from telegram, to be used at the Maunium sticker picker for Matrix'
 license=('Apache')
@@ -17,7 +17,7 @@ url='https://github.com/Lukas1818/mstickereditor'
 depends=('gcc-libs' 'rlottie' 'libwebp')
 makedepends=('cargo' 'clang' 'lld')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$pkgname/$pkgver/download")
-sha512sums=('8d827eb1e565baed5e2420e1867e93827ab726911ea482fefdd71c3ff82dcac3b39fab5ec13347697d5ba857ffb8178c80090b5135eaf9846a1a7291ce0a8d00')
+sha512sums=('26cf36b6f419132c7613f4e982eebf2971f8e2bbf369889592e305d2a94e0b2334d555e412a5cb9ca96b8e56d2c6ffd05c7d5ca4c5b14a305733ba292f4272b7')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
