@@ -2,8 +2,8 @@
 # Maintainer: e-search-git
 # Contributor: e-search-git
 pkgname=e-search-git
-pkgver=1.3.9
-pkgrel=3
+pkgver=1.3.10
+pkgrel=1
 pkgdesc="识屏 · 搜索"
 arch=('x86_64')
 url="https://xushengfeng.github.io/eSearch-website/"
