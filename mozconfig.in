@@ -1,6 +1,6 @@
 mk_add_options AUTOCLOBBER=1
 mk_add_options MOZ_OBJDIR=%SRCDIR%/pmbuild
-ac_add_options --enable-application=palemoon
+ac_add_options --enable-application=browser
 
 ac_add_options --enable-optimize="-O2 -w"
 
@@ -20,10 +20,8 @@ ac_add_options --with-pthreads
  
 ac_add_options --disable-tests
 ac_add_options --disable-debug
-ac_add_options --disable-eme
 ac_add_options --disable-parental-controls
 ac_add_options --disable-accessibility
-ac_add_options --disable-webrtc
 ac_add_options --disable-gamepad
 ac_add_options --disable-necko-wifi
 ac_add_options --disable-updater
