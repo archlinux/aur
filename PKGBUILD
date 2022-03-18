@@ -1,6 +1,6 @@
 # Maintainer: Kawaki <dev at kanjala dot com>
 pkgname=utd
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 makedepends=('cargo')
 url=https://github.com/kawaki-san/utd-rs
