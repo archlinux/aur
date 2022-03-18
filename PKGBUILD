@@ -22,7 +22,8 @@ build() {
   cmake -Wno-dev -S "$_dirname" \
         -DCMAKE_INSTALL_PREFIX=/opt/rocm \
         -Damd_comgr_DIR=/opt/rocm/lib/cmake/amd_comgr \
-        -DBUILD_TEST=OFF
+        -DBUILD_TEST=OFF \
+        -DAMDGPU_TARGETS=${AMDGPU_TARGETS}
 }
 
 package() {
