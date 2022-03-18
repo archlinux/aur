@@ -2,7 +2,7 @@
 # Reference: PKGBUILD(5)
 
 pkgname=corny-jokes-git
-pkgver=r61.4de261d
+pkgver=r73.d3e10f1
 pkgrel=1
 pkgdesc='Corny Jokes for terminal'
 
@@ -19,7 +19,7 @@ pkgver() {
 makedepends=('python-setuptools')
 depends=()
 
-source=("git://github.com/kz6fittycent/corny-jokes.git")
+source=("git+https://github.com/kz6fittycent/corny-jokes.git")
 sha256sums=("SKIP")
 
 build() {
