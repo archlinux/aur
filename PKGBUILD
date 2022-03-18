@@ -1,5 +1,5 @@
 pkgname=cms-germany-git
-pkgver=r4741.f6b4bd18
+pkgver=r5003.07a9d40e
 pkgrel=1
 pkgdesc="CMS, or Contest Management System, is a distributed system for running and (to some extent) organizing a programming contest. This is a fork used for the German IOI team selection process."
 arch=('i686' 'x86_64')
@@ -61,8 +61,8 @@ conflicts=('cms' 'isolate')
 install=$pkgname.install
 
 source=(
-    'git://github.com/ioi-germany/cms.git#branch=main'
-    'git://github.com/ioi-germany/isolate.git'
+    'git+https://github.com/ioi-germany/cms.git#branch=main'
+    'git+https://github.com/ioi-germany/isolate.git'
     'pgf.patch'
 )
 sha256sums=(
