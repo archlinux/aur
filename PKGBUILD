@@ -1,33 +1,35 @@
 # Maintainer: Daurnimator  <daurnimator@archlinux.org>
 # Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Old Maintainer: Dwayne Bent <dbb@dbb.io>
-# Old Maintainer: Tilman Vatteroth <tilman.vatteroth@uni-dortmund.de>
+# Contributor: Dwayne Bent <dbb@dbb.io>
+# Contributor: Tilman Vatteroth <tilman.vatteroth@uni-dortmund.de>
 # Contributor: Paul-Sebastian Manole <brokenthorn@gmail.com>
 # Contributor: Timothée Ravier <tim@siosm.fr>
 # Contributor: Christoph Stahl <christoph.stahl@uni-dortmund.de>
 
 pkgname=prosody-hg-stable
-pkgver=0.11.r9896+.6e67872bcba4+
+pkgver=0.12.r12393+.6966026262f4+
 pkgrel=1
 pkgdesc="Lightweight and extensible Jabber/XMPP server written in Lua (latest from stable-branch)"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://prosody.im/"
 license=('MIT')
-depends=('lua52'
-         'lua52-socket'
-         'lua52-expat'
-         'lua52-filesystem'
+depends=('lua'
+         'lua-sec'
+         'lua-socket'
+         'lua-expat'
+         'lua-filesystem'
          'libidn'
          'openssl')
 makedepends=('mercurial')
 conflicts=('prosody')
-provides=('prosody')
-optdepends=('lua52-sec: TLS encryption support'
-#	    'lua52-event: libevent support'
-	    'lua52-dbi: SQL storage support')
+provides=('prosody=0.12')
+optdepends=(
+#           'lua-event: libevent support'
+            'lua-dbi: SQL storage support'
+            'luarocks: plugin manager')
 install=prosody.install
 backup=('etc/prosody/prosody.cfg.lua')
-source=("prosody-stable::hg+https://hg.prosody.im/0.11"
+source=("prosody-stable::hg+https://hg.prosody.im/trunk/#branch=0.12"
         'prosody.tmpfile.d'
         'prosody.logrotated'
         'sysuser.conf'
@@ -41,7 +43,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd prosody-stable
-  printf "0.11.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
+  printf "0.12.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
 prepare() {
@@ -74,11 +76,12 @@ build() {
     --prefix=/usr \
     --sysconfdir=/etc/prosody \
     --datadir=/var/lib/prosody \
-    --with-lua-include=/usr/include/lua5.2 \
+    --with-lua-include=/usr/include/ \
+    --idn-library=idn \
     --cflags="${CPPFLAGS} ${CFLAGS} -fPIC -D_GNU_SOURCE" \
     --ldflags="${LDFLAGS} -shared" \
     --no-example-certs \
-    --runwith=lua5.2
+    --runwith=lua
   make
 }
 
