@@ -1,14 +1,14 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
 # Based on multilib/lib32-systemd by:
-# Maintainer: Christian Hesse <mail@eworm.de>
-# Maintainer: Dave Reisner <dreisner@archlinux.org>
-# Maintainer: Tom Gundersen <teg@jklm.no>
+# Christian Hesse <mail@eworm.de>
+# Dave Reisner <dreisner@archlinux.org>
+# Tom Gundersen <teg@jklm.no>
 
 pkgname=lib32-systemd-git
 _pkgbasename=systemd
-pkgver=250.r192.gcd933f14bd
+pkgver=250.r1414.gad337e55a3
 pkgrel=1
-pkgdesc='system and service manager (32-bit, git version)'
+pkgdesc='system and service manager (32-bit git version)'
 arch=('x86_64')
 url='https://www.github.com/systemd/systemd'
 license=('GPL2' 'LGPL2.1')
@@ -25,8 +25,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "$_pkgbasename"
-
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -132,7 +131,7 @@ build() {
 
   arch-meson "$_pkgbasename" build "${_meson_options[@]}"
 
-  ninja -C build
+  meson compile -C build
 }
 
 check() {
