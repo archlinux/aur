@@ -1,7 +1,7 @@
 pkgbase = python-zarr
 	pkgdesc = An implementation of chunked, compressed, N-dimensional arrays for Python
 	pkgver = 2.11.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zarr-developers/zarr-python
 	arch = any
 	license = MIT

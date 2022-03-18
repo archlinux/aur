@@ -2,7 +2,7 @@
 _name=zarr
 pkgname=python-zarr
 pkgver=2.11.1
-pkgrel=1
+pkgrel=2
 pkgdesc='An implementation of chunked, compressed, N-dimensional arrays for Python'
 arch=(any)
 url='https://github.com/zarr-developers/zarr-python'
@@ -14,7 +14,7 @@ sha256sums=('11b628f42dec36e0147879e8bd471524b59b238094b9b21e3c35be78399c115e')
 
 build() {
 	cd "$_name-$pkgver"
-	python -m build --wheel --no-isolation --skip-dependency-check  # xlrd < 2 not available on arch
+	python -m build --wheel --no-isolation
 }
 
 package() {
