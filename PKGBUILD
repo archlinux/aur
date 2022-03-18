@@ -22,7 +22,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/opt/rocm \
         -DBUILD_CLIENTS_SAMPLES=OFF \
         -DBUILD_CLIENTS_TESTS=OFF \
-        -DAMDGPU_TARGETS=${AMDGPU_TARGETS}
+        -DAMDGPU_TARGETS=${AMDGPU_TARGETS:-gfx803;gfx900;gfx906;gfx908}
   make
 }
 
