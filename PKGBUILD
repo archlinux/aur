@@ -1,6 +1,6 @@
 # Maintainer: Alice S. <quarkyalice@disroot.org>
 pkgname=propertree-git
-pkgver=r392.79a329f
+pkgver=r395.4930a82
 pkgrel=1
 pkgdesc="Cross platform GUI plist editor written in python."
 arch=('any')
@@ -14,7 +14,7 @@ source=("${pkgname}::git+$url"
 noextract=()
 sha256sums=('SKIP'
             'e788f1b98035a6293490411ba606618d1a0507e3403a38fef90a63010917e58c'
-            '802aac15fd9115d6a1ce98ba14c597737595af938ae6fb0e8a62fde719dd5357'
+            '80bbd920bd8b9f177e2d98bd9be10dd6c77042b3370fe4b2fd32665b8d936254'
             'af2748672492af4c6d83070b4df8956c278db5cd83150dce9ea5ac3c37823137')
 
 pkgver() {

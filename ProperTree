@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-python3 /opt/ProperTree/ProperTree.py
+python3 /opt/ProperTree/ProperTree.py $@
