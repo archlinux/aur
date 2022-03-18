@@ -1,7 +1,7 @@
 pkgbase = eruption
 	pkgdesc = Linux user-mode input and LED driver for keyboards, mice and other devices
 	pkgver = 0.1.23
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/X3n0m0rph59/eruption
 	install = eruption.install
 	arch = i686
@@ -27,7 +27,7 @@ pkgbase = eruption
 	backup = etc/eruption/eruption.conf
 	backup = etc/eruption/process-monitor.conf
 	backup = etc/eruption/audio-proxy.conf
-	source = eruption::git+https://github.com/X3n0m0rph59/eruption.git#branch=releases/v0.1.23
+	source = eruption::git+https://github.com/X3n0m0rph59/eruption.git#commit=ccd4fcf4431313282ac2d0634976e0f717270b22
 	sha512sums = SKIP
 
 pkgname = eruption
