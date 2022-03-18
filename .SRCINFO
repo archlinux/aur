@@ -1,0 +1,20 @@
+pkgbase = lambdabot
+	pkgdesc = Lambdabot is a development tool and advanced IRC bot
+	pkgver = 5.3.0.2
+	pkgrel = 1
+	url = https://wiki.haskell.org/Lambdabot
+	arch = x86_64
+	license = custom:GPL
+	makedepends = ghc
+	depends = ghc-libs
+	depends = haskell-lambdabot-core
+	depends = haskell-lambdabot-haskell-plugins
+	depends = haskell-lambdabot-irc-plugins
+	depends = haskell-lambdabot-misc-plugins
+	depends = haskell-lambdabot-novelty-plugins
+	depends = haskell-lambdabot-reference-plugins
+	depends = haskell-lambdabot-social-plugins
+	source = https://hackage.haskell.org/packages/archive/lambdabot/5.3.0.2/lambdabot-5.3.0.2.tar.gz
+	sha256sums = e70dcef22c65987aa536c4b1cdedb471d1b496b26ba133a0a71d6f1dffe3b830
+
+pkgname = lambdabot
