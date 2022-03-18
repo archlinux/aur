@@ -8,7 +8,7 @@ arch=('any')
 url="http://lab.gilest.ro/ethoscope"
 license=('GPL3')
 makedepends=('git' 'gcc-fortran' )
-depends=('git' 'avahi' 'rsync' 'wget' 'fping' 'ntp' 'openssh' 'mariadb' 'dnsmasq' 'f2fs-tools' 'wpa_supplicant' 'ifplugd' 'qt5-base' 'python-opencv' 'hdf5' 'gtk3' 'python' 'python-pip' 'python-numpy' 'python-scipy' 'python-bottle' 'python-pyserial' 'python-mysql-connector' 'python-netifaces' 'python-cherrypy' 'python-eventlet' 'python-gitpython' 'python-dnspython' 'python-greenlet' 'python-monotonic' 'python-picamera' 'python-zeroconf')
+depends=('git' 'avahi' 'rsync' 'wget' 'fping' 'ntp' 'openssh' 'mariadb' 'dnsmasq' 'f2fs-tools' 'i2c-tools' 'wpa_supplicant' 'ifplugd' 'qt5-base' 'python-opencv' 'hdf5' 'gtk3' 'python' 'python-pip' 'python-numpy' 'python-scipy' 'python-bottle' 'python-pyserial' 'python-mysql-connector' 'python-netifaces' 'python-cherrypy' 'python-eventlet' 'python-gitpython' 'python-dnspython' 'python-greenlet' 'python-monotonic' 'python-picamera' 'python-zeroconf')
 provides=('ethoscope-device')
 install="ethoscope-device.install"
 source=("$pkgname::git+https://github.com/gilestrolab/ethoscope.git")
@@ -38,9 +38,13 @@ package() {
   cd "${pkgdir}/opt/${pkgname}"
   git remote set-url origin git://node/ethoscope.git
   
+  #install the ethoclient file
+  ln -s /opt/ethoscope-device/src/scripts/ethoclient.py /usr/bin/ethoclient
+  
   #install service files
   cd "${srcdir}"/"${pkgname}"/scripts/
-  install -D --mode=0755 ethoscope_device.service ethoscope_listener.service "${pkgdir}/usr/lib/systemd/system/"
+  install -D --mode=0755 ethoscope_device.service ethoscope_listener.service ethoscope_GPIO_listener.service "${pkgdir}/usr/lib/systemd/system/"
+  
   cd "${srcdir}"/"${pkgname}"/scripts/ethoscope_updater/
   install -D --mode=0755 ethoscope_update.service "${pkgdir}/usr/lib/systemd/system/"
 

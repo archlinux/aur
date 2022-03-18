@@ -63,7 +63,7 @@ post_install() {
     echo 'driftfile /var/lib/ntp/ntp.drift' >> /etc/ntp.conf
     
     echo "enabling DEVICE specific systemd service files"
-    systemctl enable ethoscope_device.service ethoscope_listener.service ethoscope_update.service 
+    systemctl enable ethoscope_device.service ethoscope_listener.service ethoscope_update.service ethoscope_GPIO_listener.service
     systemctl enable ntpd.service mysqld.service sshd.service mysqld.service avahi-daemon.service
     #systemctl enable fake-hwclock fake-hwclock-save.timer
     
@@ -109,7 +109,16 @@ post_install() {
 
     echo "disable bluetooth"
     echo 'dtoverlay=pi3-disable-bt' >> /boot/config.txt
+    
+    #https://madflex.de/use-i2c-on-raspberry-pi-with-archlinux-arm/
+    echo "adding support to I2C"
+    echo 'dtparam=i2c_arm=on' >> /boot/config.txt
+    echo 'i2c-dev' >> /etc/modules-load.d/raspberrypi.conf
    
+    #make ethoclient an executable command
+    chmod +x /opt/ethoscope-device/src/scritpts/ethoclient.py
+    ln -s /usr/bin/ethoclient /opt/ethoscope-device/src/scritpts/ethoclient.py
+    
     echo "Please reboot this PI now."
     
 }
@@ -134,7 +143,7 @@ post_upgrade() {
 # arg 1:  the old package version
 pre_remove() {
     echo "disabling systemd service files"
-    systemctl disable ethoscope_device.service ethoscope_listener.service ethoscope_update.service
+    systemctl disable ethoscope_device.service ethoscope_listener.service ethoscope_update.service ethoscope_GPIO_listener.service
 }
 
 ## arg 1:  the old package version

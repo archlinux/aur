@@ -18,6 +18,7 @@ pkgbase = ethoscope-device
 	depends = mariadb
 	depends = dnsmasq
 	depends = f2fs-tools
+	depends = i2c-tools
 	depends = wpa_supplicant
 	depends = ifplugd
 	depends = qt5-base
