@@ -1,0 +1,154 @@
+From 4fabc3770f5b91987825c8aac22714042ec1c52c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Na=C3=AFm=20Favier?= <n@monade.li>
+Date: Tue, 22 Feb 2022 18:52:56 +0100
+Subject: [PATCH] Support GHC 9
+
+---
+ lambdabot-core/lambdabot-core.cabal  |  4 ++--
+ lambdabot-core/src/Lambdabot/Bot.hs  | 36 ++++++++--------------------
+ lambdabot-core/src/Lambdabot/Util.hs |  9 ++++---
+ 3 files changed, 18 insertions(+), 31 deletions(-)
+
+diff --git a/lambdabot-core/lambdabot-core.cabal b/lambdabot-core/lambdabot-core.cabal
+index 861a28b..a820b5e 100644
+--- a/lambdabot-core/lambdabot-core.cabal
++++ b/lambdabot-core/lambdabot-core.cabal
+@@ -90,8 +90,8 @@ library
+                         parsec                  >= 3,
+                         prim-uniq               >= 0.2 && < 0.4,
+                         random                  >= 1,
+-                        random-fu               >= 0.2.6.2,
+-                        random-source           >= 0.3,
++                        random-fu               >= 0.3.0.0,
++                        mwc-random              >= 0.15.0.0,
+                         regex-tdfa              >= 1.1 && < 1.4,
+                         SafeSemaphore           >= 0.9,
+                         split                   >= 0.2,
+diff --git a/lambdabot-core/src/Lambdabot/Bot.hs b/lambdabot-core/src/Lambdabot/Bot.hs
+index 1b0de2e..37402b3 100644
+--- a/lambdabot-core/src/Lambdabot/Bot.hs
++++ b/lambdabot-core/src/Lambdabot/Bot.hs
+@@ -1,6 +1,5 @@
+ {-# LANGUAGE GADTs #-}
+ {-# LANGUAGE ScopedTypeVariables #-}
+-{-# LANGUAGE TemplateHaskell #-}
+ -- | The guts of lambdabot.
+ --
+ -- The LB/Lambdabot monad
+@@ -11,7 +10,7 @@ module Lambdabot.Bot
+     , ircUnloadModule
+     , checkPrivs
+     , checkIgnore
+-    
++
+     , ircCodepage
+     , ircGetChannels
+     , ircQuit
+@@ -37,7 +36,6 @@ import Control.Monad.Error
+ import Control.Monad.Reader
+ import Control.Monad.State
+ import qualified Data.Map as M
+-import Data.Random.Source
+ import qualified Data.Set as S
+ 
+ ------------------------------------------------------------------------
+@@ -47,18 +45,18 @@ import qualified Data.Set as S
+ ircLoadModule :: String -> Module st -> LB ()
+ ircLoadModule mName m = do
+     infoM ("Loading module " ++ show mName)
+-    
++
+     savedState <- readGlobalState m mName
+     mState     <- maybe (moduleDefState m) return savedState
+-    
++
+     mInfo       <- registerModule mName m mState
+-    
++
+     flip runModuleT mInfo (do
+             moduleInit m
+             registerCommands =<< moduleCmds m)
+         `E.catch` \e@SomeException{} -> do
+             errorM ("Module " ++ show mName ++ " failed to load.  Exception thrown: " ++ show e)
+-            
++
+             unregisterModule mName
+             fail "Refusing to load due to a broken plugin"
+ 
+@@ -68,17 +66,17 @@ ircLoadModule mName m = do
+ ircUnloadModule :: String -> LB ()
+ ircUnloadModule mName = do
+     infoM ("Unloading module " ++ show mName)
+-    
++
+     inModuleNamed mName (fail "module not loaded") $ do
+         m <- asks theModule
+         when (moduleSticky m) $ fail "module is sticky"
+-        
++
+         moduleExit m
+-            `E.catch` \e@SomeException{} -> 
++            `E.catch` \e@SomeException{} ->
+                 errorM ("Module " ++ show mName ++ " threw the following exception in moduleExit: " ++ show e)
+-        
++
+         writeGlobalState
+-    
++
+     unregisterModule mName
+ 
+ ------------------------------------------------------------------------
+@@ -136,17 +134,3 @@ ircPrivmsg who msg = do
+ ircPrivmsg' :: Nick -> String -> LB ()
+ ircPrivmsg' who ""  = ircPrivmsg' who " "
+ ircPrivmsg' who msg = send $ privmsg who msg
+-
+-------------------------------------------------------------------------
+-
+-monadRandom [d|
+-
+-    instance MonadRandom LB where
+-        getRandomWord8          = liftIO getRandomWord8
+-        getRandomWord16         = liftIO getRandomWord16
+-        getRandomWord32         = liftIO getRandomWord32
+-        getRandomWord64         = liftIO getRandomWord64
+-        getRandomDouble         = liftIO getRandomDouble
+-        getRandomNByteInteger n = liftIO (getRandomNByteInteger n)
+-
+- |]
+diff --git a/lambdabot-core/src/Lambdabot/Util.hs b/lambdabot-core/src/Lambdabot/Util.hs
+index effdf71..2f085ce 100644
+--- a/lambdabot-core/src/Lambdabot/Util.hs
++++ b/lambdabot-core/src/Lambdabot/Util.hs
+@@ -23,14 +23,15 @@ module Lambdabot.Util (
+         randomSuccessMsg
+     ) where
+ 
++import Control.Concurrent.Lifted
+ import Control.Monad.Trans
++import Control.Monad.Trans.Control
+ import Data.Char
+ import Data.List
+ import Data.Random
+-import Control.Concurrent.Lifted
+-import Control.Monad.Trans.Control
+ import Lambdabot.Config
+ import Lambdabot.Config.Core
++import System.Random.MWC (createSystemRandom)
+ 
+ ------------------------------------------------------------------------
+ 
+@@ -63,7 +64,9 @@ listToStr conj (item:items) =
+ 
+ -- | Pick a random element of the list.
+ random :: MonadIO m => [a] -> m a
+-random = io . sample . randomElement
++random l = io $ do
++  mwc <- createSystemRandom
++  sampleFrom mwc (randomElement l)
+ 
+ ------------------------------------------------------------------------
+ 
+-- 
+2.35.1
+

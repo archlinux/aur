@@ -1,0 +1,27 @@
+pkgbase = haskell-lambdabot-core
+	pkgdesc = lambdabot core functionality
+	pkgver = 5.3.0.2
+	pkgrel = 1
+	url = https://wiki.haskell.org/Lambdabot
+	arch = x86_64
+	license = custom
+	makedepends = ghc
+	depends = haskell-dependent-map
+	depends = haskell-dependent-sum-template
+	depends = haskell-edit-distance
+	depends = haskell-hslogger
+	depends = haskell-http
+	depends = haskell-lifted-base
+	depends = haskell-prim-uniq
+	depends = haskell-random-fu
+	depends = haskell-regex-tdfa
+	depends = haskell-safesemaphore
+	depends = haskell-split
+	depends = haskell-utf8-string
+	depends = haskell-zlib
+	source = https://hackage.haskell.org/packages/archive/lambdabot-core/5.3.0.2/lambdabot-core-5.3.0.2.tar.gz
+	source = 0001-Support-GHC-9.patch
+	sha512sums = 8e460ce42ad9b1394643ff740cb8b552e5baf8effb1dcf0acd36d0e9d1e8cf75fb43134305dd6bb316a454e92694d6eb6b730f016647c3f2253b07c14afafb78
+	sha512sums = 5a59d9150f931c09332f2126662b1277b848d02c605f25545c38da75e8cddb660dd7046913ec19886bc544ed5b104bf2b522c928ad1258ad16d2b359d25c8eb2
+
+pkgname = haskell-lambdabot-core
