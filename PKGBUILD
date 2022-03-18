@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=cod
 pkgver=0.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A completion daemon for bash/zsh"
 arch=('any')
 url="https://github.com/dim-an/cod"
@@ -14,11 +14,11 @@ prepare() {
   cd "$pkgname-$pkgver"
   export GOPATH="$srcdir/gopath"
 
+ # download dependencies
+  go mod download -x
+
   # create directory for build output
   mkdir -p build
-
-  # download dependencies
-  go mod download -x
 }
 
 build() {
@@ -30,6 +30,9 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   go build -v -buildvcs=false -o build .
+
+  # Clean module cache for makepkg -C
+  go clean -modcache
 }
 
 package() {
