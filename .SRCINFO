@@ -7,6 +7,7 @@ pkgbase = bricscad-fr_fr
 	license = Custom:bricscad
 	makedepends = python-requests
 	makedepends = python-beautifulsoup4
+	makedepends = python-progressbar
 	depends = lib32-glibc
 	depends = cairo
 	depends = lib32-fontconfig
@@ -16,7 +17,7 @@ pkgbase = bricscad-fr_fr
 	provides = bricscad
 	source = dlagent.py
 	source = BricsCAD-V22.1.07-1-fr_FR.x86_64.rpm::https://www.bricsys.com
-	md5sums = da2786c8f479da199ef043890371681c
+	md5sums = d2cb8b0f09448d0d2c2a8762d11a9aca
 	md5sums = f7dd652e3eaf20d54318cd35160de4bb
 
 pkgname = bricscad-fr_fr

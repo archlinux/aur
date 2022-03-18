@@ -2,6 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 import sys
 import getpass
+import progressbar
+import locale
 
 if len(sys.argv) != 5:
     print("Error: arguments file_url, target_file, os_number and version_number required.")
@@ -12,8 +14,29 @@ target_file = sys.argv[2]
 os_number = sys.argv[3]
 version_number = sys.argv[4]
 
+bar = None
+def show_progress(count, block_size, total_size):
+    global bar
+    if bar is None:
+        bar = progressbar.ProgressBar(
+            maxval = total_size,
+            widgets = [
+                progressbar.Percentage(),
+                ' ',
+                progressbar.Bar(),
+                ' ',
+                progressbar.FileTransferSpeed(),
+                ' | ',
+                progressbar.ETA(),
+            ])
+        bar.start()
+    bar.update(min(count * block_size, total_size))
+
 if "www.bricsys.com" in file_url:
-    print("Please provide your Bricsys username/email along with your password to download the source file")
+    if 'fr' in locale.getdefaultlocale()[0]:
+        print("Veuillez entrer votre nom d'utilisateur/email Bricsys avec votre mot de passe pour télécharger le fichier source")
+    else:
+        print("Please provide your Bricsys username/email along with your password to download the source file")
     _username = input("Username or email: ")
     _password = getpass.getpass()
 
@@ -22,7 +45,6 @@ if "www.bricsys.com" in file_url:
     soup = BeautifulSoup(r.text, 'html.parser')
     _url = soup.find_all("form", attrs={"id":"kc-form-login"})[0]["action"]
 
-
     headers = {'User-Agent': 'Mozilla/5.0'}
     payload = {'username':_username, 'password':_password}
     r = s.post(_url, headers=headers, data=payload)
@@ -30,9 +52,11 @@ if "www.bricsys.com" in file_url:
     try:
         _csrf = soup.find_all("token")[0]["data-token"]
     except IndexError:
-        print("Wrong Bricsys credentials !")
+        if 'fr' in locale.getdefaultlocale()[0]:
+            print("Mauvais identifiants Bricsys !")
+        else:
+            print("Wrong Bricsys credentials !")
         exit(1)
-
 
     r = s.get(f"https://boa.bricsys.com/common/GetDownloadInstallsetData.json?i={version_number}&os={os_number}")
     rj = r.json()
@@ -56,9 +80,7 @@ if "www.bricsys.com" in file_url:
             for data in r.iter_content(chunk_size=4096):
                 dl += len(data)
                 f.write(data)
-                done = int(50 * dl / total_length)
-                sys.stdout.write(f"\r[{'=' * done}{' ' * (50-done)}] {int(dl / total_length * 100)} %")
-                sys.stdout.flush()
+                show_progress(dl, 1, total_length)
 
 else:
     with open(target_file, "wb") as f:
@@ -73,6 +95,4 @@ else:
             for data in r.iter_content(chunk_size=4096):
                 dl += len(data)
                 f.write(data)
-                done = int(50 * dl / total_length)
-                sys.stdout.write(f"\r[{'=' * done}{' ' * (50-done)}] {int(dl / total_length * 100)} %")
-                sys.stdout.flush()
+                show_progress(dl, 1, total_length)

@@ -6,7 +6,7 @@ arch=("x86_64")
 url="https://www.bricsys.com"
 license=('Custom:bricscad')
 depends=(lib32-glibc cairo lib32-fontconfig libcups lib32-freetype2 lib32-gtk2)
-makedepends=(python-requests python-beautifulsoup4)
+makedepends=(python-requests python-beautifulsoup4 python-progressbar)
 provides=('bricscad')
 _lang=fr_FR
 _os=2
@@ -58,5 +58,5 @@ post_remove() {
 
     if [ -x "`which gtk-update-icon-cache 2>/dev/null`" ] && [ -x /usr/share/icons/gnome/index.theme ]; then gtk-update-icon-cache --force /usr/share/icons/gnome ; fi
 }
-md5sums=('da2786c8f479da199ef043890371681c'
+md5sums=('d2cb8b0f09448d0d2c2a8762d11a9aca'
          'f7dd652e3eaf20d54318cd35160de4bb')
