@@ -10,7 +10,7 @@ pkgbase = pipes-rs-git
 	makedepends = cargo
 	provides = pipes-rs
 	options = !lto
-	source = pipes-rs-git::git://github.com/CookieCoder15/pipes-rs.git
+	source = pipes-rs-git::git+https://github.com/CookieCoder15/pipes-rs.git
 	sha256sums = SKIP
 
 pkgname = pipes-rs-git

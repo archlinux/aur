@@ -11,7 +11,7 @@ conflicts=()
 provides=('pipes-rs')
 options=(!lto)
 url='https://github.com/CookieCoder15/pipes-rs'
-source=("$pkgname"::"git://github.com/CookieCoder15/pipes-rs.git")
+source=("$pkgname"::"git+https://github.com/CookieCoder15/pipes-rs.git")
 sha256sums=('SKIP')
 
 pkgver() {
