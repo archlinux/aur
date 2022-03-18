@@ -1,0 +1,19 @@
+pkgbase = grobi-rotate-git
+	pkgdesc = grobi automates applying xrandr profiles when outputs change. This version supports rotation specifiers
+	pkgver = r137.0619061
+	pkgrel = 1
+	url = https://github.com/rad4day/grobi
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go>=1.4
+	depends = glibc
+	provides = grobi
+	conflicts = grobi
+	conflicts = grobi-git
+	options = !strip
+	source = grobi-rotate-git::git+https://github.com/rad4day/grobi
+	md5sums = SKIP
+
+pkgname = grobi-rotate-git

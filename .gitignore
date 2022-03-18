@@ -1,0 +1,5 @@
+pkg/
+src/
+grobi-rotate-git/
+*.pkg.tar.zst
+*.log
