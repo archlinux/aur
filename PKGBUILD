@@ -2,8 +2,8 @@
 # Contributor: smlb <smlb at riseup dot net>
 
 pkgname=libthinkpad-git
-pkgver=2.3.r11.g0a7a74d
-pkgrel=2
+pkgver=2.6.r4.gd8a8681
+pkgrel=1
 pkgdesc="A general purpose userspace ThinkPad library"
 arch=('i686' 'x86_64')
 url="https://github.com/libthinkpad/libthinkpad"
@@ -14,7 +14,7 @@ conflicts=('libthinkpad')
 provides=('libthinkpad')
 options=('!strip')
 _gitname=libthinkpad
-source=("git://github.com/libthinkpad/libthinkpad" "$_gitname.install")
+source=("git+https://github.com/libthinkpad/libthinkpad" "$_gitname.install")
 md5sums=('SKIP'
          'b44e3c7ddac879d57b45a709544df785')
 install=$_gitname.install
