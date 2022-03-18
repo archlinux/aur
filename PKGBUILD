@@ -1,7 +1,7 @@
 # Maintainer: Matthias Gatto <uso.cosmo.ray at gmail dot com>
 
 pkgname=le-temps-des-escargots-git
-pkgver=r132.12df2db
+pkgver=r165.863137e
 pkgrel=1
 pkgdesc="Small Game About 1871 Paris Commune"
 
@@ -19,7 +19,7 @@ pkgver() {
 
 depends=(yirl-git)
 
-source=(git://github.com/cosmo-ray/mggj-3)
+source=(git+https://github.com/cosmo-ray/mggj-3)
 sha256sums=("SKIP")
 
 build() {
