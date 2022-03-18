@@ -1,7 +1,7 @@
 _pkgname=realcugan-ncnn-vulkan
 pkgname=$_pkgname-git
-pkgver=20220217.r0.g6b95b75
-pkgrel=2
+pkgver=20220318.r0.gf1271a2
+pkgrel=3
 epoch=
 pkgdesc="ncnn implementation of Real-CUGAN converter. Runs fast on Intel / AMD / Nvidia / Apple-Silicon with Vulkan API."
 arch=('x86_64')
