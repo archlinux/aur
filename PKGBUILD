@@ -2,13 +2,13 @@
 #Contributor: Mike Swanson
 
 pkgname=woof-git
-pkgver=9.0.0.r13.517e96c
+pkgver=9.0.0.r20.1e5dfd1
 pkgrel=1
 pkgdesc="Doom port remaining faithful to Lee Killough’s MBF on DOS"
 arch=("x86_64")
 url="https://github.com/fabiangreffrath/woof"
 license=('GPL2')
-depends=('hicolor-icon-theme' 'sdl2_net' 'sdl2_mixer' 'sdl2_image')
+depends=('hicolor-icon-theme' 'sdl2_net' 'sdl2_mixer')
 makedepends=('cmake' 'git')
 source=(woof::git+"${url}".git)
 sha512sums=('SKIP')
@@ -19,7 +19,7 @@ pkgver() {
 }
 
 prepare() {
-	mkdir "$srcdir/${pkgname%-git}-build"
+	mkdir -p "$srcdir/${pkgname%-git}-build"
 	cd "$srcdir/${pkgname%-git}-build"
 	cmake -DCMAKE_INSTALL_PREFIX=/usr "$srcdir/${pkgname%-git}"
 }
