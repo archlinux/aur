@@ -3,7 +3,7 @@
 pkgname=tldr++
 _pkgver=1.0.0-alpha
 pkgver=${_pkgver//-/.}
-pkgrel=4
+pkgrel=5
 pkgdesc="Community driven man pages improved with smart user interaction"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="https://isacikgoz.me/tldr"
@@ -18,11 +18,11 @@ prepare() {
   cd "${pkgname%++}-$_pkgver"
   export GOPATH="$srcdir/gopath"
 
-  # create directory for build output
-  mkdir -p build
-
   # download dependencies
   go mod download -x
+
+  # create directory for build output
+  mkdir -p build
 }
 
 build() {
@@ -34,6 +34,9 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   go build -v -buildvcs=false -o build ./cmd/...
+
+  # Clean module cache for makepkg -C
+  go clean -modcache
 }
 
 package() {
