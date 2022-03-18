@@ -15,7 +15,6 @@ pkgbase = prosody-hg-stable
 	depends = lua-expat
 	depends = lua-filesystem
 	depends = libidn
-	depends = openssl
 	optdepends = lua-dbi: SQL storage support
 	optdepends = luarocks: plugin manager
 	provides = prosody=0.12

@@ -18,8 +18,7 @@ depends=('lua'
          'lua-socket'
          'lua-expat'
          'lua-filesystem'
-         'libidn'
-         'openssl')
+         'libidn')
 makedepends=('mercurial')
 conflicts=('prosody')
 provides=('prosody=0.12')
