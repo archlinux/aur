@@ -11,12 +11,13 @@ pkgbase = python-mujoco
 	makedepends = eigen
 	makedepends = cmake
 	depends = python
-	depends = mujoco-bin>=2.1.2
 	depends = absl-py
 	depends = python-glfw
 	depends = python-numpy
 	depends = python-opengl
 	source = git+https://github.com/deepmind/mujoco.git#tag=2.1.2.post1
+	source = https://github.com/deepmind/mujoco/releases/download/2.1.2/mujoco-2.1.2-linux-x86_64.tar.gz
 	sha256sums = SKIP
+	sha256sums = c0c809ccb98c2c3461c05f08c6857435a12ad509d3d522146c337af4d01037ff
 
 pkgname = python-mujoco
