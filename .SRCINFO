@@ -1,6 +1,6 @@
 pkgbase = postman-bin
 	pkgdesc = Build, test, and document your APIs faster
-	pkgver = 9.15.0
+	pkgver = 9.15.2
 	pkgrel = 1
 	url = https://www.getpostman.com
 	arch = x86_64
@@ -11,9 +11,9 @@ pkgbase = postman-bin
 	provides = postman
 	conflicts = postman
 	options = !strip
-	source = Postman-linux-x64-9.15.0.tar.gz::https://dl.pstmn.io/download/version/9.15.0/linux64
+	source = Postman-linux-x64-9.15.2.tar.gz::https://dl.pstmn.io/download/version/9.15.2/linux64
 	source = postman.desktop
-	sha256sums = 762db2e11af2e14a855c0a856595351329694a9d288c29148360c6ddc6b3e943
+	sha256sums = 7d5a2ccbd4767055ca11806039255a456293131da0417bc7b7335646b7b56a5f
 	sha256sums = 74b2d8570658e207e31f729e7f4768952252383aee7c695218d077bd0ef13245
 
 pkgname = postman-bin
