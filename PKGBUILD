@@ -1,39 +1,48 @@
-# Maintainer: Sebastian Krzyszkowiak <dos@dosowisko.net>
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Sebastian Krzyszkowiak <dos@dosowisko.net>
 # Contributor: Philip Goto <philip.goto@gmail.com>
 
+_pkgname=squeekboard
 pkgname=squeekboard-git
-pkgver=r1660.40b3172
+pkgver=1.17.0.r4.gbd39089
 pkgrel=1
-pkgdesc="Basic keyboard, blazing the path of modern Wayland keyboards"
-url="https://source.puri.sm/Librem5/squeekboard"
-license=("GPL3")
+pkgdesc='Virtual keyboard supporting Wayland, built primarily for the Librem 5 phone'
 arch=(i686 x86_64 arm armv6h armv7h aarch64)
-depends=('gtk3' 'wayland' 'gnome-desktop' 'feedbackd')
-makedepends=(git
-             pkg-config
-             meson
-             intltool
-             rust
-             gtk-doc)
+url='https://gitlab.gnome.org/World/Phosh/squeekboard'
+license=(GPL3)
+depends=(
+	feedbackd
+	gnome-desktop
+	python
+)
+makedepends=(
+	git
+	meson
+	intltool
+	rust
+	gtk-doc
+	wayland-protocols
+)
 provides=(squeekboard)
 conflicts=(squeekboard)
-source=("git+https://source.puri.sm/Librem5/squeekboard.git")
-sha256sums=("SKIP")
+source=("git+https://gitlab.gnome.org/World/Phosh/squeekboard.git")
+b2sums=("SKIP")
+
 
 pkgver() {
     cd squeekboard
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/v//'
 }
 
 build() {
-    arch-meson squeekboard build
-    ninja -C build
+	arch-meson "$_pkgname" build
+	meson compile -C build
 }
 
 check() {
-    ninja -C build test
+	meson test -C build --print-errorlogs
 }
 
 package() {
-    DESTDIR="${pkgdir}" ninja -C build install
+	DESTDIR="${pkgdir}" meson install -C build
 }

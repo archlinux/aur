@@ -1,8 +1,8 @@
 pkgbase = squeekboard-git
-	pkgdesc = Basic keyboard, blazing the path of modern Wayland keyboards
-	pkgver = r1660.40b3172
+	pkgdesc = Virtual keyboard supporting Wayland, built primarily for the Librem 5 phone
+	pkgver = 1.17.0.r4.gbd39089
 	pkgrel = 1
-	url = https://source.puri.sm/Librem5/squeekboard
+	url = https://gitlab.gnome.org/World/Phosh/squeekboard
 	arch = i686
 	arch = x86_64
 	arch = arm
@@ -11,19 +11,17 @@ pkgbase = squeekboard-git
 	arch = aarch64
 	license = GPL3
 	makedepends = git
-	makedepends = pkg-config
 	makedepends = meson
 	makedepends = intltool
 	makedepends = rust
 	makedepends = gtk-doc
-	depends = gtk3
-	depends = wayland
-	depends = gnome-desktop
+	makedepends = wayland-protocols
 	depends = feedbackd
+	depends = gnome-desktop
+	depends = python
 	provides = squeekboard
 	conflicts = squeekboard
-	source = git+https://source.puri.sm/Librem5/squeekboard.git
-	sha256sums = SKIP
+	source = git+https://gitlab.gnome.org/World/Phosh/squeekboard.git
+	b2sums = SKIP
 
 pkgname = squeekboard-git
-
