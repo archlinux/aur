@@ -2,7 +2,7 @@
 # Reference: PKGBUILD(5)
 
 pkgname=osc-tui-git
-pkgver=r256.6b89c62
+pkgver=r375.91cba0e
 pkgrel=1
 pkgdesc='Outscale Text User Interface'
 
@@ -19,7 +19,7 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-source=("git://github.com/outscale-dev/osc-tui.git")
+source=("git+https://github.com/outscale-dev/osc-tui.git")
 sha256sums=("SKIP")
 
 build() {
