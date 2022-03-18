@@ -1,0 +1,13 @@
+pkgbase = haskell-brainfuck
+	pkgdesc = Brainfuck interpreter
+	pkgver = 0.1.0.3
+	pkgrel = 1
+	url = https://github.com/abbradar/brainfuck
+	arch = x86_64
+	license = custom:GPL
+	makedepends = ghc
+	depends = ghc-libs
+	source = https://hackage.haskell.org/packages/archive/brainfuck/0.1.0.3/brainfuck-0.1.0.3.tar.gz
+	sha256sums = 0db5370311ec8a3a1673fd04e502fd10e0afa0df5ee25d3a917937d3d9668bf6
+
+pkgname = haskell-brainfuck
