@@ -3,13 +3,13 @@ _base=cplot
 pkgname=python-${_base}
 pkgdesc="Plot complex functions"
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
-depends=(python-matplotx python-npx python-networkx python-pypng)
+depends=(python-matplotx python-npx)
 makedepends=(python-build python-flit-core python-install)
-checkdepends=(python-pytest-codeblocks python-meshzoo)
+checkdepends=(python-pytest-codeblocks python-networkx python-meshzoo) #python-pyvista
 optdepends=('python-meshzoo: for riemann sphere plots'
   'python-pyvista: for create an unstructured grid')
 source=(${url}/archive/v${pkgver}.tar.gz)
