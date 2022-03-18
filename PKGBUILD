@@ -2,7 +2,7 @@
 # Reference: PKGBUILD(5)
 
 pkgname=magicraminstaller-git
-pkgver=r27.363d9c9
+pkgver=r28.849da5a
 pkgrel=1
 pkgdesc='A Magic RAM Installer'
 
@@ -19,7 +19,7 @@ pkgver() {
 makedepends=('git')
 depends=('python')
 
-source=("git://github.com/kz6fittycent/magicraminstaller")
+source=("git+https://github.com/kz6fittycent/magicraminstaller")
 sha256sums=("SKIP")
 
 
