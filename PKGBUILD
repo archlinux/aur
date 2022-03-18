@@ -4,7 +4,7 @@
 pkgname=cross-mipsel-linux-gnu-binutils
 _pkgname=binutils
 _target="mipsel-linux-gnu"
-pkgver=2.34
+pkgver=2.38
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files for the MIPS architecture"
 url="http://www.gnu.org/software/binutils/"
@@ -12,7 +12,7 @@ arch=('x86_64')
 license=('GPL')
 depends=('xz')
 source=("ftp://ftp.gnu.org/gnu/binutils/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('f00b0e8803dc9bab1e2165bd568528135be734df3fabf8d0161828cd56028952')
+sha256sums=('e316477a914f567eccc34d5d29785b8b0f5a10208d36bbacedcc39048ecfe024')
 _sysroot="/usr/lib/cross-${_target}"
 
 prepare() {
