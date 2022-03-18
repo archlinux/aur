@@ -27,7 +27,7 @@ optdepends=('fcgi: Map server'
             'gpsbabel: GPS Tools plugin')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("https://qgis.org/downloads/$_pkgname-$pkgver.tar.bz2"
+source=("https://download.qgis.org/downloads/$_pkgname-$pkgver.tar.bz2"
          qgstyle-infinite-loop.patch::https://github.com/qgis/QGIS/commit/19823b76.patch)
 sha256sums=('80e93f55e3afaa951eac2b7298c96e92ef3ded35882fcb3c1442a3d05de3808d'
             'c5bc388da987c7c21451b3f0f74220c8bd82cfba04657ff599d1896e6ae4b304')
