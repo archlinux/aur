@@ -28,8 +28,10 @@ sha256sums=('ac64c586004cccd6124b393744d4b8257291f90193646ff24171cf2b86bd3b27'
             'f7c619e03a06c0f25e8f47262dbc32d61fd033d2c91796812bf0f8c94fca78fb'
             '6d00b442690b6a5c5d8f898311daafbce16d370cf64f53294c3b8c5c661e435f')
 
-_srcdir="MangoHud-$_pkgver"
+provides=("mangohud=$_pkgver")
+conflicts=('mangohud')
 
+_srcdir="MangoHud-$_pkgver"
 
 build() {
     ln -s "$srcdir/imgui-$_imgui_ver" "$_srcdir/subprojects/imgui"

@@ -15,6 +15,8 @@ pkgbase = mangohud-nonvidia
 	depends = gcc-libs
 	depends = dbus
 	depends = spdlog
+	provides = mangohud=0.6.6-1
+	conflicts = mangohud
 	source = mangohud-0.6.6-1.tar.gz::https://github.com/flightlessmango/MangoHud/archive/v0.6.6-1.tar.gz
 	source = imgui-1.81.tar.gz::https://github.com/ocornut/imgui/archive/refs/tags/v1.81.tar.gz
 	source = imgui-1.81-1-wrap.zip::https://wrapdb.mesonbuild.com/v1/projects/imgui/1.81/1/get_zip
