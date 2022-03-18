@@ -9,7 +9,7 @@ url="https://www.gnu.org/software/gdb"
 license=('GPL')
 groups=(i386-elf-toolchain)
 makedepends=(gmp mpfr)
-depends=(xz libmpc)
+depends=(xz libmpc i386-elf-gcc)
 source=(
     "http://ftpmirror.gnu.org/gdb/gdb-$pkgver.tar.xz"
 )
