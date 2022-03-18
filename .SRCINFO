@@ -1,6 +1,6 @@
 pkgbase = mkosi-git
 	pkgdesc = Build Legacy-Free OS Images
-	pkgver = 12.r3.gdeaea67
+	pkgver = 12.r56.g3798eb0c2e
 	pkgrel = 1
 	url = https://github.com/systemd/mkosi
 	arch = any
@@ -31,7 +31,7 @@ pkgbase = mkosi-git
 	optdepends = sbsigntools: sign EFI binaries for UEFI SecureBoot
 	provides = mkosi
 	conflicts = mkosi
-	source = git://github.com/systemd/mkosi.git#branch=main
+	source = git+https://github.com/systemd/mkosi.git#branch=main
 	md5sums = SKIP
 
 pkgname = mkosi-git
