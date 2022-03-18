@@ -10,7 +10,7 @@ pkgname=('yaru-sound-theme'
          'yaru-metacity-theme'
          'yaru-icon-theme'
          'yaru-session')
-pkgver=22.04.1
+pkgver=22.04.2
 pkgrel=1
 pkgdesc="Yaru default ubuntu theme"
 arch=(any)
@@ -21,7 +21,7 @@ makedepends=('meson' 'sassc' 'git')
 options=('!strip' '!buildflags' 'staticlibs')
 
 source=("https://github.com/ubuntu/yaru/archive/${pkgver}.tar.gz")
-sha256sums=('fbd4c19c16817eec74845d9723ebffb90f1897e0d085384f31f4b4d6c32a91ee')
+sha256sums=('c816def46ddb2ffeffa1ffe2b132857bd2e37647a5f335345ce4491029294f22')
 
 build() {
   arch-meson $pkgbase-$pkgver build
@@ -34,23 +34,23 @@ _delete_all_from_pkgdir_except() {
         rm -r "${pkgdir}"/usr/share/sounds
     fi
     if [[ "$1" != "gtk-theme" ]]; then
-        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-dark}/{gtk-*,index.theme}
+        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-*}/{gtk-*,index.theme}
     fi
     if [[ "$1" != "gtksourceview-theme" ]]; then
         rm -r "${pkgdir}"/usr/share/gtksourceview-*
     fi
     if [[ "$1" != "gnome-shell-theme" ]]; then
-        rm "${pkgdir}"/usr/share/themes/Yaru{,-light}/gnome-shell
-        rm -r "${pkgdir}"/usr/share/gnome-shell/theme/Yaru{,-light}
+        rm "${pkgdir}"/usr/share/themes/Yaru{,-*}/gnome-shell
+        rm -r "${pkgdir}"/usr/share/gnome-shell/theme/Yaru{,-*}
     fi
     if [[ "$1" != "xfwm4-theme" ]]; then
-        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-dark}/xfwm4
+        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-*}/xfwm4
     fi
     if [[ "$1" != "unity-theme" ]]; then
-        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-dark}/unity
+        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-*}/unity
     fi
     if [[ "$1" != "metacity-theme" ]]; then
-        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-dark}/metacity-1
+        rm -r "${pkgdir}"/usr/share/themes/Yaru{,-*}/metacity-1
     fi
     if [[ "$1" != "icon-theme" ]]; then
         rm -r "${pkgdir}"/usr/share/icons

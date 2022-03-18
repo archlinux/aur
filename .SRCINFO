@@ -1,6 +1,6 @@
 pkgbase = yaru
 	pkgdesc = Yaru default ubuntu theme
-	pkgver = 22.04.1
+	pkgver = 22.04.2
 	pkgrel = 1
 	url = https://github.com/ubuntu/yaru
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = yaru
 	options = !strip
 	options = !buildflags
 	options = staticlibs
-	source = https://github.com/ubuntu/yaru/archive/22.04.1.tar.gz
-	sha256sums = fbd4c19c16817eec74845d9723ebffb90f1897e0d085384f31f4b4d6c32a91ee
+	source = https://github.com/ubuntu/yaru/archive/22.04.2.tar.gz
+	sha256sums = c816def46ddb2ffeffa1ffe2b132857bd2e37647a5f335345ce4491029294f22
 
 pkgname = yaru-sound-theme
 	pkgdesc = Yaru default ubuntu sound theme
