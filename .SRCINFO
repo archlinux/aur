@@ -1,0 +1,16 @@
+pkgbase = zeno
+	pkgdesc = Open-source node system framework for simulation and others
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://gitee.com/zenustech/zeno
+	arch = x86_64
+	license = MPL2
+	makedepends = git
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = ninja
+	depends = qt5-base
+	source = /source::git+https://gitee.com/zenustech/zeno.git
+	md5sums = SKIP
+
+pkgname = zeno
