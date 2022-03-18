@@ -6,8 +6,8 @@
 ### Info ###
 pkgname=ukbprep-bin
 _pkgname=${pkgname%-bin}
-pkgver=20211003
-pkgrel=1
+pkgver=2021.10.03
+pkgrel=2
 pkgdesc='UK Biobank file handlers'
 arch=(x86_64)
 url='https://biobank.ndph.ox.ac.uk'
@@ -29,15 +29,13 @@ noextract=(
     ukbfetch_linkset-${pkgver}.tar
     ukblink_linkset-${pkgver}.tar
 )
-md5sums=(
-    '420c5da64be38d32735c9bfb75098a21'
-    '9530c628fa41c9e3fe7441ac63d9ab84'
-    '06b5b39ab608a093b1dd264e27280316'
-    '3499b767a6809f96f446d6db28665115'
-    '9b309b581f435a08e5482e03ef07fea7'
-    '6412007ab74054bfcde0a16e781d84e8'
-    '78397002e55183feb4ebf62cbca3be3f'
-)
+md5sums=('6c61630600068911994b48d54f5b7a87'
+         '9530c628fa41c9e3fe7441ac63d9ab84'
+         '06b5b39ab608a093b1dd264e27280316'
+         '3499b767a6809f96f446d6db28665115'
+         '9b309b581f435a08e5482e03ef07fea7'
+         '6412007ab74054bfcde0a16e781d84e8'
+         '78397002e55183feb4ebf62cbca3be3f')
 
 ### Prepare ###
 prepare() {
