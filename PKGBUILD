@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=gitin
 pkgver=0.2.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Commit/branch/workdir explorer for git"
 arch=('x86_64')
 url="https://github.com/isacikgoz/gitin"
@@ -26,6 +26,9 @@ build() {
   export CGO_LDFLAGS="${LDFLAGS}"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
   make
+
+  # Clean module cache for makepkg -C
+  go clean -modcache
 }
 
 package() {
