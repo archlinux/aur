@@ -1,0 +1,4 @@
+*~
+*.log
+openvpn-update-resolv-conf
+openvpn-update-resolv-conf-git-*.pkg.tar.*
