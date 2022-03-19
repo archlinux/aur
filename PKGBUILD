@@ -1,10 +1,10 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-qt5integration-git
-pkgver=5.1.12.r54.g732a237
+pkgver=5.5.17.r9.gcc9dff4
 pkgrel=1
 pkgdesc='Qt platform theme integration plugins for DDE'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/qt5integration"
 license=('GPL3')
 depends=('dtkwidget-git' 'libqtxdg' 'deepin-qt5platform-plugins-git')
@@ -12,12 +12,19 @@ makedepends=('git' 'qt5-tools' 'xcb-util-renderutil' 'gtest')
 conflicts=('deepin-qt5integration')
 provides=('deepin-qt5integration')
 groups=('deepin-git')
-source=("$pkgname::git://github.com/linuxdeepin/qt5integration")
+source=("$pkgname::git+https://github.com/linuxdeepin/qt5integration")
 sha512sums=('SKIP')
 
 pkgver() {
     cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd $pkgname
+    if [[ ! -z ${sha} ]];then
+      git checkout -b $sha
+    fi
 }
 
 build() {
