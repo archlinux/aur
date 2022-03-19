@@ -1,6 +1,6 @@
 pkgbase = snes9x-git
 	pkgdesc = Port of the Snes9x emulator (git version)
-	pkgver = 1.60.r291.g8a5d29c
+	pkgver = 1.61.r6.g93d538df
 	pkgrel = 1
 	url = http://www.snes9x.com/
 	arch = x86_64
@@ -28,10 +28,6 @@ pkgbase = snes9x-git
 	makedepends = zlib
 	makedepends = gtkmm3
 	source = git+https://github.com/snes9xgit/snes9x.git
-	source = git+https://github.com/KhronosGroup/SPIRV-Cross.git
-	source = git+https://github.com/KhronosGroup/glslang.git
-	sha256sums = SKIP
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = snes9x-git
@@ -64,4 +60,3 @@ pkgname = snes9x-gtk-git
 	depends = gtkmm3
 	provides = snes9x-gtk
 	conflicts = snes9x-gtk
-
