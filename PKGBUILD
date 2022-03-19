@@ -25,7 +25,6 @@ optdepends=('sqlite: SQLite support'
             'memcached: MemCached support'
             'openssh: GIT over SSH support')
 makedepends=('go>=1.3')
-conflicts=("$_pkgname-bin" "$_pkgname-git" "$_pkgname-dev-git")
 backup=("etc/$_pkgname/app.ini")
 source=("$_pkgname-$pkgver::https://github.com/$_orga/$_pkgname/archive/v${pkgver}.tar.gz"
         '0001-Adjust-config-for-Arch-Linux-package.patch'
