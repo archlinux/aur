@@ -1,19 +1,19 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: feufochmar <feufochmar.gd@gmail.com>
+
 pkgname=ttf-nova
-pkgver=20110821
-pkgrel=2
-pkgdesc="A font familly originally created for making inscriptions on stone."
+pkgver=3.0.0
+pkgrel=1
+epoch=1
+pkgdesc="Sans-serif font family originally created for stone inscriptions"
 arch=('any')
-url="http://openfontlibrary.org/font/nova"
+url="https://fontlibrary.org/font/nova"
 license=('custom:OFL')
-depends=()
-source=("https://fontlibrary.org/assets/downloads/nova/9fea9bf34ffdc4d4c44a8502d0deb44b/nova.zip")
+source=("$pkgname-$pkgver.zip::https://fontlibrary.org/assets/downloads/nova/0e76fd6f2f8dd7ea67b44c52de3b775d/nova.zip")
+sha256sums=('21ec68caaaaf588851070a94567c824e4b22085dfbf3d7fc4582c2e0f0489751')
 
 package() {
-  cd "$srcdir"/Nova
-  install -D -m644 "SIL - Open Font License.txt" "$pkgdir"/usr/share/licenses/$pkgname/OFL
-  mkdir -p  "$pkgdir"/usr/share/fonts/TTF
-  install -m644 *.ttf "$pkgdir"/usr/share/fonts/TTF/
+	cd Nova
+	install -Dm644 "SIL - Open Font License.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -Dm644 *.ttf -t "$pkgdir/usr/share/fonts/TTF/"
 }
- 
-md5sums=('9fea9bf34ffdc4d4c44a8502d0deb44b')
