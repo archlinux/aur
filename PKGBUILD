@@ -2,7 +2,7 @@
 
 _gemname=timecop
 pkgname=ruby-$_gemname
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc='A gem providing "time travel", "time freezing", and "time acceleration" capabilities'
 arch=(any)
@@ -13,7 +13,7 @@ checkdepends=(ruby-bundler ruby-rake ruby-minitest ruby-nokogiri ruby-mocha ruby
 makedepends=(rubygems ruby-rdoc)
 options=(!emptydirs)
 source=(https://github.com/travisjeffery/timecop/archive/v${pkgver}.tar.gz)
-sha256sums=('c7b06c71ebdebc61a89f9ac394c6a9dbd89205350c59af68843c718da2eb3444')
+sha256sums=('5859ebb3276ac93e544b2094514cacb46822bae4aa7d4fd7cc4c548b5e379450')
 
 prepare() {
   cd $_gemname-$pkgver
