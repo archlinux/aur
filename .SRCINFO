@@ -1,6 +1,6 @@
 pkgbase = phockup
 	pkgdesc = Media sorting tool to organize photos and videos from your camera in folders by year, month and day.
-	pkgver = 1.7.1
+	pkgver = 1.9.0
 	pkgrel = 1
 	url = https://github.com/ivandokov/phockup
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = phockup
 	checkdepends = python-tqdm
 	depends = python
 	depends = perl-image-exiftool
-	source = phockup-1.7.1.tar.gz::https://github.com/ivandokov/phockup/archive/1.7.1.tar.gz
-	sha256sums = d2fca5b36177fc4435305b7f43419a5832965cf2fbfa81b357df004af15eadca
+	source = phockup-1.9.0.tar.gz::https://github.com/ivandokov/phockup/archive/1.9.0.tar.gz
+	sha256sums = 952cf21484cf48606ef7f05aa8da96fb7518a96e0a36b4a87a5cb17c02427db2
 
 pkgname = phockup
