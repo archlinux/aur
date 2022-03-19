@@ -1,0 +1,18 @@
+pkgbase = uncon-bin
+	pkgdesc = 无界投屏 Linux 版，将手机屏幕和应用镜像至电脑
+	pkgver = 2.1.2
+	pkgrel = 1
+	url = https://nightmare.fun/screen/
+	install = uncon.install
+	arch = x86_64
+	depends = android-tools
+	depends = scrcpy
+	provides = uncon
+	source = https://github.com/YidaozhanYa/uncon-binary/releases/download/v1.0/Uncon.deb
+	source = uncon.desktop
+	source = uncon.png
+	sha256sums = 206043aebf6e3f53cb84f9284975e704eadbb629e75dc5aacbb3e2663a205730
+	sha256sums = c2076d7e65995abff87e8e579b37f058a33cd1aa394d9b2d082e358c8e3ba9bf
+	sha256sums = b3c7c5a7fef65d365c19110e008ae4ce863fff21d9cbf0ed5e34af5a5453ac30
+
+pkgname = uncon-bin
