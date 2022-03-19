@@ -1,0 +1,17 @@
+pkgbase = rtl8723ds-dkms-git
+	pkgdesc = RTL8723DS driver
+	pkgver = 5.1.1.5.r48.g76fb806
+	pkgrel = 1
+	url = https://github.com/lwfinger/rtl8723ds
+	arch = any
+	license = GPL2
+	makedepends = git
+	depends = dkms
+	depends = bc
+	conflicts = rtl8723ds
+	source = git+https://github.com/lwfinger/rtl8723ds
+	source = dkms.conf
+	sha256sums = SKIP
+	sha256sums = 13b9aecc0e40c4c0c6a1446e7ba9835d48b3f4e802a541b10ba14c7f528bde86
+
+pkgname = rtl8723ds-dkms-git
