@@ -1,9 +1,10 @@
 pkgbase = deepin-launcher-git
 	pkgdesc = Deepin desktop-environment - Launcher module
-	pkgver = 5.4.11.r30.g6570c818
+	pkgver = 5.5.6.r63.gd5757bab
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-launcher
 	arch = x86_64
+	arch = aarch64
 	groups = deepin-git
 	license = GPL3
 	makedepends = git
@@ -26,7 +27,7 @@ pkgbase = deepin-launcher-git
 	depends = xdg-user-dirs
 	provides = deepin-launcher
 	conflicts = deepin-launcher
-	source = deepin-launcher-git::git://github.com/linuxdeepin/dde-launcher.git
+	source = deepin-launcher-git::git+https://github.com/linuxdeepin/dde-launcher.git
 	sha512sums = SKIP
 
 pkgname = deepin-launcher-git

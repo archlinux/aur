@@ -1,10 +1,10 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-launcher-git
-pkgver=5.4.11.r30.g6570c818
+pkgver=5.5.6.r63.gd5757bab
 pkgrel=1
 pkgdesc='Deepin desktop-environment - Launcher module'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dde-launcher"
 license=('GPL3')
 depends=('gsettings-qt' 'qt5-svg' 'qt5-x11extras' 'startdde-git' 'deepin-daemon-git' 'deepin-qt-dbus-factory-git' 'xdg-user-dirs')
@@ -12,12 +12,19 @@ makedepends=('git' 'cmake' 'ninja' 'gtest' 'qt5-tools' 'qt5-base' 'qt5-x11extras
 conflicts=('deepin-launcher')
 provides=('deepin-launcher')
 groups=('deepin-git')
-source=("$pkgname::git://github.com/linuxdeepin/dde-launcher.git")
+source=("$pkgname::git+https://github.com/linuxdeepin/dde-launcher.git")
 sha512sums=('SKIP')
 
 pkgver() {
     cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd $pkgname
+    if [[ ! -z ${sha} ]];then
+      git checkout -b $sha
+    fi
 }
 
 build() {
