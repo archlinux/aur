@@ -1,10 +1,10 @@
-# Maintainer: yjun <jerrysteve1101@gmail.com>
+# Maintainer: yjun <jerrysteve1101 at gmail dot com>
 # Maintainer: Kevin_Liu <we123445@outlook.com>
 
 pkgname=vofa+
 _pkgname=vofaplus
 pkgver=1.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="A high degree of freedom embedded debugging tool with plugins support."
 arch=('x86_64')
 url="https://www.vofa.plus/"
@@ -34,9 +34,6 @@ package() {
 
   # desktop entry
   install -Dm 644 ${srcdir}/usr/share/applications/${pkgname}.desktop -t ${pkgdir}/usr/share/applications/
-
-  # changelog
-  install -Dm 644 ${srcdir}/usr/share/doc/${pkgname}/changelog.gz -t ${pkgdir}/usr/share/doc/${pkgname}
 
   # symbolic link
   install -dm755 ${pkgdir}/usr/bin/
