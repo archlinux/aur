@@ -1,0 +1,15 @@
+pkgbase = msigd-git
+	pkgdesc = MSI Gaming Device control application
+	pkgver = r163.4b5c4f0
+	pkgrel = 1
+	url = https://github.com/couriersud/msigd
+	arch = x86_64
+	license = GPL
+	makedepends = cmake
+	makedepends = git
+	depends = libusb
+	depends = hidapi
+	source = msigd::git+https://github.com/couriersud/msigd.git
+	sha256sums = SKIP
+
+pkgname = msigd-git
