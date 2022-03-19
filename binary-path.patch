@@ -1,0 +1,26 @@
+diff --git a/script-opts/discord.conf b/script-opts/discord.conf
+index d69c102..f867bd5 100644
+--- a/script-opts/discord.conf
++++ b/script-opts/discord.conf
+@@ -1,7 +1,7 @@
+ key=D
+ active=yes
+ client_id=737663962677510245
+-binary_path=
++binary_path=/usr/lib/mpv-discord/mpv-discord
+ socket_path=/tmp/mpvsocket
+ use_static_socket_path=yes
+ autohide_threshold=0
+diff --git a/scripts/discord.lua b/scripts/discord.lua
+index e7d5046..5046a08 100644
+--- a/scripts/discord.lua
++++ b/scripts/discord.lua
+@@ -6,7 +6,7 @@
+ 	key = "D",
+ 	active = true,
+ 	client_id = "737663962677510245",
+-	binary_path = "",
++	binary_path = "/usr/lib/mpv-discord/mpv-discord",
+ 	socket_path = "/tmp/mpvsocket",
+ 	use_static_socket_path = true,
+ 	autohide_threshold = 0,
