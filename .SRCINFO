@@ -1,12 +1,11 @@
 pkgbase = haskell-vector-space
 	pkgdesc = Vector & affine spaces, linear maps, and derivatives
 	pkgver = 0.16
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/conal/vector-space
 	arch = x86_64
 	license = BSD
 	makedepends = ghc
-	depends = ghc-libs
 	depends = haskell-boolean
 	depends = haskell-memotrie
 	depends = haskell-numinstances
@@ -14,4 +13,3 @@ pkgbase = haskell-vector-space
 	sha256sums = 0c0b2f1209f95045865b968c7aa0a25e155410b3e08cf98a6c8544e48436c79c
 
 pkgname = haskell-vector-space
-
