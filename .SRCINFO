@@ -1,13 +1,14 @@
 pkgbase = nextcloud-news-updater
 	pkgdesc = A parallel feed updater for the Nextcloud News app
 	pkgver = 11.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/nextcloud/news-updater
 	install = nextcloud-news-updater.install
 	arch = any
 	license = GPL3
 	checkdepends = python-pytest
-	depends = python-setuptools
+	makedepends = python-setuptools
+	depends = python
 	optdepends = nextcloud-app-news: for updating a local instance of the Nextcloud News app
 	backup = etc/webapps/nextcloud/news/nextcloud-news-updater.ini
 	source = nextcloud-news-updater-11.0.0.tar.gz::https://github.com/nextcloud/news-updater/archive/11.0.0.tar.gz
@@ -27,4 +28,3 @@ pkgbase = nextcloud-news-updater
 	b2sums = a56604d3d29ebbf4fb807bfeec32a90fe5688bd516633f1990e11afd664ba730b941e522c393a21f85b8be2f10cfa08288f0884dc693bcc30b7cc12dc967a0a6
 
 pkgname = nextcloud-news-updater
-
