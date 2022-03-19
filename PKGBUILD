@@ -9,7 +9,7 @@ license=('MIT')
 depends=()
 makedepends=('python' 'cmake' 'freetype2' 'panda3d')
 
-source=("git://github.com/tobspr/LUI.git#branch=master")
+source=("git+https://github.com/tobspr/LUI.git#branch=master")
 
 sha256sums=(
 	'SKIP'
