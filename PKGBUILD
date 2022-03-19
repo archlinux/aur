@@ -3,8 +3,7 @@
 # Maintainer: Vesa Kaihlavirta <vegai@iki.fi>
 
 pkgname=pwsafe
-pkgver=20200906
-_commit=cc9e08da251a91915470f60c38da1efec57e5854
+pkgver=r5.3e23fa2
 pkgrel=1
 pkgdesc="A commandline program for managing encrypted password databases"
 arch=('x86_64')
@@ -12,8 +11,13 @@ url="https://github.com/nsd20463/pwsafe"
 license=('GPL')
 depends=('openssl' 'libxmu')
 makedepends=('git')
-source=("git://github.com/nsd20463/pwsafe.git#commit=${_commit}")
+source=(git+https://github.com/nsd20463/pwsafe)
 md5sums=('SKIP')
+
+pkgver() {
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
   cd "$srcdir"/${pkgname}
