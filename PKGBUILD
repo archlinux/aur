@@ -1,7 +1,7 @@
 # Maintainer: Ingo Bürk <admin at airblader dot de>
 
 pkgname=i3-gaps-next-git
-pkgver=4.20.1.r26.g094f56aa
+pkgver=4.20.1.r78.ga661d82c
 pkgrel=1
 pkgdesc='A fork of i3wm tiling window manager (development branch) with more features, including gaps'
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ makedepends=('git' 'bison' 'flex' 'asciidoc' 'xmlto' 'meson')
 optdepends=('i3lock: For locking your screen.'
             'i3status: To display system information with a bar.')
 options=('docs')
-source=('git://github.com/Airblader/i3#branch=gaps-next')
+source=('git+https://github.com/Airblader/i3#branch=gaps-next')
 sha1sums=('SKIP')
 
 pkgver() {
