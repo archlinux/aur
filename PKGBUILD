@@ -1,7 +1,7 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=golang-deepin-lib-git
-pkgver=6.0.0.r7.g0e8fa1d
+pkgver=6.0.0.r8.gdb5716d
 pkgrel=1
 pkgdesc='A library containing many useful go routines for things such as glib, gettext, archive, graphic,etc.'
 arch=('any')
@@ -15,7 +15,7 @@ makedepends=('iso-codes' 'golang-gopkg-check.v1' 'git' 'go') # git needed only f
 conflicts=('golang-deepin-lib')
 provides=('golang-deepin-lib')
 groups=('deepin-git')
-source=("$pkgname::git://github.com/linuxdeepin/go-lib/")
+source=("$pkgname::git+https://github.com/linuxdeepin/go-lib/")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -26,6 +26,10 @@ pkgver() {
 prepare() {
   export GO111MODULE=off
   cd $pkgname
+  if [[ ! -z ${sha} ]];then
+    git checkout -b $sha
+  fi
+
   sed -i 's/int connect_timeout;/extern int connect_timeout;/' pulse/dde-pulse.h
 }
 
