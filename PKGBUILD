@@ -4,8 +4,8 @@
 #_fragment="#branch=2.0.5-beta-maintenance"
 
 pkgname=appleseed-git
-pkgver=2.1.0.beta.r282.g1ba62025b
-pkgrel=2
+pkgver=2.1.0.beta.r283.g8c894f29d
+pkgrel=3
 epoch=1
 pkgdesc="Physically-based global illumination rendering engine primarily designed for animation and visual effects (development vesion)."
 arch=(i686 x86_64)
@@ -23,6 +23,7 @@ source=("${pkgname}::git+https://github.com/appleseedhq/appleseed.git${_fragment
         "oiio_cxx_std_14.patch"
         "openexr3.patch"
         "opencolorio1.patch"
+        "openimageio.patch"
         )
 sha256sums=('SKIP'
             '8e7d453ced2a58b162b6e8e2ace09916755b70821837b2c7502a3417f03a25a3'
@@ -30,21 +31,23 @@ sha256sums=('SKIP'
             '0171eaa9ec499ecf74ac8878dbacfb28f81094e9a7bed46819314613e6ae7133'
             '194902d8c32f23155dddd4205ce3744852e0b86fc22e74739ce5ab7bf97924a7'
             'b6ed6ca0034a2ec81ecf8f44e11dba7b3469130a3106fcca58318174003e2642'
-            '881b53983e24ade13480d2be2cfe10990890286cd9910c14e83284da427a1713')
+            '881b53983e24ade13480d2be2cfe10990890286cd9910c14e83284da427a1713'
+            'e0c1730745e756a85d633ab1dd50c39b1f744b173b50ca38595d4ee9325b5670')
 b2sums=('SKIP'
         '8461888dc541113700f377379b0e688bdbc6a5b79bfda4c1b061c2e3811a03c43583272862d6b084f092c6bb372c15b31d2a25849b9e2d89d1e3ed657f680846'
         '85d278ea12672e44657fbfe8695744508db88cea54dbc93410632b05175c94a5e29e28dfb739ba88ec10a2449ff499484854ba177db03f5e41b24d2b8e6b9328'
         'cc21c08931d4e5060bbf9b8d2732e68eb28edc923e952db09665e2f63a0918e24f6d35f39a2ea2048a6b5ad67833df08bc9a5e1fea065e1df975ca5e40d414f0'
         'e999b4aaf4efcb3671de7f197d9ab92fd90cee34aaf879d30f959c88cea55416b0715ce85ce0452203484e4b336aed453ecff9166e12b9da9170101a3118138c'
         '9499c09e99fba96958861f1da7833728850c5581cf371a8f6994012288445d8fd24ec3cfe4f9e22a5860c930d91e710ffed9b33ba3cf2d8385ffa1cda4909528'
-        '6a92e81297d3bdc8c8b77034d9dac1864dd59b106503b6c711fbdd04122ef8374b908054844ec2999ba6a845363afebf566b2769cf306843c8bc017453e54de1')
+        '6a92e81297d3bdc8c8b77034d9dac1864dd59b106503b6c711fbdd04122ef8374b908054844ec2999ba6a845363afebf566b2769cf306843c8bc017453e54de1'
+        '316300d0540c16c3bcaf1ea37ee470957c35ff995129dafc28249db4526f07a22b67058fd4abbc685691604716048fef039661ba06f5515fff858f7c16d2906e')
 
 pkgver() {
   git -C "${srcdir}/${pkgname}" describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  git -C "${srcdir}/${pkgname}" apply -v "${srcdir}"/{boost_107400,cmake.extra.install.dirs.remove,osl_1.11.8,oiio_cxx_std_14,open{exr3,colorio1}}.patch
+  git -C "${srcdir}/${pkgname}" apply -v "${srcdir}"/{boost_107400,cmake.extra.install.dirs.remove,osl_1.11.8,oiio_cxx_std_14,open{exr3,colorio1,imageio}}.patch
   sed '/python37/s/37/310/' -i "${srcdir}/${pkgname}"/src/appleseed.python/CMakeLists.txt
 }
 

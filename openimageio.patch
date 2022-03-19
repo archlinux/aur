@@ -1,0 +1,46 @@
+From f90de3f01f7872c754f815287b6eaebd8e4c7fa1 Mon Sep 17 00:00:00 2001
+From: howetuft <howetuft@gmail.com>
+Date: Sun, 13 Mar 2022 19:52:17 +0100
+Subject: [PATCH] OpenImageIO v2.3
+
+---
+ cmake/modules/FindOpenImageIO.cmake                            | 3 ++-
+ .../kernel/rendering/final/texturecontrolledpixelrenderer.cpp  | 1 +
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/cmake/modules/FindOpenImageIO.cmake b/cmake/modules/FindOpenImageIO.cmake
+index 64f6dc48d..0538b89b2 100644
+--- a/cmake/modules/FindOpenImageIO.cmake
++++ b/cmake/modules/FindOpenImageIO.cmake
+@@ -42,6 +42,7 @@ include (FindPackageHandleStandardArgs)
+ find_path (OPENIMAGEIO_INCLUDE_DIR NAMES OpenImageIO/imageio.h)
+ 
+ find_library (OPENIMAGEIO_LIBRARY NAMES OpenImageIO)
++find_library (OPENIMAGEIO_UTIL_LIBRARY NAMES OpenImageIO_Util)
+ 
+ find_program (OPENIMAGEIO_OIIOTOOL NAMES oiiotool)
+ find_program (OPENIMAGEIO_IDIFF NAMES idiff)
+@@ -57,7 +58,7 @@ find_package_handle_standard_args (OPENIMAGEIO DEFAULT_MSG
+ # Set the output variables.
+ if (OPENIMAGEIO_FOUND)
+     set (OPENIMAGEIO_INCLUDE_DIRS ${OPENIMAGEIO_INCLUDE_DIR})
+-    set (OPENIMAGEIO_LIBRARIES ${OPENIMAGEIO_LIBRARY})
++    set (OPENIMAGEIO_LIBRARIES ${OPENIMAGEIO_LIBRARY} ${OPENIMAGEIO_UTIL_LIBRARY})
+ else ()
+     set (OPENIMAGEIO_INCLUDE_DIRS)
+     set (OPENIMAGEIO_LIBRARIES)
+diff --git a/src/appleseed/renderer/kernel/rendering/final/texturecontrolledpixelrenderer.cpp b/src/appleseed/renderer/kernel/rendering/final/texturecontrolledpixelrenderer.cpp
+index f30fcc911..389b3d909 100644
+--- a/src/appleseed/renderer/kernel/rendering/final/texturecontrolledpixelrenderer.cpp
++++ b/src/appleseed/renderer/kernel/rendering/final/texturecontrolledpixelrenderer.cpp
+@@ -61,6 +61,7 @@
+ #include "foundation/platform/_beginoiioheaders.h"
+ #include "OpenImageIO/imagebufalgo.h"
+ #include "OpenImageIO/typedesc.h"
++#include "OpenImageIO/imagecache.h"
+ #include "foundation/platform/_endoiioheaders.h"
+ 
+ // Standard headers.
+-- 
+2.35.1
+
