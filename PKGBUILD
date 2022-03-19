@@ -2,9 +2,9 @@
 
 pkgname=har-git
 pkgver='0.1.0'
-pkgrel=2
+pkgrel=3
 pkgdesc="Utility to create / extract HAR (Human Archive Format) files"
-arch=( 'any' )
+arch=(x86_64)
 # N.B.: Forked from marler8997/har due to inactivity
 url="https://github.com/MoonlightSentinel/har"
 license=('Boost')
