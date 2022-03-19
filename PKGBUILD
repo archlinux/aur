@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=opentyrian-git
-pkgver=2.1.20220309+r4+g425fe65
+pkgver=2.1.20220318
 pkgrel=1
 epoch=1
 pkgdesc="Open-source port of the DOS shoot-em-up Tyrian"
