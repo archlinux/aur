@@ -1,10 +1,10 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-file-manager-git
-pkgver=5.2.18.r38.g9399b7f2d
+pkgver=5.5.1.r178.g9977208b0
 pkgrel=1
 pkgdesc='Deepin File Manager'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dde-file-manager"
 license=('GPL3')
 depends=('deepin-anything-git' 'disomaster-git' 'file' 'gio-qt' 'libmediainfo' 'avfs' 'polkit-qt5' 'poppler'
@@ -19,7 +19,7 @@ optdepends=('deepin-manual: for help menual'
 groups=('deepin-git')
 provides=('deepin-file-manager')
 conflicts=('deepin-file-manager')
-source=("$pkgname::git://github.com/linuxdeepin/dde-file-manager")
+source=("$pkgname::git+https://github.com/linuxdeepin/dde-file-manager")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -28,7 +28,11 @@ pkgver() {
 }
 
 prepare() {
-    cd ${pkgname}
+    cd $pkgname
+    if [[ ! -z ${sha} ]];then
+      git checkout -b $sha
+    fi
+
     sed -i '/#include <QException>/a #include <QPainterPath>' src/dialogs/dfmtaskwidget.cpp
     sed -i '/#include <QTimer>/a #include <QPainterPath>' src/dde-file-manager-lib/interfaces/dfmglobal.cpp
     sed -i '/#include <QPainter>/a #include <QPainterPath>' src/dde-file-manager-lib/interfaces/{dlistitemdelegate,dfmstyleditemdelegate,diconitemdelegate}.cpp src/dde-file-manager-lib/dialogs/openwithdialog.cpp

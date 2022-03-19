@@ -1,9 +1,10 @@
 pkgbase = deepin-file-manager-git
 	pkgdesc = Deepin File Manager
-	pkgver = 5.2.18.r38.g9399b7f2d
+	pkgver = 5.5.1.r178.g9977208b0
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-file-manager
 	arch = x86_64
+	arch = aarch64
 	groups = deepin-git
 	license = GPL3
 	makedepends = git
@@ -43,7 +44,7 @@ pkgbase = deepin-file-manager-git
 	optdepends = deepin-compressor: for compress/decompress
 	provides = deepin-file-manager
 	conflicts = deepin-file-manager
-	source = deepin-file-manager-git::git://github.com/linuxdeepin/dde-file-manager
+	source = deepin-file-manager-git::git+https://github.com/linuxdeepin/dde-file-manager
 	sha512sums = SKIP
 
 pkgname = deepin-file-manager-git
