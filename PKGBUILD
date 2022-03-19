@@ -10,7 +10,7 @@
 ## pkginfo
 pkgdesc='A fancy custom distribution of Valves Proton with various patches'
 pkgname=proton-ge-custom-bin
-pkgver=GE_Proton7_9
+pkgver=GE_Proton7_10
 pkgrel=1
 epoch=1
 arch=('x86_64')
@@ -22,7 +22,6 @@ conflicts=('proton-ge-custom')
 ## dependencies
 depends=('python'
 	'vulkan-icd-loader'
-	'lib32-libusb'
 	'lib32-openal'
 	# libav support #
 	'lib32-libva'
@@ -46,10 +45,11 @@ optdepends=('kdialog: KDE splash dialog support'
 	'vulkan-driver: driver to be used by dxvk'
 	'winetricks: protonfixes backend - highly recommended'
 	'wine: support for 32bit prefixes'
-	'xboxdrv: gamepad driver service')
+	'xboxdrv: gamepad driver service'
+	'lib32-libusb: wine usb support')
 
 ## makepkg options
-options=('!strip')
+options=(!strip emptydirs)
 
 ## fix naming conventions, matching upstream
 _pkgname=${pkgname//-bin/}
@@ -69,8 +69,8 @@ backup=("${_protoncfg}")
 url='https://github.com/GloriousEggroll/proton-ge-custom'
 source=("${_pkgver}_${pkgrel}.tar.gz::${url}/releases/download/${_pkgver}/${_pkgver}.tar.gz"
 	'supplementary.tar.zst')
-sha512sums=('f9a1a9f79ead06c6af87435ddb0b68e8ff06a9e1a94abfcdfc09186107c7743d814e89814dac48d96f31f7ce9db3d1be2491df6bda25b33affc5eef50ed8afbb'
-	'a484c4cd2003057cf0cbbd32ca5d0106e97c75434e7bef34b35be8239ad98a482358852e41e85abedf5b24ac4d0375c8fffc7deee81a9b08c7799a398f23773b')
+sha512sums=('1d105a3df5c3fca115f390232dbed0a8f8180fba50027437ab59640277628d0831b3d5c598a585bc1df4ed127638163e3520524553e51650128b70e1b4e1bb3d'
+            'a484c4cd2003057cf0cbbd32ca5d0106e97c75434e7bef34b35be8239ad98a482358852e41e85abedf5b24ac4d0375c8fffc7deee81a9b08c7799a398f23773b')
 
 build() {
 	## patches

@@ -1,3 +1,21 @@
+## GE-Proton7-10 Released
+
+Updated wine to latest bleeding edge
+Updated dxvk to latest git
+Updated vkd3d-proton to latest git
+Corrected VKD3D_FEATURE_LEVEL being in the wrong python script block so it actually loads now.
+
+Thanks to upstream proton devs Rémi Bernon (rbernon), Derek Lesho (Guy1524), Philip Rebohle (doitsujin):
+
+Nioh 2 videos now work
+Persona 5 Strikers videos now work
+
+## GE-Proton7-9 Released
+
+Added loader-KeyboardLayouts from staging. This fixes a big performance issue in Overwatch but may also help other games.
+Set VKD3D_FEATURE_LEVEL=12_0 by default. This allows some older AMD GPUs to get past the "white screen" bug in Elden Ring
+protonfix to set L.A. Noire to use DX11 (it tries DX9 by default) -- Thanks VoodaGod
+
 ## GE-Proton7-8 Released
 
 Hotfix:
