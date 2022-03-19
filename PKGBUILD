@@ -1,10 +1,11 @@
 # Maintainer: Marius Glo <marius@mgl.dev>
 # Maintainer: Nobbele <realnobbele@gmail.com>
 # Contributor: Oscar Morante <oscar@mooistudios.com>
+# Contributor: sinasio <synasius@gmail.com>
 
 pkgname=unityhub
-pkgver=3.0.2
-pkgrel=2
+pkgver=3.1.1
+pkgrel=1
 pkgdesc="The Unity Hub is a standalone application that streamlines the way you find, download, and manage your Unity Projects and installations."
 url="https://unity.com/"
 arch=('x86_64')
@@ -16,11 +17,11 @@ optdepends=(
   'cpio: used for Android build support'
 )
 source=(
-  "$pkgname-$pkgver.deb::https://hub.unity3d.com/linux/repos/deb/pool/main/u/unity/unityhub_amd64/unityhub-amd64-3.0.1.deb"
+  "$pkgname-$pkgver.deb::https://hub.unity3d.com/linux/repos/deb/pool/main/u/unity/unityhub_amd64/unityhub-amd64-3.1.1.deb"
   'license.txt'
 )
 sha256sums=(
-  '2c07bd472755b5eb544a0f89a528c7237c502daed4b56f6371611442cc4b3c0f'
+  '148d3534bbc6c0cb755d30ba5ddaf28b914bff4685d02f292e2b125d1c7b996a'
   'f0eb3a4bb148bb7f426e4f5b97e891265ac487710cbcba9282518537c7b5d833'
 )
 OPTIONS=(!strip)
