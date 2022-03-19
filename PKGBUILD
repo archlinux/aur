@@ -32,13 +32,11 @@ pkgver() {
 }
 
 prepare() {
-    cd $pkgname
-    if [[ ! -z ${sha} ]];then
-      git checkout -b $sha
-    fi
-}
+  cd $pkgname
+  if [[ ! -z ${sha} ]];then
+    git checkout -b $sha 
+  fi
 
-prepare() {
   cd $srcdir
   export GOPATH="$srcdir/build:/usr/share/gocode"
   export GO111MODULE=off
