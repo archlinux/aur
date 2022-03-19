@@ -1,0 +1,11 @@
+--- udev-md-raid-assembly.rules.old	2022-03-20 01:46:42.730000041 +0300
++++ udev-md-raid-assembly.rules	2022-03-20 01:51:35.713333437 +0300
+@@ -30,7 +30,7 @@
+ 
+ # remember you can limit what gets auto/incrementally assembled by
+ # mdadm.conf(5)'s 'AUTO' and selectively whitelist using 'ARRAY'
+-ACTION=="add|change", IMPORT{program}="BINDIR/mdadm --incremental --export $devnode --offroot $env{DEVLINKS}"
++ACTION=="add|change", IMPORT{program}="/usr/bin/env IMSM_NO_PLATFORM=1 BINDIR/mdadm -ARs"
+ ACTION=="add|change", ENV{MD_STARTED}=="*unsafe*", ENV{MD_FOREIGN}=="no", ENV{SYSTEMD_WANTS}+="mdadm-last-resort@$env{MD_DEVICE}.timer"
+ ACTION=="remove", ENV{ID_PATH}=="?*", RUN+="BINDIR/mdadm -If $name --path $env{ID_PATH}"
+ ACTION=="remove", ENV{ID_PATH}!="?*", RUN+="BINDIR/mdadm -If $name"

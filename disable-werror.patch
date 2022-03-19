@@ -1,0 +1,11 @@
+--- Makefile.old	2022-01-10 17:07:50.475985407 +0100
++++ Makefile	2022-01-10 17:08:11.599433663 +0100
+@@ -50,7 +50,7 @@
+ CC := $(CROSS_COMPILE)gcc
+ endif
+ CXFLAGS ?= -ggdb
+-CWFLAGS = -Wall -Werror -Wstrict-prototypes -Wextra -Wno-unused-parameter
++CWFLAGS = -Wall -Wstrict-prototypes -Wextra -Wno-unused-parameter
+ ifdef WARN_UNUSED
+ CWFLAGS += -Wp,-D_FORTIFY_SOURCE=2 -O3
+ endif
