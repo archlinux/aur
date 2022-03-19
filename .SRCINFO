@@ -1,6 +1,6 @@
 pkgbase = herbstluftwm-git
 	pkgdesc = Manual tiling window manager for X
-	pkgver = 0.9.3.r23.g9cdf6938
+	pkgver = 0.9.4.r1.g1cbe7d10
 	pkgrel = 1
 	epoch = 1
 	url = https://herbstluftwm.org
@@ -20,7 +20,7 @@ pkgbase = herbstluftwm-git
 	optdepends = dmenu: used in some example scripts
 	provides = herbstluftwm
 	conflicts = herbstluftwm
-	source = herbstluftwm-git::git://github.com/herbstluftwm/herbstluftwm
+	source = herbstluftwm-git::git+https://github.com/herbstluftwm/herbstluftwm
 	validpgpkeys = 72B6C05CDFF309C6396167D464EF02821CAFF810
 	sha256sums = SKIP
 

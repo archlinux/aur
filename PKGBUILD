@@ -1,10 +1,11 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 # Contributor: Jonathan Steel <jsteel at archlinux.org>
 # Contributor: thorsten w. <p@thorsten-wissmann.de>
+# Contributor: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
 
 pkgname=herbstluftwm-git
 _pkgname=herbstluftwm
-pkgver=0.9.3.r23.g9cdf6938
+pkgver=0.9.4.r1.g1cbe7d10
 pkgrel=1
 epoch=1
 pkgdesc="Manual tiling window manager for X"
@@ -17,7 +18,7 @@ optdepends=('xorg-xsetroot: to set wallpaper color in default autostart'
             'xterm: used as the terminal in default autostart'
             'dzen2: used in the default panel.sh'
             'dmenu: used in some example scripts')
-source=("$pkgname::git://github.com/herbstluftwm/$_pkgname")
+source=("$pkgname::git+https://github.com/herbstluftwm/$_pkgname")
 sha256sums=('SKIP')
 validpgpkeys=('72B6C05CDFF309C6396167D464EF02821CAFF810') # Thorsten Wißmann <edu@thorsten-wissmann.de>
 
