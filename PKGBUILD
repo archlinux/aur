@@ -117,7 +117,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            '90f8c978bde10c80770431c3d8686b6f8c10e2c9645dddb9e8772312eb0cb1129bcfc6af5b86477c5616b723da25f629859092b1af178da7bd71c7b89e1de97d')
+            'd154f68d39cbe0dc25f9a721e987b7b8fbbebe5d08ed1a50c4ef64174814caf13fc8c4cc64d7d057e3d157d72ab1e88543cab397bff47bcca71bc916ec4da189')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
