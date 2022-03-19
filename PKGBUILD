@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=nancy
-pkgver=1.0.32
+pkgver=1.0.33
 pkgrel=1
 pkgdesc="Checks for vulnerabilities in Golang dependencies"
 arch=('x86_64' 'i686' 'aarch64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 changelog=
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9230326bd9d661500f3c49e0d8157d1c46c4b8077d85ccd3401680d49801c244')
+sha256sums=('4eeb2a1860e794ffb7cdb3ce1c0863ef0906973032c893a77cbc2abf3aa33505')
 
 prepare() {
 	cd "$pkgname-$pkgver"
