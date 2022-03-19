@@ -9,8 +9,7 @@ pkgbase = php-stat-git
 	makedepends = git
 	depends = php
 	backup = etc/php/conf.d/stat.ini
-	source = git://github.com/krakjoe/stat.git
+	source = git+https://github.com/krakjoe/stat.git
 	md5sums = SKIP
 
 pkgname = php-stat-git
-
