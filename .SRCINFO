@@ -1,0 +1,23 @@
+pkgbase = opentyrian2000
+	pkgdesc = Open Source port of the classic DOS shoot-em-up Tyrian2000
+	pkgver = 2000.20200917
+	pkgrel = 1
+	url = https://github.com/KScl/opentyrian2000
+	arch = x86_64
+	license = GPL2
+	license = custom:Freeware
+	makedepends = git
+	depends = sdl2
+	depends = sdl2_net
+	depends = hicolor-icon-theme
+	source = opentyrian2000::git+https://github.com/KScl/opentyrian2000.git#commit=7bf22d97a19350fbf631aecb9742ee85b65c2be4
+	source = opentyrian2000-assets.zip::https://camanis.net/tyrian/tyrian2000.zip
+	source = update-paths.patch
+	sha512sums = SKIP
+	sha512sums = b425b8524e408b128e249d2916597bd5bebd34ee418e3ddbe13306e1f86869eaba85db0ae5a5dbae4d477b7fec6e04e8fb292d516bba7aff96cf2795232dbfc1
+	sha512sums = ae9567f32540ae18d345cc8070dc544b13141e7f41b002aeb12f63497ce58e0f5bdb7b017fd2719d0def5bc3533c2147bdf9cf7c5eb75809603a6b5c9cdba46b
+	b2sums = SKIP
+	b2sums = 942ee68be24944e3d65612f323cd884e357341db42ee4ed5f487c7d1d650ab4bef98121dbdd321840bc3046f94c9491a6d777179821ba83ce0b4ad7573778aab
+	b2sums = 2d942ae0bcb609143f3684d922e39fa39066f3c9f6ce27b28376a5cf27f294c31dbeadd2cb495135051c3a22bd11bd489dbe4a73a183bb6f93ded9de7a83eb9d
+
+pkgname = opentyrian2000

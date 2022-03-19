@@ -1,0 +1,110 @@
+--- a/linux/man/opentyrian.6
++++ b/linux/man/opentyrian.6
+@@ -1,15 +1,15 @@
+-.TH opentyrian 6 "October 2009" "" "OpenTyrian Manual"
++.TH opentyrian2000 6 "October 2009" "" "OpenTyrian Manual"
+ .SH NAME
+-opentyrian \- an open-source port of the DOS game Tyrian
++opentyrian2000 \- an open-source port of the DOS game Tyrian2000
+ .SH SYNOPSIS
+-.B opentyrian
++.B opentyrian2000
+ .RI [ OPTIONS ]
+ .SH DESCRIPTION
+-Tyrian is an arcade-style vertical scrolling shooter.  The story is set
++Tyrian2000 is an arcade-style vertical scrolling shooter.  The story is set
+ in 20,031 where you play as Trent Hawkins, a skilled fighter-pilot employed
+ to fight MicroSol and save the galaxy.
+ 
+-Tyrian features a story mode, one- and two-player arcade modes, and networked
++Tyrian2000 features a story mode, one- and two-player arcade modes, and networked
+ multiplayer.
+ .SH "OPTIONS"
+ .PP
+@@ -39,11 +39,11 @@ and
+ \-\^\-net\-player\-number
+ to join game.
+ 
+-OpenTyrian uses UDP port 
++OpenTyrian2000 uses UDP port
+ .B
+ 1333
+ for multiplayer, but in most cases players will not need to open any ports
+-because OpenTyrian makes use of UDP hole punching.
++because OpenTyrian2000 makes use of UDP hole punching.
+ 
+ .TP
+ .BI "\-\^\-net\-player\-name " "name"
+@@ -73,7 +73,7 @@ This program comes with ABSOLUTELY NO WARRANTY.
+ This is free software, and you are welcome to redistribute it
+ under certain conditions. See the file COPYING for details.
+ 
+-Data files bundled with this package come from Tyrian 2.1 data files
++Data files bundled with this package come from Tyrian 2000 data files
+ which have been released as freeware.
+ 
+ Daniel Cook released graphic files under very liberal
+
+--- a/linux/opentyrian.desktop
++++ b/linux/opentyrian2000.desktop
+@@ -1,10 +1,10 @@
+ [Desktop Entry]
+ Type=Application
+-Name=OpenTyrian
++Name=OpenTyrian2000
+ Comment=An arcade-style shoot 'em up
+-Icon=opentyrian
++Icon=opentyrian2000
+ Categories=Game;ArcadeGame;
+-TryExec=opentyrian
+-Exec=opentyrian
++TryExec=opentyrian2000
++Exec=opentyrian2000
+ Terminal=false
+ 
+
+--- a/Makefile
++++ b/Makefile
+@@ -5,7 +5,7 @@ ifneq ($(filter Msys Cygwin, $(shell uname -o)), )
+     TYRIAN_DIR = C:\\TYRIAN
+ else
+     PLATFORM := UNIX
+-    TYRIAN_DIR = $(gamesdir)/tyrian
++    TYRIAN_DIR = $(gamesdir)/opentyrian2000
+ endif
+ 
+ WITH_NETWORK := true
+@@ -31,7 +31,7 @@ exec_prefix ?= $(prefix)
+ bindir ?= $(exec_prefix)/bin
+ datarootdir ?= $(prefix)/share
+ datadir ?= $(datarootdir)
+-docdir ?= $(datarootdir)/doc/opentyrian
++docdir ?= $(datarootdir)/doc/opentyrian2000
+ mandir ?= $(datarootdir)/man
+ man6dir ?= $(mandir)/man6
+ man6ext ?= .6
+@@ -42,7 +42,7 @@ gamesdir ?= $(datadir)/games
+ 
+ ###
+ 
+-TARGET := opentyrian
++TARGET := opentyrian2000
+ 
+ SRCS := $(wildcard src/*.c)
+ OBJS := $(SRCS:src/%.c=obj/%.o)
+@@ -115,13 +115,13 @@ installdirs :
+ install : $(TARGET) installdirs
+ 	$(INSTALL_PROGRAM) $(TARGET) $(DESTDIR)$(bindir)/
+ 	$(INSTALL_DATA) CREDITS NEWS README $(DESTDIR)$(docdir)/
+-	$(INSTALL_DATA) linux/man/opentyrian.6 $(DESTDIR)$(man6dir)/opentyrian$(man6ext)
++	$(INSTALL_DATA) linux/man/opentyrian.6 $(DESTDIR)$(man6dir)/opentyrian2000$(man6ext)
+ 
+ .PHONY : uninstall
+ uninstall :
+ 	rm -f $(DESTDIR)$(bindir)/$(TARGET)
+ 	rm -f $(DESTDIR)$(docdir)/{CREDITS,NEWS,README}
+-	rm -f $(DESTDIR)$(man6dir)/opentyrian$(man6ext)
++	rm -f $(DESTDIR)$(man6dir)/opentyrian2000$(man6ext)
+ 
+ .PHONY : clean
+ clean :
