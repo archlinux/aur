@@ -2,7 +2,7 @@
 # Maintainer: Haruyuki lxz <lxz@ilxz.me>
 
 pkgname=deepin-nvidia-prime-git
-pkgver=0.0.0.r1.0e1e70e
+pkgver=1.0.0.r0.g07d25e0
 pkgrel=1
 pkgdesc='nvidia prime for deepin'
 arch=('x86_64')
@@ -13,6 +13,11 @@ conflicts=('bumblebee' 'primus')
 options=('debug')
 source=("git+https://github.com/linuxdeepin/nvidia-prime.git")
 sha512sums=('SKIP')
+
+pkgver() {
+    cd nvidia-prime
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 package() {
   cd nvidia-prime
