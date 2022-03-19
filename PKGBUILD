@@ -16,15 +16,7 @@ sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-
-	# Detect the latest tag
-	git describe --tags `git rev-list --tags --max-count=1` | cut -c 2-
-}
-
-prepare() {
-	cd "$srcdir/${pkgname%-git}"
-	# Checkout latest tag determined above
-	git checkout --quiet "v$pkgver"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
