@@ -11,7 +11,7 @@ conflicts=('mari0')
 source=("alesan99s_entities_0-10-0_13_linux.zip::https://www.dropbox.com/s/zu5goz91id95wn6/alesan99s_entities_0-10-0_13_linux.zip?dl=1"
         "https://github.com/alesan99/mari0_ae/raw/master/LICENSE.txt"
         "mari0-ae.png::https://github.com/alesan99/mari0_ae/raw/master/graphics/icon.png")
-sha256sums=('d80e5e7f64f852bf3441db432253eec9b2071d66d4d187b3ed296890a3aa63de'
+sha256sums=('a2d699cc019e5f014e6f7ae747a4a8c40d8e7170cf3ccfe699541c4a4409caf1'
 '3fe0d54c592d1778a60779a0b995b798437570ab2ed3ebc380027e0da2760c0b'
 '6729f42d496bd9ef3876487bca4ef99e8565166bdae989b44180357e99789440')
 
