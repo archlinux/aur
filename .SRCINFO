@@ -1,17 +1,13 @@
 pkgbase = python2-singledispatch
 	pkgdesc = Implementation of functools.singledispatch from Python 3.4
-	pkgver = 3.4.0.3
-	pkgrel = 4
-	url = https://bitbucket.org/ambv/singledispatch
+	pkgver = 3.7.0
+	pkgrel = 1
+	url = https://github.com/jaraco/singledispatch
 	arch = any
 	license = MIT
 	makedepends = python2-setuptools
-	depends = python2
 	depends = python2-six
-	source = https://pypi.python.org/packages/source/s/singledispatch/singledispatch-3.4.0.3.tar.gz
-	source = license
-	md5sums = af2fc6a3d6cc5a02d0bf54d909785fcb
-	md5sums = 360faaffcf297a20e20e2289af00ce07
+	source = https://github.com/jaraco/singledispatch/archive/v3.7.0.tar.gz
+	sha512sums = 0ec8503c188dd095eaab6e07147aad8dc7863c51d746fbc19086fb434ca1a48c65fa2219110f3d530a8370242f6df72e59fbf451ec4ce7ba49b751fb5c097c34
 
 pkgname = python2-singledispatch
-
