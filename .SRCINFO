@@ -10,6 +10,7 @@ pkgbase = mdadm-patched-intel-rst
 	depends = glibc
 	depends = systemd
 	provides = mdadm
+	conflicts = mdadm
 	replaces = raidtools
 	backup = etc/mdadm.conf
 	source = git+https://git.kernel.org/pub/scm/utils/mdadm/mdadm.git#tag=mdadm-4.2?signed
