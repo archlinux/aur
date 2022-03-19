@@ -1,10 +1,10 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-qt5platform-plugins-git
-pkgver=5.0.40.r14.gf817781
+pkgver=5.0.46.r34.gf0126d8
 pkgrel=1
 pkgdesc='Qt platform plugins for DDE'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/qt5platform-plugins"
 license=('GPL3')
 provides=('deepin-qt5platform-plugins')
@@ -12,7 +12,7 @@ conflicts=('deepin-qt5platform-plugins')
 depends=('cairo' 'kwayland' 'qt5-wayland' 'qt5-x11extras')
 makedepends=('git' 'expac' 'qt5-xcb-private-headers' 'libglvnd' 'libxcb')
 groups=('deepin-git')
-source=("$pkgname::git://github.com/linuxdeepin/qt5platform-plugins")
+source=("$pkgname::git+https://github.com/linuxdeepin/qt5platform-plugins")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -22,6 +22,9 @@ pkgver() {
 
 prepare() {
   cd $pkgname
+  if [[ ! -z ${sha} ]];then
+    git checkout -b $sha
+  fi
 
   rm -r xcb/libqt5xcbqpa-dev wayland/qtwayland-dev
   # Disable wayland for now: https://github.com/linuxdeepin/qt5platform-plugins/issues/47
