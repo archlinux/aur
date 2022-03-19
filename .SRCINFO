@@ -1,0 +1,13 @@
+pkgbase = darbup
+	pkgdesc = wrapper around the excellent dar archiver tool to do regular backup
+	pkgver = 20131117
+	pkgrel = 1
+	url = https://github.com/c4rlo/darbup
+	arch = any
+	license = GPL3
+	depends = python
+	depends = dar
+	source = git+https://github.com/c4rlo/darbup.git#commit=6611648dabcdc78e4ecb5c9950ad0a3ffcc8eda2
+	sha256sums = SKIP
+
+pkgname = darbup
