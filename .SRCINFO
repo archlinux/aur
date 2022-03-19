@@ -1,6 +1,6 @@
 pkgbase = libff7tk
 	pkgdesc = Final Fantasy 7 Tool library
-	pkgver = Qt4.r127.g8d4bc34
+	pkgver = 0.82
 	pkgrel = 1
 	url = https://github.com/sithlord48/ff7tk
 	install = libff7tk.install
@@ -10,11 +10,18 @@ pkgbase = libff7tk
 	arch = armv7h
 	arch = aarch64
 	license = GPL3
-	depends = qt5-base
-	depends = qt5-declarative
+	makedepends = cmake
+	makedepends = doxygen
+	depends = qt6-base
+	depends = qt6-tools
+	depends = qt6-svg
+	depends = qt6-declarative
+	depends = qt6-5compat
 	depends = zlib
-	source = git://github.com/sithlord48/ff7tk.git
-	md5sums = SKIP
+	provides = libff7tk
+	conflicts = libff7tk-git
+	options = !strip
+	source = https://github.com/sithlord48/ff7tk/archive/refs/tags/v0.82.tar.gz
+	sha256sums = a389f01ca7eb359ef8adebd6932ce1e12da4aaaa76fb19c82873056f26bf63a3
 
 pkgname = libff7tk
-
