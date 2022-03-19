@@ -6,9 +6,10 @@ pkgbase = deepin-sound-theme-git
 	arch = any
 	groups = deepin-git
 	license = GPL3
+	makedepends = git
 	conflicts = deepin-artwork
 	conflicts = deepin-sound-theme
-	source = deepin-sound-theme-git::git://github.com/linuxdeepin/deepin-sound-theme/
+	source = deepin-sound-theme-git::git+https://github.com/linuxdeepin/deepin-sound-theme/
 	sha512sums = SKIP
 
 pkgname = deepin-sound-theme-git
