@@ -2,7 +2,7 @@
 
 _pkgname=mpd
 pkgname=${_pkgname}-minimal
-pkgver=0.23.4
+pkgver=0.23.6
 pkgrel=1
 pkgdesc="Flexible, powerful, server-side application for playing music. Minimal version with only flac playback over pipewire through socket connection as user."
 arch=(i686 x86_64 armv7h)
@@ -13,106 +13,106 @@ makedepends=(boost meson python-sphinx systemd)
 provides=("${_pkgname}=${pkgver}")
 conflicts=(${_pkgname})
 source=("${url}/download/${_pkgname}/${pkgver:0:4}/${_pkgname}-${pkgver}.tar.xz"{,.sig})
-sha512sums=(fb476b108a7be842663683fe6ca6737cffad73c0f09874f9d052121d188d16f69b144e993d1691f2edfac713db24aa3c28302b399f4720b29c09c909860c0938 SKIP)
-b2sums=(34ea3f0065edcb26e57350a9cdfc79e8705674a4811b06ff4dfa0a93a1c92bcfae7c9e6ae208210289a1f11fac079aa53ad34a3b317fd5dbe4c6d522883b6623 SKIP)
+sha512sums=(1595fcc53a67f1a68b0c0516697d242da53b91626e37bc2f49095add78eb497a52c67c961a421f20b40f3c57a571557a76559a212838de2a3ec4aec6c7a3288d SKIP)
+b2sums=(5ccb4a7c06c4317e3285846a261438bdcc10db5eaf71fcba969bcae8321ca50bb26fe9317e23e38eca1c4a8785015596064d5bfc692bf66f8007d0d2a1b71cbb SKIP)
 validpgpkeys=(0392335A78083894A4301C43236E8A58C6DB4512) # Max Kellermann <max@musicpd.org>
 
 build() {
-    cd ${_pkgname}-${pkgver}
-    _opts=('-Ddocumentation=enabled'
-           '-Dhtml_manual=false'
-           '-Dmanpages=true'
-           '-Dtest=false'
-           '-Dsyslog=disabled'
-           '-Dinotify=false'
-           '-Dio_uring=enabled'
-           '-Ddaemon=true'
-           '-Dsystemd=enabled'
-           '-Dtcp=false'
-           '-Dipv6=disabled'
-           '-Dlocal_socket=true'
-           '-Ddsd=false'
-           '-Ddatabase=true'
-           '-Dupnp=disabled'
-           '-Dlibmpdclient=enabled'
-           '-Dneighbor=false'
-           '-Dudisks=disabled'
-           '-Dwebdav=disabled'
-           '-Dcue=false'
-           '-Dcdio_paranoia=disabled'
-           '-Dcurl=disabled'
-           '-Dmms=disabled'
-           '-Dnfs=disabled'
-           '-Dsmbclient=disabled'
-           '-Dqobuz=disabled'
-           '-Dsoundcloud=disabled'
-           '-Dbzip2=disabled'
-           '-Diso9660=disabled'
-           '-Dzzip=disabled'
-           '-Did3tag=disabled'
-           '-Dchromaprint=disabled'
-           '-Dadplug=disabled'
-           '-Daudiofile=disabled'
-           '-Dfaad=disabled'
-           '-Dffmpeg=disabled'
-           '-Dflac=enabled'
-           '-Dfluidsynth=disabled'
-           '-Dgme=disabled'
-           '-Dmad=disabled'
-           '-Dmikmod=disabled'
-           '-Dmodplug=disabled'
-           '-Dopenmpt=disabled'
-           '-Dmpcdec=disabled'
-           '-Dmpg123=disabled'
-           '-Dopus=disabled'
-           '-Dsidplay=disabled'
-           '-Dsndfile=disabled'
-           '-Dtremor=disabled'
-           '-Dvorbis=disabled'
-           '-Dwavpack=disabled'
-           '-Dwildmidi=disabled'
-           '-Dvorbisenc=disabled'
-           '-Dlame=disabled'
-           '-Dtwolame=disabled'
-           '-Dshine=disabled'
-           '-Dwave_encoder=false'
-           '-Dlibsamplerate=disabled'
-           '-Dsoxr=disabled'
-           '-Dalsa=disabled'
-           '-Dao=disabled'
-           '-Dfifo=true'
-           '-Dhttpd=false'
-           '-Djack=disabled'
-           '-Dopenal=disabled'
-           '-Doss=disabled'
-           '-Dpipe=false'
-           '-Dpipewire=enabled'
-           '-Dpulse=disabled'
-           '-Drecorder=false'
-           '-Dshout=disabled'
-           '-Dsnapcast=false'
-           '-Dsndio=disabled'
-           '-Dsolaris_output=disabled'
-           '-Ddbus=disabled'
-           '-Dexpat=disabled'
-           '-Dicu=enabled'
-           '-Diconv=disabled'
-           '-Dpcre=disabled'
-           '-Dsqlite=disabled'
-           '-Dyajl=disabled'
-           '-Dzlib=enabled'
-           '-Dzeroconf=disabled'
-    )
+  local _meson_options=(
+    -D documentation=enabled
+    -D html_manual=false
+    -D manpages=true
+    -D test=false
+    -D syslog=disabled
+    -D inotify=false
+    -D io_uring=enabled
+    -D daemon=true
+    -D systemd=enabled
+    -D tcp=false
+    -D ipv6=disabled
+    -D local_socket=true
+    -D dsd=false
+    -D database=true
+    -D upnp=disabled
+    -D libmpdclient=enabled
+    -D neighbor=false
+    -D udisks=disabled
+    -D webdav=disabled
+    -D cue=false
+    -D cdio_paranoia=disabled
+    -D curl=disabled
+    -D mms=disabled
+    -D nfs=disabled
+    -D smbclient=disabled
+    -D qobuz=disabled
+    -D soundcloud=disabled
+    -D bzip2=disabled
+    -D iso9660=disabled
+    -D zzip=disabled
+    -D id3tag=disabled
+    -D chromaprint=disabled
+    -D adplug=disabled
+    -D audiofile=disabled
+    -D faad=disabled
+    -D ffmpeg=disabled
+    -D flac=enabled
+    -D fluidsynth=disabled
+    -D gme=disabled
+    -D mad=disabled
+    -D mikmod=disabled
+    -D modplug=disabled
+    -D openmpt=disabled
+    -D mpcdec=disabled
+    -D mpg123=disabled
+    -D opus=disabled
+    -D sidplay=disabled
+    -D sndfile=disabled
+    -D tremor=disabled
+    -D vorbis=disabled
+    -D wavpack=disabled
+    -D wildmidi=disabled
+    -D vorbisenc=disabled
+    -D lame=disabled
+    -D twolame=disabled
+    -D shine=disabled
+    -D wave_encoder=false
+    -D libsamplerate=disabled
+    -D soxr=disabled
+    -D alsa=disabled
+    -D ao=disabled
+    -D fifo=true
+    -D httpd=false
+    -D jack=disabled
+    -D openal=disabled
+    -D oss=disabled
+    -D pipe=false
+    -D pipewire=enabled
+    -D pulse=disabled
+    -D recorder=false
+    -D shout=disabled
+    -D snapcast=false
+    -D sndio=disabled
+    -D solaris_output=disabled
+    -D dbus=disabled
+    -D expat=disabled
+    -D icu=enabled
+    -D iconv=disabled
+    -D pcre=disabled
+    -D sqlite=disabled
+    -D yajl=disabled
+    -D zlib=enabled
+    -D zeroconf=disabled
+    -D b_ndebug=true
+  )
 
-    arch-meson ${_opts[@]} -D b_ndebug=true build
-    ninja -C build
+  arch-meson "${_meson_options[@]}" build ${_pkgname}-${pkgver}
+  ninja -C build
 }
 
 package() {
-    cd ${_pkgname}-${pkgver}
     DESTDIR="${pkgdir}" ninja -C build install
-    install -Dm644 doc/mpdconf.example -t "${pkgdir}"/usr/share/doc/mpd/
+    install -vDm644 ${_pkgname}-${pkgver}/doc/mpdconf.example -t "${pkgdir}"/usr/share/doc/mpd/
     # Remove system services and clean user one
-    rm -rf "${pkgdir}"/usr/lib/systemd/system/
+    rm -vrf "${pkgdir}"/usr/lib/systemd/system/
     sed -e 's/After=network.target /After=/g' -e 's/AF_INET AF_INET6 AF_UNIX AF_NETLINK/AF_UNIX/g' -i "${pkgdir}"/usr/lib/systemd/user/mpd.service
 }
