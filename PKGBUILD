@@ -37,13 +37,11 @@ pkgver() {
 }
 
 prepare() {
-    cd $pkgname
-    if [[ ! -z ${sha} ]];then
-      git checkout -b $sha
-    fi
-}
+  cd $pkgname
+  if [[ ! -z ${sha} ]];then
+    git checkout -b $sha
+  fi
 
-prepare() {
   rm $pkgname/src/frame/modules/authentication/widgets/faceinfowidget.h
   rm $pkgname/src/frame/modules/authentication/widgets/faceinfowidget.cpp
   rm -rf $pkgname/src/frame/window/modules/authentication
