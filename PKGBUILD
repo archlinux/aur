@@ -2,7 +2,7 @@
 
 pkgname="python-unicorn-binance-rest-api"
 _pkgname=${pkgname#python-}
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="An unofficial Python API to use the Binance REST API"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python-requests' 'python-certifi' 'python-colorama' 'python-cryptography' 'python-dateparser' 'python-pyopenssl' 'python-pytz' 'python-service-identity' 'python-ujson')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('b709629ab3d077a502590573230b88644bba1a7065c54e02d5854300c9bafd2f')
+sha256sums=('3357dddd8ddf8d8f3acb255ef3a4510c501200a74b3f886b6bc7b0b4d450c2aa')
 
 build() {
   cd $_pkgname-$pkgver
