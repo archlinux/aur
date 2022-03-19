@@ -29,11 +29,7 @@ pkgbase = fife-git
 	conflicts = fife
 	conflicts = fife-svn
 	source = git+https://github.com/fifengine/fifengine.git
-	source = swig4.patch
 	md5sums = SKIP
-	md5sums = 1e915710aea0a9c63a93f13c979e3a7a
 	sha1sums = SKIP
-	sha1sums = f010025945fb392e9d5b89ebd118c049a60eee30
 
 pkgname = fife-git
-

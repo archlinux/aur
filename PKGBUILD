@@ -7,31 +7,22 @@ provides=("fife" "fife-svn")
 conflicts=("fife" "fife-svn")
 pkgdesc="The mission of the FIFE project is to create a cross platform game creation framework"
 url="http://www.fifengine.net/"
-pkgver=0.4.2.r29.g78c07b9a
+pkgver=0.4.2.r33.gf37c31c6
 pkgrel=1
 arch=('i686' 'x86_64')
 license=('LGPL')
 depends=('boost' 'fifechan>=0.1.4' 'glew' 'python' 'python-future'
          'libgl' 'libogg' 'libpng' 'libvorbis'
          'sdl2' 'sdl2_ttf' 'sdl2_image' 'openal' 'tinyxml' 'zlib')
-# # # TO BUILD WITH swig<4 SIMPLY REMOVE THE PATCH FROM prepare() # # #
 makedepends=('cmake' 'git' 'swig>=4')
-source=(git+https://github.com/fifengine/fifengine.git
-	"swig4.patch")
-md5sums=('SKIP'
-         '1e915710aea0a9c63a93f13c979e3a7a')
-sha1sums=('SKIP'
-          'f010025945fb392e9d5b89ebd118c049a60eee30')
+source=(git+https://github.com/fifengine/fifengine.git)
+md5sums=('SKIP')
+sha1sums=('SKIP')
 
 
 pkgver() {
   cd "$srcdir/fifengine"
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$srcdir/fifengine"
-  patch -p1 -i "${srcdir}/swig4.patch"
 }
 
 build() {
