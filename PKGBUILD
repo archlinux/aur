@@ -15,7 +15,7 @@ makedepends=('git')
 provides=("$_name" "$_forkpkgname" 'futurerestore-marijuanarm-git')
 conflicts=("$_name")
 replaces=('futurerestore-marijuanarm-git')
-source=("git+$url.git"
+source=("git+$url.git#branch=master"
         'git+https://github.com/DanTheMann15/tsschecker.git'
         'git+https://github.com/m1stadev/idevicerestore.git'
         'git+https://github.com/tihmstar/jssy.git'

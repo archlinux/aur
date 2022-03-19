@@ -21,7 +21,7 @@ pkgbase = futurerestore-m1stadev-git
 	provides = futurerestore-marijuanarm-git
 	conflicts = futurerestore
 	replaces = futurerestore-marijuanarm-git
-	source = git+https://github.com/m1stadev/futurerestore.git
+	source = git+https://github.com/m1stadev/futurerestore.git#branch=master
 	source = git+https://github.com/DanTheMann15/tsschecker.git
 	source = git+https://github.com/m1stadev/idevicerestore.git
 	source = git+https://github.com/tihmstar/jssy.git
