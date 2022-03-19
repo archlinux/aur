@@ -1,10 +1,10 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=dtkcommon-git
-pkgver=5.5.17.r8.gfe3dd87
+pkgver=5.5.20.r3.g71cf434
 pkgrel=1
 pkgdesc='DTK common modules'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dtkcommon"
 license=('LGPL3')
 depends=()
@@ -12,13 +12,20 @@ makedepends=('git' 'qt5-tools' 'gtest' 'gmock')
 conflicts=('dtkcore-git<5.4.0' 'dtkcore<5.4.0' 'dtkgui-git<5.4.0' 'dtkgui<5.4.0' 'dtkcommon')
 providers=('dtkcore-git' 'dtkgui-git')
 groups=('deepin-git')
-source=("$pkgname::git://github.com/linuxdeepin/dtkcommon.git")
+source=("$pkgname::git+https://github.com/linuxdeepin/dtkcommon.git")
 sha512sums=('SKIP')
 
 pkgver() {
     cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
     sed -i 's/qt5/qt/g' dtkcommon.pro
+}
+
+prepare() {
+    cd $pkgname
+    if [[ ! -z ${sha} ]];then
+      git checkout -b $sha
+    fi
 }
 
 build() {

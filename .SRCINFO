@@ -1,9 +1,10 @@
 pkgbase = dtkcommon-git
 	pkgdesc = DTK common modules
-	pkgver = 5.5.17.r8.gfe3dd87
+	pkgver = 5.5.20.r3.g71cf434
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dtkcommon
 	arch = x86_64
+	arch = aarch64
 	groups = deepin-git
 	license = LGPL3
 	makedepends = git
@@ -15,7 +16,7 @@ pkgbase = dtkcommon-git
 	conflicts = dtkgui-git<5.4.0
 	conflicts = dtkgui<5.4.0
 	conflicts = dtkcommon
-	source = dtkcommon-git::git://github.com/linuxdeepin/dtkcommon.git
+	source = dtkcommon-git::git+https://github.com/linuxdeepin/dtkcommon.git
 	sha512sums = SKIP
 
 pkgname = dtkcommon-git
