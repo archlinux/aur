@@ -1,6 +1,6 @@
 pkgbase = plasma5-runners-appmenu-git
 	pkgdesc = A little krunner plugin (Plasma 5) to search through the menu items of the current application.
-	pkgver = r6.6bd17b1
+	pkgver = r6.59da5e0
 	pkgrel = 1
 	url = https://github.com/ArturGaspar/krunner-appmenu
 	install = plasma5-runners-appmenu-git.install
@@ -12,8 +12,7 @@ pkgbase = plasma5-runners-appmenu-git
 	depends = python-xlib
 	depends = python-dbus
 	depends = python-gobject
-	source = git://github.com/ArturGaspar/krunner-appmenu.git
+	source = git+https://github.com/ArturGaspar/krunner-appmenu.git
 	md5sums = SKIP
 
 pkgname = plasma5-runners-appmenu-git
-
