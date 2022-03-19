@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=log4jscanner
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="log4j vulnerability filesystem scanner for analyzing JAR files"
 arch=('x86_64' 'aarch64')
@@ -11,13 +11,13 @@ depends=('glibc')
 makedepends=('go')
 changelog=
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2840e56a50a1dd6fe7e707b13f8f2064caa259ab24efcc84760ed99ad39b9e35')
+sha256sums=('89ba6a9a20fd8342c21e224633f6103aa67b35a6f4e59e28861811300a7012b8')
 
 prepare() {
 	export GOPATH="$srcdir/gopath"
 	cd "$pkgname-$pkgver"
 	mkdir -p build
-	go mod tidy
+	go mod download
 }
 
 build() {
