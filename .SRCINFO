@@ -1,7 +1,7 @@
 pkgbase = go-musicfox-bin
 	pkgdesc = Command-line Netease Cloud Music written in Go.
 	pkgver = 2.1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/anhoder/go-musicfox
 	arch = x86_64
 	license = MIT
