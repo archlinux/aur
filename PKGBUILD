@@ -3,7 +3,7 @@
 
 pkgname=sic-image-cli
 _pkgname=sic
-pkgver=0.19.0
+pkgver=0.19.1
 pkgrel=1
 pkgdesc="Accessible image processing and conversion from the terminal"
 arch=('x86_64')
@@ -11,19 +11,24 @@ url="https://github.com/foresterre/sic"
 license=('MIT')
 conflicts=("$_pkgname")
 depends=('gcc-libs')
-makedepends=('rust' 'nasm')
+makedepends=('cargo' 'nasm')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('ed9a95532acfb08d0ed7ee9adb699a7aa8191d245f4b5592d03549b46931c300813e572955459ab61c75589c9659f70bd42a0aa9498e587f3bd1f92e01973e3a')
+sha512sums=('9bbe28eb667e8d4f0e03b2d11ec29bf01e539e327c2bd675a0e261f92a6b588a02d1bb1083b47568c6824da672e08577d6da770014e142e474360f9e12b05ece')
+
+prepare() {
+  cd "$_pkgname-$pkgver"
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 build() {
   cd "$_pkgname-$pkgver"
-  cargo build --release --locked --all-features
+  cargo build --release --frozen --all-features
   cargo run --example gen_completions
 }
 
 check() {
   cd "$_pkgname-$pkgver"
-  cargo test --release --locked
+  cargo test --frozen
 }
 
 package() {
