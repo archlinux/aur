@@ -2,10 +2,10 @@
 
 pkgname=deepin-control-center-git
 _pkgname=deepin-control-center
-pkgver=5.4.47.r627.gb6848a8ac
+pkgver=5.4.47.r673.g52c86a908
 pkgrel=1
 pkgdesc='New control center for linux deepin'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dde-control-center"
 license=('GPL3')
 depends=('dtkwidget-git' 'deepin-account-faces-git' 'libpwquality' 'startdde-git'
@@ -24,7 +24,7 @@ optdepends=('redshift: automatic color temperature support'
 conflicts=('deepin-control-center')
 provides=('deepin-control-center')
 groups=('deepin-git')
-source=("$pkgname::git://github.com/linuxdeepin/dde-control-center/"
+source=("$pkgname::git+https://github.com/linuxdeepin/dde-control-center/"
         remove-auth.patch
         $_pkgname-systeminfo-deepin-icon.patch)
 sha512sums=('SKIP'
@@ -34,6 +34,13 @@ sha512sums=('SKIP'
 pkgver() {
     cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd $pkgname
+    if [[ ! -z ${sha} ]];then
+      git checkout -b $sha
+    fi
 }
 
 prepare() {
