@@ -2,7 +2,7 @@
 pkgname=golangci-lint
 pkgdesc="Linters Runner for Go. 5x faster than gometalinter."
 pkgver=1.45.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url='https://github.com/golangci/golangci-lint'
 license=('GPL3')
@@ -28,13 +28,15 @@ build() {
   export GOFLAGS='-buildmode=pie -trimpath -modcacherw'
   cd "$pkgname-$pkgver"
   go build -o "$pkgname" -ldflags="${_flags[*]}" ./cmd/"$pkgname"
+  ./"$pkgname" completion bash >completion.bash
+  ./"$pkgname" completion zsh >completion.zsh
+  ./"$pkgname" completion fish >completion.fish
 }
-
-# @TODO check()
 
 package() {
   cd "${pkgname}-${pkgver}"
   install -Dm755 "$pkgname" -t "$pkgdir"/usr/bin
-  ./"$pkgname" completion bash | install -Dm644 /dev/stdin "$pkgdir"/usr/share/bash-completion/completions/golangci-lint
-  ./"$pkgname" completion zsh | install -Dm644 /dev/stdin "$pkgdir"/usr/share/zsh/site-functions/_golangci-lint
+  install -Dm644 completion.bash "$pkgdir"/usr/share/bash-completion/completions/"$pkgname"
+  install -Dm644 completion.zsh "$pkgdir"/usr/share/zsh/site-functions/_"$pkgname"
+  install -Dm644 completion.fish "$pkgdir"/usr/share/fish/vendor_completions.d/"$pkgname".fish
 }
