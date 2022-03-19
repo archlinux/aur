@@ -8,30 +8,27 @@ arch=( 'any' )
 # N.B.: Forked from marler8997/har due to inactivity
 url="https://github.com/MoonlightSentinel/har"
 license=('Boost')
-makedepends=(
-	'git'
-	'ldc'
-)
-provides=( "${pkgname%-git}" )
-conflicts=( "${pkgname%-git}" )
-source=( "$pkgname::git+${url}.git" )
-md5sums=( 'SKIP' )
+makedepends=(git ldc)
+provides=(har)
+conflicts=(har)
+source=( "git+${url}.git" )
+sha256sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/${pkgname}"
+	cd "$srcdir/${pkgname%-git}"
 
 	# Detect the latest tag
 	git describe --tags `git rev-list --tags --max-count=1` | cut -c 2-
 }
 
 prepare() {
-	cd "$srcdir/${pkgname}"
+	cd "$srcdir/${pkgname%-git}"
 	# Checkout latest tag determined above
 	git checkout --quiet "v$pkgver"
 }
 
 build() {
-	cd "$srcdir/${pkgname}"
+	cd "$srcdir/${pkgname%-git}"
 
 	# Build with full optimization. Statically link druntime / phobos
 	# s.t. ldc (or rather libphobos) is a build-only dependency
@@ -45,7 +42,7 @@ build() {
 }
 
 check() {
-	cd "$srcdir/${pkgname}"
+	cd "$srcdir/${pkgname%-git}"
 
 	# Ensure that the test is reentrant
 	mkdir -p extracted
@@ -59,8 +56,6 @@ check() {
 }
 
 package() {
-	cd "$srcdir/${pkgname}"
-	local target="$pkgdir/usr/bin/"
-	mkdir -p "$target"
-	mv ./har "$target/"
+	cd "$srcdir/${pkgname%-git}"
+	install -D har -t "${pkgdir}/usr/bin"
 }
