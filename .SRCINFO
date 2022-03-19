@@ -1,13 +1,13 @@
 pkgbase = mpv-discord-git
 	pkgdesc = A cross-platform Discord Rich Presence integration for mpv
 	pkgver = 1.6.1.r0.g861bfe5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/tnychn/mpv-discord
 	arch = x86_64
 	license = MIT
+	makedepends = go>=1.15
 	depends = mpv
 	depends = luajit
-	depends = go>=1.15
 	source = mpv-discord::git+https://github.com/tnychn/mpv-discord.git
 	source = binary-path.patch
 	sha256sums = SKIP

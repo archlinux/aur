@@ -4,12 +4,13 @@
 _pkgbase=mpv-discord
 pkgname=$_pkgbase-git
 pkgver=1.6.1.r0.g861bfe5
-pkgrel=2
+pkgrel=3
 pkgdesc='A cross-platform Discord Rich Presence integration for mpv'
 url="https://github.com/tnychn/${_pkgbase}"
 arch=($CARCH)
 license=('MIT')
-depends=('mpv' 'luajit' 'go>=1.15')
+depends=('mpv' 'luajit')
+makedepends=('go>=1.15')
 source=(${_pkgbase}::git+${url}.git
         'binary-path.patch')
 sha256sums=('SKIP'
