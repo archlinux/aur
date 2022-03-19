@@ -6,7 +6,7 @@
 # Contributor: Karsten Hinz <k.hinz at tu-bs dot de>
 
 pkgname=pycam-git
-pkgver=0.7.0.pre0.r2196.g55e3129f
+pkgver=0.7.0pre0.r297.g55e3129f
 pkgrel=1
 pkgdesc='Toolpath generator for 3-axis CNC machining, written in Python.'
 arch=('i686' 'x86_64')
@@ -23,7 +23,9 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/pycam"
-  printf "%s.r%s.g%s" "$(git describe --tags --abbrev=0 --first-parent | sed 's/^v//;s/-/./g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+
+  # Generate git tag based version. Use only tags created on current branch (--first-parent).
+  git describe --long --tags --first-parent | sed 's/^v//;s/^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)/\1\2/;s/\([0-9]\+-g\)/r\1/;s/-/./g'
 }
 
 package() {
