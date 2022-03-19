@@ -5,30 +5,31 @@ _pkgname=split2flac
 pkgver=132.9e5f019
 pkgrel=1
 pkgdesc="Split flac/ape/wv/wav + cue sheet into separate tracks. Git version."
-arch=('any')
+arch=(any)
 url="https://github.com/ftrvxmtrx/split2flac"
-license=('MIT')
-depends=('cuetools' 'shntool' 'flac')
-makedepends=('git')
-conflicts=('split2flac')
-optdepends=('aacgain:      to adjust gain in m4a'
-'enca:         to automatically detect charset if not UTF8'
-'faac:         to split into m4a'
-'flac:         for flac replay gain support'
+license=(MIT)
+depends=(cuetools shntool flac)
+makedepends=(git)
+conflicts=(split2flac)
+optdepends=(
+'aacgain:      adjust gain in m4a'
+'enca:         automatically detect charset if not UTF8'
+'faac:         split into m4a'
+'flac:         flac replay gain support'
 'flake:        faster FLAC encoding'
-'mac:          to split APE format'
-'id3lib:       to set tags in mp3 (unicode not supported)'
-'imagemagick:  to convert/resize album cover images'
-'lame:         to split into mp3'
-'mutagen:      to split into mp3'
-'libmp4v2:     to split into m4a'
+'mac:          split APE format'
+'id3lib:       set tags in mp3 (unicode not supported)'
+'imagemagick:  convert/resize album cover images'
+'lame:         split into mp3'
+'mutagen:      split into mp3'
+'libmp4v2:     split into m4a'
 'mp3gain:      mp3 volume normalization'
-'mutagen:      to set tags in mp3 (with unicode support)'
-'ttaenc:       to convert to TrueAudio'  
-'vorbis-tools: to split into ogg vorbis'
+'mutagen:      tag mp3s with unicode support'
+'ttaenc:       convert to TrueAudio'  
+'vorbis-tools: split into ogg vorbis'
 'vorbisgain:   ogg vorbis volume normalization'
-'wavpack:      to split WV')
-source=("git://github.com/ftrvxmtrx/$_pkgname.git")
+'wavpack:      split WV')
+source=("git+https://github.com/ftrvxmtrx/$_pkgname")
 sha256sums=('SKIP')
 
 pkgver() {
