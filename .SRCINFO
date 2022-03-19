@@ -1,7 +1,7 @@
 pkgbase = guestfs-tools
 	pkgdesc = Tools for accessing and modifying guest disk images
 	pkgver = 1.46.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://libguestfs.org/
 	arch = x86_64
 	license = GPL2
