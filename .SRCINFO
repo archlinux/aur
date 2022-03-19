@@ -1,6 +1,6 @@
 pkgbase = cloudcompare-git
 	pkgdesc = A 3D point cloud (and triangular mesh) processing software
-	pkgver = 2.10.2.r1025.g08b7ae9a
+	pkgver = 2.10.2.r1076.g541800c9
 	pkgrel = 1
 	url = http://www.danielgm.net/cc/
 	arch = i686
@@ -17,7 +17,7 @@ pkgbase = cloudcompare-git
 	makedepends = python
 	depends = cgal
 	depends = fbx-sdk
-	depends = ffmpeg
+	depends = ffmpeg4.4
 	depends = glew
 	depends = glu
 	depends = mesa

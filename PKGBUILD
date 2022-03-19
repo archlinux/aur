@@ -8,13 +8,13 @@ name=cloudcompare
 #_fragment="#branch="
 options=('!strip') # strip would also remove plugins, for some reason
 pkgname=${name}-git
-pkgver=2.10.2.r1025.g08b7ae9a
+pkgver=2.10.2.r1076.g541800c9
 pkgrel=1
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
 license=('GPL2')
-depends=('cgal' 'fbx-sdk' 'ffmpeg' 'glew' 'glu' 'mesa' 'mpir' 'pcl' 'pdal' 'qt5-base' 'qt5-tools' 'qt5-svg' 'qt5-websockets' 'shapelib' 'tbb' 'opencascade' 'opencv' 'gdal')
+depends=('cgal' 'fbx-sdk' 'ffmpeg4.4' 'glew' 'glu' 'mesa' 'mpir' 'pcl' 'pdal' 'qt5-base' 'qt5-tools' 'qt5-svg' 'qt5-websockets' 'shapelib' 'tbb' 'opencascade' 'opencv' 'gdal')
 #fix pcl:>vtk:>vtkm:>openmp missing deps
 depends+=(openmp)
 makedepends=('clang' 'cmake' 'doxygen' 'git' 'laz-perf' 'libharu' 'ninja' 'proj' 'python')
@@ -85,6 +85,8 @@ build() {
         -DPLUGIN_STANDARD_QCORK:BOOL=ON # require mpir, cork (cork-git is not enough)
         -DMPIR_INCLUDE_DIR:PATH=/usr/include # required by qcork plugin
         -DCORK_INCLUDE_DIR:PATH="${srcdir}/${name}-cork/src" # required by qcork plugin
+        -DFFMPEG_INCLUDE_DIR:PATH=/usr/include/ffmpeg4.4 # required by qAnimation plugin
+        -DFFMPEG_LIBRARY_DIR:PATH=/usr/lib/ffmpeg4.4 # required by qAnimation plugin
         -DCORK_RELEASE_LIBRARY_FILE:FILEPATH="${srcdir}/${name}-cork/lib/libcork.a" # required by qcork plugin
         -DMPIR_RELEASE_LIBRARY_FILE:FILEPATH=/usr/lib/libmpir.so # require by qcork plugin
         -DPLUGIN_STANDARD_QCSF:BOOL=ON
