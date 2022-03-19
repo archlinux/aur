@@ -9,7 +9,7 @@ pkgbase = har-git
 	makedepends = ldc
 	provides = har
 	conflicts = har
-	source = $pkgname::git+https://github.com/MoonlightSentinel/har.git
+	source = har-git::git+https://github.com/MoonlightSentinel/har.git
 	md5sums = SKIP
 
 pkgname = har-git
