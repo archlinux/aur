@@ -2,12 +2,13 @@
 
 pkgname='ptree'
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A tree directory visualizer'
 arch=('x86_64' 'armv7a')
 url='https://github.com/ICanOnlySuffer/ptree'
 license=('MIT')
 groups=('pocha')
+sha256sums=('SKIP')
 
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 
