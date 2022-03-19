@@ -95,7 +95,7 @@ fi
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck-uksm
 pkgver=5.16.15
-pkgrel=1
+pkgrel=2
 _major=5.16
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
@@ -127,11 +127,10 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar".{xz,s
         "0008-UKSM.patch::${_patches_url}/uksm-patches/0001-UKSM-for-${_major}.patch"
         "0009-bbr2.patch::${_patches_url}/bbr2-patches/0001-bbr2-${_major}-introduce-BBRv2.patch"
         "0010-block.patch::${_patches_url}/block-patches/0001-block-patches.patch"
-        "0011-btrfs.patch::${_patches_url}/btrfs-patches-v7/0001-btrfs-patches.patch"
-        "0012-amd.patch::${_patches_url}/amd64-patches/0001-amd64-patches.patch"
-        "0013-cpufreq.patch::${_patches_url}/cpufreq-patches-v5/0001-cpufreq-patches.patch"
-        "0014-f2fs.patch::${_patches_url}/f2fs-patches-v4/0001-f2fs-patches.patch"
-        "0015-O3.patch::https://github.com/xanmod/linux-patches/raw/master/linux-5.16.y-xanmod/xanmod/0011-XANMOD-init-Kconfig-Enable-O3-KBUILD_CFLAGS-optimiza.patch"
+        "0011-amd.patch::${_patches_url}/amd64-patches/0001-amd64-patches.patch"
+        "0012-cpufreq.patch::${_patches_url}/cpufreq-patches-v5/0001-cpufreq-patches.patch"
+        "0013-f2fs.patch::${_patches_url}/f2fs-patches-v4/0001-f2fs-patches.patch"
+        "0014-O3.patch::https://github.com/xanmod/linux-patches/raw/master/linux-5.16.y-xanmod/xanmod/0011-XANMOD-init-Kconfig-Enable-O3-KBUILD_CFLAGS-optimiza.patch"
 )
 
 validpgpkeys=(
@@ -153,7 +152,6 @@ b2sums=('5b14c19cca863da26f226b30f7a04d5767c90a882f9ff06241659f54632410868863a00
         '9139215eb0d7af1448c1b1722059430f8aa95b4c8d7611776599cc94064e9ec7e09b02c2fd07487a3aa1b73ecefad09c7944eec73a2f0a422cda049aaed58847'
         'c744ca79e711adf08c65c73f7ab08a95a8c62ab8fd869a8db27add9874a559e226582823660d236ffb56d839d868f1c39bb82b77dbdb0bbdae93d4336a7decb5'
         'ede2f6ade748cac8e2ed46e092c7551f93cebe32b98b61911908d7d3ab2ee0ea08091b17723ebb2016c92b0488c74bb13b4c4453ea4fcc57c3cf38231c7eefbf'
-        'd6e61164d63927177c2c9158de46b8884e0557269b97e0f57f3dd6cdce4febf932b03624ba8282df9a60fb133086292594ba09f191154f98d8c1e5b29bba65d9'
         'eae5453f2ff6f3d7258be9838d8eaf3ea42741dde28f5e85644438fa2725ca45db122eb7298ebadc2c1379309dc3712083013d2439b8c02ce076333b58866dd5'
         '827be1d9fe6762364553b452d123648e5f44e2caf12c451860c65bfa91ae6b40d776a4d329a20064bc7be381f7118b9db2bc516cc16a398e717f11e6e4416add'
         '47edd0997d84b7afe127435b074452474ceb8bb34d8f65750e20e782a87eb4f2220e750de5a22eca7f82d76ee606eabc3441f9ba8280e14770f949d9962aa76e'
