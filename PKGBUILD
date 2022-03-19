@@ -2,7 +2,7 @@
 
 pkgname="python-unicorn-binance-local-depth-cache"
 _pkgname=${pkgname#python-}
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="An unofficial Python API to use the Binance REST API"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python-requests' 'python-unicorn-binance-rest-api' 'python-unicorn-binance-websocket-api')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('e8c6d1d5c8ae2ff73e13bbef28a16264d3f6f52cad79566b7e79ccad1a9ac246')
+sha256sums=('eae7559d04147a5fc07880b03eb247b7e45f948e5121491c4a209491c7a8e1ab')
 
 build() {
   cd $_pkgname-$pkgver
