@@ -1,0 +1,20 @@
+pkgbase = text-engine-git
+	pkgdesc = A lightweight rich-text framework for GTK
+	pkgver = r25.379437b
+	pkgrel = 1
+	url = https://github.com/mjakeman/text-engine
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = git
+	makedepends = meson
+	depends = gtk4
+	depends = json-glib
+	depends = libxml2
+	depends = libadwaita
+	provides = text-engine
+	conflicts = text-engine
+	source = git+https://github.com/mjakeman/text-engine.git
+	b2sums = SKIP
+
+pkgname = text-engine-git
