@@ -3,7 +3,7 @@
 
 _pkgname=qutepart
 pkgname=qutepart-git
-pkgver=3.2.0.r18.gb3d6124
+pkgver=3.3.2.r1.gaa69fe6
 pkgrel=1
 pkgdesc="Code editor component for PyQt and Pyside"
 arch=('any')
@@ -11,9 +11,9 @@ url="https://github.com/hlamer/qutepart/"
 license=('LGPL')
 makedepends=('git' 'python-setuptools')
 depends=('python-pyqt5')
-provides=($_pkgname)
-conflicts=($_pkgname)
-source=($pkgname::git://github.com/hlamer/$_pkgname.git)
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$pkgname::git+https://github.com/hlamer/$_pkgname.git")
 md5sums=('SKIP')
 
 pkgver() {
