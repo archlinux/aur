@@ -2,7 +2,7 @@
 pkgname=gdm-settings
 __pkgver='0.4'
 pkgver=${__pkgver/-/+}
-pkgrel=1
+pkgrel=2
 pkgdesc="A settings app for Gnome's Login Manager (GDM)"
 arch=(any)
 url="https://github.com/realmazharhussain/gdm-settings"
