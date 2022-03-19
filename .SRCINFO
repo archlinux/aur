@@ -1,10 +1,10 @@
 pkgbase = autodiff
 	pkgdesc = Automatic differentiation made easier for C++
-	pkgver = 0.6.6
+	pkgver = 0.6.7
 	pkgrel = 1
 	url = https://github.com/autodiff/autodiff
 	changelog = CHANGELOG.md
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = cmake
 	makedepends = eigen
@@ -14,7 +14,7 @@ pkgbase = autodiff
 	depends = gcc-libs
 	optdepends = ccache: faster compilations
 	provides = python-autodiff
-	source = autodiff-0.6.6.tar.gz::https://github.com/autodiff/autodiff/archive/v0.6.6.tar.gz
-	sha256sums = 2a4498b09da9a223b896a3bbfc9ebcb7c7c0b906b19a25000e6f3b94698d916d
+	source = autodiff-0.6.7.tar.gz::https://github.com/autodiff/autodiff/archive/v0.6.7.tar.gz
+	sha256sums = 1345021d74bfd34e74a58d98f4e0e16cc4666b6cd18628af0ba642a6521aadfa
 
 pkgname = autodiff
