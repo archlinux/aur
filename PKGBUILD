@@ -59,10 +59,10 @@ _htmldocs_enable=
 _major=5.16
 _srcname=linux-${_major}
 _lqxpatchname=liquorix-package
-_lqxpatchrel=21
+_lqxpatchrel=22
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
-pkgver=5.16.15.lqx2
+pkgver=5.16.16.lqx1
 pkgrel=1
 pkgdesc='Linux Liquorix'
 url='https://liquorix.net/'
@@ -85,7 +85,7 @@ validpgpkeys=(
 )
 sha512sums=('7a257dd576bc8493595ec7d6f3c9cb6e22c772a8b2dbe735d2485c4f5c56e26a08695546e7e0f1f1cd04a533f25e829361958d4da0b98bf0ba8094dd57a85aaf'
             'SKIP'
-            'c6d1ff1930ae210f64bd42cd364045692ca28406057a1169c9756176dbf24d2cfa7b3f89d66c1615a2f99f0aeac5d723f3c6b4b4aba77752fdbd27b0ca2f7ddd')
+            'ac0937e76f789e53b4db8375c4a4cd3a517ed05ffaf14893041d5e53a6d75f8b6f5d952de59209be348041063cade2c9a0e115d55c8333ee9754409bd835385d')
 
 
 
