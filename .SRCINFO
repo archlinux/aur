@@ -1,7 +1,7 @@
 pkgbase = darbup
-	pkgdesc = wrapper around the excellent dar archiver tool to do regular backup
+	pkgdesc = Wrapper around the excellent dar archiver tool to do regular backup
 	pkgver = 20131117
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/c4rlo/darbup
 	arch = any
 	license = GPL3

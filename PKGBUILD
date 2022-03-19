@@ -2,8 +2,8 @@
 
 pkgname=darbup
 pkgver=20131117
-pkgrel=1
-pkgdesc="wrapper around the excellent dar archiver tool to do regular backup"
+pkgrel=2
+pkgdesc="Wrapper around the excellent dar archiver tool to do regular backup"
 url="https://github.com/c4rlo/darbup"
 arch=('any')
 license=('GPL3')
@@ -25,7 +25,7 @@ package() {
     install -m644 $_file "$pkgdir"/usr/lib/python/${_Majorver}/site-packages/$pkgname
   done
   chmod 755 "$pkgdir"/usr/lib/python/${_Majorver}/site-packages/$pkgname/__main__.py
-  install -Dm644 README.md "$pkgdir"/usr/share/docs/$pkgname/README.md
+  install -Dm644 README.md "$pkgdir"/usr/share/doc/$pkgname/README.md
   install -d "$pkgdir"/usr/bin
   ln -s /usr/lib/python/${_Majorver}/site-packages/$pkgname/__main__.py "$pkgdir"/usr/bin/$pkgname
 }
