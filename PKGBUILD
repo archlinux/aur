@@ -4,7 +4,7 @@
 pkgname='offpunk-git'
 _pkgname='offpunk'
 pkgver=1.1.r0.g1e16c41
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities'
 arch=('any')
 url='https://tildegit.org/ploum/AV-98-offline'
@@ -29,6 +29,7 @@ optdepends=(
   'python-readability-lxml: conversion of HTML'
   'python-requests: for HTTP support'
   'python-setproctitle: allows offpunk to change its process title'
+  'timg: view images and videos in the terminal'
   'xsel: copies text to and from the clipboard'
   'xdg-utils: xdg-open opens a URL in the preferred application'
 )
