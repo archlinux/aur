@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-stable-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r57549.e27fbfb257f
+pkgver=r57634.14a3b690e5b
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -71,7 +71,7 @@ _libudfread_version="1.1.0"
 
 options=(!lto)
 source=(
-  "git://github.com/xbmc/xbmc.git#branch=$_codename"
+  "git+https://github.com/xbmc/xbmc.git#branch=$_codename"
   "libdvdcss-$_libdvdcss_version.tar.gz::https://github.com/xbmc/libdvdcss/archive/$_libdvdcss_version.tar.gz"
   "libdvdnav-$_libdvdnav_version.tar.gz::https://github.com/xbmc/libdvdnav/archive/$_libdvdnav_version.tar.gz"
   "libdvdread-$_libdvdread_version.tar.gz::https://github.com/xbmc/libdvdread/archive/$_libdvdread_version.tar.gz"
