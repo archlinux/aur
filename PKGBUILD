@@ -1,10 +1,10 @@
 # Maintainer: Léopold Koprivnik Ibghy <skwal.net@gmail.com>
 pkgbase="dtodo"
 pkgname="dtodo-git"
-pkgver="r17.799475c"
+pkgver="r25.b869f35"
 pkgrel=1
 pkgdesc="Manage the tasks you want to do every day easily "
-arch=(x86_64 i686)
+arch=('any')
 url="https://github.com/SkwalExe/dtodo"
 license=('MIT')
 makedepends=("git" "make")
@@ -20,7 +20,7 @@ pkgver() {
 
 prepare() {
 	cd dtodo
-	make uninstall
+	# make uninstall
 }
 
 build() {
