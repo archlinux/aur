@@ -1,10 +1,10 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-session-ui-git
-pkgver=5.5.6.r19.g9cf5bae1
+pkgver=5.5.6.r22.g8bef9959
 pkgrel=1
 pkgdesc='Deepin desktop-environment - Session UI module'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dde-session-ui"
 license=('GPL3')
 groups=('deepin')
@@ -13,7 +13,7 @@ makedepends=('git' 'deepin-gettext-tools-git' 'cmake' 'ninja' 'deepin-dock-git' 
 provides=('deepin-notifications' 'deepin-session-ui')
 conflicts=('dde-workspace' 'deepin-session-ui' 'deepin-notifications')
 groups=('deepin-git')
-source=("$pkgname::git://github.com/linuxdeepin/dde-session-ui"
+source=("$pkgname::git+https://github.com/linuxdeepin/dde-session-ui"
   fix-cmakelist.patch)
 sha512sums=('SKIP'
             '50d74d551c71a0039b6064d54939fb8a611941d8e8c653c96a5fc146f3dc168b396d0a4a21c269abb9331fbc7a7cc33909069ea4f8cb20db752705369f1d3710')
@@ -25,6 +25,10 @@ pkgver() {
 
 prepare() {
   cd $pkgname
+  if [[ ! -z ${sha} ]];then
+    git checkout -b $sha
+  fi
+
   sed -i 's|/usr/share/backgrounds/default_background.jpg|/usr/share/backgrounds/deepin/desktop.jpg|' widgets/*.cpp
   patch -p1 -i ../fix-cmakelist.patch
 }
