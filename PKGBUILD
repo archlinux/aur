@@ -40,7 +40,7 @@ prepare() {
   go get -v github.com/godbus/dbus/introspect
   go get -v github.com/godbus/dbus/prop
   go get -v gopkg.in/yaml.v3
-  sed -i 's/sbin/bin/' $pkgname/Makefile
+  sed -i 's/sbin/bin/' Makefile
 }
 
 build() {
