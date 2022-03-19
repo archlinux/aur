@@ -2,7 +2,7 @@
 # Maintainer: Carlos A Becker <carlos@charm.sh>
 
 pkgname='wishlist-bin'
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='The SSH directory'
 url='https://charm.sh/'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('wishlist')
 conflicts=('wishlist')
 
-source_aarch64=('https://github.com/charmbracelet/wishlist/releases/download/v0.2.2/wishlist_0.2.2_linux_arm64.tar.gz')
-sha256sums_aarch64=('823f2df7510ab951556f3c8a13a51967793a17c632129c8bb681f5ca4e3f227c')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/wishlist/releases/download/v0.3.0/wishlist_0.3.0_linux_arm64.tar.gz")
+sha256sums_aarch64=('445c8ab97e42e32a0a9a4b912c9d895626b0c970e5bab76bee0b6387ed281799')
 
-source_armv7h=('https://github.com/charmbracelet/wishlist/releases/download/v0.2.2/wishlist_0.2.2_linux_armv7.tar.gz')
-sha256sums_armv7h=('dccde7938f9b7bfcdeaa36fd02b5f54a9bbdfe1122288c7f054fd24b6f8371f4')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/wishlist/releases/download/v0.3.0/wishlist_0.3.0_linux_armv7.tar.gz")
+sha256sums_armv7h=('0ad935c159a9436e4347f982532d6078edb5349761b1d993e5f41a5a1658a006')
 
-source_i686=('https://github.com/charmbracelet/wishlist/releases/download/v0.2.2/wishlist_0.2.2_linux_i386.tar.gz')
-sha256sums_i686=('7eb18e0f4229a42d85a1f1d13b737980d6ccc4ac57115f973a29f16574a22c8b')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/wishlist/releases/download/v0.3.0/wishlist_0.3.0_linux_i386.tar.gz")
+sha256sums_i686=('5c4fea83c2ce0aa6e5a4de3ddc551f240ff60c23087f22bc65e707080aef0cba')
 
-source_x86_64=('https://github.com/charmbracelet/wishlist/releases/download/v0.2.2/wishlist_0.2.2_linux_x86_64.tar.gz')
-sha256sums_x86_64=('66aba04ac7948e1d72a45bcd354de49379d4f7f75dc45ab5c5fcf5faf8f6ff3a')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/wishlist/releases/download/v0.3.0/wishlist_0.3.0_linux_x86_64.tar.gz")
+sha256sums_x86_64=('88d37674a137f5ff90bda95de971ff4d0ccfc3673700c3f3d0f01cc60227af76')
 
 package() {
   # bin
