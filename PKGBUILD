@@ -2,10 +2,10 @@
 # Maintainer: oscareczek <oscareczek at gmail dot com>
 
 _pkgname=86box
-_build=b3602
+_build=b3700
 
 pkgname="${_pkgname}-appimage"
-pkgver=3.2.1
+pkgver=3.3
 pkgrel=1
 pkgdesc='Emulator of x86-based machines based on PCem.'
 arch=('x86_64' 'arm7h' 'aarch64')
@@ -20,9 +20,9 @@ _source="https://github.com/${_pkgname}/${_pkgname}/releases/download/v${pkgver}
 source_x86_64=("${_pkgname}-${pkgver}-x86_64.appimage::${_source}-Linux-x86_64-${_build}.AppImage")
 source_arm7h=("${_pkgname}-${pkgver}-arm7h.appimage::${_source}-NDR-Linux-arm32-${_build}.AppImage")
 source_aarch64=("${_pkgname}-${pkgver}-aarch64.appimage::${_source}-NDR-Linux-arm64-${_build}.AppImage")
-sha512sums_x86_64=('a858f3988bac177483e5b3b4e38cfa40827a354f4da380a90c4c661ae648fcecbdb61e7eaa425e1a087d0627d630905fbff2280dad48f467b70f1d12818f7744')
-sha512sums_arm7h=('2314afba96b23aa76ab437929f8a65930f2105f158cf783ac4ac67a05c4f56a19ef1202b7e06c32603ce6a2c39e525736e1e5f995fba968e2a954c8922afeed7')
-sha512sums_aarch64=('731b6ca430d88a14621b7ebf17a3161744fea3975d715bee9be45cbdbb68615ae32211c86cf8f0534f771e40a98fc5e3868ac246080fcddf986f017d25562d5f')
+sha512sums_x86_64=('c5cb8d28bcec7846e769bac3b75c91c894f4d7674ff42e9f49f9074e3743c7423e900735a18293ac0b5835bdc81756f62e527d17d54aa0b65501d17474b6fb85')
+sha512sums_arm7h=('ecc18ad137f3da968802c72bafdcb7f5aef3bfd48f9aa15d7b41a0ff6cba891fc9d80fd8ce614c147af67ff3cf01ad863e1d266cb5b8a11b40c2e9787610ea94')
+sha512sums_aarch64=('932f86a6d54c73fe8210583c2ac982689e8c2fd128ebc909f68f1704924e5a2921c9d81c90aa0a0db723cb3f1cc39f2060c7f4556caa73738865a36404d565b3')
 
 prepare() {
     chmod +x "${_pkgname}-${pkgver}-${CARCH}.appimage"

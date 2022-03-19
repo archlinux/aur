@@ -1,6 +1,6 @@
 pkgbase = 86box-appimage
 	pkgdesc = Emulator of x86-based machines based on PCem.
-	pkgver = 3.2.1
+	pkgver = 3.3
 	pkgrel = 1
 	url = https://86box.net/
 	arch = x86_64
@@ -12,11 +12,11 @@ pkgbase = 86box-appimage
 	provides = 86box
 	conflicts = 86box
 	options = !strip
-	source_x86_64 = 86box-3.2.1-x86_64.appimage::https://github.com/86box/86box/releases/download/v3.2.1/86Box-Linux-x86_64-b3602.AppImage
-	sha512sums_x86_64 = a858f3988bac177483e5b3b4e38cfa40827a354f4da380a90c4c661ae648fcecbdb61e7eaa425e1a087d0627d630905fbff2280dad48f467b70f1d12818f7744
-	source_arm7h = 86box-3.2.1-arm7h.appimage::https://github.com/86box/86box/releases/download/v3.2.1/86Box-NDR-Linux-arm32-b3602.AppImage
-	sha512sums_arm7h = 2314afba96b23aa76ab437929f8a65930f2105f158cf783ac4ac67a05c4f56a19ef1202b7e06c32603ce6a2c39e525736e1e5f995fba968e2a954c8922afeed7
-	source_aarch64 = 86box-3.2.1-aarch64.appimage::https://github.com/86box/86box/releases/download/v3.2.1/86Box-NDR-Linux-arm64-b3602.AppImage
-	sha512sums_aarch64 = 731b6ca430d88a14621b7ebf17a3161744fea3975d715bee9be45cbdbb68615ae32211c86cf8f0534f771e40a98fc5e3868ac246080fcddf986f017d25562d5f
+	source_x86_64 = 86box-3.3-x86_64.appimage::https://github.com/86box/86box/releases/download/v3.3/86Box-Linux-x86_64-b3700.AppImage
+	sha512sums_x86_64 = c5cb8d28bcec7846e769bac3b75c91c894f4d7674ff42e9f49f9074e3743c7423e900735a18293ac0b5835bdc81756f62e527d17d54aa0b65501d17474b6fb85
+	source_arm7h = 86box-3.3-arm7h.appimage::https://github.com/86box/86box/releases/download/v3.3/86Box-NDR-Linux-arm32-b3700.AppImage
+	sha512sums_arm7h = ecc18ad137f3da968802c72bafdcb7f5aef3bfd48f9aa15d7b41a0ff6cba891fc9d80fd8ce614c147af67ff3cf01ad863e1d266cb5b8a11b40c2e9787610ea94
+	source_aarch64 = 86box-3.3-aarch64.appimage::https://github.com/86box/86box/releases/download/v3.3/86Box-NDR-Linux-arm64-b3700.AppImage
+	sha512sums_aarch64 = 932f86a6d54c73fe8210583c2ac982689e8c2fd128ebc909f68f1704924e5a2921c9d81c90aa0a0db723cb3f1cc39f2060c7f4556caa73738865a36404d565b3
 
 pkgname = 86box-appimage
