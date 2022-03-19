@@ -3,36 +3,32 @@
 # Contributor: Mohamed Sobh <mohamed.alhusieny@gmail.com>
 
 pkgname=python-zipline
-pkgver=1.3.0
+_pkgname=${pkgname:7}
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A backtester for financial algorithms."
 arch=('any')
 url="https://www.zipline.io"
 license=('APACHE')
 depends=(
-  'python>=3.3'
-  'python-numpy>=1.6.0'
-  'python-pandas>=0.9.0'
-  'python-dateutil>=2.1'
+  'python-pandas'
+  'python-dateutil'
   'python-pytz'
   'python-logbook'
   'python-requests'
   'ta-lib'
 )
-makedepends=('python-setuptools')
-options=(!emptydirs)
+makedepends=(python-build python-installer python-wheel)
 source=("https://pypi.python.org/packages/source/${pkgname:7:1}/${pkgname:7}/${pkgname:7}-${pkgver}.tar.gz")
-sha256sums=('19b6607845d8d9dfa51c5679c65a143a04172f76fff70a58f9a835a69a25fbf9')
+sha256sums=('fda2b8fd324c0f02cc0b5a00d4a0c42e256e9c8c0118a5cbf0fba69996076d10')
 
 build() {
-  cd "$srcdir/${pkgname:7}-$pkgver"
-  python setup.py build
+  cd ${srcdir}/${_pkgname}-${pkgver}
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/${pkgname:7}-$pkgver"
-  python setup.py install --skip-build --root="$pkgdir/" --optimize=1
-  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd ${srcdir}/${_pkgname}-${pkgver}
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
-
 # vim:set ts=2 sw=2 et:
