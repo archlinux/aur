@@ -14,7 +14,7 @@ license=('LGPL3')
 depends=('python')
 makedepends=('git' 'python-distribute')
 conflicts=('python-pyte')
-source=("git://github.com/selectel/pyte.git")
+source=("git+https://github.com/selectel/pyte.git")
 sha256sums=('SKIP')
 
 build() {
