@@ -1,15 +1,15 @@
 pkgbase = python-emoji-fzf
 	pkgdesc = 🕵emoji picker that pairs nicely with fzf --preview
-	pkgver = 0.1.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/noahp/emoji-fzf
 	arch = any
-	license = GPL
-	makedepends = python-pip
+	license = MIT
+	makedepends = python-installer
 	depends = fzf
-	provides = emoji-fzf-0.1.0
-	conflicts = emoji-fzf-0.1.0
-	source = emoji-fzf-0.1.0::https://files.pythonhosted.org/packages/source/e/emoji-fzf/emoji_fzf-0.1.0-py2.py3-none-any.whl
+	provides = emoji-fzf-0.6.0
+	conflicts = emoji-fzf-0.6.0
+	source = emoji-fzf-0.6.0::https://files.pythonhosted.org/packages/py2.py3/e/emoji-fzf/emoji_fzf-0.6.0-py2.py3-none-any.whl
 	sha256sums = SKIP
 
 pkgname = python-emoji-fzf
