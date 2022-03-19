@@ -1,10 +1,10 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-daemon-git
-pkgver=6.0.0.r85.gf8733f93
+pkgver=6.0.0.r102.gbbec686c
 pkgrel=1
 pkgdesc='Daemon handling the DDE session settings'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dde-daemon"
 license=('GPL3')
 depends=('deepin-desktop-schemas-git' 'ddcutil' 'deepin-api-git' 'gvfs' 'iso-codes' 'lsb-release'
@@ -23,7 +23,7 @@ conflicts=('deepin-daemon')
 provides=('deepin-daemon')
 groups=('deepin-git')
 install="$pkgname.install"
-source=("$pkgname::git://github.com/linuxdeepin/dde-daemon"
+source=("$pkgname::git+https://github.com/linuxdeepin/dde-daemon"
         dde-daemon.patch
         remove-tc.patch
         'deepin-daemon.sysusers')
@@ -35,6 +35,13 @@ sha512sums=('SKIP'
 pkgver() {
     cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd $pkgname
+    if [[ ! -z ${sha} ]];then
+      git checkout -b $sha
+    fi
 }
 
 prepare() {
