@@ -1,26 +1,33 @@
-# Maintainer: Fox Kiester <noct[at]openmailbox[dot]org>
+# Maintainer: Fox Kiester <noct[at]posteo[dot]net>
 
 _pkgname=tdrop
 pkgname=tdrop-git
-pkgver=0.1.r23.g682ec14
+pkgver=0.4.0.r6.gca08ab9
 pkgrel=1
 pkgdesc="A WM-Independent dropdown window and terminal creator"
 arch=('any')
 url="https://github.com/noctuid/tdrop"
 license=('Simplified BSD')
-depends=('bash' 'xdotool' 'xorg-xwininfo' 'xorg-xprop')
-optdepends=('tmux: session starting support'
-            'tmuxinator: session starting support'
-            'sxhkd: for a tdrop keybinding'
-            'xorg-xrandr: multiple monitor resizing support')
+depends=('bash' 'coreutils' 'gawk' 'procps-ng' 'xdotool' 'xorg-xwininfo'
+         'xorg-xprop')
+optdepends=(
+  # keybinding support
+  'sxhkd'
+  # session starting support
+  'tmux'
+  'tmuxinator'
+  'tmuxp'
+  # multiple monitor support
+  'xorg-xrandr'
+)
 makedepends=('git')
 provides=("${_pkgname}")
 md5sums=('SKIP')
-source=("git://github.com/noctuid/${_pkgname}.git")
+source=("git+https://github.com/noctuid/${_pkgname}")
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {

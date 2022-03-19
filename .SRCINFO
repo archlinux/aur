@@ -1,21 +1,25 @@
 pkgbase = tdrop-git
 	pkgdesc = A WM-Independent dropdown window and terminal creator
-	pkgver = 0.1.r23.g682ec14
+	pkgver = 0.4.0.r6.gca08ab9
 	pkgrel = 1
 	url = https://github.com/noctuid/tdrop
 	arch = any
 	license = Simplified BSD
 	makedepends = git
 	depends = bash
+	depends = coreutils
+	depends = gawk
+	depends = procps-ng
 	depends = xdotool
 	depends = xorg-xwininfo
 	depends = xorg-xprop
-	optdepends = tmux: session starting support
-	optdepends = tmuxinator: session starting support
-	optdepends = sxhkd: for a tdrop keybinding
+	optdepends = sxhkd
+	optdepends = tmux
+	optdepends = tmuxinator
+	optdepends = tmuxp
+	optdepends = xorg-xrandr
 	provides = tdrop
-	source = git://github.com/noctuid/tdrop.git
+	source = git+https://github.com/noctuid/tdrop
 	md5sums = SKIP
 
 pkgname = tdrop-git
-
