@@ -9,7 +9,7 @@ pkgbase = php-uopz-git
 	makedepends = git
 	depends = php
 	backup = etc/php/conf.d/uopz.ini
-	source = php-uopz-git::git://github.com/krakjoe/uopz.git
+	source = php-uopz-git::git+https://github.com/krakjoe/uopz.git
 	md5sums = SKIP
 
 pkgname = php-uopz-git
