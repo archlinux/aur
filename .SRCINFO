@@ -1,16 +1,18 @@
 pkgbase = deepin-turbo-git
 	pkgdesc = A daemon that helps to launch applications faster
-	pkgver = 0.0.5.r13.g8c85d2c
+	pkgver = 0.0.5.r14.g427439d
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/deepin-turbo
 	arch = x86_64
+	arch = aarch64
 	groups = deepin
 	license = GPL3
 	makedepends = cmake
+	makedepends = git
 	depends = qt5-base
 	provides = deepin-turbo
 	conflicts = deepin-turbo
-	source = deepin-turbo-git::git://github.com/linuxdeepin/deepin-turbo
+	source = deepin-turbo-git::git+https://github.com/linuxdeepin/deepin-turbo
 	sha512sums = SKIP
 
 pkgname = deepin-turbo-git

@@ -1,23 +1,30 @@
 # Maintainer: DingYuan Zhang <justforlxz@gmail.com>
 
 pkgname=deepin-turbo-git
-pkgver=0.0.5.r13.g8c85d2c
+pkgver=0.0.5.r14.g427439d
 pkgrel=1
 pkgdesc='A daemon that helps to launch applications faster'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/deepin-turbo"
 license=('GPL3')
 depends=('qt5-base')
-makedepends=('cmake')
+makedepends=('cmake' 'git')
 groups=('deepin')
 provides=('deepin-turbo')
 conflicts=('deepin-turbo')
-source=("$pkgname::git://github.com/linuxdeepin/deepin-turbo")
+source=("$pkgname::git+https://github.com/linuxdeepin/deepin-turbo")
 sha512sums=('SKIP')
 
 pkgver() {
     cd $pkgbase
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd $pkgname
+    if [[ ! -z ${sha} ]];then
+      git checkout -b $sha
+    fi
 }
 
 build() {
