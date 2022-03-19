@@ -17,6 +17,7 @@
     "data_retention_hook": "",
     "max_total_connections": 0,
     "max_per_host_connections": 20,
+    "whitelist_file": "",
     "defender": {
       "enabled": false,
       "driver": "memory",
@@ -70,6 +71,7 @@
     "enabled_ssh_commands": [
       "md5sum",
       "sha1sum",
+      "sha256sum",
       "cd",
       "pwd",
       "scp"
@@ -174,7 +176,7 @@
     "external_auth_hook": "",
     "external_auth_scope": 0,
     "credentials_path": "/var/lib/sftpgo/credentials",
-    "prefer_database_credentials": false,
+    "prefer_database_credentials": true,
     "pre_login_hook": "",
     "post_login_hook": "",
     "post_login_scope": 0,
@@ -203,7 +205,13 @@
     "update_mode": 0,
     "create_default_admin": false,
     "naming_rules": 0,
-    "is_shared": 0
+    "is_shared": 0,
+    "backups_path": "/srv/sftpgo/backups",
+    "auto_backup": {
+      "enabled": true,
+      "hour": "0",
+      "day_of_week": "*"
+    }
   },
   "httpd": {
     "bindings": [
@@ -242,13 +250,13 @@
           "permissions_policy": "",
           "cross_origin_opener_policy": "",
           "expect_ct_header": ""
-        }
+        },
+        "extra_css": []
       }
     ],
     "templates_path": "/usr/share/sftpgo/templates",
     "static_files_path": "/usr/share/sftpgo/static",
     "openapi_path": "/usr/share/sftpgo/openapi",
-    "backups_path": "/srv/sftpgo/backups",
     "web_root": "",
     "certificate_file": "",
     "certificate_key_file": "",
