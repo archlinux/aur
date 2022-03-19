@@ -1,6 +1,6 @@
 pkgbase = podfox-git
 	pkgdesc = Catch and manage podcasts from the terminal
-	pkgver = r85.e2ec7ac
+	pkgver = r92.0ec75cb
 	pkgrel = 1
 	url = https://github.com/brtmr/podfox
 	arch = any
@@ -14,8 +14,7 @@ pkgbase = podfox-git
 	depends = python-requests
 	provides = podfox
 	conflicts = podfox
-	source = podfox-git::git://github.com/brtmr/podfox.git
+	source = podfox-git::git+https://github.com/brtmr/podfox.git
 	md5sums = SKIP
 
 pkgname = podfox-git
-

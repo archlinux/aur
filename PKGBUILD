@@ -1,7 +1,7 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=podfox-git
-pkgver=r85.e2ec7ac
+pkgver=r92.0ec75cb
 pkgrel=1
 pkgdesc="Catch and manage podcasts from the terminal"
 arch=('any')
@@ -11,7 +11,7 @@ makedepends=('git' 'python-setuptools')
 depends=('python-colorama' 'python-docopt' 'python-feedparser' 'python-pycurl' 'python-requests')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=($pkgname::git://github.com/brtmr/podfox.git)
+source=("$pkgname::git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
