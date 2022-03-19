@@ -2,13 +2,13 @@
 
 pkgname=('lua-inspect' 'lua51-inspect' 'lua52-inspect' 'lua53-inspect')
 _pkgbase='inspect.lua'
-pkgver=3.1.1
+pkgver=3.1.3
 pkgrel=1
 arch=('any')
 url='https://github.com/kikito/inspect.lua'
 license=('MIT')
 source=("$_pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('75639607a730affdeacbef6d6456490d')
+md5sums=('1180dda59d097f10607571dc18cb7ba1')
 
 package_lua-inspect() {
     pkgdesc='Human-readable representation of Lua tables'
