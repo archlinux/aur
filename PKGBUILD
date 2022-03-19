@@ -2,7 +2,7 @@
 
 _pkgname=pcov
 pkgname=php-$_pkgname-git
-pkgver=v1.0.6.r0.g3546be8
+pkgver=v1.0.11.r0.ga497e83
 pkgrel=1
 pkgdesc="PCOV - CodeCoverage compatible driver for PHP"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ url="https://github.com/krakjoe/pcov"
 license=('PHP')
 depends=('php')
 makedepends=('git')
-source=(git://github.com/krakjoe/pcov.git#branch=release)
+source=(git+https://github.com/krakjoe/pcov.git#branch=release)
 md5sums=('SKIP')
 _ininame="pcov.ini"
 _inifile="etc/php/conf.d/$_ininame"
