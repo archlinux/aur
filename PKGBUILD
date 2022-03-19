@@ -1,9 +1,10 @@
-# Maintainer: Daniel Mouritzen <dmrtzn at gmail dot com>
+# Maintainer: Jonathan Birk <cafce25@gmail.com>
+# Contributor: Daniel Mouritzen <dmrtzn at gmail dot com>
 
 _hkgname=vector-space
 pkgname=haskell-vector-space
 pkgver=0.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Vector & affine spaces, linear maps, and derivatives"
 url="https://github.com/conal/vector-space"
 license=("BSD")
