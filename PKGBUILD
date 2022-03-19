@@ -1,7 +1,7 @@
 # vim:ts=4:sw=4:expandtab
 # unclutter-xfixes -- rewrite of unclutter using the x11-xfixes extension.
 pkgname=unclutter-xfixes-git
-pkgver=v1.6.r1.g8f1fbf5
+pkgver=v1.6.r3.g93b0f33
 pkgrel=1
 pkgdesc='unclutter-xfixes is a rewrite of unclutter using the x11-xfixes extension.'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ conflicts=('unclutter' 'unclutter-patched')
 #groups=
 depends=('libxi' 'libx11' 'libxfixes' 'libev')
 makedepends=('git' 'asciidoc')
-source=('git://github.com/Airblader/unclutter-xfixes#branch=master')
+source=('git+https://github.com/Airblader/unclutter-xfixes#branch=master')
 sha1sums=('SKIP')
 
 _gitname='unclutter-xfixes'
