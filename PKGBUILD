@@ -6,12 +6,12 @@ _glm_commit=2929ad5a663597139276c10ef905d91e568fdc48
 _imgui_commit=0850b46c88daa92443dedf8609a80dbc1da52558
 _link_commit=14f6cc99ac41466d52ce780aa37e432fe92c289b
 _stb_commit=f54acd4e13430c5122cab4ca657705c84aa61b08
-_tinyfiledialogs_commit=cc6b593c029110af8045826ce691f540c85e850c
+_tinyfiledialogs_commit=2681e426ddaebc8e2764a7823b4b9d69564d1684
 _tinyxml2_commit=bf15233ad88390461f6ab0dbcf046cce643c5fcb
 _asio_commit=01b4e87c04abd4daec58e40463bcdc150085b269
 
 pkgname=vimix
-pkgver=0.6.3
+pkgver=0.7
 pkgrel=1
 arch=('x86_64')
 pkgdesc="Live video editor"
@@ -26,10 +26,10 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/brunoherbelin/vimix/archive
         "imgui-${_imgui_commit}.tar.gz::https://github.com/ocornut/imgui/archive/${_imgui_commit}.tar.gz"
         "link-${_link_commit}.tar.gz::https://github.com/Ableton/link/archive/${_link_commit}.tar.gz"
         "stb-${_stb_commit}.tar.gz::https://github.com/nothings/stb/archive/${_stb_commit}.tar.gz"
-        "tinyfiledialogs-${_tinyfiledialogs_commit}.tar.gz::https://github.com/native-toolkit/tinyfiledialogs/archive/${_tinyfiledialogs_commit}.tar.gz"
+        "tinyfiledialogs-code-${_tinyfiledialogs_commit}.zip::https://sourceforge.net/code-snapshots/git/t/ti/tinyfiledialogs/code.git/tinyfiledialogs-code-${_tinyfiledialogs_commit}.zip"
 	"tinyxml2-${_tinyxml2_commit}.tar.gz::https://github.com/leethomason/tinyxml2/archive/${_tinyxml2_commit}.tar.gz"
 	"asio-${_asio_commit}.tar.gz::https://github.com/chriskohlhoff/asio/archive/${_asio_commit}.tar.gz")
-sha512sums=('baf0fe796fb1820dfcdc3b1624492006ac01c0fe266a85eca902c14e67114d4a7c54101d41fbb2b6fc2e04193cbecebdd53066dcf06e295ebcee0c628f035741'
+sha512sums=('a3fd5240e47f1342237a28d062a6aba34c355ba116959cb51e25c14e9a787ad8429626bcebbd665371ba70b16efb942f0a5ed80ef996e0c2dace40fe8b07f8a2'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -53,8 +53,8 @@ prepare() {
       -C   "$pkgname-$pkgver/ext/link/"
   tar -xzf "stb-${_stb_commit}.tar.gz" --strip 1 \
       -C   "$pkgname-$pkgver/ext/stb/"
-  tar -xzf "tinyfiledialogs-${_tinyfiledialogs_commit}.tar.gz" --strip 1 \
-      -C   "$pkgname-$pkgver/ext/tfd/"
+  bsdtar -xf "tinyfiledialogs-code-${_tinyfiledialogs_commit}.zip" --strip-components=1 \
+      -C     "$pkgname-$pkgver/ext/tfd/"
   tar -xzf "tinyxml2-${_tinyxml2_commit}.tar.gz" --strip 1 \
       -C   "$pkgname-$pkgver/ext/tinyxml2/"
   tar -xzf "asio-${_asio_commit}.tar.gz" --strip 1 \
