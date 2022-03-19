@@ -1,15 +1,15 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-kwin-git
-pkgver=5.3.14.r21.gab13507c0
+pkgver=5.4.12.r1.g3e7b4880b
 pkgrel=1
 pkgdesc='KWin configures on DDE'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dde-kwin"
 license=('GPL3')
 depends=('deepin-qt5integration' 'deepin-wallpapers' 'kwin')
 makedepends=('extra-cmake-modules' 'expac' 'ninja' 'qt5-tools')
-source=("$pkgname::git://github.com/linuxdeepin/dde-kwin/"
+source=("$pkgname::git+https://github.com/linuxdeepin/dde-kwin/"
         tabbox-chameleon-rename.patch
         added-functions-from-their-forked-kwin.patch
         fix-crash.patch
@@ -27,6 +27,10 @@ pkgver() {
 
 prepare() {
   cd $pkgname
+  if [[ ! -z ${sha} ]];then
+    git checkout -b $sha
+  fi
+
   sed -i 's|/usr/share/backgrounds/default_background.jpg|/usr/share/backgrounds/deepin/desktop.jpg|' plugins/kwineffects/multitasking/background.cpp
   patch -R -p1 -i ../added-functions-from-their-forked-kwin.patch
   patch -p1 -i ../tabbox-chameleon-rename.patch
