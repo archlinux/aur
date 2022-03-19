@@ -1,0 +1,15 @@
+pkgbase = har-git
+	pkgdesc = Utility to create / extract HAR (Human Archive Format) files
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/MoonlightSentinel/har
+	arch = any
+	license = Boost
+	makedepends = git
+	makedepends = ldc
+	provides = har
+	conflicts = har
+	source = $pkgname::git+https://github.com/MoonlightSentinel/har.git
+	md5sums = SKIP
+
+pkgname = har-git
