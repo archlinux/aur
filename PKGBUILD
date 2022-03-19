@@ -11,7 +11,7 @@ arch=('any')
 license=('GPL')
 depends=('emacs')
 install=emacs-calfw-git.install
-source=(git://github.com/kiwanami/emacs-calfw.git)
+source=(git+https://github.com/kiwanami/emacs-calfw.git)
 md5sums=('SKIP')
 _gitname=emacs-calfw
 

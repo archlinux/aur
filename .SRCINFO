@@ -7,8 +7,7 @@ pkgbase = emacs-calfw-git
 	arch = any
 	license = GPL
 	depends = emacs
-	source = git://github.com/kiwanami/emacs-calfw.git
+	source = git+https://github.com/kiwanami/emacs-calfw.git
 	md5sums = SKIP
 
 pkgname = emacs-calfw-git
-
