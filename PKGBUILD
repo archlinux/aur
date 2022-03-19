@@ -2,13 +2,14 @@
 pkgname=itch-bin
 _pkgname="${pkgname%-bin}"
 pkgver=25.5.1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="The best way to play your itch.io games"
 arch=('any')
 url="https://github.com/itchio/itch"
 license=('MIT')
 depends=('electron11' 'libnotify' 'nss' 'libxss' 'gtk3')
+makedepends=('unzip')
 provides=($_pkgname)
 conflicts=($_pkgname)
 install=$_pkgname.install
