@@ -23,7 +23,8 @@ package() {
   _destdir_etc="${pkgdir}/etc/webapps/poweradmin"
 
   install -dm755 "${_destdir}"
-  cp -R --no-dereference --preserve=mode,links -v "${srcdir}/poweradmin/"* "${_destdir}"
+  cp -R --no-dereference --preserve=mode,links -v "${srcdir}/poweradmin/." "${_destdir}"
+  rm -r "${_destdir}/.git"
 
   mv "${_destdir}/install" "${_destdir}/x_install"
   chmod 700 "${_destdir}/x_install"
