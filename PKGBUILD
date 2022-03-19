@@ -1,6 +1,6 @@
 # Maintainer: Simon Kohlmeyer <simon.kohlmeyer@googlemail.com>
 pkgname=rbenv-git
-pkgver=0.4.0.r210.f0e8bdc
+pkgver=1.2.0.r14.c6cc0a1
 pkgrel=1
 pkgdesc="Simple Ruby version manager"
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=()
 install="rbenv.install"
-source=('git://github.com/rbenv/rbenv')
+source=('git+https://github.com/rbenv/rbenv')
 noextract=()
 md5sums=('SKIP')
 
