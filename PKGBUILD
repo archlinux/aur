@@ -1,7 +1,7 @@
 # Maintainer: thynkon <thynkon at protonmail dot com>
 
 pkgname=mp3-tagger-appimage
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc="An Electron app to edit metadata of mp3 files with online search capability"
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ source=(
   ${url}/releases/download/v${pkgver}/Mp3Tagger-${pkgver}.AppImage
   ${url}/raw/v${pkgver}/LICENSE
 )
-sha256sums=('f02f54bff3e0701366ca36e970da91ad64bc477d2e1cb5cb3cc408f63f023932'
+sha256sums=('227fbe13b0a0c1fa0d29aebe8c7452dc2a7b4f8c9bfa2a91171138d0f2d0c25c'
             'c12e900f2ab9f0bd46d2d0151974ed36561450db63c83c46bf70934eb455a8d7')
 _filename="Mp3Tagger-${pkgver}.AppImage"
 _squashfs_desktop_file="mp3-tagger.desktop"
