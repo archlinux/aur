@@ -1,7 +1,7 @@
 # Maintainer: Thomas Gläßle <t_glaessle@gmx.de>
 _pkgname=pidgin-tts
 pkgname=pidgin-espeak-git
-pkgver=2015_05_25..844ec79
+pkgver=2019_11_20..210876f
 pkgrel=1
 pkgdesc="espeak plugin for the pidgin IM"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('pidgin' 'espeak')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+git://github.com/coldfix/${_pkgname}")
+source=("$_pkgname::git+https://github.com/coldfix/${_pkgname}")
 md5sums=('SKIP')
 
 pkgver() {
