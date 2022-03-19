@@ -1,6 +1,6 @@
 pkgbase = hunspell-gl
 	pkgdesc = Galician hunspell dictionaries. RAG/ILG normative
-	pkgver = 20.08
+	pkgver = 22.03
 	pkgrel = 1
 	epoch = 2
 	url = https://gitlab.com/proxecto-trasno/hunspell-gl
@@ -12,8 +12,7 @@ pkgbase = hunspell-gl
 	optdepends = hunspell: the spell checking libraries and apps
 	provides = hunspell-gl
 	conflicts = hunspell-gl
-	source = hunspell-gl.tar.bz2::https://gitlab.com/proxecto-trasno/hunspell-gl/-/archive/20.08/hunspell-gl-20.08.tar.bz2
-	md5sums = 3530407085f8fc49bd3bd5f5488be565
+	source = hunspell-gl.tar.bz2::https://gitlab.com/proxecto-trasno/hunspell-gl/-/archive/22.03/hunspell-gl-22.03.tar.bz2
+	md5sums = 975956a5e790c15f42ada0a52847fb25
 
 pkgname = hunspell-gl
-

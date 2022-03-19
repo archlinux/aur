@@ -1,5 +1,5 @@
 pkgname=hunspell-gl
-pkgver=20.08
+pkgver=22.03
 pkgrel=1
 epoch=2
 pkgdesc="Galician hunspell dictionaries. RAG/ILG normative"
@@ -11,7 +11,7 @@ makedepends=('scons' 'python-pyicu' 'qt5-webengine')
 provides=($pkgname)
 conflicts=($pkgname)
 source=("${pkgname}.tar.bz2::https://gitlab.com/proxecto-trasno/hunspell-gl/-/archive/${pkgver}/hunspell-gl-${pkgver}.tar.bz2")
-md5sums=('3530407085f8fc49bd3bd5f5488be565')
+md5sums=('975956a5e790c15f42ada0a52847fb25')
 
 prepare() {
   mkdir -p "$srcdir/$pkgname" && tar xfj "$pkgname.tar.bz2" -C "$pkgname" --strip-components 1
@@ -19,13 +19,24 @@ prepare() {
 
 build() {
   cd "$srcdir/$pkgname"
-  scons code=gl_ES
+
+  _exclude='(iso[0-9]+|volga)'
+  _use=$(ls src | grep -v / | xargs echo | sed -E "s/$_exclude( |\$)//g" | sed 's/ /,/g')
+
+  scons aff=$_use dic=$_use rep=$_use
 }
 
 package(){
     cd "$srcdir"
     install -dm755 ${pkgdir}/usr/share/hunspell
-    install -m644 ${pkgname}/build/gl_ES.dic ${pkgname}/build/gl_ES.aff $pkgdir/usr/share/hunspell
+    install -m644 \
+        ${pkgname}/build/gl.dic \
+        ${pkgname}/build/gl.aff \
+        $pkgdir/usr/share/hunspell
+    pushd "$pkgdir"/usr/share/hunspell
+    ln -sv /usr/share/hunspell/gl.dic gl_ES.dic
+    ln -sv /usr/share/hunspell/gl.aff gl_ES.aff
+    popd
 
     # myspell symlinks
     install -dm755 ${pkgdir}/usr/share/myspell/dicts
@@ -38,10 +49,12 @@ package(){
     # docs
     install -dm644 $pkgdir/usr/share/doc/$pkgname
 
-    # Install webengine dictionaries
+    # webengine dictionaries
     install -d "$pkgdir"/usr/share/qt/qtwebengine_dictionaries/
-    for _file in "$pkgdir"/usr/share/hunspell/*.dic; do
-    _filename=$(basename $_file)
-      qwebengine_convert_dict $_file "$pkgdir"/usr/share/qt/qtwebengine_dictionaries/${_filename/\.dic/\.bdic}
-    done
+    qwebengine_convert_dict \
+        "$pkgdir"/usr/share/hunspell/gl.dic \
+        "$pkgdir"/usr/share/qt/qtwebengine_dictionaries/gl.bdic
+    pushd "$pkgdir"/usr/share/qt/qtwebengine_dictionaries/
+    ln -sv /usr/share/qt/qtwebengine_dictionaries/gl.bdic gl_ES.bdic
+    popd
 }
