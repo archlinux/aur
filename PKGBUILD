@@ -21,14 +21,10 @@ pkgver() {
 }
 
 prepare() {
-    cd $pkgname
-    if [[ ! -z ${sha} ]];then
-      git checkout -b $sha
-    fi
-}
-
-prepare() {
   cd $pkgbase
+  if [[ ! -z ${sha} ]];then
+    git checkout -b $sha
+  fi
   sed -i 's|^systemd_service.path.*|systemd_service.path = /usr/lib/systemd/system|' server/monitor/src/src.pro server/tool/tool.pro
 }
 
