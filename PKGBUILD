@@ -1,10 +1,10 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-polkit-agent-ext-gnomekeyring-git
-pkgver=5.0.5.r0.g5187a0d
+pkgver=5.0.11.r0.gdf093ef
 pkgrel=1
 pkgdesc="GNOME keyring extension for dde-polkit-agent"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dpa-ext-gnomekeyring"
 license=('GPL3')
 depends=('deepin-polkit-agent-git' 'libgnome-keyring')
@@ -12,12 +12,19 @@ makedepends=('git' 'cmake' 'ninja' 'qt5-tools' 'libgnome-keyring' 'deepin-polkit
 conflicts=('deepin-polkit-agent-ext-gnomekeyring')
 provides=('deepin-polkit-agent-ext-gnomekeyring')
 groups=('deepin-git')
-source=("$pkgname::git://github.com/linuxdeepin/dpa-ext-gnomekeyring/")
+source=("$pkgname::git+https://github.com/linuxdeepin/dpa-ext-gnomekeyring/")
 sha512sums=('SKIP')
 
 pkgver() {
     cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd $pkgname
+    if [[ ! -z ${sha} ]];then
+      git checkout -b $sha
+    fi
 }
 
 build() {
