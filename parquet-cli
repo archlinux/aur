@@ -1,0 +1,6 @@
+#!/bin/sh
+
+for name in /usr/share/java/parquet-cli/*.jar ; do
+  CP=$CP:$name
+done
+java -cp $CP org.apache.parquet.cli.Main $@
