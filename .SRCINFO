@@ -12,8 +12,7 @@ pkgbase = sxlock-git
 	depends = libxft
 	depends = pam
 	optdepends = xorg-fonts-misc: default font
-	source = git://github.com/lahwaacz/sxlock.git
+	source = git+https://github.com/lahwaacz/sxlock.git
 	md5sums = SKIP
 
 pkgname = sxlock-git
-

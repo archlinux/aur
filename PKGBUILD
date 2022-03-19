@@ -11,7 +11,7 @@ license=('MIT')
 depends=('libxext' 'libxrandr' 'libxft' 'pam')
 makedepends=('git')
 optdepends=('xorg-fonts-misc: default font')
-source=('git://github.com/lahwaacz/sxlock.git')
+source=('git+https://github.com/lahwaacz/sxlock.git')
 md5sums=('SKIP')
 
 pkgver() {
