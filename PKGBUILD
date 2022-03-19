@@ -39,7 +39,7 @@ build() {
 package() {
     cd ${srcdir}/${_pkgbase}
 
-    install -Dm644 scripts/discord.lua "$pkgdir"/usr/share/mpv/scripts/discord.lua
-    install -Dm644 script-opts/discord.conf "$pkgdir"/usr/share/doc/$_pkgbase/discord.conf
+    install -Dm644 scripts/discord.lua "$pkgdir"/etc/mpv/scripts/discord.lua
+    install -Dm644 script-opts/discord.conf "$pkgdir"/etc/mpv/script-opts/discord.conf
     install -Dm755 $_pkgbase/build/$_pkgbase "$pkgdir"/usr/lib/$_pkgbase/$_pkgbase
 }
