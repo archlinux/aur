@@ -9,8 +9,7 @@ pkgbase = php-componere-git
 	makedepends = git
 	depends = php
 	backup = etc/php/conf.d/componere.ini
-	source = git://github.com/krakjoe/componere.git#branch=release
+	source = git+https://github.com/krakjoe/componere.git#branch=release
 	md5sums = SKIP
 
 pkgname = php-componere-git
-

@@ -10,7 +10,7 @@ url="https://github.com/krakjoe/componere"
 license=('PHP')
 depends=('php')
 makedepends=('git')
-source=(git://github.com/krakjoe/componere.git#branch=release)
+source=(git+https://github.com/krakjoe/componere.git#branch=release)
 md5sums=('SKIP')
 _ininame="componere.ini"
 _inifile="etc/php/conf.d/$_ininame"
