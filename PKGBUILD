@@ -13,7 +13,7 @@ license=('MIT')
 makedepends=('gcc' 'make')
 depends=('libx11' 'libxft' 'libxinerama')
 source=(
-	"git://github.com/JLErvin/berry.git"
+	"git+https://github.com/JLErvin/berry.git"
 	berry.desktop
 )
 sha256sums=('SKIP' 'SKIP')
