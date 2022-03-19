@@ -1,14 +1,14 @@
 pkgbase = rime-tshet
 	pkgdesc = Tshet-uinh input for rime
 	pkgver = 0.0.0.20220316
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ayaka14732/rime-tshet
 	arch = x86_64
 	license = CC0
 	makedepends = librime
 	depends = rime-luna-pinyin
 	depends = rime-cantonese
-	source = https://github.com/ayaka14732/rime-tshet/archive/efcde3eb2023b1579db11fbc276f11143da9f497/rime-tshet-efcde3eb2023b1579db11fbc276f11143da9f497.tar.gz
-	sha256sums = f594a662a2c8757a77300bcada506ba89af973979a5174ded534846c06845fd7
+	source = https://github.com/ayaka14732/rime-tshet/archive/74dd1d38bfe4bb1e89667e33abe92e956a84fdce/rime-tshet-74dd1d38bfe4bb1e89667e33abe92e956a84fdce.tar.gz
+	sha256sums = adeba386480c23e93333ef678068fd366092ff2c475cead313c3657d48fff215
 
 pkgname = rime-tshet

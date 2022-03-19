@@ -2,8 +2,8 @@
 
 pkgname=rime-tshet
 pkgver=0.0.0.20220316
-_commit=efcde3eb2023b1579db11fbc276f11143da9f497
-pkgrel=1
+_commit=74dd1d38bfe4bb1e89667e33abe92e956a84fdce
+pkgrel=2
 pkgdesc="Tshet-uinh input for rime"
 arch=('x86_64')
 url="https://github.com/ayaka14732/$pkgname"
@@ -12,7 +12,6 @@ license=('CC0')
 depends=('rime-luna-pinyin' 'rime-cantonese')
 makedepends=('librime')
 source=("$url/archive/$_commit/$pkgname-$_commit.tar.gz")
-sha256sums=('f594a662a2c8757a77300bcada506ba89af973979a5174ded534846c06845fd7')
 
 prepare() {
   cd $pkgname-$_commit
@@ -33,3 +32,4 @@ package() {
   install -Dm644 build/* -t "$pkgdir"/usr/share/rime-data/build/
   #install -Dm644 opencc/* -t "$pkgdir"/usr/share/rime-data/opencc/
 }
+sha256sums=('adeba386480c23e93333ef678068fd366092ff2c475cead313c3657d48fff215')
