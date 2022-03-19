@@ -2,15 +2,15 @@
 
 pkgbase=deepin-anything-git
 pkgname=(deepin-anything-git deepin-anything-dkms-git)
-pkgver=5.0.10.r11.gb5a2fa4
+pkgver=5.0.13.r14.g0218923
 _extramodules=extramodules-ARCH
 pkgrel=1
 pkgdesc="Deepin Anything file search tool"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/deepin-anything"
 license=('GPL3')
 makedepends=('git' 'dtkcore-git' 'udisks2-qt5')
-source=("$pkgbase::git://github.com/linuxdeepin/deepin-anything"
+source=("$pkgbase::git+https://github.com/linuxdeepin/deepin-anything"
         deepin-anything-server.sysusers)
 sha512sums=('SKIP'
             '0ff6a6de1fbfb0c33eaac511b989da321a9e43ece92708af88aee34ad1a05e55572713b1290bc2705d70b91dc7bec4fb4abd3dc664a0abe01de27d88bd9e9c85')
@@ -18,6 +18,13 @@ sha512sums=('SKIP'
 pkgver() {
     cd $pkgbase
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd $pkgname
+    if [[ ! -z ${sha} ]];then
+      git checkout -b $sha
+    fi
 }
 
 prepare() {

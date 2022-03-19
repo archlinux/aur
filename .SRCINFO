@@ -1,14 +1,15 @@
 pkgbase = deepin-anything-git
 	pkgdesc = Deepin Anything file search tool
-	pkgver = 5.0.10.r11.gb5a2fa4
+	pkgver = 5.0.13.r14.g0218923
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/deepin-anything
 	arch = x86_64
+	arch = aarch64
 	license = GPL3
 	makedepends = git
 	makedepends = dtkcore-git
 	makedepends = udisks2-qt5
-	source = deepin-anything-git::git://github.com/linuxdeepin/deepin-anything
+	source = deepin-anything-git::git+https://github.com/linuxdeepin/deepin-anything
 	source = deepin-anything-server.sysusers
 	sha512sums = SKIP
 	sha512sums = 0ff6a6de1fbfb0c33eaac511b989da321a9e43ece92708af88aee34ad1a05e55572713b1290bc2705d70b91dc7bec4fb4abd3dc664a0abe01de27d88bd9e9c85
