@@ -1,9 +1,10 @@
 pkgbase = deepin-dock-git
 	pkgdesc = Deepin desktop-environment - dock module
-	pkgver = 5.5.9.r54.g49d37a6c0
+	pkgver = 5.5.9.r62.g1564718c8
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-dock
 	arch = x86_64
+	arch = aarch64
 	groups = deepin-git
 	license = GPL3
 	makedepends = git
@@ -24,7 +25,7 @@ pkgbase = deepin-dock-git
 	depends = libdbusmenu-qt5
 	provides = deepin-dock
 	conflicts = deepin-dock
-	source = deepin-dock-git::git://github.com/linuxdeepin/dde-dock
+	source = deepin-dock-git::git+https://github.com/linuxdeepin/dde-dock
 	sha512sums = SKIP
 
 pkgname = deepin-dock-git

@@ -1,10 +1,10 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-dock-git
-pkgver=5.5.9.r54.g49d37a6c0
+pkgver=5.5.9.r62.g1564718c8
 pkgrel=1
 pkgdesc='Deepin desktop-environment - dock module'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dde-dock"
 license=('GPL3')
 depends=('qt5-svg' 'deepin-daemon-git' 'deepin-qt5integration-git'
@@ -13,12 +13,19 @@ makedepends=('git' 'cmake' 'ninja' 'qt5-tools' 'gtest' 'gmock' 'deepin-qt5integr
 conflicts=('deepin-dock')
 provides=('deepin-dock')
 groups=('deepin-git')
-source=("$pkgname::git://github.com/linuxdeepin/dde-dock")
+source=("$pkgname::git+https://github.com/linuxdeepin/dde-dock")
 sha512sums=('SKIP')
 
 pkgver() {
     cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd $pkgname
+    if [[ ! -z ${sha} ]];then
+      git checkout -b $sha
+    fi
 }
 
 build() {
