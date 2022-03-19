@@ -1,0 +1,27 @@
+pkgbase = infinisim-git
+	pkgdesc = Simulator for InfiniTime user interface without needing a PineTime
+	pkgver = r21.d6cc748
+	pkgrel = 1
+	url = https://github.com/InfiniTimeOrg/InfiniSim
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = sdl2
+	conflicts = infinisim
+	source = infinisim-git::git+https://github.com/InfiniTimeOrg/InfiniSim.git
+	source = git+https://github.com/InfiniTimeOrg/InfiniTime.git
+	source = git+https://github.com/glennrp/libpng.git
+	source = git+https://github.com/lvgl/lv_drivers.git
+	source = git+https://github.com/joaquimorg/lvgl.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = infinisim-git
