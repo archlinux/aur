@@ -7,7 +7,7 @@ pkgbase = libqpsd-git
 	license = LGPL
 	makedepends = git
 	depends = qt5-base
-	source = git://github.com/Code-ReaQtor/libqpsd
+	source = git+https://github.com/Code-ReaQtor/libqpsd
 	sha256sums = SKIP
 
 pkgname = libqpsd-git

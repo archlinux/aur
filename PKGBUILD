@@ -11,14 +11,14 @@ license=("LGPL")
 depends=("qt5-base")
 # depends=("qt4")	# use this depends instead of the above for Qt4 build
 makedepends=("git")
-source=("git://github.com/Code-ReaQtor/libqpsd")
+source=("git+https://github.com/Code-ReaQtor/libqpsd")
 sha256sums=("SKIP")
 
 prepare() {
 	cd "$srcdir/$_pkgname"
-	
+
 	sed -i "s|\$\$\[QT_INSTALL_PLUGINS\]|/usr/lib/qt/plugins|" QPsdPlugin.pro
-	
+
 	mkdir -p build
 	cd build
 	qmake ..
