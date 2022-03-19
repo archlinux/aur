@@ -10,7 +10,7 @@ source=("${url}/releases/download/v${pkgver}/musicfox.linux" "https://raw.github
 package() {
 	install -d "${pkgdir}/usr/local/bin"
 	install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-	install -Dm644 "${srcdir}/musicfox.linux" "${pkgdir}/usr/local/bin/musicfox"
+	install -Dm755 "${srcdir}/musicfox.linux" "${pkgdir}/usr/local/bin/musicfox"
 	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
