@@ -2,7 +2,7 @@ pkgname=yup-bin
 _pkgname=yup
 pkgver="1.1.8"
 _pkgver="1.1.8"
-pkgrel=1
+pkgrel=2
 pkgdesc="Arch Linux AUR Helper with ncurses functionality and better searching and sorting"
 arch=('x86_64')
 url="https://github.com/ericm/yup"
@@ -14,5 +14,5 @@ conflicts=('yup')
 depends=('pacman>=5.1' 'git' 'ncurses' 'sudo')
 
 package() {
-    install -Dm755 yup ${pkgdir}/usr/local/bin/yup
+    install -Dm755 yup ${pkgdir}/bin/yup
 }
