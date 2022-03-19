@@ -4,7 +4,7 @@
 pkgname='vim-ledger-git'
 _gitname='vim-ledger'
 pkgver=30.r0.g2bfbe22
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64')
 url="https://www.github.com/ledger/vim-ledger"
 depends=('vim')
@@ -28,7 +28,7 @@ package() {
 	cd ${pkgname%-git}
 
 	msg 'Installing documentation...'
-	install -Dm 644 README.mkd "$pkgdir/usr/share/doc/vim-ledger/README"
+	install -Dm 644 README.md "$pkgdir/usr/share/doc/vim-ledger/README"
 
 	msg 'Installing appdirs...'
 	install -dm 755 "$pkgdir/usr/share/vim/vimfiles"
