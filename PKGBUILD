@@ -2,7 +2,7 @@
 # Contributor: TBK <aur at jjtc dot eu>
 
 pkgname=termius
-pkgver=7.34.1
+pkgver=7.35.7
 pkgrel=1
 pkgdesc="Desktop SSH Client"
 url="https://www.termius.com/"
@@ -14,11 +14,11 @@ makedepends=('squashfs-tools')
 # curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/termius-app | jq '.download_url' -r
 # curl -H 'X-Ubuntu-Series: 16' https://api.snapcraft.io/api/v1/snaps/details/termius-app | jq '.version' -r
 source=(
-    "$pkgname-$pkgver.snap::https://api.snapcraft.io/api/v1/snaps/download/WkTBXwoX81rBe3s3OTt3EiiLKBx2QhuS_101.snap"
+    "$pkgname-$pkgver.snap::https://api.snapcraft.io/api/v1/snaps/download/WkTBXwoX81rBe3s3OTt3EiiLKBx2QhuS_105.snap"
     "termius.desktop"
     "tos.html"
 )
-sha512sums=('7fdd82535fd288277b01fedde4739dc97782236fbf25372efa56114bba676c21277ed96b32a1d46ac86af19925b14935818af50985d43a1307639530db044af4'
+sha512sums=('13b5d6c6e1a9e8f71d9f885d21ae9365dac845b55adfb11f87da92b08b2360fc6e1d7bd5aa896d8e416f65f8ed84eb025252def1f8a0fd6c642efabea30aaaf5'
             '9b0788a02b9bf371de07adec8f3e14f4db8bf83dae6dee60d91027d8ba09cbab253b8b714f980d5c62b72d97e4ac11e6c3985139322bdceaad9f2f0232427656'
             '53f9c61fba12b72817c5e7f4e0ac520489265fbf425fa46f13129da66632b41a2a128072d9e0e64e37e4e8feb8424bc1c15eed127d630314e6459ceb2dbafb4b')
 
@@ -34,6 +34,8 @@ package() {
     cd "$srcdir"/$pkgname
 
     cp -r \
+        chrome_100_percent.pak \
+        chrome_crashpad_handler \
         icudtl.dat \
         libffmpeg.so \
         locales \
@@ -50,6 +52,7 @@ package() {
 
     find "$pkgdir"/opt/$pkgname/ -type f -exec chmod 644 {} \;
     chmod 755 "$pkgdir"/opt/$pkgname/termius-app
+    chmod 755 "$pkgdir"/opt/$pkgname/chrome_crashpad_handler
 
     mkdir -p "$pkgdir"/usr/bin
     ln -sf /opt/$pkgname/termius-app "$pkgdir"/usr/bin/$pkgname
