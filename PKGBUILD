@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=lapce
-pkgver=0.0.10
+pkgver=0.0.11
 pkgrel=1
 pkgdesc="Lightning-fast and Powerful Code Editor"
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('gcc-libs' 'libxcb' 'expat' 'freetype2' 'libxkbcommon')
 makedepends=('rust' 'python' 'cmake')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/lapce/lapce/archive/v$pkgver.tar.gz")
-sha512sums=('4e8b609ecee7d9e6124aa66b6dc09211fcd09a2c93faf2d76e6fb289f0929c5a8d182e5db46563a75e4c7bd7b0a56680448eb0da91911112b5dc7fb1cbed4b64')
-b2sums=('fb99f0feab9c0c229777a9b0cbe451f297a02e620a087771c7fc1fafe9ab1c0e69543c89f40a9451bc4065b94050747aa3e27882b3e2a3bea0fe471c2d1f23e1')
+sha512sums=('8d4bb1a499a0400e26843026b97e3785b8a5fe08c742f0eb4924442c35a669e4eeef1d1c13b13e682a04ee54c51b653f98b118d783b6be84f86fe32b540384b6')
+b2sums=('dfe65e2fb65cd0adba9c3508c33a42e7c94c9ad7d9f7667c3b66dced6e071579a68a56bc49995b2b513af118fdc1a07dfe913bb5b4205ff082110fc115ab8cd8')
 
 prepare() {
   cd "$pkgname-$pkgver"
