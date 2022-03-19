@@ -1,9 +1,10 @@
 pkgname=nerd-fonts-sarasa-mono
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Sarasa Mono SC font patched with Nerd fonts.'
 url='https://github.com/laishulu/Sarasa-Mono-SC-Nerd'
 license=('OFL')
+makedepends=('fontconfig')
 arch=('any')
 source=("git+https://github.com/laishulu/Sarasa-Mono-SC-Nerd.git")
 
@@ -13,4 +14,5 @@ package() {
 	install -Dm644 "${srcdir}/Sarasa-Mono-SC-Nerd/"*.ttf "${pkgdir}/usr/share/fonts/${pkgname}"
 	install -Dm644 "${srcdir}/Sarasa-Mono-SC-Nerd/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
+
 sha256sums=('SKIP')
