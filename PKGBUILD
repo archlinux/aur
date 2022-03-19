@@ -12,7 +12,7 @@ makedepends=('git')
 conflicts=('deepin-gettext-tools')
 provides=('deepin-gettext-tools')
 groups=('deepin-git')
-source=("$pkgname::git://github.com/linuxdeepin/deepin-gettext-tools/")
+source=("$pkgname::git+https://github.com/linuxdeepin/deepin-gettext-tools/")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -22,6 +22,10 @@ pkgver() {
 
 prepare() {
   cd $pkgname
+
+  if [[ ! -z ${sha} ]];then
+    git checkout -b $sha
+  fi
 
   sed -e 's/sudo cp/cp/' -i src/generate_mo.py
   sed -e 's/qmake/qmake-qt5/' -e '/lupdate/d' -i Makefile
