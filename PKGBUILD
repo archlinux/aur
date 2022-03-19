@@ -13,7 +13,7 @@ checkdepends=('golang-gopkg-check.v1')
 provides=('golang-deepin-gir')
 conflicts=('golang-deepin-gir')
 groups=('deepin-git')
-source=("$pkgname::git://github.com/linuxdeepin/go-gir-generator")
+source=("$pkgname::git+https://github.com/linuxdeepin/go-gir-generator")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -23,6 +23,10 @@ pkgver() {
 
 prepare() {
   cd $pkgname
+  if [[ ! -z ${sha} ]];then
+    git checkout -b $sha
+  fi
+
   mkdir -p "$srcdir"/build/src/github.com/linuxdeepin/
 
   # Should be fixed upstream

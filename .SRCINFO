@@ -14,7 +14,7 @@ pkgbase = golang-deepin-gir-git
 	depends = libgudev
 	provides = golang-deepin-gir
 	conflicts = golang-deepin-gir
-	source = golang-deepin-gir-git::git://github.com/linuxdeepin/go-gir-generator
+	source = golang-deepin-gir-git::git+https://github.com/linuxdeepin/go-gir-generator
 	sha512sums = SKIP
 
 pkgname = golang-deepin-gir-git
