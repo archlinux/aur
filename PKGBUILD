@@ -8,20 +8,13 @@ arch=( 'any' )
 # N.B.: Forked from marler8997/har due to inactivity
 url="https://github.com/MoonlightSentinel/har"
 license=('Boost')
-groups=()
-depends=()
 makedepends=(
 	'git'
 	'ldc'
 )
 provides=( "${pkgname%-git}" )
 conflicts=( "${pkgname%-git}" )
-replaces=()
-backup=()
-options=()
-install=
-source=( "$pkgname::git+https://github.com/MoonlightSentinel/har.git" )
-noextract=()
+source=( "$pkgname::git+${url}.git" )
 md5sums=( 'SKIP' )
 
 pkgver() {
