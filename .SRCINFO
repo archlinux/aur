@@ -5,9 +5,10 @@ pkgbase = deepin-account-faces-git
 	url = https://github.com/linuxdeepin/dde-account-faces
 	arch = any
 	license = GPL3
+	makedepends = git
 	conflicts = dde-account-faces
 	replaces = dde-account-faces
-	source = deepin-account-faces-git::git://github.com/linuxdeepin/dde-account-faces/
+	source = deepin-account-faces-git::git+https://github.com/linuxdeepin/dde-account-faces/
 	sha512sums = SKIP
 
 pkgname = deepin-account-faces-git
