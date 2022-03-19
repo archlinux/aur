@@ -21,15 +21,12 @@ pkgver() {
 }
 
 prepare() {
-    cd $pkgname
-    if [[ ! -z ${sha} ]];then
-      git checkout -b $sha
-    fi
-}
-
-prepare() {
   export GOPATH="$srcdir/build:/usr/share/gocode"
   cd $pkgname
+  if [[ ! -z ${sha} ]];then
+    git checkout -b $sha
+  fi
+
   # fix default background url
   sed -i "s#/usr/share/backgrounds/default_background.jpg#/usr/share/backgrounds/deepin/desktop.jpg#" \
     overrides/common/com.deepin.wrap.gnome.desktop.override schemas/com.deepin.dde.appearance.gschema.xml
