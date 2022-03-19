@@ -1,36 +1,36 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
-_pkgver="0.2.0"
 pkgname=midiomatic
-pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgver="0.2.1"
+pkgrel=1
 pkgdesc="A collection of MIDI filter, generator and processor LV2 and VST plugins"
-arch=('i686' 'x86_64')
+arch=(x86_64)
 url="https://github.com/SpotlightKid/midiomatic"
-license=('MIT')
-groups=('pro-audio' 'lv2-plugins' 'vst-plugins')
-depends=('gcc-libs')
+license=(MIT)
+groups=(pro-audio lv2-plugins vst-plugins)
+depends=(gcc-libs)
+checkdepends=(kxstudio-lv2-extensions lv2lint)
 source=(
-    "https://github.com/SpotlightKid/midiomatic/releases/download/v${_pkgver}/${pkgname}-${_pkgver}.tar.gz"
+    "https://github.com/SpotlightKid/midiomatic/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz"
 )
-sha256sums=('06be064b2868a6ba140f7bc8d4ef7b7e675454dd7ef5b5c54e22e8ccf8e77628')
-
+sha256sums=('aed203bde8fd01e279e058d48f084754f50b9fd758d7b56b845f11d8fbdbb1f3')
 
 build() {
-  cd "${srcdir}/${pkgname}-${_pkgver}"
-
+  cd "$pkgname-$pkgver"
   make
 }
 
+check() {
+  cd "$pkgname-$pkgver"
+  make check
+}
+
 package() {
-  cd "${srcdir}/${pkgname}-${_pkgver}"
-
+  cd "$pkgname-$pkgver"
   # install plugin LV2 bundles and VST binaries
-  make PREFIX=/usr DESTDIR="${pkgdir}" install
-
+  make PREFIX=/usr DESTDIR="$pkgdir" install
   # readme
-  install -Dm644 README.md -t "${pkgdir}"/usr/share/doc/${pkgname}
-
+  install -Dm644 README.md -t "$pkgdir"/usr/share/doc/$pkgname
   # license file
-  install -Dm644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
