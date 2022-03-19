@@ -2,7 +2,7 @@
 # Contributor: netroy
 
 pkgname=arduino-ide-beta-bin
-_pkgver=2.0.0-rc4
+_pkgver=2.0.0-rc5
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Arduino prototyping platform IDE, rewrite based on the Theia IDE framework"
@@ -17,7 +17,7 @@ install=arduino-ide.install
 options=(!strip)
 source=("https://downloads.arduino.cc/arduino-ide/arduino-ide_${_pkgver}_Linux_64bit.zip"
         "https://www.arduino.cc/en/uploads/Trademark/ArduinoCommunityLogo.png")
-sha256sums=('1f498f8299ffd7815ca0dd2e856a9000a3dfc60f5f9e958bc57a9ab2c9bb300e'
+sha256sums=('28df1e5f2457d4f191f19c266d12ca9b31750542c91fd6d00bdf21d533f38664'
             'd0e1a18d4553df38ffc34c0699369500e8a8129647207c65d36e615870d7fe3c')
 
 prepare() {
