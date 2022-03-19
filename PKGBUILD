@@ -7,7 +7,7 @@
 
 pkgname=lxc-git
 _pkgname=lxc
-pkgver=4.0.0.r2198.g30ebf0964
+pkgver=lxc.4.0.0.2198
 pkgrel=1
 pkgdesc="Linux Containers git version"
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -26,7 +26,7 @@ provides=($_pkgname)
 conflicts=($_pkgname lxc-git)
 
 source=(
-  lxc::git+https://github.com/lxc/lxc.git
+  git+https://github.com/lxc/lxc
   lxc.tmpfiles.d
   lxc.service
   lxc-auto.service)
@@ -38,7 +38,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long | sed 's/^lxc-//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/./g'
 }
 
 prepare() {

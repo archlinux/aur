@@ -1,6 +1,6 @@
 pkgbase = lxc-git
 	pkgdesc = Linux Containers git version
-	pkgver = 4.0.0.r2198.g30ebf0964
+	pkgver = lxc.4.0.0.2198
 	pkgrel = 1
 	url = https://linuxcontainers.org
 	arch = x86_64
@@ -31,7 +31,7 @@ pkgbase = lxc-git
 	options = debug
 	backup = etc/lxc/default.conf
 	backup = etc/default/lxc
-	source = lxc::git+https://github.com/lxc/lxc.git
+	source = git+https://github.com/lxc/lxc
 	source = lxc.tmpfiles.d
 	source = lxc.service
 	source = lxc-auto.service
