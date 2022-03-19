@@ -1,0 +1,14 @@
+pkgbase = maven363
+	pkgdesc = Java project management and project comprehension tool 3.6.3 version
+	pkgver = 3.6.3
+	pkgrel = 1
+	url = https://maven.apache.org
+	arch = any
+	license = APACHE
+	depends = java-environment>=7
+	depends = bash
+	depends = procps-ng
+	source = maven363-3.6.3.tar.gz::https://dlcdn.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+	md5sums = 9792c717f5845d952907d5144b8253c3
+
+pkgname = maven363
