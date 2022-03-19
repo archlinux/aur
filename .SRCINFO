@@ -1,14 +1,17 @@
 pkgbase = appimagelauncher-git
 	pkgdesc = A Helper application for running and integrating AppImages.
-	pkgver = r1068.7cb4d70
+	pkgver = r1224.cbe7f29
 	pkgrel = 1
-	url = https://github.com/TheAssassin/AppImageLauncher
+	url = https://assassinate-you.net/tags/appimagelauncher/
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = cmake
 	makedepends = boost
 	makedepends = qt5-tools
+	makedepends = lib32-glibc
+	makedepends = lib32-gcc-libs
+	makedepends = chrpath
 	depends = qt5-base
 	depends = fuse2
 	depends = squashfuse
@@ -39,4 +42,3 @@ pkgbase = appimagelauncher-git
 	sha256sums = 72a2630cf79b8f90bc21eae1d9f40c07fe77ce22df46c511b500f514455d7c81
 
 pkgname = appimagelauncher-git
-
