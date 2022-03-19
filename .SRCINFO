@@ -1,6 +1,6 @@
 pkgbase = log4jscanner-bin
 	pkgdesc = log4j vulnerability filesystem scanner for analyzing JAR files
-	pkgver = 0.3.0
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/google/log4jscanner
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = log4jscanner-bin
 	depends = glibc
 	provides = log4jscanner
 	conflicts = log4jscanner
-	source = README-0.3.0.md::https://github.com/google/log4jscanner/raw/v0.3.0/README.md
-	sha256sums = 14447b4c2a852448419f69b2642b4a2aa3b21027aaa4ebe4264f7c4045c78b7d
-	source_x86_64 = log4jscanner-bin-0.3.0-x86_64.tar.gz::https://github.com/google/log4jscanner/releases/download/v0.3.0/log4jscanner-v0.3.0-linux-amd64.tar.gz
-	sha256sums_x86_64 = c381bc3dea0fc648cb1f7752bb06c51a6f64aad17bd9e352f0ee38ff5e361509
-	source_aarch64 = log4jscanner-bin-0.3.0-aarch64.tar.gz::https://github.com/google/log4jscanner/releases/download/v0.3.0/log4jscanner-v0.3.0-linux-arm64.tar.gz
-	sha256sums_aarch64 = b7eb0453ffce1f98aab522a9f37fd3ea39b6ab3dacd1759ac54260a20bd828a1
+	source = README-0.4.0.md::https://github.com/google/log4jscanner/raw/v0.4.0/README.md
+	sha256sums = 44c7873c18de286dee0a19e736ab989692ab075a45a523ea9b65c98a61508239
+	source_x86_64 = log4jscanner-bin-0.4.0-x86_64.tar.gz::https://github.com/google/log4jscanner/releases/download/v0.4.0/log4jscanner-v0.4.0-linux-amd64.tar.gz
+	sha256sums_x86_64 = 255208acf259670f3fa0c01eccd4a704aeee6afe871441ca71e0c574c30e20a3
+	source_aarch64 = log4jscanner-bin-0.4.0-aarch64.tar.gz::https://github.com/google/log4jscanner/releases/download/v0.4.0/log4jscanner-v0.4.0-linux-arm64.tar.gz
+	sha256sums_aarch64 = 9b024c537c808db1cd015a07d1aaaf5aa60d9bdca700e94a5522965250f56656
 
 pkgname = log4jscanner-bin
