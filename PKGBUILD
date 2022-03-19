@@ -1,10 +1,10 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-session-shell-git
-pkgver=5.5.9.r123.gd52f772
+pkgver=5.5.24.r8.ga2f84d4
 pkgrel=1
 pkgdesc='Deepin desktop-environment - session-shell module'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dde-session-shell"
 license=('GPL3')
 depends=('deepin-daemon-git' 'deepin-wallpapers-git' 'gsettings-qt' 'liblightdm-qt5' 'startdde-git')
@@ -12,7 +12,7 @@ makedepends=('git' 'cmake' 'ninja' 'qt5-tools' 'gtest' 'gmock')
 conflicts=('deepin-session-ui<5' 'deepin-session-shell')
 provides=('lightdm-deepin-greeter' 'deepin-session-shell')
 groups=('deepin-git')
-source=("$pkgname::git://github.com/linuxdeepin/dde-session-shell")
+source=("$pkgname::git+https://github.com/linuxdeepin/dde-session-shell")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -22,6 +22,10 @@ pkgver() {
 
 prepare() {
   cd $pkgname
+  if [[ ! -z ${sha} ]];then
+    git checkout -b $sha
+  fi
+
   sed -i 's/5\.5//g' CMakeLists.txt tests/lightdm-deepin-greeter/CMakeLists.txt tests/dde-lock/CMakeLists.txt
 }
 
