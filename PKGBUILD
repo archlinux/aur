@@ -1,6 +1,6 @@
 pkgname=go-musicfox-bin
 pkgver=2.1.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Command-line Netease Cloud Music written in Go.'
 url='https://github.com/anhoder/go-musicfox'
 license=('MIT')
@@ -8,9 +8,9 @@ arch=('x86_64')
 source=("${url}/releases/download/v${pkgver}/musicfox.linux" "https://raw.githubusercontent.com/anhoder/go-musicfox/master/LICENSE")
 
 package() {
-	install -d "${pkgdir}/usr/local/bin"
+	install -d "${pkgdir}/usr/bin"
 	install -d "${pkgdir}/usr/share/licenses/${pkgname}"
-	install -Dm755 "${srcdir}/musicfox.linux" "${pkgdir}/usr/local/bin/musicfox"
+	install -Dm755 "${srcdir}/musicfox.linux" "${pkgdir}/usr/bin/musicfox"
 	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
