@@ -12,7 +12,7 @@ makedepends=('git' 'go')
 provides=('golang-github-linuxdeepin-go-dbus-factory')
 conflicts=('golang-github-linuxdeepin-go-dbus-factory')
 groups=('deepin-git')
-source=("$pkgname::git://github.com/linuxdeepin/go-dbus-factory")
+source=("$pkgname::git+https://github.com/linuxdeepin/go-dbus-factory")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -21,6 +21,11 @@ pkgver() {
 }
 
 prepare() {
+  cd $pkgname
+  if [[ ! -z ${sha} ]];then
+    git checkout -b $sha
+  fi
+
   export GOPATH="$srcdir/build:/usr/share/gocode"
   export GO111MODULE=off
   mkdir -p "$srcdir"/build/src/github.com/linuxdeepin
