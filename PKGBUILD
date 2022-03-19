@@ -7,6 +7,7 @@ pkgrel=1
 pkgdesc='A tool for managing/monitoring Linux md device arrays, also known as Software RAID (patched to work properly with Intel RST FakeRAID)'
 arch=('x86_64')
 provides=('mdadm')
+conflicts=('mdadm')
 license=('GPL')
 url='https://git.kernel.org/pub/scm/utils/mdadm'
 makedepends=('git' 'patch')
