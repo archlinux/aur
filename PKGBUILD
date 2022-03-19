@@ -13,7 +13,7 @@ makedepends=('git' 'python-setuptools')
 checkdepends=('python-pytest' 'python-pytest-runner')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}=${pkgver}")
-source=('git://github.com/earwig/mwparserfromhell')
+source=('git+https://github.com/earwig/mwparserfromhell')
 md5sums=('SKIP')
 
 options=('!strip')

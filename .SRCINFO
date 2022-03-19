@@ -14,7 +14,7 @@ pkgbase = python-mwparserfromhell-git
 	provides = python-mwparserfromhell=0.6.4.r1.g6665505
 	conflicts = python-mwparserfromhell
 	options = !strip
-	source = git://github.com/earwig/mwparserfromhell
+	source = git+https://github.com/earwig/mwparserfromhell
 	md5sums = SKIP
 
 pkgname = python-mwparserfromhell-git
