@@ -2,7 +2,7 @@
 
 pkgname=cpeditor-git
 _pkgname=cpeditor
-pkgver=6.10.1.r11.gd8af3019
+pkgver=6.10.1.r16.g534680ec
 pkgrel=1
 pkgdesc='The editor for competitive programming'
 arch=('x86_64')
@@ -27,13 +27,13 @@ optdepends=(
 provides=('cpeditor')
 conflicts=("cpeditor")
 
-source=('git://github.com/cpeditor/cpeditor.git'
-    'git://github.com/cpeditor/QCodeEditor.git'
-    'git://github.com/cpeditor/QtFindReplaceDialog.git'
-    'git://github.com/cpeditor/lsp-cpp.git'
-    'git://github.com/itay-grudev/singleapplication.git'
-    'git://github.com/MikeMirzayanov/testlib.git'
-    'git://github.com/cpeditor/qhttp.git')
+source=('git+https://github.com/cpeditor/cpeditor.git'
+    'git+https://github.com/cpeditor/QCodeEditor.git'
+    'git+https://github.com/cpeditor/QtFindReplaceDialog.git'
+    'git+https://github.com/cpeditor/lsp-cpp.git'
+    'git+https://github.com/itay-grudev/singleapplication.git'
+    'git+https://github.com/MikeMirzayanov/testlib.git'
+    'git+https://github.com/cpeditor/qhttp.git')
 
 md5sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
