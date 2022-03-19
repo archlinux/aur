@@ -1,10 +1,10 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=dtkwidget-git
-pkgver=5.5.17.1.r65.gb7952ebf
+pkgver=5.5.42.r4.gd20ee610
 pkgrel=1
 pkgdesc='Deepin graphical user interface library'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dtkwidget"
 license=('LGPL3')
 depends=('deepin-qt-dbus-factory-git' 'dtkcore-git' 'dtkgui-git' 'librsvg' 'qt5-multimedia' 'qt5-svg'
@@ -13,7 +13,7 @@ makedepends=('git' 'qt5-tools' 'gtest' 'dtkcommon-git' 'dtkcore-git' 'dtkgui-git
 provides=('dtkwidget')
 conflicts=('dtkwidget')
 groups=('deepin-git')
-source=("$pkgname::git://github.com/linuxdeepin/dtkwidget.git")
+source=("$pkgname::git+https://github.com/linuxdeepin/dtkwidget.git")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -22,7 +22,10 @@ pkgver() {
 }
 
 prepare() {
-  cd $pkgname
+    cd $pkgname
+    if [[ ! -z ${sha} ]];then
+      git checkout -b $sha
+    fi
 }
 
 build() {
