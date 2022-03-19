@@ -2,8 +2,8 @@
 # Contributor: eduardosm
 
 pkgname=subtitleedit
-pkgver=3.6.4
-pkgrel=3
+pkgver=3.6.5
+pkgrel=1
 pkgdesc='An advanced subtitle editor and converter'
 arch=('any')
 url='https://www.nikse.dk/SubtitleEdit'
@@ -17,7 +17,7 @@ source=("https://github.com/SubtitleEdit/subtitleedit/releases/download/$pkgver/
         'subtitleedit'
         'subtitleedit.desktop'
         'subtitleedit.png')
-sha256sums=('9577ac0b570213e7d49acf0cfa8111f843c9ded4a7a962f83ddaf00e345fb843'
+sha256sums=('b9c2b1ef51b889c7ef93788ee3897775fb9d40c3754f269fb567aec0e2ab31e5'
             '51ae2411ed70a40607a78dd863db98bf5692bfaff7f8c230ddf82f0dc78d1cc3'
             '54ffb47864611c6aebb29ecfabd49089cfe6decc320e3f25043c39ec7f27a5fb'
             '700d09858ac76341054d7edc79952fbfca70df674d2b567e3713579e5963f631')
