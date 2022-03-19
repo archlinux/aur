@@ -9,8 +9,7 @@ pkgbase = php-kore-git
 	makedepends = git
 	depends = php
 	backup = etc/php/conf.d/kore.ini
-	source = php-kore-git::git://github.com/krakjoe/kore.git
+	source = php-kore-git::git+https://github.com/krakjoe/kore.git
 	md5sums = SKIP
 
 pkgname = php-kore-git
-
