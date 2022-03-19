@@ -1,5 +1,5 @@
 pkgbase = kodi-git
-	pkgver = r59673.6ffd8ccae9f
+	pkgver = r59895.e47331c6308
 	pkgrel = 1
 	url = https://kodi.tv
 	arch = x86_64
@@ -67,7 +67,7 @@ pkgbase = kodi-git
 	noextract = flatbuffers-2.0.0.tar.gz
 	noextract = libudfread-1.1.2.tar.gz
 	options = !lto
-	source = git://github.com/xbmc/xbmc.git#branch=master
+	source = git+https://github.com/xbmc/xbmc.git#branch=master
 	source = libdvdcss-1.4.2-Leia-Beta-5.tar.gz::https://github.com/xbmc/libdvdcss/archive/1.4.2-Leia-Beta-5.tar.gz
 	source = libdvdnav-6.0.0-Leia-Alpha-3.tar.gz::https://github.com/xbmc/libdvdnav/archive/6.0.0-Leia-Alpha-3.tar.gz
 	source = libdvdread-6.0.0-Leia-Alpha-3.tar.gz::https://github.com/xbmc/libdvdread/archive/6.0.0-Leia-Alpha-3.tar.gz
@@ -131,7 +131,7 @@ pkgname = kodi-git
 	optdepends = python-pybluez: Bluetooth support
 	optdepends = pulseaudio: PulseAudio support
 	optdepends = upower: Display battery level
-	provides = kodi=r59673.6ffd8ccae9f
+	provides = kodi=r59895.e47331c6308
 	provides = kodi-x11
 	provides = kodi-wayland
 	provides = kodi-gbm
@@ -148,7 +148,7 @@ pkgname = kodi-git-eventclients
 	pkgdesc = Kodi Event Clients (master branch)
 	optdepends = kodi: local machine eventclient use
 	optdepends = python: most eventclients are implemented in python
-	provides = kodi-eventclients=r59673.6ffd8ccae9f
+	provides = kodi-eventclients=r59895.e47331c6308
 	conflicts = kodi-eventclients
 
 pkgname = kodi-git-tools-texturepacker
@@ -157,11 +157,11 @@ pkgname = kodi-git-tools-texturepacker
 	depends = giflib
 	depends = libjpeg-turbo
 	depends = lzo
-	provides = kodi-tools-texturepacker=r59673.6ffd8ccae9f
+	provides = kodi-tools-texturepacker=r59895.e47331c6308
 	conflicts = kodi-tools-texturepacker
 
 pkgname = kodi-git-dev
 	pkgdesc = Kodi dev files (master branch)
 	depends = kodi-git
-	provides = kodi-dev=r59673.6ffd8ccae9f
+	provides = kodi-dev=r59895.e47331c6308
 	conflicts = kodi-dev
