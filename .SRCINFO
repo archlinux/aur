@@ -17,7 +17,7 @@ pkgbase = deepin-desktop-schemas-git
 	provides = deepin-desktop-schemas
 	conflicts = deepin-artwork-themes
 	conflicts = deepin-desktop-schemas
-	source = deepin-desktop-schemas-git::git://github.com/linuxdeepin/deepin-desktop-schemas
+	source = deepin-desktop-schemas-git::git+https://github.com/linuxdeepin/deepin-desktop-schemas
 	sha512sums = SKIP
 
 pkgname = deepin-desktop-schemas-git

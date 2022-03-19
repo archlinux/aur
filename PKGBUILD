@@ -12,12 +12,19 @@ makedepends=('git' 'python' 'go' 'golang-deepin-lib-git')
 conflicts=('deepin-artwork-themes' 'deepin-desktop-schemas')
 provides=('deepin-desktop-schemas')
 groups=('deepin-git')
-source=("$pkgname::git://github.com/linuxdeepin/deepin-desktop-schemas")
+source=("$pkgname::git+https://github.com/linuxdeepin/deepin-desktop-schemas")
 sha512sums=('SKIP')
 
 pkgver() {
     cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd $pkgname
+    if [[ ! -z ${sha} ]];then
+      git checkout -b $sha
+    fi
 }
 
 prepare() {
