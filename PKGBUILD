@@ -3,15 +3,15 @@
 
 pkgname=digital-rain-git
 pkgver=r8.d3963c4
-pkgrel=2
-pkgdesc="Matrix Digital Rain terminal program"
+pkgrel=3
+pkgdesc="Recreate the Digital Rain effect from the Matrix in a standard terminal"
 arch=('x86_64')
-url='https://github.com/DavidWKnight/Digital-Rain'
+url="https://github.com/DavidWKnight/Digital-Rain"
 license=('GPL3')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("$pkgname::git+$url")
+source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
