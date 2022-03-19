@@ -1,0 +1,16 @@
+pkgbase = md2vim
+	pkgdesc = Tool for automatically converting markdown to vimdoc format
+	pkgver = 21.12.14.0
+	pkgrel = 1
+	url = https://github.com/FooSoft/md2vim
+	arch = i386
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = MIT
+	provides = md2vim-21.12.14.0
+	conflicts = md2vim-21.12.14.0
+	source = md2vim-21.12.14.0::https://github.com/FooSoft/md2vim/releases/download/21.12.14.0/md2vim_linux_amd64.tar.gz
+	sha256sums = 65656e9e5b269dd2d5088896178a131f990d83d6e169fd8adb13076a943df75c
+
+pkgname = md2vim
