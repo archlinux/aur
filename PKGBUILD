@@ -4,7 +4,7 @@
 
 pkgname=crosstool-ng-git
 epoch=1
-pkgver=1.24.0.r507.g1b3d45df
+pkgver=1.25.0rc1.r0.g1e47ca1e
 pkgrel=1
 pkgdesc="crosstool-NG aims at building toolchains."
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ depends=('ncurses' 'make' 'rsync')
 makedepends=('git' 'flex' 'bison' 'gperf' 'help2man' 'unzip' 'lzip' 'python')
 provides=('crosstool-ng')
 conflicts=('crosstool-ng')
-source=('git://github.com/crosstool-ng/crosstool-ng.git')
+source=('git+https://github.com/crosstool-ng/crosstool-ng.git')
 b2sums=('SKIP')
 
 pkgver() {
