@@ -2,7 +2,7 @@
 
 pkgname=budgie-control-center
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Budgie's main interface to configure various aspects of the desktop"
 url="https://github.com/BuddiesOfBudgie/budgie-control-center"
 license=(GPL2)
@@ -23,11 +23,6 @@ sha256sums=('6c049d02600f6650238b4376a7eac77d8fcd786e9c603c4e4ec87cad0022028a'
             'SKIP')
 validpgpkeys=('1E1FB0017C998A8AE2C498A6C2EAA8A26ADC59EE' # David Mohammed <fossfreedom at ubuntu dot com>
               '0E0D97562A4EC8BD8E329DCDAA7A2325E04B609B') # Joshua Strobl <me at joshuastrobl dot com>
-
-prepare() {
-    git submodule update --init
-}
-
 
 build() {
     arch-meson $pkgname-$pkgver build -Ddocumentation=true
