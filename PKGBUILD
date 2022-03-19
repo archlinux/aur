@@ -7,12 +7,12 @@
 # from $srcdir/target/
 
 pkgname=libreelec-git
-pkgver=r36611.04dc864eeb
+pkgver=r38691.d451eca1aa
 pkgrel=1
 pkgdesc='Build LibreELEC for any device and architecture'
 arch=('x86_64')
 url='https://wiki.libreelec.tv/compile'
-source=(git://github.com/LibreELEC/LibreELEC.tv.git)
+source=(git+https://github.com/LibreELEC/LibreELEC.tv.git)
 license=('None')
 makedepends=(git)
 depends=(gperf patchutils unzip lzop xorg-mkfontscale xorg-bdftopcf

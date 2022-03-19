@@ -1,6 +1,6 @@
 pkgbase = libreelec-git
 	pkgdesc = Build LibreELEC for any device and architecture
-	pkgver = r36611.04dc864eeb
+	pkgver = r38691.d451eca1aa
 	pkgrel = 1
 	url = https://wiki.libreelec.tv/compile
 	arch = x86_64
@@ -22,8 +22,7 @@ pkgbase = libreelec-git
 	depends = perl-parse-yapp
 	depends = perl-json
 	depends = rpcsvc-proto
-	source = git://github.com/LibreELEC/LibreELEC.tv.git
+	source = git+https://github.com/LibreELEC/LibreELEC.tv.git
 	sha256sums = SKIP
 
 pkgname = libreelec-git
-
