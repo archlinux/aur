@@ -1,9 +1,10 @@
 pkgbase = deepin-network-utils-git
 	pkgdesc = DDE network utils
-	pkgver = 5.4.9.r11.gbe2e215
+	pkgver = 5.4.9.r12.ge26dfa3
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dde-network-utils
 	arch = x86_64
+	arch = aarch64
 	groups = deepin-git
 	license = GPL3
 	makedepends = git
@@ -14,7 +15,7 @@ pkgbase = deepin-network-utils-git
 	depends = gsettings-qt
 	provides = deepin-network-utils
 	conflicts = deepin-network-utils
-	source = deepin-network-utils-git::git://github.com/linuxdeepin/dde-network-utils.git
+	source = deepin-network-utils-git::git+https://github.com/linuxdeepin/dde-network-utils.git
 	sha512sums = SKIP
 
 pkgname = deepin-network-utils-git
