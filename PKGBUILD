@@ -2,7 +2,7 @@
 
 _pkgname=libui
 pkgname=${_pkgname}-git
-pkgver=alpha4.1.r319.ga0a98071
+pkgver=alpha4.1.r327.gfea45b2d
 pkgrel=1
 pkgdesc='A portable GUI library for C'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('gtk3' 'libx11' 'libxcb' 'libffi')
 makedepends=('make' 'gcc' 'cmake' 'meson' 'ninja')
 provides=('libui')
 conflicts=('libui')
-source=("$pkgname::git://github.com/andlabs/libui.git")
+source=("$pkgname"::'git+https://github.com/andlabs/libui.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -21,7 +21,7 @@ pkgver() {
 }
 
 build() {
-  cd $pkgname
+  cd "$srcdir/$pkgname"
   mkdir -p build
   meson build
   ninja -C build
