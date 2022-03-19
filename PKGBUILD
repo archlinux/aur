@@ -18,20 +18,20 @@ source=( "$pkgname::git+${url}.git" )
 md5sums=( 'SKIP' )
 
 pkgver() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${pkgname}"
 
 	# Detect the latest tag
 	git describe --tags `git rev-list --tags --max-count=1` | cut -c 2-
 }
 
 prepare() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${pkgname}"
 	# Checkout latest tag determined above
 	git checkout --quiet "v$pkgver"
 }
 
 build() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${pkgname}"
 
 	# Build with full optimization. Statically link druntime / phobos
 	# s.t. ldc (or rather libphobos) is a build-only dependency
@@ -45,7 +45,7 @@ build() {
 }
 
 check() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${pkgname}"
 
 	# Ensure that the test is reentrant
 	mkdir -p extracted
@@ -59,7 +59,7 @@ check() {
 }
 
 package() {
-	cd "$srcdir/${pkgname%-git}"
+	cd "$srcdir/${pkgname}"
 	local target="$pkgdir/usr/bin/"
 	mkdir -p "$target"
 	mv ./har "$target/"
