@@ -20,7 +20,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=( '$pkgname::git+https://github.com/MoonlightSentinel/har.git' )
+source=( "$pkgname::git+https://github.com/MoonlightSentinel/har.git" )
 noextract=()
 md5sums=( 'SKIP' )
 
