@@ -1,7 +1,7 @@
 pkgbase = gytparse
 	pkgdesc = Browse, stream and download Youtube videos
-	pkgver = 0.1.1
-	pkgrel = 3
+	pkgver = 0.1.2
+	pkgrel = 1
 	url = https://github.com/foucault/gytparse
 	arch = any
 	license = MPL2
@@ -14,7 +14,7 @@ pkgbase = gytparse
 	depends = yt-dlp
 	depends = mpv
 	optdepends = python-pysocks: Browse and download through SOCKS5 proxies
-	source = gytparse-0.1.1.tar.gz::https://github.com/foucault/gytparse/archive/refs/tags/0.1.1.tar.gz
-	sha256sums = c0486d9aa2ca4e3c9ee74be1120231c0267a7a9c57ff267ed98aa6781228d863
+	source = gytparse-0.1.2.tar.gz::https://github.com/foucault/gytparse/archive/refs/tags/0.1.2.tar.gz
+	sha256sums = 1c0d0e1f6f58d366ee7900fca9a07c20570b08948c2d68cf4fae63f7f3a2304e
 
 pkgname = gytparse
