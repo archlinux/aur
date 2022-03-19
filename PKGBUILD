@@ -2,7 +2,7 @@
 
 pkgname="python-unicorn-fy"
 _pkgname=${pkgname#python-}
-pkgver=0.12.0
+pkgver=0.12.2
 pkgrel=1
 pkgdesc="Convert received raw data from crypto exchange API endpoints into well-formed python dictionaries"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python-requests' 'python-ujson')
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('b3630f4fa56aa721a67d985bc94f4daec451a385c455657c1a6c09a81e38b173')
+sha256sums=('80e92ac25a9c905fa4ce6495d086026fb342138cba220eb4c2b6f5342d1b6d8f')
 
 build() {
   cd $_pkgname-$pkgver

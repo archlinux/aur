@@ -1,6 +1,6 @@
 pkgbase = python-unicorn-fy
 	pkgdesc = Convert received raw data from crypto exchange API endpoints into well-formed python dictionaries
-	pkgver = 0.12.0
+	pkgver = 0.12.2
 	pkgrel = 1
 	url = https://github.com/LUCIT-Systems-and-Development/unicorn-fy
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-unicorn-fy
 	makedepends = python-setuptools
 	depends = python-requests
 	depends = python-ujson
-	source = python-unicorn-fy-0.12.0.tar.gz::https://github.com/LUCIT-Systems-and-Development/unicorn-fy/archive/0.12.0.tar.gz
-	sha256sums = b3630f4fa56aa721a67d985bc94f4daec451a385c455657c1a6c09a81e38b173
+	source = python-unicorn-fy-0.12.2.tar.gz::https://github.com/LUCIT-Systems-and-Development/unicorn-fy/archive/0.12.2.tar.gz
+	sha256sums = 80e92ac25a9c905fa4ce6495d086026fb342138cba220eb4c2b6f5342d1b6d8f
 
 pkgname = python-unicorn-fy
