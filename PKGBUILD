@@ -1,24 +1,29 @@
-# Maintainer : chrisl echo archlinux@c2h0r1i2s4t5o6p7h8e9r-l3u4n1a.com|sed 's/[0-9]//g'
+# Maintainer : Evan
+# Contributor: Chris L
 
 pkgname=mlvwm
-pkgver=0.9.1
-pkgrel=2
-pkgdesc='Macintosh-Like Virtual Window Manager, it attempts to emulate the pre-Mac OS X Macintosh look and feel in its layout and window design.'
+pkgver=0.9.4
+pkgrel=3
+pkgdesc='Unoffical package for Macintosh-Like Virtual Window Manager, it attempts to emulate the pre-Mac OS X Macintosh look and feel in its layout and window design.'
 arch=('i686' 'x86_64')
 url="http://www2u.biglobe.ne.jp/~y-miyata/mlvwm.html"
 license=('mit')
+depends=('libxpm')
 makedepends=('imake')
-source=(http://www2u.biglobe.ne.jp/~y-miyata/mlvwm/mlvwm091.tar.gz)
-md5sums=('0ac2a6f9981742b05509f7b8d00a7e52')
+source=(https://github.com/morgant/mlvwm/releases/download/0.9.4/mlvwm-0.9.4.tar.gz)
+md5sums=('09cd57abecb65a2cc0bd35d623dae953')
 
 build() {
-  cd mlvwm091
-  xmkmf -a
+  cd mlvwm-0.9.4
+  cd man && xmkmf && cd -
+  cd sample_rc && xmkmf && cd -
+  cd mlvwm && xmkmf && cd -
+  xmkmf
   make
   #make PREFIX="$pkgdir"/usr BINARY=$pkgname install man
 }
 package () {
-  cd mlvwm091
+  cd mlvwm-0.9.4
   sed -n '1,34 p'< mlvwm/mlvwm.c >license
   mkdir -p "$pkgdir"/usr/share/licenses/$pkgname/
   mkdir -p "$pkgdir"/usr/share/man/man1/
