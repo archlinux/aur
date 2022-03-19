@@ -8,6 +8,7 @@ arch=('i686' 'x86_64')
 license=('GPL3')
 makedepends=('cargo')
 sha256sums=('27fc8d1a4eed1ad8d4311c72459a0c8f1ae91a06347d5884138294517d7c3708')
+url='https://github.com/kaedwen/rmenu/'
 
 build () {
   cd "$srcdir/$pkgname-$pkgver-$pkgrel"

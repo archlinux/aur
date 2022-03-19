@@ -2,6 +2,7 @@ pkgbase = rmenu
 	pkgdesc = Dynamic Wayland Menu Launcher
 	pkgver = 0.1.0
 	pkgrel = 1
+	url = https://github.com/kaedwen/rmenu/
 	arch = i686
 	arch = x86_64
 	license = GPL3
