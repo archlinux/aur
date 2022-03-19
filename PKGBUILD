@@ -1,38 +1,25 @@
-
-pkgbase=python-rawpy
-pkgname=('python-rawpy' 'python2-rawpy')
-pkgver=0.10.1
-pkgrel=2
+# Contributor: Simone Riva <simone.rva@gmail.com>
+_base=rawpy
+pkgname=python-${_base}
+pkgver=0.17.0
+pkgrel=1
 pkgdesc="Python wrapper for the LibRaw library"
 arch=(any)
-license=('MIT License')
-url="https://pypi.python.org/pypi/rawpy"
-depends=('python' 'libraw' 'python-numpy')
-
-source=("https://codeload.github.com/letmaik/rawpy/tar.gz/v0.10.1")
-sha256sums=('62454597ae36e3ae91219775ff7323aa508afe451b7a48740c8720a6a5e9fd4b')
-
-prepare() {
-  cp -a rawpy-$pkgver{,-py2}
-}
+license=(MIT)
+url="https://github.com/letmaik/rawpy"
+depends=(libraw python-numpy)
+makedepends=(python-setuptools cython)
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('f50846d5cb0caedda4c6e512edcc166b8ecf012f79eb98187d735799ead9606377a289992ffc0b9c3abe826ef84cf5c42505441d69633525286f8ccf4915cb26')
 
 build() {
-  cd "$srcdir/rawpy-$pkgver"
- # python setup.py install --root=$pkgdir --prefix=usr --optimize=1
-  
-  cd "$srcdir/rawpy-$pkgver-py2"
- # python2 setup.py install --root=$pkgdir --prefix=usr --optimize=1
-}
-
-package_python2-rawpy() {
-  cd "$srcdir/rawpy-${pkgver}-py2"
-  #echo ${pkgdir}
-  python2 setup.py install --root=$pkgdir --prefix=usr --optimize=1
+  cd ${_base}-${pkgver}
+  export PYTHONHASHSEED=0
+  python setup.py build
 }
 
 package_python-rawpy() {
-  cd "$srcdir/rawpy-${pkgver}"
-  #echo ${pkgdir}
-  python setup.py install --root=$pkgdir --prefix=usr --optimize=1
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
