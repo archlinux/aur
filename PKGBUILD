@@ -1,10 +1,10 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-api-git
-pkgver=5.5.5.r19.g1253eb6
+pkgver=5.5.9.r8.g916f644
 pkgrel=1
 pkgdesc='Golang bindings for dde-daemon'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dde-api"
 license=('GPL3')
 # alsa-utils: alsactl used in sound-theme-player
@@ -21,7 +21,7 @@ provides=('deepin-api')
 conflicts=('deepin-api')
 groups=('deepin-git')
 install=deepin-api.install
-source=("$pkgname::git://github.com/linuxdeepin/dde-api/"
+source=("$pkgname::git+https://github.com/linuxdeepin/dde-api/"
         deepin-api.sysusers)
 sha512sums=('SKIP'
             'e894eb3928af9e244fa78010fdf16c8abb6ce18df114cf05327d02b18774d6ba5b023e4dfa0d07042f4e44a5c6e2ddb55b07f3e0db466a0e6169b52465fdefd6')
@@ -29,6 +29,13 @@ sha512sums=('SKIP'
 pkgver() {
     cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd $pkgname
+    if [[ ! -z ${sha} ]];then
+      git checkout -b $sha
+    fi
 }
 
 prepare() {
