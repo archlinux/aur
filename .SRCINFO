@@ -20,7 +20,7 @@ pkgbase = golang-github-linuxdeepin-go-x11-client-git
 	depends = golang-golang-x-text
 	provides = golang-github-linuxdeepin-go-x11-client
 	conflicts = golang-github-linuxdeepin-go-x11-client
-	source = golang-github-linuxdeepin-go-x11-client-git::git://github.com/linuxdeepin/go-x11-client
+	source = golang-github-linuxdeepin-go-x11-client-git::git+https://github.com/linuxdeepin/go-x11-client
 	sha512sums = SKIP
 
 pkgname = golang-github-linuxdeepin-go-x11-client-git

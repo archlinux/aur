@@ -13,7 +13,7 @@ groups=('deepin-git')
 depends=('golang-golang-x-text')
 makedepends=('git' 'go' 'xorg-server-xvfb' 'golang-github-stretchr-testify' 'golang-gopkg-check.v1' 'golang-gopkg-yaml.v2')
 checkdepends=('xorg-server-xvfb' 'golang-github-stretchr-testify' 'golang-gopkg-check.v1' 'golang-gopkg-yaml.v2' 'git')
-source=("$pkgname::git://github.com/linuxdeepin/go-x11-client")
+source=("$pkgname::git+https://github.com/linuxdeepin/go-x11-client")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -23,6 +23,9 @@ pkgver() {
 
 prepare() {
   cd $pkgname
+  if [[ ! -z ${sha} ]];then
+    git checkout -b $sha
+  fi
   rm -rf tools
 }
 
