@@ -1,10 +1,10 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=dtkgui-git
-pkgver=5.5.17.1.r12.ga53f411
+pkgver=5.5.21.r6.g18ee272
 pkgrel=1
 pkgdesc='Deepin Toolkit, gui module for DDE look and feel'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dtkgui"
 license=('LGPL3')
 depends=('dtkcore-git' 'librsvg' 'qt5-x11extras')
@@ -12,12 +12,19 @@ makedepends=('git' 'qt5-tools' 'dtkcore-git' 'librsvg' 'qt5-x11extras' 'gtest' '
 conflicts=('dtkgui')
 provides=('dtkgui')
 groups=('deepin-git')
-source=("$pkgname::git://github.com/linuxdeepin/dtkgui")
+source=("$pkgname::git+https://github.com/linuxdeepin/dtkgui")
 sha512sums=('SKIP')
 
 pkgver() {
     cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd $pkgname
+    if [[ ! -z ${sha} ]];then
+      git checkout -b $sha
+    fi
 }
 
 build() {

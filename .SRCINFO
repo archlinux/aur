@@ -1,9 +1,10 @@
 pkgbase = dtkgui-git
 	pkgdesc = Deepin Toolkit, gui module for DDE look and feel
-	pkgver = 5.5.17.1.r12.ga53f411
+	pkgver = 5.5.21.r6.g18ee272
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/dtkgui
 	arch = x86_64
+	arch = aarch64
 	groups = deepin-git
 	license = LGPL3
 	makedepends = git
@@ -18,7 +19,7 @@ pkgbase = dtkgui-git
 	depends = qt5-x11extras
 	provides = dtkgui
 	conflicts = dtkgui
-	source = dtkgui-git::git://github.com/linuxdeepin/dtkgui
+	source = dtkgui-git::git+https://github.com/linuxdeepin/dtkgui
 	sha512sums = SKIP
 
 pkgname = dtkgui-git
