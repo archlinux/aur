@@ -1,15 +1,18 @@
 # Maintainer: oscareczek <oscareczek at gmail dot com>
 pkgname=86box
 _pkgname=86Box
-pkgver=3.2.1
-pkgrel=3
+pkgver=3.3
+pkgrel=1
 pkgdesc='Emulator of x86-based machines based on PCem.'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
 url='https://86box.net/'
 license=('GPL2')
 depends=('alsa-lib' 'freetype2' 'libpng' 'libslirp' 'openal' 'qt6-base' 'rtmidi' 'sdl2')
 makedepends=('cmake>=3.21' 'ninja' 'qt6-tools')
-optdepends=('86box-roms: ROM files')
+optdepends=(
+    '86box-roms: ROM files'
+    'libpcap: Networking not limited to TCP/IP'
+)
 options=('!buildflags')
 source=(
     "https://github.com/${_pkgname}/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
@@ -17,7 +20,7 @@ source=(
     '86Box.desktop'
 )
 sha512sums=(
-    'd725b9c2d2ada47e4492dd09c79af15010a03b174cf99705cf7ffbd4de39aa3a745bf5ab41e4f173e89f4c8d9c130e7540014a1824ff34bb88e634d8dc7860eb'
+    'c590b138d4cb19519847f13d8d68d6d8a54ee2372cb00e998dbb9b15d6c18beaa2e842625631fa716c1dba49149f1a93e8f6521a02d05d97b91ca311b8d91859'
     '3e06cfd2e634ad771c384f05f58f9ba370d86511d291c2b196199908cd2a95274a4046b2979b8bfb5758583d095bc99536c1fef2f582cc5d23b7764151843f38'
     '143447f38e3ddf458f469dffd37897503112100cf69d46dbe6810f5e64c32d91d87dcb46fe4447cda8d2fb91dd2f1b868ee1e43575a972280801b40cf7cfbd85'
 )
