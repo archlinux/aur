@@ -1,6 +1,6 @@
 pkgbase = cloudflared
 	pkgdesc = Command-line client for Cloudflare Tunnel
-	pkgver = 2022.3.2
+	pkgver = 2022.3.3
 	pkgrel = 1
 	url = https://github.com/cloudflare/cloudflared
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = cloudflared
 	conflicts = cloudflared-bin
 	options = !lto
 	backup = etc/cloudflared/config.yml
-	source = cloudflared::git+https://github.com/cloudflare/cloudflared.git#commit=e1a9e98cca27d3fba0a858d87f4c2d6d2f6013d5
+	source = cloudflared::git+https://github.com/cloudflare/cloudflared.git#commit=6eeaf4be4b03398a676f1488e61da13acaedb5df
 	source = config.yml
 	source = systemd.service
 	source = sysusers.conf
