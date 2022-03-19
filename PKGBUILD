@@ -1,15 +1,15 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
 pkgname=jumpapp
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="A run-or-raise application switcher for any X11 desktop"
 arch=('any')
 url="https://github.com/mkropat/jumpapp"
 license=('MIT')
 depends=('inetutils' 'wmctrl' 'xdotool')
 source=("https://github.com/mkropat/jumpapp/releases/download/v${pkgver}/${pkgname}_${pkgver}.tar.bz2")
-sha256sums=('7ef5c616f845040382c6bebcdb8dc31d59f6a3a1bd01669842d02744596c40ec')
+sha256sums=('794da8dc4a24b2cf9a380f6de4bbdcc8ad951aa92c9c2340cf1ffd5c939c6d9c')
 
 
 package() {
