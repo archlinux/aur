@@ -4,7 +4,7 @@ pkgname=disomaster-git
 pkgver=5.0.7.r2.g157dd8f
 pkgrel=1
 pkgdesc='Library to manipulate DISC burning.'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/disomaster"
 license=('GPL3')
 depends=('libisoburn')
@@ -12,12 +12,19 @@ makedepends=('git' 'qt5-tools')
 groups=('deepin-git')
 provides=('disomaster')
 conflicts=('disomaster')
-source=("$pkgname::git://github.com/linuxdeepin/disomaster")
+source=("$pkgname::git+https://github.com/linuxdeepin/disomaster")
 sha512sums=('SKIP')
 
 pkgver() {
     cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd $pkgname
+    if [[ ! -z ${sha} ]];then
+      git checkout -b $sha
+    fi
 }
 
 build() {

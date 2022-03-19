@@ -4,6 +4,7 @@ pkgbase = disomaster-git
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/disomaster
 	arch = x86_64
+	arch = aarch64
 	groups = deepin-git
 	license = GPL3
 	makedepends = git
@@ -11,7 +12,7 @@ pkgbase = disomaster-git
 	depends = libisoburn
 	provides = disomaster
 	conflicts = disomaster
-	source = disomaster-git::git://github.com/linuxdeepin/disomaster
+	source = disomaster-git::git+https://github.com/linuxdeepin/disomaster
 	sha512sums = SKIP
 
 pkgname = disomaster-git
