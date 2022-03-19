@@ -1,8 +1,8 @@
 # Maintainer: MoonlightSentinel <moonlightsentinel@disroot.org>
 
 pkgname=har-git
-pkgver='0.1.0'
-pkgrel=3
+pkgver=0.1.0.r2.gc2f8858
+pkgrel=4
 pkgdesc="Utility to create / extract HAR (Human Archive Format) files"
 arch=(x86_64)
 # N.B.: Forked from marler8997/har due to inactivity
