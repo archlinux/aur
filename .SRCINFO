@@ -1,8 +1,8 @@
 pkgbase = openvpn-update-resolv-conf-git
 	pkgdesc = OpenVPN Update resolvconf
-	pkgver = r42.43093c2
-	pkgrel = 2
-	url = https://github.com/masterkorp/openvpn-update-resolv-conf
+	pkgver = r44.0288491
+	pkgrel = 1
+	url = https://github.com/alfredopalhares/openvpn-update-resolv-conf
 	arch = any
 	license = GPL
 	makedepends = git
@@ -10,8 +10,7 @@ pkgbase = openvpn-update-resolv-conf-git
 	depends = openresolv
 	provides = openvpn-update-resolv-conf
 	conflicts = openvpn-update-resolv-conf
-	source = git://github.com/masterkorp/openvpn-update-resolv-conf
+	source = git+https://github.com/alfredopalhares/openvpn-update-resolv-conf
 	sha256sums = SKIP
 
 pkgname = openvpn-update-resolv-conf-git
-

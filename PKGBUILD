@@ -3,17 +3,17 @@
 
 _pkgname=openvpn-update-resolv-conf
 pkgname="$_pkgname"-git
-pkgver=r42.43093c2
-pkgrel=2
+pkgver=r44.0288491
+pkgrel=1
 pkgdesc="OpenVPN Update resolvconf"
 arch=('any')
-url="https://github.com/masterkorp/$_pkgname"
+url="https://github.com/alfredopalhares/$_pkgname"
 license=('GPL')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 makedepends=('git')
 depends=('openvpn' 'openresolv')
-source=("git://github.com/masterkorp/$_pkgname")
+source=("git+$url")
 sha256sums=('SKIP')
 
 pkgver() {
