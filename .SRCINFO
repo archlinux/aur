@@ -1,9 +1,9 @@
 pkgbase = uwufetch
 	pkgdesc = A meme system info tool for Linux, based on nyan/uwu trend on r/linuxmasterrace.
 	pkgver = 1.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TheDarkBug/uwufetch
-	arch = any
+	arch = x86_64
 	license = GPL3
 	makedepends = gcc
 	optdepends = viu: Display distro logos as images
