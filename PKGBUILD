@@ -6,9 +6,9 @@
 
 pkgname=distcc-git
 _pkgname=distcc
-pkgver=v3.4.r0.g50d821e
+pkgver=v3.4.r26.gae9922c
 pkgrel=1
-_gccver=11.1.0 # Current GCC version, used for symlinks. See FS#69044
+_gccver=11.2.0 # Current GCC version, used for symlinks. See FS#69044
 pkgdesc='Distributed compilation service for C, C++ and Objective-C'
 arch=(x86_64)
 url='https://github.com/distcc/distcc'
@@ -20,7 +20,7 @@ conflicts=(distcc)
 provides=(distcc)
 backup=(etc/conf.d/distccd
         etc/distcc/hosts)
-source=(git://github.com/distcc/distcc.git
+source=(git+https://github.com/distcc/distcc
         distccd.conf.d
         distccd.service
         sysusers.conf)
