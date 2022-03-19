@@ -1,0 +1,18 @@
+pkgbase = streampi-client
+	pkgdesc = An Opensource Alternative to the Elgato Stream Deck for the Raspberry Pi
+	pkgver = 1.0.0_EA+3
+	pkgrel = 1
+	url = https://stream-pi.com
+	arch = x86_64
+	license = GPL3
+	depends = java-runtime>=11
+	depends = alsa-lib
+	depends = libnet
+	depends = gtk3
+	depends = gtk2
+	source = streampi-client-1.0.0_EA+3.zip::https://github.com/stream-pi/client/releases/download/1.0.0-EA+3/stream-pi-client-linux-x64-1.0.0-EA+3-executable.zip
+	source = LICENSE::https://raw.githubusercontent.com/stream-pi/client/master/LICENSE
+	sha256sums = 9b15a5e4003099e2ea5eb39f635c1eda9b638c06e181d58a9677a459cf2a46f8
+	sha256sums = 8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b
+
+pkgname = streampi-client
