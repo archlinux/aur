@@ -1,10 +1,10 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=dtkcore-git
-pkgver=5.5.23.r5.g74f86b0
+pkgver=5.5.23.r14.g6cb6070
 pkgrel=1
 pkgdesc='DTK core modules'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/dtkcore"
 license=('LGPL3')
 depends=('dconf' 'deepin-desktop-base-git' 'python' 'gsettings-qt' 'lshw')
@@ -12,12 +12,19 @@ makedepends=('git' 'qt5-tools' 'gtest' 'dtkcommon-git')
 conflicts=('dtkcore')
 provides=('dtkcore')
 groups=('deepin-git')
-source=("$pkgname::git://github.com/linuxdeepin/dtkcore.git")
+source=("$pkgname::git+https://github.com/linuxdeepin/dtkcore.git")
 sha512sums=('SKIP')
 
 pkgver() {
     cd $pkgname
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+    cd $pkgname
+    if [[ ! -z ${sha} ]];then
+      git checkout -b $sha
+    fi
 }
 
 build() {
