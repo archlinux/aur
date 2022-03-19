@@ -1,14 +1,13 @@
 pkgbase = python-opengl-accelerate
 	pkgdesc = This is the Cython-coded accelerator module for PyOpenGL 3.x
-	pkgver = 3.1.5
+	pkgver = 3.1.6
 	pkgrel = 1
 	arch = any
 	license = BSD
 	depends = python
 	depends = python-opengl
 	options = !emptydirs
-	source = https://github.com/mcfletch/pyopengl/archive/3e9791ffb4cd4831dae261d6bea3049ce9e78f01.tar.gz
-	sha256sums = d8547b182938aff99eb202edb94f712127d535611f976bd2aaf72650fcef3531
+	source = https://github.com/mcfletch/pyopengl/archive/227f9c66976d9f5dadf62b9a97e6beaec84831ca.tar.gz
+	sha256sums = 6b556e5aa2fd6517809e1559593038c99d3318d21155be4de3d18acfef093d40
 
 pkgname = python-opengl-accelerate
-
