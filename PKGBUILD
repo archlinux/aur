@@ -6,7 +6,7 @@
 pkgbase=htmlunit
 pkgname=("$pkgbase" "$pkgbase-doc")
 
-pkgver=2.59.0
+pkgver=2.60.0
 pkgrel=1
 
 pkgdesc='Headless HTTP webclient for Java'
@@ -16,7 +16,7 @@ license=('Apache')
 
 #source=("http://sourceforge.net/projects/$pkgbase/files/$pkgbase/$pkgver/$pkgbase-$pkgver-bin.zip")
 source=("https://github.com/$pkgbase/$pkgbase/releases/download/$pkgver/$pkgbase-$pkgver-bin.zip")
-sha256sums=('cef41ed4358ae5ff3d6f5a0e5264248040aeda385bc7ad7dc3ca60ecc64a3089')
+sha256sums=('9f3eaf5226245477d7a8111b022f24d8b01d70f6bb8b611e1a24dd7bd71e7676')
 
 
 package_htmlunit() {
