@@ -1,5 +1,5 @@
 pkgname=weasis-bin
-pkgver=3.8.0
+pkgver=3.8.1
 pkgrel=1
 pkgdesc="Weasis is a multipurpose DICOM viewer with a highly modular architecture"
 arch=('any')
@@ -8,7 +8,7 @@ license=('EPL-2.0')
 groups=('')
 options=('!strip' '!emptydirs')
 source=("https://github.com/nroduit/Weasis/releases/download/v${pkgver}/weasis_${pkgver}-1_amd64.deb")
-sha512sums=('f7394890b675f9a80fc405dd017754363b64eae3bc5dbba992c22d8eddf2145b68e867340eb98f3086620d9023c0c1ea8e4850912fda4f39d3a63f76d1de9305')
+sha512sums=('1150aa6af77135a9cb868a6d7a3002a450864944a899e0e5db19fd45e41dfdb40edbe74387cc654e67d47d41a35ade4e198d3aa0cb279b55e3d4a092c9ecce52')
 
 package(){
         tar -xJC "${pkgdir}" -f data.tar.xz
