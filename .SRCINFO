@@ -1,12 +1,12 @@
 pkgbase = libwifi
 pkgdesc = An 802.11 Frame Parsing and Generation library written in C
-pkgver = 0.0.4
+pkgver = 0.0.5
 pkgrel = 1
 url = https://libwifi.so
 arch = x86_64
 license = APACHE
 makedepends = cmake
-source = libwifi-0.0.4.tar.gz::https://github.com/libwifi/libwifi/archive/refs/tags/0.0.4.tar.gz
-sha256sums = d0dd6f896f0744e6bf203f5ffbb22b8215c251ef196c3377bfd338afd5013b9d
+source = libwifi-0.0.5.tar.gz::https://github.com/libwifi/libwifi/archive/refs/tags/0.0.5.tar.gz
+sha256sums = 42ed06f90e08165f92bdfb4358ca8eedb6c91d38ebd235365fe26bb9613dcd06
 
 pkgname = libwifi
