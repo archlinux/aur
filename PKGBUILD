@@ -2,7 +2,7 @@
 
 _pkgname=python-code-chat
 pkgname=$_pkgname-git
-pkgver=1.2.1.r0.g6c15264
+pkgver=1.9.0.r5.g05f02b3
 pkgrel=1
 pkgdesc="Source code to HTML translator (literate programming)"
 arch=('any')
@@ -10,9 +10,9 @@ url="https://github.com/bjones1/CodeChat"
 license=('GPL3')
 depends=('python-docutils')
 makedepends=('git' 'python-setuptools')
-provides=($_pkgname)
-conflicts=($_pkgname)
-source=($pkgname::git://github.com/bjones1/CodeChat.git)
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$pkgname::git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
