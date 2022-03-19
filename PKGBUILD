@@ -6,8 +6,8 @@
 # Contributor: Karsten Hinz <k.hinz at tu-bs dot de>
 
 pkgname=pycam-git
-pkgver=r2178.4687f2f6
-pkgrel=2
+pkgver=0.7.0.pre0.r2196.g55e3129f
+pkgrel=1
 pkgdesc='Toolpath generator for 3-axis CNC machining, written in Python.'
 arch=('i686' 'x86_64')
 url='https://github.com/SebKuzminsky/pycam'
@@ -23,7 +23,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/pycam"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s.g%s" "$(git describe --tags --abbrev=0 --first-parent | sed 's/^v//;s/-/./g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
