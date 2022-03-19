@@ -257,14 +257,14 @@ prepare() {
     scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
   fi
 
-  if [ "$_subarch" == 98 ] || [ "$_subarch" == 99 ]; then
+  if [ "$_subarch" == 40 ] || [ "$_subarch" == 42 ]; then
     scripts/config --disable CONFIG_CPU_SUP_HYGON
     scripts/config --disable CONFIG_CPU_SUP_CENTAUR
     scripts/config --disable CONFIG_CPU_SUP_ZHAOXIN
     scripts/config --disable CONFIG_AGP_SIS
     scripts/config --disable CONFIG_AGP_VIA
     scripts/config --set-val CONFIG_NR_CPUS ${_jobs}
-    if [ "$_subarch" == 98 ]; then
+    if [ "$_subarch" == 40 ]; then
       msg2 "Setting for Intel CPU"
       scripts/config --disable CONFIG_CPU_SUP_AMD
       scripts/config --disable CONFIG_AMD_MEM_ENCRYPT
@@ -284,7 +284,7 @@ prepare() {
       scripts/config --modules CONFIG_X86_P4_CLOCKMOD
       scripts/config --enable CONFIG_INTEL_IDLE
       scripts/config --enable CONFIG_AGP_INTEL
-    elif [ "$_subarch" == 99 ]; then
+    elif [ "$_subarch" == 41 ]; then
       msg2 "Setting for AMD CPU"
       scripts/config --disable CONFIG_CPU_SUP_INTEL
       scripts/config --disable CONFIG_INTEL_IDLE
