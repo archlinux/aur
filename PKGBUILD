@@ -14,8 +14,8 @@ makedepends=(
     'cmake'
     )
 #optdepends=()
-provides=('libmirisdr')
-
+provides=('libosmosdr')
+conflicts=('libosmosdr')
 source=("${pkgname}::git://git.osmocom.org/osmo-sdr")
 md5sums=('SKIP')
 
