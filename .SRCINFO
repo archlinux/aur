@@ -1,7 +1,7 @@
 pkgbase = bemenu-git
 	pkgdesc = Dynamic menu library and client program inspired by dmenu
 	pkgver = 0.6.7.r1.g81b5091
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Cloudef/bemenu
 	arch = x86_64
 	license = GPL3
@@ -33,7 +33,7 @@ pkgname = bemenu-ncurses-git
 
 pkgname = bemenu-x11-git
 	pkgdesc = X11 renderer for bemenu
-	depends = libbemenu
+	depends = libbemenu-git
 	depends = libxinerama
 	depends = pango
 	provides = bemenu-renderer-git
@@ -43,7 +43,7 @@ pkgname = bemenu-x11-git
 pkgname = bemenu-wayland-git
 	pkgdesc = Wayland (wlroots-based compositors) renderer for bemenu
 	install = bemenu-wayland-git.install
-	depends = libbemenu
+	depends = libbemenu-git
 	depends = libxkbcommon
 	depends = pango
 	depends = wayland
