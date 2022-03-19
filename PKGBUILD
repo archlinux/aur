@@ -38,14 +38,11 @@ pkgver() {
 }
 
 prepare() {
-    cd $pkgname
-    if [[ ! -z ${sha} ]];then
-      git checkout -b $sha
-    fi
-}
-
-prepare() {
   cd $pkgname
+  if [[ ! -z ${sha} ]];then
+    git checkout -b $sha
+  fi
+
   patch -p1 -i ../remove-tc.patch
   patch -p1 -i ../dde-daemon.patch
   rm -rf system/uadp
