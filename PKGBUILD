@@ -1,10 +1,10 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=startdde-git
-pkgver=5.8.22.r112.ga7a2b88
+pkgver=5.8.22.r118.gb7faac1
 pkgrel=1
 pkgdesc="starter of deepin desktop environment"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/startdde"
 license=('GPL3')
 depends=('libgnome-keyring')
@@ -17,7 +17,7 @@ optdepends=('deepin-wm: Legacy 3D window manager'
 provides=('startdde')
 conflicts=('startdde')
 groups=('deepin-git')
-source=("$pkgname::git://github.com/linuxdeepin/startdde")
+source=("$pkgname::git+https://github.com/linuxdeepin/startdde")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -26,6 +26,10 @@ pkgver() {
 }
 
 prepare() {
+  cd $pkgname
+  if [[ ! -z ${sha} ]];then
+    git checkout -b $sha
+  fi
   export GOPATH="$srcdir/build:/usr/share/gocode"
   export GO111MODULE=off
   go get -v github.com/cryptix/wav

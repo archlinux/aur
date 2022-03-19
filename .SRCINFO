@@ -1,9 +1,10 @@
 pkgbase = startdde-git
 	pkgdesc = starter of deepin desktop environment
-	pkgver = 5.8.22.r112.ga7a2b88
+	pkgver = 5.8.22.r118.gb7faac1
 	pkgrel = 1
 	url = https://github.com/linuxdeepin/startdde
 	arch = x86_64
+	arch = aarch64
 	groups = deepin-git
 	license = GPL3
 	makedepends = cmake
@@ -23,7 +24,7 @@ pkgbase = startdde-git
 	optdepends = deepin-kwin: Preferred window manager
 	provides = startdde
 	conflicts = startdde
-	source = startdde-git::git://github.com/linuxdeepin/startdde
+	source = startdde-git::git+https://github.com/linuxdeepin/startdde
 	sha512sums = SKIP
 
 pkgname = startdde-git
