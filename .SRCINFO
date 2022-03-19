@@ -6,8 +6,9 @@ pkgbase = deepin-icon-theme-git
 	arch = any
 	groups = deepin
 	license = LGPL3
+	makedepends = git
 	optdepends = gtk-engine-murrine: for gtk2 themes
-	source = deepin-icon-theme-git::git://github.com/linuxdeepin/deepin-icon-theme/
+	source = deepin-icon-theme-git::git+https://github.com/linuxdeepin/deepin-icon-theme/
 	sha512sums = SKIP
 
 pkgname = deepin-icon-theme-git
