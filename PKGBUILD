@@ -1,10 +1,10 @@
 # Maintainer: justforlxz <justforlxz@gmail.com>
 
 pkgname=deepin-pw-check-git
-pkgver=5.1.6.r5.g10c0e2f
+pkgver=5.1.6.r12.gd8c5518
 pkgrel=1
 pkgdesc='deepin-pw-check is a tool to verify the validity of the password'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/linuxdeepin/deepin-pw-check"
 license=('GPL3')
 depends=('cracklib' 'iniparser' 'pam')
@@ -12,7 +12,7 @@ makedepends=('git' 'go' 'golang-github-linuxdeepin-go-dbus-factory-git' 'deepin-
 groups=('deepin-git')
 provides=('deepin-pw-check')
 conflicts=('deepin-pw-check')
-source=("$pkgname::git://github.com/linuxdeepin/deepin-pw-check")
+source=("$pkgname::git+https://github.com/linuxdeepin/deepin-pw-check")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -21,7 +21,11 @@ pkgver() {
 }
 
 prepare() {
-    cd $pkgname
+  cd $pkgname
+  if [[ ! -z ${sha} ]];then
+    git checkout -b $sha
+  fi
+
     export GOPATH="$srcdir/build:/usr/share/gocode"
     export GO111MODULE=off
     go get -v github.com/godbus/dbus
