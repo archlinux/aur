@@ -2,7 +2,7 @@ pkgname=yup
 _pkgname=yup
 pkgver="1.1.8"
 _pkgver="1.1.8"
-pkgrel=1
+pkgrel=2
 pkgdesc="Arch Linux AUR Helper with ncurses functionality and better searching and sorting"
 arch=('any')
 url="https://github.com/ericm/yup"
@@ -19,9 +19,9 @@ prepare() {
 }
 
 package() {
-    install -dm755 ${pkgdir}/usr/local/bin/${BINAME}
+    install -dm755 ${pkgdir}/bin/${BINAME}
     install -dm755 ${pkgdir}/usr/share/zsh/site-functions/_yup
     cd "${_pkgname}"
-    cp ${_pkgname} ${pkgdir}/usr/local/bin/${BINAME}
+    cp ${_pkgname} ${pkgdir}/bin/${BINAME}
     cp completions/zsh ${pkgdir}/usr/share/zsh/site-functions/_yup
 }
