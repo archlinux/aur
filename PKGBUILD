@@ -13,9 +13,9 @@ pkgdesc='Deepin Wallpapers'
 arch=('any')
 license=('GPL')
 url="https://github.com/linuxdeepin/deepin-wallpapers"
-makedepends=('deepin-api-git')
+makedepends=('git' 'deepin-api-git')
 groups=('deepin-git')
-source=("$pkgname::git://github.com/linuxdeepin/deepin-wallpapers/")
+source=("$pkgname::git+https://github.com/linuxdeepin/deepin-wallpapers/")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -24,7 +24,11 @@ pkgver() {
 }
 
 prepare() {
-  cd $pkgbase
+  cd $pkgname
+  if [[ ! -z ${sha} ]];then
+    git checkout -b $sha
+  fi
+
   cp -a "$srcdir"/$pkgbase{,-community}
 }
 
