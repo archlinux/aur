@@ -13,7 +13,7 @@ optdepends=('vte: integrated vte-based terminal'
 'python-mutagen: audio-metadata support'
 'gvfs: mount-management')
 conflicts=('sunflower')
-source=('git://github.com/MeanEYE/Sunflower.git')
+source=('git+https://github.com/MeanEYE/Sunflower.git')
 md5sums=('SKIP')
 
 prepare() {
