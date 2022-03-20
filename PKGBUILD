@@ -3,22 +3,22 @@
 pkgname=mpdmenu-git
 _gitname=mpdmenu
 pkgver=r18.c52189a
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple dmenu frontend for MPD"
-license=( MIT )
+license=(MIT)
 url=https://github.com/arikai/mpdmenu
-depends=( 'dmenu' 'python-mpd2' )
-optdepends=( 'mpd' )
-arch=( any )
-makedepends=( git )
-conflicts=( mpdmenu )
-provides=( mpdmenu  )
-source=( 'git://github.com/arikai/mpdmenu.git' )
+depends=('dmenu' 'python-mpd2')
+optdepends=('mpd')
+arch=(any)
+makedepends=(git)
+conflicts=(mpdmenu)
+provides=(mpdmenu)
+source=('git+https://github.com/arikai/mpdmenu.git')
 md5sums=('SKIP')
 
 pkgver() {
     cd "${srcdir}/mpdmenu"
-   # printf '%d.%s\n' "$(date -u -d "@$(git log -1 --format="%ct")" +%Y%m%d%H%M%S)" "$(git rev-parse --short HEAD)"
+    # printf '%d.%s\n' "$(date -u -d "@$(git log -1 --format="%ct")" +%Y%m%d%H%M%S)" "$(git rev-parse --short HEAD)"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -28,5 +28,3 @@ package() {
         "${srcdir}/mpdmenu/mpdmenu.py" \
         "$pkgdir/usr/bin/mpdmenu"
 }
-
-
