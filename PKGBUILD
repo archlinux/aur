@@ -50,7 +50,7 @@ Terminal=false
 Exec=/usr/bin/customizemii
 Name=CustomizeMii
 Comment=a custom channel creator for the wii
-Icon=customizemii.png
+Icon=customizemii
 Categories=AudioVideo;" > "$pkgdir/usr/share/applications/CustomizeMii.desktop"
     mv "../../../../CustomizeMii_Icon.png" "$pkgdir/usr/share/icons/hicolor/128x128/apps/customizemii.png"
 }
