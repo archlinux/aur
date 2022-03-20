@@ -1,5 +1,7 @@
+# Maintainer: Sandy Carter <bwrsandman+aur@gmail.com>
+
 pkgname=bgfx-cmake-git
-pkgver=r7790.9310d1914
+pkgver=r8103.3cc0de333
 pkgrel=1
 pkgdesc="Cross-platform, graphics API agnostic, \"Bring Your Own Engine/Framework\" style rendering library. (With CMake build scripts)"
 arch=('x86_64')
@@ -11,10 +13,10 @@ makedepends=('git' 'cmake')
 conflicts=(bgfx bgfx-git)
 provides=(bgfx)
 
-source=('git://github.com/bkaradzic/bx.git'
-        'git://github.com/bkaradzic/bimg.git'
-        'git://github.com/bkaradzic/bgfx.git'
-        'git://github.com/bkaradzic/bgfx.cmake.git')
+source=('git+https://github.com/bkaradzic/bx.git'
+        'git+https://github.com/bkaradzic/bimg.git'
+        'git+https://github.com/bkaradzic/bgfx.git'
+        'git+https://github.com/bkaradzic/bgfx.cmake.git')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
