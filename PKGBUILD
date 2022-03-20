@@ -2,7 +2,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-google-cloud-storage
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Google Cloud Storage API client library'
 arch=('any')
@@ -15,15 +15,21 @@ depends=(
 	'python-google-resumable-media'
 	'python-protobuf'
 	'python-requests')
-makedepends=('python-setuptools' 'python-sphinx' 'python-recommonmark')
+makedepends=(
+	'python-build'
+	'python-installer'
+	'python-recommonmark'
+	'python-setuptools'
+	'python-sphinx'
+	'python-wheel')
 # checkdepends=('python-pytest-runner' 'python-mock' 'python-google-cloud-testutils')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('bb093958991beb20805fb27792884dac9fd2c55381232de03703b7422ca68d77')
+sha256sums=('a84b9744ffd97b2a56381e8c688b09083ccaece516880db8b337131be1f4acc5')
 
 build() {
 	cd "python-storage-$pkgver"
-	python setup.py build
+	python -m build --wheel --no-isolation
 	cd docs
 	PYTHONPATH=../ sphinx-build -b man ./ build
 }
@@ -35,8 +41,9 @@ build() {
 # }
 
 package() {
+	export PYTHONHASHSEED=0
 	cd "python-storage-$pkgver"
-	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 SECURITY.md -t "$pkgdir/usr/share/doc/$pkgname/"
 	install -Dm644 docs/build/google-cloud-storage.1 -t "$pkgdir/usr/share/man/man1/"
 }
