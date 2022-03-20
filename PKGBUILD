@@ -2,13 +2,13 @@
 # Maintainer: Patrick Klein <patrick@libklein.com>
 
 pkgname=gurobi
-pkgver=9.5.0
+pkgver=9.5.1
 pkgrel=1
 pkgdesc="State-of-the-art solver for mathematical programming"
 arch=('x86_64')
 url="https://www.gurobi.com/products/gurobi-optimizer"
 license=('custom')
-depends=('python>=3.8.0')
+depends=('python>=3.7.0')
 optdepends=(
   'gcc: C/C++ programming interfaces support'
   'java-environment: Java programming interface support'
@@ -20,10 +20,9 @@ source=(
   "gurobi.sh"
   "gurobi_setup.m"
 )
-md5sums=('03d90b6dbe5dd0e9634299c4101bcc93'
+md5sums=('e3e34d33ca324bb818d02264350671d3'
          '1f34712dbc8df686d987b6bf129811fd'
-         'e0b5a5d7bf4ba8b7b38beea44affabdf')
-
+         'fde2cef01f075e2d28188576a2639b34')
 
 prepare() {
   cd "$srcdir/${pkgname}${pkgver//./}/linux64/"
