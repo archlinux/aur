@@ -1,5 +1,5 @@
 pkgname=harrison-ava-plugins-bin
-pkgver=$(date +%Y%m%d)
+pkgver=22.03.18
 pkgrel=1
 pkgdesc="Harrison AVA VST Plugin Suite"
 url="https://www.harrisonconsoles.com/site/ava-plugins.html"
