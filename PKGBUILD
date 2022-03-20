@@ -5,7 +5,7 @@
 
 _basename=xmoto
 pkgname="$_basename-git"
-pkgver=0.6.1.r88.g01576576
+pkgver=0.6.1.r92.gec071bde
 pkgrel=1
 pkgdesc="A challenging 2D motocross platform game, where physics play an important role."
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ makedepends=('cmake' 'git' 'ninja')
 conflicts=("$_basename")
 provides=("$_basename")
 
-source=("$pkgname::git://github.com/xmoto/$_basename.git")
+source=("$pkgname::git+https://github.com/xmoto/$_basename.git")
 sha1sums=('SKIP')
 
 # not stripping for creating a gdb stacktrace
