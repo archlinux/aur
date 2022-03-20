@@ -1,9 +1,10 @@
 # Maintainer: Manuel <mdomlop gmail com>
 
 pkgname=nfs2se
-pkgver=1.2.4
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Cross-platform wrapper for the Need For Speed™ II SE'
+
 arch=('i686' 'x86_64')
 license=('MIT')
 
@@ -11,8 +12,6 @@ conflicts=("$pkgname-git")
 
 source=("https://github.com/zaps166/NFSIISE/releases/download/v$pkgver/$pkgname-src.tar.gz"
         "$pkgname")
-sha256sums=('c86f8a6164e13d183a3a71f5a73ec762ead7e35b3ad3c4b2f01be01bb4ea064c'
-            '587394a5bc22bce1ab2e15b4a5080f5246964a8586ca78c825fc6fdfb2841e68')
 
 machine=$(uname -m)
 
@@ -33,11 +32,6 @@ else
 fi
 
 install=$pkgname.install
-
-pkgver()
-{
-	$srcdir/$pkgname-src/version
-}
 
 build()
 {
@@ -60,3 +54,6 @@ package()
 	install -dm 755 $pkgdir/usr/share/icons/hicolor/32x32/apps
 	install -Dm 644 $pkgdir/opt/$pkgname/$pkgname.png $pkgdir/usr/share/icons/hicolor/32x32/apps/$pkgname.png
 }
+
+md5sums=('8f9b41ac587f57dc9e7f6dc575bca22d'
+         '50da45b125bd78839b60b9a16989c37f')
