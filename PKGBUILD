@@ -1,5 +1,5 @@
 pkgname=harrison-32c-plugins-bin
-pkgver=1.0.1.1
+pkgver=22.03.18
 pkgrel=1
 pkgdesc="Harrison Consoles 32C Console VST Plugins"
 url="https://harrisonconsoles.com/32c-plugins/"
@@ -10,7 +10,7 @@ makedepends=('xdg-user-dirs' 'unzip')
 groups=('pro-audio' 'vst-plugins')
 
 ## Variables
-_archive="`xdg-user-dir DOWNLOAD`/Harrison-32C-Plugins-Linux-64bit-${pkgver}.tar.gz"
+_archive="`xdg-user-dir DOWNLOAD`/Harrison-32C-Plugins-Linux-64bit.tar.gz"
 
 prepare() {
 	## Extract Harrison 32C Plugin Archive
@@ -21,6 +21,7 @@ prepare() {
 package() {
 	## Install VST
 	mkdir -p "$pkgdir/usr/lib/vst"
+	cp -r "$srcdir/Harrison_32C/vst/32C-Bus.so" "$pkgdir/usr/lib/vst/32C-Bus.so"
 	cp -r "$srcdir/Harrison_32C/vst/32C-Channel.so" "$pkgdir/usr/lib/vst/32C-Channel.so"
 	cp -r "$srcdir/Harrison_32C/vst/32C-VIP.so" "$pkgdir/usr/lib/vst/32C-VIP.so"
 }
