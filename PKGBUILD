@@ -2,7 +2,7 @@
 
 pkgname=docfx-git
 _pkgname=docfx
-pkgver=3.0.0.beta1.1025+dc925bd1d2.r147.gd705d3107f
+pkgver=3.0.0.beta1.1025+dc925bd1d2.r147.gd705d31
 pkgrel=1
 pkgdesc="Tools for building and publishing API documentation for .NET projects. Build from v3 branch atm"
 arch=('x86_64')
@@ -22,7 +22,7 @@ md5sums=('SKIP')
 
 pkgver() {
     cd ${_pkgname}
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags --abbrev=7 | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 # prepare() {
