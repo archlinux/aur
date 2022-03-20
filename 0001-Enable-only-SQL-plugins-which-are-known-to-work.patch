@@ -1,4 +1,4 @@
-From 835de730ee34f59019c0d0d9de9bb3211b54e7d8 Mon Sep 17 00:00:00 2001
+From c103c8913bdffc890f9c14aea7ea34caec86108b Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Wed, 9 Jun 2021 17:25:27 +0200
 Subject: [PATCH] Enable only SQL plugins which are known to work
@@ -28,5 +28,5 @@ index 69470c509..dbf68570d 100644
      set_target_properties(assistant PROPERTIES
          MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/Info_mac.plist"
 -- 
-2.35.0
+2.35.1
 
