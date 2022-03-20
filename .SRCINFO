@@ -1,0 +1,21 @@
+pkgbase = sweet-kde-theme-git
+	pkgdesc = Sweet KDE Plasma theme
+	pkgver = r248.802e805
+	pkgrel = 1
+	url = https://github.com/EliverLara/sweet
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = sweet-theme-git
+	depends = sweet-kvantum-theme-git
+	depends = sweet-folders-icons-git
+	depends = sweet-cursors-theme-git
+	optdepends = candy-icons: Alternative sweet icon theme
+	provides = sweet-kde-theme-git
+	conflicts = sweet-kde
+	conflicts = sweet-kde-git
+	options = !strip
+	source = git+https://github.com/EliverLara/sweet.git#branch=nova
+	sha256sums = SKIP
+
+pkgname = sweet-kde-theme-git
