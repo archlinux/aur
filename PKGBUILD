@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/ShadowKyogre/QBioBeat"
 license=('GPL')
 depends=('python-pyqt4')
-source=("${pkgname}"::"git://github.com/ShadowKyogre/QBioBeat.git")
+source=("${pkgname}"::"git+https://github.com/ShadowKyogre/QBioBeat.git")
 md5sums=(SKIP) #generate with 'makepkg -g'
 
 pkgver() {
