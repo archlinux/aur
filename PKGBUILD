@@ -2,7 +2,7 @@
 
 pkgname=csky-debugserver-bin
 pkgver=5.12.9
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="C-Sky Debugger Server"
 arch=('x86_64')
@@ -42,8 +42,8 @@ package() {
     tar -xf "${srcdir}/${pkgname}-${pkgver}.tar.gz" --no-same-owner --no-same-permissions --strip-components=1 -C "${pkgdir}/opt/t-head/${pkgname%-bin}"
     cp -r "${srcdir}"/*.pdf "${pkgdir}/opt/t-head/${pkgname%-bin}"
 
-    install -Dm0644 /dev/stdin "${pkgdir}/etc/ld.so.conf.d/${pkgname%-bin}.conf" << EOF
-/opt/t-head/${pkgname%-bin}
+    install -Dm0644 /dev/stdin "${pkgdir}/etc/profile.d/${pkgname%-bin}.csh" << EOF
+setenv PATH "${PATH}:/opt/t-head/${pkgname%-bin}"
 EOF
 
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-bin}" << EOF
