@@ -1,7 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-pymavlink
-pkgver=2.4.27
+pkgver=2.4.29
 pkgrel=1
 pkgdesc='python MAVLink interface and utilities'
 arch=('any')
@@ -10,7 +10,7 @@ license=('LGPL v3')
 depends=(python python-future python-lxml)
 makedepends=(python python-setuptools)
 source=("$pkgname-$pkgver.tar.gz::https://pypi.org/packages/source/p/pymavlink/pymavlink-${pkgver}.tar.gz")
-sha256sums=('0f35b58c1ecbeec0fd580864ff7ff4503f0f5bb370fdb1d3239dbb366315e826')
+sha256sums=('d24e832a46ff233935e492ab48e0b4bb9c0bdef4f8c7609e959b75d76bdcfe9d')
 
 _pkgname=pymavlink
 
