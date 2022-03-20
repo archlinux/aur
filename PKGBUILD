@@ -1,8 +1,8 @@
 # Contributor: Spyros Stathopoulos <foucault.online@gmail.com>
 pkgname=pkgupd-git
 _pkgname=pkgupd
-pkgver=0.42
-pkgrel=1
+pkgver=0.43
+pkgrel=2
 pkgdesc="Checks repositories and AUR for package updates"
 arch=('i686' 'x86_64')
 url="https://github.com/foucault/pkgupd"
@@ -12,39 +12,28 @@ conflicts=('pkgupd')
 makedepends=('go>=1.3' 'git' 'perl')
 optdepends=('python: for the default cli client')
 options=('!strip')
-source=("${_pkgname}::git://github.com/foucault/${_pkgname}")
+source=("${_pkgname}::git+https://github.com/foucault/${_pkgname}")
 backup=('etc/conf.d/pkgupd')
 _gogets=("github.com/jessevdk/go-flags"
 	"github.com/fsnotify/fsnotify")
 md5sums=('SKIP')
 
 pkgver() {
-  cd ${srcdir}/${_pkgname}
+  cd ${_pkgname}
   echo "0.$(git rev-list --count master)"
 }
 
 prepare() {
   mkdir -p ${srcdir}/godeps/src
-  if [[ -e ${srcdir}/godeps/src/${_pkgname} ]]; then
-    if [[ -h ${srcdir}/godeps/src/${_pkgname} ]]; then
-      unlink ${srcdir}/godeps/src/${_pkgname}
-    else
-      error "${srcdir}/godeps/src/${_pkgname} should be a link"
-    fi
-  fi
-  ln -s ${srcdir}/${_pkgname} ${srcdir}/godeps/src/${_pkgname}
-  cd ${srcdir}/godeps/src/${_pkgname}
+  cd ${srcdir}/${_pkgname}
   GOPATH=${srcdir}/godeps go mod init ${_pkgname}
   GOPATH=${srcdir}/godeps go mod tidy
-  msg "Getting GO dependencies"
-  for dep in ${_gogets[@]}; do
-    msg2 "Go getting ${dep}"
-    GOPATH=${srcdir}/godeps go get -v ${dep}
-  done
 }
 
 build() {
+  msg2 "${srcdir}"
   msg "Building glue library"
+  msg2 $(pwd)
   cd ${srcdir}/${_pkgname}/alpm
   make
 
@@ -52,7 +41,7 @@ build() {
   cd ${srcdir}/${_pkgname}
   GOPATH=${srcdir}/godeps \
     LIBRARY_PATH=${srcdir}/${_pkgname}/alpm \
-    go install -v pkgupd/pkgupd
+    go build -o ${_pkgname} -v pkgupd/pkgupd
 
   msg "Building man page"
   cd ${srcdir}/${_pkgname}
@@ -65,7 +54,7 @@ build() {
 
 package() {
   cd ${srcdir}/${_pkgname}
-  install -D -m755 ${srcdir}/godeps/bin/pkgupd \
+  install -D -m755 ${srcdir}/${_pkgname}/${_pkgname}/${_pkgname} \
     ${pkgdir}/usr/bin/pkgupd
   install -D -m755 ${srcdir}/${_pkgname}/alpm/libgoalpm.so \
     ${pkgdir}/usr/lib/libgoalpm.so

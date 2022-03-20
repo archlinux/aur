@@ -1,7 +1,7 @@
 pkgbase = pkgupd-git
 	pkgdesc = Checks repositories and AUR for package updates
-	pkgver = 0.42
-	pkgrel = 1
+	pkgver = 0.43
+	pkgrel = 2
 	url = https://github.com/foucault/pkgupd
 	arch = i686
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = pkgupd-git
 	conflicts = pkgupd
 	options = !strip
 	backup = etc/conf.d/pkgupd
-	source = pkgupd::git://github.com/foucault/pkgupd
+	source = pkgupd::git+https://github.com/foucault/pkgupd
 	md5sums = SKIP
 
 pkgname = pkgupd-git
