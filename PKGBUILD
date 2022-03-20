@@ -1,6 +1,6 @@
 # Maintainer: SZanko <szanko at protonmail dot com>
 pkgname=rssg
-pkgver=1
+pkgver=2
 pkgrel=1
 pkgdesc='rssg is an RSS feed generator written in shell.'
 
@@ -8,7 +8,7 @@ arch=('any')
 license=('ISC')
 
 url=https://www.romanzolotarev.com
-md5sums=('e94ae13f3d6fceba3ce8f43ff4f4d76b')
+sha256sums=('4f9622cafa955a6b79d30c5606a312c4552bf0620a4eda2b93e0f09c8e9228ab')
 source=($url/bin/rssg)
 
 build() {
