@@ -1,8 +1,8 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 _fname=stdlib
 pkgname=fortran_${_fname}
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Fortran standard library"
 url="https://github.com/fortran-lang/stdlib"
@@ -14,7 +14,7 @@ makedepends=("gcc-fortran"
 options=('strip')
 license=('MIT')
 source=(${pkgname}-${pkgver}.tar.gz::"https://github.com/fortran-lang/stdlib/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('0c715b9fc15102817c591d78c4a21ebba392512e8feb18fa5d0bdbcdebdcd52c')
+sha256sums=('eccb7a1027b3055699e05e2a55cce9802c17292355380cfa5365dedd8ebe754d')
 
 build() {
   cd "${srcdir}/${_fname}-${pkgver}"
