@@ -5,7 +5,7 @@
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=swift-language-git
-pkgver=swift.DEVELOPMENT.SNAPSHOT.2022.01.09.a.r228.g5a9abb2119a
+pkgver=swift.DEVELOPMENT.SNAPSHOT.2022.03.13.a.r303.gc255f841cb4
 pkgrel=1
 pkgdesc="The Swift programming language, taken directly from the Apple repository"
 arch=('x86_64')
@@ -34,7 +34,7 @@ source=(
     'swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch#branch=main'
     'swift-integration-tests::git+https://github.com/apple/swift-integration-tests#branch=main'
     'llvm-project::git+https://github.com/apple/llvm-project#branch=stable/20210726'
-    '0001-arch-aur-pachtes.patch'
+    '0001-arch-aur-patches.patch'
     'indexstore-db::git+https://github.com/apple/indexstore-db#branch=main'
     'yams::git+https://github.com/jpsim/Yams#commit=4.0.2'
     'sourcekit-lsp::git+https://github.com/apple/sourcekit-lsp#branch=main'
@@ -101,7 +101,7 @@ md5sums=(
 options=(!strip)
 
 prepare () {
-    ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-pachtes.patch" )
+    ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-patches.patch" )
 }
 
 pkgver() {
