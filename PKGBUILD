@@ -1,6 +1,6 @@
 pkgname=svgalib-git
 _gitname=svgalib
-pkgver=1.9.27.r0.gefe6e10
+pkgver=1.9.27.r0
 pkgrel=1
 pkgdesc="A low-level SuperVGA graphics library"
 arch=('i686' 'x86_64')

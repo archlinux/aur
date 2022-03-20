@@ -1,6 +1,6 @@
 pkgbase = svgalib-git
 	pkgdesc = A low-level SuperVGA graphics library
-	pkgver = 1.9.27.r0.gefe6e10
+	pkgver = 1.9.27.r0
 	pkgrel = 1
 	url = http://www.svgalib.org/
 	arch = i686
