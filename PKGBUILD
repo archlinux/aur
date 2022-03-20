@@ -1,53 +1,52 @@
-# Maintainer: Ildus Kurbangaliev <i.kurbangaliev@gmail.com>
-# Maintainer: Filipe Laíns (FFY00) <lains@archlinux.org>
+# Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 
-_prj=prjtrellis
-pkgname=$_prj-git
-pkgver=1.0
-pkgrel=5
-pkgdesc='Definitions for the Lattice ECP5 bit-stream format'
+_pkgname=prjtrellis
+pkgname=$_pkgname-git
+pkgver=1.2.1.r0.g3ae21cf
+pkgrel=1
+pkgdesc='Tools for working with the Lattice ECP5 bit-stream format'
 arch=('x86_64')
-url='https://github.com/YosysHQ/prjtrellis'
-license=('custom:ISC' 'MIT')
+url="https://github.com/YosysHQ/$_pkgname"
+license=('custom:ISC')
 depends=('boost-libs')
-makedepends=('cmake' "$_prj-db" 'boost' 'openocd')
-optdepends=('python: Python support')
-provides=('libtrellis')
-conflicts=('libtrellis')
-source=("$_prj-master.zip::$url/archive/master.zip")
-sha512sums=('SKIP')
+makedepends=("$_pkgname-db" 'git' 'cmake' 'boost' 'python' 'python-sphinx' 'python-sphinx_rtd_theme' 'python-recommonmark')
+optdepends=(
+	'python: python support'
+)
+provides=("$_pkgname=$pkgver" 'libtrellis.so' 'pytrellis.so')
+conflicts=("$_pkgname")
+replaces=('trellis-git')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
-prepare() {
-  cd $_prj-master
+pkgver() {
+	cd "$srcdir/$_pkgname"
 
-  sed -i 's|set(LIBDIR "lib64")|set(LIBDIR "lib")|
-          s|NOT ("${LAST_GIT_VERSION}" STREQUAL "${CURRENT_GIT_VERSION}")|ON|
-          s|project(libtrellis)|project(libtrellis VERSION 1.0)|' libtrellis/CMakeLists.txt
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  mkdir -p $_prj-master/libtrellis/build
-  cd $_prj-master/libtrellis/build
+	cmake -S "$_pkgname/libtrellis" -B build \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=None
+	make -C build
 
-  cmake .. \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release
-
-  sed -i '/Boost::python-NOTFOUND/d' CMakeFiles/*.dir/build.make
-  sed -i 's|Boost::python-NOTFOUND||g' CMakeFiles/*.dir/link.txt
-
-  make
+	make -C "$_pkgname/docs" html
 }
 
 package() {
-  cd $_prj-master
+	make -C build DESTDIR="$pkgdir" install
 
-  install -Dm 644 COPYING "$pkgdir"/usr/share/licenses/$_prj/LICENSE
+	rmdir "$pkgdir/usr/share/trellis/database/"
 
-  cd libtrellis/build
+	cd "$_pkgname"
 
-  make DESTDIR="$pkgdir" install
+	install -dm 755 "$pkgdir/usr/share/doc/$pkgname"
+	cp -r --no-preserve=ownership docs/_build/* "$pkgdir/usr/share/doc/$pkgname/"
+	rm -rf "$pkgdir/usr/share/doc/$pkgname/html/.doctrees"
 
-  # The database is provided in a separate package
-  rmdir "$pkgdir"/usr/share/trellis/database
+	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+
+	# used by the examples to convert the bitstreams to SVF files for programming
+	install -D tools/bit_to_svf.py "$pkgdir/usr/share/trellis/tools/bit_to_svf.py"
 }
