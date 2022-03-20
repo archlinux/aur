@@ -12,7 +12,7 @@ pkgbase = todotxt-machine-git
 	depends = python-docopt
 	provides = todotxt-machine
 	conflicts = todotxt-machine
-	source = todotxt-machine::git://github.com/AnthonyDiGirolamo/todotxt-machine
+	source = todotxt-machine::git+https://github.com/AnthonyDiGirolamo/todotxt-machine
 	md5sums = SKIP
 
 pkgname = todotxt-machine-git
