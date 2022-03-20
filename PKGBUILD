@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-websockets
-_qtver=6.2.3
+_qtver=6.2.4
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -19,7 +19,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtwebsockets-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('d7034b1a741d24e7d4e84cab34a5cf205c580f877c81ea26b3c3080efcdb2aaf')
+sha256sums=('702f1e3248b256045d76898875bca51e70d8c452cbbff243e16c0ae5b962f964')
 
 build() {
   source android-env ${_android_arch}
