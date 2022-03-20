@@ -1,7 +1,7 @@
 # Contributor: Martin C. Doege <mdoege at compuserve dot com>
 
 pkgname='swisseph'
-pkgver='2.09.03'
+pkgver='2.10.02'
 pkgrel='1'
 pkgdesc='High precision Swiss Ephemeris developed by Astrodienst.'
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=()
 makedepends=()
 optdepends=()
 source=("http://www.astro.com/ftp/swisseph/swe_unix_src_${pkgver}.tar.gz")
-sha256sums=('d9a12ea4454784ed7ddbdaa200a91a8110dd0ea8a96a8532fda2f27be3b71786')
+sha256sums=('3d77d408281585833b81a7e68b3d0d9d67d8df49337bee7d0d6d3864690161bf')
 
 build() {
     cd "$srcdir/src/"
