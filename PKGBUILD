@@ -1,7 +1,7 @@
 # Maintainer: neXyon <nexyon at gmail dot com>
 
 pkgname=audaspace-git
-pkgver=1.3.0.586.ef0e017
+pkgver=1.3.0.662.932739c
 pkgrel=1
 pkgdesc="A feature rich high level audio library."
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=("git://github.com/audaspace/audaspace.git")
+source=("git+https://github.com/audaspace/audaspace.git")
 md5sums=('SKIP')
 noextract=()
 _gitname="audaspace"
