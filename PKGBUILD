@@ -1,3 +1,4 @@
+# Maintainer:   fft
 # Contributor: redtide <redtid3 at gmail com>
 # Contributor: dllud <dllud riseup net>
 # Contributor: David McInnis <dave@dave3.xyz>
@@ -8,29 +9,28 @@
 
 pkgname=geany-plugin-markdown
 _downloadname=geany-plugins
-pkgver=1.34
-pkgrel=2
+pkgver=1.38
+pkgrel=1
 pkgdesc='Markdown plugin for Geany'
-arch=('x86_64' 'i686')
+arch=('x86_64')
 url='https://plugins.geany.org/'
 license=('GPL')
-depends=("geany>=$pkgver" 'discount' 'webkit2gtk')
-makedepends=('intltool' 'vala' 'gdb' 'cppcheck')
+depends=("geany>=$pkgver" 'webkit2gtk')
+makedepends=('intltool')
+#makedepends=('intltool' 'vala' 'gdb' 'cppcheck')
 source=("https://plugins.geany.org/$_downloadname/$_downloadname-$pkgver.tar.bz2")
-sha256sums=('244417c681636e82a63cf6f9901b5b7f3889168f7d9b5ba9b45601767a589c3b')
+sha256sums=('1c578a7ebb390aa8882f195acd3d8da3ceb73925d291b28dec90cd3e5fd20586')
+conflicts=('geany-plugins')
 
 build() {
   cd "$_downloadname-$pkgver"
 
   ./configure --prefix=/usr --libexecdir=/usr/lib \
               --disable-all-plugins --enable-markdown
-  make
+  make -C 'markdown'
 }
 
 package() {
-  make -C "$_downloadname-$pkgver" DESTDIR="$pkgdir" install
-  rm -r "$pkgdir/usr/share/locale"
+  make -C "$_downloadname-$pkgver/markdown" DESTDIR="$pkgdir" install
 }
 
-# getver: plugins.geany.org/downloads.html
-# vim:set ts=2 sw=2 et:
