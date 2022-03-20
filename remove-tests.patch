@@ -1,0 +1,18 @@
+diff --git a/setup.cfg b/setup.cfg
+index a6c964c..e428caf 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -28,12 +28,9 @@ tests_require =
+     pytest-cov
+     pytest-mock
+ 
+-packages = find:
++packages = technical
+ python_requires = >=3.6
+ 
+-[options.packages.find]
+-where = .
+-
+ [flake8]
+ max-line-length = 100
+ extend-ignore = E203
