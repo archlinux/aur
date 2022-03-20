@@ -1,6 +1,6 @@
 pkgbase = python-gtts
 	pkgdesc = Module and command line utility to save spoken text to mp3 via the Google Text to Speech (TTS) API
-	pkgver = 2.2.3
+	pkgver = 2.2.4
 	pkgrel = 1
 	url = https://github.com/pndurette/gTTS
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-gtts
 	depends = python-six
 	depends = python-click
 	depends = python-requests
-	source = https://github.com/pndurette/gTTS/archive/v2.2.3.tar.gz
-	md5sums = 027b5185926833e2ed85b09f98f02d96
+	source = https://github.com/pndurette/gTTS/archive/v2.2.4.tar.gz
+	md5sums = fe3a2d18bc80c7c85fb899ac6bd39a52
 
 pkgname = python-gtts
