@@ -119,6 +119,7 @@ build() {
     # By default in /etc/makepkg.conf this is "-D_FORTIFY_SOURCE=2"
     # Which will break `compiler-rt`
     unset CPPFLAGS
+    export DISTCC_HOSTS='--randomize localhost red,cpp,lzo green,cpp,lzo blue,cpp,lzo'
 
     python swift/utils/build-script --preset=buildbot_linux,no_test install_destdir="$pkgdir"
 }
