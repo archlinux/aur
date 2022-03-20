@@ -2,7 +2,7 @@
 
 pkgname=yacreader-9.0
 pkgver=9.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Stable legacy version of YACReader"
 arch=(any)
 url="https://github.com/YACReader/yacreader/tree/5bf5297229827a77b495e9b7ecd94fe7c25b61f0"
@@ -18,7 +18,7 @@ package() {
   cd "$srcdir/yacreader"
   git checkout "5bf5297229827a77b495e9b7ecd94fe7c25b61f0"
 
-  qmake-qt5 PREFIX=$pkgdir
+  qmake-qt5
   make
-  make install INSTALL_ROOT=$pkgdir
+  make install
 }
