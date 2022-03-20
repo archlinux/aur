@@ -1,7 +1,7 @@
 # Maintainer: Johan Förberg <johan@forberg.se>
 pkgname=zstd-git
 _pkgname=zstd
-pkgver=1.4.7.r849.g925649b2d
+pkgver=1.4.7.r1086.g64efba4c5
 pkgrel=1
 pkgdesc='A fast and efficient compression algorithm.'
 arch=('i686' 'x86_64' 'aarch64')
@@ -13,7 +13,7 @@ makedepends=('git')
 conflicts=('zstd')
 provides=('zstd' 'libzstd.so')
 # Use the dev branch by default; upstream merges only full releases to master.
-source=('git://github.com/facebook/zstd.git#branch=dev')
+source=('git+https://github.com/facebook/zstd.git#branch=dev')
 noextract=()
 md5sums=('SKIP')
 
