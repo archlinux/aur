@@ -1,38 +1,46 @@
-# Maintainer: Richard Neumann aka. schard <mail at richard dash neumann period de>
+# Maintainer: Murtuza Akhtari <murtuza dot akhtari at gmail dot com>
+# Contributor: Richard Neumann aka. schard <mail at richard dash neumann period de>
 
 pkgname='omada-controller'
-pkgver=3.2.14
-_scriptsver=1.1.3
+pkgver=5.0.30
 pkgrel=1
-pkgdesc='Centralized EAP controller software'
+pkgdesc='Omada SDN Controller'
+_basepkgname='Omada_SDN_Controller_v5.0.30_linux_x64'
+_basepkgpath='upload/software/2022/202201/20220120'
 arch=('x86_64')
-url='https://www.tp-link.com/support/download/eap-controller/#Controller_Software'
+url='https://www.tp-link.com/us/support/download/omada-software-controller/#Controller_Software'
 license=('custom')
-depends=('jre8-openjdk' 'java-jsvc' 'net-tools')
-provides=('eap-controller')
+depends=('jre11-openjdk' 'java-jsvc' 'curl' 'mongodb>=3.0' 'mongodb<5')
+makedepends=('git')
+#provides=('sdn-controller')
+conflicts=('omada-sdn-controller')
 source=(
-    "https://static.tp-link.com/2020/202012/20201225/Omada_Controller_v${pkgver}_linux_x64.tar.gz"
-    "${pkgname}-scripts-${_scriptsver}.tar.gz::https://github.com/conqp/omada-controller-scripts/archive/${_scriptsver}.tar.gz"
+    "https://static.tp-link.com/${_basepkgpath}/${_basepkgname}.tar.gz"
+    "git+http://github.com/murtuzaakhtari/omada-sdn-controller-scripts.git"
 )
-sha256sums=('9978c8a42dd6699d0cae9e0e0636deb502789f968612c52f64e0d0f8cd2f8be7'
-            '8325c691e01617a49b5fd541f284e8f35cb19743b21082ea6845745949cac59b')
+sha256sums=('f16bcae7bc8b339d9b9bd706dad5cf78319869accf113927aaef6245b509a5b5'
+            'SKIP')
 
 
 package() {
-    # Install required source files.
-    cd "${srcdir}/Omada_Controller_v${pkgver}_linux_x64"
-    local BASEDIR="${pkgdir}/opt/omada-controller"
-    install -dm 755 "${BASEDIR}"
+    cd ${_basepkgname}
 
-    # Install custom mongodb binary.
-    install -dm 755 "${BASEDIR}/bin"
-    install -m 755 "bin/mongod" "${BASEDIR}/bin/"
+    # Install required source files.
+    local BASEDIR="${pkgdir}/opt/omada-sdn-controller"
+    install -dm 755 "${BASEDIR}"
 
     # Install JAR libraries.
     install -dm 755 "${BASEDIR}/lib"
 
     for file in lib/*; do
         install -m 644 "${file}" "${BASEDIR}/lib/"
+    done
+
+    # Install binaries.
+    install -dm 755 "${BASEDIR}/bin"
+
+    for file in bin/*; do
+        install -m 755 "${file}" "${BASEDIR}/bin/"
     done
 
     # Install keystore.
@@ -49,23 +57,18 @@ package() {
         install -m 644 "${file}" "${BASEDIR}/properties/"
     done
 
-    # Install web applications.
-    install -dm 755 "${BASEDIR}/webapps"
-
-    for file in webapps/*; do
-        install -m 644 "${file}" "${BASEDIR}/webapps/"
-    done
+    ln -sf /usr/bin/mongod "${BASEDIR}/bin/mongod"
 
     ### Install scripts ####
 
     # Install systemd units.
-    cd "${srcdir}/omada-controller-scripts-${_scriptsver}"
+    cd "${srcdir}/omada-sdn-controller-scripts"
     install -dm 755 "${pkgdir}/usr/lib/systemd/system"
-    install -m 644 omada-controller.service "${pkgdir}/usr/lib/systemd/system/"
+    install -m 644 "omada-sdn-controller.service" "${pkgdir}/usr/lib/systemd/system/"
 
     # Install sysusers configuration.
     install -dm 755 "${pkgdir}/usr/lib/sysusers.d"
-    install -m 644 "omada-controller.conf" "${pkgdir}/usr/lib/sysusers.d/"
+    install -m 644 "omada-sdn-controller.conf" "${pkgdir}/usr/lib/sysusers.d/"
 
     # Install ALPM hook and script.
     install -dm 755 "${pkgdir}/usr/share/libalpm/hooks"
