@@ -2,7 +2,7 @@
 
 pkgname=libgss
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="GNU Generic Security Service"
 arch=('x86_64')
 url="https://www.gnu.org/software/gss/"
@@ -19,7 +19,7 @@ build(){
 
 check(){
   cd gss-$pkgver
-  make check
+  make -k check
 }
 
 package() {
