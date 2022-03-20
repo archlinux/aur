@@ -15,7 +15,7 @@ pkgbase=linux-phicomm-n1
 _srcname=linux-5.16
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for Phicomm N1"
-pkgver=5.16.15
+pkgver=5.16.16
 pkgrel=1
 arch=('aarch64')
 url="https://www.kernel.org/"
@@ -37,13 +37,13 @@ source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
 
 md5sums=('e6680ce7c989a3efe58b51e3f3f0bf93'
          'cb42990d36da8536220339c14ec27a6e'
-         '65caf9454fa012ef8f40587aed3f59fe'
+         'cebd2a1cbf59ae9e078b743db6ca1913'
          '30130b4dcd8ad4364ddbfd56c3058d5e'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '0d0435888ecad675870ecda4045a9d45'
          '614a77d2f4c92817ab4e5f989f9a76c9'
          '7a18066683f3351b2bbd2653db783f80'
-         '2728ee431a8e0192b9a7806033f07332')
+         'e36acdfd00fa2abcb082ca04319c7392')
 
 prepare() {
   cd ${_srcname}
