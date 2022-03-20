@@ -1,13 +1,13 @@
 pkgbase = lightnovel-cli-git
 	pkgdesc = A simple program to read lightnovels in the terminal
-	pkgver = r2.5032f73
+	pkgver = r24.cf4f923
 	pkgrel = 1
 	url = https://github.com/Username-08/lightnovel-cli.git
 	arch = x86_64
 	arch = i686
 	license = MIT
 	makedepends = git
-	makedepends = rust
+	makedepends = rustup
 	depends = ncurses
 	source = lightnovel-cli-git::git+https://github.com/Username-08/lightnovel-cli.git
 	md5sums = SKIP
