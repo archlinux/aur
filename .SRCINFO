@@ -1,7 +1,7 @@
 pkgbase = libuser
 	pkgdesc = A standardized interface for manipulating and administering user and group accounts.
-	pkgver = 0.62
-	pkgrel = 3
+	pkgver = 0.63
+	pkgrel = 1
 	url = https://pagure.io/libuser/
 	arch = x86_64
 	license = LGPL
@@ -9,7 +9,7 @@ pkgbase = libuser
 	depends = glib2
 	depends = popt
 	backup = etc/libuser.conf
-	source = https://releases.pagure.org/libuser/libuser-0.62.tar.xz
-	sha256sums = a58ff4fabb01a25043b142185a33eeea961109dd60d4b40b6a9df4fa3cace20b
+	source = https://releases.pagure.org/libuser/libuser-0.63.tar.xz
+	sha256sums = 8dc377255452a68e82c4837ba22c3ee4ae3658971bf0f2ef67ed0b77fc497f91
 
 pkgname = libuser
