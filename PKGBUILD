@@ -1,6 +1,6 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 pkgname=blasfeo
-pkgver=0.1.2
+pkgver=0.1.3
 pkgdesc="Basic linear algebra subroutines for embedded optimization"
 url='https://github.com/giaf/blasfeo'
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('BSD 2-Clause')
 makedepends=('cmake')
 depends=()
 source=(https://github.com/giaf/blasfeo/archive/${pkgver}.tar.gz)
-sha256sums=('079c9c90db1249aac59fa649c42667d46f4d458049e5986762035388f22fc005')
+sha256sums=('c33eb6467a90d6075a8db34e5ab239ecdda38c5261ae096def122fe7a0f98780')
 
 build() {
   mkdir -p ${srcdir}/${pkgname}-${pkgver}/build
