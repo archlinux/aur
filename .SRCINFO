@@ -1,0 +1,16 @@
+pkgbase = justify-git
+	pkgdesc = Simple text alignment tool that supports left/right/center/fill justify alignment
+	pkgver = r9.0d397c2
+	pkgrel = 1
+	url = https://tildegit.org/jns/justify/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = gcc-libs
+	provides = justify
+	conflicts = justify
+	source = git+https://tildegit.org/jns/justify.git
+	md5sums = SKIP
+
+pkgname = justify-git
