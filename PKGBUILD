@@ -3,7 +3,7 @@
 
 pkgname=opensnitch
 pkgver=1.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc='GNU/Linux port of the Little Snitch application firewall'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/evilsocket/opensnitch'
@@ -27,6 +27,7 @@ makedepends=(
 optdepends=(
     'logrotate: for logfile rotation support'
     'hicolor-icon-theme: for gui'
+    'python-notify2: for system notifications'
 )
 backup=(
     'etc/opensnitchd/default-config.json'

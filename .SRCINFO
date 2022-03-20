@@ -1,7 +1,7 @@
 pkgbase = opensnitch
 	pkgdesc = GNU/Linux port of the Little Snitch application firewall
 	pkgver = 1.5.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/evilsocket/opensnitch
 	arch = i686
 	arch = x86_64
@@ -23,6 +23,7 @@ pkgbase = opensnitch
 	depends = abseil-cpp
 	optdepends = logrotate: for logfile rotation support
 	optdepends = hicolor-icon-theme: for gui
+	optdepends = python-notify2: for system notifications
 	backup = etc/opensnitchd/default-config.json
 	backup = etc/opensnitchd/system-fw.json
 	source = opensnitch-1.5.0.tar.gz::https://github.com/evilsocket/opensnitch/archive/v1.5.0.tar.gz
