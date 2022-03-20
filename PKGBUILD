@@ -7,7 +7,7 @@
 
 pkgname=fish-git
 _gitname="fish-shell"
-pkgver=3.1.2.r2055.gc633ce7e7
+pkgver=3.4.0.r53.g3e5284aaf
 pkgrel=1
 epoch=2
 pkgdesc="User friendly shell intended mostly for interactive use."
@@ -25,7 +25,7 @@ checkdepends=('expect')
 provides=('fish' 'fish-shell')
 conflicts=('fish' 'fish-shell')
 install='fish.install'
-source=("git://github.com/fish-shell/fish-shell.git")
+source=("git+https://github.com/fish-shell/fish-shell.git")
 md5sums=('SKIP')
 
 pkgver() {
