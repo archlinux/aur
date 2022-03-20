@@ -1,6 +1,6 @@
 pkgbase = linux-pf-git
 	pkgdesc = Linux pf-kernel (git version)
-	pkgver = 5.17.rc4.r51.g61bbd42060fc
+	pkgver = 5.17.rc8.r70.gfccfb241d053
 	pkgrel = 1
 	url = https://gitlab.com/post-factum/pf-kernel/wikis/README
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = linux-pf-git
 	source = linux-pf-git::git+https://gitlab.com/post-factum/pf-kernel.git#branch=pf-5.17
 	source = config
 	sha256sums = SKIP
-	sha256sums = 119d1c1c5f5cce2f832c6191a370f5240c9dcbc74074efee37d7c2525810a91e
+	sha256sums = 0011b501bbd184c6129cafc9d69d6c2a3eb84dad946e13afccd84aabe2f7eb67
 
 pkgname = linux-pf-git
 	pkgdesc = The Linux pf-kernel (git version) kernel and modules
