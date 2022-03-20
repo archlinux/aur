@@ -1,4 +1,4 @@
-From adf84a12c5e0aed23958fc1a5360f3cc71aae140 Mon Sep 17 00:00:00 2001
+From 14a8581cd5451196b809f184b7f75e22a3e056b4 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 5 Feb 2021 02:22:45 +0100
 Subject: [PATCH] Exclude qmltime when cross compiling
@@ -14,7 +14,7 @@ That's likely also why upstream did not notice this problem so far.
  1 file changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/tools/CMakeLists.txt b/tools/CMakeLists.txt
-index 3206222261..48148c4f7d 100644
+index 0d7a7cddc6..45ad0adee7 100644
 --- a/tools/CMakeLists.txt
 +++ b/tools/CMakeLists.txt
 @@ -31,7 +31,9 @@ if(QT_FEATURE_qml_preview AND QT_FEATURE_thread AND NOT ANDROID AND NOT WASM AND
@@ -29,5 +29,5 @@ index 3206222261..48148c4f7d 100644
  if(QT_BUILD_SHARED_LIBS AND QT_FEATURE_process AND QT_FEATURE_regularexpression AND QT_FEATURE_thread AND TARGET Qt::Quick AND NOT ANDROID AND NOT WASM AND NOT rtems)
      add_subdirectory(qmlplugindump)
 -- 
-2.35.0
+2.35.1
 
