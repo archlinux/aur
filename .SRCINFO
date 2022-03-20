@@ -5,6 +5,7 @@ pkgbase = prjtrellis-git
 	url = https://github.com/YosysHQ/prjtrellis
 	arch = x86_64
 	license = custom:ISC
+	license = MIT
 	makedepends = prjtrellis-db
 	makedepends = git
 	makedepends = cmake
@@ -16,6 +17,8 @@ pkgbase = prjtrellis-git
 	depends = boost-libs
 	optdepends = python: python support
 	provides = prjtrellis=1.2.1.r0.g3ae21cf
+	provides = libtrellis.so
+	provides = pytrellis.so
 	conflicts = prjtrellis
 	replaces = trellis-git
 	source = git+https://github.com/YosysHQ/prjtrellis.git
