@@ -2,7 +2,7 @@
 
 pkgname=ttf-amiri
 pkgver=0.114
-pkgrel=1
+pkgrel=2
 pkgdesc="A Classical Arabic Naskh typeface poineered by Amiria/Bulaq Press in Cairo"
 arch=('any')
 url="http://www.amirifont.org/"
@@ -15,5 +15,5 @@ package() {
   install -Dm644 *.ttf -t "$pkgdir/usr/share/fonts/TTF"
   install -Dm644 OFL.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
   #install -Dm644 {NEWS,README}{,-Arabic} -t "$pkgdir/usr/share/doc/$pkgname/"
-  install -Dm644 NEWS* README* -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm644 Documentation-Arabic* NEWS* README* -t "$pkgdir/usr/share/doc/$pkgname/"
 }
