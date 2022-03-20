@@ -3,7 +3,7 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 
 pkgname=pgcli
-pkgver=3.4.0
+pkgver=3.4.1
 pkgrel=1
 pkgdesc="a command line interface for Postgres with auto-completion and syntax highlighting"
 url="http://pgcli.com/"
@@ -14,7 +14,7 @@ depends=('python-sqlparse' 'python-psycopg2' 'python-click' 'python-prompt_toolk
          'python-keyring' 'python-pygments' 'python-pendulum')
 makedepends=('python-setuptools')
 source=($pkgname-$pkgver.tar.gz::https://github.com/dbcli/pgcli/archive/v$pkgver.tar.gz)
-sha256sums=('34754bab97fc9afb2c59503c53468dc569c9a9c64349f03cac306912016a04b8')
+sha256sums=('0ddeae7d04cf821942f3d95b3db37387c6d64603a5327659ad1d086902a6dc90')
 
 package() {
     cd "pgcli-${pkgver}"
