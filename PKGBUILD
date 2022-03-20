@@ -7,8 +7,8 @@
 
 _pkgbase=vlc
 pkgname=vlc-nox
-pkgver=3.0.16
-pkgrel=3
+pkgver=3.0.17.3
+pkgrel=1
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player (without X support)'
 url='https://www.videolan.org/vlc/'
 arch=('x86_64')
@@ -20,7 +20,7 @@ depends=('a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'lua52' 'libidn'
          'fontconfig' 'libxml2' 'gnutls' 'libplacebo' 'aribb24')
 makedepends=('live-media' 'libbluray' 'flac' 'libdc1394' 'libavc1394' 'libcaca'
              'librsvg' 'libgme' 'xosd' 'twolame' 'aalib' 'avahi' 'systemd-libs'
-             'libmtp' 'libupnp' 'libmicrodns' 'libdvdcss' 'smbclient'
+             'libmtp' 'libmicrodns' 'libdvdcss' 'smbclient'
              'vcdimager' 'libssh2' 'mesa' 'protobuf' 'libnfs' 'mpg123'
              'libdvdread' 'libdvdnav' 'libogg' 'libshout' 'libmodplug' 'libvpx'
              'libvorbis' 'speex' 'opus' 'libtheora' 'libpng' 'libjpeg-turbo'
@@ -98,19 +98,16 @@ options=('!emptydirs')
 source=(http://download.videolan.org/${_pkgbase}/${pkgver}/${_pkgbase}-${pkgver}.tar.xz
         update-vlc-plugin-cache.hook
         caca-fix-to-newer-version.patch
-        vlc-3.0.11.1-srt_1.4.2.patch
         vlc-live-media-2021.patch)
-sha512sums=('35cdf191071224d0cf1b5a83c00773ff87b9e5bfcf0f5523f7edd53f75b23eda6b27bb49ffa97d69a1d176b8fe4786d959aeeb00d4380beab71c9f7e6b7c7298'
+sha512sums=('99095b39ed600c3a89ebc0d377a2fc2522b3623a56b0f6de2df50a3c6e0148c67c28c0f2d8dec28bbdf5c62cf29b3579429a79ed00440570643778a9871022b6'
             'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3'
             'ef479a246dc98f882a05ca56a1c2872cc67ced154c625790070b887858ddc250d55b1295db82c9122e5ecd3c2c9c712ec9718e28d0a9d21ff6a230eb6c5010ce'
-            '7d776bdcb566ab6eb0b4aeefa5e7ba09505588ae19b6292e4df9aeeda52af66e67e77f968ee219b0987530c6f25ce2551d8216c1eeb53addea82a8e514d7e5ab'
             'ad17d6f4f2cc83841c1c89623c339ec3ee94f6084ea980e2c8cbc3903854c85e5396e31bfd8dc90745b41794670903d854c4d282d8adec263087a9d47b226ccc')
 
 prepare() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
   sed -e 's:truetype/ttf-dejavu:TTF:g' -i modules/visualization/projectm.cpp
   sed -e 's|-Werror-implicit-function-declaration||g' -i configure
-  patch -Np1 < "${srcdir}/vlc-3.0.11.1-srt_1.4.2.patch"
   patch -Np1 < "${srcdir}/caca-fix-to-newer-version.patch"
   patch -Np1 < "${srcdir}/vlc-live-media-2021.patch"
   sed 's|whoami|echo builduser|g' -i configure
@@ -121,7 +118,7 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgbase}-${pkgver}"
 
-  export CFLAGS+=" -I/usr/include/samba-4.0"
+  export CFLAGS+=" -I/usr/include/samba-4.0 -ffat-lto-objects"
   export CPPFLAGS+=" -I/usr/include/samba-4.0"
   export CXXFLAGS+=" -std=c++11"
   # upstream does not support lua 5.3/5.4 yet: https://trac.videolan.org/vlc/ticket/25036
