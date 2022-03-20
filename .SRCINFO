@@ -1,7 +1,7 @@
 pkgbase = prometheus-json-exporter
 	pkgdesc = Prometheus exporter which scrapes remote JSON by JSONPath
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/prometheus-community/json_exporter
 	arch = x86_64
 	license = Apache

@@ -3,7 +3,7 @@
 pkgname=prometheus-json-exporter
 _pkgname=json_exporter
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Prometheus exporter which scrapes remote JSON by JSONPath"
 arch=('x86_64')
 url="https://github.com/prometheus-community/json_exporter"
@@ -58,6 +58,6 @@ package() {
   install -Dm644 "$_pkgname-$pkgver/examples/config.yml" "$pkgdir/etc/prometheus/json.yml"
 
   # binary
-  install -Dm755 -t "$pkgdir/usr/bin" "$_pkgname-$pkgver/build/$_pkgname"
+  install -Dm755 -t "$pkgdir/usr/bin" "$_pkgname-$pkgver/build/$pkgname"
 }
 
