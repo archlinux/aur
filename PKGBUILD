@@ -2,7 +2,7 @@
 
 _gitname=sphero-linux-api
 pkgname=libsphero-git
-pkgver=1.0.r9.g23bce4a
+pkgver=1.0.r10.g5ab1ce8
 pkgrel=1
 pkgdesc='Simple API for sphero 1 and 2.0 written in C++'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=(bluez-libs)
 makedepends=(git)
 provides=('libsphero')
 conflicts=('libsphero')
-source=('git://github.com/rnestler/sphero-linux-api#branch=fix_makefile')
+source=('git+https://github.com/rnestler/sphero-linux-api.git#branch=fix_makefile')
 md5sums=(SKIP)
 
 pkgver() {
