@@ -2,7 +2,7 @@ pkgdesc="ROS - Bindings between Numpy and Eigen using Boost.Python"
 url='https://github.com/stack-of-tasks/eigenpy'
 
 pkgname='ros-noetic-eigenpy'
-pkgver='2.6.9'
+pkgver='2.6.11'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
 license=('BSD')
@@ -27,7 +27,7 @@ depends=(
 
 _dir="eigenpy-ros-release-upstream-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ipab-slmc/eigenpy_catkin-release/archive/upstream/${pkgver}.tar.gz")
-sha256sums=('1fdcc3ea9b37b9d16c4581247ddac3f2b020c4d75a51a8d0c5dca4bf451f8e99')
+sha256sums=('b7d1350e709cec41ca8804691000541496e8c2cd7c2b79ca60e9b63309ab111c')
 
 build() {
   # Use ROS environment variables
