@@ -1,5 +1,5 @@
 pkgbase = ttf-font-nerd-dummy
-	pkgdesc = Dummy package to provide ttf-font-nerd for headless machines
+	pkgdesc = Dummy package to provide ttf-font-nerd for headless machines (see bug report #74050)
 	pkgver = 0.1.0
 	pkgrel = 1
 	arch = any
