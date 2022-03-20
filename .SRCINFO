@@ -1,0 +1,15 @@
+pkgbase = svgalib-git
+	pkgdesc = A low-level SuperVGA graphics library
+	pkgver = 1.9.27.r0.gefe6e10
+	pkgrel = 1
+	url = http://www.svgalib.org/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = perl
+	conflicts = svgalib
+	source = git+https://github.com/akosela/svgalib.git
+	md5sums = SKIP
+
+pkgname = svgalib-git
