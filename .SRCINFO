@@ -1,7 +1,7 @@
 pkgbase = icalingua++
 	pkgdesc = A branch of deleted Icalingua,with limited support
 	pkgver = 2.5.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Icalingua-plus-plus/Icalingua-plus-plus
 	arch = aarch64
 	arch = x86_64
@@ -16,6 +16,7 @@ pkgbase = icalingua++
 	provides = icalingua
 	conflicts = electron-qq
 	replaces = electron-qq
+	replaces = icalingua-plus-plus
 	source = 512x512.png
 	source = icalingua.desktop
 	source = icalingua
