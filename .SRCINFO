@@ -1,6 +1,6 @@
 pkgbase = code-wayland
 	pkgdesc = The Open Source build of Visual Studio Code (vscode) editor, with ozone enabled for wayland support
-	pkgver = 1.64.2
+	pkgver = 1.65.2
 	pkgrel = 1
 	url = https://github.com/microsoft/vscode
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = code-wayland
 	optdepends = x11-ssh-askpass: SSH authentication
 	provides = vscode
 	conflicts = code
-	source = code-wayland::git+https://github.com/microsoft/vscode.git#tag=1.64.2
+	source = code-wayland::git+https://github.com/microsoft/vscode.git#tag=1.65.2
 	source = code.js
 	source = code.sh
 	source = 0001-patch-product.json-to-enable-all-extensions.patch

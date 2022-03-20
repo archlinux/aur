@@ -10,7 +10,7 @@ pkgdesc='The Open Source build of Visual Studio Code (vscode) editor, with ozone
 #   - fermium: 14
 # Important: Remember to check https://github.com/microsoft/vscode/blob/master/.yarnrc (choose correct tag) for target electron version
 _electron=electron13
-pkgver=1.64.2
+pkgver=1.65.2
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/microsoft/vscode'
