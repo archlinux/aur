@@ -1,0 +1,18 @@
+--- quickviewer/Qt7z/Qt7z/lib7zip/src/HelperFuncs.cpp.orig	2020-06-15 22:04:12.974898763 -0700
++++ quickviewer/Qt7z/Qt7z/lib7zip/src/HelperFuncs.cpp	2022-03-20 14:53:59.218950775 -0700
+@@ -155,6 +155,7 @@
+ #endif
+ #endif
+ 
++/* MyStringCompareNoCase is defined inline in MyString.cpp
+ int MyStringCompareNoCase(const wchar_t *s1, const wchar_t *s2) LIB7ZIP_THROW
+ {
+ 	for (;;) {
+@@ -169,6 +170,7 @@
+ 		if (c1 == 0) return 0;
+ 	}
+ }
++*/
+ 
+ void NormalizeDirPathPrefix(wstring & dirPath)
+ {

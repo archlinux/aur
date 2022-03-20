@@ -1,0 +1,11 @@
+--- quickviewer/Qt7z/Qt7z/p7zip/CPP/7zip/Archive/Wim/WimHandler.cpp.orig	2020-06-15 20:27:13.258289440 -0700
++++ quickviewer/Qt7z/Qt7z/p7zip/CPP/7zip/Archive/Wim/WimHandler.cpp	2022-03-20 13:53:20.893784479 -0700
+@@ -298,7 +298,7 @@
+ 
+       AString res;
+ 
+-      bool numMethods = 0;
++      unsigned numMethods = 0;
+       for (unsigned i = 0; i < ARRAY_SIZE(k_Methods); i++)
+       {
+         if (methodMask & ((UInt32)1 << i))
