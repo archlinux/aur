@@ -9,7 +9,7 @@ depends=('zstd' 'gtk3' 'alsa-lib' 'nss')
 url="https://github.com/DBChoco/Muezzin"
 license=('MIT')
 _filename=muezzin-${pkgver}.pacman
-source=("$pkgname-$pkgver.pacman::https://github.com/DBChoco/Muezzin/releases/download/v$pkgver/$_filename")
+source=("$_filename::https://github.com/DBChoco/Muezzin/releases/download/v$pkgver/$_filename")
 noextract=("${_filename}")
 md5sums=('SKIP')
 
