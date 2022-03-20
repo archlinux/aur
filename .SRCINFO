@@ -1,0 +1,12 @@
+pkgbase = crcon-git
+	pkgdesc = C cli rcon app
+	pkgver = r11.94e1131
+	pkgrel = 1
+	url = https://github.com/naclander/crcon
+	arch = any
+	license = GPL
+	makedepends = git
+	source = git+https://github.com/naclander/crcon.git
+	md5sums = SKIP
+
+pkgname = crcon-git
