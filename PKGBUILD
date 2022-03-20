@@ -1,13 +1,13 @@
 # Maintainer: Josh Klecka <makamakamaka5 at gmail dot com>
 
 pkgname="zfs-utils-openrc"
-pkgver="2.1.2"
+pkgver="2.1.3"
 pkgdesc="OpenRC init scripts for the Zettabyte File System."
-pkgrel=2
+pkgrel=1
 arch=('any')
 url="https://zfsonlinux.org/"
 source=("https://github.com/zfsonlinux/zfs/releases/download/zfs-${pkgver}/zfs-${pkgver}.tar.gz"{,.asc})
-sha256sums=("258cf1d17a1f668a3b99b61eaf14be06c614df42503db0319bef1b9fc4c8b9e7"
+sha256sums=("b61b644547793f409cafd6538a52d78f2f72b0cd013e88340882457c8c9b43fd"
 "SKIP")
 validpgpkeys=('4F3BA9AB6D1F8D683DC2DFB56AD860EED4598027'  # Tony Hutter (GPG key for signing ZFS releases) <hutter2@llnl.gov>
               'C33DF142657ED1F7C328A2960AB9E991C6AF658B') # Brian Behlendorf <behlendorf1@llnl.gov>
