@@ -9,22 +9,22 @@
 # hm_b <holger@music-nerds.net>
 
 pkgname=renoise-demo
-pkgver=3.3.2
-pkgrel=2
+pkgver=3.4.0
+pkgrel=1
 pkgdesc="A music composition program"
 arch=("x86_64")
 url="https://www.renoise.com"
 license=("custom:renoise")
-depends=("alsa-lib" "libx11" "gcc-libs" "hicolor-icon-theme")
+depends=("alsa-lib" "gcc-libs" "hicolor-icon-theme" "libxext")
 optdepends=("jack: For JACK audio support")
 options=("!strip")
 conflicts=("renoise" "renoise3-demo")
 
-source=("https://files.renoise.com/demo/Renoise_${pkgver//./_}_Demo_Linux.tar.gz")
-sha512sums=('87d1af9abbb593299120f894c3db746daedccb466e1ce6673e4eab84695ddaea3d9881e0e453aafff781e15284b350a383af393f55ee773e0af277f3b2cee19d')
+source=("https://files.renoise.com/demo/Renoise_${pkgver//./_}_Demo_Linux_x86_64.tar.gz")
+sha512sums=('2ad310e4b632d09201d7ee7ad449a93ef75c580485051c9d9bbdba6647c84dfa788b5cf9b720c0bb3165c77f32430dbaef23acb921284662333d0d2b03e43e3c')
 
 package() {
-    cd "Renoise_${pkgver//./_}_Demo_Linux"
+    cd "Renoise_${pkgver//./_}_Demo_Linux_x86_64"
 
     mkdir -p "$pkgdir/usr/share/renoise-$pkgver"
     cp -r "Resources"/* "$pkgdir/usr/share/renoise-$pkgver"
