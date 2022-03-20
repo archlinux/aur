@@ -10,6 +10,7 @@ pkgbase = perl-catalyst-runtime
 	checkdepends = perl-perlio-utf8-strict
 	checkdepends = perl-devel-cycle
 	checkdepends = perl-padwalker
+	checkdepends = perl-type-tiny
 	makedepends = perl-io-stringy
 	makedepends = perl-json-maybexs
 	depends = perl-cgi-simple
