@@ -24,25 +24,25 @@ _hgver=17_0_2
 _updatever=8
 _jbver1=315
 _jbver2=1
-pkgrel=1
+pkgrel=2
 pkgver=${_ver}.b${_jbver1}.${_jbver2}
 _hg_tag=jb${_hgver}-b${_jbver1}.${_jbver2}
 _jcef_commit=316db138ea00b1a814f92e3d2f853320e8ce73b5
 arch=('x86_64')
 url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
 license=('custom')
-makedepends=('java-environment=17' 'java-environment=11' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
+makedepends=('java-environment=17' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
              'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib' 'pandoc'
              'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
-             'libnet' 'bash' 'harfbuzz' 'gcc-libs' 'glibc' 'ant' 'git' 'rsync' 'cmake' 'python' 'at-spi2-atk' 'libxkbcommon' 'libxcomposite' 'mesa')
+             'libnet' 'bash' 'harfbuzz' 'gcc-libs' 'glibc' 'ant' 'git' 'rsync' 'cmake' 'python' 'at-spi2-atk' 'libxkbcommon' 'libxcomposite' 'mesa' 'jcef-jetbrains')
 source=(git+https://github.com/JetBrains/JetBrainsRuntime.git#tag=$_hg_tag
-        git+https://github.com/JetBrains/jcef.git#commit=$_jcef_commit
+#        git+https://github.com/JetBrains/jcef.git#commit=$_jcef_commit
         idea.patch
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
 sha256sums=('SKIP'
-            'SKIP'
+#            'SKIP'
             '5f984d2e050fb6a9cbc1d48df62cd3ca2ff705a8aaa7286913c337c02da9beda'
             '3d5ab2d5eaa994377de0554de5e59596f1fc7ab773e02d84aee83a568042b5ec'
             '442d17b0de7ddd4c49a392f4ccc60f3378b9cf54908081b802d98b89597b3ab8'
@@ -60,13 +60,13 @@ _imgdir=${_jdkdir}/build/linux-${_JARCH}-server-release/images
 build() {
 
   # build jcef
-  cd $srcdir/jcef
-  sed -i "s/4.46/5.4/g" tools/buildtools/download_from_google_storage.py
-  mkdir jcef_build && cd jcef_build
-  cmake -DCMAKE_BUILD_TYPE=Release ..
-  make
-  cd ../jb/tools/linux
-  JDK_11=/usr/lib/jvm/$(ls /usr/lib/jvm | grep 11 | head -n 1) ./build.sh all
+  #cd $srcdir/jcef
+  #sed -i "s/4.46/5.4/g" tools/buildtools/download_from_google_storage.py
+  #mkdir jcef_build && cd jcef_build
+  #cmake -DCMAKE_BUILD_TYPE=Release ..
+  #make
+  #cd ../jb/tools/linux
+  #JDK_11=/usr/lib/jvm/$(ls /usr/lib/jvm | grep 11 | head -n 1) ./build.sh all
 
   # build jbr
   cd $srcdir/${_jdkdir}
@@ -131,7 +131,7 @@ build() {
     --enable-unlimited-crypto \
     --enable-warnings-as-errors=no \
     ${NUM_PROC_OPT} \
-    --with-import-modules=$srcdir/jcef/out/linux64/modular-sdk
+    --with-import-modules=/usr/lib/jcef-jetbrains/modular-sdk
     #--disable-javac-server
 
   make images legacy-jre-image
@@ -148,7 +148,7 @@ check() {
 
 package_jre17-jetbrains-imfix() {
   pkgdesc="JetBrains Java ${_majorver} full runtime environment"
-  depends=('java-runtime-common>=3' 'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'lcms2' 'libnet' 'freetype2' 'giflib')
+  depends=('java-runtime-common>=3' 'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'lcms2' 'libnet' 'freetype2' 'giflib' 'jcef-jetbrains')
   optdepends=('java-rhino: for some JavaScript support'
               'alsa-lib: for basic sound support'
               'gtk2: for the Gtk+ 2 look and feel - desktop usage'
@@ -180,7 +180,9 @@ package_jre17-jetbrains-imfix() {
     "${pkgdir}${_jvmdir}"
 
   # Include jcef libs
-  rsync -av $srcdir/jcef/jcef_build/native/Release/ ${pkgdir}${_jvmdir}/lib --exclude="modular-sdk"
+  find /usr/lib/jcef-jetbrains -maxdepth 1 -mindepth 1 -exec ln -sf {} "${pkgdir}${_jvmdir}/lib/" \;
+  rm "${pkgdir}${_jvmdir}/lib/modular-sdk"
+  #rsync -av $srcdir/jcef/jcef_build/native/Release/ ${pkgdir}${_jvmdir}/lib --exclude="modular-sdk"
 
   cp ../jdk/release "${pkgdir}${_jvmdir}"
   cp ../jdk/lib/modules "${pkgdir}${_jvmdir}/lib"

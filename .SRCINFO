@@ -1,11 +1,10 @@
 pkgbase = java17-jetbrains-imfix
 	pkgver = 17.0.2.b315.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime
 	arch = x86_64
 	license = custom
 	makedepends = java-environment=17
-	makedepends = java-environment=11
 	makedepends = cpio
 	makedepends = unzip
 	makedepends = zip
@@ -39,13 +38,12 @@ pkgbase = java17-jetbrains-imfix
 	makedepends = libxkbcommon
 	makedepends = libxcomposite
 	makedepends = mesa
+	makedepends = jcef-jetbrains
 	source = git+https://github.com/JetBrains/JetBrainsRuntime.git#tag=jb17_0_2-b315.1
-	source = git+https://github.com/JetBrains/jcef.git#commit=316db138ea00b1a814f92e3d2f853320e8ce73b5
 	source = idea.patch
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 5f984d2e050fb6a9cbc1d48df62cd3ca2ff705a8aaa7286913c337c02da9beda
 	sha256sums = 3d5ab2d5eaa994377de0554de5e59596f1fc7ab773e02d84aee83a568042b5ec
@@ -63,13 +61,14 @@ pkgname = jre17-jetbrains-imfix
 	depends = libnet
 	depends = freetype2
 	depends = giflib
+	depends = jcef-jetbrains
 	optdepends = java-rhino: for some JavaScript support
 	optdepends = alsa-lib: for basic sound support
 	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
 	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
 	provides = java-runtime=17
 	provides = java-runtime-jetbrains=17
-	provides = jre17-jetbrains=17.0.2.b315.1-1
+	provides = jre17-jetbrains=17.0.2.b315.1-2
 	conflicts = jre17-jetbrains
 	backup = etc/java17-jetbrains/logging.propertopenjdkies
 	backup = etc/java17-jetbrains/management/jmxremote.access
@@ -89,11 +88,11 @@ pkgname = jre17-jetbrains-imfix
 pkgname = jdk17-jetbrains-imfix
 	pkgdesc = JetBrains Java 17 development kit
 	install = install_jdk-jetbrains.sh
-	depends = jre17-jetbrains=17.0.2.b315.1-1
+	depends = jre17-jetbrains=17.0.2.b315.1-2
 	depends = java-environment-common=3
 	depends = hicolor-icon-theme
 	depends = libelf
 	provides = java-environment=17
 	provides = java-environment-jetbrains=17
-	provides = jdk17-jetbrains=17.0.2.b315.1-1
+	provides = jdk17-jetbrains=17.0.2.b315.1-2
 	conflicts = jdk17-jetbrains
