@@ -10,7 +10,7 @@ makedepends=('git' 'automake' 'autoconf' 'libtool')
 provides=('doomsday-tetris-2')
 conflicts=('doomsday-tetris-2')
 _commit=f62e8bcf2ced224dbbd80dc2647f364473e32e4e
-source=("git+git://github.com/VisaJE/doomsday-tetris-2#commit=$_commit")
+source=("git+https://github.com/VisaJE/doomsday-tetris-2#commit=$_commit")
 md5sums=('SKIP')
 
 
