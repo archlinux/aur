@@ -3,14 +3,14 @@
 _upstream=qarithmancy
 
 pkgname=qarithmancy-git
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="Comprehensive numerology application using PyQt"
 arch=('any')
 url="https://github.com/ShadowKyogre/QArithmancy"
 license=('GPL')
-depends=('pyqt' 'python-dateutil')
-source=("${pkgname}::git://github.com/ShadowKyogre/${_upstream}.git")
+depends=('python-pyqt4' 'python-dateutil')
+source=("${pkgname}::git+https://github.com/ShadowKyogre/${_upstream}.git")
 md5sums=(SKIP) #generate with 'makepkg -g'
 
 pkgver() {
