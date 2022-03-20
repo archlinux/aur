@@ -2,7 +2,7 @@
 
 pkgname=python-slixmpp
 _pkgbase=slixmpp
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="An XMPP library written for Python 3.7+ (SleekXMPP asyncio fork)"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ optdepends=('python-emoji: For compliant XEP-0444 support')
 options=(!emptydirs)
 
 source=("https://lab.louiz.org/poezio/${_pkgbase}/-/archive/slix-${pkgver}/${_pkgbase}-slix-${pkgver}.tar.gz")
-sha512sums=('d4df951ae32931ac9b81c18f18a4f920da963932934d9346d7c5f651158661b21336f9920a82b671af554caab5e5dbddd5914c46a8591bab3d1bd1fbf22c8d40')
+sha512sums=('8aab8136091cf6a80185d5c341ff4e3d503fb6d769b9cf6c56fdae61d120511b866b915922e66df020682d947be76bdbd429c08261896e794aabe9f222878657')
 
 build() {
     cd $_pkgbase-slix-$pkgver
@@ -34,4 +34,3 @@ package() {
     # This one is only used when Cython is unavailable, or on pypy3.
     rm "$pkgdir"/usr/lib/python3.*/site-packages/slixmpp/stringprep.py
 }
-sha512sums=('fdd0360b45a716a01769d62dea896aa8146b706a425b6873d516f50d76d7049aa985237938aae626c5a4aefa816cc63bb523fc5c73c758023a17570f27e99ebe')
