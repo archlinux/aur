@@ -1,5 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
+## GPG keys available at https://github.com/torchedsammy.gpg
+
 pkgname=lua-lunacolors-git
 pkgver=r14.5a59d0f
 pkgrel=1
