@@ -1,6 +1,6 @@
 pkgbase = arma3-linux-launcher-git
 	pkgdesc = Advanced launcher for ArmA 3 on Linux
-	pkgver = 125.3eb5e21
+	pkgver = 353.323627c
 	pkgrel = 1
 	url = https://github.com/muttleyxd/arma3-unix-launcher
 	arch = i686
@@ -13,8 +13,7 @@ pkgbase = arma3-linux-launcher-git
 	depends = qt5-svg
 	provides = arma3-unix-launcher
 	conflicts = arma3-unix-launcher
-	source = arma3-linux-launcher-git::git://github.com/muttleyxd/arma3-unix-launcher.git
+	source = arma3-linux-launcher-git::git+https://github.com/muttleyxd/arma3-unix-launcher.git
 	md5sums = SKIP
 
 pkgname = arma3-linux-launcher-git
-
