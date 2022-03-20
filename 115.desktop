@@ -1,0 +1,15 @@
+[Desktop Entry]
+Comment=115 PC Edition
+Comment[zh_CN]=115电脑版
+Exec=sh /opt/115pc/115.sh
+GenericName=115
+GenericName[zh_CN]=115
+Name=115
+Name[zh_CN]=115
+StartupNotify=false
+Terminal=false
+Type=Application
+Categories=Network;
+Icon=115pc
+# Remove under line for fixing icon bug in taskbar
+#StartupWMClass=115
