@@ -1,30 +1,30 @@
 pkgbase = gst
-	pkgdesc = System utility designed to stress and monitoring various hardware components
-	pkgver = 0.7.4
+	pkgdesc = a GTK system utility designed to stress and monitor various hardware components like CPU and RAM
+	pkgver = 0.7.5
 	pkgrel = 1
 	url = https://gitlab.com/leinardi/gst
 	arch = any
 	license = GPL3
+	makedepends = pkg-config
 	makedepends = meson
+	makedepends = ninja
 	makedepends = appstream-glib
-	depends = dmidecode
-	depends = gobject-introspection
-	depends = libappindicator-gtk3
-	depends = lm_sensors
-	depends = python
-	depends = python-gobject
+	depends = python>=3.6
 	depends = python-humanfriendly
 	depends = python-injector
 	depends = python-peewee
 	depends = python-psutil
+	depends = python-gobject
+	depends = python-pyxdg
+	depends = python-yaml
 	depends = python-requests
 	depends = python-rx
-	depends = python-yaml
-	depends = python-pyxdg
+	depends = gobject-introspection
+	depends = lm_sensors
 	depends = stress-ng
+	depends = dmidecode
 	conflicts = smalltalk
-	source = https://gitlab.com/leinardi/gst/-/archive/0.7.4/gst-0.7.4.tar.gz
-	sha256sums = 47f47ac4ea1d497975fe326f95f55b3d6c9e32aa00acbea0952561d1179b1562
+	source = https://gitlab.com/leinardi/gst/-/archive/0.7.5/gst-0.7.5.tar.gz
+	sha256sums = 6d78f96a7f8663ca81be34cbea7295a75da41b4a49f5cb1c6cd1d0478d60a3f5
 
 pkgname = gst
-
