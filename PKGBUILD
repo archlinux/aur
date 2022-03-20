@@ -58,6 +58,6 @@ package() {
   install -Dm644 "$_pkgname-$pkgver/examples/config.yml" "$pkgdir/etc/prometheus/json.yml"
 
   # binary
-  install -Dm755 -t "$pkgdir/usr/bin" "$_pkgname-$pkgver/build/$pkgname"
+  install -Dm755 -t "$pkgdir/usr/bin/$pkgname" "$_pkgname-$pkgver/build/$_pkgname"
 }
 
