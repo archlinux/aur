@@ -1,7 +1,7 @@
 pkgname=ydcv-rs-git
 _pkgname="ydcv-rs"
 pkgdesc="A Rust version of ydcv."
-pkgver=0.4.5.150
+pkgver=0.4.7.157
 pkgrel=1
 arch=('i686' 'x86_64')
 conflicts=("ydcv")
@@ -11,7 +11,7 @@ license=('GPL2')
 depends=("openssl" "libdbus" "libxcb")
 optdepends=()
 makedepends=('git' 'cargo' 'python')
-source=('git://github.com/farseerfc/ydcv-rs.git')
+source=('git+https://github.com/farseerfc/ydcv-rs.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,11 +22,6 @@ pkgver() {
 build() {
 	cd $_pkgname
 	cargo build --release
-}
-
-check() {
-	cd $_pkgname
-	cargo test --release
 }
 
 package() {

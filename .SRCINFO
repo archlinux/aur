@@ -1,6 +1,6 @@
 pkgbase = ydcv-rs-git
 	pkgdesc = A Rust version of ydcv.
-	pkgver = 0.4.5.150
+	pkgver = 0.4.7.157
 	pkgrel = 1
 	url = https://github.com/farseerfc/ydcv-rs
 	arch = i686
@@ -14,8 +14,7 @@ pkgbase = ydcv-rs-git
 	depends = libxcb
 	provides = ydcv
 	conflicts = ydcv
-	source = git://github.com/farseerfc/ydcv-rs.git
+	source = git+https://github.com/farseerfc/ydcv-rs.git
 	sha256sums = SKIP
 
 pkgname = ydcv-rs-git
-
