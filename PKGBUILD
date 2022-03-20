@@ -2,7 +2,7 @@
 
 pkgname=prof-gnome-theme-git
 _gitname=Prof-Gnome
-pkgver=r16.0aaed59
+pkgver=r20.a97a7a4
 pkgrel=1
 pkgdesc="GNOME theme made by Paulxfce. \"A pleasing, clear and easy-on-the-eyes theme that is meant for those who use the Gnome-desktop professionally on a daily basis.\""
 arch=("any")
