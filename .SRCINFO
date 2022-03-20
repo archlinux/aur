@@ -1,7 +1,7 @@
 pkgbase = sunflower-git
 	pkgdesc = Small and highly customizable twin-panel file manager for Linux with support for plugins
 	pkgver = 0.4.62.r202.gf7706d69
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MeanEYE/Sunflower
 	arch = any
 	license = GPL3
@@ -17,7 +17,7 @@ pkgbase = sunflower-git
 	conflicts = sunflower
 	options = !strip
 	options = !zipman
-	source = git://github.com/MeanEYE/Sunflower.git
+	source = git+https://github.com/MeanEYE/Sunflower.git
 	md5sums = SKIP
 
 pkgname = sunflower-git
