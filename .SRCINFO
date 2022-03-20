@@ -1,7 +1,7 @@
 pkgbase = sndcpy-bin
 	pkgdesc = Android audio forwarding (scrcpy, but for audio)
 	pkgver = 1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rom1v/sndcpy
 	arch = x86_64
 	license = MIT
@@ -14,6 +14,6 @@ pkgbase = sndcpy-bin
 	source = sndcpy.sh
 	sha256sums = b045320ddddbc5a237d6d95213c664f03b2f46ef8bbfcef91c2d95644ed42bbc
 	sha256sums = 6b6d5219c4732200fdf483c5a9bde69867a1386b6278c176ce3598c32132e66d
-	sha256sums = 51eb4996dd266cd8e5e362d388982d250a285218642737c4464291de0808203e
+	sha256sums = 80e05c93d9bd8a217b43543cf4d6b8d2e739b6e7d270da8ac373e242eb58dab3
 
 pkgname = sndcpy-bin
