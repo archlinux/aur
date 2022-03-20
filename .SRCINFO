@@ -15,8 +15,7 @@ pkgbase = doomsday-tetris-2-git
 	depends = postgresql-libs
 	provides = doomsday-tetris-2
 	conflicts = doomsday-tetris-2
-	source = git+git://github.com/VisaJE/doomsday-tetris-2#commit=f62e8bcf2ced224dbbd80dc2647f364473e32e4e
+	source = git+https://github.com/VisaJE/doomsday-tetris-2#commit=f62e8bcf2ced224dbbd80dc2647f364473e32e4e
 	md5sums = SKIP
 
 pkgname = doomsday-tetris-2-git
-
