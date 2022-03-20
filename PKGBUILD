@@ -1,37 +1,40 @@
-# Maintainer: Alexander Konarev <avkonarev@gmail.com>
+# Maintainer: Mikhail Velichko  <efklid@gmail.com>
 
+
+
+_pkgname=browser-stable
 pkgname=yandex-browser
-pkgver=15.12.2490.3623_1.beta
-pkgrel=1
-pkgdesc="The web browser from Yandex (beta version!).
- It's browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
-arch=('x86_64')
-url='http://browser.yandex.ru/beta/'
-license=('custom')
-options=(!strip)
-depends=('gconf' 'alsa-lib'  'cairo' 'libcap' 'libcups' 'libdbus' 'expat' 'fontconfig' 'freetype2' 'gcc-libs'  'gdk-pixbuf2' 'glib2'  'gtk2' 'nspr'  'nss'  'pango'  'libx11' 'libxcomposite' 'libxcursor' 'libxdamage' 'libxext' 'libxfixes' 'libxi'  'libxkbfile' 'libxrandr' 'libxrender' 'libxss' 'libxtst' 'ca-certificates'  'curl' 'ld-lsb' 'xdg-utils' 'wget' 'libudev.so.0')
-optdepends=('chromium-pepper-flash: plugin for viewing flash videos')
-makedepends=('xz')
-conflicts=('yandex-browser-beta')
-install='yandex-browser.install'
-source=("$pkgname.deb::http://browser.yandex.ru/download/?beta=1&os=linux&x64=1&package=deb&full=1")
-md5sums=('SKIP')
+pkgver=22.1.3.916_1
+_pkgver=22.1.3.916-1
+pkgrel=4
+#epoch=1
 
-pkgver(){
-  cd "$srcdir"
-  tar -xvzf control.tar.gz > /dev/null
-  echo "$(cat control | grep ^Version: | cut -d' ' -f2 | tr '-' '_')".beta
-}
+pkgdesc="The web browser from Yandex.
+ Yandex Browser is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
+arch=("x86_64")
+url='https://browser.yandex.com/'
+license=("custom:yandex-browser")
+categories=("network")
+
+options=(!strip)
+
+depends=("flac" "gconf" "gtk2" "harfbuzz-icu" "libxss" "nss" "opus" "snappy" "ttf-font" "xdg-utils" "libxkbfile" "jq" )
+optdepends=(
+    "speech-dispatcher"
+    "ttf-liberation: fix fonts for some PDFs"
+)
+
+source=("${pkgname}-${pkgver}.deb::http://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-${_pkgname}/yandex-${_pkgname}_${_pkgver}_amd64.deb")
+sha256sums=("dba7387e9db285a6b01332f34454cf9fcba71465236c353140aec6d73b495a5a")
+install=yandex-browser.install
 
 prepare() {
-  cd "$srcdir"
-  tar -xpJf data.tar.xz
+    tar -xf data.tar.xz
 }
 
 package() {
-  mkdir -p "$pkgdir"/usr/lib/pepperflashplugin-nonfree/
-  ln -s /usr/lib/PepperFlash/libpepflashplayer.so "$pkgdir"/usr/lib/pepperflashplugin-nonfree/libpepflashplayer.so
-  cd "$srcdir"
-  cp -r opt usr "$pkgdir"
+    cp -dr --no-preserve=ownership opt usr "${pkgdir}"/
+# The stable version uses the "browser" folder in /opt/yandex. ${_pkgname} cannot be used in this section for the stable branch 
+    install -D -m0644 "${pkgdir}"/opt/yandex/browser/product_logo_128.png "${pkgdir}"/usr/share/pixmaps/${pkgname}.png
+    chmod 4755 "${pkgdir}"/opt/yandex/browser/yandex_browser-sandbox
 }
-
