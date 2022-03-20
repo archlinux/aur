@@ -1,0 +1,18 @@
+pkgbase = icu69
+	pkgdesc = International Components for Unicode library
+	pkgver = 69.1
+	pkgrel = 1
+	url = http://www.icu-project.org/
+	arch = i686
+	arch = x86_64
+	license = custom:icu
+	makedepends = python
+	makedepends = clang
+	makedepends = make
+	makedepends = patch
+	depends = gcc-libs
+	depends = sh
+	source = https://github.com/unicode-org/icu/releases/download/release-69-1/icu4c-69_1-src.tgz
+	sha512sums = d4aeb781715144ea6e3c6b98df5bbe0490bfa3175221a1d667f3e6851b7bd4a638fa4a37d4a921ccb31f02b5d15a6dded9464d98051964a86f7b1cde0ff0aab7
+
+pkgname = icu69
