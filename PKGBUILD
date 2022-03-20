@@ -5,18 +5,17 @@ _altname=$(printf ${pkgname%%-git})
 _gitname=smi2021
 _gitbranch=master
 _gitauthor=Manouchehri
-pkgver=v0.0.1.r58.g4040e4a
-pkgrel=1
+pkgver=v0.0.1.r59.gbc7708c
+pkgrel=2
 pkgdesc="EasyCap driver module"
 url="https://github.com/$_gitauthor/$_gitname"
 license=('GPL')
-source=("git://github.com/$_gitauthor/$_gitname.git#branch=$_gitbranch"
+source=("git+https://github.com/$_gitauthor/$_gitname.git#branch=$_gitbranch"
         "https://github.com/stevelacy/EasyCap/raw/master/somagic_firmware.bin")
 validpgpkeys=('F0FE029614EA35BC9E4F9768A6ECFD0C40839755') # David Manouchehri
 sha512sums=('SKIP'
             '722128600bd982b1ff6af8e372e361d22ee872282aeab50b62d8769ad2ee08bb2c6612f59ba48736a26c2c47704a7e192af2746ac0746a074bc3aa242bffa712')
 arch=('i686' 'x86_64')
-depends=('')
 makedepends=('git' 'linux-headers')
 conflicts=("$_gitname" "$_altname")
 provides=("$_gitname" "$_altname")
