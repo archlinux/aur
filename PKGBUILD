@@ -1,7 +1,7 @@
 # Maintainer: Jared Johnson <jaredj@gmx.com>
 pkgname=fvim
 # get this with `git describe --tags` in fvim repo
-_pkgtag="v0.3.516+gc044e35"
+_pkgtag="v0.3.520+g8a6f26b"
 pkgver=$(echo "${_pkgtag}" | tail -c +2 | sed -e "s/\+/_/g")
 _pkgver=$(echo "${pkgver}" | sed -e "s/_/-/g")
 pkgrel=1
@@ -12,7 +12,7 @@ license=('MIT')
 groups=()
 depends=('neovim' 'ttf-dejavu')
 makedepends=('dotnet-host' 'dotnet-sdk' 'dotnet-runtime')
-optdepends=()
+optdepends=('noto-fonts-cjk' 'noto-fonts-emoji' 'openbsd-netcat')
 provides=('fvim')
 conflicts=('fvim')
 source=("https://github.com/yatli/fvim/archive/refs/tags/${_pkgtag}.tar.gz")
