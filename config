@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.16.11-3 Kernel Configuration
+# Linux/x86 5.16.14-1 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 11.2.0"
 CONFIG_CC_IS_GCC=y
@@ -9936,7 +9936,7 @@ CONFIG_SECURITY_LANDLOCK=y
 # CONFIG_DEFAULT_SECURITY_TOMOYO is not set
 # CONFIG_DEFAULT_SECURITY_APPARMOR is not set
 CONFIG_DEFAULT_SECURITY_DAC=y
-CONFIG_LSM="lockdown,landlock,yama"
+CONFIG_LSM="lockdown,landlock,yama,bpf"
 
 #
 # Kernel hardening options
