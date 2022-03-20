@@ -1,6 +1,4 @@
-# $Id: PKGBUILD 266875 2017-11-15 14:29:11Z foutrelis $
-# Maintainer: Sergej Pupykin <pupykin.s+arch@gmail.com>
-# Maintainer: Thomas Dziedzic < gostrc at gmail >
+# Maintainer: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
 
 pkgname=libuser
 pkgver=0.62
