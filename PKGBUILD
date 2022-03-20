@@ -2,7 +2,7 @@
 # Maintainer:  Marco Schroeder <marco.schroeder96 at gmail dot com>
 # Contributor: Fernando Carmona Varo <ferkiwi @t gmail dot com>
 pkgname=keeperrl-git
-pkgver=r5155
+pkgver=r5672
 pkgrel=1
 pkgdesc="Dungeon Keeper and Dwarf Fortress inspired dungeon simulator built on top of roguelike mechanics."
 arch=('i686' 'x86_64')
@@ -19,12 +19,12 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname"::'git://github.com/miki151/keeperrl#branch=master')
+source=(${pkgname}::'git+https://github.com/miki151/keeperrl.git')
 noextract=()
-md5sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
-    cd ${srcdir}/${pkgname}
+    cd "${srcdir}/${pkgname}"
     printf "r%s" $(git rev-list --count HEAD)
 }
 
@@ -35,7 +35,6 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}"
-
   install -Dm755 keeper "$pkgdir/usr/bin/keeperrl"
   install -Dm644 appconfig.txt -t "$pkgdir/usr/share/keeperrl"
   cp -a data* "$pkgdir/usr/share/keeperrl/"
