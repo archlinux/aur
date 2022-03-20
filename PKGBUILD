@@ -4,7 +4,7 @@
 # Maintainer: slbtty <shenlebantongying@gmail.com>
 
 pkgname=goldendict-webengine-git
-pkgver=v22.2
+pkgver=22.2.alpha.a088b0e1.r2.g6554c674
 pkgrel=1
 pkgdesc="A feature-rich dictionary lookup program, supporting multiple dictionary formats."
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
-	git describe --always | sed 's|-|.|g'
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -34,7 +34,7 @@ prepare() {
 
 build(){
 	cd "$srcdir/$pkgname"
-	qmake-qt5 "CONFIG+=zim_support" "CONFIG+=chinese_conversion_support" PREFIX="/usr" goldendict.pro
+	qmake-qt5 "CONFIG+=release" "CONFIG+=zim_support" "CONFIG+=chinese_conversion_support" PREFIX="/usr" goldendict.pro
 	make
 }
 
