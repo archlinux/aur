@@ -1,0 +1,16 @@
+pkgbase = python-py-find-1st
+	pkgdesc = Numpy extension module for efficient search of first array index that compares true
+	pkgver = 1.1.5
+	pkgrel = 1
+	url = https://pypi.org/project/py-find-1st
+	arch = any
+	license = GPL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-numpy
+	source = https://files.pythonhosted.org/packages/source/p/py_find_1st/py_find_1st-1.1.5.tar.gz
+	sha256sums = f99207bc83df361c4cd9c6c2aaf504907ffce7fdd33ae3d3cbf39c68a4f1c1a9
+
+pkgname = python-py-find-1st
