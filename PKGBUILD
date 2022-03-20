@@ -3,7 +3,8 @@
 # Contributor: maz-1 <ohmygod19993 at gmail dot com>
 pkgname=rpgvxace-rtp
 pkgver=100
-pkgrel=2
+pkgrel=3
+pkgdesc="RPGMaker VX Ace Runtime Package"
 arch=('any')
 url="https://www.rpgmakerweb.com/run-time-package"
 license=('custom')
