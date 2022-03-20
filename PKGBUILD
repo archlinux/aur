@@ -1,13 +1,13 @@
 # Contributor: Sapphira Armageddos <shadowkyogre@aim.com>
 pkgname=qtarot-git
 pkgver=0.5.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple tarot reading program"
 arch=('any')
 url="http://github.com/ShadowKyogre/QTarot/"
 license=('GPL')
-depends=('pyqt' 'python-lxml')
-source=("${pkgname}"::"git://github.com/ShadowKyogre/QTarot.git")
+depends=('python-pyqt4' 'python-lxml')
+source=("${pkgname}"::"git+https://github.com/ShadowKyogre/QTarot.git")
 md5sums=(SKIP) #generate with 'makepkg -g'
 
 pkgver() {
