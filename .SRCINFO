@@ -1,7 +1,7 @@
 pkgbase = kfreestyle2d-git
 	pkgdesc = Unofficial Kinesis Freestyle 2 Userspace Linux Driver
 	pkgver = 0.0.1.eef59af
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/whereswaldon/kfreestyle2d
 	install = kfreestyle2d-git.install
 	arch = x86_64
@@ -17,6 +17,8 @@ pkgbase = kfreestyle2d-git
 	provides = kfreestyle2d
 	source = git+https://github.com/whereswaldon/kfreestyle2d.git
 	source = uinput.conf
+	source = kfreestyle2d.conf
+	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 
