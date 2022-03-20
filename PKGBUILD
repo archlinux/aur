@@ -1,8 +1,8 @@
 # Maintainer: Rui Marques <aur@ruimarques.xyz>
 
 pkgname=inferno
-pkgver=0.10.9
-pkgrel=2
+pkgver=0.11.1
+pkgrel=1
 pkgdesc="A Rust port of FlameGraph"
 arch=('x86_64')
 url="https://github.com/jonhoo/inferno"
@@ -18,7 +18,7 @@ provides=(
 )
 conflicts=('inferno-git')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('be7339159f6d889a89a3c91746487375b08fdfcb99196e511c2e8d4077687ff6')
+sha256sums=('bc3639aff0a1b27184f1b86eac0c5462db01d31c25c26f46d3f946002fba4192')
 
 build() {
   cd "$pkgname-$pkgver"
