@@ -5,12 +5,12 @@
 _id=mknbbgpgkjeelgfmcimkmcmponbgnhnp
 pkgname=chromium-extension-ublock-origin
 pkgver=1.41.8
-pkgrel=1
+pkgrel=2
 pkgdesc="chromium uBlock Origin extension"
 arch=('any')
 url="https://github.com/gorhill/uBlock"
 license=('GPL3')
-makedepends=('chromium' 'openssl')
+makedepends=('chromium' 'openssl' 'jq')
 source=("${pkgname}-${pkgver}.zip::${url}/releases/download/${pkgver}/uBlock0_${pkgver}.chromium.zip"
         "uBlock0.chromium.pem")
 sha256sums=('167d13ea235553b55891c35b1f5e1ebdd23343c2a292fe9acbc875330870a75e'
