@@ -5,17 +5,17 @@
 pkgname=libtorrent-git
 pkgver=0.13.8.r20.g53596afc
 pkgrel=1
-pkgdesc="A BitTorrent library written in C++."
-url="https://github.com/rakshasa/libtorrent/"
-license=("GPL")
-arch=("i686" "x86_64")
-depends=("gcc-libs" "glibc" "openssl" "zlib")
-makedepends=("git" "cppunit")
+pkgdesc='BitTorrent library with a focus on high performance and good code'
+url='https://github.com/rakshasa/libtorrent'
+arch=('x86_64' 'i686')
+license=('GPL')
+depends=('gcc-libs' 'glibc' 'openssl' 'zlib')
+makedepends=('git' 'cppunit')
 conflicts=('libtorrent')
 provides=('libtorrent')
 options=('debug')
-source=("$pkgname::git+https://github.com/rakshasa/libtorrent.git")
-md5sums=('SKIP')
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
