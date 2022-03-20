@@ -1,14 +1,13 @@
 pkgbase = firetunnel-git
 	pkgdesc = Tunneling program for Firejail sandboxes
 	pkgver = master
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/netblue30/firetunnel
 	arch = any
 	license = GPL
 	makedepends = git
 	conflicts = firetunnel
-	source = git://github.com/netblue30/firetunnel.git
+	source = git+https://github.com/netblue30/firetunnel.git
 	sha512sums = SKIP
 
 pkgname = firetunnel-git
-
