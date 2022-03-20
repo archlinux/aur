@@ -1,0 +1,16 @@
+pkgbase = sweet-kvantum-theme-git
+	pkgdesc = Sweet kvantun theme
+	pkgver = r248.802e805
+	pkgrel = 1
+	url = https://github.com/EliverLara/sweet
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = kvantum-qt5
+	provides = sweet-kvantum-theme-git
+	conflicts = kvantum-theme-sweet-git
+	options = !strip
+	source = git+https://github.com/EliverLara/sweet.git#branch=nova
+	sha256sums = SKIP
+
+pkgname = sweet-kvantum-theme-git
