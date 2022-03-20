@@ -26,26 +26,26 @@ _hgver=11_0_14_1
 _updatever=1
 _jbver1=2043
 _jbver2=14
-pkgrel=1
+pkgrel=2
 pkgver=${_ver}.b${_jbver1}.${_jbver2}
 _hg_tag=jb${_hgver}-b${_jbver1}.${_jbver2}
-_jcef_commit=316db138ea00b1a814f92e3d2f853320e8ce73b5
+#_jcef_commit=316db138ea00b1a814f92e3d2f853320e8ce73b5
 arch=('x86_64')
 url='https://confluence.jetbrains.com/display/JBR/JetBrains+Runtime'
 license=('custom')
 makedepends=('java-environment>=11' 'java-environment<12' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
              'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib' 'pandoc'
              'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
-             'libnet' 'bash' 'harfbuzz' 'ant' 'git' 'rsync' 'cmake' 'python' 'at-spi2-atk' 'libxkbcommon' 'libxcomposite' 'mesa')
+             'libnet' 'bash' 'harfbuzz' 'ant' 'git' 'rsync' 'cmake' 'python' 'at-spi2-atk' 'libxkbcommon' 'libxcomposite' 'mesa' 'jcef-jetbrains')
 options=(!lto)
 source=(git+https://github.com/JetBrains/JetBrainsRuntime.git#tag=$_hg_tag
-        git+https://github.com/JetBrains/jcef.git#commit=$_jcef_commit
+#        git+https://github.com/JetBrains/jcef.git#commit=$_jcef_commit
         idea.patch
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
 sha256sums=('SKIP'
-            'SKIP'
+#            'SKIP'
             'd895f224a2130a677e52e176dc740186d40a6b2b5fc100c1d09f0413d9115ae7'
             '915bd0722e897fd811bb0d77829528017ecdfd703880454bc690018ee54e44b6'
             '3f072ef4d1f59e1188d4b36ff83378c67b9f77db532b4f5cbaeb57cd37620f07'
@@ -63,13 +63,13 @@ _imgdir=${_jdkdir}/build/linux-${_JARCH}-normal-server-release/images
 build() {
 
   # build jcef
-  cd $srcdir/jcef
-  sed -i "s/4.46/5.4/g" tools/buildtools/download_from_google_storage.py
-  mkdir jcef_build && cd jcef_build
-  cmake -DCMAKE_BUILD_TYPE=Release ..
-  make
-  cd ../jb/tools/linux
-  JDK_11=/usr/lib/jvm/$(ls /usr/lib/jvm | grep 11 | head -n 1) ./build.sh all
+  #cd $srcdir/jcef
+  #sed -i "s/4.46/5.4/g" tools/buildtools/download_from_google_storage.py
+  #mkdir jcef_build && cd jcef_build
+  #cmake -DCMAKE_BUILD_TYPE=Release ..
+  #make
+  #cd ../jb/tools/linux
+  #JDK_11=/usr/lib/jvm/$(ls /usr/lib/jvm | grep 11 | head -n 1) ./build.sh all
 
   # build jbr
   cd $srcdir/${_jdkdir}
@@ -126,7 +126,7 @@ build() {
     --enable-unlimited-crypto \
     --disable-warnings-as-errors \
     ${NUM_PROC_OPT} \
-    --with-import-modules=$srcdir/jcef/out/linux64/modular-sdk
+    --with-import-modules=/usr/lib/jcef-jetbrains/modular-sdk
     #--disable-javac-server
 
   make images legacy-jre-image
@@ -144,7 +144,7 @@ check() {
 package_jre11-jetbrains-imfix() {
   pkgdesc="JetBrains Java ${_majorver} full runtime environment (With patch that allows the IME window follow the cursor)"
   depends=('java-runtime-common>=3' 'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'lcms2' 'liblcms2.so' 'libnet' 'freetype2' 'libfreetype.so' 'harfbuzz' 'libharfbuzz.so'
-           'glibc' 'gcc-libs' 'giflib' 'libgif.so' 'libpng')
+           'glibc' 'gcc-libs' 'giflib' 'libgif.so' 'libpng' 'jcef-jetbrains')
   optdepends=('java-rhino: for some JavaScript support'
               'alsa-lib: for basic sound support'
               'gtk2: for the Gtk+ 2 look and feel - desktop usage'
@@ -176,7 +176,9 @@ package_jre11-jetbrains-imfix() {
     "${pkgdir}${_jvmdir}"
 
   # Include jcef libs
-  rsync -av $srcdir/jcef/jcef_build/native/Release/ ${pkgdir}${_jvmdir}/lib --exclude="modular-sdk"
+  find /usr/lib/jcef-jetbrains -maxdepth 1 -mindepth 1 -exec ln -sf {} "${pkgdir}${_jvmdir}/lib/" \;
+  rm "${pkgdir}${_jvmdir}/lib/modular-sdk"
+  #rsync -av $srcdir/jcef/jcef_build/native/Release/ ${pkgdir}${_jvmdir}/lib --exclude="modular-sdk"
 
   cp ../jdk/release "${pkgdir}${_jvmdir}"
   cp ../jdk/lib/modules "${pkgdir}${_jvmdir}/lib"
