@@ -1,7 +1,7 @@
 pkgbase = sweet-kde-theme-git
 	pkgdesc = Sweet KDE Plasma theme
 	pkgver = r248.802e805
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/EliverLara/sweet
 	arch = x86_64
 	license = GPL3
