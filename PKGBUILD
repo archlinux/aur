@@ -6,7 +6,7 @@
 pkgname=einstein
 _gitname=einstein-puzzle
 pkgver=2.0
-pkgrel=7
+pkgrel=6
 pkgdesc="Remake of old DOS game Sherlock which was inspired by Albert Einstein's puzzle"
 #original="http://web.archive.org/web/20120521062745/http://games.flowix.com/en/index.html"
 url="https://github.com/lksj/einstein-puzzle"

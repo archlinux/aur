@@ -1,7 +1,7 @@
 pkgbase = einstein
 	pkgdesc = Remake of old DOS game Sherlock which was inspired by Albert Einstein's puzzle
 	pkgver = 2.0
-	pkgrel = 7
+	pkgrel = 6
 	url = https://github.com/lksj/einstein-puzzle
 	changelog = ChangeLog
 	arch = i686
