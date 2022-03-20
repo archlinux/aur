@@ -1,6 +1,9 @@
+# Maintainer: Sandy Carter <bwrsandman+aur@gmail.com>
+# Contributor: Johannes Sjölund <j.sjolund+aur@gmail.com>
+
 pkgname=glslang-git
 pkgver=11.8.0.r20.g538231d8
-pkgrel=1
+pkgrel=2
 pkgdesc='OpenGL and OpenGL ES shader front end and validator, git version'
 arch=('x86_64' 'i686')
 url='https://github.com/KhronosGroup/glslang'
@@ -10,7 +13,7 @@ makedepends=('cmake' 'git' 'python')
 options=('staticlibs')
 provides=('glslang')
 conflicts=('glslang')
-source=("git://github.com/KhronosGroup/glslang.git")
+source=("git+https://github.com/KhronosGroup/glslang.git")
 sha256sums=('SKIP')
 
 pkgver() {
