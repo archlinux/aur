@@ -79,7 +79,7 @@ _major=5.15
 pkgver=${_major}.30
 _branch=5.x
 xanmod=1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Xanmod TT'
 url="http://www.xanmod.org/"
 arch=(x86_64)
@@ -111,9 +111,9 @@ done
         
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            '45a58760094df2e5c8216d802db1ca0baf99fab0dae988d9c8c9c2f458fb092c'
+            '2bdb607d3725dba6cc22359a8beaa84e0e12770f267c30648e1457cf3808d9d9'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
-            '2bdb607d3725dba6cc22359a8beaa84e0e12770f267c30648e1457cf3808d9d9')
+            '45a58760094df2e5c8216d802db1ca0baf99fab0dae988d9c8c9c2f458fb092c')
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
