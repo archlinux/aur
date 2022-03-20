@@ -2,7 +2,7 @@
 
 pkgname=metamovie-git
 pkgver=r5.b50704c
-pkgrel=2
+pkgrel=3
 pkgdesc="Fetch git-annex metadata from IMDB"
 arch=('any')
 depends=('git-annex' 'python-imdbpy')
@@ -11,7 +11,7 @@ license=('GPL')
 makedepends=('git')
 provide=('metamovie')
 conflicts=('metamovie')
-source=('git://github.com/pigmonkey/metamovie.git')
+source=('git+https://github.com/pigmonkey/metamovie.git')
 sha512sums=('SKIP')
 
 pkgver() {
