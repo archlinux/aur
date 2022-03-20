@@ -6,7 +6,7 @@ _pkgname=browser-stable
 pkgname=yandex-${_pkgname}
 pkgver=22.1.3.916_1
 _pkgver=22.1.3.916-1
-pkgrel=1
+pkgrel=2
 #epoch=1
 
 pkgdesc="The web browser from Yandex.
@@ -17,7 +17,7 @@ categories=("network")
 
 options=(!strip)
 
-depends=("flac" "gconf" "gtk2" "harfbuzz-icu" "libxss" "nss" "opus" "snappy" "ttf-font" "xdg-utils" "libxkbfile" )
+depends=("flac" "gconf" "gtk2" "harfbuzz-icu" "libxss" "nss" "opus" "snappy" "ttf-font" "xdg-utils" "libxkbfile" "jq" )
 optdepends=(
     "speech-dispatcher"
     "ttf-liberation: fix fonts for some PDFs"
