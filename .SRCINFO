@@ -1,7 +1,7 @@
 pkgbase = yandex-browser-stable
 	pkgdesc = The web browser from Yandex. Yandex Browser is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier.
 	pkgver = 22.1.3.916_1
-	pkgrel = 2
+	pkgrel = 3
 	install = yandex-browser.install
 	arch = x86_64
 	license = custom:yandex-browser
