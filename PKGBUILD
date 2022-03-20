@@ -1,14 +1,17 @@
-# Maintainer: Pierre Schmitz <pierre@archlinux.de>
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: TryA <tryagainprod {at} gmail.com>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 _pkgbasename=libglade
 pkgname=lib32-libglade
 pkgver=2.6.4
-pkgrel=7
+pkgrel=8
 pkgdesc="Allows you to load glade interface files in a program at runtime (32-bit)"
 arch=('x86_64')
 license=('LGPL')
+options=('!lto')
 depends=('lib32-gtk2' 'lib32-libxml2' "${_pkgbasename}")
 makedepends=('python2' 'pkgconfig' 'gcc-multilib')
 source=("https://download.gnome.org/sources/${_pkgbasename}/2.6/${_pkgbasename}-${pkgver}.tar.bz2"
