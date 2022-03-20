@@ -1,0 +1,25 @@
+From ba61584912b0846607cfc82edf8157016a7da62f Mon Sep 17 00:00:00 2001
+From: howetuft <howetuft@gmail.com>
+Date: Mon, 31 Jan 2022 21:51:23 +0100
+Subject: [PATCH] spdlog
+
+---
+ deps/spdlog-1.8.0/include/spdlog/common-inl.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/deps/spdlog-1.8.0/include/spdlog/common-inl.h b/deps/spdlog-1.8.0/include/spdlog/common-inl.h
+index be0d8f8ea..4e5a09cb9 100644
+--- a/deps/spdlog-1.8.0/include/spdlog/common-inl.h
++++ b/deps/spdlog-1.8.0/include/spdlog/common-inl.h
+@@ -54,7 +54,7 @@ SPDLOG_INLINE spdlog_ex::spdlog_ex(std::string msg)
+ SPDLOG_INLINE spdlog_ex::spdlog_ex(const std::string &msg, int last_errno)
+ {
+     memory_buf_t outbuf;
+-    fmt::format_system_error(outbuf, last_errno, msg);
++    fmt::format_system_error(outbuf, last_errno, msg.c_str());
+     msg_ = fmt::to_string(outbuf);
+ }
+ 
+-- 
+2.34.1
+

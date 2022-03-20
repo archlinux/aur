@@ -1,0 +1,28 @@
+From b232a8667d122064cdc24ee93d14139dedd42a48 Mon Sep 17 00:00:00 2001
+From: howetuft <howetuft@gmail.com>
+Date: Fri, 28 Jan 2022 07:39:52 +0100
+Subject: [PATCH] clang-isnan-isinf
+
+---
+ include/luxrays/utils/utils.h | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/include/luxrays/utils/utils.h b/include/luxrays/utils/utils.h
+index b6584b383..d48d7d93d 100644
+--- a/include/luxrays/utils/utils.h
++++ b/include/luxrays/utils/utils.h
+@@ -48,6 +48,11 @@ template <class T>
+ int isinf(T a) { return std::isinf(a); }
+ #endif
+ 
++#ifdef __clang__
++using std::isnan;
++using std::isinf;
++#endif
++
+ #if defined(__APPLE__)
+ #include <string>
+ #endif
+-- 
+2.34.1
+

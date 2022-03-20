@@ -1,5 +1,4 @@
 diff --git a/cmake/Packages/FindOpenEXR.cmake b/cmake/Packages/FindOpenEXR.cmake
-index 02621d536..a2f7b4c62 100644
 --- a/cmake/Packages/FindOpenEXR.cmake
 +++ b/cmake/Packages/FindOpenEXR.cmake
 @@ -1,123 +1,138 @@
@@ -255,7 +254,6 @@ index 02621d536..a2f7b4c62 100644
 +UNSET(_openexr_LIBRARIES)
 +UNSET(_openexr_SEARCH_DIRS)
 diff --git a/include/slg/imagemap/imagemap.h b/include/slg/imagemap/imagemap.h
-index e053ddeb2..10ad649c4 100644
 --- a/include/slg/imagemap/imagemap.h
 +++ b/include/slg/imagemap/imagemap.h
 @@ -19,7 +19,7 @@
@@ -268,7 +266,6 @@ index e053ddeb2..10ad649c4 100644
  #include <string>
  #include <limits>
 diff --git a/include/slg/utils/halfserialization.h b/include/slg/utils/halfserialization.h
-index 551789888..2624f118c 100644
 --- a/include/slg/utils/halfserialization.h
 +++ b/include/slg/utils/halfserialization.h
 @@ -19,7 +19,7 @@
@@ -281,7 +278,6 @@ index 551789888..2624f118c 100644
  #include "luxrays/utils/utils.h"
  #include "luxrays/utils/serializationutils.h"
 diff --git a/deps/openvdb-7.0.0/openvdb/Types.h b/deps/openvdb-7.0.0/openvdb/Types.h
-index 70269cf07..0d9906828 100644
 --- a/deps/openvdb-7.0.0/openvdb/Types.h
 +++ b/deps/openvdb-7.0.0/openvdb/Types.h
 @@ -6,7 +6,7 @@
@@ -294,7 +290,6 @@ index 70269cf07..0d9906828 100644
  #include <openvdb/math/BBox.h>
  #include <openvdb/math/Quat.h>
 diff --git a/deps/opencolorio-2.0.0/src/OpenColorIO/BitDepthUtils.h b/deps/opencolorio-2.0.0/src/OpenColorIO/BitDepthUtils.h
-index a8b3cbd94..bb0163bff 100644
 --- a/deps/opencolorio-2.0.0/src/OpenColorIO/BitDepthUtils.h
 +++ b/deps/opencolorio-2.0.0/src/OpenColorIO/BitDepthUtils.h
 @@ -7,7 +7,7 @@
@@ -307,7 +302,6 @@ index a8b3cbd94..bb0163bff 100644
  
  namespace OCIO_NAMESPACE
 diff --git a/deps/opencolorio-2.0.0/src/OpenColorIO/MathUtils.h b/deps/opencolorio-2.0.0/src/OpenColorIO/MathUtils.h
-index 309c6244f..0873d4908 100644
 --- a/deps/opencolorio-2.0.0/src/OpenColorIO/MathUtils.h
 +++ b/deps/opencolorio-2.0.0/src/OpenColorIO/MathUtils.h
 @@ -9,7 +9,7 @@
@@ -320,7 +314,6 @@ index 309c6244f..0873d4908 100644
  namespace OCIO_NAMESPACE
  {
 diff --git a/deps/opencolorio-2.0.0/src/OpenColorIO/ops/range/RangeOp.cpp b/deps/opencolorio-2.0.0/src/OpenColorIO/ops/range/RangeOp.cpp
-index b6fb6d9e7..e7389203c 100644
 --- a/deps/opencolorio-2.0.0/src/OpenColorIO/ops/range/RangeOp.cpp
 +++ b/deps/opencolorio-2.0.0/src/OpenColorIO/ops/range/RangeOp.cpp
 @@ -7,7 +7,7 @@
@@ -333,7 +326,6 @@ index b6fb6d9e7..e7389203c 100644
  #include "MathUtils.h"
  #include "ops/lut1d/Lut1DOpData.h"
 diff --git a/deps/opencolorio-2.0.0/src/OpenColorIO/transforms/builtins/ACES.cpp b/deps/opencolorio-2.0.0/src/OpenColorIO/transforms/builtins/ACES.cpp
-index 20968c0da..9ee2ac27a 100644
 --- a/deps/opencolorio-2.0.0/src/OpenColorIO/transforms/builtins/ACES.cpp
 +++ b/deps/opencolorio-2.0.0/src/OpenColorIO/transforms/builtins/ACES.cpp
 @@ -6,7 +6,7 @@
@@ -359,7 +351,6 @@ index 04b8fbd40..288ca5668 100644
  #include "transforms/builtins/OpHelpers.h"
  
 diff --git a/deps/opencolorio-2.0.0/src/libutils/oiiohelpers/oiiohelpers.cpp b/deps/opencolorio-2.0.0/src/libutils/oiiohelpers/oiiohelpers.cpp
-index 3228644ad..11478daff 100644
 --- a/deps/opencolorio-2.0.0/src/libutils/oiiohelpers/oiiohelpers.cpp
 +++ b/deps/opencolorio-2.0.0/src/libutils/oiiohelpers/oiiohelpers.cpp
 @@ -5,7 +5,7 @@

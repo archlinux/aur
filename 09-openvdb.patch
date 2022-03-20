@@ -1,0 +1,149 @@
+From 2c647ad8d0c29dc85da0a1b9d62ddb39f776e669 Mon Sep 17 00:00:00 2001
+From: howetuft <howetuft@gmail.com>
+Date: Mon, 31 Jan 2022 21:43:01 +0100
+Subject: [PATCH] openvdb
+
+---
+ CMakeLists.txt                                    | 12 +++++++++++-
+ samples/luxcoreconsole/CMakeLists.txt             |  2 +-
+ samples/luxcoredemo/CMakeLists.txt                |  2 +-
+ samples/luxcorescenedemo/CMakeLists.txt           |  2 +-
+ samples/luxcoreui/CMakeLists.txt                  |  3 ++-
+ src/luxcore/CMakeLists.txt                        |  5 ++---
+ src/slg/CMakeLists.txt                            |  7 +------
+ tests/luxcoreimplserializationdemo/CMakeLists.txt |  2 +-
+ 8 files changed, 20 insertions(+), 15 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 74f5465ef..586ca9ece 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -46,6 +46,8 @@ unset(CMAKE_CONFIGURATION_TYPES CACHE)
+ enable_language(C)
+ enable_language(CXX)
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -w")
++set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ 
+ if (CMAKE_CONFIGURATION_TYPES)
+ 
+@@ -111,6 +113,14 @@ include_directories("${LuxRays_SOURCE_DIR}/deps/robin-hood-hashing-3.9.1/src/inc
+ # Find dependencies
+ include(Dependencies)
+ 
++SET(Boost_Save ${Boost_LIBRARIES})
++find_package(OpenVDB)
++LIST(APPEND Boost_LIBRARIES ${Boost_Save})
++
++if (NOT OpenVDB_FOUND)
++  MESSAGE(FATAL_ERROR "--> Could not locate required OpenVDB files - Please check ${OpenVDB_SEARCH_PATH}")
++endif()
++
+ if (NOT Boost_FOUND)
+ 	MESSAGE(FATAL_ERROR "--> Could not locate required Boost files - Please check ${BOOST_SEARCH_PATH}")
+ endif()
+@@ -174,7 +184,7 @@ if (BUILD_LUXCORE_DLL)
+ 	set(LUXCORE_LIBRARY luxcore)
+ 	ADD_DEFINITIONS("-DLUXCORE_DLL")
+ else()
+-	set(LUXCORE_LIBRARY luxcore slg-core slg-film slg-kernels luxrays bcd opensubdiv openvdb opencolorio ${BLOSC_LIBRARY} ${EMBREE_LIBRARY} ${OIDN_LIBRARY} ${TBB_LIBRARY} ${TIFF_LIBRARIES} ${TIFF_LIBRARIES} ${OPENEXR_LIBRARIES} ${PNG_LIBRARIES} ${JPEG_LIBRARIES})
++        set(LUXCORE_LIBRARY luxcore slg-core slg-film slg-kernels luxrays bcd opensubdiv ${OPENVDB_LIBRARY} opencolorio ${BLOSC_LIBRARY} ${EMBREE_LIBRARY} ${OIDN_LIBRARY} ${TBB_LIBRARY} ${TIFF_LIBRARIES} ${TIFF_LIBRARIES} ${OPENEXR_LIBRARIES} ${PNG_LIBRARIES} ${JPEG_LIBRARIES})
+ endif()
+ 
+ ################################################################################
+diff --git a/samples/luxcoreconsole/CMakeLists.txt b/samples/luxcoreconsole/CMakeLists.txt
+index cdb83231c..638bcd1da 100644
+--- a/samples/luxcoreconsole/CMakeLists.txt
++++ b/samples/luxcoreconsole/CMakeLists.txt
+@@ -31,5 +31,5 @@ add_executable(luxcoreconsole ${LUXCORECONSOLE_SRCS})
+ if(APPLE)
+ TARGET_LINK_LIBRARIES(luxcoreconsole expat "-framework Carbon" "-framework IOKit" ${LUXCORE_LIBRARY} ${Boost_LIBRARIES})
+ else()
+-TARGET_LINK_LIBRARIES(luxcoreconsole ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES})
++TARGET_LINK_LIBRARIES(luxcoreconsole opencolorio ${OpenVDB_LIBRARIES}  ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES})
+ endif()
+diff --git a/samples/luxcoredemo/CMakeLists.txt b/samples/luxcoredemo/CMakeLists.txt
+index 241dbd5f2..c7ac7ac77 100644
+--- a/samples/luxcoredemo/CMakeLists.txt
++++ b/samples/luxcoredemo/CMakeLists.txt
+@@ -29,4 +29,4 @@ set(LUXCORELIBDEMO_SRCS
+ add_executable(luxcoredemo ${LUXCORELIBDEMO_SRCS})
+ add_definitions(${VISIBILITY_FLAGS})
+ 
+-TARGET_LINK_LIBRARIES(luxcoredemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${OPENCL_LIBRARIES} ${CUDA_ALL_LIBRARIES})
++TARGET_LINK_LIBRARIES(luxcoredemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${OPENCL_LIBRARIES} ${CUDA_ALL_LIBRARIES} ${OpenVDB_LIBRARIES})
+diff --git a/samples/luxcorescenedemo/CMakeLists.txt b/samples/luxcorescenedemo/CMakeLists.txt
+index 504739572..f428305ec 100644
+--- a/samples/luxcorescenedemo/CMakeLists.txt
++++ b/samples/luxcorescenedemo/CMakeLists.txt
+@@ -29,4 +29,4 @@ set(LUXCORESCENEDEMO_SRCS
+ add_executable(luxcorescenedemo ${LUXCORESCENEDEMO_SRCS})
+ add_definitions(${VISIBILITY_FLAGS})
+ 
+-TARGET_LINK_LIBRARIES(luxcorescenedemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES})
++TARGET_LINK_LIBRARIES(luxcorescenedemo ${LUXCORE_LIBRARY} ${Boost_LIBRARIES} ${PYTHON_LIBRARIES} ${OpenVDB_LIBRARIES})
+diff --git a/samples/luxcoreui/CMakeLists.txt b/samples/luxcoreui/CMakeLists.txt
+index 80325af7e..92f1784f7 100644
+--- a/samples/luxcoreui/CMakeLists.txt
++++ b/samples/luxcoreui/CMakeLists.txt
+@@ -104,5 +104,6 @@ TARGET_LINK_LIBRARIES(luxcoreui
+ 	${OPENGL_LIBRARIES}
+ 	${GTK3_LIBRARIES}
+        ${Boost_LIBRARIES}
+-        ${PYTHON_LIBRARIES})
++        ${PYTHON_LIBRARIES}
++        ${OpenVDB_LIBRARIES})
+ endif()
+diff --git a/src/luxcore/CMakeLists.txt b/src/luxcore/CMakeLists.txt
+index f96f5284e..a8df6d601 100644
+--- a/src/luxcore/CMakeLists.txt
++++ b/src/luxcore/CMakeLists.txt
+@@ -175,15 +175,14 @@ set(PYLUXCORE_SRCS
+ 
+ add_library(pyluxcore MODULE ${PYLUXCORE_SRCS} ${LUXCORE_LIB_SRCS} ${LUX_PARSER_SRC})
+ 
+-include_directories(${LuxRays_SOURCE_DIR}/deps/openvdb-7.0.0)
++include_directories(${OpenVDB_INCLUDE_DIRS})
+ include_directories(${LuxRays_SOURCE_DIR}/deps/opencolorio-2.0.0/include)
+ 
+-add_definitions(-DOPENVDB_STATICLIB ${VISIBILITY_FLAGS})
+ if(APPLE)
+ 	target_link_libraries(pyluxcore -Wl,-undefined -Wl,dynamic_lookup slg-core slg-film slg-kernels luxrays bcd opensubdiv openvdb opencolorio expat ${BLOSC_LIBRARY} ${EMBREE_LIBRARY} ${OIDN_LIBRARY} ${TBB_LIBRARY} ${TIFF_LIBRARIES} ${TIFF_LIBRARIES} ${OPENEXR_LIBRARIES} ${PNG_LIBRARIES} ${JPEG_LIBRARIES})
+     SET_TARGET_PROPERTIES(pyluxcore PROPERTIES XCODE_ATTRIBUTE_DEPLOYMENT_POSTPROCESSING NO) # exclude pylux from strip, not possible
+ else()
+-	target_link_libraries(pyluxcore PRIVATE slg-core slg-film slg-kernels luxrays bcd opensubdiv openvdb opencolorio ${BLOSC_LIBRARY} ${EMBREE_LIBRARY} ${OIDN_LIBRARY} ${TBB_LIBRARY} ${TIFF_LIBRARIES} ${TIFF_LIBRARIES} ${OPENEXR_LIBRARIES} ${PNG_LIBRARIES} ${JPEG_LIBRARIES})
++        target_link_libraries(pyluxcore PRIVATE slg-core slg-film slg-kernels luxrays bcd opensubdiv ${OpenVDB_LIBRARIES} opencolorio ${BLOSC_LIBRARY} ${EMBREE_LIBRARY} ${OIDN_LIBRARY} ${TBB_LIBRARY} ${TIFF_LIBRARIES} ${TIFF_LIBRARIES} ${OPENEXR_LIBRARIES} ${PNG_LIBRARIES} ${JPEG_LIBRARIES})
+ endif()
+ 
+ set_target_properties(pyluxcore PROPERTIES PREFIX "")
+diff --git a/src/slg/CMakeLists.txt b/src/slg/CMakeLists.txt
+index 2f1bf79cc..9424b82bc 100644
+--- a/src/slg/CMakeLists.txt
++++ b/src/slg/CMakeLists.txt
+@@ -143,12 +143,7 @@ set(OPENVDB_SRCS
+ 
+ SOURCE_GROUP("Source Files\\OpenVDB Library" FILES ${OPENVDB_SRCS})
+ 
+-include_directories(${LuxRays_SOURCE_DIR}/deps/openvdb-7.0.0)
+-
+-# Required by OpenVDB to read ABI 3
+-#add_definitions("-D OPENVDB_USE_DEPRECATED_ABI -DOPENVDB_3_ABI_COMPATIBLE -DOPENVDB_STATICLIB -DOPENVDB_OPENEXR_STATICLIB")
+-add_definitions("-DOPENVDB_USE_BLOSC -DOPENVDB_STATICLIB -DOPENVDB_OPENEXR_STATICLIB")
+-add_library(openvdb STATIC ${OPENVDB_SRCS})
++include_directories(${OpenVDB_INCLUDE_DIRS})
+ 
+ ###########################################################################
+ #
+diff --git a/tests/luxcoreimplserializationdemo/CMakeLists.txt b/tests/luxcoreimplserializationdemo/CMakeLists.txt
+index e5bb5f083..8f458eda1 100644
+--- a/tests/luxcoreimplserializationdemo/CMakeLists.txt
++++ b/tests/luxcoreimplserializationdemo/CMakeLists.txt
+@@ -31,4 +31,4 @@ include_directories(${LuxRays_SOURCE_DIR}/deps/opencolorio-2.0.0/include)
+ 
+ add_executable(luxcoreimplserializationdemo ${LUXCOREIMPL_SERIALIZATIONDEMO_SRCS})
+ 
+-TARGET_LINK_LIBRARIES(luxcoreimplserializationdemo luxcore slg-core slg-film slg-kernels luxrays bcd opensubdiv openvdb ${BLOSC_LIBRARY} ${EMBREE_LIBRARY} ${OIDN_LIBRARY} ${TBB_LIBRARY} ${TIFF_LIBRARIES} ${TIFF_LIBRARIES} ${OPENEXR_LIBRARIES} ${PNG_LIBRARIES} ${JPEG_LIBRARIES})
++TARGET_LINK_LIBRARIES(luxcoreimplserializationdemo luxcore slg-core slg-film slg-kernels luxrays bcd opensubdiv opencolorio ${OpenVDB_LIBRARIES} ${BLOSC_LIBRARY} ${EMBREE_LIBRARY} ${OIDN_LIBRARY} ${TBB_LIBRARY} ${TIFF_LIBRARIES} ${TIFF_LIBRARIES} ${OPENEXR_LIBRARIES} ${PNG_LIBRARIES} ${JPEG_LIBRARIES})
+-- 
+2.34.1
+
