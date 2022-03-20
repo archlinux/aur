@@ -2,7 +2,7 @@
 pkgname='swhkd-musl-git'
 _pkgname="swhkd"
 pkgver=1
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://github.com/waycrate/swhkd"
 pkgdesc="A display server independent hotkey daemon inspired by sxhkd."
@@ -24,6 +24,8 @@ package() {
 	install -Dm 755 ./bin/swhkd "$pkgdir/usr/bin/swhkd"
 	install -Dm 755 ./bin/swhks "$pkgdir/usr/bin/swhks"
 	install -Dm 644 ./00-swhkd.rules "$pkgdir/etc/polkit-1/rules.d/00-swhkd.rules"
+	chmod 750 "$pkgdir/etc/polkit-1/rules.d/00-swhkd.rules"
+	chown 0:102 "$pkgdir/etc/polkit-1/rules.d/00-swhkd.rules"
 }
 
 pkgver() {
