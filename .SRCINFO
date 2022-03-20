@@ -1,7 +1,7 @@
 pkgbase = perl-catalyst-runtime
 	pkgdesc = The Catalyst Framework Runtime
 	pkgver = 5.90128
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/release/Catalyst-Runtime
 	arch = any
 	license = GPL
@@ -32,7 +32,6 @@ pkgbase = perl-catalyst-runtime
 	depends = perl-moosex-emulate-class-accessor-fast
 	depends = perl-moosex-getopt
 	depends = perl-moosex-methodattributes
-	depends = perl-moosex-role-withoverloading
 	depends = perl-path-class
 	depends = perl-plack
 	depends = perl-plack-middleware-fixmissingbodyinredirect
