@@ -1,4 +1,5 @@
 pkgbase = overtone-wpc
+	pkgdesc = A Suite Of Mastering and Mixing VST Plugins for Linux
 	pkgver = 201904
 	pkgrel = 3
 	url = https://www.overtonedsp.co.uk/download/download_wpc/
@@ -10,27 +11,6 @@ pkgbase = overtone-wpc
 	makedepends = unzip
 	depends = glibc
 	depends = libcurl-gnutls
+	conflicts = overtone-wpc-plugins-bin-201904-3-x86_64.pkg.tar.zst
 
-pkgname = overtone-wpc-af210-vst-bin
-	pkgdesc = OvertoneDSP AF210 - Graphical EQ (VST)
-
-pkgname = overtone-wpc-af210m-vst-bin
-	pkgdesc = OvertoneDSP AF210M - Graphical EQ (VST)
-
-pkgname = overtone-wpc-dyn500-vst-bin
-	pkgdesc = OvertoneDSP DYN500 - Channel Dynamic Range Compressor (VST)
-
-pkgname = overtone-wpc-eq500-vst-bin
-	pkgdesc = OvertoneDSP EQ500 - Analogue Filter Modelling Channel EQ (VST)
-
-pkgname = overtone-wpc-fc70-vst-bin
-	pkgdesc = OvertoneDSP FC70 - Vintage Compressor / Limiter Plug-in (VST)
-
-pkgname = overtone-wpc-ptc2a-vst-bin
-	pkgdesc = OvertoneDSP PTC-2A - Vintage Program EQ Plug-in (VST)
-
-pkgname = overtone-wpc-ptm5a-vst-bin
-	pkgdesc = OvertoneDSP PTM-5A - Vintage Mid-Range EQ Plug-in (VST)
-
-pkgname = overtone-wpc-rvb500-vst-bin
-	pkgdesc = OvertoneDSP RVB500 - Stereo Plate Reverb (VST)
+pkgname = overtone-wpc-plugins-bin
