@@ -4,7 +4,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=5.1.r105881.g1bed27acef
+pkgver=5.1.r106355.ga24e6ca8bf
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
@@ -85,12 +85,15 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'ffmpeg')
 conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
-        '010-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch')
+        '010-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
+        '060-ffmpeg-fix-segfault-with-avisynthplus.patch')
 sha256sums=('SKIP'
-            '91973c465f01446a999f278f0c2a3763304994dba1ac35de0e4c72f12f39409e')
+            '91973c465f01446a999f278f0c2a3763304994dba1ac35de0e4c72f12f39409e'
+            '887c2e440b159b7c3575a12eb17e1297b76f9468b65b96ef2674b7bb36b12fcf')
 
 prepare() {
     patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/060-ffmpeg-fix-segfault-with-avisynthplus.patch"
 }
 
 pkgver() {
@@ -101,7 +104,6 @@ pkgver() {
 
 build() {
     cd ffmpeg
-    
     printf '%s\n' '  -> Running ffmpeg configure script...'
     
     ./configure \
