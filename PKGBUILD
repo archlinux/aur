@@ -3,7 +3,7 @@
 
 pkgname=ffmpeg-full
 pkgver=5.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -47,6 +47,9 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         "030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
         '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         '050-ffmpeg-vmaf-2.x.patch'
+        '060-ffmpeg-fix-segfault-with-avisynthplus.patch'
+        '070-ffmpeg-libsvtav1-0.9.0-part1.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/c33b4048859a191acf9b6aa22acaea248a4eb18f'
+        '080-ffmpeg-libsvtav1-0.9.0-part2.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/1dddb930aaf0cadaa19f86e81225c9c352745262'
         'LICENSE')
 sha256sums=('51e919f7d205062c0fd4fae6243a84850391115104ccf1efc451733bc0ac7298'
             'SKIP'
@@ -54,6 +57,9 @@ sha256sums=('51e919f7d205062c0fd4fae6243a84850391115104ccf1efc451733bc0ac7298'
             '9565b3eed177ce5d109876f2a56f3781a2c7fae41e32601bf6ec805ea199d21b'
             '91973c465f01446a999f278f0c2a3763304994dba1ac35de0e4c72f12f39409e'
             'eb044a095ba72ebe63de53f15952aa0100bb27ee691cf3d3a205d5a597c72a7d'
+            '887c2e440b159b7c3575a12eb17e1297b76f9468b65b96ef2674b7bb36b12fcf'
+            '65a455c6ef110cd06196b48e53f36b87cb2a90fccfdd65fe25cd225b2524fa22'
+            '9de88ea609fddf8437536b6cf7c9b4039bde4fa560977cdeba14b87b8dcca31c'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
@@ -64,6 +70,9 @@ prepare() {
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/030-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/050-ffmpeg-vmaf-2.x.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/060-ffmpeg-fix-segfault-with-avisynthplus.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/070-ffmpeg-libsvtav1-0.9.0-part1.patch"
+    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/080-ffmpeg-libsvtav1-0.9.0-part2.patch"
 }
 
 build() {
