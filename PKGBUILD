@@ -5,7 +5,7 @@ pkgver=13.6.9
 _commit=5c5b2835b64e6a2b86b8467288908467e8228890
 _chromiumver=91.0.4472.164
 _gcc_patchset=5
-pkgrel=1
+pkgrel=2
 pkgdesc='Build cross platform desktop apps with web technologies'
 arch=('x86_64')
 url='https://electronjs.org/'
@@ -14,7 +14,8 @@ depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libxslt' 'minizip' 'nss' 're2'
          'snappy')
 makedepends=('clang' 'git' 'gn' 'gperf' 'harfbuzz-icu' 'http-parser'
              'java-runtime-headless' 'jsoncpp' 'libnotify' 'lld' 'llvm' 'ninja'
-             'npm' 'pciutils' 'pipewire' 'python2' 'wget' 'yarn')
+             'npm' 'pciutils' 'pipewire' 'python2' 'python' 'python-httplib2'
+             'python-pyparsing' 'python-six' 'wget' 'yarn')
 optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'libappindicator-gtk3: StatusNotifierItem support'
             'pipewire: WebRTC desktop sharing under Wayland'
@@ -43,6 +44,7 @@ source=('git+https://github.com/electron/electron.git'
         'sql-make-VirtualCursor-standard-layout-type.patch'
         'unbundle-use-char16_t-as-UCHAR_TYPE.patch'
         'ffmpeg5.patch'
+        'wayland-mmap-keymaps-as-read-only-memory.patch'
        )
 sha256sums=('SKIP'
             'SKIP'
@@ -65,7 +67,9 @@ sha256sums=('SKIP'
             '574785a21168c3e9b7aa82630713ceb6ced12f699133db66b10fc84b7bb2c631'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
             '59a59a60a08b335fe8647fdf0f9d2288d236ebf2cc9626396d0c4d032fd2b25d'
-            '4f32b815349357ef1f17b36059cee588c994472b9754a194fff41ec21a93826b')
+            '4f32b815349357ef1f17b36059cee588c994472b9754a194fff41ec21a93826b'
+            '88f0fa78de1805e57e70b46caf946544bbfad205f95f723eddf7fc7aad58af40'
+           )
 
 _system_libs=('ffmpeg'
               'flac'
@@ -110,7 +114,7 @@ prepare() {
   },
 ]" > .gclient
 
-  python2 "${srcdir}/depot_tools/gclient.py" sync \
+  python3 "${srcdir}/depot_tools/gclient.py" sync \
       --with_branch_heads \
       --with_tags \
       --nohooks
@@ -170,6 +174,7 @@ prepare() {
   patch -Np1 -i ../sql-make-VirtualCursor-standard-layout-type.patch
   patch -Np1 -i ../std-max-fix.patch
   patch -Np1 -i ../unbundle-use-char16_t-as-UCHAR_TYPE.patch
+  patch -Np1 -i ../wayland-mmap-keymaps-as-read-only-memory.patch
   patch -Np1 -i ../use-system-libraries-in-node.patch
   patch -Np1 -i ../default_app-icon.patch  # Icon from .desktop file
 
