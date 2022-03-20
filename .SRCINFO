@@ -1,0 +1,15 @@
+pkgbase = cow-translator-git
+	pkgdesc = Official moo translator to communicate with cows
+	pkgver = r5.33eb9d5
+	pkgrel = 1
+	url = https://github.com/SkwalExe/cow-translator
+	install = cow-translator.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	provides = cow-translator
+	source = git+https://github.com/SkwalExe/cow-translator
+	md5sums = SKIP
+
+pkgname = cow-translator-git
