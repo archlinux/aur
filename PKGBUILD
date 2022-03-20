@@ -1,7 +1,7 @@
 # Maintainer: Cody Schafer <dev@codyps.com>
 
 pkgname=grpcurl
-pkgver=1.8.2
+pkgver=1.8.6
 pkgrel=1
 pkgdesc="Like cURL, but for gRPC: Command-line tool for interacting with gRPC servers"
 arch=(x86_64)
@@ -11,9 +11,14 @@ makedepends=('go')
 source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/fullstorydev/grpcurl/archive/v$pkgver.tar.gz"
 )
-sha384sums=('1086ea3a60d644d98153d68bcc9ee94c87ba2914fe78e8d84323383f33814ca858f3496c0b513a4093affa930c9bbd32')
+sha384sums=('6ff5623f705eec96542d86918ef1ccbff436c84d174f744be5bb5619bf088950b9cb3cb50f6b178ddf8073f81d99f0cc')
 # really, `grpcurl-bin` should be conflicting with us instead of the oposite
 conflicts=('grpcurl-bin')
+
+prepare() {
+	cd "$pkgname-$pkgver"
+	mkdir -p build
+}
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -22,8 +27,12 @@ build() {
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	mkdir -p build
 	go build -o build ./cmd/...
+}
+
+check() {
+	cd "$pkgname-$pkgver"
+	go test ./...
 }
 
 package() {
