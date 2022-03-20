@@ -1,6 +1,6 @@
 # Maintainer: Kamil Cukrowski <kamilcukrowski@gmail.com
 pkgname=negrep-bin
-pkgver=1.2.2
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Grep-like utility based on Nevod Textual Pattern Matching"
 arch=('x86_64')
@@ -21,15 +21,15 @@ source=(
 	"https://github.com/nezaboodka/nevod/releases/download/v${pkgver}/negrep-rhel.6-x64.tar.gz"
 )
 noextract=()
-sha256sums=('7f45a21899eb1a0b75990c3f2b81c24dd0e90637e675bea7cb55df70db58d169')
+sha256sums=('f52658f3f84b380236a45c4cd46f66895ba2e36389211bd1370805bc90f18ebb')
 
 package() {
 	cd "$pkgdir"
-	install -d -m755 usr
-	install -d -m755 usr/bin
-	install -d -m755 usr/share
-	cp -a "$srcdir"/negrep/ usr/share/negrep/
-	ln -s /usr/share/negrep/negrep usr/bin/negrep
+	install -vd -m755 usr
+	install -vd -m755 usr/bin
+	install -vd -m755 usr/lib
+	cp -va "$srcdir"/negrep/ usr/lib/negrep/
+	ln -vs /usr/lib/negrep/negrep usr/bin/negrep
 }
 
 
