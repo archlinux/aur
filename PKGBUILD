@@ -2,14 +2,14 @@
 # Maintainer: Johannes Arnold <johannes.arnold@stud.uni-hannover.de>
 _pkgname=shairport-sync
 pkgname=$_pkgname-git
-pkgver=4.1.dev.r189.g8b483c09
+pkgver=4.1.dev.r241.gace5537a
 pkgrel=1
 pkgdesc="AirPlay 2 audio player with multi-room playback"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/mikebrady/shairport-sync"
 license=('custom')
-makedepends=('autoconf' 'automake' 'libtool' 'xxd' 'libalac' 'mosquitto')
-depends=('openssl' 'avahi' 'popt' 'libconfig' 'nqptp' 'ffmpeg' 'libsodium' 'libplist' 'mosquitto' 'alac')
+makedepends=('autoconf' 'automake' 'libtool' 'xxd' 'libalac' 'mosquitto' 'ffmpeg4.4')
+depends=('openssl' 'avahi' 'popt' 'libconfig' 'nqptp' 'ffmpeg4.4' 'libsodium' 'libplist' 'mosquitto' 'alac')
 optdepends=('pulseaudio: PulseAudio support'
             'pipewire: PipeWire support'
             'libsoxr: libsoxr-based resampling')
@@ -34,6 +34,8 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgname"
+
+  export PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig/:$PKG_CONFIG_PATH"
 
   autoreconf -i -f
   ./configure \
