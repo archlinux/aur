@@ -1,0 +1,22 @@
+pkgbase = yacreader-9.0
+	pkgdesc = Stable legacy version of YACReader
+	pkgver = 9.0.0
+	pkgrel = 1
+	url = https://github.com/YACReader/yacreader/tree/5bf5297229827a77b495e9b7ecd94fe7c25b61f0
+	arch = any
+	license = GPL3
+	makedepends = make
+	depends = libunarr
+	depends = poppler-qt5
+	depends = glu
+	depends = qt5-base
+	depends = qt5-multimedia
+	depends = qt5-script
+	depends = qt5-quickcontrols
+	depends = qt5-graphicaleffects
+	provides = YACReader
+	provides = YACReaderLibrary
+	source = git+https://github.com/YACReader/yacreader.git
+	md5sums = SKIP
+
+pkgname = yacreader-9.0
