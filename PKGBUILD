@@ -1,41 +1,64 @@
+# Maintainer: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: aksr <aksr at t-com dot me>
 # Contributor: Lucky <archlinux@builds.lucky.li>
 ## Based on libtorrent [community]
-# Maintainer: aksr <aksr at t-com dot me>
 pkgname=libtorrent-git
-pkgver=0.13.7.r1.g7b29b6bd
+pkgver=0.13.8.r20.g53596afc
 pkgrel=1
 pkgdesc="A BitTorrent library written in C++."
 url="https://github.com/rakshasa/libtorrent/"
 license=("GPL")
 arch=("i686" "x86_64")
-depends=("libsigc++" "openssl" "cppunit")
-makedepends=("git")
+depends=("gcc-libs" "glibc" "openssl" "zlib")
+makedepends=("git" "cppunit")
 conflicts=('libtorrent')
 provides=('libtorrent')
-options=("!libtool")
+options=('debug')
 source=("$pkgname::git+https://github.com/rakshasa/libtorrent.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$pkgname"
-  git describe --long | sed -r "s/([^-]*-g)/r\1/;s/-/./g;s/^v//"
+
+  # Generate git tag based version. Count only proper v#.# [#=number] tags, skip those starting with letters
+  git describe --long --tags --match 'v[0-9][0-9.][0-9.]*' | sed 's/^v//;s/^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)/\1\2/;s/\([0-9]\+-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname/test"
+
+  # Don't hardcode cppunit, main configure script finds it via pkg-config
   sed '/AM_PATH_CPPUNIT/d' -i configure.ac
+
+  cd "$srcdir/$pkgname"
+
+  # Don't force-link 'make test' cppunit dependency to runtime libraries
+  sed -E 's/[    ]*\$CPPUNIT_CFLAGS[    ]*/ /g
+          s/[    ]*\$CPPUNIT_LIBS[    ]*/ /g' \
+          -i configure.ac
+
+  # Generate configure scripts and Makefiles
+  autoreconf --verbose --force --install --symlink
 }
 
 build() {
   cd "$srcdir/$pkgname"
-  ./autogen.sh
-  export CXXFLAGS="${CXXFLAGS} -fno-strict-aliasing"
-  ./configure --prefix=/usr --disable-debug
+
+  ./configure \
+    --prefix=/usr \
+    --enable-debug \
+    --enable-extra-debug \
+    --disable-silent-rules
+
   make
+}
+
+check() {
+  cd "$srcdir/$pkgname"
+  make check
 }
 
 package() {
   cd "$srcdir/$pkgname"
   make DESTDIR="$pkgdir" install
 }
-
