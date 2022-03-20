@@ -1,39 +1,31 @@
-# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Maintainer: Letu Ren <fantasquex at gmail dot com>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
-pkgname=rp++
-_pkgname=rp
-pkgver=1
-_gitcommit=ba129d7f22fcc7fe17557dfb29670527af426d89
-pkgrel=3
-pkgdesc='Find ROP gadgets in PE/ELF/MACH-O x86/x64 binaries'
+pkgname='rp++'
+_name='rp'
+pkgver=2.0.2
+pkgrel=1
+pkgdesc='rp++ is a fast C++ ROP gadget finder for PE/ELF/Mach-O x86/x64/ARM binaries.'
+arch=('x86_64')
 url='https://github.com/0vercl0k/rp'
-arch=('i686' 'x86_64')
-license=('GPL3')
-depends=('gcc-libs')
-makedepends=('cmake')
-source=(${pkgname}-${pkgver}.tar.gz::https://github.com/0vercl0k/rp/archive/${_gitcommit}.tar.gz)
-sha512sums=('b95c8a9007c49707896dd3d996803608585bc1bf141fb8815fd648abecb42f8af4bda8c1d7f8ca5d99eadf213a4d4bd8df803839b5a3ba13cc257b6531ecad5e')
-
-prepare() {
-  cd ${_pkgname}-${_gitcommit}
-  mkdir build
-  sed 's/-static//g' -i CMakeLists.txt
-}
+license=('MIT')
+depends=()
+makedepends=('cmake' 'ninja')
+source=("https://github.com/0vercl0k/rp/archive/refs/tags/v2.0.2.tar.gz")
+sha256sums=("SKIP")
 
 build() {
-  cd ${_pkgname}-${_gitcommit}/build
-  cmake ..
-  make
-}
-
-check() {
-  cd ${_pkgname}-${_gitcommit}/bin
-  ./rp* -f bin_tests/elf-x86-bash-v4.1.5.1 --search-hexa="main"
+    cd "${_name}-${pkgver}"
+    cmake -B build -S "src" \
+        -DCMAKE_BUILD_TYPE='None' \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -GNinja -Wno-dev
+    cmake --build build
 }
 
 package() {
-  cd ${_pkgname}-${_gitcommit}
-  install -Dm 755 bin/rp-lin-* "${pkgdir}/usr/bin/rp"
+    cd "${_name}-${pkgver}"
+    install -Dm755 "build/rp-lin-x64" "${pkgdir}/usr/bin/rp"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-# vim: ts=2 sw=2 et:

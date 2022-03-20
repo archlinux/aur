@@ -1,15 +1,13 @@
 pkgbase = rp++
-	pkgdesc = Find ROP gadgets in PE/ELF/MACH-O x86/x64 binaries
-	pkgver = 1
-	pkgrel = 3
+	pkgdesc = rp++ is a fast C++ ROP gadget finder for PE/ELF/Mach-O x86/x64/ARM binaries.
+	pkgver = 2.0.2
+	pkgrel = 1
 	url = https://github.com/0vercl0k/rp
-	arch = i686
 	arch = x86_64
-	license = GPL3
+	license = MIT
 	makedepends = cmake
-	depends = gcc-libs
-	source = rp++-1.tar.gz::https://github.com/0vercl0k/rp/archive/ba129d7f22fcc7fe17557dfb29670527af426d89.tar.gz
-	sha512sums = b95c8a9007c49707896dd3d996803608585bc1bf141fb8815fd648abecb42f8af4bda8c1d7f8ca5d99eadf213a4d4bd8df803839b5a3ba13cc257b6531ecad5e
+	makedepends = ninja
+	source = https://github.com/0vercl0k/rp/archive/refs/tags/v2.0.2.tar.gz
+	sha256sums = SKIP
 
 pkgname = rp++
-
