@@ -1,0 +1,16 @@
+[Desktop Entry]
+Categories=
+Encoding=UTF-8
+Exec=pamlX
+GenericName=pamlX
+Icon=/usr/share/icons/pamlX.png
+MimeType=
+Name=pamlX
+ServiceTypes=
+SwallowExec=
+SwallowTitle=
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=root
