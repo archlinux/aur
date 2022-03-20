@@ -8,6 +8,7 @@ arch=('x86_64')
 license=('LGPL')
 url='https://pagure.io/libuser/'
 depends=('glib2' 'pam' 'popt' 'python')
+makedepends=('autoconf' 'automake' 'gettext' 'libtool')
 backup=('etc/libuser.conf')
 source=("https://releases.pagure.org/libuser/libuser-${pkgver}.tar.xz")
 sha256sums=('8dc377255452a68e82c4837ba22c3ee4ae3658971bf0f2ef67ed0b77fc497f91')
