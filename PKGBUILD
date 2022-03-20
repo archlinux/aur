@@ -3,7 +3,7 @@
 _pkgname=ddplan
 pkgname="${_pkgname}-git"
 pkgver=0.1.0+r7.20160821.5d5d9d8
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple menubar application with timetables for trams, buses and trains in Dresden. (Dresdner Verkehrsbetriebe/ DVB backend.)"
 arch=(
   "any"
@@ -28,7 +28,7 @@ conflicts=(
   "${_pkgname}"
 )
 source=(
-  "${_pkgname}::git+git://github.com/4gray/ddplan.git"
+  "${_pkgname}::git+https://github.com/4gray/ddplan.git"
   "ddplan.sh"
 #   "${install}"
   "license-dummy.txt"
