@@ -1,7 +1,7 @@
 # Maintainer: Paul Black <paulrblack.prb@gmail.com>
 
 pkgname="plasticity-bin"
-pkgver="0.5.32"
+pkgver="0.5.33"
 pkgrel="2"
 pkgdesc="Plasticity is a 3d modelling software for concept artists. Modeling in Plasticity is quick and efficient due to the unique gizmos, shortcuts, and thoughtful workflow."
 arch=("x86_64")
