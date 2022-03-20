@@ -1,4 +1,4 @@
-From 8dedbd0aaab0582d023fe05b3b9ab7bb61d9b4b8 Mon Sep 17 00:00:00 2001
+From 8147aba1e69acf79bbc358b39ca2043c13632831 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 7 May 2021 16:10:47 +0200
 Subject: [PATCH 2/2] Build tools for the target platform
@@ -63,5 +63,5 @@ index 073ce62..a646314 100644
          main.cpp
      PUBLIC_LIBRARIES
 -- 
-2.35.0
+2.35.1
 
