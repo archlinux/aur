@@ -52,15 +52,33 @@ index 18fa5fc..e333382 100644
  [Install]
  WantedBy=multi-user.target
 diff --git a/scripts/setup-tun.sh b/scripts/setup-tun.sh
-index 2c1a601..f5d5d0f 100755
+index 2c1a601..5587a1e 100755
 --- a/scripts/setup-tun.sh
 +++ b/scripts/setup-tun.sh
-@@ -8,7 +8,7 @@ ip rule del fwmark "$NETFILTER_MARK" lookup "$IPROUTE2_TABLE_ID" > /dev/null 2>
+@@ -8,8 +8,6 @@ ip rule del fwmark "$NETFILTER_MARK" lookup "$IPROUTE2_TABLE_ID" > /dev/null 2>
  ip rule add fwmark "$NETFILTER_MARK" lookup "$IPROUTE2_TABLE_ID"
  
  nft -f - << EOF
 -define LOCAL_SUBNET = {127.0.0.0/8, 224.0.0.0/4, 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12}
-+define LOCAL_SUBNET = $LOCAL_SUBNET
- 
+-
  table clash
  flush table clash
+ 
+@@ -20,7 +18,7 @@ table clash {
+         ip protocol != { tcp, udp } accept
+         
+         meta cgroup $BYPASS_CGROUP_CLASSID accept
+-        ip daddr \$LOCAL_SUBNET accept
++        ip daddr $LOCAL_SUBNET accept
+         
+         ct state new ct mark set $NETFILTER_MARK
+         ct mark $NETFILTER_MARK mark set $NETFILTER_MARK
+@@ -32,7 +30,7 @@ table clash {
+         ip protocol != { tcp, udp } accept
+     
+         iif utun accept
+-        ip daddr \$LOCAL_SUBNET accept
++        ip daddr $LOCAL_SUBNET accept
+         
+         mark set $NETFILTER_MARK
+     }

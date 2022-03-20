@@ -14,9 +14,9 @@ makedepends=('git')
 backup=("etc/clash/config.yaml" "etc/default/clash")
 source=("git+https://github.com/Kr328/clash-premium-installer.git"
         "arch.patch"
-		"config.yaml")
+	"config.yaml")
 sha256sums=('SKIP'
-            'df6c6ee3217fc6e8a69aaf6b4e291eb963bdc4f512fa1d2d96b284554195a79f'
+            'caea15247d1b324cc3e4a1e0b1504788e2180218ef93f2c934616897b372906b'
             '1938bc7544f8e33a6e41636f45e87a17de2eac0ca14f47c2f7a71c3c87341bf0')
 
 pkgver() {
