@@ -1,6 +1,6 @@
 pkgbase = profanity-git
 	pkgdesc = A console based jabber client.
-	pkgver = 6435.4a94c051
+	pkgver = 6749.4e956410
 	pkgrel = 1
 	url = http://profanity-im.github.io
 	arch = i686
@@ -19,8 +19,7 @@ pkgbase = profanity-git
 	depends = libstrophe-git
 	provides = profanity
 	conflicts = profanity
-	source = profanity::git://github.com/profanity-im/profanity.git#branch=master
+	source = git+https://github.com/profanity-im/profanity.git#branch=master
 	sha256sums = SKIP
 
 pkgname = profanity-git
-
