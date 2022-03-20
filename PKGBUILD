@@ -2,7 +2,7 @@
 
 _basename=smithay
 pkgname="$_basename-git"
-pkgver=v0.2.0.r245.ge402af48
+pkgver=v0.3.0.r380.g68386dfbb4
 pkgrel=1
 pkgdesc="A smithy for rusty wayland compositors"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('git' 'rust')
 conflicts=("$_basename")
 provides=("$_basename")
 
-source=("$pkgname::git://github.com/Smithay/$_basename.git")
+source=("$pkgname::git+https://github.com/Smithay/$_basename.git")
 sha1sums=('SKIP')
 
 pkgver() {
