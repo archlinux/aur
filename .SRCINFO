@@ -1,0 +1,16 @@
+pkgbase = sea-orm-cli
+	pkgdesc = CLI for the Sea-Orm crate
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://www.sea-ql.org/seaorm/
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	depends = sqlite
+	depends = postgresql-libs
+	depends = libmariadbclient
+	source = https://github.com/SeaQL/sea-orm/archive/refs/tags/0.6.0.tar.gz
+	sha512sums = ed37796d3a1ca3bb4c6d214aa939e8e5747071ff431cc2c84f38d70259281ca5c073f5671b051a7c3a2199bf4bb49b31c435e59f2cf4bd31a687e3bfa2a5d0a5
+
+pkgname = sea-orm-cli
