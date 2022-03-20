@@ -1,0 +1,19 @@
+pkgbase = python-tables
+	pkgdesc = Hierarchical datasets for Python
+	pkgver = 3.7.0
+	pkgrel = 1
+	url = https://pypi.org/project/tables
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-numpy
+	depends = python-oldest-supported-numpy
+	depends = python-numexpr
+	depends = python-packaging
+	source = https://files.pythonhosted.org/packages/source/t/tables/tables-3.7.0.tar.gz
+	sha256sums = e92a887ad6f2a983e564a69902de4a7645c30069fc01abd353ec5da255c5e1fe
+
+pkgname = python-tables
