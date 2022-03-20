@@ -2,7 +2,7 @@
 
 pkgname=python-b2sdk
 _pkgname=b2sdk
-pkgver=1.13.0
+pkgver=1.14.1
 pkgrel=1
 pkgdesc='Python library to access B2 cloud storage.'
 arch=(any)
@@ -20,7 +20,7 @@ makedepends=('python-setuptools-scm'
             )
 
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('43d07ce5cf9685acc3797b0c4764b4688777db12d8f0102e6118f8403db5c759')
+sha256sums=('7d839eca12a6f66453eb535c41569714a7910bc012f657c864c3bfb3a88569e8')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
