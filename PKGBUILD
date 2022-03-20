@@ -23,6 +23,7 @@ prepare() {
   cd "$_pkgname-$pkgver"
 
   # create folder for build output
+  rm -Rf build
   mkdir build
 
   # download dependencies
