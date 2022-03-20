@@ -1,0 +1,15 @@
+pkgbase = alice2-bin
+	pkgdesc = An educational software that teaches students computer programming in a 3D environment
+	pkgver = 2.4
+	pkgrel = 1
+	url = https://www.alice.org/get-alice/alice-2/
+	arch = x86_64
+	arch = i586
+	license = custom
+	depends = jdk8-openjdk
+	depends = java-runtime
+	depends = lib32-libglvnd
+	source = alice2-bin-2.4.tar::https://www.alice.org/wp-content/uploads/2017/05/Alice2_4e.tar
+	sha256sums = 5a087c75c7a1af95141791f0d4d5846e6067cec9ef5c89c3d67fe7af3b612040
+
+pkgname = alice2-bin
