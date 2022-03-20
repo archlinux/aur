@@ -1,7 +1,7 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=libstrophe-git
-pkgver=653.2f491e0
+pkgver=719.06afe3d
 pkgrel=1
 pkgdesc='A simple, lightweight C library for writing XMPP clients'
 arch=('x86_64')
@@ -13,7 +13,7 @@ checkdepends=('check')
 provides=('libstrophe')
 conflicts=('libstrophe')
 options=('staticlibs')
-source=('git://github.com/strophe/libstrophe.git')
+source=('git+https://github.com/strophe/libstrophe.git')
 b2sums=('SKIP')
 
 pkgver() {
