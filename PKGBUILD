@@ -3,7 +3,7 @@
 _pkgname=windscribegui
 pkgname="${_pkgname}-git"
 pkgver=r3.ec1bccb
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt 5/6 based GUI for Windscribe VPN written in Python"
 arch=("any")
 url="https://github.com/shaybox/${_pkgname}"
@@ -12,6 +12,7 @@ depends=(
     "windscribe-cli"
     "python-qtpy"
     "python-windscribe"
+    "python-click"
 )
 makedepends=(
     "git"
