@@ -1,7 +1,7 @@
 # Maintainer: Nils Grunwald <nils [@] grunwald [dot] fr>
 
 pkgname=datalevin-bin
-pkgver=0.5.27
+pkgver=0.6.1
 pkgrel=1
 pkgdesc='Simple, fast and versatile Datalog database for everyone.'
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=()
 
 source=("https://github.com/juji-io/datalevin/releases/download/${pkgver}/dtlv-${pkgver}-ubuntu-latest-amd64.zip")
 
-sha256sums=('3ad2cc5f8b4c4b391a31a689c10b597fc729f523c0872e971e83dfca1de3406e')
+sha256sums=('35dfb81b514739cf35a376bed2e0a480a7054612072beed17464c5283445f9d4')
 
 package() {
   install -Dm755 "${srcdir}/dtlv" "${pkgdir}/usr/bin/dtlv"
