@@ -1,7 +1,7 @@
 # Maintainer: Aakash Sharma <aakashsensharma@gmail.com>
 pkgname='swhkd-git'
 _pkgname="swhkd"
-pkgver=1
+pkgver=2
 pkgrel=3
 arch=('x86_64')
 url="https://github.com/waycrate/swhkd"
