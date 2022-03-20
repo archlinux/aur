@@ -1,14 +1,16 @@
-diff --color --unified --recursive --text a/scripts/99-clash.rules b/scripts/99-clash.rules
---- a/scripts/99-clash.rules	2022-02-27 11:13:08.792924323 +0800
-+++ b/scripts/99-clash.rules	2022-02-27 11:14:14.628805349 +0800
+diff --git a/scripts/99-clash.rules b/scripts/99-clash.rules
+index a73d507..9d77338 100644
+--- a/scripts/99-clash.rules
++++ b/scripts/99-clash.rules
 @@ -1,2 +1,2 @@
 -SUBSYSTEM=="net",ENV{INTERFACE}=="utun",ACTION=="add",RUN+="/usr/lib/clash/setup-tun.sh"
 -SUBSYSTEM=="net",ENV{INTERFACE}=="utun",ACTION=="remove",RUN+="/usr/lib/clash/clean-tun.sh"
 +SUBSYSTEM=="net",ENV{INTERFACE}=="utun",ACTION=="add",RUN+="/usr/share/clash/setup-tun.sh"
 +SUBSYSTEM=="net",ENV{INTERFACE}=="utun",ACTION=="remove",RUN+="/usr/share/clash/clean-tun.sh"
-diff --color --unified --recursive --text a/scripts/bypass-proxy b/scripts/bypass-proxy
---- a/scripts/bypass-proxy	2022-02-27 11:13:08.792924323 +0800
-+++ b/scripts/bypass-proxy	2022-02-27 11:14:32.794772520 +0800
+diff --git a/scripts/bypass-proxy b/scripts/bypass-proxy
+index 606c4f1..cab10be 100755
+--- a/scripts/bypass-proxy
++++ b/scripts/bypass-proxy
 @@ -1,5 +1,5 @@
  #!/bin/bash
  
@@ -16,19 +18,23 @@ diff --color --unified --recursive --text a/scripts/bypass-proxy b/scripts/bypas
 +/usr/share/clash/bypass-proxy-pid $$ 2>&1 > /dev/null
  
  exec "$@"
-diff --color --unified --recursive --text a/scripts/clash-default b/scripts/clash-default
---- a/scripts/clash-default	2022-02-27 11:13:08.792924323 +0800
-+++ b/scripts/clash-default	2022-02-27 11:14:54.558733190 +0800
-@@ -10,5 +10,5 @@
+diff --git a/scripts/clash-default b/scripts/clash-default
+index 7bc4ca8..4f4f6a6 100644
+--- a/scripts/clash-default
++++ b/scripts/clash-default
+@@ -10,5 +10,7 @@ NETFILTER_MARK=114514
  IPROUTE2_TABLE_ID=114
  
  # dns redirect
 -FORWARD_DNS_REDIRECT=1.0.0.1:53
 +FORWARD_DNS_REDIRECT=198.18.0.2:53
  
-diff --color --unified --recursive --text a/scripts/clash.service b/scripts/clash.service
---- a/scripts/clash.service	2022-02-27 11:13:08.792924323 +0800
-+++ b/scripts/clash.service	2022-02-27 11:15:53.700626313 +0800
++# local subnet
++LOCAL_SUBNET="{127.0.0.0/8, 224.0.0.0/4, 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12}"
+diff --git a/scripts/clash.service b/scripts/clash.service
+index 18fa5fc..e333382 100644
+--- a/scripts/clash.service
++++ b/scripts/clash.service
 @@ -1,12 +1,12 @@
  [Unit]
  Description=A rule based proxy tunnel
@@ -45,3 +51,16 @@ diff --color --unified --recursive --text a/scripts/clash.service b/scripts/clas
  
  [Install]
  WantedBy=multi-user.target
+diff --git a/scripts/setup-tun.sh b/scripts/setup-tun.sh
+index 2c1a601..f5d5d0f 100755
+--- a/scripts/setup-tun.sh
++++ b/scripts/setup-tun.sh
+@@ -8,7 +8,7 @@ ip rule del fwmark "$NETFILTER_MARK" lookup "$IPROUTE2_TABLE_ID" > /dev/null 2>
+ ip rule add fwmark "$NETFILTER_MARK" lookup "$IPROUTE2_TABLE_ID"
+ 
+ nft -f - << EOF
+-define LOCAL_SUBNET = {127.0.0.0/8, 224.0.0.0/4, 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12}
++define LOCAL_SUBNET = $LOCAL_SUBNET
+ 
+ table clash
+ flush table clash
