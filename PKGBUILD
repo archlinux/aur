@@ -6,12 +6,14 @@
 # will be on config.extra file.
 
 pkgbase=linux-mainline-git
-pkgver=v5.17.rc8.r0.09688c0166e7
+pkgver=v5.17.r0.f443e374ae13
 pkgrel=1
 pkgdesc="Linus Torvalds' Mainline Linux"
 url="https://www.kernel.org"
 arch=(x86_64)
 license=(GPL2)
+_userconfig="/etc/${pkgbase}/config"
+backup=("${_userconfig##/}")
 makedepends=(
   bc kmod libelf pahole cpio perl tar xz
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
@@ -23,6 +25,7 @@ source=(
   "$_srcname::git+https://kernel.googlesource.com/pub/scm/linux/kernel/git/torvalds/linux"
   config         # the main kernel config file
   config.extra   # additional configs
+  config.user    # user custom config
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -30,7 +33,9 @@ validpgpkeys=(
 )
 sha256sums=('SKIP'
             '937b8c12653d7b18be9b5673e9fa7fba9512c2b5c947e5d489a5e0749a0a8253'
-            '6c593d021527cef8f328cbce0da5a5dcd0d418468d93ff7aef43c700aad51349')
+            '6c593d021527cef8f328cbce0da5a5dcd0d418468d93ff7aef43c700aad51349'
+            'b5ced6ad1f03a5cfe6dccc0b2b31f91420cfe97823e5d15d5b94b7224362daa9')
+
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -60,6 +65,9 @@ prepare() {
 
   echo "Setting config..."
   cat ../config ../config.extra > .config
+  if [[ -f "$_userconfig" ]]; then
+    cat $_userconfig >> .config
+  fi
   make olddefconfig
   diff -u ../config .config || :
 
@@ -97,6 +105,9 @@ _package() {
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
+
+  # install user config file
+  install -Dm644 $srcdir/config.user "${pkgdir}${_userconfig}"
 }
 
 _package-headers() {
