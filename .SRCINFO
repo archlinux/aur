@@ -1,0 +1,15 @@
+pkgbase = sweet-cursors-theme-git
+	pkgdesc = Cursors for Sweet theme
+	pkgver = r248.802e805
+	pkgrel = 1
+	url = https://github.com/EliverLara/sweet
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	provides = sweet-cursors-theme
+	conflicts = sweet-cursor-theme-git
+	conflicts = sweet-cursor-theme
+	source = git+https://github.com/EliverLara/sweet.git#branch=nova
+	sha256sums = SKIP
+
+pkgname = sweet-cursors-theme-git
