@@ -12,6 +12,12 @@ backup=('etc/libuser.conf')
 source=("https://releases.pagure.org/libuser/libuser-${pkgver}.tar.xz")
 sha256sums=('8dc377255452a68e82c4837ba22c3ee4ae3658971bf0f2ef67ed0b77fc497f91')
 
+prepare() {
+  cd ${pkgname}-${pkgver}
+  # skip gtk docs
+  sed -i 's/gtkdocize/# gtkdocize/' autogen.sh
+}
+
 build() {
   cd ${pkgname}-${pkgver}
   ./autogen.sh
