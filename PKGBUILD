@@ -6,8 +6,8 @@
 # Contributor: Andrew Sun <adsun701@gmail.com>
 
 pkgname=swift-language
-_swiftver=swift-5.5-RELEASE
-pkgver=5.5.3
+_swiftver=swift-5.6-RELEASE
+pkgver=5.6.0
 pkgrel=1
 swiftargumentparserver=0.4.3
 swiftcryptover=1.1.5
@@ -119,6 +119,7 @@ build() {
     # By default in /etc/makepkg.conf this is "-D_FORTIFY_SOURCE=2"
     # Which will break `compiler-rt`
     unset CPPFLAGS
+    export DISTCC_HOSTS='--randomize localhost red,cpp,lzo green,cpp,lzo blue,cpp,lzo'
 
     python swift/utils/build-script --preset=buildbot_linux,no_test install_destdir="$pkgdir"
 }
