@@ -1,0 +1,18 @@
+pkgbase = chromium-extension-ublock-origin-lite
+	pkgdesc = chromium mv3 uBlock Origin extension (uBO Lite, uBOL, an experimental permission-less MV3 API-based content blocker)
+	pkgver = 0.1.22.9305
+	pkgrel = 1
+	url = https://github.com/gorhill/uBlock
+	arch = any
+	license = GPL3
+	makedepends = chromium
+	makedepends = openssl
+	makedepends = jq
+	makedepends = unzip
+	noextract = chromium-extension-ublock-origin-lite-0.1.22.9305.zip
+	source = chromium-extension-ublock-origin-lite-0.1.22.9305.zip::https://github.com/gorhill/uBlock/releases/download/uBOLite_0.1.22.9305/uBOLite_0.1.22.9305.mv3.zip
+	source = uBlock0.chromium.pem
+	sha256sums = f61a0c409f6619e2386940a7e497038e06cc82ddf8143eaacedeb0bf45f99ce0
+	sha256sums = 804e431b5601a5d0bd9d7e1d27ea8396c6cc87f2523d6d857f1abf368df3a06f
+
+pkgname = chromium-extension-ublock-origin-lite
