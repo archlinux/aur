@@ -1,0 +1,16 @@
+[Trigger]
+Type = Path
+Operation = Install
+Operation = Upgrade
+Target = usr/lib/libadwaita-1.so
+
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = adw-gtk-theme
+
+[Action]
+Description = Extracting Adw GTK4 theme from LibAdwaita...
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/extract-libadwaita-theme.sh

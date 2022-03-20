@@ -1,0 +1,8 @@
+post_install() {
+  mkdir -p /usr/share/themes/Adw{,-dark}
+  ln -sfrT /usr/share/themes/{adw-gtk3,Adw}/gtk-3.0
+  ln -sfrT /usr/share/themes/{adw-gtk3,Adw}-dark/gtk-3.0
+}
+pre_remove() {
+  rm -rf /usr/share/themes/Adw{,-dark}
+}

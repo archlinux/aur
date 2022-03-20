@@ -1,0 +1,14 @@
+pkgbase = adw-gtk-theme
+	pkgdesc = LibAdwaita Theme for all GTK3 and GTK4 Apps
+	pkgver = 1.0
+	pkgrel = 1
+	install = adw-gtk-theme.install
+	arch = any
+	depends = libadwaita
+	depends = adw-gtk3
+	source = extract-libadwaita-theme.hook
+	source = extract-libadwaita-theme.sh
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = adw-gtk-theme
