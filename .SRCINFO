@@ -1,0 +1,17 @@
+pkgbase = python-convertdate
+	pkgdesc = Converts between Gregorian dates and other calendar systems
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://pypi.org/project/convertdate
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-nspektr
+	source = https://files.pythonhosted.org/packages/source/c/convertdate/convertdate-2.4.0.tar.gz
+	sha256sums = 770c6b2195544d3e451e230b3f1c9b121ed02680b877f896306a04cf6f26b48f
+
+pkgname = python-convertdate
