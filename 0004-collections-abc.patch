@@ -1,7 +1,8 @@
 diff --git a/lib/third_party/dns/namedict.py b/lib/third_party/dns/namedict.py
---- a/lib/third_party/dns/namedict.py	1980-01-01 01:00:00.000000000 -0700
-+++ b/lib/third_party/dns/namedict.py	2022-02-03 18:13:23.113987963 -0700
-@@ -32,7 +32,14 @@
+index 37a13104..e2309c1f 100644
+--- a/lib/third_party/dns/namedict.py
++++ b/lib/third_party/dns/namedict.py
+@@ -32,7 +32,14 @@ import dns.name
  from ._compat import xrange
  
  
@@ -18,9 +19,10 @@ diff --git a/lib/third_party/dns/namedict.py b/lib/third_party/dns/namedict.py
  
      In addition to being like a regular Python dictionary, this
 diff --git a/lib/third_party/functools32/functools32.py b/lib/third_party/functools32/functools32.py
---- a/lib/third_party/functools32/functools32.py	1980-01-01 01:00:00.000000000 -0700
-+++ b/lib/third_party/functools32/functools32.py	2022-02-03 18:13:23.113987963 -0700
-@@ -12,7 +12,7 @@
+index c44551fa..291f81d0 100644
+--- a/lib/third_party/functools32/functools32.py
++++ b/lib/third_party/functools32/functools32.py
+@@ -12,7 +12,7 @@ __all__ = ['update_wrapper', 'wraps', 'WRAPPER_ASSIGNMENTS', 'WRAPPER_UPDATES',
             'total_ordering', 'cmp_to_key', 'lru_cache', 'reduce', 'partial']
  
  from _functools import partial, reduce
@@ -29,7 +31,7 @@ diff --git a/lib/third_party/functools32/functools32.py b/lib/third_party/functo
  from .reprlib32 import recursive_repr as _recursive_repr
  from weakref import proxy as _proxy
  import sys as _sys
-@@ -21,6 +21,11 @@
+@@ -21,6 +21,11 @@ try:
  except ImportError:
      from ._dummy_thread32 import allocate_lock as Lock
  
@@ -42,11 +44,12 @@ diff --git a/lib/third_party/functools32/functools32.py b/lib/third_party/functo
  ### OrderedDict
  ################################################################################
 diff --git a/lib/third_party/ml_sdk/cloud/ml/prediction/prediction_utils.py b/lib/third_party/ml_sdk/cloud/ml/prediction/prediction_utils.py
---- a/lib/third_party/ml_sdk/cloud/ml/prediction/prediction_utils.py	1980-01-01 01:00:00.000000000 -0700
-+++ b/lib/third_party/ml_sdk/cloud/ml/prediction/prediction_utils.py	2022-02-03 18:13:23.113987963 -0700
-@@ -28,6 +28,13 @@
- 
- from tensorflow.python.framework import dtypes  # pylint: disable=g-direct-tensorflow-import
+index 0439728d..f4a75eda 100644
+--- a/lib/third_party/ml_sdk/cloud/ml/prediction/prediction_utils.py
++++ b/lib/third_party/ml_sdk/cloud/ml/prediction/prediction_utils.py
+@@ -32,6 +32,13 @@ collections_lib = collections
+ if sys.version_info > (3, 8):
+   collections_lib = collections.abc
  
 +try:
 +  # Python 3.3 and above.
@@ -58,37 +61,27 @@ diff --git a/lib/third_party/ml_sdk/cloud/ml/prediction/prediction_utils.py b/li
  # --------------------------
  # prediction.common
  # --------------------------
-@@ -580,7 +587,7 @@
-   Raises:
-     ValueError if response_json is malformed.
-   """
--  if not isinstance(response_json, collections.Mapping):
-+  if not isinstance(response_json, collections_abc.Mapping):
-     raise ValueError(
-         "Invalid response received from prediction server: {}".format(
-             repr(response_json)))
-@@ -603,7 +610,7 @@
-   Raises:
-     ValueError if response_json is malformed.
-   """
--  if not isinstance(response_json, collections.Mapping):
-+  if not isinstance(response_json, collections_abc.Mapping):
-     raise ValueError(
-         "Invalid response received from prediction server: {}".format(
-             repr(response_json)))
-@@ -626,7 +633,7 @@
-   Raises:
-     ValueError if request_json is malformed.
-   """
--  if not isinstance(request_json, collections.Mapping):
-+  if not isinstance(request_json, collections_abc.Mapping):
-     raise ValueError("Invalid request sent to prediction server: {}".format(
-         repr(request_json)))
-   if INSTANCES_KEY not in request_json:
+diff --git a/platform/bundledpythonunix/lib/python3.8/site-packages/pip-21.1.3-py3.8.egg/pip/_vendor/distlib/compat.py b/platform/bundledpythonunix/lib/python3.8/site-packages/pip-21.1.3-py3.8.egg/pip/_vendor/distlib/compat.py
+index c316fd97..41917884 100644
+--- a/platform/bundledpythonunix/lib/python3.8/site-packages/pip-21.1.3-py3.8.egg/pip/_vendor/distlib/compat.py
++++ b/platform/bundledpythonunix/lib/python3.8/site-packages/pip-21.1.3-py3.8.egg/pip/_vendor/distlib/compat.py
+@@ -481,7 +481,10 @@ else:
+ try:
+     from collections import ChainMap
+ except ImportError: # pragma: no cover
+-    from collections import MutableMapping
++    if sys.version_info > (3, 3):
++        from collections.abc import MutableMapping
++    else:
++        from collections import MutableMapping
+ 
+     try:
+         from reprlib import recursive_repr as _recursive_repr
 diff --git a/platform/gsutil/gslib/vendored/boto/boto/dynamodb/types.py b/platform/gsutil/gslib/vendored/boto/boto/dynamodb/types.py
---- a/platform/gsutil/gslib/vendored/boto/boto/dynamodb/types.py	1980-01-01 01:00:00.000000000 -0700
-+++ b/platform/gsutil/gslib/vendored/boto/boto/dynamodb/types.py	2022-02-03 18:13:23.113987963 -0700
-@@ -27,11 +27,17 @@
+index d9aaaa4c..1d50fb0c 100644
+--- a/platform/gsutil/gslib/vendored/boto/boto/dynamodb/types.py
++++ b/platform/gsutil/gslib/vendored/boto/boto/dynamodb/types.py
+@@ -27,11 +27,17 @@ Python types and vice-versa.
  import base64
  from decimal import (Decimal, DecimalException, Context,
                       Clamped, Overflow, Inexact, Underflow, Rounded)
@@ -108,9 +101,10 @@ diff --git a/platform/gsutil/gslib/vendored/boto/boto/dynamodb/types.py b/platfo
      Emin=-128, Emax=126, rounding=None, prec=38,
      traps=[Clamped, Overflow, Inexact, Rounded, Underflow])
 diff --git a/platform/gsutil/gslib/vendored/boto/boto/mws/connection.py b/platform/gsutil/gslib/vendored/boto/boto/mws/connection.py
---- a/platform/gsutil/gslib/vendored/boto/boto/mws/connection.py	1980-01-01 01:00:00.000000000 -0700
-+++ b/platform/gsutil/gslib/vendored/boto/boto/mws/connection.py	2022-02-03 18:13:23.113987963 -0700
-@@ -29,6 +29,13 @@
+index 687fae74..ae92d087 100644
+--- a/platform/gsutil/gslib/vendored/boto/boto/mws/connection.py
++++ b/platform/gsutil/gslib/vendored/boto/boto/mws/connection.py
+@@ -29,6 +29,13 @@ import boto.mws.response
  from boto.handler import XmlHandler
  from boto.compat import filter, map, six, encodebytes
  
@@ -124,7 +118,7 @@ diff --git a/platform/gsutil/gslib/vendored/boto/boto/mws/connection.py b/platfo
  __all__ = ['MWSConnection']
  
  api_version_path = {
-@@ -109,7 +116,7 @@
+@@ -109,7 +116,7 @@ def http_body(field):
  def destructure_object(value, into, prefix, members=False):
      if isinstance(value, boto.mws.response.ResponseElement):
          destructure_object(value.__dict__, into, prefix, members=members)
@@ -133,19 +127,3 @@ diff --git a/platform/gsutil/gslib/vendored/boto/boto/mws/connection.py b/platfo
          for name in value:
              if name.startswith('_'):
                  continue
-diff --git a/platform/bundledpythonunix/lib/python3.8/site-packages/pip-21.1.3-py3.8.egg/pip/_vendor/distlib/compat.py b/platform/bundledpythonunix/lib/python3.8/site-packages/pip-21.1.3-py3.8.egg/pip/_vendor/distlib/compat.py
-index c316fd9..4191788 100644
---- a/platform/bundledpythonunix/lib/python3.8/site-packages/pip-21.1.3-py3.8.egg/pip/_vendor/distlib/compat.py
-+++ b/platform/bundledpythonunix/lib/python3.8/site-packages/pip-21.1.3-py3.8.egg/pip/_vendor/distlib/compat.py
-@@ -481,7 +481,10 @@ else:
- try:
-     from collections import ChainMap
- except ImportError: # pragma: no cover
--    from collections import MutableMapping
-+    if sys.version_info > (3, 3):
-+        from collections.abc import MutableMapping
-+    else:
-+        from collections import MutableMapping
-
-     try:
-         from reprlib import recursive_repr as _recursive_repr
