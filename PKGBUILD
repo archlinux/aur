@@ -11,7 +11,7 @@ depends=('perl')
 makedepends=('git')
 provides=('fm6000')
 conflicts=('fm6000-bin')
-source=('fm6000::git://github.com/anhsirk0/fetch-master-6000.git')
+source=('fm6000::https://github.com/anhsirk0/fetch-master-6000.git')
 md5sums=('SKIP')
 
 pkgver() {
