@@ -1,7 +1,7 @@
 pkgbase = nodejs-carto-git
 	pkgdesc = Mapbox carto: Translates Carto MML/ CartoCSS to Mapnik XML or a JSON variant of Mapnik XML.
 	pkgver = 1.2.0+28+r1971.20201014.3051072
-	pkgrel = 2
+	pkgrel = 3
 	url = https://vis4.net/chromajs/
 	arch = any
 	license = apache
@@ -21,7 +21,7 @@ pkgbase = nodejs-carto-git
 	conflicts = nodejs-carto
 	conflicts = carto-git
 	options = !strip
-	source = carto::git+git://github.com/mapbox/carto.git
+	source = carto::git+https://github.com/mapbox/carto.git
 	sha256sums = SKIP
 
 pkgname = nodejs-carto-git

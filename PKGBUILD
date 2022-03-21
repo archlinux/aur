@@ -5,7 +5,7 @@ _pkgname="${_pkgorigname}"
 pkgname="nodejs-${_pkgname}-git"
 pkgdesc="Mapbox carto: Translates Carto MML/ CartoCSS to Mapnik XML or a JSON variant of Mapnik XML."
 pkgver=1.2.0+28+r1971.20201014.3051072
-pkgrel=2
+pkgrel=3
 arch=('any')
 license=('apache')
 url="https://vis4.net/chromajs/"
@@ -42,7 +42,7 @@ conflicts=(
 )
 options=('!strip') # Do not attempt to strip, since there is no ELF binary anyway, so strip will just take needless time.
 source=(
-  "${_pkgorigname}::git+git://github.com/mapbox/${_pkgorigname}.git"
+  "${_pkgorigname}::git+https://github.com/mapbox/${_pkgorigname}.git"
 )
 sha256sums=(
   'SKIP'
