@@ -1,0 +1,19 @@
+pkgbase = mpk-m2-editor
+	pkgdesc = Alternative to the official AKAI MPKMini MkII Editor
+	pkgver = git.latest
+	pkgrel = 1
+	url = https://github.com/PiOverFour/MPK-M2-editor
+	arch = x86_64
+	license = GPL3
+	depends = python
+	depends = python-pip
+	depends = alsa-lib
+	depends = jack2
+	source = git+https://github.com//PiOverFour/MPK-M2-editor.git
+	source = mpk-m2-editor.desktop
+	source = mpk-m2-editor.png
+	md5sums = SKIP
+	md5sums = dabeb26a1b3903188101a2ac7568c01b
+	md5sums = ee14f75954abc3c8e04bb7f9e9e4f304
+
+pkgname = mpk-m2-editor

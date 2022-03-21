@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=Multimedia,Audio,Qt
+Comment=Alternative to the official AKAI MPKMini MkII Editor
+Exec=/usr/share/MPK-M2-editor/mpk-m2-editor
+Icon=mpk-m2-editor.png
+Name=MPK-M2-editor
+Name[en]=mpk-m2-editor.desktop
+Terminal=false
+Type=Application
