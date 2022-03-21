@@ -1,0 +1,14 @@
+pkgbase = cli2cloud-git
+	pkgdesc = Pipe your terminal output to the cloud. (git version)
+	pkgver = r64.171ac42
+	pkgrel = 1
+	url = https://cli2cloud.com/
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = cli2cloud
+	source = git+https://github.com/leonwind/cli2cloud.git
+	sha256sums = SKIP
+
+pkgname = cli2cloud-git
