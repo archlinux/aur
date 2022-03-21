@@ -1,0 +1,59 @@
+all_off="$(tput sgr0)"
+bold="${all_off}$(tput bold)"
+red="${bold}$(tput setaf 1)"
+green="${bold}$(tput setaf 2)"
+yellow="${bold}$(tput setaf 3)"
+blue="${bold}$(tput setaf 4)"
+magenta="${bold}$(tput setaf 5)"
+
+# Colored makepkg-like functions
+note() {
+    printf "${blue}==>${yellow} NOTE:${all_off} ${1}\n"
+}
+
+plain() {
+    printf "${1}\n"
+}
+
+green() {
+    printf "${green}${1}${all_off}\n"
+}
+
+yello() {
+    printf "${yellow}${1}${all_off}\n"
+}
+
+blue() {
+    printf "${blue}${1}${all_off}\n"
+}
+
+magen() {
+    printf "${magenta}${1}${all_off}\n"
+}
+
+post_install() {
+    yello "1.5.0"
+    blue  "New Feature: User MODE Selection"
+    plain "  e.g. set HDMI-A-1 3840x2160@144Hz"
+    plain ""
+    plain "  cfg.yaml"
+    magen "    MODE:"
+    magen "      - NAME_DESC: HDMI-A-1"
+    magen "        WIDTH: 3840"
+    magen "        HEIGHT: 2160"
+    magen "        HZ: 144"
+    plain ""
+    plain "  CLI"
+    green "    way-displays -s MODE HDMI-A-1 3840 2160 144"
+    plain ""
+    blue  "Laptop Lid"
+    plain "  Workaround: Laptop Lid Not Closed At Startup: https://github.com/alex-courtis/way-displays#known-issues-with-workarounds"
+    plain ""
+    plain "  Lid now detected at startup, before connecting to display. This results in slightly slower startup."
+    plain ""
+}
+
+post_upgrade() {
+    post_install
+}
+
