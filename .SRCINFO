@@ -1,15 +1,20 @@
 pkgbase = python-humanreadable
 	pkgdesc = Convert from human-readable values to different unit
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/thombashi/humanreadable
 	arch = any
 	license = MIT
+	checkdepends = python-pytest
 	makedepends = python-setuptools
-	depends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-typepy
-	source = https://files.pythonhosted.org/packages/source/h/humanreadable/humanreadable-0.1.0.tar.gz
+	source = python-humanreadable-0.1.0.tar.gz::https://files.pythonhosted.org/packages/source/h/humanreadable/humanreadable-0.1.0.tar.gz
+	source = python-humanreadable-0.1.0.tar.gz.asc::https://files.pythonhosted.org/packages/source/h/humanreadable/humanreadable-0.1.0.tar.gz.asc
+	validpgpkeys = ACEC3954F31619D7288C17B07BAC46763C91BB7A
 	sha256sums = 80f10a1575ebb140d9345a347f981dc6faa70d090885490d77f63361290b4ff7
+	sha256sums = SKIP
 
 pkgname = python-humanreadable
-
