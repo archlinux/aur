@@ -1,6 +1,6 @@
 pkgbase = aaaaxy
 	pkgdesc = A nonlinear puzzle platformer taking place in impossible spaces
-	pkgver = 1.1.251
+	pkgver = 1.1.280
 	pkgrel = 1
 	url = https://github.com/divVerent/aaaaxy
 	arch = x86_64
@@ -15,9 +15,9 @@ pkgbase = aaaaxy
 	depends = hicolor-icon-theme
 	depends = libglvnd
 	depends = libx11
-	source = aaaaxy-1.1.251.tar.gz::https://github.com/divVerent/aaaaxy/archive/refs/tags/v1.1.251.tar.gz
-	source = https://github.com/divVerent/aaaaxy/releases/download/v1.1.251/sdl-gamecontrollerdb-for-aaaaxy-v1.1.251.zip
-	sha256sums = f244aa55e0c80b89460e7439d60a14aa0b2607b94b3b97e9133ca961ac299eb1
-	sha256sums = 816333dc31aa77fc151dde646b32ad7717fcabd40c6167e0896765def9aaee7e
+	source = aaaaxy-1.1.280.tar.gz::https://github.com/divVerent/aaaaxy/archive/refs/tags/v1.1.280.tar.gz
+	source = https://github.com/divVerent/aaaaxy/releases/download/v1.1.280/sdl-gamecontrollerdb-for-aaaaxy-v1.1.280.zip
+	sha256sums = 9223ae06945f02fbc93b1397eaf49d20a70a8f1501a6228d737781c54593b9a1
+	sha256sums = ac7887a40ff29309023a78660e69a563b8157c7b500c0b55cbe91bb39f999a40
 
 pkgname = aaaaxy
