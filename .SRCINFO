@@ -1,0 +1,11 @@
+pkgbase = python-ffmpeg-pip
+	pkgdesc = Python bindings for FFmpeg - with complex filtering support. Pip version.
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = Apache
+	makedepends = python-pip
+	depends = python
+	provides = python-ffmpeg
+
+pkgname = python-ffmpeg-pip
