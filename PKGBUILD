@@ -1,7 +1,7 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=vis-git
-pkgver=0.7.r1.g247b799
+pkgver=0.7.r29.g1a958f2
 pkgrel=1
 pkgdesc='modern, legacy free, simple yet efficient vim-like editor - git checkout'
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ conflicts=('vis')
 provides=('vis')
 license=('custom:ISC')
 backup=('etc/vis/visrc.lua')
-source=('git://github.com/martanne/vis.git'
-        'git://github.com/martanne/vis-test.git')
+source=('git+https://github.com/martanne/vis.git'
+        'git+https://github.com/martanne/vis-test.git')
 sha256sums=('SKIP'
             'SKIP')
 
