@@ -3,7 +3,7 @@
 
 _name=volar
 pkgname=vue-language-server
-pkgver=0.33.2
+pkgver=0.33.4
 pkgrel=1
 pkgdesc='Fast Vue Language Support Extension'
 arch=('any')
@@ -12,8 +12,8 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm' 'pnpm' 'typescript')
 optdepends=('typescript: for use in typescript.serverPath')
-source=("https://github.com/johnsoncodehk/volar/archive/v$pkgver/$_name-$pkgver.tar.gz")
-b2sums=('71998f38277651a5ba02e5d5b4b1d94e69a6b624cea6914e70ca050b6339e25024fe548b7a791f6e646dc8b3b188095da66d336a83a2e2a3a9a1d2a92c5d5929')
+source=("https://github.com/johnsoncodehk/$_name/archive/v$pkgver/$_name-$pkgver.tar.gz")
+b2sums=('7e8ddcf655c282c77ae7a7a7ebb2e2bbeff8395b45c653673e09dbf4d23d8cdc4fd7afd89387208de99be88a73721f0bd532e1633d10538d0f4fad92dc56229e')
 
 prepare() {
   cd $_name-$pkgver
@@ -32,7 +32,7 @@ check() {
 
 package() {
   cd $_name-$pkgver/packages/$pkgname
-  local _npmdir=/usr/lib/node_modules/@volar/$pkgname
+  local _npmdir=/usr/lib/node_modules/@$_name/$pkgname
   install -d "$pkgdir"{/usr/bin,"$_npmdir"}
   ln -s "$_npmdir"/bin/$pkgname.js "$pkgdir"/usr/bin/$pkgname
 
