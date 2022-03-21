@@ -1,0 +1,27 @@
+pkgbase = plugdata-git
+	pkgdesc = Plugin wrapper around PureData with a new GUI made with JUCE, allowing patching in DAWs
+	pkgver = r521.5658cab
+	pkgrel = 1
+	url = https://github.com/timothyschoen/PlugData
+	arch = x86_64
+	groups = vst-plugins
+	groups = lv2-plugins
+	groups = vst3-plugins
+	groups = pro-audio
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = freetype2
+	depends = libx11
+	depends = libxrandr
+	depends = libxext
+	depends = libxinerama
+	depends = webkit2gtk
+	depends = libxrender
+	depends = libxinerama
+	depends = libxcursor
+	depends = alsa-lib
+	source = git+https://github.com/timothyschoen/PlugData/
+	sha512sums = SKIP
+
+pkgname = plugdata-git
