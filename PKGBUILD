@@ -1,19 +1,19 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=dyndhcpd-git
-pkgver=0.1.7.r2.g3450f14
+pkgver=0.1.8.r0.gdd3e1ed
 pkgrel=1
 pkgdesc='start DHCP daemon that dynamically creates configuration based on assigned IP address - git checkout'
 arch=('i686' 'x86_64')
 url='https://github.com/eworm-de/dyndhcpd'
 depends=('dhcp')
 optdepends=('ipxe: for network boot')
-makedepends=('git' 'markdown')
+makedepends=('git' 'discount')
 license=('GPL')
 conflicts=('dyndhcpd')
 provides=('dyndhcpd')
 backup=('etc/dyndhcpd/dhcpd.conf')
-source=('git://github.com/eworm-de/dyndhcpd.git')
+source=('git+https://github.com/eworm-de/dyndhcpd.git')
 sha256sums=('SKIP')
 
 pkgver() {
