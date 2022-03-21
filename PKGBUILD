@@ -1,7 +1,7 @@
 pkgname=qolibri-bin
 conflicts=(qolibri)
 pkgver=2.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A QT-based EPWING dictionary viewer"
 url="https://github.com/ludios/qolibri/"
 arch=('x86_64' 'i686')
