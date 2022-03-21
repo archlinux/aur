@@ -1,13 +1,13 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 
 pkgname="python-ftx-git"
-pkgver=0.0.3.r4.g30de69a
+pkgver=0.0.3.r11.g9004e27
 pkgrel=1
 pkgdesc="Unofficial Python wrapper for FTX API"
 arch=('any')
 url="https://github.com/wanth1997/${pkgname%-git}"
 license=('MIT')
-depends=('python-requests' 'python-aiohttp' 'python-websockets')
+depends=('python-requests' 'python-aiohttp' 'python-websockets' 'python-loguru')
 makedepends=('git' 'python-setuptools')
 source=("git+${url}.git")
 md5sums=('SKIP')
