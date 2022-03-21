@@ -1,0 +1,15 @@
+pkgbase = python-pymeeus
+	pkgdesc = Python implementation of Jean Meeus astronomical routines
+	pkgver = 0.5.11
+	pkgrel = 1
+	url = https://pypi.org/project/PyMeeus
+	arch = any
+	license = LGPL
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/P/PyMeeus/PyMeeus-0.5.11.tar.gz
+	sha256sums = bb9d670818d8b0594317b48a7dadea02a0594e5344263bf2054e1a011c8fed55
+
+pkgname = python-pymeeus
