@@ -62,7 +62,7 @@ package() {
     ### Install scripts ####
 
     # Install systemd units.
-    cd "${srcdir}/omada-sdn-controller-scripts"
+    cd "${srcdir}/omada-controller-scripts"
     install -dm 755 "${pkgdir}/usr/lib/systemd/system"
     install -m 644 "omada-sdn-controller.service" "${pkgdir}/usr/lib/systemd/system/"
 
