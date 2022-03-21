@@ -1,0 +1,16 @@
+pkgbase = python-fred
+	pkgdesc = St. Louis Federal Reserve FRED API
+	pkgver = 3.1
+	pkgrel = 1
+	url = https://pypi.org/project/fred
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/f/fred/fred-3.1.tar.gz
+	sha256sums = f31327d648917694b8d15d66ca4e82a082dbb88ca027bdcc9d56738cbc836a6a
+
+pkgname = python-fred
