@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.2499
+pkgver=1.7.2514
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -34,7 +34,7 @@ depends=(
   soundtouch
   wxgtk3
   wayland
-  rapidyaml
+  rapidyaml-git
 )
 makedepends=(
   cmake
