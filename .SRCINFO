@@ -14,7 +14,7 @@ pkgbase = tkpemu
 	depends = boost>=1.76
 	depends = tbb
 	depends = gcc
-	source = https://github.com/OFFTKP/TKPEmu/archive/refs/tags/v0.1.4.tar.gz
+	source = https://github.com/OFFTKP/TKPEmu/releases/download/v0.1.4/tkpemu-0.1.4.tar.gz
 	sha256sums = 6aef534a5a06e3e824802b8db8845f8fa87691762278607a03033bd60b6475c4
 
 pkgname = tkpemu
