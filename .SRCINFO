@@ -1,0 +1,18 @@
+pkgbase = python-socketio-client-nexus
+	pkgdesc = A socket.io client library
+	pkgver = 0.7.6
+	pkgrel = 1
+	url = https://pypi.org/project/socketIO-client-nexus
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	depends = python-six
+	depends = python-websocket-client
+	source = https://files.pythonhosted.org/packages/source/s/socketIO-client-nexus/socketIO-client-nexus-0.7.6.tar.gz
+	sha256sums = 41e6aaaff981f6729690f472eb2c7a5d1dda07349077e34444527b9700b0aea5
+
+pkgname = python-socketio-client-nexus
