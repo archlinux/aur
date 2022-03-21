@@ -1,11 +1,13 @@
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: 2ion <dev@2ion.de>
 pkgname=qolibri
 pkgver=2.1.4
-pkgrel=2
+pkgrel=3
 pkgdesc="A QT-based EPWING dictionary viewer"
 url="https://github.com/ludios/qolibri/"
 arch=('x86_64' 'i686')
 license=('GPL2')
-depends=('qt5-base' 'qt5-tools' 'qt5-multimedia' 'qt5-webengine' 'zlib' 'eb-library')
+depends=('qt5-base' 'qt5-tools' 'qt5-multimedia' 'qt5-webengine' 'zlib' 'libeb')
 makedepends=('cmake')
 source=("https://github.com/ludios/qolibri/archive/${pkgver}.tar.gz"
         'qolibri.desktop'
