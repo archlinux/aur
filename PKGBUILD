@@ -60,7 +60,7 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=ffmpeg-obs
 pkgver=5.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('i686' 'x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -434,6 +434,18 @@ fi
 prepare() {
   cd ffmpeg
 
+  ### ffmpeg-full changes
+
+  ## Fixes for SVT-AV1 0.9.0
+  # avcodec/libsvtav1: add a svtav1-params option to pass a list of key=value parameters
+  # https://github.com/FFmpeg/FFmpeg/commit/c33b4048859a191acf9b6aa22acaea248a4eb18f
+  git cherry-pick -n c33b4048859a191acf9b6aa22acaea248a4eb18f
+  # avcodec/libsvtav1: update some options and defaults
+  # https://github.com/FFmpeg/FFmpeg/commit/1dddb930aaf0cadaa19f86e81225c9c352745262
+  git cherry-pick -n 1dddb930aaf0cadaa19f86e81225c9c352745262
+  ## Fix segfault with avisynthplus
+  sed -i 's/RTLD_LOCAL/RTLD_DEEPBIND/g' libavformat/avisynth.c
+
   ### Arch Linux changes
 
   ## https://crbug.com/1251779
@@ -466,6 +478,8 @@ prepare() {
   # Fix some typo made in the patch if built against librist 0.2.6
   sed -i 's/FF_LIBRIST_FIFO_DEFAULT)/FF_LIBRIST_FIFO_DEFAULT_SHIFT)/g' libavformat/librist.c
   sed -i 's/fifo_buffer_size/fifo_shift/g' libavformat/librist.c
+
+  ### Package features changes
 
   ## NDI changes if enabled
   if [[ $FFMPEG_OBS_NDI == 'ON' ]]; then
