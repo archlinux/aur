@@ -6,7 +6,6 @@ pkgdesc="creates CTR cxi/cfa/cci/cia files for 3ds"
 arch=('i686' 'x86_64')
 url="https://github.com/3DSGuy/Project_CTR"
 license=('MIT')
-depends=()
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -16,7 +15,6 @@ md5sums=('SKIP')
 pkgver() {
 	cd "$srcdir/ctr/${pkgname%-git}"
 
-# Git, no tags available
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
