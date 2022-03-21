@@ -2,7 +2,7 @@
 pkgname=('python-osqp')
 _module='osqp-python'
 pkgver=v0.7.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Python interface for OSQP (Operator Splitting QP Solver)"
 url="http://github.com/oxfordcontrol/osqp-python"
 depends=(
@@ -21,9 +21,9 @@ provides=('python-osqp')
 conflicts=('python-osqp-git')
 license=('Apache')
 arch=('x86_64')
-source=("git://github.com/oxfordcontrol/osqp-python.git#tag=${pkgver}"
-	"git://github.com/oxfordcontrol/osqp.git"
-	"git://github.com/oxfordcontrol/qdldl.git"
+source=("git+https://github.com/oxfordcontrol/osqp-python.git#tag=${pkgver}"
+	"git+https://github.com/oxfordcontrol/osqp.git"
+	"git+https://github.com/oxfordcontrol/qdldl.git"
 	"bindings.patch"
 )
 sha256sums=('SKIP'
@@ -44,10 +44,7 @@ prepare() {
 	git submodule update --init --recursive
 	patch --forward --strip=1 --input="${srcdir}/bindings.patch"
 }
-#pkgver() {
-  #cd osqp-python
-  #git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-#}
+
 build() {
     cd osqp-python
     python -m build --wheel --no-isolation
@@ -57,8 +54,3 @@ package() {
     cd osqp-python
     python -m installer --destdir="$pkgdir" dist/*.whl
 }
-
-#check() {
-#	cd osqp-python
-#	python -m pytest --pyargs osqp.tests
-#}
