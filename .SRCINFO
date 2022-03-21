@@ -1,7 +1,7 @@
 pkgbase = python-ftx-git
 	pkgdesc = Unofficial Python wrapper for FTX API
-	pkgver = 0.0.3.r4.g30de69a
-	pkgrel = 1
+	pkgver = 0.0.3.r11.g9004e27
+	pkgrel = 2
 	url = https://github.com/wanth1997/python-ftx
 	arch = any
 	license = MIT
@@ -10,6 +10,7 @@ pkgbase = python-ftx-git
 	depends = python-requests
 	depends = python-aiohttp
 	depends = python-websockets
+	depends = python-loguru
 	source = git+https://github.com/wanth1997/python-ftx.git
 	md5sums = SKIP
 

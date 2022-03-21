@@ -1,8 +1,8 @@
 # Maintainer: Kewl <xrjy@nygb.rh.bet(rot13)>
 
 pkgname="python-ftx-git"
-pkgver=0.0.3.r11.g9004e27
-pkgrel=2
+pkgver=0.1.0.r1.gd42c06f
+pkgrel=1
 pkgdesc="Unofficial Python wrapper for FTX API"
 arch=('any')
 url="https://github.com/wanth1997/${pkgname%-git}"
