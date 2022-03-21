@@ -2,7 +2,7 @@
 
 pkgname=alertmanager-bot
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Telegram Bot for Prometheus' Alertmanager"
 arch=('x86_64')
 url="https://github.com/metalmatze/alertmanager-bot"
@@ -32,6 +32,8 @@ prepare() {
   for pkg in $(go list ./... | grep -v /vendor/); do
     go get -t "$pkg"
   done
+
+  echo "TEMPLATE_PATHS=/etc/alertmanager/template/alertmanager-bot.tmpl" >> default.tmpl
 }
 
 build() {
@@ -59,8 +61,9 @@ package() {
   # systemd integration
   install -Dm644 systemd.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 
-  # example config
+  # example config & template
   install -Dm644 "$pkgname-$pkgver/.env.example" "$pkgdir/etc/conf.d/alertmanager-bot"
+  install -Dm644 "$pkgname-$pkgver/default.tmpl" "$pkgdir/etc/alertmanager/template/alertmanager-bot.tmpl"
 
   # binary
   install -Dm755 "$pkgname-$pkgver/build/$pkgname" "$pkgdir/usr/bin/$pkgname"
