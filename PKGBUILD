@@ -3,13 +3,13 @@
 pkgname=pijul
 pkgver=1.0.0.beta
 _pkgver=${pkgver/.beta/-beta}
-pkgrel=1
+pkgrel=2
 pkgdesc="A sound and fast distributed version control system"
 arch=('x86_64')
 url="https://pijul.org"
 license=('GPL2')
-depends=('zstd' 'openssl' 'xxhash')
-makedepends=('rust' 'clang' 'libsodium' 'gcc-libs')
+depends=('glibc' 'gcc-libs' 'zstd' 'openssl' 'xxhash')
+makedepends=('rust' 'clang' 'libsodium')
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$_pkgver.crate")
 sha512sums=('6a01661afedff9d7c949e8020eb7a8f88c62eea90d4018d47a43d8778eb809516a47cf33620ebdd172c97f14cc519fb01c12201f5342a3d3ddf2baf6fe1fa22c')
@@ -22,7 +22,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$_pkgver"
-  cargo build --release --frozen
+  cargo build --release --frozen --all-features
 }
 
 package() {

@@ -1,14 +1,15 @@
 pkgbase = pijul
 	pkgdesc = A sound and fast distributed version control system
 	pkgver = 1.0.0.beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pijul.org
 	arch = x86_64
 	license = GPL2
 	makedepends = rust
 	makedepends = clang
 	makedepends = libsodium
-	makedepends = gcc-libs
+	depends = glibc
+	depends = gcc-libs
 	depends = zstd
 	depends = openssl
 	depends = xxhash
