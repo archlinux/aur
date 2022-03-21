@@ -1,0 +1,16 @@
+pkgbase = python-fredapi
+	pkgdesc = Python API for Federal Reserve Economic Data (FRED) from St. Louis Fed
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://pypi.org/project/fredapi
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-pandas
+	source = https://files.pythonhosted.org/packages/source/f/fredapi/fredapi-0.5.0.tar.gz
+	sha256sums = 7e15a9b582b5dca67404f0807e351f8e638aa62057398e3654608ac5b021f782
+
+pkgname = python-fredapi
