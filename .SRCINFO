@@ -1,6 +1,6 @@
 pkgbase = tkpemu
 	pkgdesc = A multi-purpose emulator with debugging functionality, currently only emulates gameboy
-	pkgver = 0.1.3_fix
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/OFFTKP/TKPEmu.git
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = tkpemu
 	depends = boost>=1.76
 	depends = tbb
 	depends = gcc
-	source = https://github.com/OFFTKP/TKPEmu/releases/download/v0.1.3_fix/tkpemu-0.1.3_fix.tar.gz
-	sha256sums = c27fc9c934345ab961847c5e9965e1a07eb5e95015d2dd99b949f00fcb202a19
+	source = https://github.com/OFFTKP/TKPEmu/archive/refs/tags/v0.1.4.tar.gz
+	sha256sums = 6aef534a5a06e3e824802b8db8845f8fa87691762278607a03033bd60b6475c4
 
 pkgname = tkpemu
