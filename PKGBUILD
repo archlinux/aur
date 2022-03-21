@@ -2,7 +2,7 @@
 
 pkgname=alertmanager-bot
 pkgver=0.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Telegram Bot for Prometheus' Alertmanager"
 arch=('x86_64')
 url="https://github.com/metalmatze/alertmanager-bot"
@@ -45,7 +45,7 @@ build() {
     -modcacherw \
     -ldflags "-linkmode external -extldflags ${LDFLAGS} \
     -X main.Version=${pkgver} \
-    -X main.Revision=${pkgrel} \
+    -X main.Revision=${pkgver}-${pkgrel} \
     -X main.BuildDate=$(date -d@"$SOURCE_DATE_EPOCH" +%Y%m%d-%H:%M:%S)" \
     -o build "./cmd/${pkgname}"
 }
