@@ -3,7 +3,7 @@
 pkgname=httptoolkit-git
 _pkgname=httptoolkit
 pkgver=v1.7.0.r0.g871e047
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Beautiful, cross-platform & open-source HTTP(S) proxy, analyzer and client."
 arch=("x86_64")
@@ -71,9 +71,9 @@ package() {
     echo "Deleting Electron binary ($(du -h "$_electron" | awk '{print $1}'))"
     rm -v "$_electron"
     install -m755 /dev/null "${pkgdir}/usr/bin/${_pkgname}"
-    cat >"${pkgdir}/usr/bin/${pkgname}" <<EOF
+    cat >"${pkgdir}/usr/bin/${_pkgname}" <<EOF
 #!/bin/sh
-exec electron14 /opt/${pkgname}/resources/app.asar "\$@"
+exec electron14 /opt/${_pkgname}/resources/app.asar "\$@"
 EOF
     find "$pkgdir" -name package.json -print0 | xargs -r -0 sed -i "s|$srcdir||g"
 }
