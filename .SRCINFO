@@ -1,0 +1,13 @@
+pkgbase = plasma5-applets-translator
+	pkgdesc = Easy to use translation plasmoid (GUI for translate-shell package)
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://store.kde.org/p/1395666
+	arch = any
+	license = MIT
+	depends = plasma-workspace
+	depends = translate-shell
+	source = org.kde.plasma.translator.tar.gz
+	sha256sums = 5fee9560a2306bbd56c0b3b4430efebc03c0f159885e2461474fa938100eb3a6
+
+pkgname = plasma5-applets-translator
