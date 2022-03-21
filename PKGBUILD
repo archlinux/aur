@@ -3,13 +3,13 @@
 pkgname=steam++-bin
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
 pkgver=2.6.9
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'aarch64')
 url=https://steampp.net/
 license=('GPL3')
 makedepends=('tar' 'zstd')
 optdepends=('steam: need official or flatpak version of steam')
-provides=('steamt++')
+provides=('steam++')
 conflicts=('steam++')
 options=('!strip')
 source=('steamtools.desktop' 'icon.png::https://github.com/BeyondDimension/SteamTools/raw/develop/resources/AppIcon/Logo_64.png')

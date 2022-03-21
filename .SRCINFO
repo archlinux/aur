@@ -1,7 +1,7 @@
 pkgbase = steam++-bin
 	pkgdesc = 一个开源跨平台的多功能Steam工具箱。
 	pkgver = 2.6.9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://steampp.net/
 	arch = x86_64
 	arch = aarch64
@@ -9,7 +9,7 @@ pkgbase = steam++-bin
 	makedepends = tar
 	makedepends = zstd
 	optdepends = steam: need official or flatpak version of steam
-	provides = steamt++
+	provides = steam++
 	conflicts = steam++
 	noextract = Steam++_x86_64.tar.zst
 	options = !strip
