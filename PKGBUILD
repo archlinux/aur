@@ -1,7 +1,7 @@
 # Maintainer: Nikita Ivanov <nikita dot vyach dot ivanov at gmail dot com>
 _name=dmenu-translate
 pkgname="$_name-git"
-pkgver=r5.8b5a6a7
+pkgver=r7.5c13521
 pkgrel=1
 pkgdesc="Small shell script for translating text with dmenu"
 arch=('any')
