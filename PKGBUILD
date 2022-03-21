@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=pstoedit-nomagick
-pkgver=3.77
+pkgver=3.78
 pkgrel=1
 pkgdesc='Translates PS/PDF graphics to other vector formats (no ImageMagick dependency)'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('gd' 'ghostscript' 'ming' 'libemf' 'libzip' 'plotutils' 'zlib')
 provides=('pstoedit')
 conflicts=('pstoedit')
 source=("https://sourceforge.net/projects/pstoedit/files/pstoedit/${pkgver}/pstoedit-${pkgver}.tar.gz")
-sha256sums=('9a6c6b02ea91e9f836448ccc5a614caa514a9ba17e94f1d6c0babc72a4395b09')
+sha256sums=('8cc28e34bc7f88d913780f8074e813dd5aaa0ac2056a6b36d4bf004a0e90d801')
 
 build() {
     cd "pstoedit-${pkgver}"
