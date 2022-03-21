@@ -1,14 +1,14 @@
 # Maintainer: lottieratworld <lottieratworld at proton mail dot com>
 _pkgname=hyperrogue
 pkgname=${_pkgname}-git
-pkgver='12.0a.r6.gd4f34d0d'
-pkgrel=2
+pkgver='12.0k.r71.g7f2d5792'
+pkgrel=1
 pkgdesc="A puzzle-roguelike taking place on a hyperbolic plane. Latest git version."
 arch=('i686' 'x86_64')
 url="https://www.roguetemple.com/z/hyper/"
 license=('GPL2')
 provides=("${_pkgname}")
-depends=('sdl_gfx' 'sdl_ttf' 'sdl_mixer' 'mesa')
+depends=('sdl_gfx' 'sdl_ttf' 'sdl_mixer' 'mesa' 'ttf-dejavu')
 makedepends=('glew' 'git')
 
 source=("git+https://github.com/zenorogue/hyperrogue.git"
@@ -27,12 +27,12 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
-    sed -i 's/CXXFLAGS_EARLY += -W -Wall -Wextra -Werror/CXXFLAGS_EARLY += -W -Wall -Wextra/' Makefile
+    sed -i 's/-Werror//' Makefile
 }
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    export EXTRA_CXXFLAGS="-DFHS -I/usr/include/SDL -DHYPERPATH='\"/usr/share/${_pkgname}/\"' -DRESOURCEDESTDIR='\"/usr/share/${_pkgname}/\"'"
+    export EXTRA_CXXFLAGS="-DFHS -I/usr/include/SDL -DHYPERPATH='\"/usr/share/${_pkgname}/\"' -DRESOURCEDESTDIR='\"/usr/share/${_pkgname}/\"' -DHYPERFONTPATH='\"/usr/share/fonts/TTF/\"'"
     export HYPERROGUE_USE_GLEW=1
     export HYPERROGUE_USE_PNG=1
     make
@@ -45,7 +45,7 @@ package() {
     install -Dm755 hyperrogue "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 sounds/* "${pkgdir}/usr/share/${_pkgname}/sounds"
     install -Dm644 music/* "${pkgdir}/usr/share/${_pkgname}/music"
-    install -Dm644 {DejaVuSans-Bold.ttf,hyperrogue-music.txt,*.dat} "${pkgdir}/usr/share/${_pkgname}"
+    install -Dm644 {hyperrogue-music.txt,*.dat} "${pkgdir}/usr/share/${_pkgname}"
 
     cd "${srcdir}"
     install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
