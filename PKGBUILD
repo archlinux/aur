@@ -1,47 +1,39 @@
 # Maintainer: Butui Hu <hot123tea123@gmail.com>
 
-_pkgname=InsightToolkit
-pkgname=itk
-_pkgver=5.0.1
-pkgver=5.0.1
-pkgrel=2
+_pkgname=ITK
+pkgname=(itk python-itk)
+pkgver=5.2.1
+pkgrel=3
 pkgdesc='An open-source, cross-platform library that provides developers with an extensive suite of software tools for image analysis'
 arch=('x86_64')
-url='https://itk.org/'
+url='https://www.itk.org'
 license=('Apache')
 depends=(
-  'dcmtk'
-  'double-conversion'
-  'eigen'
-  'expat'
-  'fftw'
-  'hdf5'
-  'intel-tbb'
-  'libjpeg'
-  'libpng'
-  'libtiff'
-  'opencv'
-  'openslide'
-  'python-numpy'
-  'python-xarray'
-  'vtk'
-  'zlib'
+  castxml
+  dcmtk
+  eigen
+  expat
+  fftw
+  gdcm
+  hdf5
+  intel-mkl-static
+  kwiml-git
+  libpng
+  libtiff
+  ocl-icd
+  vxl
 )
 makedepends=(
-  'ocl-icd'
-  'opencl-headers'
-  'cmake'
-  'git'
-  'gtest'
-  'python-setuptools'
-  'swig'
+  cmake
+  git
+  gtest
+  opencl-headers
+  subversion
+  swig
 )
-provides=(insighttoolkit=${pkgver} insight-toolkit=${pkgver} python-itk=${pkgver})
-conflicts=(insighttoolkit insight-toolkit python-itk)
-source=("https://github.com/InsightSoftwareConsortium/ITK/releases/download/v${pkgver}/InsightToolkit-${pkgver}.tar.gz"
-"https://github.com/InsightSoftwareConsortium/ITK/releases/download/v${pkgver}/InsightData-${pkgver}.tar.gz")
-sha512sums=('f36613ff72c513ded3d32504f71308a94fe75555cf9fd22b77485d1375601f6e1f1539cc5ac82a9e1e229bcf514a88ccb55122a7dfc74a6ae1b6604aa70bd814'
-            'eb766c115049949937d6527937f1f49ef84304a71dc4924581a53173f45c4e5a0c5a0e180550e75ecd840314609580b9d1fe9b2358c5a87c82a2c6aff8e9f50e')
+options=(!emptydirs)
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/InsightSoftwareConsortium/ITK/archive/refs/tags/v${pkgver}.tar.gz")
+sha512sums=('cccb64766acaebe49ee2dd8b82b7b5aaa6a35e97f2cc7738ad7f3cd65006b73b880ac59341cd640abd64c2ac665633f01504760071f5492e40aa97e7ba6db2a9')
 
 get_pyver() {
   python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
@@ -49,58 +41,71 @@ get_pyver() {
 
 build() {
   cmake_opts=(
-    -DBUILD_EXAMPLES:BOOL=OFF
-    -DBUILD_SHARED_LIBS:BOOL=ON
-    -DBUILD_TESTING:BOOL=ON
-    -DCMAKE_INSTALL_LIBDIR:PATH=lib
-    -DCMAKE_INSTALL_PREFIX:PATH=/usr
-    -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON
-    -DITK_LEGACY_REMOVE:BOOL=ON
-    -DITK_USE_64BITS_IDS_DEFAULT:BOOL=ON
-    -DITK_USE_SYSTEM_DOUBLECONVERSION:BOOL=ON
-    -DITK_USE_SYSTEM_EIGEN:BOOL=ON
-    -DITK_USE_SYSTEM_EXPAT:BOOL=ON
-    -DITK_USE_SYSTEM_GOOGLETEST:BOOL=ON
-    -DITK_USE_SYSTEM_HDF5:BOOL=ON
-    -DITK_USE_SYSTEM_JPEG:BOOL=ON
-    -DITK_USE_SYSTEM_PNG:BOOL=ON
-    -DITK_USE_SYSTEM_TIFF:BOOL=ON
-    -DITK_USE_SYSTEM_ZLIB:BOOL=ON
-    -DITK_WRAP_PYTHON:BOOL=ON
-    -DITK_BUILD_DEFAULT_MODULES:BOOL=OFF
-    -DITKGroup_Bridge:BOOL=ON
-    -DITKGroup_Compatibility:BOOL=ON
-    -DITKGroup_Core:BOOL=ON
-    -DITKGroup_Filtering:BOOL=ON
-    -DITKGroup_IO:BOOL=ON
-    -DITKGroup_Nonunit:BOOL=ON
-    -DITKGroup_Numerics:BOOL=ON
-    -DITKGroup_Registration:BOOL=ON
-    -DITKGroup_Remote:BOOL=ON
-    -DITKGroup_Segmentation:BOOL=ON
-    -DITKGroup_ThirdParty:BOOL=ON
-    -DITKGroup_Video:BOOL=ON
+    -DBUILD_SHARED_LIBS=ON
+    -DBUILD_TESTING=OFF
+    -DCMAKE_BUILD_TYPE=Release
+    -DCMAKE_INSTALL_PREFIX=/usr
+    -DCMAKE_SKIP_INSTALL_RPATH=ON
+    -DITK_BUILD_DEFAULT_MODULES=ON
+    -DITK_USE_MKL=ON
+    -DITK_USE_SYSTEM_CASTXML=ON
+    -DITK_USE_SYSTEM_DCMTK=ON
+    -DITK_USE_SYSTEM_DOUBLECONVERSION=OFF
+    -DITK_USE_SYSTEM_EIGEN=ON
+    -DITK_USE_SYSTEM_EXPAT=ON
+    -DITK_USE_SYSTEM_FFTW=ON
+    -DITK_USE_SYSTEM_GDCM=ON
+    -DITK_USE_SYSTEM_GOOGLETEST=ON
+    -DITK_USE_SYSTEM_HDF5=ON
+    -DITK_USE_SYSTEM_JPEG=ON
+    -DITK_USE_SYSTEM_KWIML=ON
+    -DITK_USE_SYSTEM_MINC=OFF
+    -DITK_USE_SYSTEM_PNG=ON
+    -DITK_USE_SYSTEM_SWIG=ON
+    -DITK_USE_SYSTEM_TIFF=ON
+    -DITK_USE_SYSTEM_ZLIB=ON
+    -DITK_WRAP_IMAGE_DIMS="2;3;4"
+    -DITK_WRAP_PYTHON=ON
+    -DITK_WRAP_complex_double=ON
+    -DITK_WRAP_covariant_vector_double=ON
+    -DITK_WRAP_double=ON
+    -DITK_WRAP_rgb_unsigned_short=ON
+    -DITK_WRAP_rgba_unsigned_short=ON
+    -DITK_WRAP_signed_char=ON
+    -DITK_WRAP_signed_long_long=ON
+    -DITK_WRAP_unsigned_long_long=ON
+    -DITK_WRAP_unsigned_short=ON
+    -DITK_WRAP_vector_double=ON
+    -DModule_ITKImageIO=ON
+    -DModule_ITKMeshIO=ON
+    -DModule_ITKTransformIO=ON
+    -DModule_MorphologicalContourInterpolation=ON
 )
 
-  rm -rf "${srcdir}/build"
-  mkdir "${srcdir}/build"
-  cd "${srcdir}/build"
-  cmake \
+  cmake -B "build" -S "${srcdir}/${_pkgname}-${pkgver}" \
     ${cmake_opts[@]} \
-    ../${_pkgname}-${pkgver}
-  make
+    -DITK_USE_GPU=ON
+  make -C "${srcdir}/build"
 }
 
-check() {
-  cd "${srcdir}/build"
-  ctest
+package_itk() {
+  make -C "${srcdir}/build" DESTDIR="${pkgdir}" install
+  # quick fix for https://github.com/InsightSoftwareConsortium/ITK/issues/2960
+  rm -rf "${pkgdir}/build"
 }
 
-package() {
-  cd "${srcdir}/build"
-  make DESTDIR="${pkgdir}" install
-  python -O -m compileall "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/itk"
-  rm -rvf "${pkgdir}/usr/lib/pkgconfig"
-  find "${pkgdir}" -type d -empty -delete
+package_python-itk() {
+  pkgdesc="${pkgdesc} (Python binding)"
+  depends+=(
+    itk
+    python-numpy
+    python-xarray
+  )
+
+  make -C "${srcdir}/build" DESTDIR="${srcdir}/dist" install
+  install -dm755 "${pkgdir}/usr/lib"
+  # quick fix for https://github.com/InsightSoftwareConsortium/ITK/issues/2960
+  find "${srcdir}/dist" -type d -name "python$(get_pyver)" -print0 -quit | xargs -0 mv -vt "${pkgdir}/usr/lib"
+  python -O -m compileall "${pkgdir}/usr/lib"
 }
 # vim:set ts=2 sw=2 et:
