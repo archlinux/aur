@@ -1,0 +1,19 @@
+pkgbase = python-pyally
+	pkgdesc = Ally Invest API Wrapper
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://pypi.org/project/pyally
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-pandas
+	depends = python-pytz
+	depends = python-requests
+	depends = python-requests-oauthlib
+	source = https://files.pythonhosted.org/packages/source/p/pyally/pyally-1.1.2.tar.gz
+	sha256sums = d5dba065ddbf18261b83e29e5fffff731d9b03a4278eb9a9333a17f2d1772d4d
+
+pkgname = python-pyally
