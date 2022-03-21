@@ -1,5 +1,5 @@
 # Maintainer: Jerry Xiao <aur@mail.jerryxiao.cc>
-# Private key generated with `openssl pkcs8 -topk8 -nocrypt -traditional`
+# Private key generated with `openssl genrsa 2048| openssl pkcs8 -topk8 -nocrypt -traditional`
 
 pkgname=chromium-extension-ublock-origin
 pkgver=1.41.8
