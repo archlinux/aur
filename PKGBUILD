@@ -30,14 +30,6 @@ prepare() {
 	cd "$srcdir/$_pkgname"
 	git submodule update --init --recursive
 
-	# version number extraction from the source code
-	cat << EOF > extract_version.cpp
-#include "src/common/version.h"
-#include <stdio.h>
-int main() { puts(VERSION_STR); }
-EOF
-	g++ -Ivst3sdk -o extract_version extract_version.cpp
-	printf "%s+git%s" "$(./extract_version)" "$(git rev-parse --short HEAD)" > VERSION
 }
 
 build() {
@@ -46,9 +38,8 @@ build() {
 	# work around parallel make issues
 	export MAKEFLAGS=
 
-	premake5 --cc=gcc --os=linux gmake2
-	make -f surge-lv2.make config=release_x64
-	make -f surge-vst3.make  config=release_x64
+  cmake -Bbuild
+  cmake --build build --config Release --target surge-staged-assets
 }
 
 package() {
