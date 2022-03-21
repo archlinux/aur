@@ -1,0 +1,12 @@
+pkgbase = redis-cell
+	pkgdesc = Redis module that provides rate limiting in Redis as a single command.
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/brandur/redis-cell
+	arch = x86_64
+	license = MIT
+	depends = redis
+	source = https://github.com/brandur/redis-cell/releases/download/v0.3.0/redis-cell-v0.3.0-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums = 42a2a3c7af46cef5e3e3dd76d9cbe0c216bf207c4d4d9c41b5195d813b88983c
+
+pkgname = redis-cell
