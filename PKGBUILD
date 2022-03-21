@@ -2,10 +2,10 @@
 
 pkgname=hut-git
 _pkgname=hut
-pkgver=r200.4fac858
+pkgver=r244.ed21e0c
 pkgrel=1
 pkgdesc='A CLI tool for sr.ht (sourcehut)'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://sr.ht/~emersion/hut'
 license=('AGPL3')
 makedepends=('git' 'go' 'scdoc')
