@@ -2,7 +2,7 @@
 
 pkgname=clash-premium-tun
 pkgver=2022.03.21
-pkgrel=2
+pkgrel=3
 pkgdesc="A rule-based tunnel in Go for Linux with TUN"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/Dreamacro/clash"
@@ -13,12 +13,12 @@ makedepends=('git' 'gzip')
 provides=('clash')
 conflicts=('clash')
 backup=("etc/clash/config.yaml" "etc/default/clash")
-source=("git+https://github.com/Kr328/clash-premium-installer.git#commit=e729951"
+source=("git+https://github.com/Kr328/clash-premium-installer.git#commit=c2b80f9"
         "arch.patch"
         "config.yaml")
 
 sha512sums=('SKIP'
-            '19287a6707d90d6fb699cbbfb09ba2e44bcfda7e1260f7d5d51c8c9135cdc5584cf671d095cb1b9ac7db9489c3e33affaa2ff4c3f1b4cd67ec1ab4d692edd4df'
+            '0139f81960af17a8c3ac43a98bc847ee429ec168a8ff2e5393e5bf42d5df779ae6ce9ed33e4301e3888f475525e1777c919044c64979987df9d92c0647f83ab8'
             'd7d9d4ee334068c14d80f567914775d2df9638b65d34763aab228dabcaeebace9db1a16f0e42ce657ade731ae34ebb23cee9a5cac8ad18b9c378606436266ffe')
 source_i686=("clash-linux-i686-${pkgver}.gz::https://release.dreamacro.workers.dev/${pkgver}/clash-linux-386-${pkgver}.gz")
 source_x86_64=("clash-linux-x86_64-${pkgver}.gz::https://release.dreamacro.workers.dev/${pkgver}/clash-linux-amd64-${pkgver}.gz")

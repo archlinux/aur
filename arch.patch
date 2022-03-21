@@ -19,22 +19,23 @@ index 606c4f1..cab10be 100755
  
  exec "$@"
 diff --git a/scripts/clash-default b/scripts/clash-default
-index eca38ad..82a78dc 100644
+index 7bc4ca8..4f4f6a6 100644
 --- a/scripts/clash-default
 +++ b/scripts/clash-default
-@@ -10,6 +10,6 @@ NETFILTER_MARK=114514
+@@ -10,5 +10,7 @@ NETFILTER_MARK=114514
  IPROUTE2_TABLE_ID=114
  
  # dns redirect
 -FORWARD_DNS_REDIRECT=1.0.0.1:53
 +FORWARD_DNS_REDIRECT=198.18.0.2:53
  
- 
++# local subnet
++LOCAL_SUBNET="{127.0.0.0/8, 224.0.0.0/4, 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12}"
 diff --git a/scripts/clash.service b/scripts/clash.service
-index 552e56c..494069a 100644
+index 18fa5fc..e333382 100644
 --- a/scripts/clash.service
 +++ b/scripts/clash.service
-@@ -1,11 +1,11 @@
+@@ -1,12 +1,12 @@
  [Unit]
  Description=A rule based proxy tunnel
 -After=network-online.target nftables.service iptabels.service
@@ -42,10 +43,42 @@ index 552e56c..494069a 100644
  
  [Service]
  Type=simple
--ExecStartPre=+/usr/lib/clash/setup-cgroup.sh
+ LimitNOFILE=65535
+-ExecStartPre=/usr/lib/clash/setup-cgroup.sh
 -ExecStart=/usr/bin/bypass-proxy /usr/bin/clash -d /srv/clash
 +ExecStartPre=+/usr/share/clash/setup-cgroup.sh
 +ExecStart=/usr/share/clash/bypass-proxy /usr/bin/clash -d /etc/clash
  
  [Install]
  WantedBy=multi-user.target
+diff --git a/scripts/setup-tun.sh b/scripts/setup-tun.sh
+index 2c1a601..5587a1e 100755
+--- a/scripts/setup-tun.sh
++++ b/scripts/setup-tun.sh
+@@ -8,8 +8,6 @@ ip rule del fwmark "$NETFILTER_MARK" lookup "$IPROUTE2_TABLE_ID" > /dev/null 2>
+ ip rule add fwmark "$NETFILTER_MARK" lookup "$IPROUTE2_TABLE_ID"
+ 
+ nft -f - << EOF
+-define LOCAL_SUBNET = {127.0.0.0/8, 224.0.0.0/4, 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12}
+-
+ table clash
+ flush table clash
+ 
+@@ -20,7 +18,7 @@ table clash {
+         ip protocol != { tcp, udp } accept
+         
+         meta cgroup $BYPASS_CGROUP_CLASSID accept
+-        ip daddr \$LOCAL_SUBNET accept
++        ip daddr $LOCAL_SUBNET accept
+         
+         ct state new ct mark set $NETFILTER_MARK
+         ct mark $NETFILTER_MARK mark set $NETFILTER_MARK
+@@ -32,7 +30,7 @@ table clash {
+         ip protocol != { tcp, udp } accept
+     
+         iif utun accept
+-        ip daddr \$LOCAL_SUBNET accept
++        ip daddr $LOCAL_SUBNET accept
+         
+         mark set $NETFILTER_MARK
+     }

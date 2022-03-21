@@ -1,7 +1,7 @@
 pkgbase = clash-premium-tun
 	pkgdesc = A rule-based tunnel in Go for Linux with TUN
 	pkgver = 2022.03.21
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Dreamacro/clash
 	install = clash-premium-tun.install
 	arch = i686
@@ -21,11 +21,11 @@ pkgbase = clash-premium-tun
 	conflicts = clash
 	backup = etc/clash/config.yaml
 	backup = etc/default/clash
-	source = git+https://github.com/Kr328/clash-premium-installer.git#commit=e729951
+	source = git+https://github.com/Kr328/clash-premium-installer.git#commit=c2b80f9
 	source = arch.patch
 	source = config.yaml
 	sha512sums = SKIP
-	sha512sums = 19287a6707d90d6fb699cbbfb09ba2e44bcfda7e1260f7d5d51c8c9135cdc5584cf671d095cb1b9ac7db9489c3e33affaa2ff4c3f1b4cd67ec1ab4d692edd4df
+	sha512sums = 0139f81960af17a8c3ac43a98bc847ee429ec168a8ff2e5393e5bf42d5df779ae6ce9ed33e4301e3888f475525e1777c919044c64979987df9d92c0647f83ab8
 	sha512sums = d7d9d4ee334068c14d80f567914775d2df9638b65d34763aab228dabcaeebace9db1a16f0e42ce657ade731ae34ebb23cee9a5cac8ad18b9c378606436266ffe
 	source_i686 = clash-linux-i686-2022.03.21.gz::https://release.dreamacro.workers.dev/2022.03.21/clash-linux-386-2022.03.21.gz
 	sha512sums_i686 = b175e9e001f4525a17daf596955bcda69c8b67fe2f747c4b16961a5b495fb4f45a4c6be889c35273c0f2202533c59f6b7edae432b207ca961705232c5aae9b24
