@@ -1,8 +1,8 @@
 # Maintainer: oscareczek <oscareczek at gmail dot com>
 pkgname=86box-git
-pkgver=3.3.r0.g3fe794c59
+pkgver=3.3.r17.g8915ec3fe
 pkgrel=1
-pkgdesc='Emulator of x86-based machines based on PCem.'
+pkgdesc='An emulator for classic IBM PC clones'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
 url='https://86box.net/'
 license=('GPL2')
@@ -18,12 +18,10 @@ options=('!buildflags')
 source=(
     "${pkgname}::git+https://github.com/86Box/86Box.git"
     '86box'
-    '86Box.desktop'
 )
 sha512sums=(
     'SKIP'
     '3e06cfd2e634ad771c384f05f58f9ba370d86511d291c2b196199908cd2a95274a4046b2979b8bfb5758583d095bc99536c1fef2f582cc5d23b7764151843f38'
-    '143447f38e3ddf458f469dffd37897503112100cf69d46dbe6810f5e64c32d91d87dcb46fe4447cda8d2fb91dd2f1b868ee1e43575a972280801b40cf7cfbd85'
 )
 
 pkgver() {
@@ -45,6 +43,9 @@ build() {
 package() {
     DESTDIR="${pkgdir}" cmake --build "${srcdir}/build" --target install
     install -Dm755 86box "$pkgdir/usr/bin"
-    install -Dm644 86Box.desktop -t "$pkgdir/usr/share/applications"
-    install -Dm644 "$srcdir/$pkgname/src/win/assets/86Box-green.png" "$pkgdir/usr/share/pixmaps/86Box.png"
+    for i in 48x48 64x64 72x72 96x96 128x128 192x192 256x256 512x512; do
+        install -Dm644 "$srcdir/$pkgname/src/unix/assets/$i/net.86box.86Box.png" -t "$pkgdir/usr/share/icons/hicolor/$i/apps"
+    done
+    mkdir "$pkgdir/usr/share/applications"
+    sed 's/^Exec.*/Exec=86box -P ~\/.config\/86box/' "$srcdir/$pkgname/src/unix/assets/net.86box.86Box.desktop" > "$pkgdir/usr/share/applications/net.86box.86Box.desktop"
 }
