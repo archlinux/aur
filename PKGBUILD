@@ -3,7 +3,7 @@
 pkgname=prometheus-nginxlog-exporter-bin
 _name=prometheus-nginxlog-exporter
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Export metrics from Nginx access log files to Prometheus"
 
 arch=('x86_64')
@@ -14,6 +14,7 @@ makedepends=()
 backup=('etc/prometheus/nginxlog.yml')
 provides=("${_name}")
 conflicts=("${_name}")
+options=(!lto)
 source=( "${_name}.service" 'config.yml'
 "${url}/releases/download/v${pkgver}/${_name}_${pkgver}_linux_amd64.tar.gz")
 
