@@ -1,7 +1,7 @@
 # Maintainer: mutantmonkey <aur@mutantmonkey.mx>
 pkgname=snowflake-pt-client-git
 _gitname=snowflake
-pkgver=754.0054cb2
+pkgver=900.bd636a1
 pkgrel=1
 pkgdesc="Snowflake is a pluggable transport that proxies traffic through temporary proxies using WebRTC"
 arch=('i686' 'x86_64')
@@ -19,8 +19,16 @@ pkgver() {
 }
 
 build() {
+  export GOPATH="$srcdir"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
   cd "$srcdir/$_gitname/client"
-  GOPATH="$srcdir" GOBIN="$PWD" go get -v
+  go get -v -d
+  go build .
 }
 
 package() {
