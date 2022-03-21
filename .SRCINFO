@@ -7,6 +7,7 @@ pkgbase = youtube-dl-gui
 	license = ISC
 	depends = nodejs
 	depends = npm
+	depends = python-mutagen
 	options = !strip
 	source = https://github.com/jely2002/youtube-dl-gui/archive/refs/tags/v2.4.0.tar.gz
 	md5sums = f4d2e5faaeb47cfa3c1294be80fb8f49
