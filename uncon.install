@@ -1,8 +1,0 @@
-post_install() {
-echo "======================================="
-echo "请自行创建 com.nightmare.remote 文件夹，"
-echo "否则程序将无法正常工作："
-echo ""
-echo "mkdir '\$HOME/.config/com.nightmare.remote'"
-echo "======================================="
-}
