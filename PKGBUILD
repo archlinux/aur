@@ -1,6 +1,6 @@
 # Maintainer: muttleyxd <mateusz[ at ]szychowski.it>
 pkgname=armake2-git
-pkgver=85.12dd97b
+pkgver=87.2e66c92
 pkgrel=1
 pkgdesc="Rust implementation of Arma modding tools (PAA conversion, binarization/rapification, PBO packing)"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('openssl')
 makedepends=('rust' 'git')
 provides=('armake2')
 conflicts=('armake2')
-source=("$pkgname::git://github.com/KoffeinFlummi/armake2.git")
+source=("$pkgname::git+https://github.com/KoffeinFlummi/armake2.git")
 md5sums=('SKIP')
 
 pkgver() 
