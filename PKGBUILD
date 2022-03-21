@@ -3,7 +3,7 @@
 # Contributor: osch <oliver@luced.de>
 pkgname=surge-synthesizer-git
 _pkgname=surge
-pkgver=r1010.856e43b
+pkgver=r3987.37373441
 pkgrel=1
 pkgdesc="Surge Synthesizer plugin (LV2/VST3, git head)"
 arch=('x86_64')
@@ -29,7 +29,9 @@ pkgver() {
 prepare() {
 	cd "$srcdir/$_pkgname"
 	git submodule update --init --recursive
-
+  if [[ ! -e JUCE-lv2  ]]; then
+    git clone --branch lv2 https://github.com/lv2-porting-project/JUCE JUCE-lv2
+  fi
 }
 
 build() {
@@ -39,7 +41,7 @@ build() {
 	export MAKEFLAGS=
 
   cmake -Bbuild
-  cmake --build build --config Release --target surge-staged-assets
+  cmake -Bbuild_lv2 -DCMAKE_BUILD_TYPE=Release -DJUCE_SUPPORTS_LV2=True -DSURGE_JUCE_PATH=JUCE-lv2/
 }
 
 package() {
