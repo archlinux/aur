@@ -1,7 +1,7 @@
-# Maintainer: Tobias Göbel <kubax1983.at.gmail.dot.com>
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Tobias Göbel <kubax1983.at.gmail.dot.com>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 # Contributor: Cedric Brancourt <cedric.brancourt at gmail dot com>
-
 
 pkgname=('imagemagick-no-hdri')
 pkgver=7.0.10.18
@@ -12,11 +12,9 @@ license=('custom')
 makedepends=('libltdl' 'lcms2' 'libxt' 'fontconfig' 'libxext' 'ghostscript'
              'openexr' 'libwmf' 'librsvg' 'libxml2' 'liblqr' 'openjpeg2'
              'opencl-headers' 'opencl-icd-loader' 'libwebp' 'subversion' 'glu')
-source=(http://www.imagemagick.org/download/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz{,.asc}
-        perlmagick.rpath.patch)
+source=(http://www.imagemagick.org/download/ImageMagick-${pkgver%.*}-${pkgver##*.}.tar.xz{,.asc})
 sha1sums=('0e2f5816062a427f9e83a2eb76d5ad1c8327ef40'
-          'SKIP'
-          'e143cf9d530fabf3b58023899b5cc544ba93daec')
+          'SKIP')
 validpgpkeys=('D8272EF51DA223E4D05B466989AB63D48277377A')
 
 provides=('imagemagick')
@@ -26,7 +24,6 @@ prepare() {
   cd ImageMagick-${pkgver%.*}-${pkgver##*.}
   sed '/AC_PATH_XTRA/d' -i configure.ac
   autoreconf --force --install
-  patch -p0 -i "${srcdir}/perlmagick.rpath.patch"
 }
 
 build() {
