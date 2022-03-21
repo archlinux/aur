@@ -1,0 +1,16 @@
+pkgbase = ysabeau-git
+	pkgdesc = The essence of Garamond in an open-source sans-serif typeface.
+	pkgver = 0.003.r107.gc620c84
+	pkgrel = 1
+	url = https://github.com/CatharsisFonts/Ysabeau
+	arch = any
+	license = OFL-1.1 License
+	makedepends = git
+	provides = otf-ysabeau=0.003.r107.gc620c84
+	provides = ttf-ysabeau=0.003.r107.gc620c84
+	source = git+https://github.com/CatharsisFonts/Ysabeau.git
+	sha256sums = SKIP
+
+pkgname = otf-ysabeau-git
+
+pkgname = ttf-ysabeau-git
