@@ -1,31 +1,16 @@
 pkgbase = sweet-kde-theme-git
 	pkgdesc = Sweet KDE Plasma theme
-	pkgver = r248.802e805
-	pkgrel = 3
-	url = https://github.com/EliverLara/sweet
+	pkgver = r24.9e36d3a
+	pkgrel = 2
+	url = https://github.com/EliverLara/Sweet-kde
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	makedepends = inkscape
-	makedepends = optipng
-	depends = kvantum
-	depends = sweet-folders-icons-git
-	depends = candy-icons
-	optdepends = ttf-roboto: primary font face defined (GTK theme)
-	optdepends = ttf-ubuntu-font-family: secondary font face defined (GTK theme)
-	optdepends = cantarell-fonts: tertiary font face defined (GTK theme)
-	provides = sweet-kde-theme-git
+	provides = sweet-kde
 	conflicts = sweet-kde
 	conflicts = sweet-kde-git
-	conflicts = sweet-gtk-theme
-	conflicts = sweet-theme-git
-	conflicts = sweet-cursor-theme-git
-	conflicts = sweet-cursor-theme
-	conflicts = sweet-cursors-theme
-	conflicts = kvantum-theme-sweet-git
-	conflicts = sweet-kvantum-theme-git
 	options = !strip
-	source = git+https://github.com/EliverLara/sweet.git#branch=nova
+	source = git+https://github.com/EliverLara/Sweet-kde.git
 	sha256sums = SKIP
 
 pkgname = sweet-kde-theme-git
