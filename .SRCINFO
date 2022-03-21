@@ -10,6 +10,7 @@ pkgbase = libeb
 	depends = perl
 	depends = zlib
 	provides = libeb.so
+	provides = eb-library
 	source = https://github.com/mistydemeo/eb/releases/download/v4.4.3/eb-4.4.3.tar.bz2
 	source = eb-fix_bmp_size_header.patch::https://github.com/eb4j/eb/commit/8292c7814e2c65d0809bb8a401c00b593aefec43.patch
 	sha256sums = abe710a77c6fc3588232977bb2f30a2e69ddfbe9fa8d0b05b0d67d95e36f4b5f

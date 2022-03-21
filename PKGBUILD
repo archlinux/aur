@@ -12,7 +12,7 @@ license=('BSD')
 depends=('libnsl'
          'perl'
          'zlib')
-provides=('libeb.so')
+provides=('libeb.so' 'eb-library')
 _patch1_name="${_pkgname}-fix_bmp_size_header.patch"
 _patch1_source="https://github.com/eb4j/${_pkgname}/commit/8292c7814e2c65d0809bb8a401c00b593aefec43.patch"
 source=("https://github.com/mistydemeo/eb/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.bz2"
