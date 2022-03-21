@@ -1,7 +1,7 @@
 pkgbase = commander-wars
 	pkgdesc = Advance Wars Clone with a lot of additions customizations and modding support
 	pkgver = 0.22.5.2
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
 	url = https://github.com/Robosturm/Commander_Wars
 	arch = x86_64
