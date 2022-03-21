@@ -18,6 +18,7 @@ pkgbase = wireplumber-git
 	makedepends = doxygen
 	makedepends = glib2
 	makedepends = python-breathe
+	makedepends = python-lxml
 	makedepends = python-sphinx_rtd_theme
 	makedepends = python-sphinx
 	makedepends = systemd

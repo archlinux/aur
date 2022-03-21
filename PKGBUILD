@@ -15,7 +15,7 @@ license=('MIT')
 depends=('gcc-libs' 'glibc' 'lua' 'libgio-2.0.so' 'libglib-2.0.so'
   'libgmodule-2.0.so' 'libgobject-2.0.so' 'libpipewire-0.3.so')
 makedepends=('cmake' 'cpptoml' 'glib2' 'gobject-introspection' 'meson' 'pipewire'
-  'doxygen' 'glib2'  'python-breathe' 'python-sphinx_rtd_theme'
+  'doxygen' 'glib2'  'python-breathe' 'python-lxml' 'python-sphinx_rtd_theme'
   'python-sphinx' 'systemd' 'git')
 checkdepends=('pipewire-alsa' 'pipewire-jack' 'pipewire-pulse')
 install='wireplumber.install'
