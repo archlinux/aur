@@ -1,21 +1,24 @@
 pkgbase = odr-dabmod-git
 	pkgdesc = Opendigitalradio DAB modulator
-	pkgver = v2.3.0
+	pkgver = 2.5.0.r0.g93e5171
 	pkgrel = 1
-	url = https://github.com/Opendigitalradio/ODR-DabMod
+	url = https://github.com/Opendigitalradio/odr-dabmod
 	arch = x86_64
 	arch = i686
 	arch = armv7h
 	arch = aarch64
 	license = GPL
+	makedepends = git
 	makedepends = boost
+	depends = fftw
 	depends = zeromq
 	depends = boost-libs
 	depends = libuhd
+	depends = limesuite
+	depends = bladerf
 	provides = odr-dabmod
 	conflicts = odr-dabmod
-	source = odr-dabmod::git+https://github.com/Opendigitalradio/ODR-DabMod.git
+	source = odr-dabmod::git+https://github.com/Opendigitalradio/odr-dabmod.git
 	md5sums = SKIP
 
 pkgname = odr-dabmod-git
-
