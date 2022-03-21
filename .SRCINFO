@@ -1,0 +1,16 @@
+pkgbase = feeluown-download
+	pkgdesc = FeelUOwn download plugin
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/feeluown/feeluown-download
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = feeluown
+	depends = python-requests
+	depends = python-mutagen
+	source = https://pypi.io/packages/source/f/fuo_dl/fuo_dl-0.3.tar.gz
+	sha512sums = 2afdacfd7f16fb1bb7e6cedc4a548bbc634d071a9656252767725889acb2a4bd66f9fc4af5924efa73144fff90f23c56ac9fa08d0442b7ee78e3fa19167e8b83
+
+pkgname = feeluown-download
