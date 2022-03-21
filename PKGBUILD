@@ -3,7 +3,7 @@
 
 pkgname=1password-cli
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="1Password command line tool"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'aarch64')
 url="https://app-updates.agilebits.com/product_history/CLI2"
@@ -41,7 +41,7 @@ check() {
 
 package() {
   install -Dm644 "${srcdir}"/1password-cli.sysusers "${pkgdir}"/usr/lib/sysusers.d/1password-cli.conf
-  install -Dm2755 op "${pkgdir}"/usr/bin/op
+  install -Dm755 op "${pkgdir}"/usr/bin/op
 }
 
 # vim:set ts=2 sw=2 et:
