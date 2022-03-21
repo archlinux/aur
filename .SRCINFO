@@ -7,5 +7,6 @@ pkgbase = python-ffmpeg-pip
 	makedepends = python-pip
 	depends = python
 	provides = python-ffmpeg
+	conflicts = python-ffmpeg
 
 pkgname = python-ffmpeg-pip
