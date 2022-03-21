@@ -1,6 +1,6 @@
 # Maintainer: markusressel <mail+archlinuxaur@markusressel.de>
 pkgname=fan2go-git
-pkgver=0.5.0.r0.g5193131
+pkgver=0.5.0.r17.g5582b62
 pkgrel=1
 pkgdesc="A simple daemon providing dynamic fan speed control based on temperature sensors"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=('glibc' 'lm_sensors')
 makedepends=('go' 'git')
 provides=("fan2go")
 conflicts=("fan2go")
-source=('git://github.com/markusressel/fan2go')
+source=('git+https://github.com/markusressel/fan2go')
 sha256sums=('SKIP')
 
 pkgver() {

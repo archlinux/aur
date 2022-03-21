@@ -1,6 +1,6 @@
 pkgbase = fan2go-git
 	pkgdesc = A simple daemon providing dynamic fan speed control based on temperature sensors
-	pkgver = 0.5.0.r0.g5193131
+	pkgver = 0.5.0.r17.g5582b62
 	pkgrel = 1
 	url = https://github.com/markusressel/fan2go
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = fan2go-git
 	depends = lm_sensors
 	provides = fan2go
 	conflicts = fan2go
-	source = git://github.com/markusressel/fan2go
+	source = git+https://github.com/markusressel/fan2go
 	sha256sums = SKIP
 
 pkgname = fan2go-git
