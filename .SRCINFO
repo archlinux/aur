@@ -1,0 +1,15 @@
+pkgbase = plasma5-applets-separator
+	pkgdesc = Just a Separator. What did you expect?
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://store.kde.org/p/998907
+	arch = any
+	license = GPL3
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = gettext
+	depends = plasma-workspace
+	source = org.kde.plasma.separator.tar.gz
+	sha256sums = 2190bdf79869c7736e5e16560137be35eefdaa3713c43385c77f1eea95e08a3d
+
+pkgname = plasma5-applets-separator
