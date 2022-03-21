@@ -64,11 +64,11 @@ package() {
     # Install systemd units.
     cd "${srcdir}/omada-controller-scripts"
     install -dm 755 "${pkgdir}/usr/lib/systemd/system"
-    install -m 644 "omada-sdn-controller.service" "${pkgdir}/usr/lib/systemd/system/"
+    install -m 644 "omada-controller.service" "${pkgdir}/usr/lib/systemd/system/"
 
     # Install sysusers configuration.
     install -dm 755 "${pkgdir}/usr/lib/sysusers.d"
-    install -m 644 "omada-sdn-controller.conf" "${pkgdir}/usr/lib/sysusers.d/"
+    install -m 644 "omada-controller.conf" "${pkgdir}/usr/lib/sysusers.d/"
 
     # Install ALPM hook and script.
     install -dm 755 "${pkgdir}/usr/share/libalpm/hooks"
