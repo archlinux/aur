@@ -1,0 +1,49 @@
+diff --git a/glade/glade-gtksheet-editor.c b/glade/glade-gtksheet-editor.c
+index cef78a9..fdfa41d 100644
+--- a/glade/glade-gtksheet-editor.c
++++ b/glade/glade-gtksheet-editor.c
+@@ -42,11 +42,11 @@
+ #endif
+ 
+ static void glade_sheet_editor_finalize(GObject *object);
+-static void glade_sheet_editor_editable_init(GladeEditableIface *iface);
++static void glade_sheet_editor_editable_init(GladeEditableInterface *iface);
+ static void glade_sheet_editor_realize(GtkWidget *widget);
+ static void glade_sheet_editor_grab_focus(GtkWidget *widget);
+ 
+-static GladeEditableIface *parent_editable_iface;
++static GladeEditableInterface *parent_editable_iface;
+ 
+ G_DEFINE_TYPE_WITH_CODE (
+     GladeSheetEditor, glade_sheet_editor, GTK_TYPE_BOX,
+@@ -146,7 +146,7 @@ static void
+ }
+ 
+ static void
+-    glade_sheet_editor_editable_init (GladeEditableIface *iface)
++    glade_sheet_editor_editable_init (GladeEditableInterface *iface)
+ {
+     parent_editable_iface = g_type_default_interface_peek (GLADE_TYPE_EDITABLE);
+ 
+@@ -367,7 +367,7 @@ void
+         glade_gtk_sheet_launch_editor (object);
+     }
+     else
+-        GWA_GET_CLASS (GTK_TYPE_CONTAINER)->action_activate (adaptor,
++        GLADE_WIDGET_ADAPTOR_GET_ADAPTOR_CLASS (GTK_TYPE_CONTAINER)->action_activate (adaptor,
+                                                              object,
+                                                              action_path);
+ }
+diff --git a/gtksheet/meson.build b/gtksheet/meson.build
+index 7b62339..1775a2b 100644
+--- a/gtksheet/meson.build
++++ b/gtksheet/meson.build
+@@ -49,7 +49,7 @@ enums = gnome.mkenums_simple(
+     sources: public_h_sources)
+ 
+ resources = gnome.compile_resources(
+-    'gtksheet-resources', 'gtksheet-resources.xml', 'gtksheet.css',
++    'gtksheet-resources', 'gtksheet-resources.xml',
+     source_dir: '.',
+     c_name: 'gtk_sheet')
+ 

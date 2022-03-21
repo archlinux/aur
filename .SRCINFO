@@ -1,0 +1,22 @@
+pkgbase = gtksheet-git
+	pkgdesc = A spreadsheet widget for gtk3
+	pkgver = 4.3.9.r5.gecfe8eb
+	pkgrel = 1
+	url = http://fpaquet.github.io/gtksheet/
+	arch = x86_64
+	license = GPL2
+	makedepends = meson
+	depends = gtk3
+	depends = pango
+	depends = cairo
+	depends = atk
+	depends = glade
+	depends = gobject-introspection
+	provides = gtksheet
+	conflicts = gtksheet
+	source = git+https://github.com/fpaquet/gtksheet.git#branch=gtk3_fixes
+	source = build_fix.patch
+	sha256sums = SKIP
+	sha256sums = 4e1a273250f3a22e2e40d2942445e66dce1710037f411e2f3a7fd351f3f98e06
+
+pkgname = gtksheet-git
