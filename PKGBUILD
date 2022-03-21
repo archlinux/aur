@@ -1,4 +1,4 @@
-# Maintainer: Olivier Biesmans <o.archlinux@biesmans.fr>
+# Maintainer: Jack Roehr <jack@seatgull.com>
 
 pkgname=bombardier
 pkgver=1.2.5
@@ -9,9 +9,14 @@ url="https://github.com/codesenberg/bombardier"
 license=('MIT')
 makedepends=('go')
 options=('!strip' '!emptydirs')
-source=("https://github.com/codesenberg/$pkgname/releases/download/v$pkgver/bombardier-linux-amd64")
-b2sums=('c517eada24bff73dd2b013734a2cd52e06980d9696c21834f4bd6524540061ee924aa27493c67fe30ed689bd7d731cc02034b98a5466307c92ad6f66a58589e8')
+source=("bombardier::git+https://github.com/codesenberg/bombardier")
+b2sums=('SKIP')
+
+build() {
+	cd "$pkgname"
+	go build
+}
 
 package() {
-  install -Dm755 "$pkgname-linux-amd64" "$pkgdir/usr/bin/$pkgname"
+	install -Dm755 "$pkgname"/"$pkgname" "$pkgdir/usr/bin/$pkgname"
 }

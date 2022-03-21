@@ -8,7 +8,7 @@ pkgbase = bombardier
 	makedepends = go
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/codesenberg/bombardier/releases/download/v1.2.5/bombardier-linux-amd64
-	b2sums = c517eada24bff73dd2b013734a2cd52e06980d9696c21834f4bd6524540061ee924aa27493c67fe30ed689bd7d731cc02034b98a5466307c92ad6f66a58589e8
+	source = bombardier::git+https://github.com/codesenberg/bombardier
+	b2sums = SKIP
 
 pkgname = bombardier
