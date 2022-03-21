@@ -2,7 +2,7 @@
 
 pkgname=clash-premium-tun
 pkgver=2022.03.21
-pkgrel=1
+pkgrel=2
 pkgdesc="A rule-based tunnel in Go for Linux with TUN"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/Dreamacro/clash"
@@ -20,12 +20,12 @@ source=("git+https://github.com/Kr328/clash-premium-installer.git#commit=e729951
 sha512sums=('SKIP'
             '19287a6707d90d6fb699cbbfb09ba2e44bcfda7e1260f7d5d51c8c9135cdc5584cf671d095cb1b9ac7db9489c3e33affaa2ff4c3f1b4cd67ec1ab4d692edd4df'
             'd7d9d4ee334068c14d80f567914775d2df9638b65d34763aab228dabcaeebace9db1a16f0e42ce657ade731ae34ebb23cee9a5cac8ad18b9c378606436266ffe')
-source_i686=("clash-linux-i686-${pkgver}.gz::https://release.dreamacro.workers.dev/${version}/clash-linux-386-${pkgver}.gz")
-source_x86_64=("clash-linux-x86_64-${pkgver}.gz::https://release.dreamacro.workers.dev/${version}/clash-linux-amd64-${pkgver}.gz")
-source_arm=("clash-linux-arm-${pkgver}.gz::https://release.dreamacro.workers.dev/2022.03.21/clash-linux-armv5-${pkgver}.gz")
-source_armv6h=("clash-linux-armv6h-${pkgver}.gz::https://release.dreamacro.workers.dev/${version}/clash-linux-armv6-${pkgver}.gz")
-source_armv7h=("clash-linux-armv7h-${pkgver}.gz::https://release.dreamacro.workers.dev/${version}/clash-linux-armv7-${pkgver}.gz")
-source_aarch64=("clash-linux-aarch64-${pkgver}.gz::https://release.dreamacro.workers.dev/${version}/clash-linux-armv8-${pkgver}.gz")
+source_i686=("clash-linux-i686-${pkgver}.gz::https://release.dreamacro.workers.dev/${pkgver}/clash-linux-386-${pkgver}.gz")
+source_x86_64=("clash-linux-x86_64-${pkgver}.gz::https://release.dreamacro.workers.dev/${pkgver}/clash-linux-amd64-${pkgver}.gz")
+source_arm=("clash-linux-arm-${pkgver}.gz::https://release.dreamacro.workers.dev/${pkgver}/clash-linux-armv5-${pkgver}.gz")
+source_armv6h=("clash-linux-armv6h-${pkgver}.gz::https://release.dreamacro.workers.dev/${pkgver}/clash-linux-armv6-${pkgver}.gz")
+source_armv7h=("clash-linux-armv7h-${pkgver}.gz::https://release.dreamacro.workers.dev/${pkgver}/clash-linux-armv7-${pkgver}.gz")
+source_aarch64=("clash-linux-aarch64-${pkgver}.gz::https://release.dreamacro.workers.dev/${pkgver}/clash-linux-armv8-${pkgver}.gz")
 sha512sums_i686=('b175e9e001f4525a17daf596955bcda69c8b67fe2f747c4b16961a5b495fb4f45a4c6be889c35273c0f2202533c59f6b7edae432b207ca961705232c5aae9b24')
 sha512sums_x86_64=('df14074ddc2d4037399f0d52775df0718c994ba70cf167426062508196f8e8de4d950cf6cfe6728132a33abfeb4f9b62ab26193dcdac6d077c58d5a34b247440')
 sha512sums_arm=('549f3480869c78ff0b6fdf29d0e4fd646ebcbb8f7d15ab4ff0ef40630008e83d9e967ebd7a0546d192eda1b718b7b393ff33cb5cdeda6754a0c49b3aec1cb6ae')
