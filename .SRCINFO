@@ -1,0 +1,14 @@
+pkgbase = python-pyshader
+	pkgdesc = Write modern GPU shaders in Python
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://kompute.cc/
+	arch = x86_64
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/d6/49/6c6018841489815ca0ebd57a945edaecf92dd34d380f810740a4372fcdf6/pyshader-0.7.0.tar.gz
+	sha256sums = 5357c37cb6b9841037c187fa72be5b5e6e131383f6258c880def56f98471ba67
+
+pkgname = python-pyshader
