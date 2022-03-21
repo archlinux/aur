@@ -1,10 +1,10 @@
-# Maintainer: Miten <admin at m1ten dot me>
+# Maintainer: Miten <git dot pub at icloud dot com>
 # Contributor: Ryan Gonzalez <rymg19 at gmail dot com>
 # Contributor: Frederic Bezies <fredbezies at gmail dot com>, youngunix <>
 
 pkgname=swift-bin
-pkgver=5.5.3
-pkgrel=2
+pkgver=5.6
+pkgrel=1
 pkgdesc="Binary builds of the Swift programming language"
 arch=('x86_64')
 url="https://swift.org"
@@ -16,7 +16,7 @@ options=('!strip')
 provides=('swift-language')
 replaces=('swift-language-bin')
 source=("https://swift.org/builds/swift-$pkgver-release/centos8/swift-$pkgver-RELEASE/swift-$pkgver-RELEASE-centos8.tar.gz")
-sha256sums=('1a8ece25d18e77f961cd074851951a3f1d3e7ef0df8a9e7958342381daed0f33')
+sha256sums=('80fa936a30bbc599a619d352fb271de4060bee9f04151cbfda3d755f4c9e4257')
 
 package() {
   find_elf_only() {
