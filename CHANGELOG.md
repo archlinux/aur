@@ -1,4 +1,26 @@
-## v1.5.3.dev
+## v1.6.0.dev
+
+#### Changed:
+
+* Sync errors are now stored in a SQlite database table instead of a config file.
+* The CLI command `maestral filestatus PATH` will now return `error` if there is a sync
+  error for any child of the given path. This brings it in line with the `syncing` status.
+* Re-enabled updating from versions older than 1.5.0.
+* Improved file integrity checks after upload or download.
+* Better parallelize CPU intensive work when indexing local changes. This improves
+  performance on multi-core CPUs.
+* Migrate the Linux GUI from PyQt5 to PyQt6.
+
+# Fixed:
+
+* Fixes an issue where upload sync errors could continue to be reported after the local
+  file was deleted if the deletion occurred while sync was not running.
+* Fixes an issue with the Linux Qt GUI where aborting the setup dialog after linking but
+  before choosing a local Dropbox folder would result in an inconsistent state.
+* Fixes an issue when storing 64-bit inode numbers in our database.
+* Fixes occasional crashes of the macOS GUI when running on Apple Silicon.
+
+## v1.5.3
 
 #### Changed:
 
@@ -25,8 +47,9 @@
   on case-insensitive file systems such as APFS on macOS.
 * Fixes an issue which could result in sync errors not being cleared after the successful
   sync of an item under some circumstances.
-* Relative passed to `maestral move-dir` are now interpreted relative to the working
-  directory where the command is run instead of the working directory of the sync daemon.
+* Relative paths passed to `maestral move-dir` are now interpreted relative to the
+  working directory where the command is run instead of the working directory of the sync
+  daemon.
 
 ## v1.5.2
 
