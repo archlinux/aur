@@ -1,25 +1,23 @@
-# Maintainer: Niklas <dev@n1klas.net>
-# Maintainer: Nathan Owens <ndowens @ artixlinux.org>
-
+# Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=python-sseclient
+_pkgname=${pkgname:7}
 pkgver=0.0.27
 pkgrel=1
-pkgdesc="Client library for reading Server Sent Event streams"
+pkgdesc="Python client library for reading Server Sent Event streams."
 arch=('any')
-url="https://github.com/btubbs/sseclient"
+url="https://pypi.org/project/${_pkgname}"
 license=('MIT')
-depends=('python-requests>=2.0.0' 'python-six')
-makedepends=('python-setuptools' 'git')
-source=("git+${url}.git#tag=v${pkgver}")
-sha512sums=('SKIP')
+makedepends=(python-build python-installer python-wheel)
+depends=(python python-requests python-six)
+source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
+sha256sums=('b2fe534dcb33b1d3faad13d60c5a7c718e28f85987f2a034ecf5ec279918c11c')
 
 build() {
-  cd "$srcdir/sseclient"
-    python setup.py build
+    cd ${srcdir}/${_pkgname}-${pkgver}
+    python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir/sseclient"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cd ${srcdir}/${_pkgname}-${pkgver}
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
