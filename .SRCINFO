@@ -11,7 +11,7 @@ pkgbase = ddev-bin
 	provides = ddev
 	conflicts = ddev
 	source = https://github.com/drud/ddev/releases/download/v1.19.1/ddev_linux-amd64.v1.19.1.tar.gz
-	sha256sums = 6e8c2532f3465d8733499fc39eb1f4f02ed668235b4fbf4e272c434144eaaa4b
+	sha256sums = 0052f19f587a0470fff915ad8546a7940a62f5ea33b80d6ead9489605f6d549e
 
 pkgname = ddev-bin
 
