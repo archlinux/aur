@@ -1,12 +1,14 @@
 pkgbase = prometheus-apcupsd-exporter
 	pkgdesc = Prometheus exporter for apcupsd metrics
 	pkgver = 0.2.0
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/mdlayher/apcupsd_exporter
 	arch = x86_64
 	license = MIT
 	makedepends = go
+	depends = glibc
 	optdepends = apcupsd: for monitoring a local APC UPS
+	options = !lto
 	backup = etc/conf.d/prometheus-apcupsd-exporter
 	source = prometheus-apcupsd-exporter-0.2.0.tar.gz::https://github.com/mdlayher/apcupsd_exporter/archive/v0.2.0.tar.gz
 	source = prometheus-apcupsd-exporter.conf
@@ -18,4 +20,3 @@ pkgbase = prometheus-apcupsd-exporter
 	b2sums = 1a9e982c7bed03f2f29e45d40374044860aa6e05f877a66ce8900c6a088eddd2f30dc8335be3690edb410ab780ef655d402a528214e0b676da684536f9ae6687
 
 pkgname = prometheus-apcupsd-exporter
-

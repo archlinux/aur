@@ -3,14 +3,16 @@
 pkgname=prometheus-apcupsd-exporter
 _pkgname=apcupsd_exporter
 pkgver=0.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Prometheus exporter for apcupsd metrics"
-arch=(x86_64)
+arch=('x86_64')
 url="https://github.com/mdlayher/apcupsd_exporter"
-license=(MIT)
-makedepends=(go)
+license=('MIT')
+depends=('glibc')
+makedepends=('go')
 optdepends=('apcupsd: for monitoring a local APC UPS')
 backup=("etc/conf.d/prometheus-apcupsd-exporter")
+options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.conf"
         "$pkgname.service"
@@ -27,7 +29,7 @@ prepare() {
   mkdir build
 
   # download dependencies
-  go mod vendor
+  go mod download
 }
 
 build() {
@@ -35,7 +37,7 @@ build() {
   go build -v \
     -buildmode=pie \
     -trimpath \
-    -mod=vendor \
+    -mod=readonly \
     -modcacherw \
     -ldflags "-linkmode external -extldflags ${LDFLAGS} \
     -X github.com/prometheus/common/version.Version=$pkgver \
