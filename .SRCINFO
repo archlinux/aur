@@ -1,0 +1,15 @@
+pkgbase = shojo
+	pkgdesc = Shojo is a CLI LaTex package manager
+	pkgver = 0.0.3
+	pkgrel = 1
+	url = https://github.com/Fazendaaa/Shojo/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	makedepends = go
+	provides = shojo
+	source = git+https://github.com/Fazendaaa/Shojo/
+	md5sums = SKIP
+
+pkgname = shojo
