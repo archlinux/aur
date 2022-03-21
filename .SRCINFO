@@ -1,0 +1,17 @@
+pkgbase = python-temporal-cache
+	pkgdesc = Time based function caching
+	pkgver = 0.1.4
+	pkgrel = 1
+	url = https://pypi.org/project/temporal-cache
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-frozendict
+	depends = python-tzlocal
+	source = https://files.pythonhosted.org/packages/source/t/temporal-cache/temporal-cache-0.1.4.tar.gz
+	sha256sums = b6dd850359c46bd4a5c59fc3b953f8924e429b1179a351b3508d07c214738b50
+
+pkgname = python-temporal-cache
