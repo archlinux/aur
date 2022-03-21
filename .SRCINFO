@@ -4,6 +4,7 @@ pkgbase = lua-format-ext
 	pkgrel = 1
 	url = https://github.com/Koihik/LuaFormatter
 	arch = x86_64
+	arch = aarch64
 	license = Apache2
 	makedepends = antlr4
 	makedepends = cmake
@@ -25,4 +26,3 @@ pkgbase = lua-format-ext
 	sha512sums = 8747d10775b34b8e413263439b1284bd524ef0ef867e3646774cb5ed4dddf008f852b7a2b6f8a6a1492739a7f931d57e6346cb8b65e00542b7aa8d0b868a4ebc
 
 pkgname = lua-format-ext
-
