@@ -6,8 +6,8 @@
 
 _pkgname=SoapySDR
 pkgname=soapysdr-git
-pkgver=0.8.1.r14.g6f97389
-pkgrel=3
+pkgver=0.8.1.r25.g9cbaa3c
+pkgrel=1
 epoch=3
 pkgdesc='Vendor and platform neutral SDR support library'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -51,5 +51,5 @@ package() {
   make -C build DESTDIR="$pkgdir" install
 
   install -dm 755 "$pkgdir/usr/share/doc/$_pkgname"
-  cp -r -a --no-preserve=ownership "build/docs/doxygen/html" "$pkgdir/usr/share/doc/$_pkgname"
+  cp -r -a --no-preserve=ownership "build/docs/html" "$pkgdir/usr/share/doc/$_pkgname"
 }
