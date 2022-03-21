@@ -2,7 +2,7 @@
 
 pkgname=taskell
 pkgver=1.11.4
-pkgrel=118
+pkgrel=119
 pkgdesc='A command-line kanban board/task manager'
 license=(BSD)
 arch=(x86_64)
@@ -15,7 +15,7 @@ sha512sums=('34d75d01c8e88fbbb932dbe6394e570b454156f1ad02173616616c493f65bfc5c4d
 build() {
   cd $pkgname-$pkgver
   runhaskell Setup configure -O --enable-shared --enable-executable-dynamic --disable-library-vanilla \
-    --prefix=/usr --docdir=/usr/share/doc/$pkgname --enable-tests \
+    --prefix=/usr --docdir=/usr/share/doc/$pkgname --datasubdir=$pkgname --enable-tests \
     --datasubdir=$pkgname \
     --dynlibdir=/usr/lib --libsubdir=\$compiler/site-local/\$pkgid --ghc-option=-fllvm \
     --ghc-option=-optl-Wl\,-z\,relro\,-z\,now \
