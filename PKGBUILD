@@ -1,8 +1,8 @@
-# Maintainer: David Wells <dr wells at vt dot e d u>
+# Maintainer: David Wells <drwells.aur at fastmail dot com>
 
 pkgname=p4est-deal-ii
 _realname=p4est
-pkgver=2.2
+pkgver=2.8
 pkgrel=1
 pkgdesc="The parallel forest (p4est) library, built to work with deal.II (i.e., the deal-ii package)"
 arch=("i686" "x86_64")
@@ -16,7 +16,7 @@ depends=('openmpi' 'zlib' 'lua' 'gcc-fortran')
 makedepends=('gcc-fortran')
 source=(https://p4est.github.io/release/p4est-$pkgver.tar.gz)
 
-sha1sums=('28cbaf51a335c8cc8e78bb38bbb99251ba7ebf80')
+sha256sums=('6a0586e3abac06c20e31b1018f3a82a564a6a0d9ff6b7f6c772a9e6b0f0cc5e4')
 
 install_dir=/opt/$pkgname/
 
@@ -30,7 +30,7 @@ build() {
     mkdir -p $build_fast_dir
     mkdir -p $build_debug_dir
 
-    CFLAGS_FAST="$CFLAGS"
+    CFLAGS_FAST="$CFLAGS -g"
     CFLAGS_DEBUG="$DEBUG_CFLAGS"
     # the standard optimized and debug flags are '-O2' and '-O0 -g' for
     # p4est. This PKGBUILD defaults to the system settings instead: uncomment
@@ -43,7 +43,7 @@ build() {
     disabled_packages+=" --without-lint"
     options=" --enable-mpi --enable-shared --disable-vtk-binary"
     options+=" --disable-mpithread --with-gnu-ld --enable-static=no"
-    cpp_flags=" -DSC_LOG_PRIORITY=SC_LP_ESSENTIAL -DP4EST_BACKWARD_DEALII"
+    cpp_flags=" -DSC_LOG_PRIORITY=SC_LP_ESSENTIAL"
 
     # build the optimized version
     cd $build_fast_dir
