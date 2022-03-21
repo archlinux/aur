@@ -1,14 +1,14 @@
 pkgbase=python2-marshmallow-jsonapi
 pkgname=(python-marshmallow-jsonapi python2-marshmallow-jsonapi)
-pkgver=0.23.1
+pkgver=0.24.0
 pkgrel=1
 pkgdesc="JSON API 1.0 (https://jsonapi.org) formatting with marshmallow"
 url="https://github.com/marshmallow-code/marshmallow-jsonapi"
-makedepends=('python' 'python2')
+makedepends=('python' 'python-setuptools' 'python2' 'python2-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://github.com/marshmallow-code/marshmallow-jsonapi/archive/${pkgver}.tar.gz")
-sha256sums=('e16662ec78a98e4ef74586b648870bbe246abf118bada36428bd861984e21cf5')
+sha256sums=('d73495733efc528580faf0eb2242581856f689e92ae7d466ca9fccbf8d6abd35')
 
 prepare() {
   cp -a marshmallow-jsonapi-${pkgver}{,-py2}
