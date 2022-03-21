@@ -1,0 +1,19 @@
+pkgbase = python-kp
+	pkgdesc = Python binding of Kompute: Blazing fast, mobile-enabled, asynchronous, and optimized for advanced GPU processing usecases.
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://kompute.cc/
+	arch = x86_64
+	license = Apache
+	checkdepends = python-pytest
+	checkdepends = python-pyshader
+	makedepends = python-setuptools
+	makedepends = cmake
+	makedepends = gcc
+	depends = python
+	depends = vulkan-headers
+	optdepends = python-pyshader: Provide modern GPU shaders method
+	source = https://files.pythonhosted.org/packages/02/38/eebf1ab4b6fb22ce481e4ae638ff56a59eb76c466c8a21dcc473769a51ba/kp-0.8.0.tar.gz
+	sha256sums = 814615354d1c17603894f756ac9b45661f4ff78e7db894079e0693a8f89a401f
+
+pkgname = python-kp
