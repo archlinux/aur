@@ -1,4 +1,4 @@
-# Maintainer: Jan Sonntag
+# Maintainer: Jan Sonntag <jaso35 at gmail dot com>
 
 pkgname=cantarell-static-fonts
 _pkgname=cantarell-fonts
