@@ -1,24 +1,17 @@
-_pkgname=libclang-py3
+# Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=python-libclang
-pkgver=3.8.2
+_pkgname=${pkgname:7}
+pkgver=13.0.0
 pkgrel=1
-pkgdesc="This is a port of the clang Python bindings to Python 3."
-arch=('any')
-url="https://bitbucket.org/Anteru/python3-libclang"
-license=('custom:University of Illinois/NCSA Open Source License')
-depends=('python' 'python-setuptools' 'clang')
-source=("https://pypi.python.org/packages/e7/29/fc0d6a3fc85ad676207007b42009d1a2d4d6b46f5de7bca4fdef3390d8f5/$_pkgname-$pkgver.tar.gz")
-md5sums=('b59a04e764adbf22669b0580d914c728')
-
-build() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python3 setup.py build
-}
+pkgdesc="Clang Python Bindings"
+arch=(x86_64)
+url="https://pypi.org/project/${_pkgname}"
+license=('Apache')
+makedepends=(python-build python-installer python-wheel)
+depends=(python)
+source=(https://files.pythonhosted.org/packages/py2.py3/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver-py2.py3-none-manylinux1_x86_64.whl)
+sha256sums=('9c1e623340ccafe3a10a2abbc90f59593ff29f0c854f4ddb65b6220d9d998fb4')
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
-
-  python3 setup.py install --root=$pkgdir --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" *.whl
 }
-
-# vim:set sw=2 et:
