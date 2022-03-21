@@ -1,27 +1,32 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
 pkgname=journal-notify-git
-pkgver=0.1.1.r12.ga1c0a5e
+pkgver=0.1.2.r1.g9d2b0d8
 pkgrel=1
 pkgdesc='Notify about journal log entries - git checkout'
 arch=('i686' 'x86_64')
 url='https://github.com/eworm-de/journal-notify'
 depends=('libnotify' 'systemd')
 optdepends=('gnome-icon-theme: icons in notifications')
-makedepends=('git' 'markdown')
+makedepends=('git' 'discount')
 provides=('journal-notify')
 conflicts=('journal-notify')
 license=('GPL')
-source=('git://github.com/eworm-de/journal-notify.git')
+source=('git+https://github.com/eworm-de/journal-notify.git')
 sha256sums=('SKIP')
 
 pkgver() {
 	cd journal-notify/
 
 	if GITTAG="$(git describe --abbrev=0 --tags 2>/dev/null)"; then
-		echo "$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG}).r$(git rev-list --count ${GITTAG}..).g$(git log -1 --format="%h")"
+		printf '%s.r%s.g%s' \
+			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
+			"$(git rev-list --count ${GITTAG}..)" \
+			"$(git rev-parse --short HEAD)"
 	else
-		echo "0.r$(git rev-list --count master).g$(git log -1 --format="%h")"
+		printf '0.r%s.g%s' \
+			"$(git rev-list --count master)" \
+			"$(git rev-parse --short HEAD)"
 	fi
 }
 
