@@ -2,15 +2,15 @@
 # Contributor: Westofer Raymond <westoferraymond@gmail.com>
 pkgname=athens-git
 _pkgname=athens
-pkgver=v2.0.0.beta.20.r1.g4f1cab12
-pkgrel=2
+pkgver=v2.0.0.beta.24.r0.gf6eef047
+pkgrel=1
 pkgdesc="Open-source knowledge graph"
 arch=('i686' 'x86_64')
 url="https://github.com/athensresearch/athens"
 license=('Eclipse Public License - v 1.0')
 groups=()
 depends=("electron")
-makedepends=("git" "nodejs" "yarn" "jq")
+makedepends=("git" "nodejs" "yarn" "clojure" "jq")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 install=
@@ -37,7 +37,7 @@ build() {
     cd "$srcdir/${_pkgname}"
     local i686=ia32 x86_64=x64
 
-    yarn prod
+    clojure -P
 
     yarn --cache-folder "${srcdir}/yarn-cache" run \
         electron-builder --linux --"${!CARCH}" --dir \
