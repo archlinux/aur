@@ -3,7 +3,7 @@
 
 pkgname=camotics
 pkgver=1.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="3-axis NC machining simulation software"
 arch=('x86_64')
 url="https://camotics.org/"
@@ -39,7 +39,7 @@ build() {
 
 package() {
   cd "CAMotics-$pkgver"
-  CBANG_HOME=/opt/cbang scons install install_prefix="$pkgdir/usr" linkflags=$LDFLAGS
+  CBANG_HOME=/opt/cbang scons install install_prefix="$pkgdir/usr"
 
   install -d "$pkgdir/usr/share/$pkgname"/tpl_lib
   cp -a tpl_lib/ "$pkgdir/usr/share/$pkgname"
