@@ -1,6 +1,6 @@
 # Maintainer: Alex "grevus" Lobtsov <alex@lobtsov.com>
 pkgname=php-browscap
-pkgver=6.0.38
+pkgver=6.1.0
 pkgrel=1
 pkgdesc="PHP browscap"
 url="http://browscap.org/"
@@ -33,5 +33,5 @@ package() {
   install -Dm644 ${srcdir}/browscap.conf.ini "$pkgdir/etc/php/conf.d/browscap.ini"
 }
 
-sha256sums=('a9e65ef016d0eece8de75395cfd84e23b4d98cc1fe4a73de0f4dcc7da161de3a'
+sha256sums=('1d8e7391e6bba2bbd010370a6aea80a0c4e3d7b24f4a8cf287f49677fe51be7c'
             'ab973c3fd8d4842430f70d144278c150061b6e2ff77d7b367f9921fa728ad169')

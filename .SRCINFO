@@ -1,6 +1,6 @@
 pkgbase = php-browscap
 	pkgdesc = PHP browscap
-	pkgver = 6.0.38
+	pkgver = 6.1.0
 	pkgrel = 1
 	url = http://browscap.org/
 	arch = x86_64
@@ -10,10 +10,9 @@ pkgbase = php-browscap
 	depends = curl
 	backup = etc/php/conf.d/browscap.ini
 	backup = etc/php/extra/browscap.ini
-	source = https://github.com/browscap/browscap/archive/6.0.38.tar.gz
+	source = https://github.com/browscap/browscap/archive/6.1.0.tar.gz
 	source = browscap.conf.ini
-	sha256sums = a9e65ef016d0eece8de75395cfd84e23b4d98cc1fe4a73de0f4dcc7da161de3a
+	sha256sums = 1d8e7391e6bba2bbd010370a6aea80a0c4e3d7b24f4a8cf287f49677fe51be7c
 	sha256sums = ab973c3fd8d4842430f70d144278c150061b6e2ff77d7b367f9921fa728ad169
 
 pkgname = php-browscap
-
