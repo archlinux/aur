@@ -1,0 +1,20 @@
+pkgbase = se98-icon-theme-git
+	pkgdesc = Windows 98 Second Edition inspired icon theme
+	pkgver = 0.2.11
+	pkgrel = 1
+	url = https://github.com/nestoris/Win98SE
+	arch = any
+	license = GPLv2
+	makedepends = git
+	depends = gtk3
+	optdepends = gawk: for Win2K/Win98 toggling awk scripts
+	optdepends = nawk: for Win2K/Win98 toggling awk scripts
+	optdepends = mawk: for Win2K/Win98 toggling awk scripts
+	optdepends = chicago95-icon-theme-git: for some missing icons in SE98 theme
+	source = git+https://github.com/nestoris/Win98SE.git
+	sha256sums = SKIP
+
+pkgname = se98-icon-theme-git
+	pkgdesc = Windows 98 Second Edition inspired icon theme
+	provides = se98-icon-theme
+	conflicts = se98-icon-theme

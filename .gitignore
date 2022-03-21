@@ -1,0 +1,9 @@
+
+Win98SE
+src
+pkg
+*.deb
+*.zst
+*.rpm
+*.tgz
+make_packages
