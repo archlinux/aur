@@ -1,31 +1,34 @@
 # Maintainer: Kai Muenz <kai+archlinux@muenz.net>
+
 _pkgname=odr-dabmod
 pkgname=$_pkgname-git
-pkgver=v2.3.0
+pkgver=2.5.0.r0.g93e5171
 pkgrel=1
 pkgdesc="Opendigitalradio DAB modulator"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64') 
-url="https://github.com/Opendigitalradio/ODR-DabMod"
+url="https://github.com/Opendigitalradio/$_pkgname"
 license=('GPL')
 groups=()
-depends=('zeromq' 'boost-libs' 'libuhd')
-makedepends=('boost')
-checkdepends=()
-optdepends=()
+depends=('fftw' 'zeromq' 'boost-libs' 'libuhd' 'limesuite' 'bladerf')
+makedepends=('git' 'boost')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://github.com/Opendigitalradio/ODR-DabMod.git")
+source=("$_pkgname::git+$url.git")
 md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git describe --tags | sed 's|-|.|g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	cd "$_pkgname"
+	./bootstrap.sh
 }
 
 build() {
 	cd "$_pkgname"
-	./bootstrap.sh
-	./configure --prefix=/usr
+	./configure --prefix=/usr --enable-limesdr --enable-bladerf
 	make
 }
 
