@@ -1,18 +1,23 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
-
+# Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=python-google-pasta
+_pkgname=${pkgname:7}
 pkgver=0.2.0
 pkgrel=1
-pkgdesc='Library to refactor python code through AST manipulation'
+pkgdesc="AST-based Python refactoring library"
 arch=('any')
-url='https://github.com/google/pasta'
+url="https://pypi.org/project/${_pkgname}"
 license=('Apache')
-depends=('python-six')
-makedepends=('python-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/google/pasta/archive/v${pkgver}.tar.gz")
-sha256sums=('b9e3bcf5ab79986e245c8a2f3a872d14c610ce66904c4f16818342ce81cf97d2')
+makedepends=(python-build python-installer python-wheel)
+depends=(python python-six)
+source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
+sha256sums=('c9f2c8dfc8f96d0d5808299920721be30c9eec37f2389f28904f454565c8a16e')
+
+build() {
+    cd ${srcdir}/${_pkgname}-${pkgver}
+    python -m build --wheel --no-isolation
+}
 
 package() {
-  cd "pasta-${pkgver}"
-  python setup.py install --root="$pkgdir/" --optimize=1
+    cd ${srcdir}/${_pkgname}-${pkgver}
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
