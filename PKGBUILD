@@ -2,8 +2,8 @@
 
 pkgname=gopreload-git
 _gitname=gopreload
-pkgver=r49.ebb83fe
-pkgrel=2
+pkgver=r59.21b08e6
+pkgrel=1
 pkgdesc="Preloads files needed for given programs"
 arch=('any')
 url="http://forums.gentoo.org/viewtopic-t-622085-highlight-preload.html"
@@ -15,7 +15,8 @@ provides=('gopreload')
 conflicts=('gopreload')
 backup=('etc/gopreload.conf')
 install=${_gitname}.install
-source=('git://github.com/kokoko3k/gopreload.git')
+#source=('git://github.com/kokoko3k/gopreload.git')
+source=('git+https://github.com/kokoko3k/gopreload.git')
 sha256sums=('SKIP')
 
 pkgver() {
