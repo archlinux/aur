@@ -3,7 +3,7 @@
 pkgname=sweet-kde-theme-git
 _pkgname=Sweet-kde
 pkgver=r24.9e36d3a
-pkgrel=2
+pkgrel=3
 pkgdesc="Sweet KDE Plasma theme"
 arch=('x86_64')
 url="https://github.com/EliverLara/$_pkgname"
@@ -22,6 +22,7 @@ pkgver() {
 }
 
 package() {
-    install -d $pkgdir/usr/share/plasma/desktoptheme/
+	install -d $pkgdir/usr/share/plasma/desktoptheme
 	cp -R $srcdir/Sweet-kde/ $pkgdir/usr/share/plasma/desktoptheme/Sweet
+	install -d $pkgdir/usr/share/plasma/desktoptheme/Sweet
 }
