@@ -1,13 +1,14 @@
 pkgbase = ptree
 	pkgdesc = A tree directory visualizer
-	pkgver = 1.2.1
-	pkgrel = 2
+	pkgver = 1.2.2
+	pkgrel = 1
 	url = https://github.com/ICanOnlySuffer/ptree
 	arch = x86_64
 	arch = armv7a
 	groups = pocha
 	license = MIT
-	source = https://github.com/ICanOnlySuffer/ptree/archive/refs/tags/v1.2.1.tar.gz
+	makedepends = nasm
+	source = https://github.com/ICanOnlySuffer/ptree/archive/refs/tags/v1.2.2.tar.gz
 	sha256sums = SKIP
 
 pkgname = ptree
