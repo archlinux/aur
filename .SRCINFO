@@ -1,0 +1,24 @@
+pkgbase = python-papermill
+	pkgdesc = Parametrize and run Jupyter and nteract Notebooks
+	pkgver = 2.3.4
+	pkgrel = 1
+	url = https://pypi.org/project/papermill
+	arch = any
+	license = BSD
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-ansiwrap
+	depends = python-click
+	depends = python-pyyaml
+	depends = jupyter-nbformat
+	depends = jupyter-nbclient
+	depends = python-tqdm
+	depends = python-requests
+	depends = python-entrypoints
+	depends = python-tenacity
+	source = https://files.pythonhosted.org/packages/source/p/papermill/papermill-2.3.4.tar.gz
+	sha256sums = be12d2728989c0ae17b42fcb05b623500004e94b34f56bd153355ccebb84a59a
+
+pkgname = python-papermill
