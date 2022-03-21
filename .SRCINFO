@@ -1,14 +1,17 @@
 pkgbase = python-gimmik
 	pkgdesc = Generator of Matrix Multiplication Kernels
-	pkgver = 2.2
+	pkgver = 2.3
 	pkgrel = 1
 	url = https://github.com/pyfr/gimmik
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-numpy
 	depends = python-mako
-	source = python-gimmik-2.2.tar.gz::https://github.com/pyfr/gimmik/archive/v2.2.tar.gz
-	sha256sums = d5363667cd204c5a72eaa9c999a0465f0b84cde446e07d83b168a3496ae567dc
+	source = python-gimmik-2.3.tar.gz::https://files.pythonhosted.org/packages/source/g/gimmik/gimmik-2.3.tar.gz
+	sha256sums = c019c85316bcf0d5e84de9b7d10127355dfe8037c0e37f1880a9819ce92b74e1
 
 pkgname = python-gimmik
