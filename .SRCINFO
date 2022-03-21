@@ -1,0 +1,14 @@
+pkgbase = sugarjazy
+	pkgdesc = Parse json logs nicely
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/chmouel/sugarjazy
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	depends = python-gobject
+	depends = evolution-data-server
+	source = https://github.com/chmouel/sugarjazy/releases/download/0.2.1/sugarjazy-0.2.1.tar.gz
+	sha256sums = acbb10331222ae12d4633494a0f303acf1a5b65db1ad95ba289148c048ea1758
+
+pkgname = sugarjazy
