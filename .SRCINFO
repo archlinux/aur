@@ -1,0 +1,17 @@
+pkgbase = medit3d-git
+	pkgdesc = OpenGL-based scientific visualization software
+	pkgver = r10.883f5e0
+	pkgrel = 1
+	url = git clone https://github.com/ISCDtoolbox/Medit.git
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = cmake
+	depends = freeglut
+	provides = medit
+	source = git+https://github.com/ISCDtoolbox/Medit.git#branch=master
+	source = glut_libraries.patch
+	sha256sums = SKIP
+	sha256sums = cb040eca18a6c8e58104350a8252f0c5bb7a36efca158168f51c64f027953963
+
+pkgname = medit3d-git

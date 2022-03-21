@@ -1,0 +1,39 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a0cb9c4..72ca07a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,11 +6,8 @@ set(CMAKE_C_FLAGS   "-w -O3")
+ add_definitions("-w")
+ set(CMAKE_MACOSX_RPATH 1)
+ set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+-set(CMAKE_INSTALL_RPATH "$ENV{HOME}/lib")
+-set(CMAKE_INSTALL_NAME_DIR "$ENV{HOME}/lib")
+-#INCLUDE_DIRECTORIES(  "$ENV{HOME}/include")
+-#LINK_DIRECTORIES(     "$ENV{HOME}/lib")
+-#SET(CMAKE_SKIP_BUILD_RPATH  TRUE)
++set(CMAKE_INSTALL_RPATH "/usr/lib")
++set(CMAKE_INSTALL_NAME_DIR "/usr/lib")
+ 
+ 
+ 
+@@ -77,11 +74,11 @@ elseif(UNIX)
+ 	if(NOT OPENGL_FOUND)
+ 		message(ERROR " OPENGL not found!")
+ 	endif(NOT OPENGL_FOUND)
+-	set(GL_LIBS ${OPENGL_LIBRARIES} ${GLUT_LIBRARY} )
++	set(GL_LIBS ${OPENGL_LIBRARIES} ${GLUT_LIBRARIES} )
+ 
+ 	target_link_libraries( Medit3D ${GL_LIBS})
+-	INSTALL(               TARGETS Medit3D LIBRARY  DESTINATION "$ENV{HOME}/lib")
+-	INSTALL(               FILES ${hea} DESTINATION "$ENV{HOME}/include")
++	INSTALL(               TARGETS Medit3D LIBRARY  DESTINATION "/usr/lib")
++	INSTALL(               FILES ${hea} DESTINATION "/usr/include/medit3d")
+ 
+ ENDIF()
+ 
+@@ -91,4 +88,4 @@ target_link_libraries( Medit3D ${GL_LIBS})
+ project(medit)
+ add_executable(        medit src/medit.c)
+ target_link_libraries( medit Medit3D)# ${GL_LIBS})
+-INSTALL(               TARGETS medit RUNTIME DESTINATION "$ENV{HOME}/bin")
++INSTALL(               TARGETS medit RUNTIME DESTINATION "/usr/bin")
