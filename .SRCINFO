@@ -1,0 +1,17 @@
+pkgbase = python-fundamentalanalysis
+	pkgdesc = Fully-fledged Fundamental Analysis package
+	pkgver = 0.2.12
+	pkgrel = 1
+	url = https://pypi.org/project/FundamentalAnalysis
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	depends = python-pandas
+	source = https://files.pythonhosted.org/packages/source/F/FundamentalAnalysis/FundamentalAnalysis-0.2.12.tar.gz
+	sha256sums = 360576a7e75cc576860a0de086cdd33522433932b90326830945b27c519051d3
+
+pkgname = python-fundamentalanalysis
