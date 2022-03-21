@@ -2,13 +2,13 @@
 
 pkgname=misskey
 pkgver=12.108.1
-pkgrel=1
+pkgrel=2
 pkgdesc="🌎 An interplanetary microblogging platform 🚀 (Experimental)"
 url="https://github.com/misskey-dev/misskey"
 options=("!strip")
 arch=("x86_64")
 license=("AGPL3" "MIT")
-depends=("nodejs-lts-gallium>=16.14.0" "npm" "postgresql" "redis" "yarn")
+depends=("nodejs-lts-gallium" "npm" "postgresql" "redis" "yarn")
 makedepends=("git" "python")
 install="misskey.install"
 optdepends=("elasticsearch: search functionality"
@@ -49,8 +49,7 @@ prepare() {
     _example_file="${srcdir}/${pkgname}/.config/example.yml"
     
     sed -i \
-        's|https://example.tld/|https://wiki.archlinux.org/title/Misskey|;
-        s|example-misskey-user|misskey|;
+        's|example-misskey-user|misskey|;
         s|  pass: example-misskey-pass|# pass: misskey|;
         s|#outgoingAddressFamily: ipv4|outgoingAddressFamily: dual|' \
         ${_example_file}
