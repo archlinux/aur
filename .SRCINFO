@@ -4,6 +4,7 @@ pkgbase = lua-format-git
 	pkgrel = 2
 	url = https://github.com/Koihik/LuaFormatter
 	arch = x86_64
+	arch = aarch64
 	license = Apache2
 	makedepends = git
 	makedepends = cmake
@@ -15,4 +16,3 @@ pkgbase = lua-format-git
 	sha512sums = SKIP
 
 pkgname = lua-format-git
-
