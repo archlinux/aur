@@ -2,6 +2,88 @@
 
 ## 接口更新说明
 
+1.4.84 fix: fix fund_portfolio_change_em interface
+
+    1. 修复 fund_portfolio_change_em 接口，新增 indicator 字段
+
+1.4.83 add: add stock_us_code_table_fu interface
+
+    1. 新增 stock_us_code_table_fu 接口，获取股票代码
+
+1.4.82 fix: fix stock_a_code_to_symbol interface
+
+    1. 修复 stock_a_code_to_symbol 接口，支持北交所股票
+
+1.4.81 add: add fund_portfolio_change_em interface
+
+    1. 新增 fund_portfolio_change_em 接口，获取天天基金网-基金档案-投资组合-重大变动数据
+
+1.4.80 add: add stock_board_concept_hist_min_em interface
+
+    1. 新增 stock_board_concept_hist_min_em 接口，获取东方财富-沪深板块-概念板块-分时历史行情数据
+
+1.4.79 add: add stock_board_industry_hist_min_em interface
+
+    1. 新增 stock_board_industry_hist_min_em 接口，获取东方财富-沪深板块-行业板块-分时历史行情数据
+
+1.4.78 add: add remove matplotlib module and support cache
+
+    1. 移除 matplotlib 模块，让 AKShare 更专注于数据采集
+    2. 新增缓存，对于速度较慢的接口逐步增加缓存支持
+    3. 移除所有接口中的绘图功能
+    4. 修复 google_index 接口
+    5. 移除 西本新干线 接口
+    6. 在 utils 模块中新增 ak_session 以支持缓存
+    7. 添加 requests-cache 作为依赖库
+
+1.4.77 fix: fix stock_hk_ggt_components_em interface
+
+    1. 修复 stock_hsgt_em 文件中的所有 pandas.DataFrame 的 append 方法为 concat
+
+1.4.76 add: add stock_lhb_stock_statistic_em interface
+
+    1. 新增 stock_lhb_stock_statistic_em 接口，获取个股上榜统计数据
+
+1.4.75 fix: fix stock_lhb_stock_detail_em interface
+
+    1. 修复 stock_lhb_stock_detail_em 接口，处理有多种排行标准的数据
+
+1.4.74 fix: fix stock_lhb_stock_detail_em interface
+
+    1. 修复 stock_lhb_stock_detail_em 接口返回数据与目标网站统一
+
+1.4.73 add: add stock_lhb_jgmmtj_em interface
+
+    1. 新增 stock_lhb_jgmmtj_em 接口，该接口获取机构买卖每日统计数据
+
+1.4.72 add: add stock_lhb_stock_statistic_em interface
+
+    1. 新增 stock_lhb_stock_statistic_em 接口，该接口获取股票龙虎榜统计详情
+
+1.4.71 add: add stock_lhb_stock_detail_em interface
+
+    1. 新增 stock_lhb_stock_detail_em 接口，该接口获取龙虎榜个股详情数据
+
+1.4.70 add: add stock_lhb_detail_em interface
+
+    1. 新增 stock_lhb_detail_em 接口获取东方财富-股票数据-龙虎榜详情
+
+1.4.69 fix: fix crypto_js_spot interface
+
+    1. 修复 crypto_js_spot 接口，规范字段名称及返回数据的格式
+
+1.4.68 fix: fix crypto_hist interface
+
+    1. 修复 crypto_hist 接口，修改其中返回数据类型
+
+1.4.67 fix: fix crypto_name_url_table interface
+
+    1. 修复 crypto_name_url_table 获取可以获得历史数据的货币名称
+
+1.4.66 fix: fix stock_em_gpzy_profile interface
+
+    1. 修复 stock_em_gpzy_profile 接口并设定返回数据的数据类型
+
 1.4.65 fix: fix spot_hist_sge interface
 
     1. 修复 spot_hist_sge 接口的数据输出格式
@@ -99,6 +181,44 @@
     3. 修改 air_quality_hist 接口的请求日期格式，从 '2022-01-01' 为 '20220101'
 
 ## 版本更新说明
+
+1.4.84 fix: fix fund_portfolio_change_em interface
+
+1.4.83 add: add stock_us_code_table_fu interface
+
+1.4.82 fix: fix stock_a_code_to_symbol interface
+
+1.4.81 add: add fund_portfolio_change_em interface
+
+1.4.80 add: add stock_board_concept_hist_min_em interface
+
+1.4.79 add: add stock_board_industry_hist_min_em interface
+
+1.4.78 add: add remove matplotlib module and support cache
+
+1.4.77 fix: fix stock_hk_ggt_components_em interface
+
+1.4.76 add: add stock_lhb_stock_statistic_em interface
+
+1.4.75 fix: fix stock_lhb_stock_detail_em interface
+
+1.4.74 fix: fix stock_lhb_stock_detail_em interface
+
+1.4.73 add: add stock_lhb_jgmmtj_em interface
+
+1.4.72 add: add stock_lhb_stock_statistic_em interface
+
+1.4.71 add: add stock_lhb_stock_detail_em interface
+
+1.4.70 add: add stock_lhb_detail_em interface
+
+1.4.69 fix: fix crypto_js_spot interface
+
+1.4.68 fix: fix crypto_hist interface
+
+1.4.67 fix: fix crypto_name_url_table interface
+
+1.4.66 fix: fix stock_em_gpzy_profile interface
 
 1.4.65 fix: fix spot_hist_sge interface
 
