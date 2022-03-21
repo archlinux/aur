@@ -2,21 +2,21 @@
 
 pkgname=libuser
 pkgver=0.63
-pkgrel=2
+pkgrel=3
 pkgdesc='A standardized interface for manipulating and administering user and group accounts.'
 arch=('x86_64')
 license=('LGPL')
 url='https://pagure.io/libuser/'
 depends=('glib2' 'pam' 'popt' 'python')
-makedepends=('autoconf' 'automake' 'gettext' 'libtool')
+makedepends=('autoconf' 'automake' 'gettext' 'gtk-doc' 'libtool')
 backup=('etc/libuser.conf')
 source=("https://releases.pagure.org/libuser/libuser-${pkgver}.tar.xz")
 sha256sums=('8dc377255452a68e82c4837ba22c3ee4ae3658971bf0f2ef67ed0b77fc497f91')
 
 prepare() {
   cd ${pkgname}-${pkgver}
-  # skip gtk docs
-  sed -i 's/gtkdocize/# gtkdocize/' autogen.sh
+  # TODO: we should skip gtk docs but it's not obvious how it should be done
+  #sed -i 's/gtkdocize/# gtkdocize/' autogen.sh
 }
 
 build() {

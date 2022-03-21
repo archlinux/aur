@@ -1,13 +1,14 @@
 pkgbase = libuser
 	pkgdesc = A standardized interface for manipulating and administering user and group accounts.
 	pkgver = 0.63
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pagure.io/libuser/
 	arch = x86_64
 	license = LGPL
 	makedepends = autoconf
 	makedepends = automake
 	makedepends = gettext
+	makedepends = gtk-doc
 	makedepends = libtool
 	depends = glib2
 	depends = pam
