@@ -1,0 +1,15 @@
+pkgbase = python-hijri-converter
+	pkgdesc = Accurate Hijri-Gregorian dates converter based on the Umm al-Qura calendar
+	pkgver = 2.2.3
+	pkgrel = 1
+	url = https://pypi.org/project/hijri-converter
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/h/hijri-converter/hijri-converter-2.2.3.tar.gz
+	sha256sums = e7149cececca647bf40689ec89bf593c7252b31d699ea587ad0bce91ba42d382
+
+pkgname = python-hijri-converter
