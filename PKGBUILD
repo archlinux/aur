@@ -11,7 +11,7 @@ pkgver=r335.452ae0f
 pkgrel=1
 pkgdesc="Dovecot FTS Flatcurve plugin (Xapian)"
 arch=('x86_64')
-url="https://github.com/slusarz/fts-flatcurve"
+url="https://github.com/slusarz/dovecot-fts-flatcurve"
 license=('LGPL2.1')
 depends=("dovecot=${_dcpkgver}" 'icu' 'xapian-core')
 install="$pkgname.install"
