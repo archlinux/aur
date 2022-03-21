@@ -1,6 +1,6 @@
 pkgbase = google-cloud-sdk-app-engine-java
 	pkgdesc = A google-cloud-sdk component that provides the Java runtime for AppEngine.
-	pkgver = 376.0.0
+	pkgver = 377.0.0
 	pkgrel = 1
 	url = https://cloud.google.com/sdk/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = google-cloud-sdk-app-engine-java
 	depends = google-cloud-sdk
 	depends = java-environment
 	options = !strip
-	source = https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/google-cloud-sdk-app-engine-java_376.0.0.orig.tar.gz
-	sha256sums = de785468b607736ffdc67bb55cd0c455e451005f62cc70f26126d706435a475d
+	source = https://dl.google.com/dl/cloudsdk/release/downloads/for_packagers/linux/google-cloud-sdk-app-engine-java_377.0.0.orig.tar.gz
+	sha256sums = 2024b3d5de119fe8b063bc03fe3dd2b6a1a38174af1a48fdede3b4c7f15e7134
 
 pkgname = google-cloud-sdk-app-engine-java
