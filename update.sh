@@ -25,7 +25,7 @@ else
     cd "${SELF_DIR}"
     makepkg -sf
     echo "Success."
-    echo -n "Refresh .SRCINFO"
+    echo -n "Refresh .SRCINFO... "
     makepkg --printsrcinfo >.SRCINFO
     echo "Done"
     echo -n "Add git commit... "
