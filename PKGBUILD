@@ -3,28 +3,28 @@
 # Contributor: Jorge Barroso <jorge.barroso.11 at gmail dot com>
 # Contributor: x-demon
 pkgname=nicotine-plus-git
-pkgver=3.2.1rc2.r6879.a5e1e62d
-pkgrel=2
+pkgver=3.3.0.dev1.r7195.6af10d29
+pkgrel=1
 pkgdesc="A graphical client for the SoulSeek peer-to-peer system"
 arch=('any')
-url="https://nicotine-plus.github.io/nicotine-plus"
+url="https://nicotine-plus.org"
 license=('GPL3')
 depends=('python-gobject' 'gtk3')
-makedepends=('appstream' 'git' 'python-setuptools')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('gspell: for spell checking in chat'
             'libappindicator-gtk3: option for tray icon'
             'libayatana-appindicator: option for tray icon'
             'gtk4: test the GTK4 version'
-            'libadwaita: test the GTK4 version')
+            'libadwaita: test the Libadwaita version')
 checkdepends=('appstream-glib' 'desktop-file-utils' 'python-pytest-xvfb')
 provides=("${pkgname%-git}" 'nicotine+' 'nicotine')
 conflicts=("${pkgname%-git}" 'nicotine+' 'nicotine')
 source=('git+https://github.com/Nicotine-Plus/nicotine-plus.git'
         'org.nicotine_plus.Nicotine-gtk4.desktop'
-        'org.nicotine_plus.Nicotine-gtk4-libadwaita.desktop')
+        'org.nicotine_plus.Nicotine-libadwaita.desktop')
 sha256sums=('SKIP'
             'e92495dfede12d88797fe0bcaa03517399da6e0f8411b567005f65cb571aa97f'
-            '7d2c37f0c5e3572948a187c358e4011b9292a8d3f2d9b685c30bfc86aa098ccc')
+            'ae4f84de9070ad57f43d6a801f20fce164560f0ecb88056e917aed41c4c967a8')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
@@ -34,7 +34,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -57,8 +57,8 @@ check() {
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
-  install -Dm644 "$srcdir"/org.nicotine_plus.Nicotine{-gtk4.desktop,-gtk4-libadwaita.desktop} -t \
+  install -Dm644 "$srcdir"/org.nicotine_plus.Nicotine{-gtk4.desktop,-libadwaita.desktop} -t \
     "$pkgdir/usr/share/applications/"
 }
