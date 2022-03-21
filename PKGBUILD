@@ -1,7 +1,7 @@
 # Maintainer: Frederic Bezies < fredbezies at gmail dot com > 
 # Contributor: Tom < reztho at archlinux dot us >
 pkgname=mate-tweak-git 
-pkgver=22.04.1.r1.gb033d3a
+pkgver=22.04.4.r0.gaca7729
 pkgrel=1
 pkgdesc="MATE desktop tweak tool"
 arch=('any')

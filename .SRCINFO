@@ -1,6 +1,6 @@
 pkgbase = mate-tweak-git
 	pkgdesc = MATE desktop tweak tool
-	pkgver = 22.04.1.r1.gb033d3a
+	pkgver = 22.04.4.r0.gaca7729
 	pkgrel = 1
 	url = https://github.com/ubuntu-mate/mate-tweak
 	arch = any
