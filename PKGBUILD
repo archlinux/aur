@@ -2,7 +2,7 @@
 
 pkgname=alertmanager-bot
 pkgver=0.4.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Telegram Bot for Prometheus' Alertmanager"
 arch=('x86_64')
 url="https://github.com/metalmatze/alertmanager-bot"
@@ -33,7 +33,7 @@ prepare() {
     go get -t "$pkg"
   done
 
-  echo "TEMPLATE_PATHS=/etc/alertmanager/alertmanager-bot.tmpl" >> .env.example
+  echo "TEMPLATE_PATHS=/etc/alertmanager-bot/default.tmpl" >> .env.example
 }
 
 build() {
@@ -63,7 +63,7 @@ package() {
 
   # example config & template
   install -Dm600 "$pkgname-$pkgver/.env.example" "$pkgdir/etc/conf.d/alertmanager-bot"
-  install -Dm644 "$pkgname-$pkgver/default.tmpl" "$pkgdir/etc/alertmanager/alertmanager-bot.tmpl"
+  install -Dm644 "$pkgname-$pkgver/default.tmpl" "$pkgdir/etc/alertmanager-bot/default.tmpl"
 
   # binary
   install -Dm755 "$pkgname-$pkgver/build/$pkgname" "$pkgdir/usr/bin/$pkgname"
