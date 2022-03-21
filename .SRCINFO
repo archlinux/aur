@@ -1,0 +1,15 @@
+pkgbase = python-detecta
+	pkgdesc = Detect events in data
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://pypi.org/project/detecta
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/d/detecta/detecta-0.0.5.tar.gz
+	sha256sums = d2ea7d13dfbbc994d6ce385a7f8dc0a85fe675a8a8e712a64ec56e54c40603ed
+
+pkgname = python-detecta
