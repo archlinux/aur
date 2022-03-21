@@ -1,34 +1,12 @@
-diff --git a/build_scripts/config.py b/build_scripts/config.py
-index b1b32068d..00cbd3fc9 100644
---- a/build_scripts/config.py
-+++ b/build_scripts/config.py
-@@ -93,6 +93,7 @@ class Config(object):
-             'Programming Language :: Python :: 3.7',
-             'Programming Language :: Python :: 3.8',
-             'Programming Language :: Python :: 3.9',
-+            'Programming Language :: Python :: 3.10',
-         ]
- 
-         self.setup_script_dir = None
-@@ -135,7 +136,7 @@ class Config(object):
-         setup_kwargs['zip_safe'] = False
-         setup_kwargs['cmdclass'] = cmd_class_dict
-         setup_kwargs['version'] = package_version
--        setup_kwargs['python_requires'] = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <3.10"
-+        setup_kwargs['python_requires'] = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <3.11"
- 
-         if quiet:
-             # Tells distutils / setuptools to be quiet, and only print warnings or errors.
-diff --git a/build_scripts/wheel_override.py b/build_scripts/wheel_override.py
-index 66141763b..3f3c12a2e 100644
---- a/build_scripts/wheel_override.py
-+++ b/build_scripts/wheel_override.py
-@@ -90,7 +90,7 @@ class PysideBuildWheel(_bdist_wheel, DistUtilsCommandMixin):
-         limited_api_enabled = (OPTION["LIMITED_API"] == 'yes'
-                                and sys.version_info[0] >= 3)
-         if limited_api_enabled:
--            self.py_limited_api = "cp35.cp36.cp37.cp38.cp39"
-+            self.py_limited_api = "cp35.cp36.cp37.cp38.cp39.cp310"
- 
-         self._package_version = get_package_version()
- 
+diff -upr pyside-setup-opensource-src-5.15.2.orig/sources/shiboken2/libshiboken/pep384impl.cpp pyside-setup-opensource-src-5.15.2/sources/shiboken2/libshiboken/pep384impl.cpp
+--- pyside-setup-opensource-src-5.15.2.orig/sources/shiboken2/libshiboken/pep384impl.cpp	2020-11-11 14:51:30.000000000 +0200
++++ pyside-setup-opensource-src-5.15.2/sources/shiboken2/libshiboken/pep384impl.cpp	2021-12-01 15:17:21.444888977 +0200
+@@ -751,7 +751,7 @@ _Pep_PrivateMangle(PyObject *self, PyObj
+ #endif // IS_PY2
+     Shiboken::AutoDecRef privateobj(PyObject_GetAttr(
+         reinterpret_cast<PyObject *>(Py_TYPE(self)), Shiboken::PyMagicName::name()));
+-#ifndef Py_LIMITED_API
++#if 0
+     return _Py_Mangle(privateobj, name);
+ #else
+     // PYSIDE-1436: _Py_Mangle is no longer exposed; implement it always.

@@ -1,19 +1,19 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 # Maintainer: Felix Yan <felixonmars@archlinux.org>
 
-pkgname=pyside2
+pkgbase=pyside2
+pkgname=(shiboken2 python-shiboken2 pyside2 pyside2-tools)
 _qtver=5.15.3
+_clangver=13.0.1
 pkgver=${_qtver/-/}
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='https://www.qt.io'
 license=(LGPL)
-pkgdesc='Enables the use of Qt5 APIs in Python applications'
-depends=(python-shiboken2 qt5-declarative)
-makedepends=(shiboken2 cmake python-setuptools
+makedepends=(cmake python-setuptools llvm clang=$_clangver
              qt5-multimedia qt5-tools qt5-sensors qt5-charts qt5-webengine qt5-datavis3d
              qt5-websockets qt5-speech qt5-3d qt5-svg qt5-script qt5-scxml qt5-x11extras
-             qt5-quickcontrols2 qt5-serialport qt5-remoteobjects)
+             qt5-quickcontrols2 qt5-serialport qt5-remoteobjects qt5-xmlpatterns)
 optdepends=('qt5-svg: QtSvg bindings'
             'qt5-script: QtScript bindings'
             'qt5-speech: QtTextToSpeech bindings'
@@ -29,34 +29,82 @@ optdepends=('qt5-svg: QtSvg bindings'
             'qt5-remoteobjects: QtRemoteObjects bindings'
             'qt5-serialport: QtSerialPort bindings'
             'qt5-quickcontrols2: QtQuickControls2 bindings')
-groups=(qt qt5)
-conflicts=(python-pyside2)
-provides=(python-pyside2 qt5-python-bindings)
-replaces=(python-pyside2)
 _pkgfqn=pyside-setup-opensource-src-$_qtver
 source=(https://download.qt.io/official_releases/QtForPython/pyside2/PySide2-$pkgver-src/${_pkgfqn}.tar.xz
         python310.patch)
-sha256sums=('69481d137d80ed42461cbdb06cee06477f0a8cbe235d61b56472a66ed7982093'
-            '4c23df7c69e3c258261b8648ca3ce0eb054282b9da4dd79f707d97772aa4b459')
+sha256sums=('7ff5f1cc4291fffb6d5a3098b3090abe4d415da2adec740b4e901893d95d7137'
+            'dcda195170a2ada52d7914be8535926e9deea7bdcd006a4ea37b1b82dbe5cae4')
 
 prepare() {
   patch -d $_pkgfqn -p1 -i ../python310.patch # Fix build with Python 3.10
 }
 
 build() {
-  cmake -B build -S $_pkgfqn/sources/pyside2 \
+  cmake -B build -S $_pkgfqn \
     -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=None \
     -DBUILD_TESTS=OFF \
     -DPYTHON_EXECUTABLE=/usr/bin/python
   cmake --build build
 }
 
-package() {
-  DESTDIR="$pkgdir" cmake --install build
+package_shiboken2() {
+  pkgdesc='Generates bindings for C++ libraries using CPython source code'
+  depends=(clang=$_clangver llvm libxslt qt5-xmlpatterns)
 
+  DESTDIR="$pkgdir" cmake --install build/sources/shiboken2
+# Provided in python-shiboken2
+  rm -r "$pkgdir"/usr/lib/{python*,libshiboken*}
+# Conflicts with shiboken6 and doesn't work anyway
+  rm "$pkgdir"/usr/bin/shiboken_tool.py
+}
+
+package_python-shiboken2() {
+  pkgdesc='Python bindings for shiboken2'
+  depends=(python)
+
+  DESTDIR="$pkgdir" cmake --install build/sources/shiboken2
+# Provided in shiboken2
+  rm -r "$pkgdir"/usr/{bin,include,lib/{cmake,pkgconfig}}
+
+# Install egg-info
+  cd $_pkgfqn
+  python setup.py egg_info --build-type=shiboken2
+  _pythonpath=`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
+  cp -r shiboken2.egg-info "$pkgdir"/$_pythonpath
+}
+
+package_pyside2() {
+  pkgdesc='Enables the use of Qt5 APIs in Python applications'
+  depends=(python-shiboken2 qt5-declarative)
+  optdepends=('qt5-svg: QtSvg bindings'
+              'qt5-script: QtScript bindings'
+              'qt5-speech: QtTextToSpeech bindings'
+              'qt5-websockets: QtWebSockets bindings'
+              'qt5-webengine: QtWebEngine bindings'
+              'qt5-datavis3d: QtDataVisualization bindings'
+              'qt5-scxml: QtScxml bindings'
+              'qt5-sensors: QtSensors bindings'
+              'qt5-3d: Qt3D bindings'
+              'qt5-x11extras: QtX11Extras bindings'
+              'qt5-charts: QtCharts bindings'
+              'qt5-tools: QtHelp bindings'
+              'qt5-remoteobjects: QtRemoteObjects bindings'
+              'qt5-serialport: QtSerialPort bindings'
+              'qt5-quickcontrols2: QtQuickControls2 bindings')
+
+  DESTDIR="$pkgdir" cmake --install build/sources/pyside2
 # Install egg-info
   cd $_pkgfqn
   python setup.py egg_info --build-type=pyside2
   _pythonpath=`python -c "from sysconfig import get_path; print(get_path('platlib'))"`
   cp -r PySide2.egg-info "$pkgdir"/$_pythonpath
+}
+
+package_pyside2-tools() {
+  pkgdesc='Tools for PySide2'
+  depends=(pyside2)
+
+  DESTDIR="$pkgdir" cmake --install build/sources/pyside2-tools
+  rm "$pkgdir"/usr/bin/{rcc,uic,designer} # provided by qt5-base
 }
