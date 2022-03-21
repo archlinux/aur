@@ -2,7 +2,7 @@
 # Contributor: Jakub Luzny <limoto94@gmail.com>
 
 pkgname=x86info-git
-pkgver=0.r941.g9501749
+pkgver=0.r954.g061ea35
 pkgrel=1
 pkgdesc='A CPU identification utility. Provides more info than /proc/cpuinfo - git checkout'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ install=x86info.install
 makedepends=('git')
 provides=('x86info')
 conflicts=('x86info')
-source=('git://github.com/kernelslacker/x86info.git')
+source=('git+https://github.com/kernelslacker/x86info.git')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -23,11 +23,11 @@ pkgver() {
 		printf '%s.r%s.g%s' \
 			"$(sed -e "s/^${pkgname%%-git}//" -e 's/^[-_/a-zA-Z]\+//' -e 's/[-_+]/./g' <<< ${GITTAG})" \
 			"$(git rev-list --count ${GITTAG}..)" \
-			"$(git log -1 --format='%h')"
+			"$(git rev-parse --short HEAD)"
 	else
 		printf '0.r%s.g%s' \
 			"$(git rev-list --count master)" \
-			"$(git log -1 --format='%h')"
+			"$(git rev-parse --short HEAD)"
 	fi
 }
 
