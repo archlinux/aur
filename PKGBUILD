@@ -6,7 +6,7 @@
 
 _pkgname=wireplumber
 pkgname="${_pkgname}-git"
-pkgver=0.4.5.r46.ge04acbd
+pkgver=0.4.8.r33.gf46a801
 pkgrel=1
 pkgdesc="Session / policy manager implementation for PipeWire"
 arch=('x86_64')

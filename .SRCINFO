@@ -1,6 +1,6 @@
 pkgbase = wireplumber-git
 	pkgdesc = Session / policy manager implementation for PipeWire
-	pkgver = 0.4.5.r46.ge04acbd
+	pkgver = 0.4.8.r33.gf46a801
 	pkgrel = 1
 	url = https://gitlab.freedesktop.org/pipewire/wireplumber
 	install = wireplumber.install
@@ -31,7 +31,7 @@ pkgbase = wireplumber-git
 	depends = libgmodule-2.0.so
 	depends = libgobject-2.0.so
 	depends = libpipewire-0.3.so
-	provides = wireplumber=0.4.5.r46.ge04acbd
+	provides = wireplumber=0.4.8.r33.gf46a801
 	provides = libwireplumber-0.4.so
 	provides = pipewire-session-manager
 	conflicts = wireplumber
