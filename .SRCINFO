@@ -17,5 +17,4 @@ pkgbase = omada-controller
 	sha256sums = f16bcae7bc8b339d9b9bd706dad5cf78319869accf113927aaef6245b509a5b5
 	sha256sums = SKIP
 
-
 pkgname = omada-controller
