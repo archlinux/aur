@@ -3,8 +3,8 @@
 # Contributor: Florian Wittmann
 
 pkgname=python-dataproperty
-pkgver=0.54.2
-pkgrel=4
+pkgver=0.55.0
+pkgrel=1
 pkgdesc='Extract properties from data'
 arch=('any')
 url='https://github.com/thombashi/DataProperty'
@@ -24,7 +24,7 @@ checkdepends=(
   'python-pytz')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/D/DataProperty/DataProperty-$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/D/DataProperty/DataProperty-$pkgver.tar.gz.asc")
-sha256sums=('df2fcf00e7a57f0a6089f686f847527eb3c91ded5c419daef6d06ee4bb1187b4'
+sha256sums=('73ccf10f8b123968210438a1a1aa859ea6d5a16b4e1f4d307da7a81b838e79fa'
             'SKIP')
 validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367')
 
@@ -44,7 +44,12 @@ package() {
   cd "DataProperty-$pkgver"
   python -m installer --destdir="$pkgdir/" dist/*.whl
   install -Dm644 "$pkgname.7" -t "$pkgdir/usr/share/man/man7/"
-  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+
+  local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  ln -s \
+    "$_site/DataProperty-$pkgver.dist-info/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 # vim: ts=2 sw=2 et:
