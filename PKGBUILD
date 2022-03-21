@@ -16,7 +16,7 @@ makedepends=('git')
 conflicts=('omada-sdn-controller')
 source=(
     "https://static.tp-link.com/${_basepkgpath}/${_basepkgname}.tar.gz"
-    "git+http://github.com/murtuzaakhtari/omada-sdn-controller-scripts.git"
+    "git+http://github.com/murtuzaakhtari/omada-controller-scripts.git"
 )
 sha256sums=('f16bcae7bc8b339d9b9bd706dad5cf78319869accf113927aaef6245b509a5b5'
             'SKIP')
@@ -26,7 +26,7 @@ package() {
     cd ${_basepkgname}
 
     # Install required source files.
-    local BASEDIR="${pkgdir}/opt/omada-sdn-controller"
+    local BASEDIR="${pkgdir}/opt/omada-controller"
     install -dm 755 "${BASEDIR}"
 
     # Install JAR libraries.
