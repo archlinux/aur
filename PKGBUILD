@@ -3,15 +3,16 @@
 pkgname=prometheus-snmp-exporter
 _pkgname=snmp_exporter
 pkgver=0.20.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Prometheus exporter for SNMP metrics"
-arch=(x86_64)
+arch=('x86_64')
 url="https://github.com/prometheus/snmp_exporter"
-license=(Apache)
-makedepends=(go)
-depends=(net-snmp glibc)
+license=('Apache')
+makedepends=('go')
+depends=('glibc' 'net-snmp')
 backup=("etc/conf.d/prometheus-snmp-exporter")
 install="$pkgname.install"
+options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.conf"
         "$pkgname.service"
@@ -23,7 +24,9 @@ b2sums=('81c2c6e8b1f61fe322cf040910744857f0628b61172774069675f5702d7e8dcc443a556
 
 prepare() {
   cd "$_pkgname-$pkgver"
-  go mod vendor
+
+  # download dependencies
+  go mod download
 }
 
 build() {
@@ -32,7 +35,7 @@ build() {
   go build -v \
     -buildmode=pie \
     -trimpath \
-    -mod=vendor \
+    -mod=readonly \
     -modcacherw \
     -ldflags "-linkmode external -extldflags ${LDFLAGS} \
     -X github.com/prometheus/common/version.Version=$pkgver \
