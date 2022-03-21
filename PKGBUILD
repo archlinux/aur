@@ -1,20 +1,20 @@
-# $Id$
-# Maintainer: piernov <piernov@piernov.org>
+# Maintainer: cyqsimon <28627918+cyqsimon@users.noreply.github.com>
 
 pkgname=libuser-ldap
-pkgver=0.62
+pkgver=0.63
 pkgrel=1
 pkgdesc='LDAP module for libuser'
 arch=('i686' 'x86_64')
 license=('LGPL')
 url='https://pagure.io/libuser/'
 depends=('libuser' 'libldap')
+makedepends=('autoconf' 'automake' 'gettext' 'gtk-doc' 'libtool')
 source=("https://releases.pagure.org/libuser/libuser-${pkgver}.tar.xz")
-sha256sums=('a58ff4fabb01a25043b142185a33eeea961109dd60d4b40b6a9df4fa3cace20b')
+sha256sums=('8dc377255452a68e82c4837ba22c3ee4ae3658971bf0f2ef67ed0b77fc497f91')
 
 build() {
   cd libuser-${pkgver}
-  export PYTHON=python2
+  ./autogen.sh
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc \
