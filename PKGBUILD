@@ -62,7 +62,7 @@ package() {
   install -Dm644 systemd.service "$pkgdir/usr/lib/systemd/system/$pkgname.service"
 
   # example config & template
-  install -Dm644 "$pkgname-$pkgver/.env.example" "$pkgdir/etc/conf.d/alertmanager-bot"
+  install -Dm600 "$pkgname-$pkgver/.env.example" "$pkgdir/etc/conf.d/alertmanager-bot"
   install -Dm644 "$pkgname-$pkgver/default.tmpl" "$pkgdir/etc/alertmanager/alertmanager-bot.tmpl"
 
   # binary
