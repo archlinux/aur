@@ -2,6 +2,7 @@ pkgbase = frawk
 	pkgdesc = frawk is a small programming language for writing short programs processing textual data. To a first approximation, it is an implementation of the AWK language; many common Awk programs produce equivalent output when passed to frawk.
 	pkgver = 0.4.5
 	pkgrel = 1
+	url = https://github.com/ezrosent/frawk
 	arch = any
 	license = MIT
 	license = Apache
