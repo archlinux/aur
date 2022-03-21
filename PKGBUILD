@@ -2,7 +2,7 @@
 
 pkgname="python-ftx-git"
 pkgver=0.0.3.r11.g9004e27
-pkgrel=1
+pkgrel=2
 pkgdesc="Unofficial Python wrapper for FTX API"
 arch=('any')
 url="https://github.com/wanth1997/${pkgname%-git}"
