@@ -1,6 +1,6 @@
 # Maintainer: muttleyxd <mateusz[ at ]szychowski.it>
 pkgname=trompeloeil-git
-pkgver=1020.8b2d213
+pkgver=1228.6b27428
 pkgrel=1
 pkgdesc="Header only C++14 mocking framework"
 arch=('i686' 'x86_64')
@@ -10,13 +10,13 @@ makedepends=('cmake' 'make')
 optdepends=('boost' 'catch2' 'criterion' 'cxxtest' 'doctest' 'gtest')
 provides=('trompeloeil')
 conflicts=('trompeloeil')
-source=("$pkgname::git://github.com/rollbear/trompeloeil")
+source=("$pkgname::git+https://github.com/rollbear/trompeloeil")
 md5sums=('SKIP')
 
 pkgver() 
 {
   cd "$srcdir/$pkgname"
-  echo $(git rev-list --count master).$(git rev-parse --short master)
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() 
