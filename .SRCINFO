@@ -1,0 +1,16 @@
+pkgbase = python-nspektr
+	pkgdesc = package inspector
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://pypi.org/project/nspektr
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools-scm
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/n/nspektr/nspektr-0.3.0.tar.gz
+	sha256sums = 5a573d6e71bcde268576651524e24fdfaafbbf0b6a927d64b596d3a43967c1cf
+
+pkgname = python-nspektr
