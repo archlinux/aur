@@ -1,6 +1,6 @@
-pkgbase = mpd-notification-git
+pkgbase = mpd-notification
 	pkgdesc = Notify about tracks played by mpd - git checkout
-	pkgver = 0.8.4.r7.g3db4145
+	pkgver = 0.8.6.r2.ga4d100c
 	pkgrel = 1
 	url = https://github.com/eworm-de/mpd-notification
 	arch = i686
@@ -8,7 +8,7 @@ pkgbase = mpd-notification-git
 	license = GPL
 	makedepends = git
 	makedepends = systemd
-	makedepends = markdown
+	makedepends = discount
 	depends = libsystemd
 	depends = ffmpeg
 	depends = file
@@ -17,8 +17,7 @@ pkgbase = mpd-notification-git
 	depends = libmpdclient
 	provides = mpd-notification
 	conflicts = mpd-notification
-	source = git://github.com/eworm-de/mpd-notification.git
+	source = git+https://github.com/eworm-de/mpd-notification.git
 	sha256sums = SKIP
 
-pkgname = mpd-notification-git
-
+pkgname = mpd-notification
