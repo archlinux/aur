@@ -1,11 +1,12 @@
-# Maintainer: Dave Reisner <d@falconindy.com>
-# Maintainer: Jelle van der Waa <jelle@vdwaa.nl>
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Dave Reisner <d@falconindy.com>
+# Contributor: Jelle van der Waa <jelle@vdwaa.nl>
 
 pkgname=ponymix
 pkgver=5
-pkgrel=3
+pkgrel=4
 pkgdesc="CLI PulseAudio Volume Control"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/falconindy/ponymix"
 license=('MIT')
 depends=('pulseaudio' 'libnotify')
@@ -19,7 +20,9 @@ build() {
 }
 
 package() {
-  make -C "$srcdir/$pkgname-$pkgver" DESTDIR="$pkgdir" install
+  cd "$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" install
+  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
 
 # vim: ft=sh syn=sh et

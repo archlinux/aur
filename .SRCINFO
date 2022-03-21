@@ -1,9 +1,10 @@
 pkgbase = ponymix
 	pkgdesc = CLI PulseAudio Volume Control
 	pkgver = 5
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/falconindy/ponymix
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	depends = pulseaudio
 	depends = libnotify
@@ -14,4 +15,3 @@ pkgbase = ponymix
 	md5sums = SKIP
 
 pkgname = ponymix
-
