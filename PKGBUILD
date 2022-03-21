@@ -3,7 +3,7 @@
 
 _pkgname=datalad
 pkgname=python-$_pkgname
-pkgver=0.15.4
+pkgver=0.15.6
 pkgrel=1
 pkgdesc='Keep code, data, containers under control with git and git-annex'
 arch=('any')
@@ -26,15 +26,15 @@ optdepends=('python-argcomplete: optional CLI completion'
             'python-xmp-toolkit: XMP metadata'
             'python-pillow: generic image metadata')
 source=("${_pkgname}-$pkgver.tar.gz::https://github.com/datalad/${_pkgname}/archive/$pkgver.tar.gz")
-sha512sums=('d08342b2dac42799e56631664644c05844f203a33601ae681d735f64beb9d390b62074ccd19ef76814959d7a0febaab974cb29587d02e22f2536c6f033b253ab')
+sha512sums=('e1831fd6301033e71b5dc31f1b29f362847da47d1bfceeb19efba9594f42fe8e9c921b6074c8065c3ecb3193257569d2dbd59a55f1dfa5bcf4bfc3181eeff5c6')
 
 build() {
-  cd "$srcdir/${_pkgname}-$pkgver"
-  python setup.py build
+    cd "$srcdir/${_pkgname}-$pkgver"
+    python setup.py build
 }
 
 package() {
-  cd "$srcdir/${_pkgname}-$pkgver"
-  python setup.py install --skip-build --root="$pkgdir" --optimize=1
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+    cd "$srcdir/${_pkgname}-$pkgver"
+    python setup.py install --skip-build --root="$pkgdir" --optimize=1
+    install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
