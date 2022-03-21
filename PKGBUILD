@@ -2,7 +2,7 @@
 
 pkgname=unciv-bin
 _pkgname=Unciv
-_pkgver=3.19.17
+_pkgver=4.0.0
 pkgver=${_pkgver//-/_}
 pkgrel=0
 pkgdesc="Open-source remake of Civilization V"
@@ -21,7 +21,7 @@ source=(
 noextract=(
 	"$_pkgname-$_pkgver.jar"
 )
-md5sums=('4df8d61924d628d614f104b47b224bf2'
+md5sums=('3b64c8ed28d58c738f11290c6c60339a'
          '5aca7fc33f121fcf901fef14f784731a'
          'b5c3190a1616e545df32536920e07c98'
          '42d5f7ea8ee48d2d643d070786f039ba')
