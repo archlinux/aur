@@ -1,12 +1,12 @@
 pkgbase = sweet-kde-theme-git
 	pkgdesc = Sweet KDE Plasma theme
 	pkgver = r24.9e36d3a
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/EliverLara/Sweet-kde
 	arch = x86_64
 	license = GPL3
 	makedepends = git
-	provides = sweet-kde
+	provides = sweet-kde-theme-git
 	conflicts = sweet-kde
 	conflicts = sweet-kde-git
 	options = !strip

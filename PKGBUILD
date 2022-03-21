@@ -3,14 +3,14 @@
 pkgname=sweet-kde-theme-git
 _pkgname=Sweet-kde
 pkgver=r24.9e36d3a
-pkgrel=3
+pkgrel=4
 pkgdesc="Sweet KDE Plasma theme"
 arch=('x86_64')
 url="https://github.com/EliverLara/$_pkgname"
 license=('GPL3')
 makedepends=('git')
 depends=()
-provides=("sweet-kde")
+provides=("sweet-kde-theme-git")
 conflicts=('sweet-kde' 'sweet-kde-git')
 options=('!strip')
 source=("git+$url.git")
