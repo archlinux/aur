@@ -5,14 +5,14 @@
 
 pkgname=systemd-readahead
 pkgver=216
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="Standalone version of the fast built-in readahead implementation dropped in systemd 217"
 arch=('i686' 'x86_64')
 url="https://dev.gentoo.org/~pacho/systemd-readahead.html"
 license=('LGPL-2.1 MIT')
 depends=("systemd>$pkgver")
-makedepends=('make' 'autoconf' 'gperf' 'sed')
+makedepends=('make' 'autoconf' 'gperf' 'sed' 'patch')
 checkdepends=()
 optdepends=()
 provides=()
