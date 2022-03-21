@@ -1,0 +1,17 @@
+pkgbase = python-finnhub-python
+	pkgdesc = Finnhub API
+	pkgver = 2.4.11
+	pkgrel = 1
+	url = https://pypi.org/project/finnhub-python
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	depends = python-future
+	source = https://files.pythonhosted.org/packages/source/f/finnhub-python/finnhub-python-2.4.11.tar.gz
+	sha256sums = 67faf9942aadc9ad54498a26cd0f605b875f1a7bac3bead2d8a2bc7292b2f752
+
+pkgname = python-finnhub-python
