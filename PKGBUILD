@@ -3,9 +3,11 @@
 pkgname=cqrlog-git
 _pkgname=cqrlog
 _authorname=ok2cqr
-pkgver=2.5.2.r155.gef56aa4
+pkgver=2.5.2.r161.g6d134ec
+#.r161.g6d134ec
+#.r155.gef56aa4
 #.r1.g7ffd237
-pkgrel=2
+pkgrel=3
 pkgdesc="An advanced ham radio logger using MariaDB - GIT version."
 arch=('i686' 'x86_64')
 url="http://www.cqrlog.com"
@@ -23,7 +25,7 @@ optdepends=('winkeydaemon: usb cw xmit'
 	    'glabels: print qsl labels')
 provides=('cqrlog')
 conflicts=('cqrlog' 'cqrlog-source' 'cqrlog-bin')
-source=("${_pkgname}::git://github.com/${_authorname}/${_pkgname}.git#branch=master")
+source=("${_pkgname}::git+https://github.com/${_authorname}/${_pkgname}.git#branch=master")
 
 pkgver() {
 	cd "${_pkgname}"
