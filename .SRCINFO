@@ -1,0 +1,15 @@
+pkgbase = kwiml-git
+	pkgdesc = The Kitware Information Macro Library
+	pkgver = r56.9c534d2
+	pkgrel = 1
+	url = https://gitlab.kitware.com/utils/kwiml
+	arch = any
+	license = BSD
+	makedepends = cmake
+	makedepends = git
+	provides = kwiml
+	conflicts = kwiml
+	source = KWIML::git+https://gitlab.kitware.com/utils/kwiml.git
+	sha512sums = SKIP
+
+pkgname = kwiml-git
