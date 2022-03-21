@@ -1,0 +1,15 @@
+pkgbase = python-bt
+	pkgdesc = A flexible backtesting framework for Python
+	pkgver = 0.2.9
+	pkgrel = 1
+	url = https://pypi.org/project/bt
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/b/bt/bt-0.2.9.tar.gz
+	sha256sums = d162d71aaaaf7265a848d1fc0040f503add32dac2f9f3127bece0d74c22efb9b
+
+pkgname = python-bt
