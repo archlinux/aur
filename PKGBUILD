@@ -1,6 +1,6 @@
 # Maintainer: Christian Hesse <mail@eworm.de>
 
-pkgname=mpd-notification
+pkgname=mpd-notification-git
 pkgver=0.8.6.r2.ga4d100c
 pkgrel=1
 pkgdesc='Notify about tracks played by mpd - git checkout'
