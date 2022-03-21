@@ -1,4 +1,4 @@
-# Maintainer: Andy Alt <andy400-dev at yahoo dot com>
+# Maintainer: Andy Alt <arch_stanton5995 at protonmail.com>
 # Contributor: Oliver Jaksch <arch-aur at com-in dot de>
 
 pkgname=rmw
