@@ -2,7 +2,7 @@
 pkgname=youtube-dl-gui
 _pkgname=youtube-dl-gui
 pkgver=2.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform GUI for youtube-dl made in Electron and node.js'
 arch=('x86_64')
 license=('ISC')
