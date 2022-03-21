@@ -1,0 +1,15 @@
+pkgbase = python-ascii_magic
+	pkgdesc = Converts pictures into ASCII art
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://pypi.org/project/ascii_magic
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/a/ascii_magic/ascii_magic-1.6.tar.gz
+	sha256sums = 7da5518f7368e73f11e2151a0c060804aa149e267b369b7ee7653fbd7b046a51
+
+pkgname = python-ascii_magic
