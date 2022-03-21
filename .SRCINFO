@@ -1,11 +1,13 @@
 pkgbase = deadbeef-plugin-waveform-git
-	pkgver = 0.5.r74.g114514e
+	pkgver = 0.5.r89.g6c901d5
 	pkgrel = 1
 	url = https://github.com/cboxdoerfer/ddb_waveform_seekbar
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
+	makedepends = gtk2
+	makedepends = gtk3
 	source = git+https://github.com/cboxdoerfer/ddb_waveform_seekbar
 	md5sums = SKIP
 
@@ -24,4 +26,3 @@ pkgname = deadbeef-plugin-waveform-gtk3-git
 	depends = gtk3
 	provides = deadbeef-plugin-waveform-gtk3
 	conflicts = deadbeef-plugin-waveform-gtk3
-

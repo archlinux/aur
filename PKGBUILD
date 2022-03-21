@@ -1,13 +1,13 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
 pkgbase=deadbeef-plugin-waveform-git
 pkgname=(deadbeef-plugin-waveform-gtk2-git deadbeef-plugin-waveform-gtk3-git)
-pkgver=0.5.r74.g114514e
+pkgver=0.5.r89.g6c901d5
 pkgrel=1
 _pkgdesc="Waveform Seekbar plugin for DeaDBeeF audio player"
 url="https://github.com/cboxdoerfer/ddb_waveform_seekbar"
 arch=('i686' 'x86_64')
 license=('GPL2')
-makedepends=('git')
+makedepends=('git' 'gtk2' 'gtk3')
 
 _gitname=ddb_waveform_seekbar
 _gitroot=https://github.com/cboxdoerfer/${_gitname}
