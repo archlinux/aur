@@ -1,6 +1,6 @@
 pkgbase = dwl
 	pkgdesc = Simple, hackable dynamic tiling Wayland compositor (dwm for Wayland)
-	pkgver = 0.2.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://github.com/djpohly/dwl
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = dwl
 	makedepends = wayland-protocols
 	depends = wlroots>=0.15
 	optdepends = xorg-xwayland: for XWayland support
-	source = dwl-0.2.2.tar.gz::https://github.com/djpohly/dwl/archive/v0.2.2.tar.gz
+	source = dwl-0.3.tar.gz::https://github.com/djpohly/dwl/archive/v0.3.tar.gz
 	source = config.h
-	sha256sums = c629fa7f38050db9850dc0cdf487191c725e6fc68f0c497f6297b48e873c9e5e
+	sha256sums = a3dd9b7107e9d324cc0dc4f48dd526fb687b10c9e63a42b33a827130d9113763
 	sha256sums = SKIP
 
 pkgname = dwl
