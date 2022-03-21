@@ -1,6 +1,7 @@
 # Maintainer: aik2 aik2mlj@gmail.com
 
 pkgname='plugdata-git'
+_name='plugdata'
 pkgdesc='Plugin wrapper around PureData with a new GUI made with JUCE, allowing patching in DAWs'
 pkgver=r521.5658cab
 pkgrel=1
@@ -32,6 +33,9 @@ build () {
 }
 
 package () {
+    # Desktop entry
+    install -Dm644 "${srcdir}/../${_name}.desktop" "${pkgdir}/usr/share/applications/${_name}.desktop"
+
     cd "${srcdir}/PlugData"
 
     # === modified from .github/scripts/package.sh ===
@@ -58,5 +62,5 @@ package () {
     find ./Packaged -name '*.lv2' -type d -exec cp -ar {} "${pkgdir}/usr/lib/lv2/" \;
     mkdir -p "${pkgdir}/usr/lib/vst3/"
     find ./Packaged -name '*.vst3' -type d -exec cp -ar {} "${pkgdir}/usr/lib/vst3/" \;
-    install -Dm755 -T Packaged/Standalone/* "${pkgdir}/usr/bin/plugdata"
+    install -Dm755 -T Packaged/Standalone/* "${pkgdir}/usr/bin/${_name}"
 }
