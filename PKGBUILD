@@ -1,8 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=dsq
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="CLI tool for running SQL queries against JSON/CSV/Excel/Parquet and more"
 arch=('x86_64')
 url="https://github.com/multiprocessio/dsq"
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 checkdepends=('python' 'jq')
 options=('!lto')
-_commit='93e3a76f459c879ad2bd45cfc0b2559e3cfbbbc4'
+_commit='9a2da3c6d9f8db6b1e5c9209e0ddbe92d32c66d2'
 source=("$pkgname::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 
@@ -36,10 +36,9 @@ build() {
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
 
-  # PIE currently disabled due to upstream issue
-  # https://github.com/multiprocessio/dsq/issues/34
   go build -v \
     -trimpath \
+    -buildmode=pie \
     -mod=readonly \
     -modcacherw \
     -ldflags "-linkmode external -extldflags ${LDFLAGS} \
