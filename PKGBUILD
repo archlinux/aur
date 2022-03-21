@@ -8,7 +8,7 @@
 
 _gitname=projectm
 pkgname=projectm-git
-pkgver=2219.bb1f06d65
+pkgver=2240.99b55db61
 pkgrel=1
 conflicts=('projectm' 'projectm-sdl' 'projectm-pulseaudio')
 provides=('projectm' 'projectm-sdl' 'projectm-pulseaudio')
@@ -38,5 +38,5 @@ build() {
 package() {
   cd "${_gitname}/build"
   DESTDIR="$pkgdir" make install
-  DESTDIR="$pkgdir" install -Dm644 "${srcdir}/${_gitname}/src/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  DESTDIR="$pkgdir" install -Dm644 "${srcdir}/${_gitname}/src/libprojectM/COPYING" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
