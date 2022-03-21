@@ -1,0 +1,20 @@
+pkgbase = perl-perl-critic-policy-variables-prohibitunusedvarsstricter
+	pkgdesc = Don't ask for storage you don't need.
+	pkgver = 0.114
+	pkgrel = 1
+	url = https://metacpan.org/release/Perl-Critic-Policy-Variables-ProhibitUnusedVarsStricter
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-ppi>=0
+	depends = perl-ppix-quotelike>=0.011
+	depends = perl-ppix-regexp>=0.071
+	depends = perl-perl-critic>=0
+	depends = perl-readonly>=0
+	depends = perl>=5.6.1
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/W/WY/WYANT/Perl-Critic-Policy-Variables-ProhibitUnusedVarsStricter-0.114.tar.gz
+	md5sums = dda3ad543f2808e4034f52fa2760bf03
+	sha512sums = 21f73cb813417f59817c7e95d34783b69dd2f0a60f526daa0b19812799e388ee19dd1b16616f426b509cc051dcf0bb35b4de7140e0ce575c3baf3a129e72eb16
+
+pkgname = perl-perl-critic-policy-variables-prohibitunusedvarsstricter
