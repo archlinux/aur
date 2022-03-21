@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=gtksourceview5
-pkgver=5.3.2
+pkgver=5.4.0
 pkgrel=1
 pkgdesc='A text widget adding syntax highlighting and more to GNOME'
 arch=(x86_64 aarch64)
@@ -16,9 +16,10 @@ makedepends=(
 	vala
 )
 checkdepends=(xorg-server-xvfb)
+options=(debug)
 _commit=${pkgver}
 source=("${url}/-/archive/${_commit}/gtksourceview-${_commit}.tar.gz")
-b2sums=('6bfb62128e224aa9ef2d4ebcfbff3ea4b12204b2ce7ed323dc6e436ac0461164257d5182d260b92476130bc6b3f929411b7b664a1f4e907a5cf604d6db6037f9')
+b2sums=('8367251603d117e9bdc6621b6faf818e7447b8522ed4cf34dca6f08592029bebe7b3cd92d75bffe2b6279f6ef3786d398081f083d8a0733ad03a18f76b416bc1')
 
 build() {
 	arch-meson gtksourceview-${_commit} build -D gtk_doc=true
