@@ -1,33 +1,43 @@
-# Maintainer: Philipp Joram <phijor AT t-online DOT de>
+# Maintainer: Philipp Joram <mail AT phijor DOT me>
 # Contributor: Hugo Osvaldo Barrera <hugo@barrera.io>
 # Contributor: Mohammed Yaseen Mowzer <moyamodehacker@gmail.com>
 # Contributor: Jonas Heinrich <onny@project-insanity.org>
 
 pkgname='python-axolotl-git'
 _pkgname='python-axolotl'
-pkgver=r70.72f7c44
-pkgrel=4
-pkgdesc="The python-axolotl package, needed for Whatsapp Moxie support"
+pkgver=0.2.3.r2.gb8d1a2e
+pkgrel=1
+pkgdesc="Python port of libaxolotl"
 url="https://github.com/tgalal/python-axolotl"
 arch=('any')
 license=('GPL')
 depends=('python'
-         'python-axolotl-curve25519-git'
-         'python-dateutil'
-         'python-protobuf'
-         'python-crypto')
-makedepends=('python-setuptools')
+         'python-cryptography'
+         'python-axolotl-curve25519'
+         'python-protobuf')
+makedepends=('python-setuptools' 'git')
+checkdepends=('python-pytest')
 provides=('python-axolotl')
 conflicts=('python-axolotl')
-source=('git://github.com/tgalal/python-axolotl')
+source=('git+https://github.com/tgalal/python-axolotl')
 sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "$srcdir/$_pkgname"
+  python setup.py build
+}
+
+check() {
+  cd "$srcdir/$_pkgname"
+  py.test
 }
 
 package() {
   cd "$srcdir/$_pkgname"
-  python setup.py install --root="$pkgdir/"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
 }
