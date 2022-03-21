@@ -2,7 +2,7 @@
 # Contributor: Harms <thotro at lyse dot net>
 pkgname=forticlient
 pkgver=7.0.1.0057
-pkgrel=1
+pkgrel=2
 pkgdesc="An endpoint protection application"
 arch=('x86_64')
 url="https://www.forticlient.com"
