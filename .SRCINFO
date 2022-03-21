@@ -1,4 +1,4 @@
-pkgbase = perl-perl-critic-policy-variables-prohibitunusedvarsstricter
+pkgbase = perl-critic-policy-variables-prohibitunusedvarsstricter
 	pkgdesc = Don't ask for storage you don't need.
 	pkgver = 0.114
 	pkgrel = 1
@@ -17,4 +17,4 @@ pkgbase = perl-perl-critic-policy-variables-prohibitunusedvarsstricter
 	md5sums = dda3ad543f2808e4034f52fa2760bf03
 	sha512sums = 21f73cb813417f59817c7e95d34783b69dd2f0a60f526daa0b19812799e388ee19dd1b16616f426b509cc051dcf0bb35b4de7140e0ce575c3baf3a129e72eb16
 
-pkgname = perl-perl-critic-policy-variables-prohibitunusedvarsstricter
+pkgname = perl-critic-policy-variables-prohibitunusedvarsstricter

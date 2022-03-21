@@ -1,7 +1,7 @@
 # Contributor: Ordoban (dirk.langer@vvovgonik.de)
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
-pkgname='perl-perl-critic-policy-variables-prohibitunusedvarsstricter'
+pkgname='perl-critic-policy-variables-prohibitunusedvarsstricter'
 pkgver='0.114'
 pkgrel='1'
 pkgdesc="Don't ask for storage you don't need."
