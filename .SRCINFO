@@ -1,0 +1,19 @@
+pkgbase = python-aiohttp-sse-client
+	pkgdesc = A Server-Sent Event python client base on aiohttp
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://pypi.org/project/aiohttp-sse-client
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-aiohttp
+	depends = python-attrs
+	depends = python-multidict
+	depends = python-yarl
+	source = https://files.pythonhosted.org/packages/source/a/aiohttp-sse-client/aiohttp-sse-client-0.2.1.tar.gz
+	sha256sums = 5004e29271624af586158dc7166cb0687a7a5997aab5b808f4b53400e1b72e3b
+
+pkgname = python-aiohttp-sse-client
