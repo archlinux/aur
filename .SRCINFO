@@ -1,14 +1,24 @@
 pkgbase = libceed
 	pkgdesc = Performance Visualization for Parallel Program
-	pkgver = 0.3
+	pkgver = 0.10.0
 	pkgrel = 1
-	url = http://ceed.exascaleproject.org/ceed-code
-	arch = i686
+	url = https://github.com/ceed/libceed
 	arch = x86_64
 	license = BSD
 	makedepends = gcc-fortran
-	source = https://github.com/CEED/libCEED/archive/v0.3.tar.gz
-	md5sums = dd29bf09b0a2f826c6484862a6662976
+	makedepends = python-cffi
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	source = libceed-0.10.0.tar.gz::https://github.com/ceed/libceed/archive/v0.10.0.tar.gz
+	sha256sums = 7bff5d54110e4dd0abab2cb08b1429573541512e2e4000847b0660a81fa65831
 
 pkgname = libceed
+	depends = glibc
+	provides = libceed.so
 
+pkgname = python-ceed
+	depends = libceed
+	depends = python-cffi
+	depends = python-numpy
