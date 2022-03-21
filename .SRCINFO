@@ -1,7 +1,7 @@
 pkgbase = kittypack-git
 	pkgdesc = A silly little tool to get info from archlinux.org/packages
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MrElendig/kittypack
 	arch = any
 	license = AGPL3
@@ -13,8 +13,7 @@ pkgbase = kittypack-git
 	depends = python-yaml
 	depends = python-setuptools
 	backup = etc/kittypack.conf
-	source = git://github.com/MrElendig/kittypack.git
+	source = git+https://github.com/MrElendig/kittypack.git
 	sha1sums = SKIP
 
 pkgname = kittypack-git
-
