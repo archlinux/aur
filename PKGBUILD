@@ -1,7 +1,7 @@
 # Maintainer: Tobias Baust <tobias.baust at tutanota dot com>
-_pkgname=PyFoam-2020.5
+_pkgname=PyFoam-2021.6
 pkgname=python-pyfoam
-pkgver=2020.5
+pkgver=2021.6
 pkgrel=1
 pkgdesc='support for working with the OpenSource CFD-toolbox [OpenFOAM]'
 arch=('any')
@@ -10,8 +10,8 @@ license=('GPL3')
 depends=(python)
 makedepends=(python-setuptools)
 install="$pkgname.install"
-source=("https://files.pythonhosted.org/packages/65/95/0d27b17db10da615c5aa1061ef3bc4b9c60c68c9c6ebed724b40e4d502a2/${_pkgname}.tar.gz")
-md5sums=('2913bf472a49939910b271a1902f75a3')
+source=("https://files.pythonhosted.org/packages/02/07/c9634828bb6d0f0d92d37a9973b269488f17b5436b6eea8b5ac49e8121ec/${_pkgname}.tar.gz")
+md5sums=('87390a05b57b9a85b13679665134a854')
 
 build() {
     tar xfz "${_pkgname}.tar.gz"
