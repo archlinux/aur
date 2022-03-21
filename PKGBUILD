@@ -2,7 +2,7 @@
 # Contributor: sixpindin <sixpindin@gmail.com>
 pkgname=omnisharp-roslyn
 pkgver=1.38.1
-pkgrel=1
+pkgrel=2
 pkgdesc="OmniSharp server (STDIO) based on Roslyn workspaces"
 arch=('x86_64')
 url="https://github.com/OmniSharp/omnisharp-roslyn"
@@ -41,8 +41,8 @@ package() {
     install -d "$pkgdir/usr/lib"
     cp -a "$srcdir/$pkgname-$pkgver/artifacts/publish/OmniSharp.Stdio.Driver/linux-x64/net6.0" "$pkgdir/usr/lib/$pkgname"
 
-    install -d "$pkgdir/usr/share/licences/$pkgname"
-    mv "$pkgdir/usr/lib/$pkgname/license.md" "$pkgdir/usr/share/licences/$pkgname"
+    install -d "$pkgdir/usr/share/licenses/$pkgname"
+    mv "$pkgdir/usr/lib/$pkgname/license.md" "$pkgdir/usr/share/licenses/$pkgname"
 
     install -d "$pkgdir/usr/bin"
     ln -s "../lib/$pkgname/OmniSharp" "$pkgdir/usr/bin/omnisharp"
