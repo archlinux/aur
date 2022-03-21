@@ -1,0 +1,17 @@
+pkgbase = alertmanager-bot
+	pkgdesc = Telegram Bot for Prometheus' Alertmanager
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/metalmatze/alertmanager-bot
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	depends = glibc
+	options = !lto
+	backup = etc/conf.d/alertmanager-bot
+	source = alertmanager-bot-0.4.3.tar.gz::https://github.com/metalmatze/alertmanager-bot/archive/0.4.3.tar.gz
+	source = systemd.service
+	sha512sums = b7ee8edcd062e7d6c8d54532673be4e2d270ae8638d5389092dae8528b3da240c3844229642b49f5a043c0167124a8f03c30d8d3c3b9585656a2bc55b62d37d9
+	sha512sums = 893353d2579aa8f00d4a2c37949228562eeea441eaea81a86a04f29de2402d0d967d05acd4c4c46479abb56ee33d1c98648b82cec08ecfdc70eb318b98301448
+
+pkgname = alertmanager-bot
