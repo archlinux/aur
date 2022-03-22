@@ -1,6 +1,6 @@
 pkgbase = python-cityhash
 	pkgdesc = Python bindings for CityHash
-	pkgver = 0.2.3
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://github.com/escherba/python-cityhash
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = python-cityhash
 	makedepends = python-setuptools
 	makedepends = cython
 	depends = python
-	source = python-cityhash-0.2.3.tar.gz::https://github.com/escherba/python-cityhash/archive/0.2.3.tar.gz
-	sha256sums = 560093a590958c379d6c8c4d57ff195a7e125be435f8b98282fcdb99b7a954bc
+	source = python-cityhash-0.4.0.tar.gz::https://github.com/escherba/python-cityhash/archive/0.4.0.tar.gz
+	sha256sums = 5d7a43e0ed846356d252ac8313f0825f49fe6dc678233088f136e75e2f8905ee
 
 pkgname = python-cityhash
-
