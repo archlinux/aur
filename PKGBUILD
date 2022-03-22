@@ -1,5 +1,6 @@
 # Maintainer: Arkadiusz Dzięgielewski <arek.dzski@gmail.com>
 
+_id=browserpass@maximbaz.com
 pkgname=browserpass-librewolf
 pkgver=3.7.2
 pkgrel=1
