@@ -1,6 +1,6 @@
 # Maintainer: Sergey Kostyaev <feo.me@ya.ru>
 pkgname=freelib-git
-pkgver=6.0.10
+pkgver=6.0.18
 pkgrel=1
 epoch=
 pkgdesc="Freelib is book library manager."
