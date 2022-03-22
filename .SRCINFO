@@ -1,14 +1,14 @@
 pkgbase = libmobi
 	pkgdesc = Library for handling Kindle formats of ebook documents
-	pkgver = 0.9
+	pkgver = 0.10
 	pkgrel = 1
 	url = https://github.com/bfabiszewski/libmobi
 	arch = x86_64
 	license = LGPL3
+	makedepends = git
 	depends = libxml2
 	depends = zlib
-	source = https://github.com/bfabiszewski/libmobi/releases/download/v0.9/libmobi-0.9.tar.gz
-	sha512sums = 369d135049853995162fe2918e396fa80a6040112cbc0abed5c582e55122acbeb4b3243079f2dee1fc094f25dca86b672d6a9770ce7638d08b33b94050006a5c
-	b2sums = de6e7e21cc524c7c1bc206e702db405de78a7a92f713b6a79731a14be741919bda90962acc617c3e0649910e889c1d6c270e997fe076157401e07917996ce7b1
+	source = libmobi::git+https://github.com/bfabiszewski/libmobi.git#commit=aac5b1f578b284b2f886d6d25cde22a33d8534f8
+	b2sums = SKIP
 
 pkgname = libmobi
