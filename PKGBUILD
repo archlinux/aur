@@ -1,7 +1,7 @@
 # Maintainer: Qiu Wenbo <crab2313@gmail.com>
 
 pkgname=kas
-pkgver=2.6.3
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Setup tool for bitbake based projects "
 arch=(any)
@@ -10,7 +10,7 @@ license=('CUSTOM')
 depends=('python' 'python-yaml' 'python-distro' 'python-jsonschema' 'python-kconfiglib')
 makedepends=('python-setuptools')
 source=($pkgname-$pkgver.tar.gz::$url/archive/refs/tags/${pkgver}.tar.gz)
-sha512sums=('7e09b2a49e92f490f0932da7c7395ff0296124bec1d345e7514bc1b26fc1e9201d4c933829f7ae1eda0f4a62ed929ac794880fa9c4e7084ba4f7534c0367243b')
+sha512sums=('4d6502442c5343cdb492c3857d0ebbab78666fc816d6060401fb0571b1db7bda68c4f85b0dd98b683a41ef0320ddd6909081eb3c4d36e32316cfd6c9d28c886a')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
