@@ -1,0 +1,19 @@
+pkgbase = gnome-shell-extension-dash-to-dock-gnome42-git
+	pkgdesc = Move the dash out of the overview transforming it in a dock
+	pkgver = 63+418+g5d26575
+	pkgrel = 1
+	url = https://micheleg.github.io/dash-to-dock/
+	arch = any
+	license = GPL
+	makedepends = intltool
+	makedepends = gettext
+	makedepends = git
+	makedepends = sassc
+	depends = gnome-shell
+	conflicts = gnome-shell-extension-dash-to-dock
+	conflicts = gnome-shell-extension-dash-to-dock-git
+	conflicts = gnome-shell-extension-dash-to-dock-gnome41-git
+	source = git+https://github.com/3v1n0/dash-to-dock.git#branch=locations-refactory
+	sha256sums = SKIP
+
+pkgname = gnome-shell-extension-dash-to-dock-gnome42-git
