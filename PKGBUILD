@@ -1,6 +1,8 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: aksr <aksr at t-com dot me>
 
+## GPG key located at https://github.com/leahneukirchen.gpg
+
 pkgname=mblaze
 pkgver=1.2
 pkgrel=1
