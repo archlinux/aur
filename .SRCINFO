@@ -1,0 +1,16 @@
+pkgbase = hoverclock-bin
+	pkgdesc = Hoverclock - A simple floating clock for linux
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/kostoskistefan/hoverclock
+	arch = x86_64
+	license = GPL3
+	provides = hoverclock
+	conflicts = hoverclock-appimage
+	options = !strip
+	source = Hoverclock.zip::https://github.com/kostoskistefan/hoverclock/releases/download/v1.0.0/Hoverclock.zip
+	source = https://raw.githubusercontent.com/kostoskistefan/hoverclock/main/LICENSE
+	md5sums = d2c267d75c167e96e1e49cae58a00571
+	md5sums = 1ebbd3e34237af26da5dc08a4e440464
+
+pkgname = hoverclock-bin
