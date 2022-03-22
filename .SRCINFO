@@ -1,7 +1,7 @@
 pkgbase = sddm-theme-aerial-git
 	pkgdesc = SDDM theme with Apple TV Aerial videos
 	pkgver = 0.1.r59.g06beb74
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/3ximus/aerial-sddm-theme
 	install = sddm-theme-aerial.install
 	arch = any
