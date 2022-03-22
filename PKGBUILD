@@ -1,7 +1,7 @@
 # Maintainer: pandada8 <pandada8@gmail.com>
 # Maintainer: istimaldar_sntlk <istimaldar@gmail.com>
 pkgname=earthly-bin
-pkgver=0.6.10
+pkgver=0.6.11
 pkgrel=1
 pkgdesc='Build automation for the container era'
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=('earthly')
 source=(
   "${pkgname}-${pkgver}::https://github.com/earthly/earthly/releases/download/v${pkgver}/earthly-linux-amd64"
 )
-sha512sums=('ba87575fcbaad29d2b3935aaa294c1a6ff93249c49b21ec6587a03298b5e1d93fbc0428a0a7149e172f521c0bec0b7ba78b309cc0ad28b80260dcb85af3c8102')
+sha512sums=('3e43db3894c2fbc4a10e9865c0f25ffb9a5eacf29f7521bdc7bc249af476b7046f2160be81c049f7ceaa07ed0746bb45efd651282069490e76ef0efa16a7af67')
 
 package() {
   install -D "${srcdir}/${pkgname}-${pkgver}" "${pkgdir}/usr/bin/earthly"
