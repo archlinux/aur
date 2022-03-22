@@ -2,7 +2,7 @@
 # ---
 _pkgname=BetterBin
 pkgname=betterbin
-pkgver=1.0.r70
+pkgver=1.0.r71
 pkgrel=1
 pkgdesc='Various useful shell scripts to increace productivity and efficiency in your workflow'
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=('MIT')
 depends=()
 makedepends=(git)                 
 source=("https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
-sha256sums=('e0c8db1384655a209a3eb76c7d6c7633b118d46989ef1b122160726fa765c451')
+sha256sums=('ed3d74d1c8ed1287357517aea976b38863ba29fa60768cd0f6e4f9e2a2a2a6f8')
 
 package() {
   install -Dm775 usr/bin/* -g wheel -o ${USER} -t "${pkgdir}/usr/bin/"

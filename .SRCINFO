@@ -1,12 +1,12 @@
 pkgbase = betterbin
 	pkgdesc = Various useful shell scripts to increace productivity and efficiency in your workflow
-	pkgver = 1.0.r70
+	pkgver = 1.0.r71
 	pkgrel = 1
 	url = https://gitlab.com/qYp/betterbin
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/betterbin-1.0.r70-1-x86_64.pkg.tar.zst
-	sha256sums = e0c8db1384655a209a3eb76c7d6c7633b118d46989ef1b122160726fa765c451
+	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/betterbin-1.0.r71-1-x86_64.pkg.tar.zst
+	sha256sums = ed3d74d1c8ed1287357517aea976b38863ba29fa60768cd0f6e4f9e2a2a2a6f8
 
 pkgname = betterbin
