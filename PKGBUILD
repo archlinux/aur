@@ -6,6 +6,7 @@ pkgver=1.3.11
 pkgrel=1
 pkgdesc='B站录播姬 | BiliBili Stream Recorder | 哔哩哔哩直播录制'
 arch=('x86_64')
+options=(staticlibs)
 url='https://github.com/Bililive/BililiveRecorder'
 license=('GPL3')
 provides=("$_pkgname")

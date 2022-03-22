@@ -8,6 +8,7 @@ pkgbase = bililive-recorder-bin
 	depends = krb5
 	depends = zlib
 	provides = bililive-recorder
+	options = staticlibs
 	source = bililive-recorder-bin-1.3.11.zip::https://github.com/Bililive/BililiveRecorder/releases/download/v1.3.11/BililiveRecorder-CLI-linux-x64.zip
 	sha256sums = 66bb81f8ae167997beb796ade1be9440ce1df2139225ecf5131f269aef729c69
 
