@@ -1,6 +1,6 @@
-pkgbase = protonhax
+pkgbase = protonhax-git
 	pkgdesc = Program to help executing outside programs in proton
-	pkgver = 1.0.4
+	pkgver = VERSION
 	pkgrel = 1
 	url = https://github.com/jcnils/protonhax
 	arch = x86_64
@@ -9,4 +9,4 @@ pkgbase = protonhax
 	source = git+https://github.com/jcnils/protonhax.git
 	md5sums = SKIP
 
-pkgname = protonhax
+pkgname = protonhax-git
