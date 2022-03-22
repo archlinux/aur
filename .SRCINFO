@@ -21,6 +21,6 @@ pkgbase = recon-ng
 	source = https://github.com/lanmaster53/recon-ng/archive/v5.1.2/recon-ng-5.1.2.tar.gz
 	source = opt-in-analytics.patch
 	sha256sums = 18d05030b994c9b37f624628251d3376d590f3d1eec155f67aca88fa5f3490cc
-	sha256sums = 72d1e10a2b4bdbacb85bc8d3b430e406fc0ec5b7bf5cad85476cd29281053385
+	sha256sums = 03ec8c0bb7437e7fd2a070b78b76a7dad5a9a0b4c13de0a427dbc0e395130594
 
 pkgname = recon-ng
