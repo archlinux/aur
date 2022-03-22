@@ -13,7 +13,7 @@ depends=('python' 'python-pyaml' 'python-dnspython' 'python-lxml' 'python-mechan
 source=("https://github.com/lanmaster53/${pkgname}/archive/v${pkgver}/recon-ng-${pkgver}.tar.gz"
         opt-in-analytics.patch)
 sha256sums=('18d05030b994c9b37f624628251d3376d590f3d1eec155f67aca88fa5f3490cc'
-            '72d1e10a2b4bdbacb85bc8d3b430e406fc0ec5b7bf5cad85476cd29281053385')
+            '03ec8c0bb7437e7fd2a070b78b76a7dad5a9a0b4c13de0a427dbc0e395130594')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
