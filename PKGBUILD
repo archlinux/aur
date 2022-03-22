@@ -2,13 +2,13 @@
 # Co-Maintainer: Fabio 'Lolix' Loli <lolix@disroot.org> -> https://github.com/FabioLolix
 # Contributor: Philip Goto <philip.goto@gmail.com>
 pkgname=apostrophe-git
-pkgver=2.5.r78.gd0b4463
-pkgrel=2
+pkgver=2.6.1.r1.gc06e1d7
+pkgrel=1
 pkgdesc="A distraction free Markdown editor for GNU/Linux made with GTK+"
 arch=('any')
 url="https://world.pages.gitlab.gnome.org/apostrophe"
 license=('GPL3')
-depends=('gspell' 'libhandy' 'otf-fira-mono' 'otf-fira-sans' 'python-cairo'
+depends=('gspell' 'libhandy>=1.6' 'otf-fira-mono' 'otf-fira-sans' 'python-cairo'
          'python-gobject' 'python-levenshtein' 'python-pyenchant' 'python-pypandoc'
          'python-regex' 'python-setuptools' 'webkit2gtk')
 makedepends=('git' 'meson' 'gobject-introspection' 'sassc')
