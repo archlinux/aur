@@ -1,5 +1,7 @@
+# Maintainer: Jason Nader <jason *add-dot-here* nader *you-know-what-goes-here* protonmail.com>
+
 pkgname=android-backup-extractor-git
-pkgver=r54.fcb4ee5
+pkgver=r111.47bb1dd
 pkgrel=1
 pkgdesc="Utility to extract and repack Android backups created with adb backup"
 arch=('any')
@@ -8,7 +10,6 @@ depends=('bcprov')
 url="https://github.com/nelenkov/android-backup-extractor"
 license=('apache')
 provides=('abe')
-
 source=("$pkgname"::git+${url}.git)
 sha256sums=('SKIP')
 
@@ -22,7 +23,7 @@ prepare() {
   cd ${srcdir}/${pkgname}
   # 1. set correct path to system bcprov
   # 2. do not include bcprov classes in the final abe.jar file
-  sed -e 's@lib/bcprov-jdk15on-150.jar@/usr/share/java/bcprov.jar@g' \
+  sed -e 's@lib/bcprov-jdk15on-1.70.jar@/usr/share/java/bcprov.jar@g' \
     -e 's@<zipfileset.*@@g' \
     -i build.xml || return 1
 
@@ -35,7 +36,8 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-  ant
+  latest_version="$(archlinux-java status | grep 'java-[0-9][0-9]' | sort --reverse | head --lines 1 | sed 's/(.*)//g' | tr -d '[:space:]')"
+  JAVA_HOME="/usr/lib/jvm/${latest_version}" ant
 }
 
 package() { 
@@ -47,5 +49,3 @@ package() {
   install -m755 -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
