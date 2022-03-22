@@ -1,7 +1,7 @@
 pkgbase = 1password-cli
 	pkgdesc = 1Password command line tool
 	pkgver = 2.0.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://app-updates.agilebits.com/product_history/CLI2
 	install = 1password-cli.install
 	arch = x86_64
@@ -12,9 +12,7 @@ pkgbase = 1password-cli
 	license = custom
 	options = !strip
 	options = !emptydirs
-	source = 1password-cli.sysusers
 	source = https://cache.agilebits.com/dist/1P/op2/pkg/v2.0.0/op_linux_amd64_v2.0.0.zip
-	sha256sums = 20d80fc46ea97438bada3ec4d2d9c4f1b53f30af1ebf6cd23c3083e66e36e1a7
 	sha256sums = 5087e99c8b0bde941ef34034009fe289b5c2f5b36da3a2c2fa24a2b5a2497083
 
 pkgname = 1password-cli

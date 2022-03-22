@@ -3,18 +3,13 @@
 
 pkgname=1password-cli
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="1Password command line tool"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'aarch64')
 url="https://app-updates.agilebits.com/product_history/CLI2"
 license=('custom')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-
-source=(
-  '1password-cli.sysusers'
-)
-sha256sums=('20d80fc46ea97438bada3ec4d2d9c4f1b53f30af1ebf6cd23c3083e66e36e1a7')
 
 case "$CARCH" in
   arm*) _pkgarch='arm'
@@ -40,7 +35,6 @@ check() {
 }
 
 package() {
-  install -Dm644 "${srcdir}"/1password-cli.sysusers "${pkgdir}"/usr/lib/sysusers.d/1password-cli.conf
   install -Dm755 op "${pkgdir}"/usr/bin/op
 }
 
