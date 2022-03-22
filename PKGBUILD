@@ -7,7 +7,7 @@
 
 pkgname=gnome-shell-extension-dash-to-dock-gnome42-git
 _pkgname=dash-to-dock
-pkgver=63+418+g5d26575
+pkgver=r1387.5d26575
 pkgrel=1
 pkgdesc="Move the dash out of the overview transforming it in a dock"
 arch=('any')
@@ -23,7 +23,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}"/${_pkgname}
-  git describe --tags | sed 's/^extensions\.gnome\.org-v//g' | sed 's/-/+/g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
