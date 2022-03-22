@@ -1,7 +1,7 @@
 # Maintainer: Sahil Gupte <ovenoboyo@gmail.com>
 
 pkgname=moosync
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=2
 pkgdesc='A simple music player'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 provides=("${pkgname}")
 depends=('electron17-bin' 'libvips')
 source=("${pkgname}-${pkgver}.tar::https://github.com/Moosync/Moosync/releases/download/v${pkgver}/Moosync-${pkgver}-linux-x64.pacman" moosync)
-sha256sums=('e2586c7d4da8e84fa1e54359f674252ab03af50c7af01082b189dcfb06d077e6' '4358bc8c2511a4d8c7ca3ca88357a07124be7dff827009317e19f1b3e4fa3ec5')
+sha256sums=('25cb1930bede987828fc518566f2773a380290157ea560eee8d959be6353376c' '4358bc8c2511a4d8c7ca3ca88357a07124be7dff827009317e19f1b3e4fa3ec5')
 
 package() {
     cd "$srcdir"
