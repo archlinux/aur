@@ -3,7 +3,7 @@
 
 pkgname=kos
 pkgver=0.0.8
-pkgrel=3
+pkgrel=4
 pkgdesc='A simple SUID tool written in C++'
 arch=('x86_64')
 url='https://github.com/TruncatedDinosour/kos'
@@ -34,7 +34,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   install -Dm644 "${srcdir}"/kos.sysusers "${pkgdir}"/usr/lib/sysusers.d/kos.conf
-  install -Dm4755 "$srcdir/$pkgname-$pkgver/kos" "$pkgdir/usr/bin/kos"
+  install -Dm4755 -o root "$srcdir/$pkgname-$pkgver/kos" "$pkgdir/usr/bin/kos"
   install -Dm644 "$srcdir/$pkgname-$pkgver/kos.1" "$pkgdir/usr/share/man/man1/kos.1"
   install -Dm644 "$srcdir/$pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/kos/LICENSE"
 }
