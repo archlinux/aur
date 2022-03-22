@@ -1,6 +1,6 @@
 # Maintainer: monkeynaleo <monkeynaleo@gmail.com>
 pkgname="brother-mfc-l5900dw"
-pkgver="3.2.0"
+pkgver="3.5.1"
 pkgrel=1
 pkgdesc="LPR and CUPS driver for the Brother MFC-L5900DW"
 arch=('i686' 'x86_64')
@@ -14,13 +14,11 @@ source=(
 	"http://download.brother.com/welcome/dlf102628/mfcl5900dwcupswrapper-$pkgver-$pkgrel.i386.rpm"
 	'cupswrapper-license.txt'
 	'lpr-license.txt'
-  'brother-mfc-l5900dw.patch'
 )
-md5sums=('05f4e0e0261d9fe4b9ebbd4479c13ae6'
-         'f707232cb01615efad0a8d19ab150106'
+md5sums=('c4417c15e50947000c776892c18f0f1c'
+         'affa5932b0a60abb6b3db60e18f9b440'
          '97ad0cffd216059e9d1d3121899d8646'
-         '5e87a3dc0f3e3438c088eda0f3565f0d'
-         'dc4096003f9d8eb5cdd8310fd6d4c601')
+         '5e87a3dc0f3e3438c088eda0f3565f0d')
 prepare() {
 #  do not install in '/usr/local'
 	if [ -d $srcdir/usr/local/Brother ]; then
@@ -46,7 +44,6 @@ prepare() {
 # /etc/printcap is managed by cups
         rm "$(find $srcdir -type f -name 'setupPrintcap*')"
   cd "$srcdir/opt"
-  patch --strip=1 --input=../brother-mfc-l5900dw.patch --verbose
 }
 package() {
     cp -R "$srcdir/usr" "$pkgdir"
