@@ -3,16 +3,16 @@
 
 pkgname=kos
 pkgver=0.0.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple SUID tool written in C++'
 arch=('x86_64')
 url='https://github.com/TruncatedDinosour/kos'
 license=('custom:ArAr2')
 provides=('kos')
 conflicts=('kos')
-depends=('bash'
-         'bash-completion'  # NOTE: bash and bash completion are optional
-         'libxcrypt')  # NOTE: libxcrypt is needed at runtime too
+optdepends=('bash'
+	    'bash-completion')
+depends=('libxcrypt')  # NOTE: libxcrypt is needed at runtime too
 makedepends=('clang'
              'pkgconf')  # NOTE: removed llvm and its libs as they should be pulled by clang
 install="${pkgname}.install"
