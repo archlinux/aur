@@ -2,7 +2,7 @@
 
 pkgname=android-backup-extractor-git
 pkgver=r111.47bb1dd
-pkgrel=2
+pkgrel=3
 pkgdesc="Utility to extract and repack Android backups created with adb backup"
 arch=('any')
 makedepends=('git' 'apache-ant' 'java-environment>=11')
