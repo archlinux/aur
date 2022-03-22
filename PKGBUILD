@@ -3,13 +3,13 @@
 pkgname='lbe'
 pkgver=2.8.2
 pkgrel=5
-pkgdesc="Simple Java-based LDAP Browser/Editor (last freeware version)"
+pkgdesc="Jarek Gawor's LDAP Browser/Editor (last freeware version)"
 arch=('any')
 #url="http://www.openchannelsoftware.com/projects/LDAP_Browser_Editor"
 url="http://web.archive.org/web/20090201080715/http://mcs.anl.gov/~gawor/ldap/"
 license=('custom')
 depends=('java-runtime=8')
-source=("http://nullroute.eu.org/mirrors/files/ldapbrowser-$pkgver.zip"
+source=("https://nullroute.lt/mirrors/files/ldapbrowser-$pkgver.zip"
         "lbe.desktop"
         "lbe.sh")
 noextract=("ldapbrowser-$pkgver.zip")
