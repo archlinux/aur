@@ -1,30 +1,30 @@
-# Maintainer: max-k <max-kATpostDOTcom>
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: max-k <max-kATpostDOTcom>
+
 pkgname=sonar-scanner
-pkgver="4.6.0.2311"
+pkgver=4.7.0.2747
 pkgrel=1
-pkgdesc="Default launcher to analyze a project with SonarQube"
+pkgdesc='Generic CLI tool to launch project analysis on SonarQube servers'
 arch=('any')
-url="http://www.sonarqube.org/"
+url='https://docs.sonarqube.org/latest/analysis/scan/sonarscanner/'
 license=('LGPL3')
-depends=('java-runtime')
-provides=('sonar-runner')
+depends=('java-runtime' 'sh')
+provides=('sonar-runner' 'sonar-scanner-cli')
 backup=("opt/$pkgname/conf/$pkgname.properties")
 install="$pkgname.install"
 source=("https://binaries.sonarsource.com/Distribution/$pkgname-cli/$pkgname-cli-$pkgver.zip"
         "$pkgname.sh"
         "$pkgname.install")
-sha256sums=('e45599982e455fc36ac896579a9b88957060882b8eaa3a2d69e9e373f9174381'
-            '2438839809633e1d4a46a8fa5ab02063bb3b530a90059c5dc9325e2d4b0cc4e0'
-            '58dcb9b51bb5d1148a62ee6ce60a937d64647993b67ab2c0a4eb2752171e9160')
+sha256sums=('8e116018669ac97cab0555d17145f6de9f0d8ab7a2521b378a19388d0625ec55'
+            '70e67c19cc976f68c28b169647d335cbd803007279ff1c9e84b20ab0ac78d89f'
+            '61f04a4f7771fe95e7f0a993d45002855a4c526cfaa3203845b922045c4ea5cf')
 
 package() {
-    mkdir -p "$pkgdir/etc/profile.d"
-    install -Dm755 "$pkgname.sh" "$pkgdir/etc/profile.d/"
+    install -Dm755 --target-directory="$pkgdir/etc/profile.d/" "$pkgname.sh"
 
     cd "$pkgname-$pkgver"
-    mkdir -p $pkgdir/opt/$pkgname/{bin,conf,lib}
-    install -Dm755 "bin/$pkgname" "$pkgdir/opt/$pkgname/bin/"
-    install -Dm644 "lib/$pkgname-cli-$pkgver.jar" "$pkgdir/opt/$pkgname/lib/"
-    install -Dm644 "conf/sonar-scanner.properties" "$pkgdir/opt/$pkgname/conf/"
+    install -Dm755 --target-directory="$pkgdir/opt/$pkgname/bin/" "bin/$pkgname"
+    install -Dm644 --target-directory="$pkgdir/opt/$pkgname/lib/" "lib/$pkgname-cli-$pkgver.jar"
+    install -Dm644 --target-directory="$pkgdir/opt/$pkgname/conf/" "conf/sonar-scanner.properties"
     ln -sf "/opt/$pkgname/conf" "$pkgdir/etc/$pkgname"
 }
