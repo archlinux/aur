@@ -1,6 +1,6 @@
 post_install() {
     systemctl daemon-reload
-	echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
+    echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
     echo "+  Install successfully                                         +"
     echo "+                                                               +"
     echo "+  Home directory at /etc/clash                                 +"
@@ -15,7 +15,7 @@ post_install() {
 
 post_upgrade() {
     systemctl daemon-reload
-	systemctl restart clash
+    systemctl restart clash
 }
 
 pre_remove() {
