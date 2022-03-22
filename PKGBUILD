@@ -1,26 +1,43 @@
 # Maintainer: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
-pkgname="ykchorus"
-pkgver=0.2.2
+pkgname=ykchorus
+_plugin_uri="https://chrisarndt.de/plugins/$pkgname"
+pkgver=0.2.3
 pkgrel=1
-pkgdesc="A stereo dual-chorus audio effect"
-arch=('i686' 'x86_64')
+pkgdesc='A stereo dual-chorus audio effect LV2, LADSPA and VST2 plugin and JACK application'
+arch=(x86_64)
 url="https://github.com/SpotlightKid/${pkgname}"
-license=('GPL2')
-depends=('libglvnd')
-optdepends=('jack: stand-alone JACK client program')
-groups=('ladspa-plugins' 'lv2-plugins' 'vst-plugins')
-source=("https://github.com/SpotlightKid/${pkgname}/releases/download/v${pkgver}/${pkgname}-v${pkgver}-source.tar.gz")
-md5sums=('5763a1afa37e7cca6367b6c610b815ef')
+license=(GPL2)
+depends=(gcc-libs libglvnd)
+checkdepends=(kxstudio-lv2-extensions lv2lint)
+optdepends=(
+  'jack: for stand-alone JACK client program'
+  'ladspa-host: for LV2 plugin'
+  'lv2-host: for LV2 plugin'
+  'vst-host: for VST plugin'
+)
+groups=(ladspa-plugins lv2-plugins vst-plugins)
+source=("https://github.com/SpotlightKid/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
+sha256sums=('f1783e5fe73efb695fe9eeb298c0494030deb4ed29a048374f6b6ea412826716')
+
+prepare() {
+  cd $pkgname-$pkgver
+  # We don't want the DSSI version:
+  sed -i -e '/ykchorus-dssi/d' Makefile
+  sed -i -e '/dssi_dsp$/d' plugins/YKChorus/Makefile
+}
 
 build() {
-  cd "${srcdir}/${pkgname}"
-
+  cd $pkgname-$pkgver
   make
 }
 
-package() {
-  cd "${srcdir}/${pkgname}"
+check() {
+  cd $pkgname-$pkgver
+  make check
+}
 
-  make DESTDIR="${pkgdir}" install
+package() {
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir/" install
 }

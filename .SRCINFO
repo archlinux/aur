@@ -1,18 +1,22 @@
 pkgbase = ykchorus
-	pkgdesc = A stereo dual-chorus audio effect
-	pkgver = 0.2.2
+	pkgdesc = A stereo dual-chorus audio effect LV2, LADSPA and VST2 plugin and JACK application
+	pkgver = 0.2.3
 	pkgrel = 1
 	url = https://github.com/SpotlightKid/ykchorus
-	arch = i686
 	arch = x86_64
 	groups = ladspa-plugins
 	groups = lv2-plugins
 	groups = vst-plugins
 	license = GPL2
+	checkdepends = kxstudio-lv2-extensions
+	checkdepends = lv2lint
+	depends = gcc-libs
 	depends = libglvnd
-	optdepends = jack: stand-alone JACK client program
-	source = https://github.com/SpotlightKid/ykchorus/releases/download/v0.2.2/ykchorus-v0.2.2-source.tar.gz
-	md5sums = 5763a1afa37e7cca6367b6c610b815ef
+	optdepends = jack: for stand-alone JACK client program
+	optdepends = ladspa-host: for LV2 plugin
+	optdepends = lv2-host: for LV2 plugin
+	optdepends = vst-host: for VST plugin
+	source = https://github.com/SpotlightKid/ykchorus/releases/download/v0.2.3/ykchorus-0.2.3.tar.gz
+	sha256sums = f1783e5fe73efb695fe9eeb298c0494030deb4ed29a048374f6b6ea412826716
 
 pkgname = ykchorus
-
