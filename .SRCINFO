@@ -14,7 +14,8 @@ pkgbase = dwm-nu1ll1nux
 	optdepends = xorg-xbacklight: Allows for changing the brightness of the screen
 	provides = dwm
 	conflicts = dwm
-	source = git+https://gitlab.com/qYp/dwm.git
-	md5sums = SKIP
+	backup = usr/bin/dwm.bak
+	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/dwm-nu1ll1nux-6.2.r.53-1-x86_64.pkg.tar.zst
+	sha256sums = a675bc07bda4b92021ef04a4709b31bf0b6db4e6173111b5f5421f93ddafede8
 
 pkgname = dwm-nu1ll1nux

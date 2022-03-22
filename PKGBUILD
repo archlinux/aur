@@ -19,12 +19,13 @@ optdepends=(
   )
 provides=(dwm)
 conflicts=(dwm)
-source=("git+$url.git")
-md5sums=('SKIP')
+backup=(usr/bin/dwm.bak)
+source=("https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
+sha256sums=('a675bc07bda4b92021ef04a4709b31bf0b6db4e6173111b5f5421f93ddafede8')
 
 pkgver() {
   cd "${_pkgbase}"
-  printf "6.2.r.""$(git rev-list --count HEAD)"
+  printf "6.2.r.""$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -34,7 +35,7 @@ build() {
 
 package() {
 	cd "${_pkgbase}"
-	NAME="${pkgname}" make PREFIX=/usr DESTDIR="${pkgdir}" clean install
-	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 Nu1LL1nuX-DWM.desktop "${pkgdir}/usr/share/xsessions/Nu1LL1nuX-DWM.desktop"
+	NAME="${pkgname}" make PREFIX=/usr DESTDIR="${pkgdir}" install
+	install -Dm644 usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 usr/share/xsessions/Nu1LL1nuX-DWM.desktop "${pkgdir}/usr/share/xsessions/Nu1LL1nuX-DWM.desktop"
 }
