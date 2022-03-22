@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgname=glib-networking
-pkgver=2.70.1
+pkgver=2.72.0
 pkgrel=1
 epoch=1
 pkgdesc="Network extensions for GLib"
@@ -11,13 +11,14 @@ license=(GPL2)
 depends=(glib2 libproxy gnutls gsettings-desktop-schemas)
 makedepends=(meson git)
 checkdepends=(ca-certificates)
-_commit=b0d45b17f745088256c9ad1ae9a7e2467dec6286  # tags/2.70.1^0
+options=(debug)
+_commit=8b3c602894fef3acea44b180658122c1c8ae7bf4  # tags/2.72.0^0
 source=("git+https://gitlab.gnome.org/GNOME/glib-networking.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --tags | sed 's/-/+/g'
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
