@@ -1,7 +1,7 @@
 # Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
 pkgname=python-fpdf2
 _name=${pkgname#python-}
-pkgver=2.5.0
+pkgver=2.5.1
 pkgrel=1
 pkgdesc='Simple PDF generation for Python'
 arch=(any)
