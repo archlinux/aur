@@ -2,7 +2,7 @@
 
 pkgname=python-jupyter-dash
 _pkgname=jupyter-dash
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="Plotly Dash apps interactively from within Jupyter"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('ipython' 'python' 'python-ansi2html' 'python-dash' 'python-flask' 'pyt
 optdepends=()
 makedepends=('python-setuptools')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('eb5eb42ec8cb5e3388d41d895b5ef6e66812e3345cb271cc374318a1a589e687')
+sha256sums=('c64c40dd9a784ca4f2df63a7b869c3c463c4fea07c5474ce41b7e8963e683d94')
 
 build(){
   cd "$_pkgname-$pkgver"

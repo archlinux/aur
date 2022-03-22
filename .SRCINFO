@@ -1,6 +1,6 @@
 pkgbase = python-jupyter-dash
 	pkgdesc = Plotly Dash apps interactively from within Jupyter
-	pkgver = 0.4.0
+	pkgver = 0.4.1
 	pkgrel = 1
 	url = https://github.com/plotly/jupyter-dash
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-jupyter-dash
 	depends = python-retrying
 	depends = python-ipykernel
 	depends = python-requests
-	source = https://pypi.org/packages/source/j/jupyter-dash/jupyter-dash-0.4.0.tar.gz
-	sha256sums = eb5eb42ec8cb5e3388d41d895b5ef6e66812e3345cb271cc374318a1a589e687
+	source = https://pypi.org/packages/source/j/jupyter-dash/jupyter-dash-0.4.1.tar.gz
+	sha256sums = c64c40dd9a784ca4f2df63a7b869c3c463c4fea07c5474ce41b7e8963e683d94
 
 pkgname = python-jupyter-dash
