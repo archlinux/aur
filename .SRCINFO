@@ -1,17 +1,22 @@
 pkgbase = asmjit-git
-	pkgdesc = Complete x86/x64 JIT and Remote Assembler for C++
-	pkgver = r162.bd0d261
+	pkgdesc = Machine code generation for C++
+	pkgver = r398.21a31b8
 	pkgrel = 1
-	url = https://github.com/kobalicek/asmjit
+	url = https://asmjit.com/
+	arch = aarch64
+	arch = armv7h
+	arch = i486
 	arch = i686
+	arch = pentium4
 	arch = x86_64
-	license = customi:zlib
+	license = ZLIB
 	makedepends = cmake
 	makedepends = git
 	depends = gcc-libs
-	options = staticlibs
-	source = git+https://github.com/kobalicek/asmjit.git
-	sha256sums = SKIP
+	provides = asmjit=r398.21a31b8
+	provides = libasmjit.so
+	conflicts = asmjit
+	source = git+https://github.com/asmjit/asmjit.git
+	b2sums = SKIP
 
 pkgname = asmjit-git
-
