@@ -1,11 +1,11 @@
 # Maintainer: Samuel Sloniker <sam@kj7rrv.com>
 
 pkgname=hamclock-big
-pkgver=2.75
+pkgver=2.76
 pkgrel=1
 epoch=
 pkgdesc="Clock and world map with extra features for amateur radio (1600x960 version)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://clearskyinstitute.com/ham/HamClock"
 license=('MIT')
 groups=()
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("https://github.com/kj7rrv/hamclock/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-sha256sums=('985b74c844021a3585ab1c1f8f90ffb58c2dab92c34a300e147b1ff205d75dd0')
+sha256sums=('581241acd5154f71468344977b1e2fc4509894a88ebdc6a282045f87d338cd3c')
 validpgpkeys=()
 
 prepare() {
