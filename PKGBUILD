@@ -1,7 +1,7 @@
 # Maintainer: Léopold Koprivnik Ibghy <skwal.net@gmail.com>
 pkgbase="dtodo"
 pkgname="dtodo-git"
-pkgver=r29.a447748
+pkgver=r31.484fea2
 pkgrel=1
 pkgdesc="Manage the tasks you want to do every day easily "
 arch=('any')
