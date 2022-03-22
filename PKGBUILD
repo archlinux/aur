@@ -10,7 +10,7 @@ url='https://github.com/intel/thunderbolt-software-user-space'
 license=('BSD')
 depends=('boost-libs')
 makedepends=('cmake' 'boost' 'txt2tags' 'python-setuptools')
-source=("https://github.com/intel/thunderbolt-software-user-space/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/intel/thunderbolt-software-user-space/archive/refs/tags/v${pkgver}.tar.gz")
 b2sums=('afc614d0d2f7de3c23988e08c0053d24a04be51d22986497e3863b76ad59f1a8a9e2ab323210df27a3fa2f07ab05122666a3c6bfde146250f0854b2dfb6748f8')
 
 build() {
