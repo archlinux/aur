@@ -7,8 +7,7 @@ pkgbase = rpatool-git
 	license = custom:WTFPL
 	makedepends = git
 	depends = python
-	source = git://github.com/Shizmob/rpatool.git
+	source = git+https://github.com/Shizmob/rpatool.git
 	md5sums = SKIP
 
 pkgname = rpatool-git
-

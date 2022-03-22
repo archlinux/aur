@@ -12,7 +12,7 @@ license=('custom:WTFPL')
 depends=('python')
 makedepends=('git')
 
-source=('git://github.com/Shizmob/rpatool.git')
+source=('git+https://github.com/Shizmob/rpatool.git')
 md5sums=('SKIP')
 
 pkgver() {
