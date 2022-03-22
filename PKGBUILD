@@ -1,14 +1,14 @@
 # Maintainer: musiclover <musiclover382@protonmail.com>
 
 pkgname=identity-git
-pkgver=0.1.3.r1.g97cb2c3
+pkgver=0.1.3.r18.g266a8c3
 pkgrel=1
 pkgdesc='Compare multiple versions of an image or video'
 arch=(x86_64)
 url=https://gitlab.gnome.org/YaLTeR/identity
 license=(GPL3)
-depends=('gtk3' 'gst-plugin-gtk' 'gst-plugins-base' 'gst-plugins-good' 'libhandy')
-makedepends=('git' 'meson' 'rust')
+depends=('gst-plugins-base' 'gst-plugins-good' 'gst-plugin-gtk' 'gtk4' 'libadwaita')
+makedepends=('blueprint-compiler-git' 'git' 'meson' 'rust')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+$url.git)
