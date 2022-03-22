@@ -1,0 +1,6 @@
+arch = i686
+arch = x86_64
+pkgbase = xfway
+    pkgver = 4.13.0
+    pkgrel = 1
+pkgname = xfway
