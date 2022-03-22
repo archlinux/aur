@@ -10,6 +10,6 @@ pkgbase = python-fpdf2
 	depends = python-pillow
 	conflicts = python-fpdf
 	source = https://files.pythonhosted.org/packages/source/f/fpdf2/fpdf2-2.5.1.tar.gz
-	sha256sums = a171cfd49d71fb43f038341225e3506fa6bf42a133e21c44a0612e527879ad67
+	sha256sums = 602f6485ef0156ffa1b39bc83ee5ca00c88d32e5be8651e6ade1a69b825a677e
 
 pkgname = python-fpdf2

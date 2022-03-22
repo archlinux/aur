@@ -11,7 +11,7 @@ conflicts=('python-fpdf')
 depends=('python' 'python-pillow')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('a171cfd49d71fb43f038341225e3506fa6bf42a133e21c44a0612e527879ad67')
+sha256sums=('602f6485ef0156ffa1b39bc83ee5ca00c88d32e5be8651e6ade1a69b825a677e')
 
 build() {
     cd "$_name-$pkgver"
