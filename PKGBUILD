@@ -16,7 +16,7 @@ depends=('ffmpeg' 'hunspell' 'libao' 'libvorbis' 'libxtst' 'lzo' 'zlib' 'xz' 'li
 makedepends=('git')
 conflicts=('goldendict' 'goldendict-git' 'goldendict-svn' 'goldendict-git-opt')
 provides=('goldendict')
-replaces=('goldendict' 'goldendict-git' 'goldendict-svn' 'goldendict-git-opt')
+replaces=('goldendict-svn' 'goldendict-git-opt')
 source=("$pkgname::git+https://github.com/xiaoyifang/goldendict.git")
 md5sums=('SKIP')
 
