@@ -2,7 +2,7 @@
 
 pkgname=cider-git
 _pkgname=Cider
-pkgver=1.3.0
+pkgver=1.3.0.2754.3b707a33
 pkgrel=1
 pkgdesc="Project Cider. A new look into listening and enjoying music in style and performance. Built from the ground up with vue.js and electron. Compiled from the GitHub repositories develop branch."
 arch=("armv7h" "i686" "x86_64")
@@ -15,10 +15,10 @@ provides=('cider')
 conflicts=('cider')
 source=(
     "git+https://github.com/CiderApp/${_pkgname}.git#branch=develop"
-    "Cider.desktop"
+    "cider.desktop"
 )
 sha256sums=('SKIP'
-            '8a8d3aebe1b415fd71d49db1e6d4cfd5470c69c8999ccda20d38b531d0583507')
+            'c41e9b1019411019fce8509e32f770edf33c9e864bf707c30ffe2e3f2dcf1571')
 
     pkgver() {
         cd "$srcdir/$_pkgname"
@@ -51,7 +51,7 @@ package() {
     cd "${srcdir}/${_pkgname}"
 
     echo "Packaging : [Desktop Shortcut] | Icon | Build Files | Other Files | Done"
-    install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
 
     echo "Packaging : Desktop Shortcut | [Icon] | Build Files | Other Files | Done"
     install -Dm644 "${srcdir}/${_pkgname}/resources/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-git}.png"
