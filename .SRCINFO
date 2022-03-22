@@ -13,7 +13,6 @@ pkgbase = openxr-loader-git
 	makedepends = libxrandr
 	makedepends = python
 	makedepends = vulkan-icd-loader
-	makedepends = clang
 	source = openxr-loader::git+https://github.com/KhronosGroup/OpenXR-SDK-Source.git#branch=main
 	md5sums = SKIP
 

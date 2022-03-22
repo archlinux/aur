@@ -7,7 +7,7 @@ pkgrel=1
 arch=('i686' 'x86_64')
 url='https://github.com/KhronosGroup/OpenXR-SDK-Source'
 depends=()
-makedepends=('cmake' 'git' 'vulkan-headers' 'libx11' 'libxxf86vm' 'libxrandr' 'python' 'vulkan-icd-loader' 'clang')
+makedepends=('cmake' 'git' 'vulkan-headers' 'libx11' 'libxxf86vm' 'libxrandr' 'python' 'vulkan-icd-loader')
 license=('apache')
 source=("$_dirname::git+https://github.com/KhronosGroup/OpenXR-SDK-Source.git#branch=main")
 md5sums=('SKIP')
@@ -27,7 +27,7 @@ pkgver() {
 build() {
   mkdir -p "$_dirname"-build
   cd "$_dirname"-build
-  CC=clang CXX=clang++ cmake \
+  cmake \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DCMAKE_BUILD_TYPE=Release \
