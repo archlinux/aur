@@ -1,5 +1,5 @@
 pkgbase = gnome-shell-extension-dash-to-dock-gnome42-git
-	pkgdesc = Move the dash out of the overview transforming it in a dock
+	pkgdesc = Move the dash out of the overview transforming it in a dock (GNOME 42 patches by 3v1n0)
 	pkgver = 72.r1387.5d26575
 	pkgrel = 1
 	url = https://micheleg.github.io/dash-to-dock/
