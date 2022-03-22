@@ -3,14 +3,14 @@
 _appname='firefox-syncstorage'
 _srcname='syncstorage-rs'
 pkgname="${_appname}"-git
-pkgver=0.10.2.r51.gaa18c1a
-pkgrel=2
+pkgver=0.10.2.r64.g38de833
+pkgrel=1
 pkgdesc='Sync storage with build-in token server for running a self-hosted firefox sync server.'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/mozilla-services/'"${_srcname}"
 license=('MPL2')
 depends=('openssl' 'python-fxa' 'python-tokenlib')
-makedepends=('git' 'rust' 'cmake' 'go' 'pkgconf')
+makedepends=('git' 'rust' 'cmake' 'go' 'pkgconf' 'mariadb-libs')
 optdepends=('mysql: to use a local DB server')
 provides=("${_appname}")
 conflicts=("${_appname}")
