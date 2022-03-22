@@ -2,7 +2,7 @@
 
 pkgname=libuser
 pkgver=0.63
-pkgrel=3
+pkgrel=4
 pkgdesc='A standardized interface for manipulating and administering user and group accounts.'
 arch=('x86_64')
 license=('LGPL')
