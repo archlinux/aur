@@ -8,7 +8,7 @@ arch=('any')
 url="https://pypi.org/project/${_pkgname}"
 license=('MIT')
 makedepends=(python-build python-installer python-wheel)
-depends=(python python-requests)
+depends=(python)
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
 sha256sums=('af097bae1b616dde5c5744441e2ddc69e74dfdcb0c263129610d85b87445a59d')
 
