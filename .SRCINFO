@@ -1,7 +1,7 @@
 pkgbase = python-pytablewriter
 	pkgdesc = Python library to write a table in various formats
-	pkgver = 0.64.1
-	pkgrel = 3
+	pkgver = 0.64.2
+	pkgrel = 1
 	url = https://github.com/thombashi/pytablewriter
 	arch = any
 	license = MIT
@@ -13,6 +13,7 @@ pkgbase = python-pytablewriter
 	checkdepends = python-pytest
 	checkdepends = python-sqliteschema
 	checkdepends = python-tablib
+	checkdepends = python-beautifulsoup4
 	checkdepends = python-toml
 	checkdepends = python-yaml
 	makedepends = git
@@ -30,7 +31,7 @@ pkgbase = python-pytablewriter
 	depends = python-typepy
 	depends = python-pytz
 	depends = python-dateutil
-	source = python-pytablewriter::git+https://github.com/thombashi/pytablewriter#tag=v0.64.1?signed
+	source = python-pytablewriter::git+https://github.com/thombashi/pytablewriter#tag=v0.64.2?signed
 	validpgpkeys = BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367
 	sha256sums = SKIP
 
