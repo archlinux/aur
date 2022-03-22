@@ -1,0 +1,21 @@
+pkgbase = deviced-git
+	pkgdesc = Daemon that can be run on a development device that will allow IDEs and other tooling to interact with the device
+	pkgver = r283.fdb99b5
+	pkgrel = 1
+	url = https://gitlab.gnome.org/chergert/deviced
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = libnm
+	depends = jsonrpc-glib
+	depends = flatpak
+	provides = deviced
+	provides = libdeviced
+	conflicts = deviced
+	source = deviced-git::git+https://gitlab.gnome.org/chergert/deviced.git
+	sha256sums = SKIP
+
+pkgname = deviced-git
