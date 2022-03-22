@@ -11,15 +11,15 @@
 
 ### MERGE REQUESTS SELECTION
 
-# available MR: ('536' '786' '923' '1862')
-_merge_requests_to_use=('1862')
+# available MR: ('536' '786' '923' '1915')
+_merge_requests_to_use=('1915')
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=41.4
+pkgver=41.5
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell"
@@ -38,11 +38,13 @@ optdepends=('gnome-control-center: System settings'
 groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver gnome-shell=$epoch:$pkgver)
 conflicts=(gnome-shell)
-_commit=637a9a4dd8574573394980ab13f3e9e4421778b4  # tags/41.4^0
+_commit=87f944a1d43b8ee2586fdaf16520036dc101cdf6  # tags/41.5^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
-        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
+        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
+        "mr1915.patch")
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            'b2ceb32e96838351b4942bff6afdbd9cb1fb197c084a957ce30e23812857054c')
 
 pkgver() {
   cd $_pkgname
@@ -145,12 +147,14 @@ prepare() {
   # Comment: Unlock freezes, it hits me too.
   pick_mr '923'
 
-  # Title: Optimize box-shadow rendering (part 2) [property design]
-  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/1862
+  # Title: Optimize box-shadow rendering (part 2) [chroma key design]
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/1915
   # Type: 1
   # Status: 1
-  # Comment: Part 1 was in !1904 (merged)
-  pick_mr '1862'
+  # Comment: This reduces the render time of the overview by about 15%.
+  #          Part 1 was in !1904 (merged).
+  #          This is an alternate design to !1862 (closed).
+  pick_mr '1915' 'mr1915.patch' 'patch'
 
   git submodule init
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
