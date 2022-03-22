@@ -3,14 +3,14 @@
 pkgname=bililive-recorder-bin
 _pkgname=bililive-recorder
 pkgver=1.3.11
-pkgrel=2
+pkgrel=3
 pkgdesc='B站录播姬 | BiliBili Stream Recorder | 哔哩哔哩直播录制'
 arch=('x86_64')
 options=(staticlibs)
 url='https://github.com/Bililive/BililiveRecorder'
 license=('GPL3')
 provides=("$_pkgname")
-depends=(krb5 zlib)
+depends=()
 source=($pkgname-$pkgver.zip::https://github.com/Bililive/BililiveRecorder/releases/download/v$pkgver/BililiveRecorder-CLI-linux-x64.zip)
 sha256sums=('66bb81f8ae167997beb796ade1be9440ce1df2139225ecf5131f269aef729c69')
 
