@@ -1,17 +1,17 @@
 # Maintainer : Figue <ffigue@gmail.com>
 # Maintainer : Luna Jernberg <droidbittin@gmail.com>
-# Contributor : Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-# Contributor : Ionut Biru <ibiru@archlinux.org>
-# Contributor : Jakub Schmidtke <sjakub@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
+# Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgname=firefox-esr
-pkgver=91.6.1
+pkgver=91.7.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(x86_64)
 license=(MPL GPL LGPL)
-url="https://www.mozilla.org/en-US/firefox/organizations/"
-depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse)
+url="https://www.mozilla.org/en-US/firefox/enterprise/"
+depends=(gtk3 libxt mime-types dbus-glib ffmpeg4.4 nss ttf-font libpulse)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
              autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
              python-setuptools python-psutil python-zstandard lld dump_syms)
@@ -21,15 +21,11 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'speech-dispatcher: Text-to-Speech'
             'hunspell-en_US: Spell checking, American English'
             'xdg-desktop-portal: Screensharing with Wayland')
-provides=(firefox=${pkgver})
-conflicts=(firefox)
-options=(!emptydirs !makeflags !strip)
+options=(!emptydirs !makeflags !strip !lto !debug)
 source=(https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz{,.asc}
-        0001-Use-remoting-name-for-GDK-application-names.patch
-        ${pkgname}.desktop identity-icons-brand.svg)
-sha256sums=('f9d8e011b761537a374696df09cae7a896c6ac01c41683c7ac234d73634b65df'
+        $pkgname.desktop identity-icons-brand.svg)
+sha256sums=('9c3ae9abe1ef10d66d64cbbee96ba2c16840098de8fe0285959f04160d0fee5a'
             'SKIP'
-            '138b972a40a74104791783167770c4a01e62cce00bb9cc75119e152f9ea9f14d'
             '39c4c2d1f465e3fb08e20e3036c2284ee3e8dfbd539abe4ffea3c46b4058f16d'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
@@ -49,9 +45,6 @@ _mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 prepare() {
   mkdir mozbuild
   cd firefox-$pkgver
-
-  # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
-  patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
