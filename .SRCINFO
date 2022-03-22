@@ -1,6 +1,6 @@
 pkgbase = paintstorm-bin
 	pkgdesc = Professional software for digital painting
-	pkgver = 2.47
+	pkgver = 2.48
 	pkgrel = 1
 	url = http://www.paintstormstudio.com
 	install = paintstorm-bin.install
@@ -13,7 +13,7 @@ pkgbase = paintstorm-bin
 	depends = glew1.13
 	provides = paintstorm
 	conflicts = paintstorm
-	source = https://paintstormstudio.com/Paintstorm_linux_v2.47.run.tar.gz
-	sha256sums = aec8902e11cf047341f91f1eedc57849364026439f9f91f24d3113d5672a8ab5
+	source = https://paintstormstudio.com/Paintstorm_linux_v2.48.run.tar.gz
+	sha256sums = 7d789faa4ef1e2732bd36c545b2a7ba057db3811e26654fb834b265749bfc2d9
 
 pkgname = paintstorm-bin
