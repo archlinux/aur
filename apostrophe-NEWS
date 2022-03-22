@@ -1,3 +1,18 @@
+Version 2.6
+~~~~~~~~~~~~~~~
+Released: 2022-03-19
+
+Features:
+- Implemented multiwindow support
+- Save window state on exit
+- Ported to libhandy
+- Improved the overall UI
+- New animations
+- Follow the Dark Mode global preference
+- Add an "automatic" color mode
+- Improve the High Contrast styles
+- Improve inline preview markup
+
 Version 2.5
 ~~~~~~~~~~~~~~~
 Released: 2021-08-28
