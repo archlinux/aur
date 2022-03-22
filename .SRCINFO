@@ -1,7 +1,7 @@
 pkgbase = pimenu
 	pkgdesc = A pie-menu in xlib and imlib2.
 	pkgver = 3.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/phillbush/pmenu
 	arch = x86_64
 	arch = i686
