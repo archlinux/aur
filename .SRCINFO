@@ -1,0 +1,18 @@
+pkgbase = findpkg-git
+	pkgdesc = A fast command not found hook
+	pkgver = 1.0.0.r3.g6dcc809
+	pkgrel = 1
+	url = https://github.com/Alexendoo/findpkg
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = pacman
+	provides = findpkg
+	conflicts = findpkg
+	source = findpkg-git::git+https://github.com/Alexendoo/findpkg
+	source = findpkg.tmpfiles
+	sha256sums = SKIP
+	sha256sums = fc297fa1d14f4fd40282bf982f368aabd9f139792550031f0f2b289996b7b9d0
+
+pkgname = findpkg-git
