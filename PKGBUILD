@@ -7,6 +7,7 @@ arch=('x86_64')
 url='http://gnupg-pkcs11.sourceforge.net/'
 license=('BSD')
 depends=('libassuan' 'libgcrypt' 'libgpg-error' 'openssl' 'pkcs11-helper')
+options=('debug')
 source=("https://github.com/alonbl/$pkgname/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.bz2"
         'gnupg-pkcs11-scd.sysusers.conf')
 sha512sums=('47b9afdc3552fc9a741a725c6732cd31cd2643d7483a50d26222d68d0557b700addff37d8598ee1076575b8bc1e1134a52e06b67d4f94dda7c90141a57ca4182'
