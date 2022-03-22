@@ -16,12 +16,12 @@ med
 netcdf
 opencascade
 openmpi
+pyside2
 pyside2-tools
 python-yaml
 python-matplotlib
 python-pivy
 python-ply
-python-pyside2
 qt5-svg
 qt5-tools
 qt5-webkit
@@ -41,7 +41,6 @@ gcc-fortran
 gendesk
 git
 ninja
-pyside2
 python-shiboken2
 shiboken2
 swig
@@ -55,6 +54,9 @@ optdepends=(
 'luxcorerender: ray tracing support'
 'libspnav: 3d mouse support'
 'openscad: OpenSCAD support'
+'graphviz: dependency graph support'
+'python-markdown: markdown support in addon manager'
+'python-gitpython: support downloading addons with git'
 )
 provides=('freecad')
 conflicts=('freecad' 'freecad-appimage' 'freecad-appimage-git')
@@ -64,9 +66,9 @@ md5sums=('SKIP')
 pkgver() {
   cd FreeCAD
   read -d$'/n' -r major minor patch < <(grep -Po "set\(PACKAGE_VERSION_(MAJOR|MINOR|PATCH) \"\K[0-9]*" CMakeLists.txt) || true
-  count=$(git rev-list --count $(git tag --sort=-creatordate|head -1)..HEAD)
+  count=$((24266 + $(git rev-list --count d29fd7d..HEAD) ))
   hash=$(git rev-parse --short HEAD)
-  printf "%d.%d.%d.r%d.g%s" "$major" "$minor" "$patch" "$count" "$hash"
+  printf "%d.%d.%d.%d.g%s" "$major" "$minor" "$patch" "$count" "$hash"
 }
 
 prepare() {
@@ -94,7 +96,7 @@ build() {
     -D BUILD_SHIP=ON \
     -D BUILD_ASSEMBLY=OFF \
     -D BUILD_COMPLETE=ON \
-    -D BUILD_JTREADER=ON \
+    -D BUILD_JTREADER=OFF \
     -D BUILD_PLOT=ON \
     -D CMAKE_BUILD_TYPE=None \
     -D CMAKE_C_FLAGS="${CFLAGS} -fPIC -w" \
