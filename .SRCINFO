@@ -15,7 +15,7 @@ pkgbase = dwm-nu1ll1nux
 	provides = dwm
 	conflicts = dwm
 	backup = usr/bin/dwm.bak
-	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/dwm-nu1ll1nux-6.2.r.53-1-x86_64.pkg.tar.zst
-	sha256sums = a675bc07bda4b92021ef04a4709b31bf0b6db4e6173111b5f5421f93ddafede8
+	source = git+https://gitlab.com/qYp/dwm.git
+	sha256sums = SKIP
 
 pkgname = dwm-nu1ll1nux
