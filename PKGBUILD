@@ -13,7 +13,7 @@ optdepends=(
 )
 provides=(amarok)
 conflicts=(amarok)
-source=("https://download.kde.org/unstable/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.xz")
+source=("https://download.kde.org/unstable/amarok/${pkgver}/${pkgname}-${pkgver}.tar.xz")
 sha256sums=("6a404829d336f69415fb6bb4ea1d5566759fb95e3e84f904ee9ef82a7be4e84f")
 
 prepare() {
