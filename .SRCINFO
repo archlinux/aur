@@ -1,0 +1,13 @@
+pkgbase = tnt-bin
+	pkgdesc = Tree analysis using New Technology. https://doi.org/10.1111/cla.12160
+	pkgver = 2022.02.21
+	pkgrel = 1
+	url = http://www.lillo.org.ar/phylogeny/tnt/
+	arch = x86_64
+	license = custom
+	depends = tnt-ncurses5-compat-libs
+	provides = tnt
+	source = http://www.lillo.org.ar/phylogeny/tnt/tnt64-no-tax-limit.zip
+	sha256sums = 58ef37e65279180136917a5f10b0ef6466e2e93311a1b4a6a0dd09ad4c4678a6
+
+pkgname = tnt-bin
