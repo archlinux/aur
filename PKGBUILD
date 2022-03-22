@@ -1,9 +1,8 @@
 # Original Maintainer: Jonatan Bravo <zephrax@gmail.com>
 # Maintainer: Hendrik "T4cC0re" Meyer <aur@t4cc0.re>
-# Maintainer: Oliver "OJFord" Ford <dev.aur@ojford.com>
 pkgname=tfenv
 pkgver=2.2.3
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Terraform version manager inspired by rbenv"
 arch=("x86_64")
@@ -28,6 +27,7 @@ package() {
 	mkdir -p "${pkgdir}/opt/tfenv/bin"
 
 	# This patches tfenv to use a separate dir for versions and the default version
+	sed -i 's:${TFENV_CONFIG_DIR}/version:/var/lib/tfenv/version:g' libexec/tfenv-*
 	sed -i 's:${TFENV_ROOT}/version:/var/lib/tfenv/version:g' libexec/tfenv-*
 
 	ln -s "/opt/tfenv/bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
