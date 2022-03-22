@@ -1,8 +1,8 @@
 # Maintainer: Bruno Renié <brutasse@gmail.com>
 pkgname=vaudtax
 pkgver=2021
-_pkgver=1.1-production
-pkgrel=1
+_pkgver=1.3.1-production
+pkgrel=2
 pkgdesc="VaudTax"
 url="https://www.vd.ch/themes/etat-droit-finances/impots/impots-pour-les-individus/remplir-ma-declaration-dimpot/vaudtax-2021/"
 depends=('webkitgtk2' 'jre11-openjdk' 'gnome-vfs')
@@ -34,5 +34,5 @@ package() {
 	install -m755 ${srcdir}/${pkgname} "${pkgdir}"${_app_home}/bin/${pkgname}
 	ln -s ${_app_home}/bin/${pkgname} "${pkgdir}"/usr/bin/${pkgname}
 }
-md5sums=('9dab90f060c483768f471a0fe3a48b3c'
+md5sums=('4f802dd88df214942fa58f06feb64182'
          '877950620de61664340112f413a685c9')
