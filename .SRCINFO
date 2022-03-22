@@ -1,0 +1,17 @@
+pkgbase = sonic-pi-tool
+	pkgdesc = A text editor with particular Esperanto functions, spell and grammar checking and machine translation
+	pkgver = 0.993
+	pkgrel = 3
+	url = https://github.com/emlyn/sonic-pi-tool
+	arch = any
+	license = GPL
+	depends = python
+	depends = python-psutil
+	depends = python-oscpy
+	depends = psutils
+	optdepends = sonic-pi
+	provides = sonic-pi-tool
+	source = https://github.com/emlyn/sonic-pi-tool/blob/master/sonic-pi-tool.py
+	md5sums = 1720a1226df9f7dfaa4e5bf6b3483529
+
+pkgname = sonic-pi-tool
