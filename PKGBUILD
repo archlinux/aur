@@ -12,14 +12,14 @@ makedepends=('tcc')
 source=('git+https://github.com/jcnils/protonhax.git')
 md5sums=('SKIP')
 
+pkgver() {
+  cd "$_pkgname"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
     cd $_pkgname
     make
-}
-
-pkgver() {
-  cd "$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
