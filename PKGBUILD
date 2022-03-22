@@ -1,8 +1,8 @@
 # Maintainer: Piero Estéfano Rojas Effio <pierorojas@tutamail.com>
 
 pkgname='putils'
-pkgver=0.2.0
-pkgrel=2
+pkgver=0.2.1
+pkgrel=1
 pkgdesc='C utils library for the average project'
 arch=('x86_64' 'armv7a')
 makedepends=('nasm')

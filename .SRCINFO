@@ -1,14 +1,14 @@
 pkgbase = putils
 	pkgdesc = C utils library for the average project
-	pkgver = 0.2.0
-	pkgrel = 2
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://github.com/ICanOnlySuffer/putils
 	arch = x86_64
 	arch = armv7a
 	groups = pocha
 	license = MIT
 	makedepends = nasm
-	source = https://github.com/ICanOnlySuffer/putils/archive/refs/tags/v0.2.0.tar.gz
+	source = https://github.com/ICanOnlySuffer/putils/archive/refs/tags/v0.2.1.tar.gz
 	sha256sums = SKIP
 
 pkgname = putils
