@@ -2,7 +2,7 @@
 
 pkgname=android-sdk-cmdline-tools-latest
 pkgver=6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Android SDK Command-line Tools (latest)'
 arch=('x86_64' 'i686')
 url='https://developer.android.com/studio'
@@ -16,8 +16,8 @@ source=('https://dl.google.com/android/repository/commandlinetools-linux-8092744
         "${pkgname}.sh"
         "${pkgname}.csh")
 sha1sums=('8d47ab9a90caa60ce8a95d7e384ec64633bc13b4'
-          'd16076f0a7cbc78605b5669d0928963a9866e7f4'
-          '3e844b22bfcbc159280c5f9e8dfb07ff9559dde5')
+          'cbcfb844067eb40d7cab029c481f3f94f31f0518'
+          'f71b94781633743850c760322dc3b370bc63fcaa')
 
 package() {
   mkdir -p "${pkgdir}/opt/android-sdk/cmdline-tools/"
