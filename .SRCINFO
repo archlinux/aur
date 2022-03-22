@@ -32,7 +32,7 @@ pkgbase = amarok-ffmpeg4
 	optdepends = loudmouth: backend needed by mp3tunes for syncing
 	provides = amarok
 	conflicts = amarok
-	source = https://download.kde.org/unstable/amarok/2.9.71/amarok-ffmpeg4-2.9.71.tar.xz
+	source = https://download.kde.org/unstable/amarok/2.9.71/anarok-2.9.71.tar.xz
 	sha256sums = 6a404829d336f69415fb6bb4ea1d5566759fb95e3e84f904ee9ef82a7be4e84f
 
 pkgname = amarok-ffmpeg4
