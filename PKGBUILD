@@ -1,8 +1,8 @@
 # Maintainer: Riccardo Sacchetto <rsacchetto@nexxontech.it>
 pkgname=trash-d
 pkgver=15
-pkgrel=1
-pkgdesc="https://github.com/rushsteve1/trash-d"
+pkgrel=2
+pkgdesc="A near drop-in replacement for rm that uses the trash bin. Written in D"
 arch=('x86_64')
 url="https://github.com/rushsteve1/trash-d"
 license=('GPL')
