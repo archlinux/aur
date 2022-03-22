@@ -1,5 +1,5 @@
 pkgbase = openxr-loader-git
-	pkgver = 1.0.16.r3.g0158b38
+	pkgver = 1.0.22.r4.g7450c54
 	pkgrel = 1
 	url = https://github.com/KhronosGroup/OpenXR-SDK-Source
 	arch = i686
@@ -14,7 +14,7 @@ pkgbase = openxr-loader-git
 	makedepends = python
 	makedepends = vulkan-icd-loader
 	makedepends = clang
-	source = openxr-loader::git+https://github.com/KhronosGroup/OpenXR-SDK-Source.git#branch=master
+	source = openxr-loader::git+https://github.com/KhronosGroup/OpenXR-SDK-Source.git#branch=main
 	md5sums = SKIP
 
 pkgname = openxr-loader-git
@@ -47,4 +47,3 @@ pkgname = openxr-git
 	depends = openxr-utils-git
 	depends = openxr-layers-git
 	provides = openxr
-
