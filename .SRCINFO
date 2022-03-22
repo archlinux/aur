@@ -1,6 +1,6 @@
 pkgbase = dmenu-translate-git
 	pkgdesc = Small shell script for translating text with dmenu
-	pkgver = r8.aabb7db
+	pkgver = r11.26800e3
 	pkgrel = 1
 	url = https://github.com/NikitaIvanovV/dmenu-translate
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = dmenu-translate-git
 	depends = dmenu
 	depends = translate-shell
 	depends = xclip
+	depends = libnotify
 	source = git+https://github.com/NikitaIvanovV/dmenu-translate
 	sha512sums = SKIP
 

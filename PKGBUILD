@@ -1,13 +1,13 @@
 # Maintainer: Nikita Ivanov <nikita dot vyach dot ivanov at gmail dot com>
 _name=dmenu-translate
 pkgname="$_name-git"
-pkgver=r8.aabb7db
+pkgver=r11.26800e3
 pkgrel=1
 pkgdesc="Small shell script for translating text with dmenu"
 arch=('any')
 url="https://github.com/NikitaIvanovV/dmenu-translate"
 license=('MIT')
-depends=('dmenu' 'translate-shell' 'xclip')
+depends=('dmenu' 'translate-shell' 'xclip' 'libnotify')
 source=("git+$url")
 sha512sums=('SKIP')
 
