@@ -13,8 +13,8 @@ backup=("etc/${pkgname}.conf")
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ogarcia/${pkgname}/archive/${pkgver}.tar.gz"
         "${pkgname}.conf"
         "${pkgname}.service")
-sha256sums=('c27bb8ce69bce6d882248789ed7352ffe8bdbb90a38195eff52cc47f546918bc'
-            '50379ffae83838791bd1d2a26d382b74173d66d317048cf774d74c145caede90'
+sha256sums=('3bed737a6fd852973f08311ca2584f075555e7105884c2951f7472fd846732fd'
+            '93183adf08ab3ba7b9e8189c30c4c01831b42fd3ff1fb4f20ad3cf7cb64c382e'
             '5175d4d689c8f9b63a4d1409ab48d4ec91e37120cec8c4be1f8ba871363be424')
 
 build() {
