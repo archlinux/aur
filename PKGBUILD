@@ -1,7 +1,7 @@
 # Maintainer: Malacology <guoyizhang at malacology dot com>
 # Contributor: Malacology <guoyizhang at malacology dot com>
 
-pkgname=tnt-mpi
+pkgname=tnt-mpi-bin
 _pkgname=mpitnt
 pkgver=2022.02.21
 pkgrel=1
