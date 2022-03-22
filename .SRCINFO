@@ -1,10 +1,11 @@
 pkgbase = clickup
 	pkgdesc = Desktop app for clickup.com
 	pkgver = 3.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://clickup.com
 	arch = x86_64
 	license = custom
+	makedepends = wget
 	depends = fuse2
 	options = !strip
 	source = clickup-desktop-3.0.6-x86_64.AppImage::https://desktop.clickup.com/linux

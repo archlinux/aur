@@ -2,11 +2,12 @@
 # Contributor: Xuanwo <xuanwo@archlinucn.org>
 pkgname=clickup
 pkgver=3.0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop app for clickup.com"
 arch=('x86_64')
 url="https://clickup.com"
 license=('custom')
+makedepends=('wget')
 depends=('fuse2')
 _filename="$pkgname-desktop-$pkgver-x86_64.AppImage"
 source=("${_filename}::https://desktop.clickup.com/linux")
