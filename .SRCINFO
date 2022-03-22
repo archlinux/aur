@@ -1,0 +1,13 @@
+pkgbase = python-x21
+	pkgdesc = Building tool
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://pypi.org/project/x21
+	arch = x86_64
+	license = custom:proprietary
+	makedepends = python-installer
+	depends = python
+	source_x86_64 = https://files.pythonhosted.org/packages/cp310/x/x21/x21-0.1.8-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+	sha256sums_x86_64 = 7dfd93a2c195f7147b6ea2ffe5df49c5025328828ba1f0fe60f83dc735151903
+
+pkgname = python-x21
