@@ -2,7 +2,7 @@
 # Contributor: koraynilay <koray.fra@gmail.com>
 
 pkgname=seashell-git
-pkgver=0.1
+pkgver=0.0.5_alpha
 pkgrel=1
 pkgdesc="A Fast and Simple UNIX shell in C"
 arch=(x86_64)
@@ -30,3 +30,4 @@ package() {
 	# install license
 	install -D -m644 "${srcdir}/$_name/LICENSE" "${pkgdir}/usr/share/licenses/${_name/-git$/}/LICENSE"
 }
+
