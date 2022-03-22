@@ -2,7 +2,7 @@
 # Contributor: Xaryphon <xaryphon at tuta dot io>
 _pkgname=protonhax
 pkgname=$_pkgname-git
-pkgver=VERSION
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Program to help executing outside programs in proton"
 arch=('x86_64')
