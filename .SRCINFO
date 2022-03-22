@@ -1,0 +1,16 @@
+pkgbase = python-tensorflow-io-gcs-filesystem
+	pkgdesc = TensorFlow IO
+	pkgver = 0.24.0
+	pkgrel = 1
+	url = https://pypi.org/project/tensorflow_io_gcs_filesystem
+	arch = x86_64
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = tensorflow
+	source = https://files.pythonhosted.org/packages/cp310/t/tensorflow_io_gcs_filesystem/tensorflow_io_gcs_filesystem-0.24.0-cp310-cp310-manylinux_2_12_x86_64.manylinux2010_x86_64.whl
+	sha256sums = b6ca3a9f751aa9c2f9851520e666d905ad14667281bbafeabe611b7b8f3e1bc5
+
+pkgname = python-tensorflow-io-gcs-filesystem
