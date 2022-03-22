@@ -1,7 +1,7 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=python-tpm2-pytss-git
 _name=${pkgname#python-}
-pkgver=1.0.0.r2.10d7b48
+pkgver=1.1.0rc1.r0.890c19f
 pkgrel=1
 pkgdesc='Python bindings for tpm2-tss'
 arch=('x86_64')
@@ -9,7 +9,8 @@ url='https://github.com/tpm2-software/tpm2-pytss'
 license=('BSD')
 depends=('python' 'python-asn1crypto' 'python-cffi' 'python-cryptography' 'tpm2-tss'
          'libtss2-esys.so' 'libtss2-fapi.so' 'libtss2-mu.so' 'libtss2-rc.so' 'libtss2-tctildr.so')
-makedepends=('git' 'python-pkgconfig' 'python-setuptools' 'python-setuptools-scm' 'python-toml')
+makedepends=('git' 'python-build' 'python-installer' 'python-pkgconfig'
+             'python-setuptools' 'python-setuptools-scm' 'python-wheel')
 checkdepends=('python-pytest' 'swtpm')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -24,7 +25,7 @@ pkgver() {
 
 build() {
 	cd "${_name%-git}"
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 check() {
@@ -36,6 +37,6 @@ check() {
 
 package() {
 	cd "${_name%-git}"
-	python setup.py install --root="$pkgdir" --optimize=1
+	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
