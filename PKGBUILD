@@ -3,8 +3,8 @@
 pkgbase='python-dataclasses-json'
 pkgname=('python-dataclasses-json')
 _module='dataclasses-json'
-pkgver='0.5.6'
-pkgrel=2
+pkgver='0.5.7'
+pkgrel=1
 pkgdesc='Easily serialize Python Data Classes to and from JSON'
 url='https://github.com/lidatong/dataclasses-json'
 depends=(
@@ -20,9 +20,9 @@ makedepends=(
 license=('MIT')
 arch=('any')
 source=(
-    'https://files.pythonhosted.org/packages/source/d/dataclasses-json/dataclasses-json-0.5.6.tar.gz'
+    'https://files.pythonhosted.org/packages/source/d/dataclasses-json/dataclasses-json-0.5.7.tar.gz'
 )
-sha256sums=('1f60be3405dee30b86ffbf6a436db8ba5efaeeb676bfda358e516a97aa7dfce4')
+sha256sums=('c2c11bc8214fbf709ffc369d11446ff6945254a7f09128154a7620613d8fda90')
 
 
 build() {
