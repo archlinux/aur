@@ -1,7 +1,7 @@
 pkgbase = trash-d
-	pkgdesc = https://github.com/rushsteve1/trash-d
+	pkgdesc = A near drop-in replacement for rm that uses the trash bin. Written in D
 	pkgver = 15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rushsteve1/trash-d
 	arch = x86_64
 	license = GPL
