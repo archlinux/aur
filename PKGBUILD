@@ -1,7 +1,7 @@
 # Maintainer: Martin Hundebøll <martin@hundeboll.net>
 _pkgname=tio
 pkgname=$_pkgname-git
-pkgver=1.34.r0.gcbfa118
+pkgver=1.36.r2.g8975c44
 pkgrel=1
 pkgdesc="The simple TTY terminal I/O application"
 url="http://tio.github.io"
@@ -9,7 +9,7 @@ arch=('x86_64' 'i686')
 license=('GPLv2')
 conflicts=('tio')
 provides=('tio')
-depends=('glibc')
+depends=('glibc' 'libinih')
 makedepends=('git' 'meson')
 source=("git+https://github.com/tio/tio.git")
 sha256sums=('SKIP')

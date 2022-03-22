@@ -1,6 +1,6 @@
 pkgbase = tio-git
 	pkgdesc = The simple TTY terminal I/O application
-	pkgver = 1.34.r0.gcbfa118
+	pkgver = 1.36.r2.g8975c44
 	pkgrel = 1
 	url = http://tio.github.io
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = tio-git
 	makedepends = git
 	makedepends = meson
 	depends = glibc
+	depends = libinih
 	provides = tio
 	conflicts = tio
 	source = git+https://github.com/tio/tio.git
