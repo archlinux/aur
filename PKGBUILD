@@ -1,7 +1,7 @@
 # Maintainer: Devin Lin <devin@kde.org>
 pkgname=plasma-mobile
 pkgver=5.24.3
-pkgrel=0
+pkgrel=1
 pkgdesc="Plasma Mobile shell components."
 arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
 url="https://invent.kde.org/plasma/plasma-mobile"
@@ -10,6 +10,7 @@ groups=()
 depends=(
   plasma-nano
   plasma-nm
+  plasma-pa
   powerdevil
   modemmanager-qt
   plasma-wayland-session
