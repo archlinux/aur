@@ -8,7 +8,7 @@ arch=('any')
 url="https://pypi.org/project/${_pkgname}"
 license=('Apache')
 makedepends=(python-build python-installer python-wheel)
-depends=(python python-requests)
+depends=(python)
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
 sha256sums=('54091f6ad175f7f201f8934574e647ce1b50dedc478c5fd968688eb7d7469f95')
 
