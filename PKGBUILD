@@ -4,12 +4,12 @@
 
 pkgname=ethminer
 pkgver=0.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ethereum miner with OpenCL and stratum support (built without CUDA)."
 arch=('x86_64')
 url="https://github.com/ethereum-mining/ethminer"
 license=('MIT')
-depends=('mesa' 'pth')
+depends=('mesa' 'npth')
 makedepends=('cmake' 'python' 'git' 'opencl-headers')
 conflicts=('ethminer-git')
 source=("git+${url}.git#tag=v${pkgver}")
@@ -18,9 +18,6 @@ sha256sums=('SKIP')
 build () {
   cd "$pkgname"
   git submodule update --init --recursive
-
-  # add missing library for linking
-  sed -i 's/CLI11 Boost::system)/CLI11 Boost::system Boost::filesystem)/' ethminer/CMakeLists.txt
 
   mkdir -p build && cd build
 
