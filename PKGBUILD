@@ -2,18 +2,16 @@
 
 _pkgname=pyclip
 pkgname=python-${_pkgname}
-pkgver=0.5.4
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc='Cross-platform clipboard utilities supporting both binary and text data'
+arch=(any)
 url="https://pypi.org/project/${_pkgname}/"
+license=(Apache)
 depends=(python xclip)
 makedepends=(python-setuptools)
-license=(Apache)
-arch=(any)
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/spyoungtech/pyclip/archive/refs/tags/v${pkgver}.tar.gz")
-# source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('18771cf7a98e076817fcbb87ba8e56767d23df8a42a7eee9dde4866a98f49890')
-
+b2sums=('eb67f5f832f80d69ac985a9c16fd1e01edf016c278fc48329af81aa48a98f634835ba018a4d1a278a4117e9550f9d09a2776c353d7a37c77dc3d1f146a7d3af2')
 
 build() {
 	cd "${_pkgname}-${pkgver}"
