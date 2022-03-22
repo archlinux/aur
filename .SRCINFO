@@ -9,6 +9,7 @@ pkgbase = sysbox-ce-bin
 	depends = rsync
 	depends = fuse2
 	optdepends = shiftfs: Operation without userns-remap
+	provides = sysbox-ce
 	conflicts = sysbox-ce
 	source = https://downloads.nestybox.com/sysbox/releases/v0.4.1/sysbox-ce_0.4.1-0.debian-buster_amd64.deb
 	sha256sums = bd96866b52821338a859586f5e5bbf6954d56181e9ef77ab0fb9d05127e9bf97

@@ -11,6 +11,7 @@ sha256sums=('bd96866b52821338a859586f5e5bbf6954d56181e9ef77ab0fb9d05127e9bf97')
 install=install.sh
 depends=('rsync' 'fuse2')
 optdepends=('shiftfs: Operation without userns-remap')
+provides=('sysbox-ce')
 conflicts=('sysbox-ce')
 
 prepare() {
