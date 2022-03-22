@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=commit
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Commit message editor."
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('git: git support'
 #            'gspell: spell checking support' # Spell checking has been temporarily removed
             )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sonnyp/Commit/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6821a2dd3b422f27c42b0119b9fc96b588cfd6a87111f9d5b8e4ac3556dbf136')
+sha256sums=('09070c74b103faaf5b43119d910a3b4b911ec8f27f0924be7bd28c6f7d19f5be')
 
 build() {
   arch-meson Commit-$pkgver build
