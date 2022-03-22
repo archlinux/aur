@@ -1,8 +1,8 @@
 # Maintainer: Coelacanthus <coelacanthus@outlook.com>
 
 pkgname=lemon-lime
-pkgver=0.3.2.1
-pkgrel=2
+pkgver=0.3.3
+pkgrel=1
 epoch=
 pkgdesc="为了 OI 比赛而生的基于 Lemon 的轻量评测系统 | A tiny judging environment for OI contest based on Project_LemonPlus"
 arch=('x86_64' 'i686')
@@ -21,7 +21,7 @@ provides=("lemon-lime")
 conflicts=("lemon-lime-git")
 replaces=()
 backup=()
-options=(debug strip)
+options=()
 install=
 changelog=
 
@@ -29,7 +29,7 @@ source=(
     "https://github.com/Project-LemonLime/Project_LemonLime/releases/download/${pkgver}/Lemon-${pkgver}-source-all.7z"
 )
 noextract=("Lemon-${pkgver}-source-all.7z")
-b2sums=('9114635e62ecef591525fff8f8f361c5ae8cf766bb61d013a2ea63d3f662ee297e85f0aaa9bb2809caf4f3d199b46a32bdc4a146c49c7f6d11978a3900afafb6')
+b2sums=('da967fc7c69a1afc8f8e6f53d15c8070f9243cebd8daa827141c50a254eec8bdc3383abd71c0b3bc99fc3e116e30c4f29ca40f7bec1ccc6cc74d01c76c8977c5')
 
 prepare() {
     cd "$srcdir"
@@ -38,20 +38,20 @@ prepare() {
 
 build() {
 	cd "$srcdir"
-	cmake -S. -B build \
-		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+	cmake . \
+		-DCMAKE_BUILD_TYPE=Release \
 		-GNinja \
 		-DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
 		-DLEMON_BUILD_INFO="Build for Arch Linux" \
 		-DLEMON_BUILD_EXTRA_INFO="Build on $(uname -a | cut -d " " -f3,13)" \
 		-DEMBED_TRANSLATIONS=OFF \
 		-DEMBED_DOCS=OFF
-	ninja -C build
+	ninja
 
 }
 
 package() {
 	cd "$srcdir"
-	ninja -C build install
+	ninja install
 	install -D -m644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
 }
