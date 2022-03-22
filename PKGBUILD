@@ -2,7 +2,7 @@
 # ---
 _pkgbase=st
 pkgname=st-nu1ll1nux
-pkgver=0.8.5.r10
+pkgver=0.8.5.r14
 pkgrel=1
 pkgdesc="Concise Build of Suckless Simple Terminal"
 arch=('x86_64')
@@ -22,7 +22,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "${_pkgbase}"
-  printf "0.8.5.r""$(git rev-list --count HEAD)"
+  printf "0.8.5.r$(git rev-list --count HEAD)"
 }
 
 prepare() {
@@ -37,7 +37,7 @@ build() {
 
 package() {
 	cd "${_pkgbase}"
-	make PREFIX=/usr DESTDIR="${pkgdir}" clean install
+	make PREFIX=/usr DESTDIR="${pkgdir}" install
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 Xdefaults "${pkgdir}/usr/share/doc/${pkgname}/Xdefaults.example"
+	install -Dm644 Xappearance.h "${pkgdir}/usr/share/doc/${pkgname}/Xdefaults.example"
 }
