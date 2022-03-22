@@ -1,6 +1,6 @@
 pkgbase = firefox-profile-switcher-connector-bin
 	pkgdesc = Native connector software for the 'Profile Switcher for Firefox' extension.
-	pkgver = 0.0.9
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/null-dev/firefox-profile-switcher-connector
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = firefox-profile-switcher-connector-bin
 	license = GPL3
 	provides = firefox-profile-switcher-connector
 	conflicts = firefox-profile-switcher-connector
-	source_x86_64 = firefox-profile-switcher-connector-bin-0.0.9-x86_64.rpm::https://github.com/null-dev/firefox-profile-switcher-connector/releases/download/v0.0.9/linux-x64.rpm
-	sha256sums_x86_64 = e01c6c01241fad43cb3dc67702373fe7579b582bd62bbbf0ede7949fd755d560
-	source_i686 = firefox-profile-switcher-connector-bin-0.0.9-i686.rpm::https://github.com/null-dev/firefox-profile-switcher-connector/releases/download/v0.0.9/linux-x86.rpm
-	sha256sums_i686 = 711b8017ab474971893cbb7598a15b6d044199186033c5929e9036dd31e41f8e
+	source_x86_64 = firefox-profile-switcher-connector-bin-0.1.1-x86_64.rpm::https://github.com/null-dev/firefox-profile-switcher-connector/releases/download/v0.1.1/linux-x64.rpm
+	sha256sums_x86_64 = ff060d09f7fb66f6553024825986e8e2f5d654268cb00f9bbc289263cdd18b9b
+	source_i686 = firefox-profile-switcher-connector-bin-0.1.1-i686.rpm::https://github.com/null-dev/firefox-profile-switcher-connector/releases/download/v0.1.1/linux-x86.rpm
+	sha256sums_i686 = 1150205bcbdab2fc1b20c08041912d0245fad62c6851dbb1919aaad01c4ba070
 
 pkgname = firefox-profile-switcher-connector-bin
