@@ -4,7 +4,7 @@
 
 _pkgname=android-sdk
 pkgname="${_pkgname}-dummy"
-pkgver=26.0.2
+pkgver=26.1.1
 pkgrel=1
 _pkgdesc='Google Android SDK'
 pkgdesc="${_pkgdesc}, dummy package"
@@ -26,8 +26,8 @@ source=("${_pkgname}.sh::https://aur.archlinux.org/cgit/aur.git/plain/${_pkgname
         "${_pkgname}.csh::https://aur.archlinux.org/cgit/aur.git/plain/${_pkgname}.csh?h=${_pkgname}"
         "${_pkgname}.conf::https://aur.archlinux.org/cgit/aur.git/plain/${_pkgname}.conf?h=${_pkgname}"
         "license.html::https://aur.archlinux.org/cgit/aur.git/plain/license.html?h=${_pkgname}")
-sha1sums=('30a6ed281d54f8b7be08663a18c367f79c0d8d47'
-          '1bd09bf137fd09171cb426daa5748f117cfb3c25'
+sha1sums=('bc48fea40da956ce4d1afdd7e8d378f5b120e65c'
+          '71bfc50d6b0ea1650c981b24f358020ad2ca7bd6'
           '145bdf3eb41a56574b289c1577a24bc47097ec83'
           'bfb91be7e0b602d765b7a1fcaf0ce1b7e1a93faa')
 
