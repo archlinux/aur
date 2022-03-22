@@ -5,7 +5,7 @@
 
 _pkgname=z
 pkgname=z-git
-pkgver=1.11.7.g9d5a3fe
+pkgver=1.11.23.gb82ac78
 pkgrel=1
 pkgdesc="z keeps track of where you've been and provides a convenient \
 way to jump to directory that you actually use (git version)"
@@ -17,7 +17,7 @@ provides=('z')
 conflicts=('z')
 install=z-git.install
 makedepends=('git')
-source=(git://github.com/rupa/z)
+source=(git+https://github.com/rupa/z)
 md5sums=('SKIP')
 
 
