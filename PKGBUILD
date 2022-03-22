@@ -1,6 +1,6 @@
 # Maintainer: a_weeb_programmer <theawesomegamerortega at gmail dot com>
 pkgname="mod-builder"
-pkgver="1.1"
+pkgver="1.1.1"
 pkgdesc="A cli tool that automatically sets up a minecraft modding environment"
 license=('GPL3')
 depends=('unzip' 'grep' 'sed' 'wget')
