@@ -75,7 +75,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-mini
-pkgver=5.16.12
+pkgver=5.16.16
 pkgrel=1
 pkgdesc='Linux kernel and modules with minimal configuration'
 
@@ -102,9 +102,9 @@ validpgpkeys=(
 )
 b2sums=('07a90cc640ff89e1359c06cee8c38abd33e51f9b9a89833e31a1d2750526fda4a59e8884db3c1ea63df0a37f0d3de6b5a922b014b7313d8abce20d90ac08adcb'
         'SKIP'
-        '6985b1a1a5006aef7a86481cfe35e4bd5672569e111d584f80e37b10e68820400566af0ccc1eae1ed2603661f57b1430935572626717703f256de1665b53c2c9'
+        'a9d94e225cfe46c4116a136da62240130efa32acc97f837abce15c37e1ac9174bd869e4208dbeff3d94fbf78585fbc46f5953f7eaa470607d0d88b7dbacc2db3'
         '534091fb5034226d48f18da2114305860e67ee49a1d726b049a240ce61df83e840a9a255e5b8fa9279ec07dd69fb0aea6e2e48962792c2b5367db577a4423d8d'
-        'b837c6c0d9b5e39047ebddececa28f7fbe078b8c6d8d95028cb6bf5265f7b754415e3eed779d5bce075b1163f9b5fdd28b06f2552abf99061a436e3665aa0c8a')
+        'f37b180eac2737e7398654c9cf2d3b0ee93b194804d22827ad776a605692ddc098cba8ca7ba7dc2f2959cabc4eca92c73cdacbfa34182fdb98ab9199f161b5c4')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -144,7 +144,8 @@ prepare() {
         echo "Enable extra stuff from arch kernel..."
 
         # General setup
-        scripts/config --enable IKCONFIG \
+        scripts/config --set-str DEFAULT_HOSTNAME archlinux \
+                       --enable IKCONFIG \
                        --enable IKCONFIG_PROC \
                        --enable-after IKCONFIG IKCONFIG_PROC \
                        --undefine RT_GROUP_SCHED
