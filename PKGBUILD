@@ -3,7 +3,7 @@
 _id=browserpass@maximbaz.com
 pkgname=browserpass-librewolf
 pkgver=3.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Librewolf extension for Browserpass, browser extension for zx2c4's pass (password manager)"
 arch=('any')
 url="https://github.com/browserpass/browserpass-extension"

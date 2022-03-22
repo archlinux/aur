@@ -1,7 +1,7 @@
 pkgbase = browserpass-librewolf
 	pkgdesc = Librewolf extension for Browserpass, browser extension for zx2c4's pass (password manager)
 	pkgver = 3.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/browserpass/browserpass-extension
 	arch = any
 	license = ISC
