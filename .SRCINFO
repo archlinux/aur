@@ -1,0 +1,14 @@
+pkgbase = seashell-git
+	pkgdesc = A Fast and Simple UNIX shell in C
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/mirko-r/SeaShell
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = make
+	depends = readline
+	source = git+https://github.com/Mirko-r/SeaShell.git
+	md5sums = SKIP
+
+pkgname = seashell-git
