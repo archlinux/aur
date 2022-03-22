@@ -4,7 +4,7 @@
 
 _pkgname=android-sdk-cmdline-tools-latest
 pkgname="${_pkgname}-dummy"
-pkgver=1.0
+pkgver=6.0
 pkgrel=1
 _pkgdesc='Android SDK Command-line Tools (latest)'
 pkgdesc="${_pkgdesc}, dummy package"
@@ -19,8 +19,8 @@ conflicts=("${_pkgname}")
 install="${pkgname}.install"
 source=("${_pkgname}.sh::https://aur.archlinux.org/cgit/aur.git/plain/${_pkgname}.sh?h=${_pkgname}"
         "${_pkgname}.csh::https://aur.archlinux.org/cgit/aur.git/plain/${_pkgname}.csh?h=${_pkgname}")
-sha1sums=('d16076f0a7cbc78605b5669d0928963a9866e7f4'
-          '3e844b22bfcbc159280c5f9e8dfb07ff9559dde5')
+sha1sums=('cbcfb844067eb40d7cab029c481f3f94f31f0518'
+          'f71b94781633743850c760322dc3b370bc63fcaa')
 
 package() {
   install -Dm755 "${_pkgname}.sh" "${pkgdir}/etc/profile.d/${_pkgname}.sh"
