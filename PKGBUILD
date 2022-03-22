@@ -15,8 +15,10 @@ sha256sums=('8dc377255452a68e82c4837ba22c3ee4ae3658971bf0f2ef67ed0b77fc497f91')
 
 prepare() {
   cd ${pkgname}-${pkgver}
-  # TODO: we should skip gtk docs but it's not obvious how it should be done
-  #sed -i 's/gtkdocize/# gtkdocize/' autogen.sh
+
+  sed -i '/^gtkdocize/ s/^/#/' autogen.sh # comment out `gtkdocize` call
+  sed -i '/^SUBDIRS/d' docs/Makefile.am # remove `SUBDIRS` line
+  sed -i '/^AC_CONFIG_FILES/ s_docs/reference/Makefile__' configure.ac # remove `docs/reference/Makefile` from `AC_CONFIG_FILES`
 }
 
 build() {
@@ -26,6 +28,7 @@ build() {
     --prefix=/usr \
     --sysconfdir=/etc \
     --sbindir=/usr/bin \
+    --disable-gtk-doc \
     --disable-gtk-doc-html \
     --disable-rpath
   sed -i 's/SUBDIRS = po docs/SUBDIRS = po/' Makefile
