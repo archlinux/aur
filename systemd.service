@@ -4,9 +4,11 @@ After=network.target
 
 [Service]
 EnvironmentFile=/etc/conf.d/alertmanager-bot
-ExecStart=/usr/bin/alertmanager-bot
+ExecStart=/usr/bin/alertmanager-bot --bolt.path=%S/alertmanager-bot/bolt.db
 ExecReload=/bin/kill -HUP $MAINPID
+
 DynamicUser=true
+StateDirectory=alertmanager-bot
 
 NoNewPrivileges=true
 ProtectSystem=full

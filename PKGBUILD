@@ -2,7 +2,7 @@
 
 pkgname=alertmanager-bot
 pkgver=0.4.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Telegram Bot for Prometheus' Alertmanager"
 arch=('x86_64')
 url="https://github.com/metalmatze/alertmanager-bot"
@@ -16,7 +16,7 @@ source=(
   'systemd.service'
 )
 sha512sums=('b7ee8edcd062e7d6c8d54532673be4e2d270ae8638d5389092dae8528b3da240c3844229642b49f5a043c0167124a8f03c30d8d3c3b9585656a2bc55b62d37d9'
-            '1297f1e44464f3e7c7cc1b49c60d5b209a11f44eb2eba7a9800af636bbce498bf3f3fec4eb6adc14de8c3e1280631995508dc508fc2c860a29e1d666c1be349c')
+            '180c7216e7aacf109c123de99f6dd96fbefaf010c8cc5bb85bf0002fd7fe1bd89ca94ad1af1fd5c540e9470581d95dd6e42503e83547c0740816d0085dcb38d9')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -33,6 +33,7 @@ prepare() {
     go get -t "$pkg"
   done
 
+  sed -i '/BOLT_PATH=\/tmp\/bot.db/d' .env.example
   echo "TEMPLATE_PATHS=/etc/alertmanager-bot/default.tmpl" >> .env.example
 }
 
