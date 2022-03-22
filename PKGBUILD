@@ -19,12 +19,12 @@ sha256sums=("6a404829d336f69415fb6bb4ea1d5566759fb95e3e84f904ee9ef82a7be4e84f")
 prepare() {
   cd "${srcdir}/amarok-${pkgver}"
 
-  mkdir -p "${srcdir}/${pkgname}-${pkgver}/build"
+  mkdir -p "${srcdir}/amarok-${pkgver}/build"
 }
 
 build() {
   cd "${srcdir}/amarok-${pkgver}/build"
-  cmake "${srcdir}/${pkgname}-${pkgver}" \
+  cmake "${srcdir}/amarok-${pkgver}" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib \
     -DBUILD_TESTING=OFF -DPC_LIBAVCODEC_INCLUDEDIR=/usr/include/ffmpeg4.4 -DPC_LIBAVCODEC_LIBDIR=/usr/lib/ffmpeg4.4 -DPC_LIBAVFORMAT_INCLUDEDIR=/usr/include/ffmpeg4.4 -DPC_LIBAVFORMAT_LIBDIR=/usr/lib/ffmpeg4.4 -DPC_LIBAVUTIL_INCLUDEDIR=/usr/include/ffmpeg4.4 -DPC_LIBAVUTIL_LIBDIR=/usr/lib/ffmpeg4.4
