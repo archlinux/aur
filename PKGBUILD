@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-compiz-windows-effect-git
 pkgver=r18.d72dd59
-pkgrel=1
+pkgrel=2
 pkgdesc="Compiz wobbly windows effect with libanimation engine."
 arch=('any')
 url="https://github.com/hermes83/compiz-windows-effect"
@@ -35,7 +35,7 @@ package() {
   local destdir="${pkgdir}/usr/share/gnome-shell/extensions/${uuid}"
 
   install -dm755 "${destdir}"
-  find . -regextype posix-egrep -regex ".*\.(js|json)$" -exec\
+  find . -regextype posix-egrep -regex ".*\.(js|json|xml|compiled|)$" -exec\
      install -Dm 644 {} ${destdir}/{} \;
   install -Dm644 "${srcdir}/${pkgname%-git}/schemas/${schema}" \
     "${pkgdir}/usr/share/glib-2.0/schemas/${schema}"
