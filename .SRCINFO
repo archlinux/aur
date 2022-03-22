@@ -1,0 +1,15 @@
+pkgbase = luajit-2.1-lua52compat
+	pkgdesc = Just-in-time compiler and drop-in replacement for Lua (v2.1 branch with Lua 5.2 compatibility enabled)
+	pkgver = 2.1.0.beta3
+	pkgrel = 2
+	url = http://luajit.org/
+	arch = i686
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	provides = luajit
+	conflicts = luajit
+	source = https://github.com/LuaJIT/LuaJIT/archive/v2.1.0-beta3.tar.gz
+	md5sums = SKIP
+
+pkgname = luajit-2.1-lua52compat
