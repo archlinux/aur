@@ -20,7 +20,7 @@ sha256sums_x86_64=('06f430fedba73e8da7598174ecc5a6a1f97bdb1ba9688daeb2590f3ad00c
 
 depends=("libxss" "libtool" "c-ares" "ctemplate" "tidy" "libxkbfile" "libsecret" "gtk3" "nss" "libglvnd")
 
-optdepends=('libappindicator-gtk3: for system tray support' 'appmenu-gtk-module: for system tray support' "libgnome-keyring: keyrings" "gnome-keyring: keyrings" )
+optdepends=('libappindicator-gtk3: for system tray support' 'appmenu-gtk-module: for system tray support' "libgnome-keyring: keyrings" "gnome-keyring: keyrings" 'zenity: for order to show desktop notification')
 
 package() {
   cd ${srcdir}
