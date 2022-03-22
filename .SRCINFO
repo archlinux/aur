@@ -1,0 +1,19 @@
+pkgbase = python-sentiment-investor
+	pkgdesc = Access the Sentiment Investor API through Python
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://pypi.org/project/sentiment-investor
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry
+	depends = python
+	depends = python-requests
+	depends = python-websocket-client
+	depends = python-beartype
+	source = https://files.pythonhosted.org/packages/source/s/sentiment-investor/sentiment-investor-2.1.0.tar.gz
+	sha256sums = 1b1969058ed540ef7059a54c146bc7b1e424b55c405607d4b407d476e562504e
+
+pkgname = python-sentiment-investor
