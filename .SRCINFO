@@ -1,7 +1,7 @@
 pkgbase = 86box
-	pkgdesc = Emulator of x86-based machines based on PCem.
+	pkgdesc = An emulator for classic IBM PC clones
 	pkgver = 3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://86box.net/
 	arch = pentium4
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = 86box
 	makedepends = ninja
 	makedepends = qt6-tools
 	depends = alsa-lib
+	depends = faudio
 	depends = freetype2
 	depends = libpng
 	depends = libslirp

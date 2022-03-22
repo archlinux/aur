@@ -2,12 +2,12 @@
 pkgname=86box
 _pkgname=86Box
 pkgver=3.3
-pkgrel=1
-pkgdesc='Emulator of x86-based machines based on PCem.'
+pkgrel=2
+pkgdesc='An emulator for classic IBM PC clones'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
 url='https://86box.net/'
 license=('GPL2')
-depends=('alsa-lib' 'freetype2' 'libpng' 'libslirp' 'openal' 'qt6-base' 'rtmidi' 'sdl2')
+depends=('alsa-lib' 'faudio' 'freetype2' 'libpng' 'libslirp' 'openal' 'qt6-base' 'rtmidi' 'sdl2')
 makedepends=('cmake>=3.21' 'ninja' 'qt6-tools')
 optdepends=(
     '86box-roms: ROM files'
