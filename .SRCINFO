@@ -1,0 +1,19 @@
+pkgbase = python-robin-stocks
+	pkgdesc = A Python wrapper around the Robinhood API
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://pypi.org/project/robin_stocks
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	depends = python-pyotp
+	depends = python-dotenv
+	depends = python-cryptography
+	source = https://files.pythonhosted.org/packages/source/r/robin_stocks/robin_stocks-2.1.0.tar.gz
+	sha256sums = 3d6b1d97ecf3191897d09c9dc430b57c6183a38d4c66a64f9c62a8f015bb0ae9
+
+pkgname = python-robin-stocks
