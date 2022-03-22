@@ -1,6 +1,6 @@
 pkgbase = python-phik
 	pkgdesc = Phi_K correlation analyzer library
-	pkgver = 0.12.0
+	pkgver = 0.12.2
 	pkgrel = 2
 	url = https://github.com/kaveio/phik
 	arch = x86_64
@@ -11,13 +11,16 @@ pkgbase = python-phik
 	checkdepends = python-pytest-pylint
 	makedepends = cmake
 	makedepends = pybind11
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-scikit-build
+	makedepends = python-wheel
 	depends = python-joblib
 	depends = python-matplotlib
 	depends = python-numpy
 	depends = python-pandas
 	depends = python-scipy
-	source = PhiK-0.12.0.tar.gz::https://github.com/KaveIO/PhiK/archive/refs/tags/v0.12.0.tar.gz
-	sha512sums = 648d021e0803dbe48bee3658f685b41da9328382ec5f67a7accc6ae015c5002fb26d85947afabdb72a8590afc400d21a8301e58b8198aafb7e549eeee33f0d22
+	source = PhiK-0.12.2.tar.gz::https://github.com/KaveIO/PhiK/archive/refs/tags/v0.12.2.tar.gz
+	sha512sums = b310cb84eb8947807911856c7bf9968f111b5fba8e7f60116ab6dfc038418755a015c80f6049dc6e138126fbe80ecf413b00f9b26d8d75a02669b83098757f29
 
 pkgname = python-phik
