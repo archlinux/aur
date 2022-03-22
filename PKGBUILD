@@ -1,5 +1,5 @@
-# Maintainer: Alex Macleod <alex@macleod.io>
-# Contributor: Luis Martinez <luis dot martinez at disroot dot org>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Alex Macleod <alex@macleod.io>
 
 pkgname=findpkg-git
 pkgver=1.0.0.r3.g6dcc809
