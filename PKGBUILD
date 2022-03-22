@@ -9,12 +9,12 @@ name=cloudcompare
 _fragment="#tag=v2.11.3"
 pkgname=${name}
 pkgver="${_fragment###tag=v}"
-pkgrel=6
+pkgrel=7
 pkgdesc="A 3D point cloud (and triangular mesh) processing software"
 arch=('i686' 'x86_64')
 url="http://www.danielgm.net/cc/"
 license=('GPL2')
-depends=('cgal' 'dlib' 'fbx-sdk' 'ffmpeg' 'glew' 'glu' 'mesa' 'mpir' 'pdal' 'qt5-base' 'qt5-tools' 'qt5-svg' 'shapelib' 'tbb' 'gdal')
+depends=('cgal' 'dlib' 'fbx-sdk' 'ffmpeg4.4' 'glew' 'glu' 'mesa' 'mpir' 'pdal' 'qt5-base' 'qt5-tools' 'qt5-svg' 'shapelib' 'tbb' 'gdal')
 makedepends=('clang' 'cmake' 'doxygen' 'git' 'laz-perf' 'libharu' 'ninja' 'pcl' 'proj' 'python')
 optdepends=('pcl')
 source=("${name}::git+https://github.com/CloudCompare/CloudCompare.git${_fragment}"
@@ -53,8 +53,8 @@ build() {
         -DCOMPILE_CC_CORE_LIB_WITH_CGAL=ON
         -DCOMPILE_CC_CORE_LIB_WITH_TBB=OFF
         -DWITH_FFMPEG_SUPPORT:BOOL=ON
-        -DFFMPEG_INCLUDE_DIR:PATH=/usr/include
-        -DFFMPEG_LIBRARY_DIR:PATH=/usr/lib
+        -DFFMPEG_INCLUDE_DIR:PATH=/usr/include/ffmpeg4.4
+        -DFFMPEG_LIBRARY_DIR:PATH=/usr/lib/ffmpeg4.4
         -DPOISSON_RECON_WITH_OPEN_MP:BOOL=ON
         -DPLUGIN_EXAMPLE_GL:BOOL=ON
         -DPLUGIN_EXAMPLE_IO:BOOL=ON
