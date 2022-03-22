@@ -8,6 +8,7 @@ arch=('any')
 url='https://pypi.org/project/PyFoam'
 license=('GPL3')
 depends=(python)
+optdepends=('python-numpy: required by some functions')
 makedepends=(python-setuptools)
 install="$pkgname.install"
 source=("https://files.pythonhosted.org/packages/02/07/c9634828bb6d0f0d92d37a9973b269488f17b5436b6eea8b5ac49e8121ec/${_pkgname}.tar.gz")
