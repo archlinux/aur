@@ -1,6 +1,6 @@
 pkgbase = shortwave-git
 	pkgdesc = Find and listen to internet radio stations
-	pkgver = 2.0.1.r147.gee10f63
+	pkgver = 2.0.1.r183.g851fb6b
 	pkgrel = 1
 	url = https://apps.gnome.org/app/de.haeckerfelix.Shortwave
 	arch = x86_64
@@ -18,6 +18,7 @@ pkgbase = shortwave-git
 	depends = libshumate
 	provides = shortwave
 	conflicts = shortwave
+	options = !lto
 	source = git+https://gitlab.gnome.org/World/Shortwave.git
 	sha256sums = SKIP
 

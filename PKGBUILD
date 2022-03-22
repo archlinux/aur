@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Philip Goto <philip.goto@gmail.com>
 pkgname=shortwave-git
-pkgver=2.0.1.r147.gee10f63
+pkgver=2.0.1.r183.g851fb6b
 pkgrel=1
 pkgdesc="Find and listen to internet radio stations"
 arch=('x86_64' 'aarch64')
@@ -11,6 +11,7 @@ depends=('gst-plugins-bad' 'gst-plugins-base' 'gstreamer' 'gtk4' 'libadwaita' 'l
 makedepends=('cargo' 'git' 'meson' 'wayland-protocols')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+options=('!lto')
 source=('git+https://gitlab.gnome.org/World/Shortwave.git')
 sha256sums=('SKIP')
 
