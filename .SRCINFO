@@ -1,12 +1,12 @@
 pkgbase = nu1ll1nux
 	pkgdesc = ArchLinux install scripts, with riced configs for the Nu1LL1nuX platform.
-	pkgver = 1.1.r185
+	pkgver = 1.1.r186
 	pkgrel = 1
 	url = https://gitlab.com/qYp/nu1ll1nux
 	arch = x86_64
 	license = MIT
 	depends = dialog
-	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/nu1ll1nux-1.1.r185-1-x86_64.pkg.tar.zst
+	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/nu1ll1nux-1.1.r186-1-x86_64.pkg.tar.zst
 	sha256sums = ffb47c743db419d45a5dcc6da4f5c0eaf247346619654ee63c6381697c47678d
 
 pkgname = nu1ll1nux
