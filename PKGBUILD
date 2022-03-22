@@ -2,7 +2,7 @@
 
 pkgname=klipper-estimator
 _pkgname=${pkgname/-/_}
-pkgver=1.7.0
+pkgver=1.8.0
 pkgrel=1
 pkgdesc="A tool for determining the time a print will take on a 3D printer running Klipper firmware"
 url="https://github.com/Annex-Engineering/klipper_estimator"
@@ -10,7 +10,7 @@ arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 license=("custom:MIT")
 makedepends=(cargo)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Annex-Engineering/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('a9238f5c405f283ff437fb4583d5aea61fa7e6f95c02e0d863a0a2bf725b39e74a5b677a808089010d19085c20a9411858b3e6e54ed9c5444781d3623a22492d')
+sha512sums=('5c192a0f4a338edf1120d56d73ff6f156653500bb3dbf7ed5cc031c56e3f88b9a79111deef91e677d89d111f677c569214afff8f5c95b95a53e20d3193b5d792')
 
 prepare() {
   cd "$_pkgname-$pkgver"
@@ -24,7 +24,7 @@ build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
 
-  # Build expects git metadata to generate version string, building from
+  # The build expects git metadata to generate version string, building from
   # .tar.gz we don't have that so fall back onto defining an environment
   # variable.
   export TOOL_VERSION=${pkgver}
