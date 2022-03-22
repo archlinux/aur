@@ -1,0 +1,24 @@
+pkgbase = python-pyportfolioopt
+	pkgdesc = Financial portfolio optimization in python
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://pypi.org/project/PyPortfolioOpt
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-poetry
+	depends = python
+	depends = python-cvxopt
+	depends = python-cvxpy
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-scikit-learn
+	depends = python-scipy
+	depends = python-yfinance
+	source = https://files.pythonhosted.org/packages/source/P/PyPortfolioOpt/PyPortfolioOpt-1.5.1.tar.gz
+	sha256sums = 49af6f4f3fcf850b4a9808251802d8f26299b32877694d97981da8b5bd344d98
+
+pkgname = python-pyportfolioopt
