@@ -1,6 +1,6 @@
 pkgbase = cabal-fmt-static-git
 	pkgdesc = Format .cabal files
-	pkgver = 0.1.6.r2.g166bcb4
+	pkgver = 0.1.6.r5.g38dfdf0
 	pkgrel = 1
 	url = https://github.com/phadej/cabal-fmt
 	arch = i686
@@ -10,8 +10,6 @@ pkgbase = cabal-fmt-static-git
 	depends = gmp
 	provides = cabal-fmt
 	source = cabal-fmt-static-git::git+https://github.com/phadej/cabal-fmt.git
-	source = 0001-Build-with-GHC-8.10.4-and-9.0.1.patch
 	sha256sums = SKIP
-	sha256sums = 32deb5f7a9278a989980fb19740504c362cdc8787717ee506ec2c3bb3f13690b
 
 pkgname = cabal-fmt-static-git

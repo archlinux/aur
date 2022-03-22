@@ -2,7 +2,7 @@
 
 pkgname=cabal-fmt-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.1.6.r1.g6651ffd
+pkgver=0.1.6.r5.g38dfdf0
 pkgrel=1
 pkgdesc="Format .cabal files"
 arch=('i686' 'x86_64')
@@ -11,10 +11,8 @@ license=('custom')
 provides=("$_pkgname")
 depends=('gmp')
 makedepends=('cabal-install')
-source=("${pkgname}::git+${url}.git"
-    0001-Build-with-GHC-8.10.4-and-9.0.1.patch)
-sha256sums=('SKIP'
-            '32deb5f7a9278a989980fb19740504c362cdc8787717ee506ec2c3bb3f13690b')
+source=("${pkgname}::git+${url}.git")
+sha256sums=('SKIP')
 
 # based on fanficfare-git -- upstream doesn't consistently tag versions, so we
 # have to create them for them
@@ -25,13 +23,6 @@ pkgver() {
     "$(git blame -L /^version:/,+1 *.cabal -p | head -n1 | cut -d' ' -f1)"
   git describe --long --tags --match='v*' \
     | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
-prepare() {
-  cd "$pkgname"
-  git am ../0001-Build-with-GHC-8.10.4-and-9.0.1.patch
-  # patch --forward --strip=1 \
-  #   --input="${srcdir}/0001-Build-with-GHC-8.10.4-and-9.0.1.patch"
 }
 
 build() {
