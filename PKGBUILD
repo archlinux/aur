@@ -13,21 +13,19 @@ depends=(
     'libpcap'
     'python-grpcio'
     'python-protobuf'
-    'python-pyinotify'
     'python-slugify'
     'python-pyqt5'
     'abseil-cpp'
 )
 makedepends=(
     'go'
-    'python-grpcio'
     'python-grpcio-tools'
     'python-setuptools'
 )
 optdepends=(
     'logrotate: for logfile rotation support'
     'hicolor-icon-theme: for gui'
-    'python-notify2: for system notifications'
+    'python-pyinotify: for system notifications'
 )
 backup=(
     'etc/opensnitchd/default-config.json'
