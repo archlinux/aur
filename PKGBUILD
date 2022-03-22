@@ -2,7 +2,7 @@
 # old maintainer:   M.Reynolds <blackboxnetworkproject@gmail.com>
 
 pkgname=tastyworks
-pkgver='1.19.3'
+pkgver='1.20.0'
 pkgrel='1'
 pkgdesc="One of the fastest, most reliable, and most secure trading platforms in the world."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('custom:commercial')
 conflicts=('tastyworks-bin')
 
 source=(https://download.tastyworks.com/desktop-1.x.x/${pkgver}/tastyworks-${pkgver}-1_amd64.deb)
-sha256sums=('4e32edd49973fb99d190e8ab8af19f2c92f4a7c08977cedb39803eadf95bfc50')
+sha256sums=('2d0e82323b5f22e69289e596351babbf998542872e2481d891c8e8bc0a2b9f50')
 
 build() {
 	tar xf data.tar.xz
