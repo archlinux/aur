@@ -1,14 +1,14 @@
 # Maintainer: Boris Barbulovski <bbarbulovski@gmail.com>
 pkgname=xfway
 pkgver=4.13.0
-pkgrel=1
+pkgrel=2
 githash="ff907226b20654974c64ec5d243804acbc47dccb"
 pkgdesc="xfway is a weston clone that xfce can(should) run on top of."
 arch=('x86_64' 'i686')
 url="https://github.com/bokic/xfway"
 license=('GPL')
-depends=('weston')
-makedepends=('xfce4-dev-tools' 'weston')
+depends=('weston' 'wayland' 'gtk3' 'xfconf' 'cairo' 'pango' 'pixman' 'glib2' 'glibc')
+makedepends=('xfce4-dev-tools' 'weston' 'wayland' 'gtk3' 'xfconf' 'cairo' 'pango' 'pixman' 'glib2' 'glibc')
 conflicts=()
 replaces=()
 backup=()
