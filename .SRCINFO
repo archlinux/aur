@@ -1,0 +1,15 @@
+pkgbase = python-pyupgrade
+	pkgdesc = A tool to automatically upgrade syntax for newer versions.
+	pkgver = 2.31.1
+	pkgrel = 1
+	url = https://pypi.org/project/pyupgrade
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/p/pyupgrade/pyupgrade-2.31.1.tar.gz
+	sha256sums = 22e0ad6dd39c4381805cb059f1e691b6315c62c0ebcec98a5f29d22cd186a72a
+
+pkgname = python-pyupgrade
