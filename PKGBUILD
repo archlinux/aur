@@ -1,21 +1,22 @@
 pkgname=android2po
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Convert Android string resources to gettext, and back."
 arch=('any')
 url="https://github.com/miracle2k/$pkgname"
 license=('BSD')
-source=("$url/archive/$pkgver.tar.gz")
-md5sums=('8acc74534874cd215c3fc97ae1e0372a')
-depends=('python2' 'python2-babel' 'python2-lxml' 'python2-argparse' 'python2-termcolor')
-makedepends=('python2-setuptools')
+_pkgver_or_commit=69b36b484ae9d1281787de67cbaef37bde788cc5
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$_pkgver_or_commit.tar.gz")
+sha256sums=('aee4db8a20a59001bb648a25e35f92dae3ecd6e690663af37a7e046ccb8f2963')
+depends=('python' 'python-babel' 'python-colorama' 'python-lxml' 'python-termcolor')
+makedepends=('python-setuptools')
 
 build() {
-  cd "$pkgname-$pkgver"
-  python2 setup.py build
+  cd "$pkgname-$_pkgver_or_commit"
+  python setup.py build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  python2 ./setup.py install --prefix=/usr --root="$pkgdir"
+  cd "$pkgname-$_pkgver_or_commit"
+  python setup.py install --prefix=/usr --root="$pkgdir"
 }
