@@ -5,7 +5,7 @@
 
 # Maintainer: Username-08 <youremail@domain.com>
 pkgname=lightnovel-cli-git
-pkgver=r24.cf4f923
+pkgver=r25.b6d2588
 pkgrel=1
 epoch=
 pkgdesc="A simple program to read lightnovels in the terminal"
@@ -36,6 +36,7 @@ pkgver() {
 
 build() {
     cd "$pkgname"
+    rustup default stable
     cargo build --release
 }
 
