@@ -3,3 +3,9 @@
 *.zip
 *.tar
 *.AppImage
+*.gz
+pkg
+src
+linux
+squashfs-root
+terms.html
