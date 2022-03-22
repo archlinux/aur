@@ -1,8 +1,8 @@
 # Maintainer: JcNils <jcnils at user dot noreply dot github dot com >
 # Contributor: Xaryphon <xaryphon at tuta dot io>
 pkgname=protonhax
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.0.4
+pkgrel=1
 pkgdesc="Program to help executing outside programs in proton"
 arch=('x86_64')
 url="https://github.com/jcnils/protonhax"
