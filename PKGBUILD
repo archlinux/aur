@@ -13,20 +13,20 @@ source=('git+https://github.com/jcnils/protonhax.git')
 md5sums=('SKIP')
 
 build() {
-    cd $pkgname
+    cd $_pkgname
     make
 }
 
 pkgver() {
-  cd "$pkgname"
+  cd "$_pkgname"
   git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-    cd $pkgname
+    cd $_pkgname
 
-    install -d -m755 $pkgdir/usr/share/licenses/$pkgname
-    install -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+    install -d -m755 $pkgdir/usr/share/licenses/$_pkgname
+    install -m644 LICENSE $pkgdir/usr/share/licenses/$_pkgname/LICENSE
 
     install -d -m755 $pkgdir/usr/bin
     install -m755 protonhax $pkgdir/usr/bin/protonhax
