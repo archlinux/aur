@@ -2,22 +2,32 @@
 # Contributor: Bruno Pagani <archange@archlinux.org>
 
 pkgname=prusa-slicer-gtk2
-pkgver=2.4.0
-pkgrel=4
+pkgver=2.4.1
+pkgrel=0
 pkgdesc="G-code generator for 3D printers (built with GTK2)"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://github.com/prusa3d/PrusaSlicer"
 license=(AGPL3)
-depends=(boost-libs curl glew tbb nlopt wxgtk2 qhull openvdb cgal imath dbus libpng)
-makedepends=(cmake boost cereal eigen expat gtest systemd)
+depends=(boost-libs curl glew tbb mpfr nlopt wxgtk2 qhull openvdb)
+makedepends=(cmake boost cereal cgal eigen expat gtest systemd libpng)
+checkdepends=(catch2)
 replaces=(slic3r-prusa3d)
 conflicts=('prusa-slicer')
-source=(${url}/archive/version_${pkgver}/${pkgname}-${pkgver}.tar.gz cereal-1.3.1-compat.patch)
-sha256sums=('906d0acf0d0e064ae3cbaa16ba1a2e24dd9c32ceb2121464cb4d5951c09e66c2'
-            '352c81fc311ff1fa0c78c5ce74b9d0029d64901676ff2863e05bd6eb59a3a1df')
+source=(${url}/archive/version_${pkgver}/${pkgname}-${pkgver}.tar.gz
+        ${pkgname}-fix-lcereal-p1.patch::${url}/commit/0ffcfd8393457fd035576436752267c9a1e6bbcc.patch
+        ${pkgname}-fix-lcereal-p2.patch::${url}/commit/cc788ebb643b6d4048f3550235ac3e9d3697ada0.patch
+        use-system-catch2.patch)
+sha256sums=('a0ba9de6f7c8159d033ea69a2c5ebd6172a97f29902303e9897249447ce5e498'
+            'e110c3ca7cd8034f878b22e4992c442cc200a7c001d570dc2c9eef8a6af41786'
+            'eb5bce1cb5b3970a1aa92fd9b7fe1943da4d7bb2c9908890811090914fef91c4'
+            '3639dc2d290dc9a7d16259e0b421f8d21f16fb4abe46bbb3fab9328930fc5758')
 
 prepare() {
-  patch -d PrusaSlicer-version_${pkgver} -p1 < cereal-1.3.1-compat.patch
+  cd PrusaSlicer-version_${pkgver}
+
+  patch -p1 < ../use-system-catch2.patch # Borrowed from Debian
+  patch -p1 < ../${pkgname}-fix-lcereal-p1.patch
+  patch -p1 < ../${pkgname}-fix-lcereal-p2.patch
 }
 
 build() {
@@ -40,4 +50,9 @@ check() {
 
 package() {
   make -C build DESTDIR="${pkgdir}" install
+
+  # Desktop icons
+  mkdir -p "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/
+  ln -s /usr/share/PrusaSlicer/icons/PrusaSlicer.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/PrusaSlicer.svg
+  ln -s /usr/share/PrusaSlicer/icons/PrusaSlicer-gcodeviewer.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/PrusaSlicer-gcodeviewer.svg
 }
