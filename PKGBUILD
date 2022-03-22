@@ -3,7 +3,7 @@
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
 pkgname=lib32-libsoup3
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
 pkgdesc='HTTP client/server library for GNOME'
 url=https://wiki.gnome.org/Projects/libsoup
@@ -30,7 +30,8 @@ checkdepends=(
   python-quart
 )
 optdepends=('samba: Windows Domain SSO')
-_commit=25a728020c4b53b5db4c4c675070e92f947fbd4d  # tags/3.0.4^0
+options=(debug)
+_commit=ae827ef05b97f4fe1c3dc7aeea64cce9c958ecdc  # tags/3.0.5^0
 source=(git+https://gitlab.gnome.org/GNOME/libsoup.git#tag=${_commit})
 sha256sums=('SKIP')
 
