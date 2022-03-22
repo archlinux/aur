@@ -1,10 +1,11 @@
 pkgbase = python-cobaya
 	pkgdesc = Code for Bayesian Analysis in Cosmology
 	pkgver = 3.1.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/CobayaSampler/cobaya
 	arch = any
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	depends = python-numpy
 	depends = python-scipy
 	depends = python-pytz
@@ -20,9 +21,9 @@ pkgbase = python-cobaya
 	depends = python-matplotlib
 	depends = python-getdist
 	depends = python-fuzzywuzzy
-	depends = python-pyside2
+	depends = pyside2
 	options = !emptydirs
-	source = https://github.com/CobayaSampler/cobaya/archive/v3.1.1.tar.gz
-	sha256sums = 885b9ebb7f53556bd885102434274c2e15ad77d3ec30e5fc3b99078fcea06463
+	source = https://files.pythonhosted.org/packages/source/c/cobaya/cobaya-3.1.1.tar.gz
+	sha256sums = 03b50d5a0bed89f5c2b014f610a2a7b052e1a65e639b578eca89a13975df09c3
 
 pkgname = python-cobaya
