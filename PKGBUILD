@@ -1,27 +1,21 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=blacktex
-pkgver=0.6.0
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="LaTex code prettifier and formatter"
 arch=('any')
-url="https://github.com/nschloe/blacktex"
-license=('GPL3')
-depends=('python-pylatexenc')
+url='https://pypi.org/project/blacktex'
+license=('custom:proprietary')
+depends=('python-pylatexenc' 'python-kgt' 'python-x21')
 optdepends=('python-importlib-metadata: required for python<3.8')
-makedepends=('python-build' 'python-installer' 'python-flit-core')
-checkdepends=('python-pytest' 'python-pytest-randomly')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1f062793b39e85255e1a43fe87d6ac75170dc4145706d4d863cb115a42542aa2')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/b/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('387ce5e65162adc5f30b5b8055f7f89eabacce4018ccaf75417ff279dd22eca5')
 
 build() {
 	cd "$pkgname-$pkgver"
-	python -m build --wheel --skip-dependency-check --no-isolation
-}
-
-check() {
-	cd "$pkgname-$pkgver"
-	PYTHONPATH=./src pytest -x
+	python -m build --wheel --no-isolation
 }
 
 package() {
