@@ -2,7 +2,7 @@
 _pkgname='kp'
 pkgname=("python-$_pkgname")
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python binding of Kompute: Blazing fast, mobile-enabled, asynchronous, and optimized for advanced GPU processing usecases."
 arch=('x86_64')
 depends=('python'
@@ -10,7 +10,8 @@ depends=('python'
 makedepends=('python-setuptools'
              'cmake'
              'gcc')
-optdepends=('python-pyshader: Provide modern GPU shaders method')
+optdepends=('python-pyshader: Provide modern GPU shaders method'
+            'glslang: Shader front end and validator')
 checkdepends=('python-pytest' 'python-pyshader')
 url='https://kompute.cc/'
 license=('Apache')
