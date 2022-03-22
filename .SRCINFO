@@ -1,7 +1,7 @@
 pkgbase = libuser-ldap
 	pkgdesc = LDAP module for libuser
 	pkgver = 0.63
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pagure.io/libuser/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = libuser-ldap
 	makedepends = autoconf
 	makedepends = automake
 	makedepends = gettext
-	makedepends = gtk-doc
 	makedepends = libtool
 	depends = libuser
 	depends = libldap
