@@ -1,0 +1,24 @@
+post_install() {
+	cat << EOF
+
+Please execute
+
+  $ sudo gpasswd -a username kos
+
+Report any issues to:
+https://github.com/TruncatedDinosour/kos/issues
+
+EOF
+}
+
+post_remove() {
+	cat << EOF
+
+Please execute after uninstalling kos
+
+  $ sudo gpasswd -d username kos
+  $ sudo groupdel kos
+
+EOF
+}
+

@@ -1,0 +1,21 @@
+pkgbase = kos
+	pkgdesc = A simple SUID tool written in C++
+	pkgver = 0.0.8
+	pkgrel = 1
+	url = https://github.com/TruncatedDinosour/kos
+	install = kos.install
+	arch = x86_64
+	license = custom:ArAr2
+	makedepends = clang
+	makedepends = pkgconf
+	depends = bash
+	depends = bash-completion
+	depends = libxcrypt
+	provides = kos
+	conflicts = kos
+	source = kos-0.0.8.tar.gz::https://github.com/TruncatedDinosour/kos/archive/refs/tags/v0.0.8.tar.gz
+	source = kos.sysusers
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = kos
