@@ -3,7 +3,7 @@
 
 pkgname=space2ctrl-git
 _gitname=Space2Ctrl
-pkgver=44.4d07080
+pkgver=49.66e245e
 pkgrel=1
 pkgdesc="Turns the spacebar key to another control key"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('sh' 'libxtst' 'xorg-xmodmap')
 makedepends=('git')
 conflicts=('space2ctrl')
 provides=('space2ctrl')
-source=('git://github.com/r0adrunner/Space2Ctrl.git')
+source=('git+https://github.com/r0adrunner/Space2Ctrl.git')
 # Because the sources are not static, skip Git checksum:
 md5sums=('SKIP')
 
