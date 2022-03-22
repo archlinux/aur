@@ -1,0 +1,16 @@
+pkgbase = python-pytz-deprecation-shim
+	pkgdesc = Shims to make deprecation of pytz easier
+	pkgver = 0.1.0.post0
+	pkgrel = 1
+	url = https://pypi.org/project/pytz_deprecation_shim
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/p/pytz_deprecation_shim/pytz_deprecation_shim-0.1.0.post0.tar.gz
+	sha256sums = af097bae1b616dde5c5744441e2ddc69e74dfdcb0c263129610d85b87445a59d
+
+pkgname = python-pytz-deprecation-shim
