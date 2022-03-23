@@ -2,33 +2,19 @@
 
 pkgdesc="OpenMP boosted NDT and GICP algorithms with CUDA enabled"
 url='https://github.com/SMRT-AIST/fast_gicp'
-
 pkgname='ros-noetic-fast-gicp-git'
 pkgver=r142.68b4364
-arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
-license=('BSD-3-Clause License')
+arch=(any)
+pkgrel=3
+license=(BSD)
 provides=(${pkgname::-4})
 cuda=ON #compile with CUDA support
-
-makedepends=(
-  cmake
-  ros-build-tools
-  gcc10
-)
-
-optdepends=(
-  openmp
-)
-
-depends=(
-  pcl  
-  cuda
-  eigen
-)
+makedepends=(cmake ros-build-tools gcc10)
+optdepends=(openmp)
+depends=(pcl cuda eigen)
 
 source=(
-  $pkgname::git://github.com/SMRT-AIST/fast_gicp
+  $pkgname::git+https://github.com/SMRT-AIST/fast_gicp
   nvbio::https://github.com/NVlabs/nvbio/archive/9bb7e6363c65f65e46f21df09bef98e404250f10.tar.gz
 )
 
@@ -48,24 +34,23 @@ prepare(){
 }
 
 build() {
-    # Use ROS environment variables
-    source /usr/share/ros-build-tools/clear-ros-env.sh
-    [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
+  # Use ROS environment variables
+  source /usr/share/ros-build-tools/clear-ros-env.sh
+  [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
-    # Build project
-    cmake -Wno-dev -B build -S ${pkgname} \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DCATKIN_ENABLE_TESTING=0 \
-            -DCATKIN_BUILD_BINARY_PACKAGE=ON \
-            -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
-            -DPYTHON_EXECUTABLE=/usr/bin/python3 \
-            -DSETUPTOOLS_DEB_LAYOUT=OFF \
-            -DBUILD_VGICP_CUDA=$cuda \
-            -DCMAKE_CXX_STANDARD=17 \
-            -DCUDA_HOST_COMPILER=/usr/bin/gcc-10
+  # Build project
+  cmake -Wno-dev -B build -S ${pkgname} \
+          -DCATKIN_ENABLE_TESTING=0 \
+          -DCATKIN_BUILD_BINARY_PACKAGE=ON \
+          -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+          -DPYTHON_EXECUTABLE=/usr/bin/python3 \
+          -DSETUPTOOLS_DEB_LAYOUT=OFF \
+          -DBUILD_VGICP_CUDA=$cuda \
+          -DCMAKE_CXX_STANDARD=17 \
+          -DCUDA_HOST_COMPILER=/usr/bin/gcc-10
 }
 
 package() {
-    cd build
-    make DESTDIR="${pkgdir}/" install
+  cd build
+  make DESTDIR="${pkgdir}/" install
 }
