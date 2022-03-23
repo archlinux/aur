@@ -1,0 +1,4 @@
+pkg/
+src/
+*.pkg.tar.*
+readability-cli-*.tar.bz2

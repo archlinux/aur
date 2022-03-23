@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# Workaround for Deno parsing the script as JavaScript rather than TypeScript
+# when called as a symlink without file extension
+/usr/lib/readability-cli/readable.ts $@

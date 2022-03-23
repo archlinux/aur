@@ -1,0 +1,20 @@
+pkgbase = deno-readability-cli
+	pkgdesc = Firefox Reader Mode in your terminal! - CLI tool for Mozilla's Readability library
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://gitlab.com/gardenappl/readability-cli
+	arch = any
+	license = GPL3
+	makedepends = deno
+	depends = deno
+	provides = readability-cli
+	provides = readable
+	conflicts = readability-cli
+	source = https://gitlab.com/gardenappl/readability-cli/-/archive/v2.4.0/readability-cli-v2.4.0.tar.bz2
+	source = readable
+	source = readable-sandbox
+	b2sums = 60c6f69329696836a9faf77c6b56ce650f17dedde35ec081e13558f1b7577f87cc9c56865caffbd86b8b3f15c389f5f5474581a7a4965757fe3564916e28d936
+	b2sums = 792be8184fbdf51fc8a4aa90b9c55de9814700bb1396ac24dd7a1759413144ddabd64ff7391f55b9ae602a0415b86a7a51fbfda0e1856cd1a476f232fea4939c
+	b2sums = 43611897b8da061ef7bea6513d05c42ea73c17a35020b86f68a62e61a26b0d6cd61d0440cfb6625d30eac9393d8f8d7ce94d40f1c6797f9cf85e45d73f983c86
+
+pkgname = deno-readability-cli

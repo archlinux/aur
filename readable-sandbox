@@ -1,0 +1,4 @@
+#!/bin/sh
+deno run --no-check \
+	--allow-env=LANGUAGE,LC_ALL,LC_MESSAGES,LANG \
+	/usr/lib/readability-cli/readable.ts $@
