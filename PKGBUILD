@@ -3,7 +3,7 @@ pkgname=v2ray-rules-dat-autoupdate
 _pkgname=v2ray-rules-dat
 pkgdesc="Enhanced edition of V2Ray and Xray rules dat files, compatible with Trojan-Go. Automaitcally update."
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/Loyalsoldier/v2ray-rules-dat"
 tag=$(git ls-remote --tags --refs --sort="version:refname" "$url".git | awk -F/ 'END{print$NF}')
@@ -26,7 +26,7 @@ source=("rules-${tag}.zip"::"${url}/releases/download/${tag}/rules.zip"
         "${pkgname}.timer")
   
 sha256sums=($(curl -sL "${url}/releases/download/${tag}/rules.zip.sha256sum" | awk '{print $1}')
-            '48d824f149fddadf512a2a3705ec82216036becb0e013ae663ccf7ffe16998ab'
+            '5ec5c6bd6735162fa1af92aa3ca8b3de47a2ff2dfab8567b5e443cdbd54f6481'
             'd5deeb9e02b2cf6e233da4369bb7d74e06054bd54ee9e62875f3342d7c931dbd'
             '5d0fac85c93516f45281f3e45071f4f98c4a9eadfbd72602129c888c823b79ef'
             'ea8090be783d0d60f441d25ddad9686b75e5b8405311cc21d29235e80b1671b7'
