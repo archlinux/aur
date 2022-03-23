@@ -1,6 +1,6 @@
 pkgbase = fastfetch-git
 	pkgdesc = Like neofetch, but much faster because written in c
-	pkgver = r610.2310162
+	pkgver = r640.4895c68
 	pkgrel = 1
 	url = https://github.com/LinusDierheimer/fastfetch
 	arch = x86_64
@@ -33,12 +33,8 @@ pkgbase = fastfetch-git
 	optdepends = dbus: Media player and song output
 	optdepends = xfconf: XFWM theme + xfce-terminal font
 	provides = fastfetch
-	provides = fastfetch-garuda
-	provides = flashfetch
 	conflicts = fastfetch
-	conflicts = fastfetch-garuda
-	conflicts = flashfetch
-	source = git+https://github.com/LinusDierheimer/fastfetch.git
+	source = fastfetch-git-r640.4895c68::git+https://github.com/LinusDierheimer/fastfetch.git
 	sha256sums = SKIP
 
 pkgname = fastfetch-git

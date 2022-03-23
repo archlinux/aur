@@ -1,12 +1,13 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=r610.2310162
+pkgver=r640.4895c68
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c"
 arch=("x86_64" "i686" "pentium4" "armv5" "armv6h" "armv7h" "aarch64")
 url="https://github.com/LinusDierheimer/fastfetch"
 license=("MIT")
+
 depends=()
 makedepends=(
   "git"
@@ -35,29 +36,29 @@ optdepends=(
   "xfconf: XFWM theme + xfce-terminal font"
   # "rpm-tools: rpm package count"
 )
+
 _provides_and_conflicts=(
   "fastfetch"
-  "fastfetch-garuda"
-  "flashfetch"
 )
 provides=("${_provides_and_conflicts[@]}")
 conflicts=("${_provides_and_conflicts[@]}")
-source=("git+https://github.com/LinusDierheimer/fastfetch.git")
+
+_src_dir="${pkgname}-${pkgver}"
+source=("${_src_dir}::git+https://github.com/LinusDierheimer/fastfetch.git")
 sha256sums=("SKIP")
 
 pkgver() {
-  cd "fastfetch/"
+  cd "${_src_dir}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build()
-{
-    cd "${srcdir}/fastfetch"
-    cmake .
-    cmake --build . --target fastfetch # don't build flashfetch, as it is meant to be configured at compile time. So it doesn't make sense to pre build it.
+_build_dir="build"
+
+build() {
+  cmake -B "${_build_dir}" -S "${_src_dir}" -Wno-dev
+  cmake --build "${_build_dir}" --target fastfetch # don't build flashfetch, as it is meant to be configured at compile time. So it doesn't make sense to pre build it.
 }
 
 package() {
-    cd "${srcdir}/fastfetch"
-    cmake --install . --prefix "${pkgdir}/usr"
+  cmake --install "${_build_dir}" --prefix "${pkgdir}/usr"
 }
