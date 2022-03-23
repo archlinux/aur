@@ -2,7 +2,7 @@
 pkgname=sysbox-ce-git
 pkgver=r1530.cf2cfe0
 miscfiles_pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)"
 url="https://github.com/nestybox/sysbox"
 arch=('x86_64')
@@ -27,7 +27,7 @@ depends=('rsync' 'fuse2')
 makedepends=('git' 'go' 'protobuf' 'protobuf-go')
 # Those next makedepends are not *actually* needed but the build process tries to launch them anyway
 makedepends+=('lsb-release' 'inetutils')
-optdepends=('shiftfs: Operation without userns-remap')
+optdepends=('shiftfs: For uid-mapping on very old kernels without idmapped-mounts')
 
 pkgver() {
 	cd sysbox
