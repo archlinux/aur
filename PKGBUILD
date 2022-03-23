@@ -12,7 +12,7 @@
 
 pkgname=mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=22.1.0_devel.151511.80a29748268.40c467925f262c73b1da24b1dff22a4e
+pkgver=22.1.0_devel.151514.a5884df949e.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('git' 'python-mako' 'xorgproto'
@@ -26,14 +26,11 @@ conflicts=('mesa' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-mesa-laye
 url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main'
-        'LICENSE'
-        'missing-include.patch')
+        'LICENSE')
 md5sums=('SKIP'
-         '5c65a0fe315dd347e09b1f2826a1df5a'
-         'e0271bc87a5e9f4a39d3f981816555ca')
+         '5c65a0fe315dd347e09b1f2826a1df5a')
 sha512sums=('SKIP'
-            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
-            '2e25cbb6aa5cbe4bef0c4b52cd5ef1104862e763eea19b697e1bb4d8b84680403de7f137195883fa33422f1dbb5d385c9ac762f7202d38b50bbbc3146f1dc5df')
+            '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2')
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
