@@ -2,7 +2,7 @@
 pkgname=v2ray-rules-dat-autoupdate
 _pkgname=v2ray-rules-dat
 pkgdesc="Enhanced edition of V2Ray and Xray rules dat files, compatible with Trojan-Go. Automaitcally update."
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 arch=('any')
 url="https://github.com/Loyalsoldier/v2ray-rules-dat"
@@ -26,7 +26,7 @@ source=("rules-${tag}.zip"::"${url}/releases/download/${tag}/rules.zip"
         "${pkgname}.timer")
   
 sha256sums=($(curl -sL "${url}/releases/download/${tag}/rules.zip.sha256sum" | awk '{print $1}')
-            'fed8eef3df1799a7e7919396eb3f2f1da6c03d3b950c8601e723ddb27db8d7f7'
+            '48d824f149fddadf512a2a3705ec82216036becb0e013ae663ccf7ffe16998ab'
             'd5deeb9e02b2cf6e233da4369bb7d74e06054bd54ee9e62875f3342d7c931dbd'
             '5d0fac85c93516f45281f3e45071f4f98c4a9eadfbd72602129c888c823b79ef'
             'ea8090be783d0d60f441d25ddad9686b75e5b8405311cc21d29235e80b1671b7'
@@ -46,8 +46,10 @@ package() {
 
   mkdir -p "${pkgdir}/usr/share/"{v2ray,xray}
 
-  ln -sf "/var/lib/${_pkgname}/"*.dat "${pkgdir}/usr/share/v2ray/"
-  ln -sf "/var/lib/${_pkgname}/"*.dat "${pkgdir}/usr/share/xray/"
+  ln -sf "/var/lib/${_pkgname}/"geosite.dat "${pkgdir}/usr/share/v2ray/"
+  ln -sf "/var/lib/${_pkgname}/"geoip.dat "${pkgdir}/usr/share/v2ray/"
+  ln -sf "/var/lib/${_pkgname}/"geosite.dat "${pkgdir}/usr/share/xray/"
+  ln -sf "/var/lib/${_pkgname}/"geoip.dat "${pkgdir}/usr/share/xray/"
 
   install -Dm755 "./${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   install -Dm644 "./${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"

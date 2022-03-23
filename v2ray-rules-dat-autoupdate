@@ -7,13 +7,16 @@ GitHub="https://github.com/Loyalsoldier/v2ray-rules-dat/releases/latest/download
 JsDelivr="https://cdn.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release"
 
 download_files() {
+
+  cd /var/lib/v2ray-rules-dat || exit
+
   echo "Fetching rules.zip"
   curl -LO "${1}/rules.zip{,.sha256sum}"
   sha256sum --check "rules.zip.sha256sum"
 
   bsdtar -xf ./rules.zip
   
-  rm -vf $(find . -maxdepth 1 -type f ! -name "geo*.dat")
+  rm -vf $(find . -maxdepth 1 -type f ! \( -name "geo*.dat" -o -name "\.*" \))
 }
 
 case "${1}" in
