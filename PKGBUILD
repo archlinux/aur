@@ -4,7 +4,7 @@ _appname=hoverclock
 pkgname=hoverclock-bin
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Hoverclock - A simple floating clock for linux"
+pkgdesc="Hoverclock - A simple floating clock for Linux"
 arch=('x86_64')
 url="https://github.com/kostoskistefan/hoverclock"
 license=('GPL3')
@@ -25,23 +25,20 @@ package() {
     chmod 755 "${srcdir}/bin/${_appname}"
 
     # Copy app files
-    cp -R "${srcdir}/." "${pkgdir}/opt/${_appname}"
+    cp -R ${srcdir}/{bin,icons,lib,plugins,hoverclock.sh} "${pkgdir}/opt/${_appname}/"
 
     # Install Desktop file
     install -Dm644 "${srcdir}/${_appname}.desktop" "${pkgdir}/usr/share/applications/${_appname}.desktop"
 
     # Install icon
-    install -dm755 "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
-    cp -a "${srcdir}/icons/" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/"
+    install -Dm644 "${srcdir}/icons/${_appname}.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/${_appname}.svg"
 
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${_appname}/${_appname}.sh" "${pkgdir}/usr/bin/${_appname}"
 
     # Install license
-    install -dm755 "${pkgdir}/usr/share/licenses/${_appname}/"
-    ln -s "/opt/${_appname}/LICENSE" "${pkgdir}/usr/share/licenses/${_appname}"
-
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_appname}/LICENSE"
 }
 
 post_install() {
