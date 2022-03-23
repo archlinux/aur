@@ -46,6 +46,7 @@ pkgbase = jellyfin-ffmpeg
 	depends = zvbi
 	optdepends = intel-media-driver: for Intel VAAPI support (Broadwell and newer)
 	optdepends = intel-media-sdk: for Intel Quick Sync Video
+	optdepends = onevpl-intel-gpu: for Intel Quick Sync Video (12th Gen and newer)
 	optdepends = intel-compute-runtime: for Intel OpenCL runtime based Tonemapping
 	optdepends = libva-intel-driver: for Intel legacy VAAPI support (10th Gen and older)
 	optdepends = libva-mesa-driver: for AMD VAAPI support
