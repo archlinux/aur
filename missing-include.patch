@@ -1,0 +1,12 @@
+diff --git a/src/gallium/frontends/clover/llvm/metadata.hpp b/src/gallium/frontends/clover/llvm/metadata.hpp
+index 578a50c0d21..92548c0f0a3 100644
+--- a/src/gallium/frontends/clover/llvm/metadata.hpp
++++ b/src/gallium/frontends/clover/llvm/metadata.hpp
+@@ -33,6 +33,7 @@
+ 
+ #include <vector>
+ #include <llvm/Config/llvm-config.h>
++#include <llvm/IR/Constants.h>
+ #include <llvm/IR/Module.h>
+ #include <llvm/IR/Metadata.h>
+ 
