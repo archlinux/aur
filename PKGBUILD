@@ -1,33 +1,29 @@
-# Maintainer: Bernhard Landauer <oberon@manjaro.org>
+# Maintainer:  twa022 <twa022 at gmail dot com>
 
 pkgname=xfce4-indicator-plugin
-_maj=2.3
-pkgver=$_maj.4
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Plugin to display information from applications in the Xfce4 panel"
-arch=('i686' 'x86_64')
-url="http://goodies.xfce.org/projects/panel-plugins/$pkgname"
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+url='https://docs.xfce.org/panel-plugins/xfce4-indicator-plugin/start'
 license=('GPL')
-depends=('hicolor-icon-theme'
-         'ido'
-         'libindicator-gtk2'
-         'libindicator-gtk3'
-         'xfce4-panel'
-         'xdg-utils')
-makedepends=('intltool' 'xfce4-dev-tools')
-optdepends=('indicator-application-gtk2: take menus from applications and place them in the panel'
-            'indicator-sound: unified sound menu')
-install=$pkgname.install
-source=(http://archive.xfce.org/src/panel-plugins/$pkgname/$_maj/$pkgname-$pkgver.tar.bz2)
-sha256sums=('02773722cf99113bc64cc399df47c3a639e206a864c6995be68fe8281076582e')
+depends=('hicolor-icon-theme' 'libindicator-gtk3' 'xfce4-panel' 'xdg-utils')
+makedepends=('intltool')
+source=(https://archive.xfce.org/src/panel-plugins/${pkgname}/${pkgver%.*}/${pkgname}-${pkgver}.tar.bz2)
+sha256sums=('926af0930417ebb45f3acc71b6bee66cc21593c79ec0ca9e8782147e6c50f020')
 
 build() {
-  cd $pkgname-$pkgver
-  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --libexecdir=/usr/lib --disable-static
+  cd ${pkgname}-${pkgver}
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --libexecdir=/usr/lib \
+    --disable-static
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
-  make DESTDIR="$pkgdir/" install
+  cd ${pkgname}-${pkgver}
+  make DESTDIR="${pkgdir}" install
 }
