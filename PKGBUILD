@@ -1,7 +1,7 @@
 # Maintainer: Gabriel M. Dutra <nulldutra@gmail.com>
 
 pkgname=atlantis
-pkgver=0.18.2
+pkgver=0.19.2
 pkgrel=1
 pkgdesc=" Terraform Pull Request Automation"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/runatlantis/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('72733047a46b937aaecb8d3b8848a2f5fcd40dfb25a613ade989a7a2f313519e')
+sha256sums=('5c0da4efc288a2cd3f0456619e3048922542a421798ebb834b8800fc4dcf124c')
 
 prepare(){
   cd "$pkgname-$pkgver"
