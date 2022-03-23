@@ -13,9 +13,9 @@ pkgname=('mythplugins-mytharchive'
          'mythplugins-mythweather'
          'mythplugins-mythweb'
          'mythplugins-mythzoneminder')
-br=fixes/31
+br=fixes/32
 t="${br#*/}+${br%/[0-9][0-9]}"
-pkgver=31+fixes.20210401.563a05b7
+pkgver=32+fixes.20220319.5432d116
 pkgrel=1
 epoch=0
 arch=('any')
@@ -32,7 +32,7 @@ source=("git+https://github.com/MythTV/mythweb#branch=$br"
 )
 sha256sums=('SKIP'
             'SKIP'
-            '08c46792e5bae7060a9362b1952caf5dc783f2ad7c609bdd61abd974499329c7')
+            '51c9fb042a3f2acf4ab9682cb48e9a123cf8f0e312fd8b25dd187bb56e0d701a')
 
 pkgver() {
   cd "${srcdir}/mythtv/$pkgbase"
