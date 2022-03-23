@@ -1,7 +1,7 @@
 # Maintainer: Max1Truc <max1truc @ disroot dot org>
 _pkgname="magic-wormhole.rs"
 pkgname="wormhole-rs"
-pkgver="0.3.1"
+pkgver="0.4.0"
 pkgrel="1"
 pkgdesc="Rust implementation of Magic Wormhole, with new features and enhancements"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('EUPL-1.2+')
 makedepends=('cargo')
 # optdepends=('bash-completion: Bash completion')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('57e798b53b3e4249d29f0cd60cd00d113bffb3ee7ade45ce8a2f6763c29bcd37e1567df05cf849077744736b7e59a37aa645ea5671ae196fea35c048baa7f631')
+sha512sums=('25a20904fd222479988ceef8ce51aa850291ee9c9047de7a26017b53bede9c3636acc6d7e5c66bdc01f379adbc2a95e3b05e50d5903be68a3d8506183cf1af8c')
 
 _sourcedirectory="$_pkgname-$pkgver"
 
