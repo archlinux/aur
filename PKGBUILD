@@ -1,7 +1,7 @@
 # Maintainer: Piero Estéfano Rojas Effio <pierorojas@tutamail.com>
 
 pkgname='ptree'
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='A tree directory visualizer'
 arch=('x86_64' 'armv7a')
