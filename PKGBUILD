@@ -2,9 +2,9 @@
 pkgname=signaldctl
 _basename=signald-go
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="cli interface to signald alternative signal client daemon"
-arch=('x86' 'armv7h' 'aarch') # The CI infrastructure builds for these so they are considered tested
+arch=('x86_64' 'armv7h' 'aarch') # The CI infrastructure builds for these so they are considered tested
 url="https://gitlab.com/signald/${_basename}/-/blob/main/cmd/signaldctl/README.md"
 license=('GPL')
 depends=()
