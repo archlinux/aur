@@ -1,21 +1,20 @@
 pkgbase = landslide-git
 	pkgdesc = Generate html5 slideshow from Markdown or reStructuredText sources
-	pkgver = 0.4.0.r405.g8f00b46
+	pkgver = 0.4.0.r414.ga76d4e2
 	pkgrel = 1
 	url = http://github.com/adamzap/landslide
 	arch = any
 	license = Apache License
-	makedepends = python2-distribute
-	depends = python2
-	depends = python2-pygments
-	depends = python2-markdown
-	depends = python2-jinja
-	depends = python2-docutils
-	depends = python2-six
+	makedepends = python-distribute
+	depends = python
+	depends = python-pygments
+	depends = python-markdown
+	depends = python-jinja
+	depends = python-docutils
+	depends = python-six
 	optdepends = prince-bin
 	conflicts = landslide
-	source = git+git://github.com/adamzap/landslide.git
+	source = git+https://github.com/adamzap/landslide.git
 	md5sums = SKIP
 
 pkgname = landslide-git
-
