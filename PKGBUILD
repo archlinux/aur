@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=hilbish
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="The flower shell for Lua users"
 arch=('x86_64' 'i686' 'aarch64')
@@ -13,7 +13,7 @@ install="$pkgname.install"
 options=('!emptydirs')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('b86813a67428f45a2aec601871f4df53a3ca5bf8e6666d8ea76d799ce3c9a8fe')
+sha256sums=('e5bb77a90e05ee8ab063e4372919f58f6c6ccd341056750a581899ca193782a4')
 
 prepare() {
 	cd "Hilbish-$pkgver"
