@@ -1,0 +1,8 @@
+[Unit]
+Description=Renew certificates acquired via Certbot
+Documentation=https://eff-certbot.readthedocs.io/en/stable/
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/certbot -q renew
+PrivateTmp=true
