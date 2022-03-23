@@ -1,5 +1,5 @@
 pkgname=mqttui
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc="Subscribe to a MQTT Topic or publish something quickly from the terminal"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
@@ -10,7 +10,7 @@ makedepends=('cargo')
 provides=("${pkgname}")
 
 source=($pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz)
-sha256sums=('6703371e1d1efda3002fd886e0ddf0f7db23405c0db8fbfab78f7713026ae63e')
+sha256sums=('f7bab94539067367f4493b10cca9fb17ccb1969321b7998f92488addc56f48b9')
 
 build() {
   cd $pkgname-$pkgver
