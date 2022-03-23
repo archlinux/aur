@@ -1,6 +1,6 @@
 pkgbase = python-gino
 	pkgdesc = GINO - GINO Is Not ORM - is a lightweight asynchronous ORM built on top of SQLAlchemy core for Python asyncio. Now (early 2020) GINO supports only one dialect asyncpg.
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://python-gino.org/
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = python-gino
 	depends = python-asyncpg
 	depends = python-sqlalchemy
 	depends = python-aiocontextvars
-	source = https://files.pythonhosted.org/packages/source/g/gino/gino-1.0.0.tar.gz
-	md5sums = 443b82d83721d89d7e9c353cc79c2103
+	source = https://files.pythonhosted.org/packages/source/g/gino/gino-1.0.1.tar.gz
+	md5sums = 4ab4ce1cec531076974179a57fa5ab85
 
 pkgname = python-gino
-
