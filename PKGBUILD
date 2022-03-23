@@ -1,32 +1,45 @@
-# Maintainer: Duong Pham <dthpham@gmail.com>
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Duong Pham <dthpham@gmail.com>
 # Contributor: Lazaros Koromilas <koromilaz@gmail.com>
+
 pkgname=khronos-ocl-icd
-pkgver=1.2.11.0
+pkgver=2022.01.04
 pkgrel=1
-pkgdesc="Khronos Group OpenCL 1.2 installable client driver (ICD) loader"
-arch=('any')
-url="http://www.khronos.org/registry/cl"
-license=('custom')
-makedepends=('cmake' 'mesa')
-depends=('opencl-headers>=1.2')
-provides=('libcl' 'opencl-icd-loader')
-conflicts=('libcl')
-replaces=('libcl')
-source=("http://www.khronos.org/registry/cl/specs/opencl-icd-${pkgver}.tgz")
-sha256sums=('bb82a4bfec8d2fe3839c1f079554990af2229bbd52f31acec31d0c4e11e99048')
-_pkgdir=icd
+pkgdesc='Khronos Group OpenCL installable client driver (ICD) loader'
+arch=('x86_64')
+url='https://www.khronos.org/registry/OpenCL/'
+license=('Apache')
+depends=('glibc')  # Arch doesn't package the headers properly in [extra]
+makedepends=('cmake'
+             'opencl-headers-git>=2022.01.04')
+provides=('ocl-icd'
+          'opencl-icd-loader')
+conflicts=('ocl-icd')
+# _pkgver_or_commit="v${pkgver}"
+_pkgver_or_commit='c8490f9d2eb52dd12a1e9652c4e5369ff5af18d8'
+_reponame='OpenCL-ICD-Loader'
+source=("${pkgname}-${_pkgver_or_commit}.tar.gz::https://github.com/KhronosGroup/${_reponame}/archive/${_pkgver_or_commit}.tar.gz")
+sha256sums=('9f65a8c27dcd2979a835e6de17ba87ddecf23ea4d26d1c3348a1648cff30e41f')
+options=('debug')
+
+prepare() {
+  # set cmake pkg info dirs for opencl-headers-git
+  sed 's|${CMAKE_INSTALL_DATADIR}/cmake|${CMAKE_INSTALL_LIBDIR}/cmake|g' -i "${_reponame}-${_pkgver_or_commit}/CMakeLists.txt"
+}
 
 build() {
-  cd "${srcdir}/${_pkgdir}"
-  make
+  cmake -S "${_reponame}-${_pkgver_or_commit}" -B build \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DBUILD_TESTING=ON
+
+  cmake --build build
+}
+
+check() {
+  (cd build; OCL_ICD_FILENAMES="$(pwd)/libOpenCLDriverStub.so" ctest)
 }
 
 package() {
-  cd "${srcdir}/${_pkgdir}"
-  install -d -m755 "${pkgdir}/etc/OpenCL/vendors"
-  install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -D -m755 bin/libOpenCL.so.1.2 "${pkgdir}/usr/lib/libOpenCL.so.1.2"
-  cd "${pkgdir}/usr/lib"
-  ln -s libOpenCL.so.1.2 libOpenCL.so.1
-  ln -s libOpenCL.so.1.2 libOpenCL.so
+  DESTDIR="${pkgdir}" cmake --build build --target install
 }
