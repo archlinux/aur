@@ -6,7 +6,7 @@ _pkgname=browser-stable
 pkgname=yandex-browser
 pkgver=22.1.3.916_1
 _pkgver=22.1.3.916-1
-pkgrel=5
+pkgrel=6
 #epoch=1
 
 pkgdesc="The web browser from Yandex.
@@ -18,8 +18,8 @@ categories=("network")
 
 options=(!strip)
 
-depends=("curl" "ttf-liberation" "jq" "alsa-lib" "libcurl-compat" "libcurl-gnutls" "gtk2" "gtk3" "gtk4" "snappy" "opus" "flac" "harfbuzz-icu" "nss"
-"libxss" "libxfixes" "libxkbfile" "wget" "xdg-utils" "polkit" "libldap" "dbus-glib" "python" )
+depends=( "binutils" "curl" "ttf-liberation" "jq" "alsa-lib" "libcurl-compat" "libcurl-gnutls" "gtk2" "gtk3" "gtk4" "snappy" "opus" "flac" "harfbuzz-icu" "nss"
+"libxss" "libxkbfile" "wget" "xdg-utils" "polkit" "libldap" "dbus-glib" "python" )
 optdepends=(
     "speech-dispatcher"
     "vulkan-driver"
