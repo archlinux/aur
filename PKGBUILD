@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=ez
-pkgver=1.0.r83
+pkgver=1.0.r1
 pkgrel=1
 pkgdesc='EZ provides an eazier and more efficient way to perform common tasks.'
 arch=(x86_64)

@@ -1,6 +1,6 @@
 pkgbase = ez
 	pkgdesc = EZ provides an eazier and more efficient way to perform common tasks.
-	pkgver = 1.0.r83
+	pkgver = 1.0.r1
 	pkgrel = 1
 	url = https://gitlab.com/qYp/ez
 	arch = x86_64
