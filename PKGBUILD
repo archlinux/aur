@@ -1,7 +1,7 @@
 # Maintainer: Ayatale <ayatale@qq.com>
 
 pkgname=ttf-sarasa-ui-sc
-pkgver=0.36.0
+pkgver=0.36.1
 pkgrel=1
 pkgdesc="A CJK programming font based on Iosevka and Source Han Sans. (123M/248M, only Sarasa UI SC inside)"
 arch=("any")
@@ -12,7 +12,7 @@ provides=("ttf-sarasa-ui-sc")
 conflicts=("ttf-sarasa-gothic")
 source=("https://github.com/be5invis/Sarasa-Gothic/releases/download/v$pkgver/sarasa-gothic-ttf-$pkgver.7z"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/be5invis/Sarasa-Gothic/v${pkgver}/LICENSE")
-sha256sums=("a8366b532ebac177af0cb93950727caa7cb9fffe9577392677e94a86cef5543c"
+sha256sums=("4e2744ee0400fc61ff79c3b9388dd225ec8f78d129a081b0f7dc70a97e058029"
             "9caccb70771a676613a8a9a9863f20c49c861383af99c1dd7cc354226b375832")
 noextract=("sarasa-gothic-ttf-$pkgver.7z")
 
