@@ -6,6 +6,7 @@ pkgbase = python-ffmpeg-pip
 	license = Apache
 	makedepends = python-pip
 	depends = python
+	depends = ffmpeg
 	provides = python-ffmpeg
 	conflicts = python-ffmpeg
 
