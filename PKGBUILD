@@ -7,13 +7,14 @@
 
 pkgname=xrdp
 pkgver=0.9.19
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source remote desktop protocol (RDP) server"
 url="https://github.com/neutrinolabs/xrdp"
 arch=(i686 x86_64 armv6h armv7l aarch64)
 license=('Apache')
 makedepends=('nasm')
 depends=('tigervnc' 'libxrandr' 'fuse' 'libfdk-aac' 'ffmpeg' 'imlib2')
+checkdepends=('check')
 backup=('etc/xrdp/sesman.ini'
 	'etc/xrdp/xrdp.ini'
 	'etc/xrdp/cert.pem'
@@ -55,6 +56,11 @@ build() {
   # Fight unused direct deps
   sed -i -e "s| -shared | $LDFLAGS\0 |g" -e "s|    if test \"\$export_dynamic\" = yes && test -n \"\$export_dynamic_flag_spec\"; then|      func_append compile_command \" $LDFLAGS\"\n      func_append finalize_command \" $LDFLAGS\"\n\0|" libtool
   make
+}
+
+check () {
+  cd "${pkgname}-${pkgver}"
+  make check
 }
 
 package() {
