@@ -1,8 +1,10 @@
 # Maintainer: nobodyinperson <nobodyinperson at posteo de>
 pkgname=python-funcargparse-git
-_pkgname=${pkgname#python-%-git}
+_pkgname="$pkgname"
+_pkgname=${_pkgname#python-}
+_pkgname=${_pkgname%-git}
 pkgver=0.2.5.r0.g46bb7b9
-pkgrel=1
+pkgrel=2
 pkgdesc="Create an argparse.ArgumentParser from function docstrings"
 arch=(any)
 url="https://github.com/Chilipp/funcargparse"
@@ -10,6 +12,7 @@ license=(LGPL3)
 makedepends=(git)
 depends=(python)
 conflicts=("python-${_pkgname}")
+provides=("python-${_pkgname}")
 source=("$pkgname::git+$url")
 sha256sums=(SKIP)
 
