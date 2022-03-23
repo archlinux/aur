@@ -1,13 +1,13 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=sysbox-ce-git
-pkgver=r1500.4c3c20b
-miscfiles_pkgver=0.4.1
+pkgver=r1530.cf2cfe0
+miscfiles_pkgver=0.5.0
 pkgrel=1
 pkgdesc="Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)"
 url="https://github.com/nestybox/sysbox"
 arch=('x86_64')
 license=('Apache')
-source=("https://downloads.nestybox.com/sysbox/releases/v${miscfiles_pkgver}/sysbox-ce_${miscfiles_pkgver}-0.debian-buster_amd64.deb"
+source=("https://downloads.nestybox.com/sysbox/releases/v${miscfiles_pkgver}/sysbox-ce_${miscfiles_pkgver}-0.linux_amd64.deb"
         "git+https://github.com/nestybox/sysbox.git"
         "git+https://github.com/nestybox/dockerfiles.git"
         "git+https://github.com/nestybox/sysbox-fs.git"
@@ -18,7 +18,7 @@ source=("https://downloads.nestybox.com/sysbox/releases/v${miscfiles_pkgver}/sys
         "git+https://github.com/nestybox/libseccomp-golang.git"
         "git+https://github.com/nestybox/sysbox-mgr.git"
         "git+https://github.com/nestybox/sysbox-runc.git")
-sha256sums=('bd96866b52821338a859586f5e5bbf6954d56181e9ef77ab0fb9d05127e9bf97'
+sha256sums=('7fa83a4f3b83018ec3dcef1f547ef25a99645f6c6544276bfbf8831e63a092d7'
             'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 install=install.sh
 provides=('sysbox-ce')
@@ -56,7 +56,7 @@ prepare() {
 
 	# Get some non-binary files from the Debian package as they don't seem to be uploaded anywhere else
 	mkdir -p data
-	tar xf data.tar.xz -C data
+	tar xf data.tar.zst -C data
 }
 
 build() {
