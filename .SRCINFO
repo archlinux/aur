@@ -1,0 +1,14 @@
+pkgbase = brother-hll3210cw
+	pkgdesc = LPD and CUPS driver for the Brother HL-L3210cw.
+	pkgver = 1.0.2
+	pkgrel = 1
+	url = https://support.brother.com/g/b/downloadtop.aspx?c=us&lang=en&prod=hll3210cw_us_eu_as
+	arch = i686
+	arch = x86_64
+	license = EULA
+	depends = cups
+	depends = lib32-glibc
+	source = https://download.brother.com/welcome/dlf103942/hll3210cwpdrv-1.0.2-0.i386.rpm
+	sha256sums = 8c8af0165852ea37341cc4f6c886191faefd64386d6567365f7e1b178d42bdc0
+
+pkgname = brother-hll3210cw
