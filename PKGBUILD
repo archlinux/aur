@@ -5,8 +5,8 @@
 pkgname=rstudio-desktop
 _vermajor="2022"
 _verminor="02"
-_verpatch="0"
-_versuffix="+443"
+_verpatch="1"
+_versuffix="+461"
 _gitcommit=fc9e217
 _gitname=rstudio-rstudio-${_gitcommit}
 pkgver=${_vermajor}.${_verminor}.${_verpatch}${_versuffix}
@@ -15,9 +15,8 @@ _gwtver=2.8.2
 _ginver=2.1.2
 _nodever=14.17.5
 _quarto="FALSE"
-_quartover=0.9.16
 
-pkgrel=4
+pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('x86_64')
 url="https://www.rstudio.com/products/rstudio/"
@@ -39,7 +38,7 @@ source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs
         "cran_multithread.patch"
         "sigstksz_gcc11.patch")
 
-sha256sums=('36234218f118f5085e417411e137791072c00380bce6a016e551e6ecb404ae4d'
+sha256sums=('41e48e21ddc0a9c1ebf06ff16d846b0389720f2ee66d3fcfd5ff0707578b597d'
             'b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a'
             '970701dacc55170088f5eb327137cb4a7581ebb4734188dfcc2fad9941745d1b'
             'dc04c7e60235ff73536ba0d9e50638090f60cacabfd83184082dce3b330afc6e'
@@ -93,9 +92,6 @@ build() {
     if (pacman -Q quarto >/dev/null) ; then
         msg "Enabling Quarto support..."
         _quarto="TRUE"
-        #cd "${srcdir}/${_srcname}/dependencies/common"
-        #install -d quarto/bin
-        #ln -sfT /usr/bin/quarto quarto/bin/quarto
         cd "${srcdir}/${_srcname}/dependencies"
         install -d quarto/bin
         ln -sfT /usr/bin/quarto quarto/bin/quarto
