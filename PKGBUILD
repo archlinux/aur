@@ -32,14 +32,14 @@ makedepends=(
 	'wget')
 source=("https://github.com/PirateNetwork/pirate/archive/refs/tags/v${pkgver}.tar.gz"
 	"https://download.oracle.com/berkeley-db/db-${_db_version}.tar.gz"
-	"arch-linux.patch")
+	"cli-arch-linux.patch")
 sha256sums=('8190670acc7a726e86f0ce5a4f4657601c9503c12ce3e4984146daeed90ac950'
             'a9c5e2b004a5777aa03510cfe5cd766a4a3b777713406b02809c17c8e0e7a8fb'
             'a0086df9b8d9e5ebfaca07ec5cc9ae8df4de38e76d46588868d5770e4255cbc2')
 
 prepare() {
   cd "pirate-${pkgver}"
-  patch -Np1 -i ../arch-linux.patch
+  patch -Np1 -i ../cli-arch-linux.patch
 }
 
 build() {

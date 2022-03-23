@@ -1,5 +1,5 @@
 *
-!arch-linux.patch
 !PKGBUILD
 !.SRCINFO
 !.gitignore
+!cli-arch-linux.patch
