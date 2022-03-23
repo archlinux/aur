@@ -5,6 +5,7 @@ pkgbase = wf-recorder-git
 	url = https://github.com/ammen99/wf-recorder
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = scdoc
 	makedepends = meson
@@ -23,4 +24,3 @@ pkgbase = wf-recorder-git
 	sha1sums = SKIP
 
 pkgname = wf-recorder-git
-

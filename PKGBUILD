@@ -12,7 +12,7 @@ depends=(
 optdepends=(
     "slurp: limit recording to a part of the screen"
 )
-arch=("i686" "x86_64")
+arch=("i686" "x86_64" "aarch64")
 url="https://github.com/ammen99/wf-recorder"
 source=("${pkgname%-*}::git+https://github.com/ammen99/wf-recorder")
 sha1sums=("SKIP")
