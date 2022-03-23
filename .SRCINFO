@@ -1,0 +1,13 @@
+pkgbase = libkea
+	pkgdesc = Library for interfacing with KEA, a HDF5 based Raster File Format
+	pkgver = 1.4.14
+	pkgrel = 1
+	url = http://kealib.org
+	arch = x86_64
+	license = MIT
+	depends = hdf5
+	depends = gdal
+	source = https://github.com/ubarsc/kealib/archive/refs/tags/kealib-1.4.14.tar.gz
+	sha256sums = b3f73104acebe5304ecce5c19c1560def66fd5c448ce251e9486494baeb141bc
+
+pkgname = libkea
