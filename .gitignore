@@ -18,3 +18,5 @@ cookies
 *.h
 *.hpp
 *.o
+
+*.log
