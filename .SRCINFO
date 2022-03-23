@@ -1,6 +1,6 @@
 pkgbase = techmino-client
 	pkgdesc = Techmino:方块研究所
-	pkgver = 0.17.1
+	pkgver = 0.17.2
 	pkgrel = 1
 	url = http://home.techmino.org
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = techmino-client
 	depends = fuse
 	depends = xorg-xrandr
 	options = !strip
-	source = https://d.flaribbit.workers.dev/Techmino.AppImage
-	sha256sums = aa39c026df69c4b1932d2b0f6e0814d727b277bcfbcf05b0538cca3d69f075e3
+	source = https://d.flaribbit.workers.dev/Techmino_a0.17.2_Linux.AppImage
+	sha256sums = 1d167b1b56aab65a65294643416c91c4ecd77a773e4a9ff4438467c2fa4f669d
 
 pkgname = techmino-client
