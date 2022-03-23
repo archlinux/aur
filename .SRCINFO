@@ -5,6 +5,7 @@ pkgbase = wev
 	url = https://git.sr.ht/~sircmpwn/wev
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = scdoc
 	makedepends = wayland-protocols
