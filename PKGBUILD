@@ -12,7 +12,7 @@ depends=()
 optdepends=(
   'npn: To download npm packages with 'ezdl''
   'snapd: To install snap packages with 'ezdl''
-  'pip: To install python packages with 'ezdl''
+  'python-pip: To install python packages with 'ezdl''
   'git: To use 'ezgc' for git cloning'
   'lf: To use 'eztst's lf file-management functionality'
   'paru: To use 'ezdl' for downloading packages from the AUR'
