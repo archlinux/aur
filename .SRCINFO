@@ -8,5 +8,6 @@ pkgbase = python-ffmpeg-pip
 	depends = python
 	provides = python-ffmpeg
 	conflicts = python-ffmpeg
+	source = https://github.com/kkroening/ffmpeg-python
 
 pkgname = python-ffmpeg-pip
