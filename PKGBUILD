@@ -5,7 +5,7 @@
 pkgname=firedragon
 _pkgname=FireDragon
 pkgver=98.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -151,9 +151,10 @@ prepare() {
 
   # Add warning that sanitizing exceptions are bypassed by the options in History > Clear History when LibreWolf closes > Settings
   patch -Np1 -i ${_patches_dir}/librewolf-ui/sanitizing-description.patch
+  patch -Np1 -i ${_patches_dir}/librewolf-ui/hide-default-browser.patch
 
   # Pref pane - custom FireDragon svg
-  patch -Np1 -i ${_patches_dir}/librewolf-ui/pref_pane.patch
+  patch -Np1 -i ${_patches_dir}/librewolf/librewolf-pref-pane.patch
   patch -Np1 -i ${_patches_dir}/misc/add_firedragon_svg.patch
 
   # fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example
