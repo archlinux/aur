@@ -76,15 +76,15 @@ fi
 pkgbase=linux-manjaro-xanmod-tt
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 _major=5.15
-pkgver=${_major}.30
+pkgver=${_major}.31
 _branch=5.x
 xanmod=1
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux Xanmod TT'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="c224d3b685fbde4e13bc85da1b0d31cf59cabfab" # 5.15.30
+__commit="28f68706fce5c678931a9cc076551f9ca87fff25" # 5.15.31
 
 license=(GPL2)
 makedepends=(
@@ -111,9 +111,9 @@ done
         
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            '2bdb607d3725dba6cc22359a8beaa84e0e12770f267c30648e1457cf3808d9d9'
+            'f38f964e0dd97caa2aff50341010af88a5975872b10b988989b2c8ee89bbdb2d'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
-            '45a58760094df2e5c8216d802db1ca0baf99fab0dae988d9c8c9c2f458fb092c')
+            '04bd45703a9dcfe1d11c96d44e37ad5bd8f2b04d9f614b284f4073649ed9d6fe')
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
