@@ -1,5 +1,5 @@
 # Maintainer: JP-Ellis <josh@jpellis.me>
-# Maintainer: Francois Boulogne <fboulogne at april dot org>
+# Contributor: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=python-bibtexparser
 _name=${pkgname#python-}
