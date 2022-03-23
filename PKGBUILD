@@ -1,7 +1,7 @@
 #Maintainer: Simon Eriksson <simon.eriksson.1187+aur AT gmail.com>
 
 pkgname=libmikmod-n64-git
-pkgver=r7.2a3752b
+pkgver=r22.6053ce4
 pkgrel=1
 pkgdesc="A portable sound library (Nintendo 64)"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('libdragon')
 provides=('libmikmod-n64')
 conflicts=('libmikmod-n64')
 options=('!buildflags' '!strip')
-source=("git://github.com/networkfusion/libmikmod.git" "makefile.diff")
+source=("git+https://github.com/N64-tools/libmikmod.git" "makefile.diff")
 sha256sums=('SKIP'
            'f074dc7855aa5338c41c17a86559ce6dbe9aa1109b5f7d5c88c9981d995b6a10')
 
