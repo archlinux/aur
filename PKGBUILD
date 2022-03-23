@@ -48,14 +48,6 @@ makedepends=(
 
     'bazel'
     'clang'
-
-    'maturin'
-    'rust'
-
-    'python-pip'
-    'python-mypy-protobuf'
-    'npm'
-    'typescript'
 )
 optdepends=(
     'lame: record sound'
@@ -87,7 +79,9 @@ build() {
         export LDSHARED="/usr/bin/clang -shared"
     fi
     # build requires java 11 to work, does not compile with java 17
-    env PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH" bazel build -c opt dist
+    export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
+    rm -rf bazel-dist
+    bazel build -c opt dist
 }
 
 package() {
@@ -97,4 +91,6 @@ package() {
     install -Dm755 qt/runanki.py "$pkgdir"/usr/bin/anki
     install -Dm644 qt/linux/anki.desktop "$pkgdir"/usr/share/applications/anki.desktop
     install -Dm644 qt/linux/anki.png "$pkgdir"/usr/share/pixmaps/anki.png
+    find $pkgdir -iname __pycache__ | xargs -r rm -rf
+    find $pkgdir -iname direct_url.json | xargs -r rm -rf
 }
