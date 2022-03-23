@@ -2,7 +2,7 @@
 
 _pkgname='vector'
 pkgname="python-${_pkgname}"
-pkgver='0.8.4'
+pkgver='0.8.5'
 pkgrel=1
 pkgdesc="A library for 2D, 3D, and Lorentz vectors, especially arrays of vectors, to solve common physics problems in a NumPy-like way."
 arch=('any')
