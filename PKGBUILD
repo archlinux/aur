@@ -2,13 +2,13 @@
 _pkgname=grandorgue
 pkgname="$_pkgname"-git
 pkgver=3.6.4.1.r0.gdd388827
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual Pipe Organ Software"
 arch=('i686' 'x86_64')
 url="https://github.com/GrandOrgue/$_pkgname"
 license=('GPL2+')
 depends=(wxgtk2 wavpack fftw jack)
-makedepends=(git cmake rtaudio rtmidi portaudio)
+makedepends=(git cmake rtaudio rtmidi portaudio docbook-xsl)
 source=("git+$url.git"
 	"git+https://github.com/GrandOrgue/ZitaConvolver.git"
 	"link-perftest-against-jackd.patch")
