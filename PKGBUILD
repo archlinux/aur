@@ -2,7 +2,7 @@
 # Maintainer: Médéric boquien <mboquien@free.fr>
 
 pkgname=python-astroquery
-pkgver=0.4.5
+pkgver=0.4.6
 pkgrel=1
 pkgdesc="Set of tools for querying astronomical web forms and databases"
 arch=('x86_64')
@@ -18,7 +18,7 @@ optdepends=('python-aplpy: required for the full functionality of the alma modul
 conflicts=()
 makedepends=('cython')
 source=("https://files.pythonhosted.org/packages/source/a/astroquery/astroquery-${pkgver}.tar.gz")
-sha512sums=('428f465c49ea4a366489fbab7482caa1110c3556f2db1034eef73b1ccca284cfc5e2ec4d9b32222e05564cb0c84e670f0f4bfe4f2bf62f5600ed7567c65ca92f')
+sha512sums=('4ec5e2fbd9754ae0be614011a0020218fbdd7d7cf4511836b40cefcf99fa0feb88cc247c2c83e556aa11ff10930b9e4d7784d175039f9581a4551bb4667a3529')
 
 build() {
   cd ${srcdir}/astroquery-${pkgver}
