@@ -27,7 +27,7 @@ arch=('x86_64')
 url='https://github.com/EverestAPI/Olympus'
 license=('MIT')
 depends=('love' 'lua51-lsqlite3')
-makedepends=('unzip' 'python')
+makedepends=('unzip' 'python' 'python-requests')
 source=("$pkgname-$pkgver.zip::https://dev.azure.com/EverestAPI/Olympus/_apis/build/builds/$pkgver/artifacts?artifactName=linux.main&\$format=zip")
 noextract=("$pkgname-$pkgver.zip")
 sha256sums=('7e8dfe0a67bb29dbdf0573a6361cf4a12c1e97d24bdfd1de1940b156b3c90c9d')

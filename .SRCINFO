@@ -7,6 +7,7 @@ pkgbase = olympus-bin
 	license = MIT
 	makedepends = unzip
 	makedepends = python
+	makedepends = python-requests
 	depends = love
 	depends = lua51-lsqlite3
 	noextract = olympus-bin-2551.zip
