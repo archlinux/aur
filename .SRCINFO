@@ -1,7 +1,7 @@
 pkgbase = python-rsgislib
 	pkgdesc = A collection of Python modules for processing remote sensing and GIS datasets
 	pkgver = 5.0.5
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.rsgislib.org
 	arch = i686
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = python-rsgislib
 	checkdepends = python-pytest-cov
 	checkdepends = python-geopandas
 	checkdepends = python-rtree
+	checkdepends = python-matplotlib
 	makedepends = cmake
 	makedepends = boost
 	depends = hdf5

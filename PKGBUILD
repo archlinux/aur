@@ -3,7 +3,7 @@
 _pkgname='rsgislib'
 pkgname=("python-$_pkgname")
 pkgver=5.0.5
-pkgrel=4
+pkgrel=5
 pkgdesc="A collection of Python modules for processing remote sensing and GIS datasets"
 arch=('i686' 'x86_64')
 url='http://www.rsgislib.org'
@@ -48,7 +48,7 @@ optdepends=(
     `'classification.classkeraschips'
   'python-xgboost: For classification.xgboost'
 )
-checkdepends=('python-pytest' 'python-pytest-cov' 'python-geopandas' 'python-rtree')
+checkdepends=('python-pytest' 'python-pytest-cov' 'python-geopandas' 'python-rtree' 'python-matplotlib')
 options=(!emptydirs)
 _github='https://github.com/remotesensinginfo/rsgislib'
 source=("$pkgname-$pkgver.tar.gz::$_github/archive/refs/tags/$pkgver.tar.gz")
