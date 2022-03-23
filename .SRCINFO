@@ -1,0 +1,24 @@
+pkgbase = python-psyplot-gui-git
+	pkgdesc = Graphical User Interface for the psyplot package
+	pkgver = 1.4.0.r0.g227d84e
+	pkgrel = 1
+	url = https://github.com/psyplot/psyplot-gui
+	arch = any
+	license = LGPL3
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-psyplot
+	depends = python-sphinx
+	depends = python-fasteners
+	depends = python-sphinx_rtd_theme
+	depends = python-qtconsole
+	depends = python-pyqt5
+	provides = python-psyplot-gui
+	provides = psyplot-gui
+	conflicts = python-psyplot-gui
+	conflicts = psyplot-gui
+	source = python-psyplot-gui-git::git+https://github.com/psyplot/psyplot-gui
+	sha256sums = SKIP
+
+pkgname = python-psyplot-gui-git
