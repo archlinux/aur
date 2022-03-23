@@ -12,11 +12,9 @@ provides=('pirate-cli' 'pirate-tx' 'pirated')
 conflicts=('treasure-chest-bin')
 depends=(
 	'boost-libs'
-	'hicolor-icon-theme'
 	'libevent'
 	'miniupnpc'
 	'protobuf'
-	'qrencode'
 	'zeromq')
 makedepends=(
 	'boost'
