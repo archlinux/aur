@@ -1,13 +1,14 @@
 pkgbase = khronos-ocl-icd
 	pkgdesc = Khronos Group OpenCL installable client driver (ICD) loader
 	pkgver = 2022.01.04
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.khronos.org/registry/OpenCL/
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
 	makedepends = opencl-headers-git>=2022.01.04
 	depends = glibc
+	depends = opencl-driver
 	provides = ocl-icd
 	provides = opencl-icd-loader
 	conflicts = ocl-icd

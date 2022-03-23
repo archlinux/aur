@@ -4,14 +4,15 @@
 
 pkgname=khronos-ocl-icd
 pkgver=2022.01.04
-pkgrel=1
+pkgrel=2
 pkgdesc='Khronos Group OpenCL installable client driver (ICD) loader'
 arch=('x86_64')
 url='https://www.khronos.org/registry/OpenCL/'
 license=('Apache')
-depends=('glibc')  # Arch doesn't package the headers properly in [extra]
+depends=('glibc'
+        'opencl-driver')
 makedepends=('cmake'
-             'opencl-headers-git>=2022.01.04')
+             'opencl-headers-git>=2022.01.04') # Arch/extra/opencl-headers doesn't have the cmake pkg configs yet
 provides=('ocl-icd'
           'opencl-icd-loader')
 conflicts=('ocl-icd')
