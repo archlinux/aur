@@ -1,10 +1,10 @@
 # Maintainer: Léopold Ibghy Koprivnik <skwal.net@gmail.com>
 pkgbase=mini-matrix-git
 pkgname=mini-matrix-git
-pkgver="r8.f832b7d"
-pkgrel=2
+pkgver=r18.6b81076
+pkgrel=1
 pkgdesc="Displays a matrix of random characters"
-arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
+arch=("any")
 url="https://github.com/SkwalExe/mini-matrix.git"
 license=('MIT')
 makedepends=("git" "make")
@@ -20,7 +20,7 @@ pkgver() {
 
 prepare() {
 	cd mini-matrix
-	make uninstall
+	# make uninstall
 }
 
 build() {
