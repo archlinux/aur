@@ -2,14 +2,14 @@
 
 pkgname=abeceda_convertor-git
 _pkgname=abeceda_convertor
-pkgver=r6.e8410a3
+pkgver=r10.7157e67
 pkgrel=1
-pkgdesc="Small python script adding auxiliary characters for text typeset in Abeceda_v4.ttf font"
+pkgdesc="Python script adding auxiliary characters for text typeset in Abeceda_v4.ttf font"
 arch=('any')
 url="https://github.com/jose1711/abeceda_convertor/"
 license=('GPL')
 depends=('python')
-source=("git://github.com/jose1711/abeceda_convertor.git")
+source=("git+https://github.com/jose1711/abeceda_convertor.git")
 md5sums=('SKIP')
 
 pkgver() {
