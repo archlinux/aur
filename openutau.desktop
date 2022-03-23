@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=OpenUtau
+Terminal=false
+Type=Application
+Comment=Open source UTAU successor
+Exec=/usr/bin/openutau
+Icon=openutau
+Categories=AudioVideo;
