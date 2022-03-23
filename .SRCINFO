@@ -1,6 +1,6 @@
 pkgbase = aisleriot-git
 	pkgdesc = A collection of patience games written in guile scheme
-	pkgver = 3.22.11.r3.g809656b7
+	pkgver = 3.22.21.r8.gde390345
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Aisleriot
 	arch = x86_64
@@ -17,10 +17,12 @@ pkgbase = aisleriot-git
 	optdepends = libkdegames: for KDE cardsets
 	provides = aisleriot
 	conflicts = aisleriot
+	options = !makeflags
 	options = !strip
 	options = !emptydirs
 	source = git+https://gitlab.gnome.org/GNOME/aisleriot.git
+	source = meson_fix.patch
 	sha256sums = SKIP
+	sha256sums = 14e1fde5c00eb285917c22099ae3552b2ae145acd3fdb7049ff78bce53d0c8d4
 
 pkgname = aisleriot-git
-
