@@ -5,7 +5,7 @@
 # Contributor: Mitmischer
 
 pkgname=ultrastardx-git
-pkgver=r1126.a5f4f6d5
+pkgver=r1147.6bb2a06e
 pkgrel=1
 pkgdesc='Free and open source karaoke game. (GIT)'
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ optdepends=('ultrastar-creator: Qt program to generate USDX songs'
 provides=('ultrastardx')
 conflicts=('ultrastardx')
 groups=('usdx')
-source=("git://github.com/UltraStar-Deluxe/USDX.git")
+source=("git+https://github.com/UltraStar-Deluxe/USDX.git")
 
 sha256sums=('SKIP')
 
