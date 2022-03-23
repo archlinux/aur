@@ -1,43 +1,39 @@
 # Maintainer: Connor Nuutinen <cnuutinen@outlook.com>
 # Contributor: David Santiago <demanuel@ymail.com>
+# Contributor: jokersus <jokersus.cava@gmail.com>
 pkgname=comma-ide-community
 _pkgname=comma-ide
-_tarname=comma-community-2021.10.0
+_binname=comma
 pkgrel=1
-pkgver=202.6948.91
+pkgver=2022.01.0
+_tarname=comma-community-${pkgver}
 provides=(${_pkgname})
-pkgdesc="The Integrated Development Environment for Raku (formerly Perl 6)."
+pkgdesc='The Integrated Development Environment for Raku (formerly Perl 6).'
 arch=('any')
-url="https://commaide.com/"
+url='https://commaide.com/'
 license=('APACHE')
 depends=('java-runtime')
 optdepends=('rakudo-star' 'rakudo')
-source=("https://commaide.com/download/community/linux")
-sha512sums=('18a420b0052edca091facc411705d76c9667414252ee6e34d917d2560ffa1412b2c6145592dc9eeba25243d40f4a729d5d1d589e45c3db49f903e503e1d0f783')
+source=('https://commaide.com/download/community/linux'
+        'comma-ide-community.desktop')
+sha256sums=('a4574ab4a61349caec604122e4ee43163dd77cfca55e6b14042bd51f725c04e6'
+            'a805e27b65c742889e2d12def48ed0e12fba0e99a32fae6f21724d5b02f7ea46')
 install=comma-ide.install
 
 package() {
-set -xv
-  mkdir -p $pkgdir/opt/ $pkgdir/usr/bin/ $pkgdir/usr/share/applications/ ${pkgdir}/usr/share/icons/
-  cp -R $srcdir/${_tarname}  $pkgdir/opt/
+  # No direct link, look at source
+  tar -xzvf linux
 
-  cat <<EOF > $pkgdir/usr/share/applications/${_pkgname}.desktop
-[Desktop Entry]
-Version=1.0
-Type=Application
-Exec=/usr/bin/comma %f
-Icon=${_pkgname}
-Terminal=false
-Type=Application
-Name=Comma Community Edition
-Comment=The Drive to Develop
-Categories=Development;IDE;
-StartupWMClass=jetbrains-comma-ce
-EOF
+  install -dm755 "${pkgdir}"/opt/
+  install -dm755 "${pkgdir}"/usr/bin/
+  install -dm755 "${pkgdir}"/usr/share/applications/
+  install -dm755 "${pkgdir}"/usr/share/icons/
 
-  ln -s /opt/${_tarname}/bin/comma.png ${pkgdir}/usr/share/icons/${_pkgname}.png
-  ln -s /opt/${_tarname}/bin/comma.sh $pkgdir/usr/bin/comma
-  set +xv
+  cp -a "${srcdir}"/${_tarname}/ "${pkgdir}"/opt/${pkgname}
+  rm -rf "${pkgdir}"/opt/${pkgname}/jbr
+
+  ln -s /opt/${pkgname}/bin/${_binname}.sh "${pkgdir}"/usr/bin/${_binname}
+  install -m644 "${srcdir}"/${pkgname}.desktop "${pkgdir}"/usr/share/applications/
+
+  ln -s /opt/${pkgname}/bin/comma.png ${pkgdir}/usr/share/icons/${pkgname}.png
 }
-
-

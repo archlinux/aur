@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Exec=/usr/bin/comma %f
+Icon=${_pkgname}
+Terminal=false
+Type=Application
+Name=Comma Community Edition
+Comment=The Drive to Develop
+Categories=Development;IDE;
+StartupWMClass=jetbrains-comma-ce
