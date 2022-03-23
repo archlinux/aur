@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-LANG=en_US.UTF-8 exec /opt/openutau/OpenUtau
+export LANG=en_US.UTF-8
+export HOME=$HOME/.config
+exec /opt/openutau/OpenUtau
