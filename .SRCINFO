@@ -1,6 +1,6 @@
 pkgbase = lua-socket-git
 	pkgdesc = Networking support library for the Lua language
-	pkgver = 3.0.rc1.r231.gb57ca9b
+	pkgver = 3.0.rc1.r245.gaf0ddb6
 	pkgrel = 1
 	url = https://github.com/lunarmodules/luasocket
 	arch = x86_64
@@ -15,22 +15,22 @@ pkgbase = lua-socket-git
 
 pkgname = lua-socket-git
 	depends = lua
-	provides = lua-luasocket=3.0.rc1.r231.gb57ca9b
-	conflicts = lua-luasocket
+	provides = lua-socket=3.0.rc1.r245.gaf0ddb6
+	conflicts = lua-socket
 
 pkgname = lua51-socket-git
 	depends = lua51
-	provides = lua51-luasocket=3.0.rc1.r231.gb57ca9b
-	conflicts = lua51-luasocket
+	provides = lua51-socket=3.0.rc1.r245.gaf0ddb6
+	conflicts = lua51-socket
 	conflicts = luasocket
 	replaces = luasocket
 
 pkgname = lua52-socket-git
 	depends = lua52
-	provides = lua52-luasocket=3.0.rc1.r231.gb57ca9b
-	conflicts = lua52-luasocket
+	provides = lua52-socket=3.0.rc1.r245.gaf0ddb6
+	conflicts = lua52-socket
 
 pkgname = lua53-socket-git
 	depends = lua53
-	provides = lua53-luasocket=3.0.rc1.r231.gb57ca9b
-	conflicts = lua53-luasocket
+	provides = lua53-socket=3.0.rc1.r245.gaf0ddb6
+	conflicts = lua53-socket

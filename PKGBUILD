@@ -5,7 +5,7 @@
 
 pkgbase=lua-socket-git
 pkgname=(lua-socket-git lua51-socket-git lua52-socket-git lua53-socket-git)
-pkgver=3.0.rc1.r231.gb57ca9b
+pkgver=3.0.rc1.r245.gaf0ddb6
 pkgrel=1
 pkgdesc='Networking support library for the Lua language'
 arch=('x86_64')
@@ -44,8 +44,8 @@ build() {
 
 package_lua51-socket-git() {
   depends=('lua51')
-  provides=("lua51-luasocket=$pkgver")
-  conflicts=('lua51-luasocket' 'luasocket')
+  provides=("lua51-socket=$pkgver")
+  conflicts=('lua51-socket' 'luasocket')
   replaces=('luasocket')
 
   cd luasocket-51
@@ -55,8 +55,8 @@ package_lua51-socket-git() {
 
 package_lua52-socket-git() {
   depends=('lua52')
-  provides=("lua52-luasocket=$pkgver")
-  conflicts=('lua52-luasocket')
+  provides=("lua52-socket=$pkgver")
+  conflicts=('lua52-socket')
   cd luasocket-52
   make DESTDIR="$pkgdir" LUAV=5.2 prefix=/usr install-unix
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
@@ -64,8 +64,8 @@ package_lua52-socket-git() {
 
 package_lua53-socket-git() {
   depends=('lua53')
-  provides=("lua53-luasocket=$pkgver")
-  conflicts=('lua53-luasocket')
+  provides=("lua53-socket=$pkgver")
+  conflicts=('lua53-socket')
   cd luasocket-53
   make DESTDIR="$pkgdir" LUAV=5.3 prefix=/usr install-unix
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
@@ -73,8 +73,8 @@ package_lua53-socket-git() {
 
 package_lua-socket-git() {
   depends=('lua')
-  provides=("lua-luasocket=$pkgver")
-  conflicts=('lua-luasocket')
+  provides=("lua-socket=$pkgver")
+  conflicts=('lua-socket')
   cd luasocket
   make DESTDIR="$pkgdir" LUAV=5.4 prefix=/usr install-unix
   install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
