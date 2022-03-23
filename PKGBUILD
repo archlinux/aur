@@ -16,12 +16,12 @@ sha512sums=('7c7f515585ed41cd276cd3141037ce21e3ebdb713dc932bcdb33320d9910c734bc8
 _pkgaltname=libopenaptx
 
 pkgver() {
-	cd "${_pkgaltname%-}${pkgver}"
+	cd "${_pkgaltname%}-${pkgver}"
 	git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-	cd "${_pkgaltname%-}${pkgver}"
+	cd "${_pkgaltname%}-${pkgver}"
 	make CPPFLAGS="$CPPFLAGS" \
 	CFLAGS="-O3 -mavx2 $CFLAGS" \
 	LDFLAGS="$LDFLAGS" \
@@ -29,6 +29,6 @@ build() {
 }
 
 package() {
-	cd "${_pkgaltname%-}${pkgver}"
+	cd "${_pkgaltname%}-${pkgver}"
 	make PREFIX=/usr DESTDIR="$pkgdir" install
 }
