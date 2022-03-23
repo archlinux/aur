@@ -11,7 +11,7 @@ pkgbase = openutau-bin
 	source = openutau.png
 	source = openutau.desktop
 	sha256sums = d0c29a1e604bf9522e5268984ac6512ec7f8b40ed7b7525813b479d59687f7a7
-	sha256sums = 88e2f20bf29320c56807d811dead1e9f80573a0cd96c60a8fcd1432d9af0b39f
+	sha256sums = b7e1f13f15367a039f915b290db43d6cbb33903836cd8d73cc16d036fde3342a
 	sha256sums = 205c63ec5cb003b537f705a9707664feb047802d1bb02b84bbf52db2b196796d
 	sha256sums = fb3ac0c32bf7ea057fbb4655c3aaefcee45302026d8dfff401eac86948fed950
 
