@@ -1,7 +1,7 @@
 pkgname=sunflower-git
 _gitname=Sunflower
-pkgver=0.4.62.r202.gf7706d69
-pkgrel=2
+pkgver=0.5.63.r0
+pkgrel=1
 pkgdesc="Small and highly customizable twin-panel file manager for Linux with support for plugins"
 arch=('any')
 url="https://github.com/MeanEYE/Sunflower"
@@ -18,7 +18,7 @@ md5sums=('SKIP')
 
 prepare() {
     cd "${srcdir}/${_gitname}"
-    git checkout develop
+    git checkout master
 }
 
 pkgver() {
