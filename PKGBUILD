@@ -7,7 +7,7 @@
 _pkgname=rtorrent
 pkgname=rtorrent-ipv6
 pkgver=0.9.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Ncurses BitTorrent client based on libTorrent, with IPv6 patch'
 url='http://rakshasa.github.io/rtorrent/'
 license=('GPL')
@@ -16,18 +16,22 @@ depends=('libtorrent-ipv6=0.13.8' 'xmlrpc-c')
 makedepends=('git')
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-source=("$_pkgname::git+https://github.com/rakshasa/${_pkgname}.git#commit=52ceb39ca38a68b0faa25d5050a41f431b7f2069")
+source=("$_pkgname::git+https://github.com/rakshasa/${_pkgname}.git#commit=45bec061a4b97fa5945bb45b10682849d874fa80")
 sha256sums=('SKIP')
 
 prepare() {
     cd "${srcdir}/${_pkgname}"
-    sed '/AM_PATH_CPPUNIT/d' -i configure.ac
-    ./autogen.sh
+    sed '/PKG_CHECK_EXISTS/d' -i scripts/ax_with_curses.m4
+    aclocal -I ./scripts -I .
+    autoheader
+    libtoolize --automake --copy --force
+    automake --add-missing --copy --gnu
+    autoconf
 }
 
 build() {
     cd "${srcdir}/${_pkgname}"
-    export CXXFLAGS="${CXXFLAGS} -std=c++11 -fno-strict-aliasing"
+    export CXXFLAGS="${CXXFLAGS} -std=c++14 -fno-strict-aliasing"
     ./configure \
         --prefix=/usr \
         --disable-debug \
