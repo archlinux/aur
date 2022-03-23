@@ -1,7 +1,7 @@
 # Maintainer: Snyk <elie dot charra at snyk dot io>
 # Maintainer: Elie <elie dot charra at snyk dot io>
 pkgname=driftctl-bin
-pkgver=0.24.0
+pkgver=0.25.0
 pkgrel=1
 pkgdesc="Detect, track and alert on infrastructure drift"
 arch=(x86_64 i686)
@@ -11,8 +11,8 @@ provides=('driftctl')
 _src="${url}/releases/download/v${pkgver}/driftctl"
 source_x86_64=("driftctl-${pkgver}::${_src}_linux_amd64")
 source_i686=("driftctl-${pkgver}::${_src}_linux_386")
-sha256sums_x86_64=('5d43bcf9b1d8bb95c12023ab08d1577cd5992ec6c48fe433c74a9d324e61df37')
-sha256sums_i686=('275e6cff2e1f0205ef0593840749719e1ca675989d2d8d244e09bea02d0bee90')
+sha256sums_x86_64=('6ec764a36571b19408d89b07cc7c601dc30e68712f3a5822fe81ea392230dcfc')
+sha256sums_i686=('73c56cbb8ad86e90bf349f67f5c62307fd0f976b964d8f10da3578124baff2f2')
 
 package() {
 	mv driftctl-${pkgver} driftctl
