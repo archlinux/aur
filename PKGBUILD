@@ -1,5 +1,5 @@
 pkgname=mingw-w64-suitesparse
-pkgver=5.10.1
+pkgver=5.11.0
 pkgrel=1
 pkgdesc="A collection of sparse matrix libraries (mingw-w64)"
 url="https://people.engr.tamu.edu/davis/suitesparse.html"
@@ -8,18 +8,19 @@ depends=('mingw-w64-lapack' 'mingw-w64-metis' 'mingw-w64-mpfr')
 makedepends=('mingw-w64-cmake' 'mingw-w64-make')
 license=('GPL')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v${pkgver}.tar.gz" suitesparse-no-demo.patch)
-sha256sums=('acb4d1045f48a237e70294b950153e48dce5b5f9ca8190e86c2b8c54ce00a7ee' SKIP)
+source=("https://github.com/DrTimothyAldenDavis/SuiteSparse/archive/v${pkgver}.tar.gz")
+sha256sums=('fdd957ed06019465f7de73ce931afaf5d40e96e14ae57d91f60868b8c123c4c8')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
+
 
 prepare () {
   cd "$srcdir"/SuiteSparse-${pkgver}
 
   # no demos
-  patch -p1 -i "$srcdir"/suitesparse-no-demo.patch
   sed -i "s|default: all|default: library|g" */Makefile
   sed -i "s|all: C cov|all: library|g" */Makefile
+  sed -i 's|; ./bin/demo||g' Mongoose/Makefile
 
   # undefined refs to gcov
   sed -i "s|SET(CMAKE_EXE_LINKER_FLAGS_DEBUG|#SET(CMAKE_EXE_LINKER_FLAGS_DEBUG|g" Mongoose/CMakeLists.txt
@@ -33,9 +34,7 @@ prepare () {
   sed -i 's| \-lsuitesparseconfig| \-L../../lib \-lsuitesparseconfig \-lssp|g' */Lib/Makefile
 
   # x86_64 conversion errors
-  sed -i "s|nzmax = std::max(nzmax, 1L)|nzmax = std::max(nzmax, (csi)1)|g" Mongoose/Source/Mongoose_CSparse.cpp
-  sed -i "s|Int M, N, nz;|long M, N, nz;|g" Mongoose/Source/Mongoose_IO.cpp
-  sed -i "s|mm_read_mtx_crd_data(file, M, N, nz, I, J, val, matcode);|mm_read_mtx_crd_data(file, M, N, nz, (long*)I, (long*)J, val, matcode);|g" Mongoose/Source/Mongoose_IO.cpp
+  curl -L https://github.com/ScottKolo/Mongoose/pull/4.patch | patch -p1 -d Mongoose
 
   # sliplu is weirder
   sed -i "s|default: C|default: library|g" SLIP_LU/Makefile
@@ -45,8 +44,12 @@ prepare () {
   # use MAKEFLAGS instead of JOBS
   sed -i "s| --jobs=\$(JOBS)||g" */Makefile
 
-  # https://github.com/DrTimothyAldenDavis/GraphBLAS/issues/42
-  sed -i '/misleading-indentation/d' GraphBLAS/Source/GB_warnings.h
+  # disable cpu_features
+  curl -L https://github.com/DrTimothyAldenDavis/GraphBLAS/pull/118.patch | patch -p1 -d GraphBLAS
+
+  # install graphblas & mongoose dll
+  curl -L https://github.com/DrTimothyAldenDavis/SuiteSparse/pull/123.patch | patch -p1
+  curl -L https://github.com/DrTimothyAldenDavis/GraphBLAS/pull/119.patch | patch -p1 -d GraphBLAS
 }
 
 build() {
