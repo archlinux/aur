@@ -5,11 +5,11 @@ pkgver=5.4.2
 _db_version=6.2.32
 pkgrel=1
 pkgdesc='Pirate Chain (ARRR) - Untraceable, Anonymous, Private Cryptocurrency - GUI'
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/PirateNetwork/pirate'
 license=('MIT')
 provides=('pirate-qt')
-conflicts=('pirate-cli' 'treasure-chest-bin')
+conflicts=('treasure-chest-bin')
 depends=(
 	'boost-libs'
 	'hicolor-icon-theme'
