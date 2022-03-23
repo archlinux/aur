@@ -1,24 +1,39 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Andrew Chen <xor.tux@gmail.com>
+
 pkgname=python-cstruct
 pkgver=2.1
-pkgrel=1
-pkgdesc="Convert C struct definitions into Python classes with methods for serializing/deserializing"
-url="https://github.com/andreax79/${pkgname}"
-arch=(any)
-license=(MIT)
-depends=(python)
-makedepends=(python-setuptools)
-source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('c56c87d291c4aa2afcfdbcbbc19c03ec634b6fb0dcde9d516ef2a9079be2fea52a053c47cd20dfc0fe6537ac90939364da659d8eb4763069a9990681207d432c')
+pkgrel=2
+pkgdesc="C-style structs for Python"
+url="https://github.com/andreax79/python-cstruct"
+arch=('any')
+license=('MIT')
+depends=('python')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+checkdepends=('python-nose')
+changelog=changelog.txt
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('bbdd3255f6bf3d82c7519b3f5bd48ac96f36ab5471da49bf86d6110b1ee88676')
 
 build() {
-  cd ${pkgname}-${pkgver}
-  export PYTHONHASHSEED=0
-  python setup.py build
+	cd "$pkgname-$pkgver"
+	python -m build --wheel --no-isolation
+}
+
+check() {
+	cd "$pkgname-$pkgver"
+	nosetests
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	export PYTHONHASHSEED=0
+	cd "$pkgname-$pkgver"
+	python -m installer --destdir="$pkgdir/" dist/*.whl
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s \
+		"$_site/cstruct-$pkgver.dist-info/LICENSE" \
+		"$pkgdir/usr/share/licenses/$pkgname/"
 }
