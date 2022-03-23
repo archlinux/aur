@@ -1,15 +1,15 @@
 pkgbase = fbsplash-theme-gen
 	pkgdesc = fbsplash-theme-gen allows you to create fbsplash compatible themes automatically from any image file(s).
 	pkgver = 1.0
-	pkgrel = 2
-	url = http://sourceshark.com/sourcecode/tarballs/fbsplash-theme-gen-1.0.tar.gz
+	pkgrel = 3
+	url = https://github.com/nemstar/nemaur-repo/tree/gh-pages/fbsplash-theme-gen-1.0.tar.gz
 	arch = x86_64
 	depends = imagemagick
+	depends = inkscape
 	optdepends = fbsplash: To set the fbsplash theme
 	noextract = fbsplash-theme-gen-1.0.zip
 	options = !strip
-	source = fbsplash-theme-gen-1.0.tar.gz::http://sourceshark.com/sourcecode/tarballs/fbsplash-theme-gen-1.0.tar.gz
+	source = fbsplash-theme-gen-1.0.tar.gz::https://github.com/nemstar/nemaur-repo/raw/086dc53657f40ede5753faa298cba34dc853d10b/fbsplash-theme-gen-1.0.tar.gz
 	sha512sums = 65803e63c2758fa31fc141dec2674baa0e5c21e1ebe87e7a375fcec33113b12eeea2fb90820c50439a1dd0f8d05a77bfcfba3746231213fa5d77f1450516f0fd
 
 pkgname = fbsplash-theme-gen
-
