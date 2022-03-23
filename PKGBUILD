@@ -26,5 +26,6 @@ package()
 {
 	install -d $pkgdir/usr/bin
 	install -d $pkgdir/var/spool/lpd
+	install -Dm755 "$srcdir"/opt/brother/Printers/dcpt220/lpd/"$CARCH"/brprintconf_dcpt220 "$pkgdir"/usr/bin/
 	cp -R $srcdir/opt $pkgdir/opt
 }
