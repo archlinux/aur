@@ -1,7 +1,7 @@
 # Maintainer: eNV25 <env252525@gmail.com>
 
 pkgname=keyd-git
-pkgver=2.2.7.beta.r0.dac9d69
+pkgver=2.3.1.rc.r1.20ece82
 pkgrel=1
 arch=('x86_64' 'aarch64')
 pkgdesc="A key remapping daemon for linux. "
@@ -31,7 +31,7 @@ package() {
 	cd "$srcdir/${pkgname%-git}"
 
 	# opt-in for systemd service and libinput quirks
-	install -dm755 "${pkgdir}/usr/lib/systemd"
+	install -dm755 "${pkgdir}/usr/lib/systemd/system"
 	install -dm755 "${pkgdir}/usr/share/libinput"
 
 	make DESTDIR="${pkgdir}" PREFIX='/usr' install
