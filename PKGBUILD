@@ -13,7 +13,6 @@ source=("https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}
 sha256sums=('318e427165aeccadda34141bbde73470229378b7da86a8d46f286f57f54ac0a8')
 
 package() {
-  cd "$srcdir/$pkgname"
   install -Dm644 usr/share/zsh/plugins/betterzsh.zsh "${pkgdir}/usr/share/zsh/plugins/betterzsh.zsh"
   install -Dm644 usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
