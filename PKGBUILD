@@ -20,6 +20,7 @@ optdepends=(
   'plasma-settings: Settings application for Plasma Mobile'
   'plasma-dialer: Phone application'
   'plasma-workspace-wallpapers: A large wallpaper selection for Plasma'
+  'maliit-keyboard: Virtual keyboard'
 )
 makedepends=(cmake extra-cmake-modules)
 source=("https://download.kde.org/stable/plasma/$pkgver/$pkgname-$pkgver.tar.xz")
