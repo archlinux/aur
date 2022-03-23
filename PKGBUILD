@@ -5,7 +5,7 @@
 # Contributor: Philipp 'TamCore' B. <philipp [at] tamcore [dot] eu>
 
 pkgname=crossover
-pkgver=21.1.0
+pkgver=21.2.0
 pkgrel=1
 _pkgdebrel=1
 pkgdesc="Run Windows Programs on Linux"
@@ -17,7 +17,7 @@ install=${pkgname}.install
 replaces=('crossover-games' 'crossover-pro' 'crossover-standard')
 
 source=("https://media.codeweavers.com/pub/${pkgname}/cxlinux/demo/${pkgname}_${pkgver}-${_pkgdebrel}.deb")
-sha256sums=('801720328ed098db29e675fb9d313e1fe6b7559893e83bb03264d2cdfcd6dffb')
+sha256sums=('4976c13875a0a4113d5cc1d12ec5bf8d3797d097d0941cbd8852c9726398135c')
 
 depends=( 
     'python' 'desktop-file-utils' 'python-gobject'
