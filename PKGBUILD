@@ -21,8 +21,8 @@
 
 _pkgname=psiphon-tunnel-core
 pkgname="$_pkgname-git"
-pkgver=2.0.14.r3354.08f530bd
-pkgrel=3
+pkgver=2.0.20.r3554.9efdd083
+pkgrel=1
 epoch=1
 pkgdesc='Psiphon Tunnelling Proxy'
 arch=($CARCH)
@@ -48,9 +48,6 @@ pkgver() {
 
 build() {
   cd "$_pkgname/ConsoleClient"
-
-  # this fixes build in current go version, official package is built with go 1.14
-  go env -w GO111MODULE=off
   
   
   # Copied from the README file
