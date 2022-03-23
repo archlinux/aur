@@ -19,7 +19,7 @@ source=("${url}/releases/download/v${pkgver}/AppDir.tar"
         "https://raw.githubusercontent.com/santilococo/oni2/master/LICENSE.md")
 sha256sums=('7858a23451b92e4e881b0a2b2ec953dbd9d146fbbc44d7c5cf31b717d12d32b3'
             '76bed45212235bb9f6c4a79d88684fdde3e2b70079ba06f9033113440155d322'
-            'aea3060d88f90be19ece65a657b48729ac99bfddc4a09cd2b7a2669e09e706b4')
+            '32edcecd2c392702a06ee4490d839d8a6da786deb6ca0430f16655e071f0760a')
 
 package() {
     cd "${srcdir}/_release/Onivim2.AppDir"
