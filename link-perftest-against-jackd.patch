@@ -1,0 +1,17 @@
+Description: GrandOrguePerfTest needs to be linked against libjackd when GO uses Jack
+Author: Sébastien Villemot <sebastien@debian.org>
+Forwarded: https://github.com/GrandOrgue/grandorgue/pull/1094
+Last-Update: 2022-03-23
+---
+This patch is courtesy of https://salsa.debian.org/debian/grandorgue/-/blob/ac5739accae02a48c3afb549c1ac81d8299c09c2/debian/patches/link-perftest-against-jackd.patch
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/src/tools/CMakeLists.txt
++++ b/src/tools/CMakeLists.txt
+@@ -24,3 +24,7 @@ target_include_directories(GrandOrguePer
+ target_link_libraries(GrandOrguePerfTest golib)
+ 
+ add_custom_target(runperftest COMMAND GrandOrguePerfTest "${CMAKE_SOURCE_DIR}/tests" DEPENDS GrandOrguePerfTest)
++
++if (GO_USE_JACK STREQUAL "ON")
++   target_link_libraries(GrandOrguePerfTest PkgConfig::JACK)
++endif ()

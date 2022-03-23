@@ -1,28 +1,25 @@
 pkgbase = grandorgue-git
-	pkgdesc = git-version of the Virtual Pipe Organ Software GrandOrgue
-	pkgver = 2019.03.31.00.00.00
+	pkgdesc = Virtual Pipe Organ Software
+	pkgver = 3.6.4.1.r0.gdd388827
 	pkgrel = 1
-	url = https://github.com/e9925248/grandorgue
+	url = https://github.com/GrandOrgue/grandorgue
 	arch = i686
 	arch = x86_64
 	license = GPL2+
-	makedepends = gcc
-	makedepends = cmake
 	makedepends = git
-	makedepends = docbook-xsl
-	makedepends = zip
-	makedepends = po4a
-	makedepends = gettext
-	depends = fftw
-	depends = wavpack
+	makedepends = cmake
+	makedepends = rtaudio
+	makedepends = rtmidi
+	makedepends = portaudio
 	depends = wxgtk2
-	depends = alsa-lib
-	depends = libglvnd
+	depends = wavpack
+	depends = fftw
 	depends = jack
-	depends = zlib
-	depends = libsystemd
-	source = git+https://github.com/e9925248/grandorgue.git#branch=master
-	md5sums = SKIP
+	source = git+https://github.com/GrandOrgue/grandorgue.git
+	source = git+https://github.com/GrandOrgue/ZitaConvolver.git
+	source = link-perftest-against-jackd.patch
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 3c13c6a627cddff1710c106a000bffbaa31c390716f11d4588ddd4484cea9dc4
 
 pkgname = grandorgue-git
-
