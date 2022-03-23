@@ -1,0 +1,10 @@
+pkgbase = nvidia-module-all-drivers-meta
+	pkgdesc = Meta-PKG for NVIDIA kernel drivers that do not declare providing NVIDIA-MODULE
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	depends = nvidia
+	provides = NVIDIA-MODULE
+
+pkgname = nvidia-module-all-drivers-meta
