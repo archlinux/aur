@@ -1,0 +1,54 @@
+post_install() {
+    echo 'Detecting printing subsystem'
+    /opt/XeroxOffice/prtsys/xeroxofficequemgr -setprtsubsys || echo 'Unable to detect printing subsystem' 1>> /tmp/PrtDrvInstaller.log 2>>/tmp/PrtDrvInstaller.log
+
+    echo 'Registering man pages'
+    install -m 777 -d "/opt/XeroxOffice/prtsys/db/phonebook/user"
+    install -m 777 -d "/opt/XeroxOffice/prtsys/db/passcodes"
+    install -m 666 /dev/null "/opt/XeroxOffice/prtsys/db/passcodes/passcodes.db"
+
+    env | grep DISPLAY > /opt/XeroxOffice/prtsys/.xp_disp
+
+    MANDBPATH=`which mandb 2>>/dev/null`
+    if [ "_$MANDBPATH" != "_" ]; then
+	mandb -q 2>&1 1>> /tmp/PrtDrvInstaller.log
+    else
+	makewhatis -u 2>&1 1>> /tmp/PrtDrvInstaller.log
+    fi
+
+    [[ -f /opt/XeroxOffice/prtsys/PatchSELinuxPolicy ]] && /opt/XeroxOffice/prtsys/PatchSELinuxPolicy \
+	|| echo 'SELinux policy patch failed' 1>> /tmp/PrtDrvInstaller.log 2>>/tmp/PrtDrvInstaller.log
+#    rm -f /opt/XeroxOffice/prtsys/PatchSELinuxPolicy /opt/XeroxOffice/prtsys/SELinuxExceptions*.pp
+    [[ -f /opt/XeroxOffice/prtsys/PatchAppArmorPolicy ]] && /opt/XeroxOffice/prtsys/PatchAppArmorPolicy \
+	|| echo 'AppArmor policy patch failed' 1>> /tmp/PrtDrvInstaller.log 2>>/tmp/PrtDrvInstaller.log
+#    rm -f /opt/XeroxOffice/prtsys/PatchAppArmorPolicy
+
+
+    if [ "_$DISPLAY" = "_" ]; then
+	DISPLAY=:0.0 xhost +si:localgroup:lp 2>> /tmp/PrtDrvInstaller.log 1>> /tmp/PrtDrvInstaller.log || echo 'Failed to grant lp xhost permissions' >> /tmp/PrtDrvInstaller.log
+    else
+	xhost +si:localgroup:lp 2>> /tmp/PrtDrvInstaller.log 1>> /tmp/PrtDrvInstaller.log || echo 'Failed to grant lp xhost permissions' >> /tmp/PrtDrvInstaller.log
+    fi
+
+    [[ -d /etc/cups/interfaces ]] && install -m 775 -g lp -d "/etc/cups/interfaces"
+    [[ -d /var/spool/lpd ]] && install -m 775 -g lp -d "/var/spool/lpd"
+
+    if [[ -f /bin/service ]]; then
+	echo "This package installs a wrapper to /usr/bin/service because the Xerox driver"
+	echo "invokes the service command, but Arch uses systemd (systemctl). This"
+	echo "system already has a /usr/bin/service file. We will not overwrite it."
+	echo "Installation will cancel."
+    else
+	sed '/cd /i [[ ! -f /usr/bin/service ]] && ln -s /opt/XeroxOffice/prtsys/service /usr/bin/service && SERVICE_DEL="yes"' /usr/bin/xeroxofficeprtmgr
+	echo '[[ -n ${SERVICE_DEL} ]] && rm -f /usr/bin/service' >> /usr/bin/xeroxofficeprtmgr
+    fi
+    echo "Run xeroxofficeprtmgr as root to administer print queues"
+}
+
+post_remove() {
+    SELINUX_STATUS=`/usr/bin/getenforce 2>>/dev/null || echo "Not Installed"`
+    if [ "${SELINUX_STATUS}" = "Enforcing" -a -x /usr/bin/semodule ]; then
+	echo 'Removing SELinux "CustomPrintDriver" policy'
+	/usr/bin/semodule -r CustomPrintDriver || echo 'SELinux policy failed to unload'
+    fi
+}

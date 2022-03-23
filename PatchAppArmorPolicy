@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Test to see if AppArmor is installed and running
+AA_STATUS_PATH=`which aa-status`
+AA_STATUS_EXISTS=$?
+${AA_STATUS_PATH} --enabled
+AA_STATUS_ENFORCING=$?
+USR_SBIN_CUPSD_PROFILE="/etc/apparmor.d/usr.sbin.cupsd"
+if [ $AA_STATUS_EXISTS -eq -1 -o $AA_STATUS_ENFORCING -eq -1 -o ! -f ${USR_SBIN_CUPSD_PROFILE} ];
+then
+	echo "AppArmor is not enforcing"
+	exit 0
+fi
+
+echo "Updating AppArmor cupsd policy"
+sed -i -e'/\/etc\/cups\/interfaces/d' -e'/\/etc\/cups\/\*\* /a\  /etc/cups/interfaces/** Ux,' $USR_SBIN_CUPSD_PROFILE
+
+echo "Loading updated AppArmor profiles"
+apparmor_parser -r $USR_SBIN_CUPSD_PROFILE >>/dev/null 2>>/dev/null
+
+exit 0
