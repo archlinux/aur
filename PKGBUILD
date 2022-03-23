@@ -1,7 +1,7 @@
 # Maintainer: Léopold Koprivnik Ibghy <skwal.net@gmail.com>
 pkgname="linux-on-drugs-git"
-pkgver="r7.23db4b7"
-pkgrel=2
+pkgver=r14.f0626d8
+pkgrel=1
 pkgdesc="Gives drugs to your terminal"
 arch=('any')
 url="https://github.com/SkwalExe/linux-on-drugs"
