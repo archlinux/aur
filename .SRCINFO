@@ -1,6 +1,6 @@
 pkgbase = fastfetch
 	pkgdesc = Like Neofetch, but much faster because written in C
-	pkgver = 1.1.2
+	pkgver = 1.2.0
 	pkgrel = 1
 	url = https://github.com/LinusDierheimer/fastfetch
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = fastfetch
 	optdepends = pciutils: GPU output
 	optdepends = vulkan-icd-loader: Fallback for GPU output
 	optdepends = xfconf: Needed for XFWM theme and XFCE Terminal font
-	source = fastfetch-1.1.2.tar.gz::https://github.com/LinusDierheimer/fastfetch/archive/refs/tags/1.1.2.tar.gz
-	sha256sums = 097900a3748067d0754ff46fb6ec36bf57dec7493ed44f1e8eaff6b42d1cde73
+	source = fastfetch-1.2.0.tar.gz::https://github.com/LinusDierheimer/fastfetch/archive/refs/tags/1.2.0.tar.gz
+	sha256sums = 04ca89a9f18364ce3eedeb7fc0ea5a9397247895c931a73e6e694b962207ce6a
 
 pkgname = fastfetch

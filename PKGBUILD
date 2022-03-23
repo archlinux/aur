@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=fastfetch
-pkgver=1.1.2
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Like Neofetch, but much faster because written in C"
 arch=('x86_64')
@@ -19,7 +19,7 @@ optdepends=(
   'xfconf: Needed for XFWM theme and XFCE Terminal font'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('097900a3748067d0754ff46fb6ec36bf57dec7493ed44f1e8eaff6b42d1cde73')
+sha256sums=('04ca89a9f18364ce3eedeb7fc0ea5a9397247895c931a73e6e694b962207ce6a')
 
 build() {
   cmake -B build -S "$pkgname-$pkgver" \
