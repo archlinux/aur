@@ -1,6 +1,6 @@
 pkgbase = worm
 	pkgdesc = A floating, tag-based window manager written in Nim
-	pkgver = 0.2.0
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/codic12/worm
 	install = worm.install
@@ -11,7 +11,7 @@ pkgbase = worm
 	makedepends = nimble
 	makedepends = nim
 	depends = xorg-server
-	source = worm-0.2.0.tar.gz::https://github.com/codic12/worm/archive/v0.2.0.tar.gz
-	sha512sums = 82bf1cbe3f696fe455f0b5c40b112d8dbcd986d2696466d61915e3e53f7eb2d13afdcb25bbd248f96b0dd45e1daa795ce96c6111e19bdb3e150d22e705adc958
+	source = worm-0.2.5.tar.gz::https://github.com/codic12/worm/archive/v0.2.5.tar.gz
+	sha512sums = 294de8dee331a78a3600c521da1ffd6960988fbbff64a4ead024d7ef5ca9c2d31365f34d479f97254d770377d290361dbbbe47c9dff29d7c9419bf15de0a16aa
 
 pkgname = worm
