@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r59895.e47331c6308
+pkgver=r59942.e9e00526bba
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -64,7 +64,7 @@ _libdvdread_version="6.0.0-Leia-Alpha-3"
 _ffmpeg_version="4.4.1-Nexus-Alpha1"
 _fmt_version="8.0.1"
 _spdlog_version="1.9.2"
-_crossguid_version="8f399e8bd4"
+_crossguid_version="ca1bf4b810e2d188d04cb6286f957008ee1b7681"
 _fstrcmp_version="0.7.D001"
 _flatbuffers_version="2.0.0"
 _libudfread_version="1.1.2"
@@ -103,7 +103,7 @@ b2sums=('SKIP'
         '51d310e7000aeba657d55341c5fdb540474e197b85062228ab4b314c8309ec11985aa7f105193333fc6106529e8e58c86eafe268190894be8532d0e0b9065fa6'
         'b64a4686050a9edb4e5d3ec28a3727a847105ae0b12a89461841e14d6c9c442e391cdcfbca39b2d141d04cdb10d00516ecc8bf605867c792b7d2d6bc99c7b2bc'
         '8e4cce17887509512c0d3a63485f9271098bdf7f853c2a07adb8d46459c1039d93d16d05cb60963c1bbc754f6af6ba3af1a66c69bc421bf234f676231c8c1315'
-        'e6f1f495adf541102e3b5ac11dfd14b770a52e23ef9d613bc6204f6493ff4df4da9ba290ad6c3a7e5c7fcf159cafdf355bfe668a4ddceb4329df934c65966d19'
+        '0f78a8ab5a420297f666b3b8156d499a9141ec25c049d4d2bb2ba594dc585abe211a149b83c605cce4f5530207231a065d5f3a87a0c969781de8c6381afa2527'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
         'ccd827a43da39cf831727b439beed0cea216cdf50dbfe70954854bbe388b2c47ed4e78cc87e3fc0d5568034b13baa2ea96480914cc8129747bccbf8ea928847c'
         '1801d84a0ca38410a78f23e7d44f37e6d53346753c853df2e7380d259ce1ae7f0c712825b95a5753ad0bc6360cfffe1888b9e7bc30da8b84549e0f1198248f61'
