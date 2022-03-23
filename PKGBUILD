@@ -3,11 +3,11 @@
 _pkgname=uproot
 pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-docs")
-pkgver=4.2.0
+pkgver=4.2.2
 pkgrel=1
 pkgdesc="Minimalist CERN ROOT I/O in pure Python and Numpy"
 arch=('any')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-mock' 'python-pkgconfig' 'python-pandas' 'python-pytest-runner' 'python-requests'
               'python-matplotlib' 'python-hist' 'python-scikit-hep-testdata' 'python-xxhash' 'root' 'xrootd')
 depends=('python-awkward>=1.7.0' 'python-cachetools' 'python-lz4' 'python-numpy' 'python-zstandard')
@@ -19,11 +19,19 @@ url="https://github.com/scikit-hep/${_pkgname}4"
 license=('BSD')
 
 source=("${_pkgname}-${pkgver}::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('c4c200e47860c828c39da334c7ba1f53a989d7c76cb5062a1d0db07b194a6640')
+sha256sums=('2ba34c18a75af60c3b3e25703b2d5bd373cddfa22682827844ea7087ff899427')
+
+prepare() {
+    cd "${srcdir}/${_pkgname}4-${pkgver}"
+    sed \
+        -e 's/setuptools.extern.packaging.version.parse/packaging.version.parse/' \
+        -e 's/import setuptools/import packaging/' \
+        -i src/uproot/_util.py
+}
 
 build() {
     cd "${srcdir}/${_pkgname}4-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 check() {
@@ -33,14 +41,14 @@ check() {
       -e 's@scikit-hep.org:443/uproot/examples@scikit-hep.org:443/uproot3/examples@g' \
       -i {} \;
     # tests depend on some unpackaged deps
-    python setup.py pytest
+    PYTHONPATH="$PWD/build/lib" pytest
 }
 
 package_python-uproot() {
     optdepends+=('python-uproot-docs: docs')
     cd "${srcdir}/${_pkgname}4-${pkgver}"
 
-    python setup.py install --root="${pkgdir}/" --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 
     install -D LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
