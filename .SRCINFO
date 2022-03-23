@@ -1,0 +1,18 @@
+pkgbase = python-psyplot-git
+	pkgdesc = Python package for interactive data visualization
+	pkgver = 1.4.2.r16.g9a1f4f8
+	pkgrel = 1
+	url = https://github.com/psyplot/psyplot
+	arch = any
+	license = LGPL3
+	makedepends = python-matplotlib
+	makedepends = python-yaml
+	makedepends = python-docrep
+	makedepends = python-xarray
+	makedepends = python-funcargparse
+	provides = psyplot
+	conflicts = python-psyplot
+	source = python-psyplot-git::git+https://github.com/psyplot/psyplot
+	sha256sums = SKIP
+
+pkgname = python-psyplot-git
