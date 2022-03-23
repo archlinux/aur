@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-comtool
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 epoch=
 pkgdesc="A cross platform serial debug tools written by python"
@@ -22,7 +22,7 @@ install=
 changelog=
 source=("${pkgname#python-}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('5f5b4f99fb88f1b1ef99f746d4b6e8cb0d4ac19ebe7fa0081e04bb2e3281e8be')
+sha256sums=('17a1724f35e67419ce3113b3e5e1fd119b2b55b935badb6b2be7aec7cbf0db4f')
 #validpgpkeys=()
 
 build() {
