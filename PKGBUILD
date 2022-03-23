@@ -67,7 +67,7 @@ prepare ()
 	sed -i 's/mapbox-earcut>=0.12.10,<0.13.0/mapbox-earcut/g' setup.py
 	sed -i 's/screeninfo>=0.6.7,<0.7.0/screeninfo/g' setup.py
 	sed -i 's/srt>=3.5.0,<4.0.0/srt/g' setup.py
-	sed -i 's/manimpango>=0.3.0,<0.4.0/manimpango/g' setup.py
+	# sed -i 's/manimpango>=0.3.0,<0.4.0/manimpango/g' setup.py
 }
 
 build ()
