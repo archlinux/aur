@@ -1,7 +1,7 @@
 pkgbase = axoloti-git
 	pkgdesc = A workbench to compose and edit sound algorithms and interactions for the axoloti core
 	pkgver = 1.0.11.r61.g6a05b1c2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.axoloti.com/
 	arch = x86_64
 	license = GPL
@@ -10,8 +10,8 @@ pkgbase = axoloti-git
 	makedepends = libtool
 	makedepends = automake
 	makedepends = autoconf
-	depends = java-runtime=7
-	depends = axoloti-runtime>=1.0
+	depends = java-runtime=8
+	depends = axoloti-runtime>=2.0
 	provides = axoloti
 	conflicts = axoloti
 	source = git+https://github.com/axoloti/axoloti.git
