@@ -10,8 +10,7 @@ pkgbase = sres-git
 	depends = libxcb
 	provides = sres
 	conflicts = sres
-	source = git://github.com/baskerville/sres.git
+	source = git+https://github.com/baskerville/sres.git
 	md5sums = SKIP
 
 pkgname = sres-git
-
