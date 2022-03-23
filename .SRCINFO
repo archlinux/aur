@@ -1,0 +1,13 @@
+pkgbase = ffmpeg-yt-dlp-bin
+	pkgdesc = FFmpeg Builds for yt-dlp
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/yt-dlp/FFmpeg-Builds
+	arch = x86_64
+	license = GPL
+	provides = ffmpeg
+	conflicts = ffmpeg
+	source = ffmpeg-master-latest-linux64-gpl.tar.xz::https://github.com/yt-dlp/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-linux64-gpl.tar.xz
+	md5sums = SKIP
+
+pkgname = ffmpeg-yt-dlp-bin
