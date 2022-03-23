@@ -3,7 +3,7 @@
 _gitname=axoloti
 pkgname=${_gitname}-git
 pkgver=1.0.11.r61.g6a05b1c2
-pkgrel=4
+pkgrel=5
 pkgdesc='A workbench to compose and edit sound algorithms and interactions for the axoloti core'
 arch=(x86_64)
 url="http://www.axoloti.com/"
@@ -23,6 +23,7 @@ sha512sums=(
 build() {
     echo '##### building GUI... #####'
     cd "$srcdir/$_gitname"
+    export JAVA_HOME='/usr/lib/jvm/java-8-openjdk'
     ant
 }
 
