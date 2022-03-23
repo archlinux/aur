@@ -1,7 +1,7 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=r641.d647f9e
+pkgver=1.2.0.r2.g24a48c1
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c"
 arch=("x86_64" "i686" "pentium4" "armv5" "armv6h" "armv7h" "aarch64")
@@ -43,15 +43,15 @@ _provides_and_conflicts=(
 provides=("${_provides_and_conflicts[@]}")
 conflicts=("${_provides_and_conflicts[@]}")
 
-source=("${pkgname}::git+https://github.com/LinusDierheimer/fastfetch.git")
+_src_dir="${pkgname}"
+source=("${_src_dir}::git+https://github.com/LinusDierheimer/fastfetch.git")
 sha256sums=("SKIP")
 
-_src_dir="${pkgname}"
 _build_dir="build"
 
 pkgver() {
   cd "${_src_dir}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
