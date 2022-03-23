@@ -2,7 +2,7 @@
 # Maintainer: MithicSpirit <rpc01234 at gmail dot com>
 pkgname=autotrash
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to automatically purge old trashed files"
 arch=("any")
 url="https://github.com/bneijt/autotrash"

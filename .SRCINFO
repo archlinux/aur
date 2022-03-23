@@ -1,7 +1,7 @@
 pkgbase = autotrash
 	pkgdesc = Tool to automatically purge old trashed files
 	pkgver = 0.4.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bneijt/autotrash
 	arch = any
 	license = GPL3
