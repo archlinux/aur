@@ -5,7 +5,7 @@
 
 pkgname=bigloo-devel
 pkgver=4.4c
-pkgrel=13
+pkgrel=14
 epoch=1
 _suffix=latest
 pkgdesc="Fast scheme compiler"
