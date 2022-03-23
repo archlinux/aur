@@ -3,14 +3,14 @@
 # $ updaurpkg .
 _repo=Akianonymus/gdrive-downloader
 _source_type=github-releases
-_upstreamver=$(date +%F|sed s/-/_/g)
+_upstreamver=$(date +%Y%m%d)
 _pkgname=$(tr A-Z a-z <<< ${_repo##*/})
 
 pkgbase=$_pkgname
 pkgname=$_pkgname-git
 pkgver=${_upstreamver##v}
 pkgrel=1
-pkgdesc="$(gh repo view $_repo|rg 'description:\t'|cut -f2)"
+pkgdesc="$(gh repo view --json description -q .description $_repo)"
 arch=(any)
 url=https://github.com/$_repo
 makedepends=(git)
