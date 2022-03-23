@@ -1,5 +1,5 @@
 pkgbase = ez
-	pkgdesc = Task simplificaltion aimed at increasing the speed and efficiency of common tasks
+	pkgdesc = Task simplificaltion scripts for increasing the speed and efficiency of common tasks
 	pkgver = 1.0.r1
 	pkgrel = 1
 	url = https://gitlab.com/qYp/EZ
@@ -11,6 +11,9 @@ pkgbase = ez
 	optdepends = git: To use ezgc for git cloning
 	optdepends = lf: To use eztsts lf file-management functionality
 	optdepends = paru: To use ezdl for downloading packages from the AUR
+	provides = ezdl
+	provides = ezgc
+	provides = eztst
 	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/ez-1.0.r1-1-x86_64.pkg.tar.zst
 	sha256sums = 661be8bd668269367de818ba01efc6fc8baa4c202a329925aa409f5082ed3b9f
 

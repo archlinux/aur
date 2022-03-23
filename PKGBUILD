@@ -4,7 +4,7 @@ _pkgname=EZ
 pkgname=ez
 pkgver=1.0.r1
 pkgrel=1
-pkgdesc='Task simplificaltion aimed at increasing the speed and efficiency of common tasks'
+pkgdesc='Task simplificaltion scripts for increasing the speed and efficiency of common tasks'
 arch=(x86_64)
 url="https://gitlab.com/qYp/${_pkgname}"
 license=('MIT')
@@ -17,6 +17,7 @@ optdepends=(
   'lf: To use 'eztst's lf file-management functionality'
   'paru: To use 'ezdl' for downloading packages from the AUR'
   )
+provides=(ezdl ezgc eztst)
 source=("https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
 sha256sums=('661be8bd668269367de818ba01efc6fc8baa4c202a329925aa409f5082ed3b9f')
 
