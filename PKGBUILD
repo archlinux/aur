@@ -52,13 +52,12 @@ _override_max_perf=
 
 pkgname=nvidia-tweaks
 pkgdesc="A collection of tweaks and improvements to the NVIDIA driver"
-pkgver=495
-pkgrel=4
+pkgver=510
+pkgrel=1
 license=('custom')
 url='https://www.nvidia.com/'
 depends=('NVIDIA-MODULE' 'nvidia-utils')
-optdepends=('nvlax-git: alternative nvidia-patch'
-            'nvidia-fake-powerd: Fix new bug in 495')
+optdepends=('nvlax-git: alternative nvidia-patch')
 arch=('any')
 source=('nvidia.conf'
         'nvidia-tweaks.hook'

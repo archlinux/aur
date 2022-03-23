@@ -1,14 +1,13 @@
 pkgbase = nvidia-tweaks
 	pkgdesc = A collection of tweaks and improvements to the NVIDIA driver
-	pkgver = 495
-	pkgrel = 4
+	pkgver = 510
+	pkgrel = 1
 	url = https://www.nvidia.com/
 	arch = any
 	license = custom
 	depends = NVIDIA-MODULE
 	depends = nvidia-utils
 	optdepends = nvlax-git: alternative nvidia-patch
-	optdepends = nvidia-fake-powerd: Fix new bug in 495
 	source = nvidia.conf
 	source = nvidia-tweaks.hook
 	source = nvidia-patch.install
