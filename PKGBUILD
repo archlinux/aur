@@ -7,7 +7,7 @@
 
 pkgname=tahoe-lafs
 pkgver=1.17.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Secure, decentralized, and fault-tolerant storage system.'
 url='https://tahoe-lafs.org/trac/tahoe-lafs'
 license=('GPL' 'custom')
@@ -15,7 +15,6 @@ arch=('any')
 depends=('magic-wormhole'
          'python-argparse'
          'python-bcrypt'
-         'python-boltons'
          'python-cbor2'
          'python-collections-extended'
          'python-eliot'
@@ -23,7 +22,6 @@ depends=('magic-wormhole'
          'python-future'
          'python-klein'
          'python-netifaces'
-         'python-pyrsistent'
          'python-treq'
          'python-yaml'
          'python-zfec')
