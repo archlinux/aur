@@ -5,12 +5,12 @@
 o_pkgname=kwallet
 pkgname=kwallet-secrets
 pkgver=5.92.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Secure and unified container for user passwords. Patched for org.freedesktop.secrets support'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
 license=(LGPL)
-depends=(knotifications kiconthemes kservice gpgme)
+depends=(knotifications kiconthemes kservice gpgme qca-qt5)
 makedepends=(extra-cmake-modules kdoctools boost doxygen qt5-tools qt5-doc)
 optdepends=('kwalletmanager: Configuration GUI')
 provides=(org.freedesktop.secrets kwallet)
