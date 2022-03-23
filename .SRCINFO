@@ -1,6 +1,6 @@
 pkgbase = frp
 	pkgdesc = A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet.
-	pkgver = 0.40.0
+	pkgver = 0.41.0
 	pkgrel = 1
 	url = https://github.com/fatedier/frp
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = frp
 	license = Apache
 	makedepends = go
 	depends = glibc
-	source = frp-0.40.0.tar.gz::https://github.com/fatedier/frp/archive/v0.40.0.tar.gz
-	sha256sums = 2e69af788f6fda1c2dadc91118971adb612f763d05068c8d62ca6c5214fe248d
+	source = frp-0.41.0.tar.gz::https://github.com/fatedier/frp/archive/v0.41.0.tar.gz
+	sha256sums = 2655557d00a3d1bf7b8906586f4020db6cc7561faa8618a47640d8c67bac0c9e
 
 pkgname = frpc
 	conflicts = frp
