@@ -3,13 +3,13 @@
 _gitname=axoloti
 pkgname=${_gitname}-git
 pkgver=1.0.11.r61.g6a05b1c2
-pkgrel=1
+pkgrel=2
 pkgdesc='A workbench to compose and edit sound algorithms and interactions for the axoloti core'
 arch=(x86_64)
 url="http://www.axoloti.com/"
 license=(GPL)
 depends=('java-runtime=7' 'axoloti-runtime>=1.0')
-makedepends=(apache-ant libtool automake autoconf)
+makedepends=(git apache-ant libtool automake autoconf)
 provides=(axoloti)
 conflicts=(axoloti)
 
