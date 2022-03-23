@@ -1,7 +1,7 @@
 pkgbase = libtorrent-ipv6
 	pkgdesc = BitTorrent library with a focus on high performance and good code, with ipv6 support
 	pkgver = 0.13.8
-	pkgrel = 1
+	pkgrel = 3
 	url = http://rakshasa.github.io/rtorrent/
 	arch = x86_64
 	license = GPL
@@ -10,8 +10,7 @@ pkgbase = libtorrent-ipv6
 	depends = zlib
 	provides = libtorrent
 	conflicts = libtorrent
-	source = libtorrent::git+https://github.com/rakshasa/libtorrent.git#commit=bd3e232a2fdb91a2eb93994bb18e5e0e3d2f6235
+	source = libtorrent::git+https://github.com/rakshasa/libtorrent.git#commit=ac8d6d1be5341e8dfa4ac33fef0bf8940a00c8f3
 	sha256sums = SKIP
 
 pkgname = libtorrent-ipv6
-
