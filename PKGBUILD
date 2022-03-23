@@ -36,14 +36,14 @@ optdepends=('libappindicator-gtk3: system tray support'
 	'libnotify: desktop notification support')
 source=("https://github.com/PirateNetwork/pirate/archive/refs/tags/v${pkgver}.tar.gz"
 	"https://download.oracle.com/berkeley-db/db-${_db_version}.tar.gz"
-	"arch-linux.patch")
+	"qt-arch-linux.patch")
 sha256sums=('8190670acc7a726e86f0ce5a4f4657601c9503c12ce3e4984146daeed90ac950'
             'a9c5e2b004a5777aa03510cfe5cd766a4a3b777713406b02809c17c8e0e7a8fb'
             '9ed5e85e91825b54f8d94c1bb7ff292e066dcc8372d378e207391cc9834bd081')
 
 prepare() {
   cd "pirate-${pkgver}"
-  patch -Np1 -i ../arch-linux.patch
+  patch -Np1 -i ../qt-arch-linux.patch
 }
 
 build() {
