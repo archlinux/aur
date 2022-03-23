@@ -1,7 +1,7 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=r640.4895c68
+pkgver=r641.d647f9e
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c"
 arch=("x86_64" "i686" "pentium4" "armv5" "armv6h" "armv7h" "aarch64")
@@ -43,16 +43,16 @@ _provides_and_conflicts=(
 provides=("${_provides_and_conflicts[@]}")
 conflicts=("${_provides_and_conflicts[@]}")
 
-_src_dir="${pkgname}-${pkgver}"
-source=("${_src_dir}::git+https://github.com/LinusDierheimer/fastfetch.git")
+source=("${pkgname}::git+https://github.com/LinusDierheimer/fastfetch.git")
 sha256sums=("SKIP")
+
+_src_dir="${pkgname}"
+_build_dir="build"
 
 pkgver() {
   cd "${_src_dir}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-
-_build_dir="build"
 
 build() {
   cmake -B "${_build_dir}" -S "${_src_dir}" -Wno-dev
