@@ -1,7 +1,7 @@
 # Maintainer: Florian Walsh
 
 pkgname=cocoalib
-pkgver=0.99717
+pkgver=0.99800
 pkgrel=1
 pkgdesc="A C++ library for doing Computations in Commutative Algebra. Also includes the CoCoA-5 Interpreter."
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('gmp' 'boost-libs' 'readline')
 makedepends=('frobby' 'boost')
 source=("http://cocoa.dima.unige.it/cocoalib/tgz/CoCoALib-$pkgver.tgz" "cocoa5")
-sha256sums=('abc152aaf1336758102fa9d1a6d534f7686a5a4eadb69cbf54c706fbd93c8caf'
+sha256sums=('6f38dbf9156d5598e67c05c9557f03281880527afd579d71cd4076be535ec523'
             '77728fcb4204616b77f05fa7801a3a34520ce892decbeb1d588ad9bb6a436a0e')
 
 build() {
@@ -51,7 +51,6 @@ package() {
   done
   install "doc/CoCoALib.pdf" "$pkgdir/usr/lib/CoCoA/doc"
   install "doc/COPYING" "$pkgdir/usr/lib/CoCoA/doc"
-  install "COPYING-GPLv3" "$pkgdir/usr/lib/CoCoA"
   install -d "$pkgdir/usr/bin"
   install ../cocoa5 "$pkgdir/usr/bin/cocoa5"
 }
