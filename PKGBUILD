@@ -13,14 +13,15 @@ provides=(libopenaptx.so)
 conflicts=(libopenaptx)
 source=("$pkgver.tar.gz::https://github.com/pali/libopenaptx/archive/$pkgver.tar.gz")
 sha512sums=('7c7f515585ed41cd276cd3141037ce21e3ebdb713dc932bcdb33320d9910c734bc81e581e2c09b3399b3516c789e5da7128fdab5ab6b5e4f42a86b6ac6d3f28c')
+_pkgaltname=libopenaptx
 
 pkgver() {
-	cd "${pkgname%-}${pkgver}%"
+	cd "${_pkgaltname%-}${pkgver}"
 	git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-	cd "${pkgname%-}${pkgver}%"
+	cd "${_pkgaltname%-}${pkgver}"
 	make CPPFLAGS="$CPPFLAGS" \
 	CFLAGS="-O3 -mavx2 $CFLAGS" \
 	LDFLAGS="$LDFLAGS" \
@@ -28,6 +29,6 @@ build() {
 }
 
 package() {
-	cd "${pkgname%-}${pkgver}%"
+	cd "${_pkgaltname%-}${pkgver}"
 	make PREFIX=/usr DESTDIR="$pkgdir" install
 }
