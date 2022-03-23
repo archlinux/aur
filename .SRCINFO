@@ -1,0 +1,14 @@
+pkgbase = python-funcargparse-git
+	pkgdesc = Create an argparse.ArgumentParser from function docstrings
+	pkgver = 0.2.5.r0.g46bb7b9
+	pkgrel = 1
+	url = https://github.com/Chilipp/funcargparse
+	arch = any
+	license = LGPL3
+	makedepends = git
+	depends = python
+	conflicts = python-python-funcargparse-git
+	source = python-funcargparse-git::git+https://github.com/Chilipp/funcargparse
+	sha256sums = SKIP
+
+pkgname = python-funcargparse-git
