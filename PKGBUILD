@@ -3,8 +3,8 @@
 pkgname=linthesia-git
 _pkgname=linthesia
 epoch=1
-pkgver=r147.427de90
-pkgrel=2
+pkgver=r177.d262d90
+pkgrel=1
 pkgdesc="A game of playing music. A fork of Synthesia (git)"
 arch=('i686' 'x86_64')
 url="https://github.com/mans17/linthesia"
@@ -12,8 +12,7 @@ license=('GPL2')
 depends=('gtkmm' 'gconfmm' 'gtkglextmm' 'alsa-lib' 'fluidsynth')
 makedepends=('git')
 conflicts=('linthesia')
-#source=("linthesia::git+https://github.com/mans17/linthesia.git")
-source=("linthesia::git+https://github.com/rikmg/linthesia.git")
+source=("linthesia::git+https://github.com/linthesia/linthesia.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -22,24 +21,16 @@ pkgver() {
 }
 
 build() {
-	cd "$srcdir/${_pkgname}"
-	./autogen.sh
-	./configure --prefix=/usr
-	make GRAPHDIR="/usr/share/linthesia/graphics"
+  cd "$srcdir/${_pkgname}"
+  meson --prefix /usr build
+  ninja -C build
 }
 
 package () {
-	cd "$srcdir/${_pkgname}"
-	make DESTDIR="$pkgdir" install
-	# Install desktop file
-	#mkdir "$pkgdir/usr/share/applications"
-	install -Tm644 extra/linthesia.desktop $pkgdir/usr/share/applications/linthesia.desktop 
-	# Install pixmap
-	mkdir "$pkgdir/usr/share/pixmaps"
-	install -Tm644 extra/linthesia.xpm $pkgdir/usr/share/pixmaps/linthesia.xpm
-	# Install docs
-	mkdir "$pkgdir/usr/share/doc"
-	mkdir "$pkgdir/usr/share/doc/linthesia"
-	install -Tm644 README $pkgdir/usr/share/doc/linthesia/README
-	install -Tm644 COPYING $pkgdir/usr/share/doc/linthesia/COPYING
+  cd "$srcdir/${_pkgname}"
+  DESTDIR="$pkgdir" ninja -C build install
+  # Install docs
+  install -Dm644 README.md $pkgdir/usr/share/doc/linthesia/README.md
+  install -Dm644 COPYING $pkgdir/usr/share/doc/linthesia/COPYING
+  install -Dm644 CHANGELOG $pkgdir/usr/share/doc/linthesia/CHANGELOG
 }
