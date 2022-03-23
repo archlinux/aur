@@ -1,6 +1,6 @@
 # Maintainer: L. Bradley LaBoon <me@bradleylaboon.com>
 pkgname=qflipper
-basever=1.0.0-rc1
+basever=1.0.0-rc2
 pkgver=${basever/-/}
 pkgrel=1
 pkgdesc="Desktop application for updating Flipper Zero firmware via PC"
