@@ -1,6 +1,6 @@
 # Maintainer: Richard Hillmann <richie at project0 dot de>
 pkgname=awsvpnclient
-pkgver=1.0.2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="AWS VPN Client"
 arch=('x86_64')
@@ -10,10 +10,8 @@ source=(
   "$pkgname-$pkgver.deb::https://d20adtppz83p9s.cloudfront.net/GTK/${pkgver}/awsvpnclient_amd64.deb"
   'awsvpnclient.desktop.patch'
 )
-sha512sums=(
-  '4d0dd6a83400d25245f07a31a76f11217738452a413c45fb36898b8de7284a8940bfbaec1bb918b767f74a1f30e3cdaec37befe0a6608b2b848936e35cd4642e'
-  'SKIP'
-)
+sha512sums=('acbe9a5fd0a04b18effc35993d4809b451e717eb507ff31a5f79355463d80b488e3fbd149ad781396bc3e5182346302932d69e105e6341b60ce167f8c90044ef'
+            '0c32ba0b81ac1123dd6123ee2f4b7573957eab76ae40708e2acfd28b15c9b1717b63450d40bddf449e088b0cf202faac466bd4d7bd79cf2a032735190b625c20')
 depends=('xdg-utils' 'lsof')
 makedepends=('xz')
 options=('!strip' 'staticlibs')
@@ -24,6 +22,11 @@ package(){
 
   # Apply patch to fix desktop file for KDE
   patch -s "${pkgdir}/usr/share/applications/awsvpnclient.desktop" "${srcdir}/awsvpnclient.desktop.patch"
+
+  # Workaround for missing compatibility of the SQL library with arch linux:
+  # Intentionally break the metrics agent,
+  # it will be unable to laod the dynamic lib and wont start but continue with error message
+  chmod 000 "${pkgdir}/opt/awsvpnclient/SQLite.Interop.dll"
 
   # Permission fix
   find "${pkgdir}" -type d -exec chmod 755 {} +
