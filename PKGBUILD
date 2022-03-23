@@ -3,14 +3,14 @@
 _pkgname=awkward
 pkgname="python-${_pkgname}"
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Manipulate jagged, chunky, and/or bitmasked arrays as easily as Numpy"
 url="https://github.com/scikit-hep/awkward-1.0"
 license=('BSD')
 arch=('x86_64')
-depends=('python-numpy')
+depends=('python-numpy' 'python-packaging')
 optdepends=('cuda: CUDA support')
-makedepends=('cmake' 'git' 'python-build' 'python-installer' 'python-wheel' 'python-packaging' 'cuda')
+makedepends=('cmake' 'git' 'python-build' 'python-installer' 'python-wheel' 'cuda')
 checkdepends=('python-pyaml' 'python-pytest' 'python-pytest-cov' 'python-hist' 'python-pandas' 'python-numexpr' 'python-pyarrow' 'python-scikit-hep-testdata' 'python-vector'
               'root' 'pybind11' 'rapidjson')
 source=(
