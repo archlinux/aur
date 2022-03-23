@@ -1,5 +1,5 @@
-# Maintainer: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 # Maintainer: Reza Jahanbakhshi <reza.jahanbakhshi at gmail dot com
+# Contributor: Lone_Wolf <lone_wolf@klaas-de-kat.nl>
 # Contributor: Armin K. <krejzi at email dot com>
 # Contributor: Kristian Klausen <klausenbusk@hotmail.com>
 # Contributor: Egon Ashrafinia <e.ashrafinia@gmail.com>
@@ -12,7 +12,7 @@
 
 pkgname=lib32-mesa-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=22.1.0_devel.149803.fd0e4aedeb2
+pkgver=22.1.0_devel.151514.a5884df949e.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
@@ -27,8 +27,8 @@ conflicts=('lib32-mesa' 'lib32-vulkan-intel' 'lib32-vulkan-radeon' 'lib32-libva-
 url="https://www.mesa3d.org"
 license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git#branch=main'
-                'LICENSE'
-                'llvm32.native')
+        'LICENSE'
+        'llvm32.native')
 md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a'
          '6b4a19068a323d7f90a3d3cd315ed1f9')
@@ -82,8 +82,20 @@ esac
 
 pkgver() {
     cd mesa
+    local _ver
     read -r _ver <VERSION
-    echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+
+    local _patchver
+    local _patchfile
+    for _patchfile in "${source[@]}"; do
+        _patchfile="${_patchfile%%::*}"
+        _patchfile="${_patchfile##*/}"
+        [[ $_patchfile = *.patch ]] || continue
+        _patchver="${_patchver}$(md5sum ${srcdir}/${_patchfile} | cut -c1-32)"
+    done
+    _patchver="$(echo -n $_patchver | md5sum | cut -c1-32)"
+
+    echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD).${_patchver}
 }
 
 prepare() {
@@ -92,6 +104,15 @@ prepare() {
     if [  -d _build ]; then
         rm -rf _build
     fi
+
+    local _patchfile
+    for _patchfile in "${source[@]}"; do
+        _patchfile="${_patchfile%%::*}"
+        _patchfile="${_patchfile##*/}"
+        [[ $_patchfile = *.patch ]] || continue
+        echo "Applying patch $_patchfile..."
+        patch --directory=mesa --forward --strip=1 --input="${srcdir}/${_patchfile}"
+    done
 }
 
 build () {
