@@ -1,3 +1,4 @@
+# Maintainer: Lucas Puntillo <laniku@envs.net>
 # Maintainer: Noah Vogt (noahvogt) <noah@noahvogt.com>
 # Maintainer: Seppia <seppia@seppio.fish>
 # Maintainer: JustKidding <jk@vin.ovh>
@@ -9,18 +10,18 @@
 # Contributor: Jan "heftig" Steffens <jan.steffens@gmail.com>
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
-pkgname=ungoogled-chromium-xdg
+pkgname=ungoogled-chromium-wayland
 pkgver=97.0.4692.99
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=4
-pkgdesc="A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory"
+pkgdesc="The classic ungoogled chromium, but now with Ozone patches for wayland"
 arch=('x86_64')
 url="https://github.com/Eloston/ungoogled-chromium"
 license=('BSD')
 depends=('gtk3' 'nss' 'alsa-lib' 'xdg-utils' 'libxss' 'libcups' 'libgcrypt'
          'ttf-liberation' 'systemd' 'dbus' 'libpulse' 'pciutils' 'libva'
-         'desktop-file-utils' 'hicolor-icon-theme')
+         'desktop-file-utils' 'hicolor-icon-theme' 'weston')
 makedepends=('python' 'gn' 'ninja' 'clang' 'lld' 'gperf' 'nodejs' 'pipewire'
              'java-runtime-headless')
 optdepends=('pipewire: WebRTC desktop sharing under Wayland'
@@ -193,6 +194,7 @@ build() {
     'use_sysroot=false'
     'use_custom_libcxx=false'
     'enable_widevine=true'
+    'ozone_platform_wayland=true'
   )
 
   if [[ -n ${_system_libs[icu]+set} ]]; then
