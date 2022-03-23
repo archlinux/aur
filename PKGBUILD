@@ -6,7 +6,7 @@
 
 pkgname=firefox-esr
 pkgver=91.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -23,10 +23,12 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'xdg-desktop-portal: Screensharing with Wayland')
 options=(!emptydirs !makeflags !strip !lto !debug)
 source=(https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz{,.asc}
+        0001-Use-remoting-name-for-GDK-application-names.patch
         $pkgname.desktop identity-icons-brand.svg)
 sha256sums=('9c3ae9abe1ef10d66d64cbbee96ba2c16840098de8fe0285959f04160d0fee5a'
             'SKIP'
-            '39c4c2d1f465e3fb08e20e3036c2284ee3e8dfbd539abe4ffea3c46b4058f16d'
+            '138b972a40a74104791783167770c4a01e62cce00bb9cc75119e152f9ea9f14d'
+            'c798853574da42bc22b066acb4b0bfdd630dc05b22560fcf0db9235b4207e051'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
@@ -45,6 +47,9 @@ _mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 prepare() {
   mkdir mozbuild
   cd firefox-$pkgver
+
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
+  patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
 
   echo -n "$_google_api_key" >google-api-key
   echo -n "$_mozilla_api_key" >mozilla-api-key
@@ -68,8 +73,9 @@ ac_add_options --enable-update-channel=release
 ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
+ac_add_options --with-app-name=$pkgname
 export MOZILLA_OFFICIAL=1
-export MOZ_APP_REMOTINGNAME=${pkgname//-/}
+export MOZ_APP_REMOTINGNAME=$pkgname
 
 # Keys
 ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
@@ -96,6 +102,9 @@ build() {
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZ_ENABLE_FULL_SYMBOLS=1
   export MACH_USE_SYSTEM_PYTHON=1
+
+  export MOZ_BUILD_DATE=$(head -1 sourcestamp.txt)
+  export RUSTFLAGS="-C debuginfo=1"
 
   # LTO needs more open files
   ulimit -n 4096
@@ -188,7 +197,7 @@ END
   # Install a wrapper to avoid confusion about binary path
   install -Dvm755 /dev/stdin "$pkgdir/usr/bin/$pkgname" <<END
 #!/bin/sh
-exec /usr/lib/$pkgname/firefox "\$@"
+exec /usr/lib/$pkgname/firefox-esr "\$@"
 END
 
   # Replace duplicate binary with wrapper
