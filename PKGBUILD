@@ -4,10 +4,10 @@
 
 pkgname=python2-enum34
 pkgver=1.1.10
-pkgrel=1
+pkgrel=2
 pkgdesc='Python 3.4 Enum backported'
 arch=('any')
-url='https://pypi.org/enum34'
+url='https://pypi.org/project/enum34'
 license=('BSD')
 depends=('python2')
 makedepends=('python2-setuptools')

@@ -1,8 +1,8 @@
 pkgbase = python2-enum34
 	pkgdesc = Python 3.4 Enum backported
 	pkgver = 1.1.10
-	pkgrel = 1
-	url = https://pypi.org/enum34
+	pkgrel = 2
+	url = https://pypi.org/project/enum34
 	arch = any
 	license = BSD
 	makedepends = python2-setuptools
