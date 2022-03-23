@@ -1,0 +1,19 @@
+pkgbase = python-ruptures
+	pkgdesc = Change point detection in Python
+	pkgver = 1.1.6
+	pkgrel = 1
+	url = https://github.com/deepcharles/ruptures
+	arch = x86_64
+	license = BSD
+	checkdepends = python-pytest
+	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python-scipy
+	source = ruptures-1.1.6.tar.gz::https://github.com/deepcharles/ruptures/archive/refs/tags/v1.1.6.tar.gz
+	sha512sums = 907ae94f55c1aefc43c99f8c7a316e30701062884dc60b86d68a64f30974b881ba6b3ae13a78daf13178de509448a66213065e8e91c030e78b1c9e7d6f225300
+
+pkgname = python-ruptures
