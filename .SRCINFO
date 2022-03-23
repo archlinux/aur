@@ -1,12 +1,12 @@
 pkgbase = ez
-	pkgdesc = EZ provides an eazier and more efficient way to perform common tasks.
+	pkgdesc = Task simplificaltion aimed at increasing the speed and efficiency of common tasks
 	pkgver = 1.0.r1
 	pkgrel = 1
 	url = https://gitlab.com/qYp/ez
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	source = git+https://gitlab.com/qYp/ez.git
-	sha256sums = SKIP
+	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/ez-1.0.r1-1-x86_64.pkg.tar.zst
+	sha256sums = 00910f76353d6a68510c4feb20a4583e630459e9ae4d94676a9749e75fff73f9
 
 pkgname = ez
