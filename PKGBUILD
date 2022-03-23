@@ -6,7 +6,7 @@ _pkgname=browser-stable
 pkgname=yandex-browser
 pkgver=22.1.3.916_1
 _pkgver=22.1.3.916-1
-pkgrel=4
+pkgrel=5
 #epoch=1
 
 pkgdesc="The web browser from Yandex.
@@ -18,10 +18,14 @@ categories=("network")
 
 options=(!strip)
 
-depends=("flac" "gconf" "gtk2" "harfbuzz-icu" "libxss" "nss" "opus" "snappy" "ttf-font" "xdg-utils" "libxkbfile" "jq" )
+depends=("curl" "ttf-liberation" "jq" "alsa-lib" "libcurl-compat" "libcurl-gnutls" "gtk2" "gtk3" "gtk4" "snappy" "opus" "flac" "harfbuzz-icu" "nss"
+"libxss" "libxfixes" "libxkbfile" "wget" "xdg-utils" "polkit" "libldap" "dbus-glib" "python" )
 optdepends=(
     "speech-dispatcher"
-    "ttf-liberation: fix fonts for some PDFs"
+    "vulkan-driver"
+    "vulkan-icd-loader"
+    "ttf-font"
+    "cryptopro-csp-k1"
 )
 
 source=("${pkgname}-${pkgver}.deb::http://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-${_pkgname}/yandex-${_pkgname}_${_pkgver}_amd64.deb")
