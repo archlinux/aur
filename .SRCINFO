@@ -1,6 +1,6 @@
 pkgbase = python-mail-parser
 	pkgdesc = Tokenizer for raw mails
-	pkgver = 3.12.0
+	pkgver = 3.15.0
 	pkgrel = 1
 	url = https://pypi.python.org/pypi/mail-parser
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = python-mail-parser
 	depends = python-ipaddress
 	depends = python-simplejson
 	depends = python-six
-	source = https://pypi.python.org/packages/source/m/mail-parser/mail-parser-3.12.0.tar.gz
-	sha256sums = e8ff4ac4b27d4a0a87fe69cdaca9a9123f9662b28991b3b838e449a779345214
+	source = https://pypi.python.org/packages/source/m/mail-parser/mail-parser-3.15.0.tar.gz
+	sha256sums = d66638acf0633dfd8a718e1e3646a6d58f8e9d75080c94638c7b267b4b0d6c86
 
 pkgname = python-mail-parser
-
