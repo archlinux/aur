@@ -1,5 +1,6 @@
 #!/hint/bash
 # Maintainer : bartus <arch-local-repo(at).bartus.33mail.com>
+# Contributor : Daniel Menelkir <dmenelkir@gmail.com>
 # Contributor : Rafał Kozdrój <kozeid2+aur@gmail.com>
 # Contributor : kikadf <kikadf.01@gmail.com>
 # Contributor : Daniel Henry <d at hackr dot pl>
@@ -10,7 +11,7 @@
 # shellcheck disable=SC2164 # cd safe
 
 pkgname=megasync-nopdfium
-pkgver=4.6.1.0
+pkgver=4.6.5.0
 pkgrel=1
 pkgdesc="Easy automated syncing between your computers and your MEGA cloud drive(stripped of pdfium dependency)"
 arch=('i686' 'x86_64')
@@ -28,7 +29,7 @@ source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}${_extname}"
         "ffmpeg.patch")
 sha256sums=('SKIP'
             'SKIP'
-            '3a15322d39b7f69a21c866cd1965893c5c1b4285b1a079593a183aefcff0f8c2')
+			'bc8a8460c967d084e2643431dbb06c03897f1944a0e899318fc78b611f9255e6')
 
 prepare() {
     cd "MEGAsync"
