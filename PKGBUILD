@@ -2,15 +2,15 @@
 
 pkgname=tnl-git
 _pkgname=tnl-dev
-pkgver=r6183.f89d5d932
+pkgver=r6311.b55f46c35
 pkgrel=1
 pkgdesc="An efficient C++ library providing parallel algorithms and data structures for high-performance computing on GPUs, multicore CPUs and distributed clusters"
 arch=('x86_64')
 url=https://tnl-project.org/
 license=('MIT')
 depends=('gcc-libs' 'openmpi' 'zlib' 'tinyxml2' 'libpng' 'libjpeg' 'dcmtk')
-makedepends=('git' 'cmake' 'ninja' 'doxygen' 'graphviz'
-             'cuda' 'python' 'python-numpy' 'pybind11')
+makedepends=('git' 'cmake' 'ninja' 'doxygen' 'graphviz' 'texlive-bin' 'texlive-latexextra'
+             'cuda' 'python' 'python-numpy' 'python-matplotlib' 'pybind11')
 optdepends=('cuda: for tools, benchmarks and examples built with CUDA'
             'python: for Python bindings'
             'python-numpy: for Python bindings')
