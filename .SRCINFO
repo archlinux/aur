@@ -1,7 +1,7 @@
 pkgbase = recon-ng
 	pkgdesc = A full-featured Web Reconnaissance framework written in Python
 	pkgver = 5.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lanmaster53/recon-ng
 	arch = any
 	license = GPL3
