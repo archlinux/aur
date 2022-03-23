@@ -1,0 +1,4 @@
+*.tar*
+bazecor-git/
+src/
+pkg/
