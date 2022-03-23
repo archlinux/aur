@@ -1,9 +1,8 @@
 pkgbase = python-argostranslate-pip
 	pkgdesc = Open source neural machine translation in Python. Designed to be used either as a Python library or desktop application. Uses OpenNMT for translations and PyQt for GUI.
-	pkgver = 1
+	pkgver = 1.6.1
 	pkgrel = 1
-	arch = x86_64
-	arch = i686
+	arch = any
 	license = MIT
 	makedepends = python-pip
 	depends = python
