@@ -1,0 +1,84 @@
+diff '--color=auto' --unified --recursive --text a/src/cc/dilithium.c b/src/cc/dilithium.c
+--- a/src/cc/dilithium.c	2022-03-09 02:21:07.000000000 -0400
++++ b/src/cc/dilithium.c	2022-03-21 23:37:14.851924244 -0300
+@@ -3319,7 +3319,7 @@
+ UniValue dilithium_spend(uint64_t txfee,struct CCcontract_info *cp,cJSON *params)
+ {
+     CMutableTransaction mtx = CreateNewContextualCMutableTransaction(Params().GetConsensus(), komodo_nextheight());
+-    UniValue result(UniValue::VOBJ); std::string rawtx; CPubKey mypk,destpub33; CTransaction vintx; uint256 prevhash,hashBlock,destpubtxid; int32_t i,smlen,n,numvouts; char str[129],*scriptstr,*retstr=""; CTxOut vout; std::string handle; uint8_t pk[CRYPTO_PUBLICKEYBYTES],pk2[CRYPTO_PUBLICKEYBYTES],sk[CRYPTO_SECRETKEYBYTES],msg[32],seed[32]; std::vector<uint8_t> sig;
++    UniValue result(UniValue::VOBJ); std::string rawtx; CPubKey mypk,destpub33; CTransaction vintx; uint256 prevhash,hashBlock,destpubtxid; int32_t i,smlen,n,numvouts; char str[129],*scriptstr; const char *retstr=""; CTxOut vout; std::string handle; uint8_t pk[CRYPTO_PUBLICKEYBYTES],pk2[CRYPTO_PUBLICKEYBYTES],sk[CRYPTO_SECRETKEYBYTES],msg[32],seed[32]; std::vector<uint8_t> sig;
+     if ( txfee == 0 )
+         txfee = DILITHIUM_TXFEE;
+     mypk = pubkey2pk(Mypubkey());
+@@ -3415,7 +3415,7 @@
+ UniValue dilithium_Qsend(uint64_t txfee,struct CCcontract_info *cp,cJSON *params)
+ {
+     CMutableTransaction mtx = CreateNewContextualCMutableTransaction(Params().GetConsensus(), komodo_nextheight());
+-    UniValue result(UniValue::VOBJ); std::string rawtx; CPubKey mypk,destpub33; CTransaction tx,vintx; uint256 prevhash,mypubtxid,hashBlock,destpubtxid; int64_t amount,inputsum,outputsum,change; int32_t i,smlen,n,numvouts; char str[129],myCCaddr[64],*scriptstr,*retstr=""; CTxOut vout; std::string handle; uint8_t pk[CRYPTO_PUBLICKEYBYTES],pk2[CRYPTO_PUBLICKEYBYTES],sk[CRYPTO_SECRETKEYBYTES],msg[32],seed[32]; std::vector<uint8_t> sig; std::vector<uint256> voutpubtxids;
++    UniValue result(UniValue::VOBJ); std::string rawtx; CPubKey mypk,destpub33; CTransaction tx,vintx; uint256 prevhash,mypubtxid,hashBlock,destpubtxid; int64_t amount,inputsum,outputsum,change; int32_t i,smlen,n,numvouts; char str[129],myCCaddr[64],*scriptstr; const char *retstr=""; CTxOut vout; std::string handle; uint8_t pk[CRYPTO_PUBLICKEYBYTES],pk2[CRYPTO_PUBLICKEYBYTES],sk[CRYPTO_SECRETKEYBYTES],msg[32],seed[32]; std::vector<uint8_t> sig; std::vector<uint256> voutpubtxids;
+     if ( txfee == 0 )
+         txfee = DILITHIUM_TXFEE;
+     mypk = pubkey2pk(Mypubkey());
+
+diff '--color=auto' --unified --recursive --text a/src/validationinterface.cpp b/src/validationinterface.cpp
+--- a/src/validationinterface.cpp	2022-03-09 02:21:07.000000000 -0400
++++ b/src/validationinterface.cpp	2022-03-22 00:12:41.660953877 -0300
+@@ -6,6 +6,7 @@
+ #include "validationinterface.h"
+ 
+ static CMainSignals g_signals;
++namespace ph = std::placeholders;
+ 
+ CMainSignals& GetMainSignals()
+ {
+@@ -13,27 +14,27 @@
+ }
+ 
+ void RegisterValidationInterface(CValidationInterface* pwalletIn) {
+-    g_signals.UpdatedBlockTip.connect(boost::bind(&CValidationInterface::UpdatedBlockTip, pwalletIn, _1));
+-    g_signals.SyncTransaction.connect(boost::bind(&CValidationInterface::SyncTransaction, pwalletIn, _1, _2, _3));
+-    g_signals.EraseTransaction.connect(boost::bind(&CValidationInterface::EraseFromWallet, pwalletIn, _1));
+-    g_signals.UpdatedTransaction.connect(boost::bind(&CValidationInterface::UpdatedTransaction, pwalletIn, _1));
++    g_signals.UpdatedBlockTip.connect(boost::bind(&CValidationInterface::UpdatedBlockTip, pwalletIn, ph::_1));
++    g_signals.SyncTransaction.connect(boost::bind(&CValidationInterface::SyncTransaction, pwalletIn, ph::_1, ph::_2, ph::_3));
++    g_signals.EraseTransaction.connect(boost::bind(&CValidationInterface::EraseFromWallet, pwalletIn, ph::_1));
++    g_signals.UpdatedTransaction.connect(boost::bind(&CValidationInterface::UpdatedTransaction, pwalletIn, ph::_1));
+     g_signals.RescanWallet.connect(boost::bind(&CValidationInterface::RescanWallet, pwalletIn));
+-    g_signals.ChainTip.connect(boost::bind(&CValidationInterface::ChainTip, pwalletIn, _1, _2, _3, _4, _5));
+-    g_signals.Inventory.connect(boost::bind(&CValidationInterface::Inventory, pwalletIn, _1));
+-    g_signals.Broadcast.connect(boost::bind(&CValidationInterface::ResendWalletTransactions, pwalletIn, _1));
+-    g_signals.BlockChecked.connect(boost::bind(&CValidationInterface::BlockChecked, pwalletIn, _1, _2));
++    g_signals.ChainTip.connect(boost::bind(&CValidationInterface::ChainTip, pwalletIn, ph::_1, ph::_2, ph::_3, ph::_4, ph::_5));
++    g_signals.Inventory.connect(boost::bind(&CValidationInterface::Inventory, pwalletIn, ph::_1));
++    g_signals.Broadcast.connect(boost::bind(&CValidationInterface::ResendWalletTransactions, pwalletIn, ph::_1));
++    g_signals.BlockChecked.connect(boost::bind(&CValidationInterface::BlockChecked, pwalletIn, ph::_1, ph::_2));
+ }
+ 
+ void UnregisterValidationInterface(CValidationInterface* pwalletIn) {
+-    g_signals.BlockChecked.disconnect(boost::bind(&CValidationInterface::BlockChecked, pwalletIn, _1, _2));
+-    g_signals.Broadcast.disconnect(boost::bind(&CValidationInterface::ResendWalletTransactions, pwalletIn, _1));
+-    g_signals.Inventory.disconnect(boost::bind(&CValidationInterface::Inventory, pwalletIn, _1));
+-    g_signals.ChainTip.disconnect(boost::bind(&CValidationInterface::ChainTip, pwalletIn, _1, _2, _3, _4, _5));
+-    g_signals.UpdatedTransaction.disconnect(boost::bind(&CValidationInterface::UpdatedTransaction, pwalletIn, _1));
+-    g_signals.EraseTransaction.disconnect(boost::bind(&CValidationInterface::EraseFromWallet, pwalletIn, _1));
+-    g_signals.SyncTransaction.disconnect(boost::bind(&CValidationInterface::SyncTransaction, pwalletIn, _1, _2, _3));
++    g_signals.BlockChecked.disconnect(boost::bind(&CValidationInterface::BlockChecked, pwalletIn, ph::_1, ph::_2));
++    g_signals.Broadcast.disconnect(boost::bind(&CValidationInterface::ResendWalletTransactions, pwalletIn, ph::_1));
++    g_signals.Inventory.disconnect(boost::bind(&CValidationInterface::Inventory, pwalletIn, ph::_1));
++    g_signals.ChainTip.disconnect(boost::bind(&CValidationInterface::ChainTip, pwalletIn, ph::_1, ph::_2, ph::_3, ph::_4, ph::_5));
++    g_signals.UpdatedTransaction.disconnect(boost::bind(&CValidationInterface::UpdatedTransaction, pwalletIn, ph::_1));
++    g_signals.EraseTransaction.disconnect(boost::bind(&CValidationInterface::EraseFromWallet, pwalletIn, ph::_1));
++    g_signals.SyncTransaction.disconnect(boost::bind(&CValidationInterface::SyncTransaction, pwalletIn, ph::_1, ph::_2, ph::_3));
+     g_signals.RescanWallet.disconnect(boost::bind(&CValidationInterface::RescanWallet, pwalletIn));
+-    g_signals.UpdatedBlockTip.disconnect(boost::bind(&CValidationInterface::UpdatedBlockTip, pwalletIn, _1));
++    g_signals.UpdatedBlockTip.disconnect(boost::bind(&CValidationInterface::UpdatedBlockTip, pwalletIn, ph::_1));
+ }
+ 
+ void UnregisterAllValidationInterfaces() {
+@@ -58,4 +59,4 @@
+ 
+ void RescanWallets() {
+     g_signals.RescanWallet();
+-}
+\ No newline at end of file
++}
