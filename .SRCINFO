@@ -1,11 +1,13 @@
 pkgbase = zenith
 	pkgdesc = Terminal system monitor with histograms, written in Rust
 	pkgver = 0.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bvaisvil/zenith
 	arch = x86_64
 	license = MIT
 	makedepends = cargo
+	makedepends = llvm
+	makedepends = clang
 	optdepends = nvidia-utils
 	provides = zenith
 	conflicts = zenith-bin

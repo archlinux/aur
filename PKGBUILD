@@ -2,12 +2,12 @@
 
 pkgname=zenith
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Terminal system monitor with histograms, written in Rust"
 arch=('x86_64')
 url="https://github.com/bvaisvil/zenith"
 license=('MIT')
-makedepends=('cargo')
+makedepends=('cargo' 'llvm' 'clang')
 optdepends=('nvidia-utils')
 provides=('zenith')
 conflicts=('zenith-bin')
