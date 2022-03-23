@@ -2,14 +2,14 @@
 
 pkgname=python-comtool
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A cross platform serial debug tools written by python"
 arch=('any')
 url="https://github.com/Neutree/COMTool"
 license=('LGPL3.0')
 groups=()
-depends=('python' 'python-pyqt5' 'python-pyserial' 'python-requests' 'python-babel' )
+depends=('python' 'python-pyqt5' 'python-pyserial' 'python-requests' 'python-babel' 'python-qtawesome' 'python-paramiko' 'python-pyte' 'python-pyperclip')
 makedepends=('python-build' 'python-installer' 'python-wheel')
 checkdepends=()
 optdepends=()
