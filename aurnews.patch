@@ -1,10 +1,20 @@
+From 1b14809723a8de3980808e6b3b79c6e4d79a5458 Mon Sep 17 00:00:00 2001
+From: egnappahz <egnappah@gmail.com>
+Date: Wed, 23 Mar 2022 11:46:32 +0100
+Subject: [PATCH] AURNEWS patch
+
+---
+ pikaur/install_cli.py      | 7 +++++++
+ pikaur/print_department.py | 2 +-
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
 diff --git a/pikaur/install_cli.py b/pikaur/install_cli.py
-index cdfd1db..04f20ce 100644
+index ee268bb..bf2fbcb 100644
 --- a/pikaur/install_cli.py
 +++ b/pikaur/install_cli.py
-@@ -701,6 +701,13 @@ class InstallPackagesCLI():
+@@ -736,6 +736,13 @@ class InstallPackagesCLI():
              _pkg_label = bold_line(', '.join(pkg_build.package_names))
-             _skip_diff_label = _("Not showing diff for {pkg} package ({reason})")
+             _skip_diff_label = translate("Not showing diff for {pkg} package ({reason})")
  
 +            for pkgname_eggz in pkg_build.package_names:
 +                print_stdout(color_line("------------ Packager News for " + pkgname_eggz + " ------------",11))
@@ -17,10 +27,10 @@ index cdfd1db..04f20ce 100644
                      pkg_build.last_installed_hash != pkg_build.current_hash
              ) and (
 diff --git a/pikaur/print_department.py b/pikaur/print_department.py
-index aa59ad9..f1d9149 100644
+index e4c932d..59e4b79 100644
 --- a/pikaur/print_department.py
 +++ b/pikaur/print_department.py
-@@ -46,7 +46,7 @@ def print_version(pacman_version: str, pyalpm_version: str, quiet=False) -> None
+@@ -49,7 +49,7 @@ def print_version(pacman_version: str, pyalpm_version: str, quiet=False) -> None
    l  /       \        l
    j  ●   .   ●        l      """ + pacman_version + r"""
   { )  ._,.__,   , -.  {      pyalpm v""" + pyalpm_version + r"""
@@ -28,4 +38,7 @@ index aa59ad9..f1d9149 100644
 +  У    \  _/     ._/   \     With Magical AURNEWS patch by Eggz
  
  """)
+ 
+-- 
+2.35.1
 
