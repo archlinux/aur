@@ -1,13 +1,12 @@
 pkgbase = f3d
 	pkgdesc = A fast and minimalist 3D viewer
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/f3d-app/f3d
 	arch = x86_64
 	license = BSD
 	makedepends = cmake
 	makedepends = help2man
-	makedepends = fmt
 	depends = vtk
 	depends = glew
 	depends = pugixml
@@ -15,6 +14,7 @@ pkgbase = f3d
 	depends = ospray
 	depends = assimp
 	depends = opencascade
+	depends = fmt
 	source = https://github.com/f3d-app/f3d/archive/refs/tags/v1.2.1.tar.gz
 	sha256sums = 0d72cc465af1adefdf71695481ceea95d4a94ee9e00125bc98c9f32b14ac2bf4
 
