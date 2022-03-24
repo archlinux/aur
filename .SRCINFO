@@ -1,5 +1,5 @@
 pkgbase = ttf-mplus
-	pkgdesc = M+ Japanese outline fonts
+	pkgdesc = M+ Japanese outline fonts; Use 'ttf-mplus-git' or 'otf-mplus-git' instead: upstream no longer updated.
 	pkgver = TESTFLIGHT_063a
 	pkgrel = 1
 	url = http://mplus-fonts.osdn.jp/mplus-outline-fonts/index-en.html
@@ -10,4 +10,3 @@ pkgbase = ttf-mplus
 	sha256sums = 44eb973b4b6aff574de454db105ddc23e6749c2294734bd9cb1e0d734e4cdd79
 
 pkgname = ttf-mplus
-
