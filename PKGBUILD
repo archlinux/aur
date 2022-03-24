@@ -5,7 +5,7 @@
 pkgname="burp-backup-dev"
 _pkgname="burp"
 pkgver=2.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A next generation experimental version of the burp backup and restore program."
 arch=('i686' 'x86_64')
 license=("AGPL3")
@@ -14,7 +14,7 @@ makedepends=('uthash')
 provides=('burp-backup')
 conflicts=('burp-backup' 'burp-backup-git')
 install="${_pkgname}.install"
-url='http://burp.grke.org/burp2.html'
+url='https://github.com/grke/burp'
 
 source=(
   "https://github.com/grke/burp/archive/${pkgver}.tar.gz"
