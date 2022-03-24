@@ -1,12 +1,12 @@
 pkgbase = sugarjazy
 	pkgdesc = Parse json logs nicely
-	pkgver = 0.6.0
+	pkgver = 0.6.1
 	pkgrel = 1
 	url = https://github.com/chmouel/sugarjazy
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
-	source = https://github.com/chmouel/sugarjazy/releases/download/0.6.0/sugarjazy-0.6.0.tar.gz
-	sha256sums = acaf52564a418945a92ad31f298f578460675ff958d3370b3de0831950137cce
+	source = https://github.com/chmouel/sugarjazy/releases/download/0.6.1/sugarjazy-0.6.1.tar.gz
+	sha256sums = bcec04267bbabae460ae35a252d31d1b48a85ed795a28684f12260b66835091d
 
 pkgname = sugarjazy
