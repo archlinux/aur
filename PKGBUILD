@@ -1,7 +1,7 @@
 # Maintainer: zan <zan@420blaze.it>
 
 pkgname=rbdoom3-bfg-git
-pkgver=r971.42d5436d
+pkgver=r1354.ee014e80
 pkgrel=1
 pkgdesc="Doom 3 BFG Edition with soft shadows, cleaned up source, Linux and 64 bit Support"
 arch=(i686 x86_64)
@@ -16,11 +16,13 @@ install=rbdoom3-bfg-git.install
 source=("$pkgname::git+https://github.com/RobertBeckebans/RBDOOM-3-BFG.git"
         'rbdoom3-bfg-git.desktop' 
         'doom3bfg.png'
-        'sdl2-cmake.patch')
+        'sdl2-cmake.patch'
+        'imgui.patch')
 sha256sums=('SKIP'
             'a651aa2e71a8a525e66173a8f76b907712b73c950c88f5468ccab79f7533361f'
             '0fb6a3bb9b47cad65d5012ba20dc9de3b1487f4ac1908ee847e6087511b7f09e'
-            '438993ae976453143d1055fd851e3fd0d48c5309818d485b276e1cfcd6701ce9')
+            '438993ae976453143d1055fd851e3fd0d48c5309818d485b276e1cfcd6701ce9'
+            '632e07d086637cf46b69cadfdae2eb402f4bac954c38133ca7cf2ca9afe94ecf')
             
 pkgver() {
   cd "$pkgname"
@@ -30,6 +32,7 @@ pkgver() {
 prepare() {
     cd "$pkgname"
     patch -p1 -i "$srcdir/sdl2-cmake.patch"
+    patch -p1 -i "$srcdir/imgui.patch"
 }
 
 build() {
