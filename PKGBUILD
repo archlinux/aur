@@ -16,7 +16,7 @@ license=("custom:yandex-browser")
 categories=("network")
 
 options=(!strip)
-url=("https://browser.yandex.com/")
+url=https://browser.yandex.com
 
 depends=("flac" "gconf" "gtk2" "harfbuzz-icu" "libxss" "nss" "opus" "snappy" "ttf-font" "xdg-utils" "libxkbfile" )
 optdepends=(
