@@ -12,6 +12,7 @@ pkgbase = rl_custom_isearch-git
 	makedepends = rust
 	makedepends = cargo
 	depends = readline
+	depends = fzf
 	provides = rl_custom_isearch
 	conflicts = rl_custom_isearch
 	source = rl_custom_isearch::git+https://github.com/lincheney/rl_custom_isearch

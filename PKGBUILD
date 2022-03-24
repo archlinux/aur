@@ -12,7 +12,7 @@ pkgrel=1
 pkgdesc="$(gh repo view --json description -q .description $_repo)"
 arch=(x86 x86_64 arm aarch64)
 url=https://github.com/$_repo
-depends=(readline)
+depends=(readline fzf)
 makedepends=(rust cargo)
 license=(GPL3)
 provides=("$_pkgname")
@@ -46,6 +46,7 @@ check() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  install -D -m755 target/release/librl_custom_isearch.so $pkgdir/usr/lib/librl_custom_isearch.so
-  install -D -m644 README.md $pkgdir/usr/share/doc/$_pkgname/README.md
+  install -D target/release/*.so -t $pkgdir/usr/lib
+  install -D bin/* -t $pkgdir/usr/bin
+  install -D -m644 README.md -t $pkgdir/usr/share/doc/$_pkgname
 }
