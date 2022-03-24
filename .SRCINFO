@@ -1,7 +1,7 @@
 pkgbase = arpchat-bin
 	pkgdesc = Answering the question nobody asked: what if you wanted to text your friends using only ARP?
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kognise/arpchat
 	install = arpchat-bin.install
 	arch = x86_64
