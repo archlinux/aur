@@ -5,7 +5,7 @@ _name=${pkgname#python-}
 pkgdesc="Pythonic bindings for FFmpeg"
 url="https://docs.mikeboers.com/pyav/"
 
-pkgver=9.0.1
+pkgver=9.0.2
 pkgrel=1
 
 arch=("x86_64" "i686")
@@ -24,20 +24,13 @@ depends=(
 
 source=(
     "https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
-    "01-build-with-ffmpeg4.4.patch"
 )
 sha256sums=(
-    "2016c62264a0d00aeceb0f40b62df9f9e976067ca5f3a9bdbf532fe5ec53419f"
-    "46f75e0b9c22409d0935063aca5a7b6d8f22559abcd0691d783e351862f11c25"
+    "49529f41c317127c671a533ddf0eb1e6733e5aeec622971147acebb2fb261c6d"
 )
 
-prepare() {
-    cd "${srcdir}"/${_name}-${pkgver}
-    patch --forward --strip=1 --input="${srcdir}/01-build-with-ffmpeg4.4.patch"
-}
-
 build() {
-    export PKG_CONFIG_PATH=/usr/lib/ffmpeg4.4/pkgconfig
+    export PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig"
 
     cd "${srcdir}"/${_name}-${pkgver}
     python setup.py build_ext --inplace
