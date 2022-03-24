@@ -1,7 +1,7 @@
 pkgbase = python-pyonfx
 	pkgdesc = An easy way to create KFX and complex typesetting for the SSA/ASS format
 	pkgver = 0.9.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/CoffeeStraw/PyonFX
 	arch = any
 	license = LGPL3

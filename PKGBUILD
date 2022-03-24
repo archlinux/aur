@@ -1,7 +1,7 @@
 # Maintainer: Funami
 pkgname=python-pyonfx
 pkgver=0.9.13
-pkgrel=1
+pkgrel=2
 pkgdesc="An easy way to create KFX and complex typesetting for the SSA/ASS format"
 arch=('any')
 url="https://github.com/CoffeeStraw/PyonFX"
@@ -11,13 +11,6 @@ makedepends=('python-setuptools')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/CoffeeStraw/PyonFX/archive/v$pkgver.tar.gz")
 sha256sums=('7a54a23aa5856ab198b90b78b64e2f8919d763e21393e992776106a4946dfc1a')
-
-prepare() {
-  cd "PyonFX-$pkgver"
-  sed -i 's/"pyquaternion"//' setup.py
-  sed -i '/pycairo/d' setup.py
-  sed -i '/PyGObject/d' setup.py
-}
 
 build() {
   cd "PyonFX-$pkgver"
