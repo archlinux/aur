@@ -14,6 +14,6 @@ pkgbase = keysmith
 	makedepends = qt5-quickcontrols2
 	conflicts = keysmith-git
 	source = keysmith-v22.02.tar.gz::https://invent.kde.org/utilities/keysmith/-/archive/v22.02/keysmith-v22.02.tar.gz
-	sha256sums = 1f9d1017b897d30e58bdf7e1986d65cac1c369a73c5d95a7acbb72eddf2a480c
+	sha512sums = cbe83085b08ba3d9643eb145bb405644f6b45dbcbef5dc99ede138efe6438cb0eca2cf166de83623fb14d836c01262176def072190376de3d164809f2afca5b9
 
 pkgname = keysmith
