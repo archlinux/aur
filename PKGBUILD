@@ -1,7 +1,7 @@
 # Maintainer: ftsell <aur@finn-thorben.me>
 pkgname=python-exhale
 _reponame=exhale
-pkgver=0.2.3
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="A sphinx extension which integrates breathe to enable parsing of doxygen documentation"
 arch=('any')
@@ -20,7 +20,7 @@ install=
 changelog=
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/svenevs/exhale/archive/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('c7024ec6417047a610be87af80dd39c6944943e9be371a4c877dc3b232c93f25')
+sha256sums=('4881289396e883c1534a7c27f6f1e4df04d3cc817ac5785babfd1d75e71c258b')
 
 build() {
 	cd "${_reponame}-${pkgver}"
