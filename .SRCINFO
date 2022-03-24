@@ -1,0 +1,77 @@
+pkgbase = jdk-lts
+	pkgdesc = Oracle Java
+	pkgver = 17.0.2
+	pkgrel = 1
+	url = https://www.oracle.com/java/
+	arch = x86_64
+	license = custom
+	makedepends = python-html2text
+	noextract = jdk-17.0.2_doc-all.zip
+	source = https://download.oracle.com/java/17/archive/jdk-17.0.2_linux-x64_bin.tar.gz
+	source = https://download.oracle.com/otn_software/java/jdk/17.0.2+8/dfd4a8d0985749f896bed50d7138ee7f/jdk-17.0.2_doc-all.zip
+	source = jdk-17_doc-license.html::https://download.oracle.com/otndocs/jcp/java_se-17-final-spec/license.html
+	source = java.desktop
+	source = jconsole.desktop
+	source = jshell.desktop
+	source = java_16.png
+	source = java_48.png
+	source = LICENSE
+	sha256sums = 342e76bb9ded80aa1edd566efbae42f8f1c2366e19b9189e5941b45893b9861f
+	sha256sums = d25b34eb17053bf23a7a4a82ac2ab7a85b5d53a1109d6561e302761e23f33895
+	sha256sums = ab50940bda40a9e8935d1a8f002debda0fdd0b3e2bcc0319827ec19acd8b34f3
+	sha256sums = f17fe6e3d1b7ffbe854364e127509144057878a344d74673393782b90b6f054a
+	sha256sums = 321dc88a1a0289c1f0a3113e75bd2f488829a0b82c11ac047272e464fb3f3ab3
+	sha256sums = e7638e42cbe38f32cb7a1ec800c27408e8559f576d8dd7698fdd5856c4c9b842
+	sha256sums = d27fec1d74f7a3081c3d175ed184d15383666dc7f02cc0f7126f11549879c6ed
+	sha256sums = 7cf8ca096e6d6e425b3434446b0835537d0fc7fe64b3ccba7a55f7bd86c7e176
+	sha256sums = 20becfcac0bdeaa29a76e6966d727f8cc79381354cbd5d530cdec823954df19f
+
+pkgname = jre-lts
+	pkgdesc = Oracle Java Runtime Environment (LTS release)
+	install = jre.install
+	depends = java-runtime-common
+	depends = ca-certificates-utils
+	depends = freetype2
+	depends = libx11
+	depends = libxext
+	depends = libxi
+	depends = libxtst
+	depends = libxrender
+	optdepends = alsa-lib: for basic sound support
+	optdepends = gtk2: for the Gtk+ 2 look and feel - desktop usage
+	optdepends = gtk3: for the Gtk+ 3 look and feel - desktop usage
+	provides = java-runtime=17
+	provides = java-runtime-jdk17
+	provides = jre17-jdk=17.0.2-1
+	provides = java-runtime-headless=17
+	provides = java-runtime-headless-jdk=17
+	provides = jre17-jdk-headless=17.0.2-1
+	backup = etc/java-jdk-lts/management/jmxremote.access
+	backup = etc/java-jdk-lts/management/jmxremote.password.template
+	backup = etc/java-jdk-lts/management/management.properties
+	backup = etc/java-jdk-lts/security/policy/limited/default_US_export.policy
+	backup = etc/java-jdk-lts/security/policy/limited/default_local.policy
+	backup = etc/java-jdk-lts/security/policy/limited/exempt_local.policy
+	backup = etc/java-jdk-lts/security/policy/unlimited/default_US_export.policy
+	backup = etc/java-jdk-lts/security/policy/unlimited/default_local.policy
+	backup = etc/java-jdk-lts/security/policy/README.txt
+	backup = etc/java-jdk-lts/security/java.policy
+	backup = etc/java-jdk-lts/security/java.security
+	backup = etc/java-jdk-lts/logging.properties
+	backup = etc/java-jdk-lts/net.properties
+	backup = etc/java-jdk-lts/sound.properties
+
+pkgname = jdk-lts
+	pkgdesc = Oracle Java Development Kit (LTS release)
+	install = jdk.install
+	depends = java-environment-common
+	depends = jre-lts=17.0.2-1
+	depends = zlib
+	depends = hicolor-icon-theme
+	provides = java-environment=17
+	provides = java-environment-jdk=17
+	provides = jdk17-jdk=17.0.2-1
+
+pkgname = jdk-lts-doc
+	pkgdesc = Oracle Java documentation (LTS release)
+	arch = any
