@@ -1,0 +1,16 @@
+pkgbase = python-pytorch-influence-functions-git
+	pkgdesc = PyTorch reimplementation of Influence Functions
+	pkgver = r18.7b7c7b6
+	pkgrel = 1
+	url = https://github.com/nimarb/pytorch_influence_functions
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-pytorch
+	provides = python-pytorch-influence-functions
+	conflicts = python-pytorch-influence-functions
+	source = git+https://github.com/nimarb/pytorch_influence_functions.git
+	b2sums = SKIP
+
+pkgname = python-pytorch-influence-functions-git
