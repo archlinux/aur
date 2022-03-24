@@ -19,6 +19,5 @@ package() {
   mkdir -p "$pkgdir/usr/lib/cups/filter"
   ln -s "/opt/brother/Printers/hll3210cw/cupswrapper/brother_lpdwrapper_hll3210cw" "$pkgdir/usr/lib/cups/filter/brother_lpdwrapper_hll3210cw"
   install -Dm 644 "$srcdir/opt/brother/Printers/hll3210cw/cupswrapper/brother_hll3210cw_printer_en.ppd" "$pkgdir/usr/share/cups/model/brother_hll3210cw_printer_en.ppd"
-  install -Dm 644 "$srcdir/usr/share/brother/Printers/hll3210cw/LICENSE_ENG.txt" "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm 644 "$srcdir/usr/share/brother/Printers/hll3210cw/LICENSE_JPN.txt" "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm 644 "$srcdir/opt/brother/Printers/hll3210cw/LICENSE_ENG.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
