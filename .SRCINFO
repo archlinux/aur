@@ -1,0 +1,18 @@
+pkgbase = passes-git
+	pkgdesc = A digital pass manager
+	pkgver = r49.cb63c70
+	pkgrel = 1
+	url = https://github.com/pablo-s/passes
+	arch = any
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	depends = gtk4
+	depends = libadwaita
+	depends = python-qrcode
+	provides = passes
+	conflicts = passes
+	source = git+https://github.com/pablo-s/passes.git
+	b2sums = SKIP
+
+pkgname = passes-git
