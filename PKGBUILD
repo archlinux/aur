@@ -5,15 +5,15 @@
 # Contributor: Robson R S Peixoto <robsonpeixoto at gmail dotcom>
 
 pkgname=hunspell-pt-br
-pkgver=3.2
-pkgrel=5
+pkgver=3.2.15
+pkgrel=1
 pkgdesc="Brazillian Portuguese grammar, spelling and hyphenation checker to hunspell"
 arch=(any)
 url="http://pt-br.libreoffice.org/projetos/vero"
 license=('LGPL3' 'MPL')
 optdepends=('hunspell:  the spell checking libraries and apps')
-source=(http://pt-br.libreoffice.org/assets/Uploads/PT-BR-Documents/VERO/VeroptBRV320AOC.oxt)
-md5sums=('9a9ac174c401406604bfcf101de2a7ba')
+source=('https://pt-br.libreoffice.org/assets/Uploads/PT-BR-Documents/VERO/VeroptBR3215AOC.oxt')
+md5sums=('ddfe6249452b2bfd1fe4cd95b3b0120e')
 
 #based it in the community build for hunspell-hu-HU
 package() {
