@@ -12,10 +12,10 @@
 # https://github.com/SuzukiHonoka/s905d-kernel-precompiled/tree/master/patch
 
 pkgbase=linux-phicomm-n1
-_srcname=linux-5.16
+_srcname=linux-5.17
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for Phicomm N1"
-pkgver=5.16.16
+pkgver=5.17.0
 pkgrel=1
 arch=('aarch64')
 url="https://www.kernel.org/"
@@ -23,7 +23,9 @@ license=('GPL2')
 depends=('uboot-tools')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'uboot-tools' 'vboot-utils' 'dtc')
 options=('!strip')
-source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
+source=(
+        "https://mirror.bjtu.edu.cn/kernel/linux/kernel/v5.x/${_srcname}.tar.xz"
+        # "https://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         'meson-gxl-s905d-phicomm-n1.dts'
         'config'
         'linux.preset'
@@ -35,15 +37,14 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 [[ ${pkgver##*.} != 0 ]] && \
 source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
 
-md5sums=('e6680ce7c989a3efe58b51e3f3f0bf93'
+md5sums=('07321a70a48d062cebd0358132f11771'
          'cb42990d36da8536220339c14ec27a6e'
-         'cebd2a1cbf59ae9e078b743db6ca1913'
+         'd8aecfd7df0f1fa0d95315afc5a07c3c'
          '30130b4dcd8ad4364ddbfd56c3058d5e'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '0d0435888ecad675870ecda4045a9d45'
          '614a77d2f4c92817ab4e5f989f9a76c9'
-         '7a18066683f3351b2bbd2653db783f80'
-         'e36acdfd00fa2abcb082ca04319c7392')
+         '7a18066683f3351b2bbd2653db783f80')
 
 prepare() {
   cd ${_srcname}
