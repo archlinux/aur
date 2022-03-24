@@ -5,13 +5,13 @@
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=glances-git
-pkgver=3.2.2.r11.gbdeb414a
+pkgver=3.2.4.2.r65.g021ac4ce
 pkgrel=1
 pkgdesc='CLI curses-based monitoring tool (git)'
 arch=(any)
 url=https://github.com/nicolargo/glances
 license=(LGPL)
-makedepends=(git python-setuptools)
+makedepends=(python-build python-installer python-setuptools python-wheel git)
 depends=(python python-psutil python-future python-defusedxml)
 optdepends=('hddtemp: HDD temperature monitoring support'
             'python-bottle: web server support'
@@ -33,11 +33,11 @@ pkgver() {
 
 build() {
     cd "${pkgname%-git}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${pkgname%-git}"
-    python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 "${srcdir}"/glances.service -t "${pkgdir}"/usr/lib/systemd/system
 }
