@@ -1,13 +1,13 @@
 pkgbase = dl-musescore
 	pkgdesc = Download sheet music from MuseScore.
-	pkgver = 0.33.0
+	pkgver = 0.34.0
 	pkgrel = 1
 	url = https://github.com/LibreScore/dl-musescore
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	source = dl-musescore-v0.33.0.tar.gz::https://github.com/LibreScore/dl-musescore/archive/refs/tags/v0.33.0.tar.gz
-	sha256sums = 90d2cb82bafabc87f1905bc7472bb94029bbe7b21273bb361905a498f67b59b9
+	source = dl-musescore-v0.34.0.tar.gz::https://github.com/LibreScore/dl-musescore/archive/refs/tags/v0.34.0.tar.gz
+	sha256sums = 309db44bb4554a09ef7e000d14d3b634abde7673743bc2853a7cbed62dd91d98
 
 pkgname = dl-musescore

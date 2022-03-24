@@ -4,7 +4,7 @@
 # Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protonmail.com>
 
 pkgname=dl-musescore
-pkgver=0.33.0
+pkgver=0.34.0
 pkgrel=1
 pkgdesc="Download sheet music from MuseScore."
 arch=("any")
@@ -13,7 +13,7 @@ license=("MIT")
 depends=("nodejs")
 makedepends=("npm")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("90d2cb82bafabc87f1905bc7472bb94029bbe7b21273bb361905a498f67b59b9")
+sha256sums=("309db44bb4554a09ef7e000d14d3b634abde7673743bc2853a7cbed62dd91d98")
 
 build()
 {
