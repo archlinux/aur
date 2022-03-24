@@ -1,9 +1,10 @@
-# Maintainer: Bidossessi Sodonon
+# Maintainer: bitwave
+# Contributor: Bidossessi Sodonon
 
 pkgname=trelby-git
 _pkgname=trelby
 pkgver=0.r809.580222d
-pkgrel=2
+pkgrel=3
 pkgdesc="Free screenwriting application"
 url=http://www.trelby.org
 arch=('any')
@@ -16,7 +17,7 @@ depends=(
     'wxpython'
 )
 makedepends=('git')
-source=("$_pkgname"::'git://github.com/oskusalerma/trelby.git')
+source=('git+https://github.com/trelby/trelby.git')
 md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$_pkgname"
