@@ -2,7 +2,7 @@ pkgbase = gamin
 	pkgdesc = File and directory monitoring system defined to be a subset of the FAM (File Alteration Monitor)
 	pkgver = 0.1.10
 	pkgrel = 9
-	url = https://people.gnome.org/~veillard/gamin
+	url = https://web.archive.org/web/20141226011517/https://people.gnome.org/~veillard/gamin
 	arch = x86_64
 	arch = i686
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = gamin
 	optdepends = python2: for the python module
 	provides = fam
 	conflicts = fam
-	source = https://people.gnome.org/~veillard/gamin/sources/gamin-0.1.10.tar.gz
+	source = https://web.archive.org/web/20141226011517/https://people.gnome.org/~veillard/gamin/sources/gamin-0.1.10.tar.gz
 	source = fix-deprecated-const.patch
 	source = 18_gam_server_deadlocks.patch
 	source = 0001-Poll-files-on-nfs4.patch
@@ -21,4 +21,3 @@ pkgbase = gamin
 	sha512sums = dcb23fd68e106a1b578235ef0b01b49773908ca6ded706610103f880f77a2aa0b0403cb720b9c6b062bac71e9d66cd2288b489c558839fc23295b18635bf399f
 
 pkgname = gamin
-

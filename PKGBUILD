@@ -7,6 +7,7 @@ pkgver=0.1.10
 pkgrel=9
 pkgdesc='File and directory monitoring system defined to be a subset of the FAM (File Alteration Monitor)'
 url='https://people.gnome.org/~veillard/gamin'
+url='https://web.archive.org/web/20141226011517/https://people.gnome.org/~veillard/gamin'
 license=('GPL')
 arch=('x86_64' 'i686')
 depends=('glib2')
