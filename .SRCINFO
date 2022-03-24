@@ -8,6 +8,7 @@ pkgbase = pdfrankenstein
 	makedepends = go>=1.18
 	makedepends = git
 	depends = inkscape
+	depends = qpdf
 	source = git+https://github.com/oxplot/pdfrankenstein#tag=v0.4
 	sha512sums = SKIP
 

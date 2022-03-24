@@ -8,7 +8,7 @@ url="https://github.com/oxplot/$pkgname"
 arch=("x86_64")
 license=("BSD")
 makedepends=("go>=1.18" "git")
-depends=("inkscape")
+depends=("inkscape" "qpdf")
 source=("git+https://github.com/oxplot/$pkgname#tag=v$pkgver")
 sha512sums=('SKIP')
 
