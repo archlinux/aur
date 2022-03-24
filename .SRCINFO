@@ -1,0 +1,20 @@
+pkgbase = sorenon-openxr-layer-git
+	pkgdesc = OpenXR layers to work around SteamVR bugs
+	pkgver = r14.e003a43
+	pkgrel = 1
+	url = https://github.com/Sorenon/sorenon_openxr_layer
+	arch = x86_64
+	license = unknown
+	makedepends = rust
+	makedepends = git
+	depends = glibc
+	depends = gcc-libs
+	depends = openxr
+	provides = sorenon-openxr-layer
+	conflicts = sorenon-openxr-layer
+	source = sorenon-openxr-layer-git::git+https://github.com/Sorenon/sorenon_openxr_layer.git
+	source = layer.json
+	sha512sums = SKIP
+	sha512sums = ccdbf01411664c173ec49d0563fae327d5aa30d9528553d4d597ff24600d4223f9fd830df34925f2bb6bbe8d1d4ff713b1719cb879f31c9614f4e77e40c2db69
+
+pkgname = sorenon-openxr-layer-git

@@ -1,0 +1,17 @@
+{
+    "file_format_version" : "1.0.0",
+    "api_layer": {
+        "name": "XR_APILAYER_SORENON_compat_layer",
+        "library_path": "/usr/lib/libXr_sorenon.so",
+        "api_version" : "1.0",
+        "implementation_version" : "1",
+        "description" : "Provides OpenGL over Vulkan",
+        "instance_extensions": [
+            {
+                "name": "XR_KHR_opengl_enable",
+                "extension_version": "10"
+            }
+        ],
+        "disable_environment": "DISABLE_SORENON_OPENXR_LAYER"
+    }
+}
