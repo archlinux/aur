@@ -1,6 +1,6 @@
 pkgbase = freerct-git
 	pkgdesc = Open Source RollerCoaster Tycoon 1 and 2 implementation
-	pkgver = r1819.da71e14d
+	pkgver = r2073.4a8090ac
 	pkgrel = 1
 	url = https://github.com/FreeRCT/FreeRCT
 	arch = i686
@@ -16,13 +16,14 @@ pkgbase = freerct-git
 	depends = gnu-free-fonts
 	provides = freerct
 	conflicts = freerct
+	backup = opt/freerct/saves/
 	source = freerct::git+https://github.com/FreeRCT/FreeRCT.git
 	source = freerct.cfg
 	source = freerct.sh
 	source = freerct.desktop
-	md5sums = SKIP
-	md5sums = 18954cf6a20a8d8b21c62e7c9c27a76d
-	md5sums = 1fce36e419ae2d70a28eba03f9cb6fa1
-	md5sums = 9e3aaa8cef3d81b27b868766b61f74a4
+	sha256sums = SKIP
+	sha256sums = 52466c813687b5d3e35e869ed914257c6220c77a7f01e9edd8f830b69624060f
+	sha256sums = e61ab45bce360d4cd064b0f08a95f684b427d0e77e23f9110f4f808e963e5ed8
+	sha256sums = 4f46db97802259b30ba33b69c5bc9433983e0349ce989d6e29dfdd7b8d10b293
 
 pkgname = freerct-git
