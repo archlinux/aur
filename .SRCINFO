@@ -1,0 +1,17 @@
+pkgbase = uwurandom-git-dkms
+	pkgdesc = Like /dev/urandom, but objectively better (DKMS)
+	pkgver = r3.1272106
+	pkgrel = 1
+	url = https://github.com/valadaptive/uwurandom
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	license = MIT
+	depends = dkms
+	provides = uwurandom
+	source = git+https://github.com/valadaptive/uwurandom.git
+	source = dkms.conf
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = uwurandom-git-dkms
