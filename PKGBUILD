@@ -3,7 +3,7 @@
 # Contributor: lsf
 # Contributor: Adam Hose <adis@blad.is>
 pkgname=opensnitch-git
-pkgver=1.5.0.r0.c396ed6
+pkgver=1.5.0.r19.0aef656
 pkgrel=1
 pkgdesc="A GNU/Linux port of the Little Snitch application firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -16,7 +16,8 @@ depends=('libnetfilter_queue' 'libpcap' 'python-grpcio' 'python-protobuf'
 optdepends=('logrotate: for logfile rotation support'
             'opensnitch-ebpf-module-git: eBPF process monitor method (non-hardened kernel only)'
             'python-notify2: desktop notifications'
-            'python-pyasn: display network names')
+            'python-pyasn: display network names'
+            'python-qt-material-git: theming')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 backup=("etc/${pkgname%-git}d/default-config.json")
