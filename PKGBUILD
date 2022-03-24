@@ -14,7 +14,7 @@ makedepends=('git' 'cmake' 'glslang-git' 'vulkan-headers' 'ncnn')
 provides=("rife-ncnn-vulkan")
 conflicts=("rife-ncnn-vulkan-git" "rife-ncnn-vulkan-bin")
 source=("https://github.com/nihui/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('920edbe564d593c58a19357c7ae0ad5249605985ab9ccf42689676774417b210')
+b2sums=('55e74ba2a64645b249e09eb7861cf0a9238ac895cfadf1d14b77d95b8def8b0f6ff474b2000fd77bab4108bbadd76776257942739e85464333e6c1e30165b85b')
 
 prepare() {
     sed -i 's|path_t model = PATHSTR("rife-HD")|path_t model = PATHSTR("/usr/share/rife-ncnn-vulkan/rife-HD")|' "${pkgname}-${pkgver}"/src/main.cpp

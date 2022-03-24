@@ -18,6 +18,6 @@ pkgbase = rife-ncnn-vulkan
 	conflicts = rife-ncnn-vulkan-git
 	conflicts = rife-ncnn-vulkan-bin
 	source = https://github.com/nihui/rife-ncnn-vulkan/archive/refs/tags/20220318.tar.gz
-	sha256sums = 920edbe564d593c58a19357c7ae0ad5249605985ab9ccf42689676774417b210
+	b2sums = 55e74ba2a64645b249e09eb7861cf0a9238ac895cfadf1d14b77d95b8def8b0f6ff474b2000fd77bab4108bbadd76776257942739e85464333e6c1e30165b85b
 
 pkgname = rife-ncnn-vulkan
