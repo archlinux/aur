@@ -1,0 +1,19 @@
+pkgbase = python-utidylib
+	pkgdesc = Wrapper for HTML Tidy
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://github.com/nijel/utidylib
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-sphinx
+	makedepends = python-wheel
+	depends = tidy
+	depends = python
+	source = python-utidylib-0.8.tar.gz::https://github.com/nijel/utidylib/archive/v0.8.tar.gz
+	sha256sums = 9342ae5c99b17c37d15850c2dbcdb9c1a991a12de7f0ec61f06c246d5688db68
+
+pkgname = python-utidylib
