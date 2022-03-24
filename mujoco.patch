@@ -1,0 +1,93 @@
+diff --git a/python/mujoco/CMakeLists.txt b/python/mujoco/CMakeLists.txt
+index 1ee5c8e..c00db28 100644
+--- a/python/mujoco/CMakeLists.txt
++++ b/python/mujoco/CMakeLists.txt
+@@ -102,7 +102,7 @@ else()
+ endif()
+ findorfetch(
+   USE_SYSTEM_PACKAGE
+-  OFF
++  ON
+   PACKAGE_NAME
+   absl
+   LIBRARY_NAME
+@@ -123,7 +123,7 @@ findorfetch(
+ add_compile_definitions(EIGEN_MPL2_ONLY)
+ findorfetch(
+   USE_SYSTEM_PACKAGE
+-  OFF
++  ON
+   PACKAGE_NAME
+   Eigen3
+   LIBRARY_NAME
+@@ -144,7 +144,7 @@ if(MUJOCO_PYBIND11_DIR)
+ else()
+   findorfetch(
+     USE_SYSTEM_PACKAGE
+-    OFF
++    ON
+     PACKAGE_NAME
+     pybind11
+     LIBRARY_NAME
+diff --git a/python/mujoco/__init__.py b/python/mujoco/__init__.py
+index 63e4e59..5351838 100644
+--- a/python/mujoco/__init__.py
++++ b/python/mujoco/__init__.py
+@@ -19,7 +19,7 @@ import os
+ import platform
+ import subprocess
+ 
+-HEADERS_DIR = os.path.join(os.path.dirname(__file__), 'include')
++HEADERS_DIR = os.path.join('/usr/include/', 'mujoco')
+ 
+ _MUJOCO_GL_ENABLE = ('enable', 'enabled', 'on', 'true', '1' , '')
+ _MUJOCO_GL_DISABLE = ('disable', 'disabled', 'off', 'false', '0')
+@@ -29,23 +29,19 @@ _MUJOCO_GL_IS_VALID = True
+ _SYSTEM = platform.system()
+ if _SYSTEM == 'Linux':
+   libglew_name = None
+-  if _MUJOCO_GL in _MUJOCO_GL_ENABLE + ('glfw', 'glx'):
+-    libglew_name = 'libglew.so'
+-  elif _MUJOCO_GL == 'egl':
+-    libglew_name = 'libglewegl.so'
+-  elif _MUJOCO_GL == 'osmesa':
+-    libglew_name = 'libglewosmesa.so'
++  if _MUJOCO_GL in _MUJOCO_GL_ENABLE:
++    libglew_name = 'libGLEW.so'
+   elif _MUJOCO_GL not in _MUJOCO_GL_DISABLE:
+     _MUJOCO_GL_IS_VALID = False
+   if libglew_name is not None:
+-    ctypes.CDLL(os.path.join(os.path.dirname(__file__), libglew_name),
++    ctypes.CDLL(os.path.join("/usr/lib/", libglew_name),
+                 ctypes.RTLD_GLOBAL)
+     ctypes.CDLL(
+-        os.path.join(os.path.dirname(__file__), 'libmujoco.so.2.1.3'),
++        os.path.join("/usr/lib/", 'libmujoco.so.2.1.3'),
+         ctypes.RTLD_GLOBAL)
+   else:
+     ctypes.CDLL(
+-        os.path.join(os.path.dirname(__file__), 'libmujoco_nogl.so.2.1.3'),
++        os.path.join("/usr/lib/", 'libmujoco_nogl.so.2.1.3'),
+         ctypes.RTLD_GLOBAL)
+ elif _SYSTEM == 'Windows':
+   if _MUJOCO_GL in _MUJOCO_GL_ENABLE + ('glfw', 'wgl'):
+diff --git a/python/setup.py b/python/setup.py
+index 837d5b3..4ec6338 100644
+--- a/python/setup.py
++++ b/python/setup.py
+@@ -137,14 +137,12 @@ class BuildCMakeExtension(build_ext.build_ext):
+   """Uses CMake to build extensions."""
+ 
+   def run(self):
+-    self._mujoco_library_path, self._mujoco_include_path = self._find_mujoco()
++    self._mujoco_library_path, self._mujoco_include_path = "/usr/lib","/usr/include/mujoco"
+     self._configure_cmake()
+     for ext in self.extensions:
+       assert ext.name.startswith(EXT_PREFIX)
+       assert '.' not in ext.name[len(EXT_PREFIX):]
+       self.build_extension(ext)
+-    self._copy_external_libraries()
+-    self._copy_mujoco_headers()
+ 
+   def _find_mujoco(self):
+     if MUJOCO_PATH not in os.environ:

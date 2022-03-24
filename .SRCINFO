@@ -16,7 +16,10 @@ pkgbase = python-mujoco
 	depends = python-numpy
 	depends = python-opengl
 	depends = mujoco
+	depends = glew
 	source = git+https://github.com/deepmind/mujoco.git#tag=2.1.3
+	source = mujoco.patch
 	sha256sums = SKIP
+	sha256sums = 8852ea463f868859726e92b61d2f40f2f224a520f8b1b8b066933ba935b80452
 
 pkgname = python-mujoco
