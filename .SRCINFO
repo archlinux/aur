@@ -1,0 +1,21 @@
+pkgbase = zer0
+	pkgdesc = Client for zer0bin
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/zer0bin-dev/zer0
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = MIT
+	makedepends = go>=1.18
+	depends = git
+	depends = man-db
+	options = !lto
+	source = zer0-1.0.0.tar.gz::https://github.com/zer0bin-dev/zer0/archive/v1.0.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = zer0
