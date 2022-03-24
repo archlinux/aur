@@ -1,7 +1,7 @@
 # Maintainer: Joan Bruguera Micó <joanbrugueram@gmail.com>
 pkgname=sysbox-ce
 pkgver=0.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)"
 url="https://github.com/nestybox/sysbox"
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("https://downloads.nestybox.com/sysbox/releases/v${pkgver}/sysbox-ce_${p
         "git+https://github.com/nestybox/libseccomp-golang.git#commit=34080bdd6320612d64400edce4e51188c0d64d72"
         "git+https://github.com/nestybox/sysbox-mgr.git#commit=bf4140a678de2cdb4d7f02f50c5e71348d2d2335"
         "git+https://github.com/nestybox/sysbox-runc.git#commit=c85420f1d1a426949047eb55e4112a3bc310aec2")
-sha256sums=('7fa83a4f3b83018ec3dcef1f547ef25a99645f6c6544276bfbf8831e63a092d7'
+sha256sums=('eeacd9ae0e08ee5e5637e3b93e4f0cf78f20f9590ef2e7ab08347700682422f0'
             'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 install=install.sh
 depends=('rsync' 'fuse2')
@@ -49,7 +49,7 @@ prepare() {
 
 	# Get some non-binary files from the Debian package as they don't seem to be uploaded anywhere else
 	mkdir -p data
-	tar xf data.tar.zst -C data
+	tar xf data.tar.xz -C data
 }
 
 build() {

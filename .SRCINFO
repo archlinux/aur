@@ -1,7 +1,7 @@
 pkgbase = sysbox-ce
 	pkgdesc = Container runtime with VM-like isolation (run Systemd, Docker, K8s in containers)
 	pkgver = 0.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/nestybox/sysbox
 	install = install.sh
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = sysbox-ce
 	source = git+https://github.com/nestybox/libseccomp-golang.git#commit=34080bdd6320612d64400edce4e51188c0d64d72
 	source = git+https://github.com/nestybox/sysbox-mgr.git#commit=bf4140a678de2cdb4d7f02f50c5e71348d2d2335
 	source = git+https://github.com/nestybox/sysbox-runc.git#commit=c85420f1d1a426949047eb55e4112a3bc310aec2
-	sha256sums = 7fa83a4f3b83018ec3dcef1f547ef25a99645f6c6544276bfbf8831e63a092d7
+	sha256sums = eeacd9ae0e08ee5e5637e3b93e4f0cf78f20f9590ef2e7ab08347700682422f0
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
