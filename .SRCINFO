@@ -1,13 +1,14 @@
 pkgbase = neovim-lush-git
 	pkgdesc = A colorscheme creation aid for Neovim
-	pkgver = r276.71adf07
+	pkgver = 1.0.0.r0.gfa7694f
 	pkgrel = 1
 	url = https://github.com/rktjmp/lush.nvim
+	install = lush.install
 	arch = any
 	groups = neovim-plugins
 	license = MIT
 	makedepends = git
-	depends = neovim>=0.5
+	depends = neovim
 	provides = neovim-lush
 	conflicts = neovim-lush
 	source = neovim-lush-git::git+https://github.com/rktjmp/lush.nvim
