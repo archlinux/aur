@@ -32,7 +32,7 @@ optdepends=(
 makedepends=(
   'python-build'
   'python-installer')
-source=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/${_name//-/_}-$pkgver-$_py-$_py-manylinux_2_27_x86_64.whl")
+source=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/${_name//-/_}-$pkgver-$_py-$_py-manylinux2014_x86_64.whl")
 b2sums=('1a945f7e4805212310596dfc60edf212374bc7ebe7e086d4a2b5bd957f78eef28d1118a3bd244ba15c5c7d4dbfd61485ddc288caa79caa1f5545d9e9cc5db26a')
 
 package() {
