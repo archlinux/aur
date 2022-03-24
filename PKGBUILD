@@ -6,7 +6,7 @@
 _pkgname=redsocks
 pkgname=${_pkgname}2-git
 pkgver=0.67.r36.g1951b49
-pkgrel=1
+pkgrel=2
 pkgdesc='redsocks2'
 arch=('i686' 'x86_64')
 url='https://github.com/semigodking/redsocks'
@@ -16,7 +16,7 @@ makedepends=('git')
 conflicts=('redsocks')
 provides=('redsocks2')
 install=redsocks2.install
-backup=('etc/conf.d/redsocks2'
+backup=('etc/redsocks2.conf'
         'etc/iptables/redsocks2.rules'
 	'etc/redsocks2.conf')
 source=("git+$url.git"
