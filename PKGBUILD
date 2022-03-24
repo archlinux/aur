@@ -1,71 +1,33 @@
-# Maintainer: Vlad M. <vlad@archlinux.net>
-# Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
-# Contributor: Attila Bukor <r1pp3rj4ck [at] w4it [dot] eu>
+# Maintainer: Zhangyuan Nie <yuan@znie.org>
 
 pkgname=butter-git
-_pkgname=butter-desktop
-pkgver=r5891.6365715
+pkgver=r71.44fec7f
 pkgrel=1
-pkgdesc="Stream movies from torrents. Skip the downloads. Launch, click, watch."
-arch=('i686' 'x86_64')
-url="https://butterproject.github.io/"
+pkgdesc="GTK application for Btrfs snapshot management"
+arch=('x86_64')
+url="https://github.com/zhangyuannie/butter"
 license=('GPL3')
-depends=('alsa-lib'
-         'gconf'
-         'gtk2'
-         'libxtst'
-         'nss'
-         'ttf-font')
-makedepends=('bower'
-             'cmake'
-             'git'
-             'gulp'
-             'npm')
+depends=('gtk4' 'libadwaita' 'polkit' 'btrfs-progs' 'python')
+makedepends=('meson' 'rust' 'git')
 conflicts=('butter')
 provides=('butter')
-options=('!strip')
-
-[ "$CARCH" = "i686" ]   && _platform=linux32
-[ "$CARCH" = "x86_64" ] && _platform=linux64
-
-source=("git+https://github.com/butterproject/$_pkgname.git"
-        "butter.desktop")
-md5sums=('SKIP'
-         '280e34e43de9356edf68cc7d17aab99b')
+source=("${pkgname}::git+https://github.com/zhangyuannie/butter.git")
+sha256sums=('SKIP')
 
 pkgver() {
-  cd "$_pkgname"
-
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd "$_pkgname"
-  npm install
+  cd "${pkgname}"
+  local l=$(grep -A 3 "\<project(" "meson.build" | grep "\<version\>" | sed "s|.*version: '\(.*\)'.*|\1|")
+  local r=$(printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)")
+  printf "%s.%s" "${l}" "${r}"
 }
 
 build() {
-  cd "$_pkgname"
-  gulp clean
-  gulp css
-  gulp nwjs
+  cd "${pkgname}"
+  arch-meson . build
+  meson compile -C build
 }
 
 package() {
-  _bpath="$_pkgname/build/Butter/$_platform"
-
-  install -d "$pkgdir/usr/lib/butter"
-  install -d "$pkgdir/usr/bin"
-
-  # Program
-  install -Dm755 "$_bpath/Butter" "$pkgdir/usr/lib/butter/"
-  install -Dm644 "$_bpath/"{nw.pak,libffmpegsumo.so,icudtl.dat} "$pkgdir/usr/lib/butter/"
-
-  # Link to program
-  mkdir -p "$pkgdir/usr/bin"
-  ln -s "/usr/lib/butter/Butter" "$pkgdir/usr/bin/butter"
-
-  install -Dm644 "butter.desktop" "$pkgdir/usr/share/applications/butter.desktop"
-  install -Dm644 "$_pkgname/src/app/images/icon.png" "$pkgdir/usr/share/pixmaps/butter.png"
-  install -Dm644 "$_pkgname/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${pkgname}"
+  DESTDIR="${pkgdir}" meson install -C build
 }
