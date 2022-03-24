@@ -1,14 +1,13 @@
 pkgbase = kak-fzf-git
 	pkgdesc = FZF for kakoune
 	pkgver = r350.95b12b1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/andreyorst/fzf.kak
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = kakoune
-	optdepends = fzf: backend
-	optdepends = skim: backend
+	depends = fzf
 	optdepends = the_silver_searcher: file command
 	optdepends = fd: file command
 	optdepends = ripgrep: file/grep commands

@@ -1,16 +1,14 @@
 # Maintainer: ltdk <usr@ltdk.xyz>
 pkgname=kak-fzf-git
 pkgver=r350.95b12b1
-pkgrel=1
+pkgrel=2
 pkgdesc='FZF for kakoune'
 arch=(any)
 url="https://github.com/andreyorst/fzf.kak"
 license=(MIT)
-depends=(kakoune)
+depends=(kakoune fzf)
 makedepends=(git)
-optdepends=('fzf: backend'
-            'skim: backend'
-            'the_silver_searcher: file command'
+optdepends=('the_silver_searcher: file command'
             'fd: file command'
             'ripgrep: file/grep commands'
             'bat: highlight command'
@@ -37,7 +35,7 @@ package() {
 	cd "$srcdir/fzf.kak"
 	install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 	install -Dm644 -t "$pkgdir/usr/share/kak/rc/addons" rc/fzf.kak
-	for module in fzf-{buffer,cd,ctags,file,grep,project,search,vcs} sk-grep VCS/fzf-{bzr,git,hg,svn}; do
+	for module in fzf-{buffer,cd,ctags,file,grep,project,search,vcs} VCS/fzf-{bzr,git,hg,svn}; do
 		install -Dm644 -t "$pkgdir/usr/share/kak/rc/addons" rc/modules/$module.kak
 	done
 }
