@@ -23,6 +23,6 @@ pkgbase = c-lightning
 	optdepends = valgrind: Tool for memory management
 	conflicts = c-lightning-git
 	source = git+https://github.com/ElementsProject/lightning.git
-	sha256sums = SKIP
+	sha512sums = SKIP
 
 pkgname = c-lightning
