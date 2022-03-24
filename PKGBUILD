@@ -2,7 +2,7 @@
 
 pkgname=zeronsd
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Unicast DNS resolver for ZeroTier networks"
 url="https://github.com/zerotier/zeronsd"
 license=("BSD-3-Clause")
@@ -19,7 +19,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  cargo test --release --locked
+  cargo test --release --locked --lib
 }
 
 package() {
