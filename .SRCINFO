@@ -1,0 +1,15 @@
+pkgbase = cnijfilter2-g3010
+	pkgdesc = Canon InkJet Printer Driver, PIXMA G3010 series (PIXMA G3410, PIXMA G3411, PIXMA G3415, PIXMA G3510, PIXMA G3515, PIXMA G4410, PIXMA G4411, PIXMA G4510, PIXMA G4511)
+	pkgver = 5.60
+	pkgrel = 1
+	url = https://th.canon/en/support/PIXMA%20G3010/model
+	arch = i686
+	arch = x86_64
+	license = custom
+	depends = libcups
+	depends = libxml2
+	provides = cnijfilter2=5.60
+	source = https://gdlp01.c-wss.com/gds/8/0100009488/01/cnijfilter2-5.60-1-deb.tar.gz
+	sha256sums = d75344561828eb180f34d6fd2d5b1a05eb03aca31365896589b7fcbcb75ab985
+
+pkgname = cnijfilter2-g3010
