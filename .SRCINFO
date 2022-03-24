@@ -1,7 +1,7 @@
 pkgbase = qualcoder
 	pkgdesc = Qualitative data analysis for text, images, audio, video. Cross platform. Python 3.6 or newer and PyQt5.
 	pkgver = 2.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ccbogel/QualCoder
 	arch = any
 	license = MIT
@@ -10,7 +10,7 @@ pkgbase = qualcoder
 	depends = python-lxml
 	depends = python-pillow
 	depends = python-ebooklib
-	depends = python-pdfminer.six
+	depends = python-pdfminer
 	depends = python-ply
 	depends = python-chardet
 	depends = python-openpyxl

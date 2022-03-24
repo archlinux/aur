@@ -5,7 +5,7 @@
 pkgname=qualcoder
 _pkgname=QualCoder
 pkgver=2.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Qualitative data analysis for text, images, audio, video. Cross platform. Python 3.6 or newer and PyQt5."
 arch=('any')
 url='https://github.com/ccbogel/QualCoder'
@@ -14,7 +14,7 @@ depends=('python-pyqt5'
          'python-lxml'
          'python-pillow'
          'python-ebooklib'
-         'python-pdfminer.six'
+         'python-pdfminer'
          'python-ply'
          'python-chardet'
          'python-openpyxl'
