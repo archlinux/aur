@@ -3,7 +3,7 @@
 pkgname=python3-django-tagging
 _pkgname=django-tagging
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A generic tagging application for Django projects in python3"
 arch=('any')
 url='https://pypi.python.org/pypi/django-tagging'
@@ -16,6 +16,8 @@ sha256sums=('28d68fa4831705e51ad7d1e845ed6dd9e354f9b6f8a5f63b655a430646ef4e8d')
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py build
+  #Change for new django version
+  sed -i 's/smart_text/smart_str/g' build/lib/tagging/models.py
 }
 
 package() {
