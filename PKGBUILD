@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=calls
-pkgver=41.1
+pkgver=42.0
 pkgrel=1
 pkgdesc='Phone dialer and call handler'
 arch=(x86_64 aarch64)
@@ -18,16 +18,30 @@ depends=(
 	sofia-sip
 )
 makedepends=(
+	git
 	gobject-introspection
 	meson
 	vala
 )
+options=(debug)
 _commit=${pkgver}
-source=("${url}/-/archive/${_commit}/calls-${_commit}.tar.gz")
-sha256sums=('8b9a217f9f33fea314b33ee373d893177595faa97b38248769b50b07c238ab3f')
+source=(
+	"git+${url}.git#commit=$_commit"
+	"git+https://gitlab.gnome.org/World/Phosh/libcall-ui.git"
+)
+b2sums=('SKIP' 'SKIP')
+
+prepare() {
+	cd calls
+
+	git submodule init
+	git submodule set-url subprojects/libcall-ui "$srcdir/libcall-ui"
+	git submodule update
+}
+
 
 build() {
-	arch-meson calls-${_commit} build -D tests=false
+	arch-meson calls build -D tests=false
 	meson compile -C build
 }
 
