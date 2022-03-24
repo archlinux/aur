@@ -1,0 +1,13 @@
+pkgbase = freecad-a2plus-git
+	pkgdesc = Assembly workbench for FreeCAD
+	pkgver = v0.4.55.r2.eda4fc3
+	pkgrel = 1
+	url = https://github.com/kbwbe/A2plus
+	arch = any
+	license = LGPL
+	depends = freecad>=0.16
+	conflicts = freecad-a2plus
+	source = freecad-a2plus-git::git+https://github.com/kbwbe/A2plus.git
+	sha256sums = SKIP
+
+pkgname = freecad-a2plus-git
