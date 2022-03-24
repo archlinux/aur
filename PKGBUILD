@@ -2,7 +2,7 @@
 
 pkgname=mpv-full
 pkgver=0.34.1
-pkgrel=1
+pkgrel=2
 _wafver=2.0.20
 pkgdesc='A free, open source, and cross-platform media player (with all possible libs)'
 arch=('x86_64')
@@ -26,6 +26,7 @@ optdepends=('youtube-dl: for video-sharing websites playback'
 provides=('mpv')
 conflicts=('mpv')
 options=('!emptydirs')
+BUILDENV+=('!check')
 source=("https://github.com/mpv-player/mpv/archive/v${pkgver}/mpv-${pkgver}.tar.gz"
         "https://waf.io/waf-${_wafver}")
 sha256sums=('32ded8c13b6398310fa27767378193dc1db6d78b006b70dbcbd3123a1445e746'
@@ -154,10 +155,10 @@ build() {
     ./waf build
     
     # build with tests on the mpv binary (for tests only)
-    printf '%s\n' ' -> Building the test files (with tests)...'
-    export WAFLOCK='.lock-waf_linux_build-tests'
-    ./waf distclean configure --enable-tests "${_common_opts[@]}"
-    ./waf build
+    #printf '%s\n' ' -> Building the test files (with tests)...'
+    #export WAFLOCK='.lock-waf_linux_build-tests'
+    #./waf distclean configure --enable-tests "${_common_opts[@]}"
+    #./waf build
 }
 
 check() {
