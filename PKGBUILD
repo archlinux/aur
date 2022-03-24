@@ -9,6 +9,7 @@ url='https://th.canon/en/support/PIXMA%20G3010/model'
 license=('custom')
 depends=('libcups' 'libxml2')
 provides=("cnijfilter2=$pkgver")
+# Driver page https://www.canon-europe.com/support/consumer_products/products/fax__multifunctionals/inkjet/pixma_g_series/pixma-g3411.html?type=drivers&language=en&os=linux
 source=("https://gdlp01.c-wss.com/gds/8/0100009488/01/cnijfilter2-$pkgver-$pkgrel-deb.tar.gz")
 sha256sums=('d75344561828eb180f34d6fd2d5b1a05eb03aca31365896589b7fcbcb75ab985')
 
