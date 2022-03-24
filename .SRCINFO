@@ -2,7 +2,7 @@ pkgbase = psiphon-tunnel-core-git
 	pkgdesc = Psiphon Tunnelling Proxy
 	pkgver = 2.0.20.r3554.9efdd083
 	pkgrel = 1
-	epoch = 2
+	epoch = 3
 	url = https://github.com/Psiphon-Labs/psiphon-tunnel-core
 	arch = x86_64
 	license = GPL3
@@ -19,6 +19,6 @@ pkgbase = psiphon-tunnel-core-git
 	sha256sums = SKIP
 	sha256sums = c2c414831ad29bdeecd00313c473fbaa448f4750e70df1c10e863870bde179aa
 	sha256sums = d0227e69cac62480951e9c83747d43fccd7bdd18224652428ab20369b84173aa
-	sha256sums = SKIP
+	sha256sums = 73ead204b4f0aa4f0a5f5ed174257b10dbb6f7430c5abacc450ea000adfd12da
 
 pkgname = psiphon-tunnel-core-git

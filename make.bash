@@ -62,19 +62,11 @@ build_for_linux () {
   -o bin/linux/${EXE_BASENAME}-x86_64
   RETVAL=$?
   if [ $RETVAL != 0 ]; then
-    echo "....gox failed, exiting"
+    echo "....go failed, exiting"
     exit $RETVAL
   fi
   unset RETVAL
 
-  #echo "....UPX packaging output"
-  #goupx --best bin/linux/${EXE_BASENAME}-x86_64
-  #RETVAL=$?
-  #if [ $RETVAL != 0 ]; then
-    #echo ".....goupx failed, exiting"
-    #exit $RETVAL
-  #fi
-  #unset RETVAL
 }
 
 TARGET=$1

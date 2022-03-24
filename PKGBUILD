@@ -23,7 +23,7 @@ _pkgname=psiphon-tunnel-core
 pkgname="$_pkgname-git"
 pkgver=2.0.20.r3554.9efdd083
 pkgrel=1
-epoch=2
+epoch=3
 pkgdesc='Psiphon Tunnelling Proxy'
 arch=($CARCH)
 url="https://github.com/Psiphon-Labs/psiphon-tunnel-core"
@@ -38,7 +38,7 @@ backup=('etc/psiphon.conf' 'usr/lib/systemd/user/psiphon.service')
 sha256sums=('SKIP'
          'c2c414831ad29bdeecd00313c473fbaa448f4750e70df1c10e863870bde179aa'
          'd0227e69cac62480951e9c83747d43fccd7bdd18224652428ab20369b84173aa'
-         'SKIP')
+         '73ead204b4f0aa4f0a5f5ed174257b10dbb6f7430c5abacc450ea000adfd12da')
 
 pkgver() {
   cd $_pkgname
@@ -61,9 +61,6 @@ build() {
   cd "$_pkgname/ConsoleClient"
   
   ./make.bash linux
-
-  # TODO: Figure out how to do the stripping?
-  # https://wiki.archlinux.org/index.php/Go_package_guidelines#Flags_and_build_options
 
 }
 
