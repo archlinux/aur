@@ -1,7 +1,7 @@
 # Maintainer: Maksim Verkhoturov (sd32@protonmail.com)
 
 pkgname=gummy
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc="Linux brightness/temperature manager for X11"
 arch=('x86_64')

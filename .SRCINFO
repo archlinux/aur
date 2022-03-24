@@ -1,6 +1,6 @@
 pkgbase = gummy
 	pkgdesc = Linux brightness/temperature manager for X11
-	pkgver = 0.1
+	pkgver = 0.2
 	pkgrel = 1
 	url = https://github.com/Fushko/gummy
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = gummy
 	depends = sdbus-cpp
 	provides = gummy
 	conflicts = gummy-git
-	source = git+https://github.com/Fushko/gummy#tag=0.1
+	source = git+https://github.com/Fushko/gummy#tag=0.2
 	md5sums = SKIP
 
 pkgname = gummy
