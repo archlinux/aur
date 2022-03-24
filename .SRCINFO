@@ -1,0 +1,18 @@
+pkgbase = qvplugins-git
+	pkgdesc = Plugins for Qv2ray.
+	pkgver = 20220324
+	pkgrel = 1
+	url = https://github.com/Shadowsocks-NET/QvPlugins
+	arch = x86
+	arch = x86_64
+	arch = arm
+	arch = aarch64
+	license = GPL3
+	makedepends = cmake
+	depends = qv2ray-v3
+	provides = qvplugins
+	conflicts = qvplugins
+	source = qvplugins::git+https://github.com/Shadowsocks-NET/QvPlugins
+	sha256sums = SKIP
+
+pkgname = qvplugins-git
