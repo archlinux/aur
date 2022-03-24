@@ -1,0 +1,15 @@
+pkgbase = kak-cd-git
+	pkgdesc = Commands to change or print working directory
+	pkgver = r11.6f15118
+	pkgrel = 1
+	url = https://github.com/Delapouite/kakoune-cd
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = kakoune
+	provides = kak-cd
+	conflicts = kak-cd
+	source = git+https://github.com/Delapouite/kakoune-cd
+	sha256sums = SKIP
+
+pkgname = kak-cd-git
