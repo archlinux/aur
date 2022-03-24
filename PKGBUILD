@@ -37,7 +37,7 @@ package()
     install -Dm644 "${srcdir}"/"${pkgname}"-"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
     cd "${srcdir}"/"${pkgname}"-"${pkgver}"/doc/ || exit 1
     doxygen Doxyfile
-    cp -r "${srcdir}"/"${_pkgname}"/doc/* "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    cp -r "${srcdir}"/"${pkgname}"-"${pkgver}"/doc/* "${pkgdir}"/usr/share/doc/"${pkgname}"/
     chmod -R 644 "${pkgdir}"/usr/share/doc/"${pkgname}"/
 
     # Install the license.
