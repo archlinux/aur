@@ -1,0 +1,14 @@
+pkgbase = gdrive-downloader-git
+	pkgdesc = Download a gdrive folder or file easily, shell ftw.
+	pkgver = r94.b8ea865
+	pkgrel = 1
+	url = https://github.com/Akianonymus/gdrive-downloader
+	arch = any
+	license = UNLICENSE
+	makedepends = git
+	provides = gdrive-downloader
+	conflicts = gdrive-downloader
+	source = gdrive-downloader::git+https://github.com/Akianonymus/gdrive-downloader
+	sha256sums = SKIP
+
+pkgname = gdrive-downloader-git
