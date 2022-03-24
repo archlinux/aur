@@ -34,7 +34,8 @@ license=('custom')
 makedepends=('java-environment=17' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
              'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib' 'pandoc'
              'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
-             'libnet' 'bash' 'harfbuzz' 'gcc-libs' 'glibc' 'ant' 'git' 'rsync' 'cmake' 'python' 'at-spi2-atk' 'libxkbcommon' 'libxcomposite' 'mesa' 'jcef-jetbrains')
+             'libnet' 'bash' 'harfbuzz' 'gcc-libs' 'glibc' 'jcef-jetbrains' 'git')
+options=(!lto)
 source=(git+https://github.com/JetBrains/JetBrainsRuntime.git#tag=$_hg_tag
 #        git+https://github.com/JetBrains/jcef.git#commit=$_jcef_commit
         idea.patch
@@ -148,7 +149,9 @@ check() {
 
 package_jre17-jetbrains-imfix() {
   pkgdesc="JetBrains Java ${_majorver} full runtime environment"
-  depends=('java-runtime-common>=3' 'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'lcms2' 'libnet' 'freetype2' 'giflib' 'jcef-jetbrains')
+  depends=('java-runtime-common>=3' 'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'libjpeg.so'
+           'lcms2' 'liblcms2.so' 'libnet' 'freetype2' 'libfreetype.so' 'harfbuzz' 'libharfbuzz.so'
+           'glibc' 'gcc-libs' 'giflib' 'libgif.so' 'libpng' 'jcef-jetbrains')
   optdepends=('java-rhino: for some JavaScript support'
               'alsa-lib: for basic sound support'
               'gtk2: for the Gtk+ 2 look and feel - desktop usage'
@@ -213,7 +216,7 @@ package_jre17-jetbrains-imfix() {
 
 package_jdk17-jetbrains-imfix() {
   pkgdesc="JetBrains Java ${_majorver} development kit"
-  depends=("jre${_majorver}-jetbrains=${pkgver}-${pkgrel}" 'java-environment-common=3' 'hicolor-icon-theme' 'libelf')
+  depends=("jre${_majorver}-jetbrains=${pkgver}-${pkgrel}" 'java-environment-common=3' 'hicolor-icon-theme' 'libelf' 'glibc' 'gcc-libs')
   provides=("java-environment=${_majorver}" "java-environment-jetbrains=${_majorver}" "jdk${_majorver}-jetbrains=${pkgver}-${pkgrel}")
   conflicts=("jdk17-jetbrains")
   _pkgname="jdk17-jetbrains"

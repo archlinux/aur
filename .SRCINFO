@@ -29,16 +29,9 @@ pkgbase = java17-jetbrains-imfix
 	makedepends = harfbuzz
 	makedepends = gcc-libs
 	makedepends = glibc
-	makedepends = ant
-	makedepends = git
-	makedepends = rsync
-	makedepends = cmake
-	makedepends = python
-	makedepends = at-spi2-atk
-	makedepends = libxkbcommon
-	makedepends = libxcomposite
-	makedepends = mesa
 	makedepends = jcef-jetbrains
+	makedepends = git
+	options = !lto
 	source = git+https://github.com/JetBrains/JetBrainsRuntime.git#tag=jb17_0_2-b315.1
 	source = idea.patch
 	source = freedesktop-java.desktop
@@ -57,10 +50,19 @@ pkgname = jre17-jetbrains-imfix
 	depends = ca-certificates-utils
 	depends = nss
 	depends = libjpeg-turbo
+	depends = libjpeg.so
 	depends = lcms2
+	depends = liblcms2.so
 	depends = libnet
 	depends = freetype2
+	depends = libfreetype.so
+	depends = harfbuzz
+	depends = libharfbuzz.so
+	depends = glibc
+	depends = gcc-libs
 	depends = giflib
+	depends = libgif.so
+	depends = libpng
 	depends = jcef-jetbrains
 	optdepends = java-rhino: for some JavaScript support
 	optdepends = alsa-lib: for basic sound support
@@ -92,6 +94,8 @@ pkgname = jdk17-jetbrains-imfix
 	depends = java-environment-common=3
 	depends = hicolor-icon-theme
 	depends = libelf
+	depends = glibc
+	depends = gcc-libs
 	provides = java-environment=17
 	provides = java-environment-jetbrains=17
 	provides = jdk17-jetbrains=17.0.2.b315.1-2
