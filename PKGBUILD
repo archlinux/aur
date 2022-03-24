@@ -1,7 +1,7 @@
 # Maintainer: yjun <jerrysteve1101@gmail.com>
 
 pkgname=sakura-frp
-pkgver=0.39.1_sakura_1.1
+pkgver=0.41.0_sakura_1
 pkgrel=1
 pkgdesc="Sakura Frp"
 arch=('x86_64' 'i686' 'aarch64' 'armv6h' 'armv7h')
@@ -23,16 +23,16 @@ source_armv6h=(${pkgname}-${pkgver}-armv6h::"${_url}/${pkgver//_/-}/frpc_linux_a
 # disbale strip
 # => strip: error: the input file './usr/bin/sakura-frpc' has no sections
 options=('!strip')
-md5sums=('SKIP'
+md5sums=('b9fb6d2fc1b0f5733e98e9fa15d7a2c1'
          '217dc59018558a2ae6fcb98da968b022'
          '2a0bc53302d2ab06b2bcee826d10c727'
          '136ace6ea106819f10ee785b56825e4e'
          '69b510ef3fda703cd749473ffd506bfc')
-md5sums_x86_64=('425aa5531eba2d7fd75a0ff8395ba933')
-md5sums_i686=('87fbf861094845a477a5e5c403f94f79')
-md5sums_aarch64=('595bbc77bc9833e12dfa8811fd4c360c')
-md5sums_armv6h=('76c145ab710420921ba124dae659a4b5')
-md5sums_armv7h=('19a24a8eb99615cbc3beec8518bd3e21')
+md5sums_x86_64=('214cdae9c6eb0d4bba94facfae278b06')
+md5sums_i686=('d2e092f76df496b350defa1a2c9ab204')
+md5sums_aarch64=('76835788dbf04922e5abe6b80200c290')
+md5sums_armv6h=('d0df2793dd3725931eea3cd4703cb3fa')
+md5sums_armv7h=('e9bac36abd41f98d83e9c261964741f3')
 
 package() {
   install -Dm755 ${pkgname}-${pkgver}-${CARCH} ${pkgdir}/usr/bin/${pkgname}c
