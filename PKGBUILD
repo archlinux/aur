@@ -1,4 +1,5 @@
 # Maintainer:  Birk Birkner <aur at bbirkner.de>
+# Contributor:  Alois Nespor <alium at artixlinux.org>
 
 pkgname=pdfarranger-git
 pkgver=r821.d0f5979
