@@ -1,6 +1,6 @@
 pkgbase = dashpay-bls-signatures
 	pkgdesc = Chia Networks BLS Signatures implementation fork for Dashcore
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/dashpay/bls-signatures/
 	arch = x86_64
@@ -9,8 +9,9 @@ pkgbase = dashpay-bls-signatures
 	makedepends = libgmp-static
 	makedepends = libsodium-static
 	makedepends = cmake
+	makedepends = catch2
 	conflicts = codablock-bls-signatures
-	source = dashpay-bls-signatures-v1.2.2.tar.gz::https://github.com/dashpay/bls-signatures/archive/refs/tags/1.2.2.tar.gz
-	md5sums = b78b2f39b1f95dcab3ea4d4b452c3ff6
+	source = dashpay-bls-signatures-v1.2.3.tar.gz::https://github.com/dashpay/bls-signatures/archive/refs/tags/1.2.3.tar.gz
+	sha512sums = e752b24ff0c584ff46610c6f5154ec26d895647601a71d232734aaaf651ccfa238769658c5d5c334f6feb38bd8c2f0bf84a987e63d2cbdc2c1506b50e7c53b2a
 
 pkgname = dashpay-bls-signatures
