@@ -1,7 +1,7 @@
 pkgbase = r-ggplot2
 	pkgdesc = Create Elegant Data Visualisations Using the Grammar of Graphics
 	pkgver = 3.3.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://cran.r-project.org/package=ggplot2
 	arch = any
 	license = MIT
@@ -12,7 +12,7 @@ pkgbase = r-ggplot2
 	checkdepends = r-sp
 	checkdepends = r-svglite
 	checkdepends = r-testthat
-	checkdepends = r-vdiffr
+	checkdepends = r-xml2
 	checkdepends = ttf-font
 	depends = r-digest
 	depends = r-glue

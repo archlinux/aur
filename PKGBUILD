@@ -7,7 +7,7 @@ _cranname=ggplot2
 _cranver=3.3.5
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="Create Elegant Data Visualisations Using the Grammar of Graphics"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
@@ -30,7 +30,7 @@ checkdepends=(
     r-sp
     r-svglite
     r-testthat
-    r-vdiffr
+    r-xml2
     ttf-font
 )
 optdepends=(
