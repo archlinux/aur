@@ -1,7 +1,7 @@
 pkgbase = qflipper
 	pkgdesc = Desktop application for updating Flipper Zero firmware via PC
 	pkgver = 1.0.0rc2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://flipperzero.one/update
 	arch = x86_64
 	license = GPL3

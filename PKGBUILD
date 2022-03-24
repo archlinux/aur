@@ -2,7 +2,7 @@
 pkgname=qflipper
 basever=1.0.0-rc2
 pkgver=${basever/-/}
-pkgrel=1
+pkgrel=2
 pkgdesc="Desktop application for updating Flipper Zero firmware via PC"
 url="https://flipperzero.one/update"
 license=('GPL3')
