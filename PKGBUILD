@@ -1,11 +1,10 @@
 # Maintainer: Eric Langlois <eric@langlois.xyz>
 pkgname=mujoco-bin
-pkgver=2.1.0
+pkgver=2.1.3
 _pkgname="${pkgname%-bin}"
-_pkgnamever="${_pkgname}${pkgver//./}"
 pkgrel=1
 pkgdesc="Multi-Joint dynamics with Contact. A general purpose physics simulator."
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://www.mujoco.org"
 license=('Apache')
 # A headless version could exclude all of these gl dependencies
@@ -19,27 +18,30 @@ license=('Apache')
 depends=('libgl' 'glew' 'glfw')
 provides=('mujoco')
 conflicts=('mujoco')
-source=("$url/download/${_pkgnamever}-linux-x86_64.tar.gz"
-        "${pkgname}.patch")
-sha256sums=("a436ca2f4144c38b837205635bbd60ffe1162d5b44c87df22232795978d7d012"
-            "SKIP")
+source=("${pkgname}.patch")
+_src_url_prefix="https://github.com/deepmind/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}-linux"
+source_x86_64=("${_src_url_prefix}-x86_64.tar.gz")
+source_aarch64=("${_src_url_prefix}-aarch64.tar.gz")
+sha256sums=('SKIP')
+sha256sums_x86_64=('f899103e8d65c3e26bae97039fdec790a3ae80de93273414c233615562c0641a')
+sha256sums_aarch64=('971afd93517d0079a57f577cfb296d042002d1f86a21b479169c943df1dcf9dc')
 
 prepare() {
-	cd "${_pkgnamever}"
+	cd "${_pkgname}-${pkgver}"
 
 	# Patch testxml so that it works when the model directory is read only
 	patch --forward --strip=1 --input="${srcdir}/${pkgname}.patch"
 }
 
 build() {
-	cd "${_pkgnamever}/sample"
+	cd "${_pkgname}-${pkgver}/sample"
 
 	# Compile sample programs
 	make
 }
 
 package() {
-	cd "${_pkgnamever}"
+	cd "${_pkgname}-${pkgver}"
 
 	# Licenses
 	install -Dm644 -t "$pkgdir/usr/share/licenses/${_pkgname}/" \
@@ -50,30 +52,38 @@ package() {
 
 	# Libraries
 	install -D -t "$pkgdir/usr/lib" \
-		"bin/lib${_pkgnamever}.so" \
-		"bin/lib${_pkgnamever}nogl.so"
+		"lib/lib${_pkgname}.so.${pkgver}" \
+		"lib/lib${_pkgname}_nogl.so.${pkgver}"
+	# Library symlinks
+	cp -r \
+		"lib/lib${_pkgname}.so" \
+		"lib/lib${_pkgname}_nogl.so" \
+		"$pkgdir/usr/lib/"
 
 	# Sample binaries
 	install -Dm755 -t "$pkgdir/usr/lib/${_pkgname}" \
 		bin/{basic,compile,derivative,record,simulate,testspeed,testxml}
 
 	# Documentation
-	# install -Dm644 -t "$pkgdir/usr/share/doc/${_pkgname}" doc/README.txt
-	install -Dm644 -t "$pkgdir/usr/share/doc/${_pkgname}/model" model/*
 	install -Dm644 -t "$pkgdir/usr/share/doc/${_pkgname}/sample" sample/*
+	cp -r model "$pkgdir/usr/share/doc/${_pkgname}/model"
 
 	# Complete bundled package for anything that expects it (like pip mujoco_py)
 	_bundle_root="$pkgdir/opt/$_pkgname"
 	# Include MuJoCo's bundled versions of libraries here.
-	install -Dm644 -t "$_bundle_root/bin" \
-		bin/libglew.so bin/libglewegl.so bin/libglewosmesa.so \
-		bin/libglfw3.a bin/libglfw.so.3
-	ln -s -t "$_bundle_root/bin" \
-		"/usr/lib/lib${_pkgnamever}.so" "/usr/lib/lib${_pkgnamever}nogl.so"
+	install -D -t "$_bundle_root/lib" \
+		lib/libglew.so lib/libglewegl.so lib/libglewosmesa.so
+	ln -s -t "$_bundle_root/lib" \
+		"/usr/lib/lib${_pkgname}.so.${pkgver}" \
+		"/usr/lib/lib${_pkgname}.so" \
+		"/usr/lib/lib${_pkgname}_nogl.so.${pkgver}" \
+		"/usr/lib/lib${_pkgname}_nogl.so"
+	install -d "$_bundle_root/bin"
 	ln -s -t "$_bundle_root/bin" \
 		/usr/lib/${_pkgname}/{basic,compile,derivative,record,simulate,testspeed,testxml}
 	ln -s "/usr/include/${_pkgname}" "$_bundle_root/include"
-	ln -s "/usr/share/doc/${_pkgname}" "$_bundle_root/doc"
 	ln -s "/usr/share/doc/${_pkgname}/model" "$_bundle_root/model"
 	ln -s "/usr/share/doc/${_pkgname}/sample" "$_bundle_root/sample"
+	ln -s -t "$_bundle_root" \
+		"/usr/share/licenses/${_pkgname}/THIRD_PARTY_NOTICES"
 }

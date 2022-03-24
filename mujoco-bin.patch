@@ -1,51 +1,32 @@
-diff --unified --recursive --text --color mujoco210/sample/Makefile mujoco210.new/sample/Makefile
---- mujoco210/sample/Makefile	2018-10-02 02:30:53.000000000 -0400
-+++ mujoco210.new/sample/Makefile	2020-04-07 15:31:03.552608317 -0400
-@@ -1,12 +1,12 @@
--COMMON=-O2 -I../include -L../bin -std=c++11 -mavx -pthread -Wl,-rpath,'$$ORIGIN'
-+COMMON=-O2 -I../include -L../bin -std=c++11 -mavx -pthread $(LDFLAGS)
+diff '--color=auto' --unified --recursive --text --color mujoco-2.1.3.orig/sample/testxml.cc mujoco-2.1.3.new/sample/testxml.cc
+--- mujoco-2.1.3.orig/sample/testxml.cc	2022-03-23 23:59:24.771419662 -0400
++++ mujoco-2.1.3.new/sample/testxml.cc	2022-03-24 00:01:38.073551035 -0400
+@@ -134,14 +134,13 @@
+     return finish("Could not allocate mjData", m);
+   }
  
- all:
- 	g++ $(COMMON) testxml.cc    -lmujoco210nogl                             -o ../bin/testxml
- 	g++ $(COMMON) testspeed.cc  -lmujoco210nogl                             -o ../bin/testspeed
- 	g++ $(COMMON) compile.cc    -lmujoco210nogl                             -o ../bin/compile
- 	g++ $(COMMON) derivative.cc -lmujoco210nogl -fopenmp                    -o ../bin/derivative
--	g++ $(COMMON) basic.cc      -lmujoco210 -lGL -lglew ../bin/libglfw.so.3 -o ../bin/basic
--	g++ $(COMMON) record.cc     -lmujoco210 -lGL -lglew ../bin/libglfw.so.3 -o ../bin/record
-+	g++ $(COMMON) basic.cc      -lmujoco210 -lGL -lGLEW -lglfw -o ../bin/basic
-+	g++ $(COMMON) record.cc     -lmujoco210 -lGL -lGLEW -lglfw -o ../bin/record
- 	gcc -c -O2 -mavx -I../include ../include/uitools.c
--	g++ $(COMMON) uitools.o simulate.cc -lmujoco210 -lGL -lglew ../bin/libglfw.so.3 -o ../bin/simulate
-+	g++ $(COMMON) uitools.o simulate.cc -lmujoco210 -lGL -lGLEW -lglfw -o ../bin/simulate
- 	rm *.o
-diff --unified --recursive --text --color mujoco210/sample/testxml.cc mujoco210.new/sample/testxml.cc
---- mujoco210/sample/testxml.cc	2018-10-02 02:30:53.000000000 -0400
-+++ mujoco210.new/sample/testxml.cc	2020-04-07 15:24:45.969266528 -0400
-@@ -141,13 +141,12 @@
-     if( !d )
-         return finish("Could not allocate mjData", m);
+-  // prepare temp filename in the same directory as original (for asset loading)
+-  std::string tempfile;
+-  std::size_t lastpath = filename.find_last_of("/\\");
+-  if (lastpath==std::string::npos) {
+-    tempfile = "_tempfile_.xml";
+-  } else {
+-    tempfile = filename.substr(0, lastpath+1) + "_tempfile_.xml";
++  // prepare a temporary file for asset loading
++  char tempdir_template[] = "/tmp/testxml_XXXXXX";
++  char* tempdir = mkdtemp(tempdir_template);
++  if ( !tempdir ) {
++    return finish("Could not create temporary directory", m, d);
+   }
++  std::string tempfile = std::string(tempdir) + "/model.xml";
  
--    // prepare temp filename in the same directory as original (for asset loading)
--    std::string tempfile;
--    size_t lastpath = filename.find_last_of("/\\");
--    if( lastpath==std::string::npos )
--        tempfile = "_tempfile_.xml";
--    else
--        tempfile = filename.substr(0, lastpath+1) + "_tempfile_.xml";
-+    // prepare a temporary file for asset loading
-+    char tempdir_template[] = "/tmp/testxml_XXXXXX";
-+    char* tempdir = mkdtemp(tempdir_template);
-+    if ( !tempdir )
-+        return finish("Could not create temporary directory", m, d);
-+    std::string tempfile = std::string(tempdir) + "/model.xml";
+   // save
+   if (!mj_saveLastXML(tempfile.c_str(), m, error, 1000)) {
+@@ -164,6 +163,7 @@
+   // delete temp model and file
+   mj_deleteModel(mtemp);
+   remove(tempfile.c_str());
++  remove(tempdir);
  
-     // save
-     if( !mj_saveLastXML(tempfile.c_str(), m, error, 1000) )
-@@ -168,6 +167,7 @@
-     // delete temp model and file
-     mj_deleteModel(mtemp);
-     remove(tempfile.c_str());
-+    remove(tempdir);
- 
-     // finalize
-     return finish();
+   // finalize
+   return finish();
