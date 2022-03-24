@@ -12,7 +12,7 @@ pkgbase = freecheck-git
 	optdepends = ghostscript: output to pdf files
 	provides = freecheck
 	conflicts = freecheck
-	source = git://github.com/alerque/freecheck.git#branch=devel
-	md5sums = SKIP
+	source = git+https://github.com/alerque/freecheck.git#branch=devel
+	sha256sums = SKIP
 
 pkgname = freecheck-git
