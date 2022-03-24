@@ -12,13 +12,13 @@ pkgname=(
     'journalbeat-oss'
 )
 pkgver=7.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Data shippers for Elasticsearch OSS or OpenSearch'
 arch=('x86_64')
 url='https://opensearch.org/docs/latest/clients/agents-and-ingestion-tools/index/'
 license=('Apache')
 depends=('glibc')
-makedepends=('go' 'git' 'libpcap' 'rsync' 'python-virtualenv' 'audit' 'systemd')
+makedepends=('go' 'git' 'libpcap' 'rsync' 'python-virtualenv' 'audit' 'systemd' 'mage')
 optdepends=('opensearch: for standalone installation')
 options=('!makeflags')
 source=("https://github.com/elastic/beats/archive/v$pkgver/beats-$pkgver.tar.gz"
@@ -28,7 +28,8 @@ source=("https://github.com/elastic/beats/archive/v$pkgver/beats-$pkgver.tar.gz"
     "heartbeat-oss.service"
     "auditbeat-oss.service"
     "journalbeat-oss.service"
-    "tmpfile.conf")
+    "tmpfile.conf"
+    "0001-common-seccomp-add-rseq-syscall-30620.patch")
 sha512sums=('3e2c49ddab59461f82abc5e3ea0f12941f2ed73a6f23c2f062ec88c85d577ce2b5efb234a110e62e9949490bec4f355f3118508572b93883adc7122d76d33cb1'
             '405bc15510c0d39bbbf5f21db8eaa7b6a4032fd199c2115cfc6df23a32b072b40dffea524b9b779fbe624604b91d20e91d4e67e00e854ad5322ff9105609f779'
             '6aa70e01e06b23e86d62c96b8c56789de63ebfdb70903a0c9eb38dc7a919b340655ac5d197302c3962e29fdcd0c948b7f07e48fe8d9b8744e18477f47f152f13'
@@ -36,13 +37,19 @@ sha512sums=('3e2c49ddab59461f82abc5e3ea0f12941f2ed73a6f23c2f062ec88c85d577ce2b5e
             '10cd83b1d49115d108967ddb7af1404de6440668f9261241691ba8329384b51fadb23f302cfd57978de0423c73b8e1519bc13d2c5cb7858f00837dd719e351cb'
             '6c2b7ad706efbbaab55e2bd6a63dd85ee358aeed8255a829adeacdcd45d364520cc7f0328cfa966d61e911042d8fac40abc7ff36cdb7a834fc83df7da94fce13'
             '977a8209341891902a3edaedcab4370ab87260f88031c404dfbae7633d9b11673fa2719f81acc716cea6028a670c484092f579e560e2ba621e74682cf08efa2f'
-            '47ea41af1b46077a1279acdd4940b80f03e18f96dd8c03cc93b0c297b4b08dfa8e52865774a5ba88d95cbc6c7d31a33da2e5d8c897a4e9ffb6c9974ac75ea588')
+            '47ea41af1b46077a1279acdd4940b80f03e18f96dd8c03cc93b0c297b4b08dfa8e52865774a5ba88d95cbc6c7d31a33da2e5d8c897a4e9ffb6c9974ac75ea588'
+            '61878752bb0b3bb5e5ce38d9cf804398c6f7bc6ba9309a02f164edf732b81034f3186a3b717507308915a417eebfc13a0eb3a865a85a56a5938da33ee15e6c32')
 
 prepare() {
     export GOPATH="$srcdir"/go
     mkdir -p "$GOPATH"
 
     cd "$srcdir"/beats-$pkgver
+
+    # https://github.com/golang/go/issues/51315#issuecomment-1055399831
+    # https://github.com/elastic/beats/pull/30620
+    patch -Np1 -i "$srcdir"/0001-common-seccomp-add-rseq-syscall-30620.patch
+
     git init # git root required by one of the build scripts
 
     # Perform some timestomping to avoid make warnings

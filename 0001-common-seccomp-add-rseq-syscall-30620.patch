@@ -1,0 +1,56 @@
+From f02fa32e0a37d6529983e2181b80bf62e4a16b41 Mon Sep 17 00:00:00 2001
+From: Tiago Queiroz <tiago.queiroz@elastic.co>
+Date: Wed, 2 Mar 2022 15:43:54 +0100
+Subject: [PATCH] common/seccomp: add rseq syscall (#30620)
+
+rseq syscall is available on glibc >= 2.35, and called when CGO is
+used. If we don't allow rseq, Beats will eventually crash with an
+glibc error: `Fatal glibc error: rseq registration failed`.
+
+Fixes: #30576
+---
+ CHANGELOG.next.asciidoc                           | 1 +
+ libbeat/common/seccomp/policy_linux_386.go        | 1 +
+ libbeat/common/seccomp/policy_linux_amd64.go      | 1 +
+ libbeat/common/seccomp/seccomp-profiler-allow.txt | 1 +
+ 4 files changed, 4 insertions(+)
+
+diff --git a/libbeat/common/seccomp/policy_linux_386.go b/libbeat/common/seccomp/policy_linux_386.go
+index 40b49113b7..d333394aea 100644
+--- a/libbeat/common/seccomp/policy_linux_386.go
++++ b/libbeat/common/seccomp/policy_linux_386.go
+@@ -100,6 +100,7 @@ func init() {
+ 					"rename",
+ 					"renameat",
+ 					"restart_syscall",
++					"rseq",
+ 					"rt_sigaction",
+ 					"rt_sigprocmask",
+ 					"rt_sigreturn",
+diff --git a/libbeat/common/seccomp/policy_linux_amd64.go b/libbeat/common/seccomp/policy_linux_amd64.go
+index 6096b37bb3..356fb31fe8 100644
+--- a/libbeat/common/seccomp/policy_linux_amd64.go
++++ b/libbeat/common/seccomp/policy_linux_amd64.go
+@@ -112,6 +112,7 @@ func init() {
+ 					"recvmsg",
+ 					"rename",
+ 					"renameat",
++					"rseq",
+ 					"rt_sigaction",
+ 					"rt_sigprocmask",
+ 					"rt_sigreturn",
+diff --git a/libbeat/common/seccomp/seccomp-profiler-allow.txt b/libbeat/common/seccomp/seccomp-profiler-allow.txt
+index e22f3db0ee..237144d907 100644
+--- a/libbeat/common/seccomp/seccomp-profiler-allow.txt
++++ b/libbeat/common/seccomp/seccomp-profiler-allow.txt
+@@ -3,6 +3,7 @@ mprotect
+ set_robust_list
+ tgkill
+ time
++rseq
+ 
+ # cgo os/user
+ access
+-- 
+2.35.1
+
