@@ -12,6 +12,6 @@ pkgbase = rancher-k3d-beta-bin
 	provides = k3d
 	conflicts = rancher-k3d-bin
 	source = rancher-k3d-beta-bin-5.4.0_dev.2-amd64::https://github.com/rancher/k3d/releases/download/v5.4.0-dev.2/k3d-linux-amd64
-	sha256sums = b0f97eb10b0da554a4ed8376837288bd30448a6b4f4d7e2671a953afc63df065
+	sha256sums = 4f10f5ded204dcfe849d131555e40dab340f62c1b0b4159f82d756e5dab2b8e1
 
 pkgname = rancher-k3d-beta-bin

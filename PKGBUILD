@@ -10,9 +10,9 @@ provides=("k3d")
 conflicts=("rancher-k3d-bin")
 
 case "${CARCH}" in
-  x86_64)    _CARCH=amd64 && sha256sums=('b0f97eb10b0da554a4ed8376837288bd30448a6b4f4d7e2671a953afc63df065');;
-  aarch64)   _CARCH=arm64 && sha256sums=('b4eed973336fb219c9874719e878d4cefe07f1ec0c52b296b29614253e512810');;
-  arm*)      _CARCH=arm   && sha256sums=('95db302358f63ff471ad7448a8321a81fa91997ed65a06e1b7440d774a0633e8');;
+  x86_64)    _CARCH=amd64 && sha256sums=('4f10f5ded204dcfe849d131555e40dab340f62c1b0b4159f82d756e5dab2b8e1');;
+  aarch64)   _CARCH=arm64 && sha256sums=('e52f01614f1ad61befc794c5349d743fce3dfb0d7fa531db8389692d2e26121b');;
+  arm*)      _CARCH=arm   && sha256sums=('2b5518c7e9cf7de7e3614cf0ae4006271066e38eed420357c90902a5cf7d0898');;
 esac
 
 source=("${pkgname}-${pkgver}-${_CARCH}::https://github.com/rancher/k3d/releases/download/v${pkgver/_/-}/k3d-linux-${_CARCH}")
