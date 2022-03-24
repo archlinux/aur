@@ -1,7 +1,7 @@
 # Maintainer: Kevin Brodsky <corax26 at gmail dot com>
 # Contributor: Anton Jongsma <anton@felrood.nl>
 pkgname=libbobcat
-pkgver=5.07.03
+pkgver=5.09.01
 pkgrel=1
 pkgdesc="Bobcat (Brokken's Own Base Classes And Templates) library"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('icmake>=8.01.00' 'openssl' 'readline' 'libmilter>=8.14.4'
              'libx11>=1.6.2' 'yodl>=3.07.01')
 optdepends=()
 source=("https://gitlab.com/fbb-git/bobcat/-/archive/${pkgver}/bobcat-${pkgver}.tar.gz")
-md5sums=('5e2b2042280d34629c565c1dd2bcf1bd')
+md5sums=('096bc83cb572f24f64bfae25fd4febd8')
 
 build() {
   cd "$srcdir/bobcat-${pkgver}/bobcat"
