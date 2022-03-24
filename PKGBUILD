@@ -8,9 +8,9 @@
 
 pkgname=tenacity-wxgtk3-git
 pkgver=r1.g0665614b8
-pkgrel=1
+pkgrel=2
 epoch=1
-pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity"
+pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity - stable wxgtk3"
 arch=(i686 x86_64)
 url="https://tenacityaudio.org"
 license=(GPL2 CCPL)
@@ -19,9 +19,9 @@ depends=(gtk3 wxgtk3 glib2 libid3tag lilv lv2 portsmf suil libmad twolame vamp-p
          soundtouch portaudio portmidi lame jack sdl2)
 makedepends=(git cmake clang libsoup libnotify gstreamer gst-plugins-bad-libs
              ffmpeg4.4 nasm chrpath expat gcc-libs gdk-pixbuf2 glibc
-             flac libogg libsndfile libvorbis ffmpeg mold)
+             flac libogg libsndfile libvorbis ffmpeg)
 optdepends=('ffmpeg4.4: additional import/export capabilities')
-provides=(tenacity)
+provides=(tenacity tenacity-git)
 conflicts=(tenacity)
 source=("git+https://git.sr.ht/~tenacity/tenacity")
 sha256sums=('SKIP')
@@ -48,7 +48,7 @@ prepare() {
 build() {
   cd tenacity/build
   export WX_CONFIG=/usr/bin/wx-config-gtk3
-  CC=clang CXX=clang++ CFLAGS+=" -B /usr/lib/mold/ld" cmake \
+  CC=clang CXX=clang++ cmake \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DWX_CONFIG=/usr/bin/wx-config-gtk3 \
