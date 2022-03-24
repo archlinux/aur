@@ -1,6 +1,6 @@
 pkgbase = gitmux-git
 	pkgdesc = Git in your tmux status bar
-	pkgver = r45.cd50b54
+	pkgver = r48.d79bab3
 	pkgrel = 1
 	url = https://github.com/arl/gitmux
 	arch = any
