@@ -2,10 +2,10 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=sass
-_cranver=0.4.0
+_cranver=0.4.1
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Syntactically Awesome Style Sheets ('Sass')"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
@@ -29,7 +29,7 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
         "R-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
-sha256sums=('7d06ca15239142a49e88bb3be494515abdd8c75f00f3f1b0ee7bccb55019bc2b'
+sha256sums=('850fcb6bd49085d5afd25ac18da0744234385baf1f13d8c0a320f4da2de608bb'
             'e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b')
 
 prepare() {
