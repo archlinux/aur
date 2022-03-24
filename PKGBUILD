@@ -2,8 +2,8 @@
 # Contributor: Dan Printzell <me@vild.io>
 
 pkgname=('serve-d')
-pkgver=0.7.3
-pkgrel=2
+pkgver=0.7.4
+pkgrel=1
 pkgdesc="Microsoft language server protocol implementation for D using workspace-d"
 arch=('x86_64')
 url="https://github.com/Pure-D/serve-d"
@@ -16,7 +16,7 @@ source=(
 	"https://github.com/Pure-D/serve-d/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
-	'ed46c405797b00d3715cea04bbfe7f2277412189ac58206803032f3835d38934'
+	'7d8f7d5017709270bbfe2b0dfd231ec04ad2c3ee8a0708fb4d09b52ddf1423fa'
 )
 
 prepare() {
