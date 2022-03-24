@@ -1,4 +1,4 @@
-# Maintainer: Imperator Storm <30777770+ImperatorStorm@users.noreply.github.com>
+# Maintainer: Imperator Storm <ImperatorStorm11@protonmail.com>
 # Co-Maintainer: Eldred Habert <me@eldred.fr>
 # Contributor: Fredrick Brennan <copypaste@kittens.ph>
 # Contributor: Andrew Bueide <abueide@protonmail.com>
