@@ -1,0 +1,11 @@
+pkgbase = vim-projectionist
+	pkgdesc = Granular project configuration
+	pkgver = 1.3
+	pkgrel = 1
+	url = https://github.com/tpope/vim-projectionist
+	arch = any
+	license = custom:vim
+	source = https://github.com/tpope/vim-projectionist/archive/refs/tags/v1.3.tar.gz
+	sha256sums = c7cf3fb6583761f42ef86610f04065e31fbe208624be1e837a8336fc5f0cbe23
+
+pkgname = vim-projectionist
