@@ -7,26 +7,20 @@ url='https://github.com/nschloe/meshio'
 arch=('x86_64')
 license=('MIT')
 depends=('python-numpy' 'python-rich')
-makedepends=('python-build' 'python-pip')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 optdepends=('python-netcdf4' 'python-h5py')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('710af6e4fa2daed144f7fd58690fa6cbd476956d02b453ecae45787eb0bef3e3')
 
 build() {
   cd "meshio-$pkgver"
-  python3 -m build .
+  python3 -m build --wheel --no-isolation
 }
 
 package() {
-  cd "meshio-$pkgver/dist"
-  tar zxf "meshio-$pkgver.tar.gz"
-
   cd "meshio-$pkgver"
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
-  _site=$(/usr/bin/python3 -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')
-  mkdir -p "$pkgdir/$_site/"
-  cp -a "src/meshio" "$pkgdir/$_site"
-  cp -a "src/meshio.egg-info" "$pkgdir/$_site"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
