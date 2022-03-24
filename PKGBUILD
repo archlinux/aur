@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=joker
-pkgver=0.18.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Small Clojure interpreter, linter, and formatter"
 arch=('x86_64')
@@ -10,7 +10,12 @@ license=('EPL')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4d323553a841aa809b0f48a88b3c242b4af865609f8af4c605e17f2b6bf666d4')
+sha256sums=('e7c9b5d464682a57d647484f54d4928d38f372c2cf0e909ae75c95537f769853')
+
+prepare() {
+	cd "$pkgname-$pkgver"
+	go mod download
+}
 
 build() {
 	export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -27,12 +32,12 @@ build() {
 
 check() {
 	cd "$pkgname-$pkgver"
-	go test
+	go test ./...
 }
 
 package() {
 	cd "$pkgname-$pkgver"
 	install -D joker -t "$pkgdir/usr/bin/"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm644 README.md DEVELOPER.md LIBRARIES.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
