@@ -7,13 +7,13 @@ _cranname=DBI
 _cranver=1.1.2
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=3
 pkgdesc="R Database Interface"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(LGPL)
 depends=(r)
-checkdepends=(r-rsqlite r-testthat)
+checkdepends=(r-testthat)
 optdepends=(
     r-blob
     r-covr
