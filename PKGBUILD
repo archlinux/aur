@@ -3,14 +3,14 @@ pkgver=r29.2d1c576
 pkgrel=1
 pkgdesc="A light implementation of the mmap functions (mingw-w64)"
 arch=(any)
-url="https://github.com/dlfcn-win32/dlfcn-win32"
+url="https://github.com/alitrack/mman-win32"
 license=('MIT')
 depends=('mingw-w64-crt')
 makedepends=('mingw-w64-cmake' 'git')
 provides=('mingw-w64-mman-win32')
 conflicts=('mingw-w64-mman-win32')
 options=('!buildflags' '!strip' 'staticlibs')
-source=("git+https://github.com/witwall/mman-win32.git")
+source=("git+https://github.com/alitrack/mman-win32.git")
 sha256sums=(SKIP)
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"      
