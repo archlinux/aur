@@ -1,4 +1,4 @@
-# Maintainer: Imperator Storm <30777770+ImperatorStorm@users.noreply.github.com>
+# Maintainer: Imperator Storm <ImperatorStorm11@protonmail.com>
 # Contributor: Luke Huckman (Darkpelz) <lukeh@outlook.my>
 # Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 # Contributor: fossdd <fossdd@tutanota.com>
@@ -8,20 +8,19 @@
 
 pkgname=tenacity-wxgtk3-git
 pkgver=r1.g0665614b8
-pkgrel=2
-epoch=1
+pkgrel=3
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity - stable wxgtk3"
 arch=(i686 x86_64)
 url="https://tenacityaudio.org"
 license=(GPL2 CCPL)
 groups=(pro-audio)
-depends=(gtk3 wxgtk3 glib2 libid3tag lilv lv2 portsmf suil libmad twolame vamp-plugin-sdk libsoxr
+depends=(wxgtk3 libid3tag lilv portsmf suil libmad twolame vamp-plugin-sdk libsoxr
          soundtouch portaudio portmidi lame jack sdl2)
 makedepends=(git cmake clang libsoup libnotify gstreamer gst-plugins-bad-libs
              ffmpeg4.4 nasm chrpath expat gcc-libs gdk-pixbuf2 glibc
              flac libogg libsndfile libvorbis ffmpeg)
 optdepends=('ffmpeg4.4: additional import/export capabilities')
-provides=(tenacity tenacity-git)
+provides=(tenacity)
 conflicts=(tenacity)
 source=("git+https://git.sr.ht/~tenacity/tenacity")
 sha256sums=('SKIP')
