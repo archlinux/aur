@@ -2,7 +2,7 @@
 # Developer: Ari Archer <ari.web.xyz@gmail.com>
 
 pkgname=kos
-pkgver=0.0.11
+pkgver=0.0.12
 pkgrel=1
 pkgdesc='A simple SUID tool written in C++'
 arch=('x86_64')
@@ -19,7 +19,7 @@ makedepends=('clang'
 install="${pkgname}.install"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TruncatedDinosour/kos/archive/refs/tags/v$pkgver.tar.gz"
     "kos.sysusers")
-sha256sums=('58cb091469ca6f7642fe67efa3b676c5b6e3f44560d4c053c101f69d6c5af7e9'
+sha256sums=('19abe3807a7f810b1fb0a218415eec9bd2e99864a302dcd3204adb71741511c2'
     'c0517250baf3457b4429f24a370711b331945c5cdb23dc983fcd9daf7b73b05c')
 
 build() {
