@@ -1,19 +1,19 @@
 # Maintainer: OpenSorcerer <alex at opensourcery dot eu>
 pkgname=airvpn-suite-bin
 _pkgname=AirVPN-Suite
-pkgver=1.1.0
-_pkgver=1.1
+pkgver=1.2.0
+_pkgver=1.2
 pkgrel=1
 pkgdesc="AirVPN client software collection including Bluetit, Goldcrest and Hummingbird – prebuilt stable"
-arch=('x86_64' 'i686' 'armv7l' 'aarch64')
+arch=('x86_64' 'armv7l' 'aarch64')
 url="https://gitlab.com/AirVPN/$_pkgname"
 license=('GPL3')
-provides=('hummingbird' 'airvpn-suite' 'airvpn-suite-beta-bin')
-conflicts=('hummingbird' 'airvpn-suite' 'airvpn-suite-beta-bin')
-depends=('dbus' 'openssl' 'libxml2' 'xz' 'lz4')
+provides=('hummingbird' 'hummingbird-bin' 'airvpn-suite' 'airvpn-suite-beta-bin')
+conflicts=('hummingbird' 'hummingbird-bin' 'airvpn-suite' 'airvpn-suite-beta-bin')
+depends=('dbus' 'libxml2')
 makedepends=('curl')
 source=("https://eddie.website/repository/$_pkgname/$_pkgver/$_pkgname-$arch-$pkgver.tar.gz")
-sha512sums=(`curl -sLo - https://eddie.website/repository/$_pkgname/$_pkgver/$_pkgname-$arch-$pkgver.tar.gz.sha512|cut -f1 -d " "`)
+sha512sums=(`curl -sLo - "https://eddie.website/repository/$_pkgname/$_pkgver/$_pkgname-$arch-$pkgver.tar.gz.sha512"|cut -f1 -d " "`)
 install="$pkgname.install"
 changelog="Changelog-Suite.txt"
 
@@ -35,9 +35,8 @@ package() {
     install -Dm600 -t "$pkgdir/etc/airvpn/" etc/airvpn/*
 
     # place D-Bus config
-    install -Dm644 etc/dbus-1/system.d/org.airvpn.client.conf "$pkgdir/etc/dbus-1/system.d/org.airvpn.client.conf"
-    install -Dm644 etc/dbus-1/system.d/org.airvpn.server.conf "$pkgdir/etc/dbus-1/system.d/org.airvpn.server.conf"
+    install -Dm644 -t "$pkgdir/etc/dbus-1/system.d/" etc/dbus-1/system.d/*
 
     # place Systemd service
-    install -Dm644 etc/systemd/system/bluetit.service "$pkgdir/etc/systemd/system/bluetit.service"
+    install -Dm644 etc/systemd/system/bluetit.service "$pkgdir/usr/lib/systemd/system/bluetit.service"
 }
