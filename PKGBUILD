@@ -3,7 +3,7 @@
 
 _name=jfrog
 pkgname=jfrog-cli
-pkgver=2.14.0
+pkgver=2.14.1
 pkgrel=1
 pkgdesc="Simple interface to Artifactory, Bintray and Mission Control"
 arch=('x86_64')
@@ -13,11 +13,11 @@ depends=('glibc')
 conflicts=('jfrog-cli-go')
 replaces=('jfrog-cli-go')
 makedepends=('go')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/jfrog/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('a9dfa817f9ab987ca1e4def4cc1f19dc0f2daa96783214c09456e6ff6c272033717abe696d1d720e50ef964ab1fc09b51b684b15e3ed0f88ef38f8145c20ea95')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/jfrog/${pkgname}/archive/v.${pkgver}.tar.gz")
+sha512sums=('f39eccf2b357fa14720f9851af720d8ea4351c4b3f31d34327cd918e1351761d2acf6e8a043b1c5b8bb696126e9c8451eb296055573129443d72d38154346419')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-v.${pkgver}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CXXFLAGS="${CXXFLAGS}"
@@ -27,7 +27,7 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-v.${pkgver}"
   install -vDm 755 ${_name} -t "${pkgdir}/usr/bin/"
   install -vDm 644 {README,RELEASE}.md -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
