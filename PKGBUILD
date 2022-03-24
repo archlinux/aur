@@ -2,9 +2,8 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
-pkgver=3.94.1
+pkgver=3.94.2
 pkgrel=1
-_node_version=16
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
 url="https://tutanota.com"
@@ -15,7 +14,7 @@ makedepends=('nvm')
 source=("https://github.com/tutao/tutanota/archive/$pkgname-release-$pkgver.tar.gz"
         "$pkgname"
         "$pkgname.desktop")
-sha256sums=('cf52f0bc75d19ab208e0b80fc1fbe4a42433206e97956542052163b29de627c0'
+sha256sums=('e07e856f8d16756c97775813f417e441b3c068e237d4ea55b6f1f1e7ef66885a'
             '4f91e842bd92a3312943854383e4929f9baf6cb684a7027aa55edcce1bf4ca16'
             '9a41e5474e1568b13093c91fd54538fe614003f5f5d4f895553f73207c28cb08')
 
@@ -30,8 +29,9 @@ _ensure_local_nvm() {
 }
 
 prepare() {
+  cd "${pkgname%-*}-$pkgname-release-$pkgver"
   _ensure_local_nvm
-  nvm install "$_node_version"
+  nvm install
 }
 
 build() {
