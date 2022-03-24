@@ -2,7 +2,7 @@
 
 pkgname=xdp-tools
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Utilities for use with XDP and libxdp'
 depends=('libelf' 'linux-api-headers' 'libbpf')
 url='https://github.com/xdp-project/xdp-tools'
@@ -34,6 +34,5 @@ package() {
   make install V=1
   pushd "${pkgdir}/usr"
   rm -r share/xdp-tools ## Do not package examples or tests (https://github.com/xdp-project/xdp-tools/issues/134)
-  rm -r lib/bpf/ ## These object-files should not be packaged
   popd
 }
