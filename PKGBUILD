@@ -1,14 +1,14 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=gallery-dl-git
-pkgver=1.19.3.r0.g604d5b8b
+pkgver=1.21.0.r17.gba69fb66
 pkgrel=1
 pkgdesc='Command-line program to download image-galleries and collections from several image hosting sites (git)'
 arch=(any)
 url=https://github.com/mikf/gallery-dl
 license=(GPL2)
 depends=(python python-requests)
-makedepends=(python-setuptools git)
+makedepends=(python-build python-installer python-setuptools python-wheel git)
 optdepends=('ffmpeg: Convert Pixiv Ugoira to WebM'
             'youtube-dl: Download videos'
             'python-pysocks: SOCKS support')
@@ -24,7 +24,7 @@ pkgver() {
 build() {
     cd "${pkgname%-git}"
     make
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 check() {
@@ -33,5 +33,5 @@ check() {
 
 package() {
     cd "${pkgname%-git}"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
