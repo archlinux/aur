@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=verco-bin
-pkgver=6.7.0
+pkgver=6.8.0
 pkgrel=1
 pkgdesc="A simple Git/Mercurial/PlasticSCM tui client based on keyboard shortcuts"
 arch=('x86_64')
@@ -15,8 +15,8 @@ conflicts=("${pkgname%-bin}")
 provides=("${pkgname%-bin}")
 source_x86_64=("$pkgname-$pkgver::$url/releases/download/v$pkgver/${pkgname%-bin}-linux-x86_64"
                "$pkgname-$pkgver-README.md::$url/raw/v$pkgver/README.md")
-sha512sums_x86_64=('56ab8b1605f94bd4f004e058f3a19ef622fbe83dabf3e5e2896db08b3bda8ad8416f947d4553a4f64510e460c7427f20471d75438fe08ab4e1a1298adcfa8e6b'
-                   '4cfc35ac4effeb37d8ce98721053f45fde89b75f5a561be2ac9bca08ebfef60173ce62f9668fd2032c1e8ac718cd36bc855ba38a17bd4b966989f283867b6801')
+sha512sums_x86_64=('46ac109070d7ecea79bdaf7806273789de5e429a69b53d4eb94929c7561e0a8c3d26cee4f84378a843b3ccb4bcda209cc53fc5062ded13e9540bfb0215e47920'
+                   '1bcc1c1e0ea31986d4bf74ff31626b70d64864a559d46619481469dc771643936fc4d9fc16fab279ea396f010e32ff3b1c46cdf3cf1028d5e7c0c67c78effad1')
 
 package() {
   install -Dm 755 "$pkgname-$pkgver" "${pkgdir}/usr/bin/${pkgname%-bin}"

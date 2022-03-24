@@ -1,6 +1,6 @@
 pkgbase = verco-bin
 	pkgdesc = A simple Git/Mercurial/PlasticSCM tui client based on keyboard shortcuts
-	pkgver = 6.7.0
+	pkgver = 6.8.0
 	pkgrel = 1
 	url = https://github.com/vamolessa/verco
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = verco-bin
 	optdepends = mercurial: support for mercurial repositories
 	provides = verco
 	conflicts = verco
-	source_x86_64 = verco-bin-6.7.0::https://github.com/vamolessa/verco/releases/download/v6.7.0/verco-linux-x86_64
-	source_x86_64 = verco-bin-6.7.0-README.md::https://github.com/vamolessa/verco/raw/v6.7.0/README.md
-	sha512sums_x86_64 = 56ab8b1605f94bd4f004e058f3a19ef622fbe83dabf3e5e2896db08b3bda8ad8416f947d4553a4f64510e460c7427f20471d75438fe08ab4e1a1298adcfa8e6b
-	sha512sums_x86_64 = 4cfc35ac4effeb37d8ce98721053f45fde89b75f5a561be2ac9bca08ebfef60173ce62f9668fd2032c1e8ac718cd36bc855ba38a17bd4b966989f283867b6801
+	source_x86_64 = verco-bin-6.8.0::https://github.com/vamolessa/verco/releases/download/v6.8.0/verco-linux-x86_64
+	source_x86_64 = verco-bin-6.8.0-README.md::https://github.com/vamolessa/verco/raw/v6.8.0/README.md
+	sha512sums_x86_64 = 46ac109070d7ecea79bdaf7806273789de5e429a69b53d4eb94929c7561e0a8c3d26cee4f84378a843b3ccb4bcda209cc53fc5062ded13e9540bfb0215e47920
+	sha512sums_x86_64 = 1bcc1c1e0ea31986d4bf74ff31626b70d64864a559d46619481469dc771643936fc4d9fc16fab279ea396f010e32ff3b1c46cdf3cf1028d5e7c0c67c78effad1
 
 pkgname = verco-bin
