@@ -1,6 +1,6 @@
 pkgbase = openvino-git
 	pkgdesc = A toolkit for developing artificial inteligence and deep learning applications (git version)
-	pkgver = 2021.4.2.r2181.g738a571742
+	pkgver = 2022.1.0.dev20220316.r194.ga63e2080e1
 	pkgrel = 1
 	url = https://docs.openvinotoolkit.org/
 	arch = x86_64
@@ -35,7 +35,6 @@ pkgbase = openvino-git
 	conflicts = intel-openvino-git
 	replaces = intel-openvino-git
 	options = !emptydirs
-	options = !lto
 	source = git+https://github.com/openvinotoolkit/openvino.git
 	source = oneDNN-openvinotoolkit::git+https://github.com/openvinotoolkit/oneDNN.git
 	source = git+https://github.com/herumi/xbyak.git

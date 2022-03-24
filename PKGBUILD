@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=openvino-git
-pkgver=2021.4.2.r2181.g738a571742
+pkgver=2022.1.0.dev20220316.r194.ga63e2080e1
 pkgrel=1
 pkgdesc='A toolkit for developing artificial inteligence and deep learning applications (git version)'
 arch=('x86_64')
@@ -24,7 +24,7 @@ makedepends=('git' 'git-lfs' 'cmake' 'intel-compute-runtime' 'libusb' 'ocl-icd' 
 provides=('openvino' 'intel-openvino-git')
 conflicts=('openvino' 'intel-openvino-git')
 replaces=('intel-openvino-git')
-options=('!emptydirs' '!lto')
+options=('!emptydirs')
 source=('git+https://github.com/openvinotoolkit/openvino.git'
         'oneDNN-openvinotoolkit'::'git+https://github.com/openvinotoolkit/oneDNN.git'
         'git+https://github.com/herumi/xbyak.git'
@@ -134,6 +134,7 @@ build() {
         -DENABLE_CLANG_FORMAT:BOOL='OFF' \
         -DENABLE_NCC_STYLE:BOOL='OFF' \
         -DENABLE_SYSTEM_PROTOBUF:BOOL='ON' \
+        -DENABLE_ONEDNN_FOR_GPU:BOOL='OFF' \
         -DTREAT_WARNING_AS_ERROR:BOOL='OFF' \
         -Wno-dev
     make -C build
@@ -148,10 +149,11 @@ package() {
     local _gnasover_full
     local _gnadir="${pkgdir}/opt/intel/openvino/runtime/lib/intel64"
     _gnaver="$(find openvino/temp -maxdepth 1 -type d -name 'gna_*' | sed 's/.*_//')"
-    _gnasover="$(find "$_gnadir" -type f -regextype 'posix-basic' -regex '.*/libgna\.so\.[0-9]*$' | sed 's/.*\.//')"
-    _gnasover_full="$(find "$_gnadir" -type f -regextype 'posix-basic' -regex '.*/libgna\.so\.[0-9]*\..*' | sed 's/.*\.so\.//')"
+    _gnasover="$(find -L "$_gnadir" -type f -regextype 'posix-basic' -regex '.*/libgna\.so\.[0-9]*$' | sed 's/.*\.//')"
+    _gnasover_full="$(find -L "$_gnadir" -type f -regextype 'posix-basic' -regex '.*/libgna\.so\.[0-9]*\..*' | sed 's/.*\.so\.//')"
     
-    rm "${_gnadir}/libgna.so"{,".${_gnasover}"}
+    rm "${_gnadir}/libgna.so."{"${_gnasover}","${_gnasover_full}"}
+    mv "${_gnadir}/libgna.so"{,."${_gnasover_full}"}
     ln -s "libgna.so.${_gnasover_full}" "${_gnadir}/libgna.so.${_gnasover}"
     ln -s "libgna.so.${_gnasover}" "${_gnadir}/libgna.so"
     
