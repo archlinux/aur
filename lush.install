@@ -1,0 +1,3 @@
+post_install() {
+	echo ':: You must enable termguicolors for this plugin to work.'
+}
