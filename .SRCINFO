@@ -1,0 +1,18 @@
+pkgbase = krunner-firefox-git
+	pkgdesc = Launch Firefox profiles from Krunner and your normal launcher.
+	pkgver = r102.b9215bc
+	pkgrel = 1
+	url = https://github.com/alex1701c/krunner-firefox
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = kcmutils
+	depends = firefox
+	optdepends = proxychains-ng: Launch specific profiles over a proxy
+	source = krunner-firefox-git::git+https://github.com/alex1701c/krunner-firefox.git
+	source = private_browsing_firefox.svg
+	sha256sums = SKIP
+	sha256sums = fd7611210dc81105c6b8c92f77f332549f697c61efa6d5dd9e60eaff2dc8d067
+
+pkgname = krunner-firefox-git
