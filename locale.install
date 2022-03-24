@@ -1,0 +1,12 @@
+post_install() {
+	locale-gen
+}
+
+post_upgrade() {
+	locale-gen
+}
+
+post_remove() {
+	localedef --quiet --delete-from-archive "en_ZZ"
+	localedef --quiet --delete-from-archive "zh_ZZ"
+}

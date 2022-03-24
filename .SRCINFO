@@ -1,12 +1,13 @@
 pkgbase = locale-mul_zz
 	pkgdesc = Multiple locales following UTC, UTF-8, and ISO 8601
 	pkgver = 2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/0h7z/locale
+	install = locale.install
 	arch = any
 	license = AGPL3
 	depends = glibc
-	source = locale-mul_zz-v2.0-rc2.tar.gz::https://github.com/0h7z/locale/archive/v2.0-rc2.tar.gz
+	source = locale-mul_zz-v2.0-rc3.tar.gz::https://github.com/0h7z/locale/archive/v2.0-rc3.tar.gz
 	sha256sums = SKIP
 
 pkgname = locale-mul_zz
