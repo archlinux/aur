@@ -2,21 +2,21 @@
 
 pkgname=webviewer
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimal display of a website. Useful for web versions of messengers."
 arch=('any')
 url="https://github.com/LeAlex27/webviewer"
 license=('GPL3')
 depends=('pyside6' 'qt6-webengine')
-makedepends=('qt6-base' 'python-setuptools' 'python-build' 'wget')
+makedepends=('qt6-base' 'python-setuptools' 'python-build' 'wget' 'gendesk')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/LeAlex27/$pkgname/archive/refs/tags/$pkgver.tar.gz")
 
 sha256sums=('5da83be3a8c7c52aaae3064983a288d8e25b851ceb54c26e18b3540c6f730b25')
 
 # uncomment to generate .desktop files
-#_whatsapp_web=1
-#_threema_web=1
-#_android_messages=1
+_whatsapp_web=1
+_threema_web=1
+_android_messages=1
 
 prepare() {
     # Todo: add qt material color scheme to files
@@ -36,7 +36,7 @@ prepare() {
     if [ -n "$_android_messages" ]; then
         wget "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Google_Messages_logo.svg/600px-Google_Messages_logo.svg.png"
         gendesk --pkgname "android_messages" --name "Android Messages" --categories "Network;InstantMessaging" \
-        --exec "python -m webviewer --storage-name android_messages https://messages.google.com"
+        --exec "python -m webviewer --storage-name android_messages https://messages.google.com/web/authentication"
     fi
 }
 
