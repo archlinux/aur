@@ -11,7 +11,7 @@ license=('MIT')
 depends=()
 makedepends=(git)                 
 source=("https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
-sha256sums=('4ecef0ec1fb5b5f7d826fe6f5c69104ecabc52edb03f81ba7c98a42db5c5fe82')
+sha256sums=('be4b20fde27b10016d3f1ee4c77826546538c52fceeca046c5d2f3623a2bd6b7')
 
 package() {
   install -Dm775 usr/bin/* -g wheel -o ${USER} -t "${pkgdir}/usr/bin/"
