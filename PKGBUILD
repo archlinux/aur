@@ -2,7 +2,7 @@
 pkgname=python-mujoco-py
 _name=${pkgname#python-}
 pkgver=2.1.2.14
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface to the MuJoCo physics engine"
 arch=('x86_64')
 url="https://github.com/openai/mujoco-py"
