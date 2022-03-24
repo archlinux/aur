@@ -3,9 +3,9 @@
 # shellcheck disable=SC2154
 # Maintainer: Matheus Gabriel Werny de Lima <matheusgwdl@protonmail.com>
 
-pkgname=btcpayserver
-pkgver=1.4.7
-pkgrel=1
+pkgname="btcpayserver"
+pkgver="1.4.7"
+pkgrel="1"
 pkgdesc="Accept Bitcoin payments. Free, open-source and self-hosted Bitcoin payment processor."
 arch=("any")
 url="https://github.com/btcpayserver/${pkgname}"
@@ -21,7 +21,7 @@ optdepends=("apache: HTTP server"
 "postgresql: Database"
 "sqlite: Database")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=("292ca5faee3da49962ec7324ac2e5987a7a98ffa332e3b9fa5c45ce60d1b7c3e")
+sha512sums=("fc47a6d2fc454a6e492d249e1b6b6af078c5bc0698b1f6659e12c03f32e9004fa4700d37e38cd35de159a2a61f3b82e8b0bd89608632dab8a514dcd3cc5c660a")
 
 build()
 {
@@ -40,12 +40,13 @@ package()
     cp -r "${srcdir}"/"${pkgname}"-"${pkgver}"/* "${pkgdir}"/usr/share/webapps/"${pkgname}"/
 
     ## Create an executable.
-    echo -e "#!/bin/bash
-dotnet run --no-launch-profile --no-build -c Release --project \"/usr/share/webapps/${pkgname}/BTCPayServer/BTCPayServer.csproj\" -- \"\${@}\"" > "${pkgdir}"/usr/bin/"${pkgname}"
+    echo -e "#!/bin/bash\ndotnet run --no-launch-profile --no-build -c Release --project \"/usr/share/webapps/${pkgname}/BTCPayServer/BTCPayServer.csproj\" -- \"\${@}\"" > "${pkgdir}"/usr/bin/"${pkgname}"
     chmod 755 "${pkgdir}"/usr/bin/"${pkgname}"
 
     # Install the documentation.
     install -Dm644 "${srcdir}"/"${pkgname}"-"${pkgver}"/README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    cp -r "${srcdir}"/"${pkgname}"-"${pkgver}"/docs/* "${pkgdir}"/usr/share/doc/"${pkgname}"/
+    chmod -R 644 "${pkgdir}"/usr/share/doc/"${pkgname}"/
 
     # Install the license.
     install -Dm644 "${srcdir}"/"${pkgname}"-"${pkgver}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/

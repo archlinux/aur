@@ -18,7 +18,7 @@ Information on the lightning connection string can be found [here](https://githu
 ### LND
 1. `lnd` as a private key needs to be generated.
 2. `lncli create` and create your necessary wallet or restore an existing one.
-3. `sudo nano /etc/bitcoin/bitcoin.conf` and add the following parameters so that they are used and not applied to a mode which is not running.
+3. `sudo nano /etc/bitcoin/bitcoin.conf` and add the following settings.
 ```
 zmqpubrawblock=tcp://127.0.0.1:28332
 zmqpubrawtx=tcp://127.0.0.1:28333
@@ -32,7 +32,7 @@ zmqpubrawtx=tcp://127.0.0.1:28333
 * Finally, all software needs to be run. The following shows how to run the software and its dependencies with `tmux`.
 * Start:
 ```
-tmux new-session -s c-lightning -d "lightningd --network=bitcoin --bitcoin-rpcuser=USERNAME --bitcoin-rpcpassword=PASSWORD --log-level=info --rpc-file=/home/USERNAME/.lightning/lightning-rpc;bash -i"
+tmux new-session -s c-lightning -d "lightningd --network=bitcoin --bitcoin-rpcuser=USERNAME --bitcoin-rpcpassword=PASSWORD --rpc-file=/home/USERNAME/.lightning/lightning-rpc --log-level=info;bash -i"
 ```
 or
 ```
