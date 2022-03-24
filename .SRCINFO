@@ -13,7 +13,7 @@ pkgbase = lua-posix-git
 	makedepends = lua52
 	makedepends = lua51
 	makedepends = luarocks
-	source = git://github.com/luaposix/luaposix.git
+	source = git+https://github.com/luaposix/luaposix.git
 	sha256sums = SKIP
 
 pkgname = lua-posix-git
@@ -39,4 +39,3 @@ pkgname = lua51-posix-git
 	depends = lua51-std-normalize
 	provides = lua51-posix
 	conflicts = lua51-posix
-

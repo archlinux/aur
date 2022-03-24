@@ -20,7 +20,7 @@ url="https://github.com/$_pkgbase/$_pkgbase"
 license=('MIT')
 makedepends=('git' 'ldoc' 'lua' 'lua53' 'lua52' 'lua51' 'luarocks')
 _lua_deps=('std-normalize')
-source=("git://github.com/$_pkgbase/$_pkgbase.git")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
