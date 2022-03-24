@@ -3,7 +3,7 @@
 # Maintainer: PumpkinCheshire <sollyonzou@gmail.com>
 
 pkgname=rife-ncnn-vulkan-bin
-pkgver=20220228
+pkgver=20220318
 pkgrel=1
 pkgdesc="RIFE, Real-Time Intermediate Flow Estimation for Video Frame Interpolation implemented with ncnn library."
 arch=('x86_64')
@@ -15,8 +15,8 @@ provides=("rife-ncnn-vulkan")
 conflicts=("rife-ncnn-vulkan" "rife-ncnn-vulkan-git")
 source=("https://github.com/nihui/${pkgname%-bin}/releases/download/$pkgver/${pkgname%-bin}-$pkgver-ubuntu.zip"
 	"${pkgname%-bin}")
-sha256sums=('2da5a67b19fad44be1efb9a61aac2f4aaee45641c4de6ebeb3d15909495a0b6f'
-	'b03d4c8f60da19482786958fc691cbbd045487c876489bcff2de58dc7a942100')
+sha256sums=('e0a3e87f5452b356852ab47b73b4bb6d391eb17d4c33b84fb45c0b1a78a51c16'
+            '3a8cbe61dcfa39db32235c1a9ccf0fdf2057d739d655f1433483bfebf4b61541')
 
 package() {
 	install -Dm755 ${pkgname%-bin} "$pkgdir/usr/bin/${pkgname%-bin}"

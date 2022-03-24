@@ -5,7 +5,7 @@ readonly default_model_path
 
 args=""
 
-while getopts "hv0:1:i:o:m:g:j:x:u:f:" arg; do
+while getopts "hv0:1:i:o:m:g:j:xuf:" arg; do
     case $arg in
     h) args="$args -$arg" ;;
     v) args="$args -$arg" ;;
@@ -22,8 +22,8 @@ while getopts "hv0:1:i:o:m:g:j:x:u:f:" arg; do
         ;;
     g) args="$args -$arg $OPTARG" ;;
     j) args="$args -$arg $OPTARG" ;;
-    x) args="$args -$arg $OPTARG" ;;
-    u) args="$args -$arg $OPTARG" ;;
+    x) args="$args -$arg" ;;
+    u) args="$args -$arg" ;;
     f) args="$args -$arg $OPTARG" ;;
     *) exit ;;
     esac
