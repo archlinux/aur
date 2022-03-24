@@ -1,5 +1,13 @@
 Changelog for AirVPN Suite
 
+Version 1.2.0 - 22 March 2022
+
+- [ProMIND] production release
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
 Version 1.2.0 RC 3 - 17 March 2022
 
 - [ProMIND] updated to OpenVPN3 AirVPN 3.8.1
