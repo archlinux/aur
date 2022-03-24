@@ -2,7 +2,7 @@
 
 pkgname=around
 pkgver=0.59.35
-pkgrel=1
+pkgrel=2
 pkgdesc="Video conferencing with AI-based camera framing."
 arch=('x86_64')
 url='https://www.around.co/'
@@ -13,7 +13,7 @@ _appimage="Around.AppImage"
 _icon="62425723"
 source=("https://downloads.around.co/${_appimage}" "https://avatars.githubusercontent.com/u/${_icon}")
 noextract=("${_appimage}")
-sha256sums=("4681b21f6de1a852cc162ec3e60e7a9c54206e4132fca4c9cf4534d53c44e275" "4707fb49bf3a54dae37a2bd1ea9eb2b634db56ad896670c9255d49548a18a79b")
+sha256sums=("4681b21f6de1a852cc162ec3e60e7a9c54206e4132fca4c9cf4534d53c44e275" "60d9081bbf0cfc6af58973d54e68c286d7ac3b21e875fef8f811c5114f34c7dc")
 prepare() {
     cat > "${srcdir}/${pkgname}.desktop" <<EOL
 [Desktop Entry]
