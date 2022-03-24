@@ -1,4 +1,4 @@
-# Maintainer: m4dz <code(at)m4dz(dot)net>
+# Maintainer: Oleksandr Hrynchuk from Ukraine
 
 pkgname=cnijfilter2-g3010
 pkgver=5.60
