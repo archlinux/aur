@@ -7,7 +7,7 @@ _upstreamver=$(date +%Y%m%d)
 _pkgname=$(tr A-Z a-z <<< ${_repo##*/})
 
 pkgbase=$_pkgname
-pkgname=$_pkgname-git
+pkgname=$_pkgname
 pkgver=${_upstreamver##v}
 pkgrel=1
 pkgdesc="$(gh repo view --json description -q .description $_repo)"
