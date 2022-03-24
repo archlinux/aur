@@ -32,11 +32,13 @@ makedepends=('go-pie' 'perl' 'git')
 depends=('glibc')
 source=("git+$url.git"
         "psiphon.conf"
-        "psiphon.service")
+        "psiphon.service"
+        "make.bash")
 backup=('etc/psiphon.conf' 'usr/lib/systemd/user/psiphon.service')
 sha256sums=('SKIP'
          'c2c414831ad29bdeecd00313c473fbaa448f4750e70df1c10e863870bde179aa'
-         'd0227e69cac62480951e9c83747d43fccd7bdd18224652428ab20369b84173aa')
+         'd0227e69cac62480951e9c83747d43fccd7bdd18224652428ab20369b84173aa'
+         'SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -47,45 +49,18 @@ pkgver() {
 }
 
 build() {
+  
+  export GOPATH=$(pwd)
+  
+  mkdir -p "${GOPATH}/src/github.com/Psiphon-Labs"
+  
+  ln -sf  "../../../$_pkgname/" "src/github.com/Psiphon-Labs/psiphon-tunnel-core"
+  
+  cp "$srcdir/make.bash" "$_pkgname/ConsoleClient/"
+  
   cd "$_pkgname/ConsoleClient"
   
-  
-  # Copied from the README file
-  EXE_BASENAME="psiphon-tunnel-core"
-  BUILDINFOFILE="${EXE_BASENAME}_buildinfo.txt"
-  BUILDDATE=$(date --iso-8601=seconds)
-  BUILDREPO=$(git config --get remote.origin.url)
-  BUILDREV=$(git rev-parse --short HEAD)
-  GOVERSION=$(go version | perl -ne '/go version (.*?) / && print $1')
-  DEPENDENCIES=$(echo -n "{" && GOOS=$1 go list -tags "${BUILD_TAGS}" -f '{{range $dep := .Deps}}{{printf "%s\n" $dep}}{{end}}' | GOOS=$1 xargs go list -tags "${BUILD_TAGS}" -f '{{if not .Standard}}{{.ImportPath}}{{end}}' | xargs -I pkg bash -c 'cd $GOPATH/src/$0 && if echo -n "$0" | grep -vEq "^github.com/Psiphon-Labs/psiphon-tunnel-core/" ; then echo -n "\"$0\":\"$(git rev-parse --short HEAD)\"," ; fi' pkg | sed 's/,$//' | tr -d '\n' && echo -n "}")
-  
-
-  PKG_LDFLAGS="\
--X github.com/Psiphon-Labs/psiphon-tunnel-core/psiphon/common/buildinfo.buildDate=$BUILDDATE \
--X github.com/Psiphon-Labs/psiphon-tunnel-core/psiphon/common/buildinfo.buildRepo=$BUILDREPO \
--X github.com/Psiphon-Labs/psiphon-tunnel-core/psiphon/common/buildinfo.buildRev=$BUILDREV \
--X github.com/Psiphon-Labs/psiphon-tunnel-core/psiphon/common/buildinfo.goVersion=$GOVERSION \
--X github.com/Psiphon-Labs/psiphon-tunnel-core/psiphon/common/buildinfo.dependencies=$DEPENDENCIES \
--s -w
-"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-
-  echo -e "${BUILDDATE}\n${BUILDREPO}\n${BUILDREV}\n" > $BUILDINFOFILE
-
-  if [ ! -d bin ]; then
-    mkdir bin
-  fi
-  
-  GOOS=linux GOARCH=amd64 go build -v -x -buildmode=pie -trimpath -ldflags "-linkmode external ${PKG_LDFLAGS}" -tags "${BUILD_TAGS}" -o $_pkgname
-  RETVAL=$?
-  if [ $RETVAL != 0 ]; then
-    echo "....gox failed, exiting"
-    exit $RETVAL
-  fi
-  unset RETVAL
+  ./make.bash linux
 
   # TODO: Figure out how to do the stripping?
   # https://wiki.archlinux.org/index.php/Go_package_guidelines#Flags_and_build_options
@@ -94,7 +69,7 @@ build() {
 
 package() {
   cd $_pkgname/ConsoleClient/
-  install -Dm755 $_pkgname "$pkgdir/usr/bin/$_pkgname"
+  install -Dm755 "bin/linux/$_pkgname-x86_64" "$pkgdir/usr/bin/$_pkgname"
   install -Dm644 "$srcdir/psiphon.conf" "$pkgdir/etc/psiphon.conf"
   install -Dm644 "$srcdir/psiphon.service" "$pkgdir/usr/lib/systemd/user/psiphon.service"
 }
