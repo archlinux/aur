@@ -2,12 +2,12 @@
 _pkgname="magic-wormhole.rs"
 pkgname="wormhole-rs"
 pkgver="0.4.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Rust implementation of Magic Wormhole, with new features and enhancements"
 arch=('x86_64')
 url="https://github.com/magic-wormhole/$_pkgname"
 license=('EUPL-1.2+')
-# depends=('fuse2')
+depends=('libxcb')
 makedepends=('cargo')
 # optdepends=('bash-completion: Bash completion')
 source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz")
