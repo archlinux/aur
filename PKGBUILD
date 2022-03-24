@@ -3,7 +3,7 @@
 pkgname=apipost-bin
 _pkgname=${pkgname%-bin}
 _pathname=ApiPost6
-pkgver=6.0.2
+pkgver=6.0.3
 pkgrel=1
 pkgdesc="An API debugging and management tool that supports team collaboration and can generate documents directly."
 arch=('x86_64')
@@ -16,7 +16,7 @@ conflicts=("${_pkgname}")
 source=("${_pkgname}.sh"
         "${_pkgname}-${pkgver}.deb::https://www.apipost.cn/dl.php?client=Linux&arch=x64")
 sha256sums=('86e2ab737e7d10fe86a91c0039a1928eb53daa0e75c8389694188febb8d0d44d'
-            'ba79079d5ef74314faa48101ce12321747065c819b4de63a8abff9f723b06de7')
+            '2a853105cbb74134ec2feb200f1bac2529f9687b0e6b7bea12d787e7a80855b4')
 
 _install() {
   find ${@: 2} -type f -exec install -Dm$1 {} ${pkgdir}/{} \;
