@@ -1,6 +1,6 @@
 pkgbase = wolframengine
 	pkgdesc = Free Wolfram Engine(TM) for Developers
-	pkgver = 13.0.0
+	pkgver = 13.0.1
 	pkgrel = 1
 	url = https://www.wolfram.com/engine/
 	arch = x86_64
@@ -43,9 +43,9 @@ pkgbase = wolframengine
 	optdepends = tiled
 	optdepends = tre
 	provides = wolframscript
-	noextract = WolframEngine_13.0.0_LINUX.sh
+	noextract = WolframEngine_13.0.1_LINUX.sh
 	options = !strip
-	source = WolframEngine_13.0.0_LINUX.sh::https://account.wolfram.com/download/public/wolfram-engine/desktop/LINUX
-	sha256sums = 38783c9334944aa7ae095d216c934e145edce7eb06361c85f89ddef429e59781
+	source = WolframEngine_13.0.1_LINUX.sh::https://account.wolfram.com/download/public/wolfram-engine/desktop/LINUX
+	sha256sums = eae1aed084390e2b440401650e4a81567d9904c22e85330f2002d450da893de7
 
 pkgname = wolframengine
