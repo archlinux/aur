@@ -3,7 +3,7 @@
 
 pkgname=minizip-git
 pkgdesc="Fork of the popular zip manipulation library found in the zlib distribution."
-pkgver=3.0.5.r0.gf3d400e
+pkgver=3.0.5.r1.g024a1d4
 pkgrel=1
 arch=('x86_64')
 license=('zlib')
