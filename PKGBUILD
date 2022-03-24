@@ -2,13 +2,13 @@
 
 _pkgname="nm-vpngate"
 pkgname="${_pkgname}-git"
-pkgver=r67.9efc8b9
+pkgver=r87.49fdf34
 pkgrel=1
 pkgdesc="A script that makes it easy to connect Network Manager to a VPN Gate"
 arch=('any')
 url="https://github.com/Hayao0819/nm-vpngate"
 license=('WTFPL')
-depends=("networkmanager" "networkmanager-openvpn" "networkmanager-strongswan" "zenity")
+depends=("networkmanager" "networkmanager-openvpn" "networkmanager-strongswan" "zenity" "networkmanager-l2tp")
 makedepends=('git')
 source=("git+${url}.git")
 md5sums=('SKIP')

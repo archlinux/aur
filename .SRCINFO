@@ -1,6 +1,6 @@
 pkgbase = nm-vpngate-git
 	pkgdesc = A script that makes it easy to connect Network Manager to a VPN Gate
-	pkgver = r67.9efc8b9
+	pkgver = r35.6715ade
 	pkgrel = 1
 	url = https://github.com/Hayao0819/nm-vpngate
 	install = nm-vpngate.install
@@ -11,6 +11,7 @@ pkgbase = nm-vpngate-git
 	depends = networkmanager-openvpn
 	depends = networkmanager-strongswan
 	depends = zenity
+	depends = networkmanager-l2tp
 	source = git+https://github.com/Hayao0819/nm-vpngate.git
 	md5sums = SKIP
 
