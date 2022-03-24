@@ -7,13 +7,12 @@ _majorver='18'
 _fullver='18'
 _buildver='36'
 pkgver="${_fullver}.u${_buildver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Java OpenJDK ${_fullver} Oracle Build."
 arch=('x86_64')
 url="https://jdk.java.net/${_majorver}"
 license=('GPL2')
 depends=('java-environment-common' 'java-runtime-common' 'ca-certificates-utils' 'nss')
-conflicts=("jre-openjdk>=${_majorver}" "jre-openjdk-headless>=${_majorver}" "jdk-openjdk>=${_majorver}")
 provides=(
     "java-environment=${_majorver}" 
     "java-environment-openjdk=${_majorver}"
@@ -25,7 +24,7 @@ provides=(
 source=("https://download.java.net/java/GA/jdk${_fullver}/43f95e8614114aeaa8e8a5fcf20a682d/${_buildver}/GPL/openjdk-${_fullver}_linux-x64_bin.tar.gz")
 sha256sums=('0f60aef7b8504983d6e374fe94d09a7bedcf05ec559e812d801a33bd4ebd23d0')
 
-_jvmdir="usr/lib/jvm/java-${_majorver}-openjdk"
+_jvmdir="usr/lib/jvm/java-${_majorver}-openjdk-bin"
 
 package() {
     # Install

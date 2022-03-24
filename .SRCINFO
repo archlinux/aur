@@ -1,7 +1,7 @@
 pkgbase = java-openjdk-bin
 	pkgdesc = Java OpenJDK 18 Oracle Build.
 	pkgver = 18.u36
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jdk.java.net/18
 	arch = x86_64
 	license = GPL2
@@ -15,9 +15,6 @@ pkgbase = java-openjdk-bin
 	provides = java-runtime-openjdk=18
 	provides = java-runtime-headless=18
 	provides = java-runtime-headless-openjdk=18
-	conflicts = jre-openjdk>=18
-	conflicts = jre-openjdk-headless>=18
-	conflicts = jdk-openjdk>=18
 	source = https://download.java.net/java/GA/jdk18/43f95e8614114aeaa8e8a5fcf20a682d/36/GPL/openjdk-18_linux-x64_bin.tar.gz
 	sha256sums = 0f60aef7b8504983d6e374fe94d09a7bedcf05ec559e812d801a33bd4ebd23d0
 
