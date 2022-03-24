@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _cranname=RSQLite
-_cranver=2.2.10
+_cranver=2.2.11
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -16,10 +16,9 @@ depends=(
     r-memoise
     r-pkgconfig
     r-rcpp
-    r-plogr
     sqlite
 )
-makedepends=(boost)
+makedepends=(boost r-plogr)
 checkdepends=(r-dbitest r-testthat)
 optdepends=(
     r-callr
@@ -34,7 +33,7 @@ optdepends=(
     r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('06aeff33902082ef1ebd5378cd0927df7922aaf377c78acfdd8f34f2888800a8')
+sha256sums=('bbd3ffc91a7a1b885a3a6d03ff443ccd19b9d4bf67d8ad6f138dbe7f31caaa86')
 
 prepare() {
   cd "${_cranname}"
@@ -45,7 +44,7 @@ prepare() {
 
   # build against system sqlite and use system boost headers
   sed -i -e 's|PKG_LIBS = vendor/sqlite3/sqlite3.o|PKG_LIBS = -lsqlite3|' \
-      -e 's/ -Ivendor//' \
+      -e 's| -Ivendor -Ivendor/extensions -Ivendor/sqlite3||' \
       src/Makevars
   sed -i 's|"vendor/sqlite3/sqlite3.h"|<sqlite3.h>|' src/{import-file.c,sqlite3-cpp.h}
 
