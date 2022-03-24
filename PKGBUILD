@@ -23,7 +23,7 @@ source_armv6h=(${pkgname}-${pkgver}-armv6h::"${_url}/${pkgver//_/-}/frpc_linux_a
 # disbale strip
 # => strip: error: the input file './usr/bin/sakura-frpc' has no sections
 options=('!strip')
-md5sums=('b9fb6d2fc1b0f5733e98e9fa15d7a2c1'
+md5sums=('SKIP'
          '217dc59018558a2ae6fcb98da968b022'
          '2a0bc53302d2ab06b2bcee826d10c727'
          '136ace6ea106819f10ee785b56825e4e'
