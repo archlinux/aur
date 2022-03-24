@@ -23,4 +23,4 @@ source=("https://github.com/3JlOy-PYCCKUi/kotatogram-desktop-betaAUR/releases/do
 package() {
 	tar -xaf "$srcdir/${_pkgname}-${pkgver}-${_pkgrel}-x86_64.pkg.tar.zst" -C "$pkgdir" --exclude=".*"
 }
-b2sums=('1b4ef7f04a28391527bfdea2de6db40fcc2202432b4cc7a3491387c21136320db69a8c3c73aa608ad254822f08404942764f50a06aa4272e6873e75635959810')
+b2sums=('bc496b1f7cc30375a7a5665bd92cdd0b492cf65a1eaffc69398d8683e14fe9510a128d4722383feca1ee0c4a7f4e9bd634d0fe6e07f03e4b02b2cb6add93e2ba')
