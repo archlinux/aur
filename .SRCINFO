@@ -6,10 +6,11 @@ pkgbase = xclicker
 	arch = x86_64
 	arch = aarch64
 	license = GPL-3.0
-	makedepends = git
 	makedepends = meson
 	makedepends = libx11
 	makedepends = libxi
+	makedepends = libxtst
+	makedepends = pkgconf
 	source = https://github.com/robiot/xclicker/archive/refs/tags/v1.3.2.tar.gz
 	sha512sums = SKIP
 
