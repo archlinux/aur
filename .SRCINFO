@@ -1,0 +1,16 @@
+pkgbase = passes
+	pkgdesc = A digital pass manager
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/pablo-s/passes
+	arch = any
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	depends = gtk4
+	depends = libadwaita
+	depends = python-qrcode
+	source = https://github.com/pablo-s/passes/archive/v0.2.tar.gz
+	b2sums = b36ea982b617927131b08fb54270b299dcce9919ce35e3c70039e8d0c0621d95adc92bd09eeeb46f75dacdc7ca475a1218c4f4e59fcfbfaff73a6ce945736456
+
+pkgname = passes
