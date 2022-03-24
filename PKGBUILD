@@ -6,14 +6,15 @@
 
 pkgname=gdk-pixbuf
 pkgver=0.22.0
-pkgrel=12
+pkgrel=13
 pkgdesc="Image loading and manipulation library"
 arch=('i686' 'x86_64')
 url="http://www.gtk.org/"
 license=('GPL' 'LGPL')
 depends=('gtk' 'libtiff' 'libpng')
 makedepends=('libxt')
-source=(ftp://ftp.gnome.org/pub/gnome/sources/${pkgname}/0.22/${pkgname}-${pkgver}.tar.bz2
+#source=(ftp://ftp.gnome.org/pub/gnome/sources/${pkgname}/0.22/${pkgname}-${pkgver}.tar.bz2
+source=(https://download.gnome.org/sources/${pkgname}/${pkgver%%.0}/${pkgname}-${pkgver}.tar.bz2
 	gdk-pixbuf-0.22.0-bmp_reject_corrupt.patch
 	gdk-pixbuf-0.22.0-bmp_secure.patch
 	gdk-pixbuf-0.22.0-loaders.patch
@@ -41,6 +42,8 @@ build() {
   libtoolize --force --copy --automake
   autoreconf --force --install
   ./configure --prefix=/usr --disable-gtk-doc
+  # Fight unused direct deps
+  sed -i -e "s| -shared | $LDFLAGS\0 |g" libtool
   make
 }
 
