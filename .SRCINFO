@@ -1,0 +1,14 @@
+pkgbase = python-pytorch-influence-functions
+	pkgdesc = PyTorch reimplementation of Influence Functions
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/nimarb/pytorch_influence_functions
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = python-setuptools
+	depends = python-pytorch
+	source = https://files.pythonhosted.org/packages/source/p/pytorch_influence_functions/pytorch_influence_functions-0.1.1.tar.gz
+	b2sums = 1583d8153f16ed204b68fb9b57827c5d57300185fb318f9f7216d37ddf3cc287e24c330282123c959e1c3282753b2199751372605b82d3bc19f22444faa598e5
+
+pkgname = python-pytorch-influence-functions
