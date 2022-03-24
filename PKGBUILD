@@ -4,9 +4,10 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
-pkgname=firefox-esr
-pkgver=91.7.0
-pkgrel=2
+pkgbase=firefox-esr
+pkgname=(firefox-esr)
+pkgver=91.7.1
+pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(x86_64)
 license=(MPL GPL LGPL)
@@ -25,11 +26,6 @@ options=(!emptydirs !makeflags !strip !lto !debug)
 source=(https://archive.mozilla.org/pub/firefox/releases/${pkgver}esr/source/firefox-${pkgver}esr.source.tar.xz{,.asc}
         0001-Use-remoting-name-for-GDK-application-names.patch
         $pkgname.desktop identity-icons-brand.svg)
-sha256sums=('9c3ae9abe1ef10d66d64cbbee96ba2c16840098de8fe0285959f04160d0fee5a'
-            'SKIP'
-            '138b972a40a74104791783167770c4a01e62cce00bb9cc75119e152f9ea9f14d'
-            'c798853574da42bc22b066acb4b0bfdd630dc05b22560fcf0db9235b4207e051'
-            'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
@@ -47,6 +43,8 @@ _mozilla_api_key=e05d56db0a694edc8b5aaebda3f2db6a
 prepare() {
   mkdir mozbuild
   cd firefox-$pkgver
+
+  #echo "${noextract[@]}"
 
   # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
   patch -Np1 -i ../0001-Use-remoting-name-for-GDK-application-names.patch
@@ -76,6 +74,7 @@ ac_add_options --allow-addon-sideload
 ac_add_options --with-app-name=$pkgname
 export MOZILLA_OFFICIAL=1
 export MOZ_APP_REMOTINGNAME=$pkgname
+export MOZ_APP_PROFILE="mozilla/firefox-esr"
 
 # Keys
 ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
@@ -145,7 +144,7 @@ END
   ./mach buildsymbols
 }
 
-package() {
+package_firefox-esr() {
   cd firefox-$pkgver
   DESTDIR="$pkgdir" ./mach install
 
@@ -217,5 +216,137 @@ END
     cp -fvt "$startdir" obj/dist/*crashreporter-symbols-full.tar.zst
   fi
 }
+
+_package_i18n() {
+  pkgdesc="$2 language pack for Firefox ESR"
+  depends=("firefox-esr>=$pkgver")
+  install -Dm644 firefox-esr-i18n-$pkgver-$1.xpi \
+    "$pkgdir/usr/lib/firefox-esr/extensions/langpack-$1@firefox.mozilla.org.xpi"
+}
+
+_languages=(
+  'ach    "Acholi"'
+  'af     "Afrikaans"'
+  'an     "Aragonese"'
+  'ar     "Arabic"'
+  'ast    "Asturian"'
+  'az     "Azerbaijani"'
+  'be     "Belarusian"'
+  'bg     "Bulgarian"'
+  'bn     "Bengali"'
+  'br     "Breton"'
+  'bs     "Bosnian"'
+  'ca-valencia "Catalan (Valencian)"'
+  'ca     "Catalan"'
+  'cak    "Maya Kaqchikel"'
+  'cs     "Czech"'
+  'cy     "Welsh"'
+  'da     "Danish"'
+  'de     "German"'
+  'dsb    "Lower Sorbian"'
+  'el     "Greek"'
+  'en-CA  "English (Canadian)"'
+  'en-GB  "English (British)"'
+  'en-US  "English (US)"'
+  'eo     "Esperanto"'
+  'es-AR  "Spanish (Argentina)"'
+  'es-CL  "Spanish (Chile)"'
+  'es-ES  "Spanish (Spain)"'
+  'es-MX  "Spanish (Mexico)"'
+  'et     "Estonian"'
+  'eu     "Basque"'
+  'fa     "Persian"'
+  'ff     "Fulah"'
+  'fi     "Finnish"'
+  'fr     "French"'
+  'fy-NL  "Frisian"'
+  'ga-IE  "Irish"'
+  'gd     "Gaelic (Scotland)"'
+  'gl     "Galician"'
+  'gn     "Guarani"'
+  'gu-IN  "Gujarati (India)"'
+  'he     "Hebrew"'
+  'hi-IN  "Hindi (India)"'
+  'hr     "Croatian"'
+  'hsb    "Upper Sorbian"'
+  'hu     "Hungarian"'
+  'hy-AM  "Armenian"'
+  'ia     "Interlingua"'
+  'id     "Indonesian"'
+  'is     "Icelandic"'
+  'it     "Italian"'
+  'ja     "Japanese"'
+  'ka     "Georgian"'
+  'kab    "Kabyle"'
+  'kk     "Kazakh"'
+  'km     "Khmer"'
+  'kn     "Kannada"'
+  'ko     "Korean"'
+  'lij    "Ligurian"'
+  'lt     "Lithuanian"'
+  'lv     "Latvian"'
+  'mk     "Macedonian"'
+  'mr     "Marathi"'
+  'ms     "Malay"'
+  'my     "Burmese"'
+  'nb-NO  "Norwegian (Bokmål)"'
+  'ne-NP  "Nepali"'
+  'nl     "Dutch"'
+  'nn-NO  "Norwegian (Nynorsk)"'
+  'oc     "Occitan"'
+  'pa-IN  "Punjabi (India)"'
+  'pl     "Polish"'
+  'pt-BR  "Portuguese (Brazilian)"'
+  'pt-PT  "Portuguese (Portugal)"'
+  'rm     "Romansh"'
+  'ro     "Romanian"'
+  'ru     "Russian"'
+  'si     "Sinhala"'
+  'sk     "Slovak"'
+  'sl     "Slovenian"'
+  'son    "Songhai"'
+  'sq     "Albanian"'
+  'sr     "Serbian"'
+  'sv-SE  "Swedish"'
+  'ta     "Tamil"'
+  'te     "Telugu"'
+  'th     "Thai"'
+  'tl     "Tagalog"'
+  'tr     "Turkish"'
+  'trs    "Chicahuaxtla Triqui"'
+  'uk     "Ukrainian"'
+  'ur     "Urdu"'
+  'uz     "Uzbek"'
+  'vi     "Vietnamese"'
+  'xh     "Xhosa"'
+  'zh-CN  "Chinese (Simplified)"'
+  'zh-TW  "Chinese (Traditional)"'
+)
+_url=https://archive.mozilla.org/pub/mozilla.org/firefox/releases/${pkgver}esr/linux-x86_64/xpi
+
+#for _lang in "${_languages[@]}"; do
+#  _locale=${_lang%% *}
+#  _pkgname=firefox-esr-i18n-${_locale,,}
+#
+#  pkgname+=($_pkgname)
+#  source+=("firefox-esr-i18n-$pkgver-$_locale.xpi::$_url/$_locale.xpi")
+#  eval "package_$_pkgname() {
+#    _package_i18n $_lang
+#  }"
+#done
+
+# Don't extract languages
+#noextract=()
+#for _src in "${source[@]%%::*}"; do
+#    case "$_src" in
+#      *.xpi) noextract+=("$_src") ;;
+#    esac
+#done
+
+sha512sums=('c56aa38e9d706ff1f1838d2639dac82109dcffb54a7ea17326ae306604d78967ac32da13676756999bc1aa0bf50dc4e7072936ceb16e2e834bea48382ae4b48c'
+            'SKIP'
+            '88509577b686c995144163538efdba3cfe1a3b01564d3823b9fb7972e64823d1d0a444372636f8d0b355c485f095df8f273a6eb5560fce4c41d4f1c0a0467f75'
+            '4b53ee133a4ecaf068e240f6a05a1ebf4b788d67fe9141cc5b3561e1128907c8c3edb49bf2b24ba89daf1552f94ac48adf682dbe7dd070cffe7f78d98f2b3338'
+            'b579b73176c72a5ecf36e3f63bba08fdb8041ae99d54e5cab906660fed6a9cf2311f7ca1ec1649e451cc6d5a4b1e6060b974b1d7befe9c8df3c5a89c50383c17')
 
 # vim:set sw=2 et:
