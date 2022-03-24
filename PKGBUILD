@@ -3,8 +3,8 @@
 
 pkgname='offpunk-git'
 _pkgname='offpunk'
-pkgver=1.1.r0.g1e16c41
-pkgrel=2
+pkgver=1.2.r0.gc0ae6e4
+pkgrel=1
 pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities'
 arch=('any')
 url='https://tildegit.org/ploum/AV-98-offline'
@@ -20,7 +20,6 @@ makedepends=(
 )
 optdepends=(
   'chafa: chafa and ansiwrap are required to render images in terminal'
-  'python-ansiwrap: support ANSI escape codes'
   'python-beautifulsoup4: conversion of HTML'
   'python-cryptography: better support of TOFU client certificates'
   'python-editor: create lists using your editor of choice'
