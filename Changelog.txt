@@ -1,4 +1,105 @@
-Changelog 1.1.1 - 7 January 2021
+Changelog for Hummingbird
+
+Version 1.2.0 - 22 March 2022
+
+- [ProMIND] production release
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 1.2.0 RC 3 - 17 March 2022
+
+- [ProMIND] updated to OpenVPN3 AirVPN 3.8.1
+- [ProMIND] do not check for supported ciphers in OpenVPN config file in case eval.cipher is empty
+- [ProMIND] changed references of ClientAPI::OpenVPNClient class to ClientAPI::OpenVPNClientHelper to conform to the new OpenVPN3 client class names
+- [ProMIND] replaced calls to removed OpenVPN client's eval_config_static() with ClientAPI::OpenVPNClientHelper::eval_config()
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 1.2.0 RC 2 - 8 March 2022
+
+- [ProMIND] Added --list-data-ciphers option
+- [ProMIND] Check and validate requested data cipher according to VpnClient's supported ciphers
+- [ProMIND] Normalized (extended) bool values for options allowuaf, compress and network-lock
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 1.2.0 RC 1 - 15 February 2022
+
+- [ProMIND] Updated to OpenVPN 3.7.2 AirVPN
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 1.2.0 Beta 1 - 7 February 2022
+
+- [ProMIND] Updated to OpenVPN 3.7.1 AirVPN, latest support libraries and support projects
+- [ProMIND] Added SSL library version to version message
+- [ProMIND] Removed ipv6 command line option and replaced with allowuaf option (Allow Unused Address Families) in order to comply to the new OpenVPN3 specifications
+- [ProMIND] Added OpenVPN and copyright information and SSL library information to the welcome message
+- [ProMIND] Fixed recover network procedure. It now properly checks the existence of network backup file
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 1.1.2 - 4 June 2021
+
+- [ProMIND] updated all dependencies and libraries
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 1.1.2 RC 4 - 14 May 2021
+
+- [ProMIND] DNS backup files are now properly evaluated when determining dirty status
+- [ProMIND] ProfileMerge is now constructed by allowing any file extension
+- [ProMIND] Reconnection (SIGUSR2) is now allowed only in case tun persistence is enabled
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 1.1.2 RC 3 - 16 April 2021
+
+- [ProMIND] Release Candidate 3
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 1.1.2 RC 2 - 14 April 2021
+
+- [ProMIND] Release Candidate 2
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 1.1.2 RC 1 - 7 April 2021
+
+- [ProMIND] Release Candidate 1
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 1.1.2 - 2 April 2021
+
+- [ProMIND] Updated base classes
+
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+Version 1.1.1 - 7 January 2021
 
 - [ProMIND] Updated to OpenVPN3-AirVPN 3.6.6
 - [ProMIND] Hummingbird now uses OpenSSL by default
@@ -7,7 +108,7 @@ Changelog 1.1.1 - 7 January 2021
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
 
-Changelog 1.1.0 - 23 June 2020
+Version 1.1.0 - 23 June 2020
 
 - [ProMIND] Production release
 
@@ -15,7 +116,7 @@ Changelog 1.1.0 - 23 June 2020
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
 
-Changelog 1.1.0 beta 1 - 12 June 2020
+Version 1.1.0 beta 1 - 12 June 2020
 
 - [ProMIND] Added support for System V-style init
 
@@ -23,7 +124,7 @@ Changelog 1.1.0 beta 1 - 12 June 2020
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
 
-Changelog 1.0.3 - 3 June 2020
+Version 1.0.3 - 3 June 2020
 
 - [ProMIND] Removed --google-dns (enable Google DNS fallback) option
 - [ProMIND] Improved flushing logics for pf
@@ -33,7 +134,7 @@ Changelog 1.0.3 - 3 June 2020
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
 
-Changelog 1.0.2 - 4 February 2020
+Version 1.0.2 - 4 February 2020
 
 - [ProMIND] Updated to OpenVPN3-AirVPN 3.6.3
 - [ProMIND] Added --tcp-queue-limit option
@@ -43,7 +144,7 @@ Changelog 1.0.2 - 4 February 2020
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
 
-Changelog 1.0.1 - 24 January 2020
+Version 1.0.1 - 24 January 2020
 
 - [ProMIND] Updated to OpenVPN3-AirVPN 3.6.2
 
@@ -51,7 +152,7 @@ Changelog 1.0.1 - 24 January 2020
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
 
-Changelog 1.0 - 27 December 2019
+Version 1.0 - 27 December 2019
 
 - [ProMIND] Production release
 
@@ -59,7 +160,7 @@ Changelog 1.0 - 27 December 2019
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
 
-Changelog 1.0 RC2 - 19 December 2019
+Version 1.0 RC2 - 19 December 2019
 
 - [ProMIND] Better management of Linux NetworkManager and systemd-resolved in case they are both running
 - [ProMIND] Log a warning in case Linux NetworkManager and/or systemd-resolved are running
@@ -69,7 +170,7 @@ Changelog 1.0 RC2 - 19 December 2019
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
 
-Changelog 1.0 RC1 - 10 December 2019
+Version 1.0 RC1 - 10 December 2019
 
 - [ProMIND] Updated asio dependency
 
@@ -77,7 +178,7 @@ Changelog 1.0 RC1 - 10 December 2019
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
 
-Changelog 1.0 beta 2 - 6 December 2019
+Version 1.0 beta 2 - 6 December 2019
 
 - [ProMIND] Updated to OpenVPN 3.6.1 AirVPN
 - [ProMIND] macOS now uses OpenVPN's Tunnel Builder
@@ -88,7 +189,7 @@ Changelog 1.0 beta 2 - 6 December 2019
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
 
-Changelog 1.0 beta 1 - 28 November 2019
+Version 1.0 beta 1 - 28 November 2019
 
 - [ProMIND] Added a better description for ipv6 option in help page
 - [ProMIND] --recover-network option now warns the user in case the program has properly exited in its last run
@@ -98,7 +199,7 @@ Changelog 1.0 beta 1 - 28 November 2019
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
 
-Changelog 1.0 alpha 2 - 7 November 2019
+Version 1.0 alpha 2 - 7 November 2019
  
 - [ProMIND] DNS resolver has now a better management of IPv6 domains
 - [ProMIND] DNS resolver has now a better management of multi IP domains
@@ -108,7 +209,7 @@ Changelog 1.0 alpha 2 - 7 November 2019
 *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
 
-Changelog 1.0 alpha 1 - 1 November 2019
+Version 1.0 alpha 1 - 1 November 2019
 
 - [ProMIND] Initial public release
 
