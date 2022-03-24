@@ -3,7 +3,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=verco
-pkgver=6.7.0
+pkgver=6.8.0
 pkgrel=1
 pkgdesc="A simple Git/Mercurial/PlasticSCM tui client based on keyboard shortcuts"
 arch=('x86_64')
@@ -12,13 +12,13 @@ license=('GPL3')
 depends=('gcc-libs')
 optdepends=('git: support for git repositories'
             'mercurial: support for mercurial repositories')
-makedepends=('rust')
+makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('9b51d65fa7919715211013be51af37741173ca185d8a56edd97a9b5ef95a2c365d9d40e0c39d2e12f4143c6e5421b7032550f2f0462dc2b0602e7cdc6baad2c5')
+sha512sums=('2ec1d6ea441e42f97c95fd7d1d67478962f28b2abcd106158dd062d960ddab711efd6d9dfffeac43d4e245bf5373c0a301702940805d6dbc3e4d69792de1a3d2')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  cargo fetch --locked
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
