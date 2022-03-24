@@ -2,7 +2,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=ddalpha
-_cranver=1.3.12
+_cranver=1.3.13
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -18,7 +18,7 @@ depends=(
 )
 makedepends=(gcc-fortran r-bh)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('34ea1b5909259adae33e1093299597044845b811787b4e365ff4621674f6061f')
+sha256sums=('e4a60a4e0950a3587db2a2d5958ab4fbe07b2548f7c3d4795912fe45c77a4eae')
 
 build() {
   mkdir -p build
