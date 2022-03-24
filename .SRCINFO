@@ -58,10 +58,6 @@ pkgname = nvidia-dkms-performance
 	depends = llvm
 	depends = clang
 	depends = lld
-	provides = nvidia=495.29.05
-	provides = nvidia-dkms=495.29.05
-	provides = nvidia-dkms-performance=495.29.05
-	provides = NVIDIA-MODULE
 	conflicts = nvidia
 	conflicts = nvidia-dkms
 
@@ -71,8 +67,6 @@ pkgname = nvidia-settings-performance
 	arch = aarch64
 	depends = nvidia-utils-performance>=495.29.05
 	depends = gtk2
-	provides = nvidia-settings=495.29.05
-	provides = nvidia-settings-performance=495.29.05
 	conflicts = nvidia-settings
 
 pkgname = nvidia-utils-performance
@@ -87,11 +81,6 @@ pkgname = nvidia-utils-performance
 	optdepends = egl-wayland: for Wayland support
 	optdepends = prime-run: abbreviation for environment variables
 	optdepends = opencl-nvidia-performance: for OpenCL support
-	provides = nvidia-utils=495.29.05
-	provides = vulkan-driver
-	provides = opengl-driver
-	provides = nvidia-libgl=495.29.05
-	provides = nvidia-libgl-performance=495.29.05
 	conflicts = nvidia-utils
 	conflicts = nvidia-libgl
 	replaces = nvidia-libgl
@@ -103,8 +92,6 @@ pkgname = opencl-nvidia-performance
 	depends = zlib
 	depends = nvidia-utils-performance>=495.29.05
 	optdepends = opencl-headers: headers necessary for OpenCL development
-	provides = opencl-nvidia=495.29.05
-	provides = opencl-driver
 	conflicts = opencl-nvidia
 
 pkgname = lib32-nvidia-utils-performance
@@ -114,11 +101,6 @@ pkgname = lib32-nvidia-utils-performance
 	depends = lib32-libglvnd
 	depends = nvidia-utils-performance>=495.29.05
 	optdepends = lib32-opencl-nvidia-performance: for OpenCL support
-	provides = lib32-nvidia-utils=495.29.05
-	provides = lib32-vulkan-driver
-	provides = lib32-opengl-driver
-	provides = lib32-nvidia-libgl=495.29.05
-	provides = lib32-nvidia-libgl-performance=495.29.05
 	conflicts = lib32-nvidia-utils
 	conflicts = lib32-nvidia-libgl
 	replaces = lib32-nvidia-libgl
@@ -129,6 +111,4 @@ pkgname = lib32-opencl-nvidia-performance
 	depends = lib32-gcc-libs
 	depends = lib32-nvidia-utils-performance>=495.29.05
 	optdepends = opencl-headers: headers necessary for OpenCL development
-	provides = lib32-opencl-nvidia=495.29.05
-	provides = lib32-opencl-driver
 	conflicts = lib32-opencl-nvidia

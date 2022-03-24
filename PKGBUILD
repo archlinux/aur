@@ -1,4 +1,4 @@
-# Maintainer: Vasiliy Stelmachenok <cabopust@yandex.ru>
+# Contributor: Vasiliy Stelmachenok <cabopust@yandex.ru>
 # Contributor: Pavel Priluckiy <gerallitluis2@gmail.com>
 # Contributor: Avinash Reddy <cassilasreddythemostwanted3108@gmail.com>
 # Contributor: solonovamax <solonovamax@12oclockpoint.com>
@@ -88,9 +88,9 @@ _sources_sums=('ae1fee1238da7aeb0e2d3e3d3fe4478dfe3a2bcbbab529586ac8f3bb55aa47ae
                '7d9392f36374ab609417abe4b5493bbb9d868a2ee29cdb877d4be8b098eb527b'
                'db329bd2542132a25f4cd1b4a892ece32e610970db7138e5213245740c91992a'
                '6bb5456f14435ad329d750147c749d7c50fb8ae11778c7fcc9e6e3cd256c4017')
-source_x86_64=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/${_pkg}.run"
+source_x86_64=("https://us.download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}.run"
                ${_sources[@]})
-source_aarch64=("https://us.download.nvidia.com/XFree86/aarch64/${pkgver}/${_pkg}.run"
+source_aarch64=("https://us.download.nvidia.com/XFree86/aarch64/${pkgver}/NVIDIA-Linux-aarch64-${pkgver}.run"
                 ${_sources[@]})
 sha256sums_x86_64=('f7254b97d400c692504796496f4e7d8f64e93b1e31c427860a4f219a186f125e'
                    ${_sources_sums[@]})
@@ -199,8 +199,8 @@ package_nvidia-dkms-performance() {
     if [[ ! -z $_force_clang_usage ]]; then
         depends+=('llvm' 'clang' 'lld')
     fi
-    provides=("nvidia=${pkgver}" "nvidia-dkms=${pkgver}" 
-              "nvidia-dkms-performance=${pkgver}" 'NVIDIA-MODULE')
+#     provides=("nvidia=${pkgver}" "nvidia-dkms=${pkgver}" 
+#               "nvidia-dkms-performance=${pkgver}" 'NVIDIA-MODULE')
     conflicts=('nvidia' 'nvidia-dkms')
     cd "${_pkg}"
 
@@ -236,7 +236,7 @@ package_nvidia-settings-performance() {
     else
         depends=("nvidia-utils-performance>=${pkgver}" 'gtk2')
     fi
-    provides=("nvidia-settings=${pkgver}" "nvidia-settings-performance=${pkgver}")
+#     provides=("nvidia-settings=${pkgver}" "nvidia-settings-performance=${pkgver}")
     conflicts=('nvidia-settings')
     cd "${_pkg}"
     
@@ -261,7 +261,7 @@ package_opencl-nvidia-performance() {
     arch=('x86_64' 'aarch64')
     depends=('zlib' "nvidia-utils-performance>=${pkgver}")
     optdepends=('opencl-headers: headers necessary for OpenCL development')
-    provides=("opencl-nvidia=${pkgver}" 'opencl-driver')
+#     provides=("opencl-nvidia=${pkgver}" 'opencl-driver')
     conflicts=('opencl-nvidia')
     cd "${_pkg}"
     
@@ -288,8 +288,8 @@ package_nvidia-utils-performance() {
                 'egl-wayland: for Wayland support'
 		'prime-run: abbreviation for environment variables'
                 'opencl-nvidia-performance: for OpenCL support')
-    provides=("nvidia-utils=${pkgver}" 'vulkan-driver' 'opengl-driver' "nvidia-libgl=${pkgver}"
-              "nvidia-libgl-performance=${pkgver}")
+#     provides=("nvidia-utils=${pkgver}" 'vulkan-driver' 'opengl-driver' "nvidia-libgl=${pkgver}"
+#               "nvidia-libgl-performance=${pkgver}")
     conflicts=('nvidia-utils' 'nvidia-libgl')
     replaces=('nvidia-libgl')
     install=nvidia-utils-performance.install
@@ -441,7 +441,7 @@ package_lib32-opencl-nvidia-performance() {
     pkgdesc='OpenCL implemention for NVIDIA (32 bit)'
     depends=('lib32-zlib' 'lib32-gcc-libs' "lib32-nvidia-utils-performance>=${pkgver}")
     optdepends=('opencl-headers: headers necessary for OpenCL development')
-    provides=("lib32-opencl-nvidia=${pkgver}" 'lib32-opencl-driver')
+#     provides=("lib32-opencl-nvidia=${pkgver}" 'lib32-opencl-driver')
     conflicts=('lib32-opencl-nvidia')
     cd "${_pkg}/32"
     
@@ -459,8 +459,8 @@ package_lib32-nvidia-utils-performance() {
     pkgdesc='NVIDIA drivers utilities and libraries (32 bit)'
     depends=('lib32-zlib' 'lib32-gcc-libs' 'lib32-libglvnd' "nvidia-utils-performance>=${pkgver}")
     optdepends=('lib32-opencl-nvidia-performance: for OpenCL support')
-    provides=("lib32-nvidia-utils=${pkgver}" 'lib32-vulkan-driver' 'lib32-opengl-driver'
-              "lib32-nvidia-libgl=${pkgver}" "lib32-nvidia-libgl-performance=${pkgver}")
+#     provides=("lib32-nvidia-utils=${pkgver}" 'lib32-vulkan-driver' 'lib32-opengl-driver'
+#               "lib32-nvidia-libgl=${pkgver}" "lib32-nvidia-libgl-performance=${pkgver}")
     conflicts=('lib32-nvidia-utils' 'lib32-nvidia-libgl')
     replaces=('lib32-nvidia-libgl')
     cd "${_pkg}/32"
