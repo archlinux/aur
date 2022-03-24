@@ -1,9 +1,8 @@
 # We can't do this in the PKGBUILD so we do it here
 post_install() {
   setcap CAP_NET_RAW+ep "/usr/bin/arpchat"
-  chmod -x "/usr/bin/arpchat"
 }
 
-post_upgrade() {
+post_upgrade() { 
   post_install
 }

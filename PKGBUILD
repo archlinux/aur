@@ -1,7 +1,7 @@
 # Maintainer: Jack Polk <decaby7e@ranvier.net>
 pkgname="arpchat-bin"
 pkgver="1.0.0"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="Answering the question nobody asked: what if you wanted to text your friends using only ARP?"
 arch=("x86_64")
 url="https://github.com/kognise/arpchat"
