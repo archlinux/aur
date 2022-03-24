@@ -25,8 +25,8 @@ _ver=11.0.14.1
 _hgver=11_0_14_1
 _updatever=1
 _jbver1=2043
-_jbver2=14
-pkgrel=2
+_jbver2=17
+pkgrel=1
 pkgver=${_ver}.b${_jbver1}.${_jbver2}
 _hg_tag=jb${_hgver}-b${_jbver1}.${_jbver2}
 #_jcef_commit=316db138ea00b1a814f92e3d2f853320e8ce73b5
@@ -36,7 +36,7 @@ license=('custom')
 makedepends=('java-environment>=11' 'java-environment<12' 'cpio' 'unzip' 'zip' 'libelf' 'libcups' 'libx11'
              'libxrender' 'libxtst' 'libxt' 'libxext' 'libxrandr' 'alsa-lib' 'pandoc'
              'graphviz' 'freetype2' 'libjpeg-turbo' 'giflib' 'libpng' 'lcms2'
-             'libnet' 'bash' 'harfbuzz' 'ant' 'git' 'rsync' 'cmake' 'python' 'at-spi2-atk' 'libxkbcommon' 'libxcomposite' 'mesa' 'jcef-jetbrains')
+             'libnet' 'bash' 'harfbuzz' 'glibc' 'gcc-libs' 'jcef-jetbrains' 'git')
 options=(!lto)
 source=(git+https://github.com/JetBrains/JetBrainsRuntime.git#tag=$_hg_tag
 #        git+https://github.com/JetBrains/jcef.git#commit=$_jcef_commit
@@ -143,7 +143,7 @@ check() {
 
 package_jre11-jetbrains-imfix() {
   pkgdesc="JetBrains Java ${_majorver} full runtime environment (With patch that allows the IME window follow the cursor)"
-  depends=('java-runtime-common>=3' 'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'lcms2' 'liblcms2.so' 'libnet' 'freetype2' 'libfreetype.so' 'harfbuzz' 'libharfbuzz.so'
+  depends=('java-runtime-common>=3' 'ca-certificates-utils' 'nss' 'libjpeg-turbo' 'libjpeg.so' 'lcms2' 'liblcms2.so' 'libnet' 'freetype2' 'libfreetype.so' 'harfbuzz' 'libharfbuzz.so'
            'glibc' 'gcc-libs' 'giflib' 'libgif.so' 'libpng' 'jcef-jetbrains')
   optdepends=('java-rhino: for some JavaScript support'
               'alsa-lib: for basic sound support'
