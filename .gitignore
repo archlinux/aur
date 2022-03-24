@@ -1,0 +1,4 @@
+*.log
+*.tar.*
+*.diff
+chroot/

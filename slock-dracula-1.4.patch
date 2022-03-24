@@ -1,0 +1,18 @@
+diff '--color=auto' -up ../slock/config.def.h ./config.def.h
+--- ../slock/config.def.h	2022-03-23 18:00:10.037918490 -0300
++++ ./config.def.h	2022-03-24 16:54:13.686678020 -0300
+@@ -3,9 +3,9 @@ static const char *user  = "nobody";
+ static const char *group = "nogroup";
+ 
+ static const char *colorname[NUMCOLS] = {
+-	[INIT] =   "black",     /* after initialization */
+-	[INPUT] =  "#005577",   /* during input */
+-	[FAILED] = "#CC3333",   /* wrong password */
++	[INIT] =   "#282a36",   /* after initialization */
++	[INPUT] =  "#44475a",   /* during input */
++	[FAILED] = "#ff5555",   /* wrong password */
+ };
+ 
+ /* treat a cleared input like a wrong password (color) */
+Common subdirectories: ../slock/.git and ./.git
+Only in .: slock-dracula-1.4.diff
