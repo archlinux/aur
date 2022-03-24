@@ -1,0 +1,22 @@
+pkgbase = pbuilder-git
+	pkgdesc = Personal package builder for Debian packages
+	pkgver = 0.231.r20.ga7a3f03e
+	pkgrel = 1
+	url = https://pbuilder-team.pages.debian.net/pbuilder
+	arch = any
+	license = GPL
+	checkdepends = man-db
+	makedepends = git
+	depends = debootstrap
+	depends = dpkg
+	optdepends = ubuntu-keyring: checking release signatures of ubuntu distributions
+	optdepends = debian-archive-keyring: checking release signatures of debian distributions
+	optdepends = debian-keyring: checking release signatures of debian distributions (alternative package)
+	provides = pbuilder
+	conflicts = pbuilder
+	options = !emptydirs
+	backup = etc/pbuilderrc
+	source = git+https://salsa.debian.org/pbuilder-team/pbuilder.git
+	sha512sums = SKIP
+
+pkgname = pbuilder-git
