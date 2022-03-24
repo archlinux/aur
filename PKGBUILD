@@ -2,8 +2,8 @@
 # Contributor: Avi Knoll <aknoll at atlassian dot com>
 
 pkgname=mvnvm
-pkgver=1.0.16
-pkgrel=2
+pkgver=1.0.17
+pkgrel=1
 pkgdesc="Maven version manager"
 arch=('any')
 url="https://mvnvm.org/"
@@ -13,7 +13,7 @@ conflicts=('maven')
 provides=('maven')
 source=("https://bitbucket.org/mjensen/mvnvm/get/${pkgname}-${pkgver}.tar.bz2")
 noextract=("${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('c469d11a52c5085f287e13477762a844bfeaf56d691b53671dc4e979600736b2')
+sha256sums=('f084a77be98b728961b9ed63a7861015f7e0f4583af8486f40b43a1506833568')
 
 prepare() {
   tar --strip-components 1 -C "${srcdir}" -xf "${pkgname}-${pkgver}.tar.bz2"

@@ -1,15 +1,15 @@
 pkgbase = mvnvm
 	pkgdesc = Maven version manager
-	pkgver = 1.0.16
-	pkgrel = 2
+	pkgver = 1.0.17
+	pkgrel = 1
 	url = https://mvnvm.org/
 	arch = any
 	license = Apache
 	depends = sh
 	provides = maven
 	conflicts = maven
-	noextract = mvnvm-1.0.16.tar.bz2
-	source = https://bitbucket.org/mjensen/mvnvm/get/mvnvm-1.0.16.tar.bz2
-	sha256sums = c469d11a52c5085f287e13477762a844bfeaf56d691b53671dc4e979600736b2
+	noextract = mvnvm-1.0.17.tar.bz2
+	source = https://bitbucket.org/mjensen/mvnvm/get/mvnvm-1.0.17.tar.bz2
+	sha256sums = f084a77be98b728961b9ed63a7861015f7e0f4583af8486f40b43a1506833568
 
 pkgname = mvnvm
