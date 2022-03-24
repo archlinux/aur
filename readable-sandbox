@@ -1,4 +1,8 @@
 #!/bin/sh
+echo "Refusing --allow-* flags"
 deno run --no-check \
+	--no-prompt \
 	--allow-env=LANGUAGE,LC_ALL,LC_MESSAGES,LANG \
+	--allow-read=/usr/lib/readability-cli/locales \
 	/usr/lib/readability-cli/readable.ts $@
+
