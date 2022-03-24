@@ -1,7 +1,7 @@
 # Maintainer: Otreblan <otreblain@gmail.com>
 
 pkgname='python-gql'
-pkgver=3.0.0a6
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Python GraphQL client"
 arch=('any')
@@ -18,7 +18,7 @@ depends=(
 )
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('8f2a6ed2a7e5800664943dacf597f667ce0e592d9d4ef70eca50b1c5fa681db1')
+sha256sums=('d7124b80060f3c363f040ab05fff624d3948d6f99a2e012c2ae440180897a343')
 
 prepare() {
 	cd "$srcdir"
