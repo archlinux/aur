@@ -2,7 +2,7 @@
 # Contributor: Sergio Schneider <spsf1964 @ g m a i l.c o m>
 
 pkgname=session-desktop-appimage
-pkgver=1.7.8
+pkgver=1.7.9
 pkgrel=1
 pkgdesc="Private messaging from your desktop"
 arch=('x86_64')
@@ -27,7 +27,7 @@ source=("${_bin}::https://github.com/oxen-io/session-desktop/releases/download/v
         'session-desktop.desktop'
         'session-desktop.png')
 
-sha256sums=('34085f9b2a83d02c787d9a5b4effdfe2af66c3b08ac63e4a4ee07400abea6a78'
+sha256sums=('ca7754e59146633b71e66b02a90cff87e4f2574e57ff831ca4a5f983b7e2fbef'
             '2bf3c1718e157626851aa1661388353c9a430635058a6e327f5cf4be3161e47b'
             '8f6f2fa7ac49e24551b6a6324e4fd6cd73b478c24f450296c7fd30556c01575c')
 
