@@ -9,6 +9,6 @@ pkgbase = nbxplorer
 	depends = bitcoin-daemon
 	depends = dotnet-sdk
 	source = nbxplorer-v2.2.20.tar.gz::https://github.com/dgarage/NBXplorer/archive/refs/tags/v2.2.20.tar.gz
-	sha256sums = ad7dfa47987d891b311c4bd5f1b83dac9134d8fca54e1eb4b3ce52772ad603cf
+	sha512sums = bee21c611857ddebf27ef7103f93140398b5dc9893341b89cb70f092d0c4d0f4c1e8664a50cbbe04bb4a943c4e90e1082a407d980f4a64a76e85f141fe66833e
 
 pkgname = nbxplorer
