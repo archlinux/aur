@@ -1,0 +1,23 @@
+pkgbase = haskell-agda-language-server
+	pkgdesc = An implementation of language server protocal (LSP) for Agda 2.
+	pkgver = 0.2.1
+	pkgrel = 20
+	url = https://github.com/banacorn/agda-language-server#readme
+	arch = x86_64
+	license = custom: MIT
+	makedepends = ghc
+	makedepends = haskell-tasty
+	makedepends = haskell-tasty-golden
+	makedepends = haskell-tasty-hunit
+	makedepends = haskell-tasty-quickcheck
+	depends = ghc-libs
+	depends = agda=2.6.2
+	depends = haskell-aeson
+	depends = haskell-lsp
+	depends = haskell-network
+	depends = haskell-network-simple
+	depends = haskell-strict
+	source = https://hackage.haskell.org/packages/archive/agda-language-server/0.2.1/agda-language-server-0.2.1.tar.gz
+	sha256sums = 20ec24dfd7d7f6f74942615bd5edbbc6641648dc5a41820bc9fdef24cb87fda7
+
+pkgname = haskell-agda-language-server
