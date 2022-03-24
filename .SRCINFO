@@ -1,6 +1,6 @@
 pkgbase = dmenu-translate-git
-	pkgdesc = Small shell script for translating text with dmenu
-	pkgver = r11.26800e3
+	pkgdesc = Quick text translation with dmenu
+	pkgver = r19.5dbf707
 	pkgrel = 1
 	url = https://github.com/NikitaIvanovV/dmenu-translate
 	arch = any
