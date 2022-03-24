@@ -4,23 +4,23 @@
 _pkgname=metakernel
 pkgname=jupyter-$_pkgname
 pkgver=0.28.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Jupyter/IPython kernel template."
 arch=('any')
 url="https://github.com/Calysto/metakernel"
 license=('BSD')
 depends=('jupyter' 'ipython' 'python-pexpect')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer')
 source=("https://github.com/Calysto/metakernel/archive/v${pkgver}.tar.gz")
 sha256sums=('e199f16e32f4e61554c705a1fdb69c5b7ea6bac05a84c15b76b3d8f38e49c8ac')
 
 build() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py build
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    python -m build --wheel --no-isolation
 }
 
-package(){
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+package() {
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
