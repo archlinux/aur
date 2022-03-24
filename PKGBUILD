@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Rafael Fontenelle <rafaelff@gnome.org>
 pkgname=timetrack
-pkgver=2.0.3
+pkgver=2.0.4
 pkgrel=1
 pkgdesc="Simple time-tracking app for GNOME"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('gtk4' 'libadwaita' 'python-gobject' 'python-timeago')
 makedepends=('gobject-introspection' 'meson')
 checkdepends=('appstream-glib')
 source=("https://gitlab.gnome.org/danigm/timetrack/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('7e542822421a384fc6453a9ae211ac5b1f492c82b193a5a04b90aea7bdea138b')
+sha256sums=('e7c5f8db9ba69037c591754396ce3b1e87ed33d432cf3155fe7cc96e273d2abc')
 
 prepare() {
   cd "$pkgname-$pkgver"
