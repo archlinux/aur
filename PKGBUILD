@@ -12,6 +12,7 @@ makedepends=(intltool gnome-common git)
 url="https://www.gnome.org"
 _commit=c03cc0963996934e03587af3e351c2bb9dab6b2a  # master
 source=("git+https://git.gnome.org/browse/gnome-doc-utils#commit=$_commit")
+source=("git+https://gitlab.gnome.org/Archive/gnome-doc-utils.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
