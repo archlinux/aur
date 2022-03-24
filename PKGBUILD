@@ -4,9 +4,9 @@
 
 pkgname=rabbitvcs-thunar
 pkgver=0.18.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Thunar front-end for RabbitVCS SVN GIT HG Extension."
-_gitcommit='e44328e01ed82dd8a8dbfec952f5982e355b8416'
+_gitcommit='1b833c934469e331ae15b48392cff09944b7f14a'
 arch=('any')
 url="https://github.com/rabbitvcs/rabbitvcs"
 install=$pkgname.install
@@ -17,7 +17,7 @@ if [ "${_gitcommit}" != "" ]; then
 else
   source=("rabbitvcs-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 fi
-sha256sums=('a9f59d0eff65526887f719eb72712eac7d7aaa84cf9993c7b69b7b17b0b13143')
+sha256sums=('090e8a67316881774a7908f23524043afb82bef6b76a7f9aca9b92bfdd3ef266')
 
 
 build() {
