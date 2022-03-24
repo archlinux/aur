@@ -1,7 +1,7 @@
 pkgbase = grandorgue-git
 	pkgdesc = Virtual Pipe Organ Software
-	pkgver = 3.6.4.1.r0.gdd388827
-	pkgrel = 2
+	pkgver = 3.6.4.1.r1.gfd3aa076
+	pkgrel = 1
 	url = https://github.com/GrandOrgue/grandorgue
 	arch = i686
 	arch = x86_64
@@ -18,9 +18,7 @@ pkgbase = grandorgue-git
 	depends = jack
 	source = git+https://github.com/GrandOrgue/grandorgue.git
 	source = git+https://github.com/GrandOrgue/ZitaConvolver.git
-	source = link-perftest-against-jackd.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 3c13c6a627cddff1710c106a000bffbaa31c390716f11d4588ddd4484cea9dc4
 
 pkgname = grandorgue-git
