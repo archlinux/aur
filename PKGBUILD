@@ -1,6 +1,6 @@
 # Maintainer: Krishna <krishna404@yandex.com>
 pkgname='fm6000'
-pkgver=6000
+pkgver=6000.1
 pkgrel=1
 pkgdesc="Simple Dilbert themed system info-fetching tool"
 arch=('x86_64')
@@ -11,16 +11,9 @@ depends=('perl')
 makedepends=('git')
 provides=('fm6000')
 conflicts=('fm6000-bin')
-source=('fm6000::https://github.com/anhsirk0/fetch-master-6000.git')
+source=('fm6000::https://raw.githubusercontent.com/anhsirk0/fetch-master-6000/master/fm6000.pl')
 md5sums=('SKIP')
 
-pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 package() {
-	cd "$pkgname"
-	install -Dm755 ./fm6000.pl "$pkgdir/usr/bin/fm6000"
-	install -Dm644 ./README.md "$pkgdir/usr/share/doc/$pkgname"
+	install -Dm755 ./fm6000 "$pkgdir/usr/bin/fm6000"
 }
