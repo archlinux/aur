@@ -1,14 +1,14 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=yt-dlp-git
-pkgver=2022.02.04.r94.g45806d44a
+pkgver=2022.03.08.1.r62.gae6a1b958
 pkgrel=1
 pkgdesc='A youtube-dl fork with additional features and fixes (git)'
 arch=(any)
 url=https://github.com/yt-dlp/yt-dlp
 license=(Unlicense)
 depends=(python)
-makedepends=(git python-setuptools pandoc)
+makedepends=(python-build python-installer python-setuptools python-wheel pandoc git)
 optdepends=('ffmpeg: for video post-processing'
             'rtmpdump: for rtmp streams support'
             'atomicparsley: for embedding thumbnails into m4a files'
@@ -28,10 +28,10 @@ pkgver() {
 build() {
     cd "${pkgname%-git}"
     make pypi-files
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "${pkgname%-git}"
-    python setup.py install --root="${pkgdir}" --skip-build --optimize=1
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
