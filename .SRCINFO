@@ -1,0 +1,17 @@
+pkgbase = mdformat
+	pkgdesc = CommonMark compliant Markdown formatter
+	pkgver = 0.7.14
+	pkgrel = 1
+	url = https://github.com/executablebooks/mdformat
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-install
+	makedepends = python-poetry-core
+	depends = python-tomli
+	depends = python-markdown-it-py
+	source = https://github.com/executablebooks/mdformat/archive/0.7.14.tar.gz
+	sha512sums = 520591580538bd17e0d0170d7a53a356241ba8e1cc8025c1d7583c55e5e405cf5b9cdb1b53db663d25a87ac86e03024105271cbf5ceb7bea2a05d1702677fa94
+
+pkgname = mdformat
