@@ -5,7 +5,7 @@
 
 pkgbase=lua-socket-git
 pkgname=(lua-socket-git lua51-socket-git lua52-socket-git lua53-socket-git)
-pkgver=3.0.rc1.r245.gaf0ddb6
+pkgver=3.0.0.r0.g88c8a85
 pkgrel=1
 pkgdesc='Networking support library for the Lua language'
 arch=('x86_64')
