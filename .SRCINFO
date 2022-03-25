@@ -1,0 +1,16 @@
+pkgbase = python-beziers
+	pkgdesc = Routines for extracting information from font glyphs
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/simoncozens/beziers
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/b/beziers/beziers-0.4.0.tar.gz
+	sha256sums = 3a01994887928971fd88b34777dea42ff49813264d8ffddee909310d03959ef5
+
+pkgname = python-beziers
