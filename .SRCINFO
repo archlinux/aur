@@ -1,6 +1,6 @@
 pkgbase = lapce
 	pkgdesc = Lightning-fast and Powerful Code Editor
-	pkgver = 0.0.11
+	pkgver = 0.0.12
 	pkgrel = 1
 	url = https://lapce.dev
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = lapce
 	depends = freetype2
 	depends = libxkbcommon
 	options = !lto
-	source = lapce-0.0.11.tar.gz::https://github.com/lapce/lapce/archive/v0.0.11.tar.gz
-	sha512sums = 8d4bb1a499a0400e26843026b97e3785b8a5fe08c742f0eb4924442c35a669e4eeef1d1c13b13e682a04ee54c51b653f98b118d783b6be84f86fe32b540384b6
-	b2sums = dfe65e2fb65cd0adba9c3508c33a42e7c94c9ad7d9f7667c3b66dced6e071579a68a56bc49995b2b513af118fdc1a07dfe913bb5b4205ff082110fc115ab8cd8
+	source = lapce-0.0.12.tar.gz::https://github.com/lapce/lapce/archive/v0.0.12.tar.gz
+	sha512sums = a66342fee4914acbfd83e941c2e20303ae224eb5f510aa4e1111b73f89390d79bd4df9c80049f0148da47c0f780b90faea95f3d115fbd02df7b8c23b49095486
+	b2sums = 6b67b8a283780093f484cac698d3186c470f3a9a121417fc96df840982490dd6fde15e62c80ea313b8641b7b398ac01d3cdb56357bb07cad74cd18f93b718433
 
 pkgname = lapce
