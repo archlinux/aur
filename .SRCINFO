@@ -1,6 +1,6 @@
 pkgbase = mate-hud
 	pkgdesc = Run menubar commands, much like the unity 7 HUD
-	pkgver = 22.04.0
+	pkgver = 22.04.1
 	pkgrel = 1
 	url = https://github.com/ubuntu-mate/mate-hud
 	arch = any
@@ -15,7 +15,7 @@ pkgbase = mate-hud
 	depends = python-psutil
 	depends = python-setproctitle
 	depends = python-xlib
-	source = mate-hud-22.04.0.tar.gz::https://github.com/ubuntu-mate/mate-hud/archive/22.04.0.tar.gz
-	sha256sums = 2ea250449ddab3e212c69d62fe336ff6fc098c8c4b530cbae06c50c912bb368e
+	source = mate-hud-22.04.1.tar.gz::https://github.com/ubuntu-mate/mate-hud/archive/22.04.1.tar.gz
+	sha256sums = 3acd6c6c071920d201ff08564d35e9e1ca0c4d5e1c565465ccb9b077e2cd3dba
 
 pkgname = mate-hud
