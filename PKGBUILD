@@ -3,7 +3,7 @@
 
 export GIT_LFS_SKIP_SMUDGE=1 # This is to prevent Git LFS errors
 pkgname=airshipper-git
-pkgver=0.5.0.r0.6b4cb59
+pkgver=0.7.0.r0.f4642c9
 pkgrel=1
 pkgdesc="The official launcher for Veloren - an open-world, open-source multiplayer voxel RPG"
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('openssl' 'libxcb' 'bzip2')
 makedepends=('git' 'rustup' 'git-lfs')
 provides=('airshipper')
-conflicts=('airshipper')
+conflicts=()
 _repo='https://gitlab.com/veloren/airshipper.git'
 source=(
     "$pkgname"::"git+$_repo"
