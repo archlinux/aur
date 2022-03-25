@@ -1,6 +1,6 @@
 pkgbase = minq-nhentai-git
 	pkgdesc = Browse hnehtai in your terminal. Full image resolution in supported terminals.
-	pkgver = r42.eca7872f6e1669e456d7f63adaad04d64ed3d29b
+	pkgver = r47.58ed2c8b1d13adc74ec409c0e2b9eabadb3dc0eb
 	pkgrel = 1
 	url = https://github.com/kuche1/minq-nhentai.git
 	arch = any
@@ -10,7 +10,8 @@ pkgbase = minq-nhentai-git
 	depends = python-beautifulsoup4
 	depends = viu
 	optdepends = wezterm: an example terminal that supports full image resolution,
-	optdepends = python-minq-storage-git: needed for the beta version
+	optdepends = python-minq-storage-git: needed for the beta 1,
+	optdepends = python-minq-caching-thing-git: needed for beta 2
 	provides = minq-nhentai
 	source = git+https://github.com/kuche1/minq-nhentai.git
 	md5sums = SKIP
