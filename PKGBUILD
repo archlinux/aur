@@ -7,7 +7,7 @@ pkgdesc="An IEEE 802.11 a/g/p transceiver for GNU Radio."
 arch=('i686' 'x86_64')
 url="https://github.com/bastibl/gr-ieee802-11"
 license=('GPL3')
-depends=('gnuradio' 'swig' 'log4cpp' 'gr-foo')
+depends=('gnuradio' 'log4cpp' 'gr-foo')
 makedepends=('cmake' 'boost')
 provides=('gr-ieee802-11')
 source=('git+https://github.com/bastibl/gr-ieee802-11#branch=maint-3.9')
