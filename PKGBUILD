@@ -11,8 +11,8 @@
 
 ### MERGE REQUESTS SELECTION
 
-# available MR: ('536' '786' '923' '1915')
-_merge_requests_to_use=('1915')
+# available MR: ('1884' '1915')
+_merge_requests_to_use=('1884' '1915')
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
@@ -20,9 +20,9 @@ _merge_requests_to_use=('1915')
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
 pkgver=41.5
-pkgrel=1
+pkgrel=2
 epoch=1
-pkgdesc="Next generation desktop shell"
+pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
 license=(GPL)
@@ -118,7 +118,6 @@ prepare() {
   #
   # Generally, a MR status oscillate between 2 and 3 and then becomes 4.
 
-
   # Title: build: Drop incorrect positional arg
   # URL: https://gitlab.gnome.org/GNOME/gnome-shell/-/commit/65450a836ee9e0722a2d4c3327f52345eae293c6
   # Type: 3
@@ -126,34 +125,23 @@ prepare() {
   # Comment: Fix build with meson 0.61.0
   git cherry-pick -n 65450a836ee9e0722a2d4c3327f52345eae293c6
 
-  # Title: St theme: use css instance data
-  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/536
-  # Type: 2
-  # Status: 1
-  # Comment: Crash fix for st_theme_get_custom_stylesheets
-  pick_mr '536'
-
-  # Title: Some fixes for setting key focus of the closeDialog
-  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/786
-  # Type: 3
-  # Status: 1
-  # Comment:
-  pick_mr '786'
-
-  # Title: js/ui: Keep refcounts to WallClock objects above 1. [performance]
-  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/merge_requests/923
+  # Title: Fade out whole icons instead of using StScrollViewFade (traditional design)
+  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/1884
   # Type: 1
   # Status: 2
-  # Comment: Unlock freezes, it hits me too.
-  pick_mr '923'
+  # Comment: By avoiding StScrollViewFade we avoid offscreening and therefore
+  #          avoid painting everything twice to get it on screen. So this almost
+  #          halves the render time of the icon grid.
+  #          Related: #4367, !1877, #174
+  pick_mr '1884'
 
   # Title: Optimize box-shadow rendering (part 2) [chroma key design]
   # URL: https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/1915
   # Type: 1
-  # Status: 1
+  # Status: 2
   # Comment: This reduces the render time of the overview by about 15%.
   #          Part 1 was in !1904 (merged).
-  #          This is an alternate design to !1862 (closed).
+  #          This is an alternate design to !1862.
   pick_mr '1915' 'mr1915.patch' 'patch'
 
   git submodule init
