@@ -1,0 +1,15 @@
+[Desktop Entry]
+Version=1.0
+Name=GNUnet Statistics
+Name[it]=Statistiche di GNUnet
+GenericName=GNUnet Statistics
+GenericName[it]=Statistiche di GNUnet
+Comment=Check GNUnet statistics
+Comment[it]=Controlla le statistiche di GNUnet
+Type=Application
+Exec=gnunet-statistics-gtk
+Icon=gnunet-statistics-gtk
+Terminal=false
+Categories=GTK;Network;P2P;
+StartupNotify=true
+StartupWMClass=gnunet-gtk

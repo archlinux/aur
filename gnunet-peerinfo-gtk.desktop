@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Name=GNUnet Peer Info
+GenericName=GNUnet Peer Info
+Type=Application
+Exec=gnunet-peerinfo-gtk
+Icon=gnunet-peerinfo-gtk
+Terminal=false
+Categories=GTK;Network;P2P;
+StartupNotify=true
+StartupWMClass=gnunet-gtk
