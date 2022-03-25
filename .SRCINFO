@@ -1,0 +1,20 @@
+pkgbase = python-glyphtools
+	pkgdesc = Routines for extracting information from font glyphs
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/simoncozens/glyphtools
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	depends = python-babelfont
+	depends = python-beziers
+	depends = python-babelfont
+	depends = python-glyphslib
+	source = https://files.pythonhosted.org/packages/source/g/glyphtools/glyphtools-0.8.0.tar.gz
+	sha256sums = 3d7c171d63096ec8ba66d37e75a697027970de05790c5021c91c5d05aed43fe3
+
+pkgname = python-glyphtools
