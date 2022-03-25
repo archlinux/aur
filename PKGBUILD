@@ -1,33 +1,35 @@
-# Maintainer: TankMissile <customerservicerobot@protonmail.com>
-# Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
+# Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
 # Contributor: Christian Hesse <mail@eworm.de>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
+# Contributor: Pellegrino Prevete <pellegrinoprevete@gmail.com>
 
 pkgname=python-blivet
 pkgver=3.4.3
-_tag="blivet-$pkgver"
-pkgrel=1
-pkgdesc="A DBus service and python module for management of the system storage configuration"
-url="https://fedoraproject.org/wiki/Blivet"
-arch=("any")
-license=("LGPL2.1")
-depends=("python"
-         "python-six"
-         "python-pyparted"
-         "python-pyudev"
-         "python-gobject"
-         "libblockdev"
-         "lsof"
-         "multipath-tools"
-         "util-linux"
-         "systemd-libs"
+_tag="blivet-${pkgver}"
+pkgrel=5
+pkgdesc='A DBus service and python module for management of the system storage configuration'
+arch=('pentium4' 'x86_64')
+license=('LGPL2.1')
+depends=('python'
+         'python-six'
+         'python-pyparted'
+         'python-pyudev'
+         'python-gobject'
+         'libselinux'
+         'libblockdev'
+         'parted'
+         'lsof'
+         'multipath-tools'
+         'util-linux'
+         'systemd-libs'
 )
-makedepends=("python-setuptools" "make")
-source=("https://github.com/storaged-project/blivet/archive/$_tag.tar.gz")
-sha256sums=("587741657ab35e05f61afb06a01540fb3650300e16d0a20fd551839dd223eaf3")
+checkdepends=('libselinux' 'python-mock' 'python-dbus')
+makedepends=('python-setuptools' 'make')
+url='https://fedoraproject.org/wiki/Blivet'
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/storaged-project/blivet/archive/blivet-${pkgver}.tar.gz")
+sha512sums=('e0470dd524895163d6be4c68b143a9662fc54c506f6ddedf04804805faf305b885d3f73fccaf9ee172e41279efb461b17baaa0941b5dc91bcfadfd3517ef8d30')
 
 package() {
-  cd blivet-$_tag
-
-  python setup.py install --root="${pkgdir}/" --optimize=1
+  cd "${srcdir}/blivet-${_tag}"
+  python3 setup.py install --root="${pkgdir}" --optimize=1
 }
