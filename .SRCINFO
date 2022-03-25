@@ -1,6 +1,6 @@
 pkgbase = python-glymur
 	pkgdesc = Tools for accessing JPEG2000 files
-	pkgver = 0.9.8
+	pkgver = 0.9.9
 	pkgrel = 1
 	url = https://glymur.readthedocs.org
 	arch = any
@@ -15,10 +15,8 @@ pkgbase = python-glymur
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-numpydoc
-	makedepends = python-sphinx_rtd_theme
-	source = https://files.pythonhosted.org/packages/source/G/Glymur/Glymur-0.9.8.tar.gz
-	md5sums = 239bd19557eb9b3a76065aac2ff5c631
+	source = https://files.pythonhosted.org/packages/source/G/Glymur/Glymur-0.9.9.tar.gz
+	md5sums = ae34ea954294cce5d3b4ac56abfa4dd9
 
 pkgname = python-glymur
 	depends = python-numpy
@@ -29,6 +27,3 @@ pkgname = python-glymur
 	optdepends = python-gdal
 	optdepends = python-scikit-image
 	optdepends = python-glymur-doc: Documentation for Python Glymur
-
-pkgname = python-glymur-doc
-	pkgdesc = Documentation for Python Glymur module
