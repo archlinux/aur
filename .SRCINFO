@@ -1,6 +1,6 @@
 pkgbase = zimg-git
 	pkgdesc = Scaling, colorspace conversion, and dithering library. (GIT version)
-	pkgver = 3.0.3.43.g42b0d40
+	pkgver = 3.0.3.64.g4e5950f
 	pkgrel = 1
 	url = http://forum.doom9.org/showthread.php?t=171334
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = zimg-git
 	conflicts = zimg
 	conflicts = vapoursynth-plugin-zimg
 	conflicts = vapoursynth-plugin-zimg-git
+	options = debug
 	source = git+https://github.com/sekrit-twc/zimg.git
 	sha256sums = SKIP
 

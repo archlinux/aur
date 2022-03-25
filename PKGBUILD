@@ -1,7 +1,7 @@
 # Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
 
 pkgname=zimg-git
-pkgver=3.0.3.43.g42b0d40
+pkgver=3.0.3.64.g4e5950f
 pkgrel=1
 pkgdesc="Scaling, colorspace conversion, and dithering library. (GIT version)"
 arch=('x86_64')
@@ -20,6 +20,7 @@ conflicts=('zimg'
            )
 source=('git+https://github.com/sekrit-twc/zimg.git')
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd zimg
