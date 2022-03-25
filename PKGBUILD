@@ -12,8 +12,8 @@ groups=()
 depends=(python python-beautifulsoup4 viu)
 makedepends=(git)
 checkdepends=()
-optdepends=("wezterm: an example terminal that supports full image resolution",
-            "python-minq-storage-git: needed for the beta 1",
+optdepends=("wezterm: an example terminal that supports full image resolution"
+            "python-minq-storage-git: needed for the beta 1"
             "python-minq-caching-thing-git: needed for beta 2")
 provides=("${_pkgname}")
 conflicts=()
