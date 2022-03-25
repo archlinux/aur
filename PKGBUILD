@@ -1,6 +1,6 @@
 # Maintainer: Alfredo Palhares <alfredo at palhares dot me>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
-# Contributor:  Matteo Parolari
+# Contributor: Matteo Parolari
 # Contributor: gardar <aur@gardar.net>
 
 # Please contribute to:
@@ -8,80 +8,109 @@
 
 pkgbase="joplin"
 pkgname=('joplin' 'joplin-desktop')
-pkgver=2.6.10
+pkgver=2.7.15
 groups=('joplin')
-pkgrel=4
+pkgrel=2
 install="joplin.install"
-depends=('electron' 'gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs'
+depends=('electron' 'gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs>=17.3'
          'nss' 'orc' 'rsync' 'libvips')
 optdepends=('libappindicator-gtk3: for tray icon')
 arch=('x86_64' 'i686')
-makedepends=('git' 'yarn' 'python2' 'rsync' 'jq' 'electron' 'libgsf' 'node-gyp>=8.4.1' 'libvips')
+makedepends=('git' 'npm' 'yarn' 'python2' 'rsync' 'jq' 'yq' 'electron' 'libgsf' 'node-gyp>=8.4.1' 'libvips')
 url="https://joplinapp.org/"
 license=('MIT')
 source=("joplin.desktop" "joplin-desktop.sh" "joplin.sh"
-  "joplin-${pkgver}.tar.gz::https://github.com/laurent22/joplin/archive/v${pkgver}.tar.gz"
-  "joplin-patches.tar.xz")
+  "joplin-${pkgver}.tar.gz::https://github.com/laurent22/joplin/archive/v${pkgver}.tar.gz")
 sha256sums=('c7c5d8b0ff9edb810ed901ea21352c9830bfa286f3c18b1292deca5b2f8febd2'
             'a450284fe66d89aa463d129ce8fff3a0a1a783a64209e4227ee47449d5737be8'
             'dc1236767ee055ea1d61f10e5266a23e70f3e611b405fe713ed24ca18ee9eeb5'
-            '1994cf5a32cf72f60f0455ad8204ff1d5ebb70933ad50ade78431fa359b561c6'
-            '43f86e589f20141d7a2478fd12b4aa2dc73c6a52d7037137515358f4cd65616f')
+            '1e605cf5519d8bd32cda541f5c693083183ddde6edeb5ce3cb440f14bb32d999')
 
 # local npm cache directory
-_npm_cache="npm-cache"
+_yarn_cache="yarn-cache"
 
+## Sets up a local cache to prevent the redownloding the packages on rebuilds
 _get_cache() {
-  if [[ "${_npm_cache}" =~ ^/ ]]; then
-    printf "%s" "${_npm_cache}"
+  if [[ "${_yarn_cache}" =~ ^/ ]]; then
+    printf "%s" "${_yarn_cache}"
   else
-    printf "%s" "${srcdir}/${_npm_cache}"
+    printf "%s" "${srcdir}/${_yarn_cache}"
   fi
+}
+
+_get_yarn_bin() {
+  local yarn_bin=$(yq ".yarnPath" ${srcdir}/joplin-${pkgver}/.yarnrc.yml)
+  #Remove quotes
+  yarn_bin="${yarn_bin%\"}"
+  yarn_bin="${yarn_bin#\"}"
+  printf "%s" "${srcdir}/joplin-${pkgver}/${yarn_bin}"
 }
 
 prepare() {
   local cache=$(_get_cache)
-  msg2 "npm cache directory: $cache"
+  local yarn_bin=$(_get_yarn_bin)
+  msg2 "Yarn cache directory: $cache"
+  msg2 "Yarn binary: ${yarn_bin}"
 
   msg2 "Disabling husky (git hooks)"
   sed -i '/"husky": ".*"/d' "${srcdir}/joplin-${pkgver}/package.json"
 
+  # There are so many people
+  msg2 "Checking Node PATH"
+  local w_node=$(which node)
+  if [[ $w_node != "/usr/bin/node" ]]; then
+    msg2 "WARNING: Using path ${w_node} beware its not the defualt path, check if you are using nvm or similar"
+  fi
+
+  msg2 "Deleting all package-locks.json"
+  find "${srcdir}/joplin-${pkgver}" -type f -name package-lock.json -delete
   msg2 "Appliying patches..."
-  cd "${srcdir}/joplin-${pkgver}"
-  tar xvJf "${srcdir}/joplin-patches.tar.xz"
-  patch -p1 < "${srcdir}/0005-All-Fixed-issue-where-synchroniser-would-try-to-upda.patch"
-  patch -p1 < "${srcdir}/0007-Tools-Use-Yarn-3-to-manage-monorepo-5833.patch"
+
+  msg2 "Tweaking .yarnrc"
+  yq -i -y ".cacheFolder=(\"${cache}\")" "${srcdir}/joplin-${pkgver}/.yarnrc.yml"
 
   msg2 "Tweaking lerna.json"
   local tmp_json="$(mktemp --tmpdir="$srcdir")"
   local lerna_json="${srcdir}/joplin-${pkgver}/lerna.json"
-  # TODO: Add check for lerna.json file
-  jq ".packages = [
-        \"packages/app-cli\", \"packages/app-desktop\",
-        \"packages/fork-htmlparser2\", \"packages/fork-sax\",
-        \"packages/lib\", \"packages/renderer\", \"packages/tools\",
-        \"packages/turndown\", \"packages/turndown-plugin-gfm\"
-        ] |
-      . += {\"npmClient\": \"yarn\", \"npmClientArgs\": [\"--cache $cache\", \"--no-optional\"]}" \
-    "$lerna_json" > "$tmp_json"
-  cat "$tmp_json" > "$lerna_json"
-  rm "$tmp_json"
+
+  msg2 "Deleting app-mobile"
+  rm -r "${srcdir}/joplin-${pkgver}/packages/app-mobile"
+
+
+  msg2 "Fixing electron-rebuild"
+  # More info: https://github.com/electron/electron-rebuild/issues/913
+  local tmp_desktop_json="$(mktemp --tmpdir="$srcdir")"
+  local desktop_package_json="${srcdir}/joplin-${pkgver}/packages/app-desktop/package.json"
+  jq '.devDependencies."electron-rebuild"=("3.2.7")' \
+    "$desktop_package_json" > "$tmp_desktop_json"
+  cat "$tmp_desktop_json" > "$desktop_package_json"
+  rm "$tmp_desktop_json"
+  cat "$desktop_package_json" | grep "electron-rebuild"
+
+  msg2 "Removing yarn.lock"
+  rm "${srcdir}/joplin-${pkgver}/yarn.lock"
 }
 
 
 build() {
   local cache=$(_get_cache)
-  msg2 "npm cache directory: $cache"
+  local yarn_bin=$(_get_yarn_bin)
+  msg2 "Yarn cache directory: $cache"
   cd "${srcdir}/joplin-${pkgver}"
 
   # Force Lang
   # INFO: https://github.com/alfredopalhares/joplin-pkgbuild/issues/25
   export LANG=en_US.utf8
 
-  msg2 "Installing dependencies through Lerna"
+  msg2 "Installing dependencies through Yarn 3..."
   # FSevents is on the optinal dependencies and its Mac Only
-  yarn install --cache "$cache" --no-optional
+  eval $yarn_bin
 
+  msg2 "Building the workspace"
+  $yarn_bin workspace @joplin/lib install
+  $yarn_bin workspace @joplin/renderer install
+  $yarn_bin workspace @joplin/app-desktop install
+  $yarn_bin workspace @joplin/app-desktop run electron-builder build --linux
 }
 
 #FIXME: These checks fail on some machines, even with the exit 0
@@ -97,51 +126,50 @@ package_joplin() {
   depends=('coreutils' 'libsecret' 'nodejs' 'python')
 
   local cache=$(_get_cache)
-  msg2 "npm cache directory: $cache"
+  local yarn_bin=$(_get_yarn_bin)
+  msg2 "Yarn cache directory: $cache"
 
-  msg2 "Building CLI"
-  cd "${srcdir}/joplin-${pkgver}/packages/app-cli"
-  yarn run build
+  msg2 "Packaging CLI with Repo Gulp"
+  cd "${srcdir}/joplin-${pkgver}/packages/app-cli/"
+  #gulp_bin=$($yarn_bin bin gulp)
+  #msg2 "Using gulp: ${gulp_bin}"
+  #${gulp_bin} build
+  #cd "${srcdir}/joplin-${pkgver}/packages/app-cli/build"
+  #$yarn_bin pack
 
-  msg2 "Packaging CLI"
-  cd "${srcdir}/joplin-${pkgver}/packages/app-cli/build"
-  local pack="$(npm pack | tail -n 1)"
+  #msg2 "Rsyncing files"
+  #mkdir -p "${pkgdir}/usr/share/joplin/"
+  #rsync -avp "./" "${pkgdir}/usr/share/joplin/app-cli"
+  #rsync -avp "../lib/" "${pkgdir}/usr/share/joplin/lib"
+  #rsync -avp "../renderer/" "${pkgdir}/usr/share/joplin/renderer"
 
-  msg2 "Installing CLI ($pack)"
-  npm install --global --production --user root --cache "$cache" \
-    --prefix "${pkgdir}/tmp" "$pack"
-
-  msg2 "Rearranging directory tree"
-  mkdir -p "${pkgdir}/usr/share/"
-  mv "${pkgdir}/tmp/lib/node_modules/joplin/" "${pkgdir}/usr/share/"
-  rm -r "${pkgdir}/tmp"
 
   msg2 "Fixing Directories Permissions"
   # Non-deterministic race in npm gives 777 permissions to random directories.
   # See https://github.com/npm/cli/issues/1103 for details.
-  find "${pkgdir}/usr" -type d -exec chmod 755 {} +
+  #find "${pkgdir}/usr" -type d -exec chmod 755 {} +
 
-  msg2 "Removing References to \$pkgdir"
-  find "$pkgdir" -name package.json -print0 | xargs -0 sed -i "/_where/d"
+  #msg2 "Removing References to \$pkgdir"
+  ##find "$pkgdir" -name package.json -print0 | xargs -0 sed -i "/_where/d"
 
-  msg2 "Removing References to \$srcdir"
-  local tmppackage="$(mktemp --tmpdir="$srcdir")"
-  local pkgjson="$pkgdir/usr/share/joplin/package.json" # TODO joplin name
-  jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
-  mv "$tmppackage" "$pkgjson"
-  chmod 644 "$pkgjson"
+  #msg2 "Removing References to \$srcdir"
+  #local tmppackage="$(mktemp --tmpdir="$srcdir")"
+  #local pkgjson="$pkgdir/usr/share/joplin/app-cli/package.json" # TODO joplin name
+  #jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
+  #mv "$tmppackage" "$pkgjson"
+  #chmod 644 "$pkgjson"
 
-  msg2 "Fixing Permissions set by npm"
-  # npm gives ownership of ALL FILES to build user
-  # https://bugs.archlinux.org/task/63396
-  chown -R root:root "${pkgdir}"
+  #msg2 "Fixing Permissions set by npm"
+  ## npm gives ownership of ALL FILES to build user
+  ## https://bugs.archlinux.org/task/63396
+  #chown -R root:root "${pkgdir}"
 
-  msg2 "Installing LICENSE"
-  install -Dm644 "${srcdir}/joplin-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  #msg2 "Installing LICENSE"
+  #install -Dm644 "${srcdir}/joplin-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
-  msg2 "Installing Startup Script"
-  cd "${srcdir}"
-  install -Dm755 joplin.sh "${pkgdir}/usr/bin/joplin"
+  #msg2 "Installing Startup Script"
+  #cd "${srcdir}"
+  #install -Dm755 joplin.sh "${pkgdir}/usr/bin/joplin"
 }
 
 
@@ -156,22 +184,28 @@ package_joplin-desktop() {
   mkdir -p "${srcdir}/joplin-${pkgver}/packages/app-desktop/dist/"
   touch "${srcdir}/joplin-${pkgver}/packages/app-desktop/dist/AppImage"
 
-  msg2 "Building Desktop with packaged Electron..."
-  mkdir -p "${pkgdir}/usr/share/joplin-desktop"
-  cd "${srcdir}/joplin-${pkgver}/packages/app-desktop"
-  electron_dir="/usr/lib/electron"
-  electron_version=$(cat /usr/lib/electron/version)
-  msg2 "Using Electron Version ${electron_version}"
-  # Current version of electron does not work
-  USE_HARD_LINKS=false yarn run dist -- --publish=never  --linux  --x64 \
-    --dir="dist/"
-      # FIXME: Using packaged electron breaks the interface
-    #--dir="dist/" -c.electronDist=$electron_dir -c.electronVersion=$electron_version
+  #cd "${srcdir}/joplin-${pkgver}/packages/app-desktop/node_modules/@joplin/"
+  #ln -sf "../../../fork-uslug" "."
 
+  msg2 "Building Desktop with packaged Electron..."
+  cd "${srcdir}/joplin-${pkgver}/packages/app-desktop/"
+  #electron_dir="/usr/lib/electron"
+  #electron_version=$(cat /usr/lib/electron/version)
+  #msg2 "Using Electron Version ${electron_version}"
+  ## Current version of electron does not work
+  ##USE_HARD_LINKS=false yarn run dist -- --publish=never  --linux  --x64 \
+  #sed -i "s/const forceAbiArgs = '--force-abi 89';/const forceAbiArgs = ''/" tools/electronRebuild.js
+  #gulp electronRebuild
+  ##DEBUG="electron-rebuild" USE_HARD_LINKS=false yarn run dist -- --publish=never \
+  ##  --dir="dist/"
+  # # --dir="dist/" -c.electronDist=$electron_dir -c.electronVersion=$electron_version
+  #    # FIXME: Using packaged electron breaks the interface
+
+  msg2 "Packaging the desktop..."
   # TODO: Cleanup app.asar file
   cd dist/linux-unpacked/
+  mkdir -p "${pkgdir}/usr/share/joplin-desktop"
   cp -R "." "${pkgdir}/usr/share/joplin-desktop"
-
   msg2 "Installing LICENSE..."
   cd "${srcdir}/joplin-${pkgver}/"
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
