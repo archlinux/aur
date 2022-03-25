@@ -1,6 +1,6 @@
 pkgbase = coolero
 	pkgdesc = A program to monitor and control your cooling devices
-	pkgver = 0.8.4
+	pkgver = 0.8.5
 	pkgrel = 1
 	url = https://gitlab.com/codifryed/coolero
 	arch = any
@@ -26,7 +26,7 @@ pkgbase = coolero
 	optdepends = nvidia-utils: NVIDIA GPU support
 	provides = coolero
 	conflicts = coolero
-	source = https://gitlab.com/codifryed/coolero/-/archive/0.8.4/coolero-0.8.4.tar.gz
-	sha256sums = af482082e96e9957585565396caf51084d81f952c758863947af5ba5dd8215d4
+	source = https://gitlab.com/codifryed/coolero/-/archive/0.8.5/coolero-0.8.5.tar.gz
+	sha256sums = b21c0283b1ddc786515de01fd6989c5d33dd8813f3c84460afa972e7fb84fa03
 
 pkgname = coolero
