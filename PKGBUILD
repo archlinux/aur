@@ -1,7 +1,7 @@
 # Maintainer: Vadim Yanitskiy <axilirator@gmail.com>
 
 pkgname='gr-ieee802-11-git'
-pkgver=0c0fca8
+pkgver=r352.0c0fca8
 pkgrel=1
 pkgdesc="An IEEE 802.11 a/g/p transceiver for GNU Radio."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ _gitname=gr-ieee802-11
 
 pkgver() {
   cd "$_gitname"
-  echo $(git describe --always | sed 's/-/./g')
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
