@@ -1,9 +1,9 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 pkgname=zmusic-git
-pkgver=1.1.8+4+gd8e6e28
+pkgver=1.1.8+12+g6b5aebf
 pkgrel=1
 pkgdesc="GZDoom's music system as a standalone library (git version)"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/coelckers/ZMusic'
 license=('BSD' 'GPL3' 'LGPL2.1' 'LGPL3' 'custom:dumb')
 depends=('alsa-lib' 'fluidsynth>=2.2' 'libsndfile' 'mpg123' 'zlib')

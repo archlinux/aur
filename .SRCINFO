@@ -1,9 +1,10 @@
 pkgbase = zmusic-git
 	pkgdesc = GZDoom's music system as a standalone library (git version)
-	pkgver = 1.1.8+4+gd8e6e28
+	pkgver = 1.1.8+12+g6b5aebf
 	pkgrel = 1
 	url = https://github.com/coelckers/ZMusic
 	arch = x86_64
+	arch = aarch64
 	license = BSD
 	license = GPL3
 	license = LGPL2.1
