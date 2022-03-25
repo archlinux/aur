@@ -4,7 +4,7 @@
 # Contributor: Zdenek Obst <zdenek dot obst at gmail dot com>
 pkgname=wildfly
 pkgver=26.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Wildfly Application Server.'
 url='http://www.wildfly.org/'
 license=('LGPL')
@@ -57,6 +57,8 @@ package() {
     echo "   -> Creating wildfly.conf (environment settings)..."
     install -D -t "${pkgdir}/${_cfgloc}/${pkgname}" -m 644 wildfly.conf
     echo "   -> Placing wildfly.service in /$_sysdloc..."
+    # fix pid file location
+    sed -i 's|PIDFile=/var/run/wildfly/wildfly\.pid|PIDFile=/run/wildfly/wildfly\.pid|' wildfly.service
     install -D -t "${pkgdir}/${_sysdloc}" -m 644 wildfly.service
     echo "   -> Copying launch.sh to the bin directory..."
     install -D -t "${pkgdir}/${_pkgloc}/${pkgname}/bin" -m 755 launch.sh
