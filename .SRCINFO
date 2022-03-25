@@ -1,0 +1,12 @@
+pkgbase = kaiso
+	pkgdesc = A TCP service router
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/42LoCo42/kaiso
+	arch = x86_64
+	license = AGPL
+	makedepends = nim
+	source = kaiso-1.tar.gz::https://github.com/42LoCo42/kaiso/archive/refs/tags/v1.tar.gz
+	sha256sums = a09799a5c234d2e592555c0f8451b1ad11fbafcffa9a4b1348cf8b7697683738
+
+pkgname = kaiso
