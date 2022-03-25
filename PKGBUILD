@@ -3,7 +3,7 @@ pkgbase=python-cdflib
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 pkgdesc="A python module for reading NASA's Common Data Format (cdf) files Resources"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python-setuptools' 'python-wheel' 'python-build' 'python-installer
 #checkdepends=('python-pytest-cov')
 #checkdepends=('python-astropy' 'python-attrs>=19.2.0')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('b16eb75054471d53b0fca3c7217987f3')
+md5sums=('e4e9f63798d2c5847539ba31822bb33a')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}

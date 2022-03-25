@@ -1,6 +1,6 @@
 pkgbase = python-cdflib
 	pkgdesc = A python module for reading NASA's Common Data Format (cdf) files Resources
-	pkgver = 0.4.3
+	pkgver = 0.4.4
 	pkgrel = 1
 	url = https://github.com/MAVENSDC/cdflib
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = python-cdflib
 	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
-	source = https://files.pythonhosted.org/packages/source/c/cdflib/cdflib-0.4.3.tar.gz
-	md5sums = b16eb75054471d53b0fca3c7217987f3
+	source = https://files.pythonhosted.org/packages/source/c/cdflib/cdflib-0.4.4.tar.gz
+	md5sums = e4e9f63798d2c5847539ba31822bb33a
 
 pkgname = python-cdflib
 	depends = python>=3.6
