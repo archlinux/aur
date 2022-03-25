@@ -10,7 +10,7 @@ url="https://gitlab.com/qYp/$pkgname"
 license=('MIT')
 depends=(dialog)
 source=("https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
-sha256sums=('e5b8620abe1730da00ba4f891ef9044b7a7c408d55ac50835e49bacb486d162b')
+sha256sums=('3a4f35713a2043ddc7f4b187a870c631f41b9116c9cbc4fa6ccf6fc0a69fbfbf')
 
 package() {
     install -Dm755 opt/Nu1LL1nuX/{Nu1LL1nuX.sh,pre-install.sh} -t "${pkgdir}/opt/${_pkgname}"
