@@ -1,6 +1,6 @@
 pkgbase = whatip-git
 	pkgdesc = Info on your IP
-	pkgver = 1.0.r49.g6161b94
+	pkgver = 1.0.r41.gd75b9fd
 	pkgrel = 1
 	url = https://gitlab.gnome.org/gabmus/whatip
 	arch = any
@@ -16,7 +16,6 @@ pkgbase = whatip-git
 	depends = iproute2
 	depends = python-gobject
 	depends = gobject-introspection
-	depends = blueprint-compiler-git
 	provides = whatip
 	conflicts = whatip
 	source = whatip::git+https://gitlab.gnome.org/gabmus/whatip

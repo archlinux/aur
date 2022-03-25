@@ -2,7 +2,7 @@
 # Upstream URL: https://gitlab.gnome.org/gabmus/whatip
 
 pkgname=whatip-git
-pkgver=1.0.r49.g6161b94
+pkgver=1.0.r41.gd75b9fd
 pkgrel=1
 pkgdesc='Info on your IP'
 arch=('any')
@@ -17,7 +17,6 @@ depends=(
     'iproute2'
     'python-gobject'
     'gobject-introspection'
-    'blueprint-compiler-git'
 )
 makedepends=('git' 'meson' 'blueprint-compiler-git')
 provides=('whatip')
