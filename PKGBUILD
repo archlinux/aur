@@ -10,8 +10,8 @@ provides=("dolphin-megasync=$pkgver")
 conflicts=('dolphin-megasync' 'dolphin-megasync-git')
 depends=('megasync>=3.5'
          'dolphin')
-source=("${url}/linux/MEGAsync/Arch_Extra/x86_64/dolphin-megasync-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz")
-md5sums=('882a2bb9f4bec41ae285ae2b353d730b')
+source=("${url}/linux/repo/Arch_Extra/x86_64/dolphin-megasync-${pkgver}-${pkgrel}-x86_64.pkg.tar.xz")
+sha256sums=('0cb055655e970c53c2475dacb8e116975d9b196505a7be112624a35f8cdfbfb3')
 
 package() {
     cp -R "${srcdir}/usr" "${pkgdir}/"
