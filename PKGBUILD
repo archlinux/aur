@@ -7,7 +7,7 @@ pkgdesc="Bamini tamil language keymap using table"
 arch=('any')
 url="https://github.com/Thenujan-0/bamini"
 license=('GPL')
-source=("bamini::git://github.com/Thenujan-0/bamini.git")
+source=("bamini::git+https://github.com/Thenujan-0/bamini.git")
 sha256sums=('SKIP')
 depends=('fcitx5' 'fcitx5-table-other')
 
@@ -17,10 +17,10 @@ package() {
     install -d "$pkgdir/usr/share/fcitx5/table/"
     install -m644 "$srcdir/bamini/tamil-bamini.main.dict" "$pkgdir/usr/share/fcitx5/table/tamil-bamini.main.dict"
 
-    mkdir -p "$pkgdir/etc/"
+    mkdir -p "$pkgdir/etc/profile.d"
 
     if [ "$GTK_IM_MODULE" = "" ];then
-        echo "GTK_IM_MODULE=fcitx">> "$pkgdir/etc/environment"
+        echo "export GTK_IM_MODULE=fcitx" >> "$pkgdir/etc/profile.d/$pkgname.sh"
     else
         echo "GTK_IM_MODULE is already set"
     fi
@@ -28,7 +28,7 @@ package() {
 
 
     if [ "$QT_IM_MODULE" = "" ];then
-        echo "QT_IM_MODULE=fcitx">> "$pkgdir/etc/environment"
+        echo "export QT_IM_MODULE=fcitx" >> "$pkgdir/etc/profile.d/$pkgname.sh"
     else
         echo "QT_IM_MODULE is already set"
     fi
@@ -37,7 +37,7 @@ package() {
 
 
     if [ "$XMODIFIERS" = "" ];then
-        echo "XMODIFIERS=@im=fcitx">> "$pkgdir/etc/environment"
+        echo "export XMODIFIERS=@im=fcitx">> "$pkgdir/etc/profile.d/$pkgname.sh"
     else
         echo "XMODIFIERS is already set"
     fi
