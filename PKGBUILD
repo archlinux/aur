@@ -19,8 +19,7 @@ depends=(gtk3 libxt mime-types dbus-glib
          libvpx libwebp libjpeg zlib icu libevent libpipewire02)
 makedepends=(mercurial unzip zip diffutils yasm mesa imake inetutils
              xorg-server-xvfb autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
-             python-setuptools python-psutil python-zstandard lld dump_syms
-             wasi-sdk-git)
+             python-setuptools lld dump_syms wasi-sdk-git)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -132,7 +131,7 @@ build() {
   export MOZ_SOURCE_REPO="$_repo"
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
-  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
+  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=none
 
   # LTO/PGO needs more open files
   ulimit -n 4096
