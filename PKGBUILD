@@ -5,13 +5,13 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=ssmtool
 epoch=
-pkgver=0.6.2
+pkgver=0.6.4
 pkgrel=00
 pkgdesc='A simple, effective sentence mining tool.'
 arch=(any)
 url=https://github.com/FreeLanguageTools/ssmtool
 license=(GPL3)
-depends=(python python-beautifulsoup4 python-bidict python-charset-normalizer python-ebooklib python-flask python-flask-sqlalchemy python-googletrans python-lxml python-mobi python-playsound python-pymorphy2 python-pymorphy2_dicts python-pymorphy2-dicts-ru python-pyqt5 python-pystardict python-requests python-sentence-splitter python-simplemma python-slpp)
+depends=(python python-beautifulsoup4 python-bidict python-charset-normalizer python-ebooklib python-flask python-flask-sqlalchemy python-lxml python-mobi python-playsound python-pymorphy2 python-pymorphy2-dicts python-pymorphy2-dicts-ru python-pyqt5 python-pystardict python-requests python-sentence-splitter python-simplemma python-slpp)
 ## EXTRA_DEPENDS ##
 makedepends=(python-pip)
 checkdepends=()
@@ -20,9 +20,9 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/27/fd/4fd86515230aa1839ad9c52142f6bc39ffbf8a0009860f0256386afc5a8b/ssmtool-0.6.2-py3-none-any.whl)
-md5sums+=(feef01e9543cc6e0b9a7f038faa665c7)
-noextract+=(ssmtool-0.6.2-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/1f/ab/3efb91e531f04bd5dbf31599ca79b8202d3e7d13403309cfdbdf770110d3/ssmtool-0.6.4-py3-none-any.whl)
+md5sums+=(e8eee64df88d807afae69a452f18fdbd)
+noextract+=(ssmtool-0.6.4-py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(1ebbd3e34237af26da5dc08a4e440464)
 
