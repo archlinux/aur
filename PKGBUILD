@@ -9,7 +9,7 @@ url="https://gitlab.com/qYp/${pkgname}"
 license=('MIT')
 makedepends=(git)                 
 source=("https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
-sha256sums=('2e3c4ea65030a715239d07c9e28765757a7e8793eb6390c2e8c0cc17c6127d5a')
+sha256sums=('7d8875a0f2777601057f5041ace7dd29c04f567f67afd8aef329fab580b85343')
 
 package() {
   install -Dm644 ${srcdir}/usr/share/pacman/keyrings/* -t "${pkgdir}/usr/share/pacman/keyrings/"
