@@ -20,7 +20,7 @@ sha256sums=('c8ad8638684c0a903ebabc30490079e31b1a6a638da2adec5a8bef6a0e62214b')
 build() {
     cd "${srcdir}"
 
-    cmake -B "build" -GNinja "${srcdir}/${_snapshot}" \
+    cmake -B "build" -GNinja "${_snapshot}" \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_INSTALL_LIBDIR="lib" \
@@ -32,9 +32,9 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/build"
-    DESTDIR="${pkgdir}" ninja install
+    cd "${srcdir}"
+    DESTDIR="${pkgdir}" ninja -C "build" install
 
-    cd "${srcdir}/${_snapshot}"
+    cd "${_snapshot}"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "COPYING"
 }
