@@ -1,14 +1,14 @@
 # Maintainer: jabra98 <jabra98.gpg@gmail.com>
 pkgname=seer-gdb-git
-pkgver=r108.f0d9245ee3
+pkgver=r184.9d3984c761
 pkgrel=1
 pkgdesc="Seer - a gui frontend to gdb"
 arch=('x86_64')
 url="https://github.com/epasveer/seer.git"
 license=('GPL3')
-depends=('qt5-base' 'gdb')
+depends=('qt5-base' 'gdb' 'qt5-charts')
 conflicts=("${pkgname%-git}")
-makedepends=('git' 'gcc' 'cmake' 'qt5-base')
+makedepends=('git' 'gcc' 'cmake' 'qt5-base' 'qt5-charts')
 provides=("${pkgname%-git}")
 source=("${pkgname%-gdb-git}::git+https://github.com/epasveer/${pkgname%-gdb-git}.git")
 md5sums=('SKIP')
