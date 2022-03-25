@@ -1,0 +1,11 @@
+pkgbase = ttf-dec-terminal-modern
+	pkgdesc = Font based on the one of the Digital Electronics Corp's VT220 video terminal.
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://www.vtxemu.com/vtx/fnt/_decterm-demo.html
+	arch = any
+	license = custom
+	source = https://www.wfonts.com/download/data/2015/05/12/dec-terminal-modern/dec-terminal-modern.zip
+	md5sums = 13a70789fe00d6b0b4cfed39309575c4
+
+pkgname = ttf-dec-terminal-modern
