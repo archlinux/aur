@@ -4,10 +4,10 @@
 # Based on tracktion-6 aur package from boltbuckle <amygdala@cheerful.com>
 
 pkgname=tracktion-waveform
-pkgver=12.0.52
+pkgver=12.0.53
 pkgrel=1
 pkgdesc="Audio and MIDI Workstation (DAW)"
-arch=('x86_64')
+arch=('x86_64' 'armv7l' 'aarch64')
 url="https://www.tracktion.com/"
 license=('custom')
 depends=('gcc-libs'
@@ -38,8 +38,14 @@ conflicts=(
   'waveform-bundle'
   'tracktion-waveform-beta'
 )
-source=(https://cdn.tracktion.com/file/tracktiondownload/w12/${pkgver//./}/waveform_64bit_v${pkgver}.deb)
-sha256sums=('0b4a098ccc8bea6cb772bed84034e3b7f5558e9bbb0b1993bf3d2f0a5b74bfab')
+
+# Tracktion did not publish ARM builds for the pkgver yet! Hence, using hardcoded versions here.
+source_aarch64=(https://cdn.tracktion.com/file/tracktiondownload/waveform/1157/waveform_pi_32bit_v11.5.7.deb)
+source_armv7l=(https://cdn.tracktion.com/file/tracktiondownload/waveform/1157/waveform_pi_64bit_v11.5.7.deb)
+source_x86_64=(https://cdn.tracktion.com/file/tracktiondownload/w12/${pkgver//./}/waveform_64bit_v${pkgver}.deb)
+sha256sums_x86_64=('ef33fe0b8626587be667cc0e1bf64dcffe56c868705112cae33d39d4893e9f63')
+sha256sums_armv7l=('20fb190be082173f0d17937286762de42031d6b291b3b4db5a62618f0ed7098a')
+sha256sums_aarch64=('f65a29d441061a3a674b1893d39d5eb85f000832d7948e8fd67dbeca2d127674')
 
 package() {
     tar -x --xz -f data.tar.xz -C "${pkgdir}"
