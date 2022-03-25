@@ -12,6 +12,7 @@ depends=("xdotool" "xclip" "libxtst" "libnotify" "wxgtk3")
 makedepends=("rust" "git" "cmake" "cargo-make" "rust-script")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
+options=("!lto")  # fails with LTO as of 2022-03
 source=("git+https://github.com/federico-terzi/espanso.git#branch=${_branch}")
 sha512sums=('SKIP')
 

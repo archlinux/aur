@@ -17,6 +17,7 @@ pkgbase = espanso-git
 	depends = wxgtk3
 	provides = espanso
 	conflicts = espanso
+	options = !lto
 	source = git+https://github.com/federico-terzi/espanso.git#branch=dev
 	sha512sums = SKIP
 
