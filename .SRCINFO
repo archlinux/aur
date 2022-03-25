@@ -1,7 +1,7 @@
 pkgbase = asmjit-git
 	pkgdesc = Machine code generation for C++
 	pkgver = r398.21a31b8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://asmjit.com/
 	arch = aarch64
 	arch = armv7h
@@ -9,7 +9,7 @@ pkgbase = asmjit-git
 	arch = i686
 	arch = pentium4
 	arch = x86_64
-	license = ZLIB
+	license = zlib
 	makedepends = cmake
 	makedepends = git
 	depends = gcc-libs
