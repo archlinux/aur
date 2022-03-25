@@ -1,6 +1,6 @@
 pkgname=ntfs3-dkms-git
 pkgver=5.15.r9.g52e00ea
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="NTFS3 is fully functional NTFS Read-Write driver. The driver works with NTFS versions up to 3.1."
 arch=('any')
@@ -22,13 +22,13 @@ source=(
     "kernel-5.16.patch"
 )
 
-sha512sums=(
-    '533c249f0f6bd4833faf02d0d92ca1b5802a49afc5feb2e46a7d37275cfca7896db76cd83593f4f313977d278a9a7e92eda550667be2b93910c49cfb68ead4fb'
-    'a0f0cd8901008759dc32f82d8ed758c3ba044bc1e0514b7cdf28aedde3ec369afb76c21381e4e36d4b6ff251116fec69521a0ef0279f8f1ef4cfebf3e87f6594'
-    'bed04edd0de7fd1f5675689e24b77f7d7a1b6eb8075c0fb20fa7ac8f2ca569aa3ea1685ddde5f1800958e21be96b8afaae68f49d7855b97915eb1c9c3352a66e'
-    '1644192df72ce80d0244e21b2c429785106b0bba179a06c5babd92b6d1b09ad28771eeb63f953ecb65ed616ab2d6b1744f1465c905ae8080c6b01c8d7e164005'
-    '45b44d0d235e1fe0853c2b095843ec5d795dacc8437585d84250b7be4793aeb538152f032fc998d7073e62b11251d9f345679f912a6cb54b87b56aa85173dc22'
-    '5a61d737040bbb767d1e047519149e79f411c680552192cc3f0d1538726e853573a8c1c7211e585bfb2fd6a75b6f942ebd6bb71c17d207cf4e89d484bf0f36bf'
+sha256sums=(
+    'fd4cf0e2dc160efecc55d4ea99667669b870599e4e81be435ec2201381b7e2ac'
+    '55db2894a265ec5ba50ea3edc05259f9260b5819a8fe65dbb4e0ab5aa58b3ee7'
+    'b1674d6bb9b255a059efc4eae0846a426620a7a236dff19f4d0f85dfe2bbfd0d'
+    'f176a508596d0021beae0af264f2ef92d46062c7b12e89e4f4e8104d91118d85'
+    '69c315bbb37e831adacedaa5eff1b32571ef86a24dcdb2a312a015bf824f6569'
+    '62bdd84924a189b24912cf7a938c61fff6bd5aa314359e62bdd6efffc49b907b'
 )
 
 _ver="5.15"
@@ -37,8 +37,8 @@ _base="8bb7eca972ad531c9b149c0a51ab43a417385813"
 
 # The whole kernel history is very huge, so downloading it is a pain.
 # Also commits count is insane and we don't want to see all that in pkgver.
-# Here is tricky workaround.
-# Use latest merge as base commit and request info via GitHub API.
+# Here is a tricky workaround.
+# Use the latest merge point and request info via GitHub API.
 
 pkgver() {
     cd "${srcdir}/repo"
@@ -58,23 +58,11 @@ prepare() {
     fi
 
     cd "repo"
-
     git fetch -f --depth=1 --filter=tree:0
     git sparse-checkout set "/fs/ntfs3"
     git reset --hard "origin/${_branch}"
-}
 
-package() {
-    cd "${srcdir}"
-
-    local dest=$(install -dm755 "${pkgdir}/usr/src/ntfs3-${_ver}" && echo "$_")
-
-    install -Dm644 -t "${dest}" "dkms.conf"
-
-    install -dm755 "${dest}/patches" && cp -t "$_" "kernel-"*.patch
-
-    cd "repo/fs/ntfs3"
-
+    cd "fs/ntfs3"
     patch -p0 -N -i "${srcdir}/Makefile.patch"
 
     # For testing
@@ -82,6 +70,16 @@ package() {
     # patch -p1 -N -i "${srcdir}/kernel-5.15-backport.patch"
     # patch -p1 -N -i "${srcdir}/kernel-5.14-backport.patch"
     # patch -p1 -N -i "${srcdir}/kernel-5.12-backport.patch"
+}
 
+package() {
+    local dest="${pkgdir}/usr/src/ntfs3-${_ver}"
+    install -dm755 "${dest}"
+
+    cd "${srcdir}"
+    install -Dm644 -t "${dest}" "dkms.conf"
+    install -dm755 "${dest}/patches" && cp -t "$_" "kernel-"*.patch
+
+    cd "repo/fs/ntfs3"
     cp -rt "${dest}" *
 }
