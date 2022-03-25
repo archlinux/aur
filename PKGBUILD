@@ -1,46 +1,39 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
-_pkgname=espanso
-pkgname=${_pkgname}
-pkgver=0.7.3
+_pkgver=2.1.4-beta
+pkgname=espanso
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
 url="https://espanso.org/"
 license=("GPL3")
-depends=("xdotool" "xclip" "libxtst" "libnotify")
-optdepends=("modulo: Support for interactive forms")
-makedepends=("rust" "git" "cmake")
-install="${pkgname}.install"
-source=("${_pkgname}::git+https://github.com/federico-terzi/espanso.git#tag=v${pkgver}")
+depends=("xdotool" "xclip" "libxtst" "libnotify" "wxgtk2")
+makedepends=("rust" "git" "cmake" "cargo-make" "rust-script")
+options=("!lto")  # fails with LTO as of 2022-03
+source=("git+https://github.com/federico-terzi/espanso.git#tag=v${_pkgver}")
 sha512sums=('SKIP')
 
 
 prepare() {
-    cd "$_pkgname"
+    cd "espanso"
 
     # don't change the original service file, as it will be embedded in the binary
-    cp "src/res/linux/systemd.service" "systemd.service"
+    cp "espanso/src/res/linux/systemd.service" "systemd.service"
     sed -i "s|{{{espanso_path}}}|/usr/bin/espanso|g" "systemd.service"
 }
 
-check() {
-    cd "$_pkgname"
-
-    cargo test --release --locked
-}
-
 build() {
-    cd "$_pkgname"
+    cd "espanso"
 
-    cargo build --release --locked
+    cargo make --profile release build-binary
 }
 
 package() {
-    cd "$_pkgname"
+    cd "espanso"
 
-    install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 "systemd.service" "${pkgdir}/usr/lib/systemd/user/${_pkgname}.service" # install our own copy
+    install -Dm755 "target/release/espanso" "${pkgdir}/usr/bin/espanso"
+    install -Dm644 "systemd.service" "${pkgdir}/usr/lib/systemd/user/espanso.service"
 
-    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/espanso/README.md"
 }
