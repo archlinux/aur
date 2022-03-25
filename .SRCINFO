@@ -1,6 +1,6 @@
 pkgbase = linux-hardened-git
 	pkgdesc = Security-Hardened Linux
-	pkgver = 5.15rc1.r1042776.g76ae1c63f2a4
+	pkgver = 5.16.17.r1062918.g56437fabf509
 	pkgrel = 1
 	url = https://github.com/anthraxx/linux-hardened
 	arch = x86_64
@@ -8,6 +8,11 @@ pkgbase = linux-hardened-git
 	makedepends = bc
 	makedepends = kmod
 	makedepends = libelf
+	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
 	makedepends = xmlto
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
@@ -15,13 +20,13 @@ pkgbase = linux-hardened-git
 	makedepends = imagemagick
 	makedepends = git
 	options = !strip
-	source = linux-hardened::git+https://github.com/anthraxx/linux-hardened#branch=5.15?signed
+	source = linux-hardened::git+https://github.com/anthraxx/linux-hardened#branch=5.16?signed
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = E240B57E2C4630BA768E2F26FC1B547C8D8172C8
 	sha256sums = SKIP
-	sha256sums = a850533463b5e85b0ee15c94325643c4c626c7faa7ad1d13f9270f181253ac82
+	sha256sums = c039d0429b0b04bfedecea89860d43f5679b7efa60d3748df9dccfd7c4115724
 
 pkgname = linux-hardened-git
 	pkgdesc = The Security-Hardened Linux kernel and modules
@@ -36,6 +41,7 @@ pkgname = linux-hardened-git
 
 pkgname = linux-hardened-headers-git
 	pkgdesc = Headers and scripts for building modules for the Security-Hardened Linux kernel
+	depends = pahole
 	provides = linux-hardened-headers
 
 pkgname = linux-hardened-docs-git
