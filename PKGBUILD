@@ -1,4 +1,4 @@
-# Maintainer: jabra98 <jabra98.gpg@gmail.com>
+# Maintainer: jabra11 <jabra11.gpg@gmail.com>
 pkgname=seer-gdb-git
 pkgver=r184.9d3984c761
 pkgrel=1
