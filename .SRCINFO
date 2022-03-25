@@ -9,6 +9,6 @@ pkgbase = siyuan-appimage
 	noextract = siyuan-1.9.3-linux.AppImage
 	options = !strip
 	source = https://download.fastgit.org/siyuan-note/siyuan/releases/download/v1.9.3/siyuan-1.9.3-linux.AppImage
-	sha512sums = 416304f6e4c75e15e0c971d75c3ce998108d183aeacb945b37fdb63b2c5dce074c3da98de81327550f21fc4c7740daaae80b52bc32f7270ae46e4e34f386546a
+	sha512sums = 220dad8edb7310ddd14e383bed67c30d6b0239b19b2eee721166cc330f91a959e5eaeb13986dd3fea6928924720be13c3bc36784f139a70b906b83888a50112f
 
 pkgname = siyuan-appimage
