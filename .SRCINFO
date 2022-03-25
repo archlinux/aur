@@ -1,6 +1,6 @@
 pkgbase = octave-windows
 	pkgdesc = Provides COM interface and additional functionality on Windows
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://octave.sourceforge.io/windows/
 	install = octave-windows.install
@@ -8,9 +8,8 @@ pkgbase = octave-windows
 	groups = octave-forge
 	license = GPL
 	depends = octave>=3.8.0
-	noextract = windows-1.6.1.tar.gz
-	source = https://downloads.sourceforge.net/octave/windows-1.6.1.tar.gz
-	sha256sums = 66f5410595ebccdb49ef5bb199473eb48115dd4c87bf74bb230c21f0a5810d84
+	noextract = windows-1.6.2.tar.gz
+	source = https://downloads.sourceforge.net/octave/windows-1.6.2.tar.gz
+	sha256sums = 789605b6187fb664dfca144d03cbac68f3bbfe3efd55bcaab43831e7eb2b4b86
 
 pkgname = octave-windows
-
