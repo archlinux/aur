@@ -1,7 +1,7 @@
 pkgbase = python-astroquery
 	pkgdesc = Set of tools for querying astronomical web forms and databases
 	pkgver = 0.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = http://astroquery.readthedocs.org/en/latest/
 	arch = x86_64
 	license = BSD
@@ -13,6 +13,7 @@ pkgbase = python-astroquery
 	depends = python-keyring
 	depends = python-beautifulsoup4
 	depends = python-html5lib
+	depends = python-pyvo
 	optdepends = python-aplpy: required for the full functionality of the alma module
 	optdepends = python-pyregion: required for the full functionality of the alma module
 	optdepends = python-astropy-healpix: required for the full functionality of the cds module
