@@ -20,7 +20,7 @@ srcname=pd-faustgen
 dstname=$pkgpref-faustgen2
 
 pkgname=$dstname-git
-pkgver=2.0.2.r8.g9ac1471
+pkgver=2.0.2.r9.gf651346
 pkgrel=1
 pkgdesc="The FAUST compiler embedded in a Pd external - git version"
 arch=("i686" "x86_64")
@@ -30,10 +30,8 @@ depends=("$puredata" 'llvm-libs')
 makedepends=('cmake' 'faust' 'llvm')
 provides=("$dstname")
 conflicts=("$dstname")
-source=("git+https://github.com/agraef/$srcname.git"
-	"faust-api-breakage.diff")
-md5sums=('SKIP'
-         'a9d2cdb5d664a8c9954b1b09fcb7b22f')
+source=("git+https://github.com/agraef/$srcname.git")
+md5sums=('SKIP')
 
 pkgver() {
     cd "$srcname"
@@ -42,11 +40,6 @@ pkgver() {
 
 prepare() {
      cd "$srcname"
-     # Work around recent API breakage in Faust version 2.37.3 and later. This
-     # should really be fixed upstream in pd-faustgen2 using some cmake magic,
-     # but this will do for now. Thanks to Björn Kessler for spotting this and
-     # contributing the patch.
-     patch -p1 -i ../faust-api-breakage.diff
      # We don't have to initialize the faust submodules, as we're building
      # against an installed libfaust. This makes checking out the submodules
      # much quicker.
