@@ -10,6 +10,7 @@ arch=('any')
 url="https://github.com/aunetx/blur-my-shell"
 license=('GPL3')
 depends=('dconf' 'gnome-shell')
+conflicts=('gnome-shell-extension-blur-my-shell-git')
 source=("https://github.com/aunetx/blur-my-shell/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('ba7fe26e4b5288670b0b6f0c2e0a04dd5de6567b6e861361c1ea4772afa24776')
 
