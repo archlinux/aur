@@ -2,7 +2,7 @@
 
 pkgname=rathole
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A reverse proxy for NAT traversal"
 arch=('x86_64')
 url="https://github.com/rapiz1/rathole"
@@ -31,6 +31,9 @@ package() {
   cd "$pkgname-$pkgver"
   install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
+  for svc in "${pkgname}@.service" "${pkgname}c@.service" "${pkgname}s@.service"; do
+    install -Dm 644 "examples/systemd/$svc" -t "$pkgdir/usr/lib/systemd/system/"
+  done
 }
 
 # vim:set ts=2 sw=2 et:
