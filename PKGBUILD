@@ -14,7 +14,7 @@ optdepends=('libappindicator-gtk3')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://zelcore.io/downloads/zelcore.deb")
-sha256sums_x86_64=('e3264cca1a528c03dcecbabf9d170b19c0394b51aef8bf0d313b22a9a5e25792')
+sha256sums_x86_64=('350c9bb990dd54bb9c2f21ccedcee70f3e87ef03fa0d60ad2d80ab9f9966100d')
 
 
 
