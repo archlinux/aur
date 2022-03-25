@@ -26,7 +26,7 @@ pkgbase = linux-hardened-git
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = E240B57E2C4630BA768E2F26FC1B547C8D8172C8
 	sha256sums = SKIP
-	sha256sums = c039d0429b0b04bfedecea89860d43f5679b7efa60d3748df9dccfd7c4115724
+	sha256sums = 1b08176830db69ed46b0364687689b66c7158d13a18575a64a40ead0c8ac7fd2
 
 pkgname = linux-hardened-git
 	pkgdesc = The Security-Hardened Linux kernel and modules
