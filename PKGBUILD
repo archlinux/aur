@@ -2,16 +2,16 @@
 
 pkgname=sparky-tube-git
 pkgver=r35.ec3a763
-pkgrel=1
+pkgrel=2
 pkgdesc="Download a video file from a web site and convert it to audio or video output file"
 arch=('any')
 url="https://github.com/sparkylinux/sparky-tube"
 license=('GPL3')
 depends=('ffmpeg' 'xdg-user-dirs' 'yad' 'youtube-dl')
 makedepends=('git')
+#            'gmplayer: play files'
 optdepends=('vlc: play files'
             'kmplayer: play files'
-            'gmplayer: play files'
             'mpv: play files'
             'smplayer: play files'
             'totem: play files'
