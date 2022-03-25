@@ -1,6 +1,36 @@
 Master Branch
 =============
 
+Version 4.3.7 (2022-02-22)
+==========================
+
+FIXED:
+  * conditional variables `x` in `E[P | x]` now enforced to be ordered correctly.
+
+Version 4.3.6 (2022-02-11)
+==========================
+
+CHANGED:
+  * Switch scipy backend of TruncNormal.
+
+Version 4.3.5 (2022-02-02)
+==========================
+
+CHANGED:
+  * Replaced poetry with native pip.
+  * Testing with CircleCI replaced with Github action.
+  * Remove assert check.
+
+REMOVED:
+  * Python2 testing.
+
+Version 4.3.4 (2021-11-14)
+==========================
+
+FIXED:
+  * Gamma pdf and moment breaks down for large values of alpha.
+    Switching to new scipy formula.
+
 Version 4.3.3 (2021-05-26)
 ==========================
 

@@ -2,37 +2,46 @@
 # Contributor: Martin Diehl <https://martin-diehl.net>
 
 pkgname=python-chaospy
-pkgver=4.3.3
+pkgver=4.3.7
 pkgrel=1
 pkgdesc="Toolbox for performing uncertainty quantification"
 arch=('any')
 url="https://github.com/jonathf/chaospy"
 license=('BSD')
-depends=('python-numpoly>=1.1.2' 'python-numpy' 'python-scipy')
-makedepends=('python-setuptools' 'python-dephell')
+depends=('python-numpoly' 'python-numpy' 'python-scipy')
+makedepends=(
+	'python-build'
+	'python-installer'
+	'python-setuptools'
+	'python-setuptools-scm'
+	'python-setuptools-scm-git-archive'
+	'python-wheel')
 checkdepends=('python-pytest' 'python-scikit-learn')
 changelog=CHANGELOG.rst
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c258aa2abb42e4914aa401a954aa840bd194229737b522b5d409486a7f6917d8')
-
-prepare() {
-	cd "chaospy-$pkgver"
-	dephell deps convert --from pyproject.toml --to setup.py
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('07a419fafacc6bba463cb04e69087f43535c2f929022a9d7a9df46e63dd1a8f3')
 
 build() {
 	cd "chaospy-$pkgver"
-	python setup.py build
+	SETUPTOOLS_SCM_PRETEND_VERSION="$pkgver" python -m build --wheel --no-isolation
+	## FIXME: man pages require additional sphinx dependencies
+	# PYTHONPATH="$PWD" make -C docs man
 }
 
 check() {
 	cd "chaospy-$pkgver"
-	pytest
+	pytest -x --disable-warnings
 }
 
 package() {
+	export PYTHONHASHSEED=0
 	cd "chaospy-$pkgver"
-	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm 644 LICENSE.txt -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+	python -m installer --destdir="$pkgdir/" dist/*.whl
+	install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s \
+		"$_site/chaospy-$pkgver.dist-info/LICENSE.txt" \
+		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
