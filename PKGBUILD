@@ -4,7 +4,7 @@
 
 pkgname=("icalingua++-git" "icalingua++-electron-git")
 pkgver=2.5.8.r12.g6f1611e
-pkgrel=1
+pkgrel=2
 pkgdesc='A Linux client for QQ and more(fork to upgrading)'
 license=('AGPL')
 depends=('ffmpeg' 'libappindicator-gtk3')
