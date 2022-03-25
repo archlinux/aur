@@ -20,3 +20,4 @@ package() {
 	cp -a "$srcdir/"* "$pkgdir/opt/${_pkgbasename}"
 	ln -s "/opt/${_pkgbasename}/miner" "$pkgdir/usr/bin/miner"
 }
+
