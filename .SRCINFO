@@ -1,6 +1,6 @@
 pkgbase = 64gram-desktop-no-ad
 	pkgdesc = Unofficial desktop version of Telegram messaging app (Removed ad)
-	pkgver = 1.0.24
+	pkgver = 1.0.25
 	pkgrel = 1
 	url = https://github.com/qwq233/64gram-aur
 	arch = x86_64
