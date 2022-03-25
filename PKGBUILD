@@ -7,14 +7,14 @@
 
 pkgname=ulipad-git
 pkgver=r13.4c7d590
-pkgrel=1
+pkgrel=2
 pkgdesc="A wxPython powered, programmer oriented and flexible editor"
 arch=('any')
 url="https://github.com/limodou/ulipad"
 license=('GPL')
 makedepends=('git')
 depends=('wxpython')
-optdepends=('psyco: speed support' 'python2-pyenchant: spell-checking support')
+optdepends=('python2-pyenchant: spell-checking support')    #'psyco: speed support'
 source=($pkgname::git+$url.git
         "${pkgname%-git}.desktop"
         "${pkgname%-git}.png"
