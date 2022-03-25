@@ -1,13 +1,13 @@
 pkgbase = lx-music-desktop-git
 	pkgdesc = 一个免费的音乐查找助手
-	pkgver = 1.18.0.2f39808
-	pkgrel = 3
+	pkgver = 1.19.0.f10c1e9
+	pkgrel = 1
 	url = https://github.com/lyswhut/lx-music-desktop
 	arch = x86_64
 	arch = aarch64
 	arch = armv7l
 	makedepends = npm
-	makedepends = nodejs>=14
+	makedepends = nodejs=14.19.1
 	depends = c-ares
 	depends = ffmpeg
 	depends = gtk3
@@ -22,12 +22,37 @@ pkgbase = lx-music-desktop-git
 	depends = snappy
 	depends = libnotify
 	depends = libappindicator-gtk3
+	provides = lx-music-desktop
 	conflicts = lx-music-desktop
 	source = lx-music-desktop-git::git+https://github.com/lyswhut/lx-music-desktop
 	source = lx-music-desktop.desktop
 	source = lxmusic-url.desktop
+	source = lx-music-desktop
 	sha256sums = SKIP
 	sha256sums = 34342d437c59c6ae352123272daa1819e275c843170bbb8b467cbbc1c4c63dac
 	sha256sums = 83083f9febee2332f9d038bcf5693128f3bde17b41ed094f005265eafe1eb94f
+	sha256sums = 47bc117b8137990e538ab4049f1b2d8b04d3d495432c4002c5343a9331dc59c7
 
 pkgname = lx-music-desktop-git
+
+pkgname = lx-music-desktop-electron-git
+	pkgdesc = 一个免费的音乐查找助手 (with system electron)
+	depends = c-ares
+	depends = ffmpeg
+	depends = gtk3
+	depends = http-parser
+	depends = libevent
+	depends = libvpx
+	depends = libxslt
+	depends = libxss
+	depends = minizip
+	depends = nss
+	depends = re2
+	depends = snappy
+	depends = libnotify
+	depends = libappindicator-gtk3
+	depends = electron13
+	provides = lx-music-desktop
+	provides = lx-music-desktop-electron
+	conflicts = lx-music-desktop
+	conflicts = lx-music-desktop-electron

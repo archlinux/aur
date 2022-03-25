@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+electron /usr/lib/lx-music-desktop/lx-music-desktop.asar $@ 
