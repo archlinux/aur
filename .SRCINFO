@@ -1,7 +1,7 @@
 pkgbase = espanso-git
 	pkgdesc = Cross-platform Text Expander written in Rust
 	pkgver = 2.0.0.r234.ge3887c0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://espanso.org/
 	arch = x86_64
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = espanso-git
 	depends = xclip
 	depends = libxtst
 	depends = libnotify
-	depends = wxgtk3
+	depends = wxgtk2
 	provides = espanso
 	conflicts = espanso
 	options = !lto
