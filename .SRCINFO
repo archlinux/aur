@@ -1,7 +1,7 @@
 pkgbase = pdf-diff-git
 	pkgdesc = Finds differences between two PDF documents
 	pkgver = 0.9.1.r57.a0d8230
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JoshData/pdf-diff/
 	arch = any
 	license = custom:CC0
@@ -13,10 +13,9 @@ pkgbase = pdf-diff-git
 	depends = python-pillow
 	provides = pdf-diff
 	conflicts = pdf-diff
-	source = git://github.com/JoshData/pdf-diff
+	source = git+https://github.com/JoshData/pdf-diff
 	source = pdf-diff.1
-	md5sums = SKIP
-	md5sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 64b6497031600402653cd73245995a3c5e22468a8898234b8a6d5105a61a2363
 
 pkgname = pdf-diff-git
-
