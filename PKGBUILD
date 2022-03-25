@@ -13,7 +13,7 @@ license=('GPL')
 depends=('openssl-1.0' 'libxcursor' 'libcups' 'alsa-lib' 'libxext' 'libxdamage'
          'ffmpeg' 'libxkbfile' 'libxinerama' 'libxv' 'libpulse')
 makedepends=('krb5' 'cmake' 'xorgproto' 'xmlto' 'docbook-xsl')
-conflicts=('freerdp' 'freerdp-git')
+conflicts=('freerdp' 'freerdp-git' 'freerdp-102')
 provides=('freerdp')
 _commit='590fa7dbf6ecab58fb70dd57ef6d3ecfdbfc3c4f'
 source=("${_projname}-${pkgver}-${_commit}.tar.gz::https://github.com/${_projname}/${_projname}/archive/${_commit}.tar.gz"

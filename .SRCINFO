@@ -26,6 +26,7 @@ pkgbase = freerdp-1.1.0
 	provides = freerdp
 	conflicts = freerdp
 	conflicts = freerdp-git
+	conflicts = freerdp-102
 	source = FreeRDP-1.1.0-590fa7dbf6ecab58fb70dd57ef6d3ecfdbfc3c4f.tar.gz::https://github.com/FreeRDP/FreeRDP/archive/590fa7dbf6ecab58fb70dd57ef6d3ecfdbfc3c4f.tar.gz
 	source = 1001_hide-internal-symbols.patch
 	source = 1002_update-pkg-config-file.patch
