@@ -6,7 +6,7 @@
 
 pkgname=jalview
 pkgver=2.11.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Bioinformatics Multiple Alignment Editor'
 arch=(any)
 url='https://www.jalview.org/'
@@ -32,7 +32,7 @@ package() {
     install -Dm755 -t "$pkgdir/usr/bin/" "$pkgname"
     install -Dm644 -t "$pkgdir/usr/share/applications/" 'jalview.desktop'
 
-    install -Dm644 -t "$pkgdir/usr/share/java/$pkgname" "$srcdir/$pkgname-$pkgver/release/*.jar"
+    install -Dm644 -t "$pkgdir/usr/share/java/$pkgname" "$srcdir/$pkgname-$pkgver/release/"*.jar
 
     install -Dm644 "$srcdir/$pkgname-$pkgver/resource/jalview_logo.png" "$pkgdir/usr/share/pixmaps/jalview_logo.png"
     # install -Dm644 "$srcdir/$pkgname-$pkgver/resource/jalview_logos.ico" "$pkgdir/usr/share/pixmaps/jalview_logos.ico"
