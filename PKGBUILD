@@ -8,7 +8,7 @@ url="https://apps.gnome.org/app/re.sonny.Commit"
 license=('GPL3')
 depends=('libadwaita' 'gjs' 'gtksourceview5')
 makedepends=('meson')
-#checkdepends=('appstream-glib' 'eslint')
+#checkdepends=('appstream-glib')
 optdepends=('git: git support'
             'mercurial: mercurial support'
 #            'gspell: spell checking support' # Spell checking has been temporarily removed
