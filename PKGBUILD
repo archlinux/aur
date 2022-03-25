@@ -2,7 +2,7 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=gnome-shell-extension-gtile-git
-pkgver=48.r0.g0416a80
+pkgver=50.r0.g14de178
 pkgrel=2
 pkgdesc="A window tiling extension for GNOME"
 arch=('any')
@@ -32,8 +32,7 @@ package() {
   bsdtar -xvf bazel-bin/install-extension.runfiles/gtile/dist.tar.gz -C \
     "$pkgdir/usr/share/gnome-shell/extensions/gTile@vibou/"
 
-  install -Dm644 schemas/org.gnome.shell.extensions.gtile.gschema.xml -t \
+  install -d "$pkgdir/usr/share/glib-2.0/schemas"
+  ln -s /usr/share/gnome-shell/extensions/gTile@vibou/schemas/org.gnome.shell.extensions.gtile.gschema.xml \
     "$pkgdir/usr/share/glib-2.0/schemas/"
-
-  rm -rf "$pkgdir/usr/share/gnome-shell/extensions/gTile@vibou/schemas/"
 }
