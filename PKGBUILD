@@ -52,21 +52,21 @@ md5sums=('1dd186838d20d757822c2daec959b7a3'
 prepare() {
   cd "${_projname}-${_commit}"
   (set -x
-    patch --verbose --forward --strip=1 --unified --input=../1001_hide-internal-symbols.patch
-    patch --verbose --forward --strip=1 --unified --input=../1002_update-pkg-config-file.patch
-    patch --verbose --forward --strip=1 --unified --input=../1003_multi-arch-include-path.patch
-    patch --verbose --forward --strip=1 --unified --input=../1004_64-bit-architectures.patch
-    patch --verbose --forward --strip=1 --unified --input=../1005_parse-buffer-endianess.patch
-    patch --verbose --forward --strip=1 --unified --input=../1006_test-unicode-endianess.patch
-    patch --verbose --forward --strip=1 --unified --input=../1007_detect-arm-arch-correctly.patch
-    patch --verbose --forward --strip=1 --unified --input=../1008_gcc-fPIC-on-arm64.patch
-    patch --verbose --forward --strip=1 --unified --input=../1009_libusb-debug.patch
-    patch --verbose --forward --strip=1 --unified --input=../1010_libudev-link.patch
-    patch --verbose --forward --strip=1 --unified --input=../1011_ffmpeg-2.9.patch
-    patch --verbose --forward --strip=1 --unified --input=../1012_typo-fix.patch
-    patch --verbose --forward --strip=1 --unified --input=../1013_aligned_meminfo_alignment.patch
-    patch --verbose --forward --strip=1 --unified --input=../2001_detect-ffmpeg-on-Debian.patch
-    patch --verbose --forward --strip=1 --unified --input=../tsmf_ffmpeg.patch
+    patch --forward --strip=1 --unified --input=../1001_hide-internal-symbols.patch
+    patch --forward --strip=1 --unified --input=../1002_update-pkg-config-file.patch
+    patch --forward --strip=1 --unified --input=../1003_multi-arch-include-path.patch
+    patch --forward --strip=1 --unified --input=../1004_64-bit-architectures.patch
+    patch --forward --strip=1 --unified --input=../1005_parse-buffer-endianess.patch
+    patch --forward --strip=1 --unified --input=../1006_test-unicode-endianess.patch
+    patch --forward --strip=1 --unified --input=../1007_detect-arm-arch-correctly.patch
+    patch --forward --strip=1 --unified --input=../1008_gcc-fPIC-on-arm64.patch
+    patch --forward --strip=1 --unified --input=../1009_libusb-debug.patch
+    patch --forward --strip=1 --unified --input=../1010_libudev-link.patch
+    patch --forward --strip=1 --unified --input=../1011_ffmpeg-2.9.patch
+    patch --forward --strip=1 --unified --input=../1012_typo-fix.patch
+    patch --forward --strip=1 --unified --input=../1013_aligned_meminfo_alignment.patch
+    patch --forward --strip=1 --unified --input=../2001_detect-ffmpeg-on-Debian.patch
+    patch --forward --strip=1 --unified --input=../tsmf_ffmpeg.patch
   )
 }
 
