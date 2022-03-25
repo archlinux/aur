@@ -3,8 +3,8 @@
 # Contributor: Ricardo Honorato Z.
 
 pkgname=vmd
-pkgver=1.9.4a51
-pkgrel=2
+pkgver=1.9.4a55
+pkgrel=1
 pkgdesc="Visual Molecular Dynamics (official binary build)"
 url="http://www.ks.uiuc.edu/Research/vmd/"
 license=('custom')
@@ -24,7 +24,7 @@ source=("local://${pkgname}-${pkgver}.bin.LINUXAMD64-CUDA102-OptiX650-OSPRay185.
         "vmd.desktop"
         "vmd.install"
         "vmd.png")
-sha256sums=("28b7714ac1619b6e8b0adbd1e915f81e318ec24b90e7cdff50a5f4c3a77e38c3"
+sha256sums=("0e02397cdb48c01123c2616d6dad36f85eab160a2433b57c989acc40cee7db97"
             "942b752e2c9c1d6e3adb55ccdee14d1794640c341ddb7d8d70fb02396dafe81a"
             "f703f8de14eb277dc72cc837086fbd55f5d772049a44200686c8ae76348f6614"
             "d83f568615ad954f582d986975997186fdacfd8f79c30f49d6aaf07ba2eb6aa7")
