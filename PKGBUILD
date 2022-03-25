@@ -57,7 +57,7 @@ NOTKIT=           # Use no toolkit widgets. Like B&W Twm (001d sk00l).
 
 PGTK="YES"        # Use native GTK3 build. Supports Wayland, yay!
 
-GTK3=             # The new GTK2. Really, why would you?
+GTK3=             # GTK3 old windowing interface.
 
 LUCID=            # Use the lucid, a.k.a athena, toolkit. Like XEmacs, sorta.
                   #
@@ -89,7 +89,7 @@ if [[ $CLI == "YES" ]] ; then
 else
   pkgname="emacs-pgtk-native-comp-git"
 fi
-pkgver=29.0.50.154614
+pkgver=29.0.50.155210
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
@@ -147,16 +147,16 @@ fi
 if [[ $CLI == "YES" ]]; then
   depends=("${depends_nox[@]}");
 elif [[ $NOTKIT == "YES" ]]; then
-  depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxrandr' 'lcms2' 'librsvg' 'libxfixes' 'libxi' );
+  depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxrandr' 'lcms2' 'librsvg' 'libxfixes' 'libxi' 'libsm' 'xcb-util' 'libxcb' );
   makedepends+=( 'xorgproto' );
 elif [[ $LUCID == "YES" ]]; then
-  depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxfixes' 'lcms2' 'librsvg' 'xaw3d' 'libxrandr' 'libxi' );
+  depends+=( 'dbus' 'hicolor-icon-theme' 'libxinerama' 'libxfixes' 'lcms2' 'librsvg' 'xaw3d' 'libxrandr' 'libxi' 'libsm' 'xcb-util' 'libxcb' );
   makedepends+=( 'xorgproto' );
 elif [[ $GTK3 == "YES" ]]; then
-  depends+=( 'gtk3' );
+  depends+=( 'gtk3' 'libsm' 'xcb-util' 'libxcb' );
   makedepends+=( 'xorgproto' 'libxi' );
 elif [[ $PGTK == "YES" ]]; then
-  depends+=( 'gtk3' );
+  depends+=( 'gtk3' 'libsm' 'xcb-util' 'libxcb' );
   makedepends+=( 'xorgproto' 'libxi' );
 fi
 
