@@ -1,7 +1,7 @@
 pkgbase = python-pyonfx
 	pkgdesc = An easy way to create KFX and complex typesetting for the SSA/ASS format
 	pkgver = 0.9.13
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/CoffeeStraw/PyonFX
 	arch = any
 	license = LGPL3
@@ -12,6 +12,8 @@ pkgbase = python-pyonfx
 	depends = python-cairo
 	depends = python-gobject
 	depends = pango
+	optdepends = aegisub: open output in Aegisub support
+	optdepends = mpv: open output in mpv support
 	source = python-pyonfx-0.9.13.tar.gz::https://github.com/CoffeeStraw/PyonFX/archive/v0.9.13.tar.gz
 	sha256sums = 7a54a23aa5856ab198b90b78b64e2f8919d763e21393e992776106a4946dfc1a
 
