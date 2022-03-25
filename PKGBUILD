@@ -1,31 +1,21 @@
 
 _pkgname=minq-nhentai
 pkgname="${_pkgname}-git"
-pkgver=r47.58ed2c8b1d13adc74ec409c0e2b9eabadb3dc0eb
+pkgver=r48.e43eba9519d278402556fcd1185765bd4e1d96e9
 pkgrel=1
 epoch=
 pkgdesc='Browse hnehtai in your terminal. Full image resolution in supported terminals.'
 arch=(any)
 url="https://github.com/kuche1/${_pkgname}.git"
 license=('GPL')
-groups=()
 depends=(python python-beautifulsoup4 viu)
 makedepends=(git)
 checkdepends=()
 optdepends=("wezterm: an example terminal that supports full image resolution"
-            "python-minq-storage-git: needed for the beta 1"
-            "python-minq-caching-thing-git: needed for beta 2")
+            "python-minq-caching-thing-git: needed for the beta version")
 provides=("${_pkgname}")
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=	
-changelog=
 source=("git+$url")
-noextract=()
 md5sums=("SKIP")
-validpgpkeys=()
 
 pkgver() {
 	cd "${_pkgname}"
