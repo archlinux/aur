@@ -10,7 +10,7 @@ pkgbase="joplin"
 pkgname=('joplin' 'joplin-desktop')
 pkgver=2.7.15
 groups=('joplin')
-pkgrel=3
+pkgrel=4
 install="joplin.install"
 depends=('electron' 'gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs>=17.3'
          'nss' 'orc' 'rsync' 'libvips')
