@@ -1,14 +1,15 @@
 # Maintainer: Christoph Gysin <christoph.gysin@gmail.com>
+# Maintainer: Pau Espin Pedrol <pespin@espeweb.net>
 pkgname=titan-git
 _pkgname=titan.core
 pkgver=8.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="TTCN3 test automation platform"
 arch=('i686' 'x86_64')
 url="https://projects.eclipse.org/projects/tools.titan"
 license=('eclipse')
 groups=('devel')
-depends=('expect' 'openssl' 'jdk7-openjdk')
+depends=('expect' 'openssl' 'jdk8-openjdk')
 source=(git+https://gitlab.eclipse.org/eclipse/titan/titan.core.git
         titan.profile)
 md5sums=('SKIP'
@@ -23,7 +24,7 @@ build() {
     cd $srcdir/$_pkgname
     make \
         TTCN3_DIR=/usr/ttcn3 \
-        JDKDIR=/usr/lib/jvm/java-7-openjdk
+        JDKDIR=/usr/lib/jvm/java-8-openjdk
 }
 
 package() {
