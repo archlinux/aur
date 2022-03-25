@@ -1,17 +1,17 @@
 # Maintainer: dobedobedo <dobe0331 at gmail dot com>
 # Contributor: Danilo J. S. Bellini <danilo dot bellini at gmail dot com>
+# Contributor: 	diestl <max at friedersdorff dot com>
 _pkgname='rsgislib'
 pkgname=("python-$_pkgname")
 pkgver=5.0.5
-pkgrel=5
+pkgrel=6
 pkgdesc="A collection of Python modules for processing remote sensing and GIS datasets"
 arch=('i686' 'x86_64')
 url='http://www.rsgislib.org'
 license=('GPL3')
 makedepends=('cmake' 'boost')
-depends=('hdf5' 'kealib' 'xerces-c' 'muparser' 'gsl' 'geos' 'gdal' 'cgal'
-         'boost-libs' 'python-gdal' 'python-numpy' 'python-scikit-learn'
-         'python-tqdm' 'python-rios')
+depends=('hdf5' 'kealib' 'muparser' 'gsl' 'gdal' 'boost-libs' 'python-gdal'
+         'python-numpy' 'python-scikit-learn' 'python-tqdm' 'python-rios')
 optdepends=(
   'plotly-orca-appimage: For classification.plot_train_data'
   'python-alphashape: For vectorgeoms.create_alpha_shape'
