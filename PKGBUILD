@@ -2,7 +2,7 @@
 _name=pdf-diff
 pkgname="${_name}-git"
 pkgver=0.9.1.r57.a0d8230
-pkgrel=1
+pkgrel=2
 pkgdesc="Finds differences between two PDF documents"
 arch=('any')
 url="https://github.com/JoshData/pdf-diff/"
@@ -16,11 +16,11 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git://github.com/JoshData/pdf-diff'
+source=('git+https://github.com/JoshData/pdf-diff'
         'pdf-diff.1')
 noextract=()
-md5sums=('SKIP'
-         'SKIP')
+sha256sums=('SKIP'
+            '64b6497031600402653cd73245995a3c5e22468a8898234b8a6d5105a61a2363')
 
 
 prepare() {
