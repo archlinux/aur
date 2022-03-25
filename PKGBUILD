@@ -12,8 +12,8 @@ license=('GPL3')
 options=('!strip') # This makes debugging issues easier sometimes, comment out if small package size is needed
 depends=('alsa-lib' 'glslang' 'libxkbcommon-x11' 'pulseaudio-alsa' 'vulkan-icd-loader')
 makedepends=('atk' 'cairo' 'gdk-pixbuf2' 'git' 'git-lfs' 'openssl' 'pango' 'python' 'rustup' 'systemd')
-provides=("$pkgname")
-conflicts=("$pkgname")
+provides=()
+conflicts=()
 _repo='https://gitlab.com/veloren/veloren.git'
 source=("$pkgname"::"git+$_repo#tag=v$pkgver")
 noextract=()

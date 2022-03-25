@@ -21,8 +21,6 @@ pkgbase = veloren
 	depends = libxkbcommon-x11
 	depends = pulseaudio-alsa
 	depends = vulkan-icd-loader
-	provides = veloren
-	conflicts = veloren
 	options = !strip
 	source = veloren::git+https://gitlab.com/veloren/veloren.git#tag=v0.12.0
 	sha512sums = SKIP
