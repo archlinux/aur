@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=tpsRelw
-Exec=wine /usr/share/tpsrelw/tpsrelw.exe
+Exec=wine /usr/share/tpsrelw/tpsRelw.exe
 Type=Application
 StartupNotify=true
 Icon=/usr/share/tpsrelw/tpsRelw.png
