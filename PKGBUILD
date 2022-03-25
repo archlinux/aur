@@ -2,26 +2,27 @@
 
 _pkgname=awesome-freedesktop
 pkgname=$_pkgname-git
-pkgcom=117
-pkgsha=ac9de0e
-pkgver=$pkgcom.$pkgsha
-pkgrel=5
+pkgver=r117.ac9de0e
+pkgrel=1
+epoch=1
 pkgdesc="Freedesktop.org compliant desktop entries and menu for Awesome WM"
 arch=("any")
 url="https://github.com/lcpz/$_pkgname"
 license=("GPL2")
 depends=("awesome")
+makedepends=("git")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 sha256sums=("SKIP")
-source=("$_pkgname-${pkgver}.zip::https://github.com/lcpz/$_pkgname/archive/$pkgsha.zip")
+source=("git+https://github.com/lcpz/awesome-freedesktop.git")
 
-prepare() {
-    rm -fr "$_pkgname/$_pkgname-$pkgsha"*
-    mv "$_pkgname-$pkgsha"* $_pkgname
+pkgver() {
+    cd "$_pkgname"
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
+    cd "$_pkgname"
     install -dm755 "$pkgdir/usr/share/lua/5.3/${_pkgname##*-}"
     install -m644 $_pkgname/{LICENSE,README.rst,*.lua} "$pkgdir/usr/share/lua/5.3/${_pkgname##*-}"
 }
