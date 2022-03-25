@@ -1,7 +1,10 @@
 #!/bin/bash
 # default config
 # default build arches
-DEFAULT_CPU_ARCHES=(generic ivybridge skylake broadwell silvermont)
+DEFAULT_CPU_ARCHES=(generic generic-v2 generic-v3 generic-v4
+                    zen2 zen3
+                    skylake broadwell rocketlake alderlake
+                   )
 
 
 build_pkg()
@@ -34,7 +37,6 @@ for cpu in ${*:-${DEFAULT_CPU_ARCHES[*]}} ; do
             ;;
         *)       
             cat >> PKGBUILD <<EOF
-source+=(batch_opts)        
 pkgname=(linux-pf-$cpu)         
 eval "package_linux-pf-$cpu() {         
      \$(declare -f _package)                            

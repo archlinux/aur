@@ -51,7 +51,7 @@ Contains:
  create mode 100644 drivers/pci/controller/intel-nvme-remap.c
 
 diff --git a/arch/x86/include/asm/pci.h b/arch/x86/include/asm/pci.h
-index d2c76c8d8cfd..47c3b333f2c6 100644
+index f3fd5928bcbb58d29ad1ad9fa02acf527669272f..f7488c2b203cf6b90cd257cfd81334230ebd69c1 100644
 --- a/arch/x86/include/asm/pci.h
 +++ b/arch/x86/include/asm/pci.h
 @@ -27,6 +27,7 @@ struct pci_sysdata {
@@ -75,7 +75,7 @@ index d2c76c8d8cfd..47c3b333f2c6 100644
     already-configured bus numbers - to be used for buggy BIOSes
     or architectures with incomplete PCI setup by the loader */
 diff --git a/arch/x86/pci/common.c b/arch/x86/pci/common.c
-index 9e1e6b8d8876..5cef919e26b6 100644
+index 9e1e6b8d8876313e2972b3634d337e6d266af504..5cef919e26b63a7abc403ff5845e5aa0cb7ee9a9 100644
 --- a/arch/x86/pci/common.c
 +++ b/arch/x86/pci/common.c
 @@ -715,12 +715,15 @@ int pci_ext_cfg_avail(void)
@@ -97,10 +97,10 @@ index 9e1e6b8d8876..5cef919e26b6 100644
  }
 -#endif
 diff --git a/drivers/ata/ahci.c b/drivers/ata/ahci.c
-index ab5811ef5a53..50c37f27cd91 100644
+index 397dfd27c90d4fc6a252532770d8ebb04a487071..18a79e1f4b21933822d7fc321e2359b0c04247ea 100644
 --- a/drivers/ata/ahci.c
 +++ b/drivers/ata/ahci.c
-@@ -1499,7 +1499,7 @@ static irqreturn_t ahci_thunderx_irq_handler(int irq, void *dev_instance)
+@@ -1502,7 +1502,7 @@ static irqreturn_t ahci_thunderx_irq_handler(int irq, void *dev_instance)
  }
  #endif
  
@@ -109,7 +109,7 @@ index ab5811ef5a53..50c37f27cd91 100644
  		struct ahci_host_priv *hpriv)
  {
  	int i;
-@@ -1512,7 +1512,7 @@ static void ahci_remap_check(struct pci_dev *pdev, int bar,
+@@ -1515,7 +1515,7 @@ static void ahci_remap_check(struct pci_dev *pdev, int bar,
  	    pci_resource_len(pdev, bar) < SZ_512K ||
  	    bar != AHCI_PCI_BAR_STANDARD ||
  	    !(readl(hpriv->mmio + AHCI_VSCAP) & 1))
@@ -118,7 +118,7 @@ index ab5811ef5a53..50c37f27cd91 100644
  
  	cap = readq(hpriv->mmio + AHCI_REMAP_CAP);
  	for (i = 0; i < AHCI_MAX_REMAP; i++) {
-@@ -1527,18 +1527,11 @@ static void ahci_remap_check(struct pci_dev *pdev, int bar,
+@@ -1530,18 +1530,11 @@ static void ahci_remap_check(struct pci_dev *pdev, int bar,
  	}
  
  	if (!hpriv->remapped_nvme)
@@ -141,7 +141,7 @@ index ab5811ef5a53..50c37f27cd91 100644
  }
  
  static int ahci_get_irq_vector(struct ata_host *host, int port)
-@@ -1761,7 +1754,9 @@ static int ahci_init_one(struct pci_dev *pdev, const struct pci_device_id *ent)
+@@ -1764,7 +1757,9 @@ static int ahci_init_one(struct pci_dev *pdev, const struct pci_device_id *ent)
  	hpriv->mmio = pcim_iomap_table(pdev)[ahci_pci_bar];
  
  	/* detect remapped nvme devices */
@@ -153,7 +153,7 @@ index ab5811ef5a53..50c37f27cd91 100644
  	sysfs_add_file_to_group(&pdev->dev.kobj,
  				&dev_attr_remapped_nvme.attr,
 diff --git a/drivers/pci/controller/Makefile b/drivers/pci/controller/Makefile
-index 37c8663de7fe..897d19f92ede 100644
+index 37c8663de7fe1ff7c9c948cd39f4b6ce1a912f5b..897d19f92edeb123826596db8d3e65949cfe6678 100644
 --- a/drivers/pci/controller/Makefile
 +++ b/drivers/pci/controller/Makefile
 @@ -1,4 +1,10 @@
@@ -169,7 +169,7 @@ index 37c8663de7fe..897d19f92ede 100644
  obj-$(CONFIG_PCI_IXP4XX) += pci-ixp4xx.o
 diff --git a/drivers/pci/controller/intel-nvme-remap.c b/drivers/pci/controller/intel-nvme-remap.c
 new file mode 100644
-index 000000000000..e105e6f5cc91
+index 0000000000000000000000000000000000000000..e105e6f5cc91d1b99db4c9b1c79b500bb4beb22a
 --- /dev/null
 +++ b/drivers/pci/controller/intel-nvme-remap.c
 @@ -0,0 +1,462 @@
@@ -635,6 +635,3 @@ index 000000000000..e105e6f5cc91
 +
 +MODULE_AUTHOR("Daniel Drake <drake@endlessm.com>");
 +MODULE_LICENSE("GPL v2");
--- 
-2.35.1
-

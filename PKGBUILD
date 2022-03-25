@@ -56,7 +56,7 @@ _BATCH_MODE=n # enable batch mode
 ##
 
 _major=5
-_minor=17
+_minor=18
 #_patchlevel=0
 #_subversion=1
 _basekernel=${_major}.${_minor}
@@ -69,9 +69,16 @@ _pfpatchhome="https://github.com/pfactum/pf-kernel/compare"
 _pfpatchname="v$_major.$_minor...v$_major.$_minor-pf$_pfrel.diff"
 _projectcpatchname=prjc_v5.15-r1.patch
 _CPUSUFFIXES_KBUILD=(
-  CORE2 K7 K8 K10 BARCELONA BOBCAT BULLDOZER PILEDRIVER STEAMROLLER MEXCAVATOR ZEN ZEN2 MPSC
-  ATOM PENTIUMII PENTIUMIII PENTIUMM PENTIUM4 NEHALEM SANDYBRIDGE
-  IVYBRIDGE HASWELL BROADWELL SILVERMONT SKYLAKE SKYLAKEX CANNONLAKE ICELAKE CASCADELAKE)
+  # AMD
+  MK8 MK8SSE3 MK10 MBARCELONA MBOBCAT MBULLDOZER MPILEDRIVER MSTEAMROLLER MEXCAVATOR MZEN
+  MZEN2 MZEN3
+  # Intel
+  MCORE2 MPSC
+  MATOM MPENTIUMII MPENTIUMIII MPENTIUMM MPENTIUM4 MNEHALEM MSANDYBRIDGE
+  MIVYBRIDGE MHASWELL MBROADWELL MSILVERMONT MSKYLAKE MSKYLAKEX MCANNONLAKE MICELAKE
+  MCASCADELAKE MCOOPERLAKE MTIGERLAKE MSAPPHIRERAPIDS MROCKETLAKE MALDERLAKE
+  # Generic
+  GENERIC_CPU2 GENERIC_CPU3 GENERIC_CPU4)
 pkgname=('linux-pf')
 pkgdesc="Linux with the pf-kernel patch (uksm, ZSTD, FSGSBASE and more)"
 pkgname=('linux-pf' 'linux-pf-headers' 'linux-pf-preset-default')
@@ -117,6 +124,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekerne
         0026-ZEN-INTERACTIVE-Document-PDS-BMQ-configuration.patch
         0027-ZEN-INTERACTIVE-mm-Disable-unevictable-compaction.patch
         0028-ZEN-INTERACTIVE-mm-Disable-proactive-compaction-by-d.patch
+        0029-ZEN-HID-lenovo-Add-support-for-ThinkPad-TrackPoint-K.patch
+        0030-ZEN-dm-crypt-Disable-workqueues-for-crypto-operation.patch
         # ZEN END
         # https://bugzilla.kernel.org/show_bug.cgi?id=211005
         'asus_zenith_ii_map.patch::https://bugzilla.kernel.org/attachment.cgi?id=294489'
@@ -129,17 +138,18 @@ prepare() {
   cd "${srcdir}/linux-${_basekernel}"
   msg "Applying pf-kernel patch"
   patch -Np1 < ${srcdir}/${_pfpatchname}
-  #patch -Np1 < ${srcdir}/${_projectcpatchname}
 
   patch -p1 -i ${srcdir}/0002-ZEN-Add-VHBA-driver.patch
   patch -p1 -i ${srcdir}/0003-ZEN-Add-OpenRGB-patches.patch
   # already applied by pf
-  #patch -p1 -i ${srcdir}/0005-ZEN-Unrestrict-CONFIG_OPTIMIZE_FOR_PERFORMANCE_O3.patch
+  # patch -p1 -i ${srcdir}/0004-ZEN-Add-graysky-s-more-uarches.patch
+  # already applied by pf
+  # patch -p1 -i ${srcdir}/0005-ZEN-Unrestrict-CONFIG_OPTIMIZE_FOR_PERFORMANCE_O3.patch
   patch -p1 -i ${srcdir}/0006-ZEN-Disable-stack-conservation-for-GCC.patch
   patch -p1 -i ${srcdir}/0007-ZEN-Initialize-ata-before-graphics.patch
   patch -p1 -i ${srcdir}/0008-ZEN-Input-evdev-use-call_rcu-when-detaching-client.patch
   # already applied by pf
-  #patch -p1 -i ${srcdir}/0009-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  # 0009-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   patch -p1 -i ${srcdir}/0010-ZEN-Add-CONFIG-to-rename-the-mq-deadline-scheduler.patch
   patch -p1 -i ${srcdir}/0011-ZEN-intel-pstate-Implement-enable-parameter.patch
   patch -p1 -i ${srcdir}/0012-ZEN-Add-ACS-override-support.patch
@@ -159,6 +169,8 @@ prepare() {
   patch -p1 -i ${srcdir}/0026-ZEN-INTERACTIVE-Document-PDS-BMQ-configuration.patch
   patch -p1 -i ${srcdir}/0027-ZEN-INTERACTIVE-mm-Disable-unevictable-compaction.patch
   patch -p1 -i ${srcdir}/0028-ZEN-INTERACTIVE-mm-Disable-proactive-compaction-by-d.patch
+  patch -p1 -i ${srcdir}/0029-ZEN-HID-lenovo-Add-support-for-ThinkPad-TrackPoint-K.patch
+  patch -p1 -i ${srcdir}/0030-ZEN-dm-crypt-Disable-workqueues-for-crypto-operation.patch
 
   # Add port map for ASUS Zenith II
   patch -p1 -i ${srcdir}/asus_zenith_ii_map.patch
@@ -211,6 +223,10 @@ build() {
     source "$srcdir/batch_opts"
     # enable cpu optimisations acording to $CPU and enable pkgopt
     if [[ "$LCPU" ]] ; then
+      case $LCPU in
+        *generic*) LCPU=${LCPU/generic-v/generic_cpu} ;;
+        *) LCPU=m${LCPU} ;;
+      esac
       CPU=${LCPU^^}
       sed -e "s|# CONFIG_M$CPU is not set|CONFIG_M$CPU=y|" \
           -e '/CONFIG_GENERIC_CPU=y/d' \
@@ -306,7 +322,7 @@ build() {
 	    _egrepstring="${_egrepstring}M${_cpusuffix_kbuild}=y|"
     done
     CPU=$(egrep "${_egrepstring}CONFIG_GENERIC_CPU=y|M686=y|CONFIG_MNATIVE=y" ./.config)
-    CPU=$(sed -e "s/CONFIG_M\(.*\)=y/\1/" <<<$CPU)
+    CPU=$(sed -e "s/CONFIG_\(.*\)=y/\1/" <<<$CPU)
     CPU=$(sed -e "s/CONFIG_GENERIC_CPU=y/GENERIC/" <<<$CPU)
     CPU=$(sed -e "s/^686$/GENERIC/" <<<$CPU)
     cp -f .config ${startdir}/config.$CPU-$CARCH
@@ -353,7 +369,7 @@ build() {
 _package() {
   pkgdesc="The $pkgdesc kernel and modules"
   depends=('coreutils' 'kmod>=9-2' 'mkinitcpio>=0.7' 'linux-pf-preset')
-  optdepends=('crda: to set the correct wireless channels of your country'
+  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
 	            'nvidia-pf: NVIDIA drivers for linux-pf'
               'uksmd: Userspace KSM helper daemon'
               'linux-firmware: firmware images needed for some devices'
@@ -364,134 +380,171 @@ _package() {
             KSMBD-MODULE
             NTFS3-MODULE
             UKSMD-BUILTIN
-            V4L2LOOPBACK-MODULE)
+            V4L2LOOPBACK-MODULE
+            VHBA-MODULE)
   replaces=('kernel26-pf')
 
   cd "${srcdir}/linux-${_basekernel}"
 
   if [[ "$_PKGOPT" = "y" ]]; then	# package naming according to optimization
     case $CPU in
-      CORE2)
+      MK8)
+        pkgname="${pkgbase}-k8"
+        pkgdesc="${pkgdesc} AMD K8 optimized."
+	;;
+      MK10)
+        pkgname="${pkgbase}-k10"
+	pkgdesc="§{pkgdesc} AMD K10 optimized"
+        ;;
+      MBARCELONA)
+        pkgname="${pkgbase}-barcelona"
+        pkgdesc="${pkgdesc} AMD Barcelona optimized."
+	;;
+      MBOBCAT)
+	pkgname="${pkgbase}-bobcat"
+	pkgdesc="${pkgdesc} AMD Bobcat optimized."
+	;;
+      MBULLDOZER)
+	pkgname="${pkgbase}-bulldozer"
+	pkgdesc="${pkgdesc} AMD Bulldozer optimized."
+	;;
+      MPILEDRIVER)
+	pkgname="${pkgbase}-piledriver"
+	pkgdesc="${pkgdesc} AMD Piledriver optimized."
+	;;
+      MSTEAMROLLER)
+        pkgname="${pkgbase}-steamroller"
+	pkgdesc="${pkgdesc} AMD Steamroller optimized."
+        ;;
+      MEXCAVATOR)
+        pkgname="${pkgbase}-excavator"
+	pkgdesc="${pkgdesc} AMD Excavator optimized."
+        ;;
+      MZEN)
+        pkgname="${pkgbase}-zen"
+	pkgdesc="${pkgdesc} AMD Zen optimized".
+        ;;
+      MZEN2)
+        pkgname="${pkgbase}-zen2"
+	pkgdesc="${pkgdesc} AMD Zen3 optimized."
+        ;;
+      MZEN3)
+        pkgname="${pkgbase}-zen3"
+	pkgdesc="${pkgdesc} AMD Zen3 optimized."
+        ;;
+      MCORE2)
         pkgname="${pkgbase}-core2"
         pkgdesc="${pkgdesc} Intel Core2 optimized."
         ;;
-      K7)
-        pkgname="${pkgbase}-k7"
-        pkgdesc="${pkgdesc} AMD K7 optimized."
-        ;;
-      K8)
-        pkgname="${pkgbase}-k8"
-        pkgdesc="${pkgdesc} AMD K8 optimized."
-	      ;;
-      K10)
-        pkgname="${pkgbase}-k10"
-	      pkgdesc="§{pkgdesc} AMD K10 optimized"
-        ;;
-      BARCELONA)
-        pkgname="${pkgbase}-barcelona"
-        pkgdesc="${pkgdesc} AMD Barcelona optimized."
-	      ;;
-      BOBCAT)
-	      pkgname="${pkgbase}-bobcat"
-	      pkgdesc="${pkgdesc} AMD Bobcat optimized."
-	      ;;
-      BULLDOZER)
-	      pkgname="${pkgbase}-bulldozer"
-	      pkgdesc="${pkgdesc} AMD Bulldozer optimized."
-	      ;;
-      PILEDRIVER)
-	      pkgname="${pkgbase}-piledriver"
-	      pkgdesc="${pkgdesc} AMD Piledriver optimized."
-	      ;;
-      STEAMROLLER)
-        pkgname="${pkgbase}-steamroller"
-	      pkgdesc="${pkgdesc} AMD Steamroller optimized."
-        ;;
-      EXCAVATOR)
-        pkgname="${pkgbase}-excavator"
-	      pkgdesc="${pkgdesc} AMD Excavator optimized."
-        ;;
-      ZEN)
-        pkgname="${pkgbase}-zen"
-	      pkgdesc="${pkgdesc} AMD Zen optimized".
-        ;;
-      ZEN2)
-        pkgname="${pkgbase}-zen2"
-	      pkgdesc="${pkgdesc} AMD Zen2 optimized."
-        ;;
-      PSC)
+      MMPSC)
         pkgname="${pkgbase}-psc"
         pkgdesc="${pkgdesc} Intel Pentium4/D/Xeon optimized."
         ;;
-      ATOM)
+      MATOM)
         pkgname="${pkgbase}-atom"
         pkgdesc="${pkgdesc} Intel Atom optimized."
         ;;
-      PENTIUMII)
+      MPENTIUMII)
         pkgname="${pkgbase}-p2"
         pkgdesc="${pkgdesc} Intel Pentium2 optimized."
         ;;
-      PENTIUMIII)
+      MPENTIUMIII)
         pkgname="${pkgbase}-p3"
         pkgdesc="${pkgdesc} Intel Pentium3 optimized."
         ;;
-      PENTIUMM)
+      MPENTIUMM)
         pkgname="${pkgbase}-pm"
         pkgdesc="${pkgdesc} Intel Pentium-M optimized."
         ;;
-      PENTIUM4)
+      MPENTIUM4)
         pkgname="${pkgbase}-p4"
         pkgdesc="${pkgdesc} Intel Pentium4 optimized."
         ;;
-      NEHALEM)
-	      pkgname="${pkgbase}-nehalem"
+      MNEHALEM)
+	pkgname="${pkgbase}-nehalem"
         pkgdesc="${pkgdesc} Intel Core Nehalem optimized."
-	      ;;
-      SANDYBRIDGE)
+	;;
+      MSANDYBRIDGE)
         pkgname="${pkgbase}-sandybridge"
-        pkgdesc="${pkgdesc} Intel 2nd Gen Core processors including Sandy Bridge."
-	      ;;
-      IVYBRIDGE)
+        pkgdesc="${pkgdesc} Intel Sandy Bridge optimized."
+	;;
+      MIVYBRIDGE)
         pkgname="${pkgbase}-ivybridge"
-        pkgdesc="${pkgdesc} Intel 3rd Gen Core processors including Ivy Bridge."
-	      ;;
-      HASWELL)
+        pkgdesc="${pkgdesc} Intel Ivy Bridge optimized."
+	;;
+      MHASWELL)
         pkgname="${pkgbase}-haswell"
-        pkgdesc="${pkgdesc} 4th Gen Core processors including Haswell."
-	      ;;
-      BROADWELL)
+        pkgdesc="${pkgdesc} Intel Haswell optimized."
+	;;
+      MBROADWELL)
         pkgname="${pkgbase}-broadwell"
-        pkgdesc="${pkgdesc} 5th Gen Core processors including Broadwell."
-	      ;;
-      SILVERMONT)
+        pkgdesc="${pkgdesc} Intel Broadwell optimized."
+	;;
+      MSILVERMONT)
         pkgname="${pkgbase}-silvermont"
-        pkgdesc="${pkgdesc} 6th Gen Core processors including Silvermont."
-	      ;;
-      SKYLAKE)
+        pkgdesc="${pkgdesc} Intel Silvermont optimized."
+	;;
+      MSKYLAKE)
         pkgname="${pkgbase}-skylake"
-        pkgdesc="${pkgdesc} 6th Gen Core processors including Skylake."
+        pkgdesc="${pkgdesc} Intel Skylake optimized."
         ;;
-      SKYLAKEX)
+      MSKYLAKEX)
         pkgname="${pkgbase}-skylakex"
-        pkgdesc="${pkgdesc} 6th Gen Core processors including Skylake-X."
+        pkgdesc="${pkgdesc} Intel Skylake-X optimized."
         ;;
-      CASCADELAKE)
+      MCASCADELAKE)
         pkgname="${pkgbase}-cascadelake"
-        pkgdesc="${pkgdesc} 7th Gen Xeon processors including Cascadelake."
+        pkgdesc="${pkgdesc} Intel Cascadelake optimized."
         ;;
-      CANNONLAKE)
+      MCANNONLAKE)
         pkgname="${pkgbase}-cannonlake"
-        pkgdesc="${pkgdesc} 8th Gen Core processors including Cannonlake."
+        pkgdesc="${pkgdesc} Intel Cannonlake optimized."
         ;;
-      ICELAKE)
+      MICELAKE)
         pkgname="${pkgbase}-icelake"
-        pkgdesc="${pkgdesc} 10th Gen Core processors including Icelake."
+        pkgdesc="${pkgdesc} Intel Icelake optimized."
+        ;;
+      MCASCADELAKE)
+        pkgname="${pkgbase}-cascadelake"
+        pkgdesc="${pkgdesc} Intel optimized."
+        ;;
+      MCOOPERLAKE)
+        pkgname="${pkgbase}-cooperlake"
+        pkgdesc="${pkgdesc} Intel Cooperlake optimized."
+        ;;
+      MTIGERLAKE)
+        pkgname="${pkgbase}-tigerlake"
+        pkgdesc="${pkgdesc} Intel Tigerlake optimized."
+        ;;
+      MSAPPHIRERAPIDS)
+        pkgname="${pkgbase}-sapphirerapids"
+        pkgdesc="${pkgdesc} Intel Sapphirerapids optimized."
+        ;;
+      MROCKETLAKE)
+        pkgname="${pkgbase}-rocketlake"
+        pkgdesc="${pkgdesc} Intel Rocketlake optimized."
+        ;;
+      MALDERLAKE)
+        pkgname="${pkgbase}-alderlake"
+        pkgdesc="${pkgdesc} Intel Alderlake optimized."
+        ;;
+      GENERIC_CPU2)
+        pkgname="${pkgbase}-generic-v2"
+        pkgdesc="${pkgdesc} Generic-x86-64-v2 optimized."
+        ;;
+      GENERIC_CPU3)
+        pkgname="${pkgbase}-generic-v3"
+        pkgdesc="${pkgdesc} Generic-x86-64-v3 optimized."
+        ;;
+      GENERIC_CPU4)
+        pkgname="${pkgbase}-generic-v4"
+        pkgdesc="${pkgdesc} Generic-x86-64-v4 optimized."
         ;;
       *)
         # Workaround against mksrcinfo getting the $pkdesc wrong
         pkgname="${pkgbase}"
         pkgdesc="${pkgdesc}"
-        ::
+        ;;
     esac
 
 
@@ -519,13 +572,9 @@ _package() {
 
   echo # get kernel version
   kernver="$(<version)"
-
-  mkdir -p "${pkgdir}"/usr/lib/modules
-  make INSTALL_MOD_PATH="${pkgdir}/usr" modules_install
-
+  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
   msg2 "Installing boot image..."
-  local modulesdir="$pkgdir/usr/lib/modules/$kernver"
 
   echo "Installing boot image..."
   # systemd expects to find the kernel here to allow hibernation
@@ -536,7 +585,8 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
@@ -558,6 +608,11 @@ _package-headers() {
     install -Dt "${_builddir}/tools/objtool" tools/objtool/objtool
   fi
 
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  if grep -q CONFIG_DEBUG_INFO_BTF_MODULES=y .config ; then
+    install -Dt "${_builddir}/tools/bpf/resolve_btfids" \
+            tools/bpf/resolve_btfids/resolve_btfids
+  fi
 
   msg2 "Installing build files..."
   install -dm755 "${_builddir}"
@@ -720,37 +775,39 @@ eval "package_linux-pf${LCPU+-$LCPU}() {
      }"
 
 
-sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
-            '27f59cb7d4adb08a81da3de822ce07d5b103c799e89aa36370e16e0b4d1f8672'
-            '969470b3c6d05fc68fdfbaf39296327edbd091a1a997ce9335822a06d690e60e'
+sha256sums=('51f3f1684a896e797182a0907299cc1f0ff5e5b51dd9a55478ae63a409855cee'
+            '5770ad7cc2d34367193cfbeb2a8a37e46c73470b3f6ec7ad63a1cadab4245fbc'
+            '93ebf63c9e95a9b8a7ae325ce11508334ca83fd00db9677c483216a6bdef3c68'
             '30566498a4f549e972fcd430d2fc44b2bd643c55bae20096f083f8837d8c43e4'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            '7759d47d620eb74afbce916b9932bdeb331377104daafa4dfa3931e0855ea17c'
+            '44fb5d030166ba3ac3290751f93c9c08f38c725283efc4a7449ea933993a65d7'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
-            'f7b461945a51af055630d396474f3cf981b5798830fb165346162680e672f842'
-            '5be0363210051e0df9b48fd745f7fe4cfa70963f98971d1b2ee55c27b4393d1a'
-            '5f007c21adfb68d84d4b63d26213b9212d956d69fee84953058b71faf4661517'
-            'c8d29bc2579dc9a954d6b13ed50f8b07abcd058f5dcf18f170bdfd230283f926'
-            'dd5829548fe2802fa70938359e3606fa4d97c21dbec315a12fb7836dd7caec30'
-            'de128f4bb0d74bd5cb5ad4e52cbbc04b5f8475f9b754452ebf36b40d933784db'
-            'fbaf3aad0e0fb84a18d43a647330a25edb6b24f21902d33aff4f0169a0287e21'
-            '0dae3fc9a283e45c30d35745ab5832336304a94f414e9f8d97b39d8a768d665f'
-            'eeb37f5cd79f2e53018d28afbbab36d903f9203b6a7e27a514313afa9bfeff1b'
-            '6ebc39aa1d31a3745d7dcd14d6628e62877c9b8572d19c128f45fd180ca3ac7b'
-            'ff87ca1fb418061ed09cbd4656094ef14978edd23d772b5b4ceaa3481b6f570b'
-            '47d18389f5ad85b54456be88634eec020da11d632e9af72e8423104947ef685b'
-            'f827d78d3eecb948e3eb79219c2eafb98b1e0199f4c1bc00ecb9db1ffad723aa'
-            '02030b2ae2d912ccb64c6900cacafc799f01a35f599018007f316427d0daa39b'
-            '697db5c22b7ae716eb017c478fa7104e700f3231a88b60fa20bcbb82edc1ae94'
-            '77c921dbcf84adfea460e02fbd28542dd988f7e023c4bc75719a24805e7a9c71'
-            'dd582720ea98321c227a4a98fb45db93afbf172f6531a34ef4a65c0ae0400c59'
-            '9e9ccb6cd669fa136669d721a3f5b3b44d522ee686b89e1cf51b92d52a0e82d8'
-            'b1807be87aa49b7ef40bdc78596ef524c5832e556bf0ff1f62f89e77abd8d773'
-            'fef891030e93438be1dd32fa2af28d2f5c033e7e03aad5a152eaee51b0e5f178'
-            'b9f98e665b570d95da7b55c797bcef206fd48c017de86b5c64e22ff5b45a4713'
-            '9ffc360f1a1b354bbae4cf7f4f90fb131a80e65e35afdc3a2e52994c2740eae3'
-            '75f3929497e6de49337fc4c83a215856397261fb8be726e55656c621b45c1fba'
-            'a23472c56b3f14ab976fc19cb0a214fd881d7519b47a1bd4f919b29324b2d3a8'
+            '7ef319249df009695b5477e30536e3edb07bcc93a58a76a63e58b012bb7debb1'
+            'c49395f97c834ccfa3d92b83576338f37795a5a47d32bade5ec8673d13004839'
+            '2a80815da46a474de6562244fe946f5c4f87f93f3ed3b8bf15338081f737e1dd'
+            'b6304b30b52bcafd2e04c0d894b076027212aa5e9619dab76914408a41bb9091'
+            'fd0ecbc2948a490ece2cbd90623c80e210c1674ea8d8f95642c6f67cef435c4a'
+            'da8e88fe8875d6dccba50adebca3bdc255733d542f8eff7feb02b1849c8ee10f'
+            '05d14fdd0c145df91c9c411a5b54f064c604064ba92dd7d38e5317ba2d8a2f81'
+            'e89e7bd096e2275da3247cfd030accadad153aee12621935ebf4366bd19f09cb'
+            '69104795df1a9f1e862f7cb1c62d62fe3f44456835eea25ee0c6af806ff3c1b3'
+            '25ce02c9f0f29474562125e6da14bdb1de0aee1a22eff5b01ff8a55aca387d0e'
+            'ff8145711cb5bc602576966aea29be64b2ece7dc21141483972ab72a75d35a61'
+            'bb751904717f2937813c572fac430632cce54adbd776a272c51cf1debedea85e'
+            '2ef05b3b80ee83d997b738c069be3971c4092633f61d816c7a45910267b37905'
+            'ec795347155a2f509491fb60c9f4e01704d86a2af432278d7bf5efd7db29f9a2'
+            '05d1d9003c39ee62d50801fe6bde1003e4b13167756d5c68b9b70f7ca2c60c6c'
+            '4549aed2ef400173b86bc7b3ea22209ec7cff44796e1e366d5c39ae6bdc07cef'
+            'c0d6660291bb2ea1fb39e03f1ff2044b0cc1514080e22be73540affbd331dd25'
+            '0fec274551ed3ef1a9bf5580ca09b31645924bb3f91915626ebdd666b6d426eb'
+            '1eef8aa1a26c14dc41c8e5df1a29b812e9f44f04dd99544e4ec6d275522d3592'
+            'a95a8596b88d94284dbc80c1c2238e7484602d322de688342b758088afca918e'
+            '4ebe0a97c42d2f8645c5e2339f8c0bb1d8dde1bce2680dd1199672eff14d582e'
+            'd826fee5724d223e56b77da0f048ce9b247ee33bbe333b896f3941233583647b'
+            '1d7bebd7851d6ef0e1d1c9325f3ea310a45eab2c7d2ff798df94b67ea1302077'
+            '93b9b6124929ad689226b055be89cfd13be36ca927d0bed8508b069e080b7149'
+            '76c90c2615b431c20d74926c03648dc482b5959951d4a10dddcac1c8cdde1f55'
+            'cc78995e6475785477e89733697492b962f3b393ad59dbf49ef34865dc2a073b'
             '67558840c3e1f1de229b23a54342cb126735282353a4d0a8cd10e4d582e6d9d6')
 # vim:set ts=2 sw=2 tw=0 et:

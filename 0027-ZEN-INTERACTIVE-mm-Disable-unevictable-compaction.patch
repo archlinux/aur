@@ -11,10 +11,10 @@ turn it off when CONFIG_ZEN_INTERACTIVE is set as well.
  2 files changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/init/Kconfig b/init/Kconfig
-index 9ca9b0e43e3e..0e478db562b0 100644
+index 96e6511aa009543b871bd28bd9246cd68411286e..b7c7bdbd96c6d417f7ed5f8aee558044a121e351 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
-@@ -121,6 +121,7 @@ config ZEN_INTERACTIVE
+@@ -125,6 +125,7 @@ config ZEN_INTERACTIVE
  
  	    Background-reclaim hugepages...:   no   ->   yes
  	    MG-LRU minimum cache TTL.......:   0    ->   1000 ms
@@ -23,10 +23,10 @@ index 9ca9b0e43e3e..0e478db562b0 100644
  	  --- CFS CPU Scheduler ----------------------------------
  
 diff --git a/mm/compaction.c b/mm/compaction.c
-index b4e94cda3019..f713c3ca03fa 100644
+index fe915db6149b9c4c74a775b1d018b09b8d0fd68d..877b029a87e76aaad1c36669395dd3f359e14f03 100644
 --- a/mm/compaction.c
 +++ b/mm/compaction.c
-@@ -1699,7 +1699,7 @@ typedef enum {
+@@ -1736,7 +1736,7 @@ typedef enum {
   * Allow userspace to control policy on scanning the unevictable LRU for
   * compactable pages.
   */
@@ -35,6 +35,3 @@ index b4e94cda3019..f713c3ca03fa 100644
  int sysctl_compact_unevictable_allowed __read_mostly = 0;
  #else
  int sysctl_compact_unevictable_allowed __read_mostly = 1;
--- 
-2.35.1
-

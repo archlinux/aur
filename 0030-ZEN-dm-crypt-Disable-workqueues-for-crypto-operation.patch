@@ -1,0 +1,48 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Steven Barrett <steven@liquorix.net>
+Date: Sat, 21 May 2022 15:15:09 -0500
+Subject: [PATCH] ZEN: dm-crypt: Disable workqueues for crypto operations
+
+Queueing in dm-crypt for crypto operations reduces performance on modern
+systems.  As discussed in an article from Cloudflare, they discovered
+that queuing was introduced because the crypto subsystem used to be
+synchronous.  Since it's now asynchronous, we get double queueing when
+using the subsystem through dm-crypt.  This is obviously undesirable and
+reduces throughput and increases latency.
+
+Disable queueing when using our Zen Interactive configuration.
+
+Fixes: https://github.com/zen-kernel/zen-kernel/issues/282
+---
+ drivers/md/dm-crypt.c | 5 +++++
+ init/Kconfig          | 1 +
+ 2 files changed, 6 insertions(+)
+
+diff --git a/drivers/md/dm-crypt.c b/drivers/md/dm-crypt.c
+index fb80539865d7c0499c39dab9c652348d1164af81..11031338d95f7ef546e3ed68f359bf956583c1be 100644
+--- a/drivers/md/dm-crypt.c
++++ b/drivers/md/dm-crypt.c
+@@ -3137,6 +3137,11 @@ static int crypt_ctr_optional(struct dm_target *ti, unsigned int argc, char **ar
+ 		}
+ 	}
+ 
++#ifdef CONFIG_ZEN_INTERACTIVE
++	set_bit(DM_CRYPT_NO_READ_WORKQUEUE, &cc->flags);
++	set_bit(DM_CRYPT_NO_WRITE_WORKQUEUE, &cc->flags);
++#endif
++
+ 	return 0;
+ }
+ 
+diff --git a/init/Kconfig b/init/Kconfig
+index ecfe83ad567b94696de585082cdea4168fef2db4..dd6432fbec07c238154830db9aa76c9d514ddcee 100644
+--- a/init/Kconfig
++++ b/init/Kconfig
+@@ -120,6 +120,7 @@ config ZEN_INTERACTIVE
+ 	  --- Block Layer ----------------------------------------
+ 
+ 	    Default scheduler.........: mq-deadline -> bfq
++		DM-Crypt Workqueues.......:          on -> off
+ 
+ 	  --- Virtual Memory Subsystem ---------------------------
+ 

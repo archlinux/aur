@@ -54,7 +54,7 @@ Remove MuQSS cpufreq configuration.
  2 files changed, 13 insertions(+), 1 deletion(-)
 
 diff --git a/drivers/cpufreq/cpufreq_ondemand.c b/drivers/cpufreq/cpufreq_ondemand.c
-index 6a41ea4729b8..b47804173462 100644
+index e8fbf970ff07888c7aa82eb67ee6c388d92c9fc7..4f57f8c568907384d9f017bbcee55a1769f601d5 100644
 --- a/drivers/cpufreq/cpufreq_ondemand.c
 +++ b/drivers/cpufreq/cpufreq_ondemand.c
 @@ -18,10 +18,16 @@
@@ -76,10 +76,10 @@ index 6a41ea4729b8..b47804173462 100644
  #define MIN_FREQUENCY_UP_THRESHOLD		(1)
  #define MAX_FREQUENCY_UP_THRESHOLD		(100)
 diff --git a/init/Kconfig b/init/Kconfig
-index 79ed6a865a5b..3c2026636085 100644
+index 7c832dd05941a231ad1c7dbbeeb914811d540591..277a7ba25cc9430730caa02e11fb36a0e7af6090 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
-@@ -130,6 +130,12 @@ config ZEN_INTERACTIVE
+@@ -134,6 +134,12 @@ config ZEN_INTERACTIVE
  	    Bandwidth slice size...........:   5    ->   3    ms
  	    Task rebalancing threshold.....:  32    ->  64
  
@@ -92,6 +92,3 @@ index 79ed6a865a5b..3c2026636085 100644
  config BROKEN
  	bool
  
--- 
-2.35.1
-

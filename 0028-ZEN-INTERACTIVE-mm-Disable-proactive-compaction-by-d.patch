@@ -13,10 +13,10 @@ Signed-off-by: Sultan Alsawaf <sultan@kerneltoast.com>
  2 files changed, 5 insertions(+)
 
 diff --git a/init/Kconfig b/init/Kconfig
-index 0e478db562b0..b7c05783bde6 100644
+index b7c7bdbd96c6d417f7ed5f8aee558044a121e351..ecfe83ad567b94696de585082cdea4168fef2db4 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
-@@ -122,6 +122,7 @@ config ZEN_INTERACTIVE
+@@ -126,6 +126,7 @@ config ZEN_INTERACTIVE
  	    Background-reclaim hugepages...:   no   ->   yes
  	    MG-LRU minimum cache TTL.......:   0    ->   1000 ms
  	    Compact Unevictable............:   1    ->   0
@@ -25,10 +25,10 @@ index 0e478db562b0..b7c05783bde6 100644
  	  --- CFS CPU Scheduler ----------------------------------
  
 diff --git a/mm/compaction.c b/mm/compaction.c
-index f713c3ca03fa..63c536175152 100644
+index 877b029a87e76aaad1c36669395dd3f359e14f03..8690af0e9e33f4056a6994496ed37aad570210c7 100644
 --- a/mm/compaction.c
 +++ b/mm/compaction.c
-@@ -2705,7 +2705,11 @@ static void compact_nodes(void)
+@@ -2739,7 +2739,11 @@ static void compact_nodes(void)
   * aggressively the kernel should compact memory in the
   * background. It takes values in the range [0, 100].
   */
@@ -40,6 +40,3 @@ index f713c3ca03fa..63c536175152 100644
  
  int compaction_proactiveness_sysctl_handler(struct ctl_table *table, int write,
  		void *buffer, size_t *length, loff_t *ppos)
--- 
-2.35.1
-

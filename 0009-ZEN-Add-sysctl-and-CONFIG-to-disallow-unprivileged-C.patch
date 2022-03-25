@@ -14,7 +14,7 @@ Our default behavior continues to match the vanilla kernel.
  5 files changed, 53 insertions(+)
 
 diff --git a/include/linux/user_namespace.h b/include/linux/user_namespace.h
-index 33a4240e6a6f..82213f9c4c17 100644
+index 33a4240e6a6f1789f8a3153a264030e62f4645d7..82213f9c4c17fb48d35daa421915403cc4195238 100644
 --- a/include/linux/user_namespace.h
 +++ b/include/linux/user_namespace.h
 @@ -139,6 +139,8 @@ static inline void set_rlimit_ucount_max(struct user_namespace *ns,
@@ -36,10 +36,10 @@ index 33a4240e6a6f..82213f9c4c17 100644
  {
  	return &init_user_ns;
 diff --git a/init/Kconfig b/init/Kconfig
-index 98b648e3cef6..2fce0d599a91 100644
+index ddd31154bfacc9cbc43fb8641f597a2e0cdbb43d..4fa2a49b23fae016f8b44394c026073939d2a712 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
-@@ -1231,6 +1231,22 @@ config USER_NS
+@@ -1235,6 +1235,22 @@ config USER_NS
  
  	  If unsure, say N.
  
@@ -63,12 +63,12 @@ index 98b648e3cef6..2fce0d599a91 100644
  	bool "PID Namespaces"
  	default y
 diff --git a/kernel/fork.c b/kernel/fork.c
-index f1e89007f228..49144b49a3d1 100644
+index 35a3beff140b6dccb6b4f1e7971df9eb6aa85bf7..b013ab5ee88fe3f49e80c8b5d60b8359fa6e599c 100644
 --- a/kernel/fork.c
 +++ b/kernel/fork.c
-@@ -98,6 +98,10 @@
- #include <linux/io_uring.h>
+@@ -99,6 +99,10 @@
  #include <linux/bpf.h>
+ #include <linux/sched/mm.h>
  
 +#ifdef CONFIG_USER_NS
 +#include <linux/user_namespace.h>
@@ -77,7 +77,7 @@ index f1e89007f228..49144b49a3d1 100644
  #include <asm/pgalloc.h>
  #include <linux/uaccess.h>
  #include <asm/mmu_context.h>
-@@ -1922,6 +1926,10 @@ static __latent_entropy struct task_struct *copy_process(
+@@ -1992,6 +1996,10 @@ static __latent_entropy struct task_struct *copy_process(
  	if ((clone_flags & (CLONE_NEWUSER|CLONE_FS)) == (CLONE_NEWUSER|CLONE_FS))
  		return ERR_PTR(-EINVAL);
  
@@ -88,7 +88,7 @@ index f1e89007f228..49144b49a3d1 100644
  	/*
  	 * Thread groups must share signals as well, and detached threads
  	 * can only be started up within the thread group.
-@@ -3036,6 +3044,12 @@ int ksys_unshare(unsigned long unshare_flags)
+@@ -3110,6 +3118,12 @@ int ksys_unshare(unsigned long unshare_flags)
  	if (unshare_flags & CLONE_NEWNS)
  		unshare_flags |= CLONE_FS;
  
@@ -102,7 +102,7 @@ index f1e89007f228..49144b49a3d1 100644
  	if (err)
  		goto bad_unshare_out;
 diff --git a/kernel/sysctl.c b/kernel/sysctl.c
-index 730ab56d9e92..6cf4e5c36ec9 100644
+index 830aaf8ca08ee0cf3ca5f816fc347a0d4189ba3d..af4c0806bd8e84f8e11607ebdce7b25fff62b63d 100644
 --- a/kernel/sysctl.c
 +++ b/kernel/sysctl.c
 @@ -91,6 +91,9 @@
@@ -115,7 +115,7 @@ index 730ab56d9e92..6cf4e5c36ec9 100644
  
  #if defined(CONFIG_SYSCTL)
  
-@@ -1814,6 +1817,15 @@ static struct ctl_table kern_table[] = {
+@@ -1803,6 +1806,15 @@ static struct ctl_table kern_table[] = {
  		.mode		= 0644,
  		.proc_handler	= proc_dointvec,
  	},
@@ -132,7 +132,7 @@ index 730ab56d9e92..6cf4e5c36ec9 100644
  	{
  		.procname	= "tainted",
 diff --git a/kernel/user_namespace.c b/kernel/user_namespace.c
-index 5481ba44a8d6..423ab2563ad7 100644
+index 5481ba44a8d68463aa01f529a4886a8905190550..423ab2563ad7579338ddbd1112df727409eed857 100644
 --- a/kernel/user_namespace.c
 +++ b/kernel/user_namespace.c
 @@ -21,6 +21,13 @@
@@ -149,6 +149,3 @@ index 5481ba44a8d6..423ab2563ad7 100644
  static struct kmem_cache *user_ns_cachep __read_mostly;
  static DEFINE_MUTEX(userns_state_mutex);
  
--- 
-2.35.1
-

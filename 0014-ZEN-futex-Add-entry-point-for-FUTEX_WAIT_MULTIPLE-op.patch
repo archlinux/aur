@@ -19,7 +19,7 @@ Signed-off-by: André Almeida <andrealmeid@collabora.com>
  2 files changed, 87 insertions(+), 1 deletion(-)
 
 diff --git a/include/uapi/linux/futex.h b/include/uapi/linux/futex.h
-index 71a5df8d2689..d375ab21cbf8 100644
+index 71a5df8d26898b03c0ee03c1f9c87899bb74fe63..d375ab21cbf83fed44d734cc5544df4d17500899 100644
 --- a/include/uapi/linux/futex.h
 +++ b/include/uapi/linux/futex.h
 @@ -22,6 +22,7 @@
@@ -50,7 +50,7 @@ index 71a5df8d2689..d375ab21cbf8 100644
   * Support for robust futexes: the kernel cleans up held futexes at
   * thread exit time.
 diff --git a/kernel/futex/syscalls.c b/kernel/futex/syscalls.c
-index 086a22d1adb7..c6f5f1e84e09 100644
+index 086a22d1adb78f4a53760bc8e975c55a5cd6a186..c6f5f1e84e099f2e538abcd9884628649b614c4d 100644
 --- a/kernel/futex/syscalls.c
 +++ b/kernel/futex/syscalls.c
 @@ -142,6 +142,7 @@ static __always_inline bool futex_cmd_has_timeout(u32 cmd)
@@ -162,6 +162,3 @@ index 086a22d1adb7..c6f5f1e84e09 100644
  	return do_futex(uaddr, op, val, tp, uaddr2, (unsigned long)utime, val3);
  }
  #endif /* CONFIG_COMPAT_32BIT_TIME */
--- 
-2.35.1
-

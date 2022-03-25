@@ -21,10 +21,10 @@ Signed-off-by: Sultan Alsawaf <sultan@kerneltoast.com>
  1 file changed, 18 insertions(+), 5 deletions(-)
 
 diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index d3ab6e198718..4d930d095ca9 100644
+index 7e43b957aa2dbbdc20586848d51dd03e785a269b..fc402712a004482f5061bad17b27217abd4987aa 100644
 --- a/mm/page_alloc.c
 +++ b/mm/page_alloc.c
-@@ -3018,15 +3018,16 @@ __rmqueue(struct zone *zone, unsigned int order, int migratetype,
+@@ -3021,15 +3021,16 @@ __rmqueue(struct zone *zone, unsigned int order, int migratetype,
  }
  
  /*
@@ -45,7 +45,7 @@ index d3ab6e198718..4d930d095ca9 100644
  
  	/*
  	 * local_lock_irq held so equivalent to spin_lock_irqsave for
-@@ -3039,6 +3040,18 @@ static int rmqueue_bulk(struct zone *zone, unsigned int order,
+@@ -3042,6 +3043,18 @@ static int rmqueue_bulk(struct zone *zone, unsigned int order,
  		if (unlikely(page == NULL))
  			break;
  
@@ -61,10 +61,10 @@ index d3ab6e198718..4d930d095ca9 100644
 +			spin_lock(&zone->lock);
 +		}
 +
- 		if (unlikely(check_pcp_refill(page)))
+ 		if (unlikely(check_pcp_refill(page, order)))
  			continue;
  
-@@ -3065,7 +3078,7 @@ static int rmqueue_bulk(struct zone *zone, unsigned int order,
+@@ -3068,7 +3081,7 @@ static int rmqueue_bulk(struct zone *zone, unsigned int order,
  	 * on i. Do not confuse with 'allocated' which is the number of
  	 * pages added to the pcp list.
  	 */
@@ -73,6 +73,3 @@ index d3ab6e198718..4d930d095ca9 100644
  	spin_unlock(&zone->lock);
  	return allocated;
  }
--- 
-2.35.1
-

@@ -11,7 +11,7 @@ interactivity to throughput and want BFQ if possible.
  2 files changed, 9 insertions(+), 1 deletion(-)
 
 diff --git a/block/elevator.c b/block/elevator.c
-index b18f38f7e88a..a3e85e2f4d96 100644
+index 1f14fda7597de2e7cbacea73c84e6886fb79db3d..a00dc913255e6efd42a0b216bbbfdfa95854135b 100644
 --- a/block/elevator.c
 +++ b/block/elevator.c
 @@ -638,11 +638,15 @@ static struct elevator_type *elevator_get_default(struct request_queue *q)
@@ -32,10 +32,10 @@ index b18f38f7e88a..a3e85e2f4d96 100644
  #else
  	return elevator_get(q, "mq-deadline", false);
 diff --git a/init/Kconfig b/init/Kconfig
-index 344ca4b9f15a..450355b8aa2a 100644
+index ac7fccdfa0bee8c8644d40b28829aeda12949a74..58bea73b06fc6f759b4f3ef2ace11a07987f3714 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
-@@ -113,6 +113,10 @@ config ZEN_INTERACTIVE
+@@ -117,6 +117,10 @@ config ZEN_INTERACTIVE
  	help
  	  Tunes the kernel for responsiveness at the cost of throughput and power usage.
  
@@ -46,6 +46,3 @@ index 344ca4b9f15a..450355b8aa2a 100644
  config BROKEN
  	bool
  
--- 
-2.35.1
-

@@ -14,10 +14,10 @@ Signed-off-by: Sultan Alsawaf <sultan@kerneltoast.com>
  1 file changed, 5 deletions(-)
 
 diff --git a/Makefile b/Makefile
-index d77a8ca61656..d4dba8af1ac2 100644
+index 80364f3624d49ef4b2226d2ff2b42478ebd56b9f..485187ea284d42b08a13ca5d49a8d70ba74acd54 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -984,11 +984,6 @@ KBUILD_CFLAGS	+= -fno-strict-overflow
+@@ -987,11 +987,6 @@ KBUILD_CFLAGS	+= -fno-strict-overflow
  # Make sure -fstack-check isn't enabled (like gentoo apparently did)
  KBUILD_CFLAGS  += -fno-stack-check
  
@@ -29,6 +29,3 @@ index d77a8ca61656..d4dba8af1ac2 100644
  # Prohibit date/time macros, which would make the build non-deterministic
  KBUILD_CFLAGS   += -Werror=date-time
  
--- 
-2.35.1
-

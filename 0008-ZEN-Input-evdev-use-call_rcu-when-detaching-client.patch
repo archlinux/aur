@@ -42,7 +42,7 @@ Signed-off-by: Kenny Levinsen <kl@kl.wtf>
  1 file changed, 11 insertions(+), 8 deletions(-)
 
 diff --git a/drivers/input/evdev.c b/drivers/input/evdev.c
-index 95f90699d2b1..2b10fe29d2c8 100644
+index 95f90699d2b17b4e42e067bf44b6deac611fdb8b..2b10fe29d2c8d9028a2f8d6c2c8987f01802f471 100644
 --- a/drivers/input/evdev.c
 +++ b/drivers/input/evdev.c
 @@ -46,6 +46,7 @@ struct evdev_client {
@@ -105,6 +105,3 @@ index 95f90699d2b1..2b10fe29d2c8 100644
  	return error;
  }
  
--- 
-2.35.1
-

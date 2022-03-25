@@ -11,7 +11,7 @@ in parallel
  1 file changed, 8 insertions(+), 7 deletions(-)
 
 diff --git a/drivers/Makefile b/drivers/Makefile
-index a110338c860c..f91099276a78 100644
+index 020780b6b4d221c4dd18cd0af9ec21b4590715ad..9cf43ac81930c3a2f196d48fecd543bd781a43da 100644
 --- a/drivers/Makefile
 +++ b/drivers/Makefile
 @@ -59,15 +59,8 @@ obj-y				+= char/
@@ -45,6 +45,3 @@ index a110338c860c..f91099276a78 100644
  obj-$(CONFIG_TARGET_CORE)	+= target/
  obj-$(CONFIG_MTD)		+= mtd/
  obj-$(CONFIG_SPI)		+= spi/
--- 
-2.35.1
-

@@ -31,7 +31,7 @@ Signed-off-by: Sultan Alsawaf <sultan@kerneltoast.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/mm/page_alloc.c b/mm/page_alloc.c
-index 3589febc6d31..5690ef37d2bf 100644
+index 0e42038382c12503dac6a1fb9f370850bd41f86b..fa30891058e1e1c7cc262560736c45fed66fd377 100644
 --- a/mm/page_alloc.c
 +++ b/mm/page_alloc.c
 @@ -341,7 +341,7 @@ compound_page_dtor * const compound_page_dtors[NR_COMPOUND_DTORS] = {
@@ -43,6 +43,3 @@ index 3589febc6d31..5690ef37d2bf 100644
  int watermark_scale_factor = 10;
  
  static unsigned long nr_kernel_pages __initdata;
--- 
-2.35.1
-

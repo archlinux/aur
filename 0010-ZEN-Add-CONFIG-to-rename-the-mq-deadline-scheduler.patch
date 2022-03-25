@@ -12,7 +12,7 @@ Increase ELV_NAME_MAX to 24 so we can support our longer IO scheduler names.
  4 files changed, 23 insertions(+), 1 deletion(-)
 
 diff --git a/block/Kconfig.iosched b/block/Kconfig.iosched
-index 615516146086..1c88a9279d17 100644
+index 6155161460862cc978c022e5b2147e32e3b45ce8..1c88a9279d1776e6124d9c2b81fce95954cac4da 100644
 --- a/block/Kconfig.iosched
 +++ b/block/Kconfig.iosched
 @@ -7,6 +7,15 @@ config MQ_IOSCHED_DEADLINE
@@ -32,7 +32,7 @@ index 615516146086..1c88a9279d17 100644
  	tristate "Kyber I/O scheduler"
  	default y
 diff --git a/block/elevator.c b/block/elevator.c
-index 482df2a350fc..b18f38f7e88a 100644
+index c319765892bb90f00162cb6cac03f8d5434e64b2..1f14fda7597de2e7cbacea73c84e6886fb79db3d 100644
 --- a/block/elevator.c
 +++ b/block/elevator.c
 @@ -642,7 +642,11 @@ static struct elevator_type *elevator_get_default(struct request_queue *q)
@@ -48,7 +48,7 @@ index 482df2a350fc..b18f38f7e88a 100644
  
  /*
 diff --git a/block/elevator.h b/block/elevator.h
-index 16cd8bdedb7e..8d488775faaf 100644
+index 16cd8bdedb7eac633636e4325c91ddb552a5632a..8d488775faaf966a93a9185e524bece40c1d6ad7 100644
 --- a/block/elevator.h
 +++ b/block/elevator.h
 @@ -48,7 +48,7 @@ struct elevator_mq_ops {
@@ -61,10 +61,10 @@ index 16cd8bdedb7e..8d488775faaf 100644
  struct elv_fs_entry {
  	struct attribute attr;
 diff --git a/block/mq-deadline.c b/block/mq-deadline.c
-index 3ed5eaf3446a..32a6c35de2f0 100644
+index 6ed602b2f80a5904892717bd2bbe19203045260a..ac7e050c987d7dccff31dc33b0bb1fae67591c8f 100644
 --- a/block/mq-deadline.c
 +++ b/block/mq-deadline.c
-@@ -1147,12 +1147,21 @@ static struct elevator_type mq_deadline = {
+@@ -1148,12 +1148,21 @@ static struct elevator_type mq_deadline = {
  	.queue_debugfs_attrs = deadline_queue_debugfs_attrs,
  #endif
  	.elevator_attrs = deadline_attrs,
@@ -86,6 +86,3 @@ index 3ed5eaf3446a..32a6c35de2f0 100644
  
  static int __init deadline_init(void)
  {
--- 
-2.35.1
-

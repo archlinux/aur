@@ -31,10 +31,10 @@ Signed-off-by: Sultan Alsawaf <sultan@kerneltoast.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/include/linux/pageblock-flags.h b/include/linux/pageblock-flags.h
-index 973fd731a520..4fd8f258972a 100644
+index 83c7248053a1eb745e0bff410be66d0f04a5e8bb..d2b8741eabf7e01802dbb0705a12cb2e5c80ea1d 100644
 --- a/include/linux/pageblock-flags.h
 +++ b/include/linux/pageblock-flags.h
-@@ -45,7 +45,7 @@ extern unsigned int pageblock_order;
+@@ -48,7 +48,7 @@ extern unsigned int pageblock_order;
  #else /* CONFIG_HUGETLB_PAGE */
  
  /* If huge pages are not used, group by MAX_ORDER_NR_PAGES */
@@ -43,6 +43,3 @@ index 973fd731a520..4fd8f258972a 100644
  
  #endif /* CONFIG_HUGETLB_PAGE */
  
--- 
-2.35.1
-

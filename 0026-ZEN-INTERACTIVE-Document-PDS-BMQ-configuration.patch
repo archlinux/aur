@@ -8,10 +8,10 @@ Subject: [PATCH] ZEN: INTERACTIVE: Document PDS/BMQ configuration
  1 file changed, 4 insertions(+)
 
 diff --git a/init/Kconfig b/init/Kconfig
-index 3c2026636085..9ca9b0e43e3e 100644
+index 277a7ba25cc9430730caa02e11fb36a0e7af6090..96e6511aa009543b871bd28bd9246cd68411286e 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
-@@ -130,6 +130,10 @@ config ZEN_INTERACTIVE
+@@ -134,6 +134,10 @@ config ZEN_INTERACTIVE
  	    Bandwidth slice size...........:   5    ->   3    ms
  	    Task rebalancing threshold.....:  32    ->  64
  
@@ -22,6 +22,3 @@ index 3c2026636085..9ca9b0e43e3e 100644
  	  --- CPUFreq Settings -----------------------------------
  
  	    Ondemand sampling down factor..:   1    ->   5
--- 
-2.35.1
-
