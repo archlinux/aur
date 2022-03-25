@@ -2,26 +2,29 @@
 #
 
 pkgname=azpainter
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=1
 pkgdesc='Painting software'
 arch=('i686' 'x86_64')
 url='http://azsky2.html.xdomain.jp/soft/azpainter.html'
 license=('GPL3')
 depends=('hicolor-icon-theme' 'fontconfig' 'libjpeg-turbo' 'libxi' 'libxcursor' 'libwebp')
+makedepends=('ninja')
 options=('!makeflags')
 source=("https://gitlab.com/azelpg/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.bz2")
-sha256sums=('a3c8382adf3b64fe0c825fd56075286a0e4e27e4172fe5617167955f13bee6a5')
+sha256sums=('5227396b742ba80f7ceca1809d19c81c9e9f866806b06904f0b254d390430e60')
 
 
 build() {
-    cd ${pkgname}-v${pkgver}
+    cd "${pkgname}-v${pkgver}"
     ./configure --prefix=/usr
-    make
+    cd build
+    ninja
 }
 
 package() {
-    cd ${pkgname}-v${pkgver}
-    make DESTDIR=${pkgdir} install
+    cd "${pkgname}-v${pkgver}"
+    cd build
+    DESTDIR="${pkgdir}" ninja install
 }
 
