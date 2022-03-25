@@ -1,7 +1,7 @@
 pkgbase = yesplaymusic-git
 	pkgdesc = 高颜值的第三方网易云播放器，支持 Windows / macOS / Linux
 	pkgver = 0.4.4.beta.1.14.gb1c5873
-	pkgrel = 2
+	pkgrel = 3
 	url = https://music.qier222.com
 	arch = x86_64
 	arch = aarch64
