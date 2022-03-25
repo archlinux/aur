@@ -10,7 +10,7 @@ pkgbase="joplin"
 pkgname=('joplin' 'joplin-desktop')
 pkgver=2.7.15
 groups=('joplin')
-pkgrel=2
+pkgrel=3
 install="joplin.install"
 depends=('electron' 'gtk3' 'libexif' 'libgsf' 'libjpeg-turbo' 'libwebp' 'libxss' 'nodejs>=17.3'
          'nss' 'orc' 'rsync' 'libvips')
@@ -23,7 +23,7 @@ source=("joplin.desktop" "joplin-desktop.sh" "joplin.sh"
   "joplin-${pkgver}.tar.gz::https://github.com/laurent22/joplin/archive/v${pkgver}.tar.gz")
 sha256sums=('c7c5d8b0ff9edb810ed901ea21352c9830bfa286f3c18b1292deca5b2f8febd2'
             'a450284fe66d89aa463d129ce8fff3a0a1a783a64209e4227ee47449d5737be8'
-            'dc1236767ee055ea1d61f10e5266a23e70f3e611b405fe713ed24ca18ee9eeb5'
+            '16aed6c4881efcef3fd86f7c07afb4c743e24d9da342438a8167346a015629e0'
             '1e605cf5519d8bd32cda541f5c693083183ddde6edeb5ce3cb440f14bb32d999')
 
 # local npm cache directory
@@ -131,45 +131,51 @@ package_joplin() {
 
   msg2 "Packaging CLI with Repo Gulp"
   cd "${srcdir}/joplin-${pkgver}/packages/app-cli/"
-  #gulp_bin=$($yarn_bin bin gulp)
-  #msg2 "Using gulp: ${gulp_bin}"
-  #${gulp_bin} build
-  #cd "${srcdir}/joplin-${pkgver}/packages/app-cli/build"
-  #$yarn_bin pack
+  gulp_bin=$($yarn_bin bin gulp)
+  msg2 "Using gulp: ${gulp_bin}"
+  ${gulp_bin} build
+  $yarn_bin pack
+
+  msg2 "Installing package"
+  mkdir -p "${pkgdir}/usr/share/joplin/"
+  mv package.tgz "${pkgdir}/usr/share/joplin/"
+  cd "${pkgdir}/usr/share/joplin/"
+  $yarn_bin init
+  # FIXME: The repo wran crashed
+  # You also need to pipe yes, for depeendy
+  yes | yarn add ./package.tgz
 
   #msg2 "Rsyncing files"
-  #mkdir -p "${pkgdir}/usr/share/joplin/"
   #rsync -avp "./" "${pkgdir}/usr/share/joplin/app-cli"
   #rsync -avp "../lib/" "${pkgdir}/usr/share/joplin/lib"
   #rsync -avp "../renderer/" "${pkgdir}/usr/share/joplin/renderer"
 
-
   msg2 "Fixing Directories Permissions"
   # Non-deterministic race in npm gives 777 permissions to random directories.
   # See https://github.com/npm/cli/issues/1103 for details.
-  #find "${pkgdir}/usr" -type d -exec chmod 755 {} +
+  find "${pkgdir}/usr" -type d -exec chmod 755 {} +
 
-  #msg2 "Removing References to \$pkgdir"
-  ##find "$pkgdir" -name package.json -print0 | xargs -0 sed -i "/_where/d"
+  msg2 "Removing References to \$pkgdir"
+  find "$pkgdir" -name package.json -print0 | xargs -0 sed -i "/_where/d"
 
-  #msg2 "Removing References to \$srcdir"
+  msg2 "Removing References to \$srcdir"
   #local tmppackage="$(mktemp --tmpdir="$srcdir")"
   #local pkgjson="$pkgdir/usr/share/joplin/app-cli/package.json" # TODO joplin name
   #jq '.|=with_entries(select(.key|test("_.+")|not))' "$pkgjson" > "$tmppackage"
   #mv "$tmppackage" "$pkgjson"
   #chmod 644 "$pkgjson"
 
-  #msg2 "Fixing Permissions set by npm"
-  ## npm gives ownership of ALL FILES to build user
-  ## https://bugs.archlinux.org/task/63396
-  #chown -R root:root "${pkgdir}"
+  msg2 "Fixing Permissions set by npm"
+  # npm gives ownership of ALL FILES to build user
+  # https://bugs.archlinux.org/task/63396
+  chown -R root:root "${pkgdir}"
 
-  #msg2 "Installing LICENSE"
-  #install -Dm644 "${srcdir}/joplin-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+  msg2 "Installing LICENSE"
+  install -Dm644 "${srcdir}/joplin-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
-  #msg2 "Installing Startup Script"
-  #cd "${srcdir}"
-  #install -Dm755 joplin.sh "${pkgdir}/usr/bin/joplin"
+  msg2 "Installing Startup Script"
+  cd "${srcdir}"
+  install -Dm755 joplin.sh "${pkgdir}/usr/bin/joplin"
 }
 
 
