@@ -1,4 +1,5 @@
 src/
 pkg/
-*.pkg.tar.xz
+*.pkg.tar.zst
 diff_match_patch-python/
+fast_diff_match_patch/
