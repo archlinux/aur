@@ -1,8 +1,8 @@
 # Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at queensu at ca>
 
-pkgname='gr-ieee802-11'
-pkgver='0c0fca8'
-pkgrel=2
+pkgname='gr-ieee802-11-git'
+pkgver=0c0fca8
+pkgrel=1
 pkgdesc="An IEEE 802.11 a/g/p transceiver for GNU Radio."
 arch=('i686' 'x86_64')
 url="https://github.com/bastibl/gr-ieee802-11"
