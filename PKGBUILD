@@ -3,7 +3,7 @@ pkgname=zmusic
 pkgver=1.1.8
 pkgrel=1
 pkgdesc="GZDoom's music system as a standalone library"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url='https://github.com/coelckers/ZMusic'
 license=('BSD' 'GPL3' 'LGPL2.1' 'LGPL3' 'custom:dumb')
 depends=('alsa-lib' 'fluidsynth>=2.2' 'libsndfile' 'mpg123' 'zlib')

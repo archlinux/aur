@@ -4,6 +4,7 @@ pkgbase = zmusic
 	pkgrel = 1
 	url = https://github.com/coelckers/ZMusic
 	arch = x86_64
+	arch = aarch64
 	license = BSD
 	license = GPL3
 	license = LGPL2.1
