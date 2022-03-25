@@ -1,0 +1,16 @@
+pkgbase = b-step-git
+	pkgdesc = The MonoPlugs b-step sequencer
+	pkgver = r30.dba71e4
+	pkgrel = 1
+	url = https://github.com/surge-synthesizer/b-step
+	arch = x86_64
+	license = GPL3
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	provides = b-step
+	conflicts = b-step
+	source = git+https://github.com/surge-synthesizer/b-step
+	md5sums = SKIP
+
+pkgname = b-step-git
