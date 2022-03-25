@@ -4,13 +4,13 @@ _base=matplotx
 pkgname=python-${_base}
 pkgdesc="Useful styles and extensions for Matplotlib"
 pkgver=0.3.6
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/nschloe/${_base}"
 license=(MIT)
 depends=(python-matplotlib)
 makedepends=(python-build python-flit-core python-install)
-checkdepends=(python-pytest-codeblocks python-imageio python-networkx python-pypng python-meshzoo python-scikit-fem)
+checkdepends=(python-pytest-codeblocks python-imageio python-networkx python-pypng python-scikit-fem)
 optdepends=('python-networkx: for creation of graphs'
   'python-pypng: for iterator support')
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
@@ -26,7 +26,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m install --optimize=1 dist/*.whl
-  MPLBACKEND=Agg test-env/bin/python -m pytest --codeblocks -k 'not README'
+  MPLBACKEND=Agg test-env/bin/python -m pytest --codeblocks -k 'not README and not readme_images'
 }
 
 package() {
