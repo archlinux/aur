@@ -1,6 +1,6 @@
 #!/bin/bash
 
-readonly joplin_dir="/usr/share/joplin/"
+readonly joplin_dir="/usr/share/joplin/node_modules/joplin/app/"
 
 if [[ ! -d $joplin_dir ]]; then
   echo "Cannot find ${joplin_dir}"
