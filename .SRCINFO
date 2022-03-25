@@ -1,5 +1,5 @@
 pkgbase = python-minq-caching-thing-git
-	pkgdesc = Python package for caching network requests
+	pkgdesc = Python library for caching network requests
 	pkgver = r6.4165d276d6cdf0500af571d06f4666c8b7d7d5bc
 	pkgrel = 1
 	url = https://github.com/kuche1/minq-caching-thing
