@@ -1,7 +1,7 @@
 pkgbase = mympd
 	pkgdesc = A standalone and lightweight MPD web client.
-	pkgver = 9.2.1
-	pkgrel = 2
+	pkgver = 9.2.2
+	pkgrel = 1
 	url = https://github.com/jcorporation/myMPD
 	install = mympd.install
 	arch = i686
@@ -18,10 +18,10 @@ pkgbase = mympd
 	depends = flac
 	depends = lua
 	backup = etc/webapps/mympd/mympd.conf
-	source = https://github.com/jcorporation/myMPD/archive/v9.2.1.tar.gz
+	source = https://github.com/jcorporation/myMPD/archive/v9.2.2.tar.gz
 	source = sysusers-mympd.conf
 	source = mympd.tmpfiles
-	sha256sums = e99911fc07d877649bf908775696f24ab7ccf9312fc6984fefdc9e6e8e95f744
+	sha256sums = e7372b65818a9eef5e063e51f2fb0ea824b2a76a2e973a92be148a3c12c38abf
 	sha256sums = b01e22c4a1868c6a25da0633f600c9e8796a3f5ccc7857472f98bc03927d1e1c
 	sha256sums = a407012d0137ddd2d32827d8f02c28b54f555009f74e1a3e89593ec5367112b0
 
