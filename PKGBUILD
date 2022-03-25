@@ -9,6 +9,7 @@ arch=("any")
 url="https://github.com/ValdikSS/windows2usb"
 license=("Apache")
 depends=("bash" "awk" "ntfs-3g" "dosfstools" "util-linux" "p7zip" "ms-sys")
+makedepends=("git")
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+${url}.git"
@@ -17,12 +18,12 @@ sha256sums=('SKIP'
             'e159fba61b14b20cc0c1631dcf158fb3811f084a9874d190616cb4740a0ccf9c')
 
 pkgver() {
-    cd "${pkgname%-git}"
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	cd "${pkgname%-git}"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-    install -D -t "${pkgdir}/usr/share/${pkgname%-git}" -m 644 uefi-ntfs.img
-    install -D -t "${pkgdir}/usr/bin" -m 755 "${pkgname%-git}/${pkgname%-git}"
+	install -D -t "${pkgdir}/usr/share/${pkgname%-git}" -m 644 uefi-ntfs.img
+	install -D -t "${pkgdir}/usr/bin" -m 755 "${pkgname%-git}/${pkgname%-git}"
 }
-# vim:set ts=4 sw=4 et:
+# vim:set ts=4 sw=4:

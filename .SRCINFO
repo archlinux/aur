@@ -5,6 +5,7 @@ pkgbase = windows2usb-git
 	url = https://github.com/ValdikSS/windows2usb
 	arch = any
 	license = Apache
+	makedepends = git
 	depends = bash
 	depends = awk
 	depends = ntfs-3g
