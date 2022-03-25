@@ -56,7 +56,7 @@ _BATCH_MODE=n # enable batch mode
 ##
 
 _major=5
-_minor=16
+_minor=17
 #_patchlevel=0
 #_subversion=1
 _basekernel=${_major}.${_minor}
@@ -92,6 +92,33 @@ source=("https://www.kernel.org/pub/linux/kernel/v${_major}.x/linux-${_basekerne
         # "https://gitlab.com/alfredchen/projectc/raw/master/$_major.$_minor/$_projectcpatchname"
         "90-linux.hook"
         "60-linux.hook"
+        # ZEN
+        0002-ZEN-Add-VHBA-driver.patch
+        0003-ZEN-Add-OpenRGB-patches.patch
+        0006-ZEN-Disable-stack-conservation-for-GCC.patch
+        0007-ZEN-Initialize-ata-before-graphics.patch
+        0008-ZEN-Input-evdev-use-call_rcu-when-detaching-client.patch
+        0010-ZEN-Add-CONFIG-to-rename-the-mq-deadline-scheduler.patch
+        0011-ZEN-intel-pstate-Implement-enable-parameter.patch
+        0012-ZEN-Add-ACS-override-support.patch
+        0013-ZEN-PCI-Add-Intel-remapped-NVMe-device-support.patch
+        0014-ZEN-futex-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch
+        0015-ZEN-mm-Disable-watermark-boosting-by-default.patch
+        0016-ZEN-mm-Stop-kswapd-early-when-nothing-s-waiting-for-.patch
+        0017-ZEN-mm-Increment-kswapd_waiters-for-throttled-direct.patch
+        0018-ZEN-mm-Lower-the-non-hugetlbpage-pageblock-size-to-r.patch
+        0019-ZEN-mm-Don-t-hog-the-CPU-and-zone-lock-in-rmqueue_bu.patch
+        0020-ZEN-INTERACTIVE-Base-config-item.patch
+        0021-ZEN-INTERACTIVE-Use-BFQ-as-our-elevator.patch
+        0022-ZEN-INTERACTIVE-Enable-background-reclaim-of-hugepag.patch
+        0023-ZEN-INTERACTIVE-Add-help-text-for-the-MG-LRU-tweaks.patch
+        0024-ZEN-INTERACTIVE-Tune-CFS-for-interactivity.patch
+        0025-ZEN-INTERACTIVE-Tune-ondemand-governor-for-interacti.patch
+        0026-ZEN-INTERACTIVE-Document-PDS-BMQ-configuration.patch
+        0027-ZEN-INTERACTIVE-mm-Disable-unevictable-compaction.patch
+        0028-ZEN-INTERACTIVE-mm-Disable-proactive-compaction-by-d.patch
+        # ZEN END
+        # https://bugzilla.kernel.org/show_bug.cgi?id=211005
         'asus_zenith_ii_map.patch::https://bugzilla.kernel.org/attachment.cgi?id=294489'
        )
 # 	'cx23885_move_CI_AC_registration_to_a_separate_function.patch'
@@ -104,6 +131,34 @@ prepare() {
   patch -Np1 < ${srcdir}/${_pfpatchname}
   #patch -Np1 < ${srcdir}/${_projectcpatchname}
 
+  patch -p1 -i ${srcdir}/0002-ZEN-Add-VHBA-driver.patch
+  patch -p1 -i ${srcdir}/0003-ZEN-Add-OpenRGB-patches.patch
+  # already applied by pf
+  #patch -p1 -i ${srcdir}/0005-ZEN-Unrestrict-CONFIG_OPTIMIZE_FOR_PERFORMANCE_O3.patch
+  patch -p1 -i ${srcdir}/0006-ZEN-Disable-stack-conservation-for-GCC.patch
+  patch -p1 -i ${srcdir}/0007-ZEN-Initialize-ata-before-graphics.patch
+  patch -p1 -i ${srcdir}/0008-ZEN-Input-evdev-use-call_rcu-when-detaching-client.patch
+  # already applied by pf
+  #patch -p1 -i ${srcdir}/0009-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  patch -p1 -i ${srcdir}/0010-ZEN-Add-CONFIG-to-rename-the-mq-deadline-scheduler.patch
+  patch -p1 -i ${srcdir}/0011-ZEN-intel-pstate-Implement-enable-parameter.patch
+  patch -p1 -i ${srcdir}/0012-ZEN-Add-ACS-override-support.patch
+  patch -p1 -i ${srcdir}/0013-ZEN-PCI-Add-Intel-remapped-NVMe-device-support.patch
+  patch -p1 -i ${srcdir}/0014-ZEN-futex-Add-entry-point-for-FUTEX_WAIT_MULTIPLE-op.patch
+  patch -p1 -i ${srcdir}/0015-ZEN-mm-Disable-watermark-boosting-by-default.patch
+  patch -p1 -i ${srcdir}/0016-ZEN-mm-Stop-kswapd-early-when-nothing-s-waiting-for-.patch
+  patch -p1 -i ${srcdir}/0017-ZEN-mm-Increment-kswapd_waiters-for-throttled-direct.patch
+  patch -p1 -i ${srcdir}/0018-ZEN-mm-Lower-the-non-hugetlbpage-pageblock-size-to-r.patch
+  patch -p1 -i ${srcdir}/0019-ZEN-mm-Don-t-hog-the-CPU-and-zone-lock-in-rmqueue_bu.patch
+  patch -p1 -i ${srcdir}/0020-ZEN-INTERACTIVE-Base-config-item.patch
+  patch -p1 -i ${srcdir}/0021-ZEN-INTERACTIVE-Use-BFQ-as-our-elevator.patch
+  patch -p1 -i ${srcdir}/0022-ZEN-INTERACTIVE-Enable-background-reclaim-of-hugepag.patch
+  patch -p1 -i ${srcdir}/0023-ZEN-INTERACTIVE-Add-help-text-for-the-MG-LRU-tweaks.patch
+  patch -p1 -i ${srcdir}/0024-ZEN-INTERACTIVE-Tune-CFS-for-interactivity.patch
+  patch -p1 -i ${srcdir}/0025-ZEN-INTERACTIVE-Tune-ondemand-governor-for-interacti.patch
+  patch -p1 -i ${srcdir}/0026-ZEN-INTERACTIVE-Document-PDS-BMQ-configuration.patch
+  patch -p1 -i ${srcdir}/0027-ZEN-INTERACTIVE-mm-Disable-unevictable-compaction.patch
+  patch -p1 -i ${srcdir}/0028-ZEN-INTERACTIVE-mm-Disable-proactive-compaction-by-d.patch
 
   # Add port map for ASUS Zenith II
   patch -p1 -i ${srcdir}/asus_zenith_ii_map.patch
@@ -665,13 +720,37 @@ eval "package_linux-pf${LCPU+-$LCPU}() {
      }"
 
 
-sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
-            '7cbba374356a189faac71001c5344ce8f02434684b1ce1accefc0cc4bd6718e5'
-            '425743a84ca63599680f28ed2ebb7885483805104953579b6452c6c3ba24d22a'
+sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
+            '27f59cb7d4adb08a81da3de822ce07d5b103c799e89aa36370e16e0b4d1f8672'
+            '969470b3c6d05fc68fdfbaf39296327edbd091a1a997ce9335822a06d690e60e'
             '30566498a4f549e972fcd430d2fc44b2bd643c55bae20096f083f8837d8c43e4'
             '82d660caa11db0cd34fd550a049d7296b4a9dcd28f2a50c81418066d6e598864'
-            '1eb6a4d75c4aa9ba32ec92e60b502c9d04a3869004f1f2686db8631d5f573561'
+            '7759d47d620eb74afbce916b9932bdeb331377104daafa4dfa3931e0855ea17c'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
+            'f7b461945a51af055630d396474f3cf981b5798830fb165346162680e672f842'
+            '5be0363210051e0df9b48fd745f7fe4cfa70963f98971d1b2ee55c27b4393d1a'
+            '5f007c21adfb68d84d4b63d26213b9212d956d69fee84953058b71faf4661517'
+            'c8d29bc2579dc9a954d6b13ed50f8b07abcd058f5dcf18f170bdfd230283f926'
+            'dd5829548fe2802fa70938359e3606fa4d97c21dbec315a12fb7836dd7caec30'
+            'de128f4bb0d74bd5cb5ad4e52cbbc04b5f8475f9b754452ebf36b40d933784db'
+            'fbaf3aad0e0fb84a18d43a647330a25edb6b24f21902d33aff4f0169a0287e21'
+            '0dae3fc9a283e45c30d35745ab5832336304a94f414e9f8d97b39d8a768d665f'
+            'eeb37f5cd79f2e53018d28afbbab36d903f9203b6a7e27a514313afa9bfeff1b'
+            '6ebc39aa1d31a3745d7dcd14d6628e62877c9b8572d19c128f45fd180ca3ac7b'
+            'ff87ca1fb418061ed09cbd4656094ef14978edd23d772b5b4ceaa3481b6f570b'
+            '47d18389f5ad85b54456be88634eec020da11d632e9af72e8423104947ef685b'
+            'f827d78d3eecb948e3eb79219c2eafb98b1e0199f4c1bc00ecb9db1ffad723aa'
+            '02030b2ae2d912ccb64c6900cacafc799f01a35f599018007f316427d0daa39b'
+            '697db5c22b7ae716eb017c478fa7104e700f3231a88b60fa20bcbb82edc1ae94'
+            '77c921dbcf84adfea460e02fbd28542dd988f7e023c4bc75719a24805e7a9c71'
+            'dd582720ea98321c227a4a98fb45db93afbf172f6531a34ef4a65c0ae0400c59'
+            '9e9ccb6cd669fa136669d721a3f5b3b44d522ee686b89e1cf51b92d52a0e82d8'
+            'b1807be87aa49b7ef40bdc78596ef524c5832e556bf0ff1f62f89e77abd8d773'
+            'fef891030e93438be1dd32fa2af28d2f5c033e7e03aad5a152eaee51b0e5f178'
+            'b9f98e665b570d95da7b55c797bcef206fd48c017de86b5c64e22ff5b45a4713'
+            '9ffc360f1a1b354bbae4cf7f4f90fb131a80e65e35afdc3a2e52994c2740eae3'
+            '75f3929497e6de49337fc4c83a215856397261fb8be726e55656c621b45c1fba'
+            'a23472c56b3f14ab976fc19cb0a214fd881d7519b47a1bd4f919b29324b2d3a8'
             '67558840c3e1f1de229b23a54342cb126735282353a4d0a8cd10e4d582e6d9d6')
 # vim:set ts=2 sw=2 tw=0 et:

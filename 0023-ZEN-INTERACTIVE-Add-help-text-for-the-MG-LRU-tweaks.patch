@@ -1,0 +1,25 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Steven Barrett <steven@liquorix.net>
+Date: Wed, 11 Aug 2021 18:47:46 -0500
+Subject: [PATCH] ZEN: INTERACTIVE: Add help text for the MG-LRU tweaks
+
+The tweaks themselves get merged with the MG-LRU patchset.
+---
+ init/Kconfig | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/init/Kconfig b/init/Kconfig
+index a77e78d1c9eb..7420e7b3e53c 100644
+--- a/init/Kconfig
++++ b/init/Kconfig
+@@ -120,6 +120,7 @@ config ZEN_INTERACTIVE
+ 	  --- Virtual Memory Subsystem ---------------------------
+ 
+ 	    Background-reclaim hugepages...:   no   ->   yes
++	    MG-LRU minimum cache TTL.......:   0    ->   1000 ms
+ 
+ config BROKEN
+ 	bool
+-- 
+2.35.1
+

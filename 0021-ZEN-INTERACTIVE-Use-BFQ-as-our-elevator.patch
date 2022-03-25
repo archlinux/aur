@@ -1,0 +1,51 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Mon, 27 Jan 2020 18:11:05 +0100
+Subject: [PATCH] ZEN: INTERACTIVE: Use BFQ as our elevator
+
+Add a scheduler even to multi-queue block devices: We prefer
+interactivity to throughput and want BFQ if possible.
+---
+ block/elevator.c | 6 +++++-
+ init/Kconfig     | 4 ++++
+ 2 files changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/block/elevator.c b/block/elevator.c
+index b18f38f7e88a..a3e85e2f4d96 100644
+--- a/block/elevator.c
++++ b/block/elevator.c
+@@ -638,11 +638,15 @@ static struct elevator_type *elevator_get_default(struct request_queue *q)
+ 	if (q->tag_set && q->tag_set->flags & BLK_MQ_F_NO_SCHED_BY_DEFAULT)
+ 		return NULL;
+ 
++#ifndef CONFIG_ZEN_INTERACTIVE
+ 	if (q->nr_hw_queues != 1 &&
+ 	    !blk_mq_is_shared_tags(q->tag_set->flags))
+ 		return NULL;
++#endif
+ 
+-#if defined(CONFIG_MQ_IOSCHED_DEADLINE_NODEFAULT)
++#if defined(CONFIG_ZEN_INTERACTIVE) && defined(CONFIG_IOSCHED_BFQ)
++	return elevator_get(q, "bfq", false);
++#elif defined(CONFIG_MQ_IOSCHED_DEADLINE_NODEFAULT)
+ 	return elevator_get(q, "mq-deadline-nodefault", false);
+ #else
+ 	return elevator_get(q, "mq-deadline", false);
+diff --git a/init/Kconfig b/init/Kconfig
+index 344ca4b9f15a..450355b8aa2a 100644
+--- a/init/Kconfig
++++ b/init/Kconfig
+@@ -113,6 +113,10 @@ config ZEN_INTERACTIVE
+ 	help
+ 	  Tunes the kernel for responsiveness at the cost of throughput and power usage.
+ 
++	  --- Block Layer ----------------------------------------
++
++	    Default scheduler.........: mq-deadline -> bfq
++
+ config BROKEN
+ 	bool
+ 
+-- 
+2.35.1
+

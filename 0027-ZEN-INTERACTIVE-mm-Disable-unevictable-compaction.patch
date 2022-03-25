@@ -1,0 +1,40 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Steven Barrett <steven@liquorix.net>
+Date: Sat, 5 Mar 2022 11:37:14 -0600
+Subject: [PATCH] ZEN: INTERACTIVE: mm: Disable unevictable compaction
+
+This option is already disabled when CONFIG_PREEMPT_RT is enabled, lets
+turn it off when CONFIG_ZEN_INTERACTIVE is set as well.
+---
+ init/Kconfig    | 1 +
+ mm/compaction.c | 2 +-
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/init/Kconfig b/init/Kconfig
+index 9ca9b0e43e3e..0e478db562b0 100644
+--- a/init/Kconfig
++++ b/init/Kconfig
+@@ -121,6 +121,7 @@ config ZEN_INTERACTIVE
+ 
+ 	    Background-reclaim hugepages...:   no   ->   yes
+ 	    MG-LRU minimum cache TTL.......:   0    ->   1000 ms
++	    Compact Unevictable............:   1    ->   0
+ 
+ 	  --- CFS CPU Scheduler ----------------------------------
+ 
+diff --git a/mm/compaction.c b/mm/compaction.c
+index b4e94cda3019..f713c3ca03fa 100644
+--- a/mm/compaction.c
++++ b/mm/compaction.c
+@@ -1699,7 +1699,7 @@ typedef enum {
+  * Allow userspace to control policy on scanning the unevictable LRU for
+  * compactable pages.
+  */
+-#ifdef CONFIG_PREEMPT_RT
++#if defined(CONFIG_PREEMPT_RT) || defined(CONFIG_ZEN_INTERACTIVE)
+ int sysctl_compact_unevictable_allowed __read_mostly = 0;
+ #else
+ int sysctl_compact_unevictable_allowed __read_mostly = 1;
+-- 
+2.35.1
+

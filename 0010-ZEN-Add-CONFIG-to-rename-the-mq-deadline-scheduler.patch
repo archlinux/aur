@@ -1,0 +1,91 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Mon, 25 Nov 2019 22:53:25 +0100
+Subject: [PATCH] ZEN: Add CONFIG to rename the mq-deadline scheduler
+
+Increase ELV_NAME_MAX to 24 so we can support our longer IO scheduler names.
+---
+ block/Kconfig.iosched | 9 +++++++++
+ block/elevator.c      | 4 ++++
+ block/elevator.h      | 2 +-
+ block/mq-deadline.c   | 9 +++++++++
+ 4 files changed, 23 insertions(+), 1 deletion(-)
+
+diff --git a/block/Kconfig.iosched b/block/Kconfig.iosched
+index 615516146086..1c88a9279d17 100644
+--- a/block/Kconfig.iosched
++++ b/block/Kconfig.iosched
+@@ -7,6 +7,15 @@ config MQ_IOSCHED_DEADLINE
+ 	help
+ 	  MQ version of the deadline IO scheduler.
+ 
++config MQ_IOSCHED_DEADLINE_NODEFAULT
++	bool "Rename mq-deadline scheduler to mq-deadline-nodefault"
++	depends on MQ_IOSCHED_DEADLINE
++	default n
++	help
++	  This renames the mq-deadline scheduler to "mq-deadline-nodefault" and
++	  also drops its alias of "deadline". This can prevent existing
++	  userspace from forcing this scheduler over the kernel's choice.
++
+ config MQ_IOSCHED_KYBER
+ 	tristate "Kyber I/O scheduler"
+ 	default y
+diff --git a/block/elevator.c b/block/elevator.c
+index 482df2a350fc..b18f38f7e88a 100644
+--- a/block/elevator.c
++++ b/block/elevator.c
+@@ -642,7 +642,11 @@ static struct elevator_type *elevator_get_default(struct request_queue *q)
+ 	    !blk_mq_is_shared_tags(q->tag_set->flags))
+ 		return NULL;
+ 
++#if defined(CONFIG_MQ_IOSCHED_DEADLINE_NODEFAULT)
++	return elevator_get(q, "mq-deadline-nodefault", false);
++#else
+ 	return elevator_get(q, "mq-deadline", false);
++#endif
+ }
+ 
+ /*
+diff --git a/block/elevator.h b/block/elevator.h
+index 16cd8bdedb7e..8d488775faaf 100644
+--- a/block/elevator.h
++++ b/block/elevator.h
+@@ -48,7 +48,7 @@ struct elevator_mq_ops {
+ 	void (*exit_icq)(struct io_cq *);
+ };
+ 
+-#define ELV_NAME_MAX	(16)
++#define ELV_NAME_MAX	(24)
+ 
+ struct elv_fs_entry {
+ 	struct attribute attr;
+diff --git a/block/mq-deadline.c b/block/mq-deadline.c
+index 3ed5eaf3446a..32a6c35de2f0 100644
+--- a/block/mq-deadline.c
++++ b/block/mq-deadline.c
+@@ -1147,12 +1147,21 @@ static struct elevator_type mq_deadline = {
+ 	.queue_debugfs_attrs = deadline_queue_debugfs_attrs,
+ #endif
+ 	.elevator_attrs = deadline_attrs,
++#ifdef CONFIG_MQ_IOSCHED_DEADLINE_NODEFAULT
++	.elevator_name = "mq-deadline-nodefault",
++	.elevator_alias = "deadline-nodefault",
++#else
+ 	.elevator_name = "mq-deadline",
+ 	.elevator_alias = "deadline",
++#endif
+ 	.elevator_features = ELEVATOR_F_ZBD_SEQ_WRITE,
+ 	.elevator_owner = THIS_MODULE,
+ };
++#ifdef CONFIG_MQ_IOSCHED_DEADLINE_NODEFAULT
++MODULE_ALIAS("mq-deadline-nodefault-iosched");
++#else
+ MODULE_ALIAS("mq-deadline-iosched");
++#endif
+ 
+ static int __init deadline_init(void)
+ {
+-- 
+2.35.1
+
