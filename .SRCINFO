@@ -23,7 +23,7 @@ pkgbase = printrun-git
 	optdepends = python-psutil: to increase process priority when printing
 	provides = printrun
 	conflicts = printrun
-	source = git://github.com/kliment/Printrun.git
+	source = git+https://github.com/kliment/Printrun.git
 	sha256sums = SKIP
 
 pkgname = printrun-git

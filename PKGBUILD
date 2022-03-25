@@ -20,7 +20,7 @@ optdepends=(
   'python-dbus: to inhibit sleep when printing'
   'python-psutil: to increase process priority when printing')
 makedepends=('git' 'cython' 'python-setuptools')
-source=('git://github.com/kliment/Printrun.git')
+source=('git+https://github.com/kliment/Printrun.git')
 sha256sums=('SKIP')
 
 pkgver() {
