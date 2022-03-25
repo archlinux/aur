@@ -23,6 +23,6 @@ pkgver() {
 
 package() {
     cd "$_pkgname"
-    install -dm755 "$pkgdir/usr/share/lua/5.3/${_pkgname##*-}"
-    install -m644 $_pkgname/{LICENSE,README.rst,*.lua} "$pkgdir/usr/share/lua/5.3/${_pkgname##*-}"
+    install -dm755 "$pkgdir"/usr/share/lua/5.3/${_pkgname##*-}
+    install -m644 {LICENSE,README.rst,*.lua} "$pkgdir"/usr/share/lua/5.3/${_pkgname##*-}
 }
