@@ -1,6 +1,6 @@
 pkgbase = gr-ieee802-11
 	pkgdesc = An IEEE 802.11 a/g/p transceiver for GNU Radio.
-	pkgver = b83d008
+	pkgver = 0c0fca8
 	pkgrel = 2
 	url = https://github.com/bastibl/gr-ieee802-11
 	arch = i686
@@ -13,8 +13,7 @@ pkgbase = gr-ieee802-11
 	depends = log4cpp
 	depends = gr-foo
 	provides = gr-ieee802-11
-	source = git+https://github.com/bastibl/gr-ieee802-11
+	source = git+https://github.com/bastibl/gr-ieee802-11#branch=maint-3.9
 	sha1sums = SKIP
 
 pkgname = gr-ieee802-11
-
