@@ -9,6 +9,7 @@ pkgbase = pbuilder-git
 	makedepends = git
 	depends = debootstrap
 	depends = dpkg
+	depends = inetutils
 	optdepends = ubuntu-keyring: checking release signatures of ubuntu distributions
 	optdepends = debian-archive-keyring: checking release signatures of debian distributions
 	optdepends = debian-keyring: checking release signatures of debian distributions (alternative package)

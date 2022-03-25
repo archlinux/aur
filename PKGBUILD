@@ -7,7 +7,7 @@ pkgdesc="Personal package builder for Debian packages"
 arch=('any')
 license=('GPL')
 url='https://pbuilder-team.pages.debian.net/pbuilder'
-depends=('debootstrap' 'dpkg')
+depends=('debootstrap' 'dpkg' 'inetutils')
 optdepends=('ubuntu-keyring: checking release signatures of ubuntu distributions'
             'debian-archive-keyring: checking release signatures of debian distributions'
             'debian-keyring: checking release signatures of debian distributions (alternative package)')
