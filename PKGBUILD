@@ -2,7 +2,7 @@
 pkgname=ensembles
 _pkgname=Ensembles
 pkgver=0.0.17
-pkgrel=4
+pkgrel=5
 pkgdesc="A digital arranger workstation powered by FluidSynth for GNOME"
 arch=('x86_64')
 url='https://github.com/SubhadeepJasu/Ensembles'
@@ -28,13 +28,12 @@ sha256sums=('4801eed59d0801e223ca8c9c7294f6128083161d09e9dc438ca345255ffc0952')
 
 build() {
 	cd "$_pkgname-$pkgver"
-
 	meson build --prefix=/usr
 	ninja -C build
 }
 
 package() {
 	cd "$_pkgname-$pkgver"
-
 	DESTDIR="$pkgdir/" ninja -C build install
+	ln -sv com.github.subhadeepjasu.ensembles "$pkgdir/usr/bin/ensembles"
 }

@@ -1,7 +1,7 @@
 pkgbase = ensembles
 	pkgdesc = A digital arranger workstation powered by FluidSynth for GNOME
 	pkgver = 0.0.17
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/SubhadeepJasu/Ensembles
 	arch = x86_64
 	license = GPL3
