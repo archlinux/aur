@@ -1,0 +1,7 @@
+function post_install {
+  setcap "cap_dac_override+p" /usr/bin/espanso
+}
+
+function post_upgrade() {
+  post_install "$1"
+}

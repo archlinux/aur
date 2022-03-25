@@ -1,16 +1,19 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
 _pkgver=2.1.4-beta
-pkgname=espanso
+pkgname=espanso-wayland
 pkgver=2.1.4
 pkgrel=1
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
 url="https://espanso.org/"
 license=("GPL3")
-depends=("xdotool" "xclip" "libxtst" "libnotify" "wxgtk2")
+depends=("libnotify" "wxgtk2" "libxkbcommon" "wl-clipboard")
 makedepends=("rust" "git" "cmake" "cargo-make" "rust-script")
+provides=("${pkgname%-wayland}")
+conflicts=("${pkgname%-wayland}")
 options=("!lto")  # fails with LTO as of 2022-03
+install=espanso-wayland.install
 source=("git+https://github.com/federico-terzi/espanso.git#tag=v${_pkgver}")
 sha512sums=('SKIP')
 
@@ -26,7 +29,7 @@ prepare() {
 build() {
     cd "espanso"
 
-    cargo make --profile release build-binary
+    cargo make --env NO_X11=true --profile release build-binary
 }
 
 package() {
