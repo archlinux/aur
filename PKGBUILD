@@ -5,7 +5,7 @@ pkgbase=lx-music-desktop-git
 pkgname=(lx-music-desktop-git lx-music-desktop-electron-git)
 pkgdesc=一个免费的音乐查找助手
 pkgver=1.19.0.f10c1e9
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 armv7l)
 url=https://github.com/lyswhut/lx-music-desktop
 licence=(Apache)
@@ -66,7 +66,7 @@ package_lx-music-desktop-electron-git(){
 		_arch=""
 	fi
 	install -Dm644 "${srcdir}/${pkgbase}/build/linux-${_arch}unpacked/resources/app.asar" "${pkgdir}/usr/lib/${pkgbase//-git/}/lx-music-desktop.asar"
-	install -Dm644 "${srcdir}/lx-music-desktop" "${pkgdir}/usr/bin/lx-music-desktop"
+	install -Dm755 "${srcdir}/lx-music-desktop" "${pkgdir}/usr/bin/lx-music-desktop"
 	sed -i "s/electron/${_electron}/" "${pkgdir}/usr/bin/lx-music-desktop"
 	install -Dm644 "${srcdir}/lx-music-desktop.desktop" "${pkgdir}/usr/share/applications/${pkgbase//-git/}.desktop"
 	for size in 16x16 32x32 48x48 64x64 128x128 256x256 512x512
