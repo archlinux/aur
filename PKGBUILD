@@ -4,7 +4,7 @@
 # Contributor: Carlo Cabanilla <carlo.cabanilla@gmail.com>
 
 pkgname=python-pex
-pkgver=2.1.73
+pkgver=2.1.74
 pkgrel=1
 arch=('any')
 pkgdesc='Generates executable Python environments'
@@ -29,8 +29,7 @@ build() {
 	cd "$pkgname"
 	## requires python-flit-core>=2,<3
 	python -m build --wheel --skip-dependency-check --no-isolation
-	cd docs
-	make man
+	make -C docs man
 }
 
 ## 25 minutes to run a test suite lol no thanks
