@@ -1,22 +1,19 @@
 pkgbase = espanso-bin
 	pkgdesc = Cross-platform Text Expander written in Rust
-	pkgver = 0.7.3
+	pkgver = 2.1.4
 	pkgrel = 1
 	url = https://espanso.org/
-	install = espanso-bin.install
 	arch = x86_64
 	license = GPL3
 	depends = xdotool
 	depends = xclip
-	depends = libxtst
-	depends = libnotify
-	optdepends = modulo: Support for interactive forms
 	provides = espanso
 	conflicts = espanso
-	source = espanso-linux-0.7.3.tar.gz::https://github.com/federico-terzi/espanso/releases/download/v0.7.3/espanso-linux.tar.gz
-	source = https://raw.githubusercontent.com/federico-terzi/espanso/v0.7.3/src/res/linux/systemd.service
-	sha512sums = 6ef21bf0c0d03a08cdb33695187a55cf36dee8687a4e7a3b931de1d1424b15072cb5b664253eb90d45f08178ecaf95084936818a38dfdd76a8185342af417716
-	sha512sums = 8f30ebc5dbb633f9cdd464765df38e6ef3fa008ba6d2fa83d66eed992a9e2c8be41fadbeb1d3048738078357bb72c78663900b5970f5061a0175c72cd5053dad
+	noextract = espanso-2.1.4-beta
+	options = !strip
+	source = espanso-2.1.4-beta::https://github.com/federico-terzi/espanso/releases/download/v2.1.4-beta/Espanso-X11.AppImage
+	source = espanso-2.1.4-beta.service::https://raw.githubusercontent.com/federico-terzi/espanso/v2.1.4-beta/espanso/src/res/linux/systemd.service
+	sha512sums = 41aa3a1cd7469d0e1dd7c889cc670a007861989331e043e1f0f8d51434f0f65af0d4f40613ddaea5938267508732513a42616accd692a0c7352eb35b024a4ab1
+	sha512sums = dbfb208a34a76cf03d46232119a83a57bc1f81d102e17e6dda7c3b41039e010061b4352cd107e482c6f9bfd6457fa757ebbcd0261084f20e2757a5b186a24c20
 
 pkgname = espanso-bin
-
