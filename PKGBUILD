@@ -1,7 +1,7 @@
 # Maintainer:  Esben Haabendal <esben@haabendal.dk>
 
 pkgname=emacs-editorconfig-git
-pkgver=0.8.1.r4.59c734af576b
+pkgver=0.8.2.r4.1d4acc3ec736
 pkgrel=1
 pkgdesc="EditorConfig Emacs Plugin"
 arch=('any')
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "$_github_repo"
   make LOAD_PATH="-L /usr/share/emacs/site-lisp -L /usr/share/emacs/site-lisp/dash -L ${srcdir}" \
-       all
+       compile
 }
 
 package() {
