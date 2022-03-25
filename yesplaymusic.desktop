@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=YesPlayMusic
-Exec=/opt/YesPlayMusic/yesplaymusic %U
+Exec=yesplaymusic %U
 Terminal=false
 Type=Application
 Icon=yesplaymusic

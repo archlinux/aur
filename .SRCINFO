@@ -1,12 +1,12 @@
 pkgbase = yesplaymusic-git
 	pkgdesc = 高颜值的第三方网易云播放器，支持 Windows / macOS / Linux
-	pkgver = 0.4.3.36.gd15b58d
+	pkgver = 0.4.4.beta.1.14.gb1c5873
 	pkgrel = 1
 	url = https://music.qier222.com
 	arch = x86_64
 	arch = aarch64
 	license = MIT
-	makedepends = nodejs-lts-fermium
+	makedepends = nodejs=16.14.2
 	makedepends = yarn
 	makedepends = git
 	makedepends = libvips
@@ -24,9 +24,22 @@ pkgbase = yesplaymusic-git
 	optdepends = libnotify
 	optdepends = libappindicator-gtk3
 	provides = yesplaymusic
+	conflicts = yesplaymusic
 	source = git+https://github.com/qier222/YesPlayMusic
 	source = yesplaymusic.desktop
+	source = yesplaymusic
 	sha256sums = SKIP
-	sha256sums = 54f7ea2d99239749b40fa88109f4962f913421e3954e42f7bec8264d1f8bd89d
+	sha256sums = 56fb010914c3baad7bde6ccac03d9e92f705652c6f0098547cafbf4fcc613630
+	sha256sums = dc7e893cbea98f0f20b7ffdf18c8462c45069618421ea2ebd40ee34051f68e66
 
 pkgname = yesplaymusic-git
+
+pkgname = yesplaymusic-electron-git
+	pkgdesc = 高颜值的第三方网易云播放器，支持 Windows / macOS / Linux (with system electrton)
+	depends = gtk3
+	depends = nss
+	depends = electron13
+	provides = yesplaymusic
+	provides = yesplaymusic-electron
+	conflicts = yesplaymusic
+	conflicts = yesplaymusic-electron
