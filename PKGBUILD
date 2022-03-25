@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=gftools
-pkgver=0.9.2
+pkgver=0.9.4
 pkgrel=1
 pkgdesc='Misc tools for working with the Google Fonts library'
 arch=(any)
@@ -10,6 +10,7 @@ license=(Apache)
 _py_deps=(babelfont
           brotli
           browserstack-local
+          fontfeatures
           fontmake
           fonttools
           fs # optdepends of fonttols required for [ufo]
@@ -39,7 +40,7 @@ makedepends=(python-{build,installer}
              python-wheel)
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('65484138e3da5d035ddd417dceb9d66287ed17e556b021bab0dc9561223ed7ab')
+sha256sums=('fae5dfd3023ceed6841cad3d722a28ebf7bf42bb4641a447f1c1c832eab61caa')
 
 prepare() {
 	cd "$_archive"
