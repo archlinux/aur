@@ -1,10 +1,10 @@
 # Maintainer: Butui Hu <hot123tea123@gmail.com>
 
-_CUDA_ARCH_LIST="5.2;5.3;6.0;6.1;6.2;7.0;7.0+PTX;7.2;7.2+PTX;7.5;7.5+PTX;8.0;8.0+PTX;8.6;8.6+PTX"
+_CUDA_ARCH_LIST="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.6+PTX"
 pkgname=(python-detectron2 python-detectron2-cuda)
 _pkgname=detectron2
 pkgver=0.6
-pkgrel=1
+pkgrel=3
 pkgdesc="FAIR's next-generation platform for object detection and segmentation"
 arch=('x86_64')
 url='https://github.com/facebookresearch/detectron2'
@@ -13,10 +13,12 @@ depends=(
   python-cloudpickle
   python-future
   python-fvcore
+  python-hydra
   python-iopath
   python-matplotlib
   python-mock
   python-omegaconf
+  python-opencv
   python-pillow
   python-pycocotools
   python-pydot
@@ -26,7 +28,6 @@ depends=(
   python-yacs
   tensorboard
 )
-optdepends=('opencv')
 makedepends=(
   cuda
   python-setuptools
