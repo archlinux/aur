@@ -10,10 +10,10 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
-_tag='d066a4f747b225d47c5f5c97a8843d30878995b8' # git rev-parse v${_tag_name}
-_tag_name=250.3
+_tag='5aba21f1561d48fdcf7f4670263ba109c25c1ea6' # git rev-parse v${_tag_name}
+_tag_name=250.4
 pkgver="${_tag_name/-/}"
-pkgrel=4
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url='https://www.github.com/systemd/systemd'
 groups=('selinux')
@@ -51,7 +51,7 @@ sha512sums=('SKIP'
             'SKIP'
             'cc0c2ffb5f7c3a7176cd68f3dddd85ca000dcc4cdf3044746a20147234adb6811800fd28a4713faa6a59bf8c02be9fd43c2d6aa6695fd1dbf03ae773a91d090c'
             'f0d933e8c6064ed830dec54049b0a01e27be87203208f6ae982f10fb4eddc7258cb2919d594cbfb9a33e74c3510cfd682f3416ba8e804387ab87d1a217eb4b73'
-            '8167dd8f610fd98e3de4360cacd0020d3691cd1a989591a6db2f0d1277ce96880e64753bdbed759c6cf4b95d39b5d2415b4d9810e369e50e59655742174ff51c'
+            'aeefb607471cffb5ed4c3d9f36dc0954a9a08cee4b7b4ff55468b561e089e3d8448398906a7df328049ba51b712e4d50698b96bc152bdb03a35ce39c3f51a7cb'
             'a8c7e4a2cc9c9987e3c957a1fc3afe8281f2281fffd2e890913dcf00cf704024fb80d86cb75f9314b99b0e03bac275b22de93307bfc226d8be9435497e95b7e6'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
             'c416e2121df83067376bcaacb58c05b01990f4614ad9de657d74b6da3efa441af251d13bf21e3f0f71ddcb4c9ea658b81da3d915667dc5c309c87ec32a1cb5a5'
@@ -71,6 +71,8 @@ sha512sums=('SKIP'
 _backports=(
   # bus: Use OrderedSet for introspection
   'acac88340ace3cd631126eebb6d0390cd54e8231'
+  # resolved: DoT fixes (https://github.com/systemd/systemd-stable/pull/187)
+  '88b4e8f74ed981000ded8e23ead930a6f68eebc8~..6d3e2f0188f8a10412c56dc987198104a4dfff0f'
 )
 
 _reverts=(
@@ -84,7 +86,11 @@ prepare() {
 
   local _c
   for _c in "${_backports[@]}"; do
-    git log --oneline -1 "${_c}"
+    if [[ $_c == *..* ]]; then
+      git log --oneline --reverse "${_c}"
+    else
+      git log --oneline -1 "${_c}"
+    fi
     git cherry-pick -n "${_c}"
   done
   for _c in "${_reverts[@]}"; do
@@ -103,12 +109,10 @@ build() {
     #  * Cloudflare (https://1.1.1.1/)
     #  * Quad9 (https://www.quad9.net/)
     #  * Google (https://developers.google.com/speed/public-dns/)
-    # TODO: go back to cloudflare? Currently it is unusable with systemd-resolved...
-    #  https://community.cloudflare.com/t/ttl-for-cnames/354506
-    #'1.1.1.1#cloudflare-dns.com'
+    '1.1.1.1#cloudflare-dns.com'
     '9.9.9.9#dns.quad9.net'
     '8.8.8.8#dns.google'
-    #'2606:4700:4700::1111#cloudflare-dns.com'
+    '2606:4700:4700::1111#cloudflare-dns.com'
     '2620:fe::9#dns.quad9.net'
     '2001:4860:4860::8888#dns.google'
   )
