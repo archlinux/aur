@@ -75,7 +75,8 @@ build() {
   cmake \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_INSTALL_LIBDIR=lib \
-        -DWITH_PULSEAUDIO=ON \
+        -DWITH_GSTREAMER=OFF \
+        -DWITH_PULSE=ON \
         -DOPENSSL_ROOT_DIR=/usr/lib/openssl-1.0 \
         -DOPENSSL_SSL_LIBRARY=/usr/lib/openssl-1.0/libssl.so \
         -DOPENSSL_CRYPTO_LIBRARY=/usr/lib/openssl-1.0/libcrypto.so \
