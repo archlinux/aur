@@ -2,14 +2,14 @@
 
 pkgname='opensearch-dashboards-gantt-chart-plugin'
 _pluginname='gantt-chart-dashboards-plugin'
-pkgver=1.2.0.0
-_dashboardsver=1.2.0
+pkgver=1.3.0.0
+_dashboardsver=1.3.0
 pkgrel=1
 pkgdesc='OpenSearch Dashboards Gantt Chart Plugin'
 url='https://opensearch.org/docs/latest/dashboards/gantt/'
 arch=('x86_64')
 license=('Apache')
-depends=('opensearch-dashboards')
+depends=("opensearch-dashboards=${_dashboardsver}")
 makedepends=('yarn' 'python' 'git')
 options=('!strip' 'emptydirs')
 source=(
