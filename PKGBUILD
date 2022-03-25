@@ -1,14 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=commit
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Commit message editor."
 arch=('x86_64')
 url="https://apps.gnome.org/app/re.sonny.Commit"
 license=('GPL3')
-depends=('libadwaita' 'gjs' 'gtk4')
+depends=('libadwaita' 'gjs' 'gtksourceview5')
 makedepends=('meson')
-#checkdepends=('appstream-glib')
+#checkdepends=('appstream-glib' 'eslint')
 optdepends=('git: git support'
             'mercurial: mercurial support'
 #            'gspell: spell checking support' # Spell checking has been temporarily removed
