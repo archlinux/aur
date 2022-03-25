@@ -5,6 +5,7 @@ pkgbase = freerdp-1.1.0
 	url = http://freerdp.sourceforge.net
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = GPL
 	makedepends = krb5
 	makedepends = cmake
