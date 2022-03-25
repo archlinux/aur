@@ -9,7 +9,7 @@
 
 _pack=stk
 pkgname=octave-$_pack
-pkgver=2.6.1
+pkgver=2.7.0
 pkgrel=1
 pkgdesc=" The STK is a (not so) Small Toolbox for Kriging. Its primary focus is on the interpolation/regression technique known as kriging, which is very closely related to Splines and Radial Basis Functions, and can be interpreted as a non-parametric Bayesi [...]"
 arch=(any)
@@ -25,7 +25,7 @@ install=$pkgname.install
 _archive=$_pack-$pkgver.tar.gz
 source=("https://downloads.sourceforge.net/octave/$_archive")
 noextract=("$_archive")
-sha256sums=('2a859a798f475bb770805fded2c2ff891c9ab3bdb80ffe22a99cf269956b16e7')
+sha256sums=('bc87fe5c32ef2cd38cc29b450a08aa7e5fa8dcf210f8a2e9b0984e02b77b80c3')
 
 _octave_run() {
 	octave --no-history --no-init-file --no-window-system -q -f --eval "$*"
