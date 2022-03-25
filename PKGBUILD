@@ -20,8 +20,8 @@ source=(https://github.com/downloads/FreeRDP/Remmina/Remmina-$pkgver.tar.gz
 	'https://github.com/FreeRDP/Remmina/commit/569d9bb702d06c061dfbbf3c590d57ea83a04369.diff'
 	'https://github.com/FreeRDP/Remmina/commit/f7d1038ba358a295fb46c681db5c47e4ead97306.diff')
 md5sums=('701c540acaab961bc3adf130a2ddb8b1'
-         'a979c898d5e53446cec9d01912ad9243'
-         'b2a9c0e80ac7b0c8a26935bbe289aa3b')
+         'a7593a10a6aac5105802d6046c6e0bb2'
+         '93ef2e91a259dd7b9c2429d7bf0abe88')
 
 prepare() {
   cd FreeRDP-Remmina-*/
