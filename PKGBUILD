@@ -2,13 +2,13 @@
 
 pkgname=gminer-bin
 _pkgbasename=gminer
-pkgver=2.89
+pkgver=2.90
 pkgrel=1
 pkgdesc="Multi currency GPU miner"
 arch=("x86_64")
 url="https://github.com/develsoftware/GMinerRelease"
 source=("${_pkgbasename}-${pkgver}.tar.xz::https://github.com/develsoftware/GMinerRelease/releases/download/${pkgver}/gminer_${pkgver/\./_}_linux64.tar.xz")
-sha256sums=('47355b8918a3e7f19905a0bd075f68d114f9c971143bb7159cc1835c568f9f1b')
+sha256sums=('948a8beae6def3cc287d747c627019fdeaa03496780aee219948ac4efd755489')
 options=('!strip')
 
 package() {
