@@ -1,4 +1,4 @@
-# Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at queensu at ca>
+# Maintainer: Vadim Yanitskiy <axilirator@gmail.com>
 
 pkgname='gr-ieee802-11-git'
 pkgver=0c0fca8
