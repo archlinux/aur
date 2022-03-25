@@ -2,7 +2,7 @@
 
 pkgname=veloren-bin
 pkgver=0.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open-world, open-source multiplayer voxel RPG"
 arch=('x86_64')
 url="https://veloren.net/"
@@ -10,8 +10,8 @@ license=('GPL3')
 options=('!strip')
 depends=('alsa-lib' 'glslang' 'libxkbcommon-x11' 'pulseaudio-alsa' 'vulkan-icd-loader')
 makedepends=()
-provides=("$pkgname" 'veloren')
-conflicts=("$pkgname" 'veloren')
+provides=('veloren')
+conflicts=('veloren')
 source=(
     "$pkgname"::"https://veloren-4129.fra1.digitaloceanspaces.com/releases/$pkgver-linux.tar.gz"
     'voxygen-wrapper.sh'
