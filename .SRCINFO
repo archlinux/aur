@@ -1,7 +1,7 @@
 pkgbase = cloudflared-bin
 	pkgdesc = An Argo Tunnel client which proxies any local webserver through the Cloudflare network
 	pkgver = 2022.3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://developers.cloudflare.com/argo-tunnel/
 	arch = x86_64
 	arch = i686

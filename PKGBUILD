@@ -2,7 +2,7 @@
 
 pkgname=cloudflared-bin
 pkgver=2022.3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An Argo Tunnel client which proxies any local webserver through the Cloudflare network"
 arch=("x86_64" "i686" "aarch64" "armv6h" "armv7h")
 url="https://developers.cloudflare.com/argo-tunnel/"
@@ -39,7 +39,7 @@ package() {
   install -Dm644 ${pkgname}-LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 
   # Install Binary
-  install -Dm755 cloudflared-bin-* ${pkgdir}/usr/bin/cloudflared
+  install -Dm755 ${pkgname}-*-${pkgver} ${pkgdir}/usr/bin/cloudflared
 
   # Configuration File
   install -Dm644 cloudflared.yml ${pkgdir}/etc/cloudflared/cloudflared.yml.example
