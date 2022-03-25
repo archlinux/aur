@@ -1,0 +1,14 @@
+pkgbase = pc2-bin
+	pkgdesc = PC2 aka PC Squared (Programming Contest Control System) software used for competitive programming contests
+	pkgver = 9.7.0.6181
+	pkgrel = 1
+	url = https://pc2ccs.github.io/
+	arch = x86_64
+	license = EPL2.0
+	depends = java-runtime
+	provides = pc2
+	options = !strip
+	source = https://github.com/pc2ccs/builds/releases/download/v9.7.0-6181/pc2-9.7.0-6181.tar.gz
+	sha256sums = a94ff37afc98e3dfaa69be8e54807a0a7cf94b8a172bc3a4cc8a1f6e6f525c13
+
+pkgname = pc2-bin
