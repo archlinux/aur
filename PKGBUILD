@@ -3,7 +3,7 @@
 # Contributor: Clansty <i at gao4 dot pw>
 
 pkgname=("icalingua++-git" "icalingua++-electron-git")
-pkgver=2.5.3.r0.g2612ba6
+pkgver=2.5.8.r12.g6f1611e
 pkgrel=1
 pkgdesc='A Linux client for QQ and more(fork to upgrading)'
 license=('AGPL')
@@ -54,7 +54,7 @@ package_icalingua++-git(){
 package_icalingua++-electron-git(){
     conflicts+=("icalingua-electron")
     provides+=("icalingua-electron")
-    depends+=('electron13')
+    depends+=('electron')
     pkgdesc='A Linux client for QQ and more(fork to continue upgrading) with system electron'
     case ${CARCH} in
         "x86_64")
