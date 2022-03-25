@@ -3,7 +3,7 @@
 # Contributor: Thiago Franco de Moraes <totonixsame@gmail.com>
 
 pkgname=gdcm
-pkgver=3.0.10
+pkgver=3.0.11
 pkgrel=1
 pkgdesc='a C++ library for DICOM medical files'
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ depends=(
   'openjpeg2'
 )
 source=("https://github.com/malaterre/GDCM/archive/v$pkgver.tar.gz")
-sha512sums=('1141389d9720b593a578b31069f93a3abe0abf559ac999c366cae28f1fd804e967c51548d4417e12d61dcc5d59d68b1c015857e31455b5a30e2063d3ee4102e9')
+sha512sums=('7f02e21924505e95d20aacf652ae2dddd9e0be20ed6974e57b06420895fc0acfa6d5ba5b9aa11b4842394b02761def9457d2685d49affc0e8f1ded721f9243ee')
 
 prepare() {
   cd "${pkgname^^}-$pkgver"
