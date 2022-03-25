@@ -18,6 +18,7 @@ conflicts=('electron-qq' 'icalingua')
 replaces=('electron-qq')
 source=("Icalingua::git+${url}")
 sha256sums=('SKIP')
+_electron=electron
 
 pkgver(){
     cd "${srcdir}/Icalingua"
@@ -54,7 +55,7 @@ package_icalingua++-git(){
 package_icalingua++-electron-git(){
     conflicts+=("icalingua-electron")
     provides+=("icalingua-electron")
-    depends+=('electron')
+    depends+=("${_electron}")
     pkgdesc='A Linux client for QQ and more(fork to continue upgrading) with system electron'
     case ${CARCH} in
         "x86_64")
@@ -74,4 +75,5 @@ package_icalingua++-electron-git(){
     install -Dm644 512x512.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/icalingua.png"
     install -Dm644 icalingua.desktop "${pkgdir}/usr/share/applications/icalingua.desktop"
     install -Dm755 icalingua "${pkgdir}/usr/bin/icalingua"
+    sed -i "s/electron/${_electron}/" "${pkgdir}/usr/bin/icalingua"
 }
