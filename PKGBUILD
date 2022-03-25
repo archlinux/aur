@@ -1,10 +1,8 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
-_wayland=false
 _branch=dev
-_pkgname=espanso
-pkgname=${_pkgname}-git
-pkgver=2.0.0.r216.gcd9f26c
+pkgname=espanso-git
+pkgver=2.0.0.r234.ge3887c0
 pkgrel=1
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
@@ -12,24 +10,20 @@ url="https://espanso.org/"
 license=("GPL3")
 depends=("xdotool" "xclip" "libxtst" "libnotify" "wxgtk3")
 makedepends=("rust" "git" "cmake" "cargo-make" "rust-script")
-provides=($_pkgname)
-conflicts=($_pkgname)
-source=("${_pkgname}::git+https://github.com/federico-terzi/espanso.git#branch=${_branch}")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("git+https://github.com/federico-terzi/espanso.git#branch=${_branch}")
 sha512sums=('SKIP')
 
-if [ "$_wayland" == "true" ]; then  # setcap "cap_dac_override+p" after install; See https://espanso.org/docs/next/install/linux/#adding-the-required-capabilities
-  install="${pkgname}-wayland.install"
-  depends+=("wl-clipboard")
-fi
 
 pkgver() {
-    cd "$_pkgname"
+    cd "espanso"
 
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "$_pkgname"
+    cd "espanso"
 
     # don't change the original service file, as it will be embedded in the binary
     cp "espanso/src/res/linux/systemd.service" "systemd.service"
@@ -37,16 +31,16 @@ prepare() {
 }
 
 build() {
-    cd "$_pkgname"
+    cd "espanso"
 
     cargo make --env NO_X11=$_wayland --profile release build-binary
 }
 
 package() {
-    cd "$_pkgname"
+    cd "espanso"
 
-    install -Dm755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 "systemd.service" "${pkgdir}/usr/lib/systemd/user/${_pkgname}.service"
+    install -Dm755 "target/release/espanso" "${pkgdir}/usr/bin/espanso"
+    install -Dm644 "systemd.service" "${pkgdir}/usr/lib/systemd/user/espanso.service"
 
-    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+    install -Dm644 "README.md" "${pkgdir}/usr/share/doc/espanso/README.md"
 }
