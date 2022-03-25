@@ -1,7 +1,7 @@
 # Maintainer: ml <>
 pkgname=hurl-rs
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.6.1
+pkgrel=1
 pkgdesc='HTTP Client to run and test requests'
 arch=('x86_64')
 url='https://github.com/Orange-OpenSource/hurl'
@@ -9,7 +9,7 @@ license=('Apache')
 depends=('curl' 'libxml2')
 makedepends=('cargo' 'gcc' 'python' 'pkgconf')
 source=("$url"/archive/"$pkgver"/hurl-"$pkgver".tar.gz)
-sha512sums=('93b10ac28bf4ef51c43028b918a101529765536b6f9fcd0a39728bc53b0fedc2df420edafc5949ecb176edc5eb34f0cc50ee4964ec2cb8ed5e048ca776480d24')
+sha512sums=('bbde5521384d8b5ca62fb8eb271d2cec468f3288646c0804427bf6616603cb5c99f85776bbaceb5555edb25a660947b8ee05321e25e5d03ff386c00827579073')
 
 prepare() {
   cd hurl-"$pkgver"
