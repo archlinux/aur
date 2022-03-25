@@ -1,25 +1,20 @@
 # Maintaoner: Yamada Hayao <development@fascode.net>
 
 pkgname="jquake"
-pkgver="1.6.1"
-pkgrel="2"
+pkgver="1.6.2"
+pkgrel="1"
 pkgdesc="JQuake provides real-time earthquake sensor map of Japan"
 arch=('x86_64')
 url="https://jquake.net/?home"
 license=('custom')
 depends=('jre8')
 makedepends=('git')
-source=(
-    "https://fleneindre.github.io/downloads/JQuake_${pkgver}_linux.zip"
-    "icon.png"
-    "jquake.desktop"
-)
-md5sums=(
-    'a18ee6b0ed67aa0c35c43a4a1f773978'
-    'ae8c0b172c57f76594e182246ddcdac2'
-    'b815ce5958a40757e15add0c42cb015f'
-)
-
+source=("https://fleneindre.github.io/downloads/JQuake_${pkgver}_linux.zip"
+        "icon.png"
+        "jquake.desktop")
+md5sums=('163a95fcc9c06b3cd3010b143bbd599a'
+         'ae8c0b172c57f76594e182246ddcdac2'
+         'b815ce5958a40757e15add0c42cb015f')
 package() {
     local lib
     lib=(
