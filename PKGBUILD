@@ -8,19 +8,22 @@ pkgdesc="Digitize landmarks & outlines from image files, scanner, or video"
 arch=('any')
 url="http://sbmorphometrics.org/soft-dataacq.html"
 license=('custom')
+makedepends=('innoextract')
 depends=(
 	'wine'
 	'wine_gecko'
 	'wine-mono'
 )
-source=("https://github.com/starsareintherose/tpsDig/releases/download/${pkgver}/tpsDig.zip" "tpsDig.desktop" "tpsDig.png")
-md5sums=('eb6498c5b35c3c7d5355a15a456221b4'
-         '05d9ecf87995f9c555bd12eb46606d2a'
+source=("https://sbmorphometrics.org/morphmet/tpsdig2w64.exe" "tpsDig.desktop" "tpsDig.png")
+md5sums=('4780a1ff616ffcdb5e60b6d581a48ae3'
+         'c595d462fdea0417af99e481a8cb2edf'
          '2e2e7c55e63e7a3892e49aab613aed35')
-
+build(){
+  innoextract tpsdig2w64.exe
+}
 package() {
   install -dm755 "$pkgdir"/usr/share/{tpsdig,applications}
-  mv "$srcdir"/tpsDig/* "$pkgdir"/usr/share/tpsdig
+  mv "$srcdir"/app/* "$pkgdir"/usr/share/tpsdig
   install -Dm755 ${srcdir}/tpsDig.png ${pkgdir}/usr/share/tpsdig/tpsDig.png
   install -Dm755 ${srcdir}/tpsDig.desktop ${pkgdir}/usr/share/applications/tpsDig.desktop
 }

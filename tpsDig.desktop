@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=tpsDig
-Exec=wine /usr/share/tpsdig/tpsDig2.exe
+Exec=wine /usr/share/tpsdig/tpsdig2.exe
 Type=Application
 StartupNotify=true
 Icon=/usr/share/tpsdig/tpsDig.png

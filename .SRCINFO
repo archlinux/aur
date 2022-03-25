@@ -5,15 +5,15 @@ pkgbase = tpsdig
 	url = http://sbmorphometrics.org/soft-dataacq.html
 	arch = any
 	license = custom
+	makedepends = innoextract
 	depends = wine
 	depends = wine_gecko
 	depends = wine-mono
-	source = https://github.com/starsareintherose/tpsDig/releases/download/2.31/tpsDig.zip
+	source = https://sbmorphometrics.org/morphmet/tpsdig2w64.exe
 	source = tpsDig.desktop
 	source = tpsDig.png
-	md5sums = eb6498c5b35c3c7d5355a15a456221b4
-	md5sums = 05d9ecf87995f9c555bd12eb46606d2a
+	md5sums = 4780a1ff616ffcdb5e60b6d581a48ae3
+	md5sums = c595d462fdea0417af99e481a8cb2edf
 	md5sums = 2e2e7c55e63e7a3892e49aab613aed35
 
 pkgname = tpsdig
-
