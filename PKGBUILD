@@ -2,7 +2,7 @@
 
 _electron=electron14
 pkgname=deezer-enhanced
-pkgver=0.1.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='An unofficial application for Deezer with enhanced features'
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=(yarn)
 source=("$url/archive/v$pkgver.tar.gz"
         "$pkgname.js"
 				"$pkgname.desktop")
-sha512sums=('03a099bfc0fe9f0404be864b18fd137d957b3a2ef8fa92312fed11ac142b07a5acfdfa19a269d36c42ae6b33e7b1b1f991026ae31e1f24929d7e5a61a49a2579'
+sha512sums=('8bc7476a046151f6324504d6787fde71b2fa384a409c9a3fba6fe37496a7efb3c4f83c6cdfcf65ffc1707d2c13e475c792ca4ef2f632843ba9e33623b25f57b5'
             '11275cdfdd6d6224fb4eeadb231edd762317b0c47e99f8858a9eeaa61726a01fb3ae5ae852e15e1b9e7a4dfe08b0bc4466c1d9b659941f87f1508b9dc4fca16a'
             '02deef321066e1b2decce7d35d483a8e88df52d032ddfef9a6b28f8a5fd006d1316dff54f70d8f6b53499e51fc4b4f3d231482b70cdbf6bfc3c57dbfedfe4f22')
 
