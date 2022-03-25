@@ -1,0 +1,12 @@
+pkgbase = mangle
+	pkgdesc = Mangle programming language
+	pkgver = v.0.1
+	pkgrel = 1
+	url = https://github.com/matheusfillipe/mangle
+	arch = x86_64
+	license = MIT
+	provides = mangle
+	source = git+https://github.com/matheusfillipe/mangle
+	md5sums = SKIP
+
+pkgname = mangle
