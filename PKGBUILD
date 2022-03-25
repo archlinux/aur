@@ -1,7 +1,7 @@
 pkgname=7-zip-full
 pkgver=21.07
-pkgrel=1
-pkgdesc="File archiver with a high compression ratio. Full package, attempt to replace p7zip."
+pkgrel=2
+pkgdesc="File archiver with a high compression ratio. (Full package to replace p7zip.)"
 url="https://www.7-zip.org"
 license=(LGPL)
 arch=(x86_64)
@@ -27,35 +27,28 @@ prepare() {
     patch -p0 -N --binary -i "${source[1]}"
 }
 
-_targets=("Alone" "Alone2" "Alone7z" "Format7zF")
-
 build() {
-    export BUILD_DIR="${srcdir}/build"
+    local build="${srcdir}/build"
+    local bundles="${srcdir}/CPP/7zip/Bundles"
     local mak="${srcdir}/CPP/7zip/cmpl_gcc_x64.mak"
-    for target in "${_targets[@]}"; do
-        cd "${srcdir}/CPP/7zip/Bundles/${target}"
-        make -f "${mak}"
+    local targets=("Alone" "Alone2" "Alone7z" "Format7zF")
+
+    for target in "${targets[@]}"; do
+        BUILD_DIR="${build}" make -C "${bundles}/${target}" -f "${mak}"
     done
 }
 
 package() {
-    cd "${BUILD_DIR}"
+    local bin="${pkgdir}/usr/bin"
 
-    local lib="/usr/lib/${pkgname}"
-    local plib="${pkgdir}${lib}"
-    local pbin=$(install -dm755 "${pkgdir}/usr/bin" && echo "$_")
-
-    install -Dm755 -t "${plib}" "7za" "7zz" "7zr"
-    install -Dm644 -t "${plib}" "7z.so"
-
-    ln -s "${lib}/7za" "${pbin}/7za"
-    ln -s "${lib}/7zz" "${pbin}/7z"
-    ln -s "${lib}/7zz" "${pbin}/7zz"
-    ln -s "${lib}/7zr" "${pbin}/7zr"
+    cd "${srcdir}/build"
+    install -Dm755 -t "${bin}" "7za" "7zz" "7zr"
+    ln -s "7zz" "${bin}/7z"
+    install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}" "7z.so"
 
     cd "${srcdir}/DOC"
-
-    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "copying.txt" "License.txt" "unRarLicense.txt"
-
-    install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" "7zC.txt" "7zFormat.txt" "lzma.txt" "Methods.txt" "readme.txt" "src-history.txt"
+    install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
+        "copying.txt" "License.txt" "unRarLicense.txt"
+    install -Dm644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
+        "7zC.txt" "7zFormat.txt" "lzma.txt" "Methods.txt" "readme.txt" "src-history.txt"
 }
