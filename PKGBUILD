@@ -2,38 +2,38 @@
 
 pkgname=python-numpoly
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="NumPy compatible polynomial representation"
 arch=('any')
 url='https://github.com/jonathf/numpoly'
 license=('BSD')
 depends=('python-numpy')
-makedepends=('python-setuptools' 'python-dephell' 'python-sphinx')
+makedepends=('python-poetry' 'python-build' 'python-installer' 'python-sphinx')
 checkdepends=('python-pytest' 'python-sympy')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('934bb44efa5e5988debdb4409a6c2556bd67481d04f97364ef5d2b48c289e966')
 
-prepare() {
-	cd "numpoly-$pkgver"
-	dephell deps convert --from pyproject.toml --to setup.py
-}
-
 build() {
 	cd "numpoly-$pkgver"
-	python setup.py build
-	cd docs
-	PYTHONPATH=../ make man
+	python -m build --wheel --no-isolation
+	PYTHONPATH="$PWD" make -C docs man
 }
 
 check() {
 	cd "numpoly-$pkgver"
-	pytest
+	pytest -x --disable-warnings
 }
 
 package() {
+	export PYTHONHASHSEED=0
 	cd "numpoly-$pkgver"
-	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
-	install -Dm 644 docs/.build/man/numpoly.1 -t "$pkgdir/usr/share/man/man1/"
+	python -m installer --destdir="$pkgdir/" dist/*.whl
+	install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 docs/.build/man/numpoly.1 -t "$pkgdir/usr/share/man/man1/"
+
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s \
+		"$_site/numpoly-$pkgver.dist-info/LICENSE" \
+		"$pkgdir/usr/share/licenses/$pkgname/"
 }
