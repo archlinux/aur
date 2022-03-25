@@ -3,7 +3,7 @@
 
 pkgname=rancher-desktop
 pkgdesc='Rancher Desktop is an open-source project to bring Kubernetes and container management to the desktop'
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 arch=('x86_64')
 license=('Apache')
@@ -15,7 +15,7 @@ optdepends=('kubectl: Kubernetes control, can be downloaded from settings'
 provides=('rancher-desktop' 'docker' 'helm' 'kubectl' 'nerdctl' 'limactl')
 depends=('qemu')
 source=("https://github.com/rancher-sandbox/rancher-desktop/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3df7ce1d836b49b9df842c2ae6cb1be86f954c3f37c3d68f5d0f8e53394de7c6')
+sha256sums=('fdcf88f33741c6a838c344389ecb7d77a4c9b6b92c8586ff1b5e57cbe521196a')
 
 # https://wiki.archlinux.org/title/Node.js_package_guidelines#Using_nvm
 _ensure_local_nvm() {
