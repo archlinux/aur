@@ -3,8 +3,8 @@
 # Maintainer: sgtxd <mark@sgtxd.de>
 # Latest Maintainer: HurricanePootis <hurricanepootis@protonmail.com>
 pkgname=ffmpeg-compat-57
-pkgver=3.4.8
-pkgrel=3
+pkgver=3.4.9
+pkgrel=1
 options=('!lto')
 pkgdesc="Compatibility package for ffmpeg to provide versions 57 of libavcodec, libavdevice and libavformat, not anymore provided by the ffmpeg package"
 arch=('i686' 'x86_64')
@@ -25,7 +25,7 @@ provides=('libavcodec.so=57' 'libavdevice.so=57' 'libavfilter.so=6'
           'libpostproc.so=54' 'libswresample.so=2' 'libswscale.so=4')
 source=("http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         "fs56089.patch")
-sha256sums=('09b9e4644e191a5e6c46b7293839297a7b6f5459fb8817d5255ff29c8ae307ae'
+sha256sums=('496fb4a9c396406e24841f3f3f108a7ae6397d6d1106ac1f953317c4529b1635'
             'SKIP'
             '0bfcd12d1992903f21c146ae56d9ad89b52818cfb2303197ee905347c25a5427')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
@@ -98,3 +98,4 @@ package() {
   cd "${pkgdir}/usr/lib"
   rm -f *.so
 }
+
