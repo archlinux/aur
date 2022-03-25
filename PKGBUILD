@@ -3,7 +3,7 @@
 # All my PKGBUILDs can be found in https://www.github.com/joaquingx/PKGBUILDs
 
 pkgname=python-binarytree
-pkgver=6.5.0
+pkgver=6.5.1
 pkgrel=1
 pkgdesc="Python library for studying binary trees"
 arch=('any')
@@ -17,13 +17,7 @@ makedepends=(
 	'python-sphinx'
 	'python-sphinx_rtd_theme')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/b/binarytree/binarytree-$pkgver.tar.gz")
-sha256sums=('b92399212abf8bf44c6e4be4d7c46bc2d4ea981e27d4a8df6f7af5fe0bf30abf')
-
-prepare() {
-	## FIXME: python-graphviz is a version behind; need this hack for the time being
-	cd "binarytree-$pkgver"
-	sed -i '/from/s/graphviz.exceptions/graphviz/' binarytree/__init__.py
-}
+sha256sums=('cbe4f7c300e357494b392b0dd5dc4dfd9971bb7b430e07ee74a30cab92e4b511')
 
 build() {
 	cd "binarytree-$pkgver"
