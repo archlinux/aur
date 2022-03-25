@@ -1,11 +1,13 @@
 #!/bin/bash
 
-# Webgrabber+Plus has never meant to be installed into Unix operating system. It
-# was meant to be used as a folder, where user has RW access. The below script
-# was needed in order to make it act like a proper application, installed into
-# the operating system.
-#
-# http://www.webgrabplus.com/content/solved-command-line-option-specifying-config-file-name
+#/**
+# * @file wg++
+# * @brief just start WebGrab+Plus
+# * @author WebGrab+Plus Community
+# * @date 31/07/2016
+# * @dotnet version
+# * @date 13/03/2022
+# */
 
 CONFIG_DIR=~/wg++
 EXECUTABLE=$(basename $0)
@@ -52,7 +54,7 @@ if [ $# -eq 0 ]; then
 		exit 1
 	fi
 
-	mono /opt/wg++/bin/WebGrab+Plus.exe "$CONFIG_DIR"
+	dotnet /opt/wg++/bin.net/WebGrab+Plus.dll "$CONFIG_DIR"
 else
 	#### User provided arguments to wg++ ####
 
@@ -90,5 +92,5 @@ else
 		exit 1
 	fi
 
-	mono /opt/wg++/bin/WebGrab+Plus.exe "$1"
+	dotnet /opt/wg++/bin.net/WebGrab+Plus.dll "$1"
 fi
