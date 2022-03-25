@@ -3,7 +3,7 @@
 
 pkgname=httprobe-bin
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Take a list of domains and probe for working HTTP and HTTPS servers"
 arch=('i686' 'x86_64')
 url="https://github.com/tomnomnom/httprobe"
@@ -17,5 +17,5 @@ sha256sums_x86_64=('a8e5dbaa09e4c35a6a1ac441667d1bd39f079d007ff77c6ffc4431687d87
 
 package() {
     mkdir -p ${pkgdir}/usr/bin
-    install ${srcdir}/httprobe ${pkgdir}/usr/bin/${pkgname}
+    install ${srcdir}/httprobe ${pkgdir}/usr/bin/httprobe
 }

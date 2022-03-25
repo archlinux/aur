@@ -1,7 +1,7 @@
 pkgbase = httprobe-bin
 	pkgdesc = Take a list of domains and probe for working HTTP and HTTPS servers
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tomnomnom/httprobe
 	arch = i686
 	arch = x86_64
@@ -12,4 +12,3 @@ pkgbase = httprobe-bin
 	sha256sums_x86_64 = a8e5dbaa09e4c35a6a1ac441667d1bd39f079d007ff77c6ffc4431687d875a94
 
 pkgname = httprobe-bin
-
