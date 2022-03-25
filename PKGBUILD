@@ -42,9 +42,9 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/build"
-    DESTDIR="${pkgdir}" ninja install
+    cd "${srcdir}"
+    DESTDIR="${pkgdir}" ninja -C "build" install
 
-    cd "${srcdir}/${_snapshot}"
+    cd "${_snapshot}"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "COPYING"
 }
