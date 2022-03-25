@@ -5,7 +5,7 @@
 
 pkgname=pyinstaller-hooks-contrib
 _pkgname=pyinstaller-hooks-contrib
-pkgver=2022.2
+pkgver=2022.3
 pkgrel=1
 pkgdesc="Community maintained hooks for PyInstaller"
 arch=('any')
@@ -18,7 +18,7 @@ _py="py2.py3"
 _py_hosted_url="https://files.pythonhosted.org/packages/$_py"
 _pkg_whlname="$_pkgname_underscored-$pkgver-$_py-none-any.whl"
 source=("$_py_hosted_url/$_pkgname_prefix/$_pkgname/$_pkg_whlname")
-sha512sums=('a54a511d84116740fb5c7e147712dff603c6f03984226eb817752ffc1c81aab0d74cf9d6b893f7a74ee40f316c09082a809679359aadc625336152fc9ee61b44')
+sha512sums=('9212f176196dd82f4541f8dcb0eac98d6a224c49910958e2ea9d0a1381286fce26fd4234f6c328483f18ee10a3d8e79b8bfa96b49c13d6aaf56cfaf1d2b3e620')
 
 package() {
   cd "$srcdir" || exit
