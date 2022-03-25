@@ -1,7 +1,7 @@
 # Maintainer: solopasha <daron439 at gmail dot com>
 pkgname=torrserver-git
 _pkgname=torrserver
-pkgver=MatriX.111.r15.g9c6ffb1
+pkgver=MatriX.112.r2.gcfec7df
 pkgrel=1
 pkgdesc="Torrent stream server"
 arch=('x86_64')
@@ -10,7 +10,8 @@ license=("GPL3")
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 depends=("glibc" "gcc-libs")
-makedepends=("git" "go" "yarn" "npm")
+makedepends=("git" "go" "yarn")
+options=(!lto)
 source=("${pkgname}::git+${url}.git#branch=master"
         "torrserver.service")
 install=torrserver.install  
