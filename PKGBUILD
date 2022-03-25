@@ -34,7 +34,7 @@ prepare() {
 build() {
     cd "espanso"
 
-    cargo make --env NO_X11=$_wayland --profile release build-binary
+    cargo make --profile release build-binary
 }
 
 package() {
