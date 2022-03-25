@@ -5,7 +5,7 @@ pkgbase = ydb
 	url = https://cloud.yandex.com/en/docs/ydb/quickstart/examples-ydb-cli
 	arch = x86_64
 	license = unknown
-	source = https://storage.yandexcloud.net/yandexcloud-ydb/release/1.7.0/linux/amd64/ydb
+	source = ydb-1.7.0::https://storage.yandexcloud.net/yandexcloud-ydb/release/1.7.0/linux/amd64/ydb
 	sha256sums = c06d24a8c027271b1ca5057c0a2ed65a2c601db6d3cd1f09261a519aa84ead69
 
 pkgname = ydb
