@@ -16,7 +16,7 @@ optdepends=('alephone-eternalx: community-made scenario'
             'alephone-infinity: original data for Marathon Infinity'
             'alephone-marathon: M1A1 data converted for AlephOne'
             'alephone-marathon2: original data for Marathon 2: Durandal')
-makedepends=('boost' 'mesa' 'icoutils')
+makedepends=('git' 'boost' 'mesa' 'icoutils')
 source=("git+https://github.com/Aleph-One-Marathon/alephone")
 md5sums=('SKIP')
 
