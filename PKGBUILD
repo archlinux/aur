@@ -1,7 +1,7 @@
 # Maintainer: Ernesto Castellotti <mail@ernestocastellotti.it>
 
 pkgname=boosteroid
-pkgver=1.4.4
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="Boosteroid client desktop"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=("libva" "libvdpau" "libxcb" "traceroute" "ocl-icd" "pcre2")
 makedepends=("binutils" "tar" "coreutils")
 
 source=("boosteroid-install-x64.md5")
-md5sums=("4a86840339f151b05e60347362ced37f")
+md5sums=("5921964bd0f4ad651ce139d3e6c09035")
 
 prepare() {
   cd "$srcdir"
@@ -31,7 +31,7 @@ prepare() {
 package() {
   cd "$srcdir"
   install -dm755 "$pkgdir"/usr/bin
-  install -m755 "opt/Boosteroid Games S.R.L./bin/Boosteroid" "$pkgdir"/usr/bin/"$pkgname"
+  install -m755 "opt/BoosteroidGamesS.R.L./bin/Boosteroid" "$pkgdir"/usr/bin/"$pkgname"
   install -dm755 "$pkgdir"/usr/share/{applications,icons/Boosteroid}
   install -m644 usr/share/applications/Boosteroid.desktop "$pkgdir"/usr/share/applications/Boosteroid.desktop
   install -m644 usr/share/icons/Boosteroid/icon.svg "$pkgdir"/usr/share/icons/Boosteroid/icon.svg
