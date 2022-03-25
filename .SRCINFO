@@ -1,0 +1,14 @@
+pkgbase = plymouth-theme-archlinux
+	pkgdesc = Plymouth Theme for Arch Linux (Similar to Manjaro)
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/onurbbr/plymouth-theme-archlinux
+	install = plymouth-theme-archlinux.install
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = plymouth
+	source = git+https://github.com/onurbbr/plymouth-theme-archlinux.git
+	md5sums = SKIP
+
+pkgname = plymouth-theme-archlinux
