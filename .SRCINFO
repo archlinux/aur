@@ -1,14 +1,13 @@
 pkgbase = python-orthopy
 	pkgdesc = Orthogonal polynomials in all shapes and sizes
 	pkgver = 0.9.5
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/nschloe/orthopy
-	arch = x86_64
+	arch = any
 	license = GPL3
 	checkdepends = python-pytest-codeblocks
 	checkdepends = python-ndim
 	checkdepends = python-scipy
-	checkdepends = python-meshzoo
 	checkdepends = python-cplot
 	checkdepends = python-meshio
 	makedepends = python-setuptools
@@ -16,7 +15,6 @@ pkgbase = python-orthopy
 	depends = python-sympy
 	optdepends = python-cplot: for SRGB1 coloring
 	optdepends = python-meshio: for creation sphere mesh
-	optdepends = python-meshzoo: for creation of sphere mesh generated from the icosahedron
 	source = https://github.com/nschloe/orthopy/archive/v0.9.5.tar.gz
 	sha512sums = 43b2eee46d4395800902fb83a36b1af3c68020f06f28234aeac4c3fe9265c1b76709377fa7e92717c528ee14d089efba17211ab5b285cf7578bad013d289c8b9
 
