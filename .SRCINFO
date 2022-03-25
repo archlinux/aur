@@ -1,0 +1,17 @@
+pkgbase = parapara
+	pkgdesc = A picture viewer that has 3 display modes: single, spread, continuous.
+	pkgver = 3.2.8
+	pkgrel = 1
+	url = https://github.com/aharotias2/parapara
+	install = .INSTALL
+	arch = x86_64
+	license = GPLv3
+	makedepends = vala
+	makedepends = meson
+	depends = gtk3
+	depends = granite
+	depends = libgee
+	source = https://github.com/aharotias2/parapara/archive/refs/tags/v3.2.8.tar.gz
+	sha256sums = 653595dd4f0f8a1140080efcbca20116ec89e544076b0cd589e55c7d3134877b
+
+pkgname = parapara

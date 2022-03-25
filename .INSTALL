@@ -1,0 +1,7 @@
+#!/bin/bash
+echo 'Compiling gsettings schemas…'
+glib-compile-schemas "${pkgdir}/share/glib-2.0/schemas"
+echo 'Updating desktop database…'
+update-desktop-database
+echo 'Updating icon cache…'
+gtk-update-icon-cache "${pkgdir}/share/icons/hicolor"
