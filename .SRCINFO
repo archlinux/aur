@@ -1,7 +1,7 @@
 pkgbase = utilyre-dmenu-git
 	pkgdesc = A generic menu for X patched with allow-color-font, center, border, fuzzymatch, fuzzyhighlight, xresources-alt, and linesbelowprompt-and-fullwidth
 	pkgver = 5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/utilyre/dmenu.git
 	arch = x86_64
 	license = MIT

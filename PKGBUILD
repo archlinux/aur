@@ -2,7 +2,7 @@
 pkgname="utilyre-dmenu-git"
 _reponame="dmenu"
 pkgver="5.1"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="A generic menu for X patched with allow-color-font, center, border, fuzzymatch, fuzzyhighlight, xresources-alt, and linesbelowprompt-and-fullwidth"
 arch=("x86_64")
 url="https://github.com/utilyre/dmenu.git"
