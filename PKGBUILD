@@ -2,26 +2,33 @@
 
 pkgname=python-xdoctest
 _pkgname="${pkgname#python-}"
-pkgver=0.15.10
-pkgrel=2
-pkgdesc="A rewrite of Python's doctest module"
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="A Python package for executing tests in documentation strings"
 arch=('any')
 url="https://github.com/Erotemic/xdoctest"
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools')
-checkdepends=('python-pytest')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('18c1a2774ae9331582610e3459a02f4e4de838218e7250af071570b2318f4c14330084b9fb903d88651fc40a4ba12b686ee6f2ca165edd8155e908ae4992a840')
-b2sums=('4836b773c3cf664c825433199b13ab7d3fe2c68538517bf5594797ad3f2f894d0132034fdafbc4502a00ec7393c19473fafe15fcf0257e3565592dc9907e3d71')
+makedepends=('git' 'python-setuptools')
+checkdepends=('python-pytest' 'python-pygments')
+_commit='9d1842358bb9b5c9e81983e602a7c9fcddab01b0'
+source=("$pkgname::git+$url.git#commit=$_commit")
+b2sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+
+  git describe --tags | sed 's/^v//'
+}
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd "$pkgname"
+
   python setup.py build
 }
 
 check() {
-  cd "$_pkgname-$pkgver"
+  cd "$pkgname"
 
   # tests expect the package to actually be installed, so here's a temporary environment
   python setup.py install --root="$PWD/tmp_install" --optimize=1
@@ -32,7 +39,8 @@ check() {
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
+  cd "$pkgname"
+
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
