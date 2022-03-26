@@ -1,7 +1,7 @@
 # Maintainer: BTD Master <btdmaster at disroot dot org>
 pkgname=syphon-bin
 _pkgname=syphon
-pkgver=0.2.11
+pkgver=0.2.12
 pkgrel=1
 pkgdesc="Privacy-centric Matrix client"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('AGPL3')
 depends=('gtk3' 'libsecret' 'libolm' 'jsoncpp' 'sqlcipher')
 provides=('syphon')
 source=("https://github.com/syphon-org/syphon/releases/download/$pkgver/$_pkgname.linux.x64.$pkgver.tar.gz")
-sha256sums=('d2aadd6aa3a31988641135362d73076f622856438740e1a05ba612cd44593206')
+sha256sums=('d6ae70c3a633a1dde6a6379eca08a724cfa9ec00da42452c6534f130af84c368')
 
 package() {
 	install -d ${pkgdir}/opt/${_pkgname}
