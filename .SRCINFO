@@ -12,7 +12,7 @@ pkgbase = midifile-git
 	makedepends = cmake
 	makedepends = git
 	conflicts = midifile
-	source = midifile::git://github.com/craigsapp/midifile.git
+	source = midifile::git+https://github.com/craigsapp/midifile.git
 	sha256sums = SKIP
 
 pkgname = midifile-git

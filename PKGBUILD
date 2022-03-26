@@ -16,7 +16,7 @@ makedepends=('cmake' 'git')
 #provides=("${_name}")
 conflicts=("${_name}")
 url="http://midifile.sapp.org"
-source=("${_reponame}::git://github.com/craigsapp/${_reponame}.git")
+source=("${_reponame}::git+https://github.com/craigsapp/${_reponame}.git")
 sha256sums=('SKIP')
 
 pkgver() {
