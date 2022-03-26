@@ -1,23 +1,25 @@
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Star Brilliant <echo bTEzMjUzQGhvdG1haWwuY29tCg== | base64 -d>
-
-pkgname=('python2-pybrain')
-pkgver=0.3.1
+_base=pybrain
+pkgname=python2-${_base}
+pkgver=0.3.3
 pkgrel=1
-pkgdesc='A modular Machine Learning Library for Python'
-arch=('i686' 'x86_64')
-url='http://pybrain.org/'
-license=('BSD')
-depends=('python2' 'python2-numpy' 'python2-scipy')
-makedepends=('python2-setuptools' 'git')
-source=("pybrain-$pkgver.zip::https://github.com/pybrain/pybrain/zipball/$pkgver")
-sha512sums=('eb495b361464226e0c5b167f2edfa4876fc7c81856fdbc1e3069787a453ea345dcf314fd5c09fd694dd9c6ebe5b1d619b48c650b33b86ed9c510ecf8c26d9db0')
+pkgdesc="A modular Machine Learning Library for Python"
+arch=(any)
+url="https://github.com/${_base}/${_base}"
+license=('custom:BSD-3-clause')
+depends=(python2-scipy)
+makedepends=(python2-setuptools)
+source=(${url}/archive/${pkgver}.tar.gz)
+sha512sums=('d0b0401b083cf62260b65c833a12e71ac8d5d3079f24cce3eccccb7109a68493b1795b38603cf64251cc1653bec3ea00308fa6bc792d73c265d7cb4da0970ab1')
 
 build() {
-  cd pybrain-pybrain-*
+  cd ${_base}-${pkgver}
   python2 setup.py build
 }
 
 package() {
-  cd pybrain-pybrain-*
-  python2 setup.py install --root="${pkgdir}" --optimize=1
+  cd ${_base}-${pkgver}
+  python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
