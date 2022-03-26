@@ -4,7 +4,7 @@ _RELEASES_URL="https://github.com/simao/jaxe/releases/download"
 
 pkgname=jaxe-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="jaxe parses new line delimited json and outputs a human readable representation"
 arch=('x86_64')
 url="https://github.com/simao/jaxe"

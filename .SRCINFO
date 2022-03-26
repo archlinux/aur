@@ -1,7 +1,7 @@
 pkgbase = jaxe-bin
 	pkgdesc = jaxe parses new line delimited json and outputs a human readable representation
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/simao/jaxe
 	arch = x86_64
 	license = MIT
