@@ -2,10 +2,10 @@
 # Maintainer: Marek 'seqre' Grzelak <aur@seqre.dev>
 
 pkgname='baca-cli'
-pkgver='v0.3.1'
+pkgver='v0.5.0'
 pkgrel=1
 pkgdesc="CLI client for the Jagiellonian University's BaCa online judge"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('x86_64')
 url="https://github.com/hjaremko/baca-cli"
 license=('MIT')
 depends=('bzip2' 'openssl')
@@ -22,14 +22,19 @@ pkgver() {
 	git describe --abbrev=0 --tags
 }
 
+prepare() {
+	cd "${pkgname}"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
 	cd "${pkgname}"
-	RUSTUP_TOOLCHAIN=stable cargo build --release --locked --all-features --target-dir=target
+	RUSTUP_TOOLCHAIN=stable cargo build --release --frozen --all-features --target-dir=target
 }
 
 check() {
 	cd "${pkgname}"
-	RUSTUP_TOOLCHAIN=stable cargo test --release --locked --target-dir=target
+	RUSTUP_TOOLCHAIN=stable cargo test --release --frozen --all-features --target-dir=target
 }
 
 package() {
