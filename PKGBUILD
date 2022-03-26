@@ -1,27 +1,28 @@
 # Maintainer: Jesse McClure <code at jessemcclure dot org>
 pkgname=silo-fossil
-#pkgname=silo-nowayland-fossil
-pkgver=r24.78ba44abe8
+pkgver=1.0r27.1f26d6d845
 pkgrel=1
-pkgdesc='Launcher menu with explosive potential (wayland or x11)'
+pkgdesc='Wayland launcher menu'
 arch=('x86_64')
 license=('MIT')
-depends=(gcc-libs glibc layer-shell-qt qt5-base)
-#depends=(gcc-libs glibc qt5-base)
+depends=(cairo glibc libxkbcommon nkk-fossil)
 makedepends=(fossil)
+optdepends=('wl-clipboard: paste w/ shift+insert')
 url=https://code.jessemcclure.org/silo
 source=(fossil+https://code.jessemcclure.org/silo)
 sha256sums=(SKIP)
 
 pkgver() {
 	cd "${srcdir}/silo"
-	echo r$(fossil info | sed -n '$s/[a-z:-]* *//p').$(fossil timeline -n 1 -t ci -F %h | sed 1q)
+	printf '%sr%s.%s\n' \
+		$(fossil tag list | grep '[0-9\.*]' | sort -r | sed 1q) \
+		$(fossil info | sed -n '$s/[a-z:-]* *//p') \
+		$(fossil timeline -n 1 -t ci -F %h | sed 1q)
 }
 
 build() {
 	cd "${srcdir}/silo"
 	make
-	#make nowayland
 }
 
 package() {

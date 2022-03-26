@@ -1,15 +1,16 @@
 pkgbase = silo-fossil
-	pkgdesc = Launcher menu with explosive potential (wayland or x11)
-	pkgver = r24.78ba44abe8
+	pkgdesc = Wayland launcher menu
+	pkgver = 1.0r27.1f26d6d845
 	pkgrel = 1
 	url = https://code.jessemcclure.org/silo
 	arch = x86_64
 	license = MIT
 	makedepends = fossil
-	depends = gcc-libs
+	depends = cairo
 	depends = glibc
-	depends = layer-shell-qt
-	depends = qt5-base
+	depends = libxkbcommon
+	depends = nkk-fossil
+	optdepends = wl-clipboard: paste w/ shift+insert
 	source = fossil+https://code.jessemcclure.org/silo
 	sha256sums = SKIP
 
