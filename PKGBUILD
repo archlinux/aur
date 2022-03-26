@@ -1,6 +1,6 @@
 # Maintainer: Frank Seifferth <frankseifferth@posteo.net>
 pkgname=nscde
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc='Not so Common Desktop Environment: Modern and functional CDE desktop based on FVWM'
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=('xclip: Copy screen, window of area shot to X11 clipboard'
     'gkrellm: System monitor package fits nicely with NsCDE')
 license=('GPL3')
 source=("https://github.com/NsCDE/NsCDE/archive/$pkgver.tar.gz")
-md5sums=('05ccbe937dbbe20597d105f28e93e0ef')
+md5sums=('37c25095ad723c36cdfdb356dbc67f48')
 
 build() {
     cd "$srcdir/NsCDE-$pkgver/"
