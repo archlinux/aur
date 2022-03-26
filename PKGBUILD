@@ -14,7 +14,7 @@ makedepends=('python-setuptools' 'git')
 conflicts=("$_pkgname")
 provides=("$_pkgname")
 md5sums=('SKIP')
-source=("$_pkgname::git+https://github.com/AnthonyDiGirolamo/todotxt-machine")
+source=("$_pkgname::git+https://github.com/AnthonyDiGirolamo/todotxt-machine.git")
 
 pkgver() {
   cd $_pkgname
