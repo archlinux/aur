@@ -42,7 +42,10 @@ build() {
     -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
     -DCONFIGURATION_NAME:STRING='git' \
     -DCONFIGURATION_PACKAGE_SUFFIX:STRING='-git' \
-    -DQUICK_GUI="$_quick_gui" .
+    -DQUICK_GUI="$_quick_gui" \
+    -DBUILTIN_TRANSLATIONS:BOOL=ON \
+    -DBUILTIN_TRANSLATIONS_OF_QT:BOOL=OFF \
+    .
   ninja
 }
 

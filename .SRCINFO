@@ -31,4 +31,3 @@ pkgbase = passwordmanager-git
 	sha256sums = SKIP
 
 pkgname = passwordmanager-git
-
