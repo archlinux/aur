@@ -5,7 +5,7 @@ _gitname=nativecontrol
 _version=1.2
 pkgname=firefox-socket-control-git
 pkgver=${_version}.462f826
-pkgrel=1
+pkgrel=2
 pkgdesc="Control your Firefox using UNIX sockets."
 arch=('any')
 url="https://github.com/karabaja4/${_gitname}"
@@ -14,7 +14,7 @@ install=${pkgname}.install
 depends=('firefox' 'openbsd-netcat' 'nodejs')
 makedepends=('git')
 source=("https://addons.mozilla.org/firefox/downloads/file/3908096/nativecontrol-${_version}-fx.xpi"
-        "git://github.com/karabaja4/${_gitname}.git")
+        "git+https://github.com/karabaja4/${_gitname}.git")
 noextract=("nativecontrol-${_version}-fx.xpi")
 sha256sums=('a91df1511816958328360daa1246058da31b6bae3b7bdde9e132c3f228d32f58'
             'SKIP')
