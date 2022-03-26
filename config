@@ -26,3 +26,6 @@ JAVA_SYS_PROPS="\
  -Dconfig.file=/etc/jicofo-nightly/jicofo.conf\
  -Djava.util.prefs.userRoot=/var/lib/jicofo-nightly\
 "
+
+# use java11
+JAVA_HOME=/usr/lib/jvm/java-11-openjdk
