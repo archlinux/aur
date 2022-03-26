@@ -1,4 +1,4 @@
-# Maintainer: Davide Gerhard < rainbow at irh dot it> PGP-Key:
+# Maintainer: Vadim Yanitskiy <axilirator@gmail.com>
 
 pkgname=gr-iridium-git
 pkgver=db88eb4
