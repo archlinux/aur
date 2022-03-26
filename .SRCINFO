@@ -11,8 +11,7 @@ pkgbase = rpi_ws281x-git
 	makedepends = git
 	provides = rpi_ws281x
 	conflicts = rpi_ws281x
-	source = rpi_ws281x::git://github.com/jgarff/rpi_ws281x.git
+	source = rpi_ws281x::git+https://github.com/jgarff/rpi_ws281x.git
 	sha256sums = SKIP
 
 pkgname = rpi_ws281x-git
-

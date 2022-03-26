@@ -16,7 +16,7 @@ makedepends=('scons' 'git')
 provides=("${_name}")
 conflicts=("${_name}")
 url="https://github.com/jgarff/${_reponame}"
-source=("${_reponame}::git://github.com/jgarff/${_reponame}.git")
+source=("${_reponame}::git+https://github.com/jgarff/${_reponame}.git")
 sha256sums=('SKIP')
 
 pkgver() {
