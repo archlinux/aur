@@ -1,9 +1,9 @@
 # Maintainer: Vasiliy Nikitin <nvasya95@gmail.com>
 pkgname=kotatsu-dl-git
 _pkgname=kotatsu-dl
-pkgver=0.1
-pkgrel=1
-pkgdesc='Manga downloader with a simple gui'
+pkgver=0.2
+pkgrel=2
+pkgdesc='Manga downloader with a Java gui'
 url='https://github.com/nv95/kotatsu-dl'
 arch=('any')
 license=('GPL3')
