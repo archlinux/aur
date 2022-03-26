@@ -12,7 +12,7 @@ license=('Apache')
 depends=('python' 'libolm' 'python-matrix-nio' 'python-prompt_toolkit' 'python-janus' 'python-peewee' 'python-logbook' 'python-aiohttp' 'python-cachetools' 'python-pycryptodome' 'python-unpaddedbase64' 'python-h2' 'python-h11' 'python-notify2' 'python-pydbus' 'python-olm' 'python-jsonschema' 'python-atomicwrites' 'python-click' 'python-appdirs' 'python-keyring>=21.2.1' 'python-future')
 provides=($_pkgname)
 conflicts=($_pkgname)
-source=("${_pkgname}::git://github.com/matrix-org/pantalaimon"
+source=("${_pkgname}::git+https://github.com/matrix-org/pantalaimon"
         "${_pkgname}.service")
 sha256sums=('SKIP'
             'cf693e0324a7f2965bc9e64ab2c3d75137e7993503ddb3ae3dddc84af6c0b0e9')
