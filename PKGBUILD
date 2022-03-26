@@ -4,7 +4,7 @@
 
 pkgname=libuhd3
 pkgver=3.15.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Universal Software Radio Peripheral (USRP) userspace driver"
 arch=('x86_64')
 url="https://files.ettus.com/manual/"
@@ -60,7 +60,6 @@ build() {
            -DENABLE_UTILS=ON \
            -DENABLE_TESTS=OFF \
            -DENABLE_E100=ON \
-           -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \
            -DENABLE_E300=ON
   make -C "build"
 }
