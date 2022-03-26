@@ -1,24 +1,5 @@
 pkgbase = polylith-bin
 	pkgdesc = An open source tool used to develop Polylith based architectures in Clojure
-	pkgver = 0.1.0
-	pkgrel = 1
-	url = https://polylith.gitbook.io/polylith
-	arch = any
-	license = EPL
-	depends = java-runtime
-	depends = git
-	optdepends = clojure: Lisp dialect for the JVM
-	provides = polylith
-	conflicts = polylith
-	source = https://polylith.gitbook.io/polylith/releases/download/v0.1.0-alpha9/poly-0.1.0-alpha9.tar.gz
-	source = poly.sh
-	sha256sums = 2f809c583b0bf6421ee3837c97ec329b396d6c5ba4e287cfb8f3cf7ec8ec0baf
-	sha256sums = c6f68e93739d6021c0f9c307cebcf7f107192f96ee8b8f43cb7d3bb5e5b4c95f
-
-pkgname = polylith-bin
-
-pkgbase = polylith-bin
-	pkgdesc = An open source tool used to develop Polylith based architectures in Clojure
 	pkgver = 0.2.13
 	pkgrel = 1
 	url = https://github.com/polyfy/polylith
