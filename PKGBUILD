@@ -119,6 +119,7 @@ makedepends=(
 )
 _patches_url="https://gitlab.com/sirlucjan/kernel-patches/-/raw/master/${_major}"
 _jobs=$(nproc)
+_core=$(nproc --all)
 if [ "${_compiler}" = "clang" ]; then
   makedepends+=(clang llvm lld python)
   _LLVM=1
@@ -284,7 +285,7 @@ prepare() {
     scripts/config --disable CONFIG_CPU_SUP_ZHAOXIN
     scripts/config --disable CONFIG_AGP_SIS
     scripts/config --disable CONFIG_AGP_VIA
-    scripts/config --set-val CONFIG_NR_CPUS ${_jobs}
+    scripts/config --set-val CONFIG_NR_CPUS ${_core}
     if [ "$_microarchitecture" == 98 ]; then
       msg2 "Setting for Intel CPU"
       scripts/config --disable CONFIG_CPU_SUP_AMD
@@ -302,7 +303,7 @@ prepare() {
       scripts/config --enable CONFIG_MICROCODE_INTEL
       scripts/config --enable CONFIG_X86_INTEL_PSTATE
       scripts/config --enable CONFIG_X86_SPEEDSTEP_CENTRINO
-      scripts/config --modules CONFIG_X86_P4_CLOCKMOD
+      scripts/config --module CONFIG_X86_P4_CLOCKMOD
       scripts/config --enable CONFIG_INTEL_IDLE
       scripts/config --enable CONFIG_AGP_INTEL
     elif [ "$_microarchitecture" == 99 ]; then
@@ -320,7 +321,7 @@ prepare() {
       scripts/config --enable CONFIG_X86_AMD_PSTATE
       scripts/config --enable CONFIG_X86_ACPI_CPUFREQ_CPB
       scripts/config --enable CONFIG_X86_POWERNOW_K8
-      scripts/config --modules CONFIG_X86_AMD_FREQ_SENSITIVITY
+      scripts/config --module CONFIG_X86_AMD_FREQ_SENSITIVITY
       scripts/config --enable CONFIG_AGP_AMD64
     fi
   fi
