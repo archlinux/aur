@@ -16,7 +16,7 @@ checkdepends=('man-db')
 provides=('pbuilder')
 conflicts=('pbuilder')
 backup=('etc/pbuilderrc')
-options=('!emptydirs')
+options=('emptydirs')
 source=("git+https://salsa.debian.org/pbuilder-team/pbuilder.git")
 sha512sums=('SKIP')
 
@@ -53,6 +53,12 @@ package() {
   install -Dm644 -t "${pkgdir}/usr/share/man/man1/" debuild-pbuilder.1 pdebuild.1
   install -Dm644 -t "${pkgdir}/usr/share/man/man5/" pbuilderrc.5
   install -Dm644 -t "${pkgdir}/usr/share/man/man8/" pbuilder.8
+
+  for i in 'aptcache' 'build' 'ccache' 'result'
+  do
+    install -d "${pkgdir}/var/cache/pbuilder/$i"
+  done
+
   cat <<EOF > "${pkgdir}/etc/pbuilderrc"
 # this is your configuration file for pbuilder.
 # the file in /usr/share/pbuilder/pbuilderrc is the default template.
