@@ -1,6 +1,6 @@
 # Maintainer: Daniel Wilhelm <concat(shield, wed) @ outlook.com>
 pkgname=easytaxag
-pkgver=2021.1.0
+pkgver=2021.1.2
 pkgrel=1
 pkgdesc="EasyTax Applikation zur Steuererklärung 2021 für den Kanton Aargau"
 arch=('any')
@@ -17,7 +17,7 @@ source=(
   easytaxag.desktop
 )
 
-sha256sums=('531c03131b5a9ecf500fee3fbbf03e215d5ac02db6e5bcae72016838d09f17d8'
+sha256sums=('bc191f913f74f6649007688791b714957faade8c97bbcc31b6075ddeb54ed7f9'
             '198bb1c5a5115925f97bd7090bdd8e1dbd9927f1efabe1f1f1166a4cabb0bfe0')
 
 package() {
