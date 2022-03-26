@@ -1,8 +1,8 @@
 # Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
 
-pkgname=qbittorrent-enhanced-qt5-git
+pkgname='qbittorrent-enhanced-qt5-git'
 pkgver=4.4.2.10.r0.gdb18496c9
-pkgrel=3
+pkgrel=4
 pkgdesc='Bittorrent client using Qt5 and libtorrent-rasterbar, Enhanced Edition mod'
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
 url='https://github.com/c0re100/qBittorrent-Enhanced-Edition'
@@ -17,6 +17,7 @@ depends=('dbus'
          'zlib')
 makedepends=('boost'
              'cmake'
+             'ninja'
              'qt5-svg'
              'qt5-tools')
 optdepends=('python: needed for torrent search tab')
@@ -52,26 +53,33 @@ prepare() {
   if check_buildoption "ccache" "y"; then
     printf 'yes\n'
     printf 'Enabling C++ ccache for CMake...\n'
-    export CMAKE_CXX_COMPILER_LAUNCHER=ccache
+    export CMAKE_CXX_COMPILER_LAUNCHER='ccache'
   else
     printf 'no\n'
   fi
 
   printf 'Configuring build with CMake...\n\n'
-  cmake -S "${_srcrepodir}" -B build \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DQT6=OFF \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-    -DVERBOSE_CONFIGURE=ON
+  export CXXFLAGS+=" ${CPPFLAGS}" # CMake ignores CPPFLAGS
+
+  cmake -S "${_srcrepodir}" \
+    -B 'build' \
+    -G 'Ninja' \
+    -DCMAKE_INSTALL_PREFIX='/usr' \
+    -DQT6='OFF' \
+    -DCMAKE_BUILD_TYPE='RelWithDebInfo' \
+    -DCMAKE_EXE_LINKER_FLAGS_INIT="${LDFLAGS}" \
+    -DCMAKE_SHARED_LINKER_FLAGS_INIT="${LDFLAGS}" \
+    -DCMAKE_MODULE_LINKER_FLAGS_INIT="${LDFLAGS}" \
+    -DVERBOSE_CONFIGURE='ON'
 }
 
 build() {
   printf 'Building with CMake...\n\n'
-  cmake --build build
+  cmake --build 'build'
 }
 
 package() {
   printf 'Installing with CMake...\n\n'
-  DESTDIR="${pkgdir}" cmake --install build
+  DESTDIR="${pkgdir}" cmake --install 'build'
   install -Dm644 "${_srcrepodir}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
