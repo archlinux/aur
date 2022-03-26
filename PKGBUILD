@@ -5,7 +5,7 @@
 
 pkgname=t1utils-git
 reponame=${pkgname%-git}
-pkgver=1.41.r1.g3f1ddda
+pkgver=1.42.r0.g72d6300e81
 pkgrel=1
 pkgdesc='A collection of simple Type 1 font manipulation programs'
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('custom')
 depends=('glibc')
 provides=('t1utils')
 conflicts=('t1utils')
-source=("git://github.com/kohler/$reponame.git"
+source=("git+https://github.com/kohler/$reponame.git"
         'LICENSE')
 sha256sums=('SKIP'
             'fd00d777e6114f1d346978844f19bbec1652641ea40d24c12ec5aac6f3ebc7cb')
