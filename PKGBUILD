@@ -4,7 +4,7 @@
 _pkgname=replay-sorcery
 pkgname=$_pkgname-git
 pkgver=r282.d8d5921
-pkgrel=1
+pkgrel=2
 pkgdesc='Open-source, instant-replay solution for Linux'
 url='https://github.com/matanui159/ReplaySorcery'
 arch=(x86_64 i686)
