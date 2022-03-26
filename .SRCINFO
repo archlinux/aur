@@ -1,13 +1,12 @@
 pkgbase = lx-music-desktop-git
 	pkgdesc = 一个免费的音乐查找助手
 	pkgver = 1.19.0.f10c1e9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/lyswhut/lx-music-desktop
 	arch = x86_64
 	arch = aarch64
 	arch = armv7l
 	makedepends = npm
-	makedepends = nodejs=14.19.1
 	depends = c-ares
 	depends = ffmpeg
 	depends = gtk3
