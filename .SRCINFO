@@ -1,0 +1,15 @@
+pkgbase = python-types-pytz
+	pkgdesc = Typing stubs for pytz
+	pkgver = 2021.3.6
+	pkgrel = 1
+	url = https://pypi.org/project/python-types-pytz
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/types-pytz/types-pytz-2021.3.6.tar.gz
+	sha256sums = 74547fd90d8d8ab4f1eedf3a344a7d186d97486973895f81221a712e1e2cd993
+
+pkgname = python-types-pytz
