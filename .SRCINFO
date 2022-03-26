@@ -1,0 +1,17 @@
+pkgbase = python-tradingview-ta
+	pkgdesc = Unofficial TradingView technical analysis API wrapper.
+	pkgver = 3.2.10
+	pkgrel = 1
+	url = https://pypi.org/project/python-tradingview-ta
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-requests
+	depends = python-colorama
+	source = https://files.pythonhosted.org/packages/source/t/tradingview_ta/tradingview_ta-3.2.10.tar.gz
+	sha256sums = 85a11c840bce6faa869a22a79fe320df8c1d6160f8f21fba4a4c7ad850d0a538
+
+pkgname = python-tradingview-ta
