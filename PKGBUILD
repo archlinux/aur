@@ -2,13 +2,14 @@
 
 _pkgname=fluffychat
 pkgname=fluffychat-web-git
-pkgver=1.3.0.r6.gc07e0752
+pkgver=1.3.1.r0.gd1185e84
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('any')
 url="https://fluffychat.im/"
 license=('AGPL3')
 makedepends=(
+    'git'
     'clang'
     'ninja'
     'cmake'
