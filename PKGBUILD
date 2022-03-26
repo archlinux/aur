@@ -5,8 +5,8 @@ pkgname=(
   regclient-regsync
   regclient-regbot
 )
-pkgver=0.3.10
-pkgrel=5
+pkgver=0.4.1
+pkgrel=0
 pkgdesc='Docker and OCI Registry tooling - regctl / regsync / regbot'
 arch=('x86_64' 'aarch64')
 url='https://github.com/regclient/regclient'
@@ -15,7 +15,7 @@ makedepends=('go' 'git')
 source=("https://github.com/regclient/regclient/archive/v$pkgver/$pkgbase-$pkgver.tar.gz")
 # how to build git tag from github
 #source=("$pkgbase-$pkgver.tar.gz::https://github.com/regclient/regclient/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('e9ebf9e3c4538020b230eadf801282ae29c1837a599c569f72b9a77bbde64106')
+sha256sums=('3d51b16e5347770162bbe2ee402a3edccdfe122aad996ea62c55bc70c7ade81c')
 _bins=('regctl' 'regsync' 'regbot')
 
 build() {
@@ -25,11 +25,13 @@ build() {
   # we want "clean" go binaries
   export CGO_ENABLED=0
 
-  for i in ${_bins[@]}; do
+  ( cd "../$pkgbase-$pkgver" && echo "{\"VCSRef\": \"${_commit}\", \"VCSTag\": \"${pkgver}\"}" >./embed/version.json )
+
+  for i in "${_bins[@]}"; do
     (
       cd "../$pkgbase-$pkgver"
-      go build -ldflags "-s -w -extldflags -static -X github.com/regclient/regclient/cmd/$i/version.GitCommit=$_commit" \
-        -tags nolegacy -trimpath -o ../build ./cmd/$i
+      cp ./embed/version.json "cmd/$i/embed/"
+      go build -ldflags "-s -w -extldflags -static" -tags nolegacy -trimpath -o ../build ./cmd/$i
     )
 
     ./$i completion bash >$i.bash
