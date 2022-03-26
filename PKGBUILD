@@ -1,7 +1,7 @@
 # Maintainer: Silvio Knizek <killermoehre@gmx.net>
 _pkgname=xfconf
 pkgname="${_pkgname}-git"
-pkgver=4.16.0.r102.gb836868
+pkgver=4.16.0+102+gb836868
 pkgrel=1
 pkgdesc="A simple client-server configuration storage and query system - git checkout"
 arch=('i686' 'x86_64')
@@ -17,7 +17,7 @@ source=("git+https://gitlab.xfce.org/xfce/${_pkgname}.git")
 sha256sums=('SKIP')
 pkgver() {
     cd "$srcdir/$_pkgname"
-    git describe --long | sed -r "s/^${_pkgname}-//;s/([^-]*-g)/r\1/;s/-/./g"
+    git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/^xfce-//;s/-/+/g"
 }
 
 build() {

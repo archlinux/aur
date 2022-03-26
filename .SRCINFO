@@ -1,6 +1,6 @@
 pkgbase = xfconf-git
 	pkgdesc = A simple client-server configuration storage and query system - git checkout
-	pkgver = 4.16.0.r102.gb836868
+	pkgver = 4.16.0+102+gb836868
 	pkgrel = 1
 	url = http://www.xfce.org/
 	arch = i686
@@ -16,7 +16,7 @@ pkgbase = xfconf-git
 	makedepends = chrpath
 	depends = libxfce4util
 	depends = dbus-glib
-	provides = xfconf=4.16.0.r102.gb836868
+	provides = xfconf=4.16.0+102+gb836868
 	conflicts = xfconf
 	conflicts = terminal
 	replaces = xfconf
