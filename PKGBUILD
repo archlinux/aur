@@ -4,10 +4,10 @@
 # Contributor: Matt Frichtl <frichtlm@gmail.com>
 
 _cranname=plyr
-_cranver=1.8.6
+_cranver=1.8.7
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=2
+pkgrel=1
 pkgdesc="Tools for Splitting, Applying and Combining Data"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
@@ -25,7 +25,7 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
         "CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
-sha256sums=('ea55d26f155443e9774769531daa5d4c20a0697bb53abd832e891b126c935287'
+sha256sums=('7d9fdaf1157035a49c3661da3bbaa7bfcf782aafe1b98f7b5a68b0520046e87f'
             'e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b')
 
 build() {
