@@ -2,7 +2,7 @@
 # Previous Maintainer: 2bluesc <2bluesc gmail.com>
 # Maintainer: Vadzim Dambrouski <pftbest gmail.com>
 pkgname=gcc-arm-none-eabi-bin
-pkgver=10_2021_10
+pkgver=11.2_2022.02
 pkgrel=1
 pkgdesc="GNU Tools ARM Embedded Processors (binary distribution, includes newlib, does NOT include GDB)"
 arch=('aarch64' 'x86_64')
@@ -20,18 +20,30 @@ conflicts=('gcc-arm-none-eabi'
       'arm-none-eabi-binutils'
       'arm-none-eabi-newlib'
     )
-url="https://developer.arm.com/open-source/gnu-toolchain/gnu-rm"
-source_x86_64=("https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/10.3-2021.10/gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2")
-source_aarch64=("https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/10.3-2021.10/gcc-arm-none-eabi-10.3-2021.10-aarch64-linux.tar.bz2")
+url='https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/downloads'
+source_x86_64=('https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu/11.2-2022.02/binrel/gcc-arm-11.2-2022.02-x86_64-arm-none-eabi.tar.xz')
+source_aarch64=('https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu/11.2-2022.02/binrel/gcc-arm-11.2-2022.02-aarch64-arm-none-eabi.tar.xz')
 license=('custom')
 options=(!strip staticlibs)
-sha256sums_x86_64=('97dbb4f019ad1650b732faffcc881689cedc14e2b7ee863d390e0a41ef16c9a3')
-sha256sums_aarch64=('f605b5f23ca898e9b8b665be208510a54a6e9fdd0fa5bfc9592002f6e7431208')
+sha256sums_x86_64=('8c5acd5ae567c0100245b0556941c237369f210bceb196edfe5a2e7532c60326')
+sha256sums_aarch64=('ef1d82e5894e3908cb7ed49c5485b5b95deefa32872f79c2b5f6f5447cabf55f')
 package() {
-  mkdir -p $pkgdir/usr
   cd $srcdir/gcc-*/
-  cp -a * $pkgdir/usr
+
+  mkdir -p $pkgdir/usr
+  mkdir -p $pkgdir/usr/lib/gcc
+  mkdir -p $pkgdir/usr/libexec/gcc
+  mkdir -p $pkgdir/usr/share/doc/gcc-arm-none-eabi
+  mkdir -p $pkgdir/usr/share/man
+
+  cp -a arm-none-eabi $pkgdir/usr
+  cp -a bin $pkgdir/usr
+  cp -a lib/gcc/arm-none-eabi $pkgdir/usr/lib/gcc
+  cp -a libexec/gcc/arm-none-eabi $pkgdir/usr/libexec/gcc
+  cp -a share/* $pkgdir/usr/share/doc/gcc-arm-none-eabi
+  cp -a share/man/man1 $pkgdir/usr/share/man
+
   rm -f $pkgdir/usr/bin/arm-none-eabi-gdb*
-  rm -f $pkgdir/usr/lib/libcc1.so*
+  rm -f $pkgdir/usr/share/man/man1/arm-none-eabi-gdb*
 }
 
