@@ -9,7 +9,7 @@ pkgdesc="Gnome extension that saves what you've copied into an easily accessible
 arch=(any)
 url='https://github.com/SUPERCILEX/gnome-clipboard-history'
 license=('MIT')
-depends=('dconf' 'gnome-shell>=40')
+depends=('dconf' 'gnome-shell>=1:40')
 source=("https://github.com/SUPERCILEX/gnome-clipboard-history/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('edddccb5bf043c176f247e44255b1b68d9f13e775b30d0ef6073cc85b1df3067')
 
