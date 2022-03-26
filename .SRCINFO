@@ -1,13 +1,12 @@
 pkgbase = gnome-console
 	pkgdesc = A simple user-friendly terminal emulator for the GNOME desktop
 	pkgver = 42.beta
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.gnome.org/GNOME/console
 	arch = x86_64
 	license = GPL3
 	checkdepends = appstream-glib
 	makedepends = meson
-	makedepends = cmake
 	makedepends = sassc
 	depends = libgtop
 	depends = libhandy
