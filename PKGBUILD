@@ -1,7 +1,7 @@
 # Maintainer: Yasuaki Uechi <y@uechi.io> (https://uechi.io)
 
 pkgname=cfddns
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='Yet another DDNS client for Cloudflare'
 arch=('any')
@@ -17,7 +17,7 @@ source=(
   "${pkgname}.install"
 )
 sha256sums=(
-  'a9257ae415bbda633d99dbd99120716b028059c378d213def6faeee12a49768c'
+  'e6434f9a16f5f45ee294a7093c23ebe82912519f54f43ec1f88539f894c51221'
   'b6ba6f675093dbe515868d43d4e2dcec2a0ee3c419a7f58fa20f2700fad93844'
   'fd0d38ae6df41e37512bc6a4d94e467b80adffa684890562527a824dc1c45e28'
 )
@@ -40,7 +40,7 @@ check() {
   cd "$srcdir/${pkgname}-${pkgver}"
 
   export RUSTUP_TOOLCHAIN=stable
-  cargo test --frozen --all-features
+  cargo test --release --frozen --all-features
 }
 
 package() {
