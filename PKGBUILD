@@ -15,7 +15,7 @@ depends=('texlive-core')
 makedepends=('git')
 optdepends=()
 conflicts=('ubuntu-latex-fonts')
-source=("$pkgname"::'git://github.com/tzwenn/ubuntu-latex-fonts.git')
+source=("$pkgname"::'git+https://github.com/tzwenn/ubuntu-latex-fonts.git')
 md5sums=('SKIP')
 
 pkgver() {
