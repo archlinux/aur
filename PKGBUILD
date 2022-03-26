@@ -3,7 +3,7 @@
 _pkgname=avogadro2
 pkgname="${_pkgname}-git"
 _gitname=avogadroapp
-pkgver=1.93.0.r453.87101bc
+pkgver=1.95.1.r696.ac24a8a
 pkgrel=1
 pkgdesc="Avogadro 2: graphical application"
 url="http://openchemistry.org/projects/avogadro2"
@@ -14,7 +14,7 @@ makedepends=("git" "cmake" "eigen")
 install=avogadro2.install
 conflicts=("${_pkgname}")
 provides=("${_pkgname}")
-source=("${_pkgname}::git://github.com/OpenChemistry/${_gitname}.git")
+source=("${_pkgname}::git+https://github.com/OpenChemistry/${_gitname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -37,7 +37,7 @@ build() {
       -DCMAKE_INSTALL_LIBDIR=lib \
       -DBUILD_SHARED_LIBS=ON \
       -DENABLE_TESTING=OFF \
-      -DUSE_VTK=ON \
+      -DUSE_VTK=OFF \
       "${srcdir}/${_pkgname}"
   make
 }
