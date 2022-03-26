@@ -2,7 +2,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=knitr
-_cranver=1.37
+_cranver=1.38
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -17,14 +17,12 @@ depends=(
     r-yaml
     r-xfun
 )
-checkdepends=(r-rmarkdown r-testit r-tibble)
 optdepends=(
     r-markdown
     r-formatr
     r-testit
     r-digest
     r-rgl
-    r-codetools
     r-rmarkdown
     r-htmlwidgets
     r-webshot
@@ -50,16 +48,11 @@ optdepends=(
     'rst2pdf: rst2pdf() support'
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('39cd2a4848baebbe7fa0c0ab8200179690fb5b9190f0c1688d987c38363ad763')
+sha256sums=('d138e881414eed915cadcb8c82ffbbab002614f1d492cbf413cded255ab5e7ad')
 
 build() {
   mkdir -p build
   R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
-}
-
-check() {
-  cd "${_cranname}/tests"
-  R_LIBS="${srcdir}/build" _R_CHECK_PACKAGE_NAME_=false Rscript --vanilla run-all.R
 }
 
 package() {
