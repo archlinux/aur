@@ -11,7 +11,7 @@ license=('MIT')
 depends=(dialog)
 makedepends=(git)                 
 source=("https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
-sha256sums=('0c25fa785a67958f66e3de0c6669188855b5cbd4b83e27b0bd0140d5e75c871e')
+sha256sums=('2d71cf176c65118b639bd709cc4bf24f24041a3e2bcaefc1e858239dc0be134b')
 
 pkgver() {
   printf "2.0.$(git rev-list --count HEAD)"
