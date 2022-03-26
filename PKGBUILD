@@ -1,7 +1,7 @@
 # Maintainer: Peter Ivanov <ivanovp@gmail.com>
 
 pkgname=sometris-git
-pkgver=20160628
+pkgver=20180816
 pkgrel=1
 pkgdesc="Tetris-like game written in C and SDL."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="http://dev.ivanov.eu/"
 license=('GPL')
 depends=('sdl' 'sdl_gfx' 'sdl_image')
 makedepends=('make' 'git')
-_gitroot=git://github.com/ivanovp/sometris_sdl.git
+_gitroot=git+https://github.com/ivanovp/sometris_sdl.git
 _gitname=sometris_sdl
 source=("sometris.png" "sometris.desktop" "$_gitname::$_gitroot")
 
