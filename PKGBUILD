@@ -1,6 +1,6 @@
 # Maintainer: Rajter <rajterandrija@gmail.com>
 pkgname=picket
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Linux screen color picker with magnifier and custom user defined formats."
 arch=('any')
@@ -31,3 +31,4 @@ package() {
 md5sums=('c8f792ce4a521e0ca16070f15343ec6c')
 md5sums=('23a231a95acaa366e5bd7215ae22e28b')
 md5sums=('23a231a95acaa366e5bd7215ae22e28b')
+md5sums=('5a1a7b918f4ab08553a4ceef89195825')
