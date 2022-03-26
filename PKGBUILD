@@ -7,7 +7,7 @@ _url=https://download.jitsi.org/unstable/jicofo_1.0-871-1_all.deb
 _pkgbase=${_basename}-nightly
 pkgname=${_pkgbase}-bin
 pkgver=${_version}
-pkgrel=1
+pkgrel=2
 pkgdesc="JItsi meet COnference FOcus nightly binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
@@ -66,8 +66,8 @@ package() {
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
 sha256sums=('b14b449f64a4ef4ecbd78b0d87987cf17f52207e461aafa59aec6c3c91f7ca44'
-            'c83256640bacae259becad4d9de3711e8a0511009c9f8f08b9f4c4a2e479c776'
+            'e0e42bb77b6c60e2a2d5ad57b12365166e90b91e53c91062909d578808d5e00c'
             'f295f5f8ee13edd019defc037c60e04c6ea2d30e69cc4a896c010b8570f5efab'
-            '8de1e1ac3b20795a69e5932f52108e187769cc6e2c19833b4baf55518c3b9933'
+            '59c6a682953a9981af90d111901b3637a79ff42d39d1fbd5fa22730ec4148762'
             '0681e97ca1e06d8ea7bdec0a874c6fc7a6ea84628923005130cd444547a1b440'
             'a8e5ff30f3737da564f61e7d00cc6e0a8b243da54aa02f94095deaa2f4cceb66')

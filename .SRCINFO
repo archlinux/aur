@@ -1,7 +1,7 @@
 pkgbase = jicofo-nightly-bin
 	pkgdesc = JItsi meet COnference FOcus nightly binary
 	pkgver = 1.0+871
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jitsi.org/jitsi-meet/
 	install = install
 	arch = any
@@ -25,9 +25,9 @@ pkgbase = jicofo-nightly-bin
 	source = sysusers.conf
 	source = tmpfiles.conf
 	sha256sums = b14b449f64a4ef4ecbd78b0d87987cf17f52207e461aafa59aec6c3c91f7ca44
-	sha256sums = c83256640bacae259becad4d9de3711e8a0511009c9f8f08b9f4c4a2e479c776
+	sha256sums = e0e42bb77b6c60e2a2d5ad57b12365166e90b91e53c91062909d578808d5e00c
 	sha256sums = f295f5f8ee13edd019defc037c60e04c6ea2d30e69cc4a896c010b8570f5efab
-	sha256sums = 8de1e1ac3b20795a69e5932f52108e187769cc6e2c19833b4baf55518c3b9933
+	sha256sums = 59c6a682953a9981af90d111901b3637a79ff42d39d1fbd5fa22730ec4148762
 	sha256sums = 0681e97ca1e06d8ea7bdec0a874c6fc7a6ea84628923005130cd444547a1b440
 	sha256sums = a8e5ff30f3737da564f61e7d00cc6e0a8b243da54aa02f94095deaa2f4cceb66
 
