@@ -18,6 +18,10 @@ sha256sums=('99a14394b406263576ed3d8d10334de7c78d42b349109f375d178b11492eecaf')
 options=(staticlibs)
 _dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
 
+# NINJAFLAGS is an env var used to pass commandline options to ninja
+# NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
+# NINJAFLAGS="-j20"
+
 build() {
     CC=/usr/bin/clang \
     CXX=/usr/bin/clang++ \
@@ -33,9 +37,9 @@ build() {
         -DLLVM_ENABLE_PROJECTS='llvm;clang;compiler-rt;lld' \
         -DLLVM_TARGETS_TO_BUILD='AMDGPU;X86' \
         -DOCAMLFIND=NO
-    ninja
+    ninja $NINJAFLAGS
 }
 
 package() {
-    DESTDIR="$pkgdir" ninja install
+    DESTDIR="$pkgdir" ninja $NINJAFLAGS install
 }
