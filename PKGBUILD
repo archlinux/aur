@@ -5,7 +5,7 @@
 
 pkgname=seafile-server
 pkgver=9.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Seafile server core'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://github.com/haiwen/seafile-server'
@@ -20,7 +20,7 @@ depends=(
     'libarchive'
     'libldap'
 )
-makedepends=('vala' 'go')
+makedepends=('vala' 'go' 'git')
 conflicts=('seafile')
 source=(
     "$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver-server.tar.gz"
