@@ -32,6 +32,8 @@ prepare() {
     git submodule init
     git config submodule."dep/libbacktrace".url ../libbacktrace
     git submodule update
+
+    git apply ../../0000-include-avutil-ch-layout.patch
 }
 
 build() {

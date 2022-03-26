@@ -1,0 +1,12 @@
+diff --git a/src/audio/pulsedev.c b/src/audio/pulsedev.c
+index 6f6f3d0..6409227 100644
+--- a/src/audio/pulsedev.c
++++ b/src/audio/pulsedev.c
+@@ -24,6 +24,7 @@
+ #include <libavcodec/avcodec.h>
+ #include <libavutil/avutil.h>
+ #include <libavutil/bprint.h>
++#include <libavutil/channel_layout.h>
+ #include <libavutil/time.h>
+ 
+ #ifdef RS_BUILD_PULSE_FOUND
