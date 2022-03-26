@@ -1,9 +1,10 @@
-# Maintainer: Oliver Gatti
+# Maintainer: Paul van der Linden <mail@paultjuh.org>
+# Contributor: Oliver Gatti
 # Contributor: Andrew Titmuss <andrew@coffeetocode.me>
 
 pkgname=scangearmp2
 pkgver=4.30
-pkgrel=1
+pkgrel=2
 pkgdesc="Canon ScanGear MP v2 scanner driver."
 arch=('i686' 'x86_64')
 url="https://www.canon.co.uk"
@@ -55,6 +56,7 @@ package() {
 	install -m644 "com/ini/canon_mfp2_net.ini" "$pkgdir/usr/lib/bjlib"
 
 	install -sm755 com/libs_bin$_arch/*.so.* "$pkgdir/usr/lib"
+	cp -P com/libs_bin$_arch/*.so "$pkgdir/usr/lib"
 
 	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
 
