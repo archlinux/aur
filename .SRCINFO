@@ -1,0 +1,15 @@
+pkgbase = python-types-urllib3
+	pkgdesc = Typing stubs for urllib3
+	pkgver = 1.26.11
+	pkgrel = 1
+	url = https://pypi.org/project/python-types-urllib3
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/types-urllib3/types-urllib3-1.26.11.tar.gz
+	sha256sums = 24d64e441168851eb05f1d022de18ae31558f5649c8f1117e384c2e85e31315b
+
+pkgname = python-types-urllib3
