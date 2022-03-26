@@ -1,16 +1,16 @@
 pkgbase = jicofo-nightly
 	pkgdesc = JItsi Meet COnference FOcus nightly build
-	pkgver = 1.0+867
+	pkgver = 1.0+871
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	install = install
 	arch = any
 	license = Apache
 	makedepends = git
-	makedepends = java-environment
+	makedepends = java-environment-openjdk=11
 	makedepends = unzip
 	makedepends = maven
-	depends = java-runtime
+	depends = java-runtime-openjdk=11
 	depends = bash
 	optdepends = prosody
 	options = !strip
@@ -18,7 +18,7 @@ pkgbase = jicofo-nightly
 	backup = etc/jicofo-nightly/logging.properties
 	backup = etc/jicofo-nightly/sip-communicator.properties
 	backup = etc/jicofo-nightly/jicofo.conf
-	source = jicofo-nightly::git+https://github.com/jitsi/jicofo#tag=867
+	source = jicofo-nightly::git+https://github.com/jitsi/jicofo#tag=871
 	source = config
 	source = sip-communicator.properties
 	source = service
@@ -27,7 +27,7 @@ pkgbase = jicofo-nightly
 	sha256sums = SKIP
 	sha256sums = 63fa0d23ce6b2ef388832419a3eda0d172f5869e1845ad25d5874bf5607981b6
 	sha256sums = f295f5f8ee13edd019defc037c60e04c6ea2d30e69cc4a896c010b8570f5efab
-	sha256sums = 8de1e1ac3b20795a69e5932f52108e187769cc6e2c19833b4baf55518c3b9933
+	sha256sums = 59c6a682953a9981af90d111901b3637a79ff42d39d1fbd5fa22730ec4148762
 	sha256sums = 0681e97ca1e06d8ea7bdec0a874c6fc7a6ea84628923005130cd444547a1b440
 	sha256sums = a8e5ff30f3737da564f61e7d00cc6e0a8b243da54aa02f94095deaa2f4cceb66
 
