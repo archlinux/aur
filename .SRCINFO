@@ -1,0 +1,12 @@
+pkgbase = jaxe-bin
+	pkgdesc = jaxe parses new line delimited json and outputs a human readable representation
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/simao/jaxe
+	arch = x86_64
+	license = MIT
+	depends = glibc
+	source_x86_64 = https://github.com/simao/jaxe/releases/download/v0.1.0/jaxe-linux-x86_64
+	sha256sums_x86_64 = 5cb3a8ab6893d22665cf94a68ce05979690b0fb9fe329227925b79d92a2e48d7
+
+pkgname = jaxe-bin
