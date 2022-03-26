@@ -2,7 +2,7 @@
 # Contributor: Dominik Heidler <dheidler@gmail.com>
 
 pkgname=gqrx-git
-pkgver=20210930
+pkgver=20220130
 pkgrel=1
 pkgdesc="SDR receiver for Funcube Dongle, RTL-SDR, USRP and OsmoSDR devices."
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ conflicts=('gqrx')
 provides=('gqrx')
 #_gitroot=https://github.com/phirsch/gqrx
 #_gitroot=https://github.com/mathisschmieder/gqrx
-_gitroot=git://github.com/csete/gqrx.git
+_gitroot=git+https://github.com/csete/gqrx.git
 _gitname=gqrx
 source=("fcd_in_gnuradio.patch" "21-fcd.rules" "gqrx.png" "gqrx.desktop" "$_gitname::$_gitroot")
 md5sums=('95292c41a5d521c023a26d615a5e2478'
