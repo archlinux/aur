@@ -29,4 +29,3 @@ pkgbase = tageditor-git
 	sha256sums = SKIP
 
 pkgname = tageditor-git
-
