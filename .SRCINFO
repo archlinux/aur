@@ -1,7 +1,7 @@
 pkgbase = crossover
 	pkgdesc = Run Windows Programs on Linux
 	pkgver = 21.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.codeweavers.com
 	install = crossover.install
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = crossover
 	depends = python
 	depends = desktop-file-utils
 	depends = python-gobject
+	depends = vte3
 	optdepends = unzip: required to install Guild Wars, automatic installer extraction
 	replaces = crossover-games
 	replaces = crossover-pro
