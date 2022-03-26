@@ -1,7 +1,7 @@
 # Maintainer: Sander van Kasteel <info at sandervankasteel dot nl>
 
 pkgname=ionic-cli
-pkgver=6.18.1
+pkgver=6.19.0
 pkgrel=1
 pkgdesc="The Ionic command line interface (CLI) is your go-to tool for developing Ionic apps"
 arch=(any)
@@ -11,7 +11,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=(https://registry.npmjs.org/@ionic/cli/-/cli-$pkgver.tgz)
 noextract=(cli-$pkgver.tgz)
-sha256sums=('20d58791d91c335a36666e395d95e15c850b7b6837f7ffcdc5a0c04e64d02868')
+sha256sums=('38bc960d48d491c5f485a60cce0c8d16989c231a979aa36f97ae788905048630')
 
 package() {
   cd "$srcdir"
