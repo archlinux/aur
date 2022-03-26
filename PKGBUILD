@@ -1,14 +1,13 @@
 # Maintainer: Abd El-Twab M. Fakhry <abdeltwab.m.fakhry@gmail.com>
 
 pkgname=next-prayer
-pkgver=1.0.1.r8.4a31023
+pkgver=v2.0.0.r20.a58bf98
 pkgrel=1
-pkgdesc="Islamic prayers reminder for status bars."
+pkgdesc="Islamic prayers reminder for your status bar."
 arch=('x86_64')
 url="https://github.com/abdeltwabmf/next-prayer.git"
 license=('GPL-v3')
 depends=(
-	'jq'
 	'libnotify'
 )
 makedepends=(
@@ -22,7 +21,7 @@ sha1sums=('SKIP')
 
 pkgver() {
 	cd "${pkgname}"
-	printf "%s.r%s.%s" "$(awk '/^VERSION =/ {print $3}' config.mk)" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s.r%s.%s" "$(awk '/VERSION\[\] =/{print $5}' events.cpp | sed 's/\"\|;//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
