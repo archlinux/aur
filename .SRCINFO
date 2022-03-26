@@ -1,14 +1,23 @@
 pkgbase = altserver-bin
 	pkgdesc = AltServer for Linux
-	pkgver = 0.0.2
+	pkgver = 0.0.3_rc1
 	pkgrel = 1
 	url = https://github.com/NyaMisty/AltServer-Linux
 	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
 	license = AGPL3
 	provides = altserver
 	source = altserver.service
-	source = AltServer-0.0.2::https://github.com/NyaMisty/AltServer-Linux/releases/download/v0.0.2/AltServer
 	sha256sums = 3d5b1c66a9959aa42eea5db7222768236b8a52f6a9caa3bbad7a5404506ffa4e
-	sha256sums = 523b501904742fed3cb347dca65fcc78f8d25d079c7f2ea45ec61ff50b481653
+	source_x86_64 = AltServer-0.0.3-rc1-x86_64::https://github.com/NyaMisty/AltServer-Linux/releases/download/v0.0.3-rc1/AltServer-x86_64
+	sha256sums_x86_64 = eb4be591663e1b61108feee7f58f305b593854cdc9205ad474251cd273670f5c
+	source_i686 = AltServer-0.0.3-rc1-i686::https://github.com/NyaMisty/AltServer-Linux/releases/download/v0.0.3-rc1/AltServer-i586
+	sha256sums_i686 = 8584d408384e049e1b6fec27cc5d1159572f2300be3c074b902143bbe8e98898
+	source_aarch64 = AltServer-0.0.3-rc1-aarch64::https://github.com/NyaMisty/AltServer-Linux/releases/download/v0.0.3-rc1/AltServer-aarch64
+	sha256sums_aarch64 = e765516f3c37d7c48e816b10a8a6872cc6db817b41fbd36ca8f7a37db0cdca5e
+	source_armv7h = AltServer-0.0.3-rc1-armv7h::https://github.com/NyaMisty/AltServer-Linux/releases/download/v0.0.3-rc1/AltServer-armv7
+	sha256sums_armv7h = 5dce8a7bcffbb037283a4cb0cbab7f8e738860ddee016a6339e0566291a87f03
 
 pkgname = altserver-bin
