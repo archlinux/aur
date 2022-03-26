@@ -1,6 +1,6 @@
 pkgbase = python-mbed-tools
 	pkgdesc = Future command line tool for Mbed OS
-	pkgver = 7.1.2
+	pkgver = 7.53.0
 	pkgrel = 1
 	url = https://os.mbed.com
 	arch = any
@@ -21,12 +21,8 @@ pkgbase = python-mbed-tools
 	depends = python-typing_extensions
 	depends = python-jinja
 	depends = python-pyserial
-	depends = python-prettytable
-	depends = python-intelhex
-	depends = python-future
 	provides = python-mbed-tools
-	source = python-mbed-tools-7.1.2.tar.gz::https://github.com/ARMmbed/mbed-tools/archive/7.1.2.tar.gz
-	sha256sums = 17e18585c06c20c456a89615075231108c190763db5367372495f4051d118192
+	source = python-mbed-tools-7.53.0.tar.gz::https://github.com/ARMmbed/mbed-tools/archive/7.53.0.tar.gz
+	sha256sums = 0c0d2f3c89a3b90638a3a8d5f8d94112e305ce00639053dba37ac2efc18ae64b
 
 pkgname = python-mbed-tools
-

@@ -1,12 +1,13 @@
 # Maintainer: Lorenzo Cappelletti <lorenzo.cappelletti gmail.com>
 
 pkgname=python-mbed-tools
-pkgver=7.1.2
+pkgver=7.53.0
 pkgrel=1
 pkgdesc='Future command line tool for Mbed OS'
 arch=('any')
 url="https://os.mbed.com"
 license=('Apache')
+# See src/mbed-tools-7.53.0/setup.py
 depends=(
   'cmake'
   'ninja'
@@ -23,13 +24,10 @@ depends=(
   'python-typing_extensions'
   'python-jinja'
   'python-pyserial'
-  'python-prettytable'
-  'python-intelhex'
-  'python-future'
 )
 makedepends=('python-setuptools')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ARMmbed/mbed-tools/archive/${pkgver}.tar.gz")
-sha256sums=('17e18585c06c20c456a89615075231108c190763db5367372495f4051d118192')
+sha256sums=('0c0d2f3c89a3b90638a3a8d5f8d94112e305ce00639053dba37ac2efc18ae64b')
 provides=('python-mbed-tools')
 
 _remove_windows() {
