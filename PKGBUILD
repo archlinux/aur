@@ -4,7 +4,7 @@
 
 yyyy=2021
 pkgname=easytax-bl-${yyyy}
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="Baselland tax declaration software, kanton basel-landschaft, 2021."
 arch=(any)
@@ -12,11 +12,11 @@ url="https://www.baselland.ch/politik-und-behorden/direktionen/finanz-und-kirche
 license=('custom')
 depends=("java-runtime>=8" "bash")
 source=(
-  "https://msg-easytax.ch/bl/2021/EasyTax2021BL_unix_1_0.tar.gz"
+  "https://msg-easytax.ch/bl/${yyyy}/EasyTax${yyyy}BL_unix_$(echo ${pkgver} | sed 's/\./_/').tar.gz"
   "$pkgname.desktop"
 )
 sha256sums=(
-  '4eaab0c3df239a5deb0ef16ccfc1363976b9bb7f77cd02b9618979b904fe9d90'
+  '2bb4f867686b01b7c3a6e907d09ccaa3960754ae227610bc7b5c27b41680f454'
   'e410770a5608677f0f2e1a5e0a423da34101efda2a3310e74ea8372c31ff26f5'
 )
 
