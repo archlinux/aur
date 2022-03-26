@@ -6,13 +6,11 @@ pkgbase = openbooks-bin
 	arch = aarch64
 	arch = x86_64
 	provides = openbooks
+	source = https://raw.githubusercontent.com/evan-buss/openbooks/master/README.md
+	sha256sums = e3f01a7b7210b404d75ab12101eea2dbaafdf859f51a89e98fe3a2ca957f4b99
 	source_aarch64 = openbooks::https://github.com/evan-buss/openbooks/releases/download/v4.3.0/openbooks_linux_arm
-	source_aarch64 = https://raw.githubusercontent.com/evan-buss/openbooks/master/README.md
 	sha256sums_aarch64 = ac617ed45fc644a66398747531f7840c68b825ac60ca326f9306193f937231c8
-	sha256sums_aarch64 = e3f01a7b7210b404d75ab12101eea2dbaafdf859f51a89e98fe3a2ca957f4b99
 	source_x86_64 = openbooks::https://github.com/evan-buss/openbooks/releases/download/v4.3.0/openbooks_linux
-	source_x86_64 = https://raw.githubusercontent.com/evan-buss/openbooks/master/README.md
-	sha256sums_x86_64 = ac617ed45fc644a66398747531f7840c68b825ac60ca326f9306193f937231c8
-	sha256sums_x86_64 = e3f01a7b7210b404d75ab12101eea2dbaafdf859f51a89e98fe3a2ca957f4b99
+	sha256sums_x86_64 = accc03c211dba75be461dc45713a5eb98bf3218371224398d388770dc1398644
 
 pkgname = openbooks-bin
