@@ -21,4 +21,3 @@ JAVA_SYS_PROPS="\
   -Dconfig.file=/etc/jitsi-videobridge-nightly/jvb.conf\
   -Djava.util.prefs.userRoot=/var/lib/jitsi-videobridge-nightly\
 "
-

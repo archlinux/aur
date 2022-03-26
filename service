@@ -3,6 +3,7 @@ Description=Jitsi-Meet Videobridge
 After=network-online.target
 
 [Service]
+Environment=PATH=/usr/lib/jvm/java-11-openjdk/bin:/bin:/usr/bin:/usr/local/bin
 EnvironmentFile=/etc/jitsi-videobridge-nightly/config
 User=jvb
 ExecStart=/usr/lib/jitsi-videobridge-nightly/jvb.sh ${JVB_OPTS}
