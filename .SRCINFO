@@ -1,6 +1,6 @@
 pkgbase = rofi-blocks-git
 	pkgdesc = rofi modi for controlling rofi content through communication with an external program
-	pkgver = r50.0f33024
+	pkgver = r78.50962f7
 	pkgrel = 1
 	url = https://github.com/OmarCastro/rofi-blocks
 	arch = any
@@ -9,8 +9,7 @@ pkgbase = rofi-blocks-git
 	makedepends = automake
 	depends = rofi
 	depends = json-glib
-	source = git://github.com/OmarCastro/rofi-blocks.git
+	source = git+https://github.com/OmarCastro/rofi-blocks
 	md5sums = SKIP
 
 pkgname = rofi-blocks-git
-
