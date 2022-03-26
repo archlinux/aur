@@ -17,8 +17,8 @@ options=('!strip')
 source=("${url}/releases/download/v${pkgver}/AppDir.tar"
         "${url}/releases/download/v${pkgver}/AppCache.tar"
         "https://raw.githubusercontent.com/santilococo/oni2/master/LICENSE.md")
-sha256sums=('7858a23451b92e4e881b0a2b2ec953dbd9d146fbbc44d7c5cf31b717d12d32b3'
-            '76bed45212235bb9f6c4a79d88684fdde3e2b70079ba06f9033113440155d322'
+sha256sums=('fbc8a7514abf272f2976dab349b65c5b9ab99715b51cd88e95e0c8c9e190d511'
+            '5664c11d7d8a0b216926144e9218bc5c3255a0f4934ae7eb58797ff2775db2cb'
             '32edcecd2c392702a06ee4490d839d8a6da786deb6ca0430f16655e071f0760a')
 
 package() {
