@@ -1,7 +1,7 @@
 # Maintainer: Silvio Knizek <killermoehre@gmx.net>
 _pkgname=xfconf
 pkgname="${_pkgname}-git"
-pkgver=4.13.5.r54.gd2b8a3e
+pkgver=4.16.0.r102.gb836868
 pkgrel=1
 pkgdesc="A simple client-server configuration storage and query system - git checkout"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ makedepends=('intltool' 'git' 'xfce4-dev-tools' 'perl-extutils-depends' 'perl-ex
 provides=("${_pkgname}=${pkgver}")
 conflicts=("$_pkgname" 'terminal')
 replaces=("$_pkgname" 'terminal')
-source=("git://git.xfce.org/xfce/$_pkgname")
+source=("git+https://gitlab.xfce.org/xfce/${_pkgname}.git")
 sha256sums=('SKIP')
 pkgver() {
     cd "$srcdir/$_pkgname"
