@@ -3,7 +3,7 @@
 
 pkgname=('armorpaint-git')
 _pkgname='armorpaint'
-pkgver=0.8.r2591.gf4080ede
+pkgver=0.9.r2900.gef390132
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="ArmorPaint is a software for 3D PBR texture painting"
@@ -35,11 +35,8 @@ prepare() {
 
 build() {
     cd "$srcdir/${_pkgname}"
-    node armorcore/make -g opengl
-    cd armorcore
-    node Kinc/make -g opengl --compiler clang --compile
-    cd Deployment
-    strip ArmorPaint
+    armorcore/Kinc/make --from armorcore -g opengl --compiler clang --compile
+    strip armorcore/Deployment/ArmorPaint
 }
 
 package() {
