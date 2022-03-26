@@ -1,6 +1,6 @@
 pkgbase = scangearmp2
 	pkgdesc = Canon ScanGear MP v2 scanner driver.
-	pkgver = 4.10
+	pkgver = 4.30
 	pkgrel = 1
 	url = https://www.canon.co.uk
 	arch = i686
@@ -10,10 +10,11 @@ pkgbase = scangearmp2
 	depends = gtk2
 	depends = libusb
 	provides = scangearmp2
-	source = http://gdlp01.c-wss.com/gds/4/0100010924/01/scangearmp2-source-4.10-1.tar.gz
+	source = https://gdlp01.c-wss.com/gds/2/0100011322/01/scangearmp2-source-4.30-1.tar.gz
 	source = scangearmp2.desktop
-	sha256sums = 3d208c5bf8bd04b9285f8857ed3272a3371de63df54c31a82cc04158a1b841a4
+	source = libusb.patch
+	sha256sums = ae337238379541d8f99f09bf24e82d291b8141e5a7758d46c0002a9becb828b8
 	sha256sums = d9b449d6c78c92f296acef85209b30c7d80b8bac692f135d071730ef0051d64b
+	sha256sums = ea64d40b4537a79a400a217a90b8fcdf9589e93df9710bb6a353bce54149879e
 
 pkgname = scangearmp2
-
