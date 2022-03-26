@@ -10,7 +10,7 @@
 
 pkgbase=gcc-git
 pkgname=({gcc,gcc-libs,gcc-fortran,gcc-objc,gcc-ada,gcc-go,gcc-d,libgccjit}-git)
-pkgver=12.0.1_r191818.g800b3191c75
+pkgver=12.0.1_r192241.g6459e653763
 _majorver=${pkgver%%.*}
 _islver=0.24
 pkgrel=1
@@ -95,6 +95,7 @@ build() {
       --enable-gnu-indirect-function \
       --enable-gnu-unique-object \
       --enable-linker-build-id \
+      --disable-bootstrap \
       --enable-lto \
       --enable-multilib \
       --enable-plugin \
