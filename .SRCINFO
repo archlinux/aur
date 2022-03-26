@@ -4,10 +4,14 @@ pkgbase = python-mbedtls
 	pkgrel = 1
 	url = https://pypi.org/project/python-mbedtls/
 	arch = any
-	license = Apache
-	makedepends = python-setuptools
-	makedepends = python-pip
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = mbedtls
+	depends = python
+	depends = python-certifi
+	depends = python-typing-extensions
 	source = https://files.pythonhosted.org/packages/source/p/python-mbedtls/python-mbedtls-1.7.0.tar.gz
 	sha256sums = ffa1a12ec799b6b17ea1c821b37dcbff52b17c225c3a9bb7cb4c6fbc0b6edeca
 
