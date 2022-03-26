@@ -22,3 +22,5 @@ JAVA_SYS_PROPS="\
   -Djava.util.prefs.userRoot=/var/lib/jitsi-videobridge-nightly\
 "
 
+# use java11
+JAVA_HOME=/usr/lib/jvm/java-11-openjdk
