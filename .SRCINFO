@@ -1,7 +1,7 @@
 pkgbase = minirc-ng-git
 	pkgdesc = Minimalistic init script (ng)
 	pkgver = 1.2.b1e8407
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/karabaja4/minirc-ng
 	arch = any
 	license = GPL2
