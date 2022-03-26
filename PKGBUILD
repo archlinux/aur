@@ -33,5 +33,6 @@ package() {
 	# copy built files
 	cp -p ${srcdir}/${_pkgname}/build/libs/${_pkgname}-${pkgver}.jar ${pkgdir}/opt/${_pkgname}/kotatsu-dl.jar
 	cp -p ${srcdir}/${_pkgname}/build/resources/main/icon_256.png ${pkgdir}/opt/${_pkgname}/${_pkgname}.png
+	cp -p ${srcdir}/${_pkgname}/${_pkgname}.sh ${pkgdir}/opt/${_pkgname}/${_pkgname}.sh
 	cp -p ${srcdir}/${_pkgname}/${_pkgname}.desktop ${pkgdir}/usr/share/applications/${_pkgname}.desktop
 }
