@@ -6,7 +6,7 @@
 _reponame=PiFmRds
 pkgname=pi-fm-rds-git
 _name=${pkgname%-git}
-pkgver=65.e4e246e
+pkgver=75.3f8ebae
 pkgrel=1
 arch=('armv6h' 'armv7h' 'aarch64')
 pkgdesc="FM-RDS transmitter using the Raspberry Pi's PWM"
@@ -20,22 +20,8 @@ makedepends=('git')
 provides=("${_name}")
 conflicts=("${_name}")
 url="https://github.com/ChristopheJacquet/${_reponame}"
-source=("${_reponame}::git://github.com/ChristopheJacquet/${_reponame}.git"
-        '0001-Add-compile-flags-for-aarch64.patch'
-        '0002-Prevent-undefined-reference-to-makedev.patch')
-sha256sums=('SKIP'
-            '4d5727b0657de420d12908203e8b44fdea1c1adfc3bde451266da29008440c3b'
-            'b21eea03a5bf79398f46fce0b4d4f5c67af0938446458fe324b1726f6e28db90')
-
-prepare() {
-  cd "$srcdir/$_reponame"
-
-  # apply patches; further descriptions can be found in patch files itself
-  for patch in "$srcdir/"*.patch; do
-    msg2 "Applying patch $patch"
-    patch -p1 -i "$patch"
-  done
-}
+source=("${_reponame}::git+https://github.com/ChristopheJacquet/${_reponame}.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_reponame"
