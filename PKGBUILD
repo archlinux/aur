@@ -4,7 +4,7 @@
 _pkgname=replay-sorcery
 pkgname=$_pkgname-git
 pkgver=r282.d8d5921
-pkgrel=2
+pkgrel=1
 pkgdesc='Open-source, instant-replay solution for Linux'
 url='https://github.com/matanui159/ReplaySorcery'
 arch=(x86_64 i686)
@@ -16,9 +16,11 @@ makedepends=(git cmake)
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+${url}.git"
-        'git+https://github.com/ianlancetaylor/libbacktrace.git')
+        'git+https://github.com/ianlancetaylor/libbacktrace.git'
+        '0000-include-avutil-ch-layout.patch')
 sha256sums=('SKIP'
-            'SKIP')
+            'SKIP'
+            '5404e7d26db1eb8e051844d65c2182f9dfac813243d093ea8e4c4ae97bc548da')
 
 pkgver() {
     cd "$_pkgname"
@@ -33,7 +35,7 @@ prepare() {
     git config submodule."dep/libbacktrace".url ../libbacktrace
     git submodule update
 
-    git apply ../../0000-include-avutil-ch-layout.patch
+    git apply ${srcdir}/0000-include-avutil-ch-layout.patch
 }
 
 build() {
