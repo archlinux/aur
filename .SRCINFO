@@ -1,0 +1,17 @@
+pkgbase = merlin-server-bin
+	pkgdesc = Merlin is a cross-platform post-exploitation Command & Control server and agent written in Go
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://github.com/Ne0nd0g/merlin
+	arch = x86_64
+	license = GPL3
+	makedepends = p7zip
+	makedepends = python
+	makedepends = python-sphinx
+	makedepends = python-pip
+	depends = glibc
+	conflicts = merlin-server-bin
+	source = https://github.com/Ne0nd0g/merlin/releases/download/v1.3.0/merlinServer-Linux-x64.7z
+	sha256sums = 0dfb581ed043749a0731d4be7decaabb24218b5aab27aebe0761976eef809b92
+
+pkgname = merlin-server-bin
