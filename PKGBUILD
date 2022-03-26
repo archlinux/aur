@@ -1,6 +1,6 @@
 pkgname=ntfs3-dkms-git
 pkgver=5.15.r9.g52e00ea
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="NTFS3 is fully functional NTFS Read-Write driver. The driver works with NTFS versions up to 3.1."
 arch=('any')
@@ -23,11 +23,11 @@ source=(
 
 sha256sums=(
     'fd4cf0e2dc160efecc55d4ea99667669b870599e4e81be435ec2201381b7e2ac'
-    '55db2894a265ec5ba50ea3edc05259f9260b5819a8fe65dbb4e0ab5aa58b3ee7'
+    '1c7c30b21878f15d5eacc2fda563d94fd7491f1681818b7ca7a377c588abf2f4'
     'b1674d6bb9b255a059efc4eae0846a426620a7a236dff19f4d0f85dfe2bbfd0d'
     'f176a508596d0021beae0af264f2ef92d46062c7b12e89e4f4e8104d91118d85'
     '69c315bbb37e831adacedaa5eff1b32571ef86a24dcdb2a312a015bf824f6569'
-    '62bdd84924a189b24912cf7a938c61fff6bd5aa314359e62bdd6efffc49b907b'
+    'e61b3876ad3b474229ee6707cb7664783cdd6888676dfc433b49a45682083d5a'
 )
 
 _ver="5.15"
