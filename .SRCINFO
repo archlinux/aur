@@ -1,6 +1,6 @@
 pkgbase = papilio-loader-git
 	pkgdesc = Bitstream loader for Papilio One FPGA board.
-	pkgver = 20170106
+	pkgver = 20180318
 	pkgrel = 1
 	url = https://github.com/GadgetFactory/Papilio-Loader
 	arch = i686
@@ -11,8 +11,7 @@ pkgbase = papilio-loader-git
 	makedepends = gcc
 	depends = libftdi-compat
 	options = !strip
-	source = git://github.com/GadgetFactory/Papilio-Loader.git
+	source = git+https://github.com/GadgetFactory/Papilio-Loader.git
 	md5sums = SKIP
 
 pkgname = papilio-loader-git
-
