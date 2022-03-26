@@ -11,7 +11,7 @@ provides=('pulsemeeter')
 makedepends=('git' 'python-setuptools')
 optdepends=('glade: customize interface' 'pulseaudio' 'pipewire-pulse')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=(3e65cb8e7942d7a21bc14a05072d41de)
+md5sums=(12453797344223ed23344bd9c02c9f74)
 
 pkgver(){
 	cd $pkgname-$pkgver

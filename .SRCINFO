@@ -22,6 +22,6 @@ pkgbase = pulsemeeter
 	optdepends = pipewire-pulse
 	provides = pulsemeeter
 	source = https://github.com/theRealCarneiro/pulsemeeter/archive/refs/tags/v1.2.14.tar.gz
-	md5sums = 3e65cb8e7942d7a21bc14a05072d41de
+	md5sums = 12453797344223ed23344bd9c02c9f74
 
 pkgname = pulsemeeter
