@@ -5,7 +5,7 @@
 pkgbase=snes9x-git
 _pkgbase=snes9x
 pkgname=(snes9x-git snes9x-gtk-git)
-pkgver=1.61.r6.g93d538df
+pkgver=1.61.r13.g78d006ff
 pkgrel=1
 pkgdesc="Port of the Snes9x emulator (git version)"
 arch=('x86_64')
@@ -14,6 +14,7 @@ license=('custom')
 makedepends=(alsa-lib cairo gdk-pixbuf2 git glib2
   gtk3 intltool libepoxy libpng libpulse libx11 libxext libxml2
   libxrandr libxv meson minizip nasm portaudio sdl2 zlib gtkmm3
+  cmake
 )
 source=(
   git+https://github.com/snes9xgit/snes9x.git
@@ -61,7 +62,6 @@ package_snes9x-git() {
     "${pkgdir}/usr/share/doc/${pkgname}/"
   install -vDm644  LICENSE -t \
     "${pkgdir}"/usr/share/licenses/"${pkgname}"
-
 }
 
 package_snes9x-gtk-git() {
@@ -81,5 +81,15 @@ package_snes9x-gtk-git() {
     "${pkgdir}/usr/share/doc/${pkgname}/"
   install -vDm644 LICENSE -t \
     "${pkgdir}/usr/share/licenses/${pkgname}"
+
+   # Remove glslang files
+   rm "${pkgdir}/usr/bin/glslangValidator"
+   rm "${pkgdir}/usr/lib/libHLSL.a"
+   rm "${pkgdir}/usr/lib/libOGLCompiler.a"
+   rm "${pkgdir}/usr/lib/libOSDependent.a"
+   rm "${pkgdir}/usr/lib/libSPIRV.a"
+   rm "${pkgdir}/usr/lib/libSPVRemapper.a"
+   rm "${pkgdir}/usr/lib/libglslang.a"
+
 
 }
