@@ -1,15 +1,15 @@
 # Maintainer: Peter Ivanov <ivanovp@gmail.com>
 
 pkgname=iserterm-git
-pkgver=20150802
-pkgrel=2
+pkgver=20201224
+pkgrel=1
 pkgdesc="Serial terminal for embedded software developers."
 arch=('i686' 'x86_64')
 url="http://github.com/ivanovp/iserterm"
 license=('GPL')
 depends=('qt5-base' 'qt5-serialport')
 makedepends=('make' 'git')
-_gitroot=git://github.com/ivanovp/iserterm.git
+_gitroot=git+https://github.com/ivanovp/iserterm.git
 _gitname=iserterm
 source=("$_gitname::$_gitroot" "iserterm.png" "iserterm.desktop")
 
