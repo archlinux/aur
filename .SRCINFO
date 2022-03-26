@@ -6,9 +6,8 @@ pkgbase = lightdm-web-greeter-theme-arch
 	url = https://github.com/guillaumeboehm/lightdm-web-greeter-theme-arch
 	arch = any
 	license = WTFPL
-	makedepends = git
 	depends = web-greeter
-	source = https://github.com/guillaumeboehm/lightdm-web-greeter-theme-arch/archive/v0.1.0.tar.gz
+	source = lightdm-web-greeter-theme-arch-0.1.0::https://github.com/guillaumeboehm/lightdm-web-greeter-theme-arch/archive/v0.1.0.tar.gz
 	sha256sums = 5f35d3dbf94338fdba1c44a9bf176458dd4f5fe75d5208198ae491611c69d1e3
 
 pkgname = lightdm-web-greeter-theme-arch
