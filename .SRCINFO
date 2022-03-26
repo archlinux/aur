@@ -11,3 +11,4 @@ pkgbase = python-colcon-zsh
 	sha256sums = 555c1b1653f9a97c1acb16fb350042b3cce5d692a13db9a6cbcc3b4de9b94beb
 
 pkgname = python-colcon-zsh
+

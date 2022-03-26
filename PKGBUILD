@@ -13,12 +13,10 @@ makedepends=('python-setuptools')
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
 sha256sums=('555c1b1653f9a97c1acb16fb350042b3cce5d692a13db9a6cbcc3b4de9b94beb')
 
-build() {
-    cd ${srcdir}/${_name}-${pkgver}
-    python -m build --wheel --no-isolation
-}
 
 package() {
     cd ${srcdir}/${_name}-${pkgver}
-    python -m installer --destdir="$pkgdir" dist/*.whl
+
+    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+    install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
