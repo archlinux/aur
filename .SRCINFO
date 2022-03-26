@@ -1,7 +1,7 @@
 pkgbase = gtk3-classic
 	pkgdesc = GTK3 patched to provide a more classic experience
-	pkgver = 3.24.31
-	pkgrel = 3
+	pkgver = 3.24.33
+	pkgrel = 1
 	url = https://github.com/lah7/gtk3-classic
 	install = gtk3.install
 	arch = x86_64
@@ -59,9 +59,9 @@ pkgbase = gtk3-classic
 	makedepends = lib32-libcups
 	makedepends = lib32-krb5
 	makedepends = lib32-e2fsprogs
-	provides = gtk3=3.24.31
-	provides = gtk3-typeahead=3.24.31
-	provides = gtk3-mushrooms=3.24.31
+	provides = gtk3=3.24.33
+	provides = gtk3-typeahead=3.24.33
+	provides = gtk3-mushrooms=3.24.33
 	provides = gtk3-print-backends
 	provides = libgtk-3.so
 	provides = libgdk-3.so
@@ -70,8 +70,8 @@ pkgbase = gtk3-classic
 	conflicts = gtk3-typeahead
 	conflicts = gtk3-print-backends
 	source = git+https://github.com/lah7/gtk3-classic.git#commit=221a3257c5d804520e3a26270ac2fc4673d39eb4
-	source = https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.31.tar.xz
-	source = gtk-query-immodules-3.0.hook::https://raw.githubusercontent.com/archlinux/svntogit-packages/e73aeb8db960eb45cc8d7b4858293b83d4887da4/trunk/gtk-query-immodules-3.0.hook
+	source = https://download.gnome.org/sources/gtk+/3.24/gtk+-3.24.33.tar.xz
+	source = gtk-query-immodules-3.0.hook::https://raw.githubusercontent.com/archlinux/svntogit-packages/194c90c257f7abf1094736dffd3d6152f8b0cb00/trunk/gtk-query-immodules-3.0.hook
 	source = settings.ini
 	sha256sums = SKIP
 	sha256sums = 423c3e7fdb4c459ee889e35fd4d71fd2623562541c1041b11c07e5ad1ff10bf9
@@ -130,6 +130,6 @@ pkgname = lib32-gtk3-classic
 	depends = lib32-libcups
 	depends = lib32-krb5
 	depends = lib32-e2fsprogs
-	depends = gtk3-classic>=3.24.31
-	provides = lib32-gtk3=3.24.31
+	depends = gtk3-classic>=3.24.33
+	provides = lib32-gtk3=3.24.33
 	conflicts = lib32-gtk3
