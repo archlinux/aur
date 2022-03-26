@@ -1,7 +1,7 @@
 pkgbase = iserterm-git
 	pkgdesc = Serial terminal for embedded software developers.
-	pkgver = 20150802
-	pkgrel = 2
+	pkgver = 20201224
+	pkgrel = 1
 	url = http://github.com/ivanovp/iserterm
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = iserterm-git
 	makedepends = git
 	depends = qt5-base
 	depends = qt5-serialport
-	source = iserterm::git://github.com/ivanovp/iserterm.git
+	source = iserterm::git+https://github.com/ivanovp/iserterm.git
 	source = iserterm.png
 	source = iserterm.desktop
 	md5sums = SKIP
@@ -18,4 +18,3 @@ pkgbase = iserterm-git
 	md5sums = 805214e0042a71e8adf00254d8804a27
 
 pkgname = iserterm-git
-
