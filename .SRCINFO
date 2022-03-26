@@ -1,0 +1,15 @@
+pkgbase = python-types-pyyaml
+	pkgdesc = Typing stubs for PyYAML
+	pkgver = 6.0.5
+	pkgrel = 1
+	url = https://pypi.org/project/python-types-pyyaml
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/types-PyYAML/types-PyYAML-6.0.5.tar.gz
+	sha256sums = 464e050914f3d1d83a8c038e1cf46da5cb96b7cd02eaa096bcaa03675edd8a2e
+
+pkgname = python-types-pyyaml
