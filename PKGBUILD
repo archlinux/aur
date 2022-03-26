@@ -5,8 +5,8 @@
 
 # Maintainer: Leo <i@setuid0.dev>
 pkgname=qbittorrent-enhanced-qt5
-pkgver=4.4.1.10
-pkgrel=2
+pkgver=4.4.2.10
+pkgrel=1
 epoch=
 pkgdesc="A bittorrent client powered by C++, Qt and the good libtorrent library (Enhanced Edition), Built against Qt5"
 arch=('x86_64')
