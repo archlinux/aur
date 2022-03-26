@@ -1,0 +1,14 @@
+pkgbase = kotatsu-dl-git
+	pkgdesc = Manga downloader with a simple gui
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/nv95/kotatsu-dl
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = java-environment>=11
+	noextract = kotatsu-dl.git
+	source = git+https://github.com/nv95/kotatsu-dl.git
+	sha256sums = SKIP
+
+pkgname = kotatsu-dl-git
