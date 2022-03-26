@@ -1,6 +1,6 @@
 pkgname=hawkey
-_pkgver=0.6.4
-_rpmrel=1
+_pkgver=0.5.9
+_rpmrel=3
 _pkgtag=$pkgname-$_pkgver-$_rpmrel
 pkgver=$_pkgver.$_rpmrel
 pkgrel=1
@@ -13,7 +13,7 @@ makedepends=('cmake' 'python' 'python-sphinx' 'rpm-org')
 checkdepends=('check' 'python-nose')
 optdepends=('python: for python bindings')
 source=("$url/archive/$_pkgtag.tar.gz")
-md5sums=('abc0179de2cb162c170c1fce17ed7f50')
+sha256sums=('b5122259a10d6ac53b6b547a1526e480b1918acb2e0f93a3ed45625a332cf009')
 
 prepare() {
 	mv "$pkgname-$_pkgtag" "$pkgname-$pkgver"
