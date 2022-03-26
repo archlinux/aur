@@ -15,7 +15,7 @@ makedepends=('git')
 optdepends=('systemd: udev implementation')
 conflicts=('systemd-sysvcompat' 'sysvinit')
 backup=('etc/minirc.json' 'etc/minirc.local' 'etc/minirc.local.shutdown')
-source=("https://github.com/karabaja4/${_gitname}.git")
+source=("git+${url}.git")
 md5sums=('SKIP')
 
 prepare() {
