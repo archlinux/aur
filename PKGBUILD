@@ -56,7 +56,7 @@ package_icalingua++-electron-git(){
     conflicts+=("icalingua-electron")
     provides+=("icalingua-electron")
     depends+=("${_electron}")
-    pkgdesc='A Linux client for QQ and more(fork to continue upgrading) with system electron'
+    pkgdesc+=' with system electron'
     case ${CARCH} in
         "x86_64")
             _arch="-";;
