@@ -2,7 +2,7 @@
 # Maintainer: Campbell Jones <dev at serebit dot com>
 
 pkgname=budgie-desktop-git
-pkgver=10.6.r1.g6c759b42
+pkgver=10.6.r13.g5b3d49fb
 pkgrel=1
 pkgdesc="A feature-rich, modern desktop - latest git"
 arch=('x86_64')
