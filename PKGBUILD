@@ -3,7 +3,7 @@
 
 pkgname=protobuf-java
 _xpkgname=protobuf
-pkgver=3.19.3
+pkgver=3.19.4
 pkgrel=1
 pkgdesc="Google's data interchange format utility (Java API)."
 url="https://github.com/google/protobuf"
@@ -12,9 +12,8 @@ arch=('any')
 depends=("java-environment")
 makedepends=('java-environment' 'maven' "${_xpkgname}>=${pkgver}")
 source=(https://github.com/google/protobuf/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz protobuf-java.patch)
-md5sums=('0d93172db40ba955c657837ccf8b56ff'
+md5sums=('fa19869fdf05cbd594b19777c5e61840'
          'e11f35927e78878e8b9354362591402f')
-
 build() {
   cd $srcdir/$_xpkgname-$pkgver
   patch -p1 < ../protobuf-java.patch
