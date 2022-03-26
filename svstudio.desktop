@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=svstudio
+Comment=a high-quality singing synthesis software
+Exec=svstudio %f
+Terminal=false
+Type=Application
+Icon=svstudio
+MimeType=application/tup;
+Categories=AudioVideo;Audio;AudioVideoEditing;
+Name[zh_CN.utf8]=svstudio.desktop

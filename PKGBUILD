@@ -1,7 +1,7 @@
 # Maintainer: Sukanka<su975853527 AT gmail.com>
 pkgname=svstudio-bin
 _pkgname=svstudio
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Synthesizer V Studio, a high-quality singing synthesis software."
 url="https://dreamtonics.com"
@@ -10,12 +10,15 @@ license=('custom')
 depends=('libcurl-gnutls' 'webkit2gtk')
 provides=("svstudio")
 source=(
-    "${_pkgname}-${pkgver}.zip::http://synthv-1252644241.file.myqcloud.com/svstudio/${pkgver}/svstudio-basic-linux64-${pkgver}.zip"
+    "${_pkgname}-${pkgver}.zip::https://resource.dreamtonics.com/download/Synthesizer%20V%20Studio%20Basic/${pkgver}/svstudio-basic-linux64.zip"
     'svstudio.svg'
+    'svstudio.desktop'
 )
-sha512sums=('d39e60fe407a7c3a7977b01bf7ae4d64d48316f6075dceecaecbf6a351f46ab960f95cfed30975db0ea1138b292fb5f7850725c3723c96d288b1ad861c6a09de'
-            'ee2fbe1a3d4c63f2fed31368396c4b3315fbe01368341ce73d7d4c1cb5e0fe3d9f529083ce45890a860624debc57543e2a873940c4fa14135f4e5f013d88cde2')
+sha512sums=('defbb5d0f5a53c33b83ff34c4741d0345b2e207bbf0dcc27845e3c22e49f977dd4e5c5563a5820f12da20b21aed8acaeacfea468708ead3dc508b2e0be004f65'
+            'ee2fbe1a3d4c63f2fed31368396c4b3315fbe01368341ce73d7d4c1cb5e0fe3d9f529083ce45890a860624debc57543e2a873940c4fa14135f4e5f013d88cde2'
+            'bf95cea8be7def9c9e108b584efa247baec68eacc9afc1192fa4ff6368290d570ff958f9fbd1997d33df6c33c4d4dbaea673c36c6156e9a353a70991edc327f9')
 install=svstudio-bin.install
+
 package(){
     cd "${srcdir}"
     
@@ -35,18 +38,9 @@ package(){
     
     rm -rf license 
     
-    echo  '''[Desktop Entry]
-Name=svstudio
-Comment=a high-quality singing synthesis software
-Exec=svstudio %f
-Terminal=false
-Type=Application
-Icon=/usr/share/icon/hicolor/scalable/apps/svstudio.svg
-MimeType=application/tup;
-Categories=AudioVideo;Audio;AudioVideoEditing;
-Name[zh_CN.utf8]=svstudio.desktop
-''' > svstudio.desktop
+    
 
-    install -D svstudio.desktop  ${pkgdir}/usr/share/applications/svstudio.desktop
-    install -D ${srcdir}/svstudio.svg   ${pkgdir}/usr/share/icon/hicolor/scalable/apps/svstudio.svg
+    install -D ${srcdir}/svstudio.desktop  ${pkgdir}/usr/share/applications/svstudio.desktop
+    install -D ${srcdir}/svstudio.svg   ${pkgdir}/usr/share/icons/hicolor/scalable/apps/svstudio.svg
+    
 }
