@@ -1,0 +1,16 @@
+pkgbase = python-valinvest
+	pkgdesc = A value investing tool based on Warren Buffett, etc
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://pypi.org/project/python-valinvest
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-certifi
+	source = https://files.pythonhosted.org/packages/source/v/valinvest/valinvest-0.0.2.tar.gz
+	sha256sums = 9614aaf8019e015c20ea48867ede8a6ea10e1c6410e787314066d7b2e5aeb7dc
+
+pkgname = python-valinvest
