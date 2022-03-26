@@ -1,25 +1,48 @@
 # Maintainer: Sergey Borodulya <sevrykov.sergey@gmail.com>
-pkgname="figma-linux-font-helper"
-pkgver="0.1.5"
-pkgrel="1"
-pkgdesc="Font Helper for Figma for Linux OS."
-arch=("x86_64")
-url="https://github.com/Figma-Linux/figma-linux-font-helper"
+# Maintainer: mochaaP <aur@mochaa.ws>
+
+_pkgname="figma-fonthelper"
+pkgname="${_pkgname}-git"
+pkgver=0.1.5+4+g658b7f5
+pkgrel=1
+pkgdesc="Figma font daemon written in Rust."
+arch=($CARCH)
+url="https://github.com/traidento/${_pkgname}"
 license=('GPL2')
-source=("https://github.com/Figma-Linux/${pkgname}/releases/download/v${pkgver}/fonthelper.tar.xz")
-sha256sums=("1e979b44c350b3428aa3b960026b73b350a36ab1c86237e2a74b256f8465c23e")
-package() {
-  cat > "${srcdir}"/fonthelper.conf << EOF
-{
-  "port": "18412",
-  "directories": [
-    "/usr/share/fonts",
-    "$HOME/.local/share/fonts"
-  ]
+depends=("freetype2")
+makedepends=("cargo" "git")
+source=(
+  "git+${url}.git"
+)
+sha256sums=('SKIP')
+
+
+pkgver() {
+  cd ${_pkgname}
+  printf $(git describe --always | sed 's/^v//;s/-/+/g')
 }
-EOF
-  install -D "${srcdir}"/fonthelper "${pkgdir}"/opt/FontHelper/fonthelper
-  install -D "${srcdir}"/libfreetype.so.6 "${pkgdir}"/opt/FontHelper/libfreetype.so.6
-  install -D "${srcdir}"/fonthelper.conf "${pkgdir}"/etc/figma-linux/fonthelper
-  install -Dm644 "${srcdir}"/fonthelper.service "${pkgdir}"/usr/lib/systemd/system/fonthelper.service
+
+prepare() {
+  cd ${_pkgname}
+  cargo update
+  cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
+}
+
+build() {
+  cd ${_pkgname}
+  export RUSTUP_TOOLCHAIN=stable
+  export CARGO_TARGET_DIR=target
+  cargo build --release --all-features
+}
+
+check() {
+  cd ${_pkgname}
+  export RUSTUP_TOOLCHAIN=stable
+  cargo test --all-features
+}
+
+package() {
+  cd ${_pkgname}
+  install -Dt "${pkgdir}/usr/bin" target/release/${_pkgname}
+  install -Dt "${pkgdir}/usr/share/doc/${_pkgname}" -m644 README.md
 }
