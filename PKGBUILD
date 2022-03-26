@@ -2,7 +2,7 @@
 
 pkgname=qbittorrent-enhanced-qt5-git
 pkgver=4.4.2.10.r0.gdb18496c9
-pkgrel=2
+pkgrel=3
 pkgdesc='Bittorrent client using Qt5 and libtorrent-rasterbar, Enhanced Edition mod'
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
 url='https://github.com/c0re100/qBittorrent-Enhanced-Edition'
@@ -47,6 +47,17 @@ pkgver() {
 }
 
 prepare() {
+  printf 'Checking if ccache is enabled for makepkg... '
+
+  if check_buildoption "ccache" "y"; then
+    printf 'yes\n'
+    printf 'Enabling C++ ccache for CMake...\n'
+    export CMAKE_CXX_COMPILER_LAUNCHER=ccache
+  else
+    printf 'no\n'
+  fi
+
+  printf 'Configuring build with CMake...\n\n'
   cmake -S "${_srcrepodir}" -B build \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DQT6=OFF \
@@ -55,10 +66,12 @@ prepare() {
 }
 
 build() {
+  printf 'Building with CMake...\n\n'
   cmake --build build
 }
 
 package() {
+  printf 'Installing with CMake...\n\n'
   DESTDIR="${pkgdir}" cmake --install build
   install -Dm644 "${_srcrepodir}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
