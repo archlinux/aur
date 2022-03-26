@@ -2,7 +2,7 @@
 
 _gemname=one_gadget
 pkgname=$_gemname
-pkgver=1.8.0
+pkgver=1.8.1
 pkgrel=1
 pkgdesc="The best tool for finding one gadget RCE in libc.so.6"
 arch=(any)
@@ -13,7 +13,7 @@ makedepends=(ruby-rdoc)
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('51ce800f119205714afc8afb46ecd177a6506f4ca7ef90cc9dc697801d6b19cb')
+sha256sums=('2cc7748c76124abd3ea245813431de8c9ccee06acdc7bb16e70fc594a1ac9a37')
 
 package() {
   local _gemdir="$(ruby -rrubygems -e'puts Gem.default_dir')"

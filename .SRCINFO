@@ -1,6 +1,6 @@
 pkgbase = one_gadget
 	pkgdesc = The best tool for finding one gadget RCE in libc.so.6
-	pkgver = 1.8.0
+	pkgver = 1.8.1
 	pkgrel = 1
 	url = https://github.com/david942j/one_gadget
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = one_gadget
 	makedepends = ruby-rdoc
 	depends = ruby
 	depends = ruby-elftools
-	noextract = one_gadget-1.8.0.gem
+	noextract = one_gadget-1.8.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/one_gadget-1.8.0.gem
-	sha256sums = 51ce800f119205714afc8afb46ecd177a6506f4ca7ef90cc9dc697801d6b19cb
+	source = https://rubygems.org/downloads/one_gadget-1.8.1.gem
+	sha256sums = 2cc7748c76124abd3ea245813431de8c9ccee06acdc7bb16e70fc594a1ac9a37
 
 pkgname = one_gadget
