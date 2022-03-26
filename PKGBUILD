@@ -2,7 +2,7 @@
 
 _pkgname=fluffychat
 pkgname=fluffychat-web
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('any')
@@ -22,7 +22,7 @@ conflicts=("$pkgname")
 source=(
     "fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz"
 )
-sha256sums=('c1ef22f69aaaea09e8d0637d9cd854cd76b38840e823485783651b9b5f4ce991')
+sha256sums=('a9953aefe056ce999629d44d97fc6287f5cc852b7a60d1a246f3f34e88b46edc')
 backup=(
     "etc/webapps/${_pkgname}/config.json"
 )
