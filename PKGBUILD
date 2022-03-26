@@ -1,6 +1,6 @@
 pkgname=ntfs3-dkms-git
 pkgver=5.15.r9.g52e00ea
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="NTFS3 is fully functional NTFS Read-Write driver. The driver works with NTFS versions up to 3.1."
 arch=('any')
@@ -32,35 +32,31 @@ sha256sums=(
 )
 
 _ver="5.15"
-_branch="master"
-_base="8bb7eca972ad531c9b149c0a51ab43a417385813"
+_since="1635713590"
 
 # The whole kernel history is very huge, so downloading it is a pain.
 # Also commits count is insane and we don't want to see all that in pkgver.
 # Here is a tricky workaround.
-# Use the latest merge point and request info via GitHub API.
+# Make a shallow clone since the specified timestamp.
 
 pkgver() {
     cd "${srcdir}/repo"
-
-    local rev=$(curl -sS "https://api.github.com/repos/${_repo}/compare/${_base}...${_branch}" | perl -ne'/"total_commits":\s?(\d+),?/ && print $1')
-    test "${rev}"
-
+    local rev=$(git rev-list --count HEAD)
     local sha=$(git rev-parse HEAD)
-    echo "${_ver}.r${rev}.g${sha:0:7}"
+    echo "${_ver}.r$((rev - 1)).g${sha:0:7}"
 }
 
 prepare() {
     cd "${srcdir}"
 
     if [ ! -d "repo" ]; then
-        git clone --depth=1 --filter=tree:0 --sparse --no-checkout --single-branch -b "${_branch}" "${url}" "repo"
+        git clone --shallow-since="${_since}" --filter=tree:0 --no-checkout --single-branch "${url}" "repo"
     fi
 
     cd "repo"
-    git fetch -f --depth=1 --filter=tree:0
+    git fetch -f
     git sparse-checkout set "/fs/ntfs3"
-    git reset --hard "origin/${_branch}"
+    git reset --hard FETCH_HEAD
 
     cd "fs/ntfs3"
     patch -p0 -N -i "${srcdir}/Makefile.patch"
