@@ -1,15 +1,15 @@
 # Maintainer: copygirl <copygirl@mcft.net>
 _pkgname=vsmodelcreator
 pkgname=$_pkgname-git
-pkgver=r225.75c385c
-pkgrel=2
+pkgver=r322.d2eb492
+pkgrel=1
 pkgdesc="Vintage Story Model Creator"
 arch=("any")
 url="https://github.com/anegostudios/vsmodelcreator"
 license=("Apache")
 depends=("java-runtime>=8")
 makedepends=("git" "java-environment>=8")
-source=("git://github.com/anegostudios/vsmodelcreator.git"
+source=("git+https://github.com/anegostudios/vsmodelcreator.git"
         "vsmodelcreator.desktop"
         "vsmodelcreator.sh")
 md5sums=("SKIP"
