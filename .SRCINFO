@@ -1,7 +1,7 @@
 pkgbase = wargus-git
 	pkgdesc = Warcraft2 Mod that allows you to play Warcraft2 with the Stratagus engine (dev version)
-	pkgver = 3.2.1.r2703.4baf466c_20211226
-	pkgrel = 1
+	pkgver = 3.2.1.r2766.f36c6a3d_20220326
+	pkgrel = 2
 	url = https://github.com/Wargus/wargus
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = wargus-git
 	optdepends = fluidsynth: midi music support
 	optdepends = soundfont-fluid: sound font for midi music support
 	conflicts = wargus
-	source = wargus-git::git://github.com/Wargus/wargus.git
+	source = wargus-git::git+https://github.com/Wargus/wargus.git
 	md5sums = SKIP
 
 pkgname = wargus-git

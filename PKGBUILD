@@ -2,8 +2,8 @@
 # Contributor: Thaodan <theodorstormgrade@gmail.com>
  
 pkgname=wargus-git
-pkgver=3.2.1.r2703.4baf466c_20211226
-pkgrel=1
+pkgver=3.2.1.r2766.f36c6a3d_20220326
+pkgrel=2
 pkgdesc="Warcraft2 Mod that allows you to play Warcraft2 with the Stratagus engine (dev version)"
 arch=("i686" "x86_64")
 url="https://github.com/Wargus/wargus"
@@ -26,7 +26,7 @@ optdepends=(
 	'soundfont-fluid: sound font for midi music support'
 )
 conflicts=('wargus')
-source=("${pkgname}::git://github.com/Wargus/wargus.git")
+source=("${pkgname}::git+https://github.com/Wargus/wargus.git")
 md5sums=('SKIP')
 
 pkgver() {
