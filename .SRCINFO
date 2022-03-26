@@ -15,7 +15,7 @@ pkgbase = minirc-ng-git
 	backup = etc/minirc.json
 	backup = etc/minirc.local
 	backup = etc/minirc.local.shutdown
-	source = https://github.com/karabaja4/minirc-ng.git
+	source = git+https://github.com/karabaja4/minirc-ng.git
 	md5sums = SKIP
 
 pkgname = minirc-ng-git
