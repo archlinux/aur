@@ -15,9 +15,9 @@ source_aarch64=("$pkgname-v$pkgver.tar.gz::https://github.com/lucassabreu/clocki
 source_i686=("$pkgname-v$pkgver.tar.gz::https://github.com/lucassabreu/clockify-cli/releases/download/v$pkgver/clockify-cli_${pkgver}_Linux_i386.tar.gz")
 source_x86_64=("$pkgname-v$pkgver.tar.gz::https://github.com/lucassabreu/clockify-cli/releases/download/v$pkgver/clockify-cli_${pkgver}_Linux_x86_64.tar.gz")
 
-sha256sums_aarch64=('213381cd03c3df8ca51b37b16b2fcc13fbb51d3a7e9d75f799c0ccac60744ce0  ')
-sha256sums_i686=('958c533cfcdb517fd5395b10d2a8a0ae41e53ceab1d94229447e3eeba75a292b  ')
-sha256sums_x86_64=('0029c47451e24699494d9b67b427cb3cf79588cac1d228827f41ee4101c74a1b  ')
+sha256sums_aarch64=('213381cd03c3df8ca51b37b16b2fcc13fbb51d3a7e9d75f799c0ccac60744ce0')
+sha256sums_i686=('958c533cfcdb517fd5395b10d2a8a0ae41e53ceab1d94229447e3eeba75a292b')
+sha256sums_x86_64=('0029c47451e24699494d9b67b427cb3cf79588cac1d228827f41ee4101c74a1b')
 
 package() {
   install -Dm755 -t "${pkgdir}/usr/bin" \
