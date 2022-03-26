@@ -1,7 +1,7 @@
 # Maintainer: Léopold Ibghy Koprivnik <skwal.net@gmail.com>
 pkgbase=mini-matrix-git
 pkgname=mini-matrix-git
-pkgver=r18.6b81076
+pkgver=r28.21d3eda
 pkgrel=1
 pkgdesc="Displays a matrix of random characters"
 arch=("any")
