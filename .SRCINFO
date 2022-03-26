@@ -1,7 +1,7 @@
 pkgbase = war1gus-git
 	pkgdesc = Warcraft1 Mod that allows you to play Warcraft1 with the Stratagus engine (dev version)
 	pkgver = 3.2.1.r873.7fa311f_20211226
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Wargus/war1gus
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = war1gus-git
 	optdepends = fluidsynth: midi music support
 	optdepends = soundfont-fluid: sound font for midi music support
 	conflicts = war1gus
-	source = war1gus-git::git://github.com/Wargus/war1gus.git
+	source = war1gus-git::git+https://github.com/Wargus/war1gus.git
 	md5sums = SKIP
 
 pkgname = war1gus-git
