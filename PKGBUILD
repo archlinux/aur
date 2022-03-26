@@ -1,48 +1,26 @@
-# Maintainer: Andrew Steinke <rkcf@rkcf.me>
+# Contributor: Andrew Steinke <rkcf@rkcf.me>
 # Contributor: mdraw.gh at gmail dot com
-
-pkgbase=python-better-exceptions
-_pkgbase='better-exceptions'
-pkgname=(python-better-exceptions python2-better-exceptions)
-pkgver=0.2.2
-pkgrel=3
-pkgdesc="Pretty and useful exceptions in Python, automatically"
-arch=('any')
-url='https://github.com/Qix-/better-exceptions'
-license=('MIT')
-depends=('python' 'python2')
-makedepends=('python-setuptools' 'python2-setuptools')
-source=("$url/archive/$pkgver.tar.gz")
-md5sums=('40e33eb6a58c219e3425ea7c6a8f4811')
-
-prepare() {
-  cp -rup "$_pkgbase-$pkgver" "${_pkgbase}2-$pkgver"
-}
+_base=better-exceptions
+pkgname=python-${_base}
+pkgver=0.3.3
+pkgrel=1
+pkgdesc="Pretty and helpful exceptions, automatically"
+arch=(any)
+url="https://github.com/Qix-/${_base}"
+license=(MIT)
+depends=(python)
+makedepends=(python-setuptools)
+source=(${url}/archive/${pkgver}.tar.gz)
+sha512sums=('720cb657a45d5278014720a7aa309a4ee0b6dd014e6058667c09c41a5a69f319993cdb28043ab7b621008267a76fad71d36cc934eee027748db7bf8537659e66')
 
 build() {
-  cd "$srcdir/$_pkgbase-$pkgver"
+  cd ${_base}-${pkgver}
+  export PYTHONHASHSEED=0
   python setup.py build
-
-  cd "$srcdir/$_pkgbase-$pkgver"
-  python2 setup.py build
 }
 
-package_python-better-exceptions() {
-  depends=('python')
-  conflicts=('python-better-exceptions-git')
-
-  cd "$srcdir/$_pkgbase-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+package() {
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
-
-package_python2-better-exceptions() {
-  depends=('python2')
-  conflicts=('python2-better-exceptions-git')
-
-  cd "$srcdir/$_pkgbase-$pkgver"
-  python2 setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-# vim:set ts=2 sw=2 et:
