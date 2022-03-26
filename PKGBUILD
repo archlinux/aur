@@ -1,7 +1,7 @@
 # Maintainer: David Lasek <mail at davidlasek dot eu>
 pkgname=rofi-blocks-git
 _gitroot='rofi-blocks'
-pkgver=r50.0f33024
+pkgver=r78.50962f7
 pkgrel=1
 pkgdesc="rofi modi for controlling rofi content through communication with an external program"
 arch=("any")
@@ -10,7 +10,7 @@ license=('GPL')
 depends=(rofi json-glib)
 makedepends=(git automake)
 optdepends=()
-source=("git://github.com/OmarCastro/${_gitroot}.git")
+source=("git+https://github.com/OmarCastro/${_gitroot}")
 md5sums=('SKIP')
 
 pkgver() {
