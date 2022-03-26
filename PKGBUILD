@@ -1,39 +1,49 @@
-# Maintainer: KspLite <ksplite@outlook.com>
+# Maintainer: solopasha <daron439 at gmail dot com>
+# Contributor: KspLite <ksplite@outlook.com>
 pkgname=64gram-desktop
 _pkgname=64Gram
-pkgver=3.0.1.1
+pkgver=1.0.28
 pkgrel=1
+epoch=1
 pkgdesc='Unofficial desktop version of Telegram messaging app'
 arch=('x86_64')
 url="https://github.com/TDesktop-x64/tdesktop"
 license=('GPL3')
-depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal'
-         'qt5-imageformats' 'qt5-svg' 'xxhash' 'libdbusmenu-qt5' 'kwayland' 'glibmm'
-         'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'libtg_owt')
-makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl'
-             'extra-cmake-modules' 'gtk3' 'webkit2gtk')
-optdepends=('gtk3: GTK environment integration'
-            'webkit2gtk: embedded browser features'
-            'ttf-opensans: default Open Sans font family'
+depends=('hunspell' 'ffmpeg' 'hicolor-icon-theme' 'lz4' 'minizip' 'openal' 'ttf-opensans'
+         'qt6-imageformats' 'qt6-svg' 'qt6-wayland' 'qt6-5compat' 'xxhash' 'glibmm'
+         'rnnoise' 'pipewire' 'libxtst' 'libxrandr' 'jemalloc' 'abseil-cpp' 'libdispatch')
+makedepends=('cmake' 'git' 'ninja' 'python' 'range-v3' 'tl-expected' 'microsoft-gsl' 'meson'
+             'extra-cmake-modules' 'wayland-protocols' 'plasma-wayland-protocols' 'libtg_owt')
+optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
-provides=("64gram-desktop")
+source=("https://github.com/TDesktop-x64/tdesktop/releases/download/v${pkgver}/${_pkgname}-${pkgver}-full.tar.gz"
+        "block-sponsored_messages.patch"
+        "telegram-desktop-ffmpeg5.patch")
+sha512sums=('fcbc27533cbd7536d430c764f12eed0a344d1f8195eb566e39d30393b088f0920b1686b4896b366ac32c99b9ce4fc71a0d1e421e2121f0e41a1a10ab9a44a1a0'
+            'c662524ca4f4a8df021ee94696d84896ed9a271df321933942806dda4544ea25f51a650ec8b4fc72f9a2219ea54cbfaf37b9604124f7263c86f74f1d647587ae'
+            'd1cc737c8612eea780244dbb1a4da1db6cbbaec0d773f3350bae1a262944e1bd10ebcb42e0addaeee34abff229b9e5d70de6ffe1dfe74512d6c93bff7f6e911d')
 conflicts=("telegram-desktop" "tdesktop-x64")
 replaces=("tdesktop-x64")
-source=("https://github.com/TDesktop-x64/tdesktop/releases/download/v${pkgver}/${_pkgname}-${pkgver}-full.tar.gz")
-sha512sums=('a373e543b0b2dcb932d896f6dffca99dbf397d4065b38a2921816fd3f1f55a319b2c36198dfae71a661f2c2cccee93c7bcc1a53d6a955664401bb6ecad19ca98')
+prepare() {
+    cd $_pkgname-$pkgver-full
+    sed -i '/option(DESKTOP_APP_DISABLE_AUTOUPDATE/s/^# //' cmake/variables.cmake
+    patch -Np1 --binary -i  ../telegram-desktop-ffmpeg5.patch
+    patch -Np1 --binary -i  ../block-sponsored_messages.patch
+}
 
 build() {
     cd $_pkgname-$pkgver-full
-
+    # Fix https://bugs.archlinux.org/task/73220
+    export CXXFLAGS+=" -Wp,-U_GLIBCXX_ASSERTIONS"
     # Official API ID&Hash by default
     cmake . \
         -B build \
         -G Ninja \
         -DCMAKE_INSTALL_PREFIX="/usr" \
         -DCMAKE_BUILD_TYPE=Release \
-        -DTDESKTOP_API_ID=611335 \
-        -DTDESKTOP_API_HASH=d524b414d21f4d37f08684c1df41ac9c \
-        -DDESKTOP_APP_DISABLE_AUTOUPDATE=ON
+        -DDESKTOP_APP_DISABLE_AUTOUPDATE=ON \
+        -DTDESKTOP_API_TEST=ON
+    sed -i '/LINK_LIBRARIES/s/$/ \/usr\/lib\/liblzma.so/' build/build.ninja
     ninja -C build
 }
 

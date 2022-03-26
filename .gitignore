@@ -2,3 +2,4 @@
 64gram-desktop-*.pkg.tar.zst
 src/
 pkg/
+*.log
