@@ -1,6 +1,6 @@
 pkgbase = python-grpcio-tools
 	pkgdesc = Python protobuf generator for GRPC
-	pkgver = 1.44.0
+	pkgver = 1.45.0
 	pkgrel = 1
 	url = https://grpc.io/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = python-grpcio-tools
 	depends = python
 	depends = python-grpcio
 	depends = python-protobuf
-	source = https://files.pythonhosted.org/packages/source/g/grpcio-tools/grpcio-tools-1.44.0.tar.gz
-	sha512sums = 58684539eea42a95fe1c1e5a37fa1ba4fed3149e937464505403645e520d049e500c3108916b41b88176572885c9c78a72d003f241f35e98988c5f405a73d124
+	source = https://files.pythonhosted.org/packages/source/g/grpcio-tools/grpcio-tools-1.45.0.tar.gz
+	sha512sums = 49d70a4feadce41c71094c0ee30b91d70a97d95b64e3be59b19a7ab616be18888e6e06e1487068ffaf26f1289c636f21c442a8ff25e2f66887300fac4178110a
 
 pkgname = python-grpcio-tools
