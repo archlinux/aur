@@ -2,19 +2,18 @@
 
 _pkgname=avogadrolibs
 pkgname="${_pkgname}-git"
-pkgver=1.93.0.r1935.926573b1
-pkgrel=2
+pkgver=1.95.1.r2510.eb54b42c
+pkgrel=1
 pkgdesc="Avogadro 2: libraries"
 url="http://openchemistry.org/projects/avogadro2"
 arch=("x86_64")
 license=("Kitware")
-depends=("libarchive" "glew" "hdf5" "vtk" "libmsym" "spglib" "libmmtf" "qt5-webview" "qt5-x11extras" "molequeue" "pybind11" "python-cclib")
-# gdal is for proj, which is optional for VTK but required here? same for openmpi
-# `msgpack-c` is a workaround for the broken libmmtf PKGBUILD
-makedepends=("git" "cmake" "eigen" "gtest" "gdal" "openmpi" "msgpack-c")
-conflicts=("${_pkgname}")
-provides=("${_pkgname}")
-source=("git://github.com/OpenChemistry/${_pkgname}.git")
+depends=("libarchive" "glew" "hdf5" "libmsym" "spglib" "libmmtf" "qt5-webview" "qt5-x11extras" "molequeue" "pybind11" "python-cclib")
+makedepends=("git" "cmake" "eigen")
+checkdepends=("gtest")
+conflicts=("${_pkgname}" avogadro-crystals avogadro-molecules)
+provides=("${_pkgname}" avogadro-crystals avogadro-molecules)
+source=("git+https://github.com/OpenChemistry/${_pkgname}.git")
 sha256sums=("SKIP")
 
 pkgver() {
@@ -35,7 +34,7 @@ build() {
       -DBUILD_SHARED_LIBS=ON \
       -DENABLE_TESTING=ON \
       -DUSE_HDF5=ON \
-      -DUSE_VTK=ON \
+      -DUSE_VTK=OFF \
       -DUSE_MMTF=ON \
       -DUSE_PYTHON=ON \
       -DPYTHON_EXECUTABLE=/usr/bin/python \
