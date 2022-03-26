@@ -4,7 +4,7 @@
 
 yyyy=2021
 pkgname=easytax-ag-${yyyy}
-pkgver=1.0
+pkgver=1.2
 pkgrel=1
 pkgdesc="Aargau tax declaration software."
 arch=(any)
@@ -12,11 +12,11 @@ url="https://www.ag.ch/de/dfr/steuern/natuerliche_personen/steuererklaerung__eas
 license=('custom')
 depends=("java-runtime>=8" "bash")
 source=(
-  "https://msg-easytax.ch/ag/${yyyy}/EasyTax${yyyy}AG_unix_1_0.tar.gz"
+  "https://msg-easytax.ch/ag/${yyyy}/EasyTax${yyyy}AG_unix_$(echo ${pkgver} | sed 's/\./_/').tar.gz"
   "$pkgname.desktop"
 )
 sha256sums=(
-  '531c03131b5a9ecf500fee3fbbf03e215d5ac02db6e5bcae72016838d09f17d8'
+  'bc191f913f74f6649007688791b714957faade8c97bbcc31b6075ddeb54ed7f9'
   '59e9781415d7e6cd07b249002fd8737c545f5bdbc764fa228e1a0cfc9a56d0f4'
 )
 
