@@ -5,7 +5,7 @@
 
 pkgname=seahub
 pkgver=9.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='The web frontend for seafile server'
 arch=('any')
 url='https://github.com/haiwen/seahub'
@@ -43,16 +43,19 @@ optdepends=(
 )
 # Outdated Python modules, but required by Seahub
 _thirdpart=(
+    'django-3.2.12'
     'django-webpack-loader-0.7.0'
 )
 source=(
     "$pkgname-$pkgver-server.tar.gz::$url/archive/v$pkgver-server.tar.gz"
-    "${_thirdpart[0],,}.tar.gz::https://github.com/django-webpack/${_thirdpart[0]%-*}/archive/${_thirdpart[0]##*-}.tar.gz"
+    "${_thirdpart[0],,}.tar.gz::https://github.com/django/${_thirdpart[0]%-*}/archive/${_thirdpart[0]##*-}.tar.gz"
+    "${_thirdpart[1],,}.tar.gz::https://github.com/django-webpack/${_thirdpart[1]%-*}/archive/${_thirdpart[1]##*-}.tar.gz"
     'seahub@.service'
     'nginx.example.conf'
 )
 sha256sums=(
     '3773614deba753b6816c8eb845a6600099c7712c0d8f517e18da6cf2df05c98b'
+    'ee95afd20207707fd5b5e0860801642360c85a5926f3336537dc6bb9468fd483'
     'fef6b13bbd61d682e12f3bd73bb7ac1c398dd0dea22ef2cf34309c6d1078b0d1'
     '67bb375871ce908b48bef53277284c9d8f80ee2e733efc89cb66d987647195e4'
     '461591ba500d012523d6fdecbcc230461f6fd8d708b92eefdedc8b93b1542171'
