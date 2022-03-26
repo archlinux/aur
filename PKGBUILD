@@ -5,11 +5,11 @@ _NAME='PiDNG'
 pkgname=python-${_name}-git
 provides=("python-${_name}")
 conflicts=("python-${_name}")
-pkgver=3.4.4+16+g30bee22
+pkgver=3.4.4+17+gab8aeb7
 pkgrel=1
 pkgdesc="Create Adobe DNG RAW files using Python."
 url="https://github.com/schoolpost/${_name}"
-license=('unknown')  # https://github.com/schoolpost/PiDNG/issues/33
+license=('MIT')
 arch=('x86_64')
 depends=('python-exifread' 'python-numpy')
 makedepends=('python-setuptools')
@@ -28,7 +28,7 @@ build() {
 
 package() {
   cd ${srcdir}/${_name}
-  #install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
 
