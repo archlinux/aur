@@ -1,6 +1,6 @@
 pkgbase = perl-mojolicious
 	pkgdesc = Real-time web framework
-	pkgver = 9.22
+	pkgver = 9.23
 	pkgrel = 1
 	url = https://metacpan.org/release/Mojolicious
 	arch = any
@@ -9,8 +9,8 @@ pkgbase = perl-mojolicious
 	depends = perl>=5.16.0
 	optdepends = perl-cpanel-json-xs>=4.09: Faster JSON encoding and decoding
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/S/SR/SRI/Mojolicious-9.22.tar.gz
-	md5sums = c7a00b4bd8fa2db991c9b918d34041d3
-	sha512sums = 53175c4d6054a4fe9c53368420714ff87cd826c3f61565d1b9dd52a69a15636d080852a62518f0bada865675d90026d78bdc1c210fa55939a81e4866ba894e40
+	source = https://cpan.metacpan.org/authors/id/S/SR/SRI/Mojolicious-9.23.tar.gz
+	md5sums = 90b1c2b9942ed02c874ef2ae495b32a7
+	sha512sums = 065a4348c759a8b820ccff743ef3ebf3f87dafa841222a49cdc1736faea493c27a7a3aec60f5a921dcb7ce51c32ade8350a582de4261f1b7d98d70b0fa6a1ae5
 
 pkgname = perl-mojolicious
