@@ -1,0 +1,9 @@
+[X-GNOME-Metatheme]
+Name=Adw (dark)
+Comment=LibAdwaita dark theme for GTK3 and GTK4
+GtkTheme=Adw-dark
+IconTheme=Adwaita
+CursorTheme=Adwaita
+CursorSize=24
+Encoding=UTF-8
+Type=X-GNOME-Metatheme

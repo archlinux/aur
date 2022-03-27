@@ -1,0 +1,9 @@
+[X-GNOME-Metatheme]
+Name=Adw
+Comment=LibAdwaita theme for GTK3 and GTK4
+GtkTheme=Adw
+IconTheme=Adwaita
+CursorTheme=Adwaita
+CursorSize=24
+Encoding=UTF-8
+Type=X-GNOME-Metatheme

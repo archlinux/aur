@@ -4,5 +4,5 @@ post_install() {
   ln -sfrT /usr/share/themes/{adw-gtk3,Adw}-dark/gtk-3.0
 }
 pre_remove() {
-  rm -rf /usr/share/themes/Adw{,-dark}
+  rm -rf /usr/share/themes/Adw{,-dark}/gtk-{3,4}.0
 }
