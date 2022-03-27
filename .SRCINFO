@@ -22,7 +22,7 @@ pkgbase = linux-mainline-anbox-git
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = linux-mainline-anbox
+pkgname = linux-mainline-anbox-git
 	pkgdesc = The Linux Mainline kernel and modules with ashmem and binder enabled (development version)
 	depends = coreutils
 	depends = kmod
@@ -34,8 +34,8 @@ pkgname = linux-mainline-anbox
 	replaces = virtualbox-guest-modules-mainline
 	replaces = wireguard-mainline
 
-pkgname = linux-mainline-anbox-headers
+pkgname = linux-mainline-anbox-git-headers
 	pkgdesc = Headers and scripts for building modules for the Linux Mainline kernel
 
-pkgname = linux-mainline-anbox-docs
+pkgname = linux-mainline-anbox-git-docs
 	pkgdesc = Documentation for the Linux Mainline kernel

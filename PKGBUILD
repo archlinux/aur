@@ -192,11 +192,11 @@ _package-docs() {
 }
 
 
-pkgname=("$_srcname" "$_srcname-headers" "$_srcname-docs")
+pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
-    $(declare -f "_package${_p#$_srcname}")
-    _package${_p#$_srcname}
+    $(declare -f "_package${_p#$pkgbase}")
+    _package${_p#$pkgbase}
   }"
 done
 
