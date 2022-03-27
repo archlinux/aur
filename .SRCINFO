@@ -1,7 +1,7 @@
 pkgbase = untldr
 	pkgdesc = Minimalist tldr command line client
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/unInstance/untldr
 	install = untldr.install
 	changelog = untldr.changelog
@@ -10,7 +10,6 @@ pkgbase = untldr
 	depends = curl
 	depends = libarchive
 	conflicts = tldr
-	replaces = tldr
 	options = ccache
 	source = untldr-1.0.0.tar.gz::https://github.com/unInstance/untldr/archive/refs/tags/v1.0.0.tar.gz
 	md5sums = b6c3705dcdde1bbd48e29354df383a3e
