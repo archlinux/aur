@@ -3,7 +3,7 @@
 pkgname=fuzzylite-git
 _pkgname=fuzzylite
 pkgver=r1017.7aee562d
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ fuzzy logic control library"
 arch=('x86_64')
 url="https://github.com/fuzzylite/$_pkgname"
@@ -31,4 +31,8 @@ package() {
     install -d $pkgdir/usr/lib
     # TODO: change path
     cp $srcdir/$_pkgname/$_pkgname/release/bin/lib$_pkgname.so.6.0 $pkgdir/usr/lib/lib$_pkgname.so
+
+    install -d $pkgdir/usr/include
+    mkdir $pkgdir/usr/include/fl
+    cp -r $srcdir/$_pkgname/$_pkgname/fl/* $pkgdir/usr/include/fl
 }

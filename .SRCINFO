@@ -1,7 +1,7 @@
 pkgbase = fuzzylite-git
 	pkgdesc = C++ fuzzy logic control library
 	pkgver = r1017.7aee562d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fuzzylite/fuzzylite
 	arch = x86_64
 	license = GPL3
