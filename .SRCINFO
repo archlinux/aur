@@ -32,6 +32,7 @@ pkgbase = obs-studio-git
 	depends = gtk-update-icon-cache
 	depends = speexdsp
 	depends = pciutils
+	depends = libajantv2
 	optdepends = libfdk-aac: FDK AAC codec support
 	optdepends = libxcomposite: XComposite capture support
 	optdepends = libva-intel-driver: hardware encoding
