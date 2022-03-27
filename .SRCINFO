@@ -1,13 +1,14 @@
 pkgbase = clunk-vangers-git
 	pkgdesc = Vangers for of clunk library
 	pkgver = r148.6d4cbbe
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/stalkerg/clunk
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = git
 	makedepends = cmake
 	makedepends = make
+	makedepends = sdl2
 	provides = clunk
 	conflicts = clunk
 	conflicts = libclunk
