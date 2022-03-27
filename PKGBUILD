@@ -2,7 +2,7 @@
 _base=lsq-ellipse
 pkgname=python-${_base}
 pkgdesc="Fitting an Ellipse using a Least Squares method, in Python"
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 arch=(any)
 url="https://pypi.org/project/${_base}"
@@ -11,7 +11,7 @@ depends=(python-numpy)
 makedepends=(python-setuptools)
 # checkdepends=(python-pytest)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('9b846fe025fa86c53827ed7fa2964c100763aed5e3303d67748d493bd6e1d657a4fe18bb368f90f09d6ac34b995d99cb865f2cb290e3cbeef05c11d1e0a17f0f')
+sha512sums=('a76ea125aea94b637b4cdb9aa9a0de8cd3b38f98ddd3760a6ab20981a931a946622085e31369e3100535810e7dfd6357f384dcdabdf8bc085bb78bc4944192fb')
 
 build() {
   cd ${_base}-${pkgver}
