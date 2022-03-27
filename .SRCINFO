@@ -1,7 +1,7 @@
 pkgbase = multimc-development-bin
 	pkgdesc = A custom launcher for Minecraft that focuses on predictability, long term stability and simplicity.
-	pkgver = 0.6.14_develop_3230
-	pkgrel = 3
+	pkgver = 0.6.15_develop_3242
+	pkgrel = 1
 	url = https://github.com/MultiMC/Launcher
 	arch = x86_64
 	arch = i686
@@ -9,9 +9,9 @@ pkgbase = multimc-development-bin
 	depends = qt5-base
 	provides = multimc-development
 	conflicts = multimc-development
-	source_x86_64 = multimc-development-bin-0.6.14_develop_3230.tar.gz::https://files.multimc.org/downloads/mmc-develop-lin64.tar.gz
-	sha256sums_x86_64 = b86beefbb347fd2064fa81db23ef4e36fb8e88a5a5f1b369b2ecb1990f5364d6
-	source_i686 = multimc-development-bin-0.6.14_develop_3230.tar.gz::https://files.multimc.org/downloads/mmc-develop-lin32.tar.gz
-	sha256sums_i686 = d066b178290bf904e707169b7a1543470ffffbb3b86103ef97af17d9e2d9a531
+	source_x86_64 = multimc-development-bin-0.6.15_develop_3242.tar.gz::https://files.multimc.org/downloads/mmc-develop-lin64.tar.gz
+	sha256sums_x86_64 = 7d7b0056268e7431854a2595d7e8976f5da2915946d94738d5b7731684de3ccd
+	source_i686 = multimc-development-bin-0.6.15_develop_3242.tar.gz::https://files.multimc.org/downloads/mmc-develop-lin32.tar.gz
+	sha256sums_i686 = 11ee5f2d1ed26796b39f7a65a273e1efda1585e1f75fc98b4d27bc9c5e509ba7
 
 pkgname = multimc-development-bin
