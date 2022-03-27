@@ -3,7 +3,7 @@
 
 _gemname=fog-core
 pkgname=ruby-$_gemname
-pkgver=2.2.4
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Shared classes and tests for fog providers and services.'
 arch=(any)
@@ -19,4 +19,4 @@ package() {
   gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
 }
-sha512sums=('6902aa0e0d4cc3be9ec9e670698f2ad1ddeefa3f418262a73146016ed2aa4b4031a3df98401c43c5a55372cf8aca49bd307192bbf981349959e4ba8361be733e')
+sha512sums=('449490e67a4b3a3b46afffcefc6214d527a81dcc4718518643f63a0a04a7fa141a3e812748d790a74de475228788086b6c92ebdc67917e4c63934a6296dcb5cd')
