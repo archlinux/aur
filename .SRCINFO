@@ -1,7 +1,7 @@
 pkgbase = python-pygogo
 	pkgdesc = A python logging library with superpowers
-	pkgver = 0.13.2
-	pkgrel = 2
+	pkgver = 1.2.0
+	pkgrel = 1
 	url = https://github.com/reubano/pygogo
 	arch = any
 	license = MIT
@@ -11,7 +11,7 @@ pkgbase = python-pygogo
 	makedepends = python-wheel
 	makedepends = python-pkutils
 	depends = python
-	source = pygogo-0.13.2.tar.gz::https://github.com/reubano/pygogo/archive/v0.13.2.tar.gz
-	sha256sums = ea0cc82fd62329255ec5212495b65307b172ab5709906e15fcb3cc1ded952918
+	source = pygogo-1.2.0.tar.gz::https://github.com/reubano/pygogo/archive/v1.2.0.tar.gz
+	sha256sums = 8752dbeb741b656f1c3bf7c83f6e268d5d8435b4268cd399dfd605ca0b3be6f2
 
 pkgname = python-pygogo

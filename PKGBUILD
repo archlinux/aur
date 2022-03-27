@@ -3,8 +3,8 @@
 
 pkgname=python-pygogo
 _pkgname=pygogo
-pkgver=0.13.2
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="A python logging library with superpowers"
 arch=(any)
 url='https://github.com/reubano/pygogo'
@@ -12,7 +12,7 @@ license=(MIT)
 depends=('python')
 makedepends=('python-pygments' 'python-setuptools' 'python-pip' 'python-wheel' 'python-pkutils')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/reubano/$_pkgname/archive/v$pkgver.tar.gz")
-sha256sums=("ea0cc82fd62329255ec5212495b65307b172ab5709906e15fcb3cc1ded952918")
+sha256sums=('8752dbeb741b656f1c3bf7c83f6e268d5d8435b4268cd399dfd605ca0b3be6f2')
 
 build() {
   cd $_pkgname-$pkgver
