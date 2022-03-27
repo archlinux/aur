@@ -1,13 +1,13 @@
 pkgname=7-zip-full
 pkgver=21.07
-pkgrel=2
+pkgrel=3
 pkgdesc="File archiver with a high compression ratio. (Full package to replace p7zip.)"
 url="https://www.7-zip.org"
 license=(LGPL)
 arch=(x86_64)
-makedepends=(uasm)
+makedepends=('uasm')
 provides=('7-zip' 'p7zip')
-conflicts=('7-zip' 'p7zip')
+conflicts=("${provides[@]}")
 
 _archive='7z2107-src.tar.xz'
 
@@ -23,19 +23,20 @@ sha256sums=(
 
 prepare() {
     cd "${srcdir}"
-    chmod -R a=r,u+w,a+X .
-    patch -p0 -N --binary -i "${source[1]}"
+    chmod -R a=r,a+X,u+w .
+    patch -p0 --binary -i "${source[1]}"
 }
 
 build() {
-    local build="${srcdir}/build"
     local bundles="${srcdir}/CPP/7zip/Bundles"
     local mak="${srcdir}/CPP/7zip/cmpl_gcc_x64.mak"
     local targets=("Alone" "Alone2" "Alone7z" "Format7zF")
-
-    for target in "${targets[@]}"; do
-        BUILD_DIR="${build}" make -C "${bundles}/${target}" -f "${mak}"
-    done
+    (
+        export BUILD_DIR="${srcdir}/build"
+        for target in "${targets[@]}"; do
+            make -C "${bundles}/${target}" -f "${mak}"
+        done
+    )
 }
 
 package() {
@@ -44,7 +45,7 @@ package() {
     cd "${srcdir}/build"
     install -Dm755 -t "${bin}" "7za" "7zz" "7zr"
     ln -s "7zz" "${bin}/7z"
-    install -Dm644 -t "${pkgdir}/usr/lib/${pkgname}" "7z.so"
+    install -Dm644 -t "${pkgdir}/usr/lib" "7z.so"
 
     cd "${srcdir}/DOC"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
