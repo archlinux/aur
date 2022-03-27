@@ -1,12 +1,12 @@
 pkgbase = libinmarsatc-git
 	pkgdesc = Inmarsat-C Open-source library based on Scytale-c
-	pkgver = 1.0
+	pkgver = r13.31c6f5e
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
 	license = GPL
 	provides = libinmarsatc
-	source = git://github.com/cropinghigh/inmarsatc
+	source = git+https://github.com/cropinghigh/inmarsatc
 	md5sums = SKIP
 
 pkgname = libinmarsatc-git
