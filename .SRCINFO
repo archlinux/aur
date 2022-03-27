@@ -1,6 +1,6 @@
 pkgbase = stt
 	pkgdesc = Coqui-STT
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/coqui-ai/STT
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = stt
 	makedepends = git
 	makedepends = sox
 	makedepends = wget
-	source = STT-1.2.0::git+https://github.com/coqui-ai/STT.git#tag=v1.2.0
+	source = STT-1.3.0::git+https://github.com/coqui-ai/STT.git#tag=v1.3.0
 	sha256sums = SKIP
 
 pkgname = stt
