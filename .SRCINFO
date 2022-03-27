@@ -1,7 +1,7 @@
 pkgbase = rumtricks-git
 	pkgdesc = Winetricks alternative
 	pkgver = r151.1cd1fcb
-	pkgrel = 2
+	pkgrel = 3
 	url = https://johncena141.eu.org:8141/johncena141/rumtricks
 	arch = x86_64
 	license = GPL3
