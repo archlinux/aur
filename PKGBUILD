@@ -1,13 +1,13 @@
 pkgbase=stt
 pkgname=('stt' 'python-stt')
 _pkgname=STT
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Coqui-STT for inference"
 arch=('x86_64')
 url="https://github.com/coqui-ai/STT"
 license=('MPL2')
-makedepends=('bazel31' 'python-numpy' 'python-pip' 'python-wheel' 'git' 'sox' 'wget')
+makedepends=('bazel' 'python38-pip' 'python38-numpy' 'python38-wheel' 'git' 'sox' 'wget' 'gcc')
 source=("${_pkgname}-${pkgver}::git+https://github.com/coqui-ai/STT.git#tag=v${pkgver}")
 sha256sums=('SKIP')
 
@@ -22,7 +22,7 @@ prepare()
 
 build() {
   cd "$srcdir/${_pkgname}-${pkgver}/tensorflow"
-  export PYTHON_BIN_PATH=/usr/bin/python
+  export PYTHON_BIN_PATH=/usr/bin/python3.8
   export USE_DEFAULT_PYTHON_LIB_PATH=1
   export TF_NEED_OPENCL_SYCL=0
   export TF_ENABLE_XLA=1
@@ -32,10 +32,18 @@ build() {
   export TF_DOWNLOAD_CLANG=0
   export TF_NEED_CUDA=0
   export CC_OPT_FLAGS="-march=x86-64"
-  rm .bazelversion
+  #rm .bazelversion
   ./configure
 
-  bazel build --workspace_status_command="bash native_client/bazel_workspace_status_cmd.sh" --config=monolithic -c opt --copt=-O3 --copt="-D_GLIBCXX_USE_CXX11_ABI=0" --copt=-fvisibility=hidden //native_client:libstt.so
+  bazel build \
+      --workspace_status_command="bash native_client/bazel_workspace_status_cmd.sh" \
+      --config=monolithic \
+        -c opt \
+        --copt=-O3 \
+        --copt="-D_GLIBCXX_USE_CXX11_ABI=0" \
+        --copt=-fvisibility=hidden \
+      --verbose_failures \
+      //native_client:libstt.so
 
   cd "${srcdir}/${_pkgname}-${pkgver}/native_client"
   make stt SOX_LDFLAGS="-lsox -Wl,-no-undefined"
@@ -51,7 +59,7 @@ package_stt() {
 
 package_python-stt() {
   pkgdesc="Coqui STT Python bindings"
-  depends=('stt' 'python-numpy')
+  depends=('stt' 'python38-numpy')
   cd "${srcdir}/${_pkgname}-${pkgver}/native_client"
   PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps python/dist/stt-*.whl
   PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps ctcdecode/dist/*.whl
