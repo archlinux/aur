@@ -1,6 +1,6 @@
 pkgbase = linux-mainline-anbox-git
 	pkgdesc = Linux Mainline
-	pkgver = 5.17.r11138.gf022814633e1
+	pkgver = 5.17.r11406.gf82da161ea75
 	pkgrel = 1
 	url = https://www.kernel.org
 	arch = x86_64
@@ -17,12 +17,12 @@ pkgbase = linux-mainline-anbox-git
 	makedepends = graphviz
 	makedepends = imagemagick
 	options = !strip
-	source = git+https://github.com/torvalds/linux
+	source = linux-mainline-anbox::git+https://github.com/torvalds/linux
 	source = config
 	sha256sums = SKIP
 	sha256sums = SKIP
 
-pkgname = linux-mainline-anbox-git
+pkgname = linux-mainline-anbox
 	pkgdesc = The Linux Mainline kernel and modules with ashmem and binder enabled (development version)
 	depends = coreutils
 	depends = kmod
@@ -34,8 +34,8 @@ pkgname = linux-mainline-anbox-git
 	replaces = virtualbox-guest-modules-mainline
 	replaces = wireguard-mainline
 
-pkgname = linux-mainline-anbox-git-headers
+pkgname = linux-mainline-anbox-headers
 	pkgdesc = Headers and scripts for building modules for the Linux Mainline kernel
 
-pkgname = linux-mainline-anbox-git-docs
+pkgname = linux-mainline-anbox-docs
 	pkgdesc = Documentation for the Linux Mainline kernel
