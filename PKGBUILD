@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=touche
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The desktop application to configure Touchégg "
 arch=('x86_64')
 url="https://github.com/JoseExposito/touche"
@@ -11,7 +11,7 @@ makedepends=('gobject-introspection' 'meson' 'npm')
 checkdepends=('appstream-glib')
 provides=('libtouche.so')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('4c3b8988cd2e324d67077a5914b094c11e9e850d11f8a0bcbf9e6a9a3d7b445a')
+sha256sums=('9e332737ac8a1402f32f97b7715086c8e0ad055d83b7f65fb2d2c2ae8d298a1a')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -24,9 +24,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-
-  # Validate appstream file fails
-  meson test -C build 'Validate desktop file' 'Validate schema file' --print-errorlogs
+  meson test -C build --print-errorlogs
 }
 
 package() {
