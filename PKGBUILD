@@ -1,7 +1,7 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 pkgname=docker-bench-security
-pkgver=1.3.5
-pkgrel=2
+pkgver=1.3.6
+pkgrel=1
 pkgdesc="Check common best-practices around deploying Docker container"
 arch=('any')
 url="https://github.com/docker/docker-bench-security"
@@ -9,7 +9,7 @@ license=('Apache')
 source=("$url/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}-exec.sh")
 depends=(docker)
-sha256sums=('70b7496440acbee7c80700b048a6fe1272467e2aeec3a6b6b2b46329d9fdc370'
+sha256sums=('c63608ca7419d5429b9219812857a854c96f30126e4456929029982390f18900'
             'cd14edcb0f5c5cf05a51ba6e01c9a01d45e88738fda2ae56e31dc1f8af29025d')
 
 package() {
