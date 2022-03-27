@@ -1,12 +1,11 @@
 pkgbase = rocm-llvm
 	pkgdesc = Radeon Open Compute - LLVM toolchain (llvm, clang, lld)
 	pkgver = 5.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/RadeonOpenCompute/llvm-project
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
 	makedepends = cmake
-	makedepends = clang
 	makedepends = python
 	makedepends = ninja
 	depends = z3
