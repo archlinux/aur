@@ -14,7 +14,7 @@ makedepends=(
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
 )
 options=('!strip')
-_srcname=linux
+_srcname=linux-mainline-anbox
 source=(
   'git+https://github.com/torvalds/linux'
   config         # the main kernel config file
