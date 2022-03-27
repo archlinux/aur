@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.965
+pkgver=mainline.0.966
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
@@ -33,24 +33,24 @@ makedepends=(
 checkdepends=('catch2>=2.13.7')
 source=(
 	"git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=${pkgver//./-}"
-	"gamedb-$(date -I).json::https://api.yuzu-emu.org/gamedb/"
 	'yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git'
 	'citra-soundtouch::git+https://github.com/citra-emu/ext-soundtouch.git'
 	'git+https://github.com/ReinUsesLisp/sirit.git'
-	"$pkgname-unbundle-cubeb.patch"
-	"$pkgname-unbundle-discord-rpc.patch"
-	"$pkgname-unbundle-dynarmic.patch"
-	"$pkgname-unbundle-httplib.patch"
-	"$pkgname-unbundle-inih.patch"
-	"$pkgname-unbundle-spirv-headers.patch"
-	"$pkgname-unbundle-xbyak.patch"
+	'compatibility_list.json.xz'
+	'unbundle-cubeb.patch'
+	'unbundle-discord-rpc.patch'
+	'unbundle-dynarmic.patch'
+	'unbundle-httplib.patch'
+	'unbundle-inih.patch'
+	'unbundle-spirv-headers.patch'
+	'unbundle-xbyak.patch'
 )
 b2sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
-	'SKIP'
+	'267466b843029b133246986f75d5336b41b0faeb9f52c337a18b3ada3345530a2578d0f940d0391c4a1833ff897f19249065d6505f77a7a5e92ccdaa320f1356'
 	'5f1cf15e9486e50fe9416919bf34d9b78e5f02cab96216cef77f365855e4c09eaa74118de89c29f6b7899fa43f07e0f70ef8fb21e47808ef347212ea9ee4ed39'
 	'0c9b84444e4c938a04b1f60907fc816cbe8eb8d598a9a4b7e490750d339fac7a48de1b682bc5b00b6c2333b5f4e39b1738287b9168844094e3817703635aad9c'
 	'3e0faf4c5ef6a836001af09b90ebb7f9a0e3b9dc42c1a312815f4ad9c4dc1ed79672539cecdbaf7ce01f2297a76dc3f17579f058c5515d8f328fc286705192b6'
@@ -67,15 +67,15 @@ prepare() {
 	git config submodule.sirit.url ../sirit
 	git config submodule.soundtouch.url ../citra-soundtouch
 	git submodule update
-	install -Dm644 "../gamedb-$(date -I).json" ../build/dist/compatibility_list/compatibility_list.json
+	install -Dt ../build/dist/compatibility_list ../compatibility_list.json
 	ln -sr .git ../build
-	patch -Np1 < ../$pkgname-unbundle-cubeb.patch
-	patch -Np1 < ../$pkgname-unbundle-discord-rpc.patch
-	patch -Np1 < ../$pkgname-unbundle-dynarmic.patch
-	patch -Np1 < ../$pkgname-unbundle-httplib.patch
-	patch -Np1 < ../$pkgname-unbundle-inih.patch
-	patch -Np1 < ../$pkgname-unbundle-spirv-headers.patch
-	patch -Np1 < ../$pkgname-unbundle-xbyak.patch
+	patch -Np1 < ../unbundle-cubeb.patch
+	patch -Np1 < ../unbundle-discord-rpc.patch
+	patch -Np1 < ../unbundle-dynarmic.patch
+	patch -Np1 < ../unbundle-httplib.patch
+	patch -Np1 < ../unbundle-inih.patch
+	patch -Np1 < ../unbundle-spirv-headers.patch
+	patch -Np1 < ../unbundle-xbyak.patch
 	rm .gitmodules
 }
 
