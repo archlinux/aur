@@ -2,7 +2,7 @@
 
 _pkgname=gspread-pandas
 pkgname=python-$_pkgname
-pkgver=3.0.4
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='Interacting with Google spreadsheets through Pandas DataFrames'
 url="https://github.com/aiguofer/$_pkgname"
@@ -12,7 +12,7 @@ depends=('python-gspread' 'python-pandas' 'python-decorator' 'python-future'
          'python-google-auth' 'python-google-auth-oauthlib')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('5d7baf8b37dc34fe061aaaa8400db6307aeed6abea992106c2ef7450b3a92e70')
+sha256sums=('f1d97b77abe7f371e31088f3e458a10fa1c66e97e09204eed0af1e4ba889013c')
 
 build(){
   cd "$srcdir/$_pkgname-$pkgver"
