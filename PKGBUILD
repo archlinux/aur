@@ -2,13 +2,13 @@
 
 pkgname=text-engine-git
 pkgver=r25.379437b
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight rich-text framework for GTK"
 arch=('x86_64')
 url="https://github.com/mjakeman/${pkgname%-git}"
 license=('MIT')
 depends=('gtk4' 'json-glib' 'libxml2' 'libadwaita')
-makedepends=('cmake' 'git' 'meson')
+makedepends=('git' 'meson')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+$url.git)
