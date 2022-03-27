@@ -1,0 +1,20 @@
+pkgbase = python-simplematrixbotlib
+	pkgdesc = An easy to use bot library for the Matrix ecosystem written in Python
+	pkgver = 2.6.2
+	pkgrel = 1
+	url = https://github.com/i10b/simplematrixbotlib
+	arch = any
+	license = MIT
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	depends = python-matrix-nio
+	depends = python-cryptography-fernet-wrapper
+	depends = python-pillow
+	depends = python-markdown
+	depends = python-toml
+	source = simplematrixbotlib-2.6.2.tar.gz::https://github.com/i10b/simplematrixbotlib/archive/refs/tags/v2.6.2.tar.gz
+	sha256sums = 8b6be75804c9ad54faf39cbc08b60ee9cca61373fba415722d632825fb966620
+
+pkgname = python-simplematrixbotlib
