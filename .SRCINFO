@@ -1,7 +1,7 @@
 pkgbase = scangearmp2
 	pkgdesc = Canon ScanGear MP v2 scanner driver.
 	pkgver = 4.30
-	pkgrel = 2
+	pkgrel = 1
 	url = https://www.canon.co.uk
 	arch = i686
 	arch = x86_64
