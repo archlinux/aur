@@ -31,7 +31,7 @@ pkgbase = dino-patched-git
 	depends = libcanberra
 	provides = dino
 	conflicts = dino
-	source = dino::git+https://github.com/emildekeyser/dino-fork/tree/mergerino
+	source = dino::git+https://github.com/emildekeyser/dino-fork#branch=mergerino
 	sha512sums = SKIP
 
 pkgname = dino-patched-git

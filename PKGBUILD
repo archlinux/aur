@@ -15,7 +15,7 @@ depends=('glib2>=2.38' 'glib-networking' 'gtk3>=3.22' 'gpgme'
 makedepends=('git' 'cmake' 'vala>=0.34' 'ninja')
 provides=("dino")
 conflicts=("dino")
-source=('dino::git+https://github.com/emildekeyser/dino-fork/tree/mergerino')
+source=('dino::git+https://github.com/emildekeyser/dino-fork#branch=mergerino')
 sha512sums=('SKIP')
 
 pkgver() {
