@@ -1,0 +1,7 @@
+post_install() {
+	echo "Do not forget to run 'tldr -u' to fetch the pages."
+}
+
+post_remove() {
+	echo "Pages are left untouched, delete '~/.config/tldr/' manually."
+}
