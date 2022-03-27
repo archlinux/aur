@@ -1,7 +1,7 @@
 # Author: futpib <futpib@gmail.com>
 
 pkgname=youtube-tv-git
-pkgver=1.0.0.r2.g60dfe38
+pkgver=1.0.0.r6.g6271886
 pkgrel=1
 pkgdesc="Desktop YouTube TV app"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=()
 makedepends=('git' 'nodejs' 'yarn' 'node-gyp' 'python' 'unzip')
 provides=('youtube-tv')
 conflicts=('youtube-tv')
-source=("git://github.com/futpib/youtube-tv.git")
+source=("git+https://github.com/futpib/youtube-tv.git")
 sha256sums=('SKIP')
 
 _pkgname=${pkgname%%-git}
