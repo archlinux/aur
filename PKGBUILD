@@ -2,7 +2,7 @@
 
 _pkgname=inquirer
 pkgname="python-$_pkgname"
-pkgver=2.9.1
+pkgver=2.9.2
 pkgrel=1
 pkgdesc="Collection of common interactive command line user interfaces, based on Inquirer.js"
 arch=('any')
@@ -11,8 +11,8 @@ license=('MIT')
 depends=('python' 'python-blessed' 'python-readchar' 'python-editor')
 makedepends=('python-setuptools' 'python-dephell')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/magmax/python-inquirer/archive/v$pkgver.tar.gz")
-sha256sums=('5daa3b37003677b826e29635a4b741324436a70772f503cbf9530e35f0be6c40')
-b2sums=('ee6531420b8d5bd6fed667cec440e1800f6d40d2fc458c4a2892006304af90c5834aa16a2b1975ebe9159ad7894003035e93c499a469e128acccefff22627d5e')
+sha256sums=('576bfedeead2e9531136da541109216f1732a405fb1157aeb31056890f3c4f63')
+b2sums=('b8518a1620aa24f58f2ddf7d6ade2aa62d73c8c299a1deec31dc5c2c602815b1254859d398628ddfd8a76ad1d1ba2af12ba97dbf2c6c1a0b05d26f92c48633e5')
 
 prepare() {
   cd "python-inquirer-$pkgver"
