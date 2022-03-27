@@ -1,14 +1,13 @@
 # Maintainer: Ivan Kovmir <ikovmir@darkn.space>
 pkgname=untldr
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Minimalist tldr command line client'
 arch=('any')
 url="https://github.com/unInstance/untldr"
 license=('Apache')
 depends=('curl' 'libarchive')
 conflicts=('tldr')
-replaces=('tldr')
 options=('ccache')
 install="${pkgname}.install"
 changelog="${pkgname}.changelog"
