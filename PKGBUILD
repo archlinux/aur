@@ -6,7 +6,7 @@ pkgdesc="Check common best-practices around deploying Docker container"
 arch=('any')
 url="https://github.com/docker/docker-bench-security"
 license=('Apache')
-source=("$url/archive/refs/tags/v${pkgver}.tar.gz"
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::$url/archive/refs/tags/v${pkgver}.tar.gz"
         "${pkgname}-exec.sh")
 depends=(docker)
 sha256sums=('c63608ca7419d5429b9219812857a854c96f30126e4456929029982390f18900'
