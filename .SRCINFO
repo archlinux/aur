@@ -1,6 +1,6 @@
 pkgbase = hacktv-git
 	pkgdesc = Analogue TV transmitter for the HackRF
-	pkgver = 779a072
+	pkgver = r286.d7d37f4
 	pkgrel = 1
 	arch = i686
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = hacktv-git
 	depends = soapysdr
 	provides = hacktv
 	conflicts = hacktv
-	source = git://github.com/fsphil/hacktv
+	source = git+https://github.com/fsphil/hacktv
 	md5sums = SKIP
 
 pkgname = hacktv-git

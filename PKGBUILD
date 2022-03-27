@@ -2,7 +2,7 @@
 # Maintainer: cropinghigh <joinmark60@gmail.com>
 # Author: fsphil
 pkgname=hacktv-git
-pkgver="779a072"
+pkgver=r286.d7d37f4
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="Analogue TV transmitter for the HackRF"
@@ -11,12 +11,12 @@ depends=('hackrf' 'ffmpeg' 'soapysdr')
 makedepends=('make' 'git')
 provides=('hacktv')
 conflicts=('hacktv')
-source=("git://github.com/fsphil/hacktv")
+source=("git+https://github.com/fsphil/hacktv")
 md5sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/hacktv"
-    git describe --tags --long --always | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
