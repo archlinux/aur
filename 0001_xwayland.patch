@@ -1,0 +1,11 @@
+--- hikari-2.3.3/src/xwayland_view.c
++++ hikari-2.3.3_1/src/xwayland_view.c
+@@ -304,6 +304,7 @@
+   struct wlr_xwayland_surface *xwayland_surface = xwayland_view->surface;
+ 
+   wlr_xwayland_surface_activate(xwayland_surface, active);
++  wlr_xwayland_surface_restack(xwayland_surface, NULL, XCB_STACK_MODE_ABOVE);
+   wlr_xwayland_set_seat(hikari_server.xwayland, hikari_server.seat);
+ }
+ 
+
