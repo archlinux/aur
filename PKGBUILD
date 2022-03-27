@@ -1,4 +1,4 @@
-#Maintainer: Ondrej Patrovic <ondrej@patrovic.com>
+#Maintainer: Stuart Gray <m00tiny@grayhatfreelancing.com>
 
 pkgname=rabbitvcs-caja
 pkgver=0.18
