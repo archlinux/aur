@@ -1,0 +1,18 @@
+pkgbase = python-cryptography-fernet-wrapper
+	pkgdesc = A wrapper for cryptography.fernet
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/KrazyKirby99999/python-cryptography-fernet-wrapper
+	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-cryptography
+	source = python-cryptography-fernet-wrapper-1.0.3.tar.gz::https://github.com/KrazyKirby99999/python-cryptography-fernet-wrapper/archive/refs/tags/v1.0.3.tar.gz
+	source = 0001-Fix-README-filename-in-setup.py.patch
+	sha256sums = d08cdb05a94af9e0acd21af330b4b51d7d8f4d2a960d2e620076c27b0bf64871
+	sha256sums = b5ee9a7d994d8071fdcbc0609dcaaa8919a45e61cfec3ddcaf9dfc80207ee721
+
+pkgname = python-cryptography-fernet-wrapper
