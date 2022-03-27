@@ -11,7 +11,7 @@ url="https://github.com/obsproject/obs-studio"
 license=("GPL2")
 depends=("ffmpeg" "jansson" "libxinerama" "libxkbcommon-x11" "mbedtls"
          "qt5-svg" "qt5-x11extras" "curl" "jack" "gtk-update-icon-cache"
-         "speexdsp" "pciutils")
+         "speexdsp" "pciutils" "libajantv2")
 makedepends=("cmake" "git" "libfdk-aac" "libxcomposite" "x264"
              "vlc" "swig" "luajit" "python" "cef-minimal-obs-bin" "wayland"
              "qt5-wayland" "pipewire" "xdg-desktop-portal")
