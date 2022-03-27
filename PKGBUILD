@@ -11,12 +11,12 @@
 
 pkgname=cycles-standalone
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Blender Cycles rendering engine, standalone version"
 arch=(x86_64)
 url="https://github.com/blender/cycles.git"
 license=(Apache)
-depends=(libglvnd openexr glew pugixml freeglut openimageio tbb openvdb embree openimagedenoise opensubdiv openshadinglanguage alembic sdl2)
+depends=(libglvnd openexr glew pugixml freeglut openimageio tbb openvdb embree openimagedenoise opensubdiv openshadinglanguage alembic sdl2 google-glog)
 makedepends=(cmake git boost llvm)
 optdepends=(cuda optix)
 provides=(cycles)
@@ -71,6 +71,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DWITH_CYCLES_STANDALONE_GUI=TRUE \
         -DWITH_CYCLES_OSL=TRUE \
+        -DWITH_CYCLES_LOGGING=TRUE \
         -DCMAKE_SKIP_INSTALL_RPATH=YES \
         "${_CMAKE_FLAGS[@]}" \
         -Wno-dev

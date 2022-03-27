@@ -1,7 +1,7 @@
 pkgbase = cycles-standalone
 	pkgdesc = Blender Cycles rendering engine, standalone version
 	pkgver = 3.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/blender/cycles.git
 	arch = x86_64
 	license = Apache
@@ -23,6 +23,7 @@ pkgbase = cycles-standalone
 	depends = openshadinglanguage
 	depends = alembic
 	depends = sdl2
+	depends = google-glog
 	optdepends = cuda
 	optdepends = optix
 	provides = cycles
