@@ -1,6 +1,6 @@
 # Maintainer: Matt Pharoah <mtpharoah@gmail.com>
 pkgname=parallel-launcher
-pkgver=6.1.0
+pkgver=6.1.1
 pkgrel=0
 epoch=
 pkgdesc='A simple easy-to-use launcher for the ParallelN64 and Mupen64Plus-Next emulators'
@@ -38,15 +38,15 @@ backup=()
 options=()
 install='parallel-launcher.install'
 changelog=
-source=('https://gitlab.com/parallel-launcher/parallel-launcher/uploads/1856936c59daedceb040e9f864151560/parallel-launcher-6.1.0.tar.gz')
+source=('https://gitlab.com/parallel-launcher/parallel-launcher/uploads/fbcdc153a44a6005baa64e05f48fea8e/parallel-launcher-6.1.1.tar.gz')
 noextract=()
-sha256sums=('459f8bda811fcf58a2561b591d84a8b4bbb5125bb9f4a19c2797312ef88aa8c7')
+sha256sums=('b2a66870e6d3ab2dd2ae62656081a7223fba7af4a42e57c6f0783b41e7dab100')
 validpgpkeys=()
 
 build() {
 	qmake-qt5 "CONFIG+=precompiled-helpers" app.pro -spec linux-g++
 	lrelease app.pro
-	make
+	make -j `nproc`
 }
 
 package() {
