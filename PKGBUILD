@@ -1,7 +1,7 @@
 # RTAudio git version
 # Maintainer: cropinghigh <joinmark60@gmail.com>
 pkgname=rtaudio-git
-pkgver="5.1.0.r67.g8f8250e"
+pkgver=r581.e9b1d02
 pkgrel=1
 arch=('i686' 'x86_64')
 pkgdesc="RTAudio git version without JACK support(fix for pipewire)"
@@ -10,12 +10,12 @@ depends=('alsa-lib' 'gcc-libs' 'glibc' 'libpulse')
 makedepends=('make' 'git' 'cmake' 'doxygen' 'patch')
 provides=('rtaudio' 'librtaudio.so')
 conflicts=('rtaudio')
-source=("git://github.com/thestk/rtaudio" "alsa_pcm.patch")
+source=("git+https://github.com/thestk/rtaudio" "alsa_pcm.patch")
 md5sums=('SKIP' 'SKIP')
 
 pkgver() {
     cd "$srcdir/rtaudio"
-    git describe --tags --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
