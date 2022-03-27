@@ -2,7 +2,7 @@
 _pkgname=minq-xvideos
 pkgname="${_pkgname}-git"
 pkgver=r37.8f9ae5ef0136fb87650736c6e248abd8f0619192
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc='Explore xvideos in your terminal! Videos can be either played in the terminal or in any external video player. Undesirable videos can be blocked.'
 arch=(any)
@@ -28,5 +28,5 @@ package() {
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	mkdir -p "${pkgdir}/usr/bin/"
-	ln -s "/opt/${pkgname}/${_pkgname}.py" "${pkgdir}/usr/bin/${_pkgname}"
+	ln -s "/opt/${pkgname}/minq_xvideos.py" "${pkgdir}/usr/bin/${_pkgname}"
 }
