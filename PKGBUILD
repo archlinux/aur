@@ -1,6 +1,6 @@
 # Maintainer : sputnick <gilles *DOT* quenot *AT* gmail *DOT *com>
 pkgname=fortune-mod-bashfr
-pkgver=775
+pkgver=776
 pkgrel=1
 pkgdesc="bashfr.org/DTC (danstonchat.com) fortune file"
 url="http://danstonchat.com"
