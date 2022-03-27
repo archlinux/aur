@@ -1,11 +1,10 @@
 pkgbase = text-engine
 	pkgdesc = A lightweight rich-text framework for GTK
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mjakeman/text-engine
 	arch = x86_64
 	license = MIT
-	makedepends = cmake
 	makedepends = meson
 	depends = gtk4
 	depends = json-glib
