@@ -14,7 +14,7 @@ url='https://biobank.ndph.ox.ac.uk'
 _url_util="$url/showcase/util"
 license=('unknown')
 optdepends=('ukbprep-docs: documentation to help getting started accessing UK Biobank data')
-provides=('ukbprep' 'gfetch' 'ukbconv' 'ukbfetch' 'ukblink' 'ukbmd5' 'ukbunpack')
+provides=('dconvert' 'ukbprep' 'gfetch' 'ukbconv' 'ukbfetch' 'ukblink' 'ukbmd5' 'ukbunpack')
 source=(
     "dconvert-$pkgver::$_url_util/dconvert"
     "encoding-$pkgver.ukb::$_url_util/encoding.ukb"
