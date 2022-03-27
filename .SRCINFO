@@ -1,16 +1,19 @@
 pkgbase = gvisor-bin
 	pkgdesc = OCI container sandbox runtime focused on security, efficiency, and ease of use
 	pkgver = 20220228.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gvisor.dev
 	arch = x86_64
+	arch = aarch64
 	license = Apache
 	optdepends = docker: for Docker runtime support
 	provides = gvisor
 	provides = runsc
-	conflicts = gvisor-git
+	conflicts = gvisor
 	conflicts = runsc
-	source = gvisor-bin-20220228.0::https://storage.googleapis.com/gvisor/releases/release/20220228/x86_64/runsc
-	sha512sums = 00b65f872785f77d61c789c4589e56d085697ef6d6c89370dceca0d464df7d267a65b2fcd63bd7513910b28e72cc9f22991139c262b42c84a25f0f55136ba736
+	source_x86_64 = gvisor-bin-20220228.0::https://storage.googleapis.com/gvisor/releases/release/20220228/x86_64/runsc
+	sha512sums_x86_64 = 00b65f872785f77d61c789c4589e56d085697ef6d6c89370dceca0d464df7d267a65b2fcd63bd7513910b28e72cc9f22991139c262b42c84a25f0f55136ba736
+	source_aarch64 = gvisor-bin-20220228.0::https://storage.googleapis.com/gvisor/releases/release/20220228/aarch64/runsc
+	sha512sums_aarch64 = 09b1148d9ca601236e0bc37bedb2439e1ccf725396343ed895746e688d095669a8be190b201d1c4129b7dfcef7d80780b525563ce3202c83f24874422d071a8e
 
 pkgname = gvisor-bin
