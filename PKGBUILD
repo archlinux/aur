@@ -1,9 +1,9 @@
 # Maintainer: András Wacha <awacha@gmail.com>
-# Co-maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: Michał Wojdyła < micwoj9292 at gmail dot com >
 pkgname=python-bumps
 _name=${pkgname#python-}
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="Data fitting with uncertainty analysis"
 arch=(any)
 url="https://github.com/bumps/bumps"
@@ -18,7 +18,7 @@ makedepends=(python-setuptools
 #checkdepends=(python-nose)
 source=("https://github.com/${_name}/${_name}/archive/v${pkgver}.tar.gz" 
 	"bumps.patch")
-sha256sums=('2ae088288f0954a72489d0302fcd89f8f98bcf5fbdec3c0ecfa7dc7e4c854569'
+sha256sums=('b0eeb89a976ed340983496d70a83416fa65e5ca3a2eec13967f892268836ab68'
             'dbe2b429a766f2c8b022f5745cc43d1cf947cb481c348f86fa551d592920e1c0')
 
 prepare() {
