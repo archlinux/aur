@@ -3,15 +3,15 @@
 
 _pkgname=quandl
 pkgname=python-$_pkgname
-pkgver=3.4.8
-pkgrel=2
+pkgver=3.7.0
+pkgrel=1
 pkgdesc="Quandl's Python Package"
 arch=('any')
 url="https://github.com/quandl/quandl-python"
 license=('MIT')
 depends=('python-numpy' 'python-more-itertools' 'python-inflection')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('d885a269ccea7f4e6c6965fb31277f003c4d00bcdf947e6fe9c4f3b6e09d116e')
+sha256sums=('038c820f813bae12a0a3169cdca40d2a77e1c0b7103b3fa70dc0f620fe036cc3')
 
 build() {
   cd "$srcdir/$_pkgname-python-$pkgver"
