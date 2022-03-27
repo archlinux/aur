@@ -3,8 +3,8 @@
 # Contributor: Carl George < arch at cgtx dot us >
 
 pkgname="mkdocs"
-pkgver=1.2.3
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Project documentation with Markdown"
 url="https://www.mkdocs.org"
 license=("BSD")
@@ -29,7 +29,7 @@ depends=("python-babel"
 makedepends=("python-setuptools")
 optdepends=("python-lunr: to prebuild search index")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/$pkgname/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('b1859f34c6177c94cc360039fe467292cdbc775986949fc5448a94d0ba7c1892')
+sha256sums=('319dc143476927d5400f086c54a77f3d1b80e57c1eefe2d8deaa220c65801dce')
 
 prepare(){
  # the package wants 2.0, but repo (and pypi) use 0.10
