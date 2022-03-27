@@ -2,8 +2,8 @@
 # Inspired by `cask' AUR package by Sebastien Duthil <duthils@duthils.net>
 
 pkgname=cask-git
-pkgver=r882.d731e96
-pkgrel=2
+pkgver=r1135.218433b
+pkgrel=1
 pkgdesc="Project management tool for Emacs"
 arch=('any')
 url='https://github.com/cask/cask'
@@ -12,7 +12,7 @@ depends=('emacs' 'python')
 makedepends=('git')
 provides=('cask')
 conflicts=('cask')
-source=("git://github.com/cask/cask.git")
+source=("git+https://github.com/cask/cask.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -29,8 +29,6 @@ package() {
     install -Dm644 *.el "${__prefix}/"
     install -d "${__prefix}/bin"
     install -Dm755 "bin/cask" "${__prefix}/bin"
-    install -d "${__prefix}/templates"
-    install -Dm644 templates/* "${__prefix}/templates/"
     touch "${__prefix}/.no-upgrade"  # Stop cask performing self-upgrades.
 
     install -d "${pkgdir}/usr/bin"
