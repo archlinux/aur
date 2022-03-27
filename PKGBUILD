@@ -6,7 +6,7 @@ pkgname=(shiboken2 python-shiboken2 pyside2 pyside2-tools)
 _qtver=5.15.3
 _clangver=13.0.1
 pkgver=${_qtver/-/}
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url='https://www.qt.io'
 license=(LGPL)
@@ -92,6 +92,7 @@ package_pyside2() {
               'qt5-remoteobjects: QtRemoteObjects bindings'
               'qt5-serialport: QtSerialPort bindings'
               'qt5-quickcontrols2: QtQuickControls2 bindings')
+  provides=(qt5-python-bindings)
 
   DESTDIR="$pkgdir" cmake --install build/sources/pyside2
 # Install egg-info
