@@ -2,7 +2,7 @@
 
 pkgname=carvel-tools
 pkgdesc="Set of Carvel (k14s) tools: ytt kbld kapp kwt imgpkg vendir"
-pkgver=20220316
+pkgver=20220328
 pkgrel=1
 url="https://carvel.dev"
 arch=(x86_64 aarch64)
@@ -17,7 +17,7 @@ ytt-v0.40.1::https://github.com/vmware-tanzu/carvel-ytt/releases/download/v0.40.
 kbld-v0.32.0::https://github.com/vmware-tanzu/carvel-kbld/releases/download/v0.32.0/kbld-linux-amd64
 kapp-v0.46.0::https://github.com/vmware-tanzu/carvel-kapp/releases/download/v0.46.0/kapp-linux-amd64
 kwt-v0.0.6::https://github.com/vmware-tanzu/carvel-kwt/releases/download/v0.0.6/kwt-linux-amd64
-imgpkg-v0.26.0::https://github.com/vmware-tanzu/carvel-imgpkg/releases/download/v0.26.0/imgpkg-linux-amd64
+imgpkg-v0.27.0::https://github.com/vmware-tanzu/carvel-imgpkg/releases/download/v0.27.0/imgpkg-linux-amd64
 vendir-v0.26.0::https://github.com/vmware-tanzu/carvel-vendir/releases/download/v0.26.0/vendir-linux-amd64
 )
 sha256sums_x86_64=(
@@ -25,7 +25,7 @@ sha256sums_x86_64=(
 de546ac46599e981c20ad74cd2deedf2b0f52458885d00b46b759eddb917351a
 130f648cd921761b61bb03d7a0f535d1eea26e0b5fc60e2839af73f4ea98e22f
 92a1f18be6a8dca15b7537f4cc666713b556630c20c9246b335931a9379196a0
-a16baeb24ffd3a598c99d606f084193bd13fa6b2876e7a83ec585943c956fadc
+72d676e270e9111bfc88e4d4281a2ed7c608a8b8d2af2a0011e971d3226a1b6b
 98057bf90e09972f156d1c4fbde350e94133bbaf2e25818b007759f5e9c8b197
 )
 source_aarch64=(
@@ -43,6 +43,6 @@ package() {
 [[ -f "${srcdir}/kbld-v0.32.0" ]] && install -Dm 755 "${srcdir}/kbld-v0.32.0" "${pkgdir}/usr/bin/kbld"
 [[ -f "${srcdir}/kapp-v0.46.0" ]] && install -Dm 755 "${srcdir}/kapp-v0.46.0" "${pkgdir}/usr/bin/kapp"
 [[ -f "${srcdir}/kwt-v0.0.6" ]] && install -Dm 755 "${srcdir}/kwt-v0.0.6" "${pkgdir}/usr/bin/kwt"
-[[ -f "${srcdir}/imgpkg-v0.26.0" ]] && install -Dm 755 "${srcdir}/imgpkg-v0.26.0" "${pkgdir}/usr/bin/imgpkg"
+[[ -f "${srcdir}/imgpkg-v0.27.0" ]] && install -Dm 755 "${srcdir}/imgpkg-v0.27.0" "${pkgdir}/usr/bin/imgpkg"
 [[ -f "${srcdir}/vendir-v0.26.0" ]] && install -Dm 755 "${srcdir}/vendir-v0.26.0" "${pkgdir}/usr/bin/vendir"
 }
