@@ -9,7 +9,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium
-pkgver=99.0.4844.82
+pkgver=99.0.4844.84
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=3
@@ -36,7 +36,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         use-FT_Done_MM_Var-in-CFX_Font-AdjustMMParams.patch
         sql-make-VirtualCursor-standard-layout-type.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('b8bb0bc1410de8b9d98889c79410726a4e78801d4e54ea23b23b7b4015c7d25c'
+sha256sums=('20ec184ed34bdc7e660ccf6c007b2db37007de423b3a5a51698a96aa29527515'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '9cd2570e92e9bfeff3faf0d5b56334535cb2313f99ab0d9019b74d18ae1c7d0a'
             'edf4d973ff197409d319bb6fbbaa529e53bc62347d26b0733c45a116a1b23f37'
@@ -52,7 +52,7 @@ source=(${source[@]}
         chromium-drirc-disable-10bpc-color-configs.conf
         wayland-egl.patch)
 sha256sums=(${sha256sums[@]}
-            '7910998d3729b890ebc4bccc2900b700c5d711a98fe8f1eb1c229d3c41fed33e'
+            'ac0a9d041e70779e624a521387976ad9f5d825085583aa88a980bd57339c81a6'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             '34d08ea93cb4762cb33c7cffe931358008af32265fc720f2762f0179c3973574')
 
