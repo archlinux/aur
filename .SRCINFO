@@ -29,8 +29,10 @@ pkgname = linux-mainline-anbox-git
 	depends = initramfs
 	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
-	replaces = wireguard-arch
+	replaces = virtualbox-guest-modules-mainline
+	replaces = wireguard-mainline
 
 pkgname = linux-mainline-anbox-git-headers
 	pkgdesc = Headers and scripts for building modules for the Linux Mainline kernel
