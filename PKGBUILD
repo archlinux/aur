@@ -1,6 +1,6 @@
 pkgname=btfs-git
-pkgver=latest
-pkgrel=1
+pkgver=v2.24.r3.g3210332
+pkgrel=2
 pkgdesc="bittorrent filesystem"
 arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/johang/btfs"
@@ -12,7 +12,7 @@ provides=('btfs')
 # The git repo is detected by the 'git:' or 'git+' beginning. The branch
 # '$pkgname' is then checked out upon cloning, expediating versioning:
 #source=('git+https://github.com/falconindy/expac.git'
-source=("$pkgname"::'git://github.com/johang/btfs.git')
+source=("$pkgname"::'git+https://github.com/johang/btfs.git')
 # Because the sources are not static, skip Git checksum:
 md5sums=('SKIP')
 
