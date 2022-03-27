@@ -2,19 +2,22 @@
 
 pkgname=gnome-shell-extension-hide-universal-access
 pkgver=10
-pkgrel=1
-pkgdesc='Hide Universal Access icon from the status bar'
+pkgrel=2
+pkgdesc='Hide Universal Access icon from the Gnome status bar'
 arch=(any)
 url='https://github.com/akiirui/hide-universal-access'
 license=('GPL3')
-depends=('gnome-shell>=3.34')
+depends=('gnome-shell')
 source=("https://extensions.gnome.org/extension-data/hide-universal-accessakiirui.github.io.v${pkgver}.shell-extension.zip")
 sha256sums=('122a3bbb9dd57d1a15b6fc267c33d373f72d662cc6d21574a28b2579928aff0e')
 
-package() {
-    local _uuid="hide-universal-access@akiirui.github.io"
-    local _destdir="$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
+prepare() {
+  # Patch for Gnome 42
+  sed -i 's/    "41"/    "41",\n    "42"/g' metadata.json
+}
 
-    install --directory "$_destdir"
-    install --target-directory "$_destdir" --mode 644 metadata.json *.js
+package() {
+  local _uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
+  local _destdir="${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
+  install -Dm644 -t "${_destdir}" metadata.json *.js
 }
