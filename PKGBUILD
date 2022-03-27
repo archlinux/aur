@@ -1,7 +1,7 @@
 # Maintainer: Mario Oenning <mo-son at mailbox dot org>
 
 pkgname=pacseek
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc='A terminal user interface for searching and installing Arch Linux packages'
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/moson-mo/$pkgname"
 license=('GPL2')
 makedepends=('go')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('f8b13f99884675b03ebd09efa391866cbb1a9be1818bde053ec042843e7830c5')
+sha256sums=('f57df74eeb9dc49858584f5e5171eec40f311e283c531b7d059c4f0a02bd3163')
 
 prepare(){
   cd "$pkgname-$pkgver"
@@ -35,4 +35,7 @@ package() {
 
   # license
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # .desktop
+  install -Dm644 "assets/$pkgname.desktop" "$pkgdir/usr/share/applications/org.moson.$pkgname.desktop"
 }
