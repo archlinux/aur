@@ -1,16 +1,17 @@
 pkgbase = python-pytest-base-url
 	pkgdesc = pytest plugin for URL based testing
-	pkgver = 1.4.2
-	pkgrel = 3
+	pkgver = 2.0.0
+	pkgrel = 1
 	url = https://github.com/pytest-dev/pytest-base-url
 	arch = any
 	license = MPL2
 	checkdepends = python-pytest-localserver
-	makedepends = python-setuptools-scm
-	makedepends = git
+	makedepends = python-build
+	makedepends = python-install
+	makedepends = python-poetry-core
 	depends = python-pytest
 	depends = python-requests
-	source = git+https://github.com/pytest-dev/pytest-base-url.git?#tag=v1.4.2
-	sha512sums = SKIP
+	source = https://github.com/pytest-dev/pytest-base-url/archive/v2.0.0.tar.gz
+	sha512sums = 91bccc0809050552feef9e0445e16433f5f5ab45bbc69e2b88ad49ddfdb9304f46a039760c3dc052b38b1954412059fceec346f14add7dc9968692610a1209ba
 
 pkgname = python-pytest-base-url
