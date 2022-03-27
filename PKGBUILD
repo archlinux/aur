@@ -1,6 +1,6 @@
 # Maintainer: Simeon Schaub <simeondavidschaub99@gmail.com>
 pkgname=juliaup
-pkgver=1.5.38
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="An experimental Julia version manager"
 arch=('x86_64' 'x86' 'aarch64')
@@ -13,7 +13,7 @@ optdepends=()
 provides=('julia')
 conflicts=('julia' 'julia-bin')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-md5sums=('4c0b8ff23de20ae4cf4e66f9c5106bbd')
+md5sums=('309e5c74263b651b00025e2008f4a63a')
 
 build() {
   cd "${srcdir}/$pkgname-$pkgver"
