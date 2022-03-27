@@ -1,0 +1,3 @@
+post_install() {
+echo "Some emulated systems require the provision of original machine ROMs. These are not included and may be located in either /usr/local/share/CLK/ or /usr/share/CLK/. files should look like ROMImages folder in src"
+}
