@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-mainline-anbox-git
-pkgver=5.17.r11138.gf022814633e1
+pkgver=5.17.r11406.gf82da161ea75
 pkgrel=1
 pkgdesc='Linux Mainline'
 url="https://www.kernel.org"
@@ -16,7 +16,7 @@ makedepends=(
 options=('!strip')
 _srcname=linux-mainline-anbox
 source=(
-  'git+https://github.com/torvalds/linux'
+  "$_srcname::git+https://github.com/torvalds/linux"
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
@@ -38,7 +38,7 @@ prepare() {
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
-  echo "${pkgbase#linux}" > localversion.20-pkgname
+  echo "${_srcname#linux}" > localversion.20-pkgname
 
   local src
   for src in "${source[@]}"; do
@@ -52,6 +52,7 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
   make olddefconfig
+  cat .config > ../config # Prevent stagnation
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
@@ -81,7 +82,7 @@ _package() {
   install -Dm644 "$(make -s image_name)" "$modulesdir/vmlinuz"
 
   # Used by mkinitcpio to name the kernel
-  echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
+  echo "$_srcname" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
   make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
@@ -187,15 +188,15 @@ _package-docs() {
 
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/share/doc"
-  ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
+  ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$_srcname"
 }
 
 
-pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
+pkgname=("$_srcname" "$_srcname-headers" "$_srcname-docs")
 for _p in "${pkgname[@]}"; do
   eval "package_$_p() {
-    $(declare -f "_package${_p#$pkgbase}")
-    _package${_p#$pkgbase}
+    $(declare -f "_package${_p#$_srcname}")
+    _package${_p#$_srcname}
   }"
 done
 
