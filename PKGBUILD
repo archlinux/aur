@@ -1,8 +1,9 @@
-# Maintainer: Brad Erhart <tocusso underscore malty at aleeas dot com>
+# Maintainer: Manuel Hüsers <aur@huesers.de>
+# Contributor: Brad Erhart <tocusso underscore malty at aleeas dot com>
 
 pkgname='gvisor-bin'
 _pkgname='runsc'
-pkgver=20220208.0
+pkgver=20220228.0
 pkgrel=1
 pkgdesc='OCI container sandbox runtime focused on security, efficiency, and ease of use'
 arch=('x86_64')
@@ -18,7 +19,7 @@ conflicts=(
 	"$_pkgname"
 )
 source=("$pkgname-$pkgver::https://storage.googleapis.com/${pkgname%-bin}/releases/release/${pkgver%.[0-9]}/$CARCH/$_pkgname")
-b2sums=('9238010bca4a4330ae607cb2f09729f1b9aea8107a62809b7e2b68d910ea2f39055cfc6fe486397dc2eb50e39392122e264cf4def29b8296032b48f38e8b1502')
+sha512sums=('00b65f872785f77d61c789c4589e56d085697ef6d6c89370dceca0d464df7d267a65b2fcd63bd7513910b28e72cc9f22991139c262b42c84a25f0f55136ba736')
 
 package() {
 	install -Dm 755 "$pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
