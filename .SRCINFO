@@ -1,19 +1,19 @@
 pkgbase = raxml-ng
-	pkgdesc = A phylogenetic tree inference tool which uses maximum-likelihood (ML) optimality criterion
-	pkgver = 1.0.3
-	pkgrel = 1
+	pkgdesc = A phylogenetic tree inference tool which uses maximum-likelihood (ML) optimality criterion. https://doi.org/10.1093/bioinformatics/btz305
+	pkgver = 1.1.0
+	pkgrel = 19
 	url = https://github.com/amkozlov/raxml-ng
 	arch = x86_64
 	license = AGPL3
-	checkdepends = gmock
-	checkdepends = gtest
 	makedepends = bison
+	makedepends = make
 	makedepends = cmake
 	makedepends = flex
-	makedepends = git
 	makedepends = gmp
+	makedepends = gtest
+	makedepends = git
 	depends = gcc-libs
-	source = https://github.com/amkozlov/raxml-ng/releases/download/1.0.3/raxml-ng_v1.0.3_linux_x86_64_MPI.zip
-	sha256sums = 62e56d0249488b450d48d89ba63c0c56dae02f3de896d03c06352a39bc576798
+	source = git+https://github.com/amkozlov/raxml-ng.git#tag=1.1.0
+	sha256sums = SKIP
 
 pkgname = raxml-ng
