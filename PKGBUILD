@@ -2,7 +2,7 @@
 
 pkgname=elpa
 PkgName=ELPA
-pkgver=2021.11.001
+pkgver=2021.11.002
 _pkgver=${pkgver}
 pkgrel=1
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ depends=('scalapack' 'python-mpi4py' 'python-numpy')
 makedepends=('gcc-fortran' 'vim' 'cython')
 provides=('elpa')
 source=("$url/software/tarball-archive/Releases/$_pkgver/$pkgname-$_pkgver.tar.gz")
-sha256sums=('fb361da6c59946661b73e51538d419028f763d7cb9dacf9d8cd5c9cd3fb7802f')
+sha256sums=('576f1caeed7883b81396640fda0f504183866cf6cbd4bc71d1383ba2208f1f97')
 options=(!makeflags !buildflags)
 
 prepare() {
