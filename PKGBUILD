@@ -3,7 +3,7 @@
 
 pkgname=kos
 pkgver=0.0.18
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple SUID tool written in C++'
 arch=('x86_64')
 url='https://github.com/TruncatedDinosour/kos'
@@ -28,7 +28,7 @@ build() {
         -std=c++11 \
         -Wall -Wextra -Wpedantic -Wshadow -Werror -pedantic \
         -march=native -pipe -D_KOS_VERSION_="\"$pkgver\"" \
-        ./src/main.cc -o "${DESTDIR}kos" $(pkg-config --cflags --libs libxcrypt)
+        ./src/main.cpp -o "${DESTDIR}kos" $(pkg-config --cflags --libs libxcrypt)
 }
 
 package() {
