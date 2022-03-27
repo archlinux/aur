@@ -3,7 +3,7 @@
 pkgname=python-xhtml2pdf
 _name=${pkgname#python-}
 pkgver=0.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A library for converting HTML into PDFs using ReportLab"
 arch=(any)
 url="https://github.com/xhtml2pdf/xhtml2pdf"
@@ -12,7 +12,8 @@ depends=(python-arabic-reshaper
          python-bidi
          python-reportlab
          python-pypdf3
-         python-html5lib)
+         python-html5lib
+		 python-svglib)
 makedepends=(python-setuptools
              python-sphinx_rtd_theme
 #            texlive-latexextra
