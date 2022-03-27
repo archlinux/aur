@@ -3,7 +3,7 @@
 _gitname=ton
 pkgname=ton-git
 pkgver=r205.9875f02
-pkgrel=3
+pkgrel=4
 pkgdesc='The next gen network to unite all blockchains and the existing Internet'
 arch=('any')
 url='https://github.com/newton-blockchain/ton'
@@ -14,11 +14,11 @@ makedepends=('git'
              'gsl')
 provides=('ton')
 conflicts=('ton')
-source=('git://github.com/newton-blockchain/ton.git'
-        'git://github.com/abseil/abseil-cpp.git'
-        'git://github.com/google/crc32c.git'
-        'git://github.com/ton-blockchain/libRaptorQ.git'
-        'git://github.com/facebook/rocksdb.git')
+source=('git+https://github.com/newton-blockchain/ton.git'
+        'git+https://github.com/abseil/abseil-cpp.git'
+        'git+https://github.com/google/crc32c.git'
+        'git+https://github.com/ton-blockchain/libRaptorQ.git'
+        'git+https://github.com/facebook/rocksdb.git')
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
