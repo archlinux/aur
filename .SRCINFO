@@ -1,0 +1,16 @@
+pkgbase = gnome-randr-rust
+	pkgdesc = xrandr for Gnome/wayland, on distros that don't support wlr-randr
+	pkgver = 0.1.1.44.g688e0c2
+	pkgrel = 1
+	url = https://github.com/maxwellainatchi/gnome-randr-rust
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = gnome-randr
+	conflicts = gnome-randr
+	source = gnome-randr::git+https://github.com/maxwellainatchi/gnome-randr-rust.git
+	sha256sums = SKIP
+
+pkgname = gnome-randr-rust
