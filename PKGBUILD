@@ -1,15 +1,15 @@
 # Maintainer: Malte Jürgens <maltejur@dismail.de>
 
 pkgname=ikea-smartlight-git
-pkgver=52b22aa735d1f09a158a69b18daf9bb3032dbcc8
+pkgver=7ad5763852f2163c3bd50ef9de0663079e9dfee7
 pkgrel=1
 pkgdesc="python framework for controlling the Ikea smart lights (tradfri) "
 arch=("x86_64")
-url="https://github.com/slokhorst/ikea-smartlight"
+url="https://github.com/maltejur/ikea-smartlight/tree/fix_KeyError"
 license=("GPL-3.0")
 depends=(python python-tqdm libcoap)
-source=("$pkgname-$pkgver.tar.gz::https://github.com/slokhorst/ikea-smartlight/archive/52b22aa735d1f09a158a69b18daf9bb3032dbcc8.tar.gz")
-sha256sums=("93fc04d21fc62d571b5069c5df4b631510c6f74fc362a5577f9ee10adc11fd6e")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/maltejur/ikea-smartlight/archive/7ad5763852f2163c3bd50ef9de0663079e9dfee7.tar.gz")
+sha256sums=("9c4acd6df33f77e2492f9c56876793c4eafbfd2dcbac9a1238441efab5ed7c78")
 
 build() {
   cd ikea-smartlight-$pkgver
