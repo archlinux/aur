@@ -1,6 +1,6 @@
 pkgbase = baloo-git
 	pkgdesc = A framework for searching and managing metadata
-	pkgver = v5.71.0.rc1.r7.ga0b53673
+	pkgver = v5.71.0.rc1.r252.g1eed0fcb
 	pkgrel = 1
 	url = https://invent.kde.org/frameworks/baloo
 	arch = x86_64
@@ -20,4 +20,3 @@ pkgbase = baloo-git
 	md5sums = SKIP
 
 pkgname = baloo-git
-
