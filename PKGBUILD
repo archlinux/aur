@@ -74,15 +74,18 @@
 # Enable compiling with LLVM
 : "${_use_llvm_lto:=""}"
 
+# Enable debug options
+: "${_debug:=""}"
+
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=5.16
 _minor=17
 _srcname=linux-${_major}
-_clr=${_major}.16-1135
+_clr=${_major}.17-1136
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
@@ -225,6 +228,14 @@ prepare() {
                        --enable HAVE_GCC_PLUGINS
     fi
 
+    if [ -n "$_debug" ]; then
+        scripts/config --enable DEBUG_INFO \
+                       --enable DEBUG_INFO_BTF \
+                       --enable DEBUG_INFO_DWARF4 \
+                       --enable PAHOLE_HAS_SPLIT_BTF \
+                       --enable DEBUG_INFO_BTF_MODULES
+    fi
+
     make ${BUILD_FLAGS[*]} olddefconfig
     diff -u $srcdir/$pkgbase/config .config || :
 
@@ -329,7 +340,9 @@ _package-headers() {
     install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
     # required when DEBUG_INFO_BTF_MODULES is enabled
-    #install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+    if [ -n "$_debug" ]; then
+        install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
+    fi
 
     echo "Installing headers..."
     cp -t "$builddir" -a include
