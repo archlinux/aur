@@ -1,7 +1,7 @@
 # Maintainer: Josh Klecka <makamakamaka5 at gmail dot com>
 
 pkgname="zfs-utils-openrc"
-pkgver="2.1.3"
+pkgver="2.1.4"
 pkgdesc="OpenRC init scripts for the Zettabyte File System."
 pkgrel=1
 arch=('any')
@@ -12,7 +12,6 @@ sha256sums=("b61b644547793f409cafd6538a52d78f2f72b0cd013e88340882457c8c9b43fd"
 validpgpkeys=('4F3BA9AB6D1F8D683DC2DFB56AD860EED4598027'  # Tony Hutter (GPG key for signing ZFS releases) <hutter2@llnl.gov>
               'C33DF142657ED1F7C328A2960AB9E991C6AF658B') # Brian Behlendorf <behlendorf1@llnl.gov>
 license=("CDDL")
-depends=("zfs-utils=${pkgver}" "openrc")
 provides=('init-zfs-utils')
 conflicts=('init-zfs-utils')
 
@@ -49,6 +48,8 @@ build() {
 }
 
 package() {
+    depends=("zfs-utils=${pkgver}" "openrc")
+    
     # Run make install only for the init scripts
     cd "${srcdir}"/zfs-${pkgver}/etc/init.d
 
