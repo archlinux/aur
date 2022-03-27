@@ -13,6 +13,8 @@ makedepends=(
   cpio bc kmod libelf git pahole
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
 )
+provides=(linux-mainline-anbox)
+conflicts=(linux-mainline-anbox)
 options=('!strip')
 _srcname=linux-mainline-anbox
 source=(
