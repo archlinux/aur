@@ -3,8 +3,8 @@
 
 pkgname=gmid-bin
 _pkgname=${pkgname%-*}
-pkgver=1.8.1
-pkgrel=2
+pkgver=1.8.3
+pkgrel=1
 pkgdesc='Fast Gemini server written with security in mind.'
 arch=('x86_64')
 url='https://gmid.omarpolo.com'
@@ -18,7 +18,7 @@ source=(
 	'gmid.conf'
 )
 sha256sums=(
-	'7983a89f427bbdfb00ea118ff0471d8291afaa370814d7a93d6be294644592f7'
+	'b9c21bd330c8ed43d2c336b1956481f72a5afe9c45903b47b9a45a8b347c080f'
 	'61450ba6fb7283b03f099e5172cf4e64bf40093ad2bd126b7915940d40922c9a'
 	'4d943727a57dbf5f246963c0f90ccc54919cc2296538457e6b16f29f7580d9d6'
 )
