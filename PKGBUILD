@@ -4,7 +4,7 @@ pkgname=gnome-shell-extension-forge
 _pkgname=forge
 _gnomever=41
 pkgver=41
-pkgrel=1
+pkgrel=2
 pkgdesc="Tiling and Window Manager for Gnome-Shell"
 arch=('any')
 url="https://github.com/jmmaranan/forge"
@@ -16,7 +16,7 @@ sha256sums=('985da153b83be04802033cbbf7f5416a7c5911b4b07ea390ee23a0eb7efd2592')
 
 build() {
     cd ${srcdir}/${_pkgname}-${_gnomever}-${pkgver}/
-    make
+    make build
 }
 
 package() {
