@@ -7,7 +7,7 @@ pkgbase = rabbitvcs-caja
 	arch = x86_64
 	license = GPL
 	depends = caja
-	depends = caja-python
+	depends = python-caja
 	depends = dbus-python>=0.80
 	depends = rabbitvcs>=0.18
 	source = https://github.com/rabbitvcs/rabbitvcs/archive/refs/tags/v0.18.tar.gz

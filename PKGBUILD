@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="Caja front-end for RabbitVCS"
 arch=('i686' 'x86_64')
 url="http://rabbitvcs.org/"
-depends=('caja' 'caja-python' 'dbus-python>=0.80' "rabbitvcs>=${pkgver}")
+depends=('caja' 'python-caja' 'dbus-python>=0.80' "rabbitvcs>=${pkgver}")
 license=('GPL')
 source=(https://github.com/rabbitvcs/rabbitvcs/archive/v${pkgver}.tar.gz)
 md5sums=('25376cff136ad2fac901ff88e07893ef')
