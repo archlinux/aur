@@ -3,8 +3,8 @@ _base=pyrate-limiter
 pkgname=python-${_base}
 pkgdesc="Python Rate-Limiter using Leaky-Bucket Algorimth Family"
 pkgver=2.6.0
-pkgrel=3
-arch=('any')
+pkgrel=4
+arch=(any)
 url="https://github.com/vutran1710/${_base/-/}"
 license=(MIT)
 depends=(python)
@@ -13,16 +13,18 @@ source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}
 sha512sums=('920c6630e15749a1d5ad438f4f653b34d9cd0942b04e9333af991a48c25746f4b5e7cfec022838a710f73018c8eef2432b994b3c5fd88c7c164e42bb4970e80c')
 
 build() {
-  cd "${_base}-${pkgver}"
+  cd ${_base}-${pkgver}
   python setup.py build
 }
 
 package() {
-  cd "${_base}-${pkgver}"
+  cd ${_base}-${pkgver}
   export PYTHONHASHSEED=0
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
   # For avoid /usr/bin/test exists in filesystem (owned by coreutils)
-  cd "${pkgdir}/usr/bin"
-  rm test
+  # For avoid /usr/bin/cover exists in filesystem (owned by go-tools)
+  # See https://github.com/vutran1710/PyrateLimiter/blob/master/pyproject.toml#L42
+  cd "${pkgdir}/usr"
+  rm -r bin
 }
