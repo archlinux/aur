@@ -2,12 +2,12 @@
 # Contributor: Malte Rabenseifner <mail@malte-rabenseifner.de>
 
 pkgname=icingaweb2
-pkgver=2.9.6
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="Icinga Web 2 Interface"
 license=('GPL')
 arch=('any')
-depends=('php' 'icinga-php-library>=0.6.0' 'icinga-php-thirdparty>=0.10.0')
+depends=('php' 'icinga-php-library>=0.8.0' 'icinga-php-thirdparty>=0.10.0')
 makedepends=('patchutils')
 optdepends=('php-gd: export data to PDF'
             'php-imagick: graphs in PDF exports'
@@ -17,8 +17,8 @@ url="https://icinga.com/"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Icinga/icingaweb2/archive/v$pkgver.tar.gz"
         'https://github.com/Icinga/icingaweb2/pull/4640.patch')
 install='icingaweb2.install'
-sha256sums=('fc161347c5495e3cc38754ff48851dd4b0436fc850bc18e64164083ae6f2d8a0'
-            '71199c0775b94f0269cab557d914ffadcf607c5c004a4ac5e6fff89203e3bfc8')
+sha256sums=('c5f4ec937ef790f3f508ab911ad6c770ffd331cab7c627d66d49ba8a0038a762'
+            'bf664e5aa4d1c8e4f09eb6f0e02dac5805432118bbcf06ec078943910ee3de22')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
