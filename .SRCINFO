@@ -1,7 +1,7 @@
 pkgbase = qbittorrent-enhanced-qt5-git
 	pkgdesc = Bittorrent client using Qt5 and libtorrent-rasterbar, Enhanced Edition mod
 	pkgver = 4.4.2.10.r3.g780ad2c06
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/c0re100/qBittorrent-Enhanced-Edition
 	arch = arm
 	arch = armv6h
@@ -9,7 +9,7 @@ pkgbase = qbittorrent-enhanced-qt5-git
 	arch = aarch64
 	arch = i686
 	arch = x86_64
-	license = custom:GPL_with_OpenSSL_exception
+	license = custom:GPL2_with_OpenSSL_exception
 	makedepends = boost
 	makedepends = cmake
 	makedepends = ninja

@@ -2,11 +2,11 @@
 
 pkgname='qbittorrent-enhanced-qt5-git'
 pkgver=4.4.2.10.r3.g780ad2c06
-pkgrel=1
+pkgrel=2
 pkgdesc='Bittorrent client using Qt5 and libtorrent-rasterbar, Enhanced Edition mod'
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
 url='https://github.com/c0re100/qBittorrent-Enhanced-Edition'
-license=('custom:GPL_with_OpenSSL_exception')
+license=('custom:GPL2_with_OpenSSL_exception')
 depends=('dbus'
          'gcc-libs'
          'glibc'
