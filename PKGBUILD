@@ -2,7 +2,7 @@
 
 _pkgname=pmdarima
 pkgname=python-$_pkgname
-pkgver=1.8.4
+pkgver=1.8.5
 pkgrel=1
 pkgdesc="ARIMA estimators for Python"
 arch=('x86_64' 'aarch64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python-scikit-learn' 'python-statsmodels' 'python-urllib3')
 makedepends=('python-setuptools' 'cython')
 source=($pkgname-$pkgver.tar.gz::"https://github.com/alkaline-ml/pmdarima/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('5530fcb2b5c5f288120edb651f803e52625773dc513914a7f7cae14a447fb3b3')
+sha256sums=('6145dca73d5e3388460b0ed09afca9b38be944910099bd526a5e53d8eee4d6b8')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
