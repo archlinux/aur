@@ -3,7 +3,7 @@
 pkgname=clunk-vangers-git
 _pkgname=clunk
 pkgver=r148.6d4cbbe
-pkgrel=1
+pkgrel=2
 pkgdesc="Vangers for of clunk library"
 arch=('x86_64')
 url="https://github.com/stalkerg/$_pkgname"
@@ -26,5 +26,7 @@ build() {
 
 package() {
     install -d $pkgdir/usr/lib
+    install -d $pkgdir/usr/include/clunk
     cp $srcdir/$_pkgname/lib$_pkgname.so $pkgdir/usr/lib/lib$_pkgname.so
+    cp $srcdir/$_pkgname/$_pkgname.h $pkgdir/usr/include/$_pkgname/$_pkgname.h
 }
