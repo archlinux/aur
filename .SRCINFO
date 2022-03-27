@@ -1,13 +1,14 @@
-pkgbase = easytag-opensuse-ogg-patch
-	pkgdesc = Simple application for viewing and editing tags in audio files, using OpenSUSE patch
+pkgbase = easytag-ogg-patch-fixed
+	pkgdesc = Simple application for viewing and editing tags in audio files, using OpenSUSE patch and some metadata fixes
 	pkgver = 2.4.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://wiki.gnome.org/Apps/EasyTAG
 	arch = x86_64
 	license = GPL
 	makedepends = intltool
 	makedepends = itstool
 	makedepends = python
+	makedepends = patch
 	depends = id3lib
 	depends = libid3tag
 	depends = gtk3
@@ -22,8 +23,9 @@ pkgbase = easytag-opensuse-ogg-patch
 	conflicts = easytag
 	source = https://download.gnome.org/sources/easytag/2.4/easytag-2.4.3.tar.xz
 	source = 0001-easytag-revert-open-handle-ogg.rpatch
+	source = 0002-metadata-fix.patch
 	sha256sums = fc51ee92a705e3c5979dff1655f7496effb68b98f1ada0547e8cbbc033b67dd5
 	sha256sums = 114188c02e3641374b7c6fa5a662215a66fbe6d55e195d192a8856aab3ebdca0
+	sha256sums = 60f5b46f8868968c07657176df1900d895d88ff8027ab69d836c9d4326b13af0
 
-pkgname = easytag-opensuse-ogg-patch
-
+pkgname = easytag-ogg-patch-fixed
