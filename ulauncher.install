@@ -1,14 +1,13 @@
 post_install() {
   echo ""
   echo "Enable the service:"
-  echo "systemctl --user enable --now ulauncher.service"
+  echo "systemctl --user enable --now ulauncher"
   echo ""
 }
  
 post_upgrade() {
   echo ""
   echo "Restart the service:"
-  echo "systemctl --user daemon-reload"
-  echo "systemctl --user restart ulauncher.service"
+  echo "systemctl --user daemon-reload && systemctl --user restart ulauncher"
   echo ""
 }
