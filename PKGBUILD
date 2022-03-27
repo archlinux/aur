@@ -2,8 +2,8 @@
 
 pkgname=python-pkutils
 _pkgname=pkutils
-pkgver=2.0.0
-pkgrel=2
+pkgver=3.0.2
+pkgrel=1
 pkgdesc="A python packaging utility library"
 arch=(any)
 url='https://github.com/reubano/pkutils'
@@ -11,7 +11,7 @@ license=(MIT)
 depends=('python' 'python-semver')
 makedepends=('python-setuptools')
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/reubano/$_pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=("42e02c0f022ae6663000de741b818e226a60c4c6983614c87770c0d5321bf217")
+sha256sums=('778360902428b3335b187d7e273e8bcfef900c34aeb864883373cc1aea5a0275')
 
 build() {
   cd $_pkgname-$pkgver
