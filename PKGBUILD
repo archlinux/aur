@@ -1,8 +1,8 @@
 
 _pkgname=minq-xvideos
 pkgname="${_pkgname}-git"
-pkgver=r37.8f9ae5ef0136fb87650736c6e248abd8f0619192
-pkgrel=2
+pkgver=r38.46567547766896d77195f941be2e5e43197fd903
+pkgrel=1
 epoch=
 pkgdesc='Explore xvideos in your terminal! Videos can be either played in the terminal or in any external video player. Undesirable videos can be blocked.'
 arch=(any)
