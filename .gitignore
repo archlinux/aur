@@ -5,6 +5,7 @@
 src/
 pkg/
 
+dconvert*
 gfetch*
 ukbconv*
 ukbfetch*
