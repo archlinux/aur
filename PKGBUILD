@@ -1,11 +1,11 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.954
+pkgver=mainline.0.965
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
 url="https://yuzu-emu.org/"
-license=('GPL2')
+license=('GPL3')
 depends=('qt5-webengine>=5.15')
 makedepends=(
 	'boost>=1.73'
@@ -37,13 +37,13 @@ source=(
 	'yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git'
 	'citra-soundtouch::git+https://github.com/citra-emu/ext-soundtouch.git'
 	'git+https://github.com/ReinUsesLisp/sirit.git'
-	'unbundle-cubeb.patch'
-	'unbundle-discord-rpc.patch'
-	'unbundle-dynarmic.patch'
-	'unbundle-httplib.patch'
-	'unbundle-inih.patch'
-	'unbundle-spirv-headers.patch'
-	'unbundle-xbyak.patch'
+	"$pkgname-unbundle-cubeb.patch"
+	"$pkgname-unbundle-discord-rpc.patch"
+	"$pkgname-unbundle-dynarmic.patch"
+	"$pkgname-unbundle-httplib.patch"
+	"$pkgname-unbundle-inih.patch"
+	"$pkgname-unbundle-spirv-headers.patch"
+	"$pkgname-unbundle-xbyak.patch"
 )
 b2sums=(
 	'SKIP'
@@ -69,13 +69,13 @@ prepare() {
 	git submodule update
 	install -Dm644 "../gamedb-$(date -I).json" ../build/dist/compatibility_list/compatibility_list.json
 	ln -sr .git ../build
-	patch -Np1 < ../unbundle-cubeb.patch
-	patch -Np1 < ../unbundle-discord-rpc.patch
-	patch -Np1 < ../unbundle-dynarmic.patch
-	patch -Np1 < ../unbundle-httplib.patch
-	patch -Np1 < ../unbundle-inih.patch
-	patch -Np1 < ../unbundle-spirv-headers.patch
-	patch -Np1 < ../unbundle-xbyak.patch
+	patch -Np1 < ../$pkgname-unbundle-cubeb.patch
+	patch -Np1 < ../$pkgname-unbundle-discord-rpc.patch
+	patch -Np1 < ../$pkgname-unbundle-dynarmic.patch
+	patch -Np1 < ../$pkgname-unbundle-httplib.patch
+	patch -Np1 < ../$pkgname-unbundle-inih.patch
+	patch -Np1 < ../$pkgname-unbundle-spirv-headers.patch
+	patch -Np1 < ../$pkgname-unbundle-xbyak.patch
 	rm .gitmodules
 }
 
