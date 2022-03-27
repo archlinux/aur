@@ -1,0 +1,14 @@
+pkgbase = ikea-smartlight-git
+	pkgdesc = python framework for controlling the Ikea smart lights (tradfri)
+	pkgver = 52b22aa735d1f09a158a69b18daf9bb3032dbcc8
+	pkgrel = 1
+	url = https://github.com/slokhorst/ikea-smartlight
+	arch = x86_64
+	license = GPL-3.0
+	depends = python
+	depends = python-tqdm
+	depends = libcoap
+	source = ikea-smartlight-git-52b22aa735d1f09a158a69b18daf9bb3032dbcc8.tar.gz::https://github.com/slokhorst/ikea-smartlight/archive/52b22aa735d1f09a158a69b18daf9bb3032dbcc8.tar.gz
+	sha256sums = 93fc04d21fc62d571b5069c5df4b631510c6f74fc362a5577f9ee10adc11fd6e
+
+pkgname = ikea-smartlight-git
