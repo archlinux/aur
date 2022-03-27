@@ -6,7 +6,7 @@
 #_malloc=jemalloc # tcmalloc
 
 pkgname=tor-git
-pkgver=0.4.7.0.alpha.dev.r327.g82168e5
+pkgver=0.4.7.5.alpha.r1.g84fc754
 pkgrel=1
 pkgdesc="An anonymizing overlay network (development version)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
