@@ -1,12 +1,14 @@
 pkgbase = kapidox-git
 	pkgdesc = Frameworks API Documentation Tools
-	pkgver = r474.525886b
+	pkgver = r566.d385445
 	pkgrel = 1
 	url = https://community.kde.org/Frameworks
 	arch = any
 	groups = kf5
 	license = LGPL
-	makedepends = cmake
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	makedepends = git
 	makedepends = qt5-base
 	depends = python-jinja
@@ -17,4 +19,3 @@ pkgbase = kapidox-git
 	sha256sums = SKIP
 
 pkgname = kapidox-git
-
