@@ -1,0 +1,12 @@
+pkgbase = zecwallet-light-cli-git
+	pkgdesc = A command line ZecWallet light client
+	pkgver = 1.7.7.r1.g4e27257
+	pkgrel = 1
+	url = https://github.com/adityapk00/zecwallet-light-cli
+	arch = any
+	license = MIT
+	makedepends = rust
+	source = zecwallet-light-cli-git::git+https://github.com/adityapk00/zecwallet-light-cli.git
+	sha256sums = SKIP
+
+pkgname = zecwallet-light-cli-git
