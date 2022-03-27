@@ -3,7 +3,7 @@
 
 pkgname=gmid-git
 _pkgname=${pkgname%-*}
-pkgver=1.8.1.r20.ga00e67f
+pkgver=1.8.3.r0.g1a04137
 pkgrel=1
 pkgdesc='Fast Gemini server written with security in mind.'
 arch=('x86_64')
