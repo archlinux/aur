@@ -2,7 +2,7 @@
 # thanks to celogeek, sseneca, dr460nf1r3, dr460nf1r3 and AverytheFurry for pointing out multiple things
 
 pkgname=fluffychat
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Chat with your friends"
 arch=('x86_64' 'aarch64')
@@ -14,12 +14,13 @@ makedepends=('clang'
              'cmake'
              'git'
              'unzip'
-             'flutter')
+             'flutter'
+             'webkit2gtk')
 optdepends=('libolm: E2E Encryption support')
 provides=("$pkgname")
 conflicts=("$pkgname")
 source=("fluffychat-v${pkgver}.tar.gz::https://gitlab.com/famedly/fluffychat/-/archive/v${pkgver}/fluffychat-v${pkgver}.tar.gz")
-sha256sums=('c1ef22f69aaaea09e8d0637d9cd854cd76b38840e823485783651b9b5f4ce991')
+sha256sums=('a9953aefe056ce999629d44d97fc6287f5cc852b7a60d1a246f3f34e88b46edc')
 
 prepare() {
   #####
@@ -29,7 +30,7 @@ prepare() {
   export PATH
 
   msg2 "Copying '/opt/flutter' to '${_flutter_dir}' ..."
-  cp -a /opt/flutter "${_flutter_dir}"
+  cp -af /opt/flutter "${_flutter_dir}"
   #####
 
   flutter config --no-analytics
