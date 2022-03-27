@@ -1,6 +1,6 @@
 pkgbase = dupeguru
 	pkgdesc = Find duplicate files with various contents, using perceptual diff for pictures
-	pkgver = 4.2.0
+	pkgver = 4.2.1
 	pkgrel = 1
 	url = https://dupeguru.voltaicideas.net/
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = dupeguru
 	conflicts = dupeguru-se
 	conflicts = dupeguru-pe
 	conflicts = dupeguru-me
-	source = https://github.com/arsenetar/dupeguru/archive/refs/tags/4.2.0.tar.gz
-	md5sums = 88a4166a4743dce11dfd3d3537306dd2
+	source = https://github.com/arsenetar/dupeguru/archive/refs/tags/4.2.1.tar.gz
+	md5sums = 4a94c599a68bb7c6555feb446268c651
 
 pkgname = dupeguru
