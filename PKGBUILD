@@ -1,12 +1,12 @@
 # Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
 
 pkgname='qbittorrent-enhanced-qt5-git'
-pkgver=4.4.2.10.r0.gdb18496c9
-pkgrel=4
+pkgver=4.4.2.10.r3.g780ad2c06
+pkgrel=1
 pkgdesc='Bittorrent client using Qt5 and libtorrent-rasterbar, Enhanced Edition mod'
 arch=('arm' 'armv6h' 'armv7h' 'aarch64' 'i686' 'x86_64')
 url='https://github.com/c0re100/qBittorrent-Enhanced-Edition'
-license=('custom:GPL with OpenSSL exception')
+license=('custom:GPL_with_OpenSSL_exception')
 depends=('dbus'
          'gcc-libs'
          'glibc'
