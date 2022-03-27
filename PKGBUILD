@@ -1,7 +1,7 @@
 # Maintainer: Jouke Witteveen <j.witteveen@gmail.com>
 
 pkgname=xlogin-git
-pkgver=13
+pkgver=14
 pkgrel=1
 pkgdesc="X login service for systemd"
 url="https://github.com/joukewitteveen/xlogin"
@@ -11,7 +11,7 @@ depends=("systemd" "xorg-server" "bash")
 makedepends=("git")
 provides=("xlogin")
 conflicts=("xlogin")
-source=("git://github.com/joukewitteveen/xlogin.git")
+source=("git+https://github.com/joukewitteveen/xlogin.git")
 md5sums=("SKIP")
 
 pkgver() {
