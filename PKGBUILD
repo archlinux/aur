@@ -8,7 +8,7 @@ depends=(libadwaita adw-gtk3)
 install=$pkgname.install
 source=(extract-libadwaita-theme.{hook,sh} index.theme.{light,dark})
 md5sums=(
-   '27f956e8149b73d2937a09cdb010f4ec'
+   '328eb9f69bf98566a5c4d55e0fdff3c3'
    'c65c89f2a735b088ed599853f53074bd'
    '16ace27d8e4e79f3d1ba92c1a2c071ad'
    '895d966bc68af8df0b9c0c85d8b29335'
