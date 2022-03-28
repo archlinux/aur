@@ -2,7 +2,7 @@
 # Contributor: Daniel M. Capella <polycitizen@gmail.com>
 
 pkgname=gitleaks
-pkgver=8.5.1
+pkgver=8.5.2
 pkgrel=1
 pkgdesc='Audit Git repos for secrets and keys'
 url=https://github.com/zricethezav/gitleaks
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-b2sums=('c865ebcb117d8079fa4364caf2dfc83a3f7a2abfa8968f1ebd747b27a29ace940536e3fa92857c5d73a16d45e8562392bc5c9f2307f4777624a0984c855720a0')
+b2sums=('0530b4ad5ab318e65e8daaf52eb7ac06ffa1b9413947037d6f8dab8d5e96af47460047af9521eb488140cb6119ff5b40755686c6a49d1274adeb2b7269ef7ccb')
 
 build() {
   cd "$pkgname-$pkgver"
