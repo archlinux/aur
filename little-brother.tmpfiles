@@ -1,0 +1,4 @@
+d /var/lib/little-brother - little-brother little-brother
+d /var/log/little-brother - little-brother little-brother
+d /var/spool/little-brother - little-brother little-brother
+d /run/little-brother - little-brother little-brother
