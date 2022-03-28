@@ -1,12 +1,11 @@
-diff -Naur re-0.6.0.orig/Makefile re-0.6.0/Makefile
---- re-0.6.0.orig/Makefile	2019-01-22 21:09:25.991849231 -0500
-+++ re-0.6.0/Makefile	2019-01-22 21:11:11.580636432 -0500
-@@ -65,7 +65,7 @@
+--- re-2.1.1.orig/Makefile	2022-03-12 15:42:35.000000000 +0900
++++ re-2.1.1/Makefile	2022-03-28 14:55:41.972025186 +0900
+@@ -87,7 +87,7 @@
  
- $(SHARED): $(OBJS)
+ $(SHARED): $(OBJS) libre.pc
  	@echo "  LD      $@"
--	@$(LD) $(LFLAGS) $(SH_LFLAGS) $^ $(LIBS) -o $@
-+	@$(LD) $(LDFLAGS) $(LFLAGS) $(SH_LFLAGS) $^ $(LIBS) -o $@
+-	$(HIDE)$(LD) $(LFLAGS) $(SH_LFLAGS) $(OBJS) $(LIBS) -o $@
++	$(HIDE)$(LD) $(LDFLAGS) $(LFLAGS) $(SH_LFLAGS) $(OBJS) $(LIBS) -o $@
  
  
- $(STATIC): $(OBJS)
+ $(STATIC): $(OBJS) libre.pc
