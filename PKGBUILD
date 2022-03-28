@@ -1,7 +1,7 @@
 # Maintainer: Marcos Gutiérrez Alonso <margual56@gmail.com>
 
 pkgname=minesweeper-cli-git
-pkgver=1.0.2
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Command Line version of MineSweeper for Unix-like systems"
 arch=('i686' 'x86_64')
