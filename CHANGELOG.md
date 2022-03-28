@@ -1,4 +1,12 @@
-## v1.6.0.dev
+## v1.6.1.dev
+
+#### Fixed:
+
+* Fixes an error when querying space usage from Dropbox servers for team accounts.
+* Fixes reading from the database on SQLite versions pre 3.23.0 (2018-04-02), for
+  example on macOS High Sierra.
+
+## v1.6.0
 
 #### Changed:
 
@@ -8,10 +16,10 @@
 * Re-enabled updating from versions older than 1.5.0.
 * Improved file integrity checks after upload or download.
 * Better parallelize CPU intensive work when indexing local changes. This improves
-  performance on multi-core CPUs.
+  performance on multicore CPUs.
 * Migrate the Linux GUI from PyQt5 to PyQt6.
 
-# Fixed:
+#### Fixed:
 
 * Fixes an issue where upload sync errors could continue to be reported after the local
   file was deleted if the deletion occurred while sync was not running.

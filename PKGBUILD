@@ -2,7 +2,7 @@
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
 pkgname=maestral
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='Open-source Dropbox client'
 arch=('any')
@@ -32,7 +32,7 @@ checkdepends=('python-pytest' 'python-pytest-benchmark')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'maestral@.service')
-sha256sums=('9b24bc9094cd4a26b7464d7e3b789a3e1f246dbe7ca11bbad3430b44f334a281'
+sha256sums=('c0d70516ef79a0bae16f671551a007bb529b6a14aa8ad560046518036a8d7f1e'
             '79f48787cec441c252b1fcbecbce1342bbac1de275e90fe9dfbd1b9cad2ba2c8')
 
 build() {
