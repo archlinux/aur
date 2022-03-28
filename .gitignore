@@ -5,6 +5,7 @@ patch-?.*.*.xz
 patch-?.*.*.sign
 
 patch-?.*-ck?.xz
+xanmod-*.tar.gz
 uksm-?.*.patch
 cjktty-?.*.patch
 

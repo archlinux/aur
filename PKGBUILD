@@ -6,9 +6,9 @@
 
 # last/latest "longterm maintenance" kernel releases
 # https://www.kernel.org/category/releases.html
-# 5.10 Greg Kroah-Hartman & Sasha Levin 2020-12-13 Dec, 2022
-_LLL_VER=5.10
-_LLL_SUBVER=108
+# 5.15 Greg Kroah-Hartman & Sasha Levin 2021-10-31 Oct, 2023
+_LLL_VER=5.15
+_LLL_SUBVER=30
 
 # Bisect debug, v5.4.47 -> v5.4.48
 _Bisect_debug=off # on, test, off
@@ -28,20 +28,25 @@ fi
 # see, https://bugs.archlinux.org/task/31187
 _NUMA_disable=y
 
-# Add ck patch set
 # http://ck.kolivas.org/patches/5.0/
-# https://wiki.archlinux.org/index.php/Linux-ck
-_CK_VER=1
-_CK_PATCH_SRC="http://ck.kolivas.org/patches/5.0/${_LLL_VER}/${_LLL_VER}-ck${_CK_VER}/patch-${_LLL_VER}-ck${_CK_VER}.xz"
-_CK_PATCH_PATCH=(
-    #'ck1-patch-for-5.10.80+.patch'
-    'ck2-patch-for-5.10.80+.patch' # test
-)
+# EOL: https://ck-hack.blogspot.com/2021/08/514-and-future-of-muqss-and-ck-once.html
+# xanmod:
+#   ck-hrtimer
+#   Graysky uarches
+#   intel partial Clear Linux patchset
+#   lib_zstd
+#   lrng framework
+_Xan_COMMIT=aa7fde3b9886d0858ffc91cb0f436b52281c01f4
+_Xan_PATCH_SRC="xanmod-$_Xan_COMMIT.tar.gz::https://github.com/xanmod/linux-patches/archive/$_Xan_COMMIT.tar.gz"
+_Xan_PATCH_PATCH=()
 
 # Ultra Kernel Samepage Merging
+# https://github.com/dolohow/uksm
 _UKSM_VER=0.1.2.6
-_UKSM_COMMIT=9b68301484619b60af2515f782160cdfe6c168f3
+_UKSM_COMMIT=c806b3be64f2e6d2d27c8e258179a8794dac29bc
 _UKSM_PATCH_SRC="https://github.com/dolohow/uksm/raw/${_UKSM_COMMIT}/v5.x/uksm-${_LLL_VER}.patch"
+#_UKSM_COMMIT=80eb7b0e83af4e0b19eea5529082bfbdd5b4deae
+#_UKSM_PATCH_SRC="uksm-${_LLL_VER}.patch::https://gitlab.com/sirlucjan/kernel-patches/-/raw/${_UKSM_COMMIT}/${_LLL_VER}/uksm-patches/0001-UKSM-for-${_LLL_VER}.patch"
 _UKSM_PATCH_PATCH=()
 
 # CJKTTY patch 
@@ -49,11 +54,11 @@ _UKSM_PATCH_PATCH=()
 #_CJKTTY_PATCH_URL="https://github.com/torvalds/linux/compare/v${_LLL_VER}...Gentoo-zh:${_LLL_VER}-utf8.patch"
 #_CJKTTY_PATCH_SRC="cjktty-${_LLL_VER}.patch::${_CJKTTY_PATCH_URL}"
 # https://github.com/zhmars/cjktty-patches
-_CJKTTY_COMMIT=3fb0f901fa6a9ff4300335357001819e525fb076
+_CJKTTY_COMMIT=88b6f29be93285221a10ea7d2737f97793754ee4
 _CJKTTY_PATCH_SRC="https://github.com/zhmars/cjktty-patches/raw/${_CJKTTY_COMMIT}/v5.x/cjktty-${_LLL_VER}.patch"
 _CJKTTY_PATCH_PATCH=()
 
-_PATHSET_DESC="ck${_CK_VER} uksm-${_UKSM_VER} and cjktty"
+_PATHSET_DESC="some xanmod patchsets, uksm-${_UKSM_VER} and cjktty"
 
 pkgbase=linux-shmilee
 pkgname=("${pkgbase}" "${pkgbase}-headers")
@@ -75,8 +80,8 @@ source=(
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "https://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
         #"https://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.sign"
-        ${_CK_PATCH_SRC}
-        ${_CK_PATCH_PATCH[@]}
+        ${_Xan_PATCH_SRC}
+        ${_Xan_PATCH_PATCH[@]}
         ${_UKSM_PATCH_SRC}
         ${_UKSM_PATCH_PATCH[@]}
         ${_CJKTTY_PATCH_SRC}
@@ -87,14 +92,13 @@ validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
               '647F28654894E3BD457199BE38DBBDC86092693E' # Greg Kroah-Hartman 
 )
-# https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
-sha256sums=('dcdf99e43e98330d925016985bfbc7b83c66d367b714b2de0cbbfcbf83d8ca43'
+# https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
+sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            '9be86704b6718cad866ce5dc275a22700e4e62ceb8e2913269afb0c68bec2879'
-            '64909f07b404b138945d5d6fd19bf3c62d10adce9f592524d91a3359331a6ace'
-            'fae2b688262050d7780b65af1512ed7b62b0cf13838bc448864398f0945d93e1'
-            '24729e63e08de13039ce7e6637146ec5a5747379ebbd92cdeef744edfad17183'
-            '078837287607800f948e0e26e6a8ba874d856fd37e0063e8975bb562268546c4'
+            '18059d8e3f01ab38b22ddf4c2e0a0a9db50926f6535649f51ee7a86a8542aff1'
+            'ddc05a3deacd9174a8654d2a3ded6fec0e4a853b6702e326d56545a473c3bd02'
+            '7323d58e79dee3bd79431db134afb49e6024f0f63f821eebacf04d3c9d7645da'
+            '97a525e28a270c5e6e5a4fc4ab4920c42ceef2f9921857497ab3c56ec343803e'
             'f4d2c31065975e07c37b56b70452be8583a7ab2e5041bfdb93bcd7dfc3f5d0eb')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -117,7 +121,7 @@ prepare() {
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
   # add upstream patch
-  patch -p1 -i ../patch-${pkgver}
+  patch -Np1 -i ../patch-${pkgver}
 
   # Bisect debug
   if [ "$_Bisect_debug" == "on" ]; then
@@ -125,23 +129,38 @@ prepare() {
     if [ ! -f "${srcdir}/../v${pkgver}-${pkgrel}-$_bcommit" ]; then
       wget "$_bpatch" -O "${srcdir}/../v${pkgver}-${pkgrel}-$_bcommit"
     fi
-    patch -p1 -i "${srcdir}/../v${pkgver}-${pkgrel}-$_bcommit"
+    patch -Np1 -i "${srcdir}/../v${pkgver}-${pkgrel}-$_bcommit"
   fi
-
-  # fix naming schema in EXTRAVERSION of ck patch set
-  sed -i -re "s/^(.EXTRAVERSION).*$/\1 = /" "../patch-${_LLL_VER}-ck${_CK_VER}"
-  # Patch source with ck patch set
-  msg2 "Patching source with ck${_CK_VER} including BFS MuQSS"
-  cp "../patch-${_LLL_VER}-ck${_CK_VER}" "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
-  for p in ${_CK_PATCH_PATCH[@]}; do
-    patch -Ni ../$p "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
-  done
-  patch -Np1 -i "../patch-${_LLL_VER}.${_LLL_SUBVER}-ck${_CK_VER}"
-
   # Bisect debug result
   if [ "$_Bisect_debug" != "on" ]; then
     :
   fi
+
+  msg2 "Patching source with some third-party patchsets in xanmod"
+  _Xan_patch_dir=../linux-patches-"$_Xan_COMMIT"/"linux-${_LLL_VER}.y-xanmod"
+  for p in ${_Xan_PATCH_PATCH[@]}; do
+    patch -Ni ../$p -d $_Xan_patch_dir/
+  done
+  msg2 "Patching with xanmod: CK's high-resolution kernel timers (hrtimer) patchsets ..."
+  for i in $_Xan_patch_dir/ck-hrtimer/0*.patch; do
+    patch -Np1 -i $i
+  done
+  msg2 "Patching with xanmod: Graysky's additional CPU optimizations patchsets ..."
+  for i in $_Xan_patch_dir/graysky/0*.patch; do
+    patch -Np1 -i $i
+  done
+  msg2 "Patching with xanmod: intel partial Clear Linux patchsets ..."
+  for i in $_Xan_patch_dir/intel/0*.patch; do
+    patch -Np1 -i $i
+  done
+  msg2 "Patching with xanmod: ZSTD library for bug fixes and r/w performance patchsets..."
+  for i in $_Xan_patch_dir/lib_zstd/0*.patch; do
+    patch -Np1 -i $i
+  done
+  msg2 "Patching with xanmod: Linux Random Number Generator (LRNG) framework patchsets..."
+  for i in $_Xan_patch_dir/lrng/0*.patch; do
+    patch -Np1 -i $i
+  done
 
   msg2 "Patching source with uksm ${_UKSM_VER} patches"
   cp "../uksm-${_LLL_VER}.patch" "../uksm-${_LLL_VER}.${_LLL_SUBVER}.patch"
@@ -159,6 +178,9 @@ prepare() {
 
   echo "Setting config..."
   cp -Tf ../config .config
+
+  # >>> ck hrtimer patch set, recommends 1000 Hz tick
+  scripts/config --enable CONFIG_HZ_1000
 
   # Optionally disable NUMA for 64-bit kernels only
   if [ -n "$_NUMA_disable" ] && [ "${CARCH}" = "x86_64" ]; then
@@ -185,9 +207,7 @@ prepare() {
 
   # rewrite configuration
   yes "" | make olddefconfig >/dev/null
-
-  # don't run depmod on 'make install'. We'll do this ourselves in packaging
-  #sed -i '2iexit 0' scripts/depmod.sh
+  diff -u ../config .config || :
 
   make -s kernelrelease >version
   msg2 "Prepared $pkgbase version $(<version)"
@@ -204,7 +224,7 @@ build() {
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with the ${_PATHSET_DESC} patchsets"
+  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with ${_PATHSET_DESC} patchsets"
   depends=('coreutils' 'kmod' 'mkinitcpio')
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
@@ -243,8 +263,11 @@ _package-headers() {
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
+  # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
+
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  #install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   # add xfs and shmem for aufs building
   mkdir -p "$builddir"/{fs/xfs,mm}
