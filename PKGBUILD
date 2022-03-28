@@ -1,6 +1,5 @@
 # Maintainer: lxgr <lxgr@protonmail.com>
 
-pkgbase='starport-git'
 pkgname='starport-git'
 pkgver=nightly
 pkgrel=1
@@ -12,20 +11,20 @@ provides=('starport')
 depends=()
 makedepends=('git' 'go')
 conflicts=('starport-bin')
-source=("$pkgbase"::'git+https://github.com/tendermint/starport')
+source=("$pkgname"::'git+https://github.com/tendermint/starport')
 md5sums=('SKIP')
 
 pkgver() {
-  cd "$pkgbase"
+  cd "$pkgname"
   git describe --tags --always | sed -r 's|release-||g;s/([^-]*-g)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "$srcdir/$pkgbase"
+  cd "$srcdir/$pkgname"
   make build
 }
 
 package() {
-  cd "$srcdir/$pkgbase"
+  cd "$srcdir/$pkgname"
   install -Dm0755 -t "$pkgdir/usr/bin/" ./dist/*
 }
