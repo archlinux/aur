@@ -1,7 +1,7 @@
 # Maintainter: Woshiluo Luo <woshiluo.luo@outlook.com>
 pkgname=phantun
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Transforms UDP stream into (fake) TCP streams\
 		 that can go through Layer 3 & Layer 4 (NAPT) firewalls/NATs."
 arch=('x86_64')
@@ -22,9 +22,6 @@ package() {
 	cd "$srcdir/$pkgname-$pkgver"
 
 	mkdir -p $pkgdir/usr/bin
-	find target/release \
-		-maxdepth 1 \
-		-executable \
-		-type f \
-		-exec install -m 755 "{}" "$pkgdir"/usr/bin \;
+	install -m 755 target/release/client ${pkgdir}/usr/bin/phantun-client
+	install -m 755 target/release/server ${pkgdir}/usr/bin/phantun-server
 }
