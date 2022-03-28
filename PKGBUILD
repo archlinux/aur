@@ -1,8 +1,8 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=git-branchless
-pkgver=0.3.9
-pkgrel=2
+pkgver=0.3.10
+pkgrel=1
 pkgdesc='High-velocity monorepo-scale workflow for Git'
 url="https://github.com/arxanas/$pkgname"
 arch=(x86_64)
@@ -13,7 +13,7 @@ makedepends=(cargo)
 checkdepends=(git)
 _archive="$pkgname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('eb785437ec9968b3f70472db16cf61658b5105da5fb541991546ac3ad32548af')
+sha256sums=('916b0c6dc6d4dd8bcb678c75a24833e8d856d0298a71f3f539ed0fc78478cb75')
 
 prepare() {
 	cd "$_archive"
@@ -31,7 +31,7 @@ check() {
 	cd "$_archive"
 	export RUSTUP_TOOLCHAIN=stable
 	# https://github.com/arxanas/git-branchless/issues/266
-	export PATH_TO_GIT=$(which git) GIT_EXEC_PATH=$(git --exec-path)
+	export TEST_GIT=$(which git) TEST_GIT_EXEC_PATH=$(git --exec-path)
 	cargo test --frozen --all-features
 }
 
