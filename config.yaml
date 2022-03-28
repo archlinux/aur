@@ -72,7 +72,8 @@ plugin:
     type: "fast_forward"
     args:
       upstream:
-        - addr: https://1.1.1.1/dns-query
+        - addr: https://doh.dns.sb/dns-query
+          dial_addr: 103.121.210.210
 
   ################ 匹配器插件 #################
 
