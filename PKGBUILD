@@ -1,8 +1,8 @@
 
 _pkgname=minq-nhentai
 pkgname="${_pkgname}-git"
-pkgver=r50.9888e1f4455a0c881ae6c179c3f6ace0e12c2a34
-pkgrel=4
+pkgver=r51.a7dcc6d8820f85f72d52f87e9bd5c97512c213aa
+pkgrel=1
 epoch=
 pkgdesc='Browse hnehtai in your terminal. Full image resolution in supported terminals. Beta version automatically caches all network requests so that hentai can be enjoyed during an ISP outage.'
 arch=(any)
