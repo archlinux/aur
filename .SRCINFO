@@ -1,0 +1,13 @@
+pkgbase = svlangserver
+	pkgdesc = A language server for systemverilog
+	pkgver = 0.3.5
+	pkgrel = 1
+	url = https://github.com/imc-trading/svlangserver
+	arch = any
+	license = MIT
+	depends = npm
+	noextract = svlangserver-0.3.5.tar.gz
+	source = svlangserver-0.3.5.tar.gz::https://registry.npmjs.org/@imc-trading/svlangserver/-/svlangserver-0.3.5.tgz
+	md5sums = 131e1a0f686c9e9534731429cc052763
+
+pkgname = svlangserver
