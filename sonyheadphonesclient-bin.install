@@ -1,5 +1,6 @@
 # arg 1:  the old package version
 post_remove() {
     rm "/usr/bin/SonyHeadphonesClient"
-    rm "/home/$USER/.local/share/applications/SonyHeadphonesClient.desktop"
+    rm "/usr/share/applications/SonyHeadphonesClient.desktop"
+    rm -r "/usr/share/licenses/sonyheadphonesclient-bin"
 }

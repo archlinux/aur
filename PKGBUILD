@@ -6,9 +6,9 @@ epoch=
 pkgdesc="A {Windows, macOS, Linux} client recreating the functionality of the Sony Headphones app"
 arch=("x86_64")
 url="https://github.com/Plutoberth/SonyHeadphonesClient"
-license=('MIT')
+license=('custom:MIT')
 groups=()
-depends=("glfw-x11")
+depends=("glfw-x11" "minizip" "dbus" "bluez-libs" "glew")
 makedepends=()
 checkdepends=()
 optdepends=("glfw-doc")
@@ -19,9 +19,9 @@ backup=()
 options=()
 install=sonyheadphonesclient-bin.install
 changelog=
-source=("https://github.com/Plutoberth/SonyHeadphonesClient/releases/download/v$pkgver/SonyHeadphonesClient-linux-x64.zip")
+source=("https://github.com/Plutoberth/SonyHeadphonesClient/releases/download/v$pkgver/SonyHeadphonesClient-linux-x64.zip" "MIT")
 noextract=()
-md5sums=("SKIP")
+md5sums=("SKIP" "SKIP")
 validpgpkeys=()
 
 # prepare() {
@@ -40,20 +40,23 @@ validpgpkeys=()
 # }
 
 package() {
-	unzip "SonyHeadphonesClient-linux-x64.zip"
+	unzip -o -qq "SonyHeadphonesClient-linux-x64.zip"
 	rm "SonyHeadphonesClient-linux-x64.zip"
 	mkdir -p "$pkgdir/usr/bin/"
 	mv SonyHeadphonesClient "$pkgdir/usr/bin/"
 	chmod +x "$pkgdir/usr/bin/SonyHeadphonesClient"
 
 	# Desktop entry
-	mkdir -p "$pkgbuild/home/$USER/.local/share/applications/"
-	touch "$pkgbuild/home/$USER/.local/share/applications/SonyHeadphonesClient.desktop"
+	mkdir -p "$pkgdir/usr/share/applications/"
 	echo "[Desktop Entry]
 	Name=Sony Headphones Client
 	Exec=SonyHeadphonesClient
-	Terminal=false
+	Terminal=falsey
 	Type=Application
 	Icon=application-executable
-	Categories=Accessoires;" >>"$pkgbuild/home/$USER/.local/share/applications/SonyHeadphonesClient.desktop"
+	Categories=Accessoires;" >>"$pkgdir/usr/share/applications/SonyHeadphonesClient.desktop"
+
+	# License
+	mkdir -p "$pkgdir/usr/share/licenses/$pkgname/"
+	cp MIT "$pkgdir/usr/share/licenses/$pkgname/"
 }

@@ -5,10 +5,16 @@ pkgbase = sonyheadphonesclient-bin
 	url = https://github.com/Plutoberth/SonyHeadphonesClient
 	install = sonyheadphonesclient-bin.install
 	arch = x86_64
-	license = MIT
+	license = custom:MIT
 	depends = glfw-x11
+	depends = minizip
+	depends = dbus
+	depends = bluez-libs
+	depends = glew
 	optdepends = glfw-doc
 	source = https://github.com/Plutoberth/SonyHeadphonesClient/releases/download/v1.2/SonyHeadphonesClient-linux-x64.zip
+	source = MIT
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = sonyheadphonesclient-bin
