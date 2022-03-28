@@ -1,0 +1,14 @@
+pkgbase = tang.go-git
+	pkgdesc = Tang key manager tools
+	pkgver = r15.f0f920d
+	pkgrel = 1
+	url = https://github.com/anatol/tang.go
+	arch = x86_64
+	license = BSD-3
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	source = git+https://github.com/anatol/tang.go
+	sha512sums = SKIP
+
+pkgname = tang.go-git
