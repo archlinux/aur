@@ -1,7 +1,7 @@
 # Maintainer: Michal Donat <donny579@gmail.com>
 
 pkgname=supertuxkart-git
-pkgver=20687+17942
+pkgver=22792+18484
 pkgrel=1
 pkgdesc="A kart racing game featuring Tux and his friends - development version"
 url="http://supertuxkart.sourceforge.net/"
@@ -53,10 +53,6 @@ package() {
     cd "stk-code/cmake_build"
     make DESTDIR=${pkgdir} install
 
-    cd "${pkgdir}/usr/share/pixmaps"
-    if [ ! -f supertuxkart.png ]; then
-        ln -s supertuxkart{_128,}.png
-    fi
     if [ -d "${pkgdir}/usr/lib64" ]; then
       mv "${pkgdir}/usr/lib64" "${pkgdir}/usr/lib"
     fi

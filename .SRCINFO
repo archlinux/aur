@@ -1,6 +1,6 @@
 pkgbase = supertuxkart-git
 	pkgdesc = A kart racing game featuring Tux and his friends - development version
-	pkgver = 20687+17942
+	pkgver = 22792+18484
 	pkgrel = 1
 	url = http://supertuxkart.sourceforge.net/
 	arch = i686
@@ -30,4 +30,3 @@ pkgbase = supertuxkart-git
 	md5sums = SKIP
 
 pkgname = supertuxkart-git
-
