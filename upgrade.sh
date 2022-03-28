@@ -1,8 +1,8 @@
 #!/bin/bash
-set -e
+set
 
 TMP=$(mktemp -d)
-UPDATE_PATH=$(find /opt/crashplan/upgrade/ -mindepth 1 -maxdepth 1 -type d -print)
+UPDATE_PATH=$(find /opt/crashplan/upgrade/ -mindepth 1 -maxdepth 1 -type d -print | tail -n1)
 
 if [[ -z ${UPDATE_PATH} ]]; then
   echo "False Trigger of update script"
