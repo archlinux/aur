@@ -1,6 +1,6 @@
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=gamestonkterminal-git
-pkgver=6.0.1
+pkgver=r2798.684b644ef
 pkgrel=1
 pkgdesc="Stock and crypto market terminal"
 arch=('any')
@@ -319,16 +319,16 @@ source=("${pkgname}::git+https://github.com/GamestonkTerminal/GamestonkTerminal.
 sha256sums=('SKIP')
 
 pkgver() {
-    cd "$pkgname"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd ${pkgname}
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-    cd ${srcdir}/${_pkgname}-${pkgver}
+    cd ${srcdir}/${pkgname}
     python -m build --wheel --no-isolation
 }
 
 package() {
-    cd ${srcdir}/${_pkgname}-${pkgver}
+    cd ${srcdir}/${pkgname}
     python -m installer --destdir="$pkgdir" dist/*.whl
 }

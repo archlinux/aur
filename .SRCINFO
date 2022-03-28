@@ -1,6 +1,6 @@
 pkgbase = gamestonkterminal-git
 	pkgdesc = Stock and crypto market terminal
-	pkgver = 6.0.1
+	pkgver = r2798.684b644ef
 	pkgrel = 1
 	url = https://gamestonkterminal.github.io/GamestonkTerminal/
 	arch = any
