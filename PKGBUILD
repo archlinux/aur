@@ -1,13 +1,13 @@
 pkgname=plasma5-wallpapers-wallpaper-engine-without-mpv-git
 pkgver=r441.791240d
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple kde wallpaper plugin integrating wallpaper engine (without mpv version)"
 arch=('any')
 url="https://github.com/j1g5awi/wallpaper-engine-kde-plugin/tree/without-mpv"
 license=('GPL2')
 depends=('qt5-declarative' 'python-websockets' 'plasma-framework' 'qt5-websockets' 'qt5-webchannel' 'qt-gstreamer' 'vulkan-headers')
 makedepends=('git' 'cmake' 'extra-cmake-modules')
-source=("pkgname=plasma5-wallpapers-wallpaper-engine-without-mpv-git::git+https://github.com/j1g5awi/wallpaper-engine-kde-plugin.git#branch=without-mpv")
+source=("plasma5-wallpapers-wallpaper-engine-without-mpv-git::git+https://github.com/j1g5awi/wallpaper-engine-kde-plugin.git#branch=without-mpv")
 md5sums=('SKIP')
 build() {
 	cd "$pkgname"
