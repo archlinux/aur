@@ -17,6 +17,8 @@ pkgbase = mkv-extractor-qt
 	conflicts = mkv-extractor-gui
 	replaces = mkv-extractor-gui
 	source = git+https://github.com/Hizoka76/mkv-extractor-qt5#commit=c321f99cc00a89165a1f17b2c01a66a6bf6fbcd6
+	source = move.patch
 	sha256sums = SKIP
+	sha256sums = 53e95957e08d459552364a8ff35ea2553388aaceaf091866c0bb9f3c2c1e43b4
 
 pkgname = mkv-extractor-qt

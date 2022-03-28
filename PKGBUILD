@@ -1,4 +1,5 @@
-# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Funami
+# Contributor: Gustavo Alvarez <sl1pkn07@gmail.com>
 # Contributor: Funkin-Stoopid <>
 
 pkgname=mkv-extractor-qt
@@ -22,8 +23,10 @@ makedepends=('qt5-tools'
              )
 conflicts=('mkv-extractor-gui')
 replaces=('mkv-extractor-gui')
-source=("git+https://github.com/Hizoka76/mkv-extractor-qt5#commit=c321f99cc00a89165a1f17b2c01a66a6bf6fbcd6")
-sha256sums=('SKIP')
+source=("git+https://github.com/Hizoka76/mkv-extractor-qt5#commit=c321f99cc00a89165a1f17b2c01a66a6bf6fbcd6"
+        'move.patch')
+sha256sums=('SKIP'
+            '53e95957e08d459552364a8ff35ea2553388aaceaf091866c0bb9f3c2c1e43b4')
 
 prepare() {
   cd mkv-extractor-qt5
@@ -32,6 +35,9 @@ prepare() {
       -i build.sh
   sed -e 's|/usr/share/icons/hicolor/scalable/apps/||g' \
       -i mkv-extractor-qt5.desktop
+
+  # Patch: move: argument 1 has unexpected type 'float'
+  patch --forward --strip=1 --input="${srcdir}/move.patch"
 
   # Use bdsup2subpp instead of java app
   sed 's|BDSup2Sub.jar|bdsup2subpp|g' -i MKVExtractorQt5.py

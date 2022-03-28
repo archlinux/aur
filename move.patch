@@ -1,0 +1,12 @@
+diff --unified --recursive --text package.orig/MKVExtractorQt5.py package.new/MKVExtractorQt5.py
+--- package.orig/MKVExtractorQt5.py	2022-03-28 22:00:13.840084365 +0200
++++ package.new/MKVExtractorQt5.py	2022-03-28 22:01:08.393417718 +0200
+@@ -171,7 +171,7 @@
+         ## Centrage de la fenêtre, en fonction de sa taille et de la taille de l'écran
+         else:
+             size_ecran = QDesktopWidget().screenGeometry() # Taille de l'écran
+-            self.move((size_ecran.width() - self.geometry().width()) / 2, (size_ecran.height() - self.geometry().height()) / 2)
++            self.move((size_ecran.width() - self.geometry().width()) // 2, (size_ecran.height() - self.geometry().height()) // 2)
+ 
+ 
+         ### Modifications graphiques de boutons
