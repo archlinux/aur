@@ -6,13 +6,14 @@
 _pkgname=shattered-pixel-dungeon
 pkgname=$_pkgname-git
 pkgver=5372v1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Shattered fork of the popular rogue-like game'
 url='https://shatteredpixel.com'
 license=('GPL3')
 depends=('java-runtime' 'bash')
 makedepends=('git' 'java-environment')
 arch=('any')
+install=$_pkgname.install
 
 source=(
   "$_pkgname::git+https://github.com/00-Evan/shattered-pixel-dungeon.git"

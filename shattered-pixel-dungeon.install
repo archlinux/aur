@@ -1,0 +1,7 @@
+post_upgrade() {
+  printf '%s\n'   'WARNING:'
+  printf '%s\n'   '  Anyone upgrading shattered-pixel-dungeon-git from 1.1.2 should'
+  printf '%s\n'   '  move ~/.shatteredpixel to ~/.local/share/.shatteredpixel before'
+  printf '%s\n\n' '  running or your config will be deleted.'
+  printf '%s\n'   '  See: https://github.com/00-Evan/shattered-pixel-dungeon/issues/939'
+}
