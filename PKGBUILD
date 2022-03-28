@@ -1,6 +1,6 @@
 # Maintainer: phpusr
 pkgname=yandex-music-player
-pkgver=1.4
+pkgver=1.4.1
 pkgrel=2
 pkgdesc='Yandex Music desktop Electron application with MPRIS support'
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=(
 )
 sha1sums=('6b8693c7069e85149c60f1057a34179a878b57b7'
           '85990d404c762e5d6fab0643dfbba3a1a475011b')
-sha1sums_x86_64=('2cf443a3cd77fe50d52163dcf20324cfbc0376c6')
+sha1sums_x86_64=('3cc755931f1fd4d65315b1c702ad77a7b48586f4')
 
 package() {
   cd "${srcdir}/yandex-music-player-${pkgver}"
