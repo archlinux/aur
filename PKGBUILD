@@ -91,6 +91,9 @@ build() {
   go build -v -o "../../build/lib/$CARCH-unknown-linux-gnu"/libwg.a -buildmode c-archive
   popd
 
+  # Clean module cache for makepkg -C
+  go clean -modcache
+
   export MULLVAD_ADD_MANIFEST="1"
 
   echo "Building Rust code in release mode using $RUSTC_VERSION..."
