@@ -1,5 +1,5 @@
 pkgbase = 1c_enterprise_meta
-	pkgdesc = 1C 8.3 meta package for Linux
+	pkgdesc = 1C 8.3 metapackage for Linux
 	pkgver = 8.3
 	pkgrel = 1
 	arch = any
@@ -19,6 +19,6 @@ pkgbase = 1c_enterprise_meta
 	depends = geoclue
 	depends = appmenu-gtk-module
 	optdepends = ttf-ms-fonts: Core TTF Fonts from Microsoft
-	optdepends = aksusbd: Sentinel AKSUSB daemon
+	optdepends = aksusbd-bin: Sentinel AKSUSB daemon
 
 pkgname = 1c_enterprise_meta
