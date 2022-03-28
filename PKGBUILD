@@ -1,7 +1,7 @@
 # Maintainer: Jarkko Sakkinen <jarkko.sakkinen@iki.fi>
 
-pkgbase=linux-sgx
-pkgver=5.16.13.arch1
+pkgbase=linux
+pkgver=5.17.1.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -50,7 +50,7 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            'd73ff0ffc2c055b7d7df5a6709168a1f481b64a7eaa680b90643a042a8dbe28a')
+            'bd1e57c15d4eb62024d2ee935b54d36e74e73b22c3800b45ecf9233521a9f74b')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
