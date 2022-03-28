@@ -171,7 +171,7 @@ _package-headers() {
 
   echo "Adding symlink..."
   mkdir -p "$pkgdir/usr/src"
-  ln -sr "$builddir" "$pkgdir/usr/src/$pkgbase"
+  ln -sr "$builddir" "$pkgdir/usr/src/$_srcname"
 }
 
 _package-docs() {
