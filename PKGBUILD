@@ -13,8 +13,6 @@ makedepends=(
   cpio bc kmod libelf git pahole
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
 )
-provides=(linux-mainline-anbox)
-conflicts=(linux-mainline-anbox)
 options=('!strip')
 _srcname=linux-mainline-anbox
 source=(
@@ -73,6 +71,7 @@ _package() {
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
   replaces=(virtualbox-guest-modules-mainline wireguard-mainline)
+  conflicts=(linux-mainline-anbox)
 
   cd $_srcname
   local kernver="$(<version)"
@@ -95,6 +94,7 @@ _package() {
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
+  conflicts=(linux-mainline-anbox-headers)
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"
@@ -176,6 +176,7 @@ _package-headers() {
 
 _package-docs() {
   pkgdesc="Documentation for the $pkgdesc kernel"
+  conflicts=(linux-mainline-anbox-docs)
 
   cd $_srcname
   local builddir="$pkgdir/usr/lib/modules/$(<version)/build"

@@ -16,8 +16,6 @@ pkgbase = linux-mainline-anbox-git
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = imagemagick
-	provides = linux-mainline-anbox
-	conflicts = linux-mainline-anbox
 	options = !strip
 	source = linux-mainline-anbox::git+https://github.com/torvalds/linux
 	source = config
@@ -33,11 +31,14 @@ pkgname = linux-mainline-anbox-git
 	optdepends = linux-firmware: firmware images needed for some devices
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
+	conflicts = linux-mainline-anbox
 	replaces = virtualbox-guest-modules-mainline
 	replaces = wireguard-mainline
 
 pkgname = linux-mainline-anbox-git-headers
 	pkgdesc = Headers and scripts for building modules for the Linux Mainline kernel
+	conflicts = linux-mainline-anbox-headers
 
 pkgname = linux-mainline-anbox-git-docs
 	pkgdesc = Documentation for the Linux Mainline kernel
+	conflicts = linux-mainline-anbox-docs
