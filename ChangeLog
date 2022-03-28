@@ -327,3 +327,18 @@ Fixes:
 - We fixed an issue causing some Exchange events not to display the correct RSVP status.
 - We fixed an issue causing some all-day events from Google Calendar to be displayed at midnight instead.
 - We made several other adjustments that make us proud but are a bit too technical to be shared here ✨
+
+=== Morgen 2.5.0
+New Features:
+- Native integrations with your favorite tools, such as Todoist, Google Tasks, Microsoft To Do, and Microsoft Email! While you could already import external tasks via Zapier, implementing the proper pipeline with Zapier is sometimes hard (and expensive 💰). We know that the right experience can only be achieved with more tight integration between Morgen and other tools. Starting today, you can integrate Todoist, Google Tasks, Microsoft To Do, and Outlook email directly, without the need for third-party services. This is just the start, more native integrations will come soon.
+- Recurrent Tasks: Morgen adds full support for recurrent tasks. If you schedule a Morgen task, you can now decide to set it daily, weekly, monthly, or even to follow more complex patterns. The tasks will appear in your calendar so you can better organize your time.
+
+Improvements:
+- Improved Task & Event editor: The Task & Event editor has been reworked to be simpler to use and more consistent. You can now create a task directly from your calendar. We also make the calendar selector easier to find and gave your notes more space.
+- A all-new look for your tasks: Tasks scheduled in your calendar will now appear with a new, clean and minimal style. This sets tasks apart from calendar events, so you know what is coming at a glance.
+- New toggles to customize Morgen to your needs (Hide completed tasks: Morgen can now automatically hide completed tasks from your calendar - completed tasks are marked as free, so they won't block your calendar. Widen current day: you can now decide whether the current day column in the Weekly and 2 Weeks view should be larger than the others.)
+
+Fixes:
+- Fixed a problem of Morgen Scheduling Links with Fastmail calendar.
+- Fixed an issue causing links in the event description to duplicate after each change.
+- Fixed an issue causing some transparent events to be barely readable.
