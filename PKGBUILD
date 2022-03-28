@@ -1,37 +1,51 @@
-# Maintainer: Brad Erhart <tocusso underscore malty at aleeas dot com>
+# Maintainer: Brittany Figueroa <dormwear underscore iure at crowley dot seership dot dev>
 
 pkgname=flarectl
 _pkgname=cloudflare-go
-pkgver=0.31.0
+pkgver=0.35.1
 pkgrel=1
 pkgdesc='CLI application for interacting with a Cloudflare account'
 arch=('x86_64')
-url="https://github.com/cloudflare/cloudflare-go/tree/v${pkgver}/cmd/flarectl"
+url="https://github.com/${_pkgname%-go}/${_pkgname}/tree/v${pkgver}/cmd/${pkgname}"
 license=('BSD')
 makedepends=('go')
-source=("$_pkgname-$pkgver.tar.gz::https://github.com/cloudflare/$_pkgname/archive/v$pkgver.tar.gz")
-b2sums=(051eb8faac902ee270976732df12f450de6e11195ed3ad3bc27aebe3eb5a938fdbf77531356fa3f9b1573665e75fbcdd2fde4c0da5e792a9b004a15731b81d76)
+source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/${_pkgname%-go}/${_pkgname}/archive/v${pkgver}.tar.gz")
+b2sums=('bac7cfc2c72ac9908badb142cad04354b765d5a0f61500cc7f8b258600727f86f6a659b4d3fee09a592a521b8b6fb5dd1c9485a3b6c7ca0a4731ad6028f51362')
 
 prepare() {
-	# https://wiki.archlinux.org/title/Go_package_guidelines
-
-	# https://wiki.archlinux.org/title/Go_package_guidelines#Output_directory
-	cd "$_pkgname-$pkgver"
+	cd "${_pkgname}-${pkgver}"
 	mkdir --parents 'build'
 }
 
 build() {
-	# https://wiki.archlinux.org/title/Go_package_guidelines#Sample_PKGBUILD
-	cd "$_pkgname-$pkgver"
+	cd "${_pkgname}-${pkgver}"
 	export \
 		CGO_CPPFLAGS="${CPPFLAGS}" \
 		CGO_CFLAGS="${CFLAGS}" \
 		CGO_CXXFLAGS="${CXXFLAGS}" \
 		CGO_LDFLAGS="${LDFLAGS}" \
-		GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	go build -o build "./cmd/$pkgname"
+		GOPROXY=off
+	go build \
+		-buildmode=pie \
+		-ldflags "
+			-extldflags ${LDFLAGS}
+			-linkmode=external
+			-X main.version=$pkgver
+		" \
+		-mod=readonly \
+		-o build \
+		-trimpath \
+			./cmd/...
+}
+
+check() {
+	cd "${_pkgname}-${pkgver}"
+	go test \
+		-mod=readonly \
+		-v \
+			./cmd/...
 }
 
 package() {
-	install -Dm 755 "$_pkgname-$pkgver/build/$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -D --mode 755 "${_pkgname}-${pkgver}/build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
