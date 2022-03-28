@@ -1,0 +1,24 @@
+pkgbase = python-thepassiveinvestor
+	pkgdesc = Passive Investing for the Average Joe.
+	pkgver = 1.0.10
+	pkgrel = 1
+	url = https://pypi.org/project/thepassiveinvestor
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-yfinance
+	depends = python-urllib3
+	depends = python-openpyxl
+	depends = python-pandas
+	depends = python-scipy
+	depends = python-requests
+	depends = python-lxml
+	depends = python-beautifulsoup4
+	depends = python-pillow
+	source = https://files.pythonhosted.org/packages/source/t/thepassiveinvestor/thepassiveinvestor-1.0.10.tar.gz
+	sha256sums = 6b325b0b9134588763c75a4d05eb2260d4111ec0cd741c27618fcb3918f0ae92
+
+pkgname = python-thepassiveinvestor
