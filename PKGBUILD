@@ -1,7 +1,7 @@
 # Maintainer: Trizen <echo dHJpemVuQHByb3Rvbm1haWwuY29tCg== | base64 -d>
 
 pkgname='sidef'
-pkgver='3.99'
+pkgver='22.03'
 pkgrel='1'
 pkgdesc="A modern object-oriented programming language."
 arch=('any')
@@ -16,8 +16,7 @@ depends=(
 )
 optdepends=('perl-math-prime-util: for better performance in several functions')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/trizen/${pkgname}/archive/${pkgver}.tar.gz")
-
-sha512sums=('42c4df7a63858902bb02919a043b9be22ab7a6c3c2a8b794917d2c5542ec5fb900efe41616c2e9b676efe3f97fc26cbd8ddbe8e9a6498af01f5ee79a0ba021cb')
+b2sums=('cecc5411a4d06b4e14d03c89fc969f012601519580cf15c1c1a006f9a7205b9b7e72039400821d0284740cc866e6a887332760816c024dac0c02bcfb28a4e85e')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                                          \
