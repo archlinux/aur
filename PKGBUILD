@@ -10,10 +10,14 @@ url="https://projects.eclipse.org/projects/tools.titan"
 license=('eclipse')
 groups=('devel')
 makedepends=(
-	'git'
+    'flex'
+    'bison'
+    'git'
 )
 depends=(
     'expect'
+    'libedit'
+    'ncurses'
     'openssl'
     'jdk8-openjdk'
 )
