@@ -2,7 +2,7 @@
 pkgname=gdm-settings
 __pkgver='0.4'
 pkgver=${__pkgver/-/+}
-pkgrel=2
+pkgrel=3
 pkgdesc="A settings app for Gnome's Login Manager (GDM)"
 arch=(any)
 url="https://github.com/realmazharhussain/gdm-settings"
@@ -12,7 +12,7 @@ makedepends=('git' 'meson' 'blueprint-compiler-git' 'gobject-introspection')
 checkdepends=('appstream')
 backup=()
 source=("${pkgname}-${__pkgver}.tar.gz"::"$url/archive/refs/tags/v${__pkgver}.tar.gz")
-md5sums=('SKIP')
+md5sums=('e19ef962f22791fc1a423c3b99cf93fd')
 
 prepare() {
   cd "$srcdir/$pkgname-${__pkgver}"
