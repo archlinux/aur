@@ -9,8 +9,8 @@
 
 pkgbase=linux-mainline-anbox               # Build stock -ARCH kernel
 #pkgbase=linux-custom       # Build kernel with a different name
-_tag=v5.17-rc5
-pkgver=5.17rc5
+_tag=v5.17
+pkgver=5.17
 pkgrel=1
 pkgdesc="Linux Mainline"
 arch=(x86_64)
@@ -33,7 +33,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
 sha256sums=('SKIP'
-            'b820eeb0c62dff6c6f4fbcbf423b75f83335ede620462c29a5d96ed2296a78a8')
+            '28eeb2c759f4b079efbc2a420162516137b64c7afdc40f0f2a1964c7457485b5')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
