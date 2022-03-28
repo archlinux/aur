@@ -82,7 +82,7 @@ depends=(
     python-frozendict
     python-fundamentalanalysis
     python-future
-    python-gast
+    python-gast03
     python-gitdb
     python-gitpython
     python-google-auth-oauthlib
