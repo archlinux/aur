@@ -3,7 +3,7 @@
 
 pkgname=visual-paradigm
 pkgver=16.3
-pkgrel=20220101
+pkgrel=20230323
 pkgdesc="UML design application (Free 30-day trial)"
 arch=('x86_64')
 url='https://www.visual-paradigm.com/download/'
@@ -20,7 +20,7 @@ source=("https://www.visual-paradigm.com/downloads/vp/Visual_Paradigm_${_ver}_${
   'visual-paradigm.png'
   'x-visual-paradigm.xml')
 
-sha256sums=('0df5a652b665859166b2ca4dc817565d47fbf67980dd4d812f4e3ce44d584592'
+sha256sums=('e76994e2ef99b7c1be076f4190bf50fd8188d528b134ef16c098cf39032acb04'
             'd49752a05bc69e7e5f7b23875b6ac7d7d242d761ee00030b57e9ca057babb43e'
             'fff88b05529a391dad757b380d7acf08703e11d441e04c3886e4db7f5bcd1729'
             '41517b5c2326c0ba2fe3b6647f9594f094ccf03185cf73cb87d6cf19b355ff15'
