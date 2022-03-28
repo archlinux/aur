@@ -1,15 +1,15 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=palgen
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.0.1
+pkgrel=1
 pkgdesc='Extract palettes and convert PNG files from True color to indexed'
 arch=(x86_64)
 url='https://github.com/xyproto/palgen'
 license=(BSD)
 makedepends=(git go upx)
-source=("git+$url#commit=8c4bbcbf4bdb6be2d6afc32605586b5090ace22c") # tag: v1.0.0
-b2sums=(SKIP)
+source=("git+$url#commit=0c51a212e6619ceb6a59a4511c3f772538cdcaf4") # tag: v1.0.1
+b2sums=('SKIP')
 
 build() {
   make -C $pkgname
