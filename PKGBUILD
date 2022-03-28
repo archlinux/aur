@@ -3,7 +3,7 @@
 _pkgname=mbt
 pkgname=mbt-git
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Memory-based tagger-generator and tagger in one."
 arch=('i686' 'x86_64')
 url="http://ilk.uvt.nl/"
@@ -13,7 +13,7 @@ provides=('mbt')
 conflicts=('mbt')
 makedepends=('libtool' 'autoconf')
 options=(!libtool)
-source=("git://github.com/proycon/mbt.git")
+source=("git+https://github.com/proycon/mbt.git")
 _gitname=("mbt")
 noextract=()
 md5sums=('SKIP')
