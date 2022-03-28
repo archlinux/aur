@@ -4,8 +4,8 @@
 # Contributor: Christoph Zeiler <rabyte@gmail.com>
 
 pkgname=onscripter
-pkgver=20200722
-pkgrel=6
+pkgver=20220115
+pkgrel=1
 pkgdesc="A game engine compatible to NScripter, to create and perform visual novel games"
 arch=('i686' 'x86_64')
 url="http://onscripter.sourceforge.jp/onscripter.html"
@@ -28,7 +28,7 @@ source=("http://onscripter.sourceforge.jp/${pkgname}-${pkgver}.tar.gz"
         '0002-fix-lua-header-name.patch'
         )
 
-b2sums=('5dbd734e5ca577e75cb51ef06018f0d6b862f1b13d913dc8e400a0725a22c8cca516e68432527c6c8ef62dc72fdc8985deb0ea63bcbb29386cac855bd8e4a3c0'
+b2sums=('87c9126100155f7d15e27da393060cfcf606329a6d7c5c7aaee3ed9100883a66e18d0afe49d19a772aebfe261792da07862626136678f106051dc1b9b3bf7043'
         'e9d3c5a01305868c182321c725f6b3d652ec8d1f6f2d3ef065a57bf110ce87c363ed38747a7887d30be30b26bb3d16d9c41047bffd34f6352cc3b57a9803fc66'
         '844669f2d20bfa4111b966286c60940008d42afa0eff64396cd48267cdfb4e90470d25269bdca6311e09fbd770360d1771e6ee62133563146ed0e5dcb1f459c7'
         '050d46bcac811af57ad9cec046a975abf70e01429d4517dad2cea32e1dc5d19b5b8831acbda834ef126249794a251097beaa6b34539f4e6ecac2d8522bf45222')
