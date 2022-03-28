@@ -1,7 +1,7 @@
 pkgbase = vangers-git
 	pkgdesc = The video game that combines elements of the racing and role-playing genres
 	pkgver = r641.48483ca
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/KranX/vangers
 	arch = x86_64
 	license = GPL3
