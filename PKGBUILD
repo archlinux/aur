@@ -3,7 +3,7 @@
 pkgname=clunk-vangers-git
 _pkgname=clunk
 pkgver=r148.6d4cbbe
-pkgrel=3
+pkgrel=5
 pkgdesc="Vangers for of clunk library"
 arch=('x86_64')
 url="https://github.com/stalkerg/$_pkgname"
@@ -21,7 +21,8 @@ pkgver() {
 
 build() {
     cd $srcdir/$_pkgname
-    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ . && make
+    cmake -DCMAKE_INSTALL_PREFIX=/usr . #-DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ .
+    make
 }
 
 package() {
