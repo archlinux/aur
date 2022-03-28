@@ -1,7 +1,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 
 pkgname=octosql
-pkgver=0.4.2
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="A CLI tool which lets you query a plethora of databases and file formats using SQL"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MPL2')
 depends=('glibc')
 makedepends=('git' 'go')
 options=('!lto')
-_commit='f2f6b4d056c1d735e26f4de810b1061bda64d381'
+_commit='38ba308f43f667e56c849e9f244907e5dffdc3e4'
 source=("$pkgname::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 
