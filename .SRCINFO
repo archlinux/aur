@@ -1,6 +1,6 @@
 pkgbase = ardour-tracker-editor-git
 	pkgdesc = Ardour with a music tracker editor (git version, tracker-editor-wip branch)
-	pkgver = 7.0.pre0.r2922.g6e67a1a332
+	pkgver = 7.0.pre0.r3030.gf8212bf849
 	pkgrel = 1
 	url = https://github.com/ngeiswei/ardour/blob/tracker-editor-wip/gtk2_ardour/tracker/README.md
 	arch = x86_64

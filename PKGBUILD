@@ -7,7 +7,7 @@
 # Contributor: Christopher Arndt <aur at chrisarndt.de>
 
 pkgname=ardour-tracker-editor-git
-pkgver=7.0.pre0.r2922.g6e67a1a332
+pkgver=7.0.pre0.r3030.gf8212bf849
 pkgrel=1
 pkgdesc="Ardour with a music tracker editor (git version, tracker-editor-wip branch)"
 arch=('x86_64')
@@ -39,7 +39,7 @@ pkgver() {
 
 prepare() {
   cd "${srcdir}/${pkgname%-*}"
-  git checkout 6e67a1a332
+  git checkout f8212bf849
 
   # https://bugs.archlinux.org/task/54389
   sed -e '8iexport GTK2_RC_FILES=/dev/null' -i gtk2_ardour/ardour.sh.in
