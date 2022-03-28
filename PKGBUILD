@@ -9,7 +9,14 @@ arch=('i686' 'x86_64')
 url="https://projects.eclipse.org/projects/tools.titan"
 license=('eclipse')
 groups=('devel')
-depends=('expect' 'openssl' 'jdk8-openjdk')
+makedepends=(
+	'git'
+)
+depends=(
+    'expect'
+    'openssl'
+    'jdk8-openjdk'
+)
 source=(git+https://gitlab.eclipse.org/eclipse/titan/titan.core.git
         titan.profile)
 md5sums=('SKIP'
