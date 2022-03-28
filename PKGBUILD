@@ -1,7 +1,7 @@
 # Maintainer: Kirill I <elephanttalk+aur [at] protonmail _dot_ com>
 
 pkgname='tetronimia'
-pkgdesc='That game of falling blocky thingies for your terminal'
+pkgdesc='That game of falling blocky thingies for your terminal, written in Nim'
 pkgver=0.2.0
 pkgrel=1
 arch=('x86_64' 'i686' 'i486' 'aarch64' 'armv7h')
