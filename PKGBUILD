@@ -2,7 +2,7 @@
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
 pkgname=maestral-qt
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc='Qt interface for Maestral'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=('gnome-shell-extension-appindicator: Gnome integration')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('3814d0d8d9c16a9b584f6a26ac4c12f1a7332e85732b320ed2f14bd4702b7641')
+sha256sums=('888e57bf77b14a5e16e9ba6a8a397a8c0393e98aa8de3ca4be3b9d599ed50cdc')
 
 build() {
 	cd "$pkgname-$pkgver"
