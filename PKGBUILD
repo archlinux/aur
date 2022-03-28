@@ -1,6 +1,6 @@
 # Maintainer: Léopold Koprivnik Ibghy <skwal.net@gmail.com>
 pkgname="lsd-print-git"
-pkgver=r13.ad1918d
+pkgver=r25.ce8621d
 pkgrel=1
 pkgdesc="Just a normal print tool, but we gave it lsd"
 arch=("any")
