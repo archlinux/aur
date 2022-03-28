@@ -26,6 +26,7 @@ pkgbase = plasma-mobile
 	optdepends = plasma-dialer: Phone application
 	optdepends = plasma-workspace-wallpapers: A large wallpaper selection for Plasma
 	optdepends = maliit-keyboard: Virtual keyboard
+	optdepends = plasma-mobile-sounds: Plasma Mobile sound theme
 	source = https://download.kde.org/stable/plasma/5.24.3/plasma-mobile-5.24.3.tar.xz
 	sha256sums = a8a8361ca417f28e35221c8c27f4442b72f5a44c50626c358095a3b6fbf195af
 
