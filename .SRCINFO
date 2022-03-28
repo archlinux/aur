@@ -1,0 +1,14 @@
+pkgbase = cosmic-comp-git
+	pkgdesc = Pop!_OS Wayland compositor written in Rust
+	pkgver = r56.5657a77
+	pkgrel = 1
+	url = https://github.com/pop-os/cosmic-comp
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = cargo
+	depends = wayland
+	source = git+https://github.com/pop-os/cosmic-comp.git
+	sha256sums = SKIP
+
+pkgname = cosmic-comp-git
