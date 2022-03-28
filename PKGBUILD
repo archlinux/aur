@@ -7,26 +7,28 @@
 
 pkgname=bless-git
 _gitname=bless
-pkgver=r181.59aaaba
-pkgrel=4
+pkgver=r190.103fbd6
+pkgrel=1
 pkgdesc="High-quality, full-featured hex editor (git version)"
 arch=('any')
 url="https://github.com/afrantzis/bless"
 license=('GPL2')
-depends=('gtk-sharp-2' 'mono')
 conflicts=('bless')
-makedepends=('libxslt' 'meson' 'git')
-source=("git://github.com/afrantzis/bless.git")
+
+depends=('gtk-sharp-2' 'mono')
+makedepends=('libxslt' 'meson' 'git' 'itstool')
+
+source=("git+https://github.com/afrantzis/bless.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${srcdir}/${_gitname}/
+  cd ${srcdir}/${_gitname}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd ${srcdir}/${_gitname}
-  meson setup build -Dprefix=/usr -Dtests=false --buildtype=release  
+  meson setup build -Dprefix=/usr -Dtests=false -Dhtml_user_doc=false --buildtype=release  
 }
 
 build() {
