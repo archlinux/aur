@@ -1,6 +1,6 @@
 pkgbase = share-preview
 	pkgdesc = Preview and debug websites metadata tags for social media share.
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/rafaelmardojai/share-preview
 	arch = any
@@ -12,8 +12,7 @@ pkgbase = share-preview
 	depends = gtk4
 	depends = libadwaita
 	depends = glib2
-	source = share-preview-0.1.2.tar.xz::https://github.com/rafaelmardojai/share-preview/releases/download/0.1.2/share-preview-0.1.2.tar.xz
-	sha256sums = d281fa0c8d81a1bab39988d94b075a813dcef4eb31581e457907c4535108b8df
+	source = share-preview-0.2.0.tar.xz::https://github.com/rafaelmardojai/share-preview/releases/download/0.2.0/share-preview-0.2.0.tar.xz
+	sha256sums = 8eb36fd76f32f76a514d450961d30e0ec630899d2f8ed6134241666a0ed7b9b2
 
 pkgname = share-preview
-
