@@ -1,0 +1,14 @@
+pkgbase = pinephone-kbpwrd
+	pkgdesc = PinePhone (Pro) Keyboard Case Power Manager
+	pkgver = 0.1.6r9d9bcf0
+	pkgrel = 1
+	url = https://github.com/estokes/pinephone-kbpwrd
+	arch = aarch64
+	license = MIT
+	makedepends = rust
+	source = pinephone-kbpwrd::git+https://github.com/estokes/pinephone-kbpwrd.git
+	source = kbpwrd.service
+	sha256sums = SKIP
+	sha256sums = 13ddfd3692f7920271655d56554cc8793f94e40fd55ada7e8d01e56f261f795e
+
+pkgname = pinephone-kbpwrd
