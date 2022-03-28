@@ -2,7 +2,7 @@
 
 pkgname=octoprint
 pkgver=1.7.3
-pkgrel=2
+pkgrel=3
 pkgdesc="The snappy web interface for your 3D printer on Arch Linux"
 arch=(any)
 url="http://octoprint.org/"
@@ -28,7 +28,6 @@ depends=(
 		python-unidecode
 		python-websocket-client
 		python-wheel
-		python-wrapt
 )
 makedepends=('python-virtualenv' 'rust')
 optdepends=('ffmpeg: timelapse support'
@@ -47,7 +46,9 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/OctoPrint/OctoPrint/arc
 		octoprint.conf
 		)
 options=(!distcc !ccache)
-sha256sums=('c76fd29ea1b27acee774474db200000e5778a17790595afc63fd54a43dee100c'
+# The OctoPrint team has the bad habbit of changing and retagging
+# released versions, so we cannot reliably use any hash
+sha256sums=('SKIP'
             'bd9b7f989aefb02da1ac414f306861f21f084d886f0283eea11516482b407d65'
             'b07af51817cd209cdf019d6347ce5d62121ccbf20835dad8bb8316a80bc82346'
             '231685e84b0241a466766c766f8d3ba31efda3238f19e9adedea380e7b861737'
