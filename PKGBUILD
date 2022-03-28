@@ -17,7 +17,7 @@ optdepends=(
   'cpio: used for Android build support'
 )
 source=(
-  "$pkgname-$pkgver.deb::https://hub.unity3d.com/linux/repos/deb/pool/main/u/unity/unityhub_amd64/unityhub-amd64-3.1.1.deb"
+  "$pkgname-$pkgver.deb::https://hub.unity3d.com/linux/repos/deb/pool/main/u/unity/unityhub_amd64/unityhub-amd64-${pkgver}.deb"
   'license.txt'
 )
 sha256sums=(
