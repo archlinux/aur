@@ -1,6 +1,6 @@
 pkgbase = vim-fern
 	pkgdesc = General purpose asynchronous tree viewer
-	pkgver = 1.42.0
+	pkgver = 1.43.1
 	pkgrel = 1
 	url = https://github.com/lambdalisue/fern.vim
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = vim-fern
 	optdepends = neovim-fixcursorhold: fixes cursor in neovim
 	provides = neovim-fern
 	replaces = neovim-fern
-	source = vim-fern-1.42.0.tar.gz::https://github.com/lambdalisue/fern.vim/archive/v1.42.0.tar.gz
-	sha256sums = 19f446de1bb8e34a7345b500c99f807b4704ef2dbf4594260569a8cc5de3bced
+	source = vim-fern-1.43.1.tar.gz::https://github.com/lambdalisue/fern.vim/archive/v1.43.1.tar.gz
+	sha256sums = cd2552a571f3ac3c813fcb86400b22ec5cd091fdd953fa3293bbc8ebb43758f3
 
 pkgname = vim-fern

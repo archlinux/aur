@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=vim-fern
-pkgver=1.42.0
+pkgver=1.43.1
 pkgrel=1
 pkgdesc="General purpose asynchronous tree viewer"
 arch=('any')
@@ -17,7 +17,7 @@ checkdepends=('vim-themis')
 provides=('neovim-fern')
 replaces=('neovim-fern')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('19f446de1bb8e34a7345b500c99f807b4704ef2dbf4594260569a8cc5de3bced')
+sha256sums=('cd2552a571f3ac3c813fcb86400b22ec5cd091fdd953fa3293bbc8ebb43758f3')
 
 check() {
 	cd "fern.vim-$pkgver"
