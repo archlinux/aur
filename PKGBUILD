@@ -1,24 +1,22 @@
-pkgbase='python-pytrends'
-pkgname=('python-pytrends')
-_module='pytrends'
-pkgver='4.7.1'
+pkgname=python-pytrends
+_pkgname=${pkgname:7}
+pkgver=4.8.0
 pkgrel=1
 pkgdesc="Pseudo API for Google Trends"
 url="https://github.com/dreyco676/pytrends"
-depends=('python')
-makedepends=('python-setuptools')
-license=('MIT')
-arch=('any')
-source=("https://files.pythonhosted.org/packages/13/4b/6db651dfd8c6c8132879a6980aa323123c6aade5b371c9083de6a21c0b07/pytrends-${pkgver}-py2.py3-none-any.whl")
-sha256sums=('1897a48059639c706ef07a7ce6362a4fa092f49a1e28f578f180a77de2972532')
+license=(MIT)
+arch=(any)
+depends=(python python-requests python-pandas python-lxml)
+makedepends=(python-build python-installer python-wheel)
+source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
+sha256sums=('04b7b33eb6dfc120aa89cb4640688a8b633337276b6ddcea44ff0c7f6b6243d2')
 
 build() {
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py build
+    cd ${srcdir}/${_pkgname}-${pkgver}
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    depends+=()
-    cd "${srcdir}/${_module}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+    cd ${srcdir}/${_pkgname}-${pkgver}
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
