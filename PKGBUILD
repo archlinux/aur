@@ -18,7 +18,7 @@ makedepends=('cython' 'python-setuptools')
 license=('custom:University of Illinois/NCSA Open Source License')
 arch=('x86_64')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/bashtage/linearmodels/archive/v${pkgver}.tar.gz")
-sha256sums=('7c79b5c941ce6a6bd2e9e58edb3fb0c36aeaedf61c955583345ca0ace66c359e')
+sha256sums=('ca2bbe84da9a7e311f4a410ffdb1be5bf27a77d99d12c9f144c6effd5ca1b2cf')
 
 build() {
     cd "${_module}-${pkgver}"
