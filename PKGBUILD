@@ -14,7 +14,7 @@ depends=(
     python-aiosignal
     python-sphinx-alabaster-theme
     python-alpha_vantage
-    python-ansiwarp
+    python-ansiwrap
     python-argon2-cffi-bindings
     python-argon2_cffi
     python-ascii_magic
@@ -153,7 +153,7 @@ depends=(
     jupyter-notebook-shim 
     jupyter-notebook
     python-numpy
-    python-oandapyV20
+    python-oandapyv20
     python-oauthlib
     python-onetimepass
     python-openpyxl
