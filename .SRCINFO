@@ -1,0 +1,18 @@
+pkgbase = obs-scene-tree-view-git
+	pkgdesc = Scene Tree Folder plugin for OBS Studio
+	pkgver = v0.0.2.r0.g7040b20
+	pkgrel = 1
+	url = https://github.com/DigitOtter/obs_scene_tree_view.git
+	arch = any
+	license = GPL
+	makedepends = qt5-base
+	makedepends = git
+	makedepends = cmake
+	makedepends = gcc
+	depends = obs-studio
+	provides = obs-scene-tree-view
+	conflicts = obs-scene-tree-view
+	source = obs-scene-tree-view-git::git+https://github.com/DigitOtter/obs_scene_tree_view.git#branch=master
+	sha256sums = SKIP
+
+pkgname = obs-scene-tree-view-git
