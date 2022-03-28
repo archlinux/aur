@@ -3,7 +3,6 @@ pkgbase = sonyheadphonesclient-bin
 	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/Plutoberth/SonyHeadphonesClient
-	install = sonyheadphonesclient-bin.install
 	arch = x86_64
 	license = custom:MIT
 	depends = glfw-x11
