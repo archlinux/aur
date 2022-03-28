@@ -1,13 +1,13 @@
 pkgbase = invidtui-bin
 	pkgdesc = A TUI based Invidious client
-	pkgver = 0.1.4
+	pkgver = 0.1.8
 	pkgrel = 2
 	url = https://github.com/darkhz/invidtui
 	arch = x86_64
 	license = MIT
 	depends = mpv
 	depends = yt-dlp
-	source = https://github.com/darkhz/invidtui/releases/download/v0.1.4/invidtui_0.1.4_Linux_x86_64.tar.gz
-	sha256sums = 0f744496c9abf124788f09993027fb9facab53f3da0f31d870fb0e510e862337
+	source = https://github.com/darkhz/invidtui/releases/download/v0.1.8/invidtui_0.1.8_Linux_x86_64.tar.gz
+	sha256sums = 7eac85b55c7b7dd4353b0e15534b2476bcbed25d4665277acce694d486058ff2
 
 pkgname = invidtui-bin
