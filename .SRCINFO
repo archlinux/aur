@@ -1,15 +1,16 @@
 pkgbase = firefox-esr-decentraleyes
 	pkgdesc = Local emulation of Content Delivery Networks
 	pkgver = 2.0.17
-	pkgrel = 1
+	pkgrel = 2
 	url = https://git.synz.io/Synzvato/decentraleyes
 	arch = any
 	license = MPL2
-	depends = git
-	depends = nodejs
-	depends = strip-nondeterminism
-	depends = yarn
-	depends = zip
+	makedepends = git
+	makedepends = nodejs
+	makedepends = strip-nondeterminism
+	makedepends = yarn
+	makedepends = zip
+	depends = firefox-esr
 	source = git+https://git.synz.io/Synzvato/decentraleyes.git#tag=v2.0.17
 	validpgpkeys = A6B7BA10893FE67EE17A9F8FCECC45E1E979013C
 	b2sums = SKIP
