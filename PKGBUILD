@@ -1,8 +1,9 @@
-# Maintainer: Daniel Peukert <daniel@peukert.cc>
+# Maintainer: Manuel Hüsers <aur@huesers.de>
+# Contributor: Daniel Peukert <daniel@peukert.cc>
 # Contributor: NicoHood <archlinux {cat} nicohood {dog} de>
 _projectname='spot'
 pkgname="$_projectname-client"
-pkgver='0.3.1'
+pkgver='0.3.2'
 pkgrel='1'
 pkgdesc='Gtk/Rust native Spotify client'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -17,7 +18,7 @@ source=(
 	"$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/$pkgver.tar.gz"
 	'disable-clippy.patch'
 )
-sha512sums=('b0127dbe2a1430dcc288c9ef6bd61f0afa92e4ca6316d4e84c7e6bf7051cffc90a8778312e04991f91a2090728a7ce3e288249d1c8562106f7851dc701e97873'
+sha512sums=('fd8b1f372b5c06d65c0d40465aff018573e913200460b48339a9e106d17a372289b67855877d8642427367fc18e5eac31f2e765e54f4889149a8b5a69cd4638d'
             '1cb0faced2e6801cb994e9af7b81411355837b2efcd9c82b82751508e0bfcc967c50b3d6296bfdb8c017bbf2e7a503a3920d36cb896e44c896c23f5b9e1d13f1')
 validpgpkeys=() # waiting for https://github.com/xou816/spot/issues/283
 
