@@ -3,7 +3,7 @@
 
 pkgname=opensnitch
 pkgver=1.5.0
-pkgrel=4
+pkgrel=5
 pkgdesc='GNU/Linux port of the Little Snitch application firewall'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/evilsocket/opensnitch'
@@ -70,9 +70,11 @@ build() {
     popd
 
     pushd ui
+    make translations
     pyrcc5 -o opensnitch/resources_rc.py opensnitch/res/resources.qrc
     sed -i 's/^import ui_pb2/from . import ui_pb2/' opensnitch/ui_pb2*
     python setup.py build
+    rm -rf tests
     popd
 
     go clean -modcache
@@ -90,4 +92,6 @@ package() {
     pushd ui
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
     popd
+    
+    
 }
