@@ -28,6 +28,6 @@ package() {
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 	mkdir -p "${pkgdir}/usr/bin/"
-	ln -s "/opt/${pkgname}/${_pkgname}.py" "${pkgdir}/usr/bin/${_pkgname}"
-	ln -s "/opt/${pkgname}/${_pkgname}-beta.py" "${pkgdir}/usr/bin/${_pkgname}-beta"
+	ln -s "/opt/${pkgname}/minq_nhentai.py" "${pkgdir}/usr/bin/${_pkgname}"
+	ln -s "/opt/${pkgname}/minq_nhentai_beta.py" "${pkgdir}/usr/bin/${_pkgname}-beta"
 }
