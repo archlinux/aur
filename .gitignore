@@ -1,5 +1,4 @@
-*
-!.gitignore
-!PKGBUILD
-!.SRCINFO
-!eula.md
+musixmatch*
+
+pkg
+src
