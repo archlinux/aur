@@ -4,7 +4,7 @@
 
 pkgname=certbot
 pkgver=1.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An ACME client"
 arch=('any')
 license=('Apache')
@@ -19,6 +19,7 @@ depends=(
   'python-parsedatetime'
   'python-pyrfc3339'
   'python-pytz'
+  'python-setuptools'
   'python-zope-component'
   'python-zope-interface'
 )
