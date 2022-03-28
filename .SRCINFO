@@ -2,6 +2,7 @@ pkgbase = brother-mfc-l5900dw
 	pkgdesc = LPR and CUPS driver for the Brother MFC-L5900DW
 	pkgver = 3.5.1
 	pkgrel = 1
+	epoch = 2
 	url = http://solutions.brother.com/linux/en_us/
 	install = brother-mfc-l5900dw.install
 	arch = i686

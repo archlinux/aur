@@ -2,6 +2,7 @@
 pkgname="brother-mfc-l5900dw"
 pkgver="3.5.1"
 pkgrel=1
+epoch=2
 pkgdesc="LPR and CUPS driver for the Brother MFC-L5900DW"
 arch=('i686' 'x86_64')
 url="http://solutions.brother.com/linux/en_us/"
@@ -33,6 +34,7 @@ prepare() {
 # copy ppd and filter file to their destination dirs
         cd `find . -type d -name 'cupswrapper'`
         cp *lpdwrapper* "$srcdir/usr/lib/cups/filter/"
+        cp "$srcdir/usr/lib/cups/filter/lpdwrapper" "$srcdir/usr/lib/cups/filter/brother_lpdwrapper_MFCL5900DW"
         cp *.ppd "$srcdir/usr/share/cups/model/"
 # set the basedir to an absolute path in the perl-lpdwrapper-script
 # the relative path,generated on the basis of the caller, does not work in this case
