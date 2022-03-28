@@ -2,8 +2,8 @@
 
 pkgname=pacman-arch
 _pkgname=pacman
-pkgver=6.0.0
-pkgrel=2
+pkgver=6.0.1
+pkgrel=1
 pkgdesc="A library-based package manager with dependency support"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.archlinux.org/pacman/"
@@ -19,13 +19,13 @@ conflicts=('pacman')
 backup=("etc/pacman.conf"
         "etc/makepkg.conf")
 options=('emptydirs' 'strip')
-source=("https://gitlab.archlinux.org/pacman/pacman/-/archive/v6.0.0/pacman-v6.0.0.tar.gz"
+source=("https://gitlab.archlinux.org/pacman/pacman/-/archive/v6.0.1/pacman-v6.0.1.tar.gz"
         "pacman.conf.i686"
         "pacman.conf.x86_64"
         "pacman.conf.arm"
         "makepkg.conf"
         "pacman-arch.patch")
-sha256sums=('4c3be330bd285d4c6d6a2f82efba526f85a61a84cd7689ceaac48f571cb6e88f'
+sha256sums=('68ff4cd1aa2860e583a3a6c9ac92665417b23e3ff7b38dfec7d1508c46087e0f'
             '0e09eb240512da85f7eaa314a5a98fe7d4c4e7ed5eebde7e3e937c0ae4ee7054'
             '7ff75a61a07eabbc1718a7171b897b6504a6370f2f59a14caf42bbf0dce26ea6'
             '3fa640a4a2138b8d07b6e6366ff0743206ecb32fc3b7f53490a614388c492cf3'
