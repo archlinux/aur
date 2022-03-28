@@ -1,6 +1,6 @@
 pkgbase = callaudiod-git
 	pkgdesc = Call audio routing daemon
-	pkgver = 0.1.1.r0.gc9550e1
+	pkgver = 0.1.4.r0.ga7ca6ce
 	pkgrel = 1
 	url = https://gitlab.com/mobian1/callaudiod
 	arch = x86_64
@@ -13,7 +13,8 @@ pkgbase = callaudiod-git
 	depends = libpulse
 	provides = callaudiod
 	conflicts = callaudiod
+	options = debug
 	source = git+https://gitlab.com/mobian1/callaudiod.git
-	md5sums = SKIP
+	b2sums = SKIP
 
 pkgname = callaudiod-git

@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=callaudiod-git
-pkgver=0.1.1.r0.gc9550e1
+pkgver=0.1.4.r0.ga7ca6ce
 pkgrel=1
 pkgdesc='Call audio routing daemon'
 arch=(x86_64 aarch64)
@@ -11,8 +11,9 @@ depends=(alsa-lib glib2 libpulse)
 makedepends=(git meson)
 provides=(callaudiod)
 conflicts=(callaudiod)
+options=(debug)
 source=("git+${url}.git")
-md5sums=(SKIP)
+b2sums=(SKIP)
 
 pkgver() {
 	cd callaudiod
