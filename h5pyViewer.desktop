@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=h5pyViewer
+GenericName=HDF5 File Viewer
+Comment=Classes and tools to view *.hdf5-Files
+Exec=h5pyViewer
+Icon=view-list-tree
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Science;

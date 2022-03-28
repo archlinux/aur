@@ -1,0 +1,21 @@
+pkgbase = h5pyviewer-python3
+	pkgdesc = Classes and tools to view *.hdf5-Files, using an experimantal python3 port
+	pkgver = r59.3c7728a
+	pkgrel = 1
+	url = https://github.com/kubaello/h5pyViewer
+	arch = any
+	license = BSD
+	depends = python
+	depends = python-h5py
+	depends = python-numpy
+	depends = python-matplotlib
+	depends = python-wxpython
+	optdepends = python-glumpy: Image support
+	provides = h5pyViewer
+	conflicts = h5pyViewer
+	source = git+https://github.com/kubaello/h5pyViewer
+	source = h5pyViewer.desktop
+	md5sums = SKIP
+	md5sums = 3be07481951e4a264ae9af04b001616c
+
+pkgname = h5pyviewer-python3
