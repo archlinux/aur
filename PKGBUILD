@@ -2,7 +2,7 @@
 pkgname=python-valinvest
 _pkgname=${pkgname:7}
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A value investing tool based on Warren Buffett, etc"
 arch=('any')
 url="https://pypi.org/project/${pkgname}"
@@ -20,4 +20,5 @@ build() {
 package() {
     cd ${srcdir}/${_pkgname}-${pkgver}
     python -m installer --destdir="$pkgdir" dist/*.whl
+    rm $pkgdir/usr/lib/python3.10/site-packages/tests -r
 }

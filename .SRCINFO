@@ -1,7 +1,7 @@
 pkgbase = python-valinvest
 	pkgdesc = A value investing tool based on Warren Buffett, etc
 	pkgver = 0.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/python-valinvest
 	arch = any
 	license = MIT
