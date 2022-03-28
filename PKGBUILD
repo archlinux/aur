@@ -1,5 +1,5 @@
 pkgname=clevis-extra-pins-git
-pkgver=r26.04afb7c
+pkgver=r62.1714f84
 pkgrel=1
 pkgdesc='A set of additional pins for Clevis binding framework'
 arch=(any)
@@ -17,5 +17,5 @@ pkgver() {
 package() {
   cd clevis.go
   mkdir -p $pkgdir/usr/bin
-  install -m755 clevis-decrypt-yubikey clevis-encrypt-yubikey $pkgdir/usr/bin
+  install -m755 clevis-decrypt-yubikey clevis-encrypt-yubikey clevis-encrypt-remote $pkgdir/usr/bin
 }

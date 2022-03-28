@@ -1,6 +1,6 @@
 pkgbase = clevis-extra-pins-git
 	pkgdesc = A set of additional pins for Clevis binding framework
-	pkgver = r26.04afb7c
+	pkgver = r62.1714f84
 	pkgrel = 1
 	url = https://github.com/anatol/clevis.go
 	arch = any
