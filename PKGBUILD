@@ -6,9 +6,9 @@
 pkgname=plasma-mobile-nm
 _pkgname=plasma-nm
 pkgver=5.24.3
-pkgrel=0
+pkgrel=1
 pkgdesc='Plasma applet written in QML for managing network connections, built with modules for mobile'
-arch=(x86_64)
+arch=(x86_64 i686 i486 pentium4 arm armv6h armv7h aarch64)
 url='https://kde.org/plasma-desktop/'
 license=(GPL2)
 depends=(plasma-workspace modemmanager-qt networkmanager-qt qca-qt5)
