@@ -1,0 +1,18 @@
+pkgbase = laec-est-toi-bin
+	pkgdesc = Game presenting the measures of the Union Populaire program, L'Avenir En Commun, for the French presidential election of 2022
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://laec-est-toi.fr
+	arch = x86_64
+	license = custom:cc0
+	license = unknown
+	provides = laec-est-toi
+	options = !strip
+	source = laec-est-toi_0.6.3_linux64.tar.gz::https://www.laec-est-toi.fr/downloads/latest/laec-est-toi_linux64.tar.gz
+	source = laec-est-toi.png
+	source = laec-est-toi.desktop
+	sha256sums = 4e33ceeb7f291e228eaa2c3b57ea79e3597c297c4954b946e89a39fbf64d5452
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = laec-est-toi-bin
