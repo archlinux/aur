@@ -22,7 +22,7 @@ pkgbase = emulationstation-de
 	depends = sdl2
 	conflicts = emulationstation
 	conflicts = emulationstation-git
-	source = https://gitlab.com/leonstyhre/emulationstation-de/-/archive/stable-1.2/emulationstation-de-stable-1.2.tar.gz
-	md5sums = 5f3466c124dca77549754c218360530d
+	source = https://gitlab.com/leonstyhre/emulationstation-de/-/archive/stable-1.2-AUR/emulationstation-de-stable-1.2-AUR.tar.gz
+	md5sums = 2ab2f4fcb4875deab286db8a9f66b847
 
 pkgname = emulationstation-de
