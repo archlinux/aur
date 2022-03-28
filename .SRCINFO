@@ -1,7 +1,7 @@
 pkgbase = mkv-extractor-qt
 	pkgdesc = Graphical MKV demultiplexer
 	pkgver = 5.5.9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://forum.ubuntu-fr.org/viewtopic.php?id=1508741
 	arch = any
 	license = GPL3

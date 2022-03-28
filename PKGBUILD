@@ -4,7 +4,7 @@
 
 pkgname=mkv-extractor-qt
 pkgver=5.5.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical MKV demultiplexer"
 arch=('any')
 url='http://forum.ubuntu-fr.org/viewtopic.php?id=1508741'
