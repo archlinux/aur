@@ -3,7 +3,7 @@
 pkgname=pacman-arch
 _pkgname=pacman
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A library-based package manager with dependency support"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.archlinux.org/pacman/"
@@ -27,7 +27,7 @@ source=("https://gitlab.archlinux.org/pacman/pacman/-/archive/v6.0.0/pacman-v6.0
         "pacman-arch.patch")
 sha256sums=('4c3be330bd285d4c6d6a2f82efba526f85a61a84cd7689ceaac48f571cb6e88f'
             '0e09eb240512da85f7eaa314a5a98fe7d4c4e7ed5eebde7e3e937c0ae4ee7054'
-            '1f38de8798f9c8f40dd7bb3e6fd2dd6c212354f6ccfd92f24325eee0d5ac994d'
+            '7ff75a61a07eabbc1718a7171b897b6504a6370f2f59a14caf42bbf0dce26ea6'
             '3fa640a4a2138b8d07b6e6366ff0743206ecb32fc3b7f53490a614388c492cf3'
             '0c1ecbb8c57e8ef2c600b41d4458269095fc4ddb6778d0000d4a9a067f68fe2d'
             '4a459874b5e3196991f5ba99491d6b323b2af57c50b28d64e39d508d73f8952f')

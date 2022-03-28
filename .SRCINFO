@@ -1,7 +1,7 @@
 pkgbase = pacman-arch
 	pkgdesc = A library-based package manager with dependency support
 	pkgver = 6.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.archlinux.org/pacman/
 	arch = i686
 	arch = x86_64
@@ -38,7 +38,7 @@ pkgbase = pacman-arch
 	source = pacman-arch.patch
 	sha256sums = 4c3be330bd285d4c6d6a2f82efba526f85a61a84cd7689ceaac48f571cb6e88f
 	sha256sums = 0e09eb240512da85f7eaa314a5a98fe7d4c4e7ed5eebde7e3e937c0ae4ee7054
-	sha256sums = 1f38de8798f9c8f40dd7bb3e6fd2dd6c212354f6ccfd92f24325eee0d5ac994d
+	sha256sums = 7ff75a61a07eabbc1718a7171b897b6504a6370f2f59a14caf42bbf0dce26ea6
 	sha256sums = 3fa640a4a2138b8d07b6e6366ff0743206ecb32fc3b7f53490a614388c492cf3
 	sha256sums = 0c1ecbb8c57e8ef2c600b41d4458269095fc4ddb6778d0000d4a9a067f68fe2d
 	sha256sums = 4a459874b5e3196991f5ba99491d6b323b2af57c50b28d64e39d508d73f8952f
