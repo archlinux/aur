@@ -18,7 +18,7 @@ depends=(
 	'nss'
 )
 optdepends=('spotify: Instant synchronized lyrics')
-source=("https://download-app.musixmatch.com/download/${_pkgname}_${pkgver}-${_pkgver}_amd64.deb")
+source=("https://download-app.musixmatch.com/download/${_pkgname}_${pkgver/_/-}_amd64.deb")
 b2sums=('85272ec57171512476f293b0b411427118bb75aa536703faf337f4d516006ed23a386f62f0fa83fdd040ecda7d77ceb38f89801da8dba84ddb0ba50a0d187094')
 
 prepare() {
