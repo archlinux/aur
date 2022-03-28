@@ -1,0 +1,24 @@
+pkgbase = 1c_enterprise_meta
+	pkgdesc = 1C 8.3 meta package for Linux
+	pkgver = 8.3
+	pkgrel = 1
+	arch = any
+	license = GPL
+	depends = gtk3
+	depends = enchant
+	depends = harfbuzz-icu
+	depends = gst-plugins-base
+	depends = gst-plugins-good
+	depends = gst-plugins-bad
+	depends = libsecret
+	depends = libsoup
+	depends = sqlite
+	depends = libxrender
+	depends = libxfixes
+	depends = libxslt
+	depends = geoclue
+	depends = appmenu-gtk-module
+	optdepends = ttf-ms-fonts: Core TTF Fonts from Microsoft
+	optdepends = aksusbd: Sentinel AKSUSB daemon
+
+pkgname = 1c_enterprise_meta
