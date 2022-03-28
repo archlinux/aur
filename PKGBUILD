@@ -4,14 +4,15 @@
 
 pkgname=rlottie
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='A platform independent standalone library that plays Lottie Animation'
 arch=('x86_64')
 url='https://github.com/Samsung/rlottie'
 license=('Custom')
 makedepends=('cmake' 'git' 'ninja' 'patchelf')
 depends=('gcc-libs')
-optdepends=('lottie2gif: A command-line utility to convert lottie to gif animations')
+optdepends=('lottie2gif: A command-line utility to convert lottie to gif animations'
+		    'lottie2webp: A command-line utility to convert lottie to webp animations')
 source=("https://github.com/Samsung/rlottie/archive/refs/tags/v$pkgver.tar.gz"
         '0001-add-missing-include.patch')
 sha256sums=('030ccbc270f144b4f3519fb3b86e20dd79fb48d5d55e57f950f12bab9b65216a'
