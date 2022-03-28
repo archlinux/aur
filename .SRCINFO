@@ -1,6 +1,6 @@
 pkgbase = linux-mainline-anbox-git
 	pkgdesc = Linux Mainline
-	pkgver = 5.17.r11407.gae085d7f9365
+	pkgver = 5.17.r11601.gff61bc81b3fe
 	pkgrel = 1
 	url = https://www.kernel.org
 	arch = x86_64
@@ -32,12 +32,14 @@ pkgname = linux-mainline-anbox-git
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 	conflicts = linux-mainline-anbox
+	replaces = linux
 	replaces = virtualbox-guest-modules-mainline
 	replaces = wireguard-mainline
 
 pkgname = linux-mainline-anbox-git-headers
 	pkgdesc = Headers and scripts for building modules for the Linux Mainline kernel
 	conflicts = linux-mainline-anbox-headers
+	replaces = linux-headers
 
 pkgname = linux-mainline-anbox-git-docs
 	pkgdesc = Documentation for the Linux Mainline kernel
