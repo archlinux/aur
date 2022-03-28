@@ -1,7 +1,7 @@
 # Maintainer: Ícar N. S. <personal@icarns.xyz>
 pkgname=gtuber-git
-pkgver=r242.668c331
-pkgrel=2
+pkgver=r338.0467b55
+pkgrel=1
 pkgdesc="A C library to fetch media info from websites."
 arch=(any)
 url="https://github.com/Rafostar/gtuber"
@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${pkgname%-git}"
-    arch-meson -Ddoc=true . build
+    arch-meson . build
     meson compile -C build
 }
 
