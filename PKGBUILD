@@ -1,9 +1,9 @@
 # Maintainer: Ryan Schroeder <me at rk1024 dot net>
 
 pkgname='empress'
-pkgver='1.6.0+beta.2'
+pkgver='1.6.0'
 _semver="${pkgver/+/-}"
-pkgrel=1
+pkgrel=2
 pkgdesc='A D-Bus MPRIS daemon for controlling media players.'
 arch=('i686' 'x86_64')
 url='https://github.com/ray-kast/empress'
@@ -12,7 +12,7 @@ makedepends=('git' 'cargo')
 provides=('empress')
 conflicts=('empress')
 source=("$pkgname-$_semver.tar.gz::$url/archive/v$_semver.tar.gz")
-sha256sums=('1fcd6b3a8b88ff7399e25ebaf450da55f4cfa824657504be17577cd30f85268d')
+sha256sums=('baa2ccf9700b7fd3830b6b69d58eb31e7e5ccdeb82878de01fd9d25eac9ba422')
 
 prepare() {
   cd "$pkgname-$_semver"
