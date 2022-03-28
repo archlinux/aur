@@ -1,30 +1,45 @@
-# Maintainer: Vincent Kobel (v@kobl.one)
+# Maintainer: Manuel Hüsers <aur@huesers.de>
+# Contributor: Vincent Kobel (v@kobl.one)
 
-_pkgname='gvisor'
-pkgname="${_pkgname}-git"
-pkgver=r80.275a7b6
+pkgname='gvisor-git'
+_pkgbin='runsc'
+_pkgshim='containerd-shim-runsc-v1'
+pkgver=20220321.0.r15.gb8fa96e20
 pkgrel=1
-pkgdesc="User-space kernel, sandboxed container runtime"
-arch=('x86_64')
-url='https://github.com/google/gvisor'
-license=('Apache-2.0')
-sha256sums=('SKIP')
-source=("git+https://github.com/google/${_pkgname}")
-provides=('runsc')
-makedepends=('git' 'bazel' 'python')
+pkgdesc='OCI container sandbox runtime focused on security, efficiency, and ease of use'
+arch=('x86_64' 'aarch64')
+url='https://gvisor.dev'
+license=('Apache')
+makedepends=('git' 'go')
+optdepends=('docker: for Docker runtime support')
+provides=(
+	"${pkgname%-git}"
+)
+conflicts=(
+	"${pkgname%-git}"
+)
+source=("git+https://github.com/google/${pkgname%-git}#branch=go")
+sha512sums=('SKIP')
 
 pkgver() {
-    cd "${_pkgname}"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "${pkgname%-git}"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/release-//g;s/-/./g'
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}"
-  bazel build runsc 
+	cd "${pkgname%-git}"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GO111MODULE=on
+	export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+	CGO_ENABLED=0 go build -v -o $_pkgbin -ldflags "-X main.version=${pkgver}" gvisor.dev/gvisor/runsc
+	go build -v -o $_pkgshim gvisor.dev/gvisor/shim
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-  install -D ./bazel-bin/runsc/linux_amd64_pure_stripped/runsc "${pkgdir}/usr/bin/runsc"
+	cd "${pkgname%-git}"
+	install -Dm 755 "$_pkgbin/$_pkgbin" "$pkgdir/usr/bin/$_pkgbin"
+	install -Dm 755 "$_pkgshim" "$pkgdir/usr/bin/$_pkgshim"
 }
-
