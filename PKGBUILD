@@ -32,9 +32,8 @@ if [ -z ${use_tracers+x} ]; then
 fi
 
 ## Choose between GCC and CLANG config (default is GCC)
-#if [ -z ${_compiler+x} ]; then
-if [ "$_compiler" = "clang" ]; then
-  msg2 "WARNING: clang config is not ready yet... Switching to gcc"
+if [ -z ${_compiler+x} ] || [ "$_compiler" = "clang" ]; then
+  msg2 "WARNING: clang config is not ready yet... Using gcc"
   _compiler=gcc
 fi
 
