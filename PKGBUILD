@@ -2,7 +2,7 @@
 
 _name=HTMLHint
 pkgname=htmlhint
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc='Static Code Analysis Tool for your HTML'
 arch=('any')
