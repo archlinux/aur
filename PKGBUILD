@@ -3,7 +3,7 @@
 pkgname=vangers-git
 _pkgname=vangers
 pkgver=r641.48483ca
-pkgrel=1
+pkgrel=2
 pkgdesc="The video game that combines elements of the racing and role-playing genres"
 arch=('x86_64')
 url="https://github.com/KranX/$_pkgname"
