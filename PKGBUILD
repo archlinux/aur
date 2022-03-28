@@ -2,7 +2,7 @@
 # Contributor: Quentin Bourgeois <quentin+archlinux@bourgeois.eu>
 
 pkgname=moolticute
-pkgver=0.53.7
+pkgver=0.55.0
 pkgrel=1
 pkgdesc="Easy companion for Mooltipass device"
 arch=('x86_64')
@@ -16,7 +16,7 @@ depends=(
 	'hicolor-icon-theme')
 makedepends=('qt5-tools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('553d4dea5e8b1ef19503bee58d21e1248bfd2fa3827d37cc9588c67095760eaf')
+sha256sums=('59d541d99c987b90358fe0c0b50cacffbc89d24df5d72e49a999631fb34eb6a5')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -32,6 +32,11 @@ build() {
 		QMAKE_CXXFLAGS_RELEASE="$CXXFLAGS" \
 		-o build/
 	make -C build
+}
+
+check() {
+	cd "$pkgname-$pkgver"
+	make test
 }
 
 package() {
