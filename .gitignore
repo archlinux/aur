@@ -1,3 +1,4 @@
-pkg/
-src/
-terraformer*
+terraformer-bin-*
+
+pkg
+src
