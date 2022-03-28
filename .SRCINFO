@@ -1,0 +1,14 @@
+pkgbase = sonyheadphonesclient-bin
+	pkgdesc = A {Windows, macOS, Linux} client recreating the functionality of the Sony Headphones app
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/Plutoberth/SonyHeadphonesClient
+	install = sonyheadphonesclient-bin.install
+	arch = x86_64
+	license = MIT
+	depends = glfw-x11
+	optdepends = glfw-doc
+	source = https://github.com/Plutoberth/SonyHeadphonesClient/releases/download/v1.2/SonyHeadphonesClient-linux-x64.zip
+	md5sums = SKIP
+
+pkgname = sonyheadphonesclient-bin
