@@ -44,4 +44,3 @@ package() {
     make DESTDIR="${pkgdir}" install
     install -D -m644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/minizip/LICENSE"
 }
-
