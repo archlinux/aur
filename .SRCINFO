@@ -1,6 +1,6 @@
 pkgbase = gnome-radio
 	pkgdesc = Easily find live radio programs based on geographical location of radio broadcasters on the Internet
-	pkgver = 16.0.5
+	pkgver = 16.0.6
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Radio
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = gnome-radio
 	depends = gst-plugins-base
 	depends = gst-plugins-bad
 	conflicts = gnome-internet-radio-locator
-	source = https://download.gnome.org/sources/gnome-radio/16.0/gnome-radio-16.0.5.tar.xz
-	sha256sums = 09acfe47491904316bbddc95e69b43e6357f8f826b1372f64888cb5a63c64281
+	source = https://download.gnome.org/sources/gnome-radio/16.0/gnome-radio-16.0.6.tar.xz
+	sha256sums = 6a66b7d840adfaf159a2ab518bbc8148014d09a4d56962e536d037f3fada1d33
 
 pkgname = gnome-radio
