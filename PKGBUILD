@@ -17,6 +17,7 @@ depends=(
   qqc2-breeze-style
 )
 optdepends=(
+  'plasma-mobile-nm: Mobile networking settings modules for WiFi, etc.'
   'plasma-settings: Settings application for Plasma Mobile'
   'plasma-dialer: Phone application'
   'plasma-workspace-wallpapers: A large wallpaper selection for Plasma'
