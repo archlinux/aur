@@ -23,13 +23,13 @@ makedepends=('qt5-tools'
              )
 conflicts=('mkv-extractor-gui')
 replaces=('mkv-extractor-gui')
-source=("git+https://github.com/Hizoka76/mkv-extractor-qt5#commit=c321f99cc00a89165a1f17b2c01a66a6bf6fbcd6"
+source=('https://github.com/Hizoka76/MKV-Extractor-Qt5/archive/c321f99cc00a89165a1f17b2c01a66a6bf6fbcd6.tar.gz'
         'move.patch')
-sha256sums=('SKIP'
+sha256sums=('ba4ef604b7fff30ed4514b6019c1e76b2799a3065e1f523609a4256edb3f499e'
             '53e95957e08d459552364a8ff35ea2553388aaceaf091866c0bb9f3c2c1e43b4')
 
 prepare() {
-  cd mkv-extractor-qt5
+  cd MKV-Extractor-Qt5*
   sed -e 's|/usr/lib/x86_64-linux-gnu/qt5/bin/lrelease|/usr/bin/lrelease-qt5|g' \
       -e 's|/usr/lib/i386-linux-gnu/qt5/bin/lrelease|/usr/bin/lrelease-qt5|g' \
       -i build.sh
@@ -50,12 +50,12 @@ prepare() {
 }
 
 build() {
-  cd mkv-extractor-qt5
+  cd MKV-Extractor-Qt5*
   sh ./build.sh
 }
 
 package() {
-  cd mkv-extractor-qt5
+  cd MKV-Extractor-Qt5*
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/share/${pkgname}/MKVExtractorQt5.py" "${pkgdir}/usr/bin/mkv-extractor-qt5"
 
