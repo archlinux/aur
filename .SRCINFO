@@ -1,0 +1,17 @@
+pkgbase = plasma-runner-vscode-git
+	pkgdesc = KRunner plugin for quickly opening recent VSCode workspaces
+	pkgver = r5.7c6bc0c
+	pkgrel = 1
+	url = https://github.com/j1g5awi/krunner-vscode
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = python-pip
+	makedepends = python-poetry
+	depends = python
+	depends = python-gobject
+	depends = dbus-python
+	source = plasma-runner-vscode-git::git+https://github.com/j1g5awi/krunner-vscode
+	md5sums = SKIP
+
+pkgname = plasma-runner-vscode-git
