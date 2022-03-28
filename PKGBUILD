@@ -2,7 +2,7 @@
 
 pkgname=radio-cli-git
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple radio cli for listening to your favourite streams from the console"
 arch=('i686' 'x86_64')
 url="https://github.com/margual56/radio-cli"
@@ -19,7 +19,15 @@ md5sums=('SKIP')
 prepare() {
 	mv "./radio-cli" "./${pkgname}"	
 	mkdir -p "${pkgdir}/usr/bin"
-	mkdir -p "${XDG_CONFIG_HOME}/radio-cli/"
+	
+	if [ -z $XDG_CONFIG_HOME ]
+	then
+		echo "Your 'XDG_CONFIG_HOME' environment variable is not set."
+		echo "Using '${HOME}/.config' as the config folder"
+		mkdir -p "${HOME}/.config/radio-cli/"
+	else
+		mkdir -p "${XDG_CONFIG_HOME}/radio-cli/"
+	fi
 }
 
 build() {
