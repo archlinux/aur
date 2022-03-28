@@ -10,6 +10,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm' 'typescript')
 optdepends=('eslint: for use via eslint')
+install=$pkgname.install
 source=("https://github.com/yeonjuan/$pkgname/archive/v$pkgver/$pkgname-$pkgver.tar.gz")
 b2sums=('9122edb60dec4e48aaa373a0cb9eaafb2f9f59bb8a9210952ae275f44e4b21bb977d47a81f8f0d9d410dbbccc39d1568cc1c4e1d5139ba1472c6e5a11bc226bf')
 

@@ -1,0 +1,6 @@
+post_install() {
+  cat << EOF
+ESLint no longer supports plugins installed globally.
+An ugly workaround is to symlink them to project-local node_modules/ dirs.
+EOF
+}
