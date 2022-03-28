@@ -1,8 +1,8 @@
-# Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
+# Contributor: Guillaume Horel <guillaume.horel@gmail.com>
 
 pkgname=python-property-cached
 _pkgname=property-cached
-pkgver=1.6.3
+pkgver=1.6.4
 pkgrel=1
 pkgdesc="A decorator for caching properties in classes"
 arch=('any')
@@ -13,7 +13,7 @@ optdepends=()
 makedepends=('python-setuptools')
 checkdepends=('python-freezegun')
 source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.zip")
-sha256sums=('614b6972e279d981b7bccabd0b1ce4601c1739a6eb9905fd79a9c485fb20a1e0')
+sha256sums=('3e9c4ef1ed3653909147510481d7df62a3cfb483461a6986a6f1dcd09b2ebb73')
 
 package(){
   cd "$srcdir/$_pkgname-$pkgver"
