@@ -1,12 +1,14 @@
-# Maintainer: Luo Yi <langisme_at_qq_dot_com>
-
+# Patched package:
+# Maintainer:  Luo Yi <langisme_at_qq_dot_com>
 # Contributor: Joakim Soderlund <joakim.soderlund@gmail.com>
-# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+
+# Official package:
+# Maintainer:  Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter-rounded
-pkgver=41.4
+pkgver=41.5
 pkgrel=1
 pkgdesc="A window manager for GNOME, with rounded corners patch (integrate mr1441)"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -23,10 +25,11 @@ provides=(libmutter-9.so mutter)
 conflicts=(mutter)
 install=mutter.install
 
-_commit=83a34957046c5b6bca609fda4b68c8c5d1276d14  # tags/41.4^0
+options=(debug)
+_commit=17926e941d67867911c462737f4d013adb55e4d6  # tags/41.5^0
 _mutter_src="$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-_shell_blur_h_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/41.1/src/shell-blur-effect.h"
-_shell_blur_c_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/41.1/src/shell-blur-effect.c"
+_shell_blur_h_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/${pkgver}/src/shell-blur-effect.h"
+_shell_blur_c_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/${pkgver}/src/shell-blur-effect.c"
 _settings_src="mutter_settings::git+https://github.com/yilozt/mutter-rounded-setting"
 
 # Mirrors in Gitee
