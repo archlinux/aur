@@ -2,7 +2,7 @@
 # Contributor: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=vim-clap
-pkgver=0.33
+pkgver=0.34
 pkgrel=1
 pkgdesc='Modern performant generic finder and dispatcher for Vim and Neovim'
 arch=('x86_64')
@@ -17,30 +17,24 @@ optdepends=(
   'python: for the Python dynamic module'
   'ripgrep: for the files and grep providers')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('2f51624a27410b64198e5f6939e08f1bb1d10b2ddcdba67f336421cb38c79bad')
+sha256sums=('b5dff2127fb7c2066ec5a9135d3893f088b8d7701a1aad35ead8778db46f3272')
 
 prepare() {
   cd "$pkgname-$pkgver"
   sed -i 's,/setup_python.py,/pythonx/clap/setup_python.py,' \
     autoload/clap/filter/sync/python.vim
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-
-  for i in crates pythonx/clap/fuzzymatch-rs
-  do
-    ( cd "$i"
-      cargo update
-      cargo fetch --locked --target "$CARCH-unknown-linux-gnu" )
-  done
+  cd pythonx/clap/fuzzymatch-rs/
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
 
-  for i in "$pkgname-$pkgver"{,/crates,/pythonx/clap/fuzzymatch-rs}
+  for i in "$pkgname-$pkgver"{,/pythonx/clap/fuzzymatch-rs}
   do
-    ( cd "$i"
-      cargo build --release --frozen --all-features )
+    ( cd "$i"; cargo build --release --frozen --all-features )
   done
 }
 
