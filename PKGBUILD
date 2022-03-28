@@ -27,6 +27,7 @@ builddir="${pkgname%%-git}-${_commit}"
 
 prepare() {
 	cd "${srcdir}/${builddir}"
+	sed -i "s|^\(AC_INIT(\[openfortivpn\], \[\).*$|\1${pkgver}-g$(echo "${_commit}" | cut -c 1-9)])|" 'configure.ac'
 	autoreconf --force --install --verbose
 }
 
