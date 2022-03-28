@@ -2,7 +2,7 @@
 _pkgname=minq-nhentai
 pkgname="${_pkgname}-git"
 pkgver=r50.9888e1f4455a0c881ae6c179c3f6ace0e12c2a34
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc='Browse hnehtai in your terminal. Full image resolution in supported terminals. Beta version automatically caches all network requests so that hentai can be enjoyed during an ISP outage.'
 arch=(any)
@@ -10,8 +10,9 @@ url="https://github.com/kuche1/${_pkgname}.git"
 license=('GPL')
 depends=(python python-beautifulsoup4 viu)
 makedepends=(git)
-optdepends=("wezterm: an example terminal that supports full image resolution"
-            "python-minq-caching-thing-git: needed for the beta version")
+optdepends=('wezterm: an example terminal that supports full image resolution'
+            'python-minq-caching-thing-git: needed for the beta version'
+            'python-toml: needed for the beta version')
 provides=("${_pkgname}")
 source=("git+$url")
 md5sums=("SKIP")
