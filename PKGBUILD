@@ -2,7 +2,7 @@
 
 pkgname=plasma5-runners-vscode-git
 pkgver=r5.7c6bc0c
-pkgrel=2
+pkgrel=3
 pkgdesc="KRunner plugin for quickly opening recent VSCode workspaces"
 arch=('any')
 url="https://github.com/j1g5awi/krunner-vscode"
@@ -29,4 +29,3 @@ pkgver() {
 		printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 	)
 }
-install=krunner.install
