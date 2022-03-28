@@ -14,7 +14,7 @@ _buildtype='RelWithDebInfo'
 ##############################################################
 
 pkgname=jreen-git
-pkgver=v1.3.0.2.gc04c229
+pkgver=1.3.0.r2.gc04c229
 pkgrel=1
 epoch=1
 pkgdesc='Free and Opensource Jabber library, written in C++ using cross-platform framework Qt. - development version'
@@ -25,7 +25,7 @@ depends=('gsasl' 'qt4' 'speex')
 makedepends=('git' 'cmake')
 provides=('jreen')
 conflicts=('jreen')
-source=("${pkgname}::git://github.com/euroelessar/jreen.git")
+source=("${pkgname}::git+https://github.com/euroelessar/jreen.git")
 md5sums=('SKIP')
 
 if [[ ! ${_buildtype} == 'Release' ]] && [[ ! ${_buildtype} == 'release' ]]; then
@@ -33,12 +33,12 @@ if [[ ! ${_buildtype} == 'Release' ]] && [[ ! ${_buildtype} == 'release' ]]; the
 fi
 
 pkgver() {
-  cd ${srcdir}/${pkgname}
-  git describe --always --tags | sed 's|-|.|g'
+  cd "${srcdir}/${pkgname}"
+  git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./g'
 }
 
 build() {
-  cd ${srcdir}/${pkgname}
+  cd "${srcdir}/${pkgname}"
 
   cmake -DJREEN_FORCE_QT4=on \
         -DCMAKE_INSTALL_PREFIX=/usr \
@@ -47,6 +47,6 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/${pkgname}
-  make DESTDIR=${pkgdir} install
+  cd "${srcdir}/${pkgname}"
+  make DESTDIR="${pkgdir}" install
 }
