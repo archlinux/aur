@@ -2,10 +2,10 @@
 
 pkgname=python-google-speak
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple class to create speech files using Google Translate URL"
 arch=('any')
-url="https://github.com/marcus67/google-speak"
+url="https://github.com/marcus67/python_google_speak"
 license=('GPL3')
 depends=('python-requests' 'python-playsound' 'python-pygi')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
