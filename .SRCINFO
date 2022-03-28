@@ -1,14 +1,14 @@
 pkgbase = prettierd
 	pkgdesc = prettier, as a daemon, for ludicrous formatting speed.
-	pkgver = 0.18.1
+	pkgver = 0.19.1
 	pkgrel = 1
 	url = https://github.com/fsouza/prettierd
 	arch = any
 	license = ISC
 	makedepends = npm
 	depends = nodejs
-	noextract = prettierd-0.18.1.tgz
-	source = https://registry.npmjs.org/@fsouza/prettierd/-/prettierd-0.18.1.tgz
-	sha256sums = ed1d6f579739dce3f26b6ec44b7cbc3d304d7b8981b95dec842240aae1319342
+	noextract = prettierd-0.19.1.tgz
+	source = https://registry.npmjs.org/@fsouza/prettierd/-/prettierd-0.19.1.tgz
+	sha256sums = 7864247acbefb179f76895970c8a400bed68cafd40aacc2fb8d7d07c4323054f
 
 pkgname = prettierd
