@@ -2,8 +2,8 @@
 # Contributor: spikecodes <19519553+spikecodes@users.noreply.github.com>
 
 pkgname=libreddit
-pkgver=0.22.2
-_commit=f0a6bdc
+pkgver=0.22.5
+_commit=eb6c5e5
 pkgrel=1
 pkgdesc='Alternative private front-end to Reddit'
 arch=('x86_64')
@@ -21,7 +21,6 @@ validpgpkeys=(
 
 prepare() {
 	cd "$pkgname"
-	cargo update
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
