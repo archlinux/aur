@@ -8,8 +8,8 @@ pkgdesc="The video game that combines elements of the racing and role-playing ge
 arch=('x86_64')
 url="https://github.com/KranX/$_pkgname"
 license=('GPL3')
-makedepends=('git' 'cmake' 'make' 'ffmpeg4.4')
-depends=('clunk-vangers-git' 'sdl2' 'sdl2_net' 'libogg' 'libvorbis' 'ffmpeg4.4' 'zlib')
+makedepends=('git' 'cmake' 'make' 'ffmpeg4.4' 'clunk-vangers-git' 'sdl2' 'sdl2_net' 'libogg' 'libvorbis' 'zlib')
+depends=()
 provides=("vangers")
 conflicts=('vangers')
 source=("git+$url.git")
@@ -23,7 +23,8 @@ pkgver() {
 build() {
     cd $srcdir/$_pkgname
     mkdir build && cd build
-    cmake .. #-DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ -DBINARY_SCRIPT=OFF ..
+    # Force use ffmpeg4.4
+    cmake -DCMAKE_PREFIX_PATH="/usr/lib/ffmpeg4.4;/usr/include/ffmpeg4.4" ..
     make
 }
 
