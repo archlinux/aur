@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=phoc
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Wlroots based Phone compositor'
 arch=(x86_64 aarch64)
@@ -19,7 +19,7 @@ makedepends=(
 	wayland-protocols
 )
 source=("${url}/-/archive/v${pkgver}/phoc-v${pkgver}.tar.gz")
-b2sums=('64db3b0ee6994e53e0270cd721fc89452f85c7852e92e97e087dd584dd9c1bb8b6449b14c2cb738e5cfb1917829d2b823a4e3568b5ecd8d1fd0e46c64e2e017e')
+b2sums=('a765459b640b0625b2a3e06811fc920e829dc2405e317c305ba3e4587283704996ff7ff4e1d7b3aff15874f543b861a656e64e62401ac262882eaf475082b698')
 
 build() {
 	arch-meson phoc-v${pkgver} build -Dembed-wlroots=disabled
