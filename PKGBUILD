@@ -6,7 +6,7 @@ pkgdesc="Stock and crypto market terminal"
 arch=('any')
 url="https://gamestonkterminal.github.io/GamestonkTerminal/"
 license=('MIT')
-makedepends=(python-build python-installer python-wheel)
+makedepends=(python-build python-installer python-wheel python-poetry)
 depends=(
     python-build
     absl-py
@@ -323,6 +323,10 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+    cd ${srcdir}/${pkgname}
+    sed -ie '3s/GamestonkTerminal/gamestonktermial/' pyproject.toml
+}
 build() {
     cd ${srcdir}/${pkgname}
     python -m build --wheel --no-isolation

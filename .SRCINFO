@@ -8,6 +8,7 @@ pkgbase = gamestonkterminal-git
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
+	makedepends = python-poetry
 	depends = python-build
 	depends = absl-py
 	depends = python-aiohttp
