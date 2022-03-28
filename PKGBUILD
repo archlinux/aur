@@ -1,16 +1,17 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Liganic <liganic-aur at gmx dot net>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: ian <ian at kremlin dot cc>
 # Contributor: Max Bruckner (FSMaxB)
 
 pkgname=json-sh
 pkgver=r106.0d5e5c7
-pkgrel=1
+pkgrel=2
 pkgdesc="command line json tool written in bash"
 arch=('any')
 url="https://github.com/dominictarr/JSON.sh"
 license=('MIT' 'APACHE')
 makedepends=('git')
-source=('git://github.com/dominictarr/JSON.sh.git')
+source=('git+https://github.com/dominictarr/JSON.sh.git')
 sha256sums=('SKIP')
 depends=('bash')
 
