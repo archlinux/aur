@@ -3,7 +3,7 @@
 pkgbase=libadwaita-git-pkgs
 _pkgname=libadwaita
 pkgname=(libadwaita-docs-git libadwaita-demos-git)
-pkgver=1.0.1+3+gfddc56f7
+pkgver=1.1.0+4+g26398e70
 pkgrel=1
 epoch=1
 pkgdesc="Building blocks for modern adaptive GNOME applications"
