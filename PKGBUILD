@@ -1,14 +1,14 @@
 # Maintainer: <me at auoeke dot net>
 pkgname=circle
-pkgver=build_162
-pkgrel=2
+pkgver=build_163
+pkgrel=1
 pkgdesc='a C++ compiler with many novel language features'
 arch=('any')
 url='https://circle-lang.org'
 license=('custom')
 depends=('gcc>=10.2')
 source=("https://www.circle-lang.org/linux/${pkgver}.tgz")
-sha256sums=('d9e7ba7a60d6aa211fc502cb2368ac5c8e143764b026502a4986dca4118008ac')
+sha256sums=('4b21e2a85038d2f1ddae3d3ff04f0aef448850dad9f0fc41771c17e6d6926df5')
 
 prepare() {
     chmod +x circle
