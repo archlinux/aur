@@ -2,7 +2,7 @@
 # Maintainer: Tom Hacohen <tom@stosb.com>
 
 pkgname=etebase-server
-pkgver=0.7.0
+pkgver=0.8.3
 pkgrel=1
 pkgdesc="A self-hostable Etebase (EteSync 2.0) server"
 arch=(any)
@@ -10,6 +10,7 @@ depends=('python-django'
          'python-django-rest-framework'
          'python-drf-nested-routers'
          'python-django-cors-headers'
+         'python-fastapi'
          'python-pynacl'
          'python-msgpack'
          'python-pytz')
@@ -23,7 +24,7 @@ source=(https://github.com/etesync/server/archive/v"$pkgver".tar.gz
         $pkgname.install
         $pkgname.sysusers
         $pkgname)
-sha256sums=('19b54e4b119d69f13c885ddac7e04507b1cbb5a9c10e283738d69b2862205842'
+sha256sums=('53680e044c976b862f7dacde72402f86bbff3f7a7455ef517f8ad591a42e0944'
             '22ecfe8c6df3fe615a90db03afbdbc53c0c46cb9546eb61ca433392587725b41'
             'd42e2518975363aed2900fe4e03eefade98ed9b6f8b8140fd1eddc081d4081e7'
             'fb2d4fbec4faf951b0c5df0552eb8afaa8aff85278b43faa018e2e9a77e23591')
