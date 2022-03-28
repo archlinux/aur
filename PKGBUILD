@@ -2,7 +2,7 @@
 
 pkgname=pacseek
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal user interface for searching and installing Arch Linux packages'
 arch=('x86_64')
 url="https://github.com/moson-mo/$pkgname"
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('pacman')
 makedepends=('go')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('77f89228a0f6fc5d3ddddc872bc12ab019cea7b3836db63c6f11f3322d39b3ac')
+sha256sums=('bb1ce25175436ccc55b2bb51daa1f463019c1ff69d8598565ed4f84410f8492d')
 
 prepare(){
   cd "$pkgname-$pkgver"

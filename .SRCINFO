@@ -1,13 +1,13 @@
 pkgbase = pacseek
 	pkgdesc = A terminal user interface for searching and installing Arch Linux packages
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moson-mo/pacseek
 	arch = x86_64
 	license = GPL2
 	makedepends = go
 	depends = pacman
 	source = https://github.com/moson-mo/pacseek/archive/v0.1.4.tar.gz
-	sha256sums = 77f89228a0f6fc5d3ddddc872bc12ab019cea7b3836db63c6f11f3322d39b3ac
+	sha256sums = bb1ce25175436ccc55b2bb51daa1f463019c1ff69d8598565ed4f84410f8492d
 
 pkgname = pacseek
