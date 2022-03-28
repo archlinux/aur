@@ -1,6 +1,6 @@
 pkgbase = calamares-git
 	pkgdesc = Distribution-independent installer framework (development version)
-	pkgver = 3.2.55.r9918.9b769f0ae
+	pkgver = 3.2.55.r9920.9e4b2d14c
 	pkgrel = 1
 	url = https://github.com/calamares/calamares
 	arch = i686
