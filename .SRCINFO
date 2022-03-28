@@ -1,0 +1,15 @@
+pkgbase = starport-git
+	pkgdesc = The all-in-one platform to build, launch and maintain any crypto application on a sovereign and secured blockchain
+	pkgver = nightly
+	pkgrel = 1
+	url = https://starport.com
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = go
+	provides = starport
+	conflicts = starport-bin
+	source = starport-git::git+https://github.com/tendermint/starport
+	md5sums = SKIP
+
+pkgname = starport-git
