@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/sos4nt/dynamic-colors"
 makedepends=('git')
 provides=('dynamic-colors')
-source=('git://github.com/sos4nt/dynamic-colors.git')
+source=('git+https://github.com/sos4nt/dynamic-colors.git')
 md5sums=('SKIP')
 license=('MIT')
 

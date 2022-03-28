@@ -7,7 +7,7 @@ pkgbase = dynamic-colors-git
 	license = MIT
 	makedepends = git
 	provides = dynamic-colors
-	source = git://github.com/sos4nt/dynamic-colors.git
+	source = git+https://github.com/sos4nt/dynamic-colors.git
 	md5sums = SKIP
 
 pkgname = dynamic-colors-git
