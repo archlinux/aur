@@ -1,0 +1,7 @@
+post_install() {
+	kquitapp5 krunner
+}
+
+post_remove() {
+	kquitapp5 krunner
+}
