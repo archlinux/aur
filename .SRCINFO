@@ -1,7 +1,7 @@
 pkgbase = goverlay
 	pkgdesc = A GUI to help manage Vulkan/OpenGL overlays
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/benjamimgois/goverlay
 	arch = x86_64
 	license = GPL3
@@ -18,6 +18,8 @@ pkgbase = goverlay
 	optdepends = vulkan-tools: Vulkan preview
 	optdepends = git: Clone reshade repository
 	optdepends = replay-sorcery: Instant replay solution
+	optdepends = breeze: First choice for theme
+	optdepends = oxygen: Second choice for theme
 	conflicts = goverlay
 	conflicts = goverlay
 	source = https://github.com/benjamimgois/goverlay/archive/refs/tags/0.8.1.tar.gz
