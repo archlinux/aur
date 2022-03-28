@@ -1,6 +1,6 @@
 pkgbase = notable-insiders-bin
 	pkgdesc = Insider build of the Notable note-taking app
-	pkgver = 1.9.0_beta.6
+	pkgver = 1.9.0_beta.7
 	pkgrel = 1
 	url = https://github.com/notable/notable-insiders/
 	install = notable.install
@@ -22,7 +22,7 @@ pkgbase = notable-insiders-bin
 	depends = libappindicator-gtk3
 	provides = notable
 	conflicts = notable-bin
-	source = https://github.com/notable/notable-insiders/releases/download/v1.9.0-beta.6/notable-1.9.0-beta.6.pacman
-	sha256sums = e9fefb4fd15b8236f1e3fd064f3abf5bea52ff7e3351fff27f70b61a74239815
+	source = https://github.com/notable/notable-insiders/releases/download/v1.9.0-beta.7/notable-1.9.0-beta.7.pacman
+	sha256sums = 650326b1a09b8fcd47ab3e6182a038083c056a2d4c743834fc3fb47f6ca38a09
 
 pkgname = notable-insiders-bin
