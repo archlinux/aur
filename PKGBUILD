@@ -1,9 +1,9 @@
 # Maintainer: Ryan Schroeder <me at rk1024 dot net>
 
 pkgname='empress'
-pkgver='1.6.0'
-_semver="${pkgver/+/-}"
-pkgrel=2
+pkgver='1.6.0+stable'
+_semver="1.6.0"
+pkgrel=1
 pkgdesc='A D-Bus MPRIS daemon for controlling media players.'
 arch=('i686' 'x86_64')
 url='https://github.com/ray-kast/empress'
