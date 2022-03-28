@@ -3,8 +3,8 @@
 # Contributor: Robert Knauer <robert@privatdemail.net>
 
 pkgname=freedoko-git
-pkgver=0.7.24.r0.g0ecb537f7
-_stablever=0.7.24
+pkgver=0.7.25.r0.g14d0e9597
+_stablever=0.7.25
 pkgrel=1
 pkgdesc="Free implementation of the card game Doppelkopf (development version)"
 arch=('x86_64')
@@ -19,7 +19,7 @@ source=("git+https://gitlab.com/dknof/FreeDoko.git"
         "freedoko-install-directories.patch")
 noextract=("FreeDoko_${_stablever}.Linux.zip")
 sha512sums=('SKIP'
-            '82d12391f045d8e6c59eaea2919ea4b4678686589a498fb43345d9d778c1d0200152ece2282ea3880078c84e902325bffbf8d90edcdf3f841bfde441d253a3e4'
+            '512be0043b1053001fb4c937582c808af066ef5760f0e917ae2c00adbbd057c0962d787edfc5f267a66deccb672a3fefd24b55beb7cd1a2315c4190e55057afb'
             '602f53bfd4c4c49824400a36e4655dc6f6d5692b7277489f8e5f9f9d9d4d90eb086a4d142736e76edc2c8864430d8cbf5fa403bb25497b2c6a510a1979fe7650')
 
 pkgver() {
