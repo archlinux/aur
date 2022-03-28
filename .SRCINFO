@@ -14,11 +14,11 @@ pkgbase = vuescan-bin
 	options = !strip
 	source = vuescan-LICENSE.txt
 	sha256sums = SKIP
-	source_x86_64 = vuescan-x64-2022-03-25-17.rpm::https://www.hamrick.com/files/vuex6497.rpm
+	source_i686 = vuescan-x32-2022-03-28-22.rpm::https://www.hamrick.com/files/vuex3297.rpm
+	sha256sums_i686 = SKIP
+	source_x86_64 = vuescan-x64-2022-03-28-22.rpm::https://www.hamrick.com/files/vuex6497.rpm
 	sha256sums_x86_64 = SKIP
-	source_armv6h = vuescan-arm32-2022-03-25-17.rpm::https://www.hamrick.com/files/vuea3297.rpm
-	sha256sums_armv6h = SKIP
-	source_aarch64 = vuescan-arm64-2022-03-25-17.rpm::https://www.hamrick.com/files/vuea6497.rpm
+	source_aarch64 = vuescan-arm64-2022-03-28-22.rpm::https://www.hamrick.com/files/vuea6497.rpm
 	sha256sums_aarch64 = SKIP
 
 pkgname = vuescan-bin

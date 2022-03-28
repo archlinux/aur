@@ -11,12 +11,12 @@ license=('custom')
 depends=(gtk2 libsm libusb-compat)
 options=(!strip) # required to accept registration details
 source=(vuescan-LICENSE.txt)
+source_i686=("vuescan-x32-$(date +%F-%H).rpm::https://www.hamrick.com/files/vuex3297.rpm")
 source_x86_64=("vuescan-x64-$(date +%F-%H).rpm::https://www.hamrick.com/files/vuex6497.rpm")
 source_aarch64=("vuescan-arm64-$(date +%F-%H).rpm::https://www.hamrick.com/files/vuea6497.rpm")
-source_armv6h=("vuescan-arm32-$(date +%F-%H).rpm::https://www.hamrick.com/files/vuea3297.rpm")
 sha256sums=('SKIP')
+sha256sums_i686=('SKIP')
 sha256sums_x86_64=('SKIP')
-sha256sums_armv6h=('SKIP')
 sha256sums_aarch64=('SKIP')
 
 pkgver() {
