@@ -1,0 +1,13 @@
+diff --git a/src/pacman/callback.c b/src/pacman/callback.c
+index 75c74f8b..e9cf87c2 100644
+--- a/src/pacman/callback.c
++++ b/src/pacman/callback.c
+@@ -194,7 +194,7 @@ static void fill_progress(const int bar_percent, const int disp_percent,
+ 				}
+ 			} /* else regular progress bar */
+ 			else if(i > hashlen - hash) {
+-				putchar('#');
++				fputs("\033[36;1m\033[m", stdout);
+ 			} else {
+ 				putchar('-');
+ 			}
