@@ -2,8 +2,8 @@
 pkgname='xmind-bin'
 _pkgname='XMind'
 _pkgname_o='xmind'
-pkgver='11.1.2'
-_update_date='202111151820'
+pkgver='12.0.0'
+_update_date='202203092327'
 pkgrel=1
 pkgdesc='XMind - The most popular mind mapping software.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ url='https://www.xmind.net'
 provides=('xmind-bin')
 install='install.install'
 source=("${pkgname}-${pkgver}-${_update_date}.deb::https://dl2.xmind.cn/${_pkgname}-for-Linux-amd-64bit-${pkgver}-${_update_date}.deb")
-sha256sums=('4c73af62b0d0df5a3fc703e2453bfa6f0f26390649773dde186655828952cb9b')
+sha256sums=('b83576c5960d848a8e04ab5f1a35b02aadf99f29c3c62a7ec1a03c6b2920efde')
 ## Install files
 _install() {
 find $2 -type f -exec install -Dm$1 {} $3/{} \;
