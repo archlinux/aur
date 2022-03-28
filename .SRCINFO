@@ -1,6 +1,6 @@
 pkgbase = gr-satellites-git
 	pkgdesc = gr-satellites decoder blocks for GNURadio
-	pkgver = r1137.6b4c607
+	pkgver = r1240.2ea3401
 	pkgrel = 1
 	url = https://github.com/daniestevez/gr-satellites
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = gr-satellites-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = libfec
-	makedepends = swig
 	makedepends = boost
 	depends = gnuradio
 	depends = boost-libs
@@ -19,7 +18,7 @@ pkgbase = gr-satellites-git
 	optdepends = doxygen: For document generation
 	provides = gr-satellites
 	conflicts = gr-satellites
-	source = git+https://github.com/daniestevez/gr-satellites.git#branch=master
+	source = git+https://github.com/daniestevez/gr-satellites.git#branch=main
 	sha256sums = SKIP
 
 pkgname = gr-satellites-git
