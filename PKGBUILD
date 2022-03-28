@@ -1,7 +1,7 @@
 # Maintainer: Vadim Tsesko <incubos at yandex dot com>
 
 pkgname=async-profiler
-pkgver=2.5
+pkgver=2.7
 pkgrel=1
 pkgdesc='Sampling CPU and HEAP profiler for Java featuring AsyncGetCallTrace + perf_events'
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('async-profiler')
 groups=('jvm-profiling-tools' 'odnoklassniki')
 depends=('java-environment')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jvm-profiling-tools/async-profiler/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('4edeadde01368f89efe3a880b24db7dbe9f96aca258de7cf0ddf13a0a83bde64')
+sha256sums=('8298c7b4c2f34069323e8b1ff7d87ef29ef64be765778a38c8ffba24891634ca')
 install=async-profiler.install
 
 build() {
