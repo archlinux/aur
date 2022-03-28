@@ -1,3 +1,4 @@
-docker-machine-driver-kvm2*
+docker-machine-driver-kvm2-*
+
 pkg
 src
