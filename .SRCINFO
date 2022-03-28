@@ -1,7 +1,7 @@
 pkgbase = ventoy-bin
 	pkgdesc = A new multiboot USB solution
 	pkgver = 1.0.72
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.ventoy.net
 	install = ventoy.install
 	arch = aarch64
@@ -28,7 +28,7 @@ pkgbase = ventoy-bin
 	source = sanitize.patch
 	sha256sums = d667dee999ea91e04d18d8c8ed0c7b8c6e452e07e7eab570af4550bd2386ecec
 	sha256sums = 1ad5d314e02b84127a5a59f3871eb1d28617218cad07cde3eeddcac391473000
-	sha256sums = cbe6f47007981ada5e27a092fac7620a926301a704b59186295552d9f64cb0e7
+	sha256sums = 620f6cd35d4480a157b7950c405688915a6658e0c321dc0a0d0c9c20968604ed
 	sha256sums = c3d4463a878a89d96e5f0bc4e1a43e48f27af5965bd4c977567695d7cf91fe5f
 	sha256sums = 1bbe66b52398be96402604562bddb5c9fbebfe345f0de184709e1c74086f2be6
 	sha256sums = 51029745da197dded6e007aee3f30f7ea1aa6e898172a6ea176cc2f3a842d0ff
