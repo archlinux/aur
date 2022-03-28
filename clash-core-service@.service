@@ -4,7 +4,11 @@ After=network-online.target nftables.service iptabels.service
 
 [Service]
 Type=simple
-ExecStartPre=/usr/bin/install -Dm644 -o %i -g %i /etc/clash/Country.mmdb  -t /home/%i/.config/clash
+ExecStartPre=/usr/bin/install -Dm644 -o %i -g %i /etc/clash/Country.mmdb  \
+    -t /home/%i/.config/clash
+ExecStartPre=/usr/bin/install -Dm755 -o %i -g %i \
+    /opt/clash-for-windows/static/files/linux/x64/service/clash-core-service \
+    -t /home/%i/.config/clash/service
 ExecStartPre=+/usr/share/clash/setup-cgroup.sh
 ExecStart=/usr/share/clash/bypass-proxy /home/%i/.config/clash/service/clash-core-service
 Restart=always
