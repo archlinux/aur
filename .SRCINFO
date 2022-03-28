@@ -1,7 +1,7 @@
 pkgbase = qgroundcontrol-git
 	pkgdesc = ground control system for px4 autopilot
 	pkgver = v4.2.0.r47.96401ec30
-	pkgrel = 1.1
+	pkgrel = 1.2
 	url = https://github.com/mavlink/qgroundcontrol
 	arch = x86_64
 	license = GPL3
@@ -31,6 +31,7 @@ pkgbase = qgroundcontrol-git
 	depends = xz
 	depends = zlib
 	depends = icu
+	depends = qt5-connectivity
 	depends = qt5-speech
 	depends = qt5-multimedia
 	depends = qt5-serialport

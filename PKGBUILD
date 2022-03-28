@@ -2,7 +2,7 @@
 
 pkgname=qgroundcontrol-git
 pkgver=v4.2.0.r47.96401ec30
-pkgrel=1
+pkgrel=1.2
 epoch=
 pkgdesc="ground control system for px4 autopilot"
 arch=('any')
@@ -33,6 +33,7 @@ depends=('bzip2'
          'xz'
          'zlib'
          'icu'
+         'qt5-connectivity'
          'qt5-speech'
          'qt5-multimedia'
          'qt5-serialport'
