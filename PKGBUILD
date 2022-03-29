@@ -1,7 +1,7 @@
 # Maintainer: Kenny Strawn <Kenny.Strawn@gmail.com>
 
 pkgname=autoupdate-yay
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgdesc="Automatically update ALL packages, including those installed from the AUR, in the background"
 arch=('any')
