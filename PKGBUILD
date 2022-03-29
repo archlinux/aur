@@ -4,13 +4,13 @@
 
 pkgname=libfprint-tod-git
 _pkgdirname=libfprint
-pkgver=1.94.1+tod1
+pkgver=1.94.3+tod1
 pkgrel=1
 pkgdesc="Library for fingerprint readers - TOD version"
 arch=(x86_64)
 url="https://fprint.freedesktop.org/"
 license=(LGPL)
-depends=('libgusb>=0.3.0' nss pixman)
+depends=('libgusb>=0.3.0' nss pixman libgudev)
 makedepends=(git gobject-introspection gtk-doc 'meson>=0.49.0')
 checkdepends=(python python-cairo python-gobject 'umockdev>=0.13.2')
 optdepends=()
@@ -24,6 +24,10 @@ sha256sums=('SKIP')
 pkgver() {
   cd $_pkgdirname
   git describe --tags | sed 's/^V_\|^v//;s/_/./g;s/-/.r/;s/-/./'
+}
+
+prepare() {
+  cd $_pkgdirname
 }
 
 build() {
