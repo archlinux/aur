@@ -11,6 +11,6 @@ pkgbase = rumtricks-git
 	depends = jq
 	provides = rumtricks
 	source = https://johncena141.eu.org:8141/johncena141/rumtricks/raw/branch/main/rumtricks.sh
-	md5sums = cd42c776f3c125b393f7e705cf1721d0
+	md5sums = SKIP
 
 pkgname = rumtricks-git
