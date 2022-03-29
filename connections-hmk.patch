@@ -1,0 +1,138 @@
+--- gtk-gnutella-git/src/if/gnet_property.c	2016-05-08 01:55:55.007156302 +0200
++++ gnet_property.c	2016-05-08 01:58:48.131189769 +0200
+@@ -68,12 +68,12 @@
+ static const gboolean gnet_property_variable_ancient_version_default = FALSE;
+ char   *gnet_property_variable_new_version_str     = NULL;
+ static const char   *gnet_property_variable_new_version_str_default = NULL;
+-guint32  gnet_property_variable_up_connections     = 42;
+-static const guint32  gnet_property_variable_up_connections_default = 42;
++guint32  gnet_property_variable_up_connections     = 142;
++static const guint32  gnet_property_variable_up_connections_default = 142;
+ guint32  gnet_property_variable_normal_connections     = 0;
+ static const guint32  gnet_property_variable_normal_connections_default = 0;
+-guint32  gnet_property_variable_max_connections     = 50;
+-static const guint32  gnet_property_variable_max_connections_default = 50;
++guint32  gnet_property_variable_max_connections     = 150;
++static const guint32  gnet_property_variable_max_connections_default = 150;
+ guint32  gnet_property_variable_node_leaf_count     = 0;
+ static const guint32  gnet_property_variable_node_leaf_count_default = 0;
+ guint32  gnet_property_variable_node_normal_count     = 0;
+@@ -84,10 +84,10 @@
+ static const guint32  gnet_property_variable_max_downloads_default = 100;
+ guint32  gnet_property_variable_max_host_downloads     = 1;
+ static const guint32  gnet_property_variable_max_host_downloads_default = 1;
+-guint32  gnet_property_variable_max_uploads     = 4;
+-static const guint32  gnet_property_variable_max_uploads_default = 4;
+-guint32  gnet_property_variable_max_uploads_ip     = 1;
+-static const guint32  gnet_property_variable_max_uploads_ip_default = 1;
++guint32  gnet_property_variable_max_uploads     = 40;
++static const guint32  gnet_property_variable_max_uploads_default = 40;
++guint32  gnet_property_variable_max_uploads_ip     = 8;
++static const guint32  gnet_property_variable_max_uploads_ip_default = 2;
+ host_addr_t  gnet_property_variable_local_ip;
+ host_addr_t  gnet_property_variable_local_ip6;
+ time_t  gnet_property_variable_current_ip_stamp     = 0;
+@@ -110,8 +110,8 @@
+ static const guint32  gnet_property_variable_connection_speed_default = 0;
+ gboolean gnet_property_variable_compute_connection_speed     = TRUE;
+ static const gboolean gnet_property_variable_compute_connection_speed_default = TRUE;
+-guint32  gnet_property_variable_search_max_items     = 50;
+-static const guint32  gnet_property_variable_search_max_items_default = 50;
++guint32  gnet_property_variable_search_max_items     = 1500;
++static const guint32  gnet_property_variable_search_max_items_default = 1500;
+ guint32  gnet_property_variable_ul_usage_min_percentage     = 70;
+ static const guint32  gnet_property_variable_ul_usage_min_percentage_default = 70;
+ guint32  gnet_property_variable_download_connecting_timeout     = 90;
+@@ -431,12 +431,12 @@
+ static const gboolean gnet_property_variable_download_require_urn_default = FALSE;
+ gboolean gnet_property_variable_download_require_server_name     = TRUE;
+ static const gboolean gnet_property_variable_download_require_server_name_default = TRUE;
+-guint32  gnet_property_variable_max_ultrapeers     = 4;
+-static const guint32  gnet_property_variable_max_ultrapeers_default = 4;
++guint32  gnet_property_variable_max_ultrapeers     = 40;
++static const guint32  gnet_property_variable_max_ultrapeers_default = 40;
+ guint32  gnet_property_variable_quick_connect_pool_size     = 40;
+ static const guint32  gnet_property_variable_quick_connect_pool_size_default = 40;
+-guint32  gnet_property_variable_max_leaves     = 300;
+-static const guint32  gnet_property_variable_max_leaves_default = 300;
++guint32  gnet_property_variable_max_leaves     = 3000;
++static const guint32  gnet_property_variable_max_leaves_default = 1500;
+ guint32  gnet_property_variable_search_handle_ignored_files     = 0;
+ static const guint32  gnet_property_variable_search_handle_ignored_files_default = 0;
+ prop_def_choice_t gnet_property_variable_search_handle_ignored_files_choices[] = {
+@@ -658,8 +658,8 @@
+ static const guint32  gnet_property_variable_oob_proxy_debug_default = 0;
+ gboolean gnet_property_variable_enable_local_socket     = TRUE;
+ static const gboolean gnet_property_variable_enable_local_socket_default = TRUE;
+-guint32  gnet_property_variable_max_simultaneous_downloads_per_file     = 40;
+-static const guint32  gnet_property_variable_max_simultaneous_downloads_per_file_default = 40;
++guint32  gnet_property_variable_max_simultaneous_downloads_per_file     = 140;
++static const guint32  gnet_property_variable_max_simultaneous_downloads_per_file_default = 140;
+ gboolean gnet_property_variable_dump_received_gnutella_packets     = FALSE;
+ static const gboolean gnet_property_variable_dump_received_gnutella_packets_default = FALSE;
+ gboolean gnet_property_variable_search_results_expose_relative_paths     = FALSE;
+@@ -783,8 +783,8 @@
+ };
+ guint32  gnet_property_variable_verify_debug     = 0;
+ static const guint32  gnet_property_variable_verify_debug_default = 0;
+-guint32  gnet_property_variable_local_addr_cache_max_hosts     = 100;
+-static const guint32  gnet_property_variable_local_addr_cache_max_hosts_default = 100;
++guint32  gnet_property_variable_local_addr_cache_max_hosts     = 1000;
++static const guint32  gnet_property_variable_local_addr_cache_max_hosts_default = 1000;
+ guint32  gnet_property_variable_local_addr_cache_max_time     = 604800;
+ static const guint32  gnet_property_variable_local_addr_cache_max_time_default = 604800;
+ guint32  gnet_property_variable_local_addr_debug     = 0;
+@@ -1100,7 +1100,7 @@
+ static const gboolean gnet_property_variable_enable_g2_default = TRUE;
+ guint32  gnet_property_variable_node_g2_count     = 0;
+ static const guint32  gnet_property_variable_node_g2_count_default = 0;
+-guint32  gnet_property_variable_max_g2_hubs     = 2;
++guint32  gnet_property_variable_max_g2_hubs     = 50;
+ static const guint32  gnet_property_variable_max_g2_hubs_default = 2;
+ gboolean gnet_property_variable_log_bad_g2     = FALSE;
+ static const gboolean gnet_property_variable_log_bad_g2_default = FALSE;
+@@ -1240,7 +1240,7 @@
+     gnet_property->props[4].data.guint32.def   = (void *) &gnet_property_variable_up_connections_default;
+     gnet_property->props[4].data.guint32.value = (void *) &gnet_property_variable_up_connections;
+     gnet_property->props[4].data.guint32.choices = NULL;
+-    gnet_property->props[4].data.guint32.max   = 100;
++    gnet_property->props[4].data.guint32.max   = 1000;
+     gnet_property->props[4].data.guint32.min   = 0;
+ 
+ 
+@@ -1262,7 +1262,7 @@
+     gnet_property->props[5].data.guint32.def   = (void *) &gnet_property_variable_normal_connections_default;
+     gnet_property->props[5].data.guint32.value = (void *) &gnet_property_variable_normal_connections;
+     gnet_property->props[5].data.guint32.choices = NULL;
+-    gnet_property->props[5].data.guint32.max   = 1;
++    gnet_property->props[5].data.guint32.max   = 10;
+     gnet_property->props[5].data.guint32.min   = 0;
+ 
+ 
+@@ -1284,7 +1284,7 @@
+     gnet_property->props[6].data.guint32.def   = (void *) &gnet_property_variable_max_connections_default;
+     gnet_property->props[6].data.guint32.value = (void *) &gnet_property_variable_max_connections;
+     gnet_property->props[6].data.guint32.choices = NULL;
+-    gnet_property->props[6].data.guint32.max   = 100;
++    gnet_property->props[6].data.guint32.max   = 1000;
+     gnet_property->props[6].data.guint32.min   = 30;
+ 
+ 
+@@ -4964,7 +4964,7 @@
+     gnet_property->props[181].data.guint32.def   = (void *) &gnet_property_variable_max_ultrapeers_default;
+     gnet_property->props[181].data.guint32.value = (void *) &gnet_property_variable_max_ultrapeers;
+     gnet_property->props[181].data.guint32.choices = NULL;
+-    gnet_property->props[181].data.guint32.max   = 5;
++    gnet_property->props[181].data.guint32.max   = 50;
+     gnet_property->props[181].data.guint32.min   = 0;
+ 
+ 
+@@ -11087,7 +11087,7 @@
+     gnet_property->props[472].data.guint32.def   = (void *) &gnet_property_variable_max_g2_hubs_default;
+     gnet_property->props[472].data.guint32.value = (void *) &gnet_property_variable_max_g2_hubs;
+     gnet_property->props[472].data.guint32.choices = NULL;
+-    gnet_property->props[472].data.guint32.max   = 3;
++    gnet_property->props[472].data.guint32.max   = 20;
+     gnet_property->props[472].data.guint32.min   = 0;
+ 
+ 
