@@ -1,84 +1,124 @@
-This version feels almost mature enough to where I would call it `v1.0`. But due to lack of production environment testing, it will stay `v0.3`
-
-I'm hoping to be able to add hotfixes for any bugs unseen or necessary fixes.
-
-Thanks to every single person who contributed to this project! I hope I didn't forget to mention any of you.
-
-Here are the changes:
+With this release, Crow is production ready. I'm amazed and thankful for how far this project has come and I would like to thank everyone who contributed their time, skills, and money to move this project forward.
+A special thanks to Crow's newest member, @luca-schlecker. Without his work, much of this release wouldn't be possible.
 
 ### Packages / Dependencies
-- CMake Improvements (for better compatibility with Conan recipes). @madduci, @prince-chrismc, and The Conan team. #96
-- Vcpkg Support. @thinking-tower #137
-- Fix CMake problem when Crow is built in a subdirectory of another project. @rittelle #103
-- More CMake Fixes. @ugermann #124
-- Crow can now be installed on the system using `make install`. @ayaankhan98 #80
+- Proper CMake support (Crow is now a CMake target (library) as opposed to just using CMake to compile examples/tests). #228 #209 #218 #241
+- Change Crow CMake dependencies based on downstream project requirements. @Leon0402 #231
+- CMake install support. #228 #209 #218
+- Crow can now be compiled using C++20. @Leon0402 #265
+- Automated release process via release script. #162 #205 #228 #252
+- CMake uninstall support. @navidcity #305
+- Fixed local VCPKG manifest version. #207
+- Fixed `vcpkg.json` to work on linux. @Borwe #330
+- Added Crow license to `crow_all.h`. #165
+
+
+### Framework
+- **`Feature`** Allowed multiple source files for projects using Crow without the need for `#define CROW_MAIN`. #280 #186 @danielytics #192 @nekoffski #354
+- **`Feature`** Added a type of middleware that runs per route rather than globally. @dranikpg #327
+- **`Feature`** Replaced `dumb_timer_queue` with new `task_timer`. #278
+- **`Feature`** Replaced the round robin approach to assigning connections to threads to a load balancing system. @belugum #289
+- **`Feature`** Improved and optimize filename sanitization function. @neumannt #321
+- **`Feature`** Added Middleware to handle CORS rules. @dranikpg #348
+- **`Bug`** fixed issue where absolute unix paths were not sanitized. #334
+- **`Feature`** Added function to run the Crow app asynchronously. #359
+- **`Feature`** Added unsafe file loading functions. @zefrenchy #339
+- **`Feature`** Added Base64 decoder. #260 @neumannt #324
+- **`Feature`** Added function to get the port Crow is using. @nx10 #276
+- **`Bug`** Worked around GCC 8.3 bug that prevented Crow from compiling. @nx10 @CircuitCoder #287
+- **`Feature`** Updated Crow's thread count process to reflect the actual number of threads being used. #307
+
 
 ### Websockets
-- **`Bug`** Reset the internal header variable before every read. (fixing potential issues where read is run and no actual data is taken from the socket). #44
-- **`Bug`** Fixed potential crash when using SSL Websockets. @fran6co #44
-- **`Feature`** Added support for non masked client messages. #44
-- **`Feature`** Added functionality to send a ping message from the server. #44
-- **`Feature`** Exposed methods to send Ping and Pong to the end-user. #44
-- **`Feature`** Ping and Pong payloads to be larger than 127 bytes are now allowed. #44
+- **`Bug`** Fixed Issue where Crow assumes a single masked message means all other messages are masked as well. #282
+- **`Feature`** Enforce Websocket protocol (opt-in). #282
+- **`Feature`** Added functionality to get the remote IP address connected to the Websocket. #263
+
 
 ### HTTP
-- **`Feature`** Added Support for HTTP Compression using Zlib. @pierobot #93
-- **`Feature`** Made Compression (and Zlib dependency) optional (via macro). @alejandroarmas #142
-- **`Bug`** Fixed broken Static files due to Responses not being cleared. @rittelle #109
-- **`Feature`** Added Catch-all Route. @Tibbel #122 #126
-- **`Feature`** Users can now define anything they want a handler to return using the `returnable` class. #84
-- **`Feature`** Crow handler can now have Response alone as an argument (without Request). @ayaankhan98 @klaus-moon #76
-- **`Feature`** Server name can now be set to anything the User wants. @makaveli #79
-- **`Feature`** More robust redirection tools. #87
-- **`Feature`** methods `pop()`, `pop_list()`, `pop_dict()`, and `keys()` added to `query_string`. #132
-- **`Feature`** Crow now handles `HEAD` and `OPTIONS` HTTP methods automatically. #117
-- **`Bug`** Fixed issue where response is logged twice. #128
+- **`Feature`** Implemented [Blueprints](https://crowcpp.org/guides/blueprints/) for project organization (similar to Flask's Blueprints). #181 #205 #208 #242
+- **`Feature`** Upgraded, better integrated, and optimized the HTTP Parser Crow uses. #294 @navidcity #303 #349 @nekoffski #354 #371
+- **`Feature`** Re-implemented the Trie crow uses to match rules with URLs. #166
+- **`Bug`** Fixed problem where streaming a response would abruptly close the connection. #332
+- **`Feature`** Crow now uses an enum for HTTP status codes (`200` or `status::OK` can be used). #230
+- **`Feature`** Added several HTTP status codes. @Zhavok92 #227 @kingster #367
+- **`Bug`** Fixed issue where enabling SSL but not using it caused incorrect redirects. #281
+- **`Feature`** Added app option to set threshold beyond which Crow streams a response. #245
+- **`Feature`** Catch-all Routes now have receive the error code in their `response` object. #205
+- **`Bug`** **`API Breaking`** Modified Parser to only allow `GET` method on HTTP/0.9. #262
+- **`Bug`** Fixed problem where static file info wasn't being cleared if no file was found. #338
+- **`Feature`** Added Automatic UTF-8 support through a middleware. #202
+- **`Feature`** Added content type constructor for `response`. @hg333 #212
+- **`Bug`** Replaced `HTTPMethod::GET` with `HTTPMethod::Get` in `routing.h`. @d35ha #191
+- **`Feature`** Recognized cleartext and SSL versions of HTTP/2 upgrade header. #332
+- **`API Breaking`** Fixed incorrect styling in for `remote_ip_address`. @himanshu007-creator #200
 
-### Static Files
-- **`Feature`** Created `static` folder similar to flask. #50
-- **`Feature`** Static File support was enabled on Windows. @epajarre #55
+
+### Multipart
+- **`Feature`** **`API Breaking`** Part headers are now in a map rather than a vector. #358
+- **`Feature`** Added function to get a part by name. #358
+- **`Bug`** Fixed a problem where Crow failed to parse a multipart request made using .Net `HttpClient`. #332
+- **`Feature`** **`API Breaking`** Added a boundary to the default content-type (gets set to the request's boundary if constructed from a request). #358
+- **`Feature`** Parts and headers can be cast to integer or double. #358
+
 
 ### Mustache
-- **`Feature`** Crow logs a warning if a template is not found. @rittelle #102
+- **`Feature`** Added support for C++ lambdas in Mustache. #299
+- **`Feature`** **`API Breaking`** Added function to set a templates directory. #362
+- **`Bug`** Fixed missing `;` in mustache escaping. #342
+- **`Feature`** **`API Breaking`** returning `page.render()` from a route now sets `Content-Type` header to HTML. #346
+- **`Bug`** Ensured const correctness in template_t. @neumannt #325
 
-### Json
-- **`Feature`** `crow::json::wvalue` can now return any Json type, not just Json objects. #70
-- **`Feature`** `crow::json::wvalue` can now use either `std::unordered_map` or `std::map` (for organized results). #132
-- **`Feature`** Added `lo()` method to json::rvalue, returns a vector of json::rvalue containing whatever a json object or list has. #132
-- **`Feature`** Added constructor to create `crow::json::wvalue` from `std::vector`. #132
-- **`Feature`** Added `keys()` method to json::rvalue. #132
-- **`Feature`** Added `size()` to `crow::json::wvalue`. #132
-- **`Feature`** Added `std::string()` operator to json::rvalue (allows `std::string(json["abc"]`). #132
-- `dump()` is now part of `crow::json::wvalue` and is const. #70 @belugum #135
-- **`Feature`** Added copy constructor to `crow::json::wvalue`. #132
+
+### JSON
+- **`Feature`** JSON values can now be initialized using initializer lists. @lcsdavid #190 #203 #242
+- **`Bug`** Fixed problem where JSON would output `nan` or `inf` values. @Vhuynh25 @rremigius #328
+- **`Bug`** Fixed problem with excess recursion when reading JSON. @neumannt #326
+- **`Bug`** Made JSON float output faster and more accurate. #203
+
+
+### Logging
+- **`Feature`** **`API Breaking`** Simplified creating a custom logger. #288 #290
+- **`Feature`** Added Support for using local time in default logger. @kingster #368
 
 
 ### Documentation
-- Added Guides / Tutorials powered by mkdocs. #71 #72 #73 #74 #95 #132 @wentasah #134 @thinking-tower #137
-- Added in code documentation for most of the library. #65 #44 #61
-- Cleaned up a small problem with `app.h` documentation. #44
-- Small documentation error fix. @tibovanheule #114
-- Readme changes. #71
+- Added Landing Page. #197 #201 #228
+- Updated Site theme. #197 #228
+- Placed financial and code contributors on landing page. #228 #311 #373
+- Updated install documentation and separated instructions for different OSes. #228 #238 #293
+- Added Social media cards. #197 #203 #270
+- Added donate button to site header. #197
+- Added indicator for features introduced after `v0.1`. #197
+- Added HTTP Authentication tutorial. #293
+- Updated documentation to mention new features. #203 #228 #372
+- Made API reference more readable by removing parts only intended for internal use. #372
+- Improved visibility on readme gitter badge. #228
+- Fixed several typos. #297
+- Used proper markdown syntax in documentation. #270
+
 
 ### CI/CD
-- Travis replaced with Drone.io. #120
+- Fixed issue where cpp-coveralls wasn't compatible with newer GCOV versions. #228
+- Fixed issue where PR coverage would affect `master` coverage results. #228
+- Fixed coveralls branch. #198
+- Removed pip3 command from PR workflow. #270
+
 
 ### Testing / Examples
-- Added Websocket tests. #44
-- Added examples and tests for json and query_string new methods. #132
-- **`Bug`** `#include` for `example_with_all`. @supersaiyanmode #63
-- **`Bug`** Renamed CMake target: example -> basic_example. @supersaiyanmode #64
-- **`Bug`** Crow now reports the actual port from ASIO when running. @ChoppinBlockParty #119
-- **`Bug`** Mustache tests now included in coverage. #129
+- Examples can now compile on Windows. #209
+- Tests can now compile without `CROW_ENABLE_COMPRESSION` being defined. #209
+- Added Tests for HTTPS (SSL) version of Crow. #228 #130
+- **`Bug`** Fixed issue where the response stream test would randomly fail. #234
+- Tests now use Debug build (debug flags + without optimization). #228
+- Added unit test for server timeout. #277
+- Updated catch2 to v2.13.8. @neumannt #322
+- Added tests for content type constructor for `response`. @hg333 #213
+- Updated examples and tests to include JSON initializer lists. #190 #203
+- Fixed typo in `example_with_all.cpp`. @odeits #161
+
 
 ### Other
-- `merge_all.py` is now windows compatible. #58
-- Added `CROW_MAIN` Macro to avoid multiple definition error of static variables. @fckxorg #111 #118
-- Crow's signal handler is now optional. @NRizzoInc @ilejn #85
-- MSVC compatibility fixes. @sfinktah #101
-- Better Xcode Compatibility. @dspverden #139
-- Recast 64-bit size_t to 32-bit int to remove MSVC warnings. @sfinktah #106
-- `uint` was replaced with `unsigned`, improving compatibility. @epajarre #54
-- Middlewares are now in a subfolder rather than being on the same level as the core library. #51
-- Moved Repository under "CrowCpp" organization.
- 
+- Created a new logo. #172
+- Updated Crow License. #172 #228
+- Formatted framework source code using Crow's own clang-format rules (and created a bot to enforce the rules for all PRs). #286 #293
