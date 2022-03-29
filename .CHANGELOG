@@ -1,6 +1,38 @@
 Version history
 ===============
 
+0.9.43
+------
+
+2022-03-29
+
+Fix server-side permutation bug: In 0.9.42, the server re-rolled the
+permutation of starting points for every player. This desynched the maps --
+unless you were only playing 2-player on perfectly symmetrical maps and never
+used directional force.
+
+Don't send up to 300 nullbytes on short chat packets, send only the necessary
+bytes. Keep max chat length at 300 UTF-8 code units.
+
+In the lobby, sort the list of players. First criterion: Players sort higher
+than observers. Second criterion: Red sorts higher than orange, yellow, ...
+Third criterion: Within each color, sort by player name. Ready/unready doesn't
+affect sorting. It's easier now to see which/how many colors are in use, but
+I'll leave open github issue #407: Color buttons in lobby, show current usage.
+
+Disable the expensive level-drawing unittest that also didn't clean up
+its file in ./export/.
+
+macOS: Rely on pkg-config according to Allegro's documentation here:
+https://github.com/liballeg/allegro5/blob/master/README_pkgconfig.txt
+Before, on macOS ARM64, ld didn't find the Allegro libs even with pkg-confic
+installed; see github issue #430.
+
+Remove obsolete build documentation ./doc/build/allegro5.txt and
+cross-reference more clearly between other files in ./doc/build/.
+
+
+
 0.9.42
 ------
 
@@ -24,8 +56,14 @@ zero warnings again.
 Refactored the server-side networking code. Rooms carry their own logic. This
 will help in the future to support version restrictions per room.
 
+Fixed DMD 64-bit build on all operating systems by avoiding obscure usercode
+that crashes DMD.
+
 Linux build notes: Added workaround for LDC running out of stack space. You
 can raise the stack size in the current shell with: ulimit -s 16384
+
+Windows 32-bit build notes: Added DLL download for LDC-compatible 32-bit
+libraries.
 
 Removed note from April 2020 in the readme about compilers before LDC 1.21;
 compilers that old aren't prevalent anymore.

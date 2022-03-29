@@ -4,11 +4,11 @@
 # shellcheck disable=2034,2154
 
 pkgname=lix
-pkgver=0.9.42
+pkgver=0.9.43
 pkgrel=1
 changelog=.CHANGELOG
 source=("$pkgname-$pkgver.src.tar.gz::https://github.com/SimonN/LixD/archive/v$pkgver.tar.gz")
-sha512sums=('a1b0939c414c96cbc53e9fb081b95785da440c9ff09be4a2983aa6b9aa063cfe27ff2889d4c31f63700d8ccaa7c2888422d6bde40233f2f647b10c008c6aca6d')
+sha512sums=('694876861bbd988b34b9c2f796b05fbeca80e745de97d07d60b05dff8371f3fd4e25be20aa07d5c4e6a6aef5a58a383e66ad181aa1f8f38359a8307a934ff1a1')
 
 _gitname=LixD
 pkgdesc="An action-puzzle game inspired by Lemmings"
@@ -68,6 +68,7 @@ sha512sums+=(   'SKIP'
 _build() {
     _r=0
 
+    # 2022.02.26
     # 15:22 <@SimonN> It's possible that it's already enough to raise the stack size in the current shell: ulimit -s 16384
     # 15:22 <@SimonN> See also: https://github.com/ldc-developers/ldc/issues/3913
     # 15:26 <@SimonN> Yes, very high chance that the following will fix/workaround: Execute "ulimit -s 16384" in the same shell that will then run dub. I.e., we double the stack size, assuming "ulimit -s" printed 8192 before; it does that for me in new shells.
