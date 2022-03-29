@@ -1,33 +1,39 @@
+# Maintainer: not_anonymous <nmlibertarian@gmail.com>
 # Contributor: Gordon JC Pearce <gordon@gjcp.net>
-# Originally by Chuck Atkins <chuckatkins@gmail.com>
+# Contributor: Chuck Atkins <chuckatkins@gmail.com>
+# Original Submitter: Bob Finch <w9ya@qrparci.net)
+
 pkgname=ax25-apps
 pkgver=0.0.8_rc5
 _pkgver=${pkgver//_/-}
-pkgrel=4
-pkgdesc="Programs for the hamradio protocol AX.25 that would be used by normal users"
+pkgrel=5
+pkgdesc="Programs for the Amateur (Ham) Radio protocol AX.25."
 arch=('i686' 'x86_64')
 url='http://www.linux-ax25.org'
 license=('GPL2')
-makedepends=('make')
-depends=('libax25')
-source=("http://www.linux-ax25.org/pub/${pkgname}/${pkgname}-${_pkgver}.tar.xz")
-sha1sums=('d7955215cb31a5164bc84d9d4c942343f79e7d26')
-backup=('etc/ax25/ax25ipd.conf' 'etc/ax25/ax25mond.conf' 'etc/ax25/ax25rtd.conf')
+depends=('libax25' 'ncurses')
+install=$pkgname.install
+backup=('etc/ax25/ax25ipd.conf' 'etc/ax25/ax25mond.conf'\
+	'etc/ax25/ax25rtd.conf')
+source=("http://www.linux-ax25.org/pub/$pkgname/$pkgname-$_pkgver.tar.xz")
 
 prepare () {
-	cd $srcdir/${pkgname}-$_pkgver
+	cd $srcdir/$pkgname-$_pkgver
 	sed -i -e "s#ncursesw/ncurses.h#ncurses.h#" call/call.c
 }
 
 build() {
-	cd $srcdir/${pkgname}-$_pkgver
-	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin
+	cd $srcdir/$pkgname-$_pkgver
+	./configure --prefix=/usr --sysconfdir=/etc \
+	--localstatedir=/var/cache --sbindir=/usr/bin
 	make clean
 	make
 }
 
 package() {
-	cd $srcdir/${pkgname}-$_pkgver
+	cd $srcdir/$pkgname-$_pkgver
 	make install DESTDIR=$pkgdir
 	make installconf DESTDIR=$pkgdir
 }
+md5sums=('3625dcdfaa7aa1f6a0fdfe6b60874713')
+sha256sums=('5071419bb3648594fa4b49190bb4c0c2ac4c9285ce0f80b2dacf8a2f9910dc4b')
