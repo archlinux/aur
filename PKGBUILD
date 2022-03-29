@@ -4,8 +4,8 @@
 
 pkgname=linux-usermode-nokmod
 _kernelname=-user
-_major=5.15
-_minor=11
+_major=5.16
+_minor=18
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
 pkgrel=1
@@ -19,7 +19,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/linux-${pkgver}.tar.sign"
         'config')
 
-sha256sums=('c1178b7e7e12d91292e670191268e3fe9a3563faf899eef43e468577e973a1ce'
+sha256sums=('3ec70bce3e7f62990249ad584ce7353ab886ef19401f1a379c487e262a40ce24'
             'SKIP'
             '425fcbf244998ad63cb9dd27513ffad955f82d9912a03dfe1f7a8ab5df1c78fc')
 
