@@ -3,7 +3,7 @@
 
 _pkgname=nushell
 pkgname=$_pkgname-git
-pkgver=0.15.0.r2.ga268e825
+pkgver=0.60.0.r50.ga2872b4cc
 pkgrel=1
 makedepends=('rust' 'cargo' 'python' 'git')
 # libx11 required for stable preset
@@ -15,6 +15,7 @@ source=("$pkgname::git+https://github.com/nushell/nushell.git")
 url="https://www.nushell.sh"
 license=('MIT')
 sha256sums=('SKIP')
+conflicts=('nushell')
 
 build() {
     return 0

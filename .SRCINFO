@@ -18,8 +18,8 @@ pkgbase = nushell-git
 	depends = libx11
 	depends = curl
 	optdepends = libxcb
+	conflicts = nushell
 	source = nushell-git::git+https://github.com/nushell/nushell.git
 	sha256sums = SKIP
 
 pkgname = nushell-git
-
