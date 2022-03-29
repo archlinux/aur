@@ -3,7 +3,7 @@
 
 pkgname=tbs-firmware
 pkgver=1.0
-pkgrel=7
+pkgrel=8
 pkgdesc='TBS proprietary firmware'
 arch=('any')
 url='http://www.tbsdtv.com'
@@ -19,7 +19,7 @@ package() {
     install -m0644 "${srcdir}"/*.fw  "${pkgdir}/usr/lib/firmware"
 
     # Remove firmware, that is already provided by linux-firmware
-    cd "${pkgdir:?}/usr/lib/firmware" && rm -f $(basename -a $(pacman -Qlq linux-firmware))
+    cd "${pkgdir:?}/usr/lib/firmware" && rm -f $(basename -a $(pacman -Qlq linux-firmware) | sed 's/\.xz//')
 
     echo "Compressing firmware files..."
     find "${pkgdir}/usr/lib/firmware" -type f -exec xz -C crc32 "{}" \;
