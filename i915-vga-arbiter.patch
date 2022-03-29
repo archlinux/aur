@@ -91,10 +91,10 @@ diff --git a/drivers/gpu/drm/i915/display/intel_display.h b/drivers/gpu/drm/i915
 index d10b7c8cde3f..3daaa0bd3b60 100644
 --- a/drivers/gpu/drm/i915/display/intel_display.h
 +++ b/drivers/gpu/drm/i915/display/intel_display.h
-@@ -514,6 +514,7 @@ int vlv_get_cck_clock_hpll(struct drm_i915_private *dev_priv,
- void lpt_pch_enable(const struct intel_crtc_state *crtc_state);
- void lpt_disable_pch_transcoder(struct drm_i915_private *dev_priv);
- void lpt_disable_iclkip(struct drm_i915_private *dev_priv);
+@@ -564,6 +564,7 @@ int vlv_get_hpll_vco(struct drm_i915_private *dev_priv);
+ 		      const char *name, u32 reg, int ref_freq);
+ int vlv_get_cck_clock_hpll(struct drm_i915_private *dev_priv,
+ 			   const char *name, u32 reg);
 +extern void intel_vga_disable_mem(struct drm_i915_private *dev_priv);
  void intel_init_display_hooks(struct drm_i915_private *dev_priv);
  unsigned int intel_fb_xy_to_linear(int x, int y,
