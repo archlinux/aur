@@ -1,0 +1,17 @@
+[Unit]
+Description=Automatic Update
+After=network-online.target
+
+[Service]
+Type=simple
+SyslogIdentifier=autoupdate
+ExecStartPre=/bin/bash -c 'echo nobody ALL = NOPASSWD: /usr/bin/pacman > /etc/sudoers.d/autoupdate'
+ExecStart=/bin/bash -c 'XDG_CACHE_HOME=/var/tmp PWD=/var/tmp sudo -E -u nobody yay -Syuq --noconfirm --devel --timeupdate'
+ExecStopPost=/usr/bin/rm -f /etc/sudoers.d/autoupdate
+TimeoutStopSec=300
+KillMode=process
+KillSignal=SIGINT
+
+[Install]
+WantedBy=multi-user.target
+

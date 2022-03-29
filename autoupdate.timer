@@ -1,0 +1,11 @@
+[Unit]
+Description=Automatic Update
+
+[Timer]
+OnBootSec=1min
+OnActiveSec=5min
+OnUnitActiveSec=1h
+Unit=autoupdate.service
+
+[Install]
+WantedBy=multi-user.target

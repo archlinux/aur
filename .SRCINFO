@@ -1,0 +1,16 @@
+pkgbase = autoupdate-yay
+	pkgdesc = Automatically update ALL packages, including those installed from the AUR, in the background
+	pkgver = 3
+	pkgrel = 1
+	url = https://aur.archlinux.org/packages/autoupdate-yay/
+	install = autoupdate.install
+	arch = any
+	license = GPL
+	depends = yay
+	conflicts = autoupdate
+	source = autoupdate.service
+	source = autoupdate.timer
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = autoupdate-yay
