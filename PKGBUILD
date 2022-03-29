@@ -2,11 +2,11 @@
 pkgname=('pop-launcher-git' 'pop-shell-plugin-system76-power-git')
 pkgbase=pop-launcher-git
 pkgver=1.2.0.r0.gbacada0
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/launcher"
 license=('MPL2')
-depends=('fd' 'gtk3' 'libqalculate')
+depends=('fd' 'libqalculate' 'openssl' 'sh')
 makedepends=('cargo' 'git' 'just')
 options=('!lto')
 source=('git+https://github.com/pop-os/launcher.git')
