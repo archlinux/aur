@@ -1,20 +1,15 @@
 # Maintainer: skrewball <skrewball at joickle dot com>
 
 pkgname=gnome-shell-extension-hide-universal-access
-pkgver=10
-pkgrel=2
+pkgver=11
+pkgrel=1
 pkgdesc='Hide Universal Access icon from the Gnome status bar'
 arch=(any)
 url='https://github.com/akiirui/hide-universal-access'
 license=('GPL3')
 depends=('gnome-shell')
 source=("https://extensions.gnome.org/extension-data/hide-universal-accessakiirui.github.io.v${pkgver}.shell-extension.zip")
-sha256sums=('122a3bbb9dd57d1a15b6fc267c33d373f72d662cc6d21574a28b2579928aff0e')
-
-prepare() {
-  # Patch for Gnome 42
-  sed -i 's/    "41"/    "41",\n    "42"/g' metadata.json
-}
+sha256sums=('f4917ed6da567589aa55a5879ee9116c09633c0e65b5bcc4a0390651f02074fb')
 
 package() {
   local _uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)

@@ -1,12 +1,12 @@
 pkgbase = gnome-shell-extension-hide-universal-access
 	pkgdesc = Hide Universal Access icon from the Gnome status bar
-	pkgver = 10
-	pkgrel = 2
+	pkgver = 11
+	pkgrel = 1
 	url = https://github.com/akiirui/hide-universal-access
 	arch = any
 	license = GPL3
 	depends = gnome-shell
-	source = https://extensions.gnome.org/extension-data/hide-universal-accessakiirui.github.io.v10.shell-extension.zip
-	sha256sums = 122a3bbb9dd57d1a15b6fc267c33d373f72d662cc6d21574a28b2579928aff0e
+	source = https://extensions.gnome.org/extension-data/hide-universal-accessakiirui.github.io.v11.shell-extension.zip
+	sha256sums = f4917ed6da567589aa55a5879ee9116c09633c0e65b5bcc4a0390651f02074fb
 
 pkgname = gnome-shell-extension-hide-universal-access
