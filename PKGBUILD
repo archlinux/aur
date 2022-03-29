@@ -2,7 +2,7 @@
 
 pkgname=roonbridge
 _pkgname=RoonBridge
-pkgver=1.8.880
+pkgver=1.8.918
 pkgrel=1
 _pkgrel_x86_64=1
 _pkgrel_armv7h=1
