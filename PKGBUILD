@@ -1,7 +1,7 @@
 # Maintainer: Jakub Klinkovský <j.l.k@gmx.com>
 
 pkgname=prometheus-slurm-exporter
-pkgver=0.19
+pkgver=0.20
 pkgrel=1
 pkgdesc="Prometheus exporter for slurm metrics"
 arch=(x86_64)
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "$pkgname.service"
         "$pkgname.sysusers"
         "gpus.patch")
-b2sums=('d913b575502d8118f0e8d5c52dde8c569b826371c6e5777f10be33662aa607084f1397026981011c64e5df0158026674ab7326e191858c0d6e66b389f538a5d5'
+b2sums=('795dfd221cd6249b249bc3b46e2da5afd85e641ae667c6bbc79dd6fd525920427e9b5e2518f429eef625a23428f5f84816790a093f2253b5490c747c83879cb4'
         'a709e377eb2f63acda614c7db973e1df212c2e35caeff303f607afdf82675e8f3a2a4c630b9bc9b8495976b28a7755062b5f28cf78ee72c4aadffaa0703132dc'
         'a760ee6c1af298ccc77a2b4bc09e8d3442141d6b42e0d4b3e374731edddeb4c6eac3882b7abab3718e736f2c770084dd5f7455e296b19e69665a3934bc9afaea'
         '66f53e52502dc528f9ed20de9f45a1e23d884cb70f870024a3248e5965be598f88e8a9fa463ee93d7d7bd2a44acf7417a158f43d571f794c0f0a12385c9e9e28'
