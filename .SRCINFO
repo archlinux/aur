@@ -1,11 +1,11 @@
 pkgbase = tango-database
 	pkgdesc = TANGO distributed control system - database server
-	pkgver = 5.16
+	pkgver = 5.17
 	pkgrel = 1
 	url = https://www.tango-controls.org/
 	install = tango-database.install
 	arch = x86_64
-	arch = arm
+	arch = armv7h
 	groups = tango-controls
 	license = GPL3
 	depends = tango-cpp
@@ -15,9 +15,9 @@ pkgbase = tango-database
 	depends = cmake>=2.8.9
 	conflicts = tango
 	conflicts = tango-database-git
-	source = https://gitlab.com/tango-controls/TangoDatabase/-/archive/Database-Release-5.16/TangoDatabase-Database-Release-5.16.tar.gz
+	source = https://gitlab.com/tango-controls/TangoDatabase/-/archive/Database-Release-5.17/TangoDatabase-Database-Release-5.17.tar.gz
 	source = tango-database.service
-	sha256sums = f1585422800a22c7919261425f28992b865152a3756e0d0bcdddc6f0eaa7fc01
+	sha256sums = c1b744ed82b668b4218d8ac9504ab7061692f1a8af7380a914eb8029bde1eac4
 	sha256sums = 5c54520ad2072aefe6b408d4caa8a2a9fffb093fb2ea93b46d9ab3cccbb0ae1f
 
 pkgname = tango-database
