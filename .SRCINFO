@@ -10,6 +10,7 @@ pkgbase = wayfire-firedecor-git
 	makedepends = ninja
 	depends = wayfire-git
 	depends = librsvg
+	depends = boost
 	provides = wayfire-firedecor-git
 	provides = wayfire-firedecor
 	source = git+https://github.com/AhoyISki/wayfire-firedecor.git
