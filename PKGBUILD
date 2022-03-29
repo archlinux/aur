@@ -1,7 +1,7 @@
 # Maintainer: Tom Yang <tomyangsh at icloud dot com>
 
 pkgname=cloudflarespeedtest
-pkgver=1.4.9
+pkgver=2.0.3
 pkgrel=1
 license=('GPL3')
 pkgdesc="Cloudflare IP Batch Test Tool"
