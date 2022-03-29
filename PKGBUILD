@@ -4,7 +4,7 @@
 
 _pkgname=darling-dmg
 pkgname="$_pkgname-git"
-pkgver=v1.0.4.r75.g5f64bc9
+pkgver=v1.0.4.r87.g34d3a34
 pkgrel=1
 pkgdesc="FUSE module for .dmg files (containing an HFS+ filesystem)"
 arch=("i686" "x86_64")
