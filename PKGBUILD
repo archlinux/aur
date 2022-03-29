@@ -3,7 +3,7 @@
 pkgname=autoupdate-yay
 pkgver=4
 pkgrel=1
-pkgdesc="Automatically update ALL packages, including those installed from the AUR, in the background"
+pkgdesc="Automatically update ALL packages, including those installed from the AUR, in the background, all while making absolutely certain that any and all necessary /etc/sudoers.d entries for building packages are immediately deleted after the operation"
 arch=('any')
 url="https://aur.archlinux.org/packages/autoupdate-yay/"
 license=('GPL')
