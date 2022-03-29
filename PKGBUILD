@@ -2,13 +2,13 @@
 pkgname=sonyheadphonesclient-bin
 pkgver=1.2
 pkgrel=1
-epoch=
+epoch=1
 pkgdesc="A {Windows, macOS, Linux} client recreating the functionality of the Sony Headphones app"
 arch=("x86_64")
 url="https://github.com/Plutoberth/SonyHeadphonesClient"
 license=('custom:MIT')
 groups=()
-depends=("glfw-x11" "minizip" "dbus" "bluez-libs" "glew")
+depends=("glfw-x11" "minizip" "dbus" "bluez-libs" "glew" "glew-2.1")
 makedepends=()
 checkdepends=()
 optdepends=("glfw-doc")
