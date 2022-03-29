@@ -2,13 +2,13 @@
 
 pkgname=deezer-enhanced-git
 _pkgname=deezer-enhanced
-pkgver=v0.2.1.r0.g77922d1
+pkgver=v0.2.2.r0.g5b21175
 pkgrel=1
 pkgdesc='An unofficial application for Deezer with enhanced features, that is not just an electron wrapper.'
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/duzda/deezer-enhanced"
 license=('MIT')
-depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3')
+depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3' 'libxcrypt-compat')
 makedepends=('git' 'npm' 'nodejs' 'yarn')
 provides=('deezer-enhanced')
 conflicts=('deezer-enhanced')
