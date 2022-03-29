@@ -52,7 +52,16 @@ prepare() {
   echo "Setting config..."
   cp ../config .config
   make olddefconfig
-  cat .config > ../config # Prevent stagnation
+
+  # Keep these options enabled at all times
+  scripts/config -e CONFIG_ASHMEM
+  scripts/config -e CONFIG_ANDROID
+  scripts/config -e CONFIG_ANDROID_BINDER_IPC
+  scripts/config -e CONFIG_ANDROID_BINDERFS
+  scripts/config --set-str CONFIG_ANDROID_BINDER_DEVICES "binder,hwbinder,vndbinder,binderfs"
+
+  # Prevent stagnation
+  cat .config > ../config
 
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
