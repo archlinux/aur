@@ -1,7 +1,7 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=open-plc-utils
 pkgver=r524.gbb50f635
-pkgrel=4
+pkgrel=5
 pkgdesc="Qualcomm Atheros Open Powerline Toolkit for HomePlug AV"
 arch=(i686 x86_64)
 url=https://github.com/qca/open-plc-utils
@@ -23,12 +23,24 @@ build() {
 
 package() {
   cd $pkgname
-  make ROOTFS="$pkgdir" BIN="$pkgdir"/usr/bin install manuals
-  mv "$pkgdir"/usr/bin/amptest{,.plc}
-  mv "$pkgdir"/usr/bin/pev{,.plc}
+  make \
+    ROOTFS="$pkgdir" \
+    BIN="$pkgdir"/usr/bin \
+    MAN="$pkgdir"/usr/share/man/man1 \
+    install \
+    manuals
+
   install -D -m 644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+
+  # Install additional docs
   mkdir -p "$pkgdir"/usr/share/doc/$pkgname
   cp -av docbook "$pkgdir"/usr/share/doc/$pkgname/docbook
+
+  # Avoid conflict with bluez-utils
+  mv "$pkgdir"/usr/bin/amptest{,.plc}
+
+  # Avoid conflict with aur/pev
+  mv "$pkgdir"/usr/bin/pev{,.plc}
 
   # Restrict binaries that send or capture arbitrary frames
   for f in "$pkgdir"/usr/bin/e[df]??; do
