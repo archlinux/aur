@@ -13,14 +13,17 @@ source=('git+https://github.com/AhoyISki/wayfire-firedecor.git')
 sha256sums=('SKIP')
 
 pkgver() {
+    cd "$srcdir/wayfire-firedecor"
     printf "1.%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
+    cd "$srcdir/wayfire-firedecor"
 	meson build
 	meson compile -C build
 }
 
 package() {
+    cd "$srcdir/wayfire-firedecor"
 	meson install -C build
 }
