@@ -3,7 +3,7 @@
 pkgname=keyring-cli-git
 _pkgname=keyring
 pkgdesc="A very basic cli keyring tool to use accross various OS."
-pkgver=1.0.0.r0.g0f7b591
+pkgver=1.0.1.r1.g20fba88
 pkgrel=1
 arch=('x86_64' 'armv7l' 'armv7h' 'aarch64')
 url="https://github.com/vbouchaud/keyring"
