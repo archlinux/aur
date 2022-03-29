@@ -1,6 +1,6 @@
 pkgbase = motioneye-git
 	pkgdesc = A web frontend for the motion daemon, Python 3 development branch
-	pkgver = 0.42.r38.g25ee819
+	pkgver = 0.42.1.r310.g601bcfb
 	pkgrel = 1
 	url = https://github.com/ccrisan/motioneye.git
 	install = motioneye.install
@@ -11,16 +11,16 @@ pkgbase = motioneye-git
 	depends = python-jinja
 	depends = python-pillow
 	depends = python-pycurl
-	depends = python-tornado5
+	depends = python-tornado
 	depends = python-six
 	provides = motioneye
 	conflicts = motioneye
 	backup = etc/motioneye/motioneye.conf
-	source = git+https://github.com/ccrisan/motioneye.git#branch=python3
+	source = git+https://github.com/ccrisan/motioneye.git#branch=dev
 	source = motioneye.tmpfiles
 	source = motioneye.service
 	sha256sums = SKIP
 	sha256sums = e7447bf9ab023326e7c396ecad8933eaa3399b16d844a34f288cf55b8c917bfa
-	sha256sums = 68880de868b98c5017e2ab6b87122c241873daf393c084710d81b19c9d0663da
+	sha256sums = 55a72fe49d2bacbc1cc9231ef80afab3859a48c558fe030f46ce8c7d3a95341e
 
 pkgname = motioneye-git
