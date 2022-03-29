@@ -19,7 +19,6 @@ pkgver() {
 
 build() {
     cd "$srcdir/wayfire-firedecor-git"
-    rm -rf build
 	meson build
 	meson compile -C build
 }
