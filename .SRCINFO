@@ -7,7 +7,7 @@ pkgbase = plank-theme-foggy-square-git
 	license = GPL3
 	makedepends = git
 	depends = plank
-	source = git://github.com/MMcQueenGNU/plank-theme-foggy-square.git
+	source = plank-theme-foggy-square-git::git+https://github.com/MMcQueenGNU/plank-theme-foggy-square.git
 	sha256sums = SKIP
 
 pkgname = plank-theme-foggy-square-git

@@ -9,7 +9,7 @@ url='https://www.gnome-look.org/p/1201603/'
 license=('GPL3')
 depends=('plank')
 makedepends=('git')
-source=("git://github.com/MMcQueenGNU/$_pkgname.git")
+source=("$pkgname::git+https://github.com/MMcQueenGNU/$_pkgname.git")
 sha256sums=('SKIP')
 
 build() {
@@ -17,7 +17,7 @@ build() {
 }
 
 package() {
-	cd $srcdir/$_pkgname
+	cd $srcdir/$pkgname
 	mkdir -p $pkgdir/usr/share/plank/themes/foggy-square
 	install -m 755 dock.theme $pkgdir/usr/share/plank/themes/foggy-square/
 }
