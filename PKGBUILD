@@ -47,11 +47,11 @@ _1k_HZ_ticks=
 
 pkgbase=linux-uksm
 # pkgname=('linux-uksm' 'linux-uksm-headers' 'linux-uksm-docs')
-_major=5.16
-_minor=18
+_major=5.17
+_minor=1
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -72,13 +72,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v5-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v5-sep/0002-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
-        "${_lucjanpath}/arch-patches-v5-sep/0003-Bluetooth-Read-codec-capabilities-only-if-supported.patch"
-        "${_lucjanpath}/arch-patches-v5-sep/0004-Bluetooth-fix-deadlock-for-RFCOMM-sk-state-change.patch"
-        "${_lucjanpath}/arch-patches-v5-sep/0005-mt76-mt7921-add-support-for-PCIe-ID-0x0608-0x0616.patch"
-        "${_lucjanpath}/arch-patches-v5-sep/0006-mt76-mt7921-reduce-log-severity-levels-for-informati.patch"
-        "${_lucjanpath}/arch-patches-v5-sep/0007-Revert-NFSv4.1-query-for-fs_location-attr-on-a-new-f.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0003-Revert-swiotlb-rework-fix-info-leak-with-DMA_FROM_DE.patch"
          # the main kernel config files
         'config')
 
@@ -318,18 +314,14 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('87241c3f001850758aa9274033120dca41b8388eb0c22959790002c58ab3c99c1522eed46b5181e286e629986da3e974904b4ce640c499ff56b80e2b68e93a0e'
+sha512sums=('bb73202e770d10767739664b5320b47d78bc374b2bde38b289f1ede1b7b33a8be0adf0808dd82b49735534fe1aae7d83acbf6e42de214d2e179832f6e6c866dd'
             'SKIP'
-            '2d2092e75d87100c0c4e3bd1076533c233b30cc186c96a31088a7a41540d1c648aaa764ff6fbf85b90e029771743c0234d2c8310fbd0b3ef78dd3cb38554cbc9'
-            '5cb79731f957372cbd3ddaf93ac1cbc6eca4a526225f5bbe9c5eed11529fbefa66934ac5002410505df84281144da15e39326a8df886fe45da937304ed0b6fcf'
-            '860c3d6f0c1b4528e11ce3e99cb0c3acf67f8f657f1471774bd14d75bdc92a72eb33d60fc3b7fd7465b2716733a5c7ad9d07107f96f2a568505573618583d5dd'
-            'ab229799fe12a9a9b1f52ea8714abaa66085a3173f04e2d5e533b0920ba8b72e41c37ab7332db8b15b1810b9b14baf84777128de9d3495f7b438cdb5805f1a25'
-            '8b4d881cde779b016ea01f959130c2ad0f511aa09e11b7c725acdc06baf536d3ca5ff8284dfb8fd0321f04a338a6e144babfd679fed95717e47e93a787b3415a'
-            'e7c5d1bebafe300a67a3839094841c47b645653a14eb33dc9d63c29aaaed57d02ce723bd90a5bb48050f14d96b129d85f89fe74a7a13b30f99d4a0d98a1dfb55'
-            '56f7f517da01646ee9ef6a5842d2ec59fa77d8e280e34ea6aa9bba27bd5c8863b7659e1e792107be517e3ac77466ed57263bb0d5a9618cd7a2ad71b9639264d7'
-            'fe34ea8073cf29a53048be729f2ada6af38656d015061178452c6d60ab0f97f81e8d282193ba39dbba198263b3d2ff7f39ae33caded7b681600ae3391aa18a21'
-            'dbdb3daf6f309e79890bde2eb9b72e3f3fa9e55be395b2bfb6385179d48793cdd440fd757481281b081a10f1e28b172de0076a518831842b9ab444e4733df071'
-            '924f56fdb87fcfce773a7adfca5b4c09d2477ce5034d177f0a1b21bcf7f4763af3730d2161f8504ce97a3006dfabfc8dd8be574ac1d97815af46c78e9d77f4bc')
+            'bb458673cd6d1d71c78edeb06c1c5e9ee663e43c0a058c87ac7a0cf542192d8478d06c9df60c2d7032289d7bf31953b41475638c30cd52e54c18c6e7c06f09bd'
+            'b63921b6246bd1b9545a8042d76334bef8a7ee46e5404c5efec4a842a455a84046e92423b2bc6d950f19dcf85805d7493fe71d6d177e3b46b52a279b0a44d0c9'
+            'd26c3f17f0fdc9ede8203a45baa242279c77e0397803346cb9d57ea6065a2fe5d1d2403698d52a72a072ed81761e68b50717d04237d695fae38a1958efc5f545'
+            'ca5a425bff20bed817c13ddb9854acbd47367b5126389e9e99815b0d576d1d07610ea9075efca298d0b8441cea65e3ba33aa53a11985a25909872dcd1c67a51e'
+            'ce80736a9edab23f1c6b9805ec1ba883534b6a8cc57bcbfad606d760632830c9152d2166a318311aee9f56dc394ba03f49186c3a0620309419666380d1d3b722'
+            '025f5b2427a97c1e9b709fb6f751dde2a1c7f6bcded4c8f35646d10207724eb3723f25dbf98b83b5eae4c5504ff92b8b5c2ec7c14292d25f7c84021aa3b3c59a')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
