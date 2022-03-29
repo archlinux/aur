@@ -4,8 +4,8 @@
 pkgname=fuzzynote-bin
 _pkgname=fuzzynote
 pkgver=0.24.0
-pkgrel=1
-pkgdesc='Terminal-based, CRDT-backed, local-first, collaborative note-taking'
+pkgrel=2
+pkgdesc='Terminal-based, CRDT-backed, local-first, collaborative note-taking (pre-compiled)'
 arch=('x86_64')
 url='https://github.com/Sambigeara/fuzzynote'
 license=('AGPL3')
