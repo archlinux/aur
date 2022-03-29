@@ -1,13 +1,13 @@
 pkgbase = gqrx-scanner
 	pkgdesc = A frequency scanner for Gqrx Software Defined Radio receiver
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 2
 	url = https://github.com/neural75/gqrx-scanner
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	depends = glibc
-	source = gqrx-scanner-1.0.2.tar.gz::https://github.com/neural75/gqrx-scanner/archive/v1.0.2.tar.gz
-	sha256sums = d15739fb99292ec10ce707b7d802b2cbed1a856c8e8bffd6ce827c091886231b
+	source = gqrx-scanner-1.0.3.tar.gz::https://github.com/neural75/gqrx-scanner/archive/v1.0.3.tar.gz
+	sha256sums = 5fd402d0fcaefcc9967749e375c2d25d2b26193a8432b09b56195a9eb2890a1a
 
 pkgname = gqrx-scanner

@@ -2,7 +2,7 @@
 # Maintainer: Misaka13514 <Misaka13514 at gmail dot com>
 
 pkgname=gqrx-scanner
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=2
 pkgdesc="A frequency scanner for Gqrx Software Defined Radio receiver"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('cmake')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('d15739fb99292ec10ce707b7d802b2cbed1a856c8e8bffd6ce827c091886231b')
+sha256sums=('5fd402d0fcaefcc9967749e375c2d25d2b26193a8432b09b56195a9eb2890a1a')
 
 build() {
 	cmake -B build -S "${pkgname}-${pkgver}" \
@@ -23,5 +23,5 @@ build() {
 
 package() {
 	DESTDIR="${pkgdir}" cmake --install build
-	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 "${srcdir}/${pkgname}-${pkgver}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
