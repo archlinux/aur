@@ -1,5 +1,5 @@
 pkgbase = pop-launcher-git
-	pkgver = 1.1.0.r8.g1d031d9
+	pkgver = 1.2.0.r0.gbacada0
 	pkgrel = 1
 	url = https://github.com/pop-os/launcher
 	arch = x86_64
@@ -7,6 +7,7 @@ pkgbase = pop-launcher-git
 	license = MPL2
 	makedepends = cargo
 	makedepends = git
+	makedepends = just
 	depends = fd
 	depends = gtk3
 	depends = libqalculate
