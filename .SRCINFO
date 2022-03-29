@@ -1,18 +1,18 @@
 pkgbase = beekeeper-studio-appimage
 	pkgdesc = Cross platform SQL editor and database management app for Windows, Linux, and Mac
-	pkgver = 3.2.1
+	pkgver = 3.3.6
 	pkgrel = 1
 	url = https://beekeeperstudio.io/
 	arch = x86_64
 	license = MIT
-	provides = beekeeper-studio=3.2.1
+	provides = beekeeper-studio=3.3.6
 	conflicts = beekeeper-studio
 	conflicts = beekeeper-studio-bin
 	options = !strip
-	source = https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v3.2.1/Beekeeper-Studio-3.2.1.AppImage
+	source = https://github.com/beekeeper-studio/beekeeper-studio/releases/download/v3.3.6/Beekeeper-Studio-3.3.6.AppImage
 	source = beekeeper-studio.desktop.patch
 	source = beekeeper-studio.sh
-	sha256sums = 65609cc83a9225b2ba640ba0ef4e6ae5b76823944e3f55c4f0d6c7644f7a0d11
+	sha256sums = cdb6aa6f25d488dfeb17320f26065201b9486d32931a9e548667d9526632a55f
 	sha256sums = d268ce58d0c5d17345608be8c2582397eb3e069b81bd1aa02559326730d7e17f
 	sha256sums = 6ec287cbcfb138b5249ba9c539c67cd1dfe5343d334595872de0dfc82115df2a
 
