@@ -14,6 +14,8 @@ pkgbase = haskell-oeis
 	depends = haskell-network
 	depends = haskell-network-uri
 	source = https://hackage.haskell.org/packages/archive/oeis/0.3.10/oeis-0.3.10.tar.gz
+	source = 0001-Remove-redundant-dependency-version.patch
 	sha256sums = bbfa724d9f69f14bcc95a5ecbd94a3e0ec1b072b69a5413c70174d2406884529
+	sha256sums = 9253dfe37c9237709a0229158dd602d94d08b73aee5b9079d403d42e682b4bee
 
 pkgname = haskell-oeis
