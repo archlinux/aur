@@ -9,7 +9,7 @@ pkgdesc='Command line utility for viewing YouTube videos'
 url='https://github.com/trizen/youtube-viewer'
 license=('Artistic2.0')
 epoch=1
-pkgver=3.9.8
+pkgver=3.9.9
 pkgrel=1
 depends=(perl perl-data-dump perl-file-sharedir perl-json perl-lwp-protocol-https perl-libwww perl-unicode-linebreak)
 makedepends=(perl-module-build)
@@ -31,7 +31,7 @@ source=(
 install=youtube-viewer.install
 validpgpkeys=(ABB8BBAA2E279767774149B7D0A443C703A3A056)
 # sums provided by packager makepkg -g
-b2sums=('63c581cd97555b7318fcb959f28a59f768fdfd439eb5ed9b603ecbdca4ca49a52b863ddcd1a7d77eece2120f23a259cd829a720950fee015080cad866e2ad463'
+b2sums=('e5febeb0a95348491fbe658875f19fd030fb6d9898f5babce9da1fb959f17a27e019606f100e3cfd52fc40eb5f7f8e56889a7ca0b4dc54ddb0cd80c2c801a879'
         'SKIP')
 
 build() {
