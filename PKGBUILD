@@ -1,6 +1,7 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: Weng Xuetian <wengxt@gmail.com>
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
+# Contributor: Daan Vanoverloop <daan at vanoverloop dot xyz>
 
 pkgname=tk85
 pkgver=8.5.19
