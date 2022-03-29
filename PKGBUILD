@@ -1,22 +1,24 @@
-# Maintainer: Dct Mei <dctxmei@gmail.com>
-# Contributor: Eli Schwartz <eschwartz@archlinux.org>
+# Maintainer: Dct Mei <dctxmei@yandex.com>
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
 # Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 
 _pkgname=privacybadger
 pkgname=firefox-esr-extension-${_pkgname}
-pkgver=2019.2.19
+pkgver=2021.8.17
 pkgrel=1
 pkgdesc="Block third party tracking in your browser"
 arch=('any')
 url="https://www.eff.org/privacybadger"
 license=('GPL3')
-groups=('firefox-esr-addons')
+#groups=('firefox-addons')
 makedepends=("unzip")
 source=("${_pkgname}-${pkgver}.xpi::https://www.eff.org/files/privacy-badger-eff-${pkgver}.xpi"
         "${_pkgname}-${pkgver}.xpi.sig::https://www.eff.org/files/privacy-badger-eff-${pkgver}.xpi.sig")
 noextract=("${_pkgname}-${pkgver}.xpi")
-sha256sums=('ded83abf81eefa9662e10ad4caf893f3d4899c12528a2a20ddfa7f244d12fc88'
+sha256sums=('6803803845f9001dcfcbacf4439d64ec49a59a9d3777921e8a16f5ffa985bf9d'
             'SKIP')
+b2sums=('3247e1b11353a9577a9e53850a44ce3d103730861a5e5807ec6450ce2837fec12b4869db7015dd7385ba44021039b8649a966d7dff3edc0297abc952d2c49c9a'
+        'SKIP')
 validpgpkeys=('88F8662241B0C16C16E3B5A7950FC3999D80F309') # Alexei <alexei@eff.org>
 
 prepare() {
@@ -34,7 +36,7 @@ package() {
   else
     _extension_id="$(sed -n 's/.*"id": "\(.*\)".*/\1/p' ${_pkgname}-${pkgver}/manifest.json)"
   fi
-  _extension_dest="${pkgdir}/opt/firefox-esr/browser/extensions/${_extension_id}"
+  _extension_dest="${pkgdir}/usr/lib/firefox-esr/browser/extensions/${_extension_id}"
   # Should this extension be unpacked or not?
   if grep -q '<em:unpack>true</em:unpack>' ${_pkgname}-${pkgver}/install.rdf 2>/dev/null; then
     install -dm755 "${_extension_dest}"
