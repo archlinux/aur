@@ -1,7 +1,7 @@
 pkgbase = duply_qr-git
 	pkgdesc = Backup Duply profile on a paper using QR code
-	pkgver = r4.cb6112b
-	pkgrel = 1
+	pkgver = r6.4b63f10
+	pkgrel = 2
 	url = https://github.com/jose1711/duply_qr
 	arch = any
 	license = MIT
@@ -13,8 +13,7 @@ pkgbase = duply_qr-git
 	depends = evince
 	depends = xpdf
 	depends = zbar
-	source = duply_qr-git::git://github.com/jose1711/duply_qr.git
+	source = duply_qr-git::git+https://github.com/jose1711/duply_qr.git
 	md5sums = SKIP
 
 pkgname = duply_qr-git
-

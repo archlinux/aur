@@ -1,8 +1,8 @@
 # Maintainer: Jose Riha <jose1711 gmail com>
 
 pkgname=duply_qr-git
-pkgrel=1
-pkgver=r4.cb6112b
+pkgrel=2
+pkgver=r6.4b63f10
 pkgdesc='Backup Duply profile on a paper using QR code'
 arch=('any')
 url="https://github.com/jose1711/duply_qr"
@@ -11,7 +11,7 @@ depends=('duply' 'qrencode' 'enscript' 'ghostscript' 'evince' 'xpdf' 'zbar')
 makedepends=('git')
 md5sums=('SKIP')
 
-source=("${pkgname}"::'git://github.com/jose1711/duply_qr.git')
+source=("${pkgname}"::'git+https://github.com/jose1711/duply_qr.git')
 
 pkgver() {
   cd "$srcdir/${pkgname}"
