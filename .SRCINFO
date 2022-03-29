@@ -1,7 +1,7 @@
 pkgbase = haskell-oeis
 	pkgdesc = Interface to the Online Encyclopedia of Integer Sequences (OEIS)
 	pkgver = 0.3.10
-	pkgrel = 1
+	pkgrel = 2
 	url = git://github.com/niteria/oeis.git
 	arch = x86_64
 	license = custom: BSD3

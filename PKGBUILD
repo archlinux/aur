@@ -4,7 +4,7 @@
 _hkgname=oeis
 pkgname=haskell-oeis
 pkgver=0.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Interface to the Online Encyclopedia of Integer Sequences (OEIS)"
 url="git://github.com/niteria/oeis.git"
 license=("custom: BSD3")
