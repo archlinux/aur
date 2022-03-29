@@ -1,13 +1,14 @@
 pkgbase = mandown-md-viewer
 	pkgdesc = man-page inspired Markdown viewer
 	pkgver = 1.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Titor8115/mandown
 	install = mandown-md-viewer.install
 	arch = x86_64
 	license = MIT
 	makedepends = ncurses
-	makedepends = libxml2
+	depends = libxml2
+	depends = libconfig
 	source = mandown-1.0.4.tar.gz::https://github.com/Titor8115/mandown/archive/refs/tags/v1.0.4.tar.gz
 	sha256sums = dc719e6a28a4585fe89458eb8c810140ed5175512b089b4815b3dda6a954ce3e
 
