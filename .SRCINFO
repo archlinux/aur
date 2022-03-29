@@ -1,12 +1,12 @@
 pkgbase = datalevin-bin
 	pkgdesc = Simple, fast and versatile Datalog database for everyone.
-	pkgver = 0.6.1
+	pkgver = 0.6.3
 	pkgrel = 1
 	url = https://github.com/juji-io/datalevin
 	arch = x86_64
 	license = EPL
 	provides = datalevin
-	source = https://github.com/juji-io/datalevin/releases/download/0.6.1/dtlv-0.6.1-ubuntu-latest-amd64.zip
-	sha256sums = 35dfb81b514739cf35a376bed2e0a480a7054612072beed17464c5283445f9d4
+	source = https://github.com/juji-io/datalevin/releases/download/0.6.3/dtlv-0.6.3-ubuntu-latest-amd64.zip
+	sha256sums = a98a145ee847c5972437aecd45c68fd94fda008afdc281deb380b316b4e5a1e5
 
 pkgname = datalevin-bin
