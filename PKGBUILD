@@ -2,7 +2,7 @@
 
 _pkgbase=akvcam
 pkgname=${_pkgbase}-dkms-git
-pkgver=1.2.2.r0.gefe302a
+pkgver=1.2.2.r6.g35e8921
 pkgrel=1
 pkgdesc="Virtual camera for Linux"
 url="https://github.com/webcamoid/akvcam"
@@ -12,7 +12,7 @@ depends=('dkms')
 makedepends=('git')
 conflicts=("${_pkgbase}-dkms")
 provides=("${_pkgbase}-dkms")
-source=("git://github.com/webcamoid/akvcam.git")
+source=("git+https://github.com/webcamoid/akvcam.git")
 md5sums=('SKIP')
 
 pkgver() {
