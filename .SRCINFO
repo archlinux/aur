@@ -8,6 +8,6 @@ pkgbase = auto
 	makedepends = git
 	depends = dialog
 	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/auto-2.0.2-1-x86_64.pkg.tar.zst
-	sha256sums = 7b2553965f09e959c4ffb7601174e3aa8b10bb8452b0fee8b0744a2d97ff7c00
+	sha256sums = 7c7d1d85141ecfc33013fe99f174c40f648dabc1c0fe82d9ecd7325d35b57dc2
 
 pkgname = auto
