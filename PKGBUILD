@@ -2,7 +2,7 @@
 # Maintainer: Dawid Weglarz <dawid.weglarz95@gmail.com>
 
 pkgname=nyrna
-pkgver=2.3.1
+pkgver=2.4.0
 pkgrel=1
 pkgdesc='Suspend games and applications at any time and resume whenever you wish'
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('glib2' 'gtk3' 'util-linux' 'wmctrl' 'xdotool' 'xz')
 makedepends=('flutter' 'clang' 'cmake' 'ninja')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Merrit/nyrna/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('6bdde4c81964b8f041380a11db947790d109771c366f37a9fbfe47f58ab09359')
+sha256sums=('4cef4cabd458bb9b8444a2de5fbc50c5fe86a0ded9d03485f6ace0568f61f41f')
 
 # Check Flutter configuration
 flutter="flutter --suppress-analytics"
