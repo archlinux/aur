@@ -2,16 +2,16 @@
 # Contributor: Samuel Mesa <samuelmesa@linuxmail.org>
 
 pkgname=orfeo-toolbox
-pkgver=7.4.0
-_pkgver=7.4
+pkgver=8.0.0
+_pkgver=8.0
 pkgrel=1
 pkgdesc="ORFEO Toolbox (OTB) is an open source library of image processing algorithms"
 arch=(x86_64 i686)
 url="http://www.orfeo-toolbox.org/otb/"
 license=('CeCILL')
 groups=()
-depends=('gdal' 'agg' 'freeglut' 'curl' 'fftw' 'tinyxml' 'muparser' 'fltk' 'python' 'openthreads' 'boost'
-		'hdf5'  'insight-toolkit4' 'ossim' 'libsvm' 'qwt' 'opencv>=3' 'glfw' 'openmpi' 'shark-ml-git')
+depends=('gdal' 'agg' 'freeglut' 'curl' 'fftw' 'tinyxml' 'muparser' 'fltk' 'python' 'openthreads' 'boost' 'ossim'
+		'hdf5'  'insight-toolkit4' 'libsvm' 'qwt' 'opencv>=3' 'glfw' 'openmpi' 'shark-ml-git')
 makedepends=('git' 'swig' 'cmake' 'qt5-base')
 optdepends=()
 provides=()
@@ -26,7 +26,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://www.orfeo-toolbox.org/packages/OTB
 		git://github.com/jmichel-otb/GKSVM.git)
 noextract=()
 
-md5sums=('a6101b3fcd48a494f3b44cbd7ddbc4a7'
+md5sums=('87cb0eca9dd2c2207eaf192bb90d3fc1'
          'SKIP')
 
 
@@ -34,15 +34,20 @@ _gitname="GKSVM"
 
 prepare() {
 	## Module for monteverdi build
+	echo $srcdir
 	cd 	$srcdir/  
 	cp -ra $srcdir/GKSVM $srcdir/Modules/Remote
+	#commenting version detection for FindMUParser.cmake since it causes an error
+	sed -i '62 s/^/#/' $srcdir/CMake/FindMuParser.cmake 
+	sed -i '63 s/^/#/' $srcdir/CMake/FindMuParser.cmake 
+	
 }
 
 build() {  
   cd $srcdir/  
  
    if  [ -d "$srcdir/build/" ]; then
-	rm -rf $srcdir/build/
+   	rm -rf $srcdir/build/
    fi
    mkdir $srcdir/build/
  
@@ -70,13 +75,13 @@ build() {
   -DOTB_USE_OPENGL=ON \
   -DOTB_USE_SPTW=ON \
   -DOTB_USE_QWT=ON \
-  -DOTB_USE_GLUT=ON \
+  -DOTB_USE_GLUT=OFF \
   -DOTB_USE_SPTW=ON \
-  -DOTB_USE_SHARK=ON \
+  -DOTB_USE_SHARK=OFF \
   -DITK_DIR=/opt/insight-toolkit4 \
   -DCMAKE_PREFIX_PATH=/opt/insight-toolkit4 \
-  -DCMAKE_CXX_STANDARD=14 \
-  -DBoost_USE_STATIC_LIBS=ON
+  -DCMAKE_CXX_STANDARD=17 \
+  -DBoost_USE_STATIC_LIBS=OFF
          
   make
  
