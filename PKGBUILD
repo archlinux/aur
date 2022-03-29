@@ -12,23 +12,25 @@ pkgrel=1
 ## Begin shared code ##
 pkgdesc='an offline client for creating photobooks and other photo products and ordering them from CEWE or partners'
 
-_scriptTailMd5sum=1b231f3988603dbec4e857e247784295
+declare -g -A _scriptTailMd5sums
+_scriptTailMd5sums[7.1]=1b231f3988603dbec4e857e247784295
+_scriptTailMd5sums[7.2]=d9edd2bb89870dc61692e73f81fe0efa
 
-# locale, key account, original name, version, (optional) replacement name, (optional) setup script tail md5sum
+# locale, key account, original name, version, (optional) replacement name
 _prams_Austria=(de_AT 29762 'CEWE Fotowelt' 7.1.4)
 _prams_Belgie=(nl_BE 28049 'CEWE Photoservice' 7.1.4)
 _prams_Belgique=(fr_BE 28049 'CEWE Photoservice' 7.1.4)
 _prams_Czechia=(cs_CZ 4860 'CEWE FOTOLAB fotosvet' 7.1.3 "CEWE fotosvět")
-_prams_France=(fr_FR 7884 'Logiciel de création CEWE' 7.1.3)
+_prams_France=(fr_FR 7884 'Logiciel de création CEWE' 7.1.5)
 _prams_Fnac=(fr_FR 18455 'Atelier Photo Fnac' 7.1.3)
-_prams_Fotobuch=(de_DE 16523 'Mein CEWE FOTOBUCH' 7.2.2 'CEWE Fotobuch' d9edd2bb89870dc61692e73f81fe0efa)
-_prams_Germany=(de_DE 24441 'CEWE Fotowelt' 7.2.3 '' d9edd2bb89870dc61692e73f81fe0efa)
-_prams_Luxemburg=(de_LU 32905 'CEWE Photoservice' 7.1.4)
+_prams_Fotobuch=(de_DE 16523 'Mein CEWE FOTOBUCH' 7.2.3 'CEWE Fotobuch')
+_prams_Germany=(de_DE 24441 'CEWE Fotowelt' 7.2.3)
+_prams_Luxemburg=(de_LU 32905 'CEWE Photoservice' 7.1.5)
 _prams_Luxembourg=(fr_LU 32905 'CEWE Photoservice' 7.1.4)
 _prams_Netherlands=(nl_NL 28035 'CEWE Fotoservice' 7.1.4)
 _prams_Poland=(pl_PL 29241 'CEWE Fotoswiat' 7.1.4 'CEWE Fotoświat')
 _prams_Slovakia=(sk_SK 31916 'CEWE fotosvet' 7.1.3)
-_prams_Slovenia=(sl_SI 17409 'CEWE Fotosvet' 7.0.4 '' ddeebfcc79f9af40e273e657a0907497)
+_prams_Slovenia=(sl_SI 17409 'CEWE Fotosvet' 7.1.5)
 _prams_Spain=(es_ES 29227 'Taller CEWE' 7.1.3)
 _prams_UK=(en_GB 12611 'CEWE Creator' 7.1.3)
 
@@ -46,13 +48,13 @@ else
 	mkdir -p src
 	bsdtar -xf "$_SETUP_FILE" -C src install.pl
 
-	_prams=('$FULL_LOCALE' '$KEYACCID' '$APPLICATION_NAME' '$HPS_VER' "$_RENAME" SKIP)
+	_prams=('$FULL_LOCALE' '$KEYACCID' '$APPLICATION_NAME' '$HPS_VER' "$_RENAME")
 	for _i in {0..3}
 	do
 		_prams[_i]="$(pkgver "${_prams[_i]}" src/)"
 	done
 	source="$_SETUP_FILE"
-	[ $(whoami) != root -a -z "$_UPDATING" ] && echo "_prams_?=(${_prams[@]:0:2} '${_prams[2]}' ${_prams[3]} '' $(md5sum <(sed '0,/AB HIER SOLLTE NICHTS MEHR GEAENDERT WERDEN/d' src/install.pl) | grep -Po '^[^ ]*'))"
+	[ $(whoami) != root -a -z "$_UPDATING" ] && echo -e "_prams_?=(${_prams[@]:0:2} '${_prams[2]}' ${_prams[3]})\n_scriptTailMd5sums[${_prams[3]%.*}]=$(md5sum <(sed '0,/AB HIER SOLLTE NICHTS MEHR GEAENDERT WERDEN/d' src/install.pl) | grep -Po '^[^ ]*')"
 	[ -n "$_PRAMS_ONLY" ] && exit
 fi
 
@@ -61,13 +63,12 @@ _keyaccount=${_prams[1]}
 _productUrname=${_prams[2]}
 # what I want to call it (e.g. CEWE Sensible Name)
 [ -z "${_prams[4]}" ] && _productRename="$_productUrname" || _productRename=${_prams[4]}
-[ -n "${_prams[5]}" ] && _scriptTailMd5sum=${_prams[5]}
 
 # remove accents, lowercase and replace spaces for package name
 [ -z "$pkgname" ] && pkgname="$(iconv -t ascii//TRANSLIT <(echo $_productRename))"
 pkgname=${pkgname,,}
 pkgname=${pkgname// /-}
-sed "s/CEWE/$pkgname/" CEWE.install > $pkgname.install
+[ -f CEWE.install -a "$BUILDPKG" != 0 ] && sed "s/CEWE/$pkgname/" CEWE.install > $pkgname.install
 
 conflicts=(cewe-fotowelt cewe-fotobuch cewe-fotoservice cewe-monlivrephoto-fnac cewe-monlivrephoto-fr)
 conflicts=(${conflicts[@]/$pkgname/})
@@ -91,7 +92,7 @@ check() {
 	local mentionDownloadServer="$(sed '0,/AB HIER SOLLTE NICHTS MEHR GEAENDERT WERDEN/p;d' "$src"install.pl | grep -Po '.*\$DOWNLOAD_SERVER[^\r]*')"
 	local md5sum=$(md5sum <(sed '0,/AB HIER SOLLTE NICHTS MEHR GEAENDERT WERDEN/d' "$src"install.pl) | grep -Po '^[^ ]*')
 
-	[ "$mentionDownloadServer" == "$setRightDownloadServer" ] && [ $_scriptTailMd5sum == SKIP -o $_scriptTailMd5sum == $md5sum ]
+	[ "$mentionDownloadServer" == "$setRightDownloadServer" ] && [ ${_scriptTailMd5sums[${pkgver%.*}]} == $md5sum -o -n "$_SETUP_FILE" ]
 }
 
 package() {
