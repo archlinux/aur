@@ -1,7 +1,7 @@
 pkgbase = vim-tex-seven-git
 	pkgdesc = Vim plugin for LaTeX documents
-	pkgver = r133.001d01a
-	pkgrel = 1
+	pkgver = r159.a6d7480
+	pkgrel = 2
 	url = https://github.com/notnotrandom/vim-tex-seven
 	install = vimdoc.install
 	arch = any
@@ -9,6 +9,7 @@ pkgbase = vim-tex-seven-git
 	license = GPL
 	makedepends = git
 	depends = vim-runtime>=7.0
+	optdepends = perl-json: to retrive \label's asynchronously
 	provides = vim-tex-seven
 	source = git+https://github.com/notnotrandom/vim-tex-seven.git
 	sha256sums = SKIP
