@@ -1,0 +1,16 @@
+pkgbase = oled-notifier-git
+	pkgdesc = Provides simple statistics for ODROID-HC4 with OLED device.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/wiktor-k/oled-notifier
+	arch = any
+	license = APL
+	makedepends = cargo
+	makedepends = git
+	makedepends = clang
+	provides = oled-notifier
+	conflicts = oled-notifier
+	source = oled-notifier::git+https://github.com/wiktor-k/oled-notifier
+	sha512sums = SKIP
+
+pkgname = oled-notifier-git
