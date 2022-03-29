@@ -1,14 +1,14 @@
 pkgbase = znc-fish
 	pkgdesc = FiSH Module for ZNC
-	pkgver = r21.dfc4408
-	pkgrel = 1
+	pkgver = 1.2018
+	pkgrel = 2
 	url = https://github.com/qnorsten/znc-fish
 	arch = x86_64
 	license = GPL
 	makedepends = cmake
 	depends = znc
 	provides = znc-fish
-	source = git+https://github.com/qnorsten/znc-fish.git
-	b2sums = SKIP
+	source = https://gist.githubusercontent.com/v4lli/ee4edd99128e7cb518ebad548cab7a41/raw/c2a3c05714d8fbab8bdbcb4a2a52c7099a7efbbf/fish.cpp
+	b2sums = 6982570d1083af973b45ce5a80313bb5634557e8b42bf2cbbe88af10bbb1fe58b39b59860a2d291519e3561d8c4679a205561ad6c6d40e9295aaa35cf636fecc
 
 pkgname = znc-fish
