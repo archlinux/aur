@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov
 
 pkgname=booster-git
-pkgver=0.7.r70.gf371e98
+pkgver=0.7.r92.g4b2bd1d
 pkgrel=1
 pkgdesc='Fast and secure initramfs generator'
 arch=(x86_64)
@@ -64,4 +64,5 @@ package() {
   install -Dp -m755 packaging/arch/booster-install "$pkgdir/usr/share/libalpm/scripts/booster-install"
   install -Dp -m644 packaging/arch/60-booster-remove.hook "$pkgdir/usr/share/libalpm/hooks/60-booster-remove.hook"
   install -Dp -m755 packaging/arch/booster-remove "$pkgdir/usr/share/libalpm/scripts/booster-remove"
+  install -Dp -m755 contrib/completion/bash "$pkgdir/usr/share/bash-completion/completions/booster"
 }
