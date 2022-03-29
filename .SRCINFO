@@ -1,6 +1,6 @@
 pkgbase = haruna-git
 	pkgdesc = A Qt/QML video player built on top of libmpv
-	pkgver = 0.7.3.r43.gfd5868a
+	pkgver = 0.7.3.r50.g8efae07
 	pkgrel = 1
 	url = https://invent.kde.org/multimedia/haruna
 	arch = x86_64
@@ -18,8 +18,6 @@ pkgbase = haruna-git
 	provides = haruna
 	conflicts = haruna
 	source = haruna::git+https://invent.kde.org/multimedia/haruna.git
-	source = fix-ffmpeg5.patch
 	sha256sums = SKIP
-	sha256sums = e9a63b260b5a0b037b6fbd4b4540771898e32c839e5a259af08fd19f9d5c8b82
 
 pkgname = haruna-git
