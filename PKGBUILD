@@ -2,11 +2,11 @@
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
 _pkgname=libretro-cap32
 pkgname=$_pkgname-git
-pkgver=r291.408da09
+pkgver=4.5.3.r1.gef0ee89
 pkgrel=1
 epoch=1
 pkgdesc="Amstrad CPC core"
-arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/libretro/$_pkgname"
 license=('GPL2')
 groups=('libretro')
@@ -19,7 +19,7 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
