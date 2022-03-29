@@ -1,0 +1,20 @@
+pkgbase = mullvad-netns
+	pkgdesc = Script to run a command within a Mullvad network namespace
+	pkgver = 0.4
+	pkgrel = 1
+	url = https://github.com/chutz/mullvad-netns
+	arch = any
+	license = GPL2
+	makedepends = git
+	makedepends = make
+	makedepends = coreutils
+	depends = iproute2
+	depends = curl
+	depends = wireguard-tools
+	depends = util-linux
+	depends = bash
+	depends = jq
+	source = https://github.com/chutz/mullvad-netns/archive/v0.4/mullvad-netns-0.4.tar.gz
+	sha256sums = d9fdf0bbb636d143dac34181da9636e23c1e5284496a36b1fe02fc90c67bda5d
+
+pkgname = mullvad-netns
