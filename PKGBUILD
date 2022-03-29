@@ -1,7 +1,7 @@
 # Maintainer: TheBill2001 <tuantran1632001 at gmail dot com>
 
 pkgname=qtcreator-spellchecker-plugin-bin
-pkgver=2.0.12
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Spell Checker plugin for the Qt Creator IDE (precompiled binary)"
 groups=('qt' 'qt5' 'qt6')
@@ -10,11 +10,11 @@ url="https://github.com/CJCombrink/SpellChecker-Plugin"
 license=('GPL3')
 depends=('qtcreator' 'hunspell')
 conflicts=('qtcreator-spellchecker-plugin-git')
-source=("${url}/releases/download/v${pkgver}/SpellChecker-Plugin_QtC6.0_linux_x64.tar.gz")
-sha256sums=('0c3a7100b255df7797b01bae862d2c3d9e2c0ce521ea3196637c8be8dc2db46b')
+source=("${url}/releases/download/v${pkgver}/SpellChecker-Plugin_QtCv7.0.0_linux_x64.tar.gz")
+sha256sums=('4600473a78754d5c81794d5ab81e5af4d9c789c462f2af3692d6e0a6c3eca314')
 
 prepare() {
-    tar -xf "SpellChecker-Plugin_QtC6.0_linux_x64.tar.gz"
+    tar -xf "SpellChecker-Plugin_QtCv7.0.0_linux_x64.tar.gz"
 }
 
 package() {
