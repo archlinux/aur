@@ -3,7 +3,7 @@
 
 pkgname=cgoban3
 pkgver=3.5.144
-pkgrel=1
+pkgrel=2
 pkgdesc='A KGS client and SGF editor'
 url='https://gokgs.com/'
 arch=('any')
@@ -11,19 +11,19 @@ license=('Freeware')
 depends=('desktop-file-utils' 'java-runtime' 'bash')
 install=cgoban3.install
 source=(
-        'http://files.gokgs.com/javaBin/cgoban.jar'
+        'https://files.gokgs.com/javaBin/cgoban.jar'
         'cgoban3'
         'cgoban3.png'
         'cgoban3.desktop'
         'cgoban3-edit.desktop'
        )
-sha256sums=('7a137f690536dd912d0e1ffeaf71f63c33c1ad6860a0c7e011f2aae6ad3c9056'
+sha256sums=('SKIP'
             'f4ad321e3aed07002581b70686c5f5298190c647f63dd4b3fa848a9756fb6f98'
             'a87ecc7d285cf19ab176a437dfb22ab8841eff2f64348cc432557d879347d510'
             'b781072cbb5ac56c102992c92307153c14842c5d9e7a6a6bbf7e397d7b714598'
             '909931d5694a205a05c602250b6b6c319cf599799dc9b1d69df0becfb768406d')
 noextract=(
-           'cgoban.jar'
+        'cgoban.jar'
           )
 
 package() {
