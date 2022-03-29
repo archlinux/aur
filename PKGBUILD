@@ -3,12 +3,13 @@
 # Contributor: Virgil Dupras <hsoft@hardcoded.net>
 pkgname=dupeguru
 pkgver=4.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Find duplicate files with various contents, using perceptual diff for pictures"
 arch=('any')
 url="https://dupeguru.voltaicideas.net/"
 license=('GPL3')
-depends=('python' 'python-pip' 'python-pyqt5' 'python-polib' 
+depends=('python' 'python-pip' 'python-pyqt5' 'python-polib'
+         'python-semantic-version' 'python-xxhash'
          'python-mutagen' 'python-send2trash' 'libxkbcommon-x11')
 makedepends=('python-distro' 'python-sphinx')
 source=( https://github.com/arsenetar/${pkgname}/archive/refs/tags/${pkgver}.tar.gz )
