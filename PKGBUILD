@@ -3,7 +3,7 @@
 pkgname=talosctl
 pkgver=1.0.0
 _commit=80167fd23f8156d357d30eccdea8e93cc2fc141f
-# https://github.com/talos-systems/talos/blob/master/Makefile#L16
+# https://github.com/siderolabs/talos/blob/master/Makefile#L16
 _pkgs='v1.0.0-6-g7c293d5'
 _extras='v1.0.0'
 pkgrel=1
