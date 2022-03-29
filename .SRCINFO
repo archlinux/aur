@@ -1,0 +1,15 @@
+pkgbase = pillager-git
+	pkgdesc = Pillage filesystems for sensitive information with Go
+	pkgver = 0.8.0.r3.eb653b7
+	pkgrel = 1
+	url = https://github.com/brittonhayes/pillager
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = pillager
+	conflicts = pillager
+	source = git+https://github.com/brittonhayes/pillager.git
+	md5sums = SKIP
+
+pkgname = pillager-git
