@@ -13,15 +13,13 @@ options=('!strip' '!emptydirs')
 
 _snapshot="linux-${pkgver}"
 _archive="${_snapshot}.tar.gz"
+_patches=("kernel-5."{12,14,15,16}"-backport.patch")
 
 source=(
     "${_archive}::https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/snapshot/${_archive}"
     "Makefile.patch"
     "dkms.conf"
-    "kernel-5.12-backport.patch"
-    "kernel-5.14-backport.patch"
-    "kernel-5.15-backport.patch"
-    "kernel-5.16-backport.patch"
+    "${_patches[@]}"
 )
 
 sha256sums=(
@@ -41,13 +39,13 @@ prepare() {
     tar --strip-components=2 -xf "${_archive}" "${_snapshot}/fs/ntfs3"
 
     cd "ntfs3"
-    patch -p0 -N -i "${srcdir}/Makefile.patch"
+    patch -i "${srcdir}/${source[1]}"
 
     # For testing
-    # patch -p1 -N -i "${srcdir}/kernel-5.16-backport.patch"
-    # patch -p1 -N -i "${srcdir}/kernel-5.15-backport.patch"
-    # patch -p1 -N -i "${srcdir}/kernel-5.14-backport.patch"
-    # patch -p1 -N -i "${srcdir}/kernel-5.12-backport.patch"
+    # patch -i "${srcdir}/${_patches[-1]}"
+    # patch -i "${srcdir}/${_patches[-2]}"
+    # patch -i "${srcdir}/${_patches[-3]}"
+    # patch -i "${srcdir}/${_patches[-4]}"
 }
 
 package() {
@@ -56,7 +54,7 @@ package() {
 
     cd "${srcdir}"
     install -Dm644 -t "${dest}" "dkms.conf"
-    install -dm755 "${dest}/patches" && cp -t "$_" "kernel-"*.patch
+    install -Dm644 -t "${dest}/patches" "${_patches[@]}"
 
     cd "ntfs3"
     cp -rt "${dest}" *
