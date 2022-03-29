@@ -1,7 +1,7 @@
 pkgbase = assemblyline-git
 	pkgdesc = An in-memory assembler for x86. (main branch)
-	pkgver = 1.2.1.r182.be2fab3
-	pkgrel = 2
+	pkgver = 1.2.2.r184.2aa6a1c
+	pkgrel = 1
 	url = https://github.com/0xAde1a1de/assemblyline.git
 	arch = x86_64
 	license = Apache
