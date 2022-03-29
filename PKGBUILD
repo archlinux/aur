@@ -1,4 +1,4 @@
-# Maintainer: Philip Müller <philm[at]manjaro[dog]org>
+# Maintainer: Kenny Strawn <Kenny[dot]Strawn[at]gmail[dot]com>
 
 pkgname=calamares-git
 pkgver=3.2.55.r9930.c70deed13
