@@ -1,7 +1,7 @@
 # Maintainer: Adrien Prost-Boucle <adrien.prost-boucle@laposte.net>
 
 pkgname=ghdl-gcc-git
-pkgver=2.0.0dev.r6833.g1f3b1857b
+pkgver=3.0.0dev.r7048.g7028d03e5
 pkgrel=1
 arch=('x86_64' 'i686' 'pentium4' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='VHDL simulator - GCC back-end'
@@ -19,7 +19,7 @@ _gccver=11.2.0
 _islver=0.24
 
 source=(
-	"ghdl::git://github.com/ghdl/ghdl.git"
+	"ghdl::git+https://github.com/ghdl/ghdl.git"
 	"https://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.xz"
 	"https://gcc.gnu.org/pub/gcc/infrastructure/isl-${_islver}.tar.bz2"
 )
