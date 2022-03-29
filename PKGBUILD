@@ -4,12 +4,12 @@ pkgver=1.14.b4a4029
 pkgrel=1
 pkgdesc="An advanced window decoration plugin for the wayfire window manager."
 arch=('any')
-url="https://github.com/AhoyISki/wayfire-firedecor"
+url="https://github.com/AhoyISki/wayfire-firedecor.git"
 license=('MIT')
 depends=('wayfire-git')
 makedepends=('git' 'meson' 'ninja')
 provides=('wayfire-firedecor-git' 'wayfire-firedecor')
-source=('https://github.com/AhoyISki/wayfire-firedecor')
+source=('git+https://github.com/AhoyISki/wayfire-firedecor.git')
 sha256sums=('SKIP')
 
 pkgver() {
