@@ -1,16 +1,16 @@
 pkgbase = omniedge-cli
 	pkgdesc = A reliable and painless connectivity to all your devices in one click.
 	pkgver = 0.2.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://omniedge.io/
 	arch = x86_64
 	arch = aarch64
 	arch = armv7h
 	source_x86_64 = omniedgecli-0.2.2-amd64.zip::https://github.com/omniedgeio/app-release/releases/download/v0.2.2/omniedgecli-amd64.zip
-	sha512sums_x86_64 = 36fad9ea1fe61cabb62597e9b6f933a2571265dcb91fc13beba8d80658543d47cd59340dbac92a6e7fb1b2da1bea9996f962207bfd043a1bef995e07c1b613a2
+	sha512sums_x86_64 = 4d48459afc2d88709e966e79b2700f2fa0b18d96400b5c4c133d84bf902d61459d86dcd37f9be3833ba7937d5e6ae35ed13ca66ec13258a30581f480e83af8f0
 	source_aarch64 = omniedgecli-0.2.2-arm64v8.zip::https://github.com/omniedgeio/app-release/releases/download/v0.2.2/omniedgecli-arm64v8.zip
-	sha512sums_aarch64 = faabdf0d89bf56531bcd172e013b1e99fa0a6500d7129cd3904e64784356ceedfaff92d4edc1af53d05f117aa5d1643767e142d4fb8379a63c6539463043ff94
+	sha512sums_aarch64 = 36db294dc172d4c8f31032b4626128bbc4116a2ee01bd7f720e5d3de421d32e5c97cad77353652e688ea07e404ac9064f5a867c9b7c154edafe29f1c425f79ed
 	source_armv7h = omniedgecli-0.2.2-amdv7.zip::https://github.com/omniedgeio/app-release/releases/download/v0.2.2/omniedgecli-armv7.zip
-	sha512sums_armv7h = ec30b874dd7981cc1d313d1f8c7af4d656ab5a0287ad2984fb6e9c16015a54d1faf5b278b6131cc529b2097d63ef7ea5612de3170b428995ae4a5b950101806b
+	sha512sums_armv7h = dc0b82bd14bfb23a495511a229935f2cc481c66809f430f92b6f92a34982bf842befd50982946c7b93427ca16ce3911997ad350e0002917b1a3fbca003f3659c
 
 pkgname = omniedge-cli
