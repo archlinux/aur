@@ -1,0 +1,25 @@
+pkgbase = cnx-git
+	pkgdesc = cnx - A simple X11 status bar for use with simple WMs in Rust
+	pkgver = 0.3.0.r276.g0f0406d
+	pkgrel = 1
+	url = https://github.com/mjkillough/cnx
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	depends = libxcb
+	depends = xcb-util
+	depends = xcb-util-wm
+	depends = xcb-util-keysyms
+	depends = pango
+	depends = cairo
+	optdepends = alsa-lib
+	optdepends = alsa-utils
+	optdepends = wireless_tools
+	optdepends = lm_sensors
+	provides = cnx
+	conflicts = cnx
+	source = cnx::git+https://github.com/mjkillough/cnx
+	sha1sums = SKIP
+
+pkgname = cnx-git
