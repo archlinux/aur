@@ -1,5 +1,4 @@
-*
-!/.gitignore
-!/PKGBUILD
-!/SRCINFO
-!/vcvrack.sh
+*.tar.*
+/src
+/pkg
+/ac73ef4.patch

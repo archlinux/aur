@@ -1,0 +1,47 @@
+diff -aur a/plugin.mk b/plugin.mk
+--- a/plugin.mk	2022-02-26 10:07:50.000000000 +0100
++++ b/plugin.mk	2022-03-06 20:18:12.877709392 +0100
+@@ -1,9 +1,13 @@
++ifndef ARCH_LIN
+ ifndef RACK_DIR
+ $(error RACK_DIR is not defined)
+ endif
++else
++RACK_DIR ?= /usr/share/vcvrack
++endif
+
+-SLUG := $(shell jq -r .slug plugin.json)
+-VERSION := $(shell jq -r .version plugin.json)
++SLUG ?= $(shell jq -r .slug plugin.json)
++VERSION ?= $(shell jq -r .version plugin.json)
+
+ ifndef SLUG
+ $(error SLUG could not be found in manifest)
+@@ -27,10 +31,10 @@
+ 	TARGET := plugin.so
+ 	# This prevents static variables in the DSO (dynamic shared object) from being preserved after dlclose().
+ 	FLAGS += -fno-gnu-unique
+-	# When Rack loads a plugin, it symlinks /tmp/Rack2 to its system dir, so the plugin can link to libRack.
+-	LDFLAGS += -Wl,-rpath=/tmp/Rack2
+-	# Since the plugin's compiler could be a different version than Rack's compiler, link libstdc++ and libgcc statically to avoid ABI issues.
+-	LDFLAGS += -static-libstdc++ -static-libgcc
++	# Installed includes
++	FLAGS += -I/usr/include/vcvrack -I/usr/include/vcvrack/dep
++	# Link shared libs
++	LDFLAGS += -ldl $(shell pkg-config --libs glew glfw3 jansson libcurl openssl libarchive libzstd speexdsp samplerate rtmidi rtaudio)
+ 	RACK_USER_DIR ?= $(HOME)/.Rack2
+ endif
+
+diff -aur a/src/plugin.cpp b/src/plugin.cpp
+--- a/src/plugin.cpp	2022-02-26 10:07:50.000000000 +0100
++++ b/src/plugin.cpp	2022-03-06 19:56:50.556668012 +0100
+@@ -240,6 +240,9 @@
+ 	extractPackages(pluginsPath);
+ 	loadPlugins(pluginsPath);
+
++	// Load system-wide plugins
++	loadPlugins(asset::system("plugins"));
++
+ 	// If Fundamental wasn't loaded, copy the bundled Fundamental package and load it
+ 	if (!settings::devMode && !getPlugin("Fundamental")) {
+ 		std::string fundamentalSrc = asset::system("Fundamental.vcvplugin");

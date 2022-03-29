@@ -1,4 +1,2 @@
-#!/usr/bin/env sh
-
-cd /opt/vcvrack
-./Rack "$@"
+#!/bin/sh
+RACK_SYSTEM_DIR=/usr/lib/vcvrack exec /usr/lib/vcvrack/Rack "$@"
