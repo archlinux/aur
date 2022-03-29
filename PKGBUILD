@@ -1,16 +1,16 @@
 # Maintainer: Ellis Kenyo <me at elken dot dev>
 
 pkgname=firn-bin
-pkgver=0.0.16
+pkgver=0.0.21
 pkgrel=1
 pkgdesc="Static site generator for org-mode"
 arch=('x86_64')
 url="https://github.com/theiceshelf/firn"
 license=('EPL')
-source=($pkgname-$pkgver::https://github.com/theiceshelf/firn/releases/download/v$pkgver/firn-x86_64-unknown-linux-gnu.zip)
-md5sums=('fcd6c8b1e0680dcac8113e3e5f2435a2')
+source=($pkgname-$pkgver::https://github.com/theiceshelf/firn/releases/download/v$pkgver/firn-linux-x86_64)
+md5sums=('2aaa7821e6ad54c10db164121bea79ed')
 
 package() {
   install -d "$pkgdir/usr/bin"
-  install -Dm755 "$srcdir/firn" "$pkgdir/usr/bin/"
+  install -Dm755 "$pkgname-$pkgver" "$pkgdir/usr/bin/firn"
 }
