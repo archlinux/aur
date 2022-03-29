@@ -12,13 +12,15 @@ provides=('NTFS3-MODULE' 'ntfs3')
 conflicts=('ntfs3')
 options=('!strip' '!emptydirs')
 
+_patches=(
+    "kernel-5."{12,14,15}"-backport.patch"
+    "kernel-5.16.patch"
+)
+
 source=(
     "Makefile.patch"
     "dkms.conf"
-    "kernel-5.12-backport.patch"
-    "kernel-5.14-backport.patch"
-    "kernel-5.15-backport.patch"
-    "kernel-5.16.patch"
+    "${_patches[@]}"
 )
 
 sha256sums=(
@@ -58,13 +60,13 @@ prepare() {
     git reset --hard FETCH_HEAD
 
     cd "fs/ntfs3"
-    patch -p0 -N -i "${srcdir}/Makefile.patch"
+    patch -i "${srcdir}/Makefile.patch"
 
     # For testing
-    # patch -p1 -N -i "${srcdir}/kernel-5.16.patch"
-    # patch -p1 -N -i "${srcdir}/kernel-5.15-backport.patch"
-    # patch -p1 -N -i "${srcdir}/kernel-5.14-backport.patch"
-    # patch -p1 -N -i "${srcdir}/kernel-5.12-backport.patch"
+    # patch -i "${srcdir}/${_patches[-1]}"
+    # patch -i "${srcdir}/${_patches[-2]}"
+    # patch -i "${srcdir}/${_patches[-3]}"
+    # patch -i "${srcdir}/${_patches[-4]}"
 }
 
 package() {
@@ -73,7 +75,7 @@ package() {
 
     cd "${srcdir}"
     install -Dm644 -t "${dest}" "dkms.conf"
-    install -dm755 "${dest}/patches" && cp -t "$_" "kernel-"*.patch
+    install -Dm644 -t "${dest}/patches" "${_patches[@]}"
 
     cd "repo/fs/ntfs3"
     cp -rt "${dest}" *
