@@ -1,7 +1,7 @@
 # Maintainer: Josh Gwosdz <jgwosdz at redhat dot com>
 pkgname=operator-registry-opm-bin
 pkgver=1.21.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Client tools for the Operator Registry that runs in a Kubernetes or OpenShift cluster to provide operator catalog data to Operator Lifecycle Manager."
 arch=("x86_64")
 provides=("opm")

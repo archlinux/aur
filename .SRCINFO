@@ -1,7 +1,7 @@
 pkgbase = operator-registry-opm-bin
 	pkgdesc = Client tools for the Operator Registry that runs in a Kubernetes or OpenShift cluster to provide operator catalog data to Operator Lifecycle Manager.
 	pkgver = 1.21.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/operator-framework/operator-registry
 	arch = x86_64
 	license = Apache
