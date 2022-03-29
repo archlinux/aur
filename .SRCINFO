@@ -1,0 +1,12 @@
+pkgbase = broadcom-wl-mainline-anbox-git
+	pkgdesc = Broadcom 802.11 Linux STA wireless driver for the linux-mainline-anbox-git kernel
+	pkgver = 6.30.223.271
+	pkgrel = 374
+	url = https://www.broadcom.com/support/download-search/?pf=Wireless+LAN+Infrastructure
+	arch = x86_64
+	license = custom
+	makedepends = linux-mainline-anbox-git-headers
+	makedepends = broadcom-wl-dkms=6.30.223.271
+
+pkgname = broadcom-wl-mainline-anbox-git
+	depends = linux-mainline-anbox-git
