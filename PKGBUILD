@@ -23,7 +23,7 @@ install=
 changelog=
 
 source=("${pkgname}-${pkgver}.tar.gz::https://www.orfeo-toolbox.org/packages/OTB-$pkgver.tar.gz"
-		git://github.com/jmichel-otb/GKSVM.git)
+		https://github.com/jmichel-otb/GKSVM.git)
 noextract=()
 
 md5sums=('87cb0eca9dd2c2207eaf192bb90d3fc1'

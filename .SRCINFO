@@ -31,7 +31,7 @@ pkgbase = orfeo-toolbox
 	depends = openmpi
 	depends = shark-ml-git
 	source = orfeo-toolbox-8.0.0.tar.gz::https://www.orfeo-toolbox.org/packages/OTB-8.0.0.tar.gz
-	source = git://github.com/jmichel-otb/GKSVM.git
+	source = https://github.com/jmichel-otb/GKSVM.git
 	md5sums = 87cb0eca9dd2c2207eaf192bb90d3fc1
 	md5sums = SKIP
 
