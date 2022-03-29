@@ -1,12 +1,12 @@
 # Maintainer: Denis Sheremet <aur@lxlz.space>
 
 pkgname=sferum
-pkgver=0.0.1
-pkgrel=1
+pkgver=1.1.10
+pkgrel=85
 
 pkgdesc="Образовательная платформа №1"
 arch=("x86_64")
-license=("custom:sferum")
+license=("MIT")
 categories=("instant_messaging" "network")
 
 url=https://sferum.ru/

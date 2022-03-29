@@ -1,10 +1,10 @@
 pkgbase = sferum
 	pkgdesc = Образовательная платформа №1
-	pkgver = 0.0.1
-	pkgrel = 1
+	pkgver = 1.1.10
+	pkgrel = 85
 	url = https://sferum.ru/
 	arch = x86_64
-	license = custom:sferum
+	license = MIT
 	depends = gtk3
 	depends = libnotify
 	depends = libxss
