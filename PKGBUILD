@@ -1,6 +1,6 @@
 # Maintainer: Andrew Mascillaro <amascillaro@gmail.com>
 pkgname=weffe-git
-pkgver=1.0.0.r1.g449d0db
+pkgver=1.1.0.r0.g970ac61
 pkgrel=1
 pkgdesc="Lightweight CLI for video effects on webcams"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/intermezzio/weffe.git"
 license=('MIT')
 depends=(ffmpeg 'v4l2loopback-dkms>=0.12.5-1')
 makedepends=(git)
-optdepends=()
+optdepends=('inotify-tools: monitor output streams')
 provides=(weffe)
 source=("git+$url")
 md5sums=('SKIP')
