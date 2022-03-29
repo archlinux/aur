@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index f3a1e85..a81d4a5 100644
+--- a/setup.py
++++ b/setup.py
+@@ -51,7 +51,7 @@ setuptools.setup(
+     license=pkg_info["__license__"],
+     long_description=long_description,
+     long_description_content_type="text/x-rst",
+-    packages=setuptools.find_packages(exclude=["test*"]),
++    packages=setuptools.find_packages(exclude=["test*", 'examples']),
+     package_data={MODULE_NAME: ["py.typed"]},
+     project_urls={"Source": REPOSITORY_URL, "Tracker": "{:s}/issues".format(REPOSITORY_URL)},
+     python_requires=">=3.5",
