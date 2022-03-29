@@ -1,0 +1,18 @@
+pkgbase = postprocessd
+	pkgdesc = Queueing megapixels post-processor
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://git.sr.ht/~martijnbraam/postprocessd
+	arch = any
+	license = GPL-3.0-only
+	makedepends = meson
+	makedepends = scdoc
+	depends = libexif
+	depends = libjpeg-turbo
+	depends = libtiff
+	depends = opencv
+	depends = libraw
+	source = postprocessd-0.1.2.tar.gz::https://git.sr.ht/~martijnbraam/postprocessd/archive/0.1.2.tar.gz
+	sha256sums = a9d990ba0fd720fc63de469805c746ce1a0bb3a14545856ac430e2ee48aac40e
+
+pkgname = postprocessd
