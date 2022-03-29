@@ -1,13 +1,13 @@
 pkgbase = plank-theme-data-stora-git
 	pkgdesc = Data-Stora theme for Plank
-	pkgver = 0.2
+	pkgver = 0.3
 	pkgrel = 1
 	url = https://www.pling.com/p/1299919
 	arch = any
 	license = CC BY NC ND
 	makedepends = git
 	depends = plank
-	source = git://github.com/MMcQueenGNU/plank-theme-data-stora.git
+	source = plank-theme-data-stora-git::git+https://github.com/MMcQueenGNU/plank-theme-data-stora.git
 	sha256sums = SKIP
 
 pkgname = plank-theme-data-stora-git
