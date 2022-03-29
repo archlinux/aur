@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=jackeventcmd-git
-pkgver=2.fd76b9a
+pkgver=3.eca961e
 pkgrel=1
 pkgdesc="Run custom commands when headphones are (un)plugged"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 provides=('jackeventcmd')
 depends=('dbus' 'jacklistener')
 makedepends=('git')
-source=('jackeventcmd::git://github.com/gentoo-root/jackeventcmd.git')
+source=('jackeventcmd::git+https://github.com/gentoo-root/jackeventcmd')
 
 build() {
   cd jackeventcmd
@@ -19,7 +19,7 @@ build() {
 
 package() {
   cd jackeventcmd
-   make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install
 }
 
 pkgver() {
@@ -27,4 +27,4 @@ pkgver() {
   echo $(git rev-list --count master).$(git rev-parse --short master)
 }
 
-md5sums=('SKIP')
+sha256sums=('SKIP')
