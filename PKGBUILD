@@ -2,7 +2,7 @@
 
 pkgname=mage-bin
 pkgver=1.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Make/rake-like build tool using Go"
 arch=("x86_64")
 url="https://magefile.org"

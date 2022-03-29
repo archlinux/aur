@@ -1,7 +1,7 @@
 pkgbase = mage-bin
 	pkgdesc = A Make/rake-like build tool using Go
 	pkgver = 1.13.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://magefile.org
 	arch = x86_64
 	license = Apache
