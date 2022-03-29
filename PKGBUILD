@@ -1,19 +1,19 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=talosctl
-pkgver=0.14.3
-_commit=73f4efd7b53baac12709281552f4eed7b47bfc1e
+pkgver=1.0.0
+_commit=80167fd23f8156d357d30eccdea8e93cc2fc141f
 # https://github.com/talos-systems/talos/blob/master/Makefile#L16
-_pkgs='v0.9.0-6-gbfcc795'
-_extras='v0.7.0-2-gb4c9d21'
+_pkgs='v1.0.0-6-g7c293d5'
+_extras='v1.0.0'
 pkgrel=1
 pkgdesc='CLI for Talos - A modern OS for Kubernetes'
 arch=('x86_64')
-url='https://github.com/talos-systems/talos'
+url='https://github.com/siderolabs/talos'
 license=('MPL2')
 makedepends=('git' 'go')
 options=(!lto)
-source=("git+https://github.com/talos-systems/talos.git#commit=$_commit?signed")
+source=("git+https://github.com/siderolabs/talos.git#commit=$_commit?signed")
 b2sums=('SKIP')
 validpgpkeys=('DB997306E3102F11C4E8F5527B26396447AB6DFD') # "Andrey Smirnov <andrey.smirnov@talos-systems.com>"
 
