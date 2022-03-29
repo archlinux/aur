@@ -25,5 +25,5 @@ build() {
 
 package() {
     cd "$srcdir/wayfire-firedecor"
-	meson install -C build
+	sudo meson install -C build
 }
