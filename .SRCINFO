@@ -8,7 +8,6 @@ pkgbase = bottles
 	makedepends = meson
 	makedepends = ninja
 	depends = lib32-gnutls
-	depends = gtksourceview3
 	depends = gtksourceview4
 	depends = hicolor-icon-theme
 	depends = dconf
