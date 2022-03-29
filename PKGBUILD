@@ -1,8 +1,7 @@
 # Maintainer: Ben <bensongsyz@gmail.com>
 pkgname='wudao-dict-git'
-_pkgname='Wudao-dict'
 pkgver=r18.caceb83
-pkgrel=1
+pkgrel=2
 pkgdesc='The command line version of Youdao Dictionary, supporting English-Chinese mutual search and online search.'
 arch=('any')
 url="https://github.com/ChestnutHeng/Wudao-dict"
@@ -10,18 +9,18 @@ license=('unknown')
 depends=('python' 'python-bs4' 'python-lxml')
 install="wudao-dict-git.install"
 makedepends=('git')
-source=('git+https://github.com/ChestnutHeng/Wudao-dict.git'
+source=("$pkgname::git+https://github.com/ChestnutHeng/Wudao-dict"
         'wd')
 md5sums=('SKIP'
-        '7e504991b277c83136466f885626cd7c')
+        '4e61df0c22c14fc8a7a8950a9c42d9d2')
 pkgver() {
-    cd "$_pkgname"
+    cd "$pkgname"
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
     mkdir -p "${pkgdir}/opt"
-    cp -r "./Wudao-dict/wudao-dict" "${pkgdir}/opt/"
+    cp -r "./$pkgname/wudao-dict" "${pkgdir}/opt/"
 
     # 添加系统命令wd
     mkdir -p "${pkgdir}/usr/bin"
