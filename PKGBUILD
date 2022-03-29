@@ -34,7 +34,7 @@ package() {
     mkdir -p "$pkgdir/usr/share/man/man1/"
     mkdir -p "$pkgdir/usr/share/ripasso/"
     install -Dm0644 "$srcdir/$_pkgrelname-release-$pkgver/target/man-page/cursive/ripasso-cursive.1.gz" "$pkgdir/usr/share/man/man1/"
-    install -Dm0555 "$srcdir/$_pkgrelname-release-$pkgver/target/release/ripasso-cursive" "$pkgdir/usr/bin/$_pkgrelname-cursive"
+    install -Dm0755 "$srcdir/$_pkgrelname-release-$pkgver/target/release/ripasso-cursive" "$pkgdir/usr/bin/$_pkgrelname-cursive"
 
     install -Dm0644 "$srcdir/$_pkgrelname-release-$pkgver/target/translations/cursive/de.mo" "$pkgdir/usr/share/ripasso/"
     install -Dm0644 "$srcdir/$_pkgrelname-release-$pkgver/target/translations/cursive/fr.mo" "$pkgdir/usr/share/ripasso/"
