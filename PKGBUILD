@@ -1,7 +1,7 @@
 # Maintainer: Bango88 <fvickers05@gmail.com>
 _npmname=wipeclean
 _npmver=1.1.2
-pkgname=nodejs-wipeclean # All lowercase
+pkgname=wipeclean
 pkgver=1.1.2
 pkgrel=1
 pkgdesc="clean the console in a funny way"

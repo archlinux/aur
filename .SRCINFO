@@ -1,4 +1,4 @@
-pkgbase = nodejs-wipeclean
+pkgbase = wipeclean
 	pkgdesc = clean the console in a funny way
 	pkgver = 1.1.2
 	pkgrel = 1
@@ -11,4 +11,4 @@ pkgbase = nodejs-wipeclean
 	source = https://registry.npmjs.org/wipeclean/-/wipeclean-1.1.2.tgz
 	sha1sums = e1b71f66e7110ddfa6611cf557d8e3385781e677
 
-pkgname = nodejs-wipeclean
+pkgname = wipeclean
