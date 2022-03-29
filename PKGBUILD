@@ -6,9 +6,10 @@
 # The following guidelines are specific to BZR, GIT, HG and SVN packages.
 # Other VCS sources are not natively supported by makepkg yet.
 
-# Maintainer: Cara Salter <cara@devcara.com>
+# Maintainer: Nicholas Novak <34256932+NickyBoy89@users.noreply.github.com>
+# Contributor: Cara Salter <cara@devcara.com>
 pkgname=uxn-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=r954.cf5af02
+pkgver=r1458.47f65c7
 pkgrel=1
 pkgdesc="An assembler and emulator for Uxn"
 arch=('x86_64')
@@ -17,17 +18,15 @@ license=('MIT')
 groups=()
 depends=('sdl2')
 makedepends=('git') # 'bzr', 'git', 'mercurial' or 'subversion'
-provides=("${pkgname%-VCS}")
+provides=('uxnasm' 'uxnemu' 'uxncli')
 conflicts=("${pkgname%-VCS}")
 replaces=()
 backup=()
 options=()
 install=
-source=('uxn::git+https://git.sr.ht/~rabbits/uxn'
-	'build.sh.patch')
+source=('uxn::git+https://git.sr.ht/~rabbits/uxn')
 noextract=()
-md5sums=('SKIP'
-	'1ba98c345b3efbd45964cb74c1cd7baa')
+md5sums=('SKIP')
 
 # Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
 # a description of each element in the source array.
@@ -37,23 +36,20 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-	cd "$srcdir/uxn"
-	patch -i "$srcdir/build.sh.patch"
-}
-
 build() {
 	cd "$srcdir/uxn"
-	./build.sh
-}
 
-check() {
-	cd "$srcdir/uxn"
-	echo "No checks"
+	# Don't run the example projects on build
+	./build.sh --no-run
 }
 
 package() {
 	cd "$srcdir/uxn"
-	mkdir -p "$pkgdir/usr/bin"
-	cp ./bin/uxn* "$pkgdir/usr/bin/"
+
+	# Install the assembler
+	install -vDm 755 bin/uxnasm "$pkgdir/usr/bin/uxnasm"
+
+	# Install both the gui and command line emulators
+	install -vDm 755 bin/uxnemu "$pkgdir/usr/bin/uxnemu"
+	install -vDm 755 bin/uxncli "$pkgdir/usr/bin/uxncli"
 }

@@ -1,17 +1,17 @@
 pkgbase = uxn-git
 	pkgdesc = An assembler and emulator for Uxn
-	pkgver = r954.cf5af02
+	pkgver = r1458.47f65c7
 	pkgrel = 1
 	url = https://100r.co/site/uxn.html
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	depends = sdl2
-	provides = uxn-git
+	provides = uxnasm
+	provides = uxnemu
+	provides = uxncli
 	conflicts = uxn-git
 	source = uxn::git+https://git.sr.ht/~rabbits/uxn
-	source = build.sh.patch
 	md5sums = SKIP
-	md5sums = 1ba98c345b3efbd45964cb74c1cd7baa
 
 pkgname = uxn-git
