@@ -1,6 +1,6 @@
 # Maintainer: Kamack38 <kamack38.biznes@gmail.com>
 pkgname=solve3-cli
-pkgver=1.7.2
+pkgver=1.7.3
 pkgrel=1
 pkgdesc="CLI for solving problems at https://solve.edu.pl/"
 arch=('any')
