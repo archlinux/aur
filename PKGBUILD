@@ -1,7 +1,7 @@
 # Maintainer: McQueen <clear3239@yahoo.com>
 _pkgname=plank-theme-foggy-round
 pkgname=$_pkgname-git
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="Foggy-Round theme for Plank"
 arch=('any')
