@@ -1,7 +1,7 @@
 # Maintainer: Mansour Behabadi <mansour@oxplot.com>
 
 pkgname=pdfrankenstein
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc="PDF Annotator of Nightmares"
 url="https://github.com/oxplot/$pkgname"
@@ -21,6 +21,7 @@ package() {
 	cd "$pkgname"
 	install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm0644 pdfrankenstein.desktop -t "$pkgdir/usr/share/applications/"
+	install -Dm0644 ${pkgname}.desktop -t "$pkgdir/usr/share/applications/"
+	install -Dm0644 icon.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/${pkgname}.svg"
 }
 
