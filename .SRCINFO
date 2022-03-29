@@ -1,0 +1,13 @@
+pkgbase = ctzcls-cups
+	pkgdesc = Citizen Sticker Printers driver for CUPS
+	pkgver = 1.5
+	pkgrel = 1
+	url = https://www.citizen-systems.co.jp/en/printer/download/driver-cups-source/
+	arch = x86_64
+	license = GPL2
+	makedepends = libcups
+	depends = cups
+	source = cups-ctzcls-1.5.tar.bz2::https://www.citizen-systems.co.jp/en/printer/download/driver-cups-source/cups-ctzcls.tar.bz2
+	sha256sums = d3fe19aa253044c383df3a3869c9dac88b0ced374fe42eb24aabfe6a1ff72ff4
+
+pkgname = ctzcls-cups
