@@ -1,0 +1,17 @@
+pkgbase = wayfire-firedecor-git
+	pkgdesc = An advanced window decoration plugin for the wayfire window manager.
+	pkgver = 1.14.b4a4029
+	pkgrel = 1
+	url = https://github.com/AhoyISki/firedecor
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = wayfire-git
+	provides = wayfire-firedecor-git
+	provides = wayfire-firedecor
+	source = git+https://github.com/WayfireWM/wayfire
+	sha256sums = SKIP
+
+pkgname = wayfire-firedecor-git
