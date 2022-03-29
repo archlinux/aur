@@ -5,20 +5,20 @@
 
 _pkgname=libsolv
 pkgname="${_pkgname}-git"
-pkgver=0.7.20.r25.g88bf6ce9
+pkgver=0.7.22.r0.gea114b25
 pkgrel=1
 pkgdesc="Library for solving packages and reading repositories"
 arch=('x86_64')
 url="https://github.com/openSUSE/libsolv"
 license=('custom:BSD')
-depends=('bzip2' 'expat' 'rpm-tools' 'xz' 'zlib' 'zstd' 'zchunk-git')
-makedepends=('git' 'cmake' 'perl' 'python' 'ruby' 'swig')
+depends=('bzip2' 'expat' 'rpm-tools' 'xz' 'zlib' 'zstd')
+makedepends=('cmake' 'perl' 'python' 'ruby' 'swig' 'git')
 optdepends=('perl: for perl bindings'
             'python: for python bindings'
             'ruby: for ruby bindings')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("$_pkgname::git+https://github.com/openSUSE/$_pkgname.git")
+source=("$_pkgname::git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
@@ -60,9 +60,7 @@ build() {
         -DENABLE_SUSEREPO=ON \
         -DENABLE_TCL=OFF \
         -DENABLE_ZSTD_COMPRESSION=ON \
-        -DMULTI_SEMANTICS=ON \
-        -DENABLE_ZCHUNK_COMPRESSION=ON \
-        -DWITH_SYSTEM_ZCHUNK=ON
+        -DMULTI_SEMANTICS=ON
 
   make -C build
 }
