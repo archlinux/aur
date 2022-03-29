@@ -1,6 +1,6 @@
 # Maintainer: Jikstra <jikstra@disroot.org>
 pkgname=deltachat-desktop-git
-pkgver=v1.20.2.r0.g0c548cbd
+pkgver=v1.28.0.r7.g098e20e1
 pkgrel=1
 pkgdesc="A privacy oriented chat application built on e-mail"
 arch=("any")
@@ -9,7 +9,7 @@ license=("GPL")
 depends=('electron')
 makedepends=('npm' 'nodejs' 'git' 'rustup' 'python')
 source=(
-    "deltachat-desktop-git::git://github.com/deltachat/deltachat-desktop.git"
+    "deltachat-desktop-git::git+ssh://git@github.com/deltachat/deltachat-desktop.git"
     "deltachat-desktop.desktop"
     "deltachat-desktop.sh"
 )
