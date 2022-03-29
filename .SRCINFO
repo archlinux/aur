@@ -1,6 +1,6 @@
 pkgbase = aws-cli-v2-bin
 	pkgdesc = Universal Command Line Interface for Amazon Web Services version 2
-	pkgver = 2.4.29
+	pkgver = 2.5.0
 	pkgrel = 1
 	url = https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = aws-cli-v2-bin
 	provides = aws-cli-v2
 	conflicts = aws-cli
 	conflicts = aws-cli-v2
-	source = https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.4.29.zip
-	sha256sums = 56877ef6e007e8c6406e61e5bd1b0dc1b5faa134e324ad05fb777e8204b00ef5
+	source = https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.5.0.zip
+	sha256sums = c1fad34825be68f036b9001efbfc6ed7cfde05c14b830d39c64d20254da92fa4
 
 pkgname = aws-cli-v2-bin
