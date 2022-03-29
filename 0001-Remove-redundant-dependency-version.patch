@@ -1,0 +1,25 @@
+From 8f9bbe8e7461b29dc5a58cefe09e78c59b42c869 Mon Sep 17 00:00:00 2001
+From: Jonathan Birk <jona@jbirk.de>
+Date: Tue, 29 Mar 2022 12:56:07 +0000
+Subject: [PATCH] Remove redundant dependency version
+
+---
+ oeis.cabal | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/oeis.cabal b/oeis.cabal
+index 59c03c9..5d9a0a7 100644
+--- a/oeis.cabal
++++ b/oeis.cabal
+@@ -53,7 +53,7 @@ library
+     Math.OEIS.Types
+ 
+   build-depends:
+-    HTTP    >= 4000.2 && < 4000.4,
++    HTTP    >= 4000.2,
+     base    >= 3 && < 5
+ 
+   if flag(network-uri)
+-- 
+2.35.1
+
