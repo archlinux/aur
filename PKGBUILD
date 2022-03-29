@@ -7,7 +7,7 @@ pkgver=5.1.0
 pkgrel=1
 groups=('tango-controls')
 pkgdesc="This is the Tango CORBA IDL file."
-arch=('any')
+arch=('x86_64' 'armv7h')
 url="https://www.tango-controls.org/"
 license=('GPL3')
 depends=('cmake>=2.8.9')
