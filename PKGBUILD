@@ -6,7 +6,7 @@
 # Maintainer: Tsingv <tsingv@outlook.com>
 pkgname=("omniedge-cli")
 pkgver=0.2.2
-pkgrel=1
+pkgrel=3
 epoch=
 pkgdesc="A reliable and painless connectivity to all your devices in one click."
 arch=("x86_64" "aarch64" "armv7h")
@@ -37,5 +37,6 @@ package() {
     install -d "${pkgdir}/opt/omniedge-cli"
     install -d "${pkgdir}/usr/bin"
     install -D -m 0755 omniedge "${pkgdir}/opt/omniedge-cli/omniedge"
-    ln -sf "${pkgdir}/opt/omniedge-cli/omniedge" "${pkgdir}/usr/bin/omniedge"
+    ln -s /opt/omniedge-cli/omniedge ${pkgdir}/usr/bin/omniedge
+    # I have not idea to use ${pkgdir} twice, only one works fine.
 }

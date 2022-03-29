@@ -1,7 +1,7 @@
 pkgbase = omniedge-cli
 	pkgdesc = A reliable and painless connectivity to all your devices in one click.
 	pkgver = 0.2.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://omniedge.io/
 	arch = x86_64
 	arch = aarch64
