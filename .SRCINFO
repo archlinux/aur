@@ -7,7 +7,7 @@ pkgbase = plank-theme-frost-git
 	license = GPL3
 	makedepends = git
 	depends = plank
-	source = git://github.com/MMcQueenGNU/plank-theme-frost.git
+	source = plank-theme-frost-git::git+https://github.com/MMcQueenGNU/plank-theme-frost.git
 	sha256sums = SKIP
 
 pkgname = plank-theme-frost-git
