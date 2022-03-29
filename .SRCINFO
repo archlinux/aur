@@ -1,13 +1,13 @@
 pkgbase = auto
 	pkgdesc = ArchLinux bootstrap scripts, with optional riced configs for the AutoLinux platform
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://gitlab.com/qYp/AutoLinux
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	depends = dialog
-	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/auto-2.0.1-1-x86_64.pkg.tar.zst
+	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/auto-2.0.2-1-x86_64.pkg.tar.zst
 	sha256sums = 7b2553965f09e959c4ffb7601174e3aa8b10bb8452b0fee8b0744a2d97ff7c00
 
 pkgname = auto

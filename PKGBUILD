@@ -2,7 +2,7 @@
 # ---
 _pkgname=AutoLinux
 pkgname=auto
-pkgver=2.0.1
+pkgver=2.0.2
 pkgrel=1
 pkgdesc='ArchLinux bootstrap scripts, with optional riced configs for the AutoLinux platform'
 arch=(x86_64)
