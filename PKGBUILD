@@ -6,37 +6,29 @@ _name=SimpleSQLite
 
 pkgname=python-simplesqlite
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Simplify SQLite database operations'
 arch=('any')
 url='https://github.com/thombashi/SimpleSQLite'
 license=('MIT')
 depends=(
-  'python>=3.6'
-  'python-dataproperty>=0.50.1'
-  'python-dataproperty<2'
-  'python-mbstrdecoder>=1.0.0'
-  'python-mbstrdecoder<2'
-  'python-pathvalidate>=2.2.2'
-  'python-pathvalidate<3'
-  'python-sqliteschema>=1.2.0'
-  'python-sqliteschema<2'
-  'python-tabledata>=1.1.3'
-  'python-tabledata<2'
-  'python-typepy>=1.1.4'
-  'python-typepy<2')
-makedepends=('python-setuptools')
+  'python-dataproperty'
+  'python-mbstrdecoder'
+  'python-pathvalidate'
+  'python-sqliteschema'
+  'python-tabledata'
+  'python-typepy')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=(
-  'python-pytablereader>=0.28'
-  'python-pytablewriter>=0.50'
-  'python-pytest>=6.0.1'
-  'python-pytest-runner'
+  'python-pytablereader'
+  'python-pytablewriter'
+  'python-pytest'
   'python-dateutil'
   'python-pytz'
   # 'python-path<13'
   ## yes these are required...
-  'python-pytest-md-report>=0.1'
-  'python-pytest-discord>=0.0.7')
+  'python-pytest-md-report'
+  'python-pytest-discord')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
         "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz.asc")
 sha256sums=('f7e862bec5982059e665cc73b6fdb4c8340a1f565ba3497387c3c48f10d43bf8'
@@ -45,20 +37,26 @@ validpgpkeys=('BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367')
 
 build() {
   cd "$_name-$pkgver"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 ## FIXME: pytest pulls path.py<13 because Arch no longer packages this version
 check() {
   cd "$_name-$pkgver"
-  python setup.py pytest
+  PYTHONPATH="$PWD" pytest -x --disable-warnings
 }
 
 package() {
+  export PYTHONHASHSEED=0
   cd "$_name-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  python -m installer --destdir="$pkgdir/" dist/*.whl
+  install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
+
+  local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  ln -s \
+    "$_site/$_name-$pkgver.dist-info/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 # vim: ts=2 sw=2 et:
