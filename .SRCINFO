@@ -1,0 +1,16 @@
+pkgbase = git-grab
+	pkgdesc = A tool to clone git repositories to a standard location organised by domain and path
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/wezm/git-grab
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = rust
+	depends = git
+	depends = gcc-libs
+	options = !lto
+	source = git-grab::git+https://github.com/wezm/git-grab.git#commit=8731d56d336c19f219e534bc4696d3bf11b5fb24
+	b2sums = SKIP
+
+pkgname = git-grab
