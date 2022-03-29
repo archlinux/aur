@@ -10,7 +10,7 @@ depends=('nodejs' 'jre-openjdk-headless')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-md5sums=('SKIP')
+sha256sums=('c8d3eae160a892e32837db3dcae515e843e5383fef52b8141940c8bcf8b6d59f')
 
 package() {
 	npm install -g --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"

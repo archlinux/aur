@@ -11,6 +11,6 @@ pkgbase = solve3-cli
 	depends = jre-openjdk-headless
 	noextract = solve3-cli-1.7.2.tgz
 	source = https://registry.npmjs.org/solve3-cli/-/solve3-cli-1.7.2.tgz
-	md5sums = SKIP
+	sha256sums = c8d3eae160a892e32837db3dcae515e843e5383fef52b8141940c8bcf8b6d59f
 
 pkgname = solve3-cli
