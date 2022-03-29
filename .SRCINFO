@@ -1,7 +1,7 @@
 pkgbase = tbs-firmware
 	pkgdesc = TBS proprietary firmware
 	pkgver = 1.0
-	pkgrel = 6
+	pkgrel = 7
 	url = http://www.tbsdtv.com
 	arch = any
 	license = custom:firmware
@@ -10,4 +10,3 @@ pkgbase = tbs-firmware
 	sha256sums = be47e87a9f9887536ff8f4e97054f36fd1a0891e8cfba1d840c1ca9619143f0e
 
 pkgname = tbs-firmware
-

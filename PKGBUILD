@@ -3,7 +3,7 @@
 
 pkgname=tbs-firmware
 pkgver=1.0
-pkgrel=6
+pkgrel=7
 pkgdesc='TBS proprietary firmware'
 arch=('any')
 url='http://www.tbsdtv.com'
@@ -20,4 +20,7 @@ package() {
 
     # Remove firmware, that is already provided by linux-firmware
     cd "${pkgdir:?}/usr/lib/firmware" && rm -f $(basename -a $(pacman -Qlq linux-firmware))
+
+    echo "Compressing firmware files..."
+    find "${pkgdir}/usr/lib/firmware" -type f -exec xz -C crc32 "{}" \;
 }
