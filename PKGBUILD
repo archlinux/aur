@@ -1,19 +1,18 @@
 # Contributor: dtag <dtag00@gmail.com>
 
 pkgname=ceres-solver
-pkgver=2.0.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="Solver for nonlinear least squares problems"
 arch=('i686' 'x86_64')
 url="http://ceres-solver.org/"
 license=('LGPL')
 makedepends=('cmake')
-depends=('google-glog>=0.3.4' 'eigen>=3.3.0'
+depends=('google-glog>=0.3.5' 'eigen>=3.3.0'
       'suitesparse>=4.4.5')
 optdepends=('openmp')
-source=("http://ceres-solver.org/ceres-solver-2.0.0.tar.gz" "0001-Fix-FindTBB-version-detection-with-TBB-2021.1.1.patch")
-sha256sums=('10298a1d75ca884aa0507d1abb0e0f04800a92871cd400d4c361b56a777a7603'
-            '3995ecc44dd32cd00c5708a85f8fa9ca6d1deb6a354e7bc89f00d94f243bab76')
+source=("http://ceres-solver.org/ceres-solver-2.1.0.tar.gz")
+sha256sums=('f7d74eecde0aed75bfc51ec48c91d01fe16a6bf16bce1987a7073286701e2fc6')
 options=('staticlibs')
 
 _cmakeopts=('-D CMAKE_BUILD_TYPE=Release'
@@ -24,16 +23,11 @@ _cmakeopts=('-D CMAKE_BUILD_TYPE=Release'
             '-D BUILD_EXAMPLES=OFF'
             '-D BUILD_BENCHMARKS=OFF')
 
-prepare() {
-    # apply compile fix for tbb (backported from git repo)
-    patch --directory="$pkgname-$pkgver" --forward --strip=1 --input="$srcdir/0001-Fix-FindTBB-version-detection-with-TBB-2021.1.1.patch"
-}
-
 build() {
   cd $srcdir/$pkgname-$pkgver
   mkdir -p ./build
   cd ./build
-  cmake ${_cmakeopts[@]} ../ -DLIB_SUFFIX=""
+  cmake ${_cmakeopts[@]} ../
   make
 }
 
