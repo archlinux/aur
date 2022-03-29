@@ -68,7 +68,7 @@ _productUrname=${_prams[2]}
 [ -z "$pkgname" ] && pkgname="$(iconv -t ascii//TRANSLIT <(echo $_productRename))"
 pkgname=${pkgname,,}
 pkgname=${pkgname// /-}
-[ -f CEWE.install ] && sed "s/CEWE/$pkgname/" CEWE.install > $pkgname.install
+[ -f CEWE.install -a "$BUILDPKG" != 0 ] && sed "s/CEWE/$pkgname/" CEWE.install > $pkgname.install
 
 conflicts=(cewe-fotowelt cewe-fotobuch cewe-fotoservice cewe-monlivrephoto-fnac cewe-monlivrephoto-fr)
 conflicts=(${conflicts[@]/$pkgname/})
