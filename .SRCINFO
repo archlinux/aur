@@ -1,19 +1,13 @@
 pkgbase = qshutdown
 	pkgdesc = Shutdown your computer
-	pkgver = 1.8.0.0~rc4
+	pkgver = 1.8.0.0~rc8
 	pkgrel = 1
 	url = https://launchpad.net/~hakaishi/+archive/ubuntu/qshutdown
 	arch = x86_64
 	license = custom
 	depends = qt5-tools
-	depends = qt5-quick1
-	depends = qt5-websockets
-	depends = qt5-svg
-	depends = gstreamer0.10-base
-	depends = libxss
-	depends = qt5-imageformats
-	source = http://ppa.launchpad.net/hakaishi/qshutdown/ubuntu/pool/main/q/qshutdown/qshutdown_1.8.0.0~rc4.orig.tar.gz
-	md5sums = fd3112eeef30eb9dd1362196e46775e5
+	depends = qt5-base
+	source = http://ppa.launchpad.net/hakaishi/qshutdown/ubuntu/pool/main/q/qshutdown/qshutdown_1.8.0.0~rc8.orig.tar.gz
+	md5sums = 9a1ab4019361563ca9caac483a62db6b
 
 pkgname = qshutdown
-
