@@ -1,0 +1,17 @@
+pkgbase = flac2pod
+	pkgdesc = Converts your FLAC library to be iPod-ready
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/rwinkhart/flac2pod
+	arch = any
+	license = GPL2
+	depends = python
+	depends = ffmpeg
+	depends = lame
+	depends = rg2sc
+	depends = screen
+	depends = python-mutagen
+	source = https://github.com/rwinkhart/flac2pod/releases/download/v2.0/flac2pod-2.0.tar.xz
+	sha512sums = 452f47cffe6835603a4954c59a4b517ad68c7b564448ce0f0551c56f77202d2300aa27369b82d020548cd2a4594eafc9cdc04a6dfabbfeeb05f7d0b2f41e9afa
+
+pkgname = flac2pod
