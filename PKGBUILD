@@ -2,12 +2,12 @@
 # based on aur electron8-bin: Tom Vincent <http://tlvince.com/contact/>
 
 _projectname=electron
-_major=17
+_major=18
 _pkgname="${_projectname}"
 pkgname="${_pkgname}-bin"
 _pkgver="${_major}.0.0"
 pkgver="${_pkgver/-/.}"
-pkgrel=2
+pkgrel=1
 pkgdesc='Build cross platform desktop apps with web technologies'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url='https://electronjs.org/'
@@ -38,14 +38,14 @@ source_aarch64=(
 	"${pkgname}-chromedriver-${pkgver}-${pkgrel}-aarch64.zip::${_releaseurl}/chromedriver-v${_pkgver}-linux-arm64.zip"
 	"${pkgname}-${pkgver}-${pkgrel}-aarch64.zip::${_releaseurl}/${_projectname}-v${_pkgver}-linux-arm64.zip"
 )
-sha256sums_x86_64=('80b769a5e59b0ac796d6c893a846a42ca7e1cc0fc6e100311c0a07c470ea63c9'
-                   'dc74e28719a79f05dd741cda8c22c2bb164dec178c6d560af085910b37cf000b')
-sha256sums_i686=('fc0d56285a41fbad4ad4f2055f409362720627600de9a5652503bf576793ebb8'
-                 '6f6fe5fa0452e871abe82dbd25d7cf92ab7011995b3b2b15d04d8691ddc9e9de')
-sha256sums_armv7h=('472382b82d96054d390ee0dd7476371bf92766a1d796d5679e8780903f20b47a'
-                   '29b31c5e77d4d6d9e1a4340fdf08c28ae6698ea9e20d636cec8a59dc758815ef')
-sha256sums_aarch64=('103ee0f445dfadc6f2603567e3a3eddd9626b884f444773a021029ab6a072e42'
-                    'e7bf2ec09b8a7018ba417fc670a15594fb8f3e930626485f2423e9a89e2dcbd0')
+sha256sums_x86_64=('15a05442e1b33370ade5ba3c6ef8ed6dd4c3238f699f6863a659e7b1de9a73b7'
+                   '115737fb1e6759bcb9822e642f9457c2ee1ae7c3413dc3f356bf5d15576fec4d')
+sha256sums_i686=('2894f62e55300c289dd9456a81edf8e1fa066654401c21813e3f05a0de5daaff'
+                 '995fd56b0c03abcac575b920092876b85185d3e13d63b2007e8e49f395f64061')
+sha256sums_armv7h=('8752397841ba6274c9e0948d9b56f0d9adf767c49de84026a805615500eb8ce1'
+                   '991c54c875102c1440f45a97509693003c8c5c3f1c69123e0913236396202dba')
+sha256sums_aarch64=('6b4a87f066a2e9b65b447f6bd745389efe8315ab796875cf5311854db64573b6'
+                    'b3c088672deab866b0da85ec02338a3e2c541332a946814b7cd09e9a16cd41d6')
 
 package() {
 	install -dm755 "${pkgdir}/usr/lib/${_pkgname}/"
