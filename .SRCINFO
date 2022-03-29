@@ -1,0 +1,76 @@
+pkgbase = postgresql11
+	pkgdesc = Sophisticated object-relational DBMS
+	pkgver = 11.9
+	pkgrel = 1
+	url = https://www.postgresql.org/
+	arch = x86_64
+	license = custom:PostgreSQL
+	makedepends = krb5
+	makedepends = libxml2
+	makedepends = python
+	makedepends = python2
+	makedepends = perl
+	makedepends = tcl>=8.6.0
+	makedepends = openssl>=1.0.0
+	makedepends = pam
+	makedepends = zlib
+	makedepends = icu
+	makedepends = systemd
+	makedepends = libldap
+	makedepends = clang
+	source = https://ftp.postgresql.org/pub/source/v11.9/postgresql-11.9.tar.bz2
+	source = postgresql-run-socket.patch
+	source = postgresql-perl-rpath.patch
+	source = postgresql-command.patch
+	source = postgresql.service
+	source = postgresql-check-db-dir
+	source = postgresql.sysusers
+	source = postgresql.tmpfiles
+	source = pgenv.sh
+	md5sums = 2d20502cbce1c7531bb69e56f5c5c65a
+	md5sums = 92249e35353927d9f79df66a4101b3fa
+	md5sums = 7d899fe96b0044e120e49bab4205610d
+	md5sums = 2c74b38d3ca580733daaf60d7c564792
+	md5sums = 77f41e79ec546d40b24a46cd646e3c2f
+	md5sums = 848c7c58ac8831fb5323e3446be5afcf
+	md5sums = 2050d34e4dfa05f3c6fe4cd7615eaa4b
+	md5sums = 9f34d430c5ef0ddca8843b58f71c0b3d
+	md5sums = 37bbc58222c61b8e0533eab845ca94f5
+
+pkgname = postgresql11-libs
+	pkgdesc = Libraries for use with PostgreSQL
+	depends = krb5
+	depends = openssl>=1.0.0
+	depends = readline>=6.0
+	depends = zlib
+	depends = libldap
+	provides = postgresql11-client
+	provides = libpq.so
+	provides = libecpg.so
+	provides = libecpg_compat.so
+	provides = libpgtypes.so
+	conflicts = postgresql11-client
+
+pkgname = postgresql11-docs
+	pkgdesc = HTML documentation for PostgreSQL
+	options = docs
+
+pkgname = postgresql11
+	pkgdesc = Sophisticated object-relational DBMS
+	install = postgresql.install
+	depends = postgresql11-libs>=11.9
+	depends = krb5
+	depends = libxml2
+	depends = readline>=6.0
+	depends = openssl>=1.0.0
+	depends = pam
+	depends = icu
+	depends = systemd-libs
+	depends = libldap
+	depends = llvm-libs
+	depends = libxslt
+	optdepends = python2: for PL/Python 2 support
+	optdepends = python: for PL/Python 3 support
+	optdepends = perl: for PL/Perl support
+	optdepends = tcl: for PL/Tcl support
+	options = staticlibs

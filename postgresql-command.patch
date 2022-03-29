@@ -1,0 +1,11 @@
+--- postgresql-11.9/src/backend/commands/collationcmds.c.ori	2020-08-10 23:17:40.000000000 +0200
++++ postgresql-11.9/src/backend/commands/collationcmds.c	2022-03-29 14:33:57.291063452 +0200
+@@ -444,7 +444,7 @@ get_icu_language_tag(const char *localen
+ 	UErrorCode	status;
+ 
+ 	status = U_ZERO_ERROR;
+-	uloc_toLanguageTag(localename, buf, sizeof(buf), TRUE, &status);
++	uloc_toLanguageTag(localename, buf, sizeof(buf), true, &status);
+ 	if (U_FAILURE(status))
+ 		ereport(ERROR,
+ 				(errmsg("could not convert locale name \"%s\" to language tag: %s",

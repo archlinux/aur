@@ -1,0 +1,12 @@
+diff -upr postgresql-11.9/src/include/pg_config_manual.h.orig postgresql-11.9/src/include/pg_config_manual.h
+--- postgresql-11.9/src/include/pg_config_manual.h.orig	2022-03-27 15:53:14.701448511 +0200
++++ postgresql-11.9/src/include/pg_config_manual.h	2022-03-27 16:04:25.334369068 +0200
+@@ -179,7 +179,7 @@
+  * here's where to twiddle it.  You can also override this at runtime
+  * with the postmaster's -k switch.
+  */
+-#define DEFAULT_PGSOCKET_DIR  "/tmp"
++#define DEFAULT_PGSOCKET_DIR  "/run/postgresql"
+ 
+ /*
+  * This is the default event source for Windows event log.

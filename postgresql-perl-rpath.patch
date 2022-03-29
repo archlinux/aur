@@ -1,0 +1,13 @@
+diff -upr postgresql-11.9/src/pl/plperl/GNUmakefile.orig postgresql-11.9/src/pl/plperl/GNUmakefile
+--- postgresql-11.9/src/pl/plperl/GNUmakefile.orig	2022-03-27 16:11:28.482361857 +0200
++++ postgresql-11.9/src/pl/plperl/GNUmakefile	2022-03-27 16:15:57.076855848 +0200
+@@ -55,6 +55,9 @@ endif # win32
+ 
+ SHLIB_LINK = $(perl_embed_ldflags)
+ 
++# Force rpath to be used even though we disable it everywhere else
++SHLIB_LINK += $(rpath)
++
+ REGRESS_OPTS = --dbname=$(PL_TESTDB) --load-extension=plperl  --load-extension=plperlu
+ REGRESS = plperl plperl_lc plperl_trigger plperl_shared plperl_elog plperl_util plperl_init plperlu plperl_array plperl_call plperl_transaction
+ # if Perl can support two interpreters in one backend,
