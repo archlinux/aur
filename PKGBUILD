@@ -2,8 +2,8 @@
 
 _pkgname=pacseek
 pkgname=pacseek-bin
-pkgver=0.1.4
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc='A terminal user interface for searching and installing Arch Linux packages (binary version)'
 arch=('x86_64')
 url="https://github.com/moson-mo/$_pkgname"
@@ -12,11 +12,13 @@ depends=('pacman')
 provides=('pacseek')
 conflicts=('pacseek')
 source=("$url/releases/download/v$pkgver/$_pkgname-linux-x64-v$pkgver.tar.gz"
-		"https://raw.githubusercontent.com/moson-mo/$_pkgname/main/LICENSE"
-		"https://raw.githubusercontent.com/moson-mo/$_pkgname/main/assets/$_pkgname.desktop")
-sha256sums=('1b3c1c790cfcccf7a12c7168b7d893eb49f37378de334965d931009bf60c7156'
+		"https://raw.githubusercontent.com/moson-mo/$_pkgname/v$pkgver/LICENSE"
+		"https://raw.githubusercontent.com/moson-mo/$_pkgname/v$pkgver/assets/$_pkgname.desktop"
+		"https://raw.githubusercontent.com/moson-mo/$_pkgname/v$pkgver/assets/$_pkgname.png")
+sha256sums=('1e79f762fdb6a3606c8f403bf05aa2e70ac1f97dec10811ffbafde581ff7a9c9'
             '8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643'
-            '202144575b7e4830982a4cbe569d3eb50b51410d9dfa1c35203e87795a09bf22')
+            'f0ac9fc9cd0ff0f601dbc21f64ca11d24a68ea157d32904caecc5d0214c9bc5b'
+            '270ac93d5a7e92f8990c48857d772e800ac59cb9a877be8d9c296e6dd42c59e6')
 
 package() {
   # bin
@@ -27,4 +29,7 @@ package() {
 
   # .desktop
   install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/org.moson.$_pkgname.desktop"
+  
+  # icon
+  install -Dm644 "$_pkgname.png" "$pkgdir/usr/share/icons/hicolor/256x256/apps/$_pkgname.png"
 }
