@@ -1,0 +1,13 @@
+pkgbase = python-cmcrameri
+	pkgdesc = A wrapper around Fabio Crameri's perceptually uniform colourmaps for geosciences.
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/callumrollo/cmcrameri/
+	arch = any
+	license = MIT
+	depends = python-numpy
+	depends = python-matplotlib
+	source = python-cmcrameri-1.4.tar.gz::https://github.com/callumrollo/cmcrameri/archive/v1.4.tar.gz
+	sha512sums = 382fe2e4217c16b8f92395fdc901fe7470d453b263c34f00786babeda97d68c3e9f25e5484f9a7d83dfe4fdf656b59b0b398825a20ed08525b1830e257660f6c
+
+pkgname = python-cmcrameri
