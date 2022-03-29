@@ -1,6 +1,6 @@
 pkgbase = madgraph
 	pkgdesc = MadGraph5_aMC@NLO is a framework that aims at providing all the elements necessary for SM and BSM phenomenology
-	pkgver = 3.1.0
+	pkgver = 3.3.2
 	pkgrel = 1
 	url = https://launchpad.net/mg5amcnlo
 	arch = i686
@@ -19,10 +19,9 @@ pkgbase = madgraph
 	optdepends = madgraph-pythia-pgs
 	optdepends = madgraph-pythia8-interface
 	options = !strip
-	source = https://launchpad.net/mg5amcnlo/3.0/3.1.x/+download/MG5_aMC_v3.1.0.tar.gz
+	source = https://launchpad.net/mg5amcnlo/3.0/3.3.x/+download/MG5_aMC_v3.3.2.tar.gz
 	source = mg5_configuration.patch
-	sha256sums = ea14cf6daa5b6c53dba1455c086e762cb8042d342451c9b88b2bde81098bf264
+	sha256sums = d62f020d5b1bf72f654acc96916aba895bdc50f88ad560080f0e63894201ed99
 	sha256sums = 14d418c14b96492be021da194c2f211fcd91e82c4bb04f15c4d95b7dd65656bf
 
 pkgname = madgraph
-

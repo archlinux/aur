@@ -1,7 +1,7 @@
 # Maintainer: ReneganRonin <renegan.ronin@gmail.co>
 
 pkgname=madgraph
-pkgver=3.1.0
+pkgver=3.3.2
 _major=${pkgver%%.*}
 _minor=${pkgver#2.}
 _minor=${_minor%%.*}
@@ -27,10 +27,10 @@ optdepends=(
     'madgraph-pythia-pgs'
     'madgraph-pythia8-interface'
 )
-source=("https://launchpad.net/mg5amcnlo/${_major}.0/${_major}.1.x/+download/MG5_aMC_v${pkgver}.tar.gz"
+source=("https://launchpad.net/mg5amcnlo/${_major}.0/${_major}.3.x/+download/MG5_aMC_v${pkgver}.tar.gz"
 "mg5_configuration.patch"
         )
-sha256sums=('ea14cf6daa5b6c53dba1455c086e762cb8042d342451c9b88b2bde81098bf264'
+sha256sums=('d62f020d5b1bf72f654acc96916aba895bdc50f88ad560080f0e63894201ed99'
             '14d418c14b96492be021da194c2f211fcd91e82c4bb04f15c4d95b7dd65656bf')
 options=("!strip")
 
