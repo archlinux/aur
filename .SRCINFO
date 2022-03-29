@@ -11,7 +11,7 @@ pkgbase = wayfire-firedecor-git
 	depends = wayfire-git
 	provides = wayfire-firedecor-git
 	provides = wayfire-firedecor
-	source = git+https://github.com/WayfireWM/wayfire
+	source = https://github.com/AhoyISki/wayfire-firedecor
 	sha256sums = SKIP
 
 pkgname = wayfire-firedecor-git

@@ -9,7 +9,7 @@ license=('MIT')
 depends=('wayfire-git')
 makedepends=('git' 'meson' 'ninja')
 provides=('wayfire-firedecor-git' 'wayfire-firedecor')
-source=('git+https://github.com/WayfireWM/wayfire')
+source=('https://github.com/AhoyISki/wayfire-firedecor')
 sha256sums=('SKIP')
 
 pkgver() {
