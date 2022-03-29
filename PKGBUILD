@@ -1,7 +1,7 @@
 # Maintainer: Josh Gwosdz <jgwosdz at redhat dot com>
 pkgname=openshift-client-bin
 pkgver=4.10.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Client tools for OpenShift, binary release"
 arch=("x86_64")
 provides=("oc")
