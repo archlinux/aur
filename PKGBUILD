@@ -7,6 +7,7 @@ pkgrel=2
 pkgdesc="Old icons of the FVWM-Project."
 source=("http://www.fvwm.org/generated/icon_download/fvwm_icons-$pkgver.tar.gz")
 source=("ftp://ftp.uk.freebsd.org/pub/OpenBSD/distfiles/fvwm_icons-$pkgver.tar.gz")
+source=("https://github.com/bbidulock/fvwm-icons/releases/download/20070101/fvwm_icons-$pkgver.tar.gz")
 url="http://www.fvwm.org"
 md5sums=('c6d98849680a1c306067aa085519e46c')
 license=("GPL")

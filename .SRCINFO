@@ -5,8 +5,7 @@ pkgbase = fvwm-icons
 	url = http://www.fvwm.org
 	arch = any
 	license = GPL
-	source = ftp://ftp.uk.freebsd.org/pub/OpenBSD/distfiles/fvwm_icons-20070101.tar.gz
+	source = https://github.com/bbidulock/fvwm-icons/releases/download/20070101/fvwm_icons-20070101.tar.gz
 	md5sums = c6d98849680a1c306067aa085519e46c
 
 pkgname = fvwm-icons
-
