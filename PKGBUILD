@@ -6,7 +6,7 @@ pkgname=(${pkgbase} python-${pkgbase})
 _tarver=2.8.0
 _tar="${_tarver}/${pkgbase}-${_tarver}.tar.gz"
 pkgver=${_tarver}
-pkgrel=2
+pkgrel=3
 pkgdesc="Geometry Transformations, Reference Elements and Quadrature Rules"
 arch=('x86_64')
 url="https://dune-project.org/modules/${pkgbase}"
@@ -15,8 +15,7 @@ makedepends=('dune-common>=2.8.0' 'texlive-latexextra' 'doxygen' 'graphviz' 'gnu
 optdepends=('texlive-latexextra: Type setting system'
   'doxygen: Generate the class documentation from C++ sources'
   'graphviz: Graph visualization software'
-  'inkscape: converts SVG images'
-  'python-quadpy: for quadrature rules')
+  'inkscape: converts SVG images')
 source=(https://dune-project.org/download/${_tar}{,.asc})
 sha512sums=('9a531afeefb10dd9e7f2cf9fcb6b61bba01fae323c9e67c47cf387f45a25bae7f2f061d6ffe268bff14fbcbfe8e42c20a57b99794f77cfba5c52b1dea0e5c9e1' 'SKIP')
 validpgpkeys=('ABE52C516431013C5874107C3F71FE0770D47FFB') # Markus Blatt (applied mathematician and DUNE core developer) <markus@dr-blatt.de>

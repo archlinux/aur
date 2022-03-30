@@ -1,7 +1,7 @@
 pkgbase = dune-geometry
 	pkgdesc = Geometry Transformations, Reference Elements and Quadrature Rules
 	pkgver = 2.8.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://dune-project.org/modules/dune-geometry
 	arch = x86_64
 	license = custom:GPL2 with runtime exception
@@ -16,7 +16,6 @@ pkgbase = dune-geometry
 	optdepends = doxygen: Generate the class documentation from C++ sources
 	optdepends = graphviz: Graph visualization software
 	optdepends = inkscape: converts SVG images
-	optdepends = python-quadpy: for quadrature rules
 	source = https://dune-project.org/download/2.8.0/dune-geometry-2.8.0.tar.gz
 	source = https://dune-project.org/download/2.8.0/dune-geometry-2.8.0.tar.gz.asc
 	validpgpkeys = ABE52C516431013C5874107C3F71FE0770D47FFB
