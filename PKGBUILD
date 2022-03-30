@@ -1,7 +1,7 @@
 # Maintainer: Sandy Carter <bwrsandman+aur@gmail.com>
 
 pkgname=bgfx-cmake-git
-pkgver=1.115.8109
+pkgver=1.115.8109.a7ac0aa
 pkgrel=1
 pkgdesc="Cross-platform, graphics API agnostic, \"Bring Your Own Engine/Framework\" style rendering library. (With CMake build scripts)"
 arch=('x86_64')
@@ -23,15 +23,16 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
-  # From bgfx.cpp source:
-  # bgfx 1.104.7082
-  #      ^ ^^^ ^^^^
-  #      | |   +--- Commit number  (https://github.com/bkaradzic/bgfx / git rev-list --count HEAD)
-  #      | +------- API version    (from https://github.com/bkaradzic/bgfx/blob/master/scripts/bgfx.idl#L4)
-  #      +--------- Major revision (always 1)
-  cd "${srcdir}/bgfx"
-  api=`sed '4q;d' scripts/bgfx.idl  | sed 's,version(,,g' | sed 's,),,g'`
-  printf "1.%s.%s" $api "$(git rev-list --count HEAD)"
+  # From bgfx.cpp source and we add the cmake commit sha:
+  # bgfx 1.104.7082.a7ac0aa
+  #      ^ ^^^ ^^^^ ^^^^^^^
+  #      | |   |    +------ bgfx.cmake sha (https://github.com/bkaradzic/bgfx.cmake / git rev-parse --short HEAD)
+  #      | |   +----------- Commit number  (https://github.com/bkaradzic/bgfx / git rev-list --count HEAD)
+  #      | +--------------- API version    (from https://github.com/bkaradzic/bgfx/blob/master/scripts/bgfx.idl#L4)
+  #      +----------------- Major revision (always 1)
+  cd "${srcdir}"
+  api=`sed '4q;d' bgfx/scripts/bgfx.idl  | sed 's,version(,,g' | sed 's,),,g'`
+  printf "1.%s.%s.%s" $api "$(git -C bgfx rev-list --count HEAD)" "$(git -C bgfx.cmake rev-parse --short HEAD)"
 }
 
 prepare() {
