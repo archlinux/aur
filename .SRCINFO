@@ -1,6 +1,6 @@
 pkgbase = appimagepool-appimage
 	pkgdesc = A simple, modern AppImageHub Client, powered by flutter.
-	pkgver = 4.9.9
+	pkgver = 5.0.0
 	pkgrel = 3
 	url = https://github.com/prateekmedia/appimagepool/
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = appimagepool-appimage
 	conflicts = appimagepool
 	noextract = appimagepool-x86_64.AppImage
 	options = !strip
-	source = https://github.com/prateekmedia/appimagepool/releases/download/4.9.9/appimagepool-x86_64.AppImage
-	sha1sums = 2aa849bd82dbf6bcc88e9b2e9eee18c3f5cdb9b3
+	source = https://github.com/prateekmedia/appimagepool/releases/download/5.0.0/appimagepool-5.0.0-x86_64.AppImage
+	sha1sums = cabaa92cfdb5b788bb080282271f93cd9c81080a
 
 pkgname = appimagepool-appimage
