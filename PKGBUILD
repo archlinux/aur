@@ -3,7 +3,7 @@ _srcname=clasp
 _qlver=2021-02-13
 pkgname=clasp-cl
 pkgname=clasp-cl-git
-pkgver=0.4.2.r5028.g298d96103
+pkgver=1.0.0.r8.gd0bbdb1f8
 pkgrel=1
 pkgdesc="Bringing Common Lisp and C++ Together"
 arch=('x86_64')
@@ -14,9 +14,9 @@ depends=('boost' 'expat' 'gmp' 'libbsd' 'libedit' 'clang' 'zeromq'
          'libelf' 'libffi' 'llvm' 'netcdf' 'ncurses' 'zlib')
 makedepends=('git' 'python' 'sbcl')
 provides=('cclasp-boehm' 'common-lisp' 'clasp-cl' 'cando')
-source=('git://github.com/clasp-developers/clasp.git'
-        'git://github.com/clasp-developers/seqan-clasp.git'
-        'git://github.com/cando-developers/cando.git'
+source=('git+https://github.com/clasp-developers/clasp.git'
+        'git+https://github.com/clasp-developers/seqan-clasp.git'
+        'git+https://github.com/cando-developers/cando.git'
         "https://github.com/quicklisp/quicklisp-client/archive/refs/tags/version-$_qlver.tar.gz"
         'wscript.config'
         'clasp.sh')
@@ -43,7 +43,6 @@ build() {
   cd "$_srcname/"
   cp ../wscript.config .
   sed -i s/\"--link-static\",//g wscript
-  sed -i "s/# CLANG_LIBRARIES = \[ 'clang-cpp' \]/CLANG_LIBRARIES = \[ 'clang-cpp' \]/g" wscript
   sed -i s/stlib/lib/g extensions/cando/wscript
   sed -i s/STLIB/LIB/g extensions/cando/wscript
   ./waf configure --enable-jupyter
