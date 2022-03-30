@@ -1,0 +1,18 @@
+pkgbase = shibalba-ex-amp-bin
+	pkgdesc = Audio Assault 2 Channel Boutique Amp Sim Next Generation
+	pkgver = 22.03.30
+	pkgrel = 1
+	url = https://audioassault.mx/products/shibalba
+	arch = x86_64
+	groups = pro-audio
+	groups = vst-plugins
+	groups = vst3-plugins
+	license = EULA
+	makedepends = xdg-user-dirs
+	makedepends = unzip
+	depends = libcurl-gnutls
+	depends = glibc
+	source = Shibalba EX Amp.desktop
+	sha256sums = b49c9c48300a0755f44df6885fe919048f95f701b6ae4af39bddc0661ff9c606
+
+pkgname = shibalba-ex-amp-bin
