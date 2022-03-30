@@ -4,21 +4,22 @@
 
 pkgname=python-bidi
 pkgver=0.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc="BIDI algorithm related functions"
 url="https://github.com/MeirKriheli/python-bidi"
-license=('LGPL3')
-arch=('any')
-depends=('python')
+license=(LGPL3)
+arch=(any)
+depends=(python)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 source=("https://github.com/MeirKriheli/python-bidi/archive/v${pkgver}/python-bidi-${pkgver}.tar.gz")
 sha256sums=('937295ce1369a329fabd6152be4212d6a4d80d6c278846580eabde0c1dd33077')
 
 build() {
   cd python-bidi-${pkgver}
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd python-bidi-${pkgver}
-  python setup.py install --skip-build --root="$pkgdir" --prefix=/usr --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
