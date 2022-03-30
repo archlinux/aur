@@ -1,6 +1,6 @@
 # Maintainer: Vladimir Sandomirskii <complover116 at gmail dot com>
 pkgname=cvmconfigurator-git
-pkgver=0.5.4.r6.g81df217
+pkgver=0.8.2.r0.g890fbeb
 pkgrel=1
 pkgdesc="A configuration utility for managing CVMEngine versions"
 arch=('any')
@@ -14,8 +14,8 @@ optdepends=(
 	"android-sdk-cmdline-tools-latest: Android support"
 	"android-sdk-platform-tools: Android support"
 )
-provides=()
-conflicts=()
+provides=("cvmconfigurator-git")
+conflicts=("cvmconfigurator-git")
 replaces=()
 backup=()
 options=()
@@ -29,7 +29,7 @@ build() {
 	cd "$pkgname"
 	export PATH="/usr/lib/jvm/java-11-openjdk/bin/:$PATH"
 	./gradlew createProperties
-	./gradlew proguard
+	./gradlew jar
 }
 
 pkgver() {
@@ -42,7 +42,7 @@ package() {
 	mkdir -p "$pkgdir"/usr/bin
 	install --mode=755 cvmconfigurator "$pkgdir"/usr/bin/cvmconfigurator
 	cd "$pkgname"
-	mv build/libs/*-mini.jar cvmconfigurator.jar
+	mv build/libs/*.jar cvmconfigurator.jar
 	mkdir -p "$pkgdir"/usr/share/java/cvmconfigurator/
 	install cvmconfigurator.jar "$pkgdir"/usr/share/java/cvmconfigurator/cvmconfigurator.jar
 }

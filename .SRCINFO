@@ -1,6 +1,6 @@
 pkgbase = cvmconfigurator-git
 	pkgdesc = A configuration utility for managing CVMEngine versions
-	pkgver = 0.5.4.r6.g81df217
+	pkgver = 0.8.2.r0.g890fbeb
 	pkgrel = 1
 	url = https://gitlab.com/cvmproject/cvmconfigurator
 	arch = any
@@ -10,6 +10,8 @@ pkgbase = cvmconfigurator-git
 	optdepends = android-sdk-build-tools: Android support
 	optdepends = android-sdk-cmdline-tools-latest: Android support
 	optdepends = android-sdk-platform-tools: Android support
+	provides = cvmconfigurator-git
+	conflicts = cvmconfigurator-git
 	source = cvmconfigurator-git::git+https://gitlab.com/cvmproject/cvmconfigurator.git
 	source = cvmconfigurator
 	sha256sums = SKIP
