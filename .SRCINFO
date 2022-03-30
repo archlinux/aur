@@ -1,0 +1,15 @@
+pkgbase = twoinone
+	pkgdesc = Software built to allow convertible 2 in 1s to switch between operation modes manually
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://github.com/lirannl/twoinone
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = rust
+	depends = sudo
+	depends = bash
+	source = git+https://github.com/lirannl/twoinone.git#tag=1.2
+	sha256sums = SKIP
+
+pkgname = twoinone
