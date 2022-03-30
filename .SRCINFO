@@ -32,7 +32,7 @@ pkgbase = libpamac-full
 	conflicts = libpamac-full-dev
 	options = !emptydirs
 	source = git+https://gitlab.manjaro.org/applications/libpamac.git
-	sha256sums = 8f05c025934756f77a1a8f00e3ae5abb710fda078876f8e44e0b300fd49d1347
+	sha256sums = SKIP
 
 pkgname = libpamac-full
 	backup = etc/pamac.conf
