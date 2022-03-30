@@ -2,7 +2,7 @@
 
 pkgname=dokku
 pkgver=0.27.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
 arch=('any')
 url='https://github.com/dokku/dokku'
@@ -79,7 +79,7 @@ package() {
 
   # Install executable and license
   install -Dm755 "${pkgname}-${pkgver}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm755 hostname "${pkgdir}/usr/bin/${pkgname}/hostname"
+  install -Dm755 hostname "${pkgdir}/usr/bin/hostname"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Move all files in place
