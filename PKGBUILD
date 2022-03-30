@@ -2,9 +2,9 @@
 
 pkgname=cider-git
 _pkgname=Cider
-pkgver=1.3.0.2754.3b707a33
+pkgver=1.4.0
 pkgrel=1
-pkgdesc="Project Cider. A new look into listening and enjoying music in style and performance. Built from the ground up with vue.js and electron. Compiled from the GitHub repositories develop branch."
+pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Compiled from the GitHub repositories develop branch."
 arch=("armv7h" "i686" "x86_64")
 url="https://github.com/CiderApp/${_pkgname}.git"
 license=("GPL")
