@@ -1,7 +1,7 @@
 pkgbase = openafs-modules-dkms
 	pkgdesc = Kernel module for OpenAFS (dkms)
 	pkgver = 1.8.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openafs.org
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,17 @@ pkgbase = openafs-modules-dkms
 	options = !emptydirs
 	source = http://openafs.org/dl/openafs/1.8.8.1/openafs-1.8.8.1-src.tar.bz2
 	source = dkms.conf
+	source = 0001-Add-autoconf-archive-to-src-external.patch
+	source = 0002-Import-of-code-from-autoconf-archive.patch
+	source = 0003-Use-autoconf-archive-m4-from-src-external.patch
+	source = 0004-Linux-5.17-kernel-func-complete_and_exit-renamed.patch
+	source = 0005-Linux-5.17-Kernel-build-uses-Wcast-function-type.patch
 	sha256sums = e7c4bed7075bcd6402e3f0c2d5b9dbe76ad2ee3c5fd5ddc3973a3356ca23ef44
 	sha256sums = 5ea5e184f9b44f5ed45817d2b5a10149d15c8c54f49e0b5b4b773652673cb9b0
+	sha256sums = 67bad31f8a401f1fa4e851a1f8d2d772f6649573f81045cafae94c105bbff173
+	sha256sums = 16ced06d3d4ffffa251e20aecd1ccb3fedb4585617b004b8ade0b4eab603b17d
+	sha256sums = 3b2aa3343fe4b9401b272fcf0252f4c3f108f1a1e5039718de38b803690c9d74
+	sha256sums = c9623eac1e8faf2be133d69c6146eb68be800de0c3226acd99848348b5bfd2f4
+	sha256sums = 17c71196bf5f1fc1c62bab8f03a102d7ca75fec56de94390851b10bd27efa3e9
 
 pkgname = openafs-modules-dkms
