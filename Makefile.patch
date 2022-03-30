@@ -1,0 +1,41 @@
+diff --git a/Makefile b/Makefile
+index 31c9b99..d444c28 100644
+--- a/Makefile
++++ b/Makefile
+@@ -4,9 +4,9 @@ AR ?= ar
+ VERSION = 2.1.0
+ PACKAGE = libCello-$(VERSION)
+ 
+-BINDIR = ${PREFIX}/bin
+-INCDIR = ${PREFIX}/include
+-LIBDIR = ${PREFIX}/lib
++BINDIR = ${DESTDIR}/${PREFIX}/bin
++INCDIR = ${DESTDIR}/${PREFIX}/include
++LIBDIR = ${DESTDIR}/${PREFIX}/lib
+ 
+ SRC := $(wildcard src/*.c)
+ OBJ := $(addprefix obj/,$(notdir $(SRC:.c=.o)))
+@@ -18,7 +18,7 @@ EXAMPLES := $(wildcard examples/*.c)
+ EXAMPLES_OBJ := $(addprefix obj/,$(notdir $(EXAMPLES:.c=.o)))
+ EXAMPLES_EXE := $(EXAMPLES:.c=)
+ 
+-CFLAGS = -I ./include -std=gnu99 -Wall -Wno-unused -g -ggdb
++CFLAGS ?= -I ./include -std=gnu99 -Wall -Wno-unused -g -ggdb
+ 
+ PLATFORM := $(shell uname)
+ COMPILER := $(shell $(CC) -v 2>&1 )
+@@ -104,11 +104,9 @@ else
+ 	else
+ 		CFLAGS += -DCELLO_NSTRACE
+ 	endif
+-  
+-	INSTALL_LIB = mkdir -p ${LIBDIR} && cp -f ${STATIC} ${LIBDIR}/$(STATIC)
+-	INSTALL_INC = mkdir -p ${INCDIR} && cp -r include/Cello.h ${INCDIR}
+-	UNINSTALL_LIB = rm -f ${LIBDIR}/$(STATIC)
+-	UNINSTALL_INC = rm -f ${INCDIR}/Cello.h
++
++	INSTALL_LIB = install -D ${DYNAMIC} -t ${LIBDIR}
++	INSTALL_INC = install -Dm644 include/Cello.h -t ${INCDIR}
+ endif
+ 
+ # Libraries
