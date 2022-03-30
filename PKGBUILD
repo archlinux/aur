@@ -1,40 +1,36 @@
+# Maintainer: Thorben Günther <echo YWRtaW5AeGVucm94Lm5ldAo= | base64 -d>
+
 pkgname=hut
-pkgver=r161.f6e3d65
+pkgver=0.1.0
 pkgrel=1
-pkgdesc='A CLI tool for sr.ht'
-arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
-url="https://git.sr.ht/~emersion/hut"
-license=('AGPLv3')
-makedepends=('go' 'git' 'scdoc')
-source=("git+https://git.sr.ht/~emersion/hut")
-sha256sums=('SKIP')
+pkgdesc='A CLI tool for sr.ht (sourcehut)'
+arch=('x86_64' 'aarch64')
+url='https://sr.ht/~emersion/hut'
+license=('AGPL3')
+makedepends=('go' 'scdoc')
+source=("https://git.sr.ht/~emersion/${pkgname}/refs/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"{,.sig})
+sha256sums=('0b1ec695fa670f5df9594e4fdfc51b2e62f16797c5ef9ab27283310badd6f065'
+            'SKIP')
+validpgpkeys=('34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48')
 
-pkgver() {
-  cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
-prepare(){
-  cd "$pkgname"
-  mkdir -p build/
+check() {
+    cd "$srcdir/$pkgname-$pkgver"
+    go test ./...
 }
 
 build() {
-  cd "$pkgname"
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-  make all
-}
+    cd "$srcdir/$pkgname-$pkgver"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-check() {
-  cd "$pkgname"
-  go test ./...
+    make -e
 }
 
 package() {
-  cd "$pkgname"
-  make DESTDIR="$pkgdir/" PREFIX=/usr/ install
+    cd "$srcdir/$pkgname-$pkgver"
+    make PREFIX=/usr DESTDIR=$pkgdir install
 }
