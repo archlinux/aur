@@ -1,0 +1,13 @@
+pkgbase = plymouth-theme-arch-charge-gdm-spinner
+	pkgdesc = A Plyouth theme based on Fedora's Charge theme, but featuring the ArchLinux logo. Based on sjmcdougall's Arch Charge theme replaced password prompt with the spinner's theme
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/atahabaki/plymouth-theme-arch-charge-gdm-spinner
+	install = plymouth-theme-arch-charge-gdm-spinner.install
+	arch = any
+	license = GPL
+	depends = plymouth
+	source = https://github.com/atahabaki/plymouth-theme-arch-charge-gdm-spinner/archive/v0.3.1.tar.gz
+	sha512sums = 7c185eb17070d0289ac66e9bd4678e6b812899d92145266569a3de55dcd4164d
+
+pkgname = plymouth-theme-arch-charge-gdm-spinner
