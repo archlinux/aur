@@ -1,19 +1,18 @@
 pkgbase = python-lsp-all
 	pkgver = 1
-	pkgrel = 2
+	pkgrel = 3
 	arch = x86_64
 	depends = python-lsp-server
 	depends = python-lsp-black
 	depends = python-lsp-isort
 	depends = python-lsp-mypy
-	depends = python-pyls-flake8
 	depends = python-rope
 	depends = python-pyflakes
 	depends = python-mccabe
 	depends = python-pycodestyle
 	depends = python-pydocstyle
 	depends = python-pylsp-rope
-	optdepends = autopep8: alternate python formatter
-	optdepends = yapf: alternate python formatter
+	optdepends = flake8: error checking
+	optdepends = python-pylint: linting
 
 pkgname = python-lsp-all
