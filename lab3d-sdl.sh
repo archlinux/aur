@@ -4,7 +4,7 @@ echo "lab3d-sdl 3.0 launcher"
 
 mkdir -p ~/.lab3d-sdl
 
-# hires texture config
+# copy hires texture config to allow changing
 if [ ! -f ~/.lab3d-sdl/wallparams.ini ]; then
   cp /usr/share/lab3d-sdl/wallparams.ini ~/.lab3d-sdl
 fi

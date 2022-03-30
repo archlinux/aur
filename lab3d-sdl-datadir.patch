@@ -1,25 +1,25 @@
-diff -Naur LAB3D-SDL-3.0.old/init.c LAB3D-SDL-3.0/init.c
---- LAB3D-SDL-3.0.old/init.c	2014-01-03 18:08:52.000000000 +0100
-+++ LAB3D-SDL-3.0/init.c	2014-06-04 10:17:18.478710352 +0200
-@@ -49,7 +49,7 @@
+diff --color -Naur LAB3D-SDL-3.0.orig/init.c LAB3D-SDL-3.0/init.c
+--- LAB3D-SDL-3.0.orig/init.c	2019-05-17 06:56:29.000000000 +0200
++++ LAB3D-SDL-3.0/init.c	2022-03-30 17:41:40.169929794 +0200
+@@ -51,7 +51,7 @@
  
-     fprintf(stderr,"Activating video...\n");
+     SDL_ShowCursor(0);
  
 -    icon = SDL_LoadBMP("ken.bmp");
 +    icon = SDL_LoadBMP("/usr/share/lab3d-sdl/ken.bmp");
      if (icon == NULL) {
          fprintf(stderr,"Warning: ken.bmp (icon file) not found.\n");
      }
-@@ -190,7 +190,7 @@
+@@ -191,7 +191,7 @@
  
      if (speechstatus >= 2)
-     {	
+     {
 -        if (((i = open("sounds.kzp",O_BINARY|O_RDONLY,0)) != -1)||
 +        if (((i = open("/usr/share/lab3d-sdl/sounds.kzp",O_BINARY|O_RDONLY,0)) != -1)||
              ((i = open("SOUNDS.KZP",O_BINARY|O_RDONLY,0)) != -1)) {
              fstat(i, &fstats);
              sndsize = (int)(fstats.st_size);
-@@ -206,7 +206,7 @@
+@@ -207,7 +207,7 @@
              fatal_error("Insufficient memory for sound.");
          }
  
@@ -28,7 +28,7 @@ diff -Naur LAB3D-SDL-3.0.old/init.c LAB3D-SDL-3.0/init.c
          if (file==NULL) {
              file=fopen("SOUNDS.KZP","rb");
          }
-@@ -487,7 +487,7 @@
+@@ -488,7 +488,7 @@
              exit(1);
          }
      } else {
@@ -37,9 +37,9 @@ diff -Naur LAB3D-SDL-3.0.old/init.c LAB3D-SDL-3.0/init.c
              ((i = open("BOARDS.KZP",O_RDONLY|O_BINARY,0)) != -1)) {
              readLE16(i,&boleng[0],30*4);
              numboards = 30;
-diff -Naur LAB3D-SDL-3.0.old/oldlab3d.c LAB3D-SDL-3.0/oldlab3d.c
---- LAB3D-SDL-3.0.old/oldlab3d.c	2014-01-03 18:08:52.000000000 +0100
-+++ LAB3D-SDL-3.0/oldlab3d.c	2014-06-04 09:51:10.911984452 +0200
+diff --color -Naur LAB3D-SDL-3.0.orig/oldlab3d.c LAB3D-SDL-3.0/oldlab3d.c
+--- LAB3D-SDL-3.0.orig/oldlab3d.c	2019-05-17 06:56:29.000000000 +0200
++++ LAB3D-SDL-3.0/oldlab3d.c	2022-03-30 17:31:50.090837583 +0200
 @@ -2927,7 +2927,7 @@
      int fil, i, k, textbufcnt, textypos;
  
@@ -49,11 +49,23 @@ diff -Naur LAB3D-SDL-3.0.old/oldlab3d.c LAB3D-SDL-3.0/oldlab3d.c
          if ((fil = open("STORY.KZP",O_BINARY|O_RDONLY,S_IREAD)) == -1)
              return(-1);
      read(fil,&storyoffs[0],256);
-diff -Naur LAB3D-SDL-3.0.old/subs.c LAB3D-SDL-3.0/subs.c
---- LAB3D-SDL-3.0.old/subs.c	2014-01-03 18:08:52.000000000 +0100
-+++ LAB3D-SDL-3.0/subs.c	2014-06-04 09:52:19.618653715 +0200
-@@ -332,7 +332,7 @@
-             exit(1);	
+diff --color -Naur LAB3D-SDL-3.0.orig/setup.c LAB3D-SDL-3.0/setup.c
+--- LAB3D-SDL-3.0.orig/setup.c	2019-05-17 06:56:29.000000000 +0200
++++ LAB3D-SDL-3.0/setup.c	2022-03-30 17:51:57.328520376 +0200
+@@ -1615,7 +1615,7 @@
+         screenwidth=360; screenheight=240;
+     }
+ 
+-    icon = SDL_LoadBMP("ken.bmp");
++    icon = SDL_LoadBMP("/usr/share/lab3d-sdl/ken.bmp");
+     if (icon == NULL) {
+         fprintf(stderr,"Warning: ken.bmp (icon file) not found.\n");
+     }
+diff --color -Naur LAB3D-SDL-3.0.orig/subs.c LAB3D-SDL-3.0/subs.c
+--- LAB3D-SDL-3.0.orig/subs.c	2019-05-17 06:56:29.000000000 +0200
++++ LAB3D-SDL-3.0/subs.c	2022-03-30 17:40:44.387627675 +0200
+@@ -337,7 +337,7 @@
+             exit(1);
          }
      } else {
 -        if (((fil = open("boards.kzp", O_RDONLY|O_BINARY, 0)) != -1)||
@@ -61,7 +73,7 @@ diff -Naur LAB3D-SDL-3.0.old/subs.c LAB3D-SDL-3.0/subs.c
              ((fil = open("BOARDS.KZP", O_RDONLY|O_BINARY, 0)) != -1))
          {
              prepdie = 0;
-@@ -625,7 +625,7 @@
+@@ -629,7 +629,7 @@
  {
      K_INT16 fil;
  
@@ -70,7 +82,7 @@ diff -Naur LAB3D-SDL-3.0.old/subs.c LAB3D-SDL-3.0/subs.c
          ((fil = open("TABLES.DAT", O_RDONLY|O_BINARY, 0)) != -1))
      {
          readLE32(fil, &sintable[0], 8192);
-@@ -1499,7 +1499,7 @@
+@@ -1505,7 +1505,7 @@
  
      }
  
@@ -79,7 +91,7 @@ diff -Naur LAB3D-SDL-3.0.old/subs.c LAB3D-SDL-3.0/subs.c
          ((fil = open("WALLS.KZP", O_RDONLY|O_BINARY, 0)) != -1))
      {
          bmpkind[0] = 0;
-@@ -2761,7 +2761,7 @@
+@@ -2799,7 +2799,7 @@
          }
          if (musicsource == 2)
          {
@@ -88,25 +100,25 @@ diff -Naur LAB3D-SDL-3.0.old/subs.c LAB3D-SDL-3.0/subs.c
                 ((infile=open("INSTS.DAT", O_RDONLY|O_BINARY, 0))==-1))
                  return(-1);
              for(i=0;i<256;i++)
-@@ -2780,7 +2780,7 @@
+@@ -2818,7 +2818,7 @@
              firstime = 0;
          }
      }
--    if (((infile=open("songs.kzp", O_RDONLY|O_BINARY, 0))==-1)&&
-+    if (((infile=open("/usr/share/lab3d-sdl/songs.kzp", O_RDONLY|O_BINARY, 0))==-1)&&
-         ((infile=open("SONGS.KZP", O_RDONLY|O_BINARY, 0))==-1))
+-    if (((infile = open("songs.kzp", O_RDONLY|O_BINARY, 0))==-1)&&
++    if (((infile = open("/usr/share/lab3d-sdl/songs.kzp", O_RDONLY|O_BINARY, 0))==-1)&&
+         ((infile = open("SONGS.KZP", O_RDONLY|O_BINARY, 0))==-1))
          return(-1);
      readLE16(infile, &numfiles, 2);
-@@ -3839,7 +3839,7 @@
+@@ -3870,7 +3870,7 @@
                  return(-1);
          }
      } else {
 -        if (((fil = open("lab3d.kzp", O_RDONLY|O_BINARY, 0)) == -1)&&
 +        if (((fil = open("/usr/share/lab3d-sdl/lab3d.kzp", O_RDONLY|O_BINARY, 0)) == -1)&&
              ((fil = open("LAB3D.KZP", O_RDONLY|O_BINARY, 0)) == -1))
-             return(-1);
+                 return(-1);
      }
-@@ -4427,7 +4427,7 @@
+@@ -4460,7 +4460,7 @@
      K_INT16 fil, i, textbufcnt, textypos;
  
      ototclock = totalclock;
@@ -115,3 +127,418 @@ diff -Naur LAB3D-SDL-3.0.old/subs.c LAB3D-SDL-3.0/subs.c
          ((fil = open("STORY.KZP", O_RDONLY|O_BINARY, 0)) == -1))
          return(-1);
      readLE16(fil, &storyoffs[0], 256);
+diff --color -Naur LAB3D-SDL-3.0.orig/wallparams.ini LAB3D-SDL-3.0/wallparams.ini
+--- LAB3D-SDL-3.0.orig/wallparams.ini	2019-05-17 06:56:29.000000000 +0200
++++ LAB3D-SDL-3.0/wallparams.ini	2022-03-30 17:42:51.601942595 +0200
+@@ -1,31 +1,31 @@
+ [1]
+-src=hires/trans0.png
++src=/usr/share/lab3d-sdl/hires/trans0.png
+ range=64 128
+ 
+ [3]
+-src=hires/trans0.png
++src=/usr/share/lab3d-sdl/hires/trans0.png
+ range=192 256
+ 
+ [7]
+-src=hires/trans1.png
++src=/usr/share/lab3d-sdl/hires/trans1.png
+ range=64 128
+ 
+ [9]
+-src=hires/trans1.png
++src=/usr/share/lab3d-sdl/hires/trans1.png
+ range=192 256
+ 
+ [73]
+-src=hires/kenface.png
++src=/usr/share/lab3d-sdl/hires/kenface.png
+ 
+ [74]
+-src=hires/kenfaceouch.png
++src=/usr/share/lab3d-sdl/hires/kenfaceouch.png
+ 
+ [79]
+-src=hires/goldlock.png
++src=/usr/share/lab3d-sdl/hires/goldlock.png
+ wrap=clamp
+ 
+ [80]
+-src=hires/silverlock.png
++src=/usr/share/lab3d-sdl/hires/silverlock.png
+ wrap=clamp
+ 
+ [81]
+@@ -38,294 +38,294 @@
+ wrap=clamp
+ 
+ [93]
+-src=hires/door2-0.png
++src=/usr/share/lab3d-sdl/hires/door2-0.png
+ 
+ [94]
+-src=hires/door2-1.png
++src=/usr/share/lab3d-sdl/hires/door2-1.png
+ 
+ [95]
+-src=hires/door2-2.png
++src=/usr/share/lab3d-sdl/hires/door2-2.png
+ 
+ [96]
+-src=hires/door2-3.png
++src=/usr/share/lab3d-sdl/hires/door2-3.png
+ 
+ [97]
+-src=hires/door2-4.png
++src=/usr/share/lab3d-sdl/hires/door2-4.png
+ 
+ [98]
+-src=hires/door2-5.png
++src=/usr/share/lab3d-sdl/hires/door2-5.png
+ 
+ [149]
+-src=hires/light.png
++src=/usr/share/lab3d-sdl/hires/light.png
+ shadow=437
+ 
+ [169]
+-src=hires/warp.png
++src=/usr/share/lab3d-sdl/hires/warp.png
+ 
+ [192]
+-src=hires/bul1get.png
++src=/usr/share/lab3d-sdl/hires/bul1get.png
+ shadow=432
+ 
+ [193]
+-src=hires/bul1fly-0.png
++src=/usr/share/lab3d-sdl/hires/bul1fly-0.png
+ shadow=432
+ 
+ [194]
+-src=hires/bul1fly-1.png
++src=/usr/share/lab3d-sdl/hires/bul1fly-1.png
+ shadow=432
+ 
+ [195]
+-src=hires/bul1fly-2.png
++src=/usr/share/lab3d-sdl/hires/bul1fly-2.png
+ shadow=432
+ 
+ [196]
+-src=hires/bul2get.png
++src=/usr/share/lab3d-sdl/hires/bul2get.png
+ shadow=431
+ 
+ [197]
+-src=hires/bul2fly-0.png
++src=/usr/share/lab3d-sdl/hires/bul2fly-0.png
+ shadow=431
+ 
+ [198]
+-src=hires/bul2fly-1.png
++src=/usr/share/lab3d-sdl/hires/bul2fly-1.png
+ shadow=431
+ 
+ [199]
+-src=hires/bul3get.png
++src=/usr/share/lab3d-sdl/hires/bul3get.png
+ shadow=432
+ 
+ [200]
+-src=hires/bul3fly-left-0.png
++src=/usr/share/lab3d-sdl/hires/bul3fly-left-0.png
+ shadow=432
+ 
+ [201]
+-src=hires/bul3fly-left-1.png
++src=/usr/share/lab3d-sdl/hires/bul3fly-left-1.png
+ shadow=432
+ 
+ [202]
+-src=hires/bul3fly-center-0.png
++src=/usr/share/lab3d-sdl/hires/bul3fly-center-0.png
+ shadow=432
+ 
+ [203]
+-src=hires/bul3fly-center-1.png
++src=/usr/share/lab3d-sdl/hires/bul3fly-center-1.png
+ shadow=432
+ 
+ [204]
+-src=hires/bul3fly-right-0.png
++src=/usr/share/lab3d-sdl/hires/bul3fly-right-0.png
+ shadow=432
+ 
+ [205]
+-src=hires/bul3fly-right-1.png
++src=/usr/share/lab3d-sdl/hires/bul3fly-right-1.png
+ shadow=432
+ 
+ [206]
+-src=hires/bul3halfly-0.png
++src=/usr/share/lab3d-sdl/hires/bul3halfly-0.png
+ shadow=432
+ 
+ [207]
+-src=hires/bul3halfly-1.png
++src=/usr/share/lab3d-sdl/hires/bul3halfly-1.png
+ shadow=432
+ 
+ [208]
+-src=hires/emptybulstand.png
++src=/usr/share/lab3d-sdl/hires/emptybulstand.png
+ shadow=432
+ 
+ [209]
+-src=hires/lightning.png
++src=/usr/share/lab3d-sdl/hires/lightning.png
+ shadow=432
+ 
+ [210]
+-src=hires/extralife.png
++src=/usr/share/lab3d-sdl/hires/extralife.png
+ shadow=431
+ 
+ [211]
+-src=hires/getcompass.png
++src=/usr/share/lab3d-sdl/hires/getcompass.png
+ bmpkind=5
+ 
+ [212]
+-src=hires/miniexplosion.png
++src=/usr/share/lab3d-sdl/hires/miniexplosion.png
+ 
+ [213]
+-src=hires/explosion.png
++src=/usr/share/lab3d-sdl/hires/explosion.png
+ 
+ [222]
+-src=hires/bat-0.png
++src=/usr/share/lab3d-sdl/hires/bat-0.png
+ shadow=433
+ 
+ [223]
+-src=hires/bat-1.png
++src=/usr/share/lab3d-sdl/hires/bat-1.png
+ shadow=431
+ 
+ [224]
+-src=hires/bat-2.png
++src=/usr/share/lab3d-sdl/hires/bat-2.png
+ shadow=433
+ 
+ [238]
+-src=hires/bee-0.png
++src=/usr/share/lab3d-sdl/hires/bee-0.png
+ shadow=433
+ 
+ [239]
+-src=hires/bee-1.png
++src=/usr/share/lab3d-sdl/hires/bee-1.png
+ shadow=432
+ 
+ [240]
+-src=hires/bee-2.png
++src=/usr/share/lab3d-sdl/hires/bee-2.png
+ shadow=432
+ 
+ [241]
+-src=hires/bee-3.png
++src=/usr/share/lab3d-sdl/hires/bee-3.png
+ shadow=432
+ 
+ [242]
+-src=hires/bee-4.png
++src=/usr/share/lab3d-sdl/hires/bee-4.png
+ shadow=432
+ 
+ [243]
+-src=hires/bee-5.png
++src=/usr/share/lab3d-sdl/hires/bee-5.png
+ shadow=432
+ 
+ [244]
+-src=hires/spider-0.png
++src=/usr/share/lab3d-sdl/hires/spider-0.png
+ shadow=432
+ 
+ [245]
+-src=hires/spider-1.png
++src=/usr/share/lab3d-sdl/hires/spider-1.png
+ shadow=432
+ 
+ [246]
+-src=hires/spider-2.png
++src=/usr/share/lab3d-sdl/hires/spider-2.png
+ shadow=432
+ 
+ [247]
+-src=hires/spider-3.png
++src=/usr/share/lab3d-sdl/hires/spider-3.png
+ shadow=432
+ 
+ [248]
+-src=hires/spider-4.png
++src=/usr/share/lab3d-sdl/hires/spider-4.png
+ shadow=432
+ 
+ [249]
+-src=hires/spider-5.png
++src=/usr/share/lab3d-sdl/hires/spider-5.png
+ shadow=432
+ 
+ [250]
+ 
+ [267]
+-src=hires/earmonster-0.png
++src=/usr/share/lab3d-sdl/hires/earmonster-0.png
+ shadow=431
+ 
+ [268]
+-src=hires/earmonster-1.png
++src=/usr/share/lab3d-sdl/hires/earmonster-1.png
+ shadow=431
+ 
+ [269]
+-src=hires/earmonster-2.png
++src=/usr/share/lab3d-sdl/hires/earmonster-2.png
+ shadow=431
+ 
+ [270]
+-src=hires/earmonster-3.png
++src=/usr/share/lab3d-sdl/hires/earmonster-3.png
+ shadow=431
+ 
+ [271]
+-src=hires/earmonster-4.png
++src=/usr/share/lab3d-sdl/hires/earmonster-4.png
+ shadow=431
+ 
+ [272]
+ 
+ [277]
+-src=hires/alien.png
++src=/usr/share/lab3d-sdl/hires/alien.png
+ shadow=431
+ 
+ [278]
+-src=hires/alien-hurt.png
++src=/usr/share/lab3d-sdl/hires/alien-hurt.png
+ shadow=431
+ 
+ [284]
+-src=hires/hole.png
++src=/usr/share/lab3d-sdl/hires/hole.png
+ bmpkind=5
+ 
+ [289]
+-src=hires/ghost-0.png
++src=/usr/share/lab3d-sdl/hires/ghost-0.png
+ shadow=433
+ 
+ [290]
+-src=hires/ghost-1.png
++src=/usr/share/lab3d-sdl/hires/ghost-1.png
+ shadow=433
+ 
+ [291]
+-src=hires/ghost-2.png
++src=/usr/share/lab3d-sdl/hires/ghost-2.png
+ shadow=433
+ 
+ [302]
+-src=hires/robot1.png
++src=/usr/share/lab3d-sdl/hires/robot1.png
+ 
+ [303]
+-src=hires/robot2.png
++src=/usr/share/lab3d-sdl/hires/robot2.png
+ 
+ [304]
+-src=hires/robot3.png
++src=/usr/share/lab3d-sdl/hires/robot3.png
+ 
+ [305]
+-src=hires/robot4.png
++src=/usr/share/lab3d-sdl/hires/robot4.png
+ 
+ [306]
+-src=hires/robot5.png
++src=/usr/share/lab3d-sdl/hires/robot5.png
+ 
+ [307]
+-src=hires/robot6.png
++src=/usr/share/lab3d-sdl/hires/robot6.png
+ 
+ [308]
+-src=hires/robot7.png
++src=/usr/share/lab3d-sdl/hires/robot7.png
+ 
+ [309]
+-src=hires/robot8.png
++src=/usr/share/lab3d-sdl/hires/robot8.png
+ 
+ [358]
+-src=hires/kenboss-trans-0.png
++src=/usr/share/lab3d-sdl/hires/kenboss-trans-0.png
+ 
+ [359]
+-src=hires/kenboss-trans-1.png
++src=/usr/share/lab3d-sdl/hires/kenboss-trans-1.png
+ 
+ [360]
+-src=hires/kenboss-trans-2.png
++src=/usr/share/lab3d-sdl/hires/kenboss-trans-2.png
+ 
+ [384]
+-src=hires/bul4fly.png
++src=/usr/share/lab3d-sdl/hires/bul4fly.png
+ shadow=433
+ 
+ [385]
+-src=hires/bul5fly-0.png
++src=/usr/share/lab3d-sdl/hires/bul5fly-0.png
+ shadow=433
+ 
+ [386]
+-src=hires/bul5fly-1.png
++src=/usr/share/lab3d-sdl/hires/bul5fly-1.png
+ shadow=433
+ 
+ [424]
+-src=hires/rainbow.png
++src=/usr/share/lab3d-sdl/hires/rainbow.png
+ range=64 128
+ 
+ [425]
+-src=hires/rainbow.png
++src=/usr/share/lab3d-sdl/hires/rainbow.png
+ range=128 192
+ 
+ [426]
+-src=hires/rainbow.png
++src=/usr/share/lab3d-sdl/hires/rainbow.png
+ range=192 256
+ 
+ [430]
+-src=hires/bigshadow.png
++src=/usr/share/lab3d-sdl/hires/bigshadow.png
+ bmpkind=5
+ 
+ [431]
+-src=hires/smallshadow.png
++src=/usr/share/lab3d-sdl/hires/smallshadow.png
+ bmpkind=5
+ 
+ [432]
+-src=hires/medshadow.png
++src=/usr/share/lab3d-sdl/hires/medshadow.png
+ bmpkind=5
+ 
+ [436]
+-src=hires/lightshadow.png
++src=/usr/share/lab3d-sdl/hires/lightshadow.png
+ bmpkind=5
+ 

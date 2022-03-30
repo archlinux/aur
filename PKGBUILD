@@ -2,26 +2,26 @@
 
 pkgname=lab3d-sdl
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Enhanced port of Ken's Labyrinth with hi-res texture support"
 arch=('i686' 'x86_64')
-url="http://www.jspenguin.org/software/lab3d_sdl/"
+url="https://ktpanda.org/software/lab3d_sdl/"
 license=('GPL')
 depends=('sdl2_image' 'glu')
 source=("http://s3.jspenguin.org/LAB3D-SDL-3.0-src.tar.gz"
         "$pkgname-datadir.patch"
         "$pkgname.sh")
-sha256sums=('9b358dc75054e34c19e442a6af389415b1a2ae06780a1e6b11364467f40a5daf'
-            '03de7ab26787eb64af0e20d00effe79efd924e6395923f58c797a3f725550f88'
-            'bf15793b64711138c0eb23591b93d82df7fb41aed8bceb0d90c8b2a705d0ff73')
+sha256sums=('95351253fe9dae45c6ec95ddbcef895758720789b3076403906154b4bb4dd80f'
+            'dc452ef12fe98b0838e7d2e67f44b83cf5521168d8633dd6fe6a1ebb3c620255'
+            'b1bbc3e16cb5d8846144ddbc22de54fb90b2be04f9116c14727ac6e50857cd6f')
 
 prepare() {
   # patch to change data directory
   patch -Np0 < $pkgname-datadir.patch
-  sed 's|hires/|/usr/share/lab3d-sdl/&|' -i LAB3D-SDL-3.0/wallparams.ini
 }
 
 build() {
+  export CFLAGS="$CFLAGS -fcommon"
   make -C LAB3D-SDL-3.0
 }
 
