@@ -8,7 +8,7 @@
 
 pkgname=firefox-wayland-hg
 _pkgname=firefox
-pkgver=r635306.b898442a9527
+pkgver=r684798.b77de0b524d8
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org (mozilla-unified hg, release branding, targeting wayland)"
 arch=(x86_64)
@@ -31,10 +31,11 @@ _repo=https://hg.mozilla.org/mozilla-unified
 conflicts=('firefox')
 provides=('firefox')
 source=("hg+$_repo#revision=autoland"
-        $_pkgname.desktop $_pkgname-symbolic.svg)
+        $_pkgname.desktop $_pkgname-symbolic.svg bug1762050.diff)
 sha256sums=('SKIP'
             'a9e5264257041c0b968425b5c97436ba48e8d294e1a0f02c59c35461ea245c33'
-            '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797')
+            '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797'
+            'c5f8e7dd7197f3f505875a256d80aefa632f8cfb1f38e6b7748db89eaf3eabd7')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
@@ -127,6 +128,8 @@ END
 
 build() {
   cd mozilla-unified
+
+  patch -Np1 -i "$srcdir/bug1762050.diff"
 
   export MOZ_SOURCE_REPO="$_repo"
   export MOZ_NOSPAM=1
