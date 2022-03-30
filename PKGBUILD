@@ -2,7 +2,7 @@
 
 pkgname=python-cle
 _pkgname="${pkgname#*-}"
-pkgver=9.0.10730
+pkgver=9.1.12332
 pkgrel=1
 pkgdesc="CLE Loads Everything (at least, many binary formats!) and provides a pythonic interface to analyze what they are and what they would look like in memory."
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('python-minidump: minidump'
 			'python-arpy: ar')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('c948668bf72b7f366936a68c139a3021c67e938fb2b6cc7a088ecc2248987ba5')
+sha256sums=('f3980dee9fdcd5c706733f125346fe82224e499dde7be2accbd2eecaa56d5332')
 
 build() {
 	cd "$_pkgname-$pkgver"
