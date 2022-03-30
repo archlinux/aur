@@ -1,6 +1,6 @@
 pkgbase = play.it
 	pkgdesc = Easy way to install games on Linux
-	pkgver = 2.15.0
+	pkgver = 2.15.1
 	pkgrel = 1
 	url = https://www.dotslashplay.it
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = play.it
 	optdepends = icoutils: to manipulate Windows icon files
 	optdepends = innoextract: to extract some Windows installers
 	optdepends = unzip: to extract some archives
-	source = play.it-2.15.0.tar.gz::https://forge.dotslashplay.it/play.it/scripts/-/archive/2.15.0/scripts-2.15.0.tar.gz
-	sha256sums = 600fed39207a3a82699cf45a6d5e57bd76cc0faa72eae761f51f133976b98cea
+	source = play.it-2.15.1.tar.gz::https://forge.dotslashplay.it/play.it/scripts/-/archive/2.15.1/scripts-2.15.1.tar.gz
+	sha256sums = b9053a8dd75387c624024070d40ad5428ce1a82502b0bee53c900f61d90ef561
 
 pkgname = play.it
