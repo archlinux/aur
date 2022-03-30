@@ -1,0 +1,17 @@
+pkgbase = itango
+	pkgdesc = An interactive Tango client.
+	pkgver = 0.1.8
+	pkgrel = 1
+	url = https://github.com/tango-controls/itango
+	arch = x86_64
+	arch = armv7h
+	groups = tango-controls
+	license = GPL3
+	depends = python-pytango>=9.2
+	depends = ipython>=1.0
+	depends = python-qtconsole
+	conflicts = itango-git
+	source = https://gitlab.com/tango-controls/itango/-/archive/0.1.8/itango-0.1.8.tar.gz
+	sha256sums = 29542b148b5e2c8ea95f3b060ec37a4bd0a88d933992fcaca45d9438eabe481c
+
+pkgname = itango
