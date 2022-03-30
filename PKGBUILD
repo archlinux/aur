@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=thiefmd
-pkgver=0.2.4
-_codename=easypdf
+pkgver=0.2.5
+_codename=stability
 pkgrel=1
 pkgdesc="The markdown editor worth stealing. Inspired by Ulysses, based on code from Quilter"
 arch=('x86_64' 'aarch64')
