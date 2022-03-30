@@ -3,7 +3,7 @@
 # Contributor: Patrick Griffis <tingping@tingping.se>
 
 pkgname=xdg-desktop-portal
-pkgver=1.14.1
+pkgver=1.14.2
 pkgrel=1
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://github.com/flatpak/xdg-desktop-portal"
@@ -12,7 +12,7 @@ license=(LGPL)
 depends=(glib2 pipewire fuse3 geoclue2 rtkit systemd)
 makedepends=(python xmlto docbook-xsl git flatpak libportal)
 options=(debug)
-_commit=6e9ab0bfdc82043b4b27b5e4f77da982ac010587  # tags/1.14.1
+_commit=eec57b25a68c10f967f04630515dd74c2bb90624  # tags/1.14.2
 source=("git+https://github.com/flatpak/xdg-desktop-portal#commit=$_commit")
 sha256sums=('SKIP')
 
