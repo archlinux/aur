@@ -1,0 +1,122 @@
+pkgbase = gnome-dynamic-wallpaper
+	pkgdesc = Light and Dark Wallpapers for Gnome 42
+	pkgver = r1.15abbd0
+	pkgrel = 1
+	url = https://github.com/amrosolaiman/Light-and-Dark-Wallpapers-for-Gnome-42
+	arch = any
+	license = unknown
+	depends = gnome-desktop
+	source = https://github.com/amrosolaiman/Light-and-Dark-Wallpapers-for-Gnome-42/archive/refs/heads/main.tar.gz
+	md5sums = SKIP
+
+pkgname = gnome-dynamic-wallpaper-animeroom
+
+pkgname = gnome-dynamic-wallpaper-aura
+
+pkgname = gnome-dynamic-wallpaper-carvan
+
+pkgname = gnome-dynamic-wallpaper-catherineroom
+
+pkgname = gnome-dynamic-wallpaper-coast
+
+pkgname = gnome-dynamic-wallpaper-corporationhall
+
+pkgname = gnome-dynamic-wallpaper-corporationstreet
+
+pkgname = gnome-dynamic-wallpaper-desertpeak
+
+pkgname = gnome-dynamic-wallpaper-desertsands
+
+pkgname = gnome-dynamic-wallpaper-deserttree
+
+pkgname = gnome-dynamic-wallpaper-desertvalley
+
+pkgname = gnome-dynamic-wallpaper-dome
+
+pkgname = gnome-dynamic-wallpaper-dynamicfry
+
+pkgname = gnome-dynamic-wallpaper-externalhimitsuhouse
+
+pkgname = gnome-dynamic-wallpaper-firewatch
+
+pkgname = gnome-dynamic-wallpaper-firewatch2
+
+pkgname = gnome-dynamic-wallpaper-focalfossa
+
+pkgname = gnome-dynamic-wallpaper-fuji
+
+pkgname = gnome-dynamic-wallpaper-globe
+
+pkgname = gnome-dynamic-wallpaper-groovygorilla
+
+pkgname = gnome-dynamic-wallpaper-himitsuhouse
+
+pkgname = gnome-dynamic-wallpaper-hirsuithippo
+
+pkgname = gnome-dynamic-wallpaper-hirsuithippoblue
+
+pkgname = gnome-dynamic-wallpaper-kagomeroom
+
+pkgname = gnome-dynamic-wallpaper-lakeside
+
+pkgname = gnome-dynamic-wallpaper-lakesidedeer
+
+pkgname = gnome-dynamic-wallpaper-lakethecliff
+
+pkgname = gnome-dynamic-wallpaper-lofialex
+
+pkgname = gnome-dynamic-wallpaper-lofidino
+
+pkgname = gnome-dynamic-wallpaper-lofigirl
+
+pkgname = gnome-dynamic-wallpaper-materialmountains
+
+pkgname = gnome-dynamic-wallpaper-minimalmojave
+
+pkgname = gnome-dynamic-wallpaper-mojave
+
+pkgname = gnome-dynamic-wallpaper-monterey
+
+pkgname = gnome-dynamic-wallpaper-plasticbeach
+
+pkgname = gnome-dynamic-wallpaper-riverside
+
+pkgname = gnome-dynamic-wallpaper-rock
+
+pkgname = gnome-dynamic-wallpaper-rocknegy
+
+pkgname = gnome-dynamic-wallpaper-rockscketto
+
+pkgname = gnome-dynamic-wallpaper-stevenuniverse
+
+pkgname = gnome-dynamic-wallpaper-thebeach
+
+pkgname = gnome-dynamic-wallpaper-thedesert
+
+pkgname = gnome-dynamic-wallpaper-thelake
+
+pkgname = gnome-dynamic-wallpaper-tokyostreet
+
+pkgname = gnome-dynamic-wallpaper-viragegy
+
+pkgname = gnome-dynamic-wallpaper-viragharom
+
+pkgname = gnome-dynamic-wallpaper-viragnegy
+
+pkgname = gnome-dynamic-wallpaper-win11lake
+
+pkgname = gnome-dynamic-wallpaper-windows111
+
+pkgname = gnome-dynamic-wallpaper-windows112
+
+pkgname = gnome-dynamic-wallpaper-windows113
+
+pkgname = gnome-dynamic-wallpaper-wiravketto
+
+pkgname = gnome-dynamic-wallpaper-loficity
+
+pkgname = gnome-dynamic-wallpaper-hills
+
+pkgname = gnome-dynamic-wallpaper-chromeosearth
+
+pkgname = gnome-dynamic-wallpaper-deadtree
