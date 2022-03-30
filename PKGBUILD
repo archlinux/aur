@@ -1,6 +1,6 @@
 # Maintainer: Robin Candau <robincandau at protonmail dot com>
 pkgname=arch-update
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc="A clickeable icon that automatically changes to act as an update notifier/applier"
 arch=('any')
@@ -11,7 +11,7 @@ optdepends=('yay: AUR support'
 	    'libnotify: Desktop notification support'
 	   )
 source=($url/raw/main/$pkgname.tar.gz)
-sha256sums=(4d00fcb6c8f7dbceb9b97be2b2f190d59a5774c65978719db6daa75068ba8a8c)
+sha256sums=(f5c1434671adb085f188f965097cf391bbc09711e6039cd774f460f999e3a254)
 
 package() {
   
