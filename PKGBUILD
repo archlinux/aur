@@ -35,10 +35,10 @@ build() {
         -DCMAKE_BUILD_TYPE=Release  \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DAUTOUPDATE=OFF            \
-	-DHEADLESS_CLIENT=ON        \
-	-DCURSES_CLIENT=ON          \
-	-DVULKAN=OFF                \
-	-DSERVER=OFF                \
+        -DHEADLESS_CLIENT=ON        \
+        -DCURSES_CLIENT=ON          \
+        -DVULKAN=OFF                \
+        -DSERVER=OFF                \
         -DANTIBOT=OFF               \
         -DVIDEORECORDER=OFF         \
         -DUPNP=ON                   \
@@ -52,7 +52,6 @@ check() {
 }
 
 package() {
-	echo "$pkgdir"
     DESTDIR="$pkgdir" ninja install -C build
 }
 
