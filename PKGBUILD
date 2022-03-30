@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/galenguyer/hancock'
 license=('MIT')
 makedepends=('git' 'go')
-source=('git+https://github.com/galenguyer/hancock')
+source=('git+https://github.com/galenguyer/hancock-go')
 sha256sums=('SKIP')
 
 pkgver() {
