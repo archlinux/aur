@@ -1,16 +1,22 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=pypyr
-pkgver=5.2.0
+pkgver=5.3.0
 pkgrel=1
 pkgdesc="Task runner for automation pipelines"
 arch=('any')
 url="https://pypyr.io"
 license=('Apache')
-depends=('python' 'python-dateutil' 'python-ruamel-yaml' 'python-tomli' 'python-tomli-w')
+depends=(
+  'python'
+  'python-dateutil'
+  'python-ruamel-yaml'
+  'python-tomli'
+  'python-tomli-w'
+)
 makedepends=('git' 'python-setuptools')
 checkdepends=('python-pytest' 'python-pyfakefs')
-_commit='a095209e5ed238044bb0a196a2a6905deb12c244'
+_commit='94d7f62c7ef97b672387f14cda29ab6511dc4d43'
 source=("$pkgname::git+https://github.com/pypyr/pypyr.git#commit=$_commit")
 b2sums=('SKIP')
 
