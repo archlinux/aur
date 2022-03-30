@@ -1,0 +1,12 @@
+pkgbase = plank-theme-monterey-dim
+	pkgdesc = Monterey Dim Theme for Plank
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://www.pling.com/p/1718565
+	arch = any
+	license = GPL3
+	depends = plank
+	source = https://github.com/MMcQueenGNU/plank-theme-monterey-dim/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 4c277160f0d93c58af4e7663a6030425a371863a389d53b48d15bc01fce069d5
+
+pkgname = plank-theme-monterey-dim
