@@ -11,7 +11,7 @@ depends=('plymouth')
 
 install='plymouth-theme-arch-charge-gdm-spinner.install'
 source=("https://github.com/atahabaki/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('7c185eb17070d0289ac66e9bd4678e6b812899d92145266569a3de55dcd4164d')
+sha512sums=('dda2aae20b00d2dcfd2d9959f8fb159acabc3ff0dfc94b81c03a94d9e86643e5c66b04b9a3eaef2afad66dfad83ce9b7f3b589089ff24234887f18bbf95835d3')
 
 package() {
     cd $srcdir/$pkgname-$pkgver/src
