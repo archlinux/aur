@@ -1,7 +1,7 @@
 # Maintainer: DigitOtter <digitotter@protonmail.com>
 pkgname=obs-scene-tree-view-git
 pkgver=v0.0.2.r2.g6177aaf
-pkgrel=2
+pkgrel=3
 pkgdesc="Scene Tree Folder plugin for OBS Studio"
 arch=( 'any' )
 url='https://github.com/DigitOtter/obs_scene_tree_view.git'
@@ -11,16 +11,16 @@ depends=( 'obs-studio' )
 makedepends=( 'qt5-base' 'git' 'cmake' 'gcc' )
 provides=( 'obs-scene-tree-view' )
 conflicts=(  'obs-scene-tree-view' )
-source=( "${pkgname}-${pkgver}::git+https://github.com/DigitOtter/obs_scene_tree_view.git#branch=master" )
+source=( "${pkgname}::git+https://github.com/DigitOtter/obs_scene_tree_view.git#branch=master" )
 sha256sums=( 'SKIP' )
 
 pkgver() {
-  cd "${pkgname}-${pkgver}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    cd "${pkgname}"
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cmake -B build -S "${pkgname}-${pkgver}" \
+    cmake -B build -S "${pkgname}" \
         -DCMAKE_BUILD_TYPE='Release' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -Wno-dev
