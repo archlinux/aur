@@ -1,7 +1,7 @@
 # Maintainer: Josesk Volpe <joseskvolpe at gmail dot com>
 pkgname=winegui-bin
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A user-friendly WINE manager"
 arch=('x86_64')
 url="https://gitlab.melroy.org/melroy/winegui"
@@ -19,10 +19,6 @@ conflicts=('winegui')
 provides=('winegui')
 source=("$pkgname-$pkgver.tar.gz::https://winegui.melroy.org/downloads/WineGUI-v$pkgver.tar.gz")
 md5sums=('da49671f22cc2ffb350111fce9c0335d')
-
-prepare(){
-	chmod +x WineGUI-v$pkgver/share/applications/*
-}
 
 package() {
 	mkdir $pkgdir/usr
