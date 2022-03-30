@@ -10,7 +10,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-xdg
-pkgver=99.0.4844.51
+pkgver=99.0.4844.84
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=3
@@ -27,7 +27,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kdialog: support for native dialogs in Plasma'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: support for storing passwords in KWallet on Plasma')
-options=('!lto') # Chromium adds its own flags for ThinLTO
+options=('debug' '!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
@@ -39,7 +39,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         use-oauth2-client-switches-as-default.patch
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch)
-sha256sums=('97c52e57eca0dc8b752d274047f38c88aaa86036c0587b26b056efbd3fb2bae3'
+sha256sums=('20ec184ed34bdc7e660ccf6c007b2db37007de423b3a5a51698a96aa29527515'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             '9cd2570e92e9bfeff3faf0d5b56334535cb2313f99ab0d9019b74d18ae1c7d0a'
             'edf4d973ff197409d319bb6fbbaa529e53bc62347d26b0733c45a116a1b23f37'
@@ -53,11 +53,11 @@ sha256sums=('97c52e57eca0dc8b752d274047f38c88aaa86036c0587b26b056efbd3fb2bae3'
 provides=('chromium')
 conflicts=('chromium')
 source=(${source[@]}
-        $pkgname-$pkgver-1.tar.gz::https://github.com/Eloston/ungoogled-chromium/archive/$pkgver-1.tar.gz
+        ${pkgname%-*}-$pkgver-1.tar.gz::https://github.com/Eloston/ungoogled-chromium/archive/$pkgver-1.tar.gz
         chromium-drirc-disable-10bpc-color-configs.conf
         wayland-egl.patch)
 sha256sums=(${sha256sums[@]}
-            '8aa65f6d96cb1400b83092adab9a64e0d81a7f12bd6ee5e2b090d2d9407e645d'
+            'ac0a9d041e70779e624a521387976ad9f5d825085583aa88a980bd57339c81a6'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             '34d08ea93cb4762cb33c7cffe931358008af32265fc720f2762f0179c3973574')
 
@@ -173,6 +173,7 @@ build() {
     'custom_toolchain="//build/toolchain/linux/unbundle:default"'
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
     'is_official_build=true' # implies is_cfi=true on x86_64
+    'symbol_level=0' # sufficient for backtraces on x86(_64)
     'disable_fieldtrial_testing_config=true'
     'blink_enable_generated_code_formatting=false'
     'ffmpeg_branding="Chrome"'
@@ -187,10 +188,6 @@ build() {
 
   if [[ -n ${_system_libs[icu]+set} ]]; then
     _flags+=('icu_use_data_file=false')
-  fi
-
-  if check_option strip y; then
-    _flags+=('symbol_level=0')
   fi
 
   # Append ungoogled chromium flags to _flags array
@@ -209,9 +206,6 @@ build() {
   # Let Chromium set its own symbol level
   CFLAGS=${CFLAGS/-g }
   CXXFLAGS=${CXXFLAGS/-g }
-  # -fvar-tracking-assignments is not recognized by clang
-  CFLAGS=${CFLAGS/-fvar-tracking-assignments}
-  CXXFLAGS=${CXXFLAGS/-fvar-tracking-assignments}
 
   # https://github.com/ungoogled-software/ungoogled-chromium-archlinux/issues/123
   CFLAGS=${CFLAGS/-fexceptions}
@@ -240,8 +234,8 @@ package() {
   cd "$srcdir/chromium-$pkgver"
 
   install -D out/Release/chrome "$pkgdir/usr/lib/chromium/chromium"
+  install -D out/Release/chromedriver "$pkgdir/usr/bin/chromedriver"
   install -Dm4755 out/Release/chrome_sandbox "$pkgdir/usr/lib/chromium/chrome-sandbox"
-  ln -s /usr/lib/chromium/chromedriver "$pkgdir/usr/bin/chromedriver"
 
   install -Dm644 ../chromium-drirc-disable-10bpc-color-configs.conf \
     "$pkgdir/usr/share/drirc.d/10-$pkgname.conf"
@@ -270,7 +264,6 @@ package() {
     chrome_100_percent.pak
     chrome_200_percent.pak
     chrome_crashpad_handler
-    chromedriver
     resources.pak
     v8_context_snapshot.bin
 
