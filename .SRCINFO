@@ -1,6 +1,6 @@
 pkgbase = gdm-settings-git
 	pkgdesc = A settings app for Gnome's Login Manager (GDM)
-	pkgver = 0.4+13+gf6943d6
+	pkgver = 0.4+16+g76ca8e6
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/realmazharhussain/gdm-settings
@@ -14,6 +14,7 @@ pkgbase = gdm-settings-git
 	depends = libadwaita
 	depends = glib2
 	depends = python-gobject
+	depends = gettext
 	provides = gdm-settings
 	conflicts = gdm-settings
 	source = gdm-settings-git::git+https://github.com/realmazharhussain/gdm-settings
