@@ -9,6 +9,7 @@ arch=('x86_64')
 url='https://github.com/orangeduck/cello'
 license=('BSD')
 depends=('glibc')
+provides=('libCello.so')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         'Makefile.patch')
 sha256sums=('c138d974325fcb9640307c8b2d5dcc2d7127a1ccc5589d6c0794f86a5cb4001d'

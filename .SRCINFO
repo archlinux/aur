@@ -6,6 +6,7 @@ pkgbase = libcello
 	arch = x86_64
 	license = BSD
 	depends = glibc
+	provides = libCello.so
 	source = libcello-2.1.0.tar.gz::https://github.com/orangeduck/cello/archive/2.1.0.tar.gz
 	source = Makefile.patch
 	sha256sums = c138d974325fcb9640307c8b2d5dcc2d7127a1ccc5589d6c0794f86a5cb4001d
