@@ -1,5 +1,5 @@
 pkgname=bgfx-git
-pkgver=r7631.741028840
+pkgver=1.115.8109
 pkgrel=1
 pkgdesc="Cross-platform, graphics API agnostic, \"Bring Your Own Engine/Framework\" style rendering library."
 arch=('x86_64')
@@ -11,14 +11,22 @@ makedepends=('git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 
-source=('git://github.com/bkaradzic/bx.git'
-        'git://github.com/bkaradzic/bimg.git'
-        'git://github.com/bkaradzic/bgfx.git')
+source=('git+https://github.com/bkaradzic/bx.git'
+        'git+https://github.com/bkaradzic/bimg.git'
+        'git+https://github.com/bkaradzic/bgfx.git')
 sha256sums=('SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
+  # From bgfx.cpp source:
+  # bgfx 1.104.7082
+  #      ^ ^^^ ^^^^
+  #      | |   +--- Commit number  (https://github.com/bkaradzic/bgfx / git rev-list --count HEAD)
+  #      | +------- API version    (from https://github.com/bkaradzic/bgfx/blob/master/scripts/bgfx.idl#L4)
+  #      +--------- Major revision (always 1)
   cd "${srcdir}/${pkgname%-git}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  api=`sed '4q;d' scripts/bgfx.idl  | sed 's,version(,,g' | sed 's,),,g'`
+  printf "1.%s.%s" $api "$(git rev-list --count HEAD)"
+
 }
 
 build() {
