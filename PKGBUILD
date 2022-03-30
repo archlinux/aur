@@ -67,7 +67,7 @@ _subarch=36
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=5.16.14
+pkgver=5.17.1
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
@@ -76,40 +76,32 @@ license=(GPL2)
 makedepends=(bc kmod libelf pahole cpio xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick git)
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=090e351b2dec14d731eecefc0cfb7cf63adb59f1
-_prjc_version=5.16
+_arch_config_commit=cb8242a510d80d4e58215a639053fa61954e1b9d
+_prjc_version=5.17
 _prjc_patch="prjc_v${_prjc_version}.patch"
-_gcc_more_v=20211114
+_gcc_more_v=20220315
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   "${pkgbase}-${pkgver}-config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   # "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
-  "${_prjc_patch}::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/5.16/prjc-patches-v5/0001-PRJC-for-5.16.patch"
+  "${_prjc_patch}::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/5.17/prjc-patches/0001-PRJC-for-5.17.patch"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/a659d0be0fc3a8d22bfe47866edbafb2b3923bcd.patch"
-  "0002-${pkgbase}-${pkgver}-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch::https://github.com/archlinux/linux/commit/4f4f67972c3eebe79ca17953d99431483805504d.patch"
-  "0003-${pkgbase}-${pkgver}-Bluetooth-Read-codec-capabilities-only-if-supported.patch::https://github.com/archlinux/linux/commit/91e5c6912123d6662027701ba9c544ddf6ee5037.patch"
-  "0004-${pkgbase}-${pkgver}-Bluetooth-fix-deadlock-for-RFCOMM-sk-state-change.patch::https://github.com/archlinux/linux/commit/edb83ca507f526c98ce58f9fa0b8c70f7e59923a.patch"
-  "0005-${pkgbase}-${pkgver}-mt76-mt7921-add-support-for-PCIe-ID-0x0608-0x0616.patch::https://github.com/archlinux/linux/commit/8db9007df1e4d2f78f60ea0377e6171c9c5a8d53.patch"
-  "0006-${pkgbase}-${pkgver}-mt76-mt7921-reduce-log-severity-levels-for-inform.patch::https://github.com/archlinux/linux/commit/1fd43ed60a4eb27e69da692079d2bdb10a3cd694.patch"
-  "0007-${pkgbase}-${pkgver}-Revert-NFSv4.1-query-for-fs_location-attr-on-a-ne.patch::https://github.com/archlinux/linux/commit/7430fab4ee31790ab832d6fbfff97623e84094f2.patch"
+  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/ba9638ad03df373965160a5bdb4173b544381767.patch"
+  "0002-${pkgbase}-${pkgver}-random-treat-bootloader-trust-toggle-the-same-way-as.patch::https://github.com/archlinux/linux/commit/22365749abd27f2cb582a049da42b7c7a02b6bfe.patch"
+  "0003-${pkgbase}-${pkgver}-Revert-swiotlb-rework-fix-info-leak-with-DMA_FROM_DEVICE.patch::https://github.com/archlinux/linux/commit/29f850827951966fefbea50555995775129f9516.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('151fa2d87c04de862913c360fb8bdb4d2cf4cbc7ca9777b97ee3f03005e8d5ef72b307fa5787ae53157291773158bca6b499cb1e71f6dc5098f424e15ff6c948'
+b2sums=('1275903955f014d0a0b4cad9074710d36825b274814cde457cf9e1f9acc188b21da7de01100f99cfe9644fb7fd182a95257d124a6992ac3be47adb907e230616'
         'SKIP'
-        'f37b180eac2737e7398654c9cf2d3b0ee93b194804d22827ad776a605692ddc098cba8ca7ba7dc2f2959cabc4eca92c73cdacbfa34182fdb98ab9199f161b5c4'
-        '7932b36b7a63ac28371030dfe1f75be8c6dd83b0ea6d5e29375b64ab99ed570e1a41940834cbcb9aa7ee9a6f656f498a0e23c3e6752478265955188c7c35e298'
-        '534091fb5034226d48f18da2114305860e67ee49a1d726b049a240ce61df83e840a9a255e5b8fa9279ec07dd69fb0aea6e2e48962792c2b5367db577a4423d8d'
-        '673290cf6b146d1788a7b761108a22dae94536e7a6e31102497c991cb717b1f0d2e2e967138300dce5df2ff718301902f60dc023bcc32f81fe14d2e519bccf0b'
-        '37b1b717f8f667f569598a38d88c906b1700f2fd0f950451146acd7e9d74fc3206af74e87accb1d21bef4524f43ac404f2483c6f070ee915d4c50eb2ec9715d2'
-        'a4e4058ae4feefc8893f5f8559697dbc02af1b6c2b196fd517cb71850afa5641d1c05f6c6d3d493ba09f6efa5b1cca5837b7ccda8f431bcbd5ec15009dd5e36b'
-        '63edd9256a7e7f313d1856428e5a8c0874cf92c55ef1b8a1d55eb9e573079c99037e5d34636240911f6e7ef1004cfb9a8b9a3cfe97f4d8ec936b1e544abfe756'
-        'c6c50ba63d89401610bda4cabfa21f40ee459f8945b3e18bc3066e99b145037c4376eeb91f093f736de1234e18fe598b91fc8a412a322627c682463ae6363f8c'
-        '3ec17e9f4f560fc0f889dfeb78feffef52784b6e4b32b6be7a79b25c0e33d773fa3d48524ec1208aaafcadf46fb1e89d8c65dc422caa53dcf068da1b5d1b8f24'
-        'bb41a470287eb213c82c188eb57d946a864c881adae10614957edfa0718c5ec6cc6cc7835b4f6b2f0c8b24d9cc98dedd3293a59dcebb5bb389006ef8fb2dabf8')
+        '0f3943f9700848e5cd46e2c4d18cb53bc025ccc54dbc415bf1b522dc554ab43a58a81d479408fc69a27f2606e05b32d1060c1585c00994d3d5d1f77558071d25'
+        '9555d019912e0c9fc1a89acddfeb31bb35df806a81afcdf4386d8d32a4852a62010e8e9e16fae068a6985058de8fa59c96a8ce6772c8b0377170bbd952dfb76c'
+        '20674a8fcc0a85726e06460a7dbccfe731c46bf377cc3bf511b7591175e7df892f271bc1909e77d9a02913c753d241493502c5ab15d9f78e95f31aa4399c2c27'
+        'a52e0335832daea76ecbbbb04b24706f9b7ffc7438ea632720520e2b46b50886cdd50422f31cdd0555dfc2e5974359ab97646d1dd5575547b95fc77ca1322f8e'
+        '13ca9b46187a5d52bf8b7c6d7c4dafc6caeb1614c85dee19f480e35ab8b03250722be2bc3442b351a17815efd27d8a8a1f785406fb111ff73973d149daef9c4f'
+        '98b4fcc7731648571535d1500f2e250241fd8b7054dbefd49aafa5efe1943fa9f639683f755e8dc2c463ede289ff75adb949e63e8ccf58fd36e0248f182dc7d2')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
@@ -169,7 +161,7 @@ prepare() {
   # https://github.com/graysky2/kernel_gcc_patch
   # make sure to apply after olddefconfig to allow the next section
   echo "Patching to enable GCC optimization for other uarchs..."
-  patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.15+.patch"
+  patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.17+.patch"
 
   if [ -n "$_subarch" ]; then
     # user wants a subarch so apply choice defined above interactively via 'yes'
