@@ -1,12 +1,12 @@
 pkgbase = python-archinfo
 	pkgdesc = A collection of classes that contain architecture-specific information.
-	pkgver = 9.0.10730
+	pkgver = 9.1.12332
 	pkgrel = 1
 	url = https://github.com/angr/archinfo
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	source = https://files.pythonhosted.org/packages/source/a/archinfo/archinfo-9.0.10730.tar.gz
-	sha256sums = 7ae1d034ca69f355204ace2de889bad6604deb8012f5086e2427292d91da4699
+	source = https://files.pythonhosted.org/packages/source/a/archinfo/archinfo-9.1.12332.tar.gz
+	sha256sums = ea3e45a96ab15d29225f9bd6c254738f9f00d5c2aa8293cf9db7aff98c355060
 
 pkgname = python-archinfo
