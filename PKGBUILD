@@ -2,14 +2,14 @@
 
 pkgname=ashuffle
 pkgver=3.13.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic library-wide shuffle for mpd."
 url="https://github.com/joshkunz/ashuffle"
 arch=(x86_64 i686 armv6h armv7h aarch64)
 license=(MIT)
 
-depends=("libmpdclient" "yaml-cpp")
-makedepends=("meson" "abseil-cpp>=20211102.0" "gtest>=1.10")
+depends=("libmpdclient" "yaml-cpp" "abseil-cpp>=20211102.0")
+makedepends=("meson" "gtest>=1.10")
 
 source=(
   "https://github.com/joshkunz/ashuffle/archive/v${pkgver}/ashuffle-${pkgver}.tar.gz"
