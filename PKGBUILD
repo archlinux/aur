@@ -1,6 +1,6 @@
 # Maintainer: Youngjae Lee <ls4154.lee@gmail.com>
 pkgname=naver-whale-stable
-pkgver=3.13.131.36
+pkgver=3.14.133.20
 pkgrel=1
 pkgdesc="The web browser from NAVER"
 arch=("x86_64")
@@ -20,9 +20,9 @@ options=('!emptydirs' '!strip')
 source=("http://repo.whale.naver.com/stable/deb/pool/main/n/naver-whale-stable/naver-whale-stable_${pkgver}-1_amd64.deb"
 	"naver-whale-stable.sh"
         "LICENSE.html")
-sha256sums=("81e1f80843a6597f1512d3cd127f00074a946a9c9130009918ecafa472e2a0a8"
+sha256sums=("501cccafdd9e1bea2ce4d40b0ee64c02c81683d7f2c64692682e5500817c2bd1"
 	"11522689f4c94ea86bc7e50feb48c6b823cb3cdb7bb04b565a0db2f12d25d9a5"
-        "ed82f8f83c93cbd468395cc80e3be7beb8a3f18bdf5770f165c348c15f7e5e84")
+	"ed82f8f83c93cbd468395cc80e3be7beb8a3f18bdf5770f165c348c15f7e5e84")
 
 package() {
 	bsdtar -xf data.tar.xz -C "${pkgdir}/"
