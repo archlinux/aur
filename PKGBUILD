@@ -9,9 +9,7 @@ url="https://github.com/puddletag/${_pkgname}"
 license=('GPL3')
 arch=('any')
 depends=('python-configobj'
-         'python-lxml'
          'python-mutagen'
-         'python-pillow'
          'python-pyparsing'
          'python-pyqt5'
          'qt5-svg')
@@ -20,7 +18,9 @@ makedepends=('git'
              'python-installer'
              'python-setuptools'
              'python-wheel')
-optdepends=('chromaprint: AcoustID support' 
+optdepends=('chromaprint: AcoustID support'
+            'python-levenshtein: faster duplicate matching'
+            'python-lxml: additional tag sources' 
             'quodlibet: QuodLibet library support')
 provides=('puddletag')
 conflicts=('puddletag')
