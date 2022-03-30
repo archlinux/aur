@@ -1,6 +1,6 @@
 pkgbase = freeplane-git
 	pkgdesc = A Java mindmapping tool
-	pkgver = 1.9.x.b78bf34db
+	pkgver = 1.10.x.f4142b05d
 	pkgrel = 1
 	url = https://github.com/freeplane/freeplane.git
 	arch = any
@@ -9,13 +9,13 @@ pkgbase = freeplane-git
 	makedepends = gradle
 	makedepends = ttf-opensans
 	makedepends = fontconfig
-	makedepends = jdk11-openjdk
-	depends = java-environment=11
+	makedepends = jdk-openjdk
+	depends = java-environment
 	depends = desktop-file-utils
 	provides = freeplane
 	conflicts = freeplane
-	source = git+https://github.com/freeplane/freeplane.git#branch=1.9.x
-	source = freeplane.desktop::https://raw.githubusercontent.com/freeplane/freeplane/1.9.x/freeplane/src/editor/resources/linux/freeplane.desktop
+	source = git+https://github.com/freeplane/freeplane.git#branch=1.10.x
+	source = freeplane.desktop::https://raw.githubusercontent.com/freeplane/freeplane/1.10.x/freeplane/src/editor/resources/linux/freeplane.desktop
 	source = freeplane.run
 	sha256sums = SKIP
 	sha256sums = SKIP

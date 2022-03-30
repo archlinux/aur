@@ -1,18 +1,18 @@
-# Maintainer: Leonidas Spyropoulos (artafinde at gmail dot com)
+# Maintainer: Leonidas Spyropoulos (artafinde at archlinux dot org)
 # Contributor: scrawler@gmail.com
 
 pkgname=freeplane-git
-_NEXT_VERSION=1.9.x
-pkgver=1.9.x.b78bf34db
+_NEXT_VERSION=1.10.x
+pkgver=1.10.x.f4142b05d
 pkgrel=1
 pkgdesc="A Java mindmapping tool"
 arch=('any')
 url="https://github.com/freeplane/freeplane.git"
 license=('GPL')
-makedepends=('git' 'gradle' 'ttf-opensans' 'fontconfig' 'jdk11-openjdk')
+makedepends=('git' 'gradle' 'ttf-opensans' 'fontconfig' 'jdk-openjdk')
 conflicts=('freeplane')
 provides=('freeplane')
-depends=('java-environment=11' 'desktop-file-utils')
+depends=('java-environment' 'desktop-file-utils')
 source=("git+https://github.com/freeplane/freeplane.git#branch=${_NEXT_VERSION}"
         "freeplane.desktop::https://raw.githubusercontent.com/freeplane/freeplane/${_NEXT_VERSION}/freeplane/src/editor/resources/linux/freeplane.desktop"
         "freeplane.run")
@@ -29,7 +29,7 @@ pkgver() {
 
 build() {
   cd "${pkgname%-*}"
-  export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+  export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
   export PATH="${JAVA_HOME}/bin:${PATH}"
   gradle -Dorg.gradle.daemon=false build
 }
