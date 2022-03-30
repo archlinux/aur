@@ -3,14 +3,14 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 _name=PDAL
 pkgname=pdal-git
-pkgver=2.3RC1.r156.g26cc5e10d
-pkgrel=2
+pkgver=2.4.0.r2.ge63f88829
+pkgrel=3
 pkgdesc="A C++ library for translating and manipulating point cloud data."
 arch=('x86_64')
 url="http://www.pdal.io"
 license=('BSD')
 depends=('gdal' 'geos' 'libgeotiff')
-makedepends=('cmake' 'git' 'sqlite' 'pcl')
+makedepends=('cmake' 'git' 'sqlite')
 optdepends=('libxml2: for using the database drivers'
             'sqlite: for the sqlite plugin'
             'tiledb: for the TileDB plugin'
