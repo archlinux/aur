@@ -1,10 +1,13 @@
 pkgbase = mipsel-elf-binutils
 	pkgdesc = A collection of binary tools for baremetal MIPS.
 	pkgver = 2.37
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.gnu.org/software/binutils/
 	arch = x86_64
 	license = GPL
+	checkdepends = dejagnu
+	checkdepends = debuginfod
+	checkdepends = bc
 	source = https://ftp.gnu.org/gnu/binutils/binutils-2.37.tar.xz
 	sha256sums = 820d9724f020a3e69cb337893a0b63c2db161dadcb0e06fc11dc29eb1e84a32c
 
