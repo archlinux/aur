@@ -1,0 +1,13 @@
+pkgbase = awesome-layout-machi-git
+	pkgdesc = AwesomeWM manual layout with an interactive editor
+	pkgver = r202.e413822
+	pkgrel = 1
+	url = https://github.com/xinhaoyuan/layout-machi
+	arch = any
+	license = Apache2.0
+	makedepends = git
+	depends = awesome
+	source = git+https://github.com/xinhaoyuan/layout-machi.git
+	md5sums = SKIP
+
+pkgname = awesome-layout-machi-git
