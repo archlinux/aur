@@ -6,7 +6,6 @@ pkgbase = gdm-settings
 	arch = any
 	license = AGPL3
 	checkdepends = appstream
-	makedepends = git
 	makedepends = meson
 	makedepends = blueprint-compiler-git
 	makedepends = gobject-introspection
