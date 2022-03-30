@@ -1,13 +1,13 @@
 pkgbase = pillager
 	pkgdesc = Pillage filesystems for sensitive information with Go
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://github.com/brittonhayes/pillager
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = go
-	source = git+https://github.com/brittonhayes/pillager.git#commit=b7ed81a0fc4dd771dff5a7f9e3b7bf16be50213f
+	source = git+https://github.com/brittonhayes/pillager.git#commit=eb653b7495155f14f51012e25556b3877f7ffd6d
 	md5sums = SKIP
 
 pkgname = pillager
