@@ -1,0 +1,18 @@
+pkgbase = color-scheme-simulator-git
+	pkgdesc = A quick portal implementation + GUI to test the upcoming dark style preference
+	pkgver = r10.2c3452f
+	pkgrel = 1
+	url = https://gitlab.gnome.org/exalm/color-scheme-simulator
+	install = color-scheme-simulator-git.install
+	arch = x86_64
+	license = GPL3
+	makedepends = meson
+	makedepends = git
+	makedepends = vala
+	makedepends = libadwaita
+	depends = xdg-desktop-portal
+	optdepends = libadwaita: for GUI
+	source = git+https://gitlab.gnome.org/exalm/color-scheme-simulator.git
+	md5sums = SKIP
+
+pkgname = color-scheme-simulator-git

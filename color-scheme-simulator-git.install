@@ -1,0 +1,7 @@
+post_install() {
+	echo Please run \"systemctl --user restart xdg-desktop-portal\" after install
+}
+
+post_remove() {
+	echo Please run \"systemctl --user restart xdg-desktop-portal\" and \"killall xdg-desktop-portal-impatience\" after removal
+}
