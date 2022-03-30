@@ -1,0 +1,16 @@
+pkgbase = python-textual-git
+	pkgdesc = TUI (Text User Interface) framework for Python inspired by modern web development.
+	pkgver = 365.f702d1a
+	pkgrel = 1
+	url = https://github.com/willmcgugan/textual
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-pip
+	makedepends = python-poetry
+	depends = python-rich
+	depends = python-pyfiglet
+	source = git+https://github.com/Textualize/textual.git
+	md5sums = SKIP
+
+pkgname = python-textual-git
