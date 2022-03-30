@@ -1,7 +1,7 @@
 pkgbase = yandex-browser
 	pkgdesc = The web browser from Yandex. Yandex Browser is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier.
-	pkgver = 22.1.3.916_1
-	pkgrel = 6
+	pkgver = 22.1.3.942_1
+	pkgrel = 1
 	url = https://browser.yandex.com/
 	install = yandex-browser.install
 	arch = x86_64
@@ -26,7 +26,6 @@ pkgbase = yandex-browser
 	depends = wget
 	depends = xdg-utils
 	depends = polkit
-	depends = libldap
 	depends = dbus-glib
 	depends = python
 	optdepends = speech-dispatcher
@@ -35,7 +34,7 @@ pkgbase = yandex-browser
 	optdepends = ttf-font
 	optdepends = cryptopro-csp-k1
 	options = !strip
-	source = yandex-browser-22.1.3.916_1.deb::http://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-browser-stable/yandex-browser-stable_22.1.3.916-1_amd64.deb
-	sha256sums = dba7387e9db285a6b01332f34454cf9fcba71465236c353140aec6d73b495a5a
+	source = yandex-browser-22.1.3.942_1.deb::http://repo.yandex.ru/yandex-browser/deb/pool/main/y/yandex-browser-stable/yandex-browser-stable_22.1.3.942-1_amd64.deb
+	sha256sums = fc43ae40b66d9c7b355b34991a1177afcc81e4dd597dfb118ad9ab8b3cad4203
 
 pkgname = yandex-browser
