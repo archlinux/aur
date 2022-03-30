@@ -1,28 +1,28 @@
 # Maintainer: Joris Steyn <jorissteyn@gmail.com>
 # Contributor: AndreasBWagner
 # Contributor: Bernhard Walle <bernhard.walle@gmx.de>
+
 pkgname=libmrss
 pkgver=0.19.2
-pkgrel=3
+pkgrel=4
 pkgdesc="C library for parsing, writing and creating RSS/ATOM files or streams"
-url="http://www.autistici.org/bakunin/libmrss/"
-license=("LGPL2")
-depends=('curl' 'libnxml')
-arch=('i686' 'x86_64')
-options=('!libtool')
-source=("http://www.autistici.org/bakunin/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('a6f66b72898d27270e3a68007f90d62b')
+url='https://github.com/bakulf/libmrss'
+license=('LGPL2.1')
+depends=('libcurl.so' 'libnxml')
+arch=('x86_64')
+changelog=CHANGELOG
+source=("$pkgname-$pkgver.tar.gz::https://www.autistici.org/bakunin/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('071416adcae5c1a9317a4a313f2deb34667e3cc2be4487fb3076528ce45b210b')
 
 build() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd "$pkgname-$pkgver"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir"/$pkgname-$pkgver
+  cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
 }
 
 # vim:set ts=2 sw=2 et:
-

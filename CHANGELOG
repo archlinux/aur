@@ -1,0 +1,90 @@
+2008-08-21	libmrss		0.19.2
+	Gregor Herrmann's patch about signals and curl
+
+2008-02-26	libmrss		0.19.1
+	OpenEmbedded Project's patch applied (transfer buffer)
+	Andreas Krennmair's patch applied (ATOM string)
+
+2008-01-25	libmrss		0.19.0
+	atom type for the string tags (title, datatypes,..)
+
+2007-07-08	libmrss		0.18.0
+	a new release with a new version number
+
+2007-06-10	libmrss		0.17.4
+	curl code with an error
+
+2007-06-09	libmrss		0.17.3
+	locale check
+	jerome's patch about INCLUDE and srcdir
+	Holger Freyther's patch about atom writting
+	CURLcode error, mrss_curl_strerror and
+	mrss_parse_url_with_options_and_error function
+
+2007-05-02	libmrss		0.17.2
+	patch about tm_mon - 1
+	patch 27: mrss_get_last_modified_with_options ignores proxy settings
+	patch 26: mrss_free does not check for NULL mrss_t pointer 
+
+2007-04-02	libmrss		0.17.1
+	2 memory leaks fixed
+	locale about the datatime in atom feed
+	Holger Freyther's patches
+	
+2007-02-10	libmrss		0.17
+	other_tags and attributes
+	atom supported
+
+2006-12-29	libmrss		0.16
+	libnxml 0.16 updated
+
+2006-11-22	libmrss		0.15
+	libnxml 0.15 with cacert support
+	php updated
+
+2006-10-28	libmrss		0.14
+	libnxml	0.14 updated
+
+2006-09-11	libmrss		0.13
+	options struct for timeout, proxy and certficate.
+	removed mrss_set/get_timeout.
+
+2006-06-12	libmrss		0.12
+	mrss.pc updated
+
+2006-03-21	libmrss		0.11
+	copyright updates
+	enclouse with only argoments support for podcast
+
+2006-03-07	libmrss		0.10
+	some memory leaks
+
+2006-02-27	libmrss		0.9
+	mrss_write_url php bug fixes
+
+2006-02-06	libmrss		0.8
+	encoding in mrss_t
+
+2005-01-20	libmrss		0.7
+	mrss_get_last_modified
+	a new test (time.c)
+	doxygen mainpage
+
+2005-01-14	libmrss		0.6
+	bug fixes in the write function
+
+2006-01-04	libmrss		0.5
+	GPL -> LGPL
+
+2005-12-15	libmrss		0.4
+	mrss_set_timeout
+	mrss_get_timeout
+
+2005-11-01	libmrss		0.3
+	libxml2 -> libnxml
+	rss 1.0
+	
+
+2005-07-27	libmrss		0.2
+	phpsupport
+	doxygen
