@@ -16,6 +16,7 @@ depends=(
     'python-slugify'
     'python-pyqt5'
     'abseil-cpp'
+    'qt5-tools'
 )
 makedepends=(
     'go'

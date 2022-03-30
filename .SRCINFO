@@ -19,6 +19,7 @@ pkgbase = opensnitch
 	depends = python-slugify
 	depends = python-pyqt5
 	depends = abseil-cpp
+	depends = qt5-tools
 	optdepends = logrotate: for logfile rotation support
 	optdepends = hicolor-icon-theme: for gui
 	optdepends = python-pyinotify: for system notifications
