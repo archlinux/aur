@@ -3,13 +3,13 @@
 
 pkgname=dosbox-staging-git
 _pkgname=dosbox-staging
-pkgver=0.79.0.alpha.203.g89787baa0
+pkgver=0.79.0.alpha.280.g5898e49ac
 pkgrel=1
 pkgdesc="A modernized DOSBox project using current development practices and tools, fixing issues, adding features that better support today's systems"
 arch=('any')
 url="https://github.com/dosbox-staging/dosbox-staging"
 license=('GPL2')
-depends=('sdl2' 'sdl2_net' 'opusfile'  'alsa-lib' 'fluidsynth' 'munt')
+depends=('sdl2' 'sdl2_net' 'opusfile'  'alsa-lib' 'fluidsynth' 'munt' 'libslirp')
 optdepends=('libpng' 'ncurses')
 makedepends=('meson' 'gcc' 'gzip')
 provides=("dosbox")
