@@ -11,8 +11,8 @@ makedepends=('git' 'yarn' 'node-gyp' 'nvm' 'libxtst' 'libpng')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 options=(!strip)
-source=('git+https://github.com/SnosMe/awakened-poe-trade.git')
-md5sums=('SKIP')
+source=('awakened-poe-trade.desktop' 'git+https://github.com/SnosMe/awakened-poe-trade.git')
+md5sums=('SKIP' 'SKIP')
 
 _ensure_local_nvm() {
     # let's be sure we are starting clean
@@ -26,12 +26,12 @@ _ensure_local_nvm() {
 }
 
 pkgver() {
-	cd "${srcdir}/awakened-poe-trade"
-	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
+    cd "${srcdir}/awakened-poe-trade"
+    printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 prepare() {
-	cd "${srcdir}/awakened-poe-trade"
+    cd "${srcdir}/awakened-poe-trade"
     LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
     git checkout $LATEST_TAG
     _ensure_local_nvm
@@ -39,15 +39,32 @@ prepare() {
 }
 
 build() {
-	cd "${srcdir}/awakened-poe-trade"
+    cd "${srcdir}/awakened-poe-trade"
     _ensure_local_nvm
-	yarn
+    yarn
     yarn make-index-files
-	yarn electron:build
+    yarn electron:build
 }
 
 package() {
-	mkdir -p "${pkgdir}/usr/bin"
-	cd "${srcdir}/awakened-poe-trade/dist_electron/"
-	cp *.AppImage "${pkgdir}/usr/bin/awakened-poe-trade"
+    mkdir -p "${pkgdir}/usr/share/applications"
+    mkdir -p "${pkgdir}/usr/share/pixmaps"
+    mkdir -p "${pkgdir}/usr/bin"
+
+    cp ${srcdir}/awakened-poe-trade/dist_electron/*.AppImage ${pkgdir}/usr/bin/awakened-poe-trade
+    cp ${srcdir}/awakened-poe-trade/dist_electron/bundled/icon.png ${pkgdir}/usr/share/pixmaps/awakened-poe-trade.png
+    cp ${srcdir}/awakened-poe-trade.desktop ${pkgdir}/usr/share/applications/awakened-poe-trade.desktop
+}
+
+post_install() {
+    update-mime-database
+    update-desktop-database
+}
+
+post_upgrade() {
+    post_install "$1"
+}
+
+post_remove() {
+    post_install "$1"
 }
