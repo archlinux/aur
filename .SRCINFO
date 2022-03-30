@@ -1,0 +1,12 @@
+pkgbase = marwaita-icons-git
+	pkgdesc = Icon pack for linux
+	pkgver = 20200718
+	pkgrel = 1
+	url = https://github.com/darkomarko42/Marwaita-Icons
+	arch = any
+	license = custom
+	makedepends = git
+	source = Marwaita-Icons::git+https://github.com/darkomarko42/Marwaita-Icons
+	sha256sums = SKIP
+
+pkgname = marwaita-icons-git
