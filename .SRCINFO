@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-imath
 	pkgdesc = A C++ and python library of 2D and 3D vector, matrix, and math operations for computer graphics (mingw-w64)
-	pkgver = 3.1.4
+	pkgver = 3.1.5
 	pkgrel = 1
 	url = https://github.com/AcademySoftwareFoundation/Imath
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = mingw-w64-imath
 	options = staticlibs
 	options = !buildflags
 	options = !strip
-	source = imath-3.1.4.tar.gz::https://github.com/AcademySoftwareFoundation/Imath/archive/refs/tags/v3.1.4.tar.gz
-	sha256sums = fcca5fbb37d375a252bacd8a29935569bdc28b888f01ef1d9299ca0c9e87c17a
+	source = imath-3.1.5.tar.gz::https://github.com/AcademySoftwareFoundation/Imath/archive/refs/tags/v3.1.5.tar.gz
+	sha256sums = 1e9c7c94797cf7b7e61908aed1f80a331088cc7d8873318f70376e4aed5f25fb
 
 pkgname = mingw-w64-imath
