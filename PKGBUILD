@@ -2,16 +2,18 @@
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=python-google-cloud-bigquery
-pkgver=2.34.2
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Google BigQuery API client library"
 arch=('any')
 url="https://github.com/googleapis/python-bigquery"
 license=('Apache')
 depends=(
+	'python-pyarrow'
 	'python-dateutil'
 	'python-google-api-core'
 	'python-google-cloud-core'
+	'python-google-cloud-bigquery-storage'
 	'python-google-resumable-media'
 	'python-grpcio'
 	'python-packaging'
@@ -28,7 +30,6 @@ makedepends=(
 	'ipython')
 optdepends=(
 	'ipython'
-	'python-arrow: pyarrow support'
 	'python-pandas: pandas support'
 	'python-tqdm: tqdm support'
 	'python-fastparquet: fastparquet support'
@@ -36,7 +37,7 @@ optdepends=(
 	'python-llvmlite: fastparquet support')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('886f27b6ab1571dc15fd831f54dc0c7dffe8fbfa50905a3abc48189411fbdc4f')
+sha256sums=('a7424a05f836d9b8e61b7d86b197870243c85489c77dad14eef790ba86dc9e3d')
 
 build() {
 	cd "python-bigquery-$pkgver"
@@ -50,6 +51,11 @@ package() {
 	cd "python-bigquery-$pkgver"
 	python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 docs/_build/google-cloud-bigquery.1 -t "$pkgdir/usr/share/man/man1/"
+
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s \
+		"$_site/google_cloud_bigquery-$pkgver.dist-info/LICENSE" \
+		"$pkgdir/usr/share/licenses/$pkgname/"
 }
