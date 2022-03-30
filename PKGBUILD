@@ -1,7 +1,7 @@
 # Maintainer: wostarxi <wostarxi@outlook.com>
 pkgname=browser360-bin
 _pkgname=com.360.browser-stable
-pkgver=10.4.1025.4
+pkgver=10.4.1030.6
 pkgrel=1
 epoch=
 pkgdesc="360 Browser stable version"
@@ -14,7 +14,7 @@ provides=()
 conflicts=()
 install=
 source=("https://down.360safe.com/gc/signed_${_pkgname}_${pkgver}-${pkgrel}_amd64.deb")
-sha256sums=("8e8dcb5f0215bdec2d0f2d7190a2c7c77c783d4262d9d189ae0788094a4cf602")
+sha256sums=("SKIP")
 package() {
 	cd "$srcdir"
         tar xf "$srcdir/data.tar.xz"
