@@ -1,7 +1,7 @@
 pkgbase = nutstore
 	pkgdesc = a cloud service that lets you sync and share files anywhere.
 	pkgver = 5.1.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.jianguoyun.com/
 	arch = x86_64
 	license = custom
