@@ -1,7 +1,7 @@
 # Maintainer: Fabien Michel <fabiin12@gmail.com>
 _pkgname=laec-est-toi
 pkgname=${_pkgname}-bin
-pkgver=0.6.4
+pkgver=0.6.5
 pkgrel=1
 pkgdesc="Game presenting the measures of the Union Populaire program, L'Avenir En Commun, for the French presidential election of 2022"
 arch=('x86_64')
@@ -13,7 +13,7 @@ source=("${_pkgname}_${pkgver}_linux64.tar.gz::https://www.laec-est-toi.fr/downl
         "laec-est-toi.png" 
         "laec-est-toi.desktop")
 options=("!strip")
-sha256sums=('42398222c66a2433e3ab1a3c917f84e21286938a113e06bc0b2b9f39b27e1a24'
+sha256sums=('7e6d69e68bd677084285f1d3149c101637ed039db1b346323be861af1c690416'
             '8380b0839fb90c404179d4786ebd9bc0e14a87fa6748cab9edb9f82e68acabac'
             '6d20b86f9a78a2f6d382cf25bcb6849a2d89d27e4a94707128a98b33bed045a4')
 
