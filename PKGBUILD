@@ -1,5 +1,4 @@
-# Maintainer: Noah Vogt (noahvogt) <noah@noahvogt.com>
-# Maintainer: Seppia <seppia@seppio.fish>
+# Maintainer: Noah Vogt (noahvogt) <noah@noahvogt.com> Maintainer: Seppia <seppia@seppio.fish>
 # Maintainer: JustKidding <jk@vin.ovh>
  
 # Based on aur/chromium-vaapi, with ungoogled-chromium patches
@@ -28,7 +27,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kwallet: support for storing passwords in KWallet on Plasma')
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://github.com/noahvogt/${pkgname%-*}-aur/releases/download/99.0.4844.84/$pkgname-$pkgver.tar.gz)
-sha256sums=('e96aeb7ff7d9c33b858638aaff6488a0936ee8462bd648f7e6fb5c0b700b58bd')
+sha256sums=('7b3d40670667d72d00057e5275d6d56a9ca8374ef9e1aa2df3e0102b5574b4b3')
 provides=('chromium')
 conflicts=('chromium')
 

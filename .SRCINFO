@@ -28,6 +28,6 @@ pkgbase = ungoogled-chromium-xdg-bin
 	conflicts = chromium
 	options = !lto
 	source = https://github.com/noahvogt/ungoogled-chromium-xdg-aur/releases/download/99.0.4844.84/ungoogled-chromium-xdg-bin-99.0.4844.84.tar.gz
-	sha256sums = e96aeb7ff7d9c33b858638aaff6488a0936ee8462bd648f7e6fb5c0b700b58bd
+	sha256sums = 7b3d40670667d72d00057e5275d6d56a9ca8374ef9e1aa2df3e0102b5574b4b3
 
 pkgname = ungoogled-chromium-xdg-bin
