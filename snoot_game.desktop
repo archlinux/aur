@@ -1,0 +1,14 @@
+[Desktop Entry]
+Type=Application
+Version=1.5
+Name=Snoot Game
+Name[en_GB]=Snoot Game
+Name[en_US]=Snoot Game
+GenericName=Visual Novel
+Comment=The Pre-historic Romance a million years in MS Paint to tell
+Path=/opt/SnootGame/
+Exec=SnootGame.sh
+Icon=snoot-game
+Terminal=false
+Categories=Game;RolePlaying;
+Keywords=Renpy;VisualNovel;Snoot;

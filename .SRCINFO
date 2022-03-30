@@ -1,0 +1,16 @@
+pkgbase = snoot-game-bin
+	pkgdesc = Renpy visual novel parody of Goodbye Volcano High
+	pkgver = Update7_Fangsgiving
+	pkgrel = 1
+	url = https://snootgame.xyz
+	arch = x86_64
+	license = AGPL,
+	license = custom:CC-BY-SA 4.0
+	options = !strip
+	options = staticlibs
+	source = snoot_game.desktop
+	source = https://secureupdates.snootgame.xyz/SnootGame-Update7_Fangsgiving-linux.tar.bz2
+	b2sums = 4c510e1f5cf8e16243cd8a860b525a446a5f852100c5a9db7b1e04707cf848ace1fd205abe94a2c7a2475d7147c38e93c1b5d83536e6243e6a51200b169e12fe
+	b2sums = 13d1603d2b8d2936b76b1289dddc507617bb574bab938ae6b00ca1ce0d9ba3fd32f87fc649eedbb4fe1c3c73e81632faa16bb02aae5175ae3c3a32843236aa0f
+
+pkgname = snoot-game-bin
