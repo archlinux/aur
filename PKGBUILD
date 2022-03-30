@@ -1,7 +1,7 @@
 # Maintainer: Chiller Dragon <chillerdragon@gmail.com>
 
 pkgname=term-ux-git
-pkgver=15.5.1.r4.g32523b1ea
+pkgver=16.0.r420.gffaeed980
 pkgrel=1
 pkgdesc="A custom Teeworlds curses client based on chillerbot-ux (ddnet based)."
 arch=('x86_64')
@@ -10,9 +10,7 @@ license=('custom:BSD' 'CCPL:by-nc-sa')
 depends=('freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'pnglite' 'ffmpeg' 'libnotify' 'miniupnpc' 'sqlite' 'mariadb-libs')
 makedepends=('git' 'cmake' 'ninja' 'python')
 checkdepends=('gmock')
-optdepends=('ddnet-skins: A collection with more than 500 custom tee skins.'
-            'ddnet-maps-git: All the maps used on the official DDNet Servers.')
-provides=('ddnet' 'term-ux')
+provides=('term-ux')
 conflicts=('term-ux')
 source=('git+https://github.com/chillerbot/chillerbot-ux')
 sha256sums=('SKIP')
