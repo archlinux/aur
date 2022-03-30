@@ -1,8 +1,8 @@
 # Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 
-_pkgver=2.1.4-beta
+_pkgver=2.1.5-beta
 pkgname=espanso-bin
-pkgver=2.1.4
+pkgver=2.1.5
 pkgrel=1
 pkgdesc="Cross-platform Text Expander written in Rust"
 arch=(x86_64)
@@ -15,7 +15,7 @@ options=("!strip")  # AppImage
 source=("espanso-${_pkgver}::https://github.com/federico-terzi/espanso/releases/download/v${_pkgver}/Espanso-X11.AppImage"
         "espanso-${_pkgver}.service::https://raw.githubusercontent.com/federico-terzi/espanso/v${_pkgver}/espanso/src/res/linux/systemd.service")
 noextract=("espanso-${_pkgver}")
-sha512sums=('41aa3a1cd7469d0e1dd7c889cc670a007861989331e043e1f0f8d51434f0f65af0d4f40613ddaea5938267508732513a42616accd692a0c7352eb35b024a4ab1'
+sha512sums=('6a614633977da6d3048e58c1954c0624eb45ac8fe5b23340b14e95162676bca5908d3e38dfaac78dc182630f89795b098514f8dce9085bfd69cbff426b2ca6a2'
             'dbfb208a34a76cf03d46232119a83a57bc1f81d102e17e6dda7c3b41039e010061b4352cd107e482c6f9bfd6457fa757ebbcd0261084f20e2757a5b186a24c20')
 
 
