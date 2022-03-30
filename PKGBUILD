@@ -1,7 +1,7 @@
 # Maintainer: Chiller Dragon <chillerdragon@gmail.com>
 
 pkgname=term-ux-git
-pkgver=16.0.r420.gffaeed980
+pkgver=16.0.r421.g17c478731
 pkgrel=1
 pkgdesc="A custom Teeworlds curses client based on chillerbot-ux (ddnet based)."
 arch=('x86_64')
@@ -37,7 +37,9 @@ build() {
         -DAUTOUPDATE=OFF            \
 	-DHEADLESS_CLIENT=ON        \
 	-DCURSES_CLIENT=ON          \
-        -DANTIBOT=ON                \
+	-DVULKAN=OFF                \
+	-DSERVER=OFF                \
+        -DANTIBOT=OFF               \
         -DVIDEORECORDER=OFF         \
         -DUPNP=ON                   \
         -DMYSQL=OFF                 \
@@ -50,6 +52,7 @@ check() {
 }
 
 package() {
+	echo "$pkgdir"
     DESTDIR="$pkgdir" ninja install -C build
 }
 
