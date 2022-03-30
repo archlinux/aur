@@ -1,6 +1,6 @@
 pkgbase = bgfx-cmake-git
 	pkgdesc = Cross-platform, graphics API agnostic, "Bring Your Own Engine/Framework" style rendering library. (With CMake build scripts)
-	pkgver = r8103.3cc0de333
+	pkgver = 1.115.8109
 	pkgrel = 1
 	url = https://bkaradzic.github.io/bgfx
 	arch = x86_64

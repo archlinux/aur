@@ -1,7 +1,7 @@
 # Maintainer: Sandy Carter <bwrsandman+aur@gmail.com>
 
 pkgname=bgfx-cmake-git
-pkgver=r8103.3cc0de333
+pkgver=1.115.8109
 pkgrel=1
 pkgdesc="Cross-platform, graphics API agnostic, \"Bring Your Own Engine/Framework\" style rendering library. (With CMake build scripts)"
 arch=('x86_64')
@@ -23,8 +23,15 @@ sha256sums=('SKIP'
             'SKIP')
 
 pkgver() {
+  # From bgfx.cpp source:
+  # bgfx 1.104.7082
+	#      ^ ^^^ ^^^^
+	#      | |   +--- Commit number  (https://github.com/bkaradzic/bgfx / git rev-list --count HEAD)
+	#      | +------- API version    (from https://github.com/bkaradzic/bgfx/blob/master/scripts/bgfx.idl#L4)
+	#      +--------- Major revision (always 1)
   cd "${srcdir}/bgfx"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  api=`sed '4q;d' scripts/bgfx.idl  | sed 's,version(,,g' | sed 's,),,g'`
+  printf "1.%s.%s" $api "$(git rev-list --count HEAD)"
 }
 
 prepare() {
