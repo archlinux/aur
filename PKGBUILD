@@ -4,12 +4,12 @@ _gitbranch=main
 _gitauthor=danisztls
 pkgname=journal-git
 pkgver=v1.1.r1.g95bef0d
-pkgrel=2
+pkgrel=3
 pkgdesc="An agnostic approach to note management and personal organization."
 arch=('any')
 license=('GPL3')
 url="https://github.com/${_gitauthor}/${pkgname%-git}"
-source=("git://github.com/${_gitauthor}/${pkgname%-git}#branch=${_gitbranch}")
+source=("git+https://github.com/${_gitauthor}/${pkgname%-git}#branch=${_gitbranch}")
 sha512sums=('SKIP')
 depends=('ripgrep' 'fd' 'fzf' 'bat')
 makedepends=(git)
