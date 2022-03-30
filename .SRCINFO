@@ -1,30 +1,34 @@
 pkgbase = bcc-git
 	pkgdesc = BPF Compiler Collection - latest git code
-	pkgver = v0.10.0.r92.270d54ae
-	pkgrel = 2
+	pkgver = 0.11.0.r951.gc65446b7
+	pkgrel = 1
 	url = https://github.com/iovisor/bcc
 	arch = x86_64
 	license = Apache
 	checkdepends = netperf
 	checkdepends = iperf
 	makedepends = cmake
-	makedepends = clang>=3.7.0
-	makedepends = llvm>=3.7.0
+	makedepends = clang
+	makedepends = llvm
 	makedepends = flex
 	makedepends = bison
 	makedepends = python
-	makedepends = python2
+	makedepends = git
 	source = bcc-git::git+https://github.com/iovisor/bcc
 	sha256sums = SKIP
 
 pkgname = bcc-git
 	pkgdesc = BPF Compiler Collection - C library and examples - latest git code
-	depends = linux-headers
-	optdepends = bcc-tools-git: Python utilites using the BCC library
-	optdepends = python-bcc-git: Python 3 bindings for BCC
-	optdepends = python2-bcc-git: Python 2 bindings for BCC
-	provides = bcc
-	provides = libbcc
+	depends = clang
+	depends = libelf
+	optdepends = linux-headers: build modules against the Arch kernel
+	optdepends = linux-lts-headers: build modules against the LTS kernel
+	optdepends = linux-zen-headers: build modules against the ZEN kernel
+	optdepends = linux-hardened-headers: build modules against the HARDENED kernel
+	optdepends = bcc-tools: Python utilites using the BCC library
+	optdepends = python-bcc: Python 3 bindings for BCC
+	provides = bcc=0.11.0.r951.gc65446b7
+	provides = libbcc=0.11.0.r951.gc65446b7
 	conflicts = bcc
 	conflicts = libbcc
 
@@ -34,10 +38,9 @@ pkgname = bcc-tools-git
 	depends = bcc-git
 	depends = libedit
 	depends = ethtool
-	optdepends = python-bcc-git: Python 3 bindings for BCC
-	optdepends = python2-bcc-git: Python 2 bindings for BCC
+	optdepends = python-bcc-git: Python bindings for BCC
 	optdepends = luajit: Lua bindings for BCC
-	provides = bcc-tools
+	provides = bcc-tools=0.11.0.r951.gc65446b7
 	conflicts = bcc-tools
 
 pkgname = python-bcc-git
@@ -45,18 +48,7 @@ pkgname = python-bcc-git
 	arch = any
 	depends = bcc-git
 	depends = python
-	optdepends = python-netaddr2: Network address representation and manipulation
+	optdepends = python-netaddr: Network address representation and manipulation
 	optdepends = python-pyroute2: Netlink and Linux network configuration
-	provides = python-bcc
+	provides = python-bcc=0.11.0.r951.gc65446b7
 	conflicts = python-bcc
-
-pkgname = python2-bcc-git
-	pkgdesc = BPF Compiler Collection - Python 2 bindings - latest git code
-	arch = any
-	depends = bcc-git
-	depends = python2
-	optdepends = python2-netaddr2: Network address representation and manipulation
-	optdepends = python2-pyroute2: Netlink and Linux network configuration
-	provides = python2-bcc
-	conflicts = python2-bcc
-
