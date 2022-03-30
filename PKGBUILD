@@ -4,7 +4,7 @@
 # or use:
 # $ curl -sL $(curl -s https://github.com/allusion-app/Allusion/releases | sed -n -e "s/^.*\(\/allusion-app\/Allusion\/releases\/download\/.*\/latest-linux.yml\)\".*/https:\/\/github.com\1/p" | head -n1)
 
-#timestamp: 2022-03-13T17:12:02.829Z
+#timestamp: 2022-03-30T13:50:20.117Z
 
 pkgname=allusion-appimage
 pkgver=1.0.0
@@ -20,7 +20,7 @@ gittag=$(curl -s https://github.com/allusion-app/Allusion/releases | sed -n -e "
 gitver="${pkgver}${gittag}"
 source_x86_64=("Allusion-${gitver}.AppImage::https://github.com/allusion-app/Allusion/releases/download/v${gitver}/Allusion-${gitver}.AppImage")
 noextract=("Allusion-${gitver}.AppImage")
-sha256sums_x86_64=('7a503a9066ef1be230bf546e27ddc09322dfa5bc20adb58af3d61905f304c99f')
+sha256sums_x86_64=('c044ea5b11c3877f5507f19b0319dbd6e342607bfb2620f558d8897d1430d6a0')
 
 package() {
     # Install AppImage
