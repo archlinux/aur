@@ -44,6 +44,7 @@ sha256sums=('eb348aa4b0dbed9751db6dafffa0e32d17943ab5eba68fc03e0248133e545817'
             'c600fefea1c93e9f94192741adc679fb0a05674775d3677954f10db4e09205c6'
             '3f4223dec09dde4148e0b6f4e9474ec3d2a9064bf070d637967324e103615ba6'
             'b1ac2fed5ac269fb7bbf651a3d37ef5fd56d2c33320e17cb6e23a22a93f5c046')
+conflicts=('inetutils')
 install="${pkgname}.install"
 
 build() {

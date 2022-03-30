@@ -29,6 +29,7 @@ pkgbase = dokku
 	depends = sudo
 	depends = sshcommand
 	depends = unzip
+	conflicts = inetutils
 	source = https://github.com/dokku/dokku/archive/v0.27.0.zip
 	source = dokku.install
 	source = crontab_calls.patch
