@@ -1,7 +1,7 @@
 pkgbase = zeronsd
 	pkgdesc = Unicast DNS resolver for ZeroTier networks
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zerotier/zeronsd
 	arch = any
 	license = BSD-3-Clause
