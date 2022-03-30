@@ -1,7 +1,7 @@
 pkgbase = openafs-modules
 	pkgdesc = Kernel module for OpenAFS
 	pkgver = 1.8.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.openafs.org
 	install = openafs-modules.install
 	arch = i686
@@ -15,6 +15,14 @@ pkgbase = openafs-modules
 	conflicts = openafs<1.6.6-2
 	options = !emptydirs
 	source = http://openafs.org/dl/openafs/1.8.8.1/openafs-1.8.8.1-src.tar.bz2
+	source = 0001-Add-autoconf-archive-to-src-external.patch
+	source = 0002-Import-of-code-from-autoconf-archive.patch
+	source = 0003-Use-autoconf-archive-m4-from-src-external.patch
+	source = 0004-Linux-5.17-kernel-func-complete_and_exit-renamed.patch
+	source = 0005-Linux-5.17-Kernel-build-uses-Wcast-function-type.patch
 	sha256sums = e7c4bed7075bcd6402e3f0c2d5b9dbe76ad2ee3c5fd5ddc3973a3356ca23ef44
+	sha256sums = a66ac857c28164e0af919b6cd259fe7249f9c2e0ca0952a36830555de00ae961
+	sha256sums = c36a859e94061272db153e32c3d3c862f0dc6a733328a042c94ea2e6fd73b50e
+	sha256sums = f15a2bb8c983534bc8660431d97971789256a63925cc5bcd21bc277f0fdc131b
 
 pkgname = openafs-modules
