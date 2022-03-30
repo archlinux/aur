@@ -2,13 +2,12 @@
 
 pkgname=libosmosdr-git
 pkgver=r162.ba4fd96
-pkgrel=1
+pkgrel=2
 pkgdesc="Free Software based small form-factor inexpensive SDR (Software Defined Radio)."
 arch=('i686' 'x86_64' 'arm')
 url="http://cgit.osmocom.org/osmo-sdr/tree/software/libosmosdr"
 license=('GPL')
-depends=(
-    )
+depends=('libusb')
 makedepends=(
     'git'
     'cmake'
