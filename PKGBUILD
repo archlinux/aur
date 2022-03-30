@@ -1,6 +1,6 @@
 # Maintainer: YagiOoda <YagiOoda@pm.me>
 pkgname=everdo
-pkgver=1.6.1
+pkgver=1.7.7
 pkgrel=1
 pkgdesc="The Perfect App for GTD / Getting Things Done"
 arch=('x86_64')
@@ -42,4 +42,4 @@ package() {
                       "${pkgdir}${icons_dir}/${pkgname}.png"
     done
 }
-md5sums=('5e53f9365ff6657e48de4207668d274b')
+md5sums=('91d3bcaec246befca99dddfb63b0e02c')
