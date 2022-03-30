@@ -1,8 +1,8 @@
-# Maintainer: Yurii <yu.hrysh@posteo.net>
+# Maintainer: gardenapple <gardenapple at posteo.net>
 # Contributor: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 
 pkgname=open-hexagon-git
-pkgver=2.0.6.r213.g11a61da3
+pkgver=2.0.6.r267.gbabe8b4c
 pkgrel=1
 epoch=1
 pkgdesc='Free software clone of Super Hexagon - a music-based arcade game'
@@ -10,12 +10,13 @@ url='https://openhexagon.org/'
 arch=('any')
 license=('custom:AFL-3.0' 'custom')
 depends=(
-  'luajit' 'imgui-sfml'
-  'zenity'  # just so UX is pretty
+	'zenity' # just so UX is pretty
 )
 makedepends=('git' 'cmake' 'rsync')
-optdepends=('steam: integration for those who own the game on Steam'
-'discord: Discord Rich Presence support')
+optdepends=(
+	'steam: integration for those who own the game on Steam'
+	'discord: Discord Rich Presence support'
+)
 provides=('open-hexagon')
 conflicts=('open-hexagon')
 source=(
@@ -24,73 +25,62 @@ source=(
 	'open-hexagon-git.install'
 	'open-hexagon'
 	'open-hexagon.desktop'
-	'fix-linking.diff'
 )
 install="$pkgname.install"
 sha512sums=('SKIP'
             'e062d52b3d12fba285e881175ec7c834b24e28b366a9a19d8dbdbe7b6ffae9462ab5d0f9f84119276a30f9c7b6f8745b00eb98c3e90e344a740824cec26505e9'
-            'b9b7124b16e3019dc36f3219107b7093ade9d88fa03c249575f2914d063df7f4311a390e78372cb741729db288d7cd74e5fc6e936277e619a1b3ed65f233891a'
-            'e6c2d409540289b24601af4e468082a927bd6a60b531fdfc52879f22bea096b5e7d313fe6091e54306df0f74032701e5460604338ad7392d23df717538ea6dcf'
-            'bc7d1e1a420a439283b4fcf2f06a8a50ca06d3934b79f6a93ff4ad4d269d6b246eb6a1824381c36bbb73fc7d24e9883281ab66eab05b2cc2fdbac3ed14a775d5'
-            'ed8beeffba0e1c4a31f84f5a503da7f50ba9bdb4a3bd7e3b0dc0e61a62a40511bba887232412cadd0ed02ea0d0424f12ed6b59c75d6bf9472a7d2c89f308c8f8')
-b2sums=('SKIP'
-        '7dfe5d5b32f35cd9572199bf2080ae4c3552fb5496836a139c90cb5bae7adb46545c0017fcb302409bc1babcc1f5f30a136e232983197c485ae1d65d3d8ce581'
-        '61dee7a9ea98ee85ad2ff98de4297c5fe74442f8b2c6f5108cef320649a92e6053cfc42568d2423e76b5671a2f4cb310e7f0c937e38ec4af8df1c2b9fde53e55'
-        'c83e783f0aff64f41ee11ba31343cab1b82d75596f43176d1817ac1186da8fe7dae3088e1619747e6eb849477dd2aaa8a1f1e55959e66b5ffa5bfc4d5b88f6b4'
-        '2ea97df7c917222e6a13b778208e41401c7d29db7851b6252c2a7db3107adad7a3e939e27684352277971c1220f90243a6053580af21c960a041b84375e9a239'
-        'aa51608e4796f8be19cea31135e8e240f8f9de962a7d77bc5dffd7beba5f87193a2f7c1a2df4a13de0fd7861170fc1e8f606b97ef7718e8d1aaf6e4cbfb9a8bc')
+            '669f9b6016f911ec8e44461e7a81dc557637c600c4b1b58a83ef3ea7d046c83d9ff5064c1dca3fe6fc29653d79d293b82b58de91f5db197489e1f088741b4a54'
+            '3a508869c35f6df2fd3445ed0a9ef4e5f26b498eaeede33c5412024c90a68fa00854c0937f2173731d264ed584dff4b3eadf997a1defdf96c2b8c264a8d24681'
+            'bc7d1e1a420a439283b4fcf2f06a8a50ca06d3934b79f6a93ff4ad4d269d6b246eb6a1824381c36bbb73fc7d24e9883281ab66eab05b2cc2fdbac3ed14a775d5')
 
 _reponame="SSVOpenHexagon"
 _assetsname="SSVOpenHexagonAssets-master"
 
-prepare() {
-	cd "${srcdir}/${_reponame}"
-	patch -p1 <"${srcdir}/fix-linking.diff"
-}
-
 pkgver() {
 	# Use the most recent un-annotated tag
-	cd "${srcdir}/${_reponame}"
+	cd "$srcdir/$_reponame"
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "${srcdir}/${_reponame}"
+	cd "$srcdir/$_reponame"
+
+	# Instructions from 
+	# https://github.com/vittorioromeo/SSVOpenHexagon/wiki/Building-Instructions#arch-based
 	git submodule init
 	git submodule update
+	cd buildlx/
+	cmake ..
+	make
+	mv SSVOpenHexagon ../_RELEASE
 
-	./build.sh
-
-	cd ..
-	# Merge directories
-	rsync -av --remove-source-files --ignore-existing "${srcdir}/${_assetsname}/_RELEASE" "${srcdir}/${_reponame}"
+	# Merge assets
+	rsync -av --remove-source-files --ignore-existing "$srcdir/$_assetsname/_RELEASE" "$srcdir/$_reponame"
 }
 
 package() {
-	mkdir -p "${pkgdir}/usr/lib/"
-	mkdir -p "${pkgdir}/var/lib/open-hexagon/Profiles" "${pkgdir}/var/lib/open-hexagon/Replays"
+	mkdir -p "$pkgdir/usr/lib/"
 
-	cd "${srcdir}/${_reponame}/_RELEASE"
+	cd "$srcdir/$_reponame/_RELEASE"
 	rm -f *.bat *.dll *.lib
-	install -Dm644 "Assets/Open Hexagon Assets License.txt" -t "${pkgdir}/usr/share/licenses/open-hexagon/"
+	install -Dm644 "Assets/Open Hexagon Assets License.txt" -t "$pkgdir/usr/share/licenses/open-hexagon/"
 
-	cd "${srcdir}/${_reponame}"
-	cp -r "_RELEASE" "${pkgdir}/usr/lib/open-hexagon"
-	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/open-hexagon/"
-
-
-	ln -sf "$(ls -1r /usr/lib/libluajit-*.so | head -n1)" libluajit.so
+	cd "$srcdir/$_reponame"
+	cp -r "_RELEASE" "$pkgdir/usr/lib/open-hexagon"
+	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/open-hexagon/"
 	
-	cd "${pkgdir}/usr/lib/open-hexagon"
+	cd "$pkgdir/usr/lib/open-hexagon"
 
 	# Dirty hack to allow writing data to current directory
 	# (also see .install file)
-	for i in config.json scores.json users.json log.txt Profiles Replays; do
-		ln -sf "../../../var/lib/open-hexagon/${i}"
+	rm -rf Profiles Replays
+	mkdir -p "$pkgdir/var/lib/open-hexagon"
+	for i in config.json log.txt Profiles Replays; do
+		ln -sf "../../../var/lib/open-hexagon/$i"
 	done
 
 	# Executables
-	install -Dm755 "${srcdir}/open-hexagon" -t "${pkgdir}/usr/bin"
-	install -Dm644 "${srcdir}/open-hexagon.desktop" -t "${pkgdir}/usr/share/applications"
-	install -Dm644 "${srcdir}/${_reponame}/_RELEASE/Assets/icon.png" "${pkgdir}/usr/share/pixmaps/open-hexagon.png"
+	install -Dm755 "$srcdir/open-hexagon" -t "$pkgdir/usr/bin"
+	install -Dm644 "$srcdir/open-hexagon.desktop" -t "$pkgdir/usr/share/applications"
+	install -Dm644 "$srcdir/$_reponame/_RELEASE/Assets/icon.png" "$pkgdir/usr/share/pixmaps/open-hexagon.png"
 }
