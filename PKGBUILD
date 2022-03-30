@@ -2,7 +2,7 @@
 
 pkgname=python-ailment
 _pkgname="${pkgname#*-}"
-pkgver=9.0.10730
+pkgver=9.1.12332
 pkgrel=1
 pkgdesc="The angr intermediate language."
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/angr/ailment"
 license=('BSD')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('4fab184783736e7090a6dde80ac655f39b812c41d38d212325abbfd56d585c85')
+sha256sums=('1fa9ba9548f7eec016a48fee98461e42241637453d2b47451517310f6bb438cd')
 
 build() {
 	cd "$_pkgname-$pkgver"
