@@ -1,6 +1,6 @@
 pkgbase = obs-studio-tytan652
 	pkgdesc = Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources, V4L2 devices by paths, my bind interface PR, and sometimes backported fixes.
-	pkgver = 27.2.2
+	pkgver = 27.2.4
 	pkgrel = 1
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
@@ -45,7 +45,7 @@ pkgbase = obs-studio-tytan652
 	optdepends = libajantv2: AJA NTV 2 support
 	optdepends = python: Python scripting
 	optdepends = decklink: Blackmagic Design DeckLink support
-	provides = obs-studio=27.2.2
+	provides = obs-studio=27.2.4
 	provides = obs-vst
 	provides = obs-browser
 	conflicts = obs-studio
@@ -53,7 +53,7 @@ pkgbase = obs-studio-tytan652
 	conflicts = obs-linuxbrowser
 	conflicts = obs-browser
 	options = debug
-	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=27.2.2
+	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=27.2.4
 	source = bind_iface.patch
 	source = v4l2_by-path.patch
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
