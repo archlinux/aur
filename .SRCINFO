@@ -1,7 +1,7 @@
 pkgbase = typrint-git
 	pkgdesc = Print text with a typing effect - Made with rust
-	pkgver = r11.3323867
-	pkgrel = 2
+	pkgver = r15.b4da723
+	pkgrel = 1
 	url = https://github.com/SkwalExe/typrint
 	install = typrint.install
 	arch = any

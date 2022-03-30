@@ -1,7 +1,7 @@
 # Maintainer: Léopold Koprivnik Ibghy <skwal.net@gmail.com>
 pkgname="typrint-git"
-pkgver=r11.3323867
-pkgrel=2
+pkgver=r15.b4da723
+pkgrel=1
 pkgdesc="Print text with a typing effect - Made with rust"
 arch=('any')
 url="https://github.com/SkwalExe/typrint"
