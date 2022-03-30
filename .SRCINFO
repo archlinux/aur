@@ -1,0 +1,13 @@
+pkgbase = awesome-rubato-git
+	pkgdesc = Create smooth animations with a slope curve for awesomeWM
+	pkgver = r62.51b4f76
+	pkgrel = 1
+	url = https://github.com/andOrlando/rubato
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = awesome
+	source = git+https://github.com/andOrlando/rubato.git
+	md5sums = SKIP
+
+pkgname = awesome-rubato-git
