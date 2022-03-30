@@ -28,7 +28,7 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'kwallet: support for storing passwords in KWallet on Plasma')
 options=('!lto') # Chromium adds its own flags for ThinLTO
 source=(https://github.com/noahvogt/${pkgname%-*}-aur/releases/download/99.0.4844.84/$pkgname-$pkgver.tar.gz)
-sha256sums=('81cfbbe8047ec18a0c4ec9e22b9237a5a4f159d1949cd518dce051e4324caaf4')
+sha256sums=('e96aeb7ff7d9c33b858638aaff6488a0936ee8462bd648f7e6fb5c0b700b58bd')
 provides=('chromium')
 conflicts=('chromium')
 
