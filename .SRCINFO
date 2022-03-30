@@ -1,6 +1,6 @@
 pkgbase = jre-jetbrains
 	pkgdesc = OpenJDK Java 11 runtime with some fixes and enhancements by JetBrains
-	pkgver = 11.0.14_1b2043.14
+	pkgver = 11.0.14_1b2043.25
 	pkgrel = 1
 	url = https://github.com/JetBrains/JetBrainsRuntime
 	install = jre-jetbrains.install
@@ -18,7 +18,7 @@ pkgbase = jre-jetbrains
 	provides = jetbrains-jre
 	conflicts = jetbrains-jre
 	replaces = jetbrains-jre
-	source = https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-11_0_14_1-linux-x64-b2043.14.tar.gz
-	b2sums = 5dbd4962cb8ad469ceabae09c5bf5b79a47191e47b0455d03bd4a68b99f016210afa145e578b8dc12c84e46e4d0195ce4d9184f264f2754cd9d4de0f32579312
+	source = https://cache-redirector.jetbrains.com/intellij-jbr/jbr_jcef-11_0_14_1-linux-x64-b2043.25.tar.gz
+	b2sums = 601187a6ef555301905bd96ee8e271c0054d95ad2b2d1db411ae46e1175ee9c8ffb01acd6f163e9abbbe1e008276bdca1cff9b28b08eff9c1bf3d5a356be31a5
 
 pkgname = jre-jetbrains
