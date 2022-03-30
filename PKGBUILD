@@ -4,7 +4,7 @@
 # Contributor: Mr. Outis <mroutis@protonmail.com>
 
 pkgname=dvc
-pkgver=2.9.5
+pkgver=2.10.0
 pkgrel=1
 pkgdesc='Open-source version control system for data science projects'
 arch=(any)
@@ -60,7 +60,7 @@ optdepends=('python-google-cloud-storage: support for Google Cloud'
             'python-pyarrow: support for HDFS remote'
             'python-pydrive: support for GDrive'
             'python-s3fs: support for AWS S3 remote')
-makedepends=(python-setuptools-scm{,-git-archive})
+makedepends=(python-{build,installer} python-setuptools-scm{,-git-archive} python-wheel)
 # checkdepends=(mypy
 #               python-flaky
 #               python-fsspec
@@ -77,16 +77,11 @@ makedepends=(python-setuptools-scm{,-git-archive})
 #               python-requests)
 _archive=("$pkgname-$pkgver")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('d4bd89c074ddac14f775c8eec95ad22821b863c0aeb51c0defd20a036d36e0ca')
-
-prepare() {
-	cd "$_archive"
-	sed -i -e '/wheel/d' setup.cfg
-}
+sha256sums=('ac07c3f185e7fd2dae689c7507ed99438d1247c8742eb2d182bf98d78fcdcce8')
 
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build -wn
 }
 
 # check() {
@@ -98,5 +93,5 @@ build() {
 
 package() {
 	cd "$_archive"
-	python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 }
