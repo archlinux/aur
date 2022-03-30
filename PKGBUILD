@@ -1,7 +1,7 @@
 # Maintainer: Marie Piontek <marie@kaifa.ch>
 
 pkgname=an-anime-game-launcher-bin
-pkgver=2.2.1
+pkgver=2.2.2
 pkgrel=1
 pkgdesc="An Launcher for a specific anime game with auto-patching, discord rpc and time tracking"
 url="https://gitlab.com/KRypt0n_/an-anime-game-launcher"
@@ -10,7 +10,7 @@ arch=("x86_64")
 license=("GPL3")
 
 depends=(
-    "libappindicator-gtk3"
+    "libayatana-appindicator"
     "tar"
     "unzip"
     "xdelta3"
@@ -28,14 +28,14 @@ optdepends=(
 )
 
 source=(
-    "An_Anime_Game_Launcher_${pkgver}.AppImage::https://gitlab.com/KRypt0n_/an-anime-game-launcher/uploads/f2653f2d8c469594a93128e013471404/An_Anime_Game_Launcher.AppImage"
+    "An_Anime_Game_Launcher_${pkgver}.AppImage::https://gitlab.com/KRypt0n_/an-anime-game-launcher/uploads/dfcaf7808a0bad2a66db3651b97346d0/An_Anime_Game_Launcher.AppImage"
     "icon.png"
     "an-anime-game-launcher-bin.desktop"
     "an-anime-game-launcher-bin.sh"
 )
 
 md5sums=(
-    '286bdc627d240a68124650f08ec94b74'
+    '6a5c514d38e4c8c5b5e61de5c0267a4b'
     '82d75ad72aed6c6962f203f9c6f329d3'
     'acb9fecb5d938c4fb8e5facb0511bc23'
     'aa1d36e938b47b1f9fcff6aa5cec588b'
