@@ -1,13 +1,13 @@
-# Maintainer: Michael Del Rosario <m@delrosariomichael.com>
+# Maintainer: Ray Del Rosario <michael@raydelrosario.com>
 pkgname='infracost'
-pkgver=0.9.6
+pkgver=0.9.20
 pkgrel=1
-pkgdesc='Infracost shows cloud cost estimates for Terraform projects. It helps developers, devops and others to quickly see the cost breakdown and compare different options upfront.'
+pkgdesc='Infracost shows cloud cost estimates for Terraform. It lets DevOps, SRE and engineers see a cost breakdown and understand costs before making changes, either in the terminal or pull requests.'
 url='https://github.com/infracost/infracost'
 arch=('x86_64')
 license=('Apache')
 source=("https://github.com/infracost/infracost/releases/download/v${pkgver}/infracost-linux-amd64.tar.gz")
-sha256sums=('b7acf63cc46af57e69590fb89df2e35cb804ef2b5451cd88b7a3ca2c7b654df3')
+sha256sums=('1a42d9abd469a39eb43b8e49166ecf6a97ff0ba9df532a08b3bf3435d816cbb2')
 package() {
 	install -Dm755 "$srcdir/infracost-linux-amd64" "${pkgdir}/usr/local/bin/${pkgname}"	
 }
