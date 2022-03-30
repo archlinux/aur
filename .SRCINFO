@@ -1,11 +1,15 @@
 pkgbase = puddletag-git
 	pkgdesc = An audio tag editor for GNU/Linux, git version
-	pkgver = 2.1.0.r12.gc8bceff
+	pkgver = 2.1.1.r138.ge9d16b9
 	pkgrel = 1
 	url = https://github.com/puddletag/puddletag
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-configobj
 	depends = python-lxml
 	depends = python-mutagen
