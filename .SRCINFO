@@ -1,0 +1,19 @@
+pkgbase = alsa-scarlett-gui-git
+	pkgdesc = Gtk4 GUI for the Focusrite Scarlett Gen 2/3 ALSA Mixer Driver.
+	pkgver = 0.2.3.gb9f0
+	pkgrel = 1
+	url = https://github.com/geoffreybennett/alsa-scarlett-gui
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = gcc
+	makedepends = make
+	makedepends = git
+	makedepends = pkgconf
+	depends = gtk4
+	depends = alsa-lib
+	provides = alsa-scarlett-gui
+	source = alsa-scarlett-gui::git+https://github.com/geoffreybennett/alsa-scarlett-gui.git
+	sha384sums = SKIP
+
+pkgname = alsa-scarlett-gui-git
