@@ -1,8 +1,8 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=secrets
-pkgver=6.2
-pkgrel=2
+pkgver=6.3
+pkgrel=1
 pkgdesc="Manage your passwords"
 arch=('any')
 url="https://gitlab.gnome.org/World/secrets"
@@ -13,7 +13,7 @@ checkdepends=('appstream-glib')
 conflicts=('gnome-passwordsafe')
 replaces=('gnome-passwordsafe')
 source=($url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz)
-b2sums=('96355ac9c925932a13749215d57fe7bd25c939f8de0e59d2c6a4ac376326e04a1ec5eef2f74fb3e14043dc358374806ae06b8c2dc1ba2441861b34f76f62d750')
+b2sums=('efcd75d4382338627dd248d37953acaf8bb2d534567283212ce962e239827529918f667884c169a798fe7f8f3290fe4f976e33d2a08aa2b8b4d274e4c9598ead')
 
 build() {
   arch-meson "$pkgname-$pkgver" build
