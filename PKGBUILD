@@ -1,7 +1,7 @@
-# Maintainer: Michael Del Rosario <m@delrosariomichael.com>
+# Maintainer: Ray Del Rosario <michael@raydelrosario.com>
 pkgname='grype'
 pkgver=0.34.7
-pkgrel=1
+pkgrel=2
 pkgdesc='A vulnerability scanner for container images and filesystems.'
 url='https://github.com/anchore/grype'
 arch=('x86_64')
