@@ -5,6 +5,11 @@ This project adheres to [Semantic Versioning](https://semver.org/) since version
 
 ## [Unreleased]
 
+## [13.6.1] - 2022-03-29
+### Changed
+- The SDL2 renderer has had a major performance update when compiled with SDL 2.0.18.
+- SDL2 is now the default renderer to avoid rare issues with the OpenGL 2 renderer.
+
 ## [13.6.0] - 2022-02-19
 ### Added
 - `BasicMixer` and `Channel` classes added to `tcod.sdl.audio`.  These handle simple audio mixing.
