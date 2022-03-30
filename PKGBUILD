@@ -1,6 +1,7 @@
-# Maintainer: Dan McCurry <dan.mc at protonmail dot com>
+# Maintainer: Ernesto Castellotti <mail@ernestocastellotti.it>
+# Ex Maintainer: Dan McCurry <dan.mc at protonmail dot com>
 pkgname=soapysdrplay-git
-pkgver=r66.3890517
+pkgver=r62.b789d59
 pkgrel=1
 pkgdesc="Soapy SDR module for SDRPlay"
 arch=('i686' 'x86_64')
@@ -9,7 +10,7 @@ license=('MIT')
 depends=('soapysdr-git' 'libsdrplay')
 makedepends=('cmake')
 install=${pkgname}.install
-source=("$pkgname::git://github.com/pothosware/SoapySDRPlay.git")
+source=("$pkgname::git+https://github.com/pothosware/SoapySDRPlay.git")
 md5sums=('SKIP')
 
 pkgver() {
