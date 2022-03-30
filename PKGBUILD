@@ -2,7 +2,7 @@
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
 pkgname=python-desktop-notifier
-pkgver=3.3.5
+pkgver=3.4.0
 pkgrel=1
 pkgdesc='Python library for cross-platform desktop notifications'
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=(
 	'python-sphinx_rtd_theme'
 	'python-sphinx-autoapi')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('141627d8cee487c762ef5331046c74237515841292a5d02cfe334e25a5ed9508')
+sha256sums=('8534e7d0c6353fee487f8042e8a16e79223fa7676e91aa9b5f8aee876b1328da')
 
 prepare() {
 	cd "desktop-notifier-$pkgver"
@@ -41,5 +41,7 @@ package() {
 
 	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
 	install -d "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s "$_site/desktop_notifier-$pkgver.dist-info/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s \
+		"$_site/desktop_notifier-$pkgver.dist-info/LICENSE" \
+		"$pkgdir/usr/share/licenses/$pkgname/"
 }
