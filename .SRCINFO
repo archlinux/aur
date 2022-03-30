@@ -1,7 +1,7 @@
 pkgbase = rawstudio-git
 	pkgdesc = An open-source program to read and manipulate RAW images from digital cameras
 	pkgver = 2.0.r624.gc140a5e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rawstudio.org
 	arch = x86_64
 	license = GPL2
@@ -16,7 +16,7 @@ pkgbase = rawstudio-git
 	depends = osm-gps-map
 	provides = rawstudio
 	conflicts = rawstudio
-	source = rawstudio-git::git://github.com/rawstudio/rawstudio.git
+	source = rawstudio-git::git+https://github.com/rawstudio/rawstudio.git
 	sha256sums = SKIP
 
 pkgname = rawstudio-git

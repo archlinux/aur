@@ -3,7 +3,7 @@
 
 pkgname=rawstudio-git
 pkgver=2.0.r624.gc140a5e
-pkgrel=1
+pkgrel=2
 pkgdesc='An open-source program to read and manipulate RAW images from digital cameras'
 arch=(x86_64)
 url=https://rawstudio.org
@@ -19,7 +19,7 @@ depends=(desktop-file-utils
 makedepends=(git)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("$pkgname::git://github.com/rawstudio/${pkgname%-git}.git")
+source=("$pkgname::git+https://github.com/rawstudio/${pkgname%-git}.git")
 sha256sums=('SKIP')
 
 pkgver() {
