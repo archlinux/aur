@@ -6,7 +6,7 @@ pkgbase = hancock-git
 	license = MIT
 	makedepends = git
 	makedepends = go
-	source = git+https://github.com/galenguyer/hancock
+	source = git+https://github.com/galenguyer/hancock-go
 	sha256sums = SKIP
 
 pkgname = hancock-git
