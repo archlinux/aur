@@ -2,7 +2,7 @@
 
 pkgname=dstask
 pkgver=0.25
-pkgrel=1
+pkgrel=2
 pkgdesc="Single binary terminal-based TODO manager with git-based sync + markdown notes per task"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/naggie/dstask"
@@ -22,23 +22,20 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
 
-    go build \
-        -trimpath \
-        -buildmode=pie \
-        -mod=readonly \
-        -modcacherw \
-        -ldflags "-linkmode=external
-            -X \"github.com/naggie/dstask.GIT_COMMIT=$_commit\"
-            -X \"github.com/naggie/dstask.VERSION=$pkgver\"
-            -X \"github.com/naggie/dstask.BUILD_DATE=$(date -d@"$SOURCE_DATE_EPOCH" +%FT%TZ)\"" \
-        -o dstask \
-        cmd/dstask/main.go
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+    _GOLDFLAGS="-linkmode=external \
+        -X \"github.com/naggie/dstask.GIT_COMMIT=$_commit\"
+        -X \"github.com/naggie/dstask.VERSION=$pkgver\"
+        -X \"github.com/naggie/dstask.BUILD_DATE=$(date -d@"$SOURCE_DATE_EPOCH" +%FT%TZ)\""
 
+    go build -ldflags="${_GOLDFLAGS}" -o dstask ./cmd/dstask/main.go
+    go build -ldflags="${_GOLDFLAGS}" -o dstask-import ./cmd/dstask-import/main.go
 }
 
 package() {
     cd $pkgname-$pkgver
     install -Dm755 $pkgname -t "$pkgdir/usr/bin"
+    install -Dm755 dstask-import -t "$pkgdir/usr/bin"
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 .dstask-bash-completions.sh "$pkgdir/usr/share/bash-completion/completions/$pkgname"
     install -Dm644 .dstask-zsh-completions.sh "$pkgdir/usr/share/zsh/site-functions/_$pkgname"
