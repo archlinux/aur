@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.7.4.r0.gb4d48e9
+pkgver=0.7.4.r14.g838eb6f
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
@@ -26,6 +26,7 @@ depends=(bc
          lua
          m4
          make
+         mdbook
          moreutils
          nodejs
          pandoc-sile-git
