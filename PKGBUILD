@@ -2,7 +2,7 @@
 
 pkgname=dokku
 pkgver=0.27.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Docker-powered PaaS that helps build and manage the lifecycle of applications'
 arch=('any')
 url='https://github.com/dokku/dokku'
@@ -17,7 +17,6 @@ depends=(
   'git'
   'go'
   'gliderlabs-sigil'
-  'inetutils'
   'herokuish'
   'jq'
   'man-db'
@@ -37,11 +36,13 @@ source=("${url}/archive/v${pkgver}.zip"
         "${pkgname}.install"
         "crontab_calls.patch"
         "systemd_calls.patch"
+        "hostname"
         "LICENSE")
 sha256sums=('eb348aa4b0dbed9751db6dafffa0e32d17943ab5eba68fc03e0248133e545817'
             '5b3e99b6be28f8c68e024d9127992bcd49c758566a6ecaa15f9788a411eab0f0'
             'dda85c90106e68b5478679fb2a5b8b37a786d188703abd255e079bdada36a9c0'
             'c600fefea1c93e9f94192741adc679fb0a05674775d3677954f10db4e09205c6'
+            '3f4223dec09dde4148e0b6f4e9474ec3d2a9064bf070d637967324e103615ba6'
             'b1ac2fed5ac269fb7bbf651a3d37ef5fd56d2c33320e17cb6e23a22a93f5c046')
 install="${pkgname}.install"
 
@@ -78,6 +79,7 @@ package() {
 
   # Install executable and license
   install -Dm755 "${pkgname}-${pkgver}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 hostname "${pkgdir}/usr/bin/${pkgname}/hostname"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Move all files in place
