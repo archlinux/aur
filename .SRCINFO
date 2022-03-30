@@ -1,0 +1,14 @@
+pkgbase = zcfan-git
+	pkgdesc = Zero-configuration fan control for ThinkPad (git version)
+	pkgver = 0.3.r23.g7d356b1
+	pkgrel = 1
+	url = https://github.com/cdown/zcfan
+	arch = any
+	license = MIT
+	makedepends = git
+	provides = zcfan
+	conflicts = zcfan
+	source = git+https://github.com/cdown/zcfan.git
+	md5sums = SKIP
+
+pkgname = zcfan-git
