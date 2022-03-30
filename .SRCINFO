@@ -1,19 +1,16 @@
 pkgbase = blacktex
 	pkgdesc = LaTex code prettifier and formatter
-	pkgver = 0.8.2
+	pkgver = 0.8.3
 	pkgrel = 1
 	url = https://pypi.org/project/blacktex
 	arch = any
 	license = custom:proprietary
-	makedepends = python-setuptools
-	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
 	depends = python-pylatexenc
 	depends = python-kgt
 	depends = python-x21
 	optdepends = python-importlib-metadata: required for python<3.8
-	source = blacktex-0.8.2.tar.gz::https://files.pythonhosted.org/packages/source/b/blacktex/blacktex-0.8.2.tar.gz
-	sha256sums = 387ce5e65162adc5f30b5b8055f7f89eabacce4018ccaf75417ff279dd22eca5
+	source = https://files.pythonhosted.org/packages/py3/b/blacktex/blacktex-0.8.3-py3-none-any.whl
+	sha256sums = 6ad33fedfe13ecedb25d7df6e6db4affb74d384d22df38375bbe5e30198cc6f8
 
 pkgname = blacktex
