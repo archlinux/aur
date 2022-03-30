@@ -16,7 +16,7 @@ optdepends=('bootchart2: A "startup" graphing tool')
 
 conflicts=('ureadahead' 'e4rat-preload-lite' 'e4rat-preload-lite-git' 'e4rat-lite')
 
-source=("git://github.com/LendyZhang/$_gitname.git"
+source=("git+https://github.com/LendyZhang/$_gitname.git"
         "$pkgname.install"
         "e4rat-lite-git-update.hook"
 	"addSyscall.patch")
