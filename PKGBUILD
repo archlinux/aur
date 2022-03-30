@@ -1,55 +1,67 @@
-# Maintainer: Yakumo Saki <yakumo at ziomatrix dot org>
+# Maintainer: Maarten de Boer <maarten@cloudstek.nl>
+# Contributor: Yakumo Saki <yakumo at ziomatrix dot org>
 # Contributor: Xuanwo <xuanwo@archlinucn.org>
 pkgname=clickup
 pkgver=3.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Desktop app for clickup.com"
 arch=('x86_64')
 url="https://clickup.com"
 license=('custom')
-makedepends=('wget')
-depends=('fuse2')
-_filename="$pkgname-desktop-$pkgver-x86_64.AppImage"
-source=("${_filename}::https://desktop.clickup.com/linux")
-sha512sums=('b72b0ec7ac3373faba2a71b345d08bddd1098a2647f4e5bbab74154bcf3d4806f568f43cb7422dd5c2de38fd47d1850fdbd795c2d40a012d7e3f0a17db8de3c2')
+depends=('gtk3' 'libindicator-gtk2' 'dbus-glib' 'alsa-lib' 'libdbusmenu-gtk2' 'nss')
+makedepends=('sed')
 options=('!strip')
 
-# howto update
-# wget https://desktop.clickup.com/linux
-# sha512sum linux
-#
-# update sha512sum of this file.
-# makepkg -Sf    to test.
-#
-# release
-# makepkg --printsrcinfo > .SRCINFO
-# git commit and git push
- 
+_filename="$pkgname-desktop-$pkgver-x86_64.AppImage"
+
+source=("${_filename}::https://desktop.clickup.com/linux"
+        "terms.html::https://clickup.com/terms")
+
+sha256sums=('4bd27fad7fed025e50f28cb7a845c2f20fcdc254d39f02f0622b64e2dc90e338'
+            'SKIP')
 
 prepare() {
-  rm -rf squashfs-root
-  chmod +x $_filename
-  ./$_filename --appimage-extract
-  sed -i -e "s|Exec=.\+|Exec=/opt/${pkgname}/$_filename %U|" squashfs-root/ClickUp.desktop
+    rm -rf squashfs-root
+    chmod +x $_filename
+    ./$_filename --appimage-extract
 
-  wget -O terms.html https://clickup.com/terms
+    # Fix directory permissions (read + execute)
+    find squashfs-root -type d -exec chmod a+rx {} \;
 }
 
 package() {
-  # AppImage
-  install -Dm755 $_filename "${pkgdir}/opt/${pkgname}/$_filename"
+    cd "${srcdir}/squashfs-root"
 
-  mkdir -p "${pkgdir}/usr/bin"
-  ln -s "/opt/${pkgname}/$_filename" "${pkgdir}/usr/bin/${pkgname}"
+    # Symlink to /usr/bin
+    install -dm0755 "${pkgdir}/usr/bin"
+    ln -s /opt/clickup/ClickUp "${pkgdir}/usr/bin/clickup"
 
-  # LICENSES
-  install -Dm644 terms.html "${pkgdir}/usr/share/licenses/${pkgname}/terms.html"
-  install -Dm644 squashfs-root/LICENSE.electron.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.electron.txt"
-  install -Dm644 squashfs-root/LICENSES.chromium.html "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES.chromium.html"
+    # Desktop entry and icons
+    sed -i -e "s|Exec=.\+|Exec=/usr/bin/${pkgname} %U|" ClickUp.desktop
+    install -Dm0644 ClickUp.desktop -t "${pkgdir}/usr/share/applications/"
 
-  # desktop entry
-  install -Dm644 squashfs-root/ClickUp.desktop "${pkgdir}/usr/share/applications/clickup.desktop"
-  install -Dm644 squashfs-root/ClickUp.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/clickup.png"
-  chmod -R a+rX "${pkgdir}/usr/share/icons/hicolor"
+    # Terms and licenses
+    install -Dm0644 "${srcdir}/terms.html" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm0644 LICENSE.electron.txt -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+    install -Dm0644 LICENSES.chromium.html -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+
+    # Icons
+    icons=(1024x1024 512x512 256x256 128x128 64x64 48x48 32x32 16x16)
+
+    for size in "${icons[@]}"; do
+        install -Dm0644 usr/share/icons/hicolor/${size}/apps/ClickUp.png -t "${pkgdir}/usr/share/icons/hicolor/${size}/apps/"
+    done
+
+    # AppDir contents
+    cd "${srcdir}"
+    install -dm0755 "${pkgdir}/opt"
+    mv squashfs-root "${pkgdir}/opt/clickup"
+    chmod 755 "${pkgdir}/opt/clickup"
+    chmod a+rX "${pkgdir}/opt/clickup/"
+
+    # Clean up files
+    rm -r "${pkgdir}/opt/clickup/usr/share/"
+    rm "${pkgdir}/opt/clickup/AppRun" "${pkgdir}/opt/clickup/ClickUp.desktop"
+    rm "${pkgdir}/opt/clickup/ClickUp.png" "${pkgdir}/opt/clickup/.DirIcon"
+    rm "${pkgdir}/opt/clickup/LICENSE.electron.txt" "${pkgdir}/opt/clickup/LICENSES.chromium.html"
 }
-
