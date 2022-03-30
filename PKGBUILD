@@ -1,12 +1,12 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=('pop-launcher-git' 'pop-shell-plugin-system76-power-git')
 pkgbase=pop-launcher-git
-pkgver=1.2.0.r0.gbacada0
-pkgrel=2
+pkgver=1.2.1.r0.g0893990
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url="https://github.com/pop-os/launcher"
 license=('MPL2')
-depends=('fd' 'libqalculate' 'openssl' 'sh')
+depends=('fd' 'libqalculate' 'sh')
 makedepends=('cargo' 'git' 'just')
 options=('!lto')
 source=('git+https://github.com/pop-os/launcher.git')
@@ -22,13 +22,15 @@ prepare() {
   export RUSTUP_TOOLCHAIN=stable
   cargo fetch --target "$CARCH-unknown-linux-gnu"
 
+  just vendor
+
   sed -i 's|{{bin_path}}|/usr/bin/pop-launcher|g' justfile
 }
 
 build() {
   cd "$srcdir/launcher"
   export RUSTUP_TOOLCHAIN=stable
-  just
+  just vendor=1
 }
 
 package_pop-launcher-git() {
