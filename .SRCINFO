@@ -1,6 +1,6 @@
 pkgbase = sockperf-git
 	pkgdesc = A benchmarking utility for measuring network performance (latency and throughput) over socket API, with focus on high performance systems
-	pkgver = 3.8.31ee322
+	pkgver = 3.8.r328.31ee322
 	pkgrel = 1
 	url = https://github.com/mellanox/sockperf
 	arch = i686
