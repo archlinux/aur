@@ -9,7 +9,11 @@ clean() {
 
 install() {
     # Assumes you are on Arch, btw.
-    makepkg
+    if ! makepkg
+    then
+        sha256sum ./sigi-*.tar.gz
+        exit 1
+    fi
     makepkg --printsrcinfo > .SRCINFO
 }
 
@@ -18,11 +22,11 @@ check() {
     if [ ! -x "$pkgdir/usr/bin/sigi" ]
     then
         >&2 echo "Sigi binary was not installed and executable"
-	exit 1
+        exit 1
     elif [ ! -f "$pkgdir/usr/share/man/man1/sigi.1.gz" ]
     then
-	>&2 echo "Sigi man page was not installed"
-	exit 1
+        >&2 echo "Sigi man page was not installed"
+        exit 1
     fi
 
     "$pkgdir"/usr/bin/sigi --version
@@ -38,20 +42,20 @@ help() {
 
 run() {
     case "$1" in
-	bootstrap) bootstrap ;;
+        bootstrap) bootstrap ;;
         clean)     clean   ;;
         install)   install ;;
         check)     check   ;;
-	*)         >&2 help
-	           >&2 echo "Unknown target: $1"
-	           exit 1 ;;
+        *)         >&2 help
+                   >&2 echo "Unknown target: $1"
+                   exit 1 ;;
     esac
 }
 
 # Exit with help message if no input.
 if [ "$@unset" = unset ]
 then
-  help && exit
+    help && exit
 fi
 
 set -x
@@ -62,3 +66,4 @@ do
     run "$cmd"
 done
 
+# vim: set expandtab ts=4 sw=4

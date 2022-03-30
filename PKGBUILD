@@ -1,6 +1,6 @@
 # Maintainer: J.R. Hill <hiljusti@so.dang.cool>
 pkgname="sigi"
-pkgver="3.0.3"
+pkgver="3.1.0"
 pkgrel=1
 pkgdesc="Organization CLI for people who hate organization"
 arch=('x86_64' 'aarch54')
@@ -8,7 +8,7 @@ url="https://github.com/hiljusti/sigi"
 license=('GPL-2.0-only')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/sigi/$pkgver/download")
-sha256sums=('6bb5e0f633d1209cb89e4d4a6c820e9519b5b6ed4d1ed05c989e423b241cf621')
+sha256sums=('967e492a89f05c3a373929a48e0a1a7712d4742b150216228feff4a7869297e3')
 
 build() {
 	cd "$pkgname-$pkgver"
@@ -19,6 +19,7 @@ build() {
 check() {
 	cd "$pkgname-$pkgver"
 
+	# Tests are skipped until https;//github.com/hiljusti/sigi/issues/19
 	SKIP_BATS_TESTS=1 cargo test --release --locked
 }
 
