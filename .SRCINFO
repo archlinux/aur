@@ -1,6 +1,6 @@
 pkgbase = tetronimia
 	pkgdesc = That game of falling blocky thingies for your terminal, written in Nim
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/indiscipline/tetronimia
 	arch = x86_64
@@ -14,8 +14,8 @@ pkgbase = tetronimia
 	makedepends = coreutils
 	depends = glibc
 	options = strip
-	source = tetronimia-0.2.0.tar.gz::https://github.com/indiscipline/tetronimia/archive/v0.2.0.tar.gz
-	sha512sums = 5660c447d2ca6dab6a54a2de1c97717d24b12193b69169c8f29b72e3e89fc105951ed2f711dcb865f262b8aac9298dd66c98f45908903fdbaf0872ec9cbd8d02
-	b2sums = bb10883ab10511ce7baf32ae458f271d056faa0dfa5ca12c6f7e5942819899e42a16f052105f82aecbf11976ee31763de46a26de1d3564b62634a92f0cce0659
+	source = tetronimia-0.2.1.tar.gz::https://github.com/indiscipline/tetronimia/archive/v0.2.1.tar.gz
+	sha512sums = 6fc8aab8448b01ca33e21fb0e32dd1496a5bef4ea59bb29a8c9f5b980728b70826d4137bffaa43c8b01c0e4980558df1e019762a2903a0dd0e1ef2c3cd5f93f4
+	b2sums = 8e31f2c72784c56d731e14069ae2b10d4bcd0637a24933cc18073d61773f8f188c066aeb4c318e283da16bf5d5a61055bcdef5412d3a07f776837fd068a17a5d
 
 pkgname = tetronimia
