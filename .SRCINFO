@@ -1,7 +1,7 @@
 pkgbase = dagger
 	pkgdesc = A portable devkit for CI/CD pipelines
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dagger.io
 	arch = x86_64
 	license = Apache

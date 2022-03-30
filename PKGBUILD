@@ -2,7 +2,7 @@
 
 pkgname=dagger
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A portable devkit for CI/CD pipelines"
 arch=('x86_64')
 url="https://dagger.io"
@@ -44,7 +44,8 @@ build() {
     -mod=readonly \
     -modcacherw \
     -ldflags "-linkmode external -extldflags $LDFLAGS \
-    -X go.dagger.io/dagger/version.Revision=$_commit" \
+    -X go.dagger.io/dagger/version.Revision=$_commit \
+    -X go.dagger.io/dagger/version.Version=$pkgver" \
     -o build \
     ./cmd/...
 }
