@@ -21,6 +21,8 @@ post_install() {
     echo ""
     echo "mysql>source /usr/share/tango/db/create_db.sql"
     echo ""
+    echo "# or you can just run the tango-database-init.sh script ;)."
+    echo ""
     echo "# Set-up the environment variables MYSQL_USER and MYSQL_PASSWORD"
     echo "# or prepare the my.cnf (mysql configuration file) file to specify"
     echo "# the mysql user and its password to be used to connect to the database."
