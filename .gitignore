@@ -1,2 +1,3 @@
-src
-grype_*
+*
+!.SRCINFO
+!PKGBUILD
