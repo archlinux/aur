@@ -1,6 +1,6 @@
 # Maintainer: Ferdinand "yrlf" Bachmann <theferdi265@gmail.com>
 pkgname=libbass_fx
-pkgver=2.4.12.1
+pkgver=2.4.12.6
 pkgrel=2
 pkgdesc="BASS audio library - Effects Add-On"
 arch=(i686 x86_64 armv6h armv7h aarch64)
@@ -12,17 +12,15 @@ source=(
     https://www.un4seen.com/files/z/0/bass_fx24-linux.zip
     LICENSE
 )
-sha256sums=(
-    '362e1d84475dd35374547b56904394526cc4e2b2f68d55f4c51dfa783e390fe0'
-    'f7bc36320110c8fd2f87c6d2bb5df6d2231ca9ab31a299b1565de63f7681cc83'
-)
+sha256sums=('a98eb81bade52bdcc2d59e8d6803dea97ed4060f3b98e7097f05db1f91481cb5'
+            'f7bc36320110c8fd2f87c6d2bb5df6d2231ca9ab31a299b1565de63f7681cc83')
+sha256sums_armv6h=('84968a3d6afafaa13d7a4e3b6a4d9e787c49067471118f7d084d13caadb551f5')
+sha256sums_armv7h=('84968a3d6afafaa13d7a4e3b6a4d9e787c49067471118f7d084d13caadb551f5')
+sha256sums_aarch64=('84968a3d6afafaa13d7a4e3b6a4d9e787c49067471118f7d084d13caadb551f5')
 
 source_armv6h=(bass_fx24-linux-armv6h.zip::https://www.un4seen.com/files/z/0/bass_fx24-linux-arm.zip)
-sha256sums_armv6h=('24b72d0e194f868f60de79625ffef87783ab695e7469bb2fc8b14d0da3ea57bd')
 source_armv7h=(bass_fx24-linux-armv7h.zip::https://www.un4seen.com/files/z/0/bass_fx24-linux-arm.zip)
-sha256sums_armv7h=('24b72d0e194f868f60de79625ffef87783ab695e7469bb2fc8b14d0da3ea57bd')
 source_aarch64=(bass_fx24-linux-aarch64.zip::https://www.un4seen.com/files/z/0/bass_fx24-linux-arm.zip)
-sha256sums_aarch64=('24b72d0e194f868f60de79625ffef87783ab695e7469bb2fc8b14d0da3ea57bd')
 
 build () {
     unzip -q bass_fx24-linux.zip -d "$srcdir/$pkgname-$pkgver"
