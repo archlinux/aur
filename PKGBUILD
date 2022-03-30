@@ -1,10 +1,9 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
-_name=MicroStructPy
-_base=microstructpy
-pkgname=python-${_base}
+_base=MicroStructPy
+pkgname=python-${_base,,}
 pkgdesc="Microstructure modeling, mesh generation, analysis, and visualization"
-pkgver=1.5.2
-pkgrel=2
+pkgver=1.5.3
+pkgrel=1
 arch=('x86_64')
 url="https://github.com/kip-hart/${_base}"
 license=(MIT)
@@ -12,20 +11,20 @@ depends=(python-aabbtree pybind11 python-lsq-ellipse python-matplotlib python-me
 makedepends=(python-setuptools)
 checkdepends=(python-pytest)
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('016cca96116d8ad3e0b170868412e01ad791c51d6040ae03e21ee944f372f5f17040b970b7241a994ad250114554ae94aa1f9d364467ebb014f122eeab3775c5')
+sha512sums=('556c39ae7eb5d9d738f9a884905d996700634740951a3aea7fffb980ddc85fb2c567ffaadc4e58bfdfaafd98f365d11fc327348a6592f9779c74cc14ebb8c3c8')
 
 build() {
-  cd "${_name}-${pkgver}"
+  cd ${_base}-${pkgver}
   python setup.py build
 }
 
 check() {
-  cd "${_name}-${pkgver}"
+  cd ${_base}-${pkgver}
   PYTHONPATH="$PWD/build/lib:/usr/share/gmsh/api/python" python -m pytest tests
 }
 
 package() {
-  cd "${_name}-${pkgver}"
+  cd ${_base}-${pkgver}
   export PYTHONHASHSEED=0
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
