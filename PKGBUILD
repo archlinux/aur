@@ -1,4 +1,4 @@
-# Maintainer: Yurii <yu.hrysh@posteo.net>
+# Maintainer: gardenapple <gardenapple@posteo.net>
 # Contributor: Anatol Pomozov <anatol.pomozov@gmail.com>
 
 _gemname=rake
