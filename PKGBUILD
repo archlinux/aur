@@ -2,15 +2,15 @@
 
 _pkgname=fractal
 pkgname=fractal-next
-pkgver=r370.fbc867e0
-pkgrel=3
+pkgver=r547.ec125425
+pkgrel=1
 pkgdesc="GTK4 client for Matrix written in Rust (fractal-next branch)"
 arch=(x86_64)
 url="https://wiki.gnome.org/Apps/Fractal"
 license=(GPL3)
-depends=(gtk4 gst-plugins-base gst-plugins-ugly gst-plugins-bad gst-editing-services gtksourceview5 gspell libadwaita pipewire clang)
+depends=(gtk4 gst-plugins-base gst-plugins-ugly gst-plugins-bad gst-editing-services gtksourceview5 gspell libadwaita pipewire)
 optdepends=('org.freedesktop.secrets: password storage')
-makedepends=(git meson rust cmake)
+makedepends=(git meson rust cmake clang)
 provides=(fractal)
 conflicts=(fractal fractal-git)
 source=("fractal::git+https://gitlab.gnome.org/GNOME/fractal#branch=fractal-next")
@@ -22,12 +22,6 @@ pkgver() {
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-prepare() {
-    cd "$srcdir/fractal"
-# Let's fix this while we wait upstream to fix it
-    sed -i "s/'libadwaita-1', version: '>= 1.0.0-alpha.1'/'libadwaita-1', version: '>= 1.0.0'/g" meson.build
 }
 
 build() {
