@@ -2,7 +2,7 @@
 # Maintainer: László Várady <laszlo.varady93@gmail.com>
 
 pkgname=riemann-c-client
-pkgver=1.10.5
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='Riemann C driver library and CLI client'
 url="https://github.com/algernon/riemann-c-client"
