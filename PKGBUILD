@@ -25,10 +25,10 @@ sha256sums=('SKIP'
 pkgver() {
   # From bgfx.cpp source:
   # bgfx 1.104.7082
-	#      ^ ^^^ ^^^^
-	#      | |   +--- Commit number  (https://github.com/bkaradzic/bgfx / git rev-list --count HEAD)
-	#      | +------- API version    (from https://github.com/bkaradzic/bgfx/blob/master/scripts/bgfx.idl#L4)
-	#      +--------- Major revision (always 1)
+  #      ^ ^^^ ^^^^
+  #      | |   +--- Commit number  (https://github.com/bkaradzic/bgfx / git rev-list --count HEAD)
+  #      | +------- API version    (from https://github.com/bkaradzic/bgfx/blob/master/scripts/bgfx.idl#L4)
+  #      +--------- Major revision (always 1)
   cd "${srcdir}/bgfx"
   api=`sed '4q;d' scripts/bgfx.idl  | sed 's,version(,,g' | sed 's,),,g'`
   printf "1.%s.%s" $api "$(git rev-list --count HEAD)"
