@@ -1,7 +1,7 @@
 # Maintainer: jun7 <jun7@hush.com>
 pkgname=wyeb-git
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A vim-like webkit2gtk browser"
 arch=('x86_64')
 url="http://wyeb.org/"
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('webkit2gtk' 'discount' 'perl-file-mimeinfo')
 makedepends=('git')
 _branch=master
-source=("git://github.com/jun7/wyeb.git#branch=$_branch")
+source=("git+https://github.com/jun7/wyeb.git#branch=$_branch")
 md5sums=('SKIP')
 
 pkgver(){

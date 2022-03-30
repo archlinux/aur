@@ -1,7 +1,7 @@
 pkgbase = wyeb-git
 	pkgdesc = A vim-like webkit2gtk browser
 	pkgver = 1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = http://wyeb.org/
 	arch = x86_64
 	license = GPL3
@@ -9,8 +9,7 @@ pkgbase = wyeb-git
 	depends = webkit2gtk
 	depends = discount
 	depends = perl-file-mimeinfo
-	source = git://github.com/jun7/wyeb.git#branch=master
+	source = git+https://github.com/jun7/wyeb.git#branch=master
 	md5sums = SKIP
 
 pkgname = wyeb-git
-
