@@ -8,8 +8,7 @@
 
 # Maintainer: Joseph Diza <josephm.diza@gmail.com>
 pkgname=marwaita-icons-git
-#pkgver=r3.d18eeee
-pkgver=r3.d18eeee
+pkgver=20200718
 pkgrel=1
 pkgdesc="Icon pack for linux"
 arch=('any')
