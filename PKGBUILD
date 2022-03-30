@@ -58,4 +58,8 @@ package() {
   install -Dm 644 "$srcdir/${_pkgname}/docs/README.video" "$pkgdir/usr/share/doc/${_pkgname}/video.txt"
   install -Dm 644 "$srcdir/${_pkgname}/README" "$pkgdir/usr/share/doc/${_pkgname}/manual.txt"
 
+  # Install the resources
+  mkdir "${pkgdir}/usr/share/${_pkgname}" -p
+  cp -a "${srcdir}/${_pkgname}/release/resources/"* "${pkgdir}/usr/share/${_pkgname}/"
+
   }
