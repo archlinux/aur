@@ -1,26 +1,26 @@
 pkgbase = noto-fonts-vf
 	pkgdesc = Google Noto variable fonts
-	pkgver = 20220126
+	pkgver = 20220327
 	pkgrel = 1
 	url = https://www.google.com/get/noto/
 	arch = any
 	license = custom:SIL
-	source = noto-fonts-vf-20220126.tar.gz::https://github.com/googlefonts/noto-fonts/archive/c27d6fad48db54fb253401999d79e9643bbb63c9.tar.gz
+	source = noto-fonts-vf-20220327.tar.gz::https://github.com/googlefonts/noto-fonts/archive/3ea292d22b86c20d971531b0d9f7eb04afbdda5c.tar.gz
 	source = 46-noto-mono.conf
 	source = 46-noto-serif.conf
 	source = 46-noto-sans.conf
 	source = 66-noto-mono.conf
 	source = 66-noto-serif.conf
 	source = 66-noto-sans.conf
-	sha256sums = 4f303cf97ac2b84cec41a644f597647cb13c98934c5874cfe3ae6acd5ab220dc
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	sha256sums = 3ad5c3c8505e8e5b543a8620db5535d630698891399c63ff9cae5c456b52b71f
+	sha256sums = f5c09b37280d7569b6c99a78511639be4ae25b8c5406464422fe0421fe13a884
+	sha256sums = c94368b24506770767d003e5bcba589a8e402e489c240ee52453bf3ac7e9b5fa
+	sha256sums = 83a8faf6a47954075f97a2d555048e2a6689c38603b2ca00150157bf645f4593
+	sha256sums = 4526289f59654e2a81dc734669a1ae4e416f9a56d0896ec3741c6bf065baf8a8
+	sha256sums = 4459944b63dc083107280f5d7375c69746bf80a09416a4a4909a100e58e5a33a
+	sha256sums = 52684bebf6447be22618d2a04ff37623ec92f9d8ccf6b6f972e5bcbcfee90d69
 
 pkgname = noto-fonts-vf
 
 pkgname = noto-fonts-slim-vf
-	pkgdesc = Google Noto variable fonts (limited type faces)
+	pkgdesc = Google Noto variable fonts (limited typefaces coverage)
