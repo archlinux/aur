@@ -1,7 +1,7 @@
 # Maintainer: Sukanka <su975853527 [AT] gmail.com>
 pkgname=yade
 pkgver=2022.01a
-pkgrel=2
+pkgrel=3
 pkgdesc="Yet Another Dynamic Engine, free software for discrete element modeling."
 arch=("x86_64")
 url='https://yade-dem.org/doc/index.html'
@@ -19,13 +19,24 @@ optdepends=(
 'python-mpi4py: passing all tests' 
 'tk: passing all tests' 
 )
-source=("${pkgname}-${pkgver}.tar.gz::https://dl.sukanka.com/ali/software/yade/yade-${pkgver}-2-x86_64.tar.gz"
+source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://dl.sukanka.com/d/ali/software/yade/yade-${pkgver}-${pkgrel}.tar.gz"
 )
-sha512sums=('d75864a5f53130bd4f7f90107ce8fd5953afcf0ee55e65446b44374dbc57ac92f8c118b1e40f48622dee82344fee8ace912186eae9d00359b0fad4e3391ed47a')
+sha512sums=('7144b5e37b67c6def336ee949324ce102f31a39e71dd46605397a649fd56981df8db3d51a32e13a3b2bbe803521a43caa75cf780550a4d6e4e05b743e7485a67')
 
 package(){
    mv $srcdir/usr ${pkgdir}
    
+   # Fix ref to $srcdir
+   rplc='\x0'
+    for ((i=1;i <=${#srcdir};i++))
+    do
+        rplc="$rplc\\x0"
+    done 
+    msg2 'Stripping $srcdir'
+    find ${pkgdir}/usr/lib/yade/* -type f -print0 | xargs -0 sed -i "s|${srcdir}/|${rplc}|g"
+    # .py file should not contains \x0
+    sed -i 's/\x0//g' ${pkgdir}/usr/lib/yade/py/yade/config.py
+    
    # Fix manpage
    cd ${pkgdir}/usr/share/man
    mkdir man1
