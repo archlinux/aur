@@ -1,15 +1,17 @@
 pkgbase = vrms-arch-git
-	pkgdesc = Virtual Richard M. Stallman for Arch Linux (gardenapple's fork)
-	pkgver = 0.1.0.r35.ge4d1380
+	pkgdesc = Virtual Richard M. Stallman for Arch Linux (updated fork)
+	pkgver = 2.0.r2.g128b201
 	pkgrel = 1
 	url = https://github.com/gardenappl/vrms-arch
 	arch = any
 	license = custom:BSD3
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	depends = pyalpm
 	source = git+https://github.com/gardenappl/vrms-arch.git
 	sha256sums = SKIP
 
 pkgname = vrms-arch-git
-
