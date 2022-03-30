@@ -1,7 +1,7 @@
 # Maintainer: László Várady <laszlo.varady93@gmail.com>
 
 pkgname=paho-mqtt-c
-pkgver=1.3.9
+pkgver=1.3.10
 pkgrel=1
 pkgdesc="Eclipse Paho C Client Library for the MQTT Protocol"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom:EPL2' 'custom:EDL')
 depends=('openssl')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/eclipse/paho.mqtt.c/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('386c9b5fa1cf6d0d516db12d57fd8f6a410dd0fdc5e9a2da870aae437a2535ed')
+sha256sums=('c70db96e66adacae411d5d875fbb08bca6ff9945de3d215b3af93cbd22792db5')
 
 build() {
   cd "${pkgname//-/.}-${pkgver}"
