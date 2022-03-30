@@ -1,0 +1,15 @@
+pkgbase = crfpp-git
+	pkgdesc = CRF++ is a simple, customizable, and open source implementation of Conditional Random Fields (CRFs) for segmenting/labeling sequential data.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://taku910.github.io/crfpp
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = gcc>=3.0.0
+	makedepends = gcc-libs
+	provides = crfpp
+	source = git+https://github.com/mtlynch/crfpp.git
+	sha256sums = SKIP
+
+pkgname = crfpp-git
