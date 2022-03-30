@@ -1,6 +1,6 @@
 pkgbase = btrfs-assistant
 	pkgdesc = An application for managing BTRFS subvolumes and Snapper snapshots
-	pkgver = 0.9.1
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://gitlab.com/btrfs-assistant/btrfs-assistant
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = btrfs-assistant
 	optdepends = snapper
 	optdepends = btrfsmaintenance
 	backup = etc/btrfs-assistant.conf
-	source = btrfs-assistant-0.9.1.tar.gz::https://gitlab.com/btrfs-assistant/btrfs-assistant/-/archive/0.9.1/btrfs-assistant-0.9.1.tar.gz
-	sha256sums = 2bb07c2ef81624faab5be852f805f2b74489297b01c751bbcfa90597ab8f72dc
+	source = btrfs-assistant-1.0.tar.gz::https://gitlab.com/btrfs-assistant/btrfs-assistant/-/archive/1.0/btrfs-assistant-1.0.tar.gz
+	sha256sums = 1e35c0f231bc7e3b0a34e6f5267c34e801536a2059a67e91e649fb8cc79db60f
 
 pkgname = btrfs-assistant

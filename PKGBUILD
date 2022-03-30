@@ -1,7 +1,7 @@
 # Maintainer: dalto <dalto at fastmail.com>
 
 pkgname=btrfs-assistant
-pkgver=0.9.1
+pkgver=1.0
 pkgrel=1
 pkgdesc="An application for managing BTRFS subvolumes and Snapper snapshots"
 arch=('x86_64')
@@ -12,7 +12,7 @@ optdepends=('snapper' 'btrfsmaintenance')
 makedepends=('git' 'cmake' 'qt5-tools')
 backup=(etc/btrfs-assistant.conf)
 source=("$pkgname-$pkgver.tar.gz::$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('2bb07c2ef81624faab5be852f805f2b74489297b01c751bbcfa90597ab8f72dc')
+sha256sums=('1e35c0f231bc7e3b0a34e6f5267c34e801536a2059a67e91e649fb8cc79db60f')
 
 build() {
 	cd "$srcdir"
@@ -25,7 +25,6 @@ package() {
 
 	cd "$srcdir/$pkgname-$pkgver"
 	install -Dm0644 btrfs-assistant.conf "$pkgdir/etc/btrfs-assistant.conf"
-	install -Dm0644 snapper-snap-check.desktop "$pkgdir/etc/xdg/autostart/snapper-snap-check.desktop"
-	install -Dm0644 org.garuda.btrfs-assistant.pkexec.policy "$pkgdir/usr/share/polkit-1/actions/org.garuda.btrfs-assistant.pkexec.policy"
+	install -Dm0644 org.btrfs-assistant.pkexec.policy "$pkgdir/usr/share/polkit-1/actions/org.btrfs-assistant.pkexec.policy"
 }
 
