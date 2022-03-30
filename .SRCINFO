@@ -13,6 +13,7 @@ pkgbase = gdm-settings
 	depends = libadwaita
 	depends = glib2
 	depends = python-gobject
+	depends = gettext
 	source = gdm-settings-0.4.tar.gz::https://github.com/realmazharhussain/gdm-settings/archive/refs/tags/v0.4.tar.gz
 	md5sums = e19ef962f22791fc1a423c3b99cf93fd
 
