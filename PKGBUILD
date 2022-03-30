@@ -3,7 +3,7 @@
 
 pkgname=winegui
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A user-friendly WINE manager (build from souce)"
 arch=('x86_64')
 url="https://gitlab.melroy.org/melroy/winegui"
@@ -34,5 +34,4 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" cmake --install build
-  chmod +x $pkgdir/usr/share/applications/*
 }
