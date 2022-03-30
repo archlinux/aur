@@ -31,9 +31,9 @@ if [ -z ${use_tracers+x} ]; then
   use_tracers=y
 fi
 
+## NOTICE: clang config is not ready yet in 5.17.x
 ## Choose between GCC and CLANG config (default is GCC)
 if [ -z ${_compiler+x} ] || [ "$_compiler" = "clang" ]; then
-  msg2 "WARNING: clang config is not ready yet... Using gcc"
   _compiler=gcc
 fi
 
