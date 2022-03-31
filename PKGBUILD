@@ -1,7 +1,7 @@
 # Maintainer: Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
 
 pkgname=pgl-git
-pkgver=2.3.1.1.r32.g13f606f
+pkgver=2.3.1.1.r77.g9d91ab6
 pkgrel=1
 pkgdesc='A privacy oriented firewall application (Daemon, CLI & GUI).'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=('unzip: for zipped blocklists'
             'networkmanager: to whitelist newly started network interfaces'
             'smtp-forwarder: to send reports'
             'tcptraceroute: to diagnose connection problems')
-makedepends=('git' 'zlib')
+makedepends=('git' 'zlib' 'qt5-tools')
 license=('GPL3')
 provides=('pgl')
 conflicts=('pgl' 'pgl-cli')
