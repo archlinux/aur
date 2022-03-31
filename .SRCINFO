@@ -18,3 +18,14 @@ pkgbase = zoho-cliq
 	sha256sums = 6f7704bce3bf38ef8a8acd1177afb470a810e42ca8f67b5d17c7920c3c162132
 
 pkgname = zoho-cliq
+
+pkgname = zoho-cliq-upstream-electron
+	pkgdesc = Zoho Cliq running on upstream Electron (experimental)
+	depends = alsa-lib
+	depends = gtk3
+	depends = libsecret
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	depends = xdg-utils
+	conflicts = zoho-cliq
