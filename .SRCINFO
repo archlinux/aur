@@ -1,6 +1,6 @@
 pkgbase = webui-aria2-git
 	pkgdesc = Pure HTML/CSS/JS frontend for aria2
-	pkgver = r407.ed546be
+	pkgver = r705.109903f
 	pkgrel = 1
 	url = https://github.com/ziahamza/webui-aria2
 	changelog = ChangeLog
