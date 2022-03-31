@@ -2,7 +2,7 @@
 
 pkgname=cubbit
 pkgdesc='Cubbit desktop-sync application'
-pkgver=9.0.3
+pkgver=9.2.4
 pkgrel=1
 arch=('x86_64')
 url='https://www.cubbit.io/'
@@ -10,7 +10,7 @@ license=('custom')
 depends=('gtk2' 'hicolor-icon-theme' 'libxss' 'libxtst')
 options=('!strip')
 source=("https://get.cubbit.io/desktop/linux/Cubbit-${pkgver}.AppImage")
-sha256sums=('7318d98b25b2ee31a0cd283492cb8ad6193769b04ffc95e2d938571b020ab4ac')
+sha256sums=('312e5038a822a452ed025c27e133ce10e0b5235c808ff4c53bca46a4de08cf32')
 
 prepare() {
   chmod +x Cubbit-${pkgver}.AppImage
@@ -30,7 +30,9 @@ package() {
 
   install -Dm755 "$srcdir"/squashfs-root/@cubbitdesktop -t "$pkgdir"/usr/share/cubbit/
   install -Dm644 "$srcdir"/squashfs-root/icudtl.dat -t "$pkgdir"/usr/share/cubbit/
-  install -Dm644 "$srcdir"/squashfs-root/chrome* -t "$pkgdir"/usr/share/cubbit/
+  install -Dm644 "$srcdir"/squashfs-root/chrome*.pak -t "$pkgdir"/usr/share/cubbit/
+  install -Dm755 "$srcdir"/squashfs-root/chrome_crashpad_handler -t "$pkgdir"/usr/share/cubbit/
+  install -Dm755 "$srcdir"/squashfs-root/chrome-sandbox -t "$pkgdir"/usr/share/cubbit/
   install -Dm644 "$srcdir"/squashfs-root/resources.pak -t "$pkgdir"/usr/share/cubbit/
   install -Dm644 "$srcdir"/squashfs-root/lib* -t "$pkgdir"/usr/share/cubbit/
   install -Dm644 "$srcdir"/squashfs-root/snapshot_blob.bin -t "$pkgdir"/usr/share/cubbit/
