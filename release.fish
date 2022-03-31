@@ -16,17 +16,17 @@ makepkg -i; or exit
 echo "Generating .SRCINFO..."
 makepkg --printsrcinfo >.SRCINFO
 
-echo "Committing to git..."
-git commit -am "Release of $stripe_cli_version"
-
 echo "Testing that the new version works with stripe -v..."
 if not stripe -v
     echo "Failed to run stripe!"
     exit 1
 end
 
-read -p 'echo "Ready to push? [Y/n] "' ok
+read -p 'echo "Ready to commit/push? [Y/n] "' ok
 if test $ok = "y" -o $ok = ""
+    echo "Committing to git..."
+    git commit -am "Release of $stripe_cli_version"
+
     echo "Pushing..."
     git push origin master
     git push aur master

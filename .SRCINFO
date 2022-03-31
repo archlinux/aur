@@ -1,12 +1,12 @@
 pkgbase = stripe-cli-bin
 	pkgdesc = A command-line tool for Stripe
-	pkgver = 1.8.2
+	pkgver = 1.8.3
 	pkgrel = 1
 	url = https://stripe.com/docs/stripe-cli
 	arch = x86_64
 	license = Apache
 	conflicts = stripe-cli
-	source = https://github.com/stripe/stripe-cli/releases/download/v1.8.2/stripe_1.8.2_linux_x86_64.tar.gz
-	sha256sums = ffecd05a09753c8df3ecea868daac12482ee42653c0c0bb683ce246e11e6e37b
+	source = https://github.com/stripe/stripe-cli/releases/download/v1.8.3/stripe_1.8.3_linux_x86_64.tar.gz
+	sha256sums = 308551f35fead5cf0c2454189d770deea9dc5ce40de595f3908ffe9b048aa6cb
 
 pkgname = stripe-cli-bin
