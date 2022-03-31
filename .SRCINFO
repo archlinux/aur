@@ -1,19 +1,18 @@
 pkgbase = zlib-ng-git
-	pkgdesc = Zlib replacement with optimizations for "next generation" systems.
-	pkgver = r1549.b22bc51
+	pkgdesc = Zlib data compression library for the next generation systems
+	pkgver = r1918.41faa084
 	pkgrel = 1
-	epoch = 4
 	url = https://github.com/zlib-ng/zlib-ng
-	arch = any
-	license = custom: Zlib License
-	makedepends = cmake
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	arch = aarch64
+	license = custom
 	makedepends = git
 	depends = glibc
-	provides = zlib
-	provides = zlib-ng
-	conflicts = zlib
+	options = !emptydirs
 	source = git+https://github.com/zlib-ng/zlib-ng.git
-	b2sums = SKIP
+	md5sums = SKIP
 
 pkgname = zlib-ng-git
-
