@@ -3,9 +3,9 @@
 
 pkgname=naiveproxy
 pkgdesc="A Proxy using Chrome's network stack to camouflage traffic with strong censorship resistence and low detectablility."
-pkgver=99.0.4844.51_1
+pkgver=100.0.4896.60_1
 pkgrel=1
-_pkgver=99.0.4844.51
+_pkgver=100.0.4896.60
 _pkgrel=1
 arch=('x86_64')
 url='https://github.com/klzgrad/naiveproxy'
@@ -13,7 +13,7 @@ license=('BSD')
 depends=("gcc-libs" "glibc")
 makedepends=("ninja" "gn" "llvm" "lld" "clang" "ccache" "python" "unzip")
 
-_PGO_PATH='chrome-linux-4844-1645865283-f109af6d624d1eac542865359a5743a7256bac10.profdata'
+_PGO_PATH='chrome-linux-4896-1648230561-717dc24b4ffc1663d1990243de5d49fac8001b06.profdata'
 source=(
   "naiveproxy.service"
   "naiveproxy@.service"
@@ -26,15 +26,15 @@ sha1sums=(
   "4c18f44ba51d40bfd7e6ae8ecb30b8e812acb8e8"
   "013b31ae43e309bc6560b61e8b4196f8f14f738f"
   "3727d7da81b1480d60e593a7d6878d981b35c4f6"
-  "926dce34339a555648a80b36598a1c32ca349c1b"
-  "f109af6d624d1eac542865359a5743a7256bac10"
+  "dfbeeaf9485de98de0870f5384c65917c3223357"
+  "717dc24b4ffc1663d1990243de5d49fac8001b06"
 )
 sha256sums=(
   "c05026423ca08e2c712745b717c23395e344f2c99b2dad30beed8e26922d268f"
   "daa0f591233625730168f3ea006f1d5a7e439e26b35a1051d957e394aa8a4440"
   "5bc9ef361e6303e151b6e63deb31b47e24a4f34ade4d8f092a04bc98e89a2edb"
-  "e216eb250e921f2fed3445fbaf6677412637f73ed920010b6b75af39490ce438"
-  "1ab36777082237f59b2b1be2f66279cd58767539393059644c0ec2968373c619"
+  "bcab770b15e6c5d3f50a83992d084c8f53942aa6ebd59463c21979be668a3e61"
+  "66fcba3f0ca6e97713ffd72c3937230ba63116ae64e9d520c960e368df6c954e"
 )
 
 backup=(etc/naiveproxy/config.json)
@@ -64,22 +64,20 @@ build(){
     symbol_level=0"
 
   PYTHON=$(which python3 2>/dev/null)
-  if which ccache >/dev/null 2>&1; then
-    export CCACHE_SLOPPINESS=time_macros
-    export CCACHE_BASEDIR="$PWD"
-    export CCACHE_CPP2=yes
-    CCACHE=ccache
-  fi
+
+  export CCACHE_SLOPPINESS=time_macros
+  export CCACHE_BASEDIR="$PWD"
+  export CCACHE_CPP2=yes
+  CCACHE=ccache
+
   WITH_CLANG=Linux_x64
   WITH_PGO=linux
   WITH_GN=linux
 
   PGO_PATH=$(cat chrome/build/$WITH_PGO.pgo.txt)
 
-  if [ "$CCACHE" ]; then
-    flags="$flags
-      cc_wrapper=\"$CCACHE\""
-  fi
+  flags="$flags
+    cc_wrapper=\"$CCACHE\""
 
   flags="$flags"'
     is_clang=true
