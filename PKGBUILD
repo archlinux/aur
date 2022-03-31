@@ -9,20 +9,20 @@ url='http://sourceforge.net/projects/peerguardian/'
 license=('GPL3')
 depends=('bash' 'systemd' 'dbus' 'coreutils' 'procps-ng' 'logrotate' 'wget' 'iptables' 'libnetfilter_queue' 'cron' 'qt5-base' 'whois')
 optdepends=('unzip: for zipped blocklists'
-	    'p7zip: for 7z blocklists'
-      	    'net-tools: to whitelist local IP addresses'
-      	    'networkmanager: to whitelist newly started network interfaces'
-      	    'smtp-forwarder: to send reports'
-	    'tcptraceroute: to diagnose connection problems')
+            'p7zip: for 7z blocklists'
+            'net-tools: to whitelist local IP addresses'
+            'networkmanager: to whitelist newly started network interfaces'
+            'smtp-forwarder: to send reports'
+            'tcptraceroute: to diagnose connection problems')
 makedepends=('git' 'zlib')
 license=('GPL3')
 provides=('pgl')
 conflicts=('pgl' 'pgl-cli')
 backup=('etc/pgl/allow.p2p'
-	'etc/pgl/blocklists.list'
-	'etc/pgl/pglcmd.conf'
-	'etc/logrotate.d/pglcmd'
-	'etc/logrotate.d/pgld')
+        'etc/pgl/blocklists.list'
+        'etc/pgl/pglcmd.conf'
+        'etc/logrotate.d/pglcmd'
+        'etc/logrotate.d/pgld')
 source=('git://git.code.sf.net/p/peerguardian/code/')
 sha256sums=('SKIP')
 
