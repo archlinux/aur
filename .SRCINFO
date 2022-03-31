@@ -1,0 +1,17 @@
+pkgbase = kopano-webapp-spellchecker-languagepack-en-gb
+	pkgver = 2.0.1
+	pkgrel = 1
+	changelog = changelog
+	arch = any
+	groups = kopano
+	groups = kopano-webapp-plugins
+	makedepends = apache-ant
+	makedepends = libxml2
+	makedepends = git
+	makedepends = gzip
+	depends = kopano-webapp-spellchecker
+	depends = kopano-webapp
+	source = kopano-webapp-spellchecker-languagepack-en-gb::git+https://stash.kopano.io/scm/kwa/spellchecker-languagepack-en-gb.git#tag=v2.0.1
+	md5sums = SKIP
+
+pkgname = kopano-webapp-spellchecker-languagepack-en-gb
