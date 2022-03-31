@@ -7,11 +7,11 @@ pkgdesc="Easy to use, tracker-inspired music sequencer."
 arch=('i686' 'x86_64')
 url="http://zytrax.org/"
 license=('MIT')
-makedepends=('scons' 'gcc')
+makedepends=('scons' 'gcc', 'git')
 depends=('gtkmm3' 'libpulse')
 optdepends=('vst-plugins: Package group for vst plugins')
 source=(
-    "$pkgname::git://github.com/reduz/zytrax.git"
+    "$pkgname::git+https://github.com/reduz/zytrax.git"
     "zytrax.desktop"
 )
 sha256sums=(
