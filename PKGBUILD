@@ -3,7 +3,7 @@
 # Contributor: Nahuel Gomez Castro <nahual_gomca@outlook.com.ar>
 
 pkgname=icon-library
-pkgver=0.0.9
+pkgver=0.0.11
 pkgrel=1
 pkgdesc='Find the right symbolic icon to use on your GNOME application'
 arch=(x86_64 aarch64)
@@ -18,11 +18,12 @@ makedepends=(
 	rust
 )
 checkdepends=(appstream-glib)
-source=("${url}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('3eed8f6d978f3b6acd2611795de5a8a95c632d14fed3f589ad7cfd00a63684e1')
+_commit=a8b98c70afb082c27590e9f37b0e670df70903b2
+source=("${url}/-/archive/${_commit}/${pkgname}-${_commit}.tar.gz")
+b2sums=('1fc49c307a92706286763fb336cb0b9c909d5c06055e03ff01e24a9e5cdbca02d60fae9830b5e036ca9b51f3a866041414c1bd924be4bd9d8574befd1172b757')
 
 build() {
-	arch-meson "${pkgname}-${pkgver}" build
+	arch-meson "${pkgname}-${_commit}" build
 	meson compile -C build
 }
 
