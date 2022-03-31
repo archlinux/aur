@@ -1,0 +1,19 @@
+pkgbase = tmobile-internet-tools
+	pkgdesc = Set of tools for working with T-Mobile Home Internet gateways
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.com/NoahJelen/tmobile-internet-tools
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = cargo
+	makedepends = gzip
+	depends = ncurses
+	depends = gcc-libs
+	depends = glibc
+	depends = networkmanager
+	depends = openssl
+	source = https://gitlab.com/NoahJelen/tmobile-internet-tools/-/archive/0.1.0/tmobile-internet-tools-0.1.0.zip
+	md5sums = SKIP
+
+pkgname = tmobile-internet-tools
