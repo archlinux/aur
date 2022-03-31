@@ -1,0 +1,14 @@
+pkgbase = videowall-git
+	pkgdesc = Mimics a video wall by creating an overlay filter for ffmpeg
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/arcamagna/videowall
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = _pkgname
+	conflicts = _pkgname
+	source = git+https://github.com/arcamagna/videowall.git
+	md5sums = SKIP
+
+pkgname = videowall-git
