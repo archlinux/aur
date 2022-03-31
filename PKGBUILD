@@ -5,7 +5,7 @@
 pkgbase=noto-fonts-cjk-vf
 pkgname=(noto-fonts-{cjk,{cjk-,}{hk,jp,kr,sc,tc}}-vf)
 pkgver=20220126
-pkgrel=2
+pkgrel=3
 pkgdesc='Google Noto CJK variable fonts'
 url='https://www.google.com/get/noto/'
 license=(custom:SIL)
@@ -22,7 +22,7 @@ source=("noto-cjk-sans-${_sansver}.zip::https://github.com/googlefonts/noto-cjk/
         "NotoSansMonoCJK-VF-${_sansver}.otf.ttc::https://github.com/googlefonts/noto-cjk/raw/${_sanscommit}/Sans/Variable/OTC/NotoSansMonoCJK-VF.otf.ttc"
         "noto-cjk-serif-${_serifver}.zip::https://github.com/googlefonts/noto-cjk/releases/download/Serif2.001/02_NotoSerifCJK-OTF-VF.zip"
         70-noto-{cjk,hk,jp,kr,sc,tc}.conf)
-sha256sums=('c3d297e0ca1a78b1f8965b65bac9da4402185dbb02f75111f834fa9b9b290d60'
+sha256sums=('d1e143273cc7ad37b710cdb0d188a32553cee9cfd60129dcee9d59f91e3c6b48'
             '3a73c225abcfd5742ab84e613b427fb5b40c9e59b70fe3d1683f9b1da96568a0'
             'bedeb86226fefd5fd69b54ed4660415861864f879c0b7da08b1fd71ca35a78b0'
             '357e9ed6553087567ec5a28f835db5c43d3cd68a688e4677f759cca465379a32'
@@ -37,11 +37,11 @@ _langs=(hk jp kr sc tc)
 
 prepare() {
   mkdir -p noto-cjk/{Sans,Serif}
-  bsdtar -xf noto-cjk-sans-${_sansver}.zip -C noto-cjk/Sans --exclude=../LICENSE
+  bsdtar -xf noto-cjk-sans-${_sansver}.zip -C noto-cjk/Sans
   # variable mono otc is missing https://github.com/googlefonts/noto-cjk/issues/214
   cp NotoSansMonoCJK-VF-${_sansver}.otf.ttc noto-cjk/Sans/Variable/OTC/NotoSansMonoCJK-VF.otf.ttc
   bsdtar -xf noto-cjk-serif-${_serifver}.zip -C noto-cjk/Serif --exclude=../LICENSE
-  bsdtar -Oxf noto-cjk-sans-${_sansver}.zip ../LICENSE  > noto-cjk/LICENSE
+  cp noto-cjk/Sans/LICENSE noto-cjk/LICENSE
 }
 
 package_noto-fonts-cjk-vf(){
@@ -108,7 +108,7 @@ _package_subset(){
   for _font in Sans Serif; do
     install -Dm644 \
       ${_font}/Variable/OTF/Subset/Noto${_font}${_lang^^}-VF.otf \
-      "$pkgdir"/usr/share/fonts/noto-cjk/Noto{_font}${_lang^^}.otf
+      "$pkgdir"/usr/share/fonts/noto-cjk/Noto${_font}${_lang^^}.otf
 
     # mono is available only for sans
     [ "${_font}" = "Sans" ] || continue
@@ -128,35 +128,35 @@ _package_subset(){
 }
 
 package_noto-fonts-cjk-hk-vf(){
-  pkgdesc+=' - Traditional Chinese HK as default language (OpenType locl)'
+  pkgdesc+=' with Traditional Chinese HK as the default language'
 
   _lang=hk
   _package_locl
 }
 
 package_noto-fonts-cjk-jp-vf(){
-  pkgdesc+=' - Japanese as default language (OpenType locl)'
+  pkgdesc+=' with Japanese as the default language'
 
   _lang=jp
   _package_locl
 }
 
 package_noto-fonts-cjk-kr-vf(){
-  pkgdesc+=' - Korean as default language (OpenType locl)'
+  pkgdesc+=' with Korean as the default language'
 
   _lang=kr
   _package_locl
 }
 
 package_noto-fonts-cjk-sc-vf(){
-  pkgdesc+=' - Simplified Chinese as default language (OpenType locl)'
+  pkgdesc+=' with Simplified Chinese as the default language'
 
   _lang=sc
   _package_locl
 }
 
 package_noto-fonts-cjk-tc-vf(){
-  pkgdesc+=' - Traditional Chinese as default language (OpenType locl)'
+  pkgdesc+=' with Traditional Chinese as the default language'
 
   _lang=tc
   _package_locl
