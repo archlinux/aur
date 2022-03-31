@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=nxdumptool host script
+Comment=Nintendo Switch Dump Tool - host script
+Icon=nxdt
+Exec=/usr/bin/nxdt_host.py %U
+Categories=Utility;
+Terminal=false
