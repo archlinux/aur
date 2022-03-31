@@ -1,26 +1,32 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Andrew Steinke <rkcf@rkcf.me>
 # Contributor: mdraw.gh at gmail dot com
-_base=better-exceptions
-pkgname=python-${_base}
+
+pkgname=python-better-exceptions
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Pretty and helpful exceptions, automatically"
-arch=(any)
-url="https://github.com/Qix-/${_base}"
-license=(MIT)
-depends=(python)
-makedepends=(python-setuptools)
-source=(${url}/archive/${pkgver}.tar.gz)
-sha512sums=('720cb657a45d5278014720a7aa309a4ee0b6dd014e6058667c09c41a5a69f319993cdb28043ab7b621008267a76fad71d36cc934eee027748db7bf8537659e66')
+arch=('any')
+url='https://github.com/Qix-/better-exceptions'
+license=('MIT')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/b/better-exceptions/better_exceptions-$pkgver.tar.gz")
+sha256sums=('e4e6bc18444d5f04e6e894b10381e5e921d3d544240418162c7db57e9eb3453b')
 
 build() {
-  cd ${_base}-${pkgver}
-  export PYTHONHASHSEED=0
-  python setup.py build
+	cd "better_exceptions-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-  cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	cd "better_exceptions-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s \
+		"$_site/better_exceptions-$pkgver.dist-info/LICENSE.txt" \
+		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
