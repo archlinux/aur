@@ -1,6 +1,6 @@
 pkgbase = fractal-next
-	pkgdesc = GTK4 client for Matrix written in Rust (fractal-next branch)
-	pkgver = r547.ec125425
+	pkgdesc = GTK4 client for Matrix written in Rust (5.alpha version)
+	pkgver = 5.alpha.r550.eb9123ed
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Fractal
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = fractal-next
 	provides = fractal
 	conflicts = fractal
 	conflicts = fractal-git
-	source = fractal::git+https://gitlab.gnome.org/GNOME/fractal#branch=fractal-next
+	source = fractal::git+https://gitlab.gnome.org/GNOME/fractal#branch=main
 	sha256sums = SKIP
 
 pkgname = fractal-next
