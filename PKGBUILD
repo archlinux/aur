@@ -1,12 +1,11 @@
 # Maintainer: Lucas Rooyakkers <lucas rooyakkers @ pm me>
 pkgname=mascii-git
 pkgver=r4.74d47b3
-pkgrel=1
+pkgrel=2
 pkgdesc="This is source code for the Musical Ascii (\"Mascii\") polyphonic text-based music notation system."
-arch=(x86_64)
+arch=('any')
 url="https://github.com/arikast/mascii-quickstart"
 license=('MIT')
-groups=()
 depends=('java-runtime')
 makedepends=('java-environment' 'maven')
 provides=('mascii')

@@ -1,9 +1,9 @@
 pkgbase = mascii-git
 	pkgdesc = This is source code for the Musical Ascii ("Mascii") polyphonic text-based music notation system.
-	pkgver = 1
-	pkgrel = 1
+	pkgver = r4.74d47b3
+	pkgrel = 2
 	url = https://github.com/arikast/mascii-quickstart
-	arch = x86_64
+	arch = any
 	license = MIT
 	makedepends = java-environment
 	makedepends = maven
