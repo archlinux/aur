@@ -2,10 +2,9 @@
 # Maintainer: farwayer <farwayer@gmail.com>
 # Submitter: Francisco Demartino <demartino.francisco@gmail.com>
 
-_ver=1.4.6
 _pkgname=telegram-purple
 pkgname=${_pkgname}-git
-pkgver=1.4.6.r1593.9bd5390
+pkgver=1.4.7.r2.g5a98a34
 pkgrel=1
 pkgdesc="Adds support for Telegram to Pidgin, Adium, Finch and other Libpurple based messengers."
 arch=('any')
@@ -21,7 +20,7 @@ sha512sums=('SKIP')
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
-	printf "${_ver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
