@@ -1,6 +1,6 @@
 pkgbase = nspirefs-fuse-git
 	pkgdesc = Fuse filesystem for TI-Nspire calculators
-	pkgver = 5.c33e782
+	pkgver = 6.70cbdfe
 	pkgrel = 1
 	url = https://github.com/antonilol/nspirefs-fuse
 	arch = any

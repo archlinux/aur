@@ -1,7 +1,7 @@
 # Maintainer: Antoni Spaanderman <56turtle56@gmail.com>
 
 pkgname=nspirefs-fuse-git
-pkgver=5.c33e782
+pkgver=6.70cbdfe
 pkgrel=1
 pkgdesc="Fuse filesystem for TI-Nspire calculators"
 arch=('any')
@@ -13,13 +13,14 @@ depends=('fuse' 'nodejs' 'nspire-tools-git')
 makedepends=('git' 'npm')
 
 build() {
-  cd "$srcdir/nspirefs-fuse"
+  cd "$srcdir"/nspirefs-fuse
   npm i
+  npm run build
 }
 
 package() {
-  cd "$pkgdir"
-  mkdir -p usr/{bin,lib}
-  cp -r "$srcdir"/nspirefs-fuse usr/lib/"$pkgname"
-  ln -sr usr/lib/"$pkgname"/nspirefs-fuse.js usr/bin/nspirefs-fuse
+  mkdir -p "$pkgdir"/usr/{bin,lib}
+  cp -r "$srcdir"/nspirefs-fuse "$pkgdir"/usr/lib/"$pkgname"
+  sed -i '1s;^;#!/usr/bin/env node\n\n;' "$pkgdir"/usr/lib/"$pkgname"/nspirefs-fuse.js
+  ln -sr "$pkgdir"/usr/lib/"$pkgname"/nspirefs-fuse.js "$pkgdir"/usr/bin/nspirefs-fuse
 }
