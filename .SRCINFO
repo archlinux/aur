@@ -1,7 +1,7 @@
 pkgbase = gimp-brush-max-512
 	pkgdesc = Gimp with easy-to-handle tool sizes
 	pkgver = 2.10.30
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.gimp.org/
 	install = gimp.install
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = gimp-brush-max-512
 	depends = desktop-file-utils
 	depends = gegl
 	depends = glib-networking
+	depends = gvfs
 	depends = hicolor-icon-theme
 	depends = openjpeg2
 	depends = lcms2
@@ -45,6 +46,7 @@ pkgbase = gimp-brush-max-512
 	provides = gimp=2.10.30
 	conflicts = gimp
 	replaces = gimp-plugin-wavelet-decompose
+	options = debug
 	source = https://download.gimp.org/pub/gimp/v2.10/gimp-2.10.30.tar.bz2
 	source = 0001-no-check-update.patch
 	source = linux.gpl

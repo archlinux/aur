@@ -5,12 +5,12 @@
 pkgname=gimp-brush-max-512
 _pkgname=gimp
 pkgver=2.10.30
-pkgrel=1
+pkgrel=2
 pkgdesc='Gimp with easy-to-handle tool sizes'
 url='https://www.gimp.org/'
 arch=('x86_64')
 license=('GPL' 'LGPL')
-depends=('babl' 'dbus-glib' 'desktop-file-utils' 'gegl' 'glib-networking' 'hicolor-icon-theme'
+depends=('babl' 'dbus-glib' 'desktop-file-utils' 'gegl' 'glib-networking' 'gvfs' 'hicolor-icon-theme'
          'openjpeg2' 'lcms2' 'libheif' 'libexif' 'libgudev' 'libmng' 'libmypaint' 'librsvg' 'libwebp'
          'libwmf' 'libxmu' 'libxpm' 'mypaint-brushes1' 'openexr' 'poppler-data' 'gtk2' 'graphviz')
 makedepends=('alsa-lib' 'curl' 'ghostscript' 'gtk-doc' 'intltool' 'iso-codes' 'poppler-glib')
@@ -22,6 +22,7 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
 conflicts=('gimp')
 provides=("${_pkgname}=${pkgver}")
 replaces=('gimp-plugin-wavelet-decompose')
+options=('debug')
 install=gimp.install
 source=(https://download.gimp.org/pub/gimp/v${pkgver%.*}/${_pkgname}-${pkgver}.tar.bz2
         0001-no-check-update.patch
