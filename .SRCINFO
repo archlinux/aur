@@ -3,7 +3,6 @@ pkgbase = pgl-git
 	pkgver = 2.3.1.1.r32.g13f606f
 	pkgrel = 1
 	url = http://sourceforge.net/projects/peerguardian/
-	install = install
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -39,4 +38,3 @@ pkgbase = pgl-git
 	sha256sums = SKIP
 
 pkgname = pgl-git
-

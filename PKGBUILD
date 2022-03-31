@@ -23,7 +23,6 @@ backup=('etc/pgl/allow.p2p'
 	'etc/pgl/pglcmd.conf'
 	'etc/logrotate.d/pglcmd'
 	'etc/logrotate.d/pgld')
-install=install
 source=('git://git.code.sf.net/p/peerguardian/code/')
 sha256sums=('SKIP')
 
