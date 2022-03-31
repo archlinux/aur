@@ -1,23 +1,20 @@
 diff --git a/ares/desktop-ui/desktop-ui.cpp b/ares/desktop-ui/desktop-ui.cpp
-@@ -15,8 +15,19 @@
-     if(inode::exists(location)) return location;
-   #endif
- 
--  directory::create({Path::userData(), "ares/"});
--  return {Path::userData(), "ares/", name};
+@@ -23,15 +23,15 @@
+   // ship with the executable.
+   // On Windows, this allows settings from to be carried over
+   // from previous versions (pre-portable)
+-  location = {Path::userData(), "ares/", name};
 +  location = {Path::sharedData(), "ares/", name};
-+  if(inode::exists(location)) return location;
-+
-+  if(directory::exists({Path::userSettings(), "lucia/"})) {
-+    directory::rename({Path::userSettings(), "lucia/"}, {Path::userSettings(), "ares/"});
-+  }
-+  
-+  if(directory::exists({Path::userData(), "lucia/"})) {
-+    directory::rename({Path::userData(), "lucia/"}, {Path::userData(), "ares/"});
-+  }
-+  
-+  directory::create({Path::userSettings(), "ares/"});
-+  return {Path::userSettings(), "ares/", name};
- }
+   if(inode::exists(location)) return location;
  
- #include <nall/main.hpp>
+   // On non-windows platforms, after exhausting other options,
+   // default to userData, on Windows, default to program dir
+   // this ensures Portable mode is the default on Windows platforms.
+   #if !defined(PLATFORM_WINDOWS)
+-    directory::create({Path::userData(), "ares/"});
+-    return {Path::userData(), "ares/", name};
++    directory::create({Path::userSettings(), "ares/"});
++    return {Path::userSettings(), "ares/", name};
+   #else 
+     return {Path::program(), name};
+   #endif
