@@ -1,7 +1,8 @@
 # Maintainer: Mohammad Abdolirad <m.abdolirad@gmail.com>
+# Contributor: Morteza NourelahiAlamdari <m@0t1.me>
 
 pkgname=wait4x-bin
-pkgver=1.1.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Wait4X allows you to wait for a port or a service to enter the requested state"
 arch=('x86_64')
@@ -11,7 +12,7 @@ provides=('wait4x')
 conflicts=('wait4x')
 depends=('glibc')
 source=("${pkgname}-$pkgver::https://github.com/atkrad/wait4x/releases/download/v$pkgver/wait4x-linux-amd64")
-sha256sums=('8b3f8d418668953b937679b211921323c4db1e431b3c3c988436bbbb053fb6f2')
+sha256sums=('902d7214f6a394a7c3733a6c1e7e3211c5b93e3152e33a92ee8b5ff076038e8c')
 
 package() {
         install -Dm 755 "${pkgname}-$pkgver" "$pkgdir/usr/bin/wait4x"
