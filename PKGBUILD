@@ -2,7 +2,7 @@
 # Contributor:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=pomerium-bin
-pkgver=0.17.0
+pkgver=0.17.1
 pkgrel=1
 pkgdesc='Identity-aware access proxy'
 arch=('x86_64' 'aarch64')
@@ -16,11 +16,11 @@ source=('pomerium.sysusers')
 source_x86_64=("pomerium-server-$pkgver-x86_64.deb::$url/releases/download/v$pkgver/pomerium_${pkgver}-1_amd64.deb")
 source_aarch64=("pomerium-server-$pkgver-aarch64.deb::$url/releases/download/v$pkgver/pomerium_${pkgver}-1_arm64.deb")
 sha256sums=('36b44da89f922a8017d5b26ac6fd71215e4d82525d94161f999aba6e223fd111')
-sha256sums_x86_64=('913dd22f503041a4c0efbce4fac46f9bece65667c0774a96bea384ceec544498')
-sha256sums_aarch64=('0b301fd8e43ec29a916d34481d0b89b3e6ba4c0569eb62459d244a1997cab216')
+sha256sums_x86_64=('a55db4299a9102e814a7af3c6123640d1e617b1947e14c8152397b77ebb9a2bb')
+sha256sums_aarch64=('3dbff777f6938432369c1d8415199c52f25f9c0a7b35c5bccba91f0a87767551')
 
 prepare() {
-	mkdir dump
+	mkdir -p dump
 	bsdtar xf data.tar.gz -C dump
 }
 

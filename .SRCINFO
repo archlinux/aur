@@ -1,6 +1,6 @@
 pkgbase = pomerium-bin
 	pkgdesc = Identity-aware access proxy
-	pkgver = 0.17.0
+	pkgver = 0.17.1
 	pkgrel = 1
 	url = https://github.com/pomerium/pomerium
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = pomerium-bin
 	backup = etc/pomerium/config.yaml
 	source = pomerium.sysusers
 	sha256sums = 36b44da89f922a8017d5b26ac6fd71215e4d82525d94161f999aba6e223fd111
-	source_x86_64 = pomerium-server-0.17.0-x86_64.deb::https://github.com/pomerium/pomerium/releases/download/v0.17.0/pomerium_0.17.0-1_amd64.deb
-	sha256sums_x86_64 = 913dd22f503041a4c0efbce4fac46f9bece65667c0774a96bea384ceec544498
-	source_aarch64 = pomerium-server-0.17.0-aarch64.deb::https://github.com/pomerium/pomerium/releases/download/v0.17.0/pomerium_0.17.0-1_arm64.deb
-	sha256sums_aarch64 = 0b301fd8e43ec29a916d34481d0b89b3e6ba4c0569eb62459d244a1997cab216
+	source_x86_64 = pomerium-server-0.17.1-x86_64.deb::https://github.com/pomerium/pomerium/releases/download/v0.17.1/pomerium_0.17.1-1_amd64.deb
+	sha256sums_x86_64 = a55db4299a9102e814a7af3c6123640d1e617b1947e14c8152397b77ebb9a2bb
+	source_aarch64 = pomerium-server-0.17.1-aarch64.deb::https://github.com/pomerium/pomerium/releases/download/v0.17.1/pomerium_0.17.1-1_arm64.deb
+	sha256sums_aarch64 = 3dbff777f6938432369c1d8415199c52f25f9c0a7b35c5bccba91f0a87767551
 
 pkgname = pomerium-bin
