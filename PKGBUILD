@@ -22,7 +22,6 @@ backup=('etc/pgl/allow.p2p'
 	'etc/pgl/pglcmd.conf'
 	'etc/logrotate.d/pglcmd'
 	'etc/logrotate.d/pgld')
-install=install
 changelog=changelog
 source=("https://downloads.sourceforge.net/project/peerguardian/PeerGuardian%20Linux/$pkgver/pgl-$pkgver.tar.gz")
 sha1sums=('a91c0c49cdbf78aa6cc1d93b8ed6843290460520')
