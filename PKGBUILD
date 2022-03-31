@@ -1,3 +1,4 @@
+# Find this package on https://github.com/pietmacom/kopano-pkgbuilds.git
 pkgname='kopano-libvmime'
 pkgver=0.9.2k4
 pkgrel=1
@@ -20,6 +21,12 @@ _tagPrefix="v"
 # template start; name=base-scm; version=1;
 #_tagPrefix=""
 #_tagSuffix=""
+#_source=""
+
+if [[ "${pkgname}" == *-latest ]] && [ ! -z "${_source}" ] && [[ "${_source}" == git+* ]];
+then
+    pkgver=$(git ls-remote --refs --tags "$(echo "${_source}" | sed 's|^git+||')" | sed 's|.*tags/\(.*\)$|\1|' | grep "^${_tagPrefix}.*" | grep ".*${_tagSuffix}$" | sed "s|${_tagPrefix}\(.*\)${_tagSuffix}|\1|" | sort -u -V |  grep -vE "(beta|alpha|test)" | tail -n 1)
+fi
 
 _basePkgName="${pkgname//-git/}"
 if [[ "${pkgname}" == *-git ]];
@@ -63,8 +70,83 @@ pkgver() {
 	else
 	    echo "${pkgver}" | sed "s|\(.*\)-git|1.r${_revision}|"
 	fi
+#    elif [[ "${pkgname}" == *-latest ]];
+#    then
+#	#_tagReleaseFormat="^[0-9]*(\.[0-9])*$"
+#	_lastRelease=$(git tag -l "${_tagPrefix}*" --sort=v:refname | grep -v "(alpha|beta|test)"  | tail -n 1)
+#	echo "${_lastRelease}" | sed "s|${_tagPrefix}\(.*\)${_tagSuffix}|\1|"
     else
-        echo ${pkgver}
+        echo "${pkgver}"
+    fi
+}
+
+_patchFromGit() {
+    _patchDir="${srcdir}/$(basename $(pwd))-patch.git"
+    if [ ! -e "${_patchDir}" ];
+    then
+	git clone --bare ${1} ${_patchDir}
+    fi
+
+    _branchName="${_sourceBranch//#*=/}"
+    _patchGIT="git --git-dir="${_patchDir}""
+
+    # Patch From Specific Range
+    if [ ! -z "${3}" ];
+    then
+
+	_sourceCommit=$($_patchGIT rev-parse --verify --quiet "${2}")
+	_targetCommit=$($_patchGIT rev-parse --verify --quiet "${3}")
+	if $_patchGIT format-patch "^${_sourceCommit}" "${_targetCommit}" --stdout | git apply -v ;
+	then
+	    echo "Patch Applied From Commit Between ${2} to ${3}"
+	else
+	    echo "Patch Failed."
+	    exit 1
+        fi
+
+    # Patch From Specific Commit
+    elif [ ! -z "${2}" ];
+    then
+
+	_sourceCommit=$($_patchGIT rev-parse --verify --quiet "${2}")
+	if $_patchGIT format-patch -1 "${_sourceCommit}" --stdout | git apply -v ;
+	then
+	    echo "Patch Applied From Commit ${2}"
+	else
+	    echo "Patch Failed."
+	    exit 1
+	fi
+
+    # Patch From "*-latest-patch" Branch
+    elif [[ "${pkgname}" != *-git ]] \
+	 && _sourceCommit=$($_patchGIT rev-parse --verify --quiet "${_branchName}") \
+	 && _targetCommit=$($_patchGIT rev-parse --verify --quiet "${_branchName}-latest-patch") ;
+    then
+
+	if $_patchGIT format-patch "^${_sourceCommit}" "${_targetCommit}" --stdout | git apply -v ;
+	then
+	    echo "Patch Applied From Branch ${_branchName}-latest-patch"
+	else
+	    echo "Patch Failed."
+	    exit 1
+	fi
+
+    # Patch From "master-latest-patch" Branch
+    elif _sourceCommit=$($_patchGIT rev-parse --verify --quiet "master") \
+         && _targetCommit=$($_patchGIT rev-parse --verify --quiet "master-latest-patch") ;
+    then
+
+	if $_patchGIT format-patch "^${_sourceCommit}" "${_targetCommit}" --stdout | git apply -v ;
+	then
+	    echo "Patch Applied From Branch master-latest-patch"
+	else
+	    echo "Patch Failed."
+	    exit 1
+	fi
+
+    else
+	echo "No Patch Branch Found"
+
     fi
 }
 
@@ -75,7 +157,7 @@ conflicts=(
     'zarafa-libvmime'
 	  )
 source=(
-    "${pkgname}::git+https://github.com/pietmacom/kopano-vmime.git${_sourceBranch}"
+    "${pkgname}::git+https://github.com/Kopano-dev/vmime.git${_sourceBranch}"
 	)
 md5sums=(
     'SKIP'
@@ -94,6 +176,11 @@ depends=(
     'gsasl' 
     'gnutls'
 	)
+
+prepare() {
+    cd ${srcdir}/${pkgname}
+    _patchFromGit https://github.com/pietmacom/kopano-vmime.git
+}
 
 build() {
     mkdir build

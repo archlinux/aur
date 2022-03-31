@@ -6,5 +6,11 @@
 * changes from 20201207
 
 [2021-01-26]
-* Fixed build with ICU 68.2-1
+* merge/copy
 * add build hooks
+
+[2021-02-25]
+* patch from git: corrosponding branch
+
+[2022-03-31]
+* Update PKGBUILD
