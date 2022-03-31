@@ -8,8 +8,8 @@
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
 pkgname=mutter-rounded
-pkgver=41.5
-pkgrel=1
+pkgver=42.0
+pkgrel=0.1
 pkgdesc="A window manager for GNOME, with rounded corners patch (integrate mr1441)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -21,12 +21,12 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof)
 checkdepends=(xorg-server-xvfb python-dbusmock wireplumber)
-provides=(libmutter-9.so mutter)
+provides=(libmutter-10.so mutter)
 conflicts=(mutter)
 install=mutter.install
 
 options=(debug)
-_commit=17926e941d67867911c462737f4d013adb55e4d6  # tags/41.5^0
+_commit=9249aba72a5c4454894c08735a4963ca1665e34d  # tag/42.0^0
 _mutter_src="$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
 _shell_blur_h_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/${pkgver}/src/shell-blur-effect.h"
 _shell_blur_c_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/${pkgver}/src/shell-blur-effect.c"
@@ -51,13 +51,13 @@ source=("$_mutter_src"
         )
 sha256sums=('SKIP'
             'SKIP'
-            '675b2e8e07ed0cd29578a4f4a5c251d52477848e1edcff68be5d96e0530c637a'
-            '895f35f5e8a458c71b4312061cf7d2b0108a3c6df4b0324ab342c5a3576ee09a'
-            'dc4279ec3c0995ba9a9ee3ecd581376140c78089a058863dea0bd9ec7894dc49'
+            '8d68c4924abb6841c94cf4fefc5b36ecab451b3bdc45fb81ef9adcb8d3b2cfe2'
+            '369390774cf8607f9033a077e0ac76113ffc1c0997627949e087c757a5f41844'
+            'a78e0bdbf4d0b5c8c0f83ede60b531bf0d5d616bfee30293a1f27d32d738dbc6'
             '2ec553a260497f0ac0180512201c9819b10159a15fcbc6d5007932d8e2a44844'
-            '644ab34d1c6eebe8d632b3b26a993a2b9f8a5b58c821758c50eef1cdd0b7cc0c'
+            'f818921dd63cf592663817280c7481eae0852854dd4cd8865ac5fe92423c6fd5'
             '8fb024306843153b28db2f5347775ef7e8add1dd846345148a572ad5336e168b'
-            'd58056b5028e1cf02a029036792f52e3429bd5f71a9403b5be93d95a7ba8252a'
+            '5093c7afd6ad66c0ee9fa1565ef61109f5edf958d1d32789a34ab41d0112771d'
             'cf99896763558258f489ff0e9a1e8001f716d63b06366f740e044cc72a71d3e7')
 
 pkgver() {
@@ -73,7 +73,7 @@ prepare() {
   cp $srcdir/*.[ch] $srcdir/$pkgname/src
   patch -p1 < $srcdir/rounded_corners.patch
   patch -p1 < $srcdir/shell_blur_effect.patch
-  patch -p1 < $srcdir/mr1441.patch
+  # patch -p1 < $srcdir/mr1441.patch
 
   # Make tests run
   sed -i '/catchsegv/d' meson.build

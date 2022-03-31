@@ -1,8 +1,8 @@
 diff --git a/data/org.gnome.mutter.gschema.xml.in b/data/org.gnome.mutter.gschema.xml.in
-index 23fa9f3ad..7ad3f3f35 100644
+index c014b749f..f5f77c05d 100644
 --- a/data/org.gnome.mutter.gschema.xml.in
 +++ b/data/org.gnome.mutter.gschema.xml.in
-@@ -2,6 +2,84 @@
+@@ -10,6 +10,84 @@
    <schema id="org.gnome.mutter" path="/org/gnome/mutter/"
            gettext-domain="@GETTEXT_DOMAIN@">
  
@@ -88,12 +88,12 @@ index 23fa9f3ad..7ad3f3f35 100644
        <default>'Super_L'</default>
        <summary>Modifier to use for extended window management operations</summary>
 diff --git a/src/compositor/compositor-private.h b/src/compositor/compositor-private.h
-index 580618e48..f62de1924 100644
+index d3b3145a3..e11efb9f6 100644
 --- a/src/compositor/compositor-private.h
 +++ b/src/compositor/compositor-private.h
-@@ -82,6 +82,8 @@ gboolean meta_compositor_is_switching_workspace (MetaCompositor *compositor);
- 
- MetaLaters * meta_compositor_get_laters (MetaCompositor *compositor);
+@@ -77,6 +77,8 @@ gboolean meta_compositor_is_switching_workspace (MetaCompositor *compositor);
+ void meta_compositor_grab_begin (MetaCompositor *compositor);
+ void meta_compositor_grab_end (MetaCompositor *compositor);
  
 +void meta_compositor_update_blur_behind(MetaCompositor *compositor);
 +
@@ -101,7 +101,7 @@ index 580618e48..f62de1924 100644
   * This function takes a 64 bit time stamp from the monotonic clock, and clamps
   * it to the scope of the X server clock, without losing the granularity.
 diff --git a/src/compositor/compositor.c b/src/compositor/compositor.c
-index 9cdd39c15..c55366fb2 100644
+index 1576ce551..dec3d63d5 100644
 --- a/src/compositor/compositor.c
 +++ b/src/compositor/compositor.c
 @@ -85,6 +85,8 @@
@@ -113,7 +113,7 @@ index 9cdd39c15..c55366fb2 100644
  enum
  {
    PROP_0,
-@@ -618,6 +620,10 @@ meta_compositor_add_window (MetaCompositor    *compositor,
+@@ -512,6 +514,10 @@ meta_compositor_add_window (MetaCompositor    *compositor,
     * before we first paint.
     */
    priv->windows = g_list_append (priv->windows, window_actor);
@@ -124,7 +124,7 @@ index 9cdd39c15..c55366fb2 100644
    sync_actor_stacking (compositor);
  }
  
-@@ -664,6 +670,7 @@ meta_compositor_queue_frame_drawn (MetaCompositor *compositor,
+@@ -558,6 +564,7 @@ meta_compositor_queue_frame_drawn (MetaCompositor *compositor,
    MetaWindowActor *window_actor = meta_window_actor_from_window (window);
  
    meta_window_actor_queue_frame_drawn (window_actor, no_delay_frame);
@@ -132,7 +132,7 @@ index 9cdd39c15..c55366fb2 100644
  }
  
  void
-@@ -995,6 +1002,20 @@ meta_compositor_sync_stack (MetaCompositor  *compositor,
+@@ -889,6 +896,20 @@ meta_compositor_sync_stack (MetaCompositor  *compositor,
  
    sync_actor_stacking (compositor);
  
@@ -153,7 +153,7 @@ index 9cdd39c15..c55366fb2 100644
    top_window_actor = get_top_visible_window_actor (compositor);
  
    if (priv->top_window_actor == top_window_actor)
-@@ -1025,7 +1046,17 @@ meta_compositor_sync_window_geometry (MetaCompositor *compositor,
+@@ -919,7 +940,17 @@ meta_compositor_sync_window_geometry (MetaCompositor *compositor,
    changes = meta_window_actor_sync_actor_geometry (window_actor, did_placement);
  
    if (changes & META_WINDOW_ACTOR_CHANGE_SIZE)
@@ -171,7 +171,7 @@ index 9cdd39c15..c55366fb2 100644
  }
  
  static void
-@@ -1191,6 +1222,45 @@ meta_compositor_get_property (GObject    *object,
+@@ -1085,6 +1116,45 @@ meta_compositor_get_property (GObject    *object,
      }
  }
  
@@ -217,7 +217,7 @@ index 9cdd39c15..c55366fb2 100644
  static void
  meta_compositor_init (MetaCompositor *compositor)
  {
-@@ -1221,6 +1291,8 @@ meta_compositor_constructed (GObject *object)
+@@ -1115,6 +1185,8 @@ meta_compositor_constructed (GObject *object)
  
    priv->laters = meta_laters_new (compositor);
  
@@ -226,8 +226,8 @@ index 9cdd39c15..c55366fb2 100644
    G_OBJECT_CLASS (meta_compositor_parent_class)->constructed (object);
  }
  
-@@ -1246,6 +1318,8 @@ meta_compositor_dispose (GObject *object)
-   g_clear_pointer (&priv->feedback_group, clutter_actor_destroy);
+@@ -1134,6 +1206,8 @@ meta_compositor_dispose (GObject *object)
+ 
    g_clear_pointer (&priv->windows, g_list_free);
  
 +  meta_prefs_remove_listener(prefs_changed_cb, compositor);
@@ -235,7 +235,7 @@ index 9cdd39c15..c55366fb2 100644
    G_OBJECT_CLASS (meta_compositor_parent_class)->dispose (object);
  }
  
-@@ -1579,3 +1653,20 @@ meta_compositor_get_laters (MetaCompositor *compositor)
+@@ -1477,3 +1551,20 @@ meta_compositor_get_laters (MetaCompositor *compositor)
  
    return priv->laters;
  }
@@ -257,10 +257,10 @@ index 9cdd39c15..c55366fb2 100644
 +    }
 +}
 diff --git a/src/compositor/meta-window-actor-private.h b/src/compositor/meta-window-actor-private.h
-index adae06547..eea31fa41 100644
+index 138ce2c83..abcd695a9 100644
 --- a/src/compositor/meta-window-actor-private.h
 +++ b/src/compositor/meta-window-actor-private.h
-@@ -102,4 +102,15 @@ void meta_window_actor_update_regions (MetaWindowActor *self);
+@@ -106,4 +106,15 @@ void meta_window_actor_update_regions (MetaWindowActor *self);
  
  gboolean meta_window_actor_can_freeze_commits (MetaWindowActor *self);
  
@@ -277,7 +277,7 @@ index adae06547..eea31fa41 100644
 +void meta_window_actor_update_blur_window_opacity (MetaWindowActor *self);
  #endif /* META_WINDOW_ACTOR_PRIVATE_H */
 diff --git a/src/compositor/meta-window-actor-wayland.c b/src/compositor/meta-window-actor-wayland.c
-index bdc5c5a53..4e8418334 100644
+index 468229751..eefd9c26b 100644
 --- a/src/compositor/meta-window-actor-wayland.c
 +++ b/src/compositor/meta-window-actor-wayland.c
 @@ -24,10 +24,36 @@
@@ -317,8 +317,8 @@ index bdc5c5a53..4e8418334 100644
  };
  
  G_DEFINE_TYPE (MetaWindowActorWayland, meta_window_actor_wayland, META_TYPE_WINDOW_ACTOR)
-@@ -88,18 +114,54 @@ meta_window_actor_wayland_rebuild_surface_tree (MetaWindowActor *actor)
-                    &traverse_data);
+@@ -104,18 +130,54 @@ meta_window_actor_wayland_get_topmost_surface (MetaWindowActor *actor)
+   return NULL;
  }
  
 +static void
@@ -372,7 +372,7 @@ index bdc5c5a53..4e8418334 100644
  }
  
  static void
-@@ -115,10 +177,287 @@ meta_window_actor_wayland_queue_frame_drawn (MetaWindowActor *actor,
+@@ -131,10 +193,287 @@ meta_window_actor_wayland_queue_frame_drawn (MetaWindowActor *actor,
  {
  }
  
@@ -660,7 +660,7 @@ index bdc5c5a53..4e8418334 100644
  }
  
  static void
-@@ -149,12 +488,29 @@ meta_window_actor_wayland_can_freeze_commits (MetaWindowActor *actor)
+@@ -165,12 +504,29 @@ meta_window_actor_wayland_can_freeze_commits (MetaWindowActor *actor)
    return FALSE;
  }
  
@@ -690,10 +690,11 @@ index bdc5c5a53..4e8418334 100644
    g_autoptr (GList) children = NULL;
    GList *l;
  
-@@ -167,7 +523,19 @@ meta_window_actor_wayland_dispose (GObject *object)
+@@ -183,7 +539,19 @@ meta_window_actor_wayland_dispose (GObject *object)
            child_actor != CLUTTER_ACTOR (surface_actor))
          clutter_actor_remove_child (CLUTTER_ACTOR (window_actor), child_actor);
      }
+-
 +  
 +  g_clear_pointer (&actor_wayland->shape_region, cairo_region_destroy);
 +  g_clear_pointer (&actor_wayland->shadow_clip, cairo_region_destroy);
@@ -702,7 +703,7 @@ index bdc5c5a53..4e8418334 100644
 +  g_clear_pointer (&actor_wayland->focused_shadow, meta_shadow_unref);
 +  g_clear_pointer (&actor_wayland->unfocused_shadow, meta_shadow_unref);
 +  g_clear_pointer (&actor_wayland->shadow_shape, meta_window_shape_unref);
- 
++
 +  g_clear_signal_handler (&actor_wayland->size_changed_id, surface_actor);
 +  g_clear_signal_handler (&actor_wayland->repaint_scheduled_id, surface_actor);
 +  g_clear_signal_handler (&actor_wayland->shadow_factory_changed_handler_id,
@@ -710,15 +711,15 @@ index bdc5c5a53..4e8418334 100644
    G_OBJECT_CLASS (meta_window_actor_wayland_parent_class)->dispose (object);
  }
  
-@@ -175,6 +543,7 @@ static void
+@@ -191,6 +559,7 @@ static void
  meta_window_actor_wayland_class_init (MetaWindowActorWaylandClass *klass)
  {
    MetaWindowActorClass *window_actor_class = META_WINDOW_ACTOR_CLASS (klass);
 +  ClutterActorClass *actor_class = CLUTTER_ACTOR_CLASS (klass);
    GObjectClass *object_class = G_OBJECT_CLASS (klass);
  
-   window_actor_class->assign_surface_actor = meta_window_actor_wayland_assign_surface_actor;
-@@ -187,10 +556,19 @@ meta_window_actor_wayland_class_init (MetaWindowActorWaylandClass *klass)
+   window_actor_class->get_topmost_surface = meta_window_actor_wayland_get_topmost_surface;
+@@ -204,10 +573,19 @@ meta_window_actor_wayland_class_init (MetaWindowActorWaylandClass *klass)
    window_actor_class->update_regions = meta_window_actor_wayland_update_regions;
    window_actor_class->can_freeze_commits = meta_window_actor_wayland_can_freeze_commits;
  
@@ -854,7 +855,7 @@ index 9e64462ea..7c003a342 100644
  
        /* The frame bounds are already subtracted from actor_x11->shadow_clip
 diff --git a/src/compositor/meta-window-actor.c b/src/compositor/meta-window-actor.c
-index b32df2010..012b67c2b 100644
+index 9cee56a37..de5775768 100644
 --- a/src/compositor/meta-window-actor.c
 +++ b/src/compositor/meta-window-actor.c
 @@ -41,6 +41,9 @@
@@ -883,7 +884,7 @@ index b32df2010..012b67c2b 100644
    int geometry_scale;
  
    /*
-@@ -119,6 +131,246 @@ G_DEFINE_ABSTRACT_TYPE_WITH_CODE (MetaWindowActor, meta_window_actor, CLUTTER_TY
+@@ -121,6 +133,246 @@ G_DEFINE_ABSTRACT_TYPE_WITH_CODE (MetaWindowActor, meta_window_actor, CLUTTER_TY
                                    G_IMPLEMENT_INTERFACE (META_TYPE_CULLABLE, cullable_iface_init)
                                    G_IMPLEMENT_INTERFACE (META_TYPE_SCREEN_CAST_WINDOW, screen_cast_window_iface_init));
  
@@ -1130,7 +1131,7 @@ index b32df2010..012b67c2b 100644
  static void
  meta_window_actor_class_init (MetaWindowActorClass *klass)
  {
-@@ -216,6 +468,11 @@ meta_window_actor_init (MetaWindowActor *self)
+@@ -219,6 +471,11 @@ meta_window_actor_init (MetaWindowActor *self)
      meta_window_actor_get_instance_private (self);
  
    priv->geometry_scale = 1;
@@ -1142,7 +1143,7 @@ index b32df2010..012b67c2b 100644
  }
  
  static void
-@@ -368,6 +625,11 @@ meta_window_actor_real_assign_surface_actor (MetaWindowActor  *self,
+@@ -371,6 +628,11 @@ meta_window_actor_real_assign_surface_actor (MetaWindowActor  *self,
      meta_window_actor_set_frozen (self, TRUE);
    else
      meta_window_actor_sync_thawed_state (self);
@@ -1154,7 +1155,7 @@ index b32df2010..012b67c2b 100644
  }
  
  void
-@@ -399,6 +661,32 @@ init_surface_actor (MetaWindowActor *self)
+@@ -402,6 +664,32 @@ init_surface_actor (MetaWindowActor *self)
      meta_window_actor_assign_surface_actor (self, surface_actor);
  }
  
@@ -1187,7 +1188,7 @@ index b32df2010..012b67c2b 100644
  static void
  meta_window_actor_constructed (GObject *object)
  {
-@@ -406,6 +694,7 @@ meta_window_actor_constructed (GObject *object)
+@@ -409,6 +697,7 @@ meta_window_actor_constructed (GObject *object)
    MetaWindowActorPrivate *priv =
      meta_window_actor_get_instance_private (self);
    MetaWindow *window = priv->window;
@@ -1195,7 +1196,7 @@ index b32df2010..012b67c2b 100644
  
    priv->compositor = window->display->compositor;
  
-@@ -424,6 +713,15 @@ meta_window_actor_constructed (GObject *object)
+@@ -427,6 +716,15 @@ meta_window_actor_constructed (GObject *object)
      priv->first_frame_state = DRAWING_FIRST_FRAME;
  
    meta_window_actor_sync_actor_geometry (self, priv->window->placed);
@@ -1211,7 +1212,7 @@ index b32df2010..012b67c2b 100644
  }
  
  static void
-@@ -442,6 +740,7 @@ meta_window_actor_dispose (GObject *object)
+@@ -445,6 +743,7 @@ meta_window_actor_dispose (GObject *object)
  
    priv->disposed = TRUE;
  
@@ -1219,7 +1220,7 @@ index b32df2010..012b67c2b 100644
    meta_compositor_remove_window_actor (compositor, self);
  
    g_clear_object (&priv->window);
-@@ -470,6 +769,8 @@ meta_window_actor_set_property (GObject      *object,
+@@ -473,6 +772,8 @@ meta_window_actor_set_property (GObject      *object,
      {
      case PROP_META_WINDOW:
        priv->window = g_value_dup_object (value);
@@ -1228,7 +1229,7 @@ index b32df2010..012b67c2b 100644
        g_signal_connect_object (priv->window, "notify::appears-focused",
                                 G_CALLBACK (window_appears_focused_notify), self, 0);
        break;
-@@ -588,6 +889,7 @@ meta_window_actor_effect_in_progress (MetaWindowActor *self)
+@@ -603,6 +904,7 @@ meta_window_actor_effect_in_progress (MetaWindowActor *self)
      meta_window_actor_get_instance_private (self);
  
    return (priv->minimize_in_progress ||
@@ -1236,7 +1237,7 @@ index b32df2010..012b67c2b 100644
            priv->size_change_in_progress ||
            priv->map_in_progress ||
            priv->destroy_in_progress);
-@@ -606,6 +908,47 @@ is_freeze_thaw_effect (MetaPluginEffect event)
+@@ -621,6 +923,47 @@ is_freeze_thaw_effect (MetaPluginEffect event)
    }
  }
  
@@ -1284,7 +1285,7 @@ index b32df2010..012b67c2b 100644
  static gboolean
  start_simple_effect (MetaWindowActor  *self,
                       MetaPluginEffect  event)
-@@ -625,15 +968,33 @@ start_simple_effect (MetaWindowActor  *self,
+@@ -640,15 +983,33 @@ start_simple_effect (MetaWindowActor  *self,
    case META_PLUGIN_NONE:
      return FALSE;
    case META_PLUGIN_MINIMIZE:
@@ -1318,7 +1319,7 @@ index b32df2010..012b67c2b 100644
      counter = &priv->destroy_in_progress;
      break;
    case META_PLUGIN_SIZE_CHANGE:
-@@ -682,6 +1043,7 @@ meta_window_actor_after_effects (MetaWindowActor *self)
+@@ -697,6 +1058,7 @@ meta_window_actor_after_effects (MetaWindowActor *self)
        g_signal_emit (self, signals[EFFECTS_COMPLETED], 0);
        meta_window_actor_sync_visibility (self);
        meta_window_actor_sync_actor_geometry (self, FALSE);
@@ -1326,7 +1327,7 @@ index b32df2010..012b67c2b 100644
      }
  
    clutter_stage_repick_device (stage, clutter_seat_get_pointer (seat));
-@@ -803,6 +1165,19 @@ meta_window_actor_queue_destroy (MetaWindowActor *self)
+@@ -818,6 +1180,19 @@ meta_window_actor_queue_destroy (MetaWindowActor *self)
      clutter_actor_destroy (CLUTTER_ACTOR (self));
  }
  
@@ -1346,7 +1347,7 @@ index b32df2010..012b67c2b 100644
  MetaWindowActorChanges
  meta_window_actor_sync_actor_geometry (MetaWindowActor *self,
                                         gboolean         did_placement)
-@@ -1031,7 +1406,7 @@ meta_window_actor_sync_visibility (MetaWindowActor *self)
+@@ -1046,7 +1421,7 @@ meta_window_actor_sync_visibility (MetaWindowActor *self)
  
    if (CLUTTER_ACTOR_IS_VISIBLE (self) != priv->visible)
      {
@@ -1700,10 +1701,10 @@ index 536d9dd57..29bddc170 100644
 +  return FALSE;
 +}
 diff --git a/src/meson.build b/src/meson.build
-index f3aebfb28..cf9cf4b61 100644
+index 7b456f524..35d4b07aa 100644
 --- a/src/meson.build
 +++ b/src/meson.build
-@@ -169,6 +169,18 @@ if get_option('verbose')
+@@ -174,6 +174,18 @@ if get_option('verbose')
    ]
  endif
  
@@ -1722,7 +1723,7 @@ index f3aebfb28..cf9cf4b61 100644
  mutter_sources = [
    'backends/edid.h',
    'backends/edid-parse.c',
-@@ -458,6 +470,8 @@ mutter_sources = [
+@@ -463,6 +475,8 @@ mutter_sources = [
    'x11/window-x11-private.h',
    'x11/xprops.c',
    'x11/xprops.h',
@@ -1730,8 +1731,8 @@ index f3aebfb28..cf9cf4b61 100644
 +  'meta_clip_effect.h',
  ]
  
- if have_egl
-@@ -993,7 +1007,8 @@ subdir('meta')
+ if have_egl_device
+@@ -1017,7 +1031,8 @@ subdir('meta')
  mutter_built_sources += mutter_enum_types
  
  libmutter = shared_library(libmutter_name,
@@ -1797,7 +1798,7 @@ index 227de68bf..7d5d8f347 100644
   * MetaKeyBindingAction:
   * @META_KEYBINDING_ACTION_NONE: FILLME
 diff --git a/src/ui/frames.c b/src/ui/frames.c
-index 48b2a361c..8be6a8f8b 100644
+index cf90d477b..f82d653fd 100644
 --- a/src/ui/frames.c
 +++ b/src/ui/frames.c
 @@ -711,6 +711,27 @@ meta_ui_frame_get_bounds (MetaUIFrame *frame)
@@ -1829,10 +1830,10 @@ index 48b2a361c..8be6a8f8b 100644
  meta_ui_frame_move_resize (MetaUIFrame *frame,
                             int x, int y, int width, int height)
 diff --git a/src/ui/frames.h b/src/ui/frames.h
-index d81be1c72..c32a93d99 100644
+index 89b399265..8262f0446 100644
 --- a/src/ui/frames.h
 +++ b/src/ui/frames.h
-@@ -134,6 +134,10 @@ void meta_ui_frame_get_borders (MetaUIFrame      *frame,
+@@ -139,6 +139,10 @@ void meta_ui_frame_get_borders (MetaUIFrame      *frame,
  
  cairo_region_t * meta_ui_frame_get_bounds (MetaUIFrame *frame);
  
@@ -1843,11 +1844,170 @@ index d81be1c72..c32a93d99 100644
  void meta_ui_frame_get_mask (MetaUIFrame           *frame,
                               cairo_rectangle_int_t *frame_rect,
                               cairo_t               *cr);
+diff --git a/src/ui/frames.h.orig b/src/ui/frames.h.orig
+new file mode 100644
+index 000000000..89b399265
+--- /dev/null
++++ b/src/ui/frames.h.orig
+@@ -0,0 +1,153 @@
++/* -*- mode: C; c-file-style: "gnu"; indent-tabs-mode: nil; -*- */
++
++/* Metacity window frame manager widget */
++
++/*
++ * Copyright (C) 2001 Havoc Pennington
++ *
++ * This program is free software; you can redistribute it and/or
++ * modify it under the terms of the GNU General Public License as
++ * published by the Free Software Foundation; either version 2 of the
++ * License, or (at your option) any later version.
++ *
++ * This program is distributed in the hope that it will be useful, but
++ * WITHOUT ANY WARRANTY; without even the implied warranty of
++ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
++ * General Public License for more details.
++ *
++ * You should have received a copy of the GNU General Public License
++ * along with this program; if not, see <http://www.gnu.org/licenses/>.
++ */
++
++#ifndef META_FRAMES_H
++#define META_FRAMES_H
++
++#include <gtk/gtk.h>
++#include <gdk/gdkx.h>
++
++#include "meta/common.h"
++#include "meta/types.h"
++#include "ui/theme-private.h"
++#include "ui/ui.h"
++
++typedef enum
++{
++  META_FRAME_CONTROL_NONE,
++  META_FRAME_CONTROL_TITLE,
++  META_FRAME_CONTROL_DELETE,
++  META_FRAME_CONTROL_MENU,
++  META_FRAME_CONTROL_MINIMIZE,
++  META_FRAME_CONTROL_MAXIMIZE,
++  META_FRAME_CONTROL_UNMAXIMIZE,
++  META_FRAME_CONTROL_RESIZE_SE,
++  META_FRAME_CONTROL_RESIZE_S,
++  META_FRAME_CONTROL_RESIZE_SW,
++  META_FRAME_CONTROL_RESIZE_N,
++  META_FRAME_CONTROL_RESIZE_NE,
++  META_FRAME_CONTROL_RESIZE_NW,
++  META_FRAME_CONTROL_RESIZE_W,
++  META_FRAME_CONTROL_RESIZE_E,
++  META_FRAME_CONTROL_CLIENT_AREA
++} MetaFrameControl;
++
++/* This is one widget that manages all the window frames
++ * as subwindows.
++ */
++
++#define META_TYPE_FRAMES            (meta_frames_get_type ())
++#define META_FRAMES(obj)            (G_TYPE_CHECK_INSTANCE_CAST ((obj), META_TYPE_FRAMES, MetaFrames))
++#define META_FRAMES_CLASS(klass)    (G_TYPE_CHECK_CLASS_CAST ((klass), META_TYPE_FRAMES, MetaFramesClass))
++#define META_IS_FRAMES(obj)         (G_TYPE_CHECK_INSTANCE_TYPE ((obj), META_TYPE_FRAMES))
++#define META_IS_FRAMES_CLASS(klass) (G_TYPE_CHECK_CLASS_TYPE ((klass), META_TYPE_FRAMES))
++#define META_FRAMES_GET_CLASS(obj)  (G_TYPE_INSTANCE_GET_CLASS ((obj), META_TYPE_FRAMES, MetaFramesClass))
++
++typedef struct _MetaFrames        MetaFrames;
++typedef struct _MetaFramesClass   MetaFramesClass;
++
++struct _MetaUIFrame
++{
++  MetaFrames *frames;
++  MetaWindow *meta_window;
++  Window xwindow;
++  GdkWindow *window;
++  MetaStyleInfo *style_info;
++  MetaFrameLayout *cache_layout;
++  PangoLayout *text_layout;
++  int text_height;
++  char *title; /* NULL once we have a layout */
++  guint maybe_ignore_leave_notify : 1;
++
++  /* FIXME get rid of this, it can just be in the MetaFrames struct */
++  MetaFrameControl prelit_control;
++  MetaButtonState button_state;
++  int grab_button;
++
++  gboolean is_frozen;
++};
++
++struct _MetaFrames
++{
++  GtkWindow parent_instance;
++
++  MetaX11Display *x11_display;
++
++  GHashTable *text_heights;
++
++  GHashTable *frames;
++
++  MetaStyleInfo *normal_style;
++  GHashTable *style_variants;
++
++  MetaGrabOp current_grab_op;
++  MetaUIFrame *grab_frame;
++  guint grab_button;
++  gdouble grab_x;
++  gdouble grab_y;
++
++  ClutterEventSequence *grab_touch;
++
++  float last_click_x;
++  float last_click_y;
++  uint32_t last_click_time;
++  int click_count;
++};
++
++struct _MetaFramesClass
++{
++  GtkWindowClass parent_class;
++
++};
++
++GType        meta_frames_get_type               (void) G_GNUC_CONST;
++
++MetaFrames * meta_frames_new (MetaX11Display *x11_display);
++
++MetaUIFrame * meta_frames_manage_window (MetaFrames *frames,
++                                         MetaWindow *meta_window,
++                                         Window      xwindow,
++                                         GdkWindow  *window);
++
++void meta_ui_frame_unmanage (MetaUIFrame *frame);
++
++void meta_ui_frame_set_title (MetaUIFrame *frame,
++                              const char *title);
++
++void meta_ui_frame_update_style (MetaUIFrame *frame);
++
++void meta_ui_frame_get_borders (MetaUIFrame      *frame,
++                                MetaFrameBorders *borders);
++
++cairo_region_t * meta_ui_frame_get_bounds (MetaUIFrame *frame);
++
++void meta_ui_frame_get_mask (MetaUIFrame           *frame,
++                             cairo_rectangle_int_t *frame_rect,
++                             cairo_t               *cr);
++
++void meta_ui_frame_move_resize (MetaUIFrame *frame,
++                                int x, int y, int width, int height);
++
++void meta_ui_frame_queue_draw (MetaUIFrame *frame);
++
++gboolean meta_ui_frame_handle_event (MetaUIFrame *frame, const ClutterEvent *event);
++
++#endif
 diff --git a/src/wayland/meta-window-wayland.c b/src/wayland/meta-window-wayland.c
-index 12e9567d9..7138330bc 100644
+index 2b389bfbf..cbd04cc41 100644
 --- a/src/wayland/meta-window-wayland.c
 +++ b/src/wayland/meta-window-wayland.c
-@@ -1002,6 +1002,9 @@ meta_window_wayland_finish_move_resize (MetaWindow              *window,
+@@ -1073,6 +1073,9 @@ meta_window_wayland_finish_move_resize (MetaWindow              *window,
      gravity = META_GRAVITY_STATIC;
    meta_window_move_resize_internal (window, flags, gravity, rect);
  
