@@ -1,4 +1,4 @@
-pkgbase = mesa
+pkgbase = mesa-steamos
 	pkgdesc = An open-source implementation of the OpenGL specification
 	pkgver = 22.0.0_devel.148040.radeonsi_20220217
 	pkgrel = 5
