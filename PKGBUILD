@@ -5,15 +5,17 @@
 _base=textidote
 pkgname=${_base}-bin
 pkgver=0.8.3
-pkgrel=4
+pkgrel=5
 pkgdesc="Spelling, grammar and style checking on LaTeX documents"
 arch=(any)
 url="https://github.com/sylvainhalle/${_base}"
 license=(GPL)
 provides=(${_base})
 depends=('java-runtime-headless>=8')
-optdepends=('libnotify: Error messages for textidote-desktop')
-
+optdepends=('libnotify: Error messages for textidote-desktop'
+  'man-db: manual pages for textidote'
+  'bash-completion: for completion when using bash'
+  'zsh-completions: for completion when using zsh')
 source=("${url}/releases/download/v${pkgver}/${_base}_${pkgver}_all.deb"
   "${_base}-desktop"
   "${_base}.desktop")
@@ -25,6 +27,7 @@ prepare() {
   cd "${srcdir}"
   bsdtar xf data.tar.xz
   find -name "*~" -delete
+  sed -i 's/\/opt\/textidote\/textidote.jar/\/usr\/share\/java\/textidote.jar/' usr/local/bin/${_base}
   # Remove insecure RPATH
   # chrpath --delete "opt/estmob/sendanywhere/sendanywhere"
 }

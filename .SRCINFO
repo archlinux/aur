@@ -1,12 +1,15 @@
 pkgbase = textidote-bin
 	pkgdesc = Spelling, grammar and style checking on LaTeX documents
 	pkgver = 0.8.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/sylvainhalle/textidote
 	arch = any
 	license = GPL
 	depends = java-runtime-headless>=8
 	optdepends = libnotify: Error messages for textidote-desktop
+	optdepends = man-db: manual pages for textidote
+	optdepends = bash-completion: for completion when using bash
+	optdepends = zsh-completions: for completion when using zsh
 	provides = textidote
 	source = https://github.com/sylvainhalle/textidote/releases/download/v0.8.3/textidote_0.8.3_all.deb
 	source = textidote-desktop
