@@ -3,20 +3,6 @@
 # It moves existing dependencies from $depspath to $targetdepspath
 # and downloads non-existing ones in $targetdepspath
 
-packagejsonpath="$(realpath "$1")"
-if [ ! -f "$packagejsonpath" ]; then
-  echo "Usage: $0 <path of the main package.json file>"
-  exit -1
-fi
-
-depspath="$(pwd)"
-
-rm -rf tmp-deps-build deps
-mkdir tmp-deps-build deps
-tmpbuildpath="$(realpath tmp-deps-build)"
-
-targetdepspath="$depspath/deps"
-
 getsemverspec() {
   local dep="$1"
   local semverspec="$(echo "$dep" | gawk -F'@' '{ print $NF }')"
@@ -26,7 +12,7 @@ getsemverspec() {
 getpackagename() {
   local dep="$1"
   local semverspec="$2"
-  local package="${dep//@$semverspec}"
+  local package="${dep::-${#semverspec}-1}"
   echo "$package"
 }
 
@@ -77,7 +63,7 @@ onlinebestmatch() {
         mv "$depspath/$name" "$targetdepspath/"
       else
         cd "$targetdepspath/"
-        wget -O "$name" "$url"
+        wget -O "$name" --retry-on-host-error "$url"
       fi
     fi
     echo "$name"
@@ -98,7 +84,7 @@ recursivedownloaddeps() {
       bsdtar xzf "$targetdepspath/${target}"
     fi
     folder=$(ls)
-    find "$folder" -mindepth 1 -maxdepth 1 | xargs mv -t .
+    find "$folder" -mindepth 1 -maxdepth 1 -print0 | xargs -0 mv -t .;
     rm -r "$folder"
     cat package.json | jq -r '.dependencies | to_entries? | map(.key + "@" + .value) | .[]' | while read dep; do
       local semverspec="$(getsemverspec "$dep")"
@@ -110,7 +96,6 @@ recursivedownloaddeps() {
     done
   fi
 }
-
 
 downloaddeps() {
   cd "$tmpbuildpath"
@@ -130,22 +115,37 @@ createlist() {
   echo "  )"
 }
 
-downloaddeps
+download_main() {
+  depspath="$(pwd)"
 
-# sorting entries...
-cd "$targetdepspath/"
-cat sourcelist | gawk '{ n=n+1; print n, $0; }' > a
-cat sha1sumslist | gawk '{ n=n+1; print n, $0; }' > b
-cat noextractlist | gawk '{ n=n+1; print n, $0; }' > c
-cat c | gawk '{ print $2, $1 }' | sort | gawk '{ n=n+1; print $2, n; }' | sort --numeric-sort | gawk '{ print $2 }' > order
-paste order a | sort --numeric-sort | gawk '{ print $3 }' > aaa
-paste order b | sort --numeric-sort | gawk '{ print $3 }' > bbb
-paste order c | sort --numeric-sort | gawk '{ print $3 }' > ccc
-createlist source aaa > threelists
-createlist sha1sums bbb >> threelists
-createlist noextract ccc >> threelists
+  rm -rf tmp-deps-build deps
+  mkdir tmp-deps-build deps
+  tmpbuildpath="$(realpath tmp-deps-build)"
 
-#createlist source sourcelist > threelists
-#createlist sha1sums sha1sumslist >> threelists
-#createlist noextract noextractlist >> threelists
+  targetdepspath="$depspath/deps"
 
+  downloaddeps
+
+  # sorting entries...
+  cd "$targetdepspath/"
+  cat sourcelist | gawk '{ n=n+1; print n, $0; }' > a
+  cat sha1sumslist | gawk '{ n=n+1; print n, $0; }' > b
+  cat noextractlist | gawk '{ n=n+1; print n, $0; }' > c
+  cat c | gawk '{ print $2, $1 }' | sort | gawk '{ n=n+1; print $2, n; }' | sort --numeric-sort | gawk '{ print $2 }' > order
+  paste order a | sort --numeric-sort | gawk '{ print $3 }' > aaa
+  paste order b | sort --numeric-sort | gawk '{ print $3 }' > bbb
+  paste order c | sort --numeric-sort | gawk '{ print $3 }' > ccc
+  createlist source aaa > threelists
+  createlist sha1sums bbb >> threelists
+  createlist noextract ccc >> threelists
+}
+
+if [ "$0" = "$BASH_SOURCE" ]; then
+  packagejsonpath="$(realpath "$1")"
+  if [ ! -f "$packagejsonpath" ]; then
+    echo "Usage: $0 <path of the main package.json file>"
+    exit -1
+  fi
+
+  download_main
+fi
