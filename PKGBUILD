@@ -3,7 +3,7 @@
 
 pkgname=(zoho-cliq zoho-cliq-upstream-electron)
 pkgver=1.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Zoho Cliq communication software'
 arch=('x86_64')
 url="https://www.zoho.com/cliq/desktop/linux.html"
@@ -16,9 +16,10 @@ source=(
 )
 
 package_zoho-cliq() {
+    conflicts=('zoho-cliq-upstream-electron')
     install -d "${pkgdir}/opt"
     install -d "${pkgdir}/usr/share"
-    cd ${srcdir}/
+    cd "${srcdir}"
     tar xf data.tar.xz
     cp -r opt/Cliq "${pkgdir}/opt/Cliq"
     cp -r usr/share/* "${pkgdir}/usr/share/"
@@ -45,7 +46,7 @@ package_zoho-cliq-upstream-electron() {
 
     tar xf data.tar.xz
 
-    for file in ${install_files[@]}; do 
+    for file in "${install_files[@]}"; do 
         install -Dm 644 "${srcdir}${file}" "${pkgdir}${file}"
     done
 
