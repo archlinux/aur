@@ -6,7 +6,7 @@ _pkgname4=electro-ligthroom
 _pkgname5=electro-party
 _pkgname6=electro-static
 pkgname=plank-theme-electro
-pkgver=1.0.1
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='Electro Theme for Plank'
 arch=(any)
@@ -16,7 +16,7 @@ license=('GPL3')
 depends=('plank')
 source=("$_url/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('b83ca4a81955d9918fa3effaf9ed5e48c9b8f3990b5e16dc28716c56f748e5f7')
+sha256sums=('e6c07d54c010dad90b980acd33bec69a765ba8a59fc2e9300ad530d3681322b2')
 
 build() {
 	true

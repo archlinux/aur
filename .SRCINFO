@@ -1,12 +1,12 @@
 pkgbase = plank-theme-electro
 	pkgdesc = Electro Theme for Plank
-	pkgver = 1.0.1
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://www.gnome-look.org/p/1409928
 	arch = any
 	license = GPL3
 	depends = plank
-	source = https://github.com/MMcQueenGNU/plank-theme-electro/archive/refs/tags/v1.0.1.tar.gz
-	sha256sums = b83ca4a81955d9918fa3effaf9ed5e48c9b8f3990b5e16dc28716c56f748e5f7
+	source = https://github.com/MMcQueenGNU/plank-theme-electro/archive/refs/tags/v2.0.1.tar.gz
+	sha256sums = e6c07d54c010dad90b980acd33bec69a765ba8a59fc2e9300ad530d3681322b2
 
 pkgname = plank-theme-electro
