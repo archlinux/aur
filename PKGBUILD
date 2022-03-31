@@ -1,9 +1,9 @@
 # Maintainer: muttleyxd <mateusz [at] szychowski.it>
-_gittag=master-f3a37dd2
+_gittag=master-208096c1
 pkgname=clang-format-static-bin
-pkgver=7.f3a37dd2
-pkgrel=2
-pkgdesc="clang-format x86_64 static binaries (3.9, 4, 5, 6, 7, 8, 9, 10, 11, 12, 12.0.1, 13)"
+pkgver=8.208096c1
+pkgrel=1
+pkgdesc="clang-format x86_64 static binaries (3.9, 4, 5, 6, 7, 8, 9, 10, 11, 12, 12.0.1, 13, 14)"
 arch=('x86_64')
 url="https://github.com/muttleyxd/clang-format-static-binaries"
 license=('Unlicense')
@@ -23,6 +23,7 @@ source=("archlinux-clang-format"
         "${_gittag}-clang-format-12::https://github.com/muttleyxd/clang-format-static-binaries/releases/download/$_gittag/clang-format-12_linux-amd64"
         "${_gittag}-clang-format-12.0.1::https://github.com/muttleyxd/clang-format-static-binaries/releases/download/$_gittag/clang-format-12.0.1_linux-amd64"
         "${_gittag}-clang-format-13::https://github.com/muttleyxd/clang-format-static-binaries/releases/download/$_gittag/clang-format-13_linux-amd64"
+        "${_gittag}-clang-format-14::https://github.com/muttleyxd/clang-format-static-binaries/releases/download/$_gittag/clang-format-14_linux-amd64"
         "${_gittag}-LICENSE.TXT.clang-8-and-lower::https://github.com/muttleyxd/clang-format-static-binaries/releases/download/$_gittag/LICENSE.TXT.clang-8-and-lower"
         "${_gittag}-LICENSE.TXT.clang-9-and-higher::https://github.com/muttleyxd/clang-format-static-binaries/releases/download/$_gittag/LICENSE.TXT.clang-9-and-higher")
 sha256sums=('6fe5f05f710d6c02a0c9d7af6aaa15a5353bff4142a622dc45dd1fd591ab9ce0'
@@ -38,6 +39,7 @@ sha256sums=('6fe5f05f710d6c02a0c9d7af6aaa15a5353bff4142a622dc45dd1fd591ab9ce0'
             'e2e3022a05410fade1ed646d65f64e8f54b039252e1643b6ac564639c9dd61fa'
             '78ef2a4362079abf19712cd6875661cc38b1d036ce0a45174e147eee6859914f'
             '591e640090bd5a9ec8ff9f36c5bc3f6328b1d279dc32b9d6b62771d5d895637f'
+            '9019f7d4903d790e6da6ebf3dcf633dc45b6588fcd81f843afc67fda5c018391'
             '2050acfe8b8d5ae1ef971b6ab419cd9f46e3f2d779a09966105622b3112600d9'
             'ebcd9bbf783a73d05c53ba4d586b8d5813dcdf3bbec50265860ccc885e606f47')
 
@@ -58,6 +60,7 @@ package()
     cp -L "$srcdir/${_gittag}-clang-format-12" "$pkgdir/opt/clang-format-static/clang-format-12"
     cp -L "$srcdir/${_gittag}-clang-format-12.0.1" "$pkgdir/opt/clang-format-static/clang-format-12.0.1"
     cp -L "$srcdir/${_gittag}-clang-format-13" "$pkgdir/opt/clang-format-static/clang-format-13"
+    cp -L "$srcdir/${_gittag}-clang-format-14" "$pkgdir/opt/clang-format-static/clang-format-14"
     cp -L "$srcdir/${_gittag}-LICENSE.TXT.clang-8-and-lower" "$pkgdir/opt/clang-format-static/LICENSE.TXT.clang-8-and-lower"
     cp -L "$srcdir/${_gittag}-LICENSE.TXT.clang-9-and-higher" "$pkgdir/opt/clang-format-static/LICENSE.TXT.clang-9-and-higher"
     chmod 755 "$pkgdir/opt/clang-format-static/clang-format-3.9"
@@ -72,4 +75,5 @@ package()
     chmod 755 "$pkgdir/opt/clang-format-static/clang-format-12"
     chmod 755 "$pkgdir/opt/clang-format-static/clang-format-12.0.1"
     chmod 755 "$pkgdir/opt/clang-format-static/clang-format-13"
+    chmod 755 "$pkgdir/opt/clang-format-static/clang-format-14"
 }
