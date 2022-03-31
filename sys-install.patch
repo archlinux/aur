@@ -1,6 +1,6 @@
 --- a/apalache-mc
 +++ b/apalache-mc
-@@ -6,30 +6,23 @@
+@@ -6,29 +6,22 @@
  # packaged produced.
  #
  # Igor Konnov, Shon Feder 2018-2022
@@ -25,7 +25,6 @@
 -APALACHE_JAR=${APALACHE_JAR:-"$DIR/../lib/apalache.jar"}
 +APALACHE_JAR=${APALACHE_JAR:-"${DIR}/apalache.jar"}
  JVM_ARGS=${JVM_ARGS:-""}
- TLA_PATH=${TLA_PATH:-""}
  
  if ! test -f "$APALACHE_JAR"
  then
@@ -38,7 +37,7 @@
  fi
  
  # Check of the heap size is already set
-@@ -48,9 +41,9 @@
+@@ -41,9 +34,9 @@
  # Check whether the CLI args contains the debug flag
  if [[ "$*" =~ '--debug' ]]
  then
