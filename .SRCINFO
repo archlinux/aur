@@ -1,10 +1,11 @@
 pkgbase = reddio
 	pkgdesc = A command-line interface for Reddit written in POSIX sh
-	pkgver = 0.50
+	pkgver = 0.52
 	pkgrel = 1
 	url = https://gitlab.com/aaronNG/reddio
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = curl
 	depends = jq
 	optdepends = gnu-netcat: for authentication
@@ -12,7 +13,7 @@ pkgbase = reddio
 	optdepends = dash: POSIX compliant shell
 	optdepends = ksh: POSIX compliant shell
 	conflicts = reddio-git
-	source = https://gitlab.com/aaronNG/reddio/-/archive/v.0.50/reddio-v.0.50.tar.gz
-	sha512sums = 0148c03f673fb5cdee78683eda19d3ac1098c03cc6e54e02bf5183813ff6769075878ec7295509dc3478b553e66c780ec96f78451ca2449aa9e71f8c06a1c413
+	source = git+https://gitlab.com/aaronNG/reddio.git#commit=6ed832c095f1aa038c928599ee5b16b2852e9c3a
+	sha512sums = SKIP
 
 pkgname = reddio
