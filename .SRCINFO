@@ -1,10 +1,10 @@
 pkgbase = rymdport
-	pkgdesc = Go PKGBUILD Example
+	pkgdesc = Cross-platform application for easy encrypted sharing of files, folders, and text between devices.
 	pkgver = 3.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jacalz/rymdport
 	arch = x86_64
-	license = GPL
+	license = GPLv3
 	makedepends = go
 	source = https://github.com/Jacalz/rymdport/archive/refs/tags/v3.0.0.tar.gz
 	sha256sums = efd23df961040e2c8b8263cac2e37bc08a5ad6c24713f5985d49a0cd33576cdb

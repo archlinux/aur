@@ -1,6 +1,6 @@
 pkgname=rymdport
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform application for easy encrypted sharing of files, folders, and text between devices.'
 arch=('x86_64')
 url="https://github.com/Jacalz/$pkgname"
