@@ -1,4 +1,4 @@
-# Maintainer: Marc Paradise <marc.paradise@gmail.com>
+# Maintainer: Томас <70m4c@70m4c.su>
 
 pkgname=chef-workstation
 pkgver=21.7.524
