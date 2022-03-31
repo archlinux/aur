@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=fluent-gtk-theme-git
-pkgver=2021.12.20.r7.g24f3602
-pkgrel=2
+pkgver=2022.01.15.r12.gbdcd8dd
+pkgrel=1
 pkgdesc="Fluent design gtk theme for linux desktops"
 arch=('any')
 url="https://www.pling.com/p/1477941"
 license=('GP3')
 depends=('gnome-themes-extra' 'gtk3')
-makedepends=('git' 'gnome-shell' 'sassc' 'setconf')
+makedepends=('git' 'sassc' 'setconf')
 optdepends=('gtk-engine-murrine: GTK2 theme support'
             'fluent-icon-theme: Matching icon theme'
             'fluent-cursor-theme: Matching cursor theme')
