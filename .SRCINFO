@@ -1,0 +1,24 @@
+pkgbase = conan2
+	pkgdesc = Decentralized, open-source (MIT), C/C++ package manager.
+	pkgver = 2.0.0_alpha6
+	pkgrel = 1
+	url = https://conan.io
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-requests>=2.25
+	depends = python-urllib3>=1.26.6
+	depends = python-colorama>=0.3.3
+	depends = python-yaml>=3.11
+	depends = python-patch-ng>=1.17.4
+	depends = python-fasteners>=0.14.1
+	depends = python-distro>=1.0.2
+	depends = python-jinja>=3.0
+	depends = python-dateutil>=2.7.0
+	provides = conan=$_ver
+	conflicts = conan
+	conflicts = conan-git
+	source = https://github.com/conan-io/conan/archive/2.0.0-alpha6.tar.gz
+	b2sums = 8147dc406d0e1a8870b4e844926441362a91220c6d4755bff8fdd8a67ed7a708078f3c6b03df74d9b7ff65a0dd844c8a6cf124634c8c0569c74e542d6940031e
+
+pkgname = conan2
