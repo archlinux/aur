@@ -1,7 +1,7 @@
 # Maintainer: Juacrumar <juacrumar at lairen dot eu>
 
 pkgname=pineappl
-pkgver=0.5.0
+pkgver=0.5.2
 pkgrel=1
 pkgdesc='PineAPPL is not an extension of APPLgrid'
 arch=('any')
@@ -18,7 +18,7 @@ optdepends=()
 provides=("pineappl")
 changelog=
 source=("https://github.com/N3PDF/pineappl/archive/v${pkgver}.tar.gz")
-md5sums=("e1f231e7a5d84e1af219e02189292711")
+md5sums=("fa6ef21ad82aa10c19248b4b47c258d2")
 
 build() {
     # Build the python interface
