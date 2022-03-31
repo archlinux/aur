@@ -2,7 +2,7 @@
 # Maintainer:  Radu Potop <radu at wooptoo dot com>
 
 pkgname=zoho-cliq
-pkgver=1.5.1
+pkgver=1.5.3
 pkgrel=1
 pkgdesc='Zoho Cliq communication software'
 arch=('x86_64')
@@ -24,4 +24,4 @@ package() {
     cp -r usr/share/* "${pkgdir}/usr/share/"
 }
 
-sha256sums=('2bb595f9af774d957c9b1ea286f2361f273bf183a050499b5f8180cb4352ce5d')
+sha256sums=('6f7704bce3bf38ef8a8acd1177afb470a810e42ca8f67b5d17c7920c3c162132')

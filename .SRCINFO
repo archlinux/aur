@@ -1,6 +1,6 @@
 pkgbase = zoho-cliq
 	pkgdesc = Zoho Cliq communication software
-	pkgver = 1.5.1
+	pkgver = 1.5.3
 	pkgrel = 1
 	url = https://www.zoho.com/cliq/desktop/linux.html
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = zoho-cliq
 	depends = xdg-utils
 	optdepends = libappindicator-gtk3: Systray indicator support
 	optdepends = org.freedesktop.secrets: Keyring password store support
-	source = https://downloads.zohocdn.com/chat-desktop/linux/cliq_1.5.1_amd64.deb
-	sha256sums = 2bb595f9af774d957c9b1ea286f2361f273bf183a050499b5f8180cb4352ce5d
+	source = https://downloads.zohocdn.com/chat-desktop/linux/cliq_1.5.3_amd64.deb
+	sha256sums = 6f7704bce3bf38ef8a8acd1177afb470a810e42ca8f67b5d17c7920c3c162132
 
 pkgname = zoho-cliq
