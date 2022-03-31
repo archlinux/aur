@@ -71,6 +71,17 @@ pkgname = vulkan-intel
 	optdepends = vulkan-mesa-layers: additional vulkan layers
 	provides = vulkan-driver
 
+pkgname = vulkan-radeon
+	pkgdesc = Radeon's Vulkan mesa driver
+	depends = wayland
+	depends = libx11
+	depends = libxshmfence
+	depends = libelf
+	depends = libdrm
+	depends = llvm-libs
+	optdepends = vulkan-mesa-layers: additional vulkan layers
+	provides = vulkan-driver
+
 pkgname = vulkan-swrast
 	pkgdesc = Vulkan software rasteriser driver
 	depends = wayland

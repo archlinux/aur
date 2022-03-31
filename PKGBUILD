@@ -5,8 +5,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=mesa-steamos
-# Jupiter: drop radv vulkan driver - separate sources and package
-pkgname=('vulkan-mesa-layers' 'opencl-mesa' 'vulkan-intel' 'vulkan-swrast' 'libva-mesa-driver' 'mesa-vdpau' 'mesa')
+pkgname=('vulkan-mesa-layers' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-swrast' 'libva-mesa-driver' 'mesa-vdpau' 'mesa')
 pkgdesc="An open-source implementation of the OpenGL specification"
 _tag=radeonsi-20220217
 pkgver=22.0.0_devel.148040.radeonsi_20220217
@@ -38,14 +37,12 @@ pkgver() {
 }
 
 build() {
-  # Jupiter:
-  #  - drop radv vulkan driver - separate sources and package
   arch-meson steamos-jupiter-mesa build \
     -D b_lto=true \
     -D b_ndebug=true \
     -D platforms=x11,wayland \
     -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl,iris,zink,crocus \
-    -D vulkan-drivers=intel,swrast \
+    -D vulkan-drivers=amd,intel,swrast \
     -D vulkan-layers=device-select,intel-nullhw,overlay \
     -D dri3=enabled \
     -D egl=enabled \
