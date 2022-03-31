@@ -2,7 +2,7 @@
 # Co-Maintainer: Carlos Silva <r3pek@r3pek.org>
 
 pkgname=autenticacao-gov-pt-pki
-pkgver=20210310
+pkgver=20220331
 pkgrel=1
 pkgdesc="PKI Certificates for Cartao de Cidadao / Autenticacao.gov (Portugal eID)"
 arch=('any')
@@ -33,6 +33,7 @@ source=("autenticacao-gov-pt-pki.install"
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_assinatura/EC%20de%20Assinatura%20Digital%20Qualificada%20do%20Cartao%20de%20Cidadao%200015.cer"
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_assinatura/EC%20de%20Assinatura%20Digital%20Qualificada%20do%20Cartao%20de%20Cidadao%200016.cer"
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_assinatura/EC%20de%20Assinatura%20Digital%20Qualificada%20do%20Cartao%20de%20Cidadao%200017.cer"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_assinatura/EC%20de%20Assinatura%20Digital%20Qualificada%20do%20Cartao%20de%20Cidadao%200018.cer"
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200001.cer"
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200002.cer"
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200003.cer"
@@ -49,7 +50,9 @@ source=("autenticacao-gov-pt-pki.install"
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200014.cer"
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200015.cer"
 		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200016.cer"
-		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200017.cer")
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200017.cer"
+		"https://pki.cartaodecidadao.pt/publico/certificado/cc_ec_cidadao_autenticacao/EC%20de%20Autenticacao%20do%20Cartao%20de%20Cidadao%200018.cer")
+
 sha512sums=('5b9605e353db6bdad497010a332e1bea516c8b3f136ddb8c06fb987ac5a59fce91880e9bba09b594da725228ffb14694321ac1fcb90431d7a28a2dea61ed47a6'
             '0f7f813723425b090cad4f9140c7f56b17b753fba9eb733c18c84b167bc214aa1dcc0df5fbecd5490b8cdbb546fd736e937abc3bbef5280ff4eb6dc852338ed1'
             '69f06ef7bc70dfce8fd11ca2335c51c3185f5b97d0778183142527d818f131939e27c002f9a52a06b7992a319e3ab04fd954caf7d6cde3dd08e1e782be9a19cd'
@@ -74,6 +77,7 @@ sha512sums=('5b9605e353db6bdad497010a332e1bea516c8b3f136ddb8c06fb987ac5a59fce918
             '3160d1def3358d9d8015b12e7a9e1212b87c732162e5f27882536bc951eae9f3bf160dd9c3fb1f2ead210b7cbe5d8806f2afa3826325778192a0e5d5034b4e9f'
             '0b31d089da3516a4315c92586ccb510c839ad5a0dfba9417368b118dbce08cd32b8ae3a15bfc0913eef61f4164e0fbf59ab48f265a476c7a6b5a82993d2738b9'
             '761faf707157650144ba6d2aa8262e3329c94f494d86bd1e1d422eb094f86718146b8ee449e046f07f4ebf7c9365142b2aca765f0a7a86d1287214913f198975'
+            '03a1705cae73d3010ac9b9591efb6a10119690d44b07561c3e0d469ed792c8bd39e74d25fa59140db1bd6ff18f639f0c7973ed20e93d9557a69dd27f01eb21b1'
             '07d19fc9041e639577dd1da30937ebf89aaadf6ba4a5a05f9262f9b5f3e12614ab1bb2ad76aea87c810faffa7c65ecd4205e5151b1b965f570765759b26701a1'
             '0f6fa5e33fabcd3f5d33a9984c90dcdac6baa646c8477716101eaa58ed11a6ad91d68c835f947920d4f5133c8139e0747646bb94d28b8051e095a36e51d766a4'
             '1f0a8e2282fbe846119b4a187c87df8ef4c9978f80bb4acc58ec1d5cc35dc9b720479d5061d84ef37af205868f0f322829e9532a559c16f545a1ed422b4bcb2f'
@@ -90,7 +94,8 @@ sha512sums=('5b9605e353db6bdad497010a332e1bea516c8b3f136ddb8c06fb987ac5a59fce918
             'f1f99cbf0f34b59335ca10124b7ff1bda96c93781c522edd7066a8681d693f99dd2c90b0f20494b1280fc408b3ee7b174c6e455ba5431142e7f5d2b70963820b'
             'ea13f5b3b443c76fc5d5811010869ad3b59f8df3095d02f139ed2aea3e67f0eeed32c320e60fc3857ff322b0adcf9f5ae2d10fb06154e9999ce624c49f0f6be2'
             '4405061f0167e827e21cda6e481c8fe7caa24353412e8be64897b18904a83144df580b965780e5b38981ce6926b28de2e202896ffdf95c1cb764b82346876677'
-            'd225d5842d69e41490317e22d58d068d402e4d1d8cbea180346a845600e2a3e6cca3e281dd405cb6105bcff0c5ab01bc22b8b2c53a14c3cb11dd2d4cc390bcfc')
+            'd225d5842d69e41490317e22d58d068d402e4d1d8cbea180346a845600e2a3e6cca3e281dd405cb6105bcff0c5ab01bc22b8b2c53a14c3cb11dd2d4cc390bcfc'
+            '9876f721d57cde3cb64522c76fa63a3b462f5091ca46766caf3747eca71b824c933daf93565aeba55f1b0f9c416d7f3beec50e68e49ab361c0d9189917dee2ca')
 
 install='autenticacao-gov-pt-pki.install'
 
