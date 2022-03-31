@@ -35,7 +35,7 @@ source=("hg+$_repo#revision=autoland"
 sha256sums=('SKIP'
             'a9e5264257041c0b968425b5c97436ba48e8d294e1a0f02c59c35461ea245c33'
             '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797'
-            'c5f8e7dd7197f3f505875a256d80aefa632f8cfb1f38e6b7748db89eaf3eabd7')
+            '0bbfdc3765d8495d0dae918cf1d3a532346ff63f8b8d127b74ff075be87594ca')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please

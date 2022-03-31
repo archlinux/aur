@@ -13,6 +13,19 @@ diff --git a/python/mozbuild/mozbuild/build_commands.py b/python/mozbuild/mozbui
              return status
  
          # Packaging the instrumented build is required to get the jarlog
+@@ -206,11 +207,11 @@
+             pgo_env["LLVM_PROFDATA"] = instr.config_environment.substs.get(
+                 "LLVM_PROFDATA"
+             )
+         pgo_env["JARLOG_FILE"] = mozpath.join(orig_topobjdir, "jarlog/en-US.log")
+         pgo_cmd = [
+-            instr.virtualenv_manager.python_path,
++            command_context.virtualenv_manager.python_path,
+             mozpath.join(command_context.topsrcdir, "build/pgo/profileserver.py"),
+         ]
+         subprocess.check_call(pgo_cmd, cwd=instr.topobjdir, env=pgo_env)
+ 
+         # Set the default build to MOZ_PROFILE_USE
 diff --git a/python/mozbuild/mozbuild/controller/building.py b/python/mozbuild/mozbuild/controller/building.py
 --- a/python/mozbuild/mozbuild/controller/building.py
 +++ b/python/mozbuild/mozbuild/controller/building.py
