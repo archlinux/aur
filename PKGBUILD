@@ -1,4 +1,4 @@
-# Maintainer: Yurii <yu hrysh at posteo dot net>
+# Maintainer: gardenapple <gardenapple at posteo.net>
 
 pkgname=chromium-extension-adnauseam
 pkgver=3.12.2
