@@ -4,14 +4,14 @@
 pkgname='simplex-chat-bin'
 _pkgname="${pkgname%%-bin}"
 pkgver=1.4.1
-pkgrel=3
+pkgrel=4
 pkgdesc='A 100% private-by-design chat platform (pre-compiled)'
 arch=('x86_64')
 _platform='ubuntu-20_04-x86-64'
 url='https://simplex.chat/'
 _rawurl='https://raw.githubusercontent.com/simplex-chat/simplex-chat/stable'
 source=(
-  "https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkgname-$_platform"
+  "$_pkgname-$pkgver::https://github.com/$_pkgname/$_pkgname/releases/download/v$pkgver/$_pkgname-$_platform"
   "$_rawurl/PRIVACY.md"
   "$_rawurl/README.md"
 )
@@ -34,7 +34,7 @@ b2sums=(
 package() {
   cd "$srcdir" || exit 1
 
-  install -Dm0755 "$_pkgname-$_platform" "$pkgdir/usr/bin/$_pkgname"
+  install -Dm0755 "$_pkgname-$pkgver" "$pkgdir/usr/bin/$_pkgname"
 
   for doc in {PRIVACY,README}.md; do
     install -Dm0644 "$doc" "$pkgdir/usr/share/doc/$_pkgname/$doc"
