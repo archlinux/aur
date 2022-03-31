@@ -4,19 +4,20 @@
 _name=gaphor
 _pkgname="python-${_name}"
 pkgname="${_pkgname}-git"
-pkgver=2.7.1.r149.g5eca0b98
-pkgrel=2
+pkgver=2.9.2.r60.ge446caab
+pkgrel=1
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('x86_64' 'i686')
 url="https://github.com/gaphor/${_name}"
 license=('Apache')
 source=(
-	"${_pkgname}::git+${url}.git#branch=master"
+	"${_pkgname}::git+${url}.git#branch=main"
 )
 md5sums=('SKIP')
 depends=(
 	'gtk3'
 	'gtksourceview4'
+	'python-darkdetect'
 	'python-gaphas'
 	'python-generic'
 	'python-jedi'
@@ -25,10 +26,18 @@ depends=(
 )
 makedepends=(
 	'git'
-	'python-pip'
 	'gendesk'
+	'python-build'
+	'python-installer'
+	'python-poetry-core'
 )
 optdepends=(
+)
+checkdepends=(
+	'python-pytest'
+	'python-pytest-mock'
+	'python-sphinx'
+	'python-xdoctest'
 )
 provides=(
 	"${_pkgname}"
@@ -36,6 +45,19 @@ provides=(
 conflicts=(
 	"${_pkgname}"
 )
+
+build() {
+	cd "${srcdir}/${_pkgname}"
+	# Note: set `GIT_CEILING_DIRECTORIES` to prevent poetry
+	# from incorrectly using a parent git checkout info.
+	# https://github.com/pypa/build/issues/384#issuecomment-947675975
+	GIT_CEILING_DIRECTORIES="${PWD}/.." python -m build --wheel --no-isolation
+}
+
+check() {
+	cd "${srcdir}/${_pkgname}"
+	pytest
+}
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
@@ -48,8 +70,7 @@ prepare() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps --no-warn-script-location .
-	rm "${pkgdir}"/usr/lib/python*/site-packages/gaphor-*.dist-info/direct_url.json
+	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm644 "$srcdir/${_name}.desktop" -t "$pkgdir"/usr/share/applications
 	install -Dm644 "$srcdir/${_pkgname}/logos/org.gaphor.Gaphor.svg" "$pkgdir"/usr/share/pixmaps/org.gaphor.Gaphor.svg
 }
