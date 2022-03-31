@@ -50,6 +50,8 @@ pkgname = vulkan-mesa-layers-steamos
 	depends = libxcb
 	depends = wayland
 	depends = python
+	provides = vulkan-mesa-layer
+	provides = vulkan-mesa-layers
 	conflicts = vulkan-mesa-layer
 	replaces = vulkan-mesa-layer
 
@@ -60,6 +62,7 @@ pkgname = opencl-mesa-steamos
 	depends = clang-libs
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	provides = opencl-driver
+	provides = opencl-mesa
 
 pkgname = vulkan-intel-steamos
 	pkgdesc = Intel's Vulkan mesa driver
@@ -70,6 +73,7 @@ pkgname = vulkan-intel-steamos
 	depends = zstd
 	optdepends = vulkan-mesa-layers: additional vulkan layers
 	provides = vulkan-driver
+	provides = vulkan-intel
 
 pkgname = vulkan-radeon-steamos
 	pkgdesc = Radeon's Vulkan mesa driver
@@ -81,6 +85,7 @@ pkgname = vulkan-radeon-steamos
 	depends = llvm-libs
 	optdepends = vulkan-mesa-layers: additional vulkan layers
 	provides = vulkan-driver
+	provides = vulkan-radeon
 
 pkgname = vulkan-swrast-steamos
 	pkgdesc = Vulkan software rasteriser driver
@@ -92,6 +97,7 @@ pkgname = vulkan-swrast-steamos
 	depends = llvm-libs
 	optdepends = vulkan-mesa-layers: additional vulkan layers
 	provides = vulkan-driver
+	provides = vulkan-swrast
 	conflicts = vulkan-mesa
 	replaces = vulkan-mesa
 
@@ -104,6 +110,7 @@ pkgname = libva-mesa-driver-steamos
 	depends = libelf
 	depends = libxshmfence
 	depends = libexpat.so
+	provides = libva-mesa
 
 pkgname = mesa-vdpau-steamos
 	pkgdesc = Mesa VDPAU drivers
@@ -114,6 +121,7 @@ pkgname = mesa-vdpau-steamos
 	depends = libelf
 	depends = libxshmfence
 	depends = libexpat.so
+	provides = mesa-vdpau
 
 pkgname = mesa-steamos
 	depends = libdrm
@@ -137,5 +145,6 @@ pkgname = mesa-steamos
 	optdepends = libva-mesa-driver: for accelerated video playback
 	provides = mesa-libgl
 	provides = opengl-driver
+	provides = mesa
 	conflicts = mesa-libgl
 	replaces = mesa-libgl

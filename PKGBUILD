@@ -93,6 +93,7 @@ package_vulkan-mesa-layers-steamos() {
   depends=('libdrm' 'libxcb' 'wayland' 'python')
   conflicts=('vulkan-mesa-layer')
   replaces=('vulkan-mesa-layer')
+  provides=('vulkan-mesa-layer' 'vulkan-mesa-layers')
 
   _install fakeinstall/usr/share/vulkan/explicit_layer.d
   _install fakeinstall/usr/share/vulkan/implicit_layer.d
@@ -107,7 +108,7 @@ package_opencl-mesa-steamos() {
   # Jupiter: clang-libs is a local thing, which we should upstream in Arch
   depends=('libdrm' 'libclc' 'clang-libs')
   optdepends=('opencl-headers: headers necessary for OpenCL development')
-  provides=('opencl-driver')
+  provides=('opencl-driver' 'opencl-mesa')
 
   _install fakeinstall/etc/OpenCL
   _install fakeinstall/usr/lib/lib*OpenCL*
@@ -120,7 +121,7 @@ package_vulkan-intel-steamos() {
   pkgdesc="Intel's Vulkan mesa driver"
   depends=('wayland' 'libx11' 'libxshmfence' 'libdrm' 'zstd')
   optdepends=('vulkan-mesa-layers: additional vulkan layers')
-  provides=('vulkan-driver')
+  provides=('vulkan-driver' 'vulkan-intel')
 
   _install fakeinstall/usr/share/vulkan/icd.d/intel_icd*.json
   _install fakeinstall/usr/lib/libvulkan_intel.so
@@ -132,7 +133,7 @@ package_vulkan-radeon-steamos() {
   pkgdesc="Radeon's Vulkan mesa driver"
   depends=('wayland' 'libx11' 'libxshmfence' 'libelf' 'libdrm' 'llvm-libs')
   optdepends=('vulkan-mesa-layers: additional vulkan layers')
-  provides=('vulkan-driver')
+  provides=('vulkan-driver' 'vulkan-radeon')
 
   _install fakeinstall/usr/share/vulkan/icd.d/radeon_icd*.json
   _install fakeinstall/usr/lib/libvulkan_radeon.so
@@ -146,7 +147,7 @@ package_vulkan-swrast-steamos() {
   optdepends=('vulkan-mesa-layers: additional vulkan layers')
   conflicts=('vulkan-mesa')
   replaces=('vulkan-mesa')
-  provides=('vulkan-driver')
+  provides=('vulkan-driver' 'vulkan-swrast')
 
   _install fakeinstall/usr/share/vulkan/icd.d/lvp_icd*.json
   _install fakeinstall/usr/lib/libvulkan_lvp.so
@@ -158,6 +159,7 @@ package_libva-mesa-driver-steamos() {
   pkgdesc="VA-API implementation for gallium"
   depends=('libdrm' 'libx11' 'llvm-libs' 'expat' 'libelf' 'libxshmfence')
   depends+=('libexpat.so')
+  provides=('libva-mesa')
 
   _install fakeinstall/usr/lib/dri/*_drv_video.so
 
@@ -168,6 +170,7 @@ package_mesa-vdpau-steamos() {
   pkgdesc="Mesa VDPAU drivers"
   depends=('libdrm' 'libx11' 'llvm-libs' 'expat' 'libelf' 'libxshmfence')
   depends+=('libexpat.so')
+  provides=('mesa-vdpau')
 
   _install fakeinstall/usr/lib/vdpau
 
@@ -182,7 +185,7 @@ package_mesa-steamos() {
   optdepends=('opengl-man-pages: for the OpenGL API man pages'
               'mesa-vdpau: for accelerated video playback'
               'libva-mesa-driver: for accelerated video playback')
-  provides=('mesa-libgl' 'opengl-driver')
+  provides=('mesa-libgl' 'opengl-driver' 'mesa')
   conflicts=('mesa-libgl')
   replaces=('mesa-libgl')
 
