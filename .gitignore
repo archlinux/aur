@@ -2,4 +2,5 @@
 *.log
 pkg
 src
+*.tar.gz
 sailboot/
