@@ -33,6 +33,8 @@ pkgbase = pgl
 	backup = etc/logrotate.d/pglcmd
 	backup = etc/logrotate.d/pgld
 	source = https://downloads.sourceforge.net/project/peerguardian/PeerGuardian%20Linux/2.3.1/pgl-2.3.1.tar.gz
+	source = pglinux-2.3.1_p20171006-fno-common.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/net-firewall/pglinux/files/pglinux-2.3.1_p20171006-fno-common.patch?id=492d6119594d1774685fcd4f40fb5d754c3d77c4
 	sha1sums = a91c0c49cdbf78aa6cc1d93b8ed6843290460520
+	sha1sums = 17b0e89ab5cc9ad9b8ac52823e63f741f5cb6d79
 
 pkgname = pgl
