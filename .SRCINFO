@@ -1,0 +1,19 @@
+pkgbase = raw2dng-git
+	pkgdesc = An improved screenlocker based upon XCB and PAM with color configuration support
+	pkgver = r55.f2e9019
+	pkgrel = 1
+	url = https://github.com/Fimagena/raw2dng
+	arch = i686
+	arch = x86_64
+	license = unknown
+	makedepends = git
+	makedepends = make
+	makedepends = cmake
+	makedepends = libjpeg-turbo
+	makedepends = exiv2
+	makedepends = libraw
+	provides = raw2dng
+	source = git+https://github.com/Fimagena/raw2dng.git
+	md5sums = SKIP
+
+pkgname = raw2dng-git
