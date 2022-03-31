@@ -53,7 +53,7 @@ check() {
   if [ -z "$(ldconfig -p | grep libcuda.so.1)" ]; then
     export OMPI_MCA_opal_warn_on_missing_libcuda=0
   fi
-  ctest -E "(${_base}.integration.Parallel)" --test-dir build
+  ctest -E "(${_base}.*arallel)" --test-dir build
 }
 
 package() {
