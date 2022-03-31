@@ -1,11 +1,10 @@
 # Maintainer: Anderson Rocha <anderson2320@gmail.com>
 # Contributor: etriguba <eugenetriguba@gmail.com>
 # Contributor: NexAdn <nexadn@yandex.com>
+pkgname=cef-standard
 pkgver="99.2.14"
 _pkgcommit="g3f796b8"
 _chromiumver="99.0.4844.84"
-_pkgcommit="g20e2617"
-_chromiumver="96.0.4664.93"
 _pkgver="${pkgver}+${_pkgcommit}+chromium-${_chromiumver}"
 _url_pkgver="${pkgver}%2B${_pkgcommit}%2Bchromium-${_chromiumver}"
 pkgrel=1
