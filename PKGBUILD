@@ -1,8 +1,9 @@
 # Maintainer: Rstar284 <me@rstar.ml>
 pkgname=discord-canary-electron-wayland-bin
 _pkgname=discord-canary
+__pkgname=DiscordCanary
 pkgver=0.0.134
-pkgrel=1
+pkgrel=2
 pkgdesc="Discord (popular voice + video app) using system electron (v13) and set up for wayland"
 arch=('x86_64')
 provides=('discord-canary')
@@ -25,7 +26,7 @@ sha512sums=('c2c35c5152b7bc67ce144cbaa957cd25799a5d986da5ba9fe9e1193c369499024c1
             'SKIP')
 prepare() {
 	# create launcher script
-	cat >>"$srcdir"/discord-canary <<'EOF'
+	cat >>"$srcdir"/"$_pkgname" <<'EOF'
 #!/bin/sh
 
 if [ "$(loginctl show-session "$XDG_SESSION_ID" -p Type --value)" = wayland ]; then
@@ -39,20 +40,19 @@ fi
 EOF
 
 	# fix the .desktop file
-	sed -i "s|Exec=.*|Exec=/usr/bin/discord-canary|" DiscordCanary/discord-canary.desktop
-	echo 'Path=/usr/bin' >> DiscordCanary/discord-canary.desktop
+	sed -i "s|Exec=.*|Exec=/usr/bin/discord-canary|" "$__pkgname"/discord-canary.desktop
 
 	# create the license files
 	curl https://discord.com/terms | html2text >"$srcdir"/LICENSE.md
 	curl https://discord.com/licenses | html2text >"$srcdir"/OSS-LICENSES.md
 
 	# use system electron version 13
-	asar e DiscordCanary/resources/app.asar DiscordCanary/resources/app
-	rm DiscordCanary/resources/app.asar
-	sed -i "s|process.resourcesPath|'/usr/lib/discord-canary/resources'|" DiscordCanary/resources/app/app_bootstrap/buildInfo.js
-	sed -i "s|exeDir,|'/usr/share/pixmaps',|" DiscordCanary/resources/app/app_bootstrap/autoStart/linux.js
-        asar p DiscordCanary/resources/app DiscordCanary/resources/app.asar
-        rm -rf DiscordCanary/resources/app
+	asar e "$__pkgname"/resources/app.asar "$__pkgname"/resources/app
+	rm "$__pkgname"/resources/app.asar
+	sed -i "s|process.resourcesPath|'/usr/lib/discord-canary/resources'|" "$__pkgname"/resources/app/app_bootstrap/buildInfo.js
+	sed -i "s|exeDir,|'/usr/share/pixmaps',|" "$__pkgname"/resources/app/app_bootstrap/autoStart/linux.js
+        asar p "$__pkgname"/resources/app "$__pkgname"/resources/app.asar
+        rm -rf "$__pkgname"/resources/app
 }
 
 package() {
@@ -61,13 +61,13 @@ package() {
 	install -d "$pkgdir"/usr/share/{pixmaps,applications,licenses/discord}
 
 	# copy relevant data
-	cp -r DiscordCanary/resources "$pkgdir"/usr/lib/discord-canary/
+	cp -r "$__pkgname"/resources "$pkgdir"/usr/lib/discord-canary/
 	# install the binary
-	install -Dm 755 discord-canary "$pkgdir"/usr/bin/discord-canary
+	install -Dm 755 "$_pkgname" "$pkgdir"/usr/bin/discord-canary
 
-	cp DiscordCanary/discord.png \
+	cp "$__pkgname"/discord.png \
 		"$pkgdir"/usr/share/pixmaps/discord.png
-	cp DiscordCanary/discord-canary.desktop \
+	cp "$__pkgname"/discord-canary.desktop \
 		"$pkgdir"/usr/share/applications/discord-canary.desktop
 
 	# license
