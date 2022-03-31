@@ -74,6 +74,7 @@ pkgname = vulkan-intel-steamos
 	optdepends = vulkan-mesa-layers: additional vulkan layers
 	provides = vulkan-driver
 	provides = vulkan-intel
+	conflicts = vulkan-intel
 
 pkgname = vulkan-radeon-steamos
 	pkgdesc = Radeon's Vulkan mesa driver
@@ -86,6 +87,7 @@ pkgname = vulkan-radeon-steamos
 	optdepends = vulkan-mesa-layers: additional vulkan layers
 	provides = vulkan-driver
 	provides = vulkan-radeon
+	conflicts = vulkan-radeon
 
 pkgname = vulkan-swrast-steamos
 	pkgdesc = Vulkan software rasteriser driver

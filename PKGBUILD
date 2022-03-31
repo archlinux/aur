@@ -121,6 +121,7 @@ package_vulkan-intel-steamos() {
   pkgdesc="Intel's Vulkan mesa driver"
   depends=('wayland' 'libx11' 'libxshmfence' 'libdrm' 'zstd')
   optdepends=('vulkan-mesa-layers: additional vulkan layers')
+  conflicts=('vulkan-intel')
   provides=('vulkan-driver' 'vulkan-intel')
 
   _install fakeinstall/usr/share/vulkan/icd.d/intel_icd*.json
@@ -133,6 +134,7 @@ package_vulkan-radeon-steamos() {
   pkgdesc="Radeon's Vulkan mesa driver"
   depends=('wayland' 'libx11' 'libxshmfence' 'libelf' 'libdrm' 'llvm-libs')
   optdepends=('vulkan-mesa-layers: additional vulkan layers')
+  conflicts=('vulkan-radeon')
   provides=('vulkan-driver' 'vulkan-radeon')
 
   _install fakeinstall/usr/share/vulkan/icd.d/radeon_icd*.json
