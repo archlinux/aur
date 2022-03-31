@@ -10,7 +10,7 @@ url="https://gitlab.com/qYp/${_pkgname}"
 license=('MIT')
 depends=(dialog)
 source=("https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
-sha256sums=('1527d63df165aab2df8a4ddc7d2796a793383fd811a45b96030e7c622d0543f2')
+sha256sums=('627571b9fa0599ffe6008fb20f383363a3ba609ec3cf14c601cf77f50a29e62c')
 
 package() {
     install -Dm755 ${pkgname}/{AutoLinux.sh,pre-install.sh} -t "${pkgdir}/opt/${_pkgname}"
