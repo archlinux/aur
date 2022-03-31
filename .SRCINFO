@@ -1,0 +1,12 @@
+pkgbase = plank-theme-cream
+	pkgdesc = Cream Theme for Plank
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://www.opendesktop.org/p/1566110
+	arch = any
+	license = GPL3
+	depends = plank
+	source = https://github.com/MMcQueenGNU/plank-theme-cream/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 29617b5a41006b8fc6c0b60a13ad2c7d9876bceabb7f6be6c1880c8d6e39b3d4
+
+pkgname = plank-theme-cream
