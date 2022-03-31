@@ -18,7 +18,7 @@ makedepends=('git' 'python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxsh
              'valgrind' 'glslang' 'vulkan-icd-loader' 'cmake' 'meson')
 url="https://www.mesa3d.org/"
 license=('custom')
-source=("jupiter-mesa::git+ssh://git@gitlab.internal.steamos.cloud/jupiter/mesa.git#tag=$_tag"
+source=("steamos-jupiter-mesa::git+https://github.com/LukeShortCloud/steamos-jupiter-mesa.git#tag=$_tag"
         LICENSE)
 sha512sums=('SKIP'
             'f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7')
@@ -30,7 +30,7 @@ validpgpkeys=('8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D'  # Emil Velikov <emil.l
               '57551DE15B968F6341C248F68D8E31AFC32428A6') # Eric Engestrom <eric@engestrom.ch>
 
 pkgver() {
-  cd jupiter-mesa
+  cd steamos-jupiter-mesa
 
   read -r _ver <VERSION
   #echo ${_ver/-/_}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
@@ -43,7 +43,7 @@ build() {
   #  - drop most gallium drivers but radeonsi, swrast and zink
   #  - drop radv vulkan driver - separate sources and package
   #  - disable xa - unused by our gallium drivers
-  arch-meson jupiter-mesa build \
+  arch-meson steamos-jupiter-mesa build \
     -D b_lto=true \
     -D b_ndebug=true \
     -D platforms=x11,wayland \

@@ -33,7 +33,7 @@ pkgbase = mesa-steamos
 	makedepends = vulkan-icd-loader
 	makedepends = cmake
 	makedepends = meson
-	source = jupiter-mesa::git+ssh://git@gitlab.internal.steamos.cloud/jupiter/mesa.git#tag=radeonsi-20220217
+	source = steamos-jupiter-mesa::git+https://github.com/LukeShortCloud/steamos-jupiter-mesa.git#tag=radeonsi-20220217
 	source = LICENSE
 	validpgpkeys = 8703B6700E7EE06D7A39B8D6EDAE37B02CEB490D
 	validpgpkeys = 946D09B5E4C9845E63075FF1D961C596A7203456
