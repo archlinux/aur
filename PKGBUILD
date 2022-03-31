@@ -3,7 +3,7 @@
 # Contributor: IKRadulov <ikradulov@vivaldi.net> 
 
 pkgname=mate-hud
-pkgver=22.04.1
+pkgver=22.04.2
 pkgrel=1
 pkgdesc="Run menubar commands, much like the unity 7 HUD"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('rofi' 'python-gobject' 'mate-desktop' 'appmenu-gtk-module'
          'dbus-python' 'python-psutil' 'python-setproctitle' 'python-xlib')
 makedepends=('python-setuptools' 'python-distutils-extra')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ubuntu-mate/mate-hud/archive/${pkgver}.tar.gz")
-sha256sums=('3acd6c6c071920d201ff08564d35e9e1ca0c4d5e1c565465ccb9b077e2cd3dba')
+sha256sums=('1908b241fc5d9a54ee4654a4c5e100b9e4235ca7bd18f0cebec33ab179e78cab')
 
 package() {
     cd "${pkgname}-${pkgver}"
