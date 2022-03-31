@@ -1,0 +1,15 @@
+info() {
+    echo -e "本软件为 PanDownload 的众多修改版中的一个"
+}
+post_install() {
+    info
+}
+post_upgrade() {
+    echo "deleting the pandownload bottle..."
+    find /home -maxdepth 2 -name ".pandownload" -exec rm -rf {} \;
+    info
+}
+pre_remove() {
+    echo "deleting the pandownload bottle..."
+    find /home -maxdepth 2 -name ".pandownload" -exec rm -rf {} \;
+}

@@ -1,0 +1,24 @@
+pkgbase = pandownload-wine
+	pkgdesc = 本软件为 PanDownload 的众多修改版中的一个，鉴于找不到比 PanDownload 更优秀的百度网盘多账号管理软件，所以对 PanDownload 进行了一些基础功能上的修复。
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://pandownload.net/
+	install = pandownload-wine.install
+	arch = any
+	license = unknow
+	makedepends = unarchiver
+	depends = wine
+	depends = wqy-microhei
+	depends = winetricks
+	depends = wine-mono
+	depends = wine-gecko
+	optdepends = wine-mono-gecko-version-fix: Fix the version numbers of wine-mono and wine-gecko files to solve the dialog box that pops up when starting wine.
+	provides = PanDownload
+	noextract = PanDownload_公测版_0.0.5_ALL.zip
+	options = !strip
+	source = local://PanDownload_公测版_0.0.5_ALL.zip
+	source = pandownload-wine.install
+	sha256sums = b57c1113d037b569c30525cfa5c9fa47fe30eee36cc4e424c830fef8497ac1d1
+	sha256sums = 50f2d42d213da6a4567e99184571906f86377c8001c6a0e0a490338110279163
+
+pkgname = pandownload-wine
