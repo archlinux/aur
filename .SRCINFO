@@ -1,6 +1,6 @@
 pkgbase = pgl-git
 	pkgdesc = A privacy oriented firewall application (Daemon, CLI & GUI).
-	pkgver = 2.3.1.1.r32.g13f606f
+	pkgver = 2.3.1.1.r77.g9d91ab6
 	pkgrel = 1
 	url = http://sourceforge.net/projects/peerguardian/
 	arch = i686
@@ -8,6 +8,7 @@ pkgbase = pgl-git
 	license = GPL3
 	makedepends = git
 	makedepends = zlib
+	makedepends = qt5-tools
 	depends = bash
 	depends = systemd
 	depends = dbus
@@ -35,6 +36,8 @@ pkgbase = pgl-git
 	backup = etc/logrotate.d/pglcmd
 	backup = etc/logrotate.d/pgld
 	source = git://git.code.sf.net/p/peerguardian/code/
+	source = pglinux-2.3.1_p20171006-fno-common.patch::https://gitweb.gentoo.org/repo/gentoo.git/plain/net-firewall/pglinux/files/pglinux-2.3.1_p20171006-fno-common.patch?id=492d6119594d1774685fcd4f40fb5d754c3d77c4
 	sha256sums = SKIP
+	sha256sums = b4cf3cb48620e04c5115be1db73eb25fb9c779120e4930b3e5d4bd04d8c4a13c
 
 pkgname = pgl-git
