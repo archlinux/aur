@@ -1,0 +1,18 @@
+pkgbase = kopano-webapp-mdm
+	pkgver = 3.3.0
+	pkgrel = 1
+	changelog = changelog
+	arch = any
+	groups = kopano
+	groups = kopano-webapp-plugins
+	makedepends = apache-ant
+	makedepends = libxml2
+	makedepends = git
+	makedepends = gzip
+	depends = kopano-webapp
+	source = kopano-webapp-mdm::git+https://stash.kopano.io/scm/kwa/mobile-device-management.git#tag=v3.3.0
+	source = kopano-webapp-mdm.ini
+	md5sums = SKIP
+	md5sums = 30bd89417f7089d30db62fb4c1f09996 kopano-webapp-mdm.ini
+
+pkgname = kopano-webapp-mdm
