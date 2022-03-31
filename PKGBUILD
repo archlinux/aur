@@ -1,18 +1,20 @@
 # Maintainer: Abd El-Twab M. Fakhry <abdeltwab.m.fakhry@gmail.com>
 
 pkgname=next-prayer
-pkgver=v2.0.2.r34.db4c2d0
+pkgver=v2.0.2
 pkgrel=1
 pkgdesc="Islamic prayers reminder for your status bar."
 arch=('x86_64')
-url="https://github.com/abdeltwabmf/next-prayer.git"
+url="https://github.com/AbdeltwabMF/next-prayer.git"
 license=('GPL-v3')
-depends=(
-	'libnotify'
-)
+depends=()
 makedepends=(
 	'git'
+	'make'
 	'python3'
+)
+optdepends=(
+	'libnotify'
 )
 provides=("${pkgname}")
 conflicts=("${pkgname}")
@@ -26,12 +28,12 @@ pkgver() {
 
 build() {
 	cd "${pkgname}"
-	make DESTDIR="${pkgdir}"
+	make DESTDIR="${pkgdir}" np_main
 }
 
 package() {
 	cd "${pkgname}"
-	make DESTDIR="${pkgdir}" install
+	make DESTDIR="${pkgdir}" install clean
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
