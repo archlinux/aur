@@ -1,0 +1,16 @@
+pkgbase = kopano-webapp-webmeetings
+	pkgver = 3.0.6
+	pkgrel = 1
+	changelog = changelog
+	arch = any
+	groups = kopano
+	groups = kopano-webapp-plugins
+	makedepends = apache-ant
+	makedepends = libxml2
+	makedepends = git
+	makedepends = gzip
+	depends = kopano-webapp
+	source = kopano-webapp-webmeetings::git+https://stash.kopano.io/scm/kwa/web-meetings.git#tag=v3.0.6
+	md5sums = SKIP
+
+pkgname = kopano-webapp-webmeetings
