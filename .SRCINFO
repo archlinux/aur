@@ -1,6 +1,6 @@
 pkgbase = jd-tool-bin
 	pkgdesc = JSON diff and patch
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/josephburnett/jd
 	arch = x86_64
@@ -8,11 +8,11 @@ pkgbase = jd-tool-bin
 	license = MIT
 	provides = jd-tool
 	conflicts = jd-tool
-	source = jd-tool-bin-1.5.1-LICENSE::https://raw.githubusercontent.com/josephburnett/jd/v1.5.1/LICENSE
+	source = jd-tool-bin-1.5.2-LICENSE::https://raw.githubusercontent.com/josephburnett/jd/v1.5.2/LICENSE
 	sha256sums = 7db445fe94ae6fb0c5ab69a6b47ec38a0e4b6d5a38f9d1493c0d8cb7c8ad2516
-	source_x86_64 = jd-tool-bin-1.5.1::https://github.com/josephburnett/jd/releases/download/v1.5.1/jd-amd64-linux
-	sha256sums_x86_64 = 43c14695f1b4987a85b29d871591229c8cc11c6ef59ed8f3527e3dd768f4c088
-	source_aarch64 = jd-tool-bin-1.5.1::https://github.com/josephburnett/jd/releases/download/v1.5.1/jd-arm64-linux
-	sha256sums_aarch64 = 5f5024664145bcef00c8a7eff2f3fab83355ad971e911d5e50a437dd34b968f0
+	source_x86_64 = jd-tool-bin-1.5.2::https://github.com/josephburnett/jd/releases/download/v1.5.2/jd-amd64-linux
+	sha256sums_x86_64 = 437352346f52b0c19dff460c4976b38198122a5a1a22f564f527034cab73bb80
+	source_aarch64 = jd-tool-bin-1.5.2::https://github.com/josephburnett/jd/releases/download/v1.5.2/jd-arm64-linux
+	sha256sums_aarch64 = 52fa83f1fe4aa351801f5fd64f9f539943d2e9db90dc057c5201e58d1205d301
 
 pkgname = jd-tool-bin
