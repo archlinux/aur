@@ -1,0 +1,21 @@
+pkgbase = kopano-webapp-nginx
+	pkgdesc = NGINX-, PHP-FPM-Settings
+	pkgver = 1
+	pkgrel = 1
+	arch = any
+	groups = kopano
+	depends = kopano-webapp
+	depends = nginx
+	depends = php-fpm
+	depends = php
+	backup = etc/php/fpm.d/kopano-webapp-nginx.conf
+	source = nginx-location.conf
+	source = nginx-ssl.example.conf
+	source = php-fpm.example.conf
+	source = kopano-webapp.conf
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = kopano-webapp-nginx
