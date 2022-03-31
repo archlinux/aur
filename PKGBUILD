@@ -1,9 +1,10 @@
 # Maintainer: Yauhen Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
+# Contributor: Padraic Fanning <fanninpm AT miamioh DOT edu>
 
 _name=gaphas
 pkgname=python-${_name}
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Diagramming widget library for Python"
 arch=('any')
 url="https://github.com/gaphor/${_name}"
@@ -13,13 +14,25 @@ depends=(
 	'python-cairo'
 	'python-importlib-metadata'
 )
-makedepends=('python-pip')
-_wheelname="${_name/-/_}-$pkgver-py3-none-any.whl"
-source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_wheelname}")
-sha256sums=('1b823a6af4baad4f4bb308f1a45e3bcf5722f26f7409deb436ffce06fcd76c6e')
+makedepends=(python-build python-installer python-poetry-core)
+checkdepends=(python-pytest)
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('96f1be036cf5155dc15508257acf3663cd3ec12154f6ce5011aead10e80c40d1')
 
-package() {
-	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps "${_wheelname}"
-	rm -f "${pkgdir}"/usr/lib/python*/site-packages/gaphas-*.dist-info/direct_url.json
+build() {
+	cd "${_name}-${pkgver}"
+	# Note: set `GIT_CEILING_DIRECTORIES` to prevent poetry
+	# from incorrectly using a parent git checkout info.
+	# https://github.com/pypa/build/issues/384#issuecomment-947675975
+	GIT_CEILING_DIRECTORIES="${PWD}/.." python -m build --wheel --no-isolation
 }
 
+check() {
+	cd "${srcdir}/${_name}-${pkgver}"
+	pytest
+}
+
+package() {
+	cd "${_name}-${pkgver}"
+	python -m installer --destdir="$pkgdir" dist/*.whl
+}
