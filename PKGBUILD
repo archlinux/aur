@@ -9,19 +9,19 @@ url='http://sourceforge.net/projects/peerguardian/'
 license=('GPL3')
 depends=('bash' 'systemd' 'dbus' 'coreutils' 'procps-ng' 'logrotate' 'wget' 'iptables' 'libnetfilter_queue')
 optdepends=('unzip: for zipped blocklists'
-	    'p7zip: for 7z blocklists'
-      	    'net-tools: to whitelist local IP addresses'
-      	    'networkmanager: to whitelist newly started network interfaces'
-      	    'smtp-forwarder: to send reports'
-	    'tcptraceroute: to diagnose connection problems')
+            'p7zip: for 7z blocklists'
+            'net-tools: to whitelist local IP addresses'
+            'networkmanager: to whitelist newly started network interfaces'
+            'smtp-forwarder: to send reports'
+            'tcptraceroute: to diagnose connection problems')
 makedepends=('zlib')
 provides=('pgl')
 conflicts=('pgl' 'pgl-git')
 backup=('etc/pgl/allow.p2p'
-	'etc/pgl/blocklists.list'
-	'etc/pgl/pglcmd.conf'
-	'etc/logrotate.d/pglcmd'
-	'etc/logrotate.d/pgld')
+        'etc/pgl/blocklists.list'
+        'etc/pgl/pglcmd.conf'
+        'etc/logrotate.d/pglcmd'
+        'etc/logrotate.d/pgld')
 changelog=changelog
 source=("https://downloads.sourceforge.net/project/peerguardian/PeerGuardian%20Linux/$pkgver/pgl-$pkgver.tar.gz")
 sha1sums=('a91c0c49cdbf78aa6cc1d93b8ed6843290460520')
