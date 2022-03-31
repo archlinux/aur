@@ -40,7 +40,6 @@ pkgver() {
 build() {
   # Jupiter:
   #  - drop radv vulkan driver - separate sources and package
-  #  - disable xa - unused by our gallium drivers
   arch-meson steamos-jupiter-mesa build \
     -D b_lto=true \
     -D b_ndebug=true \
@@ -56,7 +55,7 @@ build() {
     -D gallium-opencl=icd \
     -D gallium-va=enabled \
     -D gallium-vdpau=enabled \
-    -D gallium-xa=disabled \
+    -D gallium-xa=enabled \
     -D gallium-xvmc=disabled \
     -D gbm=enabled \
     -D gles1=disabled \
@@ -200,8 +199,7 @@ package_mesa() {
   _install fakeinstall/usr/lib/d3d
   _install fakeinstall/usr/lib/lib{gbm,glapi}.so*
   _install fakeinstall/usr/lib/libOSMesa.so*
-  # Jupiter: we don't build xa
-  #_install fakeinstall/usr/lib/libxatracker.so*
+  _install fakeinstall/usr/lib/libxatracker.so*
 
   _install fakeinstall/usr/include
   _install fakeinstall/usr/lib/pkgconfig
