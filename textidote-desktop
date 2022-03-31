@@ -1,6 +1,6 @@
 #!/bin/bash
 if [ -x /usr/bin/notify-send ]; then
-  err() { notify-send -a TeXtidote -i /opt/textidote/textidote-icon.svg "$*"; }
+  err() { notify-send -a TeXtidote -i /usr/share/textidote/textidote-icon.svg "$*"; }
 else
   err() { printf "%s\n" "$*" >&2; }
 fi
@@ -9,7 +9,7 @@ fi
 dir=$(dirname "$1")
 
 pushd "$dir" || err "$dir does not exist" && exit
-java -jar /opt/textidote/textidote.jar --check en --output html "$@" > /tmp/textidote.html
+java -jar /usr/share/java/textidote.jar --check en --output html "$@" > /tmp/textidote.html
 popd || exit
 
 xdg-open /tmp/textidote.html &

@@ -1,7 +1,7 @@
 pkgbase = textidote-bin
 	pkgdesc = Spelling, grammar and style checking on LaTeX documents
 	pkgver = 0.8.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/sylvainhalle/textidote
 	arch = any
 	license = GPL
@@ -12,7 +12,7 @@ pkgbase = textidote-bin
 	source = textidote-desktop
 	source = textidote.desktop
 	sha512sums = ec3d3a320e95c1eaa9e56592489ca92df1bf9affa103e63f911951751649b598846416dc5318802d4234b3bd68b697a2050e6bbd788b558cdebfe3d7dc9d7928
-	sha512sums = 452ba2bbb0df0b86dbda764ffc227c7157b282ca54466364b1ed09dce286f935ad95604c53176ef850df6e3ea6457bbd2a5317e518eda53868af56ea40663e6a
-	sha512sums = 788809fee59c3cbfb3303a5d038b64ff532c7fba8c21f5ad98f01a9fc130f1739952e82104ecc2c5361cdb768d27ba68e9c935d0b712596192420f1807ebab1c
+	sha512sums = bb7ddeb219b4d77f9e57b71afe6323ffa2aac39742c8c0162574cbd9360d2c00890444bac5504771cfe806a0a401b76e98bca8178da3f34f2d6b1bde299c6f52
+	sha512sums = 3f8a415e1428009cb701325b27880b6e4828a12634465969e4a8c1e53f2c6bfd26695160f85115cf1522fd6f7799128085384847d988e0fa03a7be8b63304540
 
 pkgname = textidote-bin
