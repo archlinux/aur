@@ -3,14 +3,14 @@
 
 pkgbase=leagueoflegends-git
 pkgname=(leagueoflegends-git leagueoflegends-ge-git)
-_srcname=leagueoflegends
-pkgver=0.12.6.r1.gb9bdfde
+_srcname=${pkgbase%-git}
+pkgver=0.12.6.r3.g61b9381
 pkgrel=1
 pkgdesc="League of Legends helper script"
 arch=('any')
 url="https://github.com/kyechou/leagueoflegends"
 license=('GPL3')
-depends=('winetricks-git' 'bash' 'curl' 'openssl' 'samba' 'mesa-utils'
+depends=('winetricks' 'bash' 'curl' 'openssl' 'samba' 'mesa-utils'
          'lib32-gnutls' 'lib32-libldap' 'lib32-openal' 'lib32-libpulse'
          'lib32-alsa-lib' 'lib32-mpg123' 'lib32-unixodbc' 'lib32-vkd3d'
          'vulkan-icd-loader' 'lib32-vulkan-icd-loader' 'vulkan-driver'
