@@ -1,0 +1,11 @@
+pkgbase = sndgrep-git
+	pkgdesc = Search for specific frequencies (DTMF tones) in PCM audio
+	pkgver = r23.9de9256
+	pkgrel = 1
+	url = https://github.com/enferex/sndgrep
+	arch = x86_64
+	license = GPL2
+	source = git+https://github.com/enferex/sndgrep.git
+	sha256sums = SKIP
+
+pkgname = sndgrep-git
