@@ -3,12 +3,12 @@ pkgname=discord-canary-electron-wayland-bin
 _pkgname=discord-canary
 __pkgname=DiscordCanary
 pkgver=0.0.134
-pkgrel=2
+pkgrel=2.1
 pkgdesc="Discord (popular voice + video app) using system electron (v13) and set up for wayland"
 arch=('x86_64')
 provides=('discord-canary')
 conflicts=('discord-canary')
-url='https://canary.discordapp.com'
+url='https://canary.discord.com'
 license=('custom')
 depends=('electron13' 'gtk3' 'libnotify' 'libxss' 'glibc' 'alsa-lib' 'nspr' 'nss' 'xdg-utils' 'libcups')
 makedepends=('asar' 'curl' 'python-html2text')
@@ -17,9 +17,9 @@ optdepends=('libpulse: Pulseaudio support'
             'noto-fonts-emoji: Google font for emoji support.'
             'ttf-symbola: Font for emoji support.'
             'noto-fonts-cjk: Font for special characters such as /shrug face.')
-source=("https://dl-canary.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
-        'LICENSE.html::https://discordapp.com/terms'
-        'OSS-LICENSES.html::https://discordapp.com/licenses')
+source=("https://dl-canary.discord.net/apps/linux/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
+        'LICENSE.html::https://discord.com/terms'
+        'OSS-LICENSES.html::https://discord.com/licenses')
 
 sha512sums=('c2c35c5152b7bc67ce144cbaa957cd25799a5d986da5ba9fe9e1193c369499024c16c05a86c281746886b53de40d3a802a35c1c5b214225e2183c0faa58aa9d9'
             'SKIP'
