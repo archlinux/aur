@@ -2,7 +2,7 @@
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=python-google-cloud-bigquery
-pkgver=3.0.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Google BigQuery API client library"
 arch=('any')
@@ -17,7 +17,6 @@ depends=(
 	'python-google-resumable-media'
 	'python-grpcio'
 	'python-packaging'
-	'python-proto-plus'
 	'python-protobuf'
 	'python-requests')
 makedepends=(
@@ -37,7 +36,7 @@ optdepends=(
 	'python-llvmlite: fastparquet support')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('a7424a05f836d9b8e61b7d86b197870243c85489c77dad14eef790ba86dc9e3d')
+sha256sums=('3b95fc6c66b21286585d2ef585839b456f83ed38abbf470b75dc0aaf1108828d')
 
 build() {
 	cd "python-bigquery-$pkgver"
