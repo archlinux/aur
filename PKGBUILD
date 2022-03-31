@@ -4,34 +4,44 @@
 
 pkgname=python-dialite
 pkgver=0.5.3
-pkgrel=3
+pkgrel=4
 pkgdesc='Lightweight pure-Python package to show simple dialogs'
 arch=('any')
 url='https://github.com/flexxui/dialite'
 license=('BSD')
 depends=('python')
-makedepends=('python-setuptools' 'python-sphinx')
-checkdepends=('python-pytest-runner')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-sphinx'
+  'python-wheel')
+checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('327b172a722b05b63d1427d110cf431c4de260c7d48bcac8fa312369ab1e79c2')
 
 build() {
   cd "dialite-$pkgver"
-  python setup.py build
-  cd docs
-  make man
+  python -m build --wheel --no-isolation
+  make -C docs man
 }
 
 check() {
   cd "dialite-$pkgver"
-  python setup.py pytest
+  PYTHONPATH="$PWD" pytest -x --disable-warnings
 }
 
 package() {
+  export PYTHONHASHSEED=0
   cd "dialite-$pkgver"
-  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm 644 docs/_build/man/Dialite.1 "$pkgdir/usr/share/man/man1/dialite.1"
+  python -m installer --destdir="$pkgdir/" dist/*.whl
+  install -Dm644 docs/_build/man/Dialite.1 "$pkgdir/usr/share/man/man1/dialite.1"
+
+  local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  ln -s \
+    "$_site/dialite-$pkgver.dist-info/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 # vim: ts=2 sw=2 et:
