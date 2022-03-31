@@ -4,14 +4,14 @@ pkgname=flrig-docs
 _pkgname=flrig
 __pkgname=FLRig
 _author=fldigi
-pkgver=1.4.04
+pkgver=1.4.5
 pkgrel=1
 pkgdesc="Documentation/help when using FLRIG w/out i-net access - Ham Radio"
 arch=('any')
 url="http://www.w1hkj.com/flrig-help"
 license=('GPL')
-optdepends=('flrig' 'epdfview')
 makedepends=('git' 'doxygen' 'texlive-latexextra')
+optdepends=('flrig' 'epdfview')
 source=("$_pkgname::git://git.code.sf.net/p/$_author/$_pkgname#branch=master")
 #http://w1hkj.com/${_pkgname}-help/${__pkgname}_Users_Manual.pdf
 #http://www.w1hkj.com/flrig-help/FLRig_Users_Manual.pdf
@@ -19,7 +19,8 @@ source=("$_pkgname::git://git.code.sf.net/p/$_author/$_pkgname#branch=master")
 pkgver() {
 	cd $_pkgname
 
-	git describe --tags | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/^v//g' | sed 's/-2//g'
+	git describe --tags | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/^v//g' | sed 's/-2//g' | sed 's/0\(.\)$/\1/'
+#	git describe --tags | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/^v//g' | sed 's/-2//g'
 #	git describe --tags | sed 's/^v//g'
 }
 

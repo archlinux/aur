@@ -1,6 +1,6 @@
 pkgbase = flrig-docs
 	pkgdesc = Documentation/help when using FLRIG w/out i-net access - Ham Radio
-	pkgver = 1.4.04
+	pkgver = 1.4.5
 	pkgrel = 1
 	url = http://www.w1hkj.com/flrig-help
 	arch = any
