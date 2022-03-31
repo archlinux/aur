@@ -1,7 +1,8 @@
 # Maintainer: Mohammad Abdolirad <m.abdolirad@gmail.com>
+# Contributor: Morteza NourelahiAlamdari <m@0t1.me>
 
 pkgname=wait4x
-pkgver=1.1.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Wait4X allows you to wait for a port or a service to enter the requested state"
 arch=('x86_64' 'x86' 'aarch64' 'armhf' 'ppc64le' 's390x' 'armv7')
@@ -10,7 +11,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/atkrad/wait4x/archive/v${pkgver}.tar.gz")
-sha256sums=('baf2c8523cfa339b5c806abad686f47456322fbd08b9e3bf0b4a83f9f902cb88')
+sha256sums=('700d127b9717197b97c268922c7e0b41b520f0dfffb6d4079369a9c78ba588cc')
 
 build() {
 	local _commit
@@ -27,7 +28,7 @@ build() {
  	export CGO_LDFLAGS="$LDFLAGS"
  	export GOFLAGS='-buildmode=pie -mod=readonly -modcacherw -trimpath'
 	go build -v -ldflags "-linkmode=external -X github.com/atkrad/wait4x/internal/app/wait4x/cmd.AppVersion=$pkgver -X github.com/atkrad/wait4x/internal/app/wait4x/cmd.GitCommit=${_commit:0:8} -X github.com/atkrad/wait4x/internal/app/wait4x/cmd.BuildTime=$_commit_datetime" -o "$pkgname" cmd/wait4x/main.go
-	
+
 	./"$pkgname" version
 	./"$pkgname" completion bash > "$pkgname.bash"
 	./"$pkgname" completion zsh > "$pkgname.zsh"
