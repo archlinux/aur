@@ -5,13 +5,13 @@ _pkgname=md2term
 pkgdesc='Markdown parser for the terminal, based on bash and pandoc'
 arch=(any)
 url='https://codeberg.org/blau_araujo/md2term'
-pkgrel=3
+pkgrel=1
 license=('GPL-3.0')
 depends=('bash' 'pandoc')
 source=('git+https://codeberg.org/blau_araujo/md2term/')
 md5sums=('SKIP')
 provides=($_pkgname)
-pkgver=md2term.alpha.0.0.7.r0.g557d8ec
+pkgver=md2term.alpha.0.0.7.r4.gff9578c
 
 pkgver() {
 	cd "$_pkgname"
