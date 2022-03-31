@@ -1,384 +1,534 @@
+# Find this package on https://github.com/pietmacom/kopano-pkgbuilds.git
 # Maintainer: MartiMcFly <martimcfly [at] autorisation.de>
 # Contributor: MartiMcFly <martimcfly [at] autorisation.de>
 
-pkgname=('kopano-core')
+# Administrator Manual: https://documentation.kopano.io/kopanocore_administrator_manual/
+# User Manual: http://documentation.kopano.io/user_manual_kopanocore
+# Migration 7.2.1: https://documentation.kopano.io/kopano_migration_manual/KopanoMigrationManual.pdf
+pkgname='kopano-core'
+pkgver='11.0.2'
+pkgrel='1'
+pkgdesc='Foundation for groupware messaging enabling clients'
+groups=(
+    'kopano'
+    )
+arch=(
+    'armv7h'
+    'aarch64'
+    'i686'
+    'x86_64'
+     )
+url='https://www.kopano.com/'
+license=(
+    'AGPL3'
+	)
 
-replaces=('zarafa-server-arm'
-	  'zarafa-server')
+_tagPrefix="kopanocore-"
+_source="git+https://stash.kopano.io/scm/kc/kopanocore.git"
+# template start; name=base-scm; version=1;
+#_tagPrefix=""
+#_tagSuffix=""
+#_source=""
 
-pkgver=8.6.1
-pkgrel=7
-pkgdesc="Open Source Groupware Solution"
+if [[ "${pkgname}" == *-latest ]] && [ ! -z "${_source}" ] && [[ "${_source}" == git+* ]];
+then
+    pkgver=$(git ls-remote --refs --tags "$(echo "${_source}" | sed 's|^git+||')" | sed 's|.*tags/\(.*\)$|\1|' | grep "^${_tagPrefix}.*" | grep ".*${_tagSuffix}$" | sed "s|${_tagPrefix}\(.*\)${_tagSuffix}|\1|" | sort -u -V |  grep -vE "(beta|alpha|test)" | tail -n 1)
+fi
 
-arch=('armv7h'
-      'armv6h'
-      'x86_64'
-      'i686')
+_basePkgName="${pkgname//-git/}"
+if [[ "${pkgname}" == *-git ]];
+then
+    # Version can't be set before pkgver has run
+    provides+=("${_basePkgName}=${pkgver}")
+fi
 
-url="https://www.kopano.com/"
-license=('AGPL3')
+_gitLogByDay() {
+    local NEXT=$(date +%F)
+    local SINCE="1970-01-01"
+    local UNTIL=$NEXT
+    local LOG_FORMAT="* %s"
+    git log --no-merges --since="${SINCE}" --until="${UNTIL}" --format="%cd" --date=short --follow . | sort -u | while read DATE ; do
+	local GIT_PAGER=$(git log --no-merges --reverse --format="${LOG_FORMAT}" --since="${DATE} 00:00:00" --until="${DATE} 23:59:59" --author="${AUTHOR}" --follow . | uniq)
+	if [ ! -z "$GIT_PAGER" ]
+	then
+	    echo
+	    echo -e "[$DATE]"
+	    echo -e "${GIT_PAGER}"
+	fi
+    done
+}
+if [ ! -e "changelog" ] \
+    || git rev-parse ;
+then
+    _gitLogByDay > changelog
+    changelog="changelog"
+fi
 
-makedepends=(
-	     'gcc'
-	     'gcc-libs'
-	     'e2fsprogs'
-	     'automake'
-	     'xmlto'
-	     'docbook-xsl'
-	     'git'
-	    )
-depends=(
-	 # TEST
-	 'lzo'
-	 'kbproto'
-	 	 
-	 # common
-	 'gperftools'
-	 # 'tidy' => broken
-	 'openldap'
-	 'php'
-	 'mariadb'
-	 'curl'
-	 'libxml2'
-	 'openldap'
-	 'krb5'
-         'bison'
-         'python2'
-         'python'
-         'swig'
-	 'bash-completion'
-	 'icu'
-	 'jsoncpp'
+# https://wiki.archlinux.org/index.php/VCS_package_guidelines#Git
+pkgver() {
+    cd ${srcdir}/${pkgname}
+    if [[ "${pkgname}" == *-git ]];
+    then
+	_lastTag=$(git tag -l "${_tagPrefix}*" --sort=v:refname | tail -n 1)
+	_revision="$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+	if [ ! -z "${_lastTag}" ];
+	then
+	    echo "${_lastTag}" | sed "s|${_tagPrefix}\(.*\)${_tagSuffix}|\1.r${_revision}|"
+	else
+	    echo "${pkgver}" | sed "s|\(.*\)-git|1.r${_revision}|"
+	fi
+#    elif [[ "${pkgname}" == *-latest ]];
+#    then
+#	#_tagReleaseFormat="^[0-9]*(\.[0-9])*$"
+#	_lastRelease=$(git tag -l "${_tagPrefix}*" --sort=v:refname | grep -v "(alpha|beta|test)"  | tail -n 1)
+#	echo "${_lastRelease}" | sed "s|${_tagPrefix}\(.*\)${_tagSuffix}|\1|"
+    else
+        echo "${pkgver}"
+    fi
+}
 
-	 # common: version dependend in the past 
-	 'gcc-libs'
-	 'icu'
-	 'libical'
-         'libvmime'	 	 
-	 'boost'	 
-         'boost-libs'	          
-	 'gsoap'
-	 'openssl'
-	 
-	 # presence
-         'python2-minimock'
-         'python2-dnspython'
-         'python2-nose'
-         'python2-pyopenssl'
-         'python2-tlslite'
-         'python2-soappy'
-         
-         # presence-xmpp
-         'python2-flask'
-	 'python2-sleekxmpp'
-         'ejabberd'     	 
+_patchFromGit() {
+    _patchDir="${srcdir}/$(basename $(pwd))-patch.git"
+    if [ ! -e "${_patchDir}" ];
+    then
+	git clone --bare ${1} ${_patchDir}
+    fi
 
-         # search
-         'python2-xapian'
-         'python2-dateutil'
-         'xapian-core'
-         'php-xapian>=1.2.21'
-	 'catdoc'
-	 'poppler'
-         'w3m'	 
-         'libxslt'                  
-         
-         # pietma setup
-	 'unzip'         
-	 
-         # imap-, smtp-, ical-, carddav-proxy
-         'php-fpm'
-         'nginx'         
+    _branchName="${_sourceBranch//#*=/}"
+    _patchGIT="git --git-dir="${_patchDir}""
 
-         # mta + athentification
-         'postfix'
-         'cyrus-sasl'         
-        )
-install="install"        
-optdepends=('zarafa-webapp'
-        'sabre-zarafa'
-        'z-push'
-        'apache')
-                
+    # Patch From Specific Range
+    if [ ! -z "${3}" ];
+    then
+
+	_sourceCommit=$($_patchGIT rev-parse --verify --quiet "${2}")
+	_targetCommit=$($_patchGIT rev-parse --verify --quiet "${3}")
+	if $_patchGIT format-patch "^${_sourceCommit}" "${_targetCommit}" --stdout | git apply -v ;
+	then
+	    echo "Patch Applied From Commit Between ${2} to ${3}"
+	else
+	    echo "Patch Failed."
+	    exit 1
+        fi
+
+    # Patch From Specific Commit
+    elif [ ! -z "${2}" ];
+    then
+
+	_sourceCommit=$($_patchGIT rev-parse --verify --quiet "${2}")
+	if $_patchGIT format-patch -1 "${_sourceCommit}" --stdout | git apply -v ;
+	then
+	    echo "Patch Applied From Commit ${2}"
+	else
+	    echo "Patch Failed."
+	    exit 1
+	fi
+
+    # Patch From "*-latest-patch" Branch
+    elif [[ "${pkgname}" != *-git ]] \
+	 && _sourceCommit=$($_patchGIT rev-parse --verify --quiet "${_branchName}") \
+	 && _targetCommit=$($_patchGIT rev-parse --verify --quiet "${_branchName}-latest-patch") ;
+    then
+
+	if $_patchGIT format-patch "^${_sourceCommit}" "${_targetCommit}" --stdout | git apply -v ;
+	then
+	    echo "Patch Applied From Branch ${_branchName}-latest-patch"
+	else
+	    echo "Patch Failed."
+	    exit 1
+	fi
+
+    # Patch From "master-latest-patch" Branch
+    elif _sourceCommit=$($_patchGIT rev-parse --verify --quiet "master") \
+         && _targetCommit=$($_patchGIT rev-parse --verify --quiet "master-latest-patch") ;
+    then
+
+	if $_patchGIT format-patch "^${_sourceCommit}" "${_targetCommit}" --stdout | git apply -v ;
+	then
+	    echo "Patch Applied From Branch master-latest-patch"
+	else
+	    echo "Patch Failed."
+	    exit 1
+	fi
+
+    else
+	echo "No Patch Branch Found"
+
+    fi
+}
+
+_sourceBranch=$(if [[ "${pkgname}" == *-git ]]; then echo "#branch=master"; else echo "#tag=${_tagPrefix}${pkgver}${_tagSuffix}"; fi)
+# template end;
 source=(
-	"git+https://stash.kopano.io/scm/kc/kopanocore.git#tag=kopanocore-${pkgver}"
-	"kopano-pietma::git+https://github.com/pietmacom/com-pietma-zarafa.git#branch=kopano"
+    "${pkgname}::${_source}${_sourceBranch}"
 	)
 md5sums=(
-	 'SKIP'
-	 'SKIP'
+    'SKIP'
 	)
+	
+makedepends=(
+    # CORE: https://stash.kopano.io/projects/KC/repos/kopanocore/browse/doc/install.txt
+    # Mandatory build-time dependencies
+    'gcc'
+    'binutils>=2.22'
+    'pkgconf'
+    'gsoap>=2.8.73'
+    'icu>=52'
+    'libxcrypt' # for:libcrypt with crypt_r
+    'gettext'
+    'libical>=0.9'
+    'libiconv' # src:https://aur.archlinux.org/packages/libiconv/
+    'openssl' # for:librcrypto/libssl
+    'ncurses>=5'
+    'util-linux-libs' # libuuid
+    'libvmime>=0.9.2' # version:>=0.9.2k2 src:https://aur.archlinux.org/packages/kopano-libvmime/
+    'libxml2'
+    'mariadb-libs>=5.1' # for:MariaDB Connector/C 3.0 or MySQL Connector/C 5.1
+    'xapian-core' # version:>=1.2.21
+    'zlib' # version:>=1.2
+    #
+    # Optional build-time dependencies
+    'gperftools>=2'
+    'krb5'
+    'curl>=7' # libcurl
+    'pam>=1'
+    # 'openldap>=2.4' # Not working with openldap 2.6
+    'php<8'
+    'python>=3'
+    'swig>=2.0'
+    #
+    # Optional build-time dependencies: Unmentioned
+    'libhx>=1.10'
+    #
+    # Optional build-time dependencies: Unsupported
+    # 'libs3' # src:https://aur.archlinux.org/packages/libs3-git/
+    # 'rrdtool>=1.3'
 
-# DEBUG
-# OPTIONS=(!strip docs libtool staticlibs emptydirs zipman purge !optipng !upx debug)
+    # PKGBUILD
+    'git'
+    'sed'
+	    )
+depends=(
+    # CORE: https://stash.kopano.io/projects/KC/repos/kopanocore/browse/doc/install.txt
+    'mariadb>=5.1.73'
+
+    # SEARCH: https://stash.kopano.io/projects/KC/repos/kopanocore/browse/ECtools/search/requirements.txt
+    'python-xapian'
+    'python-bsddb'
+    #
+    # Attachment Parser
+    # https://stash.kopano.io/projects/KC/repos/kopanocore/browse/ECtools/search/kopano_search/plaintext.py
+    'python-magic'
+    #
+    # https://stash.kopano.io/projects/KC/repos/kopanocore/browse/installer/searchscripts/attachments_parser.db
+    'libiconv'
+    'w3m'
+    'poppler' # for:pdftotext
+    'catdoc' # for:catdoc,catppt,xls2csv
+    'libxslt' # for:xsltproc
+    'unzip'
+    'gawk'
+
+
+    # SPAMD: https://stash.kopano.io/projects/KC/repos/kopanocore/browse/ECtools/spamd/requirements.txt
+    # Duplicate
+    # 'python-bsddb'
+
+
+    # BACKUP: https://stash.kopano.io/projects/KC/repos/kopanocore/browse/ECtools/backup/requirements.txt
+    # Duplicate
+    # 'python-bsddb'
+
+
+    # SWIG: https://stash.kopano.io/projects/KC/repos/kopanocore/browse/swig/python/kopano/requirements.txt
+    'python-pytz'
+    'python-tzlocal'
+    'python-dateutil'
+    'python-pilkit'
+        )
+optdepends=(
+    # CORE
+    'gperftools' # for:libtcmalloc
+    # Unsupported
+    # 'libs3'
+	    )
+
+# TODO _licenseDir is supposed to be the pkgname. For unification changed here.
+_confDir="etc/kopano"
+_licenseDir="usr/share/licenses/kopano"
+_docDir="usr/share/doc/kopano"
+
+install='install'
+for _configFile in src/${pkgname}/installer/linux/*.cfg; do
+    backup+=("${_confDir}/$(basename ${_configFile})")
+done
 
 prepare() {
-  cd kopanocore
+    cd ${srcdir}/${pkgname}
+    _patchFromGit https://github.com/pietmacom/kopano-core.git
+    return 0
 
-  # Python is not recognized. Package is called python2 in Archlinux
-  sed -i -r 's|PKG_CHECK_MODULES\(\[PYTHON\], \[python\], \[\], \[:\]\)|PKG_CHECK_MODULES\(\[PYTHON\], \[python2\], \[\], \[:\]\)|' configure.ac
-  
-  ./bootstrap.sh
+    case "${_sourceBranch}" in
+	${_tagPrefix}10*)
+	;&
+	${_tagPrefix}11*)
+	    _patchFromGit https://github.com/pietmacom/kopano-core.git master master-patch
+	;;
+	*)
+	;;
+    esac
 }
 
+# When using official VMIME
+_officialVmimeParameter() {
+    if ! pacman -Qi kopano-libvmime > /dev/null 2> /dev/null \
+	&& ! pacman -Qi kopano-libvmime-git > /dev/null 2> /dev/null;
+    then
+	# VMIME_CFLAGS='$(pkg-config vmime --cflags)' VMIME_LIBS='$(pkg-config vmime --libs)'
+	# echo -n "VMIME_CFLAGS=$(pkg-config vmime --cflags) VMIME_LIBS=$(pkg-config vmime --libs)"
+	echo -n "VMIME_CFLAGS='-I/usr/include/vmime/' VMIME_LIBS='-lvmime'"
+    fi
+}
+
+# https://stash.kopano.io/projects/KC/repos/kopanocore/browse/Dockerfile.build
 build() {
-  cd kopanocore
-  
-#  CPPFLAGS="-I/usr/include/python2.7"  ./configure \
-#    DEBUG
-#    CXXFLAGS="-O0 -ggdb3" \
-  CPPFLAGS="-I/usr/include/python2.7"  ./configure \
-    --prefix=/ \
-    --localstatedir=/var \
-    --sysconfdir=/etc \
-    --exec-prefix=/usr \
-    --sbindir=/usr/bin \
-    --datarootdir=/usr/share \
-    --includedir=/usr/include \
-    --enable-release \
-    --enable-epoll \
-    --enable-python \
-    --disable-debug \
-    --disable-static \
-    --with-userscript-prefix=/etc/kopano/userscripts \
-    --with-quotatemplate-prefix=/etc/kopano/quotamails \
-    --with-searchscripts-prefix=/etc/kopano/searchscripts \
-    --with-php=7 \
-    PYTHON=/usr/bin/python2
-    
-  make
-}
+    cd ${srcdir}/${pkgname}
 
-function cfg_set() {
-    # 1: field / 2: value / 3: file
-    # Replaces optional comments and spaces
-    # "# name = value" => "name = newvalue"
-    #
-    sed -i "s|^#*\s*\($1\)\s*\=.*|\1 = $2|" $3
+    ./bootstrap.sh
+    ./configure \
+`# https://stash.kopano.io/projects/KC/repos/kopanocore/browse/doc/install.txt#68` \
+    $(_officialVmimeParameter) \
+`# https://stash.kopano.io/projects/KC/repos/kopanocore/browse/Jenkinsfile` \
+    TCMALLOC_CFLAGS=' ' \
+    TCMALLOC_LIBS='-ltcmalloc_minimal' \
+    PYTHON="$(which python3)" \
+    PYTHON_CFLAGS="$(pkg-config python3 --cflags)" \
+    PYTHON_LIBS="$(pkg-config python3 --libs)" \
+    --enable-release \
+    --enable-pybind \
+    \
+`# https://documentation.kopano.io/kopanocore_administrator_manual/compiling_from_source.html` \
+    --enable-epoll \
+    --enable-unicode \
+    --enable-python \
+    --disable-static \
+    --with-userscript-prefix='/etc/kopano/userscripts' \
+    --with-quotatemplate-prefix='/etc/kopano/quotamails' \
+    \
+`# Arch specific` \
+    --prefix='/usr' \
+    --sbindir='$(prefix)/bin' \
+    --localstatedir='/var' \
+    --sysconfdir='/etc' \
+    --with-searchscripts-prefix='/etc/kopano/searchscripts'
+
+    make
 }
 
 package() {
-  cd kopanocore
-  
-  # => multithreaded build breaks everything
-  export MAKEFLAGS="-j1"
-  make install DESTDIR="$(realpath ${pkgdir})"
+    cd ${srcdir}/${pkgname}
 
+    # BASE
+    # => multithreaded build breaks everything
+    export MAKEFLAGS="-j1"
+    make install DESTDIR="$(realpath ${pkgdir})"
 
-  # => move bash-completion to arch location 
-  mkdir -p ${pkgdir}/usr/share/bash-completion/completions
-  mv ${pkgdir}/etc/bash_completion.d/kopano-bash-completion.sh ${pkgdir}/usr/share/bash-completion/completions/kopano
+    # LICENSE
+    mkdir -p ${pkgdir}/${_licenseDir}
+    cp CONTRIBUTING.md AGPL-3 LICENSE.txt \
+	${pkgdir}/${_licenseDir}/
 
-  # => move /lib/* to /usr/lib/ arch location. /lib is a symlink to /usr/lib anyways.
-  mv ${pkgdir}/lib/* ${pkgdir}/usr/lib/
+    # DOC
+    cp RELNOTES.txt \
+	"${pkgdir}/${_docDir}"
 
-  # => remove not appliable content
-  rm -Rf ${pkgdir}/lib
-  rm -Rf ${pkgdir}/etc/init.d
-  rm -Rf ${pkgdir}/etc/sysconfig
-  rm -Rf ${pkgdir}/etc/cron.daily
-  rm -Rf ${pkgdir}/etc/logrotate.d
-  rm -Rf ${pkgdir}/etc/bash_completion.d
-  rm -Rf ${pkgdir}/etc/kopano/license
+    cp -r "${pkgdir}/${_docDir}/example-config" \
+	"${pkgdir}/${_docDir}/installed-config"
+    prepare_configs "${pkgdir}/${_docDir}/installed-config"
 
-  # PREPARE LICENSE 
-  mkdir -p ${pkgdir}/usr/share/licenses/${pkgname}
-  cp -R {RELNOTES.txt,CONTRIBUTING.md,AGPL-3,LICENSE.txt} ${pkgdir}/usr/share/licenses/${pkgname}
+    # CONF
+    for _configFile in ${pkgdir}/${_docDir}/installed-config/*.cfg; do
+	_pkgConfigFile="${pkgdir}/${_confDir}/$(basename ${_configFile})"
+	cp ${_configFile} ${_pkgConfigFile}
+#	chown kopano:kopano ${_pkgConfigFile}
+	chmod 0600 ${_pkgConfigFile}
+    done
+}
 
+# User-Scripts
 
-  # PREPARE SETTINGS
-#??  rm ${pkgdir}/etc/kopano/*.cfg
+prepare_configs() {
+    # Common
+    config_path="$1"
+    run_as_user="kopano"
+    run_as_group="kopano"
+    running_path="/var/lib/kopano"
+    server_socket="/var/run/kopano/server.sock"
+    server_socket_prio="/var/run/kopano/prio.sock"
+    search_socket="/var/run/kopano/search.sock"
+    ssl_protocols="TLSv1 TLSv1\.1 TLSv1\.2"
+    ssl_ciphers="AES256\+EECDH:AES256\+EDH:\!aNULL"
+    ssl_privatekey="/etc/ssl/private/kopano.key"
+    ssl_certificate="/etc/ssl/private/kopano.crt"
 
-  # General
-  cfg_path="/usr/share/doc/kopano/example-config"
-  run_as_user="kopano"
-  run_as_group="kopano"
-  running_path="/var/lib/kopano"
-  server_socket="/var/run/kopano/server.sock"
-  server_socket_prio="/var/run/kopano/prio.sock"
-  search_socket="/var/run/kopano/search.sock"
-  ssl_protocols="TLSv1 TLSv1\.1 TLSv1\.2"
-  ssl_ciphers="AES256\+EECDH:AES256\+EDH:\!aNULL"
-  ssl_privatekey="/etc/ssl/private/kopano.key"
-  ssl_certificate="/etc/ssl/private/kopano.crt"
+    # => service
+    # => server-connection (socket only)
+    # => individual
 
+    # https://stash.kopano.io/projects/KC/repos/kopanocore/browse/doc/kopano-server.cfg.5
+    config_file="${config_path}/server.cfg"
+    set_config "run_as_user" "${run_as_user}" ${config_file}
+    set_config "run_as_group" "${run_as_group}" ${config_file}
+    set_config "log_method" "syslog" ${config_file}  
+    set_config "log_file" "-" ${config_file}
+    set_config "log_level" "3" ${config_file}
+    set_config "server_pipe_name" "${server_socket}" ${config_file}
+    set_config "server_pipe_priority" "${server_socket_prio}" ${config_file}
+    set_config "server_listen" "" ${config_file}
+    set_config "server_listen_tls" "" ${config_file}
+    set_config "server_ssl_prefer_server_ciphers" "yes" ${config_file}
+    set_config "server_ssl_protocols" "${ssl_protocols}" ${config_file}
+    set_config "server_ssl_ciphers" "${ssl_ciphers}" ${config_file}
+    set_config "server_ssl_key_file" "${ssl_privatekey}" ${config_file}
+    set_config "server_ssl_key_pass" "" ${config_file}
+    set_config "server_ssl_ca_file" "${ssl_certificate}" ${config_file}
+    set_config "server_ssl_ca_path" "/etc/ssl/certs" ${config_file}
+    # => individual
+    set_config "attachment_storage" "files" ${config_file} 
+    set_config "attachment_compression" "0" ${config_file}
+    set_config "disabled_features" "" ${config_file}
+    set_config "hide_everyone" "yes" ${config_file}
+    set_config "search_enabled" "yes" "${config_file}"
+    set_config "search_socket" "file://${search_socket}" "${config_file}"
+    set_config "mysql_socket" "/run/mysqld/mysqld.sock" ${config_file}
+    set_config "mysql_user" "kopano" ${config_file}
+    set_config "mysql_password" "kopano" ${config_file}
 
-  # server.cfg
-  cfg="${pkgdir}${cfg_path}/server.cfg"
-  cfg_set "attachment_compression" "0" ${cfg}
-  cfg_set "disabled_features" "" ${cfg}
-  cfg_set "hide_everyone" "yes" ${cfg}
-  cfg_set "search_enabled" "yes" "${cfg}"
-  cfg_set "search_socket" "file://${search_socket}" "${cfg}"
-  cfg_set "mysql_socket" "/run/mysqld/mysqld.sock" ${cfg}
-  cfg_set "mysql_user" "kopano" ${cfg}
-  cfg_set "mysql_password" "kopano" ${cfg}
-  #=> service
-  cfg_set "run_as_user" "${run_as_user}" ${cfg}
-  cfg_set "run_as_group" "${run_as_group}" ${cfg}
-  cfg_set "running_path" "${running_path}" ${cfg}
-  cfg_set "log_method" "syslog" ${cfg}  
-  cfg_set "log_file" "-" ${cfg}
-  cfg_set "log_level" "3" ${cfg}
-  #=> server-connection (socket only)
-  cfg_set "server_pipe_name" "${server_socket}" ${cfg}
-  cfg_set "server_pipe_priority" "${server_socket_prio}" ${cfg}
-  cfg_set "server_listen" "" ${cfg}
-  cfg_set "server_listen_tls" "" ${cfg}
-  cfg_set "server_ssl_prefer_server_ciphers" "yes" ${cfg}
-  cfg_set "server_ssl_protocols" "${ssl_protocols}" ${cfg}
-  cfg_set "server_ssl_ciphers" "${ssl_ciphers}" ${cfg}
-  cfg_set "server_ssl_key_file" "${ssl_privatekey}" ${cfg}
-  cfg_set "server_ssl_key_pass" "" ${cfg}
-  cfg_set "server_ssl_ca_file" "${ssl_certificate}" ${cfg}
-  cfg_set "server_ssl_ca_path" "/etc/ssl/certs" ${cfg}
+    # https://stash.kopano.io/projects/KC/repos/kopanocore/browse/doc/kopano-archiver.cfg.5
+    config_file="${config_path}/archiver.cfg"
+    set_config "log_method" "syslog" ${config_file}  
+    set_config "log_file" "-" ${config_file}
+    set_config "log_level" "3" ${config_file}
+    set_config "server_socket" "file://${server_socket}" ${config_file}
 
-  # archiver.cfg
-  cfg="${pkgdir}${cfg_path}/archiver.cfg"
-  #=> service
-  cfg_set "log_method" "syslog" ${cfg}  
-  cfg_set "log_file" "-" ${cfg}
-  cfg_set "log_level" "3" ${cfg}
-  #=> server-connection
-  cfg_set "server_socket" "file://${server_socket}" ${cfg}
+    # https://stash.kopano.io/projects/KC/repos/kopanocore/browse/doc/kopano-backup.cfg.5
+    config_file="${config_path}/backup.cfg"
+    set_config "log_method" "syslog" ${config_file}  
+    set_config "log_file" "-" ${config_file}
+    set_config "log_level" "3" ${config_file}
+    set_config "server_socket" "file://${server_socket}" ${config_file}
 
-  # backup.cfg
-  cfg="${pkgdir}${cfg_path}/backup.cfg"
-  #=> service
-  cfg_set "log_method" "syslog" ${cfg}  
-  cfg_set "log_file" "-" ${cfg}
-  cfg_set "log_level" "3" ${cfg}
-  #=> server-connection
-  cfg_set "server_socket" "file://${server_socket}" ${cfg}
+    # https://stash.kopano.io/projects/KC/repos/kopanocore/browse/doc/kopano-dagent.cfg.5
+    config_file="${config_path}/dagent.cfg"
+    set_config "run_as_user" "${run_as_user}" ${config_file}
+    set_config "run_as_group" "${run_as_group}" ${config_file}
+    set_config "log_method" "syslog" ${config_file}  
+    set_config "log_file" "-" ${config_file}
+    set_config "log_level" "3" ${config_file}
+    set_config "server_bind" "127.0.0.1" ${config_file}
+    set_config "server_socket" "file://${server_socket}" ${config_file}
 
-  # dagent.cfg
-  cfg="${pkgdir}${cfg_path}/dagent.cfg"
-  #=> service
-  cfg_set "run_as_user" "${run_as_user}" ${cfg}
-  cfg_set "run_as_group" "${run_as_group}" ${cfg}
-  cfg_set "running_path" "${running_path}" ${cfg}
-  cfg_set "log_method" "syslog" ${cfg}  
-  cfg_set "log_file" "-" ${cfg}
-  cfg_set "log_level" "3" ${cfg}
-  #=> server-connection
-  cfg_set "server_bind" "127.0.0.1" ${cfg}
-  cfg_set "server_socket" "file://${server_socket}" ${cfg}
+    # https://stash.kopano.io/projects/KC/repos/kopanocore/browse/doc/kopano-gateway.cfg.5
+    config_file="${config_path}/gateway.cfg"
+    set_config "log_method" "syslog" ${config_file}  
+    set_config "log_file" "-" ${config_file}
+    set_config "log_level" "3" ${config_file}
+    set_config "server_bind" "127.0.0.1" ${config_file}
+    set_config "server_socket" "file://${server_socket}" ${config_file}
+    set_config "ssl_prefer_server_ciphers" "yes" ${config_file}   
+    set_config "ssl_protocols" "${ssl_protocols}" ${config_file}
+    set_config "ssl_ciphers" "${ssl_ciphers}" ${config_file}
+    set_config "ssl_private_key_file" "${ssl_privatekey}" ${config_file}   
+    set_config "ssl_certificate_file" "${ssl_certificate}" ${config_file}   
+    # => individual
+    # avoid requests to be upgraded to admin privileges
+    set_config "run_as_user" "nobody" ${config_file}
+    set_config "run_as_group" "nobody" ${config_file}
+    set_config "imap_generate_utf8" "no" "${config_file}"
+    set_config "imap_public_folders" "yes" "${config_file}"
+    set_config "process_model" "fork" ${config_file}
 
-  # gateway.cfg
-  cfg="${pkgdir}${cfg_path}/gateway.cfg"
-  cfg_set "imap_generate_utf8" "no" "${cfg}"
-  cfg_set "imap_public_folders" "yes" "${cfg}"
-  cfg_set "process_model" "fork" ${cfg}
-  #=> service (avoid requests to be upgraded to admin privileges)
-  cfg_set "run_as_user" "nobody" ${cfg}
-  cfg_set "run_as_group" "nobody" ${cfg}
-  cfg_set "running_path" "${running_path}" ${cfg}
-  cfg_set "log_method" "syslog" ${cfg}  
-  cfg_set "log_file" "-" ${cfg}
-  cfg_set "log_level" "3" ${cfg}
-  #=> server-connection
-  cfg_set "server_bind" "127.0.0.1" ${cfg}
-  cfg_set "server_socket" "file://${server_socket}" ${cfg}
-  cfg_set "ssl_prefer_server_ciphers" "yes" ${cfg}   
-  cfg_set "ssl_protocols" "${ssl_protocols}" ${cfg}
-  cfg_set "ssl_ciphers" "${ssl_ciphers}" ${cfg}
-  cfg_set "ssl_private_key_file" "${ssl_privatekey}" ${cfg}   
-  cfg_set "ssl_certificate_file" "${ssl_certificate}" ${cfg}   
+    # https://stash.kopano.io/projects/KC/repos/kopanocore/browse/doc/kopano-ical.cfg.5
+    config_file="${config_path}/ical.cfg"
+    set_config "log_method" "syslog" ${config_file}  
+    set_config "log_file" "-" ${config_file}
+    set_config "log_level" "3" ${config_file}
+    set_config "server_bind" "127.0.0.1" ${config_file}
+    set_config "server_socket" "file://${server_socket}" ${config_file}
+    set_config "ssl_prefer_server_ciphers" "yes" ${config_file}
+    set_config "ssl_protocols" "${ssl_protocols}" ${config_file}
+    set_config "ssl_ciphers" "${ssl_ciphers}" ${config_file}
+    set_config "ssl_private_key_file" "${ssl_privatekey}" ${config_file}
+    set_config "ssl_certificate_file" "${ssl_certificate}" ${config_file}
+    # => individual
+    # avoid requests to be upgraded to admin privileges
+    set_config "process_model" "fork" ${config_file}
+    set_config "run_as_user" "nobody" ${config_file}
+    set_config "run_as_group" "nobody" ${config_file}
 
-  # ical.cfg
-  cfg="${pkgdir}${cfg_path}/ical.cfg"
-  cfg_set "process_model" "fork" ${cfg}
-  #=> service (avoid requests to be upgraded to kopano-admin)
-  cfg_set "run_as_user" "nobody" ${cfg}
-  cfg_set "run_as_group" "nobody" ${cfg}
-  cfg_set "running_path" "${running_path}" ${cfg}
-  cfg_set "log_method" "syslog" ${cfg}  
-  cfg_set "log_file" "-" ${cfg}
-  cfg_set "log_level" "3" ${cfg}
-  #=> server-connection
-  cfg_set "server_bind" "127.0.0.1" ${cfg}
-  cfg_set "server_socket" "file://${server_socket}" ${cfg}
-  cfg_set "ssl_prefer_server_ciphers" "yes" ${cfg}
-  cfg_set "ssl_protocols" "${ssl_protocols}" ${cfg}
-  cfg_set "ssl_ciphers" "${ssl_ciphers}" ${cfg}
-  cfg_set "ssl_private_key_file" "${ssl_privatekey}" ${cfg}   
-  cfg_set "ssl_certificate_file" "${ssl_certificate}" ${cfg}   
+    # https://stash.kopano.io/projects/KC/repos/kopanocore/browse/doc/kopano-monitor.cfg.5
+    config_file="${config_path}/monitor.cfg"
+    set_config "run_as_user" "${run_as_user}" ${config_file}
+    set_config "run_as_group" "${run_as_group}" ${config_file}
+    set_config "log_method" "syslog" ${config_file}
+    set_config "log_file" "-" ${config_file}
+    set_config "log_level" "3" ${config_file}
+    set_config "server_socket" "file://${server_socket}" ${config_file}
 
-  # monitor.cfg
-  cfg="${pkgdir}${cfg_path}/monitor.cfg"
-  #=> service
-  cfg_set "run_as_user" "${run_as_user}" ${cfg}
-  cfg_set "run_as_group" "${run_as_group}" ${cfg}
-  cfg_set "running_path" "${running_path}" ${cfg}
-  cfg_set "log_method" "syslog" ${cfg}
-  cfg_set "log_file" "-" ${cfg}
-  cfg_set "log_level" "3" ${cfg}
-  #=> server-connection
-  cfg_set "server_socket" "file://${server_socket}" ${cfg}
+    # https://stash.kopano.io/projects/KC/repos/kopanocore/browse/doc/kopano-unix.cfg.5
 
-  # presence.cfg
-  cfg="${pkgdir}${cfg_path}/presence.cfg"
-  cfg_set "plugins" "xmpp" "${cfg}"
-  cfg_set "server_bind" "127.0.0.1" ${cfg}
-  #=> service
-  cfg_set "run_as_user" "${run_as_user}" ${cfg}
-  cfg_set "run_as_group" "${run_as_group}" ${cfg}
-  cfg_set "running_path" "${running_path}" ${cfg}
-  cfg_set "log_method" "syslog" ${cfg}  
-  cfg_set "log_file" "-" ${cfg}
-  cfg_set "log_level" "3" ${cfg}
+    # https://stash.kopano.io/projects/KC/repos/kopanocore/browse/doc/kopano-search.cfg.5
+    config_file="${config_path}/search.cfg"
+    set_config "run_as_user" "${run_as_user}" ${config_file}
+    set_config "run_as_group" "${run_as_group}" ${config_file}
+    set_config "log_method" "syslog" ${config_file}  
+    set_config "log_file" "-" ${config_file}
+    set_config "log_level" "3" ${config_file}
+    set_config "server_socket" "file://${server_socket}" ${config_file}
+    set_config "server_bind_name" "file://${search_socket}" "${config_file}"
+    set_config "ssl_private_key_file" "${ssl_privatekey}" ${config_file}   
+    set_config "ssl_certificate_file" "${ssl_certificate}" ${config_file}   
+    # => individual
+    set_config "index_attachements" "yes" "${config_file}"
 
-  # unix.cfg
+    # https://stash.kopano.io/projects/KC/repos/kopanocore/browse/doc/kopano-spooler.cfg.5
+    cfg="${config_path}/spooler.cfg" 
+    set_config "run_as_user" "${run_as_user}" ${config_file}
+    set_config "run_as_group" "${run_as_group}" ${config_file}
+    set_config "log_method" "syslog" ${config_file}  
+    set_config "log_file" "-" ${config_file}
+    set_config "log_level" "3" ${config_file}
+    set_config "server_socket" "file://${server_socket}" ${config_file}
+    # => individual
+    set_config "allow_send_to_everyone" "no" "${config_file}"
+}
 
-  # search.cfg
-  cfg="${pkgdir}${cfg_path}/search.cfg"
-  cfg_set "index_attachements" "yes" "${cfg}"
-  cfg_set "server_bind_name" "file://${search_socket}" "${cfg}"
-  cfg_set "ssl_private_key_file" "${ssl_privatekey}" ${cfg}   
-  cfg_set "ssl_certificate_file" "${ssl_certificate}" ${cfg}   
-  #=> service
-  cfg_set "run_as_user" "${run_as_user}" ${cfg}
-  cfg_set "run_as_group" "${run_as_group}" ${cfg}
-  cfg_set "running_path" "${running_path}" ${cfg}
-  cfg_set "log_method" "syslog" ${cfg}  
-  cfg_set "log_file" "-" ${cfg}
-  cfg_set "log_level" "3" ${cfg}
-  #=> server-connection
-  cfg_set "server_socket" "file://${server_socket}" ${cfg}
+set_config() {
+    local config_attribute="$1"
+    local config_attribute_prefix=$(echo -n "${config_attribute}" | sed "s|\(_\).*|\1|")
+    local config_value="$2"
+    local config_file="$3"
 
-  # spooler.cfg
-  cfg="${pkgdir}${cfg_path}/spooler.cfg" 
-  cfg_set "allow_send_to_everyone" "no" "${cfg}"
-  #=> service
-  cfg_set "run_as_user" "${run_as_user}" ${cfg}
-  cfg_set "run_as_group" "${run_as_group}" ${cfg}
-  cfg_set "running_path" "${running_path}" ${cfg}
-  cfg_set "log_method" "syslog" ${cfg}  
-  cfg_set "log_file" "-" ${cfg}
-  cfg_set "log_level" "3" ${cfg}
-  #=> server-connection
-  cfg_set "server_socket" "file://${server_socket}" ${cfg}
+    # Uncomment And Set Attribute
+    if grep -q "${config_attribute}" ${config_file} ;
+    then
+	# Uncomment (Replaces Optional Comments And Spaces)
+	sed -i "s|^#*\s*\(${config_attribute}.*\)|\1|" ${config_file}
 
+	# Set ("name = value" => "name = newvalue")
+	sed -i "s|^\(${config_attribute}\)\s*\=.*|\1 = ${config_value}|" ${config_file}
 
-  # PIETMA
-  ###
-  cd ${srcdir}/kopano-pietma
-  mkdir -p ${pkgdir}/usr/share/doc/kopano
-  cp -LRf doc/* ${pkgdir}/usr/share/doc/kopano
-  cp -LRf usr/* ${pkgdir}/usr
-  
-  
-  # ADDITIONS
-  ###
-#  cd ${srcdir}/kopano-tools
-#  mkdir -p ${pkgdir}/usr/share/doc/kopano/kopano-tools
-#  cp -LR * ${pkgdir}/usr/share/doc/kopano/kopano-tools/
-  
-#  cd ${srcdir}/python-kopano
-#  mkdir -p ${pkgdir}/usr/share/doc/kopano/python-kopano
-#  cp -LR * ${pkgdir}/usr/share/doc/kopano/python-kopano/
-  
-#  cd ${srcdir}/kopano-inspector
-#  mkdir -p ${pkgdir}/usr/share/doc/kopano/kopano-inspector
-#  cp -LR * ${pkgdir}/usr/share/doc/kopano/kopano-inspector/
+    # Add Attribute At Right Position
+    elif [ ! -z "${config_attribute_prefix}" ] \
+	&& grep -q "${config_attribute_prefix}" ${config_file} ;
+    then
+	# Find Last Attribut From Prefix-Group
+	local config_attribute_last_from_group=$(tac ${config_file} | grep -m 1 "^#*\s*${config_attribute_prefix}" | grep -o "${config_attribute_prefix}[^ =]*")
+	sed -i "s|\(${config_attribute_last_from_group}.*$\)|\1\n${config_attribute} = ${config_value}|" ${config_file}
+
+    # Add Attribute At The End of File 
+    else
+	sed -i -z "s|\(.*[^\n]\)|\1\n${config_attribute} = ${config_value}|" ${config_file}
+
+    fi
 }

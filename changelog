@@ -1,0 +1,55 @@
+
+[2020-02-19]
+* init
+
+[2020-03-09]
+* build by method - lets see how far it gets
+
+[2020-03-10]
+* comilable
+
+[2020-12-23]
+* fresh start with kopano master
+* vmime update
+* handle new pkg format
+* syntax error
+* deps
+
+[2020-12-24]
+* deps
+
+[2021-01-04]
+* -git/master-packages
+
+[2021-01-22]
+* changes from 20201207
+
+[2021-01-23]
+* Fixed build with ICU 68.2-1
+
+[2021-01-25]
+* update to kopano 10.0.7
+
+[2021-02-25]
+* patch from git
+* patch from git: cherryPick
+* patch from git: corrosponding branch
+
+[2021-03-03]
+* patch v10*/v11* from master
+
+[2021-03-10]
+* added patch fallbacks
+
+[2021-08-22]
+* added php7* restriction
+
+[2021-08-23]
+* added php7* restriction, php-config path
+* make php74 the default for the build. Please build in Docker.
+
+[2022-01-03]
+* Update PKGBUILD
+
+[2022-03-31]
+* Update PKGBUILD
