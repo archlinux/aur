@@ -2,7 +2,7 @@
 # ---
 _pkgname=AutoLinux
 pkgname=auto
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc='ArchLinux bootstrap scripts, with optional riced configs for the AutoLinux platform'
 arch=(x86_64)
@@ -10,7 +10,7 @@ url="https://gitlab.com/qYp/${_pkgname}"
 license=('MIT')
 depends=(dialog)
 source=("https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
-sha256sums=('3c55e1691cb5cec6993cfece39e774803f3166a015c2b9fafc7ad9de80a3247f')
+sha256sums=('1527d63df165aab2df8a4ddc7d2796a793383fd811a45b96030e7c622d0543f2')
 
 package() {
     install -Dm755 ${pkgname}/{AutoLinux.sh,pre-install.sh} -t "${pkgdir}/opt/${_pkgname}"
