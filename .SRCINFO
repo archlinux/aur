@@ -6,7 +6,6 @@ pkgbase = sailboot
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
-	makedepends = git
 	depends = python-mpmath
 	depends = python-pyparsing
 	depends = sdpb-git

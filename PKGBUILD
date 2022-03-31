@@ -9,14 +9,14 @@ url='https://gitlab.com/maneandrea/sailboot'
 license=('GPL')
 depends=('python-mpmath' 'python-pyparsing' 'sdpb-git')
 optdepends=('python-gmpy2' 'sagemath' 'scalar_blocks-git')
-makedepends=('python-setuptools' 'git')
+makedepends=('python-setuptools')
 source=('https://gitlab.com/maneandrea/sailboot/-/archive/v1.0/sailboot-v1.0.tar.gz' 'pyparsing_fix.patch')
 sha256sums=('fcac6a42c2220220737d1274ec86afb2a33488737fb2a81d8ec3e8526b272bc7' 'ac4957d25c46651fc3a3341bacc24636bda1026910491e505fe023f00a45f120')
 
 build() {
     cd "$pkgname"-v"$pkgver"
 
-    git apply ../pyparsing_fix.patch
+    patch -p1 < ../pyparsing_fix.patch
 
     python setup.py build
 }
