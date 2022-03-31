@@ -1,0 +1,34 @@
+pkgbase = lua-unbound
+	pkgdesc = Lua bindings to unbound
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.zash.se/luaunbound.html
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = lua<5.5
+	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
+	depends = unbound
+	source = https://code.zash.se/dl/luaunbound/luaunbound-1.0.0.tar.gz
+	sha256sums = 6de45aa64c21cf0ecbccb734b7c1eda8873a6135bbe142fbf353f772a90750d3
+
+pkgname = lua-unbound
+	depends = unbound
+	depends = lua<5.5
+
+pkgname = lua51-unbound
+	pkgdesc = Lua bindings to unbound - Lua 5.1 version
+	depends = unbound
+	depends = lua51
+
+pkgname = lua52-unbound
+	pkgdesc = Lua bindings to unbound - Lua 5.2 version
+	depends = unbound
+	depends = lua52
+
+pkgname = lua53-unbound
+	pkgdesc = Lua bindings to unbound - Lua 5.3 version
+	depends = unbound
+	depends = lua53
