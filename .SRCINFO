@@ -1,7 +1,7 @@
 pkgbase = python-thinc
 	pkgdesc = Practical Machine Learning for NLP
 	pkgver = 8.0.15
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/explosion/thinc
 	arch = x86_64
 	arch = aarch64
@@ -15,7 +15,6 @@ pkgbase = python-thinc
 	depends = python-mock
 	depends = python-murmurhash
 	depends = python-numpy
-	depends = python-pathlib
 	depends = python-plac
 	depends = python-preshed
 	depends = python-pydantic
