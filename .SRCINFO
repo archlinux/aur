@@ -1,6 +1,6 @@
 pkgbase = qtcreator-devel
 	pkgdesc = QtCreator Devel component, for build plugins
-	pkgver = 6.0.2
+	pkgver = 7.0.0
 	pkgrel = 2
 	url = https://www.qt.io
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = qtcreator-devel
 	makedepends = python
 	depends = qtcreator
 	options = docs
-	source = https://download.qt.io/official_releases/qtcreator/6.0/6.0.2/qt-creator-opensource-src-6.0.2.tar.xz
-	sha256sums = 3d173c1a02ce55137a23f294e1a840d7648656e97826067eb29d9df653351bfa
+	source = https://download.qt.io/official_releases/qtcreator/7.0/7.0.0/qt-creator-opensource-src-7.0.0.tar.xz
+	sha256sums = d39a05e48bb961cfab61135a5ee5503fc4d381c74000b910f36bf0cea37736d9
 
 pkgname = qtcreator-devel
