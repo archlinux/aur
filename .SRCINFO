@@ -1,0 +1,19 @@
+pkgbase = kopano-webapp-spellchecker
+	pkgver = 2.0.1
+	pkgrel = 1
+	changelog = changelog
+	arch = any
+	groups = kopano
+	groups = kopano-webapp-plugins
+	makedepends = apache-ant
+	makedepends = libxml2
+	makedepends = git
+	makedepends = gzip
+	depends = php-enchant
+	depends = kopano-webapp
+	source = kopano-webapp-spellchecker::git+https://stash.kopano.io/scm/kwa/spellchecker.git#tag=v2.0.1
+	source = kopano-webapp-spellchecker.ini
+	md5sums = SKIP
+	md5sums = cb4f55c46dc7f678e7fb73e195d01d85 kopano-webapp-spellchecker.ini
+
+pkgname = kopano-webapp-spellchecker
