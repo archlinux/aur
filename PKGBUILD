@@ -25,7 +25,7 @@ _ver=11.0.14.1
 _hgver=11_0_14_1
 _updatever=1
 _jbver1=2043
-_jbver2=17
+_jbver2=25
 pkgrel=1
 pkgver=${_ver}.b${_jbver1}.${_jbver2}
 _hg_tag=jb${_hgver}-b${_jbver1}.${_jbver2}
@@ -149,7 +149,7 @@ package_jre11-jetbrains-imfix() {
               'alsa-lib: for basic sound support'
               'gtk2: for the Gtk+ 2 look and feel - desktop usage'
               'gtk3: for the Gtk+ 3 look and feel - desktop usage')
-  provides=("java-runtime=${_majorver}" "java-runtime-jetbrains=${_majorver}" "jre${_majorver}-jetbrains=${pkgver}-${pkgrel}")
+  provides=("java-runtime=${_majorver}" "java-runtime-headless=${_majorver}" "java-runtime-jetbrains=${_majorver}" "jre${_majorver}-jetbrains=${pkgver}-${pkgrel}")
   conflicts=("jre11-jetbrains")
   _pkgname="jre11-jetbrains"
   backup=(etc/${_pkgbase}/logging.propertopenjdkies
