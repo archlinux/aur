@@ -3,7 +3,7 @@
 
 pkgname=jd-tool
 _pkgname=jd
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="JSON diff and patch"
 arch=('x86_64' 'aarch64')
@@ -11,9 +11,9 @@ url="https://github.com/josephburnett/jd"
 license=('MIT')
 makedepends=('go')
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v1.5.1.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('dd2671e517e5dca4fe9d322dcea7cc16ab83b5d705bce13e0e9c82d43a56fb59')
+sha256sums=('ff6cf8fabe65a5786652ab2a3ef762d5dc6b5595a9516f81eb0916fdfe13bab6')
 
 build() {
   cd $_pkgname-$pkgver
