@@ -1,6 +1,6 @@
 # Maintainer: Jonas Witschel <diabonas@archlinux.org>
 pkgname=pdftk-git
-pkgver=3.0.0.r182.19b7ac4
+pkgver=3.0.0.r277.31e8eca
 pkgrel=1
 pkgdesc='Command-line tool for working with PDFs'
 arch=('any')
@@ -15,7 +15,7 @@ provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("git+$url.git" 'pdftk.sh')
 sha512sums=('SKIP'
-            'e6e3ae576d80c9e03fc9b08d858d854db055cf74d8650b7b315e680a719fce5152ceb381e1315d526ba530d26a7427b256c311dbc0109dda777174d1abca74cd')
+            'deceb38223617296c1cb7b6539632168922d39f8ba3bccb79eefafd3799afe0399429a7e51228fef26a6917170889f298a0ff6b2b9a9b3a3ab8bdaa28ecb739a')
 
 pkgver() {
 	cd "${pkgname%-git}"
@@ -25,7 +25,7 @@ pkgver() {
 prepare() {
 	cd "${pkgname%-git}"
 	mkdir lib
-	ln -s /usr/share/java/{bcprov,commons-lang/commons-lang,hamcrest-core,junit,junit-system-rules/system-rules}.jar lib
+	ln -s /usr/share/java/{bcprov/bcprov,commons-lang/commons-lang,hamcrest-core,junit,junit-system-rules/system-rules}.jar lib
 	# No need for code coverage reports during tests
 	sed -ri '/<\/?jacoco:coverage>/d' build.xml
 }
