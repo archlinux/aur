@@ -32,20 +32,20 @@ update_version() {
   file_url=$service_url/$filename
 
   # update PKGBUILD
-  replace_line "pkgver=\"$version\"" 4 PKGBUILD
-  replace_line "_chromiumver=\"$chromium_version\"" 6 PKGBUILD
-  replace_line "_pkgcommit=\"$build_hash\"" 5 PKGBUILD
+  replace_line "pkgver=\"$version\"" 5 PKGBUILD
+  replace_line "_chromiumver=\"$chromium_version\"" 7 PKGBUILD
+  replace_line "_pkgcommit=\"$build_hash\"" 6 PKGBUILD
 
   # update .SRCINFO
   replace_line "	pkgver = $version" 3 .SRCINFO
 
   if [ $arch = "linux64" ]; then
-    replace_line "sha1sums_x86_64=(\"$sha_hash\")" 30 PKGBUILD
+    replace_line "sha1sums_x86_64=(\"$sha_hash\")" 29 PKGBUILD
 
     replace_line "  source_x86_64 = $file_url" 29 .SRCINFO
     replace_line "  sha1sums_x86_64 = $sha_hash" 30 .SRCINFO
   else
-    replace_line "sha1sums_i686=(\"$sha_hash\")" 29 PKGBUILD
+    replace_line "sha1sums_i686=(\"$sha_hash\")" 28 PKGBUILD
 
     replace_line "  source_i686 = $file_url" 27 .SRCINFO
 	  replace_line "  sha1sums_i686 = $sha_hash" 28 .SRCINFO
