@@ -1,0 +1,21 @@
+pkgbase = zlib-ng-compat-git
+	pkgdesc = Zlib replacement with optimizations for next generation systems
+	pkgver = r1918.41faa084
+	pkgrel = 1
+	url = https://github.com/zlib-ng/zlib-ng
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	arch = aarch64
+	license = custom
+	makedepends = git
+	depends = glibc
+	provides = zlib
+	conflicts = zlib
+	conflicts = zlib-ng
+	options = !emptydirs
+	source = git+https://github.com/zlib-ng/zlib-ng.git
+	md5sums = SKIP
+
+pkgname = zlib-ng-compat-git
