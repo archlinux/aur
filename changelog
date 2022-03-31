@@ -1,0 +1,18 @@
+
+[2020-02-19]
+* init
+
+[2020-03-10]
+* update fetchmails
+
+[2021-01-22]
+* changes from 20201207
+
+[2021-01-27]
+* php basedir
+
+[2021-08-25]
+* make php74 the default for the build. Please build in Docker.
+
+[2022-03-31]
+* Update PKGBUILD
