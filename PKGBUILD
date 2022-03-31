@@ -1,9 +1,9 @@
 # Maintainer: Anderson Rocha <anderson2320@gmail.com>
 # Contributor: etriguba <eugenetriguba@gmail.com>
 # Contributor: NexAdn <nexadn@yandex.com>
-
-pkgname=cef-standard
-pkgver="96.0.17"
+pkgver="99.2.14"
+_pkgcommit="g3f796b8"
+_chromiumver="99.0.4844.84"
 _pkgcommit="g20e2617"
 _chromiumver="96.0.4664.93"
 _pkgver="${pkgver}+${_pkgcommit}+chromium-${_chromiumver}"
@@ -26,8 +26,8 @@ source_x86_64=(
   "${cdn_build_package_url}/cef_binary_${_url_pkgver}_linux64.tar.bz2"
 )
 
-sha1sums_i686=("5fc4cf45f08db99d139f47ce02d4105dd89513fb")
-sha1sums_x86_64=("2a5ba45ff7479781309905ba8b4d612243712a45")
+sha1sums_i686=("0c2d68b2c9853cafb368111d05b185367f40b0ee")
+sha1sums_x86_64=("55d72f6bf9b56d0d8e6742fe3ba82b595f40fa0c")
 
 [[ "$CARCH" = "i686" ]] && _arch="32"
 [[ "$CARCH" = "x86_64" ]] && _arch="64"
