@@ -1,6 +1,6 @@
 pkgbase = yosys-uhdm-plugin
 	pkgdesc = UDHM plugin for Yosys (SystemVerilog support)
-	pkgver = d13a016
+	pkgver = 1c7f719
 	pkgrel = 1
 	url = https://github.com/antmicro/yosys-uhdm-plugin-integration/releases
 	arch = x86_64
