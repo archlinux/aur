@@ -42,11 +42,11 @@ done
 # template start; name=base-scm; version=1;
 #_tagPrefix=""
 #_tagSuffix=""
-#_remoteGit=""
+#_source=""
 
-if [[ "${pkgname}" == *-latest ]] && [ ! -z "${_remoteGit}" ];
+if [[ "${pkgname}" == *-latest ]] && [ ! -z "${_source}" ] && [[ "${_source}" == git+* ]];
 then
-    pkgver=$(git ls-remote --refs --tags "${_remoteGit}" | sed 's|.*tags/\(.*\)$|\1|' | sort -u | grep -vE "(beta|alpha|test)" | tail -n 1)
+    pkgver=$(git ls-remote --refs --tags "$(echo "${_source}" | sed 's|^git+||')" | sed 's|.*tags/\(.*\)$|\1|' | grep "^${_tagPrefix}.*" | grep ".*${_tagSuffix}$" | sed "s|${_tagPrefix}\(.*\)${_tagSuffix}|\1|" | sort -u -V |  grep -vE "(beta|alpha|test)" | tail -n 1)
 fi
 
 _basePkgName="${pkgname//-git/}"
