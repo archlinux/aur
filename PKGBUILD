@@ -1,16 +1,17 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=wike
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="Wikipedia Reader for the GNOME Desktop"
 arch=('any')
 url="https://apps.gnome.org/app/com.github.hugolabe.Wike"
 license=('GPL3')
-depends=('gtk3' 'libhandy' 'python-gobject' 'python-requests' 'webkit2gtk')
+depends=('libhandy' 'python-gobject' 'python-requests' 'webkit2gtk')
 makedepends=('meson')
 #checkdepends=('appstream-glib')
+changelog="$pkgname-changelog"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/hugolabe/Wike/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('b3fa3c0600e7234f77465fd7052136de3b397e66ad5c636f8282556aa60a2742')
+sha256sums=('8434cec2ca44392fd96fa9ed1594be40c74d91490039405996aa4c6fa64bd26c')
 
 build() {
   arch-meson Wike-$pkgver build
