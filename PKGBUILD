@@ -5,7 +5,7 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=mesa-steamos
-pkgname=('vulkan-mesa-layers' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vulkan-swrast' 'libva-mesa-driver' 'mesa-vdpau' 'mesa')
+pkgname=('vulkan-mesa-layers-steamos' 'opencl-mesa-steamos' 'vulkan-intel-steamos' 'vulkan-radeon-steamos' 'vulkan-swrast-steamos' 'libva-mesa-driver-steamos' 'mesa-vdpau-steamos' 'mesa-steamos')
 pkgdesc="An open-source implementation of the OpenGL specification"
 _tag=radeonsi-20220217
 pkgver=22.0.0_devel.148040.radeonsi_20220217
@@ -88,7 +88,7 @@ _install() {
   done
 }
 
-package_vulkan-mesa-layers() {
+package_vulkan-mesa-layers-steamos() {
   pkgdesc="Mesa's Vulkan layers"
   depends=('libdrm' 'libxcb' 'wayland' 'python')
   conflicts=('vulkan-mesa-layer')
@@ -102,7 +102,7 @@ package_vulkan-mesa-layers() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
-package_opencl-mesa() {
+package_opencl-mesa-steamos() {
   pkgdesc="OpenCL support for AMD/ATI Radeon mesa drivers"
   # Jupiter: clang-libs is a local thing, which we should upstream in Arch
   depends=('libdrm' 'libclc' 'clang-libs')
@@ -116,7 +116,7 @@ package_opencl-mesa() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
-package_vulkan-intel() {
+package_vulkan-intel-steamos() {
   pkgdesc="Intel's Vulkan mesa driver"
   depends=('wayland' 'libx11' 'libxshmfence' 'libdrm' 'zstd')
   optdepends=('vulkan-mesa-layers: additional vulkan layers')
@@ -128,7 +128,7 @@ package_vulkan-intel() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
-package_vulkan-radeon() {
+package_vulkan-radeon-steamos() {
   pkgdesc="Radeon's Vulkan mesa driver"
   depends=('wayland' 'libx11' 'libxshmfence' 'libelf' 'libdrm' 'llvm-libs')
   optdepends=('vulkan-mesa-layers: additional vulkan layers')
@@ -140,7 +140,7 @@ package_vulkan-radeon() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
-package_vulkan-swrast() {
+package_vulkan-swrast-steamos() {
   pkgdesc="Vulkan software rasteriser driver"
   depends=('wayland' 'libx11' 'libxshmfence' 'libdrm' 'zstd' 'llvm-libs')
   optdepends=('vulkan-mesa-layers: additional vulkan layers')
@@ -154,7 +154,7 @@ package_vulkan-swrast() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
-package_libva-mesa-driver() {
+package_libva-mesa-driver-steamos() {
   pkgdesc="VA-API implementation for gallium"
   depends=('libdrm' 'libx11' 'llvm-libs' 'expat' 'libelf' 'libxshmfence')
   depends+=('libexpat.so')
@@ -164,7 +164,7 @@ package_libva-mesa-driver() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
-package_mesa-vdpau() {
+package_mesa-vdpau-steamos() {
   pkgdesc="Mesa VDPAU drivers"
   depends=('libdrm' 'libx11' 'llvm-libs' 'expat' 'libelf' 'libxshmfence')
   depends+=('libexpat.so')
@@ -174,7 +174,7 @@ package_mesa-vdpau() {
   install -m644 -Dt "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
 }
 
-package_mesa() {
+package_mesa-steamos() {
   depends=('libdrm' 'wayland' 'libxxf86vm' 'libxdamage' 'libxshmfence' 'libelf'
            'libomxil-bellagio' 'libunwind' 'llvm-libs' 'lm_sensors' 'libglvnd'
            'zstd' 'vulkan-icd-loader')

@@ -44,7 +44,7 @@ pkgbase = mesa-steamos
 	sha512sums = SKIP
 	sha512sums = f9f0d0ccf166fe6cb684478b6f1e1ab1f2850431c06aa041738563eb1808a004e52cdec823c103c9e180f03ffc083e95974d291353f0220fe52ae6d4897fecc7
 
-pkgname = vulkan-mesa-layers
+pkgname = vulkan-mesa-layers-steamos
 	pkgdesc = Mesa's Vulkan layers
 	depends = libdrm
 	depends = libxcb
@@ -53,7 +53,7 @@ pkgname = vulkan-mesa-layers
 	conflicts = vulkan-mesa-layer
 	replaces = vulkan-mesa-layer
 
-pkgname = opencl-mesa
+pkgname = opencl-mesa-steamos
 	pkgdesc = OpenCL support for AMD/ATI Radeon mesa drivers
 	depends = libdrm
 	depends = libclc
@@ -61,7 +61,7 @@ pkgname = opencl-mesa
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	provides = opencl-driver
 
-pkgname = vulkan-intel
+pkgname = vulkan-intel-steamos
 	pkgdesc = Intel's Vulkan mesa driver
 	depends = wayland
 	depends = libx11
@@ -71,7 +71,7 @@ pkgname = vulkan-intel
 	optdepends = vulkan-mesa-layers: additional vulkan layers
 	provides = vulkan-driver
 
-pkgname = vulkan-radeon
+pkgname = vulkan-radeon-steamos
 	pkgdesc = Radeon's Vulkan mesa driver
 	depends = wayland
 	depends = libx11
@@ -82,7 +82,7 @@ pkgname = vulkan-radeon
 	optdepends = vulkan-mesa-layers: additional vulkan layers
 	provides = vulkan-driver
 
-pkgname = vulkan-swrast
+pkgname = vulkan-swrast-steamos
 	pkgdesc = Vulkan software rasteriser driver
 	depends = wayland
 	depends = libx11
@@ -95,7 +95,7 @@ pkgname = vulkan-swrast
 	conflicts = vulkan-mesa
 	replaces = vulkan-mesa
 
-pkgname = libva-mesa-driver
+pkgname = libva-mesa-driver-steamos
 	pkgdesc = VA-API implementation for gallium
 	depends = libdrm
 	depends = libx11
@@ -105,7 +105,7 @@ pkgname = libva-mesa-driver
 	depends = libxshmfence
 	depends = libexpat.so
 
-pkgname = mesa-vdpau
+pkgname = mesa-vdpau-steamos
 	pkgdesc = Mesa VDPAU drivers
 	depends = libdrm
 	depends = libx11
@@ -115,7 +115,7 @@ pkgname = mesa-vdpau
 	depends = libxshmfence
 	depends = libexpat.so
 
-pkgname = mesa
+pkgname = mesa-steamos
 	depends = libdrm
 	depends = wayland
 	depends = libxxf86vm
