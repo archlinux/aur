@@ -6,7 +6,7 @@
 # Directly based off of the official package
 
 pkgname=vim-clipboard
-pkgver=8.2.4464
+pkgver=8.2.4651
 pkgrel=1
 pkgdesc='Vi Improved, a highly configurable, improved version of the vi text editor'
 url='https://www.vim.org'
@@ -24,7 +24,7 @@ conflicts=('vim' 'gvim' 'vim-minimal' 'vim-python3')
 provides=('xxd' 'vim' 'vim-minimal' 'vim-python3' 'vim-plugin-runtime')
 replaces=('vim' 'vim-python3' 'vim-minimal' 'gvim')
 source=(https://github.com/vim/vim/archive/v${pkgver}/vim-${pkgver}.tar.gz)
-sha512sums=('dbf7e6c087dadde4d10dc71b31b3d656fb93cf35ef81815fb44dbe2527bdba4f80149a1a02de513fd63939f2def5455f39412fa1acfce7256e077ae25a3bc963')
+sha512sums=('da4ed5a1887a50f5015e6bd57aa71413e9eb1143ff4a3bd3c8a0bde4dd051f026e75eeb13c2eb52f55db3a29cb1a95ebbbc531a8cd02a18b9fc1e000a698152c')
 
 prepare() {
   cd vim-${pkgver}/src

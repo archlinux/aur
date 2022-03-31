@@ -1,6 +1,6 @@
 pkgbase = vim-clipboard
 	pkgdesc = Vi Improved, a highly configurable, improved version of the vi text editor
-	pkgver = 8.2.4464
+	pkgver = 8.2.4651
 	pkgrel = 1
 	url = https://www.vim.org
 	arch = x86_64
@@ -41,7 +41,7 @@ pkgbase = vim-clipboard
 	replaces = vim-python3
 	replaces = vim-minimal
 	replaces = gvim
-	source = https://github.com/vim/vim/archive/v8.2.4464/vim-8.2.4464.tar.gz
-	sha512sums = dbf7e6c087dadde4d10dc71b31b3d656fb93cf35ef81815fb44dbe2527bdba4f80149a1a02de513fd63939f2def5455f39412fa1acfce7256e077ae25a3bc963
+	source = https://github.com/vim/vim/archive/v8.2.4651/vim-8.2.4651.tar.gz
+	sha512sums = da4ed5a1887a50f5015e6bd57aa71413e9eb1143ff4a3bd3c8a0bde4dd051f026e75eeb13c2eb52f55db3a29cb1a95ebbbc531a8cd02a18b9fc1e000a698152c
 
 pkgname = vim-clipboard
