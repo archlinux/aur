@@ -1,6 +1,6 @@
 pkgbase = renderdoc
 	pkgdesc = OpenGL and Vulkan debugging tool
-	pkgver = 1.18
+	pkgver = 1.19
 	pkgrel = 1
 	url = https://github.com/baldurk/renderdoc
 	arch = x86_64
@@ -15,10 +15,10 @@ pkgbase = renderdoc
 	depends = qt5-svg
 	depends = qt5-x11extras
 	depends = xcb-util-keysyms
-	source = https://github.com/baldurk/renderdoc/archive/v1.18.tar.gz
-	source = https://github.com/baldurk/renderdoc/releases/download/v1.18/v1.18.tar.gz.asc
+	source = https://github.com/baldurk/renderdoc/archive/v1.19.tar.gz
+	source = https://github.com/baldurk/renderdoc/releases/download/v1.19/v1.19.tar.gz.asc
 	validpgpkeys = 1B039DB9A4718A2D699DE031AC612C3120C34695
-	sha384sums = 2c440f22f24a6c1ea24766275e8832cc0384a23424864732da42bf3fc9abed0d99be72bc93fb89ef8cafd094312527a0
+	sha384sums = 6d6a91114ed93237f14ff6e4be538bb266fee054b9e0f948f4b186e256b3e808c7ab297b94e2f7fb9fd4ca487f7c6580
 	sha384sums = SKIP
 
 pkgname = renderdoc
