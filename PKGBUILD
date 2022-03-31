@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=icon-library-git
-pkgver=0.0.9.r38.g44e0d9e
+pkgver=0.0.11.r12.ga8b98c7
 pkgrel=1
 pkgdesc='Find the right symbolic icon to use on your GNOME application'
 arch=(x86_64 aarch64)
