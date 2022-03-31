@@ -31,5 +31,5 @@ build() {
 
 package() {
   cd "$srcdir/$pkgname-v$pkgver"
-  SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver python setup.py install --root $pkgdir
+  SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver python setup.py install --root $pkgdir --optimize=1
 }
