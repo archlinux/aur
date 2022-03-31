@@ -1,7 +1,7 @@
 # Maintainer: Abd El-Twab M. Fakhry <abdeltwab.m.fakhry@gmail.com>
 
 pkgname=next-prayer
-pkgver=v2.0.2
+pkgver=v2.0.2.r40.0c5d3ae
 pkgrel=1
 pkgdesc="Islamic prayers reminder for your status bar."
 arch=('x86_64')
@@ -28,12 +28,11 @@ pkgver() {
 
 build() {
 	cd "${pkgname}"
-	make DESTDIR="${pkgdir}" np_main
+	make DESTDIR="${pkgdir}" install clean
 }
 
 package() {
 	cd "${pkgname}"
-	make DESTDIR="${pkgdir}" install clean
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
