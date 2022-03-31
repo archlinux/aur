@@ -32,12 +32,12 @@ package() {
     mv "$tmppackage" "$pkgjson"
     chmod 644 "$pkgjson"
 
-    find "$pkgdir" -type f -name package.json | while read pkgjson; do
-        local tmppackage="$(mktemp)"
-        jq 'del(.man)' "$pkgjson" > "$tmppackage"
-        mv "$tmppackage" "$pkgjson"
-        chmod 644 "$pkgjson"
-    done
+    #find "$pkgdir" -type f -name package.json | while read pkgjson; do
+    #    local tmppackage="$(mktemp)"
+    #    jq 'del(.man)' "$pkgjson" > "$tmppackage"
+    #    mv "$tmppackage" "$pkgjson"
+    #    chmod 644 "$pkgjson"
+    #done
 
     # npm gives ownership of ALL FILES to build user
     # https://bugs.archlinux.org/task/63396
