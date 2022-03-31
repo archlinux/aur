@@ -1,0 +1,5 @@
+pkg/
+*.zst
+*.xz
+src/
+mascii*
