@@ -3,7 +3,7 @@
 
 _pkgname=spacy
 pkgname=python-${_pkgname}
-pkgver=3.2.3
+pkgver=3.2.4
 pkgrel=1
 pkgdesc='Free open-source library for Natural Language Processing in Python'
 arch=(x86_64 aarch64)
@@ -16,7 +16,6 @@ depends=(
 	python-langcodes
 	python-murmurhash
 	python-numpy
-	python-pathlib
 	python-plac
 	python-preshed
 	python-regex
@@ -34,7 +33,7 @@ makedepends=(
 	cython
 )
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('b378ffbac7326052c4ca5ed0fc1fd8152ab10b060393f36544143c3eab3e2286f12850156fbcee5e2c77b157ab0a0542e0d8edfa381aa16d79e15e15dee8c82f')
+b2sums=('efc4173e3ae18960207cc5c56fafd3c1739550884c2db70955aa60d5040b6a2c98c9745d976c34cc49d988e9332cde0f2f5d596ebe3a2a3b6af5b3b8021a0590')
 
 build() {
 	cd "spacy-${pkgver}"
