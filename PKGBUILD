@@ -5,7 +5,7 @@
 _pkgname=php-ssh
 pkgname=${_pkgname}-git
 pkgver=r269.5c08a92
-pkgrel=1
+pkgrel=2
 pkgdesc="An SSH2 extension for PHP"
 url="http://pecl.php.net/package/ssh2"
 license=('PHP')
@@ -33,10 +33,11 @@ build() {
   make
 }
 
-check() {
-    cd "${srcdir}/${pkgname}"
-    make test
-}
+# # To run tests, set TEST_SSH2_HOSTNAME and TEST_SSH2_AUTH
+# check() {
+#     cd "${srcdir}/${pkgname}"
+#     NO_INTERACTION=1 make test
+# }
 
 package() {
   cd "${srcdir}/${pkgname}"
