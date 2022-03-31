@@ -1,6 +1,6 @@
 pkgbase = precice-git
 	pkgdesc = A Coupling Library for Partitioned Multi-Physics Simulations on Massively Parallel Systems (git version)
-	pkgver = 2.3.0.r112.g42437f3d
+	pkgver = 2.3.0.r166.g82ebe916
 	pkgrel = 1
 	url = https://precice.org
 	arch = x86_64

@@ -1,8 +1,9 @@
+# Maintainer: Gerasimos Chourdakis <chourdak at in dot tum dot de>
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Florian Lindner <florian.lindner@xgm.de>
 _base=precice
 pkgname=${_base}-git
-pkgver=2.3.0.r112.g42437f3d
+pkgver=2.3.0.r166.g82ebe916
 pkgrel=1
 pkgdesc="A Coupling Library for Partitioned Multi-Physics Simulations on Massively Parallel Systems (git version)"
 arch=(x86_64)
@@ -52,7 +53,7 @@ check() {
   if [ -z "$(ldconfig -p | grep libcuda.so.1)" ]; then
     export OMPI_MCA_opal_warn_on_missing_libcuda=0
   fi
-  ctest -E "(${_base}.parallel)" --test-dir build
+  ctest -E "(${_base}.integration.Parallel)" --test-dir build
 }
 
 package() {
