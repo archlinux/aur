@@ -1,0 +1,16 @@
+pkgbase = kopano-webapp-filepreview
+	pkgver = 2.2.0
+	pkgrel = 1
+	changelog = changelog
+	arch = any
+	groups = kopano
+	groups = kopano-webapp-plugins
+	makedepends = apache-ant
+	makedepends = libxml2
+	makedepends = git
+	makedepends = gzip
+	depends = kopano-webapp
+	source = kopano-webapp-filepreview::git+https://stash.kopano.io/scm/kwa/filepreviewer.git#tag=v2.2.0
+	md5sums = SKIP
+
+pkgname = kopano-webapp-filepreview
