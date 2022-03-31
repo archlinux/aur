@@ -9,7 +9,6 @@ pkgbase = videowall-git
 	depends = bash
 	depends = xorg-xdpyinfo
 	depends = ffmpeg
-	depends = ffprobe
 	depends = pciutils
 	optdepends = mpv
 	provides = videowall
