@@ -5,6 +5,7 @@ pkgbase = siyuan-appimage
 	url = https://b3log.org/siyuan
 	arch = x86_64
 	license = unknown
+	optdepends = pandoc: docx export
 	provides = siyuan
 	noextract = siyuan-1.9.6-linux.AppImage
 	options = !strip

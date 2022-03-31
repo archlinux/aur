@@ -11,6 +11,7 @@ _pkgname="siyuan-${pkgver}-linux.AppImage"
 noextract=(${_pkgname})
 options=("!strip")
 provides=("siyuan")
+optdepends=('pandoc: docx export')
 source=("https://download.fastgit.org/siyuan-note/siyuan/releases/download/v${pkgver}/${_pkgname}")
 sha512sums=("7cf5cc8d10208fb396d9fe359900e63c79c814c95df6d1fd30ad404ea05af4b7bfcddd1454f37b7fac308fd0e9080aa5088386aab37846d88a7b25b796933de1")
 
