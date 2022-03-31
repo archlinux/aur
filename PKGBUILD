@@ -47,7 +47,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20220328.r0.g8515d05bf6bc
+pkgver=20220331.r0.gfdcbcd1348f4
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -173,7 +173,7 @@ build() {
 _package() {
     pkgdesc="The $pkgdesc kernel and modules"
     depends=('coreutils' 'kmod' 'initramfs')
-    optdepends=('crda: to set the correct wireless channels of your country'
+    optdepends=('wireless-regdb: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
     provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
@@ -309,4 +309,4 @@ done
 
 sha512sums=('SKIP'
             '78a42a306c3b9a4afc6b182150c9ba907e727eceae870e811970aff3a4ce54622c0c86c509d9eddd74c909899bc13897c0c8cfb02395dbaa13e175766d5d77a5'
-            '5d1115f19d98d69ea1de533ebef77974e9839892ea01b9979267f8e6a1e0fa8a0896c42a6a65b97f15ddd7dc6841ac530645aca8c708bad5e2f9106aa806fb0a')
+            'd5599da7e4cf9185c121e399d9d6adfb2c360b5adb7557165f5b84df4dbcfdf9eeb6f118c374326130f1f18742465edc9c19a276933c5deb691ffac59f602f4f')
