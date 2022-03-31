@@ -1,8 +1,8 @@
 pkgbase = baresip
 	pkgdesc = portable and modular SIP User-Agent with audio and video support
-	pkgver = 1.1.0
+	pkgver = 2.0.1
 	pkgrel = 1
-	url = http://www.creytiv.com/baresip.html
+	url = https://github.com/baresip/baresip
 	arch = i686
 	arch = x86_64
 	arch = armv6h
