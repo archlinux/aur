@@ -1,6 +1,7 @@
-# Maintainer: Laurent Carlier <lordheavym@gmail.com>
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Maintainer: Luke Short <ekultails at gmail dot com>
+# Contributor: Laurent Carlier <lordheavym@gmail.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=mesa
