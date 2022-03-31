@@ -3,7 +3,7 @@
 # Contributor: Dan Fuhry <dan@fuhry.com>
 
 pkgname=envoyproxy
-pkgver=1.20.1
+pkgver=1.21.1
 pkgrel=1
 pkgdesc="A high performance, open source, general RPC framework that puts mobile and HTTP/2 first."
 arch=('i686' 'x86_64')
@@ -25,35 +25,34 @@ source=(
     "https://github.com/$pkgname/envoy/archive/v$pkgver.tar.gz"
     use_bazelisk.patch
     fix_wee8_build.patch
-    add-extra-wee8-patch.patch
-    wee8-jinja2-python-collections.patch
-    remove-deprecated-copy-constructor.patch
 )
-sha512sums=('67ecdbf0c136b95c6fdb15b5d8ba7828a814b0c9c584ed194a0488cd1948955603b1bd122951901a8c73b2dd27f86b7384237b3ef08035c137bf7a5fc5f1bf70'
+sha512sums=('520fc2958e48b4e472f855bc5e0a923c25ed44091d3d137ed981457eeb98b29fa468efa0958e9b6555e6177cf881ad6e3909813fe8e0bddfafb2ed17a128a0c7'
             '248d0903c0aaa680065cdb308068e7f999f2ba7e2ffbc3b743715d2db968858f41cf104c59e1e98d6cda74baea54755e7c9edc29711c3b1daa87d63107ee4017'
-            'e16e4949c7b66797f85d4e9547f4e47be689c2e3eb320514ba83a2c54f22f860bfc5a729b3be56b89c31336f0e414880d373b5f4d1f8b859710f80da650e9c31'
-            'f10a18f829cc9bf99b9fdfa149b6881dd882fc78adb189de3c6bacebfe39c9db085186f0e2eeba7a1f9d64e0e7d4a524f42966bc637d9fe101a630f59fbb56a5'
-            '53518bb0711d5abc7c6fe9dfb9f4e2c2c279b2082bfdaecf24be3bf1177aa78abf4407ca9699632825ab670056d20a587ae34bb982227332037185d7cad5b193'
-            '650d3b9ee7456c1695d60721ccea183fca9b7ed9b3fcc2c85aaca95c0c18dcf67c5e39a4955b00ee1f8de20e7b75e66e9f3ae90020b590fdb8712f9089652246')
+            'e16e4949c7b66797f85d4e9547f4e47be689c2e3eb320514ba83a2c54f22f860bfc5a729b3be56b89c31336f0e414880d373b5f4d1f8b859710f80da650e9c31')
+
 
 prepare() {
   cd "envoy-$pkgver"
 
-  patch -Np1 -i ../use_bazelisk.patch
-  patch -Np1 -i ../fix_wee8_build.patch
-  patch -Np1 -i ../add-extra-wee8-patch.patch
-  patch -Np1 -i ../remove-deprecated-copy-constructor.patch
-
-  cp -L "${srcdir}/wee8-jinja2-python-collections.patch" "${srcdir}/envoy-${pkgver}/bazel/external/"
+  for f in ${source[@]}; do
+    # test that "$f" ends in ".patch"
+    if [ "${f%.patch}" != "$f" ]; then
+      msg "Applying patch: $f"
+	  patch -Np1 -i "../$f"
+	fi
+  done
 
   export GOPATH="$srcdir"/go
 
-  go get github.com/bazelbuild/bazelisk
+  msg "Building bazelisk"
+  go install github.com/bazelbuild/bazelisk@latest
   export BAZELISK="$GOPATH/bin/bazelisk"
 
+  msg "Setting SOURCE_VERSION"
   # https://github.com/envoyproxy/envoy/blob/main/bazel/get_workspace_status
-  echo "98c1c9e9a40804b93b074badad1cdf284b47d58b" > SOURCE_VERSION
+  echo "65a0228c93d2b7ca20c2ec56940735e5b6d76a38" > SOURCE_VERSION
 
+  msg "Setting build environment for Clang"
   ./bazel/setup_clang.sh
 }
 
