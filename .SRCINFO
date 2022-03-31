@@ -8,13 +8,13 @@ pkgbase = zytrax-git
 	license = MIT
 	makedepends = scons
 	makedepends = gcc
+	makedepends = git
 	depends = gtkmm3
 	depends = libpulse
 	optdepends = vst-plugins: Package group for vst plugins
-	source = zytrax-git::git://github.com/reduz/zytrax.git
+	source = zytrax-git::git+https://github.com/reduz/zytrax.git
 	source = zytrax.desktop
 	sha256sums = SKIP
 	sha256sums = 5058a5b3c2070e7d59db8cb8f14fd45538718a80e79fc8f4de4d62c1252521e8
 
 pkgname = zytrax-git
-
