@@ -1,6 +1,5 @@
 src/
 sws/
 pkg/
-reaper_plugin_functions.tar.xz
 .gitignore
 *tar.zst

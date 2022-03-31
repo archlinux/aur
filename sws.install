@@ -1,5 +1,6 @@
 post_install(){
-    echo -e "Please run\n"
+    echo -e "Please run this two commands\n"
 	echo -e "\t$ ln -s /opt/REAPER/UserPlugins/reaper_sws-x86_64.so ~/.config/REAPER/UserPlugins/"
+	echo -e "\t$ ln -s /opt/REAPER/Scripts/sws_python64.py ~/.config/REAPER/Scripts/sws_python64.py"
 	echo -e "\nto create a symlink of sws for your user. Otherwise REAPER won't detect the plugin.\n"
 }
