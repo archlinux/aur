@@ -2,18 +2,19 @@
 # ---
 _pkgname=AutoLinux
 pkgname=auto
-pkgver=3.0.2
+pkgver=3.0.3
 pkgrel=1
-pkgdesc='ArchLinux bootstrap scripts, with optional riced configs for the AutoLinux platform'
+pkgdesc='ArchLinux bootstrap and partitioning scripts, with optional AutoLinuxOS configs.'
 arch=(x86_64)
 url="https://gitlab.com/qYp/${_pkgname}"
 license=('MIT')
-depends=(dialog)
+depends=(dialog parted)
+makedepends=(git)                 
 source=("https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
-sha256sums=('627571b9fa0599ffe6008fb20f383363a3ba609ec3cf14c601cf77f50a29e62c')
+sha256sums=('5a504e14255f8a7420aef91a6569df8b5346b8d223203710c65d19d24c6b06b0')
 
 package() {
-    install -Dm755 ${pkgname}/{AutoLinux.sh,pre-install.sh} -t "${pkgdir}/opt/${_pkgname}"
-    install -Dm755 ${pkgname}/AutoLinux.sh "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 ${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm755 ${_pkgname}/{autoInstall,autoCleanInstall,autoPart} -t "${pkgdir}/opt/${_pkgname}"
+    install -Dm755 ${_pkgname}/{autoCleanInstall,autoInstall,autoPart} -t "${pkgdir}/usr/bin"
+    install -Dm644 ${_pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
