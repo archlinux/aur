@@ -2,8 +2,8 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgbase=freetype2-git
-pkgname=(freetype2-git freetype2-demos-git freetype2-docs-git)
-pkgver=2.11.1+p110+g6c5522c6f
+pkgname=(freetype2-git freetype2-demos-git)
+pkgver=2.12.0+p2+g385345037
 pkgrel=1
 epoch=1
 pkgdesc="Font rasterization library (from git)"
@@ -13,22 +13,21 @@ license=(GPL)
 # adding harfbuzz for improved OpenType features auto-hinting
 # introduces a cycle dep to harfbuzz depending on freetype wanted by upstream
 depends=(zlib bzip2 sh libpng harfbuzz brotli)
-makedepends=(libx11 qt5-base meson librsvg git python-virtualenv)
+makedepends=(libx11 qt5-base meson librsvg git)
+options=(debug)
 source=(git+https://gitlab.freedesktop.org/freetype/freetype.git
         git+https://gitlab.freedesktop.org/freetype/freetype-demos.git
         0001-Enable-table-validation-modules.patch
         0002-Enable-subpixel-rendering.patch
         0003-Enable-infinality-subpixel-hinting.patch
         0004-Enable-long-PCF-family-names.patch
-        0005-Run-docwriter-via-venv.patch
         freetype2.sh)
 sha256sums=('SKIP'
             'SKIP'
-            '663310ef70f7830de462fb8964ee4fa1d49ad4aeb1a6eae5857707e161039a53'
-            '17cd4bd0c650b9bdd3bc30581ad6457524db14ec34b56f98e243357c3ab4bc05'
-            '0607ac8176d4f08bcfb78d07bdc2c66fcbe7dfde6c82a0e98d6e625597442fd0'
-            '6e5192dc08119e32992eee5a15595e131adcc9d2411066ca8691bfe2af14d97e'
-            '27b2d2358e2d0488d4a7f714986e311de514ab8e173f11120395784894fdd2a4'
+            '12c869eeba212c74d07d3d7815848b047ecb5282d5463dffb3bb6d219315d4da'
+            '2497dcb3650271db9bb7ad4f3379b5b3c6a19f5ca5388dd9ba7d42b5c15c8c4f'
+            'caa0bc7d3dfa3b4c6b9beecda6141405dafe540f99a655dc83d1704fa232ac20'
+            '8bf978cd1abd73f54c53f7d214c368b1fd8921cd9800d2cc84427c662ffbbdcb'
             'f7f8e09c44f7552c883846e9a6a1efc50377c4932234e74adc4a8ff750606467')
 validpgpkeys=(58E0C111E39F5408C5D3EC76C1A60EACE707FDA5) # Werner Lemberg <wl@gnu.org>
 
@@ -44,24 +43,18 @@ pkgver() {
 
 prepare() {
   ln -sr freetype freetype-demos/subprojects/freetype2
-  python -m venv docwriter-venv
-  docwriter-venv/bin/pip install docwriter
 
   cd freetype
   patch -Np1 -i ../0001-Enable-table-validation-modules.patch
   patch -Np1 -i ../0002-Enable-subpixel-rendering.patch
   patch -Np1 -i ../0003-Enable-infinality-subpixel-hinting.patch
   patch -Np1 -i ../0004-Enable-long-PCF-family-names.patch
-  patch -Np1 -i ../0005-Run-docwriter-via-venv.patch
 }
 
 build() {
   arch-meson freetype-demos build \
     -D freetype2:default_library=shared
   meson compile -C build
-
-  DOCWRITER_PYTHON="$PWD/docwriter-venv/bin/python" \
-    ninja -C build subprojects/freetype2/docs
 }
 
 check() {
@@ -100,17 +93,6 @@ package_freetype2-demos-git() {
   provides=("freetype2-demos=$pkgver")
   conflicts=(freetype2-demos)
   mv demos/* "$pkgdir"
-}
-
-package_freetype2-docs-git() {
-  pkgdesc="Freetype documentation (from git)"
-  depends=(freetype2-git)
-  provides=("freetype2-docs=$pkgver")
-  conflicts=(freetype2-docs)
-
-  mkdir -p "${pkgdir}/usr/share/doc"
-  cp -r freetype/docs "$pkgdir/usr/share/doc/freetype2"
-  cp -r build/subprojects/freetype2/docs/* "$pkgdir/usr/share/doc/freetype2"
 }
 
 # vim:set sw=2 et:
