@@ -3,7 +3,7 @@
 
 pkgname=albert
 pkgver=0.17.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A sophisticated standalone keyboard launcher"
 arch=('x86_64')
 url="https://github.com/albertlauncher"
@@ -16,8 +16,12 @@ optdepends=('muparser: Calculator plugin'
 source=("mirrors/albert::git+https://github.com/albertlauncher/albert.git#tag=v${pkgver}"
         "mirrors/plugins::git+https://github.com/albertlauncher/plugins.git"
         "mirrors/python::git+https://github.com/albertlauncher/python.git"
-        "mirrors/pybind11::git+https://github.com/pybind/pybind11.git")
+        "mirrors/pybind11::git+https://github.com/pybind/pybind11.git"
+        "mirrors/xkcd-plugin::git+https://github.com/bergercookie/xkcd-albert-plugin.git"
+        "mirrors/jetbrains-plugin::git+https://github.com/mqus/jetbrains-albert-plugin.git")
 sha512sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP')
@@ -36,6 +40,14 @@ prepare() {
   git config submodule.python/pybind11.url "$srcdir/pybind11"
   git config submodule.python/share/modules.url "$srcdir/python"
   git submodule update python/pybind11 python/share/modules
+  
+  cd "$srcdir/albert/plugins/python/share/modules"
+  git submodule init
+  git config submodule.jetbrains_projects.url "$srcdir/jetbrains-plugin"
+  git config submodule.xkcd.url "$srcdir/xkcd-plugin"
+  # currently submodules are out-of-dated in upstream
+  # so we have to checkout them
+  git submodule update --remote --merge jetbrains_projects xkcd
 }
 
 

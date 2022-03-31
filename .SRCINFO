@@ -1,7 +1,7 @@
 pkgbase = albert
 	pkgdesc = A sophisticated standalone keyboard launcher
 	pkgver = 0.17.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/albertlauncher
 	arch = x86_64
 	license = GPL
@@ -24,10 +24,13 @@ pkgbase = albert
 	source = mirrors/plugins::git+https://github.com/albertlauncher/plugins.git
 	source = mirrors/python::git+https://github.com/albertlauncher/python.git
 	source = mirrors/pybind11::git+https://github.com/pybind/pybind11.git
+	source = mirrors/xkcd-plugin::git+https://github.com/bergercookie/xkcd-albert-plugin.git
+	source = mirrors/jetbrains-plugin::git+https://github.com/mqus/jetbrains-albert-plugin.git
+	sha512sums = SKIP
+	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
 
 pkgname = albert
-
