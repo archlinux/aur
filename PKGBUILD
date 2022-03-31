@@ -1,4 +1,4 @@
-# Maintainer: Shuyuan Liu <liu_shuyuan@qq.com>
+# Maintainer: Shuyuan Liu <liu_shuyuan at qq dot com>
 
 pkgname=issie
 pkgver=2.4.5
