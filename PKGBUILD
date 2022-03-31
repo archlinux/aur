@@ -2,7 +2,7 @@
 
 pkgname=powerline-i3-git
 _pkgname=powerline
-pkgver=1.9.2.40
+pkgver=1.9.3.32
 pkgrel=1
 pkgdesc="The ultimate statusline/prompt utility. A fork containing more features for the i3 window manager."
 arch=('i686' 'x86_64')
@@ -25,7 +25,6 @@ optdepends=(
   'python-google-api-python-client: Google Calendar support for the appoints segment'
   'xorg-xinput: screen rotation segment'
   'appmenu-qt4: global menu support in qt4 apps'
-  'appmenu-qt5: global menu support in qt5 apps'
   'appmenu-gtk-module-git: global menu support in gtk apps'
   'libdbusmenu-glib: global menu support for chrome/chromium'
   'libdbusmenu-gtk3: global menu support for chrome/chromium'
@@ -35,11 +34,12 @@ optdepends=(
 )
 makedepends=(
   'python-setuptools'
+  'git'
 )
 provides=('powerline-i3')
 conflicts=('powerline' 'python-powerline')
 
-source=("git://github.com/ph111p/powerline.git#branch=develop")
+source=("git+https://github.com/ph111p/powerline.git#branch=develop")
 sha512sums=('SKIP')
 
 pkgver() {
