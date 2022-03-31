@@ -2,10 +2,10 @@
 
 pkgname="cryptopro-csp-k1"
 pkgver=5.0.12417
-# pkgver is not allowed to contain forward slashes
+pkgrel=2
 _pkgver_patch="6"
+_cades_version="2.0.14530"
 _pkgver="$pkgver-$_pkgver_patch"
-pkgrel=1
 pkgdesc='CryptoPro CSP 5.0'
 arch=('x86_64')
 url='https://cryptopro.ru/products/cryptopro-csp'
@@ -28,8 +28,8 @@ makedepends=(
     'libarchive'
 )
 source=(
-    'linux-amd64.tgz' # download from https://cryptopro.ru/sites/default/files/private/csp/50/12330/linux-amd64.tgz
-    'cades_linux_amd64.tar.gz' # download from https://www.cryptopro.ru/products/cades/plugin
+    'linux-amd64.tgz' # download from https://cryptopro.ru/sites/default/files/private/csp/50/12417/linux-amd64.tgz
+    'cades-linux-amd64.tar.gz' # download from https://www.cryptopro.ru/products/cades/plugin
 )
 sha256sums=('99b00c9300b2ec81e1d6b7e7b3f3c77753d23b65d724d1ea9e9d8407b59e165c'
             'bb9e43ab7cc8c51d6f41ad4f810c27695278c91fe5cf4cf8fe5bfcf241583a64')
@@ -54,8 +54,8 @@ package() {
     bsdtar -xf "cprocsp-curl-64-${_pkgver}.x86_64.rpm" -C "$pkgdir"
 
     cd "$srcdir"
-    bsdtar -xf "cprocsp-pki-cades-64-2.0.14458-1.amd64.rpm" -C "$pkgdir"
-    bsdtar -xf "cprocsp-pki-plugin-64-2.0.14458-1.amd64.rpm" -C "$pkgdir"
+    bsdtar -xf "cprocsp-pki-cades-64-${_cades_version}-1.amd64.rpm" -C "$pkgdir"
+    bsdtar -xf "cprocsp-pki-plugin-64-${_cades_version}-1.amd64.rpm" -C "$pkgdir"
 
     rm -r "$pkgdir/etc/init.d/"
     rm -r "$pkgdir/usr/lib64/"
