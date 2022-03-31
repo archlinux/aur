@@ -1,0 +1,16 @@
+pkgbase = kopano-webapp-desktopnotifications
+	pkgver = 2.0.3
+	pkgrel = 1
+	changelog = changelog
+	arch = any
+	groups = kopano
+	groups = kopano-webapp-plugins
+	makedepends = apache-ant
+	makedepends = libxml2
+	makedepends = git
+	makedepends = gzip
+	depends = kopano-webapp
+	source = kopano-webapp-desktopnotifications::git+https://stash.kopano.io/scm/kwa/desktopnotifications.git#tag=v2.0.3
+	md5sums = SKIP
+
+pkgname = kopano-webapp-desktopnotifications
