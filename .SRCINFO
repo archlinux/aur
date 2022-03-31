@@ -6,14 +6,17 @@ pkgbase = python-gaphas-git
 	arch = x86_64
 	arch = i686
 	license = Apache
+	checkdepends = python-pytest
 	makedepends = git
-	makedepends = python-pip
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry-core
 	depends = python-gobject
 	depends = python-cairo
 	depends = python-importlib-metadata
 	provides = python-gaphas
 	conflicts = python-gaphas
-	source = python-gaphas::git+https://github.com/gaphor/gaphas.git#branch=master
+	source = python-gaphas::git+https://github.com/gaphor/gaphas.git#branch=main
 	md5sums = SKIP
 
 pkgname = python-gaphas-git

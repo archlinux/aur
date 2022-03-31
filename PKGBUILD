@@ -1,15 +1,16 @@
 # Maintainer: Yauhen Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
+# Contributor: Padraic Fanning <fanninpm AT miamioh DOT edu>
 
 _pkgname=python-gaphas
 pkgname="${_pkgname}-git"
-pkgver=3.5.0.r0.ga51f017
+pkgver=3.6.0.r3.gf012089
 pkgrel=1
 pkgdesc="Diagramming widget library for Python"
 arch=('x86_64' 'i686')
 url="https://github.com/gaphor/gaphas"
 license=('Apache')
 source=(
-	"${_pkgname}::git+${url}.git#branch=master"
+	"${_pkgname}::git+${url}.git#branch=main"
 )
 md5sums=('SKIP')
 depends=(
@@ -19,16 +20,32 @@ depends=(
 )
 makedepends=(
 	'git'
-	'python-pip'
+	'python-build'
+	'python-installer'
+	'python-poetry-core'
 )
 optdepends=(
 )
+checkdepends=('python-pytest')
 provides=(
 	"${_pkgname}"
 )
 conflicts=(
 	"${_pkgname}"
 )
+
+build() {
+	cd "${srcdir}/${_pkgname}"
+	# Note: set `GIT_CEILING_DIRECTORIES` to prevent poetry
+	# from incorrectly using a parent git checkout info.
+	# https://github.com/pypa/build/issues/384#issuecomment-947675975
+	GIT_CEILING_DIRECTORIES="${PWD}/.." python -m build --wheel --no-isolation
+}
+
+check() {
+	cd "${srcdir}/${_pkgname}"
+	pytest
+}
 
 pkgver() {
 	cd "${srcdir}/${_pkgname}"
@@ -37,8 +54,7 @@ pkgver() {
 
 package() {
 	cd "${srcdir}/${_pkgname}"
-	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps .
-	rm "${pkgdir}"/usr/lib/python*/site-packages/gaphas-*.dist-info/direct_url.json
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
 
 # vim: ft=PKGBUILD
