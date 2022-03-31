@@ -39,14 +39,12 @@ pkgver() {
 
 build() {
   # Jupiter:
-  #  - drop all dri drivers
   #  - drop radv vulkan driver - separate sources and package
   #  - disable xa - unused by our gallium drivers
   arch-meson steamos-jupiter-mesa build \
     -D b_lto=true \
     -D b_ndebug=true \
     -D platforms=x11,wayland \
-    -D dri-drivers= \
     -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl,iris,zink,crocus \
     -D vulkan-drivers=intel,swrast \
     -D vulkan-layers=device-select,intel-nullhw,overlay \
