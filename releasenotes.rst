@@ -2,6 +2,11 @@
 Release notes
 -------------
 
+**v0.7.6** (09-09-2021)
+
+* Fix for with-statement when ``return`` is used in the context.
+* Early support type hints in the code (by Jennifer Taylor).
+
 
 **v0.7.5** (04-01-2021)
 

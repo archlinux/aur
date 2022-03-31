@@ -4,30 +4,40 @@
 # Contributor: Ronuk Raval <ronuk.raval at gmail dot com>
 
 pkgname=python-pscript
-pkgver=0.7.6
+pkgver=0.7.7
 pkgrel=1
 pkgdesc='Python to JavaScript compiler'
 arch=('any')
 url='https://github.com/flexxui/pscript'
 license=('BSD')
 depends=('python')
-makedepends=('python-setuptools' 'python-sphinx')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-sphinx'
+  'python-wheel')
 changelog=releasenotes.rst
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1bc8b5c1319e677837df5659289f14052c84da977c445acde95bf1ada653a6c5')
+sha256sums=('f02f4bba234aac0088dd674f72de63d16baf4827fbeaf5150515eac90bbf2761')
 
 build() {
   cd "pscript-$pkgver"
-  python setup.py build
-  cd docs
-  make man
+  python -m build --wheel --no-isolation
+  make -C docs man
 }
 
 package() {
+  export PYTHONHASHSEED=0
   cd "pscript-$pkgver"
-  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm 644 docs/_build/man/PScript.1 "$pkgdir/usr/share/man/man1/pscript.1"
+  python -m installer --destdir="$pkgdir/" dist/*.whl
+  install -Dm644 docs/_build/man/PScript.1 "$pkgdir/usr/share/man/man1/pscript.1"
+
+  local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  ln -s \
+    "$_site/pscript-$pkgver.dist-info/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 # vim: ts=2 sw=2 et:
