@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.7.4.r14.g838eb6f
+pkgver=0.7.4.r27.g74bcd8b
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
@@ -46,6 +46,7 @@ depends=(bc
          xorg-server-xvfb
          yq
          zint
+         zola
          zsh)
 _lua_deps=(colors-git
            filesystem
