@@ -1,3 +1,4 @@
+# Maintainer: Rstar284 <me@rstar.ml>
 pkgname=discord-canary-electron-wayland-bin
 _pkgname=discord-canary
 pkgver=0.0.134
