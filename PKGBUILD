@@ -4,38 +4,45 @@
 
 pkgname=python-flexx
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Write desktop and web apps in pure Python'
 arch=('any')
 url='https://github.com/flexxui/flexx'
 license=('BSD')
-depends=(
-  'python-dialite>=0.5.2'
-  'python-pscript>=0.7.3'
-  'python-tornado'
-  'python-webruntime>=0.5.6')
-makedepends=('python-setuptools' 'python-sphinx')
-# checkdepends=('python-pytest-runner')
+depends=('python-dialite' 'python-pscript' 'python-tornado' 'python-webruntime')
+makedepends=(
+  'python-build'
+  'python-installer'
+  'python-setuptools'
+  'python-sphinx'
+  'python-wheel')
+# checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha256sums=('213bcd79a3758a755c3f5ef92e4b576ac83b2fd879d81c772435b777d0f53ef3')
 
 build() {
   cd "flexx-$pkgver"
-  python setup.py build
-  cd docs
-  make man
+  python -m build --wheel --no-isolation
+  make -C docs man
 }
 
+## FIXME: requires firefox and node
 # check() {
 #   cd "flexx-$pkgver/"
-#   python setup.py pytest
+#   PYTHONPATH="$PWD" pytest --disable-warnings
 # }
 
 package() {
+  export PYTHONHASHSEED=0
   cd "flexx-$pkgver"
-  PYTHONHASHSEED=0 python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm 644 docs/_build/man/flexx.1 -t "$pkgdir/usr/share/man/man1/"
+  python -m installer --destdir="$pkgdir/" dist/*.whl
+  install -Dm644 docs/_build/man/flexx.1 -t "$pkgdir/usr/share/man/man1/"
+
+  local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+  install -d "$pkgdir/usr/share/licenses/$pkgname/"
+  ln -s \
+    "$_site/flexx-$pkgver.dist-info/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/"
 }
 
 # vim: ts=2 sw=2 et:
