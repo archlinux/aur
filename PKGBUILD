@@ -74,7 +74,9 @@
 # Enable compiling with LLVM
 : "${_use_llvm_lto:=""}"
 
-# Enable debug options
+# Enable/Disable debug options
+# Set 'y' to enable, 'n' to force disable debug options if already enabled in your
+# .config file or leave empty to ignore debug options.
 : "${_debug:=""}"
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
@@ -82,10 +84,10 @@
 _major=5.16
 _minor=18
 _srcname=linux-${_major}
-_clr=${_major}.17-1136
+_clr=${_major}.18-1137
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux"
@@ -149,8 +151,8 @@ prepare() {
     echo "Setting config..."
     cp -Tf $srcdir/$pkgbase/config ./.config
 
-    ### Enable extra stuff from arch kernel
-    echo "Enable extra stuff from arch kernel..."
+    ### Enable extra options
+    echo "Enable extra options..."
 
     # General setup
     scripts/config --set-str DEFAULT_HOSTNAME archlinux \
@@ -228,12 +230,18 @@ prepare() {
                        --enable HAVE_GCC_PLUGINS
     fi
 
-    if [ -n "$_debug" ]; then
+    if [ "$_debug" == "y" ]; then
         scripts/config --enable DEBUG_INFO \
                        --enable DEBUG_INFO_BTF \
                        --enable DEBUG_INFO_DWARF4 \
                        --enable PAHOLE_HAS_SPLIT_BTF \
                        --enable DEBUG_INFO_BTF_MODULES
+    elif [ "$_debug" == "n" ]; then
+        scripts/config --disable DEBUG_INFO \
+                       --disable DEBUG_INFO_BTF \
+                       --disable DEBUG_INFO_DWARF4 \
+                       --disable PAHOLE_HAS_SPLIT_BTF \
+                       --disable DEBUG_INFO_BTF_MODULES
     fi
 
     make ${BUILD_FLAGS[*]} olddefconfig
@@ -340,7 +348,7 @@ _package-headers() {
     install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
     # required when DEBUG_INFO_BTF_MODULES is enabled
-    if [ -n "$_debug" ]; then
+    if [ -f tools/bpf/resolve_btfids/resolve_btfids ]; then
         install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
     fi
 
