@@ -2,9 +2,9 @@
 # Contributor: NexAdn <nexadn@yandex.com>
 
 pkgname=cef-minimal
-pkgver="96.0.18"
-_pkgcommit="gfe551e4"
-_chromiumver="96.0.4664.110"
+pkgver="99.2.14"
+_pkgcommit="g3f796b8"
+_chromiumver="99.0.4844.84"
 _pkgver="${pkgver}+${_pkgcommit}+chromium-${_chromiumver}"
 _url_pkgver="${pkgver}%2B${_pkgcommit}%2Bchromium-${_chromiumver}"
 pkgrel=1
@@ -25,8 +25,8 @@ source_x86_64=(
   "${cdn_build_package_url}/cef_binary_${_url_pkgver}_linux64_minimal.tar.bz2"
 )
 
-sha1sums_i686=("f2954ea8a01b09f0c10aa7880171f8bfbd93e43e")
-sha1sums_x86_64=("2f944adae71dd1a6c4d795373166a09f543c7cbd")
+sha1sums_i686=("09d620ab29a1dc8e5280be3d8c04ce9bb043f92a")
+sha1sums_x86_64=("6da8c04199856e8b0992436546f6adf91a863926")
 
 [[ "$CARCH" = "i686" ]] && _arch="32"
 [[ "$CARCH" = "x86_64" ]] && _arch="64"
