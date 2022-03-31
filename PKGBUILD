@@ -1,6 +1,6 @@
 # Mainintainer : Lucas Rooyakkers <lucas dot rooyakkers at queensu at ca>
 pkgname=rmatrix
-pkgver=8431ec1
+pkgver=cf9ec1c
 pkgrel=1
 pkgdesc="Rust port of a curses-based 'Matrix'-like screen"
 arch=('any')
@@ -32,7 +32,7 @@ pkgver() {
 
 package() {
   cd "$pkgname"
-  install -Dm755 "target/release/rmatrix" "$pkgdir/usr/bin/rmatrix"
+  install -Dm755 "target/release/r-matrix" "$pkgdir/usr/bin/rmatrix"
 }
 
 # vim:set ts=2 sw=2 et:
