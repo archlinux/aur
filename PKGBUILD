@@ -4,7 +4,7 @@
 _name=gaphor
 pkgname=python-${_name}
 pkgver=2.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('any')
 url="https://github.com/gaphor/${_name}"
@@ -12,6 +12,7 @@ license=('Apache')
 depends=(
 	'gtk3'
 	'gtksourceview4'
+	'python-darkdetect'
 	'python-gaphas'
 	'python-generic'
 	'python-jedi'
@@ -19,25 +20,38 @@ depends=(
 	'python-typing_extensions'
 )
 makedepends=(
-	'python-pip'
 	'gendesk'
+	'python-build'
+	'python-installer'
+	'python-poetry-core'
 )
-_wheelname="${_name/-/_}-$pkgver-py3-none-any.whl"
-source=(
-	"https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_wheelname}"
-	"https://raw.githubusercontent.com/gaphor/${_name}/master/logos/org.gaphor.Gaphor.svg"
+checkdepends=(
+	'python-pytest'
+	'python-xdoctest'
 )
-sha256sums=('a61d25dd2cecff42b0d741a90bc66f64dadda9d3310eb8534c0d54413c95a433'
-            'c4bbe4a67662d52c04cbd283b33f3ff3a97697e158c56c4b776c1c4ef527dd62')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('687f0f9a75e72daa9535bbbc6b8592e0ee37ae9451b9085bd2d972a1fb07b51f')
+
+build() {
+	cd "${_name}-${pkgver}"
+	# Note: set `GIT_CEILING_DIRECTORIES` to prevent poetry
+	# from incorrectly using a parent git checkout info.
+	# https://github.com/pypa/build/issues/384#issuecomment-947675975
+	GIT_CEILING_DIRECTORIES="${PWD}/.." python -m build --wheel --no-isolation
+}
+
+check() {
+	cd "${srcdir}/${_name}-${pkgver}"
+	pytest
+}
 
 prepare() {
 	gendesk -f -n --pkgname="$_name" --pkgdesc="$pkgdesc" --icon='org.gaphor.Gaphor' --categories='Development' PKGBUILD
 }
 
 package() {
-	PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps --no-warn-script-location "${_wheelname}"
-	rm "${pkgdir}"/usr/lib/python*/site-packages/gaphor-*.dist-info/direct_url.json
+	cd "${_name}-${pkgver}"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 	install -Dm644 "$srcdir/${_name}.desktop" -t "$pkgdir"/usr/share/applications
 	install -Dm644 "$srcdir/org.gaphor.Gaphor.svg" "$pkgdir"/usr/share/pixmaps/org.gaphor.Gaphor.svg
 }
-

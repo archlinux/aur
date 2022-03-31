@@ -1,6 +1,4 @@
 pkg/
 src/
 
-org.gaphor.Gaphor.svg
-gaphor-*-py3-none-any.whl
 python-gaphor-*.pkg.*
