@@ -30,10 +30,10 @@ build() {
   make -C doc man
 }
 
-# check() {
-#   cd "$srcdir/$pkgname-v$pkgver"
-#   SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver pytest
-# }
+check() {
+  cd "$srcdir/$pkgname-v$pkgver"
+  SETUPTOOLS_SCM_PRETEND_VERSION=$pkgver pytest
+}
 
 package() {
   cd "$srcdir/$pkgname-v$pkgver"
