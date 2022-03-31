@@ -51,7 +51,7 @@ _major=5.17
 _minor=1
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -180,7 +180,7 @@ build() {
 _package() {
     pkgdesc="The $pkgdesc kernel and modules"
     depends=('coreutils' 'kmod' 'initramfs')
-    optdepends=('crda: to set the correct wireless channels of your country'
+    optdepends=('wireless-regdb: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
     provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
@@ -321,7 +321,7 @@ sha512sums=('bb73202e770d10767739664b5320b47d78bc374b2bde38b289f1ede1b7b33a8be0a
             'd26c3f17f0fdc9ede8203a45baa242279c77e0397803346cb9d57ea6065a2fe5d1d2403698d52a72a072ed81761e68b50717d04237d695fae38a1958efc5f545'
             'ca5a425bff20bed817c13ddb9854acbd47367b5126389e9e99815b0d576d1d07610ea9075efca298d0b8441cea65e3ba33aa53a11985a25909872dcd1c67a51e'
             'ce80736a9edab23f1c6b9805ec1ba883534b6a8cc57bcbfad606d760632830c9152d2166a318311aee9f56dc394ba03f49186c3a0620309419666380d1d3b722'
-            '025f5b2427a97c1e9b709fb6f751dde2a1c7f6bcded4c8f35646d10207724eb3723f25dbf98b83b5eae4c5504ff92b8b5c2ec7c14292d25f7c84021aa3b3c59a')
+            'a1e903979af1ee6fa476f5f7f9aa5357a7d2dff9443e5f68809ca59a0a0d1e440075b68618851143b83f01a9e62d85fc4d9f4d7507275fd30cd76344b6c8c532')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
