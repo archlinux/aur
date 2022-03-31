@@ -1,0 +1,27 @@
+pkgbase = crispy-doom-git
+	pkgdesc = Limit-removing enhanced-resolution Doom source port based on Chocolate Doom
+	pkgver = r7237.ae222fb9
+	pkgrel = 1
+	url = https://github.com/fabiangreffrath/crispy-doom
+	install = crispy-doom.install
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = armv7h
+	arch = aarch64
+	license = GPL2
+	makedepends = python
+	makedepends = git
+	depends = hicolor-icon-theme
+	depends = libpng
+	depends = libsamplerate
+	depends = sdl2_mixer
+	depends = sdl2_net
+	optdepends = freedm: Free deathmatch game
+	optdepends = freedoom: Free Doom compatible game
+	provides = crispy-doom
+	conflicts = crispy-doom
+	source = git+https://github.com/fabiangreffrath/crispy-doom.git
+	md5sums = SKIP
+
+pkgname = crispy-doom-git
