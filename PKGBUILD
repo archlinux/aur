@@ -13,6 +13,8 @@ source=('https://packages.chef.io/files/stable/chef-workstation/21.7.524/ubuntu/
 sha256sums=('541d5bcddfc2114cc890383f8fc21d95cdf5159c51798a44245123e650b143ca')
 
 package() {
+  depends=('libxcrypt-compat')
+
   cd "$srcdir"
   bsdtar -xf data.tar.xz -C "$pkgdir"
 
