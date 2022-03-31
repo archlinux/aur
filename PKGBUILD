@@ -16,7 +16,7 @@ source=('git+https://github.com/arcamagna/videowall.git')
 md5sums=('SKIP')
 pkgver() {
   cd "${_pkgname}"
-  git describe --tags --long | sed -r -e 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,[-_],.,g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 package() {
   cd "${_pkgname}"
