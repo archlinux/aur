@@ -2,8 +2,8 @@
 # Contributor: Antonin Décimo <antonin dot decimo at gmail dot com>
 # Contributor: Markus Sommer <markus@splork.de>
 pkgname=core
-pkgver=8.1.0
-pkgrel=2
+pkgver=8.2.0
+pkgrel=1
 pkgdesc="Common Open Research Emulator"
 arch=('i686' 'x86_64')
 url="https://github.com/coreemu/core/"
@@ -15,9 +15,8 @@ depends=('ebtables' 'ethtool' 'fabric' 'iproute2' 'nftables' 'libev' 'python'
          'python-netaddr' 'python-pillow' 'python-protobuf' 'python-pyproj'
          'python-yaml' 'python-certifi' 'python-decorator')
 makedepends=('help2man' 'imagemagick' 'python-dephell' 'python-grpcio-tools'
-             'python-setuptools')
+             'python-setuptools' 'tk')
 optdepends=('openvswitch: Open vSwitch SDN support'
-            'tk: Legacy Tk-based GUI'
             'tkimg: Thumbnail support in Tcl/Tk GUI'
             'emane: Support for heterogeneous network emulation'
             'mgen: Traffic generation')
@@ -25,7 +24,7 @@ backup=('etc/core/core.conf'
         'etc/core/logging.conf')
 source=("https://github.com/coreemu/core/archive/release-$pkgver.tar.gz"
         'core-daemon.service')
-sha512sums=('781d76c4af539c63a883b0ba696eee492caf8ba4d546adfceb8d97ee52b3f04ad39a2b49d82729d230b25a1555dc151cb358cc2b9bda3a2b4e6d5345412aeefb'
+sha512sums=('af130fc163dc0279e0a9c8f1321d4387a0cfe7dd5b61af34ef054fabfbf32c33fa2f230a439202c5d7bc011fc85c53e79f588b21bf5c252b1e6108aaa234003b'
             'e56f65a68804b0c7534d54fa116b53abe6922fb0aae13ee1073f76c0c7972b4832d12665d135159f7241d0f39d070ef510b4a7f05978118b6f00d737fda8dd46')
 
 prepare() {
