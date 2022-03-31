@@ -1,6 +1,6 @@
 pkgbase = kopano-webapp
 	pkgdesc = Provides all the familiar email, advanced calendaring and contacts features you need to be productive
-	pkgver = 4.6.3
+	pkgver = 5.3.0
 	pkgrel = 1
 	url = http://www.kopano.com/
 	changelog = changelog
@@ -19,7 +19,7 @@ pkgbase = kopano-webapp
 	optdepends = kopano-webapp-nginx
 	backup = etc/webapps/kopano-webapp/config.php
 	backup = etc/webapps/kopano-webapp/debug.php
-	source = kopano-webapp::git+https://stash.kopano.io/scm/kw/kopano-webapp.git#tag=v4.6.3
+	source = kopano-webapp::git+https://stash.kopano.io/scm/kw/kopano-webapp.git#tag=v5.3.0
 	source = kopano-webapp.ini
 	md5sums = SKIP
 	md5sums = SKIP

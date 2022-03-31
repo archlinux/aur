@@ -3,7 +3,7 @@
 # Contributor: Archist archist@die-optimisten.net
 
 pkgname='kopano-webapp'
-pkgver='4.6.3'
+pkgver='5.3.0'
 pkgrel=1
 pkgdesc='Provides all the familiar email, advanced calendaring and contacts features you need to be productive'
 groups=(
@@ -16,7 +16,7 @@ url='http://www.kopano.com/'
 license=('AGPL3')
 
 _tagPrefix="v"
-_remoteGit="https://stash.kopano.io/scm/kw/kopano-webapp.git"
+_source="git+https://stash.kopano.io/scm/kw/kopano-webapp.git"
 # template start; name=base-scm; version=1;
 #_tagPrefix=""
 #_tagSuffix=""
@@ -153,7 +153,7 @@ _sourceBranch=$(if [[ "${pkgname}" == *-git ]]; then echo "#branch=master"; else
 # template end;
 _phpIni="${_basePkgName}.ini"
 source=(
-    "${pkgname}::git+${_remoteGit}${_sourceBranch}"
+    "${pkgname}::${_source}${_sourceBranch}"
     "${_phpIni}"
 	)
 md5sums=(
