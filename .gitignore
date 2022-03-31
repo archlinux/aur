@@ -1,5 +1,6 @@
 Sozi*.tar.xz
 sozi*.tar.xz
 sozi-bin*.tar.zst
+*.pacman
 pkg/
 src/
