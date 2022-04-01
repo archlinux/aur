@@ -1,0 +1,1 @@
+../../personal/sh/sway-nvidia/PKGBUILD
