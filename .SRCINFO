@@ -2,7 +2,7 @@ pkgbase = gtkhtml4-git
 	pkgdesc = A lightweight HTML renderer/editor widget for GTK3
 	pkgver = latest
 	pkgrel = 3
-	url = https://github.com/GNOME/gtkhtml
+	url = https://gitlab.gnome.org/Archive/gtkhtml
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -15,10 +15,9 @@ pkgbase = gtkhtml4-git
 	depends = iso-codes>=0.49
 	provides = gtkhtml4
 	conflicts = gtkhtml4
-	source = gtkhtml4::git+https://github.com/GNOME/gtkhtml.git
+	source = gtkhtml4::git+https://gitlab.gnome.org/Archive/gtkhtml.git
 	source = enchant-2.patch
 	sha256sums = SKIP
 	sha256sums = 2b78f071f7893e19618959443f3775bd435941a37ea9198b2fe72b596c205891
 
 pkgname = gtkhtml4-git
-
