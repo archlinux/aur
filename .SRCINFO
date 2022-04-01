@@ -1,6 +1,6 @@
 pkgbase = nyrna
 	pkgdesc = Suspend games and applications at any time and resume whenever you wish
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/Merrit/nyrna
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = nyrna
 	depends = wmctrl
 	depends = xdotool
 	depends = xz
-	source = nyrna-2.4.0.tar.gz::https://github.com/Merrit/nyrna/archive/refs/tags/v2.4.0.tar.gz
-	sha256sums = 4cef4cabd458bb9b8444a2de5fbc50c5fe86a0ded9d03485f6ace0568f61f41f
+	source = nyrna-2.4.1.tar.gz::https://github.com/Merrit/nyrna/archive/refs/tags/v2.4.1.tar.gz
+	sha256sums = 2c613f6a06a18298fce584175b0f592e7cb0f340b1824fd2691037b3fd32f05a
 
 pkgname = nyrna
