@@ -1,11 +1,11 @@
 # Maintainer: Zacharias Knudsen <zachasme@gmail.com>
 pkgname=gog-unreal-tournament-goty
 pkgver=2.0.0.5
-pkgrel=9
+pkgrel=10
 pkgdesc="Unreal Tournament (99): Game of the Year Edition. GOG Version."
 arch=('x86_64')
 url="https://www.gog.com/game/unreal_tournament_goty"
-# https://github.com/OldUnreal/UnrealTournamentPatches/blob/v469a/LICENSE.md
+# https://github.com/OldUnreal/UnrealTournamentPatches/blob/master/LICENSE.md
 license=('MIT' 'BSD' 'ZLIB' 'GPL2' 'LGPL2.1' 'ZLIB' 'OFL' 'Apache' 'custom')
 depends=('lib32-libgl'
          'lib32-libpulse'
@@ -14,7 +14,7 @@ makedepends=('innoextract')
 source=("setup_ut_goty_${pkgver}.exe::gogdownloader://unreal_tournament_goty/en1installer0"
         "https://github.com/OldUnreal/UnrealTournamentPatches/releases/download/v469b/OldUnreal-UTPatch469b-Linux.tar.bz2"
         "gog-unreal-tournament-goty.desktop")
-noextract=("OldUnreal-UTPatch469a-Linux.tar.bz2")
+noextract=("OldUnreal-UTPatch469b-Linux.tar.bz2")
 sha256sums=("4cc257d54d97659c5062f2bf186d0a8c6959561d11e42d8fcf2eac07f1926803"
             "99b0832dfa5e8122b79c05b0d3cd22a277e36b865a1079941ee62c986cd92c1f"
             "60a0211a47a4d1b2c6b31da4ecd4848fcb3338dc06430599969c77dc6a5d87e0")
@@ -28,7 +28,7 @@ prepare() {
   innoextract --extract --exclude-temp "setup_ut_goty_${pkgver}.exe"
 
   # extract linux patches
-  tar --extract --file "OldUnreal-UTPatch469a-Linux.tar.bz2" --directory "app"
+  tar --extract --file "OldUnreal-UTPatch469b-Linux.tar.bz2" --directory "app"
 
   # To put extra content (extra levels/mods) into the game
   #   create an "addons/" folder next to the PKGBUILD.
