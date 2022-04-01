@@ -1,0 +1,17 @@
+pkgbase = firefox-temporary-containers
+	pkgdesc = Open tabs, websites, and links in automatically managed disposable containers
+	pkgver = 1.9.2
+	pkgrel = 3
+	url = https://github.com/stoically/temporary-containers
+	arch = any
+	groups = firefox-addons
+	license = MIT
+	makedepends = git
+	makedepends = npm
+	makedepends = strip-nondeterminism
+	provides = firefox-extension-temporary-containers
+	replaces = firefox-extension-temporary-containers
+	source = https://github.com/stoically/temporary-containers/archive/v1.9.2/temporary-containers-v1.9.2.tar.gz
+	b2sums = ab1bf45ac38e7bc3de52d3d25a62d1dcfbad01ae4c38e3e58a127de0a080c9126561399c7aeff4370fc6d7a782c748f4842a2ddbd639769069f84f3f940c000a
+
+pkgname = firefox-temporary-containers
