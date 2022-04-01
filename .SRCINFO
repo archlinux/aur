@@ -1,0 +1,19 @@
+pkgbase = gr-sdrplay3-git
+	pkgdesc = Out-of-tree GNU Radio module for SDRplay RSP devices - SDRplay API V3.X
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/fventuri/gr-sdrplay3
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = boost
+	makedepends = swig
+	makedepends = pybind11
+	depends = gnuradio
+	depends = libsdrplay
+	replaces = gr-sdrplay3
+	source = git+https://github.com/fventuri/gr-sdrplay3/#branch=maint-3.9
+	md5sums = SKIP
+
+pkgname = gr-sdrplay3-git
