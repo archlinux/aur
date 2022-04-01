@@ -1,14 +1,21 @@
 pkgbase = python-classutils
-	pkgdesc = A collection of utilites to enhance Python classes
-	pkgver = 1.18.0
+	pkgdesc = Collection of utilites to enhance Python classes
+	pkgver = 1.18.1
 	pkgrel = 1
 	url = https://bitbucket.org/daycoder/classutils
 	arch = any
 	license = custom:PSF
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	depends = python
-	source = https://pypi.io/packages/source/c/classutils/classutils-1.18.0.tar.gz
-	sha512sums = SKIP
+	makedepends = python-wheel
+	depends = python-future
+	depends = python-fdutil
+	depends = python-logging-helper
+	depends = python-timingsutil
+	depends = python-requests
+	depends = python-tableutil
+	source = python-classutils-1.18.1.tar.gz::https://files.pythonhosted.org/packages/source/c/classutils/classutils-1.18.1.tar.gz
+	sha256sums = b680a7cf71446a93347357e7156c055994799262a5b8508c25f8895f2b95c1fa
 
 pkgname = python-classutils
-
