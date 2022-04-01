@@ -2,11 +2,11 @@
 
 pkgname=udev-block-notify-git
 pkgver=0.7.11.r1.ga3d3230
-pkgrel=1
+pkgrel=2
 pkgdesc="Notify about udev block events - git checkout"
 arch=('i686' 'x86_64')
 url="https://github.com/eworm-de/udev-block-notify"
-depends=('libsystemd' 'libnotify' 'udev' 'gnome-icon-theme' 'gnome-icon-theme-extras')
+depends=('libsystemd' 'libnotify' 'udev' 'gnome-icon-theme-extras')
 makedepends=('git' 'systemd' 'discount')
 provides=('udev-block-notify')
 conflicts=('udev-block-notify')
