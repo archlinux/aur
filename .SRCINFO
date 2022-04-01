@@ -1,0 +1,14 @@
+pkgbase = wxmaxima
+	pkgdesc = A wxWidgets GUI for the computer algebra system Maxima
+	pkgver = 22.03.0
+	pkgrel = 1
+	url = https://wxmaxima-developers.github.io/wxmaxima/
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = maxima
+	depends = wxgtk3
+	source = https://github.com/wxMaxima-developers/wxmaxima/archive/Version-22.03.0/wxmaxima-22.03.0.tar.gz
+	sha256sums = 2192f804588511e9a796ad0b677e6f4721bb2cf2a52766f3d47f4528ad0ce0a4
+
+pkgname = wxmaxima
