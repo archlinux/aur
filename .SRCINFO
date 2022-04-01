@@ -1,0 +1,22 @@
+pkgbase = mcomix
+	pkgdesc = A user-friendly, customizable image viewer specifically designed to handle comic books
+	pkgver = 1.3.0.dev0
+	pkgrel = 6
+	url = https://github.com/multiSnow/mcomix3
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = gtk3
+	depends = python-cairo
+	depends = python-gobject
+	depends = python-pillow
+	optdepends = libunrar: for rar compressed comics
+	optdepends = p7zip: for 7z compressed comics
+	optdepends = unrar: for rar compressed comics
+	optdepends = unzip: for zip compressed comics
+	optdepends = lhasa: for lha compressed comics
+	optdepends = mupdf-tools: for PDF comics
+	source = git+https://github.com/multiSnow/mcomix3.git#commit=483f4b3f2d9a125606d47597ae7eff3b38e5bf9d
+	md5sums = SKIP
+
+pkgname = mcomix
