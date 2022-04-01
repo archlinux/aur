@@ -1,0 +1,13 @@
+/var/log/hockeypuck/*log {
+    daily
+    missingok
+    create 640 hockeypuck log
+    rotate 7
+    compress
+    delaycompress
+    notifempty
+    size 50M
+    postrotate
+        /usr/bin/systemctl reload hockeypuck
+    endscript
+}

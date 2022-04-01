@@ -1,7 +1,7 @@
 src/
 pkg/
 tmp/
-hockeypuck/
+hockeypuck*/
 *.xz
 *.zst
 *.gz
