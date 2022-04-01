@@ -1,6 +1,6 @@
 pkgbase = mash-git
 	pkgdesc = A bash/zsh like shell, written in C.
-	pkgver = r89.0f37703
+	pkgver = r90.37150f4
 	pkgrel = 1
 	url = https://gitlab.com/Magicrafter13/mash
 	arch = x86_64

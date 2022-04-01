@@ -1,6 +1,6 @@
 # Maintainer: Matthew Rease <scubaventure101[AT]hotmail[DOT]com>
 pkgname=mash-git
-pkgver=r89.0f37703
+pkgver=r90.37150f4
 pkgrel=1
 pkgdesc="A bash/zsh like shell, written in C."
 arch=('x86_64' 'aarch64' 'ppc')
