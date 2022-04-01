@@ -6,7 +6,7 @@ pkgname=$_pkgname-git
 pkgver=1.2.r245.g514eedbc
 pkgrel=1
 pkgdesc="Sega Dreamcast core"
-arch=('i686' 'x86_64')
+arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/flyinghead/$_reponame"
 license=('GPL2')
 groups=('libretro')
@@ -27,7 +27,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
 	"git+$url.git"
-	"$_pkgname-unbundle-libs.patch"
+	'unbundle-libs.patch'
 )
 b2sums=(
 	'SKIP'
@@ -41,7 +41,7 @@ pkgver() {
 
 prepare() {
 	cd $_reponame
-	patch -Np1 < ../$_pkgname-unbundle-libs.patch
+	patch -Np1 < ../unbundle-libs.patch
 	rm -r core/deps/libretro-common/include/libchdr
 }
 
