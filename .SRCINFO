@@ -1,0 +1,17 @@
+pkgbase = simavr
+	pkgdesc = A lean, mean and hackable AVR simulator
+	pkgver = 1.7
+	pkgrel = 2
+	url = https://github.com/buserror-uk/simavr
+	arch = x86_64
+	license = GPL3
+	makedepends = avr-libc
+	makedepends = git
+	makedepends = freeglut
+	depends = elfutils
+	depends = glu
+	options = !strip
+	source = simavr::git+https://github.com/buserror-uk/simavr.git#commit=1d227277b3d0039f9faef9ea62880ca3051b14f8
+	md5sums = SKIP
+
+pkgname = simavr
