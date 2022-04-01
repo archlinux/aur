@@ -1,6 +1,6 @@
 # Maintainer: Léopold Koprivnik Ibghy <skwal.net@gmail.com>
 pkgname="cow-translator-git"
-pkgver=r27.7ef3370
+pkgver=r28.c1ad35f
 pkgrel=1
 pkgdesc="Official moo translator to communicate with cows"
 arch=('any')
