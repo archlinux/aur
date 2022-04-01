@@ -1,6 +1,6 @@
 pkgbase = qt5-gsettings-git
 	pkgdesc = Qt-style wrapper for GSettings
-	pkgver = v1.2.0.r9.g3132cd4
+	pkgver = v1.3.0.r30.g7fb2af5
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
@@ -16,8 +16,7 @@ pkgbase = qt5-gsettings-git
 	provides = qt5-gsettings
 	conflicts = qt5-gsettings
 	replaces = qt5-gsettings
-	source = qtgsettings::git://github.com/lirios/qtgsettings.git#branch=develop
+	source = qtgsettings::git+https://github.com/lirios/qtgsettings.git#branch=develop
 	md5sums = SKIP
 
 pkgname = qt5-gsettings-git
-

@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=qt5-gsettings-git
-pkgver=v1.2.0.r9.g3132cd4
+pkgver=v1.3.0.r30.g7fb2af5
 pkgrel=1
 pkgdesc="Qt-style wrapper for GSettings"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -14,7 +14,7 @@ replaces=('qt5-gsettings')
 provides=('qt5-gsettings')
 groups=('liri-git')
 
-_gitroot="git://github.com/lirios/qtgsettings.git"
+_gitroot="git+https://github.com/lirios/qtgsettings.git"
 _gitbranch=develop
 _gitname=qtgsettings
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
