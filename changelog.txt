@@ -1,63 +1,43 @@
-Version 2.28.0 - 02 Aug 2018
-- Fix html appearing in txt summary by default.
-- Remove in-story ad links from adapter_asexstoriescom.
-- adapter_royalroadl site uses relative dates now, including months and years
-  ago.
-- Update plugin & web service html2text included package to fix text <>&
-  output.
-- Fix for corner case screwing up chapter html(attr quotes). Closes #324
-- adapter_webnovelcom: update title selection (#323), thanks Ea
-- Remove accidental file.
-- Change AO3 description blockquote to a div tag.
-- Fix section links in html output(broken in def6b39)
-- Remove Google Plus icon (web service only)
-- Fix base_xenforoforum_adapter bug when no threadmarks.
-- Get fanficauthors.net story URL from existing epubs downloaded from the
-  site.
-- Fix for site change: adapter_wuxiaworldcom
-- Add note to use_threadmark_wordcounts setting--base_xenforo sites'
-  wordcounts ignore words insite Spoiler tags.
-- adapter_wuxiaworldco: Some older stories use a different date format.
-- Fix origtitle/toctitle for mark_new_chapters. Broken in chapter metadata
-  revamp.
-- Fix tocpage links and correct index04 vs index, issue #320.
-- Refactor chapter internals for additional site-specific metadata per
-  chapter.
-- Fix base_xenforo_list for AH & QQ prefered domains.
-- base_xenforoforum: Adding date, words & kwords per chapter metadata
-  (SB/SB/QQ).
-- Whitespace clean up in code (#316) - thanks mcepl
-- Add alternate domains for SB, SV & QQ xenforo adapters.
-- base_xenforoforum: Sum threadmark word counts into numWords(when present).
-  INI option use_threadmark_wordcounts defaults to true.
-- Add ignore_chapter_url_list feature.
-- adapter_trekfanfictionnet: don't set numWords to *character* count.
-- Add adapter_harrypotterfanfictioncom for new version of returned
-  harrypotterfanfiction.com.
-- Add adapter for http://wuxiaworld.co/ (#315) - Thanks cryzed
+Version 4.3.0 - 2021-05-30
+- quotev.com: use_cloudscraper:true by default.
+- Update translations
+- adapter_bdsmlibrarycom: Set author Anonymous when author not found instead
+  of sys.exit(). Closes #696
+- Fix XF authorUrl and author_avatar_cover feature. Closes #695
+- Catch exceptions in word count.
+- Add CLI --color option for warns and fails. Closes #692
+- Report browser cache load fail as such.
 
-Version 2.27.0 - 03 Jul 2018
-- Change adapter_storiesonlinenet to https (and derived finestories) - thanks
-  davidfor.
-- Yet more site change for adapter_webnovelcom
-- Add status states Paused & Cancelled to adapter_fanfiktionde as well as site
-  specific native_status.
-- adapter_webnovelcom: ignore 'ad-walled' chapters--the ad-wall bypass code
-  stopped working, but isn't yet removed.
-- Calibre Plugin: Remove ebook formats before update, overwrite or unnew so
-  that the previouis version ends up in trash instead of just copied over.
-- Add adapter_classes metadata for developer testing.
-- Revert archive.skyehawke.com back https -> http.
-- Remove replace_br_with_p sentinels in desc HTML before giving to Calibre.
-- Fix for author in adapter_lcfanficcom
-- Fix for adapter_inkbunnynet author search.
-- base_efiction: use getProtocol for images too.
-- Change all sites that will work with https to use it all the time.
-- Remove fanfiction.mugglenet.com -- mugglenet.com is there, but no fanfic
-  section anymore.
-- adapter_adultfanfictionorg used urllib2 exceptions without importing it.
-- Updates for site changes for adapter_gravitytalescom.
-- Fix author for adapter_inkbunnynet.
-- Site update fixes for adapter_inkbunnynet, thanks GComyn.
-- Fixes for adapter_webnovelcom for site changes.
-- Add status to webnovelcom (#306) - Thanks, rikkitp
+Version 4.2.0 - 30 Apr 2021
+- Add New Site: novelfull.com (#688 & #689) - Thanks, AlexRiina!
+- Need to set logger.setLevel() again with import changes to see debugs in
+  plugin.
+- import changes for arch linux system plugins - As submitted by eli-schwartz
+- Remove site: fictionpad.com, completely different site, looks like generic
+  parked?
+- Remove site: www.thundercatsfans.org, no longer efiction, now static pages
+  and PDFs
+- Remove site: www.thepetulantpoetess.com, no longer efiction, URLs like OTW
+  but different
+- Remove site: www.potterfics.com, "Potterfics.com has closed its doors
+  forever"
+- Remove site: fanfic.castletv.net, DNS there, no server, last successful
+  2018-10-21
+- Remove site: deandamage.com, site there, efiction broken, last successful
+  2018-12-04
+- Remove site: www.deepinmysoul.net, moved to deepinmysoul.nl and changed
+  software--not eFiction anymore, <100 stories, all old
+- Include code for nsapa_proxy for dealing with Captchas (by nsapa -- coming
+  soon!)
+- Some other import cleanup.
+- Updates from cloudscraper 1.2.58
+- Use newer Calibre image processing, add JPG quality setting - thanks, Malloc
+  Voidstar
+- Add use_cloudscraper:true under [www.ficbook.net] to defaults.ini
+- Fix for adapter_literotica story URL oddities. Again.
+- Fix for site change: adapter_fictionmaniatv
+- Get storyId for sugarquillnet and siyecouk from the parsed query string.
+  From mcepl
+- Fix for adapter_literotica changing URLs on author page yet again.
+- Add [harrypotterfanfiction.com] slow_down_sleep_time:1 -- Site blocking fast
+  downloads.
