@@ -1,6 +1,6 @@
 pkgbase = tang.go-git
 	pkgdesc = Tang key manager tools
-	pkgver = r15.f0f920d
+	pkgver = r21.14a5a12
 	pkgrel = 1
 	url = https://github.com/anatol/tang.go
 	arch = x86_64

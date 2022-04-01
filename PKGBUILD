@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov
 
 pkgname=tang.go-git
-pkgver=r15.f0f920d
+pkgver=r21.14a5a12
 pkgrel=1
 pkgdesc='Tang key manager tools'
 arch=(x86_64)
@@ -20,15 +20,11 @@ pkgver() {
 build() {
   cd tang.go
 
-  (cd cmd/tangd && go build -trimpath -buildmode=pie -mod=readonly -modcacherw -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"")
-  (cd cmd/tang-keys && go build -trimpath -buildmode=pie -mod=readonly -modcacherw -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"")
-  (cd cmd/unlock-remote && go build -trimpath -buildmode=pie -mod=readonly -modcacherw -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"")
+  (cd cmd/tangctl && go build -trimpath -buildmode=pie -mod=readonly -modcacherw -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"")
 }
 
 package() {
   cd tang.go
 
-  install -Dp -m755 cmd/tangd/tangd "$pkgdir/usr/bin/tangd"
-  install -Dp -m755 cmd/tang-keys/tang-keys "$pkgdir/usr/bin/tang-keys"
-  install -Dp -m755 cmd/unlock-remote/unlock-remote "$pkgdir/usr/bin/unlock-remote"
+  install -Dp -m755 cmd/tangctl/tangctl "$pkgdir/usr/bin/tangctl"
 }
