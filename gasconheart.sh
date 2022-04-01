@@ -72,10 +72,12 @@ finalize (){
 trap finalize INT
 
 echophrase() {
-  echo -en "${PURPLE} --> "
   size=${#phrases[@]}
   index=$((RANDOM % size))
   phrase=$(pidof Xorg >/dev/null && echo "${phrases[$index]}" || echo "Sorry, I'm not on X11 right now")
+  echo -n "                                                                                          "
+  echo -ne "\r"
+  echo -en "${PURPLE} --> "
   if ! command -v lolcat &> /dev/null
   then
     echo "$phrase"
@@ -86,10 +88,11 @@ echophrase() {
 
 i=0
 printf "\n\n\n\n\n\n\n\n\n"
+echo -e "$BROWN                                              Ctrl + C to exit $NC"
 up=$(tput cuu1); printf %s "$up$up$up$up"
 while true
 do
-  if [ $((i % 3)) -eq 0 ]
+  if [ $((i % 4)) -eq 0 ]
   then
     up=$(tput cuu1); printf %s "$up$up$up$up"
   fi
