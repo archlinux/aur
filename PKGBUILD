@@ -2,7 +2,7 @@
 # Contributor: Dan McCurry <dan.mc at protonmail dot com>
 pkgname=profex
 pkgver=5.0.1
-pkgrel=2
+pkgrel=3
 year=2022
 month=03
 pkgdesc="A program for Rietveld refinement of powder X-ray diffraction data."
@@ -41,5 +41,5 @@ package() {
 	
 	make install
 
-	install -Dm755 "bin/profex" "${pkgdir}/usr/bin/profex"
+	install -Dm755 "bin/*" "${pkgdir}/usr/bin/"
 }
