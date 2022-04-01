@@ -1,0 +1,67 @@
+Description: Patch to set CONTENT_LENGTH FCGI params based on actual request body
+Author: Dominic Benson
+Bug: https://issues.apache.org/bugzilla/show_bug.cgi?id=53332
+
+diff -urNad '--exclude=CVS' '--exclude=.svn' '--exclude=.git' '--exclude=.arch' '--exclude=.hg' '--exclude=_darcs' '--exclude=.bzr' libapache2-mod-fcgid-2.3.6~/modules/fcgid/fcgid_spawn_ctl.c libapache2-mod-fcgid-2.3.6/modules/fcgid/fcgid_spawn_ctl.c
+--- mod_fcgid-2.3.6.orig/modules/fcgid/fcgid_bridge.c	2012-05-30 09:53:20.928783540 +0100
++++ mod_fcgid-2.3.6/modules/fcgid/fcgid_bridge.c	2012-05-30 18:04:01.648850877 +0100
+@@ -662,6 +662,11 @@ static int add_request_body(request_rec
+     apr_brigade_destroy(input_brigade);
+     apr_brigade_destroy(tmp_brigade);
+ 
++    char sizestr[21];
++    apr_snprintf(sizestr, sizeof sizestr, "%" APR_OFF_T_FMT, request_size);
++    apr_table_set(r->subprocess_env, "CONTENT_LENGTH", sizestr);
++    apr_table_unset(r->subprocess_env, "HTTP_TRANSFER_ENCODING");
++
+     /* Append an empty body stdin header */
+     stdin_request_header = apr_bucket_alloc(sizeof(FCGI_Header),
+                                             r->connection->bucket_alloc);
+@@ -682,31 +687,37 @@ static int add_request_body(request_rec
+ int bridge_request(request_rec * r, int role, fcgid_cmd_conf *cmd_conf)
+ {
+     apr_bucket_brigade *output_brigade;
++    apr_bucket_brigade *header_brigade;
+     apr_bucket *bucket_eos;
+-    char **envp = ap_create_environment(r->pool,
+-                                        r->subprocess_env);
+     int rc;
+ 
+     /* Create brigade for the request to fastcgi server */
+     output_brigade =
+         apr_brigade_create(r->pool, r->connection->bucket_alloc);
++    header_brigade =
++        apr_brigade_create(r->pool, r->connection->bucket_alloc);
++
++    if (role == FCGI_RESPONDER) {
++        rc = add_request_body(r, r->pool, output_brigade);
++        if (rc) {
++            return rc;
++        }
++    }
++
++    char **envp = ap_create_environment(r->pool,
++                                        r->subprocess_env);
+ 
+     /* Build the begin request and environ request, append them to output_brigade */
+     if (!build_begin_block
+-        (role, r, r->connection->bucket_alloc, output_brigade)
++        (role, r, r->connection->bucket_alloc, header_brigade)
+         || !build_env_block(r, envp, r->connection->bucket_alloc,
+-                            output_brigade)) {
++                            header_brigade)) {
+         ap_log_rerror(APLOG_MARK, APLOG_WARNING, 0, r,
+                       "mod_fcgid: can't build begin or env request");
+         return HTTP_INTERNAL_SERVER_ERROR;
+     }
+ 
+-    if (role == FCGI_RESPONDER) {
+-        rc = add_request_body(r, r->pool, output_brigade);
+-        if (rc) {
+-            return rc;
+-        }
+-    }
++    APR_BRIGADE_PREPEND(output_brigade,header_brigade);
+ 
+     /* The eos bucket now */
+     bucket_eos = apr_bucket_eos_create(r->connection->bucket_alloc);

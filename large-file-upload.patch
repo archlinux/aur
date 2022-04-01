@@ -1,0 +1,112 @@
+--- modules/fcgid/fcgid_proc_win.c	2015-08-28 13:39:44.583673500 +0200
++++ modules/fcgid/fcgid_proc_win.c	2015-08-28 13:40:05.588100000 +0200
+@@ -380,19 +380,22 @@ 
+     apr_bucket *bucket_request;
+     apr_status_t rv;
+     DWORD transferred;
++    apr_bucket_brigade* tmpbb = apr_brigade_create(birgade_send->p, 
++                                                   birgade_send->bucket_alloc);
+ 
+     handle_info = (fcgid_namedpipe_handle *) ipc_handle->ipc_handle_info;
+ 
+-    for (bucket_request = APR_BRIGADE_FIRST(birgade_send);
+-         bucket_request != APR_BRIGADE_SENTINEL(birgade_send);
+-         bucket_request = APR_BUCKET_NEXT(bucket_request))
+-    {
++    while (!APR_BRIGADE_EMPTY(birgade_send)) {
+         const char *write_buf;
+         apr_size_t write_buf_len;
+         apr_size_t has_write;
+ 
+-        if (APR_BUCKET_IS_METADATA(bucket_request))
++        bucket_request = APR_BRIGADE_FIRST(birgade_send);
++
++        if (APR_BUCKET_IS_METADATA(bucket_request)) {
++            apr_bucket_delete(bucket_request);
+             continue;
++        }
+ 
+         if ((rv = apr_bucket_read(bucket_request, &write_buf, &write_buf_len,
+                                   APR_BLOCK_READ)) != APR_SUCCESS) {
+@@ -401,6 +404,9 @@ 
+             return rv;
+         }
+ 
++        APR_BUCKET_REMOVE(bucket_request);
++        APR_BRIGADE_INSERT_TAIL(tmpbb, bucket_request);
++
+         /* Write the buffer to fastcgi server */
+         has_write = 0;
+         while (has_write < write_buf_len) {
+@@ -411,6 +417,7 @@ 
+                           write_buf_len - has_write,
+                           &byteswrite, &handle_info->overlap_write)) {
+                 has_write += byteswrite;
++                apr_brigade_cleanup(tmpbb);
+                 continue;
+             } else if ((rv = GetLastError()) != ERROR_IO_PENDING) {
+                 ap_log_rerror(APLOG_MARK, APLOG_WARNING,
+@@ -437,6 +444,7 @@ 
+                         return APR_ESPIPE;
+                     }
+                     has_write += transferred;
++                    apr_brigade_cleanup(tmpbb);
+                     continue;
+                 } else {
+                     ap_log_rerror(APLOG_MARK, APLOG_WARNING, 0,
+@@ -448,6 +456,7 @@ 
+         }
+     }
+ 
++    apr_brigade_destroy(tmpbb);
+     return APR_SUCCESS;
+ }
+ 
+--- modules/fcgid/fcgid_proc_unix.c	2015-08-28 13:39:44.614914500 +0200
++++ modules/fcgid/fcgid_proc_unix.c	2015-08-28 13:39:44.724299600 +0200
+@@ -762,14 +762,16 @@ 
+     struct iovec vec[FCGID_VEC_COUNT];
+     int nvec = 0;
+     apr_bucket *e;
++    apr_bucket_brigade* tmpbb = apr_brigade_create(output_brigade->p,output_brigade->bucket_alloc);
++
++    while (!APR_BRIGADE_EMPTY(output_brigade)) {
++        e = APR_BRIGADE_FIRST(output_brigade);
+ 
+-    for (e = APR_BRIGADE_FIRST(output_brigade);
+-         e != APR_BRIGADE_SENTINEL(output_brigade);
+-         e = APR_BUCKET_NEXT(e)) {
+         apr_size_t len;
+         const char* base;
+ 
+         if (APR_BUCKET_IS_METADATA(e)) {
++            apr_bucket_delete(e);
+             continue;
+         }
+ 
+@@ -780,6 +782,9 @@ 
+             return rv;
+         }
+ 
++        APR_BUCKET_REMOVE(e);
++        APR_BRIGADE_INSERT_TAIL(tmpbb, e);
++
+         vec[nvec].iov_len = len;
+         vec[nvec].iov_base = (char*) base;
+         if (nvec == (FCGID_VEC_COUNT - 1)) {
+@@ -789,6 +794,7 @@ 
+                                FCGID_VEC_COUNT)) != APR_SUCCESS)
+                 return rv;
+             nvec = 0;
++            apr_brigade_cleanup(tmpbb);
+         }
+         else
+             nvec++;
+@@ -800,6 +806,7 @@ 
+             return rv;
+     }
+ 
++    apr_brigade_destroy(tmpbb);
+     return APR_SUCCESS;
+ }
+ 

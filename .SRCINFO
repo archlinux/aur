@@ -1,0 +1,19 @@
+pkgbase = mod_fcgid
+	pkgdesc = A FastCGI module for Apache HTTP Server.
+	pkgver = 2.3.9
+	pkgrel = 5
+	url = https://httpd.apache.org/mod_fcgid/
+	arch = x86_64
+	license = APACHE
+	depends = apache
+	source = https://www.apache.org/dist/httpd/mod_fcgid/mod_fcgid-2.3.9.tar.bz2
+	source = https://www.apache.org/dist/httpd/mod_fcgid/mod_fcgid-2.3.9.tar.bz2.asc
+	source = 30_fix-bts-691929.patch
+	source = large-file-upload.patch
+	validpgpkeys = 5B5181C2C0AB13E59DA3F7A3EC582EB639FF092C
+	sha1sums = f0b6d87dfcfe18b318905a3f91274051f3f17945
+	sha1sums = SKIP
+	sha1sums = 661a16c15ba413cc841ef6ae0534a12eaee1b703
+	sha1sums = b281882ff13028a4c3d0c2189263eea12e1189df
+
+pkgname = mod_fcgid
