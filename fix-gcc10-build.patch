@@ -1,0 +1,12 @@
+diff --git a/sources/model.h b/sources/model.h
+index 6363c32..dc10a8c 100644
+--- a/sources/model.h
++++ b/sources/model.h
+@@ -27,6 +27,7 @@ along with qpdfview.  If not, see <http://www.gnu.org/licenses/>.
+ #include <QtPlugin>
+ #include <QWidget>
+ #include <QVector>
++#include <QPainterPath>
+ 
+ class QAbstractItemModel;
+ class QColor;

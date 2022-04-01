@@ -1,43 +1,41 @@
-# Maintainer: Adam Reichold <adam.reichold@t-online.de>
+# Maintainer: Alad Wenter <alad@mailbox.org>
+# Contributor: Adam Reichold <adam.reichold@t-online.de>
 
 pkgname=qpdfview
-pkgver=0.4.17beta1
+pkgver=0.4.18
 pkgrel=2
 pkgdesc='A tabbed PDF viewer using the poppler library.'
-arch=('i686' 'x86_64' 'armv7h')
 url='https://launchpad.net/qpdfview'
+arch=('x86_64')
 license=('GPL2')
-depends=('libcups' 'poppler-qt5' 'qt5-svg' 'desktop-file-utils' 'hicolor-icon-theme')
-optdepends=('texlive-bin: for shared SyncTeX parser library (required at build time)'
-            'libspectre: for PostScript support (required at build time)'
-            'djvulibre: for DjVu support (required at build time)')
-makedepends=('qt5-tools')
-source=("https://launchpad.net/$pkgname/trunk/$pkgver/+download/$pkgname-$pkgver.tar.gz")
-sha256sums=('60206c5f76410a35098e3c965552cec08cd85941776ea6f6b207d7ea63ce940f')
+depends=('libcups' 'libsynctex' 'poppler-qt5' 'qt5-svg')
+makedepends=('qt5-tools' 'libspectre' 'djvulibre')
+optdepends=('libspectre: for PostScript support'
+            'djvulibre: for DjVu support')
+source=("https://launchpad.net/qpdfview/trunk/$pkgver/+download/qpdfview-$pkgver.tar.gz"
+        "https://launchpad.net/qpdfview/trunk/$pkgver/+download/qpdfview-$pkgver.tar.gz.asc"
+        fix-gcc10-build.patch)
+sha256sums=('cc642e7fa74029373ca9b9fbc29adc4883f8b455130a78ad54746d6844a0396c'
+            'SKIP'
+            '5314091e35031f5ebf38a827b64e524e2f5dab8a5c2d3c0e081fb7a634ebe301')
+# Adam Reichold <adam.reichold@t-online.de>
+validpgpkeys=('1F521FF0F87E9E1CDE46B8A9F4928C4DD24D4DF8')
+
+prepare() {
+    cd $pkgname-$pkgver
+    sed -e 's|2.0.0|1.21.0|' -i application.pro
+    patch -Np1 < ../fix-gcc10-build.patch
+}
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  
-  if ! pkg-config --exists libspectre; then
-    local config="$config without_ps"
-  fi
-  
-  if ! pkg-config --exists ddjvuapi; then
-    local config="$config without_djvu"
-  fi
-
-  lrelease-qt5 qpdfview.pro
-  qmake-qt5 "CONFIG+=$config" qpdfview.pro
-  make
+    cd $pkgname-$pkgver
+    lrelease-qt5 qpdfview.pro
+    qmake-qt5 qpdfview.pro
+    make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-
-  make "INSTALL_ROOT=$pkgdir" install
-
-  if pkg-config --exists synctex; then
-    depends=("${depends[@]}" 'texlive-bin')
-  fi
+    cd $pkgname-$pkgver
+    make INSTALL_ROOT="$pkgdir" install
 }
 
