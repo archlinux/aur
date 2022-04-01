@@ -1,0 +1,16 @@
+pkgbase = pyfa-appimage
+	pkgdesc = EVE Online Fitting Assistant
+	pkgver = 2.41.0
+	pkgrel = 1
+	url = https://github.com/pyfa-org/Pyfa
+	arch = any
+	license = GPL3
+	depends = fuse2
+	conflicts = pyfa
+	options = !strip
+	source = Pyfa-2.41.0.AppImage::https://github.com/pyfa-org/Pyfa/releases/download/v2.41.0/pyfa-v2.41.0-linux.AppImage
+	source = pyfa.desktop
+	sha256sums = 14bfd46111bf84f62e9adf0beabaf4658765878fdb68871974fe896521d1b59e
+	sha256sums = SKIP
+
+pkgname = pyfa-appimage
