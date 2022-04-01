@@ -1,0 +1,27 @@
+pkgbase = xawtv
+	pkgdesc = A simple Xaw-based TV program which uses the bttv driver or video4linux
+	pkgver = 3.107
+	pkgrel = 1
+	url = https://git.linuxtv.org/xawtv3.git
+	arch = x86_64
+	license = GPL
+	makedepends = mesa
+	makedepends = git
+	makedepends = xorgproto
+	depends = aalib
+	depends = v4l-utils
+	depends = libxv
+	depends = libxrandr
+	depends = libgl
+	depends = libdv
+	depends = zvbi
+	depends = libxinerama
+	depends = lirc
+	depends = libxft
+	depends = libxaw
+	depends = xorg-fonts-misc
+	depends = libxxf86vm
+	source = git+https://git.linuxtv.org/cgit.cgi/xawtv3.git#commit=8e3feea862db68d3ca0886f46cd99fab45d2db7c
+	md5sums = SKIP
+
+pkgname = xawtv
