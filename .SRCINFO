@@ -1,5 +1,5 @@
 pkgbase = gimp-stripped
-	pkgdesc = GNU Image Manipulation Program (bare minimum package stripped from most unnecessary dependencies)
+	pkgdesc = GNU Image Manipulation Program (stripped from most unnecessary dependencies)
 	pkgver = 2.10.30
 	pkgrel = 2
 	url = https://www.gimp.org/

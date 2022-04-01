@@ -1,7 +1,7 @@
 pkgname=gimp-stripped
 pkgver=2.10.30
 pkgrel=2
-pkgdesc='GNU Image Manipulation Program (bare minimum package stripped from most unnecessary dependencies)'
+pkgdesc='GNU Image Manipulation Program (stripped from most unnecessary dependencies)'
 url='https://www.gimp.org/'
 arch=('x86_64')
 license=('GPL' 'LGPL')
