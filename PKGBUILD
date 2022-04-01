@@ -3,14 +3,14 @@
 
 pkgname=picpuz
 pkgver=3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="'jigsaw puzzle' program."
 arch=('i686' 'x86_64')
 url="http://www.kornelix.net/picpuz/picpuz.html"
 license=('GPL3')
 depends=('clutter-gtk')
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('9169fc762840009800ed8d5d9efc160893c94700d38c2e230ab1f6908520f7f4')
+sha256sums=('7862fddd1ba84338ee917e351edc445871e34ef528d3d4992124f17ded790a82')
 options=('!emptydirs')
 
 build() {
