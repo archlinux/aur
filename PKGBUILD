@@ -1,7 +1,7 @@
 # Maintainer: Dmytro Meleshko <qzlgeb.zryrfuxb@tznvy.pbz(rot13)>
 _pkgname=mindustry-server
 pkgname=${_pkgname}-bin
-_build=135
+_build=135.1
 pkgver="7.0_${_build}"
 pkgrel=1
 epoch=1
