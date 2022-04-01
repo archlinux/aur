@@ -1,0 +1,18 @@
+pkgbase = do-git
+	pkgdesc = Microsoft To Do client for Linux built with Rust and GTK.
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/edfloreshz/do
+	arch = x86_64
+	license = GPL2
+	makedepends = cargo
+	makedepends = git
+	depends = gtk4
+	depends = libadwaita
+	depends = pkg-config
+	provides = do
+	conflicts = do
+	source = do-git::git+https://github.com/edfloreshz/do#branch=main
+	md5sums = SKIP
+
+pkgname = do-git
