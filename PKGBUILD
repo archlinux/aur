@@ -4,7 +4,7 @@ _name=sciplot
 _author=sciplot
 
 pkgname=${_name}-git
-pkgver=v0.2.2.r63.gfc7b7c0
+pkgver=v0.2.2.r65.g619514b
 pkgrel=1
 pkgdesc="A modern C++ scientific plotting library powered by gnuplot"
 arch=('any')
@@ -26,13 +26,16 @@ pkgver() {
 
 prepare() {
   cmake -B build -S ${pkgname} \
-        -DSCIPLOT_BUILD_EXAMPLES=OFF \
-        -DSCIPLOT_BUILD_TESTS=OFF \
-        -DSCIPLOT_BUILD_DOCS=OFF \
-        -DCMAKE_BUILD_TYPE='None' \
-        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DSCIPLOT_BUILD_EXAMPLES:BOOL=OFF \
+        -DSCIPLOT_BUILD_DOCS:BOOL=OFF \
+        -DCMAKE_BUILD_TYPE:STRING='None' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -Wno-dev
   make -C build
+}
+
+check() {
+    make -C build tests
 }
 
 package() {
