@@ -1,9 +1,10 @@
 # Maintainer: s3rj1k <evasive dot gyron at gmail dot com>
 
 _pkgname=xfce4-settings
+_pkgver=4.16.2
 pkgname=${_pkgname}-standalone
-pkgver=4.16.2+0+g2076199f
-pkgrel=1
+pkgver=${_pkgver}+0+g2076199f
+pkgrel=2
 pkgdesc="Settings manager of the Xfce desktop"
 arch=('x86_64')
 url="https://docs.xfce.org/xfce/xfce4-settings/start"
@@ -16,7 +17,7 @@ optdepends=('python: xfce4-compose-mail -- "mailto:" URI handling')
 
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::git+https://gitlab.xfce.org/xfce/${_pkgname}#tag=${_pkgname}-${pkgver}"
+source=("${_pkgname}::git+https://gitlab.xfce.org/xfce/${_pkgname}#tag=${_pkgname}-${_pkgver}"
         'default-xsettings-xml.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/default-xsettings-xml.patch?h=packages/xfce4-settings'
         'remove-settings-manager.patch')
 sha256sums=('SKIP'
