@@ -1,0 +1,19 @@
+pkgbase = extremetuxracer
+	pkgdesc = Downhill racing game starring Tux
+	pkgver = 0.8.1
+	pkgrel = 1
+	url = https://sourceforge.net/projects/extremetuxracer/
+	arch = x86_64
+	license = GPL
+	makedepends = csfml
+	depends = sfml
+	depends = glu
+	depends = freetype2
+	conflicts = ppracer
+	conflicts = etracer
+	replaces = ppracer
+	replaces = etracer
+	source = https://downloads.sourceforge.net/extremetuxracer/etr-0.8.1.tar.xz
+	sha256sums = 92da963ed32ab9bff126346edfb9549e871d7c3cec753f4ac5098e0d53c38341
+
+pkgname = extremetuxracer
