@@ -1,0 +1,11 @@
+--- x2goclient-4.1.2.2/Makefile	2020-05-29 14:08:58.007273439 +0200
++++ x2goclient-4.1.2.2/Makefile.new	2020-05-29 17:39:44.803801609 +0200
+@@ -115,7 +115,7 @@
+ 	$(INSTALL_DIR) $(DESTDIR)$(MANDIR)/
+ 	$(INSTALL_DIR) $(DESTDIR)$(MANDIR)/man1
+ 	$(INSTALL_FILE) man/man1/x2goclient.1    $(DESTDIR)$(MANDIR)/man1/x2goclient.1
+-	gzip -f $(DESTDIR)$(MANDIR)/man1/x2goclient.1
++	gzip -f -n $(DESTDIR)$(MANDIR)/man1/x2goclient.1
+ 
+ uninstall: uninstall_client uninstall_man
+ 
