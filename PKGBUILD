@@ -1,13 +1,13 @@
 pkgname=aether-reverb-lv2
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 license=('MIT')
 pkgdesc="Aether Algorithmic Reverb (LV2)"
 url="https://github.com/Dougal-s/Aether"
-groups=('pro-audio' 'vst-plugins')
+groups=('lv2-plugins' 'pro-audio')
 depends=('freetype2' 'alsa-lib' 'libxext' 'libglvnd')
-makedepends=('git' 'libxinerama' 'libxrender' 'libxcursor' 'lv2' 'libgl' 'meson')
+makedepends=('git' 'libxinerama' 'libxrender' 'libxcursor' 'lv2' 'libgl' 'cmake')
 source=("${pkgname}"::"git+https://github.com/Dougal-s/Aether.git#tag=v${pkgver}")
 md5sums=('SKIP')
 
@@ -21,6 +21,6 @@ build() {
 }
 
 package() {
-	mkdir -p ${pkgdir}/usr/lib/lv2
-	cp -r ${srcdir}/${pkgname}/Aether/build/aether.lv2 ${pkgdir}/usr/lib/lv2/aether.lv2
+	mkdir -p "${pkgdir}/usr/lib/lv2"
+	cp -r "${srcdir}/${pkgname}/Aether/build/aether.lv2" "${pkgdir}/usr/lib/lv2/aether.lv2"
 }
