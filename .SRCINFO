@@ -1,0 +1,12 @@
+pkgbase = plank-theme-catalin
+	pkgdesc = Catalin Theme for Plank
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://www.pling.com/p/1332504
+	arch = any
+	license = GPL3
+	depends = plank
+	source = https://github.com/MMcQueenGNU/plank-theme-catalin/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 2c2963520820c3fd6d74a22bb5a71bbaf88479459237e288cd2f64ec171b67f3
+
+pkgname = plank-theme-catalin
