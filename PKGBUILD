@@ -12,7 +12,7 @@ license=('LGPL' 'MPL')
 depends=('glibc' 'glib2' 'icu' 'db' 'libxml2')
 makedepends=('cmake' 'ninja' 'gtk-doc' 'doxygen' 'vala' 'gobject-introspection')
 checkdepends=('python-gobject')
-option=('debug')
+options=('debug')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/v${pkgver}.tar.gz")
 sha512sums=('36da5516672976c71b049a12af36164d91f9b655f81f1884766558149f25e80c30e64d15da848842f8a629295d708f39ce6fa63a3b0da39b5cbeb91911a4e6d8')
 
