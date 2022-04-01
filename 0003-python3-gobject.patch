@@ -1,0 +1,125 @@
+# HG changeset patch
+# User Alad Wenter <alad@archlinux.org>
+# Date 1565313540 -7200
+#      Fri Aug 09 03:19:00 2019 +0200
+# Node ID f382f5fa628e5a3e0e5924c954ea88e264264270
+# Parent  6244f8fd266243931caa0f03da46380ddc9a3aeb
+python3: migrate to PyGObject
+
+diff -r 6244f8fd2662 -r f382f5fa628e asoundconf-gtk/asoundconf-gtk
+--- a/asoundconf-gtk/asoundconf-gtk	Fri Aug 09 02:38:27 2019 +0200
++++ b/asoundconf-gtk/asoundconf-gtk	Fri Aug 09 03:19:00 2019 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python2
++#!/usr/bin/env python3
+ # asoundconf-gtk - GTK GUI to select the default sound card
+ #
+ # (C) 2006 Toby Smithe
+@@ -21,7 +21,9 @@
+ # along with this program; if not, write to the Free Software
+ # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ 
+-import sys, re, os, pygtk, gtk, string
++import sys, re, os, gi
++gi.require_version('Gtk', '3.0')
++from gi.repository import Gtk
+ import asoundconf_common
+ 
+ ###################################
+@@ -50,12 +52,12 @@
+ def die_on_error():
+ 	'''Kill the application if it cannot run'''
+ 	if not os.path.exists("/proc/asound/cards"):
+-		print "You need at least one ALSA sound card for this to work!"
++		print("You need at least one ALSA sound card for this to work!")
+ 		sys.exit(-1)
+ 	if os.system(asoundconf + " is-active"):
+-		print "You need to make sure asoundconf is active!"
+-		print "By default, asoundconf's configuration file is ~/.asoundrc.asoundconf"
+-		print "and must be included in ~/.asoundrc. Open this file to make sure it is!"
++		print("You need to make sure asoundconf is active!")
++		print("By default, asoundconf's configuration file is ~/.asoundrc.asoundconf")
++		print("and must be included in ~/.asoundrc. Open this file to make sure it is!")
+ 		sys.exit(-2)
+ 
+ def get(setting):
+@@ -71,7 +73,7 @@
+ 	value_raw = get("defaults.pcm.card")
+ 	if not value_raw:
+ 		return 0
+-	value = string.strip(value_raw[0])
++	value = str.strip(value_raw[0])
+ 	return value
+ 
+ def set_default_card(card):
+@@ -95,7 +97,7 @@
+ class asoundconf_gtk:
+ 	def destroy(self, widget, data=None):
+ 		'''This is a stub function to allow for stuff to be done on close'''
+-		gtk.main_quit()
++		Gtk.main_quit()
+ 
+ 	def delete_event(self, widget, event, data=None):
+ 		'''Again, a stub to allow stuff to happen when widgets are deleted'''
+@@ -133,17 +135,17 @@
+ 	
+ 	def __init__(self):
+ 		# Initiate the window
+-		self.window = gtk.Window(gtk.WINDOW_TOPLEVEL)
++		self.window = Gtk.Window.new(Gtk.WindowType.TOPLEVEL)
+ 		self.window.set_title("Default Sound Card")
+-		self.window.set_position(gtk.WIN_POS_CENTER)
++		self.window.set_position(Gtk.WindowPosition.CENTER)
+ 		# Create an HBox box
+-		self.selectionbox = gtk.HBox(False, 0)
++		self.selectionbox = Gtk.HBox.new(False, 0)
+ 		# Create a button
+-		self.button = gtk.Button("Quit")
++		self.button = Gtk.Button.new_with_label("Quit")
+ 		#self.button.connect("clicked", self.reset, None)
+-		self.button.connect_object("clicked", gtk.Widget.destroy, self.window)
++		self.button.connect_object("clicked", Gtk.Widget.destroy, self.window)
+ 		# Create combobox
+-		self.combo = gtk.combo_box_new_text()
++		self.combo = Gtk.ComboBoxText()
+ 		self.liststore = self.combo.get_model()
+ 
+ 		# Add cards and devices to combobox liststore
+@@ -158,10 +160,10 @@
+ 			self.combo.append_text("%s (%s)" % (card.id_, device.name))
+ 		self.combo.connect("changed", self.choose, None)
+ 		# Create a label
+-		self.label = gtk.Label("Select default card: ")
++		self.label = Gtk.Label.new("Select default card: ")
+ 		
+ 		# Spacing between controls
+-		label_height = self.label.size_request()[1]
++		label_height = self.label.get_size_request()[1]
+ 		CTL_SPACING = label_height / 3
+ 		self.selectionbox.set_spacing(CTL_SPACING)
+ 		self.window.set_border_width(CTL_SPACING)
+@@ -170,13 +172,13 @@
+ 		self.selectionbox.pack_start(self.combo, True, True, 0)		
+ 		self.selectionbox.pack_start(self.button, True, True, 0)
+ 		# Create a VBox
+-		self.vbox = gtk.VBox(False, CTL_SPACING)
++		self.vbox = Gtk.VBox.new(False, CTL_SPACING)
+ 		self.window.add(self.vbox)
+ 		self.vbox.pack_start(self.label, True, True, 0)
+ 		self.vbox.pack_start(self.selectionbox, True, True, 0)
+ 		# Create PulseAudio checkbox if ALSA PulseAudio plugin installed
+ 		if os.path.exists("/usr/lib/alsa-lib/libasound_module_pcm_pulse.so") and os.path.exists("/usr/lib/alsa-lib/libasound_module_ctl_pulse.so"):
+-			#self.pulsecheck = gtk.CheckButton("Use _PulseAudio?")
++			#self.pulsecheck = Gtk.CheckButton("Use _PulseAudio?")
+ 			self.combo.append_text("PulseAudio")
+ 			try: pcmDefault = get("pcm.!default")[0]
+ 			except: pcmDefault = ""
+@@ -196,7 +198,7 @@
+ 
+ 	def main(self):
+ 		'''Do the stuffs'''
+-		gtk.main()
++		Gtk.main()
+ 
+ if __name__ == "__main__":
+ 	die_on_error()

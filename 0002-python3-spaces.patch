@@ -1,0 +1,372 @@
+# HG changeset patch
+# User Alad Wenter <alad@archlinux.org>
+# Date 1565311107 -7200
+#      Fri Aug 09 02:38:27 2019 +0200
+# Node ID 6244f8fd266243931caa0f03da46380ddc9a3aeb
+# Parent  e92452338b542c3626f81db079610753f723c9b9
+python3: convert tabs to spaces
+
+diff -r e92452338b54 -r 6244f8fd2662 asoundconf
+--- a/asoundconf	Fri Aug 09 02:37:39 2019 +0200
++++ b/asoundconf	Fri Aug 09 02:38:27 2019 +0200
+@@ -62,26 +62,26 @@
+ 
+ def get_default_predefs():
+     try:
+-	if not os.path.exists(predefs_file):
+-	    return
+-	predefs_file_entire = open(predefs_file).readlines()
+-	r = re.compile('^defaults')
+-	## Between these hashes, add additional unique regexps that
+-	## must exist at the end of the user's custom asoundrc.
+-	s = re.compile('^defaults.namehint')
+-	##
+-	predefs_list = []
+-	must_append_predefs_list = []
+-	for i in predefs_file_entire:
+-	    if r.match(i) and not s.match(i):
+-		predefs_list.append(str(i).strip())
+-	    elif s.match(i):
+-		must_append_predefs_list.append(str(i).strip())
+-	for i in must_append_predefs_list:
+-	    predefs_list.append(str(i).strip())
+-	return predefs_list
++        if not os.path.exists(predefs_file):
++            return
++        predefs_file_entire = open(predefs_file).readlines()
++        r = re.compile('^defaults')
++        ## Between these hashes, add additional unique regexps that
++        ## must exist at the end of the user's custom asoundrc.
++        s = re.compile('^defaults.namehint')
++        ##
++        predefs_list = []
++        must_append_predefs_list = []
++        for i in predefs_file_entire:
++            if r.match(i) and not s.match(i):
++                predefs_list.append(str(i).strip())
++            elif s.match(i):
++                must_append_predefs_list.append(str(i).strip())
++        for i in must_append_predefs_list:
++            predefs_list.append(str(i).strip())
++        return predefs_list
+     except IOError:
+-	pass
++        pass
+ 
+ 
+ def ensure_our_conf_exists():
+@@ -237,40 +237,40 @@
+ 
+ 
+ def list():
+-	'''Print list of card IDs'''
+-	
+-	card_lines = []
+-	try:
+-		card_lines = asoundconf_common.parse_cards()
+-	except IOError:
+-		return False
+-	  
++        '''Print list of card IDs'''
++        
++        card_lines = []
++        try:
++                card_lines = asoundconf_common.parse_cards()
++        except IOError:
++                return False
++          
+         print("Names of available sound cards:")
+-	for cardname in card_lines:
++        for cardname in card_lines:
+                 print(cardname.id_)
+-	return True
++        return True
+   
+ 
+ def list_all():
+-	'''Print list of devices for all cards (including number, id and name)'''
++        '''Print list of devices for all cards (including number, id and name)'''
+ 
+-	card_lines = []
+-	dev_lines = []
+-	try:
+-		card_lines = asoundconf_common.parse_cards()
+-		dev_lines = asoundconf_common.parse_devices()
+-	except IOError:
+-		return False
++        card_lines = []
++        dev_lines = []
++        try:
++                card_lines = asoundconf_common.parse_cards()
++                dev_lines = asoundconf_common.parse_devices()
++        except IOError:
++                return False
+ 
+-	print("Available devices for all sound cards:")
+-	for dev in dev_lines:
+-		card = next(c for c in card_lines if c.card_num == dev.card_num) # find card by number
+-		print('hw:{},{}: {} : {} : {} : {}'.format(
+-			dev.card_num, dev.dev_num,
+-			card.id_, card.name,
+-			dev.id_, dev.name))
++        print("Available devices for all sound cards:")
++        for dev in dev_lines:
++                card = next(c for c in card_lines if c.card_num == dev.card_num) # find card by number
++                print('hw:{},{}: {} : {} : {} : {}'.format(
++                        dev.card_num, dev.dev_num,
++                        card.id_, card.name,
++                        dev.id_, dev.name))
+ 
+-	return True
++        return True
+ 
+ 
+ def delete(prmtr):
+@@ -358,50 +358,50 @@
+     return True
+ 
+ def set_default_card(card):
+-	clist = get_default_predefs()
+-	sep = re.compile(r'[ \t]')
+-	com = re.compile('[ \t]*#.*')
+-	r = re.compile('^defaults.pcm.card')
+-	s = re.compile('^defaults.ctl.card')
+-	## !defaults.pcm.card and defaults.ctl.card should lead
+-	## the user's custom asoundrc.
+-	if set('!defaults.pcm.card', card) and \
+-	   set('defaults.ctl.card', card):
+-	    for i in clist:
+-		# remove any comments
+-		i = com.sub("",i)
+-		(j, k) = sep.split(i)
+-		if not r.match(j) and not s.match(j):
+-		    if not set(j, k):
+-			return False
+-	    return True
+-	else:
+-	    return False
++        clist = get_default_predefs()
++        sep = re.compile(r'[ \t]')
++        com = re.compile('[ \t]*#.*')
++        r = re.compile('^defaults.pcm.card')
++        s = re.compile('^defaults.ctl.card')
++        ## !defaults.pcm.card and defaults.ctl.card should lead
++        ## the user's custom asoundrc.
++        if set('!defaults.pcm.card', card) and \
++           set('defaults.ctl.card', card):
++            for i in clist:
++                # remove any comments
++                i = com.sub("",i)
++                (j, k) = sep.split(i)
++                if not r.match(j) and not s.match(j):
++                    if not set(j, k):
++                        return False
++            return True
++        else:
++            return False
+ 
+ def reset_default_card():
+-	clist = get_default_predefs()
+-	sep = re.compile(r'[ \t]')
+-	com = re.compile('[ \t]*#.*')
+-	for i in clist:
+-	    i = com.sub("",i)
+-	    (j, k) = sep.split(i)
+-	    if not delete(j):
+-		return False
+-	return True
++        clist = get_default_predefs()
++        sep = re.compile(r'[ \t]')
++        com = re.compile('[ \t]*#.*')
++        for i in clist:
++            i = com.sub("",i)
++            (j, k) = sep.split(i)
++            if not delete(j):
++                return False
++        return True
+ 
+ def delete_pcm_default():
+-	return delete('pcm.!default')
++        return delete('pcm.!default')
+ 
+ def delete_ctl_default():
+-	return delete('ctl.!default')
++        return delete('ctl.!default')
+ 
+ def set_pulseaudio():
+     return set('pcm.!default', '{ type pulse }') and \
+-	set('ctl.!default', '{ type pulse }')
++        set('ctl.!default', '{ type pulse }')
+ 
+ def unset_pulseaudio():
+     return delete_pcm_default() and \
+-	delete_ctl_default()
++        delete_ctl_default()
+ 
+ def set_oss(device):
+     endbrace = ' }'
+@@ -454,34 +454,34 @@
+     exit_code(set(sys.argv[2], sys.argv[3]))
+ 
+ if sys.argv[1] == 'list':
+-	exit_code(list())
++        exit_code(list())
+ 
+ if sys.argv[1] == 'list-all':
+-	exit_code(list_all())
++        exit_code(list_all())
+ 
+ if sys.argv[1] == 'set-default-card':
+     if len(sys.argv) != 3:
+-	print(needs_default_card)
+-	sys.exit(1)
++        print(needs_default_card)
++        sys.exit(1)
+     exit_code(set_default_card(sys.argv[2]))
+ 
+ if sys.argv[1] == 'reset-default-card':
+-	exit_code(reset_default_card())
++        exit_code(reset_default_card())
+ 
+ if sys.argv[1] == 'set-pulseaudio':
+-	exit_code(set_pulseaudio())
++        exit_code(set_pulseaudio())
+ 
+ if sys.argv[1] == 'unset-pulseaudio':
+-	exit_code(unset_pulseaudio())
++        exit_code(unset_pulseaudio())
+ 
+ if sys.argv[1] == 'set-oss':
+     if len(sys.argv) != 3:
+-	print(needs_oss_dev)
+-	sys.exit(1)
++        print(needs_oss_dev)
++        sys.exit(1)
+     exit_code(set_oss(sys.argv[2]))
+ 
+ if sys.argv[1] == 'unset-oss':
+-	exit_code(unset_oss())
++        exit_code(unset_oss())
+ 
+ print(usage)
+ sys.exit(1)
+diff -r e92452338b54 -r 6244f8fd2662 asoundconf_common.py
+--- a/asoundconf_common.py	Fri Aug 09 02:37:39 2019 +0200
++++ b/asoundconf_common.py	Fri Aug 09 02:38:27 2019 +0200
+@@ -11,68 +11,68 @@
+ 
+ 
+ class SndCardInfo(object):
+-	def __init__(self):
+-		self.card_num = -1
+-		self.id_ = ''
+-		self.name = ''
++        def __init__(self):
++                self.card_num = -1
++                self.id_ = ''
++                self.name = ''
+ 
+ 
+ class SndPcmInfo(object):
+-	def __init__(self):
+-		self.card_num = -1
+-		self.dev_num = -1
+-		self.id_ = ''
+-		self.name = ''
++        def __init__(self):
++                self.card_num = -1
++                self.dev_num = -1
++                self.id_ = ''
++                self.name = ''
+ 
+ 
+ def parse_cards():
+-	'''Get card info from /proc/asound/cards'''
++        '''Get card info from /proc/asound/cards'''
+ 
+-	cardspath = '/proc/asound/cards'
+-	if not os.path.exists(cardspath):
+-		raise IOError(cardspath + ' does not exist')
+-	procfile = open(cardspath, 'rb')
++        cardspath = '/proc/asound/cards'
++        if not os.path.exists(cardspath):
++                raise IOError(cardspath + ' does not exist')
++        procfile = open(cardspath, 'rb')
+ 
+-	cardline = re.compile('^\s*(\d+)\s*\[(\w+)\s*\].*-\s(.*)$') # capture card number, id and name
+-	card_lines = []
++        cardline = re.compile('^\s*(\d+)\s*\[(\w+)\s*\].*-\s(.*)$') # capture card number, id and name
++        card_lines = []
+ 
+-	lines = procfile.readlines()
+-	for l in lines:
+-		l = l.decode()
+-		if cardline.match(l):
+-			groups = cardline.match(l).groups()
+-			c = SndCardInfo()
+-			c.card_num = int(groups[0])
+-			c.id_  = groups[1].strip()
+-			c.name = groups[2].strip()
+-			card_lines.append(c)
++        lines = procfile.readlines()
++        for l in lines:
++                l = l.decode()
++                if cardline.match(l):
++                        groups = cardline.match(l).groups()
++                        c = SndCardInfo()
++                        c.card_num = int(groups[0])
++                        c.id_  = groups[1].strip()
++                        c.name = groups[2].strip()
++                        card_lines.append(c)
+ 
+-	return card_lines
++        return card_lines
+ 
+ 
+ def parse_devices():
+-	'''Get device numbers and names from /proc/asound/pcm'''
++        '''Get device numbers and names from /proc/asound/pcm'''
+ 
+-	devspath = '/proc/asound/pcm'
+-	if not os.path.exists(devspath):
+-		raise IOError(devspath + ' does not exist')
+-	procfile = open(devspath, 'rb')
++        devspath = '/proc/asound/pcm'
++        if not os.path.exists(devspath):
++                raise IOError(devspath + ' does not exist')
++        procfile = open(devspath, 'rb')
+ 
+-	devnum = re.compile('(\d+)-(\d+)')
+-	dev_lines = []
++        devnum = re.compile('(\d+)-(\d+)')
++        dev_lines = []
+ 
+-	lines = procfile.readlines()
+-	for l in lines:
+-		l = l.decode()
+-		fields = l.split(':')
+-		if len(fields) >= 3:
+-			if devnum.match(fields[0]):
+-				groups = devnum.match(fields[0]).groups()
+-				d = SndPcmInfo()
+-				d.card_num = int(groups[0])
+-				d.dev_num  = int(groups[1])
+-				d.id_  = fields[1].strip()
+-				d.name = fields[2].strip()
+-				dev_lines.append(d)
++        lines = procfile.readlines()
++        for l in lines:
++                l = l.decode()
++                fields = l.split(':')
++                if len(fields) >= 3:
++                        if devnum.match(fields[0]):
++                                groups = devnum.match(fields[0]).groups()
++                                d = SndPcmInfo()
++                                d.card_num = int(groups[0])
++                                d.dev_num  = int(groups[1])
++                                d.id_  = fields[1].strip()
++                                d.name = fields[2].strip()
++                                dev_lines.append(d)
+ 
+-	return dev_lines
++        return dev_lines

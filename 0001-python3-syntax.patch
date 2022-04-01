@@ -1,0 +1,193 @@
+# HG changeset patch
+# User Alad Wenter <alad@archlinux.org>
+# Date 1565311059 -7200
+#      Fri Aug 09 02:37:39 2019 +0200
+# Node ID e92452338b542c3626f81db079610753f723c9b9
+# Parent  bf25f416f615a43267abecab4c599e86f363438b
+python3: syntax changes
+
+diff -r bf25f416f615 -r e92452338b54 asoundconf
+--- a/asoundconf	Sun May 31 20:26:03 2015 +0200
++++ b/asoundconf	Fri Aug 09 02:37:39 2019 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python2
++#!/usr/bin/python3
+ 
+ # (C) 2005 Canonical Ltd.
+ # Author: Martin Pitt <martin.pitt@ubuntu.com>
+@@ -98,7 +98,7 @@
+         open(our_conf_file, 'w').write(our_conf_header)
+         return True
+     except IOError:
+-        print >> sys.stderr, 'Error: could not create', our_conf_file
++        print('Error: could not create', our_conf_file, file=sys.stderr)
+         return False
+ 
+ 
+@@ -116,7 +116,7 @@
+         open(asoundrc_file, 'w').write('%s\n%s\n<%s>\n\n' % (asoundrc_header, inclusion_comment, our_conf_file))
+         return True
+     except IOError:
+-        print >> sys.stderr, 'Error: could not create', asoundrc_file
++        print('Error: could not create', asoundrc_file, file=sys.stderr)
+         return False
+ 
+ 
+@@ -229,7 +229,7 @@
+         for line in open(our_conf_file):
+             m = setting_re.match(line)
+             if m:
+-                print m.group(1).strip()
++                print(m.group(1).strip())
+                 return True
+         return False
+     except IOError:
+@@ -245,9 +245,9 @@
+ 	except IOError:
+ 		return False
+ 	  
+-	print "Names of available sound cards:"
++        print("Names of available sound cards:")
+ 	for cardname in card_lines:
+-		print cardname.id_
++                print(cardname.id_)
+ 	return True
+   
+ 
+@@ -262,13 +262,13 @@
+ 	except IOError:
+ 		return False
+ 
+-	print "Available devices for all sound cards:"
++	print("Available devices for all sound cards:")
+ 	for dev in dev_lines:
+ 		card = next(c for c in card_lines if c.card_num == dev.card_num) # find card by number
+-		print "hw:%d,%d: %s : %s : %s : %s" % (
++		print('hw:{},{}: {} : {} : {} : {}'.format(
+ 			dev.card_num, dev.dev_num,
+ 			card.id_, card.name,
+-			dev.id_, dev.name)
++			dev.id_, dev.name))
+ 
+ 	return True
+ 
+@@ -294,7 +294,7 @@
+         return False
+ 
+     found = 0
+-    for i in xrange(len(lines)):
++    for i in range(len(lines)):
+         if setting_re.match(lines[i]):
+             del lines[i]
+             found = 1
+@@ -340,7 +340,7 @@
+ 
+     # if setting is already present, change it
+     found = 0
+-    for i in xrange(len(lines)):
++    for i in range(len(lines)):
+         if setting_re.match(lines[i]):
+             lines[i] = newsetting
+             found = 1
+@@ -426,10 +426,10 @@
+ ##
+ 
+ if os.geteuid() == 0:
+-    print superuser_warn
++    print(superuser_warn)
+ 
+ if len(sys.argv) < 2 or sys.argv[1] == '--help' or sys.argv[1] == '-h':
+-    print usage
++    print(usage)
+     sys.exit(0)
+ 
+ if sys.argv[1] == 'is-active':
+@@ -437,19 +437,19 @@
+ 
+ if sys.argv[1] == 'get':
+     if len(sys.argv) != 3:
+-        print usage
++        print(usage)
+         sys.exit(1)
+     exit_code(get(sys.argv[2]))
+ 
+ if sys.argv[1] == 'delete':
+     if len(sys.argv) != 3:
+-        print usage
++        print(usage)
+         sys.exit(1)
+     exit_code(delete(sys.argv[2]))
+ 
+ if sys.argv[1] == 'set':
+     if len(sys.argv) != 4:
+-        print usage
++        print(usage)
+         sys.exit(1)
+     exit_code(set(sys.argv[2], sys.argv[3]))
+ 
+@@ -461,7 +461,7 @@
+ 
+ if sys.argv[1] == 'set-default-card':
+     if len(sys.argv) != 3:
+-	print needs_default_card
++	print(needs_default_card)
+ 	sys.exit(1)
+     exit_code(set_default_card(sys.argv[2]))
+ 
+@@ -476,13 +476,13 @@
+ 
+ if sys.argv[1] == 'set-oss':
+     if len(sys.argv) != 3:
+-	print needs_oss_dev
++	print(needs_oss_dev)
+ 	sys.exit(1)
+     exit_code(set_oss(sys.argv[2]))
+ 
+ if sys.argv[1] == 'unset-oss':
+ 	exit_code(unset_oss())
+ 
+-print usage
++print(usage)
+ sys.exit(1)
+ 
+diff -r bf25f416f615 -r e92452338b54 asoundconf_common.py
+--- a/asoundconf_common.py	Sun May 31 20:26:03 2015 +0200
++++ b/asoundconf_common.py	Fri Aug 09 02:37:39 2019 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python2
++#!/usr/bin/python3
+ 
+ # License: GNU General Public License, version 2 or any later version
+ #
+@@ -38,6 +38,7 @@
+ 
+ 	lines = procfile.readlines()
+ 	for l in lines:
++		l = l.decode()
+ 		if cardline.match(l):
+ 			groups = cardline.match(l).groups()
+ 			c = SndCardInfo()
+@@ -62,6 +63,7 @@
+ 
+ 	lines = procfile.readlines()
+ 	for l in lines:
++		l = l.decode()
+ 		fields = l.split(':')
+ 		if len(fields) >= 3:
+ 			if devnum.match(fields[0]):
+@@ -73,4 +75,4 @@
+ 				d.name = fields[2].strip()
+ 				dev_lines.append(d)
+ 
+-	return dev_lines
+\ No newline at end of file
++	return dev_lines
+diff -r bf25f416f615 -r e92452338b54 setup.py
+--- a/setup.py	Sun May 31 20:26:03 2015 +0200
++++ b/setup.py	Fri Aug 09 02:37:39 2019 +0200
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python2
++#!/usr/bin/env python3
+ 
+ import os, sys
+ 
