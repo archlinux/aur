@@ -1,7 +1,7 @@
 pkgbase = sortpuz
 	pkgdesc = Unscramble a square matrix of numbered tiles to put them in order.
 	pkgver = 2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.kornelix.net/sortpuz/sortpuz.html
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,6 @@ pkgbase = sortpuz
 	depends = clutter-gtk
 	options = !emptydirs
 	source = http://www.kornelix.net/downloads/downloads/sortpuz-2.0.tar.gz
-	sha256sums = 5f749b0e85819d9b84972e307114b7d4fb06bfdad50a4ed2e5c19c93fd184203
+	sha256sums = 538fbf1155fbff67b886a67ad94fe24476b1a5a7eed1a703c18f8c1d56f303cd
 
 pkgname = sortpuz
