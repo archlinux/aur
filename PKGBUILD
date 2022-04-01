@@ -3,7 +3,7 @@
 pkgbase='python-apycula'
 pkgname=('python-apycula')
 _module='Apycula'
-pkgver='0.2'
+pkgver='0.3'
 pkgrel=1
 pkgdesc="Open Source tools for Gowin FPGAs"
 url="https://github.com/YosysHQ/apicula"
@@ -13,7 +13,7 @@ conflicts=('prjapicula')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('c6faff3430230a3869226ccd94239c238c7974801e7c9d539d482806181d84f0')
+sha256sums=('35c79cae7e5f416d22020ac4dcfec6653c7c1354e216a88332165048fac3bdd9')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
