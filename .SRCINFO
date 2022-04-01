@@ -1,17 +1,16 @@
 pkgbase = udev-block-notify
 	pkgdesc = Notify about udev block events
 	pkgver = 0.7.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eworm-de/udev-block-notify
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = systemd
-	makedepends = markdown
+	makedepends = discount
 	depends = libsystemd
 	depends = libnotify
 	depends = udev
-	depends = gnome-icon-theme
 	depends = gnome-icon-theme-extras
 	source = https://www.eworm.de/download/udev-block-notify/udev-block-notify-0.7.11.tar.xz
 	source = https://www.eworm.de/download/udev-block-notify/udev-block-notify-0.7.11.tar.xz.asc
@@ -20,4 +19,3 @@ pkgbase = udev-block-notify
 	sha256sums = SKIP
 
 pkgname = udev-block-notify
-

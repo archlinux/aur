@@ -2,12 +2,12 @@
 
 pkgname=udev-block-notify
 pkgver=0.7.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Notify about udev block events'
 arch=('i686' 'x86_64')
 url='https://github.com/eworm-de/udev-block-notify'
-depends=('libsystemd' 'libnotify' 'udev' 'gnome-icon-theme' 'gnome-icon-theme-extras')
-makedepends=('systemd' 'markdown')
+depends=('libsystemd' 'libnotify' 'udev' 'gnome-icon-theme-extras')
+makedepends=('systemd' 'discount')
 license=('GPL')
 validpgpkeys=('BD84DE71F493DF6814B0167254EDC91609BC9183')
 source=("https://www.eworm.de/download/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.asc})
