@@ -1,31 +1,36 @@
-# Maintainer: Felix Buehler <account@buehler.de>
+# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
+# Contributor: Felix Buehler <account@buehler.de>
 
-pkgname=("python-pykwalify")
-_pkgname=pykwalify
-pkgver=1.7.0
-pkgrel=1
+_name=pykwalify
+pkgname=python-pykwalify
+pkgver=1.8.0
+pkgrel=3
 pkgdesc='Python lib/cli for JSON/YAML schema validation'
 arch=('any')
-url='https://github.com/Grokzen/pykwalify'
+url=https://github.com/Grokzen/pykwalify
 license=('MIT')
-depends=('python' 'python-dateutil' 'python-docopt' 'python-yaml')
-makedepends=('python-dateutil' 'python-docopt' 'python-yaml')
+depends=('python-dateutil' 'python-docopt' 'python-ruamel-yaml')
+makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-testfixtures')
-source=("https://github.com/Grokzen/${_pkgname}/releases/download/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 provides=('pykwalify')
-sha256sums=('7e8b39c5a3a10bc176682b3bd9a7422c39ca247482df198b402e8015defcceb2')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha256sums=('796b2ad3ed4cb99b88308b533fb2f559c30fa6efb4fa9fda11347f483d245884')
+b2sums=('1593f5e3e15188929574ece60bf6818438258bf024d105ae26323a97a202ac69001a15ca6daaa430970af3659c49da745bcf1f77c23ac72bed2ddca14440d943')
 
 build() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-	python setup.py build
+  cd $_name-$pkgver
+  python setup.py build
 }
 
 check() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-	python setup.py test
+  cd $_name-$pkgver
+  pytest
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}-${pkgver}"
-	python setup.py -q install --root="$pkgdir" --optimize=1 --skip-build
+  cd $_name-$pkgver
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname LICENSE
 }
+
+# vim:set ts=2 sw=2 et:
