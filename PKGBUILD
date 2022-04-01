@@ -1,21 +1,23 @@
-# Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
-# Contributor: Eli Schwartz <eschwartz@archlinux.org>
+# Maintainer: Eli Schwartz <eschwartz@archlinux.org>
+# Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 
 _pkgname=privacybadger
 pkgname=firefox-extension-${_pkgname}
-pkgver=2018.1.22
+pkgver=2021.8.17
 pkgrel=1
-pkgdesc="Privacy Badger blocks spying ads and invisible trackers."
+pkgdesc="Block third party tracking in your browser"
 arch=('any')
 url="https://www.eff.org/privacybadger"
 license=('GPL3')
-depends=("firefox")
+groups=('firefox-addons')
 makedepends=("unzip")
 source=("${_pkgname}-${pkgver}.xpi::https://www.eff.org/files/privacy-badger-eff-${pkgver}.xpi"
         "${_pkgname}-${pkgver}.xpi.sig::https://www.eff.org/files/privacy-badger-eff-${pkgver}.xpi.sig")
 noextract=("${_pkgname}-${pkgver}.xpi")
-sha256sums=('97b21b5ca8866ba44c3bf958f36157b0ff8397986d9d4c2ce8a9a82fead04029'
+sha256sums=('6803803845f9001dcfcbacf4439d64ec49a59a9d3777921e8a16f5ffa985bf9d'
             'SKIP')
+b2sums=('3247e1b11353a9577a9e53850a44ce3d103730861a5e5807ec6450ce2837fec12b4869db7015dd7385ba44021039b8649a966d7dff3edc0297abc952d2c49c9a'
+        'SKIP')
 validpgpkeys=('88F8662241B0C16C16E3B5A7950FC3999D80F309') # Alexei <alexei@eff.org>
 
 prepare() {
@@ -25,6 +27,7 @@ prepare() {
 }
 
 package() {
+  depends=("firefox")
   cd "${srcdir}"
 
   if [[ -f ${_pkgname}-${pkgver}/install.rdf ]]; then
