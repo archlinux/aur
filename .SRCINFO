@@ -8,7 +8,6 @@ pkgbase = foobar2000-encoders-bin
 	license = GPL2
 	license = LGPL
 	makedepends = p7zip
-	makedepends = wget
 	optdepends = foobar2000>=1.1.14
 	provides = foobar2000-encoders
 	conflicts = foobar2000-encoders

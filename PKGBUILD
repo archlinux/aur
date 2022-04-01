@@ -8,7 +8,7 @@ pkgdesc="Encoder binaries for the Converter component"
 arch=('any')
 url="https://www.foobar2000.org/encoderpack"
 license=('BSD' 'GPL2' 'LGPL')
-makedepends=('p7zip' 'wget')
+makedepends=('p7zip')
 optdepends=('foobar2000>=1.1.14')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
