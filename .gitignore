@@ -1,0 +1,8 @@
+# Ignore everything by default
+*
+
+# Exceptions
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!template.json

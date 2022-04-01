@@ -1,0 +1,19 @@
+pkgbase = chromium-extension-adnauseam-av
+	pkgdesc = Chromium AdNauseam extension
+	pkgver = 3.12.2
+	pkgrel = 0
+	url = https://github.com/dhowe/AdNauseam
+	arch = any
+	license = GPL3
+	makedepends = chromium
+	makedepends = jq
+	makedepends = openssl
+	makedepends = sed
+	provides = chromium-extension-adnauseam
+	conflicts = chromium-extension-adnauseam
+	source = chromium-extension-adnauseam-av-3.12.2.zip::https://github.com/dhowe/AdNauseam/releases/download/v3.12.2/adnauseam-3.12.2.chromium.zip
+	source = template.json
+	sha256sums = 7cfcce026c6da1840c76ef01397bd2fbaca15695d8a9a0529fdc328f1332bf22
+	sha256sums = d3f71f6947174155f9ed31948227009f9a8a7e8c415cf1e56200a4399ad51c67
+
+pkgname = chromium-extension-adnauseam-av
