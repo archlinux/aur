@@ -1,6 +1,6 @@
 pkgbase = chevereto
 	pkgdesc = Chevereto is an image hosting script that allows you to create a beautiful and full-featured image hosting website on your own server.
-	pkgver = 1.1.4
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://chevereto.com/free
 	install = chevereto.install
@@ -10,11 +10,11 @@ pkgbase = chevereto
 	depends = php-gd
 	depends = mariadb
 	optdepends = php-apache: to use the Apache web server
+	optdepends = nginx: web server
 	options = emptydirs
-	source = https://github.com/Chevereto/Chevereto-Free/archive/1.1.4.tar.gz
+	source = https://github.com/Chevereto/Chevereto-Free/archive/1.6.2.tar.gz
 	source = chevereto.perm.sh
-	md5sums = 90515a682a2b5974dd3410650e019e76
-	md5sums = e7add39512c475948c6709a0a6a9c309
+	sha256sums = 4636e24511a0ae7abd27aadd57bc6b08735f9fb8ad6fba11c9142c9e9317f8dc
+	sha256sums = 0d8db5e6a5aa237c6efd8878782f49b44788ef464584cea8113528f6cff793cd
 
 pkgname = chevereto
-
