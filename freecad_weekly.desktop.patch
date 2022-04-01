@@ -1,11 +1,11 @@
---- squashfs-root/freecad_conda.desktop
-+++ squashfs-root/freecad_conda.desktop
+--- squashfs-root/freecad_weekly.desktop
++++ squashfs-root/freecad_weekly.desktop
 @@ -1,10 +1,10 @@
  [Desktop Entry]
  Version=1.0
- Name=FreeCAD Conda
+ Name=FreeCAD Weekly
 -Exec=AppRun
--Icon=freecad_conda
+-Icon=freecad_weekly
 +Exec=/usr/bin/freecad %F
 +Icon=freecad
  Type=Application
