@@ -1,4 +1,4 @@
-pkgbase = nicos-pyctl
+pkgbase = python-nicos-pyctl
 	pkgdesc = NICOS pyctl c module
 	pkgver = 1.2.0
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = nicos-pyctl
 	source = https://github.com/mlz-ictrl/nicos-pyctl/archive/refs/tags/v1.2.0.tar.gz
 	sha256sums = 93fc64901538ae1729fa0130e7227302d7645805848d8db37766f58ab57e4c2b
 
-pkgname = nicos-pyctl
+pkgname = python-nicos-pyctl
