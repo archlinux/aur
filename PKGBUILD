@@ -1,7 +1,7 @@
 # Maintainer: Martins Mozeiko <martins.mozeiko@gmail.com>
 
 pkgname=overseerr-git
-pkgver=r1013.190cbd65
+pkgver=r1361.341e3b8f
 pkgrel=1
 pkgdesc='Request management and media discovery tool for the Plex ecosystem'
 arch=('x86_64')
@@ -40,6 +40,8 @@ build()
     mkdir -p .next "${srcdir}/.overseer_git_cache"
     rm -rf .next/cache # in case previous builds have it as real folder
     ln -s "${srcdir}/.overseer_git_cache" .next/cache
+
+    patch -p0 < "../../no-prepare-husky.patch"
 
     yarn --frozen-lockfile
     yarn build
