@@ -2,11 +2,11 @@
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
 _pkgname=libretro-fbneo
 pkgname=$_pkgname-git
-pkgver=1.0.0.02.r1199.g8e9f73ab2
+pkgver=1.0.0.02.r1918.gfb4d2c261
 pkgrel=1
 epoch=1
 pkgdesc="FinalBurn Neo multi-arcade core"
-arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/libretro/FBNeo"
 license=('custom')
 groups=('libretro')
@@ -23,7 +23,9 @@ pkgver() {
 }
 
 prepare() {
-	make -C $_pkgname/src/burner/libretro generate-files
+	cd $_pkgname/src/burner/libretro
+	sed -i 's/-O[0123]//' Makefile
+	make generate-files
 }
 
 build() {
