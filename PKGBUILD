@@ -13,7 +13,7 @@ optdepends=('tesseract-data: Tesseract OCR data')
 makedepends=('cmake'
              'git'
              )
-source=('vobsub2srt::git+htts://github.com/ecdye/VobSub2SRT.git')
+source=('vobsub2srt::git+https://github.com/ecdye/VobSub2SRT.git')
 sha256sums=('SKIP')
 options=('debug')
 
