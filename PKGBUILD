@@ -1,7 +1,7 @@
 # Maintainer: Hao Long <aur@esd.cc>
 
 pkgname=naabu
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="A fast port scanner written in go with focus on reliability and simplicity"
 arch=("x86_64" "i686")
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("libpcap")
 makedepends=("go")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/projectdiscovery/naabu/archive/v${pkgver}.tar.gz")
-b2sums=('3253e63c75d4c4bf45fd3b9e3396668f1b4004a82a5814886b47908c721bf46f917f04a42d2f0214ea6d1f2e633dfa8e98f2c72f27a9168d32d30a654ac1143d')
+b2sums=('0243d0403f6576821de45c6ccecc0f409da27563e4475d29823113e9e84f30ac4de91a98d22b76ed7740d4b5c53047d5d3bcb6bc6bb83532e5efdd35cc44c7ab')
 
 build() {
   cd ${pkgname}-${pkgver}/v2/cmd/${pkgname}
