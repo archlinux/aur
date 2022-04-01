@@ -1,6 +1,6 @@
 # Maintainer: Pi-Yueh Chuang <pychuang@pm.me>
 pkgname=logseq-desktop-git
-pkgver=0.5.9.r80.4356f7202
+pkgver=0.6.5.r45.93b49b59d
 pkgrel=1
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
@@ -17,8 +17,8 @@ source=(
 )
 md5sums=(
     "SKIP"
-    "aad20b738ccd8965d7fd22cb5f34a6e1"
-    "3e651db0ef736d3a7cfffd6b58b3ff33"
+    "134c9eb06b6a4bacc3830ba05edf027c"
+    "2d78e06c0c7ec7a2215ff9f66db09cfc"
 )
 
 pkgver() {
