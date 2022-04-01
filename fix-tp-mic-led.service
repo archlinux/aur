@@ -1,0 +1,8 @@
+[Unit]
+Description=Fix ThinkPad T14s AMD Microphone Led
+
+[Service]
+ExecStart=/usr/bin/fix-tp-mic-led.sh
+
+[Install]
+WantedBy=multi-user.target
