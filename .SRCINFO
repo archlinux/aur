@@ -6,7 +6,7 @@ pkgbase = podsync-bin
 	arch = x86_64
 	license = MIT
 	provides = podsync
-	source = podsync-bin-2.4.2.tar.gz::https://github.com/mxpv/podsync/releases/download/v2.4.0/Podsync_2.4.0_Linux_x86_64.tar.gz
+	source = podsync-bin-2.4.2.tar.gz::https://github.com/mxpv/podsync/releases/download/v2.4.2/Podsync_2.4.2_Linux_x86_64.tar.gz
 	sha256sums = 78b8788d37532850d2424d11926e16a9db70d3929ecfc471ae06808823676203
 
 pkgname = podsync-bin
