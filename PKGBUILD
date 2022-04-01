@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=dsq
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=1
 pkgdesc="CLI tool for running SQL queries against JSON/CSV/Excel/Parquet and more"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 checkdepends=('python' 'jq')
 options=('!lto')
-_commit='f9bdde377c3c6a4567bb6af450495265a6906fa5'
+_commit='d9e627d1c0e09af6d7a93941de0ece617f82b4cb'
 source=("$pkgname::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 
