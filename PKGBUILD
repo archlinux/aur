@@ -2,7 +2,7 @@
 
 pkgname=python2-cffi
 pkgver=1.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Foreign Function Interface for Python calling C code"
 arch=('x86_64')
 url="https://cffi.readthedocs.org/"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python2-pycparser')
 makedepends=('python2-setuptools')
 source=("https://foss.heptapod.net/pypy/cffi/-/archive/v$pkgver/cffi-v$pkgver.tar.bz2")
-sha512sums=('c8a0a061905d133770a06d4c4fd0158a104a04a88f1c9367160e8c1e1d2153af903aaa8dcb3cc3e252f02c6d6a8e11240bf5b82c490281d6ce8f8e21d59afa93')
+sha256sums=('920f0d66a896c2d99f0adbb391f990a84091179542c205fa53ce5787aff87954')
 
 build() {
   cd "$srcdir"/cffi-v$pkgver
