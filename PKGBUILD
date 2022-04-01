@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=qt5-udev-git
-pkgver=r54.ba2d937
+pkgver=r80.dfe043f
 pkgrel=1
 pkgdesc="Qt-style wrapper for udev"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -14,7 +14,7 @@ replaces=('qt5-udev')
 provides=('qt5-udev')
 groups=('liri-git')
 
-_gitroot="git://github.com/lirios/qtudev.git"
+_gitroot="git+https://github.com/lirios/qtudev.git"
 _gitbranch=develop
 _gitname=qtudev
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
