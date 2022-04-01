@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=NEdit
+Comment=Text Editor
+Exec=nedit %f
+Categories=Utility;TextEditor;
+MimeType=text/plain;

@@ -1,0 +1,16 @@
+pkgbase = nedit
+	pkgdesc = A Unix text editor for programmers and general users
+	pkgver = 5.7
+	pkgrel = 4
+	epoch = 1
+	url = https://sourceforge.net/projects/nedit/
+	arch = x86_64
+	license = GPL
+	depends = openmotif
+	options = !makeflags
+	source = https://sourceforge.net/projects/nedit/files/nedit-source/nedit-5.7-src.tar.gz
+	source = nedit.desktop
+	sha1sums = 7cd264860ff75b4c64417aa09ca4ce03e4be2b4e
+	sha1sums = 990c9c5aa90436b41974bf9cd79af479cba78ad0
+
+pkgname = nedit
