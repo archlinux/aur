@@ -2,8 +2,9 @@
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgname=lib32-libcanberra
-pkgver=0.30+2+gc0620e4
-pkgrel=5
+pkgver=0.30+r2+gc0620e4
+pkgrel=1
+epoch=1
 pkgdesc="A small and lightweight implementation of the XDG Sound Theme Specification (32-bit)"
 url="http://0pointer.de/lennart/projects/libcanberra"
 arch=(x86_64)
@@ -11,9 +12,9 @@ license=(LGPL)
 depends=(lib32-libvorbis lib32-libltdl lib32-alsa-lib lib32-libpulse lib32-tdb
          libcanberra)
 makedepends=(gtk-doc lib32-gtk2 lib32-gtk3 git)
-provides=("lib32-libcanberra-pulse=$pkgver-$pkgrel" libcanberra{,-gtk,-gtk3}.so)
+provides=(lib32-libcanberra-pulse libcanberra{,-gtk,-gtk3}.so)
 replaces=("lib32-libcanberra-pulse<0.30+2+gc0620e4-4")
-options=(libtool)
+options=(libtool debug)
 _commit=c0620e432650e81062c1967cc669829dbd29b310  # master
 source=("git+http://git.0pointer.net/clone/libcanberra.git#commit=$_commit"
         libcanberra-multi-backend.patch)
@@ -22,7 +23,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd libcanberra
-  git describe --tags | sed 's/^v//;s/-/+/g'
+  git describe --tags | sed 's/^v//;s/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
@@ -30,7 +31,7 @@ prepare() {
 
   # https://bugs.archlinux.org/task/71341
   # https://bugs.freedesktop.org/show_bug.cgi?id=51662
-  patch -Np1 -i ../libcanberra-multi-backend.patch
+  git apply -3 ../libcanberra-multi-backend.patch
 
   ./autogen.sh
 }
