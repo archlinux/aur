@@ -2,7 +2,7 @@
 # Contributor: dianlujitao <dianlujitao at gmail dot com>
 
 pkgname=efm-langserver
-pkgver=0.0.22
+pkgver=0.0.40
 pkgrel=1
 pkgdesc='General purpose Language Server'
 arch=('x86_64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('go')
 optdepends=('ctags: for "go to definition" requests')
 source=("$url/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
-b2sums=('5f29002c3fd80a759102201fac9e973dfe134cab53c96ace10b8a6d06dd690141b0f2e867174a634492c3c5eb87c2f389393a13ced4cb87d1c3781b58b946740')
+b2sums=('879272b716c2e2a57b039d4b1a1cd3fc79bd7777e08fe0f87b2ae6036fc23686e11dbf4504162c930df57b6cdb2238fcdc54eb3000ddae21e70109b686a3cce5')
 
 build() {
   cd $pkgname-$pkgver
@@ -32,5 +32,6 @@ check() {
 package() {
   cd $pkgname-$pkgver
   install -Dt "$pkgdir"/usr/bin efm-langserver
-  install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname README.md # Only mention of license
 }
+
+# vim:set sw=2 et:
