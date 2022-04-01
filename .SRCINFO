@@ -1,0 +1,25 @@
+pkgbase = gimp-devel-stripped
+	pkgdesc = GNU Image Manipulation Program (development version, stripped from most unnecessary dependencies)
+	pkgver = 2.99.10
+	pkgrel = 1
+	url = https://www.gimp.org/
+	arch = x86_64
+	license = GPL
+	license = LGPL
+	makedepends = intltool
+	makedepends = iso-codes
+	makedepends = gobject-introspection
+	depends = gtk3
+	depends = babl
+	depends = gegl
+	depends = glib-networking
+	depends = mypaint-brushes1
+	depends = poppler-data
+	provides = gimp
+	conflicts = gimp
+	options = !emptydirs
+	options = !docs
+	source = gimp-2.99.10.tar.bz2::https://download.gimp.org/pub/gimp/v2.99/gimp-2.99.10.tar.bz2
+	sha256sums = 9e08f1c4a455e8dd4dd0579fe289419e38c835db38e3c0d40cd1137fb0112f29
+
+pkgname = gimp-devel-stripped
