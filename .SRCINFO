@@ -1,7 +1,7 @@
 pkgbase = vmware-horizon-client
 	pkgdesc = VMware Horizon Client connect to VMware Horizon virtual desktop
 	pkgver = 2111.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.vmware.com/go/viewclients
 	arch = x86_64
 	license = custom
@@ -21,7 +21,6 @@ pkgbase = vmware-horizon-client
 
 pkgname = vmware-horizon-client
 	install = vmware-horizon-client.install
-	depends = gnome-icon-theme
 	depends = gtk3
 	depends = libudev0-shim
 	depends = libxml2
