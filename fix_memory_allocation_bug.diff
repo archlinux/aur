@@ -1,0 +1,11 @@
+--- a/src/pipes.c.old 2002-12-02 23:45:15.000000000 +0100
++++ b/src/pipes.c     2002-12-02 23:45:24.000000000 +0100
+@@ -194,7 +194,7 @@
+      makeblock(&temp,Stdfilled);
+      tmemmove(temp.p,Stdout,Stdfilled);
+      readdyn(&temp,&Stdfilled,Stdfilled+backlen+1);
+-     Stdout=realloc(Stdout,&Stdfilled+1);
++     Stdout=realloc(Stdout,Stdfilled+1);
+      tmemmove(Stdout,temp.p,Stdfilled+1);
+      freeblock(&temp);
+      retStdout(Stdout,pwait&&pipw,!backblock);

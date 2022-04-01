@@ -1,0 +1,21 @@
+pkgbase = procmail
+	pkgdesc = Highly configurable auto mail processing.
+	pkgver = 3.22
+	pkgrel = 10
+	url = http://pm-doc.sourceforge.net/
+	arch = x86_64
+	license = GPL
+	license = custom:Artistic
+	makedepends = smtp-server
+	depends = glibc
+	depends = sh
+	source = http://ftp.osuosl.org/pub/blfs/conglomeration/procmail/procmail-3.22.tar.gz
+	source = procmail-3.22-getline.patch
+	source = formisc.c.patch
+	source = fix_memory_allocation_bug.diff
+	sha256sums = 087c75b34dd33d8b9df5afe9e42801c9395f4bf373a784d9bc97153b0062e117
+	sha256sums = aaa5ce562e5ef65f56a0225eedda3fcc7ab2938da6097ed4d9b11abf861929de
+	sha256sums = b7d983e5eba1d1869871a6ebb97404c511d0705673b0e59646b5c074c6ba34d8
+	sha256sums = 0f0e68b4eeac1dd7d9b167ff68d29cc8608e5247f4e59cf7098b65c9f1fb66e3
+
+pkgname = procmail
