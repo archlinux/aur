@@ -1,7 +1,7 @@
 # Maintainer : Antonio Orefice <xt7player@gmail.com>
 
 pkgname=xt7-player-mpv-git
-pkgver=20210721
+pkgver=20220401
 pkgrel=1
 pkgdesc="Aims to be an 'almost complete' but usable mpv gui"
 arch=('any')
@@ -46,7 +46,7 @@ build() {
 
   cd $srcdir/xt7-player-mpv
 
-  gbc3 -e -a -g -t -p -m
+  gbc3 -e -a -g -t  -f public-module -f public-control || gbc3 -e -a -g -t -p -m
   gba3
 }
 
