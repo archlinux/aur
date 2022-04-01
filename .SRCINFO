@@ -1,0 +1,16 @@
+pkgbase = mash-git
+	pkgdesc = A bash/zsh like shell, written in C.
+	pkgver = r89.0f37703
+	pkgrel = 1
+	url = https://gitlab.com/Magicrafter13/mash
+	arch = x86_64
+	arch = aarch64
+	arch = ppc
+	license = GPL3
+	makedepends = git
+	provides = mash-sh
+	conflicts = mash-sh
+	source = mash-git::git+https://gitlab.com/Magicrafter13/mash.git#branch=master
+	sha256sums = SKIP
+
+pkgname = mash-git
