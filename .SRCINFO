@@ -1,18 +1,20 @@
 pkgbase = python-flake8-annotations
 	pkgdesc = A flake8 extension that checks type annotations
-	pkgver = 2.7.0
-	pkgrel = 2
+	pkgver = 2.8.0
+	pkgrel = 1
 	url = https://github.com/sco1/flake8-annotations
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
 	checkdepends = python-pytest-check
 	checkdepends = python-pytest-cov
-	makedepends = python-setuptools
-	makedepends = python-dephell
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-poetry-core
+	makedepends = python-installer
 	depends = python
 	depends = flake8
-	source = python-flake8-annotations-2.7.0.tar.gz::https://github.com/sco1/flake8-annotations/archive/v2.7.0.tar.gz
-	b2sums = a48e9a7d6e7c44c52eeff7328c089bc5f15adde3bdd59394e8ad8313c53eced287858d8e3adcea8bf1147b9e37bf8a354ef8d92aa21cad0882d7d49d610a8ab4
+	source = python-flake8-annotations::git+https://github.com/sco1/flake8-annotations.git#commit=a969176181f4b911fc2881e143a27e293b43de73
+	b2sums = SKIP
 
 pkgname = python-flake8-annotations

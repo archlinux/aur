@@ -1,43 +1,57 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=python-flake8-annotations
-_pkgname="${pkgname#python-}"
-_name="${_pkgname/-/_}"
-pkgver=2.7.0
-pkgrel=2
+pkgver=2.8.0
+pkgrel=1
 pkgdesc="A flake8 extension that checks type annotations"
 arch=('any')
 url="https://github.com/sco1/flake8-annotations"
 license=('MIT')
 depends=('python' 'flake8')
-makedepends=('python-setuptools' 'python-dephell')
-checkdepends=('python-pytest' 'python-pytest-check' 'python-pytest-cov')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-b2sums=('a48e9a7d6e7c44c52eeff7328c089bc5f15adde3bdd59394e8ad8313c53eced287858d8e3adcea8bf1147b9e37bf8a354ef8d92aa21cad0882d7d49d610a8ab4')
+makedepends=(
+  'git'
+  'python-build'
+  'python-poetry-core'
+  'python-installer'
+)
+checkdepends=(
+  'python-pytest'
+  'python-pytest-check'
+  'python-pytest-cov'
+)
+_commit='a969176181f4b911fc2881e143a27e293b43de73'
+source=("$pkgname::git+$url.git#commit=$_commit")
+b2sums=('SKIP')
 
-prepare() {
-  cd "$_pkgname-$pkgver"
-  dephell deps convert --from pyproject.toml --to setup.py
+pkgver() {
+  cd "$pkgname"
+
+  git describe --tags | sed 's/^v//'
 }
 
 build() {
-  cd "$_pkgname-$pkgver"
-  python setup.py build
+  cd "$pkgname"
+
+  python -m build \
+    --wheel \
+    --no-isolation
 }
 
 check() {
-  cd "$_pkgname-$pkgver"
-  pytest --ignore testing/test_flake8_actually_runs_checker.py .
+  cd "$pkgname"
+
+  pytest \
+    --deselect testing/test_flake8_actually_runs_checker.py::test_checker_runs \
+    --deselect testing/test_opinionated_any.py::test_ANN401_fire_when_selected
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  cd "$pkgname"
+
+  python -m installer \
+    --destdir="$pkgdir" \
+    dist/*.whl
 
   # license
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
-
-  # delete tests folder
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  rm -rf "$pkgdir/$site_packages/testing"
 }
