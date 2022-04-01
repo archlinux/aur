@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-wallpapers-git
-pkgver=v0.10.0.r34.g9f34bae
+pkgver=v0.10.0.r42.g0087dca
 pkgrel=1
 pkgdesc="Wallpapers for Liri OS"
 arch=('any')
@@ -13,7 +13,7 @@ replaces=('hawaii-wallpapers-git' 'liri-wallpapers')
 provides=('liri-wallpapers')
 groups=('liri-git')
 
-_gitroot="git://github.com/lirios/wallpapers.git"
+_gitroot="git+https://github.com/lirios/wallpapers.git"
 _gitbranch=develop
 _gitname=wallpapers
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
