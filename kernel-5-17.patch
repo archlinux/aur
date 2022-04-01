@@ -1,0 +1,28 @@
+From 858adcb3fda0c24ea0b738dcedcc531191889415 Mon Sep 17 00:00:00 2001
+From: Alexander Sulfrian <asulfrian@zedat.fu-berlin.de>
+Date: Fri, 1 Apr 2022 11:46:18 +0200
+Subject: [PATCH] Fix compilation on 5.17
+
+---
+ kernel/generic_raw_uart.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/kernel/generic_raw_uart.c b/kernel/generic_raw_uart.c
+index f61b338..b730bf4 100644
+--- a/kernel/generic_raw_uart.c
++++ b/kernel/generic_raw_uart.c
+@@ -773,7 +773,11 @@ static int generic_raw_uart_proc_show(struct seq_file *m, void *v)
+ 
+ static int generic_raw_uart_proc_open(struct inode *inode, struct file *file)
+ {
++#ifdef PDE_DATA
+   struct generic_raw_uart_instance *instance = PDE_DATA(inode);
++#else
++  struct generic_raw_uart_instance *instance = pde_data(inode);
++#endif
+   return single_open(file, generic_raw_uart_proc_show, instance);
+ }
+ #endif /*PROC_DEBUG*/
+-- 
+2.35.1
+
