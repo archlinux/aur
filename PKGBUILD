@@ -1,6 +1,6 @@
 # Maintainer: Kamack38 <kamack38.biznes@gmail.com>
 pkgname=solve3-cli
-pkgver=1.7.3
+pkgver=1.7.4
 pkgrel=1
 pkgdesc="CLI for solving problems at https://solve.edu.pl/"
 arch=('any')
@@ -10,7 +10,7 @@ depends=('nodejs' 'jre-openjdk-headless')
 makedepends=('npm' 'jq')
 source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('5f829a0e5f63ce3436efdf5614826c47a47b3c9dc8ad9a61a852858038e7e8be')
+sha256sums=('b9cbf342e9634c07a79299874cac8d649352e944d9a9b3e2f51c67eecf2f6317')
 
 package() {
 	npm install -g --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
