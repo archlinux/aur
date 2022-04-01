@@ -1,0 +1,15 @@
+pkgbase = python-bcj-cffi
+	pkgdesc = BCJ(Branch-Call-Jump) filter for python
+	pkgver = 0.5.1
+	pkgrel = 3
+	url = https://github.com/miurahr/bcj-cffi
+	arch = x86_64
+	license = LGPL
+	checkdepends = python-pytest
+	makedepends = python-setuptools-scm
+	depends = python-cffi
+	source = https://files.pythonhosted.org/packages/source/b/bcj-cffi/bcj-cffi-0.5.1.tar.gz
+	sha256sums = 2b4a5d1252e72bea5a5eb1e51650435825299b0e87c25ddfd21a1623514fd0cc
+	b2sums = f31161555597c477b052ad42ac42642b97788c3eb6a22cc48872429456a8665c9b810910a2a1f84c99a40135c17f7bbe0829115643f7d495d2d52cfc6c7a50b5
+
+pkgname = python-bcj-cffi
