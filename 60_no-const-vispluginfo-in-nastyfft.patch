@@ -1,0 +1,18 @@
+The static VisPluginInfo in nastyfft was declared as const, but libvisual write
+to its refcount when it visual_object_unref()s it (nasty!).  This is broken at
+various levels: libvisual shouldn't be writing to this static plugin which is
+allocated by a dlopen()ed plugin, and it should also honor the "const
+VisPluginInfo" API...  Anyway, nastyfft was the only occurrence and this fixes
+the crash for now; LP: #287448.
+
+--- libvisual-plugins-0.4.0.dfsg.1.orig/plugins/actor/nastyfft/actor_nastyfft.c
++++ libvisual-plugins-0.4.0.dfsg.1/plugins/actor/nastyfft/actor_nastyfft.c
+@@ -80,7 +80,7 @@
+ 		.vidoptions.depth = VISUAL_VIDEO_DEPTH_GL
+ 	}};
+ 
+-	static const VisPluginInfo info[] = {{
++	static VisPluginInfo info[] = {{
+ 		.type = VISUAL_PLUGIN_TYPE_ACTOR,
+ 
+ 		.plugname = N_("nastyfft"),

@@ -1,0 +1,58 @@
+diff -Nur libvisual-plugins-0.4.0/plugins/actor/JESS/renderer.c libvisual-plugins-0.4.0.new/plugins/actor/JESS/renderer.c
+--- libvisual-plugins-0.4.0/plugins/actor/JESS/renderer.c	2006-02-06 05:47:26.000000000 +1100
++++ libvisual-plugins-0.4.0.new/plugins/actor/JESS/renderer.c	2007-07-04 18:12:58.000000000 +1000
+@@ -282,7 +282,7 @@
+ 
+ void render_deformation(JessPrivate *priv, int defmode)
+ {
+-	uint32_t bmax;
++	intptr_t bmax;
+ 	uint32_t *tab1 = NULL, *tab2, *tab3, *tab4, i;
+ 	uint8_t *pix = priv->pixel, *buf = priv->buffer, *aux;
+ 
+@@ -294,7 +294,7 @@
+ 		tab2 = priv->table2;
+ 		tab3 = priv->table3;
+ 		tab4 = priv->table4;
+-		bmax = priv->resx * priv->resy + (uint32_t) priv->pixel;
++		bmax = priv->resx * priv->resy + (intptr_t) priv->pixel;
+ 
+ 		switch(defmode)
+ 		{
+@@ -352,7 +352,7 @@
+ 		}
+ 		for (i = 0; i < priv->resy * priv->resx; i++)
+ 		{
+-			aux  =  (uint8_t *) ((*(tab1) << 2 ) + (uint32_t) priv->buffer);
++			aux  =  (uint8_t *) ((*(tab1) << 2 ) + (intptr_t) priv->buffer);
+ 			*(pix++) = *(aux++) ;
+ 			*(pix++) = *(aux++);  
+ 			*(pix++) = *(aux);  
+@@ -373,7 +373,8 @@
+ 	/* j'ai mis pixel par defaut... */
+ 
+ 	uint8_t *pix = priv->pixel;
+-	uint32_t bmax,pitch_4;
++	intptr_t bmax;
++	uint32_t pitch_4;
+ 	
+ 	pix = priv->pixel;
+ 	if (priv->pixel == NULL)
+@@ -387,7 +388,7 @@
+ 	if (priv->video == 8)
+ 	{
+ 		if (visual_cpu_get_mmx ()) {
+-			bmax = priv->resx * (priv->resy-1) + (uint32_t) priv->pixel;
++			bmax = priv->resx * (priv->resy-1) + (intptr_t) priv->pixel;
+ #if defined(VISUAL_ARCH_X86) || defined(VISUAL_ARCH_X86_64)
+ 			__asm __volatile
+ 				("\n\t pxor %%mm6, %%mm6"
+@@ -423,7 +424,7 @@
+ 	else
+ 	{
+ 		pitch_4 = priv->pitch+4;
+-		bmax = priv->pitch*(priv->resy-1) + (uint32_t) priv->pixel;
++		bmax = priv->pitch*(priv->resy-1) + (intptr_t) priv->pixel;
+ 
+ 		if (visual_cpu_get_mmx ()) {
+ #if defined(VISUAL_ARCH_X86) || defined(VISUAL_ARCH_X86_64)

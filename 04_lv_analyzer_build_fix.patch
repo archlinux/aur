@@ -1,0 +1,12 @@
+diff -Nur libvisual-plugins-0.4.0/configure.ac libvisual-plugins-0.4.0.new/configure.ac
+--- libvisual-plugins-0.4.0/configure.ac	2006-03-17 03:50:41.000000000 +1100
++++ libvisual-plugins-0.4.0.new/configure.ac	2007-07-04 18:22:38.000000000 +1000
+@@ -361,7 +361,7 @@
+   [ENABLE_ANALYZER=$enableval],
+   [ENABLE_ANALYZER=yes])
+ 
+-if test "$ENABLE_ANALYZER" = xyes; then
++if test "$ENABLE_ANALYZER" = "yes"; then
+   build_actor_plugins="$build_actor_plugins lv_analyzer"
+ fi
+ 
