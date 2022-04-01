@@ -9,7 +9,7 @@ license=('MIT')
 arch=('any')
 md5sums=('SKIP')
 makedepends=(git)
-depends=(python)
+depends=(bash lolcat figlet)
 provides=(gasconheart)
 source=('gasconheart.sh')
 
