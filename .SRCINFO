@@ -1,20 +1,21 @@
 pkgbase = prometheus-apcupsd-exporter
 	pkgdesc = Prometheus exporter for apcupsd metrics
-	pkgver = 0.2.0
-	pkgrel = 5
+	pkgver = 0.3.0
+	pkgrel = 1
 	url = https://github.com/mdlayher/apcupsd_exporter
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = go
 	depends = glibc
 	optdepends = apcupsd: for monitoring a local APC UPS
 	options = !lto
 	backup = etc/conf.d/prometheus-apcupsd-exporter
-	source = prometheus-apcupsd-exporter-0.2.0.tar.gz::https://github.com/mdlayher/apcupsd_exporter/archive/v0.2.0.tar.gz
+	source = prometheus-apcupsd-exporter::git+https://github.com/mdlayher/apcupsd_exporter.git#commit=3f531e59fc85ebd86ce9806a1336818c5db18bcb
 	source = prometheus-apcupsd-exporter.conf
-	source = prometheus-apcupsd-exporter.service
-	source = prometheus-apcupsd-exporter.sysusers
-	b2sums = 1088e2ea94566b68ed021216d62d405e802ffd575c6ea26f9ebd6d2910091876d80a19e5ffdd58cb3c3cd0e74710c1831606bdc2040b3390e0a537c72e52c2a8
+	source = systemd.service
+	source = sysusers.conf
+	b2sums = SKIP
 	b2sums = 2159bae9adb5a5af4bdec96a593a1988ebb80c3716284fe9c7d765f8ca10992c5db877d395ced0a5bace3e075145ebc2a50f02eb0f11bda7ba145e0fa98c8e43
 	b2sums = b5b50dc0b5d707c338268f9b0265deeffa4e1ec87cb12b8520248205e809c569e84dedd69dd4118a0fb97bff6d7c213275dce3bc911ddfc2243769ebf7bdaf0e
 	b2sums = 1a9e982c7bed03f2f29e45d40374044860aa6e05f877a66ce8900c6a088eddd2f30dc8335be3690edb410ab780ef655d402a528214e0b676da684536f9ae6687
