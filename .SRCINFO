@@ -1,11 +1,12 @@
 pkgbase = dagger-bin
 	pkgdesc = A portable devkit for CI/CD pipelines
 	pkgver = 0.2.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/dagger/dagger
 	arch = x86_64
 	arch = aarch64
 	license = Apache License 2.0
+	conflicts = dagger
 	source_x86_64 = https://github.com/dagger/dagger/releases/download/v0.2.4/dagger_v0.2.4_linux_amd64.tar.gz
 	sha512sums_x86_64 = 38d18b69459190e0b14d6cebd24c35b376b456a5d861c5c1b8bde5deb0dc90a6f4ea31c2b5d7344b335657b42c358bdd53c044e98132a0f27b73992edd951b7b
 	source_aarch64 = https://github.com/dagger/dagger/releases/download/v0.2.4/dagger_v0.2.4_linux_arm64.tar.gz
