@@ -4,7 +4,7 @@
 1. Create a user and a database.
 
 ### PHP
-1. `sudo nano /etc/php/php.ini` and comment out the following.
+1. `sudo nano /etc/php/php.ini` and uncomment the following.
 MySQL support:
 ```
 ;extension=mysqli
