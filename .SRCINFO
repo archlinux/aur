@@ -1,0 +1,15 @@
+pkgbase = chemtool
+	pkgdesc = A small program for drawing chemical structures
+	pkgver = 1.6.14
+	pkgrel = 4
+	url = http://ruby.chemie.uni-freiburg.de/~martin/chemtool/chemtool.html
+	arch = x86_64
+	license = GPL2
+	depends = gtk2
+	depends = desktop-file-utils
+	source = http://ruby.chemie.uni-freiburg.de/~martin/chemtool/chemtool-1.6.14.tar.gz
+	source = chemtool.desktop
+	md5sums = 3a97680f0abe1327af1f0072551a68e2
+	md5sums = 8cbb6f7021bd5aaa6f6a31fc4d95a06e
+
+pkgname = chemtool
