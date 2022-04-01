@@ -1,5 +1,5 @@
 pkgbase = obs-rendering-lag
-	pkgdesc = This plugin is intentionally add lags during video rendering
+	pkgdesc = This plugin intentionally adds lags during video rendering
 	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://obsproject.com/forum/resources/rendering-lag-plugin.1365/
