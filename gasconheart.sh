@@ -81,7 +81,7 @@ echophrase() {
   if ! command -v lolcat &> /dev/null
   then
     echo "$phrase"
-    sleep 1
+    sleep 3
   else
     printf '%s\n' "$phrase" | (lolcat -a -d 60 || exit 0)
   fi
