@@ -1,0 +1,12 @@
+pkgbase = algotex-git
+	pkgdesc = AlgoTeX - A LaTeX-Template based on tuda-ci used for FoP and AuD
+	pkgver = r63.8efda68
+	pkgrel = 1
+	url = https://github.com/TUDalgo/AlgoTeX
+	arch = any
+	license = custom
+	depends = python-pip
+	source = algotex-git::git+https://github.com/TUDalgo/AlgoTeX.git
+	sha256sums = SKIP
+
+pkgname = algotex-git
