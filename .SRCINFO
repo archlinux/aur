@@ -1,0 +1,26 @@
+pkgbase = perl-sdl
+	pkgdesc = Simple DirectMedia Layer for Perl
+	pkgver = 2.548
+	pkgrel = 6
+	url = http://sdl.perl.org
+	arch = x86_64
+	license = LGPL
+	makedepends = perl-module-build>=0.40
+	depends = perl-alien-sdl
+	depends = perl-tie-simple
+	depends = sdl_net
+	depends = sdl_ttf
+	depends = sdl_image
+	depends = sdl_mixer
+	depends = sdl_gfx
+	depends = sdl_pango
+	depends = smpeg
+	provides = sdl_perl=2.548
+	conflicts = sdl_perl
+	replaces = sdl_perl
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/F/FR/FROGGS/SDL-2.548.tar.gz
+	md5sums = 35faca310f0e246d5cea93a062f054d9
+	sha512sums = bafc49dddb7e592861f822920915c73bf0c5eea3a6c567623b48a2332c7644caf1451e457545e6666adea5e314b23bcd85a3f3a52c770abfd498c0e4c0feae85
+
+pkgname = perl-sdl
