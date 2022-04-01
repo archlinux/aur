@@ -5,7 +5,7 @@ pkgdesc="Meikade is a poetry application"
 pkgname=meikade
 pkgver=4.2.2
 pkgrel=1
-depends=('qt5-base' 'qt5-location' 'qt5-multimedia')
+depends=('git' 'qt5-base' 'qt5-location' 'qt5-multimedia')
 source=(
 	'meikade.desktop'
 	"https://github.com/Aseman-Land/Meikade/releases/download/${pkgver}/Meikade-Linux-${pkgver}.xz"
