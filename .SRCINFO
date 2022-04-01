@@ -1,6 +1,6 @@
 pkgbase = prometheus-ipmi-exporter
 	pkgdesc = Prometheus exporter for IPMI metrics
-	pkgver = 1.5.1
+	pkgver = 1.5.2
 	pkgrel = 1
 	url = https://github.com/prometheus-community/ipmi_exporter
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = prometheus-ipmi-exporter
 	depends = glibc
 	depends = freeipmi
 	options = !lto
-	source = prometheus-ipmi-exporter::git+https://github.com/prometheus-community/ipmi_exporter.git#commit=a3d8f40c189245e0ee63aaebc8f90c137b6a5e55
+	source = prometheus-ipmi-exporter::git+https://github.com/prometheus-community/ipmi_exporter.git#commit=8ba1509883cd549fc0e56ef6710f3c36e0a601db
 	source = systemd.service
 	source = sysusers.conf
 	sha512sums = SKIP
