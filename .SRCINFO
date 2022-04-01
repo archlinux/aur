@@ -1,0 +1,20 @@
+pkgbase = antlr2
+	pkgdesc = Language recognition tool providing a framework to build grammatical parsers
+	pkgver = 2.7.7
+	pkgrel = 12
+	url = https://www.antlr2.org/
+	arch = x86_64
+	license = custom
+	makedepends = java-environment
+	depends = java-runtime
+	depends = sh
+	provides = antlr=2.7.7
+	options = staticlibs
+	source = https://www.antlr2.org/download/antlr-2.7.7.tar.gz
+	source = runantlr2.sh
+	source = gcc4.4.patch
+	md5sums = 01cc9a2a454dd33dcd8c856ec89af090
+	md5sums = e4aa827cf78f97c4e5fae086831192d6
+	md5sums = 8574c93f40e6477e83c29f9b07de49da
+
+pkgname = antlr2
