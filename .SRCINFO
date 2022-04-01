@@ -1,0 +1,16 @@
+pkgbase = perl-time-moment
+	pkgdesc = Encoding and decoding of UTF-8 encoding form
+	pkgver = 0.44
+	pkgrel = 1
+	url = https://metacpan.org/release/Time-Moment
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	checkdepends = perl-test-number-delta
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/C/CH/CHANSEN/Time-Moment-0.44.tar.gz
+	sha512sums = 637e33f7e6874185ddaa592e309737c0871e2651efacce03213a168002908a81f18be913e1df2709d9246f2a1dcb8eb1ed445365974542b0c6bcb5082867153e
+
+pkgname = perl-time-moment
