@@ -1,0 +1,13 @@
+pkgbase = habak
+	pkgdesc = A background changing app
+	pkgver = 0.2.5
+	pkgrel = 7
+	url = https://sourceforge.net/projects/fvwm-crystal/
+	arch = x86_64
+	license = GPL2
+	depends = imlib2
+	options = !makeflags
+	source = http://archive.debian.org/debian/pool/main/h/habak/habak_0.2.5.orig.tar.gz
+	md5sums = 6c1410a16a57d3483c41fad6ed2f6f49
+
+pkgname = habak
