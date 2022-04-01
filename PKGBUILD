@@ -4,7 +4,7 @@ _pkgname=xfce4-settings
 _pkgver=4.16.2
 pkgname=${_pkgname}-standalone
 pkgver=${_pkgver}+0+g2076199f
-pkgrel=2
+pkgrel=3
 pkgdesc="Settings manager of the Xfce desktop"
 arch=('x86_64')
 url="https://docs.xfce.org/xfce/xfce4-settings/start"
@@ -36,7 +36,7 @@ prepare() {
   patch -Np1 -i "$srcdir/default-xsettings-xml.patch"
 
   # Do not build xfce4-settings-manager to remove extra package dependencies
-  patch -Np1 -i "$srcdir/standalone.patch"
+  patch -Np1 -i "$srcdir/remove-settings-manager.patch"
   rm -vrf "$srcdir/$pkgname-$pkgver/xfce4-settings-manager"
 }
 
