@@ -4,7 +4,7 @@ _name=ctbench
 _author=jpenuchot
 
 pkgname=${_name}-git
-pkgver=v0.0.0.r0.g58162ff
+pkgver=v0.0.0.r6.ge2b8901
 pkgrel=1
 pkgdesc="Compile-time benchmark and analysis for Clang"
 arch=('any')
@@ -26,9 +26,8 @@ pkgver() {
 
 prepare() {
   cmake -B build -S ${pkgname} \
-        -DCMAKE_BUILD_TYPE='Release' \
-        -DCMAKE_INSTALL_PREFIX='/usr' \
-        -DCMAKE_CXX_COMPILER='clang++' \
+        -DCMAKE_BUILD_TYPE:STRING='Release' \
+        -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -Wno-dev
 }
 
