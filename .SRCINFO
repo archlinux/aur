@@ -1,0 +1,27 @@
+pkgbase = udevil
+	pkgdesc = Mount and unmount without password
+	pkgver = 0.4.4
+	pkgrel = 4
+	url = https://ignorantguru.github.com/udevil/
+	install = udevil.install
+	arch = x86_64
+	license = GPL3
+	makedepends = intltool
+	makedepends = gettext
+	makedepends = git
+	depends = udev
+	depends = glib2
+	optdepends = davfs2: mount WebDAV shares
+	optdepends = nfs-utils: mount nfs shares
+	optdepends = sshfs: mount sftp shares
+	optdepends = curlftpfs: mount ftp shares
+	optdepends = cifs-utils: mount samba shares
+	optdepends = zenity: devmon popups
+	optdepends = udisks2: devmon mount without suid udevil
+	provides = devmon
+	backup = etc/udevil/udevil.conf
+	backup = etc/conf.d/devmon
+	source = udevil-0.4.4::git+https://github.com/IgnorantGuru/udevil.git#commit=77a61806fadbf19f02072df1aa67191fc375c35d
+	sha256sums = SKIP
+
+pkgname = udevil
