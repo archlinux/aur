@@ -1,15 +1,16 @@
-# Maintainer: Eric Bélanger <eric@archlinux.org>
+# Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
+# Contributor: Eric Bélanger <eric@archlinux.org>
 
 pkgname=foobillard++
 pkgver=3.42beta
-pkgrel=6
+pkgrel=7
 pkgdesc="An OpenGL billiard game"
 arch=('x86_64')
-url="http://foobillardplus.sourceforge.net/"
+url="https://foobillardplus.sourceforge.net/"
 license=('GPL2')
 depends=('freetype2' 'libpng' 'glu' 'sdl_net' 'sdl_mixer')
 replaces=('foobillard')
-source=(http://downloads.sourceforge.net/foobillardplus/foobillardplus-${pkgver}.tar.gz)
+source=(https://downloads.sourceforge.net/foobillardplus/foobillardplus-${pkgver}.tar.gz)
 sha1sums=('51507efab0f595cfff26149003faf669c0a42f32')
 
 prepare() {

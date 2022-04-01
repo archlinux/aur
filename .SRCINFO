@@ -1,8 +1,8 @@
 pkgbase = foobillard++
 	pkgdesc = An OpenGL billiard game
 	pkgver = 3.42beta
-	pkgrel = 6
-	url = http://foobillardplus.sourceforge.net/
+	pkgrel = 7
+	url = https://foobillardplus.sourceforge.net/
 	arch = x86_64
 	license = GPL2
 	depends = freetype2
@@ -11,8 +11,7 @@ pkgbase = foobillard++
 	depends = sdl_net
 	depends = sdl_mixer
 	replaces = foobillard
-	source = http://downloads.sourceforge.net/foobillardplus/foobillardplus-3.42beta.tar.gz
+	source = https://downloads.sourceforge.net/foobillardplus/foobillardplus-3.42beta.tar.gz
 	sha1sums = 51507efab0f595cfff26149003faf669c0a42f32
 
 pkgname = foobillard++
-
