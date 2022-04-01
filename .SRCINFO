@@ -1,9 +1,8 @@
 pkgbase = conflict
 	pkgdesc = filename conflict listing
 	pkgver = 20150705
-	pkgrel = 2
-	url = http://invisible-island.net/conflict/conflict.html
-	arch = i686
+	pkgrel = 5
+	url = https://invisible-island.net/conflict/conflict.html
 	arch = x86_64
 	license = MIT
 	depends = glibc
@@ -14,4 +13,3 @@ pkgbase = conflict
 	sha256sums = SKIP
 
 pkgname = conflict
-
