@@ -1,0 +1,15 @@
+pkgbase = rusty-warrior
+	pkgdesc = A simple notification system for Taskwarrior made in Rust
+	pkgver = v1.1.0
+	pkgrel = 1
+	url = https://git.sr.ht/~chess7th/rusty-warrior
+	arch = any
+	license = GPL3
+	makedepends = cargo
+	depends = task
+	depends = dunst
+	provides = rusty-warrior
+	source = rusty-warrior-v1.1.0.tar.gz::https://git.sr.ht/~chess7th/rusty-warrior/archive/v1.1.0.tar.gz
+	sha256sums = 3e63e9fe5781dafe5eb4564e4e4d516737e931e1dfd78c2aa40bc5a5573e8390
+
+pkgname = rusty-warrior
