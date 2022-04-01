@@ -1,6 +1,6 @@
 pkgbase = libliri-git
 	pkgdesc = Utilities for Liri Quick applications
-	pkgver = r134.ca2f0d1
+	pkgver = r178.f332dbb
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
@@ -17,8 +17,7 @@ pkgbase = libliri-git
 	replaces = libliri
 	options = debug
 	options = !strip
-	source = libliri::git://github.com/lirios/libliri.git#branch=develop
+	source = libliri::git+https://github.com/lirios/libliri.git#branch=develop
 	md5sums = SKIP
 
 pkgname = libliri-git
-

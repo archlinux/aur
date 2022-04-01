@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=libliri-git
-pkgver=r134.ca2f0d1
+pkgver=r178.f332dbb
 pkgrel=1
 pkgdesc="Utilities for Liri Quick applications"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ replaces=('libliri')
 provides=('libliri')
 groups=('liri-git')
 
-_gitroot="git://github.com/lirios/libliri.git"
+_gitroot="git+https://github.com/lirios/libliri.git"
 _gitbranch=develop
 _gitname=libliri
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
