@@ -2,7 +2,7 @@
 # 
 pkgname=riscv-gnu-toolchain-bin
 # To maintain, simply change the nightly date: https://github.com/riscv-collab/riscv-gnu-toolchain/releases
-pkgver=2021.09.21
+pkgver=2022.03.25
 _target=11.1.0
 _pkg_prefix=ubuntu-20.04-nightly
 pkgrel=2
