@@ -1,0 +1,15 @@
+pkgbase = perl-unicode-utf8
+	pkgdesc = Encoding and decoding of UTF-8 encoding form
+	pkgver = 0.62
+	pkgrel = 1
+	url = https://metacpan.org/release/Unicode-UTF8
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/C/CH/CHANSEN/Unicode-UTF8-0.62.tar.gz
+	sha512sums = 056026ac2ee4c101de5ea6017db59f875121dba8fd23ab5c2ae525effb8cf864e8a1c24588bb2a027792e27568742fc75bd5765694027b110afef867a4b982e0
+
+pkgname = perl-unicode-utf8
