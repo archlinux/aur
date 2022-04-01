@@ -3,10 +3,13 @@
 
 pkgname=etebase-server
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A self-hostable Etebase (EteSync 2.0) server"
 arch=(any)
-depends=('python-django'
+depends=(
+         'python-aioredis'
+         'python-aiofiles'
+         'python-django'
          'python-django-rest-framework'
          'python-drf-nested-routers'
          'python-django-cors-headers'

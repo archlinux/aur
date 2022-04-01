@@ -1,11 +1,13 @@
 pkgbase = etebase-server
 	pkgdesc = A self-hostable Etebase (EteSync 2.0) server
 	pkgver = 0.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/etesync/server
 	install = etebase-server.install
 	arch = any
 	license = AGPLv3
+	depends = python-aioredis
+	depends = python-aiofiles
 	depends = python-django
 	depends = python-django-rest-framework
 	depends = python-drf-nested-routers
