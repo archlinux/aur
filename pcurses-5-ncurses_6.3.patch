@@ -1,0 +1,35 @@
+diff --git i/src/cursesframe.cpp w/src/cursesframe.cpp
+index 70c9102..95fc31d 100644
+--- i/src/cursesframe.cpp
++++ w/src/cursesframe.cpp
+@@ -93,10 +93,10 @@ void CursesFrame::refresh()
+ 
+         int headercol = focused ? C_INV : C_DEF;
+         wattron(w_border, A_BOLD | headercol);
+-        mvwprintw(w_border, 0, 1, header.c_str());
++        mvwprintw(w_border, 0, 1, "%s", header.c_str());
+         wattroff(w_border, A_BOLD | headercol);
+ 
+-        mvwprintw(w_border, w_border->_maxy, 1, footer.c_str());
++        mvwprintw(w_border, w_border->_maxy, 1, "%s", footer.c_str());
+ 
+         wnoutrefresh(w_border);
+     }
+@@ -108,7 +108,7 @@ void CursesFrame::printw(string str, int attr)
+     if (attr != 0) {
+         wattron(w_main, attr);
+     }
+-    wprintw(w_main, fitstrtowin(str).c_str());
++    wprintw(w_main, "%s", fitstrtowin(str).c_str());
+     if (attr != 0) {
+         wattroff(w_main, attr);
+     }
+@@ -119,7 +119,7 @@ void CursesFrame::mvprintw(int x, int y, string str, int attr)
+     if (attr != 0) {
+         wattron(w_main, attr);
+     }
+-    mvwprintw(w_main, y, x, fitstrtowin(str, x).c_str());
++    mvwprintw(w_main, y, x, "%s", fitstrtowin(str, x).c_str());
+     if (attr != 0) {
+         wattroff(w_main, attr);
+     }
