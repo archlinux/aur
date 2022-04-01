@@ -1,6 +1,6 @@
 pkgbase = fluid-git
 	pkgdesc = Components for Qt Quick applications with Material Design
-	pkgver = v0.11.0.r271.g1ff823d
+	pkgver = v1.2.0.r48.gda9434e
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
@@ -24,8 +24,7 @@ pkgbase = fluid-git
 	replaces = fluid
 	options = debug
 	options = !strip
-	source = fluid::git://github.com/lirios/fluid.git#branch=develop
+	source = fluid::git+https://github.com/lirios/fluid.git#branch=develop
 	md5sums = SKIP
 
 pkgname = fluid-git
-

@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=fluid-git
-pkgver=v0.11.0.r271.g1ff823d
+pkgver=v1.2.0.r48.gda9434e
 pkgrel=1
 pkgdesc="Components for Qt Quick applications with Material Design"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ replaces=('fluid')
 provides=('fluid')
 groups=('liri-git')
 
-_gitroot="git://github.com/lirios/fluid.git"
+_gitroot="git+https://github.com/lirios/fluid.git"
 _gitbranch=develop
 _gitname=fluid
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
@@ -40,6 +40,7 @@ build() {
 		-DCMAKE_INSTALL_PREFIX=/usr \
 		-DBUILD_TESTING:BOOL=OFF \
 		-DFLUID_USE_SYSTEM_LCS:BOOL=ON \
+		-DFLUID_WITH_DOCUMENTATION:BOOL=OFF \
 		-DINSTALL_SYSCONFDIR=/etc \
 		-DINSTALL_LIBDIR=/usr/lib \
 		-DINSTALL_LIBEXECDIR=/usr/lib \
