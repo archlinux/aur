@@ -22,6 +22,7 @@ depends=(
   'python-html2text'
   'python-lttb'
   'python-toml'
+  'python-gr-framework'
   # Dev
   'python-coverage>=3.4'
   'python-isort'

@@ -18,6 +18,7 @@ pkgbase = nicos
 	depends = python-html2text
 	depends = python-lttb
 	depends = python-toml
+	depends = python-gr-framework
 	depends = python-coverage>=3.4
 	depends = python-isort
 	depends = python-pylint>=2.1.0
