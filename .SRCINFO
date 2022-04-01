@@ -1,0 +1,16 @@
+pkgbase = apricots
+	pkgdesc = A simple 2D flying/bombing game similar to basic side scrollers
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/moggers87/apricots
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = gcc-libs
+	depends = sdl2
+	depends = freealut
+	depends = hicolor-icon-theme
+	source = git+https://github.com/moggers87/apricots#commit=e03bcbeef0b28b361ad2270e31947b0d0ee276a9
+	b2sums = SKIP
+
+pkgname = apricots
