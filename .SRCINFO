@@ -1,6 +1,6 @@
 pkgbase = thunderbird-markdown-here-revival
 	pkgdesc = A revival of the popular Markdown-Here addon for Thunderbird 78 and beyond
-	pkgver = 3.3.0
+	pkgver = 3.3.1
 	pkgrel = 1
 	url = https://addons.thunderbird.net/en-US/thunderbird/addon/markdown-here-revival/
 	arch = any
@@ -8,8 +8,8 @@ pkgbase = thunderbird-markdown-here-revival
 	makedepends = jq
 	makedepends = libarchive
 	depends = thunderbird
-	noextract = markdown-here-revival-3.3.0.xpi
-	source = markdown-here-revival-3.3.0.xpi::https://addons.thunderbird.net/thunderbird/downloads/latest/markdown-here-revival/addon-988035-3.3.0.xpi
-	sha256sums = ba55bfc769ffee5355f62c119ea68c1fd46aafa1812220cd276c3ff8fbc80c42
+	noextract = markdown-here-revival-3.3.1.xpi
+	source = markdown-here-revival-3.3.1.xpi::https://addons.thunderbird.net/thunderbird/downloads/latest/markdown-here-revival/addon-988035-3.3.1.xpi
+	sha256sums = ab52602ca53cb28a41295c514e327546505d6c26fd430a256f7292190fe05bb8
 
 pkgname = thunderbird-markdown-here-revival

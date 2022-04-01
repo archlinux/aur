@@ -1,7 +1,7 @@
 # Maintainer: nobodyinperson <nobodyinperson at posteo de>
 
 pkgname=thunderbird-markdown-here-revival
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="A revival of the popular Markdown-Here addon for Thunderbird 78 and beyond"
 arch=(any)
@@ -10,7 +10,7 @@ license=(MIT)
 makedepends=(jq libarchive)
 depends=(thunderbird)
 source=("${pkgname#thunderbird-}-$pkgver.xpi::https://addons.thunderbird.net/thunderbird/downloads/latest/markdown-here-revival/addon-988035-$pkgver.xpi")
-sha256sums=('ba55bfc769ffee5355f62c119ea68c1fd46aafa1812220cd276c3ff8fbc80c42')
+sha256sums=('ab52602ca53cb28a41295c514e327546505d6c26fd430a256f7292190fe05bb8')
 noextract=(${source[@]%%::*})
 
 package() {
