@@ -1,7 +1,7 @@
 # Maintainer: Tomas S. <me+aur at wereii.cz>
 
 pkgname=pyfa-appimage
-pkgver=2.46.0
+pkgver=2.48.0
 pkgrel=1
 _distname="Pyfa-${pkgver}"
 pkgdesc="EVE Online Fitting Assistant"
@@ -14,7 +14,7 @@ options=(!strip)
 source=(${_distname}.AppImage::https://github.com/pyfa-org/Pyfa/releases/download/v$pkgver/pyfa-v$pkgver-linux.AppImage
         pyfa.desktop)
 
-sha256sums=('d05400e3771badca2cba3dc615d6809b0a9c1ec3dac7ea04a776baa1a97b6691'
+sha256sums=('d6a8e461c2fe4ec4246990856b7813e5a3fddafb7fbc185a07ea5433b8de6567'
             SKIP)
 
 package() {
