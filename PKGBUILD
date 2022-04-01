@@ -1,24 +1,25 @@
-# Maintainer: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 # Maintainer: Eli Schwartz <eschwartz@archlinux.org>
-
-# All my PKGBUILDs are managed at https://github.com/eli-schwartz/pkgbuilds
+# Contributor: Hyacinthe Cartiaux <hyacinthe.cartiaux@free.fr>
 
 _pkgname=https-everywhere
 pkgname=firefox-extension-${_pkgname}
-pkgver=2017.11.21
+pkgver=2021.7.13
 pkgrel=1
 pkgdesc="Plugin for firefox which ensures you are using https whenever it's possible."
-license=('GPL2')
 arch=('any')
 url="https://www.eff.org/https-everywhere"
-depends=("firefox")
+license=('GPL2')
+groups=('firefox-addons')
 makedepends=("unzip")
 source=("${_pkgname}-${pkgver}.xpi::https://www.eff.org/files/https-everywhere-${pkgver}-eff.xpi"
         "${_pkgname}-${pkgver}.xpi.sig::https://www.eff.org/files/https-everywhere-${pkgver}-eff.xpi.sig")
 noextract=("${_pkgname}-${pkgver}.xpi")
-sha256sums=('d7b21f8b305a2e2f3004a499e2666d1ece3443f5875eab9eb4332a6d2acd1f11'
+sha256sums=('d5a4044984ce2a7a1261a45bfdd7b6a9682d25d58f1db960c21c22847ceae975'
             'SKIP')
-validpgpkeys=('1073E74EB38BD6D19476CBF8EA9DBF9FB761A677') # William Budington
+b2sums=('f57dca1ef46005349920b52001d093a92e48ce519d1a9c6703c813ce126ff4ece5aa8447ec40198a602ec833d750fbc4a878147372ad13350799ede53bb97951'
+        'SKIP')
+validpgpkeys=('1073E74EB38BD6D19476CBF8EA9DBF9FB761A677'  # William Budington <bill@eff.org>
+              'CE340E9D077F1DC0F4FA7B030D16CFA2BA1F7420') # Alexis <alexis@eff.org>
 
 prepare() {
   cd "$srcdir"
@@ -27,6 +28,7 @@ prepare() {
 }
 
 package() {
+  depends=("firefox")
   cd "${srcdir}"
 
   if [[ -f ${_pkgname}-${pkgver}/install.rdf ]]; then
