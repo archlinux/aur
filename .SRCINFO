@@ -8,6 +8,7 @@ pkgbase = polkit-efl-git
 	license = LGPL
 	makedepends = git
 	makedepends = mesa
+	makedepends = python
 	depends = python-efl
 	depends = polkit
 	optdepends = python-psutil: For process details
@@ -17,4 +18,3 @@ pkgbase = polkit-efl-git
 	sha256sums = SKIP
 
 pkgname = polkit-efl-git
-
