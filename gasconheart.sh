@@ -55,12 +55,12 @@ phrases=("haaaaaaaa"
 
 echo -e "$BROWN" 
 figlet GASCONHEART | lolcat
-echo -e "$RED----------------------------------------$NC"
+echo -e "$RED------------------------------------------------------------------------------$NC"
 echo -e "$WHITE irc.dot.org.es $NC"
 echo -e "$BLUE port: $GREEN 6667 $NC"
 echo -e "$BLUE port: $GREEN 6697 $RED ssl $NC"
 echo -e "$BLUE tor:  $GREEN chatdotju32g5swnixwnqzgpsytc4umjfdqmkv2xt52lfw4on2rccmyd.onion $NC"
-echo -e "$RED----------------------------------------$NC"
+echo -e "$RED------------------------------------------------------------------------------$NC"
 echo
 
 echo -e "${BROWN}Featured Messages from gasconheart: $NC"
