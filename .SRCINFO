@@ -1,6 +1,6 @@
 pkgbase = cow-translator-git
 	pkgdesc = Official moo translator to communicate with cows
-	pkgver = r24.9f54c80
+	pkgver = r26.1e2d1b3
 	pkgrel = 1
 	url = https://github.com/SkwalExe/cow-translator
 	install = cow-translator.install
