@@ -1,0 +1,13 @@
+pkgbase = python-sourceinspect
+	pkgdesc = Unified inspector for retrieving sources from Python objects
+	pkgver = 0.0.3
+	pkgrel = 2
+	url = https://github.com/taichi-dev/sourceinspect
+	arch = any
+	license = unknown
+	makedepends = git
+	makedepends = python-setuptools
+	source = git+https://github.com/taichi-dev/sourceinspect#commit=2532324e7a1d33d6ead12ab03de7834d4a74eac9
+	b2sums = SKIP
+
+pkgname = python-sourceinspect
