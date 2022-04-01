@@ -1,7 +1,7 @@
 # Maintainer: Tomás Duarte <alfarrofo@gmail.com>
 _pkgname=projectmanager
 pkgname=${_pkgname}-git
-pkgver=0.0.1
+pkgver=0.1.0
 pkgrel=1
 pkgdesc="Create and manage diferent projects!"
 arch=('x86_64')

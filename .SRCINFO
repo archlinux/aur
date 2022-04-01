@@ -1,6 +1,6 @@
 pkgbase = projectmanager-git
 	pkgdesc = Create and manage diferent projects!
-	pkgver = 0.0.1
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/MustachedSquid/ProjectManager
 	arch = x86_64
