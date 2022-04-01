@@ -1,5 +1,5 @@
 #!/bin/bash
-rm -rf pkg src zash zash-*
+rm -rf pkg src *.tar.gz *.tar.zst
 makepkg --printsrcinfo > .SRCINFO
 git add .
 
