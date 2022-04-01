@@ -1,0 +1,12 @@
+pkgbase = raw-thumbnailer
+	pkgdesc = A lightweight and fast raw image thumbnailer that can be used by file managers.
+	pkgver = 0.2.1
+	pkgrel = 7
+	url = https://code.google.com/archive/p/raw-thumbnailer/
+	arch = x86_64
+	license = GPL2
+	depends = libopenraw
+	source = https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/raw-thumbnailer/raw-thumbnailer-0.2.1.tar.gz
+	sha1sums = f34012062c0b1eaa10525722c36bd027b11ade2e
+
+pkgname = raw-thumbnailer
