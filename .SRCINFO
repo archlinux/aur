@@ -1,14 +1,14 @@
 pkgbase = javafx-scenebuilder
 	pkgdesc = Scene Builder is an open source tool that allows for drag and drop design of JavaFX user interfaces.
 	pkgver = 18.0.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://gluonhq.com/products/scene-builder/
 	arch = x86_64
 	arch = i686
 	license = BSD License
 	depends = libarchive
 	conflicts = gluon-scenebuilder
-	source = https://download2.gluonhq.com/scenebuilder/18.0.0/install/linux/SceneBuilder-18.0.0.deb
-	sha1sums = d169cdecd31c1f74e3157458bcee490d2b6d23f2
+	source = https://github.com/gluonhq/scenebuilder/releases/download/18.0.0/SceneBuilder-18.0.0.deb
+	sha256sums = 182e7982d4b92c79dca0024fa0a00b17949e1d1c695330f205d003b60c8734a0
 
 pkgname = javafx-scenebuilder
