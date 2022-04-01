@@ -1,7 +1,7 @@
 pkgbase = python-configurationutil
 	pkgdesc = Collection of state machine utilities
 	pkgver = 3.7.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/configurationutil
 	arch = any
 	license = custom:PSF
@@ -9,7 +9,14 @@ pkgbase = python-configurationutil
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	depends = python-appdirs
+	depends = python-classutils
+	depends = python-fdutil
+	depends = python-future
 	depends = python-jsonschema
+	depends = python-logging-helper
+	depends = python-pyyaml
+	depends = python-uiutil
 	source = python-configurationutil-3.7.6.tar.gz::https://files.pythonhosted.org/packages/source/c/configurationutil/configurationutil-3.7.6.tar.gz
 	sha256sums = a413f35ea4a6d0530b778d101f00065eab16a68216ecb930699a950ded8a8ea0
 

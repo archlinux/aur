@@ -3,12 +3,20 @@
 pkgname=python-configurationutil
 _name=configurationutil
 pkgver=3.7.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of state machine utilities"
 arch=('any')
 url='https://pypi.org/project/configurationutil'
 license=('custom:PSF')
-depends=('python-jsonschema')
+depends=(
+	'python-appdirs'
+	'python-classutils'
+	'python-fdutil'
+	'python-future'
+	'python-jsonschema'
+	'python-logging-helper'
+	'python-pyyaml'
+	'python-uiutil')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 # checkdepends=('python-logging-helper' 'python-classutils' 'python-timingsutil')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/c/$_name/$_name-$pkgver.tar.gz")
