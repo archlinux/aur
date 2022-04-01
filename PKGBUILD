@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-calculator-git
-pkgver=r137.7caf7cf
+pkgver=v1.3.0.r102.geecda40
 pkgrel=1
 pkgdesc="A cross-platform material design calculator"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -14,7 +14,7 @@ replaces=('liri-calculator')
 provides=('liri-calculator')
 groups=('liri-git')
 
-_gitroot="git://github.com/lirios/calculator.git"
+_gitroot="git+https://github.com/lirios/calculator.git"
 _gitbranch=develop
 _gitname=calculator
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})

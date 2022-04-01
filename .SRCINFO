@@ -1,6 +1,6 @@
 pkgbase = liri-calculator-git
 	pkgdesc = A cross-platform material design calculator
-	pkgver = r137.7caf7cf
+	pkgver = v1.3.0.r102.geecda40
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
@@ -16,8 +16,7 @@ pkgbase = liri-calculator-git
 	provides = liri-calculator
 	conflicts = liri-calculator
 	replaces = liri-calculator
-	source = calculator::git://github.com/lirios/calculator.git#branch=develop
+	source = calculator::git+https://github.com/lirios/calculator.git#branch=develop
 	md5sums = SKIP
 
 pkgname = liri-calculator-git
-
