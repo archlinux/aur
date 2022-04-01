@@ -1,6 +1,6 @@
 pkgbase = gpuvis-git
 	pkgdesc = GPU trace visualizer
-	pkgver = 0.1
+	pkgver = 0.1+6.g8c4eddaa2e
 	pkgrel = 1
 	url = https://github.com/mikesart/gpuvis
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = gpuvis-git
 	depends = sdl2
 	provides = gpuvis
 	conflicts = gpuvis
-	source = https://github.com/mikesart/gpuvis
+	source = git+https://github.com/mikesart/gpuvis
 	sha1sums = SKIP
 
 pkgname = gpuvis-git

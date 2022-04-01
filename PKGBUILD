@@ -2,7 +2,7 @@
 # Contributor: Luis Martinez <luis dot martinez at tuta dot io>
 
 pkgname=gpuvis-git
-pkgver=0.1
+pkgver=0.1+6.g8c4eddaa2e
 pkgrel=1
 pkgdesc="GPU trace visualizer"
 arch=('x86_64')
@@ -26,6 +26,6 @@ build() {
 
 package() {
   DESTDIR="$pkgdir" ninja -C build install
-  install -Dm644 gpuvis/gpuvis.desktop -t "$pkgdir/usr/share/applications/"
+  install -Dm644 gpuvis/com.github.gpuvis.Gpuvis.desktop -t "$pkgdir/usr/share/applications/"
   install -Dm644 gpuvis/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
