@@ -1,19 +1,21 @@
 pkgbase = gcap
 	pkgdesc = Brazilian physical person income tax (IRPF) auxiliary program for calculation of capital gains
-	pkgver = 2021.1.3
+	pkgver = 2022.1.0
 	pkgrel = 1
 	url = https://www.gov.br/pt-br/servicos/apurar-imposto-sobre-ganhos-de-capital
 	arch = any
-	license = unknown
+	license = custom
 	makedepends = icoutils
 	depends = sh
-	depends = java-runtime
+	depends = java-runtime=11
 	depends = hicolor-icon-theme
-	source = http://downloadirpf.receita.fazenda.gov.br/irpf/2021/gcap/GCAP2021v1.3.zip
+	source = https://downloadirpf.receita.fazenda.gov.br/irpf/2022/gcap/GCAP2022v1.0.zip
 	source = gcap.desktop
 	source = gcap.sh
-	sha256sums = cd0f6e3d51583cce5b4c4fb3b1a9931dfaa29fde5ef0848efd56d43e4cdeff5f
+	source = LICENSE
+	sha256sums = ba8ae57dffa85f061a3fda3d2ecfa8afe9b7ba2743ef043ff0a1fe5523a0f502
 	sha256sums = 24df966f1dbf8c348b487a1724891271a92b6e795b981fdf0c5b430325722af7
 	sha256sums = 2c50b3d5df01139ce2c41b5be2ee6d34f29313de131defdf8db600d6b58b9129
+	sha256sums = a406e102e2c10c202bd7a0ba775b004c0f04440544db73ce6923172a62aacd67
 
 pkgname = gcap
