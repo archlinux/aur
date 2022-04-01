@@ -1,0 +1,14 @@
+pkgbase = gasconheart
+	pkgdesc = Install gasconheart on your computer
+	pkgver = v0.1
+	pkgrel = 1
+	url = https://www.chats.dot.org.es/
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	provides = gasconheart
+	source = gasconheart.sh
+	md5sums = SKIP
+
+pkgname = gasconheart
