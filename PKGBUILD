@@ -1,5 +1,3 @@
-# Contributors: Caltlgin Stsodaat, vanyasem, Florian Wittmann
-
 _pkgname='pathvalidate'
 pkgname=python-$_pkgname
 pkgver=2.5.0
@@ -10,7 +8,7 @@ url='https://github.com/thombashi/pathvalidate'
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://github.com/thombashi/pathvalidate/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/thombashi/pathvalidate/archive/v$pkgver.tar.gz")
 sha256sums=('3bb7901211e14fb774e8fe960a0eb0c3fbbd30794f9dfba12d575abdc6c4a772')
 
 build() {

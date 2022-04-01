@@ -7,7 +7,7 @@ pkgbase = python-pathvalidate
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://github.com/thombashi/pathvalidate/archive/v2.5.0.tar.gz
+	source = python-pathvalidate-2.5.0.tar.gz::https://github.com/thombashi/pathvalidate/archive/v2.5.0.tar.gz
 	sha256sums = 3bb7901211e14fb774e8fe960a0eb0c3fbbd30794f9dfba12d575abdc6c4a772
 
 pkgname = python-pathvalidate
