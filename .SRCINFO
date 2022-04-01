@@ -5,8 +5,8 @@ pkgbase = keepassxc-wordlist-catalan
 	url = https://github.com/1ma/diceware-cat
 	arch = any
 	license = CCPL
-	source = https://raw.githubusercontent.com/1ma/diceware-cat/master/cat-wordlist-utf8.txt
-	source = https://raw.githubusercontent.com/1ma/diceware-cat/master/cat-wordlist-ascii.txt
+	source = https://raw.githubusercontent.com/1ma/diceware-cat/ba71c1d5238cdff371e70d995d2a6f82c46122b9/cat-wordlist-utf8.txt
+	source = https://raw.githubusercontent.com/1ma/diceware-cat/ba71c1d5238cdff371e70d995d2a6f82c46122b9/cat-wordlist-ascii.txt
 	sha512sums = 906b99151b1a407749c9fd3b32020eab8810e89442289aa145c092cf5b79739bd59da085addc850a2d1f0d0999451a52dae9bc18fae95c0b3849f43c5bf3faea
 	sha512sums = 84011d9d00cfa78bf48e65990792151e5dff9972622ac9c084a02026dc6f66f42a52b866ddc161a24a3d4345f048cf7e048e674688426c57c6c9657c30229f5d
 
