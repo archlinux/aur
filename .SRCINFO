@@ -1,0 +1,26 @@
+pkgbase = gvm-libs
+	pkgdesc = greenbone-vulnerability-manager libraries
+	pkgver = 10.0.2
+	pkgrel = 2
+	url = https://github.com/greenbone/gvm-libs
+	changelog = CHANGELOG.md
+	arch = x86_64
+	groups = greenbone-vulnerability-manager
+	license = GPL
+	makedepends = cmake
+	makedepends = doxygen
+	depends = gnutls
+	depends = libpcap
+	depends = gpgme
+	depends = libssh
+	depends = glib2
+	depends = libldap
+	depends = hiredis
+	replaces = openvas-libraries
+	source = https://github.com/greenbone/gvm-libs/releases/download/v10.0.2/gvm-libs-10.0.2.tar.gz.asc
+	source = gvm-libs-10.0.2.tar.gz::https://github.com/greenbone/gvm-libs/archive/v10.0.2.tar.gz
+	validpgpkeys = 8AE4BE429B60A59B311C2E739823FAA60ED1E580
+	sha512sums = SKIP
+	sha512sums = 276d4bf9aa68c589136f0ffaf42373c21a4b7a5aa461380cae34d722e121e7bdfcae6b1fd0eac51d24d7c67eb7f7a2ae670aad0f7847459a497739e8cce51b2e
+
+pkgname = gvm-libs
