@@ -1,0 +1,15 @@
+pkgbase = python-flatdict
+	pkgdesc = Interact with nested dicts as a single level dict with delimited keys.
+	pkgver = 4.0.1
+	pkgrel = 3
+	url = https://flatdict.readthedocs.io
+	arch = any
+	license = BSD
+	checkdepends = python-nose
+	makedepends = python-setuptools
+	depends = python
+	source = python-flatdict-4.0.1.tar.gz::https://github.com/gmr/flatdict/archive/4.0.1.tar.gz
+	sha256sums = ab6ff85c6802fab90692727f055cd2183856789d96a53e75609439b778f5da06
+	b2sums = 102ebc6220d75219b91ed7494485fa7d1447801d8276fd5e305f838f6b339b72c44151c751a53c32a5ea5b1d4876d9312af229bb8972401a2f86d6488d3f8b4f
+
+pkgname = python-flatdict
