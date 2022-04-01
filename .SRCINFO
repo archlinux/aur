@@ -1,0 +1,13 @@
+pkgbase = libpgf
+	pkgdesc = An implementation of the Progressive Graphics File (PGF)
+	pkgver = 7.21.7
+	pkgrel = 1
+	url = https://www.libpgf.org
+	arch = x86_64
+	license = GPL
+	makedepends = dos2unix
+	depends = gcc-libs
+	source = https://sourceforge.net/projects/libpgf/files/libpgf/7.21.7/libpgf.zip
+	sha1sums = 86027b9701e2b2516177991b7b96503f9b66b3b5
+
+pkgname = libpgf
