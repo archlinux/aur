@@ -1,7 +1,7 @@
 # Maintainer: Lukas1818 aur at lukas1818 dot de
 
 pkgname=superslicer-prerelease
-pkgver=2.4.58.1
+pkgver=2.4.58.2
 _pkgtag=$pkgver
 pkgrel=1
 epoch=1
@@ -19,7 +19,7 @@ source=("https://github.com/supermerill/SuperSlicer/archive/$_pkgtag.tar.gz"
         "0001-wxgtk3-is-broken-on-wayland.patch"
         "0002-fix-cereal.patch"
         "0003-openexr3.patch")
-sha512sums=('332d36b1069ea2652c3ef527670f4fe2aead4d06f4c38fb4e833cf85cbf267577c4663dc2474fbcc2827226babf1fc78d7fe629c16a555f082784410da4e006d'
+sha512sums=('c5038bd13482a2a164ce7f3b126b9f0183b4220b2d46d84e86a0ad29624eb9e000c5b8ad876506e4042a80c7c57b7f34bbf2bf5affc385334e00da416c22fd27'
             'acf35ebe467e9fb30f1b77d15348f1a7b82dcf45a5b829e375e972b5d6b49968603b3fa090c4d1f56e8b5148e2b820e79afa269da60ace70de1ceadcf6e820c5'
             'c3ba2d16140d445168681ff442bda12e87de22f8b94d59c32576bd7079ffe5864cce8e62cddd1ed47458f9eddcbd3e1a02645b0645aad6f2e0cb08a876bf783f'
             '840e51b8feb3568ff46d309ece063f7188018fcaa43d19ec50ede408fdf2c237a3b7eaa11ba24409d8c3f7d6f5fb270181508cc56e0b2b0fef68b766130ef1eb')
