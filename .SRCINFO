@@ -1,0 +1,12 @@
+pkgbase = libxmi
+	pkgdesc = A library for rasterizing 2-D vector graphics
+	pkgver = 1.2
+	pkgrel = 9
+	url = https://www.gnu.org/software/libxmi/libxmi.html
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = http://mirrors.usc.edu/pub/gnu/libxmi/libxmi-1.2.tar.gz
+	md5sums = 4e6935484f0ad71b531920bf4c546b47
+
+pkgname = libxmi
