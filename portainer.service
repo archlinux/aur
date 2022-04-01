@@ -6,7 +6,8 @@ Type=simple
 Restart=always
 RestartSec=3
 Environment=BIND=:9000
-ExecStart=/usr/bin/portainer --bind $BIND --data /var/lib/portainer --assets /usr/share/portainer
+Environment=TUNNEL_PORT=8000
+ExecStart=/usr/bin/portainer --bind $BIND --tunnel-port $TUNNEL_PORT --data /var/lib/portainer --assets /usr/share/portainer
 
 [Install]
 WantedBy=multi-user.target
