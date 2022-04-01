@@ -31,7 +31,6 @@ prepare() {
 
 package() {
 	depends=('python' 'python-pyusb' 'python-tqdm' 'tk')
-	cd "$srcdir"
 	install -Dm755 nxdumptool/host/nxdt_host.py "$pkgdir"/usr/bin/nxdt_host.py
 	install -Dm644 nxdumptool/host/nxdt.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/nxdt.png
 	install -Dm644 10-nxdumptool.rules "$pkgdir"/usr/lib/udev/rules.d/10-nxdumptool.rules
