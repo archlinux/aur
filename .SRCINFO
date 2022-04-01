@@ -1,7 +1,7 @@
 pkgbase = 1c_enterprise_meta
 	pkgdesc = 1C 8.3 metapackage for Linux
 	pkgver = 8.3
-	pkgrel = 1
+	pkgrel = 2
 	arch = any
 	license = GPL
 	depends = gtk3
@@ -18,6 +18,14 @@ pkgbase = 1c_enterprise_meta
 	depends = libxslt
 	depends = geoclue
 	depends = appmenu-gtk-module
+	depends = gcc-libs
+	depends = glib-networking
+	depends = nuspell
+	depends = hspell
+	depends = libvoikko
+	depends = aspell
+	depends = aspell-en
+	depends = aspell-ru
 	optdepends = ttf-ms-fonts: Core TTF Fonts from Microsoft
 	optdepends = aksusbd-bin: Sentinel AKSUSB daemon
 
