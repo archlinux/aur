@@ -1,16 +1,19 @@
 pkgbase = python-conversionutil
-	pkgdesc = A collection of conversion utilities
-	pkgver = 1.4.3
+	pkgdesc = Collection of conversion utilities
+	pkgver = 1.4.6
 	pkgrel = 1
-	url = https://bitbucket.org/davisowb/conversionutil
+	url = https://pypi.org/project/conversionutil
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-timingsutil
 	depends = python-six
 	depends = python-logging-helper
-	source = https://pypi.io/packages/source/c/conversionutil/conversionutil-1.4.3.tar.gz
-	md5sums = 1e6085d01e7136ba09d585d537b4a154
+	depends = python-openpyxl
+	source = python-conversionutil-1.4.6.tar.gz::https://files.pythonhosted.org/packages/source/c/conversionutil/conversionutil-1.4.6.tar.gz
+	sha256sums = c5bf212953e9355ef8d5ded745165f2098e6833da79b090d4efc06bfc16fcf1d
 
 pkgname = python-conversionutil
-
