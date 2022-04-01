@@ -1,0 +1,17 @@
+# Maintainer: Tobias Powalowski <tpowa@archlinux.org>
+
+pkgname="lockdown-ms"
+pkgver=20130326
+pkgrel=4
+pkgdesc="SecureBoot keys, which mimic MS certified UEFI machine"
+url="https://fedoraproject.org/wiki/Testing_secureboot_with_KVM"
+arch=('any')
+license=('GPL' 'LGPL2.1')
+options=('!strip')
+source=(https://fedorapeople.org/~crobinso/secureboot/LockDown_ms.efi)
+
+package() {
+	# https://fedoraproject.org/wiki/Testing_secureboot_with_KVM
+	install -D -m0644 "${srcdir}/LockDown_ms.efi" "${pkgdir}/usr/lib/lockdown-ms/LockDown_ms.efi"
+}
+sha512sums=('188769edfd8cc41619bf74115094624faebf65117dff7de5a3d5369d7865d4218bbc7e01d2c7e7ee5494820999557eca1b8723367ecdf2a0af7c4f6ead142e19')
