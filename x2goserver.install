@@ -1,0 +1,6 @@
+pre_install() {
+  cat << 'EOM'
+  ==> Use the following command to setup sqlite database:
+  ==> x2godbadmin --createdb
+EOM
+}
