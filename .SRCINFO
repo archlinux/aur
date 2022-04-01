@@ -1,0 +1,15 @@
+pkgbase = projectmanager
+	pkgdesc = Create and manage diferent projects!
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/MustachedSquid/ProjectManager
+	arch = x86_64
+	license = MIT
+	depends = bash
+	optdepends = git: git support
+	provides = projectmanager
+	conflicts = projectmanager
+	source = projectmanager-0.1.0.tar.gz::https://github.com/MustachedSquid/ProjectManager/releases/download/0.1.0/projectmanager-0.1.0.tar.gz
+	sha256sums = d0266b895b9611a4b16b892f7b9b6c8a039be49d90dc69386bd08349f76b28ae
+
+pkgname = projectmanager
