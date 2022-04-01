@@ -4,7 +4,7 @@
 
 pkgname='mycorrhiza'
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Filesystem and git-based wiki engine written in Go using mycomarkup'
 arch=('x86_64' 'armv7h')
 url="https://github.com/bouncepaw/$pkgname"
@@ -37,8 +37,9 @@ build() {
 package() {
   cd "$pkgname-$pkgver" || exit 1
 
-  install -Dm0755 "mycorrhiza" "$pkgdir/usr/bin/mycorrhiza"
-  install -Dm0644 "README.md"  "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm0755 "mycorrhiza"        "$pkgdir/usr/bin/mycorrhiza"
+  install -Dm0644 "README.md"         "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm0644 "help/mycorrhiza.1" "$pkgdir/usr/share/man/man1/mycorrhiza.1"
 }
 
 sha256sums=(
