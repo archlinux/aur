@@ -1,0 +1,9 @@
+[Desktop Entry]
+Comment=Archlinux Documentation
+Exec=xdg-open https://wiki.archlinux.org/index.php/Official_Arch_Linux_Install_Guide
+Icon=arch-logo
+Name=Documentation
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Archlinux;
