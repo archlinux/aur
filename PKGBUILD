@@ -1,4 +1,5 @@
-# Maintainer: Phillip Smith <pkgbuild@phs.id.au>
+# Maintainer: Sick Codes <info@sick.codes>
+# Contributor: Phillip Smith <pkgbuild@phs.id.au>
 # http://github.com/fukawi2/aur-packages
 # Contributor: Paolo Stivanin aka Polslinux <admin AT polslinux DOT it>
 # pkgrel3 patcher: Ivan de Jesús Pompa García <ivan.pompa@gmx.com>
@@ -16,36 +17,37 @@
 pkgname=cryptkeeper
 pkgver=0.9.5
 pkgrel=6
-pkgdesc="A Linux system tray applet that manages EncFS encrypted folders."
-arch=(i686 x86_64)
+pkgdesc="Cryptkeeper is a FreeDesktop.org (KDE, Gnome, XFce, etc.) system tray applet that manages EncFS encrypted folders"
+arch=('x86_64' 'aarch64' 'i386')
 url="https://github.com/tomm/cryptkeeper/"
 license=('GPL3')
 depends=('gtk2' 'gconf' 'encfs')
 makedepends=('autoconf')
-source=("$pkgname-$pkgver.zip::https://codeload.github.com/tomm/cryptkeeper/zip/master"
+
+source=("git+https://github.com/tomm/${pkgname}.git#commit=de57c19e14ddd86eaaa2a6baa45b692180940b2f"
         "cryptkeeper-0.9.5-fix-linking.patch"
         "cryptkeeper-0.9.5-add-unistd-to-lsof.patch")
-md5sums=('9a0f032660df324a4cba8c277b8d866a'
+md5sums=('SKIP'
          'aa864cea6a81ef8e8cb3efa5ef2b9541'
          '2e21a1e82942213108774d768e12e4ee')
 
 prepare() {
-  cd "$srcdir"/$pkgname-master
-  patch -Np1 < "$srcdir"/cryptkeeper-0.9.5-fix-linking.patch
-  patch -Np1 < "$srcdir"/cryptkeeper-0.9.5-add-unistd-to-lsof.patch
+  cd "${srcdir}/${pkgname}"
+  patch -Np1 < "${srcdir}"/cryptkeeper-0.9.5-fix-linking.patch
+  patch -Np1 < "${srcdir}"/cryptkeeper-0.9.5-add-unistd-to-lsof.patch
 }
 
 build() {
-  cd "$srcdir"/$pkgname-master
+  cd "${srcdir}/${pkgname}"
   autoreconf -fvi
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir"/$pkgname-master
+  cd "${srcdir}/${pkgname}"
 
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="${pkgdir}" install
 }
 
 # vim:set ts=2 sw=2 et:
