@@ -1,29 +1,37 @@
-# Maintainer: Mufeed Ali <lastweakness@tuta.io>
-# Based on the git package by Manuel Palenzuela
+# Contributor: Eli Schwartz <eschwartz@archlinux.org>
 
+_pkgname=cloudscraper
 pkgname=python-cloudscraper
-_author=VeNoMouS
-_gitname=cloudscraper
-pkgver=1.2.48
+pkgver=1.2.60
 pkgrel=1
-pkgdesc='A Python module to bypass Cloudflare anti-bot page. (Release version)'
-url='https://pypi.org/project/cloudscraper'
+pkgdesc="Python module to bypass Cloudflare's anti-bot page"
 arch=('any')
+url="https://github.com/VeNoMouS/${_pkgname}"
 license=('MIT')
-depends=(
-  python
-  python-requests
-  python-js2py
-  python-requests-toolbelt
-)
-optdepends=('nodejs: use Node.js Javascript Interpreter/Engine')
-makedepends=('git' 'python-setuptools')
-provides=('python-cloudscraper')
+depends=('python-pyparsing' 'python-requests' 'python-requests-toolbelt')
+optdepends=('python-js2py: alternative interpreter/solver'
+            'nodejs: alternative interpreter/solver')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+checkdepends=('python-pytest' 'python-responses' 'python-js2py' 'nodejs')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
+sha256sums=('426bb95330817ed936129f004b3e5091567be011b08a675e6b37c0bdec43e4c6')
+b2sums=('d4c69189104a433c044de9f60ce4d15c82f65f4bbfab2350f0e4603703c080a9adb439a6634da94e511ba2e100543ed4a7c7aad2c5b83f061cb04e06d4e3c294')
 
-source=("$_gitname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/9a/2c/2139cdd276f54d0dbf6397950e65b53f617082cde7832c47b4afea327e4d/$_gitname-$pkgver.tar.gz")
-sha256sums=('bb6be1c2d12720c9fcde80f1965a2250444821f64a900e5bddf9aef2c1fa5d62')
+build(){
+  cd ${_pkgname}-${pkgver}
+
+  python -m build --wheel --no-isolation
+}
+
+check() {
+  cd ${_pkgname}-${pkgver}
+
+  python -m pytest -k 'not test_getCookieString_challenge_js_challenge1_16_05_2020'
+}
 
 package() {
-  cd "$_gitname-$pkgver"
-  python setup.py install --root=$pkgdir
+  cd ${_pkgname}-${pkgver}
+
+  python -m installer --destdir="${pkgdir}" dist/*.whl
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
