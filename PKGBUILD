@@ -1,7 +1,7 @@
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 
 pkgname=tkn-pac
-pkgver=0.5.5
+pkgver=0.5.6
 pkgrel=1
 pkgdesc="CLI for interacting with Openshift Pipelines as Code"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('Apache')
 makedepends=('go')
 depends=('glibc' 'kubectl' 'tekton-cli')
 source=( ${pkgname}_${pkgver}-${pkgrel}.tar.gz::https://github.com/openshift-pipelines/pipelines-as-code/archive/refs/tags/${pkgver}.tar.gz )
-sha512sums=('38dd20b2bf510735248e3f6a859256471378e9206b19d5bf5c02594ff1e0833adc1d797e7c59bf37c14de8ed3ad21397a35c95f5e3599e86d8b3507635605c3f')
+sha512sums=('679db0bbd5a676bbc4271a9536d45404d41a9ee8b881e844f1fb96c41600fae079179000e37809675ee53c7574b079dd7d088cda46c30170f0edb28211974e82')
 
 build() {
   cd "pipelines-as-code-${pkgver}/cmd/tkn-pac"
