@@ -1,0 +1,13 @@
+pkgbase = sasm-asm-git
+	pkgdesc = A compiler of sasm, an assembly-like language that compile to assembly.
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/Vinz2008/Sasm
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = nasm
+	source = sasm-asm::git+https://github.com/vinz2008/Sasm.git
+	sha256sums = SKIP
+
+pkgname = sasm-asm-git
