@@ -4,7 +4,7 @@
 _name=gaphor
 _pkgname="python-${_name}"
 pkgname="${_pkgname}-git"
-pkgver=2.9.2.r60.ge446caab
+pkgver=2.9.2.r79.gd1f4f30a
 pkgrel=1
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('x86_64' 'i686')
@@ -34,6 +34,7 @@ makedepends=(
 optdepends=(
 )
 checkdepends=(
+	'python-hypothesis'
 	'python-pytest'
 	'python-pytest-mock'
 	'python-sphinx'
