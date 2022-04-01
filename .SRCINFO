@@ -1,15 +1,16 @@
 pkgbase = minisign-git
 	pkgdesc = A dead simple tool to sign files and verify signatures.
-	pkgver = 51b5499
+	pkgver = 0.10.r6.g4b2df2e
 	pkgrel = 1
+	epoch = 1
 	url = https://jedisct1.github.io/minisign/
-	arch = any
+	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = git
 	depends = libsodium
 	provides = minisign
-	source = git://github.com/jedisct1/minisign
+	source = git+https://github.com/jedisct1/minisign
 	sha256sums = SKIP
 
 pkgname = minisign-git
-
