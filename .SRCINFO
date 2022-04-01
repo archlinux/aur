@@ -1,6 +1,6 @@
 pkgbase = liri-cmake-shared-git
 	pkgdesc = Additional macros and functions for CMake
-	pkgver = r35.655e4a9
+	pkgver = v1.1.0.r59.g7b73357
 	pkgrel = 1
 	url = https://liri.io
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = liri-cmake-shared-git
 	provides = liri-cmake-shared
 	conflicts = liri-cmake-shared
 	replaces = liri-cmake-shared
-	source = cmake-shared::git://github.com/lirios/cmake-shared.git#branch=develop
+	source = cmake-shared::git+https://github.com/lirios/cmake-shared.git#branch=develop
 	md5sums = SKIP
 
 pkgname = liri-cmake-shared-git
-

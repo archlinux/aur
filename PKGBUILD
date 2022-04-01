@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-cmake-shared-git
-pkgver=r35.655e4a9
+pkgver=v1.1.0.r59.g7b73357
 pkgrel=1
 pkgdesc="Additional macros and functions for CMake"
 arch=('any')
@@ -14,7 +14,7 @@ replaces=('liri-cmake-shared')
 provides=('liri-cmake-shared')
 groups=('liri-git')
 
-_gitroot="git://github.com/lirios/cmake-shared.git"
+_gitroot="git+https://github.com/lirios/cmake-shared.git"
 _gitbranch=develop
 _gitname=cmake-shared
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
