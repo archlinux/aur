@@ -1,0 +1,6 @@
+post_install() {
+  echo 'Append these to your shell profiles to enable autocomplete:'
+  echo ".bashrc or .zprofile: PATH=$HOME/.local/bin:\$PATH"
+  echo "config.fish: set -gx PATH $HOME/.local/bin PATH"
+  echo "then source the appropriate autocomplete file in: $HOME/.local/lib/kw/src"
+}
