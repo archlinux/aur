@@ -4,7 +4,7 @@
 _name=gaphor
 pkgname=python-${_name}
 pkgver=2.9.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('any')
 url="https://github.com/gaphor/${_name}"
@@ -26,6 +26,7 @@ makedepends=(
 	'python-poetry-core'
 )
 checkdepends=(
+	'python-hypothesis'
 	'python-pytest'
 	'python-pytest-mock'
 	'python-sphinx'
