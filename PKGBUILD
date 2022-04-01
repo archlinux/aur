@@ -23,6 +23,11 @@ build() {
   python setup.py build
 }
 
+check() {
+  cd "$_pkgname-v$pkgver"
+  python setup.py check -mr
+}
+
 package() {
   cd "$_pkgname-v$pkgver"
   python setup.py install --root=$pkgdir/
