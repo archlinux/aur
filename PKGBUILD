@@ -3,7 +3,7 @@
 # -*- mode: sh -*-
 
 pkgname='mycorrhiza'
-pkgver=1.8.2
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Filesystem and git-based wiki engine written in Go using mycomarkup'
 arch=('x86_64' 'armv7h')
@@ -13,7 +13,7 @@ depends=('git')
 makedepends=('go')
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz")
 provides=('mycorrhiza')
-conflicts=('mycorrhiza' 'mycorrhiza-bin')
+conflicts=('mycorrhiza')
 
 build() {
   cd "$pkgname-$pkgver" || exit 1
@@ -32,7 +32,6 @@ build() {
     -mod=readonly \
     -modcacherw \
      .
-
 }
 
 package() {
@@ -43,13 +42,13 @@ package() {
 }
 
 sha256sums=(
-  'b89973c0bb0833040efc61d9420d9ae5eaf11aa8cffab5c91bf6e4ef97627583'
+  'a9dfc8d4105747124bb35f96d703b61f1f7828d1d743ae2e2a0abe77d1a956b1'
 )
 sha512sums=(
-  'fff711b48d3fc51ac9c64c0ae50a9c4f82ef2b26a65aa2060f1f459d3d8caac4f35760a9fca5a4ca4031720383aeefb16cbb8f1445079914a2129b9dae406a97'
+  '32539488a9ba3ecf775fbbf38a41da06cac8ee02dca9e3f0a0f327488aa694167e303264d80975c6a9cdad4f51532f256252821c838910d54725d319e4b805cd'
 )
 b2sums=(
-  '049237f2360ff794e59e8db8051b21d5d7b75ee22d49afb50ce41fd8fb91a2ab08c04381219e06f1fc9e43f5b34619864f366340344f87625d1c1c2b8bed72e1'
+  'a1421ca43e5ea96b86271ad0be93e50ad65e8494fbb76640d429cba64472338873e506d87c35f3404cb4064c0ff7fc29e7728a88c3708d97f65d6faa3e77e40b'
 )
 
 # eof
