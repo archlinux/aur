@@ -1,7 +1,7 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=gasconheart
-pkgver=v0.1
+pkgver=v0.2
 pkgrel=1
 pkgdesc="Install gasconheart on your computer"
 url="https://www.chats.dot.org.es/"
