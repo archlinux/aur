@@ -1,0 +1,16 @@
+pkgbase = perl-iterator-util
+	pkgdesc = essential utilities for the Iterator class
+	pkgver = 0.02
+	pkgrel = 1
+	url = https://metacpan.org/release/Iterator-Util
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-test-simple
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/R/RO/ROODE/Iterator-Util-0.02.tar.gz
+	sha512sums = c37a216b2aaf1e3ee9c69837e12d315121119b96a125ae74edb60762392290aed7c32c118edde2f995a619b913946bd65685f8c4e577834ff4e66f80883339ca
+
+pkgname = perl-iterator-util
