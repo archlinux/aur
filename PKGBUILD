@@ -1,7 +1,7 @@
-# Maintainer: Gautham Velchuru <gvelchuru@gmail.com>
-# Co-Maintainer: Konstantin Gizdov <arch at kge dot pw>
+# Maintainer: Konstantin Gizdov <arch at kge dot pw>
+# Co-Maintainer: Achilleas Pipinellis <axilleas at archlinux dot gr>
 pkgname=vale
-pkgver=2.15.3
+pkgver=2.15.5
 pkgrel=1
 pkgdesc="A customizable, syntax-aware linter for prose"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/errata-ai/vale"
 license=('MIT')
 makedepends=('go' 'go-bindata' 'rsync')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('767c3c271b733e76c84e5e5340eb25d05fa06606bdbbb7f4eb94a224d9fceb6a')
+sha256sums=('157cdab83eba405da4301b3ed3aa1e5cea085dd32dd212494df2cc31245706da')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
