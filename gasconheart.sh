@@ -84,13 +84,15 @@ echophrase() {
   fi
 }
 
-tput sc
-echo 
-echo
-echo
-echo
-tput rc
+i=0
+printf "\n\n\n\n\n\n\n\n\n"
+up=$(tput cuu1); printf %s "$up$up$up$up"
 while true
 do
+  if [ $((i % 3)) -eq 0 ]
+  then
+    up=$(tput cuu1); printf %s "$up$up$up$up"
+  fi
   echophrase
+  i=$((i + 1))
 done
