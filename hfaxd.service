@@ -1,0 +1,10 @@
+[Unit]
+Description=Hyla FAX client-server
+
+[Service]
+Type=forking
+ExecStart=/usr/lib/fax/hfaxd -i hylafax
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

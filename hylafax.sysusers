@@ -1,0 +1,4 @@
+g	uucp	14
+u	uucp	10	-	/	/bin/false
+u	fax	69	-	/	/bin/false
+m	fax	daemon

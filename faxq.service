@@ -1,0 +1,10 @@
+[Unit]
+Description=Hyla FAX queue manager
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/faxq
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,7 @@
+[Unit]
+Description=Daily fax queue cleanup and deletion of 30 days old faxes
+
+[Timer]
+OnCalendar=daily
+AccuracySec=12h
+Persistent=true

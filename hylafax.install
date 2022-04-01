@@ -1,0 +1,26 @@
+
+print_install() {
+  printf "\n"
+  echo "Run faxsetup to configure and be sure to set..."
+  echo "  The device to configure is usually ttyS0"
+  echo "  The number of pages to accept to more than 25"
+  echo "  The country code and area code"
+  echo "  The faxclass to 2.0"
+  echo "  Most other defaults are OK"
+  printf "\n"
+}
+
+print_remove() {
+  printf "\n\n"
+  echo "You may manually remove /var/spool/hylafax and /usr/lib/fax if you do not need anything."
+  echo "You may also remove any aliases added to /etc/mail/aliases."
+  printf "\n"
+}
+
+post_install() {
+  print_install
+}
+
+pre_remove() {
+  print_remove
+}
