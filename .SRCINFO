@@ -1,0 +1,19 @@
+pkgbase = ctbench-git
+	pkgdesc = Compile-time benchmark and analysis for Clang
+	pkgver = v0.0.0.r0.g58162ff
+	pkgrel = 1
+	url = https://github.com/jpenuchot/ctbench
+	arch = any
+	license = MIT
+	makedepends = nlohmann-json
+	makedepends = sciplot
+	depends = gnuplot
+	depends = clang
+	depends = llvm
+	depends = llvm-libs
+	provides = ctbench
+	conflicts = ctbench
+	source = ctbench-git::git+https://github.com/jpenuchot/ctbench.git#branch=main
+	sha256sums = SKIP
+
+pkgname = ctbench-git
