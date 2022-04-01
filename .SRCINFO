@@ -1,0 +1,17 @@
+pkgbase = pam_ldap
+	pkgdesc = LDAP authentication module for the PAM framework
+	pkgver = 186
+	pkgrel = 10
+	url = http://www.padl.com/OSS/pam_ldap.html
+	arch = x86_64
+	license = LGPL
+	depends = libldap
+	depends = pam
+	options = !makeflags
+	backup = etc/pam_ldap.conf
+	source = https://sources.archlinux.org/other/packages/pam_ldap/pam_ldap-186.tar.gz
+	source = pam_ldap-reproducible.patch
+	md5sums = 58c8689921c5c4578363438acd8503c2
+	md5sums = a79a0629fe04eaa350e0a94f00dde7c8
+
+pkgname = pam_ldap

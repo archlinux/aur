@@ -1,0 +1,24 @@
+diff -aur pam_ldap-186.old/vers_string pam_ldap-186/vers_string
+--- pam_ldap-186.old/vers_string	2021-12-29 21:45:36.010231609 +0100
++++ pam_ldap-186/vers_string	2021-12-29 22:24:03.167959325 +0100
+@@ -3,17 +3,19 @@
+ #ident $Id: vers_string,v 1.2 2010/02/25 14:40:39 lukeh Exp $
+ #
+ # Implementation of SGS vers_string which uses CVSVersionInfo.txt.
++use POSIX qw(strftime);
++
+ 
+ require "cvslib.pl";
+ 
+ $OUTFILE = (-f "version.h") ? "version.h" : "vers.c";
+ $AUTHOR = `whoami`;
+ $HEADER = '$Id: vers_string,v 1.2 2010/02/25 14:40:39 lukeh Exp $';
++$DATE = strftime("%Y-%m-%d", gmtime($ENV{SOURCE_DATE_EPOCH} || time));
+ 
+ if ($ENV{'PROGRAM'}) { $PROGRAM = $ENV{'PROGRAM'}; }
+ 
+ chop($AUTHOR);
+-chop($DATE=`date -u`);
+ chop($CWD=`pwd`);
+ 
+ ($PROJECT, $VERSION) = split(/\-/, &getCVSVersionInfo());
