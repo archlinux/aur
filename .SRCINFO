@@ -1,14 +1,16 @@
 pkgbase = python-configurationutil
-	pkgdesc = A collection of state machine utilities
-	pkgver = 3.7.2
+	pkgdesc = Collection of state machine utilities
+	pkgver = 3.7.6
 	pkgrel = 1
-	url = https://bitbucket.org/daycoder/configurationutil
+	url = https://pypi.org/project/configurationutil
 	arch = any
 	license = custom:PSF
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-jsonschema
-	source = https://pypi.io/packages/source/c/configurationutil/configurationutil-3.7.2.tar.gz
-	sha512sums = SKIP
+	source = python-configurationutil-3.7.6.tar.gz::https://files.pythonhosted.org/packages/source/c/configurationutil/configurationutil-3.7.6.tar.gz
+	sha256sums = a413f35ea4a6d0530b778d101f00065eab16a68216ecb930699a950ded8a8ea0
 
 pkgname = python-configurationutil
-
