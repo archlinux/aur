@@ -1,0 +1,24 @@
+pkgbase = shntool
+	pkgdesc = A multi-purpose WAVE data processing and reporting utility
+	pkgver = 3.0.10
+	pkgrel = 7
+	url = http://shnutils.freeshell.org/shntool/
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	optdepends = mac: support for ape format
+	optdepends = flac: support for flac format
+	optdepends = wavpack: support for wv format
+	options = !emptydirs
+	source = http://shnutils.freeshell.org/shntool/dist/src/shntool-3.0.10.tar.gz
+	source = debian_patches_950803.patch
+	source = debian_patches_no-cdquality-check.patch
+	source = shntool-3.0.10-large-size.diff
+	source = shntool-3.0.10-large-times.diff
+	md5sums = 5d41f8f42c3c15e3145a7a43539c3eae
+	md5sums = a3aa5b817cedb4226fa32340609a5995
+	md5sums = 596398b13e02b243078320ebde4743fb
+	md5sums = 4265935ef1d684a4b49041278ffda7de
+	md5sums = 6f0d61ddbf8cbee5c0b51a99e987ddda
+
+pkgname = shntool
