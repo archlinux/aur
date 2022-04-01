@@ -1,0 +1,18 @@
+pkgbase = imapfetch-git
+	pkgdesc = Download all e-mails from an IMAP4 mailserver and store them locally in maildir format.
+	pkgver = v1.0.0.r0.geca6b92
+	pkgrel = 1
+	url = https://github.com/ansemjo/imapfetch
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-imapclient
+	provides = imapfetch
+	conflicts = imapfetch
+	source = imapfetch-git::git+https://github.com/ansemjo/imapfetch.git
+	sha256sums = SKIP
+
+pkgname = imapfetch-git
