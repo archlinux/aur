@@ -2,13 +2,13 @@
 
 pkgname=btrfs-assistant-git
 _pkgname=btrfs-assistant
-pkgver=0.9.1.r30.g7b84efd
+pkgver=1.1.r21.g7206fdb
 pkgrel=1
 pkgdesc="An application for managing BTRFS subvolumes and Snapper snapshots"
 arch=('x86_64')
 url="https://gitlab.com/$_pkgname/$_pkgname"
 license=('GPL3')
-depends=('qt5-base' 'qt5-svg' 'noto-fonts' 'polkit')
+depends=('qt5-base' 'qt5-svg' 'noto-fonts' 'polkit' 'util-linux' 'btrfs-progs' 'diffutils')
 optdepends=('snapper' 'btrfsmaintenance')
 makedepends=('git' 'cmake' 'qt5-tools')
 conflicts=('btrfs-assistant')
