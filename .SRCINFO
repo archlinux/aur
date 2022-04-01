@@ -1,0 +1,18 @@
+pkgbase = perl-moox-aliases
+	pkgdesc = easy aliasing of methods and attributes in Moo
+	pkgver = 0.001006
+	pkgrel = 1
+	url = https://metacpan.org/release/MooX-Aliases
+	arch = any
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-class-method-modifiers
+	depends = perl-moo
+	depends = perl-strictures
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/H/HA/HAARG/MooX-Aliases-0.001006.tar.gz
+	sha512sums = 18bfdad2620e0e2fbe9e7667929ac2a2e3b9dee262348c957b6a6f2d7d0016988bb4f0ef6141ae0bd77eca74e0528ec298590efef219e3beebda69f0528fe717
+
+pkgname = perl-moox-aliases
