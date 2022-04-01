@@ -3,7 +3,7 @@
 
 pkgname=alist-bin
 _pkgname=${pkgname%-bin}
-pkgver=2.3.0
+pkgver=2.3.1
 _pkgver=${pkgver}
 pkgrel=1
 pkgdesc="Another file list program that supports multiple storage"
@@ -22,12 +22,12 @@ source_i686=("$_pkgname-$pkgver-i686.tar.gz"::"${url}/releases/download/v${_pkgv
 source_x86_64=("$_pkgname-$pkgver-x86_64.tar.gz"::"${url}/releases/download/v${_pkgver}/alist-linux-amd64.tar.gz")
 sha256sums=('b96d55f7e83310a7556a5b023be60e12f44c484e3e136f1488d737126c9ed34f'
             'ba9cd5b593313183ad8c0f008a6edba539063193c416d3893a5344e104a3fff1')
-sha256sums_aarch64=('4786d0afd3b822ed11dc210d6fd285de58e9f67e0c4ca06e9eccd85b2162ab10')
-sha256sums_arm=('37749fe9558aa5ef938eda6ddbcf1b2387868b03cdca80594a1dd239981c544f')
-sha256sums_armv6h=('4e85a0c1a665c076b7db499c5a53aec745522c367a99672c0c44df7956bcfdb6')
-sha256sums_armv7h=('1db6483cc6e6c0580eb6c0d1945ebc12eb6be7efdaa3bc28fccba6fd4ba56288')
-sha256sums_i686=('d281f0894e50b351b731c0f4945cac3eeb58f918714e1288af6874b2ffd419a9')
-sha256sums_x86_64=('1775ca3633f2f481460d9c1bccc0ef399d0eeb5ed14fc03d8d7c6db689675bef')
+sha256sums_aarch64=('ed12d49c96a2f9ea65841fa997d2f6b06948ab432ce7cfd674b6045301d76466')
+sha256sums_arm=('ca355ea9c28a21da3594d5237d42ab4861f32b19c34cf532e0a9af5318cb8284')
+sha256sums_armv6h=('36a644ed7082ca1273445d63794551ec210918ae0d59a32eaaf7eda3c414be57')
+sha256sums_armv7h=('f6693d4861d60168143c6212c4fd83b2422766de4e979718bdf56e9866a5a920')
+sha256sums_i686=('cb3fa7aa7e13af8369c7f0e32bb1a97846f1df03b0a0af06a1799cbfbcccfb66')
+sha256sums_x86_64=('7247f2891ba7152e713c8a987c9cceba038c47b48f3788803b7f697242306a91')
 
 package() {
     install -Dm755 alist-linux* ${pkgdir}/usr/bin/alist
