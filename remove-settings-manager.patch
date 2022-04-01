@@ -1,0 +1,12 @@
+diff --git a/Makefile.am b/Makefile.am
+index aa5067d6..fdd6f315 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -3,7 +3,6 @@ ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
+ SUBDIRS = \
+ 	common \
+ 	dialogs \
+-	xfce4-settings-manager \
+ 	xfce4-settings-editor \
+ 	xfsettingsd \
+ 	po \
