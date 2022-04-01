@@ -1,0 +1,11 @@
+pkgbase = thinkpad-p14s
+	pkgdesc = Utilities and dependencies for a Thinkpad P14s laptop
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://aur.archlinux.org/
+	arch = any
+	license = GPL
+	depends = amd-ucode
+	optdepends = acpi_call: Allow to configure battery charging behavior
+
+pkgname = thinkpad-p14s
