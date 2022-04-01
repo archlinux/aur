@@ -1,5 +1,5 @@
 pkgname=genenv
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Generate .env.example from .env file'
 arch=('x86_64' 'aarch64')
