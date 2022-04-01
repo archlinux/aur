@@ -1,0 +1,21 @@
+pkgbase = minase-git
+	pkgdesc = Minase is terminal file manager. With sixel support
+	pkgver = r25.ad66673
+	pkgrel = 1
+	url = https://github.com/SAT1226/Minase
+	arch = x86_64
+	license = MIT
+	depends = uchardet
+	depends = glibc
+	depends = taglib
+	optdepends = libsixel
+	optdepends = trash-cli
+	optdepends = vidir
+	optdepends = unarchiver
+	optdepends = libarchive
+	optdepends = cmigemo-git
+	provides = minase
+	source = minase::git+https://github.com/SAT1226/Minase.git
+	sha512sums = SKIP
+
+pkgname = minase-git
