@@ -1,0 +1,16 @@
+pkgbase = python-ppmd-cffi
+	pkgdesc = PPMd compression/decompression library
+	pkgver = 0.5.0
+	pkgrel = 2
+	url = https://github.com/miurahr/ppmd
+	arch = x86_64
+	license = LGPL
+	checkdepends = python-hypothesis
+	checkdepends = python-pytest
+	makedepends = python-setuptools-scm
+	depends = python-cffi
+	source = https://files.pythonhosted.org/packages/source/p/ppmd-cffi/ppmd-cffi-0.5.0.tar.gz
+	sha256sums = 2fa0a65813885e3243aa8d750c1ae08cc4834fbfce2a5341c7d44d9704bdf96e
+	b2sums = 063a7a2e69a790d750ecc0efed77ae14d5203e06c74bd42b487e8901f147410964948846a258f2f2cff6864d8ecdb2f95758cfaf36af1662fbebb11cac681eaf
+
+pkgname = python-ppmd-cffi
