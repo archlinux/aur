@@ -1,0 +1,19 @@
+pkgbase = furtherance-git
+	pkgdesc = Track your time without being tracked
+	pkgver = 1.0.8.r8.g1ff89ff
+	pkgrel = 1
+	url = https://github.com/lakoliu/Furtherance
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = rust
+	depends = gtk4
+	depends = libadwaita
+	depends = sqlite
+	provides = furtherance
+	conflicts = furtherance
+	source = git+https://github.com/lakoliu/Furtherance.git
+	b2sums = SKIP
+
+pkgname = furtherance-git
