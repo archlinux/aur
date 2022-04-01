@@ -1,6 +1,6 @@
 pkgbase = qt5-accountsservice-git
 	pkgdesc = Qt-style wrapper for Accounts Service
-	pkgver = v1.2.0.r16.gb36a9ad
+	pkgver = v1.3.0.r26.ge8a9950
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
@@ -17,8 +17,7 @@ pkgbase = qt5-accountsservice-git
 	conflicts = qt5-accountsservice
 	replaces = qtaccountsservice-git
 	replaces = qt5-accountsservice
-	source = qtaccountsservice::git://github.com/lirios/qtaccountsservice.git#branch=develop
+	source = qtaccountsservice::git+https://github.com/lirios/qtaccountsservice.git#branch=develop
 	md5sums = SKIP
 
 pkgname = qt5-accountsservice-git
-

@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=qt5-accountsservice-git
-pkgver=v1.2.0.r16.gb36a9ad
+pkgver=v1.3.0.r26.ge8a9950
 pkgrel=1
 pkgdesc="Qt-style wrapper for Accounts Service"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -14,7 +14,7 @@ replaces=('qtaccountsservice-git' 'qt5-accountsservice')
 provides=('qt5-accountsservice')
 groups=('liri-git')
 
-_gitroot="git://github.com/lirios/qtaccountsservice.git"
+_gitroot="git+https://github.com/lirios/qtaccountsservice.git"
 _gitbranch=develop
 _gitname=qtaccountsservice
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
