@@ -1,0 +1,18 @@
+pkgbase = sylpheed
+	pkgdesc = Lightweight and user-friendly e-mail client
+	pkgver = 3.7.0
+	pkgrel = 6
+	url = https://sylpheed.sraoss.jp/en/
+	arch = x86_64
+	license = GPL
+	makedepends = openssl
+	depends = compface
+	depends = gpgme
+	depends = gtkspell
+	depends = libnsl
+	source = https://sylpheed.sraoss.jp/sylpheed/v3.7/sylpheed-3.7.0.tar.bz2
+	source = Support-SNI-some-servers-imap.gmail.patch::https://sylpheed.sraoss.jp/redmine/attachments/download/145/v2-0001-libsylph-ssl.c-Support-SNI-some-servers-imap.gmai.patch
+	sha256sums = eb23e6bda2c02095dfb0130668cf7c75d1f256904e3a7337815b4da5cb72eb04
+	sha256sums = 2c622fa0d110d5745925d3a265d7dd953679d335f85a3ed3d1dcc699d9575d89
+
+pkgname = sylpheed
