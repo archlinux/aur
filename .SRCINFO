@@ -1,0 +1,16 @@
+pkgbase = kde-material-you-colors
+	pkgdesc = Automatic KDE Material You Colors Generator from your wallpaper
+	pkgver = 0.1.0BETA
+	pkgrel = 1
+	url = https://github.com/luisbocanegra/kde-material-you-colors
+	arch = x86_64
+	license = APACHE
+	depends = skia-sharp
+	depends = dbus-python
+	depends = python-numpy
+	depends = python-colr
+	options = !strip
+	source = kde-material-you-colors-0.1.0BETA.tar.gz::https://github.com/luisbocanegra/kde-material-you-colors/archive/v0.1.0BETA.tar.gz
+	sha256sums = 8ad0e2a893badea716402519806c48c5c851be1414d5fc7e15d1500a9ffa9726
+
+pkgname = kde-material-you-colors
