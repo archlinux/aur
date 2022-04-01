@@ -1,0 +1,16 @@
+pkgbase = nicos-pyctl
+	pkgdesc = NICOS pyctl c module
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://nicos-controls.org/
+	arch = x86_64
+	arch = armv7h
+	groups = tango-controls
+	license = GPL3
+	depends = python
+	provides = python-lttb
+	conflicts = nicos-pyctl-git
+	source = https://github.com/mlz-ictrl/nicos-pyctl/archive/refs/tags/v1.2.0.tar.gz
+	sha256sums = 93fc64901538ae1729fa0130e7227302d7645805848d8db37766f58ab57e4c2b
+
+pkgname = nicos-pyctl
