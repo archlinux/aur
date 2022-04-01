@@ -1,0 +1,14 @@
+pkgbase = tamu-anova
+	pkgdesc = ANOVA Extensions to the GNU Scientific Library
+	pkgver = 0.2.1
+	pkgrel = 7
+	url = https://www.stat.tamu.edu/~aredd/tamuanova/
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	depends = gsl
+	options = staticlibs
+	source = https://sources.archlinux.org/other/packages/tamu_anova/tamu_anova-0.2.1.tar.gz
+	sha1sums = 8c7ffae14ebe92f27d20ff1f0e325875fa6ced53
+
+pkgname = tamu-anova
