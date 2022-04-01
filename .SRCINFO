@@ -1,7 +1,7 @@
 pkgbase = code-marketplace
 	pkgdesc = Enable vscode marketplace in Code OSS
-	pkgver = 1.54.3
-	pkgrel = 4
+	pkgver = 1.66.0
+	pkgrel = 1
 	url = https://marketplace.visualstudio.com/vscode
 	install = code-marketplace.install
 	arch = any
@@ -12,7 +12,6 @@ pkgbase = code-marketplace
 	source = code-marketplace.hook
 	source = patch.sh
 	md5sums = 2f5ebcc1795bb5eac95162059a9a496e
-	md5sums = 2b80e3904769499f4f5bed420a254846
+	md5sums = 9bd7d0737d86c05900ee32f6821e681a
 
 pkgname = code-marketplace
-
