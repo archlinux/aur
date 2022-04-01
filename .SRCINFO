@@ -1,7 +1,7 @@
 pkgbase = do-git
 	pkgdesc = Do is a to-do app built for Linux with Rust and GTK.
 	pkgver = 0.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/edfloreshz/do
 	arch = x86_64
 	license = GPL2
