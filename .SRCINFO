@@ -1,0 +1,13 @@
+pkgbase = python-flake8-blind-except
+	pkgdesc = A flake8 extension that checks for blind except: statements
+	pkgver = 0.2.0
+	pkgrel = 2
+	url = https://github.com/elijahandrews/flake8-blind-except
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-setuptools
+	source = https://github.com/elijahandrews/flake8-blind-except/archive/v0.2.0/python-flake8-blind-except-0.2.0.tar.gz
+	sha512sums = e96ca3e9cf6fa0d5f155f2136bfc150c6726591184d84f48b77385fda32727f4fa780563a7dc404bd8b0329fc2200f6ac796c5e644565155e51f4140e1eba0cd
+
+pkgname = python-flake8-blind-except
