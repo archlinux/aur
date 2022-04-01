@@ -1,7 +1,7 @@
 # Maintainer: Snowstorm64
 
 pkgname=ares-emu-git
-pkgver=v123.r319.g808b658b4
+pkgver=127.r39.g808b658b4
 pkgrel=1
 pkgdesc="Multi-system emulator by Near with experimental Nintendo 64 and PlayStation support. (git version)"
 arch=(x86_64 i686)
@@ -18,10 +18,7 @@ sha256sums=("SKIP"
 
 pkgver() {
   cd "${srcdir}/ares"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
