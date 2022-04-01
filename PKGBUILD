@@ -2,13 +2,13 @@
 
 pkgname=python-timingsutil
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Collection of timing utilities"
 url="https://bitbucket.org/daycoder/timingsutil"
 arch=('any')
 license=('MIT')
 depends=('python-logging-helper')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/t/timingsutil/timingsutil-$pkgver.tar.gz")
 sha256sums=('0a24db06da6270d2f883b7a87b5aae92bb655c34849f525ad1ee4a59dcdabd6d')
 
@@ -19,7 +19,7 @@ prepare() {
 
 build() {
 	cd "timingsutil-$pkgver"
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 check() {
@@ -29,7 +29,12 @@ check() {
 
 package() {
 	cd "timingsutil-$pkgver"
-	PYTHONHASHSEED=0 python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s \
+		"$_site/timingsutil-$pkgver.dist-info/LICENSE.txt" \
+		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
