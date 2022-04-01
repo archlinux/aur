@@ -30,7 +30,7 @@ depends=(
     'gambas3-gb-web'
     'mpv>=0.29'
     'taglib'
-    'youtube-dl'
+    'yt-dlp'
     'wget'
 )
 
@@ -42,7 +42,7 @@ source=(https://github.com/kokoko3k/xt7-player-mpv/archive/$pkgver$hotfix.tar.gz
 
 build() {
   cd ${srcdir}/${_realname}-${pkgver}$hotfix
-  gbc3 -e -a -g -t -p -m
+  gbc3 -e -a -g -t  -f public-module -f public-control || gbc3 -e -a -g -t -p -m  
   gba3 || return 1
 
 }
