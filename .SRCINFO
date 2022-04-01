@@ -1,0 +1,17 @@
+pkgbase = perl-data-validate-uri
+	pkgdesc = common url validation methods
+	pkgver = 0.07
+	pkgrel = 1
+	url = https://metacpan.org/release/Data-Validate-URI
+	arch = x86_64
+	license = GPL
+	license = PerlArtistic
+	depends = perl
+	depends = perl-data-validate-domain
+	depends = perl-data-validate-ip
+	options = !emptydirs
+	options = purge
+	source = https://cpan.metacpan.org/authors/id/S/SO/SONNEN/Data-Validate-URI-0.07.tar.gz
+	sha512sums = 6b51a6eec704072f22348bfe93b9eb3d76ca57adce3131fa54895756e4d24e99ae9ef0b384eada6ec8e9775ed25fcf469807cefee995028199c8325bda976b72
+
+pkgname = perl-data-validate-uri
