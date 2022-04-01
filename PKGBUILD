@@ -1,6 +1,6 @@
 # Maintainer: LongChampion <ThePalazin@Gmail.com>
 pkgname=ibus-bamboo
-gitver=0.8.1-RC3
+gitver=0.8.1-RC4
 pkgver=${gitver//'-'/'_'}
 pkgrel=1
 pkgdesc="A Vietnamese IME for IBus"
@@ -11,7 +11,7 @@ depends=('ibus')
 makedepends=('go' 'gtk3' 'libx11' 'libxtst')
 conflicts=('ibus-bamboo-git' 'bamboo-ibus-git')
 source=("$pkgname-$gitver.tar.gz::https://github.com/BambooEngine/$pkgname/archive/v$gitver.tar.gz")
-sha256sums=('cf77a55bea5e4a59786c466e4574bdbdbee730aac71bb7704dd143acc1245817')
+sha256sums=('269dfb986f19854bb2e4d3c0fa5486c70ee2b28e1812d3365ff317e1e3b662d9')
 
 build() {
     cd "$pkgname-$gitver"
