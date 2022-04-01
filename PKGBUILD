@@ -20,16 +20,16 @@ build() {
 }
 
 package() {
-    # Locate compiled extention.
+  # Locate compiled extention.
   cd "$(dirname $(find -name 'metadata.json' -print -quit))"
   local _uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
   local _destdir="${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
 
-    # Install extension files
+  # Install extension files
   install -Dm644 -t "${_destdir}" metadata.json *.js *.css
   cp -r --no-preserve=ownership,mode media "${_destdir}"
   
-    # Install GSettings Schema & Locale
+  # Install GSettings Schema & Locale
   install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas/" schemas/*.xml
   cd locale
   for locale in */
