@@ -3,7 +3,7 @@
 
 _pkgname=privacybadger
 pkgname=firefox-extension-${_pkgname}
-pkgver=2021.8.17
+pkgver=2021.11.23
 pkgrel=1
 pkgdesc="Block third party tracking in your browser"
 arch=('any')
@@ -14,9 +14,9 @@ makedepends=("unzip")
 source=("${_pkgname}-${pkgver}.xpi::https://www.eff.org/files/privacy-badger-eff-${pkgver}.xpi"
         "${_pkgname}-${pkgver}.xpi.sig::https://www.eff.org/files/privacy-badger-eff-${pkgver}.xpi.sig")
 noextract=("${_pkgname}-${pkgver}.xpi")
-sha256sums=('6803803845f9001dcfcbacf4439d64ec49a59a9d3777921e8a16f5ffa985bf9d'
+sha256sums=('0da1790364cec51c930267198997a08351148cc2dd6ec68cc619e1cab25a7c8c'
             'SKIP')
-b2sums=('3247e1b11353a9577a9e53850a44ce3d103730861a5e5807ec6450ce2837fec12b4869db7015dd7385ba44021039b8649a966d7dff3edc0297abc952d2c49c9a'
+b2sums=('884bda856342d36c181d77cd3b7a62bfd262c9b40c83d25acfb6784454664e88c2d8b609c1aabeacbbc3470a239d8cacc98f46e548fd9656f47f8867a4522245'
         'SKIP')
 validpgpkeys=('88F8662241B0C16C16E3B5A7950FC3999D80F309') # Alexei <alexei@eff.org>
 
