@@ -1,14 +1,25 @@
 pkgbase = python-uiutil
 	pkgdesc = Utility module to assist creating Tk GUIs
-	pkgver = 1.36.3
+	pkgver = 1.38.0
 	pkgrel = 1
-	url = https://bitbucket.org/daycoder/uiutil
+	url = https://pypi.org/project/uiutil
 	arch = any
 	license = custom:PSF
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-attrs
+	depends = python-classutils
+	depends = python-configurationutil
+	depends = python-conversionutil
+	depends = python-fdutil
+	depends = python-future
+	depends = python-logging-helper
 	depends = python-pillow
-	source = https://pypi.io/packages/source/u/uiutil/uiutil-1.36.3.tar.gz
-	sha512sums = SKIP
+	depends = python-stateutil
+	depends = python-timingsutil
+	source = python-uiutil-1.38.0.tar.gz::https://files.pythonhosted.org/packages/source/u/uiutil/uiutil-1.38.0.tar.gz
+	sha256sums = 4044acd0b1eed09b582fbc86139c0544543fd86e5a1f30bd94ef46a41907d8e1
 
 pkgname = python-uiutil
-
