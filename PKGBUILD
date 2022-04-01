@@ -2,14 +2,14 @@
 
 pkgname=watsup
 pkgver=5.8
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 depends=('libappindicator-gtk3' 'clutter-gtk')
 license=('GPL3')
 pkgdesc="Showing some system status informations"
 url="http://www.kornelix.net/watsup/watsup.html"
 source=("http://www.kornelix.net/downloads/downloads/$pkgname-$pkgver.tar.gz")
-sha256sums=('23c4f8cd9edb4ab02691fc8ed4e14872731c429245444f36c85ae98f0f1408b7')
+sha256sums=('da1525296612c709cc3949d6569f60af85278006e2a99cec0e9ce53818e6070b')
 options=('!emptydirs')
 
 build() {
