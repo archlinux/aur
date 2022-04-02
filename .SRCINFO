@@ -1,12 +1,14 @@
 pkgbase = soundux-git
 	pkgdesc = A cross-platform soundboard - unstable development version
-	pkgver = r1076.aa9e89a
-	pkgrel = 1
+	pkgver = r1391.a4fc381
+	pkgrel = 2
 	epoch = 1
 	url = https://soundux.rocks
+	install = soundux.install
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = pkgconf
 	makedepends = cmake
 	makedepends = ninja
 	makedepends = pipewire

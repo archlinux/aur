@@ -1,7 +1,7 @@
 # Maintainer: Nico <d3sox at protonmail dot com>
 pkgname=soundux-git
-pkgver=r1076.aa9e89a
-pkgrel=1
+pkgver=r1391.a4fc381
+pkgrel=2
 epoch=1
 pkgdesc="A cross-platform soundboard - unstable development version"
 arch=('any')
@@ -9,11 +9,12 @@ url="https://soundux.rocks"
 license=('GPL3')
 depends=('pulseaudio' 'webkit2gtk' 'libwnck3' 'libappindicator-gtk3' 'lsb-release')
 optdepends=('youtube-dl: unmaintained downloader integration' 'yt-dlp-drop-in: recommended downloader integration' 'ffmpeg: downloader integration' 'pipewire: pipewire backend')
-makedepends=('git' 'cmake' 'ninja' 'pipewire')
+makedepends=('git' 'pkgconf' 'cmake' 'ninja' 'pipewire')
 conflicts=('soundux')
 provides=('soundux')
 source=("git+https://github.com/Soundux/Soundux.git")
 sha256sums=('SKIP')
+install=soundux.install
 
 pkgver() {
   cd "${srcdir}/Soundux"
