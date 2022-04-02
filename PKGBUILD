@@ -3,7 +3,7 @@
 
 pkgname=blis
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="BLAS-like Library Instantiation Software framework by the Science of High-Performance Computing Group"
 arch=('x86_64')
 license=('custom:BSD')
@@ -12,6 +12,7 @@ url='https://github.com/flame/blis'
 options=('!makeflags' '!emptydirs')
 conflicts=('blas')
 provides=('blas')
+options=('!lto')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/flame/blis/archive/${pkgver}.tar.gz" fpic.patch blis_profile.sh)
 sha512sums=('01e1990eefa4387839ac404089e4ffa32922ceaa30a1747c08a931c67706bcf29fed9d25e30c0faa36bba4f460821290e7973ed6b657d2cd95e126caaf853f81'
             'e9b7558a8c703570089ba1923d03444ec0a63c9d10cc8931dc9a19a0faa5553eecbae5af9ca4923f425259173fc7958e852c6ef9c9375f83b5d21c4634e088b5'

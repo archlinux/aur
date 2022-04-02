@@ -1,15 +1,14 @@
 pkgbase = blis
 	pkgdesc = BLAS-like Library Instantiation Software framework by the Science of High-Performance Computing Group
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/flame/blis
 	arch = x86_64
 	license = custom:BSD
 	depends = glibc
 	provides = blas
 	conflicts = blas
-	options = !makeflags
-	options = !emptydirs
+	options = !lto
 	source = blis-0.9.0.tar.gz::https://github.com/flame/blis/archive/0.9.0.tar.gz
 	source = fpic.patch
 	source = blis_profile.sh
