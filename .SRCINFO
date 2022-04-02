@@ -1,12 +1,11 @@
 pkgbase = glualint-bin
 	pkgdesc = Linter for Garry's mod Lua.
-	pkgver = 1.20.0
+	pkgver = 1.20.1
 	pkgrel = 1
 	url = https://github.com/FPtje/GLuaFixer
 	arch = x86_64
 	license = LGPL2.1
-	depends = libffi
-	source = https://github.com/FPtje/GLuaFixer/releases/download/1.20.0/glualint-1.20.0-linux.zip
-	sha256sums = 560e5411b932390258e33ee8aa13e7105156913ff5342b153a6c576ece425b8a
+	source = https://github.com/FPtje/GLuaFixer/releases/download/1.20.1/glualint-1.20.1-linux.zip
+	sha256sums = 81de134597867064bfc325744cc49476eeb131f5bd0b9ca498a41664a4ad3ae5
 
 pkgname = glualint-bin
