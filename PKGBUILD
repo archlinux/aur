@@ -114,6 +114,7 @@ prepare () {
 }
 
 build () {
+  build_brotli
   build_nss
   build_nghttp2
   build_curl
