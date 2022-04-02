@@ -1,0 +1,16 @@
+pkgbase = cow-encryptor-git
+	pkgdesc = Encrypt your files in cow language
+	pkgver = r2.45ebc35
+	pkgrel = 1
+	url = https://github.com/SkwalExe/cow-encryptor
+	install = cow-encryptor.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	depends = cow-translator-git
+	provides = cow-encryptor
+	source = git+https://github.com/SkwalExe/cow-encryptor
+	md5sums = SKIP
+
+pkgname = cow-encryptor-git
