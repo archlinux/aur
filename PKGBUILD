@@ -9,10 +9,9 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-xdg-bin
-pkgver=99.0.4844.84
+pkgver=100.0.4896.60
 pkgrel=1
 _launcher_ver=8
-_gcc_patchset=3
 pkgdesc="A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory (binary version)"
 arch=('x86_64')
 url="https://github.com/Eloston/ungoogled-chromium"
@@ -26,8 +25,8 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: support for storing passwords in KWallet on Plasma')
 options=('!lto') # Chromium adds its own flags for ThinLTO
-source=(https://github.com/noahvogt/${pkgname%-*}-aur/releases/download/99.0.4844.84/$pkgname-$pkgver.tar.gz)
-sha256sums=('7b3d40670667d72d00057e5275d6d56a9ca8374ef9e1aa2df3e0102b5574b4b3')
+source=(https://github.com/noahvogt/${pkgname%-*}-aur/releases/download/$pkgver/$pkgname-$pkgver.tar.gz)
+sha256sums=('d6eb2739e50ce2f281bd66240ecc4d125caaf739d9a98964adec1898673d0c3c')
 provides=('chromium')
 conflicts=('chromium')
 
