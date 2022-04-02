@@ -2,10 +2,10 @@
 # Do not forget to run `makepkg --printsrcinfo > .SRCINFO`
 
 _pkgname=jgmenu
-_pkgver=v4.4.0
+_pkgver=4.4.0
 pkgname=${_pkgname}-minimal
-pkgver=v4.4.0+2c73e23
-pkgrel=1
+pkgver=4.4.0+2c73e23
+pkgrel=2
 pkgdesc="Simple, independent, contemporary-looking X11 menu, designed for scripting, ricing and tweaking. Compiled with gtktheme support"
 arch=('x86_64')
 url="https://github.com/johanmalm/${_pkgname}"
@@ -15,7 +15,7 @@ optdepends=('python')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
 
-source=("git+${url}.git#tag=${_pkgver}"
+source=("git+${url}.git#tag=v${_pkgver}"
         'remove-unwanted-mans.patch')
 sha256sums=('SKIP'
             'ec3e0176486b0e18779145584ac76831292e8466269559f1ba23d48d94b54665')
@@ -28,9 +28,7 @@ prepare() {
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-
-  # Get the version number.
-  printf "%s+%s" "$(git tag --points-at HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s+%s" "${_pkgver}" "$(git rev-parse --short HEAD)"
 }
 
 build() {
