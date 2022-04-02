@@ -1,7 +1,7 @@
 pkgbase = ethminer-etchash-git
 	pkgdesc = Ethereum Classic miner with OpenCL, CUDA and stratum support
 	pkgver = r14327.52ff22e7d
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/etclabscore/ethminer
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,7 @@ pkgbase = ethminer-etchash-git
 	makedepends = python
 	makedepends = git
 	depends = mesa
-	depends = pth
+	depends = npth
 	depends = cuda
 	provides = ethminer-etchash
 	conflicts = ethminer
