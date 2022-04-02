@@ -4,7 +4,7 @@ buildarch=28
 
 pkgname=raspberrypi-devicetree-git
 pkgdesc="Downstream devicetrees and overlays for Raspberry Pi"
-pkgver=20220308
+pkgver=20220328
 pkgrel=1
 arch=('any')
 url="https://github.com/raspberrypi/firmware"
@@ -12,9 +12,9 @@ provides=('raspberrypi-devicetree')
 conflicts=('uboot-raspberrypi' 'linux-raspberrypi' 'linux-raspberrypi4')
 license=(GPL2)
 options=(!strip)
-_commit=191360eaf2e5933eaa0ed76ac0d62722b6f9a58f
+_commit=69277bc713133a54a1d20554d79544da1ae2b6ca
 source=("https://github.com/raspberrypi/firmware/archive/${_commit}.tar.gz")
-md5sums=('c62776b7d10cf082f755b0f8ddd2e51b')
+md5sums=('7adf5f515a1a00066aab3fa7e0eb7d45')
 
 package() {
   mkdir -p "${pkgdir}"/boot
