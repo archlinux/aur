@@ -1,0 +1,20 @@
+pkgbase = chromium-extension-ipfs-companion-av
+	pkgdesc = Chromium IPFS Companion extension
+	pkgver = 2.19.1
+	pkgrel = 0
+	url = https://github.com/ipfs/ipfs-companion
+	arch = any
+	license = cc0-1.0
+	makedepends = chromium
+	makedepends = jq
+	makedepends = openssl
+	makedepends = sed
+	provides = chromium-extension-ipfs-companion
+	conflicts = chromium-extension-ipfs-companion
+	noextract = chromium-extension-ipfs-companion-av-2.19.1.zip
+	source = chromium-extension-ipfs-companion-av-2.19.1.zip::https://github.com/ipfs/ipfs-companion/releases/download/v2.19.1/ipfs_companion-2.19.1_chromium.zip
+	source = template.json
+	sha256sums = 38556d8e091bfa107aca44e9aef11052ea8c461ddd5c57340627c3675ee611a4
+	sha256sums = d3f71f6947174155f9ed31948227009f9a8a7e8c415cf1e56200a4399ad51c67
+
+pkgname = chromium-extension-ipfs-companion-av
