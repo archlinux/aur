@@ -1,6 +1,6 @@
 pkgbase = emulicious-bin
 	pkgdesc = Game Boy, Game Boy Color, Master System, Game Gear and MSX emulator
-	pkgver = 2022.03.08
+	pkgver = 2022.04.01
 	pkgrel = 1
 	url = https://emulicious.net
 	arch = any
@@ -14,9 +14,9 @@ pkgbase = emulicious-bin
 	depends = sh
 	depends = hicolor-icon-theme
 	provides = emulicious
-	source = emulicious-bin-2022.03.08-1.zip::https://emulicious.net/download/emulicious/?wpdmdl=205
+	source = emulicious-bin-2022.04.01-1.zip::https://emulicious.net/download/emulicious/?wpdmdl=205
 	source = emulicious.sh
-	sha256sums = ca09d71bd97686e262c385ba780cdc9b193bfc8cbdef1d69e4f6da65b45a4527
+	sha256sums = 9555c1b9f9b81036b65050781acfbc943aab31db6597e1699a922d3a064250e7
 	sha256sums = 3f9442376a7a8ba93ff5490826bcd5b5b81c5c62b3a6ec48bcd586a0e42fca66
 
 pkgname = emulicious-bin
