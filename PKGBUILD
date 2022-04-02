@@ -10,8 +10,8 @@ arch=("$CARCH")
 url="https://github.com/supermerill/SuperSlicer"
 license=('AGPL3')
 options=(!emptydirs)
-depends=('boost-libs>=1.73.0' 'cgal' 'glew' 'imath' 'libspnav' 'nlopt' 'openvdb' 'qhull>=2020.2-4' 'wxgtk3-dev-314-opt')
-makedepends=('boost>=1.73.0' 'cereal>=1.3.0' 'cmake' 'eigen' 'libigl' 'openvdb' 'samurai' 'wxgtk2-dev-314-opt') # cmake doesn't detect wx if not both gtk2 and gtk3 are installed
+depends=('boost-libs>=1.73.0' 'cgal' 'glew' 'imath' 'libspnav' 'nlopt' 'openvdb' 'qhull>=2020.2-4' 'wxgtk3')
+makedepends=('boost>=1.73.0' 'cereal>=1.3.0' 'cmake' 'eigen' 'libigl' 'openvdb' 'samurai' 'wxgtk2') # cmake doesn't detect wx if not both gtk2 and gtk3 are installed
 optdepends=('superslicer-profiles: Predefined printer profiles')
 provides=("superslicer=$epoch:$pkgver")
 conflicts=('superslicer' 'superslicer-git')
@@ -28,6 +28,7 @@ prepare()
 {
 	cd "$srcdir/SuperSlicer-$_pkgtag"
 	[ ! -f build/Makefile ] || rm -rf build
+	rm -rf build # build does fail everytime if it is not clean build ?
 	mkdir -p build
 
 	# disabling tests is not enough, we need to remove them explicitly
@@ -54,9 +55,7 @@ build()
 		-DSLIC3R_WX_STABLE=ON \
 		-DSLIC3R_GTK=3 \
 		-DSLIC3R_BUILD_TESTS=OFF \
-		-DSLIC3R_ALPHA=ON \
-		-DwxWidgets_CONFIG_EXECUTABLE=/opt/wxgtk-dev-314/bin/wx-config \
-		-DCMAKE_CXX_FLAGS="-Wno-unused-command-line-argument -Wl,-rpath=/opt/wxgtk-dev-314/lib"
+		-DSLIC3R_ALPHA=ON 
 
 	samu
 }
