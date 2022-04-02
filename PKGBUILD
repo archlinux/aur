@@ -1,14 +1,14 @@
 pkgname=xava-git
 _pkgname=xava
-pkgver=0.7.0.0.r0.gdc62314
+pkgver=0.7.1.1.r0.g13e1346
 pkgrel=1
 pkgdesc='X11 Audio Visualizer for Alsa/Pulseaudio/FIFO'
 arch=('any')
 url='https://github.com/nikp123/xava'
 license=('MIT')
 depends=('fftw' 'alsa-lib' 'wayland-protocols' 'libx11' 'sdl2' 'portaudio'
-  'libpulse' 'sndio' 'mesa' 'pipewire')
-makedepends=('cmake' 'git')
+  'libpulse' 'sndio' 'mesa' 'pipewire' 'cairo' 'wayland')
+makedepends=('cmake' 'git' 'imagemagick')
 source=('git+https://github.com/nikp123/xava')
 sha1sums=('SKIP')
 
