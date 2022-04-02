@@ -4,12 +4,12 @@
 pkgname=openni2
 pkgver=2.2.0
 _srcname=OpenNI2-${pkgver}-debian
-pkgrel=1
+pkgrel=2
 pkgdesc='Framework for sensor-based Natural Interaction'
 arch=('i686' 'x86_64')
 url='https://github.com/occipital/OpenNI2/'
 license=('Apache-2.0')
-depends=('freeglut' 'glu' 'libusb' 'java-environment' 'libjpeg-turbo')
+depends=('freeglut' 'glu' 'libusb' 'systemd' 'java-environment' 'libjpeg-turbo')
 makedepends=('python' 'doxygen' 'graphviz')
 source=("https://github.com/occipital/OpenNI2/archive/v${pkgver}-debian.tar.gz"
         '0002-Change-path-of-config-files-to-etc-openni2.patch'

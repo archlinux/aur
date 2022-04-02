@@ -1,7 +1,7 @@
 pkgbase = openni2
 	pkgdesc = Framework for sensor-based Natural Interaction
 	pkgver = 2.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/occipital/OpenNI2/
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = openni2
 	depends = freeglut
 	depends = glu
 	depends = libusb
+	depends = systemd
 	depends = java-environment
 	depends = libjpeg-turbo
 	source = https://github.com/occipital/OpenNI2/archive/v2.2.0-debian.tar.gz
@@ -32,4 +33,3 @@ pkgbase = openni2
 	sha256sums = 57c9236c77133437a533d3cac6775da4749a070dd468e88e29b07d7a83aaaab1
 
 pkgname = openni2
-
