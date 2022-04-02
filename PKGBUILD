@@ -1,23 +1,25 @@
-# Maintainer:  Gustavo Alvarez <sl1pkn07@gmail.com>
+# Maintainer: Gustavo Alvarez <sl1pkn07@gmail.com>
 
 _plug=vsdpir
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.7.1.2.g34137fa
+pkgver=2.1.0.0.gc753f50
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://github.com/HolyWu/vs-dpir'
 license=('MIT')
-depends=('vapoursynth'
+depends=('vapoursynth-plugin-vsutil-git'
          'python-numpy'
          'python-tqdm'
          'python-requests'
          )
 makedepends=('git'
-             'python-pip'
+             'python-packaging'
              )
-optdepends=('python-pytorch: CPU with AVX2 optimizations'
-            'python-pytorch-cuda: CUDA with CPU with AVX2 optimizations'
+optdepends=('python-pytorch: pytorch CPU with AVX2 optimizations'
+            'python-pytorch-cuda: pytorch CUDA with CPU with AVX2 optimizations'
+            'python-onnxruntime: ONXXRuntime support'
+            'python-onnxruntime-cuda: ONXXRuntime CUDA support'
             )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
