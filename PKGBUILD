@@ -2,7 +2,7 @@
 
 pkgname=cpl
 pkgver=7.1.4
-pkgrel=2
+pkgrel=3
 #lock the versions
 _wcs_ver=7.6
 _cfitsio_ver=3.49
@@ -26,7 +26,7 @@ md5sums=('fd172d323a94dce2624b5d9b8014f21a'
          '171860ffed8c1a396fc497d853f285c1'
          '8fea0d68e0a0d3946c2c39d62f7198a2'
          '50145bb68a8510b5d77605f11cadf8dc'
-         '4aa11d4fc2e9d674282a886eba5a5b8a')
+         SKIP)
 
 
 build_cfitsio () {
