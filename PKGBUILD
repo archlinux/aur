@@ -3,7 +3,7 @@
 pkgname=superslicer-prerelease
 pkgver=2.4.58.2
 _pkgtag=$pkgver
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)"
 arch=("$CARCH")
