@@ -1,7 +1,7 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=curl-impersonate-firefox
-pkgver=r59.979750a
+pkgver=r101.af38d2b
 _gitname=curl-impersonate
 pkgrel=1
 pkgdesc="A special compilation of curl that makes it impersonate Firefox"
@@ -9,11 +9,14 @@ url="https://github.com/lwthiker/curl-impersonate"
 license=('MIT')
 arch=('x86_64')
 makedepends=(git gcc cmake go ninja unzip zlib autoconf automake libtool python mercurial gyp patch)
-depends=(brotli nss)
+depends=(nss)
 provides=(curl-impersonate-firefox)
 
-NSS_VERSION=nss-3.74
-NSS_URL=https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_74_RTM/src/nss-3.74-with-nspr-4.32.tar.gz
+BROTLI_VERSION=1.0.9
+BROTLI_URL="https://github.com/google/brotli/archive/refs/tags/v${BROTLI_VERSION}.tar.gz"
+BROTLI_VERSION="brotli-${BROTLI_VERSION}"
+NSS_VERSION=nss-3.75
+NSS_URL=https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_75_RTM/src/nss-3.75-with-nspr-4.32.tar.gz
 NGHTTP2_VERSION=nghttp2-1.46.0
 NGHTTP2_URL=https://github.com/nghttp2/nghttp2/releases/download/v1.46.0/nghttp2-1.46.0.tar.bz2
 CURL_VERSION=curl-7.81.0
@@ -24,12 +27,14 @@ source=(
   "${NSS_VERSION}.tar.gz::${NSS_URL}"
   "${NGHTTP2_VERSION}.tar.bz2::${NGHTTP2_URL}"
   "${CURL_VERSION}.tar.xz::${CURL_URL}"
+  "${BROTLI_VERSION}.tar.gz::${BROTLI_URL}"
 )
 
 md5sums=('SKIP'
-         '75aa40414886d9327a5f4f4bff79bdf5'
+         'fe79a300f73b6bffaf2a56c8f5618f1e'
          'de2aaa48ae0bf9713da3a9bfc3f1629f'
-         '41954fa09f879fccb57d88be23fe8606')
+         '41954fa09f879fccb57d88be23fe8606'
+         'c2274f0c7af8470ad514637c35bcee7d')
 
 browser_dir=${_gitname}/firefox
 
@@ -37,6 +42,15 @@ browser_dir=${_gitname}/firefox
 pkgver() {
   cd ${_gitname}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build_brotli() {
+  cd ${srcdir}
+  cd ${BROTLI_VERSION}
+  mkdir build
+  cd build
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=./installed ..
+  cmake --build . --config Release --target install
 }
 
 build_nss () {
@@ -50,7 +64,9 @@ patch_nghttp2 () {
   cp ${browser_dir}/patches/libnghttp2-*.patch ${NGHTTP2_VERSION}/
   cd ${NGHTTP2_VERSION}
   for p in $(ls libnghttp2-*.patch); do patch -p1 < $p; done
-  autoreconf -i && automake && autoconf
+  autoreconf -i
+  automake
+  autoconf
 }
 
 build_nghttp2 () {
@@ -72,7 +88,7 @@ patch_curl () {
 build_curl () {
   cd ${srcdir}
   cd ${CURL_VERSION}
-  ./configure --with-nss=${srcdir}/${NSS_VERSION}/dist/Release --enable-static --disable-shared --with-nghttp2=${srcdir}/${NGHTTP2_VERSION}/build LIBS="-pthread" CFLAGS="-I${srcdir}/${NSS_VERSION}/dist/public/nss -I${srcdir}/${NSS_VERSION}/dist/Release/include/nspr -I${srcdir}/${NGHTTP2_VERSION}/build" USE_CURL_SSLKEYLOGFILE=true
+  ./configure --with-nss=${srcdir}/${NSS_VERSION}/dist/Release --enable-static --disable-shared --with-nghttp2=${srcdir}/${NGHTTP2_VERSION}/build --with-brotli=${srcdir}${BROTLI_VERSION}/build/installed LIBS="-pthread" CFLAGS="-I${srcdir}/${NSS_VERSION}/dist/public/nss -I${srcdir}/${NSS_VERSION}/dist/Release/include/nspr -I${srcdir}/${NGHTTP2_VERSION}/build" USE_CURL_SSLKEYLOGFILE=true
   make
   mkdir -p out
   cp src/curl out/curl-impersonate
@@ -84,7 +100,7 @@ build_curl () {
 build_libcurl () {
   cd ${srcdir}
   cd ${CURL_VERSION}
-  ./configure --with-nss=${srcdir}/${NSS_VERSION}/dist/Release --with-nghttp2=${srcdir}/${NGHTTP2_VERSION}/build LIBS="-pthread" CFLAGS="-I${srcdir}/${NSS_VERSION}/dist/public/nss -I${srcdir}/${NSS_VERSION}/dist/Release/include/nspr -I${srcdir}/${NGHTTP2_VERSION}/build" USE_CURL_SSLKEYLOGFILE=true
+  ./configure --with-nss=${srcdir}/${NSS_VERSION}/dist/Release --with-nghttp2=${srcdir}/${NGHTTP2_VERSION}/build --with-brotli=${srcdir}${BROTLI_VERSION}/build/installed LIBS="-pthread" CFLAGS="-I${srcdir}/${NSS_VERSION}/dist/public/nss -I${srcdir}/${NSS_VERSION}/dist/Release/include/nspr -I${srcdir}/${NGHTTP2_VERSION}/build" USE_CURL_SSLKEYLOGFILE=true
   make clean
   make
   ver=$(readlink -f lib/.libs/libcurl.so | sed 's/.*so\.//')
