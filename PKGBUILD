@@ -2,7 +2,7 @@
 
 pkgname=btrfs-assistant-git
 _pkgname=btrfs-assistant
-pkgver=1.1.r21.g7206fdb
+pkgver=1.1.r27.ga4c98f2
 pkgrel=1
 pkgdesc="An application for managing BTRFS subvolumes and Snapper snapshots"
 arch=('x86_64')
@@ -32,7 +32,4 @@ build() {
 package() {
     cd "$srcdir/$_pkgname"
     make -C build DESTDIR="$pkgdir" install
-
-    install -Dm0644 "$srcdir/$_pkgname/btrfs-assistant.conf" "$pkgdir/etc/btrfs-assistant.conf"
-    install -Dm0644 org.btrfs-assistant.pkexec.policy "$pkgdir/usr/share/polkit-1/actions/org.btrfs-assistant.pkexec.policy"
 }
