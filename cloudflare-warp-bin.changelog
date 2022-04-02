@@ -1,6 +1,18 @@
+cloudflare-warp (2022.3.253) unstable; urgency=medium
+
+  * `warp-cli delete` run as root will remove the user for an organization
+    even if "Allowed To Leave" is disabled in Zero Trust dashboard.
+  * Added `warp-cli disable-connectivity-checks` and `warp-cli
+    enabled-connectivity-checks` to control connectivity checks
+  * Fixed issue with `warp-cli teams-enroll` on platforms where the default
+    browser is installed with snap.
+  * Added "Device Posture Only" support
+
+ -- Matt Schulte <mschulte@cloudflare.com> Wed, 40 March 2022 15:30:00 -0700
+
 cloudflare-warp (2022.2.288) unstable; urgency=medium
 
-  * Fixed an issure where the organization name became case sensitive and could
+  * Fixed an issue where the organization name became case sensitive and could
     cause a device to lose registration
 
  -- Matt Schulte <mschulte@cloudflare.com> Thu, 24 Feb 2022 10:10:00 -0800
