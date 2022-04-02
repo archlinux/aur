@@ -3,16 +3,16 @@ _pkgname1=ablur
 _pkgname2=ablur-small
 _pkgname3=ablur-big
 pkgname=plank-theme-ablur
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc='Ablur Theme for Plank'
 arch=(any)
-url='https://www.gnome-look.org/p/1407624'
+url='https://www.gnome-look.org/p/1520823'
 _url="https://github.com/MMcQueenGNU"
 license=('GPL3')
 source=("$_url/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('e1dc56124094dcee34551cbf6e209ddbbb8913c9d31877fa8c2ccbc80df0598b')
+sha256sums=('23f4ec2cabc5a9b8c45c7551e32286df2ae1dc9c529cb9c98d91de89787ab2f8')
 
 build() {
 	true
