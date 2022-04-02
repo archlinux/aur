@@ -1,7 +1,7 @@
 # Maintainer: SKBotNL <skbotnl@mailfence.com>
 
 pkgname="multimc-development-bin"
-pkgver=0.6.15_develop_3242
+pkgver=0.6.15_develop_3254
 pkgrel=1
 pkgdesc="A custom launcher for Minecraft that focuses on predictability, long term stability and simplicity."
 arch=("x86_64" "i686")
@@ -12,8 +12,8 @@ provides=("multimc-development")
 conflicts=("multimc-development")
 source_x86_64=($pkgname-$pkgver.tar.gz::https://files.multimc.org/downloads/mmc-develop-lin64.tar.gz)
 source_i686=($pkgname-$pkgver.tar.gz::https://files.multimc.org/downloads/mmc-develop-lin32.tar.gz)
-sha256sums_x86_64=("7d7b0056268e7431854a2595d7e8976f5da2915946d94738d5b7731684de3ccd")
-sha256sums_i686=("11ee5f2d1ed26796b39f7a65a273e1efda1585e1f75fc98b4d27bc9c5e509ba7")
+sha256sums_x86_64=("38212baa2d76b5733f88401cd6926ebc41ae3705733c27acf5c46034fa158c02")
+sha256sums_i686=("59b6ef43cf058a061d3deb2ac8de6e4ec6e20f881404ec6c64acf2157c67fa97")
 
 prepare() {
     echo -e "[Desktop Entry]\nName=MultiMC Development\nVersion=${pkgver//_/-}\nGenericName=Minecraft Launcher\nComment=Free, open source launcher and instance manager for Minecraft.\nType=Application\nTerminal=false\nExec=/usr/bin/multimc-development -d ~/.multimc\nIcon=/usr/lib/multimc-development/multimc.png\nCategories=Game\nKeywords=game;minecraft;" > multimc-development.desktop
