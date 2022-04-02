@@ -19,20 +19,20 @@ makedepends=(
   'python-installer'
 )
 checkdepends=('python-pytest-asyncio')
-source=($pkgname::"git+https://github.com/zigpy/zigpy-deconz#tag=$pkgver")
-sha512sums=('SKIP')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/zigpy/zigpy-deconz/archive/$pkgver.tar.gz")
+sha512sums=('8552f3db53a47f280efcb6d297d432ddbfb30f4524fb46978ee20d1cb4612d69a3003ec96223c681c33253661c93de17595a3ac9f866a75b057c44b9fb524126')
 
 build() {
-  cd $pkgname
+  cd $_pkgname-$pkgver
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd $pkgname
+  cd $_pkgname-$pkgver
   pytest
 }
 
 package() {
-  cd $pkgname
+  cd $_pkgname-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
 }

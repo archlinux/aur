@@ -12,7 +12,7 @@ pkgbase = python-zigpy-deconz
 	depends = python
 	depends = python-zigpy
 	depends = python-pyserial-asyncio
-	source = python-zigpy-deconz::git+https://github.com/zigpy/zigpy-deconz#tag=0.14.0
-	sha512sums = SKIP
+	source = zigpy-deconz-0.14.0.tar.gz::https://github.com/zigpy/zigpy-deconz/archive/0.14.0.tar.gz
+	sha512sums = 8552f3db53a47f280efcb6d297d432ddbfb30f4524fb46978ee20d1cb4612d69a3003ec96223c681c33253661c93de17595a3ac9f866a75b057c44b9fb524126
 
 pkgname = python-zigpy-deconz
