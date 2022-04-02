@@ -3,7 +3,7 @@
 # Disclaimer: This package is not from Nordic Semiconductor
 pkgname=nrf-connect-sdk
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Software development kit for Nordic Semiconductor products"
 arch=('x86_64')
 url="https://github.com/nrfconnect/sdk-nrf"
@@ -101,8 +101,7 @@ package() {
 	install -dm755 "${pkgdir}/opt/"
 
 	cp -R "${srcdir}" "${pkgdir}/opt/nrf-connect-sdk"
-	chmod -R 775 "${pkgdir}/opt/nrf-connect-sdk"
-	chown -R :users "${pkgdir}/opt/nrf-connect-sdk"
+	chmod -R 777 "${pkgdir}/opt/nrf-connect-sdk"
 	
 	mkdir -p "${pkgdir}/etc/profile.d"
     echo "export ZEPHYR_TOOLCHAIN_VARIANT=gnuarmemb" > "${pkgdir}/etc/profile.d/nrf-connect-sdk-env.sh"

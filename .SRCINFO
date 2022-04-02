@@ -1,7 +1,7 @@
 pkgbase = nrf-connect-sdk
 	pkgdesc = Software development kit for Nordic Semiconductor products
 	pkgver = 1.9.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nrfconnect/sdk-nrf
 	install = nrf-connect-sdk.install
 	arch = x86_64
