@@ -6,7 +6,6 @@ pkgbase = rkdeveloptool
 	arch = x86_64
 	arch = aarch64
 	license = GPL2
-	makedepends = autoconf
 	makedepends = git
 	depends = libusb
 	source = git+https://github.com/rockchip-linux/rkdeveloptool.git

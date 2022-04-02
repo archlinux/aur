@@ -7,8 +7,7 @@ pkgdesc='Development tool for Rockchip SOC'
 arch=('x86_64' 'aarch64')
 url='https://github.com/rockchip-linux/rkdeveloptool'
 license=('GPL2')
-makedepends=('autoconf'
-             'git')
+makedepends=('git')
 depends=('libusb')
 source=('git+https://github.com/rockchip-linux/rkdeveloptool.git')
 sha256sums=('SKIP')
