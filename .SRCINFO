@@ -1,11 +1,12 @@
 pkgbase = plank-minimal
 	pkgdesc = Elegant, simple, clean dock (minimal build)
 	pkgver = 0.11.89.r0.g27c7863
-	pkgrel = 1
+	pkgrel = 2
 	url = https://launchpad.net/plank
 	arch = x86_64
 	license = GPL3
 	makedepends = gnome-common
+	makedepends = gnome-menus
 	makedepends = git
 	makedepends = intltool
 	makedepends = vala

@@ -5,14 +5,14 @@ _pkgname=plank
 _pkgver=0.11.89
 pkgname=${_pkgname}-minimal
 pkgver=0.11.89.r0.g27c7863
-pkgrel=1
+pkgrel=2
 pkgdesc='Elegant, simple, clean dock (minimal build)'
 arch=('x86_64')
 url='https://launchpad.net/plank'
 license=('GPL3')
 depends=('atk' 'bamf' 'cairo' 'gdk-pixbuf2' 'glib2' 'glibc'
          'gtk3' 'libgee' 'libwnck3' 'libx11' 'libxfixes' 'libxi' 'pango')
-makedepends=('gnome-common' 'git' 'intltool' 'vala')
+makedepends=('gnome-common' 'gnome-menus' 'git' 'intltool' 'vala')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 
