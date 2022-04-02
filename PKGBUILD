@@ -46,17 +46,11 @@ source=(
   git+https://github.com/networkupstools/nut.git
   nut.sysusers
   nut.tmpfiles
-  nut-lowspeed-buffer-size.patch
-  nut-no-libdummy.patch
-  nut-openssl-1.1.patch
   nut-snmp-usb-order.patch
 )
 sha256sums=('SKIP'
             '3001e24969545136361670c5d615684d2b37830525e090c2ab3bcfa90d90e4ac'
             'c924ccaae9ec75ee7795c872e1708d10201402642a6d5de2304cc644744bbcc5'
-            '40d6fc328ad2e127f580bb359bd5c2fb721a2c6cf1860334be96c18552d6f8f7'
-            'b35a8d28fde10668e8e54e97be9c5505f296c989e67da847c5abf1acab6a219b'
-            '717e116aa93f42ccca901de920da3ff97407672003f721b4976caf525f3e5f08'
             'c2c7d3b72f94f9c7987ab047bba466923c63ddb80b468485f100b1e44997ec84')
 
 pkgver() {
@@ -69,9 +63,6 @@ prepare() {
   cd nut
 
   git cherry-pick -n eea0c5e9e5566c36a8b1e364ed4909231901a8f5
-  patch -Np1 -i ../nut-lowspeed-buffer-size.patch
-  patch -Np1 -i ../nut-no-libdummy.patch
-  patch -Np1 -i ../nut-openssl-1.1.patch
   patch -Np1 -i ../nut-snmp-usb-order.patch
 
   ./autogen.sh
