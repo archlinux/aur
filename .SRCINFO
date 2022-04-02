@@ -1,16 +1,18 @@
 pkgbase = python-cachingutil
-	pkgdesc = A collection of caching utilities
-	pkgver = 1.0.18
+	pkgdesc = Collection of caching utilities
+	pkgver = 1.2.7
 	pkgrel = 1
 	url = https://bitbucket.org/daycoder/cachingutil
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-fdutil
 	depends = python-requests
 	depends = python-timingsutil
-	depends = python-fdutil
-	source = https://pypi.io/packages/source/c/cachingutil/cachingutil-1.0.18.tar.gz
-	md5sums = e425cec6949cd9426ea08a4e40261769
+	source = python-cachingutil-1.2.7.tar.gz::https://files.pythonhosted.org/packages/source/c/cachingutil/cachingutil-1.2.7.tar.gz
+	sha256sums = 1f576f5b6972e2b40329f5f1a3ea15335ab695822b63f7a518d5ccbe7ee74029
 
 pkgname = python-cachingutil
-
