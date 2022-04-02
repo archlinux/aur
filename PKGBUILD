@@ -5,7 +5,7 @@
 pkgname=wpa_supplicant_gui
 _pkgname=${pkgname%_gui}
 pkgver=2.10
-pkgrel=2
+pkgrel=1
 pkgdesc="A Qt frontend for interacting with wpa_supplicant"
 url="https://w1.fi/wpa_supplicant/"
 arch=('x86_64')
