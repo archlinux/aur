@@ -1,0 +1,16 @@
+pkgbase = docker-forward
+	pkgdesc = A docker CLI plugin to forward local port to a container port
+	pkgver = 1
+	pkgrel = 1
+	url = https://ktlint.github.io/
+	arch = any
+	license = MIT
+	depends = bash
+	depends = socat
+	depends = docker
+	source = https://raw.githubusercontent.com/pschichtel/docker-forward/v1/docker-forward.sh
+	source = https://raw.githubusercontent.com/pschichtel/docker-forward/v1/LICENSE
+	sha256sums = 7c430b67c955d5134595fe40a5f24e1bd8c8f09ba6a603faef7f9748e5a0b0a2
+	sha256sums = b45bdb3357e761d4b1300470833cf5e5e9fafc32a5f98efef214ba926b0120d5
+
+pkgname = docker-forward
