@@ -1,20 +1,17 @@
 # Maintainer: Magnus Groß, for email contact see AUR commit author email
 _pkgname=grandorgue
 pkgname="$_pkgname"-git
-pkgver=3.6.4.1.r1.gfd3aa076
-pkgrel=2
+pkgver=3.6.5.0.r3.g3bc15926
+pkgrel=1
 pkgdesc="Virtual Pipe Organ Software"
 arch=('i686' 'x86_64')
 url="https://github.com/GrandOrgue/$_pkgname"
 license=('GPL2+')
-depends=(wxgtk2 wavpack fftw jack)
+depends=(wxgtk2 wavpack fftw jack zita-convolver)
 makedepends=(git cmake rtaudio rtmidi portaudio docbook-xsl)
 conflicts=(grandorgue grandorgue-bin)
-source=("git+$url.git"
-	"git+https://github.com/GrandOrgue/ZitaConvolver.git"
-)
-sha256sums=('SKIP'
-            'SKIP')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$_pkgname"
@@ -24,17 +21,9 @@ pkgver() {
 	)
 }
 
-prepare() {
-	cd "$_pkgname"
-	# Unfortunately we are unable to use system zita at the moment
-	git submodule init submodules/ZitaConvolver
-	git config submodule.submodules/ZitaConvolver.url "$srcdir/ZitaConvolver"
-	git submodule update
-}
-
 build() {
 	cd "$_pkgname"
-	cmake -B build -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release -DUSE_INTERNAL_RTAUDIO=Off -DUSE_INTERNAL_PORTAUDIO=Off
+	cmake -B build -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release -DUSE_INTERNAL_RTAUDIO=Off -DUSE_INTERNAL_PORTAUDIO=Off -DUSE_INTERNAL_ZITACONVOLVER=Off
 	cmake --build build
 }
 
