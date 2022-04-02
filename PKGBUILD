@@ -19,7 +19,7 @@ pkgver() {
 
 build() {
     cd $_pkgname
-    PREFIX="${pkgdir}/usr" make -C src
+    PREFIX="/usr" make -C src
  }
 
 package() {
