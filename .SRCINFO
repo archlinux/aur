@@ -1,0 +1,15 @@
+pkgbase = python-cachingutils
+	pkgdesc = Utilities to make caching data easier
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://github.com/vcokltfre/cachingutils
+	arch = any
+	license = MIT
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-lru-dict
+	source = python-cachingutils-1.0.7.tar.gz::https://files.pythonhosted.org/packages/source/c/cachingutils/cachingutils-1.0.7.tar.gz
+	sha256sums = a3229f9a600aed1666d45e1dd1bf09c64616dbe67db68df79a8abdf5bee1d3b5
+
+pkgname = python-cachingutils
