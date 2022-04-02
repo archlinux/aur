@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-gazebo-ros-control
 	pkgdesc = ROS - gazebo_ros_control.
 	pkgver = 2.9.2
-	pkgrel = 3
+	pkgrel = 4
 	url = http://ros.org/wiki/gazebo_ros_control
 	arch = i686
 	arch = x86_64
@@ -18,6 +18,8 @@ pkgbase = ros-noetic-gazebo-ros-control
 	depends = ros-noetic-std-msgs
 	depends = ros-noetic-control-toolbox
 	depends = ros-noetic-controller-manager
+	depends = ros-noetic-controller-manager-msgs
+	depends = ros-noetic-controller-interface
 	depends = ros-noetic-pluginlib
 	depends = ros-noetic-hardware-interface
 	depends = ros-noetic-transmission-interface

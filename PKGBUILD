@@ -4,7 +4,7 @@ url='http://ros.org/wiki/gazebo_ros_control'
 pkgname='ros-noetic-gazebo-ros-control'
 pkgver='2.9.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=4
 license=('BSD')
 
 ros_makedepends=(
@@ -24,6 +24,8 @@ ros_depends=(
     ros-noetic-std-msgs
     ros-noetic-control-toolbox
     ros-noetic-controller-manager
+    ros-noetic-controller-manager-msgs
+    ros-noetic-controller-interface
     ros-noetic-pluginlib
     ros-noetic-hardware-interface
     ros-noetic-transmission-interface
