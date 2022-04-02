@@ -1,0 +1,22 @@
+pkgbase = mog-bin
+	pkgdesc = Git Hooks managment tool written in Go
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/aw83/mog
+	license = Apache-2.0
+	conflicts = mog
+	provides = mog
+	arch = aarch64
+	source_aarch64 = https://github.com/aw83/mog/releases/download/v1.1.0/mog_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 49e4815d2333743d3772e1abc58ce7044e24171212a96f17ecb7f334771281e8
+	arch = armv7h
+	source_armv7h = https://github.com/aw83/mog/releases/download/v1.1.0/mog_Linux_armv7.tar.gz
+	sha256sums_armv7h = 23919309c8e92a96e79041917630becea045a175334edfdf64a1669f51eae379
+	arch = i686
+	source_i686 = https://github.com/aw83/mog/releases/download/v1.1.0/mog_Linux_i386.tar.gz
+	sha256sums_i686 = 7558c4136f0380cd5c9d8f706abe24ca3c47b7d90862ed6503bdaeb3a853e62a
+	arch = x86_64
+	source_x86_64 = https://github.com/aw83/mog/releases/download/v1.1.0/mog_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 78a6f4a1f1a0ea79d97e9ab0c3146a770b66c872e63a4c67a219c64b99fe998f
+	
+pkgname = mog-bin
