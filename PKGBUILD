@@ -19,7 +19,7 @@ optdepends=(
   )
 provides=(ezdl ezgc eztst)
 source=("https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
-sha256sums=('c75d8219c7e63e1d56f280df0d1ac7c24da44fcbeff1e620ecaf1dd9e64db5e3')
+sha256sums=('28fc44224f6131fae14f2ef4bb240d1cf3d56c4e8363593803c09b92ef232971')
 
 package() {
   install -Dm775 usr/bin/* -g wheel -o ${USER} -t "${pkgdir}/usr/bin/"
