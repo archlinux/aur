@@ -14,6 +14,7 @@ phrases=("haaaaaaaa"
 "Mail that to me son"
 "So unfair"
 "🐷"
+"👴??🖥"
 "I am such a good trivia player"
 " \o/"
 "Hey feral boy"
@@ -21,8 +22,6 @@ phrases=("haaaaaaaa"
 "How can I user my computer?"
 "I need more Romanians here"
 "We should have a threesome on skype some day"
-"I love romanians girls, we need to bring some more here"
-"Help me with this girl"
 "$(whoami) \o/"
 "tell us more, son"
 "I am so busy right now"
@@ -46,9 +45,7 @@ phrases=("haaaaaaaa"
 "oooh! I will record that on an audiocassette for my show!"
 "$(whoami): Can i interview you?"
 "it reminds me of something I saw on Family Guy"
-"Guys have you met my new girlfriend Straffeny?"
 "hey $(whoami) you should come to #trivia more often"
-"my new girlfriend keeps coming here and going to the lobby"
 "Olá gurizinho, vamos falar português cara"
 "Buna $(whoami)!"
 )
@@ -61,20 +58,20 @@ echo -e "$BLUE port: $GREEN 6667 $NC"
 echo -e "$BLUE port: $GREEN 6697 $RED ssl $NC"
 echo -e "$BLUE tor:  $GREEN chatdotju32g5swnixwnqzgpsytc4umjfdqmkv2xt52lfw4on2rccmyd.onion $NC"
 echo -e "$RED------------------------------------------------------------------------------$NC"
+(echo -e "HIT$RED ENTER$NC TO CHAT WITH US" | lolcat -p 50)
 echo
-
 echo -e "${BROWN}Featured Messages from gasconheart: $NC"
 
-finalize (){
-  exit 0
-}
-
-trap finalize INT
 
 echophrase() {
   size=${#phrases[@]}
   index=$((RANDOM % size))
-  phrase=$(pidof Xorg >/dev/null && echo "${phrases[$index]}" || echo "Sorry, I'm not on X11 right now")
+  if [[ $OSTYPE == 'darwin'* ]]
+  then
+    phrase=${phrases[$index]}
+  else
+    phrase=$(pidof Xorg >/dev/null && echo "${phrases[$index]}" || echo "Sorry, I'm not on X11 right now")
+  fi
   echo -n "                                                                                          "
   echo -ne "\r"
   echo -en "${PURPLE} --> "
@@ -88,7 +85,7 @@ echophrase() {
 }
 
 i=0
-printf "\n\n\n\n\n\n\n\n\n"
+printf "\n\n\n\n\n\n\n\n"
 echo -e "$BROWN                                              Ctrl + C to exit $NC"
 up=$(tput cuu1); printf %s "$up$up$up$up"
 while true
@@ -99,4 +96,29 @@ do
   fi
   echophrase
   i=$((i + 1))
-done
+done &
+child_pid=$!
+
+finalize (){
+  kill -9 $child_pid
+  exit 0
+}
+
+trap finalize INT
+
+wait_input () {
+  if read -r
+  then
+    if [[ $OSTYPE == 'darwin'* ]]
+    then
+      open "irc://irc.dot.org.es:+6697/romanian" &
+      disown %1
+    else
+      xdg-open "irc://irc.dot.org.es:+6697/romanian" &
+      disown %1
+    fi
+    finalize
+  fi
+  sleep 0.1
+}
+while true; do wait_input; done
