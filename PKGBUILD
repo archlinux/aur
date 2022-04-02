@@ -4,7 +4,7 @@
 
 pkgname=wakatime
 epoch=1
-pkgver='1.35.4'
+pkgver='1.38.0'
 pkgrel=1
 pkgdesc="Command line interface used by all WakaTime text editor plugins"
 arch=('x86_64')
