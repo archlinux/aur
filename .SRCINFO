@@ -1,0 +1,25 @@
+pkgbase = tinmop-git
+	pkgdesc = Opinionated TUI client for gemini, pleroma and kami
+	pkgver = v0.9.2.r179.g662ff56
+	pkgrel = 1
+	url = https://www.autistici.org/interzona/tinmop.html
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gettext
+	makedepends = sbcl
+	depends = openssl
+	depends = sbcl
+	depends = unzip
+	options = !strip
+	source = git+https://notabug.org/cage/tinmop.git
+	source = https://beta.quicklisp.org/quicklisp.lisp
+	source = https://beta.quicklisp.org/quicklisp.lisp.asc
+	source = git+https://github.com/McParen/croatoan
+	validpgpkeys = D7A3489DDEFE32B7D0E7CC61307965AB028B5FF7
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = tinmop-git
