@@ -1,0 +1,11 @@
+pkgbase = pixd
+	pkgdesc = Colourful visualization tool for binary files
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/FireyFly/pixd
+	arch = x86_64
+	license = MIT
+	source = pixd-1.0.0.tar.gz::https://github.com/FireyFly/pixd/archive/refs/tags/v1.0.0.tar.gz
+	sha1sums = 55df5a553a9a9e4a3d726bcfa255ea6c3a47fb11
+
+pkgname = pixd
