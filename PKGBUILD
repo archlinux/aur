@@ -4,7 +4,7 @@ url='https://wiki.ros.org/image_proc'
 pkgname='ros-noetic-image-proc'
 pkgver='1.16.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -17,6 +17,7 @@ ros_makedepends=(
 	ros-noetic-sensor-msgs
 	ros-noetic-nodelet-topic-tools
 	ros-noetic-image-transport
+       ros-noetic-camera-calibration-parsers
 )
 
 makedepends=(
@@ -35,6 +36,7 @@ ros_depends=(
 	ros-noetic-sensor-msgs
 	ros-noetic-nodelet-topic-tools
 	ros-noetic-image-transport
+       ros-noetic-camera-calibration-parsers
 	ros-noetic-rostest
 )
 
