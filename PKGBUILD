@@ -1,15 +1,16 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=doctave
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.4.2
+pkgrel=1
 pkgdesc="A batteries-included developer documentation site generator"
 arch=('x86_64')
 url="https://www.doctave.com"
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
-_commit='bde7764bdbc66acc0db726126332db440959a492'
+options=('!lto')
+_commit='ad1888feb6bb7f4f043b76474b1df38b520c51c3'
 source=("$pkgname::git+https://github.com/Doctave/doctave.git#commit=$_commit")
 md5sums=('SKIP')
 

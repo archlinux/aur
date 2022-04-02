@@ -1,14 +1,15 @@
 pkgbase = doctave
 	pkgdesc = A batteries-included developer documentation site generator
-	pkgver = 0.4.1
-	pkgrel = 2
+	pkgver = 0.4.2
+	pkgrel = 1
 	url = https://www.doctave.com
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = rust
 	depends = gcc-libs
-	source = doctave::git+https://github.com/Doctave/doctave.git#commit=bde7764bdbc66acc0db726126332db440959a492
+	options = !lto
+	source = doctave::git+https://github.com/Doctave/doctave.git#commit=ad1888feb6bb7f4f043b76474b1df38b520c51c3
 	md5sums = SKIP
 
 pkgname = doctave
