@@ -1,6 +1,5 @@
 #!/bin/bash
 
-export ESOPIPES_DIR=/opt/esopipes/
 export LD_LIBRARY_PATH=${ESOPIPES_DIR}/lib:${LD_LIBRARY_PATH}
 ${ESOPIPES_DIR}/bin/esorex "$@"
 
