@@ -2,7 +2,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=rocm-smi-lib
-pkgver=5.0.2
+pkgver=5.1.0
 pkgrel=1
 pkgdesc='ROCm System Management Interface Library'
 arch=('x86_64')
@@ -14,7 +14,8 @@ replaces=('rocm-smi-lib64')
 conflicts=('rocm-smi-lib64')
 makedepends=('cmake' 'doxygen' 'texlive-latexextra')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/RadeonOpenCompute/rocm_smi_lib/archive/rocm-$pkgver.tar.gz")
-sha256sums=('a169129e4ecd1cca134039dc1bf91e1b3721768781abfae4ae61fad60a633472')
+sha256sums=('21b31b43015b77a9119cf4c1d4ff3864f9ef1f34e2a52a38f985a3f710dc5f87')
+options=(!lto)
 _dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
 
 
