@@ -4,7 +4,7 @@ url='https://wiki.ros.org/image_view'
 pkgname='ros-noetic-image-view'
 pkgver='1.16.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -28,6 +28,7 @@ makedepends=(
 	'ros-build-tools'
 	${ros_makedepends[@]}
 	gtk2
+       qt5-base
 )
 
 ros_depends=(
@@ -46,6 +47,7 @@ depends=(
 	${ros_depends[@]}
 	gtk2
 	gtk3
+       qt5-base
 )
 
 _dir="image_pipeline-${pkgver}/image_view"
