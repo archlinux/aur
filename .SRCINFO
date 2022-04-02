@@ -1,0 +1,28 @@
+pkgbase = render96ex-git
+	pkgdesc = Super Mario 64 PC Port (sm64ex) fork including Render96 Textures and Models
+	pkgver = 3.2.r754.8e2eea10
+	pkgrel = 1
+	url = https://github.com/Render96/Render96ex
+	arch = x86_64
+	license = Unlicense
+	makedepends = git
+	makedepends = python
+	makedepends = audiofile
+	depends = sdl2
+	depends = hicolor-icon-theme
+	provides = render96ex
+	source = git+https://github.com/Render96/Render96ex.git#branch=alpha
+	source = git+https://github.com/pokeheadroom/RENDER96-HD-TEXTURE-PACK.git
+	source = https://github.com/Render96/ModelPack/releases/download/3.2/Render96_DynOs_v3.2.7z
+	source = render96ex.sh
+	source = render96ex.desktop
+	source = render96ex.png
+	source = file://baserom.us.z64
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = d95ef25a694b1cd2e82785418aebf2aa8fd3a6b394b350fe51971474d19664b2
+	sha256sums = 0198c73bec5d904d58a8dd4ca608cc41a00526d1bb2bb3a3fdf68544ca43d500
+	sha256sums = d717c1dd41169185aed3de19fefd93eff7be12d1f38114b12c6c3c44e3e94e73
+	sha256sums = 51dadd209c0ba63c3abbf42c7c9abfd5335268cd614d503221524853f05f9191
+
+pkgname = render96ex-git
