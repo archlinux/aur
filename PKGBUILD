@@ -1,6 +1,6 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
-_electron=electron17
+_electron=electron
 _appname=insomnia
 pkgname="$_appname-electron"
 _dirname="$_appname-core"
