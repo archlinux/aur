@@ -14,7 +14,7 @@ _buildflags="NOUPX=1 NOOBJDUMP=1 "
 
 _name=srb2kart
 pkgname=${_name}-git
-pkgver=v1.3.r51.gff26ff9b
+pkgver=v1.3.r67.g750b8bfe
 _dataver=1.3
 pkgrel=1
 pkgdesc="Source code modification of Sonic Robo Blast 2 with kart racing elements (git version)"
