@@ -3,7 +3,7 @@
 
 pkgname=termius-app
 _pkgname=${pkgname%-*}
-pkgver=7.35.6
+pkgver=7.37.0
 pkgrel=1
 pkgdesc="Desktop SSH Client"
 url="https://termius.com/"
@@ -24,27 +24,27 @@ _mirror='https://deb.termius.com'
 # I got the URL to download the deb package using the server from ubuntu, path: /var/lib/apt/lists/deb.termius.com_dists_squeeze_main_binary-amd64_Packages
 # TERMS_OF_USE is a copy-paste of https://termius.com/terms-of-use from browser
 source=(
-	"pkgs-$pkgver.gz::$_mirror/dists/squeeze/main/binary-amd64/Packages.gz"
+        "pkgs-$pkgver.gz::$_mirror/dists/squeeze/main/binary-amd64/Packages.gz"
         "$pkgname-$pkgver.deb::https://termius.com/download/linux/Termius.deb"
         "TERMS_OF_USE"
 )
 sha512sums=(
-            "SKIP"
-            "SKIP"
-            'bf187f1ec9387d9c3ddbd0e401a235ec9bafab14698f49a182546ed4a057c398f3532f472b2a6be22b9a200b29d1ccb6e3c2fb69a92dfce2a4bf29264617565b'
+        "01ff80056f846ed450953fbf077e62daa5b9304ae04a04e0903a23758cb841cb95d8f81762c9de4d54a082f0499d70f634fedafdf485575368204c4e2214d54f"
+        "32b73725e953db7642491c2f3d9f5c4163f1dde15c64a27f8a11edf2b91bb92384a10b80f62b5fb6fd6e87b85199d261492e61d227350274d9025ad30f177227"
+        'bf187f1ec9387d9c3ddbd0e401a235ec9bafab14698f49a182546ed4a057c398f3532f472b2a6be22b9a200b29d1ccb6e3c2fb69a92dfce2a4bf29264617565b'
 )
 
 pkgver() {
-	sed -n '/Package: termius-app$/,/^$/p' "$srcdir/pkgs-$pkgver" | grep -o 'Version: .*' | cut -d " " -f 2
+        sed -n '/Package: termius-app$/,/^$/p' "$srcdir/pkgs-$pkgver" | grep -o 'Version: .*' | cut -d " " -f 2
 }
 prepare() {
         mkdir "$srcdir/work" || :
-	sha512sum1="$(sha512sum "$srcdir/$pkgname-$pkgver.deb" | cut -d " " -f 1)"
-	sha512sum2="$(sed -n '/Package: termius-app$/,/^$/p' "$srcdir/pkgs-$pkgver" | grep -o 'SHA512: .*' | cut -d " " -f 2)"
-	if [ "$sha512sum1" != "$sha512sum2" ]; then
-		warning "SHA512SUM doesn't match!"
-		exit 1
-	fi
+        sha512sum1="$(sha512sum "$srcdir/$pkgname-$pkgver.deb" | cut -d " " -f 1)"
+        sha512sum2="$(sed -n '/Package: termius-app$/,/^$/p' "$srcdir/pkgs-$pkgver" | grep -o 'SHA512: .*' | cut -d " " -f 2)"
+        if [ "$sha512sum1" != "$sha512sum2" ]; then
+                warning "SHA512SUM doesn't match!"
+                exit 1
+        fi
         bsdtar -x -f "$srcdir"/data.tar.xz -C "$srcdir/work" || :
 }
 
