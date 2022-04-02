@@ -16,7 +16,11 @@ depends=(
   'python-pycryptodome'
   'python-voluptuous'
 )
-makedepends=('git')
+makedepends=(
+  'git'
+  'python-build'
+  'python-installer'
+)
 checkdepends=(
   'python-asynctest'
   'python-coveralls'
@@ -28,14 +32,9 @@ checkdepends=(
 source=($pkgname::"git+https://github.com/zigpy/zigpy#tag=$pkgver")
 sha512sums=('SKIP')
 
-pkgver() {
-  cd $pkgname
-  git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
-
 build() {
   cd $pkgname
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -45,5 +44,5 @@ check() {
 
 package() {
   cd $pkgname
-  python setup.py install --root="$pkgdir" -O1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
