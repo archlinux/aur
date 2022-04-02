@@ -1,0 +1,6 @@
+d /run/nut 0700 nut nut -
+d /var/lib/nut 0700 nut nut -
+z /etc/nut/upsd.conf 0640 root nut -
+z /etc/nut/upsd.users 0640 root nut -
+z /etc/nut/upsmon.conf 0640 root nut -
+
