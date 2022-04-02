@@ -1,6 +1,6 @@
 # Maintainer: enderghast13 <29264120+enderghast13@users.noreply.github.com>
 pkgname=nxdt_host-git
-pkgver=0.3.r399.4a512db
+pkgver=0.3.r9.4a512db
 pkgrel=1
 pkgdesc="nxdumptool host script"
 arch=('any')
@@ -16,8 +16,8 @@ sha1sums=('SKIP'
 
 pkgver() {
 	cd "$srcdir"/nxdumptool/host
-	_commit="$(git log -n 1 --pretty=format:%h -- nxdt_host.py)"
-	printf "%s.r%s.$_commit" "$(sed -n "s/APP_VERSION = '\(.*\)'/\1/p" nxdt_host.py)" "$(git rev-list --count $_commit)"
+	_commit="$(git log -n1 --pretty=format:%h nxdt_host.py)"
+	printf "%s.r%s.$_commit" "$(sed -n "s/APP_VERSION = '\(.*\)'/\1/p" nxdt_host.py)" "$(git rev-list --count HEAD nxdt_host.py)"
 }
 
 prepare() {
