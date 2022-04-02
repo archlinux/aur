@@ -5,7 +5,7 @@
 
 _name=oct2py
 pkgname=python-oct2py
-pkgver=5.4.3
+pkgver=5.5.1
 pkgrel=1
 pkgdesc="Python to GNU Octave bridge."
 arch=('any')
@@ -26,16 +26,17 @@ optdepends=(
 )
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-b2sums=('0bd6b2e550f9bd2208160d1452d44a1c12ed46d20ed65646407b13604c8242b99f61e396cf7adc58d098ccbbf6f5f6a19a69b9e282dd08105196afeb1027cfca')
+b2sums=('c0a645464b64d04137f53f3c15bcd90d1df193d7dd7e955cf1e90b5d279091cc16b3052321a1788b6a382ad8759db1619b0a20d117c627d88abe75d13aeb62e3')
 
 build() {
     cd "$srcdir/$_name-$pkgver" || exit
-    export PYTHONHASHSEED=0
-    python setup.py build
+
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$srcdir/$_name-$pkgver" || exit
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/python-$_name/LICENSE"
+    python -m installer --destdir="$pkgdir" dist/*.whl
+
+    # install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/python-$_name/LICENSE"
 }
