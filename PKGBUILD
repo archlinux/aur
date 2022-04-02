@@ -4,8 +4,8 @@
 _pkgname=xfce4-settings
 _pkgver=4.16.2
 pkgname=${_pkgname}-standalone
-pkgver=${_pkgver}+0+g2076199f
-pkgrel=4
+pkgver=4.16.2+2076199f
+pkgrel=5
 pkgdesc="Settings manager of the Xfce desktop"
 arch=('x86_64')
 url="https://docs.xfce.org/xfce/xfce4-settings/start"
@@ -26,8 +26,8 @@ sha256sums=('SKIP'
             'c74353e795c54a8c1268835026236fae37ac196a621d871a2e518c1087aa0248')
 
 pkgver() {
-  cd "${_pkgname}"
-  git describe --long --tags | sed -r "s:^${_pkgname}.::;s/^v//;s/^xfce-//;s/-/+/g"
+  cd "${srcdir}/${_pkgname}"
+  printf "%s+%s" "${_pkgver}" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
