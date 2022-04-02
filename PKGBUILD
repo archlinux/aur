@@ -3,20 +3,15 @@
 
 _name=gzdoom
 pkgname=lzdoom
-_pkgver=3.88a
-pkgver=3.88.a
+_pkgver=3.88b
+pkgver=3.88.b
 pkgrel=1
 pkgdesc='Advanced Doom source port with OpenGL support (legacy version)'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
 license=('BSD' 'custom:dumb' 'GPL3' 'LGPL3')
-depends=('hicolor-icon-theme'
-			'libjpeg'
-			'sdl2'
-			'alsa-lib')
-makedepends=('cmake'
-				'fluidsynth>=2'
-				'gtk3')
+depends=('hicolor-icon-theme' 'libjpeg' 'sdl2' 'alsa-lib')
+makedepends=('cmake' 'fluidsynth>=2' 'gtk3')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
 			'chexquest3-wad: Chex Quest 3 game data'
 			'doom1-wad: Doom shareware game data'
@@ -42,7 +37,7 @@ optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
 			'xorg-xmessage: crash dialog (other)')
 source=("${pkgname}-${_pkgver}.tar.gz::https://github.com/drfrag666/${_name}/archive/refs/tags/${_pkgver}.tar.gz"
 		"${pkgname}.desktop")
-sha256sums=('729e389d0fb649129512dfa955a8cda1beccac8b2eeb22733bc74185650843dc'
+sha256sums=('a9d0b425bc4ee39dc237e1e8f06e3504e13ccb6d6a5e6d44cb8ce6964a1ce43b'
             '7b3ffa8b74e5d6283206dd074b09e944aa07670ec7d7b1fe587350ffb91819b3')
 
 prepare() {
