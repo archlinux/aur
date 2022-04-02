@@ -1,7 +1,7 @@
 pkgbase = python-telegram-bot
 	pkgdesc = A pure Python interface for the Telegram Bot API
 	pkgver = 13.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/python-telegram-bot/python-telegram-bot
 	arch = any
 	license = GPL3
