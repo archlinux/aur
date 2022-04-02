@@ -1,21 +1,21 @@
 pkgbase = particle-cli
 	pkgdesc = CLI tool for the Particle hardware platform
-	pkgver = 2.9.1
+	pkgver = 3.0.0
 	pkgrel = 1
 	url = http://particle.io/
 	arch = any
 	license = GPL
 	makedepends = npm
 	makedepends = git
-	makedepends = python2
+	makedepends = python
 	depends = libusb
+	depends = udev
 	depends = nodejs
 	optdepends = dfu-util: local flashing
 	optdepends = openssl: local flashing
-	noextract = particle-cli-2.9.1.tgz
-	source = http://registry.npmjs.org/particle-cli/-/particle-cli-2.9.1.tgz
-	md5sums = 2cf5ff1ada971967f1602172e3cf7055
-	sha256sums = 4ea10c4ce749d83e67d84154303767f9b551eaaace395a2196d3cb6c988664fd
+	noextract = particle-cli-3.0.0.tgz
+	source = http://registry.npmjs.org/particle-cli/-/particle-cli-3.0.0.tgz
+	md5sums = 5de8b6e5fc579b4c8b8d473b812823f9
+	sha256sums = ef8e634393c7c39dc42b9d96ebbf9a62f4c869b0871b803a484b5bf4388b96d8
 
 pkgname = particle-cli
-
