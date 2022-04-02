@@ -2,7 +2,7 @@
 # Contributer: Ignacio Felipe <djkork@gmail.com>
 # Contributer: bangbang93 <bangbang93@163.com>
 pkgname=qsync
-pkgver=1.0.6.2624
+pkgver=1.0.7.0318
 pkgrel=1
 epoch=1
 pkgdesc="QNap's synchronization client"
@@ -19,7 +19,7 @@ source=("${pkgname}-${pkgver}.deb::https://download.qnap.com/Storage/Utility/QNA
 
 
 noextract=()
-md5sums=('23fe012d1ca8a7681362490ab519303a'
+md5sums=('f21e2eaf3da696bcc328c4585aa1d260'
          'ef5abc8367e97f42313bb4545d6acadf'
          '923af1881c03c429c4623305d108a5b5'
          'cfa6be2d8391bde792381740542176b2')
