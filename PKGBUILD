@@ -1,23 +1,24 @@
-# Maintainer: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: Michael Kanis <mkanis@gmx.de>
 
 pkgname=libchamplain
 pkgver=0.12.20
-pkgrel=2
+pkgrel=3
 pkgdesc="A map widget"
 url="https://wiki.gnome.org/Projects/libchamplain"
 license=(LGPL)
 arch=(x86_64)
 depends=(clutter-gtk libsoup cairo sqlite)
 makedepends=(gobject-introspection gtk-doc vala meson git)
+options=(debug)
 _commit=145e417f32e507b63c21ad4e915b808a6174099e  # tags/LIBCHAMPLAIN_0_12_20^0
 source=("git+https://gitlab.gnome.org/GNOME/libchamplain.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  git describe --tags | sed 's/^LIBCHAMPLAIN_//;s/_/./g;s/-/+/g'
+  git describe --tags | sed 's/^LIBCHAMPLAIN_//;s/_/./g;s/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
@@ -26,7 +27,7 @@ prepare() {
 
 build() {
   arch-meson $pkgname build -D gtk_doc=true
-  ninja -C build
+  meson compile -C build
 }
 
 check() {
@@ -34,5 +35,5 @@ check() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 }
