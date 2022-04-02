@@ -1,23 +1,25 @@
-# Maintainer: David Runge <dvzrv@archlinux.org>
+# Maintainer: 
+# Contributor: FabioLolix
+# Contributor: David Runge <dvzrv@archlinux.org>
 # Contributor: Federico Cinelli <cinelli@aur.archlinux.org>
 # Contributor: Mateusz Herych   <heniekk@gmail.com>
 
 pkgname=libquicktime
 _commit='27295919b3a1036ba8bc06cec414dcc501f72d89'
 pkgver=1.2.4
-pkgrel=26
+pkgrel=27
 pkgdesc="A library for reading and writing quicktime files"
 arch=(x86_64)
 license=(LGPL2.1)
 url="http://libquicktime.sourceforge.net/"
 depends=(glib2 glibc zlib)
 # NOTE: not compatible with ffmpeg >= 5, so switch to ffmpeg4.4 or remove
-makedepends=(alsa-lib doxygen faac faad2 ffmpeg git gtk2 lame libdv libglvnd
-libjpeg-turbo libvorbis libx11 libxaw libxext libxt libxv schroedinger sndio
-x264)
+makedepends=(alsa-lib doxygen faac faad2 ffmpeg4.4 git gtk2 lame libdv libglvnd
+             libjpeg-turbo libvorbis libx11 libxaw libxext libxt libxv
+             schroedinger sndio x264)
 optdepends=('alsa-lib: for lqtplay'
             'faac: for lqt_faac plugin'
-            'ffmpeg: for lqt_ffmpeg plugin'
+            'ffmpeg4.4: for lqt_ffmpeg plugin'
             'gtk2: for libquicktime_config'
             'lame: for lqt_lame plugin'
             'libdv: for lqt_dv plugin'
@@ -64,6 +66,8 @@ b2sums=('6c50965be5d19fb4c57ea6b36f2581ebd575d78a34f2df7029ce2c6ee560e8135a953a2
         'bd1299c24b738b3752e4d8d50ed1b2fa2f208c83e577876118d115fca22293e102614ae0cdc168060115f7145d951d290bccf21154fda4aabf55329d310b6aca'
         'e770000ea0c39f77bc36e7e5252e281b9f9d06a136c655cd702332cc8581f128263e172e41eab3b7ce2543da7065d8efc28c048588e577db5ee6ec4bfeb1019b'
         '0a29c9a3d1eae31731b76536a22aa23a4888b8ac55c3176c60a152330fce37e8031a4269fa28026133c7061cd769b1428bf24fe59fed574e39d52ea00b6e00a0')
+
+export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
 
 prepare() {
   cd "$pkgname-$pkgver"
