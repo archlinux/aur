@@ -1,19 +1,15 @@
 pkgbase = python-pyrate-limiter
 	pkgdesc = Python Rate-Limiter using Leaky-Bucket Algorimth Family
-	pkgver = 2.6.1
+	pkgver = 2.6.2
 	pkgrel = 1
 	url = https://github.com/vutran1710/PyrateLimiter
 	arch = any
 	license = MIT
-	checkdepends = python-pytest
-	checkdepends = python-fakeredis
-	checkdepends = python-django
-	checkdepends = python-django-redis
 	makedepends = python-build
 	makedepends = python-install
 	makedepends = python-poetry
 	depends = python
-	source = https://github.com/vutran1710/PyrateLimiter/archive/v2.6.1.tar.gz
-	sha512sums = 715ad8463fc2ff9440b8129a69ffea9e72e063854b348a3cad66897f4f909aef5f8ee2d493febbced31d84114141ddea83e1748ae876a7a1bec00a285121b58f
+	source = https://pypi.org/packages/source/p/pyrate-limiter/pyrate-limiter-2.6.2.tar.gz
+	sha512sums = ba5b435ff159df38adc67d028f5710720a57be63cbfa8810a856e0a4a5810e7ce1c9d2f9e9756f17e6bdd20d5890604fd07cce3dbbd5c4f5cce3d3d87c1e1246
 
 pkgname = python-pyrate-limiter
