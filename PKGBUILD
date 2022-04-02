@@ -5,15 +5,15 @@
 # Github Contributor: Joey Dumont <https://github.com/joeydumont>
 
 pkgname=heroku-cli
-pkgver=7.59.2
+pkgver=7.60.1
 pkgrel=1
-_commit_id="77bd72011382a9896b8829a1fb206b931dd0babf"
+_commit_id="4e998800e9bde9b30d97e465f1e2c066c5734ff5"
 pkgdesc="CLI to manage Heroku apps and services with forced auto-update removed"
 arch=('any')
 url="https://devcenter.heroku.com/articles/heroku-cli"
 license=('custom' 'ISC')
 depends=('nodejs')
-makedepends=('npm' 'yarn' 'perl' 'git')
+makedepends=('yarn' 'perl' 'git')
 optdepends=('git: Deploying to Heroku')
 conflicts=('heroku-cli-bin' 'heroku-client-standalone' 'heroku-toolbelt' 'ruby-heroku')
 source=("git+https://github.com/heroku/cli.git#commit=${_commit_id}")
@@ -54,8 +54,8 @@ prepare() {
         # remove forced auto-update plugin
         sed -i "/oclif\/plugin-update/d" ./package.json
 
-        # install dependencies, must be done with npm
-        npm install
+        # install dependencies, must be done with yarn as of 7.60
+        yarn install
 
         # remove dist folder if necessary
         if [[ -d "./dist" ]]; then
