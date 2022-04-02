@@ -1,19 +1,17 @@
-# Maintainer: Jake <aur@ja-ke.tech>
-
 pkgname=openvisualtraceroute
 _short_pkgname=ovtr
-pkgver=1.7.1
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc="Open source cross-platform Java Visual Traceroute"
 arch=('i686' 'x86_64')
 license=('LGPLv3')
-url="http://sourceforge.net/projects/openvisualtrace"
-depends=('java-runtime<11' 'traceroute')
-source=("http://downloads.sourceforge.net/project/openvisualtrace/${pkgver}/OpenVisualTraceRoute${pkgver}.zip"
+url="https://sourceforge.net/projects/openvisualtrace"
+depends=('java-runtime=11' 'traceroute')
+source=("https://downloads.sourceforge.net/project/openvisualtrace/${pkgver}/OpenVisualTraceRoute${pkgver}.zip"
         "ovtr"
         "ovtr.desktop")
-sha256sums=('196054d50a15975dca18dca51308bbb2ccdc454d153cd6137612fad67d541617'
-            '561cb4a91ba7ab18ffc875d2833c023daf2db0d0655f5ebc37ddc32a8b70292c'
+sha256sums=('f72fedce4d9b5c2cf152e8808a3072a9a2197bb7fb8104ebf7f8f1e8e427d4ac'
+            'a0e7609d3ea053e87c789dc1e24c522fb458daa7fdb26410c00bf0af11bbffe6'
             'af0cef38105d65182c261067577f8ff68bf50e71d4d2f4fc7fe8e0ba4472d22f')
 
 if [ "$CARCH" = "i686" ]; then
@@ -30,17 +28,11 @@ package() {
   install -d -m755 "${pkgdir}/usr/share/OpenVisualTraceRoute/"{lib,native/linux/${_arch},resources}
 
   cp -rPf "resources/"* "${pkgdir}/usr/share/OpenVisualTraceRoute/resources"
-  cp -rPf "native/linux/${_arch}/"*.so "${pkgdir}/usr/share/OpenVisualTraceRoute/native/linux/${_arch}"
   cp -rPf "lib/"*.jar "${pkgdir}/usr/share/OpenVisualTraceRoute/lib"
 
   install -m755 "${srcdir}/${_short_pkgname}" "${pkgdir}/usr/bin/${_short_pkgname}"
   install -m755 "org.leo.traceroute.jar" "${pkgdir}/usr/share/OpenVisualTraceRoute/"
-  
-  install -d -m755 "${pkgdir}/usr/lib"
-  ln -s /usr/lib/libpcap.so.1 ${pkgdir}/usr/lib/libpcap.so.0.8
-  
+
   install -D -m644 "${srcdir}/${_short_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_short_pkgname}.desktop"
   install -D -m644 "resources/icon.png" "$pkgdir/usr/share/pixmaps/${_short_pkgname}.png"
 }
-
-# vim:set ts=2 sw=2 et:
