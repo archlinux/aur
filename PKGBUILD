@@ -2,7 +2,7 @@
 # Co-Maintainer: jbouter <aur@kn0x.org>
 
 pkgname=touchegg
-pkgver=2.0.13
+pkgver=2.0.14
 pkgrel=1
 pkgdesc="Multitouch gesture recognizer"
 arch=('i686' 'x86_64')
