@@ -2,9 +2,9 @@
 
 pkgname=myriacat
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux audio spectrum analyzer with VLF SDR'
-arch=('x86_64' 'arm64')
+arch=('x86_64')
 url='https://github.com/myriacat/myriacat'
 license=('custom')
 
