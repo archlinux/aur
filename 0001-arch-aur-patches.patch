@@ -1,38 +1,29 @@
-From 9bbddd5714e13bde1f918dc8f6ccef33396f8b4a Mon Sep 17 00:00:00 2001
+From 13b68dca129e307f6abcabba4936765f734d7879 Mon Sep 17 00:00:00 2001
 From: soloturn <soloturn@gmail.com>
-Date: Sat, 1 Aug 2020 16:21:07 +0200
-Subject: [PATCH] arch aur pachtes
+Date: Sat, 2 Apr 2022 13:44:08 +0200
+Subject: [PATCH] arch aur patches
 
 ---
- utils/build-presets.ini | 10 +++-------
- 1 file changed, 3 insertions(+), 7 deletions(-)
+ utils/build-presets.ini | 8 ++------
+ 1 file changed, 2 insertions(+), 6 deletions(-)
 
 diff --git a/utils/build-presets.ini b/utils/build-presets.ini
-index dc3826f228a..ff2523726c8 100644
+index 64ba12b1e04..faf53241aff 100644
 --- a/utils/build-presets.ini
 +++ b/utils/build-presets.ini
-@@ -726,10 +726,8 @@ llbuild
+@@ -818,11 +818,9 @@ llbuild
  swiftpm
  swift-driver
  xctest
 -libicu
  libcxx
+ swiftdocc
  
 -build-ninja
  install-llvm
  install-swift
  install-lldb
-@@ -737,8 +735,7 @@ install-llbuild
- install-swiftpm
- install-swift-driver
- install-xctest
--install-libicu
--install-prefix=/usr
-+install-prefix=/usr/lib/swift
- install-libcxx
- install-sourcekit-lsp
- build-swift-static-stdlib
-@@ -750,14 +747,13 @@ build-swift-stdlib-unittest-extra
+@@ -844,14 +842,13 @@ build-swift-stdlib-unittest-extra
  
  test-installable-package
  
@@ -47,8 +38,16 @@ index dc3826f228a..ff2523726c8 100644
  # Path to the .tar.gz package we would create.
 -installable-package=%(installable_package)s
  
- [preset: buildbot_linux]
- mixin-preset=mixin_linux_installation
+ # This ensures the default module cache
+ # location is local to this run, allowing
+@@ -953,7 +950,6 @@ build-swift-stdlib-unittest-extra
+ install-destdir=%(install_destdir)s
+ 
+ # Path to the .tar.gz package we would create.
+-installable-package=%(installable_package)s
+ 
+ host-test
+ 
 -- 
-2.28.0
+2.35.1
 

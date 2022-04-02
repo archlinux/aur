@@ -35,7 +35,7 @@ pkgbase = swift-language
 	source = swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch#tag=swift-5.6-RELEASE
 	source = swift-integration-tests::git+https://github.com/apple/swift-integration-tests#tag=swift-5.6-RELEASE
 	source = llvm-project::git+https://github.com/apple/llvm-project#tag=swift-5.6-RELEASE
-	source = 0001-arch-aur-pachtes.patch
+	source = 0001-arch-aur-patches.patch
 	source = 0002-asprintf-exists.patch
 	source = indexstore-db::git+https://github.com/apple/indexstore-db#tag=swift-5.6-RELEASE
 	source = yams::git+https://github.com/jpsim/Yams#tag=4.0.2
@@ -66,8 +66,8 @@ pkgbase = swift-language
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = d5eff4ffedba65a20b4600f36f09527f9fe1ea425302ea35c56f38e403e1d451
-	sha256sums = f450b7470ae26f3353f5201d692ebde9493015cd4c493c1e253770c07dd86e8a
+	sha256sums = e47ca269514997096b6141c18f1dd2cfd83182bb41ccee62169ff3d634198bb4
+	sha256sums = d9985dd648ecb83d56a48e3128000b869f819526ecda9735d7c6a3b9fd2047b7
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP

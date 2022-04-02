@@ -37,7 +37,7 @@ source=(
     "swift-corelibs-libdispatch::git+https://github.com/apple/swift-corelibs-libdispatch#tag=${_swiftver}"
     "swift-integration-tests::git+https://github.com/apple/swift-integration-tests#tag=${_swiftver}"
     "llvm-project::git+https://github.com/apple/llvm-project#tag=${_swiftver}"
-    "0001-arch-aur-pachtes.patch"
+    "0001-arch-aur-patches.patch"
     "0002-asprintf-exists.patch"
     # swift src to check afterwards
     "indexstore-db::git+https://github.com/apple/indexstore-db#tag=${_swiftver}"
@@ -72,8 +72,8 @@ sha256sums=(
     'SKIP'
     'SKIP'
     'SKIP'
-    'd5eff4ffedba65a20b4600f36f09527f9fe1ea425302ea35c56f38e403e1d451'
-    'f450b7470ae26f3353f5201d692ebde9493015cd4c493c1e253770c07dd86e8a'
+    'e47ca269514997096b6141c18f1dd2cfd83182bb41ccee62169ff3d634198bb4'
+    'd9985dd648ecb83d56a48e3128000b869f819526ecda9735d7c6a3b9fd2047b7'
     'SKIP'
     'SKIP'
     'SKIP'
@@ -100,7 +100,7 @@ sha256sums=(
 options=(!strip)
 
 prepare () {
-    ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-pachtes.patch" )
+    ( cd swift && patch -p1 -i "$srcdir/0001-arch-aur-patches.patch" )
     ( cd swift-corelibs-foundation && patch -p1 -i "$srcdir/0002-asprintf-exists.patch" )
 }
 
