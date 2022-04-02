@@ -1,33 +1,36 @@
-# Maintainer: Joermungand <joermungand at gmail dot com>
-# Contributor: nesl247 <nesl247@gmail.com>
+# Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: Kyle Keen <keenerd@gmail.com>
+# Contributor: minder
 
-pkgname=('python2-pillow')
+pkgname=python2-pillow
 pkgver=6.2.2
-pkgrel=1
+pkgrel=2
 _appname=Pillow
 _py2basever=2.7
-arch=('x86_64')
-url="https://python-pillow.org/"
-license=('BSD')
-pkgdesc="Python Imaging Library (PIL) fork."
-depends=('python2' 'freetype2' 'lcms2' 'libraqm' 'libtiff' 'openjpeg2' 'libimagequant' 'libxcb')
-optdepends=('libwebp: for webp images'
+pkgdesc="Python Imaging Library (PIL) fork"
+arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
+url="https://python-pillow.github.io/"
+license=(BSD)
+depends=(python2 lcms2 libtiff openjpeg2 libimagequant libxcb)
+optdepends=('freetype2: for the ImageFont module'
+            'libraqm: for complex text scripts'
+            'libwebp: for webp images'
             'tk: for the ImageTK module'
-            'python-olefile: OLE2 file support'
-            'python-pyqt5: for the ImageQt module')
-makedepends=('python2-setuptools' 'libwebp' 'tk')
-checkdepends=('python2-pytest')
-source=(${pkgname#*-}-${pkgver}.tar.gz::https://github.com/python-pillow/${_appname}/archive/${pkgver}.tar.gz)
-sha256sums=('cc4ec754ddcc98b7166a1afe062c6355c841776145f0f23bdd3bea1eaa41e2db')
+            'python2-olefile: OLE2 file support'
+            'python2-pyqt5: for the ImageQt module')
+makedepends=(python2-setuptools freetype2 libraqm libwebp tk)
+#checkdepends=(python2-pytest)
+source=("https://files.pythonhosted.org/packages/source/P/$_appname/$_appname-$pkgver.tar.gz")
+sha256sums=('db9ff0c251ed066d367f53b64827cc9e18ccea001b986d08c265e53625dab950')
 
 build() {
-  cd $srcdir/${_appname}-${pkgver}
+  cd "$srcdir/$_appname-$pkgver"
   python2 setup.py build
 }
 
 package() {
-  cd $srcdir/${_appname}-${pkgver}
-  python2 setup.py install --root="${pkgdir}" --optimize=1
+  cd "$srcdir/$_appname-$pkgver"
+  python2 setup.py install --root="$pkgdir/" --optimize=1
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   install -dm755 "$pkgdir/usr/include/python$_py2basever/"
