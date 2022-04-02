@@ -2,7 +2,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=systemd-bootchart-git
-pkgver=r49.fe1c5e4
+pkgver=r54.ef042f6
 pkgrel=1
 pkgdesc="Boot performance graphing tool"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('libsystemd.so')
 makedepends=('git' 'intltool')
 provides=('systemd-bootchart')
 conflicts=('systemd-bootchart' 'systemd<=229')
-source=("git://github.com/systemd/systemd-bootchart")
+source=("git+https://github.com/systemd/systemd-bootchart")
 md5sums=('SKIP')
 backup=('etc/systemd/bootchart.conf')
 
