@@ -46,12 +46,10 @@ source=(
   git+https://github.com/networkupstools/nut.git
   nut.sysusers
   nut.tmpfiles
-  nut-snmp-usb-order.patch
 )
 sha256sums=('SKIP'
             '3001e24969545136361670c5d615684d2b37830525e090c2ab3bcfa90d90e4ac'
-            'c924ccaae9ec75ee7795c872e1708d10201402642a6d5de2304cc644744bbcc5'
-            'c2c7d3b72f94f9c7987ab047bba466923c63ddb80b468485f100b1e44997ec84')
+            'c924ccaae9ec75ee7795c872e1708d10201402642a6d5de2304cc644744bbcc5')
 
 pkgver() {
   cd nut
@@ -61,9 +59,6 @@ pkgver() {
 
 prepare() {
   cd nut
-
-  git cherry-pick -n eea0c5e9e5566c36a8b1e364ed4909231901a8f5
-  patch -Np1 -i ../nut-snmp-usb-order.patch
 
   ./autogen.sh
 }
