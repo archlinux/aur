@@ -19,6 +19,8 @@ pkgbase = albert-minimal
 	depends = libx11
 	optdepends = muparser: Calculator plugin
 	optdepends = python: Python extension
+	provides = albert
+	conflicts = albert
 	source = mirrors/albert::git+https://github.com/albertlauncher/albert.git#tag=v0.17.2
 	source = mirrors/plugins::git+https://github.com/albertlauncher/plugins.git
 	source = mirrors/python::git+https://github.com/albertlauncher/python.git
@@ -29,4 +31,3 @@ pkgbase = albert-minimal
 	sha512sums = SKIP
 
 pkgname = albert-minimal
-
