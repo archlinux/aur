@@ -1,7 +1,7 @@
 pkgbase = ungoogled-chromium-xdg-bin
 	pkgdesc = A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory (binary version)
 	pkgver = 100.0.4896.60
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Eloston/ungoogled-chromium
 	arch = x86_64
 	license = BSD
@@ -28,6 +28,6 @@ pkgbase = ungoogled-chromium-xdg-bin
 	conflicts = chromium
 	options = !lto
 	source = https://github.com/noahvogt/ungoogled-chromium-xdg-aur/releases/download/100.0.4896.60/ungoogled-chromium-xdg-bin-100.0.4896.60.tar.gz
-	sha256sums = d6eb2739e50ce2f281bd66240ecc4d125caaf739d9a98964adec1898673d0c3c
+	sha256sums = e4e85402c74c5620ce1b3a7236587b4b53bdf61cedda24a44e6359f6a550fcf4
 
 pkgname = ungoogled-chromium-xdg-bin
