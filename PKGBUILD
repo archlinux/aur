@@ -3,8 +3,8 @@
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
-pkgver=5.9
-pkgrel=3
+pkgver=5.9.1
+pkgrel=1
 _wwwpkgname=AdminLTE
 _wwwpkgver=5.11
 _now=`date +%N`
@@ -41,10 +41,10 @@ source=($pkgname-core-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/arc
 	    piholeDebug.sh
 )
 
-sha256sums=('13e7c3d7cdf19c9b9b8a449fea86d55ef68fce9b67ee3ad0429104c0ff509dde'
+sha256sums=('56ff5d2dc5ba45ce3c88f92df0ff213a3a96bfeba6619f0f9327ae1293025dc2'
             '589ef049135a90d622fc68299140e4dc16451ce541b804b35ffa5d25201afeb4'
-            '4de3d093636751afdf2f68948c810e8514427b9a0265c317da7d30b07d7726fa'
-            'da64d5e04c527c48819e70bb2d784b1c8861024a4b6ddccace1b723f102ab2c3'
+            '1c22da824a7b2607650cc22bcd678ed8c06cbfd130fc6b7e52139979856ca0dd'
+            'cf8e70f945c961df1d441f57f3d94bed653720a1f63597a8c9c46e51086db50f'
             '96c1fb8b15e1d0e99c18dc768f5dc3d4991184fb2631af84c5e2111028bc5287'
             'f70964f8b176d9ffcf4f44140036f0cfc030cbbe836634a885da082cfee4d1f7'
             '032770450ba4a1085bcb0bf3f944c436c5702f3a3faf984fbbba2d3dbc6accea'
