@@ -3,12 +3,12 @@
 
         DisplayLink Ubuntu Software Release Note
 
-Version: v5.4.1
-Build: posix/55-8043-gba6ff19c894 (174)
+Version: v5.5.0
+Build: posix/59-3246-g69b4f119f4a (151)
 
-Date: 17th August 2021
+Date: 1st March 2022
 
-Extensible Virtual Display Interface version included: v1.9.1-38 (895462f)
+Extensible Virtual Display Interface version included: v1.10.1 (f11e36c)
 =============================================================================
 =============================================================================
 
@@ -16,7 +16,7 @@ Extensible Virtual Display Interface version included: v1.9.1-38 (895462f)
 A. Introduction
 ===============
 
-This is DisplayLink Driver Software v5.4.1 for Ubuntu. It provides production quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux.
+This is DisplayLink Driver Software v5.5.0 for Ubuntu. It provides production quality support for DisplayLink USB 3.0 devices on specific variants of desktop Ubuntu Linux.
 
 The driver enables video support for products using DisplayLink USB 3.0 technology. Standard native Ubuntu drivers provide support for DisplayLink audio and Ethernet interfaces.
 
@@ -45,15 +45,33 @@ I.  Future development
 C.  Bugs fixed in this release
 ==============================
 
+C.4  Changes in 5.5 release
+-----------------------------
+- Added preliminary support for kernel 5.17
+- Community fixes for evdi kernel module
+- DL-6xxx series: update for RTL8211FD-VX and RTL8211E Ethernet PHYs (WS-1597)
+- DL-6xxx series: update for LAN LED behavior in some devices (VIFR-840, VIFR-802)
+- Fix displays blinking on device connect (PS-1674)
+- Mitigate problems with some DP monitors that are black on some DL-6xx0 devices (PS-1560)
+- Fix corruptions under cursor in X session on DL-3xx0 devices
+- Fix runit scripts for displaylink-driver daemon
+
+C.3  Changes in 5.5 beta release
+-----------------------------
+- Added support for kernel 5.14 and 5.15
+- Added preliminary support for kernel 5.16
+- Community fixes for evdi kernel module
+- DL-6xxx series: adding RTL8211FD-VX and RTL8211E Ethernet PHYs (WS1597)
+- DL-41xx: improved firmware flashing time, visible from following update onwards
+
 C.2  Changes in 5.4.1 release
 -----------------------------
 - Added support for kernel 5.13
 - Added beta support for kernel 5.14 beta (33194)
 - DL-6xxx series: improved 5120x1440 - 5K Super Ultrawide resolution selection (33186)
-- Improved performance: added support for damage regions interface from Linux DRM interface (26378
+- Improved performance: added support for damage regions interface from Linux DRM interface (26378)
 - Improved performance in Wayland session with AMD GPU machines (33151)
 - DL-6xxx series: fixed blinking mouse cursor while moving across displays (32987)
-
 
 C.1  Changes in 5.4.0 release
 -----------------------------
@@ -66,16 +84,18 @@ C.1  Changes in 5.4.0 release
 D. Supported O/S variants
 =========================
 
-This release has been prepared to be compatible with Ubuntu 20.04, 19.04 and 18.04. Other variants and editions may be compatible if they meet minimum O/S requirements, but are not supported by DisplayLink.
+This release has been prepared to be compatible with Ubuntu 21.10, 20.04, 19.04 and 18.04.
+Other variants and editions may be compatible if they meet minimum O/S requirements, but are not supported by DisplayLink.
 
-The Software contains binaries which work on Intel x86 platform (32 bit and 64 bit).
-Supported Linux Kernel version range is from 4.15 to 5.13.
+The Software contains binaries which work on i686, amd64, armv7 and aarch64 architectures.
+Supported Linux Kernel version range is from 4.15 to 5.16.
 Minimum supported Xorg version is 1.16, minimum supported Mutter (Wayland) version is 3.32.
 
 E. Release components
 =====================
-The Software consists of an open-source kernel mode driver (EVDI) with an accompanying library (libevdi), and a supporting binary application compatible with Intel x86 platform.
-Source code for the open-source components can be found on Synaptics' DisplayLink GitHub, https://github.com/DisplayLink
+The Software consists of an open-source kernel mode driver (EVDI) with an accompanying library (libevdi),
+and a supporting binary application compatible with i686, amd64, armv7 and aarch64 platforms.
+Source code for the open-source components can be found at Synaptics' DisplayLink GitHub, https://github.com/DisplayLink
 
 F. How to install
 =================
