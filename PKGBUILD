@@ -5,11 +5,12 @@ _name=gzdoom
 pkgname=lzdoom
 _pkgver=3.88b
 pkgver=3.88.b
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced Doom source port with OpenGL support (legacy version)'
 arch=('i686' 'x86_64')
 url='http://www.zdoom.org/'
 license=('BSD' 'custom:dumb' 'GPL3' 'LGPL3')
+conflicts=('lzdoom-bin')
 depends=('hicolor-icon-theme' 'libjpeg' 'sdl2' 'alsa-lib')
 makedepends=('cmake' 'fluidsynth>=2' 'gtk3')
 optdepends=('blasphemer-wad: Blasphemer (free Heretic) game data'
