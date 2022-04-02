@@ -4,7 +4,7 @@
 # Contributor: Carlo Cabanilla <carlo.cabanilla@gmail.com>
 
 pkgname=python-pex
-pkgver=2.1.74
+pkgver=2.1.75
 pkgrel=1
 arch=('any')
 pkgdesc='Generates executable Python environments'
@@ -21,7 +21,7 @@ makedepends=(
 changelog=CHANGES.rst
 provides=('pex')
 replaces=('pex')
-source=("$pkgname::git+$url#tag=v$pkgver?signed")
+source=("$pkgname::git+$url#tag=v$pkgver-public-signed?signed")
 sha256sums=('SKIP')
 validpgpkeys=('A1FE765B15233EAD18FA6ABB93E55CB567B5C626')
 
