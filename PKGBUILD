@@ -25,7 +25,7 @@ package() {
 	chown -R root:root "${pkgdir}"
 
 	# Remove references to $pkgdir
-	find "${pkgdir}" -type f -name package.json -print0 | xargs -0 sed -i "/_where/d"
+	find "${pkgdir}" -type f -name package.json -print0 | xargs -r -0 sed -i "/_where/d"
 
 	# Remove references to $srcdir
 	local tmppackage="$(mktemp)"
