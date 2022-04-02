@@ -1,14 +1,13 @@
 pkgbase = igtf-trust-anchors
 	pkgdesc = EUGridPMA IGTF Trust Anchor distribution
-	pkgver = 1.110
+	pkgver = 1.115
 	pkgrel = 2
 	url = https://dist.igtf.net/
 	arch = any
-	source = https://dist.eugridpma.info/distribution/igtf/1.110/igtf-policy-installation-bundle-1.110.tar.gz
-	source = https://dist.eugridpma.info/distribution/igtf/1.110/igtf-policy-installation-bundle-1.110.tar.gz.asc
+	source = https://dist.eugridpma.info/distribution/igtf/1.115/igtf-policy-installation-bundle-1.115.tar.gz
+	source = https://dist.eugridpma.info/distribution/igtf/1.115/igtf-policy-installation-bundle-1.115.tar.gz.asc
 	validpgpkeys = D12E922822BE64D50146188BC32D99C83CDBBC71
-	sha256sums = 83a9eacad16e9747b75c835b65fb9c3a2afe2ca59193afa983c56a40c4dfa036
+	sha256sums = 4754e61e77d0b6ea1970e38851002fa55ef8868e57fcd963a5c1d80222a747ed
 	sha256sums = SKIP
 
 pkgname = igtf-trust-anchors
-
