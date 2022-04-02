@@ -3,7 +3,7 @@
 pkgname=flarectl
 _pkgname=cloudflare-go
 pkgver=0.36.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI application for interacting with a Cloudflare account'
 arch=('x86_64')
 url="https://github.com/${_pkgname%-go}/${_pkgname}/tree/v${pkgver}/cmd/${pkgname}"
@@ -23,8 +23,7 @@ build() {
 		CGO_CPPFLAGS="${CPPFLAGS}" \
 		CGO_CFLAGS="${CFLAGS}" \
 		CGO_CXXFLAGS="${CXXFLAGS}" \
-		CGO_LDFLAGS="${LDFLAGS}" \
-		GOPROXY=off
+		CGO_LDFLAGS="${LDFLAGS}"
 	go build \
 		-buildmode=pie \
 		-ldflags "
