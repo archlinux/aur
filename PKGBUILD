@@ -1,7 +1,7 @@
-# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
+# Maintainer: CleanMachine1 <cleanmachine1@duck.com>
 
 pkgname=tldr-git
-pkgver=1.3.0+15.g9b23d26854
+pkgver=1.4.2+4.g0a5004f819
 pkgrel=1
 pkgdesc="C++ command line client for tldr"
 arch=('i686' 'x86_64' 'armv6h')
