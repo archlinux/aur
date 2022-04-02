@@ -1,7 +1,7 @@
 # Maintainer: Silas Henrique <silash35@gmail.com>
 pkgname=qpdftools
-pkgver=2.0
-pkgrel=1
+pkgver=2.0.1
+pkgrel=0
 epoch=0
 pkgdesc="Qpdf Tools is an easy-to-use Qt interface for Ghostscript and QPDF"
 arch=(x86_64)
@@ -13,8 +13,8 @@ provides=('qpdftools')
 conflicts=('qpdftools-git')
 
 source=("https://github.com/silash35/qpdftools/archive/v$pkgver.tar.gz")
-md5sums=('3220ae72d82e25146603e3d341b1f391')
-sha512sums=('a89702d87f5b3d24496dc14cc9474be6f0f9bd649171cf55f3ba62081738236f7199074022cb26a68bc3b3024669a65d9c07774450c29ede1799e13977fc9312')
+md5sums=('59e5a6bcf9f2fc82762cf1199e22edca')
+sha512sums=('3563a5e955ce8de6dc3c285d2d571e7344a7ee43de8321d52239383e59ebd202ed6312ce8176de841e14c1d4ddecd66ef53a965b6ea168ff3d2607ba95d10677')
 
 build() {
     cd qpdftools-$pkgver
