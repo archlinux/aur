@@ -4,7 +4,7 @@
 pkgname=rocm-llvm
 pkgdesc='Radeon Open Compute - LLVM toolchain (llvm, clang, lld)'
 pkgver=5.1.0
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url='https://github.com/RadeonOpenCompute/llvm-project'
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -34,12 +34,17 @@ build() {
         -DLLVM_INCLUDE_BENCHMARKS=OFF \
         -DLLVM_BUILD_TESTS=OFF \
         -DLLVM_ENABLE_PROJECTS='llvm;clang;compiler-rt;lld' \
-        -DLLVM_TARGETS_TO_BUILD='AMDGPU;X86'
+        -DLLVM_TARGETS_TO_BUILD='AMDGPU;X86' \
+        -DLLVM_BINUTILS_INCDIR=/usr/include
     ninja $NINJAFLAGS
 }
 
 package() {
     DESTDIR="$pkgdir" ninja $NINJAFLAGS install
+
+    # https://bugs.archlinux.org/task/28479
+    install -d "$pkgdir/opt/rocm/llvm/lib/bfd-plugins"
+    ln -s /opt/rocm/llvm/lib/LLVMgold.so "$pkgdir/opt/rocm/llvm/lib/bfd-plugins/LLVMgold.so"
 
     cd "$_dirname"
     install -Dm644 llvm/LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/llvm-LICENSE"
