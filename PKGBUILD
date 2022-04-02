@@ -6,7 +6,7 @@ url='https://wiki.ros.org/stage'
 pkgname='ros-noetic-stage'
 pkgver='4.3.0'
 arch=('any')
-pkgrel=3
+pkgrel=4
 license=('GPL')
 
 ros_makedepends=()
@@ -17,12 +17,14 @@ makedepends=('cmake' 'ros-build-tools'
   gtk2
   libtool
   mesa
+  glu
   pkg-config)
 
 ros_depends=(ros-noetic-catkin)
 depends=(${ros_depends[@]}
   libjpeg-turbo
   mesa
+  glu
   fltk
   gtk2)
 
