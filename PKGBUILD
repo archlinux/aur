@@ -47,7 +47,7 @@ pkgver() {
 build_brotli() {
   cd ${srcdir}
   cd ${BROTLI_VERSION}
-  mkdir build
+  mkdir -p build
   cd build
   cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=./installed ..
   cmake --build . --config Release --target install
