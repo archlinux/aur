@@ -7,7 +7,7 @@
 pkgname=(libvirt libvirt-storage-gluster libvirt-storage-iscsi-direct libvirt-storage-rbd)
 epoch=1
 pkgver=8.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="https://libvirt.org/"
@@ -150,6 +150,7 @@ package_libvirt() {
   chmod 0750 "$pkgdir/usr/share/polkit-1/rules.d"
   chmod 600 "$pkgdir"/etc/libvirt/nwfilter/*.xml \
     "$pkgdir/etc/libvirt/qemu/networks/default.xml"
+  chmod 700 "$pkgdir"/etc/libvirt/secrets
 
   rm -rf \
     "$pkgdir/run" \
