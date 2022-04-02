@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-turtle-tf2
 	pkgdesc = ROS - turtle_tf2 demonstrates how to write a tf2 broadcaster and listener with the turtlesim.
 	pkgver = 0.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/turtle_tf2
 	arch = i686
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = ros-noetic-turtle-tf2
 	makedepends = ros-noetic-tf2-ros
 	makedepends = ros-noetic-roscpp
 	makedepends = ros-noetic-tf2
+	makedepends = ros-noetic-tf2-geometry-msgs
 	makedepends = ros-noetic-rospy
 	makedepends = ros-noetic-geometry-msgs
 	depends = ros-noetic-turtlesim
@@ -24,10 +25,10 @@ pkgbase = ros-noetic-turtle-tf2
 	depends = ros-noetic-tf2-ros
 	depends = ros-noetic-roscpp
 	depends = ros-noetic-tf2
+	depends = ros-noetic-tf2-geometry-msgs
 	depends = ros-noetic-rospy
 	depends = ros-noetic-geometry-msgs
 	source = ros-noetic-turtle-tf2-0.2.3.tar.gz::https://github.com/ros/geometry_tutorials/archive/0.2.3.tar.gz
 	sha256sums = 7346c3a2d595cbac3d4d2f2e5aa01ff2c7fbafe1c21374efb09244629303ea2f
 
 pkgname = ros-noetic-turtle-tf2
-
