@@ -9,11 +9,10 @@
 pkgname=('python-pyqt5-sip4')
 pkgdesc="A set of Python bindings for the Qt5 toolkit"
 pkgver=5.15.6
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://riverbankcomputing.com/software/pyqt/intro"
 license=('GPL')
-groups=(pyqt5)
 depends=('python-pyqt5-sip' 'qt5-base')
 optdepends=('python-opengl: enable OpenGL 3D graphics in PyQt applications'
             'python-dbus: for python-dbus mainloop support'
@@ -54,7 +53,7 @@ build() {
   make
 }
 
-package_python-pyqt5-sip4(){
+package() {
   cd PyQt5-$pkgver/build
   make INSTALL_ROOT="$pkgdir" install -j1
 
