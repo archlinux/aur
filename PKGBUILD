@@ -4,12 +4,12 @@
 
 _pkgname=nyxt-browser
 pkgname=$_pkgname-git
-pkgver=2.1.1.r469.gaf599d8d
+pkgver=latest
 pkgrel=1
 pkgdesc="Keyboard-oriented, Common Lisp extensible web-browser"
 arch=('i686' 'x86_64')
 url="https://nyxt.atlas.engineer"
-license=('BSD-3')
+license=('custom:BSD')
 conflicts=('nyxt-browser')
 provides=('nyxt-browser' 'next-browser')
 source=($_pkgname::git+https://github.com/atlas-engineer/nyxt.git)
@@ -21,7 +21,7 @@ depends=('enchant'
          'gobject-introspection-runtime'
          'gsettings-desktop-schemas'
          'libfixposix'
-         'webkit2gtk')
+         'webkit2gtk-4.1')
 optdepends=('gstreamer: for HTML5 audio/video'
             'gst-plugins-base: for HTML5 audio/video'
             'gst-plugins-good: for HTML5 audio/video'
@@ -33,7 +33,6 @@ options=('!strip' '!makeflags')
 pkgver() {
   cd "$srcdir/$_pkgname"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-
 }
 
 build() {
@@ -44,5 +43,6 @@ build() {
 package() {
   cd "$srcdir/$_pkgname"
   make install PREFIX=/usr DESTDIR=${pkgdir}
-  install -Dm644 licenses/ASSET-LICENSE "$pkgdir"/usr/share/licenses/$_pkgname/licenses/ASSET-LICENSE
+  install -dm755 "$pkgdir"/usr/share/licenses/$pkgname/
+  install -m644 licenses/* "$pkgdir"/usr/share/licenses/$pkgname/
 }
