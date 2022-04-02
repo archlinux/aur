@@ -1,6 +1,6 @@
 pkgbase = ani-cli
 	pkgdesc = A cli to browse and watch anime.
-	pkgver = 1.9
+	pkgver = 2.0
 	pkgrel = 1
 	url = https://github.com/pystardust/ani-cli
 	arch = any
@@ -10,9 +10,10 @@ pkgbase = ani-cli
 	depends = curl
 	depends = openssl
 	depends = mpv
+	depends = ffmpeg
 	optdepends = vlc: An alternative video player
 	optdepends = aria2: For downloading episodes
-	source = ani-cli-1.9.tar.gz::https://github.com/pystardust/ani-cli/archive/refs/tags/v1.9.tar.gz
-	sha256sums = d01e5acc1961dfb2d1ea4219dcbc8a7b745a1066166216590592d2021aae7736
+	source = ani-cli-2.0.tar.gz::https://github.com/pystardust/ani-cli/archive/refs/tags/v2.0.tar.gz
+	sha256sums = fb27aaa2c2c66a1198e4876e40c0366693e05d91ea66beaaa739b910ff7040b0
 
 pkgname = ani-cli
