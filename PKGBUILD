@@ -3,7 +3,7 @@
 _orgname=tendermint
 _pkgname=tendermint
 pkgname=${_pkgname}-bin
-pkgver=0.35.2
+pkgver=0.34.17
 pkgrel=1
 pkgdesc="⟁ Tendermint Core (BFT Consensus) in Go"
 arch=('x86_64' 'aarch64' 'armv6h')
@@ -14,9 +14,9 @@ conflicts=(${_pkgname})
 source_x86_64=("https://github.com/${_orgname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/${_orgname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_arm64.tar.gz")
 source_armv6h=("https://github.com/${_orgname}/${_pkgname}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_linux_armv6.tar.gz")
-sha256sums_x86_64=('b51349ecefd0ec20167c45f0ff0f228581683ec1214e3926cad5120cd5b92f64')
-sha256sums_aarch64=('a8e0cf5f5f5db72880804c0b7a1327d42f94c53f9d889b40fb2651e52e3ab2f1')
-sha256sums_armv6h=('d3a901abbebc0eea8c0a6e0ab8e2b2feb17856170e93c7aeb0da9a023d8d0c0e')
+sha256sums_x86_64=('131f01ee1dab9cd96c0420a20e05d5a2fe2c392d2aa548260356d65342074d0f')
+sha256sums_aarch64=('66bc1f9e77af9d1f5ab99e0d961dfe9fe0b7d0a9408cda28a90e99dcba07389a')
+sha256sums_armv6h=('07075e6cd653f7ccfa5ba5721c54976bfb2918776de2752b28eea3df7c681abe')
 
 package() {
     install -Dt "$pkgdir/usr/local/bin" "$_pkgname"
