@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-laser-filters
 	pkgdesc = ROS - Assorted filters designed to operate on 2D planar laser scanners, which use the sensor_msgs/LaserScan type.
 	pkgver = 1.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/laser_filters
 	arch = i686
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = ros-noetic-laser-filters
 	makedepends = ros-noetic-pluginlib
 	makedepends = ros-noetic-rostest
 	makedepends = ros-noetic-angles
+	makedepends = ros-noetic-nodelet
 	depends = ros-noetic-dynamic-reconfigure
 	depends = ros-noetic-sensor-msgs
 	depends = ros-noetic-roscpp
@@ -30,6 +31,7 @@ pkgbase = ros-noetic-laser-filters
 	depends = ros-noetic-laser-geometry
 	depends = ros-noetic-pluginlib
 	depends = ros-noetic-angles
+	depends = ros-noetic-nodelet
 	source = ros-noetic-laser-filters-1.9.0.tar.gz::https://github.com/ros-perception/laser_filters/archive/1.9.0.tar.gz
 	sha256sums = e9e58f4e6e22717973e4a187e1472c5b6d11247b96e03f8080f339e0077e37b8
 

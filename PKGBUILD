@@ -4,7 +4,7 @@ url='https://wiki.ros.org/laser_filters'
 pkgname='ros-noetic-laser-filters'
 pkgver='1.9.0'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -18,6 +18,7 @@ ros_makedepends=(
     ros-noetic-pluginlib
     ros-noetic-rostest
     ros-noetic-angles
+    ros-noetic-nodelet
 )
 
 makedepends=(
@@ -36,6 +37,7 @@ ros_depends=(
     ros-noetic-laser-geometry
     ros-noetic-pluginlib
     ros-noetic-angles
+    ros-noetic-nodelet
 )
 
 depends=(
