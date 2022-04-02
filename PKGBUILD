@@ -1,6 +1,6 @@
 # Maintainer: Abhinav Gupta <mail@abhinavg.net>
 pkgname=tmux-fastcopy
-pkgver=0.7.2
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='easymotion-style text copying for tmux.'
 arch=(any)
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('tmux')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d9dce33ff1d1c35284722b421664e0897f2f0696bc7da99b30b764983b95ea26')
+sha256sums=('73e8790847f262f86b4eaaee4857f2ad7add59fe6e4b22602a508e85d9b10c61')
 
 _gopackagepath=github.com/abhinav/tmux-fastcopy
 
