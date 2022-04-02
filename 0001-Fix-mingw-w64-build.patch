@@ -1,22 +1,22 @@
-From c0a03910971a066c3b8f92f5a169e5a82d09fbae Mon Sep 17 00:00:00 2001
+From aa6cb1ffc0a005e37d22b14faa3e31b642b33d7c Mon Sep 17 00:00:00 2001
 From: Tilmann Meyer <allescrafterx@gmail.com>
 Date: Fri, 17 Apr 2020 02:12:23 +0200
 Subject: [PATCH 1/2] Fix mingw-w64 build
 
 ---
- CMakeLists.txt                | 35 +++++++++++++++++-------------
+ CMakeLists.txt                | 35 +++++++++++++++++++---------------
  cmake/install.cmake           |  4 ++--
  cmake/symlink.cmake           |  2 +-
  include/ma_global.h           |  4 ++--
  include/mysql.h               |  6 +-----
  include/mysql/client_plugin.h |  2 +-
- libmariadb/CMakeLists.txt     | 40 ++++++++++++++++++-----------------
+ libmariadb/CMakeLists.txt     | 36 +++++++++++++++++------------------
  plugins/auth/CMakeLists.txt   |  2 +-
  plugins/io/CMakeLists.txt     |  2 +-
- 9 files changed, 50 insertions(+), 47 deletions(-)
+ 9 files changed, 46 insertions(+), 47 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index b03b546..7c8a362 100644
+index d245b6e..93bf967 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -3,6 +3,9 @@
@@ -55,7 +55,7 @@ index b03b546..7c8a362 100644
  ###############
  
  INCLUDE(${CC_SOURCE_DIR}/cmake/misc.cmake)
-@@ -244,14 +243,20 @@ IF(UNIX)
+@@ -249,14 +248,20 @@ IF(UNIX)
    SET(CMAKE_REQUIRED_LIBRARIES ${CMAKE_REQUIRED_LIBRARIES} ${LIBNSL} ${LIBBIND} ${LIBICONV} ${LIBZ}
      ${LIBSOCKET} ${CMAKE_DL_LIBS} ${LIBM} ${LIBPTHREAD})
    SET(SYSTEM_LIBS ${SYSTEM_LIBS} ${LIBNSL} ${LIBBIND} ${LIBICONV} ${LIBZ}
@@ -176,7 +176,7 @@ index 72939d2..77e4538 100644
                    int argc, ...);
  
 diff --git a/libmariadb/CMakeLists.txt b/libmariadb/CMakeLists.txt
-index 2bf85f2..bd0b11a 100644
+index 4e46d98..b9a1618 100644
 --- a/libmariadb/CMakeLists.txt
 +++ b/libmariadb/CMakeLists.txt
 @@ -393,7 +393,7 @@ ENDIF()
@@ -239,31 +239,29 @@ index 2bf85f2..bd0b11a 100644
    IF(NOT CMAKE_SYSTEM_NAME MATCHES AIX)
      create_symlink(libmysqlclient${CMAKE_STATIC_LIBRARY_SUFFIX} mariadbclient ${INSTALL_LIBDIR})
      create_symlink(libmysqlclient_r${CMAKE_STATIC_LIBRARY_SUFFIX} mariadbclient ${INSTALL_LIBDIR})
-@@ -449,7 +447,7 @@ IF(WITH_MYSQLCOMPAT)
- ENDIF()
+@@ -450,7 +448,7 @@ ENDIF()
  
+ create_symlink(libmariadb${CMAKE_STATIC_LIBRARY_SUFFIX} mariadbclient ${INSTALL_LIBDIR})
  
 -SET_TARGET_PROPERTIES(libmariadb PROPERTIES VERSION
 +SET_TARGET_PROPERTIES(mariadb PROPERTIES VERSION
   ${CPACK_PACKAGE_VERSION_MAJOR}
   SOVERSION ${CPACK_PACKAGE_VERSION_MAJOR})
  
-@@ -459,15 +457,19 @@ ENDIF()
- 
- INSTALL(TARGETS mariadbclient
+@@ -462,17 +460,17 @@ INSTALL(TARGETS mariadbclient
            COMPONENT Development
--          DESTINATION ${INSTALL_LIBDIR})
--INSTALL(TARGETS libmariadb
-+          RUNTIME DESTINATION "${INSTALL_BINDIR}"
-+          LIBRARY DESTINATION "${INSTALL_LIBDIR}"
-+          ARCHIVE DESTINATION "${INSTALL_LIBDIR}")
-+INSTALL(TARGETS mariadb
-           COMPONENT SharedLibraries
--        DESTINATION ${INSTALL_LIBDIR})
-+          RUNTIME DESTINATION "${INSTALL_BINDIR}"
-+          LIBRARY DESTINATION "${INSTALL_LIBDIR}"
-+          ARCHIVE DESTINATION "${INSTALL_LIBDIR}")
- 
+           DESTINATION ${INSTALL_LIBDIR})
+ # in cmake 3.12+ we can use
+-#INSTALL(TARGETS libmariadb LIBRARY DESTINATION ${INSTALL_LIBDIR}
++#INSTALL(TARGETS mariadb LIBRARY DESTINATION ${INSTALL_LIBDIR} RUNTIME DESTINATION ${INSTALL_BINDIR} ARCHIVE DESTINATION ${INSTALL_LIBDIR}
+ #        COMPONENT SharedLibraries NAMELINK_COMPONENT Development)
+ # but as long as we build on CentOS 7 with its cmake 2.8.12.2 we have to use
+-INSTALL(TARGETS libmariadb LIBRARY DESTINATION ${INSTALL_LIBDIR}
++INSTALL(TARGETS mariadb LIBRARY DESTINATION ${INSTALL_LIBDIR} RUNTIME DESTINATION ${INSTALL_BINDIR} ARCHIVE DESTINATION ${INSTALL_LIBDIR}
+         COMPONENT SharedLibraries NAMELINK_SKIP)
+-INSTALL(TARGETS libmariadb LIBRARY DESTINATION ${INSTALL_LIBDIR}
++INSTALL(TARGETS mariadb LIBRARY DESTINATION ${INSTALL_LIBDIR} RUNTIME DESTINATION ${INSTALL_BINDIR} ARCHIVE DESTINATION ${INSTALL_LIBDIR}
+         COMPONENT Development NAMELINK_ONLY)
  
  IF(MSVC)
     # On Windows, install PDB
@@ -298,5 +296,5 @@ index 8c304c9..e2e9c5a 100644
    ENDIF()
  ENDIF()
 -- 
-2.34.1
+2.35.1
 
