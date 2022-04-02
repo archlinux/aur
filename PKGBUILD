@@ -1,7 +1,7 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=curl-impersonate-chrome
-pkgver=r59.979750a
+pkgver=r101.af38d2b
 _gitname=curl-impersonate
 pkgrel=1
 pkgdesc="A special compilation of curl that makes it impersonate Chrome"
@@ -10,13 +10,16 @@ license=('MIT')
 arch=('x86_64')
 md5sums=('SKIP')
 makedepends=(git gcc cmake go ninja unzip zlib autoconf automake libtool patch)
-depends=(brotli nss)
+depends=(nss)
 provides=(curl-impersonate-chrome)
 
 # WORKAROUND The default /etc/makepkg.conf shipped by arch comes with -Werror=format which can't be 
 # overriden otherwise and wont let boringssl compile
 options=("!buildflags")
 
+BROTLI_VERSION=1.0.9
+BROTLI_URL="https://github.com/google/brotli/archive/refs/tags/v${BROTLI_VERSION}.tar.gz"
+BROTLI_VERSION="brotli-${BROTLI_VERSION}"
 BORING_SSL_COMMIT=3a667d10e94186fd503966f5638e134fe9fb4080
 BORING_SSL_URL="https://github.com/google/boringssl/archive/${BORING_SSL_COMMIT}.zip"
 BORING_SSL_DIR="boringssl-${BORING_SSL_COMMIT}"
@@ -30,11 +33,13 @@ source=(
   "boringssl.zip::${BORING_SSL_URL}"
   "${NGHTTP2_VERSION}.tar.bz2::${NGHTTP2_URL}"
   "${CURL_VERSION}.tar.xz::${CURL_URL}"
+  "${BROTLI_VERSION}.tar.gz::${BROTLI_URL}"
 )
 md5sums=('SKIP'
          'afaf515861012f435653fab96cae2a5f'
          'de2aaa48ae0bf9713da3a9bfc3f1629f'
-         '41954fa09f879fccb57d88be23fe8606')
+         '41954fa09f879fccb57d88be23fe8606'
+         'c2274f0c7af8470ad514637c35bcee7d')
 
 browser_dir=${_gitname}/chrome
 
@@ -42,6 +47,15 @@ browser_dir=${_gitname}/chrome
 pkgver() {
   cd ${_gitname}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build_brotli() {
+  cd ${srcdir}
+  cd ${BROTLI_VERSION}
+  mkdir -p build
+  cd build
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=./installed ..
+  cmake --build . --config Release --target install
 }
 
 patch_boringssl () {
@@ -94,7 +108,7 @@ patch_curl () {
 build_curl () {
   cd ${srcdir}
   cd ${CURL_VERSION}
-  ./configure --with-openssl=${srcdir}/${BORING_SSL_DIR}/build --enable-static --disable-shared --with-nghttp2=${srcdir}/${NGHTTP2_VERSION}/build LIBS="-pthread" CFLAGS="-I${srcdir}/${BORING_SSL_DIR}/build -I${srcdir}/${NGHTTP2_VERSION}/build" USE_CURL_SSLKEYLOGFILE=true
+  ./configure --with-openssl=${srcdir}/${BORING_SSL_DIR}/build --enable-static --disable-shared --with-nghttp2=${srcdir}/${NGHTTP2_VERSION}/build --with-brotli=${srcdir}${BROTLI_VERSION}/build/installed LIBS="-pthread" CFLAGS="-I${srcdir}/${BORING_SSL_DIR}/build -I${srcdir}/${NGHTTP2_VERSION}/build" USE_CURL_SSLKEYLOGFILE=true
   make
   mkdir -p out
   cp src/curl out/curl-impersonate
@@ -106,7 +120,7 @@ build_curl () {
 build_libcurl () {
   cd ${srcdir}
   cd ${CURL_VERSION}
-  ./configure --with-openssl=${srcdir}/${BORING_SSL_DIR}/build --with-nghttp2=${srcdir}/${NGHTTP2_VERSION}/build LIBS="-pthread" CFLAGS="-I${srcdir}/${BORING_SSL_DIR}/build -I${srcdir}/${NGHTTP2_VERSION}/build" LIBS="-pthread" USE_CURL_SSLKEYLOGFILE=true 
+  ./configure --with-openssl=${srcdir}/${BORING_SSL_DIR}/build --with-nghttp2=${srcdir}/${NGHTTP2_VERSION}/build --with-brotli=${srcdir}${BROTLI_VERSION}/build/installed LIBS="-pthread" CFLAGS="-I${srcdir}/${BORING_SSL_DIR}/build -I${srcdir}/${NGHTTP2_VERSION}/build" LIBS="-pthread" USE_CURL_SSLKEYLOGFILE=true 
   make clean 
   make
   ver=$(readlink -f lib/.libs/libcurl.so | sed 's/.*so\.//')
@@ -121,6 +135,7 @@ prepare () {
 }
 
 build () {
+  build_brotli
   build_boringssl
   build_nghttp2
   build_curl

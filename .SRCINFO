@@ -24,6 +24,7 @@ pkgbase = curl-impersonate-chrome
 	source = boringssl.zip::https://github.com/google/boringssl/archive/3a667d10e94186fd503966f5638e134fe9fb4080.zip
 	source = nghttp2-1.46.0.tar.bz2::https://github.com/nghttp2/nghttp2/releases/download/v1.46.0/nghttp2-1.46.0.tar.bz2
 	source = curl-7.81.0.tar.xz::https://curl.se/download/curl-7.81.0.tar.xz
+	source = brotli-1.0.9.tar.gz::https://github.com/google/brotli/archive/refs/tags/v1.0.9.tar.gz
 	md5sums = SKIP
 	md5sums = afaf515861012f435653fab96cae2a5f
 	md5sums = de2aaa48ae0bf9713da3a9bfc3f1629f
