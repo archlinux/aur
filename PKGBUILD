@@ -4,11 +4,10 @@
 # https://github.com/michaellass/AUR
 
 pkgname=qt-dab
-pkgver=4.3a
-_prefix=qt-dab- # name of tarball and contents change from release to release
-_pkgver=4.3a    # official versioning not compatible with pacman
-#_binary=${pkgname}-${_pkgver}
-_binary=${pkgname}-4.3
+pkgver=4.3.5
+_prefix= # name of tarball and contents change from release to release
+_pkgver=4.35    # official versioning not compatible with pacman
+_binary=${pkgname}-${_pkgver}
 pkgrel=1
 pkgdesc="Software DAB decoder for use with various SDR devices"
 arch=(x86_64)
@@ -21,19 +20,14 @@ optdepends=('airspy: Support for Airspy'
             'libad9361: Support for Pluto'
             'rtl-sdr: Support for RTL-SDR'
             'libsdrplay: Support for SDRplay')
-source=("https://github.com/JvanKatwijk/${pkgname}/archive/refs/tags/${_prefix}${_pkgver}.tar.gz"
-        "https://github.com/JvanKatwijk/qt-dab/commit/59a3761e8a2f9aba8fd6e5b471f9c6508c29f274.patch")
-sha256sums=('3fbaa2f8ea05af99b364d2d47133cc0d79738dfd3a71d96761d3fdc6e4383d28'
-            'e9e01b0df5afaee4b8cf564334f87ebd91d80725c557f3dcecc7805a54924c8d')
+source=("https://github.com/JvanKatwijk/${pkgname}/archive/refs/tags/${_prefix}${_pkgver}.tar.gz")
+sha256sums=('5180eb2f4c51406143dc498a8260cf26dc41978d4328560b9aeac3d179022775')
 
 prepare() {
 	cd "${_prefix}${pkgname}-${_pkgver}"
 
 	# The program is officially called Qt-DAB.
 	sed -i 's/Qt_DAB/Qt-DAB/g' dab-maxi/${pkgname}.desktop
-
-	# Fix CMakeList.txt after introduction of tii-codes
-	patch -p1 < "${srcdir}/59a3761e8a2f9aba8fd6e5b471f9c6508c29f274.patch"
 }
 
 build() {
