@@ -4,7 +4,7 @@ url='https://wiki.ros.org/rviz'
 pkgname='ros-noetic-rviz'
 pkgver='1.14.14'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD, Creative Commons')
 
 ros_makedepends=(
@@ -58,8 +58,8 @@ depends=(
     yaml-cpp
     mesa
     qt5-base
-    sip
-    python-sip
+    sip4
+    python-sip4
 )
 
 _dir="rviz-${pkgver}/"
