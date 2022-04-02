@@ -9,7 +9,7 @@
 
 _pkgname='gitea'
 pkgname=gitea-git
-pkgver=v1.15.0_dev_359_g2a998048ef
+pkgver=v1.17.0_dev_395_g7b4c3c7bb1
 pkgrel=1
 pkgdesc='Painless self-hosted Git service. Community managed fork of Gogs.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
