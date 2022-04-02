@@ -1,7 +1,7 @@
 pkgbase = xfce4-settings-standalone
 	pkgdesc = Settings manager of the Xfce desktop
 	pkgver = 4.16.2+0+g2076199f
-	pkgrel = 3
+	pkgrel = 4
 	url = https://docs.xfce.org/xfce/xfce4-settings/start
 	arch = x86_64
 	groups = xfce4
@@ -10,6 +10,7 @@ pkgbase = xfce4-settings-standalone
 	makedepends = xf86-input-libinput
 	makedepends = git
 	makedepends = xfce4-dev-tools
+	makedepends = garcon
 	depends = exo
 	depends = libxfce4ui
 	depends = xfconf
