@@ -13,35 +13,34 @@
 ### MERGE REQUESTS SELECTION
 
 # Merge Requests List: ('579' '1441' '1877')
-_merge_requests_to_use=('1441' '1877')
+_merge_requests_to_use=('1441')
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgname=mutter-performance
-pkgver=41.5
+pkgver=42.0
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
 license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
-         libcanberra startup-notification zenity libsm gnome-desktop upower
+         libcanberra startup-notification zenity libsm gnome-desktop
          libxkbcommon-x11 gnome-settings-daemon libgudev libinput pipewire
          xorg-xwayland graphene libxkbfile libsysprof-capture)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof)
 checkdepends=(xorg-server-xvfb wireplumber python-dbusmock)
-provides=(mutter mutter-781835-workaround libmutter-9.so)
+provides=(mutter libmutter-10.so)
 conflicts=(mutter)
-replaces=(mutter-781835-workaround)
 groups=(gnome)
-_commit=17926e941d67867911c462737f4d013adb55e4d6  # tags/41.5^0
+_commit=9249aba72a5c4454894c08735a4963ca1665e34d  # tags/42.0^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch'
         'mr1877.patch')
 sha256sums=('SKIP'
-            '0644b481538cade728b4e2e399fb88b85f1f7e84b5b99872f4d7c225990e58b2'
-            '019ebc2785c7cd9f19d8e6df6909b94165d8912af4e74c45f0fc464f407a7892')
+            'a37a4ec7e4a4b771f0d78e1a20a320d004f6bb7d1a1f220ba6054cf55bf1c4be'
+            '0c6042aecc8a7d13ab4beb419d9ad0f2aa898bc3532f4f9741b5a35c036b6cf8')
 
 pkgver() {
   cd $pkgname
@@ -80,9 +79,6 @@ prepare() {
 
   git reset --hard
   git cherry-pick --abort || true
-
-  # Make tests run
-  sed -i '/catchsegv/d' meson.build
 
   #git remote add vanvugt https://gitlab.gnome.org/vanvugt/mutter.git || true
   #git remote add verdre https://gitlab.gnome.org/verdre/mutter.git || true
@@ -126,7 +122,6 @@ prepare() {
   #          If you use stenography software or play hardcore rhythm games like Lunatic Rave 2/osumania, use it.
   pick_mr '579' ce86f90efbaa51522ba14c5b4cad933c2106de42 'revert'
 
-
   # Title: WIP: clutter-frame-clock: Triple buffering support (v4)
   # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1441
   # Type: 1
@@ -167,7 +162,7 @@ _check() (
 
   trap "kill $_p1 $_p2; wait" EXIT
 
-  meson test -C build --print-errorlogs
+  meson test -C build --print-errorlogs -t 3
 )
 
 check() {
