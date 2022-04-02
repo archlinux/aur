@@ -5,7 +5,7 @@
 pkgname=bd-git
 _pkgname=bd
 pkgver=v1.02.r7.ge379330
-pkgrel=1
+pkgrel=2
 pkgdesc='Quickly go back to a parent directory instead of typing "cd ../../.." repeatedly'
 url='https://github.com/vigneshwaranr/bd'
 arch=('any')
@@ -13,7 +13,7 @@ license=('MIT')
 makedepends=('git')
 depends=('bash')
 optdepends=('bash-completion')
-source=("${_pkgname}::git+git://github.com/vigneshwaranr/bd.git")
+source=("${_pkgname}::git+${url}.git")
 md5sums=('SKIP')
 
 package() {
