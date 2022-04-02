@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_gui_cpp enables GUI plugins to use the C++ client library for
 url='https://wiki.ros.org/rqt_gui_cpp'
 
 pkgname='ros-noetic-rqt-gui-cpp'
-pkgver='0.5.2'
+pkgver='0.5.3'
 _pkgver_patch=0
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
 pkgrel=1
@@ -38,7 +38,7 @@ depends=(
 
 _dir="rqt-${pkgver}/rqt_gui_cpp"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt/archive/${pkgver}.tar.gz")
-sha256sums=('9913fb6da15f0ccb9d995f8ea3be935d36bd255379c8ae19c0005207883299eb')
+sha256sums=('4b62c9238e72d474a216fcd8cebb88cf2bb463b9143a895050dffbfc9ec6f6b2')
 
 build() {
 	# Use ROS environment variables.
