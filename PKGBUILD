@@ -4,7 +4,7 @@
 pkgname=python-pygraphviz
 _name=pygraphviz
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="Python interface to Graphviz graph drawing package"
 arch=('i686' 'x86_64')
 url="https://pygraphviz.github.io/"
@@ -14,7 +14,9 @@ depends=(
   'graphviz')
 makedepends=(
   'python-build'
-  'python-installer')
+  'python-installer'
+  'python-wheel'
+  'python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.zip")
 b2sums=('a399742ae5e8323eec0b6890858cc9158c2942c4f0adb8c74fbfb9745321ae013b93227540e5c328f5dd22d8fba2cf9217a9079f99a14feb983d7188e07084c9')
 

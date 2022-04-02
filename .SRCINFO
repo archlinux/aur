@@ -1,13 +1,15 @@
 pkgbase = python-pygraphviz
 	pkgdesc = Python interface to Graphviz graph drawing package
 	pkgver = 1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pygraphviz.github.io/
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
 	depends = python
 	depends = graphviz
 	source = https://files.pythonhosted.org/packages/source/p/pygraphviz/pygraphviz-1.9.zip
