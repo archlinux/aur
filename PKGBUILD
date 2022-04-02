@@ -1,6 +1,6 @@
 # Maintainer: Léopold Koprivnik Ibghy <skwal.net@gmail.com>
 pkgname="cow-encryptor-git"
-pkgver=r2.45ebc35
+pkgver=r6.43722fa
 pkgrel=1
 pkgdesc="Encrypt your files in cow language"
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = cow-encryptor-git
 	pkgdesc = Encrypt your files in cow language
-	pkgver = r2.45ebc35
+	pkgver = r6.43722fa
 	pkgrel = 1
 	url = https://github.com/SkwalExe/cow-encryptor
 	install = cow-encryptor.install
