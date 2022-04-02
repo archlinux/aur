@@ -1,7 +1,7 @@
 pkgbase = crunchyroll-go
 	pkgdesc = A cli for downloading videos and entire series from crunchyroll
-	pkgver = 2.0.1
-	pkgrel = 2
+	pkgver = 2.0.2
+	pkgrel = 1
 	url = https://github.com/ByteDream/crunchyroll-go
 	arch = x86_64
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = crunchyroll-go
 	license = LGPL3
 	makedepends = go
 	optdepends = ffmpeg: convert output files
-	source = crunchyroll-go-2.0.1.tar.gz::https://github.com/ByteDream/crunchyroll-go/archive/v2.0.1.tar.gz
-	sha256sums = 2bbf23f9b56868f2ce6ab0e3f9639fc5164ec38359a003d2674b49480f4cf320
+	source = crunchyroll-go-2.0.2.tar.gz::https://github.com/ByteDream/crunchyroll-go/archive/v2.0.2.tar.gz
+	sha256sums = 81a881f912d1ec907f46a1278f8d8d4f1bace243522764a4922d8f37e7f26b6f
 
 pkgname = crunchyroll-go
