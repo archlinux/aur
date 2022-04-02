@@ -1,7 +1,7 @@
 # Maintainer: Sashanoraa <sasha@noraa.gay>
 
 pkgname=yt-spammer-purge
-pkgver=2.16.7
+pkgver=2.16.8
 pkgrel=1
 pkgdesc="A script that allows you to filter and search for spammer comments on your channel and other's channel(s)"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python' 'tk' 'python-google-api-python-client'
     'python-google-auth-oauthlib' 'python-protobuf' 'python-colorama'
     'python-rtfunicode' 'python-confusables' 'python-certifi' 'python-six'
     'python-levenshtein')
-sha256sums=('12f099f1f8e1126643fcbf37113a2686007302dbc51befae549596151368451b'
+sha256sums=('11651d2a9ee9fa5b56c3267ef25f60ce730641580458d9da9e7b8846ac8ad456'
             'f3f6ace0928d0c5465c693a4300e03059c33d4c059409741169f5c5e9e5eeb86')
 install=msg.install
 
