@@ -29,20 +29,20 @@ checkdepends=(
   'python-pytest-cov'
   'python-pytest-timeout'
 )
-source=($pkgname::"git+https://github.com/zigpy/zigpy#tag=$pkgver")
-sha512sums=('SKIP')
+source=("$_pkgname-$pkgver.tar.gz::https://github.com/zigpy/zigpy/archive/$pkgver.tar.gz")
+sha512sums=('8f65d6c1104da444eb96a15df6ef5211c0486b73d9a260412445a2b1f39b71e13de5a3bb39ef301c9cd7e84713592d840b931dd806165e8dfe9aba50d8658686')
 
 build() {
-  cd $pkgname
+  cd $_pkgname-$pkgver
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd $pkgname
+  cd $_pkgname-$pkgver
   pytest
 }
 
 package() {
-  cd $pkgname
+  cd $_pkgname-$pkgver
   python -m installer --destdir="$pkgdir" dist/*.whl
 }
