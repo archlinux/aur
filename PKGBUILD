@@ -4,7 +4,7 @@ url='https://wiki.ros.org/python_qt_binding'
 pkgname='ros-noetic-python-qt-binding'
 pkgver='0.4.4'
 arch=('any')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -24,7 +24,7 @@ ros_depends=(
 
 depends=(
     ${ros_depends[@]}
-    python-pyqt5
+    python-pyqt5-sip4
 )
 
 _dir="python_qt_binding-${pkgver}"
