@@ -1,6 +1,6 @@
 pkgbase = snapper-tools-git
 	pkgdesc = A highly opinionated Snapper GUI and CLI
-	pkgver = r1.ff8ff28
+	pkgver = r5.36aa64d
 	pkgrel = 1
 	url = https://gitlab.com/garuda-linux/applications/snapper-tools
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = snapper-tools-git
 	makedepends = git
 	makedepends = polkit
 	depends = qt5-base
+	depends = qt5-svg
 	depends = polkit
 	provides = snapper-tools
 	conflicts = snapper-tools
