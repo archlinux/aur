@@ -1,6 +1,6 @@
 pkgbase = openvpn-password-save
 	pkgdesc = An easy-to-use, robust and highly configurable VPN (Virtual Private Network)
-	pkgver = 2.5.4
+	pkgver = 2.5.6
 	pkgrel = 1
 	url = https://openvpn.net/index.php/open-source.html
 	install = openvpn.install
@@ -20,7 +20,7 @@ pkgbase = openvpn-password-save
 	optdepends = pam: authenticate via PAM
 	provides = openvpn
 	conflicts = openvpn
-	source = git+https://github.com/OpenVPN/openvpn.git#tag=v2.5.4?signed
+	source = git+https://github.com/OpenVPN/openvpn.git#tag=4bac15c56a54350076925391dc317c0139c7b5b0?signed
 	source = 0001-unprivileged.patch
 	source = sysusers.conf
 	source = tmpfiles.conf
@@ -32,4 +32,3 @@ pkgbase = openvpn-password-save
 	sha256sums = b1436f953a4f1be7083711d11928a9924993f940ff56ff92d288d6100df673fc
 
 pkgname = openvpn-password-save
-

@@ -1,8 +1,10 @@
 # Maintainer: s3rj1k <evasive.gyron@gmail.com>
+# Do not forget to run `makepkg --printsrcinfo > .SRCINFO`
 
 pkgname=openvpn-password-save
 _pkgname=openvpn
-pkgver=2.5.4
+_tag='4bac15c56a54350076925391dc317c0139c7b5b0' # git rev-parse v${pkgver}
+pkgver=2.5.6
 pkgrel=1
 pkgdesc='An easy-to-use, robust and highly configurable VPN (Virtual Private Network)'
 arch=('x86_64')
@@ -17,7 +19,7 @@ makedepends=('git' 'systemd' 'python-docutils')
 install=openvpn.install
 validpgpkeys=('F554A3687412CFFEBDEFE0A312F5F7B42F2B01E7'  # OpenVPN - Security Mailing List <security@openvpn.net>
               'B62E6A2B4E56570B7BDC6BE01D829EFECA562812') # Gert Doering <gert@v6.de>
-source=("git+https://github.com/OpenVPN/openvpn.git#tag=v${pkgver}?signed"
+source=("git+https://github.com/OpenVPN/openvpn.git#tag=${_tag}?signed"
         '0001-unprivileged.patch'
         'sysusers.conf'
         'tmpfiles.conf')
