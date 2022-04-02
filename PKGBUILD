@@ -1,43 +1,24 @@
-# Maintainer: Stefan Seemayer <mail@semicolonsoftware.de>
+# Contributor: Stefan Seemayer <mail@semicolonsoftware.de>
 pkgname=termpalette-git
-pkgver=20130108
+pkgver=r20.11de51f
 pkgrel=1
+epoch=1
 pkgdesc="Terminal ANSI color palette viewer written in python"
 arch=(any)
 url="https://github.com/sseemayer/TermPalette"
 license=('MIT')
 depends=('python')
 makedepends=('git')
-options=(!emptydirs)
-source=()
-noextract=()
-md5sums=() #generate with 'makepkg -g'
+source=("git+${url}")
+md5sums=('SKIP')
 
-_gitroot=git://github.com/sseemayer/TermPalette.git
-_gitname=termpalette
-
-build() {
-  cd "$srcdir"
-  msg "Connecting to GIT server...."
-
-  if [[ -d "$_gitname" ]]; then
-    cd "$_gitname" && git pull origin
-    msg "The local files are updated."
-  else
-    git clone "$_gitroot" "$_gitname"
-  fi
-
-  msg "GIT checkout done or server timeout"
-  msg "Starting build..."
-
-  rm -rf "$srcdir/$_gitname-build"
-  git clone "$srcdir/$_gitname" "$srcdir/$_gitname-build"
-  cd "$srcdir/$_gitname-build"
-
+pkgver() {
+  cd TermPalette
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/$_gitname-build"
+  cd TermPalette
   python setup.py install --root="$pkgdir/" --optimize=1
 }
 
