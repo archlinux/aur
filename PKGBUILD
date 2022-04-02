@@ -4,32 +4,33 @@ url='https://wiki.ros.org/kdl_parser'
 pkgname='ros-noetic-kdl-parser'
 pkgver='1.14.1'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(
-	ros-noetic-catkin
-	ros-noetic-cmake-modules
-	ros-noetic-rosconsole
+    ros-noetic-catkin
+    ros-noetic-cmake-modules
+    ros-noetic-rosconsole
+    ros-noetic-rostest
 )
 
 makedepends=(
-	cmake
-	ros-build-tools
-	${ros_makedepends[@]}
-	urdfdom-headers
+    cmake
+    ros-build-tools
+    ${ros_makedepends[@]}
+    urdfdom-headers
 )
 
 ros_depends=(
-	ros-noetic-rosconsole
-	ros-noetic-urdf
+    ros-noetic-rosconsole
+    ros-noetic-urdf
 )
 
 depends=(
-	${ros_depends[@]}
-	orocos-kdl
-	tinyxml
-	tinyxml2
+    ${ros_depends[@]}
+    orocos-kdl
+    tinyxml
+    tinyxml2
 )
 
 _dir="kdl_parser-${pkgver}/kdl_parser"
@@ -41,24 +42,24 @@ prepare(){
 }
 
 build() {
-	# Use ROS environment variables.
-	source /usr/share/ros-build-tools/clear-ros-env.sh
-	[ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
+    # Use ROS environment variables.
+    source /usr/share/ros-build-tools/clear-ros-env.sh
+    [ -f /opt/ros/noetic/setup.bash ] && source /opt/ros/noetic/setup.bash
 
-	# Create the build directory.
-	[ -d ${srcdir}/build ] || mkdir ${srcdir}/build
-	cd ${srcdir}/build
+    # Create the build directory.
+    [ -d ${srcdir}/build ] || mkdir ${srcdir}/build
+    cd ${srcdir}/build
 
-	# Build the project.
-	cmake ${srcdir}/${_dir} \
-		-DCATKIN_BUILD_BINARY_PACKAGE=ON \
-		-DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
-		-DPYTHON_EXECUTABLE=/usr/bin/python \
-		-DSETUPTOOLS_DEB_LAYOUT=OFF
-	make
+    # Build the project.
+    cmake ${srcdir}/${_dir} \
+        -DCATKIN_BUILD_BINARY_PACKAGE=ON \
+        -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
+        -DPYTHON_EXECUTABLE=/usr/bin/python \
+        -DSETUPTOOLS_DEB_LAYOUT=OFF
+    make
 }
 
 package() {
-	cd "${srcdir}/build"
-	make DESTDIR="${pkgdir}/" install
+    cd "${srcdir}/build"
+    make DESTDIR="${pkgdir}/" install
 }
