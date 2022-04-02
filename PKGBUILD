@@ -1,8 +1,8 @@
 # Maintainer: Ikosse <andrelofgren@hotmail.co.uk>
 
 pkgname=harbour-amazfish
-pkgver=2.0.3
-pkgrel=2
+pkgver=2.0.5
+pkgrel=1
 pkgdesc="Companion application for Huami Devices and the Pinetime Infinitime"
 arch=('x86_64' 'aarch64')
 url="https://github.com/piggz/harbour-amazfish"
