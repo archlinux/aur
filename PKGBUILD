@@ -1,10 +1,10 @@
-# Maintainer: s3rj1k <evasive.gyron@gmail.com>
+# Maintainer: s3rj1k <evasive dot gyron at gmail dot com>
 # Do not forget to run `makepkg --printsrcinfo > .SRCINFO`
 
 _pkgname=plank
 _pkgver=0.11.89
 pkgname=${_pkgname}-minimal
-pkgver=0.11.89.r0.g27c7863
+pkgver=0.11.89+27c7863
 pkgrel=2
 pkgdesc='Elegant, simple, clean dock (minimal build)'
 arch=('x86_64')
@@ -22,8 +22,8 @@ sha256sums=('SKIP'
             'd46000c57cd19cbcb16737af27fbe4fe748e9e6d17f5c99a8be3845adf5cd983')
 
 pkgver() {
-  cd ${_pkgname}
-  git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  cd "${srcdir}/${_pkgname}"
+  printf "%s+%s" "${_pkgver}" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
