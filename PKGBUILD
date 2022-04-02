@@ -1,7 +1,7 @@
 # Maintainer: Anton Kudelin <kudelin at protonmail dot com>
 
 pkgname=spla
-pkgver=1.5.2
+pkgver=1.5.4
 pkgrel=1
 pkgdesc="Specialized Parallel Linear Algebra"
 arch=("x86_64")
@@ -11,7 +11,7 @@ depends=('openmpi' 'cblas')
 makedepends=('cmake' 'gcc-fortran')
 optdepends=('cuda: GPU Backend')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('344c34986dfae182ec2e1eb539c9a57f75683aaa7a61a024fd0c594d81d97016')
+sha256sums=('de30e427d24c741e2e4fcae3d7668162056ac2574afed6522c0bb49d6f1d0f79')
 
 prepare() {
   # Checking if nvcc is in PATH
