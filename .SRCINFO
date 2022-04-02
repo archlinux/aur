@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-gazebo-plugins
 	pkgdesc = ROS - Robot-independent Gazebo plugins for sensors, motors and dynamic reconfigurable components.
 	pkgver = 2.9.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.ros.org/gazebo_plugins
 	arch = i686
 	arch = x86_64
@@ -29,6 +29,7 @@ pkgbase = ros-noetic-gazebo-plugins
 	makedepends = ros-noetic-urdf
 	makedepends = ros-noetic-nav-msgs
 	makedepends = ros-noetic-sensor-msgs
+	makedepends = ros-noetic-visualization-msgs
 	makedepends = ros-noetic-camera-info-manager
 	makedepends = ros-noetic-angles
 	makedepends = ros-noetic-roscpp
@@ -53,6 +54,7 @@ pkgbase = ros-noetic-gazebo-plugins
 	depends = ros-noetic-urdf
 	depends = ros-noetic-nav-msgs
 	depends = ros-noetic-sensor-msgs
+	depends = ros-noetic-visualization-msgs
 	depends = ros-noetic-camera-info-manager
 	depends = ros-noetic-angles
 	depends = ros-noetic-roscpp
@@ -64,4 +66,3 @@ pkgbase = ros-noetic-gazebo-plugins
 	sha256sums = db937f15e5bf8f804de5d8dc0b67607f8b354aecde35785b6bff2d43387abff4
 
 pkgname = ros-noetic-gazebo-plugins
-

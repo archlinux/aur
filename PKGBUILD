@@ -6,7 +6,7 @@ url='https://wiki.ros.org/gazebo_plugins'
 pkgname='ros-noetic-gazebo-plugins'
 pkgver='2.9.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD, Apache 2.0')
 
 ros_makedepends=(ros-noetic-diagnostic-updater
@@ -27,6 +27,7 @@ ros_makedepends=(ros-noetic-diagnostic-updater
   ros-noetic-urdf
   ros-noetic-nav-msgs
   ros-noetic-sensor-msgs
+  ros-noetic-visualization-msgs
   ros-noetic-camera-info-manager
   ros-noetic-angles
   ros-noetic-roscpp
@@ -54,6 +55,7 @@ ros_depends=(ros-noetic-diagnostic-updater
   ros-noetic-urdf
   ros-noetic-nav-msgs
   ros-noetic-sensor-msgs
+  ros-noetic-visualization-msgs
   ros-noetic-camera-info-manager
   ros-noetic-angles
   ros-noetic-roscpp
@@ -82,7 +84,6 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
         -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF \
-        -DCMAKE_CXX_STANDARD=17
   make
 }
 
