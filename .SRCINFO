@@ -1,0 +1,11 @@
+pkgbase = plank-theme-ablur
+	pkgdesc = Ablur Theme for Plank
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://www.gnome-look.org/p/1407624
+	arch = any
+	license = GPL3
+	source = https://github.com/MMcQueenGNU/plank-theme-ablur/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = e1dc56124094dcee34551cbf6e209ddbbb8913c9d31877fa8c2ccbc80df0598b
+
+pkgname = plank-theme-ablur
