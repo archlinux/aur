@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-performance
 	pkgdesc = Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync
-	pkgver = 41.5
-	pkgrel = 2
+	pkgver = 42.0
+	pkgrel = 1
 	epoch = 1
 	url = https://wiki.gnome.org/Projects/GnomeShell
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = gnome-shell-performance
 	depends = accountsservice
 	depends = gcr
 	depends = gjs
-	depends = gnome-bluetooth
+	depends = gnome-bluetooth-3.0
 	depends = upower
 	depends = gnome-session
 	depends = gtk4
@@ -30,7 +30,7 @@ pkgbase = gnome-shell-performance
 	depends = libgdm
 	depends = libsecret
 	depends = mutter
-	depends = nm-connection-editor
+	depends = libnma
 	depends = unzip
 	depends = gstreamer
 	depends = libibus
@@ -38,24 +38,27 @@ pkgbase = gnome-shell-performance
 	depends = gnome-disk-utility
 	depends = gst-plugin-pipewire
 	depends = libsoup3
+	depends = libgweather-4
 	optdepends = gnome-control-center: System settings
 	optdepends = evolution-data-server: Evolution calendar integration
 	provides = gnome-shell
-	provides = gnome-shell=41.5
-	provides = gnome-shell=1:41.5
+	provides = gnome-shell=42.0
+	provides = gnome-shell=1:42.0
 	conflicts = gnome-shell
-	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=87f944a1d43b8ee2586fdaf16520036dc101cdf6
+	source = git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=44b4b02c3f772a50e6f8b8fd2dca6d9dc3a98725
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
+	source = mr1884.patch
 	source = mr1915.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = b2ceb32e96838351b4942bff6afdbd9cb1fb197c084a957ce30e23812857054c
+	sha256sums = da73e9bb8199135808e9cb7fa2b9aebd8ed4cfd215fffeb94d919de50e18ab73
+	sha256sums = 70981733587a988b846b75e52077e5e986ddd38601667b037d1b0950304ea015
 
 pkgname = gnome-shell-performance
 	depends = accountsservice
 	depends = gcr
 	depends = gjs
-	depends = gnome-bluetooth
+	depends = gnome-bluetooth-3.0
 	depends = upower
 	depends = gnome-session
 	depends = gtk4
@@ -65,7 +68,7 @@ pkgname = gnome-shell-performance
 	depends = libgdm
 	depends = libsecret
 	depends = mutter
-	depends = nm-connection-editor
+	depends = libnma
 	depends = unzip
 	depends = gstreamer
 	depends = libibus
@@ -73,4 +76,5 @@ pkgname = gnome-shell-performance
 	depends = gnome-disk-utility
 	depends = gst-plugin-pipewire
 	depends = libsoup3
-	depends = libmutter-9.so
+	depends = libgweather-4
+	depends = libmutter-10.so

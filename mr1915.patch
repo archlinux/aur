@@ -2,26 +2,26 @@ Author: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Source: https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/1915
 Editor: Sung Mingi <FiestaLake@protonmail.com>
 Commit: 6f195a883c84284c4be802f1a74e425ea1264728
-Last Updated: 03/22/22 (gnome-shell 41.5-1)
+Last Updated: 04/02/22 (gnome-shell 42.0-1)
 
 diff --git a/data/theme/gnome-shell-sass/_common.scss b/data/theme/gnome-shell-sass/_common.scss
-index 9df3d8d43..2fa90dbc2 100644
+index c6e64766e..2b5fccd57 100644
 --- a/data/theme/gnome-shell-sass/_common.scss
 +++ b/data/theme/gnome-shell-sass/_common.scss
 @@ -35,6 +35,11 @@ $base_border_radius: 8px;
- 
- $modal_radius:$base_border_radius * 2;
+ // radii of things that display over other things, e.g. popovers
+ $modal_radius: $base_border_radius*2; // 24px
  
 +// Chroma key to flag when a background-color is always occluded, not visible.
 +// This allows any box-shadow behind it to be rendered more efficiently by
 +// omitting the middle rectangle.
 +$invisible_occluded_bg_color: rgba(3,2,1,0);
 +
- // non-standard colors
- $bubble_borders_color: lighten($borders_color, if($variant=='light', 0%, 5%));
- // $bubble_borders_color: if($variant == 'light', rgba(255,255,255,0.1), rgba(0,0,0,0.3));
+ // derived hover colors
+ $hover_bg_color: if($variant=='light', darken($bg_color, 3%), lighten($bg_color, 4%));
+ $hover_fg_color: if($variant=='light', darken($fg_color, 5%), lighten($fg_color, 4%));
 diff --git a/data/theme/gnome-shell-sass/widgets/_window-picker.scss b/data/theme/gnome-shell-sass/widgets/_window-picker.scss
-index fa3f19194..784391822 100644
+index e494f6d8a..7c3a26cd4 100644
 --- a/data/theme/gnome-shell-sass/widgets/_window-picker.scss
 +++ b/data/theme/gnome-shell-sass/widgets/_window-picker.scss
 @@ -48,5 +48,6 @@ $window_close_button_padding: 3px;

@@ -12,24 +12,24 @@
 ### MERGE REQUESTS SELECTION
 
 # available MR: ('1884' '1915')
-_merge_requests_to_use=('1884' '1915')
+_merge_requests_to_use=('1884')
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=41.5
-pkgrel=2
+pkgver=42.0
+pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://wiki.gnome.org/Projects/GnomeShell"
 arch=(x86_64)
 license=(GPL)
-depends=(accountsservice gcr gjs gnome-bluetooth upower gnome-session gtk4
+depends=(accountsservice gcr gjs gnome-bluetooth-3.0 upower gnome-session gtk4
          gnome-settings-daemon gsettings-desktop-schemas libcanberra-pulse
-         libgdm libsecret mutter nm-connection-editor unzip gstreamer libibus
-         gnome-autoar gnome-disk-utility gst-plugin-pipewire libsoup3)
+         libgdm libsecret mutter libnma unzip gstreamer libibus gnome-autoar
+         gnome-disk-utility gst-plugin-pipewire libsoup3 libgweather-4)
 makedepends=(gtk-doc gnome-control-center evolution-data-server
              gobject-introspection git meson sassc asciidoc bash-completion)
 checkdepends=(xorg-server-xvfb)
@@ -38,13 +38,15 @@ optdepends=('gnome-control-center: System settings'
 groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver gnome-shell=$epoch:$pkgver)
 conflicts=(gnome-shell)
-_commit=87f944a1d43b8ee2586fdaf16520036dc101cdf6  # tags/41.5^0
+_commit=44b4b02c3f772a50e6f8b8fd2dca6d9dc3a98725  # tags/42.0^0
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
+        "mr1884.patch"
         "mr1915.patch")
 sha256sums=('SKIP'
             'SKIP'
-            'b2ceb32e96838351b4942bff6afdbd9cb1fb197c084a957ce30e23812857054c')
+            'da73e9bb8199135808e9cb7fa2b9aebd8ed4cfd215fffeb94d919de50e18ab73'
+            '70981733587a988b846b75e52077e5e986ddd38601667b037d1b0950304ea015')
 
 pkgver() {
   cd $_pkgname
@@ -118,13 +120,6 @@ prepare() {
   #
   # Generally, a MR status oscillate between 2 and 3 and then becomes 4.
 
-  # Title: build: Drop incorrect positional arg
-  # URL: https://gitlab.gnome.org/GNOME/gnome-shell/-/commit/65450a836ee9e0722a2d4c3327f52345eae293c6
-  # Type: 3
-  # Status: 4
-  # Comment: Fix build with meson 0.61.0
-  git cherry-pick -n 65450a836ee9e0722a2d4c3327f52345eae293c6
-
   # Title: Fade out whole icons instead of using StScrollViewFade (traditional design)
   # URL: https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/1884
   # Type: 1
@@ -133,7 +128,7 @@ prepare() {
   #          avoid painting everything twice to get it on screen. So this almost
   #          halves the render time of the icon grid.
   #          Related: #4367, !1877, #174
-  pick_mr '1884'
+  pick_mr '1884' 'mr1884.patch' 'patch'
 
   # Title: Optimize box-shadow rendering (part 2) [chroma key design]
   # URL: https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/1915
@@ -170,6 +165,6 @@ check() {
 }
 
 package() {
-  depends+=(libmutter-9.so)
+  depends+=(libmutter-10.so)
   meson install -C build --destdir "$pkgdir"
 }
