@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A docker CLI plugin to forward local port to a container port"
 arch=('any')
 url="https://ktlint.github.io/"
-license=('MIT')
+license=('GPL3')
 depends=('bash' 'socat' 'docker')
 source=(https://raw.githubusercontent.com/pschichtel/docker-forward/v${pkgver}/docker-forward.sh
         https://raw.githubusercontent.com/pschichtel/docker-forward/v${pkgver}/LICENSE)
