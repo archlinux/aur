@@ -1,4 +1,5 @@
 # Maintainer: s3rj1k <evasive dot gyron at gmail dot com>
+# Do not forget to run `makepkg --printsrcinfo > .SRCINFO`
 
 _pkgname=xfce4-settings
 _pkgver=4.16.2
