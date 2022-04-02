@@ -1,7 +1,7 @@
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=python-pymap3d
 _pkgname=${pkgname:7}
-pkgver=2.7.2
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="Python coordinate conversions, following convention of several popular Matlab routines"
 arch=(any)
@@ -10,7 +10,7 @@ license=('BSD-2-Clause License')
 makedepends=('python-setuptools'
              'python-pip')
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('ef2c16d4e4ac3e0d63cc59aec11e3b07b5420513d78780a6b84dcf2ba2c97325')
+sha256sums=('a4bf58c6d8ed87eec264edd237a8b26608f457cc639f118585d5a7d16e8351db')
 
 package() {
     cd ${srcdir}/${_pkgname}-${pkgver}
