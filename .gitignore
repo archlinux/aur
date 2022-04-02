@@ -1,0 +1,12 @@
+# Archivos
+*.a
+*.deb
+*.log
+lzdoom-*
+*.o
+*.pkg.tar.*
+*.tar.gz
+
+# Directorios
+pkg/
+src/
