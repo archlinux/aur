@@ -5,7 +5,7 @@ pkgname="wingpro8"
 # cannot call it wingide8 as some parts hardcode it as wingide
 _pkg_pname=wingide
 
-pkgver=8.1.2.0
+pkgver=8.3.0.0
 pkgrel=1
 
 pkgdesc="Wing IDE Professional is the full-featured Python IDE for professional programmers."
@@ -15,7 +15,7 @@ license=('custom')
 arch=('x86_64')
 
 source=("https://wingware.com/pub/wingpro/$pkgver/wingpro-$pkgver-linux-x64.tar.bz2" )
-sha1sums=("a06cf7193db47683dfa0e8c7b3a71855eb0caaf8")
+sha1sums=("b84739fb603f0195e58bd28d251d3c0e01f51673")
 
 depends=('xdg-utils' 'python' 'qt5-svg' 'libxcb' 'perl' 'java-runtime')
 provides=(${_pkg_pname})
