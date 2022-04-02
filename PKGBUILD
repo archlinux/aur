@@ -1,11 +1,11 @@
-# Maintainer: f.menning@pm.me
+# Maintainer: Francois M.
 # Contributer: Felix Yan <felixonmars@archlinux.org>
 # Contributer: gardenapple@posteo.net
 
 _npmname=@soketi/soketi
 pkgname=soketi
 pkgdesc='Just another simple, fast, and resilient open-source WebSockets server.'
-pkgver=0.31.5
+pkgver=0.32.1
 pkgrel=1
 arch=('any')
 url='https://github.com/soketi/soketi'
@@ -14,7 +14,7 @@ depends=('nodejs')
 makedepends=('npm' 'jq')
 source=(https://registry.npmjs.org/$_npmname/-/$pkgname-$pkgver.tgz)
 noextract=($pkgname-$pkgver.tar.gz)
-sha512sums=('25aab98dc54f9e7872b658841454bc318b1c8266132773bc211e9f037f08a3420be3a3af594eb8be1454c2d88bd02b7ee83cb0751261485d7e4a0256a3a13869')
+sha512sums=('865dec8d6e75333bbb776815f05fd3285b34f7cc771ee783c709edac0d5cc6546317f01aa253364ba61d4d65070abb573f775a36f9702b32011edc3319eb9fe9')
 
 # see: https://wiki.archlinux.org/index.php/Node.js_package_guidelines
 
