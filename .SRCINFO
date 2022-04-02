@@ -1,0 +1,32 @@
+pkgbase = plank-minimal
+	pkgdesc = Elegant, simple, clean dock (minimal build)
+	pkgver = 0.11.89.r0.g27c7863
+	pkgrel = 1
+	url = https://launchpad.net/plank
+	arch = x86_64
+	license = GPL3
+	makedepends = gnome-common
+	makedepends = git
+	makedepends = intltool
+	makedepends = vala
+	depends = atk
+	depends = bamf
+	depends = cairo
+	depends = gdk-pixbuf2
+	depends = glib2
+	depends = glibc
+	depends = gtk3
+	depends = libgee
+	depends = libwnck3
+	depends = libx11
+	depends = libxfixes
+	depends = libxi
+	depends = pango
+	provides = plank
+	conflicts = plank
+	source = git+https://github.com/ricotz/plank.git#tag=0.11.89
+	source = disable-docklets.patch
+	sha256sums = SKIP
+	sha256sums = d46000c57cd19cbcb16737af27fbe4fe748e9e6d17f5c99a8be3845adf5cd983
+
+pkgname = plank-minimal

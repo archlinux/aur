@@ -1,0 +1,14 @@
+diff --git a/docklets/Makefile.am b/docklets/Makefile.am
+index a3b5011..ab62003 100644
+--- a/docklets/Makefile.am
++++ b/docklets/Makefile.am
+@@ -1,9 +1,3 @@
+ SUBDIRS = \
+-	Applications \
+-	Battery \
+-	Clippy \
+-	Clock \
+-	CPUMonitor \
+ 	Desktop \
+-	Trash \
+ 	$(NULL)
