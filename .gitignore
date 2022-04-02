@@ -1,4 +1,6 @@
 *
+!asus-ec-sensors.conf
+!dkms.conf
 !PKGBUILD
 !.SRCINFO
 !.gitignore

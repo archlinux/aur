@@ -1,14 +1,18 @@
 pkgbase = asus-ec-sensors-dkms-git
 	pkgdesc = HWMON sensors driver for the ASUS Embedded Controller
-	pkgver = 0.1.r49.523690c
+	pkgver = 0.1.0.r27.g6ca7636
 	pkgrel = 1
-	url = https://github.com/joickle/asus-ec-sensors
+	url = https://github.com/zeule/asus-ec-sensors
 	arch = x86_64
 	license = GPL2
 	makedepends = git
 	depends = dkms
 	provides = asus-ec-sensors
-	source = asus-ec-sensors::git+https://github.com/joickle/asus-ec-sensors.git
+	source = asus-ec-sensors::git+https://github.com/zeule/asus-ec-sensors.git
+	source = asus-ec-sensors.conf
+	source = dkms.conf
 	sha256sums = SKIP
+	sha256sums = d6c89c889c1d207826e1b7d1c2934375d3b379a5032b108cf5b4e479c4c90d18
+	sha256sums = 8fd68f7fbdf51e93c68ef02bca512261ea3cbcca6219261017a72f6854ebee94
 
 pkgname = asus-ec-sensors-dkms-git
