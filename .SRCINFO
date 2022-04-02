@@ -1,0 +1,25 @@
+pkgbase = llvm12
+	pkgdesc = Collection of modular and reusable compiler and toolchain technologies
+	pkgver = 12.0
+	pkgrel = 1
+	url = https://llvm.org
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	arch = arm
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = custom:Apache 2.0 with LLVM Exception
+	makedepends = git
+	makedepends = cmake
+	makedepends = make
+	makedepends = libffi
+	makedepends = libedit
+	makedepends = python
+	makedepends = jsoncpp
+	options = strip
+	source = https://github.com/llvm/llvm-project/releases/download/llvmorg-12.0.0/llvm-12.0.0.src.tar.xz
+	sha256sums = 49dc47c8697a1a0abd4ee51629a696d7bfe803662f2a7252a3b16fc75f3a8b50
+
+pkgname = llvm12
