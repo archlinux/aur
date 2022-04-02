@@ -1,6 +1,6 @@
 # Maintainer: Chiwan Park <chiwanpark@hotmail.com>
 pkgname='mendeley-reference-manager'
-pkgver=2.67.0
+pkgver=2.68.0
 pkgrel=1
 pkgdesc='Mendeley Reference Manager'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 
 _file=mendeley-reference-manager-${pkgver}-x86_64.AppImage
 source=(https://static.mendeley.com/bin/desktop/${_file})
-sha256sums=('99bc1914f9cedafea0c1c0b1601603b5c87154f2fcb178ec231195eb6c4e5f33')
+sha256sums=('854255670cc2c16283f5436e5dd2ed1c39689145e09e5ed262e1d6ef190ca63d')
 
 options=('!strip')
 
