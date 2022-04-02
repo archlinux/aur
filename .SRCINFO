@@ -1,13 +1,15 @@
 pkgbase = qpdftools
 	pkgdesc = Qpdf Tools is an easy-to-use Qt interface for Ghostscript and QPDF
 	pkgver = 2.0
-	pkgrel = 0
+	pkgrel = 1
 	epoch = 0
 	url = https://github.com/silash35/qpdftools
 	arch = x86_64
 	license = Unlicense
 	makedepends = git
 	makedepends = cmake
+	makedepends = extra-cmake-modules
+	makedepends = qt5-tools
 	depends = ghostscript
 	depends = qpdf
 	depends = qt5-base
@@ -17,5 +19,6 @@ pkgbase = qpdftools
 	conflicts = qpdftools-git
 	source = https://github.com/silash35/qpdftools/archive/v2.0.tar.gz
 	md5sums = 3220ae72d82e25146603e3d341b1f391
+	sha512sums = a89702d87f5b3d24496dc14cc9474be6f0f9bd649171cf55f3ba62081738236f7199074022cb26a68bc3b3024669a65d9c07774450c29ede1799e13977fc9312
 
 pkgname = qpdftools
