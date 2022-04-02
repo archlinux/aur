@@ -1,6 +1,6 @@
 pkgbase = curl-impersonate-firefox
 	pkgdesc = A special compilation of curl that makes it impersonate Firefox
-	pkgver = r59.979750a
+	pkgver = r101.af38d2b
 	pkgrel = 1
 	url = https://github.com/lwthiker/curl-impersonate
 	arch = x86_64
@@ -25,10 +25,11 @@ pkgbase = curl-impersonate-firefox
 	source = nss-3.75.tar.gz::https://ftp.mozilla.org/pub/security/nss/releases/NSS_3_75_RTM/src/nss-3.75-with-nspr-4.32.tar.gz
 	source = nghttp2-1.46.0.tar.bz2::https://github.com/nghttp2/nghttp2/releases/download/v1.46.0/nghttp2-1.46.0.tar.bz2
 	source = curl-7.81.0.tar.xz::https://curl.se/download/curl-7.81.0.tar.xz
-	source = brotli-1.0.9.tar.gz::https://github.com/google/brotli/archive/refs/tags/vbrotli-1.0.9.tar.gz
+	source = brotli-1.0.9.tar.gz::https://github.com/google/brotli/archive/refs/tags/v1.0.9.tar.gz
 	md5sums = SKIP
-	md5sums = 75aa40414886d9327a5f4f4bff79bdf5
+	md5sums = fe79a300f73b6bffaf2a56c8f5618f1e
 	md5sums = de2aaa48ae0bf9713da3a9bfc3f1629f
 	md5sums = 41954fa09f879fccb57d88be23fe8606
+	md5sums = c2274f0c7af8470ad514637c35bcee7d
 
 pkgname = curl-impersonate-firefox
