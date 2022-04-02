@@ -1,0 +1,24 @@
+#!/bin/sh
+
+preserve_modules_copy() {
+    cat > /home/yrlf/wtf.log
+}
+
+preserve_modules_link() {
+
+}
+
+usage() {
+    echo "usage: linux-preserve-modules <copy|link>" >&2
+    exit 1
+}
+
+if [ "$#" -ne 1 ]; then
+    usage
+fi
+
+case "$1" in
+    copy) preserve_modules_copy;;
+    link) preserve_modules_link;;
+    *) usage;;
+esac
