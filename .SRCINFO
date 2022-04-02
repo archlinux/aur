@@ -1,7 +1,7 @@
 pkgbase = firefox-esr-i18n
 	pkgdesc = Language pack for Firefox ESR
 	pkgver = 91.7.1
-	pkgrel = 1
+	pkgrel = 3
 	url = https://www.mozilla.org/en-US/firefox/organizations/
 	arch = any
 	license = MPL
