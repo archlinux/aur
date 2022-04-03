@@ -1,7 +1,7 @@
-From 3bdc7000cff598e3c065a103a62c12571300d5e6 Mon Sep 17 00:00:00 2001
+From 6f61b355040b50992ff67eafea1905e07fc86775 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Mon, 7 Feb 2022 16:45:37 -0800
-Subject: [PATCH 15/34] x86/sgx: Support relaxing of enclave page permissions
+Date: Mon, 7 Jun 2021 09:13:44 -0700
+Subject: [PATCH 15/33] x86/sgx: Support relaxing of enclave page permissions
 
 In the initial (SGX1) version of SGX, pages in an enclave need to be
 created with permissions that support all usages of the pages, from

@@ -1,7 +1,7 @@
-From 6c2777344708ad4194d1f9088bd7dbd2c740fd16 Mon Sep 17 00:00:00 2001
+From 74d6d35abc90cfa00ee86bc5454e8a38f87a2daf Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Mon, 7 Feb 2022 16:45:41 -0800
-Subject: [PATCH 19/34] x86/sgx: Support adding of pages to an initialized
+Date: Tue, 13 Jul 2021 08:58:53 -0700
+Subject: [PATCH 19/33] x86/sgx: Support adding of pages to an initialized
  enclave
 
 With SGX1 an enclave needs to be created with its maximum memory demands
@@ -54,10 +54,10 @@ Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
  3 files changed, 137 insertions(+), 2 deletions(-)
 
 diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
-index cbd852fb760b..a5b1da1e5bd4 100644
+index a5d4a7efb986..d1e3ea86b902 100644
 --- a/arch/x86/kernel/cpu/sgx/encl.c
 +++ b/arch/x86/kernel/cpu/sgx/encl.c
-@@ -165,6 +165,128 @@ struct sgx_encl_page *sgx_encl_load_page(struct sgx_encl *encl,
+@@ -124,6 +124,128 @@ struct sgx_encl_page *sgx_encl_load_page(struct sgx_encl *encl,
  	return entry;
  }
  
@@ -186,7 +186,7 @@ index cbd852fb760b..a5b1da1e5bd4 100644
  static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
  {
  	unsigned long addr = (unsigned long)vmf->address;
-@@ -186,6 +308,17 @@ static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
+@@ -145,6 +267,17 @@ static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
  	if (unlikely(!encl))
  		return VM_FAULT_SIGBUS;
  

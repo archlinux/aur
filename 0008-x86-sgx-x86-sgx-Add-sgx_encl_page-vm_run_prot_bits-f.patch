@@ -1,7 +1,7 @@
-From f2bdca656a164126d3a89893828d334ae008c93a Mon Sep 17 00:00:00 2001
+From d6814f2c0e96b528614fe0d9663b1da5286f43be Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Mon, 7 Feb 2022 16:45:30 -0800
-Subject: [PATCH 08/34] x86/sgx: x86/sgx: Add sgx_encl_page->vm_run_prot_bits
+Date: Thu, 20 May 2021 13:55:36 -0700
+Subject: [PATCH 08/33] x86/sgx: x86/sgx: Add sgx_encl_page->vm_run_prot_bits
  for dynamic permission changes
 
 Enclave creators declare their enclave page permissions (EPCM
@@ -102,10 +102,10 @@ index 5659932728a5..9df620b59f83 100644
  enclave page belongs to a VMA without impacting the VMA permissions.
  This means that a running VMA may appear to allow access to an enclave
 diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
-index acedccf8c4ef..85429db8c8b5 100644
+index 1ba01c75a579..a980d8458949 100644
 --- a/arch/x86/kernel/cpu/sgx/encl.c
 +++ b/arch/x86/kernel/cpu/sgx/encl.c
-@@ -205,7 +205,7 @@ static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
+@@ -164,7 +164,7 @@ static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
  	 * exceed the VMA permissions.
  	 */
  	vm_prot_bits = vma->vm_flags & (VM_READ | VM_WRITE | VM_EXEC);
@@ -114,7 +114,7 @@ index acedccf8c4ef..85429db8c8b5 100644
  	/*
  	 * Add VM_SHARED so that PTE is made writable right away if VMA
  	 * and EPCM are writable (no COW in SGX).
-@@ -258,7 +258,7 @@ static vm_fault_t sgx_vma_pfn_mkwrite(struct vm_fault *vmf)
+@@ -217,7 +217,7 @@ static vm_fault_t sgx_vma_pfn_mkwrite(struct vm_fault *vmf)
  		goto out;
  	}
  
@@ -123,7 +123,7 @@ index acedccf8c4ef..85429db8c8b5 100644
  		ret = VM_FAULT_SIGBUS;
  
  out:
-@@ -321,7 +321,7 @@ int sgx_encl_may_map(struct sgx_encl *encl, unsigned long start,
+@@ -280,7 +280,7 @@ int sgx_encl_may_map(struct sgx_encl *encl, unsigned long start,
  	mutex_lock(&encl->lock);
  	xas_lock(&xas);
  	xas_for_each(&xas, page, PFN_DOWN(end - 1)) {

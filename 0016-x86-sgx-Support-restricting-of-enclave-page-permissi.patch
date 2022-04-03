@@ -1,7 +1,7 @@
-From 20d33afacabde997e8a99e4bd08a424d1a40669b Mon Sep 17 00:00:00 2001
+From 38bebba8a89d2f15261e4b4891e4444c0b0b0c50 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Mon, 7 Feb 2022 16:45:38 -0800
-Subject: [PATCH 16/34] x86/sgx: Support restricting of enclave page
+Date: Mon, 7 Jun 2021 09:13:44 -0700
+Subject: [PATCH 16/33] x86/sgx: Support restricting of enclave page
  permissions
 
 In the initial (SGX1) version of SGX, pages in an enclave need to be
@@ -99,10 +99,10 @@ index 5c678b27bb72..b0ffb80bc67f 100644
  
  /**
 diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
-index 0fd184fd25d7..cbd852fb760b 100644
+index 8da813504249..a5d4a7efb986 100644
 --- a/arch/x86/kernel/cpu/sgx/encl.c
 +++ b/arch/x86/kernel/cpu/sgx/encl.c
-@@ -131,8 +131,8 @@ static struct sgx_epc_page *sgx_encl_eldu(struct sgx_encl_page *encl_page,
+@@ -90,8 +90,8 @@ static struct sgx_epc_page *sgx_encl_eldu(struct sgx_encl_page *encl_page,
  	return epc_page;
  }
  

@@ -1,7 +1,7 @@
-From ef7d7909abfc46b2a8b3aaa0ab5375033688123e Mon Sep 17 00:00:00 2001
+From 2f3a36706c54682ef5e8a95a75d0986307993dca Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Mon, 7 Feb 2022 16:45:34 -0800
-Subject: [PATCH 12/34] x86/sgx: Make sgx_ipi_cb() available internally
+Date: Thu, 3 Jun 2021 16:56:53 -0700
+Subject: [PATCH 12/33] x86/sgx: Make sgx_ipi_cb() available internally
 
 The ETRACK function followed by an IPI to all CPUs within an enclave
 is a common pattern with more frequent use in support of SGX2.
@@ -16,7 +16,7 @@ Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
  2 files changed, 3 insertions(+), 1 deletion(-)
 
 diff --git a/arch/x86/kernel/cpu/sgx/main.c b/arch/x86/kernel/cpu/sgx/main.c
-index 06492dcffcf1..1a3014aec490 100644
+index ce9e87d5f8ec..6e2cb7564080 100644
 --- a/arch/x86/kernel/cpu/sgx/main.c
 +++ b/arch/x86/kernel/cpu/sgx/main.c
 @@ -172,7 +172,7 @@ static int __sgx_encl_ewb(struct sgx_epc_page *epc_page, void *va_slot,

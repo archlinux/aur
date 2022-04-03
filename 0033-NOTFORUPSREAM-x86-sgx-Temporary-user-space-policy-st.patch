@@ -1,0 +1,49 @@
+From 27708d9c7f97fd0f8d6478c2e47e12b931a5a0ad Mon Sep 17 00:00:00 2001
+From: Reinette Chatre <reinette.chatre@intel.com>
+Date: Fri, 3 Dec 2021 14:44:00 -0800
+Subject: [PATCH 33/33] NOTFORUPSREAM: x86/sgx: Temporary user space policy
+ stopgap
+
+Enclave pages are added to an initialized enclave with default RW
+permissions and not allowed to exceed these permissions during their
+lifetime.
+
+There are some use cases that require dynamically added pages to obtain
+executable permissions and that is not possible with the current
+implementation.
+
+Supporting dynamically added pages to obtain executable permission require
+integration with user space policy that does not yet exist.
+
+As a temporary stopgap, allow dynamically allowed pages to obtain
+executable permissions in support of these use cases.
+
+This is not the solution that will be targeted for upstream inclusion.
+---
+ arch/x86/kernel/cpu/sgx/encl.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
+index c20100245411..a0255d41e075 100644
+--- a/arch/x86/kernel/cpu/sgx/encl.c
++++ b/arch/x86/kernel/cpu/sgx/encl.c
+@@ -167,7 +167,15 @@ static vm_fault_t sgx_encl_eaug_page(struct vm_area_struct *vma,
+ 	 */
+ 	prot = PROT_READ | PROT_WRITE;
+ 	encl_page->vm_run_prot_bits = calc_vm_prot_bits(prot, 0);
+-	encl_page->vm_max_prot_bits = encl_page->vm_run_prot_bits;
++
++	/*
++	 * FIXME: Workaround to support RWX of dynamically added
++	 * pages. This is a temporary workaround provided for those needing
++	 * these capabilities until palatable user space policy
++	 * integration can be agreed upon.
++	 */
++	prot = PROT_READ | PROT_WRITE | PROT_EXEC;
++	encl_page->vm_max_prot_bits = calc_vm_prot_bits(prot, 0);
+ 
+ 	epc_page = sgx_alloc_epc_page(encl_page, true);
+ 	if (IS_ERR(epc_page)) {
+-- 
+2.35.1
+

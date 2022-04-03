@@ -1,7 +1,7 @@
-From 88584ef777031604add6ed66b4d060ad9fce7cab Mon Sep 17 00:00:00 2001
+From b4c7cbd24a91e612ae7ecbffa4e2d62e89f28aa4 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Mon, 7 Feb 2022 16:45:44 -0800
-Subject: [PATCH 22/34] x86/sgx: Support modifying SGX page type
+Date: Mon, 9 Aug 2021 14:03:54 -0700
+Subject: [PATCH 22/33] x86/sgx: Support modifying SGX page type
 
 Every enclave contains one or more Thread Control Structures (TCS). The
 TCS contains meta-data used by the hardware to save and restore thread

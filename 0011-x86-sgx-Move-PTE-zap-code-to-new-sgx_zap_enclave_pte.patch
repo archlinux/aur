@@ -1,7 +1,7 @@
-From 27ed183bbe2ab9f33c14b33fd1f47d8b2ab733f6 Mon Sep 17 00:00:00 2001
+From 75003f98315736003527ca5d25503fa2cb98cefd Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Mon, 7 Feb 2022 16:45:33 -0800
-Subject: [PATCH 11/34] x86/sgx: Move PTE zap code to new
+Date: Thu, 20 May 2021 14:23:58 -0700
+Subject: [PATCH 11/33] x86/sgx: Move PTE zap code to new
  sgx_zap_enclave_ptes()
 
 The SGX reclaimer removes page table entries pointing to pages that are
@@ -31,10 +31,10 @@ Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
  3 files changed, 47 insertions(+), 31 deletions(-)
 
 diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
-index a8b23e21fd86..0fd184fd25d7 100644
+index 6f5d01121766..8da813504249 100644
 --- a/arch/x86/kernel/cpu/sgx/encl.c
 +++ b/arch/x86/kernel/cpu/sgx/encl.c
-@@ -628,7 +628,7 @@ int sgx_encl_mm_add(struct sgx_encl *encl, struct mm_struct *mm)
+@@ -589,7 +589,7 @@ int sgx_encl_mm_add(struct sgx_encl *encl, struct mm_struct *mm)
  
  	spin_lock(&encl->mm_lock);
  	list_add_rcu(&encl_mm->list, &encl->mm_list);
@@ -43,7 +43,7 @@ index a8b23e21fd86..0fd184fd25d7 100644
  	smp_wmb();
  	encl->mm_list_version++;
  	spin_unlock(&encl->mm_lock);
-@@ -815,6 +815,49 @@ int sgx_encl_test_and_clear_young(struct mm_struct *mm,
+@@ -778,6 +778,49 @@ int sgx_encl_test_and_clear_young(struct mm_struct *mm,
  	return ret;
  }
  
@@ -107,7 +107,7 @@ index becb68503baa..82e21088e68b 100644
  unsigned int sgx_alloc_va_slot(struct sgx_va_page *va_page);
  void sgx_free_va_slot(struct sgx_va_page *va_page, unsigned int offset);
 diff --git a/arch/x86/kernel/cpu/sgx/main.c b/arch/x86/kernel/cpu/sgx/main.c
-index 60b166bff7b4..06492dcffcf1 100644
+index fa33922879bf..ce9e87d5f8ec 100644
 --- a/arch/x86/kernel/cpu/sgx/main.c
 +++ b/arch/x86/kernel/cpu/sgx/main.c
 @@ -137,36 +137,9 @@ static void sgx_reclaimer_block(struct sgx_epc_page *epc_page)

@@ -1,7 +1,7 @@
-From 20acb57bc235f289b2d083a408d134a0db676ed1 Mon Sep 17 00:00:00 2001
+From 432470df34c2805bccac4dc1bb4164b5440e1a67 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Mon, 7 Feb 2022 16:45:46 -0800
-Subject: [PATCH 24/34] Documentation/x86: Introduce enclave runtime management
+Date: Tue, 25 Jan 2022 14:29:23 -0800
+Subject: [PATCH 24/33] Documentation/x86: Introduce enclave runtime management
  section
 
 Enclave runtime management is introduced following the pattern
