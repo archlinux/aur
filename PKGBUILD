@@ -1,9 +1,9 @@
 # Maintainer: Joe Baker < JoeBlakeB at protonmail dot com >
 
 pkgname=ttf-twemoji
-pkgver=13.1.0
+pkgver=14.0.2
 pkgrel=1
-_fedrel=1.fc35
+_fedrel=1.fc37
 pkgdesc="Twitter Emoji for everyone."
 url="https://github.com/twitter/twemoji"
 arch=(any)
@@ -13,7 +13,7 @@ provides=('emoji-font')
 install="$pkgname.install"
 source=("https://kojipkgs.fedoraproject.org/packages/twitter-twemoji-fonts/${pkgver}/${_fedrel}/noarch/twitter-twemoji-fonts-${pkgver}-${_fedrel}.noarch.rpm"
         "75-twemoji.conf")
-sha256sums=('2730d76b7939be467571dd0f10d4f5b1f8396e96743173750e27d45ac7ab2f07'
+sha256sums=('d65c31e96cdbefd4d5e463806a620afb3e938f488220eb1f851889a746c0adbc'
             'a77a7775557efc1c17781c0fc35a0f7ec5ccd58f233573f8875032fb8575680e')
 
 package() {

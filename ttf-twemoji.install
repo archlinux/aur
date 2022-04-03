@@ -18,9 +18,11 @@ post_remove() {
 }
 
 post_upgrade() {
-    echo
-    echo "  75-twemoji.conf has been moved from /etc/fonts/conf.avail to /usr/share/fontconfig/conf.avail"
-    echo "  if you have a symlink you will need to update it with:"
-    echo "  sudo ln -sf /usr/share/fontconfig/conf.avail/75-twemoji.conf /etc/fonts/conf.d/75-twemoji.conf"
-    echo
+    if [ $(echo $2 | awk -F. '{ printf("%d%03d%03d%03d\n", $1,$2,$3,$4); }') -lt $(echo "13.1.0-1" | awk -F. '{ printf("%d%03d%03d%03d\n", $1,$2,$3,$4); }') ]; then
+        echo
+        echo "  75-twemoji.conf has been moved from /etc/fonts/conf.avail to /usr/share/fontconfig/conf.avail"
+        echo "  if you have a symlink you will need to update it with:"
+        echo "  sudo ln -sf /usr/share/fontconfig/conf.avail/75-twemoji.conf /etc/fonts/conf.d/75-twemoji.conf"
+        echo
+    fi
 }
