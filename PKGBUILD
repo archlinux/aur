@@ -4,7 +4,7 @@
 
 _pkgname='github-desktop'
 pkgname="${_pkgname}-bin"
-pkgver=2.9.10
+pkgver=2.9.11
 pkgrel=1
 _pkgver="${pkgver}-linux${pkgrel}"
 _gitname="release-${_pkgver}"
@@ -20,7 +20,7 @@ source=(
     https://github.com/shiftkey/desktop/releases/download/${_gitname}/GitHubDesktop-linux-${_pkgver}.deb
     ${_pkgname}.desktop
 )
-sha256sums=('063384397adacc49283d1390a7fdaf3f7ec42c57ecb02c9e19748f1cce7b1ff7'
+sha256sums=('3c6a6b2aaa2779a65b18f4f596a4fb494c3f38a4ba4bfb4f843b31b9f8c71f4c'
             '932e4c456e8c6db03d27172cf0daa37806bf025bb560d8b3d758c0997d1a618c')
 package() {
     tar xf data.tar.xz -C "${pkgdir}"
