@@ -2,7 +2,7 @@ post_install() {
   echo "
 ========================================================================
 
-To start rtapp or rtjail, you must first start the systemctl timer:
+To start rtapp you must start the systemctl timer:
   systemctl start rtapp.timer
 
 Then you can enable the service at boot:

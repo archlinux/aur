@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Copyright Piero Olmeda - AudioLinux  <audiolinux AT fastmail DOT fm>
+# https://www.audio-linux.com
+
+# License: custom - All rights reserved
+
+echo "
+REALTIME PRIORITY
+"
+echo "IRQS"
+source /etc/rtapp/rtapp.conf
+app="jackd jackdbus $APPLICATIONS"
+
+ps -eo rtprio,comm --sort -rtprio | sed -n -e '1p' -e '/irq\//p' -e '/ksoftirqd\//p'
+                
+
+echo "
+APPLICATIONS"
+for WORD in $app
+                do
+                if [[ $(pidof $WORD) ]]
+                    then
+                    ps -eLo rtprio,cmd | grep $WORD | grep -v grep                   
+                fi
+                done
+  

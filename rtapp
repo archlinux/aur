@@ -1,0 +1,76 @@
+#!/bin/bash
+
+# Copyright Piero Olmeda - AudioLinux  <audiolinux AT fastmail DOT fm>
+# https://www.audio-linux.com
+
+# License: custom - All rights reserved
+
+source /etc/rtirq.conf
+high=$RTIRQ_PRIO_HIGH
+step=$RTIRQ_PRIO_DECR
+list=`echo $RTIRQ_NAME_LIST | wc -w`
+min=$(( $high - $(($step * $list)) ))
+source /etc/rtapp/rtapp.conf
+mode=$MODE
+app=$APPLICATIONS
+max=$MAX_PRIORITY
+
+update_priority () {
+                for WORD in $app
+                do
+                (pidof $WORD 1>/dev/null && chrt -f -a -p $fifo_app $(pidof $WORD)) || echo $WORD" is not running"
+                done
+} 
+
+update_priority_dec () {
+                for WORD in $app
+                do
+                    if [[ "$(pidof $WORD)" ]]
+                    then                                           
+                      chrt -f -a -p $fifo_app $(pidof $WORD)
+                      fifo_app=$(( $fifo_app - $step )) 
+                    fi
+                done
+}
+
+case $mode in
+
+manual)
+                echo "manual"
+                fifo_app=$max
+                if [[ $fifo_app -le $min ]]; then
+                    update_priority
+                else
+                    echo "The priority is too high"
+            
+                fi
+        ;;
+
+auto)           
+                echo "auto"
+                fifo_app=$(( $high - $(($step * $list)) ))
+                update_priority
+        ;;
+        
+autodec)
+
+                echo "autodec"
+                fifo_app=$(( $high - $(($step * $list)) ))
+                update_priority_dec
+        ;;
+
+manualdec)
+
+                echo "manual"
+                fifo_app=$max
+                if [[ $fifo_app -le $min ]]; then
+                    update_priority_dec
+                else
+                    echo "The priority is too high"
+            
+                fi
+        ;;
+        
+esac
+
+

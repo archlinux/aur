@@ -1,0 +1,6 @@
+[Unit]
+Description=Realtime Application thread system tuning
+
+[Service]
+Type=simple
+ExecStart=/bin/bash /usr/bin/rtapp
