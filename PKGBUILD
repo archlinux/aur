@@ -1,7 +1,7 @@
 #Maintainer: Evert Vorster <evorster@gmail.com>
 pkgname=vegastrike-git
 _pkgname=vegastrike
-pkgver=rev.11470
+pkgver=rev.11494
 pkgrel=1
 pkgdesc="Vega Strike - Upon the Coldest Sea. Space flight and trading simulator with realistic distances"
 arch=('any')
@@ -37,6 +37,6 @@ build(){
 
 package() {
   mkdir -p "${pkgdir}"
-  make -C "${srcdir}"/Assets-Production DESTDIR="${pkgdir}" install
+  make -C "${srcdir}" DESTDIR="${pkgdir}" install
 }
 

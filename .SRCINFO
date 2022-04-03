@@ -1,6 +1,6 @@
 pkgbase = vegastrike-git
 	pkgdesc = Vega Strike - Upon the Coldest Sea. Space flight and trading simulator with realistic distances
-	pkgver = rev.11470
+	pkgver = rev.11494
 	pkgrel = 1
 	url = www.vega-strike.org
 	arch = any
