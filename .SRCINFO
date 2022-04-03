@@ -1,0 +1,15 @@
+pkgbase = pyghmi
+	pkgdesc = Python General Hardware Management Initiative (IPMI and others)
+	pkgver = 1.5.36
+	pkgrel = 1
+	url = https://opendev.org/x/pyghmi
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-pip
+	makedepends = python-pbr
+	source = git+https://opendev.org/x/pyghmi#tag=1.5.36
+	sha256sums = SKIP
+
+pkgname = pyghmi
