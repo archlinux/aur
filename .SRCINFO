@@ -1,6 +1,6 @@
 pkgbase = vulkan-caps-viewer-wayland-bin
 	pkgdesc = Vulkan Hardware Capability Viewer
-	pkgver = 3.2
+	pkgver = 3.21
 	pkgrel = 1
 	epoch = 1
 	url = http://vulkan.gpuinfo.org/
@@ -10,7 +10,7 @@ pkgbase = vulkan-caps-viewer-wayland-bin
 	depends = qt5-wayland
 	provides = vulkan-caps-viewer
 	conflicts = vulkan-caps-viewer
-	source = https://vulkan.gpuinfo.org/downloads/vulkancapsviewer_3.2_linux64_wayland.AppImage
-	sha256sums = 439597f6e4f9c1c3c2939fe8aeefc9a631b61abd692bfd88f384e0f2c7b85df3
+	source = https://vulkan.gpuinfo.org/downloads/vulkancapsviewer_3.21_linux64_wayland.AppImage
+	sha256sums = 94c8c4648f384ced8a5a56824385d8636fe8664c2866bbddfef9f6fc46311b39
 
 pkgname = vulkan-caps-viewer-wayland-bin
