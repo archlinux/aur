@@ -1,15 +1,15 @@
 # Maintainer: ahrs <Forward dot to at hotmail dot co dot uk>
 
 pkgname='undistract-me-git'
-pkgver=r77.c7f6056
-pkgrel=11
+pkgver=r79.2f8ac25
+pkgrel=2
 arch=('any')
 url="https://github.com/jml/undistract-me"
 depends=('libnotify' 'xorg-xprop')
 conflicts=('undistract-me')
 license=("MIT")
 pkgdesc="Notifies you when long-running terminal commands complete"
-source=("git://github.com/jml/undistract-me.git")
+source=("git+https://github.com/jml/undistract-me.git")
 md5sums=('SKIP')
 install='undistract-me.install'
 
