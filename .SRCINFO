@@ -1,12 +1,12 @@
 pkgbase = firecapture
 	pkgdesc = The leading planetary capture tool
-	pkgver = 2.6
-	pkgrel = 2
+	pkgver = 2.7
+	pkgrel = 1
 	url = http://www.firecapture.de
 	arch = x86_64
 	license = custom:firecapture
 	depends = libusb
-	source = FireCapture_v2.6.tar.gz::http://www.firecapture.de/download.php?file=FireCapture_v2.6.tar.gz
-	md5sums = 028ec7767a2f9dab092d4da48c4cb9d2
+	source = FireCapture_v2.7.tar.gz::http://www.firecapture.de/download.php?file=FireCapture_v2.7.tar.gz
+	md5sums = a7b63e93aa9bd0148e7d1dd8fb5bfd7b
 
 pkgname = firecapture
