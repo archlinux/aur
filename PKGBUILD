@@ -64,4 +64,9 @@ package() {
 	DESTDIR="$pkgdir" meson install -C build
 	install -Dm644 "$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -Dm644 "50-systemd-user.conf" -t "$pkgdir/etc/sway/config.d/"
+
+	for util in autoname-workspaces.py inactive-windows-transparency.py grimshot; do
+	install -Dm755 "$_pkgname/contrib/$util" -t \
+				   "$pkgdir/usr/share/$pkgname/scripts"
+	done
 }
