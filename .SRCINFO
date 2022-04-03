@@ -16,6 +16,7 @@ pkgbase = swaync
 	depends = libgee>=0.20
 	depends = json-glib>=1.0
 	depends = libhandy>=1.4.0
+	depends = scdoc>=1.9.2
 	provides = swaync
 	provides = swaync-client
 	conflicts = swaync
