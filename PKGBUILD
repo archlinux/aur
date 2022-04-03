@@ -8,7 +8,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=rcssmonitor-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=17.0.0
+pkgver=VERSION
 pkgrel=1
 pkgdesc="Robocup 2D simulator's monitor."
 arch=('any')
