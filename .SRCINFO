@@ -1,6 +1,6 @@
-pkgbase = ledger
-	pkgdesc = Web based ledger system to keep track of your money
-	pkgver = 2.0.2
+pkgbase = webledger
+	pkgdesc = Web based ledger system
+	pkgver = 2.1.0
 	pkgrel = 1
 	url = https://github.com/jnphilipp/ledger
 	arch = any
@@ -16,9 +16,10 @@ pkgbase = ledger
 	depends = systemd
 	depends = uwsgi
 	depends = uwsgi-plugin-python
-	source = git://github.com/jnphilipp/ledger.git
-	source = git://github.com/jnphilipp/django_bootstrap5.git
+	provides = ledger
+	source = git+https://github.com/jnphilipp/ledger.git
+	source = git+https://github.com/jnphilipp/django_bootstrap5.git
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = ledger
+pkgname = webledger
