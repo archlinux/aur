@@ -1,13 +1,18 @@
 post_install() {
   #touch /usr/share/backgrounds/linuxmint/default_background.jpg
   #gsettings reset-recursively org.cinnamon
-  cinnamon-dbus-command RestartCinnamon 0
+  restart_Cinnamon
 }
 
 post_upgrade() {
-  cinnamon-dbus-command RestartCinnamon 0
+  restart_Cinnamon
 }
 
 post_remove() {
-  cinnamon-dbus-command RestartCinnamon 0
+  restart_Cinnamon
+}
+
+restart_Cinnamon() {
+  DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/${SUDO_UID}/bus"
+  sudo -u "#${SUDO_UID}" -H dbus-send --bus=$DBUS_SESSION_BUS_ADDRESS --type=method_call --dest=org.Cinnamon /org/Cinnamon org.Cinnamon.RestartCinnamon boolean:true 2> /dev/null
 }
