@@ -1,18 +1,17 @@
 pkgbase = python-ufl-git
 	pkgdesc = UFL - Unified Form Language
-	pkgver = 2021.1.0.19.g04e3fe93
+	pkgver = 2021.1.0.24.gaf99cad5
 	pkgrel = 1
 	url = https://github.com/FEniCS/ufl
 	arch = any
 	license = LGPL3
 	checkdepends = python-pytest
-	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = git
 	depends = python-numpy
-	provides = python-ufl=2021.1.0.19.g04e3fe93
+	depends = python-setuptools
+	provides = python-ufl=2021.1.0.24.gaf99cad5
 	conflicts = python-ufl
-	options = !emptydirs
 	source = ufl::git+https://github.com/FEniCS/ufl.git
 	sha512sums = SKIP
 
