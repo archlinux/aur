@@ -12,14 +12,14 @@
 ### MERGE REQUESTS SELECTION
 
 # available MR: ('1884' '1915')
-_merge_requests_to_use=('1884')
+_merge_requests_to_use=('1915')
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
-pkgver=42.0
+pkgver=42.0+53+gff29159df
 pkgrel=1
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
@@ -38,7 +38,7 @@ optdepends=('gnome-control-center: System settings'
 groups=(gnome)
 provides=(gnome-shell gnome-shell=$pkgver gnome-shell=$epoch:$pkgver)
 conflicts=(gnome-shell)
-_commit=44b4b02c3f772a50e6f8b8fd2dca6d9dc3a98725  # tags/42.0^0
+_commit=ff29159df2722cc01024aef42636097c23a41704  # tags/42.0^53
 source=("git+https://gitlab.gnome.org/GNOME/gnome-shell.git#commit=$_commit"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
         "mr1884.patch"
