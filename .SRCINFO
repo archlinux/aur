@@ -1,6 +1,6 @@
 pkgbase = nvitop
 	pkgdesc = Interactive NVIDIA-GPU process viewer and GPU process management
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/XuehaiPan/nvitop
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = nvitop
 	depends = python-cachetools
 	depends = python-termcolor
 	depends = ncurses
-	source = https://github.com/XuehaiPan/nvitop/archive/refs/tags/v0.5.3.tar.gz
-	sha256sums = 938476b5951f26adc5dc233b54b322e1f0286f7155346dba410dcabe184fa831
+	source = https://github.com/XuehaiPan/nvitop/archive/refs/tags/v0.5.4.tar.gz
+	sha256sums = 1e40c141e44c32b8c6bd007d1b3bb05f5a252be34e151382b014d2db8a2c7b71
 
 pkgname = nvitop
