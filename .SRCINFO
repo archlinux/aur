@@ -1,0 +1,27 @@
+pkgbase = aom-psy-git
+	pkgdesc = An open, royalty-free video coding format designed for video transmissions over the Internet
+	pkgver = r34579.g797b2371e
+	pkgrel = 1
+	url = https://aomedia.org/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	license = custom:PATENTS
+	makedepends = git
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = graphviz
+	makedepends = perl
+	makedepends = yasm
+	makedepends = clang
+	depends = gcc-libs
+	optdepends = aocc: AMD Optimizing Compiler
+	provides = aom
+	provides = aom-git
+	provides = libaom.so
+	conflicts = aom
+	conflicts = aom-git
+	source = git+https://gitlab.com/shssoichiro/aom#branch=patched
+	sha256sums = SKIP
+
+pkgname = aom-psy-git
