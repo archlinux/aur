@@ -1,4 +1,4 @@
-# Maintainer: Mahor Foruzesh <mahorforuzesh at pm dot me>
+# Maintainer: Mahor1221 <mahor1221 at pm dot me>
 
 pkgbase=juno-mirage-theme-git
 __pkgname="${pkgbase%-theme-git}"
