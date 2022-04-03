@@ -4,18 +4,18 @@
 pkgname=yank-note-bin
 _pkgname=yank-note
 pkgver=3.27.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Hackable Markdown Note Application for Programmers.'
 arch=('x86_64')
 url='https://github.com/purocean/yn'
 license=('AGPL3')
-depends=('electron' 'pandoc')
+depends=('electron17' 'pandoc')
 makedepends=('asar' 'yarn')
 source=("$_pkgname-$pkgver.deb::${url}/releases/download/v${pkgver}/Yank-Note-linux-amd64-${pkgver}.deb"
         "$_pkgname.sh"
         )
 sha256sums=('8ab3909ae58f9d18d694d3ba1c270ef78d10deed3d4ae11ba157d85c83ee10fd'
-            'ea47e7cea0b74bf9a0f96a853432a49ddfdba61017b68dcae47d1e4862327409')
+            '2d9a383ae65cd6844e96fbd7fd713e309dbfccd0ce8f8b5e0adf7f5dbcff6285')
 options=(!strip)
 prepare() {
 	cd ${srcdir}
@@ -37,7 +37,7 @@ build(){
     rm -rf bin
     # fix node-pty
     yarn add electron-rebuild
-    node_modules/.bin/electron-rebuild -f -w node-pty -v $(electron -v)
+    node_modules/.bin/electron-rebuild -f -w node-pty -v $(electron17 -v)
     cp -rf node_modules/node-pty ./
     yarn remove electron-rebuild
     rm -rf node_modules/node-pty

@@ -1,3 +1,3 @@
 #!/usr/bin/sh
 cd /usr/lib/yank-note
-electron app "$@"
+electron17 app "$@"
