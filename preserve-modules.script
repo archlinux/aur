@@ -1,11 +1,83 @@
-#!/bin/sh
+#!/bin/bash
 
-preserve_modules_copy() {
-    cat > /home/yrlf/wtf.log
+KERNEL="$(uname -r)"
+TARGET="usr/lib/modules/$KERNEL"
+PRESERVE_MODULES_DIR=/run/linux-preserve-modules
+
+not() {
+    if "$@"; then
+        return 1
+    else
+        return 0
+    fi
 }
 
-preserve_modules_link() {
+preserve-modules-copy() {
+    # exit early if kernel version empty
+    if [[ -z "$KERNEL" ]]; then
+        echo "error: unknown kernel version" >&2
+        exit 1
+    fi
 
+    # exit early if currently running kernel modules untouched
+    if not grep -F -q "$TARGET"; then
+        echo "info: nothing to copy" >&2
+        exit 0
+    fi
+
+    # exit early if the target directory does not exist
+    if [[ ! -d "/$TARGET" ]]; then
+        echo "info: nothing to copy" >&2
+        exit 0
+    fi
+
+    # unmount bind mounts before transaction for safety
+    mountpoint -q "/$TARGET/kernel" && umount "/$TARGET/kernel"
+    mountpoint -q "/$TARGET/updates" && umount "/$TARGET/updates"
+
+    # exit early if kernel modules already copied
+    if [[ -d "$PRESERVE_MODULES_DIR/modules/$KERNEL" ]]; then
+        echo "info: already copied" >&2
+        exit 0
+    fi
+
+    # copy over kernel modules
+    mkdir -p "$PRESERVE_MODULES_DIR/modules/$KERNEL"
+    [[ -d "/$TARGET/kernel" ]] && cp -r "/$TARGET/kernel" "$PRESERVE_MODULES_DIR/modules/$KERNEL/kernel"
+    [[ -d "/$TARGET/updates" ]] && cp -r "/$TARGET/updates" "$PRESERVE_MODULES_DIR/modules/$KERNEL/updates"
+
+    echo "info: copied modules" >&2
+    exit 0
+}
+
+preserve-modules-link() {
+    # exit early if kernel version empty
+    if [[ -z "$KERNEL" ]]; then
+        echo "error: unknown kernel version" >&2
+        exit 1
+    fi
+
+    # exit early if no kernel modules copied
+    if [[ ! -d "$PRESERVE_MODULES_DIR/modules/$KERNEL" ]]; then
+        echo "info: nothing to link" >&2
+        exit 0
+    fi
+
+    # exit early if mount targets still owned by a package
+    OWNERS=( $(pacman -Qoq "/$TARGET/kernel") $(pacman -Qoq "/$TARGET/updates") )
+    if [[ "${#OWNERS[@]}" -ne 0 ]]; then
+        echo "info: modules still there" >&2
+        exit 0
+    fi
+
+    # bind mount preserved kernel modules
+    mkdir -p "/$TARGET/kernel"
+    mkdir -p "/$TARGET/updates"
+    [[ -d "$PRESERVE_MODULES_DIR/modules/$KERNEL/kernel" ]] && mount --bind "$PRESERVE_MODULES_DIR/modules/$KERNEL/kernel" "/$TARGET/kernel"
+    [[ -d "$PRESERVE_MODULES_DIR/modules/$KERNEL/updates" ]] && mount --bind "$PRESERVE_MODULES_DIR/modules/$KERNEL/updates" "/$TARGET/updates"
+
+    echo "info: linked modules" >&2
+    exit 0
 }
 
 usage() {
@@ -13,12 +85,12 @@ usage() {
     exit 1
 }
 
-if [ "$#" -ne 1 ]; then
+if [[ "$#" -ne 1 ]]; then
     usage
 fi
 
 case "$1" in
-    copy) preserve_modules_copy;;
-    link) preserve_modules_link;;
+    copy) preserve-modules-copy;;
+    link) preserve-modules-link;;
     *) usage;;
 esac
