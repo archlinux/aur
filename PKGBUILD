@@ -2,7 +2,7 @@
 _pkgname="magic-wormhole.rs"
 pkgname="wormhole-rs"
 pkgver="0.4.0"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="Rust implementation of Magic Wormhole, with new features and enhancements"
 arch=('x86_64')
 url="https://github.com/magic-wormhole/$_pkgname"
@@ -18,12 +18,6 @@ _sourcedirectory="$_pkgname-$pkgver"
 prepare() {
 	cd "$_pkgname-$pkgver"
     cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-}
-
-check() {
-	cd "$_pkgname-$pkgver"
-    export RUSTUP_TOOLCHAIN=stable
-    cargo test --frozen --all-features
 }
 
 build() {
