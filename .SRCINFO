@@ -1,32 +1,35 @@
 pkgbase = casacore
-	pkgdesc = Suite of c++ libraries for radio astronomy data processing
-	pkgver = 3.1.2
+	pkgdesc = Suite of C++ libraries for radio astronomy data processing
+	pkgver = 3.4.0
 	pkgrel = 1
-	arch = i686
+	url = https://github.com/casacore/casacore
 	arch = x86_64
-	license = GPL-2.0
-	makedepends = make
-	makedepends = pkg-config
-	makedepends = binutils
-	makedepends = boost
-	makedepends = boost-libs
+	license = GPL
 	makedepends = cmake
 	makedepends = gcc-fortran
-	makedepends = gcc
-	makedepends = flex
-	makedepends = bison
-	makedepends = openblas
-	makedepends = lapack
-	makedepends = cfitsio
-	makedepends = wcslib
-	makedepends = python2-numpy
+	depends = fftw
+	depends = openblas
+	depends = lapack
+	depends = cfitsio
+	depends = wcslib
 	optdepends = sofa: only for testing casacore measures
-	optdepends = fftw
 	optdepends = hdf5
 	optdepends = ncurses
-	provides = casacore
-	source = https://github.com/casacore/casacore/archive/v3.1.2.tar.gz
-	sha256sums = ac94f4246412eb45d503f1019cabe2bb04e3861e1f3254b832d9b1164ea5f281
+	provides = libcasa_casa.so=6-64
+	provides = libcasa_coordinates.so=6-64
+	provides = libcasa_derivedmscal.so=6-64
+	provides = libcasa_fits.so=6-64
+	provides = libcasa_images.so=6-64
+	provides = libcasa_lattices.so=6-64
+	provides = libcasa_meas.so=6-64
+	provides = libcasa_measures.so=6-64
+	provides = libcasa_mirlib.so=6-64
+	provides = libcasa_msfits.so=6-64
+	provides = libcasa_ms.so=6-64
+	provides = libcasa_scimath_f.so=6-64
+	provides = libcasa_scimath.so=6-64
+	provides = libcasa_tables.so=6-64
+	source = casacore-3.4.0.tar.gz::https://github.com/casacore/casacore/archive/v3.4.0.tar.gz
+	sha256sums = 31f02ad2e26f29bab4a47a2a69e049d7bc511084a0b8263360e6157356f92ae1
 
 pkgname = casacore
-
