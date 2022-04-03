@@ -1,6 +1,6 @@
 pkgbase = guile-git
 	pkgdesc = A portable, embeddable Scheme implementation (Git snapshot)
-	pkgver = 3.0.7.r6.g221203b0d
+	pkgver = 3.0.8.r12.g446842733
 	pkgrel = 1
 	epoch = 1
 	url = http://www.gnu.org/software/guile/
@@ -17,8 +17,10 @@ pkgbase = guile-git
 	depends = gmp
 	depends = readline
 	optdepends = texinfo: for using texinfo scheme sources
-	provides = guile
-	conflicts = guile4emacs
+	provides = guile3
+	provides = guile=3.0.8.r12.g446842733
+	conflicts = guile
+	conflicts = guile3
 	options = !strip
 	options = !makeflags
 	options = libtool
