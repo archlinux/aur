@@ -1,2 +1,2 @@
 #!/usr/bin/sh
-electron /usr/share/dida/dida.asar "$@"
+electron17 /usr/share/dida/dida.asar "$@"

@@ -5,18 +5,18 @@
 pkgname=dida-bin
 _pkgname=dida
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Dida client, a todo list."
 arch=("any")
 url="https://dida365.com/home"
 license=("BSD")
-depends=(electron)
+depends=(electron17)
 provides=(${_pkgname})
 source=("${_pkgname}_${pkgver}-${arch}.deb::https://cdn.dida365.cn/download/linux/linux_deb_x64/dida-${pkgver}-amd64.deb"
 "${_pkgname}".sh
 )
 sha512sums=('6eb929337606f7874554898e8a6f5f6f679813f9caf8eb8c499dfbb4b0a18c65edf483714350fb1dc18b45c9eb09b1dff84c6cbb514c27d1f702dc12499caa7a'
-            'd4051b2f7bedd263a80b2d8e4a05bba59806f35f7b3072a8a9fc3026eade0c2f06cd9e8eea9343292db30636a71f9ae6e44a9b1c9b5871ece2d2590cdb564e72')
+            '15b8a7bbdd7065a794ad6b02cb0a5a50022f45b37b011aabc52be122ce5f2a7f9c9868c17b9a70ed113b9baddd9f0174e0d1e1dbe539a3f398a5d96f1197ea26')
 
 prepare(){
     cd ${srcdir}
