@@ -8,8 +8,7 @@ pkgbase = ksmtuned-git
 	provides = ksmtuned
 	backup = etc/default/ksm
 	backup = etc/ksmtuned.conf
-	source = git://github.com/Anthony25/ksmtuned.git#branch=archlinux
+	source = git+https://github.com/Anthony25/ksmtuned.git#branch=archlinux
 	md5sums = SKIP
 
 pkgname = ksmtuned-git
-

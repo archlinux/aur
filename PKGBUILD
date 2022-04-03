@@ -9,7 +9,7 @@ license=('GPLv2')
 url='https://github.com/ksmtuned/ksmtuned'
 provides=('ksmtuned')
 conflict=('ksmtuned')
-source=('git://github.com/Anthony25/ksmtuned.git#branch=archlinux')
+source=('git+https://github.com/Anthony25/ksmtuned.git#branch=archlinux')
 md5sums=('SKIP')
 backup=('etc/default/ksm' 'etc/ksmtuned.conf')
 
