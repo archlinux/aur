@@ -1,4 +1,4 @@
-# Maintainer: skrewball <skrewball at joickle dot com>
+# Maintainer: skrewball <jason at joickle dot com>
 
 pkgname=gnome-shell-extension-hide-universal-access
 pkgver=11
