@@ -1,13 +1,13 @@
 pkgbase = plink-bin
 	pkgdesc = A comprehensive update to the PLINK association analysis toolset
-	pkgver = v1.90b6.25
+	pkgver = v1.90b6.26
 	pkgrel = 1
 	url = https://www.cog-genomics.org/plink2
 	arch = x86_64
 	license = GPL3
 	provides = plink
 	conflicts = plink
-	source = plink-bin-v1.90b6.25.zip::https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20220305.zip
-	sha256sums = 2390a5dda9659d619d38976abe2078e03d9e4899e4ffe8ced78bd9cae74b69ec
+	source = plink-bin-v1.90b6.26.zip::https://s3.amazonaws.com/plink1-assets/plink_linux_x86_64_20220402.zip
+	sha256sums = 4777e2535d0de1415f1a6f0fe81378a7fcf59f930eb9b7cbec93c7bee58fd1cc
 
 pkgname = plink-bin
