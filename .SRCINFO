@@ -1,0 +1,13 @@
+pkgbase = rust_ledger
+	pkgdesc = Rust implementation of ledger, the command line accounting tool
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/ebcrowder/rust_ledger
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	depends = gcc-libs
+	source = https://github.com/ebcrowder/rust_ledger/archive/v0.8.0/rust_ledger-0.8.0.tar.gz
+	b2sums = b6b42bb52f289736d7d791bff8b41bb83062505a8d1a04b0fc099359f6edcd621de266279bf4cc8ab623641500c3b71cec32c0ba618eed326780e898adf36d42
+
+pkgname = rust_ledger
