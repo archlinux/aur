@@ -1,18 +1,19 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=universal-android-debloater
-pkgver=0.4.1
+pkgver=0.5
 pkgrel=1
 pkgdesc="Cross-platform GUI written in Rust using ADB to debloat non-rooted Android devices"
 arch=('x86_64')
 url="https://github.com/0x192/universal-android-debloater"
 license=('GPL3')
-depends=('android-tools' 'expat' 'freetype2')
+depends=('android-tools' 'gcc-libs')
 makedepends=('cargo-nightly' 'cmake' 'libxkbcommon' 'lld')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         'uad_gui.desktop'
         'uad_gui-opengl.desktop')
 options=('!lto')
-sha256sums=('379e6416a554b8e4ab5d88e517ce988fbcff5255e890881365f682327f91dc69'
+changelog='uad-CHANGELOG.md'
+sha256sums=('91bb27c08d3ae516660ce2ae50a1be19aeccb266cd18f223f3c02f4f628529c8'
             'e55f259fab5e09d6e91412dbfa74859f609615606422b0e3c937cc774eaedbf3'
             '80227d6e877e25f650d470c0301c93fe28d1ca25d85a3dbf0c050698f84200e5')
 
