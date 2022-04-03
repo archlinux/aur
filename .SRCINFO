@@ -1,0 +1,21 @@
+pkgbase = rcssmonitor-git
+	pkgdesc = Robocup 2D simulator's monitor.
+	pkgver = 17.0.0
+	pkgrel = 1
+	url = https://github.com/rcsoccersim/rcssmonitor
+	arch = any
+	groups = rcss
+	license = GPL
+	makedepends = git
+	depends = qt5-base
+	depends = fontconfig
+	depends = libxt
+	depends = glib2
+	depends = libxi
+	depends = libxrender
+	provides = rcssmonitor-git
+	conflicts = rcssmonitor-git
+	source = rcssmonitor-git::git+https://github.com/rcsoccersim/rcssmonitor.git
+	md5sums = SKIP
+
+pkgname = rcssmonitor-git
