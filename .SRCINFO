@@ -1,0 +1,17 @@
+pkgbase = tomatoshell
+	pkgdesc = Pomodoro timer in the shell
+	pkgver = r21.ed04b1c
+	pkgrel = 1
+	url = https://github.com/lytixDev/tomatoshell
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	depends = alsa-lib
+	depends = coreutils
+	optdepends = figlet: cool text
+	optdepends = mpv: play alarm sound
+	optdepends = pulseaudio: better sound
+	source = tomatoshell::git+https://github.com/LytixDev/tomatoshell.git
+	md5sums = SKIP
+
+pkgname = tomatoshell
