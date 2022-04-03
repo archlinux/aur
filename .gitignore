@@ -1,0 +1,5 @@
+pkg/
+src/
+
+github-desktop-bin-*.pkg.tar.zst
+*.deb
