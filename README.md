@@ -32,11 +32,11 @@ zmqpubrawtx=tcp://127.0.0.1:28333
 * Finally, all software needs to be run. The following shows how to run the software and its dependencies with `tmux`.
 * Start:
 ```
-tmux new-session -s c-lightning -d "lightningd --network=bitcoin --bitcoin-rpcuser=USERNAME --bitcoin-rpcpassword=PASSWORD --rpc-file=/home/USERNAME/.lightning/lightning-rpc --log-level=info;bash -i"
+tmux new-session -s c-lightning -d "lightningd --network bitcoin --bitcoin-rpcuser USERNAME --bitcoin-rpcpassword PASSWORD --rpc-file /home/USERNAME/.lightning/lightning-rpc --log-level info;bash -i"
 ```
 or
 ```
-tmux new-session -s lnd -d "lnd --bitcoin.active --bitcoin.mainnet --bitcoin.node=bitcoind --bitcoind.rpcuser=USERNAME --bitcoind.rpcpass=PASSWORD --bitcoind.zmqpubrawblock=tcp://127.0.0.1:28332 --bitcoind.zmqpubrawtx=tcp://127.0.0.1:28333 --externalip=localhost;bash -i"
+tmux new-session -s lnd -d "lnd --bitcoin.active --bitcoin.mainnet --bitcoin.node bitcoind --bitcoind.rpcuser USERNAME --bitcoind.rpcpass PASSWORD --bitcoind.zmqpubrawblock tcp://127.0.0.1:28332 --bitcoind.zmqpubrawtx tcp://127.0.0.1:28333 --externalip localhost;bash -i"
 lncli unlock
 ```
 
