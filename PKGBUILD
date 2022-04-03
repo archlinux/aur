@@ -1,8 +1,9 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: frichtlm <frichtlm@gmail.com>
 
 _cranname=dplyr
-_cranver=1.0.7
+_cranver=1.0.8
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -10,17 +11,55 @@ pkgdesc="A Grammar of Data Manipulation"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(MIT)
-depends=('r>=3.3.0' r-ellipsis r-generics 'r-glue>=1.3.2' 'r-lifecycle>=1.0.0' 'r-magrittr>=1.5' r-r6 'r-rlang>=0.4.10' 'r-tibble>=2.1.3' 'r-tidyselect>=1.1.0' 'r-vctrs>=0.3.5' 'r-pillar>=1.5.1')
-optdepends=(r-bench r-broom r-callr r-covr r-dbi r-dbplyr r-knitr r-lahman r-lobstr r-microbenchmark r-nycflights13 r-purrr r-rmarkdown r-rmysql r-rpostgresql r-rsqlite r-testthat r-tidyr r-withr)
-source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('d2fe3aedbce02fdddce09a8a80f85f5918a9d1f15f792ad4a98f254959d7123d')
+depends=(
+    r-generics
+    r-glue
+    r-lifecycle
+    r-magrittr
+    r-r6
+    r-rlang
+    r-tibble
+    r-tidyselect
+    r-vctrs
+    r-pillar
+)
+optdepends=(
+    r-bench
+    r-broom
+    r-callr
+    r-covr
+    r-dbi
+    r-dbplyr
+    r-ggplot2
+    r-knitr
+    r-lahman
+    r-lobstr
+    r-microbenchmark
+    r-nycflights13
+    r-purrr
+    r-rmarkdown
+    r-rmysql
+    r-rpostgresql
+    r-rsqlite
+    r-testthat
+    r-tidyr
+    r-withr
+)
+source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
+        "CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
+sha256sums=('3b6aa3a06d67037223da6af4b59ab89cbd342bc450b92c6050fb267127236075'
+            'e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b')
 
 build() {
-  R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
+  mkdir -p build
+  R CMD INSTALL "${_cranname}" -l "${srcdir}/build"
 }
 
 package() {
   install -dm0755 "${pkgdir}/usr/lib/R/library"
 
-  cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+  cp -a --no-preserve=ownership "build/${_cranname}" "${pkgdir}/usr/lib/R/library"
+
+  install -Dm644 CRAN-MIT-TEMPLATE "${pkgdir}/usr/share/licenses/${pkgname}/MIT"
+  install -Dm644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
