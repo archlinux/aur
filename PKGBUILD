@@ -35,7 +35,8 @@ package()
 
     ## Create an executable.
     echo -e "#!/bin/bash
-node /usr/share/${pkgname}/dist/cli.js \"\${@}\"" > "${pkgdir}"/usr/bin/"${pkgname}"
+
+node /usr/share/\"${pkgname}\"/dist/cli.js \"\${@}\"" > "${pkgdir}"/usr/bin/"${pkgname}"
     chmod 755 "${pkgdir}"/usr/bin/"${pkgname}"
 
     # Install the documentation.
