@@ -1,0 +1,16 @@
+pkgbase = ilo-sitelen-git
+	pkgdesc = An fcitx5 IME for sitelen pona.
+	pkgver = r4.cfacb08
+	pkgrel = 1
+	url = https://github.com/0x182d4454fb211940/ilo-sitelen
+	arch = x86_64
+	license = MIT
+	makedepends = cmake>=3.21
+	makedepends = git
+	depends = fcitx5
+	provides = ilo-sitelen.so
+	conflicts = ilo-sitelen
+	source = ilo-sitelen::git+https://github.com/0x182d4454fb211940/ilo-sitelen.git
+	md5sums = SKIP
+
+pkgname = ilo-sitelen-git
