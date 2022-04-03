@@ -1,6 +1,6 @@
 pkgbase = aom-psy-git
 	pkgdesc = An open, royalty-free video coding format designed for video transmissions over the Internet
-	pkgver = r34579.g797b2371e
+	pkgver = r32348.g797b2371e
 	pkgrel = 1
 	url = https://aomedia.org/
 	arch = i686
@@ -21,7 +21,7 @@ pkgbase = aom-psy-git
 	provides = libaom.so
 	conflicts = aom
 	conflicts = aom-git
-	source = git+https://gitlab.com/shssoichiro/aom#branch=patched
+	source = git+https://gitlab.com/shssoichiro/aom.git#branch=patched
 	sha256sums = SKIP
 
 pkgname = aom-psy-git
