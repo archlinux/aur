@@ -2,7 +2,7 @@
 # Upstream :		ethanv2 <https://github.com/ethanv2/podbit/>
 
 pkgname=podbit
-pkgver=1.3.1
+pkgver=1.4
 pkgrel=1
 
 pkgdesc='Podboat Improved: A podcast client for your terminal'
@@ -15,7 +15,7 @@ optdepends=('newsboat: enqueue podcasts from RSS')
 makedepends=('go')
 
 source=("$pkgname-$pkgver.tgz::$url/archive/v$pkgver.tar.gz")
-md5sums=('2f3a83659b63c9cca447cffb394401c9')
+md5sums=('ea84d4ff4300039fcfabc9f24d70d48d')
 
 package() {
 	cd "$pkgname-$pkgver"
