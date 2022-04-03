@@ -1,0 +1,13 @@
+pkgbase = tuxtrain
+	pkgdesc = An easy-to-use generic trainer for Linux
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/leaty/tuxtrain
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	backup = etc/tuxtrain/eldenring.toml
+	source = tuxtrain-0.0.4.tar.gz::https://github.com/leaty/tuxtrain/archive/v0.0.4.tar.gz
+	sha256sums = 4bb9444982ecd30d971c39b82fc04474a60539c7273341d2422dc7bca0b5a14b
+
+pkgname = tuxtrain
