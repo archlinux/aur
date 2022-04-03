@@ -25,8 +25,8 @@ sha256sums=('3d9be2933340dfeb776bb30d7a1f4ae18e69a10f31c5fd573923000f0368f0ad'
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  # Workaround for jinja 3.x
-  sed -i '/jinja2==2\.\*/d' requirements.txt
+  # Workaround for pyparsing > 2
+  sed -i '/pyparsing==2\.\*/d' requirements.txt
   python setup.py install --root="${pkgdir}/" --optimize=1
   
   install -Dm644 ./fsleyes/assets/icons/app_icon/fsleyes.iconset/icon_512x512.png "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/${pkgname}.png
