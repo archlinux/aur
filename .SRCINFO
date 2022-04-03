@@ -1,0 +1,16 @@
+pkgbase = sacd-extract-git
+	pkgdesc = Extract DSDIFF files, DSF files or RAW ISO from SACD
+	pkgver = 0.3.9.3.r107.g01c90dd
+	pkgrel = 1
+	url = https://github.com/EuFlo/sacd-ripper
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = GPL-2.0
+	makedepends = cmake
+	provides = sacd-extract
+	conflicts = sacd-extract
+	source = git+https://github.com/EuFlo/sacd-ripper.git
+	sha256sums = SKIP
+
+pkgname = sacd-extract-git
