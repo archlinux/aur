@@ -3,7 +3,7 @@
 
 _gemname=parallel
 pkgname=ruby-$_gemname
-pkgver=1.21.0
+pkgver=1.22.1
 pkgrel=1
 pkgdesc="Ruby: parallel processing made simple and fast"
 arch=(any)
@@ -15,7 +15,7 @@ checkdepends=(ruby-bundler ruby-rake ruby-rspec ruby-bump ruby-activerecord
 makedepends=(rubygems ruby-rdoc)
 options=(!emptydirs)
 source=(${url}/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
-sha256sums=('d1d21c92af684602cebcbf7d31758307cc3f2ebd53e5056c0946445c9d5f904b')
+sha256sums=('21c457a5b7cf7fba400aefc62758f987a535ec371d1dc80231956ec635d5432a')
 
 prepare() {
   cd $_gemname-$pkgver
