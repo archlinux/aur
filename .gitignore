@@ -1,0 +1,7 @@
+# dependencies
+celeste-linux.zip
+fmodstudio*.tar.gz
+
+# build directories
+pkg
+src

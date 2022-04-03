@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Celeste
+Type=Application
+Comment=Help Madeline survive her journey to the top of Celeste Mountain in this super-tight, hand-crafted platformer from the creators of TowerFall
+Terminal=false
+Categories=Game
+Exec=/usr/bin/celeste
+Icon=celeste

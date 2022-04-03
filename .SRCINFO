@@ -1,0 +1,27 @@
+pkgbase = celeste-arm
+	pkgdesc = Help Madeline survive her journey to the top of Celeste Mountain in this super-tight, hand-crafted platformer from the creators of TowerFall (patched to work on ARM)
+	pkgver = 1.4.0.0
+	pkgrel = 1
+	url = http://www.celestegame.com/
+	arch = aarch64
+	arch = armv7h
+	license = custom:commercial
+	depends = mono
+	depends = sdl2
+	noextract = celeste-linux.zip
+	source = file://celeste-linux.zip
+	source = celeste.desktop
+	source = git+https://github.com/FNA-XNA/FNA3D.git#tag=22.03
+	source = FMOD_SDL-21.10.tar.gz::https://github.com/flibitijibibo/FMOD_SDL/archive/refs/tags/21.10.tar.gz
+	md5sums = 518ea69d60079109a2575d428eff8a53
+	md5sums = fc762471133b0d7e7d626f07b8afd9ba
+	md5sums = SKIP
+	md5sums = 1ba7e1f21e7da6cfd6f30ee4199e7d3c
+	source_aarch64 = file://fmodstudioapi20206linux.tar.gz
+	source_aarch64 = fmodstudio_fix.c
+	md5sums_aarch64 = 63c26ec0e73dec37e3039c88a8d0abef
+	md5sums_aarch64 = 1c94ef6abe07dc8a5593264a2c9aabb8
+	source_armv7h = file://fmodstudioapi11014linux.tar.gz
+	md5sums_armv7h = a045418d7b6512f8aecba54c0eadd37c
+
+pkgname = celeste-arm
