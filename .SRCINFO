@@ -8,11 +8,10 @@ pkgbase = guile3.0-reader
 	license = GPL
 	makedepends = gperf
 	makedepends = git
-	depends = guile-git
+	depends = guile>=3
 	options = !strip
 	options = !emptydirs
 	source = http://download.savannah.nongnu.org/releases/guile3.0-reader/guile-reader-0.6.3.tar.gz
 	sha256sums = 38c2b444eadbb8c0cab78d90a44ec3ebff42bd410c5b84a91018cee7eb64d2bb
 
 pkgname = guile3.0-reader
-
