@@ -3,8 +3,8 @@
 _name=trezor-agent
 pkgname=python-trezor-agent-git
 pkgver=v0.14.4.r6.ge4d16a3
-pkgrel=2
-pkgdesc="Hardware-based SSH/PGP agent (Trezor/Keepkey/Ledger/OnlyKey)"
+pkgrel=3
+pkgdesc="Hardware-based SSH/PGP agent (Trezor/Keepkey/Ledger/OnlyKey/Jade)"
 arch=('any')
 url="https://github.com/romanz/trezor-agent"
 license=("LGPL3")
@@ -53,6 +53,9 @@ build() {
 
     #cd "$srcdir/$pkgname/agents/onlykey"
     #python setup.py build
+
+    #cd "$srcdir/$pkgname/agents/jade"
+    #python setup.py build
 }
 
 package() {
@@ -71,5 +74,8 @@ package() {
     #python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
     #cd "$srcdir/$pkgname/agents/onlykey"
+    #python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+
+    #cd "$srcdir/$pkgname/agents/jade"
     #python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 }
