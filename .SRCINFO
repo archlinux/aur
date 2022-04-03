@@ -1,0 +1,21 @@
+pkgbase = collision-hashes-git
+	pkgdesc = Check hashes for your files. A simple GUI tool to generate, compare and verify MD5, SHA1 & SHA256 hashes
+	pkgver = 3.0.1.r1.g171658b
+	pkgrel = 1
+	url = https://github.com/GeopJr/Collision
+	arch = x86_64
+	license = BSD2
+	makedepends = git
+	makedepends = crystal
+	makedepends = gobject-introspection
+	makedepends = gobject-introspection-runtime
+	makedepends = shards
+	makedepends = spglib
+	depends = gtk4
+	depends = libadwaita
+	conflicts = hashbrown-git
+	conflicts = collision-git
+	source = git+https://github.com/GeopJr/Collision.git
+	b2sums = SKIP
+
+pkgname = collision-hashes-git
