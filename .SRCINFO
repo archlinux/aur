@@ -1,6 +1,6 @@
 pkgbase = thunar-devel
 	pkgdesc = File manager for Xfce (development version)
-	pkgver = 4.17.7
+	pkgver = 4.17.8
 	pkgrel = 1
 	url = https://thunar.xfce.org
 	arch = i686
@@ -21,17 +21,17 @@ pkgbase = thunar-devel
 	depends = libexif
 	depends = libnotify
 	depends = libpng
-	depends = libxfce4ui>=4.17.0
-	depends = libxfce4util>=4.17.1
+	depends = libxfce4ui>=4.17.6
+	depends = libxfce4util>=4.17.2
 	optdepends = gvfs: trash support, mounting with udisks, and remote filesystems
 	optdepends = xfce4-panel: trash applet
 	optdepends = tumbler: for thumbnail previews
 	optdepends = thunar-volman: manages removable devices
 	optdepends = thunar-archive-plugin: create and deflate archives
 	optdepends = thunar-media-tags-plugin: view/edit id3/ogg tags
-	provides = thunar=4.17.7
+	provides = thunar=4.17.8
 	conflicts = thunar
-	source = https://archive.xfce.org/src/xfce/thunar/4.17/thunar-4.17.7.tar.bz2
-	sha256sums = 231d6245e627cc2f260ddd8574734607596db3acb69aac20be19d6f1ab8d4c03
+	source = https://archive.xfce.org/src/xfce/thunar/4.17/thunar-4.17.8.tar.bz2
+	sha256sums = 6f44a1632ee000c090d5dc7ca8ee20be9674dca79ca47c236ca083f070eeea10
 
 pkgname = thunar-devel
