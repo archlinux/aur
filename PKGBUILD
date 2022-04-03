@@ -1,7 +1,7 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: Markus Näther <naetherm@informatik.uni-freiburg.de>
 pkgname=rocsparse
-pkgver=5.0.2
+pkgver=5.1.0
 pkgrel=1
 pkgdesc='BLAS for sparse computation on top of ROCm'
 arch=('x86_64')
@@ -11,20 +11,24 @@ depends=('hip' 'rocprim')
 makedepends=('cmake' 'git' 'gcc-fortran')
 _git='https://github.com/ROCmSoftwarePlatform/rocSPARSE'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
-sha256sums=('c9d9e1b7859e1c5aa5050f5dfdf86245cbd7c1296c0ce60d9ca5f3e22a9b748b')
+sha256sums=('a2f0f8cb02b95993480bd7264fc65e8b11464a90b86f2dcd0dd82a2e6d4bd704')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" ".tar.gz")"
 
 build() {
-  # -fcf-protection is not supported by HIP, see
-  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-5.0.x/docs/markdown/clang_options.md
+  local cmake_flags=(
+        '-DCMAKE_INSTALL_PREFIX=/opt/rocm'
+        '-Drocprim_DIR=/opt/rocm/rocprim/rocprim/lib/cmake/rocprim'
+        '-DBUILD_CLIENTS_SAMPLES=OFF')
+  if [[ -n "$AMDGPU_TARGETS" ]]; then
+      cmake_flags+=("-DAMDGPU_TARGETS=$AMDGPU_TARGETS")
+  fi
 
+  # -fcf-protection is not supported by HIP, see
+  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-5.1.x/docs/markdown/clang_options.md
   CXX=/opt/rocm/bin/hipcc \
   CXXFLAGS="${CXXFLAGS} -fcf-protection=none" \
   cmake -Wno-dev -S "$_dirname" \
-        -DCMAKE_INSTALL_PREFIX=/opt/rocm \
-        -Drocprim_DIR=/opt/rocm/rocprim/rocprim/lib/cmake/rocprim \
-        -DBUILD_CLIENTS_SAMPLES=OFF \
-        -DAMDGPU_TARGETS=${AMDGPU_TARGETS:-gfx803;gfx900:xnack-;gfx906:xnack-;gfx908:xnack-;gfx90a:xnack-;gfx90a:xnack+;gfx1030}
+        "${cmake_flags[@]}"
   make
 }
 
