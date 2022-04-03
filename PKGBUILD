@@ -1,24 +1,25 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=android-messages-desktop
 pkgver=5.3.1
-pkgrel=3
+pkgrel=4
+_electronversion=17
 pkgdesc="Android Messages as a cross-platform desktop app"
 arch=('x86_64')
 url="https://github.com/OrangeDrangon/android-messages-desktop"
 license=('MIT')
-depends=('electron')
+depends=("electron${_electronversion}")
 makedepends=('git' 'yarn')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
 sha256sums=('210b754290b5e72af7e849df709b7677d7db9105cd970a99552939aec30b8ce8'
-            'ef967c944762e6032c78db578be46a89e5eac2bc8bee856e21d67a6029e1dc69'
+            '0a1e8592f0d1e09d77b797ba2b773fe63d0a41548a307b8a290051c48936980c'
             '1bf16b8864712b0c1de72d8c3764db14b75ecf64dae44d206a26aa036ac53b1a')
 
 build() {
   cd "$pkgname-$pkgver"
-  electronDist="/usr/lib/electron"
-  electronVer="$(sed s/^v// /usr/lib/electron/version)"
+  electronDist="/usr/lib/electron${_electronversion}"
+  electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
   yarn config set cache-folder "$srcdir/yarn-cache"
   yarn install
   yarn webpack --mode=production
