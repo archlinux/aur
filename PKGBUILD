@@ -2,8 +2,8 @@
 # Contributor: xantares
 # Contributor: dalraf
 pkgname=python-orange
-pkgver=3.31.1
-pkgrel=2
+pkgver=3.32.0
+pkgrel=1
 pkgdesc="Open source machine learning and data visualization"
 arch=('x86_64')
 url="https://orangedatamining.com/"
@@ -20,13 +20,7 @@ depends=('python-chardet' 'python-pyqtgraph' 'python-xlrd' 'python-matplotlib'
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/biolab/orange3/archive/${pkgver}.tar.gz")
 optdepends=('python-psycopg2: PostgreSQL database support'
             'python-pymssql: Microsoft SQL Server support')
-sha256sums=('0c194ba4da51a8109fe6be94535cd366b07e62e2f6bfa5fed1a85e39eaee566d')
-
-prepare() {
-  cd "${srcdir}/orange3-$pkgver"
-  # remove hard dependency on httpx
-  sed -i 's/,<0.20//' requirements-core.txt
-}
+sha256sums=('364ef8fab66bcc1a490261d2758f1d8f05f9365098d7093f74616deedae2b443')
 
 build() {
   cd "${srcdir}/orange3-$pkgver"
