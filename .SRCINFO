@@ -1,7 +1,7 @@
 pkgbase = moq-bin
 	pkgdesc = Interface mocking tool for go generate
 	pkgver = 0.2.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/matryer/moq
 	arch = x86_64
 	license = MIT
