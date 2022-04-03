@@ -1,3 +1,10 @@
+2022-03-26 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.2.4.2-1:
+    Added KeyboardSkin item type, this resolves unrecognized by ASF item_class_16 error (@Abrynos #2535).
+    Fixed a possibility of ASF API calls changing ASF process language (@JustArchi @Abrynos #2544).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2022-03-08 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.2.3.7-1:
     Fixed missing zh-CN and zh-TW translations, regression from V5.2.3.4 (@JustArchi #2532).
