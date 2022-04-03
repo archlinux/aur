@@ -1,7 +1,7 @@
 # Maintainer: qwq233 <qwq233@qwq2333.top>
 pkgname=64gram-desktop-no-ad
 _pkgname=64Gram
-pkgver=1.0.25
+pkgver=1.0.28
 pkgrel=1
 pkgdesc='Unofficial desktop version of Telegram messaging app (removed ad)'
 arch=('x86_64')
@@ -25,8 +25,7 @@ source=(
         "fix-ffmpeg-build-for-tgcalls.patch"
         "remove-ad.patch"
         )
-
-sha512sums=('ed56939c98aad7bd56c647345d7133284926edcc2d746d789cc88453c44a5efca5101815dff607a61b1f656658ed3adc35bd0a7d293d49420efeee4fc7255da0'
+sha512sums=('fcbc27533cbd7536d430c764f12eed0a344d1f8195eb566e39d30393b088f0920b1686b4896b366ac32c99b9ce4fc71a0d1e421e2121f0e41a1a10ab9a44a1a0'
             '5f87b047179b570846440dc0315c156438e6bdd1e95326a6e239e1e9f0d110af368f283c0c242438e06f8da7d0494cb5b46db61b0ae65c1a9d9242de27caf34c'
             'de0662d33062a8c169003095f73ce69f352c21873620841fd53c075ec18990d643fe0a88536aa3f5b9cca2d52a69c01d3e2ce0b279549f0c0ceb0a907e7e3ff7')
 
