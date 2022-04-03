@@ -10,8 +10,8 @@ license=('custom:brother commercial license')
 depends=('cups')
 install='brother-hl2170w.install'
 source=(
-	"http://www.brother.com/pub/bsc/linux/dlf/brhl2170wlpr-${pkgver//_/-}.i386.rpm"
-	"http://www.brother.com/pub/bsc/linux/dlf/cupswrapperHL2170W-${pkgver//_/-}.i386.rpm"
+	"https://download.brother.com/welcome/dlf005864/brhl2170wlpr-${pkgver//_/-}.i386.rpm"
+	"https://download.brother.com/welcome/dlf005866/cupswrapperHL2170W-${pkgver//_/-}.i386.rpm"
 	'cupswrapper-license.txt'
 	'lpr-license.txt'
 )
@@ -54,6 +54,7 @@ prepare() {
 	fi
 #  /etc/printcap is managed by cups
 	rm `find $srcdir -type f -name 'setupPrintcap*'`
+  chmod 755 $srcdir/usr/lib/cups/filter/brlpdwrapperHL2170W
 }
 package() {
 	cp -R $srcdir/usr $pkgdir
