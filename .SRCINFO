@@ -1,0 +1,14 @@
+pkgbase = pul
+	pkgdesc = C utils library for the average project
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/ICanOnlySuffer/pul
+	arch = x86_64
+	arch = armv7a
+	groups = pochita
+	license = MIT
+	makedepends = nasm
+	source = https://github.com/ICanOnlySuffer/pul/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = pul
