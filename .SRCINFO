@@ -1,8 +1,8 @@
 pkgbase = offpunk-git
 	pkgdesc = Fork of the command-line Gemini client AV-98 with added offline capabilities
-	pkgver = 1.2.r0.gc0ae6e4
+	pkgver = 1.2.r31.g9707a1f
 	pkgrel = 1
-	url = https://tildegit.org/ploum/AV-98-offline
+	url = https://tildegit.org/ploum/offpunk
 	arch = any
 	license = BSD
 	makedepends = coreutils
@@ -23,8 +23,8 @@ pkgbase = offpunk-git
 	optdepends = xsel: copies text to and from the clipboard
 	optdepends = xdg-utils: xdg-open opens a URL in the preferred application
 	conflicts = av-98-offline
-	noextract = AV-98-offline
-	source = git+https://tildegit.org/ploum/AV-98-offline/
+	noextract = offpunk
+	source = git+https://tildegit.org/ploum/offpunk.git
 	sha256sums = SKIP
 
 pkgname = offpunk-git
