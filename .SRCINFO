@@ -1,6 +1,6 @@
 pkgbase = xmonad-recompile-pacman-hook-git
 	pkgdesc = Pacman hook to recompile Xmonad config and avoid the infamous black screen
-	pkgver = r55.64d990d
+	pkgver = r79.bbea889
 	pkgrel = 1
 	url = https://github.com/desbma/pacman-hooks
 	arch = any
@@ -12,4 +12,3 @@ pkgbase = xmonad-recompile-pacman-hook-git
 	md5sums = SKIP
 
 pkgname = xmonad-recompile-pacman-hook-git
-
