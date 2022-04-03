@@ -1,14 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=youtube-music-git
-pkgver=1.14.0.r0.gf40ed04
-pkgrel=1
-_nodeversion=14
+pkgver=1.16.0.r3.g5cffb6f
+pkgrel=2
+#_nodeversion=14
 pkgdesc="YouTube Music Desktop App bundled with custom plugins (and built-in ad blocker / downloader)"
 arch=('x86_64')
 url="https://th-ch.github.io/youtube-music"
 license=('MIT')
 depends=('electron' 'libsecret')
-makedepends=('git' 'nvm' 'yarn')
+makedepends=('git' 'npm' 'yarn')
 optdepends=('libnotify: desktop notifications'
             'libappindicator-gtk3: tray icon')
 provides=("${pkgname%-git}")
@@ -25,32 +25,32 @@ pkgver() {
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-_ensure_local_nvm() {
-  # let's be sure we are starting clean
-  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
-  export NVM_DIR="$srcdir/.nvm"
+#_ensure_local_nvm() {
+#  # let's be sure we are starting clean
+#  which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+#  export NVM_DIR="$srcdir/.nvm"
 
-  # The init script returns 3 if version specified
-  # in ./.nvrc is not (yet) installed in $NVM_DIR
-  # but nvm itself still gets loaded ok
-  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
-}
+#  # The init script returns 3 if version specified
+#  # in ./.nvrc is not (yet) installed in $NVM_DIR
+#  # but nvm itself still gets loaded ok
+#  source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+#}
 
-prepare() {
-#  Use Node.js 14
-  _ensure_local_nvm
-  nvm install "$_nodeversion"
-}
+#prepare() {
+##  Use Node.js 14
+#  _ensure_local_nvm
+#  nvm install "$_nodeversion"
+#}
 
 build() {
   cd "$srcdir/${pkgname%-git}"
   electronDist=/usr/lib/electron
   electronVer=$(sed s/^v// /usr/lib/electron/version)
-  _ensure_local_nvm
+#  _ensure_local_nvm
   yarn config set cache-folder "$srcdir/yarn-cache"
   yarn install
   yarn run clean
-  npx electron-builder --linux dir \
+  ./node_modules/.bin/electron-builder --linux dir \
     $dist -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
 
