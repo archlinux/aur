@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.971
+pkgver=mainline.0.973
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
@@ -34,7 +34,6 @@ checkdepends=('catch2>=2.13.7')
 source=(
 	"git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=${pkgver//./-}"
 	'yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git'
-	'citra-soundtouch::git+https://github.com/citra-emu/ext-soundtouch.git'
 	'git+https://github.com/ReinUsesLisp/sirit.git'
 	'compatibility_list.json.xz'
 	'unbundle-cubeb.patch'
@@ -46,7 +45,6 @@ source=(
 	'unbundle-xbyak.patch'
 )
 b2sums=(
-	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -62,10 +60,9 @@ b2sums=(
 
 prepare() {
 	cd yuzu-mainline
-	git submodule init externals/{mbedtls,sirit,soundtouch}
+	git submodule init externals/{mbedtls,sirit}
 	git config submodule.mbedtls.url ../yuzu-mbedtls
 	git config submodule.sirit.url ../sirit
-	git config submodule.soundtouch.url ../citra-soundtouch
 	git submodule update
 	install -Dt ../build/dist/compatibility_list ../compatibility_list.json
 	ln -sr .git ../build
