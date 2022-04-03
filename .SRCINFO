@@ -1,0 +1,11 @@
+pkgbase = ttf-nothingyoucoulddo
+	pkgdesc = Nothing You Could Do is based on the handwriting of a photographer friend.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://fonts.google.com/specimen/Nothing+You+Could+Do#standard-styles
+	arch = any
+	license = OFL
+	source = ttf-nothingyoucoulddo.zip::https://fonts.google.com/download?family=Nothing%20You%20Could%20Do
+	sha256sums = 71b0e9610bfbabba89c192fb7aae5f72fc6fa760a3971ac016282099ea0304e2
+
+pkgname = ttf-nothingyoucoulddo
