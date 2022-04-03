@@ -1,0 +1,18 @@
+pkgbase = rcssserver-git
+	pkgdesc = Robocup 2D simulator.
+	pkgver = 17.0.1
+	pkgrel = 1
+	url = https://github.com/rcsoccersim/rcssserver
+	arch = any
+	groups = rcss
+	license = GPL
+	makedepends = git
+	depends = boost-libs>=1.44
+	depends = bison
+	depends = flex
+	provides = rcssserver-git
+	conflicts = rcssserver-git
+	source = rcssserver-git::git+https://github.com/rcsoccersim/rcssserver.git
+	md5sums = SKIP
+
+pkgname = rcssserver-git
