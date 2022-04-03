@@ -1,13 +1,14 @@
 pkgbase = rttr
 	pkgdesc = C++ Reflection Library
 	pkgver = 0.9.6
-	pkgrel = 3
-	url = https://www.rttr.org/
+	pkgrel = 4
+	url = https://github.com/rttrorg/rttr
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	depends = gcc-libs
-	source = https://www.rttr.org/releases/rttr-0.9.6-src.tar.gz
+	provides = librttr_core.so=0.9.6-64
+	source = rttr-0.9.6.tar.gz::https://www.rttr.org/releases/rttr-0.9.6-src.tar.gz
 	sha256sums = f62caee43016489320f8a69145c9208cddd72e451ea95618bc26a49a4cd6c990
 
 pkgname = rttr
