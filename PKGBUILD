@@ -15,10 +15,10 @@ source=(
 	'cupswrapper-license.txt'
 	'lpr-license.txt'
 )
-md5sums=('2d7fe5114239b48dad38e08e24c9fca0'
-         '5d2b95b7c148eabf21866604e6e5cf3a'
-         '97ad0cffd216059e9d1d3121899d8646'
-         '5e87a3dc0f3e3438c088eda0f3565f0d')
+sha256sums=('93fef4c4b316f92364367a092266cd4fe7022312e2f7c83638124212e1a21b30'
+            'd9c75a2598723bfc4e7754425f46eccef82e3f0205ef6e3cc37645470d1197f8'
+            '2c6aa6a641332e5c87e971ac2a8beae13b059747bdba331bbd515914770d72d9'
+            '9d85a8aafdaac8fac80e04234ad2acf5642bbf0b91ee582d2a89519a55f6dd67')
 if test "$CARCH" == x86_64; then
   depends+=('lib32-glibc')
 fi
