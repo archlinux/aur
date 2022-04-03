@@ -1,7 +1,7 @@
 # Maintainer: Ysblokje <ysblokje at gmail dot com>
 pkgname=('lib32-gamemode-git')
 _pkgname=('gamemode')
-pkgver=r577.fb7062b
+pkgver=r592.b8fa857
 pkgrel=2
 pkgdesc="A daemon/lib combo for Linux that allows games to request a set of optimisations be temporarily applied to the host OS."
 arch=('x86_64')
@@ -28,7 +28,7 @@ build() {
   export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
   
   meson ${_pkgname} build  --prefix /usr \
-    -Dwith-examples=false -Dwith-systemd=false -Dwith-util=false --libdir lib32 \
+    -Dwith-examples=false -Dwith-util=false --libdir lib32 \
     -Dwith-sd-bus-provider=no-daemon
   ninja -C build
 }
