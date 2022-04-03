@@ -1,0 +1,11 @@
+--- /fbkeyboard.c	2020-07-11 06:41:57.000000000 +0200
+--- /fbkeyboard.c	2022-04-03 16:56:07.240059480 +0200
+@@ -34,7 +34,7 @@
+ 
+ volatile sig_atomic_t done = 0;
+ 
+-char *font = "/usr/share/fonts/ttf-dejavu/DejaVuSans.ttf";
++char *font = "/usr/share/fonts/TTF/DejaVuSans.ttf";
+ char *device = NULL;
+ char *special[][7] = {
+ 	{ "Esc", "Tab", "F10", " / ", " - ", " . ", " \\ " },

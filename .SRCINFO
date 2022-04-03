@@ -1,11 +1,13 @@
 pkgbase = fbkeyboard
 	pkgdesc = A framebuffer softkeyboard for touchscreen devices
 	pkgver = 0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bakonyiferenc/fbkeyboard
 	arch = any
 	license = GPL3
 	source = https://github.com/bakonyiferenc/fbkeyboard/archive/refs/tags/0.4.zip
+	source = patch-archlinux-font-dir.patch
 	sha256sums = ad05e22d6fc1c74f44e7fb3a2b4578c2650d1a09a012237d444e4e7938a023b5
+	sha256sums = 37ac258adce9085de2d858e6b04b05a459edcbd086018e49a706933d9e68f4c2
 
 pkgname = fbkeyboard
