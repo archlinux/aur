@@ -1,7 +1,7 @@
 # Maintainer: Sophie Tauchert <sophie@999eagle.moe>
 
 pkgname=gwe
-pkgver=0.15.4
+pkgver=0.15.5
 pkgrel=1
 pkgdesc="A system utility for controlling NVIDIA GPUs"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('gobject-introspection' 'libdazzle' 'libappindicator-gtk3' 'python' 'py
 makedepends=('meson' 'appstream-glib')
 provides=()
 source=("https://gitlab.com/leinardi/gwe/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-sha256sums=('914d9a7098baf1c8ba382a7616bc2fdd77e25d19eb2ddfacb2fbd6bf77fa48d9')
+sha256sums=('67c30c735b6160c2f4af61ce353108dc9709b6c850ce8bc21d2d2a506dfa3b70')
 
 build() {
 	if [[ -d "$srcdir/build" ]]; then
