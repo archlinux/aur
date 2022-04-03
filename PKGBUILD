@@ -65,7 +65,7 @@ package()
             current_month="12"
         fi
 
-        ### Put a 0 at the beginning.
+        ### Put a 0 at the beginning again.
         if [[ "${#current_month}" == "2" ]]
         then
             current_month="0${current_month}"

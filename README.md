@@ -5,10 +5,9 @@
 
 ### PHP
 1. `sudo nano /etc/php/php.ini` and uncomment the following.
-MySQL support:
+gd:
 ```
-;extension=mysqli
-;extension=pdo_mysql
+;extension=gd
 ```
 
 iconv:
@@ -16,9 +15,10 @@ iconv:
 ;extension=iconv
 ```
 
-gd:
+MySQL support:
 ```
-;extension=gd
+;extension=mysqli
+;extension=pdo_mysql
 ```
 
 ## Required services
