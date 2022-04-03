@@ -2,7 +2,7 @@
 
 pkgname=jazz2-bin
 pkgver=0.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Jazz² Resurrection: An open-source reimplementation of Jazz Jackrabbit 2"
 arch=('x86_64')
 url="http://deat.tk/jazz2/"

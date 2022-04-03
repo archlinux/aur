@@ -1,7 +1,7 @@
 pkgbase = jazz2-bin
 	pkgdesc = Jazz² Resurrection: An open-source reimplementation of Jazz Jackrabbit 2
 	pkgver = 0.7.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://deat.tk/jazz2/
 	install = jazz2-bin.install
 	arch = x86_64

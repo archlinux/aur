@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 pushd /opt/jazz2-bin/
 	mono Jazz2.exe
 popd
