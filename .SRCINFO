@@ -1,0 +1,16 @@
+pkgbase = fbreader-bin
+	pkgdesc = An e-book reader for Linux
+	pkgver = 2.0beta10
+	pkgrel = 1
+	url = http://www.fbreader.org/
+	arch = x86_64
+	license = unknown
+	makedepends = squashfs-tools
+	depends = qt6-5compat
+	depends = hicolor-icon-theme
+	provides = fbreader
+	conflicts = fbreader
+	source = fbreader-2.0beta10.snap::https://api.snapcraft.io/api/v1/snaps/download/ePTZ3tz7FWi8tBNQ2Ii0dHw8U5Vmv8Ib_16.snap
+	sha256sums = fc85625150065c6c242589c8776bbc872a117295db14e08cc8c96ae273517ec0
+
+pkgname = fbreader-bin
