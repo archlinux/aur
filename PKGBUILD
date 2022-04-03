@@ -3,7 +3,7 @@
 pkgname=nancy-bin
 _pkgname="${pkgname%-bin}"
 pkgver=1.0.33
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool to check for vulnerabilities in your Golang dependencies'
 arch=(x86_64 i686)
 url="https://github.com/sonatype-nexus-community/${_pkgname}"
@@ -16,12 +16,7 @@ sha256sums_x86_64=('f58ef5dfad19e50f74635d1dab8e44ae74ff7d572ff18a5b71e27037bf9d
 sha256sums_i686=('6766933eda8b44faf64a244912dbcde754f9f1c4a5069749525d70466f95b047')
 
 package() {
-	local x86_64=amd64 i686=386
-
-	# Bin
 	rm -f "${pkgdir}/usr/bin/${_pkgname}"
-	install -Dm755 "${srcdir}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-
-	# License
-	install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	install -Dm755 "$_pkgname" "${pkgdir}/usr/bin/${_pkgname}"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
