@@ -1,34 +1,36 @@
 # Maintainer: purpleleaf  <max@ganoia.eu>
-_pkgname=jgmenu
-pkgname=$_pkgname-git
-pkgver=v4.4.0
-pkgrel=4
+
+pkgname=jgmenu-git
+pkgver=4.4.0.r1.gc258a6c
+pkgrel=1
 pkgdesc="Simple, independent, contemporary-looking X11 menu, designed for scripting, ricing and tweaking. Compiled with gtktheme, lx and pmenu support"
 arch=('x86_64')
-url="https://github.com/johanmalm/$_pkgname"
+url="https://jgmenu.github.io/"
 license=('GPL2')
 depends=('libx11' 'cairo' 'pango' 'libxrandr' 'librsvg' 'libxml2' 'glib2' 'menu-cache' 'python')
-provides=($_pkgname)
-conflicts=($_pkgname)
-source=("${_pkgname}::git+${url}.git")
+makedepends=(git)
+provides=(jgmenu)
+conflicts=(jgmenu)
+source=("git+https://github.com/johanmalm/jgmenu.git")
 sha256sums=("SKIP")
 
 pkgver() {
-  cd "${srcdir}/${_pkgname}"
-
-  # Get the version number.
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "${srcdir}/${pkgname%-git}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-
 build() {
-  cd "${srcdir}/${_pkgname}"
-	./configure --with-gtktheme --with-lx --with-pmenu --prefix=/usr
-	make
+  cd "${srcdir}/${pkgname%-git}"
+  ./configure \
+    --with-gtktheme \
+    --with-lx \
+    --with-pmenu \
+    --prefix=/usr
+
+  make
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}"
-	make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/${pkgname%-git}"
+  make DESTDIR="$pkgdir/" install
 }
-
