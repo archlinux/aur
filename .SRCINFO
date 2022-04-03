@@ -2,7 +2,6 @@ pkgbase = ttf-tannenberg
 	pkgdesc = Old WW2 era font used for creating historical documents and artwork
 	pkgver = 1.0.0
 	pkgrel = 1
-	url = http://www.dafont.com/tannenberg-fett.font
 	install = ttf-tannenberg.install
 	arch = any
 	license = SIL Open Font License v1.1
@@ -18,4 +17,3 @@ pkgbase = ttf-tannenberg
 	sha256sums = ace761c42abe229bf8e0f8234cf17bedbe6f317ec499bcdfd9fd217e0bf78227
 
 pkgname = ttf-tannenberg
-
