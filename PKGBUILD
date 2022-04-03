@@ -3,8 +3,8 @@
 
 pkgname='simplex-chat-bin'
 _pkgname="${pkgname%%-bin}"
-pkgver=1.4.1
-pkgrel=4
+pkgver=1.5.0
+pkgrel=1
 pkgdesc='A 100% private-by-design chat platform (pre-compiled)'
 arch=('x86_64')
 _platform='ubuntu-20_04-x86-64'
@@ -18,18 +18,6 @@ source=(
 license=('AGPL3')
 provides=('simplex-chat')
 conflicts=('simplex-chat')
-sha256sums=(
-  '7c8edd51821ad48d51f13d7852f0bb66e7070af88048405bf1a2244c084bb7f3'
-  'SKIP' 'SKIP'
-)
-sha512sums=(
-  'f69e94c46e89f3813103392e62da4d2732388b1b236d39d4eb5f1b53e11ba70414e298d070a12d29c11a33c8804c932e01d315e19be8b216b5443b583657b051'
-  'SKIP' 'SKIP'
-)
-b2sums=(
-  'a74802c500a4af697f3d8250b40c6a8245a88ac00c854d8a10a833a87b0ce630c982d3751216df4d86a316d933556266f338cea44f238833a68589600c086659'
-  'SKIP' 'SKIP'
-)
 
 package() {
   cd "$srcdir" || exit 1
@@ -40,5 +28,18 @@ package() {
     install -Dm0644 "$doc" "$pkgdir/usr/share/doc/$_pkgname/$doc"
   done
 }
+
+sha256sums=(
+  'e8192da7daa0c6fe192903c5bd7d6a4a3ba2a106d5dc3ed26befa51e7ed9af2a'
+  'SKIP' 'SKIP'
+)
+sha512sums=(
+  'bf9cdc3214b100ad2614d6ef7f858422889f367dd360e7e63629148f5206ab9e0ee1b5063f95107d97f45d853724704761b64ea637e3b346ee5c8b09b486b715'
+  'SKIP' 'SKIP'
+)
+b2sums=(
+  'fb515c3ba77903e01cc971220df9fc15a3ff41608f20dc7a4c48590ecd3a5ad51df3ebd26b48b4bc27b91f6455714ec5aae8bbb3d9459a145816e4f9a123732c'
+  'SKIP' 'SKIP'
+)
 
 # eof
