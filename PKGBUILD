@@ -1,6 +1,6 @@
 pkgname=python-freqtrade
 _pkgname=${pkgname:7}
-pkgver=2022.2.2
+pkgver=2022.3
 pkgrel=1
 pkgdesc="Free, open source crypto trading bot"
 url="https://github.com/freqtrade/freqtrade"
@@ -52,7 +52,7 @@ optdepends=(
   'python-plotly: plot' 
 )
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('11ae401e0601a884b4c1def659f83865f4e25002a4b49db4983ecb1fd0a67e5c')
+sha256sums=('97a7660b25bba1fe2c4ae18f5d1cac7c23b63bfb9e51a5f078f208256614b9fb')
 
 build() {
   cd ${srcdir}/${_pkgname}-${pkgver}
