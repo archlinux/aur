@@ -2,7 +2,7 @@
 # Maintainer: Alexander Epaneshnikov <alex19ep@archlinux.org>
 
 pkgname=('espeak-ng-git')
-pkgver=1.50.r695.g473cd995
+pkgver=1.51.r6.g473cd995
 pkgrel=1
 pkgdesc="Multi-lingual software speech synthesizer (development version)"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')
@@ -19,7 +19,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
