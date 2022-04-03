@@ -12,7 +12,7 @@ url="https://${pkgname}.org"
 license=(GPL2)
 depends=('libpng' 'libgl' 'freetype2' 'openssl' 'gpsd'
   'qt5-serialport' 'qt5-multimedia' 'qt5-location' 'qt5-charts' 'qt5-script')
-makedepends=('cmake' 'mesa' 'qt5-tools' 'qt5-webengine' 'pod2man')
+makedepends=('cmake' 'mesa' 'qt5-tools' 'qt5-webengine')
 source=(https://github.com/Stellarium/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz{,.asc})
 validpgpkeys=('79151C2E6351E7278DA1A730BF38D4D02A328DFF') # Alexander Wolf <alex.v.wolf@gmail.com>
 sha1sums=('c4a00fd756c66fb7df633f496dd3be4300bf1d2b' 'SKIP')
@@ -20,6 +20,7 @@ sha256sums=('0b4dc23cf9054b5e76cd9bc5ad68e172eb221999e90af37e93667d04fe78c885'
   'SKIP')
 
 build() {
+  PATH="/usr/bin/core_perl/:$PATH"
   cmake \
     -S ${pkgname}-${pkgver} \
     -B build \

@@ -9,7 +9,6 @@ pkgbase = stellarium
 	makedepends = mesa
 	makedepends = qt5-tools
 	makedepends = qt5-webengine
-	makedepends = pod2man
 	depends = libpng
 	depends = libgl
 	depends = freetype2
