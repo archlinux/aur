@@ -4,7 +4,7 @@
 pkgname='offpunk-git'
 _pkgname='offpunk'
 pkgver=1.2.r31.g9707a1f
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities'
 arch=('any')
 url='https://tildegit.org/ploum/offpunk'
@@ -15,6 +15,7 @@ depends=(
 )
 makedepends=(
   'coreutils'
+  'file'
   'git'
   'python-setuptools'
 )
@@ -22,9 +23,7 @@ optdepends=(
   'chafa: chafa and ansiwrap are required to render images in terminal'
   'python-beautifulsoup4: conversion of HTML'
   'python-cryptography: better support of TOFU client certificates'
-  'python-editor: create lists using your editor of choice'
   'python-feedparser: required to parse RSS and Atom feeds'
-  'python-magic: useful to determine the MIME type of cached objects'
   'python-readability-lxml: conversion of HTML'
   'python-requests: for HTTP support'
   'python-setproctitle: allows offpunk to change its process title'
