@@ -1,0 +1,14 @@
+pkgbase = ikatago-client
+	pkgdesc = A tool for connect remote katago to local GUI
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/kinfkong/ikatago-client
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	depends = bash
+	depends = unzip
+	source = https://github.com/kinfkong/ikatago-client/releases/download/v1.5.0/ikatago-1.5.0-linux.zip
+	sha256sums = SKIP
+
+pkgname = ikatago-client
