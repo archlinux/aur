@@ -17,7 +17,7 @@ sha512sums=('58d1f22921c736fe1d45c8a1c8d01f16445287fb263edd35af82c3683329df72fe5
 package() {
     tar xpf data.tar.xz -C ${pkgdir}
     cd ${pkgdir}/usr/share/applications
-    sed -i '4c Exec=wedoc %u ' tdappdesktop.desktop 
+    sed -i '3c Exec=wedoc %u ' tdappdesktop.desktop 
 
     cd ${pkgdir}/opt
     mv 腾讯文档 ${_pkgname}
