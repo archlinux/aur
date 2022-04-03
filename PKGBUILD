@@ -4,7 +4,7 @@
 # https://lists.gnu.org/archive/html/emacs-devel/2021-09/msg02290.html
 
 pkgname=emacs28-git
-pkgver=28.0.92.151251
+pkgver=28.1.50.151262
 pkgrel=1
 pkgdesc='The extensible, customizable, self-documenting real-time display editor, emacs-28 release branch'
 arch=(x86_64)

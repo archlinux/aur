@@ -1,6 +1,6 @@
 pkgbase = emacs28-git
 	pkgdesc = The extensible, customizable, self-documenting real-time display editor, emacs-28 release branch
-	pkgver = 28.0.92.151251
+	pkgver = 28.1.50.151262
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	arch = x86_64
