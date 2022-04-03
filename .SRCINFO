@@ -1,16 +1,19 @@
 pkgbase = python-nfcpy
 	pkgdesc = Module to read/write NFC tags or communicate with another NFC device
-	pkgver = 1.0.3
-	pkgrel = 5
+	pkgver = 1.0.4
+	pkgrel = 1
 	url = https://github.com/nfcpy/nfcpy
 	arch = x86_64
 	license = custom:EUPL
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-libusb1
-	depends = python-pyserial
 	depends = python-ndeflib
 	depends = python-pydes
-	source = nfcpy-1.0.3.tar.gz::https://github.com/nfcpy/nfcpy/archive/v1.0.3.tar.gz
-	sha256sums = 03ea8a47d2dfe92bdc41d0751fba2b124793936f1fe7d5096dbb0fdfad5e635a
+	depends = python-pyserial
+	source = nfcpy-1.0.4.tar.gz::https://github.com/nfcpy/nfcpy/archive/v1.0.4.tar.gz
+	sha256sums = b72c67f94b4662d615d7be7b34dd39236b572f878e25fb83dd999f57979eba1f
 
 pkgname = python-nfcpy
