@@ -1,8 +1,8 @@
 pkgbase = i3-gaps-kde-git
 	pkgdesc = A fork of i3wm tiling window manager with more features, including gaps (with KDE patches)
-	pkgver = 4.18.2.r10.g07d82753
+	pkgver = 4.20.1
 	pkgrel = 1
-	url = https://github.com/h0cheung/i3-gaps-kde
+	url = https://github.com/exzombie/i3-gaps-kde
 	arch = i686
 	arch = x86_64
 	groups = i3
@@ -11,6 +11,7 @@ pkgbase = i3-gaps-kde-git
 	makedepends = flex
 	makedepends = asciidoc
 	makedepends = xmlto
+	makedepends = meson
 	depends = xcb-util-keysyms
 	depends = xcb-util-wm
 	depends = libev
@@ -30,9 +31,9 @@ pkgbase = i3-gaps-kde-git
 	provides = i3-wm
 	conflicts = i3-wm
 	options = docs
+	options = debug
 	backup = etc/i3/config
-	source = git+https://github.com/h0cheung/i3-gaps-kde.git#branch=gaps-kde
+	source = git+https://github.com/exzombie/i3-gaps-kde.git#branch=release-4.20.1-kde
 	sha256sums = SKIP
 
 pkgname = i3-gaps-kde-git
-
