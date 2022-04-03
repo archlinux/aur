@@ -1,15 +1,14 @@
 pkgbase = mbpoll-git
 	pkgdesc = CLI for talking to Modbus devices, similar to modpoll
 	pkgver = v1.4.11.r14.g1968de6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/epsilonrt/mbpoll
 	arch = i686
 	arch = x86_64
 	license = GPL-3.0
 	makedepends = cmake
 	depends = libmodbus
-	source = git://github.com/epsilonrt/mbpoll
+	source = git+https://github.com/epsilonrt/mbpoll
 	md5sums = SKIP
 
 pkgname = mbpoll-git
-
