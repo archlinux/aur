@@ -1,11 +1,11 @@
 pkgbase = pacmanfile
 	pkgdesc = Manage your pacman packages declaratively
 	pkgver = 0.0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/cloudlena/pacmanfile
-	arch = x86_64
-	arch = i686
+	arch = any
 	license = Apache
+	depends = bash
 	depends = grep
 	provides = pacmanfile
 	source = https://github.com/cloudlena/pacmanfile/archive/refs/tags/v0.0.8.tar.gz
