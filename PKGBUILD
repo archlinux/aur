@@ -2,7 +2,7 @@
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='stagit-gopher'
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 pkgdesc='Static gopher site generator for git version control'
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=(
   'git: scripting functionality'
 )
 source=("${_url_source}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('25262a61f8b7638c31930649d95f24bf9fed72d513541436885eb0b08f096e9cd1814c85934bd163b164a2902d7afe828169cf51fb2b999ee253acf56c7cbe23')
+sha512sums=('37703a22e07bbda33a7d8684f08200cb8f69609d38966f5983d30564a0bd2478d441eb8398a1c8568cc823f1e15067624094c88ecc5271cbe51fe2e67293c224')
 
 build() {
   make -C "${pkgname}-${pkgver}"
