@@ -1,7 +1,7 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: Markus Näther <naetherm@informatik.uni-freiburg.de>
 pkgname=hipcub
-pkgver=5.0.2
+pkgver=5.1.0
 pkgrel=1
 pkgdesc='Header-only library on top of rocPRIM or CUB'
 arch=('x86_64')
@@ -11,12 +11,12 @@ depends=('rocprim')
 makedepends=('cmake' 'rocm-cmake' 'git' 'hip')
 _git='https://github.com/ROCmSoftwarePlatform/hipCUB'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
-sha256sums=('22effb18f2c38d76fa379f14c9f9ee7a11987a5d1ae4a7e837af87232c8c9183')
+sha256sums=('b30d51fc5fca2584f0c9a6fa8dafc9fbdda96a3acff30288e49b397f8842f705')
 _dirname="$(basename $_git)-$(basename "${source[0]}" ".tar.gz")"
 
 build() {
   # -fcf-protection is not supported by HIP, see
-  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-5.0.x/docs/markdown/clang_options.md
+  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-5.1.x/docs/markdown/clang_options.md
 
   CXX=/opt/rocm/bin/hipcc \
   CXXFLAGS="${CXXFLAGS} -fcf-protection=none" \
