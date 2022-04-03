@@ -2,7 +2,7 @@
 
 pkgname=sway-borders-git
 _pkgname=sway-borders
-pkgver=r6682.7f4a3e0e
+pkgver=r6976.8fba9c04
 pkgrel=1
 license=("MIT")
 pkgdesc="Fork of Sway with some additional (mostly graphical) features"
@@ -39,7 +39,7 @@ optdepends=(
 backup=(etc/sway/config)
 arch=("i686" "x86_64")
 url="https://github.com/fluix-dev/sway-borders"
-source=("${pkgname%-*}::git+https://github.com/fluix-dev/sway-borders.git"
+source=("git+$url.git"
         "50-systemd-user.conf")
 sha512sums=('SKIP'
             'c2b7d808f4231f318e03789015624fd4cf32b81434b15406570b4e144c0defc54e216d881447e6fd9fc18d7da608cccb61c32e0e1fab2f1fe2750acf812d3137')
