@@ -1,27 +1,33 @@
-# Maintainer: Jingbei Li <i@jingbei.li>
-pkgname=python-mkl-random
-_pkgname=mkl_random
-pkgver=1.1.1
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Jingbei Li <i@jingbei.li>
+_base=mkl_random
+pkgname=python-${_base/_/-}
+pkgver=1.2.2.post2
 pkgrel=1
 pkgdesc="NumPy-based Python interface to Intel (R) MKL Random Number Generation functionality"
 arch=('x86_64')
-url="https://github.com/IntelPython/mkl_random"
-license=('custom')
-depends=('intel-mkl' 'python-numpy')
-makedepends=('cython' 'git' 'python-numpy' 'python-setuptools')
-source=("git+$url#tag=v${pkgver}")
-md5sums=('SKIP')
+url="https://github.com/IntelPython/${_base}"
+license=('custom:BSD-3-clause')
+depends=(intel-mkl python-numpy)
+makedepends=(python-setuptools cython)
+source=(${url}/archive/v${pkgver}.tar.gz)
+sha512sums=('SKIP')
 
 build() {
-  cd "$srcdir/${_pkgname}"
+  cd ${_base}-${pkgver}
+  export PYTHONHASHSEED=0
   CFLAGS='-I /opt/intel/mkl/include -L/opt/intel/mkl/lib/intel64' \
     python setup.py build
 }
 
-package() {
-  cd "$srcdir/${_pkgname}"
-  python setup.py install --root="$pkgdir"/ --optimize=1
-  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+check() {
+  cd ${_base}-${pkgver}
+  local _pyversion=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
+  PYTHONPATH="${PWD}/build/lib.linux-${CARCH}-${_pyversion}/${_base}:${PYTHONPATH}" python examples/*.py
 }
 
-# vim:set ts=2 sw=2 et:
+package() {
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+}
