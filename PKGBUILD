@@ -1,52 +1,31 @@
-# Maintainer: Jerry Lin <jerry73204 at gmail dot com>
-pkgname=('python-av-git' 'python2-av-git')
-pkgver=r1052.81b0037
-pkgrel=2
-pkgdesc='Pythonic bindings for FFmpeg.'
-arch=('i686' 'x86_64')
-url="https://github.com/mikeboers/PyAV/tree/master"
-license=('BSD 3-Clause')
-makedepends=('git' 'python-setuptools' 'python2-setuptools' 'cython')
-source=('python-av::git+https://github.com/mikeboers/PyAV.git#branch=master')
-sha256sums=('SKIP')
+# Contributor: Jerry Lin <jerry73204 at gmail dot com>
+pkgname=python-av-git
+pkgver=r1324.15be68f
+pkgrel=1
+pkgdesc='Pythonic bindings for FFmpeg'
+arch=(any)
+url="https://github.com/mikeboers/PyAV"
+license=('custom:BSD-3-clause')
+provides=(python-av)
+conflicts=(python-av)
+depends=(ffmpeg python)
+makedepends=(git python-setuptools cython)
+source=("python-av::git+${url}.git#branch=main")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/python-av"
+  cd python-av
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd "$srcdir"
-  cp -a python-av{,-py2}
-}
-
-build_python-av-git() {
-  cd "$srcdir/python-av"
+build() {
+  cd python-av
+  export PYTHONHASHSEED=0
   python setup.py build
 }
 
-build_python2-av-git() {
-  cd "$srcdir/python-av-py2"
-  python2 setup.py build
-}
-
-package_python-av-git() {
-  depends=('ffmpeg' 'python')
-  provides=('python-av')
-  conflicts=('python-av')
-
-  cd "$srcdir/python-av"
-  python setup.py install --root="$pkgdir" --optimize=1
-}
-
-package_python2-av-git() {
-  depends=('ffmpeg' 'python2')
-  provides=('python2-av')
-  conflicts=('python2-av')
-
-  cd "$srcdir/python-av-py2"
-  python2 setup.py install --root="$pkgdir" --optimize=1
-
-  # rename /usr/bin/pyav to avoid filename conflict
-  mv "$pkgdir/usr/bin/pyav"{,2}
+package() {
+  cd python-av
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

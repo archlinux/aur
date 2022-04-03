@@ -1,27 +1,18 @@
 pkgbase = python-av-git
-	pkgdesc = Pythonic bindings for FFmpeg.
-	pkgver = r1052.81b0037
-	pkgrel = 2
-	url = https://github.com/mikeboers/PyAV/tree/master
-	arch = i686
-	arch = x86_64
-	license = BSD 3-Clause
+	pkgdesc = Pythonic bindings for FFmpeg
+	pkgver = r1324.15be68f
+	pkgrel = 1
+	url = https://github.com/mikeboers/PyAV
+	arch = any
+	license = custom:BSD-3-clause
 	makedepends = git
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	makedepends = cython
-	source = python-av::git+https://github.com/mikeboers/PyAV.git#branch=master
-	sha256sums = SKIP
-
-pkgname = python-av-git
 	depends = ffmpeg
 	depends = python
 	provides = python-av
 	conflicts = python-av
+	source = python-av::git+https://github.com/mikeboers/PyAV.git#branch=main
+	sha512sums = SKIP
 
-pkgname = python2-av-git
-	depends = ffmpeg
-	depends = python2
-	provides = python2-av
-	conflicts = python2-av
-
+pkgname = python-av-git
