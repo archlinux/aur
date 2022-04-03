@@ -4,18 +4,18 @@
 pkgname='offpunk-git'
 _pkgname='offpunk'
 pkgver=1.2.r31.g9707a1f
-pkgrel=2
+pkgrel=3
 pkgdesc='Fork of the command-line Gemini client AV-98 with added offline capabilities'
 arch=('any')
 url='https://tildegit.org/ploum/offpunk'
 license=('BSD')
 depends=(
   'python'
+  'file'
   'less'
 )
 makedepends=(
   'coreutils'
-  'file'
   'git'
   'python-setuptools'
 )
