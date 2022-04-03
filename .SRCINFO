@@ -1,6 +1,6 @@
 pkgbase = btrfs-assistant
 	pkgdesc = An application for managing BTRFS subvolumes and Snapper snapshots
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://gitlab.com/btrfs-assistant/btrfs-assistant
 	arch = x86_64
@@ -12,10 +12,13 @@ pkgbase = btrfs-assistant
 	depends = qt5-svg
 	depends = noto-fonts
 	depends = polkit
+	depends = util-linux
+	depends = btrfs-progs
+	depends = diffutils
 	optdepends = snapper
 	optdepends = btrfsmaintenance
 	backup = etc/btrfs-assistant.conf
-	source = btrfs-assistant-1.1.tar.gz::https://gitlab.com/btrfs-assistant/btrfs-assistant/-/archive/1.1/btrfs-assistant-1.1.tar.gz
-	sha256sums = 241847b2dafff219c1abb70cc0a32d6645b355d6b95d85e1b243ec8001f4a406
+	source = btrfs-assistant-1.2.tar.gz::https://gitlab.com/btrfs-assistant/btrfs-assistant/-/archive/1.2/btrfs-assistant-1.2.tar.gz
+	sha256sums = b123a82f674b721f042f7eef75e0f4374454c426776fbf45855147d4e54a3b9c
 
 pkgname = btrfs-assistant
