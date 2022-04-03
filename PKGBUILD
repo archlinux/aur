@@ -1,10 +1,10 @@
 # Maintainer: Yauhen Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
-# Contributor: Padraic Fanning <fanninpm AT miamioh DOT edu>
+# Maintainer: Padraic Fanning <fanninpm AT miamioh DOT edu>
 
 _name=gaphas
 pkgname=python-${_name}
 pkgver=3.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Diagramming widget library for Python"
 arch=('any')
 url="https://github.com/gaphor/${_name}"
@@ -14,8 +14,15 @@ depends=(
 	'python-cairo'
 	'python-importlib-metadata'
 )
-makedepends=(python-build python-installer python-poetry-core)
-checkdepends=(python-pytest)
+makedepends=(
+	'python-build'
+	'python-installer'
+	'python-poetry-core'
+)
+checkdepends=(
+	'python-pytest'
+	'xorg-server-xvfb'
+)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('96f1be036cf5155dc15508257acf3663cd3ec12154f6ce5011aead10e80c40d1')
 
@@ -29,7 +36,7 @@ build() {
 
 check() {
 	cd "${srcdir}/${_name}-${pkgver}"
-	pytest
+	xvfb-run --auto-servernum pytest
 }
 
 package() {
