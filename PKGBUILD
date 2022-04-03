@@ -20,15 +20,15 @@ depends=('lua'
          'lua-filesystem'
          'libidn')
 makedepends=('mercurial')
-conflicts=('prosody')
+conflicts=('prosody' 'prosody-hg')
 provides=('prosody=0.12')
 optdepends=(
-#           'lua-event: libevent support'
+            'lua-event: libevent support'
             'lua-dbi: SQL storage support'
             'luarocks: plugin manager')
 install=prosody.install
 backup=('etc/prosody/prosody.cfg.lua')
-source=("prosody-stable::hg+https://hg.prosody.im/trunk/#branch=0.12"
+source=("prosody-hg::hg+https://hg.prosody.im/trunk/#branch=0.12"
         'prosody.tmpfile.d'
         'prosody.logrotated'
         'sysuser.conf'
@@ -41,12 +41,12 @@ sha256sums=('SKIP'
 
 
 pkgver() {
-  cd prosody-stable
+  cd prosody-hg
   printf "0.12.r%s.%s" "$(hg identify -n)" "$(hg identify -i)"
 }
 
 prepare() {
-  cd prosody-stable
+  cd prosody-hg
 
   # disable logging to output and activate syslog
   sed -i s/"info = "/"-- info = "/g prosody.cfg.lua.dist
@@ -69,7 +69,7 @@ prepare() {
 }
 
 build() {
-  cd prosody-stable
+  cd prosody-hg
   ./configure \
     --ostype=linux \
     --prefix=/usr \
@@ -80,12 +80,13 @@ build() {
     --cflags="${CPPFLAGS} ${CFLAGS} -fPIC -D_GNU_SOURCE" \
     --ldflags="${LDFLAGS} -shared" \
     --no-example-certs \
-    --runwith=lua
+    --runwith=lua \
+    --lua-version=5.4
   make
 }
 
 package() {
-  cd prosody-stable
+  cd prosody-hg
   make DESTDIR="${pkgdir}" install
   make DESTDIR="${pkgdir}" install -C tools/migration
 
