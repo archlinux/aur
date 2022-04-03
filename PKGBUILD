@@ -2,7 +2,7 @@
 
 pkgname=unvanquished-data
 pkgver=0.52.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Game assets for Unvanquished.'
 arch=('any')
 url='https://www.unvanquished.net'
@@ -18,7 +18,7 @@ prepare() {
 	cd "${srcdir}"
 
 	# Download the assets via torrent.
-	aria2c -V --seed-time=0 "unvanquished_${pkgver}.torrent"
+	aria2c -V --async-dns=false --seed-time=0 "unvanquished_${pkgver}.torrent"
 }
 
 check() {

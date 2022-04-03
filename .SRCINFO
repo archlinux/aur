@@ -1,7 +1,7 @@
 pkgbase = unvanquished-data
 	pkgdesc = Game assets for Unvanquished.
 	pkgver = 0.52.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.unvanquished.net
 	arch = any
 	license = GPL3
