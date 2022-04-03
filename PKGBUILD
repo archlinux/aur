@@ -11,7 +11,7 @@ pkgname=(buildbot buildbot-worker buildbot-docs buildbot-common
 # https://github.com/buildbot/buildbot/releases
 pkgver=3.5.0
 _bb_contrib_commit=4c8615db51253f0be4bfd08210a3aaf903a74b4f
-pkgrel=1
+pkgrel=2
 arch=(any)
 url='https://buildbot.net'
 license=(GPL2)
@@ -183,7 +183,7 @@ package_buildbot() {
 
 package_buildbot-worker() {
   pkgdesc='Buildbot worker daemon'
-  depends=(buildbot-common python-twisted python-future)
+  depends=(buildbot-common python-twisted python-future python-autobahn python-msgpack)
 
   cd buildbot-$pkgver/worker
   python setup.py install --root="$pkgdir" --optimize=1 --skip-build
