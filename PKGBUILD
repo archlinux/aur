@@ -1,4 +1,4 @@
-# Maintainer: Nicolas Granger <nicolas.granger@gmail.com>
+# Maintainer: Nicolas Granger <nicolas.granger.m@gmail.com>
 
 pkgname=pyghmi
 pkgver=1.5.36
