@@ -1,0 +1,19 @@
+pkgbase = virtualbmc
+	pkgdesc = A virtual BMC for controlling virtual machines using IPMI commands
+	pkgver = 2.2.1
+	pkgrel = 1
+	url = https://opendev.org/openstack/virtualbmc
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	makedepends = python-pip
+	makedepends = python-pbr
+	depends = libvirt-python
+	depends = pyghmi
+	depends = python-cliff
+	depends = python-pyzmq
+	source = git+https://opendev.org/openstack/virtualbmc.git#tag=2.2.1
+	sha256sums = SKIP
+
+pkgname = virtualbmc
