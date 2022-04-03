@@ -2,12 +2,12 @@
 
 pkgname=stretchly
 pkgver=1.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The break time reminder app"
 arch=('i686' 'x86_64')
 url="https://github.com/hovancik/stretchly/"
 license=('BSD')
-depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-atk' 'util-linux-libs' 'libsecret' 'libappindicator-gtk3' 'libxcrypt-compat' 'electron>=17' 'electron<18')
+depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-atk' 'util-linux-libs' 'libsecret' 'libappindicator-gtk3' 'libxcrypt-compat' 'electron17')
 makedepends=('git' 'nvm' 'jq' 'python')
 conflicts=("${pkgname}-bin" "${pkgname}-git")
 source=("https://github.com/hovancik/stretchly/archive/v${pkgver}.tar.gz")
@@ -59,8 +59,8 @@ build() {
     ./node_modules/.bin/electron-builder build \
         --linux pacman \
         --"${!CARCH}" \
-        -c.electronDist=/usr/lib/electron \
-        -c.electronVersion="$(</usr/lib/electron/version)"
+        -c.electronDist=/usr/lib/electron17 \
+        -c.electronVersion="$(</usr/lib/electron17/version)"
     tar -C "${_unpackdir}" -Jxf "${_outfile}"
 
     echo "Deleting Electron ($(du -h "$_electron" | awk '{print $1}'))..." >&2
@@ -74,7 +74,7 @@ build() {
     install -D -m 0755 /dev/null "${_unpackdir}/usr/bin/stretchly"
     cat >"${_unpackdir}/usr/bin/stretchly" <<EOF
 #!/bin/sh
-exec electron '/usr/lib/$(sed -E "s/'/'\\\\''/g" <<<"${_appname}")/' "\$@"
+exec electron17 '/usr/lib/$(sed -E "s/'/'\\\\''/g" <<<"${_appname}")/' "\$@"
 EOF
 }
 
