@@ -1,24 +1,23 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=ytmdesktop
-pkgver=1.13.0
-pkgrel=13
-#_electronversion=10
+pkgver=1.14.1
+pkgrel=1
+_electronversion=17
 _nodeversion=12
 pkgdesc="A desktop app for YouTube Music"
 arch=('x86_64')
 url="https://ytmdesktop.app"
 license=('CC0-1.0')
-#depends=("electron${_electronversion}")
-depends=('electron')
-makedepends=('git' 'nvm' 'python')
+depends=("electron${_electronversion}")
+makedepends=('git' 'nvm' 'yarn')
 optdepends=('libnotify: for desktop notifications'
             'libappindicator-gtk3: for tray icon'
             'nss-mdns: for companion server')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/ytmdesktop/ytmdesktop/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/ytmdesktop/ytmdesktop/archive/$pkgver.tar.gz"
         "$pkgname.sh"
         "$pkgname.desktop")
-sha256sums=('c50172d473c43eafebd366587c690eec88961f2092d2c7b4dd2904df945ade46'
-            '4cbf5c9c7a2b24feb0fd623bf267cf8da1a9948431affba9b3927d5df84a269a'
+sha256sums=('9c9fdc1391e9f35c6effc802814d90508f3ae8d57686035eff7057bfb103d42a'
+            'eedee6478d28d182aff196a66a4a8d4a771f576f924a9a7b0dd836f62e079453'
             '3ed0c519e62483bb411e258df6d100463b8a417930ea67b34844bde8464e143d')
 
 _ensure_local_nvm() {
@@ -40,14 +39,12 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-#  electronDist="/usr/lib/electron${_electronversion}"
-#  electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
-  electronDist="/usr/lib/electron"
-  electronVer="$(sed s/^v// /usr/lib/electron/version)"
+  electronDist="/usr/lib/electron${_electronversion}"
+  electronVer="$(sed s/^v// /usr/lib/electron${_electronversion}/version)"
   _ensure_local_nvm
-  npm config set cache "$srcdir/npm-cache"
-  npm install
-  npx electron-builder --linux --dir -p always --config electron-builder64.yml \
+  yarn config set cache-folder "$srcdir/yarn-cache"
+  yarn install
+  ./node_modules/.bin/electron-builder --linux --dir -p always --config electron-builder64.yml \
     $dist -c.electronDist=$electronDist -c.electronVersion=$electronVer
 }
 
