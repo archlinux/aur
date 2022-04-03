@@ -3,7 +3,7 @@
 
 _appname=app-outlet
 pkgname=app-outlet-bin
-pkgver=2.0.3
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="A Universal linux app store"
 arch=("x86_64")
@@ -15,7 +15,7 @@ source=(
   "LICENSE"
   "icon.png"
 )
-sha256sums=('0e9a45a587318eac3716a29dd24d746a8bca6938f84311c6fb5248cb0ccdb01c'
+sha256sums=('42c576adda4df43130887fdc6f0a3d0b1579bf56e743be2a27a6816c785415e9'
             '85f9535c10eb692f0edf9742ac06c1aa03b2c3afc61fcc9019a45b211a45ff83'
             'c24c91646674659de06c8dad229b589608a69be9403433b4b5efe856db4cecb8'
             'eed1d87a3f89afbd73898d331bcb484afc3862a0b67bc8b47d5c29aa97c55e5c')
