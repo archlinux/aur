@@ -1,7 +1,7 @@
 pkgbase = vazirmatn-fonts
 	pkgdesc = A beautiful Persian font based on DejaVu font.
-	pkgver = 32.101
-	pkgrel = 2
+	pkgver = 32.102
+	pkgrel = 1
 	url = https://github.com/rastikerdar/vazirmatn
 	arch = any
 	license = OFL
@@ -10,9 +10,9 @@ pkgbase = vazirmatn-fonts
 	provides = vazirmatn-fonts
 	conflicts = vazirmatn
 	replaces = vazir-fonts
-	source = vazirmatn-fonts-32.101.zip::https://github.com/rastikerdar/vazirmatn/releases/download/v32.101/vazirmatn-v32.101.zip
+	source = vazirmatn-fonts-32.102.zip::https://github.com/rastikerdar/vazirmatn/releases/download/v32.102/vazirmatn-v32.102.zip
 	source = LICENSE::https://raw.githubusercontent.com/rastikerdar/vazirmatn/master/OFL.txt
-	sha256sums = a13974e0a8a7df50cc8f3e0404e43e5d2ab155732c69db2edcfdd4af883091e1
+	sha256sums = ee66a076feaa38265b59edfc264f4b6f59ed6cf554236f8c086819a3baef8d7e
 	sha256sums = 17e355067c8284f47743a1ee3b1ef7ff684ff0601eda357f9353b10b3016ab31
 
 pkgname = vazirmatn-fonts
