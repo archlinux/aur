@@ -1,10 +1,10 @@
 pkgname=icalingua++
 _pkgname=icalingua
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A branch of deleted Icalingua,with limited support'
 license=('AGPL3')
-depends=('ffmpeg' 'electron' 'libappindicator-gtk3')
+depends=('ffmpeg' 'electron17' 'libappindicator-gtk3')
 optdepends=('mongodb-bin: Provides storage'
             'redis: Provides storage')
 arch=('aarch64' 'x86_64' 'i686')
@@ -28,7 +28,7 @@ package() {
 }
 sha256sums=('84c8585e8c18504ed83b0d199831b55b9f8f0eb0a5aa4cb9e3dc01b4a17d0e38'
             '43da1c99b7a6aee974c20da3bcf925b660dff4ba44a447c86066c84c8bc95fbd'
-            '71a583dae6d4352481bed0062c82558c627be0dd4917f2179e7d41c46d51d5eb')
+            '6eb3e2d214a1d336b01e9c77058bb024eccd4e3ae48df76eca6129d6a901f569')
 sha256sums_aarch64=('d8a70c04af006ee17d89c56be8fada8cc4e51112073020c26c0b3573e61fe55d')
 sha256sums_x86_64=('3d898d734c3f82039f113893516778dbb764d62bb35c1f9c2c4a84f1a1ab7f9d')
 sha256sums_i686=('97dd0a25886a02994b2bb6e9d933ff8ec7566b4ce498bdecd0dee50e8eceb9a7')
