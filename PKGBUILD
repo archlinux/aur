@@ -1,7 +1,8 @@
-# Maintainer: Tommaso Sardelli <lacapannadelloziotom AT gmail DOT com>
+# Maintainer: Eduard Tolosa <edu4rdshl@protonmail.com>
+# Contributor: Tommaso Sardelli <lacapannadelloziotom AT gmail DOT com>
 
 pkgname=gajim-plugin-omemo-git
-pkgver=2.5.10.r769.g0bc3091
+pkgver=2.5.10.r861.gb13a000
 pkgrel=1
 pkgdesc='Gajim plugin for OMEMO Multi-End Message and Object Encryption.'
 arch=(any)
@@ -26,7 +27,7 @@ package() {
   _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
   install -dm 755 "${pkgdir}${_site}/gajim/data/plugins/omemo"
 
-  rm -r CHANGELOG COPYING
+  rm COPYING
   cp -r * "${pkgdir}${_site}/gajim/data/plugins/omemo/"
 }
 
