@@ -6,25 +6,26 @@
 # $ curl -sL https://dl.google.com/linux/earth/deb/dists/stable/main/binary-amd64/Packages | grep -Pom1 'Version: \K[^-]*'
 
 pkgname=google-earth-pro
-pkgver=7.3.4.8248
-pkgrel=2
+pkgver=7.3.4.8573
+pkgrel=1
 pkgdesc='3D interface to explore the globe, terrain, streets, buildings and other planets (Pro version)'
 arch=('x86_64')
 url='https://www.google.com/earth/'
 license=('custom')
 depends=(
-    'curl'
-    'glu'
-    'hicolor-icon-theme'
-    'libsm'
-    'libxrender'
-    'libproxy'
-    'gst-plugins-base-libs'
-    'libxi'
-    'fontconfig'
     'alsa-lib'
+    'curl'
+    'desktop-file-utils'
+    'fontconfig'
+    'glu'
+    'gst-plugins-base-libs'
+    'hicolor-icon-theme'
     'libcups'
-    'desktop-file-utils')
+    'libsm'
+    'libproxy'
+    'libxi'
+    'libxrender'
+)
 provides=('google-earth')
 options=('!strip' '!emptydirs')
 install="${pkgname}.install"
@@ -34,7 +35,7 @@ source=("https://dl.google.com/linux/earth/deb/pool/main/g/google-earth-pro-stab
         'Legal-Notices-for-Google-Earth-and-Google-Earth-APIs.html'::'https://www.google.com/help/legalnotices_maps.html'
         'Google-Privacy-Policy.html'::'https://www.google.com/intl/ALL/policies/privacy/index.html')
 noextract=("google-earth-pro-stable_${pkgver}-r0_amd64.deb")
-sha256sums=('cdf406c0574564b2b1c2bdcfd731c45ae6358d1f69969895ccd4ea6344bc6add'
+sha256sums=('114b803f34e5f844d4a9350019ea5e23e7bc2389be2a5616a89b1d2819cd5d01'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -64,6 +65,9 @@ package() {
     # remove the debian-intended cron job and duplicated images
     rm -r "${pkgdir}/etc/cron.daily" "${pkgdir}/${_installdir}"/product_logo_*.png
     
+    # fix search
+    sed -i '/googleearth-bin/s/^/LC_NUMERIC=en_US.UTF-8 /' "${pkgdir}/${_installdir}/googleearth"
+
     # licenses
     local _file
     for _file in 'Google-Terms-of-Service.html' \
@@ -75,5 +79,5 @@ package() {
     done
 
     # Remove SGID
-    find "$pkgdir" -perm /2000 -exec chmod g-s {} \;
+    chmod -R 'a-s' "${pkgdir}"
 }
