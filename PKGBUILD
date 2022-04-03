@@ -2,7 +2,7 @@
 
 pkgname=pandownload-wine
 pkgver=0.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="本软件为 PanDownload 的众多修改版中的一个，鉴于找不到比 PanDownload 更优秀的百度网盘多账号管理软件，所以对 PanDownload 进行了一些基础功能上的修复。"
 arch=('any')
 url="https://pandownload.net/"
@@ -10,36 +10,18 @@ license=('unknow')
 provides=('PanDownload')
 conflicts=()
 replaces=()
-depends=('wine' 'wqy-microhei' 'winetricks' 'wine-mono' 'wine-gecko')
+depends=('wine' 'wqy-microhei' 'winetricks' 'wine-mono' 'wine-gecko' 'lib32-gnutls')
 optdepends=("wine-mono-gecko-version-fix: Fix the version numbers of wine-mono and wine-gecko files to solve the dialog box that pops up when starting wine.")
 makedepends=('unarchiver')
 backup=()
 options=('!strip')
 install=${pkgname}.install
-
 _pkg_file_name=PanDownload_公测版_${pkgver}_ALL.zip
-_DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
-if [ ! -f ${PWD}/${_pkg_file_name} ]; then
-	if [ -f $_DOWNLOADS_DIR/${_pkg_file_name} ]; then
-		ln -sfn $_DOWNLOADS_DIR/${_pkg_file_name} ${PWD}
-	else
-		msg2 ""
-		msg2 "Package not found!"
-		msg2 "The package can be downloaded here: ${url}"
-		msg2 "Please remember to put a downloaded package ${_pkg_file_name} into the build directory ${PWD} or $_DOWNLOADS_DIR"
-		msg2 ""
-	fi
-fi
-
-source=("local://${_pkg_file_name}"
+source=("${_pkg_file_name}::https://harmonyos.oss-cn-beijing.aliyuncs.com/attach/202203/19b020f48842c4d37b4623a4ee80248a1ea463.zip"
         "${pkgname}.install")
 sha256sums=('b57c1113d037b569c30525cfa5c9fa47fe30eee36cc4e424c830fef8497ac1d1'
             '50f2d42d213da6a4567e99184571906f86377c8001c6a0e0a490338110279163')
-noextract=("PanDownload_公测版_${pkgver}_ALL.zip")
-
-# prepare() {
-#     unar -e GBK "${srcdir}/PanDownload_公测版_${pkgver}_ALL.zip"
-# }
+noextract=("${_pkg_file_name}")
 
 package() {
     export LC_CTYPE="zh_CN.UTF-8"
@@ -50,7 +32,7 @@ package() {
     install -dm0755 "${pkgdir}/${_path}/${pkgname%-wine}"
 
 #     cp -ra "${srcdir}/${pkgname%-wine}-${pkgver}/${pkgname%-wine}-${pkgver}.exe" "${pkgdir}/${_path}/${pkgname%-wine}"
-    bsdtar -xf "${srcdir}/PanDownload_公测版_${pkgver}_ALL.zip" -C "${pkgdir}/${_path}/${pkgname%-wine}"
+    bsdtar -xf "${srcdir}/${_pkg_file_name}" -C "${pkgdir}/${_path}/${pkgname%-wine}"
 
     find "${pkgdir}/${_path}" -type f -exec chmod 644 "{}" \;
     find "${pkgdir}/${_path}" -type d -exec chmod 755 "{}" \;
@@ -120,7 +102,7 @@ fi
 if [ ! -f "$HOME"/.${pkgname%-wine}/regpatchok ] ; then
     touch "$HOME"/.${pkgname%-wine}/regpatchok || exit 1
     cd "$HOME"/.${pkgname%-wine}/wine && regedit regpatch.reg && wineserver -k
-#     winetricks -q mfc42
+     winetricks -q mfc42
 fi
 
 wine "$HOME"/.${pkgname%-wine}/${pkgname%-wine} "\$@"
