@@ -1,0 +1,12 @@
+pkgbase = moq-bin
+	pkgdesc = Interface mocking tool for go generate
+	pkgver = 0.2.7
+	pkgrel = 1
+	url = https://github.com/matryer/moq
+	arch = x86_64
+	license = MIT
+	provides = moq
+	source_x86_64 = https://github.com/matryer/moq/releases/download/v0.2.7/moq_0.2.7_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 62e5223300d7727744c7abefcabb11750bb53355be2ba73480a84a58788bd949
+
+pkgname = moq-bin
