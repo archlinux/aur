@@ -1,6 +1,6 @@
 pkgbase = x3270
 	pkgdesc = An IBM 3270 terminal emulator for the X Window System
-	pkgver = 4.1ga12
+	pkgver = 4.1ga13
 	pkgrel = 1
 	url = http://x3270.bgp.nu/
 	install = x3270.install
@@ -22,9 +22,9 @@ pkgbase = x3270
 	depends = xorg-mkfontdir
 	depends = tcl
 	backup = etc/x3270/ibm_hosts
-	source = http://x3270.bgp.nu/download/04.01/suite3270-4.1ga12-src.tgz
+	source = http://x3270.bgp.nu/download/04.01/suite3270-4.1ga13-src.tgz
 	source = x3270.desktop
-	sha256sums = 262489641a60321a06b20ea94ac1ed204e04c4749eb1df1b9e21d0034bc17fef
+	sha256sums = 31b256f018099a613c4abc1836f72d00cd18def9df2486ce0ab01130bf9ca88e
 	sha256sums = bb3f1a301ca4f6d6d4f4cafe451945a55a9af7995d712a0f314fc58dfb16da6f
 
 pkgname = x3270
