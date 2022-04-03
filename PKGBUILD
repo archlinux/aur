@@ -1,19 +1,19 @@
 # Maintainer: solopasha <daron439 at gmail dot com>
 pkgname=remnote
 pkgver=1.7.6
-pkgrel=1
+pkgrel=2
 pkgdesc="All-in-one workspace for note-taking, learning, organizing thoughts and growing knowledge"
 arch=('x86_64')
 url="https://www.remnote.com"
 license=('custom:Commercial')
-depends=('electron')
+depends=('electron17')
 options=(!strip)
 _appimage="RemNote-${pkgver}.AppImage"
 source=("https://download.remnote.io/${_appimage}"
 	"${pkgname}.sh")
 noextract=("${_appimage}")
 sha256sums=('c915292debff16bde639a9a41607af02bbf65285e05787bace5cafec5690e113'
-            '3beaa112d4a90bd3c3f309121c52eb1f139354bcbff9a9cf378f693f53c0ef0a')
+            '0563c942b12e1e174ef2a7732f62809b84b709078d814449432b6ee76706b907')
 prepare() {
 	cd "$srcdir"
 	chmod a+x $_appimage
