@@ -2,7 +2,7 @@
 
 pkgname=nodejs-jwt-cli
 _pkgname=${pkgname#nodejs-}
-pkgver=1.2.3
+pkgver=1.3.3
 pkgrel=1
 pkgdesc="An npm package for decoding JSON Web Tokens (JWT) in a cli"
 arch=(any)
@@ -13,7 +13,7 @@ optdepends=()
 makedepends=('npm' 'jq')
 source=(http://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz)
 noextract=($_pkgname-$pkgver.tgz)
-sha256sums=('3f0bad8bae00467ee9d54b89b25d0a2a657e9dd713cda7129b95ab3fb6333498')
+sha256sums=('b2a1546d993467c1fa90947fd96538940d3ddf0df5744c52959a69460f55f11a')
 
 package() {
     npm install -g \
