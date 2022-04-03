@@ -4,7 +4,7 @@
 _name=gaphor
 pkgname=python-${_name}
 pkgver=2.9.2
-pkgrel=5
+pkgrel=6
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('any')
 url="https://github.com/gaphor/${_name}"
@@ -31,6 +31,7 @@ checkdepends=(
 	'python-pytest-mock'
 	'python-sphinx'
 	'python-xdoctest'
+	'xorg-server-xvfb'
 )
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('687f0f9a75e72daa9535bbbc6b8592e0ee37ae9451b9085bd2d972a1fb07b51f')
@@ -45,12 +46,7 @@ build() {
 
 check() {
 	cd "${srcdir}/${_name}-${pkgver}"
-	pytest \
-		--ignore=gaphor/plugins/console/tests/test_console.py \
-		--ignore=gaphor/ui/tests/test_greeter.py \
-		--ignore=gaphor/ui/tests/test_handletool.py \
-		--ignore=gaphor/ui/tests/test_main.py \
-		--ignore=tests/test_diagram_tools.py
+	xvfb-run --auto-servernum pytest
 }
 
 prepare() {
