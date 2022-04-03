@@ -2,7 +2,7 @@
 # Contributor: Alex Branham <alex.branham@gmail.com>
 
 _cranname=robustbase
-_cranver=0.93-9
+_cranver=0.95-0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -28,7 +28,7 @@ optdepends=(
     r-skewt
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('d75fb5075463fec61d063bced7003936e9198492328b6fae15f67e8415713c45')
+sha256sums=('5cfaea1c46df6d45086614fea5f152c8da8ebfcadf33bb8df5b82e742eef9724')
 
 build() {
   mkdir -p build
