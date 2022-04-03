@@ -1,5 +1,5 @@
 # Maintainer: Yauhen Kirylau <actionless DOT loveless PLUS aur AT gmail MF com>
-# Contributor: Padraic Fanning <fanninpm AT miamioh DOT edu>
+# Maintainer: Padraic Fanning <fanninpm AT miamioh DOT edu>
 
 _pkgname=python-gaphas
 pkgname="${_pkgname}-git"
@@ -26,7 +26,10 @@ makedepends=(
 )
 optdepends=(
 )
-checkdepends=('python-pytest')
+checkdepends=(
+	'python-pytest'
+	'xorg-server-xvfb'
+)
 provides=(
 	"${_pkgname}"
 )
@@ -44,7 +47,7 @@ build() {
 
 check() {
 	cd "${srcdir}/${_pkgname}"
-	pytest
+	xvfb-run --auto-servernum pytest
 }
 
 pkgver() {
