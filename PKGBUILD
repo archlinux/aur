@@ -1,9 +1,8 @@
-# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
-
+# Maintainer: Alex Henrie <alexhenrie24@gmail.com>
 set -u
 _pkgname='uncrustify'
 pkgname="${_pkgname}-git"
-pkgver=0.70.0.r21.g7d250bad
+pkgver=0.74.0.r289.ga54114d52
 pkgrel=1
 pkgdesc='A source code beautifier'
 arch=('i686' 'x86_64')
@@ -14,7 +13,7 @@ makedepends=('git' 'cmake')
 provides=("${_pkgname}=${pkgver%%.r*}")
 conflicts=("${_pkgname}")
 _srcdir="${pkgname}-u"
-source=("${_srcdir}::git://github.com/uncrustify/${_pkgname}.git")
+source=("${_srcdir}::git+https://github.com/uncrustify/${_pkgname}.git")
 sha256sums=('SKIP')
 
 pkgver() {
