@@ -1,18 +1,24 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=mergestat
-pkgver=0.5.4
+pkgver=0.5.5
 pkgrel=1
 pkgdesc="Query git repositories with SQL"
 arch=('x86_64')
 url="https://app.mergestat.com/w/public"
 license=('MIT')
-depends=('libgit2')
-makedepends=('git' 'go')
+depends=('glibc')
+makedepends=('git' 'go' 'cmake')
 options=('!lto')
-_commit='7e5a991bde75e640ed0aa1917752f1eca61bdef0'
-source=("$pkgname::git+https://github.com/mergestat/mergestat.git#commit=$_commit")
-b2sums=('SKIP')
+_commit='7f969dc6ac396e34a29410d554897091c29541c1'
+source=(
+  "$pkgname::git+https://github.com/mergestat/mergestat.git#commit=$_commit"
+  'git2go::git+https://github.com/libgit2/git2go.git'
+  'libgit2::git+https://github.com/libgit2/libgit2'
+)
+b2sums=('SKIP'
+        'SKIP'
+        'SKIP')
 
 pkgver() {
   cd "$pkgname"
@@ -23,12 +29,36 @@ pkgver() {
 prepare() {
   cd "$pkgname"
 
+  # initialise submodules
+  git submodule init
+  git config submodule.git2go.url "$srcdir/git2go"
+  git submodule update
+  pushd git2go
+  git submodule init
+  git config submodule.vendor/libgit2.url "$srcdir/libgit2"
+  git submodule update
+  popd
+
+  # append to various flags instead of overriding them
+  sed -i Makefile -e 's/FLAGS =/FLAGS +=/g'
+
   # download dependencies
   go mod download
 }
 
 build() {
   cd "$pkgname"
+
+  # set Go flags
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  # compile static libgit2 via git2go
+  export PKG_CONFIG_PATH="$PKG_CONFIG_PATH:$(pwd)/git2go/static-build/install/lib/pkgconfig"
+  make libgit2
 
   make
 
