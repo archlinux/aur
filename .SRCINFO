@@ -1,13 +1,12 @@
 pkgbase = universal-android-debloater
 	pkgdesc = Cross-platform GUI written in Rust using ADB to debloat non-rooted Android devices
 	pkgver = 0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/0x192/universal-android-debloater
 	changelog = uad-CHANGELOG.md
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo-nightly
-	makedepends = cmake
 	makedepends = libxkbcommon
 	makedepends = lld
 	depends = android-tools

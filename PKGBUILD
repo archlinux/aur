@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=universal-android-debloater
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform GUI written in Rust using ADB to debloat non-rooted Android devices"
 arch=('x86_64')
 url="https://github.com/0x192/universal-android-debloater"
 license=('GPL3')
 depends=('android-tools' 'gcc-libs')
-makedepends=('cargo-nightly' 'cmake' 'libxkbcommon' 'lld')
+makedepends=('cargo-nightly' 'libxkbcommon' 'lld')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
         'uad_gui.desktop'
         'uad_gui-opengl.desktop')
@@ -37,16 +37,8 @@ build() {
   cargo build --release --features wgpu
 }
 
-#check() {
-#  cd "$pkgname-$pkgver"
-#  export RUSTFLAGS="-C link-arg=-fuse-ld=lld"
-#  export RUSTUP_TOOLCHAIN=nightly
-#  cargo test --features glow
-#  cargo test --features wgpu
-#}
-
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 target/release/uad_gui{,-opengl} -t "$pkgdir/usr/bin"
-  install -Dm644 $srcdir/uad_gui{,-opengl}.desktop -t "$pkgdir/usr/share/applications"
+  install -Dm644 "$srcdir"/uad_gui{,-opengl}.desktop -t "$pkgdir/usr/share/applications"
 }
