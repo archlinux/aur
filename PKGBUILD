@@ -1,50 +1,52 @@
-# Based on uefitool-git
-# Contributor: xsmile <sascha_r at gmx dot de>
-# Contributor: Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
+# Maintainer: Yurii Kolesnykov <root@yurikoles.com>
+# Based on uefitool-git by xsmile <>
 
 pkgname=uefitool
 _pkgname=UEFITool
-_tools=('UEFIPatch' 'UEFIReplace')
-pkgver=0.27.0
-pkgrel=2
+_tools=('UEFIExtract' 'UEFIFind')
+pkgver=A59
+pkgrel=1
 pkgdesc='UEFI firmware image viewer and editor and utilities'
-arch=('armv7h' 'i686' 'x86_64')
+arch=('armv7h' 'aarch64' 'i686' 'x86_64')
 url='https://github.com/LongSoft/UEFITool'
 license=('BSD')
 depends=('qt5-base')
-makedepends=('git' 'qt5-base')
-provides=(${pkgname}-git)
-conflicts=(${pkgname}-git)
-source=("https://github.com/LongSoft/UEFITool/archive/${pkgver}.tar.gz")
-sha512sums=('97bcb465081b78704ac26f232f66e2c7b3e9b02fa7bfa3ad79dacc2ac1e37b40dbfb10d748ebd14ff00715b2045d77d511a83855972ec9d9fa84f0931e235be5')
+makedepends=('cmake')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha256sums=('efcaebe644c43e9550d62a3b20885f9c6a7f0235a0ae6acd97ccf9c9fa9be868')
 
-_build() {
-  qmake QMAKE_CFLAGS_RELEASE="$CFLAGS" QMAKE_CXXFLAGS_RELEASE="$CXXFLAGS"
+_cbuild() {
+  cmake .
+  cmake --build .
+}
+
+_qbuild() {
+  qmake \
+    QMAKE_CFLAGS_RELEASE="$CFLAGS" \
+    QMAKE_CXXFLAGS_RELEASE="$CXXFLAGS" \
+    QMAKE_LFLAGS_RELEASE="$LDFLAGS"
   make
 }
 
 build() {
-  # UEFITool
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  _build
-  # Other tools
+  cd "$_pkgname-$pkgver/$_pkgname"
+  _qbuild
+  cd ..
+
   for tool in "${_tools[@]}"; do
-    cd "${srcdir}/${_pkgname}-${pkgver}/${tool}"
-    _build
+    cd "$tool"
+    _cbuild
+    cd ..
   done
 }
 
 package() {
-  # UEFITool
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  install -d -m755 "${pkgdir}/usr/bin/"
-  install -D -m755 UEFITool "${pkgdir}/usr/bin/"
-  # Other tools
-  for tool in "${_tools[@]}"; do
-    install -D -m755 "${tool}/${tool}" "${pkgdir}/usr/bin/${tool}"
+  cd "${_pkgname}-${pkgver}"
+
+  __tools=("${_pkgname}" "${_tools[@]}")
+  for tool in "${__tools[@]}"; do
+    install -Dm755 "$tool/$tool" "$pkgdir/usr/bin/${tool,,}"
   done
-  # Install patches.txt
-  install -D -m644 UEFIPatch/patches.txt "${pkgdir}/usr/share/${pkgname}/patches.txt"
-  # License
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
