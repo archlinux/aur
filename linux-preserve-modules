@@ -1,0 +1,163 @@
+#!/bin/bash
+
+shopt -s nullglob
+
+not() {
+    if "$@"; then
+        return 1
+    else
+        return 0
+    fi
+}
+
+set-vars() {
+    KERNEL="$1"
+    TARGET="usr/lib/modules/$KERNEL"
+    PRESERVE_MODULES_DIR=/run/linux-preserve-modules
+
+    TARGET_DIR="/$TARGET"
+    PRESERVE_DIR="$PRESERVE_MODULES_DIR/modules/$KERNEL"
+
+    # exit early if kernel version empty
+    if [[ -z "$KERNEL" ]]; then
+        echo "error: unknown kernel version" >&2
+        exit 1
+    fi
+}
+
+preserve-modules-copy() {
+    if [[ $# -gt 1 ]]; then
+        echo "usage: preserve-modules copy [release]" >&2
+        exit 1
+    elif [[ $# -eq 1 ]]; then
+        set-vars "$1"
+    fi
+
+    # exit early if the target directory does not exist
+    if [[ ! -f "$TARGET_DIR/modules.builtin" ]]; then
+        echo "info: nothing to copy" >&2
+        exit 0
+    fi
+
+    # exit early if kernel modules already copied
+    if [[ -d "$PRESERVE_DIR/modules.builtin" ]]; then
+        echo "info: already copied" >&2
+        exit 0
+    fi
+
+    # exit early if kernel modules already copied
+    if [[ -f "$TARGET_DIR/.preserved" ]]; then
+        echo "info: already linked" >&2
+        exit 0
+    fi
+
+    # copy over kernel modules and dep files
+    mkdir -p "$PRESERVE_DIR"
+    cp -r "$TARGET_DIR/modules".* "$PRESERVE_DIR/"
+    [[ -d "$TARGET_DIR/kernel" ]] && cp -r "$TARGET_DIR/kernel" "$PRESERVE_DIR/kernel"
+    [[ -d "$TARGET_DIR/updates" ]] && cp -r "$TARGET_DIR/updates" "$PRESERVE_DIR/updates"
+
+    echo "info: copied modules" >&2
+    exit 0
+}
+
+preserve-modules-link() {
+    if [[ $# -gt 1 ]]; then
+        echo "usage: preserve-modules link [release]" >&2
+        exit 1
+    elif [[ $# -eq 1 ]]; then
+        set-vars "$1"
+    fi
+
+    # exit early if no kernel modules copied
+    if [[ ! -f "$PRESERVE_DIR/modules.builtin" ]]; then
+        echo "info: nothing to link" >&2
+        exit 0
+    fi
+
+    # exit early if mount targets still owned by a package
+    OWNERS=(
+        $(pacman -Qoq "$TARGET_DIR/kernel" 2>/dev/null)
+        $(pacman -Qoq "$TARGET_DIR/updates" 2>/dev/null)
+    )
+    if [[ "${#OWNERS[@]}" -ne 0 ]]; then
+        echo "info: modules still there" >&2
+        exit 0
+    fi
+
+    # exit early if kernel modules already copied
+    if [[ -f "$TARGET_DIR/.preserved" ]]; then
+        echo "info: already linked" >&2
+        exit 0
+    fi
+
+    # copy over dep files and mark kernel version as preserved
+    mkdir -p "$TARGET_DIR/"
+    touch "$TARGET_DIR/.preserved"
+    cp -r "$PRESERVE_DIR/modules".* "$TARGET_DIR/"
+
+    # bind mount preserved kernel modules
+    mkdir -p "$TARGET_DIR/kernel"
+    mkdir -p "$TARGET_DIR/updates"
+    [[ -d "$PRESERVE_DIR/kernel" ]] && mount --bind "$PRESERVE_DIR/kernel" "$TARGET_DIR/kernel"
+    [[ -d "$PRESERVE_DIR/updates" ]] && mount --bind "$PRESERVE_DIR/updates" "$TARGET_DIR/updates"
+
+    # trigger depmod
+    depmod "$KERNEL"
+
+    echo "info: linked modules" >&2
+    exit 0
+}
+
+preserve-modules-unlink() {
+    if [[ $# -gt 1 ]]; then
+        echo "usage: preserve-modules unlink [release]" >&2
+        exit 1
+    elif [[ $# -eq 1 ]]; then
+        set-vars "$1"
+    fi
+
+    # exit early if kernel modules not already copied
+    if [[ ! -f "$TARGET_DIR/.preserved" ]]; then
+        echo "info: not linked" >&2
+        exit 0
+    fi
+
+    # clean preserved files
+    rm "$TARGET_DIR/.preserved"
+    rm "$TARGET_DIR/modules".*
+    mountpoint -q "$TARGET_DIR/kernel" && umount "$TARGET_DIR/kernel"
+    mountpoint -q "$TARGET_DIR/updates" && umount "$TARGET_DIR/updates"
+
+    echo "info: unlinked modules" >&2
+    exit 0
+}
+
+usage() {
+    echo "usage: linux-preserve-modules <copy|link|unlink> [release]" >&2
+    exit 1
+}
+
+main() {
+    if [[ "$(id -u)" -ne 0 ]]; then
+        echo "error: this script needs to run as root" >&2
+        usage
+    fi
+
+    set-vars "$(uname -r)"
+
+    if [[ "$#" -eq 0 ]]; then
+        usage
+    fi
+
+    CMD="$1"
+    shift
+    case "$CMD" in
+        copy) preserve-modules-copy "$@";;
+        link) preserve-modules-link "$@";;
+        unlink) preserve-modules-unlink "$@";;
+        *) usage;;
+    esac
+}
+
+main "$@"

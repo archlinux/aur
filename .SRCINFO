@@ -5,11 +5,11 @@ pkgbase = linux-preserve-modules
 	url = https://aur.archlinux.org/packages/linux-preserve-modules
 	arch = any
 	license = MIT
-	source = preserve-modules-copy.hook
-	source = preserve-modules-link.hook
-	source = preserve-modules.script
-	sha256sums = a38ad3600f174f1882d78191706f668eb1da585bf21ffbd6a0bf63057453f874
-	sha256sums = 276d479596bac1120162ba65229f5253fd4d44b3c44a57a9c4aeb8125fcf01b2
-	sha256sums = c4d1a56a5207736e9f3f2c145b621e60a9d99a93b953ced4ed02917b75f33fc3
+	source = linux-preserve-modules.hook
+	source = linux-preserve-modules.script
+	source = linux-preserve-modules
+	sha256sums = 666c8f92f798a006b83740afae4dc832e4d38209eb866b2019cb32b8798bfdbf
+	sha256sums = 995a5f75dde50626fdf002f1de18fbd06f3b39a5c50d9ea2d44927f7bede11bc
+	sha256sums = 7f068ac894cf2248fa373af17817053db177ceae50e960db55293596b16441b9
 
 pkgname = linux-preserve-modules

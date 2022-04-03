@@ -7,7 +7,7 @@ Target = usr/lib/modules/*/
 Target = !usr/lib/modules/*/?*
 
 [Action]
-Description = Preserving old linux kernel modules... (copying)
+Description = Preserving old linux kernel modules...
 When = PreTransaction
-Exec = /usr/share/libalpm/scripts/linux-preserve-modules copy
+Exec = /usr/share/libalpm/scripts/linux-preserve-modules
 NeedsTargets

@@ -8,15 +8,15 @@ url="https://aur.archlinux.org/packages/linux-preserve-modules"
 arch=('any')
 license=('MIT')
 depends=()
-source=(preserve-modules-copy.hook
-        preserve-modules-link.hook
-        preserve-modules.script)
-sha256sums=('a38ad3600f174f1882d78191706f668eb1da585bf21ffbd6a0bf63057453f874'
-            '276d479596bac1120162ba65229f5253fd4d44b3c44a57a9c4aeb8125fcf01b2'
-            '98820ebc17f2420092e947f60181729046cf656e537d364f6a965dccd30d9149')
+source=(linux-preserve-modules.hook
+        linux-preserve-modules.script
+        linux-preserve-modules)
+sha256sums=('666c8f92f798a006b83740afae4dc832e4d38209eb866b2019cb32b8798bfdbf'
+            '995a5f75dde50626fdf002f1de18fbd06f3b39a5c50d9ea2d44927f7bede11bc'
+            '7f068ac894cf2248fa373af17817053db177ceae50e960db55293596b16441b9')
 
 package() {
-    install -Dm644 "$srcdir/preserve-modules-copy.hook" "$pkgdir/usr/share/libalpm/hooks/10-linux-preserve-modules-copy.hook"
-    install -Dm644 "$srcdir/preserve-modules-link.hook" "$pkgdir/usr/share/libalpm/hooks/99-linux-preserve-modules-link.hook"
-    install -Dm755 "$srcdir/preserve-modules.script" "$pkgdir/usr/share/libalpm/scripts/linux-preserve-modules"
+    install -Dm644 "$srcdir/linux-preserve-modules.hook" "$pkgdir/usr/share/libalpm/hooks/10-linux-preserve-modules.hook"
+    install -Dm755 "$srcdir/linux-preserve-modules.script" "$pkgdir/usr/share/libalpm/scripts/linux-preserve-modules"
+    install -Dm755 "$srcdir/linux-preserve-modules" "$pkgdir/usr/bin/linux-preserve-modules"
 }
