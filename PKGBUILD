@@ -1,4 +1,4 @@
-# Maintainer: skrewball <skrewball at joickle dot com>
+# Maintainer: skrewball <jason at joickle dot com>
 
 pkgname=asus-ec-sensors-dkms-git
 _pkgbase=asus-ec-sensors
