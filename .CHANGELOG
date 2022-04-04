@@ -1,6 +1,22 @@
 Version history
 ===============
 
+0.9.44
+------
+
+2022-03-03
+
+Fix a memory-corrupting bug when sending chat messages.
+I introduced this bug in 0.9.43.
+
+Fix #432: Don't resave watched multiplayer replays. The bug was: After the
+replay, we entered the end-of-singleplayer dialog, and this dialog always
+re-saved the watched replay as a new multiplayer replay. Now, we directly
+return to the replay browser. The end-of-singleplayer dialog doesn't appear
+and doesn't save a duplicate.
+
+
+
 0.9.43
 ------
 
