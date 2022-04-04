@@ -1,11 +1,11 @@
 # Maintainer: pingplug < aur at pingplug dot me >
 # Contributor: Schala Zeal < schalaalexiazeal at gmail dot com >
 
-_commit=4851f23d6205e9e34ccacb48d02eae5e0f3b2f27  # tags/1.50.5
+_commit=37a427018c92a2bc679ef104097e07a619609c9c  # tags/1.50.6
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-pango
-pkgver=1.50.5
+pkgver=1.50.6
 pkgrel=1
 pkgdesc="A library for layout and rendering of text (mingw-w64)"
 arch=('any')
