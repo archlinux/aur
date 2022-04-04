@@ -1,7 +1,7 @@
 #Maintainer: 1994 <1994intime@protonmail.com>
 
 pkgname=pinephone-kbpwrd
-pkgver=0.1.6r9d9bcf0
+pkgver=0.1.7rbdd56e3
 pkgrel=1
 pkgdesc="PinePhone (Pro) Keyboard Case Power Manager"
 arch=('aarch64')
@@ -11,7 +11,7 @@ makedepends=('rust')
 source=("${pkgname}::git+https://github.com/estokes/pinephone-kbpwrd.git"
 	"kbpwrd.service")
 sha256sums=('SKIP'
-            '13ddfd3692f7920271655d56554cc8793f94e40fd55ada7e8d01e56f261f795e')
+            '8b035cab39d1fae2c88a32bbc5d1dc085321a00859563e47066a4344ac568da4')
 
 prepare() {
 	if ! grep -q pinephone /proc/device-tree/compatible

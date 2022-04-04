@@ -1,5 +1,5 @@
 [Unit]
-Description PinePhone (Pro) Keyboard Case Power Manager
+Description=PinePhone (Pro) Keyboard Case Power Manager
 [Service]
 Type=simple
 ExecStart=/usr/bin/kbpwrd
