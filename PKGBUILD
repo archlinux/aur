@@ -3,15 +3,15 @@
 _pkgname=iminuit
 pkgbase="python-${_pkgname}"
 pkgname=("python-${_pkgname}" "python-${_pkgname}-docs")
-pkgver=2.10.0
+pkgver=2.11.2
 pkgrel=1
 pkgdesc="Python interface for MINUIT, a physics analysis tool for function minimization."
 arch=('x86_64')
 url="https://iminuit.readthedocs.io"
 license=('GPL' 'MIT')
 depends=('python-numpy')
-makedepends=('git' 'cmake' 'python-setuptools' 'python-wheel' 'python-build' 'python-installer'
-             'python-nbsphinx' 'python-sphinx_rtd_theme' 'python-matplotlib' 'python-pillow' 'pandoc')
+makedepends=('git' 'cmake' 'python-setuptools' 'python-wheel' 'python-build' 'python-installer' 'python-joblib'
+             'python-boost-histogram' 'python-nbsphinx' 'python-sphinx_rtd_theme' 'python-matplotlib' 'python-pillow' 'pandoc')
 checkdepends=('python-pytest' 'python-scipy' 'python-tabulate')
 options=(!emptydirs)
 source=(
@@ -47,13 +47,16 @@ build() {
   python -m build --wheel --no-isolation
 
   # build docs
-  PYTHONPATH="build/lib.linux-${CARCH}-$(get_pyver)" make build/html/done
+  python -m venv --system-site-packages test-env
+  test-env/bin/python -m pip install numba-stats resample
+  echo 'nbsphinx_allow_errors = True' >> doc/conf.py
+  PYTHONPATH="${PWD}/test-env/lib/python$(get_pyver)/site-packages:${PWD}/build/lib.linux-${CARCH}-$(get_pyver)" make build/html/done
 }
 
 check() {
   cd "${srcdir}/${pkgbase}"
 
-  PYTHONPATH="build/lib.linux-${CARCH}-$(get_pyver)" pytest || warning "Tests failed"
+  PYTHONPATH="${PWD}/build/lib.linux-${CARCH}-$(get_pyver)" pytest || warning "Tests failed"
 }
 
 package_python-iminuit() {
