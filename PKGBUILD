@@ -1,4 +1,5 @@
-# Maintainer :  Kr1ss  $(tr +- .@ <<<'<kr1ss+x-yandex+com>')
+# Maintainer : Guillaume Horel <guillaume dot horel at gmail dot com>
+# Contributor :  Kr1ss  $(tr +- .@ <<<'<kr1ss+x-yandex+com>')
 # Contributor : Giovanni Scafora <giovanni@archlinux.org>
 # Contributor : Simon Sapin <simon dot sapin at exyr dot org>
 # Contributor : Michal Marek <reqamst at gmail dot com>
@@ -9,20 +10,20 @@
 pkgname=python-cssutils
 _name="${pkgname#python-}"
 
-pkgver=2.3.0
-pkgrel=2
+pkgver=2.4.0
+pkgrel=1
 
 pkgdesc='CSS Cascading Style Sheets library for Python'
 arch=('any')
 url="https://github.com/jaraco/$_name"
 license=('LGPL3' 'GPL3')
 
-makedepends=('python-setuptools' 'python-wheel' 'python-pip')
+makedepends=('python-build' 'python-installer')
 depends=('python')
 
 changelog=CHANGES.rst
 source=("https://files.pythonhosted.org/packages/source/c/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('b2d3b16047caae82e5c590036935bafa1b621cf45c2f38885af4be4838f0fd00')
+sha256sums=('2d97210a83b0a3fe1e4469f5ff9a6420b078572035188b1bab7103c3a36dc89b')
 
 
 prepare() {
@@ -32,16 +33,19 @@ prepare() {
 
 build() {
   cd "$_name-$pkgver"
-  2to3 --no-diffs -nw "$_name"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$_name-$pkgver"
-  PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-  install -Dm644 README.rst -t"$pkgdir/usr/share/doc/$pkgname/"
-  install -Dm644 examples/* -t"$pkgdir/usr/share/doc/$pkgname/examples/"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 README.rst -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm644 examples/* -t "$pkgdir/usr/share/doc/$pkgname/examples/"
 }
 
+check(){
+  cd "$_name-$pkgver"
+  pytest cssutils/tests 
+}
 
 # vim: ts=2 sw=2 et ft=PKGBUILD:
