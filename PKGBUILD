@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=GE-Proton7-10
+_srctag=GE-Proton7-13
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
@@ -126,6 +126,7 @@ source=(
     protonfixes-gloriouseggroll::git+https://github.com/gloriouseggroll/protonfixes.git
     gst-plugins-bad::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git
     gst-plugins-ugly::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-ugly.git
+    gamemode::git+https://github.com/FeralInteractive/gamemode.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     wine-more_8x5_res.patch
@@ -217,6 +218,7 @@ prepare() {
         protonfixes-gloriouseggroll::protonfixes
         gst-plugins-bad
         gst-plugins-ugly
+        gamemode
     )
 
     for submodule in "${_submodules[@]}"; do
@@ -331,10 +333,8 @@ build() {
     export CFLAGS+=" -mno-avx2"
     export CXXFLAGS+=" -mno-avx2"
 
-    # Copy cargo registry to the expected location
-    cp -r "${SRCDEST}"/proton-cargo "${srcdir}"/build/.cargo
-
     export RUSTUP_TOOLCHAIN=stable
+    export CARGO_HOME="${SRCDEST}"/proton-cargo
     export WINEESYNC=0
     export WINEFSYNC=0
     export DISPLAY=
@@ -401,10 +401,11 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
+            'SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
             'cb03854b5d868b2d0912da42e01536bb673e009ed5263f4eeb8836a2a9c36f43'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
-            'a5c269b4f936b497e5663d01e9cb8b6a6c5bc3b068d3c33a05c8ffb61f3957b1'
+            '8f4114d5b02e1a1390e51a8a7317917420861cb75bd2541332f59417b89bfdfd'
             'e5cb2054a5d23e956d7cd85c2f716c03852fe78c54ad689f2946ffe68a76c56a'
             '242566c092f83a71ba06c3aefe0400af65a6fa564dd63196af54403c2c4d09e2')
