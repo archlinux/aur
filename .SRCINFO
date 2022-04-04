@@ -1,0 +1,20 @@
+pkgbase = fsniper-git
+	pkgdesc = Daemon to run scripts based on changes in files monitored by inotify (git)
+	pkgver = r240.8bec021
+	pkgrel = 1
+	url = https://github.com/projectivemotion/fsniper
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = autoconf
+	makedepends = automake
+	makedepends = libtool
+	makedepends = gcc
+	depends = pcre
+	depends = file
+	provides = fsniper
+	conflicts = fsniper
+	source = git+https://github.com/projectivemotion/fsniper
+	sha256sums = SKIP
+
+pkgname = fsniper-git
