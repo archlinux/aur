@@ -2,21 +2,21 @@
 
 pkgname=zeitgeist-dependencies-git
 name=zeitgeist
-pkgver=349.0c1ed03
+pkgver=0.3.0.r220.g0c1ed03
 pkgrel=1
 pkgdesc='The language-agnostic dependency checker'
 arch=('x86_64')
 url='https://github.com/kubernetes-sigs/zeitgeist'
 license=('Apache')
-makedepends=('go')
+makedepends=('go' 'git')
 source=("$pkgname"::git+https://github.com/kubernetes-sigs/zeitgeist)
 sha256sums=('SKIP')
 conflicts=("zeitgeist-dependencies")
 options=(!lto)
 
 pkgver() {
-    cd "$pkgname"
-    printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd "$pkgname"
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
