@@ -1,19 +1,19 @@
 pkgname=companion
-pkgver=2.1.4
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Control software for the Elgato Streamdeck with a focus on broadcasting."
 arch=('i386' 'x86_64')
 url="https://github.com/bitfocus/companion"
 license=('custom')
-depends=('libvips' 'libxss' 'gconf' 'gtk3' 'libusb')
-makedepends=('nvm' 'git')
+depends=('gtk3' 'alsa-lib' 'nss')
+makedepends=('nvm' 'git' 'zip')
 install=companion.install
 
-source=("${pkgname}::git+https://github.com/bitfocus/companion.git#tag=v${pkgver}"
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/bitfocus/companion/archive/refs/tags/v${pkgver}.tar.gz"
 		"50-bitfocus-companion.rules"
 		"bitfocus-companion.desktop")
 
-sha256sums=('SKIP'
+sha256sums=('e0daa9058af42df623892f933000301257c699b4086ebb246fabbd897e0a3765'
             'c0e7cd1f730a7b4381e654b53f6fdd1c06911b2593bdfe07bba5e198fc61d5d9'
             '65289895360dae94dd710e6804709c1e3f95e6bc275b1621cb88eb8a7cbd348f')
 
@@ -28,12 +28,18 @@ _ensure_local_nvm() {
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
     
     export PATH="$(npm bin):${PATH}"
+    export SHARP_IGNORE_GLOBAL_LIBVIPS=yes
+    export YARN_CACHE_FOLDER="${srcdir}/yarn"
 }
 
 prepare() {
 	_ensure_local_nvm
 
-	nvm install 12
+	mkdir "${srcdir}/npm"
+	mkdir "${srcdir}/yarn"
+
+	nvm install 14.19.0
+	npm config set cache "${srcdir}/npm"
 	npm install -g node-gyp
 	npm install -g yarn
 }
@@ -41,23 +47,24 @@ prepare() {
 build() {
 	_ensure_local_nvm
 
-	cd "${srcdir}/${pkgname}"
-
-	./tools/update.sh
-	./tools/build_writefile.sh
+	cd "${srcdir}/${pkgname}-${pkgver}"
 
 	rm -rf electron-output
-	yarn run pack
+
+	yarn --frozen-lockfile
+	yarn --frozen-lockfile --cwd webui
+
+	yarn run dist
 }
 
 
 package() {
 	cd "${srcdir}"
 
-	builddir="${pkgname}/electron-output/linux-unpacked"
+	builddir="${pkgname}-${pkgver}/electron-output/linux-unpacked"
 
 	# Licenses
-	install -Dm644 "${pkgname}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
+	install -Dm644 "${pkgname}-${pkgver}/LICENSE.md" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 	install -Dm644 "${builddir}/LICENSE.electron.txt" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 	install -Dm644 "${builddir}/LICENSES.chromium.html" -t "${pkgdir}/usr/share/licenses/${pkgname}/"
 
@@ -77,5 +84,5 @@ package() {
 	install -Dm644 bitfocus-companion.desktop -t "${pkgdir}/usr/share/applications/"
 
 	# Icon
-	install -Dm644 "${pkgname}/assets/icon.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/bitfocus-companion.png"
+	install -Dm644 "${pkgname}-${pkgver}/assets/icon.png" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/bitfocus-companion.png"
 }
