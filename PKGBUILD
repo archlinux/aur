@@ -63,7 +63,7 @@ _lqxpatchrel=1
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
 pkgver=5.17.1.lqx1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Liquorix'
 url='https://liquorix.net/'
 arch=(x86_64)
@@ -218,7 +218,7 @@ build() {
 _package() {
     pkgdesc="The $pkgdesc kernel and modules"
     depends=(coreutils kmod initramfs)
-    optdepends=('crda: to set the correct wireless channels of your country'
+    optdepends=('wireless-regdb: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'sof-firmware: firmware images needed for Sound Open Firmware capable devices')
     provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)

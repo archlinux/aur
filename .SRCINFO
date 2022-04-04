@@ -1,7 +1,7 @@
 pkgbase = linux-lqx
 	pkgdesc = Linux Liquorix
 	pkgver = 5.17.1.lqx1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://liquorix.net/
 	arch = x86_64
 	license = GPL2
@@ -26,7 +26,7 @@ pkgname = linux-lqx
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
-	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 	optdepends = sof-firmware: firmware images needed for Sound Open Firmware capable devices
 	provides = VIRTUALBOX-GUEST-MODULES
