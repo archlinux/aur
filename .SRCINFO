@@ -15,7 +15,9 @@ pkgbase = pandoc-crossref-static-git
 	replaces = pandoc-crossref-lite
 	source = pandoc-crossref-static-git::git+https://github.com/lierdakil/pandoc-crossref.git
 	source = ver-bump.patch
+	source = 0001-Update-tests-for-pandoc-5f0bfd41.patch
 	sha256sums = SKIP
-	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums = 9b15ac6f617e583eda0cfd7308ff8fead84dc6200e1e94fad695fb8602e38bbe
+	sha256sums = 6b92482325fdefcb0588efd1f0ad0bb632ad509b8538aae63a32a128f0c0d5bf
 
 pkgname = pandoc-crossref-static-git
