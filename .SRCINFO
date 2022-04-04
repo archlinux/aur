@@ -1,7 +1,7 @@
 pkgbase = bb
 	pkgdesc = ASCII-art demo that uses AAlib
 	pkgver = 1.3rc1
-	pkgrel = 14
+	pkgrel = 15
 	url = http://aa-project.sourceforge.net/bb/
 	arch = x86_64
 	arch = i686
@@ -16,6 +16,7 @@ pkgbase = bb
 	depends = libxau
 	depends = libxdmcp
 	depends = ncurses
+	depends = xorg-fonts-encodings
 	depends = xorg-fonts-misc
 	source = http://ftp.debian.org/debian/pool/main/b/bb/bb_1.3rc1.orig.tar.gz
 	source = http://ftp.debian.org/debian/pool/main/b/bb/bb_1.3rc1-8.3.diff.gz
@@ -29,4 +30,3 @@ pkgbase = bb
 	sha256sums = f17252481e9f59d8a599321a7a48d0a336702112c5f1c4cb173e592b87448475
 
 pkgname = bb
-

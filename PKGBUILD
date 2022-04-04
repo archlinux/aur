@@ -6,7 +6,7 @@
 
 pkgname=bb
 pkgver=1.3rc1
-pkgrel=14
+pkgrel=15
 pkgdesc='ASCII-art demo that uses AAlib'
 arch=('x86_64' 'i686')
 url='http://aa-project.sourceforge.net/bb/'
@@ -21,6 +21,7 @@ depends=('aalib'
          'libxau'
          'libxdmcp'
          'ncurses'
+         'xorg-fonts-encodings'
          'xorg-fonts-misc')
 source=("http://ftp.debian.org/debian/pool/main/b/bb/${pkgname}_$pkgver.orig.tar.gz"
         "http://ftp.debian.org/debian/pool/main/b/bb/${pkgname}_$pkgver-8.3.diff.gz"
