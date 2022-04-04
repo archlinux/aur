@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=dra
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 pkgdesc="A command line tool to download assets from GitHub releases"
 arch=('x86_64')
@@ -11,17 +11,22 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('5eb4ec4bfe5c93708306ac23a8a883473098d9ec80acacca0f27e17b359b4f111833f341d7e5cac8ff29ec5e6c1e992c425c3394d765e8a4730dd433c03e663b')
+sha512sums=('f1380fc94f1420c254d1763e9d3c64ee66851ee316ca6e476a328bdb5a7933307e32b2b5cb91756339b7607c9908bf3a0b4eadc62d13e914704942234b483a8a')
 options=('!lto')
 
 prepare() {
   cd "$pkgname-$pkgver"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  mkdir -p completions
 }
 
 build() {
   cd "$pkgname-$pkgver"
   cargo build --release --frozen
+  local _completion="target/release/$pkgname completion"
+  $_completion bash > "completions/$pkgname"
+  $_completion fish > "completions/$pkgname.fish"
+  $_completion zsh  > "completions/_$pkgname"
 }
 
 check() {
@@ -34,4 +39,7 @@ package() {
   install -Dm 755 "target/release/$pkgname" -t "$pkgdir/usr/bin"
   install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm 644 "completions/$pkgname" -t "$pkgdir/usr/share/bash-completion/completions/"
+  install -Dm 644 "completions/$pkgname.fish" -t "$pkgdir/usr/share/fish/vendor_completions.d/"
+  install -Dm 644 "completions/_$pkgname" -t "$pkgdir/usr/share/zsh/site-functions/"
 }
