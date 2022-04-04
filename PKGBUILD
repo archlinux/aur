@@ -1,7 +1,7 @@
 # Maintainer : Antonio Orefice <xt7player@gmail.com>
 
 pkgname=xt7-player-mpv-git
-pkgver=20220401
+pkgver=20220404
 pkgrel=1
 pkgdesc="Aims to be an 'almost complete' but usable mpv gui"
 arch=('any')
@@ -59,7 +59,7 @@ package() {
 
   sed -i 's/Name=xt7-player-mpv/Name=xt7-player-mpv-git/' ./xt7-player-mpv-git.desktop
   sed -i 's/Icon=xt7-player-mpv/Icon=xt7-player-mpv-git/' ./xt7-player-mpv-git.desktop
-  sed -i 's/Exec=xt7-player-mpv.gambas/Exec=xt7-player-mpv-git/' ./xt7-player-mpv-git.desktop
+  sed -i 's/xt7-player-mpv.gambas/xt7-player-mpv-git/' ./xt7-player-mpv-git.desktop
 #  sed -i 's/xt7-player.png/xt7-player-git.png/' ./xt7-player-git.desktop
 
   install -d ${pkgdir}/usr/bin
