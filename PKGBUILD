@@ -4,7 +4,7 @@
 
 pkgname="ayatana-webmail-no-indicator-messages"
 pkgver="22.2.26"
-pkgrel="4"
+pkgrel="5"
 pkgdesc="Webmail notifications and actions for any desktop without ayatana-indicator-messages dependency"
 arch=("any")
 url="https://tari.in/www/software/ayatana-webmail/"
@@ -18,7 +18,7 @@ source=("ayatana-webmail-${pkgver}.tar.gz::https://github.com/AyatanaIndicators/
         "idler_fix.patch")
 md5sums=("98ee497c3d3fa3122524c0f654163bc0"
          "eb8721b75b144ab35a8e18bb352799ab"
-         "403d6b204f455d4a7ebe3dbdec8691da")
+         "a52812d8d9a779df06b2adf373a15cd5")
 provides=("ayatana-webmail=${pkgver}")
 replaces=("unity-mail")
 conflicts=("ayatana-webmail" "unity-mail")

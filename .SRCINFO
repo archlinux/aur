@@ -1,7 +1,7 @@
 pkgbase = ayatana-webmail-no-indicator-messages
 	pkgdesc = Webmail notifications and actions for any desktop without ayatana-indicator-messages dependency
 	pkgver = 22.2.26
-	pkgrel = 4
+	pkgrel = 5
 	url = https://tari.in/www/software/ayatana-webmail/
 	install = ayatana-webmail.install
 	arch = any
@@ -30,6 +30,6 @@ pkgbase = ayatana-webmail-no-indicator-messages
 	source = idler_fix.patch
 	md5sums = 98ee497c3d3fa3122524c0f654163bc0
 	md5sums = eb8721b75b144ab35a8e18bb352799ab
-	md5sums = 403d6b204f455d4a7ebe3dbdec8691da
+	md5sums = a52812d8d9a779df06b2adf373a15cd5
 
 pkgname = ayatana-webmail-no-indicator-messages
