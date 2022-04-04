@@ -1,0 +1,16 @@
+pkgbase = fedit2-git
+	pkgdesc = Formation editor for Robocup 2D Simulation made by Helios
+	pkgver = 2020.08
+	pkgrel = 1
+	url = https://github.com/helios-base/fedit2
+	arch = any
+	groups = rcss
+	license = GPL
+	makedepends = git
+	depends = librcsc-git
+	provides = fedit2-git
+	conflicts = fedit2-git
+	source = fedit2-git::git+https://github.com/helios-base/fedit2.git
+	md5sums = SKIP
+
+pkgname = fedit2-git
