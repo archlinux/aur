@@ -1,0 +1,20 @@
+pkgbase = discord-game-sdk
+	pkgdesc = Discord Game SDK
+	pkgver = 2.5.6
+	pkgrel = 1
+	url = https://discord.com/developers/docs/game-sdk/sdk-starter-guide
+	arch = x86_64
+	license = custom
+	depends = gcc-libs
+	noextract = discord-game-sdk-2.5.6.zip
+	options = !strip
+	source = discord-game-sdk-2.5.6.zip::https://dl-game-sdk.discordapp.net/2.5.6/discord_game_sdk.zip
+	source = POLICY
+	source = STORE-DISTRIBUTION-AGREEMENT
+	source = TERMS-OF-SERVICE
+	sha256sums = 426eb5fa70647d884f461c63825b63668349efb4bc68a16e70bc4a24e119b92e
+	sha256sums = 2de103f28da9f8d12e90241e417adbaab4bc623db9b4c1f0b0a29195e4aaf49a
+	sha256sums = 6632e0756861cb8d334c2e63178963b2f96db1cfb80280eabfb0398afa9c4268
+	sha256sums = 12ba0226f989bc4dbb77b8cc8379787d43cfd06c9ff15933ef5653ef6b1b7ebe
+
+pkgname = discord-game-sdk
