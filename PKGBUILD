@@ -2,8 +2,8 @@
 
 pkgname=prometheus-nginxlog-exporter-bin
 _name=prometheus-nginxlog-exporter
-pkgver=1.9.0
-pkgrel=3
+pkgver=1.9.2
+pkgrel=1
 pkgdesc="Export metrics from Nginx access log files to Prometheus"
 
 arch=('x86_64')
@@ -33,4 +33,4 @@ package() {
 }
 md5sums=('eb93cf58698a0015dd3124c1c1653fbf'
          '7f951e89fda154346240c0f0eb9223ce'
-         'db59876588868b3ad168f8911999eff8')
+         '495a8639f7b539f2b73bb28bd6a4fd45')
