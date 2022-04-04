@@ -1,21 +1,21 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: uint2048_t
 
 pkgname=cannonball-git
-pkgver=0.3.r9.g412576c
+pkgver=0.34.r19.g27493eb
 pkgrel=1
-pkgdesc='Enhanced OutRun Engine (development version)'
+pkgdesc='CannonBall: The Enhanced OutRun Engine (git version)'
 arch=('i686' 'x86_64')
-url="http://reassembler.blogspot.de/"
+url="https://reassembler.blogspot.com/"
 license=('custom')
-depends=('sdl2' 'gcc-libs' 'bash')
-makedepends=('git' 'cmake' 'boost' 'chrpath')
-conflicts=("${pkgname%-*}")
-provides=("${pkgname%-*}")
-install=${pkgname%-*}.install
-source=(${pkgname%-*}::"git+https://github.com/djyt/cannonball.git"
-        "${pkgname%-*}.sh")
+depends=('sdl' 'gcc-libs' 'sh')
+makedepends=('git' 'cmake' 'boost')
+install=cannonball.install
+source=($pkgname::"git+https://github.com/djyt/cannonball.git"
+        "cannonball.desktop"
+        "cannonball.sh")
 sha256sums=('SKIP'
-            '2cb4472728b9e3657b40fa4202944d4c0736e3b7287cbeb5fc4d622de4d477c0')
+            '2cb4472728b9e3657b40fa4202944d4c0736e3b7287cbeb5fc4d622de4d477c0'
+	    '04d0c0e9252bccfef97bb59c9e89376461f9b52845570b2ebc14610ce74cf1ff')
 
 pkgver() {
   cd ${pkgname%-*}
@@ -31,24 +31,29 @@ prepare() {
 build() {
   cd ${pkgname%-*}/build
 
-  cmake ../cmake -DTARGET=sdl2
+  cmake ../cmake -DTARGET=linux.cmake -DOpenGL_GL_PREFERENCE=GLVND -B .
   make
 }
 
 package() {
-  cd ${pkgname%-*}
+  pwd
+  cd cannonball
 
-  # launcher + binary
-  install -Dm755 ../${pkgname%-*}.sh "$pkgdir"/usr/bin/${pkgname%-*}
-  install -Dm755 build/${pkgname%-*} "$pkgdir"/usr/lib/${pkgname%-*}/${pkgname%-*}
-  # remove rpath
-  chrpath -d "$pkgdir"/usr/lib/${pkgname%-*}/${pkgname%-*}
+  # xdg desktop, icon, launcher, binary
+  install -Dm755 ../cannonball.desktop "$pkgdir"/usr/share/applications/cannonball.desktop
+  install -Dm644 res/icon.png "$pkgdir"/usr/share/icons/hicolor/256x256/apps/cannonball.png
+  install -Dm755 ../cannonball.sh "$pkgdir"/usr/bin/cannonball
+  install -Dm755 build/cannonball "$pkgdir"/usr/lib/cannonball/cannonball
+echo "desktop"
   # config
-  install -Dm644 build/config.xml "$pkgdir"/usr/share/${pkgname%-*}/config.xml
+  install -Dm644 build/config.xml "$pkgdir"/usr/share/cannonball/config.xml
+echo "config"
   # widescreen tilemap data
-  install -d "$pkgdir"/usr/share/${pkgname%-*}/res
-  install -m644 res/*.bin "$pkgdir"/usr/share/${pkgname%-*}/res
+  install -d "$pkgdir"/usr/share/cannonball/res
+  install -m644 res/*.bin "$pkgdir"/usr/share/cannonball/res
+echo "wide"
   # doc + license
-  install -Dm644 roms/roms.txt "$pkgdir"/usr/share/doc/$pkgname/roms.txt
-  install -Dm644 docs/license.txt "$pkgdir"/usr/share/licenses/$pkgname/license.txt
+  install -Dm644 roms/roms.txt "$pkgdir"/usr/share/doc/cannonball/roms.txt
+  install -Dm644 docs/license.txt "$pkgdir"/usr/share/licenses/cannonball/license.txt
+echo "doc"
 }

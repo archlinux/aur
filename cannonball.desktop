@@ -1,0 +1,10 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Type=Application
+Version=0.34
+Name=CannonBall
+GenericName=Enhanced OutRun Engine
+Icon=cannonball
+Exec=cannonball
+Terminal=false
+Categories=Game;ArcadeGame;Emulator
