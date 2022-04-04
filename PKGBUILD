@@ -2,19 +2,22 @@
 _name=jupyter_kernel_test
 pkgname=python-$_name
 pkgver=0.4.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A tool for testing Jupyter kernels'
 arch=('any')
 url="https://github.com/jupyter/$_name"
 license=(BSD3)
 depends=(python python-jupyter_client python-jsonschema)
-_wheel="$_name-$pkgver-py3-none-any.whl"
-source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/$_wheel")
-noextract=("$_wheel")
-sha256sums=('8c88b17bcfe63c2b670a27ef5585e6daf7b8090544af2d3741dfef971d022cec')
+makedepends=(python-setuptools python-installer python-build)
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('7af255ce61309e2c08709abaf6c7cea5de3125a8eb33aea166997f99487ff434')
+
+build() {
+	cd "$_name-$pkgver"
+	python -m build --wheel --no-isolation
+}
 
 package() {
-	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
-	install -d "$site"
-	unzip "$_wheel" -d "$site"
+	cd "$_name-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
