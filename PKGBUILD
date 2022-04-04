@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=fw-git
-pkgver=2.13.1.r1.ge85a20c
+pkgver=2.14.0.r2.g06bd9b6
 pkgrel=1
 pkgdesc="Workspace productivity booster (git)"
 arch=('x86_64')

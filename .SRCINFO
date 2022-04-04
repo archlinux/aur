@@ -1,6 +1,6 @@
 pkgbase = fw-git
 	pkgdesc = Workspace productivity booster (git)
-	pkgver = 2.13.1.r1.ge85a20c
+	pkgver = 2.14.0.r2.g06bd9b6
 	pkgrel = 1
 	url = https://github.com/brocode/fw
 	arch = x86_64
