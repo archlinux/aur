@@ -1,7 +1,7 @@
 # Maintainer: Michael William Le Nguyen <michael at mail dot ttp dot codes>
 # Co-Maintainer: Victor Roest <victor at xirion dot net>
 pkgname=rke
-pkgver=1.3.7
+pkgver=1.3.8
 pkgrel=1
 pkgdesc="An extremely simple, lightning fast Kubernetes installer that works everywhere."
 arch=('x86_64')
@@ -12,6 +12,7 @@ makedepends=(
   "git"
   # Cannot be built with go-pie due to rke's build flags.
   "go>=1.11"
+  "golangci-lint"
 )
 source=(
   "rke-${pkgver}::git+https://github.com/rancher/rke#tag=v${pkgver}"
@@ -41,7 +42,6 @@ build () {
 check () {
   export GOPATH="${srcdir}/go"
   export PATH="$PATH:${srcdir}/go/bin"
-  go get -u golang.org/x/lint/golint
   cd "${pkgname}-${pkgver}"
   ./scripts/entry test
   ./scripts/entry validate
