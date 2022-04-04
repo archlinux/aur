@@ -1,6 +1,6 @@
 # Maintainer : Antonio Orefice <xt7player@gmail.com>
 pkgname=xt7-player-mpv
-pkgver=0.33.3162
+pkgver=0.34.3170
 #hotfix=-hotfix
 pkgrel=2
 _realname=xt7-player-mpv
@@ -51,7 +51,7 @@ package() {
 
   cd ${srcdir}/${_realname}-${pkgver}$hotfix/
  
-  sed -i 's/Exec=xt7-player-mpv.gambas/Exec=xt7-player-mpv/' ./xt7-player-mpv.desktop
+  sed -i 's/xt7-player-mpv.gambas/xt7-player-mpv/' ./xt7-player-mpv.desktop
 
   install -d ${pkgdir}/usr/bin
   install -m755 ${_realname}-${pkgver}$hotfix.gambas ${pkgdir}/usr/bin/xt7-player-mpv
@@ -61,5 +61,5 @@ package() {
 
 }
 
-md5sums=('6d2f0822601e77fa86b88431518232f9'
+md5sums=('7d52d062a3afd5555d4cb4b45290dc4b'
          'b6f1380e33b47d0ed95c7ba1b3f4ec73')
