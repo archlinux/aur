@@ -5,7 +5,7 @@
 _pkgname=r8125
 pkgname=${_pkgname}-dkms
 pkgver=9.008.00
-pkgrel=1
+pkgrel=2
 url="https://www.realtek.com/en/component/zoo/category/network-interface-controllers-10-100-1000m-gigabit-ethernet-pci-express-software"
 pkgdesc="Kernel module for RTL8125"
 license=('GPL2')
@@ -14,9 +14,14 @@ depends=('dkms')
 conflicts=("${_pkgname}")
 optdepends=('linux-headers: Build the module for Arch kernel'
             'linux-lts-headers: Build the module for LTS Arch kernel')
-source=("http://rtitwww.realtek.com/rtdrivers/cn/nic1/${_pkgname}-${pkgver}.tar.bz2" 'dkms.conf')
+source=("http://rtitwww.realtek.com/rtdrivers/cn/nic1/${_pkgname}-${pkgver}.tar.bz2" 'dkms.conf' '5.17.patch')
 sha256sums=('b481c778a9c24d9c686319c090a929e9d052847e62a41f559032661722d7252e'
-            'ad4c67e0c74661d19b74872f98254184d4b04e32e4c57b338a84fbcefa4c721f')
+            'ad4c67e0c74661d19b74872f98254184d4b04e32e4c57b338a84fbcefa4c721f'
+            '61b29191e920ea334d83799d1291a76f63c0022f3e3c8eba3d35d08d0ac613b6')
+
+prepare() {
+  patch -p0 < 5.17.patch
+}
 
 package() {
   dir_name="${_pkgname}-${pkgver}"
