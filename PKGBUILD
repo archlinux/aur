@@ -1,15 +1,15 @@
 # Maintainer: BigmenPixel <bigmen dot pixel at tuta dot io>
 
 pkgname=tun2socks
-pkgver=2.3.2
-pkgrel=3
+pkgver=2.4.0
+pkgrel=1
 pkgdesc="tun2socks - powered by gVisor TCP/IP stack"
 arch=('any')
 url="https://github.com/xjasonlyu/tun2socks"
 license=('GPL3')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 makedepends=("go")
-sha256sums=('87200130076b5a5cc5184f4b1b353c4bbeb36f9fca69208e0b62adcf73ec7afc')
+sha256sums=('4a357076bbc98db52aa94ea32d8b32cbfed4f24385b0ad0c2fe771811007f41d')
 
 prepare() {
   cd "${pkgname}-${pkgver}"
