@@ -3,8 +3,8 @@
 
 _hkgname=xmonad-dbus
 pkgname="${_hkgname}-git"
-pkgver=r8.c34a772
-pkgrel=2
+pkgver=0.1.0.1.r2.g73a640b
+pkgrel=1
 pkgdesc="XMonad DBus monitor application and library to easily connect XMonad with Polybar"
 url="https://github.com/troydm/xmonad-dbus#readme"
 license=("custom: BSD3")
@@ -17,7 +17,7 @@ sha256sums=('SKIP')
 pkgver() {
   cd "${pkgname%-git}"
   ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    git describe --long --tags 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
 }
