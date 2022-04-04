@@ -1,10 +1,11 @@
 pkgbase = jgmenu-git
 	pkgdesc = Simple, independent, contemporary-looking X11 menu, designed for scripting, ricing and tweaking. Compiled with gtktheme, lx and pmenu support
 	pkgver = 4.4.0
-	pkgrel = 4
-	url = https://github.com/johanmalm/jgmenu
+	pkgrel = 1
+	url = https://jgmenu.github.io/
 	arch = x86_64
 	license = GPL2
+	makedepends = git
 	depends = libx11
 	depends = cairo
 	depends = pango
@@ -16,8 +17,7 @@ pkgbase = jgmenu-git
 	depends = python
 	provides = jgmenu
 	conflicts = jgmenu
-	source = jgmenu::git+https://github.com/johanmalm/jgmenu.git
+	source = git+https://github.com/johanmalm/jgmenu.git
 	sha256sums = SKIP
 
 pkgname = jgmenu-git
-

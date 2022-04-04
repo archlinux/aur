@@ -1,7 +1,10 @@
 # Maintainer: purpleleaf  <max@ganoia.eu>
+# Do not forget to run `makepkg --printsrcinfo > .SRCINFO`
 
-pkgname=jgmenu-git
-pkgver=4.4.0.r1.gc258a6c
+_pkgname=jgmenu
+_pkgver=4.4.0
+pkgname=${_pkgname}-git
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="Simple, independent, contemporary-looking X11 menu, designed for scripting, ricing and tweaking. Compiled with gtktheme, lx and pmenu support"
 arch=('x86_64')
@@ -9,18 +12,18 @@ url="https://jgmenu.github.io/"
 license=('GPL2')
 depends=('libx11' 'cairo' 'pango' 'libxrandr' 'librsvg' 'libxml2' 'glib2' 'menu-cache' 'python')
 makedepends=(git)
-provides=(jgmenu)
-conflicts=(jgmenu)
+provides=(${_pkgname})
+conflicts=(${_pkgname})
 source=("git+https://github.com/johanmalm/jgmenu.git")
 sha256sums=("SKIP")
 
 pkgver() {
-  cd "${srcdir}/${pkgname%-git}"
-  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${srcdir}/${_pkgname}"
+  printf "%s+%s" "${_pkgver}" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${pkgname%-git}"
+  cd "${srcdir}/${_pkgname}"
   ./configure \
     --with-gtktheme \
     --with-lx \
