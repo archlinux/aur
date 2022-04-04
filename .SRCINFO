@@ -1,12 +1,13 @@
 pkgbase = python-jupyter_kernel_test
 	pkgdesc = A tool for testing Jupyter kernels
 	pkgver = 0.4.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jupyter/jupyter_kernel_test
 	arch = any
 	license = BSD3
 	depends = python
-	depends = jupyter
+	depends = python-jupyter_client
+	depends = python-jsonschema
 	noextract = jupyter_kernel_test-0.4.3-py3-none-any.whl
 	source = https://files.pythonhosted.org/packages/py3/j/jupyter_kernel_test/jupyter_kernel_test-0.4.3-py3-none-any.whl
 	sha256sums = 8c88b17bcfe63c2b670a27ef5585e6daf7b8090544af2d3741dfef971d022cec

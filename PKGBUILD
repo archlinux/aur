@@ -2,12 +2,12 @@
 _name=jupyter_kernel_test
 pkgname=python-$_name
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool for testing Jupyter kernels'
 arch=('any')
 url="https://github.com/jupyter/$_name"
 license=(BSD3)
-depends=(python jupyter)
+depends=(python python-jupyter_client python-jsonschema)
 _wheel="$_name-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/$_wheel")
 noextract=("$_wheel")
