@@ -1,7 +1,7 @@
 pkgbase = detmon
 	pkgdesc = ESO DETMON detector characterization
 	pkgver = 1.3.9_3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.eso.org/sci/software/pipelines/detmon/detmon-pipe-recipes.html
 	arch = x86_64
 	license = GPL2

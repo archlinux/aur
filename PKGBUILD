@@ -2,7 +2,7 @@
 
 pkgname=detmon
 pkgver=1.3.9_3
-pkgrel=1
+pkgrel=2
 pkgdesc="ESO DETMON detector characterization"
 url="https://www.eso.org/sci/software/pipelines/detmon/detmon-pipe-recipes.html"
 arch=('x86_64')
@@ -19,7 +19,10 @@ sha256sums=('0478d2994e8b94eea80db7eac8ba2a7b8e9b138c673b2d2f328ef615d4d360ed')
 
 build() {
 
-	export LD_LIBRARY_PATH=${CPLDIR}/lib
+    # In case everything build in one-go variables may not be read.
+    [[ -z "${CPLDIR}" ]] && . /etc/profile.d/cpl.sh
+    export C_INCLUDE_PATH=${CPLDIR}/include:${C_INCLUDE_PATH}
+    export LD_LIBRARY_PATH=${CPLDIR}/lib:${LD_LIBRARY_PATH}
 	
 	cd $srcdir/${pkgname}-kit-${pkgver//_/-}
 	tar zxf ${pkgname}-${pkgver%_?}.tar.gz
