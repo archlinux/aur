@@ -1,22 +1,17 @@
 # Maintainer: MedzikUser <nivua1fn@duck.com>
-_repo='MedzikUser/imgurs'
-_ver=v0.6.0
-
 pkgname='imgurs'
-pkgver=0.6.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc='CLI for Imgur API written in Rust'
 arch=('x86_64')
-url="https://github.com/$_repo"
+url="https://github.com/MedzikUser/imgurs"
 license=('BSD3')
 
-makedepends=('cargo')
-optdepends=(
-  'libnotify: Notification support'
-  'xsel: Clipboard support'
-)
+makedepends=('rust')
+optdepends=('libnotify: Notification support'
+            'xsel: Clipboard support')
 
-source=("$pkgname-$pkgver.tar.gz::$url/archive/$_ver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('51ea57145c8a2d316c686c351d8842ea186430a190bd70aaec244db76127a9244522463bfcbf235ea4e2104c68a1e69d3a7d5c467a5c850625402aa2334c9f7c')
 
 build() {
