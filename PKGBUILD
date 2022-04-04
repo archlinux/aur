@@ -4,7 +4,7 @@
 
 pkgname=python-btchip-git
 pkgver=0.1.32
-pkgrel=2
+pkgrel=3
 pkgdesc="Python library to communicate with BTChip dongle"
 arch=('any')
 depends=('python-hidapi' 'libusb-compat' 'libusb' 'libsystemd')
@@ -14,7 +14,7 @@ url="https://github.com/LedgerHQ/btchip-python"
 license=('Apache')
 provides=('python-btchip-git' 'python-btchip')
 conflicts=('python-btchip-git' 'python-btchip')
-source=(git://github.com/LedgerHQ/btchip-python)
+source=(git+https://github.com/LedgerHQ/btchip-python)
 sha256sums=('SKIP')
 
 pkgver() {
