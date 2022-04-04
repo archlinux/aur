@@ -9,7 +9,8 @@ license=('BSD3')
 
 makedepends=('rust')
 optdepends=('libnotify: Notification support'
-            'xsel: Clipboard support')
+            'xsel: Clipboard support'
+            'xclip: Clipboard support')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 sha512sums=('9e16bcb26bb207b887d5a5f9502a76e156760b5aa873bdcedaacfd76bcdeaf5b6a8cb1da7c30cd112b769c71db6822edb018daef1d14077aef2db263fea1a51e')
