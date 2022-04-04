@@ -3,7 +3,7 @@
 
 pkgname=s2png-git
 pkgver=v0.10.0.r000
-pkgrel=1
+pkgrel=2
 
 pkgdesc='stuff to PNG'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('gd')
 makedepends=('cargo' 'rust' 'rustfmt' 'coreutils' 'gcc' 'binutils')
 provides=('s2png' 's2png-git')
 conflicts=('s2png' 's2png-git')
-source=('git://github.com/dbohdan/s2png')
+source=('git+https://github.com/dbohdan/s2png')
 sha256sums=('SKIP')
 
 pkgver() {
