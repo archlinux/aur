@@ -20,7 +20,7 @@ depends=(libglvnd openexr glew pugixml freeglut openimageio tbb openvdb embree o
 makedepends=(cmake git boost llvm)
 optdepends=(cuda optix)
 provides=(cycles)
-source=("git+https://github.com/blender/cycles.git#commit=e801066323feb555ed1d4e2628110d3c0f7241e4"
+source=("git+https://github.com/blender/cycles.git#commit=f0d2f3fca4daca1d7c2f4a39f3caea4a70186700"
         0001-SelectCudaComputeArch.patch
         0002-OpenEXR3.patch
         0003-Remove-FindClang.patch
