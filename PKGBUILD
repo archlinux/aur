@@ -2,14 +2,13 @@
 # Contributor: Andreas Gerlach <andigerlach76@gmail.com>
 pkgname=ijavascript
 pkgver=5.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="JavaScript kernel for Jupyter"
 arch=(any)
 url="https://github.com/n-riesco/ijavascript"
 license=('BSD-3-Clause')
-depends=('nodejs' 'jupyter')
-optdepends=('jupyterlab: JupyterLab support'
-            'jupyter-notebook: Jupyter Notebook support')
+depends=('jupyter-notebook' 'nodejs')
+optdepends=('jupyterlab: JupyterLab support')
 makedepends=('npm' 'patchelf')
 source=(https://registry.npmjs.org/${pkgname}/-/${pkgname}-${pkgver}.tgz
         kernel.json)
