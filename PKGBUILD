@@ -2,7 +2,7 @@
 
 pkgname=('qodana-cli')
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple cross-platform command-line tool to run Qodana linters anywhere with minimum effort required."
 arch=('x86_64' 'aarch64')
 url="https://github.com/JetBrains/qodana-cli"
@@ -31,7 +31,7 @@ build() {
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	install -Dm0755 qodana-cli -t "${pkgdir}/usr/bin"
+	install -Dm0755 qodana-cli "${pkgdir}/usr/bin/qodana"
 
 	install -Dm0644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 	install -Dm0644 THIRDPARTY.md -t "${pkgdir}/usr/share/licenses/${pkgname}"
