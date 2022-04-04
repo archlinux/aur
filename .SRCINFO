@@ -9,7 +9,7 @@ pkgbase = mage
 	license = Apache
 	makedepends = git
 	makedepends = go-pie
-	source = git+https://github.com/magefile/mage.git
+	source = mage::git+https://github.com/magefile/mage#tag=v1.13.0
 	sha256sums = SKIP
 
 pkgname = mage

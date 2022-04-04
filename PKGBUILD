@@ -11,15 +11,14 @@ arch=("x86_64" "arm" "aarch64")
 url="https://magefile.org"
 license=("Apache")
 makedepends=("git" "go-pie")
-source=("git+https://github.com/magefile/${pkgname}.git")
+# We're building from source to get metadata information for the binary, but using a stable version tag instead of
+# the latest commit since this is not a `-git` package.
+# See https://man.archlinux.org/man/PKGBUILD.5#USING_VCS_SOURCES for more information.
+source=("$pkgname::git+https://github.com/magefile/mage#tag=v$pkgver")
 sha256sums=("SKIP")
 
 build() {
   cd "$pkgname"
-
-  # We're building from source to get metadata information for the binary, but using a stable version tag instead of
-  # the latest commit since this is not a `-git` package.
-  git checkout "v$pkgver"
 
   # mage is build with mage itself, therefore we simluate the execution of the provided `bootstrap.go` installation
   # file that is recommended by the author.
