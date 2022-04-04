@@ -7,12 +7,12 @@
 
 pkgname=namecoin-core-wallet
 pkgver=v0.22.0
-pkgrel=3
+pkgrel=4
 
 
 # Epoch is always set to the most recent PKGBUILD update time.
 # This allows for a forced downgrade without messing up versioning.
-epoch=1644330875
+epoch=1649089425
 
 
 # Release commit for 0.22.0
@@ -31,7 +31,7 @@ provides=('namecoin-core-wallet' 'namecoin-cli' 'namecoin-daemon'
           'namecoin-qt' 'namecoin-tx')
 conflicts=('namecoin-core-wallet' 'namecoin-cli' 'namecoin-daemon'
            'namecoin-qt' 'namecoin-tx')
-source=('git://github.com/namecoin/namecoin-core'
+source=('git+https://github.com/namecoin/namecoin-core'
         'namecoin.desktop'
         'namecoin1500x1500.png'
         'namecoind.service'
