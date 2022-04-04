@@ -1,12 +1,15 @@
 pkgbase = python-pyfr
 	pkgdesc = Framework for solving advection-diffusion type problems on streaming architectures
 	pkgver = 1.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pyfr/pyfr
-	arch = x86_64
+	arch = any
 	license = BSD
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python>=3.8
 	depends = python-appdirs
 	depends = python-gimmik

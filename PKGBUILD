@@ -5,7 +5,7 @@
 pkgname=python-pyfr
 pkgver=1.13.0
 _commit=ddab8b0
-pkgrel=1
+pkgrel=2
 pkgdesc="Framework for solving advection-diffusion type problems on streaming architectures"
 arch=('any')
 url='https://github.com/pyfr/pyfr'
@@ -60,5 +60,10 @@ package() {
 	export PYTHONHASHSEED=0
 	cd "$pkgname"
 	python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s \
+		"$_site/pyfr-$pkgver.dist-info/LICENSE" \
+		"$pkgdir/usr/share/licenses/$pkgname/"
 }
