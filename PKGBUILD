@@ -3,16 +3,16 @@
 
 pkgbase=wxgtk-dev-opt
 pkgname=(wxgtk2-dev-opt wxgtk3-dev-opt wxgtk-common-dev-opt)
-pkgver=3.1.5
-pkgrel=2
+pkgver=3.1.6
+pkgrel=1
 arch=('x86_64')
 url="https://wxwidgets.org"
 license=('custom:wxWindows')
 makedepends=('gst-plugins-base' 'glu' 'webkit2gtk' 'libnotify' 'gtk2')
 options=('!emptydirs')
 source=("https://github.com/wxWidgets/wxWidgets/releases/download/v${pkgver}/wxWidgets-${pkgver}.tar.bz2")
-sha1sums=('725455d6324baa808259b56a42199237327e0638')
-sha256sums=('d7b3666de33aa5c10ea41bb9405c40326e1aeb74ee725bb88f90f1d50270a224')
+sha1sums=('266be7de43351e7d75c308f7f45469a5c433479c')
+sha256sums=('4980e86c6494adcd527a41fc0a4e436777ba41d1893717d7b7176c59c2061c25')
 
 prepare() {
   cp -a wxWidgets-${pkgver} wxWidgets-${pkgver}-gtk2
