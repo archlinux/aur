@@ -8,14 +8,13 @@ shopt -s extglob
 
 pkgname=pandoc-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=2.14rc.r12.g54ab7a0a3
+pkgver=2.18.r1.g4c8ad1fba
 pkgrel=1
 pkgdesc='Conversion between markup formats (static build, dynamic Lua support)'
 url='https://pandoc.org'
 license=('GPL')
 arch=('x86_64')
-optdepends=('pandoc-citeproc: for citation rendering with pandoc-citeproc filter'
-            'texlive-core: for pdf output')
+optdepends=('texlive-core: for pdf output')
 conflicts=('haskell-pandoc' 'pandoc' 'pandoc-bin')
 replaces=('haskell-pandoc' 'pandoc' 'pandoc-bin')
 provides=("pandoc=${pkgver%%*([a-z]).r*}")
