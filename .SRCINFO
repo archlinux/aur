@@ -1,16 +1,15 @@
 pkgbase = joe-go
 	pkgdesc = A .gitignore magician in your command line
-	pkgver = 1.0.3
+	pkgver = 1.1.0
 	pkgrel = 1
-	url = http://github.com/karan/joe/
+	url = http://github.com/jeremymreed/joe/
 	install = joe.install
 	arch = any
 	license = MIT
 	makedepends = go
 	provides = joe
 	conflicts = python2-joe
-	source = https://github.com/karan/joe/archive/1.0.3.tar.gz
-	md5sums = c2a01d4e4753eee08cb5bd44db974aa6
+	source = https://github.com/jeremymreed/joe/archive/v1.1.0.tar.gz
+	sha256sums = e49c50676b1e4826af6cf6251bc933be6ccf5f010ac2ad051e8e8f705e43985c
 
 pkgname = joe-go
-
