@@ -1,0 +1,18 @@
+pkgbase = activate-linux
+	pkgdesc = The "Activate Windows" watermark ported to Linux with Xlib and cairo in C
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/MrGlockenspiel/activate-linux
+	arch = x86_64
+	license = custom
+	makedepends = make
+	makedepends = clang
+	depends = cairo
+	depends = libxi
+	depends = libx11
+	depends = libxt
+	depends = libx11files
+	source = git+https://github.com/MrGlockenspiel/activate-linux
+	sha512sums = SKIP
+
+pkgname = activate-linux
