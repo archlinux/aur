@@ -1,7 +1,7 @@
 pkgbase = yesplaymusic-git
 	pkgdesc = 高颜值的第三方网易云播放器，支持 Windows / macOS / Linux
-	pkgver = 0.4.4.beta.1.14.gb1c5873
-	pkgrel = 4
+	pkgver = 0.4.4.1.r0.g999bf6f
+	pkgrel = 1
 	url = https://music.qier222.com
 	arch = x86_64
 	arch = aarch64
@@ -23,6 +23,7 @@ pkgbase = yesplaymusic-git
 	depends = snappy
 	depends = libnotify
 	depends = libappindicator-gtk3
+	optdepends = yt-dlp: Youtube source for built-in UnblockNeteaseMusic
 	provides = yesplaymusic
 	conflicts = yesplaymusic
 	source = git+https://github.com/qier222/YesPlayMusic

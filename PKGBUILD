@@ -2,8 +2,8 @@
 
 pkgbase=yesplaymusic-git
 pkgname=(yesplaymusic-git yesplaymusic-electron-git)
-pkgver=0.4.4.beta.1.14.gb1c5873
-pkgrel=4
+pkgver=0.4.4.1.r0.g999bf6f
+pkgrel=1
 pkgdesc="高颜值的第三方网易云播放器，支持 Windows / macOS / Linux"
 arch=("x86_64" "aarch64")
 url="https://music.qier222.com"
@@ -12,6 +12,7 @@ provides=("yesplaymusic")
 conflicts=("yesplaymusic")
 depends=("gtk3" "nss" "libxss" "c-ares" "ffmpeg" "http-parser" "libevent" "libvpx" "libxslt" "minizip" "re2" "snappy" "libnotify" "libappindicator-gtk3")
 makedepends=("yarn" "git" "libvips")
+optdepends=('yt-dlp: Youtube source for built-in UnblockNeteaseMusic')
 source=("git+https://github.com/qier222/YesPlayMusic" "yesplaymusic.desktop" "yesplaymusic")
 sha256sums=('SKIP'
             '56fb010914c3baad7bde6ccac03d9e92f705652c6f0098547cafbf4fcc613630'
@@ -20,7 +21,7 @@ _electron=electron13
 
 pkgver(){
     cd "${srcdir}/YesPlayMusic"
-    git describe --tags | sed "s/-/./g;s/v//"
+    git describe --tags --long | sed 's/v//;s/-/./;s/-/.r/;s/-/./g'
 }
 prepare(){
     cd "${srcdir}/YesPlayMusic"
