@@ -1,12 +1,13 @@
 # Maintainer : Figue <ffigue@gmail.com>
 # Maintainer : Luna Jernberg <droidbittin@gmail.com>
+# Contributor: Jonathon Fernyhough <jonathon+m2x+dev>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Jakub Schmidtke <sjakub@gmail.com>
 
 pkgbase=firefox-esr
 pkgname=(firefox-esr)
-pkgver=91.7.1
+pkgver=91.8.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org, Extended Support Release"
 arch=(x86_64)
@@ -343,7 +344,7 @@ _url=https://archive.mozilla.org/pub/mozilla.org/firefox/releases/${pkgver}esr/l
 #    esac
 #done
 
-sha512sums=('c56aa38e9d706ff1f1838d2639dac82109dcffb54a7ea17326ae306604d78967ac32da13676756999bc1aa0bf50dc4e7072936ceb16e2e834bea48382ae4b48c'
+sha512sums=('edea2c7d4d3d0322091b20b623019ef041090d9f89f33c8e3140f66a54624261f278257393db70d2038154de8ee02da0bee6ecf85c281f3558338da71fc173c3'
             'SKIP'
             '88509577b686c995144163538efdba3cfe1a3b01564d3823b9fb7972e64823d1d0a444372636f8d0b355c485f095df8f273a6eb5560fce4c41d4f1c0a0467f75'
             '4b53ee133a4ecaf068e240f6a05a1ebf4b788d67fe9141cc5b3561e1128907c8c3edb49bf2b24ba89daf1552f94ac48adf682dbe7dd070cffe7f78d98f2b3338'
