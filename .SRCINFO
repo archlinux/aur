@@ -19,7 +19,6 @@ pkgbase = guile-git
 	optdepends = texinfo: for using texinfo scheme sources
 	provides = guile3
 	provides = guile=3.0.8.r12.g446842733
-	conflicts = guile
 	conflicts = guile3
 	options = !strip
 	options = !makeflags
