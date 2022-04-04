@@ -11,8 +11,8 @@ license=('MPL2')
 provides=("betterbird=${pkgver}")
 conflicts=()
 source=(
-    "https://www.betterbird.eu/downloads/get.php?os=linux&lang=de&version=release"
-#    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}${_build}.de.linux-x86_64.tar.bz2"
+#    "https://www.betterbird.eu/downloads/get.php?os=linux&lang=de&version=release"
+    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}${_build}.de.linux-x86_64.tar.bz2"
     "betterbird.desktop"
 )
 
