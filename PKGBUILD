@@ -2,8 +2,8 @@
 
 # PKGBUILD config
 pkgname="ivpn"
-pkgver=3.5.1
-pkgrel=4
+pkgver=3.7.0
+pkgrel=1
 pkgdesc="IVPN Command Line Interface"
 arch=('x86_64')
 url="https://ivpn.net"
@@ -12,7 +12,7 @@ depends=('glibc' 'lsof' 'wireless_tools' 'openvpn')
 makedepends=('curl' 'go>=1.16')
 install="ivpn.install"
 source=("ivpn-src-v${pkgver}.tar.gz::https://github.com/ivpn/desktop-app/archive/v${pkgver}.tar.gz")
-sha256sums=('8cf8d61dfb8738151fbddd6cf6b39a2ebee0371565a74cffda5566f9cecbbc4b')
+sha256sums=('002a724e5ccb32ec30f65aab7ea0d78332dee749229a271204d8f887f44f7e06')
 
 build() {
   echo "*** build daemon***"
@@ -66,6 +66,9 @@ package() {
   install -Dm755 -g root -o root References/Linux/_deps/wireguard-tools_inst/wg-quick "$pkgdir/opt/ivpn/wireguard-tools/wg-quick"
   install -Dm755 -g root -o root References/Linux/_deps/wireguard-tools_inst/wg "$pkgdir/opt/ivpn/wireguard-tools/wg"
   install -Dm755 -g root -o root References/Linux/_deps/obfs4proxy_inst/obfs4proxy "$pkgdir/opt/ivpn/obfsproxy/obfs4proxy"
+
+  install -Dm755 -g root -o root References/Linux/_deps/dnscryptproxy_inst/dnscrypt-proxy "$pkgdir/opt/ivpn/dnscrypt-proxy/dnscrypt-proxy"
+  install -Dm400 -g root -o root References/Linux/etc/dnscrypt-proxy-template.toml "$pkgdir/opt/ivpn/etc/dnscrypt-proxy-template.toml"
 
   cd "$srcdir/desktop-app-${pkgver}/cli"
   install -Dm755 -g root -o root References/Linux/_out_bin/ivpn "$pkgdir/usr/bin/ivpn"
