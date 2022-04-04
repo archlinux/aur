@@ -1,6 +1,6 @@
 pkgbase = cardinal-git
 	pkgdesc = Virtual modular synthesizer plugin
-	pkgver = 22.02.r114.gbe2d8dd
+	pkgver = 22.04.r0.g6795d8a
 	pkgrel = 1
 	url = https://github.com/DISTRHO/Cardinal
 	arch = x86_64
@@ -79,7 +79,6 @@ pkgbase = cardinal-git
 	source = git+https://github.com/cardinalmodules/ihtsyn.git
 	source = git+https://github.com/jerrysievert/quickjs.git
 	source = git+https://github.com/nikolaivchr/autinn.git
-	source = git+https://gitlab.com/falktx/substation-opensource.git
 	source = git+https://github.com/mockbatheborg/mockbamodular.git
 	source = git+https://github.com/8mode/8mode-vcv_modules.git
 	source = git+https://github.com/kauewerner/axioma.git
@@ -204,13 +203,12 @@ pkgbase = cardinal-git
 	sha512sums = SKIP
 	sha512sums = SKIP
 	sha512sums = SKIP
-	sha512sums = SKIP
 
 pkgname = cardinal-git
-	depends = cardinal-jack=22.02.r114.gbe2d8dd
-	depends = cardinal-lv2=22.02.r114.gbe2d8dd
-	depends = cardinal-vst=22.02.r114.gbe2d8dd
-	depends = cardinal-vst3=22.02.r114.gbe2d8dd
+	depends = cardinal-jack=22.04.r0.g6795d8a
+	depends = cardinal-lv2=22.04.r0.g6795d8a
+	depends = cardinal-vst=22.04.r0.g6795d8a
+	depends = cardinal-vst3=22.04.r0.g6795d8a
 	provides = cardinal
 	conflicts = cardinal
 
@@ -222,7 +220,7 @@ pkgname = cardinal-data-git
 pkgname = cardinal-jack-git
 	pkgdesc = Virtual modular synthesizer plugin - JACK standalone
 	groups = pro-audio
-	depends = cardinal-data-git=22.02.r114.gbe2d8dd
+	depends = cardinal-data-git=22.04.r0.g6795d8a
 	depends = gcc-libs
 	depends = glibc
 	depends = jack
@@ -247,7 +245,7 @@ pkgname = cardinal-lv2-git
 	pkgdesc = Virtual modular synthesizer plugin - LV2 plugin
 	groups = lv2-plugins
 	groups = pro-audio
-	depends = cardinal-data-git=22.02.r114.gbe2d8dd
+	depends = cardinal-data-git=22.04.r0.g6795d8a
 	depends = gcc-libs
 	depends = glibc
 	depends = jansson
@@ -272,7 +270,7 @@ pkgname = cardinal-vst-git
 	pkgdesc = Virtual modular synthesizer plugin - VST2 plugin
 	groups = pro-audio
 	groups = vst-plugins
-	depends = cardinal-data-git=22.02.r114.gbe2d8dd
+	depends = cardinal-data-git=22.04.r0.g6795d8a
 	depends = gcc-libs
 	depends = glibc
 	depends = jansson
@@ -297,7 +295,7 @@ pkgname = cardinal-vst3-git
 	pkgdesc = Virtual modular synthesizer plugin - VST3 plugin
 	groups = pro-audio
 	groups = vst3-plugins
-	depends = cardinal-data-git=22.02.r114.gbe2d8dd
+	depends = cardinal-data-git=22.04.r0.g6795d8a
 	depends = gcc-libs
 	depends = glibc
 	depends = jansson

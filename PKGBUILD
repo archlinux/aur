@@ -4,7 +4,7 @@
 _name=cardinal
 pkgbase=cardinal-git
 pkgname=(cardinal-git cardinal-data-git cardinal-jack-git cardinal-lv2-git cardinal-vst-git cardinal-vst3-git)
-pkgver=22.02.r114.gbe2d8dd
+pkgver=22.04.r0.g6795d8a
 pkgrel=1
 pkgdesc="Virtual modular synthesizer plugin"
 arch=(x86_64)
@@ -68,7 +68,6 @@ source=(
   git+https://github.com/cardinalmodules/ihtsyn.git
   git+https://github.com/jerrysievert/quickjs.git
   git+https://github.com/nikolaivchr/autinn.git
-  git+https://gitlab.com/falktx/substation-opensource.git
   git+https://github.com/mockbatheborg/mockbamodular.git
   git+https://github.com/8mode/8mode-vcv_modules.git
   git+https://github.com/kauewerner/axioma.git
@@ -119,7 +118,6 @@ source=(
   git+https://github.com/lanceputnam/gamma.git
 )
 sha512sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -269,7 +267,6 @@ prepare() {
     git config submodule.plugins.ihtsyn.url ../ihtsyn
     git config submodule.plugins.QuickJS.url ../quickjs
     git config submodule.plugins.Autinn.url ../autinn
-    git config submodule.plugins.substation-opensource.url ../substation-opensource
     git config submodule.plugins.MockbaModular.url ../mockbamodular
     git config submodule.plugins.8Mode.url ../8mode-vcv_modules
     git config submodule.plugins.Axioma.url ../axioma
