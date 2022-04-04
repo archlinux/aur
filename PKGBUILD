@@ -1,8 +1,8 @@
 # Maintainer: Niklas Krafczyk <krafczyk.n at gmail dot com>
 # Contributor: r7v
 pkgname=klee
-pkgver=2.2
-pkgrel=10
+pkgver=2.3
+pkgrel=11
 epoch=
 pkgdesc="Symbolic virtual machine built on top of the LLVM compiler infrastructure"
 arch=('x86_64')
@@ -13,18 +13,18 @@ depends=('gperftools'
          'z3'
          'libcap'
          'python'
-         'llvm-libs>=3.8'
+         'llvm-libs>=6.0'
          'klee-uclibc'
          'sqlite')
 makedepends=('gperftools'
              'z3'
-             'llvm>=3.8'
+             'llvm>=6.0'
              'clang'
              'cmake'
              'git')
 checkdepends=('python-tabulate')
 optdepends=()
-provides=('klee=2.2')
+provides=('klee=2.3')
 conflicts=()
 replaces=()
 backup=()
@@ -32,7 +32,7 @@ options=()
 install=
 changelog=
 #source=("git+https://github.com/klee/klee.git#tag=v2.2"
-source=("git+https://github.com/klee/klee.git#commit=5719d2803e93252e5d4613f43afc7db0d72332f1"
+source=("git+https://github.com/klee/klee.git#commit=879be792870d20a51e26f8f007d24fc0584ee514"
         "git+https://github.com/google/googletest.git#tag=release-1.10.0") #Building from the repo so it's built with the same compiler as klee is
 noextract=()
 md5sums=('SKIP'
