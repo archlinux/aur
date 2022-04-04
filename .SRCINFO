@@ -19,7 +19,7 @@ pkgbase = wpgtk-git
 	provides = wpgtk=r871.4854f42
 	conflicts = wpgtk
 	noextract = wpgtk.png
-	source = https://github.com/deviantfero/wpgtk#branch=master
+	source = git+https://github.com/deviantfero/wpgtk.git
 	source = wpgtk.png::https://github.githubassets.com/images/icons/emoji/unicode/1f3b4.png
 	sha512sums = SKIP
 	sha512sums = SKIP
