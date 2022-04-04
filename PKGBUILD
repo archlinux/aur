@@ -2,7 +2,7 @@
 # Contributor: Tiago Brait <tiagobrait AT gmail DOT com>
 
 pkgname=ca-certificates-icp_br
-pkgver=20220310
+pkgver=20220401
 pkgrel=1
 pkgdesc="Brazilian government Certification Authorities"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('unzip')
 _source="icpbr_certs-${pkgver}-${pkgrel}"
 
 source=("$_source.zip::http://acraiz.icpbrasil.gov.br/credenciadas/CertificadosAC-ICP-Brasil/ACcompactado.zip")
-sha512sums=('76671ad5f25b8053e7d3ada1b9c4614108808ff151dfa3bd12a065defea15fbbf47484b1d1cb5417185dd160d39e1a11e42904d912bb5068126bc9f17af551fd')
+sha512sums=('8543d60b68a1c231f3ca453cd17b8eda0fdb47144592b419909e6d6e76e1acea2cf93a6a968dbcf3fd1bd8c555f05b4e0a3ead8954e572b85f57c9ff8df28a84')
 noextract=("$_source.zip")
 
 prepare() {
