@@ -1,0 +1,28 @@
+pkgbase = vosk-api
+	pkgdesc = Offline speech recognition toolkit
+	pkgver = 0.3.32
+	pkgrel = 1
+	url = https://alphacephei.com/vosk/
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	makedepends = gradle
+	makedepends = python
+	makedepends = python-cffi
+	makedepends = python-setuptools
+	depends = gcc-libs
+	optdepends = java-runtime: for java bindings
+	optdepends = python-cffi: for python module
+	source = https://github.com/alphacep/vosk-api/archive/v0.3.32/vosk-api-0.3.32.tar.gz
+	source = https://github.com/xianyi/OpenBLAS/archive/v0.3.13/openblas-0.3.13.tar.gz
+	source = https://github.com/alphacep/clapack/archive/v3.2.1/clapack-3.2.1.tar.gz
+	source = git+https://github.com/alphacep/openfst.git#commit=7dfd808194105162f20084bb4d8e4ee4b65266d5
+	source = git+https://github.com/alphacep/kaldi.git#commit=593861b96eb15c9ee625d89629ea586591a9d4ae
+	sha256sums = acf61c1af48f15e4c6ac299b2aca3c17d83ec48073c5c6229e2de3601b1e6882
+	sha256sums = 79197543b17cc314b7e43f7a33148c308b0807cd6381ee77f77e15acf3e6459e
+	sha256sums = ed1074b0f396608f304f5ae5e5090ea62aab741ed9f63c7677af9ba99a90ca78
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vosk-api
