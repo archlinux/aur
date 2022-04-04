@@ -1,8 +1,8 @@
 # Maintainer: Frederik Schwan <freswa at archlinux dot org>
 
 pkgname=talosctl
-pkgver=1.0.0
-_commit=80167fd23f8156d357d30eccdea8e93cc2fc141f
+pkgver=1.0.1
+_commit=65d872edfdcd0167ccca1897876d188e2df68c43
 # https://github.com/siderolabs/talos/blob/master/Makefile#L16
 _pkgs='v1.0.0-6-g7c293d5'
 _extras='v1.0.0'
