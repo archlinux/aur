@@ -3,25 +3,15 @@
 
 pkgname=evdi
 pkgver=1.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux® kernel module that enables management of multiple screens."
 arch=('i686' 'x86_64')
 url="https://github.com/DisplayLink/evdi"
 license=('GPL')
-groups=()
 depends=(glibc dkms libdrm)
-makedepends=()
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=$pkgname.install
 changelog=$pkgname.Changelog
-source=($pkgname-$pkgver-$pkgrel.tar.gz::https://github.com/DisplayLink/evdi/archive/v$pkgver.tar.gz)
-noextract=()
-md5sums=('4f2f91ade5e648e3526be3e6bcc72f61')
+source=(https://github.com/DisplayLink/evdi/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
+sha256sums=('4c6fe26b91b5e6490b80e4c30de110d72daf19e1d162e14a2654eee3fec19087')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -30,26 +20,22 @@ prepare() {
     src="${src%%::*}"
     src="${src##*/}"
     [[ $src = *.patch ]] || continue
-    patch -Np1 < "../$src"
+    patch -Np1 -i "../$src"
   done
 }
 
 build() {
-# We only need to build the library in this step, dkms will build the module
-cd "$pkgname-$pkgver/library"
-
-make
+  # We only need to build the library in this step, dkms will build the module
+  cd "$pkgname-$pkgver/library"
+  make
 }
 
 package() {
-# Predfine some target folders
-SRCDIR="$pkgdir/usr/src/$pkgname-$pkgver"	# This one is needed for dkms
-LIBNAME=lib$pkgname
+  cd "$pkgname-$pkgver"
 
-cd "$pkgname-$pkgver"
+  install -Dm0755 library/lib$pkgname.so "$pkgdir/usr/lib/lib$pkgname.so"
 
-install -D -m 755 library/$LIBNAME.so $pkgdir/usr/lib/$LIBNAME.so
-
-install -d $SRCDIR
-install -D -m 755 module/* $SRCDIR
+  SRCDIR="$pkgdir/usr/src/$pkgname-$pkgver"	# This one is needed for dkms
+  install -d "$SRCDIR"
+  install -Dm0755 module/* "$SRCDIR"
 }
