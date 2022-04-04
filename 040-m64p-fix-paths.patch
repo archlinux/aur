@@ -31,7 +31,7 @@
  void MainWindow::setupDiscord()
  {
 -    QLibrary *discordLib = new QLibrary((QDir(QCoreApplication::applicationDirPath()).filePath("discord_game_sdk")), this);
-+    QLibrary *discordLib = new QLibrary(QStringLiteral(u"/usr/lib/discord_game_sdk"), this);
++    QLibrary *discordLib = new QLibrary(QStringLiteral(u"discord_game_sdk"), this);
  
      memset(&discord_app, 0, sizeof(discord_app));
  
@@ -53,6 +53,17 @@
  #endif
      QString file_path;
      QString plugin_path;
+--- a/mupen64plus-gui/mainwindow.h
++++ b/mupen64plus-gui/mainwindow.h
+@@ -1,7 +1,7 @@
+ #ifndef MAINWINDOW_H
+ #define MAINWINDOW_H
+ 
+-#include "discord/discord_game_sdk.h"
++#include <discord_game_sdk.h>
+ #include "oglwindow.h"
+ #include "workerthread.h"
+ #include "logviewer.h"
 --- a/mupen64plus-gui/settingsdialog.cpp
 +++ b/mupen64plus-gui/settingsdialog.cpp
 @@ -58,7 +58,7 @@ void SettingsDialog::initStuff()
@@ -64,3 +75,34 @@
  #endif
      QDir PluginDir(pluginPath);
      QStringList Filter;
+--- a/mupen64plus-gui/workerthread.h
++++ b/mupen64plus-gui/workerthread.h
+@@ -6,7 +6,7 @@
+ #include <QString>
+ #include <QSurfaceFormat>
+ #include "common.h"
+-#include "discord/discord_game_sdk.h"
++#include <discord_game_sdk.h>
+ 
+ class WorkerThread
+ #ifndef SINGLE_THREAD
+--- a/mupen64plus-input-qt/main.cpp
++++ b/mupen64plus-input-qt/main.cpp
+@@ -27,7 +27,7 @@
+ #include "m64p_plugin.h"
+ #include "main.h"
+ #include "configdialog.h"
+-#include "vosk/vosk_api.h"
++#include <vosk_api.h>
+ #include "osal/osal_dynamiclib.h"
+ #include "vruwords.h"
+ #include "funcs.h"
+@@ -731,7 +731,7 @@ static int setupVosk()
+ {
+     if (voskLib)
+         return 0;
+-    voskLib = new QLibrary((QDir(QCoreApplication::applicationDirPath()).filePath("vosk")));
++    voskLib = new QLibrary(QStringLiteral(u"vosk"));
+     VoskAcceptWaveform = (ptr_vosk_recognizer_accept_waveform) voskLib->resolve("vosk_recognizer_accept_waveform");
+     VoskFinalResult = (ptr_vosk_recognizer_final_result) voskLib->resolve("vosk_recognizer_final_result");
+     VoskNewModel = (ptr_vosk_model_new) voskLib->resolve("vosk_model_new");
