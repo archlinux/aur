@@ -1,7 +1,7 @@
 pkgbase = kdocker
 	pkgdesc = An application to help you dock any application into the system tray
 	pkgver = 5.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/user-none/KDocker
 	arch = i686
 	arch = x86_64
@@ -11,7 +11,8 @@ pkgbase = kdocker
 	depends = libxpm
 	depends = libxmu
 	source = https://github.com/user-none/KDocker/archive/5.3.tar.gz
+	source = fix-deadlock.patch
 	sha256sums = c49eea33d46a626b2a59c8ddc923ce9a027f0b9bd2125f4f6c264e888997e663
+	sha256sums = 731edac829b4231ddf87f3ed6cd043df4c2026bec4dc26dd11c22ad79876bcbd
 
 pkgname = kdocker
-
