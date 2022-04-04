@@ -1,0 +1,15 @@
+pkgbase = smap-git
+	pkgdesc = a drop-in replacement for Nmap powered by shodan.io
+	pkgver = 0.1.0.rc.r3.gb331526
+	pkgrel = 1
+	url = https://github.com/s0md3v/smap
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	provides = smap
+	conflicts = smap
+	source = git+https://github.com/s0md3v/${pkgname%-git}
+	md5sums = SKIP
+
+pkgname = smap-git
