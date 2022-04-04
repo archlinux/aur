@@ -1,0 +1,28 @@
+pkgbase = vosk-api-git
+	pkgdesc = Offline speech recognition toolkit (git version)
+	pkgver = 0.3.32.r48.g2daf67f
+	pkgrel = 1
+	url = https://alphacephei.com/vosk/
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = cmake
+	makedepends = gradle
+	makedepends = python
+	makedepends = python-cffi
+	makedepends = python-setuptools
+	depends = gcc-libs
+	optdepends = java-runtime: for java bindings
+	optdepends = python-cffi: for python module
+	source = git+https://github.com/alphacep/vosk-api.git
+	source = git+https://github.com/xianyi/OpenBLAS.git
+	source = git+https://github.com/alphacep/clapack.git
+	source = git+https://github.com/alphacep/openfst.git
+	source = git+https://github.com/alphacep/kaldi.git#branch=vosk
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = vosk-api-git
