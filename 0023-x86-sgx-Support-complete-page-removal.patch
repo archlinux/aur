@@ -1,7 +1,7 @@
-From 893e5491bb5dfd3b6fcfe246c5de0a47c977e0c6 Mon Sep 17 00:00:00 2001
+From e8450696982167257dffebfbd8983e8d7b9bc235 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Wed, 8 Sep 2021 11:51:35 -0700
-Subject: [PATCH 23/33] x86/sgx: Support complete page removal
+Date: Mon, 7 Feb 2022 16:45:45 -0800
+Subject: [PATCH 23/34] x86/sgx: Support complete page removal
 
 The SGX2 page removal flow was introduced in previous patch and is
 as follows:

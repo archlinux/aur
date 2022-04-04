@@ -1,7 +1,7 @@
-From 3b27a1d792bba6e07eb6907a96f9ecc183abe6a9 Mon Sep 17 00:00:00 2001
+From 72ff8cf57132e843e3dc95c3f49696c112f9a1b0 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Thu, 3 Jun 2021 14:58:01 -0700
-Subject: [PATCH 09/33] x86/sgx: Export sgx_encl_ewb_cpumask()
+Date: Mon, 7 Feb 2022 16:45:31 -0800
+Subject: [PATCH 09/34] x86/sgx: Export sgx_encl_ewb_cpumask()
 
 Using sgx_encl_ewb_cpumask() to learn which CPUs might have executed
 an enclave is useful to ensure that TLBs are cleared when changes are
@@ -30,10 +30,10 @@ Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
  3 files changed, 68 insertions(+), 29 deletions(-)
 
 diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
-index a980d8458949..687166769ca8 100644
+index 85429db8c8b5..8cb99fc542a6 100644
 --- a/arch/x86/kernel/cpu/sgx/encl.c
 +++ b/arch/x86/kernel/cpu/sgx/encl.c
-@@ -597,6 +597,73 @@ int sgx_encl_mm_add(struct sgx_encl *encl, struct mm_struct *mm)
+@@ -636,6 +636,73 @@ int sgx_encl_mm_add(struct sgx_encl *encl, struct mm_struct *mm)
  	return 0;
  }
  
@@ -120,7 +120,7 @@ index dc262d843411..44431da21757 100644
  			 struct sgx_backing *backing);
  void sgx_encl_put_backing(struct sgx_backing *backing, bool do_write);
 diff --git a/arch/x86/kernel/cpu/sgx/main.c b/arch/x86/kernel/cpu/sgx/main.c
-index 8e4bc6453d26..2de85f459492 100644
+index 4b41efc9e367..d481e8b0e7bc 100644
 --- a/arch/x86/kernel/cpu/sgx/main.c
 +++ b/arch/x86/kernel/cpu/sgx/main.c
 @@ -203,35 +203,6 @@ static void sgx_ipi_cb(void *info)

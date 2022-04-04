@@ -1,7 +1,7 @@
-From b84ac8de47d5b48e0b09b05cce9540199b685d66 Mon Sep 17 00:00:00 2001
+From be44ee6db36a464e6f9d2847c4c095ab5bbb65b2 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Thu, 23 Sep 2021 14:56:45 -0700
-Subject: [PATCH 31/33] x86/sgx: Free up EPC pages directly to support large
+Date: Mon, 7 Feb 2022 16:45:53 -0800
+Subject: [PATCH 31/34] x86/sgx: Free up EPC pages directly to support large
  page ranges
 
 The page reclaimer ensures availability of EPC pages across all
@@ -62,10 +62,10 @@ index 0ffb07095a80..d8c3c07badb3 100644
  
  		entry = sgx_encl_load_page(encl, addr);
 diff --git a/arch/x86/kernel/cpu/sgx/main.c b/arch/x86/kernel/cpu/sgx/main.c
-index 6e2cb7564080..545da16bb3ea 100644
+index 1a3014aec490..a1cb7435932a 100644
 --- a/arch/x86/kernel/cpu/sgx/main.c
 +++ b/arch/x86/kernel/cpu/sgx/main.c
-@@ -370,6 +370,12 @@ static bool sgx_should_reclaim(unsigned long watermark)
+@@ -378,6 +378,12 @@ static bool sgx_should_reclaim(unsigned long watermark)
  	       !list_empty(&sgx_active_page_list);
  }
  

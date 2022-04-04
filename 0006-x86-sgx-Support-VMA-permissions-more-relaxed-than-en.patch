@@ -1,7 +1,7 @@
-From 9b2b9fb957ea59b81327d1367f1d6126f4ad5d66 Mon Sep 17 00:00:00 2001
+From 721f971c8c55d4b3eff23466c48235f121e038fe Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Tue, 8 Jun 2021 09:51:52 -0700
-Subject: [PATCH 06/33] x86/sgx: Support VMA permissions more relaxed than
+Date: Mon, 7 Feb 2022 16:45:28 -0800
+Subject: [PATCH 06/34] x86/sgx: Support VMA permissions more relaxed than
  enclave permissions
 
 === Summary ===
@@ -120,10 +120,10 @@ index 89ff924b1480..5659932728a5 100644
  =====================
  
 diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
-index 48afe96ae0f0..b6105d9e7c46 100644
+index 6fa3d0a14b93..2f80f9e5e8c6 100644
 --- a/arch/x86/kernel/cpu/sgx/encl.c
 +++ b/arch/x86/kernel/cpu/sgx/encl.c
-@@ -91,10 +91,8 @@ static struct sgx_epc_page *sgx_encl_eldu(struct sgx_encl_page *encl_page,
+@@ -132,10 +132,8 @@ static struct sgx_epc_page *sgx_encl_eldu(struct sgx_encl_page *encl_page,
  }
  
  static struct sgx_encl_page *sgx_encl_load_page(struct sgx_encl *encl,
@@ -135,7 +135,7 @@ index 48afe96ae0f0..b6105d9e7c46 100644
  	struct sgx_epc_page *epc_page;
  	struct sgx_encl_page *entry;
  
-@@ -102,14 +100,6 @@ static struct sgx_encl_page *sgx_encl_load_page(struct sgx_encl *encl,
+@@ -143,14 +141,6 @@ static struct sgx_encl_page *sgx_encl_load_page(struct sgx_encl *encl,
  	if (!entry)
  		return ERR_PTR(-EFAULT);
  
@@ -150,7 +150,7 @@ index 48afe96ae0f0..b6105d9e7c46 100644
  	/* Entry successfully located. */
  	if (entry->epc_page) {
  		if (entry->desc & SGX_ENCL_PAGE_BEING_RECLAIMED)
-@@ -138,7 +128,9 @@ static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
+@@ -179,7 +169,9 @@ static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
  {
  	unsigned long addr = (unsigned long)vmf->address;
  	struct vm_area_struct *vma = vmf->vma;
@@ -160,7 +160,7 @@ index 48afe96ae0f0..b6105d9e7c46 100644
  	unsigned long phys_addr;
  	struct sgx_encl *encl;
  	vm_fault_t ret;
-@@ -155,7 +147,7 @@ static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
+@@ -196,7 +188,7 @@ static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
  
  	mutex_lock(&encl->lock);
  
@@ -169,7 +169,7 @@ index 48afe96ae0f0..b6105d9e7c46 100644
  	if (IS_ERR(entry)) {
  		mutex_unlock(&encl->lock);
  
-@@ -167,7 +159,19 @@ static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
+@@ -208,7 +200,19 @@ static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
  
  	phys_addr = sgx_get_epc_phys_addr(entry->epc_page);
  
@@ -190,7 +190,7 @@ index 48afe96ae0f0..b6105d9e7c46 100644
  	if (ret != VM_FAULT_NOPAGE) {
  		mutex_unlock(&encl->lock);
  
-@@ -295,15 +299,14 @@ static int sgx_encl_debug_write(struct sgx_encl *encl, struct sgx_encl_page *pag
+@@ -336,15 +340,14 @@ static int sgx_encl_debug_write(struct sgx_encl *encl, struct sgx_encl_page *pag
   * Load an enclave page to EPC if required, and take encl->lock.
   */
  static struct sgx_encl_page *sgx_encl_reserve_page(struct sgx_encl *encl,
@@ -208,7 +208,7 @@ index 48afe96ae0f0..b6105d9e7c46 100644
  		if (PTR_ERR(entry) != -EBUSY)
  			break;
  
-@@ -339,8 +342,7 @@ static int sgx_vma_access(struct vm_area_struct *vma, unsigned long addr,
+@@ -380,8 +383,7 @@ static int sgx_vma_access(struct vm_area_struct *vma, unsigned long addr,
  		return -EFAULT;
  
  	for (i = 0; i < len; i += cnt) {

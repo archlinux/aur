@@ -1,0 +1,206 @@
+From e144c0fc07a2a84a60ff35c25eaf39bc465dc7a2 Mon Sep 17 00:00:00 2001
+From: Jarkko Sakkinen <jarkko@kernel.org>
+Date: Fri, 11 Mar 2022 15:59:23 +0200
+Subject: [PATCH 34/34] Revert "x86/sgx: x86/sgx: Add
+ sgx_encl_page->vm_run_prot_bits for dynamic permission changes"
+
+This reverts commit 730033a082775ac59f28c35c18aa39132fd4cfe9.
+---
+ Documentation/x86/sgx.rst       | 10 ----------
+ arch/x86/kernel/cpu/sgx/encl.c  |  9 ++++-----
+ arch/x86/kernel/cpu/sgx/encl.h  |  3 +--
+ arch/x86/kernel/cpu/sgx/ioctl.c | 33 ++++-----------------------------
+ 4 files changed, 9 insertions(+), 46 deletions(-)
+
+diff --git a/Documentation/x86/sgx.rst b/Documentation/x86/sgx.rst
+index 4059efbb4d2e..6c66ce0ec69c 100644
+--- a/Documentation/x86/sgx.rst
++++ b/Documentation/x86/sgx.rst
+@@ -99,16 +99,6 @@ The relationships between the different permission masks are:
+ * PTEs are installed to match the EPCM permissions, but not be more
+   relaxed than the VMA permissions.
+ 
+-During runtime the EPCM permissions of enclave pages belonging to an
+-initialized enclave can change on systems supporting SGX2. In support
+-of these runtime changes the kernel maintains (for each enclave page)
+-the most permissive EPCM permission mask allowed by policy as
+-the ``vm_max_prot_bits`` of that page. EPCM permissions are not allowed
+-to be relaxed beyond ``vm_max_prot_bits``.  The kernel also maintains
+-the currently active EPCM permissions of an enclave page as its
+-``vm_run_prot_bits`` to ensure PTEs and new VMAs respect the active
+-EPCM permission values.
+-
+ On systems supporting SGX2 EPCM permissions may change while the
+ enclave page belongs to a VMA without impacting the VMA permissions.
+ This means that a running VMA may appear to allow access to an enclave
+diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
+index cbafad786ff5..fbb19ebe065c 100644
+--- a/arch/x86/kernel/cpu/sgx/encl.c
++++ b/arch/x86/kernel/cpu/sgx/encl.c
+@@ -206,8 +206,7 @@ static vm_fault_t sgx_encl_eaug_page(struct vm_area_struct *vma,
+ 	 * is set here.
+ 	 */
+ 	prot = PROT_READ | PROT_WRITE | PROT_EXEC;
+-	encl_page->vm_run_prot_bits = calc_vm_prot_bits(prot, 0);
+-	encl_page->vm_max_prot_bits = encl_page->vm_run_prot_bits;
++	encl_page->vm_max_prot_bits = calc_vm_prot_bits(prot, 0);
+ 
+ 	epc_page = sgx_alloc_epc_page(encl_page, true);
+ 	if (IS_ERR(epc_page)) {
+@@ -337,7 +336,7 @@ static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
+ 	 * exceed the VMA permissions.
+ 	 */
+ 	vm_prot_bits = vma->vm_flags & (VM_READ | VM_WRITE | VM_EXEC);
+-	page_prot_bits = entry->vm_run_prot_bits & vm_prot_bits;
++	page_prot_bits = entry->vm_max_prot_bits & vm_prot_bits;
+ 	/*
+ 	 * Add VM_SHARED so that PTE is made writable right away if VMA
+ 	 * and EPCM are writable (no COW in SGX).
+@@ -390,7 +389,7 @@ static vm_fault_t sgx_vma_pfn_mkwrite(struct vm_fault *vmf)
+ 		goto out;
+ 	}
+ 
+-	if (!(entry->vm_run_prot_bits & VM_WRITE))
++	if (!(entry->vm_max_prot_bits & VM_WRITE))
+ 		ret = VM_FAULT_SIGBUS;
+ 
+ out:
+@@ -458,7 +457,7 @@ int sgx_encl_may_map(struct sgx_encl *encl, unsigned long start,
+ 	mutex_lock(&encl->lock);
+ 	xas_lock(&xas);
+ 	xas_for_each(&xas, page, PFN_DOWN(end - 1)) {
+-		if (~page->vm_run_prot_bits & vm_prot_bits) {
++		if (~page->vm_max_prot_bits & vm_prot_bits) {
+ 			ret = -EACCES;
+ 			break;
+ 		}
+diff --git a/arch/x86/kernel/cpu/sgx/encl.h b/arch/x86/kernel/cpu/sgx/encl.h
+index 1b6ce1da7c92..47d4750b581f 100644
+--- a/arch/x86/kernel/cpu/sgx/encl.h
++++ b/arch/x86/kernel/cpu/sgx/encl.h
+@@ -27,8 +27,7 @@
+ 
+ struct sgx_encl_page {
+ 	unsigned long desc;
+-	unsigned long vm_max_prot_bits:8;
+-	unsigned long vm_run_prot_bits:8;
++	unsigned long vm_max_prot_bits:16;
+ 	enum sgx_page_type type:16;
+ 	struct sgx_epc_page *epc_page;
+ 	struct sgx_encl *encl;
+diff --git a/arch/x86/kernel/cpu/sgx/ioctl.c b/arch/x86/kernel/cpu/sgx/ioctl.c
+index d8c3c07badb3..9ce13a962483 100644
+--- a/arch/x86/kernel/cpu/sgx/ioctl.c
++++ b/arch/x86/kernel/cpu/sgx/ioctl.c
+@@ -198,12 +198,6 @@ static struct sgx_encl_page *sgx_encl_page_alloc(struct sgx_encl *encl,
+ 	/* Calculate maximum of the VM flags for the page. */
+ 	encl_page->vm_max_prot_bits = calc_vm_prot_bits(prot, 0);
+ 
+-	/*
+-	 * At time of allocation, the runtime protection bits are the same
+-	 * as the maximum protection bits.
+-	 */
+-	encl_page->vm_run_prot_bits = encl_page->vm_max_prot_bits;
+-
+ 	return encl_page;
+ }
+ 
+@@ -764,12 +758,6 @@ static long sgx_enclave_relax_perm(struct sgx_encl *encl,
+ 			goto out_unlock;
+ 		}
+ 
+-		/*
+-		 * Change runtime protection before zapping PTEs to ensure
+-		 * any new #PF uses new permissions.
+-		 */
+-		entry->vm_run_prot_bits = vm_prot;
+-
+ 		mutex_unlock(&encl->lock);
+ 		/*
+ 		 * Do not keep encl->lock because of dependency on
+@@ -946,9 +934,9 @@ static long sgx_enclave_restrict_perm(struct sgx_encl *encl,
+ 				      struct sgx_enclave_restrict_perm *modp,
+ 				      u64 secinfo_perm)
+ {
+-	unsigned long vm_prot, run_prot_restore;
+ 	struct sgx_encl_page *entry;
+ 	struct sgx_secinfo secinfo;
++	unsigned long vm_prot;
+ 	unsigned long addr;
+ 	unsigned long c;
+ 	void *epc_virt;
+@@ -1002,14 +990,6 @@ static long sgx_enclave_restrict_perm(struct sgx_encl *encl,
+ 			goto out_unlock;
+ 		}
+ 
+-		/*
+-		 * Change runtime protection before zapping PTEs to ensure
+-		 * any new #PF uses new permissions. EPCM permissions (if
+-		 * needed) not changed yet.
+-		 */
+-		run_prot_restore = entry->vm_run_prot_bits;
+-		entry->vm_run_prot_bits = vm_prot;
+-
+ 		mutex_unlock(&encl->lock);
+ 		/*
+ 		 * Do not keep encl->lock because of dependency on
+@@ -1033,12 +1013,12 @@ static long sgx_enclave_restrict_perm(struct sgx_encl *encl,
+ 			pr_err_once("EMODPR encountered exception %d\n",
+ 				    ENCLS_TRAPNR(ret));
+ 			ret = -EFAULT;
+-			goto out_prot_restore;
++			goto out_reclaim;
+ 		}
+ 		if (encls_failed(ret)) {
+ 			modp->result = ret;
+ 			ret = -EFAULT;
+-			goto out_prot_restore;
++			goto out_reclaim;
+ 		}
+ 
+ 		ret = sgx_enclave_etrack(encl);
+@@ -1054,8 +1034,6 @@ static long sgx_enclave_restrict_perm(struct sgx_encl *encl,
+ 	ret = 0;
+ 	goto out;
+ 
+-out_prot_restore:
+-	entry->vm_run_prot_bits = run_prot_restore;
+ out_reclaim:
+ 	sgx_mark_page_reclaimable(entry->epc_page);
+ out_unlock:
+@@ -1136,7 +1114,7 @@ static long sgx_enclave_modt(struct sgx_encl *encl,
+ 			     struct sgx_enclave_modt *modt,
+ 			     enum sgx_page_type page_type)
+ {
+-	unsigned long max_prot_restore, run_prot_restore;
++	unsigned long max_prot_restore;
+ 	struct sgx_encl_page *entry;
+ 	struct sgx_secinfo secinfo;
+ 	unsigned long prot;
+@@ -1182,7 +1160,6 @@ static long sgx_enclave_modt(struct sgx_encl *encl,
+ 		}
+ 
+ 		max_prot_restore = entry->vm_max_prot_bits;
+-		run_prot_restore = entry->vm_run_prot_bits;
+ 
+ 		/*
+ 		 * Once a regular page becomes a TCS page it cannot be
+@@ -1200,7 +1177,6 @@ static long sgx_enclave_modt(struct sgx_encl *encl,
+ 			}
+ 			prot = PROT_READ | PROT_WRITE;
+ 			entry->vm_max_prot_bits = calc_vm_prot_bits(prot, 0);
+-			entry->vm_run_prot_bits = entry->vm_max_prot_bits;
+ 
+ 			/*
+ 			 * Prevent page from being reclaimed while mutex
+@@ -1262,7 +1238,6 @@ static long sgx_enclave_modt(struct sgx_encl *encl,
+ 
+ out_entry_changed:
+ 	entry->vm_max_prot_bits = max_prot_restore;
+-	entry->vm_run_prot_bits = run_prot_restore;
+ out_unlock:
+ 	mutex_unlock(&encl->lock);
+ out:
+-- 
+2.35.1
+

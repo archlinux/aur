@@ -1,7 +1,7 @@
-From 46d31de79df27d730ae8625fbdffc8690310dc53 Mon Sep 17 00:00:00 2001
+From 6580ecec3c24b798a94858e32820e047dd14317c Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Tue, 25 Jan 2022 13:32:34 -0800
-Subject: [PATCH 05/33] Documentation/x86: Document SGX permission details
+Date: Mon, 7 Feb 2022 16:45:27 -0800
+Subject: [PATCH 05/34] Documentation/x86: Document SGX permission details
 
 Provide summary of the various permissions involved in
 managing access to enclave pages. This summary documents
