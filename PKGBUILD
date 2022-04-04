@@ -1,9 +1,9 @@
 # Maintainer: Posi<posi1981@gmail.com>
 pkgname=betterbird-bin
 _pkgname=betterbird
-pkgver=91.7.0_bb28
-_build=
-pkgrel=2
+pkgver=91.8.0
+_build=bb29
+pkgrel=1
 pkgdesc="EN-US // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
 arch=('x86_64')
 url="https://www.betterbird.eu/index.html"
@@ -12,7 +12,7 @@ provides=("betterbird=${pkgver}")
 conflicts=()
 source=(
 #    "https://www.betterbird.eu/downloads/get.php?os=linux&lang=en-US&version=release"
-    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}${_build}.en-US.linux-x86_64.tar.bz2"
+    "https://www.betterbird.eu/downloads/LinuxArchive/${_pkgname}-${pkgver//_/-}-${_build}.en-US.linux-x86_64.tar.bz2"
     "betterbird.desktop"
 )
 
@@ -32,5 +32,5 @@ package() {
             "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png
     done
 }
-sha256sums=('49ed2f8fd27d4ad22130bfb6398c26a51a3ae39c849db583c3de3e3f4ef177e0'
+sha256sums=('d8c041eb63a9ba9f9601fc56613e1338ccc98ef891f74d8e998be44df151538c'
             'c613467d1c0826d663b406b6fe37e44127eb8c0cae23748aa8ca43a16dd32cbf')
