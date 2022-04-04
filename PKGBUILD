@@ -2,7 +2,7 @@
 
 pkgname=psi-notify-git
 _gitname=psi-notify
-pkgver=0.3.r23.g7d356b1
+pkgver=1.2.1.r11.gd6f6368
 pkgrel=1
 pkgdesc='Minimalistic PSI notifier using libnotify (git version)'
 url="https://github.com/cdown/psi-notify"
@@ -12,7 +12,7 @@ depends=(libnotify)
 provides=(psi-notify)
 conflicts=(psi-notify)
 makedepends=(git)
-source=(git://github.com/cdown/psi-notify.git)
+source=(git+https://github.com/cdown/psi-notify.git)
 md5sums=('SKIP')
 
 pkgver() {
