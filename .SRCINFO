@@ -1,6 +1,6 @@
 pkgbase = sqlboiler
 	pkgdesc = Generate a Go ORM tailored to your database schema
-	pkgver = 4.8.6
+	pkgver = 4.9.0
 	pkgrel = 1
 	url = https://github.com/volatiletech/sqlboiler
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = sqlboiler
 	makedepends = go
 	depends = glibc
 	options = !lto
-	source = sqlboiler::git+https://github.com/volatiletech/sqlboiler.git#commit=d5757fd434da93733828fa70a222255c92f6db83
+	source = sqlboiler::git+https://github.com/volatiletech/sqlboiler.git#commit=fb61ccff2f4ef534b360334cf2f1af85e7ed8838
 	b2sums = SKIP
 
 pkgname = sqlboiler
