@@ -6,13 +6,13 @@
 
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
-pkgver=0.12.1.r406.ga61c53f87
-pkgrel=1
+pkgver=0.12.1.r413.g282ac7f1f
+pkgrel=2
 pkgdesc='A peer-to-peer hypermedia distribution protocol'
 url="https://github.com/ipfs/$_pkgname"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('MIT')
-makedepends=("go>=2:1.14.4-1" "go<2:1.18" git)
+makedepends=("go>=2:1.14.4-1" git)
 optdepends=('fuse2: for mounting/advanced use'
             'bash-completion: bash completion support')
 provides=("$_pkgname")
@@ -29,6 +29,8 @@ prepare() {
 	export PATH="$PATH:$GOPATH/bin"
 	# fix for broken version
 	chmod u+w -R "$GOPATH"
+	# fix for #8819
+	go get github.com/lucas-clemente/quic-go@v0.26.0
 	go get -d -v ./...
 }
 
