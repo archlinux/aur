@@ -1,0 +1,24 @@
+pkgbase = diligent-engine-git
+	pkgdesc = A modern cross-platform low-level graphics library and rendering framework
+	pkgver = 2.5.2.r0.ga4e03562
+	pkgrel = 1
+	url = https://github.com/DiligentGraphics/DiligentEngine
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	makedepends = make
+	makedepends = clang
+	depends = libxcursor
+	depends = mesa-utils
+	depends = python-distlib
+	depends = libxrandr
+	depends = libglvnd
+	depends = libxinerama
+	depends = libxi
+	optdepends = vulkan-devel
+	provides = diligent-engine
+	source = diligent-engine-git::git+https://github.com/DiligentGraphics/DiligentEngine.git
+	sha256sums = SKIP
+
+pkgname = diligent-engine-git
