@@ -1,7 +1,7 @@
 pkgbase = fsniper-git
 	pkgdesc = Daemon to run scripts based on changes in files monitored by inotify (git)
 	pkgver = r240.8bec021
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/projectivemotion/fsniper
 	install = fsniper.install
 	arch = i686

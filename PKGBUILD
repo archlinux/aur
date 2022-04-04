@@ -3,7 +3,7 @@
 pkgname=fsniper-git
 _pkgname=fsniper
 pkgver=r240.8bec021
-pkgrel=1
+pkgrel=2
 pkgdesc='Daemon to run scripts based on changes in files monitored by inotify (git)'
 url='https://github.com/projectivemotion/fsniper'
 license=('GPL3')
