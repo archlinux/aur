@@ -19,7 +19,7 @@ source=("http://wsr.imagej.net/distros/cross-platform/ij$_pkgver.zip"
         "imagej.desktop"
         "microscope.xpm")
 noextract=("ij$_pkgver.zip")
-sha256sums=('306b947540ee5b7b3fc860baf2b1ebeb1c7399849c52375745ac03a5cd5442ac'
+sha256sums=('76e5613abd229928a08e3911174ff48f545b3d5acd996418373dcb04b05d3621'
             'dfdc669778b74011bf9aeee4361b8c50d16d1b3fe5ef8fba54c98f2f31c466be'
             'c223a3b2437501edd92176f87bbea75d994104e1545eea6c120ef8c774c7114e'
             '799188b0b2cf1dc684dc2f029dbd31a4b44b691b51fd5e42027a994452bc038e'
