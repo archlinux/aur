@@ -37,6 +37,7 @@ pkgbase = pcl
 	depends = cgns
 	depends = unixodbc
 	depends = openni2
+	depends = libxcursor
 	optdepends = cuda
 	optdepends = openni2
 	optdepends = python-sphinx
