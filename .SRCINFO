@@ -12,6 +12,7 @@ pkgbase = ldr-translate-gtk
 	depends = python-gobject
 	depends = gnome-shell-extension-appindicator
 	depends = libappindicator-gtk3
+	conflicts = ldr-translate-qt
 	source = https://github.com/yuhldr/ldr-translate/archive/refs/tags/v1.3.1.tar.gz
 	md5sums = a5bf142da605f3116159aa0ca10fb355
 
