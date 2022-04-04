@@ -7,7 +7,7 @@ arch=("x86_64")
 
 url='https://github.com/MrGlockenspiel/activate-linux'
 makedepends=('make' 'clang')
-depends=('cairo' 'libxi' 'libx11' 'libxt' 'libx11files')
+depends=('cairo' 'libxi' 'libx11' 'libxt')
 license=('custom')
 sha512sums=('SKIP')
 

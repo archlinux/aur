@@ -11,7 +11,6 @@ pkgbase = activate-linux-git
 	depends = libxi
 	depends = libx11
 	depends = libxt
-	depends = libx11files
 	source = git+https://github.com/MrGlockenspiel/activate-linux
 	sha512sums = SKIP
 
