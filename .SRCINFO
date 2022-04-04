@@ -1,0 +1,12 @@
+pkgbase = chromium-extension-return-youtube-dislike
+	pkgdesc = Return YouTube Dislike - chromium extension
+	pkgver = 2.1.0.3
+	pkgrel = 1
+	url = https://github.com/noahvogt/return-youtube-dislike
+	arch = any
+	license = GPL3
+	noextract = chromium-extension-return-youtube-dislike-2.1.0.3.crx
+	source = https://github.com/noahvogt/return-youtube-dislike/releases/download/v2.1.0.3/return-youtube-dislike-2.1.0.3.crx
+	sha256sums = c383bb218995dc497e91cc47ee3c82d6c8a9532f5f83aa7b8d885aadb4559020
+
+pkgname = chromium-extension-return-youtube-dislike
