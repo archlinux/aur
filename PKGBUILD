@@ -3,7 +3,7 @@
 _name=spsdk
 pkgname=python-spsdk
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="NXP Secure Provisioning SDK"
 arch=(any)
 url="https://github.com/NXPmicro/spsdk"
@@ -33,7 +33,7 @@ depends=(
   python-ruamel-yaml
   python-sly
 )
-makedepends=(python-setuptools)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(
   python-jsonschema
   python-pytest
@@ -71,12 +71,13 @@ prepare() {
   sed '/pyocd-pemicro/d' -i requirements.txt
 
   # click 8.1 removed get_os_args, so replace with sys.argv[1:]
+  # https://github.com/NXPmicro/spsdk/pull/41
   patch -Np1 -i ../$pkgname-1.6.3-click8.1.patch
 }
 
 build() {
   cd $_name-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -88,7 +89,7 @@ check() {
 
 package() {
   cd $_name-$pkgver
-  python setup.py install --optimize=1 --root="$pkgdir"
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -vDm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
   install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
