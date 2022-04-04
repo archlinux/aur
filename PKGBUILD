@@ -6,12 +6,12 @@
 # Contributor: Giovanni Scafora <giovanni@archlinux.org>
 
 pkgname=wine-ge-custom
-_srctag=GE-Proton7-7
+_srctag=GE-Proton7-8
 pkgver=${_srctag//-/.}
 pkgrel=1
 epoch=1
 
-_wine_commit=cfab5e57749b94a23577f2550c0dbe28bbb074d4
+_wine_commit=f9a1df9deb4bfcbf8eef5c0cdee35bc768d18c4c
 _stag_commit=2fc92f8ba6e577b8baf69053aabe1c302f352197
 #_winever=${pkgver%.*}
 #_winever=$pkgver
@@ -135,6 +135,9 @@ prepare() {
       patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
       patch -p1 -i "$srcdir"/wine-wmclass.patch
       patch -p1 -i "$srcdir"/wine-isolate_home.patch
+      git config user.email "makepkg@aur.not"
+      git config user.name "makepkg aur"
+      git tag wine-7.0 --annotate -m "$pkgver"
       dlls/winevulkan/make_vulkan
       tools/make_requests
       autoreconf -f
