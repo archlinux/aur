@@ -2,7 +2,7 @@
 
 pkgname=xonsh-git
 _gitname=xonsh
-pkgver=0.9.27.r29.g8ad8b043
+pkgver=0.11.0.r121.gb1fe9e49
 pkgrel=1
 pkgdesc="A Python-ish, BASHwards-compatible shell"
 url="https://github.com/xonsh/xonsh"
@@ -10,9 +10,9 @@ arch=('any')
 license=('FreeBSD')
 depends=('python' 'python-ply')
 optdepends=('python-prompt_toolkit: support for SHELL_TYPE=prompt_toolkit')
-makedepends=('python-setuptools')
+makedepends=('git' 'python-setuptools')
 conflicts=('xonsh')
-source=("git://github.com/scopatz/$_gitname.git")
+source=("git+https://github.com/scopatz/xonsh.git")
 install=xonsh.install
 sha256sums=('SKIP')
 
