@@ -1,0 +1,16 @@
+pkgbase = python-pyevtx
+	pkgdesc = Python bindings for evtx
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://github.com/omerbenamram/pyevtx-rs
+	changelog = CHANGELOG.md
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = maturin
+	makedepends = python-installer
+	depends = python
+	source = python-pyevtx-0.7.3.tar.gz::https://files.pythonhosted.org/packages/source/e/evtx/evtx-0.7.3.tar.gz
+	sha256sums = 321c6f4b39102d4d970e60eef8d07913321540cb524830962ecf61a8394cf71a
+
+pkgname = python-pyevtx
