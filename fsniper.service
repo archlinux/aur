@@ -1,0 +1,9 @@
+[Unit]
+Description=fsniper service
+
+[Service]
+ExecStart=/usr/bin/fsniper
+Restart=always
+
+[Install]
+WantedBy=default.target
