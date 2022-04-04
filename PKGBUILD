@@ -1,7 +1,7 @@
 # Maintainer: Qirui Wang <wqr.prg@gmail.com>
 
 pkgname=wxqt-dev
-pkgver=3.1.5
+pkgver=3.1.6
 pkgrel=1
 pkgdesc='Qt implementation of wxWidgets API for GUI'
 arch=('x86_64')
@@ -11,8 +11,8 @@ depends=('libsecret' 'qt5-base')
 makedepends=('glu')
 conflicts=('wxgtk-common')
 source=("https://github.com/wxWidgets/wxWidgets/releases/download/v${pkgver}/wxWidgets-${pkgver}.tar.bz2")
-sha1sums=('725455d6324baa808259b56a42199237327e0638')
-sha256sums=('d7b3666de33aa5c10ea41bb9405c40326e1aeb74ee725bb88f90f1d50270a224')
+sha1sums=('266be7de43351e7d75c308f7f45469a5c433479c')
+sha256sums=('4980e86c6494adcd527a41fc0a4e436777ba41d1893717d7b7176c59c2061c25')
 
 build() {
   cd wxWidgets-${pkgver}
