@@ -1,6 +1,6 @@
 pkgbase = xorgxrdp-git
 	pkgdesc = Xorg drivers for xrdp
-	pkgver = 0.2.17
+	pkgver = 0.2.18
 	pkgrel = 1
 	url = https://github.com/neutrinolabs/xorgxrdp
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = xorgxrdp-git
 	makedepends = xorg-server-devel
 	depends = xrdp
 	options = !emptydirs
-	source = https://github.com/neutrinolabs/xorgxrdp/releases/download/v0.2.17/xorgxrdp-0.2.17.tar.gz
-	sha256sums = de6fb593edfbaead1d47c663fc9c04bdad7e98293c0dca2bdc10727c54b24ced
+	source = https://github.com/neutrinolabs/xorgxrdp/releases/download/v0.2.18/xorgxrdp-0.2.18.tar.gz
+	sha256sums = 45df8934dfc39e97a5d8722859b82186d2dfd0a4f80c92a6f7771bd85baed93c
 
 pkgname = xorgxrdp-git
