@@ -1,0 +1,7 @@
+cache/
+pkg/
+src/
+squashfs-root/
+
+gaphor-bin-*.pkg.tar.zst
+gaphor-bin-*.AppImage
