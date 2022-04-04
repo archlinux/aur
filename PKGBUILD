@@ -4,9 +4,9 @@
 
 _pkgname='github-desktop'
 pkgname="${_pkgname}-bin"
-pkgver=2.9.12
-pkgrel=4
-_pkgver="${pkgver}-linux${pkgrel}"
+pkgver=2.9.12_linux4
+pkgrel=1
+_pkgver="${pkgver//_/-}"
 _gitname="release-${_pkgver}"
 pkgdesc="GUI for managing Git and GitHub."
 arch=('x86_64')
