@@ -1,0 +1,14 @@
+--- src/dump_eco.cpp	2022-04-03 14:45:16.651218909 +0200
++++ src/dump_eco.cpp.new	2022-04-03 14:09:13.464684405 +0200
+@@ -116,8 +116,9 @@
+ static void
+ throwInvalidEco(unsigned lineNo, char const* eco)
+ {
+-	M_RAISE(	"invalid ECO code '%s' (line %u)",
+-				mstl::string(eco, eco + mstl::min(7u, strlen(eco))).c_str(), lineNo);
++// 	M_RAISE(	"invalid ECO code '%s' (line %u)",
++//				mstl::string(eco, eco + mstl::min(7u, strlen(eco))).c_str(), lineNo);
++	M_RAISE(	"invalid ECO code '%s' (line %u)", mstl::string(eco, eco).c_str(), lineNo);
+ }
+ 
+ 

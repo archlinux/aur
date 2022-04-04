@@ -1,0 +1,11 @@
+--- src/sys/sys_info.cpp	2022-04-03 15:18:40.964429789 +0200
++++ src/sys/sys_info.cpp.new	2022-04-03 14:32:24.271266099 +0200
+@@ -27,7 +27,7 @@
+ # include <stdlib.h>
+ # include <unistd.h>
+ # include <sys/types.h>
+-# include <sys/sysctl.h>
++// # include <sys/sysctl.h>
+ 
+ #ifdef __hpux
+ # include <sys/pstat.h>

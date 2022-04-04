@@ -1,37 +1,112 @@
-# Maintainer: q9 <qqqqqqqqq9 at web dot de>
+# Maintainer: 2022-04-04 blacktav <blacktav at gmail dot com>
+# Contributor: Original submitter q9 <qqqqqqqqq9 at web dot de>
 pkgname=scidb-svn
-pkgver=1.0.beta.r1111
+pkgver=1.0.beta.r1531
 pkgrel=1
-epoch=2
-pkgdesc="Scidb is a Chess Information Data Base SVN-Checkout"
+# epoch=2
+pkgdesc="Scidb is a Chess Information Data Base; includes 2 engines, imports from Chess Base files"
 arch=('x86_64' 'i686')
-url="http://scidb.sourceforge.net/"
+url="https://scidb.sourceforge.net/"
 license=('GPL2')
-depends=('tk' 'zziplib' 'shared-mime-info'  'minizip' 'libxcursor' 'libsm' 'hicolor-icon-theme' 'desktop-file-utils')
+depends=('tk'
+         'shared-mime-info'
+         'libsm'
+         'libxcursor'
+         'minizip'
+         'tcl'
+         # recommended
+         'gdbm'
+         'zziplib'
+         # recommended for KDE, GTK & XFCE
+         'desktop-file-utils'
+         'hicolor-icon-theme'
+         'shared-mime-info'
+         'xdg-utils'
+         )
+makedepends=(
+           # needed for build purposes
+           'patch'
+            )
 conflicts=('scidb')
-options=('!buildflags' '!makeflags' '!debug' )
+#options=('!buildflags' '!makeflags' '!debug' )
 install=$pkgname.install
-source=('scidb-svn::svn://svn.code.sf.net/p/scidb/code/trunk')
-md5sums=('SKIP')
+source=('scidb-svn::svn://svn.code.sf.net/p/scidb/code/trunk'
+        'configure.patch'
+        'dump_eco.cpp.patch'
+        'engines.Sjeng.Makefile.patch'
+        'sys_info.cpp.patch'
+        )
+md5sums=('SKIP'
+         '3dd938a3a7f744813ccb76fe4826d167'
+         '47f44f0eec5d9e0a9e7e1bb25adea3b4'
+         '68c9d47e5af84ac25c87045e3388c6f1'
+         'ef91ffeceab48c260bb1c2af7d02cd9c'
+        )
 pkgver() {
-  cd "$srcdir/$pkgname"
-      local ver="$(svnversion)"
-        printf "%s" "1.0.beta.r${ver//[[:alpha:]]}"
+  cd $srcdir/$pkgname
+  local ver="$(svnversion)"
+  printf "%s" "1.0.beta.r${ver//[[:alpha:]]}"
 }
 
 prepare() {
-  mkdir -p  $srcdir/$pkgname-build/
-  cp -r $srcdir/$pkgname/*  $srcdir/$pkgname-build/
+  echo " - prepare starting"
+#  mkdir -p  $srcdir/$pkgname-build/
+#  cp -r $srcdir/$pkgname/*  $srcdir/$pkgname-build/
+#  cp *.patch $srcdir/$pkgname
+#  cd $srcdir
+#  patch -u $srcdir/$pkgname/configure -i configure.patch
+#  patch -u $srcdir/$pkgname/src/dump_eco.cpp -i dump_eco.cpp.patch
+#  patch -u $srcdir/$pkgname/src/sys/sys_info.cpp -i sys_info.cpp.patch
+#  patch -u $srcdir/$pkgname/engines/Sjeng/Makefile -i engines.Sjeng.Makefile.patch
+  echo " - prepare complete"
 }
 
 build() {
-	cd "$srcdir/$pkgname-build"
-   ./configure --prefix="/usr" --exec-prefix="/usr" --enginesdir=/usr/bin --destdir=$pkgdir  --enable-debug-si4=no --enable-freedesktop=no  
+  echo " - patching files"
+  patch -u $srcdir/$pkgname/configure -i configure.patch
+  patch -u $srcdir/$pkgname/src/dump_eco.cpp -i dump_eco.cpp.patch
+  patch -u $srcdir/$pkgname/src/sys/sys_info.cpp -i sys_info.cpp.patch
+  patch -u $srcdir/$pkgname/engines/Sjeng/Makefile -i engines.Sjeng.Makefile.patch
+
+  echo " - configure project"
+  cd $srcdir/$pkgname
+  # Set switches for configure script
+  # Default switches had debugging turned on
+  #     deployment is below /usr/local/bin
+  # this version has debugging off and small code
+  SWITCHES=()
+  SWITCHES+=("--destdir=${pkgdir}")             # so we can create a build file
+  SWITCHES+=("--prefix=/usr")                   # defaults to /usr/local/
+  SWITCHES+=("--exec-prefix=/usr")              # defaults to /usr/local/
+#  SWITCHES+=("--bindir=/usr/bin")               # defaults to EPREFIX/bin
+#  SWITCHES+=("--enginesdir=/usr/bin")           # defaults to EPREFIX/games
+#  SWITCHES+=("--datadir=/usr/bin")              # defaults to PREFIX/share
+#  SWITCHES+=("--libdir=/usr/lib")               # defaults to EPREFIX/lib
+  SWITCHES+=("--mandir=/usr/share/man")         # defaults to EPREFIX/man
+#  SWITCHES+=("--fontdir=/usr/")                 # defaults to PREFIX/share/fonts
+  SWITCHES+=("--enable-freedesktop=no")         # default=yes
+#  SWITCHES+=("--enable-fam=yes")                # default=no
+  SWITCHES+=("--enable-symbols=no")             # default=yes
+  SWITCHES+=("--enable-assertions=no")          # default=yes
+#  SWITCHES+=("--enable-sse2=yes")               # default=no
+#  SWITCHES+=("--enable-gprof-profiling=yes")    # default=no
+#  SWITCHES+=("--enable-gcov-coverage=yes")      # default=no
+#  SWITCHES+=("--enable-inline-text=no")         # default=yes
+  SWITCHES+=("--suppress-insane-message")
+#  SWITCHES+=("")
+#  SWITCHES+=("")
+  SWITCHSTRING=""
+  for SWITCH in "${SWITCHES[@]}" ; do
+    SWITCHSTRING="${SWITCHSTRING} ${SWITCH}"
+  done
+  export CFLAGS="-fcommon" CXXFLAGS="-fcommon" ; ./configure ${SWITCHSTRING}
+  echo " - ready for build"
   make clean
-	make
+  make
+  echo " - build complete"
 }
 
 package() {
-	cd "$srcdir/$pkgname-build"
+  cd $srcdir/$pkgname
   make install
 }

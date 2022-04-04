@@ -1,0 +1,11 @@
+--- configure	2022-04-03 15:14:50.811110517 +0200
++++ configure.new	2022-04-03 15:14:42.167777711 +0200
+@@ -274,7 +274,7 @@
+ set instableTkLibrary ""
+ set x11Libraries " -lX11 -lSM -lICE"
+ 
+-set MinGCCVersion "3.4"
++set MinGCCVersion "10.0"
+ set MinClangVersion "3.1"
+ 
+ 
