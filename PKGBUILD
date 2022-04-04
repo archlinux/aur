@@ -26,11 +26,6 @@ source=("https://files.pythonhosted.org/packages/source/c/$_name/$_name-$pkgver.
 sha256sums=('2d97210a83b0a3fe1e4469f5ff9a6420b078572035188b1bab7103c3a36dc89b')
 
 
-prepare() {
-  cd "$_name-$pkgver"
-  find . -name __init__.py -exec sed -i 's/w\(indows-1252\)/W\1/g' \{\} \;
-}
-
 build() {
   cd "$_name-$pkgver"
   python -m build --wheel --no-isolation
