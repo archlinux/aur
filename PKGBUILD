@@ -1,11 +1,12 @@
 pkgname=openmw-git
-pkgver=0.47.0.r1788.g2bd99867f
-pkgrel=2
+pkgver=0.47.0.r2137.gca77ae336
+pkgrel=1
 pkgdesc="An open-source engine reimplementation for the role-playing game Morrowind."
 arch=('i686' 'x86_64')
 url="http://www.openmw.org"
 license=('GPL3' 'MIT' 'custom')
-depends=('openal' 'openscenegraph' 'mygui' 'bullet-multithreaded' 'qt5-base' 'ffmpeg' 'sdl2' 'unshield' 'libxt' 'boost-libs' 'luajit' 'recastnavigation-openmw')
+# Workaround ffmpeg4.4 https://gitlab.com/OpenMW/openmw/-/issues/6631#note_848732223
+depends=('openal' 'openscenegraph' 'mygui' 'bullet-multithreaded' 'qt5-base' 'ffmpeg4.4' 'sdl2' 'unshield' 'libxt' 'boost-libs' 'luajit' 'recastnavigation-openmw')
 optdepends=('openscenegraph-openmw-git: experimental performance enhancements for OpenMW that are too controversial to be included in the general purpose OSG project')
 makedepends=('git' 'cmake' 'boost')
 conflicts=("${pkgname%-git}")
@@ -23,6 +24,10 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname%-git}"
+
+  # Workardoung ffmpeg4.4 https://gitlab.com/OpenMW/openmw/-/issues/6631#note_848732223
+  export PKG_CONFIG_LIBDIR='/usr/lib/ffmpeg4.4/pkgconfig/'
+
   cmake -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
         -DDESIRED_QT_VERSION=5 \
