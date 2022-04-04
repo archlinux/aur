@@ -75,5 +75,5 @@ package_icalingua++-electron-git(){
     install -Dm644 512x512.png "${pkgdir}/usr/share/icons/hicolor/512x512/apps/icalingua.png"
     install -Dm644 icalingua.desktop "${pkgdir}/usr/share/applications/icalingua.desktop"
     install -Dm755 icalingua "${pkgdir}/usr/bin/icalingua"
-    sed -i "s/electron/${_electron}/" "${pkgdir}/usr/bin/icalingua"
+    #sed -i "s/electron/${_electron}/" "${pkgdir}/usr/bin/icalingua"
 }
