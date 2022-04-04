@@ -3,14 +3,16 @@
 
 pkgname=networkmanager-openvpn
 pkgver=1.8.18
-pkgrel=1
+pkgrel=2
 pkgdesc="NetworkManager VPN plugin for OpenVPN"
 url="https://wiki.gnome.org/Projects/NetworkManager"
 arch=(x86_64)
 license=(GPL)
 depends=(libnm libsecret openvpn)
-makedepends=(libnma intltool python git)
-optdepends=('libnma: GUI support')
+makedepends=(libnma libnma-gtk4 intltool python git)
+optdepends=('libnma: GUI support (GTK 3)'
+            'libnma-gtk4: GUI support (GTK 4)')
+options=(debug)
 _commit=428aa26bc05cac4cf418624128bb10c9d4003e5d  # tags/1.8.18^0
 source=("git+https://gitlab.gnome.org/GNOME/NetworkManager-openvpn.git#commit=$_commit")
 sha256sums=('SKIP')
@@ -29,7 +31,7 @@ prepare() {
 build() {
   cd NetworkManager-openvpn
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-    --libexecdir=/usr/lib --disable-static
+    --libexecdir=/usr/lib --disable-static --with-gtk4
   sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
   make
 }
