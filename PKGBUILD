@@ -3,6 +3,7 @@
 # Maintainer: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: dorphell <dorphell@archlinux.org>
 # Contributor: Dan McGee <dan@archlinux.org>
+# Contributor: MeaTLoTioN <ml@erb.pw>
 
 pkgname=cvs-feature
 pkgver=1.12.13
