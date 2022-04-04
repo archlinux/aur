@@ -1,6 +1,6 @@
 pkgbase = phpup-bin
 	pkgdesc = Cross-Platform PHP version manager written in rust
-	pkgver = 0.1.7
+	pkgver = 0.1.8
 	pkgrel = 1
 	url = https://github.com/masan4444/phpup
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = phpup-bin
 	provides = phpup
 	conflicts = phpup
 	conflicts = phpup-git
-	source = phpup-bin-0.1.7.zip::https://github.com/masan4444/phpup/releases/download/v0.1.7/phpup-linux.zip
-	sha256sums = 1ed9854816df2604e4173910c08254a413b39660a21fb850da3ab5afb29bb219
+	source = phpup-bin-0.1.8.zip::https://github.com/masan4444/phpup/releases/download/v0.1.8/phpup-linux.zip
+	sha256sums = 5eb98b0da31dd4c33c44a60f25aec72f6ab1a351a255950fe3880ea0745bcfa3
 
 pkgname = phpup-bin
