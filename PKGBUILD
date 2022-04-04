@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=GE-Proton7-13
+_srctag=GE-Proton7-14
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
@@ -126,7 +126,6 @@ source=(
     protonfixes-gloriouseggroll::git+https://github.com/gloriouseggroll/protonfixes.git
     gst-plugins-bad::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad.git
     gst-plugins-ugly::git+https://gitlab.freedesktop.org/gstreamer/gst-plugins-ugly.git
-    gamemode::git+https://github.com/FeralInteractive/gamemode.git
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     wine-more_8x5_res.patch
@@ -218,7 +217,6 @@ prepare() {
         protonfixes-gloriouseggroll::protonfixes
         gst-plugins-bad
         gst-plugins-ugly
-        gamemode
     )
 
     for submodule in "${_submodules[@]}"; do
@@ -377,7 +375,6 @@ package() {
 }
 
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
