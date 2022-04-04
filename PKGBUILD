@@ -1,7 +1,7 @@
 #Maintainer: Benjamin Reich <aur@benjaminreich.de>
 pkgname=smap-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=0.1.0.rc.r3.gb331526
-pkgrel=1
+pkgrel=2
 pkgdesc="a drop-in replacement for Nmap powered by shodan.io "
 arch=('x86_64')
 url="https://github.com/s0md3v/${pkgname%-git}"
@@ -15,7 +15,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=('git+https://github.com/s0md3v/${pkgname%-git}')
+source=('git+https://github.com/s0md3v/smap')
 noextract=()
 md5sums=('SKIP')
 
