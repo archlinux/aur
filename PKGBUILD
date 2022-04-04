@@ -12,7 +12,7 @@ pkgdesc='A peer-to-peer hypermedia distribution protocol'
 url="https://github.com/ipfs/$_pkgname"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=('MIT')
-makedepends=("go>=2:1.14.4-1" git)
+makedepends=("go>=2:1.15.2-1" git)
 optdepends=('fuse2: for mounting/advanced use'
             'bash-completion: bash completion support')
 provides=("$_pkgname")
