@@ -2,8 +2,8 @@
 
 pkgname=aplugedit-git
 _pkgname=aplugedit
-pkgver=20201225.ac2c32a
-pkgrel=1
+pkgver=20220404.c22282a
+pkgrel=2
 pkgdesc="APlugEdit is a graphical schematic editor for ALSA .asoundrc file"
 arch=('i686' 'x86_64')
 url="https://github.com/kernel1024/aplugedit"
@@ -13,7 +13,7 @@ depends=('qt5-base>=5.10.0' 'alsa-lib' 'ladspa')
 optdepends=('gstreamer: Sample player support with interactive debug logging' )
 
 makedepends=('git')
-source=("git://github.com/kernel1024/aplugedit.git")
+source=("git+https://github.com/kernel1024/aplugedit.git")
 md5sums=('SKIP')
 
 pkgver() {
