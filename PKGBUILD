@@ -1,6 +1,6 @@
 # Maintainer: Duy Truong <jimreynold2nd@yahoo.com>
 pkgname=ubports-installer
-pkgver=0.9.1_beta
+pkgver=0.9.5_beta
 _ver=${pkgver//_/-}
 pkgrel=2
 pkgdesc='A simple tool to install Ubuntu Touch on UBports devices'
@@ -11,7 +11,7 @@ depends=('android-tools' 'android-udev' 'electron' 'e2fsprogs' 'heimdall')
 options=('!strip' '!emptydirs')
 conflicts=('ubports-installer-git' 'ubports-installer-bin')
 source=("$pkgname-$pkgver.deb::https://github.com/ubports/ubports-installer/releases/download/$_ver/ubports-installer_${_ver}_linux_amd64.deb")
-sha512sums=('0b7921370bab98a847cd3d40872ba1a6ca50af08f6f889a40f1c7e9f52e02d481e1c85dbfb4452d853086b86821c5b803ffb45ede8fd8a258c1f2cc15767cebe')
+sha256sums=('08094deec0832623c720fe2ee5edb29d6aec643be4210a41a1ead6baf938d609')
 
 package() {
         tar xf data.tar.xz -C "${pkgdir}"
