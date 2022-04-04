@@ -1,0 +1,15 @@
+pkgbase = macchina-bin
+	pkgdesc = Fast, minimal and customizable system information frontend
+	pkgver = 6.0.6
+	pkgrel = 1
+	url = https://github.com/macchina-cli/macchina
+	arch = aarch64
+	arch = x86_64
+	license = MIT
+	depends = wmctrl
+	source_aarch64 = https://github.com/macchina-cli/macchina/releases/download/v6.0.6/macchina-linux-aarch64
+	sha256sums_aarch64 = 8eb6f8c42fed0bdf950f52d9eae1d15022812e66da2bed08f8ac2052772d3ec1
+	source_x86_64 = https://github.com/macchina-cli/macchina/releases/download/v6.0.6/macchina-linux-x86_64
+	sha256sums_x86_64 = 0a5bc95c22ed31035f4e905c75124062c3e8501199005f7f181e7c6f0ea77113
+
+pkgname = macchina-bin
