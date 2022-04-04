@@ -2,7 +2,7 @@
 
 pkgname=python-simplebitcoinfuncs
 pkgver=0.1.5
-pkgrel=4
+pkgrel=5
 pkgdesc='Simple and easy functions for common Bitcoin operations'
 arch=('any')
 url='https://github.com/maxweisspoker/simplebitcoinfuncs'
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python-setuptools' 'python-pbkdf2')
 provides=('python-simplebitcoinfuncs')
 conflicts=('python-simplebitcoinfuncs')
-source=('git://github.com/maxweisspoker/simplebitcoinfuncs')
+source=('git+https://github.com/maxweisspoker/simplebitcoinfuncs')
 sha256sums=('SKIP')
 package() {
     cd "$srcdir/simplebitcoinfuncs/"
