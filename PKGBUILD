@@ -2,8 +2,8 @@
 
 pkgname=qmanga-git
 _pkgname=qmanga
-pkgver=20211028.52653bd
-pkgrel=3
+pkgver=20220203.e1234c1
+pkgrel=4
 pkgdesc="Manga and book reader written with Qt"
 arch=('i686' 'x86_64')
 url="https://github.com/kernel1024/qmanga"
@@ -15,7 +15,7 @@ optdepends=('djvulibre: DJVU files support'
             'ebook-tools: EPUB support')
 
 makedepends=('git')
-source=("git://github.com/kernel1024/qmanga.git")
+source=("git+https://github.com/kernel1024/qmanga.git")
 md5sums=('SKIP')
 
 pkgver() {
