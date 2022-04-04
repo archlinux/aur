@@ -1,7 +1,7 @@
 pkgbase = python-fluiddyn
 	pkgdesc = A framework for studying fluid dynamics using Python
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://foss.heptapod.net/fluiddyn/fluiddyn
 	arch = any
 	license = custom:"CeCILL-B"
@@ -18,6 +18,6 @@ pkgbase = python-fluiddyn
 	provides = python-fluiddyn
 	conflicts = python2-fluiddyn-hg
 	source = https://foss.heptapod.net/fluiddyn/fluiddyn/-/archive/0.5.0/fluiddyn-0.5.0.tar.gz
-	sha512sums = 847a360fa4a23014d574272422715bad2c5bb32eae37f2c75d9a2194903720c73996d9bacfc3ab006243a746055cd8eecd2227ff0a5eb6a0f65310dc08bd5c3a
+	sha512sums = a581a20d06f7d43537dc7e1ec4b26022dfaa31e8eedcf07a1a72ff8ada396f042f468b2984e9cb76c5a349d83a7aba11496fdae669c73809d90d804a98e39d88
 
 pkgname = python-fluiddyn
