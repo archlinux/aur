@@ -18,10 +18,9 @@ depends=('mingw-w64-fontconfig'
          'mingw-w64-libpng'
          'mingw-w64-lzo'
          'mingw-w64-glib2')
-makedepends=('mingw-w64-configure'
+makedepends=('mingw-w64-meson'
              'mingw-w64-librsvg'
-             'mingw-w64-poppler'
-             'gtk-doc')
+             'mingw-w64-poppler')
 conflicts=("${pkgname}-bootstrap")
 replaces=("${pkgname}-bootstrap")
 options=('!strip' '!buildflags' 'staticlibs')
@@ -44,6 +43,8 @@ build() {
   cd "${srcdir}"
   for _arch in ${_architectures}; do
     ${_arch}-meson cairo build-${_arch} \
+      --buildtype=release \
+      --default-library=both \
       -D spectre=disabled \
       -D tee=enabled \
       -D tests=disabled \
@@ -57,8 +58,8 @@ package() {
   cd "${srcdir}"
   for _arch in ${_architectures}; do
     meson install -C build-${_arch} --destdir "${pkgdir}"
-    find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
-    find "${pkgdir}/usr/${_arch}" -name '*.a' -o -name '*.dll' | xargs ${_arch}-strip -g
+    ${_arch}-strip --strip-unneeded "${pkgdir}"/usr/${_arch}/bin/*.dll
+    ${_arch}-strip -g "${pkgdir}"/usr/${_arch}/lib/*.a
   done
 }
 
