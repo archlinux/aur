@@ -3,7 +3,7 @@
 
 pkgname=nerdctl-bin
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Docker-compatible CLI for containerd"
 arch=(
   'x86_64'
