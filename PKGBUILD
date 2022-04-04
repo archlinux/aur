@@ -1,34 +1,24 @@
 # Maintainer: Theowhy <aur.theowhy@shizoku.fr>
 # Contributor: jpkotta
 pkgname=mfgtools
-pkgver=1.4.165
+pkgver=1.4.193
 pkgrel=1
 pkgdesc="Freescale/NXP I.MX Chip image deploy tools"
 arch=(x86_64)
 url="https://github.com/NXPmicro/mfgtools"
 license=('BSD')
-groups=()
 depends=('bzip2' 'zlib' 'libusb' 'libzip' 'openssl')
-makedepends=('cmake' 'git')
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
+makedepends=('cmake')
 changelog=History.md
-source=(git+https://github.com/NXPmicro/mfgtools#tag=uuu_$pkgver uuu-complete.bash)
-noextract=()
-sha256sums=(SKIP SKIP)
+source=(https://github.com/NXPmicro/mfgtools/releases/download/uuu_$pkgver/uuu_source-$pkgver.tar.gz uuu-complete.bash)
+sha256sums=('a9b8b74e32e6718d591c66951b8b52276df7862db80ee943e046947f7313e57f'
+            'ffc8e32655ce574a4719c85c5c9a3530a5ec619e933fc801a291df8ec506a442')
 
-pkgver() {
-  cd "$pkgname"
-  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/uuu_//g'
-}
 
 build() {
-  cd "$pkgname"
+  cd "uuu-$pkgver"
+  # Remove useless folders to make
+  rm -Rf -- bzip2 libusb msvc zlib
   mkdir -p build
   cd build
 
@@ -37,7 +27,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname/build"
+  cd "uuu-$pkgver/build"
 
   make DESTDIR="$pkgdir/" install
 

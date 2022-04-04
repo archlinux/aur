@@ -1,4 +1,40 @@
 
+uuu_1.4.193 / 2022-01-18
+========================
+
+  * consolidated libusb_init and libusb_deinit into CAutoDeInit
+
+uuu_1.4.191 / 2022-01-04
+========================
+
+  * Fixed 314 Corrupt image with larger transfer sizes at sdp(s)
+  * fixed missed true at else branch at built-in script
+  * Added CAutoDeInit to call libusb_exit() automatically
+  * Replaced all libusb_get_device_list calls with CAutoList objects
+  * can't call libusb_exit at uuu_for_each_devices
+  * fixed missed call libusb_free_device_list at look_for_match_device
+  * Fixed invalid progress percentage in verbose mode
+
+uuu_1.4.182 / 2021-12-13
+========================
+
+  * Add NXP FB/FBK/SDPV device PID
+  * Fixed QSPI flashing script
+  * Fix cmake warning related to uuu tool
+  * Add zlib1g-dev to fix snap build failure
+
+uuu_1.4.174 / 2021-11-04
+========================
+
+  * Fix invalid test on fastboot_bytes on lst script
+  * ubuntu 16 still use old libusb version
+  * Fix depracated method TLSv1_2_client_method
+  * Remove depracated function libusb_set_debug
+  * Remove dependences from fastboot_bytes that is specific to freescale uboot
+  * fix #297 print error when run quit cmd in shell mode
+  * remove unnecessary libzip dependency
+  * Fix #180 support check getval return value
+
 uuu_1.4.165 / 2021-09-28
 ========================
 
