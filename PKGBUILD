@@ -9,35 +9,35 @@ url="https://reassembler.blogspot.com/"
 license=('custom')
 depends=('sdl' 'gcc-libs' 'sh')
 makedepends=('git' 'cmake' 'boost')
+provides=('cannonball')
 install=cannonball.install
 source=($pkgname::"git+https://github.com/djyt/cannonball.git"
         "cannonball.desktop"
         "cannonball.sh")
 sha256sums=('SKIP'
-            '2cb4472728b9e3657b40fa4202944d4c0736e3b7287cbeb5fc4d622de4d477c0'
-	    '04d0c0e9252bccfef97bb59c9e89376461f9b52845570b2ebc14610ce74cf1ff')
+	    '04d0c0e9252bccfef97bb59c9e89376461f9b52845570b2ebc14610ce74cf1ff'
+	    '2cb4472728b9e3657b40fa4202944d4c0736e3b7287cbeb5fc4d622de4d477c0')
 
 pkgver() {
-  cd ${pkgname%-*}
+  cd $pkgname
   git describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 prepare() {
-  cd ${pkgname%-*}
+  cd cannonball-git
   rm -rf build
   mkdir build
 }
 
 build() {
-  cd ${pkgname%-*}/build
+  cd $pkgname/build
 
   cmake ../cmake -DTARGET=linux.cmake -DOpenGL_GL_PREFERENCE=GLVND -B .
   make
 }
 
 package() {
-  pwd
-  cd cannonball
+  cd cannonball-git
 
   # xdg desktop, icon, launcher, binary
   install -Dm755 ../cannonball.desktop "$pkgdir"/usr/share/applications/cannonball.desktop
