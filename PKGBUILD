@@ -5,7 +5,7 @@
 pkgname=firedragon
 _pkgname=FireDragon
 pkgver=98.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -46,22 +46,18 @@ sha256sums=('c144b6016aaa8ceab8154b9f0b2bbeee6cbc22ab7f811fcece28d36e49565890'
             'SKIP')
 
 prepare() {
-  if [[ ! -d mozbuild ]];then
+  if [[ ! -d mozbuild ]]; then
       mkdir mozbuild
   fi
   cd firefox-$pkgver
 
-  local _patches_dir="${srcdir}/common/patches"
+  local _patches_dir
+  _patches_dir="${srcdir}/common/patches"
 
-  # Prepare KDE patch
-  sed -i 's/kmozillahelper/kfiredragonhelper/g' ${_patches_dir}/librewolf/mozilla-kde_after_unity.patch
-  sed -i 's/kmozillahelper/kfiredragonhelper/g' ${_patches_dir}/kde/mozilla-kde.patch
+  # Prepare patches, then return to the source directory
+  cd ${_patches_dir} && sh ${srcdir}/common/rebrand.sh
+  cd $srcdir/firefox-$pkgver
 
-  # KDE patches (W. Rosenauer)
-  echo "---- Patching for KDE"
-  patch -Np1 -i ${_patches_dir}/kde/mozilla-nongnome-proxies.patch
-  #patch -Np1 -i ${_patches_dir}/kde/mozilla-kde.patch
-  
   # Ubuntu patches
   echo "---- Misc patches"
   patch -Np1 -i ${_patches_dir}/misc/fix-hidden-buttons-with-csd-menubar.patch
