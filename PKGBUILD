@@ -4,7 +4,7 @@
 # Contributor: Carlo Cabanilla <carlo.cabanilla@gmail.com>
 
 pkgname=python-pex
-pkgver=2.1.75
+pkgver=2.1.76
 pkgrel=1
 arch=('any')
 pkgdesc='Generates executable Python environments'
@@ -21,7 +21,7 @@ makedepends=(
 changelog=CHANGES.rst
 provides=('pex')
 replaces=('pex')
-source=("$pkgname::git+$url#tag=v$pkgver-public-signed?signed")
+source=("$pkgname::git+$url#tag=v$pkgver?signed")
 sha256sums=('SKIP')
 validpgpkeys=('A1FE765B15233EAD18FA6ABB93E55CB567B5C626')
 
@@ -40,8 +40,7 @@ build() {
 # }
 
 package() {
-	export PYTHONHASHSEED=0
 	cd "$pkgname"
-	python -m installer --destdir="$pkgdir/" dist/*.whl
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 docs/_build/man/pex.1 -t "$pkgdir/usr/share/man/man1/"
 }
