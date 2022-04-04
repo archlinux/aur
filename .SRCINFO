@@ -1,6 +1,6 @@
 pkgbase = bullet-multithreaded
 	pkgdesc = A 3D collision detection and rigid body dynamics library, built with Multi-Threading and Double Precision support
-	pkgver = 3.21.r2.6a59241074720e9df119f2f86bc01765917feb1e
+	pkgver = 3.22
 	pkgrel = 1
 	url = http://www.bulletphysics.com/Bullet/
 	arch = x86_64
@@ -17,9 +17,9 @@ pkgbase = bullet-multithreaded
 	makedepends = python-setuptools
 	makedepends = ninja
 	makedepends = git
-	source = git+https://github.com/bulletphysics/bullet3.git#commit=6a59241074720e9df119f2f86bc01765917feb1e
+	source = https://github.com/bulletphysics/bullet3/archive/refs/tags/3.22b.tar.gz
 	source = local://bullet3_examplebrowser.sh
-	sha512sums = SKIP
+	sha512sums = 9e2f3eb78b94de6a11d605f4ab87868f19d5aa8df61b35030c3866d47ae9c3e5cfc56ab57b8752d697c17489599de55f4066125f3e1fcbcbc61eed8821ae3f24
 	sha512sums = 8741ad94b6c46c226d89aebc8ab06d8a11bac3c04d3f0a2bf7a7524792a3375aa7bf7d295410b16fbeb4c348a31057b4570acdebe9bbaea251f44daca8d9fe81
 
 pkgname = bullet-multithreaded

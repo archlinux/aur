@@ -4,20 +4,19 @@
 
 pkgbase=bullet-multithreaded
 pkgname=('bullet-multithreaded' 'bullet-multithreaded-docs' 'python-pybullet-multithreaded')
-_name=bullet3
-pkgver=3.21.r2.6a59241074720e9df119f2f86bc01765917feb1e
+pkgver=3.22
+_ver=3.22b
+_name=bullet3-${_ver}
 pkgrel=1
-_ver=3.21
 pkgdesc="A 3D collision detection and rigid body dynamics library, built with Multi-Threading and Double Precision support"
 arch=('x86_64' 'aarch64')
 url="http://www.bulletphysics.com/Bullet/"
 license=('custom:zlib')
 makedepends=('cmake' 'doxygen' 'graphviz' 'ttf-dejavu' 'mesa' 'glu' 'python' 'python-numpy' 'python-setuptools' 'ninja' 'git')
-source=("git+https://github.com/bulletphysics/bullet3.git#commit=6a59241074720e9df119f2f86bc01765917feb1e"
+source=("https://github.com/bulletphysics/bullet3/archive/refs/tags/${_ver}.tar.gz"
                 "local://bullet3_examplebrowser.sh")
-sha512sums=('SKIP'
+sha512sums=('9e2f3eb78b94de6a11d605f4ab87868f19d5aa8df61b35030c3866d47ae9c3e5cfc56ab57b8752d697c17489599de55f4066125f3e1fcbcbc61eed8821ae3f24'
             '8741ad94b6c46c226d89aebc8ab06d8a11bac3c04d3f0a2bf7a7524792a3375aa7bf7d295410b16fbeb4c348a31057b4570acdebe9bbaea251f44daca8d9fe81')
-# pybullet version was incorrect in release tarball, switched to master using fixed commithash .
 
 prepare() {
     cd ${_name}
@@ -61,7 +60,7 @@ package_bullet-multithreaded() {
 
     DESTDIR="${pkgdir}" ninja -C _build install
     
-    install -Dm755 _build/examples/ExampleBrowser/libBulletExampleBrowserLib.so.${_ver} "${pkgdir}"/usr/lib/libBulletExampleBrowserLib.so.${_ver}
+    install -Dm755 _build/examples/ExampleBrowser/libBulletExampleBrowserLib.so.${pkgver} "${pkgdir}"/usr/lib/libBulletExampleBrowserLib.so.${pkgver}
     install -Dm755 _build/examples/OpenGLWindow/libOpenGLWindow.so "${pkgdir}"/usr/lib/libOpenGLWindow.so
     install -Dm755 _build/examples/ThirdPartyLibs/Gwen/libgwen.so "${pkgdir}"/usr/lib/libgwen.so
     install -Dm755 _build/examples/ThirdPartyLibs/BussIK/libBussIK.so "${pkgdir}"/usr/lib/libBussIK.so
@@ -78,7 +77,7 @@ package_python-pybullet-multithreaded() {
     provides=('python-pybullet')
     conflicts=('python-pybullet')
 
-    install -Dm755 _build/examples/pybullet/libpybullet.so.${_ver} "${pkgdir}"/usr/lib/libpybullet.so.${_ver}
+    install -Dm755 _build/examples/pybullet/libpybullet.so.${pkgver} "${pkgdir}"/usr/lib/libpybullet.so.${pkgver}
     cd ${_name}
     python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
     install -Dm644 "${srcdir}"/${_name}/LICENSE.txt "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
