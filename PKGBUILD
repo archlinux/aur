@@ -1,6 +1,6 @@
 # Maintainer: Antonio Tauro <eye at eyenx.ch>
 pkgname=whalebrew
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="Homebrew, but with Docker images"
 arch=('x86_64')
@@ -10,7 +10,7 @@ provides=('whalebrew')
 depends=('docker')
 conflicts=('whalebrew')
 source=("https://github.com/bfirsh/whalebrew/releases/download/${pkgver}/whalebrew-Linux-x86_64")
-sha256sums=('6b62b280e55a4349a367ff1e8967dc82e05116c99e04d8026f1dcf11cd2da65f')
+sha256sums=('9820788b61ef1d237912f67796a1659ef5d8137346e640319965a4cecfe671e2')
 
 package() {
   install -D -m755 "$srcdir"/whalebrew-Linux-x86_64 "$pkgdir/usr/bin/whalebrew"
