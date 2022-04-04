@@ -1,15 +1,13 @@
 pkgbase = gnome-shell-extension-color-picker
-	pkgdesc = Simple color picker for gnome shell
+	pkgdesc = Simple color picker for Gnome Shell
 	pkgver = 27
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/tuberry/color-picker
 	arch = any
 	license = GPL3
 	depends = dconf
-	depends = gnome-shell>=41
-	source = https://extensions.gnome.org/extension-data/color-pickertuberry.v27.shell-extension.zip
-	source = https://raw.githubusercontent.com/tuberry/color-picker/master/color-picker%40tuberry/schemas/org.gnome.shell.extensions.color-picker.gschema.xml
-	sha256sums = c8b7e269f214ce97b81930cdd9ca34b28d8d7f8736b69d5ea76d6f3f9dd73de9
-	sha256sums = 0adb1688bd9e0cb9721995eb9b004e622997afcefaf12d33c307a85bf39d5540
+	depends = gnome-shell>=1:41
+	source = tuberry-color-picker-27.tar.gz::https://github.com/tuberry/color-picker/tarball/b84de1f
+	sha256sums = 5a9c8844fe05b12d21f1b8c9659cbc1f638334c97f8320d7a407acd36495f699
 
 pkgname = gnome-shell-extension-color-picker

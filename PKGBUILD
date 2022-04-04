@@ -1,29 +1,26 @@
-# Maintainer: skrewball <skrewball at joickle dot com>
+# Maintainer: skrewball <jason at joickle dot com>
 
 pkgname=gnome-shell-extension-color-picker
+_pkgbase=tuberry-color-picker
 pkgver=27
-pkgrel=3
-pkgdesc='Simple color picker for gnome shell'
+_commit=b84de1f
+pkgrel=4
+pkgdesc='Simple color picker for Gnome Shell'
 arch=(any)
 url='https://github.com/tuberry/color-picker'
 license=('GPL3')
-depends=('dconf' 'gnome-shell>=41')
-source=("https://extensions.gnome.org/extension-data/color-pickertuberry.v${pkgver}.shell-extension.zip"
-	"https://raw.githubusercontent.com/tuberry/color-picker/master/color-picker%40tuberry/schemas/org.gnome.shell.extensions.color-picker.gschema.xml")
-sha256sums=('c8b7e269f214ce97b81930cdd9ca34b28d8d7f8736b69d5ea76d6f3f9dd73de9'
-            '0adb1688bd9e0cb9721995eb9b004e622997afcefaf12d33c307a85bf39d5540')
+depends=('dconf' 'gnome-shell>=1:41')
+source=("${_pkgbase}-${pkgver}.tar.gz::${url}/tarball/${_commit}")
+sha256sums=('5a9c8844fe05b12d21f1b8c9659cbc1f638334c97f8320d7a407acd36495f699')
+
+build() {
+  cd "${_pkgbase}-${_commit}"
+  # The envvar LANG is used to localize pot file.
+  make LANG=${LANG} mergepo \
+    && make VERSION="${pkgver}"
+}
 
 package() {
-    local _uuid="color-picker@tuberry"
-    local _destdir="${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
-    
-    install -Dm644 -t "${_destdir}" metadata.json *.js *.css
-    install -Dm644 -t "${_destdir}/icons" icons/*.svg
-    install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas/" org.gnome.shell.extensions.color-picker.gschema.xml
-    
-    cd locale
-    for locale in */
-      do
-        install -Dm644 -t "${pkgdir}/usr/share/locale/${locale}/LC_MESSAGES" "${locale}/LC_MESSAGES"/*.mo
-      done
+  cd "${_pkgbase}-${_commit}"
+  make DESTDIR="${pkgdir}" install
 }
