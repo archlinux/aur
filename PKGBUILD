@@ -1,7 +1,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=texinfo-git
-pkgver=6.8.r10339.aaf613fb6d
+pkgver=6.8.r10343.beb67a5f97
 pkgrel=1
 epoch=1
 pkgdesc="GNU documentation system for on-line information and printed output"
@@ -33,7 +33,6 @@ prepare() {
   git submodule init
   git config submodule.gnulib.url gnulib
   git submodule update
-  sed -i 's+info-utils.c+util.c+' po/POTFILES.in
 }
 
 build() {
