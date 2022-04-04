@@ -2,7 +2,7 @@
 pkgname=weechat-matrix
 pkgver=0.3.0
 _tag=ebf792a233a50d639b13e5f7c9a1c1fe988e7476 # git rev-parse "$pkgver"
-pkgrel=6
+pkgrel=7
 pkgdesc='WeeChat Matrix protocol script written in Python'
 arch=('any')
 url='https://github.com/poljar/weechat-matrix'
@@ -30,6 +30,9 @@ pkgver() {
 prepare() {
 	cd "$pkgname"
 	sed -ri 's|#!/usr/bin/env( -S)? python3|#!/usr/bin/python3|' contrib/*.py
+
+	# Remove unnecessary dependency version pinning
+	sed -i 's/= "^[0-9.]*"/= "*"/' pyproject.toml
 
 	# SSLContext.set_npn_protocols broken in Python 3.10
 	# (https://github.com/poljar/weechat-matrix/issues/308)
