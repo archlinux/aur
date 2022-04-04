@@ -3,13 +3,13 @@
 
 pkgname=casacore
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Suite of C++ libraries for radio astronomy data processing"
 arch=('x86_64')
 url="https://github.com/casacore/casacore"
 license=('GPL')
-depends=('fftw' 'openblas' 'lapack' 'cfitsio' 'wcslib')
-makedepends=('cmake' 'gcc-fortran')
+depends=('boost-libs' 'fftw' 'openblas' 'lapack' 'cfitsio' 'wcslib' 'python-numpy')
+makedepends=('cmake' 'gcc-fortran' 'boost')
 optdepends=(
   'sofa: only for testing casacore measures'
   'hdf5'
@@ -26,6 +26,7 @@ provides=(
   'libcasa_mirlib.so=6-64'
   'libcasa_msfits.so=6-64'
   'libcasa_ms.so=6-64'
+  'libcasa_python3.so=6-64'
   'libcasa_scimath_f.so=6-64'
   'libcasa_scimath.so=6-64'
   'libcasa_tables.so=6-64')
@@ -39,6 +40,7 @@ build() {
     -Wno-dev \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_PYTHON=OFF \
+    -DBUILD_PYTHON3=ON \
     -DUSE_CCACHE=ON \
     -DCMAKE_BUILD_TYPE=None
   make -C build
