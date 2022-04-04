@@ -342,3 +342,19 @@ Fixes:
 - Fixed a problem of Morgen Scheduling Links with Fastmail calendar.
 - Fixed an issue causing links in the event description to duplicate after each change.
 - Fixed an issue causing some transparent events to be barely readable.
+
+=== Morgen 2.5.1
+New Features:
+- Now Morgen can merge identical events appearing on different calendars: events with the same time and identifier are merged, beautifully. At the same time, you keep the ability to edit each instance individually.
+ 
+Improvements:
+- We improved the parsing of external .ics files, making it more robust to malformed data.
+- We increased the sensitive area for clicks on events, thus making the selection of very short events easier.
+- We made the creation of new events in the calendar more precise, with the event starting time now rounded according to the "Time Dragging Resolution" setting, instead of "Time Display Resolution".
+ 
+Fixes:
+- The confirmation dialog for actions on calendar events was displayed even when not necessary. This has been fixed now.
+- We fixed event invitations with some CalDAV providers.
+- We fixed a problem causing the creation of events to be in a hanging state for too long.
+- We fixed the Notes field, where links were not clickable anymore in the latest release.
+- We fixed a bug causing deleted tags to remain set on events in a sort of invisible state 👻.
