@@ -6,14 +6,14 @@
 
 _pkgname='gnome-terminal'
 pkgname="${_pkgname}-fedora"
-pkgver=3.42.2
-pkgrel=2
+pkgver=3.44.0
+pkgrel=1
 pkgdesc='The GNOME Terminal Emulator with Fedora patches'
 url='https://wiki.gnome.org/Apps/Terminal'
 license=('GPL')
 arch=('i686'
       'x86_64')
-depends=('vte3-notification>=0.66.0'
+depends=('vte3-notification>=0.68.0'
          'gsettings-desktop-schemas')
 makedepends=('git'
              'docbook-xsl'
@@ -31,28 +31,23 @@ groups=('gnome')
 # Fedora patches: https://src.fedoraproject.org/cgit/rpms/gnome-terminal.git/tree/
 _frepourl='https://src.fedoraproject.org/rpms/gnome-terminal'
 _frepobranch='rawhide'
-_fcommit='6ce4c343f37e66397e42a4c1bfded7e083fd1bea'
+_fcommit='4b33c6569babe10424a7a05bded9cced81b07031'
 _fpatchfile100='gnome-terminal-cntr-ntfy-autottl-ts.patch'
 _fgsoverridefile='org.gnome.Terminal.gschema.override'
 
 source=("https://download.gnome.org/sources/${_pkgname}/${pkgver::4}/${_pkgname}-${pkgver}.tar.xz"
 	"${_fpatchfile100}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fpatchfile100}"
 	"${_fgsoverridefile}-${_fcommit}::${_frepourl}/raw/${_fcommit}/f/${_fgsoverridefile}"
-	"0001-Fix-build-with-latest-meson.patch"
 )
-sha256sums=('8a9c8e5ef7a3a73b246a947e1190bb08ec98935af860cf0b3aa2fbf4606817a0'
-            '0b6adf6f8ec31c88044c349fe0e6d10a3cfce96896fd8a655a547fd55ca33838'
-            'a4a22834d6524fb697a8edf91c9489617d5ab2e513413fc84c6b8575320938f9'
-            'f67d28346b2ea612a1633c40e2b120f6bebf20d68202330ab6446d4d9d71c94f')
+sha256sums=('aa967189eeb609459e6c0a468a01ea70cb8c4530da1d500b2d3f4fc438b8fe2a'
+            'cf8c1ccc822e7198bf9a9598b7e0cc3c958c542ba138a5874302b730f0d76eec'
+            'a4a22834d6524fb697a8edf91c9489617d5ab2e513413fc84c6b8575320938f9')
 
 prepare () {
     cd "${_pkgname}-${pkgver}"
 
     # Apply patches
     patch -p1 -i "../${_fpatchfile100}-${_fcommit}"
-
-    # Apply meson patch until fixed upstream
-    patch -p1 -i "../0001-Fix-build-with-latest-meson.patch"
 }
 
 build() {
