@@ -4,8 +4,8 @@
 _pkgname=jgmenu
 _pkgver=4.4.0
 pkgname=${_pkgname}-git
-pkgver=${_pkgname}+9f212d
-pkgrel=6
+pkgver=${_pkgname}+c258a6c
+pkgrel=7
 pkgdesc="Simple, independent, contemporary-looking X11 menu, designed for scripting, ricing and tweaking. Compiled with gtktheme, lx and pmenu support"
 arch=('x86_64')
 url="https://jgmenu.github.io/"

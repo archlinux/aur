@@ -1,7 +1,7 @@
 pkgbase = jgmenu-git
 	pkgdesc = Simple, independent, contemporary-looking X11 menu, designed for scripting, ricing and tweaking. Compiled with gtktheme, lx and pmenu support
-	pkgver = jgmenu+9f212d
-	pkgrel = 6
+	pkgver = jgmenu+c258a6c
+	pkgrel = 7
 	url = https://jgmenu.github.io/
 	arch = x86_64
 	license = GPL2
