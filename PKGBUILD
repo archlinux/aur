@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit
 pkgname=python-${_pkgname}
-pkgver=0.34.2
+pkgver=0.35.0
 pkgrel=1
 pkgdesc="An open-source SDK for working with quantum computers at the level of circuits, algorithms, and application modules"
 arch=('x86_64')
@@ -10,28 +10,35 @@ license=('Apache')
 depends=(
     'python-qiskit-terra'
     'python-qiskit-aer'
-    'python-qiskit-ibmq-provider'
-    'python-qiskit-ignis'
 )
 optdepends=(
     'python-matplotlib: plotting support'
-    'python-ipywidgets'
-    'python-pydot'
-    'python-pillow'
-    'python-pylatexenc'
-    'python-seaborn'
-    'python-pygments'
+
 )
-makedepends=('python-setuptools')
+makedepends=(
+    'python-build'
+    'python-installer'
+    'python-setuptools'
+    'python-wheel'
+)
+checkdepends=(
+    'python-pytest'
+)
 source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/Qiskit/${_pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('07e1e24ce08860e0b05e2b61a3752f79f907ba7f293bf2c591fa44466823504e')
+sha256sums=('164d9b70f5c2283c155081dcfc902a47051e73cd20bdf12220f12f66af0e7032')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
+
+#check() {
+#    cd "${srcdir}/${_pkgname}-${pkgver}"
+#    python -m pytest test
+#}
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
-    python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
+    install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
