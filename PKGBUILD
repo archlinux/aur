@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc="A gui wallpaper chooser that changes your WM theme, GTK theme and more"
 url="https://github.com/${_gitauthor}/${_gitname}"
 license=('GPLv2')
-source=("git://github.com/${_gitauthor}/${_gitname}#branch=${_gitbranch}"
+source=("https://github.com/${_gitauthor}/${_gitname}#branch=${_gitbranch}"
         "wpgtk.png::https://github.githubassets.com/images/icons/emoji/unicode/1f3b4.png")
 noextract=('wpgtk.png')
 sha512sums=('SKIP' 'SKIP')
