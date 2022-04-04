@@ -1,6 +1,6 @@
 #Maintainer: Emanuel Serpa <emanuelvserpa at gmail dot com>
 pkgname=swayr
-pkgver=0.16.0
+pkgver=0.16.1
 pkgrel=1
 pkgdesc="Swayr is a window switcher (and more) for sway"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~tsdh/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('e1d41462d4a2069b558cb6c54b7125d1475c473e0f64b5f31df32fe743670353')
+sha256sums=('98e152ba6651bcf7858b617bec482eaae83b7d3c860f5e6ef29186a11e8de2d3')
 
 build() {
    cd $pkgname-v$pkgver
