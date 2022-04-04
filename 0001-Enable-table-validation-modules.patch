@@ -8,10 +8,10 @@ Subject: [PATCH] Enable table validation modules
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/modules.cfg b/modules.cfg
-index 30f7fac45abd..a9a4703989b9 100644
+index aded92e5e922..f133c65b27e2 100644
 --- a/modules.cfg
 +++ b/modules.cfg
-@@ -114,26 +114,26 @@ AUX_MODULES += cache
+@@ -117,26 +117,26 @@ AUX_MODULES += cache
  
  # TrueType GX/AAT table validation.  Needs `ftgxval.c' below.
  #
