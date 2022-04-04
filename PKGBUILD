@@ -1,7 +1,7 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: Jakub Okoński <jakub@okonski.org>
 pkgname=rocrand
-pkgver=5.0.2
+pkgver=5.1.0
 pkgrel=1
 pkgdesc='Pseudo-random and quasi-random number generator on ROCm'
 arch=('x86_64')
@@ -12,20 +12,33 @@ makedepends=('cmake' 'git' 'gcc-fortran' 'python')
 optdepends=('gcc-fortran: Use Fortran wrapper'
             'python: Use Python wrapper')
 _git='https://github.com/ROCmSoftwarePlatform/rocRAND'
-source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
-sha256sums=('2dbce2a7fb273c2f9456c002adf3a510b9ec79f2ff32dfccdd59948f3ddb1505')
+_hiprand='https://github.com/ROCmSoftwarePlatform/hipRAND'
+_commit=20ac3db9d7462c15a3e96a6f0507cd5f2ee089c4
+source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz"
+        "$pkgname-hiprand-$pkgver.tar.gz::$_hiprand/archive/$_commit.tar.gz")
+sha256sums=('0c6f114a775d0b38be71f3f621a10bde2104a1f655d5d68c5fecb79b8b51a815'
+            'ee38a68c9e88056b7ecd41553e496e455dbb3fe08871ff3545430d6733070e6b')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" ".tar.gz")"
+_hipname="$(basename "$_hiprand")-$(basename "${source[1]}" ".tar.gz")"
+
+prepare() {
+  rm -r "$srcdir/$_dirname/hipRAND"
+  ln -sf "$srcdir/$_hipname" "$srcdir/$_dirname/hipRAND"
+}
 
 build() {
-  # -fcf-protection is not supported by HIP, see
-  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-5.0.x/docs/markdown/clang_options.md
+  local cmake_args=('-DCMAKE_INSTALL_PREFIX=/opt/rocm'
+                    '-DBUILD_TEST=OFF')
+  if [[ -n "$AMDGPU_TARGETS" ]]; then
+    cmake_args+=("-DAMDGPU_TARGETS=${AMDGPU_TARGETS}")
+  fi
 
+  # -fcf-protection is not supported by HIP, see
+  # https://github.com/ROCm-Developer-Tools/HIP/blob/rocm-5.1.x/docs/markdown/clang_options.md
   CXX=/opt/rocm/hip/bin/hipcc \
   CXXFLAGS="${CXXFLAGS} -fcf-protection=none" \
   cmake -Wno-dev -S "$_dirname" \
-        -DCMAKE_INSTALL_PREFIX=/opt/rocm \
-        -DBUILD_TEST=OFF \
-        -DAMDGPU_TARGETS=${AMDGPU_TARGETS:-gfx803;gfx900:xnack-;gfx906:xnack-;gfx908:xnack-;gfx90a:xnack-;gfx90a:xnack+;gfx1030}
+        "${cmake_args[@]}"
   make
 }
 
