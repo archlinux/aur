@@ -2,8 +2,8 @@
 
 _pkgname=spdlog
 pkgname=mingw-w64-${_pkgname}
-pkgver=1.9.2
-pkgrel=2
+pkgver=1.10.0
+pkgrel=1
 pkgdesc='Very fast, header-only/compiled, C++ logging library (mingw-w64)'
 url="https://github.com/gabime/${_pkgname}/"
 license=('MIT')
@@ -16,20 +16,17 @@ optdepends=()
 source=(
 	"$_pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha256sums=(
-	'6fff9215f5cb81760be4cc16d033526d1080427d236e86d70bb02994f85e3d38'
-)
+sha256sums=('697f91700237dbae2326b90469be32b876b2b44888302afbc7aceb68bcfe8224')
 
 _srcdir="${_pkgname}-${pkgver}"
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 _flags=( -Wno-dev -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS_RELEASE='-O2 -DNDEBUG'
-	-DSPDLOG_BUILD_BENCH=OFF -DSPDLOG_FMT_EXTERNAL=ON -DCMAKE_CXX_STANDARD=20
+	-DSPDLOG_BUILD_BENCH=OFF -DSPDLOG_FMT_EXTERNAL=ON
 	-DSPDLOG_WCHAR_FILENAMES=OFF -DSPDLOG_WCHAR_SUPPORT=OFF -DSPDLOG_ENABLE_PCH=ON -DSPDLOG_BUILD_EXAMPLE=OFF )
 
 prepare() {
 	cd "${_srcdir}"
 	find . -iname '*.cpp' -type f -exec sed -i 's/<Windows.h>/<windows.h>/' '{}' \;
-	sed -i 's/COMMAND \${test_target}/COMMAND \${CMAKE_CROSSCOMPILING_EMULATOR} \${test_target}/' 'tests/CMakeLists.txt'
 }
 
 build() {
@@ -48,7 +45,6 @@ check() {
 		# Only compile-time tests enabled.
 		${_arch}-cmake -S "${_srcdir}" -B "build-${_arch}" "${_flags[@]}" -DSPDLOG_BUILD_TESTS=OFF -DSPDLOG_BUILD_TESTS_HO=ON
 		cmake --build "build-${_arch}"
-		cp "build-${_arch}/libspdlog.dll" "build-${_arch}/tests/"
 		cmake --build "build-${_arch}" --target test
 	done
 }
