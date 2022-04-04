@@ -1,10 +1,11 @@
 # $Id$
-# Maintainer: Arthur Vuillard <arthur@hashbang.fr>
+# Maintainer: Jeremy Reed <reeje76@gmail.com>
+# Contributor: Arthur Vuillard <arthur@hashbang.fr>
 
 _pkgname="joe"
 pkgname="joe-go"
 pkgver="1.1.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="A .gitignore magician in your command line"
 arch=('any')
 url="http://github.com/jeremymreed/joe/"
