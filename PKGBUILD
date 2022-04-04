@@ -2,7 +2,7 @@
 
 _name=slade
 pkgname=${_name}-git
-pkgver=3.2.0_b3+45+g05de0e3e
+pkgver=3.2.0_b4+3+g5f8ff989
 pkgrel=1
 pkgdesc='SLADE3 Doom editor (git version)'
 arch=('i686' 'x86_64')
@@ -29,7 +29,7 @@ makedepends=('cmake'
              'p7zip')
 provides=("${_name}")
 conflicts=("${_name}")
-source=("${_name}::git://github.com/sirjuddington/SLADE.git")
+source=("${_name}::git+https://github.com/sirjuddington/SLADE.git")
 sha256sums=('SKIP')
 
 pkgver() {

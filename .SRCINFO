@@ -1,6 +1,6 @@
 pkgbase = slade-git
 	pkgdesc = SLADE3 Doom editor (git version)
-	pkgver = 3.2.0_b3+45+g05de0e3e
+	pkgver = 3.2.0_b4+3+g5f8ff989
 	pkgrel = 1
 	url = http://slade.mancubus.net/
 	arch = i686
@@ -27,7 +27,7 @@ pkgbase = slade-git
 	depends = zlib
 	provides = slade
 	conflicts = slade
-	source = slade::git://github.com/sirjuddington/SLADE.git
+	source = slade::git+https://github.com/sirjuddington/SLADE.git
 	sha256sums = SKIP
 
 pkgname = slade-git
