@@ -2,14 +2,14 @@
 
 pkgname=rehex-git
 _gitname=rehex
-pkgver=r1024.f918f2f
+pkgver=r1129.080014c
 pkgrel=1
 pkgdesc="A cross-platform (Windows, Linux, Mac) hex editor for reverse engineering, and everything else (git version)"
 arch=('x86_64')
 url="https://github.com/solemnwarning/rehex"
 license=('GPL2')
-depends=('jansson' 'capstone' 'wxgtk2' 'lua')
-makedepends=('git' 'zip' 'perl-template-toolkit')
+depends=('jansson' 'capstone' 'wxgtk3' 'lua>=5.3')
+makedepends=('git' 'zip' 'perl-template-toolkit' 'busted')
 conflicts=('rehex')
 source=("git+https://github.com/solemnwarning/rehex.git")
 sha256sums=('SKIP')
@@ -21,6 +21,10 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_gitname"
+  
+  # gtk3 patch
+  sed -i -e 's/wx-config/wx-config-gtk3/g' Makefile
+  
   make
 }
 
