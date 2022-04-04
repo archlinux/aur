@@ -5,11 +5,11 @@
 
 pkgname=pandoc-crossref-static-git
 _pkgname="${pkgname%-static-git}"
-pkgver=0.3.12.2.r0.g0b473d7
+pkgver=0.3.12.2a.r4.gfe1f71b
 _pandoc_type=version
-_pandoc_ver=2.17.1.1
+_pandoc_ver=2.18
 _pandoc_commit=64a21caa6c802eabaabecc181087dc7c42580946
-pkgrel=1
+pkgrel=2
 pkgdesc="Pandoc filter for cross-references (static build)"
 url="https://github.com/lierdakil/pandoc-crossref"
 license=("GPL2")
@@ -19,9 +19,11 @@ provides=("$_pkgname=${pkgver%%.r*}")
 replaces=('pandoc-crossref-bin' 'pandoc-crossref-static' 'pandoc-crossref-lite')
 depends=("pandoc=$_pandoc_ver")
 makedepends=('stack' 'pandoc')
-source=("$pkgname::git+$url.git" ver-bump.patch)
+source=("$pkgname::git+$url.git" ver-bump.patch
+    0001-Update-tests-for-pandoc-5f0bfd41.patch)
 sha256sums=('SKIP'
-            'fe76eee42278b16d1e04c28b7d12003853f57f30b4a5dfdc73b4efdf2aa556ad')
+            '9b15ac6f617e583eda0cfd7308ff8fead84dc6200e1e94fad695fb8602e38bbe'
+            '6b92482325fdefcb0588efd1f0ad0bb632ad509b8538aae63a32a128f0c0d5bf')
 
 pkgver() {
     cd "$pkgname"
@@ -31,6 +33,7 @@ pkgver() {
 prepare() {
     cd "$pkgname"
     patch --forward --strip=1 --input="${srcdir}/ver-bump.patch"
+    git apply "${srcdir}/0001-Update-tests-for-pandoc-5f0bfd41.patch"
     sedscript=''
     case "$_pandoc_type" in
     stock) return;;

@@ -1,0 +1,80 @@
+From d3dedc6d98d569d8c23cd0e57f3caa8d424afccc Mon Sep 17 00:00:00 2001
+From: hseg <gesh@gesh.uni.cx>
+Date: Mon, 4 Apr 2022 22:59:09 +0300
+Subject: [PATCH] Update tests for pandoc 5f0bfd41
+
+cf https://github.com/jgm/pandoc/commit/5f0bfd41a80aaf4d05c37357a317a6694ec338ec
+which changed the output of booktabs rules
+---
+ test/m2m/secLabels/expect.tex         | 10 +++++-----
+ test/m2m/setLabelAttribute/expect.tex | 10 +++++-----
+ test/test-pandoc-crossref.hs          |  2 +-
+ 3 files changed, 11 insertions(+), 11 deletions(-)
+
+diff --git a/test/m2m/secLabels/expect.tex b/test/m2m/secLabels/expect.tex
+index 6353604..817683c 100644
+--- a/test/m2m/secLabels/expect.tex
++++ b/test/m2m/secLabels/expect.tex
+@@ -19,15 +19,15 @@ Section}\label{other-second-level-section}}
+ \hypertarget{tbl:mytable}{}
+ \begin{longtable}[]{@{}lll@{}}
+ \caption{\label{tbl:mytable}My table}\tabularnewline
+-\toprule
++\toprule()
+ a & b & c \\
+-\midrule
++\midrule()
+ \endfirsthead
+-\toprule
++\toprule()
+ a & b & c \\
+-\midrule
++\midrule()
+ \endhead
+ 1 & 2 & 3 \\
+ 4 & 5 & 6 \\
+-\bottomrule
++\bottomrule()
+ \end{longtable}
+diff --git a/test/m2m/setLabelAttribute/expect.tex b/test/m2m/setLabelAttribute/expect.tex
+index a9cff37..aad3c08 100644
+--- a/test/m2m/setLabelAttribute/expect.tex
++++ b/test/m2m/setLabelAttribute/expect.tex
+@@ -14,16 +14,16 @@
+ \hypertarget{tbl:1}{}
+ \begin{longtable}[]{@{}ll@{}}
+ \caption{\label{tbl:1}Table}\tabularnewline
+-\toprule
++\toprule()
+ a & b \\
+-\midrule
++\midrule()
+ \endfirsthead
+-\toprule
++\toprule()
+ a & b \\
+-\midrule
++\midrule()
+ \endhead
+ 1 & 2 \\
+-\bottomrule
++\bottomrule()
+ \end{longtable}
+ 
+ \begin{codelisting}
+diff --git a/test/test-pandoc-crossref.hs b/test/test-pandoc-crossref.hs
+index e94207a..ed30cb2 100644
+--- a/test/test-pandoc-crossref.hs
++++ b/test/test-pandoc-crossref.hs
+@@ -313,7 +313,7 @@ main = hspec $ do
+         it "Tbl labels" $
+           table' "A table" "some_table1"
+             <> para (citeGen "tbl:some_table" [1])
+-            `test` "\\hypertarget{tbl:some_table1}{}\n\\begin{longtable}[]{@{}@{}}\n\\caption{\\label{tbl:some_table1}A table}\\tabularnewline\n\\toprule\n\\endhead\n \\\\\n\\bottomrule\n\\end{longtable}\n\ntbl.~\\ref{tbl:some_table1}"
++            `test` "\\hypertarget{tbl:some_table1}{}\n\\begin{longtable}[]{@{}@{}}\n\\caption{\\label{tbl:some_table1}A table}\\tabularnewline\n\\toprule()\n\\endhead\n \\\\\n\\bottomrule()\n\\end{longtable}\n\ntbl.~\\ref{tbl:some_table1}"
+ #endif
+ 
+         it "Code block labels" $ do
+-- 
+2.35.1
+
