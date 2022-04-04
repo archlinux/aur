@@ -1,7 +1,7 @@
 pkgbase = smap-git
 	pkgdesc = a drop-in replacement for Nmap powered by shodan.io
 	pkgver = 0.1.0.rc.r3.gb331526
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/s0md3v/smap
 	arch = x86_64
 	license = GPL3
