@@ -1,0 +1,17 @@
+pkgbase = neovim-autoclose-git
+	pkgdesc = Minimal autoclose plugin for Neovim
+	pkgver = r20.5b4d34a
+	pkgrel = 1
+	url = https://github.com/max-0406/autoclose.nvim
+	install = autoclose.install
+	arch = any
+	groups = neovim-plugins
+	license = MIT
+	makedepends = git
+	depends = neovim
+	provides = neovim-autoclose
+	conflicts = neovim-autoclose
+	source = neovim-autoclose-git::git+https://github.com/max-0406/autoclose.nvim
+	md5sums = SKIP
+
+pkgname = neovim-autoclose-git
