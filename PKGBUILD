@@ -9,7 +9,7 @@ license=("GPL")
 depends=('electron')
 makedepends=('npm' 'nodejs' 'git' 'rustup' 'python')
 source=(
-    "deltachat-desktop-git::git+ssh://git@github.com/deltachat/deltachat-desktop.git"
+    "deltachat-desktop-git::git+https://git@github.com/deltachat/deltachat-desktop.git"
     "deltachat-desktop.desktop"
     "deltachat-desktop.sh"
 )
@@ -55,7 +55,7 @@ package() {
     install -Dm644 "${srcdir}/deltachat-desktop.desktop" "${pkgdir}/usr/share/applications/deltachat.desktop"
     install -Dm755 "${srcdir}/deltachat-desktop.sh" "${pkgdir}/opt/DeltaChat/deltachat"
     install -d "${pkgdir}/usr/bin"
-    ln -s "${pkgdir}/opt/DeltaChat/deltachat" "${pkgdir}/usr/bin/deltachat"
+    ln -s "/opt/DeltaChat/deltachat" "${pkgdir}/usr/bin/deltachat"
     
     install -Dm644 ./images/deltachat.png "${pkgdir}/usr/share/icons/hicolor/scalable/apps/deltachat.png"
 }
