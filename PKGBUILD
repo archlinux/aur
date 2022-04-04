@@ -4,17 +4,15 @@
 _hkgname=xmonad-dbus
 pkgname="${_hkgname}-git"
 pkgver=r8.c34a772
-pkgrel=1
+pkgrel=2
 pkgdesc="XMonad DBus monitor application and library to easily connect XMonad with Polybar"
 url="https://github.com/troydm/xmonad-dbus#readme"
 license=("custom: BSD3")
 arch=('x86_64')
 depends=('ghc-libs' 'haskell-dbus')
 makedepends=('ghc' 'git')
-source=("xmonad-dbus::git+https://github.com/troydm/xmonad-dbus.git"
-        "xmonad-dbus.cabal")
-sha256sums=('SKIP'
-            'SKIP')
+source=("xmonad-dbus::git+https://github.com/troydm/xmonad-dbus.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -22,10 +20,6 @@ pkgver() {
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
   )
-}
-
-prepare() {
-  install -t "${pkgname%-git}" xmonad-dbus.cabal
 }
 
 build() {
