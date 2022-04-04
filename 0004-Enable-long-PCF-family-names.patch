@@ -8,10 +8,10 @@ Subject: [PATCH] Enable long PCF family names
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/include/freetype/config/ftoption.h b/include/freetype/config/ftoption.h
-index 0dd4021e2433..8da3073b6d71 100644
+index c33c51eeb2e7..c33ddb4bf60c 100644
 --- a/include/freetype/config/ftoption.h
 +++ b/include/freetype/config/ftoption.h
-@@ -877,7 +877,7 @@ FT_BEGIN_HEADER
+@@ -895,7 +895,7 @@ FT_BEGIN_HEADER
     * If this option is activated, it can be controlled with the
     * `no-long-family-names` property of the 'pcf' driver module.
     */
