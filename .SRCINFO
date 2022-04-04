@@ -1,6 +1,6 @@
 pkgbase = flashrom-git
 	pkgdesc = Flashrom is a utility which can be used to detect, read, erase, or write BIOS chips (DIP, PLCC, SPI).
-	pkgver = v1.2.r564.gdda19339
+	pkgver = v1.2.r667.g7dcd0dea
 	pkgrel = 1
 	url = https://github.com/flashrom/flashrom
 	arch = aarch64
@@ -17,7 +17,7 @@ pkgbase = flashrom-git
 	provides = flashrom
 	conflicts = flashrom
 	replaces = flashrom-svn
-	source = git://github.com/flashrom/flashrom#branch=master
+	source = git+https://github.com/flashrom/flashrom#branch=master
 	sha512sums = SKIP
 
 pkgname = flashrom-git
