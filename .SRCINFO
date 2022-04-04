@@ -1,10 +1,10 @@
 pkgbase = python-casacore
 	pkgdesc = Python bindings for casacore
 	pkgver = 3.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/casacore/python-casacore
 	arch = x86_64
-	license = GPL
+	license = LGPL3
 	makedepends = boost
 	makedepends = python-setuptools
 	makedepends = python-build

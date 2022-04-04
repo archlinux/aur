@@ -2,11 +2,11 @@
 
 pkgname=python-casacore
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for casacore"
 arch=('x86_64')
 url="https://github.com/casacore/python-casacore"
-license=('GPL')
+license=('LGPL3')
 depends=('casacore' 'python-numpy' 'python-argparse' 'python-future' 'python-six')
 makedepends=('boost' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 provides=('python-pyrap')
