@@ -1,14 +1,16 @@
 pkgbase = python-user_agent
 	pkgdesc = Generate random, valid web user-agent headers
-	pkgver = 0.1.9
-	pkgrel = 3
+	pkgver = 0.1.10
+	pkgrel = 1
 	url = https://github.com/lorien/user_agent
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-six
-	source = https://files.pythonhosted.org/packages/source/u/user_agent/user_agent-0.1.9.tar.gz
-	sha256sums = 8f1ad46cc4aef9f99515ea1c74bb8cacc43e23074c335b2ba2db7735ebe9c0d5
+	source = python-user_agent-0.1.10.tar.gz::https://files.pythonhosted.org/packages/source/u/user_agent/user_agent-0.1.10.tar.gz
+	sha256sums = b86537cb2a9d3bda0e2afcc654ec15b383502836877a67520654acadf73f1723
 
 pkgname = python-user_agent
-
