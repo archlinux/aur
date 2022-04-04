@@ -10,7 +10,7 @@
 
 pkgname=ungoogled-chromium-xdg-bin
 pkgver=100.0.4896.60
-pkgrel=2
+pkgrel=3
 _launcher_ver=8
 pkgdesc="A lightweight approach to removing Google web service dependency - without creating a useless ~/.pki directory (binary version)"
 arch=('x86_64')
@@ -102,6 +102,7 @@ echo "${toplevel_files[@]}"
   done
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/chromium/LICENSE"
+  install -Dm644 index.html "$pkdir/usr/share/ungoogled-chromium/index.html"
 }
 
 # vim:set ts=2 sw=2 et:
