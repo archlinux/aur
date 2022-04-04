@@ -84,6 +84,9 @@ ReadWritePaths = /usr/share/webapps/${_pkgname}/misc/user/
 ReadWritePaths = /usr/share/webapps/${_pkgname}/plugins/
 ReadWritePaths = /usr/share/webapps/${_pkgname}/tmp/" > "${pkgdir}"/etc/systemd/system/php-fpm.service.d/override_matomo.conf
 
+    ## Set the owner.
+    chown -R http:http "${pkgdir}"/usr/share/webapps/"${_pkgname}"/
+
     # Install the documentation.
     install -Dm644 "${srcdir}"/"${_pkgname}"/README.md "${pkgdir}"/usr/share/doc/"${_pkgname}"/
 }
