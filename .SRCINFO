@@ -9,6 +9,7 @@ pkgbase = ldr-translate-qt
 	depends = make
 	depends = python
 	depends = python-pip
+	conflicts = ldr-translate-gtk
 	source = https://github.com/yuhldr/ldr-translate/archive/refs/tags/v1.3.1.tar.gz
 	md5sums = a5bf142da605f3116159aa0ca10fb355
 
