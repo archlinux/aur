@@ -2,37 +2,36 @@
 
 _name=pylink-square
 pkgname=python-pylink-square
-pkgver=0.11.1
-pkgrel=2
+pkgver=0.12.0
+pkgrel=1
 pkgdesc="Python interface for the SEGGER J-Link"
 arch=(any)
 url="https://github.com/Square/pylink"
 license=(Apache)
 depends=(python-future python-psutil python-six)
-makedepends=(python-setuptools)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-mock python-pytest)
 conflicts=(pylink)
 provides=(pylink)
 replaces=(pylink)
-# no sdist on pypi.org: https://github.com/square/pylink/issues/119
-# source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-source=("${_name}-${pkgver}.tar.gz::https://github.com/square/pylink/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('ac4280dc46f112678249c7241314a28da66ffb95bc1f1eda0f4881bf80db937a32d34bb2b0433fa998f26f0a8744d7e49d5850da7d062bb3077430e7b437fdce')
-b2sums=('e790e7561aa678d4f90988d9e23180fd7597393e502c2f841242ac478ea6f488f221c7e2a8239db195c1a77ff8b85778721a034cf78598338db7aff229c224bb')
+# sdist on pypi.org has no tests: https://github.com/square/pylink/issues/119
+# source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+source=("$_name-$pkgver.tar.gz::https://github.com/square/pylink/archive/refs/tags/v$pkgver.tar.gz")
+sha512sums=('ff56205ea3b504e8e87d67d48e10b4bcb9b046ba67c1a6833a20c643361329be94b3abe7589ebfc95889c06502c9a9672697603a8bf40c22be0d511fa2c4b7e1')
+b2sums=('504a0f1b9ae98f91c1bcd6224c79eb8254854bed7220303e120c6a66785b1deab03d5edc4b4a6ea1c7aa286ba1fd7917308e0c39f5f74dd77dd7b2633c5bea59')
 
 build() {
-  cd "pylink-$pkgver"
-  python setup.py build
+  cd pylink-$pkgver
+  python -m build --wheel --skip-dependency-check --no-isolation
 }
 
 check() {
-  cd "pylink-$pkgver"
-  export PYTHONPATH="build:${PYTHONPATH}"
+  cd pylink-$pkgver
   pytest -v
 }
 
 package() {
-  cd "pylink-$pkgver"
-  python setup.py install --optimize=1 --root="${pkgdir}"
-  install -vDm 644 *.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+  cd pylink-$pkgver
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -vDm 644 *.md -t "$pkgdir/usr/share/doc/$pkgname"
 }
