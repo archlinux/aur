@@ -1,0 +1,17 @@
+pkgbase = python-praktikum
+	pkgdesc = Tools for the beginners' lab courses in physics at RWTH Aachen University
+	pkgver = 2.4.0
+	pkgrel = 1
+	url = https://pgp.physik.rwth-aachen.de/software/
+	arch = any
+	license = MIT
+	depends = python
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
+	depends = python-future
+	depends = python-uncertainties
+	source = https://files.pythonhosted.org/packages/source/p/praktikum/praktikum-2.4.0.tar.gz
+	sha512sums = 3c1f28df54dc6c40bff7d2c12c9d807d240f62a7e336390ad85b4c6941c92272ea0796947562634c25f4eac68f0689248bf9ffc6bda475679abeea2fcb64d428
+
+pkgname = python-praktikum
