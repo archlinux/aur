@@ -1,7 +1,7 @@
 pkgbase = esorex
 	pkgdesc = EsoRex is the ESO Recipe Execution Tool. It can list, configure and execute CPL-based recipes from the command line.
 	pkgver = 3.13.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.eso.org/sci/software/cpl/esorex.html
 	arch = x86_64
 	license = GPL2
