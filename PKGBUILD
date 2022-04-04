@@ -25,8 +25,10 @@ optdepends=('pipewire: WebRTC desktop sharing under Wayland'
             'org.freedesktop.secrets: password storage backend on GNOME / Xfce'
             'kwallet: support for storing passwords in KWallet on Plasma')
 options=('!lto') # Chromium adds its own flags for ThinLTO
-source=(https://github.com/noahvogt/${pkgname%-*}-aur/releases/download/$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('e4e85402c74c5620ce1b3a7236587b4b53bdf61cedda24a44e6359f6a550fcf4')
+source=(https://github.com/noahvogt/${pkgname%-*}-aur/releases/download/$pkgver/$pkgname-$pkgver.tar.gz
+        index.html)
+sha256sums=('e4e85402c74c5620ce1b3a7236587b4b53bdf61cedda24a44e6359f6a550fcf4'
+            'a4cdd2b86f32d5302c2792be841ff40d982b19bb58a4e63df9d77f4c706b8665')
 provides=('chromium')
 conflicts=('chromium')
 
@@ -102,7 +104,7 @@ echo "${toplevel_files[@]}"
   done
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/chromium/LICENSE"
-  install -Dm644 index.html "$pkdir/usr/share/ungoogled-chromium/index.html"
+  install -Dm644 "../../../index.html" "$pkgdir/usr/share/ungoogled-chromium/index.html"
 }
 
 # vim:set ts=2 sw=2 et:
