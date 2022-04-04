@@ -1,0 +1,22 @@
+pkgbase = soccerwindow2-git
+	pkgdesc = Monitor for Robocup 2D Soccer Simulation made by Helios
+	pkgver = 2020.08
+	pkgrel = 1
+	url = https://github.com/helios-base/soccerwindow2
+	arch = any
+	groups = rcss
+	license = LGPL
+	makedepends = git
+	depends = qt5-base
+	depends = fontconfig
+	depends = libxt
+	depends = glib2
+	depends = libxi
+	depends = libxrender
+	depends = boost-libs
+	provides = soccerwindow2-git
+	conflicts = soccerwindow2-git
+	source = soccerwindow2-git::git+https://github.com/helios-base/soccerwindow2.git
+	md5sums = SKIP
+
+pkgname = soccerwindow2-git
