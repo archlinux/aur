@@ -5,10 +5,11 @@
 # Contributor: American_Jesus
 pkgname=palemoon-gtk3
 _pkgname=palemoon
-_repo=Pale-Moon
-pkgver=30.0.1
-# Commit can be found at https://repo.palemoon.org/MoonchildProductions/Pale-Moon/releases
-_commit=77e5e00208
+_repo=palemoon-dev
+epoch=1
+pkgver=29.4.5.1
+# Commit can be found at https://repo.palemoon.org/MoonchildProductions/palemoon-dev/releases
+_commit=44d7f4b8c3
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
@@ -22,12 +23,13 @@ makedepends=('python2' 'autoconf2.13' 'unzip' 'zip' 'yasm'
              'libpulse' 'gcc10' 'git')
 optdepends=('libpulse: PulseAudio audio driver'
             'ffmpeg: various video and audio support')
-source=(git+"https://repo.palemoon.org/MoonchildProductions/${_repo}#commit=${_commit}"
+source=(git+"https://repo.palemoon.org/MoonchildProductions/${_repo}?signed#commit=${_commit}"
         git+"https://repo.palemoon.org/MoonchildProductions/GRE"
         mozconfig.in)
+validpgpkeys=('3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC')
 sha1sums=('SKIP'
           'SKIP'
-          'bd25f4237023fa2830b3ec3d443c1fe4f65ff508')
+          '8b0c53f8975677b864ecfb04eb8611d129e1c05b')
 
 prepare() {
   sed 's#%SRCDIR%#'"${srcdir}"'#g' mozconfig.in > mozconfig
@@ -54,15 +56,15 @@ package() {
   ln -s "../lib/${_pkgname}/palemoon" "${pkgdir}/usr/bin/palemoon"
 
   # icons
-  install -Dm644 palemoon/chrome/icons/default/default16.png \
+  install -Dm644 palemoon/browser/chrome/icons/default/default16.png \
     "${pkgdir}/usr/share/icons/hicolor/16x16/apps/${_pkgname}.png"
-  install -Dm644 palemoon/chrome/icons/default/default32.png \
+  install -Dm644 palemoon/browser/chrome/icons/default/default32.png \
     "${pkgdir}/usr/share/icons/hicolor/32x32/apps/${_pkgname}.png"
-  install -Dm644 palemoon/chrome/icons/default/default48.png \
+  install -Dm644 palemoon/browser/chrome/icons/default/default48.png \
     "${pkgdir}/usr/share/icons/hicolor/48x48/apps/${_pkgname}.png"
-  install -Dm644 palemoon/icons/mozicon128.png \
+  install -Dm644 palemoon/browser/icons/mozicon128.png \
     "${pkgdir}/usr/share/icons/hicolor/128x128/apps/${_pkgname}.png"
 
   # install desktop file
-  install -Dm644 "${srcdir}/${_repo}/other-licenses/branding/palemoon/official/palemoon.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+  install -Dm644 "${srcdir}/${_repo}/palemoon/branding/official/palemoon.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
 }
