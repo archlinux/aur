@@ -1,6 +1,6 @@
 pkgbase = texlive-installer
 	pkgdesc = This packages provides the installer of texlive. It also tricks Arch into thinking it has its texlive packages installed.
-	pkgver = 2021
+	pkgver = 2022
 	pkgrel = 1
 	url = http://www.tug.org/texlive/
 	install = texlive-installer.install
@@ -10,7 +10,7 @@ pkgbase = texlive-installer
 	depends = xz
 	provides = texlive-bin
 	provides = texlive-htmlxml
-	provides = texlive-formatsextra=2021
+	provides = texlive-formatsextra=2022
 	provides = texlive-bibtexextra
 	provides = texlive-core
 	provides = texlive-fontsextra
@@ -33,4 +33,3 @@ pkgbase = texlive-installer
 	md5sums = SKIP
 
 pkgname = texlive-installer
-
