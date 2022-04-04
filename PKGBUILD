@@ -4,13 +4,14 @@
 pkgname=python-conda
 _name=${pkgname#python-}
 pkgver=4.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OS-agnostic, system-level binary package manager and ecosystem https://conda.io"
 arch=('any')
 url="https://github.com/conda/conda"
 license=('BSD')
 depends=(
   'python>=3.6'
+  'python-setuptools'
   'python-conda-package-handling'
   'python-pycosat>=0.6.3'
   'python-requests>=2.12.4'
@@ -31,7 +32,6 @@ prepare() {
   # sed -i "s/package_files(\'conda\/shell') + //" setup.py
   # sed -i 's/$_CONDA_ROOT//' conda/shell/bin/{de,}activate
   sed -i 's/env python/python3/' conda/shell/bin/conda
-  sed 's/conda.cli/conda_env.cli.main/' conda/shell/bin/conda > conda/shell/bin/conda-env
   sed -i '3s/^/set _CONDA_EXE=\/usr\/bin\/conda\n/' conda/shell/etc/profile.d/conda.csh
   sed -i '3s/^/export CONDA_EXE=\/usr\/bin\/conda\n/' conda/shell/etc/profile.d/conda.sh
   sed -i '8s/^/set -l CONDA_EXE \/usr\/bin\/conda\n/' conda/shell/etc/fish/conf.d/conda.fish
@@ -39,6 +39,7 @@ prepare() {
   # echo 'set _CONDA_EXE=/usr/bin/conda' | cat - conda/shell/etc/profile.d/conda.csh > conda.csh
   # echo 'export CONDA_EXE=/usr/bin/conda' | cat - conda/shell/etc/profile.d/conda.sh > conda.sh
   echo -e 'envs_dirs:\n  - ~/.conda/envs\npkgs_dirs:\n  - ~/.conda/pkgs' > condarc
+  sed -i "s/'conda=conda\.cli\.main_pip:main'/'conda=conda\.cli\.main:main','conda-env=conda_env\.cli\.main:main'/" setup.py
 }
 
 build() {

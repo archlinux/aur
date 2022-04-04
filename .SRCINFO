@@ -1,12 +1,13 @@
 pkgbase = python-conda
 	pkgdesc = OS-agnostic, system-level binary package manager and ecosystem https://conda.io
 	pkgver = 4.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/conda/conda
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python>=3.6
+	depends = python-setuptools
 	depends = python-conda-package-handling
 	depends = python-pycosat>=0.6.3
 	depends = python-requests>=2.12.4
