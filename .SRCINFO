@@ -1,6 +1,6 @@
 pkgbase = wakapi
 	pkgdesc = A minimalist, self-hosted WakaTime-compatible backend for coding statistics
-	pkgver = 2.3.2
+	pkgver = 2.3.3
 	pkgrel = 1
 	url = https://github.com/muety/wakapi
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = wakapi
 	makedepends = go
 	provides = wakapi
 	conflicts = wakapi-bin
-	source = https://github.com/muety/wakapi/archive/refs/tags/2.3.2.tar.gz
-	b2sums = ee1b8e4c41464506d9954b69f92e87a74d72db63cfe67f3f61f4c20af9f38e63893f380269312d6b7db553c26ac97c2ada83ab909d769add1367f33e9fff369c
+	source = https://github.com/muety/wakapi/archive/refs/tags/2.3.3.tar.gz
+	b2sums = daa009f75f199bd8fed398eb2ca39e09c765e8e0f78870a5c6dc6892065f90ed0d3bbcfffe4042656ae31b9485c6d14f24bf703196e22361976e499683be0b46
 
 pkgname = wakapi
