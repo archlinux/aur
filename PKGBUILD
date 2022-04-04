@@ -1,4 +1,4 @@
-# Maintainer: Qontinuum <qontinuum@artixlinux.org>
+# Maintainer: Noah Vogt (noahvogt) <noah@noahvogt.com>
 
 pkgname='chromium-extension-https-everywhere'
 pkgver=2021.7.13
