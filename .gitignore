@@ -1,0 +1,6 @@
+*
+!rustdesk.service
+!rustdesk.sh
+!.gitignore
+!PKGBUILD
+!.SRCINFO
