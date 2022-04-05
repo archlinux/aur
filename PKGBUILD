@@ -2,17 +2,17 @@
 
 pkgname='updaurpkg-git'
 _pkgname='updaurpkg'
-pkgver=2.83fa34a
+pkgver=4.37ac19a
 pkgrel=1
 pkgdesc="Simple tool to automatize checking for upstream updates of arch linux user repository packages"
 arch=('any')
 url="https://github.com/Anty0/updaurpkg"
 license=('GPL')
-depends=()
+depends=('git' 'jq')
 makedepends=()
 provides=('updaurpkg')
 conflicts=('updaurpkg')
-source=('git://github.com/Anty0/updaurpkg')
+source=('git+https://github.com/Anty0/updaurpkg')
 sha512sums=('SKIP')
 
 pkgver() {
