@@ -1,6 +1,6 @@
 pkgbase = liri-qbs-shared-git
 	pkgdesc = Extra imports and modules for Qbs
-	pkgver = v1.2.0.r23.gac431c8
+	pkgver = 20191001.138.c176452
 	pkgrel = 1
 	url = https://liri.io
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = liri-qbs-shared-git
 	provides = liri-qbs-shared
 	conflicts = liri-qbs-shared
 	replaces = liri-qbs-shared
-	source = qbs-shared::git://github.com/lirios/qbs-shared.git#branch=develop
+	source = qbs-shared::git+https://github.com/lirios/qbs-shared.git#branch=develop
 	md5sums = SKIP
 
 pkgname = liri-qbs-shared-git
-

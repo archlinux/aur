@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-qbs-shared-git
-pkgver=v1.2.0.r23.gac431c8
+pkgver=20191001.138.c176452
 pkgrel=1
 pkgdesc="Extra imports and modules for Qbs"
 arch=('any')
@@ -14,7 +14,7 @@ replaces=('liri-qbs-shared')
 provides=('liri-qbs-shared')
 groups=('liri-git')
 
-_gitroot="git://github.com/lirios/qbs-shared.git"
+_gitroot="git+https://github.com/lirios/qbs-shared.git"
 _gitbranch=develop
 _gitname=qbs-shared
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
