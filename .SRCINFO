@@ -1,19 +1,18 @@
 pkgbase = spnavcfg
 	pkgdesc = The spacenav project provides a free, compatible alternative, to the proprietary 3Dconnexion device driver and SDK, for their 3D input devices (called 'space navigator', 'space pilot', 'space traveller', etc).
-	pkgver = 0.3.1
-	pkgrel = 3
+	pkgver = 1.0
+	pkgrel = 0
 	url = https://github.com/FreeSpacenav/spnavcfg
 	arch = i686
 	arch = x86_64
 	license = GPL
 	makedepends = gcc
 	makedepends = make
-	depends = gtk2
+	depends = qt5-base
+	depends = libspnav>=1.0
+	depends = spacenavd>=1.0
 	provides = spnavcfg
-	source = https://github.com/FreeSpacenav/spnavcfg/releases/download/v0.3.1/spnavcfg-0.3.1.tar.gz
-	source = Makefile.in.diff
-	md5sums = bf5bda8e4fd3fa3e45fe47cd26394fae
-	md5sums = b85402ad686e3ef10446c192166c3a0a
+	source = https://github.com/FreeSpacenav/spnavcfg/releases/download/v1.0/spnavcfg-1.0.tar.gz
+	md5sums = 61e5873cfcbbb40074c0893034956be0
 
 pkgname = spnavcfg
-
