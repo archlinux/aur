@@ -1,7 +1,7 @@
 # Maintainer: Mario Oenning <mo-son at mailbox dot org>
 
 pkgname=pacseek
-pkgver=0.2.7
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='A terminal user interface for searching and installing Arch Linux packages'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('pacman')
 makedepends=('go')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('705153794f96aac25541f2764d411bbea2e8babdd8af83c381476bd89309d245')
+sha256sums=('7d3f3d90dbf78c5e9edc29de64f4651ad3b8c25828eafb2b264c2d26faf443bd')
 
 prepare(){
   cd "$pkgname-$pkgver"
