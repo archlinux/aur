@@ -2,7 +2,7 @@
 
 pkgname='python-zulip-term-git'
 _pkgname='zulip-terminal'
-pkgver=0.6.0.r468.09a824d2cf
+pkgver=0.6.0.r539.a9d354c608
 pkgrel=1
 pkgdesc="An interactive terminal interface for Zulip"
 arch=('any')
@@ -21,9 +21,10 @@ depends=('python'
          'python-pytz'
          'python-pyperclip')
 makedepends=('python-setuptools')
+checkdepends=('python-pytest' 'python-pytest-mock' 'python-pytest-cov')
 provides=('python-zulip-term')
 conflicts=('python-zulip-term')
-source=('git://github.com/zulip/zulip-terminal#branch=main')
+source=('git+https://github.com/zulip/zulip-terminal#branch=main')
 sha512sums=('SKIP')
 
 pkgver() {
@@ -37,8 +38,12 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname"
-  touch ./zulipterminal/themes/__init__.py # create missing init file of zulipterminal.themes module
   python setup.py build
+}
+
+check(){
+  cd "$srcdir/$_pkgname"
+  pytest
 }
 
 package() {
