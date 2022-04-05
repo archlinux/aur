@@ -1,6 +1,6 @@
 pkgbase = liri-browser-git
 	pkgdesc = Liri Browser
-	pkgver = r233.c914ffe
+	pkgver = r266.fe29ad5
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
@@ -19,8 +19,7 @@ pkgbase = liri-browser-git
 	replaces = liri-browser
 	options = debug
 	options = !strip
-	source = browser::git://github.com/lirios/browser.git#branch=develop
+	source = browser::git+https://github.com/lirios/browser.git#branch=develop
 	md5sums = SKIP
 
 pkgname = liri-browser-git
-

@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-browser-git
-pkgver=r233.c914ffe
+pkgver=r266.fe29ad5
 pkgrel=1
 pkgdesc="Liri Browser"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ replaces=('liri-browser')
 provides=('liri-browser')
 groups=('liri-git')
 
-_gitroot="git://github.com/lirios/browser.git"
+_gitroot="git+https://github.com/lirios/browser.git"
 _gitbranch=develop
 _gitname=browser
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
