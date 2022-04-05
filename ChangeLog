@@ -358,3 +358,7 @@ Fixes:
 - We fixed a problem causing the creation of events to be in a hanging state for too long.
 - We fixed the Notes field, where links were not clickable anymore in the latest release.
 - We fixed a bug causing deleted tags to remain set on events in a sort of invisible state 👻.
+
+=== Morgen 2.5.2
+Fixes:
+- with recent updates, some CalDAV providers started reporting errors while trying to update or create an event. Morgen 2.5.2 fixes this issue.
