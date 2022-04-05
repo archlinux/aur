@@ -2,8 +2,8 @@
 
 _pkgname=meshlab
 pkgname="${_pkgname}"-appimage
-pkgver=2021.10
-pkgrel=2
+pkgver=2022.02
+pkgrel=1
 pkgdesc="Open source system for processing and editing 3D triangular meshes. Appimage package"
 arch=('x86_64')
 url="https://www.meshlab.net"
@@ -30,9 +30,9 @@ provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=(!strip)
 _appimage="MeshLab${pkgver}-linux.AppImage"
-source=("https://github.com/cnr-isti-vclab/meshlab/releases/download/Meshlab-${pkgver}/${_appimage}")
+source=("https://github.com/cnr-isti-vclab/meshlab/releases/download/MeshLab-${pkgver}/${_appimage}")
 noextract=("${_appimage}")
-sha256sums=('3949399febea8e556a537177cfd98f4cbe7b3573a5c1b3738c62e3c940526568')
+sha256sums=('9177c92be6c301d67fc13891914a9d00c96b6e918fa0f01ba6a9dd467ffe4419')
 
 prepare() {
     cd "${srcdir}"
