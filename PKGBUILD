@@ -36,16 +36,21 @@ prepare() {
 }
 
 build() {
+  local cmake_args=(-DHIP_COMMON_DIR="$srcdir/$_dirhip"
+                    -DHIP_COMMON_DIR="$srcdir/$_dirhip"
+                    -DAMD_OPENCL_PATH="$srcdir/$_diropencl"
+                    -DROCCLR_PATH="$srcdir/$_dirrocclr"
+                    -DHIP_PLATFORM=amd
+                    -DCMAKE_INSTALL_PREFIX=/opt/rocm/hip)
+  if [[ -n "$AMDGPU_TARGETS" ]]; then
+      cmake_args+=(-DAMDGPU_TARGETS="${AMDGPU_TARGETS}")
+  fi
+
   # build fails if cmake and make are called from outside the build directory
   mkdir build && cd build
   cmake -Wno-dev \
   -S "$srcdir/$_dirhipamd" \
-  -DHIP_COMMON_DIR="$srcdir/$_dirhip" \
-  -DAMD_OPENCL_PATH="$srcdir/$_diropencl" \
-  -DROCCLR_PATH="$srcdir/$_dirrocclr" \
-  -DHIP_PLATFORM=amd \
-  -DCMAKE_INSTALL_PREFIX=/opt/rocm/hip \
-  -DAMDGPU_TARGETS=${AMDGPU_TARGETS:-gfx900;gfx906;gfx908;gfx90a;gfx1030}
+  "${cmake_args[@]}"
 
   make
 }
