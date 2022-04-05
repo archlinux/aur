@@ -1,6 +1,6 @@
 pkgbase = liri-networkmanager-git
 	pkgdesc = Network Manager integration for Liri
-	pkgver = r46.5640b93
+	pkgver = r169.e451da2
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
@@ -21,8 +21,7 @@ pkgbase = liri-networkmanager-git
 	replaces = liri-networkmanager
 	options = debug
 	options = !strip
-	source = shell::git://github.com/lirios/networkmanager.git#branch=develop
+	source = networkmanager::git+https://github.com/lirios/networkmanager.git#branch=develop
 	md5sums = SKIP
 
 pkgname = liri-networkmanager-git
-

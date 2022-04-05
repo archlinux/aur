@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-networkmanager-git
-pkgver=r46.5640b93
+pkgver=r169.e451da2
 pkgrel=1
 pkgdesc="Network Manager integration for Liri"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ replaces=('liri-networkmanager')
 provides=('liri-networkmanager')
 groups=('liri-git')
 
-_gitroot="git://github.com/lirios/networkmanager.git"
+_gitroot="git+https://github.com/lirios/networkmanager.git"
 _gitbranch=develop
 _gitname=networkmanager
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
