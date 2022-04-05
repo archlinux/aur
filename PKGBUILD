@@ -2,7 +2,7 @@
 pkgname=breeze-adapta-cursor-theme-git
 _pkgname=Breeze-Adapta-Cursor
 pkgver=r34.72ffeff
-pkgrel=2
+pkgrel=3
 pkgdesc="Popular Breeze Cursor modified for Adapta theme."
 arch=('any')
 url="https://github.com/mustafaozhan/Breeze-Adapta-Cursor"
@@ -22,10 +22,11 @@ pkgver() {
 package() {
 	cd "${srcdir}/${_pkgname}"
 
-    install -d $pkgdir/usr/share/icons/Breeze-Adapta-Cursor
-    cp -rf * $pkgdir/usr/share/icons/Breeze-Adapta-Cursor
+    install -dm755 "${pkgdir}/usr/share/icons"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
 
-    chmod -R 644 $pkgdir/usr/share/icons/Breeze-Adapta-Cursor/*
-    chmod 755 $pkgdir/usr/share/icons/Breeze-Adapta-Cursor
-    chmod 755 $pkgdir/usr/share/icons/Breeze-Adapta-Cursor/cursors
+    cp -a "${srcdir}/${_pkgname}" "${pkgdir}/usr/share/icons/Breeze-Adapta-Cursor"
+
+    # fix icon cache rebuilding
+    rename ' ' '-' "${pkgdir}/usr/share/icons/Breeze-Adapta-Cursor/cursors"/*
 }
