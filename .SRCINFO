@@ -1,13 +1,13 @@
 pkgbase = atanks
 	pkgdesc = Atomic Tanks
-	pkgver = 6.5
-	pkgrel = 3
+	pkgver = 6.6
+	pkgrel = 1
 	url = http://atanks.sourceforge.net
 	arch = x86_64
 	license = GPL
 	depends = allegro4
 	depends = gcc-libs
-	source = http://downloads.sourceforge.net/project/atanks/atanks/atanks-6.5/atanks-6.5.tar.gz
-	sha256sums = 32182b2752a77ff362c378fc04b7c51fc15345caa4c8deaad59cc850dad2322e
+	source = http://downloads.sourceforge.net/project/atanks/atanks/atanks-6.6/atanks-6.6.tar.gz
+	sha256sums = bc6b1efc9fc7e7624fad1d8352d72e927be0fba2160bb25bb6b8bd6c6370bf43
 
 pkgname = atanks

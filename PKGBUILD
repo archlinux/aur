@@ -5,15 +5,15 @@
 # Contributor: Charlie Cox <ccoxiv@yahoo.com>
 
 pkgname=atanks
-pkgver=6.5
-pkgrel=3
+pkgver=6.6
+pkgrel=1
 pkgdesc="Atomic Tanks"
 url="http://atanks.sourceforge.net"
 license=('GPL')
 arch=('x86_64')
 depends=('allegro4' 'gcc-libs')
 source=("http://downloads.sourceforge.net/project/atanks/atanks/atanks-${pkgver}/atanks-${pkgver}.tar.gz")
-sha256sums=('32182b2752a77ff362c378fc04b7c51fc15345caa4c8deaad59cc850dad2322e')
+sha256sums=('bc6b1efc9fc7e7624fad1d8352d72e927be0fba2160bb25bb6b8bd6c6370bf43')
 
 build() {
   cd atanks-${pkgver}
