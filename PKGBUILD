@@ -1,7 +1,7 @@
 # Maintainer: michaelkuc6 <michaelkuc6 at gmail dot com>
 _pkgname=oatpp
 pkgname="${_pkgname}-git"
-pkgver=1.2.5.r29.g37cab34
+pkgver=1.3.0.r38.g306a01c1
 pkgrel=1
 pkgdesc="Oat++ is an open-source C++ web framework for highly scalable and resource-efficient web applications."
 arch=('x86_64')
@@ -17,10 +17,10 @@ source=(
   'module-install.cmake.patch'
 	'module-config.cmake.in.patch'
 )
-md5sums=(
+sha256sums=(
   'SKIP'
-  'SKIP'
-  'SKIP'
+  '564e8ec5bb5009ceb8713b91ec2b11ce3346dd022abe30760462362b5f8d027b'
+  '27e3c6704134ff31dd824446c4653a0154837e1faf58fb5ac4866bf5060c3eca'
 )
 
 pkgver() {
