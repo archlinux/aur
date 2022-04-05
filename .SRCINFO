@@ -1,0 +1,18 @@
+pkgbase = python-httpstan
+	pkgdesc = HTTP-based REST interface to Stan, a package for Bayesian inference.
+	pkgver = 4.7.2
+	pkgrel = 1
+	url = https://httpstan.readthedocs.org
+	arch = i686
+	arch = x86_64
+	license = ISCL
+	depends = python-numpy
+	depends = python-marshmallow
+	depends = python-webargs
+	depends = python-setuptools
+	depends = python-appdirs
+	depends = python-aiohttp
+	source = https://files.pythonhosted.org/packages/25/66/702bd3793c1593590635ae0d54192c3f767071b829136106fab7f037b0aa/httpstan-4.7.2-cp310-cp310-manylinux_2_24_x86_64.whl
+	sha256sums = 89836d6126bd2dcb9eecd691be18fcbd5db2fa146766a4718ad96e1e72edb4f9
+
+pkgname = python-httpstan
