@@ -1,7 +1,7 @@
 # Maintainer: Morteza NourelahiAlamdari <m@0t1.me>
 
 pkgname=google-cloud-cpp
-pkgver=1.38.0
+pkgver=1.39.0
 pkgrel=1
 pkgdesc="C++ Client Libraries for Google Cloud Services"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 makedepends=('gcc' 'cmake' 'm4')
 depends=('protobuf' 'grpc' 'nlohmann-json' 'c-ares' 'zlib' 'openssl' 'curl' 'abseil-cpp' 'google-crc32c')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/googleapis/google-cloud-cpp/archive/v$pkgver.tar.gz")
-sha256sums=('c860511312163db81891f9cba142e55f0d89e0b884544b0179952a14cb1bd54b')
+sha256sums=('73e4e840018b24bec2beb49e036a3c2d8c471d4dc4a18b9026ccc4d8ab8e78cc')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -18,6 +18,7 @@ build() {
       -DBUILD_TESTING=OFF \
       -DGOOGLE_CLOUD_CPP_ENABLE_EXAMPLES=OFF \
       -DCMAKE_INSTALL_PREFIX="$pkgdir/usr/local" \
+      -DCMAKE_INSTALL_MESSAGE=NEVER \
       -H. -Bcmake-out
   cmake --build cmake-out -- -j "$(nproc)"
 }
