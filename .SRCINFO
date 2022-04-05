@@ -1,0 +1,23 @@
+pkgbase = libre-trainsim-bin
+	pkgdesc = Free Train Simulator for everyone
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://www.libretrainsim.org/
+	arch = x86_64
+	arch = i686
+	license = GPL3
+	depends = libxcursor
+	depends = libxi
+	depends = libxrandr
+	depends = hicolor-icon-theme
+	depends = libglvnd
+	depends = libxinerama
+	provides = libre-trainsim
+	source = https://github.com/flathub/org.libretrainsim.Libre-TrainSim/raw/9add6d0bbf6afe8c36905af4dac4a1e82148c3a3/icon.png
+	sha256sums = 56644aa06416b35c3ce1499ec822822b38749cfc8a554be2247de1e02360c451
+	source_x86_64 = libre-trainsim-bin-64-0.8.zip::https://github.com/Libre-TrainSim/Libre-TrainSim/releases/download/v0.8/Libre_TrainSim_Linux64_v0-8.zip
+	sha256sums_x86_64 = 179255021d45e812eccfe014ab2cd8c978bf8a03f30e29ba0602c8ccd598cf57
+	source_i686 = libre-trainsim-bin-32-0.8.zip::https://github.com/Libre-TrainSim/Libre-TrainSim/releases/download/v0.8/Libre_TrainSim_Linux32_v0-8.zip
+	sha256sums_i686 = fc61bdb549f00c7bbac15c43f2aa9e15c85098372c0e46c159bbacdbff3e7b5e
+
+pkgname = libre-trainsim-bin
