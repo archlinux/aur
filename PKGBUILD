@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=go-rainbow-git
-pkgver=v1.1.1.r2.g7161fb6
-pkgrel=2
+pkgver=v1.2.1.r0.g9e34118
+pkgrel=1
 pkgdesc='Tasty rainbows for your terminal! (lolcat clone)'
 url="https://github.com/arsham/rainbow"
 arch=('x86_64' 'i686')
