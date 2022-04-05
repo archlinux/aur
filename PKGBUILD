@@ -29,7 +29,7 @@ optdepends=('python-aiohttp: adds support for the AIOHTTP-Server Web Framework'
             'python-sqlalchemy: captures queries from SQLAlchemy as breadcrumbs'
             'python-pure_eval: for richer stacktraces & additional variables'
             'python-executing: for richer stacktraces & better function names')
-source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('38fd16a92b5ef94203db3ece10e03bdaa291481dd7e00e77a148aa0302267d47')
 
 build() {
