@@ -1,7 +1,7 @@
 # Maintainer:dmeck<dmeck@qq.com>
 pkgname=networkmanager-dispatcher-rclone
 pkgver=1.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Dispatcher Script for rclone"
 arch=(any)
 #license=('MIT')
@@ -11,8 +11,8 @@ source=("10-rclone"
 		"rc5-mount-remote-google.sh"
 		"rclone-mount-rc-local.service"
 		)
-md5sums=('d4e3200882c5a979b394fd533ea67a31'
-          '08eb68efbdc738c67954243509275c7e'
+md5sums=('074be0f5cc1a9b3641e0bb1f25cf3f9a'
+          '66288e4263180be7bf3b552905406b8b'
           '892d397378867c9435bdb7d14013b495'
 )
 

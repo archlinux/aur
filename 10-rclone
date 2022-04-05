@@ -19,7 +19,7 @@ if [ -e "/etc/rclone-mount-rc.local.d/rc5-mount-remote-google.sh" ]; then
                         /etc/rclone-mount-rc.local.d/rc5-mount-remote-google.sh -r all
                 ;;
                 down)
-                        systemctl stop rclone-mount-rc-local.service -s stop
+                         /etc/rclone-mount-rc.local.d/rc5-mount-remote-google.sh -s all
                 ;;
         esac
   fi

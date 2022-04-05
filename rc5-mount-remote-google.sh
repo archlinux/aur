@@ -3,6 +3,15 @@ set -u
 set -e
 
 
+XUSERS=($(who|grep -E "\(:[0-9](\.[0-9])*\)"|awk '{print $1$NF}'|sort -u))
+for XUSER in "${XUSERS[@]}";
+do
+	echo $XUSER;
+	NAME=(${XUSER/(/ })
+	DISPLAY=${NAME[1]/)/}
+	DBUS_ADDRESS=unix:path=/run/user/$(id -u ${NAME[0]})/bus
+
+done
 
 user_target_link_count=0
 user_target_bind_count=0
@@ -24,16 +33,20 @@ proxy_off(){
 }
 proxy_on() {
      export no_proxy="localhost,127.0.0.1,localaddress,.localdomain.com"
-     export http_proxy=http://127.0.0.1:8119
+     export http_proxy=http://127.0.0.1:8118
      export https_proxy=$http_proxy
-     export socks5_proxy="127.0.0.1:1081"  
+     export socks5_proxy="127.0.0.1:1080"  
      echo -e "已开启代理"
 }
 
 rollback() {
     echo "umount user context"
     proxy_off
-    sudo -u dmeck DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus notify-send "rclone" "shell exec error" 
+    sudo -u ${NAME[0]} DISPLAY=${DISPLAY} \
+                DBUS_SESSION_BUS_ADDRESS=${DBUS_ADDRESS} \
+                PATH=${PATH} \
+                notify-send "rclone" "shell exec error"
+ 
     exit
 }
 
@@ -70,8 +83,11 @@ toRunGoogleContainer() {
         #run load mounts target 
         if test -d "$2" 
         then
-            echo "$2" 
-            sudo -u dmeck DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus notify-send "enable google rclone "
+            echo "$2"     
+            sudo -u ${NAME[0]} DISPLAY=${DISPLAY} \
+                DBUS_SESSION_BUS_ADDRESS=${DBUS_ADDRESS} \
+                PATH=${PATH} \
+                notify-send "rclone" "enable google"
             if [ `whoami` == "root" ];then
                 sudo -H -E  -u dmeck bash -c "$(declare -f proxy_on); proxy_on &&  nohup rclone mount google:  \"$2\" --allow-other --allow-non-empty --vfs-cache-mode writes  &"
             else
@@ -116,8 +132,13 @@ toRun() {
 toStopGoogleContaine() {
 
     proxy_off
-    sudo -u dmeck DISPLAY=:0 DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus notify-send "disenable $1 rclone" 
-    fusermount -uz  "$2"
+
+    sudo -u ${NAME[0]} DISPLAY=${DISPLAY} \
+        DBUS_SESSION_BUS_ADDRESS=${DBUS_ADDRESS} \
+        PATH=${PATH} \
+        notify-send "rclone" "disable google"
+    echo ${DBUS_ADDRESS}
+	fusermount -uz  "$2"
 }
 
 toStop() {
