@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='Multi-use bash script for Linux systems to audit wireless networks'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
 license=('GPL3')
-source=('git://github.com/v1s1t0r1sh3r3/airgeddon.git#branch=master')
+source=('https://github.com/v1s1t0r1sh3r3/airgeddon.git#branch=master')
 depends=(
   'aircrack-ng' 'bash>=4.2' 'coreutils'
   'gawk' 'iproute2' 'iw'
