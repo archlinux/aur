@@ -1,8 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=dagger
-pkgver=0.2.4
-pkgrel=2
+pkgver=0.2.5
+pkgrel=1
 pkgdesc="A portable devkit for CI/CD pipelines"
 arch=('x86_64')
 url="https://dagger.io"
@@ -10,7 +10,7 @@ license=('Apache')
 depends=('glibc')
 makedepends=('git' 'go')
 options=('!lto')
-_commit='b32c8732bc7bd932dbdb5dc42fe2434c53cfeb38'
+_commit='7d2f279c59ddf18e62d065001490e4edb263adea'
 source=("$pkgname::git+https://github.com/dagger/dagger.git#commit=$_commit")
 b2sums=('SKIP')
 
