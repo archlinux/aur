@@ -1,7 +1,7 @@
 # Maintainer: Emil <emildekeyser@telenet.be>
 
 pkgname=dino-patched-git
-pkgver=v0.2.0.r279.g98167b4e
+pkgver=v0.2.0.r293.g99e67715
 pkgrel=1
 pkgdesc="Simple and modern Jabber/XMPP client written in vala patched with extra stuff"
 arch=('i686' 'x86_64' 'aarch64')
@@ -25,7 +25,7 @@ pkgver() {
 
 build() {
     cd "${srcdir}/dino"
-    ./configure --with-tests --prefix="/usr" CC="$CC" CFLAGS="$CFLAGS" VALACFLAGS="$VALACFLAGS"
+    ./configure --prefix="/usr" CC="$CC" CFLAGS="$CFLAGS" VALACFLAGS="$VALACFLAGS"
     make
 }
 
@@ -34,8 +34,8 @@ package() {
     make DESTDIR="${pkgdir}/" install
 }
 
-check() {
-    cd "${srcdir}/dino"
-    echo "Executing xmpp-vala-test:"
-    build/xmpp-vala-test
-}
+# check() {
+#     cd "${srcdir}/dino"
+#     echo "Executing xmpp-vala-test:"
+#     build/xmpp-vala-test
+# }

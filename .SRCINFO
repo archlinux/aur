@@ -1,6 +1,6 @@
 pkgbase = dino-patched-git
 	pkgdesc = Simple and modern Jabber/XMPP client written in vala patched with extra stuff
-	pkgver = v0.2.0.r279.g98167b4e
+	pkgver = v0.2.0.r293.g99e67715
 	pkgrel = 1
 	url = https://dino.im/
 	arch = i686
