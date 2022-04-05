@@ -1,7 +1,7 @@
 # Maintainer: Emil <emildekeyser@telenet.be>
 
 pkgname=dino-patched-git
-pkgver=v0.2.0.r293.g99e67715
+pkgver=v0.2.0.r281.g20cb7b41
 pkgrel=1
 pkgdesc="Simple and modern Jabber/XMPP client written in vala patched with extra stuff"
 arch=('i686' 'x86_64' 'aarch64')
