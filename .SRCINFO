@@ -10,7 +10,7 @@ pkgbase = python-single-version
 	makedepends = python-poetry
 	depends = python-first
 	depends = python-importlib-metadata
-	source = https://pypi.org/packages/source/s/single-version/single-version-1.5.1.tar.gz
+	source = https://files.pythonhosted.org/packages/source/s/single-version/single-version-1.5.1.tar.gz
 	sha256sums = d0dee097581a4a9cdf1576075219369abedb67583449c6a0ae2c3f8100b9e903
 
 pkgname = python-single-version

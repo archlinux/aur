@@ -9,7 +9,7 @@ url="https://github.com/hongquan/single-version"
 license=('MIT')
 depends=('python-first' 'python-importlib-metadata')
 makedepends=('python-build' 'python-installer' 'python-poetry')
-source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('d0dee097581a4a9cdf1576075219369abedb67583449c6a0ae2c3f8100b9e903')
 
 build() {
