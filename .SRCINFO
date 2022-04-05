@@ -7,8 +7,7 @@ pkgbase = xping
 	arch = x86_64
 	license = THE BEER-WARE LICENSE
 	depends = libevent
-	source = git://github.com/martintopholm/xping.git#tag=v1.3
+	source = https://github.com/martintopholm/xping.git#tag=v1.3
 	md5sums = SKIP
 
 pkgname = xping
-
