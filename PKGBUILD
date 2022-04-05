@@ -2,8 +2,8 @@
 
 pkgname=snow-theme-git
 _pkgname=snow
-pkgver=r60.960b2a8
-pkgrel=2
+pkgver=r70.5c34964
+pkgrel=1
 pkgdesc="Light Gtk theme with some gradients"
 arch=("any")
 url="https://github.com/EliverLara/${_pkgname}"
