@@ -1,8 +1,9 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
-pkgname=nuclei-gcc
-pkgver=2022.01
-pkgrel=2
+pkgbase=nuclei-gcc
+pkgname=(nuclei-gcc nuclei-gcc-bin)
+pkgver=2022.04
+pkgrel=1
 pkgdesc="nuclei-gcc 是 Nuclei Studio IDE 的编译工具。"
 arch=("x86_64")
 makedepends=()
@@ -16,9 +17,13 @@ license=('unknow')
 options=(!strip)
 
 source=("https://www.nucleisys.com/upload/files/toochain/gcc/nuclei_riscv_newlibc_prebuilt_linux64_${pkgver}.tar.bz2")
-sha256sums=('accc54cffd55bfd6e6da61dba3b37f4610913fccda19d7b24238c82d3fe0a98f')
+sha256sums=('cab6f57d58f3ca6931e9204eb582217a7aa4e02004eaa55cb06ec8ef4e529981')
 
-package() {
+package_nuclei-gcc() {
+	depends=(nuclei-gcc-bin)
+}
+
+package_nuclei-gcc-bin() {
 	msg2 'Installing Nuclei GCC'
 	install -dm755 "${pkgdir}/opt/nuclei/NucleiStudio/toolchain/" \
 					"${pkgdir}/opt/SEGGER/Embedded-Studio-RISC-V/Nuclei_Toolchain/"
@@ -26,8 +31,6 @@ package() {
 	mv "${srcdir}/gcc" "${pkgdir}/opt/nuclei"
 	ln -sf "/opt/nuclei/gcc" "${pkgdir}/opt/nuclei/NucleiStudio/toolchain/gcc"
 	ln -sf "/opt/nuclei/gcc" "${pkgdir}/opt/SEGGER/Embedded-Studio-RISC-V/Nuclei_Toolchain/gcc"
-
-
 }
 
 #
