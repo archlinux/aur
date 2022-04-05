@@ -1,0 +1,15 @@
+pkgbase = python-greenery
+	pkgdesc = Greenery allows manipulation of regular expressions as finite state machines
+	pkgver = 3.3.5
+	pkgrel = 1
+	url = https://github.com/qntm/greenery
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/g/greenery/greenery-3.3.5.tar.gz
+	sha256sums = b50f4fd2c9af5ddf9ac26e678b2a01b69ae46a530d6742f1c67960eb659bbdbd
+
+pkgname = python-greenery
