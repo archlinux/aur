@@ -1,13 +1,14 @@
 pkgbase = scidb-svn
 	pkgdesc = Scidb is a Chess Information Data Base; includes 2 engines, imports from Chess Base files
 	pkgver = 1.0.beta.r1531
-	pkgrel = 5
+	pkgrel = 6
 	url = https://scidb.sourceforge.net/
 	install = scidb-svn.install
 	arch = x86_64
 	arch = i686
 	license = GPL2
 	makedepends = patch
+	makedepends = subversion
 	depends = tk
 	depends = shared-mime-info
 	depends = libsm

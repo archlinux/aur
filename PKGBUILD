@@ -2,7 +2,7 @@
 # Contributor: Original submitter q9 <qqqqqqqqq9 at web dot de>
 pkgname=scidb-svn
 pkgver=1.0.beta.r1531
-pkgrel=5
+pkgrel=6
 # epoch=2
 pkgdesc="Scidb is a Chess Information Data Base; includes 2 engines, imports from Chess Base files"
 arch=('x86_64' 'i686')
@@ -26,6 +26,7 @@ depends=('tk'
 makedepends=(
            # needed for build purposes
            'patch'
+           'subversion'
             )
 conflicts=('scidb')
 #options=('!buildflags' '!makeflags' '!debug' )
