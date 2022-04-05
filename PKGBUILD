@@ -1,42 +1,37 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+
 pkgname=libkexiv2-git
-pkgver=r782.6c196e4
+pkgver=22.03.80.r0.gd8dbd19
 pkgrel=1
 pkgdesc='A library to manipulate pictures metadata'
-arch=('i686' 'x86_64')
-url='http://www.kde.org'
+arch=('x86_64')
+url='https://invent.kde.org/graphics/libkexiv2'
 license=('GPL' 'LGPL' 'FDL')
 depends=('qt5-base' 'exiv2')
-makedepends=('git' 'extra-cmake-modules-git' 'kdoctools')
+makedepends=('git' 'extra-cmake-modules' 'kdoctools')
+provides=("libkexiv2=${pkgver%.r*}")
 conflicts=('libkexiv2')
-provides=('libkexiv2')
 groups=('digikamsc-git')
-source=('libkexiv2::git+git://anongit.kde.org/libkexiv2')
+source=("$pkgname::git+$url")
 md5sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/libkexiv2"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-if [[ -d "${srcdir}/build" ]]; then
-      msg "Cleaning the previous build directory..."
-      rm -rf "${srcdir}/build"
-  fi
-  mkdir "${srcdir}/build"
+	git -C "$pkgname" describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
-  cd "${srcdir}/build"
-  cmake "${srcdir}/libkexiv2" -DCMAKE_BUILD_TYPE=Release \
-                -DCMAKE_INSTALL_PREFIX=/usr \
-                -DLIB_INSTALL_DIR=lib \
-                -DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
-                -DBUILD_TESTING=OFF
-  make
+	cmake \
+		-B build \
+		-S "$pkgname" \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DLIB_INSTALL_DIR=lib \
+		-DKDE_INSTALL_USE_QT_SYS_PATHS=ON \
+		-DBUILD_TESTING=OFF \
+		-Wno-dev
+	make -C build
 }
 
 package() {
-  cd "${srcdir}/build"
-  make DESTDIR="${pkgdir}" install
+	make -C build install DESTDIR="$pkgdir/"
 }
