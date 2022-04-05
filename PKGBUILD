@@ -4,7 +4,7 @@
 # Contributor: Sergey Kasmy
 
 pkgname=liquidctl-git
-pkgver=1.8.1.r113.df547dc
+pkgver=1.9.0.r2.3271625
 pkgrel=1
 pkgdesc='Cross-platform tool and drivers for liquid coolers and other devices'
 arch=('any')
