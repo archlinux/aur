@@ -1,0 +1,16 @@
+pkgbase = dvdts-fp-git
+	pkgdesc = Terminal screensaver similar to dvd bouncing logo; Uses the distro/OS name/custom text instead
+	pkgver = r26.b763660
+	pkgrel = 3
+	url = https://github.com/forumplayer/dvdts
+	arch = any
+	license = Unlicense
+	makedepends = git
+	makedepends = go
+	provides = dvdts
+	conflicts = dvdts
+	conflicts = dvdts-git
+	source = git+https://github.com/forumplayer/dvdts
+	sha256sums = SKIP
+
+pkgname = dvdts-fp-git
