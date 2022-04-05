@@ -1,7 +1,7 @@
 # Maintainer: Colin Arnott <colin@urandom.co.uk>
 
 pkgname=asmfmt
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="Format your assembler code in a similar way that gofmt formats your Go code."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/klauspost/asmfmt"
 license=('BSD')
 makedepends=('go')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('9f9d6228698af6c5f3439ff3e3d7ecd2e4f4b3ba9522687250852cd2f8a33eb14046390afbee9edbc2c86db7fd22087d78ea2d699e1a88a449ad338e71401905')
+sha512sums=('532c41b0b325989124677dd863e11e80b7b06183a66d414d69b86d123eb3ae28f6bf9c488519072a324c695f42ee5a6cacd15c53ae738e666639d577ce4d8276')
 
 build() {
 	cd "${pkgname}-${pkgver}"
