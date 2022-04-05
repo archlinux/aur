@@ -1,6 +1,6 @@
 pkgbase = liri-power-manager-git
 	pkgdesc = Manages the power consumption settings of Liri Shell
-	pkgver = r82.22c9288
+	pkgver = r176.82662ac
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
@@ -22,8 +22,7 @@ pkgbase = liri-power-manager-git
 	replaces = liri-power-manager
 	options = debug
 	options = !strip
-	source = power-manager::git://github.com/lirios/power-manager.git#branch=develop
+	source = power-manager::git+https://github.com/lirios/power-manager.git#branch=develop
 	md5sums = SKIP
 
 pkgname = liri-power-manager-git
-
