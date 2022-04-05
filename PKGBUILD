@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-screenshot-git
-pkgver=r98.c85e2ca
+pkgver=r176.fbec8fc
 pkgrel=1
 pkgdesc="Take pictures of your screen"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ replaces=('liri-screenshot')
 provides=('liri-screenshot')
 groups=('liri-git')
 
-_gitroot="git://github.com/lirios/screenshot.git"
+_gitroot="git+https://github.com/lirios/screenshot.git"
 _gitbranch=develop
 _gitname=screenshot
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})

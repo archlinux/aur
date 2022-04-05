@@ -1,6 +1,6 @@
 pkgbase = liri-screenshot-git
 	pkgdesc = Take pictures of your screen
-	pkgver = r98.c85e2ca
+	pkgver = r176.fbec8fc
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
@@ -18,8 +18,7 @@ pkgbase = liri-screenshot-git
 	replaces = liri-screenshot
 	options = debug
 	options = !strip
-	source = screenshot::git://github.com/lirios/screenshot.git#branch=develop
+	source = screenshot::git+https://github.com/lirios/screenshot.git#branch=develop
 	md5sums = SKIP
 
 pkgname = liri-screenshot-git
-
