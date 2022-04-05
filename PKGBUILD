@@ -2,14 +2,14 @@
 # Maintainer: Edgar Luque <git@edgarluque.com>
 
 pkgname=ddnet-git
-pkgver=15.5.1.r4.g32523b1ea
+pkgver=16.0.2.r16.g34993f020
 pkgrel=1
 pkgdesc="A Teeworlds modification with a unique cooperative gameplay."
 arch=('x86_64')
 url="https://ddnet.tw"
 license=('custom:BSD' 'CCPL:by-nc-sa')
-depends=('freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'pnglite' 'ffmpeg' 'libnotify' 'miniupnpc' 'sqlite' 'mariadb-libs')
-makedepends=('git' 'cmake' 'ninja' 'python')
+depends=('freetype2' 'opusfile' 'curl' 'glew' 'wavpack' 'pnglite' 'ffmpeg' 'libnotify' 'miniupnpc' 'sqlite' 'mariadb-libs' 'vulkan-icd-loader')
+makedepends=('git' 'cmake' 'ninja' 'python' 'vulkan-headers' 'glslang' 'spirv-tools')
 checkdepends=('gmock')
 optdepends=('ddnet-skins: A collection with more than 500 custom tee skins.'
             'ddnet-maps-git: All the maps used on the official DDNet Servers.')
