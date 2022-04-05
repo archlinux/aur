@@ -7,7 +7,7 @@ url="https://github.com/martintopholm/xping"
 arch=('x86_64')
 license=("THE BEER-WARE LICENSE")
 depends=('libevent')
-source=("https://github.com/martintopholm/$pkgname.git#tag=v$pkgver")
+source=("git+https://github.com/martintopholm/$pkgname.git#tag=v$pkgver")
 md5sums=('SKIP')
 install='xping.install'
 CPPFLAGS="-Wall -Werror -I/usr/local/include"
