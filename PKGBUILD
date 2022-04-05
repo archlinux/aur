@@ -3,7 +3,7 @@
 _pkgname=pacseek
 pkgname=pacseek-bin
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A terminal user interface for searching and installing Arch Linux packages (binary version)'
 arch=('x86_64')
 url="https://github.com/moson-mo/$_pkgname"
