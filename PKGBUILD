@@ -12,16 +12,15 @@ life."
 url='http://stardewvalley.net/'
 license=('custom')
 arch=('x86_64')
+options=('!strip' 'staticlibs')
 source=(
   "${pkgname}"
   "${pkgname}.desktop"
   'local:///stardew_valley_1_5_6_1988831614_53040.sh'
-  'Stardew Valley.deps.json'
 )
 sha256sums=('9f51b56b351824493c381731f29175b0897fa0dc4169a9b9160b5a12003883dc'
             'ca0fe151f73f5e8b594b226e1b0539655a2d95a7848eb0e43961cb6daa0de2ff'
-            '692722cb77acbccf7392abfbaec54cae34fd6edb8e62cfb2843f70494cb5ea91'
-            '10dfb770fb4ea83d040396c744a0f068c812ede06d8a176a452f6f1c392acc73')
+            '692722cb77acbccf7392abfbaec54cae34fd6edb8e62cfb2843f70494cb5ea91')
 
 
 package() {
@@ -59,11 +58,6 @@ package() {
   install -m 644                   \
     "${srcdir}/${pkgname}.desktop" \
     "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-
-  # Remove broken .a library references
-  install -m 644                                             \
-    "${srcdir}/Stardew Valley.deps.json"                     \
-    "${pkgdir}/opt/${pkgname}/game/Stardew Valley.deps.json"
 }
 
 # vim: ts=2 sw=2 et:
