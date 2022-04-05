@@ -1,6 +1,6 @@
 # Maintainer: Luis Batalha <lfrb25 at gmail dot com>
 
-commit_hash=0db7d65c83b39abdc760990b41c242f5b55d3207
+commit_hash=09d144f89264342901250d280b5a7905748fa66f
 source_dir='qoi'
 
 pkgname=(qoi-headers-git
@@ -8,16 +8,17 @@ pkgname=(qoi-headers-git
          qoibench-git
         )
 pkgbase=qoi-git
-pkgver=r172.0db7d65
+pkgver=r192.09d144f
 pkgrel=1
 pkgdesc="The 'Quite OK Image' format for fast, lossless image compression"
 arch=('x86_64')
-url='https://phoboslab.org/log/2021/11/qoi-fast-lossless-image-compression'
+url='https://qoiformat.org/'
 license=('MIT')
 source=("$source_dir::git+https://github.com/phoboslab/qoi.git#commit=$commit_hash")
 makedepends=('git'
              'gcc-libs'
              'stb'
+             'libpng'
              )
 sha256sums=('SKIP')
 
@@ -26,16 +27,10 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-  cd $source_dir
-  sed -i 's/"stb_image.h"/<stb\/stb_image.h>/g' qoiconv.c qoibench.c
-  sed -i 's/"stb_image_write.h"/<stb\/stb_image_write.h>/g' qoiconv.c qoibench.c
-}
-
 build() {
   cd $source_dir
-  gcc -std=gnu99 -lpng $CFLAGS -o qoibench qoibench.c
-  gcc -std=c99 $CFLAGS -o qoiconv qoiconv.c
+  gcc -std=gnu99 -lpng -I /usr/include/stb/ $CFLAGS -o qoibench qoibench.c
+  gcc -std=c99 $CFLAGS -I /usr/include/stb/ -o qoiconv qoiconv.c
 }
 
 package_qoi-headers-git() {
@@ -52,6 +47,5 @@ package_qoiconv-git() {
 package_qoibench-git() {
   provides=('qoibench')
   pkgdesc+=" - Benchmark qoi against various png libraries" 
-  depends=('libpng')
   install -Dm755 $source_dir/qoibench "$pkgdir"/usr/bin/qoibench
 }
