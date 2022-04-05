@@ -1,0 +1,12 @@
+pkgbase = coincidence-detector
+	pkgdesc = coincidence detector
+	pkgver = 14.88.28
+	pkgrel = 1
+	url = https://coincidencedetector.com
+	arch = any
+	license = 
+	noextract = coincidence-detector-14.88.28.crx
+	source = coincidence-detector-14.88.28.crx::https://coincidencedetector.com/coincidence-detector-14.88.28.crx
+	sha256sums = 03147eed83fec6246206d78d7f26508bd65f28db8907517fd57281bb02962639
+
+pkgname = coincidence-detector
