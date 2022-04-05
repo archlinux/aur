@@ -7,7 +7,7 @@ pkgrel=3
 epoch=1
 pkgdesc="RetroArch's cheatcode files, content data files, etc."
 arch=('any')
-url="https://github.com/libretro/libretro-database"
+url="https://github.com/libretro/$_pkgname"
 license=('MIT')
 groups=('libretro')
 makedepends=('git')
@@ -15,8 +15,8 @@ optdepends=('retroarch')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 options=('!strip')
-source=("$_pkgname::git+$url.git")
-md5sums=('SKIP')
+source=("git+$url.git")
+b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
