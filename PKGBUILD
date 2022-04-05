@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-session-git
-pkgver=r1.1d7732b
+pkgver=r110.f26b173
 pkgrel=1
 pkgdesc="Liri session manager"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ replaces=('liri-session')
 provides=('liri-session')
 groups=('liri-git')
 
-_gitroot="git://github.com/lirios/session.git"
+_gitroot="git+https://github.com/lirios/session.git"
 _gitbranch=develop
 _gitname=session
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})

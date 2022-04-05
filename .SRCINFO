@@ -1,6 +1,6 @@
 pkgbase = liri-session-git
 	pkgdesc = Liri session manager
-	pkgver = r1.1d7732b
+	pkgver = r110.f26b173
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
@@ -20,8 +20,7 @@ pkgbase = liri-session-git
 	replaces = liri-session
 	options = debug
 	options = !strip
-	source = session::git://github.com/lirios/session.git#branch=develop
+	source = session::git+https://github.com/lirios/session.git#branch=develop
 	md5sums = SKIP
 
 pkgname = liri-session-git
-
