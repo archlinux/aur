@@ -1,6 +1,6 @@
 pkgbase = liri-files-git
 	pkgdesc = File manager for Liri OS
-	pkgver = v0.1.0.r74.ga4c3e20
+	pkgver = v0.1.0.r142.ge309654
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
@@ -19,8 +19,7 @@ pkgbase = liri-files-git
 	replaces = liri-files
 	options = debug
 	options = !strip
-	source = files::git://github.com/lirios/files.git#branch=develop
+	source = files::git+https://github.com/lirios/files.git#branch=develop
 	md5sums = SKIP
 
 pkgname = liri-files-git
-

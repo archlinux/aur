@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-files-git
-pkgver=v0.1.0.r74.ga4c3e20
+pkgver=v0.1.0.r142.ge309654
 pkgrel=1
 pkgdesc="File manager for Liri OS"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ replaces=('liri-files')
 provides=('liri-files')
 groups=('liri-git')
 
-_gitroot="git://github.com/lirios/files.git"
+_gitroot="git+https://github.com/lirios/files.git"
 _gitbranch=develop
 _gitname=files
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
