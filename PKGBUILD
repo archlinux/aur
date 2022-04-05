@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-settings-git
-pkgver=v0.9.0.r124.g0e689bd
+pkgver=v0.9.0.r235.gebf3b01
 pkgrel=1
 pkgdesc="Settings application and modules for Liri OS"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ replaces=('liri-settings')
 provides=('liri-settings')
 groups=('liri-git')
 
-_gitroot="git://github.com/lirios/settings.git"
+_gitroot="git+https://github.com/lirios/settings.git"
 _gitbranch=develop
 _gitname=settings
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
