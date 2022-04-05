@@ -10,7 +10,7 @@ url="https://github.com/moses-palmer/pynput"
 license=('LGPL3')
 depends=('python-xlib' 'python-six' 'python-evdev')
 makedepends=('python-setuptools')
-source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz"
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
         'setup.patch')
 sha256sums=('3a5726546da54116b687785d38b1db56997ce1d28e53e8d22fc656d8b92e533c'
             'c519290a88baa3e15be4bb6cff4d665a020b9e0c8c1241749670d58a48b07e2c')
