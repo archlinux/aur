@@ -1,0 +1,21 @@
+pkgbase = activemq-runit
+	pkgdesc = runit service scripts for activemq
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/artix-linux
+	arch = any
+	groups = runit-system
+	license = GPL-3
+	depends = activemq
+	provides = activemq-runscripts
+	provides = init-activemq
+	conflicts = init-activemq
+	replaces = activemq-runscripts
+	source = activemq.run
+	source = activemq.conf
+	source = runsvdir-activemq
+	sha256sums = 27720d3df6b10088bf05a7a0708df715e4f137838520622ed446d7cadf964995
+	sha256sums = 2eef8d61c0ff1bce8f9e0db69713be033506c3d888830cc6372d3ea0deae79de
+	sha256sums = 0765185159214caf7d4a676cf34db3ad1f1803956fa5130ea497c76a72e48f69
+
+pkgname = activemq-runit

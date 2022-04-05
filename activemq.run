@@ -1,0 +1,5 @@
+#!/bin/sh
+[ -r conf ] && . ./conf
+#exec 2>&1
+exec $JAVACMD $ACTIVEMQ_OPTS -Djava.awt.headless=true -Djava.io.tmpdir=$ACTIVEMQ_TMP -Dactivemq.classpath=$ACTIVEMQ_CONF:$ACTIVEMQ_LIB: -Dactivemq.home=$ACTIVEMQ_HOME -Dactivemq.base=$ACTIVEMQ_BASE -Dactivemq.conf=$ACTIVEMQ_CONF -Dactivemq.data=$ACTIVEMQ_DATA -jar $ACTIVEMQ_JAR start
+
