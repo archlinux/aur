@@ -1,13 +1,13 @@
 # Maintainer: Paul Makles <paulmakles@gmail.com>
 pkgname=revolt-desktop-git
-pkgver=1.0.3.r1.gea7e0e7
+pkgver=1.0.3.r2.g1bc45e0
 pkgrel=1
-epoch=1
+epoch=25
 pkgdesc="User-first, privacy focused chat platform."
 arch=("x86_64")
 url="https://revolt.chat"
 license=("AGPL3")
-depends=("electron")
+depends=("electron17")
 makedepends=("git" "npm" "nodejs")
 provides=("${pkgname%-git}")
 source=("git+https://github.com/revoltchat/desktop.git")
@@ -21,8 +21,8 @@ pkgver() {
 build() {
 	cd "$srcdir/desktop"
     
-    electronDist=/usr/lib/electron
-    electronVer=$(electron --version | tail -c +2)
+    electronDist=/usr/lib/electron17
+    electronVer=$(${electronDist}/electron --version | tail -c +2)
 
     sed -i '/		"electron": /d' ./package.json
     HOME="$srcdir/.electron-gyp" npm install --cache "${srcdir}/npm-cache"
