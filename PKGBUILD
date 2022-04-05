@@ -1,6 +1,6 @@
 # Maintainer: Henry Nelson <hcnelson99@gmail.com>
 pkgname=zig-static
-pkgver=0.8.1
+pkgver=0.9.1
 pkgrel=1
 epoch=
 pkgdesc="robust, optimal, and clear programming language"
@@ -12,7 +12,7 @@ makedepends=()
 provides=('zig')
 conflicts=('zig')
 source=("https://ziglang.org/download/$pkgver/zig-linux-x86_64-$pkgver.tar.xz")
-md5sums=('b74c2451c7786248a6e2ba657150efb7')
+md5sums=('01daf426d9e1c86aad6e4b26351e1ae8')
 
 package() {
     cd "$srcdir/zig-linux-x86_64-$pkgver"
