@@ -1,7 +1,6 @@
-# Maintainer: The-Repo-Club <The-Repo-Club@github.com>
-# Contributor: The-Repo-Club <The-Repo-Club@github.com>
+# Maintainer: Jeff_WuYo <62562200+Jeff-WuYo@users.noreply.github.com>
 pkgname=qt6gtk2
-pkgver=0.1
+pkgver=0.2
 pkgrel=1
 pkgdesc='GTK+2.0 integration plugins for Qt6'
 arch=('any')
@@ -12,7 +11,7 @@ conflicts=($pkgname-git)
 depends=(qt6-svg qt6-base gtk2)
 makedepends=(qt6-tools)
 source=("${pkgname}-$pkgver.tar.gz::${url}/releases/download/$pkgver/$pkgname-$pkgver.tar.xz")
-sha256sums=('8974459b5000d5443847faf833a9ad13d7928fcc8677ed5714e8107b18b18719')
+sha256sums=('22596853eb3ea663d8f28fb40d97195428b883ec571365ce1b03437f5c75f6bc')
 
 build() {
   cd $pkgname-$pkgver
