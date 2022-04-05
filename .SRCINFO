@@ -1,5 +1,5 @@
 pkgbase = interception-k2k-git
-	pkgdesc = Unofficial plugin for Interception Tools (caps2esc, tab2altgr) - patched
+	pkgdesc = Configurable plugin for Interception Tools (caps2esc, space2meta, tab2altgr...)
 	pkgver = 0.0.0.r30.259a549
 	pkgrel = 1
 	url = https://github.com/zsugabubus/interception-k2k
@@ -13,4 +13,3 @@ pkgbase = interception-k2k-git
 	sha256sums = 1b00bff3180178ccaa59a6e29c2add6801864f1d092ea9cc5da0ebc1c270fa38
 
 pkgname = interception-k2k-git
-

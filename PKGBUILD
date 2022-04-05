@@ -1,9 +1,10 @@
-# Maintainer: Götz Christ <goetzchrist@gmail.com>
+# Maintainer: goetzc
+
 pkgname=interception-k2k-git
 _realname=interception-k2k
 pkgver=0.0.0.r30.259a549
 pkgrel=1
-pkgdesc="Unofficial plugin for Interception Tools (caps2esc, tab2altgr) - patched"
+pkgdesc="Configurable plugin for Interception Tools (caps2esc, space2meta, tab2altgr...)"
 arch=(x86_64)
 license=(MIT)
 url="https://github.com/zsugabubus/interception-k2k"
