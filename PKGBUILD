@@ -1,10 +1,10 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-chailove
 pkgname=$_pkgname-git
-pkgver=1.1.0.r17.ge300ec2
+pkgver=1.2.0.r7.ga98cd8c
 pkgrel=1
-pkgdesc='ChaiScript core'
-arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
+pkgdesc="ChaiScript core"
+arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/libretro/$_pkgname"
 license=('MIT')
 groups=('libretro')
@@ -20,7 +20,7 @@ source=(
 	'git+https://github.com/icculus/physfs.git'
 	'git+https://github.com/effolkronium/random.git'
 	'git+https://github.com/libretro/sdl-libretro.git'
-	'git+https://github.com/Grumbel/SDL_tty.git'
+	'git+https://gitlab.com/grumbel/SDL_tty.git'
 	'git+https://github.com/DanielGibson/Snippets.git'
 	'git+https://github.com/nothings/stb.git'
 	'git+https://github.com/mohaps/TinySHA1.git'
@@ -53,15 +53,18 @@ prepare() {
 	git config submodule.vendor/physfs.url ../physfs
 	git config submodule.vendor/random.url ../random
 	git config submodule.vendor/sdl-libretro.url ../sdl-libretro
-	git config submodule.vendor/SDL_tty.url ../SDL_tty
+	git config submodule.vendor/SDL_tty-gitlab.url ../SDL_tty
 	git config submodule.vendor/Snippets.url ../Snippets
 	git config submodule.vendor/stb.url ../stb
 	git config submodule.vendor/TinySHA1.url ../TinySHA1
 	git submodule update
+	# remove hardcoded optimization flags
+	sed -i 's/-O[0123s]//;s/-Ofast//' Makefile.libretro
 }
 
 build() {
-	CFLAGS="$CFLAGS -Wa,--noexecstack" make -C $_pkgname
+	LDFLAGS+=' -Wl,-z,noexecstack'
+	make -C $_pkgname
 }
 
 package() {
