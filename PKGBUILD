@@ -2,14 +2,14 @@
 
 pkgname=txt2pdbdoc-git
 _pkgname=txt2pdbdoc
-pkgver=r65.80052af
+pkgver=r67.9c7c20e
 pkgrel=1
 pkgdesc="Text to PalmOS Doc file conversion program"
 arch=('i686' 'x86_64')
 url="https://github.com/paul-j-lucas/txt2pdbdoc"
 license=('GPL-2.0')
 depends=('perl')
-source=("git://github.com/paul-j-lucas/txt2pdbdoc")
+source=("git+https://github.com/paul-j-lucas/txt2pdbdoc")
 md5sums=('SKIP')
 
 pkgver() {
