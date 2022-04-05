@@ -1,6 +1,6 @@
 pkgbase = subsurface
 	pkgdesc = Divelog program
-	pkgver = 5.0.6
+	pkgver = 5.0.8
 	pkgrel = 1
 	url = https://github.com/subsurface/subsurface
 	arch = x86_64
@@ -23,7 +23,7 @@ pkgbase = subsurface
 	depends = qt5-connectivity
 	depends = qt5-webkit
 	depends = sqlite
-	source = subsurface-5.0.6.tar.gz::https://github.com/subsurface/subsurface/archive/v5.0.6.tar.gz
-	sha256sums = 244a03e3b38a278686d0c8ba0eced51d93bc9d16021079ed0ec2e475f0109ee2
+	source = subsurface-5.0.8.tar.gz::https://github.com/subsurface/subsurface/archive/v5.0.8.tar.gz
+	sha256sums = d2d2e219a4d23115a5694cd721a5379b32f8375e42381c90c811db62dbafec12
 
 pkgname = subsurface
