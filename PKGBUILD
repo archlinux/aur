@@ -2,7 +2,7 @@
 
 pkgbase=mounriver-studio-toolchain-bin
 pkgname=($pkgbase mounriver-studio-toolchain-openocd-bin mounriver-studio-toolchain-riscv-bin)
-pkgver=1.30
+pkgver=1.40
 pkgrel=1
 arch=('x86_64')
 url='http://www.mounriver.com/'
@@ -17,10 +17,9 @@ optdepends=('ch34x-dkms-git: CH341SER driver with fixed bug'
             'ch341eepromtool: An i2c serial EEPROM programming tool for the WCH CH341A'
             'ch341prog-git: A simple command line tool (programmer) interfacing with ch341a'
             'ch341eeprom-git: A libusb based programming tool for 24xx I²C EEPROMs using the WCH CH341A')
-source=("${pkgbase}-${pkgver}.tar.xz::http://file.mounriver.com/tools/MRS_Toolchain_Linux_x64_V${pkgver}.tar.xz"
-        )
+source=("${pkgbase}-${pkgver}.tar.xz::http://file.mounriver.com/tools/MRS_Toolchain_Linux_x64_V${pkgver}.tar.xz")
 
-sha256sums=('8b03bab58ab6754a26736004d9a2a66f5753f55f70f488c7f59fd703ec674753')
+sha256sums=('b7de5aa5a48641c38810333d93f09df126520708f5c8ed1e33c72da1fcae5cda')
 
 options=('!strip')
 
