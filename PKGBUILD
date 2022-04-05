@@ -1,15 +1,14 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o-bin
-pkgver=2.49.0
+pkgver=2.49.1
 pkgrel=1
-pkgdesc='Text editor'
+pkgdesc='Text editor (terminal only)'
 arch=(x86_64)
 url='https://github.com/xyproto/o'
 license=(BSD)
-#depends=(vte3)
 conflicts=(o)
-source=("https://github.com/xyproto/o/releases/download/v$pkgver/o-$pkgver-linux.tar.xz")
+source=("https://github.com/xyproto/o/releases/download/v$pkgver/o-$pkgver-linux_amd64.tar.xz")
 optdepends=('asciidoctor: for writing man pages'
             'agda: for compiling Agda'
             'astyle: for formatting C#'
@@ -47,17 +46,15 @@ optdepends=('asciidoctor: for writing man pages'
             'v: for compiling and formatting V'
             'yasm: for compiling Assembly'
             'zig: for compiling and formatting Zig')
-sha256sums=('c7e3a5e18e6584c0ee0e5e61ca56dbd595414c5758cfb171b1870785c4f1073c')
-b2sums=('f416932afe2f8edfd2f108e2b80ea90518e9825ca7529504b08f7ae610bf687d47a2ea2f9e4af833df54a206719c43745285b14d6bb12625a099330ee65ac4b3')
+sha256sums=('bc92342c0a9eb8c69af7eb05f31d0a6df8a1f729ec35e1a98d27b52f8b7e0a6e')
+b2sums=('faf76e2dd7693d116bec9dbd01a58249faa46b0470630e2444c72f414736baa2da19148c4f779193e392880aff885842bb473b55bcb28c3196db6a012746c12b')
 
 package() {
-  cd o-$pkgver-linux
+  cd o-$pkgver-linux_amd64
   install -Dm755 o "$pkgdir/usr/bin/o"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/redblack"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/lighted"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/feedgame"
   install -Dm644 o.1.gz "$pkgdir/usr/share/man/man1/o.1.gz"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  #install -Dm755 ko "$pkgdir/usr/bin/ko"
-  #ln -sf /usr/bin/ko "$pkgdir/usr/bin/lo"
 }
