@@ -2,7 +2,7 @@
 # Contributor: Original submitter q9 <qqqqqqqqq9 at web dot de>
 pkgname=scidb-svn
 pkgver=1.0.beta.r1531
-pkgrel=1
+pkgrel=2
 # epoch=2
 pkgdesc="Scidb is a Chess Information Data Base; includes 2 engines, imports from Chess Base files"
 arch=('x86_64' 'i686')
@@ -35,12 +35,14 @@ source=('scidb-svn::svn://svn.code.sf.net/p/scidb/code/trunk'
         'dump_eco.cpp.patch'
         'engines.Sjeng.Makefile.patch'
         'sys_info.cpp.patch'
+        'tcl.Makefile.patch'
         )
 md5sums=('SKIP'
          '3dd938a3a7f744813ccb76fe4826d167'
          '47f44f0eec5d9e0a9e7e1bb25adea3b4'
          '68c9d47e5af84ac25c87045e3388c6f1'
          'ef91ffeceab48c260bb1c2af7d02cd9c'
+         'a2025bd063a9f18615dba96c09e3bc99'
         )
 pkgver() {
   cd $srcdir/$pkgname
@@ -49,37 +51,26 @@ pkgver() {
 }
 
 prepare() {
-  echo " - prepare starting"
-#  mkdir -p  $srcdir/$pkgname-build/
-#  cp -r $srcdir/$pkgname/*  $srcdir/$pkgname-build/
-#  cp *.patch $srcdir/$pkgname
 #  cd $srcdir
-#  patch -u $srcdir/$pkgname/configure -i configure.patch
-#  patch -u $srcdir/$pkgname/src/dump_eco.cpp -i dump_eco.cpp.patch
-#  patch -u $srcdir/$pkgname/src/sys/sys_info.cpp -i sys_info.cpp.patch
-#  patch -u $srcdir/$pkgname/engines/Sjeng/Makefile -i engines.Sjeng.Makefile.patch
-  echo " - prepare complete"
-}
-
-build() {
-  echo " - patching files"
   patch -u $srcdir/$pkgname/configure -i configure.patch
   patch -u $srcdir/$pkgname/src/dump_eco.cpp -i dump_eco.cpp.patch
   patch -u $srcdir/$pkgname/src/sys/sys_info.cpp -i sys_info.cpp.patch
   patch -u $srcdir/$pkgname/engines/Sjeng/Makefile -i engines.Sjeng.Makefile.patch
+  patch -u $srcdir/$pkgname/tcl/Makefile -i tcl.Makefile.patch
+}
 
-  echo " - configure project"
+build() {
   cd $srcdir/$pkgname
   # Set switches for configure script
   # Default switches had debugging turned on
   #     deployment is below /usr/local/bin
-  # this version has debugging off and small code
+  #     this version has debugging off and small code
   SWITCHES=()
   SWITCHES+=("--destdir=${pkgdir}")             # so we can create a build file
   SWITCHES+=("--prefix=/usr")                   # defaults to /usr/local/
   SWITCHES+=("--exec-prefix=/usr")              # defaults to /usr/local/
 #  SWITCHES+=("--bindir=/usr/bin")               # defaults to EPREFIX/bin
-#  SWITCHES+=("--enginesdir=/usr/bin")           # defaults to EPREFIX/games
+  SWITCHES+=("--enginesdir=/usr/games")           # defaults to EPREFIX/games
 #  SWITCHES+=("--datadir=/usr/bin")              # defaults to PREFIX/share
 #  SWITCHES+=("--libdir=/usr/lib")               # defaults to EPREFIX/lib
   SWITCHES+=("--mandir=/usr/share/man")         # defaults to EPREFIX/man
@@ -100,10 +91,8 @@ build() {
     SWITCHSTRING="${SWITCHSTRING} ${SWITCH}"
   done
   export CFLAGS="-fcommon" CXXFLAGS="-fcommon" ; ./configure ${SWITCHSTRING}
-  echo " - ready for build"
   make clean
   make
-  echo " - build complete"
 }
 
 package() {

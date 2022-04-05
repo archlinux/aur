@@ -1,7 +1,7 @@
 pkgbase = scidb-svn
 	pkgdesc = Scidb is a Chess Information Data Base; includes 2 engines, imports from Chess Base files
 	pkgver = 1.0.beta.r1531
-	pkgrel = 1
+	pkgrel = 2
 	url = https://scidb.sourceforge.net/
 	install = scidb-svn.install
 	arch = x86_64
@@ -26,10 +26,12 @@ pkgbase = scidb-svn
 	source = dump_eco.cpp.patch
 	source = engines.Sjeng.Makefile.patch
 	source = sys_info.cpp.patch
+	source = tcl.Makefile.patch
 	md5sums = SKIP
 	md5sums = 3dd938a3a7f744813ccb76fe4826d167
 	md5sums = 47f44f0eec5d9e0a9e7e1bb25adea3b4
 	md5sums = 68c9d47e5af84ac25c87045e3388c6f1
 	md5sums = ef91ffeceab48c260bb1c2af7d02cd9c
+	md5sums = a2025bd063a9f18615dba96c09e3bc99
 
 pkgname = scidb-svn

@@ -1,0 +1,11 @@
+--- Makefile	2022-04-05 11:50:40.847967535 +0200
++++ Makefile.new	2022-04-05 11:54:52.667952150 +0200
+@@ -624,7 +624,7 @@
+ 	@cat $(SOURCES) | sed                                  \
+ 		-e 's/# vi:set ts=3 sw=3:/update idletasks/'        \
+ 		-e 's#%SHAREDIR%#$(DATADIR)#g'                      \
+-		-e 's#%%ENGINESDIR%%#$(%ENGINESDIR%)#g'             \
++		-e 's#/usr/local/games#/usr/games#g'             \
+ 		-e 's#%UPDATE_PHOTO_FILES%#$(UPDATE_PHOTO_FILES)#g' \
+ 		-e '/^##/d'                                         \
+ 		-e '/^#$$/d'                                        \
