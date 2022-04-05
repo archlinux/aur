@@ -26,6 +26,10 @@ pkgver() {
   echo "$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  [[ -d tagparser ]] || ln -s "${PROJECT_DIR_NAME:-$_reponame-$pkgver}" tagparser
+}
+
 build() {
   cd "$srcdir/${PROJECT_DIR_NAME:-$_reponame}"
   cmake \
