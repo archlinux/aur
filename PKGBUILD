@@ -14,13 +14,19 @@ makedepends=('git')
 provides=('8188eu-dkms')
 conflicts=('8188eu-dkms' '8188eu-dkms-git')
 source=("${_pkgname}::git+${url}#branch=v${_pkgver}"
+        'https://github.com/aircrack-ng/rtl8188eus/pull/174.patch'
         'blacklist-r8188eu.conf')
 md5sums=('SKIP'
+         'ca4fc44d077a0d8ceb22ade7c47dc36f'
          '8af5df9ed717b3bb48df59dac0c8a9c8')
 
 pkgver() {
 	cd "${_pkgname}"
 	printf "${_pkgver}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+        patch -p1 -d $srcdir/8188eu/ < 174.patch
 }
 
 package() {
