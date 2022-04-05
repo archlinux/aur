@@ -2,7 +2,7 @@
 pkgname=python-single-version
 _name=${pkgname#python-}
 pkgver=1.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Small utility to define version string for Poetry-style Python project"
 arch=('any')
 url="https://github.com/hongquan/single-version"
@@ -21,9 +21,9 @@ package() {
   cd "$_name-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  # Move license to proper directory
+  # Symlink license to proper directory
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   install -d "$pkgdir/usr/share/licenses/$pkgname"
-  mv "${pkgdir}${site_packages}/single_version-$pkgver.dist-info/LICENSE" \
+  ln -s "${pkgdir}${site_packages}/single_version-$pkgver.dist-info/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/"
 }

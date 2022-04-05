@@ -1,7 +1,7 @@
 pkgbase = python-single-version
 	pkgdesc = Small utility to define version string for Poetry-style Python project
 	pkgver = 1.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/hongquan/single-version
 	arch = any
 	license = MIT
