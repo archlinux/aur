@@ -1,40 +1,36 @@
-# Maintainer: aksr <aksr at t-com dot me>
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: aksr <aksr at t-com dot me>
 pkgname=meowsql-git
-pkgver=0.4.1.alpha.r8.gcfab28d
-pkgrel=2
+pkgver=0.4.14alpha.r0.g45fefbf
+pkgrel=1
+epoch=1
 pkgdesc="An attempt to port a very useful GUI database client HeidiSQL to C++/Qt"
 arch=('i686' 'x86_64')
 url="https://github.com/ragnar-lodbrok/meow-sql"
-license=('GPL')
+license=('GPL2')
 depends=(qt5-base mariadb-libs postgresql-libs)
 makedepends=('git')
 optdepends=('mariadb' 'postgresql')
+provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
-source=("$pkgname::git+$url")
-md5sums=('SKIP')
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/$pkgname"
-	git describe --tags | sed -E 's/([^-]*-g)/r\1/;s/-/./g;s/^v//'
-}
 
-prepare() {
-	cd "$srcdir/$pkgname"
-	sed -i 's!<postgresql/\(libpq-fe.h\)>!<\1>!' db/pg/pg_connection.h \
-		db/pg/pg_query_result.h \
-		db/data_type/pg_data_type.h \
-		db/data_type/pg_connection_data_types.h
+	# Generate git tag based version. Use only tags created on current branch (--first-parent). Count only proper v#.#* [#=number] tags.
+	git describe --long --tags --first-parent --match 'v[0-9][0-9.][0-9.]*' | sed 's=^v==;s=^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)=\1\2=;s=\([0-9]\+-g\)=r\1=;s=-=.=g'
 }
 
 build() {
 	cd "$srcdir/$pkgname"
-	qmake-qt5 meow-sql.pro
+	qmake-qt5 meowsql.pro
 	make
 }
 
 package() {
 	cd "$srcdir/$pkgname"
-	install -D -m755 meow-sql $pkgdir/usr/bin/meow-sql
+	install -D -m755 meowsql $pkgdir/usr/bin/meowsql
 	install -D -m644 README.md $pkgdir/usr/share/doc/${pkgname%-*}/README.md
-	install -D -m644 LICENSE $pkgdir/usr/share/licenses/${pkgname%-*}/LICENSE
 }
