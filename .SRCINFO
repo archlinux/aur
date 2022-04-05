@@ -1,5 +1,5 @@
 pkgbase = meowsql-git
-	pkgdesc = An attempt to port a very useful GUI database client HeidiSQL to C++/Qt
+	pkgdesc = Lightweight database GUI client for MariaDB/MySQL/PostgreSQL, a C++/Qt clone of HeidiSQL
 	pkgver = 0.4.14alpha.r0.g45fefbf
 	pkgrel = 1
 	epoch = 1
