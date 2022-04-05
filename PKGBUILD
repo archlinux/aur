@@ -2,7 +2,7 @@
 # Contributor: Original submitter q9 <qqqqqqqqq9 at web dot de>
 pkgname=scidb-svn
 pkgver=1.0.beta.r1531
-pkgrel=4
+pkgrel=5
 # epoch=2
 pkgdesc="Scidb is a Chess Information Data Base; includes 2 engines, imports from Chess Base files"
 arch=('x86_64' 'i686')
@@ -101,7 +101,7 @@ build() {
     SWITCHSTRING="${SWITCHSTRING} ${SWITCH}"
   done
   export CFLAGS="-fcommon" CXXFLAGS="-fcommon" ; ./configure ${SWITCHSTRING}
-#  make clean
+  make clean
   make
 }
 
