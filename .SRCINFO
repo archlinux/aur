@@ -1,6 +1,6 @@
 pkgbase = nxdt_host-git
 	pkgdesc = nxdumptool host script
-	pkgver = 0.3.r9.4a512db
+	pkgver = 0.3.r25.4a512db
 	pkgrel = 1
 	url = https://github.com/DarkMatterCore/nxdumptool
 	arch = any

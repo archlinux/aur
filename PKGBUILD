@@ -1,6 +1,6 @@
-# Maintainer: enderghast13 <29264120+enderghast13@users.noreply.github.com>
+# Maintainer: enderghast13 <29264120+enderghast13 at users dot noreply dot github dot com>
 pkgname=nxdt_host-git
-pkgver=0.3.r9.4a512db
+pkgver=0.3.r25.4a512db
 pkgrel=1
 pkgdesc="nxdumptool host script"
 arch=('any')
@@ -15,9 +15,15 @@ sha1sums=('SKIP'
           '2c78c08f8c47cc6f10abb579ea537c31088f6bcb')
 
 pkgver() {
-	cd "$srcdir"/nxdumptool/host
-	_commit="$(git log -n1 --pretty=format:%h nxdt_host.py)"
-	printf "%s.r%s.$_commit" "$(sed -n "s/APP_VERSION = '\(.*\)'/\1/p" nxdt_host.py)" "$(git rev-list --count HEAD nxdt_host.py)"
+	# The script was moved several times, breaking git-log continuity
+	# even when using --follow
+	_names=(host/nxdt_host.py nxdt_host.pyw nxdt_host.py host.py)
+	cd "$srcdir"/nxdumptool
+	_version="$( sed -n "s/APP_VERSION = '\(.*\)'/\1/p" "${_names[0]}" )"
+	_commits="$( git log --pretty=format:%h -- "${_names[@]}" )"
+	_revision="$( wc -l <<< "$_commits" )"
+	_commit="$( head -n1 <<< "$_commits" )"
+	printf "$_version.r$_revision.$_commit"
 }
 
 prepare() {
