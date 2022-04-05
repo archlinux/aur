@@ -2,7 +2,7 @@
 
 pkgname=kimi-theme-git
 _pkgname=Kimi
-pkgver=r119.b2ba0c9
+pkgver=r136.eba95c3
 pkgrel=1
 pkgdesc="Kimi is a light Gtk3.20+ theme"
 arch=("any")
