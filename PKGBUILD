@@ -1,44 +1,42 @@
-# Maintainer: Isho Antar <IshoAntar@protonmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Isho Antar <IshoAntar@protonmail.com>
 # Contributor: Michael Yang <ohmyarchlinux@pm.me>
 
 pkgname=fmt-git
-pkgver=7.1.3.e6ef927
+pkgver=8.1.1.r172.g22d31b31
 pkgrel=1
-pkgdesc='An open-source C++ formatting library providing a fast and safe alternative to C stdio and C++ iostreams'
+pkgdesc='Open-source formatting library for C++'
 url='https://fmt.dev/'
 arch=('x86_64')
 license=('MIT')
-makedepends=('git' 'cmake>=3.1.0')
+depends=('gcc-libs')
+makedepends=('git' 'cmake')
+provides=('fmt' 'libfmt.so=8-64')
 conflicts=('fmt')
-provides=('fmt')
-source=('git+https://github.com/fmtlib/fmt.git')
+source=('git+https://github.com/fmtlib/fmt')
 sha512sums=('SKIP')
 
 pkgver() {
-  cd fmt
-  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
-}
-
-prepare() {
-  mkdir -p build
+	git -C fmt describe --long --tags | sed 's/-/.r/;s/-/./'
 }
 
 build() {
-  cd build
-  cmake ../fmt \
-    -DFMT_DOC=OFF \
-    -DBUILD_SHARED_LIBS=TRUE \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib
-  make -j$(nproc)
+	cmake \
+		-B build \
+		-S fmt \
+		-DFMT_DOC=OFF \
+		-DBUILD_SHARED_LIBS=TRUE \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-Wno-dev
+	make -C build
 }
 
 check() {
-  cd build
-  make test
+	make -C build test
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
-  install -Dm644 fmt/LICENSE.rst "${pkgdir}"/usr/share/licenses/fmt-git/LICENSE.rst
+	make -C build DESTDIR="${pkgdir}" install
+	install -Dm644 fmt/LICENSE.rst "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
