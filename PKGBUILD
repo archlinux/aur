@@ -2,9 +2,9 @@
 # Contributor: Original submitter q9 <qqqqqqqqq9 at web dot de>
 pkgname=scidb-svn
 pkgver=1.0.beta.r1531
-pkgrel=6
+pkgrel=7
 # epoch=2
-pkgdesc="Scidb is a Chess Information Data Base; includes 2 engines, imports from Chess Base files"
+pkgdesc="Chess database browser: chess, chess960, etc engines; import Chessbase, PGN, Scid; CQL"
 arch=('x86_64' 'i686')
 url="https://scidb.sourceforge.net/"
 license=('GPL2')
