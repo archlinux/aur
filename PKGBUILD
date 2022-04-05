@@ -1,8 +1,9 @@
-# Maintainer: Galen Sampson <galen.sampson at gmail dot com>
+# Maintainer: hiyuki2578 <tomoka319 at gmail dot com>
+# Contributor: Galen Sampson <galen.sampson at gmail dot com>
 # Contributor: David Roheim <david dot roheim at gmail dot com>
 
 pkgname='trafficserver'
-pkgver=9.0.2
+pkgver=9.1.2
 pkgrel=1
 pkgdesc="Apache Traffic Server"
 url="http://trafficserver.apache.org/"
@@ -17,14 +18,16 @@ source=(
     trafficserver.sysusers
     trafficserver.service.in.patch
     trafficserver.lib_perl_Makefile.in.patch
-    trafficserver.src_tscore_unit_tests.patch)
+    trafficserver.src_tscore_unit_tests.patch
+    trafficserver.tests_include_catch.hpp.patch)
 
-sha256sums=('ff475367aeef27eadefed1290d07241464edb27bccaea86d2a024b6b2b8e0564'
+sha256sums=('62f27d4e16a515e7ec85393186f909d934a79db41c7905f21d15a9eacb82232f'
             '8c9dbabfe7a8e0ecf9f3edb3673d1ff0cd63bf79551389047a723479b8d21fac'
             'a4e6a00dea61aa3f98413f092711afb90795ef35676f6a8e3970f4163d360202'
             'fc0b437ef9f9c56ceaaa99eea7075abe15200ff540cfc505e42b0a8f762128b1'
             '6fb98a044637d6a6d7365b5e49e4a481f556b26d143898ab430e8e8dd7004277'
-            'cc56ee24659be4f81f0d70d3e4b0df0954e51647e77599baee4598d4c0339020')
+            'cc56ee24659be4f81f0d70d3e4b0df0954e51647e77599baee4598d4c0339020'
+            'da2268373955c91be3ee0ef48a2379edc89df1eaebadd3110a6e15b3936aa865')
 
 install=${pkgname}.install
 changelog=${pkgname}.changelog
@@ -45,7 +48,7 @@ the UID and GID of the trafficserver user on the build server and then creating
 sysusers overrides for the trafficserver user where the package will be
 installed.  For example (on the server where the package will be deployed):
 
-    # echo 'u trafficserver 999:999 \"Apache Traffic Server\" - > /etc/sysusers.d/trafficserver.conf
+    # echo 'u trafficserver 999:999 \"Apache Traffic Server\" -' > /etc/sysusers.d/trafficserver.conf
 
 This ensures that the post install steps do not clobber administrator defined
 or existing cache ownership at the expense of requiring the trafficserver user
@@ -103,6 +106,7 @@ prepare() {
     patch -Np0 -u -i ../trafficserver.service.in.patch
     patch -Np0 -u -i ../trafficserver.lib_perl_Makefile.in.patch
     patch -Np0 -u -i ../trafficserver.src_tscore_unit_tests.patch
+    patch -Np0 -u -i ../trafficserver.tests_include_catch.hpp.patch
 }
 
 build() {
