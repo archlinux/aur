@@ -9,6 +9,6 @@ pkgbase = oh-my-posh-bin
 	provides = oh-my-posh
 	conflicts = oh-my-posh
 	source = https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v7.59.0/posh-linux-amd64
-	sha256sums = ffd31c93cf38c27cd8f11293a9e58a9fa0d7f27e9f31fd2b16b73488be146285
+	sha256sums = ba8bb9a97a5e9147022a0178d2b2b067f404ffe676838d75f401d6bd7d3f2589
 
 pkgname = oh-my-posh-bin
