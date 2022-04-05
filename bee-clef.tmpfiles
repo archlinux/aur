@@ -1,0 +1,4 @@
+# vim: se ft=conf:
+D /var/lib/bee-clef 750 bee-clef
+D /var/lib/bee-clef/keystore 700 bee-clef
+f /var/lib/bee-clef/password 600 bee-clef

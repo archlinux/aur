@@ -1,0 +1,4 @@
+post_install() {
+	echo ':: This package requires manual configuration.'
+	echo ':: Check upstream documentation for more information.'
+}
