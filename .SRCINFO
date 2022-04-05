@@ -7,10 +7,11 @@ pkgbase = breeze-adapta-cursor-theme-git
 	license = GPL
 	makedepends = git
 	makedepends = unzip
+	provides = breeze-adapta-cursor-theme
 	provides = xcursor-breeze-adapta
+	conflicts = breeze-adapta-cursor-theme
 	conflicts = xcursor-breeze-adapta
 	source = git+https://github.com/mustafaozhan/Breeze-Adapta-Cursor
 	sha256sums = SKIP
 
 pkgname = breeze-adapta-cursor-theme-git
-

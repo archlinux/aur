@@ -9,8 +9,8 @@ url="https://github.com/mustafaozhan/Breeze-Adapta-Cursor"
 license=('GPL')
 source=("git+https://github.com/mustafaozhan/Breeze-Adapta-Cursor")
 makedepends=('git' 'unzip')
-conflicts=('xcursor-breeze-adapta')
-provides=('xcursor-breeze-adapta')
+conflicts=('breeze-adapta-cursor-theme' 'xcursor-breeze-adapta')
+provides=('breeze-adapta-cursor-theme' 'xcursor-breeze-adapta')
 sha256sums=('SKIP')
 
 pkgver() {
