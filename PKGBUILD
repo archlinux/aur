@@ -2,7 +2,7 @@
 
 
 pkgname=astrodmx-capture
-pkgver=1.4.1.0
+pkgver=1.4.2.1
 pkgrel=1
 pkgdesc="AstroDMx Capture Astronomical Imaging"
 arch=('x86_64')
@@ -16,8 +16,8 @@ install=$pkgname.install
 # The Author, Nicola, is now copying new releases into both the `current` and `old` folders so that we
 # can maintain a constant path the file. Hopefully this will allow us to continue installing older versions
 # without breakage after a new version is released. Thanks Nicola!
-source=("https://www.astrodmx-capture.org.uk/sites/downloads/astrodmx/old/x86-64/astrodmx-capture_${pkgver}_x86-64-manual.tar.gz")
-sha256sums=("dcfa1c369f69826f77e3a5696951b57066fc8c4ec13ce10a790c2e5d85be5412")
+source=("https://www.astrodmx-capture.org.uk/downloads/astrodmx/old/x86-64/astrodmx-capture_${pkgver}_x86-64-manual.tar.gz")
+sha256sums=("a0ce7c38fc57fd75bb5ccd1bf4d6f7c0007511d97d9e7cab769078c421cc67dc")
 
 _instdir="/usr/local/AstroDMx_Capture"
 _prefix="AstroDMx-${pkgver}-manual"
