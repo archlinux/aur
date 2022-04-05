@@ -14,7 +14,7 @@ makedepends=('python-setuptools')
 conflicts=('python-pulse-control')
 replaces=('python-pulse-control')
 changelog="$_name-CHANGES.rst"
-source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('cc174e1ceebd4e6222c5b78f4f415f12e80753c9ab75ab354159b4cb5950b084')
 
 build() {
