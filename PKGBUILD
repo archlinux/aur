@@ -1,6 +1,6 @@
 #Maintainer: paskali <paskali2005 at gmail dot com>
 pkgname=infra-arcana
-pkgver=20.0
+pkgver=21.0.0
 pkgrel=1
 epoch=
 pkgdesc="Roguelike game inspired by H.P. Lovecraft"
@@ -38,10 +38,14 @@ package() {
         #install licenses
 	install -DTm644 "build/LICENSE.txt"\
           "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
-	install -DTm644 "build/gfx/fonts/SPECIAL_ELITE_License.txt" \
-          "${pkgdir}/usr/share/licenses/${pkgname}/SPECIAL_ELITE_License.txt"
-        install -DTm644 "build/README-AUDIO-FILES.txt"\
-          "${pkgdir}/usr/share/licenses/${pkgname}/README-AUDIO-FILES.txt"
+	install -DTm644 "build/LICENSE-FONT-SPECIAL-ELITE.txt" \
+          "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-FONT-SPECIAL-ELITE.txt"
+        install -DTm644 "build/LICENSE-AUDIO.txt"\
+          "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-AUDIO.txt"
+        install -DTm644 "build/LICENSE-FONT-DEJAVU.txt"\
+          "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-FONT-DEJAVU.txt"
+        install -DTm644 "build/LICENSE-FONTS.txt"\
+          "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-FONTS.txt"
         #install docs
 	install -DTm644 "build/contact.txt" \
           "${pkgdir}/usr/share/doc/${pkgname}/contact.txt"
