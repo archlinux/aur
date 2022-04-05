@@ -1,6 +1,6 @@
 pkgbase = liri-wayland-git
 	pkgdesc = Wayland client and server libraries for Qt applications
-	pkgver = r16.79422319
+	pkgver = r98.5ebaabf
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
@@ -18,8 +18,7 @@ pkgbase = liri-wayland-git
 	replaces = liri-wayland
 	options = debug
 	options = !strip
-	source = wayland::git://github.com/lirios/wayland.git#branch=develop
+	source = wayland::git+https://github.com/lirios/wayland.git#branch=develop
 	md5sums = SKIP
 
 pkgname = liri-wayland-git
-

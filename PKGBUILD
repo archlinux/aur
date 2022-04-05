@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-wayland-git
-pkgver=r16.79422319
+pkgver=r98.5ebaabf
 pkgrel=1
 pkgdesc="Wayland client and server libraries for Qt applications"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ replaces=('liri-wayland')
 provides=('liri-wayland')
 groups=('liri-git')
 
-_gitroot="git://github.com/lirios/wayland.git"
+_gitroot="git+https://github.com/lirios/wayland.git"
 _gitbranch=develop
 _gitname=wayland
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
