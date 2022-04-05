@@ -1,7 +1,7 @@
-From 3f7c2ce6cf953014eb405b35f3f31e3bd3a7c757 Mon Sep 17 00:00:00 2001
+From ecacf0430a389f012555938381664e8f8d86af54 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Mon, 7 Feb 2022 16:45:35 -0800
-Subject: [PATCH 13/34] x86/sgx: Create utility to validate user provided
+Date: Fri, 21 Jan 2022 13:35:21 -0800
+Subject: [PATCH 10/30] x86/sgx: Create utility to validate user provided
  offset and length
 
 User provided offset and length is validated when parsing the parameters
@@ -15,10 +15,10 @@ Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
  1 file changed, 22 insertions(+), 6 deletions(-)
 
 diff --git a/arch/x86/kernel/cpu/sgx/ioctl.c b/arch/x86/kernel/cpu/sgx/ioctl.c
-index 7e0819a89532..6e7cc441156b 100644
+index 83df20e3e633..f487549bccba 100644
 --- a/arch/x86/kernel/cpu/sgx/ioctl.c
 +++ b/arch/x86/kernel/cpu/sgx/ioctl.c
-@@ -378,6 +378,26 @@ static int sgx_encl_add_page(struct sgx_encl *encl, unsigned long src,
+@@ -372,6 +372,26 @@ static int sgx_encl_add_page(struct sgx_encl *encl, unsigned long src,
  	return ret;
  }
  
@@ -45,7 +45,7 @@ index 7e0819a89532..6e7cc441156b 100644
  /**
   * sgx_ioc_enclave_add_pages() - The handler for %SGX_IOC_ENCLAVE_ADD_PAGES
   * @encl:       an enclave pointer
-@@ -431,14 +451,10 @@ static long sgx_ioc_enclave_add_pages(struct sgx_encl *encl, void __user *arg)
+@@ -425,14 +445,10 @@ static long sgx_ioc_enclave_add_pages(struct sgx_encl *encl, void __user *arg)
  	if (copy_from_user(&add_arg, arg, sizeof(add_arg)))
  		return -EFAULT;
  

@@ -1,7 +1,7 @@
-From 94d96d463650dee683538bb1563a71afca7719cb Mon Sep 17 00:00:00 2001
+From ad4892ff45c6bb365cfc090572059bba52b79a78 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Mon, 7 Feb 2022 16:45:42 -0800
-Subject: [PATCH 20/34] x86/sgx: Tighten accessible memory range after enclave
+Date: Mon, 13 Sep 2021 11:08:47 -0700
+Subject: [PATCH 16/30] x86/sgx: Tighten accessible memory range after enclave
  initialization
 
 Before an enclave is initialized the enclave's memory range is unknown.
@@ -37,10 +37,10 @@ Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
  1 file changed, 5 insertions(+)
 
 diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
-index a5b1da1e5bd4..5fe7189eac9d 100644
+index fa4f947f8496..7909570736a0 100644
 --- a/arch/x86/kernel/cpu/sgx/encl.c
 +++ b/arch/x86/kernel/cpu/sgx/encl.c
-@@ -444,6 +444,11 @@ int sgx_encl_may_map(struct sgx_encl *encl, unsigned long start,
+@@ -409,6 +409,11 @@ int sgx_encl_may_map(struct sgx_encl *encl, unsigned long start,
  
  	XA_STATE(xas, &encl->page_array, PFN_DOWN(start));
  

@@ -1,7 +1,7 @@
-From 6c2777344708ad4194d1f9088bd7dbd2c740fd16 Mon Sep 17 00:00:00 2001
+From c2c09a7fbb72fd5eb423f8e84ade9d1511503612 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Mon, 7 Feb 2022 16:45:41 -0800
-Subject: [PATCH 19/34] x86/sgx: Support adding of pages to an initialized
+Date: Tue, 13 Jul 2021 08:58:53 -0700
+Subject: [PATCH 15/30] x86/sgx: Support adding of pages to an initialized
  enclave
 
 With SGX1 an enclave needs to be created with its maximum memory demands
@@ -13,10 +13,11 @@ creation, but all pages need not be added before enclave initialization.
 Pages can be added during enclave runtime.
 
 Add support for dynamically adding pages to an initialized enclave,
-architecturally limited to RW permission. Add pages via the page fault
-handler at the time an enclave address without a backing enclave page
-is accessed, potentially directly reclaiming pages if no free pages
-are available.
+architecturally limited to RW permission at creation but allowed to
+obtain RWX permissions after enclave runs EMODPE. Add pages via the
+page fault handler at the time an enclave address without a backing
+enclave page is accessed, potentially directly reclaiming pages if
+no free pages are available.
 
 The enclave is still required to run ENCLU[EACCEPT] on the page before
 it can be used. A useful flow is for the enclave to run ENCLU[EACCEPT]
@@ -39,26 +40,17 @@ triggers this flow but the page will remain inaccessible (access will
 result in #PF) until accepted from within the enclave via
 ENCLU[EACCEPT].
 
-The page is added with the architecturally constrained RW permissions
-as runtime as well as maximum allowed permissions. It is understood that
-there are some use cases, for example code relocation, that requires RWX
-maximum permissions. Supporting these use cases require guidance from
-user space policy before such maximum permissions can be allowed.
-Integration with user policy is deferred.
-
 Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
 ---
- arch/x86/kernel/cpu/sgx/encl.c  | 133 ++++++++++++++++++++++++++++++++
- arch/x86/kernel/cpu/sgx/encl.h  |   2 +
- arch/x86/kernel/cpu/sgx/ioctl.c |   4 +-
- 3 files changed, 137 insertions(+), 2 deletions(-)
+ arch/x86/kernel/cpu/sgx/encl.c | 124 +++++++++++++++++++++++++++++++++
+ 1 file changed, 124 insertions(+)
 
 diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
-index cbd852fb760b..a5b1da1e5bd4 100644
+index 546423753e4c..fa4f947f8496 100644
 --- a/arch/x86/kernel/cpu/sgx/encl.c
 +++ b/arch/x86/kernel/cpu/sgx/encl.c
-@@ -165,6 +165,128 @@ struct sgx_encl_page *sgx_encl_load_page(struct sgx_encl *encl,
- 	return entry;
+@@ -194,6 +194,119 @@ struct sgx_encl_page *sgx_encl_load_page(struct sgx_encl *encl,
+ 	return __sgx_encl_load_page(encl, entry);
  }
  
 +/**
@@ -82,29 +74,23 @@ index cbd852fb760b..a5b1da1e5bd4 100644
 +	struct sgx_epc_page *epc_page;
 +	struct sgx_va_page *va_page;
 +	unsigned long phys_addr;
-+	unsigned long prot;
++	u64 secinfo_flags;
 +	vm_fault_t vmret;
 +	int ret;
 +
 +	if (!test_bit(SGX_ENCL_INITIALIZED, &encl->flags))
 +		return VM_FAULT_SIGBUS;
 +
-+	encl_page = kzalloc(sizeof(*encl_page), GFP_KERNEL);
-+	if (!encl_page)
-+		return VM_FAULT_OOM;
-+
-+	encl_page->desc = addr;
-+	encl_page->encl = encl;
-+
 +	/*
-+	 * Adding a regular page that is architecturally allowed to only
-+	 * be created with RW permissions.
-+	 * TBD: Interface with user space policy to support max permissions
-+	 * of RWX.
++	 * Ignore internal permission checking for dynamically added pages.
++	 * They matter only for data added during the pre-initialization
++	 * phase. The enclave decides the permissions by the means of
++	 * EACCEPT, EACCEPTCOPY and EMODPE.
 +	 */
-+	prot = PROT_READ | PROT_WRITE;
-+	encl_page->vm_run_prot_bits = calc_vm_prot_bits(prot, 0);
-+	encl_page->vm_max_prot_bits = encl_page->vm_run_prot_bits;
++	secinfo_flags = SGX_SECINFO_R | SGX_SECINFO_W | SGX_SECINFO_X;
++	encl_page = sgx_encl_page_alloc(encl, addr - encl->base, secinfo_flags);
++	if (IS_ERR(encl_page))
++		return VM_FAULT_OOM;
 +
 +	epc_page = sgx_alloc_epc_page(encl_page, true);
 +	if (IS_ERR(epc_page)) {
@@ -157,11 +143,8 @@ index cbd852fb760b..a5b1da1e5bd4 100644
 +	/*
 +	 * Do not undo everything when creating PTE entry fails - next #PF
 +	 * would find page ready for a PTE.
-+	 * PAGE_SHARED because protection is forced to be RW above and COW
-+	 * is not supported.
 +	 */
-+	vmret = vmf_insert_pfn_prot(vma, addr, PFN_DOWN(phys_addr),
-+				    PAGE_SHARED);
++	vmret = vmf_insert_pfn(vma, addr, PFN_DOWN(phys_addr));
 +	if (vmret != VM_FAULT_NOPAGE) {
 +		mutex_unlock(&encl->lock);
 +		return VM_FAULT_SIGBUS;
@@ -186,7 +169,7 @@ index cbd852fb760b..a5b1da1e5bd4 100644
  static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
  {
  	unsigned long addr = (unsigned long)vmf->address;
-@@ -186,6 +308,17 @@ static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
+@@ -213,6 +326,17 @@ static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
  	if (unlikely(!encl))
  		return VM_FAULT_SIGBUS;
  
@@ -203,40 +186,7 @@ index cbd852fb760b..a5b1da1e5bd4 100644
 +
  	mutex_lock(&encl->lock);
  
- 	entry = sgx_encl_load_page(encl, addr);
-diff --git a/arch/x86/kernel/cpu/sgx/encl.h b/arch/x86/kernel/cpu/sgx/encl.h
-index 848a28d28d3d..1b6ce1da7c92 100644
---- a/arch/x86/kernel/cpu/sgx/encl.h
-+++ b/arch/x86/kernel/cpu/sgx/encl.h
-@@ -123,4 +123,6 @@ void sgx_encl_free_epc_page(struct sgx_epc_page *page);
- struct sgx_encl_page *sgx_encl_load_page(struct sgx_encl *encl,
- 					 unsigned long addr);
- 
-+struct sgx_va_page *sgx_encl_grow(struct sgx_encl *encl);
-+void sgx_encl_shrink(struct sgx_encl *encl, struct sgx_va_page *va_page);
- #endif /* _X86_ENCL_H */
-diff --git a/arch/x86/kernel/cpu/sgx/ioctl.c b/arch/x86/kernel/cpu/sgx/ioctl.c
-index 23bdf558b231..58ff62a1fb00 100644
---- a/arch/x86/kernel/cpu/sgx/ioctl.c
-+++ b/arch/x86/kernel/cpu/sgx/ioctl.c
-@@ -17,7 +17,7 @@
- #include "encl.h"
- #include "encls.h"
- 
--static struct sgx_va_page *sgx_encl_grow(struct sgx_encl *encl)
-+struct sgx_va_page *sgx_encl_grow(struct sgx_encl *encl)
- {
- 	struct sgx_va_page *va_page = NULL;
- 	void *err;
-@@ -43,7 +43,7 @@ static struct sgx_va_page *sgx_encl_grow(struct sgx_encl *encl)
- 	return va_page;
- }
- 
--static void sgx_encl_shrink(struct sgx_encl *encl, struct sgx_va_page *va_page)
-+void sgx_encl_shrink(struct sgx_encl *encl, struct sgx_va_page *va_page)
- {
- 	encl->page_cnt--;
- 
+ 	entry = sgx_encl_load_page_in_vma(encl, addr, vma->vm_flags);
 -- 
 2.35.1
 

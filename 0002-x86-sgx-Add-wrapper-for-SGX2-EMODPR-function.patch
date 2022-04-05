@@ -1,7 +1,7 @@
-From 783686dae546c6d1f273a47cf36335bc7fdbaa89 Mon Sep 17 00:00:00 2001
+From 5c18c202d19f1e20b7a883a14ac428c54697f47c Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Mon, 7 Feb 2022 16:45:24 -0800
-Subject: [PATCH 02/34] x86/sgx: Add wrapper for SGX2 EMODPR function
+Date: Mon, 17 May 2021 16:31:35 -0700
+Subject: [PATCH 02/30] x86/sgx: Add wrapper for SGX2 EMODPR function
 
 Add a wrapper for the EMODPR ENCLS leaf function used to
 restrict enclave page permissions as maintained in the
@@ -9,8 +9,9 @@ SGX hardware's Enclave Page Cache Map (EPCM).
 
 EMODPR:
 1) Updates the EPCM permissions of an enclave page by treating
-   the new permissions as a mask - supplying a value that relaxes
-   EPCM permissions has no effect.
+   the new permissions as a mask. Supplying a value that attempts
+   to relax EPCM permissions has no effect on EPCM permissions
+   (PR bit, see below, is changed).
 2) Sets the PR bit in the EPCM entry of the enclave page to
    indicate that permission restriction is in progress. The bit
    is reset by the enclave by invoking ENCLU leaf function

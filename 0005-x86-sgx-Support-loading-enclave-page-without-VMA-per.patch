@@ -1,0 +1,136 @@
+From 8e7efbd6ea3242525db8205614a6e7e87ab89415 Mon Sep 17 00:00:00 2001
+From: Reinette Chatre <reinette.chatre@intel.com>
+Date: Wed, 9 Mar 2022 14:37:47 -0800
+Subject: [PATCH 05/30] x86/sgx: Support loading enclave page without VMA
+ permissions check
+
+sgx_encl_load_page() is used to find and load an enclave page into
+enclave (EPC) memory, potentially loading it from the backing storage.
+Both usages of sgx_encl_load_page() are during an access to the
+enclave page from a VMA and thus the permissions of the VMA are
+considered before the enclave page is loaded.
+
+SGX2 functions operating on enclave pages belonging to an initialized
+enclave requiring the page to be in EPC. It is thus required to
+support loading enclave pages into the EPC independent from a VMA.
+
+Split the current sgx_encl_load_page() to support the two usages:
+A new call, sgx_encl_load_page_in_vma(), behaves exactly like the
+current sgx_encl_load_page() that takes VMA permissions into account,
+while sgx_encl_load_page() just loads an enclave page into EPC.
+
+VMA, PTE, and EPCM permissions would continue to dictate whether
+the pages can be accessed from within an enclave.
+
+Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
+---
+ arch/x86/kernel/cpu/sgx/encl.c | 57 ++++++++++++++++++++++------------
+ arch/x86/kernel/cpu/sgx/encl.h |  2 ++
+ 2 files changed, 40 insertions(+), 19 deletions(-)
+
+diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
+index 7c63a1911fae..05ae1168391c 100644
+--- a/arch/x86/kernel/cpu/sgx/encl.c
++++ b/arch/x86/kernel/cpu/sgx/encl.c
+@@ -131,25 +131,10 @@ static struct sgx_epc_page *sgx_encl_eldu(struct sgx_encl_page *encl_page,
+ 	return epc_page;
+ }
+ 
+-static struct sgx_encl_page *sgx_encl_load_page(struct sgx_encl *encl,
+-						unsigned long addr,
+-						unsigned long vm_flags)
++static struct sgx_encl_page *__sgx_encl_load_page(struct sgx_encl *encl,
++						  struct sgx_encl_page *entry)
+ {
+-	unsigned long vm_prot_bits = vm_flags & (VM_READ | VM_WRITE | VM_EXEC);
+ 	struct sgx_epc_page *epc_page;
+-	struct sgx_encl_page *entry;
+-
+-	entry = xa_load(&encl->page_array, PFN_DOWN(addr));
+-	if (!entry)
+-		return ERR_PTR(-EFAULT);
+-
+-	/*
+-	 * Verify that the faulted page has equal or higher build time
+-	 * permissions than the VMA permissions (i.e. the subset of {VM_READ,
+-	 * VM_WRITE, VM_EXECUTE} in vma->vm_flags).
+-	 */
+-	if ((entry->vm_max_prot_bits & vm_prot_bits) != vm_prot_bits)
+-		return ERR_PTR(-EFAULT);
+ 
+ 	/* Entry successfully located. */
+ 	if (entry->epc_page) {
+@@ -175,6 +160,40 @@ static struct sgx_encl_page *sgx_encl_load_page(struct sgx_encl *encl,
+ 	return entry;
+ }
+ 
++static struct sgx_encl_page *sgx_encl_load_page_in_vma(struct sgx_encl *encl,
++						       unsigned long addr,
++						       unsigned long vm_flags)
++{
++	unsigned long vm_prot_bits = vm_flags & (VM_READ | VM_WRITE | VM_EXEC);
++	struct sgx_encl_page *entry;
++
++	entry = xa_load(&encl->page_array, PFN_DOWN(addr));
++	if (!entry)
++		return ERR_PTR(-EFAULT);
++
++	/*
++	 * Verify that the page has equal or higher build time
++	 * permissions than the VMA permissions (i.e. the subset of {VM_READ,
++	 * VM_WRITE, VM_EXECUTE} in vma->vm_flags).
++	 */
++	if ((entry->vm_max_prot_bits & vm_prot_bits) != vm_prot_bits)
++		return ERR_PTR(-EFAULT);
++
++	return __sgx_encl_load_page(encl, entry);
++}
++
++struct sgx_encl_page *sgx_encl_load_page(struct sgx_encl *encl,
++					 unsigned long addr)
++{
++	struct sgx_encl_page *entry;
++
++	entry = xa_load(&encl->page_array, PFN_DOWN(addr));
++	if (!entry)
++		return ERR_PTR(-EFAULT);
++
++	return __sgx_encl_load_page(encl, entry);
++}
++
+ static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
+ {
+ 	unsigned long addr = (unsigned long)vmf->address;
+@@ -196,7 +215,7 @@ static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
+ 
+ 	mutex_lock(&encl->lock);
+ 
+-	entry = sgx_encl_load_page(encl, addr, vma->vm_flags);
++	entry = sgx_encl_load_page_in_vma(encl, addr, vma->vm_flags);
+ 	if (IS_ERR(entry)) {
+ 		mutex_unlock(&encl->lock);
+ 
+@@ -344,7 +363,7 @@ static struct sgx_encl_page *sgx_encl_reserve_page(struct sgx_encl *encl,
+ 	for ( ; ; ) {
+ 		mutex_lock(&encl->lock);
+ 
+-		entry = sgx_encl_load_page(encl, addr, vm_flags);
++		entry = sgx_encl_load_page_in_vma(encl, addr, vm_flags);
+ 		if (PTR_ERR(entry) != -EBUSY)
+ 			break;
+ 
+diff --git a/arch/x86/kernel/cpu/sgx/encl.h b/arch/x86/kernel/cpu/sgx/encl.h
+index fec43ca65065..6b34efba1602 100644
+--- a/arch/x86/kernel/cpu/sgx/encl.h
++++ b/arch/x86/kernel/cpu/sgx/encl.h
+@@ -116,5 +116,7 @@ unsigned int sgx_alloc_va_slot(struct sgx_va_page *va_page);
+ void sgx_free_va_slot(struct sgx_va_page *va_page, unsigned int offset);
+ bool sgx_va_page_full(struct sgx_va_page *va_page);
+ void sgx_encl_free_epc_page(struct sgx_epc_page *page);
++struct sgx_encl_page *sgx_encl_load_page(struct sgx_encl *encl,
++					 unsigned long addr);
+ 
+ #endif /* _X86_ENCL_H */
+-- 
+2.35.1
+

@@ -1,7 +1,7 @@
-From fd368818463168ceaa7904dcb0ac4072537c8fcc Mon Sep 17 00:00:00 2001
+From 39ca48af7c889fad9e0fcdea0003bac2ba074cf4 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Mon, 7 Feb 2022 16:45:23 -0800
-Subject: [PATCH 01/34] x86/sgx: Add short descriptions to ENCLS wrappers
+Date: Wed, 22 Sep 2021 09:35:36 -0700
+Subject: [PATCH 01/30] x86/sgx: Add short descriptions to ENCLS wrappers
 
 The SGX ENCLS instruction uses EAX to specify an SGX function and
 may require additional registers, depending on the SGX function.

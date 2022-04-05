@@ -1,7 +1,7 @@
-From e8450696982167257dffebfbd8983e8d7b9bc235 Mon Sep 17 00:00:00 2001
+From 342f61fe55c7e9a5e981d1d1a5102ef8f1384322 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Mon, 7 Feb 2022 16:45:45 -0800
-Subject: [PATCH 23/34] x86/sgx: Support complete page removal
+Date: Wed, 8 Sep 2021 11:51:35 -0700
+Subject: [PATCH 18/30] x86/sgx: Support complete page removal
 
 The SGX2 page removal flow was introduced in previous patch and is
 as follows:
@@ -38,19 +38,19 @@ Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
  2 files changed, 166 insertions(+)
 
 diff --git a/arch/x86/include/uapi/asm/sgx.h b/arch/x86/include/uapi/asm/sgx.h
-index 1df91517b612..db969a2a1874 100644
+index 529f4ab28410..feda7f85b2ce 100644
 --- a/arch/x86/include/uapi/asm/sgx.h
 +++ b/arch/x86/include/uapi/asm/sgx.h
-@@ -35,6 +35,8 @@ enum sgx_page_flags {
- 	_IOWR(SGX_MAGIC, 0x06, struct sgx_enclave_restrict_perm)
+@@ -33,6 +33,8 @@ enum sgx_page_flags {
+ 	_IOWR(SGX_MAGIC, 0x05, struct sgx_enclave_restrict_permissions)
  #define SGX_IOC_ENCLAVE_MODIFY_TYPE \
- 	_IOWR(SGX_MAGIC, 0x07, struct sgx_enclave_modt)
+ 	_IOWR(SGX_MAGIC, 0x06, struct sgx_enclave_modify_type)
 +#define SGX_IOC_ENCLAVE_REMOVE_PAGES \
-+	_IOWR(SGX_MAGIC, 0x08, struct sgx_enclave_remove_pages)
++	_IOWR(SGX_MAGIC, 0x07, struct sgx_enclave_remove_pages)
  
  /**
   * struct sgx_enclave_create - parameter structure for the
-@@ -136,6 +138,25 @@ struct sgx_enclave_modt {
+@@ -117,6 +119,25 @@ struct sgx_enclave_modify_type {
  	__u64 count;
  };
  
@@ -77,10 +77,10 @@ index 1df91517b612..db969a2a1874 100644
  
  /**
 diff --git a/arch/x86/kernel/cpu/sgx/ioctl.c b/arch/x86/kernel/cpu/sgx/ioctl.c
-index 3f59920184c4..0ffb07095a80 100644
+index 6f769e67ec2d..515e1961cc02 100644
 --- a/arch/x86/kernel/cpu/sgx/ioctl.c
 +++ b/arch/x86/kernel/cpu/sgx/ioctl.c
-@@ -1329,6 +1329,148 @@ static long sgx_ioc_enclave_modt(struct sgx_encl *encl, void __user *arg)
+@@ -1104,6 +1104,148 @@ static long sgx_ioc_enclave_modify_type(struct sgx_encl *encl, void __user *arg)
  	return ret;
  }
  
@@ -229,9 +229,9 @@ index 3f59920184c4..0ffb07095a80 100644
  long sgx_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
  {
  	struct sgx_encl *encl = filep->private_data;
-@@ -1359,6 +1501,9 @@ long sgx_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
+@@ -1132,6 +1274,9 @@ long sgx_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
  	case SGX_IOC_ENCLAVE_MODIFY_TYPE:
- 		ret = sgx_ioc_enclave_modt(encl, (void __user *)arg);
+ 		ret = sgx_ioc_enclave_modify_type(encl, (void __user *)arg);
  		break;
 +	case SGX_IOC_ENCLAVE_REMOVE_PAGES:
 +		ret = sgx_ioc_enclave_remove_pages(encl, (void __user *)arg);

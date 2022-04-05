@@ -1,7 +1,7 @@
-From df48fa17c819d200e92b6862d39dc15f32c58e4e Mon Sep 17 00:00:00 2001
+From 9c86a3f70dadbcd0b31a624041ab25c658cdcb95 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Mon, 7 Feb 2022 16:45:25 -0800
-Subject: [PATCH 03/34] x86/sgx: Add wrapper for SGX2 EMODT function
+Date: Fri, 7 Jan 2022 11:27:29 -0800
+Subject: [PATCH 03/30] x86/sgx: Add wrapper for SGX2 EMODT function
 
 Add a wrapper for the EMODT ENCLS leaf function used to
 change the type of an enclave page as maintained in the
