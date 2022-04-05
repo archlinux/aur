@@ -1,0 +1,26 @@
+diff --git a/logic.c b/logic.c
+index 97767f5..9763701 100644
+--- a/logic.c
++++ b/logic.c
+@@ -7,7 +7,7 @@
+ #include <string.h>
+ #include <errno.h>
+ #include <unistd.h>
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
+ #include <attr/attributes.h>
+ #include <fts.h>
+ #include <libgen.h>
+diff --git a/main.c b/main.c
+index 8019923..72b01f7 100644
+--- a/main.c
++++ b/main.c
+@@ -13,7 +13,7 @@
+ #include <linux/limits.h>
+ #include <stdbool.h>
+ #include <sys/stat.h>
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
+ #ifndef _SYS_STAT_H
+   #include <linux/stat.h>
+ #endif

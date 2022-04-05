@@ -1,0 +1,19 @@
+diff --git a/makefile b/makefile
+index fb1bed4..a0c0084 100644
+--- a/makefile
++++ b/makefile
+@@ -1,11 +1,11 @@
+-CFLAGS = -Wall -std=c99
+-LFLAGS = -lm
++CFLAGS ?= -Wall -std=c99
++LFLAGS ?= -lm
+ CC = gcc
+ 
+ all: overlay
+ 
+ overlay: main.o logic.o sh.o
+-	$(CC) $(LFLAGS) main.o logic.o sh.o -o overlay
++	$(CC) $(LFLAGS) $(LDFLAGS) main.o logic.o sh.o -o overlay
+ 
+ main.o: main.c logic.h
+ 	$(CC) $(CFLAGS) -c main.c
