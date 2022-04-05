@@ -2,7 +2,7 @@
 # Contributor: Oliver Mangold <o.mangold@gmail.com>
 # Contributor: Adam Brunnmeier <adam.brunnmeier@gmail.com>
 pkgname=blender-3.2-bin
-pkgver=3.2.220309.21462565632b
+pkgver=3.2.220405.1d86d617823b
 pkgrel=1
 pkgdesc="A fully integrated 3D graphics creation suite"
 arch=('x86_64')
@@ -29,7 +29,7 @@ _setvars() {
 	_full=${BASH_REMATCH[0]}
 	_branch=${BASH_REMATCH[1]}
 	_commit=${BASH_REMATCH[2]}
-	local regex="([A-Za-z]+ [0-9]+, [0-9]+:[0-9]+:[0-9]+) - $_commit" && [[ $(cat $_webpage) =~ $regex ]]
+	local regex="$_commit.*>([A-Za-z]+ [0-9]+, [0-9]+:[0-9]+:[0-9]+)" && [[ $(cat $_webpage) =~ $regex ]]
 	_date=$(date --date="${BASH_REMATCH[1]//,}" "+%y%m%d")
 }
 
