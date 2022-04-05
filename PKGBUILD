@@ -8,10 +8,10 @@
 # Contributor: jaltek <post@ezod.de>
 # Contributor: Daniel Mason (idanoo) <daniel@m2.nz>
 
-_electron=electron15
+_electron=electron17
 pkgname=(element-{desktop,web}-greentext)
 pkgver=1.10.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Glossy Matrix collaboration client with greentext baked in — "
 arch=(any)
 url="https://element.io"
