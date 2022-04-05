@@ -1,10 +1,10 @@
 pkgbase = switchhosts-bin
 	pkgdesc = Switch hosts quickly!
 	pkgver = 4.1.1
-	pkgrel = 1
-	url = https://github.com/oldj/SwitchHosts
+	pkgrel = 2
+	url = https://swh.app/
 	arch = x86_64
-	license = MIT
+	license = APACHE
 	depends = gtk3
 	depends = libnotify
 	depends = nss
@@ -17,6 +17,8 @@ pkgbase = switchhosts-bin
 	optdepends = libappindicator-gtk3
 	options = !strip
 	source = https://github.com/oldj/SwitchHosts/releases/download/v4.1.1/SwitchHosts_linux_amd64_4.1.1.6077.deb
+	source = https://raw.githubusercontent.com/oldj/SwitchHosts/master/LICENSE
 	sha256sums = 1793245d257818e0a29ab4ea1481af06f56fbbefc96981f9f3b2eb77755ffb67
+	sha256sums = c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4
 
 pkgname = switchhosts-bin
