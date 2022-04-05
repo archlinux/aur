@@ -1,11 +1,12 @@
 pkgbase = gmid
 	pkgdesc = Fast Gemini server written with security in mind.
 	pkgver = 1.8.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gmid.omarpolo.com
 	arch = x86_64
 	license = ISC
 	depends = libretls
+	depends = libbsd
 	conflicts = gmid-git
 	conflicts = gmid-bin
 	source = https://github.com/omar-polo/gmid/releases/download/1.8.3/gmid-1.8.3.tar.gz
