@@ -1,0 +1,19 @@
+pkgbase = python-diffractio
+	pkgdesc = Optical Diffraction and Interference (scalar and vectorial)
+	pkgver = 0.0.13
+	pkgrel = 1
+	url = https://bitbucket.org/optbrea/diffractio/src/master/
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-pytest-runner
+	depends = python
+	depends = python-click
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-matplotlib
+	depends = python-nbsphinx
+	source = https://files.pythonhosted.org/packages/source/d/diffractio/diffractio-0.0.13.tar.gz
+	sha256sums = 5bfb2fa72a185aaab19c7d9b1f37a6f4617e28206bb6d6532c3fe399593e7fea
+
+pkgname = python-diffractio
