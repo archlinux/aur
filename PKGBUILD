@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-themes-git
-pkgver=v0.9.0.r50.g7300b14
+pkgver=v0.9.0.r59.g0b1e96b
 pkgrel=1
 pkgdesc="Themes for uniform look and feel throughout Liri OS"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -14,7 +14,7 @@ replaces=('liri-themes')
 provides=('liri-themes')
 groups=('liri-git')
 
-_gitroot="git://github.com/lirios/themes.git"
+_gitroot="git+https://github.com/lirios/themes.git"
 _gitbranch=develop
 _gitname=themes
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
