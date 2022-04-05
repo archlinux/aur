@@ -8,7 +8,7 @@ pkgbase = python-kiss-headers
 	checkdepends = python-pytest-cov
 	makedepends = python-setuptools
 	depends = python
-	source = https://pypi.org/packages/source/k/kiss-headers/kiss-headers-2.3.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/k/kiss-headers/kiss-headers-2.3.0.tar.gz
 	sha256sums = bdf60780f867d80780e70abea9ad8c7f6d903a17789538cbd1670908bdced64b
 
 pkgname = python-kiss-headers
