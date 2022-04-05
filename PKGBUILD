@@ -2,7 +2,7 @@
 # Contributor: Original submitter q9 <qqqqqqqqq9 at web dot de>
 pkgname=scidb-svn
 pkgver=1.0.beta.r1531
-pkgrel=2
+pkgrel=3
 # epoch=2
 pkgdesc="Scidb is a Chess Information Data Base; includes 2 engines, imports from Chess Base files"
 arch=('x86_64' 'i686')
@@ -52,11 +52,14 @@ pkgver() {
 
 prepare() {
 #  cd $srcdir
-  patch -u $srcdir/$pkgname/configure -i configure.patch
-  patch -u $srcdir/$pkgname/src/dump_eco.cpp -i dump_eco.cpp.patch
-  patch -u $srcdir/$pkgname/src/sys/sys_info.cpp -i sys_info.cpp.patch
-  patch -u $srcdir/$pkgname/engines/Sjeng/Makefile -i engines.Sjeng.Makefile.patch
-  patch -u $srcdir/$pkgname/tcl/Makefile -i tcl.Makefile.patch
+  if [ ! -e "$srcdir/$pkgname/patched" ] ; then
+    patch -u $srcdir/$pkgname/configure -i configure.patch
+    patch -u $srcdir/$pkgname/src/dump_eco.cpp -i dump_eco.cpp.patch
+    patch -u $srcdir/$pkgname/src/sys/sys_info.cpp -i sys_info.cpp.patch
+    patch -u $srcdir/$pkgname/engines/Sjeng/Makefile -i engines.Sjeng.Makefile.patch
+    patch -u $srcdir/$pkgname/tcl/Makefile -i tcl.Makefile.patch
+    touch $srcdir/$pkgname/patched
+  fi
 }
 
 build() {
