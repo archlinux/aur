@@ -3,7 +3,7 @@
 
 pkgname=gazebo-git
 pkgver=r32502.5d92404905
-pkgrel=6
+pkgrel=7
 pkgdesc="A multi-robot simulator for outdoor environments. Git version."
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
@@ -29,7 +29,7 @@ conflicts=('gazebo')
 
 _pkgname=gazebo
 
-source=("gazebo"::"git+https://github.com/osrf/gazebo" "patch"::"https://github.com/osrf/gazebo/pull/3180.patch")
+source=("gazebo"::"git+https://github.com/osrf/gazebo") #  "patch"::"https://github.com/osrf/gazebo/pull/3180.patch")
 sha256sums=('SKIP' 'SKIP')
 
 pkgver() {
