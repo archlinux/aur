@@ -1,28 +1,24 @@
 pkgbase = firefly-cli
 	pkgdesc = A python-based command line interface for practically entering expenses in Firefly III
-	pkgver = 0.0.9
-	pkgrel = 2
+	pkgver = 0.1.2
+	pkgrel = 1
 	url = https://github.com/afonsoc12/firefly-cli
 	arch = i686
 	arch = x86_64
 	license = Apache
 	depends = python
+	depends = python-attrs
 	depends = python-certifi
-	depends = python-chardet
+	depends = python-charset-normalizer
+	depends = python-cmd2
 	depends = python-idna
-	depends = python-numpy
-	depends = python-pandas
-	depends = python-dateutil
-	depends = python-pytz
+	depends = python-pyperclip
 	depends = python-requests
-	depends = python-six
+	depends = python-wcwidth
 	depends = python-tabulate
 	depends = python-urllib3
 	depends = python-pyxdg
-	source = https://github.com/afonsoc12/firefly-cli/releases/download/v0.0.9/firefly-cli-0.0.9.tar.gz
-	source = 0001-Switch-xdg-to-pyxdg-module.patch
-	md5sums = 7bedf161cdb0171e5976fa6df6b199fa
-	md5sums = 24a8f3033594570e52e8c8577a1bf656
+	source = https://github.com/afonsoc12/firefly-cli/releases/download/v0.1.2/firefly-cli-0.1.2.tar.gz
+	md5sums = 6f8470ac00dcf5a345cebb25d50ea5ef
 
 pkgname = firefly-cli
-
