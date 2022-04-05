@@ -1,0 +1,22 @@
+pkgbase = esoreflex
+	pkgdesc = EsoReflex is an environment that provides an easy and flexible way to reduce VLT/VLTI science data using the ESO pipelines.
+	pkgver = 2.11.5
+	pkgrel = 1
+	url = https://www.eso.org/sci/software/esoreflex/
+	install = esoreflex.install
+	arch = x86_64
+	license = GPL3
+	depends = java-environment
+	optdepends = python-astropy: enables interactivity with system-wide python installation
+	optdepends = python-matplotlib: enables interactivity with system-wide python installation
+	optdepends = python-wxpython: enables interactivity with system-wide python installation
+	source = https://ftp.eso.org/pub/dfs/reflex/esoreflex-2.11.5.tar.gz
+	source = esoreflex.sysusers
+	source = esoreflex.sh
+	source = esoreflex.patch
+	md5sums = 8754d013b6e9c9cef40439c7e4560b6b
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = esoreflex

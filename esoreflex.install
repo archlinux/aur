@@ -1,0 +1,26 @@
+
+post_upgrade () {
+
+    chgrp -R esoreflex /opt/esoreflex
+    
+}
+
+post_install () {
+
+	post_upgrade
+
+}
+
+post_remove () {
+
+    rm -rf /opt/esoreflex
+
+}
+
+pre_upgrade () {
+
+    post_remove
+
+}
+
+# vim:set ts=4 sw=4 et:

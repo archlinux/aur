@@ -1,0 +1,41 @@
+diff --color --unified --recursive --text esoreflex-2.11.5.orig/esoreflex/bin/esoreflex esoreflex-2.11.5.new/esoreflex/bin/esoreflex
+--- esoreflex-2.11.5.orig/esoreflex/bin/esoreflex	2022-04-05 09:26:38.333571913 -0400
++++ esoreflex-2.11.5.new/esoreflex/bin/esoreflex	2022-04-05 11:38:42.418766612 -0400
+@@ -216,12 +216,6 @@
+ # location of this launch script, if not hardcoded. Use perl if we can to
+ # resolve any symbolic links in the path. The base path is used to identify the
+ # default location of the Reflex .jar and Reflex python files.
+-ESOREFLEX_BASE=$(dirname $0)/../..
+-if command -v perl > /dev/null ; then
+-    ESOREFLEX_BASE=$(perl -MCwd=realpath -e "print realpath '$ESOREFLEX_BASE'")
+-else
+-    ESOREFLEX_BASE=$(cd "$ESOREFLEX_BASE" ; pwd)
+-fi
+ ESOREFLEX_JAR="$ESOREFLEX_BASE/esoreflex.jar"
+ 
+ # This utility function will escape all special characters of a string so that
+@@ -341,7 +335,7 @@
+ 
+ # Supply default values for various parameters in esoreflex.rc
+ JAVA_COMMAND=java
+-ESOREFLEX_WORKFLOW_PATH=~/KeplerData/workflows/MyWorkflows
++ESOREFLEX_WORKFLOW_PATH=${ESOPIPES_DIR}/share/esopipes
+ ESOREX_COMMAND=esorex
+ LOAD_ESOREX_CONFIG=""
+ LOAD_ESOREX_RECIPE_CONFIG=""
+@@ -1271,8 +1265,14 @@
+     echo "================================================================================"
+ fi
+ 
++export JAVA_COMMAND
++export ESOREFLEX_JAR
++
+ # Now execute the esoreflex Java application. Save the exit code to return it later.
+-$JAVA_COMMAND -jar "$ESOREFLEX_JAR" "$@"
++getent group esoreflex | grep -q "\b${USER}\b" &&  \
++	sg esoreflex -c '$JAVA_COMMAND -jar $ESOREFLEX_JAR '"$@"'' || \
++	{ echo "Add user ${USER} to esoreflex group"; exit; }
++
+ RESULT="$?"
+ 
+ # Cleanup the temporary directory if it was created by prepare_non_interactive.
