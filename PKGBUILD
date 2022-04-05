@@ -1,5 +1,4 @@
 # Maintainer : Daniel Bermond <dbermond@archlinux.org>
-# Contributor: Det <nimetonmaili g-mail>
 
 pkgbase=jdk-lts
 pkgname=('jre-lts' 'jdk-lts' 'jdk-lts-doc')
@@ -7,7 +6,7 @@ pkgver=17.0.2
 _build=8
 _hash=dfd4a8d0985749f896bed50d7138ee7f
 _majver="${pkgver%%.*}"
-pkgrel=1
+pkgrel=2
 pkgdesc='Oracle Java'
 arch=('x86_64')
 url='https://www.oracle.com/java/'
@@ -116,7 +115,7 @@ package_jdk-lts() {
     install=jdk.install
     
     cd "jdk-${pkgver}"
-    local _jvmdir="/usr/lib/jvm/java-${_majver}-${pkgname}"
+    local _jvmdir="/usr/lib/jvm/java-${_majver}-jdk"
     
     install -d -m755 "${pkgdir}/${_jvmdir}"
     install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
