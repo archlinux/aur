@@ -1,7 +1,7 @@
 # Maintainer: Cobalt Space <cobaltspace at protonmail dot com>
 # Contributor: William Brown <glowinthedarkcia@horsefucker.org>
 pkgname=ftba
-pkgver=202202111343_da0b2207d4_release
+pkgver=202203251547_a5e4f8b1e5_release
 pkgrel=1
 url="https://feed-the-beast.com/app"
 arch=(any)
