@@ -9,7 +9,7 @@ url="https://github.com/mosquito/caio"
 license=('Apache')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 #source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('167d9342a807bae441b2e88f9ecb62da2f236b319939a8679f68f510a0194c40')
 
