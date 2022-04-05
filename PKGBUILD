@@ -3,16 +3,16 @@
 # Contributor: Jose Valecillos <valecillosjg (at) gmail (dot) com>
 
 pkgname=cmakeed
-pkgver=1.17.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc="CMake plugin for Eclipse"
 arch=('any')
 url="https://github.com/15knots/cmakeed"
 license=('EPL')
 depends=('eclipse-cpp')
-source=("https://fifteenknots.jfrog.io/artifactory/p2-zip/CMakeEd-${pkgver}.zip")
+source=("https://dl.cloudsmith.io/public/15knots/p2-zip/raw/files/CMakeEd-${pkgver}.zip")
 noextract=()
-md5sums=('05206b37442468f240b1d79dab788f91')
+md5sums=('d83281a6cb078860ca2a818ff27fb9ae')
 
 package() {
   
