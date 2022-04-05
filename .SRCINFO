@@ -1,0 +1,15 @@
+pkgbase = lightburn-bin
+	pkgdesc = A layout, editing, and control software for lastercutters.
+	pkgver = 1.1.03
+	pkgrel = 1
+	url = https://lightburnsoftware.com
+	arch = x86_64
+	license = unknown
+	depends = qt5-multimedia
+	depends = qt5-serialport
+	provides = lightburn-bin
+	conflicts = lightburn-bin
+	source = https://github.com/LightBurnSoftware/deployment/releases/download/1.1.03/LightBurn-Linux64-v1.1.03.7z
+	sha256sums = 5fb84093356a200069c85a2489868c199a9275aebd70a84a8211435831153a8c
+
+pkgname = lightburn-bin
