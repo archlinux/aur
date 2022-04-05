@@ -2,13 +2,13 @@
 pkgname=xping-git
 pkgrelname=xping
 pkgver=195
-pkgrel=3
+pkgrel=4
 pkgdesc="A simple ping program continiously probing multiple hosts using icmp-echo"
 url="https://github.com/martintopholm/xping"
 arch=('x86_64')
 license=("THE BEER-WARE LICENSE")
 depends=('libevent')
-source=("https://github.com/martintopholm/xping.git")
+source=("git+https://github.com/martintopholm/xping.git")
 conflicts=('xping')
 md5sums=('SKIP')
 install='xping.install'
