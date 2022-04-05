@@ -60,7 +60,7 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=ffmpeg-obs
 pkgver=5.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('i686' 'x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -166,6 +166,7 @@ provides=(
   libswscale.so
 )
 conflicts=(ffmpeg)
+options=('debug')
 _tag=390d6853d0ef408007feb39c0040682c81c02751
 _deps_tag=15072cd42722d87c6b3ed1636b22e98c08575f20
 source=(
