@@ -3,7 +3,7 @@ _gitname=aur-release
 _gitroot='https://github.com/pbrisbin/aur-release'
 
 pkgname="$_gitname-git"
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc='Automatically release aur packages'
 arch=('any')

@@ -1,6 +1,6 @@
 pkgbase = aur-release-git
 	pkgdesc = Automatically release aur packages
-	pkgver = 1.0.0
+	pkgver = 1.0.1
 	pkgrel = 1
 	url = https://github.com/pbrisbin/aur-release
 	arch = any
