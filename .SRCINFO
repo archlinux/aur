@@ -1,5 +1,5 @@
 pkgbase = arc-kde-git
-	pkgdesc = A port of the popular GTK theme Arc for Plasma 5 desktop with a few additions and extras
+	pkgdesc = Arc theme for KDE Plasma 5
 	pkgver = 20180614.r11.g04873ca
 	pkgrel = 1
 	epoch = 2
