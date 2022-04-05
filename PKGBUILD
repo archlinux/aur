@@ -1,5 +1,5 @@
 pkgname=angle-grinder
-pkgver=0.17.0
+pkgver=0.18.0
 pkgrel=1
 pkgdesc="Slice and dice logs on the command line"
 arch=('x86_64')
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'jq')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/rcoh/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('5a2054ba9eb5fcee1fef2d5fbbf1735e71bc563fc7b273890097f63297e64bf4')
+sha256sums=('7a282d9eff88bb2e224b02d80b887de92286e451abf8a193248d30136d08f4e0')
 
 build() {
   cd "$pkgname-$pkgver"
