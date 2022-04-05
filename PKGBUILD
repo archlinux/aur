@@ -2,13 +2,13 @@
 pkgname=weechat-matrix
 pkgver=0.3.0
 _tag=ebf792a233a50d639b13e5f7c9a1c1fe988e7476 # git rev-parse "$pkgver"
-pkgrel=7
+pkgrel=8
 pkgdesc='WeeChat Matrix protocol script written in Python'
 arch=('any')
 url='https://github.com/poljar/weechat-matrix'
 license=('ISC')
-depends=('python' 'python-atomicwrites' 'python-attrs' 'python-logbook' 'python-matrix-nio'
-         'python-pygments' 'python-pyopenssl' 'python-webcolors' 'weechat')
+depends=('python' 'python-atomicwrites' 'python-attrs' 'python-cachetools' 'python-logbook' 'python-matrix-nio'
+         'python-olm' 'python-peewee' 'python-pygments' 'python-pyopenssl' 'python-webcolors' 'weechat')
 makedepends=('git' 'python-build' 'python-installer' 'python-poetry')
 checkdepends=('python-hypothesis' 'python-pytest')
 optdepends=('python-aiohttp: matrix_sso_helper support'
