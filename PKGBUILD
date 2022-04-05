@@ -3,7 +3,7 @@
 _base=pyrate-limiter
 pkgname=python-${_base}
 pkgdesc="Python Rate-Limiter using Leaky-Bucket Algorimth Family"
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
 arch=(any)
 url="https://github.com/vutran1710/PyrateLimiter"
@@ -12,7 +12,7 @@ depends=(python)
 makedepends=(python-build python-install python-poetry)
 # checkdepends=(python-pytest python-fakeredis python-django python-django-redis)
 source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('ba5b435ff159df38adc67d028f5710720a57be63cbfa8810a856e0a4a5810e7ce1c9d2f9e9756f17e6bdd20d5890604fd07cce3dbbd5c4f5cce3d3d87c1e1246')
+sha512sums=('d2e32a1296f3817a4383e87972f4dd58686edc38157e0663be9157a2503557082d68339060ce0dcd5f4a04a4887a1901e28f7267e033fd6c277609c21bc8de33')
 
 build() {
   cd ${_base}-${pkgver}
@@ -36,4 +36,7 @@ package() {
   install -d ${pkgdir}/usr/share/licenses/${pkgname}
   ln -s "${site_packages}/${_base/-/_}-${pkgver}.dist-info/LICENSE" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # Remove duplicate, see https://github.com/vutran1710/PyrateLimiter/blob/master/pyproject.toml#L16
+  rm ${pkgdir}${site_packages}/LICENSE
 }
