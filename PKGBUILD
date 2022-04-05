@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-pulseaudio-git
-pkgver=r81.fdd90a3
+pkgver=r165.574d361
 pkgrel=1
 pkgdesc="PulseAudio support for Liri Shell"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ replaces=('liri-pulseaudio')
 provides=('liri-pulseaudio')
 groups=('liri-git')
 
-_gitroot="git://github.com/lirios/pulseaudio.git"
+_gitroot="git+https://github.com/lirios/pulseaudio.git"
 _gitbranch=develop
 _gitname=pulseaudio
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
