@@ -1,6 +1,6 @@
 # Maintainer: Gaoyang Zhang <gy@blurgy.xyz>
 pkgname=dt-cli
-pkgver=0.7.6
+pkgver=0.7.7
 pkgrel=1
 epoch=
 pkgdesc="\$HOME, \$HOME everywhere"
@@ -27,7 +27,7 @@ source=(
     "https://github.com/blurgyy/dt/archive/refs/tags/v${pkgver}.tar.gz"
 )
 b2sums=(
-    "7a0c0aad1085471f0944487cd2844a1c077a647cc862781771c49b0aa4db2ec1f542ca30bc39bb9af08a79935df679d942bb8921633b2f0041a8ff2a1fce37f7"
+    'b19a9ca67820b1eb7059e1294821e331c8e9dd0771730eae7766110d941a187017ad0ef1433042d322e97b88ec9c2c8f1c19a182d83aa7d5f335f50185411f90'
 )
 noextract=()
 validpgpkeys=()
