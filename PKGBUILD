@@ -17,7 +17,7 @@ optdepends=('libpulse: Pulseaudio support'
             'noto-fonts-emoji: Google font for emoji support.'
             'ttf-symbola: Font for emoji support.'
             'noto-fonts-cjk: Font for special characters such as /shrug face.')
-source=("https://dl-canary.discord.net/apps/linux/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
+source=("https://dl-canary.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         'LICENSE.html::https://discord.com/terms'
         'OSS-LICENSES.html::https://discord.com/licenses')
 
