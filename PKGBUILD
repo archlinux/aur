@@ -9,7 +9,7 @@ url="https://github.com/irgeek/StrEnum"
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz"
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
         "https://raw.githubusercontent.com/irgeek/StrEnum/v$pkgver/LICENSE")
 sha256sums=('6019e9cc1738af6a236c022b82184372178ecadf12438f11f5b680a02a462377'
             'bcd733d0a46522162b95dbab61f7cdc1c3e36861dfa127d68a4435240d36ad36')
