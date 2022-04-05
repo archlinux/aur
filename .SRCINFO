@@ -1,6 +1,6 @@
 pkgbase = liri-shell-git
 	pkgdesc = QtQuick and Wayland based shell for convergence
-	pkgver = v0.9.0.r421.g5017cda1
+	pkgver = v0.9.0.r595.g9171b3f8
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
@@ -22,7 +22,7 @@ pkgbase = liri-shell-git
 	depends = dconf
 	depends = libliri-git
 	depends = fluid-git
-	depends = liri-platformtheme-git
+	depends = liri-qtintegration-git
 	depends = qml-xwayland-git
 	depends = liri-eglfs-git
 	depends = liri-wayland-git
@@ -37,8 +37,7 @@ pkgbase = liri-shell-git
 	replaces = liri-shell
 	options = debug
 	options = !strip
-	source = shell::git://github.com/lirios/shell.git#branch=develop
+	source = shell::git+https://github.com/lirios/shell.git#branch=develop
 	md5sums = SKIP
 
 pkgname = liri-shell-git
-
