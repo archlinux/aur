@@ -1,22 +1,28 @@
 pkgbase = bastet
 	pkgdesc = Tetris(r) clone with 'bastard' block-choosing AI
 	pkgver = 0.43.2
-	pkgrel = 5
+	pkgrel = 6
 	url = http://fph.altervista.org/prog/bastet.html
 	install = bastet.install
 	arch = i686
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	makedepends = boost
 	depends = boost-libs
 	depends = ncurses
 	backup = var/games/bastet.scores2
-	source = bastet-0.43.2.tar.gz::https://github.com/fph/bastet/archive/0.43.2.tar.gz
+	source = bastet::git+https://github.com/fph/bastet.git#commit=5037e410fde6fafe8e6bc4cf17a12ad98e01c17e
 	source = fix_build_new_boost.patch
+	source = fix_format_security.patch::https://github.com/fph/bastet/pull/21.patch
 	source = tmpfiles.conf
-	sha512sums = e81ca8bf674b537b539b7f6b35b1233a714f03750ce1b3947f84e70ca5f98ed4583902e7b4800c5bdde66ee95a4ef8ed0f5854675c2d149cd26d2498dc187a41
+	sha512sums = SKIP
 	sha512sums = c6b65f3fd44eef43126b051990c2e0075f970c451f1d944d8a48f6f530bf792e875ac485dd3048d72433b636adc85bcb36f798d9b001021a2c3a4e39894f972e
+	sha512sums = cbbcb59a56027d314fd8c4b74bf9b4c79b6f12d66ff10c5ed37d37d136e21b6c98486749c09f1b05f3894e69194b966d83923f45a64b415c1c3c9453800d5d7b
 	sha512sums = 8aa5d06313a5bc072449cf5b04298d98086403649aa84e335fa33775c71afc798f0f5ca2fa6b2c4644273b4750022584b8944b86d86c8c2fa820df6d666c4b38
+	b2sums = SKIP
+	b2sums = c127757675f133ec4131c159d41e08c5db166968e23b1462576a43002ee3e1c819d656e1be8ad2ad487472daf010bf7fbc722df578af24145c9c734ba9d671ac
+	b2sums = 7fc3e27b5aa8b633e5e5ce2849421a3c8d4bdee61d749c758817cc252e4f9967ab1b6030b7ad411ad3f685cf55b5d18a6f9a77e7a63d3f5d02e58d0c9633c0d1
+	b2sums = f7376e71ea3daf6110a6148887879bbcb3a4a8087b7b3dfd42a249a9e13a9002004ff0a6a6447fbfe2f8b6c3d5941e4c4eb47bb381915a295b77803a8a91ff4f
 
 pkgname = bastet
-
