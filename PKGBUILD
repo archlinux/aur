@@ -1,5 +1,5 @@
 pkgname=mingw-w64-gdal
-pkgver=3.3.1
+pkgver=3.4.2
 pkgrel=1
 pkgdesc="A translator library for raster geospatial data formats (mingw-w64)"
 arch=('any')
@@ -9,7 +9,7 @@ depends=('mingw-w64-curl' 'mingw-w64-hdf5' 'mingw-w64-netcdf' 'mingw-w64-libgeot
 makedepends=('perl' 'mingw-w64-configure')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("http://download.osgeo.org/gdal/${pkgver}/gdal-${pkgver}.tar.gz")
-sha256sums=('6c3c2422d129a9fef030d6aaa5bd3dd45ee798808953099313ffd36ab2945055')
+sha256sums=('7edef6de47c67da806b74eb8d3a20550933392a295c707682ea21b72123e34ce')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
