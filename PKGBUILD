@@ -9,7 +9,7 @@ url="https://github.com/geekpradd/PyLyrics"
 license=('GPL')
 depends=('python-beautifulsoup4' 'python-requests')
 makedepends=('python-setuptools')
-source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.zip")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.zip")
 sha256sums=('c5f36e8ef0ed3b487a9242ce34c19f9684e418a5bbffd5d367dc1d1604b4cd0b')
 
 build() {
