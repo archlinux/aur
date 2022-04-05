@@ -2,7 +2,7 @@
 # Contributor: Original submitter q9 <qqqqqqqqq9 at web dot de>
 pkgname=scidb-svn
 pkgver=1.0.beta.r1531
-pkgrel=3
+pkgrel=4
 # epoch=2
 pkgdesc="Scidb is a Chess Information Data Base; includes 2 engines, imports from Chess Base files"
 arch=('x86_64' 'i686')
@@ -51,23 +51,30 @@ pkgver() {
 }
 
 prepare() {
-#  cd $srcdir
-  if [ ! -e "$srcdir/$pkgname/patched" ] ; then
-    patch -u $srcdir/$pkgname/configure -i configure.patch
-    patch -u $srcdir/$pkgname/src/dump_eco.cpp -i dump_eco.cpp.patch
-    patch -u $srcdir/$pkgname/src/sys/sys_info.cpp -i sys_info.cpp.patch
-    patch -u $srcdir/$pkgname/engines/Sjeng/Makefile -i engines.Sjeng.Makefile.patch
-    patch -u $srcdir/$pkgname/tcl/Makefile -i tcl.Makefile.patch
-    touch $srcdir/$pkgname/patched
-  fi
+  # Refreshing patched files
+  # 1 remove files to be patched
+  rm $srcdir/$pkgname/configure
+  rm $srcdir/$pkgname/src/dump_eco.cpp
+  rm $srcdir/$pkgname/src/sys/sys_info.cpp
+  rm $srcdir/$pkgname/engines/Sjeng/Makefile
+  rm $srcdir/$pkgname/tcl/Makefile
+  # 2 refresh from repo
+  cd $srcdir/$pkgname
+  svn update
 }
 
 build() {
-  cd $srcdir/$pkgname
+  # 3 Patch files
+  patch -u $srcdir/$pkgname/configure -i configure.patch
+  patch -u $srcdir/$pkgname/src/dump_eco.cpp -i dump_eco.cpp.patch
+  patch -u $srcdir/$pkgname/src/sys/sys_info.cpp -i sys_info.cpp.patch
+  patch -u $srcdir/$pkgname/engines/Sjeng/Makefile -i engines.Sjeng.Makefile.patch
+  patch -u $srcdir/$pkgname/tcl/Makefile -i tcl.Makefile.patch
   # Set switches for configure script
   # Default switches had debugging turned on
   #     deployment is below /usr/local/bin
   #     this version has debugging off and small code
+  cd $srcdir/$pkgname
   SWITCHES=()
   SWITCHES+=("--destdir=${pkgdir}")             # so we can create a build file
   SWITCHES+=("--prefix=/usr")                   # defaults to /usr/local/
@@ -94,7 +101,7 @@ build() {
     SWITCHSTRING="${SWITCHSTRING} ${SWITCH}"
   done
   export CFLAGS="-fcommon" CXXFLAGS="-fcommon" ; ./configure ${SWITCHSTRING}
-  make clean
+#  make clean
   make
 }
 
