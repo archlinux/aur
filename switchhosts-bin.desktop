@@ -1,8 +1,0 @@
-[Desktop Entry]
-Name=SwitchHosts
-Comment=Switch hosts quickly!
-Exec=switchhosts
-Icon=switchhosts-bin
-Terminal=false
-Type=Application
-Categories=Development;
