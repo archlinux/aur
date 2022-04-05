@@ -1,6 +1,6 @@
 pkgbase = liri-screencast-git
 	pkgdesc = Take videos of your session
-	pkgver = r48.1fa298e
+	pkgver = r83.8518f72
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
@@ -17,8 +17,7 @@ pkgbase = liri-screencast-git
 	replaces = liri-screencast
 	options = debug
 	options = !strip
-	source = screencast::git://github.com/lirios/screencast.git#branch=develop
+	source = screencast::git+https://github.com/lirios/screencast.git#branch=develop
 	md5sums = SKIP
 
 pkgname = liri-screencast-git
-

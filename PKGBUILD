@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-screencast-git
-pkgver=r48.1fa298e
+pkgver=r83.8518f72
 pkgrel=1
 pkgdesc="Take videos of your session"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ replaces=('liri-screencast')
 provides=('liri-screencast')
 groups=('liri-git')
 
-_gitroot="git://github.com/lirios/screencast.git"
+_gitroot="git+https://github.com/lirios/screencast.git"
 _gitbranch=develop
 _gitname=screencast
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
