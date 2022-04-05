@@ -1,46 +1,47 @@
-# Maintainer: Isho Antar <IshoAntar@protonmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Isho Antar <IshoAntar@protonmail.com>
 # Contributor: Michael Yang <ohmyarchlinux@protonmail.com>
 
 pkgname=spdlog-git
-pkgver=1.8.2.ff6e3c9
+pkgver=1.10.0.r0.g76fb40d9
 pkgrel=1
 pkgdesc='Very fast, header only, C++ logging library'
-arch=('any')
+arch=('x86_64')
 url='https://github.com/gabime/spdlog'
 license=('MIT')
-makedepends=('git' 'cmake>=3.1.0')
+depends=('libfmt.so')
+makedepends=('git' 'cmake')
+provides=('spdlog' 'libspdlog.so')
 conflicts=('spdlog')
-provides=('spdlog')
-source=('git+https://github.com/gabime/spdlog.git#branch=v1.x')
+source=("git+$url#branch=v1.x")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd spdlog
-  git describe --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
-}
-
-prepare() {
-  mkdir -p build
+	git -C spdlog describe --long --tags | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 build() {
-  cd build
-  cmake ../spdlog \
-    -DSPDLOG_BUILD_BENCH=OFF \
-    -DSPDLOG_BUILD_EXAMPLE=OFF \
-    -DSPDLOG_BUILD_TESTS=ON \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib
-  make -j$(nproc)
+	cmake \
+		-B build \
+		-S spdlog \
+		-DSPDLOG_BUILD_BENCH=OFF \
+		-DSPDLOG_BUILD_EXAMPLE=OFF \
+		-DSPDLOG_BUILD_TESTS=ON \
+		-DCMAKE_BUILD_TYPE=None \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DSPDLOG_BUILD_SHARED=ON \
+		-DSPDLOG_FMT_EXTERNAL=ON \
+		-Wno-dev
+	make -C build
 }
 
 check() {
-  cd build
-  ctest
+	cd build
+	ctest
 }
 
 package() {
-  make -C build DESTDIR=${pkgdir} install
-  install -Dm644 spdlog/LICENSE ${pkgdir}/usr/share/licenses/spdlog/LICENSE
+	make -C build DESTDIR="$pkgdir/" install
+	install -Dm644 spdlog/LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
