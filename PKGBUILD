@@ -9,7 +9,7 @@ license=('BSD')
 depends=('python-anytree' 'python-click' 'python-pip' 'python-packaging' 'python-pkginfo'
          'python-setuptools' 'python-wheel')
 makedepends=('python-setuptools-scm')
-source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('e7f2ef078b1db1ebb0abf31adc34d77061ed73102257c99acba12ca15f98ecd1')
 
 build() {

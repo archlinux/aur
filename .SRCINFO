@@ -13,7 +13,7 @@ pkgbase = pipgrip
 	depends = python-pkginfo
 	depends = python-setuptools
 	depends = python-wheel
-	source = https://pypi.org/packages/source/p/pipgrip/pipgrip-0.7.2.tar.gz
+	source = https://files.pythonhosted.org/packages/source/p/pipgrip/pipgrip-0.7.2.tar.gz
 	sha256sums = e7f2ef078b1db1ebb0abf31adc34d77061ed73102257c99acba12ca15f98ecd1
 
 pkgname = pipgrip
