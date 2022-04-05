@@ -10,7 +10,7 @@ license=('LGPL3')
 depends=('python-strenum' 'python-aiopath' 'python-anyio' 'python-appdirs'
          'python-typing_extensions' 'python-unpackable' 'python-asyncstdlib')
 makedepends=('python-setuptools')
-source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz"
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
         'https://raw.githubusercontent.com/alexdelorenzo/app_paths/master/requirements.txt')
 sha256sums=('0ae3f8a8d451539842d49124e173016671c1553e7df4e595cc8837041febf46f'
             'SKIP')
