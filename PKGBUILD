@@ -14,7 +14,7 @@ makedepends=('python-setuptools')
 optdepends=('unarchiver: alternative decompression backend'
             'libarchive: alternative decompression backend'
             'python-crypto: process archives with password-protected headers')
-source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('67548769229c5bda0827c1663dce3f54644f9dbfba4ae86d4da2b2afd3e602a1')
 
 build() {

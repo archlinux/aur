@@ -10,7 +10,7 @@ pkgbase = python-rarfile
 	optdepends = unarchiver: alternative decompression backend
 	optdepends = libarchive: alternative decompression backend
 	optdepends = python-crypto: process archives with password-protected headers
-	source = https://pypi.org/packages/source/r/rarfile/rarfile-4.0.tar.gz
+	source = https://files.pythonhosted.org/packages/source/r/rarfile/rarfile-4.0.tar.gz
 	sha256sums = 67548769229c5bda0827c1663dce3f54644f9dbfba4ae86d4da2b2afd3e602a1
 
 pkgname = python-rarfile
