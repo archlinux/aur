@@ -28,5 +28,5 @@ The script also does not allow for manual selection of a file system type, and t
 Please read the function of both the \033[33m\033[3m\033[1mautoInstall\033[0m\033[36m and \033[3m\033[33m\033[1mautoCleanInstall\033[0m\033[36m script, and select \033[35m\033[1mEITHER\033[0m\033[36m \033[1m\033[33m\033[3mautoInstall\033[0m\033[36m or \033[33m\033[1m\033[3mautoCleanInstall\033[0m\033[36m to carry out 
 the installation process. The \033[33m\033[1m\033[3mautoCleanInstall\033[0m\033[36m script calls the \033[33m\033[1m\033[3mautoInstall\033[0m\033[36m script upon completion of the base installation, so running both scripts is \033[35m\033[1mNOT\033[0m\033[36m required.\n\n 
 
-\033[32mI hope these scripts are helpful and you enjoy your time in AutoLinux!    - \033[3m\033[1m\033[33ma4to'
+\033[32mI hope these scripts are helpful and you enjoy your time in AutoLinux!    - \033[3m\033[1m\033[33ma4to\n\n'
 }
