@@ -1,6 +1,6 @@
 pkgbase = ruby-unf_ext
 	pkgdesc = Unicode Normalization Form support library for CRuby
-	pkgver = 0.0.7.6
+	pkgver = 0.0.8.1
 	pkgrel = 1
 	url = https://github.com/knu/ruby-unf_ext
 	arch = any
@@ -12,8 +12,8 @@ pkgbase = ruby-unf_ext
 	optdepends = ruby-rake
 	optdepends = ruby-rdoc
 	optdepends = ruby-test-unit
-	noextract = unf_ext-0.0.7.6.gem
-	source = https://rubygems.org/downloads/unf_ext-0.0.7.6.gem
-	sha512sums = c6b6bc797015875b0a3422dc1e9656eae6c42d2263fd6e73ba41a1789ac1ffe927f81d5d9874973fd8d9bd9486494efa725b081e553954121588818d454db7f2
+	noextract = unf_ext-0.0.8.1.gem
+	source = https://rubygems.org/downloads/unf_ext-0.0.8.1.gem
+	sha512sums = 8bc698071471f65bf0d08f21e8ae4607778a9021b78c8b00e82725cccf3876d7357a1555d003c83b6182605247f3bf01a6c2ecc4dfac52ca93a0f37da2c76d8c
 
 pkgname = ruby-unf_ext
