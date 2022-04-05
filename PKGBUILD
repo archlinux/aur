@@ -4,7 +4,7 @@
 # Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=lf-bin
-pkgver=26
+pkgver=27
 pkgrel=1
 pkgdesc='A terminal file manager inspired by ranger (Precompiled binary from official repository)'
 arch=('i686' 'x86_64' 'armv7h')
@@ -14,9 +14,9 @@ options=('!strip' '!emptydirs')
 source_i686=("lf-$pkgver-linux-386.tar.gz::${url}/releases/download/r${pkgver}/lf-linux-386.tar.gz")
 source_x86_64=("lf-$pkgver-linux-amd64.tar.gz::${url}/releases/download/r${pkgver}/lf-linux-amd64.tar.gz")
 source_armv7h=("lf-$pkgver.linux-arm.tar.gz::${url}/releases/download/r${pkgver}/lf-linux-arm.tar.gz")
-sha256sums_i686=('09eabddcf198395171392cb82b4f5834f9e54509b99b35e883022ca41d95352c')
-sha256sums_x86_64=('0a07b8cbceadac4fea003f55f6ba5afa03cbb87261b1f6d2c8933286996ded75')
-sha256sums_armv7h=('8a94ef07d35e41095bf8b218ab2cc2f71cb9f15eb91b2aa684f24693ab9a6886')
+sha256sums_i686=('7735a1a203c58891bafdc6869f72606142694179eb5798b6674ef9e7b02dbd71')
+sha256sums_x86_64=('b8f9431dc63f7b2cff8e4306cff4c075adbe9f0900b563f91a6b742a41290d7f')
+sha256sums_armv7h=('e3dfc49ff95aacae1f44be882f8b36960182e200bad10f1afad3a63df37b0927')
 provides=('lf')
 conflicts=('lf')
 

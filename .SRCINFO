@@ -1,6 +1,6 @@
 pkgbase = lf-bin
 	pkgdesc = A terminal file manager inspired by ranger (Precompiled binary from official repository)
-	pkgver = 26
+	pkgver = 27
 	pkgrel = 1
 	url = https://github.com/gokcehan/lf
 	arch = i686
@@ -11,11 +11,11 @@ pkgbase = lf-bin
 	conflicts = lf
 	options = !strip
 	options = !emptydirs
-	source_i686 = lf-26-linux-386.tar.gz::https://github.com/gokcehan/lf/releases/download/r26/lf-linux-386.tar.gz
-	sha256sums_i686 = 09eabddcf198395171392cb82b4f5834f9e54509b99b35e883022ca41d95352c
-	source_x86_64 = lf-26-linux-amd64.tar.gz::https://github.com/gokcehan/lf/releases/download/r26/lf-linux-amd64.tar.gz
-	sha256sums_x86_64 = 0a07b8cbceadac4fea003f55f6ba5afa03cbb87261b1f6d2c8933286996ded75
-	source_armv7h = lf-26.linux-arm.tar.gz::https://github.com/gokcehan/lf/releases/download/r26/lf-linux-arm.tar.gz
-	sha256sums_armv7h = 8a94ef07d35e41095bf8b218ab2cc2f71cb9f15eb91b2aa684f24693ab9a6886
+	source_i686 = lf-27-linux-386.tar.gz::https://github.com/gokcehan/lf/releases/download/r27/lf-linux-386.tar.gz
+	sha256sums_i686 = 7735a1a203c58891bafdc6869f72606142694179eb5798b6674ef9e7b02dbd71
+	source_x86_64 = lf-27-linux-amd64.tar.gz::https://github.com/gokcehan/lf/releases/download/r27/lf-linux-amd64.tar.gz
+	sha256sums_x86_64 = b8f9431dc63f7b2cff8e4306cff4c075adbe9f0900b563f91a6b742a41290d7f
+	source_armv7h = lf-27.linux-arm.tar.gz::https://github.com/gokcehan/lf/releases/download/r27/lf-linux-arm.tar.gz
+	sha256sums_armv7h = e3dfc49ff95aacae1f44be882f8b36960182e200bad10f1afad3a63df37b0927
 
 pkgname = lf-bin
