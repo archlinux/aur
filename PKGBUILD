@@ -2,7 +2,7 @@
 # Maintainer: Colin Arnott <carnott@redhat.com>
 
 pkgname=ruby-rbtree
-pkgver=0.4.4
+pkgver=0.4.5
 pkgrel=1
 pkgdesc='A sorted associative collection.'
 arch=(i686 x86_64)
@@ -12,7 +12,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/${pkgname#ruby-}-$pkgver.gem)
 noextract=(${pkgname#ruby-}-$pkgver.gem)
-sha512sums=('4cfdb6c0b98ea33baa82da4099d5ba25f1cb64825c183f9f881ed49e7ab7abcd8672d50ecf28b63b9f05b0e0452c12a7696bed4f130395d59c2e059cd61d8ba7')
+sha512sums=('e1a1692fb91e85299d86083b02d71aa6ecb293ada2e3f17d2000344d064575148d3ab68b3f5bc4da420b8bf79bcfe353afeb52cc3b450eea662bb69d9ebeaf2d')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
