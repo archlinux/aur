@@ -3,7 +3,7 @@
 _pkgname=gaphor
 pkgname="${_pkgname}-bin"
 pkgver=2.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('x86_64')
 url="https://github.com/gaphor/gaphor/"
@@ -38,10 +38,26 @@ build() {
 }
 
 package() {
-    cd "$srcdir"
-    install -Dm755 ${_appimage} "${pkgdir}/opt/${_pkgname}/${_appimage}"
-    install -dm755 "${pkgdir}/usr/bin"
-    ln -s "/opt/${_pkgname}/${_appimage}" "$pkgdir/usr/bin/${_pkgname}"
-    install -Dm644 "squashfs-root/org.gaphor.Gaphor.desktop" "${pkgdir}/usr/share/applications/org.gaphor.Gaphor.desktop"
-    install -Dm644 "squashfs-root/org.gaphor.Gaphor.png" "${pkgdir}/usr/share/pixmaps/org.gaphor.Gaphor.png"
+	# Installation procedure adapted from the PKGBUILD for Ripcord:
+	# https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=ripcord
+	cd "$srcdir"
+
+	# directories
+	rm -rf "squashfs-root/share/glib-2.0/schemas"
+	ln -s "/usr/share/glib-2.0/schemas" "squashfs-root/share/glib-2.0/schemas"
+	install -d "${pkgdir}/usr/bin/"
+	install -d "${pkgdir}/usr/lib/gaphor/"
+	install -d "${pkgdir}/usr/share/applications/"
+	install -d "${pkgdir}/usr/share/pixmaps/"
+
+	# icon
+	install -m644 "squashfs-root/org.gaphor.Gaphor.png" "${pkgdir}/usr/share/pixmaps/org.gaphor.Gaphor.png"
+
+	# .desktop file
+	install -m644 "squashfs-root/org.gaphor.Gaphor.desktop" "${pkgdir}/usr/share/applications/org.gaphor.Gaphor.desktop"
+
+	# application
+	chmod 755 -R squashfs-root
+	mv squashfs-root/* "${pkgdir}/usr/lib/gaphor/"
+	ln -s "/usr/lib/gaphor/gaphor-exe" "${pkgdir}/usr/bin/gaphor"
 }
