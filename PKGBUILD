@@ -2,11 +2,11 @@
 # Contributor: Oliver Jaksch <arch-aur@com-in.de>
 _pkgname=libretro-stella
 pkgname=$_pkgname-git
-pkgver=6.5.3.r81.g7ade95c03
+pkgver=6.6.r159.gfc1d87f6d
 pkgrel=1
 epoch=1
 pkgdesc="Atari 2600 VCS core"
-arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://stella-emu.github.io/"
 license=('GPL2')
 groups=('libretro')
@@ -15,11 +15,15 @@ makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=('stella-emu::git+https://github.com/stella-emu/stella.git')
-md5sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
 	cd stella-emu
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	sed -i 's/-O[0123]//' stella-emu/src/libretro/Makefile
 }
 
 build() {
