@@ -15,7 +15,7 @@ pkgbase = python-mpris_server
 	depends = python-unidecode
 	depends = python-emoji
 	depends = python-typing_extensions
-	source = https://pypi.org/packages/source/m/mpris_server/mpris_server-0.4.2.tar.gz
+	source = https://files.pythonhosted.org/packages/source/m/mpris_server/mpris_server-0.4.2.tar.gz
 	sha256sums = a779ccf347ce32d46678abce5ee5f8d05bbdc47f203e06329de5db512ebbf1f1
 
 pkgname = python-mpris_server

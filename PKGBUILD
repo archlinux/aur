@@ -11,7 +11,7 @@ license=('AGPL3')
 depends=('python-gobject' 'python-pydbus' 'python-unidecode' 'python-emoji'
          'python-typing_extensions')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('a779ccf347ce32d46678abce5ee5f8d05bbdc47f203e06329de5db512ebbf1f1')
 
 build() {
@@ -22,8 +22,4 @@ build() {
 package() {
   cd "$_name-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
-
-  # Remove duplicate AGPL3 license
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  rm "${pkgdir}${site_packages}/mpris_server-$pkgver.dist-info/LICENSE"
 }
