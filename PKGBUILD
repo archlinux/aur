@@ -1,7 +1,7 @@
 # Maintainer: Carneiro <gabriel dot chaves dot carneiro at gmail dot com>
 pkgname=pulsemeeter-git
 _pkgname=pulsemeeter
-pkgver=1.2.14.r16.35c7485
+pkgver=1.2.14.r27.1e681c5
 pkgrel=1
 pkgdesc="A pulseaudio audio routing application"
 url="https://github.com/theRealCarneiro/pulsemeeter"
