@@ -1,7 +1,7 @@
 pkgbase = qoi-git
 	pkgdesc = The 'Quite OK Image' format for fast, lossless image compression
 	pkgver = r192.09d144f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://qoiformat.org/
 	arch = x86_64
 	license = MIT
@@ -22,4 +22,5 @@ pkgname = qoiconv-git
 
 pkgname = qoibench-git
 	pkgdesc = The 'Quite OK Image' format for fast, lossless image compression - Benchmark qoi against various png libraries
+	depends = libpng
 	provides = qoibench

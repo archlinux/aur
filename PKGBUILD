@@ -9,7 +9,7 @@ pkgname=(qoi-headers-git
         )
 pkgbase=qoi-git
 pkgver=r192.09d144f
-pkgrel=1
+pkgrel=2
 pkgdesc="The 'Quite OK Image' format for fast, lossless image compression"
 arch=('x86_64')
 url='https://qoiformat.org/'
@@ -46,6 +46,7 @@ package_qoiconv-git() {
 
 package_qoibench-git() {
   provides=('qoibench')
+  depends=('libpng')
   pkgdesc+=" - Benchmark qoi against various png libraries" 
   install -Dm755 $source_dir/qoibench "$pkgdir"/usr/bin/qoibench
 }
