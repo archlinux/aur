@@ -7,7 +7,7 @@ pkgname=$_pkgname-git
 pkgver=r411.26e306ac
 pkgrel=1
 pkgdesc="Nintendo 64 core"
-arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/libretro/mupen64plus-libretro-nx"
 license=('GPL2')
 groups=('libretro')
@@ -26,8 +26,7 @@ pkgver() {
 }
 
 prepare() {
-	# use makepkg.conf optimization flag
-	sed -i 's/-O3//g' $_pkgname/Makefile
+	sed -i 's/-O[0123s]//g' $_pkgname/Makefile
 }
 
 build() {
