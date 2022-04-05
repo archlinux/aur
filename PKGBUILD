@@ -4,7 +4,7 @@ pkgname=$_pkgname-git
 pkgver=r608.e6ba71f
 pkgrel=1
 pkgdesc="Sega Saturn core"
-arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/libretro/beetle-saturn-libretro"
 license=('GPL2')
 groups=('libretro')
@@ -21,7 +21,7 @@ pkgver() {
 }
 
 prepare() {
-	sed -i 's/-O2//' $_pkgname/Makefile
+	sed -i 's/-O[0123s]//g' $_pkgname/Makefile
 }
 
 build() {
