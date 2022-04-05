@@ -5,14 +5,23 @@
 _pkgname='github-desktop'
 pkgname="${_pkgname}-bin"
 pkgver=2.9.12_linux4
-pkgrel=1
+pkgrel=2
 _pkgver="${pkgver//_/-}"
 _gitname="release-${_pkgver}"
 pkgdesc="GUI for managing Git and GitHub."
 arch=('x86_64')
 url="https://desktop.github.com"
 license=('MIT')
-depends=('gnome-keyring' 'libsecret' 'git' 'curl' 'libxss' 'nss' 'nspr' 'unzip')
+depends=(
+    'curl'
+    'git'
+    'libsecret'
+    'libxss'
+    'nspr'
+    'nss'
+    'org.freedesktop.secrets'
+    'unzip'
+)
 optdepends=('hub: CLI interface for GitHub.')
 provides=(${_pkgname})
 conflicts=(${_pkgname})
