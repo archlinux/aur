@@ -1,18 +1,23 @@
 pkgbase = python-streamz
-	pkgdesc = Real-time processing for python
-	pkgver = 0.5.1
+	pkgdesc = Real-time stream processing for python
+	pkgver = 0.6.3
 	pkgrel = 1
-	url = https://streamz.readthedocs.io
+	url = https://github.com/python-streamz/streamz
 	arch = any
-	license = BSD
+	license = custom:BSD-3-clause
 	checkdepends = python-pytest
+	checkdepends = python-pandas
+	checkdepends = python-dask
+	checkdepends = python-flaky
+	checkdepends = python-distributed
 	makedepends = python-setuptools
-	depends = python
 	depends = python-tornado
 	depends = python-toolz
 	depends = python-zict
-	source = https://pypi.org/packages/source/s/streamz/streamz-0.5.1.tar.gz
-	sha256sums = 80c9ded1d6e68d3b78339deb6e9baf93a633d84b4a8875221e337ac06890103f
+	depends = lzo
+	depends = snappy
+	optdepends = python-pandas: for supports streams of Pandas dataframes or Pandas series
+	source = https://github.com/python-streamz/streamz/archive/0.6.3.tar.gz
+	sha512sums = f52770bb6f6139051c628f6eb67fdc2ab8f3657a48d14cdedd68afdf0092f2d372338028e6a7a5e9292ba6bdb29888c5d0d6f01b6c38b7cd95f886fc048d5651
 
 pkgname = python-streamz
-

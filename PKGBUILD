@@ -1,26 +1,33 @@
-# Maintainer: Guillaume Horel <guillaume.horel@gmail.com>
-pkgname=('python-streamz')
-_pkgname='streamz'
-pkgver='0.5.1'
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Guillaume Horel <guillaume.horel@gmail.com>
+_base=streamz
+pkgname=python-${_base}
+pkgver=0.6.3
 pkgrel=1
-pkgdesc="Real-time processing for python"
-url="https://streamz.readthedocs.io"
-checkdepends=('python-pytest')
-depends=('python' 'python-tornado' 'python-toolz' 'python-zict')
-makedepends=('python-setuptools')
-optdepends=()
-license=('BSD')
-arch=('any')
-source=("https://pypi.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('80c9ded1d6e68d3b78339deb6e9baf93a633d84b4a8875221e337ac06890103f')
+pkgdesc="Real-time stream processing for python"
+arch=(any)
+url="https://github.com/${pkgname}/${_base}"
+depends=(python-tornado python-toolz python-zict lzo snappy)
+makedepends=(python-setuptools)
+checkdepends=(python-pytest python-pandas python-dask python-flaky python-distributed)
+optdepends=('python-pandas: for supports streams of Pandas dataframes or Pandas series') # 'python-cudf'
+license=('custom:BSD-3-clause')
+source=(${url}/archive/${pkgver}.tar.gz)
+sha512sums=('f52770bb6f6139051c628f6eb67fdc2ab8f3657a48d14cdedd68afdf0092f2d372338028e6a7a5e9292ba6bdb29888c5d0d6f01b6c38b7cd95f886fc048d5651')
+
+build() {
+  cd ${_base}-${pkgver}
+  export PYTHONHASHSEED=0
+  python setup.py build
+}
 
 check() {
-    cd "$srcdir/$_pkgname-$pkgver"
-    pytest
+  cd ${_base}-${pkgver}
+  python -m pytest ${_base}/tests --ignore=streamz/tests/test_dask.py
 }
 
 package() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1
-    install -D -m644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
