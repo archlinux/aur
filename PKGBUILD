@@ -1,22 +1,22 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
-pkgname=nucleistudioide
-pkgver=2022.01
+pkgbase=nucleistudioide
+pkgname=(nucleistudioide-bin)
+pkgver=2022.04
 pkgrel=1
 pkgdesc="Nuclei Studio IDE 是基于 MCU Eclipse IDE 开发的一款针对芯来公司处理器核产品的集成开发环境工具，用于 RISC-V 开发继承了 Eclipse IDE 平台的各种优势。"
 arch=("x86_64")
-makedepends=()
-depends=('nuclei-gcc' 'nuclei-openocd')
+depends=('nuclei-gcc-bin' 'nuclei-openocd-bin' 'nuclei-qemu-bin')
 optdepends=('jlink-software-and-documentation: Segger JLink software & documentation pack for Linux')
+makedepends=()
 conflicts=()
 url="https://www.nucleisys.com/download.php"
 license=('unknow')
 options=(!strip)
-
 source=("https://www.nucleisys.com/upload/files/nucleistudio/NucleiStudio_IDE_${pkgver/./}-lin64.tgz")
-sha256sums=('fb43e878bf08e02f1ce4ab29e72022032e66e18041f897d4191ac9c38650d662')
+sha256sums=('3ddeef99c2af0ed16c3584b0348fee24258b82c6ebfad88e0c6056b9248b75dc')
 
-package() {
+package_nucleistudioide-bin() {
 	cd "$srcdir"
 
 	msg2 'Installing Nuclei Studio IDE'
@@ -24,6 +24,7 @@ package() {
 	tar zxf "NucleiStudio_IDE_${pkgver/./}-lin64.tgz"
 	rm -rf "NucleiStudio_IDE_${pkgver/./}/NucleiStudio/toolchain/openocd"
 	rm -rf "NucleiStudio_IDE_${pkgver/./}/NucleiStudio/toolchain/gcc"
+	rm -rf "NucleiStudio_IDE_${pkgver/./}/NucleiStudio/toolchain/qemu"
     
 	mv "${srcdir}/NucleiStudio_IDE_${pkgver/./}/NucleiStudio" "${pkgdir}/opt/nuclei"
 
@@ -80,6 +81,7 @@ Categories=Development
 EOF
 
 }
+
 
 #
 # makepkg --printsrcinfo > .SRCINFO
