@@ -1,6 +1,6 @@
 pkgbase = qml-xwayland-git
 	pkgdesc = XWayland support for QtQuick Wayland compositors
-	pkgver = r71.ce9b71b
+	pkgver = r90.98cb78a
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
@@ -21,8 +21,7 @@ pkgbase = qml-xwayland-git
 	replaces = qml-xwayland
 	options = debug
 	options = !strip
-	source = qml-xwayland::git://github.com/lirios/qml-xwayland.git#branch=develop
+	source = qml-xwayland::git+https://github.com/lirios/qml-xwayland.git#branch=develop
 	md5sums = SKIP
 
 pkgname = qml-xwayland-git
-

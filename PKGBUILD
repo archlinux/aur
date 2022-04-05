@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=qml-xwayland-git
-pkgver=r71.ce9b71b
+pkgver=r90.98cb78a
 pkgrel=1
 pkgdesc="XWayland support for QtQuick Wayland compositors"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ replaces=('qml-xwayland')
 provides=('qml-xwayland')
 groups=('liri-git')
 
-_gitroot="git://github.com/lirios/qml-xwayland.git"
+_gitroot="git+https://github.com/lirios/qml-xwayland.git"
 _gitbranch=develop
 _gitname=qml-xwayland
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
