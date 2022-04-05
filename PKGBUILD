@@ -11,7 +11,7 @@ depends=('python-markdown')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('python-pygments: syntax highlighting')
 checkdepends=('python-pyaml' 'python-pygments' 'python-pytest-cov')
-source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 #source=("$pkgname-$pkgver.tar.gz::https://github.com/facelessuser/$pkgname/archive/$pkgver.tar.gz")
 sha256sums=('a80553b243d3ed2d6c27723bcd64ca9887e560e6f4808baa96f36e93061eaf90')
 
