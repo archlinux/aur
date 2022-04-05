@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-appcenter-git
-pkgver=v0.1.0.r72.gb959a17
+pkgver=v0.1.0.r243.g925e600
 pkgrel=1
 pkgdesc="App Center for Liri OS"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ replaces=('liri-appcenter')
 provides=('liri-appcenter')
 groups=('liri-git')
 
-_gitroot="git://github.com/lirios/appcenter.git"
+_gitroot="git+https://github.com/lirios/appcenter.git"
 _gitbranch=develop
 _gitname=appcenter
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})

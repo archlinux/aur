@@ -1,6 +1,6 @@
 pkgbase = liri-appcenter-git
 	pkgdesc = App Center for Liri OS
-	pkgver = v0.1.0.r72.gb959a17
+	pkgver = v0.1.0.r243.g925e600
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
@@ -22,8 +22,7 @@ pkgbase = liri-appcenter-git
 	replaces = liri-appcenter
 	options = debug
 	options = !strip
-	source = appcenter::git://github.com/lirios/appcenter.git#branch=develop
+	source = appcenter::git+https://github.com/lirios/appcenter.git#branch=develop
 	md5sums = SKIP
 
 pkgname = liri-appcenter-git
-
