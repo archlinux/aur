@@ -28,18 +28,18 @@ pkgver() {
 }
 
 build() {
-	cd "$_pkgname"
-	make
+    cd "$_pkgname"
+    make
 }
 
 check() {
-	cd "$_pkgname"
+    cd "$_pkgname"
     # XXX: tests require sudo, so they can't be run in the PKGBUILD
-	#make tests
+    #make tests
 }
 
 package() {
-	cd "$_pkgname"
+    cd "$_pkgname"
     install -Dm755 overlay "$pkgdir"/usr/bin/overlay
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
