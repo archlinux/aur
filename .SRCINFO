@@ -1,6 +1,6 @@
 pkgbase = o
 	pkgdesc = Text editor
-	pkgver = 2.49.0
+	pkgver = 2.49.1
 	pkgrel = 1
 	url = https://github.com/xyproto/o
 	arch = x86_64
@@ -45,7 +45,7 @@ pkgbase = o
 	optdepends = v: for compiling and formatting V
 	optdepends = yasm: for compiling Assembly
 	optdepends = zig: for compiling and formatting Zig
-	source = git+https://github.com/xyproto/o#commit=e0b19d0ad0427f6cef1860cbca81500ce1375e4c
+	source = git+https://github.com/xyproto/o#commit=5a46e2e6f438e6b2f423393b307967fff58de0b5
 	b2sums = SKIP
 
 pkgname = o
