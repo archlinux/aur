@@ -10,7 +10,7 @@ url="https://github.com/davidfischer/requirements-parser"
 license=('BSD')
 depends=('python-future' 'python-setuptools' 'python-types-setuptools')
 makedepends=('python-build' 'python-installer' 'python-poetry')
-source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz") #{,.asc}
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz") #{,.asc}
 sha256sums=('3336f3a3ae23e06d3f0f88595e4052396e3adf91688787f637e5d2ca1a904069')
 #validpgpkeys=('301078D634936CEB7FCDF13BF0C9B0ADA737AB60') # David Fischer <djfische@gmail.com>
 
@@ -23,10 +23,10 @@ package() {
   cd "$_name-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  # Move license to proper directory
+  # Symlink license to proper directory
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   install -d "$pkgdir/usr/share/licenses/$pkgname"
-  mv "${pkgdir}${site_packages}/requirements_parser-$pkgver.dist-info/LICENSE" \
+  ln -s "${pkgdir}${site_packages}/requirements_parser-$pkgver.dist-info/LICENSE" \
     "$pkgdir/usr/share/licenses/$pkgname/"
 
   # Remove duplicate license
