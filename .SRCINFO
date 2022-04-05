@@ -1,13 +1,14 @@
 pkgbase = libretro-virtualjaguar-git
 	pkgdesc = Atari Jaguar core
-	pkgver = r264.2069160
+	pkgver = r311.263c979
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/libretro/virtualjaguar-libretro
-	arch = arm
-	arch = armv6h
+	arch = aarch64
 	arch = armv7h
+	arch = i486
 	arch = i686
+	arch = pentium4
 	arch = x86_64
 	groups = libretro
 	license = GPL3
