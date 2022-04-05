@@ -1,20 +1,18 @@
 # Maintainer: nalquas <nalquas.dev@gmail.com>
 
 pkgname=tvtower-bin
-pkgver=0.7.1
+pkgver=0.7.2
 pkgrel=1
 pkgdesc="A remake of MadTV - by fans, for fans."
 arch=('x86_64')
 url="https://www.tvtower.org/"
 license=('custom')
-depends=('freetype2' 'libxcb' 'harfbuzz' 'brotli' 'libxau' 'libxdmcp' 'graphite' 'glib2' 'pcre')
+depends=('libglvnd' 'freetype2') # dependencies determined using namcap
 provides=('tvtower')
-source=("$pkgname-$pkgver.zip::https://github.com/TVTower/TVTower/releases/download/v0.7.1/TVTower_v0.7.1_2021-11-14.zip")
-sha256sums=('fb83227e90ab063ef652be4c1ec04c1fae9e6842a39a393092b5239d6e2ab603')
+source=("$pkgname-$pkgver.zip::https://github.com/TVTower/TVTower/releases/download/v0.7.2/TVTower_v0.7.2.zip")
+sha256sums=('577c0585d7508c9e50a17ba12fa43b1c9bcda6ff08126a9faa9b7cee7075bcf2')
 
 package() {
-	cd TVTower_v0.7.1_2021-11-14
-	
 	# First, install the liense
 	install -Dm644 LICENCE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	
