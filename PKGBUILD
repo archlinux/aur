@@ -1,15 +1,15 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o
-pkgver=2.48.3
-pkgrel=3
+pkgver=2.49.0
+pkgrel=1
 pkgdesc='Text editor'
 arch=(x86_64)
 url='https://github.com/xyproto/o'
 license=(BSD)
 depends=(vte3)
 makedepends=(git go)
-source=("git+$url#commit=4963c5daaf8b7909ae31882b1384649f0637e4a9") # tag: 2.48.3
+source=("git+$url#commit=e0b19d0ad0427f6cef1860cbca81500ce1375e4c") # tag: v2.49.0
 optdepends=('asciidoctor: for writing man pages'
             'agda: for compiling Agda'
             'astyle: for formatting C#'
@@ -18,7 +18,7 @@ optdepends=('asciidoctor: for writing man pages'
             'clang: for formatting C++ code with clang-format'
             'clojure: for compiling Clojure'
             'crystal: for compiling Crystal'
-            'cxx: for compiling C++'
+            'cxx: for compiling C and C++'
             'fpc: for compiling Object Pascal'
             'fstabfmt: for formatting /etc/fstab'
             'gdc: for compiling D'
@@ -33,15 +33,19 @@ optdepends=('asciidoctor: for writing man pages'
             'lua-format: for formatting Lua'
             'mlton: for compiling Standard ML'
             'mono: for compiling C#'
+            'nasm: for compiling Assembly'
             'ocaml: for compiling and formatting OCaml'
             'odin: for compiling Odin'
+            'perl-tidy: for formatting Perl'
             'pandoc-bin: for exporting Markdown to PDF'
             'prettier: for formatting JavaScript, TypeScript and CSS'
             'rustup: for compiling and formatting Rust'
             'scala: for compiling Scala'
             'scdoc: for writing man pages'
+            'shfmt: for formattig Shell scripts'
             'tidy: for formatting HTML'
             'v: for compiling and formatting V'
+            'yasm: for compiling Assembly'
             'zig: for compiling and formatting Zig')
 b2sums=(SKIP)
 

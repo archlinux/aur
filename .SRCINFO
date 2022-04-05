@@ -1,7 +1,7 @@
 pkgbase = o
 	pkgdesc = Text editor
-	pkgver = 2.48.3
-	pkgrel = 3
+	pkgver = 2.49.0
+	pkgrel = 1
 	url = https://github.com/xyproto/o
 	arch = x86_64
 	license = BSD
@@ -16,7 +16,7 @@ pkgbase = o
 	optdepends = clang: for formatting C++ code with clang-format
 	optdepends = clojure: for compiling Clojure
 	optdepends = crystal: for compiling Crystal
-	optdepends = cxx: for compiling C++
+	optdepends = cxx: for compiling C and C++
 	optdepends = fpc: for compiling Object Pascal
 	optdepends = fstabfmt: for formatting /etc/fstab
 	optdepends = gdc: for compiling D
@@ -31,17 +31,21 @@ pkgbase = o
 	optdepends = lua-format: for formatting Lua
 	optdepends = mlton: for compiling Standard ML
 	optdepends = mono: for compiling C#
+	optdepends = nasm: for compiling Assembly
 	optdepends = ocaml: for compiling and formatting OCaml
 	optdepends = odin: for compiling Odin
+	optdepends = perl-tidy: for formatting Perl
 	optdepends = pandoc-bin: for exporting Markdown to PDF
 	optdepends = prettier: for formatting JavaScript, TypeScript and CSS
 	optdepends = rustup: for compiling and formatting Rust
 	optdepends = scala: for compiling Scala
 	optdepends = scdoc: for writing man pages
+	optdepends = shfmt: for formattig Shell scripts
 	optdepends = tidy: for formatting HTML
 	optdepends = v: for compiling and formatting V
+	optdepends = yasm: for compiling Assembly
 	optdepends = zig: for compiling and formatting Zig
-	source = git+https://github.com/xyproto/o#commit=4963c5daaf8b7909ae31882b1384649f0637e4a9
+	source = git+https://github.com/xyproto/o#commit=e0b19d0ad0427f6cef1860cbca81500ce1375e4c
 	b2sums = SKIP
 
 pkgname = o
