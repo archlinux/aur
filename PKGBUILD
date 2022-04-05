@@ -79,7 +79,6 @@ _package() {
   optdepends=('crda: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
-  replaces=(linux virtualbox-guest-modules-mainline wireguard-mainline)
   conflicts=(linux-mainline-anbox)
 
   cd $_srcname
@@ -103,7 +102,6 @@ _package() {
 
 _package-headers() {
   pkgdesc="Headers and scripts for building modules for the $pkgdesc kernel"
-  replaces=(linux-headers)
   conflicts=(linux-mainline-anbox-headers)
 
   cd $_srcname
