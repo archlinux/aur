@@ -1,13 +1,13 @@
 pkgbase = libretro-neocd-git
 	pkgdesc = SNK Neo Geo CD core
-	pkgver = r116.83d10f3
+	pkgver = r135.327aece
 	pkgrel = 1
 	url = https://github.com/libretro/neocd_libretro
 	arch = aarch64
-	arch = arm
-	arch = armv6h
 	arch = armv7h
+	arch = i486
 	arch = i686
+	arch = pentium4
 	arch = x86_64
 	groups = libretro
 	license = LGPL3
@@ -20,8 +20,8 @@ pkgbase = libretro-neocd-git
 	provides = libretro-neocd
 	conflicts = libretro-neocd
 	source = libretro-neocd::git+https://github.com/libretro/neocd_libretro.git
-	source = libretro-neocd-unbundle-libs.patch
+	source = unbundle-libs.patch
 	b2sums = SKIP
-	b2sums = 4eed1c8a3c3d301ab1db5bc3aa0464d654cb948c71e84fb79912906a2085c5ef258fccfee10f83e1a1979fd5098f4f903f1f5928a3c885601e067152cda761e9
+	b2sums = de8c8053444f1dff288ee28f2e28eeee99900b5e90d03598f8b4ebf993707ee27c65ca7b8854abcac06ab356987b90586de9277d774a3557b0641fe995fe036c
 
 pkgname = libretro-neocd-git

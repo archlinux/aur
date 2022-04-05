@@ -2,10 +2,10 @@
 # Contributor: Oliver Jaksch <arch-aur at com-in dot de>
 _pkgname=libretro-neocd
 pkgname=$_pkgname-git
-pkgver=r116.83d10f3
+pkgver=r135.327aece
 pkgrel=1
 pkgdesc="SNK Neo Geo CD core"
-arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/libretro/neocd_libretro"
 license=('LGPL3')
 groups=('libretro')
@@ -15,11 +15,11 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
 	"$_pkgname::git+$url.git"
-	"$_pkgname-unbundle-libs.patch"
+	'unbundle-libs.patch'
 )
 b2sums=(
 	'SKIP'
-	'4eed1c8a3c3d301ab1db5bc3aa0464d654cb948c71e84fb79912906a2085c5ef258fccfee10f83e1a1979fd5098f4f903f1f5928a3c885601e067152cda761e9'
+	'de8c8053444f1dff288ee28f2e28eeee99900b5e90d03598f8b4ebf993707ee27c65ca7b8854abcac06ab356987b90586de9277d774a3557b0641fe995fe036c'
 )
 
 pkgver() {
@@ -29,7 +29,8 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
-	patch -Np1 < ../$_pkgname-unbundle-libs.patch
+	mv deps/{libchdr/include/dr_libs,}
+	patch -Np1 < ../unbundle-libs.patch
 	sed -i 's/-Ofast//' Makefile
 }
 

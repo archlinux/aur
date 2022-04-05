@@ -1,28 +1,32 @@
+diff --git a/Makefile.common b/Makefile.common
+index 09d2356..a5e2293 100644
 --- a/Makefile.common
 +++ b/Makefile.common
-@@ -10,14 +10,11 @@ LIBRETRO_COMM_DIR    = $(LIBRETRO_DEPS_DIR)/libretro-common
+@@ -1,3 +1,4 @@
++LIBS                += $(shell pkg-config --libs libchdr vorbisfile zlib)
+ LIBRETRO_DEPS_DIR    = $(CORE_DIR)/deps
+ LIBOGG_DIR           = $(LIBRETRO_DEPS_DIR)/libogg
+ LIBVORBIS_DIR        = $(LIBRETRO_DEPS_DIR)/libvorbis
+@@ -8,15 +9,10 @@ LZMA_DIR             = $(LIBCHDR_DIR)/deps/lzma-19.00
+ LIBRETRO_COMM_DIR    = $(LIBRETRO_DEPS_DIR)/libretro-common
+ 
  INCFLAGS :=  \
++	$(shell pkg-config --cflags libchdr vorbisfile zlib) \
  	-I$(CORE_DIR)/src \
  	-I$(LIBRETRO_COMM_DIR)/include \
--	-I$(LIBRETRO_DEPS_DIR)/ \
+ 	-I$(LIBRETRO_DEPS_DIR)/ \
 -	-I$(LIBCHDR_DIR)/include \
 -	-I$(LZMA_DIR)/include \
 -	-I$(LIBOGG_DIR)/include \
 -	-I$(LIBVORBIS_DIR)/include \
 -	-I$(LIBVORBIS_DIR)/lib \
 -	-I$(ZLIB_DIR) \
--	-I$(MINIZIP_DIR)
-+	-I$(LIBCHDR_DIR)/include/dr_libs \
-+	-I$(MINIZIP_DIR) \
-+	$(shell pkg-config --cflags libchdr vorbisfile zlib)
-+
-+LIBS += $(shell pkg-config --libs libchdr vorbisfile zlib)
+ 	-I$(MINIZIP_DIR)
  
  SOURCES_CXX :=\
- 	$(CORE_DIR)/src/archive.cpp \
-@@ -66,13 +63,6 @@ SOURCES_C := \
- 	$(CORE_DIR)/src/3rdparty/musashi/m68kopnz.c \
- 	$(CORE_DIR)/src/3rdparty/musashi/m68kops.c
+@@ -71,12 +67,6 @@ SOURCES_C := \
+ 	$(CORE_DIR)/src/3rdparty/musashi/m68kops.c \
+ 	$(CORE_DIR)/src/3rdparty/musashi/softfloat/softfloat.c
  
 -SOURCES_C += \
 -	$(LIBCHDR_DIR)/src/libchdr_bitstream.c \
@@ -30,15 +34,14 @@
 -	$(LIBCHDR_DIR)/src/libchdr_chd.c \
 -	$(LIBCHDR_DIR)/src/libchdr_flac.c \
 -	$(LIBCHDR_DIR)/src/libchdr_huffman.c
--
- SOURCES_C += \
+ 
+ SRC_LIBRETRO_COMMON = \
  	$(LIBRETRO_COMM_DIR)/compat/compat_posix_string.c \
- 	$(LIBRETRO_COMM_DIR)/compat/compat_strcasestr.c \
-@@ -95,55 +85,6 @@ SOURCES_C += \
+@@ -100,54 +90,6 @@ SRC_LIBRETRO_COMMON = \
  	$(LIBRETRO_COMM_DIR)/string/stdstring.c \
  	$(LIBRETRO_COMM_DIR)/vfs/vfs_implementation.c
  
--SOURCES_C += \
+-SRC_LIBRETRO_COMMON += \
 -	$(LZMA_DIR)/src/Alloc.c \
 -	$(LZMA_DIR)/src/Bra86.c \
 -	$(LZMA_DIR)/src/BraIA64.c \
@@ -86,10 +89,11 @@
 -	$(ZLIB_DIR)/inftrees.c \
 -	$(ZLIB_DIR)/trees.c \
 -	$(ZLIB_DIR)/zutil.c
--
+ 
  SOURCES_C += \
  	$(MINIZIP_DIR)/ioapi.c \
- 	$(MINIZIP_DIR)/unzip.c
+diff --git a/src/flacfile.cpp b/src/flacfile.cpp
+index 12118d6..2734165 100644
 --- a/src/flacfile.cpp
 +++ b/src/flacfile.cpp
 @@ -1,6 +1,6 @@
@@ -100,14 +104,3 @@
  #include "flacfile.h"
  
  size_t drflac_read_cb(void* pUserData, void* pBufferOut, size_t bytesToRead)
---- a/src/flacfile.h
-+++ b/src/flacfile.h
-@@ -4,7 +4,7 @@
- #include <array>
- 
- #include "abstractfile.h"
--#include "dr_libs/dr_flac.h"
-+#include "dr_flac.h"
- 
- class FlacFile
- {
