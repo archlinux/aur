@@ -1,13 +1,13 @@
 # Maintainer Yuqing Gu <sffred@qq.com>
 pkgname=jupyter-wolframengine_kernel
 pkgver=0.9.2
-pkgrel=3
+pkgrel=4
 pkgdesc="Wolfram Language kernel for Jupyter notebooks"
 arch=('any')
 url="https://github.com/WolframResearch/WolframLanguageForJupyter"
 license=('MIT')
 install=jupyter-wolframengine_kernel.install
-depends=(jupyter)
+depends=(python-jupyter_core)
 # The wolframengine is listed as optional depends, but you must install
 # wolframscript in some way to install this package
 optdepends=(wolframengine)
