@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=system76-acpi-dkms-git
-pkgver=1.0.2.r4.gb49caa5
+pkgver=1.0.2.r6.g04145b8
 pkgrel=1
 pkgdesc="This provides the system76_acpi in-tree driver for systems missing it."
 arch=('x86_64')
