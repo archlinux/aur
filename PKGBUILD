@@ -1,7 +1,7 @@
 # Maintainer: Niklas Krafczyk <krafczyk.n at gmail dot com>
 pkgname=klee-uclibc
-pkgver=1.2
-pkgrel=2
+pkgver=1.3
+pkgrel=3
 epoch=
 pkgdesc="uclibc for a symbolic virtual machine built on top of the LLVM compiler infrastructure"
 arch=('x86_64')
@@ -9,7 +9,7 @@ url="https://klee.github.io/"
 license=('LGPL2.1')
 groups=()
 depends=()
-makedepends=('llvm>=3.4'
+makedepends=('llvm>=6.0'
              'clang'
              'git'
              'python'
@@ -23,7 +23,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("git+https://github.com/klee/klee-uclibc.git#tag=klee_uclibc_v1.2")
+source=("git+https://github.com/klee/klee-uclibc.git#tag=klee_uclibc_v1.3")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
