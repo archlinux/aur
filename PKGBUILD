@@ -5,23 +5,21 @@
 # Contributor: Cedric Brancourt <cedric.brancourt at gmail dot com>
 
 pkgname=('imagemagick-no-hdri')
-pkgver=7.1.0.28
+pkgver=7.1.0.29
 pkgrel=1
 pkgdesc='An image viewing/manipulation program'
 url='https://www.imagemagick.org/'
 arch=(i686 x86_64)
 license=(custom)
-depends=(libltdl lcms2 fontconfig libxext liblqr libraqm libpng)
+depends=(libltdl lcms2 fontconfig libxext liblqr libraqm libpng libjxl libwmf)
 makedepends=(ghostscript openexr libwmf librsvg libxml2 openjpeg2 libraw opencl-headers libwebp libzip libjxl highway
              chrpath ocl-icd glu ghostpcl ghostxps libheif jbigkit lcms2 libxext liblqr libraqm libpng djvulibre)
 checkdepends=(gsfonts ttf-dejavu)
 optdepends=('ghostscript: PS/PDF support'
               'libheif: HEIF support'
-              'libjxl: JPEG XL support'
               'libraw: DNG support'
               'librsvg: SVG support'
               'libwebp: WEBP support'
-              'libwmf: WMF support'
               'libxml2: Magick Scripting Language'
               'libzip: OpenRaster support'
               'ocl-icd: OpenCL support'
@@ -34,7 +32,7 @@ _relname=ImageMagick-${pkgver%%.*}
 _tarname=ImageMagick-${pkgver%.*}-${pkgver##*.}
 source=(https://download.imagemagick.org/ImageMagick/download/releases/$_tarname.tar.xz{,.asc}
         arch-fonts.diff)
-sha256sums=('92ec2a888b85b494477895f2ae85f7ee03f2a519a991e52f5ecbf565b389a024'
+sha256sums=('a89df63da5ec823ae77049d747bf6b370bc867a06659b410f42652e5773fc62c'
             'SKIP'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 validpgpkeys=(D8272EF51DA223E4D05B466989AB63D48277377A)  # Lexie Parsimoniae
