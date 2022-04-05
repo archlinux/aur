@@ -12,7 +12,7 @@ license=('BSD')
 depends=('python-sphinx')
 makedepends=('python-setuptools')
 #options=(!emptydirs)
-source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('300ee9b8caee8355d25cc74b4d1c7efd12e608d2ad165e3141d31e6fbc152b7f')
 
 build() {
