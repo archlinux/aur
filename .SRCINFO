@@ -1,0 +1,14 @@
+pkgbase = libjaylink-git
+	pkgdesc = Libjaylink is a shared library written in C to access SEGGER J-Link and compatible devices.
+	pkgver = 0.1.0.r20.gc2c4bb0
+	pkgrel = 1
+	url = https://github.com/syntacore/libjaylink
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	optdepends = libusb
+	optdepends = doxygen: Required for API documentation
+	source = libjaylink-git::git+https://github.com/syntacore/libjaylink
+	sha256sums = SKIP
+
+pkgname = libjaylink-git
