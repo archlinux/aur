@@ -1,27 +1,38 @@
 pkgbase = upower-nocritical
 	pkgdesc = Abstraction for enumerating power devices, listening to device events and querying history and statistics (With a patch to disable low battery action)
-	pkgver = 0.99.12
+	pkgver = 0.99.17
 	pkgrel = 1
 	url = http://upower.freedesktop.org
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = intltool
+	checkdepends = python-dbus
+	checkdepends = python-dbusmock
+	checkdepends = python-gobject
+	checkdepends = umockdev
 	makedepends = docbook-xsl
 	makedepends = gobject-introspection
-	makedepends = python2
+	makedepends = python
 	makedepends = git
 	makedepends = gtk-doc
+	makedepends = meson
 	depends = systemd
-	depends = libusb
 	depends = libimobiledevice
 	depends = libgudev
 	provides = upower
 	conflicts = upower
 	backup = etc/UPower/UPower.conf
-	source = git+https://gitlab.freedesktop.org/upower/upower.git#tag=UPOWER_0_99_12
+	source = git+https://gitlab.freedesktop.org/upower/upower.git#tag=v0.99.17
 	source = 0001-Add-a-critical-action-Ignore.patch
 	md5sums = SKIP
 	md5sums = 69fbeb7e5906a59fd39f702d01f83815
 
 pkgname = upower-nocritical
+	depends = systemd
+	depends = libimobiledevice
+	depends = libgudev
+	depends = libglib-2.0.so
+	depends = libgobject-2.0.so
+	depends = libgio-2.0.so
+	provides = upower
+	provides = libupower-glib.so
