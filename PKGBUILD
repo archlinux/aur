@@ -3,15 +3,15 @@
 
 pkgbase=linux-rc
 pkgrel=1
-_srcname=linux-5.16
-_major=5.16
+_srcname=linux-5.17
+_major=5.17
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=18
+_minor=1
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
-_fullver=$_major.$_minor
-#_fullver=$_major
+[[ -z $_minor ]] && _fullver=$_major || _fullver=$_major.$_minor
+#_fullver=$_major.$_minor
 _rcver=1
 _rcpatch=patch-${_major}.${_minorc}-rc${_rcver}
 pkgver=${_major}.${_minorc}rc${_rcver}
@@ -30,12 +30,7 @@ source=(
   https://www.kernel.org/pub/linux/kernel/v5.x/linux-$_fullver.tar.{xz,sign}
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch
-  0003-Bluetooth-Read-codec-capabilities-only-if-supported.patch
-  0004-Bluetooth-fix-deadlock-for-RFCOMM-sk-state-change.patch
-  0005-mt76-mt7921-add-support-for-PCIe-ID-0x0608-0x0616.patch
-  0006-mt76-mt7921-reduce-log-severity-levels-for-informati.patch
-  0007-Revert-NFSv4.1-query-for-fs_location-attr-on-a-new-f.patch
+  0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -43,18 +38,13 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
-b2sums=('574903232d1ce923906ec120a9f08911e60e4d4bc380503a0e3557c7ecd988e63bc9496d9976696b1948dd66f72aa90c191127267a5ef7f90c68e1c3d223094b'
+b2sums=('8627890f9066b385c8daab21eeb4f4dd7cd61cbd48910209209c0213a4fa1ca526535d36aa473ef3760cf80bf6cbcb5b9577f59c9a6af3efcdde6d82091479fe'
         'SKIP'
-        '0688856007dfc535d0da1c72f62e923693b88f6c365074135c5c4c10e30d8d94fca817fdda74d3efafae976b3118ab25f534310affe9149eb6a51823960be7f5'
+        '1275903955f014d0a0b4cad9074710d36825b274814cde457cf9e1f9acc188b21da7de01100f99cfe9644fb7fd182a95257d124a6992ac3be47adb907e230616'
         'SKIP'
-        'f37b180eac2737e7398654c9cf2d3b0ee93b194804d22827ad776a605692ddc098cba8ca7ba7dc2f2959cabc4eca92c73cdacbfa34182fdb98ab9199f161b5c4'
-        '85ff480287d5e9b26eec6392022d1496c10900d3c015ff2f65130b347477930222c2a28e1e2175f39a324f39148bdd75cadfaa66100c65df2fa7106d8e86ce06'
-        '1f3bbd94a7a4d3cce39786a5c7a5b5aa60c7efef3f4608908d0f8e463bcdaa390f467c1c78cd2ecbc683e81ee6d7ce6a5ebbe8634c7e9c203e3d3abbf929b051'
-        '12a5d08ceef328f3353833eed2f206ca6c08377abee8802de0ae32194b15c243b996b4c7bed257597b823683c0e80aadfdac94f32c7456a4f2af98ef3cecbe73'
-        '7a386793b84f0eb5d38cd8f9cd063748c3f3d9adebebdfa9b16d2c889d510f35b3c01d1d185008336c08e87c3597d4a7bd09e1f5d0038138a4af0c88459da6e4'
-        'a9f0b7954ba77f94ae3bc49c621610a88f0888f91c93b4a4188569c0e06c5afe355971ad4323b03d79aa5cb63bfe5dc4a52dbf0267fd6a1f3e6d3c64dcc77b13'
-        '5f4af41492f1a13f2a40764f5e1838588d2fd53addfd2cea05de4d51f760da5e6968ffaba9b6749fcdec5034dc1572777def8497cc978a01fd4b5eb82673f2e4'
-        '03096c8152ed3a671a9f59565dd891f10a5a8a91d03fa1fa8a5db85291f41a6f1cc5f44c47a2c8e78a690599afbd79d2ed12498b0494b4bc0d0311c0102598a3')
+        '000ab21fc39af4ba189881fd1ad0997043a166488ae73affd6ecb7c621ae4f71f2e8778b4112569309da4c937e045a53240a44be08808d8ef6853d02e0a28448'
+        'e01ccd70d0180fb6d270505fbc8cb2bd4815b334b3366365d931e758ebcad14fabd13644f5adf79be2d85f44dde39542c5318fa135cd18366d38eed85ebb01d7'
+        'b48d97933d3ff496c0ee3aba369f2a671df4fb56a21c800d47871f9b78513f1ab5a997cd6be7affd2421cb83adb2a17a8a57ed76f42a4dcf81d4b66bb75137d5')
 
 
 export KBUILD_BUILD_HOST=archlinux
@@ -74,7 +64,7 @@ prepare() {
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
 
-  echo "Applying $_rcpatch..."
+  msg2 "Applying $_rcpatch..."
   patch -Np1 <"../$_rcpatch"
 
   local src
@@ -86,7 +76,7 @@ prepare() {
     patch -Np1 < "../$src"
   done
 
-  echo "Setting config..."
+  msg2 "Setting config..."
   cp ../config .config
 
   # disable CONFIG_DEBUG_INFO at build time otherwise memory usage blows up and
@@ -117,7 +107,7 @@ prepare() {
  # make nconfig
 
   make -s kernelrelease > version
-  echo "Prepared $pkgbase version $(<version)"
+  msg2 "Prepared $pkgbase version $(<version)"
 }
 
 build() {
