@@ -1,20 +1,28 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=snappymail
-pkgver=2.14.0
+pkgver=2.14.1
 pkgrel=1
 pkgdesc="A simple, modern & fast web-based email client"
 arch=('any')
 license=('AGPL3')
 url="https://snappymail.eu"
 depends=('php-fpm')
-makedepends=('git' 'nodejs' 'yarn' 'gulp' 'php' 'brotli' 'rollup')
+makedepends=(
+  'git'
+  'nodejs'
+  'yarn'
+  'gulp'
+  'php'
+  'brotli'
+  'rollup'
+)
 optdepends=(
   'mariadb: storage backend for contacts'
   'php-pgsql: storage backend for contacts'
   'php-sqlite: storage backend for contacts'
 )
-_commit='a9b9b7df03683c10b09a52f0d3e6e235e8bbd7de'
+_commit='e452c3516ad1bcd3e88d38657696a977a4830fd3'
 source=(
   "$pkgname::git+https://github.com/the-djmaze/snappymail.git#commit=$_commit"
   'sysusers.conf'
@@ -29,6 +37,7 @@ b2sums=('SKIP'
 
 pkgver() {
   cd "$pkgname"
+
   git describe --tags | sed "s/^v//"
 }
 
@@ -42,6 +51,7 @@ prepare() {
 
 build() {
   cd "$pkgname"
+
   yarn install
 
   # build snappymail
@@ -55,7 +65,8 @@ build() {
 
 package() {
   # directories
-  install -vdm755 "$pkgdir/usr/share/snappymail" \
+  install -vdm755 \
+    "$pkgdir/usr/share/snappymail" \
     "$pkgdir/var/lib/snappymail"
 
   # application files
