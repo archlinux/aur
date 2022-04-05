@@ -9,7 +9,7 @@ pkgbase = ftba
 	depends = java-runtime=11
 	depends = avahi
 	optdepends = jdk8-graalvm-bin: improved performance with '-XX:+UseJVMCICompiler'
-	source = https://apps.modpacks.ch/FTBApp/release/202202111343-da0b2207d4-release/FTBA_linux_202202111343-da0b2207d4-release.deb
+	source = https://apps.modpacks.ch/FTBApp/release/202203251547-a5e4f8b1e5-release/FTBA_linux_202203251547-a5e4f8b1e5-release.deb
 	source = ftbapp.desktop
 	sha256sums = f6f22717d5d2e239dde29f8ad93c7b72fa73c7694a7aef78f4c4512f9ae382f5
 	sha256sums = 72e6e0b01e790e416ab1ac215b7179f968156d10be5b36fad656a4f084778db6
