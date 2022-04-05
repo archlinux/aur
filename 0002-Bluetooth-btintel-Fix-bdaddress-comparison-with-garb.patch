@@ -1,4 +1,4 @@
-From 92162f217311b0660a92fa190e5c968e5721e0bf Mon Sep 17 00:00:00 2001
+From 8ab30bd4322c4aa253c84561ec1dd61d84a73fea Mon Sep 17 00:00:00 2001
 From: Kiran K <kiran.k@intel.com>
 Date: Wed, 13 Oct 2021 13:35:11 +0530
 Subject: [PATCH 2/8] Bluetooth: btintel: Fix bdaddress comparison with garbage

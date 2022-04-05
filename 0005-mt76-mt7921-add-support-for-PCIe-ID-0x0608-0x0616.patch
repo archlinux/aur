@@ -1,4 +1,4 @@
-From 5c3de90cea9024359e4c78d2dc52b4b8043e9ee3 Mon Sep 17 00:00:00 2001
+From 4e81555c7206a6e0e7053743e9f535c5e87feeee Mon Sep 17 00:00:00 2001
 From: Deren Wu <deren.wu@mediatek.com>
 Date: Sun, 14 Nov 2021 10:46:57 +0800
 Subject: [PATCH 5/8] mt76: mt7921: add support for PCIe ID 0x0608/0x0616
