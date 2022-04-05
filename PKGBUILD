@@ -9,7 +9,7 @@ url="https://github.com/kevinconway/daemons"
 license=('Apache')
 depends=('python-eventlet' 'python-gevent')
 makedepends=('python-setuptools')
-source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('37dab1d94d8e0d8c1eec225458c9bdbdfff72f35c49d92ae6457b6a06c867e33')
 
 build() {

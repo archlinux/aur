@@ -8,7 +8,7 @@ pkgbase = python-daemons
 	makedepends = python-setuptools
 	depends = python-eventlet
 	depends = python-gevent
-	source = https://pypi.org/packages/source/d/daemons/daemons-1.3.2.tar.gz
+	source = https://files.pythonhosted.org/packages/source/d/daemons/daemons-1.3.2.tar.gz
 	sha256sums = 37dab1d94d8e0d8c1eec225458c9bdbdfff72f35c49d92ae6457b6a06c867e33
 
 pkgname = python-daemons
