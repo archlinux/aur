@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=liri-terminal-git
-pkgver=v0.2.0.r50.g819ab01
+pkgver=v0.2.0.r120.g025cd4a
 pkgrel=1
 pkgdesc="Terminal application and modules for Liri OS"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -16,7 +16,7 @@ provides=('liri-terminal')
 groups=('liri-git')
 install=$pkgname.install
 
-_gitroot="git://github.com/lirios/terminal.git"
+_gitroot="git+https://github.com/lirios/terminal.git"
 _gitbranch=develop
 _gitname=terminal
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})

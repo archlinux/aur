@@ -1,6 +1,6 @@
 pkgbase = liri-terminal-git
 	pkgdesc = Terminal application and modules for Liri OS
-	pkgver = v0.2.0.r50.g819ab01
+	pkgver = v0.2.0.r120.g025cd4a
 	pkgrel = 1
 	url = https://liri.io
 	install = liri-terminal-git.install
@@ -27,8 +27,7 @@ pkgbase = liri-terminal-git
 	replaces = liri-terminal
 	options = debug
 	options = !strip
-	source = terminal::git://github.com/lirios/terminal.git#branch=develop
+	source = terminal::git+https://github.com/lirios/terminal.git#branch=develop
 	md5sums = SKIP
 
 pkgname = liri-terminal-git
-
