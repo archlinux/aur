@@ -1,14 +1,15 @@
-# Maintainer: Sotirios M. Roussis (xToNouSou) <xtonousou@gmail.com>
-# Co-Maintainer: Oscar Alfonso Diaz (OscarAkaElvis) <oscar.alfonso.diaz@gmail.com>
+# Maintainer: Oscar Alfonso Diaz (OscarAkaElvis) <oscar.alfonso.diaz@gmail.com>
+# Co-Maintainer: BoBeR182 <aur AT nullvoid DOT me>
+# Co-Maintainer: Sotirios M. Roussis (xToNouSou) <xtonousou@gmail.com>
 
 _pkgname=airgeddon
 pkgname=$_pkgname-git
-pkgver=r2574.b3b1373
+pkgver=r2576.3fb4312
 pkgrel=1
 pkgdesc='Multi-use bash script for Linux systems to audit wireless networks'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
 license=('GPL3')
-source=('https://github.com/v1s1t0r1sh3r3/airgeddon.git#branch=master')
+source=('airgeddon::git+https://github.com/v1s1t0r1sh3r3/airgeddon.git#branch=master')
 depends=(
   'aircrack-ng' 'bash>=4.2' 'coreutils'
   'gawk' 'iproute2' 'iw'
@@ -64,8 +65,7 @@ prepare() {
 }
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-
+  cd "$_pkgname"
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
