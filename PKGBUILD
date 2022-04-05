@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python-dateutil' 'python-natsort')
 makedepends=('python-setuptools')
 checkdepends=('python-pytest' 'python-pytz')
-source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('3169365916834be654c2cac57ea14d710e742f8eb8a5fce804f6ce548da80bf2')
 
 build() {
