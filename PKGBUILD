@@ -1,4 +1,5 @@
-# Maintainer:
+# Maintainer: Glen Ogilvie <nelg at linuxsolutions dot co dot nz>
+# Contributor: Michael Straube <straubem at gmx dot de>
 # Contributor: carstene1ns <url/mail: arch carsten-teibes de>
 # Contributor: Vitaly Bogdanov <vsbogd at gmail dot com>
 # Contributor: Allan McRae <mcrae_allan@hotmail.com>
