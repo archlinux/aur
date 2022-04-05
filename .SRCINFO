@@ -15,7 +15,7 @@ pkgbase = mingw-w64-pdal
 	options = !buildflags
 	options = staticlibs
 	options = !strip
-	source = https://github.com/PDAL/PDAL/releases/download/2.4.0RC1/PDAL-2.4.0RC1-src.tar.gz
-	sha256sums = ad4502edeb1b39a57308126396a67e936896dcca500c143023137ef588c8098f
+	source = https://github.com/PDAL/PDAL/releases/download/2.4.0/PDAL-2.4.0-src.tar.gz
+	sha256sums = c08e56c0d3931ab9e612172d5836673dfa2d5e6b2bf4f8d22c912b126b590b15
 
 pkgname = mingw-w64-pdal

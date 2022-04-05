@@ -8,8 +8,8 @@ license=('BSD')
 depends=('mingw-w64-gdal' 'mingw-w64-libgeotiff' 'mingw-w64-jsoncpp' 'mingw-w64-hexer-hobu' 'mingw-w64-postgresql-libs' 'mingw-w64-sqlite')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' 'staticlibs' '!strip')
-source=("https://github.com/PDAL/PDAL/releases/download/${pkgver}RC1/PDAL-${pkgver}RC1-src.tar.gz")
-sha256sums=('ad4502edeb1b39a57308126396a67e936896dcca500c143023137ef588c8098f')
+source=("https://github.com/PDAL/PDAL/releases/download/${pkgver}/PDAL-${pkgver}-src.tar.gz")
+sha256sums=('c08e56c0d3931ab9e612172d5836673dfa2d5e6b2bf4f8d22c912b126b590b15')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
