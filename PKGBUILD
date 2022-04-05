@@ -9,7 +9,7 @@ url="https://thelig.ht/code/userspacefs"
 license=('GPL3')
 depends=('python-fusepyng')
 makedepends=('python-setuptools')
-source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz"{,.asc})
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"{,.asc})
 sha256sums=('5d6f5ffa6d39488f1c7437c5eaae8fabf4916caceab483a3173a18e6789b186c'
             'SKIP')
 validpgpkeys=('584EDA5AAC13B9FBFB13F678A6A5398DACC9C15C') # Rian Hunter <rian@thelig.ht>
