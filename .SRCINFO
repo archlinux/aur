@@ -10,7 +10,7 @@ pkgbase = python-tesserocr
 	depends = python
 	depends = leptonica
 	depends = tesseract
-	source = https://pypi.org/packages/source/t/tesserocr/tesserocr-2.5.2.tar.gz
+	source = https://files.pythonhosted.org/packages/source/t/tesserocr/tesserocr-2.5.2.tar.gz
 	sha256sums = 9371dd3f6fe3238039c73bfe15bcaf21389f7e75f62bd530a30110149f39b2ae
 
 pkgname = python-tesserocr

@@ -10,7 +10,7 @@ url="https://github.com/sirfz/tesserocr"
 license=('MIT')
 depends=('python' 'leptonica' 'tesseract')
 makedepends=('cython' 'python-setuptools')
-source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('9371dd3f6fe3238039c73bfe15bcaf21389f7e75f62bd530a30110149f39b2ae')
 
 build() {
