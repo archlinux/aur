@@ -1,0 +1,30 @@
+pkgbase = liri-qtintegration-git
+	pkgdesc = Qt applications integration with Liri desktop environment
+	pkgver = r190.1dab05a
+	pkgrel = 1
+	url = https://liri.io
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	groups = liri-git
+	license = GPL3
+	makedepends = git
+	makedepends = liri-cmake-shared-git
+	depends = qt5-base
+	depends = qt5-wayland
+	depends = qt5-quickcontrols2
+	depends = qt5-gsettings-git
+	provides = liri-qtintegration
+	conflicts = liri-qtintegration
+	conflicts = liri-platformtheme-git
+	conflicts = liri-materialdecoration-git
+	replaces = liri-qtintegration
+	replaces = liri-platformtheme-git
+	replaces = liri-materialdecoration-git
+	options = debug
+	options = !strip
+	source = platformtheme::git+https://github.com/lirios/qtintegration.git#branch=develop
+	md5sums = SKIP
+
+pkgname = liri-qtintegration-git
