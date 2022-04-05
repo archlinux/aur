@@ -15,7 +15,7 @@ optdepends=('playerctl: Get the D-Bus name for your device'
             'gnome-shell-extension-mpris-indicator-button: MPRIS indicator for GNOME')
 conflicts=('chromecast_mpris')
 replaces=('chromecast_mpris')
-source=("https://pypi.org/packages/source/${pkgname:0:1}/$pkgname/$pkgname-$pkgver.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('2f57b84dff0deed53863a345b1f3a56e14e9ad27217d958998d015e3d0d2ac1b')
 
 build() {
