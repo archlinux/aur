@@ -2,7 +2,7 @@
 
 pkgbase=mounriver-studio-community-bin
 pkgname=($pkgbase)
-pkgver=100
+pkgver=110
 pkgrel=1
 arch=('x86_64')
 url='http://www.mounriver.com/'
@@ -21,7 +21,7 @@ optdepends=('ch34x-dkms-git: CH341SER driver with fixed bug'
 source=("${pkgbase}-${pkgver}.tar.xz::http://file.mounriver.com/upgrade/MounRiver_Studio_Community_Linux_x64_V${pkgver}.tar.xz"
         )
 
-sha256sums=('78509ace8628caa117e0680df8d71e611c8fa3a2e61030d93098d89c43dfcf6f')
+sha256sums=('5999264d653b8698aaacd961ca38f44a7d11adfedafc1b1c1ecc5ab6ff7754a9')
 
 options=('!strip')
 
