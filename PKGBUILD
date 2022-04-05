@@ -8,9 +8,9 @@
 
 pkgname='dashcore-git'
 _gitname='dash'
-_gitbranch='master'
+_gitbranch='v0.17.x'
 pkgver=0.17.0.3.r0.geaca69b22c
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/dashpay/dash"
 depends=('qt5-base' 'boost' 'boost-libs' 'miniupnpc' 'protobuf' 'db4.8' 'zeromq' 'libevent' 'qrencode' 'libbacktrace-git')
@@ -21,14 +21,16 @@ provides=('dash-daemon' 'dash-qt' 'dash-cli')
 conflicts=('dashcore' 'dashcore-bin' 'dash-cli' 'dash-qt' 'dash-daemon')
 source=('deque.patch'
         'qpainterpath.patch'
-        "git://github.com/dashpay/dash.git")
+        'bind.patch'
+        "git+https://github.com/dashpay/dash.git")
 sha512sums=('87c8fbe782a66222fd1121d61bde967d89e6ddda2f1a4dfc7f17eabfce1502ce172af13f52d94d752464ee125fa69d9b423f495baa52bde1fe02e4762aa889d5'
             '6c3df861832926e72dfd820af42bb89c1c3bb556c3f8e2fd06544f76bf5369c992a556e717653e230e062e89b8f2ee4f5d02313f35672f8174deae48c3306a0d'
+            '775d0944fd981643450c72468140d180d35108566f9fc804460c211dce2b05552970abcc6cd233ea4f1810bb3467af8a42bdd3a6ebbbefb221f87bdec20943f0'
             'SKIP')
 
 prepare () {
   cd "$_gitname"
-  git pull origin v0.17.x
+  git checkout "$_gitbranch" -q
  #deque patch 2020-02-12 == http: add missing header bootlegged by boost < 1.72
  #inlcude deque library in src/httpserver.cpp found in https://github.com/bitcoin/bitcoin/commit/a5929130223973636f3fd25fbfaf2953f2ec96a9 and #inlcude deque.h library in httpserver.cpp found in https://github.com/dogecoin/dogecoin/pull/1626
  #will delete when dash fixes/commits this. 
@@ -38,6 +40,15 @@ prepare () {
  #include QPainterPath library in src/qt/trafficgraphwidget.cpp found in https://github.com/bitcoin/bitcoin/commit/79b0a69e09c1a912122e6431ea3c530cc292c690
  #will delete when dash fixes/commits this. This happens because dash is compiling against older versions of qt5-base
   patch --forward --strip=1 --input="../../qpainterpath.patch"
+
+ #boost/bind 2022-04-05 == "Fixes error: ‘_1’ was not declared in this scope" errors
+ #Fixes issues like "xxxxxxxxx.cpp error: ‘_1’ was not declared in this scope"
+ #mentioned in https://github.com/dogecoin/dogecoin/issues/1654
+ #and fixed in  https://github.com/dogecoin/dogecoin/pull/1694
+ #with commit https://github.com/dogecoin/dogecoin/pull/1694/commits/3b02ebe5002a381c291b2e221c63cc4f55823a97
+ #modified into https://github.com/mercurytoxic/dash/commit/fbdc4026851f61e70bdf49bf6a1b051d1781b474
+  patch --forward --strip=1 --input="../../bind.patch"
+
 }
 
 pkgver() {

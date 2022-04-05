@@ -1,0 +1,95 @@
+diff --git a/src/qt/bitcoingui.cpp b/src/qt/bitcoingui.cpp
+index e7e92d375..68c540d7e 100644
+--- a/src/qt/bitcoingui.cpp
++++ b/src/qt/bitcoingui.cpp
+@@ -71,6 +71,8 @@ const std::string BitcoinGUI::DEFAULT_UIPLATFORM =
+ #endif
+         ;
+ 
++#include <boost/bind.hpp>
++
+ BitcoinGUI::BitcoinGUI(interfaces::Node& node, const NetworkStyle* networkStyle, QWidget* parent) :
+     QMainWindow(parent),
+     enableWallet(false),
+diff --git a/src/qt/clientmodel.cpp b/src/qt/clientmodel.cpp
+index df8c8792a..a88997ed8 100644
+--- a/src/qt/clientmodel.cpp
++++ b/src/qt/clientmodel.cpp
+@@ -28,6 +28,8 @@
+ #include <QDebug>
+ #include <QTimer>
+ 
++#include <boost/bind.hpp>
++
+ static int64_t nLastHeaderTipUpdateNotification = 0;
+ static int64_t nLastBlockTipUpdateNotification = 0;
+ 
+diff --git a/src/qt/splashscreen.cpp b/src/qt/splashscreen.cpp
+index 80c46d1ea..27ca83bbf 100644
+--- a/src/qt/splashscreen.cpp
++++ b/src/qt/splashscreen.cpp
+@@ -27,6 +27,8 @@
+ #include <QDesktopWidget>
+ #include <QPainter>
+ 
++#include <boost/bind.hpp>
++
+ SplashScreen::SplashScreen(interfaces::Node& node, Qt::WindowFlags f, const NetworkStyle *networkStyle) :
+     QWidget(0, f), curAlignment(0), m_node(node)
+ {
+diff --git a/src/qt/transactiontablemodel.cpp b/src/qt/transactiontablemodel.cpp
+index 062f10a4a..5a75b60b0 100644
+--- a/src/qt/transactiontablemodel.cpp
++++ b/src/qt/transactiontablemodel.cpp
+@@ -24,6 +24,8 @@
+ #include <QIcon>
+ #include <QList>
+ 
++#include <boost/bind.hpp>
++
+ // Amount column is right-aligned it contains numbers
+ static int column_alignments[] = {
+         Qt::AlignLeft|Qt::AlignVCenter, /* status */
+diff --git a/src/qt/walletmodel.cpp b/src/qt/walletmodel.cpp
+index 0b7a5cd80..a682ddfa6 100644
+--- a/src/qt/walletmodel.cpp
++++ b/src/qt/walletmodel.cpp
+@@ -28,6 +28,7 @@
+ #include <QSet>
+ #include <QTimer>
+ 
++#include <boost/bind.hpp>
+ 
+ WalletModel::WalletModel(std::unique_ptr<interfaces::Wallet> wallet, interfaces::Node& node, OptionsModel *_optionsModel, QObject *parent) :
+     QObject(parent), m_wallet(std::move(wallet)), m_node(node), optionsModel(_optionsModel), addressTableModel(0),
+diff --git a/src/validation.cpp b/src/validation.cpp
+index 66963fc44..d5718dc5e 100644
+--- a/src/validation.cpp
++++ b/src/validation.cpp
+@@ -54,6 +54,7 @@
+ 
+ #include <boost/algorithm/string/replace.hpp>
+ #include <boost/thread.hpp>
++#include <boost/bind.hpp>
+ 
+ #if defined(NDEBUG)
+ # error "Dash Core cannot be compiled without assertions."
+diff --git a/src/validationinterface.cpp b/src/validationinterface.cpp
+index 4760f8923..b821ae9b0 100644
+--- a/src/validationinterface.cpp
++++ b/src/validationinterface.cpp
+@@ -23,6 +23,7 @@
+ #include <future>
+ 
+ #include <boost/signals2/signal.hpp>
++#include <boost/bind.hpp>
+ 
+ struct MainSignalsInstance {
+     boost::signals2::signal<void (const CBlockIndex *, const CBlockIndex *, bool fInitialDownload)> UpdatedBlockTip;
+@@ -274,4 +275,4 @@ void CMainSignals::NotifyRecoveredSig(const std::shared_ptr<const llmq::CRecover
+ 
+ void CMainSignals::NotifyMasternodeListChanged(bool undo, const CDeterministicMNList& oldMNList, const CDeterministicMNListDiff& diff) {
+     m_internals->NotifyMasternodeListChanged(undo, oldMNList, diff);
+-}
+\ No newline at end of file
++}
