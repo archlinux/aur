@@ -3,7 +3,7 @@
 # Rebuild when Qt is updated
 
 pkgname=liri-eglfs-git
-pkgver=r23.25b282a
+pkgver=r65.2833470
 pkgrel=1
 pkgdesc="Liri QPA plugin"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -19,7 +19,7 @@ replaces=('liri-eglfs')
 provides=('liri-eglfs')
 groups=('liri-git')
 
-_gitroot="git://github.com/lirios/eglfs.git"
+_gitroot="git+https://github.com/lirios/eglfs.git"
 _gitbranch=develop
 _gitname=eglfs
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})

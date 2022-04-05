@@ -1,6 +1,6 @@
 pkgbase = liri-eglfs-git
 	pkgdesc = Liri QPA plugin
-	pkgver = r23.25b282a
+	pkgver = r65.2833470
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
@@ -28,8 +28,7 @@ pkgbase = liri-eglfs-git
 	replaces = liri-eglfs
 	options = debug
 	options = !strip
-	source = eglfs::git://github.com/lirios/eglfs.git#branch=develop
+	source = eglfs::git+https://github.com/lirios/eglfs.git#branch=develop
 	md5sums = SKIP
 
 pkgname = liri-eglfs-git
-
