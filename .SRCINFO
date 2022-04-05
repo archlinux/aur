@@ -1,0 +1,18 @@
+pkgbase = libsciter-gtk-git-bin
+	pkgdesc = Sciter SDK library for GTK3 (git version)
+	pkgver = 4.4.8.23.g0298f1b
+	pkgrel = 1
+	url = https://sciter.com
+	arch = x86_64
+	license = custom
+	makedepends = jq
+	depends = gtk3
+	provides = libsciter-gtk
+	conflicts = libsciter-gtk
+	conflicts = libsciter-gtk-bin
+	source = https://github.com/c-smile/sciter-sdk/raw/master/bin.lnx/x64/libsciter-gtk.so
+	source = LICENSE.html::https://github.com/c-smile/sciter-sdk/raw/master/license.htm
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = libsciter-gtk-git-bin
