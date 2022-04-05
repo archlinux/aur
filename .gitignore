@@ -1,0 +1,8 @@
+sdl_pango-*.pkg.tar.zst
+sdl_pango-*.pkg.tar.xz
+sdl_pango-*.tar.gz
+sdl_pango-*.log
+SDL_Pango-*/
+PKGBUILD-namcap.log
+pkg/
+src/
