@@ -6,7 +6,7 @@
 
 _pkgname=ffmpeg
 pkgname=ffmpeg-headless
-pkgver=4.4.1
+pkgver=5.0.1
 pkgrel=1
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
@@ -27,7 +27,7 @@ depends=(
   libmodplug
   librav1e.so
   libtheora
-  libva  #libva-headlesss doesnt provide so version
+  libva.so
   libvidstab.so
   libvorbisenc.so
   libvorbis.so
@@ -63,12 +63,7 @@ provides=(
 )
 conflicts=('ffmpeg')
 source=("https://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('eadbad9e9ab30b25f5520fbfde99fae4a92a1ae3c0257a8d68569a4651e30e02')
-
-prepare() {
-  cd ${_pkgname}-${pkgver}
-
-}
+sha256sums=('ef2efae259ce80a240de48ec85ecb062cecca26e4352ffb3fda562c21a93007b')
 
 build() {
   cd ${_pkgname}-${pkgver}
