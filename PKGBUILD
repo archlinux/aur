@@ -9,7 +9,7 @@ url="https://thelig.ht/code/block-tracing"
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://pypi.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz"{,.asc}
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"{,.asc}
         'LICENSE')
 sha256sums=('9faa009a702a8f2f605ebb78314d5ca2a2a93543d061038a3d3a978c93385e68'
             'SKIP'
