@@ -1,0 +1,16 @@
+pkgbase = chromium-extension-rggl
+	pkgdesc = Remove German Gender Language - chromium extension
+	pkgver = 5.9.9
+	pkgrel = 1
+	url = https://github.com/motsiw/rggl
+	arch = any
+	license = custom:none
+	makedepends = chromium
+	makedepends = openssl
+	makedepends = jq
+	source = rggl-5.9.9::git+https://github.com/motsiw/rggl.git
+	source = rggl.pem
+	sha256sums = SKIP
+	sha256sums = a1277e90fc36ecbc5700868f6194c66e8950dbbac192df16ad04c29075c1abfd
+
+pkgname = chromium-extension-rggl
