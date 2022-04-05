@@ -4,13 +4,13 @@ _gitroot='https://github.com/pbrisbin/aur-release'
 
 pkgname="$_gitname-git"
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Automatically release aur packages'
 arch=('any')
 url=$_gitroot
 license=('MIT')
 makedepends=('git')
-source=("git://github.com/pbrisbin/$_gitname")
+source=("git+https://github.com/pbrisbin/$_gitname")
 md5sums=('SKIP')
 
 build() {

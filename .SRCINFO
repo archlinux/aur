@@ -1,12 +1,12 @@
 pkgbase = aur-release-git
 	pkgdesc = Automatically release aur packages
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pbrisbin/aur-release
 	arch = any
 	license = MIT
 	makedepends = git
-	source = git://github.com/pbrisbin/aur-release
+	source = git+https://github.com/pbrisbin/aur-release
 	md5sums = SKIP
 
 pkgname = aur-release-git
