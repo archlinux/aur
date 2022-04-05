@@ -1,0 +1,32 @@
+post_install() {
+echo -e '\n\033[1m\033[32m\033[4mAutomate BootStrapping Scripts
+
+\033[0m\033[36mAuto, is a tool providing users with simple and easy way to bootstrap and install Arch Linux.
+
+During the installation process, you will be given the option to install either bare Arch Linux, and make all further installations decisions yourself,
+or to choose from a selection of the AutoLinux pre-configured desktop environment and window managers profiles, the flagship being the DWM edition.\n 
+
+The package consists of 3 scripts:
+
+\033[1m\033[35mautoPart:\033[0m\033[36m A partitioning script.\033[0m
+\033[1m\033[35mautoInstall:\033[0m\033[36m The base install script.\033[0m
+\033[1m\033[35mautoCleanInstall:\033[0m\033[36m The clean install script.\033[0m\n
+
+\033[1m\033[33mautoInstall:\033[0m\033[36m This script is to be used for installing AutoLinux ontop of an existing Arch Linux installation, as a new user profile.
+
+\033[1m\033[33mautoCleanInstall:\033[0m\033[36m This script is intended for use when performing a clean/fresh installation, with no pre-existing OS installed on the partition(s) reserved for AutoLinux. 
+This script also includes section for partitioning your drive, so running the autoPart script is \033[35m\033[1mNOT\033[0m\033[36m required.
+
+\033[1m\033[33mautoPart:\033[0m\033[36m This script is for useage outside of the AutoLinux installation process, and serves simply as a helper when partitioning your drive for any fresh installation.
+
+\033[3m\033[1m\033[36mNOTE:\033[0m\033[36m The options are limited to partition selection, or drive wipe. 
+As for creating new partitions and deleting existing partitions, an external program such as cfdisk, fdisk or parted will be required if necessary.
+The script also does not allow for manual selection of a file system type, and the rootfs is automatially set to ext4.\n\n
+
+\033[32m\033[1mUsage: \033[36m
+
+Please read the function of both the \033[33m\033[3m\033[1mautoInstall\033[0m\033[36m and \033[3m\033[33m\033[1mautoCleanInstall\033[0m\033[36m script, and select \033[35m\033[1mEITHER\033[0m\033[36m \033[1m\033[33m\033[3mautoInstall\033[0m\033[36m or \033[33m\033[1m\033[3mautoCleanInstall\033[0m\033[36m to carry out 
+the installation process. The \033[33m\033[1m\033[3mautoCleanInstall\033[0m\033[36m script calls the \033[33m\033[1m\033[3mautoInstall\033[0m\033[36m script upon completion of the base installation, so running both scripts is \033[35m\033[1mNOT\033[0m\033[36m required.\n\n 
+
+\033[32mI hope these scripts are helpful and you enjoy your time in AutoLinux!    - \033[3m\033[1m\033[33ma4to'
+}
