@@ -1,0 +1,14 @@
+pkgbase = injures-git
+	pkgdesc = Bad words
+	pkgver = r1.b090b4d
+	pkgrel = 1
+	url = https://github.com/romch007/injures.git
+	arch = x86_64
+	license = MIT
+	makedepends = xmake
+	provides = injures
+	conflicts = injures
+	source = git+https://github.com/romch007/injures.git
+	md5sums = SKIP
+
+pkgname = injures-git
