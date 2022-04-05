@@ -1,7 +1,7 @@
 # Maintainer: Pier Luigi Fiorini <pierluigi.fiorini@gmail.com>
 
 pkgname=xdg-desktop-portal-liri-git
-pkgver=r45.cc60c4d
+pkgver=r78.3c6e804
 pkgrel=1
 pkgdesc="A backend implementation for xdg-desktop-portal for Liri"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -14,7 +14,7 @@ replaces=('xdg-desktop-portal-liri')
 provides=('xdg-desktop-portal-liri' 'xdg-desktop-portal-impl')
 groups=('liri-git')
 
-_gitroot="git://github.com/lirios/xdg-desktop-portal-liri.git"
+_gitroot="git+https://github.com/lirios/xdg-desktop-portal-liri.git"
 _gitbranch=develop
 _gitname=xdg-desktop-portal-liri
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})

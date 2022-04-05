@@ -1,6 +1,6 @@
 pkgbase = xdg-desktop-portal-liri-git
 	pkgdesc = A backend implementation for xdg-desktop-portal for Liri
-	pkgver = r45.cc60c4d
+	pkgver = r78.3c6e804
 	pkgrel = 1
 	url = https://liri.io
 	arch = i686
@@ -21,8 +21,7 @@ pkgbase = xdg-desktop-portal-liri-git
 	provides = xdg-desktop-portal-impl
 	conflicts = xdg-desktop-portal-liri
 	replaces = xdg-desktop-portal-liri
-	source = xdg-desktop-portal-liri::git://github.com/lirios/xdg-desktop-portal-liri.git#branch=develop
+	source = xdg-desktop-portal-liri::git+https://github.com/lirios/xdg-desktop-portal-liri.git#branch=develop
 	md5sums = SKIP
 
 pkgname = xdg-desktop-portal-liri-git
-
