@@ -5,27 +5,25 @@
 
 pkgbase=beats
 pkgname=(metricbeat filebeat packetbeat heartbeat-elastic auditbeat)
-pkgver=8.1.0
+pkgver=8.1.2
 pkgrel=1
 pkgdesc='Data shippers for Elasticsearch'
 arch=('x86_64')
 url='https://www.elastic.co/products/beats'
 license=('Apache')
 depends=('glibc')
-makedepends=('go' 'git' 'libpcap' 'rsync' 'python-virtualenv' 'audit' 'systemd')
+makedepends=('go' 'git' 'libpcap' 'rsync' 'python-virtualenv' 'audit' 'systemd' 'mage')
 optdepends=('elasticsearch: for standalone installation'
             'python: for migration script')
 options=('!makeflags')
 source=("https://github.com/elastic/beats/archive/v$pkgver/beats-$pkgver.tar.gz"
-        "glibc2.35-compatibility.patch::https://patch-diff.githubusercontent.com/raw/elastic/beats/pull/30620.patch"
         "filebeat.service"
         "packetbeat.service"
         "metricbeat.service"
         "heartbeat.service"
         "auditbeat.service"
         "tmpfile.conf")
-sha512sums=('dd2cf3c7f9788fd083b07cef325c431e0960b81ccaf82e9bf4aaf5ac499638522fa375eb65251d304d12fba9e9d73e05b35a53a0892e0dcbe0112f8fa705e0b7'
-            '232f467a5cc2bd04a9ccb1c62edd18860a43b223f9e9a56b5aedbcbb29c7d188190b433f51c6c83606a95b9fedfb01e8ad2d1bbbc739675fc0c627c657389bda'
+sha512sums=('dbd762ee444063ce728a4dbcb353c32261e891a90d70c6a1277cc82c8cbee67667bcfa26cc8b387ef3a61d818fc0c6fea4c0db51d38e06b838c3bff82d0c25de'
             '4d8b160482ba27bdc63c79592f310f2c9bcd2e8e5d3aec5ba9d953f37916bffef57c0f21e3776f4712f87e9a1b90e42dba6058f72bbc4c75380a959276183a59'
             'f1e6fe6b677db31326433f4e3eef72356573c6947d653dbe6bc2151581444f80e09343fbf8544952aae82a061b87705e39c8741ea8e402ad53ac3552f532cfea'
             '7e4081b5173d1b58a783f1808f1a9ba4548498de87bdfc1960538d6df4f4da8f900f0e027aeff83ebfe0d81e6aa91db77c520bda76441e6bcaa6fd8a79fbb57a'
@@ -37,7 +35,6 @@ prepare() {
     export GOPATH="$srcdir"/go
     mkdir -p "$GOPATH"
     cd "$srcdir"/beats-$pkgver
-    patch -p1 < ../../glibc2.35-compatibility.patch
     git init # git root required by one of the build scripts
 
     # Perform some timestomping to avoid make warnings
@@ -60,7 +57,7 @@ build() {
     export CGO_CFLAGS="${CFLAGS}"
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CXXFLAGS="${CXXFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
+    export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw -tags=withjournald"
     export GOPATH="$srcdir"/go
     export PATH="$GOPATH/bin:$PATH"
 
@@ -75,6 +72,7 @@ build() {
         if [[ $beat == "metricbeat" ]]; then
             make mage
             mage build
+            echo "Mage is a dick"
         else
             make $beat
         fi
