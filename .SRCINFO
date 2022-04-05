@@ -1,0 +1,15 @@
+pkgbase = tmatrix
+	pkgdesc = cmatrix-like replica of the digital rain from The Matrix
+	pkgver = 1.4
+	pkgrel = 1
+	url = https://github.com/M4444/TMatrix
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	depends = ncurses
+	source = tmatrix-1.4.tar.gz::https://github.com/M4444/TMatrix/archive/v1.4.tar.gz
+	source = CXXFLAGS.patch
+	sha256sums = 99591915fa83ceb98c31a97b5686a2df0d667c5d62f3e82837f76e5f9243710e
+	sha256sums = f2434c711e4f0a4dd68b3f7ae7a50f3ddf1745a3c0ec111a25268af692fb99fe
+
+pkgname = tmatrix

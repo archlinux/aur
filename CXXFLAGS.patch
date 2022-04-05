@@ -1,0 +1,19 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 247686c..9368370 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -11,12 +11,12 @@ if(NOT CMAKE_BUILD_TYPE AND NOT CMAKE_CONFIGURATION_TYPES)
+    set(CMAKE_BUILD_TYPE Release)
+ endif()
+ set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wpedantic")
+-set(CMAKE_CXX_FLAGS_RELEASE "-O2")
++set(CMAKE_CXX_FLAGS_RELEASE "${CXXFLAGS}")
+ set(CMAKE_CXX_FLAGS_DEBUG  "-O0 -g")
+ set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-O2 -g")
+ 
+ # Add linking with pthread.
+-set(CMAKE_EXE_LINKER_FLAGS "-pthread")
++set(CMAKE_EXE_LINKER_FLAGS "-pthread ${LDFLAGS}")
+ 
+ # Add the required ncurses library.
+ set(CURSES_NEED_NCURSES TRUE)
