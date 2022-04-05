@@ -6,6 +6,7 @@ pkgbase = injures-git
 	arch = x86_64
 	license = MIT
 	makedepends = xmake
+	makedepends = git
 	provides = injures
 	conflicts = injures
 	source = git+https://github.com/romch007/injures.git
