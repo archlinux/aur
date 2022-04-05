@@ -2,8 +2,8 @@
 # Contributor: Mikkel Oscar Lyderik <mikkeloscar at gmail dot com>
 
 pkgname=scaleway-cli
-pkgver=2.4.0
-pkgrel=2
+pkgver=2.5.1
+pkgrel=1
 pkgdesc="Scaleway CLI is a tool to help you pilot your Scaleway infrastructure directly from your terminal."
 arch=('x86_64')
 url="https://scaleway.com"
@@ -39,5 +39,5 @@ package() {
   ./scw autocomplete script shell=bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/scw"
 }
 
-sha256sums=('7baa6d7af5602703bc9b1f54beb5a36642151cc12d6584d6ab76df8bb088365e')
+sha256sums=('af926168122c192b10a19d701f2a03a41f14897b2a6c654499203edd2aafcafe')
 # vim:set ts=2 sw=2 et:
