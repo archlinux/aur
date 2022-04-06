@@ -1,6 +1,6 @@
 pkgbase = ctbench-git
 	pkgdesc = Compile-time benchmark and analysis for Clang
-	pkgver = v0.0.0.r6.ge2b8901
+	pkgver = v0.0.1.r0.gbfeda57
 	pkgrel = 1
 	url = https://github.com/jpenuchot/ctbench
 	arch = any
