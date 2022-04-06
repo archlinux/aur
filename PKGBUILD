@@ -4,7 +4,7 @@
 # Contributor: Angus Gibson <darthshrine@gmail.com>
 
 pkgname=ipbt
-pkgver=20211203.104f822
+pkgver=20220403.d4e7fcd
 pkgrel=1
 pkgdesc='A high-tech ttyrec player'
 arch=('x86_64')
@@ -13,8 +13,8 @@ license=('MIT')
 depends=('ncurses' 'perl')
 source=("${url}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.patch")
-sha256sums=('631ee26dce8d4906e52963bbd7b579c91e9902d0f28903d90415d20ea5b730ba'
-            '022f7ef69806ca76aec68e7336b4fcffc37184e101159bb14a124ba0e136cc63')
+sha256sums=('8c7f325166b86055232cca9d745c6a18dcdcb6d30a0685e07ac0eab677912b05'
+            '2bb881b4f15034d14d498ffe222394c004a5f3e3868e1014ed664daa08bfc402')
 
 prepare() {
   patch -p0 -i ../${pkgname}.patch
