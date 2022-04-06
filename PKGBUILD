@@ -1,7 +1,7 @@
 # Maintainer: Chris Down <chris@chrisdown.name>
 
 pkgname=zcfan
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc='Zero-configuration fan control for ThinkPad'
 url="https://github.com/cdown/zcfan"
@@ -10,7 +10,7 @@ arch=('any')
 depends=()
 makedepends=()
 source=("https://github.com/cdown/zcfan/archive/${pkgver}.zip")
-md5sums=('b20a41ad3a2cfe3d7dc6fc713ae546e1')
+md5sums=('24c2c31762ad71ec822b3fa0d839fbae')
 
 build() {
     cd -- "${srcdir?}/$pkgname-$pkgver"
