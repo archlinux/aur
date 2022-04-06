@@ -9,7 +9,7 @@ pkgver=r912.ff1ae4a
 pkgrel=1
 epoch=1
 pkgdesc="Nintendo Game Boy/Game Boy Color core"
-arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/libretro/gambatte-libretro"
 license=('GPL2')
 groups=('libretro')
@@ -18,11 +18,15 @@ makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+$url.git")
-md5sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	sed -i 's/-O[0123s]//;s/-Ofast//' $_pkgname/Makefile.libretro
 }
 
 build() {
