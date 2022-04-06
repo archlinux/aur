@@ -8,4 +8,4 @@ if [[ -f $XDG_CONFIG_HOME/code-flags.conf ]]; then
 fi
 
 # Launch
-exec /opt/visual-studio-code-insiders/bin/code $CODE_USER_FLAGS "$@"
+exec /opt/visual-studio-code-insiders/bin/code-insiders $CODE_USER_FLAGS "$@"
