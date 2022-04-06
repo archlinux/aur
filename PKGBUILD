@@ -8,7 +8,7 @@
 pkgname=zulip-desktop-bin
 _pkgname=zulip-desktop
 pkgver=5.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Real-time team chat based on the email threading model (bin)'
 arch=(x86_64)
 url=https://zulipchat.com
