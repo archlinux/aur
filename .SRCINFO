@@ -17,6 +17,6 @@ pkgbase = tageditor-cli
 	provides = tageditor
 	conflicts = tageditor
 	source = tageditor-3.7.0.tar.gz::https://github.com/Martchus/tageditor/archive/v3.7.0.tar.gz
-	sha256sums = 98ad461669e4528f6eb74d3b0c7a29401a0bb90a68bc63a4b60060ec02889b09
+	sha256sums = e3814efdb9ca9bc386b51c602f8f4f507e8698ecdaf39a5849ed1795ddaa5c38
 
 pkgname = tageditor-cli
