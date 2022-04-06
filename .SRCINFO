@@ -1,14 +1,14 @@
 pkgbase = tlauncher-org
 	pkgdesc = Latest TL from tlauncher.org
 	pkgver = 2.841
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tlauncher.org
 	arch = any
 	license = custom
-	depends = java8-openjfx
-	depends = jdk8-openjdk
-	depends = jre8-openjdk
-	depends = jre8-openjdk-headless
+	depends = java11-openjfx
+	depends = jdk11-openjdk
+	depends = jre11-openjdk
+	depends = jre11-openjdk-headless
 	conflicts = tlauncher-bin
 	replaces = tlauncher-bin
 	source = tlauncher-org-2.841.zip::https://dl2.tlauncher.org/f.php?f=files%2FTLauncher-2.841.zip

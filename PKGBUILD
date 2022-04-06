@@ -3,12 +3,12 @@
 
 pkgname=tlauncher-org
 pkgver=2.841
-pkgrel=1
+pkgrel=2
 pkgdesc="Latest TL from tlauncher.org"
 url="https://tlauncher.org"
 arch=("any")
 license=("custom")
-depends=("java8-openjfx" "jdk8-openjdk" "jre8-openjdk" "jre8-openjdk-headless")
+depends=("java11-openjfx" "jdk11-openjdk" "jre11-openjdk" "jre11-openjdk-headless")
 conflicts=("tlauncher-bin")
 replaces=("tlauncher-bin")
 source=(
