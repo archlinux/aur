@@ -1,13 +1,13 @@
 # Maintainer: Justus Tartz <aur at jrtberlin dot de>
 pkgname=steam-boilr-gui
 pkgver=0.9.25
-pkgrel=1
+pkgrel=2
 pkgdesc="Synchronize games from other platforms into your Steam library"
 arch=(x86_64)
 license=('MIT')
 url="https://github.com/PhilipK/BoilR"
-makedepends=(cargo
-  libx11
+makedepends=(cargo)
+depends=(libx11
   libxext
   libxft
   libxinerama
@@ -16,7 +16,8 @@ makedepends=(cargo
   libxfixes
   pango
   libpng
-  mesa)
+  mesa
+  glu)
 provides=('boilr-gui')
 source=("https://github.com/PhilipK/BoilR/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('12272bc85ea1438d0cc32a024edc852c5b1a459e5f8b8b3f1f0c9165e592a1eb')
