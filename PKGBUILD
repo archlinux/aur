@@ -1,7 +1,9 @@
-# Maintainer: Brent Saner <r00t (at) square-r00t (dot) net>
+# Maintainer: Matt Schultz <matt@qmxtech.com>
+# Contributor: Brent Saner <r00t (at) square-r00t (dot) net>
 # Bug reports can be filed at https://bugs.square-r00t.net/index.php?project=3
 # News updates for packages can be followed at https://devblog.square-r00t.net
-validpgpkeys=('748231EBCBD808A14F5E85D28C004C2F93481F6B')
+validpgpkeys=('412D089B780A1E986489A79F3BE997D520108D8F'
+              '748231EBCBD808A14F5E85D28C004C2F93481F6B')
 
 # This builds the FreeSWITCH open source telephone engine
 # from the freeswitch git.  It enables the following modules
@@ -48,14 +50,16 @@ _enabled_modules=(xml_int/mod_xml_curl
 # say/mod_say_ru - Russian phrases
 # dialplans/mod_dialplan_asterisk - Legacy dialplan
 # applications/mod_signalwire - https://freeswitch.org/confluence/display/FREESWITCH/mod_signalwire (requires libks which isn't even packaged)
+# endpoints/mod_verto - also requires libks
 _disabled_modules=(languages/mod_spidermonkey
                    say/mod_say_ru
                    dialplans/mod_dialplan_asterisk
-                   applications/mod_signalwire)
+                   applications/mod_signalwire
+                   endpoints/mod_verto)
 # BUILD CONFIGURATION ENDS                     #
 
 pkgname=freeswitch
-pkgver=1.10.5
+pkgver=1.10.7
 pkgrel=1
 pkgdesc="An opensource and free (libre, price) telephony system, similar to Asterisk."
 arch=('i686' 'x86_64')
@@ -73,11 +77,12 @@ depends=('curl'
          'libshout'
          'libtiff'
          'lua'
-         'ffmpeg'
+         'ffmpeg4.4'
          'openssl'
          'opus'
          'freetype2'
-         'spandsp-fs')
+         'spandsp-fs'
+         'sofia-sip-fs')
 # per https://wiki.freeswitch.org/wiki/FreeSwitch_Dependencies, dependencies are downloaded and built *from upstream*, so thankfully the deps are pretty minimal.
 makedepends=('git'
              'libjpeg'
@@ -113,13 +118,15 @@ source=("https://github.com/signalwire/${pkgname}/archive/v${pkgver}.tar.gz"
          'conf_log.freeswitch'
          'freeswitch.service'
 	 'freeswitch-arch.patch'  # required for 1.6.17
+         'apr-nsig-fix.patch'
          'freeswitch.conf.d.sig'
          'README.freeswitch.sig'
          'run.freeswitch.sig'
          'run_log.freeswitch.sig'
          'conf_log.freeswitch.sig'
          'freeswitch.service.sig'
-	 'freeswitch-arch.patch.sig')  # required for 1.6.17
+	 'freeswitch-arch.patch.sig'
+         'apr-nsig-fix.patch.sig')  # required for 1.6.17
 _pkgname="freeswitch"
 sha512sums=('SKIP'
             'a9c0f8397e9375b26f8c3950c07fff9ce2c60684bd99cfb371cd19cce2bfb2f042a5380a38751bcd212096611d38731a2613a93d037b53f0c1cf356180b98912'
@@ -129,6 +136,8 @@ sha512sums=('SKIP'
             'a4fd539de109de3475abfeb2bd8a95670af3f5af83bd6f6b229df19e81da3f121c28a62cff282f9dc152908ebe0f24f76743e00c72fa04dc1fd465a00dc6f976'
             '0d71a056de156f5840effabf6fb37a20e64ae011ecd48bf049886d4c073fe251cd6adeb0380784622b570948e1ca30ce7c92a2cade230a7177c97ed697e6f1cb'
 	    '4d4f5237297b298010b8a0b264435cc2c04742ca313272e7558f164b19aef97afaace5cf005eeffcfa6be096daedace67931cc209bccdabd2f3d01a42b643036'
+            'd82ab534e9912d7440e66643c30d9e2691973f8915a00ed7c794fc8fc3649439fe6538d3b17e2eb2838a448ef394a613fb89429afa70055cdcaefd54339f6022'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -153,6 +162,8 @@ disable_module() {
 prepare() {
   cd ${srcdir}/${_pkgname}-${pkgver}
 
+  patch -Np1 -i ../apr-nsig-fix.patch
+
   # BUILD BEGINS
   msg "Bootstrapping..."
   ./bootstrap.sh ${_concurrent} > /dev/null
@@ -175,9 +186,9 @@ prepare() {
   # CONFIGURE
   # We need to override some things for the ./configure for 1.6.17
   #./configure \
-  export CFLAGS="${CFLAGS} -Wno-error -D__alloca=alloca"
+  export CFLAGS="${CFLAGS} -Wno-error -D__alloca=alloca" # -I/usr/include/ffmpeg4.4"
   export CXXFLAGS="${CFLAGS}"
-  #PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig \
+  PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig" \
   ./configure \
     --prefix=/var/lib/freeswitch \
     --with-python=/usr/bin/python2 \

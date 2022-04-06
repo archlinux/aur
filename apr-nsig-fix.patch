@@ -1,0 +1,16 @@
+diff -Naur freeswitch-1.10.7.pristine/libs/apr/include/apr_general.h freeswitch-1.10.7/libs/apr/include/apr_general.h
+--- freeswitch-1.10.7.pristine/libs/apr/include/apr_general.h	2021-10-28 16:05:37.752029385 +0000
++++ freeswitch-1.10.7/libs/apr/include/apr_general.h	2021-10-28 16:08:18.345230793 +0000
+@@ -29,9 +29,9 @@
+ #include "apr_pools.h"
+ #include "apr_errno.h"
+ 
+-#if !defined(_ANSI_SOURCE) && defined(_DARWIN_C_SOURCE)
+-#define NSIG __DARWIN_NSIG
+-#endif
++//#if !defined(_ANSI_SOURCE) && defined(_DARWIN_C_SOURCE)
++//#define NSIG __DARWIN_NSIG
++//#endif
+ 
+ #if APR_HAVE_SIGNAL_H
+ #include <signal.h>
