@@ -1,0 +1,12 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Operation = Remove
+Type = Package
+Target = *
+
+[Action]
+Description = Pac-Man beep
+Depends = beep
+When = PreTransaction
+Exec = /usr/local/bin/pacman-beep.sh

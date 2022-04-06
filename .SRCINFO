@@ -1,0 +1,14 @@
+pkgbase = pacman-beep-hook
+	pkgdesc = hook to play Pac-Man theme using pcspkr before and after any transaction
+	pkgver = 0.0
+	pkgrel = 1
+	arch = any
+	depends = beep
+	source = pacman-beep-pre.hook
+	source = pacman-beep-post.hook
+	source = pacman-beep.sh
+	sha256sums = aded20b0ccf99f68f0be155d8c92cd01eb3582009707011ca12007e047acc055
+	sha256sums = d0b3cfc53d90d648a073bc8a155bab3902c2fa1d52a0cd9b577947388197fd90
+	sha256sums = fe79120d2d63b0f49daddbb15df15cae693cdf582cb9ade139e6256cadec2e1a
+
+pkgname = pacman-beep-hook
