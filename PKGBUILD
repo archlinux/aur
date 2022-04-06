@@ -2,8 +2,8 @@
 # Contributor: Jason Wood <jwood@startmail.com>
 
 pkgname=headlines
-pkgver=0.5.3
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 pkgdesc="GTK4 Reddit client"
 arch=('x86_64')
 url="https://gitlab.com/caveman250/headlines"
@@ -26,11 +26,16 @@ depends=(
 	'websocketpp'
 	'libadwaita'
 	'xdg-utils'
-	'libsecret')
+	'libsecret-1.so')
 makedepends=('cmake' 'boost')
 replaces=('gtkeddit')
 source=("$pkgname-$pkgver.tar.bz2::$url/-/archive/$pkgver/Headlines-$pkgver.tar.bz2")
-sha256sums=('6d69030d754d1b54ffab4a3fa7091d75fb4d79ac4e413476edd9c631992d386c')
+sha256sums=('7c2ae49a9d7cde24753622a4b2c51c7cbb7f49e80b1974099492a31b5c1dedaf')
+
+prepare() {
+	cd "Headlines-$pkgver"
+	sed -i '/CXX_FLAGS_RELEASE/s/O3/O2/' CMakeLists.txt
+}
 
 build() {
 	cmake \
