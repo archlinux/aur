@@ -1,0 +1,19 @@
+pkgbase = projectm-presets-classic-git
+	pkgdesc = Classic preset pack for projectM (git version)
+	pkgver = 2.14a6244
+	pkgrel = 1
+	url = https://github.com/projectM-visualizer/presets-projectm-classic
+	arch = x86_64
+	arch = i686
+	license = LGPL
+	makedepends = cmake
+	depends = projectm-git
+	depends = sdl2
+	depends = libxext
+	depends = glm
+	depends = poco
+	options = !buildflags
+	source = git+https://github.com/projectM-visualizer/presets-projectm-classic.git
+	sha256sums = SKIP
+
+pkgname = projectm-presets-classic-git
