@@ -4,8 +4,8 @@
 # Contributor: Jiawen Geng
 
 pkgname=github-desktop
-pkgver=2.9.9
-_gitname="release-$pkgver-linux2"
+pkgver=2.9.12
+_gitname="release-$pkgver-linux4"
 pkgrel=2
 pkgdesc='GUI for managing Git and GitHub'
 arch=(x86_64)
@@ -50,10 +50,8 @@ prepare() {
 
 build() {
 	cd "$pkgname"
-	export DISPLAY=':99.0'
-	Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
-	yarn install
-	yarn build:prod
+	xvfb-run yarn install
+	xvfb-run yarn build:prod
 }
 
 package() {
