@@ -40,8 +40,8 @@ _mirror='rsync.dante.ctan.org/CTAN/systems/texlive/tlnet/'
 _syncdir="CTAN/tlnet"
 
 pkgver(){
-    _year=$(cat ${srcdir}/install-tl-${_tldate}/release-texlive.txt| grep -E '[0-9]+' -o)
     _tldate=$(ls  | grep -E '[0-9]+' -o | sort -r | head -1)
+    _year=$(cat ${srcdir}/install-tl-${_tldate}/release-texlive.txt| grep -E '[0-9]+' -o)
     echo "${_year}.${_tldate}"
 }
 prepare(){
