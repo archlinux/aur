@@ -3,7 +3,7 @@
 
 pkgname=python-aioamqp
 _module=aioamqp
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="AMQP implementation using asyncio"
 url="https://github.com/polyconseil/aioamqp"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('eef5c23a7fedee079d8326406f5c7a5725dfe36c359373da3499fffa16f79915')
+b2sums=('aef4651a2f8eafd79e7cc61c45be1e8c63c1437a90f2202832883e6015f7a2a8bf964eeda794230aa11db58078f8ba5e3d27eabba94cb4f9d382cdca349e0882')
 
 build() {
     cd ${_module}-${pkgver}
