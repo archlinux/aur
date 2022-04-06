@@ -1,7 +1,7 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
 
 pkgname=frescobaldi-git
-pkgver=3.1.2.r46.gc85376f9
+pkgver=3.1.2.r83.g79b04e50
 pkgrel=1
 pkgdesc="A LilyPond sheet music text editor."
 arch=('any')
@@ -42,7 +42,7 @@ optdepends=(
 )
 provides=("${pkgname%-git}=$pkgver-$pkgrel")
 conflicts=("${pkgname%-git}")
-source=("${pkgname}"::'git://github.com/frescobaldi/frescobaldi.git')
+source=("${pkgname}"::'git+https://github.com/frescobaldi/frescobaldi.git')
 md5sums=('SKIP')
 
 pkgver() {
