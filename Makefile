@@ -6,9 +6,6 @@ unexport MAKEFLAGS
 SHELL := bash
 .SHELLFLAGS := -eu -o pipefail -c
 
-.PHONY: DO
-DO:
-
 escape = $(subst ','\'',$(1))
 
 define noexpand
@@ -26,6 +23,9 @@ endef
 PKG_NAME := config-links
 
 this_dir := $(dir $(realpath $(firstword $(MAKEFILE_LIST))))
+
+.PHONY: DO
+DO:
 
 .PHONY: all
 all: package
