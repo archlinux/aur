@@ -2,22 +2,33 @@
 # Contributor: Ben Westover <kwestover.kw@gmail.com>
 
 pkgname=python-blspy
-pkgver=1.0.9
-pkgrel=4
+pkgver=1.0.10
+pkgrel=1
 pkgdesc='Python BLS Signatures implementation'
 url='https://github.com/Chia-Network/bls-signatures'
 arch=('x86_64')
 license=('Apache')
-depends=('libsodium' 'gmp' 'python-wheel')
+depends=('python')
+optdepends=('gmp: faster implementation (install at compile-time)')
 makedepends=(
 	'cmake'
 	'git'
 	'pybind11'
 	'python-build'
 	'python-installer'
-	'python-setuptools-scm')
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/b/blspy/blspy-$pkgver.tar.gz")
-sha256sums=('ea47a2990ab0877ec6f717355f2c65afed27f5082ff3b369d83ec6ce3ea29396')
+	'python-setuptools'
+	'python-setuptools-scm'
+	'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/b/blspy/blspy-$pkgver.tar.gz"
+        'CXXFLAGS.patch')
+sha256sums=('dfa8b5153f569441c0eab6581bd0c84c66f7d8553a9b655bda8fdfbb0c9951c0'
+            '15b18c754175b1a697e62c509e26864316c6a39825f5e2c87495a2f9a1b7bb7f')
+
+prepare() {
+	cd "blspy-$pkgver"
+	patch -p1 < "$srcdir/CXXFLAGS.patch"
+	sed -i "s/\${CXXFLAGS}/${CXXFLAGS}/" CMakeLists.txt
+}
 
 build() {
 	cd "blspy-$pkgver"
@@ -25,7 +36,6 @@ build() {
 }
 
 package() {
-	export PYTHONHASHSEED=0
 	cd "blspy-$pkgver"
-	python -m installer --destdir="$pkgdir/" dist/*.whl
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 }

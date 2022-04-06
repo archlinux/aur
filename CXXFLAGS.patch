@@ -1,0 +1,24 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a3f5a9e..649fc8b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -15,8 +15,8 @@ endif()
+ project(BLS)
+ 
+ set(BUILD_BLS_PYTHON_BINDINGS "1" CACHE STRING "")
+-set(BUILD_BLS_TESTS "1" CACHE STRING "")
+-set(BUILD_BLS_BENCHMARKS "1" CACHE STRING "")
++set(BUILD_BLS_TESTS "0" CACHE STRING "")
++set(BUILD_BLS_BENCHMARKS "0" CACHE STRING "")
+ 
+ message(STATUS "Build python bindings: ${BUILD_BLS_PYTHON_BINDINGS}")
+ message(STATUS "Build tests: ${BUILD_BLS_TESTS}")
+@@ -112,7 +112,7 @@ set(FP_METHD "INTEG;INTEG;INTEG;MONTY;LOWER;SLIDE" CACHE STRING "")
+ if(MSVC)
+   set(COMP_FLAGS "" CACHE STRING "")
+ else()
+-  set(COMP_FLAGS "-O3 -funroll-loops -fomit-frame-pointer" CACHE STRING "")
++	set(COMP_FLAGS "${CXXFLAGS} -funroll-loops -fomit-frame-pointer" CACHE STRING "")
+ endif()
+ 
+ set(FP_PMERS "off" CACHE STRING "")
