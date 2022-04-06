@@ -1,0 +1,37 @@
+pkgbase = zzzfm-bin
+	pkgdesc = zzzFM is a multi-panel tabbed file and desktop manager for Linux with built-in VFS, udev device manager, customizable menu system and bash integration. This is the GTK2 version
+	pkgver = 1.0.7
+	pkgrel = 1
+	url = https://gitlab.com/skidoo/zzzfm
+	arch = x86_64
+	license = GPL3
+	depends = cairo>=1.2.4
+	depends = desktop-file-utils
+	depends = e2fsprogs
+	depends = gdk-pixbuf2
+	depends = glib2>=2.41.1
+	depends = glibc>=2.28
+	depends = gtk2>=2.24.32
+	depends = hicolor-icon-theme
+	depends = libudev>=183
+	depends = libx11
+	depends = pango
+	depends = shared-mime-info
+	depends = zzzfm-common=1.0.7
+	optdepends = bash-completion
+	optdepends = curlftpfs
+	optdepends = dbus
+	optdepends = fuseiso
+	optdepends = gksu
+	optdepends = gphotofs
+	optdepends = ifuse
+	optdepends = jmtpfs
+	optdepends = sshfs
+	optdepends = udisks2
+	optdepends = util-linux
+	provides = zzzfm
+	conflicts = zzzfm-gtk3
+	source = https://gitlab.com/antix-contribs/zzzfm/-/raw/contribs/deb-packages/zzzfm_1.0.7-6~contribs2_amd64.deb
+	sha256sums = 2081744a2f2ae0ecdcf5ba27079bffc4b042773d9b91ab899b0bc81fd6c78f64
+
+pkgname = zzzfm-bin
