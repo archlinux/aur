@@ -1,5 +1,5 @@
 # $Id$
-# Maintainer: Lukas Sabota <lukas@lwsabota.com>
+# Maintainer: prg <prg-archlinux@xannode.com>
 # Contributor: Giancarlo Razzolini <grazzolini@archlinux.org>
 # Contributor: Alexander F Rødseth <xyproto@archlinux.org>
 # Contributor: Lukas Fleischer <lfleischer@archlinux.org>
@@ -8,10 +8,10 @@
 
 _gitname=projectm
 pkgname=projectm-git
-pkgver=2240.99b55db61
+pkgver=2281.17cfcda0d
 pkgrel=1
-conflicts=('projectm' 'projectm-sdl' 'projectm-pulseaudio')
-provides=('projectm' 'projectm-sdl' 'projectm-pulseaudio')
+conflicts=('projectm')
+provides=('projectm')
 pkgdesc="Music visualizer which uses 3D accelerated iterative image based rendering (git version)"
 arch=('x86_64' 'i686')
 url='https://github.com/projectM-visualizer/projectm'
@@ -31,7 +31,7 @@ build() {
   cd "${_gitname}"
   mkdir -p build
   cd build
-  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DENABLE_PULSEAUDIO=ON -DQT_VERSION=5 ../
+  cmake -DENABLE_STATIC_LIB=OFF -DENABLE_SHARED_LINKING=ON ../
   make
 }
 
