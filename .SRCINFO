@@ -1,0 +1,12 @@
+pkgbase = gvisor-tap-vsock
+	pkgdesc = A new network stack based on gVisor
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/containers/gvisor-tap-vsock
+	arch = x86_64
+	license = Apache-2.0
+	provides = gvisor-tap-vsock
+	source = gvisor-tap-vsock-0.3.0.tar.gz::https://github.com/containers/gvisor-tap-vsock/archive/refs/tags/v0.3.0.tar.gz
+	sha256sums = 6ca454ae73fce3574fa2b615e6c923ee526064d0dc2bcf8dab3cca57e9678035
+
+pkgname = gvisor-tap-vsock
