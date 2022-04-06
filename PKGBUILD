@@ -27,7 +27,7 @@ prepare() {
   ln -sf "../sdk-${_sdkhash}" sdk
 
   cd sdk
-  patch -Np1 < ../../fix-ffmpeg-compile.patch
+  patch -Np1 < "${srcdir}"/fix-ffmpeg-compile.patch
 }
 
 build() {
