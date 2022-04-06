@@ -1,5 +1,5 @@
-pkgbase = linux-neptune
-	pkgdesc = Linux
+pkgbase = linux-steamos
+	pkgdesc = Linux Neptune kernel from SteamOS 3
 	pkgver = 5.13.0.valve10.1
 	pkgrel = 1
 	url = https://gitlab.steamos.cloud/jupiter/linux-integration/-/tree/5.13.0-valve10.1
@@ -31,8 +31,8 @@ pkgbase = linux-neptune
 	sha256sums = 6098e453286c58b25a257d22e1c7098b00a0afe3b718e4869bccff9432491c3f
 	sha256sums = aa67dff7d47ecdd8cbb8e9b41650a60f4da54b7e1a1e841cbddc2efbd7cfb2b4
 
-pkgname = linux-neptune
-	pkgdesc = The Linux kernel and modules, including the futex-wait-multiple patchset for testing with Proton fsync
+pkgname = linux-steamos
+	pkgdesc = The Linux Neptune kernel from SteamOS 3 kernel and modules, including the futex-wait-multiple patchset for testing with Proton fsync
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
@@ -43,6 +43,6 @@ pkgname = linux-neptune
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
-pkgname = linux-neptune-headers
-	pkgdesc = Headers and scripts for building modules for the Linux kernel
+pkgname = linux-steamos-headers
+	pkgdesc = Headers and scripts for building modules for the Linux Neptune kernel from SteamOS 3 kernel
 	depends = pahole

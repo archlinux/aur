@@ -2,11 +2,11 @@
 # Contributor: John Schoenick <johns@valvesoftware.com>
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
-pkgbase=linux-neptune
+pkgbase=linux-steamos
 _tag=5.13.0-valve10.1
 pkgver=${_tag//-/.}
 pkgrel=1
-pkgdesc='Linux'
+pkgdesc='Linux Neptune kernel from SteamOS 3'
 url="https://gitlab.steamos.cloud/jupiter/linux-integration/-/tree/$_tag"
 arch=(x86_64)
 license=(GPL2)
