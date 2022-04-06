@@ -1,10 +1,11 @@
 # Maintainer: solsTiCe d'Hiver <solstice.dhiver@gmail.com>
 pkgname=piavpn-bin
-pkgver=3.3.0_06906
+pkgver=3.3.1_06924
 _pkgver=${pkgver/\.0_/_}
 _pkgver=${_pkgver/_/-}
 pkgrel=1
 pkgdesc="Private Internet Access client"
+# https://www.privateinternetaccess.com/pages/changelog
 arch=('x86_64' 'aarch64')
 url="https://privateinternetaccess.com/"
 license=('custom')
@@ -16,11 +17,11 @@ conflicts=(pia-launch pia-manager pia-tools private-internet-access-vpn)
 install=piavpn-bin.install
 source=("https://installers.privateinternetaccess.com/download/pia-linux-${_pkgver}.run")
 options=(!strip)
-sha256sums=('75efbf335af99673f55c81ff5f7e70d66ced52913ace2baca12253e19d3e64cf')
+sha256sums=('eee140e511adfac4d74b059ed9d673f1b910163b5b92ac35642a65592fef639d')
 
 prepare() {
 	if [ $arch == "aarch64" ] ;then
-		sha256sums=('4f2507fc7f5b9dc7a4486ceea4247ee39b3ff43013f40000fee21d0f728e013d')
+		sha256sums=('7cde46390c69104f6d21a7729f90222c3ff88dab6c8bef33c4d41dedcf2df783')
 		_pkgver="arm64-${_pkgver}"
 	fi
 	env -i /bin/sh pia-linux-${_pkgver}.run --noexec --target "${srcdir}/$pkgname-${_pkgver}"
