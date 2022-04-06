@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ -d /EFI/steamos ]; then
+  cp /usr/share/steamos/steamos.png /EFI/steamos/steamos.png
+elif [ -d /boot/EFI/steamos ]; then
+  cp /usr/share/steamos/steamos.png /boot/EFI/steamos/steamos.png
+fi
+
+# vim:set ft=sh sw=2 et:
