@@ -2,7 +2,7 @@
 #Maintainer: AigioL<https://github.com/AigioL>
 pkgname=steam++-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
-pkgver=2.6.9
+pkgver=2.7.0.pre1.r64.g070e4b90
 pkgrel=1
 arch=('x86_64' 'aarch64')
 url=https://steampp.net/
@@ -19,12 +19,13 @@ sha256sums=('SKIP'
             '8255faa817982a81ee3c12599e6ca4b10b39a21eb49b2dfd6d0ad09939a25d0b')
 pkgver(){
     cd "${srcdir}/SteamTools"
-    git describe --tags | sed "s/-/./g;s/v//"
+    git describe --tags --long | sed 's/v//;s/-/./;s/-/.r/;s/-/./g'
 }
 prepare(){
     cd "${srcdir}/SteamTools"
     git submodule update --init --recursive
     cp "${srcdir}"/Credentials-Public/*.pfx .
+    dotnet workload install android
 }
 check(){
     cd "${srcdir}/SteamTools"
