@@ -1,7 +1,7 @@
 # Maintainer: Jameson Pugh <imntreal@gmail.com>
 
 pkgname=jc
-pkgver=1.18.2
+pkgver=1.18.6
 pkgrel=1
 pkgdesc="serializes the output of command line tools to structured JSON"
 arch=('any')
@@ -9,8 +9,8 @@ url='https://github.com/kellyjonbrazil/jc'
 license=('MIT')
 depends=('python-pygments' 'python-ruamel-yaml' 'python-xmltodict')
 makedepends=('python-setuptools')
-source=("https://github.com/kellyjonbrazil/jc/archive/v${pkgver}.tar.gz")
-sha256sums=('9daec57ae1f78f3bd7fa9f5e94b02d8aecae3a6a04d13325c73d24bbcde43bf7')
+source=("https://github.com/kellyjonbrazil/jc/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('5347188ed55762a0325d5d8f6a1ff3ec221b4ad548dee085fadc5fe10366af93')
 
 prepare(){
   cd "${srcdir}/${pkgname}-${pkgver}"
