@@ -2,15 +2,16 @@
 # Maintainer: Marcell Meszaros < marcell.meszaros AT runbox.eu >
 
 pkgname=android-backup-extractor-git
-pkgver=r111.47bb1dd
-pkgrel=3
+pkgver=r113.07bb660
+pkgrel=1
 pkgdesc="Utility to extract and repack Android backups created with adb backup"
 arch=('any')
 makedepends=('git' 'apache-ant' 'java-environment>=11')
-depends=('bcprov' 'java-runtime>=11')
+depends=('bcprov' 'java-runtime-headless>=11' 'sh')
 url="https://github.com/nelenkov/android-backup-extractor"
-license=('apache')
-provides=('abe')
+license=('custom:Apache') # Apache 2.0 license with copyright notice
+provides=('abe.jar' 'android-backup-extractor')
+conflicts=('abe' 'android-backup-extractor')
 source=("$pkgname"::git+${url}.git)
 sha256sums=('SKIP')
 
@@ -30,8 +31,8 @@ prepare() {
 
   # do not use the bundled abe script, a simple wrapper is good enough
   echo '#!/bin/sh' > arch-abe
-  echo "CP=/usr/share/java/bcprov/bcprov.jar:/usr/share/java/${pkgname}/abe.jar" >> arch-abe
-  echo 'exec /usr/bin/java -cp $CP org.nick.abe.Main "$@"' >> arch-abe
+  echo "CP=\"/usr/share/java/bcprov/bcprov.jar:/usr/share/java/${pkgname}/abe.jar\"" >> arch-abe
+  echo 'exec /usr/bin/java -cp "$CP" org.nick.abe.Main "$@"' >> arch-abe
   chmod +x arch-abe
 }
 
