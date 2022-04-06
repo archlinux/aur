@@ -5,8 +5,6 @@
 !.gitignore
 !PKGBUILD
 !.SRCINFO
-!clash@.service
-!clash.service
-!clash_user.service
+!clash-meta.service
 !clash-meta-bin.install
 !config.yaml

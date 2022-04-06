@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Type=exec
 Restart=on-abort
-ExecStart=/usr/bin/clash -d /etc/clash
+ExecStart=/usr/bin/clash-meta -d /etc/clash-meta
 
 [Install]
 WantedBy=default.target
