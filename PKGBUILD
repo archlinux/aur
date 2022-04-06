@@ -2,8 +2,8 @@
 # https://github.com/mvgrimes/aur-perl-media-datetime
 
 pkgname=perl-media-datetime
-pkgver=0.48
-pkgrel=2
+pkgver=0.49
+pkgrel=1
 pkgdesc=" A simple module to extract the timestamp from media files in an flexible manner."
 _dist=Media-DateTime
 arch=('any')
@@ -14,7 +14,7 @@ depends=(perl perl-module-build perl-datetime perl-try-tiny perl-module-pluggabl
 # 'File::Which'        => 0,
 options=('!emptydirs' purge)
 source=(https://cpan.metacpan.org/authors/id/M/MG/MGRIMES/${_dist}-${pkgver}.tar.gz)
-md5sums=('5e2444c99e45e2bdb45d472bb13a7b43')
+md5sums=('342b8da069be300672ed4f886e983c60')
 
 # Setup environment to ensure installation in system perl and vender directory
 clean_env() {
