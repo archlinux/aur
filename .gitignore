@@ -1,4 +1,5 @@
-pkg
-src
+/mcsctl/
+/pkg/
+/src/
 *.pkg.tar.xz
-*.tar.gz
+*.pkg.tar.zst
