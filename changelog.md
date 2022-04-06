@@ -1,3 +1,24 @@
+## GE-Proton7-14 Released
+
+- Hotfix: Received more complaints than praise surrounding the gamemode change so I've reverted the changes. Gamemode is removed from the build and will not be used by default.
+
+## GE-Proton7-13 Released
+
+Woops another hotfix -- forgot to patch dxvk with async.
+
+## GE-Proton7-12 Released
+
+This is a hotfix that adds a workaround to launch New World since it's launcher hangs. They added the EAC .so library and it appears to work. Hopefully it stays that way.
+
+## GE-Proton7-11 Released
+
+- Feral Interactive's 'gamemode' has been added to the build and will now be automatically used when games are launched (you no longer need to run 'gamemode %command%')  (Thanks manueliglesiasgarcia!)
+- proton experimental bleeding edge wine build has been updated (fixes a prefix creation bug)
+- several build-specific updates have been pulled from upstream proton
+- dxvk updated to git
+- vkd3d-proton updated to git
+- dxvk-nvapi updated to git
+
 ## GE-Proton7-10 Released
 
 Updated wine to latest bleeding edge
