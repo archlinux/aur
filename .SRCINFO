@@ -1,17 +1,15 @@
 pkgbase = issuu-dl
-	pkgdesc = a downloader for issuu.com
-	pkgver = 0.3
+	pkgdesc = a simple downloader for issuu.com (supports pdf and cbz output formats)
+	pkgver = 0.4
 	pkgrel = 1
-	url = https://github.com/noahvogt/issuu-dl.git
+	url = https://github.com/noahvogt/issuu-dl
 	arch = any
-	license = GPL
+	license = GPL3
 	depends = python-termcolor
 	depends = img2pdf
 	depends = python-tqdm
-	provides = issu-dl
-	conflicts = issu-dl
+	depends = python-typer
 	source = issuu-dl::git+https://github.com/noahvogt/issuu-dl.git
 	md5sums = SKIP
 
 pkgname = issuu-dl
-
