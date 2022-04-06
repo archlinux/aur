@@ -1,0 +1,19 @@
+--- a/src/gfx/freeimage.cpp	2022-04-06 14:51:14.977994044 +0100
++++ b/src/gfx/freeimage.cpp	2022-04-06 15:11:39.315991676 +0100
+@@ -236,7 +236,7 @@
+ 
+     // Find decoder for video stream
+     AVCodecID codecId = codecParm->codec_id;
+-    AVCodec* decoder = avcodec_find_decoder(codecId);
++    auto decoder = avcodec_find_decoder(codecId);
+     if (!decoder)
+     {
+         LOG_warn << "Codec not found: " << codecId;
+@@ -253,7 +253,6 @@
+ 
+     // Force seeking to key frames
+     formatContext->seek2any = false;
+-    videoStream->skip_to_keyframe = true;
+     if (decoder->capabilities & CAP_TRUNCATED)
+     {
+         codecContext->flags |= CAP_TRUNCATED;
