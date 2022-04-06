@@ -2,7 +2,7 @@
 # Contributor: oss@fastly.com
 
 pkgname=fastly
-pkgver=1.7.1
+pkgver=2.0.0
 pkgrel=1
 pkgdesc='CLI for the Fastly platform'
 url='https://github.com/fastly/cli'
@@ -10,6 +10,7 @@ arch=('aarch64' 'i686' 'x86_64')
 license=('Apache')
 depends=('glibc')
 makedepends=('git' 'go')
+changelog=CHANGELOG.md
 source=("$pkgname::git+$url#tag=v$pkgver?signed"
         'Makefile.patch')
 sha256sums=('SKIP'
