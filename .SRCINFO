@@ -1,5 +1,5 @@
 pkgbase = python2-colorama-git
-	pkgdesc = Simple cross-plaform colored terminal text in Python 2
+	pkgdesc = Python API for cross-platform colored terminal text (packaged for Python 2)
 	pkgver = 0.4.4.r50.gaff7fb2
 	pkgrel = 1
 	epoch = 1
