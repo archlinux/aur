@@ -2,7 +2,7 @@
 _pkgname='mongodb-compass-beta'
 _edition=' Beta'
 pkgname="$_pkgname-bin"
-_pkgver='1.31.0-beta.20'
+_pkgver='1.31.1-beta.1'
 pkgver="$(printf '%s' "$_pkgver" | tr '-' '.')"
 pkgrel='1'
 pkgdesc='The official GUI for MongoDB - beta version - binary version'
@@ -20,7 +20,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 _betaprefix="$([[ "$_pkgname" =~ -beta$ ]] && printf 'beta/' || printf '')"
 source=("$pkgname-$pkgver-$pkgrel.rpm::https://downloads.mongodb.com/compass/$_betaprefix$_pkgname-$_pkgver.x86_64.rpm")
-sha512sums=('3339faa900943ab71dd265cf3a376fe696ea970412668d3dedb3f985c50bea5fce28d897cf56f63701286a535feca174be9abe410a16e5c1cbf2d6d12d4bcfe4')
+sha512sums=('0fb02deb5321adc8c07ee7f11deee0840335bbe7d33efbc8076a405af39e76c22b805d19870d8a98f941fb334b11f583872b7fff9449d99f4d4195e2e4abd93f')
 
 package() {
 	cd "$srcdir/"
