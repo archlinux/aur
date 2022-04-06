@@ -1,7 +1,7 @@
 # Maintainer: Thomas Weißschuh <aur t-8ch de>
 
 pkgname=docker-compose-cli
-pkgver=1.0.17
+pkgver=1.0.23
 pkgrel=1
 pkgdesc="Easily run your Compose application to the cloud with compose-cli"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=(Apache)
 source=("https://github.com/docker/compose-cli/archive/refs/tags/v${pkgver}.tar.gz")
 depends=('docker')
 makedepends=('go')
-sha256sums=('f931053d7a654c8b321dad4d397f36a60df6034d01cea7b9662859f45ae9e048')
+sha256sums=('132ac0ddd77bf8b302a735dafde04f522143517a5974449e42d6b90b5d009242')
 
 prepare(){
 	cd "compose-cli-$pkgver"
