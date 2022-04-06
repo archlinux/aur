@@ -47,14 +47,14 @@ _use_current=
 
 pkgbase=linux-rt-bfq-dev
 # pkgname=('linux-rt-bfq-dev' 'linux-rt-bfq-dev-headers' 'linux-rt-bfq-dev-docs')
-_major=5.16
-_minor=2
-_rtver=19
+_major=5.17
+_minor=1
+_rtver=17
 _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -74,7 +74,7 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 #_bfq_rel="r2K210223"
 #_bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
 _bfq_path="bfq-lucjan"
-_bfq_rel="r2K220121v1"
+_bfq_rel="r2K220321v1"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_rel}.patch"
 _compiler_path="cpu-patches-sep"
 _compiler_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
@@ -86,10 +86,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v3-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v3-sep/0002-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch"
-        "${_lucjanpath}/arch-patches-v3-sep/0003-Bluetooth-Read-codec-capabilities-only-if-supported.patch"
-        "${_lucjanpath}/arch-patches-v3-sep/0004-Bluetooth-fix-deadlock-for-RFCOMM-sk-state-change.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch"
+        "${_lucjanpath}/arch-patches-v2-sep/0003-Revert-swiotlb-rework-fix-info-leak-with-DMA_FROM_DE.patch"
          # the main kernel config files
         'config')
 
@@ -198,7 +197,7 @@ build() {
 _package() {
     pkgdesc="The $pkgdesc kernel and modules"
     depends=('coreutils' 'kmod' 'initramfs')
-    optdepends=('crda: to set the correct wireless channels of your country'
+    optdepends=('wireless-regdb: to set the correct wireless channels of your country'
                 'linux-firmware: firmware images needed for some devices'
                 'modprobed-db: Keeps track of EVERY kernel module that has ever been probed - useful for those of us who make localmodconfig')
     provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE linux-rt-bfq)
@@ -340,17 +339,16 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('197f387d5e3a5029e354aaf50dc4fffc20a894c2579132678396e69c567c4072ea365ade7484a0b964572829f4bbfe518f21df5704ae1685f5786fddbb321097'
+sha512sums=('bb73202e770d10767739664b5320b47d78bc374b2bde38b289f1ede1b7b33a8be0adf0808dd82b49735534fe1aae7d83acbf6e42de214d2e179832f6e6c866dd'
             'SKIP'
-            '018da2a043be7a2d4b197fc04c2e77f894295b1bb91deda44435e27ac572275f8f7bfdade95ff40bc8cc44e24fc4c09121f0fbddfc292e03b4105050da0b4871'
+            '6c39e02803b2962adadb839a6d7844b4ba22ab09ccf4040371683fc0abb8d6f17372f159666209c7eb90fcee05dd01767df739a5dc545ceffe3bfb43f30463cd'
             'SKIP'
-            '31e974993ec9d7e9e06b45d4f58aa2f3de64cb01f2bae21722bd711dca75d67e2dbba9db4e5d4c0a329ed0ab9b26dc33ff53a8a71b1ca36f97243b58ddcf2f40'
-            '5cb79731f957372cbd3ddaf93ac1cbc6eca4a526225f5bbe9c5eed11529fbefa66934ac5002410505df84281144da15e39326a8df886fe45da937304ed0b6fcf'
-            'b778cb2a026174b4f0989998101361403890ff362f6b114fe88079f6bc6f92b19587c48f6260be7b4e60440bad3ec6914f225511390e2e39b665d1d2bed71e45'
-            '95b13eb881ce1fdfa37a1322d9bde3bba54f635b06e3e8f4ef9de8e0ed6c8b11d91cd6d2f56fa38a0f7a0425c8bc02889f3d138781baed107c8ee427146f2c53'
-            'a46a2fea4b2c83e2569cdd343933bb991466752d3c28d70698b1c477134ac0db7d400e03ea569d4f2e73c3e98cc2b5760a7588faf85dc210c1f5786ad01f66ab'
-            '748cd685447336ce0d43fca04dd489176777364030c2d0d24b782123c49b01bfd8e4c672a119478be81084db1637bd590b860b92fd2fd53c6259d7f3858448ff'
-            'b80d7e0fb3d98930009038bbd7f1edaef5bffd50018928a72188eb81763704a97349f8a8ecf50b499082feded64f432917289461b4eadb87e4c9ba7384e1dd12')
+            'b139e039f220f128c4fbc5c91afff4bdf41f3daef3627df4c4ff8711621c5f797f1c3eb601704ef46d7d3b016aba01d6ccf6eb917a87186b3edbb4661690d8cd'
+            'b63921b6246bd1b9545a8042d76334bef8a7ee46e5404c5efec4a842a455a84046e92423b2bc6d950f19dcf85805d7493fe71d6d177e3b46b52a279b0a44d0c9'
+            'd26c3f17f0fdc9ede8203a45baa242279c77e0397803346cb9d57ea6065a2fe5d1d2403698d52a72a072ed81761e68b50717d04237d695fae38a1958efc5f545'
+            'ca5a425bff20bed817c13ddb9854acbd47367b5126389e9e99815b0d576d1d07610ea9075efca298d0b8441cea65e3ba33aa53a11985a25909872dcd1c67a51e'
+            'ce80736a9edab23f1c6b9805ec1ba883534b6a8cc57bcbfad606d760632830c9152d2166a318311aee9f56dc394ba03f49186c3a0620309419666380d1d3b722'
+            '9946fbab59d6dd409c4642367cef38cf3d31bec441cb42611548b9ab25bc31b43edc89bbd8306ffc2880610b09f5c4b2439dbaa7077d4f8b2362e5f44c413045')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
