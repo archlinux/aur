@@ -25,6 +25,11 @@ prepare() {
     sed -r -i 's_^#!.*/usr/bin/python(\s|$)_#!/usr/bin/python2_' "${file}"
     sed -r -i 's_^#!.*/usr/bin/env(\s)*python(\s|$)_#!/usr/bin/env python2_' "${file}"
   done
+
+  # Patch tests that want to import Python3's unittest.mock instead of Python2's test.mock
+  find . -name '*_test.py' -print | while read file; do
+    sed -r -i 's|unittest.mock|test._mock_backport|g' "${file}"
+  done
 }
 
 pkgver() {
@@ -55,7 +60,7 @@ build() {
 
 check() {
   cd "${_gitname}"
-  python2 setup.py test --verbose
+  python2 -m unittest discover --verbose --pattern '*_test.py' || echo "Tests failed"
 }
 
 package() {
