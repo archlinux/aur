@@ -48,9 +48,6 @@ check() {
 package() {
   cd colorama
 
-  # We don't need anything related to git in the package
-  rm -rf .git*
-
   python2 setup.py install --root="${pkgdir}" --optimize=1
 
   # Install License
