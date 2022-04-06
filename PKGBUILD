@@ -2,7 +2,7 @@
 
 pkgname=specter-desktop
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Specter Desktop functions as a watch-only coordinator for multi-signature and single-key Bitcoin wallets."
 arch=('any')
 url="https://specter.solutions"
@@ -11,13 +11,16 @@ makedepends=('python-setuptools')
 depends=('python' 'libusb' 'systemd-libs' 'python-dotenv' 'python-flask' 'python-flask-login' 'python-flask-wtf' 'python-mnemonic' 'python-hwilib' 'python-embit' 'python-flask-cors' 'python-pgpy' 'python-pyopenssl' 'python-stem' 
 'python-typing_extensions' 'python-psutil' 'python-hidapi' 'python-ecdsa' 'python-protobuf' 'python-importlib-metadata' 'python-daemonize' 'python-noiseprotocol-git' 'python-wheel' 'python-pyasn1' 'python-cbor' 'python-urllib3' 'python-flask-babel' 'python-flask-apscheduler')
 backup=(usr/lib/systemd/system/specter.service)
+install=$pkgname.install
 source=("https://github.com/cryptoadvance/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
         'specter.service'
-	'version.patch')
+	'version.patch'
+	'specter-desktop.install')
 
 sha256sums=('711648c9b82ddc166ef927830fb2534fbe6bbdf4c1b2449bfd0edabf67d6e6e7'
             '9b5f57a0ebd48e6b7d1ac240913e4b502a6e3ffc5b64ff87ed263f1a4810a265'
-	    'd073993940a460454ac8d9e7e3b4b073ad8d4826ede06c57c333899efba0d7f8')
+	    'd073993940a460454ac8d9e7e3b4b073ad8d4826ede06c57c333899efba0d7f8'
+	    '668ace7f14369014e42197321fa7e0edc90737c87e2b6a68354ab205d37e3aa6')
 
 prepare() {
   cd "${pkgname}-${pkgver}"

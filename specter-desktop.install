@@ -1,0 +1,24 @@
+ 
+post_install() {
+
+  echo "$(tput setaf 1)To actually get Specter running you have 2 options.  You can use the included Systemd $(tput sgr0)"
+  echo "$(tput setaf 1)Service file which is installed to here:$(tput sgr0)"
+  echo "$(tput setaf 1)/usr/lib/systemd/system/specter.service$(tput sgr0)"
+  echo "$(tput setaf 1)You can edit this file to suit your needs, probably adding the --cert and --key options and$(tput sgr0)"
+  echo "$(tput setaf 1)specifying the cert names.  You will have to generate your own certificates.  This is recommended by$(tput sgr0)"
+  echo "$(tput setaf 1)Specter and perhaps required to use a webcam for scanning QR codes.  Alternatively you can run the service$(tput sgr0)"
+  echo "$(tput setaf 1)file as is without changes and you will be able to access the http interface rather than the secure $(tput sgr0)"
+  echo "$(tput setaf 1)https interface.  If you simply want to run Specter from the CLI and not use the Systemd service $(tput sgr0)"
+  echo "$(tput setaf 1)you can run this command at the CLI:$(tput sgr0)"
+  echo "$(tput setaf 1)python -m cryptoadvance.specter server$(tput sgr0)"
+  echo "$(tput setaf 1)Once you have the Specter server running you will access it via your browser at:$(tput sgr0)"
+  echo "$(tput setaf 1)http://localhost:25441/ or$(tput sgr0)"
+  echo "$(tput setaf 1)https://<your domain>:25441/$(tput sgr0)"
+  echo "$(tput setaf 1)You will likely need to make an entry in /etc/hosts if you use a certificate$(tput sgr0)"
+  echo "$(tput setaf 1) $(tput sgr0)"
+
+  
+}
+
+
+
