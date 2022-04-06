@@ -1,7 +1,7 @@
 pkgbase = sonata-git
 	pkgdesc = Elegant GTK+3 music client for MPD (Git Version)
 	pkgver = 1.7.0.r11.g48f7456
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/multani/sonata
 	arch = i686
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = sonata-git
 	provides = sonata
 	conflicts = sonata
 	conflicts = sonata-svn
-	source = git+git://github.com/multani/sonata.git
+	source = git+https://github.com/multani/sonata.git
 	md5sums = SKIP
 
 pkgname = sonata-git

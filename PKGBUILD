@@ -6,7 +6,7 @@
 _pkgname=sonata
 pkgname=sonata-git
 pkgver=1.7.0.r11.g48f7456
-pkgrel=1
+pkgrel=2
 pkgdesc='Elegant GTK+3 music client for MPD (Git Version)'
 url='https://github.com/multani/sonata'
 license=('GPL3')
@@ -17,7 +17,7 @@ optdepends=('python-tagpy: metadata editing support'
             'python-dbus: multimedia keys support')
 conflicts=('sonata' 'sonata-svn')
 provides=('sonata')
-source=(git+git://github.com/multani/sonata.git)
+source=(git+https://github.com/multani/sonata.git)
 md5sums=('SKIP')
 
 pkgver() {
