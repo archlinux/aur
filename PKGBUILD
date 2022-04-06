@@ -4,13 +4,13 @@ pkgname="gdlauncher-beta"
 _pkgname="gdlauncher"
 pkgver="1.1.22beta.1"
 _pkgver="1.1.22-beta.1"
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 pkgdesc="GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience"
 url="https://gdevs.io"
 license=('GPL3')
 makedepends=('gendesk' 'nodejs' 'npm' 'rust')
-depends=('libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk3' 'electron' 'p7zip')
+depends=('libnotify' 'libxss' 'libxtst' 'libindicator-gtk3' 'libappindicator-gtk3' 'electron16' 'p7zip')
 conflicts=('gdlauncher' 'gdlauncher-beta-bin' 'gdlauncher-appimage' 'gdlauncher-git' 'gdlauncher-bin' 'gdlauncher-appimage')
 provides=('gdlauncher')
 source=("https://github.com/gorilla-devs/GDLauncher/archive/refs/tags/v${_pkgver}.tar.gz"
@@ -59,7 +59,7 @@ package() {
 
     # Create run script
     install -d -m755 "${pkgdir}/usr/bin/"
-    printf '#!/bin/sh\ncd /usr/lib/gdlauncher/\nexec electron . "$@"' > "${pkgdir}/usr/bin/gdlauncher"
+    printf '#!/bin/sh\ncd /usr/lib/gdlauncher/\nexec electron16 . "$@"' > "${pkgdir}/usr/bin/gdlauncher"
     chmod a+x "${pkgdir}/usr/bin/gdlauncher"
 
     # Desktop entry

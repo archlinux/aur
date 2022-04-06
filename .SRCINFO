@@ -1,7 +1,7 @@
 pkgbase = gdlauncher-beta
 	pkgdesc = GDLauncher is simple, yet powerful Minecraft custom launcher with a strong focus on the user experience
 	pkgver = 1.1.22beta.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gdevs.io
 	arch = x86_64
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = gdlauncher-beta
 	depends = libxtst
 	depends = libindicator-gtk3
 	depends = libappindicator-gtk3
-	depends = electron
+	depends = electron16
 	depends = p7zip
 	provides = gdlauncher
 	conflicts = gdlauncher
