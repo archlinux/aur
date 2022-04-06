@@ -67,7 +67,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make all
+  make -j $(nproc) all
 #  make htmldocs
 }
 
