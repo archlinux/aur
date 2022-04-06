@@ -8,10 +8,10 @@ pkgdesc='Simple cross-plaform colored terminal text in Python 2'
 arch=('any')
 url='https://github.com/tartley/colorama'
 license=('BSD')
-depends=('python2' 'python2-setuptools')
+depends=('python2')
+makedepends=('git' 'python2-setuptools')
 source=('git+https://github.com/tartley/colorama.git')
 sha256sums=('SKIP')
-makedepends=('git')
 provides=('python2-colorama')
 conflicts=('python2-colorama')
 
@@ -59,5 +59,3 @@ package() {
   # Install Documentation
   install -D -m644 README.rst "${pkgdir}/usr/share/doc/${pkgname}/README.rst"
 }
-
-# vim:set ts=2 sw=2 et:
