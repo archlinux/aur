@@ -1,7 +1,7 @@
 pkgbase = zulip-desktop
 	pkgdesc = Real-time team chat based on the email threading model
 	pkgver = 5.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zulipchat.com
 	arch = i686
 	arch = x86_64
