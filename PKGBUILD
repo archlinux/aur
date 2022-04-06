@@ -6,7 +6,7 @@
 
 pkgname=rustdesk
 pkgver=1.1.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!"
 arch=('any')
 url="https://github.com/rustdesk/rustdesk"
