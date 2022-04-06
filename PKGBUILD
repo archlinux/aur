@@ -4,7 +4,7 @@
 
 pkgname=wiki-js
 _pkgname=wiki-js
-pkgver=2.5.274
+pkgver=2.5.277
 pkgrel=1
 pkgdesc="Wiki.js | A modern, lightweight and powerful wiki app built on Node.js"
 license=('AGPL3')
@@ -14,17 +14,17 @@ optdepends=('mariadb' 'postgresql')
 backup=('etc/wiki-js/config.yml')
 url='https://github.com/Requarks/wiki'
 source=(
-	"wiki-js-${pkgver}.tar.gz::https://github.com/Requarks/wiki/releases/download/${pkgver}/wiki-js.tar.gz"
+	"wiki-js-${pkgver}.tar.gz::https://github.com/requarks/wiki/releases/download/v${pkgver}/wiki-js.tar.gz"
 	"wiki-js.service"
 	"wiki-js.sysusers"
 	"wiki-js.tmpfiles"
 	"config.sample.yml.patch"
 )
-sha256sums=('9779af942fc3209d96df12ddc1257680244374d19c83a3945b87b520e8a19724'
+sha256sums=('60bc340d1e1d6cf7cd639ea53726c44055c51153d9f7db109300e5ea0b73e341'
             '39bfd1390d3f2eba2522d750b89176aeefcdfdd1e3b2ba4d10276f1b7d3c55e8'
             '4e7fc467c43f5de2d1a355036abccb2ba23a6b10e1a93ae2d645e4352646bd55'
             '501ee03026279e6d01736767a590dd97ada35240896fc90a7a7c67c0a890b4d2'
-            '0924b4ae73e4787ff50f0f21eb43bb2c41e06a2cc03d841de90f95d570d0e7e3')
+            '02252fa88d1d02bddca7723f5c9a016b7f523587dd1d9695248dec8e63e56e1a')
 
 prepare() {
 	cd "$srcdir"

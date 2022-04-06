@@ -1,8 +1,11 @@
---- wiki-2.5.170/config.sample.yml      2020-10-26 04:26:55.000000000 +0100
-+++ wiki-2.5.170/config.sample.yml  2020-12-14 21:30:47.762175578 +0100
-@@ -126,4 +126,4 @@ ha: false
+--- config.sample.yml	2022-04-06 13:55:47.916214588 +0000
++++ config.sample.yml.orig	2022-04-06 13:56:15.690352795 +0000
+@@ -136,7 +136,7 @@
  # Data Path
  # ---------------------------------------------------------------------
  # Writeable data path used for cache and temporary user uploads.
 -dataPath: ./data
 +dataPath: /var/lib/wiki-js/data
+ 
+ # ---------------------------------------------------------------------
+ # Body Parser Limit
