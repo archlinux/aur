@@ -1,7 +1,7 @@
 pkgbase = r7-office
 	pkgdesc = An enterprise office suite that combines text, spreadsheet and presentation editors
-	pkgver = 6.4.2
-	pkgrel = 3
+	pkgver = 7.0.2
+	pkgrel = 1
 	url = https://r7-office.ru/
 	arch = x86_64
 	license = custom:JSC R7
@@ -30,6 +30,6 @@ pkgbase = r7-office
 	options = !strip
 	options = !emptydirs
 	source = r7-office.deb::https://download.r7-office.ru/ubuntu/r7-office.deb
-	sha256sums = 16f3f775da57c07b9c528dcab8fe3a32266335e05d546069a386da2a0bb03dd7
+	sha256sums = b4b6262d78b5a548b78c0636117038c491dc21945bc909da830ff351185c3269
 
 pkgname = r7-office
