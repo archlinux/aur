@@ -22,12 +22,12 @@ prepare() {
 
 build() {
   cd "${srcdir}/gf"
-  cmake -DGF_USE_EMBEDDED_LIBS=ON \
-        -DGF_BUILD_GAMES=OFF \
+  cmake -DGF_DEBUG=OFF \
         -DGF_BUILD_EXAMPLES=OFF \
-        -DGF_BUILD_DOCUMENTATION=OFF \
-        -DGF_SINGLE_COMPILTATION_UNIT=OFF \
-        -DGF_DEBUG=OFF \
+        -DGF_BUILD_DOCUMENTATION=ON \
+        -DGF_BUILD_GAMES=OFF \
+        -DGF_USE_EMBEDDED_LIBS=ON \
+        -DGF_SINGLE_COMPILTATION_UNIT=ON \
         -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_PREFIX=/usr \
         .
