@@ -1,16 +1,16 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=python-mne
 _name=${pkgname#python-}
-pkgver=0.24.1
+pkgver=1.0.0
 pkgrel=1
-pkgdesc="Open-source Python software for exploring, visualizing, and analyzing human neurophysiological data: MEG, EEG, sEEG, ECoG, and more"
+pkgdesc="Python package for exploring, visualizing, and analyzing human neurophysiological data: MEG, EEG, sEEG, ECoG, and more"
 arch=('any')
 url="https://mne.tools/stable/index.html"
 license=('BSD')
 groups=()
-depends=('python' 'python-numpy' 'python-scipy')
+depends=('python' 'python-numpy' 'python-scipy' 'python-matplotlib' 'python-pooch' 'python-tqdm' 'python-jinja' 'python-decorator')
 makedepends=()
-optdepends=('python-matplotlib' 'python-scikit-learn' 'python-pandas')
+optdepends=('python-scikit-learn' 'python-pandas')
 provides=()
 conflicts=()
 replaces=()
@@ -20,7 +20,7 @@ install=
 changelog=
 source=(https://files.pythonhosted.org/packages/source/${_name:0:1}/$_name/$_name-$pkgver.tar.gz)
 noextract=()
-sha1sums=('3d68641c5c54102019fd5a1b8a06edc83a6f080f')
+sha1sums=('d328300e4f1d6056aeb968c4579ef5f892b6b94e')
 
 build() {
     cd "$srcdir/$_name-$pkgver"
