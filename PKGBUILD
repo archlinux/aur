@@ -1,8 +1,8 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 _use_suffix=1
-pkgver=17.3.1
-_commit=9ace5b3491881cb4230a921bb4809edeb393858c
+pkgver=17.4.0
+_commit=0b031afcefa031c322843d5964e999768b95af0a
 _chromiumver=98.0.4758.141
 _gcc_patchset=5
 # shellcheck disable=SC2034
