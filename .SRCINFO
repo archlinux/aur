@@ -1,7 +1,7 @@
 pkgbase = trafficserver
 	pkgdesc = Apache Traffic Server
 	pkgver = 9.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://trafficserver.apache.org/
 	install = trafficserver.install
 	changelog = trafficserver.changelog

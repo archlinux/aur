@@ -4,7 +4,7 @@
 
 pkgname='trafficserver'
 pkgver=9.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Apache Traffic Server"
 url="http://trafficserver.apache.org/"
 license=('Apache')
