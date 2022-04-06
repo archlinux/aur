@@ -1,8 +1,8 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 _pkgname=qiskit-aer
 pkgname=python-${_pkgname}
-pkgver=0.10.3
-pkgrel=2
+pkgver=0.10.4
+pkgrel=1
 pkgdesc="A high performance simulator for quantum circuits that includes noise models"
 arch=('x86_64')
 url="https://github.com/Qiskit/qiskit-aer"
@@ -32,13 +32,18 @@ makedepends=(
     'python-wheel'
     'spdlog'
 )
+checkdepends=(
+    'python-pytest'
+    'python-fixtures'
+    'python-ddt'
+)
 source=(
     "${_pkgname}-${pkgver}.tar.gz::https://github.com/Qiskit/${_pkgname}/archive/${pkgver}.tar.gz"
     "fix.patch"
 )
 
 sha256sums=(
-    'debc146f4c05c4187cda24bcf9d690ab9845d266c706d9685c145e6795e11443'
+    '7fe0f95863ee9190fadbf846ee5a7aa220b22c8a1ba5ec156cf2075af1bb3e80'
     'c847b08cf47e384bfec3c75aa38cc9b03f9c9976b40956f2b332a946f1a2c124'
 )
 
@@ -51,6 +56,14 @@ build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     DISABLE_CONAN=ON python -m build --wheel --no-isolation
 }
+
+# TODO
+#check() {
+#    cd "${srcdir}/${_pkgname}-${pkgver}"
+#    python -m installer --destdir="$srcdir/test" dist/*.whl
+#    export PYTHONPATH="$srcdir"/test/usr/lib/python3.10/site-packages
+#    python -m pytest test
+#}
 
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
