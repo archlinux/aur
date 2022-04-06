@@ -1,4 +1,7 @@
 # Maintainer: Rene Benner <renebenner + arch at gmail dot com>
+# Maintainer: Chris Lane <aur at chrislane dot com>
+# Contributor: Troy Engel <troyengel + arch at gmail dot com>
+# Contributor: Callum Denby <me@callumdenby.com>
 pkgname=aws-session-manager-plugin
 pkgver=1.2.312.0
 pkgrel=2
