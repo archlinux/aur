@@ -5,7 +5,7 @@ _pkgname=${pkgname/-bin}
 _githuborg=skycoin
 pkgdesc="Skywire: Decentralize the web. Skycoin.com. Debian package"
 pkgver='0.6.0'
-pkgrel=15
+pkgrel=16
 _pkgver=${pkgver}
 _pkgrel=${pkgrel}
 _tag_ver="v${_pkgver}"
@@ -85,10 +85,10 @@ _systemddir="etc/systemd/system"
 _skybin="${_skydir}/bin"
 [[ -d ${_pkgdir} ]] && rm -rf ${_pkgdir}
 mkdir -p ${_pkgdir}/usr/bin
-mkdir -p ${_pkgdir}/usr/bin/apps
-mkdir -p ${_pkgdir}/${_skydir}/scripts
-#dirs that would be created by the visor at runtime
+mkdir -p ${_pkgdir}/${_skydir}/bin
+mkdir -p ${_pkgdir}/${_skydir}/apps
 mkdir -p ${_pkgdir}/${_skydir}/local
+mkdir -p ${_pkgdir}/${_skydir}/scripts
 
 cd $_pkgdir
 _msg2 'installing binaries'
@@ -116,7 +116,6 @@ done
 
 _msg2 'Correcting symlink names'
 ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}
-ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}-hypervisor
 
 #make sure everything is executable
 chmod +x ${_pkgdir}/usr/bin/*
