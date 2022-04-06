@@ -1,0 +1,16 @@
+pkgbase = themispp
+	pkgdesc = Open-source high-level cryptographic services library.
+	pkgver = 0.14.1
+	pkgrel = 1
+	url = https://github.com/cossacklabs/themis.git
+	arch = x86_64
+	license = Apache
+	makedepends = make
+	makedepends = gcc
+	depends = openssl
+	source = https://github.com/cossacklabs/themis/archive/refs/tags/0.14.1.tar.gz
+	source = makefile-ldconfig.patch
+	md5sums = 2964eeb81492270da6bb1b43fa0a89dc
+	md5sums = 5d5db18b2d72d7db21cd7f9d701c2221
+
+pkgname = themispp

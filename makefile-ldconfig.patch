@@ -1,0 +1,14 @@
+diff --git a/Makefile b/Makefile
+index d4eaba55..c5aaefd5 100644
+--- a/Makefile
++++ b/Makefile
+@@ -476,9 +476,6 @@ install: all install_soter install_themis
+ ifeq ($(IS_CENTOS),true)
+ 	-@mkdir -p "$$(dirname "$(LD_SO_CONF)")"
+ 	-@echo "$(libdir)" > "$(LD_SO_CONF)" && echo "Added $(libdir) to $(LD_SO_CONF)"
+-endif
+-ifdef IS_LINUX
+-	-@ldconfig
+ endif
+ 	@if [ -e /usr/include/themis/themis.h ] && [ -e /usr/local/include/themis/themis.h ]; then \
+ 	     echo ""; \
