@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=pomerium-cli-bin
-pkgver=0.17.0
+pkgver=0.17.1
 pkgrel=1
 pkgdesc='CLI component for Pomerium'
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -13,10 +13,10 @@ source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::$url/releases/download/v${pk
 source_armv6h=("${pkgname}-${pkgver}-armv6h.tar.gz::$url/releases/download/v${pkgver}/pomerium-cli-linux-armv6.tar.gz")
 source_armv7h=("${pkgname}-${pkgver}-armv7h.tar.gz::$url/releases/download/v${pkgver}/pomerium-cli-linux-armv7.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::$url/releases/download/v${pkgver}/pomerium-cli-linux-arm64.tar.gz")
-sha256sums_x86_64=('4056240d63d0b11d3cd29be58e95a17f1868efd4c858e6a863ea114a3620cc91')
-sha256sums_armv6h=('3e0a014ae1cad9e95cb64795bb08f4103cf1cade2ba93c91aa3e431e3693e03d')
-sha256sums_armv7h=('f485ee49fd776f4e0f588a9174586885772f0c37442dc9bece6a16ad3f90eb46')
-sha256sums_aarch64=('69abfcc9220ab7010506256ee3a83c289c3c65a5c2ca6e5527adbee502da22a9')
+sha256sums_x86_64=('4e4620952787620f8dabc0d24841213ef6a49e5af3a10f823f879ba5cf371584')
+sha256sums_armv6h=('8afc3ab57540eaf4098994a56de3a6a13003f9a064db482e4144996496b29ff2')
+sha256sums_armv7h=('7fb8f21536c590da5c2ac31aab828eabfa52b48dbbf977622863b9f831d57710')
+sha256sums_aarch64=('bbc9eab003212ebbff4d608c5c722130d3287365feb0d8a5225595f82dd76206')
 
 package() {
 	install -D pomerium-cli -t "${pkgdir}/usr/bin"
