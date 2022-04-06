@@ -2,9 +2,8 @@
 # Do not forget to run `makepkg --printsrcinfo > .SRCINFO`
 
 _pkgname=jgmenu
-_pkgver=4.4.0
 pkgname=${_pkgname}-git
-pkgver=r1483.c258a6c
+pkgver=4.4.0.r1.gc258a6c
 pkgrel=1
 pkgdesc="Simple, independent, contemporary-looking X11 menu, designed for scripting, ricing and tweaking. Compiled with gtktheme, lx and pmenu support"
 arch=('x86_64')
@@ -19,7 +18,7 @@ sha256sums=("SKIP")
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
