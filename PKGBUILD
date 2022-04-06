@@ -1,6 +1,6 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
 pkgname=python-ly-git
-pkgver=0.9.6.r3.g7bc9577
+pkgver=0.9.7.r1.gf24b840
 pkgrel=1
 pkgdesc="Python modules to parse, manipulate or create documents in LilyPond format."
 arch=('any')
@@ -11,11 +11,8 @@ depends=('python')
 provides=("${pkgname%-git}=$pkgver-$pkgrel")
 conflicts=("${pkgname%-git}" "ly")
 options=(!emptydirs)
-source=("$pkgname"::'git://github.com/wbsoft/python-ly.git')
+source=("$pkgname"::'git+https://github.com/frescobaldi/python-ly.git')
 md5sums=('SKIP')
-
-_gitroot='https://github.com/wbsoft/python-ly.git'
-_gitname='python-ly'
 
 pkgver() {
   cd "$srcdir/$pkgname"
