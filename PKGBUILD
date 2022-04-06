@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=json-schema-for-humans
-pkgver=0.40
+pkgver=0.40.2
 pkgrel=1
 pkgdesc="Quickly generate HTML documentation from a JSON schema"
 arch=('any')
@@ -29,20 +29,8 @@ checkdepends=(
   'python-beautifulsoup4'
 )
 
-source=(
-  "include-schema.patch"
-  "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
-)
-sha256sums=(
-  '0119a143b4ba43d252c9277413ba5d09b9ab6d86e70ed248b1847a526ddf7fd3'
-  '59b2fbb0d0d8d8a0ed690fb5d0315eaf60463846bc133247f1a0a9a59f961f77'
-)
-
-prepare() {
-  cd "$pkgname-$pkgver"
-
-  patch --forward --strip=1 --input="${srcdir}/include-schema.patch"
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('49d76c41555068f0eee8a34ded49684ddf4eb92e2876b94c3b115ac5dbf5642f')
 
 build() {
   cd "$pkgname-$pkgver"
