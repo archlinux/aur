@@ -1,6 +1,6 @@
 # Maintainer: Noah Vogt <noah@noahvogt.com>
 pkgname=issuu-dl
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="a simple downloader for issuu.com (supports pdf and cbz output formats)"
 arch=("any")
