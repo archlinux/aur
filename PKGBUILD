@@ -3,8 +3,8 @@
 
 pkgname=python-pygatt
 _module=pygatt
-pkgver=4.0.3
-pkgrel=3
+pkgver=4.0.5
+pkgrel=1
 pkgdesc="Python Bluetooth LE (Low Energy) and GATT Library"
 url="https://github.com/peplin/pygatt"
 depends=('python-enum-compat' 'python-pexpect' 'python-pyserial')
@@ -12,7 +12,7 @@ license=('APACHE')
 arch=('any')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('b1db8e294fc9c68f4dee66e7e2bdde3240c18c2495237059b83f3e7ca9897466')
+sha256sums=('7f4e0ec72f03533a3ef5fdd532f08d30ab7149213495e531d0f6580e9fcb1a7d')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
