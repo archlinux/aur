@@ -11,7 +11,7 @@ pkgbase = clash-meta-bin
 	source = clash-meta-bin-v1-1.10.0.gz::https://github.com/MetaCubeX/Clash.Meta/releases/download/v1.10.0/Clash.Meta-linux-amd64v1-v1.10.0.gz
 	source = clash-meta.service
 	source = config.yaml
-	sha256sums = 722391375a5c66d650cdb0012e0fea69b8a3706a03198329af089fde1088d812
+	sha256sums = 3fcce7982c32bab135334e9a53cb0ec9e53f1766af626b0c2c50023c815969e4
 	sha256sums = 83377618a3b381348f274f48bc40e2ba8b17a4f17dc8e9f5b16d76404c34ae8d
 	sha256sums = 8fe0a2163ef5a1ac6ab0692921816187350d05d5f1cc4613080d7facb36eedc8
 

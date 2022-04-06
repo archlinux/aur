@@ -1,15 +1,5 @@
 ## Maintainer: adiprasetya <ignilium.inc@gmail.com>
 
-
-
-
-license=("unknown")
-depends=()
-
-
-
-
-
 pkgname=clash-meta-bin
 pkgver=1.10.0
 pkgrel=2
