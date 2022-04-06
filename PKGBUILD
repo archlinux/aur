@@ -3,7 +3,7 @@
 # Contributor: Giovanni Harting <539@idlegandalf.com>
 
 pkgname=cryptpad
-pkgver=4.13.0
+pkgver=4.14.0
 pkgrel=1
 pkgdesc="Realtime collaborative visual editor with zero knowlege server"
 arch=('any')
@@ -17,11 +17,11 @@ optdepends=('nginx: HTTP server providing TLS'
 backup=(etc/webapps/"$pkgname"/config.js
         etc/nginx/sites-available/"$pkgname".conf)
 options=(!strip) # There are no ELF files, no need to strip anything.
-source=("$pkgname-$pkgver.tar.gz::https://github.com/xwiki-labs/cryptpad/archive/$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz"
         "cryptpad.service"
         "cryptpad.sysusers"
         "cryptpad.tmpfiles")
-sha256sums=('e0b27dc99593e4a3c8c6ce4addb42b3fd6fbe4e5c28628017d665d0f4d72e782'
+sha256sums=('c49cb335b473ecf6b4e9904a8e702eb66a27fe23badc8f7cea144baedda96b27'
             '792da71f113aa15177a654e08a31dabd9be864ceb42f64d55cc46d18875c475b'
             '999a271d64b75c7c447fdb21486b27463c04679677e57ea9551a3b0429c618f6'
             '986c1a67e5a00b9a766798933f1774995736a0ed345427509bdc522ad71d7e93')
