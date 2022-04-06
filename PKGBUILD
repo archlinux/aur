@@ -2,7 +2,7 @@
 # Container: gbr <gbr@protonmail.com>
 
 pkgname=vibrantlinux
-pkgver=2.1.9
+pkgver=2.1.10
 pkgrel=1
 pkgdesc="A tool to automate managing your screen's saturation depending on what programs are running"
 arch=(x86_64)
