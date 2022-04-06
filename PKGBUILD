@@ -2,7 +2,7 @@
 pkgname=thelounge-git
 _realname=thelounge
 pkgver=v4.3.1.rc.1.r1.gf440b67d
-pkgrel=3
+pkgrel=4
 pkgdesc='Modern self-hosted web IRC client'
 url='https://thelounge.chat/'
 arch=('any')
@@ -62,16 +62,16 @@ build() {
 
 
 package() {
-	install -dm755 "$pkgdir/var/lib/thelounge"
-	cp -r "$srcdir/$_realname/_build/node_modules" "$pkgdir/var/lib/thelounge"
+	install -dm755 "$pkgdir/usr/lib/thelounge"
+	cp -r "$srcdir/$_realname/_build/node_modules" "$pkgdir/usr/lib/thelounge"
 
 	install -dm755 "$pkgdir/usr/bin/"
-	ln -s "/var/lib/thelounge/node_modules/thelounge/index.js" "$pkgdir/usr/bin/thelounge"
+	ln -s "/usr/lib/thelounge/node_modules/thelounge/index.js" "$pkgdir/usr/bin/thelounge"
 
 	# Non-deterministic race in npm gives 777 permissions to random directories.
 	# See https://github.com/npm/npm/issues/9359 for details.
 	# yarn is probably not much better
-	find "${pkgdir}"/var/lib/thelounge -type d -exec chmod 755 {} +
+	find "${pkgdir}"/usr/lib/thelounge -type d -exec chmod 755 {} +
 	chown -R root:root "${pkgdir}"
 
 	# add default config
