@@ -1,0 +1,13 @@
+pkgbase = kiss2ugo
+	pkgdesc = Lilac build API
+	pkgver = 20220406
+	pkgrel = 1
+	url = https://github.com/a-wing/kiss2ugo
+	arch = x86_64
+	license = unkown
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/a-wing/kiss2ugo.git
+	md5sums = SKIP
+
+pkgname = kiss2ugo
