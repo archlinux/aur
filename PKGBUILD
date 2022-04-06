@@ -1,6 +1,6 @@
 # Maintainer: Raphaël Doursenaud <rdoursenaud@free.fr>
 pkgname=qpageview-git
-pkgver=0.5.1.r7.g83dc89f
+pkgver=0.6.1.r4.gc67ad39
 pkgrel=1
 pkgdesc="A page based document viewer widget for Qt5/PyQt5."
 arch=('any')
@@ -19,11 +19,8 @@ optdepends=(
 provides=("${pkgname%-git}=$pkgver-$pkgrel")
 conflicts=("${pkgname%-git}" "ly")
 options=(!emptydirs)
-source=("$pkgname"::'git://github.com/frescobaldi/qpageview.git')
+source=("$pkgname"::'git+https://github.com/frescobaldi/qpageview.git')
 md5sums=('SKIP')
-
-_gitroot='https://github.com/frescobaldi/qpageview.git'
-_gitname='qpageview'
 
 pkgver() {
   cd "$srcdir/$pkgname"
