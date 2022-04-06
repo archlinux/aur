@@ -1,6 +1,6 @@
 pkgbase = ff2mpv-native-messaging-host-librewolf-git
 	pkgdesc = Native Messaging Host for ff2mpv firefox addon. Ported to LibreWolf.
-	pkgver = r45.f087e83
+	pkgver = r46.736fb91
 	pkgrel = 1
 	url = https://github.com/woodruffw/ff2mpv
 	install = ff2mpv.install
@@ -10,7 +10,7 @@ pkgbase = ff2mpv-native-messaging-host-librewolf-git
 	depends = python
 	depends = mpv
 	conflicts = ff2mpv-native-messaging-host-git
-	source = ff2mpv::git://github.com/woodruffw/ff2mpv.git
+	source = ff2mpv::git+https://github.com/woodruffw/ff2mpv.git
 	source = point-ff2mpv-config-to-python-location.patch
 	sha256sums = SKIP
 	sha256sums = 781abb58bf62138ad603bc67e3227fb8d421091daf9e7475c45d971730b34090

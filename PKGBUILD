@@ -4,7 +4,7 @@
 _shortpkgname=ff2mpv
 _pkgname=$_shortpkgname-native-messaging-host
 pkgname=$_pkgname-librewolf-git
-pkgver=r45.f087e83
+pkgver=r60.736fb91
 pkgrel=1
 pkgdesc='Native Messaging Host for ff2mpv firefox addon. Ported to LibreWolf.'
 license=('MIT')
@@ -14,7 +14,7 @@ makedepends=('git')
 depends=('python' 'mpv')
 conflicts=('ff2mpv-native-messaging-host-git')
 install=$_shortpkgname.install
-source=("$_shortpkgname"::"git://github.com/woodruffw/ff2mpv.git"
+source=("$_shortpkgname"::"git+https://github.com/woodruffw/ff2mpv.git"
         "point-ff2mpv-config-to-python-location.patch")
 sha256sums=('SKIP'
             '781abb58bf62138ad603bc67e3227fb8d421091daf9e7475c45d971730b34090')
