@@ -4,7 +4,7 @@
 # Contributor: Mr. Outis <mroutis@protonmail.com>
 
 pkgname=dvc
-pkgver=2.10.0
+pkgver=2.10.1
 pkgrel=1
 pkgdesc='Open-source version control system for data science projects'
 arch=(any)
@@ -19,6 +19,7 @@ _pydeps=(aiohttp-retry
          dictdiffer
          diskcache
          distro
+         dvc-render
          flatten-dict
          flufl-lock
          fsspec
@@ -34,7 +35,6 @@ _pydeps=(aiohttp-retry
          packaging
          pathspec
          ply
-         pyasn1
          pydot
          pygtrie
          requests
@@ -77,7 +77,7 @@ makedepends=(python-{build,installer} python-setuptools-scm{,-git-archive} pytho
 #               python-requests)
 _archive=("$pkgname-$pkgver")
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('ac07c3f185e7fd2dae689c7507ed99438d1247c8742eb2d182bf98d78fcdcce8')
+sha256sums=('7dd19d74ca7088167e48269865407a3b402c1de31795b16c77a051280f9a92bf')
 
 build() {
 	cd "$_archive"
