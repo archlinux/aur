@@ -1,7 +1,7 @@
 # Maintainer: Aleksandr Beliaev <trap000d at gmail dot com>
 
 pkgname=quarto-cli
-pkgver=0.9.188
+pkgver=0.9.194
 pkgrel=1
 _denodomver=0.1.17-alpha
 pkgdesc="Quarto is an open-source scientific and technical publishing system built on [Pandoc](https://pandoc.org)."
@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/quarto-dev/quarto-cli/a
         "https://github.com/b-fuze/deno-dom/archive/refs/tags/v${_denodomver}.tar.gz"
        )
 
-sha256sums=('e36da23affba203bd424c468626d9db5c16b2f250554c50ea324da0047205768'
+sha256sums=('3196f89a01849870e99356a18827cf3a59104fbd754c69ef9e569d62f7ee14c7'
             '5d5f7f6f87966e8adc4106fb2e37d189b70a5f0935abfd3e8f48fce4131d3632')
 
 build() {
@@ -27,18 +27,18 @@ build() {
   source configuration
   export QUARTO_VERSION=${pkgver}
 
-  mkdir -p "package/dist/bin"
-  cd "package/dist/bin"
+  mkdir -p "package/dist/bin/tools"
+  cd "package/dist/bin/tools"
   cp /usr/bin/deno .
-  ./deno cache --reload ../../../src/quarto.ts --unstable --importmap=../../../src/import_map.json
-  cd ../../src/
-  ../dist/bin/deno run --unstable --allow-env --allow-read --allow-write --allow-run --allow-net --allow-ffi --importmap=import_map.json bld.ts configure --log-level info
-  ../dist/bin/deno run --unstable --allow-env --allow-read --allow-write --allow-run --allow-net --allow-ffi --importmap=import_map.json bld.ts prepare-dist --log-level info
+  ./deno cache --reload ../../../../src/quarto.ts --unstable --importmap=../../../../src/import_map.json
+  cd ../../../src/
+  ../dist/bin/tools/deno run --unstable --allow-env --allow-read --allow-write --allow-run --allow-net --allow-ffi --importmap=import_map.json bld.ts configure --log-level info
+  ../dist/bin/tools/deno run --unstable --allow-env --allow-read --allow-write --allow-run --allow-net --allow-ffi --importmap=import_map.json bld.ts prepare-dist --log-level info
 
   msg "Building Deno Stdlib..."
   cd "${srcdir}/deno-dom-${_denodomver}"
   cargo build --release
-  cp target/release/libplugin.so "${srcdir}/${pkgname}-${pkgver}/package/dist/bin/deno_dom"
+  cp target/release/libplugin.so "${srcdir}/${pkgname}-${pkgver}/package/dist/bin/tools/deno_dom"
 
 }
 
@@ -47,19 +47,20 @@ package() {
 
   msg "Tidying up..."
   ## 1. We have got pandoc already installed in /usr/bin
-  rm package/dist/bin/pandoc
-  ln -sfT /usr/bin/pandoc package/dist/bin/pandoc
+  rm package/dist/bin/tools/pandoc
+  ln -sfT /usr/bin/pandoc package/dist/bin/tools/pandoc
   ## And deno
-  ln -sfT /usr/bin/deno package/dist/bin/deno
+  ln -sfT /usr/bin/deno package/dist/bin/tools/deno
   ## And dart-sass
-  rm -rf package/dist/bin/dart-sass/*
-  ln -sfT /usr/bin/sass package/dist/bin/dart-sass/sass
+  rm -rf package/dist/bin/tools/dart-sass/*
+  ln -sfT /usr/bin/sass package/dist/bin/tools/dart-sass/sass
   ## as well as esbuild
-  rm package/dist/bin/esbuild
-  ln -sfT /usr/bin/esbuild package/dist/bin/esbuild
+  rm package/dist/bin/tools/esbuild
+  ln -sfT /usr/bin/esbuild package/dist/bin/tools/esbuild
 
-  ## 2. Remove symlink created by build script in $HOME/bin directory (in case if it exists)
-  rm $HOME/bin/quarto
+  ## 2. Remove symlinks created by build script in ~/bin and ~/.local/bin directories
+  rm -f "~/.local/bin/quarto"
+  rm -f "~/bin/quarto"
 
   install -d ${pkgdir}/usr/{bin,lib/${pkgname}/{bin,share}}
   cp -R package/dist/* "${pkgdir}/usr/lib/${pkgname}"
