@@ -9,4 +9,4 @@ Target = *
 Description = Pac-Man beep
 Depends = beep
 When = PreTransaction
-Exec = /usr/local/bin/pacman-beep.sh
+Exec = /usr/bin/pacman-beep.sh

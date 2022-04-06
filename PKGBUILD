@@ -2,12 +2,12 @@
 # Contributor: alex19ep
 pkgname=pacman-beep-hook
 pkgver=0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='hook to play Pac-Man theme using pcspkr before and after any transaction'
 arch=(any)
 depends=(beep)
 source=('pacman-beep-pre.hook' 'pacman-beep-post.hook' 'pacman-beep.sh')
-sha256sums=('1077b23b7af3c7f14a798c3f79e8e50a3833666dc1be1fe03b13523f1dbd8ff5' '51a39193564ed70b0dc60c895548d68324f10d4d75a8a514828cf2be28ed21ac' 'fe79120d2d63b0f49daddbb15df15cae693cdf582cb9ade139e6256cadec2e1a')
+sha256sums=('35d7de76434c8d5c1fe8392c8a9cef7ad42f2b1c779cf09bc9398635b020f26f' 'bf5c93117091ecf6088f52960ab538a0d23ff9920126be5c7aefd40e16bc7baa' 'fe79120d2d63b0f49daddbb15df15cae693cdf582cb9ade139e6256cadec2e1a')
 package() {
     install -Dm0644 -t "$pkgdir/usr/share/libalpm/hooks/" ${source[0]}
     install -Dm0644 -t "$pkgdir/usr/share/libalpm/hooks/" ${source[1]}
