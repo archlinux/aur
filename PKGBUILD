@@ -2,7 +2,7 @@
 
 _pkgbase=mautrix-facebook
 pkgname=${_pkgbase}-git
-pkgver=r678.e4259c5
+pkgver=r702.f8c78c4
 pkgrel=1
 pkgdesc="A double puppeting Facebook bridge with multi-user support for Hangouts"
 arch=(any)
@@ -27,7 +27,7 @@ depends=(python
 	     python-setuptools
 	    )
 makedepends=(git)
-optdepends=()
+optdepends=('python-aiosqlite: for sqlite database backend')
 source=("${_pkgbase}::git+https://github.com/tulir/${_pkgbase}"
 	    "usr-share.patch"
 	    "README"
