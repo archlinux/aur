@@ -1,0 +1,23 @@
+From 9d40c75c6fe7bb2215561a261248c60abf9b08a9 Mon Sep 17 00:00:00 2001
+From: Florian Olbrich <florian.olbrich@oth-regensburg.de>
+Date: Tue, 25 Jan 2022 09:03:31 +0100
+Subject: [PATCH] Fixed problem with virsh response evaluated in ExecStop
+ depending on locale.
+
+---
+ virtctl@.service | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/virtctl@.service b/virtctl@.service
+index dbbbbd3..4792af4 100644
+--- a/virtctl@.service
++++ b/virtctl@.service
+@@ -45,7 +45,7 @@ ExecStartPost=-/usr/bin/timeout -k 10 50 bash -c '[ -f ${FUNCTIONS} ] && source
+ # while the domain is still running. Allowed to fail.
+ ExecStop=-/usr/bin/timeout -k 10 50 bash -c '[ -f ${FUNCTIONS} ] && source ${FUNCTIONS} ExecStopPre; [ "$(type -t virtctl_stoppre)" = "function" ] && virtctl_stoppre || :'
+ # Shutdown the domain gracefully by sending ACPI shutdown event.
+-ExecStop=/usr/bin/bash -c 'COUNT=0; while [ $COUNT -le 60 ]; do STATE=$(virsh domstate %i 2>&1); if [ "$STATE" = "running" ]; then [ $(($COUNT % 15)) -eq 0 ] && virsh shutdown %i; ((COUNT++)); elif [ "$STATE" = "shut off" ] || [ "${STATE::27}" = "error: failed to get domain" ]; then exit 0; fi; sleep 1; done; exit 1'
++ExecStop=/usr/bin/bash -c 'export LANG=C; COUNT=0; while [ $COUNT -le 60 ]; do STATE=$(virsh domstate %i 2>&1); if [ "$STATE" = "running" ]; then [ $(($COUNT % 15)) -eq 0 ] && virsh shutdown %i; ((COUNT++)); elif [ "$STATE" = "shut off" ] || [ "${STATE::27}" = "error: failed to get domain" ]; then exit 0; fi; sleep 1; done; exit 1'
+ # Provide a (optional) post-stop functionality per domain. Not allowed to fail
+ # because it doesn't make a difference at this point.
+ ExecStopPost=/usr/bin/bash -c '[ -f ${FUNCTIONS} ] && source ${FUNCTIONS} ExecStopPost || :'

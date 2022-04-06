@@ -1,19 +1,26 @@
 pkgname=virtctl-git
-pkgver=r51.42bf776
-pkgrel=1
+pkgver=r53.c601cfe
+pkgrel=2
 arch=('any')
 url="https://github.com/dehesselle/virtctl"
 license=('MIT')
 depends=('libvirt')
 pkgdesc="virtctl is a script and framework for libvirt to integrate it with systemd."
 source=(
-    "$pkgname::git+https://github.com/dehesselle/virtctl.git#tag=v0.3-rc.2"
+    "$pkgname::git+https://github.com/dehesselle/virtctl.git"
+    execstop_locale_fix.patch
 )
-md5sums=('SKIP')
+md5sums=('SKIP'
+         '05a41d5fa551c4285e515b106bb18601')
 
 pkgver() {
   cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$pkgname"
+  patch -i ../execstop_locale_fix.patch
 }
 
 package() {
@@ -26,8 +33,5 @@ package() {
   done
   
   cp -a "virtctl.d" "$pkgdir/etc"
-  for example in instance_{start,stop}post.example; do
-    cp -a $example "$pkgdir/etc/virtctl.d/"
-  done
 }
 
