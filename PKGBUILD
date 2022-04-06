@@ -19,5 +19,5 @@ md5sums=('SKIP')
 package() {
     cd $pkgname
     go build -o $pkgname
-	mv $pkgname ~/.local/bin/
+    mv $pkgname ~/.local/bin/
 }
