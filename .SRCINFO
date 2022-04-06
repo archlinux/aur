@@ -1,6 +1,6 @@
 pkgbase = bubblejail
 	pkgdesc = Bubblewrap based sandboxing utility
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/igo95862/bubblejail
 	arch = any
@@ -20,10 +20,10 @@ pkgbase = bubblejail
 	optdepends = bash-completion: completions for bash shell
 	optdepends = fish: completions for fish shell
 	conflicts = bubblejail-git
-	source = https://github.com/igo95862/bubblejail/releases/download/0.5.1/bubblejail-0.5.1.tar.gz
-	source = https://github.com/igo95862/bubblejail/releases/download/0.5.1/bubblejail-0.5.1.tar.gz.sig
+	source = https://github.com/igo95862/bubblejail/releases/download/0.5.2/bubblejail-0.5.2.tar.gz
+	source = https://github.com/igo95862/bubblejail/releases/download/0.5.2/bubblejail-0.5.2.tar.gz.sig
 	validpgpkeys = 5A3D06576A6A67443DFBE856F1A55E62951B2143
-	sha512sums = 0d7fdc743fbd78f789091b4d3fe3393ef3a8a87d98092320e96c43a900ab0ec6c17b59b5b3e220f7048c69c2d5e9631fc9203458bfa2eaf378b58c2a71724cce
+	sha512sums = eaf7dffdb1d51ca5856dce8f054857b358b256dcf617dc9400f4c3725adb40973fc1c661ac20f96bcfdb13bab1333176c357d2621d46e5fb84815b551ad43ab9
 	sha512sums = SKIP
 
 pkgname = bubblejail
