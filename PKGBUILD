@@ -1,13 +1,14 @@
-# Maintainer:  jyantis <yantis@yantis.net>
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: jyantis <yantis@yantis.net>
 
 pkgname=python2-colorama-git
-pkgver=0.3.3.r116.97e2635
-pkgrel=2
+pkgver=0.4.5.pre.0.4.1.r101.gaff7fb2
+pkgrel=1
 pkgdesc='Simple cross-plaform colored terminal text in Python 2'
 arch=('any')
 url='https://github.com/tartley/colorama'
 license=('BSD')
-depends=('python2' 'python2-setuptools' 'python2-mock')
+depends=('python2' 'python2-setuptools')
 source=('git+https://github.com/tartley/colorama.git')
 sha256sums=('SKIP')
 makedepends=('git')
