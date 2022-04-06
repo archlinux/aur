@@ -24,7 +24,7 @@ pkgbase = liri-qtintegration-git
 	replaces = liri-materialdecoration-git
 	options = debug
 	options = !strip
-	source = platformtheme::git+https://github.com/lirios/qtintegration.git#branch=develop
+	source = qtintegration::git+https://github.com/lirios/qtintegration.git#branch=develop
 	md5sums = SKIP
 
 pkgname = liri-qtintegration-git

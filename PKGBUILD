@@ -17,7 +17,7 @@ groups=('liri-git')
 
 _gitroot="git+https://github.com/lirios/qtintegration.git"
 _gitbranch=develop
-_gitname=platformtheme
+_gitname=qtintegration
 source=(${_gitname}::${_gitroot}#branch=${_gitbranch})
 md5sums=('SKIP')
 
