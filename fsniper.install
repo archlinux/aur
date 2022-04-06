@@ -1,0 +1,26 @@
+post_install() {
+  cat <<HERE
+Start by copying the sample config file and modify it to your taste:
+
+mkdir ~/.config/fsniper
+cp /usr/share/doc/fsniper-git/example.conf ~/.config/fsniper/config
+
+Make sure to use /usr/share/doc/fsniper-git/doc.txt as a reference.
+
+If you want fsniper to start on login and X11/Wayland session is required:
+systemctl --user add-wants graphical-session.target fsniper.service
+
+If you still want it to start automatically but it only requires console:
+systemctl --user enable fsniper.service
+HERE
+}
+
+post_remove() {
+  cat <<HERE
+Consider running
+
+systemctl --user disable fsniper
+
+for all users.
+HERE
+}
