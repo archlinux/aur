@@ -6,8 +6,8 @@ _pkgname=${pkgname}
 _githuborg=${_projectname}
 pkgdesc="Skywire Mainnet Node implementation. Skycoin.com"
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
-pkgver=0.5.1
-pkgrel=2
+pkgver=0.6.0
+pkgrel=1
 #pkgrel=2
 arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
 url="https://${_pkggopath}"
@@ -18,8 +18,8 @@ _scripts=${_pkgname}-scripts
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
 "${_scripts}.tar.gz"
 )
-sha256sums=('f76bba50525c2057a9aba5d3a1fe95d1913890a19bc7ad2ff9113b278bf8d489'
-            '7b5eb54ceb6e5bff241fa64b702827784d28b3460579195d03fa5fd6ea9ec9d3')
+sha256sums=('f1c6ae2dbe36cda0767855ac1b8676751358ca782e2c3d8ee16ba9b0de9b2bc3'
+            '9808ca83ba706effe45a23a242e91a24d637979cc5886e59333e8d560fa8682b')
 prepare() {
 # https://wiki.archlinux.org/index.php/Go_package_guidelines
 mkdir -p ${srcdir}/go/src/github.com/${_githuborg}/ ${srcdir}/go/bin ${srcdir}/go/apps
@@ -49,32 +49,19 @@ cd ${srcdir}/go/src/${_pkggopath}
 _cmddir=${srcdir}/go/src/${_pkggopath}/cmd
 #static compilation with 'musl' avoids glibc runtime deps
 #which cause binary to fail if correct glibc / libc6 is not found on the system
-
-_msg2 "building skychat binary"
-cd ${_cmddir}/apps/skychat
+cd ${_cmddir}/apps
+_app=$(ls)
+for _i in ${_app}; do
+_msg2 "building ${_i} binary"
+cd ${_cmddir}/apps/${_i}
 go build -trimpath --ldflags="" --ldflags "${BUILDINFO} -s -w -linkmode external -extldflags '-static' -buildid=" -o $_GOAPPS .
-_msg2 "building skysocks binary"
-cd ${_cmddir}/apps/skysocks
-go build -trimpath --ldflags="" --ldflags "${BUILDINFO} -s -w -linkmode external -extldflags '-static' -buildid=" -o $_GOAPPS .
-_msg2 "building skysocks-client binary"
-cd ${_cmddir}/apps/skysocks-client
-go build -trimpath --ldflags="" --ldflags "${BUILDINFO} -s -w -linkmode external -extldflags '-static' -buildid=" -o $_GOAPPS .
-_msg2 "building vpn-client binary"
-cd ${_cmddir}/apps/vpn-client
-go build -trimpath --ldflags="" --ldflags "${BUILDINFO} -s -w -linkmode external -extldflags '-static' -buildid=" -o $_GOAPPS .
-_msg2 "building vpn-server binary"
-cd ${_cmddir}/apps/vpn-server
-go build -trimpath --ldflags="" --ldflags "${BUILDINFO} -s -w -linkmode external -extldflags '-static' -buildid=" -o $_GOAPPS .
-_msg2 "building skywire-cli binary"
-cd ${_cmddir}/skywire-cli
-go build -trimpath --ldflags="" --ldflags "${BUILDINFO} -s -w -linkmode external -extldflags '-static' -buildid=" -o $GOBIN .
+done
 _msg2 "building skywire-visor binary"
 cd ${_cmddir}/skywire-visor
 go build -trimpath --ldflags="" --ldflags "${BUILDINFO} -s -w -linkmode external -extldflags '-static' -buildid=" -o $GOBIN .
-_msg2 "building setup-node binary"
-cd ${_cmddir}/setup-node
+_msg2 "building skywire-cli binary"
+cd ${_cmddir}/skywire-cli
 go build -trimpath --ldflags="" --ldflags "${BUILDINFO} -s -w -linkmode external -extldflags '-static' -buildid=" -o $GOBIN .
-
 #binary transparency
 cd $GOBIN
 _msg2 'binary sha256sums'
@@ -83,57 +70,51 @@ cd $_GOAPPS
 sha256sum $(ls)
 }
 
-
-
 package() {
   _msg2 'creating dirs'
+  _pkgdir=${pkgdir}
 #create directory trees or the visor might make them with weird permissions
 _skydir="opt/skywire"
 _skyapps="${_skydir}/apps"
-_skyscripts="${_skydir}/scripts"
-_systemddir="etc/systemd/system"
 _skybin="${_skydir}/bin"
-mkdir -p ${pkgdir}/usr/bin
-mkdir -p ${pkgdir}/${_skydir}/bin
-mkdir -p ${pkgdir}/${_skydir}/apps
-mkdir -p ${pkgdir}/${_skydir}/ssl
-mkdir -p ${pkgdir}/${_skydir}/local
-mkdir -p ${pkgdir}/${_skydir}/dmsgpty
-mkdir -p ${pkgdir}/${_skydir}/${_pkgname}
-mkdir -p ${pkgdir}/${_skydir}/${_pkgname}-save
-mkdir -p ${pkgdir}/${_skydir}/transport_logs
-mkdir -p ${pkgdir}/${_skydir}/skycache
-mkdir -p ${pkgdir}/${_skydir}/hypervisorkey
-mkdir -p ${pkgdir}/${_skydir}/scripts
+_skyscripts="${_skydir}/scripts"
+_systemddir="usr/lib/systemd/system"
+mkdir -p ${_pkgdir}/usr/bin
+mkdir -p ${_pkgdir}/${_skydir}/bin
+mkdir -p ${_pkgdir}/${_skydir}/apps
+mkdir -p ${_pkgdir}/${_skydir}/local
+mkdir -p ${_pkgdir}/${_skydir}/scripts
 
 _msg2 'installing binaries'
-_skywirebins=$( ls ${srcdir}/go/bin )
-for i in ${_skywirebins}; do
-  _install2 ${srcdir}/go/bin/${i} ${_skybin}
+_binaries=("${_pkgname}-cli" "${_pkgname}-visor")
+for i in ${_binaries[@]}; do
+_msg3 "${i}"
+ install -Dm755 ${GOBIN}/${i} ${_pkgdir}/${_skybin}/${i}
+ ln -rTsf ${_pkgdir}/${_skybin}/${i} ${_pkgdir}/usr/bin/${i}
 done
-_msg2 'installing apps'
-_skywireapps=$( ls ${srcdir}/go/apps )
-for i in ${_skywireapps}; do
-  _install2 ${srcdir}/go/apps/${i} ${_skyapps}
+_msg2 'installing app binaries'
+_apps=${srcdir}/apps
+_appbinaries=$( ls "${_GOAPPS}" )
+for i in ${_appbinaries}; do
+  _msg3 "${i}"
+  install -Dm755 ${_GOAPPS}/${i} ${_pkgdir}/${_skyapps}/${i}
+  ln -rTsf ${_pkgdir}/${_skyapps}/${i} ${_pkgdir}/usr/bin/${i}
 done
+
 _msg2 'installing scripts'
-_skywirescripts=$( ls ${srcdir}/${_scripts}/${_pkgname} )
+_scripts1=${srcdir}/${_scripts}/${_pkgname}
+_skywirescripts=$( ls ${_scripts1} )
 for i in ${_skywirescripts}; do
-  _install2 ${srcdir}/${_scripts}/${_pkgname}/${i} ${_skyscripts}
+  _install2 ${_scripts1}/${i} ${_skyscripts}
 done
 
-#rename visor to skywire - matche the skycoin / skycoin-cli of the skycoin wallet
-[[ -f ${pkgdir}/usr/bin/${_pkgname}-visor ]] && mv ${pkgdir}/usr/bin/${_pkgname}-visor ${pkgdir}/usr/bin/${_pkgname}
+ln -rTsf ${_pkgdir}/usr/bin/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}
 
-#install the patched system.d services
+#install the system.d services
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${pkgdir}/${_systemddir}/${_pkgname}.service
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-visor.service ${pkgdir}/${_systemddir}/${_pkgname}-visor.service
-
-#tls key and certificate generation
-install -Dm755 ${srcdir}/${_scripts}/ssl/generate.sh ${pkgdir}/${_skydir}/ssl/generate.sh
-ln -rTsf ${pkgdir}/${_skydir}/ssl/generate.sh ${pkgdir}/usr/bin/${_pkgname}-tls-gen
-install -Dm644 ${srcdir}/${_pkgname}-${pkgver}/static/${_pkgname}-manager-src/ssl/certificate.cnf ${pkgdir}/${_skydir}/ssl/certificate.cnf
 }
+
 
 _install2() {
 _binname="${1##*/}"

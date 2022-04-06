@@ -1,7 +1,7 @@
 pkgbase = skywire
 	pkgdesc = Skywire Mainnet Node implementation. Skycoin.com
-	pkgver = 0.5.1
-	pkgrel = 2
+	pkgver = 0.6.0
+	pkgrel = 1
 	url = https://github.com/skycoin/skywire
 	install = skywire.install
 	arch = i686
@@ -19,9 +19,9 @@ pkgbase = skywire
 	makedepends = go
 	makedepends = musl
 	makedepends = kernel-headers-musl
-	source = https://github.com/skycoin/skywire/archive/refs/tags/v0.5.1.tar.gz
+	source = https://github.com/skycoin/skywire/archive/refs/tags/v0.6.0.tar.gz
 	source = skywire-scripts.tar.gz
-	sha256sums = f76bba50525c2057a9aba5d3a1fe95d1913890a19bc7ad2ff9113b278bf8d489
-	sha256sums = 7b5eb54ceb6e5bff241fa64b702827784d28b3460579195d03fa5fd6ea9ec9d3
+	sha256sums = f1c6ae2dbe36cda0767855ac1b8676751358ca782e2c3d8ee16ba9b0de9b2bc3
+	sha256sums = 9808ca83ba706effe45a23a242e91a24d637979cc5886e59333e8d560fa8682b
 
 pkgname = skywire

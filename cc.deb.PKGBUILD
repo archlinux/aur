@@ -1,33 +1,30 @@
-# Maintainer: Moses Narrow <moe_narrow@use.startmail.com>
-# Maintainer: Rudi [KittyCash] <rudi@skycoinmail.com>
 _projectname=skycoin
 pkgname=skywire
 _pkgname=${pkgname}
 _githuborg=${_projectname}
 pkgdesc="Skywire Mainnet Node implementation. Debian package; cross-compile."
+_pkggopath="github.com/${_githuborg}/${_pkgname}"
+pkgver=0.6.0
+pkgrel=1
+#pkgrel=2
+arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
+url="https://${_pkggopath}"
+license=()
 #set to native architecture with dpkg
 _pkgarch=$(dpkg --print-architecture)
 _pkgarches=('armhf' 'arm64' 'amd64')
 arch=('any')
-#manually version for now
-pkgver='0.5.1'
 _pkgver=${_pkgver}
-pkgrel=2
 _pkgrel=${_pkgrel}
-_pkggopath="github.com/${_githuborg}/${_pkgname}"
-url="https://${_pkggopath}"
-license=()
-#make deps for every architecture are included here..
 makedepends=('dpkg' 'git' 'go' 'musl' 'kernel-headers-musl' 'aarch64-linux-musl' 'arm-linux-gnueabihf-musl') # 'arm-linux-gnueabihf-binutils' 'aarch64-binutils') #'aarch64-linux-musl' 'arm-linux-gnueabihf-musl' 'skycoin-keyring')
-depends=()
 _debdeps=""
-#_debdeps="reprepro"
+install=skywire.install
 _scripts="skywire-deb-scripts"
-source=( "${url}/archive/refs/tags/v${pkgver}.tar.gz"
-"${_scripts}.tar.gz"  )
-sha256sums=('f76bba50525c2057a9aba5d3a1fe95d1913890a19bc7ad2ff9113b278bf8d489'
-            'e47b816303ab824960feb74e205299c067a104c33f7ef59328e88931e92081f9')
-
+source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
+"${_scripts}.tar.gz"
+)
+sha256sums=('f1c6ae2dbe36cda0767855ac1b8676751358ca782e2c3d8ee16ba9b0de9b2bc3'
+            'fa42fb88711391d6fbf29ab457e3c6044735155707332af03afc77f506693fdc')
 #tar -czvf skywire-deb-scripts.tar.gz skywire-deb-scripts
 #updpkgsums deb.PKGBUILD
 
@@ -35,7 +32,6 @@ prepare() {
   for i in ${_pkgarches[@]}; do
   _msg2 "$i"
 done
-
   # https://wiki.archlinux.org/index.php/Go_package_guidelines
 	mkdir -p ${srcdir}/go/src/github.com/${_githuborg}/ ${srcdir}/go/bin.${_pkgarches[@]} ${srcdir}/go/apps.${_pkgarches[@]}
   ln -rTsf ${srcdir}/${_pkgname} ${srcdir}/go/src/${_pkggopath}
@@ -58,17 +54,7 @@ build() {
     [[ $_pkgarch == "amd64" ]] && export GOARCH=amd64 && export CC=musl-gcc
     [[ $_pkgarch == "arm64" ]] && export GOARCH=arm64 && export CC=aarch64-linux-musl-gcc
     [[ $_pkgarch == "armhf" ]] && export GOARCH=arm && export GOARM=6 && export CC=arm-linux-gnueabihf-musl-gcc
-
     #_ldflags=('-linkmode external -extldflags "-static" -buildid=')
-
-    #${_defaults} ${_goarch}
-    #create read only cache binary
-    #go build -trimpath -o $GOBIN/ ${srcdir}/${_scripts}/skycache.go
-    cd ${srcdir}/${_scripts}/skycache
-    _msg2 'building skycache binary'
-    go build -trimpath --ldflags '-s -w -linkmode external -extldflags "-static" -buildid=' -o $GOBIN/ skycache.go
-    go build -trimpath --ldflags '-s -w -buildid=' -o $GOBIN/ skycache.go
-
     #create the skywire binaries
     cd ${srcdir}/go/src/${_pkggopath}
     _cmddir=${srcdir}/go/src/${_pkggopath}/cmd
@@ -109,10 +95,8 @@ _GOHERE=$2  #target bin dir
 _binpath=$3   #find the binary here- expecting 'apps/' or empty
 _binname=$1 #which binary to build
 _msg2 "building ${_binname} binary"
-if [[ ! -f ${_GOHERE}/${_binname} ]] ; then #don't waste time rebuilding existing bins
 	cd ${_cmddir}/${_binpath}${_binname}
   go build -trimpath --ldflags '-s -w -linkmode external -extldflags "-static" -buildid=' -o ${_GOHERE}/${_binname} .
-fi
 }
 
 
@@ -126,21 +110,14 @@ _debpkgdir="${_pkgname}-${pkgver}-${_pkgrel}-${_pkgarch}"
 _pkgdir="${pkgdir}/${_debpkgdir}"
 _skydir="opt/skywire"
 _skyapps="${_skydir}/apps"
+_skybin="${_skydir}/bin"
 _skyscripts="${_skydir}/scripts"
 _systemddir="etc/systemd/system"
-_skybin="${_skydir}/bin"
 [[ -d ${_pkgdir} ]] && rm -rf ${_pkgdir}
 mkdir -p ${_pkgdir}/usr/bin
-#this was done at my discretion for tls autoconfig
-mkdir -p ${_pkgdir}/${_skydir}/ssl
-#the skeleton of the hyperviorkey package; created with a script run on target machines
-mkdir -p ${_pkgdir}/${_skydir}/hypervisorkey/opt/${_pkgname}
-#other dirs must be created or the visor will create them at runtime with weird permissions
+mkdir -p ${_pkgdir}/${_skydir}/bin
+mkdir -p ${_pkgdir}/${_skydir}/apps
 mkdir -p ${_pkgdir}/${_skydir}/local
-mkdir -p ${_pkgdir}/${_skydir}/dmsgpty
-mkdir -p ${_pkgdir}/${_skydir}/${_pkgname}    #needed?
-mkdir -p ${_pkgdir}/${_skydir}/skycache    #local package repository
-mkdir -p ${_pkgdir}/${_skydir}/transport_logs
 mkdir -p ${_pkgdir}/${_skydir}/scripts
 
 cd $_pkgdir
@@ -162,29 +139,35 @@ for i in ${_skywireapps}; do
 done
 
 _msg2 'installing scripts'
-_skywirescripts=$( ls ${srcdir}/${_scripts}/${_pkgname} )
+_scripts1=${srcdir}/${_scripts}/${_pkgname}
+_skywirescripts=$( ls "${_scripts1}" )
 for i in ${_skywirescripts}; do
-  _install2 ${srcdir}/${_scripts}/${_pkgname}/${i} ${_skyscripts}
+  _install2 ${_scripts1}/${i} ${_skyscripts}
 done
 
-_msg2 'renaming skywire-visor to skywire'
-mv ${_pkgdir}/usr/bin/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}
+_msg2 'Correcting symlink names'
+ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}
 
-_msg2 'installing skywire systemd services'
+#make sure everything is executable
+chmod +x ${_pkgdir}/usr/bin/*
+
+#install dmsghttp-config.json
+install -Dm644 ${srcdir}/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
+
+_msg2 'installing systemd services'
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${_pkgdir}/${_systemddir}/${_pkgname}.service
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-visor.service ${_pkgdir}/${_systemddir}/${_pkgname}-visor.service
+#this is to overwrites any previous file not provided by this package
+install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${_pkgdir}/${_systemddir}/${_pkgname}-hypervisor.service
+install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-autoconfig.service ${_pkgdir}/${_systemddir}/${_pkgname}-autoconfig.service
+install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-autoconfig-remote.service ${_pkgdir}/${_systemddir}/${_pkgname}-autoconfig-remote.service
 
-_msg2 'installing tls key and certificate generation scripts'
-#install -Dm755 ${srcdir}/${_pkgname}/static/skywire-manager-src/ssl/generate-1.sh ${pkgdir}/${_skydir}/ssl/generate.sh
-install -Dm755 ${srcdir}/${_scripts}/ssl/generate.sh ${_pkgdir}/${_skydir}/ssl/generate.sh
-ln -rTsf ${_pkgdir}/${_skydir}/ssl/generate.sh ${_pkgdir}/usr/bin/skywire-tls-gen
-install -Dm644 ${srcdir}/${_pkgname}/static/skywire-manager-src/ssl/certificate.cnf ${pkgdir}/${_skydir}/ssl/certificate.cnf
-#install -Dm644 ${srcdir}/${_scripts}/ssl/certificate.cnf ${_pkgdir}/${_skydir}/ssl/certificate.cnf
-
-_msg2 'installing skywire control file, postinst & postrm scripts'
+_msg2 'installing control file and install scripts'
 install -Dm755 ${srcdir}/${_pkgarch}.control ${_pkgdir}/DEBIAN/control
+#install -Dm755 ${srcdir}/${_scripts}/preinst.sh ${_pkgdir}/DEBIAN/preinst
 install -Dm755 ${srcdir}/${_scripts}/postinst.sh ${_pkgdir}/DEBIAN/postinst
-install -Dm755 ${srcdir}/${_scripts}/postrm.sh ${_pkgdir}/DEBIAN/postrm
+install -Dm755 ${srcdir}/${_scripts}/prerm.sh ${_pkgdir}/DEBIAN/prerm
+#install -Dm755 ${srcdir}/${_scripts}/postrm.sh ${_pkgdir}/DEBIAN/postrm
 
 _msg2 'creating the debian package'
 #create the debian package!
@@ -208,4 +191,10 @@ _msg2() {
 	(( QUIET )) && return
 	local mesg=$1; shift
 	printf "${BLUE}  ->${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n" "$@"
+}
+
+_msg3() {
+(( QUIET )) && return
+local mesg=$1; shift
+printf "${BLUE}  -->${ALL_OFF}${BOLD} ${mesg}${ALL_OFF}\n" "$@"
 }
