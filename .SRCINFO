@@ -5,10 +5,6 @@ pkgbase = zzzfm-common-bin
 	url = https://gitlab.com/skidoo/zzzfm
 	arch = x86_64
 	license = GPL3
-	depends = zzzfm-bin
-	depends = zzzfm-gtk3-bin
-	depends = zzzfm
-	depends = zzzfm-gtk3
 	source = https://gitlab.com/antix-contribs/zzzfm/-/raw/contribs/deb-packages/zzzfm_1.0.7-6~contribs2_amd64.deb
 	sha256sums = 923d17cf15e7f0ffd06a98ab5ad92789ea9c36191b49312b9964710ec8eb68ca
 
