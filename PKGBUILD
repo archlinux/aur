@@ -2,13 +2,13 @@
 pkgname=overlayfs-tools-git
 _pkgname=overlayfs-tools
 pkgver=r31.291c7f4
-pkgrel=1
+pkgrel=2
 pkgdesc="maintenance tools for overlay filesystem"
 arch=('x86_64')
 url="https://github.com/kmxz/overlayfs-tools"
 license=('custom')
 depends=('glibc')
-makedepends=('attr')
+makedepends=('attr' 'git')
 source=("git+https://github.com/kmxz/overlayfs-tools.git"
         "xattr_include_paths.patch"
         "ldflags.patch")
