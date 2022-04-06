@@ -1,0 +1,18 @@
+pkgbase = mcbelauncher-bin
+	pkgdesc = Minecraft Bedrock Launcher for Linux
+	pkgver = 0.3.3.683
+	pkgrel = 1
+	url = https://mcpelauncher.readthedocs.io
+	arch = x86_64
+	license = GPL3
+	provides = mcbelauncher
+	noextract = mcbelauncher-bin-0.3.3.683.AppImage
+	options = !strip
+	source = mcbelauncher-bin-0.3.3.683.AppImage::https://github.com/ChristopherHX/linux-packaging-scripts/releases/download/v0.3.3-683/Minecraft_Bedrock_Launcher-x86_64-v0.3.3.683.AppImage
+	source = mcbelauncher-bin.png::https://static.wikia.nocookie.net/minecraft_gamepedia/images/9/98/Bedrock_Edition_Google_Play_icon.png
+	source = mcbelauncher.desktop
+	sha256sums = 53fe2e4a90f80f9e3be37dfff697fdab6b06f59e1ce52ccb40abc96f95c1d86a
+	sha256sums = d676e742b549cf7b4698cb9dc5be5f1734bc59313958cf9a7b7acd92a5ff3d76
+	sha256sums = 895226cc5eda60dc0ba7f835bf911942390d004b3ee2559d93ff4a37f4e34ea7
+
+pkgname = mcbelauncher-bin

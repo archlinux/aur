@@ -1,0 +1,8 @@
+# ignore everything
+*
+
+# but these
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!mcbelauncher.desktop

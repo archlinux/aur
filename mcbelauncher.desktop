@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Minecraft Bedrock Launcher
+MimeType=
+Icon=/usr/share/pixmaps/mcbe.png
+Comment=Bedrock Launcher for Linux
+Exec=/usr/bin/mcbelauncher
+Categories=Game;
