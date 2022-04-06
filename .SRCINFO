@@ -1,0 +1,12 @@
+pkgbase = vim-fontsize
+	pkgdesc = Adjust Gvim font size via keypresses
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/drmikehenry/vim-fontsize
+	arch = any
+	license = unknown
+	depends = gvim
+	source = https://github.com/drmikehenry/vim-fontsize/archive/refs/tags/v0.4.1.tar.gz
+	sha256sums = 539ac53c4375b7c1c81f08ff28a850a43fb0fa083dd8947d7e0c6f640ee281c2
+
+pkgname = vim-fontsize
