@@ -6,7 +6,6 @@ pkgbase = doasedit-alternative
 	arch = any
 	license = MIT
 	depends = doas
-	depends = sh
 	provides = doasedit
 	conflicts = doasedit
 	source = doasedit-alternative-1.0.0.tar.gz::https://codeberg.org/TotallyLeGIT/doasedit/archive/1.0.0.tar.gz
