@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=fastfetch
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Like Neofetch, but much faster because written in C"
 arch=('x86_64')
 url="https://github.com/LinusDierheimer/fastfetch"
@@ -13,6 +13,7 @@ optdepends=(
   'dbus: Needed for detecting current media player and song'
   'dconf: Needed for values that are only stored in DConf + Fallback for GSettings'
   'glib2: Output for values that are only stored in GSettings'
+  'imagemagick: Image output using sixel'
   'libxrandr: Multi monitor support'
   'pciutils: GPU output'
   'vulkan-icd-loader: Fallback for GPU output'
