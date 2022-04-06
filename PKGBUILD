@@ -7,7 +7,7 @@
 
 pkgname=zulip-desktop
 pkgver=5.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Real-time team chat based on the email threading model'
 arch=(i686 x86_64)
 url=https://zulipchat.com
@@ -17,7 +17,7 @@ makedepends=(npm nvm python2)
 source=($pkgname-$pkgver.tar.gz::https://github.com/zulip/$pkgname/archive/v$pkgver.tar.gz
         $pkgname.desktop)
 sha512sums=('748b6b546d7f5b5318e0f245be39f4612ae9a84cbfdf05852c465a7037ef12aeee20d3978c00955764b4d629cc20a087c60301d59aa367b8927a316a0cbbbd9d'
-            '7696a6874d17957f99452452723ae1a6b32b6814b018361a71ed1fe0191e1c6da6f3ad693e2e279615e74f687c380ff2f6dab8b69fcd82476e8f33b56a6b4cb5')
+            '4899b20aaff5f8906de1c9d0f9b54d440e9b22cd19a8b383def92b973a8c4d954f88cee623744ec42546dc2f82d4849bcc1c49917efbea9ab346d41ac0dba589')
 
 _ensure_local_nvm() {
     # let's be sure we are starting clean
