@@ -7,7 +7,7 @@ _tag=5.13.0-valve10.1
 pkgver=${_tag//-/.}
 pkgrel=1
 pkgdesc='Linux Neptune kernel from SteamOS 3'
-url="https://gitlab.steamos.cloud/jupiter/linux-integration/-/tree/$_tag"
+url="https://github.com/LukeShortCloud/steamos-linux-neptune/-/tree/$_tag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
@@ -17,9 +17,9 @@ makedepends=(
   git openssh
 )
 options=('!strip' '!debug')
-_srcname=archlinux-linux-neptune
+_srcname=steamos-linux-neptune
 source=(
-  "$_srcname::git+ssh://git@gitlab.internal.steamos.cloud/jupiter/linux-integration.git#tag=$_tag"
+  "$_srcname::git+https://github.com/LukeShortCloud/steamos-linux-neptune.git#tag=$_tag"
   config         # the main kernel config file
   90-splash.hook
   splash
