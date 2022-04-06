@@ -1,7 +1,7 @@
 # Maintainer: Amin Vakil <info AT aminvakil DOT com>
 
 pkgname=actionlint
-pkgver=1.6.10
+pkgver=1.6.11
 pkgrel=1
 pkgdesc="Static checker for GitHub Actions workflow files"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/rhysd/actionlint"
 license=('MIT')
 makedepends=('go' 'git')
 source=("${pkgname}-${pkgver}-${pkgrel}.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('14a4648fc4e129d1e2f0c60b41995fdb6f66c94325e514fdffe011ac5c182092')
+sha256sums=('039c5f0132952723c634878a0d8c3d2361ea0587647cf0fce39d804375ed41b7')
 
 prepare(){
   cd "$pkgname-$pkgver"
