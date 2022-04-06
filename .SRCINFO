@@ -5,6 +5,7 @@ pkgbase = pokeshell-git
 	url = https://github.com/acxz/pokeshell
 	arch = any
 	license = GPLv3
+	makedepends = git
 	depends = curl
 	depends = jq
 	depends = imagemagick
