@@ -1,6 +1,6 @@
 pkgbase = animdl-git
 	pkgdesc = A highly efficient anime downloader and streamer
-	pkgver = 1.4.42.r1.7fcd823
+	pkgver = 1.5.4
 	pkgrel = 1
 	url = https://github.com/justfoolingaround/animdl
 	arch = any
