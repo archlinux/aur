@@ -1,12 +1,12 @@
 # Maintainer: Igor Saric <karabaja4 at gmail.com>
 # shellcheck disable=SC2181,SC2148,SC2034,SC2164,SC2154
 
-_gitname=nativecontrol
+_gitname=firefox-socket-control
 _version=1.4
-pkgname=firefox-socket-control-git
+pkgname=${_gitname}-git
 pkgver=${_version}.70a8ffe
 pkgrel=1
-pkgdesc="Control your Firefox using UNIX sockets."
+pkgdesc="Control Firefox from a UNIX socket."
 arch=('any')
 url="https://github.com/karabaja4/${_gitname}"
 license=('MIT')
