@@ -1,26 +1,27 @@
-# Maintainer: workonfire <kolucki62@gmail.com>
+# Maintainer: Letu Ren <fantasquex at gmail dot com>
+# Contributor: workonfire <kolucki62@gmail.com>
 
 pkgname=babi
-pkgver=0.0.21
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="A text editor, eventually..."
 arch=('any')
 url="https://github.com/asottile/babi"
 license=('MIT')
-depends=('python-onigurumacffi' 'babi-grammars' 'python-identify')
+depends=('python-onigurumacffi>=0.0.18' 'babi-grammars' 'python-identify')
 makedepends=('python-setuptools')
 provides=('babi')
 conflicts=('babi' 'babi-git')
-source=("$url/archive/v$pkgver.tar.gz")
-md5sums=('3e9721bc9a5c89c6e4c2812649eec995')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('f59067af07c0abf16246ded59b525af9d022cfdba4173f3680ff8df61a9f359f')
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+        cd "${pkgname}-${pkgver}"
 	python setup.py build
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+        cd "${pkgname}-${pkgver}"
 	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
