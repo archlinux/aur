@@ -2,7 +2,7 @@
 arch=('x86_64')
 pkgdesc="Nordvpn tray icon"
 pkgname=nordtray
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 depends=('go' 'nordvpn-bin')
 source=("https://github.com/zoli/nordtray/releases/download/${pkgver}/nordtray" "https://github.com/zoli/nordtray/archive/${pkgver}.tar.gz")
