@@ -2,7 +2,7 @@
 
 pkgname=artery-isp-console-bin
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 # epoch=1
 pkgdesc="Artery ISP Console 是一款基于 MCU Bootloader 的命令行应用程序。使用该应用程序,用户可以通过 UART 端口或者 USB 端口配置操作 Artery 的 MCU 设备。"
 arch=('any')
@@ -51,6 +51,7 @@ package() {
     install -Dm0755 AT32_ISP_Console  "${pkgdir}/opt/Artery32/${pkgname%-bin}/AT32_ISP_Console"
     install -Dm0644 libATBLLIB.so.1.0.0  "${pkgdir}/usr/lib/libATBLLIB.so.1.0.0"
     install -Dm0644 libATDFULIB.so.1.0.0  "${pkgdir}/usr/lib/libATDFULIB.so.1.0.0"
+    install -Dm0644 libATUARTBLLIB.so.1.0.0  "${pkgdir}/usr/lib/libATUARTBLLIB.so.1.0.0"
     install -Dm0644 libFiles.so.1.0.0  "${pkgdir}/usr/lib/libFiles.so.1.0.0"
     install -Dm0644 DFU_download.sh  "${pkgdir}/opt/Artery32/${pkgname%-bin}/DFU_download.sh.template"
     install -Dm0644 USART_download.sh  "${pkgdir}/opt/Artery32/${pkgname%-bin}/USART_download.sh.template"
