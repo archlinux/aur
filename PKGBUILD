@@ -19,8 +19,12 @@ depends=(libx11
   mesa
   glu)
 provides=('boilr-gui')
-source=("https://github.com/PhilipK/BoilR/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('12272bc85ea1438d0cc32a024edc852c5b1a459e5f8b8b3f1f0c9165e592a1eb')
+source=("https://github.com/PhilipK/BoilR/archive/refs/tags/v${pkgver}.tar.gz"
+	"boilr.png"
+	"boilr.desktop")
+sha256sums=("12272bc85ea1438d0cc32a024edc852c5b1a459e5f8b8b3f1f0c9165e592a1eb"
+            "baab109c6311f05ddbf647aa384b42098db9308c27cb50537f99bb341930387f"
+            "c8e71371c9dc39db087e79d5a32df1ee0f4dd2cf5d069e38b491c3b9812d8424")
 
 prepare() {
   cd "${srcdir}/BoilR-${pkgver}"
@@ -39,5 +43,7 @@ check() {
 
 package() {
   install -Dm755 "${srcdir}/BoilR-${pkgver}/target/release/boilr" "${pkgdir}/usr/bin/boilr-gui"
+  install -Dm644 "${srcdir}/boilr.desktop" -t "${pkgdir}/usr/share/applications/"
+  install -Dm644 "${srcdir}/boilr.png" -t "${pkgdir}/usr/share/pixmaps/"
 }
 
