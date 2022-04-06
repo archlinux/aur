@@ -1,4 +1,4 @@
-# Maintainer: Chris Lane <aur at chrislane dot com>
+# Contributor: Chris Lane <aur at chrislane dot com>
 pkgname=quassel-client-lighter-git
 pkgver=0.14.pre.r257.gf13f99af
 pkgrel=1
