@@ -5,8 +5,7 @@ pkgbase = x86-manpages-git
 	url = https://github.com/ttmo-O/x86-manpages
 	arch = any
 	depends = man-db
-	source = git://github.com/ttmo-O/x86-manpages
+	source = git+ssh://git@github.com/ttmo-O/x86-manpages.git
 	sha256sums = SKIP
 
 pkgname = x86-manpages-git
-

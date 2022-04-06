@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Man page documentation for x86-64 ISA"
 arch=('any')
 url="https://github.com/ttmo-O/x86-manpages"
-source=("git://github.com/ttmo-O/x86-manpages")
+source=("git+ssh://git@github.com/ttmo-O/x86-manpages.git")
 sha256sums=('SKIP')
 depends=('man-db')
 
