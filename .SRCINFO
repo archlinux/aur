@@ -1,0 +1,19 @@
+pkgbase = loupe-git
+	pkgdesc = Simple image viewer for GNOME
+	pkgver = r79.ca3c02a
+	pkgrel = 1
+	url = https://gitlab.gnome.org/BrainBlasted/loupe
+	arch = x86_64
+	arch = aarch64
+	license = GPL
+	makedepends = git
+	makedepends = itstool
+	makedepends = meson
+	makedepends = rust
+	depends = libadwaita
+	provides = loupe
+	conflicts = loupe
+	source = git+https://gitlab.gnome.org/BrainBlasted/loupe.git
+	b2sums = SKIP
+
+pkgname = loupe-git
