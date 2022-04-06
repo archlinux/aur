@@ -1,0 +1,5 @@
+/pkg/beeper/.BUILDINFO
+/beeper*pkg.tar.zst
+/beeper*.AppImage
+/pkg/
+/src/
