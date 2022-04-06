@@ -1,6 +1,6 @@
 pkgbase = xfce4-settings-git
 	pkgdesc = Settings manager for xfce (git checkout)
-	pkgver = 4.15.0+129+g559ebf1a
+	pkgver = 4.16.0+366+g78d614fe
 	pkgrel = 1
 	url = http://www.xfce.org/
 	arch = x86_64
@@ -22,12 +22,11 @@ pkgbase = xfce4-settings-git
 	depends = adwaita-icon-theme
 	depends = gnome-themes-extra
 	optdepends = libcanberra: for sound control
-	provides = xfce4-settings=4.15.0
+	provides = xfce4-settings=4.16.0
 	conflicts = xfce4-settings
 	source = xfce4-settings::git+https://gitlab.xfce.org/xfce/xfce4-settings
-	source = default-xsettings-xml.patch::https://git.archlinux.org/svntogit/packages.git/plain/trunk/default-xsettings-xml.patch?h=packages/xfce4-settings
+	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/xfce4-settings/trunk/default-xsettings-xml.patch
 	sha256sums = SKIP
 	sha256sums = 8e9a6c70ab0ceb5d91b637dc290768f8a47edb5d7b6e2eebc4459dbc4ee040d7
 
 pkgname = xfce4-settings-git
-
