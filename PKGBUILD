@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=gftools
-pkgver=0.9.5
+pkgver=0.9.6
 pkgrel=1
 pkgdesc='Misc tools for working with the Google Fonts library'
 arch=(any)
@@ -27,6 +27,7 @@ _py_deps=(babelfont
           skia-pathops
           strictyaml
           tabulate
+          ufolib2
           ttfautohint-py
           unidecode
           vttlib)
@@ -40,7 +41,7 @@ makedepends=(python-{build,installer}
              python-wheel)
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('1ef84b5ee65bc5f625fbfe687edda2911fc7080add054adb8f0534c99d2b71f1')
+sha256sums=('fd47456bf67d8c1fdc583da5df68d3510f44ea3e18b44478a05a133fe84acf4f')
 
 prepare() {
 	cd "$_archive"
