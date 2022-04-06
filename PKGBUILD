@@ -9,8 +9,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium
-pkgver=100.0.4896.60
-pkgrel=2
+pkgver=100.0.4896.75
+pkgrel=1
 _launcher_ver=8
 _gcc_patchset=4
 pkgdesc="A lightweight approach to removing Google web service dependency"
@@ -34,7 +34,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         webrtc-check-existence-of-cursor-metadata.patch
         sql-make-VirtualCursor-standard-layout-type.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('0e5ea5f3061ad090cf6bd57ca037496d95ea8956de021aff902f7d0ded7bffdc'
+sha256sums=('244ed352dfaa1ab6b1f0877c4884fd17aa7d7133fa52f129a9fb01325ea0c0c0'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'a6120e7d4eb5e131b87b6ab3b922e0c6cd78e15501e54cfb2019875173688d80'
             '064daaa2b9d95b96ec04d8ddebf4af441f92263d123365b58fe73966866080af'
@@ -48,7 +48,7 @@ source=(${source[@]}
         chromium-drirc-disable-10bpc-color-configs.conf
         wayland-egl.patch)
 sha256sums=(${sha256sums[@]}
-            '4de1a8ba276ae91d52bc08b1e60250ee060fe1bf3fa2ccddeb22ec2e77aa8cf4'
+            '69980eca2895b8f02d9475e4e0100e818bf46977ddce54a5645568241b0e9c2a'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             '34d08ea93cb4762cb33c7cffe931358008af32265fc720f2762f0179c3973574')
 
