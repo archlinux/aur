@@ -1,6 +1,6 @@
 # Maintainer: Clemens Brunner <clemens dot brunner at gmail dot com>
 pkgname=libbiosig
-pkgver=2.3.3
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Reading and writing routines for different biosignal data formats"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ install=
 changelog=
 source=(https://sourceforge.net/projects/biosig/files/BioSig%20for%20C_C%2B%2B/src/biosig-$pkgver.src.tar.gz)
 noextract=()
-sha1sums=('ff6c2ed26f9d6c7045bee07a88316cd8a417dd0e')
+sha1sums=('665b64d67382c3fc21b0751e0a09026cad71c5ad')
 
 build() {
   cd "$srcdir/biosig-$pkgver"
