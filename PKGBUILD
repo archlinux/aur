@@ -2,13 +2,13 @@
 
 pkgname=zeitgeist-dependencies-git
 name=zeitgeist
-pkgver=0.3.0.r220.g0c1ed03
+pkgver=0.3.0.r230.g95fd0d6
 pkgrel=1
 pkgdesc='The language-agnostic dependency checker'
 arch=('x86_64')
 url='https://github.com/kubernetes-sigs/zeitgeist'
 license=('Apache')
-makedepends=('go' 'git')
+makedepends=('go' 'git' 'make')
 source=("$pkgname"::git+https://github.com/kubernetes-sigs/zeitgeist)
 sha256sums=('SKIP')
 conflicts=("zeitgeist-dependencies")
@@ -21,12 +21,7 @@ pkgver() {
 
 build() {
     cd "$pkgname"
-    export CGO_CPPFLAGS="${CPPFLAGS}"
-    export CGO_CFLAGS="${CFLAGS}"
-    export CGO_CXXFLAGS="${CXXFLAGS}"
-    export CGO_LDFLAGS="${LDFLAGS}"
-    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-    go build -ldflags "-X main.version=$pkgver -X main.prerelease="
+    make build
 }
 
 package() {
