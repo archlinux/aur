@@ -6,7 +6,7 @@
 
 pkgname=python-anyconfig
 _name=anyconfig
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Python library provides common APIs to load and dump configuration files in various formats'
 url='https://github.com/ssato/python-anyconfig'
@@ -18,10 +18,10 @@ depends=(
     'python-jinja'
     'python-jmespath'
     'python-jsonschema'
+    'python-simplejson'
+    'python-yaml'
 )
 optdepends=(
-    'python-simplejson: Replace standard json backend'
-    'python-yaml: YAML support if ruamel.yaml is not aviliable'
     'python-anyconfig-bson-backend: BSON support using pymongo'
     'python-anyconfig-ion-backend: Amazon ion load and dump support'
     'python-anyconfig-cbor-backend: CBOR support using cbor'
@@ -30,20 +30,27 @@ optdepends=(
     'python-anyconfig-msgpack-backend: MessagePack load and dump support'
     'python-anyconfig-json5-backend: Json5 load and dump support'
     'python-anyconfig-fortios-backend: Fortios load and parse support'
+    'python-anyconfig-fit-backend: FITFIT (Flexible and Interoperable Data Transfer) data files load and parse support'
 )
-makedepends=('python-setuptools')
+makedepends=(
+    'python-setuptools'
+    'python-build'
+    'python-installer'
+)
 conflicts=('python-anyconfig-git')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-b2sums=('db78a5530e1f0bce222482e5b1b92ee67bc0e3e53b9446e2abd127d6c4afd8b2e3501faca88f6f407d95f4cf5792aec126d659ac98a033661daaa4b04779d031')
+b2sums=('e9789369f7f8810abe9ac72c8c74e78fbbdc0afccebe80077fb83f469cad59734f960a560616492fb1d8e7f60d641b643468629f4238e97af2ce461c84589843')
 
 build() {
     cd "$srcdir/$_name-$pkgver" || exit
-    export PYTHONHASHSEED=0
-    python setup.py build
+    # export PYTHONHASHSEED=0
+    # python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
     cd "$srcdir/$_name-$pkgver" || exit
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    # python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
     install -Dm644 LICENSE* -t "$pkgdir/usr/share/licenses/$pkgname"
 }
