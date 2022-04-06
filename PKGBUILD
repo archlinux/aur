@@ -14,7 +14,7 @@ install=${pkgname}.install
 depends=('firefox' 'openbsd-netcat' 'nodejs')
 makedepends=('git')
 source=("https://addons.mozilla.org/firefox/downloads/file/3932891/socketcontrol-${_version}-fx.xpi"
-        "git+https://github.com/karabaja4/${_gitname}.git")
+        "git+${url}.git")
 noextract=("socketcontrol-${_version}-fx.xpi")
 sha256sums=('8e2c1e6bd19f0ecd7c0f93a77faa02b5d2dc469729120ed63e1de1fdc9de93c8'
             'SKIP')
