@@ -11,7 +11,7 @@
 _electron=electron17
 pkgname=(element-{desktop,web}-greentext)
 pkgver=1.10.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Glossy Matrix collaboration client with greentext baked in — "
 arch=(any)
 url="https://element.io"
@@ -27,6 +27,7 @@ source=(element-web-${pkgver}.tar.gz::${_url}-web/archive/v${pkgver}.tar.gz
         element-desktop-${pkgver}.tar.gz.asc::${_url}-desktop/releases/download/v${pkgver}/v${pkgver}-src.tar.gz.asc
         custom-emoji.json
         autolaunch.patch
+        encapsulate-sqlcipher.diff
         io.element.Element.desktop
         greentext.patch
         element-config.json
@@ -36,13 +37,14 @@ sha256sums=('25df778509c1f88f36b44e29f9629a12b2c30f35c0baeb6c2d866c22bbb47784'
             'SKIP'
             'ec11e6046ed445fe11c5c9a0241ab0875b9d18940b3fb121e1ef0feeca3b92e4'
             'SKIP'
-            'SKIP'
+            '63ff6e4264b85da29f9147f5cbe58cc3ff395a936683988bca6ef6d0ebeabc99'
             'aaae4ffa41590361dac0c159aecc1166f69e459e89faa9d5cab1202f0277e06f'
+            '3b2112d25b258b67d18b9329faeb9e5c5b218732c9c020ee01911347a90a1cb8'
             '0103f28a32fe31f698836516783c1c70a76a0117b5df7fd0af5c422c224220f9'
             '0d65ffa85e486a48e8a844fcc8c21b4eaadb28756a74566b22e44f3bdb257e2c'
             'eb422aca8b3dd71282aa432bdf66eaac0272a9ac5a91b332fde5f6fb9e885852'
             'bf4892cb7b76ea049d76e443c7d7c93afd19c44bd41839f378661275642cf9cd'
-            '4c931121009985e7d3f73928c9db88508eedd974a7741e635bb290e3a2cd75db')
+            'c1bd9ace215e3ec9af14d7f28b163fc8c8b42e23a2cf04ce6f4ce2fcc465feba')
 validpgpkeys=(712BFBEE92DCA45252DB17D7C7BE97EFA179B100) # Element Releases <releases@riot.im>
 
 prepare() {
@@ -82,6 +84,7 @@ with open(emoji_file, "w") as ef:
 
   cd -- "$srcdir/element-desktop-${pkgver}"
   patch -p1 < ../autolaunch.patch
+  patch -p1 < ../encapsulate-sqlcipher.diff
   sed -i 's|"target": "deb"|"target": "dir"|' package.json
   sed -i 's|"version": "\([^"]*\)"|"version": "\1+greentext"|' package.json
   sed -i 's|"electron": "13.5"|"electron": "13.6.7"|' package.json
