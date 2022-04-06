@@ -4,7 +4,7 @@
 _gitname=presets-projectm-classic
 pkgname=projectm-presets-classic-git
 pkgver=2.14a6244
-pkgrel=1
+pkgrel=2
 pkgdesc="Classic preset pack for projectM (git version)"
 arch=('x86_64' 'i686')
 url='https://github.com/projectM-visualizer/presets-projectm-classic'
@@ -21,6 +21,6 @@ pkgver() {
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/share/projectm/presets/"
-  cp -ar $srcdir/${_gitname}/* "$pkgdir/usr/share/projectm/presets"
+  mkdir -p "$pkgdir/usr/share/projectM/presets/"
+  cp -ar $srcdir/${_gitname}/* "$pkgdir/usr/share/projectM/presets"
 }
