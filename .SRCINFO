@@ -17,7 +17,7 @@ pkgbase = zzzfm-bin
 	depends = libx11
 	depends = pango
 	depends = shared-mime-info
-	depends = zzzfm-common=1.0.7
+	depends = zzzfm-common-bin=1.0.7
 	optdepends = bash-completion
 	optdepends = curlftpfs
 	optdepends = dbus
