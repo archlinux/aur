@@ -1,2 +1,5 @@
 *.tar.xz
 *.src.tar.gz
+*.tar.zst
+*.log
+*.jar
