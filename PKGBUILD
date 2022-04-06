@@ -1,5 +1,6 @@
-# Maintainer: John Schoenick <johns@valvesoftware.com>
-# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Maintainer: Luke Short <ekultails at gmail dot com>
+# Contributor: John Schoenick <johns@valvesoftware.com>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-neptune
 _tag=5.13.0-valve10.1
