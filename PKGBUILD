@@ -3,15 +3,15 @@
 
 pkgname=gbdk-2020
 pkgver=4.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An updated version of Game Boy Development Kit"
-url="https://github.com/Zal0/gbdk-2020"
+url="https://github.com/gbdk-2020/gbdk-2020"
 license=('MIT')
 arch=('x86_64' 'i686')
 makedepends=('git')
-depends=('sdcc>=4.1.0')
+depends=('sdcc=4.1.0')
 conflicts=('gbdk' 'lcc')
-source=("https://github.com/Zal0/gbdk-2020/archive/${pkgver}.tar.gz")
+source=("https://github.com/gbdk-2020/gbdk-2020/archive/${pkgver}.tar.gz")
 sha256sums=('53d90bfa5ec63e1c39ceedb653acaed92309e8b5d34a2d1239717947f469e75f')
 options=('!strip')
 
@@ -24,4 +24,5 @@ package() {
   find ${pkgdir}/usr/share/${pkgname}/ -type f -name '*.bat' -delete -o -type f -name '*.dox' -delete
   rm -rf ${pkgdir}/usr/share/${pkgname}/examples/
   cp ${pkgname}-${pkgver}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/
+  cp ${pkgname}-${pkgver}/gbdk-lib/build/small/asxxxx/gb/crt0.lst ${pkgdir}/usr/share/${pkgname}/lib/small/asxxxx/gb/
 }
