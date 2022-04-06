@@ -31,11 +31,10 @@ _repo=https://hg.mozilla.org/mozilla-unified
 conflicts=('firefox')
 provides=('firefox')
 source=("hg+$_repo#revision=autoland"
-        $_pkgname.desktop $_pkgname-symbolic.svg bug1762050.diff)
+        $_pkgname.desktop $_pkgname-symbolic.svg)
 sha256sums=('SKIP'
             'a9e5264257041c0b968425b5c97436ba48e8d294e1a0f02c59c35461ea245c33'
-            '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797'
-            '0bbfdc3765d8495d0dae918cf1d3a532346ff63f8b8d127b74ff075be87594ca')
+            '9a1a572dc88014882d54ba2d3079a1cf5b28fa03c5976ed2cb763c93dabbd797')
 
 # Google API keys (see http://www.chromium.org/developers/how-tos/api-keys)
 # Note: These are for Arch Linux use ONLY. For your own distribution, please
