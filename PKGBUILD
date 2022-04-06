@@ -1,7 +1,7 @@
 # Maintainer: Viktor A. Rozenko Voitenko <sharpvik@gmail.com>
 pkgname=sema
-pkgver=0.1.1
-pkgrel=2
+pkgver=0.1.2
+pkgrel=3
 pkgdesc="Semantic commit tool"
 arch=(x86_64)
 url="https://github.com/sharpvik/sema"
@@ -16,12 +16,8 @@ options=()
 source=("git+$url")
 md5sums=('SKIP')
 
-build() {
-    cd "$pkgname"
-    go build
-}
-
 package() {
-    cd "$pkgname"
-	go install || mv "$pkgname" ~/.local/bin/
+    cd $pkgname
+    go build -o $pkgname
+	mv $pkgname ~/.local/bin/
 }
