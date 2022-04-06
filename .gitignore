@@ -1,4 +1,4 @@
-*.tar.xz
-goldendict
-pkg
-src
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
