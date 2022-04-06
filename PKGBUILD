@@ -5,7 +5,7 @@
 o_pkgname=kwallet
 pkgname=kwallet-secrets
 pkgver=5.92.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Secure and unified container for user passwords. Patched for org.freedesktop.secrets support'
 arch=(x86_64)
 url='https://community.kde.org/Frameworks'
@@ -20,7 +20,7 @@ source=(https://download.kde.org/stable/frameworks/${pkgver%.*}/$o_pkgname-$pkgv
         https://invent.kde.org/frameworks/kwallet/-/merge_requests/11.patch)
 sha256sums=('71aca76cb0edbf569827709b073bff2edb5c129a85638df4bc666d70786740e5'
             'SKIP'
-            'be72442bb7791d0cbbb50e876132d397e62730121310a27f14be5c54fb2d6fd9')
+            'SKIP')
 validpgpkeys=(53E6B47B45CEA3E0D5B7457758D0EE648A48B3BB) # David Faure <faure@kde.org>
 options=(debug)
 
