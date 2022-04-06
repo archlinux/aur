@@ -1,7 +1,7 @@
 # Maintainer: Kamack38 <kamack38.biznes@gmail.com>
 _pkgname='oh-my-posh'
 pkgname="${_pkgname}-bin"
-pkgver=7.59.2
+pkgver=7.59.4
 pkgrel=1
 pkgdesc="A prompt theme engine for any shell."
 arch=('x86_64')
@@ -11,7 +11,7 @@ makedepends=('curl')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v$pkgver/posh-linux-amd64")
-sha256sums=('8246448b5ae62a8d8a5eefe51b3340573ba1418c4b98b7d461998077a217de5f')
+sha256sums=('cab06bfad2507d22b8cd730f5d51e3ab7a13188985af937295a2d01c53d2c86f')
 
 pkgver() {
     curl --silent -L "https://api.github.com/repos/JanDeDobbeleer/oh-my-posh/releases/latest" | # Get latest release from GitHub api
