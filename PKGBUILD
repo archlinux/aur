@@ -6,7 +6,7 @@ pkgdesc='PipeWire Graph Qt GUI Interface'
 arch=('x86_64')
 url='https://gitlab.freedesktop.org/rncbc/qpwgraph'
 license=('GPL')
-depends=('alsa-lib' 'pipewire' 'qt6-base')
+depends=('alsa-lib' 'pipewire' 'qt6-base' 'qt6-svg')
 makedepends=('cmake')
 options=('debug')
 source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
@@ -14,9 +14,9 @@ sha512sums=('d039f0aec37b078170b4b0d48d905857c440fc977d24a566e9aad53955ba1301b79
 
 build() {
 	cmake -B build -S "$pkgname-v$pkgver" -DCMAKE_INSTALL_PREFIX=/usr -DCONFIG_WAYLAND=ON
-	make -C build
+	cmake --build build
 }
 
 package() {
-	make -C build DESTDIR="$pkgdir" install
+	DESTDIR="$pkgdir" cmake --install build
 }
