@@ -2,7 +2,7 @@
 
 pkgname=ctrlr
 pkgver=5.4.16
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Control any midi enabled hardware: synthesizers, drum machines, samplers, effects.  Create custom user interfaces.  Host them as VST or AU plugins in your favorite daws."
 arch=('x86_64')
