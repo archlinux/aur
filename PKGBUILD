@@ -6,12 +6,12 @@ pkgver=3.0.5
 pkgrel=1
 pkgdesc='ArchLinux bootstrap and partitioning scripts, with optional AutoLinux configs.'
 arch=(x86_64)
-url="https://gitlab.com/qYp/${_pkgname}"
+url="https://gitlab.com/a4to/${_pkgname}"
 install="auto.install"
 license=('MIT')
 depends=(dialog parted)
 makedepends=(git)                 
-source=("https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
+source=("https://gitlab.com/a4to/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
 sha256sums=('518b05f015a5e266e7571444777ae50dd95c33b34eceb11793209fbd17efe9ec')
 
 package() {
