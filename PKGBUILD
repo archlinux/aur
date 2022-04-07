@@ -36,7 +36,7 @@ package() {
 	# Create local folders and copy binaries
 	mkdir -p "${BINPATH}"
 	mkdir -p "${VSTPATH}"
-	cp "Ctrlr/Ctrlr-${arch}" "${BINPATH}/${pkgname}"
+	cp "Ctrlr/Ctrlr-${arch}" "${BINPATH}/Ctrlr"
 	cp "Ctrlr/libCtrlr-VST-${arch}.so" "${VSTPATH}/Ctrlr.so"
 
 	# Create symbolic link libbfd-2.24-system.so, used by Ctrlr,
