@@ -4,12 +4,12 @@ pkgname=pastemc
 pkgdesc="Bash script for paste MasCloud. Fork pbin"
 url="https://github.com/Stezkoy/pastemc"
 pkgver=1.0
-pkgrel=5
+pkgrel=6
 arch=('any')
 license=("custom")
 depends=('bash' 'curl')
 makedepends=(git)
-source=(pastemc::git+https://github.com/Stezkoy/pastemc.git)
+source=(${pkgname}::git+https://github.com/Stezkoy/pastemc.git)
 md5sums=('SKIP')
 
 package() {
