@@ -4,6 +4,7 @@ pkgbase = vim-localvimrc-git
 	pkgrel = 1
 	url = https://github.com/embear/vim-localvimrc
 	arch = any
+	license = GPL3
 	makedepends = git
 	depends = vim-plugin-runtime
 	source = git+https://github.com/embear/vim-localvimrc.git#branch=master
