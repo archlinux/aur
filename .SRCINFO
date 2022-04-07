@@ -1,7 +1,7 @@
 pkgbase = snapraid
 	pkgdesc = tool for Snapshot RAID: generate parity files, maintain checksums on data, restore lost data
 	pkgver = 12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.snapraid.it/
 	arch = x86_64
 	arch = i686
