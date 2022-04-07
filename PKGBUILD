@@ -1,36 +1,38 @@
-#Maintainer: digital mystik <dgtl_mystik at protonmail dot ch>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: digital mystik <dgtl_mystik at protonmail dot ch>
 
 _name=trezor-agent
 pkgname=python-trezor-agent
-pkgver=0.14.2
-pkgrel=2
+pkgver=0.14.4
+pkgrel=1
 pkgdesc="Using hardware wallets as SSH/GPG agent"
 arch=('any')
 url="https://github.com/romanz/trezor-agent"
-license=("LGPL3")
-depends=('python' 'python-docutils' 'python-wheel' 'python-shutilwhich' 'python-trezor' 
-         'python-configargparse' 'python-daemon' 'python-ecdsa' 'python-pynacl' 
+license=('LGPL3')
+depends=('python-docutils' 'python-shutilwhich' 'python-trezor'
+         'python-configargparse' 'python-daemon' 'python-ecdsa' 'python-pynacl'
          'python-mnemonic' 'python-pymsgbox' 'python-semver' 'python-unidecode')
-makedepends=('python-setuptools')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/romanz/$_name/archive/v$pkgver.tar.gz"
-        "https://raw.githubusercontent.com/romanz/$_name/v$pkgver/agents/trezor/setup.py"
-        "https://raw.githubusercontent.com/romanz/$_name/v$pkgver/agents/trezor/trezor_agent.py")
-
-b2sums=('7f1623e0b7c2e096c04ee0d6cb3dfe24191f8f935fbec64862427ac4a6430ed362e2b416b6906e367d328b6197be16a1ded856bac28a88999a102b585448f07c'
-        '94b918a12cefb206c25037431701ec132b7520c913a90c362de4970b45289aa7018201253891116e6e0947703c3a05a429a2e30496a79eac99d6417630ad2d05'
-        'df0176f5fd484c2ca50b29cadb4731dfcea2b078d7dc61f6a220c4bea6ce656a805262e61be05c827b07b0491d2c54f9b47cfcb2bdb947910831f88dbd3f65fb')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('cbab620a1e21fed8089fcb7682c9d37500f0b60a5fb6e2d4d56ec261c67dabe6')
 
 build() {
-    cd "$srcdir/$_name-$pkgver"
-    python setup.py build
-    cd ..
-    python setup.py build
+	cd "$_name-$pkgver"
+	python -m build --wheel --no-isolation
+	cd agents/trezor
+	python -m build --wheel --no-isolation -o "$srcdir/$_name-$pkgver/dist/"
 }
 
 package() {
-    cd "$srcdir/$_name-$pkgver"
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-    install -D -m0644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-    cd ..
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	cd "$_name-$pkgver"
+	for i in dist/*.whl
+	do
+		PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" "$i"
+	done
+
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s \
+		"$_site/libagent-$pkgver.dist-info/LICENSE" \
+		"$pkgdir/usr/share/licenses/$pkgname/"
 }
