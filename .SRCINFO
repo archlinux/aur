@@ -1,20 +1,18 @@
 pkgbase = stargazer-gmi
 	pkgdesc = stargzer gemini server
 	pkgver = 0.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sr.ht/~zethra/stargazer/
 	arch = x86_64
 	arch = i686
 	arch = arm
 	arch = armv7h
 	arch = aarch64
-	license = AGPL-3.0
-	makedepends = rust
-	makedepends = cargo
+	license = AGPL3
+	makedepends = rust>=1.46
 	makedepends = scdoc
-	makedepends = binutils
 	depends = gcc-libs
-	source = https://git.sr.ht/~zethra/stargazer/archive/0.6.1.tar.gz
+	source = stargazer-gmi-0.6.1.tar.gz::https://git.sr.ht/~zethra/stargazer/archive/0.6.1.tar.gz
 	sha256sums = 7e3ed7dd34bf58a2ffaf2c672ce51de0d0b63eb9755c61a8327b60c2c5b11bb2
 
 pkgname = stargazer-gmi
