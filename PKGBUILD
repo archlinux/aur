@@ -3,16 +3,16 @@
 
 _gemname=xz
 pkgname=ruby-$_gemname
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
-pkgdesc="These are simple Ruby bindings for the liblzma library"
+pkgdesc="Ruby bindings for liblzma using fiddle"
 arch=('any')
 depends=('ruby' 'ruby-ffi' 'ruby-io-like')
 url="https://rubygems.org/gems/$pkgname"
 noextract=($pkgname-$pkgver.gem)
 license=('MIT')
 source=("https://rubygems.org/downloads/$pkgname-$pkgver.gem")
-sha256sums=('4c5042ae5bca1eaaf1d6cff8e11e07b6753d43abc1b221b9ea107bf9eba8af67')
+sha256sums=('60f8418f65880b64882c7d20a5d6e09bda72037d05fdd71a4fda60c7c25b71d7')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
