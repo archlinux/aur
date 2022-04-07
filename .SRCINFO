@@ -1,12 +1,12 @@
 pkgbase = gnome-shell-extension-fixed-ime-list
 	pkgdesc = Make the IME list in fixed sequence instead of MRU.
-	pkgver = 7
+	pkgver = 8
 	pkgrel = 1
 	url = https://github.com/AlynxZhou/gnome-shell-extension-fixed-ime-list
 	arch = any
 	license = GPL
 	depends = gnome-shell
-	source = gnome-shell-extension-fixed-ime-list-7.tar.gz::https://github.com/AlynxZhou/gnome-shell-extension-fixed-ime-list/archive/v7.tar.gz
-	sha512sums = 4bcd80233ce474130c543a0a9a403f658fe10b0c3c3d208c141bac423aac80b04021a035d60a15598783ccd0414eb97abf3d5ca72f66621d502fe08d38da02b4
+	source = gnome-shell-extension-fixed-ime-list-8.tar.gz::https://github.com/AlynxZhou/gnome-shell-extension-fixed-ime-list/archive/v8.tar.gz
+	sha512sums = d54e2cfbc5c4427f772c7be906b7445eccb3dc83a0414b9b6841eabeb5828f9c4b535ab344b43c549e04f8085f0310fea2ee34cdcb89ce3a9b6f269129421228
 
 pkgname = gnome-shell-extension-fixed-ime-list
