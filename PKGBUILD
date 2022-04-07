@@ -12,10 +12,15 @@ depends=('ignition-math>=6' 'ignition-utils' 'tinyxml2' 'freeimage' 'libutil-lin
 makedepends=('ignition-cmake>=2' 'util-linux')
 optdepends=()
 conflicts=()
-source=("https://github.com/ignitionrobotics/ign-common/archive/${pkgname}4_${pkgver}.tar.gz")
-sha256sums=('854331ba0d0f1ef8c8099fdba0977fde58b1e0f9fd8d3f71d5fb02768829a850')
+source=("https://github.com/ignitionrobotics/ign-common/archive/${pkgname}4_${pkgver}.tar.gz" "patch"::"https://github.com/ignitionrobotics/ign-common/pull/325.patch")
+sha256sums=('854331ba0d0f1ef8c8099fdba0977fde58b1e0f9fd8d3f71d5fb02768829a850' 'SKIP')
 
 _dir="ign-common-${pkgname}4_${pkgver}"
+
+prepare() {
+  cd "${srcdir}/$_dir"/
+  patch -p1 -i "${srcdir}/patch"
+}
 
 build() {
   cd "$srcdir/$_dir"

@@ -16,6 +16,8 @@ pkgbase = ignition-common
 	depends = gts
 	depends = ffmpeg
 	source = https://github.com/ignitionrobotics/ign-common/archive/ignition-common4_4.5.0.tar.gz
+	source = patch::https://github.com/ignitionrobotics/ign-common/pull/325.patch
 	sha256sums = 854331ba0d0f1ef8c8099fdba0977fde58b1e0f9fd8d3f71d5fb02768829a850
+	sha256sums = SKIP
 
 pkgname = ignition-common
