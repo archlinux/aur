@@ -2,7 +2,7 @@
 # Maintainer: LycheeSlicer
 # Contributor: LycheeSlicer
 pkgname=lycheeslicer
-pkgver=3.7.0
+pkgver=3.7.1
 pkgrel=1
 pkgdesc="Lychee Slicer"
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('libappindicator-gtk3')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://mango-lychee.nyc3.cdn.digitaloceanspaces.com/LycheeSlicer-$pkgver.deb")
-sha512sums_x86_64=('a4e44d5948c20814097ef85581d4cb6a414cfe6117ba30f92a2e531d6dd175bff3e20ed605aa4e3e1dbd35d795d2b1ba0b4d442a7b6c6790b341418eb4f8f962')
+sha512sums_x86_64=('410a1df985bcfc113fb7f2e3baa7e02e6a2ba0c9910cc3da8d6057920944fc922aba8a66c35f63b4cf2979b1243529a5260c6f11571f2d16c4cd3d3e6194e10d')
 package(){
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
