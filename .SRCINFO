@@ -1,0 +1,16 @@
+pkgbase = webp-pixbuf-loader-git
+	pkgdesc = Enable WebP support in GTK apps
+	pkgver = 2022.03.16
+	pkgrel = 1
+	url = https://github.com/aruiz/webp-pixbuf-loader
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = meson
+	depends = gdk-pixbuf2
+	depends = libwebp
+	conflicts = webp-pixbuf-loader
+	source = webp-pixbuf-loader::git+https://github.com/aruiz/webp-pixbuf-loader.git
+	sha256sums = SKIP
+
+pkgname = webp-pixbuf-loader-git
