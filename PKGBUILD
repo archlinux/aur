@@ -4,7 +4,7 @@
 # Package Information
 _crate="lottie2gif"
 pkgname="$_crate"
-pkgver=0.3.1
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Convert lottie files to GIF'
 license=('MIT')
@@ -17,7 +17,7 @@ url="https://crates.io/crates/$_crate"
 depends=('gcc-libs' 'rlottie')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$_crate/$pkgver/download")
-sha512sums=('90cb52ce3a4990f47531e9d76ad958d9baa67bc7b223beb332d15f78aba5ae7152f6264e52f8b026607e2e8aa12c1996d46f34a854301adb93fb24f4f1b3713c')
+sha512sums=('76b62e79f929f72f1da022a813833f9c81ff3e69355958832792a58867ee3e7cab7140b05c1d8e2c7139f95eafaea55360a2033b4470d06970e83872defedd38')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
