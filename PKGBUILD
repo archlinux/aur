@@ -36,16 +36,11 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         "https://www.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
         'config'
         # ARCH Patches
-        '0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch'
-        '0002-Btintel_Fix_bdaddress_comparison_with_garbage_value.patch'
-        '0003_Bluetooth_Read_codec_capabilities_only_if_supported.patch'
-        '0004_Bluetooth_fix_deadlock_for_RFCOMM_sk_state_change.patch'
-        '0005_mt76_mt7921_add_support_for_PCIe_ID_0x0608-0x0616.patch'
-        '0006_mt76_mt7921_reduce_log_severity_levels_for_informative_messages.patch'
-        '0007_Revert_NFSv4.1_query_for_fs_location_attr_on_a_new_file_system.patch'
+        '0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch'
+        '0102-random-treat_bootloader_trust_toggle_the_same_way_as_cpu_trust_toggle.patch'
+        '0103-Revert-swiotlb-rework-fix_info_leak_with_DMA_FROM_DEVICE.patch'
         # MANJARO Patches
-        '0101-i2c-nuvoton-nc677x-hwmon-driver.patch'
-        '0105-quirk-kernel-org-bug-210681-firmware_rome_error.patch'
+
         # Bootsplash
         '0301-revert-fbcon-remove-now-unusued-softback_lines-cursor-argument.patch'
         '0302-revert-fbcon-remove-no-op-fbcon_set_origin.patch'
@@ -65,18 +60,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         '0413-bootsplash.gitpatch'
         # ACS override patch
         '0999-acs.gitpatch')
-sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
-            '3bb88aa87c3f7788ad84ca5cbf3946ed9fbb3fddb9fca2458944fba5ebd2ab16'
-            '67ea8810d3e58c1b661ff1372886aa8b560f97938ff62a3d12a6ff60784aeccf'
-            '986f8d802f37b72a54256f0ab84da83cb229388d58c0b6750f7c770818a18421'
-            'b89188b1bc3516d54965dd36def6a2af3d81379e53ff7e527bbd91f77c6f191b'
-            'adfabecb2e23cfaebe1d493a54119a967a97930dac677e20f26d4bcaa1b80f3c'
-            '7aa2293dff32463665c2a35054c5164470e24075ddda181715d4079ca126cbbd'
-            '9c67c62e9e744eaeae43c80d83c9eb61b486406cf18cd057427bdbc44f8e4e10'
-            'f8fc51c0c644ae743154c37b77ade50fa5a950980c9dd56d8752e4d6b5dfb153'
-            '24fc6f087aa82a72905f0fb6b9f3f5f18741187d5a425f5ec845dab436ab1c58'
-            '7823d7488f42bc4ed7dfae6d1014dbde679d8b862c9a3697a39ba0dae5918978'
-            '5e804e1f241ce542f3f0e83d274ede6aa4b0539e510fb9376f8106e8732ce69b'
+sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
+            '24c982d6b7b704b31a6b4bc0a59cbf2135697a58d5d6030532ae07856da36944'
+            'a94d5d374f4cdb439f3958b50f7af0f4e024fa17d7df3f30e548f40314e210c0'
+            'f85b07d73b2f4ad8bb6b59ee6624b2dd06a03824fc7b00131a01df36c8d899fe'
+            'fc9223bf2d430ab1c122daada4f51d835a74f56c007c82842eeca3acd2d788be'
+            'edd40fa0d23e9cbbf5ed7f37b2e0ed8e84798701b08a0dc262afd751acf17e04'
             '2b11905b63b05b25807dd64757c779da74dd4c37e36d3f7a46485b1ee5a9d326'
             '94a8538251ad148f1025cc3de446ce64f73dc32b01815426fb159c722e8fa5bc'
             '1f18c5c10a3c63e41ecd05ad34cd9f6653ba96e9f1049ce2b7bb6da2578ae710'
