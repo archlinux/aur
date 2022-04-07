@@ -2,17 +2,17 @@
 # Contributor: Sergei Kolesnikov <youremail@domain.com>
 
 pkgname=gnome-shell-extension-runcat
-pkgver=15
+pkgver=18
 pkgrel=1
 pkgdesc="The cat tells you the CPU usage by running speed"
 arch=('any')
 url="https://github.com/win0err/gnome-runcat"
 license=('GPL3')
 depends=('gnome-shell')
-makedepends=('make' 'zip')
+makedepends=('zip')
 source=("${url}/archive/v${pkgver}.tar.gz")
 _srcname=gnome-runcat
-sha512sums=('ca6bc6d909605fc8744a40d958fb6c0225e0c419e87778c9515433678844b49c4f880a0f5262f96f24c0e037984ff3d342f917eec56a15474026bf6296a97ac7')
+b2sums=('d57c060945c2797f95725931664a08ca99b9318a78565b78c884d5d953981d6249767f21166b850498a4ed3fa2e03ef1ef4a201edb882cc89e8d7292cb723f9a')
 
 build() {
 	cd "$_srcname-$pkgver"
