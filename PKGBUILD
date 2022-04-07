@@ -3,11 +3,11 @@
 # Contributor: Tomasz Paś <kierek93@gmail.com>
 _pkgname=libretro-melonds
 pkgname=$_pkgname-git
-pkgver=r1977.e362d5c0
+pkgver=r1991.e93ec3e4
 pkgrel=1
 epoch=1
-pkgdesc='Nintendo DS core'
-arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
+pkgdesc="Nintendo DS core"
+arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/libretro/melonDS"
 license=('GPL3')
 groups=('libretro')
@@ -21,6 +21,10 @@ b2sums=('SKIP')
 pkgver() {
 	cd $_pkgname
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	sed -i 's/-O[0123s]//;s/-Ofast//' $_pkgname/Makefile
 }
 
 build() {
