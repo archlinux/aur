@@ -5,15 +5,16 @@
 _pkgname=selenium
 pkgname=python-$_pkgname
 pkgver=4.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python language bindings for Selenium WebDriver"
 arch=('any')
 url="https://www.selenium.dev"
 license=('Apache')
 depends=('python-urllib3' 'python-certifi' 'python-debugpy' 'python-inflection'
-         'python-iniconfig' 'python-multidict' 'python-pluggy' 'python-zipp'
-         'python-trio-websocket' 'geckodriver')
+         'python-multidict' 'python-importlib-metadata' 'python-trio-websocket'
+         'geckodriver')
 makedepends=('python-setuptools')
+checkdepends=('python-pytest')
 source=("https://github.com/SeleniumHQ/$_pkgname/archive/refs/tags/$_pkgname-$pkgver.tar.gz")
 sha256sums=('6f8cdf423b404bb47c44bf2994ce6edc6683ba33904774ea60731eae2542d8cd')
 
