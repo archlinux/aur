@@ -17,7 +17,8 @@ _merge_requests_to_use=('1441')
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-pkgname=mutter-performance
+pkgbase=mutter-performance
+pkgname=(mutter-performance mutter-performance-docs)
 pkgver=42.0+r38+gf820bb350
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
@@ -29,11 +30,8 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          libxkbcommon-x11 gnome-settings-daemon libgudev libinput pipewire
          xorg-xwayland graphene libxkbfile libsysprof-capture)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
-             wayland-protocols sysprof)
+             wayland-protocols sysprof gi-docgen)
 checkdepends=(xorg-server-xvfb wireplumber python-dbusmock)
-provides=(mutter libmutter-10.so)
-conflicts=(mutter)
-groups=(gnome)
 _commit=f820bb35067f1e6b54d56f7652ee333ac8c8c35b  # tags/42.0^38
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch'
@@ -127,7 +125,7 @@ prepare() {
   # Type: 1
   # Status: 3
   # Comment: Help GPU frequencies to scale up but not currently working on Wayland
-  #          Thanks @JockeTF in AUR for a quick patch.
+  #          Thanks @JockeTF in AUR for a quick backported patch to gnome-41 base.
   pick_mr '1441' 'mr1441.patch' 'patch'
 
   # Title: compositor: Use native GL mipmapping instead of MetaTextureTower
@@ -145,6 +143,7 @@ build() {
   arch-meson $pkgname build \
     -D egl_device=true \
     -D wayland_eglstream=true \
+    -D docs=true \
     -D installed_tests=false
   meson compile -C build
 }
@@ -170,6 +169,30 @@ check() {
     bash -c "$(declare -f _check); _check"
 }
 
-package() {
+_pick() {
+  local p="$1" f d; shift
+  for f; do
+    d="$srcdir/$p/${f#$pkgdir/}"
+    mkdir -p "$(dirname "$d")"
+    mv "$f" "$d"
+    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+  done
+}
+
+package_mutter-performance() {
+  provides=(mutter libmutter-10.so)
+  conflicts=(mutter)
+  groups=(gnome)
+
   meson install -C build --destdir "$pkgdir"
+  _pick docs "$pkgdir"/usr/share/mutter-*/doc
+}
+
+package_mutter-performance-docs() {
+  provides=(mutter-docs)
+  conflicts=(mutter-docs)
+  pkgdesc+=" (documentation)"
+  depends=()
+
+  mv docs/* "$pkgdir"
 }
