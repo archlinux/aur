@@ -1,0 +1,18 @@
+pkgbase = adwaita-icon-theme-41
+	pkgdesc = GNOME standard icons, version 41
+	pkgver = 41.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/GNOME/adwaita-icon-theme
+	arch = any
+	license = LGPL3
+	license = CCPL:by-sa
+	makedepends = git
+	makedepends = gtk3
+	depends = hicolor-icon-theme
+	depends = gtk-update-icon-cache
+	depends = librsvg
+	provides = adwaita-icon-theme
+	source = git+https://gitlab.gnome.org/GNOME/adwaita-icon-theme.git#commit=8670d0eb2414c1ac16d927da5d1a22142ba5e346
+	sha256sums = SKIP
+
+pkgname = adwaita-icon-theme-41
