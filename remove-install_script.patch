@@ -1,9 +1,12 @@
---- meson.a.build	2021-05-15 16:05:22.844398824 -0600
-+++ meson.b.build	2021-05-15 16:21:51.510645528 -0600
-@@ -53,14 +53,3 @@
-     rename: '@0@.svg'.format(application_id),
-     install_dir: usrdir / 'icons' / 'hicolor' / 'scalable' / 'apps'
- )
+diff --unified --recursive --text a/data/meson.build b/data/meson.build
+--- a/data/meson.build	2022-04-07 14:22:31.000000000 -0600
++++ b/data/meson.build	2022-04-07 16:25:46.259954821 -0600
+@@ -114,16 +114,3 @@
+ else
+   resources_path = resources.full_path()
+ endif
+-
+-# Post install
 -
 -meson.add_install_script(
 -    find_program('update-desktop-database').path(),
