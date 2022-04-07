@@ -1,7 +1,7 @@
 # Maintainer: Leon Styhre <info@es-de.org>
 
 pkgname=emulationstation-de
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="EmulationStation Desktop Edition (ES-DE) is a frontend for browsing and launching games from your multi-platform game collection"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('curl' 'ffmpeg' 'freeimage' 'freetype2' 'pugixml' 'sdl2')
 makedepends=('cmake' 'curl' 'pkgconf' 'make' 'ffmpeg' 'freeimage' 'freetype2' 'pugixml' 'sdl2')
 conflicts=('emulationstation' 'emulationstation-git')
 source=("https://gitlab.com/leonstyhre/emulationstation-de/-/archive/stable-1.2-AUR/emulationstation-de-stable-1.2-AUR.tar.gz")
-md5sums=('cc781a99c880196242b8b64a21051571')
+md5sums=('401d945da25adb72eea4640232106590')
 
 build() {
         cmake -B emulationstation-de-stable-1.2-AUR -S emulationstation-de-stable-1.2-AUR .
