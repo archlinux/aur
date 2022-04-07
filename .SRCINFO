@@ -12,8 +12,8 @@ pkgbase = cider
 	makedepends = yarn
 	depends = gtk3
 	depends = nss
-	optdepends = libno1tify: Playback notifications
-	source = git+https://github.com/CiderApp/Cider.git#branch=develop
+	optdepends = libnotify: Playback notifications
+	source = git+https://github.com/CiderApp/Cider.git
 	source = cider.desktop
 	sha256sums = SKIP
 	sha256sums = c41e9b1019411019fce8509e32f770edf33c9e864bf707c30ffe2e3f2dcf1571

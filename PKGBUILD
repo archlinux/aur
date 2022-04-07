@@ -2,15 +2,15 @@
 
 pkgname=cider
 _pkgname=Cider
-pkgver=1.4.0.2852.1dcd5ec4
-pkgrel=1
+pkgver=1.4.0
+pkgrel=2
 pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Compiled from the GitHub repositories develop branch."
 arch=("armv7h" "i686" "x86_64")
 url="https://github.com/CiderApp/${_pkgname}.git"
 license=("GPL")
 depends=('gtk3' 'nss')
 makedepends=('git' 'npm' 'yarn')
-optdepends=('libno1tify: Playback notifications')
+optdepends=('libnotify: Playback notifications')
 source=(
     "git+https://github.com/CiderApp/${_pkgname}.git"
     "cider.desktop"
