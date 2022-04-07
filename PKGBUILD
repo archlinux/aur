@@ -4,7 +4,7 @@
 # Package Information
 _crate="lottie2webp"
 pkgname="$_crate"
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Convert lottie files to WEBP'
 license=('MIT')
@@ -17,7 +17,7 @@ url="https://crates.io/crates/$_crate"
 depends=('gcc-libs' 'rlottie' 'libwebp')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$_crate/$pkgver/download")
-sha512sums=('1d70c3b19c89b5f8fe19530b31cb57ee7c2baae44716f0e0e85ee8ea255ef167d33118b1a7307cd65f1396092e7b30c5e5836f67684463e3490e67af7b4627e4')
+sha512sums=('bce4e6ce9dfcd1a8e6566863c575ea15ef906cb94108caaecfa53b44968a77de9ca4bf0ec135de9c0443b7299e371858323fb5ef38ccc11c5803b53590bc63f8')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
