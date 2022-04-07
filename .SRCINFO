@@ -9,6 +9,7 @@ pkgbase = anki
 	makedepends = git
 	makedepends = bazel
 	makedepends = clang
+	makedepends = python-pip
 	depends = python-beautifulsoup4
 	depends = python-requests
 	depends = python-wheel

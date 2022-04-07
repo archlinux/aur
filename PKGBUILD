@@ -48,6 +48,7 @@ makedepends=(
 
     'bazel'
     'clang'
+    'python-pip'
 )
 optdepends=(
     'lame: record sound'
