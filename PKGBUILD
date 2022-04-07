@@ -4,11 +4,11 @@
 
 pkgname=vgrep
 pkgver=2.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Reimpementation of the ancient cgvg perl scripts"
 arch=('x86_64' 'i686')
 license=('GPL3')
-depends=('go')
+makedepends=('go')
 url="https://github.com/vrothberg/vgrep"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/vrothberg/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('4cbd912189397b08897fcc1709787ec60ed42275059f900463055211e1f6d689')
