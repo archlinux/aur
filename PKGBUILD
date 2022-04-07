@@ -2,26 +2,26 @@
 # Maintainer: Carlos A Becker <carlos@charm.sh>
 
 pkgname='melt-bin'
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
-pkgdesc='Backup and restore SSH keys as mnemonic set of words'
+pkgdesc='Backup and restore Ed25519 SSH keys with seed words'
 url='https://charm.sh/'
 arch=('aarch64' 'armv7h' 'i686' 'x86_64')
 license=('MIT')
 provides=('melt')
 conflicts=('melt')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/melt/releases/download/v0.2.0/melt_0.2.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('e37c55f5cfc95daf953b119270f1d7f04478bdffe69f2faa8c3ff227aa8950a0')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/melt/releases/download/v0.3.0/melt_0.3.0_linux_arm64.tar.gz")
+sha256sums_aarch64=('698dccbae4ddd6ce1aed0e3f31b101ffdf98a3b5bd94913975f2caaf11960c40')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/melt/releases/download/v0.2.0/melt_0.2.0_linux_armv7.tar.gz")
-sha256sums_armv7h=('2950c5ff511467bbb002fa52057fd887f3488bb6a11c30adc7447657d46b5db6')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/melt/releases/download/v0.3.0/melt_0.3.0_linux_armv7.tar.gz")
+sha256sums_armv7h=('63c8973257a7bdb012e8e689f02275440598de72005ebc9fc0e0dc0a1e215518')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/melt/releases/download/v0.2.0/melt_0.2.0_linux_i386.tar.gz")
-sha256sums_i686=('fc77004cb02972455b916c610c43a3c74d7e8976042e03ce4c4c03d277254bc6')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/melt/releases/download/v0.3.0/melt_0.3.0_linux_i386.tar.gz")
+sha256sums_i686=('1b42438378d92afff37336cbb1675310a4e8eeb12ff46fbd3153a46edd86269e')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/melt/releases/download/v0.2.0/melt_0.2.0_linux_x86_64.tar.gz")
-sha256sums_x86_64=('01662bec3bf8cc3f384a00fd4b90c21412415088a34221879e767297fb492120')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/melt/releases/download/v0.3.0/melt_0.3.0_linux_x86_64.tar.gz")
+sha256sums_x86_64=('1875170b34a2cc650fc1c19fb6889752d3f051cf8471e5ab373c35b4fc45dbf3')
 
 package() {
   # bin
