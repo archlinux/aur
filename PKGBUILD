@@ -8,7 +8,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=librcsc-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=rc2021
+pkgver=2022.04.07
 pkgrel=1
 pkgdesc="Base of Helios for Robocup 2D Soccer Simulation. Build from git"
 arch=('any')
@@ -33,7 +33,9 @@ md5sums=('SKIP')
 pkgver() {
 	cd "$srcdir/${pkgname%-VCS}"
 	# Git, no tags available
-	grep AC_INIT configure.ac | cut -d '[' -f 3 | sed -s 's/],//g'
+#	grep AC_INIT configure.ac | cut -d '[' -f 3 | sed -s 's/],//g'
+	git show --pretty=format:"%ci" | cut -d ' ' -f 1 | sed 's/-/./g'
+
 }
 
 build() {

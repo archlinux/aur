@@ -1,6 +1,6 @@
 pkgbase = librcsc-git
 	pkgdesc = Base of Helios for Robocup 2D Soccer Simulation. Build from git
-	pkgver = rc2021
+	pkgver = 2022.04.07
 	pkgrel = 1
 	url = https://github.com/helios-base/librcsc
 	arch = any
