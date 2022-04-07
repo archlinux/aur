@@ -1,15 +1,15 @@
 # Maintainer: Zhanibek Adilbekov <zhanibek.adilbekov@pm.me>
 pkgname=firefox-tridactyl-native
-pkgver=1.21.1
-_nativever=0.3.4
-pkgrel=6
+pkgver=1.22.1
+_nativever=0.3.6
+pkgrel=1
 pkgdesc="Tridactyl native messaging host application for Firefox (native: $_nativever)"
 arch=('x86_64')
 url=https://github.com/tridactyl/tridactyl
 license=('Apache')
 makedepends=('nim' 'nimble' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/tridactyl/native_messenger/archive/refs/tags/$_nativever.tar.gz")
-b2sums=('92caafbf4abfc73ea3b6423905ea56425c71cd2d2ecc29cf59b7405fe4a44ea43dddf31d97e6ed7ff95700341fec24a5ff516c167b7df8905d0dae162a55efc9')
+b2sums=('f1114adf7f6b758273c045ff88d5c22bef98a10d4d1e71ffd66f40924a5f901e081652c72649cc87aeab55574c9e986031c68e80fa2c1b5d6d851196feec90f9')
 
 build() {
     cd "$srcdir"/native_messenger-*/
