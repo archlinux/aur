@@ -1,14 +1,14 @@
 pkgbase = pastemc
 	pkgdesc = Bash script for paste MasCloud. Fork pbin
 	pkgver = 1.0
-	pkgrel = 3
-	url = https://github.com/Stezkoy/pbin
+	pkgrel = 4
+	url = https://github.com/Stezkoy/pastemc
 	arch = any
 	license = custom
+	makedepends = git
 	depends = bash
 	depends = curl
-	options = !strip
-	source = pastemc
-	md5sums = 8f9be7d8d91c58a9944b6b84b7a763f6
+	source = pastemc::git+https://github.com/Stezkoy/pastemc.git
+	md5sums = SKIP
 
 pkgname = pastemc
