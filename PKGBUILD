@@ -1,13 +1,13 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> github.com/mschubert/PKGBUILDs
 pkgname=gnome-shell-extension-impatience-git
 _pkgname=gnome-shell-impatience
-pkgver=0.4.6.r0.g9d48e4d
+pkgver=0.4.6.r4.ga2e06be
 pkgrel=1
 pkgdesc="speed up gnome-shell animations"
 arch=('any')
-url="https://github.com/gfxmonk/gnome-shell-impatience"
+url="https://github.com/timbertson/gnome-shell-impatience"
 license=('GPL3')
-depends=('gnome-shell>=1:40' 'gnome-shell<1:42')
+depends=('gnome-shell>=1:40' 'gnome-shell<1:43')
 makedepends=('git')
 conflicts=('gnome-shell-extension-impatience')
 provides=('gnome-shell-extension-impatience')
