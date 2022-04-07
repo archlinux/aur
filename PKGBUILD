@@ -2,8 +2,8 @@
 _pkgname=cc-map-editor
 pkgname="${_pkgname}-bin"
 pkgver=0.13.0
-pkgrel=3
-pkgdesc="A Map Editor for the game CrossCode"
+pkgrel=4
+pkgdesc="Map Editor for the game CrossCode"
 arch=('any')
 url='https://github.com/CCDirectLink/crosscode-map-editor'
 license=('custom:MIT')
@@ -15,12 +15,10 @@ options=(!strip)
 _appimage_file="${_pkgname}-${pkgver}-linux.AppImage"
 source=("https://github.com/CCDirectLink/crosscode-map-editor/releases/download/v${pkgver}/${_appimage_file}"
         "${pkgname}-LICENSE::https://github.com/CCDirectLink/crosscode-map-editor/raw/v${pkgver}/LICENSE"
-        "${pkgname}-patch-desktop-entry.awk"
         "${pkgname}-disable-autoupdates.patch")
 noextract=("${_appimage_file}")
 sha256sums=('d8cd9d65ae62b1bc5863a9ecb3ef98ca13957f98e55862072fb4b38de758ace5'
             'a406579cd136771c705c521db86ca7d60a6f3de7c9b5460e6193a2df27861bde'
-            'c03a2ede59f0476176c1a32d28ac19e907e76b1dbfdffa93d9eefa40d868506b'
             '2491a2a02750773b2bfb09aedc955ccfe48c1a17e09f0e7ea76c6a1ceba56135')
 
 prepare() {
@@ -40,8 +38,19 @@ exec electron13 /usr/lib/${_pkgname}/app.asar "\$@"
 EOF
 
   msg2 "Generating ${_pkgname}.desktop..."
-  awk -f "${srcdir}/${pkgname}-patch-desktop-entry.awk" -v executable_path="/usr/bin/${_pkgname}" \
-    "squashfs-root/${_pkgname}.desktop" > "${_pkgname}.desktop"
+  cat > "${_pkgname}.desktop" <<EOF
+[Desktop Entry]
+Type=Application
+Name=CrossCode Map Editor
+Comment=Map Editor for the game CrossCode
+Exec=/usr/bin/${_pkgname} %U
+TryExec=/usr/bin/${_pkgname}
+Terminal=false
+Icon=${_pkgname}
+StartupNotify=true
+StartupWMClass=${_pkgname}
+Categories=Game;
+EOF
 
   msg2 "Extracting app.asar..."
   asar extract "squashfs-root/resources/app.asar" "app"
