@@ -1,5 +1,5 @@
-# Maintainer: Hannes Mann <hannesmann2000@gmail.com>
-# Contributor: Hannes Mann <hannesmann2000@gmail.com>
+# Maintainer: Sebastián Zambrano <yeaseb@gmail.com>
+# Contributor: Sebastián Zambrano <yeaseb@gmail.com>, Hannes Mann <hannesmann2000@gmail.com>
 
 pkgname=wmo-oc-dkms
 pkgver=1.0
@@ -9,7 +9,6 @@ arch=('any')
 url="https://github.com/YeaSeb/WMO1.1a-oc-kmod"
 license=('GPL2')
 depends=('dkms')
-# TODO: release a zip once no conflict is in sight
 source=('https://github.com/YeaSeb/wmo-oc-kmod/archive/refs/tags/1.0.zip'
         'dkms.conf')
 md5sums=('4992b4f8828a951ea9a1b78931d245c7'
