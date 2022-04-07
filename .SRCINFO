@@ -9,8 +9,8 @@ pkgbase = copilot-cli-bin
 	conflicts = copilot-cli
 	noextract = copilot-1.16.0
 	source_aarch64 = copilot-1.16.0::https://github.com/aws/copilot-cli/releases/download/v1.16.0/copilot-linux-arm64-v1.16.0
-	md5sums_aarch64 = 1d24c475179ceb8ce49d50a68df178f0
+	md5sums_aarch64 = f00bc2f23c7ef0b761d092367faaae47
 	source_x86_64 = copilot-1.16.0::https://github.com/aws/copilot-cli/releases/download/v1.16.0/copilot-linux-amd64-v1.16.0
-	md5sums_x86_64 = 10fc97b07b7c11ca5cd92bb704b9f9e9
+	md5sums_x86_64 = e26f3f0b3f294a6e85308519ab9831a5
 
 pkgname = copilot-cli-bin

@@ -12,8 +12,8 @@ depends=()
 conflicts=('copilot-cli')
 source_x86_64=("copilot-${pkgver}::https://github.com/aws/copilot-cli/releases/download/v${pkgver}/copilot-linux-amd64-v${pkgver}")
 source_aarch64=("copilot-${pkgver}::https://github.com/aws/copilot-cli/releases/download/v${pkgver}/copilot-linux-arm64-v${pkgver}")
-md5sums_x86_64=('10fc97b07b7c11ca5cd92bb704b9f9e9')
-md5sums_aarch64=('1d24c475179ceb8ce49d50a68df178f0')
+md5sums_x86_64=('e26f3f0b3f294a6e85308519ab9831a5')
+md5sums_aarch64=('f00bc2f23c7ef0b761d092367faaae47')
 noextract=("copilot-${pkgver}")
 
 package() {
