@@ -1,15 +1,15 @@
 # Maintainer: Anton Kudelin <kudelin at protonmail dot com>
 
 pkgname=exciting
-pkgver=8
-_isotope=oxygen
+pkgver=16
+_element=oxygen
 pkgrel=1
 pkgdesc="A full-potential all-electron density-functional-theory package"
 arch=("x86_64")
-url="http://exciting-code.org"
+url="https://exciting-code.org"
 license=("GPL")
 depends=('scalapack' 'arpack')
-source=("http://exciting.wdfiles.com/local--files/$_isotope/$pkgname.$_isotope.tar.gz"
+source=("http://exciting.wdfiles.com/local--files/$_isotope/$pkgname.$_element.tar.gz"
         "make.inc")
 sha256sums=('2096aa95bf8b0774ea0187a8bac7d3fb6bb6316f3f49ae19936c61401acd0268'
             '30503a36da77ee97fd7c6beb4445b1215915fad41e4714368b5584866131e5fe')
