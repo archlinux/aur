@@ -1,6 +1,6 @@
 pkgbase = libgweather-git
 	pkgdesc = Location and timezone database and weather-lookup library
-	pkgver = 3.91.0.r11.g44b8f3be
+	pkgver = 4.0.0.r8.g6a1f91a6
 	pkgrel = 1
 	url = https://wiki.gnome.org/Projects/LibGWeather
 	arch = x86_64
@@ -16,9 +16,10 @@ pkgbase = libgweather-git
 	depends = gtk3
 	depends = geocode-glib
 	depends = dconf
-	provides = libgweather-4.so
 	provides = libgweather
+	provides = libgweather-4
 	conflicts = libgweather
+	conflicts = libgweather-4
 	source = git+https://gitlab.gnome.org/GNOME/libgweather.git
 	sha256sums = SKIP
 
