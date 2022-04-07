@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Chris Billington <chrisjbillington at gmail dot com>
 pkgname=git-nautilus-icons-git
-pkgver=2.0.2.r1.gf2e765d
-pkgrel=2
+pkgver=2.0.3.r0.g6efe996
+pkgrel=1
 pkgdesc="A Nautilus, Nemo, and Caja extension to overlay icons on files in git repositories"
 arch=('any')
 url="https://github.com/chrisjbillington/git-nautilus-icons"
@@ -34,10 +34,10 @@ package() {
   cd "$srcdir/${pkgname%-git}"
   python -m installer --destdir="$pkgdir" dist/*.whl
 
-  # Move license to proper directory
+  # Symlink license to proper directory
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   install -d "$pkgdir/usr/share/licenses/${pkgname%-git}"
-  mv "${pkgdir}${site_packages}/git_nautilus_icons-2.0.3.dev1+gf2e765d.dist-info/LICENSE" \
+  ln -s "${pkgdir}${site_packages}/git_nautilus_icons-2.0.3.dist-info/LICENSE" \
     "$pkgdir/usr/share/licenses/${pkgname%-git}/"
 
   # compile Python bytecode for modules outside of site-packages:
