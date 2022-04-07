@@ -1,0 +1,13 @@
+pkgbase = aurh-git
+	pkgdesc = An AUR Helper
+	pkgver = 0.2
+	pkgrel = 1
+	url = https://github.com/Vinz2008/Aurh
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = curl
+	source = aurh::git+https://github.com/vinz2008/Aurh.git
+	sha256sums = SKIP
+
+pkgname = aurh-git
