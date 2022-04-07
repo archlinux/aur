@@ -16,12 +16,12 @@ depends=(
     'python-slugify'
     'python-pyqt5'
     'abseil-cpp'
-    'qt5-tools'
 )
 makedepends=(
     'go'
     'python-grpcio-tools'
     'python-setuptools'
+    'qt5-tools'
 )
 optdepends=(
     'logrotate: for logfile rotation support'
