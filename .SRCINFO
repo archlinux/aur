@@ -1,7 +1,7 @@
 pkgbase = python-pid
 	pkgdesc = Pidfile featuring stale detection and file-locking
-	pkgver = 3.0.3
-	pkgrel = 2
+	pkgver = 3.0.4
+	pkgrel = 1
 	url = https://github.com/trbs/pid
 	changelog = CHANGELOG
 	arch = any
@@ -12,7 +12,10 @@ pkgbase = python-pid
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	depends = python
-	source = python-pid-3.0.3.tar.gz::https://files.pythonhosted.org/packages/source/p/pid/pid-3.0.3.tar.gz
-	sha256sums = 925b61c35b6f2bc6b43075f493e99792f1473575a0beeb85bcf7de1d6a4a3c7d
+	source = python-pid-3.0.4.tar.gz::https://files.pythonhosted.org/packages/source/p/pid/pid-3.0.4.tar.gz
+	source = python-pid-3.0.4.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/pid/pid-3.0.4.tar.gz.asc
+	validpgpkeys = 13FFEEE3DF809D320053C587D6E95F20305701A1
+	sha256sums = 0e33670e83f6a33ebb0822e43a609c3247178d4a375ff50a4689e266d853eb66
+	sha256sums = SKIP
 
 pkgname = python-pid

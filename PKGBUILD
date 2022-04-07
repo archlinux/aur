@@ -1,12 +1,12 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
 
-# There's a gpg signature, but no matching key. Where to get it?
+## GPG key: https://github.com/trbs.gpg
 
 pkgname=python-pid
 _name=pid
-pkgver=3.0.3
-pkgrel=2
+pkgver=3.0.4
+pkgrel=1
 pkgdesc='Pidfile featuring stale detection and file-locking'
 arch=('any')
 url='https://github.com/trbs/pid'
@@ -15,8 +15,11 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest')
 changelog=CHANGELOG
-source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('925b61c35b6f2bc6b43075f493e99792f1473575a0beeb85bcf7de1d6a4a3c7d')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/$_name/$_name-$pkgver.tar.gz"
+        "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/p/$_name/$_name-$pkgver.tar.gz.asc")
+sha256sums=('0e33670e83f6a33ebb0822e43a609c3247178d4a375ff50a4689e266d853eb66'
+            'SKIP')
+validpgpkeys=('13FFEEE3DF809D320053C587D6E95F20305701A1') ## trbs
 
 build() {
 	cd "$_name-$pkgver"
