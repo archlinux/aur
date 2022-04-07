@@ -1,6 +1,6 @@
 # Maintainer: Léopold Koprivnik Ibghy <skwal.net@gmail.com>
 pkgname="linux-on-drugs-git"
-pkgver=r26.415c6d8
+pkgver=r28.d2befe3
 pkgrel=1
 pkgdesc="Gives drugs to your terminal"
 arch=('any')
