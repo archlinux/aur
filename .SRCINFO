@@ -2,7 +2,7 @@ pkgbase = betterzsh
 	pkgdesc = Configurations to enhance user experience with the ZSH shell.
 	pkgver = 1.0.r7
 	pkgrel = 1
-	url = https://gitlab.com/qYp/betterzsh
+	url = https://gitlab.com/a4to/betterzsh
 	arch = any
 	license = MIT
 	depends = zsh
@@ -10,7 +10,7 @@ pkgbase = betterzsh
 	depends = zsh-autosuggestions-git
 	depends = zsh-autopair-git
 	optdepends = starship: Adds very useful git functionality to the terminal
-	source = https://gitlab.com/qYp/concise/-/raw/master/x86_64/betterzsh-1.0.r7-1-any.pkg.tar.zst
+	source = https://gitlab.com/a4to/concise/-/raw/master/x86_64/betterzsh-1.0.r7-1-any.pkg.tar.zst
 	sha256sums = 318e427165aeccadda34141bbde73470229378b7da86a8d46f286f57f54ac0a8
 
 pkgname = betterzsh
