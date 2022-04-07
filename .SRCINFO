@@ -1,0 +1,13 @@
+pkgbase = smap-bin
+	pkgdesc = a drop-in replacement for Nmap powered by shodan.io
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/s0md3v/Smap
+	arch = x86_64
+	license = GPL3
+	provides = smap
+	conflicts = smap
+	source = https://github.com/s0md3v/Smap/releases/download/0.1.0/smap_0.1.0_linux_amd64.tar.xz
+	sha256sums = 2a2e9113af46365b74d02fc9168fd0ba277b3bfdb1dc2a8e46bbed70b6df44a8
+
+pkgname = smap-bin
