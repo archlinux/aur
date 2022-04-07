@@ -2,7 +2,7 @@
 # Contributor: Tim Rakowski <tim.rakowski@gmail.com>
 pkgname=ignition-common
 pkgver=4.5.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A collection of useful classes and functions for handling many command tasks. This includes parsing 3D mesh files, managing console output, and using PID controllers."
 arch=('any')
 url="https://ignitionrobotics.org/libs/common"
