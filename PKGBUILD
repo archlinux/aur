@@ -1,32 +1,50 @@
-# Maintainer: Daniel Bermond <dbermond@archlinux.org>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=python-bencoder-pyx
-pkgver=2.0.1
+_name=bencoder.pyx
+pkgver=3.0.0
 pkgrel=1
-pkgdesc='A fast bencode implementation in Cython'
+pkgdesc='Fast bencode implementation in Cython'
 arch=('x86_64')
 url='https://github.com/whtsky/bencoder.pyx/'
 license=('BSD')
 depends=('python')
-makedepends=('python-setuptools' 'cython')
-checkdepends=('python-pytest' 'python-coverage')
-source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/whtsky/bencoder.pyx/archive/v${pkgver}.tar.gz")
-sha256sums=('f3ff92ac706a7e4692bed5e6cbe205963327f3076f55e408eb948659923eac72')
+makedepends=(
+	'cython'
+	'python-build'
+	'python-installer'
+	'python-setuptools'
+	'python-wheel')
+checkdepends=('python-pytest')
+source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz")
+sha256sums=('14c40ae805bba06ebe6ffe5f3b030d9b923477af001eea3b9cbc18bec368e040')
+
+prepare() {
+	cd "$_name-$pkgver"
+	sed -i '/extra_compile_args/s/O3/O2/' setup.py
+	sed -i '/requires/s/==/>=/' pyproject.toml
+}
 
 build() {
-    cd "bencoder.pyx-${pkgver}"
-    python setup.py build
+	cd "$_name-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
 check() {
-    cd "bencoder.pyx-${pkgver}"
-    local _pyver
-    _pyver="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
-    PYTHONPATH="$(pwd)/build/lib.linux-${CARCH}-${_pyver}" pytest
+	cd "$_name-$pkgver"
+	local _pyver
+	_pyver="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
+	PYTHONPATH="$(pwd)/build/lib.linux-${CARCH}-${_pyver}" pytest -x
 }
 
 package() {
-    cd "bencoder.pyx-${pkgver}"
-    python setup.py install --root="$pkgdir" --skip-build --optimize='1'
-    install -D -m644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	cd "$_name-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir" dist/*.whl
+
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s \
+		"$_site/$_name-$pkgver.dist-info/LICENSE" \
+		"$pkgdir/usr/share/licenses/$pkgname/"
 }
