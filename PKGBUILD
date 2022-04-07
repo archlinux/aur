@@ -13,13 +13,14 @@ source=('dock-from-dash::git+https://github.com/fthx/dock-from-dash')
 md5sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir"/dock-from-dash
+    cd "$srcdir/dock-from-dash"
     echo r$(git rev-list --count main).$(git rev-parse --short main)
 }
-
+build() {
+    cd "$srcdir/dock-from-dash/"
+    meson --prefix="$pkgdir/usr" .build
+}
 package() {
-    cd "$srcdir"/dock-from-dash/
-    mkdir -p "$pkgdir/usr/share/gnome-shell/extensions/dock-from-dash@fthx"
-    unzip dock-from-dash@fthx.zip -d "$pkgdir/usr/share/gnome-shell/extensions/dock-from-dash@fthx"
-    chmod 755 -R "$pkgdir/usr/share/gnome-shell/extensions/dock-from-dash@fthx"
+    cd "$srcdir/dock-from-dash/"
+    ninja -C .build install
 }
