@@ -8,7 +8,7 @@ _electron=electron17
 _nodeversion=14
 pkgname=schildichat-desktop-git
 _pkgname=schildichat-desktop
-pkgver=1.10.6.sc.0.test.3.r0.3957463
+pkgver=1.10.8.sc.0.test.2.r0.fe615fa
 pkgrel=1
 pkgdesc="A Matrix client based on Element with a more traditional instant messaging experience"
 arch=(x86_64)
@@ -56,8 +56,7 @@ prepare() {
   # Specify electron version in launcher
   sed -i "s|@ELECTRON@|${_electron}|" ../schildichat-desktop.sh
 
-  # _electron_dist=/usr/lib/${_electron}
-  _electron_dist=/usr/lib/electron # there's no /usr/lib/electron17 if 17 is current
+  _electron_dist=/usr/lib/${_electron}
   _electron_ver=$(cat ${_electron_dist}/version)
 
   cd element-desktop
