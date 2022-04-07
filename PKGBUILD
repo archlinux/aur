@@ -26,7 +26,6 @@ optdepends=('gnome-control-center: System settings'
             'evolution-data-server: Evolution calendar integration')
 groups=(gnome)
 provides=(gnome-shell=$pkgver)
-install=gnome-shell.install
 source=("git+https://gitlab.freedesktop.org/xrdesktop/gnome-shell.git#branch=42.0-xrdesktop"
         "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'

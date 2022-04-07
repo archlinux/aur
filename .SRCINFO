@@ -4,7 +4,6 @@ pkgbase = gnome-shell-xrdesktop-git
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.freedesktop.org/xrdesktop
-	install = gnome-shell.install
 	arch = x86_64
 	groups = gnome
 	license = GPL
