@@ -1,6 +1,7 @@
-#Maintainer: Satiricon <david.satiricon@gmail.com>
+#Maintainer: SadaoMaou <luxrayguy@gmail.com>
+#Contributor: Satiricon <david.satiricon@gmail.com>
 pkgname=lanraragi
-pkgver=v.0.7.8
+pkgver=v.0.8.4
 pkgrel=1
 pkgdesc="LANraragi build package"
 arch=(any)
@@ -11,7 +12,7 @@ makedepends=(cpanminus npm perl-config-autoconf pkgconf)
 source=("https://github.com/Difegue/LANraragi/archive/${pkgver}.tar.gz"
         "lanraragi.service" "lanraragi.sysusers" "lanraragi.tmpfiles")
 sha512sums=(
-"96e58fcae61ba3dea87c80397b04570dfa06d1fccf6f3f91ebe799a0be0c2053b7c9c43c27c386c3bece12f9ff700eb4fb441f8670b434c2f41818cdebae8f37"
+"73cefd3db6b0a4748393a4e5cfd2a656fd16c2a60eb31d0520ac17df9b1569ab57f1a1f03bd253190045e5e1cec11fb9ca45995911b87af23a46cd3b8d2a567f"
 "1ef2ca60e51269351440c1ae77431c46b8b82eb7d285e6d209ca9ac64141e2a337a5e9abca49425d026a10194b341c6c22966708bfa8f81d3904c8bc490123e6"
 "c598b37c691b66c3c32aed50d0e79c9d75708c40f79fe83f287e6ed1592736f608b646427ef044bf489d034a91219fd1567b3d0ece320633176ae5dbe28b7685"
 "0f66197d8fe253d1f6ff56f4e301c337be66aa82cf091619df1a8c17ec97d66721f2618cdcdf88718f28f0d80263d4331e482d22468e1bd7bd55ecb2bc076a2d"
