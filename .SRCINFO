@@ -1,13 +1,14 @@
 pkgbase = rocprofiler
 	pkgdesc = ROC profiler library. Profiling with perf-counters and derived metrics.
 	pkgver = 5.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rocmdocs.amd.com/en/latest/ROCm_Tools/ROCm-Tools.html
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	makedepends = python-argparse
 	makedepends = python-cppheaderparser
+	makedepends = hsa-rocr
 	depends = hip
 	depends = python
 	options = !staticlibs
