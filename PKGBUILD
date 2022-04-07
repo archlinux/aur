@@ -4,7 +4,7 @@ _pkgname=WowUp
 pkgname=${_pkgname,,}
 _pkgver=2.7.0
 pkgver=${_pkgver/-/.}
-pkgrel=1
+pkgrel=2
 pkgdesc='WowUp the World of Warcraft addon updater'
 arch=('x86_64')
 
@@ -42,7 +42,7 @@ build() {
     # npm --registry https://registry.npmmirror.com/ install <<<"N"
 
     npm run build:prod
-    ./node_modules/.bin/electron-builder --linux dir
+    ./node_modules/.bin/electron-builder --linux dir --config.asarUnpack="build/Release/addon.node"
 }
 
 package() {
