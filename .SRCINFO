@@ -10,7 +10,6 @@ pkgbase = electrs
 	makedepends = cmake
 	makedepends = rust
 	depends = gcc-libs
-	depends = rocksdb
 	source = git+https://github.com/romanz/electrs.git#tag=v0.8.6
 	md5sums = SKIP
 
