@@ -21,12 +21,10 @@ makedepends=(gobject-introspection git egl-wayland meson xorg-server
 #options=(debug)
 _commit=9249aba72a5c4454894c08735a4963ca1665e34d  # tags/42.0^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-        'backports.patch'
         'mr1441.patch')
 
 sha256sums=('SKIP'
-            '4bfebf11fd10d2829977cb3c77491bcb9eaa7779f9fc72cdbf10cb0f56adc813'
-            'cf99896763558258f489ff0e9a1e8001f716d63b06366f740e044cc72a71d3e7')
+            'fc1963c134b4548950241d175a7389ec5f1a0b6a86cefb6d0918d958d66252a2')
 
 pkgver() {
   cd $pkgname
@@ -36,7 +34,6 @@ pkgver() {
 prepare() {
   cd "$srcdir/$pkgname"
   patch -p1 < "$srcdir/mr1441.patch"
-  patch -p1 < "$srcdir/backports.patch"
 }
 
 build() {
