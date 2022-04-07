@@ -6,7 +6,7 @@ _pkgbase=dwm
 pkgname=auto-dwm
 pkgdesc="Concise Build of Suckless DWM"
 arch=('x86_64')
-url="https://gitlab.com/qYp/dwm"
+url="https://gitlab.com/a4to/dwm"
 license=('MIT')
 depends=('libxft')
 optdepends=(
@@ -19,7 +19,7 @@ optdepends=(
 provides=(dwm)
 conflicts=(dwm)
 backup=(usr/bin/dwm.bak)
-source=("https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
+source=("https://gitlab.com/a4to/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
 sha256sums=('0ab35c87c8d53a61ddcaf481203a9e968485e5cd24ee236762cfb69d35c70d11')
 
 build() {
