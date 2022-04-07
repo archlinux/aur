@@ -2,10 +2,10 @@
 # Contributor: Atterratio <atterratio@gmail.com>
 
 pkgname=q4wine-git
-pkgver=v1.3.6.11.ge511d2b
+pkgver=1.3.13.2.g9735939
 pkgrel=1
 pkgdesc="A Qt GUI for Wine. (GIT Version)"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url='http://sourceforge.net/projects/q4wine'
 license=('GPL3')
 depends=('qt-solutions-git'
@@ -19,37 +19,34 @@ makedepends=('cmake'
              'git'
              'qt5-tools'
              'qt5-svg'
+             'fuseiso'
              )
 optdepends=('winetricks: Tweak wine'
             'fuseiso: Mount ISO files'
             )
 conflicts=('q4wine')
 provides=('q4wine')
-source=('git://github.com/brezerk/q4wine.git')
+source=('git+https://github.com/brezerk/q4wine.git')
 sha1sums=('SKIP')
 
 pkgver() {
   cd q4wine
-  echo "$(git describe --long --tags | tr - .)"
-}
-
-prepare() {
-  mkdir -p build
+  echo "$(git describe --long --tags | tr - . | tr -d v)"
 }
 
 build() {
-  cd build
-  cmake ../q4wine \
+  cmake -S q4wine -B build \
+    -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_BUILD_TYPE=Release \
     -DLIBS_ENTRY_PATH=/usr/lib \
-    -DQT5=ON \
     -DWITH_SYSTEM_SINGLEAPP=ON
-  make
+
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="${pkgdir}" install
+
+  DESTDIR="${pkgdir}" cmake --install build
 
   rm -fr "${pkgdir}/usr/share/icons/ubuntu-mono-dark"
 }
