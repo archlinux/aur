@@ -1,6 +1,6 @@
 # Maintainer: Jonian Guveli <https://github.com/jonian/>
 pkgname=gnome-shell-extension-dark-variant
-pkgver=3
+pkgver=4
 pkgrel=1
 pkgdesc="Gnome Shell extension to apply dark window decorations"
 arch=("any")
@@ -8,7 +8,7 @@ url="https://github.com/hardpixel/dark-variant"
 license=("GPL")
 depends=("gnome-shell" "xorg-xprop")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('cf2a1f44b1d7230506fd3b38ecd04273')
+md5sums=('a96eb83daf216beff2dc20aa90396f0b')
 
 package() {
   install -d "$pkgdir/usr/share/gnome-shell/extensions" \
