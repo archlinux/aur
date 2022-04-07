@@ -2,7 +2,7 @@
 
 pkgname=nutstore-experimental
 pkgver=5.1.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Nutstore experimental version.'
 arch=(x86_64)
 url='https://www.jianguoyun.com/'
@@ -27,6 +27,7 @@ build() {
     sed -i '/Exec=/s|~/\.nutstore/dist/bin/nutstore-pydaemon.py|/usr/bin/nutstore|' menu/nutstore-menu.desktop
     sed -i '/Exec=/s|~/\.nutstore/dist|/opt/nutstore|' autostart/nutstore-daemon.desktop
     cd $srcdir/bin
+    sed -i '/gvfs-set-attribute/s|gvfs-set-attribute|gio set|' nutstore-pydaemon.py
     python -m compileall .
 }
 
