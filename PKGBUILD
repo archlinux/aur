@@ -1,24 +1,34 @@
-# Maintainer: Andrés Cordero <arch@andrew67.com>
+# Maintainer: BoBeR182 <aur AT nullvoid DOT com>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Andrés Cordero <arch@andrew67.com>
 # Contributor: Jens Pranaitis <jens@chaox.net>
+
 pkgname=mdk3
 pkgver=v6
+pkgrel=8
 pkgdesc="WLAN penetration tool"
-pkgrel=5
-arch=("i686" "x86_64")
-license=('GPL')
-url="http://aspj.aircrack-ng.org/"
-makedepends=('sed')
-source=(http://aspj.aircrack-ng.org/$pkgname-$pkgver.tar.bz2)
-md5sums=('67705a814ded2a2e6f70522ca0dc6da9')
+url="https://www.kali.org/tools/mdk3/"
+arch=("x86_64")
+license=('GPL2')
+depends=('glibc')
+source=(https://salsa.debian.org/pkg-security-team/${pkgname}/-/archive/debian/master/${pkgname}-debian-master.tar.bz2)
+sha512sums=('fb7902654b263b4c4a90b4e7c590699678fc57a29bdba79bece89330d39b2019f4655c0ddfc6c7f9f0b61419fec37e195de503a7d0cad4c765f9ddeb9b22cede')
+
+prepare() {
+  cd ${pkgname}-debian-master
+  sed 's|sbin|bin|g' -i Makefile
+}
+
+
 build() {
-  cd "${srcdir}"/$pkgname-$pkgver
-  sed -i -e "s:/usr/local:/usr:" Makefile
-  sed -i "s|-g -O3|$CFLAGS|g" Makefile
-  make -C osdep || return 1
-  make || return 1
+  cd ${pkgname}-debian-master
+  make -C osdep
+  make
 }
 package() {
-  cd "${srcdir}"/$pkgname-$pkgver
-  make DESTDIR="${pkgdir}/" install || return 1
-  mv ${pkgdir}/usr/sbin ${pkgdir}/usr/bin || return 1
+  cd ${pkgname}-debian-master
+  make DESTDIR="${pkgdir}" PREFIX="/usr" install
+  install -Dm 644 docs/*.html -t "${pkgdir}/usr/share/doc/${pkgname}"
 }
+
+# vim: ts=2 sw=2 et:
