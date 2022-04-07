@@ -54,7 +54,7 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -74,7 +74,7 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 #_bfq_rel="r2K210223"
 #_bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
 _bfq_path="bfq-lucjan"
-_bfq_rel="r2K220321v1"
+_bfq_rel="r2K220407v1"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_rel}.patch"
 _compiler_path="cpu-patches-sep"
 _compiler_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
@@ -343,7 +343,7 @@ sha512sums=('bb73202e770d10767739664b5320b47d78bc374b2bde38b289f1ede1b7b33a8be0a
             'SKIP'
             '6c39e02803b2962adadb839a6d7844b4ba22ab09ccf4040371683fc0abb8d6f17372f159666209c7eb90fcee05dd01767df739a5dc545ceffe3bfb43f30463cd'
             'SKIP'
-            'b139e039f220f128c4fbc5c91afff4bdf41f3daef3627df4c4ff8711621c5f797f1c3eb601704ef46d7d3b016aba01d6ccf6eb917a87186b3edbb4661690d8cd'
+            'f17cab207c64d6d06124355ffa9bc684dfea5ca4f271ec06c6fdf3fad9efd016c9a6f72839ad3c2ea63e535cdf5d2fe0efe0ed61583a4d011d989c6f444e0118'
             'b63921b6246bd1b9545a8042d76334bef8a7ee46e5404c5efec4a842a455a84046e92423b2bc6d950f19dcf85805d7493fe71d6d177e3b46b52a279b0a44d0c9'
             'd26c3f17f0fdc9ede8203a45baa242279c77e0397803346cb9d57ea6065a2fe5d1d2403698d52a72a072ed81761e68b50717d04237d695fae38a1958efc5f545'
             'ca5a425bff20bed817c13ddb9854acbd47367b5126389e9e99815b0d576d1d07610ea9075efca298d0b8441cea65e3ba33aa53a11985a25909872dcd1c67a51e'
