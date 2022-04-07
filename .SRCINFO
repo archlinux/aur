@@ -1,0 +1,24 @@
+pkgbase = python-banana-hep
+	pkgdesc = Benchmarking infrastructure and utilities for Deep Inelastic Scattering and evolution codes used in High Energy Physics.
+	pkgver = 0.6.5
+	pkgrel = 1
+	url = https://banana-hep.readthedocs.io/
+	arch = any
+	license = GPL-3
+	makedepends = python-setuptools
+	depends = python>=3.8
+	depends = python-click
+	depends = python-matplotlib
+	depends = python-numpy
+	depends = python-pandas
+	depends = python-pendulum
+	depends = python-yaml
+	depends = python-rich
+	depends = python-sqlalchemy
+	optdepends = lhapdf: provides PDF files in the LHAPDF format
+	optdepends = python-eko: Python module to solve the DGLAP equations
+	provides = python-banana-hep
+	source = https://pypi.io/packages/source/b/banana-hep/banana-hep-0.6.5.tar.gz
+	md5sums = 8b3786476df0fcc06996cddb24a7fcbe
+
+pkgname = python-banana-hep
