@@ -1,6 +1,6 @@
 # Maintainer: Michał Walenciak <kicer86@gmail.com>
 pkgname=openblok
-pkgver=0.8.3
+pkgver=0.8.4
 pkgrel=1
 pkgdesc="A customizable, cross platform, open-source falling block game, packed with a bunch of features."
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ install=
 changelog=
 source=(https://codeload.github.com/mmatyas/$pkgname/tar.gz/v$pkgver libSDL2pp::git+https://github.com/mmatyas/libSDL2pp.git#commit=4cb0e063ddd7db666007c71cef7a5f9cce866671)
 noextract=()
-md5sums=('e3704fbdd4451255efc6772046a12dd0'
+md5sums=('82614ea8a047354d23f3f8ff322f00f8'
          'SKIP')
 
 prepare()
