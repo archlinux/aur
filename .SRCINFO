@@ -1,6 +1,6 @@
 pkgbase = muezzin-bin
 	pkgdesc = Islamic prayer times and adhan application
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/DBChoco/Muezzin
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = muezzin-bin
 	conflicts = muezzin-appimage
 	conflicts = muezzin-electron
 	conflicts = muezzin
-	noextract = muezzin-0.2.0.pacman
-	source = muezzin-0.2.0.pacman::https://github.com/DBChoco/Muezzin/releases/download/v0.2.0/muezzin-0.2.0.pacman
+	noextract = muezzin-0.2.1.pacman
+	source = muezzin-0.2.1.pacman::https://github.com/DBChoco/Muezzin/releases/download/v0.2.1/muezzin-0.2.1.pacman
 	md5sums = SKIP
 
 pkgname = muezzin-bin
