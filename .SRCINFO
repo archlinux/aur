@@ -1,0 +1,16 @@
+pkgbase = donkey-kong-country-returns
+	pkgdesc = Side-scrolling platform game developed by Retro Studios and published by Nintendo for the Wii console.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://en.wikipedia.org/wiki/Donkey_Kong_Country_Returns
+	arch = any
+	license = custom
+	depends = dolphin-emu
+	source = SF8P01.iso::https://archive.org/download/446f6e6b6579204b6f6e6720436f756e7472792052657475726e73205b2050414c5d/Donkey%20Kong%20Country%20Returns%20%5BPAL%5D.iso
+	source = wii-template.desktop
+	source = com.retrostudios.DonkeyKongCountryReturns.png::https://upload.wikimedia.org/wikipedia/en/1/1f/Donkeykongcountryreturns.jpg
+	sha512sums = 74c5505cc852d98c01e48a11d699299a4a756ecd2910be273aa2186b45a2a08770f768d81e72bb5f9d5e4c15dcd6ae1ff65d95c9f189f8900c75e4e6c9596ead
+	sha512sums = 64deb671d7251f9a97f82eb345799f5df8fa63fa1ebc8c8e1ee0c148af81ecdddfc85900be2957283507adc4fc90e78aef2723ad8b2f6c255d952c0b8ab29aa3
+	sha512sums = f714273218ed863aaca62336c1a88a919dc7dc040d125bc75edd5170eed92b4e59d191241ddfdd57a2b6bd19cc395062b720c2e9bda46a0dbe07a3b2193f8884
+
+pkgname = donkey-kong-country-returns

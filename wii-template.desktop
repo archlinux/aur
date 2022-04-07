@@ -1,0 +1,17 @@
+[Desktop Entry]
+Name=%_title% (%_uuid%)
+Comment=%pkgdesc%
+Type=Application
+TryExec=dolphin-emu
+Exec=dolphin-emu-nogui --config "Dolphin.Display.Fullscreen=True" "/usr/games/%_app_id%/%_uuid%.iso"
+Icon=%_app_id%
+Terminal=false
+Categories=Games;
+Keywords=WII
+Actions=preferences;
+
+[Desktop Action preferences]
+Name=Preferences
+Exec=dolphin-emu
+
+X-Desktop-File-Install-Version=0.26
