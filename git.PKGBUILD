@@ -6,20 +6,28 @@ _pkgname=${pkgname}
 _githuborg=${_projectname}
 pkgdesc="Skywire Mainnet Node implementation. Skycoin.com"
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
-pkgver=0.5.1
-pkgrel=2
-#pkgrel=2
+pkgver=0.6.0
+pkgrel=1
+#pkgrel=1
 arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
 url="https://${_pkggopath}"
 license=()
 makedepends=('git' 'go' 'musl' 'kernel-headers-musl') #disable signature check pending fixes#  'skycoin-keyring')
 install=skywire.install
 _scripts=${_pkgname}-scripts
-source=("git+${url}.git"
+source=("git+${url}.git#branch=develop"
 "${_scripts}.tar.gz"
 )
 sha256sums=('SKIP'
-            '4172254517724e5d22ac182e7ac7f1785a3fe3df11deea159525aa6e7652caa6')
+            '9808ca83ba706effe45a23a242e91a24d637979cc5886e59333e8d560fa8682b')
+
+pkgver() {
+cd ${srcdir}/${_pkgname}
+local _version=$(make version)
+_version=${_version%%-*}
+echo ${_version//v/}
+}
+
 prepare() {
 # https://wiki.archlinux.org/index.php/Go_package_guidelines
 mkdir -p ${srcdir}/go/src/github.com/${_githuborg}/ ${srcdir}/go/bin ${srcdir}/go/apps
@@ -37,7 +45,7 @@ export CGO_ENABLED=1  #default anyways
 export CC=musl-gcc
 
 
-local _version="v${pkgver}"
+local _version="${pkgver}"
 DMSG_BASE="github.com/skycoin/dmsg"
 BUILDINFO_PATH="${DMSG_BASE}/buildinfo"
 BUILDINFO_VERSION="${BUILDINFO_PATH}.version=${_version}"
@@ -85,28 +93,23 @@ cd $_GOAPPS
 sha256sum $(ls)
 }
 
-
-
 package() {
-  _msg2 'creating dirs'
+_pkgdir=${pkgdir}
 #create directory trees or the visor might make them with weird permissions
+#only path differing between debian & archlinux
+_systemddir="usr/lib/systemd/system"
 _skydir="opt/skywire"
 _skyapps="${_skydir}/apps"
 _skyscripts="${_skydir}/scripts"
-_systemddir="etc/systemd/system"
 _skybin="${_skydir}/bin"
-mkdir -p ${pkgdir}/usr/bin
-mkdir -p ${pkgdir}/${_skydir}/bin
-mkdir -p ${pkgdir}/${_skydir}/apps
-mkdir -p ${pkgdir}/${_skydir}/ssl
-mkdir -p ${pkgdir}/${_skydir}/local
-mkdir -p ${pkgdir}/${_skydir}/dmsgpty
-mkdir -p ${pkgdir}/${_skydir}/${_pkgname}
-mkdir -p ${pkgdir}/${_skydir}/${_pkgname}-save
-mkdir -p ${pkgdir}/${_skydir}/transport_logs
-mkdir -p ${pkgdir}/${_skydir}/skycache
-mkdir -p ${pkgdir}/${_skydir}/hypervisorkey
-mkdir -p ${pkgdir}/${_skydir}/scripts
+_msg2 'creating dirs'
+mkdir -p ${_pkgdir}/usr/bin
+mkdir -p ${_pkgdir}/${_skydir}/bin
+mkdir -p ${_pkgdir}/${_skydir}/apps
+mkdir -p ${_pkgdir}/${_skydir}/local
+mkdir -p ${_pkgdir}/${_skydir}/${_pkgname}
+mkdir -p ${_pkgdir}/${_skydir}/${_pkgname}-save
+mkdir -p ${_pkgdir}/${_skydir}/scripts
 
 _msg2 'installing binaries'
 _skywirebins=$( ls ${srcdir}/go/bin )
@@ -123,26 +126,20 @@ _skywirescripts=$( ls ${srcdir}/${_scripts}/${_pkgname} )
 for i in ${_skywirescripts}; do
   _install2 ${srcdir}/${_scripts}/${_pkgname}/${i} ${_skyscripts}
 done
-
+chmod +x ${_pkgdir}/usr/bin/*
 #rename visor to skywire - matche the skycoin / skycoin-cli of the skycoin wallet
-[[ -f ${pkgdir}/usr/bin/${_pkgname}-visor ]] && mv ${pkgdir}/usr/bin/${_pkgname}-visor ${pkgdir}/usr/bin/${_pkgname}
+[[ -f ${_pkgdir}/usr/bin/${_pkgname}-visor ]] && ln -rTsf ${_pkgdir}/usr/bin/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}
 
 #install the patched system.d services
-install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${pkgdir}/${_systemddir}/${_pkgname}.service
-install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-visor.service ${pkgdir}/${_systemddir}/${_pkgname}-visor.service
-
-#tls key and certificate generation
-install -Dm755 ${srcdir}/${_scripts}/ssl/generate.sh ${pkgdir}/${_skydir}/ssl/generate.sh
-ln -rTsf ${pkgdir}/${_skydir}/ssl/generate.sh ${pkgdir}/usr/bin/${_pkgname}-tls-gen
-install -Dm644 ${srcdir}/${_pkgname}/static/${_pkgname}-manager-src/ssl/certificate.cnf ${pkgdir}/${_skydir}/ssl/certificate.cnf
+install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${_pkgdir}/${_systemddir}/${_pkgname}.service
+install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-visor.service ${_pkgdir}/${_systemddir}/${_pkgname}-visor.service
 }
 
 _install2() {
 _binname="${1##*/}"
 _binname="${_binname%%.*}"
-install -Dm755 ${1} ${pkgdir}/${2}/${_binname}
-ln -rTsf ${pkgdir}/${2}/${_binname} ${pkgdir}/usr/bin/${_binname}
-chmod +x ${pkgdir}/usr/bin/${_binname}
+install -Dm755 ${1} ${_pkgdir}/${2}/${_binname}
+ln -rTsf ${_pkgdir}/${2}/${_binname} ${_pkgdir}/usr/bin/${_binname}
 }
 
 _msg2() {
