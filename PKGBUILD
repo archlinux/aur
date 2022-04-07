@@ -1,6 +1,6 @@
 # Maintainer: DigitOtter <digitotter@protonmail.com>
 pkgname=obs-scene-tree-view-git
-pkgver=v0.0.3.r0.g65d4e5e
+pkgver=v0.1.1.r0.g1473e5a
 pkgrel=1
 pkgdesc="Scene Tree Folder plugin for OBS Studio"
 arch=( 'any' )
