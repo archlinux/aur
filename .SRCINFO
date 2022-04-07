@@ -1,0 +1,14 @@
+pkgbase = python-nxviz
+	pkgdesc = Visualization Package for NetworkX
+	pkgver = 0.7.3
+	pkgrel = 1
+	url = https://github.com/ericmjl/nxviz
+	arch = x86_64
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	source = https://files.pythonhosted.org/packages/source/n/nxviz/nxviz-0.7.3.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-nxviz
