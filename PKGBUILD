@@ -3,14 +3,15 @@
 pkgname=avvie
 _appname=Avvie
 _appid=com.github.taiko2k.avvie
-pkgver=1.7
-_commit=dda3f9583bd22b21edbfbb2500402b9e3ca139f8
-pkgrel=2
+pkgver=2.0
+_commit=6326118d4b768161d543cbf579b043cfada8b725
+pkgrel=1
 pkgdesc="A utility for quickly cropping images"
 arch=(x86_64)
 url=https://github.com/Taiko2k/Avvie
 license=(GPL3)
-depends=(gtk3
+depends=(gtk4
+         libadwaita
          libnotify
          python-cairo
          python-gobject
@@ -34,8 +35,9 @@ package() {
   install -Dm644 "$_appid.desktop" -t "$pkgdir/usr/share/applications"
   install -Dm644 "$_appid.svg" -t "$pkgdir/usr/share/icons/hicolor/scalable/apps"
   install -Dm644 "$_appid-symbolic.svg" -t "$pkgdir/usr/share/icons/hicolor/symbolic/apps"
-  install -Dm644 "icon128.png" -t "$pkgdir/usr/share/icons/hicolor/128x128/apps"
-  install -Dm644 "icon256.png" -t "$pkgdir/usr/share/icons/hicolor/256x256/apps"
+  install -Dm644 image-crop.svg -t "$pkgdir/usr/lib/$pkgname"
+  install -Dm644 icon128.png -t "$pkgdir/usr/share/icons/hicolor/128x128/apps"
+  install -Dm644 icon256.png -t "$pkgdir/usr/share/icons/hicolor/256x256/apps"
 
   install -Dm755 "$srcdir/$pkgname.sh" "$pkgdir/usr/bin/$pkgname"
 }
