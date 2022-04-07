@@ -1,0 +1,39 @@
+diff --git a/setup.py b/setup.py
+index 92db0e1d..38f64f12 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1,25 +1,8 @@
+ #!/usr/bin/python2
+ 
+ from distutils.core import setup
+-import os
+ import sys
+ 
+-
+-# config file
+-data_files = [("/etc/lorax", ["etc/lorax.conf"]),
+-              ("/usr/lib/tmpfiles.d/", ["systemd/lorax.conf"])]
+-
+-# shared files
+-for root, dnames, fnames in os.walk("share"):
+-    for fname in fnames:
+-        data_files.append((root.replace("share", "/usr/share/lorax", 1),
+-                           [os.path.join(root, fname)]))
+-
+-# executable
+-data_files.append(("/usr/sbin", ["src/sbin/lorax", "src/sbin/mkefiboot",
+-                                 "src/sbin/livemedia-creator", "src/sbin/mkksiso"]))
+-data_files.append(("/usr/bin",  ["src/bin/image-minimizer"]))
+-
+ # get the version
+ sys.path.insert(0, "src")
+ try:
+@@ -42,6 +25,5 @@ setup(name="lorax",
+       download_url="http://www.github.com/weldr/lorax/releases/",
+       license="GPLv2+",
+       packages=["pylorax"],
+-      package_dir={"" : "src"},
+-      data_files=data_files
+-      )
++      package_dir={'': 'src'}
++)
