@@ -1,0 +1,17 @@
+pkgbase = duolibre
+	pkgdesc = Authenticate to Duo 2FA systems without the Duo Mobile app
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/evan-goode/duolibre
+	arch = any
+	license = Unlicense
+	makedepends = python-setuptools
+	depends = python-pycryptodome
+	depends = python-click
+	depends = python-pyotp
+	depends = python-qrcode
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/14/2d/4ef947e8d74053e6dec890d7558ed86f55625a8c341969ef5bc1dc3713e6/duolibre-1.0.1.tar.gz
+	sha256sums = aa52f287a697af3143242078264620e7ce1bc0e6df4ea3a5701b28baef2d44ff
+
+pkgname = duolibre
