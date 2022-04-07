@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('lightdm' 'lightdm-webkit2-greeter>=2.2.3')
 install='lightdm-webkit-theme-osmos.install'
 source=("$url/releases/download/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('bee569d2a813723654798b0c6c384e95')
+md5sums=('808731e9eb40a8e6d02cc1f74ea63a77')
 
 package() {
   install -dm 755 "$pkgdir"/usr/share/lightdm-webkit/themes/osmos
