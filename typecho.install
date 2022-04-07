@@ -4,6 +4,7 @@ post_install() {
     echo ""
     echo "==> Run php-fpm without ProtectSystem=full in usr/lib/systemd/system/php-fpm.service"
     echo ""
-    echo "==> For php-fpm7, the service file name is php-fpm.service"
+    echo "==> For php7-fpm, the service file name is php-fpm7.service"
+    echo ""
 }
 
