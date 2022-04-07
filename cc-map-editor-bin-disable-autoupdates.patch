@@ -8,7 +8,7 @@
  const contextMenu = require('electron-context-menu');
  const {IPC} = require('node-ipc');
  
-@@ -54,11 +53,6 @@
+@@ -55,11 +54,6 @@
  			});
  			console.log('path', indexPath);
  			win.loadURL(indexPath);

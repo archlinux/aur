@@ -2,13 +2,13 @@
 _pkgname=cc-map-editor
 pkgname="${_pkgname}-bin"
 pkgver=0.13.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A Map Editor for the game CrossCode"
 arch=('any')
 url='https://github.com/CCDirectLink/crosscode-map-editor'
 license=('custom:MIT')
 depends=(electron13)
-makedepends=(asar npm jq)
+makedepends=(asar npm imagemagick)
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 options=(!strip)
@@ -21,7 +21,7 @@ noextract=("${_appimage_file}")
 sha256sums=('d8cd9d65ae62b1bc5863a9ecb3ef98ca13957f98e55862072fb4b38de758ace5'
             'a406579cd136771c705c521db86ca7d60a6f3de7c9b5460e6193a2df27861bde'
             'c03a2ede59f0476176c1a32d28ac19e907e76b1dbfdffa93d9eefa40d868506b'
-            '44f1235757748bf2744f69be9c08abfc66859aa34cac93c3a477b5eb3d233abc')
+            '2491a2a02750773b2bfb09aedc955ccfe48c1a17e09f0e7ea76c6a1ceba56135')
 
 prepare() {
   mkdir -p "${pkgname}-${pkgver}"
@@ -52,12 +52,12 @@ EOF
 
     patch --forward --input="${srcdir}/${pkgname}-disable-autoupdates.patch"
 
-    echo "patching file package.json"
-    jq '.dependencies |= del(.["electron-log", "electron-updater"])' package.json > package.json.new
-    mv package.json.new package.json
-
-    npm prune --no-audit --no-fund --production
+    npm --no-audit --no-fund --no-package-lock uninstall electron-log electron-updater
   )
+
+  msg2 "Converting icons..."
+  mkdir -p "icons"
+  convert "app/distAngular/favicon.ico" -set filename:size "%wx%h" "icons/%[filename:size].png"
 
   msg2 "Packing app.asar..."
   asar pack "app" "app.asar"
@@ -71,8 +71,9 @@ package() {
   install -Dm644 "squashfs-root/resources/app.asar" "${pkgdir}/usr/lib/${_pkgname}/app.asar"
   install -Dm755 "${_pkgname}.sh" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 "${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
-  local icon_size icon_path; for icon_size in 16 32 48 64 128 256; do
-    icon_path="usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/${_pkgname}.png"
-    install -Dm644 "squashfs-root/${icon_path}" "${pkgdir}/${icon_path}"
+  local icon_path icon_name icon_size; for icon_path in "icons/"*; do
+    icon_name="${icon_path##*/}"
+    icon_size="${icon_name%.png}"
+    install -Dm644 "${icon_path}" "${pkgdir}/usr/share/icons/hicolor/${icon_size}/apps/${_pkgname}.png"
   done
 }
