@@ -9,7 +9,7 @@
 
 pkgbase=lib32-glfw
 pkgname=('lib32-glfw-x11' 'lib32-glfw-wayland')
-pkgver=3.3.6
+pkgver=3.3.7
 pkgrel=1
 arch=('x86_64')
 url="https://www.glfw.org/"
@@ -18,7 +18,7 @@ makedepends=('lib32-mesa' 'cmake' 'vulkan-headers' 'lib32-vulkan-icd-loader'
              'extra-cmake-modules' 'wayland-protocols' 'lib32-libxi' 'lib32-libxrandr'
              'lib32-libxcursor' 'lib32-libxkbcommon' 'lib32-libxinerama')
 source=("glfw-${pkgver}.tar.gz"::"https://github.com/glfw/glfw/archive/${pkgver}.tar.gz")
-sha512sums=('4c295c5f4c02f6ede125fce67c52a97450f552f3985b664745bd8a836c1d6d69c04727c956fd26ec61f1e5fd9c074a28dcf6b1d1800f118444eef066f048b201')
+sha512sums=('7b71a5a564633c3617bb0e765566069de9d54e0381fb828959a77a42ca94546623fda514292adee72ddacacc305b219a2e6c4bb799bfab8186010642bc2dffe8')
 
 prepare() {
   cd "$srcdir/glfw-$pkgver"
