@@ -12,7 +12,7 @@ _minorc=$((_minor+1))
 ### on initial release this is just $_major
 [[ -z $_minor ]] && _fullver=$_major || _fullver=$_major.$_minor
 #_fullver=$_major.$_minor
-_rcver=1
+_rcver=2
 _rcpatch=patch-${_major}.${_minorc}-rc${_rcver}
 pkgver=${_major}.${_minorc}rc${_rcver}
 arch=(x86_64)
@@ -38,7 +38,7 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
-b2sums=('8627890f9066b385c8daab21eeb4f4dd7cd61cbd48910209209c0213a4fa1ca526535d36aa473ef3760cf80bf6cbcb5b9577f59c9a6af3efcdde6d82091479fe'
+b2sums=('254d82d42bc9e38c2dd8a101be3e01b0314e7fb6475fc70885a1d42063f869ca4de5ba320c4c304ce7ec32d3dd6e47f67c4d75e8eb457f011852007c05bf08d3'
         'SKIP'
         '1275903955f014d0a0b4cad9074710d36825b274814cde457cf9e1f9acc188b21da7de01100f99cfe9644fb7fd182a95257d124a6992ac3be47adb907e230616'
         'SKIP'
