@@ -6,7 +6,7 @@
 pkgbase=mutter-dynamic-buffering
 pkgname=(mutter-dynamic-buffering)
 pkgver=42.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME (with dynamic triple/double buffering)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -17,7 +17,7 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          xorg-xwayland graphene libxkbfile libsysprof-capture)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof gi-docgen)
-#checkdepends=(xorg-server-xvfb pipewire-media-session python-dbusmock)
+#checkdepends=(xorg-server-xvfb wireplumber python-dbusmock)
 #options=(debug)
 _commit=9249aba72a5c4454894c08735a4963ca1665e34d  # tags/42.0^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
@@ -28,17 +28,25 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd $pkgname
-  git describe --tags | sed 's/-/+/g'
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
   cd "$srcdir/$pkgname"
+
+  # Fix Dash-to-dock not autohiding
+  git cherry-pick -n 2aad56b949b8 0280b0aaa563
+
+  # https://bugs.archlinux.org/task/74360
+  git cherry-pick -n f9857cb8bd7af20e819283917ae165fa40c19f07
+
   patch -p1 < "$srcdir/mr1441.patch"
 }
 
 build() {
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
   LDFLAGS+=" -Wl,-Bsymbolic-functions"
+
   arch-meson $pkgname build \
     -D egl_device=true \
     -D wayland_eglstream=true \
@@ -56,7 +64,7 @@ _check_internal() (
   pipewire &
   _p1=$!
 
-  pipewire-media-session &
+  wireplumber &
   _p2=$!
 
   trap "kill $_p1 $_p2; wait" EXIT
@@ -95,3 +103,5 @@ package_mutter-docs() {
 
   mv docs/* "$pkgdir"
 }
+
+# vim:set sw=2 et:
