@@ -1,6 +1,6 @@
 pkgbase = qt-dab
 	pkgdesc = Software DAB decoder for use with various SDR devices
-	pkgver = 4.3.5
+	pkgver = 4.3.5.1
 	pkgrel = 1
 	url = https://www.sdr-j.tk/
 	arch = x86_64
@@ -18,9 +18,7 @@ pkgbase = qt-dab
 	optdepends = libad9361: Support for Pluto
 	optdepends = rtl-sdr: Support for RTL-SDR
 	optdepends = libsdrplay: Support for SDRplay
-	source = https://github.com/JvanKatwijk/qt-dab/archive/refs/tags/4.35.tar.gz
-	source = https://github.com/JvanKatwijk/qt-dab/commit/59a3761e8a2f9aba8fd6e5b471f9c6508c29f274.patch
-	sha256sums = 5180eb2f4c51406143dc498a8260cf26dc41978d4328560b9aeac3d179022775
-	sha256sums = e9e01b0df5afaee4b8cf564334f87ebd91d80725c557f3dcecc7805a54924c8d
+	source = https://github.com/JvanKatwijk/qt-dab/archive/refs/tags/4.351.tar.gz
+	sha256sums = 420f05178dd25beb39987146a74ae3d1150820d2330ea49e6a614df5447b4682
 
 pkgname = qt-dab

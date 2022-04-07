@@ -4,9 +4,9 @@
 # https://github.com/michaellass/AUR
 
 pkgname=qt-dab
-pkgver=4.3.5
+pkgver=4.3.5.1
 _prefix= # name of tarball and contents change from release to release
-_pkgver=4.35    # official versioning not compatible with pacman
+_pkgver=4.351    # official versioning not compatible with pacman
 _binary=${pkgname}-${_pkgver}
 pkgrel=1
 pkgdesc="Software DAB decoder for use with various SDR devices"
@@ -21,7 +21,7 @@ optdepends=('airspy: Support for Airspy'
             'rtl-sdr: Support for RTL-SDR'
             'libsdrplay: Support for SDRplay')
 source=("https://github.com/JvanKatwijk/${pkgname}/archive/refs/tags/${_prefix}${_pkgver}.tar.gz")
-sha256sums=('5180eb2f4c51406143dc498a8260cf26dc41978d4328560b9aeac3d179022775')
+sha256sums=('420f05178dd25beb39987146a74ae3d1150820d2330ea49e6a614df5447b4682')
 
 prepare() {
 	cd "${_prefix}${pkgname}-${_pkgver}"
