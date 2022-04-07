@@ -1,7 +1,7 @@
 # Maintainer: Ray Shirohara <RShirohara@gmail.com>
 
 pkgname=textimg
-pkgver=3.1.2
+pkgver=3.1.4
 pkgrel=1
 pkgdesc='Command to convert from color text (ANSI or 256) to image.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('noto-fonts-cjk: Default font used in linux')
 provides=('textimg')
 options=('!strip')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('61d48a737588b3b17d4ef95a4b3ca0f7a4b289176f3a150edf3bcf9a731f266f')
+sha256sums=('bc9db481843e51a843aeb0824f088fd3c3e641fd024fca2cb50733ffd5f36a1e')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -31,8 +31,8 @@ package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   install -Dm644 README_ja.md "${pkgdir}/usr/share/doc/${pkgname}/README_ja.md"
-  install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/img"
-  install -Dm644 img/* "${pkgdir}/usr/share/doc/${pkgname}/img/"
+  install -dm755 "${pkgdir}/usr/share/doc/${pkgname}/docs"
+  install -Dm644 docs/* "${pkgdir}/usr/share/doc/${pkgname}/docs/"
   install -Dm644 completions/bash/textimg "${pkgdir}/usr/share/bash-completion/completions/textimg"
   install -Dm644 completions/zsh/_textimg "${pkgdir}/usr/share/zsh/site-functions/_textimg"
 }
