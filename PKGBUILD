@@ -2,7 +2,7 @@
 
 pkgname=telepresence2
 pkgver=2.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Local development against a remote Kubernetes or OpenShift cluster"
 arch=('x86_64')
 license=('Apache')
@@ -15,6 +15,6 @@ md5sums=('f5e67f6aa859fc24ccbfb433d05f0351')
 
 package(){
   cd ${srcdir}/telepresence-${pkgver}
-  TELEPRESENCE_VERSION=v${pkgver} make build
+  TELEPRESENCE_VERSION=v${pkgver} make build-version
   install -Dm755 ./build-output/bin/telepresence ${pkgdir}/usr/bin/telepresence
 }

@@ -1,7 +1,7 @@
 pkgbase = telepresence2
 	pkgdesc = Local development against a remote Kubernetes or OpenShift cluster
 	pkgver = 2.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/telepresenceio/telepresence
 	arch = x86_64
 	license = Apache
