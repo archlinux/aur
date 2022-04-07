@@ -1,14 +1,14 @@
 pkgbase = gnome-shell-extension-blur-my-shell
 	pkgdesc = Extension that adds a blur look to different parts of the GNOME Shell
-	pkgver = 28
-	pkgrel = 2
+	pkgver = 30
+	pkgrel = 1
 	url = https://github.com/aunetx/blur-my-shell
 	arch = any
 	license = GPL3
 	depends = dconf
-	depends = gnome-shell>=1:40
+	depends = gnome-shell>=1:42
 	conflicts = gnome-shell-extension-blur-my-shell-git
-	source = blur-my-shell-28.tar.gz::https://github.com/aunetx/blur-my-shell/archive/refs/tags/v28.tar.gz
-	sha256sums = ba7fe26e4b5288670b0b6f0c2e0a04dd5de6567b6e861361c1ea4772afa24776
+	source = blur-my-shell-30.tar.gz::https://github.com/aunetx/blur-my-shell/archive/refs/tags/v30.tar.gz
+	sha256sums = 3b98c4a3778d397f1f462eea391436bebb13d4569533c3e716e4f9b2bdfaa3c7
 
 pkgname = gnome-shell-extension-blur-my-shell

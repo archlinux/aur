@@ -3,16 +3,16 @@
 
 pkgname=gnome-shell-extension-blur-my-shell
 _pkgbase=blur-my-shell
-pkgver=28
-pkgrel=2
+pkgver=30
+pkgrel=1
 pkgdesc="Extension that adds a blur look to different parts of the GNOME Shell"
 arch=('any')
 url="https://github.com/aunetx/blur-my-shell"
 license=('GPL3')
-depends=('dconf' 'gnome-shell>=1:40')
+depends=('dconf' 'gnome-shell>=1:42')
 conflicts=('gnome-shell-extension-blur-my-shell-git')
 source=("${_pkgbase}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('ba7fe26e4b5288670b0b6f0c2e0a04dd5de6567b6e861361c1ea4772afa24776')
+sha256sums=('3b98c4a3778d397f1f462eea391436bebb13d4569533c3e716e4f9b2bdfaa3c7')
 
 build() {
   cd "${_pkgbase}-${pkgver}"
@@ -24,6 +24,11 @@ package() {
   local _uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
   local _destdir="${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
   
-  install -Dm644 -t "${_destdir}" metadata.json *.js *.ui *.css
+  install -Dm644 -t "${_destdir}" metadata.json *.js *.css
+  install -Dm644 -t "${_destdir}/components" components/*.js
+  install -Dm644 -t "${_destdir}/conveniences" conveniences/*.js
+  install -Dm644 -t "${_destdir}/preferences" preferences/*.js
+  install -Dm644 -t "${_destdir}/ui" ui/*.ui
+  cp -r --no-preserve=ownership,mode icons "${_destdir}"
   install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas/" schemas/*.xml 
 }
