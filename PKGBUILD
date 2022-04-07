@@ -1,7 +1,7 @@
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=python-pur
 _pkgname=${pkgname:7}
-pkgver=6.0.1
+pkgver=6.1.0
 pkgrel=2
 pkgdesc="Update packages in a requirements.txt file to latest versions."
 arch=('any')
@@ -10,7 +10,7 @@ license=('BSD license')
 makedepends=(python-build python-installer python-wheel)
 depends=(python python-click)
 source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha256sums=('b8f701f8ed0dd424e2fab694866e5cac3954b5fa8dc2c1cd02c12b1d3c7660d7')
+sha256sums=('43de304474a8e6743d9b7a314d3303826c78d2bb46dd951c98c8fae3da9617af')
 
 build() {
     cd ${srcdir}/${_pkgname}-${pkgver}
