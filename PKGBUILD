@@ -1,16 +1,16 @@
-# Maintainer: Eric Cheng <ericcheng@hey.com>
+# Maintainer: Eric Cheng <eric@chengeric.com>
 
 pkgbase=jellyfin-bin
 pkgname=(jellyfin-bin jellyfin-web-bin jellyfin-server-bin)
 pkgver=10.7.7
 _pkgver="${pkgver}-1"
-pkgrel=2
+pkgrel=3
 pkgdesc='The Free Software Media System'
 arch=('x86_64' 'aarch64' 'armv7h')
 url='https://jellyfin.org/'
 license=('GPL2')
 provides=('jellyfin')
-conflicts=('jellyfin' 'jellyfin-git')
+conflicts=('jellyfin')
 source=(
 	"jellyfin-web-${pkgver}.deb::https://repo.jellyfin.org/releases/server/debian/versions/stable/web/${pkgver}/jellyfin-web_${_pkgver}_all.deb"
 	'jellyfin.conf'
@@ -44,10 +44,10 @@ package_jellyfin-bin() {
 
 package_jellyfin-server-bin() {
 	pkgdesc="Jellyfin server component"
-	optdepends=('ffmpeg-mmal: OpenMAX OMX hardware acceleration on Raspberry Pis')
+	optdepends=('ffmpeg-mmal: OpenMAX OMX hardware acceleration on Raspberry Pis' 'jellyfin-ffmpeg: stopgap FFmpeg patch for Jellyfin')
 	depends=('ffmpeg')
 	provides=('jellyfin-server')
-	conflicts=('jellyfin-server' 'jellyfin-server-git')
+	conflicts=('jellyfin-server')
 	backup=('etc/conf.d/jellyfin')
 
 	tar -xf "jellyfin-server/data.tar.xz" -C "jellyfin-server"
@@ -63,7 +63,7 @@ package_jellyfin-server-bin() {
 package_jellyfin-web-bin() {
 	pkgdesc="Jellyfin web client"
 	provides=('jellyfin-web')
-	conflicts=('jellyfin-web' 'jellyfin-web-git')
+	conflicts=('jellyfin-web')
 
 	tar -xf "jellyfin-web/data.tar.xz" -C "jellyfin-web"
 	cp -r "$srcdir/jellyfin-web/usr" "$pkgdir/"
