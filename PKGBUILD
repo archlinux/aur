@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 pkgname=gtk3-typeahead
-pkgver=3.24.32
+pkgver=3.24.33
 pkgrel=1
 pkgdesc="GObject-based multi-platform GUI toolkit - Typeahead feature enabled for file chooser widget"
 arch=(x86_64)
@@ -21,7 +21,7 @@ provides=("gtk3=$pkgver" gtk3-print-backends libgtk-3.so libgdk-3.so libgailutil
 conflicts=(gtk3 gtk3-print-backends)
 replaces=("gtk3-print-backends<=3.22.26-1")
 install=gtk3.install
-_commit=30f9ce09b10059d8f872dd50b5a950d654f84f88  # tags/3.24.32^0
+_commit=8ff9b2f83ff491cbfcbf9b30c706bd917679e7cc  # tags/3.24.33^0
 source=("git+https://gitlab.gnome.org/GNOME/gtk.git#commit=$_commit"
         gtk-query-immodules-3.0.hook
         typeahead.patch)
