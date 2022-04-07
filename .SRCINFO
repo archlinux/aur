@@ -1,12 +1,16 @@
 pkgbase = python-easypysmb
-	pkgdesc = Library wraps around the pysmb library
-	pkgver = 1.4.3
+	pkgdesc = Easy to use PySMB wrapper library
+	pkgver = 1.4.4
 	pkgrel = 1
+	url = https://github.com/pschmitt/easypysmb
 	arch = any
+	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
 	depends = python-pysmb
 	depends = python-pyasn1
-	source = https://github.com/pschmitt/easypysmb/archive/1.4.3.tar.gz
-	md5sums = c3c74647cc62c6cf216fc20d31554c90
+	source = python-easypysmb-1.4.4.tar.gz::https://files.pythonhosted.org/packages/source/e/easypysmb/easypysmb-1.4.4.tar.gz
+	sha256sums = 48111dc3c06535e6f20609e58373ab002b790762ad34296311d2f9dc12866786
 
 pkgname = python-easypysmb
-
