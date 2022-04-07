@@ -2,10 +2,10 @@
 # based on testing/linux: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux-pf-git
-pkgver=5.17.1.r56.ga5ff585c196f
+pkgver=5.18.rc1.r34.gce8eeefa353e
 pkgrel=1
 pkgdesc='Linux pf-kernel (git version)'
-_kernel_rel=5.17
+_kernel_rel=5.18
 _branch=pf-${_kernel_rel}
 _product="${pkgbase%-git}"
 url=https://gitlab.com/post-factum/pf-kernel/wikis/README
@@ -23,7 +23,7 @@ source=(
   config         # the main kernel config file
 )
 sha256sums=('SKIP'
-            '26a61adb1f51efb3e25cfcf17daae384c51f936b8822d802b5dc7789aa74c5ce')
+            'bcdc9836026d54dc12805a8ca287d8a37da5029b69f9d23e5e4ea2f6a5791eae')
 
 pkgver() {
   cd $_srcname
@@ -69,7 +69,7 @@ build() {
 _package() {
   pkgdesc="The $pkgdesc kernel and modules"
   depends=(coreutils kmod initramfs)
-  optdepends=('crda: to set the correct wireless channels of your country'
+  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'ksmbd-tools: userspace tools for the ksmbd kernel SMB server'
               'linux-firmware: firmware images needed for some devices'
               'uksmd: userspace KSM helper daemon'
