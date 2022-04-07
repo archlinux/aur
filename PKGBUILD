@@ -1,11 +1,12 @@
 # Maintainer: Kevin MacMartin <prurigro@gmail.com>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: openfbt
 # Contributor: Werecat
 # Contributor: Xyne
 
 _pkgname=cjdns
 pkgname=$_pkgname-git
-pkgver=21.1.r38.g20ddc268
+pkgver=21.2.r178.g03c61dc8
 pkgrel=1
 pkgdesc='A routing engine designed for security, scalability, speed and ease of use'
 url='https://github.com/cjdelisle/cjdns'
@@ -13,7 +14,7 @@ license=('GPL3')
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 options=('!distcc' '!strip' '!buildflags')
 depends=('bash')
-makedepends=('git' 'nodejs' 'python2' 'binutils' 'llvm')
+makedepends=('cargo' 'git' 'nodejs' 'python2' 'binutils' 'llvm')
 
 optdepends=(
   'cjdnsify: allows you to run some programs bound to your cjdns address'
@@ -32,7 +33,7 @@ pkgver() {
 
 build() {
   cd $_pkgname
-  bash 'do'
+  CJDNS_RELEASE_VERSION="${pkgver}" ./do
 }
 
 package() {
