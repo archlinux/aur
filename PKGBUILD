@@ -3,16 +3,23 @@
 
 pkgname=icingaweb2-module-director
 pkgver=1.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Manage Icinga 2 configuration from Icinga Web 2"
 license=('GPL')
 arch=('any')
-depends=('icingaweb2' 'icingaweb2-module-incubator' 'icingaweb2-module-ipl' 'icingaweb2-module-reactbundle')
+depends=('icingaweb2' 'icingaweb2-module-incubator')
 url="http://www.icinga.org"
 source=("https://github.com/Icinga/${pkgname}/archive/v${pkgver}.tar.gz"
-  "$pkgname.sysusers")
+  "$pkgname.sysusers"
+  "dashboard.patch")
 sha256sums=('65071b98d8c0adf3dfc807cc499590da5d4deb8bdcfc637a07fd7172fb746208'
-            '311043f4f4da68e5fcf8ad8593475d8287fe2f681e52940b33d41bc681d74cec')
+            '311043f4f4da68e5fcf8ad8593475d8287fe2f681e52940b33d41bc681d74cec'
+            '84edc341ef77308b5eed5faafe9d8e9d30c2e90edba33ffa3f47d46af357bef5')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  patch --forward --strip=2 --input="${srcdir}/dashboard.patch"
+}
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
