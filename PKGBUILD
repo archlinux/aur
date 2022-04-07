@@ -1,12 +1,12 @@
 pkgname=mx-puppet-discord-git
-pkgver=r248.c17384a
-pkgrel=4
+pkgver=r276.3c82530
+pkgrel=1
 # strip the -git suffix from name
 _dirname="${pkgname%-git}"
 _basename="${pkgname%-git}"
 pkgdesc='This is a Matrix bridge for Discord'
-arch=('x86_64' 'armv7h')
-url='https://github.com/matrix-discord/mx-puppet-discord'
+arch=('x86_64' 'armv7h' 'aarch64')
+url='https://gitlab.com/mx-puppet/discord/mx-puppet-discord.git'
 license=('apache')
 depends=('nodejs' 'cairo' 'pango' 'libjpeg-turbo')
 source=("git+${url}" "${_basename}.tmpfiles" "${_basename}.sysusers" "${_basename}.service")
@@ -17,6 +17,8 @@ sha256sums=('SKIP'
 backup=("etc/${_basename}/config.yaml")
 install="${_basename}.install"
 makedepends+=('git' 'npm')
+# some users likely have issues from strip exausting machine resources
+options=(!strip)
 # conflict/provide the same package as the non -git version
 provides=("${_basename}")
 conflicts=("${_basename}")
