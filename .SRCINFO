@@ -1,8 +1,8 @@
 pkgbase = motioneye-git
 	pkgdesc = A web frontend for the motion daemon, Python 3 development branch
 	pkgver = 0.42.1.r318.g6a5953b
-	pkgrel = 1
-	url = https://github.com/ccrisan/motioneye.git
+	pkgrel = 2
+	url = https://github.com/motioneye-project/motioneye
 	install = motioneye.install
 	arch = any
 	license = GPL3
@@ -16,7 +16,7 @@ pkgbase = motioneye-git
 	provides = motioneye
 	conflicts = motioneye
 	backup = etc/motioneye/motioneye.conf
-	source = git+https://github.com/ccrisan/motioneye.git#branch=dev
+	source = git+https://github.com/motioneye-project/motioneye#branch=dev
 	source = motioneye.service
 	sha256sums = SKIP
 	sha256sums = 9de27c851809664a8aa4ca8ee48cae1db2954ccb09978a85c127745bf7445286

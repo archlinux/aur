@@ -5,9 +5,9 @@
 
 pkgname=motioneye-git
 pkgver=0.42.1.r318.g6a5953b
-pkgrel=1
+pkgrel=2
 pkgdesc="A web frontend for the motion daemon, Python 3 development branch"
-url="https://github.com/ccrisan/motioneye.git"
+url="https://github.com/motioneye-project/motioneye"
 license=("GPL3")
 arch=("any")
 provides=("motioneye")
