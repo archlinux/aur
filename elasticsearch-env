@@ -2,26 +2,18 @@
 
 set -e -o pipefail
 
-JAVA_HOME=${JAVA_HOME:-/usr/lib/jvm/default-runtime}
 ES_HOME=/usr/share/elasticsearch
 
 # now set the classpath
 ES_CLASSPATH="$ES_HOME/lib/*"
 
 # now set the path to java
-if [ ! -z "$JAVA_HOME" ]; then
-  JAVA="$JAVA_HOME/bin/java"
-else
-  if [ "$(uname -s)" = "Darwin" ]; then
-    # OSX has a different structure
-    JAVA="$ES_HOME/jdk/Contents/Home/bin/java"
-  else
-    JAVA="$ES_HOME/jdk/bin/java"
-  fi
-fi
+ES_JAVA_HOME=${ES_JAVA_HOME:-/usr/lib/jvm/default-runtime}
+JAVA="$ES_JAVA_HOME/bin/java"
+JAVA_TYPE="ES_JAVA_HOME"
 
 if [ ! -x "$JAVA" ]; then
-  echo "could not find java in JAVA_HOME or bundled at $JAVA" >&2
+  echo "could not find java in $JAVA_TYPE at $JAVA" >&2
   exit 1
 fi
 
@@ -29,6 +21,11 @@ fi
 if [ ! -z "$JAVA_TOOL_OPTIONS" ]; then
   echo "warning: ignoring JAVA_TOOL_OPTIONS=$JAVA_TOOL_OPTIONS"
   unset JAVA_TOOL_OPTIONS
+fi
+
+# warn that we are not observing the value of JAVA_HOME
+if [ ! -z "$JAVA_HOME" ]; then
+  echo "warning: ignoring JAVA_HOME=$JAVA_HOME; using $JAVA_TYPE" >&2
 fi
 
 # JAVA_OPTS is not a built-in JVM mechanism but some people think it is so we
@@ -49,12 +46,7 @@ fi
 
 export HOSTNAME=$HOSTNAME
 
-if [ -z "$ES_PATH_CONF" ]; then
-  ES_PATH_CONF=/etc/elasticsearch
-fi
-
-# now make ES_PATH_CONF absolute
-ES_PATH_CONF=`cd "$ES_PATH_CONF"; pwd`
+ES_PATH_CONF=${ES_PATH_CONF:-/etc/elasticsearch}
 
 ES_DISTRIBUTION_FLAVOR=default
 ES_DISTRIBUTION_TYPE=rpm
