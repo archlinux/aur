@@ -3,9 +3,9 @@
 # Contributor: Kyle Keen <keenerd@gmail.com>
 _base=halide
 pkgname=${_base}-bin
-pkgver=13.0.4
+pkgver=14.0.0
 pkgrel=1
-_noise="3a92a3f95b86b7babeed7403a330334758e1d644"
+_noise="6b9ed2afd1d6d0badf04986602c943e287d44e46"
 pkgdesc="A language for fast and portable data-parallel computation"
 url="https://github.com/${_base}/${_base/h/H}"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -17,10 +17,10 @@ source_i686=("${url}/releases/download/v${pkgver}/${_base/h/H}-${pkgver}-x86-32-
 source_armv7h=("${url}/releases/download/v${pkgver}/${_base/h/H}-${pkgver}-arm-32-linux-${_noise}.tar.gz")
 source_aarch64=("${url}/releases/download/v${pkgver}/${_base/h/H}-${pkgver}-arm-64-linux-${_noise}.tar.gz")
 
-sha512sums_x86_64=('54bb3bcca1bceea92afb632a459d158e65e3798583e401fc330f632e1384f8646da7471bba4a6cb23360d9b06701c7195cc0c60bd688c771805aff159af331de')
-sha512sums_i686=('08748ed699620d2071971fcb78ea0e77112361e49c0333a420784c3cdf4f7507c8b2fc607604a252f0c6eac383a61d0b624111bee922d850c83e3b1db528ebc4')
-sha512sums_armv7h=('e2f45f5b3fa6796d6ceffb9a4911082c65be16e9a61f3c113901d31b0743e48ddba4a6d421bc4fb77c8f1603a6656ca82eb0820258747e56bd4dfa2107cc4e0e')
-sha512sums_aarch64=('6babd7ed9121fdfd9b7975acaee75932523d4801b6a787c683b5f9f1b30b599d8a48f0b796f9f569dab749b9bc1a211fc112db34d104d6e056cee93630a94deb')
+sha512sums_x86_64=('fa58682bb9f15ce21acc051b3e1763fdc1c16d6516108ba36902d28ed1361730f74316d2e3514ee889c2d8e57446f414c6a9ef733c82f91f9bd0406477795e40')
+sha512sums_i686=('a2c0b6ef32efec9429c6e2db6aad15d77bb3dd406366972378d4e27fa770c4c7275479604091e2c521fc7f36eb1857d2b573da5bcd26d73841f445eec3332649')
+sha512sums_armv7h=('9bff7c122d5328e8a16ce3031adfc97c87489155edaaa0ef181a78e24f32728e0211f38decc6932efa001977dec459ab058362ec5ee48f76330b181c9ee34ba7')
+sha512sums_aarch64=('9294289e925a95f9e949b831db0b4da6dbdbc668ab80f2a59af83974a0a0be3a5fe61172e0276da6437f6c9199f579a4af34fc1f6265c1ac776ffef95515e3da')
 
 if [[ "$CARCH" == "x86_64" ]]; then _tar_arch='x86-64'; fi
 if [[ "$CARCH" == "i686" ]]; then _tar_arch='x86-32'; fi
@@ -48,8 +48,8 @@ package() {
   chmod 644 "${pkgdir}/usr/lib/libwasm-rt-impl.a"
 
   # For test later
-  # ln -s /usr/lib/libHalide.so ${pkgdir}/usr/lib/libHalide.so.13
-  # ln -s /usr/lib/libHalide.so.13 ${pkgdir}/usr/lib/libHalide.so.13.0.3
+  # ln -s /usr/lib/libHalide.so ${pkgdir}/usr/lib/libHalide.so.14
+  # ln -s /usr/lib/libHalide.so.14 ${pkgdir}/usr/lib/libHalide.so.14.0.0
 
   # Install cmake functions
   for i in lib/cmake/Halide/*.cmake; do
