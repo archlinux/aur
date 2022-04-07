@@ -7,4 +7,11 @@ post_install(){
     password:                               (no password)
 
 INFO
+ chown motion:motion /etc/motioneye/motioneye.conf
+ chown motion:motion /etc/motioneye
+}
+
+post_upgrade() {
+ chown motion:motion /etc/motioneye/motioneye.conf
+ chown motion:motion /etc/motioneye
 }

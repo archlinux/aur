@@ -4,6 +4,7 @@ After=local-fs.target network.target
 
 [Service]
 User=motion
+Environment="LANGUAGE=en_EN"
 RuntimeDirectory=motioneye
 LogsDirectory=motioneye
 StateDirectory=motioneye

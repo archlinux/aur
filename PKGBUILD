@@ -4,7 +4,7 @@
 # Contributor: Niklas Hedlund <nojan1989@gmail.com>
 
 pkgname=motioneye-git
-pkgver=0.42.1.r310.g601bcfb
+pkgver=0.42.1.r318.g6a5953b
 pkgrel=1
 pkgdesc="A web frontend for the motion daemon, Python 3 development branch"
 url="https://github.com/ccrisan/motioneye.git"
@@ -21,11 +21,9 @@ depends=("motion"
 makedepends=("python-setuptools")
 backup=("etc/motioneye/motioneye.conf")
 source=("git+$url#branch=dev"
-        "motioneye.tmpfiles"
         "motioneye.service")
 sha256sums=('SKIP'
-            'e7447bf9ab023326e7c396ecad8933eaa3399b16d844a34f288cf55b8c917bfa'
-            '55a72fe49d2bacbc1cc9231ef80afab3859a48c558fe030f46ce8c7d3a95341e')
+            '9de27c851809664a8aa4ca8ee48cae1db2954ccb09978a85c127745bf7445286')
 backup=("etc/motioneye/motioneye.conf")
 install=motioneye.install
 
@@ -34,17 +32,10 @@ pkgver(){
  git describe --long --tags | sed "s/\([^-]*-g\)/r\1/;s/-/./g;s/^v//"
 }
 
-prepare(){
- cd motioneye/motioneye
- sed -i "extra/motioneye.conf.sample" \
-     -e 's|^run_path /run/motioneye$|run_path /var/run/motioneye|'
-}
-
 package(){
  cd motioneye
  PIP_CONFIG_FILE=/dev/null pip install --isolated --root="${pkgdir}" --ignore-installed --no-deps .
  # configuration folder must be writable by motioneye
- install -D -m 660 "motioneye/extra/motioneye.conf.sample" "$pkgdir/etc/motioneye/motioneye.conf"
- install -D -m 644 "$srcdir/motioneye.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/motioneye.conf"
- install -D -m 644 "$srcdir/motioneye.service" "$pkgdir/usr/lib/systemd/system/motioneye.service"
+ install -Dm 660 "motioneye/extra/motioneye.conf.sample" "$pkgdir/etc/motioneye/motioneye.conf"
+ install -Dm 644 "$srcdir/motioneye.service" "$pkgdir/usr/lib/systemd/system/motioneye.service"
 }
