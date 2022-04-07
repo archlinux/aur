@@ -6,7 +6,7 @@
 
 basename=gnome-shell
 pkgname=$basename-xrdesktop-git
-pkgver=41.5
+pkgver=42.0
 pkgrel=1
 epoch=1
 conflicts=($basename)
@@ -27,13 +27,10 @@ optdepends=('gnome-control-center: System settings'
 groups=(gnome)
 provides=(gnome-shell=$pkgver)
 install=gnome-shell.install
-source=("git+https://gitlab.freedesktop.org/xrdesktop/gnome-shell.git#branch=41.5-xrdesktop"
-        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git"
-        # https://gitlab.gnome.org/GNOME/gnome-shell/-/merge_requests/2078
-        "https://gitlab.gnome.org/GNOME/gnome-shell/-/commit/65450a836ee9e0722a2d4c3327f52345eae293c6.patch")
+source=("git+https://gitlab.freedesktop.org/xrdesktop/gnome-shell.git#branch=42.0-xrdesktop"
+        "git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git")
 sha256sums=('SKIP'
-            'SKIP'
-            '9ccd84e3996568cdfd76d23e00954665898848da84b91f1936d5aee723b18ead')
+            'SKIP')
 
 pkgver() {
   cd $basename
@@ -46,8 +43,6 @@ prepare() {
   git submodule init
   git submodule set-url subprojects/gvc "$srcdir/libgnome-volume-control"
   git submodule update
-
-  git am -3 --no-commit "$srcdir/65450a836ee9e0722a2d4c3327f52345eae293c6.patch"
 }
 
 build() {
@@ -56,6 +51,6 @@ build() {
 }
 
 package() {
-  depends+=(libmutter-9.so)
+  depends+=(libmutter-10.so)
   meson install -C build --destdir "$pkgdir"
 }

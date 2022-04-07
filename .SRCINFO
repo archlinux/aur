@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-xrdesktop-git
 	pkgdesc = Next generation desktop shell - with patches for xrdesktop.
-	pkgver = 41.5
+	pkgver = 42.0
 	pkgrel = 1
 	epoch = 1
 	url = https://gitlab.freedesktop.org/xrdesktop
@@ -43,14 +43,12 @@ pkgbase = gnome-shell-xrdesktop-git
 	depends = libinputsynth-git
 	optdepends = gnome-control-center: System settings
 	optdepends = evolution-data-server: Evolution calendar integration
-	provides = gnome-shell=41.5
+	provides = gnome-shell=42.0
 	conflicts = gnome-shell
-	source = git+https://gitlab.freedesktop.org/xrdesktop/gnome-shell.git#branch=41.5-xrdesktop
+	source = git+https://gitlab.freedesktop.org/xrdesktop/gnome-shell.git#branch=42.0-xrdesktop
 	source = git+https://gitlab.gnome.org/GNOME/libgnome-volume-control.git
-	source = https://gitlab.gnome.org/GNOME/gnome-shell/-/commit/65450a836ee9e0722a2d4c3327f52345eae293c6.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = 9ccd84e3996568cdfd76d23e00954665898848da84b91f1936d5aee723b18ead
 
 pkgname = gnome-shell-xrdesktop-git
 	depends = accountsservice
@@ -76,4 +74,4 @@ pkgname = gnome-shell-xrdesktop-git
 	depends = gst-plugin-pipewire
 	depends = xrdesktop-git
 	depends = libinputsynth-git
-	depends = libmutter-9.so
+	depends = libmutter-10.so
