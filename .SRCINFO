@@ -1,22 +1,23 @@
 pkgbase = texstudio-git
 	pkgdesc = Integrated writing environment for creating LaTeX documents
-	pkgver = 3.0.1.r45.g9b0ac947
+	pkgver = 4.2.2.r88.g8582ee24b
 	pkgrel = 1
 	url = https://github.com/texstudio-org/texstudio
 	arch = x86_64
 	license = GPL
 	makedepends = git
-	makedepends = qt5-tools
+	makedepends = qt6-tools
 	makedepends = imagemagick
 	makedepends = librsvg
-	depends = poppler-qt5
-	depends = qt5-svg
-	depends = qt5-script
+	depends = poppler-qt6
+	depends = qt6-svg
 	depends = libxkbcommon-x11
 	depends = hicolor-icon-theme
 	depends = hunspell
-	depends = quazip
+	depends = quazip-qt6
 	depends = desktop-file-utils
+	depends = qt6-declarative
+	depends = qt6-5compat
 	optdepends = evince: pdf reader
 	optdepends = okular: alternate pdf reader
 	conflicts = texstudio
@@ -25,4 +26,3 @@ pkgbase = texstudio-git
 	sha512sums = SKIP
 
 pkgname = texstudio-git
-

@@ -1,13 +1,13 @@
 # Maintainer: coldBug <coldBug at e.mail dot de>
 pkgname=texstudio-git
-pkgver=3.0.1.r45.g9b0ac947
+pkgver=4.2.2.r88.g8582ee24b
 pkgrel=1
 pkgdesc="Integrated writing environment for creating LaTeX documents"
 arch=('x86_64')
 url="https://github.com/texstudio-org/texstudio"
 license=('GPL')
-depends=('poppler-qt5' 'qt5-svg' 'qt5-script' 'libxkbcommon-x11' 'hicolor-icon-theme' 'hunspell' 'quazip' 'desktop-file-utils')
-makedepends=('git' 'qt5-tools' 'imagemagick' 'librsvg')
+depends=('poppler-qt6' 'qt6-svg' 'libxkbcommon-x11' 'hicolor-icon-theme' 'hunspell' 'quazip-qt6'        'desktop-file-utils' 'qt6-declarative' 'qt6-5compat')
+makedepends=('git' 'qt6-tools' 'imagemagick' 'librsvg')
 optdepends=('evince: pdf reader'
             'okular: alternate pdf reader')
 replaces=('texmakerx')
@@ -22,8 +22,8 @@ pkgver() {
 
 build() {
     cd texstudio
-    qmake-qt5 CONFIG-="debug" USE_SYSTEM_QUAZIP=1 USE_SYSTEM_HUNSPELL=1 QUAZIP_LIB=-lquazip1-qt5 \
-        QUAZIP_INCLUDE="/usr/include/QuaZip-Qt5-1.1/quazip" texstudio.pro
+    qmake6 CONFIG-="debug" USE_SYSTEM_QUAZIP=1 USE_SYSTEM_HUNSPELL=1 QUAZIP_LIB=-lquazip1-qt6 \
+        QUAZIP_INCLUDE="/usr/include/QuaZip-Qt6-1.2/quazip" texstudio.pro
     make
 }
 
@@ -38,4 +38,3 @@ package() {
             "${pkgdir}"/usr/share/icons/hicolor/${res}/apps/texstudio.png
     done
 }
-
