@@ -20,7 +20,9 @@ depends=('adobe-source-code-pro-fonts'
          'hicolor-icon-theme'
          'libglvnd'
          'nss'
-         'xdg-utils')
+         'xdg-utils'
+         'lib32-libappindicator-gtk2'
+)
 optdepends=()
 arch=('x86_64')
 source=("http://s.insynchq.com/builds/${pkgname}_${pkgver}-${_dist}_amd64.deb"

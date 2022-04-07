@@ -13,6 +13,7 @@ pkgbase = insync
 	depends = libglvnd
 	depends = nss
 	depends = xdg-utils
+	depends = lib32-libappindicator-gtk2
 	options = !strip
 	source = http://s.insynchq.com/builds/insync_3.7.3.50326-buster_amd64.deb
 	source = insync@.service
