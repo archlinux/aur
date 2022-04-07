@@ -1,5 +1,5 @@
 pkgname=mingw-w64-qtkeychain-qt5
-pkgver=0.12.0
+pkgver=0.13.2
 pkgrel=1
 pkgdesc='Provides support for secure credentials storage (mingw-w64)'
 arch=(any)
@@ -10,7 +10,7 @@ depends=('mingw-w64-qt5-tools')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://github.com/frankosterfeld/qtkeychain/archive/v$pkgver.tar.gz")
-sha256sums=('cc547d58c1402f6724d3ff89e4ca83389d9e2bdcfd9ae3d695fcdffa50a625a8')
+sha256sums=('20beeb32de7c4eb0af9039b21e18370faf847ac8697ab3045906076afbc4caa5')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
