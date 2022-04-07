@@ -7,8 +7,7 @@
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Michael Kanis <mkanis_at_gmx_dot_de>
 
-pkgbase=mutter-rounded
-pkgname=(mutter-rounded mutter-docs)
+pkgname=mutter-rounded
 pkgver=42.0
 pkgrel=1
 pkgdesc="A window manager for GNOME, with rounded corners patch (integrate mr1441)"
@@ -22,8 +21,11 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof gi-docgen)
 checkdepends=(xorg-server-xvfb python-dbusmock wireplumber)
-
 options=(debug)
+provides=(libmutter-10.so mutter)
+conflicts=(mutter)
+install=mutter-rounded.install
+
 _commit=9249aba72a5c4454894c08735a4963ca1665e34d  # tag/42.0^0
 _mutter_src="$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
 _shell_blur_h_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/${pkgver}/src/shell-blur-effect.h"
@@ -82,7 +84,6 @@ build() {
   arch-meson $pkgname build \
     -D egl_device=true \
     -D wayland_eglstream=true \
-    -D docs=true \
     -D installed_tests=false
   meson compile -C build
 }
@@ -108,21 +109,7 @@ check() {
     bash -c "$(declare -f _check); _check"
 }
 
-_pick() {
-  local p="$1" f d; shift
-  for f; do
-    d="$srcdir/$p/${f#$pkgdir/}"
-    mkdir -p "$(dirname "$d")"
-    mv "$f" "$d"
-    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
-  done
-}
-
-package_mutter-rounded() {
-  provides=(libmutter-10.so mutter)
-  conflicts=(mutter)
-  install=mutter-rounded.install
-
+package() {
   meson install -C build --destdir "$pkgdir"
 
   install mutter_settings/dist/mutter_settings $pkgdir/usr/bin/
@@ -136,13 +123,4 @@ package_mutter-rounded() {
   install -d "$pkgdir/usr/share/glib-2.0/schemas/"
   ln -s "/usr/share/gnome-shell/extensions/$_uuid/schemas/$_schemas" \
     "$pkgdir/usr/share/glib-2.0/schemas/"
-
-  _pick docs "$pkgdir"/usr/share/mutter-*/doc
-}
-
-package_mutter-docs() {
-  pkgdesc+=" (documentation)"
-  depends=()
-
-  mv docs/* "$pkgdir"
 }
