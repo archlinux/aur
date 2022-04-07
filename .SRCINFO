@@ -1,16 +1,17 @@
 pkgbase = tremc-git
-	pkgdesc = Curses interface for transmission - python3 fork of transmission-remote-cli
-	pkgver = r692.4d50dab
+	pkgdesc = Curses interface for Transmission. Python 3 fork of transmission-remote-cli
+	pkgver = 0.9.3.r0.g546fd09
 	pkgrel = 1
 	url = https://github.com/tremc/tremc
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = python
-	optdepends = python-geoip: Guess which country peers come from
-	optdepends = python-xerox: Copy magnet links to the system clipboard
-	source = git+https://github.com/louipc/tremc.git
-	md5sums = SKIP
+	optdepends = python-geoip: guess which country peers come from
+	optdepends = python-pyperclip: copy magnet links to the system clipboard (requires xclip)
+	provides = tremc
+	conflicts = tremc
+	source = tremc-git::git+https://github.com/tremc/tremc.git
+	sha256sums = SKIP
 
 pkgname = tremc-git
-

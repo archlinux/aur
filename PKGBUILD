@@ -1,27 +1,28 @@
+# Maintainer: willemw <willemw12@gmail.com>
+# Contributor: sparse
+
 pkgname=tremc-git
-_gitname=${pkgname%-git}
-pkgver=r692.4d50dab
+pkgver=0.9.3.r0.g546fd09
 pkgrel=1
-pkgdesc="Curses interface for transmission - python3 fork of transmission-remote-cli"
+pkgdesc="Curses interface for Transmission. Python 3 fork of transmission-remote-cli"
 arch=('any')
 url="https://github.com/tremc/tremc"
 license=('GPL3')
 depends=('python')
 makedepends=('git')
-optdepends=('python-geoip: Guess which country peers come from'
-            'python-xerox: Copy magnet links to the system clipboard') 
-source=("git+https://github.com/louipc/tremc.git")
-md5sums=('SKIP')
+optdepends=('python-geoip: guess which country peers come from'
+            'python-pyperclip: copy magnet links to the system clipboard (requires xclip)')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("$pkgname::git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$_gitname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git -C $pkgname describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
-    cd "$_gitname"
-
-    make PREFIX=/usr DESTDIR="$pkgdir" install
+  install -Dm644 $pkgname/settings.cfg -t "$pkgdir/usr/share/${pkgname%-git}"
+  make -C $pkgname PREFIX=/usr DESTDIR="$pkgdir" install
 }
 
-# vim: ts=4 sts=4 sw=4 et
