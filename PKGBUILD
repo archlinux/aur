@@ -47,7 +47,6 @@ Exec=/usr/bin/${_pkgname} %U
 TryExec=/usr/bin/${_pkgname}
 Terminal=false
 Icon=${_pkgname}
-StartupNotify=true
 StartupWMClass=${_pkgname}
 Categories=Game;
 EOF
