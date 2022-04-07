@@ -118,6 +118,6 @@ package() {
     find -H ${pkgdir} -name "*.bat" -print0 | xargs -0 rm -rf
 
     msg2 "Install license file"
-    install -Dm644 "$srcdir"/LICENSE.* "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE.TL
+    install -Dm644 "$srcdir"/LICENSE.$pkgver "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE.TL
 }
 # vim:set ts=2 sw=2 et:
