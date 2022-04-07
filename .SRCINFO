@@ -1,0 +1,19 @@
+pkgbase = catapult
+	pkgdesc = App launcher for Linux, similar to ulauncher(wayland support)
+	pkgver = 3.2
+	pkgrel = 1
+	url = https://github.com/otsaloma/catapult.git
+	arch = any
+	license = GPL 3.0
+	depends = python
+	depends = glib2
+	depends = gtk3
+	depends = python-gobject
+	depends = libkeybinder3
+	depends = gettext
+	depends = libqalculate
+	depends = pango
+	source = catapult::git+https://github.com/otsaloma/catapult.git
+	sha256sums = SKIP
+
+pkgname = catapult
