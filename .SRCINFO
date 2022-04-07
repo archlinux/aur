@@ -1,12 +1,12 @@
 pkgbase = sqlpackage
 	pkgdesc = Command-line tool for creating and deploying SQL Server databases and DACPAC packages.
-	pkgver = 18.8
+	pkgver = 19.0
 	pkgrel = 1
 	url = https://docs.microsoft.com/en-us/sql/tools/sqlpackage-download
 	arch = any
 	license = custom
 	options = staticlibs
-	source = sqlpackage-linux-x64-en-US-15.0.5084.2.zip::https://go.microsoft.com/fwlink/?linkid=2157202
-	sha1sums = c2328948d175af5d488b1e3f5e7b73d64915d545
+	source = sqlpackage-linux-x64-en-US-16.0.5400.1.zip::https://go.microsoft.com/fwlink/?linkid=2185670
+	sha1sums = 985cd797e7ffc4f84d1de6ec4979192c07784ec3
 
 pkgname = sqlpackage
