@@ -2,21 +2,21 @@
 
 pkgname=cider
 _pkgname=Cider
-pkgver=1.1.0.1841.2a9622fa
+pkgver=1.4.0.2852.1dcd5ec4
 pkgrel=1
-pkgdesc="Project Cider. A new look into listening and enjoying music in style and performance. Built from the ground up with vue.js and electron. Compiled from the GitHub repositories main branch."
+pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Compiled from the GitHub repositories develop branch."
 arch=("armv7h" "i686" "x86_64")
 url="https://github.com/CiderApp/${_pkgname}.git"
 license=("GPL")
 depends=('gtk3' 'nss')
 makedepends=('git' 'npm' 'yarn')
-optdepends=('libnotify: Playback notifications')
+optdepends=('libno1tify: Playback notifications')
 source=(
     "git+https://github.com/CiderApp/${_pkgname}.git"
-    "Cider.desktop"
+    "cider.desktop"
 )
 sha256sums=('SKIP'
-            '8a8d3aebe1b415fd71d49db1e6d4cfd5470c69c8999ccda20d38b531d0583507')
+            'c41e9b1019411019fce8509e32f770edf33c9e864bf707c30ffe2e3f2dcf1571')
 
     pkgver() {
         cd "$srcdir/$_pkgname"
@@ -49,10 +49,10 @@ package() {
     cd "${srcdir}/${_pkgname}"
 
     echo "Packaging : [Desktop Shortcut] | Icon | Build Files | Other Files | Done"
-    install -Dm644 "${srcdir}/${_pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 "${srcdir}/${pkgname%-git}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
+
     echo "Packaging : Desktop Shortcut | [Icon] | Build Files | Other Files | Done"
     install -Dm644 "${srcdir}/${_pkgname}/resources/icons/icon.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${pkgname%-git}.png"
-
 
     echo "Packaging : Desktop Shortcut | Icon | [Build Files] | Other Files | Done"
     install -d "$pkgdir/opt/"
