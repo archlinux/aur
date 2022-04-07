@@ -699,7 +699,7 @@ index a6e698d4b..910b887f1 100644
  
  	if (xlat_verbose(xlat_verbosity) == XLAT_STYLE_VERBOSE || !cid_str)
 diff --git a/src/strace.c b/src/strace.c
-index 94d6169db..664582cab 100644
+index 94d6169db..b873bf631 100644
 --- a/src/strace.c
 +++ b/src/strace.c
 @@ -41,6 +41,7 @@
@@ -710,7 +710,82 @@ index 94d6169db..664582cab 100644
  
  /* In some libc, these aren't declared. Do it ourself: */
  extern char **environ;
-@@ -732,7 +733,7 @@ void
+@@ -91,6 +92,7 @@ static bool rflag;
+ static int rflag_scale = 1000;
+ static int rflag_width = 6;
+ static bool print_pid_pfx;
++int no_color_flag = 0;
+ 
+ /* -I n */
+ enum {
+@@ -272,7 +274,7 @@ usage(void)
+ #endif
+ 
+ 	printf("\
+-Usage: strace [-ACdffhi" K_OPT "qqrtttTvVwxxyyzZ] [-I N] [-b execve] [-e EXPR]...\n\
++Usage: strace [-ACdffhiN" K_OPT "qqrtttTvVwxxyyzZ] [-I N] [-b execve] [-e EXPR]...\n\
+               [-a COLUMN] [-o FILE] [-s STRSIZE] [-X FORMAT] [-O OVERHEAD]\n\
+               [-S SORTBY] [-P PATH]... [-p PID]... [-U COLUMNS] [--seccomp-bpf]\n"\
+               SECONTEXT_OPT "\
+@@ -337,6 +339,8 @@ Filtering:\n\
+                  print only syscalls that returned with an error code\n\
+ \n\
+ Output format:\n\
++  -N, --no-color     \n\
++                 disable colored output\n\
+   -a COLUMN, --columns=COLUMN\n\
+                  alignment COLUMN for printing syscall results (default %d)\n\
+   -e abbrev=SET, --abbrev=SET\n\
+@@ -692,7 +696,23 @@ static void
+ tvprintf(const char *const fmt, va_list args)
+ {
+ 	if (current_tcp) {
+-		int n = vfprintf(current_tcp->outf, fmt, args);
++		int n;
++		if(no_color_flag) {
++			char new_fmt[strlen(fmt) + 1];
++			int i = 0;
++			for(const char *c = fmt; *c; c++) {
++				if(*c == '\033') {
++					for(c++; *c && *c != 'm'; c++);
++					continue;
++				}
++
++				new_fmt[i++] = *c;
++			}
++			new_fmt[i] = '\0';
++			n = vfprintf(current_tcp->outf, new_fmt, args);
++		} else
++			n = vfprintf(current_tcp->outf, fmt, args);
++
+ 		if (n < 0) {
+ 			/* very unlikely due to vfprintf buffering */
+ 			outf_perror(current_tcp);
+@@ -718,7 +738,22 @@ void
+ tprints(const char *str)
+ {
+ 	if (current_tcp) {
+-		int n = fputs_unlocked(str, current_tcp->outf);
++		int n;
++		if(no_color_flag) {
++			char new_str[strlen(str) + 1];
++			int i = 0;
++			for(const char *c = str; *c; c++) {
++				if(*c == '\033') {
++					for(c++; *c && *c != 'm'; c++);
++					continue;
++				}
++				new_str[i++] = *c;
++			}
++			new_str[i] = '\0';
++			n = fputs_unlocked(new_str, current_tcp->outf);
++		} else
++			n = fputs_unlocked(str, current_tcp->outf);
++
+ 		if (n >= 0) {
+ 			current_tcp->curcol += strlen(str);
+ 			return;
+@@ -732,7 +767,7 @@ void
  tprints_comment(const char *const str)
  {
  	if (str && *str)
@@ -719,7 +794,7 @@ index 94d6169db..664582cab 100644
  }
  
  void
-@@ -853,7 +854,7 @@ printleader(struct tcb *tcp)
+@@ -853,7 +888,7 @@ printleader(struct tcb *tcp)
  		else
  			xsprintf(str, "%lld", (long long) local);
  		if (tflag_width)
@@ -728,7 +803,7 @@ index 94d6169db..664582cab 100644
  				(long) ts.tv_nsec / tflag_scale);
  		else
  			tprintf("%s ", str);
-@@ -871,9 +872,9 @@ printleader(struct tcb *tcp)
+@@ -871,9 +906,9 @@ printleader(struct tcb *tcp)
  		ts_sub(&dts, &ts, &ots);
  		ots = ts;
  
@@ -740,6 +815,43 @@ index 94d6169db..664582cab 100644
  				rflag_width, (long) dts.tv_nsec / rflag_scale);
  		}
  		tprints(tflag_format ? ") " : " ");
+@@ -2138,7 +2173,7 @@ init(int argc, char *argv[])
+ #endif
+ 
+ 	static const char optstring[] =
+-		"+a:Ab:cCdDe:E:fFhiI:kno:O:p:P:qrs:S:tTu:U:vVwxX:yYzZ";
++		"+a:NAb:cCdDe:E:fFhiI:kno:O:p:P:qrs:S:tTu:U:vVwxX:yYzZ";
+ 
+ 	enum {
+ 		GETOPT_SECCOMP = 0x100,
+@@ -2168,6 +2203,7 @@ init(int argc, char *argv[])
+ #endif
+ 	};
+ 	static const struct option longopts[] = {
++		{"no-color",        no_argument, 0, 'N'},
+ 		{ "columns",		required_argument, 0, 'a' },
+ 		{ "output-append-mode",	no_argument,	   0, 'A' },
+ 		{ "detach-on",		required_argument, 0, 'b' },
+@@ -2240,6 +2276,9 @@ init(int argc, char *argv[])
+ 		lopt_idx = -1;
+ 
+ 		switch (c) {
++		case 'N':
++			no_color_flag = 1;
++			break;
+ 		case 'a':
+ 			acolumn = string_to_uint(optarg);
+ 			if (acolumn < 0)
+@@ -2791,6 +2830,9 @@ init(int argc, char *argv[])
+ 			      qflag_short == 2 ? qqflag_qual : qqqflag_qual);
+ 	}
+ 
++	if((getenv("NO_COLOR")))
++		no_color_flag = 1;
++
+ 	/*
+ 	 * startup_child() must be called before the signal handlers get
+ 	 * installed below as they are inherited into the spawned process.
 diff --git a/src/swapon.c b/src/swapon.c
 index 72ac42308..214d49ad6 100644
 --- a/src/swapon.c
