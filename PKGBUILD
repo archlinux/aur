@@ -5,10 +5,10 @@ pkgver=1.0.3
 pkgrel=1
 pkgdesc='Allows for installing packages from Concise repositories'
 arch=(any)
-url="https://gitlab.com/qYp/${pkgname}"
+url="https://gitlab.com/a4to/${pkgname}"
 license=('MIT')
 makedepends=(git)                 
-source=("https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
+source=("https://gitlab.com/a4to/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
 sha256sums=('7d8875a0f2777601057f5041ace7dd29c04f567f67afd8aef329fab580b85343')
 
 package() {
