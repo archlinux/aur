@@ -13,7 +13,7 @@ pkgbase = muezzin-bin
 	conflicts = muezzin-electron
 	conflicts = muezzin
 	noextract = muezzin-0.2.1.pacman
-	source = muezzin-0.2.1.pacman::https://github.com/DBChoco/Muezzin/releases/download/v0.2.1/muezzin-0.2.1.pacman
+	source = muezzin-0.2.1.pacman::https://github.com/DBChoco/Muezzin/releases/download/v0.2.1b/muezzin-0.2.1.pacman
 	md5sums = SKIP
 
 pkgname = muezzin-bin
