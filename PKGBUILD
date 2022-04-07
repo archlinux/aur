@@ -5,12 +5,12 @@ pkgver=1.0.r7
 pkgrel=1
 pkgdesc="Configuration's aimed at enhancing user experience in the neoVim text editor."
 arch=(x86_64)
-url="https://gitlab.com/qYp/${pkgname}"
+url="https://gitlab.com/a4to/${pkgname}"
 license=('MIT')
 depends=(neovim python-pynvim neovim-plug)
 source=(
-  "https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst"
-  "https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
+  "https://gitlab.com/a4to/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst"
+  "https://gitlab.com/a4to/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
   )
 sha256sums=(
   '063f97c12d15b687d9353cde065840bafdf7396a9c0f8031e452d1584901d2f5'
