@@ -2,14 +2,15 @@
 # Contributor: Malacology <guoyizhang at malacology dot com>
 
 pkgname=beast2
-pkgver=2.6.4
+pkgver=2.6.7
 pkgrel=1
-pkgdesc="Bayesian Evolutionary Analysis by Sampling Trees"
+pkgdesc="Bayesian Evolutionary Analysis by Sampling Trees. https://doi.org/10.1371/journal.pcbi.1003537"
 arch=('x86_64')
 url="http://www.beast2.org/"
 license=('LGPL-2.1 License')
+provides=("beast2")
 source=("https://github.com/CompEvol/beast2/releases/download/v${pkgver}/BEAST.v${pkgver}.Linux.tgz" "beauti.desktop" "densitree.desktop" "logcombiner.desktop" "treeannotator.desktop")
-sha256sums=('4f80e2920eb9d87f3e9f64433119774dc67aca390fbd13dd480f852e3f8701a4'
+sha256sums=('05dcc619c2e10163f2c1089ec66149f6e53ec5a0583cd2cb8ffdccbbdb1d8183'
             '83fba4c776fd29d6852c9c412c31d98bff657e2d2d2763dfe46d4c6174a9495f'
             '40d86086691b6cb91d0af54e5dc53d6693e084242ff3cc77862650ca78667c3d'
             'c2057c6ac656e13dcfbdf580a696bc79cb22c3d5270d546eac3e2fb42d620f20'
