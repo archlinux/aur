@@ -1,6 +1,6 @@
 # Maintainer: oscareczek <oscareczek at gmail dot com>
 pkgname=86box-git
-pkgver=3.3.r33.gfd90a36fe
+pkgver=3.3.r53.gfacbad9dd
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
@@ -15,14 +15,8 @@ optdepends=(
 provides=('86box')
 conflicts=('86box')
 options=('!buildflags')
-source=(
-    "${pkgname}::git+https://github.com/86Box/86Box.git"
-    '86box'
-)
-sha512sums=(
-    'SKIP'
-    '3e06cfd2e634ad771c384f05f58f9ba370d86511d291c2b196199908cd2a95274a4046b2979b8bfb5758583d095bc99536c1fef2f582cc5d23b7764151843f38'
-)
+source=("${pkgname}::git+https://github.com/86Box/86Box.git")
+sha512sums=('SKIP')
 
 pkgver() {
     cd ${pkgname}
@@ -42,10 +36,9 @@ build() {
 
 package() {
     DESTDIR="${pkgdir}" cmake --build "${srcdir}/build" --target install
-    install -Dm755 86box "$pkgdir/usr/bin"
     for i in 48x48 64x64 72x72 96x96 128x128 192x192 256x256 512x512; do
         install -Dm644 "$srcdir/$pkgname/src/unix/assets/$i/net.86box.86Box.png" -t "$pkgdir/usr/share/icons/hicolor/$i/apps"
     done
     mkdir "$pkgdir/usr/share/applications"
-    sed 's/^Exec.*/Exec=86box -P .config\/86box/' "$srcdir/$pkgname/src/unix/assets/net.86box.86Box.desktop" > "$pkgdir/usr/share/applications/net.86box.86Box.desktop"
+    sed 's/^Exec.*/Exec=86Box -P .config\/86box/' "$srcdir/$pkgname/src/unix/assets/net.86box.86Box.desktop" > "$pkgdir/usr/share/applications/net.86box.86Box.desktop"
 }
