@@ -1,10 +1,10 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=libretro-jumpnbump
 pkgname=$_pkgname-git
-pkgver=0.1.r24.gc55c379
+pkgver=0.1.r32.g5fd1a7c
 pkgrel=1
 pkgdesc="Jump 'n Bump core"
-arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/libretro/jumpnbump-libretro"
 license=('GPL2')
 groups=('libretro')
@@ -18,6 +18,10 @@ b2sums=('SKIP')
 pkgver() {
 	cd $_pkgname
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+	sed -i 's/-O[0123s]//;s/-Ofast//' $_pkgname/Makefile
 }
 
 build() {
