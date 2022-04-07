@@ -1,0 +1,61 @@
+diff --git a/core/cd_hw/cdd.h b/core/cd_hw/cdd.h
+index f3e8002..f68c2b6 100644
+--- a/core/cd_hw/cdd.h
++++ b/core/cd_hw/cdd.h
+@@ -47,8 +47,8 @@
+ #endif
+ 
+ #if defined(USE_LIBCHDR)
+-#include "libchdr/src/chd.h"
+-#include "libchdr/src/cdrom.h"
++#include <libchdr/chd.h>
++#include <libchdr/cdrom.h>
+ #endif
+ 
+ #define cdd scd.cdd_hw
+diff --git a/libretro/Makefile.common b/libretro/Makefile.common
+index a527d47..f8d99b2 100644
+--- a/libretro/Makefile.common
++++ b/libretro/Makefile.common
+@@ -22,26 +22,8 @@ ifeq ($(HOOK_CPU), 1)
+ endif
+ 
+ ifeq ($(HAVE_CHD), 1)
+-   INCFLAGS += \
+-               -I$(LIBRETRO_DEPS_DIR)/libchdr/include \
+-               -I$(LIBRETRO_DEPS_DIR)/lzma-19.00/include \
+-               -I$(LIBRETRO_DEPS_DIR)/zlib-1.2.11
+-   SOURCES_C += \
+-                $(LIBRETRO_DEPS_DIR)/lzma-19.00/src/Alloc.c \
+-                $(LIBRETRO_DEPS_DIR)/lzma-19.00/src/Bra86.c \
+-                $(LIBRETRO_DEPS_DIR)/lzma-19.00/src/BraIA64.c \
+-                $(LIBRETRO_DEPS_DIR)/lzma-19.00/src/CpuArch.c \
+-                $(LIBRETRO_DEPS_DIR)/lzma-19.00/src/Delta.c \
+-                $(LIBRETRO_DEPS_DIR)/lzma-19.00/src/LzFind.c \
+-                $(LIBRETRO_DEPS_DIR)/lzma-19.00/src/Lzma86Dec.c \
+-                $(LIBRETRO_DEPS_DIR)/lzma-19.00/src/LzmaDec.c \
+-                $(LIBRETRO_DEPS_DIR)/lzma-19.00/src/LzmaEnc.c \
+-                $(LIBRETRO_DEPS_DIR)/lzma-19.00/src/Sort.c \
+-                $(LIBRETRO_DEPS_DIR)/libchdr/src/libchdr_bitstream.c \
+-                $(LIBRETRO_DEPS_DIR)/libchdr/src/libchdr_cdrom.c \
+-                $(LIBRETRO_DEPS_DIR)/libchdr/src/libchdr_chd.c \
+-                $(LIBRETRO_DEPS_DIR)/libchdr/src/libchdr_flac.c \
+-                $(LIBRETRO_DEPS_DIR)/libchdr/src/libchdr_huffman.c
++   INCFLAGS += $(shell pkg-config --cflags libchdr)
++   LIBS += $(shell pkg-config --libs libchdr)
+ endif
+ 
+ SOURCES_C += $(foreach dir,$(GENPLUS_SRC_DIR),$(wildcard $(dir)/*.c))
+@@ -74,12 +56,6 @@ SOURCES_C += \
+ 				 $(LIBRETRO_COMM_DIR)/cdrom/cdrom.c \
+ 				 $(LIBRETRO_COMM_DIR)/vfs/vfs_implementation_cdrom.c
+ endif
+-SOURCES_C += \
+-             $(LIBRETRO_DEPS_DIR)/zlib-1.2.11/adler32.c \
+-             $(LIBRETRO_DEPS_DIR)/zlib-1.2.11/inffast.c \
+-             $(LIBRETRO_DEPS_DIR)/zlib-1.2.11/inflate.c \
+-             $(LIBRETRO_DEPS_DIR)/zlib-1.2.11/inftrees.c \
+-             $(LIBRETRO_DEPS_DIR)/zlib-1.2.11/zutil.c
+ 
+ endif
+ 
