@@ -3,12 +3,12 @@ pkgname=gyroflow
 # Hyphens are not allowed in `pkgver`.
 _pkgver=1.0.0-rc5
 pkgver=${_pkgver//-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc="Video stabilization using gyroscope data"
 arch=("x86_64")
 url="https://gyroflow.xyz/"
 license=("GPL3")
-depends=("qt6-base" "qt6-quick3d" "qt6-declarative" "qt6-3d" "pulseaudio" "libxkbcommon" "opencv" "opencl-driver" "libva-mesa-driver" "ocl-icd" "ffmpeg")
+depends=("libc++" "qt6-base" "qt6-quick3d" "qt6-declarative" "qt6-3d" "pulseaudio" "libxkbcommon" "opencv" "opencl-driver" "libva-mesa-driver" "ocl-icd" "ffmpeg")
 makedepends=("cargo" "opencl-headers")
 source=("https://github.com/${pkgname}/${pkgname}/archive/refs/tags/v${_pkgver}.tar.gz"
         "use-system-dynamic-opencv.patch"
