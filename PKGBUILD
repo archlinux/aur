@@ -2,7 +2,7 @@
 pkgname=python-catboost
 _name=${pkgname#python-}
 _py=cp310
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc="Fast, scalable, high performance gradient boosting on decision trees"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('python-wheel' 'python-pip')
 optdepends=('python-ipywidgets: visualization in Jupyter')
 options=(!emptydirs)
 source=("https://files.pythonhosted.org/packages/$_py/${_name::1}/$_name/${_name/-/_}-$pkgver-$_py-none-manylinux1_x86_64.whl")
-sha256sums=('d2fb6fdca366890ca71b5a1dee06fb59a78f611a821d2c489c06a10d07749e9f')
+sha256sums=('c52f82389f155b15c8c21ea42cd6dea10c01e561cec6c4f18b1d0460ab04e23e')
 noextract=("${_name/-/_}-$pkgver-$_py-none-manylinux1_x86_64.whl")
 
 package() {
