@@ -7,7 +7,7 @@
 
 pkgname=insync
 pkgver=3.7.5.50350
-pkgrel=1
+pkgrel=2
 _dist=buster
 pkgdesc="An unofficial Google Drive and OneDrive client that runs on Linux, with support for various desktops"
 url="https://www.insynchq.com/downloads"
@@ -21,9 +21,10 @@ depends=('adobe-source-code-pro-fonts'
          'libglvnd'
          'nss'
          'xdg-utils'
-         'lib32-libappindicator-gtk2'
 )
-optdepends=()
+optdepends=(
+         'lib32-libappindicator-gtk2: Required for tray icon in some configurations'
+)
 arch=('x86_64')
 source=("http://s.insynchq.com/builds/${pkgname}_${pkgver}-${_dist}_amd64.deb"
     'insync@.service'
