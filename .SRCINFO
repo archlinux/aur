@@ -1,24 +1,25 @@
 pkgbase = kibana-xpack
 	pkgdesc = Browser based analytics and search dashboard for Elasticsearch
-	pkgver = 7.17.2
+	pkgver = 8.0.1
 	pkgrel = 1
 	url = https://www.elastic.co/products/kibana
 	arch = x86_64
 	license = custom:Elastic2
 	depends = nodejs-lts-gallium
 	optdepends = elasticsearch
-	provides = kibana=7.17.2
+	provides = kibana=8.0.1
 	conflicts = kibana
 	options = !strip
 	options = emptydirs
 	backup = etc/kibana/kibana.yml
-	source = https://artifacts.elastic.co/downloads/kibana/kibana-7.17.2-linux-x86_64.tar.gz
-	source = https://artifacts.elastic.co/downloads/kibana/kibana-7.17.2-linux-x86_64.tar.gz.asc
+	backup = etc/kibana/node.options
+	source = https://artifacts.elastic.co/downloads/kibana/kibana-8.0.1-linux-x86_64.tar.gz
+	source = https://artifacts.elastic.co/downloads/kibana/kibana-8.0.1-linux-x86_64.tar.gz.asc
 	source = kibana.service
 	source = tmpfile.conf
 	source = user.conf
 	validpgpkeys = 46095ACC8548582C1A2699A9D27D666CD88E42B4
-	sha512sums = a631ff802e8191e0bca4ed8934d4620003e43329968ca4153bff9c9eaba28aeecba5cd940ba48633447d9731051d74a643e828f3ae043a6b301b16fa446f4b94
+	sha512sums = 460750b415f9c21d373224e377beecb84d8244a83faf53e7dacfc723721b332193e94b2d4e25e5c9f4f27314ad05370c11d654c91a3ebb26d7d9b9b6b0dab01e
 	sha512sums = SKIP
 	sha512sums = be50713d4e4db3a8b2d0d02ec68b56ce1636ffa9a41738b0abf276c562c36ef6118f440f25b220f39302ba23b2351b5a38f961c8693ad03ea19424e4d40409e6
 	sha512sums = afed49c164561f3c658a6d2423519adcf4d5293c416cd93fa5c9d12421416c1e9cb4287e832009049cfd014b365dc1cd93d9cf879117c701cce4caad3b772a8e
