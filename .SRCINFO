@@ -1,7 +1,7 @@
 pkgbase = libeb
 	pkgdesc = C library for accessing CD-ROM books. Supports EB, EBG, EBXA, EBXA-C, S-EBXA and EPWING formats.
 	pkgver = 4.4.3
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.mistys-internet.website/eb/index-en.html
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = libeb
 	provides = libeb.so
 	provides = eb-library
 	conflicts = eb-library
+	replaces = eb-library
 	source = https://github.com/mistydemeo/eb/releases/download/v4.4.3/eb-4.4.3.tar.bz2
 	source = eb-fix_bmp_size_header.patch::https://github.com/eb4j/eb/commit/8292c7814e2c65d0809bb8a401c00b593aefec43.patch
 	sha256sums = abe710a77c6fc3588232977bb2f30a2e69ddfbe9fa8d0b05b0d67d95e36f4b5f
