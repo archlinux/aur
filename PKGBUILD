@@ -2,7 +2,7 @@
 # Contributor: Christopher Vittal ("viralstitch") <chris@vittal.dev>
 
 pkgname=htslib
-pkgver=1.15
+pkgver=1.15.1
 pkgrel=1
 pkgdesc='A C library for high-throughput sequencing data formats'
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('tabix')
 replaces=('tabix')
 conflicts=('tabix')
 source=("${pkgname}-${pkgver}.tar.bz2::${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha256sums=('1a9f49911503a22f56817cc82ea9b87fb7e7467b5ff989ca5aa61c12e7d532d9')
+sha256sums=('8d7f8bf9658226942eeab70af2a22aca618577eaa8fe2ed9416ee306d5351aa1')
 
 build() {
   cd "${pkgname}-${pkgver}"
