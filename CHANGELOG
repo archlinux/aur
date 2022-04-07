@@ -1,0 +1,188 @@
+Changelog
+=========
+
+3.0.3
+-----
+
+ - Add pid number to PidFileAlreadyRunningError
+
+
+3.0.2
+-----
+
+ - Support contextlib.ContextDecorator (github #29)
+
+
+3.0.1
+-----
+
+ - Use realpath when detecting pid (run) directories
+
+
+3.0.0
+-----
+
+ - Windows support (see #18)
+ - Determine pid directory more extensively
+ - Use effective uid if available
+ - Rename SamePidFileNotSupported to PidFileConfigurationError
+
+
+2.2.5
+-----
+
+ - Fix pidfile being removed by second process after failing to obtain the lock
+   This has side-effect that now automatic cleanup will not happen anymore if
+   `PidFile.create(...)` method did not finish properly. If you manually create
+   pidfiles you need to use `PidFile.close(cleanup=True)` or set the variable
+   `PidFile._need_cleanup = True` by hand.
+
+
+2.2.4
+-----
+
+ - Fix atexit registration which was never done
+ - Using standard mock library for tests if available
+
+
+2.2.3
+-----
+
+ - Fix double close race condition (#22)
+ - Add register_atexit parameter (default to True)
+ - Avoid registering atexit callback multiple times
+
+
+2.2.2
+-----
+
+ - PR #21 improve test for container style environment like
+   FreeBSD jails / docker containers / etc which do not expose or allow
+   `os.kill` for the test pids.
+
+
+2.2.1
+-----
+
+ - Fix packaging issues
+ - Update tests and support for Python 3.6 and 3.7
+ - Drop tests support for Python 2.6 and Python 3.3
+
+
+2.2.0
+-----
+
+ - Fix for allow_samepid=True check pid when same pid is allowed
+   and file is locked.
+ - Update to README example
+
+2.1.1
+-----
+
+ - Add Python 3.5 to travis
+
+2.1.0
+-----
+
+ - Same pid support, multiple calls to the same process won't
+   file when allow_samepid=True is set.
+
+2.0.1
+-----
+
+ - Bundle AUTHOR, CHANGELOG and LICENSE with source distribution
+
+2.0.0
+-----
+
+ - PidFile will now look at the environment variables it
+   needs just before acquiring the lock instead of at
+   instantiation time of the PidFile class.
+
+ - pid is now friendly with daemon context managers such
+   as python-daemon where the PidFile context manager is
+   passed as a parameter.
+
+ - The signal handler on SIGTERM is now only installed
+   automatically if there is no previous signal handler
+   installed.
+
+ - You can install a custom SIGTERM handler by specifying
+   a callable for 'register_term_signal_handler'.
+
+ - All in all we tried to make sure that with version 2.0.0
+   pid will play nice with other code and has sane defaults.
+
+ - Many thanks to nnathan who's efforts coding and testing
+   made this version possible.
+
+
+1.1.0
+-----
+
+ - Add pypy to classifiers and travis
+
+
+1.0.9
+-----
+
+ - Wrong documentation on how to call the decorator
+ - Allow to set default pid dir at runtime.
+ - Make sure pid files are nor prematurely removed.
+
+
+1.0.8
+-----
+
+ - disable gid test for now
+
+
+1.0.7
+-----
+
+ - update title in setup.py
+
+
+1.0.6
+-----
+
+ - more unit tests
+
+
+1.0.5
+-----
+
+ - fix flake8 errors
+
+
+1.0.4
+-----
+
+ - fix flake8 errors
+ - add pid/decorator.py
+
+1.0.3
+-----
+
+ - add coveralls badge to README
+ - add travis badge to README
+ - set rights on /var/run in travis
+
+
+1.0.2
+-----
+
+ - use DESCRIPTION as README
+
+
+1.0.1
+-----
+
+ - Add force tempdir
+ - Add travis
+
+
+1.0.0
+-----
+
+ - Initial commit

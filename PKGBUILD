@@ -1,30 +1,34 @@
-# Maintainer: Kenneth Endfinger <kaendfinger@gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Kenneth Endfinger <kaendfinger@gmail.com>
 
-pkgbase=python-pid
-pkgname=(python-pid python2-pid)
-pkgver=3.0.3
-pkgrel=1
-pkgdesc='Python pid - pidfile featuring stale detection and file-locking'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url='https://pypi.python.org/pypi/pid'
-license=('GPL')
-makedepends=('python-setuptools' 'python2-setuptools')
 # There's a gpg signature, but no matching key. Where to get it?
-source=("${pkgname}-${pkgver}.tar.gz::https://pypi.io/packages/source/p/pid/pid-${pkgver}.tar.gz")
-sha512sums=('58c0615e22b1f0d1d1c3490c2be52c2ddc9bc1bb9a9f00379a2d9c2511371875d914bdcadce227f4478e968b8fdc469e7e67e4dbdb5c00449740aa7e097de3f1')
 
-package_python-pid() {
-  pkgdesc='Python pid - pidfile featuring stale detection and file-locking - python 3.x pkg'
-  depends=('python')
+pkgname=python-pid
+_name=pid
+pkgver=3.0.3
+pkgrel=2
+pkgdesc='Pidfile featuring stale detection and file-locking'
+arch=('any')
+url='https://github.com/trbs/pid'
+license=('Apache')
+depends=('python')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
+checkdepends=('python-pytest')
+changelog=CHANGELOG
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('925b61c35b6f2bc6b43075f493e99792f1473575a0beeb85bcf7de1d6a4a3c7d')
 
-  cd "${srcdir}/pid-${pkgver}"
-  python3 setup.py install --root="${pkgdir}/" --optimize=0
+build() {
+	cd "$_name-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
-package_python2-pid() {
-  pkgdesc='Python pid - pidfile featuring stale detection and file-locking - python 2.x pkg'
-  depends=('python2')
+check() {
+	cd "$_name-$pkgver"
+	PYTHONPATH="$PWD" pytest -x --disable-warnings
+}
 
-  cd "${srcdir}/pid-${pkgver}"
-  python2 setup.py install --root="${pkgdir}/" --optimize=0
+package() {
+	cd "$_name-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 }

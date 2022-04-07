@@ -1,24 +1,18 @@
 pkgbase = python-pid
-	pkgdesc = Python pid - pidfile featuring stale detection and file-locking
+	pkgdesc = Pidfile featuring stale detection and file-locking
 	pkgver = 3.0.3
-	pkgrel = 1
-	url = https://pypi.python.org/pypi/pid
-	arch = i686
-	arch = x86_64
-	arch = armv6h
-	arch = armv7h
-	arch = aarch64
-	license = GPL
+	pkgrel = 2
+	url = https://github.com/trbs/pid
+	changelog = CHANGELOG
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
-	source = python-pid-3.0.3.tar.gz::https://pypi.io/packages/source/p/pid/pid-3.0.3.tar.gz
-	sha512sums = 58c0615e22b1f0d1d1c3490c2be52c2ddc9bc1bb9a9f00379a2d9c2511371875d914bdcadce227f4478e968b8fdc469e7e67e4dbdb5c00449740aa7e097de3f1
+	makedepends = python-wheel
+	depends = python
+	source = python-pid-3.0.3.tar.gz::https://files.pythonhosted.org/packages/source/p/pid/pid-3.0.3.tar.gz
+	sha256sums = 925b61c35b6f2bc6b43075f493e99792f1473575a0beeb85bcf7de1d6a4a3c7d
 
 pkgname = python-pid
-	pkgdesc = Python pid - pidfile featuring stale detection and file-locking - python 3.x pkg
-	depends = python
-
-pkgname = python2-pid
-	pkgdesc = Python pid - pidfile featuring stale detection and file-locking - python 2.x pkg
-	depends = python2
-
