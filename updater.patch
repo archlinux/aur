@@ -1,0 +1,73 @@
+--- updater
++++ updater
+@@ -110 +110 @@
+-      while getopts ':abc:de:hilno:p:qrstuvy' opt; do
++      while getopts ':abc:de:hilno:p:qrtvy' opt; do
+@@ -167,4 +166,0 @@
+-          # TODO: remove '-s' in future version
+-          s|u)
+-            update='true'
+-            ;;
+@@ -282 +277,0 @@
+-  update='false'
+@@ -301 +296 @@
+-  printf '%s' "${color_usage}Usage: ${0} [-abdhilnrsuvy] [-c CONFIG]"
++  printf '%s' "${color_usage}Usage: ${0} [-abdhilnrvy] [-c CONFIG]"
+@@ -332 +326,0 @@
+-  -s          (Deprecated) This is an alias for -u .
+@@ -335 +328,0 @@
+-  -u          Check for updates of this updater and install if available.
+@@ -478,51 +470,0 @@
+-#    Update Updater     #
+-#########################
+-
+-# update this updater
+-# expects $@ as arguments
+-update_updater() {
+-  # update check has not been activated
+-  [ "${update}" = 'false' ] && return 0
+-  readonly new_updater="${tmp_dir}/new_updater"
+-  if ! download_file "${new_updater}" \
+-      'https://notabug.org/TotallyLeGIT/PH-userjs-updater/raw/main/updater'
+-  then
+-    print_warn 'Download of new updater failed'
+-    return 1
+-  fi
+-  chmod u+x "${new_updater}"
+-  current_updater_version="$("${script_path}" -v | cut -d ' ' -f 2)"
+-  new_updater_version="$("${new_updater}" -v | cut -d ' ' -f 2)"
+-
+-  # compare updater versions, if different
+-  while [ "${current_updater_version}" != "${new_updater_version}" ]; do
+-    difference="$((${new_updater_version%%.*}-${current_updater_version%%.*}))"
+-    # newer version available
+-    if [ "${difference}" -gt 0 ]; then
+-      printv_info '0' 'updater' 'update available'
+-      # apply update
+-      if ! { cat "${new_updater}" > "${script_path}" ; } > /dev/null 2>&1; then
+-        print_warn "No permission to write file: '${script_path}'"
+-        return 1
+-      fi
+-      printv_info '1' 'changelog' \
+-          'https://notabug.org/TotallyLeGIT/PH-userjs-updater/raw/main/CHANGELOG.md'
+-      # update user.js with new version
+-      "${script_path}" "${@}"
+-      # exit with exit code from updater call above
+-      exit "${?}"
+-    # version number is equal (go to next number)
+-    elif [ "${difference}" -eq 0 ]; then
+-      current_updater_version="${current_updater_version#*.}"
+-      new_updater_version="${new_updater_version#*.}"
+-    # this should not be happening
+-    else
+-      print_warn 'Your updater version seems odd. Check updater homepage' \
+-          'and/or update manually.'
+-      return 2
+-    fi
+-  done
+-  printv_info '0' 'updater' 'up to date'
+-}
+-
+-#########################
+@@ -780 +721,0 @@
+-update_updater "${@}"

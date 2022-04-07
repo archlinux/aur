@@ -1,0 +1,14 @@
+pkgbase = ph-userjs-updater
+	pkgdesc = Load or update user.js for Firefox and Thunderbird from privacy-handbuch.de
+	pkgver = 1.5.1
+	pkgrel = 1
+	url = https://notabug.org/TotallyLeGIT/PH-userjs-updater
+	arch = any
+	license = MIT
+	depends = curl
+	source = ph-userjs-updater-1.5.1.tar.gz::https://notabug.org/TotallyLeGIT/PH-userjs-updater/archive/1.5.1.tar.gz
+	source = updater.patch
+	sha256sums = 5529c31d854c5ae0b3f1388304760965eda38b3df74fb029cca3252588b13b5d
+	sha256sums = fd56d6bb1dcc3327893177a701cb00cc3a6ad4319c8f3913bdf521653efe4094
+
+pkgname = ph-userjs-updater
