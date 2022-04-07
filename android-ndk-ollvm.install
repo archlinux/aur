@@ -1,0 +1,16 @@
+post_install() {
+    /opt/android-ndk-ollvm/update_links.sh
+}
+
+post_upgrade() {
+    /opt/android-ndk-ollvm/update_links.sh
+}
+
+pre_remove() {
+    rm /opt/android-ndk-ollvm/build
+    rm /opt/android-ndk-ollvm/source.properties
+    rm /opt/android-ndk-ollvm/toolchains/llvm/prebuilt/linux-x86_64/sysroot
+    
+    ollvm_ver=`${OLLVM_PATH}/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --version | head -1 | awk {'print $3'}`
+    rm /opt/android-ndk-ollvm/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/${ollvm_ver}/lib
+}

@@ -1,0 +1,10 @@
+[Trigger]
+Operation=Upgrade
+Type=Package
+Target=android-ndk
+Target=android-ndk-*
+
+[Action]
+Description = Update symlinks
+When=PostTransaction
+Exec=/opt/android-ndk-ollvm/update_links.sh
