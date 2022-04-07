@@ -1,13 +1,14 @@
 # Maintainer: Victor Bayas <victorsbayas at gmail dot com>
+# Contributor: Victor Bayas <victorsbayas at gmail dot com>
 
 pkgname=envycontrol
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="Easy GPU switching for Nvidia Optimus laptops under Linux"
 arch=(any)
 url="https://github.com/geminis3/envycontrol"
 license=(MIT)
-depends=(python)
+depends=(python xorg-xrandr)
 makedepends=(python-setuptools git)
 source=("git+https://github.com/geminis3/envycontrol.git#tag=v$pkgver")
 sha256sums=('SKIP')
