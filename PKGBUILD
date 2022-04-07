@@ -1,7 +1,7 @@
 # Maintainer: Carl Smedstad <carl.smedstad at protonmail dot com>
 
 pkgname=hererocks
-pkgver=0.23.0
+pkgver=0.25.1
 pkgrel=1
 pkgdesc="Tool for installing Lua and LuaRocks locally"
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/luarocks/$pkgname/archive/refs/tags/$pkgver.tar.gz")
-sha512sums=('433e7a44130a3f545f4931f65b34b060c1fb928ba4069677f955b07d59f1fa25c047096f10a97523944b44b0418916f7d83eedfa7e32e638bf620c6f4b16e014')
+sha256sums=('bd3769fb9f7ac944f67601575a6c0aad7118e89ebba418985a126c2412f1f9e0')
 
 build() {
   cd "$pkgname-$pkgver"
