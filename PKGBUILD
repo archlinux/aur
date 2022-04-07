@@ -8,7 +8,7 @@ _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-cairo
 pkgver=1.17.6
-pkgrel=1
+pkgrel=2
 pkgdesc="2D graphics library with support for multiple output devices (mingw-w64)"
 arch=('any')
 url="https://cairographics.org"
@@ -45,6 +45,7 @@ build() {
     ${_arch}-meson cairo build-${_arch} \
       --buildtype=release \
       --default-library=both \
+      -D b_lto=false \
       -D spectre=disabled \
       -D tee=enabled \
       -D tests=disabled \
