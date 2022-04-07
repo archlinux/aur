@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qgis
 	pkgdesc = Geographic Information System (GIS) that supports vector, raster & database formats (mingw-w64)
-	pkgver = 3.20.1
+	pkgver = 3.24.1
 	pkgrel = 1
 	url = https://qgis.org/
 	arch = any
@@ -22,10 +22,13 @@ pkgbase = mingw-w64-qgis
 	depends = mingw-w64-qwt
 	depends = mingw-w64-pdal
 	depends = mingw-w64-qscintilla-qt5
+	depends = mingw-w64-spatialindex
+	depends = mingw-w64-qtkeychain-qt5
+	depends = mingw-w64-pdal
 	options = !buildflags
 	options = !strip
 	options = staticlibs
-	source = https://qgis.org/downloads/qgis-3.20.1.tar.bz2
-	sha256sums = a4209df4d5b1a2ffb1c8c3e0d2f0b17ccea118197b43fbb1185e5dcdf0bc520d
+	source = https://qgis.org/downloads/qgis-3.24.1.tar.bz2
+	sha256sums = 20cc5c47fb9463e82c72ac77122b77849f04f6fb64314ac5fe6d0069dd0d5c11
 
 pkgname = mingw-w64-qgis

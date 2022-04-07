@@ -1,29 +1,23 @@
 pkgname=mingw-w64-qgis
-pkgver=3.20.1
+pkgver=3.24.1
 pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats (mingw-w64)'
 url='https://qgis.org/'
 license=('GPL')
 arch=('any')
-depends=('mingw-w64-protobuf' 'mingw-w64-qt5-3d' 'mingw-w64-qt5-imageformats' 'mingw-w64-qt5-serialport' 'mingw-w64-gdal' 'mingw-w64-libzip' 'mingw-w64-qca-qt5' 'mingw-w64-gsl' 'mingw-w64-exiv2' 'mingw-w64-hdf5' 'mingw-w64-libxml2' 'mingw-w64-netcdf' 'mingw-w64-fcgi' 'mingw-w64-qwt' 'mingw-w64-pdal' 'mingw-w64-qscintilla-qt5')
+depends=('mingw-w64-protobuf' 'mingw-w64-qt5-3d' 'mingw-w64-qt5-imageformats' 'mingw-w64-qt5-serialport' 'mingw-w64-gdal' 'mingw-w64-libzip' 'mingw-w64-qca-qt5' 'mingw-w64-gsl' 'mingw-w64-exiv2' 'mingw-w64-hdf5' 'mingw-w64-libxml2' 'mingw-w64-netcdf' 'mingw-w64-fcgi' 'mingw-w64-qwt' 'mingw-w64-pdal' 'mingw-w64-qscintilla-qt5' 'mingw-w64-spatialindex' 'mingw-w64-qtkeychain-qt5' 'mingw-w64-pdal')
 makedepends=('mingw-w64-cmake')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("https://qgis.org/downloads/qgis-$pkgver.tar.bz2")
-sha256sums=('a4209df4d5b1a2ffb1c8c3e0d2f0b17ccea118197b43fbb1185e5dcdf0bc520d')
+sha256sums=('20cc5c47fb9463e82c72ac77122b77849f04f6fb64314ac5fe6d0069dd0d5c11')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
   cd qgis-$pkgver
-  # Fix infinite loop
-  curl -L https://github.com/qgis/QGIS/commit/19823b76.patch | patch -p1
 
-  curl -L https://github.com/qgis/QGIS/commit/6f9cbde7c782274ebe5875da7dbac98d68e9827b.patch | patch -p1
-  curl -L https://github.com/qgis/QGIS/commit/581cb40603dd3daca2916b564a4cd2630d005556.patch | patch -p1
-  curl -L https://github.com/qgis/QGIS/pull/44460.patch | patch -p1
-
-  sed -i "s|QWT_POLAR_VERSION|0x20000|g" src/app/gps/qgsgpsinformationwidget.cpp
-  sed -i "s|QT_SHARED|QT_STATIC|g" src/customwidgets/CMakeLists.txt
+  #sed -i "s|QWT_POLAR_VERSION|0x20000|g" src/app/gps/qgsgpsinformationwidget.cpp
+  #sed -i "s|QT_SHARED|QT_STATIC|g" src/customwidgets/CMakeLists.txt
 }
 
 build() {
@@ -49,7 +43,7 @@ build() {
     -DWITH_QWTPOLAR=TRUE \
     -DQWTPOLAR_LIBRARY=/usr/${_arch}/lib/libqwt.dll.a \
     -DWITH_INTERNAL_QWTPOLAR=FALSE \
-    -DWITH_PDAL=OFF ..
+    ..
    make
    popd
   done
