@@ -5,7 +5,7 @@ _githuborg=${_projectname}
 pkgdesc="Skywire Mainnet Node implementation. Debian package; cross-compile."
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 #pkgrel=2
 arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
 url="https://${_pkggopath}"
@@ -24,7 +24,7 @@ source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
 "${_scripts}.tar.gz"
 )
 sha256sums=('f1c6ae2dbe36cda0767855ac1b8676751358ca782e2c3d8ee16ba9b0de9b2bc3'
-            'fa42fb88711391d6fbf29ab457e3c6044735155707332af03afc77f506693fdc')
+            '85cea451eec057fa7e734548ca3ba6d779ed5836a3f9de14b8394575ef0d7d8e')
 #tar -czvf skywire-deb-scripts.tar.gz skywire-deb-scripts
 #updpkgsums deb.PKGBUILD
 
