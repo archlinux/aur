@@ -37,9 +37,9 @@ noextract=("ombi-x86_64-${pkgver}.tar.gz"
 sha256sums=('263c0f3bce912441c8473203096958c8037e577df879403f6f93ac9317cee185'
             '6efc381990e1113737686d4f61795095fa8edbc176daa877fd755f1ddb3a40fa'
             '49fc5edca9d88fc9d6e9f0f4a6d707b072f32daa097305f0bf905dfff342f44a')
-sha256sums_x86_64=('2c4178f7bc4e6253945f2e7002fb031df1a1c68da5583459327dcdeb9d32b8d9')
-sha256sums_aarch64=('0b10eb7917a4a36bbef967b43a57c7a4c32dea131fffac01721e9268549330fe')
-sha256sums_armv7h=('e4e086043ea8a950c3fe46cfc4742e8763a01bbb50392440c2646aefb31ae8f4')
+sha256sums_x86_64=('40cc8b3a8311bcfd1c547cded49c369b6b5b1a61bed0eabcccd57e5ba5c9936f')
+sha256sums_aarch64=('2cc596d865609410e919d39393d1afa5f6ff4481e4a3ad0e022e0db7c5dc91f9')
+sha256sums_armv7h=('c06c926bc71eb83449b5cd57ea5f4c2b7e076224eb5fe3ab8bd38b26542fa5ea')
 
 prepare() {
   # The source is packaged w/o a sub directory, so create our own and 
