@@ -12,6 +12,7 @@ pkgbase = adwaita-icon-theme-41
 	depends = gtk-update-icon-cache
 	depends = librsvg
 	provides = adwaita-icon-theme
+	conflicts = adwaita-icon-theme
 	source = git+https://gitlab.gnome.org/GNOME/adwaita-icon-theme.git#commit=8670d0eb2414c1ac16d927da5d1a22142ba5e346
 	sha256sums = SKIP
 
