@@ -1,12 +1,12 @@
 # Maintainer: Sebastián Zambrano <yeaseb@gmail.com>
 # Contributor: Sebastián Zambrano <yeaseb@gmail.com>, Hannes Mann <hannesmann2000@gmail.com>
 
-pkgname=wmo-oc-dkms
+pkgname=wmo_oc-dkms
 pkgver=1.0
 pkgrel=1
 pkgdesc="Kernel module for overclocking the MS Wheel Mouse Optical (MLT04)."
 arch=('any')
-url="https://github.com/YeaSeb/WMO1.1a-oc-kmod"
+url="https://github.com/YeaSeb/wmo-oc-kmod"
 license=('GPL2')
 depends=('dkms')
 source=('https://github.com/YeaSeb/wmo-oc-kmod/archive/refs/tags/1.0.zip'

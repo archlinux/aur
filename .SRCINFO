@@ -1,8 +1,8 @@
-pkgbase = wmo-oc-dkms
+pkgbase = wmo_oc-dkms
 	pkgdesc = Kernel module for overclocking the MS Wheel Mouse Optical (MLT04).
 	pkgver = 1.0
 	pkgrel = 1
-	url = https://github.com/YeaSeb/WMO1.1a-oc-kmod
+	url = https://github.com/YeaSeb/wmo-oc-kmod
 	arch = any
 	license = GPL2
 	depends = dkms
@@ -11,4 +11,4 @@ pkgbase = wmo-oc-dkms
 	md5sums = 4992b4f8828a951ea9a1b78931d245c7
 	md5sums = c0214b179a1d286fd59c82117109399e
 
-pkgname = wmo-oc-dkms
+pkgname = wmo_oc-dkms
