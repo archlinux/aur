@@ -2,13 +2,13 @@ pkgbase = log-console
 	pkgdesc = console logger static library
 	pkgver = 17
 	pkgrel = 1
-	epoch = 0
+	epoch = 1
 	url = https://github.com/imperzer0/log-console
 	arch = x86_64
 	license = GPL
 	makedepends = cmake>=3.0
-	source = local://log-console
-	source = local://log-console-defs
+	source = https://raw.githubusercontent.com/imperzer0/log-console/master/log-console
+	source = https://raw.githubusercontent.com/imperzer0/log-console/master/log-console-defs
 	md5sums = 1042a793b5481de07262fccd09e2a2f9
 	md5sums = 2fd9a98d504fba82afbc322976c6e4b6
 
