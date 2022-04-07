@@ -1,20 +1,43 @@
-# Maintainer: Dct Mei <dctxmei@gmail.com>
-# Contributor: Daniel M. Capella <polyzen@archlinux.org>
+# Maintainer: Dct Mei <dctxmei@yandex.com>
+# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
 
 pkgname=firefox-esr-ublock-origin
-pkgver=1.18.16
+_pkgname=uBlock
+pkgver=1.42.2
 pkgrel=1
 pkgdesc='Efficient blocker add-on for various browsers. Fast, potent, and lean'
-url=https://github.com/gorhill/uBlock
 arch=('any')
+url="https://github.com/gorhill/uBlock"
 license=('GPL3')
-groups=('firefox-esr-addons')
-source=("https://addons.cdn.mozilla.net/user-media/addons/607454/ublock_origin-$pkgver-an+fx.xpi")
-noextract=("${source##*/}")
-sha256sums=('d65565207ff63c6646b83bcbf434fd3a879d0dcde06b9c032f05a0d7d3ddeca1')
+#groups=('firefox-addons')
+depends=('firefox-esr')
+makedepends=('git' 'npm' 'python' 'strip-nondeterminism' 'zip')
+source=("git+$url.git#commit=$pkgver?signed"
+        "git+https://github.com/uBlockOrigin/uAssets.git")
+b2sums=('SKIP'
+        'SKIP')
+validpgpkeys=('603B28AA5D6CD687A554347425E1490B761470C2') # Raymond Hill <rhill@raymondhill.net>
 
-package() {
-  install -Dm644 "${source##*/}" "$pkgdir"/opt/firefox-esr/browser/extensions/uBlock0@raymondhill.net.xpi
+prepare() {
+    cd "${srcdir}"/"${_pkgname}"/
+    git submodule init
+    git config submodule.submodules/uAssets.url ../uAssets
+    git submodule update
 }
 
-# vim:set ts=2 sw=2 et:
+build() {
+    cd "${srcdir}"/"${_pkgname}"/
+    make
+    strip-nondeterminism -t zip dist/build/uBlock0.firefox.xpi
+}
+
+check() {
+    cd "${srcdir}"/"${_pkgname}"/
+    make test
+}
+
+package() {
+    cd "${srcdir}"/"${_pkgname}"/dist/build/
+    install -Dm 644 uBlock0.firefox.xpi \
+            "$pkgdir"/usr/lib/firefox-esr/browser/extensions/uBlock0@raymondhill.net.xpi
+}
