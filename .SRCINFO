@@ -1,12 +1,13 @@
 pkgbase = hexcurse-git
 	pkgdesc = Versatile ncurses-based hex editor.
 	pkgver = v1.60.0.r6.ga7d60e8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/LonnyGomes/hexcurse
-	arch = i686
 	arch = x86_64
 	license = GPL
 	depends = ncurses
+	provides = hexcurse
+	conflicts = hexcurse
 	options = !makeflags
 	source = git+https://github.com/LonnyGomes/hexcurse
 	source = https://github.com/gentoo/gentoo/raw/d6f5624d344f8d50aa7ca7a852fb0f935938e09a/app-editors/hexcurse/files/hexcurse-1.60.0-Werror.patch
