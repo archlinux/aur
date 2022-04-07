@@ -1,7 +1,7 @@
 # Maintainer: Roshless <pkg@roshless.com>
 
 pkgname=lagrange
-pkgrel=1
+pkgrel=2
 pkgver=1.12.0
 pkgdesc="Beautiful Gemini Client"
 url="https://git.skyjake.fi/skyjake/lagrange"
