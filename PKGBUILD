@@ -6,7 +6,7 @@ pkgver=1.0.r1
 pkgrel=1
 pkgdesc='Task simplificaltion scripts for increasing the speed and efficiency of common tasks'
 arch=(x86_64)
-url="https://gitlab.com/qYp/${_pkgname}"
+url="https://gitlab.com/a4to/${_pkgname}"
 license=('MIT')
 depends=()
 optdepends=(
@@ -18,7 +18,7 @@ optdepends=(
   'paru: To use 'ezdl' for downloading packages from the AUR'
   )
 provides=(ezdl ezgc eztst)
-source=("https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
+source=("https://gitlab.com/a4to/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
 sha256sums=('a6c2b198fed3c61f78457b71c56efe8424c081bc165f25b2425bc66f1126d2b7')
 
 package() {
