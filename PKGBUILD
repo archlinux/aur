@@ -11,7 +11,8 @@ groups=('')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://github.com/powenn/AltServer-LinuxGUI/releases/download/$pkgver/AltServer.deb" "$pkgname.install")
-sha512sums=('ed6f62943520aa322bb6e5eb65ce0b1b99af73e1dacd96d4f025a22dfc9b15d1ab4fa21bdbd640a052289ecd0daf6b335e7e72af444300db01d183246c7cb217')
+sha512sums=('ed6f62943520aa322bb6e5eb65ce0b1b99af73e1dacd96d4f025a22dfc9b15d1ab4fa21bdbd640a052289ecd0daf6b335e7e72af444300db01d183246c7cb217'
+'0cefbb4a4b79a23e0da7cf4a613939f53353ad59459417b9fd628f72ab1cefea62a1fa08573091004eb0d6e180603e770fd0d41b4b6ab08e4742cf4f8774abee')
 
 package(){
 
