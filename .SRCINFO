@@ -1,0 +1,20 @@
+pkgbase = auto-st
+	pkgdesc = Concise Build of Suckless Simple Terminal
+	pkgver = 0.8.5.r14
+	pkgrel = 1
+	url = https://gitlab.com/a4to/st
+	arch = x86_64
+	license = MIT
+	makedepends = ncurses
+	makedepends = libxft
+	makedepends = git
+	depends = libxft
+	optdepends = dmenu: feed urls to dmenu
+	optdepends = libcurl: for curl
+	provides = st
+	conflicts = st
+	options = zipman
+	source = git+https://gitlab.com/a4to/st.git
+	md5sums = SKIP
+
+pkgname = auto-st
