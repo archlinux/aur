@@ -1,6 +1,6 @@
 pkgbase = openecardapp
 	pkgdesc = An open source alternative of the AusweisApp
-	pkgver = 1.4.5
+	pkgver = 1.4.10
 	pkgrel = 1
 	url = https://www.openecard.org
 	install = openecardapp.install
@@ -8,7 +8,7 @@ pkgbase = openecardapp
 	license = GPL3
 	depends = java-runtime
 	depends = pcsclite
-	source = https://github.com/ecsec/open-ecard/releases/download/1.4.5/open-ecard-app_1.4.5-1_amd64.deb
-	sha256sums = 435de73c6497eaea1771b6ae32c7c366c39cbcbe008e929a59f69ae15b119a39
+	source = https://github.com/ecsec/open-ecard/releases/download/1.4.10/open-ecard-app_1.4.10_amd64.deb
+	sha256sums = 9db4e1f13a748462782e0c2ea6a0fdb4d12f9adcbd996fc82bcae0889dbeaeaa
 
 pkgname = openecardapp
