@@ -5,10 +5,10 @@ pkgver=1.1.r88
 pkgrel=1
 pkgdesc='Various useful shell scripts to increace productivity and efficiency in your workflow'
 arch=(x86_64)
-url="https://gitlab.com/qYp/${pkgname}"
+url="https://gitlab.com/a4to/${pkgname}"
 license=('MIT')
 makedepends=(git)                 
-source=("https://gitlab.com/qYp/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
+source=("https://gitlab.com/a4to/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
 sha256sums=('56270346dcdf530619dcaa2a0cf812426d01a8f8c46b4d05ca36861b316c94bf')
 
 package() {
