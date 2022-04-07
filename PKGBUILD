@@ -4,7 +4,7 @@
 # Package Information
 _crate="trust-dns"
 pkgname="$_crate"
-pkgver=0.21.1
+pkgver=0.21.2
 pkgrel=1
 pkgdesc='Trust-DNS is a safe and secure DNS server with DNSec support. Eventually this...'
 license=('Apache' 'MIT')
@@ -18,7 +18,7 @@ depends=('gcc-libs')
 makedepends=('cargo')
 conflicts=('bind')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$_crate/$pkgver/download")
-sha512sums=('627b563c96dd9de70b4b743c11c69beff4a3f66c70a72c6115c4a8e152969cb9d85f34eab264b0dbd239280d2e228ce8893c11f06501ce6e31be75a1a7030168')
+sha512sums=('0c13bdd8261c109e4f88acf3495afe1751e2847bbbdd27f5550f5d79d1078b5c9ffeeb9b43c504491c4f3d6a5eb665b3ae7e30642f97f674f1c396d4ca818fae')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
