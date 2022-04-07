@@ -2,7 +2,7 @@
 # Contributor: Butui Hu <hot123tea123@gmail.com>
 
 pkgname=texlive-full
-pkgver=2022.20220405
+pkgver=2022.20220406
 pkgrel=1
 epoch=1
 pkgdesc="This packages provides texlive-full in /opt.  It also tricks ArchLinux into thinking it has its texlive packages installed."
@@ -25,7 +25,7 @@ conflicts=('asymptote' 'git-latexdiff' 'haskell-citeproc' 'psutils' 't1utils'
 'texlive-langgreek' 'texlive-langjapanese' 'texlive-langkorean' 'texlive-htmlxml'
 )
 source=("install-tl-unx-${pkgver}.tar.gz::https://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz"
-    "LICENSE.$pkgver::http://texlive.tug.org/texlive/LICENSE.TL")
+    "LICENSE.TL::http://texlive.tug.org/texlive/LICENSE.TL")
 sha256sums=('SKIP'
             'e8f070b2d1a9bad00af9d6cb94e687f2120591d092c8dab8727249b70adc96d0')
 #PKGEXT='.pkg.tar'
@@ -118,6 +118,6 @@ package() {
     find -H ${pkgdir} -name "*.bat" -print0 | xargs -0 rm -rf
 
     msg2 "Install license file"
-    install -Dm644 "$srcdir"/LICENSE.$pkgver "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE.TL
+    install -Dm644 "$srcdir"/LICENSE.TL "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE.TL
 }
 # vim:set ts=2 sw=2 et:
