@@ -1,8 +1,9 @@
 pkgbase = typecho
 	pkgdesc = A PHP Blogging Platform
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://typecho.org/
+	install = typecho.install
 	arch = any
 	license = GPL
 	depends = php7
