@@ -1,9 +1,19 @@
 post_install() {
-  cat <<EOF
+  cat <<'EOF'
 
-If you want to use it with readline, add follows to your .inputrc: 
+For bash, add the following to your .bashrc:
 
-	\$include function rl_custom_complete /usr/lib/librl_custom_complete.so
+	source /usr/share/fzf-tab-completion/bash/fzf-bash-completion.sh
+	bind -x '"\t": fzf_bash_completion'
+
+For zsh, add the following to your .zshrc:
+
+	source /usr/share/fzf-tab-completion/zsh/fzf-zsh-completion.sh
+	bindkey '^I' fzf_completion
+
+For readline, install rl_custom_function and add the following to your .inputrc: 
+
+	$include function rl_custom_complete /usr/lib/librl_custom_complete.so
 	C-i rl_custom_complete
 
 Please read https://github.com/lincheney/fzf-tab-completion for more information.
@@ -13,5 +23,3 @@ EOF
 post_upgrade() {
   post_install
 }
-
-
