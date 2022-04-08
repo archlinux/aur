@@ -1,7 +1,7 @@
 # Maintainer: somini <dev@somini.xyz>
 pkgbase=inpulse-to-talk
 pkgname=inpulse-to-talk
-pkgver=v2.2
+pkgver=v2.3
 pkgrel=1
 pkgdesc="Push-to-Talk with libinput + Pulseaudio"
 url="https://gitlab.com/somini/inpulse-to-talk"
@@ -13,7 +13,7 @@ arch=('x86_64')
 source=(
     "$pkgname-$pkgver.tar.gz::https://gitlab.com/somini/inpulse-to-talk/-/archive/$pkgver/inpulse-to-talk-$pkgver.tar.gz"
     )
-sha256sums=('4434a1346481d21fab231481f22a011cd61932897dae5e6e91f1573294e11d34')
+sha256sums=('739ed88c9c017f9a34a71fcf03f3edf17fd8595252508d2142b28c6c4bf38c39')
 
 prepare() {
     cd "${srcdir}/$pkgname-$pkgver"
@@ -49,4 +49,6 @@ package() {
     done
     # Autostart Desktop File
     install -D -m644 contrib/inpulse-to-talk.desktop -t "$pkgdir/etc/xdg/autostart"
+    # Desktop File
+    install -D -m644 contrib/inpulse-to-talk.desktop -t "$pkgdir/usr/share/applications/"
 }
