@@ -1,6 +1,6 @@
 diff -ruN google-mozc-git/src/BUILD.fcitx5.bazel fcitx-mozc-git/src/BUILD.fcitx5.bazel
 --- google-mozc-git/src/BUILD.fcitx5.bazel	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/BUILD.fcitx5.bazel	2022-03-05 23:38:12.738055955 +0200
++++ fcitx-mozc-git/src/BUILD.fcitx5.bazel	2022-04-08 14:34:39.720122998 +0300
 @@ -0,0 +1,28 @@
 +package(
 +    default_visibility = ["//visibility:public"],
@@ -30,46 +30,9 @@ diff -ruN google-mozc-git/src/BUILD.fcitx5.bazel fcitx-mozc-git/src/BUILD.fcitx5
 +        "-lFcitx5Utils",
 +    ],
 +)
-diff -ruN google-mozc-git/src/gyp/gyp.patch fcitx-mozc-git/src/gyp/gyp.patch
---- google-mozc-git/src/gyp/gyp.patch	2022-03-05 23:38:12.704698418 +0200
-+++ fcitx-mozc-git/src/gyp/gyp.patch	2022-03-05 23:38:13.998959782 +0200
-@@ -8,7 +8,7 @@
-            extra_bindings.append(('unique_name',
- -              hashlib.md5(outputs[0]).hexdigest()))
- +              hashlib.md5(outputs[0].encode('utf-8')).hexdigest()))
--
-+ 
-          self.ninja.build(outputs, rule_name, self.GypPathToNinja(source),
-                           implicit=inputs,
- diff --git a/pylib/gyp/mac_tool.py b/pylib/gyp/mac_tool.py
-@@ -30,7 +30,7 @@
- +    # _, error = CoreFoundation.CFPropertyListCreateFromXMLData(None, d, 0, None)
- +    # if error:
- +    #   return
--
-+ 
-      fp = open(dest, 'wb')
-      fp.write(s.decode(input_code).encode('UTF-16'))
- diff --git a/pylib/gyp/msvs_emulation.py b/pylib/gyp/msvs_emulation.py
-@@ -39,13 +39,13 @@
- +++ b/pylib/gyp/msvs_emulation.py
- @@ -38,8 +38,8 @@ def QuoteForRspFile(arg):
-    # use that function to handle command line arguments.
--
-+ 
-    # Use a heuristic to try to find args that are paths, and normalize them
- -  if arg.find('/') > 0 or arg.count('/') > 1:
- -    arg = os.path.normpath(arg)
- +  # if arg.find('/') > 0 or arg.count('/') > 1:
- +  #  arg = os.path.normpath(arg)
--
-+ 
-    # For a literal quote, CommandLineToArgvW requires 2n+1 backslashes
-    # preceding it, and results in n backslashes + the quote. So we substitute
- @@ -138,7 +138,8 @@ def _FindDirectXInstallation():
 diff -ruN google-mozc-git/src/unix/fcitx5/BUILD fcitx-mozc-git/src/unix/fcitx5/BUILD
 --- google-mozc-git/src/unix/fcitx5/BUILD	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/BUILD	2022-03-05 23:38:12.751398969 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/BUILD	2022-04-08 14:34:40.113460487 +0300
 @@ -0,0 +1,101 @@
 +load(
 +    "//:build_defs.bzl",
@@ -174,7 +137,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/BUILD fcitx-mozc-git/src/unix/fcitx5/B
 +
 diff -ruN google-mozc-git/src/unix/fcitx5/fcitx5.gyp fcitx-mozc-git/src/unix/fcitx5/fcitx5.gyp
 --- google-mozc-git/src/unix/fcitx5/fcitx5.gyp	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/fcitx5.gyp	2022-03-05 23:38:12.751398969 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/fcitx5.gyp	2022-04-08 14:34:40.113460487 +0300
 @@ -0,0 +1,118 @@
 +#
 +# Copyright (c) 2010-2017 fcitx Project http://github.com/fcitx/
@@ -296,7 +259,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/fcitx5.gyp fcitx-mozc-git/src/unix/fci
 +}
 diff -ruN google-mozc-git/src/unix/fcitx5/fcitx_key_event_handler.cc fcitx-mozc-git/src/unix/fcitx5/fcitx_key_event_handler.cc
 --- google-mozc-git/src/unix/fcitx5/fcitx_key_event_handler.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/fcitx_key_event_handler.cc	2022-03-05 23:38:12.751398969 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/fcitx_key_event_handler.cc	2022-04-08 14:34:40.113460487 +0300
 @@ -0,0 +1,244 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012-2017, Weng Xuetian <wengxt@gmail.com>
@@ -544,7 +507,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/fcitx_key_event_handler.cc fcitx-mozc-
 +}  // namespace fcitx
 diff -ruN google-mozc-git/src/unix/fcitx5/fcitx_key_event_handler.h fcitx-mozc-git/src/unix/fcitx5/fcitx_key_event_handler.h
 --- google-mozc-git/src/unix/fcitx5/fcitx_key_event_handler.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/fcitx_key_event_handler.h	2022-03-05 23:38:12.754734722 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/fcitx_key_event_handler.h	2022-04-08 14:34:40.113460487 +0300
 @@ -0,0 +1,79 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012-2017, Weng Xuetian <wengxt@gmail.com>
@@ -627,7 +590,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/fcitx_key_event_handler.h fcitx-mozc-g
 +#endif  // UNIX_FCITX5_FCITX_KEY_EVENT_HANDLER_H_
 diff -ruN google-mozc-git/src/unix/fcitx5/fcitx_key_translator.cc fcitx-mozc-git/src/unix/fcitx5/fcitx_key_translator.cc
 --- google-mozc-git/src/unix/fcitx5/fcitx_key_translator.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/fcitx_key_translator.cc	2022-03-05 23:38:12.754734722 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/fcitx_key_translator.cc	2022-04-08 14:34:40.113460487 +0300
 @@ -0,0 +1,526 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012-2017, Weng Xuetian <wengxt@gmail.com>
@@ -1157,7 +1120,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/fcitx_key_translator.cc fcitx-mozc-git
 +}  // namespace fcitx
 diff -ruN google-mozc-git/src/unix/fcitx5/fcitx_key_translator.h fcitx-mozc-git/src/unix/fcitx5/fcitx_key_translator.h
 --- google-mozc-git/src/unix/fcitx5/fcitx_key_translator.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/fcitx_key_translator.h	2022-03-05 23:38:12.754734722 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/fcitx_key_translator.h	2022-04-08 14:34:40.113460487 +0300
 @@ -0,0 +1,103 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012-2017, Weng Xuetian <wengxt@gmail.com>
@@ -1264,14 +1227,14 @@ diff -ruN google-mozc-git/src/unix/fcitx5/fcitx_key_translator.h fcitx-mozc-git/
 +#endif  // MOZC_UNIX_FCITX_FCITX_KEY_TRANSLATOR_H_
 diff -ruN google-mozc-git/src/unix/fcitx5/Messages.sh fcitx-mozc-git/src/unix/fcitx5/Messages.sh
 --- google-mozc-git/src/unix/fcitx5/Messages.sh	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/Messages.sh	2022-03-05 23:38:12.751398969 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/Messages.sh	2022-04-08 14:34:40.113460487 +0300
 @@ -0,0 +1,3 @@
 +#!/bin/bash
 +
 +gen_pot cxx:desktop:appdata fcitx5-mozc po .
 diff -ruN google-mozc-git/src/unix/fcitx5/mozc-addon.conf fcitx-mozc-git/src/unix/fcitx5/mozc-addon.conf
 --- google-mozc-git/src/unix/fcitx5/mozc-addon.conf	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/mozc-addon.conf	2022-03-05 23:38:12.754734722 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/mozc-addon.conf	2022-04-08 14:34:40.113460487 +0300
 @@ -0,0 +1,10 @@
 +[Addon]
 +Name=Mozc
@@ -1285,7 +1248,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc-addon.conf fcitx-mozc-git/src/uni
 +0=clipboard
 diff -ruN google-mozc-git/src/unix/fcitx5/mozc.conf fcitx-mozc-git/src/unix/fcitx5/mozc.conf
 --- google-mozc-git/src/unix/fcitx5/mozc.conf	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/mozc.conf	2022-03-05 23:38:12.754734722 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/mozc.conf	2022-04-08 14:34:40.113460487 +0300
 @@ -0,0 +1,7 @@
 +[InputMethod]
 +Name=Mozc
@@ -1296,7 +1259,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc.conf fcitx-mozc-git/src/unix/fcit
 +Configurable=True
 diff -ruN google-mozc-git/src/unix/fcitx5/mozc_connection.cc fcitx-mozc-git/src/unix/fcitx5/mozc_connection.cc
 --- google-mozc-git/src/unix/fcitx5/mozc_connection.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/mozc_connection.cc	2022-03-05 23:38:12.754734722 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/mozc_connection.cc	2022-04-08 14:34:40.113460487 +0300
 @@ -0,0 +1,69 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
@@ -1369,7 +1332,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_connection.cc fcitx-mozc-git/src/
 +}  // namespace fcitx
 diff -ruN google-mozc-git/src/unix/fcitx5/mozc_connection.h fcitx-mozc-git/src/unix/fcitx5/mozc_connection.h
 --- google-mozc-git/src/unix/fcitx5/mozc_connection.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/mozc_connection.h	2022-03-05 23:38:12.754734722 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/mozc_connection.h	2022-04-08 14:34:40.113460487 +0300
 @@ -0,0 +1,72 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
@@ -1445,8 +1408,8 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_connection.h fcitx-mozc-git/src/u
 +#endif  // MOZC_UNIX_FCITX5_MOZC_CONNECTION_H_
 diff -ruN google-mozc-git/src/unix/fcitx5/mozc_engine.cc fcitx-mozc-git/src/unix/fcitx5/mozc_engine.cc
 --- google-mozc-git/src/unix/fcitx5/mozc_engine.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/mozc_engine.cc	2022-03-05 23:38:12.754734722 +0200
-@@ -0,0 +1,284 @@
++++ fcitx-mozc-git/src/unix/fcitx5/mozc_engine.cc	2022-04-08 14:34:40.113460487 +0300
+@@ -0,0 +1,274 @@
 +/*
 + * Copyright (C) 2017~2017 by CSSlayer
 + * wengxt@gmail.com
@@ -1541,20 +1504,6 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_engine.cc fcitx-mozc-git/src/unix
 +};
 +const size_t kNumCompositionModes = arraysize(kPropCompositionModes);
 +
-+std::string MozcModeAction::shortText(InputContext *) const {
-+  return _("Composition Mode");
-+}
-+
-+std::string MozcModeAction::longText(InputContext *ic) const {
-+  auto mozc_state = engine_->mozcState(ic);
-+  return _(kPropCompositionModes[mozc_state->GetCompositionMode()].description);
-+}
-+
-+std::string MozcModeAction::icon(InputContext *ic) const {
-+  auto mozc_state = engine_->mozcState(ic);
-+  return kPropCompositionModes[mozc_state->GetCompositionMode()].icon;
-+}
-+
 +MozcModeSubAction::MozcModeSubAction(MozcEngine *engine,
 +                                     mozc::commands::CompositionMode mode)
 +    : engine_(engine), mode_(mode) {
@@ -1594,8 +1543,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_engine.cc fcitx-mozc-git/src/unix
 +      client_(connection_->CreateClient()),
 +      factory_([this](InputContext &ic) {
 +        return new MozcState(&ic, connection_->CreateClient(), this);
-+      }),
-+      modeAction_(this) {
++      }) {
 +  for (auto command :
 +       {mozc::commands::DIRECT, mozc::commands::HIRAGANA,
 +        mozc::commands::FULL_KATAKANA, mozc::commands::FULL_ASCII,
@@ -1603,17 +1551,16 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_engine.cc fcitx-mozc-git/src/unix
 +    modeActions_.push_back(std::make_unique<MozcModeSubAction>(this, command));
 +  }
 +  instance_->inputContextManager().registerProperty("mozcState", &factory_);
-+  instance_->userInterfaceManager().registerAction("mozc-mode", &modeAction_);
 +  instance_->userInterfaceManager().registerAction("mozc-tool", &toolAction_);
-+  toolAction_.setShortText(_("Tool"));
-+  toolAction_.setLongText(_("Tool"));
++  toolAction_.setShortText(_("Mozc Settings"));
++  toolAction_.setLongText(_("Mozc Settings"));
 +  toolAction_.setIcon("fcitx-mozc-tool");
 +
 +  int i = 0;
 +  for (auto &modeAction : modeActions_) {
 +    instance_->userInterfaceManager().registerAction(
 +        kPropCompositionModes[i].name, modeAction.get());
-+    modeMenu_.addAction(modeAction.get());
++    toolMenu_.addAction(modeAction.get());
 +    i++;
 +  }
 +
@@ -1652,7 +1599,6 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_engine.cc fcitx-mozc-git/src/unix
 +  toolMenu_.addAction(&addWordAction_);
 +  toolMenu_.addAction(&aboutAction_);
 +
-+  modeAction_.setMenu(&modeMenu_);
 +  toolAction_.setMenu(&toolMenu_);
 +
 +  reloadConfig();
@@ -1674,7 +1620,6 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_engine.cc fcitx-mozc-git/src/unix
 +  auto ic = event.inputContext();
 +  auto mozc_state = mozcState(ic);
 +  mozc_state->FocusIn();
-+  ic->statusArea().addAction(StatusGroup::InputMethod, &modeAction_);
 +  ic->statusArea().addAction(StatusGroup::InputMethod, &toolAction_);
 +}
 +void MozcEngine::deactivate(const fcitx::InputMethodEntry &,
@@ -1715,7 +1660,14 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_engine.cc fcitx-mozc-git/src/unix
 +
 +std::string MozcEngine::subMode(const fcitx::InputMethodEntry &,
 +                                fcitx::InputContext &ic) {
-+  return modeAction_.longText(&ic);
++  auto mozc_state = mozcState(&ic);
++  return _(kPropCompositionModes[mozc_state->GetCompositionMode()].description);
++}
++
++std::string MozcEngine::subModeIconImpl(const fcitx::InputMethodEntry &,
++                                        fcitx::InputContext &ic) {
++  auto mozc_state = mozcState(&ic);
++  return _(kPropCompositionModes[mozc_state->GetCompositionMode()].icon);
 +}
 +
 +MozcState *MozcEngine::mozcState(InputContext *ic) {
@@ -1723,17 +1675,18 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_engine.cc fcitx-mozc-git/src/unix
 +}
 +
 +void MozcEngine::compositionModeUpdated(InputContext *ic) {
-+  modeAction_.update(ic);
 +  for (const auto &modeAction : modeActions_) {
 +    modeAction->update(ic);
 +  }
++  instance_->userInterfaceManager().update(UserInterfaceComponent::StatusArea,
++                                           ic);
 +}
 +
 +AddonInstance *MozcEngine::clipboardAddon() { return clipboard(); }
 +}  // namespace fcitx
 diff -ruN google-mozc-git/src/unix/fcitx5/mozc_engine_factory.cc fcitx-mozc-git/src/unix/fcitx5/mozc_engine_factory.cc
 --- google-mozc-git/src/unix/fcitx5/mozc_engine_factory.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/mozc_engine_factory.cc	2022-03-05 23:38:12.754734722 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/mozc_engine_factory.cc	2022-04-08 14:34:40.113460487 +0300
 @@ -0,0 +1,73 @@
 +/*
 + * Copyright (C) 2020~2020 by CSSlayer
@@ -1810,8 +1763,8 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_engine_factory.cc fcitx-mozc-git/
 +FCITX_ADDON_FACTORY(fcitx::MozcEngineFactory)
 diff -ruN google-mozc-git/src/unix/fcitx5/mozc_engine.h fcitx-mozc-git/src/unix/fcitx5/mozc_engine.h
 --- google-mozc-git/src/unix/fcitx5/mozc_engine.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/mozc_engine.h	2022-03-05 23:38:12.754734722 +0200
-@@ -0,0 +1,159 @@
++++ fcitx-mozc-git/src/unix/fcitx5/mozc_engine.h	2022-04-08 14:34:40.113460487 +0300
+@@ -0,0 +1,148 @@
 +/*
 + * Copyright (C) 2017~2017 by CSSlayer
 + * wengxt@gmail.com
@@ -1898,18 +1851,6 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_engine.h fcitx-mozc-git/src/unix/
 +    ExternalOption aboutTool{this, "About Mozc", _("About Mozc"),
 +                             toolCommand("--mode=about_dialog")};);
 +
-+class MozcModeAction : public Action {
-+ public:
-+  MozcModeAction(MozcEngine *engine) : engine_(engine) {}
-+
-+  std::string shortText(fcitx::InputContext *) const override;
-+  std::string longText(fcitx::InputContext *) const override;
-+  std::string icon(fcitx::InputContext *) const override;
-+
-+ private:
-+  MozcEngine *engine_;
-+};
-+
 +class MozcModeSubAction : public SimpleAction {
 + public:
 +  MozcModeSubAction(MozcEngine *engine, mozc::commands::CompositionMode mode);
@@ -1921,7 +1862,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_engine.h fcitx-mozc-git/src/unix/
 +  mozc::commands::CompositionMode mode_;
 +};
 +
-+class MozcEngine final : public InputMethodEngine {
++class MozcEngine final : public InputMethodEngineV2 {
 + public:
 +  MozcEngine(Instance *instance);
 +  ~MozcEngine();
@@ -1936,6 +1877,9 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_engine.h fcitx-mozc-git/src/unix/
 +  void save() override;
 +  std::string subMode(const fcitx::InputMethodEntry &,
 +                      fcitx::InputContext &) override;
++  std::string subModeIconImpl(const InputMethodEntry &entry,
++                              InputContext &ic) override;
++
 +  const Configuration *getConfig() const override { return &config_; }
 +  void setConfig(const RawConfig &config) override;
 +
@@ -1954,14 +1898,12 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_engine.h fcitx-mozc-git/src/unix/
 +  std::unique_ptr<MozcConnection> connection_;
 +  std::unique_ptr<mozc::client::ClientInterface> client_;
 +  FactoryFor<MozcState> factory_;
-+  MozcModeAction modeAction_;
 +  SimpleAction toolAction_;
 +  std::vector<std::unique_ptr<MozcModeSubAction>> modeActions_;
 +
 +  SimpleAction configToolAction_, dictionaryToolAction_, addWordAction_,
 +      aboutAction_;
 +  Menu toolMenu_;
-+  Menu modeMenu_;
 +  MozcEngineConfig config_;
 +  uint64 lastSyncTime_;
 +
@@ -1973,7 +1915,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_engine.h fcitx-mozc-git/src/unix/
 +#endif  // _FCITX_UNIX_FCITX5_MOZC_ENGINE_H_
 diff -ruN google-mozc-git/src/unix/fcitx5/mozc_response_parser.cc fcitx-mozc-git/src/unix/fcitx5/mozc_response_parser.cc
 --- google-mozc-git/src/unix/fcitx5/mozc_response_parser.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/mozc_response_parser.cc	2022-03-05 23:38:12.754734722 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/mozc_response_parser.cc	2022-04-08 14:34:40.113460487 +0300
 @@ -0,0 +1,480 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
@@ -2457,7 +2399,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_response_parser.cc fcitx-mozc-git
 +}  // namespace fcitx
 diff -ruN google-mozc-git/src/unix/fcitx5/mozc_response_parser.h fcitx-mozc-git/src/unix/fcitx5/mozc_response_parser.h
 --- google-mozc-git/src/unix/fcitx5/mozc_response_parser.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/mozc_response_parser.h	2022-03-05 23:38:12.754734722 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/mozc_response_parser.h	2022-04-08 14:34:40.113460487 +0300
 @@ -0,0 +1,88 @@
 +// Copyright 2010-2012, Google Inc.
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
@@ -2549,7 +2491,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_response_parser.h fcitx-mozc-git/
 +#endif  // MOZC_UNIX_FCITX_MOZC_RESPONSE_PARSER_H_
 diff -ruN google-mozc-git/src/unix/fcitx5/mozc_state.cc fcitx-mozc-git/src/unix/fcitx5/mozc_state.cc
 --- google-mozc-git/src/unix/fcitx5/mozc_state.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/mozc_state.cc	2022-03-05 23:38:12.754734722 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/mozc_state.cc	2022-04-08 14:34:40.113460487 +0300
 @@ -0,0 +1,411 @@
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
 +// All rights reserved.
@@ -2964,7 +2906,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_state.cc fcitx-mozc-git/src/unix/
 +}  // namespace fcitx
 diff -ruN google-mozc-git/src/unix/fcitx5/mozc_state.h fcitx-mozc-git/src/unix/fcitx5/mozc_state.h
 --- google-mozc-git/src/unix/fcitx5/mozc_state.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/mozc_state.h	2022-03-05 23:38:12.754734722 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/mozc_state.h	2022-04-08 14:34:40.113460487 +0300
 @@ -0,0 +1,168 @@
 +// Copyright 2012~2013, Weng Xuetian <wengxt@gmail.com>
 +// All rights reserved.
@@ -3136,7 +3078,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/mozc_state.h fcitx-mozc-git/src/unix/f
 +#endif  // MOZC_UNIX_FCITX_FCITX_MOZC_H_
 diff -ruN google-mozc-git/src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in fcitx-mozc-git/src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in
 --- google-mozc-git/src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in	2022-03-05 23:38:12.754734722 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in	2022-04-08 14:34:40.113460487 +0300
 @@ -0,0 +1,16 @@
 +<?xml version="1.0" encoding="utf-8"?>
 +<component type="addon">
@@ -3156,8 +3098,8 @@ diff -ruN google-mozc-git/src/unix/fcitx5/org.fcitx.Fcitx5.Addon.Mozc.metainfo.x
 +</component>
 diff -ruN google-mozc-git/src/unix/fcitx5/po/ca.po fcitx-mozc-git/src/unix/fcitx5/po/ca.po
 --- google-mozc-git/src/unix/fcitx5/po/ca.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/ca.po	2022-03-05 23:38:12.758070475 +0200
-@@ -0,0 +1,123 @@
++++ fcitx-mozc-git/src/unix/fcitx5/po/ca.po	2022-04-08 14:34:40.113460487 +0300
+@@ -0,0 +1,119 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 +# This file is distributed under the same license as the fcitx5-mozc package.
@@ -3169,7 +3111,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ca.po fcitx-mozc-git/src/unix/fcitx
 +msgstr ""
 +"Project-Id-Version: fcitx5-mozc\n"
 +"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-+"POT-Creation-Date: 2021-12-30 02:39+0000\n"
++"POT-Creation-Date: 2022-03-25 04:41+0000\n"
 +"PO-Revision-Date: 2017-11-23 05:28+0000\n"
 +"Last-Translator: csslayer <wengxt@gmail.com>, 2017\n"
 +"Language-Team: Catalan (https://www.transifex.com/fcitx/teams/12005/ca/)\n"
@@ -3179,11 +3121,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ca.po fcitx-mozc-git/src/unix/fcitx
 +"Content-Transfer-Encoding: 8bit\n"
 +"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 +
-+#: mozc_engine.h:84 mozc_engine.cc:196
++#: mozc_engine.h:84 mozc_engine.cc:180
 +msgid "About Mozc"
 +msgstr ""
 +
-+#: mozc_engine.h:82 mozc_engine.cc:189
++#: mozc_engine.h:82 mozc_engine.cc:173
 +msgid "Add Word"
 +msgstr ""
 +
@@ -3191,15 +3133,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ca.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Always"
 +msgstr ""
 +
-+#: mozc_engine.cc:96
-+msgid "Composition Mode"
-+msgstr ""
-+
-+#: mozc_engine.h:78 mozc_engine.cc:173
++#: mozc_engine.h:78 mozc_engine.cc:157
 +msgid "Configuration Tool"
 +msgstr "Eina de configuració"
 +
-+#: mozc_engine.h:80 mozc_engine.cc:181
++#: mozc_engine.h:80 mozc_engine.cc:165
 +msgid "Dictionary Tool"
 +msgstr "Eina de diccionari"
 +
@@ -3255,6 +3193,10 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ca.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Japanese input method based on Mozc"
 +msgstr ""
 +
++#: mozc_engine.cc:143 mozc_engine.cc:144
++msgid "Mozc Settings"
++msgstr ""
++
 +#: org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in:7
 +msgid "Mozc for Fcitx 5"
 +msgstr ""
@@ -3274,17 +3216,13 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ca.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Press Escape to go back"
 +msgstr ""
 +
-+#: mozc_engine.cc:159 mozc_engine.cc:160
-+msgid "Tool"
-+msgstr ""
-+
 +#: mozc_engine.h:65
 +msgid "Vertical candidate list"
 +msgstr ""
 diff -ruN google-mozc-git/src/unix/fcitx5/po/da.po fcitx-mozc-git/src/unix/fcitx5/po/da.po
 --- google-mozc-git/src/unix/fcitx5/po/da.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/da.po	2022-03-05 23:38:12.758070475 +0200
-@@ -0,0 +1,123 @@
++++ fcitx-mozc-git/src/unix/fcitx5/po/da.po	2022-04-08 14:34:40.113460487 +0300
+@@ -0,0 +1,119 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 +# This file is distributed under the same license as the fcitx5-mozc package.
@@ -3296,7 +3234,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/da.po fcitx-mozc-git/src/unix/fcitx
 +msgstr ""
 +"Project-Id-Version: fcitx5-mozc\n"
 +"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-+"POT-Creation-Date: 2021-12-30 02:39+0000\n"
++"POT-Creation-Date: 2022-03-25 04:41+0000\n"
 +"PO-Revision-Date: 2017-11-23 05:28+0000\n"
 +"Last-Translator: scootergrisen, 2020\n"
 +"Language-Team: Danish (https://www.transifex.com/fcitx/teams/12005/da/)\n"
@@ -3306,11 +3244,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/da.po fcitx-mozc-git/src/unix/fcitx
 +"Content-Transfer-Encoding: 8bit\n"
 +"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 +
-+#: mozc_engine.h:84 mozc_engine.cc:196
++#: mozc_engine.h:84 mozc_engine.cc:180
 +msgid "About Mozc"
 +msgstr "Om Mozc"
 +
-+#: mozc_engine.h:82 mozc_engine.cc:189
++#: mozc_engine.h:82 mozc_engine.cc:173
 +msgid "Add Word"
 +msgstr "Tilføj ord"
 +
@@ -3318,15 +3256,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/da.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Always"
 +msgstr "Altid"
 +
-+#: mozc_engine.cc:96
-+msgid "Composition Mode"
-+msgstr "Kompositionstilstand"
-+
-+#: mozc_engine.h:78 mozc_engine.cc:173
++#: mozc_engine.h:78 mozc_engine.cc:157
 +msgid "Configuration Tool"
 +msgstr "Konfigurationsværktøj"
 +
-+#: mozc_engine.h:80 mozc_engine.cc:181
++#: mozc_engine.h:80 mozc_engine.cc:165
 +msgid "Dictionary Tool"
 +msgstr "Ordbogsværktøj"
 +
@@ -3382,6 +3316,10 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/da.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Japanese input method based on Mozc"
 +msgstr "Japansk-inputmetode baseret på Mozc"
 +
++#: mozc_engine.cc:143 mozc_engine.cc:144
++msgid "Mozc Settings"
++msgstr ""
++
 +#: org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in:7
 +msgid "Mozc for Fcitx 5"
 +msgstr "Mozc til Fcitx 5"
@@ -3401,17 +3339,13 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/da.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Press Escape to go back"
 +msgstr "Tryk på Escape for at gå tilbage"
 +
-+#: mozc_engine.cc:159 mozc_engine.cc:160
-+msgid "Tool"
-+msgstr "Værktøj"
-+
 +#: mozc_engine.h:65
 +msgid "Vertical candidate list"
 +msgstr ""
 diff -ruN google-mozc-git/src/unix/fcitx5/po/de.po fcitx-mozc-git/src/unix/fcitx5/po/de.po
 --- google-mozc-git/src/unix/fcitx5/po/de.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/de.po	2022-03-05 23:38:12.758070475 +0200
-@@ -0,0 +1,124 @@
++++ fcitx-mozc-git/src/unix/fcitx5/po/de.po	2022-04-08 14:34:40.113460487 +0300
+@@ -0,0 +1,120 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 +# This file is distributed under the same license as the fcitx5-mozc package.
@@ -3424,7 +3358,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/de.po fcitx-mozc-git/src/unix/fcitx
 +msgstr ""
 +"Project-Id-Version: fcitx5-mozc\n"
 +"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-+"POT-Creation-Date: 2022-01-15 20:24+0000\n"
++"POT-Creation-Date: 2022-03-25 04:41+0000\n"
 +"PO-Revision-Date: 2017-11-23 05:28+0000\n"
 +"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>, 2022\n"
 +"Language-Team: German (https://www.transifex.com/fcitx/teams/12005/de/)\n"
@@ -3434,11 +3368,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/de.po fcitx-mozc-git/src/unix/fcitx
 +"Content-Transfer-Encoding: 8bit\n"
 +"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 +
-+#: mozc_engine.h:84 mozc_engine.cc:196
++#: mozc_engine.h:84 mozc_engine.cc:180
 +msgid "About Mozc"
 +msgstr ""
 +
-+#: mozc_engine.h:82 mozc_engine.cc:189
++#: mozc_engine.h:82 mozc_engine.cc:173
 +msgid "Add Word"
 +msgstr "Wort hinzufügen"
 +
@@ -3446,15 +3380,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/de.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Always"
 +msgstr "Immer"
 +
-+#: mozc_engine.cc:96
-+msgid "Composition Mode"
-+msgstr "Kompositionsmodus"
-+
-+#: mozc_engine.h:78 mozc_engine.cc:173
++#: mozc_engine.h:78 mozc_engine.cc:157
 +msgid "Configuration Tool"
 +msgstr "Konfigurationswerkzeug"
 +
-+#: mozc_engine.h:80 mozc_engine.cc:181
++#: mozc_engine.h:80 mozc_engine.cc:165
 +msgid "Dictionary Tool"
 +msgstr "Wörterbuchwerkzeug"
 +
@@ -3510,6 +3440,10 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/de.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Japanese input method based on Mozc"
 +msgstr ""
 +
++#: mozc_engine.cc:143 mozc_engine.cc:144
++msgid "Mozc Settings"
++msgstr ""
++
 +#: org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in:7
 +msgid "Mozc for Fcitx 5"
 +msgstr ""
@@ -3529,17 +3463,13 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/de.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Press Escape to go back"
 +msgstr ""
 +
-+#: mozc_engine.cc:159 mozc_engine.cc:160
-+msgid "Tool"
-+msgstr "Werkzeug"
-+
 +#: mozc_engine.h:65
 +msgid "Vertical candidate list"
 +msgstr ""
 diff -ruN google-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot fcitx-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot
 --- google-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot	2022-03-05 23:38:12.758070475 +0200
-@@ -0,0 +1,119 @@
++++ fcitx-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot	2022-04-08 14:34:40.113460487 +0300
+@@ -0,0 +1,115 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 +# This file is distributed under the same license as the fcitx5-mozc package.
@@ -3548,7 +3478,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot fcitx-mozc-git/src/
 +msgstr ""
 +"Project-Id-Version: fcitx5-mozc\n"
 +"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-+"POT-Creation-Date: 2021-12-30 02:39+0000\n"
++"POT-Creation-Date: 2022-03-25 04:41+0000\n"
 +"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 +"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 +"Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3557,11 +3487,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot fcitx-mozc-git/src/
 +"Content-Type: text/plain; charset=utf-8\n"
 +"Content-Transfer-Encoding: 8bit\n"
 +
-+#: mozc_engine.h:84 mozc_engine.cc:196
++#: mozc_engine.h:84 mozc_engine.cc:180
 +msgid "About Mozc"
 +msgstr ""
 +
-+#: mozc_engine.h:82 mozc_engine.cc:189
++#: mozc_engine.h:82 mozc_engine.cc:173
 +msgid "Add Word"
 +msgstr ""
 +
@@ -3569,15 +3499,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot fcitx-mozc-git/src/
 +msgid "Always"
 +msgstr ""
 +
-+#: mozc_engine.cc:96
-+msgid "Composition Mode"
-+msgstr ""
-+
-+#: mozc_engine.h:78 mozc_engine.cc:173
++#: mozc_engine.h:78 mozc_engine.cc:157
 +msgid "Configuration Tool"
 +msgstr ""
 +
-+#: mozc_engine.h:80 mozc_engine.cc:181
++#: mozc_engine.h:80 mozc_engine.cc:165
 +msgid "Dictionary Tool"
 +msgstr ""
 +
@@ -3633,6 +3559,10 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot fcitx-mozc-git/src/
 +msgid "Japanese input method based on Mozc"
 +msgstr ""
 +
++#: mozc_engine.cc:143 mozc_engine.cc:144
++msgid "Mozc Settings"
++msgstr ""
++
 +#: org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in:7
 +msgid "Mozc for Fcitx 5"
 +msgstr ""
@@ -3652,17 +3582,13 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/fcitx5-mozc.pot fcitx-mozc-git/src/
 +msgid "Press Escape to go back"
 +msgstr ""
 +
-+#: mozc_engine.cc:159 mozc_engine.cc:160
-+msgid "Tool"
-+msgstr ""
-+
 +#: mozc_engine.h:65
 +msgid "Vertical candidate list"
 +msgstr ""
 diff -ruN google-mozc-git/src/unix/fcitx5/po/he.po fcitx-mozc-git/src/unix/fcitx5/po/he.po
 --- google-mozc-git/src/unix/fcitx5/po/he.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/he.po	2022-03-05 23:38:12.758070475 +0200
-@@ -0,0 +1,124 @@
++++ fcitx-mozc-git/src/unix/fcitx5/po/he.po	2022-04-08 14:34:40.113460487 +0300
+@@ -0,0 +1,120 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 +# This file is distributed under the same license as the fcitx5-mozc package.
@@ -3674,7 +3600,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/he.po fcitx-mozc-git/src/unix/fcitx
 +msgstr ""
 +"Project-Id-Version: fcitx5-mozc\n"
 +"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-+"POT-Creation-Date: 2021-12-30 02:39+0000\n"
++"POT-Creation-Date: 2022-03-25 04:41+0000\n"
 +"PO-Revision-Date: 2017-11-23 05:28+0000\n"
 +"Last-Translator: Omer I.S. <omeritzicschwartz@gmail.com>, 2021\n"
 +"Language-Team: Hebrew (https://www.transifex.com/fcitx/teams/12005/he/)\n"
@@ -3685,11 +3611,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/he.po fcitx-mozc-git/src/unix/fcitx
 +"Plural-Forms: nplurals=4; plural=(n == 1 && n % 1 == 0) ? 0 : (n == 2 && n % "
 +"1 == 0) ? 1: (n % 10 == 0 && n % 1 == 0 && n > 10) ? 2 : 3;\n"
 +
-+#: mozc_engine.h:84 mozc_engine.cc:196
++#: mozc_engine.h:84 mozc_engine.cc:180
 +msgid "About Mozc"
 +msgstr "על אודות Mozc"
 +
-+#: mozc_engine.h:82 mozc_engine.cc:189
++#: mozc_engine.h:82 mozc_engine.cc:173
 +msgid "Add Word"
 +msgstr "הוספת מילה"
 +
@@ -3697,15 +3623,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/he.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Always"
 +msgstr ""
 +
-+#: mozc_engine.cc:96
-+msgid "Composition Mode"
-+msgstr ""
-+
-+#: mozc_engine.h:78 mozc_engine.cc:173
++#: mozc_engine.h:78 mozc_engine.cc:157
 +msgid "Configuration Tool"
 +msgstr ""
 +
-+#: mozc_engine.h:80 mozc_engine.cc:181
++#: mozc_engine.h:80 mozc_engine.cc:165
 +msgid "Dictionary Tool"
 +msgstr ""
 +
@@ -3761,6 +3683,10 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/he.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Japanese input method based on Mozc"
 +msgstr ""
 +
++#: mozc_engine.cc:143 mozc_engine.cc:144
++msgid "Mozc Settings"
++msgstr ""
++
 +#: org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in:7
 +msgid "Mozc for Fcitx 5"
 +msgstr ""
@@ -3780,17 +3706,13 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/he.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Press Escape to go back"
 +msgstr ""
 +
-+#: mozc_engine.cc:159 mozc_engine.cc:160
-+msgid "Tool"
-+msgstr ""
-+
 +#: mozc_engine.h:65
 +msgid "Vertical candidate list"
 +msgstr ""
 diff -ruN google-mozc-git/src/unix/fcitx5/po/ja.po fcitx-mozc-git/src/unix/fcitx5/po/ja.po
 --- google-mozc-git/src/unix/fcitx5/po/ja.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/ja.po	2022-03-05 23:38:12.758070475 +0200
-@@ -0,0 +1,124 @@
++++ fcitx-mozc-git/src/unix/fcitx5/po/ja.po	2022-04-08 14:34:40.113460487 +0300
+@@ -0,0 +1,120 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 +# This file is distributed under the same license as the fcitx5-mozc package.
@@ -3803,7 +3725,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ja.po fcitx-mozc-git/src/unix/fcitx
 +msgstr ""
 +"Project-Id-Version: fcitx5-mozc\n"
 +"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-+"POT-Creation-Date: 2022-01-16 20:24+0000\n"
++"POT-Creation-Date: 2022-03-26 20:24+0000\n"
 +"PO-Revision-Date: 2017-11-23 05:28+0000\n"
 +"Last-Translator: UTUMI Hirosi <utuhiro78@yahoo.co.jp>, 2022\n"
 +"Language-Team: Japanese (https://www.transifex.com/fcitx/teams/12005/ja/)\n"
@@ -3813,11 +3735,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ja.po fcitx-mozc-git/src/unix/fcitx
 +"Content-Transfer-Encoding: 8bit\n"
 +"Plural-Forms: nplurals=1; plural=0;\n"
 +
-+#: mozc_engine.h:84 mozc_engine.cc:196
++#: mozc_engine.h:84 mozc_engine.cc:180
 +msgid "About Mozc"
 +msgstr "Mozc について"
 +
-+#: mozc_engine.h:82 mozc_engine.cc:189
++#: mozc_engine.h:82 mozc_engine.cc:173
 +msgid "Add Word"
 +msgstr "単語を追加"
 +
@@ -3825,15 +3747,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ja.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Always"
 +msgstr "常に"
 +
-+#: mozc_engine.cc:96
-+msgid "Composition Mode"
-+msgstr "文字種"
-+
-+#: mozc_engine.h:78 mozc_engine.cc:173
++#: mozc_engine.h:78 mozc_engine.cc:157
 +msgid "Configuration Tool"
 +msgstr "設定ツール"
 +
-+#: mozc_engine.h:80 mozc_engine.cc:181
++#: mozc_engine.h:80 mozc_engine.cc:165
 +msgid "Dictionary Tool"
 +msgstr "辞書ツール"
 +
@@ -3889,6 +3807,10 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ja.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Japanese input method based on Mozc"
 +msgstr "Mozc をベースとした日本語入力メソッド"
 +
++#: mozc_engine.cc:143 mozc_engine.cc:144
++msgid "Mozc Settings"
++msgstr "Mozc の設定"
++
 +#: org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in:7
 +msgid "Mozc for Fcitx 5"
 +msgstr "Fcitx 5 用の Mozc"
@@ -3908,17 +3830,13 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ja.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Press Escape to go back"
 +msgstr "Esc キーを押して戻る"
 +
-+#: mozc_engine.cc:159 mozc_engine.cc:160
-+msgid "Tool"
-+msgstr "ツール"
-+
 +#: mozc_engine.h:65
 +msgid "Vertical candidate list"
 +msgstr "候補を縦に並べる"
 diff -ruN google-mozc-git/src/unix/fcitx5/po/ko.po fcitx-mozc-git/src/unix/fcitx5/po/ko.po
 --- google-mozc-git/src/unix/fcitx5/po/ko.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/ko.po	2022-03-05 23:38:14.002295524 +0200
-@@ -0,0 +1,125 @@
++++ fcitx-mozc-git/src/unix/fcitx5/po/ko.po	2022-04-08 14:34:40.113460487 +0300
+@@ -0,0 +1,121 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 +# This file is distributed under the same license as the fcitx5-mozc package.
@@ -3926,15 +3844,15 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ko.po fcitx-mozc-git/src/unix/fcitx
 +# Translators:
 +# csslayer <wengxt@gmail.com>, 2017
 +# Bon Keun Seo <scobyseo@gmail.com>, 2021
-+# JungHee Lee <daemul72@gmail.com>, 2022
++# Junghee Lee <daemul72@gmail.com>, 2022
 +#
 +msgid ""
 +msgstr ""
 +"Project-Id-Version: fcitx5-mozc\n"
 +"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-+"POT-Creation-Date: 2022-03-01 20:24+0000\n"
++"POT-Creation-Date: 2022-03-25 04:41+0000\n"
 +"PO-Revision-Date: 2017-11-23 05:28+0000\n"
-+"Last-Translator: JungHee Lee <daemul72@gmail.com>, 2022\n"
++"Last-Translator: Junghee Lee <daemul72@gmail.com>, 2022\n"
 +"Language-Team: Korean (https://www.transifex.com/fcitx/teams/12005/ko/)\n"
 +"Language: ko\n"
 +"MIME-Version: 1.0\n"
@@ -3942,11 +3860,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ko.po fcitx-mozc-git/src/unix/fcitx
 +"Content-Transfer-Encoding: 8bit\n"
 +"Plural-Forms: nplurals=1; plural=0;\n"
 +
-+#: mozc_engine.h:84 mozc_engine.cc:196
++#: mozc_engine.h:84 mozc_engine.cc:180
 +msgid "About Mozc"
 +msgstr "Mozc 정보"
 +
-+#: mozc_engine.h:82 mozc_engine.cc:189
++#: mozc_engine.h:82 mozc_engine.cc:173
 +msgid "Add Word"
 +msgstr "단어 추가"
 +
@@ -3954,15 +3872,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ko.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Always"
 +msgstr "항상"
 +
-+#: mozc_engine.cc:96
-+msgid "Composition Mode"
-+msgstr "조합 모드"
-+
-+#: mozc_engine.h:78 mozc_engine.cc:173
++#: mozc_engine.h:78 mozc_engine.cc:157
 +msgid "Configuration Tool"
 +msgstr "구성 도구"
 +
-+#: mozc_engine.h:80 mozc_engine.cc:181
++#: mozc_engine.h:80 mozc_engine.cc:165
 +msgid "Dictionary Tool"
 +msgstr "사전 도구"
 +
@@ -4018,6 +3932,10 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ko.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Japanese input method based on Mozc"
 +msgstr "Mozc 기반 일본어 입력기"
 +
++#: mozc_engine.cc:143 mozc_engine.cc:144
++msgid "Mozc Settings"
++msgstr ""
++
 +#: org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in:7
 +msgid "Mozc for Fcitx 5"
 +msgstr "Fcitx 5 용 Mozc"
@@ -4037,16 +3955,12 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ko.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Press Escape to go back"
 +msgstr "돌아가려면 Esc 키를 누르십시오."
 +
-+#: mozc_engine.cc:159 mozc_engine.cc:160
-+msgid "Tool"
-+msgstr "도구"
-+
 +#: mozc_engine.h:65
 +msgid "Vertical candidate list"
 +msgstr ""
 diff -ruN google-mozc-git/src/unix/fcitx5/po/LINGUAS fcitx-mozc-git/src/unix/fcitx5/po/LINGUAS
 --- google-mozc-git/src/unix/fcitx5/po/LINGUAS	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/LINGUAS	2022-03-05 23:38:12.754734722 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/po/LINGUAS	2022-04-08 14:34:40.113460487 +0300
 @@ -0,0 +1,11 @@
 +
 +ca
@@ -4061,8 +3975,8 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/LINGUAS fcitx-mozc-git/src/unix/fci
 +zh_TW
 diff -ruN google-mozc-git/src/unix/fcitx5/po/ru.po fcitx-mozc-git/src/unix/fcitx5/po/ru.po
 --- google-mozc-git/src/unix/fcitx5/po/ru.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/ru.po	2022-03-05 23:38:12.758070475 +0200
-@@ -0,0 +1,128 @@
++++ fcitx-mozc-git/src/unix/fcitx5/po/ru.po	2022-04-08 14:34:40.113460487 +0300
+@@ -0,0 +1,124 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 +# This file is distributed under the same license as the fcitx5-mozc package.
@@ -4075,7 +3989,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ru.po fcitx-mozc-git/src/unix/fcitx
 +msgstr ""
 +"Project-Id-Version: fcitx5-mozc\n"
 +"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-+"POT-Creation-Date: 2022-01-31 20:24+0000\n"
++"POT-Creation-Date: 2022-03-25 20:24+0000\n"
 +"PO-Revision-Date: 2017-11-23 05:28+0000\n"
 +"Last-Translator: Dmitry <dmitrydmitry761@gmail.com>, 2022\n"
 +"Language-Team: Russian (https://www.transifex.com/fcitx/teams/12005/ru/)\n"
@@ -4087,11 +4001,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ru.po fcitx-mozc-git/src/unix/fcitx
 +"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
 +"%100>=11 && n%100<=14)? 2 : 3);\n"
 +
-+#: mozc_engine.h:84 mozc_engine.cc:196
++#: mozc_engine.h:84 mozc_engine.cc:180
 +msgid "About Mozc"
 +msgstr "О Mozc"
 +
-+#: mozc_engine.h:82 mozc_engine.cc:189
++#: mozc_engine.h:82 mozc_engine.cc:173
 +msgid "Add Word"
 +msgstr "Добавить слово"
 +
@@ -4099,15 +4013,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ru.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Always"
 +msgstr "Всегда"
 +
-+#: mozc_engine.cc:96
-+msgid "Composition Mode"
-+msgstr "Композиционный режим"
-+
-+#: mozc_engine.h:78 mozc_engine.cc:173
++#: mozc_engine.h:78 mozc_engine.cc:157
 +msgid "Configuration Tool"
 +msgstr "Инструмент настройки"
 +
-+#: mozc_engine.h:80 mozc_engine.cc:181
++#: mozc_engine.h:80 mozc_engine.cc:165
 +msgid "Dictionary Tool"
 +msgstr "Инструмент словаря"
 +
@@ -4165,6 +4075,10 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ru.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Japanese input method based on Mozc"
 +msgstr "Японский метод ввода на основе Mozc"
 +
++#: mozc_engine.cc:143 mozc_engine.cc:144
++msgid "Mozc Settings"
++msgstr "Настройки Mozc"
++
 +#: org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in:7
 +msgid "Mozc for Fcitx 5"
 +msgstr "Mozc для Fcitx 5"
@@ -4184,17 +4098,13 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/ru.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Press Escape to go back"
 +msgstr "Нажмите Escape, чтобы вернуться назад"
 +
-+#: mozc_engine.cc:159 mozc_engine.cc:160
-+msgid "Tool"
-+msgstr "Инструмент"
-+
 +#: mozc_engine.h:65
 +msgid "Vertical candidate list"
 +msgstr "Вертикальный список кандидатов"
 diff -ruN google-mozc-git/src/unix/fcitx5/po/tr.po fcitx-mozc-git/src/unix/fcitx5/po/tr.po
 --- google-mozc-git/src/unix/fcitx5/po/tr.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/tr.po	2022-03-05 23:38:12.758070475 +0200
-@@ -0,0 +1,123 @@
++++ fcitx-mozc-git/src/unix/fcitx5/po/tr.po	2022-04-08 14:34:40.113460487 +0300
+@@ -0,0 +1,119 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 +# This file is distributed under the same license as the fcitx5-mozc package.
@@ -4206,7 +4116,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/tr.po fcitx-mozc-git/src/unix/fcitx
 +msgstr ""
 +"Project-Id-Version: fcitx5-mozc\n"
 +"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-+"POT-Creation-Date: 2021-12-30 02:39+0000\n"
++"POT-Creation-Date: 2022-03-25 04:41+0000\n"
 +"PO-Revision-Date: 2017-11-23 05:28+0000\n"
 +"Last-Translator: abc Def <hdogan1974@gmail.com>, 2021\n"
 +"Language-Team: Turkish (https://www.transifex.com/fcitx/teams/12005/tr/)\n"
@@ -4216,11 +4126,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/tr.po fcitx-mozc-git/src/unix/fcitx
 +"Content-Transfer-Encoding: 8bit\n"
 +"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 +
-+#: mozc_engine.h:84 mozc_engine.cc:196
++#: mozc_engine.h:84 mozc_engine.cc:180
 +msgid "About Mozc"
 +msgstr "Mozc Hakkında"
 +
-+#: mozc_engine.h:82 mozc_engine.cc:189
++#: mozc_engine.h:82 mozc_engine.cc:173
 +msgid "Add Word"
 +msgstr "Kelime Ekle"
 +
@@ -4228,15 +4138,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/tr.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Always"
 +msgstr ""
 +
-+#: mozc_engine.cc:96
-+msgid "Composition Mode"
-+msgstr ""
-+
-+#: mozc_engine.h:78 mozc_engine.cc:173
++#: mozc_engine.h:78 mozc_engine.cc:157
 +msgid "Configuration Tool"
 +msgstr ""
 +
-+#: mozc_engine.h:80 mozc_engine.cc:181
++#: mozc_engine.h:80 mozc_engine.cc:165
 +msgid "Dictionary Tool"
 +msgstr ""
 +
@@ -4292,6 +4198,10 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/tr.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Japanese input method based on Mozc"
 +msgstr ""
 +
++#: mozc_engine.cc:143 mozc_engine.cc:144
++msgid "Mozc Settings"
++msgstr ""
++
 +#: org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in:7
 +msgid "Mozc for Fcitx 5"
 +msgstr ""
@@ -4311,31 +4221,27 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/tr.po fcitx-mozc-git/src/unix/fcitx
 +msgid "Press Escape to go back"
 +msgstr ""
 +
-+#: mozc_engine.cc:159 mozc_engine.cc:160
-+msgid "Tool"
-+msgstr ""
-+
 +#: mozc_engine.h:65
 +msgid "Vertical candidate list"
 +msgstr ""
 diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_CN.po fcitx-mozc-git/src/unix/fcitx5/po/zh_CN.po
 --- google-mozc-git/src/unix/fcitx5/po/zh_CN.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/zh_CN.po	2022-03-05 23:38:12.758070475 +0200
-@@ -0,0 +1,124 @@
++++ fcitx-mozc-git/src/unix/fcitx5/po/zh_CN.po	2022-04-08 14:34:40.113460487 +0300
+@@ -0,0 +1,120 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 +# This file is distributed under the same license as the fcitx5-mozc package.
 +#
 +# Translators:
-+# csslayer <wengxt@gmail.com>, 2021
++# csslayer <wengxt@gmail.com>, 2022
 +#
 +msgid ""
 +msgstr ""
 +"Project-Id-Version: fcitx5-mozc\n"
 +"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-+"POT-Creation-Date: 2021-12-30 02:39+0000\n"
++"POT-Creation-Date: 2022-03-25 20:24+0000\n"
 +"PO-Revision-Date: 2017-11-23 05:28+0000\n"
-+"Last-Translator: csslayer <wengxt@gmail.com>, 2021\n"
++"Last-Translator: csslayer <wengxt@gmail.com>, 2022\n"
 +"Language-Team: Chinese (China) (https://www.transifex.com/fcitx/teams/12005/"
 +"zh_CN/)\n"
 +"Language: zh_CN\n"
@@ -4344,11 +4250,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_CN.po fcitx-mozc-git/src/unix/fc
 +"Content-Transfer-Encoding: 8bit\n"
 +"Plural-Forms: nplurals=1; plural=0;\n"
 +
-+#: mozc_engine.h:84 mozc_engine.cc:196
++#: mozc_engine.h:84 mozc_engine.cc:180
 +msgid "About Mozc"
 +msgstr "关于 Mozc"
 +
-+#: mozc_engine.h:82 mozc_engine.cc:189
++#: mozc_engine.h:82 mozc_engine.cc:173
 +msgid "Add Word"
 +msgstr "添加词组"
 +
@@ -4356,15 +4262,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_CN.po fcitx-mozc-git/src/unix/fc
 +msgid "Always"
 +msgstr "总是"
 +
-+#: mozc_engine.cc:96
-+msgid "Composition Mode"
-+msgstr "编辑模式"
-+
-+#: mozc_engine.h:78 mozc_engine.cc:173
++#: mozc_engine.h:78 mozc_engine.cc:157
 +msgid "Configuration Tool"
 +msgstr "配置工具"
 +
-+#: mozc_engine.h:80 mozc_engine.cc:181
++#: mozc_engine.h:80 mozc_engine.cc:165
 +msgid "Dictionary Tool"
 +msgstr "词典工具"
 +
@@ -4420,6 +4322,10 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_CN.po fcitx-mozc-git/src/unix/fc
 +msgid "Japanese input method based on Mozc"
 +msgstr "基于 Mozc 的日语输入法"
 +
++#: mozc_engine.cc:143 mozc_engine.cc:144
++msgid "Mozc Settings"
++msgstr "Mozc 设置"
++
 +#: org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in:7
 +msgid "Mozc for Fcitx 5"
 +msgstr "Fcitx 5 的 Mozc 支持"
@@ -4439,17 +4345,13 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_CN.po fcitx-mozc-git/src/unix/fc
 +msgid "Press Escape to go back"
 +msgstr "按 Escape 返回"
 +
-+#: mozc_engine.cc:159 mozc_engine.cc:160
-+msgid "Tool"
-+msgstr "工具"
-+
 +#: mozc_engine.h:65
 +msgid "Vertical candidate list"
 +msgstr "垂直候选列表"
 diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_TW.po fcitx-mozc-git/src/unix/fcitx5/po/zh_TW.po
 --- google-mozc-git/src/unix/fcitx5/po/zh_TW.po	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/po/zh_TW.po	2022-03-05 23:38:12.758070475 +0200
-@@ -0,0 +1,125 @@
++++ fcitx-mozc-git/src/unix/fcitx5/po/zh_TW.po	2022-04-08 14:34:40.113460487 +0300
+@@ -0,0 +1,121 @@
 +# SOME DESCRIPTIVE TITLE.
 +# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 +# This file is distributed under the same license as the fcitx5-mozc package.
@@ -4462,7 +4364,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_TW.po fcitx-mozc-git/src/unix/fc
 +msgstr ""
 +"Project-Id-Version: fcitx5-mozc\n"
 +"Report-Msgid-Bugs-To: fcitx-dev@googlegroups.com\n"
-+"POT-Creation-Date: 2021-12-30 02:39+0000\n"
++"POT-Creation-Date: 2022-03-25 04:41+0000\n"
 +"PO-Revision-Date: 2017-11-23 05:28+0000\n"
 +"Last-Translator: bruh, 2020\n"
 +"Language-Team: Chinese (Taiwan) (https://www.transifex.com/fcitx/teams/12005/"
@@ -4473,11 +4375,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_TW.po fcitx-mozc-git/src/unix/fc
 +"Content-Transfer-Encoding: 8bit\n"
 +"Plural-Forms: nplurals=1; plural=0;\n"
 +
-+#: mozc_engine.h:84 mozc_engine.cc:196
++#: mozc_engine.h:84 mozc_engine.cc:180
 +msgid "About Mozc"
 +msgstr "關於 Mozc"
 +
-+#: mozc_engine.h:82 mozc_engine.cc:189
++#: mozc_engine.h:82 mozc_engine.cc:173
 +msgid "Add Word"
 +msgstr "添加單詞"
 +
@@ -4485,15 +4387,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_TW.po fcitx-mozc-git/src/unix/fc
 +msgid "Always"
 +msgstr ""
 +
-+#: mozc_engine.cc:96
-+msgid "Composition Mode"
-+msgstr "編輯模式"
-+
-+#: mozc_engine.h:78 mozc_engine.cc:173
++#: mozc_engine.h:78 mozc_engine.cc:157
 +msgid "Configuration Tool"
 +msgstr "設定工具"
 +
-+#: mozc_engine.h:80 mozc_engine.cc:181
++#: mozc_engine.h:80 mozc_engine.cc:165
 +msgid "Dictionary Tool"
 +msgstr "字典工具"
 +
@@ -4549,6 +4447,10 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_TW.po fcitx-mozc-git/src/unix/fc
 +msgid "Japanese input method based on Mozc"
 +msgstr "基於 Mozc 的日語輸入法"
 +
++#: mozc_engine.cc:143 mozc_engine.cc:144
++msgid "Mozc Settings"
++msgstr ""
++
 +#: org.fcitx.Fcitx5.Addon.Mozc.metainfo.xml.in:7
 +msgid "Mozc for Fcitx 5"
 +msgstr "Fcitx 5 的 Mozc 支援"
@@ -4568,16 +4470,12 @@ diff -ruN google-mozc-git/src/unix/fcitx5/po/zh_TW.po fcitx-mozc-git/src/unix/fc
 +msgid "Press Escape to go back"
 +msgstr "按下 Escape 返回"
 +
-+#: mozc_engine.cc:159 mozc_engine.cc:160
-+msgid "Tool"
-+msgstr "工具"
-+
 +#: mozc_engine.h:65
 +msgid "Vertical candidate list"
 +msgstr ""
 diff -ruN google-mozc-git/src/unix/fcitx5/surrounding_text_util.cc fcitx-mozc-git/src/unix/fcitx5/surrounding_text_util.cc
 --- google-mozc-git/src/unix/fcitx5/surrounding_text_util.cc	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/surrounding_text_util.cc	2022-03-05 23:38:12.758070475 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/surrounding_text_util.cc	2022-04-08 14:34:40.113460487 +0300
 @@ -0,0 +1,222 @@
 +// Copyright 2010-2013, Google Inc.
 +// All rights reserved.
@@ -4803,7 +4701,7 @@ diff -ruN google-mozc-git/src/unix/fcitx5/surrounding_text_util.cc fcitx-mozc-gi
 +}  // namespace fcitx
 diff -ruN google-mozc-git/src/unix/fcitx5/surrounding_text_util.h fcitx-mozc-git/src/unix/fcitx5/surrounding_text_util.h
 --- google-mozc-git/src/unix/fcitx5/surrounding_text_util.h	1970-01-01 02:00:00.000000000 +0200
-+++ fcitx-mozc-git/src/unix/fcitx5/surrounding_text_util.h	2022-03-05 23:38:12.758070475 +0200
++++ fcitx-mozc-git/src/unix/fcitx5/surrounding_text_util.h	2022-04-08 14:34:40.113460487 +0300
 @@ -0,0 +1,86 @@
 +// Copyright 2010-2013, Google Inc.
 +// All rights reserved.
@@ -4893,66 +4791,11 @@ diff -ruN google-mozc-git/src/unix/fcitx5/surrounding_text_util.h fcitx-mozc-git
 +#endif  // MOZC_UNIX_FCITX_SURROUNDING_TEXT_URIL_H_
 diff -ruN google-mozc-git/src/WORKSPACE.bazel fcitx-mozc-git/src/WORKSPACE.bazel
 --- google-mozc-git/src/WORKSPACE.bazel	2022-03-05 23:38:12.704698418 +0200
-+++ fcitx-mozc-git/src/WORKSPACE.bazel	2022-02-25 02:25:22.830847556 +0200
-@@ -1,18 +1,14 @@
- # An identifier for this repository.
- workspace(name = "mozc")
--
--load(
--    "@bazel_tools//tools/build_defs/repo:http.bzl",
--    "http_archive",
--    "http_file",
--)
-+load("@bazel_tools//tools/build_defs/repo:http.bzl",
-+     "http_archive", "http_file")
- load("//:config.bzl", "QT_BASE_PATH")
- 
--# This rule refers to $ANDROID_SDK_HOME.
-+# This rule reffers $ANDROID_SDK_HOME
- android_sdk_repository(name = "androidsdk")
- 
- # Android NDK version should be r11c+ for Abseil.
--# This rule refers to $ANDROID_NDK_HOME.
-+# This rule reffers $ANDROID_NDK_HOME
- android_ndk_repository(name = "androidndk")
- 
- local_repository(
-@@ -31,9 +27,7 @@
-     name = "com_google_protobuf",
-     path = "third_party/protobuf",
- )
--
- load("@com_google_protobuf//:protobuf_deps.bzl", "protobuf_deps")
--
- protobuf_deps()
- 
- # This git_repository rule is an alternative for the above rule.
-@@ -46,50 +40,64 @@
- # Gtest
- new_local_repository(
-     name = "gtest",
--    build_file = "third_party/gtest/BUILD.bazel",
-     path = "third_party/gtest",
-+    build_file = "third_party/gtest/BUILD.bazel",
- )
- 
- # Gtk2
- new_local_repository(
-     name = "gtk2",
--    build_file = "BUILD.gtk2.bazel",
-     # This path should be updated per the environment.
++++ fcitx-mozc-git/src/WORKSPACE.bazel	2022-04-08 14:34:39.720122998 +0300
+@@ -66,6 +66,22 @@
      path = "/usr",  # For Debian
-+    build_file = "BUILD.gtk2.bazel",
  )
  
- # iBus
- new_local_repository(
-     name = "ibus",
-+    # This path should be updated per the environment.
-+    path = "/usr",  # For Debian
-     build_file = "BUILD.ibus.bazel",
-+)
-+
 +# Fcitx
 +new_local_repository(
 +    name = "fcitx",
@@ -4964,147 +4807,11 @@ diff -ruN google-mozc-git/src/WORKSPACE.bazel fcitx-mozc-git/src/WORKSPACE.bazel
 +# Fcitx 5
 +new_local_repository(
 +    name = "fcitx5",
-     # This path should be updated per the environment.
-     path = "/usr",  # For Debian
++    # This path should be updated per the environment.
++    path = "/usr",  # For Debian
 +    build_file = "BUILD.fcitx5.bazel",
- )
- 
++)
++
  # Japanese Usage Dictionary
  new_local_repository(
      name = "ja_usage_dict",
--    build_file = "BUILD.ja_usage_dict.bazel",
-     path = "third_party/japanese_usage_dictionary",
-+    build_file = "BUILD.ja_usage_dict.bazel",
- )
- 
- # Qt
- new_local_repository(
-     name = "io_qt",
--    build_file = "BUILD.qt.bazel",
-     # This path should be updated per the environment.
-     path = QT_BASE_PATH,
-+    build_file = "BUILD.qt.bazel",
- )
- 
- # Python
- http_archive(
-     name = "rules_python",
--    sha256 = "aa96a691d3a8177f3215b14b0edc9641787abaaa30363a080165d06ab65e1161",
-     url = "https://github.com/bazelbuild/rules_python/releases/download/0.0.1/rules_python-0.0.1.tar.gz",
-+    sha256 = "aa96a691d3a8177f3215b14b0edc9641787abaaa30363a080165d06ab65e1161",
- )
--
- load("@rules_python//python:repositories.bzl", "py_repositories")
--
- py_repositories()
- 
- # Only needed if using the packaging rules.
-@@ -99,11 +107,11 @@
- # Bazel Skylib
- http_archive(
-     name = "bazel_skylib",
--    sha256 = "97e70364e9249702246c0e9444bccdc4b847bed1eb03c5a3ece4f83dfe6abc44",
-     urls = [
--        "https://mirror.bazel.build/github.com/bazelbuild/bazel-skylib/releases/download/1.0.2/bazel-skylib-1.0.2.tar.gz",
--        "https://github.com/bazelbuild/bazel-skylib/releases/download/1.0.2/bazel-skylib-1.0.2.tar.gz",
--    ],
-+            "https://mirror.bazel.build/github.com/bazelbuild/bazel-skylib/releases/download/1.0.2/bazel-skylib-1.0.2.tar.gz",
-+            "https://github.com/bazelbuild/bazel-skylib/releases/download/1.0.2/bazel-skylib-1.0.2.tar.gz",
-+           ],
-+   sha256 = "97e70364e9249702246c0e9444bccdc4b847bed1eb03c5a3ece4f83dfe6abc44",
- )
- 
- # Bazel macOS build (2021-10-30)
-@@ -113,78 +121,70 @@
-     sha256 = "77e8bf6fda706f420a55874ae6ee4df0c9d95da6c7838228b26910fc82eea5a2",
-     url = "https://github.com/bazelbuild/rules_apple/releases/download/0.32.0/rules_apple.0.32.0.tar.gz",
- )
--
- load(
-     "@build_bazel_rules_apple//apple:repositories.bzl",
-     "apple_rules_dependencies",
- )
--
- apple_rules_dependencies()
- 
- # Material icons
- http_file(
-     name = "material_icon_dictionary_png",
--    downloaded_file_path = "dictionary.png",
--    sha256 = "6d2ac7befa038d4f32e07136293acaf5d8645a4daecb6d063f34be2ffea59b55",
-     urls = [
-         "https://raw.githubusercontent.com/google/material-design-icons/4.0.0/png/action/chrome_reader_mode/materialiconsoutlined/48dp/1x/outline_chrome_reader_mode_black_48dp.png",
-     ],
-+    downloaded_file_path = "dictionary.png",
-+    sha256 = "6d2ac7befa038d4f32e07136293acaf5d8645a4daecb6d063f34be2ffea59b55",
- )
--
- http_file(
-     name = "material_icon_dictionary_svg",
--    downloaded_file_path = "dictionary.svg",
--    sha256 = "a4c7b9bfb442a7497b72d74358c31034c4fef1ab2a50659834784580751ac04d",
-     urls = [
-         "https://raw.githubusercontent.com/google/material-design-icons/4.0.0/src/action/chrome_reader_mode/materialiconsoutlined/24px.svg",
-     ],
-+    downloaded_file_path = "dictionary.svg",
-+    sha256 = "a4c7b9bfb442a7497b72d74358c31034c4fef1ab2a50659834784580751ac04d",
- )
--
- http_file(
-     name = "material_icon_properties_png",
--    downloaded_file_path = "properties.png",
--    sha256 = "c4ae8bb7992f43157be9d026f76a7039af6e0e3de0f220842208dfda8c38714a",
-     urls = [
-         "https://raw.githubusercontent.com/google/material-design-icons/4.0.0/png/action/settings/materialiconsround/48dp/1x/round_settings_black_48dp.png",
-     ],
-+    downloaded_file_path = "properties.png",
-+    sha256 = "c4ae8bb7992f43157be9d026f76a7039af6e0e3de0f220842208dfda8c38714a",
- )
--
- http_file(
-     name = "material_icon_properties_svg",
--    downloaded_file_path = "properties.svg",
--    sha256 = "9b01b133be1caffc680f132d385d0e594262d6cfd29759a63c428050b83fe628",
-     urls = [
-         "https://raw.githubusercontent.com/google/material-design-icons/4.0.0/src/action/settings/materialiconsround/24px.svg",
-     ],
-+    downloaded_file_path = "properties.svg",
-+    sha256 = "9b01b133be1caffc680f132d385d0e594262d6cfd29759a63c428050b83fe628",
- )
--
- http_file(
-     name = "material_icon_tool_png",
--    downloaded_file_path = "tool.png",
--    sha256 = "269433bf6d6948a93ab6a57a73ceb5930870223046052cfffe01eeca37327d3e",
-     urls = [
-         "https://raw.githubusercontent.com/google/material-design-icons/4.0.0/png/action/build/materialicons/48dp/1x/baseline_build_black_48dp.png",
-     ],
-+    downloaded_file_path = "tool.png",
-+    sha256 = "269433bf6d6948a93ab6a57a73ceb5930870223046052cfffe01eeca37327d3e",
- )
--
- http_file(
-     name = "material_icon_tool_svg",
--    downloaded_file_path = "tool.svg",
--    sha256 = "df34fba3d09778db69503a23b688761051dbf65b5bccb0d7b729c69ff61c3804",
-     urls = [
-         "https://raw.githubusercontent.com/google/material-design-icons/4.0.0/src/action/build/materialicons/24px.svg",
-     ],
-+    downloaded_file_path = "tool.svg",
-+    sha256 = "df34fba3d09778db69503a23b688761051dbf65b5bccb0d7b729c69ff61c3804",
- )
- 
- # Zip code
- http_archive(
-     name = "zip_code_ken_all",
--    build_file_content = "exports_files([\"KEN_ALL.CSV\"])",
-     url = "https://www.post.japanpost.jp/zipcode/dl/kogaki/zip/ken_all.zip",
-+    build_file_content = "exports_files([\"KEN_ALL.CSV\"])",
- )
--
- http_archive(
-     name = "zip_code_jigyosyo",
--    build_file_content = "exports_files([\"JIGYOSYO.CSV\"])",
-     url = "https://www.post.japanpost.jp/zipcode/dl/jigyosyo/zip/jigyosyo.zip",
-+    build_file_content = "exports_files([\"JIGYOSYO.CSV\"])",
- )
