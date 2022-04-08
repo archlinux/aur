@@ -3,7 +3,7 @@
 pkgname=('lua-irc-formatter' 'lua51-irc-formatter' 'lua52-irc-formatter' 'lua53-irc-formatter')
 pkgdesc='A simple formatter/serializer for IRC messages.'
 _pkgname='irc-formatter'
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 arch=('any')
 url='https://github.com/jprjr/lua-irc-formatter'
@@ -46,4 +46,4 @@ package_lua53-irc-formatter() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('dc251e5d35145985c618a476e25a31b8840db19405d6aa7e6cad0a676e93ff85')
+sha256sums=('ddc2aca809386defc761c0819b18b27717539dd777f9c9909441cba293ce41e0')
