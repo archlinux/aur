@@ -1,0 +1,7 @@
+/.vscode
+/firefox-extension-netvyne-git
+/src
+/pkg
+*.pkg.*
+*.tar.*
+*.zip
