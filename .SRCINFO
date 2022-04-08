@@ -1,7 +1,7 @@
 pkgbase = luxmark
 	pkgdesc = OpenCL benchmark tool
 	pkgver = 4.0alpha1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/LuxCoreRender/LuxMark
 	arch = x86_64
 	license = GPL3
@@ -34,6 +34,6 @@ pkgbase = luxmark
 	md5sums = 2d02d2192f6e0baad6090b0609a31b2f
 	md5sums = 8726fa90791f5380dd24789b8933141e
 	md5sums = 6ba9b9888160cc06e3c3644e21d80e5a
-	md5sums = 99a1b47cbff5bc826834dda0f88130fd
+	md5sums = 3dba64999e0515e7d9c92ae05f9ca839
 
 pkgname = luxmark
