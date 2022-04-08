@@ -7,6 +7,7 @@ pkgbase = sunsama-appimage
 	license = custom:Commercial
 	depends = zlib
 	depends = hicolor-icon-theme
+	depends = fuse2
 	noextract = sunsama-appimage-1.0.7.AppImage
 	options = !strip
 	source_x86_64 = sunsama-appimage-1.0.7.AppImage::https://desktop.sunsama.com/linux/appImage/x64
