@@ -3,7 +3,7 @@
 pkgbase=cutelyst
 pkgname=('cutelyst' 'cutelyst-docs')
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Web Framework built on top of Qt'
 arch=('i686' 'x86_64')
 url="http://cutelyst.org"
@@ -11,6 +11,7 @@ license=('LGPL')
 depends=('qt5-base' 'grantlee')
 makedepends=('pkgconf' 'cmake' 'doxygen' 'graphviz' 'qt5-tools')
 source=("https://github.com/cutelyst/cutelyst/archive/v${pkgver}.tar.gz")
+sha512sums=('d5e65303dbf1c82b88cfc8c0c3c82e88b53b4b8e2bf35f2dc95b04dcf445112122d5eef756c04bfcd20633557c33118e6eec1e8e71d6bda32645f599759d16f4')
 
 build() {
   mkdir -p "$srcdir/${pkgname}-${pkgver}/build"
@@ -41,5 +42,7 @@ package_cutelyst-docs() {
 package_cutelyst() {
   cd "$srcdir/${pkgname}-${pkgver}/build"
   make DESTDIR="$pkgdir/" install
+
+  install -d -m755 "${pkgdir}/usr/share/qtcreator/templates/wizards/"
+  cp -r "${srcdir}/${pkgname}-${pkgver}/qtcreator/cutelyst" "${pkgdir}/usr/share/qtcreator/templates/wizards/"
 }
-sha512sums=('d5e65303dbf1c82b88cfc8c0c3c82e88b53b4b8e2bf35f2dc95b04dcf445112122d5eef756c04bfcd20633557c33118e6eec1e8e71d6bda32645f599759d16f4')

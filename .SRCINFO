@@ -1,7 +1,7 @@
 pkgbase = cutelyst
 	pkgdesc = A Web Framework built on top of Qt
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://cutelyst.org
 	arch = i686
 	arch = x86_64
