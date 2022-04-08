@@ -56,13 +56,6 @@ package() {
         exit 1
     fi
 
-    # Delete packaged versions of libssl and libcrypto to use system ones
-    # Fixes libssh2 EVP_cast5_cbc issue (https://github.com/o3de/o3de/issues/4898)
-    rm "${pkgdir}"/opt/O3DE/${_engver}/bin/Linux/profile/Default/libssl.so \
-       "${pkgdir}"/opt/O3DE/${_engver}/bin/Linux/profile/Default/libssl.so.1.1 \
-       "${pkgdir}"/opt/O3DE/${_engver}/bin/Linux/profile/Default/libcrypto.so \
-       "${pkgdir}"/opt/O3DE/${_engver}/bin/Linux/profile/Default/libcrypto.so.1.1
-    
     # Trying to create new project fails if launcher doesn't find clang-12
     # Force use of system clang with local symlink in PATH
     mkdir -p "${pkgdir}"/opt/O3DE/${_engver}/symbin
