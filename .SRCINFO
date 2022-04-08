@@ -16,7 +16,7 @@ pkgbase = libretro-dosbox-pure-git
 	depends = libretro-core-info
 	provides = libretro-dosbox-pure
 	conflicts = libretro-dosbox-pure
-	source = git+https://github.com/schellingb/dosbox-pure.git
+	source = dosbox-pure::git+https://github.com/schellingb/dosbox-pure.git
 	b2sums = SKIP
 
 pkgname = libretro-dosbox-pure-git

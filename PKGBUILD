@@ -6,14 +6,14 @@ pkgver=0.26.r0.g1845cd9
 pkgrel=1
 pkgdesc="MS-DOS core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
-url="https://github.com/schellingb/$_reponame"
+url="https://github.com/schellingb/dosbox-pure"
 license=('GPL2')
 groups=('libretro')
 depends=('gcc-libs' 'libretro-core-info')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+$url.git")
+source=("$_reponame::git+$url.git")
 b2sums=('SKIP')
 
 pkgver() {
