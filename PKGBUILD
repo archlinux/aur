@@ -1,7 +1,7 @@
 # Maintainer: Euro20179 <Euro20179@protonmail.com>
 
 pkgname=ytfzf-git
-pkgver=r1373.c132ae0
+pkgver=r1439.2331f87
 pkgrel=1
 pkgdesc="A posix script to find and watch youtube videos from the terminal. (Without API)"
 arch=('any')
@@ -20,7 +20,7 @@ optdepends=(
 provides=('ytfzf')
 conflicts=("ytfzf")
 install=
-source=('ytfzf::git+https://github.com/pystardust/ytfzf.git')
+source=('ytfzf::git+https://github.com/pystardust/ytfzf.git#branch=development')
 md5sums=('SKIP')
 
 pre_install () {
@@ -29,7 +29,6 @@ pre_install () {
 
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
-    git checkout origin/development
 # Git, no tags available
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }

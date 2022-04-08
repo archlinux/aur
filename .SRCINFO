@@ -18,7 +18,7 @@ pkgbase = ytfzf-git
 	optdepends = yt-dlp: for downloading
 	provides = ytfzf
 	conflicts = ytfzf
-	source = ytfzf::git+https://github.com/pystardust/ytfzf.git
+	source = ytfzf::git+https://github.com/pystardust/ytfzf.git#branch=development
 	md5sums = SKIP
 
 pkgname = ytfzf-git
