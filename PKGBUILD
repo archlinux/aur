@@ -2,26 +2,26 @@
 # Maintainer: applewing <applewing@protonmail.com>
 
 pkgname='mog-bin'
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Git Hooks managment tool written in Go'
 url='https://github.com/aw83/mog'
-arch=('aarch64' 'armv7h' 'i686' 'x86_64')
+arch=('aarch64' 'armv6h' 'i686' 'x86_64')
 license=('Apache-2.0')
 provides=('mog')
 conflicts=('mog')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/aw83/mog/releases/download/v1.1.1/mog_Linux_arm64.tar.gz")
-sha256sums_aarch64=('d8ad70a95383b283493aff702ad8d6c73d8647289c50305447021d80c211689d')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/aw83/mog/releases/download/v1.2.0/mog_Linux_arm64.tar.gz")
+sha256sums_aarch64=('7201f346ac6794709501f72eea6a0b7071faf9ef03d391a0cdb7d0ea5ca3f20b')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/aw83/mog/releases/download/v1.1.1/mog_Linux_armv7.tar.gz")
-sha256sums_armv7h=('1475e8c063fa72af7667f1335190439ddba25dab81447d3ab092c944a4674985')
+source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/aw83/mog/releases/download/v1.2.0/mog_Linux_armv6.tar.gz")
+sha256sums_armv6h=('dad8431b936a03a6cb395c17480510dd31d3ce048c4092a855e6c109c29b3998')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/aw83/mog/releases/download/v1.1.1/mog_Linux_i386.tar.gz")
-sha256sums_i686=('2d6453828255c8d1b7bd158649e5809ade5a842802b736e3c7a65e6a7367592a')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/aw83/mog/releases/download/v1.2.0/mog_Linux_i386.tar.gz")
+sha256sums_i686=('237f79a119a0d8ff89c1413b14857bc32f05676af01b1d633b63c0665bee8600')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/aw83/mog/releases/download/v1.1.1/mog_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('eb687132098db3938887b698b8b072de40f16dbdb3ea7481e2805e183aabb8df')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/aw83/mog/releases/download/v1.2.0/mog_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('85c1e16e99ce8489d6b0abe488ed4cc53695259fa6d95f9c5f03cf81d44470ac')
 
 package() {
   # bin
