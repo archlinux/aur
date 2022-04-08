@@ -17,7 +17,7 @@ source=("https://packages.chef.io/files/stable/chef/${pkgver}/ubuntu/20.04/chef_
 sha256sums=('e2ef7f9bb58a466ab9cce93e4a593cb62eaa49c6e7719d6cff0cb1d92b279a7a')
 
 package() {
-
+  depends=('libxcrypt-compat')
 
   cd "$srcdir" || exit 1
   bsdtar -xf data.tar.xz -C "$pkgdir"
