@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-rust
 	pkgdesc = Systems programming language focused on safety, speed and concurrency (mingw-w64)
 	pkgver = 1.60.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.rust-lang.org
 	arch = x86_64
 	license = MIT
@@ -45,6 +45,6 @@ pkgbase = mingw-w64-rust
 	sha256sums = SKIP
 	sha256sums = f56ebfb333ea46e4429377bf4b16a2ec889d61640a41c3093577cdd8f3c80b96
 	sha256sums = SKIP
-	sha256sums = be414bd9ec996bf9a4b3ff87d495c19492b08d01f462a4492eed643c17bd9a32
+	sha256sums = f3040ad94aaacfe0f0cd782eded439707fff70735017dd98c2534326594a198f
 
 pkgname = mingw-w64-rust

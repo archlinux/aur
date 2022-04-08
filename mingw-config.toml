@@ -260,7 +260,7 @@ python = "python"
 
 # Force Cargo to check that Cargo.lock describes the precise dependency
 # set that all the Cargo.toml files create, instead of updating it.
-locked-deps = false
+locked-deps = true
 
 # Indicate whether the vendored sources are used for Rust dependencies or not
 vendor = true

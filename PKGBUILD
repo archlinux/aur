@@ -11,7 +11,7 @@ _rustc=1.59.0
 pkgname=mingw-w64-rust
 _prefix=opt/rust
 pkgver=1.60.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Systems programming language focused on safety, speed and concurrency (mingw-w64)"
 arch=('x86_64')
 url="https://www.rust-lang.org"
@@ -46,7 +46,7 @@ sha256sums=('a025876deccbcb3f288d8e02623ea321f94623f31305d3c5c6f17855bb9685db'
             'SKIP'
             'f56ebfb333ea46e4429377bf4b16a2ec889d61640a41c3093577cdd8f3c80b96'
             'SKIP'
-            'be414bd9ec996bf9a4b3ff87d495c19492b08d01f462a4492eed643c17bd9a32')
+            'f3040ad94aaacfe0f0cd782eded439707fff70735017dd98c2534326594a198f')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
 backup=("opt/rust/cargo/config")
@@ -116,6 +116,9 @@ package() {
   # config
   install -dm777 "${pkgdir}/opt/rust/cargo"
   cat << EOF >> "${pkgdir}/opt/rust/cargo/config"
+[net]
+git-fetch-with-cli = true
+
 [target.i686-pc-windows-gnu]
 linker = "/usr/bin/i686-w64-mingw32-gcc"
 ar = "/usr/i686-w64-mingw32/bin/ar"
