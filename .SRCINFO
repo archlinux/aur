@@ -1,6 +1,6 @@
 pkgbase = o
 	pkgdesc = Text editor
-	pkgver = 2.49.1
+	pkgver = 2.50.0
 	pkgrel = 1
 	url = https://github.com/xyproto/o
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = o
 	optdepends = cxx: for compiling C and C++
 	optdepends = fpc: for compiling Object Pascal
 	optdepends = fstabfmt: for formatting /etc/fstab
+	optdepends = gdb: for debugging C
 	optdepends = gdc: for compiling D
 	optdepends = ghc: for compiling Haskell
 	optdepends = google-java-format: for formatting Java
@@ -45,7 +46,7 @@ pkgbase = o
 	optdepends = v: for compiling and formatting V
 	optdepends = yasm: for compiling Assembly
 	optdepends = zig: for compiling and formatting Zig
-	source = git+https://github.com/xyproto/o#commit=5a46e2e6f438e6b2f423393b307967fff58de0b5
+	source = git+https://github.com/xyproto/o#commit=778c1b6f033b21818610f0933cc0c8aa7e77704b
 	b2sums = SKIP
 
 pkgname = o

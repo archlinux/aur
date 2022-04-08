@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o
-pkgver=2.49.1
+pkgver=2.50.0
 pkgrel=1
 pkgdesc='Text editor'
 arch=(x86_64)
@@ -9,7 +9,7 @@ url='https://github.com/xyproto/o'
 license=(BSD)
 depends=(vte3)
 makedepends=(git go)
-source=("git+$url#commit=5a46e2e6f438e6b2f423393b307967fff58de0b5") # tag: v2.49.1
+source=("git+$url#commit=778c1b6f033b21818610f0933cc0c8aa7e77704b") # tag: v2.50.0
 optdepends=('asciidoctor: for writing man pages'
             'agda: for compiling Agda'
             'astyle: for formatting C#'
@@ -21,6 +21,7 @@ optdepends=('asciidoctor: for writing man pages'
             'cxx: for compiling C and C++'
             'fpc: for compiling Object Pascal'
             'fstabfmt: for formatting /etc/fstab'
+            'gdb: for debugging C'
             'gdc: for compiling D'
             'ghc: for compiling Haskell'
             'google-java-format: for formatting Java'
