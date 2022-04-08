@@ -2,11 +2,11 @@
 
 pkgname=text-engine-git
 pkgver=r25.379437b
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight rich-text framework for GTK"
 arch=('x86_64')
 url="https://github.com/mjakeman/${pkgname%-git}"
-license=('MIT')
+license=('LGPL3')
 depends=('gtk4' 'json-glib' 'libxml2' 'libadwaita')
 makedepends=('git' 'meson')
 provides=("${pkgname%-git}")

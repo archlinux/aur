@@ -1,10 +1,10 @@
 pkgbase = text-engine-git
 	pkgdesc = A lightweight rich-text framework for GTK
 	pkgver = r25.379437b
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mjakeman/text-engine
 	arch = x86_64
-	license = MIT
+	license = LGPL3
 	makedepends = git
 	makedepends = meson
 	depends = gtk4
