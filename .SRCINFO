@@ -1,6 +1,6 @@
 pkgbase = lib_amxt-git
 	pkgdesc = simple tty api library, adds interactive terminal interface to your applications
-	pkgver = 0.1.40.r0.g0151b28
+	pkgver = 0.1.41.r0.gb316e3a
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/libraries/libamxt
 	arch = x86_64
