@@ -2,7 +2,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-bin
 pkgver=3.94.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
 url="https://tutanota.com"
@@ -39,7 +39,7 @@ package() {
 
   install -d "$pkgdir/opt/${pkgname%-bin}/"
   cp -av squashfs-root/* "$pkgdir/opt/${pkgname%-bin}/"
-  chmod 4755 "$pkgdir/opt/$pkgname/chrome-sandbox"
+  chmod 4755 "$pkgdir/opt/${pkgname%-bin}/chrome-sandbox"
   rm -rf "$pkgdir/opt/${pkgname%-bin}/usr/"
   rm "$pkgdir/opt/${pkgname%-bin}"/{"${pkgname%-bin}".desktop,AppRun}
 
