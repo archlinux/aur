@@ -2,12 +2,13 @@
 _pkgname=super_unko
 pkgname=$_pkgname-git
 pkgver=r405.93c23d8
-pkgrel=2
+pkgrel=3
 pkgdesc="Super Unko project is the one of the awesome, clean and sophisticated OSS project in the world."
 arch=('i686' 'x86_64')
 url="https://github.com/unkontributors/super_unko"
 license=('custom:unko')
 makedepends=(git)
+depends=('echo-sd')
 optdepends=('toilet: for unko.toilet'
             'xterm: for unko.puzzle'
             'xdotool: for unko.puzzle'

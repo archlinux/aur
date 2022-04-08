@@ -1,12 +1,13 @@
 pkgbase = super_unko-git
 	pkgdesc = Super Unko project is the one of the awesome, clean and sophisticated OSS project in the world.
 	pkgver = r405.93c23d8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/unkontributors/super_unko
 	arch = i686
 	arch = x86_64
 	license = custom:unko
 	makedepends = git
+	depends = echo-sd
 	optdepends = toilet: for unko.toilet
 	optdepends = xterm: for unko.puzzle
 	optdepends = xdotool: for unko.puzzle
