@@ -1,14 +1,14 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o-bin
-pkgver=2.49.1
+pkgver=2.50.0
 pkgrel=1
-pkgdesc='Text editor (terminal only)'
-arch=(x86_64)
+pkgdesc='Text editor'
+arch=(aarch64 armv6 armv7 x86_64)
 url='https://github.com/xyproto/o'
 license=(BSD)
 conflicts=(o)
-source=("https://github.com/xyproto/o/releases/download/v$pkgver/o-$pkgver-linux_amd64.tar.xz")
+source=("https://github.com/xyproto/o/releases/download/v$pkgver/o-$pkgver-linux_${CARCH}_static.tar.xz")
 optdepends=('asciidoctor: for writing man pages'
             'agda: for compiling Agda'
             'astyle: for formatting C#'
@@ -20,6 +20,7 @@ optdepends=('asciidoctor: for writing man pages'
             'cxx: for compiling C and C++'
             'fpc: for compiling Object Pascal'
             'fstabfmt: for formatting /etc/fstab'
+            'gdb: for debugging C'
             'gdc: for compiling D'
             'ghc: for compiling Haskell'
             'google-java-format: for formatting Java'
@@ -46,11 +47,11 @@ optdepends=('asciidoctor: for writing man pages'
             'v: for compiling and formatting V'
             'yasm: for compiling Assembly'
             'zig: for compiling and formatting Zig')
-sha256sums=('bc92342c0a9eb8c69af7eb05f31d0a6df8a1f729ec35e1a98d27b52f8b7e0a6e')
-b2sums=('faf76e2dd7693d116bec9dbd01a58249faa46b0470630e2444c72f414736baa2da19148c4f779193e392880aff885842bb473b55bcb28c3196db6a012746c12b')
+sha256sums=('49f71b018edc4a0217f79b6e6d88d35574493073c80b1d82e54bb94bd461284b')
+b2sums=('48ad9e51ef237e30aba3b9d799fe233cd34f6d1aacf36b29c8a2da5fb2197b2aa63fb129f154dcf5ce29c2fba485e3dff193a6be93212ece4e2d377c8efced34')
 
 package() {
-  cd o-$pkgver-linux_amd64
+  cd o-$pkgver-linux_${CARCH}_static
   install -Dm755 o "$pkgdir/usr/bin/o"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/redblack"
   ln -sf /usr/bin/o "$pkgdir/usr/bin/lighted"
