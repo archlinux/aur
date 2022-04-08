@@ -19,7 +19,7 @@ pkgbase = arc-kde-git
 	conflicts = arc-kde
 	conflicts = kvantum-theme-arc
 	options = !strip
-	source = git+https://github.com/PapirusDevelopmentTeam/arc-kde.git
+	source = arc-kde::git+https://github.com/PapirusDevelopmentTeam/arc-kde.git
 	b2sums = SKIP
 
 pkgname = arc-kde-git

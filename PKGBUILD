@@ -7,7 +7,7 @@ pkgrel=1
 epoch=2
 pkgdesc="Arc theme for KDE Plasma 5"
 arch=('any')
-url="https://github.com/PapirusDevelopmentTeam/$_pkgname"
+url="https://github.com/PapirusDevelopmentTeam/arc-kde"
 license=('GPL3')
 makedepends=('git')
 optdepends=(
@@ -22,7 +22,7 @@ optdepends=(
 provides=("$_pkgname" 'kvantum-theme-arc')
 conflicts=("$_pkgname" 'kvantum-theme-arc')
 options=('!strip')
-source=("git+$url.git")
+source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
 
 pkgver() {
