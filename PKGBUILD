@@ -7,14 +7,14 @@ pkgrel=1
 epoch=1
 pkgdesc="Amstrad CPC core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
-url="https://github.com/libretro/$_pkgname"
+url="https://github.com/libretro/libretro-cap32"
 license=('GPL2')
 groups=('libretro')
 depends=('glibc' 'libretro-core-info')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+$url.git")
+source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
 
 pkgver() {
