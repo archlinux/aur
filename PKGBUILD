@@ -3,14 +3,14 @@ _pkgname=xbyak
 pkgname=$_pkgname-git
 pkgver=5.995.r3.gc313a87
 pkgrel=1
-pkgdesc='C++ header-only JIT assembler library for x86/x86-64'
+pkgdesc="C++ header-only JIT assembler library for x86/x86-64"
 arch=('any')
-url="https://github.com/herumi/$_pkgname"
+url="https://github.com/herumi/xbyak"
 license=('BSD')
 makedepends=('cmake' 'git')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git+$url.git")
+source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
 
 pkgver() {
