@@ -5,13 +5,13 @@ pkgver=r153.5de1a59
 pkgrel=1
 pkgdesc="Standalone library for reading MAME's CHDv1-v5 formats"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
-url="https://github.com/rtissera/$_pkgname"
+url="https://github.com/rtissera/libchdr"
 license=('BSD')
 depends=('zlib')
 makedepends=('cmake' 'git')
-provides=("$_pkgname=$pkgver" "$_pkgname.so")
+provides=("$_pkgname=$pkgver" 'libchdr.so')
 conflicts=("$_pkgname")
-source=("git+$url.git")
+source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
 
 pkgver() {

@@ -16,7 +16,7 @@ pkgbase = libchdr-git
 	provides = libchdr=r153.5de1a59
 	provides = libchdr.so
 	conflicts = libchdr
-	source = git+https://github.com/rtissera/libchdr.git
+	source = libchdr::git+https://github.com/rtissera/libchdr.git
 	b2sums = SKIP
 
 pkgname = libchdr-git
