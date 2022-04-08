@@ -10,6 +10,6 @@ pkgbase = auto
 	depends = dialog
 	depends = parted
 	source = https://gitlab.com/a4to/concise/-/raw/master/x86_64/auto-3.0.7-1-x86_64.pkg.tar.zst
-	sha256sums = 1a7070bbf5dfc625bd6aa458897811a4de6eca87b29b77f25b58b4973642f709
+	sha256sums = d9f23fdef27e34003ae14b253ef97d93d44bf6bbaaa20e53fb81449ebfd11f00
 
 pkgname = auto
