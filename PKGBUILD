@@ -54,7 +54,7 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=5
+pkgrel=6
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -86,9 +86,13 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v2-sep/0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch"
-        "${_lucjanpath}/arch-patches-v2-sep/0003-Revert-swiotlb-rework-fix-info-leak-with-DMA_FROM_DE.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0003-tick-Detect-and-fix-jiffies-update-stall.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0004-tick-rcu-Remove-obsolete-rcu_needs_cpu-parameters.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0005-tick-rcu-Stop-allowing-RCU_SOFTIRQ-in-idle.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0006-lib-irq_poll-Declare-IRQ_POLL-softirq-vector-as-ksof.patch"
+        "${_lucjanpath}/arch-patches-v8-sep/0007-x86-speculation-Restore-speculation-related-MSRs-dur.patch"
          # the main kernel config files
         'config')
 
@@ -346,9 +350,13 @@ sha512sums=('bb73202e770d10767739664b5320b47d78bc374b2bde38b289f1ede1b7b33a8be0a
             'SKIP'
             '79c3473364f47a4b92faca8318af147e5dd70423567afbdf78db7a58363aa48429aa0bffeaa20c4640a13105511b4b41be3f9824501a74f23aaac21d41e3efc5'
             'b63921b6246bd1b9545a8042d76334bef8a7ee46e5404c5efec4a842a455a84046e92423b2bc6d950f19dcf85805d7493fe71d6d177e3b46b52a279b0a44d0c9'
-            'd26c3f17f0fdc9ede8203a45baa242279c77e0397803346cb9d57ea6065a2fe5d1d2403698d52a72a072ed81761e68b50717d04237d695fae38a1958efc5f545'
-            'ca5a425bff20bed817c13ddb9854acbd47367b5126389e9e99815b0d576d1d07610ea9075efca298d0b8441cea65e3ba33aa53a11985a25909872dcd1c67a51e'
-            'ce80736a9edab23f1c6b9805ec1ba883534b6a8cc57bcbfad606d760632830c9152d2166a318311aee9f56dc394ba03f49186c3a0620309419666380d1d3b722'
+            '1948c60655f9554a9cd701eff8e9bf90868ace7aed736911e8d9385a6ff831ec48417fdbf0d75d48d2c9ba84ca70a3ddd45b205986013cbfeeb093fd95a51c5c'
+            'f1f616e9ee63a268ab8aa8bbf78736741350ea28db5b22755c45b84d81b360ec393f87155cea947c9b7aad86a42d950d98a6a0e96d2980c98927220b7969f87d'
+            '003d6375a1a7d63bb3e09c920c271e1ead08a769c6dbe51dee328381a7565486d0f9fef987ff7b7d94cb0d73317fe893f1ce307fa79e4c43d8bda4ef697af1ed'
+            'efb3a5e751f6fe8d8f29f6342dae0ed7c91be6320ec75953b31665605f352074078af9c138cc3936e448c4508488b13abc5dfb1506570339f3d653ec2ea54cc1'
+            'ba719b1cc15a1f12bc7784ee117a631ae7c4140ad7db35566a3151446a1c8a878ddb2c31228aafbfb584d507a381a9616c2645f32241d56d36de04013dc4f7f9'
+            '50a087b9450095bd584b5fc3f6be7ee6eb738511ecda279985b488f6f472c7651247c643771011465a382a295c69f9465a0e7658873c1d5982d3e1b83e853637'
+            '712a038bd76e2742c83c690600746379d39ebb6b976619d741eef3180a9d47b4cbe00584d02354f17dcf9ef841973fcf02568f2f37a37f554f890bc1f6a37085'
             '571141aaa429b704f89cba4b1a4aa67fbad9bd8295a7edcca0de9586e7de6617dbf2983d3c00e9de52d8c62a7150ff24bbe36e43aa4e7ed19bf53e66c1257c6c')
 
 validpgpkeys=(
