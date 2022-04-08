@@ -1,16 +1,16 @@
 pkgbase = chef-server
 	pkgdesc = The Chef server works with the Chef client as a central artifact store and distribution mechanism that manages scale, complexity, and safeguarding your systems.
-	pkgver = 13.2.0
+	pkgver = 14.14.1
 	pkgrel = 1
 	url = https://downloads.chef.io/chef-server/
 	arch = x86_64
-	license = Apache
+	license = custom:Chef EULA
 	conflicts = chef
 	conflicts = chef-solo
 	conflicts = chef-client
 	conflicts = chef-dk
-	source = https://packages.chef.io/files/stable/chef-server/13.2.0/ubuntu/18.04/chef-server-core_13.2.0-1_amd64.deb
-	sha256sums = c80d63471e173188f656ff36e74afbbc97524f764f3a41cdcc51bd4fedc659a8
+	source = https://packages.chef.io/files/stable/chef-server/14.14.1/ubuntu/18.04/chef-server-core_14.14.1-1_amd64.deb
+	sha256sums = e04002324894491a6fbb33d15e0b30704a56ea90b44d7320ca113a21217bb14f
 
 pkgname = chef-server
-
+	depends = libxcrypt-compat
