@@ -3,12 +3,12 @@
 pkgname=powertop-git
 _pkgname=powertop
 pkgver=2.14.r15.g50d3c90
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool to diagnose issues with power consumption and power management, git version'
 arch=('i686' 'x86_64')
 url='https://01.org/powertop/'
 license=('GPL2')
-makedepends=('git')
+makedepends=('git' 'autoconf-archive')
 depends=('gcc-libs' 'libnl' 'ncurses' 'pciutils')
 provides=("$_pkgname")
 conflicts=("$_pkgname")

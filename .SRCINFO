@@ -1,12 +1,13 @@
 pkgbase = powertop-git
 	pkgdesc = A tool to diagnose issues with power consumption and power management, git version
 	pkgver = 2.14.r15.g50d3c90
-	pkgrel = 1
+	pkgrel = 2
 	url = https://01.org/powertop/
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	makedepends = git
+	makedepends = autoconf-archive
 	depends = gcc-libs
 	depends = libnl
 	depends = ncurses
