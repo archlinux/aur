@@ -2,7 +2,7 @@
 _pkgname=super_unko
 pkgname=$_pkgname-git
 pkgver=r405.93c23d8
-pkgrel=1
+pkgrel=2
 pkgdesc="Super Unko project is the one of the awesome, clean and sophisticated OSS project in the world."
 arch=('i686' 'x86_64')
 url="https://github.com/unkontributors/super_unko"
