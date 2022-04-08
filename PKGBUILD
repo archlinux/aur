@@ -5,7 +5,7 @@ pkgver=1.2.0.r7.ga98cd8c
 pkgrel=1
 pkgdesc="ChaiScript core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
-url="https://github.com/libretro/$_pkgname"
+url="https://github.com/libretro/libretro-chailove"
 license=('MIT')
 groups=('libretro')
 depends=('gcc-libs' 'libretro-core-info')
@@ -13,17 +13,17 @@ makedepends=('chaiscript' 'cppcodec' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
-	"git+$url.git"
-	'git+https://github.com/ChaiScript/ChaiScript_Extras.git'
-	'git+https://github.com/libretro/libretro-common.git'
-	'git+https://github.com/libretro/libretro-deps.git'
-	'git+https://github.com/icculus/physfs.git'
-	'git+https://github.com/effolkronium/random.git'
-	'git+https://github.com/libretro/sdl-libretro.git'
-	'git+https://gitlab.com/grumbel/SDL_tty.git'
-	'git+https://github.com/DanielGibson/Snippets.git'
-	'git+https://github.com/nothings/stb.git'
-	'git+https://github.com/mohaps/TinySHA1.git'
+	"$_pkgname::git+$url.git"
+	'ChaiScript_Extras::git+https://github.com/ChaiScript/ChaiScript_Extras.git'
+	'libretro-common::git+https://github.com/libretro/libretro-common.git'
+	'libretro-deps::git+https://github.com/libretro/libretro-deps.git'
+	'physfs::git+https://github.com/icculus/physfs.git'
+	'random::git+https://github.com/effolkronium/random.git'
+	'sdl-libretro::git+https://github.com/libretro/sdl-libretro.git'
+	'SDL_tty::git+https://gitlab.com/grumbel/SDL_tty.git'
+	'Snippets::git+https://github.com/DanielGibson/Snippets.git'
+	'stb::git+https://github.com/nothings/stb.git'
+	'TinySHA1::git+https://github.com/mohaps/TinySHA1.git'
 )
 b2sums=(
 	'SKIP'
