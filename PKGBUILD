@@ -1,5 +1,9 @@
 # Maintainer: Томас <70m4c@70m4c.su>
 
+# shellcheck disable=SC2148 # Ignore lack of shebang
+# shellcheck disable=SC2034 # Ignore "unused" PKGBUILD variables
+# shellcheck disable=SC2154 # Ignore "unassigned" references to $srcdir and $pkgdir
+
 pkgname=chef-client
 pkgver=16.12.3
 pkgrel=1
@@ -13,7 +17,7 @@ source=("https://packages.chef.io/files/stable/chef/${pkgver}/ubuntu/20.04/chef_
 sha256sums=('e2ef7f9bb58a466ab9cce93e4a593cb62eaa49c6e7719d6cff0cb1d92b279a7a')
 
 package() {
-  cd "$srcdir"
+  cd "$srcdir" || exit 1
   bsdtar -xf data.tar.xz -C "$pkgdir"
 
   install -Dm644 "$pkgdir/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
@@ -21,11 +25,11 @@ package() {
   # link executables
   binaries="chef-apply chef-shell knife chef-client chef-solo ohai"
 
-  mkdir -p $pkgdir/usr/bin
+  mkdir -p "$pkgdir/usr/bin"
 
   for binary in $binaries; do
-    ln -s /opt/chef/bin/$binary $pkgdir/usr/bin/ || error_exit "Cannot link $binary to /usr/bin"
+    ln -s "/opt/chef/bin/$binary" "$pkgdir/usr/bin/" || error_exit "Cannot link $binary to /usr/bin"
   done
-  chown -Rh 0:0 $pkgdir
-  chmod 755 $pkgdir/opt
+  chown -Rh 0:0 "$pkgdir"
+  chmod 755 "$pkgdir/opt"
 }
