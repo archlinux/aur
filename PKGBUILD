@@ -1,7 +1,7 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 pkgbase=linux
-pkgver=5.17.2.arch1
+pkgver=5.17.2.arch2
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -10,7 +10,7 @@ arch=(x86_64)
 license=(GPL2)
 makedepends=(
   bc libelf pahole cpio perl tar xz
-  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
+  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
   git
 )
 options=('!strip')
