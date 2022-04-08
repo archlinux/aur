@@ -1,11 +1,12 @@
 pkgbase = python-requests-ratelimiter
 	pkgdesc = Rate-limiting for the requests library
 	pkgver = 0.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/JWCook/requests-ratelimiter
 	arch = any
 	license = MIT
 	checkdepends = python-pytest
+	checkdepends = python-requests-mock
 	makedepends = python-build
 	makedepends = python-install
 	makedepends = python-poetry-core
