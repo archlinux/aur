@@ -1,6 +1,6 @@
 pkgbase = rime-flypy
 	pkgdesc = 小鹤音形 rime 挂接文件
-	pkgver = 10.8.7
+	pkgver = 10.8.7.1
 	pkgrel = 1
 	url = http://flypy.com/
 	install = rime-flypy.install
@@ -10,7 +10,7 @@ pkgbase = rime-flypy
 	optdepends = ibus-rime: input support
 	optdepends = fcitx-rime: input support
 	optdepends = fcitx5-rime: input support
-	source = rime-flypy-10.8.7.tar.gz::https://github.com/cubercsl/rime-flypy/archive/v10.8.7.tar.gz
-	sha256sums = 0964ac683ba3c05f264daf2157399836eda7e2c892b105c589067c6d9fa63655
+	source = rime-flypy-10.8.7.1.tar.gz::https://github.com/cubercsl/rime-flypy/archive/v10.8.7.1.tar.gz
+	sha256sums = 70af8aa4e6905f2b55ce4d67d258b69184eecf61d5dcf2ea0ccf5a7ca616a301
 
 pkgname = rime-flypy
