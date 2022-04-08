@@ -1,6 +1,6 @@
 pkgbase = aom-psy-git
 	pkgdesc = An open, royalty-free video coding format designed for video transmissions over the Internet
-	pkgver = r32348.g797b2371e
+	pkgver = r32421.g11d8f3a4d
 	pkgrel = 1
 	url = https://aomedia.org/
 	arch = i686
@@ -14,6 +14,7 @@ pkgbase = aom-psy-git
 	makedepends = perl
 	makedepends = yasm
 	makedepends = clang
+	makedepends = ccache
 	depends = gcc-libs
 	optdepends = aocc: AMD Optimizing Compiler
 	provides = aom

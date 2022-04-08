@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=aom-psy-git
-pkgver=r32348.g797b2371e
+pkgver=r32421.g11d8f3a4d
 pkgrel=1
 pkgdesc="An open, royalty-free video coding format designed for video transmissions over the Internet"
 arch=('i686' 'x86_64')
@@ -43,7 +43,6 @@ build() {
     -DCONFIG_AV1_ENCODER=1 \
     -DCONFIG_AV1_DECODER=1 \
     -DCONFIG_THREE_PASS=0 \
-    -DCONFIG_SHARP_SETTINGS=1 \
     ./
   make -C "_build"
 }
