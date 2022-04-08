@@ -1,6 +1,6 @@
 pkgbase = tulip
 	pkgdesc = Tulip is an information visualization framework dedicated to the analysis and visualization of relational data.
-	pkgver = 5.6.1
+	pkgver = 5.6.2
 	pkgrel = 1
 	url = http://tulip.labri.fr/
 	arch = i686
@@ -27,7 +27,7 @@ pkgbase = tulip
 	depends = qt5-webkit
 	optdepends = doxygen
 	optdepends = python-sphinx
-	source = https://sourceforge.net/projects/auber/files/tulip/tulip-5.6.1/tulip-5.6.1_src.tar.gz
-	sha256sums = bcf65f3ef60d3022645107ce291c6841bef8188dea0fd102e32f8edddfb6c3bb
+	source = https://sourceforge.net/projects/auber/files/tulip/tulip-5.6.2/tulip-5.6.2_src.tar.gz
+	sha256sums = 38017d09d416d99f42d92330535661234ad215ee3656721f7adcfd999ba16086
 
 pkgname = tulip
