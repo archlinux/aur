@@ -1,7 +1,7 @@
 pkgbase = pam_ssh_agent_auth
 	pkgdesc = PAM module which permits authentication via the keyring in a forwarded ssh-agent.
 	pkgver = 0.10.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jbeverly/pam_ssh_agent_auth
 	arch = i686
 	arch = x86_64
@@ -13,8 +13,7 @@ pkgbase = pam_ssh_agent_auth
 	depends = openssl
 	optdepends = openssh: standard ssh-agent
 	optdepends = gnupg: gpg ssh-agent
-	source = git://github.com/jbeverly/pam_ssh_agent_auth.git#tag=pam_ssh_agent_auth-0.10.4
+	source = git+https://github.com/jbeverly/pam_ssh_agent_auth.git#tag=pam_ssh_agent_auth-0.10.4
 	md5sums = SKIP
 
 pkgname = pam_ssh_agent_auth
-

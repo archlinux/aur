@@ -4,12 +4,12 @@
 # Contributor: Chris <alostengineer at narmos dot org>
 pkgname=pam_ssh_agent_auth
 pkgver=0.10.4
-pkgrel=2
+pkgrel=3
 pkgdesc="PAM module which permits authentication via the keyring in a forwarded ssh-agent."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/jbeverly/pam_ssh_agent_auth"
 license=('custom:OpenSSL')
-source=(git://github.com/jbeverly/pam_ssh_agent_auth.git#tag=$pkgname-$pkgver)
+source=(git+https://github.com/jbeverly/pam_ssh_agent_auth.git#tag=$pkgname-$pkgver)
 md5sums=('SKIP')
 makedepends=('git')
 depends=('openssl')
