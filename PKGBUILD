@@ -3,7 +3,7 @@
 # Contributor: bratus <szczepaniak.bartek plus github at gmail dot com>
 # Contributor: jjguti
 pkgname=radare2-git
-pkgver=5.5.5.r27233.d812a78e2a
+pkgver=5.6.7.r27627.7821ddb04b
 pkgrel=1
 pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('capstone' 'lz4' 'file' 'libzip' 'xxhash' 'libuv')
 provides=("radare2=${pkgver%.r*}")
 conflicts=('radare2')
 
-source=("$pkgname"::"git://github.com/radare/radare2.git")
+source=("$pkgname"::"git+https://github.com/radare/radare2.git")
 md5sums=('SKIP')
 
 pkgver () {
