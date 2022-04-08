@@ -1,0 +1,13 @@
+pkgbase = peep-git
+	pkgdesc = The CLI text viewer that works like less on a small pane within the terminal window
+	pkgver = 0.1.4.r21.g0eceafe
+	pkgrel = 1
+	url = https://github.com/ryochack/peep
+	arch = x86_64
+	makedepends = cargo
+	makedepends = git
+	provides = peep=0.1.4.r21.g0eceafe
+	source = peep::git+https://github.com/ryochack/peep.git
+	sha256sums = SKIP
+
+pkgname = peep-git
