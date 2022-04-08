@@ -1,6 +1,6 @@
 pkgbase = python-avocado
 	pkgdesc = Set of tools and libraries to help with automated testing
-	pkgver = 95.0
+	pkgver = 96.0
 	pkgrel = 1
 	url = http://avocado-framework.github.io/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = python-avocado
 	makedepends = python-docutils
 	depends = python
 	depends = libvirt-python
-	source = https://github.com/avocado-framework/avocado/archive/95.0.tar.gz
-	sha256sums = 2c651b6637b28b970a12a4fad1098730dc77befeb1029f480dc9bc42c7fe45ef
+	source = https://github.com/avocado-framework/avocado/archive/96.0.tar.gz
+	sha256sums = b506d95a511d273eac4b0fb468f8cb3f2103dcb431daa7adfa09450a7d4812ae
 
 pkgname = python-avocado
