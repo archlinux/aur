@@ -3,9 +3,9 @@ _pkgname=dracula-alacritty
 pkgname=$_pkgname-git
 pkgver=r8.50afeef
 pkgrel=1
-pkgdesc='Dracula theme for Alacritty'
+pkgdesc="Dracula theme for Alacritty"
 arch=('any')
-url='https://draculatheme.com/alacritty'
+url="https://draculatheme.com/alacritty"
 license=('MIT')
 groups=('dracula-theme')
 makedepends=('git')
@@ -17,7 +17,7 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
