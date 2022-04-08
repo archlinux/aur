@@ -11,7 +11,7 @@ license=('MIT')
 makedepends=('python-setuptools' 'python-pip')
 depends=('python')
 optdepends=()
-source=("https://pypi.io/packages/source/A/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
+source=("https://pypi.io/packages/source/a/${_pypi_pkgname}/${_pypi_pkgname}-${pkgver}.tar.gz")
 sha256sums=('684b77e2603045dbd2c8cfaf88e29913030c9a391a61b1d93886e8608c1d6bb7')
 
 build() {
