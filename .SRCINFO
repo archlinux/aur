@@ -1,0 +1,22 @@
+pkgbase = python-vodka
+	pkgdesc = plugin based real-time web service daemon
+	pkgver = 3.2.0
+	pkgrel = 1
+	url = https://github.com/20c/vodka
+	changelog = CHANGELOG.md
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	checkdepends = python-flask
+	checkdepends = python-django
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python-click
+	depends = python-munge
+	depends = python-pluginmgr
+	depends = python-tmpl
+	source = python-vodka-3.2.0.tar.gz::https://github.com/20c/vodka/archive/3.2.0.tar.gz
+	sha256sums = 8e2f8ac08ba26bbcbfcdb435ca87ddf86b6101a812e137b24b637f15c44ed646
+
+pkgname = python-vodka
