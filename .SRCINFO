@@ -17,7 +17,7 @@ pkgbase = dynarmic-git
 	provides = dynarmic=5.r160.g0fd32c5f
 	provides = libdynarmic.so
 	conflicts = dynarmic
-	source = git+https://github.com/merryhime/dynarmic.git
+	source = dynarmic::git+https://github.com/merryhime/dynarmic.git
 	b2sums = SKIP
 
 pkgname = dynarmic-git

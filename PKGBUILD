@@ -3,9 +3,9 @@ _pkgname=dynarmic
 pkgname=$_pkgname-git
 pkgver=5.r160.g0fd32c5f
 pkgrel=1
-pkgdesc='An ARM dynamic recompiler'
+pkgdesc="An ARM dynamic recompiler"
 arch=('x86_64')
-url="https://github.com/merryhime/$_pkgname"
+url="https://github.com/merryhime/dynarmic"
 license=('BSD')
 makedepends=(
 	'boost>=1.57'
@@ -20,7 +20,7 @@ makedepends=(
 checkdepends=('catch2>=2.13.8')
 provides=("$_pkgname=$pkgver" 'libdynarmic.so')
 conflicts=("$_pkgname")
-source=("git+$url.git")
+source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
 
 pkgver() {
