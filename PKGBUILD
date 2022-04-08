@@ -1,4 +1,4 @@
-# Maintainer: Michael Schubert <mschu. dev at gmail>
+# Maintainer: Michael Schubert <mschu. dev at gmail> github.com/mschubert/PKGBUILDs
 # Contributor: Maxim Andersson <thesilentboatman@gmail.com>
 _pkgname=drop-down-terminal
 _uuid='drop-down-terminal@gs-extensions.zzrough.org'
@@ -6,13 +6,15 @@ _gitname=gs-extensions-$_pkgname
 
 pkgname=gnome-shell-extension-$_pkgname-git
 pkgver=24.r10.g91ab851
-pkgrel=2
+pkgrel=3
 pkgdesc="Drop Down Terminal extension for the Gnome Shell"
 arch=('any')
 url="https://github.com/zzrough/$_gitname"
 license=('GPL3')
 depends=('gnome-shell')
 makedepends=('git')
+provides=('gnome-shell-extension-drop-down-terminal')
+conflicts=('gnome-shell-extension-drop-down-terminal')
 install=$_pkgname.install
 source=(git+https://github.com/ccat3z/$_gitname)
 sha256sums=('SKIP')
@@ -23,7 +25,7 @@ pkgver() {
 }
 
 prepare() {
-  sed -i '/shell-version/s|"],|", "41"],|' "$srcdir"/$_gitname/$_uuid/metadata.json
+  sed -i '/shell-version/s|"],|", "41", "42"],|' "$srcdir"/$_gitname/$_uuid/metadata.json
 }
 
 package() {
