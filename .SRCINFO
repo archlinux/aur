@@ -1,0 +1,33 @@
+pkgbase = libadwaita-without-adwaita-git
+	pkgdesc = libadwaita; Includes a patch to not overwrite the system theme
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://gnome.pages.gitlab.gnome.org/libadwaita
+	arch = i686
+	arch = x86_64
+	arch = armv7h
+	arch = armv6h
+	arch = aarch64
+	license = LGPL
+	makedepends = git
+	makedepends = meson
+	makedepends = gi-docgen
+	makedepends = sassc
+	makedepends = gobject-introspection
+	makedepends = vala
+	makedepends = pkg-config
+	makedepends = patch
+	makedepends = cmake
+	makedepends = meson
+	makedepends = libsass
+	makedepends = gcc
+	depends = gtk4
+	provides = libadwaita=1.1.0
+	provides = libadwaita-1.so=0-64
+	conflicts = libadwaita
+	source = libadwaita-without-adwaita-git::git+https://gitlab.gnome.org/GNOME/libadwaita
+	source = theming_patch.diff
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = libadwaita-without-adwaita-git
