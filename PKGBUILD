@@ -3,7 +3,6 @@
 pkgname=chef-client
 pkgver=16.12.3
 pkgrel=1
-_ubuntuver=xenial
 pkgdesc="The Chef Client installation package includes everything you need to start converging your machines."
 arch=('x86_64')
 url="https://downloads.chef.io/chef-client/"
