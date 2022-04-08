@@ -3,7 +3,7 @@
 # Date 1559294891 -7200
 #      Fri May 31 11:28:11 2019 +0200
 # Node ID c2aa7198fb925e7fde96abf65b6f68b9b755f112
-# Parent  0dd1b6436342922d434e7c818875b2a02a73b5ed
+# Parent  8d1110b6918acc4e7d3f655d1e55f4b4ff630abe
 Description: Add KDE integration to Firefox (toolkit parts)
 Author: Wolfgang Rosenauer <wolfgang@rosenauer.org>
 Author: Lubos Lunak <lunak@suse.com>
@@ -147,7 +147,7 @@ diff --git a/python/mozbuild/mozpack/chrome/manifest.py b/python/mozbuild/mozpac
 diff --git a/toolkit/components/downloads/moz.build b/toolkit/components/downloads/moz.build
 --- a/toolkit/components/downloads/moz.build
 +++ b/toolkit/components/downloads/moz.build
-@@ -45,10 +45,14 @@ XPCOM_MANIFESTS += [
+@@ -46,10 +46,14 @@ XPCOM_MANIFESTS += [
  
  if CONFIG["MOZ_PLACES"]:
      EXTRA_JS_MODULES += [
@@ -165,7 +165,7 @@ diff --git a/toolkit/components/downloads/moz.build b/toolkit/components/downloa
 diff --git a/toolkit/mozapps/downloads/HelperAppDlg.jsm b/toolkit/mozapps/downloads/HelperAppDlg.jsm
 --- a/toolkit/mozapps/downloads/HelperAppDlg.jsm
 +++ b/toolkit/mozapps/downloads/HelperAppDlg.jsm
-@@ -1231,36 +1231,66 @@ nsUnknownContentTypeDialog.prototype = {
+@@ -1252,36 +1252,66 @@ nsUnknownContentTypeDialog.prototype = {
          params.handlerApp &&
          params.handlerApp.executable &&
          params.handlerApp.executable.isFile()
@@ -346,7 +346,7 @@ diff --git a/toolkit/system/unixproxy/nsUnixSystemProxySettings.cpp b/toolkit/sy
 diff --git a/toolkit/xre/moz.build b/toolkit/xre/moz.build
 --- a/toolkit/xre/moz.build
 +++ b/toolkit/xre/moz.build
-@@ -91,17 +91,19 @@ elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "co
+@@ -92,17 +92,19 @@ elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "co
          "../components/printingui",
      ]
  elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "uikit":
@@ -360,17 +360,17 @@ diff --git a/toolkit/xre/moz.build b/toolkit/xre/moz.build
 +        "nsKDEUtils.cpp",
          "nsNativeAppSupportUnix.cpp",
      ]
+     CXXFLAGS += CONFIG["MOZ_X11_SM_CFLAGS"]
  else:
      UNIFIED_SOURCES += [
          "nsNativeAppSupportDefault.cpp",
      ]
  
- if CONFIG["MOZ_HAS_REMOTE"]:
 diff --git a/toolkit/xre/nsKDEUtils.cpp b/toolkit/xre/nsKDEUtils.cpp
 new file mode 100644
 --- /dev/null
 +++ b/toolkit/xre/nsKDEUtils.cpp
-@@ -0,0 +1,344 @@
+@@ -0,0 +1,321 @@
 +/* -*- Mode: C++; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- */
 +/* This Source Code Form is subject to the terms of the Mozilla Public
 + * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -410,36 +410,13 @@ new file mode 100644
 +#define MAKE_STR( n ) MAKE_STR2( n )
 +
 +static bool getKdeSession()
++{
++    if (PR_GetEnv("KDE_FULL_SESSION"))
 +    {
-+    Display* dpy = XOpenDisplay( NULL );
-+    if( dpy == NULL )
-+        return false;
-+    Atom kde_full_session = XInternAtom( dpy, "KDE_FULL_SESSION", true );
-+    bool kde = false;
-+    if( kde_full_session != None )
-+        {
-+        int cnt;
-+        if( Atom* props = XListProperties( dpy, DefaultRootWindow( dpy ), &cnt ))
-+            {
-+            for( int i = 0;
-+                 i < cnt;
-+                 ++i )
-+                {
-+                if( props[ i ] == kde_full_session )
-+                    {
-+                    kde = true;
-+#ifdef DEBUG_KDE
-+                    fprintf( stderr, "KDE SESSION %d\n", kde );
-+#endif
-+                    break;
-+                    }
-+                }
-+            XFree( props );
-+            }
-+        }
-+    XCloseDisplay( dpy );
-+    return kde;
++      return true;
 +    }
++    return false;
++}
 +
 +static bool getKdeSupport()
 +    {
@@ -831,12 +808,12 @@ diff --git a/uriloader/exthandler/HandlerServiceParent.cpp b/uriloader/exthandle
 diff --git a/uriloader/exthandler/moz.build b/uriloader/exthandler/moz.build
 --- a/uriloader/exthandler/moz.build
 +++ b/uriloader/exthandler/moz.build
-@@ -80,17 +80,19 @@ else:
+@@ -78,17 +78,19 @@ elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "ui
+ else:
+     # These files can't be built in unified mode because they redefine LOG.
      SOURCES += [
          osdir + "/nsOSHelperAppService.cpp",
      ]
-     if CONFIG["CC_TYPE"] in ("clang", "gcc"):
-         CXXFLAGS += ["-Wno-error=shadow"]
  
  if CONFIG["MOZ_WIDGET_TOOLKIT"] == "gtk":
      UNIFIED_SOURCES += [
@@ -851,7 +828,7 @@ diff --git a/uriloader/exthandler/moz.build b/uriloader/exthandler/moz.build
      ]
  elif CONFIG["MOZ_WIDGET_TOOLKIT"] == "windows":
      UNIFIED_SOURCES += [
-@@ -128,16 +130,17 @@ include("/ipc/chromium/chromium-config.m
+@@ -126,16 +128,17 @@ include("/ipc/chromium/chromium-config.m
  FINAL_LIBRARY = "xul"
  
  LOCAL_INCLUDES += [
@@ -864,11 +841,11 @@ diff --git a/uriloader/exthandler/moz.build b/uriloader/exthandler/moz.build
  ]
  
  if CONFIG["MOZ_ENABLE_DBUS"]:
-     CXXFLAGS += CONFIG["TK_CFLAGS"]
      CXXFLAGS += CONFIG["MOZ_DBUS_CFLAGS"]
  
  if CONFIG["MOZ_WIDGET_TOOLKIT"] == "gtk":
-     CXXFLAGS += CONFIG["TK_CFLAGS"]
+     CXXFLAGS += CONFIG["MOZ_GTK3_CFLAGS"]
+     CXXFLAGS += CONFIG["MOZ_DBUS_GLIB_CFLAGS"]
 diff --git a/uriloader/exthandler/unix/nsCommonRegistry.cpp b/uriloader/exthandler/unix/nsCommonRegistry.cpp
 new file mode 100644
 --- /dev/null
@@ -1283,7 +1260,7 @@ diff --git a/uriloader/exthandler/unix/nsOSHelperAppService.cpp b/uriloader/exth
 diff --git a/widget/gtk/moz.build b/widget/gtk/moz.build
 --- a/widget/gtk/moz.build
 +++ b/widget/gtk/moz.build
-@@ -137,16 +137,17 @@ FINAL_LIBRARY = "xul"
+@@ -136,16 +136,17 @@ FINAL_LIBRARY = "xul"
  
  LOCAL_INCLUDES += [
      "/layout/base",
@@ -1340,7 +1317,7 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
  #  include "Units.h"
  extern mozilla::LazyLogModule gWidgetLog;
  #  define LOG(args) MOZ_LOG(gWidgetLog, mozilla::LogLevel::Debug, args)
-@@ -242,17 +245,19 @@ nsFilePicker::AppendFilters(int32_t aFil
+@@ -236,17 +239,19 @@ nsFilePicker::AppendFilters(int32_t aFil
    mAllowURLs = !!(aFilterMask & filterAllowURLs);
    return nsBaseFilePicker::AppendFilters(aFilterMask);
  }
@@ -1361,7 +1338,7 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
  
    mFilters.AppendElement(filter);
    mFilterNames.AppendElement(name);
-@@ -352,16 +357,39 @@ nsresult nsFilePicker::Show(int16_t* aRe
+@@ -346,16 +351,39 @@ nsresult nsFilePicker::Show(int16_t* aRe
    return NS_OK;
  }
  
@@ -1401,7 +1378,7 @@ diff --git a/widget/gtk/nsFilePicker.cpp b/widget/gtk/nsFilePicker.cpp
    GtkFileChooserAction action = GetGtkFileChooserAction(mMode);
  
    const gchar* accept_button;
-@@ -581,16 +609,244 @@ void nsFilePicker::Done(void* file_choos
+@@ -575,16 +603,244 @@ void nsFilePicker::Done(void* file_choos
      mCallback->Done(result);
      mCallback = nullptr;
    } else {
@@ -1819,7 +1796,7 @@ diff --git a/xpcom/components/moz.build b/xpcom/components/moz.build
  ]
  
  if CONFIG["MOZ_WIDGET_TOOLKIT"] == "gtk":
-     CXXFLAGS += CONFIG["TK_CFLAGS"]
+     CXXFLAGS += CONFIG["MOZ_GTK3_CFLAGS"]
      if CONFIG["MOZ_ENABLE_DBUS"]:
          CXXFLAGS += CONFIG["MOZ_DBUS_GLIB_CFLAGS"]
  
@@ -1827,7 +1804,7 @@ diff --git a/xpcom/components/moz.build b/xpcom/components/moz.build
 diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
 --- a/xpcom/io/nsLocalFileUnix.cpp
 +++ b/xpcom/io/nsLocalFileUnix.cpp
-@@ -53,16 +53,17 @@
+@@ -54,16 +54,17 @@
  #include "prproces.h"
  #include "nsIDirectoryEnumerator.h"
  #include "nsSimpleEnumerator.h"
@@ -1845,7 +1822,7 @@ diff --git a/xpcom/io/nsLocalFileUnix.cpp b/xpcom/io/nsLocalFileUnix.cpp
  #  include "prmem.h"
  #  include "plbase64.h"
  
-@@ -2023,62 +2024,77 @@ nsLocalFile::SetPersistentDescriptor(con
+@@ -2071,62 +2072,77 @@ nsLocalFile::SetPersistentDescriptor(con
  
  NS_IMETHODIMP
  nsLocalFile::Reveal() {

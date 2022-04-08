@@ -1,18 +1,7 @@
- browser/branding/aurora/configure.sh  | 1 -
  config/baseconfig.mk                  | 2 +-
  toolkit/mozapps/installer/packager.mk | 4 ++--
  3 files changed, 3 insertions(+), 4 deletions(-)
 
-diff --git c/browser/branding/aurora/configure.sh i/browser/branding/aurora/configure.sh
-index 19d4ff057f73..2c79e136cc67 100644
---- c/browser/branding/aurora/configure.sh
-+++ i/browser/branding/aurora/configure.sh
-@@ -3,5 +3,4 @@
- # file, You can obtain one at http://mozilla.org/MPL/2.0/.
- 
- MOZ_APP_DISPLAYNAME="Firefox Developer Edition"
--MOZ_APP_REMOTINGNAME=firefox-dev
- MOZ_DEV_EDITION=1
 diff --git c/config/baseconfig.mk i/config/baseconfig.mk
 index 3ef3af95d611..81530dface0a 100644
 --- c/config/baseconfig.mk
