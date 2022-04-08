@@ -11,7 +11,7 @@ pkgbase = retroarch-assets-git
 	provides = retroarch-assets
 	conflicts = retroarch-assets
 	options = !strip
-	source = git+https://github.com/libretro/retroarch-assets.git
+	source = retroarch-assets::git+https://github.com/libretro/retroarch-assets.git
 	b2sums = SKIP
 
 pkgname = retroarch-assets-git
