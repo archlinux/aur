@@ -1,4 +1,4 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Томас <70m4c@70m4c.su>
 
 pkgname=chef-server
 pkgver=13.2.0
