@@ -1,5 +1,3 @@
-*.xz
-*.gz
-src/
-pkg/
-*.swp
+pkg/*
+src/*
+*.tar.*
