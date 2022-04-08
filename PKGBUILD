@@ -7,7 +7,7 @@
 pkgbase=arc-gtk-theme-git
 _pkgname=arc-theme
 pkgname=('arc-gtk-theme-git' 'arc-solid-gtk-theme-git')
-pkgver=20220105.r63.g4467a090
+pkgver=20220405.r1.g73ada856
 pkgrel=1
 pkgdesc="A flat theme suite with transparent elements."
 arch=('any')
@@ -21,7 +21,7 @@ md5sums=('SKIP')
 
 # Latest stable Arch package versions
 _cinnamonver=5.2
-_gnomeshellver=41
+_gnomeshellver=42
 
 pkgver() {
   cd "${_pkgname}"
