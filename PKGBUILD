@@ -3,7 +3,7 @@
 _pkgname=rust
 
 pkgname=mingw-w64-rust-bin
-pkgver=1.59.0
+pkgver=1.60.0
 pkgrel=1
 pkgdesc="Systems programming language focused on safety, speed and concurrency (PLEASE READ COMMENTS FIRST) (official build, mingw-w64)"
 arch=('x86_64')
@@ -24,15 +24,15 @@ source=("https://static.rust-lang.org/dist/cargo-${pkgver}-x86_64-unknown-linux-
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-unknown-linux-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-i686-pc-windows-gnu.tar.xz"{,.asc}
         "https://static.rust-lang.org/dist/rust-std-${pkgver}-x86_64-pc-windows-gnu.tar.xz"{,.asc})
-sha256sums=('f56ebfb333ea46e4429377bf4b16a2ec889d61640a41c3093577cdd8f3c80b96'
+sha256sums=('48edb2eb51d7c56ef9a3130f0b331e83f139559161f6f93b9588d28cf72610f3'
             'SKIP'
-            '838de1fef855ef7733a87862c2575e8da9f3fa11fd0a8ce05c293038ea92356e'
+            'fc0b41c15e348ad0eeb7a6c015a922a2ac95e9577e531635558b26d99399f315'
             'SKIP'
-            'c854a9ee3dd8e5be9522c1581f75838c1cbae6dece3934b0004f138c4a5024a3'
+            '6fb8ee3650beb10836ae48a9aaa535473e64eaca20695b88113267aea3c7557f'
             'SKIP'
-            '37752919914b8f4a8cc023fb3086cd9fc5af134418282a08128f6c2ee1fd7642'
+            '127b7fcd81f2f95b44006b01f075d0e86f99fe5a045412f5dc66c7b4c783de01'
             'SKIP'
-            '8064a7415a582b05014d333ca0a2566817930a005ec34176bde9b438c3c996a4'
+            'af6ffb5e1d8ce1cab7de8eb97aaf8dadd597dba468c2192edc0dcf2dc34c62c4'
             'SKIP')
 validpgpkeys=('108F66205EAEB0AAA8DD5E1C85AB96E6FA1BE5FE') # Rust Language (Tag and Release Signing Key) <rust-key@rust-lang.org>
 
