@@ -1,11 +1,7 @@
 _engver=0.0.0.0
 
-post_install() {
-
-	# Run script to install python version local to engine
-	"/opt/O3DE/${_engver}/python/get_python.sh"
-	
-	# Change ownership to user
+chown_as_user() {
+    # Change ownership to user
     if [ ! "$(logname 2>&1 >/dev/null)" ]; then
         _user=$(logname)
         _group=$(id -g -n ${_user})
@@ -14,5 +10,14 @@ post_install() {
         _group=root
     fi
     chown -R ${_user}:${_group} /opt/O3DE/${_engver}
+}
 
+post_install() {
+    chown_as_user
+	"/opt/O3DE/${_engver}/python/get_python.sh"
+}
+
+post_upgrade() {
+    chown_as_user
+    "/opt/O3DE/${_engver}/python/get_python.sh"
 }
