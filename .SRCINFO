@@ -1,0 +1,27 @@
+pkgbase = sim-sip-git
+	pkgdesc = A tool for preparing and managing Sim problem packages
+	pkgver = r166.9935af3
+	pkgrel = 1
+	url = https://github.com/varqox/sip
+	arch = x86_64
+	arch = i686
+	license = MIT
+	makedepends = python
+	makedepends = meson
+	makedepends = git
+	depends = libseccomp
+	depends = libzip
+	optdepends = texlive-latexextra: compiling TeX files support
+	optdepends = texlive-science: compiling TeX files support
+	optdepends = texlive-fontsextra: compiling TeX files support
+	optdepends = fpc: compiling Pascal solutions support
+	provides = sim-sip
+	provides = libsimlib.so
+	conflicts = sim-sip
+	conflicts = libsimlib.so
+	source = git+https://github.com/varqox/sip.git
+	source = git+https://github.com/varqox/simlib.git
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = sim-sip-git
