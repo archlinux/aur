@@ -1,6 +1,6 @@
 pkgbase = libayatana-appindicator
 	pkgdesc = Ayatana Application Indicators (Shared Library)
-	pkgver = 0.5.90
+	pkgver = 0.5.91
 	pkgrel = 1
 	url = https://github.com/AyatanaIndicators/libayatana-appindicator
 	arch = i686
@@ -20,7 +20,7 @@ pkgbase = libayatana-appindicator
 	depends = libayatana-indicator>=0.9.0
 	conflicts = libayatana-appindicator-gtk3
 	replaces = libayatana-appindicator-gtk3
-	source = libayatana-appindicator-0.5.90.tar.gz::https://github.com/AyatanaIndicators/libayatana-appindicator/archive/0.5.90.tar.gz
-	md5sums = e6cec6c1a79ce1fc968bd8f2bba7c0d4
+	source = libayatana-appindicator-0.5.91.tar.gz::https://github.com/AyatanaIndicators/libayatana-appindicator/archive/0.5.91.tar.gz
+	md5sums = 6828e6a99df1d64ea222421167406f63
 
 pkgname = libayatana-appindicator
