@@ -19,7 +19,7 @@ _merge_requests_to_use=('1441')
 
 pkgbase=mutter-performance
 pkgname=(mutter-performance mutter-performance-docs)
-pkgver=42.0+r38+gf820bb350
+pkgver=42.0+r45+g9d0f612de
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -32,13 +32,13 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof gi-docgen)
 checkdepends=(xorg-server-xvfb wireplumber python-dbusmock)
-_commit=f820bb35067f1e6b54d56f7652ee333ac8c8c35b  # tags/42.0^38
+_commit=9d0f612de14ca47d0a0cd89021367a49060c61ee  # tags/42.0^45
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch'
         'mr1877.patch')
 sha256sums=('SKIP'
             'a37a4ec7e4a4b771f0d78e1a20a320d004f6bb7d1a1f220ba6054cf55bf1c4be'
-            '0c6042aecc8a7d13ab4beb419d9ad0f2aa898bc3532f4f9741b5a35c036b6cf8')
+            '4407abe706a8569659f44c8a564eaba0cac1c201679a966859f2a6b595a2aa13')
 
 pkgver() {
   cd $pkgname
