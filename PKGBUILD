@@ -51,13 +51,13 @@ _major=5.17
 _minor=2
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
 license=('GPL2')
 options=('!strip')
-makedepends=('kmod' 'bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
+makedepends=('bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
@@ -72,8 +72,14 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v3-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v3-sep/0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0003-Revert-swiotlb-rework-fix-info-leak-with-DMA_FROM_DE.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0004-tick-Detect-and-fix-jiffies-update-stall.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0005-tick-rcu-Remove-obsolete-rcu_needs_cpu-parameters.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0006-tick-rcu-Stop-allowing-RCU_SOFTIRQ-in-idle.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0007-lib-irq_poll-Declare-IRQ_POLL-softirq-vector-as-ksof.patch"
+        "${_lucjanpath}/arch-patches-v7-sep/0008-x86-speculation-Restore-speculation-related-MSRs-dur.patch"
          # the main kernel config files
         'config')
 
@@ -196,8 +202,8 @@ _package() {
   # Used by mkinitcpio to name the kernel
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
-  echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
@@ -317,9 +323,15 @@ sha512sums=('d62537333c1cedf839e95bfcbf757f45dd063f27ecf7fbba910f04663c9bb259438
             'SKIP'
             'bb458673cd6d1d71c78edeb06c1c5e9ee663e43c0a058c87ac7a0cf542192d8478d06c9df60c2d7032289d7bf31953b41475638c30cd52e54c18c6e7c06f09bd'
             'b63921b6246bd1b9545a8042d76334bef8a7ee46e5404c5efec4a842a455a84046e92423b2bc6d950f19dcf85805d7493fe71d6d177e3b46b52a279b0a44d0c9'
-            '8782f82cd86a0ab7ef4eec1f69f172b5327ee36a1e0a1381eebca007e1160e5f6bf8512ab26e1ebba233c1dfb9658ba810f0d47b5d9118c326c17000f40fda4e'
-            'cb69c6d058c676dbf7246569e7b399a8305c7292b37561dd37a149977398c3deabee47197260b54f549b88d569064aae542ecadf2f931258664dbc4b8f9c9f18'
-            'a6c53dce2bc121ebdca8209042d59dc5b3d7255f3da082a357d9f197a1443a06555a8889b5175872017b7f7fc78b1df16e75715caec1c378114923d3ebf12630')
+            '34e79bf291dfd07339533a3b3673eaad36e9a4ebda7c5f59011547491f3810cffc010b679205488c7ab83abe9fd1a390c7c14ac095d602d93bfa1510bf0ee012'
+            '123313035a93de83bc92ed7c8b0d7107e3948aba419b49a28ba0697a5486e6df088d85d9ac1cfaefcef3ef35f5ea3842fc27aeff720ec732205f03785d8d0cf0'
+            'ecb305148411e33e45084cd3c05a98de3ff4db389b2fb7d7299dc346af61b2cbd8bbaf5462e55b3c99aa4f9741e515c9d3b7fc3dd9a3c1bbe65dbb67a0e14ab5'
+            'fa6867deb695c6e5657ffdfe50b6b69407f06f70c166633a60ed008873446aa4b8a4dba2ef6f9deb9b9bacf08f07ff5bb7df8076a98daaa9d2532e6cb4b6efeb'
+            'e8f16281e3aabb434b186f3090f9f33641f3bd5ad3b56d8e9403fd708a6a77873183ffb8c74d379b5f6f9489260e56f2cbb4302b09372000590a5f7aeb20bb2f'
+            'f558a06a30751a48ecdfce19a924145d26fa6656af8f7c1a5cd73ed2f285c3705f21035eb8c0c125f7b3a78866eec63d2f7c6fcd663decb8378e70158c9d0145'
+            '90430dbee56f062ee72e0535e9f591cfc9c6818e90c89601f76e163d79b93ae58375d6b9308dd23d3ba96dfde7bda4ac4192c735897b4549712e804f9e778649'
+            '61b8e404af7a0352e5f48b7fe8dd1466feec0f16b7a439465e1097d9ed8992eeb374560f2411e52ce4ad00c3b9b406086ffe6a9794d8e53fa06a0407ea3c6229'
+            '4884f0200751b810f0dcd1a2e705f2ac0f2f5dc9d88698fb5ff1f0dc0a290d4c7d3a55b825b49fec2607cbc2ee4648c2140c748861b623115fd95039384e021c')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
