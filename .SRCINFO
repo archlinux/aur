@@ -1,7 +1,7 @@
 pkgbase = mutter-x11-scaling
 	pkgdesc = A window manager for GNOME with X11 fractional scaling patch
 	pkgver = 42.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
 	license = GPL
@@ -33,6 +33,8 @@ pkgbase = mutter-x11-scaling
 	depends = graphene
 	depends = libxkbfile
 	depends = libsysprof-capture
+	provides = mutter
+	provides = libmutter-10.so
 	conflicts = mutter
 	options = debug
 	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=9249aba72a5c4454894c08735a4963ca1665e34d
@@ -43,10 +45,3 @@ pkgbase = mutter-x11-scaling
 	sha256sums = 9cd474af41c2b51d9c4c3da37b0d0b8edd51953e021ad64f3546d0b4f2db2636
 
 pkgname = mutter-x11-scaling
-	groups = gnome
-	provides = mutter
-	provides = libmutter-10.so
-
-pkgname = mutter-x11-scaling-docs
-	pkgdesc = A window manager for GNOME with X11 fractional scaling patch (documentation)
-	depends = 
