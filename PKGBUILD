@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxb-git
-pkgver=4.1.6.r0.gd9cf37c
+pkgver=4.1.7.r0.g0ea7261
 pkgrel=1
 pkgdesc="Generic C-implementation for Ambiorix Backend library"
 arch=("x86_64" "i686" "i486" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
