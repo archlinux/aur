@@ -37,8 +37,6 @@ prepare() {
 	  IdentityFile ~/.ssh/free_librespot_private_key
 	  User git
 	" >> ~/.ssh/config
-	eval `ssh-agent`
-	ssh-add ~/.ssh/free_librespot_private_key
 }
 
 pkgver() {
@@ -52,6 +50,8 @@ build() {
 	# The offline build flag is turned off, as we're not predownloading rust dependencies
 	meson setup --prefix '/usr' --libexecdir 'lib' --sbindir 'bin' --buildtype 'release' --wrap-mode 'nodownload' \
 		-Db_lto='true' -Db_pie='true' -Doffline='false' "$_sourcedirectory" "$_builddirectory"
+	eval `ssh-agent`
+	ssh-add ~/.ssh/free_librespot_private_key
 	meson compile -C "$_builddirectory"
 }
 
