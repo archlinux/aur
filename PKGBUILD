@@ -3,16 +3,16 @@ _pkgname=zycore-c
 pkgname=$_pkgname-git
 pkgver=1.1.0.r3.g8983325
 pkgrel=1
-pkgdesc='Zyan core library for C'
+pkgdesc="Zyan core library for C"
 arch=('x86_64')
-url="https://github.com/zyantific/$_pkgname"
+url="https://github.com/zyantific/zycore-c"
 license=('MIT')
 depends=('glibc')
 makedepends=('cmake' 'git')
 checkdepends=('gtest')
 provides=("$_pkgname=$pkgver" 'libZycore.so')
 conflicts=("$_pkgname")
-source=("git+$url.git")
+source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
 
 pkgver() {

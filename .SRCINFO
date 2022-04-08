@@ -12,7 +12,7 @@ pkgbase = zycore-c-git
 	provides = zycore-c=1.1.0.r3.g8983325
 	provides = libZycore.so
 	conflicts = zycore-c
-	source = git+https://github.com/zyantific/zycore-c.git
+	source = zycore-c::git+https://github.com/zyantific/zycore-c.git
 	b2sums = SKIP
 
 pkgname = zycore-c-git
