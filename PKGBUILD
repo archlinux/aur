@@ -5,13 +5,15 @@ _name='pywbem'
 pkgbase="${_name}"
 pkgname=('python-pywbem')
 pkgver='1.4.1'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='A WBEM client and related utilities'
 arch=('any')
 url="https://github.com/${_name}/${_name}"
-depends=('python-pyyaml' 'python-six' 'python-requests' 'python-urllib3')
-makedepends=('python' 'python-setuptools' 'python-wheel' 'python-mock' 'python-ply')
-license=('GPLv2.1+')
+depends=('python-pyyaml' 'python-six' 'python-requests'
+	 'python-urllib3' 'python-nocasedict' 'python-nocaselist')
+makedepends=('python' 'python-setuptools' 'python-wheel'
+	     'python-mock' 'python-ply')
+license=('LGPLv2.1+')
 source=("${url}/archive/refs/tags/${pkgver}.tar.gz")
 sha256sums=('8c20d6e6e4a6987531180b3ddf51c04e175d3044359f3385d2fdac624b77af8b')
 
