@@ -1,5 +1,5 @@
 # Maintainer: Vincent.Ducamps <aur@ducamps.win>
-pkgname=gnome-shell-extension-pop-shell-git
+pkgname=gnome-shell-extension-pop-shell-git-master_jammy
 pkgdesc="Pop Shell - Tiling window management in Gnome (WIP)"
 pkgver=r860.cb76a4c
 pkgrel=1
@@ -11,7 +11,7 @@ url="https://github.com/pop-os/shell"
 license=("GPLv3")
 install="pop-shell.install"
 optdepends=('gnome-shell-extensions: native-window extension for improved window placement')
-conflicts=("gnome-shell-extension-pop-shell")
+conflicts=("gnome-shell-extension-pop-shell" "gnome-shell-extension-pop-shell-git")
 makedepends=("typescript" "git")
 depends=("gnome-shell" "pop-shell-shortcuts-git" "pop-launcher-git" "fd")
 
