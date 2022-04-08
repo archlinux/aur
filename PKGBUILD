@@ -1,4 +1,4 @@
-# Maintainer: Simon Vikstrom <aur@devsn.se>
+# Maintainer: Томас <70m4c@70m4c.su>
 
 pkgname=chef-client
 pkgver=16.12.3
