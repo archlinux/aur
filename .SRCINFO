@@ -1,7 +1,7 @@
 pkgbase = gotktrix-git
 	pkgdesc = Matrix client in Go and GTK4
 	pkgver = r334.f46ae83
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/diamondburned/gotktrix
 	arch = x86_64
 	license = AGPL3

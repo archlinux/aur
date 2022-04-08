@@ -2,7 +2,7 @@
 pkgname=gotktrix-git
 license=('AGPL3')
 pkgver=r334.f46ae83
-pkgrel=1
+pkgrel=2
 pkgdesc="Matrix client in Go and GTK4"
 arch=('x86_64')
 url="https://github.com/diamondburned/${pkgname%-git}"
@@ -34,6 +34,5 @@ package() {
     cd "$srcdir/$pkgname"
     export GOPATH="$srcdir/go"
     echo $PWD
-    tree "$srcdir/$pkgname"
     install -Dm755 "$srcdir/$pkgname/${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
 }
