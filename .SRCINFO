@@ -1,6 +1,6 @@
 pkgbase = xbanish
 	pkgdesc = Hide the mouse cursor when typing
-	pkgver = 1.7
+	pkgver = 1.8
 	pkgrel = 1
 	url = https://github.com/jcs/xbanish
 	arch = i686
@@ -9,8 +9,7 @@ pkgbase = xbanish
 	makedepends = libxt
 	depends = libxfixes
 	depends = libxi
-	source = https://github.com/jcs/xbanish/archive/v1.7.zip
-	md5sums = ecce6af90f26d825da75b22107e2279c
+	source = https://github.com/jcs/xbanish/archive/v1.8.zip
+	md5sums = f12dc9e095d5586a507ad154940358e9
 
 pkgname = xbanish
-

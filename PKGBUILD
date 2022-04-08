@@ -1,7 +1,7 @@
 # Maintainer: Chris Down <chris@chrisdown.name>
 
 pkgname=xbanish
-pkgver=1.7
+pkgver=1.8
 pkgrel=1
 pkgdesc='Hide the mouse cursor when typing'
 url='https://github.com/jcs/xbanish'
@@ -11,7 +11,7 @@ depends=('libxfixes' 'libxi')
 makedepends=('libxt')
 
 source=("https://github.com/jcs/xbanish/archive/v${pkgver}.zip")
-md5sums=('ecce6af90f26d825da75b22107e2279c')
+md5sums=('f12dc9e095d5586a507ad154940358e9')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
