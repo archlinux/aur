@@ -157,6 +157,9 @@ polly = false
 # Whether to build the clang compiler.
 clang = false
 
+# Custom CMake defines to set when building LLVM.
+#build-config = {}
+
 # =============================================================================
 # General build configuration options
 # =============================================================================
@@ -289,7 +292,7 @@ verbose = 0
 sanitizers = false
 
 # Build the profiler runtime (required when compiling with options that depend
-# on this runtime, such as `-C profile-generate` or `-Z instrument-coverage`).
+# on this runtime, such as `-C profile-generate` or `-C instrument-coverage`).
 profiler = false
 
 # Indicates whether the native libraries linked into Cargo will be statically
