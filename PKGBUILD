@@ -2,7 +2,7 @@
 
 pkgname=artery-isp-console-bin
 pkgver=3.0.0
-pkgrel=3
+pkgrel=4
 # epoch=1
 pkgdesc="Artery ISP Console 是一款基于 MCU Bootloader 的命令行应用程序。使用该应用程序,用户可以通过 UART 端口或者 USB 端口配置操作 Artery 的 MCU 设备。"
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('icu' 'qt5-base' 'gcc-libs' 'glibc' 'systemd-libs' 'zlib' 'double-conve
 makedepends=('unarchiver')
 backup=()
 options=('!strip')
-#install=${pkgname}.install
+install=${pkgname}.install
 
 _pkg_file_name=Artery_ISP_Console_V${pkgver}.zip
 _DOWNLOADS_DIR=`xdg-user-dir DOWNLOAD`
@@ -56,25 +56,24 @@ package() {
     install -Dm0644 DFU_download.sh  "${pkgdir}/opt/Artery32/${pkgname%-bin}/DFU_download.sh.template"
     install -Dm0644 USART_download.sh  "${pkgdir}/opt/Artery32/${pkgname%-bin}/USART_download.sh.template"
 
-    install -Dm0644 /dev/stdin "${pkgdir}/etc/udev/rules.d/90-artery32.rules" << EOF
-# Copy this file to /etc/udev/rules.d/ or /usr/lib/udev/rules.d/
-# If rules fail to reload automatically, you can refresh udev rules
-# with the command "sudo udevadm control --reload"
+    install -Dm0644 /dev/stdin "${pkgdir}/usr/lib/udev/rules.d/49-artery32-udev.rules" << EOF
+# AT32 Bootloader DFU Install Disk
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="2e3c", ATTRS{idProduct}=="df11", \
+    MODE:="0666", \
+    SYMLINK+="AT32-Bootloader-DFU_%n"
 
-ACTION!="add|change", SUBSYSTEM!="usb_device", GOTO="artery32_rules_end"
+# AT-START-F437 V1.0 boards, with onboard AT-Link-EZ V1.2
+# ie, AT32F403CGT6, AT32F437ZMT7.
+# AT32F403CGT6 has AT-Link-EZ V1.2, which is quite different
 
-# SUBSYSTEM=="gpio", MODE="0666", GROUP="plugdev", TAG+="uaccess"
+SUBSYSTEMS=="usb", ATTRS{idVendor}=="2e3c", ATTRS{idProduct}=="f000", \
+    MODE:="0666", \
+    SYMLINK+="atlinkez-vcp-v1-2_%n"
 
-# SUBSYSTEM!="usb|tty|hidraw", GOTO="artery32_rules_end"
-
-# Please keep this list sorted by VID:PID
-
-# artery32
-ATTRS{idVendor}=="2e3c", ATTRS{idProduct}=="df11", MODE="666", GROUP="plugdev", TAG+="uaccess"
-# BUS=='usb',
-#ATTRS{manufacturer}=="*AT32*", MODE="0666", GROUP="plugdev", TAG+="uaccess"
-
-LABEL="artery32_rules_end"
+# If you share your linux system with other users, or just don't like the
+# idea of write permission for everybody, you can replace MODE:="0666" with
+# OWNER:="yourusername" to create the device owned by you, or with
+# GROUP:="somegroupname" and mange access using standard unix groups.
 EOF
 
     install -Dm0755 /dev/stdin "${pkgdir}/usr/bin/${pkgname%-bin}" << EOF
