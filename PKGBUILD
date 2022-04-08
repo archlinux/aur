@@ -128,8 +128,6 @@ END
 build() {
   cd mozilla-unified
 
-  patch -Np1 -i "$srcdir/bug1762050.diff"
-
   export MOZ_SOURCE_REPO="$_repo"
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
