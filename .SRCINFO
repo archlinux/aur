@@ -1,0 +1,14 @@
+pkgbase = subspace
+	pkgdesc = A Wireguard management interface
+	pkgver = 1.5.0
+	pkgrel = 1
+	url = https://github.com/subspacecommunity/subspace
+	arch = x86_64
+	license = GPL
+	makedepends = go-bindata
+	makedepends = go
+	provides = subspace=1.5.0
+	source = subspace-1.5.0.tar.gz::https://github.com/subspacecommunity/subspace/archive/refs/tags/v1.5.0.tar.gz
+	sha256sums = 1f521e3aad02f02bcc9f018a5ff671bf4a6b9c8613476f7f5b8e3b149c97a0aa
+
+pkgname = subspace
