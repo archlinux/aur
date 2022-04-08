@@ -2,7 +2,7 @@
 
 pkgname=browserstack-local-x64
 pkgver=8.5
-pkgrel=0
+pkgrel=1
 pkgdesc="BrowserStack Local Testing binary - 64bit"
 arch=("x86_64")
 license=('commercial')
@@ -10,7 +10,7 @@ url="https://www.browserstack.com/local-testing/"
 conflicts=("browserstack-local-x32")
 depends=("gcc-libs")
 source=(https://www.browserstack.com/browserstack-local/BrowserStackLocal-linux-x64.zip)
-sha512sums=('396c7f1ac9e1f399cf1b4a961e2c17f724a64c23feee12191850501552f92f54acb1032fe6fa703aee6f982d351a506b7742cf04d276cfe9520d390d0337043a')
+sha512sums=('9bb3b76091ad417717925a9ee9761565c425a9de53c0077ca66f2e32725821eed1d09abfaa01abbc056c993767045d3612a63ad8ced3f73447de803aee8b51fd')
 
 package() {
   install -Dm755 BrowserStackLocal "$pkgdir/usr/bin/BrowserStackLocal"
