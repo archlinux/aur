@@ -1,7 +1,7 @@
 pkgbase = spot-free-client-git
 	pkgdesc = Gtk/Rust native Spotify client with free accounts support - git version
-	pkgver = 0.3.2.r19.g7e5c896
-	pkgrel = 3
+	pkgver = 0.3.3.r19.g7e5c896
+	pkgrel = 1
 	url = https://github.com/Rayrsn/spot-free
 	arch = x86_64
 	arch = i686
