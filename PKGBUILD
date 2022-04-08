@@ -48,9 +48,9 @@ _1k_HZ_ticks=
 pkgbase=linux-bfq-dev
 # pkgname=('linux-bfq-dev' 'linux-bfq-dev-headers' 'linux-bfq-dev-docs')
 _major=5.17
-_minor=1
+_minor=2
 pkgver=${_major}.${_minor}
-pkgrel=6
+pkgrel=1
 _srcname=linux-${pkgver}
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
@@ -71,7 +71,7 @@ _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 #_bfq_rel="r2K210223"
 #_bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
 _bfq_path="bfq-lucjan"
-_bfq_rel="r2K220408v1"
+_bfq_rel="r2K220408v2"
 _bfq_patch="${_major}-${_bfq_path}-${_bfq_rel}.patch"
 _compiler_path="cpu-patches-sep"
 _compiler_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
@@ -81,9 +81,8 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
         "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v2-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v2-sep/0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch"
-        "${_lucjanpath}/arch-patches-v2-sep/0003-Revert-swiotlb-rework-fix-info-leak-with-DMA_FROM_DE.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v3-sep/0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch"
          # the main kernel config files
         'config')
 
@@ -331,13 +330,12 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('bb73202e770d10767739664b5320b47d78bc374b2bde38b289f1ede1b7b33a8be0adf0808dd82b49735534fe1aae7d83acbf6e42de214d2e179832f6e6c866dd'
+sha512sums=('d62537333c1cedf839e95bfcbf757f45dd063f27ecf7fbba910f04663c9bb259438c1616f4bd68c5b59157d79dbd40815bf13d3b3e99a18cbade2b32e4dc5483'
             'SKIP'
-            '79c3473364f47a4b92faca8318af147e5dd70423567afbdf78db7a58363aa48429aa0bffeaa20c4640a13105511b4b41be3f9824501a74f23aaac21d41e3efc5'
+            '7c778d59f4fbe27e068234a91d1a0e8eaa8e0047a595c1da3021048fe4109ffd75bdb8303f3d3c89e6d431a54a64afe524c48763fe8a16734228a77d305e8bae'
             'b63921b6246bd1b9545a8042d76334bef8a7ee46e5404c5efec4a842a455a84046e92423b2bc6d950f19dcf85805d7493fe71d6d177e3b46b52a279b0a44d0c9'
-            'd26c3f17f0fdc9ede8203a45baa242279c77e0397803346cb9d57ea6065a2fe5d1d2403698d52a72a072ed81761e68b50717d04237d695fae38a1958efc5f545'
-            'ca5a425bff20bed817c13ddb9854acbd47367b5126389e9e99815b0d576d1d07610ea9075efca298d0b8441cea65e3ba33aa53a11985a25909872dcd1c67a51e'
-            'ce80736a9edab23f1c6b9805ec1ba883534b6a8cc57bcbfad606d760632830c9152d2166a318311aee9f56dc394ba03f49186c3a0620309419666380d1d3b722'
+            '8782f82cd86a0ab7ef4eec1f69f172b5327ee36a1e0a1381eebca007e1160e5f6bf8512ab26e1ebba233c1dfb9658ba810f0d47b5d9118c326c17000f40fda4e'
+            'cb69c6d058c676dbf7246569e7b399a8305c7292b37561dd37a149977398c3deabee47197260b54f549b88d569064aae542ecadf2f931258664dbc4b8f9c9f18'
             'ccc376f0594f3908f724f23cd2ba2d3c3c217313835387ae9d62cd3df0da526a804afafbb053d1e9ba2ad9a364753198ab03de287f9ae1d61aaae19ecfe3a2b2')
 
 validpgpkeys=(
