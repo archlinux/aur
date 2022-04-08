@@ -13,6 +13,7 @@ pkgbase = libretro-jumpnbump-git
 	license = GPL2
 	makedepends = git
 	depends = glibc
+	depends = libretro-core-info
 	provides = libretro-jumpnbump
 	conflicts = libretro-jumpnbump
 	source = libretro-jumpnbump::git+https://github.com/libretro/jumpnbump-libretro.git
