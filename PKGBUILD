@@ -3,9 +3,9 @@ _pkgname=dracula-xresources
 pkgname=$_pkgname-git
 pkgver=r10.8de1197
 pkgrel=1
-pkgdesc='Dracula theme for X11 applications'
+pkgdesc="Dracula theme for X11 applications"
 arch=('any')
-url='https://draculatheme.com/xresources'
+url="https://draculatheme.com/xresources"
 license=('MIT')
 groups=('dracula-theme')
 makedepends=('git')
@@ -17,7 +17,7 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd $_pkgname
-	printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
