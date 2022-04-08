@@ -6,7 +6,7 @@
 #_with_usermode=1
 
 pkgname=mock
-pkgver=2.16
+pkgver=3.0
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -33,7 +33,7 @@ source=("$url/archive/$_pkgtag.tar.gz"
         "archlinux-defaults.cfg"
         "$pkgname.sysusers"
         "$pkgname.tmpfiles")
-sha256sums=('2e62bfedb159ca6331f490e7b0180ff9216959f43cfadcae8dc183167b3ef0c3'
+sha256sums=('60fe689017925767e6c21b47d15aa638b7623895188855b60e771a3221b3da5a'
             'e32d7e96c6ea3c1fb06f20bca60d7e9bc92e70e0eab52e74b0070264c94cef9c'
             'f6cba3f7e7f35c3d811f548af9ff2044764b6b65eb9bd74f035904c0c8463651'
             '7fd98f2d7700996041a835551a746cc8e6ab1048c7b297db9ac5c5534dd87d86')
@@ -62,8 +62,8 @@ build() {
 	pushd "$pkgname" >/dev/null
 
 	python_sitelib=$(python -c 'from sysconfig import get_path; import sys; sys.stdout.write(get_path(name="purelib"))')
-	sed -r -i "py/$pkgname"{,-parse-buildlog}.py \
-	    -e 's|^__VERSION__\s*=.*|__VERSION__="'$pkgver'"|' \
+	sed -r -i py/mockbuild/constants.py py/mock-parse-buildlog.py \
+	    -e 's|^VERSION\s*=.*|VERSION="'$pkgver'"|' \
 	    -e 's|^SYSCONFDIR\s*=.*|SYSCONFDIR="'$_sysconfdir'"|' \
 	    -e 's|^PYTHONDIR\s*=.*|PYTHONDIR="'$python_sitelib'"|' \
 	    -e 's|^PKGPYTHONDIR\s*=.*|PKGPYTHONDIR="'$python_sitelib'/mockbuild"|'
