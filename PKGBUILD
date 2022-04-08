@@ -37,7 +37,7 @@ md5sums=("SKIP")
 build() {
 	# cd "$pkgname-$pkgver"
 	# ./configure --prefix=/usr
-    cd BingWall
+    cd BingWall/src
 	qmake
 	make -j$(nproc --all)
 
