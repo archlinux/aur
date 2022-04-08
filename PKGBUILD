@@ -23,31 +23,17 @@ pkgver() {
 }
 
 prepare() {
-  cd $pkgname
-  NOCONFIGURE=1 ./autogen.sh
+  arch-meson "$pkgname" "$pkgname/build"
 }
 
 build() {
-  cd $pkgname
-  ./configure --prefix=/usr --libexecdir=/usr/lib --sysconfdir=/etc \
-    --enable-vala --enable-applet
-  make
+  meson compile -C "$pkgname/build"
 }
 
 check () {
-  cd $pkgname
-  make check
+  meson test -C "$pkgname/build"
 }
 
 package() {
-  cd $pkgname
-  make DESTDIR="$pkgdir" install
-
-  install -Dm644 data/completions/gpaste-client \
-    "$pkgdir/usr/share/bash-completion/completions/gpaste-client"
-  install -Dm644 data/completions/_gpaste-client \
-    "$pkgdir/usr/share/zsh/site-functions/_gpaste-client"
-
-  # Don't autostart the applet, ever
-  rm "$pkgdir/etc/xdg/autostart/org.gnome.GPaste.Applet.desktop"
+  meson install --destdir "$pkgdir" -C "$pkgname/build"
 }
