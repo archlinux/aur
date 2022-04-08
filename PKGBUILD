@@ -16,7 +16,7 @@ optdepends=('toilet: for unko.toilet'
 conflicts=(super_unko)
 provides=(super_unko)
 source=("$_pkgname::git+https://github.com/unkontributors/super_unko.git#branch=oshiri")
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
