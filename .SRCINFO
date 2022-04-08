@@ -1,6 +1,6 @@
 pkgbase = libtins
 	pkgdesc = A high-level, multiplatform C++ network packet sniffing and crafting library
-	pkgver = 4.2
+	pkgver = 4.4
 	pkgrel = 1
 	url = http://libtins.github.io/
 	arch = i686
