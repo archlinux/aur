@@ -3,15 +3,15 @@ _pkgname=zydis
 pkgname=$_pkgname-git
 pkgver=3.2.0.r44.gdb2c163
 pkgrel=1
-pkgdesc='Fast and lightweight x86/x86-64 disassembler library'
+pkgdesc="Fast and lightweight x86/x86-64 disassembler library"
 arch=('x86_64')
-url='https://zydis.re/'
+url="https://zydis.re/"
 license=('MIT')
 depends=('glibc')
 makedepends=('cmake' 'git' 'ruby-ronn-ng' 'zycore-c>=1.1.0')
 provides=("$_pkgname=$pkgver" 'libZydis.so')
 conflicts=("$_pkgname")
-source=("git+https://github.com/zyantific/$_pkgname.git")
+source=("$_pkgname::git+https://github.com/zyantific/zydis.git")
 b2sums=('SKIP')
 
 pkgver() {
