@@ -2,7 +2,7 @@
 # Contributor: Hoàng Văn Khải <hvksmr1996@gmail.com>
 
 pkgname=dprint-bin
-pkgver=0.24.3
+pkgver=0.24.4
 pkgrel=1
 pkgdesc='Pluggable and configurable code formatting platform written in Rust.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ provides=('dprint')
 conflicts=('dprint')
 source=("$pkgname-$pkgver.zip::$url/releases/download/$pkgver/dprint-x86_64-unknown-linux-gnu.zip"
         'LICENSE')
-sha256sums=('f735d07f51f9d655d0710efcf0288fb9cdb76cc7b1e0f9a58ef79b6a3c6a57e4'
+sha256sums=('1abbc9940b998793d3269f9f40d86d69aa78a7c62664f2889a1c3aba560049dc'
             '43f8cfbeca17eccd83fc98f27d211073eaee5574fc3162f345acc196d6190ce7')
 
 package() {
