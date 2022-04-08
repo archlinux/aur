@@ -32,15 +32,12 @@ build() {
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  python -m installer --destdir="$pkgdir" dist/*.whl
+  python -m installer --destdir="${pkgdir}" dist/*.whl
 
-  # Symlink license to proper directory
-  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  install -d "$pkgdir/usr/share/licenses/${pkgname%-git}"
-  ln -s "${pkgdir}${site_packages}/git_nautilus_icons-2.0.3.dist-info/LICENSE" \
-    "$pkgdir/usr/share/licenses/${pkgname%-git}/"
+  # Install license:
+  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname%-git}"
 
   # compile Python bytecode for modules outside of site-packages:
-  python -m compileall -d / "$pkgdir"/usr/share
-  python -O -m compileall -d / "$pkgdir"/usr/share
+  python -m compileall -d / "${pkgdir}"/usr/share
+  python -O -m compileall -d / "${pkgdir}"/usr/share
 }
