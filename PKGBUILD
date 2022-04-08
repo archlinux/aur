@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=auto
-pkgver=3.0.6
+pkgver=3.0.7
 pkgrel=1
 pkgdesc='ArchLinux bootstrap and partitioning scripts, with optional AutoLinux configs.'
 arch=(x86_64)
@@ -11,7 +11,7 @@ license=('MIT')
 depends=(dialog parted)
 makedepends=(git)                 
 source=("https://gitlab.com/a4to/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
-sha256sums=('9cde26bc12cc590c7a813ad8b3847a5b259d5add7e299f5d57ede3320dfebefa')
+sha256sums=('1a7070bbf5dfc625bd6aa458897811a4de6eca87b29b77f25b58b4973642f709')
 
 package() {
     install -Dm755 ${pkgname}/{autoInstall,autoCleanInstall,autoPart} -t "${pkgdir}/opt/${_pkgname}"
