@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile
-pkgver=0.7.4
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
@@ -9,6 +9,7 @@ url="https://github.com/sile-typesetter/$pkgname"
 license=(AGPL3)
 depends=(bc
          bcprov # pdftk optdepend is required
+         curl
          entr
          epubcheck
          fontconfig
@@ -26,6 +27,7 @@ depends=(bc
          lua
          m4
          make
+         mdbook
          moreutils
          nodejs
          pandoc-sile-git
@@ -45,6 +47,7 @@ depends=(bc
          xorg-server-xvfb
          yq
          zint
+         zola
          zsh)
 _lua_deps=(colors-git
            filesystem
@@ -67,7 +70,7 @@ makedepends=(autoconf-archive
              yarn)
 _archive="$pkgname-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.xz")
-sha256sums=('18475a27803f725e73071e06dab72511695346586888e940a516598d4097892c')
+sha256sums=('e43d476226857a18a27526b04741e3832904e1ca19f88994ce888ca7aacbcd34')
 
 prepare() {
 	cd "$_archive"
@@ -76,22 +79,22 @@ prepare() {
 		-e 's/cargo \(build\|install\|test\)/cargo --offline \1/'
 	autoreconf
 	cargo fetch --locked  --target "$CARCH-unknown-linux-gnu"
-	local YARN_CACHE_FOLDER="$srcdir/node_modules"
+	export YARN_CACHE_FOLDER="$srcdir/node_modules"
 	yarn install --production --frozen-lockfile
 }
 
 build() {
     cd "$_archive"
-	local RUSTUP_TOOLCHAIN=stable
-	local CARGO_TARGET_DIR=target
-	local YARN_CACHE_FOLDER="$srcdir/node_modules"
+	export RUSTUP_TOOLCHAIN=stable
+	export CARGO_TARGET_DIR=target
+	export YARN_CACHE_FOLDER="$srcdir/node_modules"
 	./configure --prefix "/usr"
 	make
 }
 
 check() {
 	cd "$_archive"
-	local RUSTUP_TOOLCHAIN=stable
+	export RUSTUP_TOOLCHAIN=stable
 	make check
 }
 
