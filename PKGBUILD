@@ -5,7 +5,7 @@
 
 # Maintainer: Emmanuel Vodor <manu@paca.happy-dev.fr>
 pkgname=d-tracker-control-git
-pkgver=r4.5da2955
+pkgver=r10.554a002
 pkgrel=1
 epoch=
 pkgdesc="Polybar module to control d-tracker"
