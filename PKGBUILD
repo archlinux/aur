@@ -1,15 +1,16 @@
 # Maintainer: luisbocanegra <luis.bocanegra0 at protonmail dot com>
 pkgname=kde-material-you-colors
-pkgver=0.1.0BETA
+pkgver=0.2.0BETA
 pkgrel=1
 pkgdesc="Automatic KDE Material You Colors Generator from your wallpaper"
 arch=('x86_64')
 url="https://github.com/luisbocanegra/kde-material-you-colors"
 license=('APACHE')
-depends=("skia-sharp" "dbus-python" "python-numpy" "python-colr")
+depends=("dbus-python" "python-numpy")
+optdepends=('python-colr: colored hex codes printing')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha256sums=('8ad0e2a893badea716402519806c48c5c851be1414d5fc7e15d1500a9ffa9726')
+sha256sums=('5a46af0bb9c5fe96a7825db135fefe7da79b587ec5e24a986dd723c3c0f3da70')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -26,6 +27,8 @@ package() {
   install -Dm755 color_utils.py ${pkgdir}/usr/lib/${pkgname}/color_utils.py
   install -Dm755 schemeconfigs.py ${pkgdir}/usr/lib/${pkgname}/schemeconfigs.py
   install -Dm755 material-color-utility-bin ${pkgdir}/usr/lib/${pkgname}/material-color-utility-bin
+  install -Dm755 libSkiaSharp.so ${pkgdir}/usr/lib/${pkgname}/libSkiaSharp.so
   ln -s /usr/lib/${pkgname}/material-color-utility-bin ${pkgdir}/usr/bin/material-color-utility
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
+
