@@ -1,6 +1,6 @@
 pkgbase = amx_cli-git
 	pkgdesc = Ambiorix Interactive Command Line Interface
-	pkgver = 0.2.20.r1.ga8cfd14
+	pkgver = 0.2.21.r0.g38744c1
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/applications/amx-cli.git
 	arch = x86_64
