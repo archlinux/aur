@@ -12,7 +12,7 @@ url="https://cran.r-project.org/package=${_cranname}"
 license=(LGPL2.1)
 depends=('r>=2.6.0')
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('6b3531d2e7a239be9d6e3a1aa3256b2745eb68aa0bdffd2076d36552d0d7322b')
+sha256sums=("6b3531d2e7a239be9d6e3a1aa3256b2745eb68aa0bdffd2076d36552d0d7322b")
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
@@ -20,6 +20,9 @@ build() {
 
 package() {
   install -dm0755 "${pkgdir}/usr/lib/R/library"
-
   cp -a --no-preserve=ownership "${_cranname}" "${pkgdir}/usr/lib/R/library"
+
+  if [[ -f "${_cranname}/LICENSE" ]]; then
+    install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  fi
 }
