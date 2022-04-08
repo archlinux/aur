@@ -1,7 +1,7 @@
 pkgbase = pywbem
 	pkgdesc = A WBEM client and related utilities
 	pkgver = 1.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/pywbem/pywbem
 	arch = any
 	license = LGPLv2.1+
@@ -16,6 +16,7 @@ pkgbase = pywbem
 	depends = python-urllib3
 	depends = python-nocasedict
 	depends = python-nocaselist
+	depends = python-yamlloader
 	source = https://github.com/pywbem/pywbem/archive/refs/tags/1.4.1.tar.gz
 	sha256sums = 8c20d6e6e4a6987531180b3ddf51c04e175d3044359f3385d2fdac624b77af8b
 
