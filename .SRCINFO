@@ -1,13 +1,13 @@
 pkgbase = cpu
 	pkgdesc = cpu command in Go, inspired by the Plan 9 cpu command
-	pkgver = 20220325
+	pkgver = 20220407
 	pkgrel = 1
 	url = https://github.com/u-root/cpu
 	arch = any
 	license = BSD
 	makedepends = git
 	makedepends = go
-	source = git+https://github.com/u-root/cpu#commit=59e1ebe6207a2294ce032c73b0476bbae956ceb6
+	source = git+https://github.com/u-root/cpu#commit=4ac91c2bba5b7bd34d445ff084a126fdff6e44e0
 	sha256sums = SKIP
 
 pkgname = cpu
