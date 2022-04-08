@@ -18,7 +18,7 @@ pkgbase = libretro-prboom-git
 	depends = libretro-core-info
 	provides = libretro-prboom
 	conflicts = libretro-prboom
-	source = git+https://github.com/libretro/libretro-prboom.git
+	source = libretro-prboom::git+https://github.com/libretro/libretro-prboom.git
 	b2sums = SKIP
 
 pkgname = libretro-prboom-git
