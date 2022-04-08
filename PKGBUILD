@@ -3,7 +3,7 @@
 _projectname='spot-free'
 pkgname="$_projectname-client-git"
 pkgver='0.3.2.r19.g7e5c896'
-pkgrel='2'
+pkgrel='3'
 pkgdesc='Gtk/Rust native Spotify client with free accounts support - git version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/Rayrsn/$_projectname"
