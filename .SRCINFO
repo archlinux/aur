@@ -1,0 +1,25 @@
+pkgbase = lua-irc-formatter
+	pkgdesc = A simple formatter/serializer for IRC messages.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jprjr/lua-irc-formatter
+	arch = any
+	license = MIT
+	source = https://github.com/jprjr/lua-irc-formatter/releases/download/v1.0.0/irc-formatter-1.0.0.tar.gz
+	sha256sums = 9fbd056c9f34d5437ead45d8ce437b02497b6a3c8dd40d7cb0c672b5d50f5e23
+
+pkgname = lua-irc-formatter
+	pkgdesc = A simple formatter/serializer for IRC messages.
+	depends = lua<5.5
+
+pkgname = lua51-irc-formatter
+	pkgdesc = A simple formatter/serializer for IRC messages. for Lua 5.1
+	depends = lua51
+
+pkgname = lua52-irc-formatter
+	pkgdesc = A simple formatter/serializer for IRC messages. for Lua 5.2
+	depends = lua52
+
+pkgname = lua53-irc-formatter
+	pkgdesc = A simple formatter/serializer for IRC messages. for Lua 5.3
+	depends = lua53
