@@ -1,23 +1,21 @@
 pkgbase = whatip
 	pkgdesc = Info on your IP
-	pkgver = 1.0+29+geb8584c
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://gabmus.gitlab.io/whatip
 	arch = any
 	license = GPL3
 	checkdepends = appstream
-	makedepends = git
+	makedepends = blueprint-compiler-git
 	makedepends = meson
 	makedepends = gobject-introspection
-	depends = gtk4
 	depends = iproute2
 	depends = libadwaita
 	depends = python-requests
 	depends = python-netaddr
 	depends = python-gobject
-	depends = python-iperf3
 	optdepends = avahi: hostname resolution
-	source = git+https://gitlab.gnome.org/GabMus/whatip.git#commit=eb8584c3ba1ed7f342c2255f95e2baba514dfc18
-	sha256sums = SKIP
+	source = https://gitlab.gnome.org/GabMus/whatip/-/archive/1.1/whatip-1.1.tar.gz
+	sha256sums = a13f02d8a805913e5603f7659c7932879da13afcbf2b8f728d6b6bba93aeb085
 
 pkgname = whatip
