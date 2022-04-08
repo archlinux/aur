@@ -3,7 +3,7 @@
 # Contributor: NicoHood <archlinux {cat} nicohood {dog} de>
 _projectname='spot'
 pkgname="$_projectname-client-git"
-pkgver='0.3.2.r19.geb347ae'
+pkgver='0.3.3.r19.geb347ae'
 pkgrel='1'
 pkgdesc='Gtk/Rust native Spotify client - git version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')

@@ -1,6 +1,6 @@
 pkgbase = spot-client-git
 	pkgdesc = Gtk/Rust native Spotify client - git version
-	pkgver = 0.3.2.r19.geb347ae
+	pkgver = 0.3.3.r19.geb347ae
 	pkgrel = 1
 	url = https://github.com/xou816/spot
 	arch = x86_64
