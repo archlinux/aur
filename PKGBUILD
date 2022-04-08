@@ -47,7 +47,7 @@ _1k_HZ_ticks=
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-next-git
-pkgver=20220401.r0.ge5071887cd22
+pkgver=20220408.r0.gff511c1c68a5
 _srcname=linux-next
 pkgrel=1
 pkgdesc='Linux NEXT'
@@ -55,7 +55,7 @@ arch=('x86_64')
 url="http://www.kernel.org/"
 license=('GPL2')
 options=('!strip')
-makedepends=('kmod' 'bc' 'libelf' 'git' 'pahole' 'cpio' 'perl' 'tar' 'xz')
+makedepends=('bc' 'libelf' 'git' 'pahole' 'cpio' 'perl' 'tar' 'xz')
 #makedepends=('kmod' 'bc' 'libelf' 'git' 'python-sphinx' 'python-sphinx_rtd_theme'
 #             'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
 _lucjanver=5.17
@@ -191,7 +191,8 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
@@ -309,4 +310,4 @@ done
 
 sha512sums=('SKIP'
             '78a42a306c3b9a4afc6b182150c9ba907e727eceae870e811970aff3a4ce54622c0c86c509d9eddd74c909899bc13897c0c8cfb02395dbaa13e175766d5d77a5'
-            '13c0679bad634170b043dbd422aedd9cd287553dc6ce7415367e2fc9730e52c5182f2b8a4b0c8cb3b63296ae36fcb72293fb47739e28b88a6376de2a64665867')
+            '966631d3d6e199c32d3f7323bdc715fea92307e333bfb8e83c6dcc5b02e00222d0c5cfa1c91f8939b02b877a0d4a6bfc474641e7009164e520d443688befcaca')
