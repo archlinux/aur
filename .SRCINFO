@@ -1,0 +1,19 @@
+pkgbase = python-tmpl
+	pkgdesc = Template abstraction for using multiple template engine backends
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/20c/tmpl
+	changelog = CHANGELOG.md
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	checkdepends = python-django
+	checkdepends = python-jinja
+	makedepends = python-poetry
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	source = python-tmpl-1.0.0.tar.gz::https://github.com/20c/tmpl/archive/1.0.0.tar.gz
+	sha256sums = 2922e51ffcf03f36caae2e1badf218596d9c19cb0a3069efb734ca85341acc4f
+
+pkgname = python-tmpl
