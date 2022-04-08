@@ -5,18 +5,17 @@
 _pkgname=jenkins-job-builder
 pkgname=python-$_pkgname
 pkgver=3.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Takes simple descriptions of Jenkins jobs in YAML or JSON format and uses them to configure Jenkins'
 url='https://jenkins-job-builder.readthedocs.io/en/latest/'
 license=('APACHE')
 arch=('any')
 makedepends=('python-setuptools')
-# Removing PyYAML requirement for <6 until patch accepted:
+# Removing PyYaML requirement for <6 until patch accepted:
 #   https://storyboard.openstack.org/#!/story/2009723
 depends=(
   'python-six>=1.9.0'
   'python-yaml>=3.10.0'
-  'python-yaml<=6'
   'python-pbr>=1.8'
   'python-stevedore>=1.17.1'
   'python-python-jenkins>=0.4.15'

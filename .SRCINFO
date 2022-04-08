@@ -1,14 +1,13 @@
 pkgbase = python-jenkins-job-builder
 	pkgdesc = Takes simple descriptions of Jenkins jobs in YAML or JSON format and uses them to configure Jenkins
 	pkgver = 3.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jenkins-job-builder.readthedocs.io/en/latest/
 	arch = any
 	license = APACHE
 	makedepends = python-setuptools
 	depends = python-six>=1.9.0
 	depends = python-yaml>=3.10.0
-	depends = python-yaml<=6
 	depends = python-pbr>=1.8
 	depends = python-stevedore>=1.17.1
 	depends = python-python-jenkins>=0.4.15
