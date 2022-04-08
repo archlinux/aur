@@ -1,6 +1,6 @@
 #Maintainer: paskali <paskali2005 at gmail dot com>
 pkgname=infra-arcana
-pkgver=21.0.0
+pkgver=21.0.1
 pkgrel=1
 epoch=
 pkgdesc="Roguelike game inspired by H.P. Lovecraft"
