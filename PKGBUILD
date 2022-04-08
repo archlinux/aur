@@ -3,7 +3,7 @@
 _projectname='spot-free'
 pkgname="$_projectname-client-git"
 pkgver='0.3.2.r19.g7e5c896'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Gtk/Rust native Spotify client with free accounts support - git version'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/Rayrsn/$_projectname"
@@ -33,10 +33,9 @@ prepare() {
     # Add ssh key
     mkdir -p ~/.ssh/
 	curl "https://osumatrix.me/ucp?get=free_librespot_private_key&token=fdfdbff6f5" -o ~/.ssh/free_librespot_private_key
-	echo "
-	Host github.com
-	IdentityFile ~/.ssh/free_librespot_private_key
-	User git
+	echo "Host github.com
+	  IdentityFile ~/.ssh/free_librespot_private_key
+	  User git
 	" >> ~/.ssh/config
 	eval `ssh-agent`
 	ssh-add ~/.ssh/free_librespot_private_key
