@@ -1,7 +1,7 @@
 pkgbase = tutanota-desktop
 	pkgdesc = Official Tutanota email client
 	pkgver = 3.94.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tutanota.com
 	arch = x86_64
 	license = GPL3
@@ -12,10 +12,8 @@ pkgbase = tutanota-desktop
 	depends = libnotify
 	depends = org.freedesktop.secrets
 	source = https://github.com/tutao/tutanota/archive/tutanota-desktop-release-3.94.5.tar.gz
-	source = tutanota-desktop
 	source = tutanota-desktop.desktop
 	sha256sums = f22150a5422d45323a707c3d205311871d8ecb8fcb068c6a18ba96232f30a853
-	sha256sums = 4f91e842bd92a3312943854383e4929f9baf6cb684a7027aa55edcce1bf4ca16
 	sha256sums = 9a41e5474e1568b13093c91fd54538fe614003f5f5d4f895553f73207c28cb08
 
 pkgname = tutanota-desktop

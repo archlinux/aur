@@ -3,7 +3,7 @@
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
 pkgver=3.94.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
 url="https://tutanota.com"
@@ -12,10 +12,8 @@ depends=('nss' 'libappindicator-gtk3' 'libnotify' 'org.freedesktop.secrets')
 #makedepends=('node-gyp>=8.1.0' 'nodejs>=16.3.0' 'npm>=7.0.0')
 makedepends=('nvm' 'python')
 source=("https://github.com/tutao/tutanota/archive/$pkgname-release-$pkgver.tar.gz"
-        "$pkgname"
         "$pkgname.desktop")
 sha256sums=('f22150a5422d45323a707c3d205311871d8ecb8fcb068c6a18ba96232f30a853'
-            '4f91e842bd92a3312943854383e4929f9baf6cb684a7027aa55edcce1bf4ca16'
             '9a41e5474e1568b13093c91fd54538fe614003f5f5d4f895553f73207c28cb08')
 
 _ensure_local_nvm() {
@@ -46,10 +44,12 @@ build() {
 package() {
   cd "${pkgname%-*}-$pkgname-release-$pkgver"
   install -d "$pkgdir/opt/$pkgname/"
-  cp -r build/desktop/linux-unpacked/* \
+  cp -av build/desktop/linux-unpacked/* \
     "$pkgdir/opt/$pkgname/"
+  chmod 4755 "$pkgdir/opt/$pkgname/chrome-sandbox"
 
-  install -Dm755 "$srcdir/$pkgname" -t "$pkgdir/usr/bin/"
+  install -d "$pkgdir/usr/bin"
+  ln -s "/opt/$pkgname/$pkgname" "$pkgdir/usr/bin/"
 
   for icon_size in 64 512; do
     icons_dir=/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/
