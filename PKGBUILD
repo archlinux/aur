@@ -5,7 +5,7 @@
 
 _pkgname=Minecraft-Overviewer
 pkgname=(${_pkgname,,}{,-docs}-git)
-pkgver=0.17.0.r20.c1f1c311
+pkgver=0.17.0.r47.7171af58
 pkgrel=1
 pkgdesc="Render large resolution images of a Minecraft map with a web UI"
 arch=('x86_64')
