@@ -1,6 +1,6 @@
 pkgbase = uvw-git
 	pkgdesc = Header-only, event based, tiny and easy to use libuv wrapper in modern C++
-	pkgver = 2.11.0_libuv_v1.43.r0.g86fb93d
+	pkgver = 2.12.1_libuv_v1.44.r1.g684d912
 	pkgrel = 1
 	url = https://github.com/skypjack/uvw
 	arch = x86_64

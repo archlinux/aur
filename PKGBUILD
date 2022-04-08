@@ -1,6 +1,6 @@
 # Maintainer: database64128 <free122448@hotmail.com>
 pkgname=uvw-git
-pkgver=2.11.0_libuv_v1.43.r0.g86fb93d
+pkgver=2.12.1_libuv_v1.44.r1.g684d912
 pkgrel=1
 pkgdesc="Header-only, event based, tiny and easy to use libuv wrapper in modern C++"
 arch=(x86_64)
