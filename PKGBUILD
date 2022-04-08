@@ -3,7 +3,7 @@
 pkgname=('lua-irc-parser' 'lua51-irc-parser' 'lua52-irc-parser' 'lua53-irc-parser')
 _pkgname='irc-parser'
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url='https://github.com/jprjr/lua-irc-parser'
 license=('MIT')
@@ -27,9 +27,9 @@ package_lua51-irc-parser() {
     optdepends=('lua51-lpeg: faster parsing')
 
     cd "$_pkgname-$pkgver"
-    install -Dm644 src/irc-parser.lua "$pkgdir/usr/share/lua/5.4/irc-parser.lua"
-    install -Dm644 src/irc-parser/fallback.lua "$pkgdir/usr/share/lua/5.4/irc-parser/fallback.lua"
-    install -Dm644 src/irc-parser/lpeg.lua "$pkgdir/usr/share/lua/5.4/irc-parser/lpeg.lua"
+    install -Dm644 src/irc-parser.lua "$pkgdir/usr/share/lua/5.1/irc-parser.lua"
+    install -Dm644 src/irc-parser/fallback.lua "$pkgdir/usr/share/lua/5.1/irc-parser/fallback.lua"
+    install -Dm644 src/irc-parser/lpeg.lua "$pkgdir/usr/share/lua/5.1/irc-parser/lpeg.lua"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
@@ -39,9 +39,9 @@ package_lua52-irc-parser() {
     optdepends=('lua52-lpeg: faster parsing')
 
     cd "$_pkgname-$pkgver"
-    install -Dm644 src/irc-parser.lua "$pkgdir/usr/share/lua/5.4/irc-parser.lua"
-    install -Dm644 src/irc-parser/fallback.lua "$pkgdir/usr/share/lua/5.4/irc-parser/fallback.lua"
-    install -Dm644 src/irc-parser/lpeg.lua "$pkgdir/usr/share/lua/5.4/irc-parser/lpeg.lua"
+    install -Dm644 src/irc-parser.lua "$pkgdir/usr/share/lua/5.2/irc-parser.lua"
+    install -Dm644 src/irc-parser/fallback.lua "$pkgdir/usr/share/lua/5.2/irc-parser/fallback.lua"
+    install -Dm644 src/irc-parser/lpeg.lua "$pkgdir/usr/share/lua/5.2/irc-parser/lpeg.lua"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
@@ -51,9 +51,9 @@ package_lua53-irc-parser() {
     optdepends=('lua53-lpeg: faster parsing')
 
     cd "$_pkgname-$pkgver"
-    install -Dm644 src/irc-parser.lua "$pkgdir/usr/share/lua/5.4/irc-parser.lua"
-    install -Dm644 src/irc-parser/fallback.lua "$pkgdir/usr/share/lua/5.4/irc-parser/fallback.lua"
-    install -Dm644 src/irc-parser/lpeg.lua "$pkgdir/usr/share/lua/5.4/irc-parser/lpeg.lua"
+    install -Dm644 src/irc-parser.lua "$pkgdir/usr/share/lua/5.3/irc-parser.lua"
+    install -Dm644 src/irc-parser/fallback.lua "$pkgdir/usr/share/lua/5.3/irc-parser/fallback.lua"
+    install -Dm644 src/irc-parser/lpeg.lua "$pkgdir/usr/share/lua/5.3/irc-parser/lpeg.lua"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 

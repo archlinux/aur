@@ -1,6 +1,6 @@
 pkgbase = lua-irc-parser
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jprjr/lua-irc-parser
 	arch = any
 	license = MIT
