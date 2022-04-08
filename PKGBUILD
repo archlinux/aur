@@ -22,12 +22,12 @@ package() {
   cd "$srcdir" || exit 1
   bsdtar -xf data.tar.xz -C "$pkgdir"
 
-  install -Dm644 "$pkgdir/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$pkgdir/opt/chef/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   mkdir -p "$pkgdir/usr/bin"
   binaries="chef-apply chef-shell knife chef-client chef-solo ohai"
   for binary in $binaries; do
-    ln -s "/opt/$pkgname/bin/$binary" "$pkgdir/usr/bin/" || error_exit "Cannot link $binary to /usr/bin"
+    ln -s "/opt/chef/bin/$binary" "$pkgdir/usr/bin/" || error_exit "Cannot link $binary to /usr/bin"
   done
 
   chown -Rh 0:0 "$pkgdir"
