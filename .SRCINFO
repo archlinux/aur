@@ -1,0 +1,16 @@
+pkgbase = python-graphyte
+	pkgdesc = Library for sending data to a graphite metrics server
+	pkgver = 1.7.1
+	pkgrel = 1
+	url = https://github.com/benhoyt/graphyte
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = python-graphyte-1.7.1.tar.gz::https://github.com/benhoyt/graphyte/archive/v1.7.1.tar.gz
+	sha256sums = ce1f0df558298653043a5c3a4d43da4bd980207f36472080ca01cff7945ddc51
+
+pkgname = python-graphyte
