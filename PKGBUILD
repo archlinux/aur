@@ -1,11 +1,12 @@
 # Maintainer: Peter Jirasek <aur@dbs.sk>
 pkgname=eea
-pkgver=8.1.5.0
+_pkgver_major=9
+pkgver=9.0.5.0
 pkgrel=1
 arch=('x86_64')
 pkgdesc='ESET Endpoint Antivirus Business for Linux'
 url='https://www.eset.com/int/business/endpoint-antivirus-linux/'
-license=('unknown')
+license=('proprietary')
 depends=(
   'gcc'
   'make'
@@ -25,9 +26,9 @@ conflicts=('esets' 'eea-dkms' 'eea7-dkms')
 install=${pkgname}.install
 
 # https://www.eset.com/int/business/endpoint-antivirus-linux/download/
-source=("https://download.eset.com/com/eset/apps/business/eea/linux/g2/latest/${pkgname}u.${arch}.bin" "${pkgname}.install")
+source=("https://download.eset.com/com/eset/apps/business/eea/linux/g2/v${_pkgver_major}/${pkgver}/${pkgname}u.${arch}.bin" "${pkgname}.install")
 sha256sums=(
-  '43b3f92f757b44d2ecc42ec7b1512e8125119bf61da4271aab5fc432bbe051c4'
+  'd7682777d1cea6714ea0256bfc272217eb795139227edd60bafdf28d38a10aeb'
   'ab027704f39b684fe138182bf23d7d0d3eb556c6e5dc3751cc3b09ac97f71214'
 )
 
