@@ -14,7 +14,7 @@ depends=('gcc-libs')
 makedepends=('cmake' 'git')
 provides=("$_pkgname=$pkgver" 'libasmjit.so')
 conflicts=("$_pkgname")
-source=("git+https://github.com/asmjit/$_pkgname.git")
+source=("$_pkgname::git+https://github.com/asmjit/asmjit.git")
 b2sums=('SKIP')
 
 pkgver() {

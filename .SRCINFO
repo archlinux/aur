@@ -16,7 +16,7 @@ pkgbase = asmjit-git
 	provides = asmjit=r398.21a31b8
 	provides = libasmjit.so
 	conflicts = asmjit
-	source = git+https://github.com/asmjit/asmjit.git
+	source = asmjit::git+https://github.com/asmjit/asmjit.git
 	b2sums = SKIP
 
 pkgname = asmjit-git
