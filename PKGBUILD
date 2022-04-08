@@ -1,5 +1,5 @@
 pkgname=mock-core-configs
-pkgver=37.2
+pkgver=37.3
 _rpmrel=1
 _pkgtag=$pkgname-$pkgver-$_rpmrel
 pkgrel=$_rpmrel.1
@@ -8,8 +8,9 @@ url="https://github.com/rpm-software-management/mock"
 arch=('any')
 license=('GPL2')
 depends=('distribution-gpg-keys>=1.64')
+backup=('etc/mock/default.cfg')
 source=("$url/archive/$_pkgtag.tar.gz")
-sha256sums=('1218b43281a7e303b408cc4b119dbf240a6812f87fb5668665b183792bf894c4')
+sha256sums=('bbdeeee9c877855fcd555d8b1716d0c24b983ffce90ee7058dfcb1446682a478')
 
 # Uncomment to not package configs for EOLed versions of distributions
 #_without_eol=1
@@ -25,6 +26,7 @@ package() {
 
 	mkdir -p "$pkgdir/"etc/mock
 	install -Dp -m644 etc/mock/*.cfg "$pkgdir/"etc/mock/
+	install -Dp -m644 etc/mock/fedora-rawhide-"$CARCH".cfg "$pkgdir/"etc/mock/default.cfg
 	rm "$pkgdir/"etc/mock/site-defaults.cfg
 
 	mkdir -p "$pkgdir/"etc/mock/templates
