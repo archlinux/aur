@@ -1,27 +1,25 @@
-# Maintainer: yugrotavele <yugrotavele at archlinux dot us>
-# Contributor: Laurent Carlier <lordheavym at gmail.com>
-# Contributor: Christoph Zeiler <rabyte*gmail>
-# Contributor: oscarello <estrada.oscar@gmail.com>
-
+# Maintainer: fpaskali <paskali2005 at gmail>
 pkgname=burgerspace
-pkgver=1.9.2
+pkgver=1.9.4
 pkgrel=1
-pkgdesc="A clone of the 1982 BurgerTime video game by Data East"
-arch=('i686' 'x86_64')
-url="http://perso.b2b2c.ca/sarrazip/dev/$pkgname.html"
+pkgdesc="A hamburger-smashing video game"
+arch=('any')
+url="http://perso.b2b2c.ca/~sarrazip/dev/burgerspace.html"
 license=('GPL')
-depends=('sdl_image' 'sdl_mixer' 'flatzebra>=0.1.6')
-makedepends=('autoconf' 'automake')
-source=(http://perso.b2b2c.ca/sarrazip/dev/$pkgname-$pkgver.tar.gz)
-md5sums=('8675449bb1c3c014bc51837b60f6cc47')
+groups=()
+depends=('sdl' 'sdl_image' 'sdl_mixer' 'libflatzebra')
+source=("http://perso.b2b2c.ca/~sarrazip/dev/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('e4ba9b2421aa3db18ed0b99ecc23c114fe9146a248028064c5d477b99674d7d7ea4bb1de01041de1ddcc186242e346d186a155a6cdb3db28cca518349dcaa1b2')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./autogen.sh --prefix=/usr
+  cd "$pkgname-$pkgver"
+
+  ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
+  cd "$pkgname-$pkgver"
+
+  make DESTDIR="$pkgdir/" install
 }
