@@ -1,0 +1,16 @@
+pkgbase = obs-main-view-source
+	pkgdesc = This is a simple plugin for OBS Studio that provides a source to duplicate the main view
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://obsproject.com/forum/resources/main-view-source.1501/
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	license = GPL2
+	makedepends = cmake
+	depends = obs-studio
+	options = debug
+	source = obs-main-view-source-0.1.6.tar.gz::https://github.com/norihiro/obs-main-view-source/archive/0.1.6.tar.gz
+	sha256sums = 7c4239579e0a87ccd35031b2ae5acf66b1eaa8e390fc5e9d2c4ca254408e0a39
+
+pkgname = obs-main-view-source
