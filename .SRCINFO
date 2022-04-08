@@ -1,16 +1,18 @@
 pkgbase = python-pluginmgr
 	pkgdesc = Lightweight Python plugin system supporting config inheritance
-	pkgver = 1.0.1
+	pkgver = 1.1.0.1
 	pkgrel = 1
 	url = https://github.com/20c/pluginmgr
+	changelog = CHANGELOG.md
 	arch = any
 	license = Apache
 	checkdepends = python-pytest
+	checkdepends = python-pytest-xdist
 	makedepends = python-poetry
 	makedepends = python-build
-	makedepends = python-install
+	makedepends = python-installer
 	depends = python-munge
-	source = python-pluginmgr-1.0.1.tar.gz::https://github.com/20c/pluginmgr/archive/1.0.1.tar.gz
-	sha256sums = ba7dd2707026130f86f8d28d2c9051767f8c6dd1d9dce0fbf18c645d7c0ba266
+	source = python-pluginmgr-1.1.0.1.tar.gz::https://github.com/20c/pluginmgr/archive/1.1.0.1.tar.gz
+	sha256sums = 266207235945c14cf358bfb95ffb8c8f104a8d18ef9321d0b3c5f437011b9792
 
 pkgname = python-pluginmgr
