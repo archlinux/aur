@@ -12,10 +12,10 @@
 pkgbase=linux-acs-manjaro
 pkgname=('linux-acs-manjaro' 'linux-acs-manjaro-headers')
 _kernelname=-ACS-MANJARO
-_basekernel=5.16
-_basever=516
-pkgver=5.16.18
-pkgrel=1
+_basekernel=5.17
+_basever=517
+pkgver=5.17.1
+pkgrel=3
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
