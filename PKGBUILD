@@ -1,5 +1,9 @@
 # Maintainer: Томас <70m4c@70m4c.su>
 
+# shellcheck disable=SC2148 # Ignore lack of shebang
+# shellcheck disable=SC2034 # Ignore "unused" PKGBUILD variables
+# shellcheck disable=SC2154 # Ignore "unassigned" references to $srcdir and $pkgdir
+
 pkgname=chef-workstation
 pkgver=22.2.807
 pkgrel=1
@@ -15,7 +19,7 @@ sha256sums=('b6ee75b2c029259f23e1cd204118f758266bbd0466521ccbc45e3dd5708d05fc')
 package() {
   depends=('libxcrypt-compat')
 
-  cd "$srcdir"
+  cd "$srcdir" || exit 1
   bsdtar -xf data.tar.xz -C "$pkgdir"
 
   install -Dm644 "$pkgdir/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
