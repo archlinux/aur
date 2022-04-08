@@ -7,7 +7,7 @@
 pkgname=(libvirt libvirt-storage-gluster libvirt-storage-iscsi-direct libvirt-storage-rbd)
 epoch=1
 pkgver=8.2.0
-pkgrel=3
+pkgrel=4
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="https://libvirt.org/"
@@ -26,7 +26,8 @@ optdepends=('libvirt-storage-gluster: Gluster storage backend'
             'ebtables: required for default NAT networking'
             'qemu: QEMU/KVM support'
             'lvm2: Logical Volume Manager support'
-            'open-iscsi: iSCSI support via iscsiadm')
+            'open-iscsi: iSCSI support via iscsiadm'
+            'swtpm: TPM emulator support')
 
 backup=(
   'etc/libvirt/libvirt-admin.conf'
