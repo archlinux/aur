@@ -24,7 +24,7 @@ pkgbase = freetuxtv-git
 	depends = vlc
 	provides = freetuxtv
 	conflicts = freetuxtv
-	source = git+https://github.com/freetuxtv/freetuxtv.git
+	source = freetuxtv::git+https://github.com/freetuxtv/freetuxtv.git
 	b2sums = SKIP
 
 pkgname = freetuxtv-git

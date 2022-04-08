@@ -24,7 +24,7 @@ makedepends=(
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+$url.git")
+source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
 
 pkgver() {
