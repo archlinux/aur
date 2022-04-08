@@ -1,6 +1,6 @@
 # Maintainer: 4censord <mail@business-insulting.de>
-pkgname=subspace
-pkgver=1.5.0
+pkgname=subspace-git
+pkgver=r223.7d12b87
 pkgrel=1
 epoch=
 pkgdesc="A Wireguard management interface"
@@ -8,7 +8,7 @@ arch=('x86_64')
 url="https://github.com/subspacecommunity/subspace"
 license=('GPL')
 depends=()
-makedepends=('go-bindata' 'go')
+makedepends=('go-bindata' 'go' 'git')
 provides=($pkgname=$pkgver)
 conflicts=()
 replaces=()
@@ -16,16 +16,21 @@ backup=()
 options=()
 install=
 changelog=
-source=("$pkgname-$pkgver.tar.gz::https://github.com/subspacecommunity/subspace/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('1f521e3aad02f02bcc9f018a5ff671bf4a6b9c8613476f7f5b8e3b149c97a0aa')
+source=("${pkgname}::git+https://github.com/subspacecommunity/subspace")
+sha256sums=('SKIP')
 validpgpkeys=()
 
+pkgver() {
+  cd "$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	make build
 }
 
 package() {
-	cd "$pkgname-$pkgver"
+	cd "$pkgname"
 	install -Dm444 subspace ${pkgdir}/usr/bin/subspace
 }
