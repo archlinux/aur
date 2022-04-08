@@ -1,6 +1,6 @@
 pkgbase = appgate-sdp
 	pkgdesc = Appgate SDP (Software Defined Perimeter) desktop client
-	pkgver = 5.5.3
+	pkgver = 5.5.4
 	pkgrel = 1
 	url = https://www.appgate.com/support/software-defined-perimeter-support
 	arch = x86_64
@@ -19,10 +19,10 @@ pkgbase = appgate-sdp
 	options = staticlibs
 	options = !strip
 	options = !emptydirs
-	source = https://bin.appgate-sdp.com/5.5/client/appgate-sdp_5.5.3_amd64.deb
+	source = https://bin.appgate-sdp.com/5.5/client/appgate-sdp_5.5.4_amd64.deb
 	source = appgatedriver.service.patch
 	source = 10-appgate-tun.network
-	sha256sums = a92a38257fc98fe26479eb5920cc3cf0c2bb4b33a04fc68d6d06f2da427dd68a
+	sha256sums = eea7e05180fbb8f6fe64489ead11157e71e81b3d3f6ff27e85cb17fddb831565
 	sha256sums = 0789aa07d6a7af44187e407696d930e78c50370c19b8399722ebecb0655ffcdb
 	sha256sums = 2eb0daa10429e67d703cceccd34069da3044d99c5652658ec73c7a01c88b64e9
 
