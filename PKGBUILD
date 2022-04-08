@@ -17,19 +17,19 @@ source=("https://packages.chef.io/files/stable/chef/${pkgver}/ubuntu/20.04/chef_
 sha256sums=('e2ef7f9bb58a466ab9cce93e4a593cb62eaa49c6e7719d6cff0cb1d92b279a7a')
 
 package() {
+
+
   cd "$srcdir" || exit 1
   bsdtar -xf data.tar.xz -C "$pkgdir"
 
   install -Dm644 "$pkgdir/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  # link executables
-  binaries="chef-apply chef-shell knife chef-client chef-solo ohai"
-
   mkdir -p "$pkgdir/usr/bin"
-
+  binaries="chef-apply chef-shell knife chef-client chef-solo ohai"
   for binary in $binaries; do
-    ln -s "/opt/chef/bin/$binary" "$pkgdir/usr/bin/" || error_exit "Cannot link $binary to /usr/bin"
+    ln -s "/opt/$pkgname/bin/$binary" "$pkgdir/usr/bin/" || error_exit "Cannot link $binary to /usr/bin"
   done
+
   chown -Rh 0:0 "$pkgdir"
-  chmod 755 "$pkgdir/opt"
+  chmod -R 755 "$pkgdir/opt"
 }
