@@ -32,9 +32,9 @@ makedepends=(
 )
 checkdepends=('catch2>=2.13.7')
 source=(
-	"git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=${pkgver//./-}"
+	"yuzu-mainline::git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=${pkgver//./-}"
 	'yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git'
-	'git+https://github.com/ReinUsesLisp/sirit.git'
+	'sirit::git+https://github.com/ReinUsesLisp/sirit.git'
 	'compatibility_list.json.xz'
 	'unbundle-cubeb.patch'
 	'unbundle-discord-rpc.patch'
