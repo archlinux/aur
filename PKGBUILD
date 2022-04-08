@@ -2,9 +2,9 @@
 _pkgbasename=zls
 pkgname=${_pkgbasename}-git
 pkgrel=1
-pkgver=r837.0f65093
+pkgver=r884.fd2a863
 pkgdesc="Zig LSP implementation + Zig Language Server"
-arch=('any')
+arch=('x86_64' 'aarch64' 'i686')
 url="https://github.com/zigtools/${_pkgbasename}"
 license=('MIT')
 depends=('zig')
