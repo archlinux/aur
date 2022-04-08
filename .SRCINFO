@@ -1,12 +1,11 @@
 pkgbase = linux-lqx
 	pkgdesc = Linux Liquorix
 	pkgver = 5.17.2.lqx1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://liquorix.net/
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
-	makedepends = kmod
 	makedepends = libelf
 	makedepends = cpio
 	makedepends = python

@@ -63,12 +63,12 @@ _lqxpatchrel=3
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
 pkgver=5.17.2.lqx1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Liquorix'
 url='https://liquorix.net/'
 arch=(x86_64)
 license=(GPL2)
-makedepends=(bc kmod libelf cpio python pahole)
+makedepends=(bc libelf cpio python pahole)
 if [ -n "$_htmldocs_enable" ]; then
     makedepends+=(xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick)
 fi
@@ -236,7 +236,8 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
