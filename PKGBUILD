@@ -2,14 +2,14 @@
 # Contributor: LLL2yu <lll2yu@protonmail.com>
 
 pkgname=gallery-dl
-pkgver=1.21.0
+pkgver=1.21.1
 pkgrel=1
 pkgdesc='Command-line program to download image-galleries and collections from several image hosting sites'
 arch=(any)
 url=https://github.com/mikf/gallery-dl
 license=(GPL2)
 depends=(python python-requests)
-makedepends=(python-setuptools git)
+makedepends=(python-build python-installer python-setuptools python-wheel git)
 optdepends=('ffmpeg: Convert Pixiv Ugoira to WebM'
             'youtube-dl: Download videos'
             'python-pysocks: SOCKS support')
@@ -20,7 +20,7 @@ sha512sums=('SKIP')
 build() {
     cd ${pkgname}
     make
-    python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 check() {
@@ -29,5 +29,5 @@ check() {
 
 package() {
     cd ${pkgname}
-    python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
