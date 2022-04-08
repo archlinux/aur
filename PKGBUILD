@@ -2,7 +2,7 @@
 
 pkgname=artery-isp-console-bin
 pkgver=3.0.0
-pkgrel=4
+pkgrel=5
 # epoch=1
 pkgdesc="Artery ISP Console 是一款基于 MCU Bootloader 的命令行应用程序。使用该应用程序,用户可以通过 UART 端口或者 USB 端口配置操作 Artery 的 MCU 设备。"
 arch=('x86_64')
@@ -59,7 +59,7 @@ package() {
     install -Dm0644 /dev/stdin "${pkgdir}/usr/lib/udev/rules.d/49-artery32-udev.rules" << EOF
 # AT32 Bootloader DFU Install Disk
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="2e3c", ATTRS{idProduct}=="df11", \
-    MODE:="0666", \
+    KERNEL=="tty*", MODE:="0666", \
     SYMLINK+="AT32-Bootloader-DFU_%n"
 
 # AT-START-F437 V1.0 boards, with onboard AT-Link-EZ V1.2
@@ -67,8 +67,8 @@ SUBSYSTEMS=="usb", ATTRS{idVendor}=="2e3c", ATTRS{idProduct}=="df11", \
 # AT32F403CGT6 has AT-Link-EZ V1.2, which is quite different
 
 SUBSYSTEMS=="usb", ATTRS{idVendor}=="2e3c", ATTRS{idProduct}=="f000", \
-    MODE:="0666", \
-    SYMLINK+="atlinkez-vcp-v1-2_%n"
+   KERNEL=="tty*", MODE:="0666", \
+   SYMLINK+="atlink-vcp_%n"
 
 # If you share your linux system with other users, or just don't like the
 # idea of write permission for everybody, you can replace MODE:="0666" with
