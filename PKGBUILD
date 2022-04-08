@@ -3,8 +3,8 @@
 # Contributor: jtts
 # Contributor: Christian METZLER <neroth@xeked.com>
 pkgname=gnome-shell-extension-openweather-git
-pkgver=1.0.r259.gd714eb1
-pkgrel=2
+pkgver=1.0.r260.g69b4f54
+pkgrel=1
 pkgdesc="Gnome shell extension for displaying weather information"
 arch=(any)
 url="https://gitlab.com/jenslody/gnome-shell-extension-openweather"
@@ -26,7 +26,7 @@ build() {
   cd "$srcdir/$pkgname"
   ./autogen.sh --prefix=/usr
   make
-  sed -i '/shell-version/s|"40"|"41", "41.1"|' data/metadata.json
+  sed -i '/shell-version/s|"40"|"41", "41.1", "42"|' data/metadata.json
 }
 
 package() {
