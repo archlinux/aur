@@ -10,7 +10,7 @@ pkgbase = retroarch-joypad-autoconfig-git
 	optdepends = retroarch
 	provides = retroarch-joypad-autoconfig
 	conflicts = retroarch-joypad-autoconfig
-	source = git+https://github.com/libretro/retroarch-joypad-autoconfig.git
+	source = retroarch-joypad-autoconfig::git+https://github.com/libretro/retroarch-joypad-autoconfig.git
 	b2sums = SKIP
 
 pkgname = retroarch-joypad-autoconfig-git

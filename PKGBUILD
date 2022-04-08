@@ -5,14 +5,14 @@ pkgver=1.9.1.r2.g9c27a99
 pkgrel=1
 pkgdesc="RetroArch joypad autoconfig files"
 arch=('any')
-url="https://github.com/libretro/$_pkgname"
+url="https://github.com/libretro/retroarch-joypad-autoconfig"
 license=('MIT')
 groups=('libretro')
 makedepends=('git')
 optdepends=('retroarch')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("git+$url.git")
+source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
 
 pkgver() {
