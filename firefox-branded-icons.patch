@@ -1,0 +1,50 @@
+# HG changeset patch
+# Parent e0751ad74e835e80041a61ea00c2a63bf6fbe2de
+# Parent  30e1a232528000620a3874de06ea515e5ef8e77f
+
+diff --git a/browser/branding/branding-common.mozbuild b/browser/branding/branding-common.mozbuild
+--- a/browser/branding/branding-common.mozbuild
++++ b/browser/branding/branding-common.mozbuild
+@@ -22,12 +22,15 @@ def FirefoxBranding():
+         FINAL_TARGET_FILES.VisualElements += [
+             'VisualElements_150.png',
+             'VisualElements_70.png',
+         ]
+     elif CONFIG['MOZ_WIDGET_TOOLKIT'] == 'gtk':
+         FINAL_TARGET_FILES.chrome.icons.default += [
+             'default128.png',
+             'default16.png',
++            'default22.png',
++            'default24.png',
++            'default256.png',
+             'default32.png',
+             'default48.png',
+             'default64.png',
+         ]
+diff --git a/browser/installer/package-manifest.in b/browser/installer/package-manifest.in
+--- a/browser/installer/package-manifest.in
++++ b/browser/installer/package-manifest.in
+@@ -236,20 +236,23 @@
+ @RESPATH@/browser/chrome/browser@JAREXT@
+ @RESPATH@/browser/chrome/browser.manifest
+ @RESPATH@/chrome/pdfjs.manifest
+ @RESPATH@/chrome/pdfjs/*
+ @RESPATH@/chrome/toolkit@JAREXT@
+ @RESPATH@/chrome/toolkit.manifest
+ #ifdef MOZ_GTK
+ @RESPATH@/browser/chrome/icons/default/default16.png
++@RESPATH@/browser/chrome/icons/default/default22.png
++@RESPATH@/browser/chrome/icons/default/default24.png
+ @RESPATH@/browser/chrome/icons/default/default32.png
+ @RESPATH@/browser/chrome/icons/default/default48.png
+ @RESPATH@/browser/chrome/icons/default/default64.png
+ @RESPATH@/browser/chrome/icons/default/default128.png
++@RESPATH@/browser/chrome/icons/default/default256.png
+ #endif
+ @RESPATH@/browser/features/*
+ 
+ ; [DevTools Startup Files]
+ @RESPATH@/browser/chrome/devtools-startup@JAREXT@
+ @RESPATH@/browser/chrome/devtools-startup.manifest
+ 
+ ; DevTools
