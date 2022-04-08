@@ -2,9 +2,9 @@
 # shellcheck disable=SC2181,SC2148,SC2034,SC2164,SC2154
 
 _gitname=firefox-socket-control
-_version=1.4
+_version=1.5
 pkgname=${_gitname}-git
-pkgver=${_version}.70a8ffe
+pkgver=${_version}.0137da7
 pkgrel=1
 pkgdesc="Control Firefox from a UNIX socket."
 arch=('any')
@@ -13,10 +13,10 @@ license=('MIT')
 install=${pkgname}.install
 depends=('firefox' 'openbsd-netcat' 'nodejs')
 makedepends=('git')
-source=("https://addons.mozilla.org/firefox/downloads/file/3932891/socketcontrol-${_version}-fx.xpi"
+source=("https://addons.mozilla.org/firefox/downloads/file/3933677/socketcontrol-${_version}-fx.xpi"
         "git+${url}.git")
 noextract=("socketcontrol-${_version}-fx.xpi")
-sha256sums=('8e2c1e6bd19f0ecd7c0f93a77faa02b5d2dc469729120ed63e1de1fdc9de93c8'
+sha256sums=('37f8cbd5cf3b9250ba2eede0b44e5aef6312c0e54c6e2eb173c3939be4fffddd'
             'SKIP')
 
 pkgver() {
