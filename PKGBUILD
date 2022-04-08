@@ -1,6 +1,6 @@
 # Maintainer: database64128 <free122448@hotmail.com>
 pkgname=libqv2ray-git
-pkgver=r160.eb10006
+pkgver=r170.45d50f5
 pkgrel=1
 pkgdesc="Modular, feature-rich infrastructure library for Qv2ray"
 arch=(x86_64)
@@ -23,7 +23,6 @@ build() {
     cd "$srcdir/$pkgname"
     mkdir -p build && cd build
     cmake .. \
-        -DUSE_SYSTEM_LIBUV=ON \
         -DUSE_SYSTEM_UVW=ON \
         -DUSE_SYSTEM_PLUGIN_INTERFACE=ON \
         -DCMAKE_INSTALL_PREFIX=${pkgdir}/usr \
