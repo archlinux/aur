@@ -10,6 +10,7 @@ pkgbase = cassowary
 	depends = python-pip
 	depends = python-pyqt5
 	depends = freerdp
+	depends = libvirt-python
 	source = cassowary-0.6.tar.gz::https://github.com/casualsnek/cassowary/archive/refs/tags/0.6.tar.gz
 	sha256sums = d03430c82f730741011cb4a70ebff00e824f9eb96443d66b4cffe828f70e5958
 
