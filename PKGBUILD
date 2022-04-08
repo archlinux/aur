@@ -1,6 +1,6 @@
 #Maintainer: Benjamin Reich <aur@benjaminreich.de>
 pkgname=smap-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=0.1.0.rc.r6.gdab48f2
+pkgver=0.1.0.r2.08f4aee
 pkgrel=1
 pkgdesc="a drop-in replacement for Nmap powered by shodan.io "
 arch=('x86_64')
@@ -24,7 +24,7 @@ md5sums=('SKIP')
 
 pkgver() {
   cd ${pkgname%-git}
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
 }
 
 prepare() {
