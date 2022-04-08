@@ -1,15 +1,16 @@
 pkgbase = chef-client
-	pkgdesc = The Chef Infra Client installation package includes everything you need to start converging your machines.
-	pkgver = 16.12.3
+	pkgdesc = The Chef Client installation package includes everything you need to start converging your machines.
+	pkgver = 17.10.3
 	pkgrel = 1
 	url = https://downloads.chef.io/chef-client/
 	arch = x86_64
-	license = Apache
+	license = custom:Chef EULA
 	conflicts = chef
-	conflicts = cinc
 	conflicts = chef-solo
 	conflicts = chef-dk
-	source = https://packages.chef.io/files/stable/chef/16.12.3/ubuntu/20.04/chef_16.12.3-1_amd64.deb
-	sha256sums = e2ef7f9bb58a466ab9cce93e4a593cb62eaa49c6e7719d6cff0cb1d92b279a7a
+	conflicts = cinc
+	source = https://packages.chef.io/files/stable/chef/17.10.3/ubuntu/18.04/chef_17.10.3-1_amd64.deb
+	sha256sums = bcf012a2e1b632db09a2469cbfabb7363df4586c51e7d58cb851bc85166c267a
 
 pkgname = chef-client
+	depends = libxcrypt-compat
