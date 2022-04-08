@@ -12,7 +12,7 @@
 # Ubuntu credits:
 # Marco Trevisan: <https://salsa.debian.org/gnome-team/mutter/-/blob/ubuntu/master/debian/patches/x11-Add-support-for-fractional-scaling-using-Randr.patch>
 
-pkgbase=mutter
+pkgbase=mutter-x11-scaling
 pkgname=(mutter-x11-scaling mutter-x11-scaling-docs)
 pkgver=42.0
 pkgrel=2
@@ -28,7 +28,7 @@ makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof gi-docgen)
 checkdepends=(xorg-server-xvfb wireplumber python-dbusmock)
 options=(debug)
-conflicts=($pkgbase)
+conflicts=(mutter)
 _scaling_commit=784834cceb2bf0284d6b267ddc8f3d0d9ded7304 # Commit 784834cc
 _commit=9249aba72a5c4454894c08735a4963ca1665e34d  # tags/42.0^0
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
@@ -101,7 +101,7 @@ _pick() {
 }
 
 package_mutter-x11-scaling() {
-  provides=($pkgbase libmutter-10.so)
+  provides=(mutter libmutter-10.so)
   groups=(gnome)
 
   meson install -C build --destdir "$pkgdir"

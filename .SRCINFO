@@ -1,4 +1,4 @@
-pkgbase = mutter
+pkgbase = mutter-x11-scaling
 	pkgdesc = A window manager for GNOME with X11 fractional scaling patch
 	pkgver = 42.0
 	pkgrel = 2
