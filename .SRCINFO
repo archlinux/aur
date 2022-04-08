@@ -1,0 +1,9 @@
+pkgbase = aries-cli
+        pkgdesc = A CLI tool for Aries written in rust
+        pkgver = 0.1.0
+        pkgrel = 1
+        arch = x86_64
+        license = MIT
+        provides = aries-cli
+
+pkgname = aries-cli
