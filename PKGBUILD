@@ -12,53 +12,59 @@
 # Ubuntu credits:
 # Marco Trevisan: <https://salsa.debian.org/gnome-team/mutter/-/blob/ubuntu/master/debian/patches/x11-Add-support-for-fractional-scaling-using-Randr.patch>
 
-pkgname=mutter-x11-scaling
-_pkgname=mutter
-pkgver=41.5
-pkgrel=1
+pkgbase=mutter
+pkgname=(mutter-x11-scaling mutter-x11-scaling-docs)
+pkgver=42.0
+pkgrel=2
 pkgdesc="A window manager for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
 license=(GPL)
 depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
-         libcanberra startup-notification zenity libsm gnome-desktop upower
+         libcanberra startup-notification zenity libsm gnome-desktop 
          libxkbcommon-x11 gnome-settings-daemon libgudev libinput pipewire
          xorg-xwayland graphene libxkbfile libsysprof-capture)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
-             wayland-protocols sysprof)
-checkdepends=(xorg-server-xvfb pipewire-media-session python-dbusmock)
-provides=($_pkgname libmutter-9.so)
-groups=(gnome)
-conflicts=($_pkgname)
+             wayland-protocols sysprof gi-docgen)
+checkdepends=(xorg-server-xvfb wireplumber python-dbusmock)
 options=(debug)
-_commit=17926e941d67867911c462737f4d013adb55e4d6  # tags/41.5^0
+conflicts=($pkgbase)
+_scaling_commit=784834cceb2bf0284d6b267ddc8f3d0d9ded7304 # Commit 784834cc
+_commit=9249aba72a5c4454894c08735a4963ca1665e34d  # tags/42.0^0
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-        "https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/bf134596c22abbb6dc70adb7844e6d391ea4cd80/x11-Add-support-for-fractional-scaling-using-Randr.patch")
+	"x11-Add-support-for-fractional-scaling-using-Randr.patch::https://salsa.debian.org/gnome-team/mutter/-/raw/$_scaling_commit/debian/patches/x11-Add-support-for-fractional-scaling-using-Randr.patch"
+	"Support-Dynamic-triple-double-buffering.patch::https://salsa.debian.org/gnome-team/mutter/-/raw/f57e36e25ec2db36498b5b630638c67f25eef03a/debian/patches/Support-Dynamic-triple-double-buffering.patch")
 sha256sums=('SKIP'
-            '34463f4b17921fae3e75d7e1d862e4c170209eff35b2fc9fad376b8e14f3efb6')
+            'ca02dd8479ddfedeabbe2581b52591c2180cba9b0a34515bf1489cc71b974793'
+            '9cd474af41c2b51d9c4c3da37b0d0b8edd51953e021ad64f3546d0b4f2db2636')
 
 pkgver() {
-  cd $_pkgname
+  cd mutter
   git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
-  cd $_pkgname
+  cd mutter
 
-  # Add scaling support using randr under x11 (Marco Trevisan and Georg Wagner)
-  git revert -n ef0f7084
+  # Fix Dash-to-dock not autohiding
+  git cherry-pick -n 2aad56b949b8 0280b0aaa563
+
+  # https://bugs.archlinux.org/task/74360
+  git cherry-pick -n f9857cb8bd7af20e819283917ae165fa40c19f07
+
+  # Add scaling support using randr under x11 and dynamic triple buffering support
   patch -p1 -i "${srcdir}/x11-Add-support-for-fractional-scaling-using-Randr.patch"
-
-  # Make tests run
-  sed -i '/catchsegv/d' meson.build
+  patch -p1 -i "${srcdir}/Support-Dynamic-triple-double-buffering.patch"
 }
 
 build() {
   CFLAGS="${CFLAGS/-O2/-O3} -fno-semantic-interposition"
   LDFLAGS+=" -Wl,-Bsymbolic-functions"
-  arch-meson $_pkgname build \
+
+  arch-meson mutter build \
     -D egl_device=true \
     -D wayland_eglstream=true \
+    -D docs=true \
     -D installed_tests=false
   meson compile -C build
 }
@@ -71,12 +77,12 @@ _check() (
   pipewire &
   _p1=$!
 
-  pipewire-media-session &
+  wireplumber &
   _p2=$!
 
   trap "kill $_p1 $_p2; wait" EXIT
 
-  #meson test -C build --print-errorlogs
+  #meson test -C build --print-errorlogs -t 3
 )
 
 check() {
@@ -84,7 +90,28 @@ check() {
     bash -c "$(declare -f _check); _check"
 }
 
-package() {
-  meson install -C build --destdir "$pkgdir"
+_pick() {
+  local p="$1" f d; shift
+  for f; do
+    d="$srcdir/$p/${f#$pkgdir/}"
+    mkdir -p "$(dirname "$d")"
+    mv "$f" "$d"
+    rmdir -p --ignore-fail-on-non-empty "$(dirname "$f")"
+  done
 }
 
+package_mutter-x11-scaling() {
+  provides=($pkgbase libmutter-10.so)
+  groups=(gnome)
+
+  meson install -C build --destdir "$pkgdir"
+
+  _pick docs "$pkgdir"/usr/share/mutter-*/doc
+}
+
+package_mutter-x11-scaling-docs() {
+  pkgdesc+=" (documentation)"
+  depends=()
+
+  mv docs/* "$pkgdir"
+}
