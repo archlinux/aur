@@ -2,33 +2,31 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgname=lib32-gnome-themes-extra
-pkgver=3.28
-pkgrel=2
+pkgver=3.28+r6+g45b1d457
+pkgrel=1
 pkgdesc="Extra Themes for GNOME Applications (32-bit)"
 url="https://gitlab.gnome.org/GNOME/gnome-themes-extra"
 arch=(x86_64)
 license=(LGPL2.1)
 depends=(cantarell-fonts ${pkgname#lib32-})
-makedepends=(intltool wayland-protocols lib32-gtk2 lib32-gtk3 git)
+makedepends=(intltool lib32-gtk2 lib32-gtk3 git)
 optdepends=('lib32-gtk-engines: HighContrast GTK2 theme')
 provides=("lib32-gnome-themes-standard=$pkgver")
 conflicts=(lib32-gnome-themes-standard)
 replaces=('lib32-gnome-themes-standard<3.27.92')
-groups=(gnome)
-_commit=9f581269243dd7e76b3eb8cec9cf4128ab17da9e  # tags/3.28^0
+options=('!emptydirs')
+_commit=45b1d457c63b1c7f6c8dcb7fe29b23ec7cd63a14  # master
 source=("git+https://gitlab.gnome.org/GNOME/gnome-themes-extra.git#commit=$_commit")
 sha256sums=('SKIP')
 
 pkgver() {
   cd ${pkgname#lib32-}
-  git describe --tags | sed 's/-/+/g'
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
   cd ${pkgname#lib32-}
-  mkdir m4
-  intltoolize
-  autoreconf -fvi
+  NOCONFIGURE=1 ./autogen.sh
 }
 
 build() {
