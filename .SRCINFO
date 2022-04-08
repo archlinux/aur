@@ -1,0 +1,22 @@
+pkgbase = xash-dedicated-git
+	pkgdesc = A custom GoldSrc engine implementation (dedicated server)
+	pkgver = r1742.92cfa2af
+	pkgrel = 1
+	url = http://xash.su/
+	arch = x86_64
+	license = GPL3
+	makedepends = make
+	makedepends = binutils
+	makedepends = python
+	provides = xash_ded
+	conflicts = xash3d-hlsdk
+	conflicts = xash3d-git
+	conflicts = xash3d-fwgs-dedicated-git
+	source = xash-dedicated-git::git+https://github.com/FWGS/xash3d-fwgs
+	source = xash_ded
+	md5sums = SKIP
+	md5sums = 1a5bd603fbe564455b83d43b3102ff08
+	makedepends_x86_64 = gcc-multilib
+	makedepends_x86_64 = lib32-gcc-libs
+
+pkgname = xash-dedicated-git
