@@ -1,7 +1,7 @@
 pkgbase = sunsama-appimage
 	pkgdesc = The daily planner for elite professionals. Organize everything you need to do today in one place. Tasks, meetings, emails, you name it.
 	pkgver = 1.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sunsama.com/
 	arch = x86_64
 	license = custom:Commercial

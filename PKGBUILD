@@ -6,7 +6,7 @@ _pkgname=sunsama
 
 pkgname="${_pkgname}"-appimage
 pkgver=1.0.7
-pkgrel=1
+pkgrel=2
 pkgdesc="The daily planner for elite professionals. Organize everything you need to do today in one place. Tasks, meetings, emails, you name it."
 arch=('x86_64')
 url="https://sunsama.com/"
