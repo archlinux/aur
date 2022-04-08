@@ -2,7 +2,7 @@
 # ---
 _pkgname=AutoLinux
 pkgname=auto
-pkgver=3.0.5
+pkgver=3.0.6
 pkgrel=1
 pkgdesc='ArchLinux bootstrap and partitioning scripts, with optional AutoLinux configs.'
 arch=(x86_64)
@@ -12,7 +12,7 @@ license=('MIT')
 depends=(dialog parted)
 makedepends=(git)                 
 source=("https://gitlab.com/a4to/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
-sha256sums=('518b05f015a5e266e7571444777ae50dd95c33b34eceb11793209fbd17efe9ec')
+sha256sums=('be361961c85be7259c6976dec2c93cfab2af23b38f8fa94c1a0c3af0245c3556')
 
 package() {
     install -Dm755 ${_pkgname}/{autoInstall,autoCleanInstall,autoPart} -t "${pkgdir}/opt/${_pkgname}"

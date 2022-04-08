@@ -1,6 +1,6 @@
 pkgbase = auto
 	pkgdesc = ArchLinux bootstrap and partitioning scripts, with optional AutoLinux configs.
-	pkgver = 3.0.5
+	pkgver = 3.0.6
 	pkgrel = 1
 	url = https://gitlab.com/a4to/AutoLinux
 	install = auto.install
@@ -9,7 +9,7 @@ pkgbase = auto
 	makedepends = git
 	depends = dialog
 	depends = parted
-	source = https://gitlab.com/a4to/concise/-/raw/master/x86_64/auto-3.0.5-1-x86_64.pkg.tar.zst
-	sha256sums = 518b05f015a5e266e7571444777ae50dd95c33b34eceb11793209fbd17efe9ec
+	source = https://gitlab.com/a4to/concise/-/raw/master/x86_64/auto-3.0.6-1-x86_64.pkg.tar.zst
+	sha256sums = be361961c85be7259c6976dec2c93cfab2af23b38f8fa94c1a0c3af0245c3556
 
 pkgname = auto
