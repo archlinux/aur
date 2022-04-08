@@ -1,0 +1,13 @@
+pkgbase = echo-sd
+	pkgdesc = Echo "sudden death" message
+	pkgver = 1566580862
+	pkgrel = 1
+	url = https://www.osstech.co.jp/cgi-bin/echo-sd
+	arch = any
+	license = GPL3
+	optdepends = openssl: if you use Twitter
+	conflicts = super_unko=1.0.5-2
+	source = https://raw.githubusercontent.com/fumiyas/home-commands/990ca109504fa545a375d7c3228e550db670e85f/echo-sd
+	sha256sums = 39a71169dfac7a6ebdef00680ab9337999aa63057eb1b1a24877ad789148e196
+
+pkgname = echo-sd
