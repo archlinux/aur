@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=lib_amxc-git
-pkgver=1.5.0.r1.ged4ef70
+pkgver=1.5.1.r0.gbc0ad6d
 pkgrel=1
 pkgdesc="Generic C-implementation of data containers"
 arch=("x86_64" "i686" "i486" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
