@@ -28,12 +28,12 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 install=$_pkgname.install
 source=(
-	"git+https://github.com/mborgerson/$_pkgname.git"
-	'git+https://github.com/epezent/implot.git'
-	'git+https://github.com/ocornut/imgui.git'
-	'git+https://gitlab.com/qemu-project/berkeley-softfloat-3.git'
-	'git+https://gitlab.com/qemu-project/berkeley-testfloat-3.git'
-	'git+https://gitlab.com/qemu-project/keycodemapdb.git'
+	"$_pkgname::git+https://github.com/mborgerson/xemu.git"
+	'berkeley-softfloat-3::git+https://gitlab.com/qemu-project/berkeley-softfloat-3.git'
+	'berkeley-testfloat-3::git+https://gitlab.com/qemu-project/berkeley-testfloat-3.git'
+	'imgui::git+https://github.com/ocornut/imgui.git'
+	'implot::git+https://github.com/epezent/implot.git'
+	'keycodemapdb::git+https://gitlab.com/qemu-project/keycodemapdb.git'
 )
 b2sums=(
 	'SKIP'
