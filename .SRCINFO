@@ -1,0 +1,13 @@
+pkgbase = binary
+	pkgdesc = Utility for checking if a file is text or a binary file
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/xyproto/bin
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go
+	source = git+https://github.com/xyproto/bin#tag=v1.0.1
+	b2sums = SKIP
+
+pkgname = binary
