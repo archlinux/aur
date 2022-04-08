@@ -1,7 +1,7 @@
 pkgbase = jack
 	pkgdesc = A low-latency audio server
 	pkgver = 0.126.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://jackaudio.org/
 	arch = x86_64
 	license = GPL
@@ -28,13 +28,14 @@ pkgname = jack
 	depends = libasound.so
 	depends = libsamplerate.so
 	optdepends = celt: NetJACK driver
-	optdepends = jack-docs: for documentation
+	optdepends = jack-docs: for developer documentation
 	optdepends = jack-example-tools: for official JACK example-clients and tools
 	optdepends = libffado: FireWire support
 	optdepends = realtime-privileges: Acquire realtime privileges
-	provides = jack2
 	provides = libjack.so
 	provides = libjackserver.so
 	conflicts = jack2
+	conflicts = pipewire-jack
 
 pkgname = jack-docs
+	pkgdesc = A low-latency audio server - developer documentation
