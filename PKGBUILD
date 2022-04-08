@@ -12,7 +12,7 @@ license=('MIT')
 depends=(dialog parted)
 makedepends=(git)                 
 source=("https://gitlab.com/a4to/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
-sha256sums=('c352573f1fa1046b4531ffe47967437cd26994affd603786eddc4171400db43b')
+sha256sums=('3d53fc3b339f7c2523496b7f0086d2348970fee4232b906cf6e3d0129123ce9c')
 
 package() {
     install -Dm755 ${_pkgname}/{autoInstall,autoCleanInstall,autoPart} -t "${pkgdir}/opt/${_pkgname}"
