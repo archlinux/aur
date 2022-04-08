@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-sound-output-device-chooser
 	pkgdesc = Sound Input & Output Device Chooser.
-	pkgver = 41.39
+	pkgver = 42.42
 	pkgrel = 1
 	url = https://github.com/kgshank/gse-sound-output-device-chooser
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = gnome-shell-extension-sound-output-device-chooser
 	depends = gnome-shell
 	optdepends = python: for new profile identification
 	conflicts = gnome-shell-extension-sound-output-device-chooser-git
-	source = gnome-shell-extension-sound-output-device-chooser-41.39.tar.gz::https://github.com/kgshank/gse-sound-output-device-chooser/archive/39.tar.gz
-	sha256sums = c56af4ce7ff706762e5b3d71918e76661d2afc7434926269efc65fac20c1674f
+	source = gnome-shell-extension-sound-output-device-chooser-42.42.tar.gz::https://github.com/kgshank/gse-sound-output-device-chooser/archive/42.tar.gz
+	sha256sums = 74ae347899a1a8c42bbc2a791791453c56f88f84038f76e9df818bc2f27ab735
 
 pkgname = gnome-shell-extension-sound-output-device-chooser
