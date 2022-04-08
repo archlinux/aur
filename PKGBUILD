@@ -17,7 +17,7 @@ source=('https://packages.chef.io/files/stable/chef-server/14.14.1/ubuntu/18.04/
 sha256sums=('e04002324894491a6fbb33d15e0b30704a56ea90b44d7320ca113a21217bb14f')
 
 package() {
-
+  depends=('libxcrypt-compat')
 
   cd "$srcdir" || exit 1
   bsdtar -xf data.tar.xz -C "$pkgdir"
