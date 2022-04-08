@@ -15,7 +15,7 @@ optdepends=('doom3-data: for game data and icon')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
-	"git+https://github.com/dhewm/$_pkgname.git"
+	"$_pkgname::git+https://github.com/dhewm/dhewm3.git"
 	"$_pkgname.desktop"
 )
 b2sums=(
