@@ -6,12 +6,12 @@ pkgname="pam_u2f-git"
 _gitname='pam-u2f'
 _gitbranch='master'
 _gitauthor='Yubico'
-pkgver=1.0.8.r27.g683860d
+pkgver=1.2.0.r56.gb729fe1
 pkgrel=1
 pkgdesc="Universal 2nd Factor (U2F) PAM authentication module from Yubico"
 url='https://developers.yubico.com/pam-u2f/'
 license=('BSD')
-source=("git://github.com/${_gitauthor}/${_gitname}#branch=${_gitbranch}")
+source=("git+https://github.com/${_gitauthor}/${_gitname}#branch=${_gitbranch}")
 sha512sums=('SKIP')
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 depends=('pam' 'libfido2' 'openssl')
