@@ -1,0 +1,6 @@
+/pkg/
+/src/
+/*.deb
+/*.tar.xz
+/*.zst
+Gemfile.lock
