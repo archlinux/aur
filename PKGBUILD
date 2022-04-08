@@ -8,7 +8,7 @@ _major=5.17
 _minor=2
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc="User mode Linux kernel and modules"
 arch=('x86_64')
 license=('GPL2')
@@ -75,10 +75,12 @@ _package() {
 }
 
 _package-modules() {
-  
+  depends=('kmod')
+
   cd ${_srcname}
   local kernver="$(<version)"
-  make ARCH=um INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+  make ARCH=um INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
   rm -f $pkgdir/usr/lib/modules/${kernver}/{source,build}
   # sed expression for following substitutions
   local _subst="
