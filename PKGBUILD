@@ -1,11 +1,11 @@
 # Maintainer: Vincent.Ducamps <aur@ducamps.win>
 pkgname=gnome-shell-extension-pop-shell-git
 pkgdesc="Pop Shell - Tiling window management in Gnome (WIP)"
-pkgver=r859.28c3a18
+pkgver=r866.cb76a4c
 pkgrel=1
 _gitorg=pop-os
 _gitname=shell
-_gitbranch=master
+_gitbranch=master_jammy
 arch=(any)
 url="https://github.com/pop-os/shell"
 license=("GPLv3")
