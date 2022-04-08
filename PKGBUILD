@@ -17,19 +17,19 @@ source=("https://packages.chef.io/files/stable/chef-server/${pkgver}/ubuntu/18.0
 sha256sums=('c80d63471e173188f656ff36e74afbbc97524f764f3a41cdcc51bd4fedc659a8')
 
 package() {
+
+
   cd "$srcdir" || exit 1
   bsdtar -xf data.tar.xz -C "$pkgdir"
 
   install -Dm644 "$pkgdir/opt/$pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  # link executables
-  binaries="chef-apply chef-client chef-server-ctl chef-shell chef-solo gather-logs knife ohai"
-
   mkdir -p "$pkgdir/usr/bin"
-
+  binaries="chef-apply chef-client chef-server-ctl chef-shell chef-solo gather-logs knife ohai"
   for binary in $binaries; do
-    ln -s "/opt/opscode/bin/$binary" "$pkgdir/usr/bin/" || error_exit "Cannot link $binary to /usr/bin"
+    ln -s "/opt/$pkgname/bin/$binary" "$pkgdir/usr/bin/" || error_exit "Cannot link $binary to /usr/bin"
   done
+
   chown -Rh 0:0 "$pkgdir"
-  chmod 755 "$pkgdir/opt"
+  chmod -R 755 "$pkgdir/opt"
 }
