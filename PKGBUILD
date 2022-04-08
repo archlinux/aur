@@ -1,14 +1,14 @@
-# Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
+# Maintainer: Josh Holmer <jholmer.in@gmail.com>
 
 pkgname=aom-psy-git
-pkgver=r32421.g11d8f3a4d
+pkgver=r32422.g48d21fe00
 pkgrel=1
-pkgdesc="An open, royalty-free video coding format designed for video transmissions over the Internet"
+pkgdesc="An open, royalty-free video coding format, includes tune=vmaf and BlueSwordM's psy patches"
 arch=('i686' 'x86_64')
 url="https://aomedia.org/"
 license=('BSD' 'custom:PATENTS')
-depends=('gcc-libs')
-makedepends=('git' 'cmake' 'doxygen' 'graphviz' 'perl' 'yasm' 'clang' 'ccache')
+depends=('gcc-libs' 'vmaf')
+makedepends=('git' 'cmake' 'doxygen' 'graphviz' 'perl' 'yasm' 'clang')
 optdepends=('aocc: AMD Optimizing Compiler')
 provides=('aom' 'aom-git' 'libaom.so')
 conflicts=('aom' 'aom-git')
@@ -28,7 +28,6 @@ build() {
 
   cmake \
     -B "_build" \
-    -DENABLE_CCACHE=1 \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_INSTALL_LIBDIR="lib" \
@@ -42,6 +41,7 @@ build() {
     -DENABLE_EXAMPLES=1 \
     -DCONFIG_AV1_ENCODER=1 \
     -DCONFIG_AV1_DECODER=1 \
+    -DCONFIG_TUNE_VMAF=1 \
     -DCONFIG_THREE_PASS=0 \
     ./
   make -C "_build"
