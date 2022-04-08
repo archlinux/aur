@@ -6,13 +6,13 @@ pkgver=r535.5501c4f
 pkgrel=1
 pkgdesc="A re-implementation of the RenderWare Graphics engine"
 arch=('i686' 'x86_64')
-url="https://github.com/aap/$_pkgname"
+url="https://github.com/aap/librw"
 license=('MIT')
 depends=('glfw')
 makedepends=('cmake' 'git')
 provides=("$_pkgname=$pkgver" 'librw.so')
 conflicts=("$_pkgname")
-source=("git+$url.git")
+source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
 
 pkgver() {

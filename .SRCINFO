@@ -12,7 +12,7 @@ pkgbase = librw-git
 	provides = librw=r535.5501c4f
 	provides = librw.so
 	conflicts = librw
-	source = git+https://github.com/aap/librw.git
+	source = librw::git+https://github.com/aap/librw.git
 	b2sums = SKIP
 
 pkgname = librw-git
