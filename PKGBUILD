@@ -1,7 +1,7 @@
+# Maintainer: DLLCoolJ <archcloudlabs at gmail dot com>
 # Maintainer: Javier Tiá <javier.tia at gmail dot com>
-
 pkgname=libtins
-pkgver=4.2
+pkgver=4.4
 pkgrel=1
 pkgdesc="A high-level, multiplatform C++ network packet sniffing and crafting library"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('libpcap' 'openssl' 'boost')
 makedepends=('cmake')
 options=('!libtool')
 source=("https://github.com/mfontanini/libtins/archive/v${pkgver}.tar.gz")
-sha256sums=('a9fed73e13f06b06a4857d342bb30815fa8c359d00bd69547e567eecbbb4c3a1')
+sha256sums=('ff0121b4ec070407e29720c801b7e1a972042300d37560a62c57abadc9635634')
 
 build() {
   cd "${srcdir}/libtins-${pkgver}"
@@ -26,5 +26,3 @@ package() {
   make DESTDIR="${pkgdir}" install
   install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
