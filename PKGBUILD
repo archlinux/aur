@@ -1,7 +1,7 @@
 # Maintainer: Devin Pohl <pohl.devin@gmail.com>
 
 pkgbase=linux-x570-vfio-openrgb-sm2262+sm2263
-pkgver=5.16.4.arch1
+pkgver=5.17.1.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -11,7 +11,7 @@ license=(GPL2)
 makedepends=(
   bc kmod libelf pahole cpio perl tar xz
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
-  git initramfs
+  git
 )
 options=('!strip')
 _srcname=archlinux-linux
@@ -31,9 +31,9 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549' # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            '7cbba374356a189faac71001c5344ce8f02434684b1ce1accefc0cc4bd6718e5'
+            '624a3f276785b04d1e1c7bf28055b3cf7b9e04221b94c759f131ccc7a2f86172'
             'b90be7b79652be61f7d50691000f6a8c75a240dc2eee2667b68d984f67583f77'
-            '856230cfbdc2bb53a4920dfbcb6fb2d58427b7b184e5f94e21f08011d0a2fcc6'
+            'd502ffaea89becded796ba79b7ff5aded8e5f86a479161c89214848871e49ed1'
             '37f306146b1bdf9233c544e87d0e392a8152aab679d0e4145d14f425c0438e23'
             'e7d724ac15daf428aa1e6a03737e5c1d040892d55fda8a66897fcac9323f285c'
             'df296b890108d6d419c455dd32b37de8b974fdeeb64cc797d6094a12502abdc8')
