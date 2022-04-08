@@ -7,7 +7,7 @@ pkgver=1.2.r245.g514eedbc
 pkgrel=1
 pkgdesc="Sega Dreamcast core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
-url="https://github.com/flyinghead/$_reponame"
+url="https://github.com/flyinghead/flycast"
 license=('GPL2')
 groups=('libretro')
 depends=('libgl' 'libretro-core-info')
@@ -26,7 +26,7 @@ makedepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
-	"git+$url.git"
+	"$_reponame::git+$url.git"
 	'unbundle-libs.patch'
 )
 b2sums=(
