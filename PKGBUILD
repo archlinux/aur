@@ -2,7 +2,7 @@
 
 pkgname=tidal-hifi-bin
 pkgver=2.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The web version of listen.tidal.com running in electron with hifi support thanks to widevine."
 arch=(x86_64)
 url="https://github.com/Mastermindzh/tidal-hifi"
@@ -27,6 +27,6 @@ package() {
 
     ln -s "/opt/tidal-hifi/tidal-hifi" "${pkgdir}/usr/bin/tidal-hifi"
 
-    install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm644 "${srcdir}/icon.png" "${pkgdir}/usr/share/pixmaps/tidal-hifi.png"
     install -Dm644 "${srcdir}/tidal-hifi.desktop" -t "${pkgdir}/usr/share/applications"
 }
