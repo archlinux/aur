@@ -1,6 +1,6 @@
 pkgbase = maya
 	pkgdesc = Autodesk Maya 3D Animation, Modelling, Simulation and Rendering Software
-	pkgver = 2022.0
+	pkgver = 2023.0
 	pkgrel = 1
 	url = http://www.autodesk.com/products/maya/overview
 	arch = x86_64
@@ -25,16 +25,18 @@ pkgbase = maya
 	depends = audiofile
 	depends = xorg-fonts-75dpi
 	depends = xorg-fonts-100dpi
-	depends = adsklicensing=11.0.0.4854
-	optdepends = adlmflexnetclient>=23.0.0: Autodesk Network Licensing Client (Deprcate on August 7, 2021)
-	optdepends = adlmflexnetserver-ipv6>=23.0.0: Autodesk Network Licensing Server (Deprcate on August 7, 2021)
+	depends = adsklicensing=12.0.0.6537
+	depends = libcrypt.so=1-64
+	depends = libffi6
+	optdepends = adlmflexnetclient>=23.0.0: Autodesk Network Licensing Client (Deprecated on August 7, 2021)
+	optdepends = adlmflexnetserver-ipv6>=23.0.0: Autodesk Network Licensing Server (Deprcated on August 7, 2021)
 	optdepends = maya-arnold: Maya Arnold Renderer Plugin
 	optdepends = maya-bifrost: Maya Bifrost Effects Plugin
 	optdepends = maya-rokoko-motion-library: Maya Rokoko Motion Library Animation Plugin
 	optdepends = maya-substance: Maya Substance Material Plugin
 	optdepends = maya-usd: Maya Universal Scene Description Plugin
 	options = !strip
-	source = manual://Maya2022_64-2022.0-217.x86_64.rpm
-	sha256sums = 112214d7662cba0de470c5d529ed98b12219ff75caa49586e89e4fba2e21a9cd
+	source = manual://Maya2023_64-2023.0-1319.x86_64.rpm
+	sha256sums = fd4930b5554ed9cf685670c13af9c5b853e99ba001e39cd54d516af3ab62506e
 
 pkgname = maya
