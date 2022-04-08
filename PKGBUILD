@@ -1,14 +1,14 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-luasnip-git
-pkgver=r829.4526e71
+pkgver=r1348.69cb81c
 pkgrel=1
 pkgdesc="Snippet engine for Neovim"
 arch=('any')
 url="https://github.com/L3MON4D3/LuaSnip"
 license=('Apache')
 groups=('neovim-plugin')
-depends=('neovim>=0.5')
+depends=('neovim')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -23,6 +23,8 @@ pkgver() {
 
 package() {
 	cd "$pkgname"
-	find doc lua plugin -type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
-	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	find doc ftdetect ftplugin lua plugin syntax \
+		-type f \
+		-exec install -Dm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
