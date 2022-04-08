@@ -77,14 +77,13 @@ makedepends=(bc kmod libelf pahole cpio xmlto python-sphinx python-sphinx_rtd_th
 options=('!strip')
 _srcname=linux-${pkgver}
 _arch_config_commit=cb8242a510d80d4e58215a639053fa61954e1b9d
-_prjc_version=5.17
+_prjc_version=5.17-r1
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20220315
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   "${pkgbase}-${pkgver}-config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
-  # "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
-  "${_prjc_patch}::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/5.17/prjc-patches/0001-PRJC-for-5.17.patch"
+  "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
   "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/ba9638ad03df373965160a5bdb4173b544381767.patch"
   "0002-${pkgbase}-${pkgver}-random-treat-bootloader-trust-toggle-the-same-way-as.patch::https://github.com/archlinux/linux/commit/22365749abd27f2cb582a049da42b7c7a02b6bfe.patch"
@@ -97,7 +96,7 @@ validpgpkeys=(
 b2sums=('1275903955f014d0a0b4cad9074710d36825b274814cde457cf9e1f9acc188b21da7de01100f99cfe9644fb7fd182a95257d124a6992ac3be47adb907e230616'
         'SKIP'
         '0f3943f9700848e5cd46e2c4d18cb53bc025ccc54dbc415bf1b522dc554ab43a58a81d479408fc69a27f2606e05b32d1060c1585c00994d3d5d1f77558071d25'
-        '9555d019912e0c9fc1a89acddfeb31bb35df806a81afcdf4386d8d32a4852a62010e8e9e16fae068a6985058de8fa59c96a8ce6772c8b0377170bbd952dfb76c'
+        'e8640372c4a3a180ee475e786466147dca3b5afe1a78f0346b63fb2654ef05cf7515626aa02b0949e43cb593477820b675c31459ba66cc40549eca1a5d33989b'
         '20674a8fcc0a85726e06460a7dbccfe731c46bf377cc3bf511b7591175e7df892f271bc1909e77d9a02913c753d241493502c5ab15d9f78e95f31aa4399c2c27'
         'a52e0335832daea76ecbbbb04b24706f9b7ffc7438ea632720520e2b46b50886cdd50422f31cdd0555dfc2e5974359ab97646d1dd5575547b95fc77ca1322f8e'
         '13ca9b46187a5d52bf8b7c6d7c4dafc6caeb1614c85dee19f480e35ab8b03250722be2bc3442b351a17815efd27d8a8a1f785406fb111ff73973d149daef9c4f'
