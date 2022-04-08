@@ -11,8 +11,8 @@ pkgbase = libtins
 	depends = openssl
 	depends = boost
 	options = !libtool
-	source = https://github.com/mfontanini/libtins/archive/v4.2.tar.gz
-	sha256sums = a9fed73e13f06b06a4857d342bb30815fa8c359d00bd69547e567eecbbb4c3a1
+	source = https://github.com/mfontanini/libtins/archive/v4.4.tar.gz
+	sha256sums = ff0121b4ec070407e29720c801b7e1a972042300d37560a62c57abadc9635634
 
 pkgname = libtins
 
