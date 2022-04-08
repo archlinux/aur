@@ -15,7 +15,7 @@ pkgbase = libowfat-cvs
 	provides = libowfat=0.32+20211103
 	provides = libowfat.so
 	conflicts = libowfat
-	source = libowfat-fix-and-build-shared.diff
+	source = fix-and-build-shared.diff
 	b2sums = e43d49cf9bcc4ae5bf94dd59c3e5e4563882955ed6e3f811e7e2596aa06ec59d22026b33533745a956cb90f8b8d4975929aa2a95266aed58f73f52f600fdeeb1
 
 pkgname = libowfat-cvs

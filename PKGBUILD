@@ -5,13 +5,13 @@ pkgver=0.32+20211103
 pkgrel=1
 pkgdesc="Reimplementation of libdjb"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
-url="https://www.fefe.de/$_pkgname/"
+url="https://www.fefe.de/libowfat/"
 license=('GPL2')
 depends=('glibc')
 makedepends=('cvs')
-provides=("$_pkgname=$pkgver" "$_pkgname.so")
+provides=("$_pkgname=$pkgver" 'libowfat.so')
 conflicts=("$_pkgname")
-source=("$_pkgname-fix-and-build-shared.diff")
+source=('fix-and-build-shared.diff')
 b2sums=('e43d49cf9bcc4ae5bf94dd59c3e5e4563882955ed6e3f811e7e2596aa06ec59d22026b33533745a956cb90f8b8d4975929aa2a95266aed58f73f52f600fdeeb1')
 
 pkgver() {
@@ -21,7 +21,7 @@ pkgver() {
 
 prepare() {
 	cvs -d :pserver:cvs:@cvs.fefe.de:/cvs co $_pkgname
-	patch -d $_pkgname -Np1 < $_pkgname-fix-and-build-shared.diff
+	patch -d $_pkgname -Np1 < fix-and-build-shared.diff
 }
 
 build() {
