@@ -5,8 +5,8 @@
 # Contributor: Stas Solovey <whats_up@tut.by>
 
 pkgname=nas
-pkgver=1.9.4
-pkgrel=5
+pkgver=1.9.5
+pkgrel=1
 pkgdesc='Network Audio System is a network transparent, client/server audio transport system. Provides libaudio2.so.'
 arch=('i686' 'x86_64')
 url='http://radscan.com/nas.html'
@@ -14,22 +14,16 @@ license=('MIT')
 depends=('libxaw')
 makedepends=('imake' 'bison' 'flex')
 provides=('libaudio2')
-source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.src.tar.gz"
+source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         'license'
         'nasd.service'
-        'nasd'
-        'patch-llvm11.patch')
-sha256sums=('cf36ea63751ce86cfd3b76c1659ce0d6a361a2e7cb34069854e156532703b39d'
+        'nasd')
+sha256sums=('b7884afb38feec03a196bd3b7e9c47b803c830ecd10d7455e9c97e122c37944c'
             '2f143b0fca5008b88798c8447d169731d93a7c1c2012a33a6ab6cb75c73b8a92'
             'c8c62a2a4d54fa2efbcf722cc277afd0fec75bee204e2f51b2706a4e6a75713e'
-            '7c2b7c37d9b9054b6e0f60928bb9c276896f8684ed13ae2477d3ffd31855ed19'
-            'c345d1dfd30289847b4f4591f18867fe6e7988217711f1c113f56b6a849fae23')
-
-prepare() {
-	cd "${pkgname}-${pkgver}"
-	
-	patch -f "server/dia/main.c" < "../patch-llvm11.patch"
-}
+            '7c2b7c37d9b9054b6e0f60928bb9c276896f8684ed13ae2477d3ffd31855ed19')
+backup=('etc/conf.d/nasd'
+        'etc/nas/nasd.conf')
 
 build() {
 	cd "${pkgname}-${pkgver}"	
@@ -40,13 +34,13 @@ build() {
 	make cleandir
 	make includes
 	make depend
-	make -k all
+	make -j1 all
 }
 
 package() {
 	cd "${pkgname}-${pkgver}"
 
-	make DESTDIR="${pkgdir}" USRLIBDIR="/usr/lib" LDLIBS=-lfl install
+	make -j1 DESTDIR="${pkgdir}" USRLIBDIR="/usr/lib" LDLIBS=-lfl install
 
 	# Remove static libraries
 	rm ${pkgdir}/usr/lib/*.a
