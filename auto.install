@@ -14,7 +14,7 @@ from a selection of one of the supported bare, or pre-configured desktop environ
 
 \033[1m\033[33mautoInstall:\033[0m\033[36m This script is to be used for installing AutoLinux ontop of an existing Arch Linux installation, as a new user profile.
 
-\033[1m\033[33mautoCleanInstall:\033[0m\033[36m This script is intended for use when performing a clean/fresh installation, with no pre-existing OS installed on the partition(s) reserved for AutoLinux. 
+\033[1m\033[33mautoCleanInstall:\033[0m\033[36m This script is intended for use when performing a clean/fresh installation, with no pre-existing OS installed on the partition(s) reserved for the installation.
 This script also includes section for partitioning your drive, so running the autoPart script is \033[31m\033[1mNOT\033[0m\033[36m required.
 
 \033[1m\033[33mautoPart:\033[0m\033[36m This script is for useage outside of the AutoLinux installation process, and serves simply as a helper when partitioning your drive for any fresh installation.
