@@ -1,5 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
-_pkgname=libretro-ppsspp
+_reponame=ppsspp
+_pkgname=libretro-$_reponame
 pkgname=$_pkgname-git
 pkgver=1.12.3.r980.g3bfab6326
 pkgrel=2
@@ -28,8 +29,8 @@ optdepends=('ppsspp-assets')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
-	'git+https://github.com/hrydgard/ppsspp.git'
-	'git+https://github.com/Kingcom/armips.git'
+	"$_reponame::git+https://github.com/hrydgard/ppsspp.git"
+	'armips::git+https://github.com/Kingcom/armips.git'
 )
 b2sums=(
 	'SKIP'
@@ -37,12 +38,12 @@ b2sums=(
 )
 
 pkgver() {
-	cd ppsspp
+	cd $_reponame
 	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-	cd ppsspp
+	cd $_reponame
 	git submodule init ext/armips
 	git config submodule.ext/armips.url ../armips
 	git submodule update
@@ -59,7 +60,7 @@ prepare() {
 
 build() {
 	export PKG_CONFIG_PATH=/usr/lib/ffmpeg4.4/pkgconfig
-	cmake -S ppsspp -B build \
+	cmake -S $_reponame -B build \
 		-DCMAKE_BUILD_TYPE=None \
 		-DCMAKE_SKIP_RPATH=ON \
 		-DLIBRETRO=ON \
@@ -76,5 +77,5 @@ build() {
 package() {
 	# shellcheck disable=SC2154
 	install -Dm644 -t "$pkgdir"/usr/lib/libretro build/lib/ppsspp_libretro.so
-	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname ppsspp/LICENSE.TXT
+	install -Dm644 -t "$pkgdir"/usr/share/licenses/$pkgname $_reponame/LICENSE.TXT
 }

@@ -26,8 +26,8 @@ pkgbase = libretro-ppsspp-git
 	optdepends = ppsspp-assets
 	provides = libretro-ppsspp
 	conflicts = libretro-ppsspp
-	source = git+https://github.com/hrydgard/ppsspp.git
-	source = git+https://github.com/Kingcom/armips.git
+	source = ppsspp::git+https://github.com/hrydgard/ppsspp.git
+	source = armips::git+https://github.com/Kingcom/armips.git
 	b2sums = SKIP
 	b2sums = SKIP
 
