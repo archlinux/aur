@@ -1,11 +1,12 @@
 pkgbase = lyx
 	pkgdesc = An advanced WYSIWYM document processor & LaTeX front-end
 	pkgver = 2.3.6.1
-	pkgrel = 4
+	pkgrel = 5
 	url = https://www.lyx.org
 	arch = x86_64
 	license = GPL
 	makedepends = boost
+	makedepends = bc
 	depends = qt5-svg
 	depends = texlive-core
 	depends = python
