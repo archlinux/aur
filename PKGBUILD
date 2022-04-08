@@ -1,17 +1,20 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=breathing
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=1
 pkgdesc="Exercise your breathing"
 arch=(x86_64)
 url=https://github.com/SeaDve/Breathing
 license=(GPL3)
-depends=(gstreamer gtk4 libadwaita python-gobject)
+depends=(gtk4
+         libadwaita
+         gstreamer
+         python-gobject)
 makedepends=(meson)
 checkdepends=('appstream-glib')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('91564df8e77f71ec1717f57c118dddd5ebac8a2f2f648d9890980cd6219f43c84d2b434aa97059a558e58a8e203071793f0cc6426c0ddf88096c1b1e83ba492b')
+sha512sums=('87620fcf0d0e940efcb0e97f5989ed6676ebb7e39e29ae1bf594160a63e09294ffd44b177506bca058373b8c8034857840d107c33f76d26db8203d1618d84b83')
 
 build() {
 	arch-meson Breathing-$pkgver build
