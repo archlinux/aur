@@ -1,5 +1,5 @@
 pkgname=kwin-bismuth-git
-pkgver=3.0.0.r0.ga999aa7
+pkgver=3.0.0.r52.g314410b
 pkgrel=1
 pkgdesc="Addon for KDE Plasma to arrange your windows automatically and switch between them using keyboard shortcuts, like tiling window managers."
 arch=('x86_64')
@@ -8,8 +8,8 @@ url="https://github.com/Bismuth-Forge/${_repo}"
 license=('MIT')
 depends=('systemsettings')
 makedepends=('git' 'npm' 'cmake' 'ninja' 'extra-cmake-modules' 'kcoreaddons' 'kconfig' 'ki18n' 'kcmutils' 'kdeclarative')
-provides=('kwin-bismuth')
-conflicts=('kwin-bismuth')
+provides=("${pkgname%-git}")
+conflicts=("${provides[@]}")
 options=('!emptydirs')
 
 source=("${_repo}::git+${url}")
@@ -21,10 +21,9 @@ pkgver() {
 }
 
 prepare() {
-    cd "${srcdir}/${_repo}"
-    local ver=$(perl -ne'/"esbuild":\s*"(\S+)",?/ && print $1' <"package.json")
-    rm "package.json"
-    npm i -E "esbuild"@"${ver}"
+    cd "${srcdir}"
+    local ver=$(perl -ne'/"esbuild":\s*"(\S+)",?/ && print $1' <"${_repo}/package.json")
+    npm i -E --ignore-scripts=true "esbuild"@"${ver}"
 }
 
 build() {
@@ -39,9 +38,9 @@ build() {
 }
 
 package() {
-    cd "${srcdir}/build"
-    DESTDIR="${pkgdir}" ninja install
+    cd "${srcdir}"
+    DESTDIR="${pkgdir}" ninja -C "build" install
 
-    cd "${srcdir}/${_repo}/LICENSES"
+    cd "${_repo}/LICENSES"
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}" && cp -rt "$_" *
 }
