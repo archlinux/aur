@@ -7,7 +7,7 @@
 pkgname=gnome-shell-extension-dash-to-dock
 _pkgname=dash-to-dock
 pkgver=72+1+gb695cee
-pkgrel=3
+pkgrel=4
 pkgdesc="Move the dash out of the overview transforming it in a dock"
 arch=('any')
 url="https://micheleg.github.io/dash-to-dock/"
@@ -31,11 +31,6 @@ build() {
 
 package() {
   cd "${srcdir}"/${_pkgname}
-  sed -i 's/ubuntu-dock@ubuntu\.com/dash-to-dock@micxgx\.gmail\.com/g' appIcons.js 
-  sed -i 's/ubuntu-dock@ubuntu\.com/dash-to-dock@micxgx\.gmail\.com/g' Makefile 
-  sed -i 's/ubuntu-dock@ubuntu\.com/dash-to-dock@micxgx\.gmail\.com/g' metadata.json
-  sed -i 's/Ubuntu Dock/Dash to Dock/g' metadata.json
-  sed -i 's/^"version": 71/"version": 72/g' metadata.json
   make DESTDIR="${pkgdir}" VERSION="${pkgver}" install
 }
 
