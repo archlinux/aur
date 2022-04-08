@@ -13,9 +13,9 @@ pkgbase = vdu_controls
 	depends = python
 	depends = python-pyqt5
 	depends = qt5-multimedia
-	source = vdu_controls-1.6.2.tar.gz::https://github.com/digitaltrails/vdu_controls/archive/refs/tags/V1.6.2.tar.gz
+	source = vdu_controls-1.6.2.tar.gz::https://github.com/digitaltrails/vdu_controls/archive/refs/tags/v1.6.2.tar.gz
 	source = vdu_controls.desktop
-	sha256sums = 913804d76275f24eec6475b5d9cf9cef1d07a9d385f122a1ae976f0f815f3608
+	sha256sums = a93a8971a6a6602d26447f613139d7ee1372926617393f0d65d7aae9f34cfb00
 	sha256sums = b29047aeba56c9d26b5b21fb8ced269a69b587ee79835d4b56653934fbb550d5
 
 pkgname = vdu_controls

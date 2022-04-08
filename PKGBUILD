@@ -8,9 +8,9 @@ url="https://github.com/digitaltrails/vdu_controls"
 license=('GPL3')
 depends=('ddcutil' 'python' 'python-pyqt5' 'qt5-multimedia')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/V$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('913804d76275f24eec6475b5d9cf9cef1d07a9d385f122a1ae976f0f815f3608'
+sha256sums=('a93a8971a6a6602d26447f613139d7ee1372926617393f0d65d7aae9f34cfb00'
             'b29047aeba56c9d26b5b21fb8ced269a69b587ee79835d4b56653934fbb550d5')
 
 build() {
