@@ -1,8 +1,8 @@
 # Maintainer: Angelo Theodorou <encelo@users.sourceforge.net>
 
 pkgname=eternallands-sound
-pkgver=1.9.5.9
-version=${pkgver}-1
+pkgver=1.9.6.1
+version=${pkgver}
 pkgrel=1
 pkgdesc="Sound effects files for Eternal Lands"
 url="http://www.eternal-lands.com/"
@@ -12,7 +12,7 @@ license=('custom:eternallands')
 arch=('any')
 changelog=eternallands-sound.changelog
 source=("https://github.com/raduprv/Eternal-Lands/releases/download/${version}/eternallands-sound_${pkgver}.zip")
-md5sums=('b441ce65da967c937ac030f219fdd9ae')
+md5sums=('59e055a191fc58163ddab81ba5615d2a')
 
 package()
 {
