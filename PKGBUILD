@@ -6,6 +6,7 @@ pkgver=r884.fd2a863
 pkgdesc="Zig LSP implementation + Zig Language Server"
 arch=('x86_64' 'aarch64' 'i686')
 url="https://github.com/zigtools/${_pkgbasename}"
+replaces=('zls-master-data-git')
 license=('MIT')
 depends=('zig')
 makedepends=('git')
