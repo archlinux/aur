@@ -5,8 +5,8 @@
 
 # Maintainer: Your Name <hritwiksinghal@pm.me>
 pkgname=bing-wall
-pkgver=2.0
-pkgrel=0.3
+pkgver=2.3
+pkgrel=0.1
 # epoch=
 pkgdesc="Bing wallpaper of the day application for Gnome desktop"
 arch=('x86_64' 'i686')
@@ -38,7 +38,7 @@ build() {
 	# cd "$pkgname-$pkgver"
 	# ./configure --prefix=/usr
     cd BingWall
-	qmake-qt5
+	qmake
 	make -j$(nproc --all)
 
 }
