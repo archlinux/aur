@@ -3,7 +3,6 @@
 pkgname=chef-server
 pkgver=13.2.0
 pkgrel=1
-_ubunturel=1
 pkgdesc="The Chef server works with the Chef client as a central artifact store and distribution mechanism that manages scale, complexity, and safeguarding your systems. "
 arch=('x86_64')
 url="https://downloads.chef.io/chef-server/"
