@@ -1,11 +1,11 @@
-# Maintainer: Jonathon Fernyhough <jonathon_at_manjaro dot_org>
+# Maintainer: Jonathon Fernyhough <jonathon_at_m2x+dev>
 
 pkgname=julia-loadpath
 pkgver=1.0.1
 pkgrel=1
 pkgdesc="Add a system-wide package directory to the JULIA_LOAD_PATH"
 arch=(any)
-url="https://gitlab.manjaro.org/jonathon/$pkgname"
+url="https://gitlab.com/jonathon/$pkgname"
 license=(GPL3)
 optdepends=(julia)
 install=julia-loadpath.install
