@@ -6,7 +6,7 @@
 # Maintainer: Your Name <hritwiksinghal@pm.me>
 pkgname=bing-wall
 pkgver=2.3
-pkgrel=0.2
+pkgrel=0.3
 # epoch=
 pkgdesc="Bing wallpaper of the day application for Gnome desktop"
 arch=('x86_64' 'i686')
@@ -49,7 +49,7 @@ build() {
 # }
 
 package() {
-	cd BingWall
+	cd BingWall/src
 
     mkdir -p "${pkgdir}/usr/local/bin"
 	install -Dm0755 "bing-wall" "${pkgdir}/usr/local/bin"
