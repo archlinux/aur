@@ -12,7 +12,7 @@ pkgbase = libretro-database-git
 	provides = libretro-database
 	conflicts = libretro-database
 	options = !strip
-	source = git+https://github.com/libretro/libretro-database.git
+	source = libretro-database::git+https://github.com/libretro/libretro-database.git
 	b2sums = SKIP
 
 pkgname = libretro-database-git
