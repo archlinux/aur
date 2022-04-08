@@ -1,0 +1,19 @@
+pkgbase = python-graphsrv
+	pkgdesc = Serve embeddable graphs
+	pkgver = 2.1.0.1
+	pkgrel = 1
+	url = https://github.com/20c/graphsrv
+	changelog = CHANGELOG.md
+	arch = any
+	license = Apache
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-flask
+	depends = python-jinja
+	depends = python-vodka
+	source = python-graphsrv-2.1.0.1.tar.gz::https://github.com/20c/graphsrv/archive/2.1.0.1.tar.gz
+	sha256sums = 54e14a687950bb9fbffc72e2b068fd6569b4bbacc9e09b48fa6cce1f92d1eb3d
+
+pkgname = python-graphsrv
