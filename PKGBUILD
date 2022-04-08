@@ -2,12 +2,14 @@
 pkgname=invidtui-bin
 _pkgname=invidtui
 pkgver=0.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A TUI based Invidious client"
 arch=('x86_64' 'arm' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/darkhz/invidtui"
 license=('MIT')
-depends=('mpv' 'youtube-dl' 'ffmpeg')
+depends=('mpv' 'yt-dlp' 'ffmpeg')
+optdepends=('mpv-mpris: for MPRIS support'
+            'youtube-dl: alternative for yt-dlp')
 provides=('invidtui')
 conflics=('invidtui')
 
