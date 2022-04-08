@@ -1,8 +1,8 @@
 pkgbase = linux-steam-integration
 	pkgdesc = Helper for enabling better Steam integration on Linux
 	pkgver = 0.7.3
-	pkgrel = 3
-	url = https://github.com/clearlinux/linux-steam-integration
+	pkgrel = 4
+	url = https://github.com/getsolus/linux-steam-integration
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = git
@@ -16,16 +16,11 @@ pkgbase = linux-steam-integration
 	provides = liblsi-intercept.so-64
 	provides = liblsi-redirect.so-32
 	provides = liblsi-intercept.so-32
-	source = https://github.com/clearlinux/linux-steam-integration/releases/download/v0.7.3/linux-steam-integration-0.7.3.tar.xz
-	source = https://github.com/clearlinux/linux-steam-integration/releases/download/v0.7.3/linux-steam-integration-0.7.3.tar.xz.asc
+	source = git+https://github.com/getsolus/linux-steam-integration.git#commit=99a51102df25c4d9770e3c4943ff4f1487163c49
+	source = git+https://github.com/intel/libnica.git
 	source = partially-revert-2877813.patch
-	source = whitelist-libvpx.patch
-	source = lsi-steam.desktop
-	validpgpkeys = 22512D02C191D39D5EC4FDCDBFF2F5A2CA201B84
-	sha512sums = b68ae89c5e93d6424fe1b91666cac32c241f7f3cff24cf7f4f6b1ad57c1d537fbce60a6d64999c7e568f1f29152a44a7366d100c7ad1a70cdb1e0a8fb7cf8b6a
-	sha512sums = SKIP
-	sha512sums = da5aeb435dc031b2be3fc27b8b9e5acbee51afff42f6f4db527ea4f034eb3601348439675e791d359a26070b45dda5a50fa204be2db72625c63d980aeeec01c4
-	sha512sums = 9476c26a0e8ad8ba8301c2b4d8fcdb2e0486b154dee76021827d62e9c22ffeaf62a009df6f6b8ada38c3e24518b2fe559b45dacdb51ce96f09c3e80800cdffcb
-	sha512sums = e459ee358f0c48808108fc7564f59f73c56de12b2d493b97763f9f45f73e867a28760170d437e98dcb68174a006e6185e609e66f8ba15ed28c4a3b3c8c7782e2
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 77d459a53f30f1ae4aae408d49e70bc6caa3dc895e6c1ee8239a90b3661ebd0b
 
 pkgname = linux-steam-integration
