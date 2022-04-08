@@ -3,7 +3,7 @@
 
 pkgname=python-fontmake
 _pyname=${pkgname#python-}
-pkgver=3.2.0
+pkgver=3.3.0
 pkgrel=1
 pkgdesc='Compile fonts from sources (UFO, Glyphs) to binary (OpenType, TrueType)'
 arch=(any)
@@ -26,16 +26,18 @@ checkdepends=(python-compreffor
               python-mutatormath
               python-pytest
               python-skia-pathops)
-makedepends=(python-setuptools-scm)
+makedepends=(python-{build,installer}
+             python-setuptools-scm
+             python-wheel)
 optdepends=(python-mutatormath
             python-skia-pathops)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.zip")
-sha256sums=('130a2d621144e13c013aceb99b3db779a7e27c234efc254612a76512df5199a0')
+sha256sums=('943eccbd976bf4279676866d0f7fbcb2d5494de40de7f010e26880fc8d931681')
 
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build -wn
 }
 
 check() {
@@ -45,5 +47,5 @@ check() {
 
 package() {
 	cd "$_archive"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 }
