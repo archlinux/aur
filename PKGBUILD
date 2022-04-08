@@ -1,16 +1,17 @@
 # Maintainer: jprjr <john@jrjrtech.com>
 
 pkgname=('lua-irc-parser' 'lua51-irc-parser' 'lua52-irc-parser' 'lua53-irc-parser')
+pkgdesc='An IRC parser for Lua in LPEG, with a Pure-Lua fallback'
 _pkgname='irc-parser'
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 arch=('any')
 url='https://github.com/jprjr/lua-irc-parser'
 license=('MIT')
 source=("https://github.com/jprjr/lua-irc-parser/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
 
 package_lua-irc-parser() {
-    pkgdesc='Human-readable representation of Lua tables'
+    pkgdesc+=''
     depends=('lua<5.5')
     optdepends=('lua-lpeg: faster parsing')
 
@@ -22,7 +23,7 @@ package_lua-irc-parser() {
 }
 
 package_lua51-irc-parser() {
-    pkgdesc='Human-readable representation of Lua tables for Lua 5.1'
+    pkgdesc+=' for Lua 5.1'
     depends=('lua51')
     optdepends=('lua51-lpeg: faster parsing')
 
@@ -34,7 +35,7 @@ package_lua51-irc-parser() {
 }
 
 package_lua52-irc-parser() {
-    pkgdesc='Human-readable representation of Lua tables for Lua 5.2'
+    pkgdesc+=' for Lua 5.2'
     depends=('lua52')
     optdepends=('lua52-lpeg: faster parsing')
 
@@ -46,7 +47,7 @@ package_lua52-irc-parser() {
 }
 
 package_lua53-irc-parser() {
-    pkgdesc='Human-readable representation of Lua tables for Lua 5.3'
+    pkgdesc+=' for Lua 5.3'
     depends=('lua53')
     optdepends=('lua53-lpeg: faster parsing')
 

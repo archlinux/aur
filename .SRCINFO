@@ -1,6 +1,7 @@
 pkgbase = lua-irc-parser
+	pkgdesc = An IRC parser for Lua in LPEG, with a Pure-Lua fallback
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jprjr/lua-irc-parser
 	arch = any
 	license = MIT
@@ -8,21 +9,21 @@ pkgbase = lua-irc-parser
 	sha256sums = ea3ad5ac63a76031327497aaae30c966883f1df7b9170d9333a46b783492162d
 
 pkgname = lua-irc-parser
-	pkgdesc = Human-readable representation of Lua tables
+	pkgdesc = An IRC parser for Lua in LPEG, with a Pure-Lua fallback
 	depends = lua<5.5
 	optdepends = lua-lpeg: faster parsing
 
 pkgname = lua51-irc-parser
-	pkgdesc = Human-readable representation of Lua tables for Lua 5.1
+	pkgdesc = An IRC parser for Lua in LPEG, with a Pure-Lua fallback for Lua 5.1
 	depends = lua51
 	optdepends = lua51-lpeg: faster parsing
 
 pkgname = lua52-irc-parser
-	pkgdesc = Human-readable representation of Lua tables for Lua 5.2
+	pkgdesc = An IRC parser for Lua in LPEG, with a Pure-Lua fallback for Lua 5.2
 	depends = lua52
 	optdepends = lua52-lpeg: faster parsing
 
 pkgname = lua53-irc-parser
-	pkgdesc = Human-readable representation of Lua tables for Lua 5.3
+	pkgdesc = An IRC parser for Lua in LPEG, with a Pure-Lua fallback for Lua 5.3
 	depends = lua53
 	optdepends = lua53-lpeg: faster parsing
