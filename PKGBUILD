@@ -23,10 +23,6 @@ install=
 source=('ytfzf::git+https://github.com/pystardust/ytfzf.git#branch=development')
 md5sums=('SKIP')
 
-pre_install () {
-  git checkout origin/development
-}
-
 pkgver() {
 	cd "$srcdir/${pkgname%-git}"
 # Git, no tags available
