@@ -1,6 +1,6 @@
 pkgbase = libtas-git
 	pkgdesc = Tool-assisted speedrunning utility for Linux-native binaries
-	pkgver = 1.4.2.r0.2ae7dd59
+	pkgver = 1.4.3.r0.51037943
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/clementgallet/libTAS
@@ -12,7 +12,7 @@ pkgbase = libtas-git
 	depends = ffmpeg
 	depends = freetype2
 	depends = hicolor-icon-theme
-	depends = lua53
+	depends = lua
 	depends = qt5-base
 	depends = sdl2
 	depends = xcb-util-cursor
