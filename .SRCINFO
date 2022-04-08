@@ -1,12 +1,12 @@
 pkgbase = pacman-offline-git
 	pkgdesc = offline system update with pacman - git checkout
 	pkgver = 0.1.0.r2.g2b908f4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eworm-de/pacman-offline
 	arch = any
 	license = GPL
 	makedepends = git
-	makedepends = markdown
+	makedepends = discount
 	depends = systemd
 	depends = pacman
 	provides = pacman-offline
@@ -16,4 +16,3 @@ pkgbase = pacman-offline-git
 	sha256sums = SKIP
 
 pkgname = pacman-offline-git
-
