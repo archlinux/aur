@@ -29,7 +29,7 @@ pkgbase = monero-feather
 	provides = monero-feather
 	conflicts = monero-feather
 	conflicts = monero-feather-git
-	source = monero-feather::git+https://git.featherwallet.org/feather/feather#tag=1.0.1
+	source = monero-feather::git+https://github.com/feather-wallet/feather.git#tag=1.0.1
 	sha256sums = SKIP
 
 pkgname = monero-feather

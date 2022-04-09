@@ -15,12 +15,13 @@ makedepends=('git' 'cmake' 'boost')
 provides=('monero-feather')
 conflicts=('monero-feather' 'monero-feather-git')
 
-source=("${pkgname}"::"git+https://git.featherwallet.org/feather/feather#tag=${pkgver}")
+source=("${pkgname}"::"git+https://github.com/feather-wallet/feather.git#tag=${pkgver}")
 
 sha256sums=('SKIP')
 
 prepare() {
   cd "${srcdir}/${pkgname}"
+  git submodule set-url monero https://github.com/feather-wallet/monero.git
   git submodule update --init --recursive
 }
 
