@@ -1,18 +1,19 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=zelda-classic
 pkgver=2.50.2.29
-pkgrel=1
+pkgrel=2
 pkgdesc="A tribute to Nintendo's The Legend of Zelda (NES)"
 arch=('i686' 'x86_64')
 url="http://zeldaclassic.com"
 license=('custom: Freeware')
-depends_i686=('libxpm' 'libxxf86vm' 'libxcursor' 'alsa-lib')
-depends_x86_64=('lib32-libxpm' 'lib32-libxxf86vm' 'lib32-libxcursor' 'lib32-alsa-lib')
+depends_i686=('libxxf86vm' 'libxcursor' 'alsa-lib' 'bash')
+depends_x86_64=('lib32-libxxf86vm' 'lib32-libxcursor' 'lib32-alsa-lib' 'bash')
 optdepends_i686=('gtk-engine-murrine: needed for the gtk2-launcher')
 optdepends_x86_64=('lib32-gtk-engine-murrine: needed for the gtk2-launcher')
 install=$pkgname.install
-source=("https://www.dropbox.com/s/fnipdbanjm8bf2v/zc-2-50-2-linux.tar.gz"
+source=("$pkgname-2-50-2-linux.tar.gz::https://www.zeldaclassic.com/download/100/"
         "$pkgname.png"
         "$pkgname-zlaunch.png"
         "$pkgname-zquest.png"
@@ -28,6 +29,7 @@ sha256sums=('44e105415b1b1d5ca5c625907cf6fc2ce835ddaf9b70a6ace4cd0febe1ae4ed0'
             '44e1c4f0a0bed46ce40cb7659863c797b47d1afcef99c86cc329d10898511c2f'
             '72bc054a698e36b9a23e3907ac9112aab78b0424c71ba0c9a657cbe78886572c'
             '7188389790cdc030316231103a76b0e692e4a546fed748d86f15f977907be684')
+options=('!strip')
 
 package() {
   cd "Zelda Classic"
