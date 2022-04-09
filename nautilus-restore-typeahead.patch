@@ -1,8 +1,8 @@
 diff --git a/data/org.gnome.nautilus.gschema.xml b/data/org.gnome.nautilus.gschema.xml
-index 34af6f87a..90e58c2fc 100644
+index 75f736e38..811610332 100644
 --- a/data/org.gnome.nautilus.gschema.xml
 +++ b/data/org.gnome.nautilus.gschema.xml
-@@ -187,6 +187,11 @@
+@@ -188,6 +188,11 @@
        <summary>What viewer should be used when searching</summary>
        <description>When searching Nautilus will switch to the type of view in this setting.</description>
      </key>
@@ -29,10 +29,10 @@ index 6f098b6b8..dc96d72f2 100644
  #define NAUTILUS_PREFERENCES_SEARCH_VIEW "search-view"
  
 diff --git a/src/nautilus-list-view.c b/src/nautilus-list-view.c
-index 0ee93f640..0fe1aedc6 100644
+index 9cfd50386..4f01d4fb4 100644
 --- a/src/nautilus-list-view.c
 +++ b/src/nautilus-list-view.c
-@@ -3136,6 +3136,7 @@ nautilus_list_view_set_selection (NautilusFilesView *view,
+@@ -3122,6 +3122,7 @@ nautilus_list_view_set_selection (NautilusFilesView *view,
      gboolean cursor_is_set_on_selection = FALSE;
      GList *iters, *l;
      NautilusFile *file;
@@ -40,7 +40,7 @@ index 0ee93f640..0fe1aedc6 100644
  
      list_view = NAUTILUS_LIST_VIEW (view);
      model = list_view->details->model;
-@@ -3167,10 +3168,22 @@ nautilus_list_view_set_selection (NautilusFilesView *view,
+@@ -3153,10 +3154,22 @@ nautilus_list_view_set_selection (NautilusFilesView *view,
  
              gtk_tree_selection_select_iter (tree_selection,
                                              (GtkTreeIter *) l->data);
@@ -63,7 +63,7 @@ index 0ee93f640..0fe1aedc6 100644
      g_signal_handlers_unblock_by_func (tree_selection, list_selection_changed_callback, view);
      nautilus_files_view_notify_selection_changed (view);
  }
-@@ -4191,3 +4204,9 @@ nautilus_list_view_new (NautilusWindowSlot *slot)
+@@ -4161,3 +4174,9 @@ nautilus_list_view_new (NautilusWindowSlot *slot)
                           "window-slot", slot,
                           NULL);
  }
@@ -86,7 +86,7 @@ index 7e19621e8..61d285c08 100644
 +NautilusFilesView * nautilus_list_view_new (NautilusWindowSlot *slot);
 +GtkTreeView * nautilus_list_view_get_tree_view (NautilusListView *list_view);
 diff --git a/src/nautilus-window-slot.c b/src/nautilus-window-slot.c
-index 4f93f67c8..41ab54d99 100644
+index bde3337dc..ee7c270f0 100644
 --- a/src/nautilus-window-slot.c
 +++ b/src/nautilus-window-slot.c
 @@ -23,6 +23,9 @@
@@ -99,7 +99,7 @@ index 4f93f67c8..41ab54d99 100644
  #include "nautilus-application.h"
  #include "nautilus-bookmark.h"
  #include "nautilus-bookmark-list.h"
-@@ -132,6 +135,17 @@ struct _NautilusWindowSlot
+@@ -133,6 +136,17 @@ struct _NautilusWindowSlot
      gint view_mode_before_search;
      gint view_mode_before_places;
  
@@ -117,7 +117,7 @@ index 4f93f67c8..41ab54d99 100644
      /* Menus */
      GMenuModel *extensions_background_menu;
      GMenuModel *templates_menu;
-@@ -243,6 +257,96 @@ nautilus_window_slot_get_navigation_state (NautilusWindowSlot *self)
+@@ -244,6 +258,96 @@ nautilus_window_slot_get_navigation_state (NautilusWindowSlot *self)
      return data;
  }
  
@@ -214,16 +214,28 @@ index 4f93f67c8..41ab54d99 100644
  static NautilusView *
  nautilus_window_slot_get_view_for_location (NautilusWindowSlot *self,
                                              GFile              *location)
-@@ -640,15 +744,69 @@ nautilus_window_slot_handle_event (NautilusWindowSlot *self,
+@@ -607,6 +711,7 @@ nautilus_window_slot_search (NautilusWindowSlot *self,
+     }
+ }
+ 
++
+ gboolean
+ nautilus_window_slot_handle_event (NautilusWindowSlot    *self,
+                                    GtkEventControllerKey *controller,
+@@ -638,23 +743,77 @@ nautilus_window_slot_handle_event (NautilusWindowSlot    *self,
          }
      }
  
 -    /* If the action is not enabled, don't try to handle search */
 -    if (g_action_get_enabled (action))
 -    {
--        retval = nautilus_query_editor_handle_event (self->query_editor, event);
+-        retval = nautilus_query_editor_handle_event (self->query_editor,
+-                                                     controller,
+-                                                     keyval,
+-                                                     state);
 -    }
 +    if (self->isearch_enable) {
++        GdkEvent    *event = gtk_get_current_event(); // gkt4: gtk_event_controller_get_current_event (controller);
 +        GdkEvent    *new_event;
 +        gchar       *old_text;
 +        const gchar *new_text;
@@ -234,6 +246,8 @@ index 4f93f67c8..41ab54d99 100644
 -    if (retval)
 -    {
 -        nautilus_window_slot_set_search_visible (self, TRUE);
+-    }
++
 +        isearch_ensure (self);
 +
 +        /* Make a copy of the current text */
@@ -283,20 +297,25 @@ index 4f93f67c8..41ab54d99 100644
 +        /* If the action is not enabled, don't try to handle search */
 +        if (g_action_get_enabled (action))
 +        {
-+            retval = nautilus_query_editor_handle_event (self->query_editor, event);
++            retval = nautilus_query_editor_handle_event (self->query_editor, controller, keyval, state);
 +        }
 +        if (retval)
 +        {
 +            nautilus_window_slot_set_search_visible (self, TRUE);
 +        }
-     }
++     }
  
      return retval;
-@@ -1156,6 +1314,14 @@ nautilus_window_slot_init (NautilusWindowSlot *self)
-                                           "slot.files-view-mode(uint32 " G_STRINGIFY (NAUTILUS_VIEW_GRID_ID) ")",
+ }
+ 
++
+ static void
+ nautilus_window_slot_remove_extra_location_widgets (NautilusWindowSlot *self)
+ {
+@@ -1151,6 +1310,14 @@ nautilus_window_slot_init (NautilusWindowSlot *self)
                                            "<control>2");
-     nautilus_application_set_accelerator (app, "slot.search-visible", "<control>f");
-+ 
+     nautilus_application_set_accelerators (app, "slot.search-visible", search_visible_accels);
+ 
 +    self->isearch_enable = g_settings_get_boolean (nautilus_preferences,
 +                                                   NAUTILUS_PREFERENCES_ENABLE_INTERACTIVE_SEARCH);
 +
@@ -304,10 +323,11 @@ index 4f93f67c8..41ab54d99 100644
 +                              "changed::" NAUTILUS_PREFERENCES_ENABLE_INTERACTIVE_SEARCH,
 +                              G_CALLBACK (isearch_enable_changed),
 +                              self);
- 
++
      self->view_mode_before_search = NAUTILUS_VIEW_INVALID_ID;
  }
-@@ -2911,6 +3077,9 @@ nautilus_window_slot_dispose (GObject *object)
+ 
+@@ -2905,6 +3072,9 @@ nautilus_window_slot_dispose (GObject *object)
  {
      NautilusWindowSlot *self;
      self = NAUTILUS_WINDOW_SLOT (object);
@@ -317,7 +337,7 @@ index 4f93f67c8..41ab54d99 100644
      g_signal_handlers_disconnect_by_data (nautilus_trash_monitor_get (), self);
  
      g_signal_handlers_disconnect_by_data (nautilus_preferences, self);
-@@ -2971,6 +3140,10 @@ nautilus_window_slot_finalize (GObject *object)
+@@ -2965,6 +3135,10 @@ nautilus_window_slot_finalize (GObject *object)
      self = NAUTILUS_WINDOW_SLOT (object);
      g_clear_pointer (&self->title, g_free);
  
@@ -328,7 +348,7 @@ index 4f93f67c8..41ab54d99 100644
      G_OBJECT_CLASS (nautilus_window_slot_parent_class)->finalize (object);
  }
  
-@@ -3423,6 +3596,13 @@ nautilus_window_slot_set_active (NautilusWindowSlot *self,
+@@ -3417,6 +3591,13 @@ nautilus_window_slot_set_active (NautilusWindowSlot *self,
              window = nautilus_window_slot_get_window (self);
              g_assert (self == nautilus_window_get_active_slot (window));
  
@@ -342,7 +362,7 @@ index 4f93f67c8..41ab54d99 100644
              gtk_widget_insert_action_group (GTK_WIDGET (window), "slot", NULL);
          }
  
-@@ -3456,3 +3636,729 @@ nautilus_window_slot_get_query_editor (NautilusWindowSlot *self)
+@@ -3450,3 +3631,729 @@ nautilus_window_slot_get_query_editor (NautilusWindowSlot *self)
  
      return self->query_editor;
  }
@@ -536,7 +556,7 @@ index 4f93f67c8..41ab54d99 100644
 +  file_list = nautilus_view_get_selection (slot->content_view);
 +  nautilus_files_view_activate_files (NAUTILUS_FILES_VIEW (slot->content_view),
 +                                      file_list,
-+                                      NAUTILUS_WINDOW_OPEN_FLAG_NEW_TAB, TRUE);
++                                      NAUTILUS_OPEN_FLAG_NEW_TAB, TRUE);
 +  nautilus_file_list_free (file_list);
 +}
 +
@@ -1072,4 +1092,3 @@ index 4f93f67c8..41ab54d99 100644
 +    slot->isearch_entry = NULL;
 +  }
 +}
-\ No newline at end of file
