@@ -22,8 +22,8 @@ depends=(
 	'python-flask'
 	'python-flask-cors'
 	'python-jsonschema'
-	'python-pyqt5'
-	'python-pyqtwebengine'
+	'python-pyqt6'
+	'python-pyqt6-webengine'
 	'python-send2trash'
 	'python-waitress'
     'python-pyqt6-webengine'
@@ -34,7 +34,6 @@ depends=(
 	'python-markdown'
 	'python-orjson'
 	'python-protobuf'
-	'python-stringcase'
 
 	# requests
 	'python-pysocks'
