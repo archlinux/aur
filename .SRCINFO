@@ -1,6 +1,6 @@
 pkgbase = kwin-bismuth-bin
 	pkgdesc = Addon for KDE Plasma to arrange your windows automatically and switch between them using keyboard shortcuts, like tiling window managers.
-	pkgver = 3.0.0
+	pkgver = 3.1.0
 	pkgrel = 1
 	url = https://github.com/Bismuth-Forge/bismuth
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = kwin-bismuth-bin
 	depends = systemsettings
 	provides = kwin-bismuth
 	conflicts = kwin-bismuth
-	noextract = bismuth-bin-3.0.0.tar.gz
+	noextract = bismuth-bin-3.1.0.tar.gz
 	options = !emptydirs
-	source = bismuth-bin-3.0.0.tar.gz::https://github.com/Bismuth-Forge/bismuth/releases/download/v3.0.0/binary-release.tar.gz
-	sha256sums = 64bfec8134f23a87a88db5f1502184b3d726558766bd4953390e9cfd1bb5a05b
+	source = bismuth-bin-3.1.0.tar.gz::https://github.com/Bismuth-Forge/bismuth/releases/download/v3.1.0/binary-release.tar.gz
+	sha256sums = a7b84aeb374de1a0645cab4339aa6e0cdeddfdb83be3f646295bc22c572e8854
 
 pkgname = kwin-bismuth-bin
