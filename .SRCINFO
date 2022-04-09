@@ -1,13 +1,13 @@
 pkgbase = zsh-history-search-multi-word-git
 	pkgdesc = Multi-word, syntax highlighted history searching for Zsh
-	pkgver = r309.a87074c
+	pkgver = r315.5b44d8c
 	pkgrel = 1
 	url = https://github.com/zdharma-continuum/history-search-multi-word
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = zsh>=5.0.0
-	source = history-search-multi-word::git://github.com/zdharma-continuum/history-search-multi-word
+	source = history-search-multi-word::git+https://github.com/zdharma-continuum/history-search-multi-word.git
 	sha512sums = SKIP
 
 pkgname = zsh-history-search-multi-word-git
