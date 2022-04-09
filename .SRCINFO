@@ -1,5 +1,5 @@
 pkgbase = yt-len
-	pkgdesc = Simple Python program, get video/playlist length and titles
+	pkgdesc = Python program, get video/playlist length and titles
 	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/binHarby/yt-len
