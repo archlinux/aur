@@ -1,0 +1,11 @@
+[Unit]
+Description=Simple WireGuard Proxy Service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+LimitNOFILE=524288
+ExecStart=/usr/bin/swgp-go -confPath /etc/swgp-go/config.json -suppressTimestamps
+
+[Install]
+WantedBy=multi-user.target
