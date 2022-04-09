@@ -1,5 +1,5 @@
 # Maintainer: Leonardo Miliani <leonardo AT leonardomiliani DOT com>
-pkgname=sjasmplus
+pkgname=sjasmplus-z00m128
 pkgver=1.19.0
 pkgrel=1
 pkgdesc="SjASMplus is a Z80 cross-assembler"
@@ -11,7 +11,7 @@ optdepends=('lua: Lua scripting language'
             'tolua++: integrate C/C++ code with Lua')
 conflicts=(sjasmplus)
 makedepends=(cmake)
-source=("https://github.com/z00m128/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver-src.tar.xz")
+source=("https://github.com/z00m128/sjasmplus/releases/download/v$pkgver/sjasmplus-$pkgver-src.tar.xz")
 
 sha256sums=('0d17e9a7f34811ca927803d6502e5620b32b14b13d4d8e782ade45cb2ef70c26')
 
@@ -21,12 +21,12 @@ prepare() {
 
 build() {
 	cd build
-	cmake ../$pkgname-$pkgver \
+	cmake ../sjasmplus-$pkgver \
 		-DCMAKE_BUILD_TYPE=Release
 	make
 }
 
 package() {
 	cd build
-	install -Dm755 sjasmplus "$pkgdir/usr/local/bin/$pkgname"
+	install -Dm755 sjasmplus "$pkgdir/usr/local/bin/sjasmplus"
 }

@@ -1,4 +1,4 @@
-pkgbase = sjasmplus
+pkgbase = sjasmplus-z00m128
 	pkgdesc = SjASMplus is a Z80 cross-assembler
 	pkgver = 1.19.0
 	pkgrel = 1
@@ -13,4 +13,4 @@ pkgbase = sjasmplus
 	source = https://github.com/z00m128/sjasmplus/releases/download/v1.19.0/sjasmplus-1.19.0-src.tar.xz
 	sha256sums = 0d17e9a7f34811ca927803d6502e5620b32b14b13d4d8e782ade45cb2ef70c26
 
-pkgname = sjasmplus
+pkgname = sjasmplus-z00m128
