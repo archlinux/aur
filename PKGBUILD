@@ -3,7 +3,7 @@
 
 pkgname=opensnitch
 pkgver=1.5.0
-pkgrel=6
+pkgrel=7
 pkgdesc='GNU/Linux port of the Little Snitch application firewall'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/evilsocket/opensnitch'
@@ -16,17 +16,20 @@ depends=(
     'python-slugify'
     'python-pyqt5'
     'abseil-cpp'
+    'python-pyinotify'
+    'python-notify2'
 )
 makedepends=(
     'go'
     'python-grpcio-tools'
     'python-setuptools'
+    'python-pyasn'
     'qt5-tools'
 )
 optdepends=(
     'logrotate: for logfile rotation support'
     'hicolor-icon-theme: for gui'
-    'python-pyinotify: for system notifications'
+    "python-pyasn: display IP's network name"
 )
 backup=(
     'etc/opensnitchd/default-config.json'
@@ -41,7 +44,15 @@ sha512sums=(
 
 prepare() {
     cd "$srcdir/opensnitch-$pkgver"
+    echo "patching daemon/opensnitchd.service"
     sed -i 's|local/bin|bin|g' daemon/opensnitchd.service
+
+    python_dist_path=$(python3 -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')
+    echo "patching ui/bin/opensnitch-ui"
+    sed -i 's|/usr/lib/python3/dist-packages/|/usr/lib/python3.10/site-packages/|g' ui/bin/opensnitch-ui
+    echo "patching ui/opensnitch/utils.py"
+    sed -i "s|/usr/lib/python3/dist-packages/data/ipasn_20140513_v12.dat.gz|${python_dist_path}/pyasn/data/ipasn_20140513_v12.dat.gz|g" ui/opensnitch/utils.py
+    sed -i "s|/usr/lib/python3/dist-packages/data/asnames.json|${python_dist_path}/pyasn/data/asnames.json|g" ui/opensnitch/utils.py
 }
 
 build() {
