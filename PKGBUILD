@@ -5,8 +5,8 @@
 _pkgbase=etlegacy
 pkgbase=etlegacy
 pkgname=('etlegacy' 'etlegacy-mod')
-pkgver=2.79.0
-_binaryversion=344
+pkgver=2.80.0
+_binaryversion=383
 pkgrel=1
 arch=('x86_64')
 url="http://www.etlegacy.com/"
@@ -15,8 +15,8 @@ makedepends=('cmake' 'zip' 'alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libj
 source=("${_pkgbase}-${pkgver}.tar.gz::https://github.com/etlegacy/$_pkgbase/archive/v$pkgver.tar.gz"
         "${_pkgbase}-${pkgver}-${arch}-binary.tar.gz::http://www.etlegacy.com/download/file/${_binaryversion}")
 #noextract=("etl_bin_v$pkgver.pk3" "pak3_v$pkgver.pk3")
-sha256sums=('73a59e5e1ca4f95638f9a924a5c150e1773a31e1f6cdea55684533f91e471eac'
-            'fc1cb08657917368da9875c8aab1be4b445e38eaabc35661c0fdf4b2ac222db0')
+sha256sums=('57429806f554dfb9ce4942b14673dd7603f05a6bc716a4ef91ba08faeca195f6'
+            'd6d16b12ba0c6cc09cdcaf438590a0e049af85e595c30a795b800a96bafa1820')
 
 build() {
     cd "$_pkgbase-$pkgver"
