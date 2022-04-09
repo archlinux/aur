@@ -1,12 +1,12 @@
 pkgbase = mediawiki-extension-usermerge
 	pkgdesc = An extension for MediaWiki that allows to merge one Wiki user's account with another Wiki user's account
-	pkgver = 1.37+r1056+g1befe21
+	pkgver = 1.37+r1057+gf2c3008
 	pkgrel = 1
 	url = https://www.mediawiki.org/wiki/Extension:UserMerge
 	arch = any
 	license = GPL
 	makedepends = git
-	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/UserMerge.git#commit=1befe217c807d11618790071d620d55fb3201fd2
+	source = git+https://gerrit.wikimedia.org/r/mediawiki/extensions/UserMerge.git#commit=f2c3008fc9bba3cba2cbb06ec68aad9ab837fbdf
 	sha512sums = SKIP
 
 pkgname = mediawiki-extension-usermerge
