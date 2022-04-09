@@ -49,7 +49,7 @@ _1k_HZ_ticks=
 pkgbase=linux-next-git
 pkgver=20220408.r0.gff511c1c68a5
 _srcname=linux-next
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux NEXT'
 arch=('x86_64')
 url="http://www.kernel.org/"
@@ -57,7 +57,8 @@ license=('GPL2')
 options=('!strip')
 makedepends=('bc' 'libelf' 'git' 'pahole' 'cpio' 'perl' 'tar' 'xz')
 #makedepends=('kmod' 'bc' 'libelf' 'git' 'python-sphinx' 'python-sphinx_rtd_theme'
-#             'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
+#             'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz'
+#             'texlive-latexextra' 'xmlto')
 _lucjanver=5.17
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_lucjanver}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_lucjanver}"
