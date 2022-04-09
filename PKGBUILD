@@ -1,7 +1,7 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: Markus Näther <naetherm@informatik.uni-freiburg.de>
 pkgname=rocsparse
-pkgver=5.1.0
+pkgver=5.1.1
 pkgrel=1
 pkgdesc='BLAS for sparse computation on top of ROCm'
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('hip' 'rocprim')
 makedepends=('cmake' 'git' 'gcc-fortran')
 _git='https://github.com/ROCmSoftwarePlatform/rocSPARSE'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz")
-sha256sums=('a2f0f8cb02b95993480bd7264fc65e8b11464a90b86f2dcd0dd82a2e6d4bd704')
+sha256sums=('4c0f524fa6881ca17c2203930cdc5193d659e9672b1272bfaa4749dfc04b4b9a')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" ".tar.gz")"
 
 build() {
