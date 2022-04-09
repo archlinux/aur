@@ -28,7 +28,7 @@ prepare() {
 }
 
 build() {
-	cd "$pkgname-$pkgver"
+	cd "$srcdir/$pkgname-$pkgver"
 	mkdir -p usr/bin
 	chmod +x yt-len
 	mv yt-len usr/bin/yt-len
