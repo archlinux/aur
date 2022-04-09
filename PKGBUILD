@@ -6,7 +6,7 @@ pkgname=(
   'sqlboiler-psql'
   # TODO: add mysql split package
 )
-pkgver=4.9.0
+pkgver=4.9.1
 pkgrel=1
 pkgdesc="Generate a Go ORM tailored to your database schema"
 arch=('x86_64')
@@ -15,7 +15,7 @@ license=('BSD')
 depends=('glibc')
 makedepends=('git' 'go')
 options=('!lto')
-_commit='fb61ccff2f4ef534b360334cf2f1af85e7ed8838'
+_commit='7c466687fc1d442af17315cdd0924947d9f0dc55'
 source=("$pkgbase::git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 
