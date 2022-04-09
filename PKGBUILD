@@ -23,7 +23,6 @@ makedepends=(
     'go'
     'python-grpcio-tools'
     'python-setuptools'
-    'python-pyasn'
     'qt5-tools'
 )
 optdepends=(
