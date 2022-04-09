@@ -1,7 +1,7 @@
 pkgbase = pamac-aur-git
 	pkgdesc = A Gtk3 frontend for libalpm - git version
-	pkgver = 10.3.0.r17.gfe5ebe9
-	pkgrel = 2
+	pkgver = 10.4.0.r0.gc7db90d
+	pkgrel = 1
 	url = https://gitlab.manjaro.org/applications/pamac
 	arch = i686
 	arch = pentium4
@@ -32,11 +32,7 @@ pkgbase = pamac-aur-git
 	conflicts = pamac-all-git
 	options = !emptydirs
 	source = git+https://gitlab.manjaro.org/applications/pamac.git
-	source = gnome42.patch
-	source = metadata.patch
 	sha256sums = SKIP
-	sha256sums = c1e946a4719754a932b84786d94f2be2f086909aae016f9d5f78df29ad170483
-	sha256sums = d161347f13f87fbe0c66d8d6ef71291dc8caec904e72ccaf222d93396d0ced9d
 
 pkgname = pamac-aur-git
 	install = pamac.install

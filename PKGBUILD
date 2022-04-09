@@ -4,9 +4,9 @@
 
 pkgname=('pamac-aur-git')
 _pkgname=pamac
-pkgver=10.3.0.r17.gfe5ebe9
-_pkgver=10.3.0
-pkgrel=2
+pkgver=10.4.0.r0.gc7db90d
+_pkgver=10.4.0
+pkgrel=1
 pkgdesc="A Gtk3 frontend for libalpm - git version"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url="https://gitlab.manjaro.org/applications/pamac"
@@ -20,12 +20,8 @@ options=(!emptydirs)
 provides=('pamac')
 conflicts=('pamac' 'pamac-all' 'pamac-aur' 'pamac-all-git')
 # End of Manjaro users section
-source=(git+https://gitlab.manjaro.org/applications/$_pkgname.git
-	gnome42.patch
-	metadata.patch)
-sha256sums=('SKIP'
-            'c1e946a4719754a932b84786d94f2be2f086909aae016f9d5f78df29ad170483'
-            'd161347f13f87fbe0c66d8d6ef71291dc8caec904e72ccaf222d93396d0ced9d')
+source=(git+https://gitlab.manjaro.org/applications/$_pkgname.git)
+sha256sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
@@ -37,9 +33,6 @@ prepare() {
   cd $_pkgname
   sed -i -e "s|\"$_pkgver\"|\"$pkgver-$pkgrel\"|g" src/manager_window.vala
   # patches here
-  # First patch courtesy of Barnabás Pőcze
-  patch -Np1 < ../gnome42.patch
-  patch -Np1 < ../metadata.patch
 }
 
 build() {
