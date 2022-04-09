@@ -1,0 +1,11 @@
+pkgbase = tts-tengwar-sindarin
+	pkgdesc = The Tengwar Sindarin TTF font family (Tolkien Elvish), by Daniel Smith. Fantasy generic font family
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://fontsly.com/dingbats/runes-elvish/tengwar_sindarin
+	arch = any
+	license = custom
+	source = https://fontsly.com/download/3781
+	sha256sums = 6e35fd4c9770ddca6dfe82a72ecc15a3ce44c93816a43da88fec62396b337836
+
+pkgname = tts-tengwar-sindarin
