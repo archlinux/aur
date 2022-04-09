@@ -1,5 +1,5 @@
 pkgname=arkenfox-user.js
-pkgver=98.0
+pkgver=99.0
 pkgrel=1
 pkgdesc="Firefox privacy, security and anti-tracking: a comprehensive user.js template for configuration and hardening."
 arch=('any')
@@ -16,22 +16,22 @@ source=(
 )
 
 sha256sums=(
-    '50a44837d4c78f19e8f32b62130d114b9af0d667c36475c3df7338fc381f3f82'
+    '9313af70e29847bf90a69ac6b2b85937ce255390d58ea966a2348db286d8c00e'
     '61d9058c971e732dfe7626851b4b2380622b931578fe009b7c5f143fb3135362'
 )
 
 prepare() {
     cd "${srcdir}/${_snapshot}"
-    patch -p0 -N -i "${srcdir}/${source[1]}"
+    patch -i "${srcdir}/${source[1]}"
 }
 
 package() {
-    local lib="/usr/lib/${pkgname}"
-    local bin="updater.sh"
-    install -dm755 "${pkgdir}/usr/bin" && ln -s "${lib}/${bin}" "$_/arkenfox-updater"
+    local lib="${pkgdir}/usr/lib/${pkgname}"
+    install -dm755 "${pkgdir}/usr/bin" &&
+        ln -s "${lib#${pkgdir}}/updater.sh" "$_/arkenfox-updater"
 
     cd "${srcdir}/${_snapshot}"
-    install -Dm755 -t "${pkgdir}${lib}" "${bin}"
-    install -Dm644 -t "${pkgdir}${lib}" "user.js"
+    install -Dm755 -t "${lib}" "updater.sh"
+    install -Dm644 -t "${lib}" "user.js"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "LICENSE.txt"
 }
