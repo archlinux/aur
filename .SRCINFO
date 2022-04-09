@@ -1,19 +1,18 @@
-pkgbase = nwg-look
-	pkgdesc = GTK3 settings editor adapted to work in the sway/wlroots environment
+pkgbase = nwg-look-bin
+	pkgdesc = GTK3 settings editor adapted to work in the sway/wlroots environment (binary package)
 	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-look
 	arch = x86_64
 	license = MIT
-	makedepends = go
 	depends = gtk3
 	depends = glib2
 	depends = cairo
 	depends = xcur2png
 	provides = nwg-look
+	conflicts = nwg-look
 	conflicts = nwg-look-git
-	conflicts = nwg-look-bin
-	source = nwg-look-0.1.1.tar.gz::https://github.com/nwg-piotr/nwg-look/archive/v0.1.1.tar.gz
-	md5sums = 78278cc168cc10621d4602821c13da97
+	source = nwg-look-bin-0.1.1.tar.gz::https://github.com/nwg-piotr/nwg-look/releases/download/v0.1.1/nwg-look-v0.1.1_x86_64.tar.gz
+	md5sums = 8da2258b1b639cda420e9b838f2da030
 
-pkgname = nwg-look
+pkgname = nwg-look-bin
