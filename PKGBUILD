@@ -19,4 +19,4 @@ package(){
     cd ${_pkgname}-${pkgver}
     install -Dm755 ${pkgname} "${pkgdir}/usr/bin/tldr-page"
 }
-sha256sums=('b6e4ba54bacedb050c85f2189faecdd76ced041fefed8e9775c71ebd4afb63b2')
+sha256sums=('9a545d539375577c87006e027330d9ea768e9a0f0742cb6f8e3b75eaad2d997e')
