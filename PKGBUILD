@@ -1,16 +1,16 @@
 # shellcheck shell=bash
 # shellcheck disable=SC2034,SC2148,SC2154
 # Co-Maintainer: Daemon Lee Schmidt <DaemonLeeSchmidt@gmail.com>
-# Maintainer: Zeke Sonxx <zeke@zekesonxx.com>
-pkgname=fargo-git # '-bzr', '-git', '-hg' or '-svn'
+# Maintainer: Zoey Mertes <zmertes@zmertes.net>
+pkgname=fargo-git
 pkgver=r19.2dd84e1
-pkgrel=2
+pkgrel=3
 pkgdesc="Removes unseeable and ghost alpha from PNG images."
 arch=('i686' 'x86_64')
 url="https://github.com/DaemonLee/fargo"
 license=('GPL3')
 groups=()
-depends=('libvips-git')
+depends=('libvips')
 makedepends=('git' 'perl')
 provides=("${pkgname%-VCS}")
 conflicts=("${pkgname%-VCS}")
