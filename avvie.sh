@@ -1,3 +1,3 @@
 #!/bin/sh
 
-python /usr/lib/avvie/main.py
+python /usr/lib/avvie/main.py $@
