@@ -31,7 +31,7 @@ validpgpkeys=()
 
 
 prepare() {
-    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+    cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
