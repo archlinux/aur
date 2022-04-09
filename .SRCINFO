@@ -1,0 +1,28 @@
+pkgbase = gnome-calculator-41
+	pkgdesc = GNOME Scientific calculator
+	pkgver = 41.1
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Calculator
+	arch = x86_64
+	license = GPL
+	makedepends = yelp-tools
+	makedepends = vala
+	makedepends = git
+	makedepends = meson
+	makedepends = gobject-introspection
+	depends = libadwaita
+	depends = dconf
+	depends = gtksourceview5
+	depends = mpfr
+	depends = libsoup
+	depends = libmpc
+	depends = libgee
+	depends = libhandy
+	provides = gnome-calculator
+	conflicts = gnome-calculator
+	conflicts = gnome-calculator-git
+	options = debug
+	source = git+https://github.com/ForumPlayer/gnome-calculator-41.git#commit=1e576c9b024439c3d6fe814b40c22edfa94618e6
+	sha256sums = SKIP
+
+pkgname = gnome-calculator-41
