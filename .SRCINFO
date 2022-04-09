@@ -1,6 +1,6 @@
 pkgbase = waypoint
 	pkgdesc = A tool to build, deploy, and release any application on any platform
-	pkgver = 0.8.0
+	pkgver = 0.8.1
 	pkgrel = 1
 	url = https://www.waypointproject.io/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = waypoint
 	makedepends = go-bindata
 	optdepends = docker: for local development server
 	options = !lto
-	source = waypoint::git+https://github.com/hashicorp/waypoint.git#commit=ef94c27143ad1388cbe4b2bc2c480e583fc49082
+	source = waypoint::git+https://github.com/hashicorp/waypoint.git#commit=622f37bd1030ae8144dfbdc79f323f01ec48316c
 	b2sums = SKIP
 
 pkgname = waypoint
