@@ -1,10 +1,15 @@
 pkgbase = rocm-core
 	pkgdesc = AMD ROCm core package
-	pkgver = 5.1.0
+	pkgver = 5.1.1
 	pkgrel = 1
 	url = https://rocmdocs.amd.com/en/latest/
 	arch = x86_64
-	source = rocm-core-5.1.0.deb::https://repo.radeon.com/rocm/apt/5.1/pool/main/r/rocm-core/rocm-core_5.1.0.50100-36_amd64.deb
-	sha256sums = c019d97cfef8f8fd0d8b5bc24634dd05b40e9c9f8c69c4c2ba62b626c6dacd82
+	makedepends = cmake
+	source = rocm-core-5.1.1.deb::https://repo.radeon.com/rocm/apt/5.1.1/pool/main/r/rocm-core/rocm-core_5.1.1.50101-48_amd64.deb
+	source = rocm_version.c
+	source = CMakeLists.txt
+	sha256sums = eaa703e40689d855ec0e9ed9db3e6920152414079d759c8bf60afbf06c299b2e
+	sha256sums = 976781c610ac766c91a1da3f3f1474595216f69a0fdcb8c966f1f94095ce947a
+	sha256sums = ed98f0e1712e99b34d9da5ae7ade1e33847ef000760012bd5ed57170d9577560
 
 pkgname = rocm-core
