@@ -1,6 +1,6 @@
 pkgbase = network-ups-tools-git
 	pkgdesc = A collection of programs which provide a common interface for monitoring and administering UPS, PDU and SCD hardware
-	pkgver = 2.7.4.r5111.g88acc3578
+	pkgver = 2.8.0.rc1.r39.g88acc3578
 	pkgrel = 1
 	url = https://networkupstools.org/
 	install = nut.install

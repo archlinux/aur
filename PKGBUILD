@@ -6,7 +6,7 @@
 # Contributor: Dan Ziemba <zman0900@gmail.com>
 
 pkgname=network-ups-tools-git
-pkgver=2.7.4.r5111.g88acc3578
+pkgver=2.8.0.rc1.r39.g88acc3578
 pkgrel=1
 pkgdesc='A collection of programs which provide a common interface for monitoring and administering UPS, PDU and SCD hardware'
 arch=(x86_64)
@@ -57,7 +57,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd nut
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
