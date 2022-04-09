@@ -1,8 +1,8 @@
 # Maintainer: sukanka <su975853527 [AT] gmail.com>
 pkgname=clash-for-windows-electron-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.19.14
-pkgrel=2
+pkgver=0.19.15
+pkgrel=1
 pkgdesc="A Windows/macOS/Linux GUI based on Clash and Electron. Using system clash and electron"
 arch=("x86_64")
 parch=$(echo ${arch} | sed "s/x86_64/x64/")
@@ -33,7 +33,7 @@ source=(
     "cfw"
     "clash-core-service@.service"
     )
-sha256sums=('b0be6a36830ab18ee1545c5e997626736725abf7a1fe46b5c01343c028c6e512'
+sha256sums=('4a2446f0bfd1ed43ca318e87df3eba84017c84b8c96ed43533f5d7e2a4df6eae'
             '340ee7a8c8e7da27eca9891dbc6997e7b2d87607947e8010903fb79d1fbb9da6'
             'b76172513eb39d0ce74ac6c986b8da03ff464f33ad17c32593d69225e6866929'
             'c199f6b11d32d9ef70316420cc9b6b78c0491d1c687a85ae570d76113d72d761')
