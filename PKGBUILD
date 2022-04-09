@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=go-critic
-pkgver=0.6.2
+pkgver=0.6.3
 pkgrel=1
 pkgdesc="Highly extensible Go source code linter"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('git' 'go')
 options=('!lto')
-_commit='f0a10a00c4ff012f328442fdd27426ca12ed03df'
+_commit='498eef8a04d52f25a7f3718211a46a55e0ae73f0'
 source=("$pkgname::git+https://github.com/go-critic/go-critic.git#commit=$_commit")
 b2sums=('SKIP')
 
