@@ -49,7 +49,7 @@ prepare() {
 
     python_dist_path=$(python3 -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')
     echo "patching ui/bin/opensnitch-ui"
-    sed -i 's|/usr/lib/python3/dist-packages/|/usr/lib/python3.10/site-packages/|g' ui/bin/opensnitch-ui
+    sed -i "s|/usr/lib/python3/dist-packages/|${python_dist_path}/|g" ui/bin/opensnitch-ui
     echo "patching ui/opensnitch/utils.py"
     sed -i "s|/usr/lib/python3/dist-packages/data/ipasn_20140513_v12.dat.gz|${python_dist_path}/pyasn/data/ipasn_20140513_v12.dat.gz|g" ui/opensnitch/utils.py
     sed -i "s|/usr/lib/python3/dist-packages/data/asnames.json|${python_dist_path}/pyasn/data/asnames.json|g" ui/opensnitch/utils.py
