@@ -1,27 +1,40 @@
 # Maintainer: Luis Martinez <luis dot martinez at tuta dot io>
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 
+## GPG key: https://github.com/tacaswell.gpg
+
 pkgname=python-slicerator
-_name="${pkgname#python-}"
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A lazy-loading, fancy-sliceable iterable"
 url="https://github.com/soft-matter/slicerator"
 arch=('any')
 license=('BSD')
-depends=('python-six')
-makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('18e60393e6765ca96986f801bbae62a617a1eba6ed57784e61b165ffc7dc1848')
+depends=('python')
+makedepends=(
+	'git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+checkdepends=('python-pytest' 'python-numpy')
+source=("$pkgname::git+$url#tag=v$pkgver?signed")
+sha256sums=('SKIP')
+validpgpkeys=('96B7334D7610EE3E68AFFE589E027116943D6A8B') ## Thomas A. Caswell
 
 build() {
-	cd "$_name-$pkgver"
-	python setup.py build
+	cd "$pkgname"
+	python -m build --wheel --no-isolation
+}
+
+check() {
+	cd "$pkgname"
+	PYTHONPATH="$PWD" pytest -x --disable-warnings
 }
 
 package() {
-	cd "$_name-$pkgver"
-	python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	cd "$pkgname"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s \
+		"$_site/slicerator-$pkgver.dist-info/LICENSE" \
+		"$pkgdir/usr/share/licenses/$pkgname/"
 }
