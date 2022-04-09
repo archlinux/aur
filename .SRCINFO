@@ -1,0 +1,13 @@
+pkgbase = fancy-mouse-boot-rom
+	pkgdesc = MCPX boot ROM implementation
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/SnowyMouse/fancy-mouse-boot-rom
+	arch = any
+	license = GPL2
+	license = GPL3
+	makedepends = git
+	source = fancy-mouse-boot-rom::git+https://github.com/SnowyMouse/fancy-mouse-boot-rom.git#commit=ebe34c4cb20496b0c735e7795efd6fbf3b6316ff
+	md5sums = SKIP
+
+pkgname = fancy-mouse-boot-rom
