@@ -40,7 +40,7 @@ pkgver() {
 prepare() {
 	cd "${srcdir}/${_pkgname}"
 	# git apply "${srcdir}/patch"
-	patch -p1 -i "${srcdir}/patch"
+	# patch -p1 -i "${srcdir}/patch"
 }
 
 build() {
