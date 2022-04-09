@@ -1,7 +1,7 @@
 pkgbase = rocm-llvm
 	pkgdesc = Radeon Open Compute - LLVM toolchain (llvm, clang, lld)
-	pkgver = 5.1.0
-	pkgrel = 3
+	pkgver = 5.1.1
+	pkgrel = 1
 	url = https://github.com/RadeonOpenCompute/llvm-project
 	arch = x86_64
 	license = custom:Apache 2.0 with LLVM Exception
@@ -14,7 +14,7 @@ pkgbase = rocm-llvm
 	replaces = llvm-amdgpu
 	options = staticlibs
 	options = !lto
-	source = rocm-llvm-5.1.0.tar.gz::https://github.com/RadeonOpenCompute/llvm-project/archive/rocm-5.1.0.tar.gz
-	sha256sums = db5d45c4a7842a908527c1b7b8d4a40c688225a41d23cfa382eab23edfffdd10
+	source = rocm-llvm-5.1.1.tar.gz::https://github.com/RadeonOpenCompute/llvm-project/archive/rocm-5.1.1.tar.gz
+	sha256sums = 471c63681d1c2b97c431e62d24e3193527698295dd80483383068537634481ec
 
 pkgname = rocm-llvm
