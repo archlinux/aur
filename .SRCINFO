@@ -10,6 +10,7 @@ pkgbase = corsix-th
 	license = MIT
 	makedepends = cmake
 	makedepends = ninja
+	makedepends = doxygen
 	depends = lua
 	depends = lua-lpeg
 	depends = lua-filesystem

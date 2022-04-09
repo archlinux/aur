@@ -10,7 +10,7 @@ pkgdesc='Reimplementation of the game engine of Theme Hospital'
 url='https://github.com/CorsixTH/CorsixTH'
 arch=('i686' 'x86_64' 'armv7h')
 license=('MIT')
-makedepends=('cmake' 'ninja')
+makedepends=('cmake' 'ninja' 'doxygen')
 depends=('lua' 'lua-lpeg' 'lua-filesystem' 'sdl2_mixer' 'ffmpeg')
 optdepends=('freepats-legacy: Soundfont for Midi playback'
             'soundfont-fluid: Alternative soundfont for Midi playback')
