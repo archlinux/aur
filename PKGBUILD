@@ -14,8 +14,8 @@ pkgname=('linux-acs-manjaro' 'linux-acs-manjaro-headers')
 _kernelname=-ACS-MANJARO
 _basekernel=5.17
 _basever=517
-pkgver=5.17.1
-pkgrel=3
+pkgver=5.17.2
+pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -38,7 +38,6 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         # ARCH Patches
         '0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch'
         '0102-random-treat_bootloader_trust_toggle_the_same_way_as_cpu_trust_toggle.patch'
-        '0103-Revert-swiotlb-rework-fix_info_leak_with_DMA_FROM_DEVICE.patch'
         # MANJARO Patches
 
         # Bootsplash
@@ -61,11 +60,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         # ACS override patch
         '0999-acs.gitpatch')
 sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
-            '24c982d6b7b704b31a6b4bc0a59cbf2135697a58d5d6030532ae07856da36944'
-            'a94d5d374f4cdb439f3958b50f7af0f4e024fa17d7df3f30e548f40314e210c0'
+            '7d21d9b8818421d52b94f5b74138677155e8f543fd29c39c22beefdb128d5967'
+            '530f83bc8996e20bc108cd8f22ee0add48880e56837c9dba18796a345abf68c9'
             'f85b07d73b2f4ad8bb6b59ee6624b2dd06a03824fc7b00131a01df36c8d899fe'
             'fc9223bf2d430ab1c122daada4f51d835a74f56c007c82842eeca3acd2d788be'
-            'edd40fa0d23e9cbbf5ed7f37b2e0ed8e84798701b08a0dc262afd751acf17e04'
             '2b11905b63b05b25807dd64757c779da74dd4c37e36d3f7a46485b1ee5a9d326'
             '94a8538251ad148f1025cc3de446ce64f73dc32b01815426fb159c722e8fa5bc'
             '1f18c5c10a3c63e41ecd05ad34cd9f6653ba96e9f1049ce2b7bb6da2578ae710'
