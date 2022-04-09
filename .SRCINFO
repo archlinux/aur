@@ -1,6 +1,6 @@
 pkgbase = yed
 	pkgdesc = Very powerful graph editor written in java
-	pkgver = 3.21.1
+	pkgver = 3.22
 	pkgrel = 1
 	epoch = 1
 	url = http://www.yworks.com/en/products_yed_about.html
@@ -8,14 +8,13 @@ pkgbase = yed
 	arch = any
 	license = custom
 	depends = java-runtime
-	source = https://www.yworks.com/resources/yed/demo/yEd-3.21.1.zip
+	source = https://www.yworks.com/resources/yed/demo/yEd-3.22.zip
 	source = yed.desktop
 	source = yed
 	source = graphml+xml-mime.xml
-	sha256sums = c4301c2d7e842bdb781b6a112c74e1244d1b80eb0eeb8a0a30e1bfba83ef09e4
+	sha256sums = d40cb5ef10695809f5fc890891c48bcc84bf9ccf5a150612e67eabe327e1e8a5
 	sha256sums = cc6957cde6eba0d82ea523b0257f8c91fd1e330a1e2ad7d64890e48a2450aa98
 	sha256sums = 731b54c6e731704efe9847d78e2df474d59042452ace29d2786d76891295249e
 	sha256sums = e751b69ed8a25faf46d4e4016ed8f1774abc88679067934a6081348e3d6fc332
 
 pkgname = yed
-
