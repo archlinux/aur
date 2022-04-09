@@ -1,0 +1,13 @@
+pkgbase = notepadnext
+	pkgdesc = A cross-platform, reimplementation of Notepad++
+	pkgver = 0.4.9
+	pkgrel = 1
+	url = https://github.com/kleiner-brauhelfer/kleiner-brauhelfer-2
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	depends = qt5-base
+	source = git+https://github.com/dail8859/NotepadNext.git
+	sha256sums = SKIP
+
+pkgname = notepadnext
