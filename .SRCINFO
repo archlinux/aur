@@ -1,0 +1,37 @@
+pkgbase = xemu
+	pkgdesc = Original Xbox Emulator
+	pkgver = 0.6.2.r90.g6f507c80af
+	pkgrel = 1
+	url = https://xemu.app
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = glib2
+	makedepends = glu
+	makedepends = libepoxy
+	makedepends = libpcap
+	makedepends = meson
+	makedepends = openssl
+	makedepends = pixman
+	makedepends = python
+	makedepends = samurai
+	makedepends = xxhash
+	depends = sdl2
+	depends = libsamplerate
+	depends = gtk3
+	depends = libslirp
+	optdepends = fancy-mouse-boot-rom: first-stage xbox bootrom
+	source = xemu::git+https://github.com/mborgerson/xemu.git#commit=6f507c80af546e0f5d316622d20f78820423ce6e
+	source = berkeley-softfloat-3::git+https://gitlab.com/qemu-project/berkeley-softfloat-3.git
+	source = berkeley-testfloat-3::git+https://gitlab.com/qemu-project/berkeley-testfloat-3.git
+	source = imgui::git+https://github.com/ocornut/imgui.git
+	source = implot::git+https://github.com/epezent/implot.git
+	source = keycodemapdb::git+https://gitlab.com/qemu-project/keycodemapdb.git
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = xemu
