@@ -3,7 +3,7 @@
 
 pkgname=kvantum-qt6-git
 _gitname=Kvantum
-pkgver=1.0.0.r28.gb284fbfb
+pkgver=1.0.1.r12.g3b673ec8
 pkgrel=1
 pkgdesc="Qt6 component of the Kvantum theme engine"
 arch=('x86_64')

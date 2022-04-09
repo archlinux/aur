@@ -1,6 +1,6 @@
 pkgbase = kvantum-qt6-git
 	pkgdesc = Qt6 component of the Kvantum theme engine
-	pkgver = 1.0.0.r28.gb284fbfb
+	pkgver = 1.0.1.r12.g3b673ec8
 	pkgrel = 1
 	url = https://github.com/tsujan/Kvantum
 	arch = x86_64
