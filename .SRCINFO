@@ -1,0 +1,12 @@
+pkgbase = wrt2pdf
+	pkgdesc = Create a PDF out of a plain text file
+	pkgver = 0.6
+	pkgrel = 1
+	url = https://github.com/loh-tar/wrt2pdf
+	arch = x86_64
+	license = GPL2
+	depends = qt5-base
+	source = wrt2pdf-0.6.tar.gz::https://github.com/loh-tar/wrt2pdf/archive/v0.6.tar.gz
+	sha256sums = f204671e76bac20c4e039d4bec8bd7a52bdc69c2b62ce68d48ebadd29d8f8a87
+
+pkgname = wrt2pdf
