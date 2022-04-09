@@ -1,4 +1,5 @@
 # Maintainer BlivionIaG <kev29lt@gmail.com>
+# Maintainer SimPilotAdamT <adam_tazul@outlook.com>
 
 pkgname=fetchcord-testing
 pkgver=2.7.8
