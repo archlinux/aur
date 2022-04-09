@@ -5,7 +5,7 @@
 
 pkgname=chromium
 pkgver=100.0.4896.75
-pkgrel=1
+pkgrel=2
 _launcher_ver=8
 _gcc_patchset=4
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -27,6 +27,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
         webcodecs-stop-using-AudioOpusEncoder.patch
         webrtc-check-existence-of-cursor-metadata.patch
+        enable-GlobalMediaControlsCastStartStop.patch
         sql-make-VirtualCursor-standard-layout-type.patch
         use-oauth2-client-switches-as-default.patch)
 sha256sums=('244ed352dfaa1ab6b1f0877c4884fd17aa7d7133fa52f129a9fb01325ea0c0c0'
@@ -34,6 +35,7 @@ sha256sums=('244ed352dfaa1ab6b1f0877c4884fd17aa7d7133fa52f129a9fb01325ea0c0c0'
             'a6120e7d4eb5e131b87b6ab3b922e0c6cd78e15501e54cfb2019875173688d80'
             '064daaa2b9d95b96ec04d8ddebf4af441f92263d123365b58fe73966866080af'
             '88b2c8d9c6c1917f6632453f18aad7a3fd94d605eecb6c77ae2394ac5856ba95'
+            '779fb13f2494209d3a7f1f23a823e59b9dded601866d3ab095937a1a04e19ac6'
             'b94b2e88f63cfb7087486508b8139599c89f96d7a4181c61fec4b4e250ca327a'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711')
 
@@ -93,6 +95,10 @@ prepare() {
   # Upstream fixes
   patch -Np1 -i ../webcodecs-stop-using-AudioOpusEncoder.patch
   patch -Np1 -d third_party/webrtc <../webrtc-check-existence-of-cursor-metadata.patch
+
+  # Revert kGlobalMediaControlsCastStartStop enabled by default
+  # https://crbug.com/1314342
+  patch -Rp1 -F3 -i ../enable-GlobalMediaControlsCastStartStop.patch
 
   # https://chromium-review.googlesource.com/c/chromium/src/+/2862724
   patch -Np1 -i ../sql-make-VirtualCursor-standard-layout-type.patch
