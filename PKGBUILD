@@ -1,6 +1,6 @@
 # Maintainer: Mateusz Maćkowski <mateusz@mackowski.org>
 pkgname=tundra
-pkgver=0.2.0
+pkgver=0.3.0
 pkgrel=1
 epoch=
 pkgdesc="MyAnimeList scrobbler"
@@ -13,7 +13,7 @@ makedepends=('rust')
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=()
+conflicts=('tundra-git')
 replaces=()
 backup=()
 options=()
@@ -22,7 +22,7 @@ changelog=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/m4tx/$pkgname/archive/v$pkgver.tar.gz"
         "https://raw.githubusercontent.com/erengy/anime-relations/fe525396c7495b84fc10faae33e997c3faf42701/anime-relations.txt")
 noextract=()
-md5sums=('01ee2f012fa21dc0606eaa28bb296303'
+md5sums=('e8d47a14579fd5b69d676be9dabc98d2'
          '712fbe4ccca3db0fd5346db526bd7e59')
 validpgpkeys=()
 
@@ -46,4 +46,5 @@ package() {
     install -Dm 755 data/moe.tundra.Tundra.svg -t "${pkgdir}/usr/share/icons/hicolor/scalable/apps"
     install -Dm 755 data/moe.tundra.Tundra.desktop -t "${pkgdir}/usr/share/applications"
     install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    cp -r target/locale "$pkgdir/usr/share/"
 }
