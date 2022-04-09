@@ -1,7 +1,7 @@
 pkgbase = linux-rt-bfq-dev
 	pkgdesc = Linux RT-BFQ-dev
 	pkgver = 5.17.1.rt17
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/sirlucjan/bfq-mq-lucjan
 	arch = x86_64
 	license = GPL2
@@ -16,6 +16,8 @@ pkgbase = linux-rt-bfq-dev
 	makedepends = perl
 	makedepends = tar
 	makedepends = xz
+	makedepends = texlive-latexextra
+	makedepends = xmlto
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.17.1.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.17.1.tar.sign
