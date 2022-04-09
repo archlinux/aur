@@ -1,7 +1,7 @@
 # Maintainer: Krzysztof Małysa <varqox at gmail dot com>
 pkgname=sim-sip
 pkgver=r166.9935af3
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for preparing and managing Sim problem packages"
 arch=('x86_64' 'i686')
 url="https://github.com/varqox/sip"
@@ -20,6 +20,7 @@ makedepends=(
   'python'
   'meson'
   'git'
+  'gtest'
 )
 provides=('libsimlib.so')
 conflicts=('libsimlib.so')
