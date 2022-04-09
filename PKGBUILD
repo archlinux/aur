@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=lemmy-ui
-pkgver=0.15.4
+pkgver=0.16.3
 pkgrel=1
 pkgdesc="The official web app for lemmy"
 arch=('any')
@@ -9,9 +9,12 @@ url="https://github.com/LemmyNet/lemmy-ui"
 license=('AGPL3')
 depends=('nodejs')
 makedepends=('git' 'yarn' 'python')
-_commit='33d048c9c0bb6520223342a98ce96264986a7059'
-source=("$pkgname::git+https://github.com/LemmyNet/lemmy-ui#commit=$_commit")
-b2sums=('SKIP')
+_commit='de5552f87048aee88f9450ff3e840aa778c4b3ca'
+source=(
+  "$pkgname::git+https://github.com/LemmyNet/lemmy-ui#commit=$_commit"
+  'git+https://github.com/LemmyNet/lemmy-translations.git'
+)
+b2sums=('SKIP' 'SKIP')
 
 pkgver() {
   cd "$pkgname"
@@ -21,8 +24,10 @@ pkgver() {
 prepare() {
 	cd "$pkgname"
 
-  # fetch submodules
-  git submodule update --init
+  # setup submodules
+  git submodule init
+  git config submodule.lemmy-translations.url ../lemmy-translations
+  git submodule update
 
   # set UI version
   sed -i "s/unknown version/$pkgver/" src/shared/version.ts
