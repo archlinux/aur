@@ -3,13 +3,13 @@
 
 pkgname=xeus-cling
 pkgver=0.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ jupyter kernel based on xeus and cling"
 arch=('x86_64')
 url="https://github.com/jupyter-xeus/xeus-cling"
 license=('BSD')
 depends=('xtl' 'xproperty' 'xeus' 'nlohmann-json'
-         'jupyter' 'jupyter-widgetsnbextension'
+         'jupyter-notebook' 'jupyter-widgetsnbextension'
          'cling' 'pugixml' 'cxxopts')
 makedepends=('cmake' 'cppzmq')
 source=("https://github.com/jupyter-xeus/$pkgname/archive/$pkgver.tar.gz"
