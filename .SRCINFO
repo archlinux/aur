@@ -1,4 +1,4 @@
-pkgbase = elasticsearch-xpack
+pkgbase = elasticsearch-xpack7
 	pkgdesc = Distributed RESTful search engine built on top of Lucene
 	pkgver = 7.17.2
 	pkgrel = 1
@@ -9,6 +9,7 @@ pkgbase = elasticsearch-xpack
 	depends = systemd
 	provides = elasticsearch=7.17.2
 	conflicts = elasticsearch
+	conflicts = elasticsearch-xpack
 	backup = etc/default/elasticsearch
 	backup = etc/elasticsearch/elasticsearch.yml
 	backup = etc/elasticsearch/jvm.options
@@ -41,4 +42,4 @@ pkgbase = elasticsearch-xpack
 	sha512sums = af1af8854ca5a129b6c1d5fd3d977d99af0acef4490f2a9d39ee0746467a3305e223031c4ca5cebbb1629b8611e04ea61a1bf57f7fcef4ff4da0d6bae0df8c72
 	sha512sums = 4ef74026f82b6f0cb6cec9b992cd3f9b145083da39a37b7d8da01824c44054c72644ee0fe6d92f0329496f0fce97b7b913bca1402ef922b6cceccc360e35c5b1
 
-pkgname = elasticsearch-xpack
+pkgname = elasticsearch-xpack7

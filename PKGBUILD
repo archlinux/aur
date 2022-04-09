@@ -1,10 +1,10 @@
 # Maintainer: Dave Wheeler <dwwheeler at gmail dot com>
-# Maintainer: Eric Liu <eric at hnws dot me>
-# Official repo maintainer: Massimiliano Torromeo <massimiliano dot torromeo at gmail dot com>
+# Contributor: Eric Liu <eric at hnws dot me>
+# Contributor: Massimiliano Torromeo <massimiliano dot torromeo at gmail dot com>
 # Contributor: Marcello "mererghost" Rocha <https://github.com/mereghost>
-# Refactored by Blaž "Speed" Hrastnik <https://github.com/archSeer>
+# Contributor: Blaž "Speed" Hrastnik <https://github.com/archSeer>
 
-pkgname=elasticsearch-xpack
+pkgname=elasticsearch-xpack7
 pkgver=7.17.2
 pkgrel=1
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
@@ -13,7 +13,7 @@ url="https://www.elastic.co/products/elasticsearch"
 license=('custom:Elastic2')
 depends=('java-runtime-headless' 'systemd')
 provides=("elasticsearch=$pkgver")
-conflicts=('elasticsearch')
+conflicts=('elasticsearch' 'elasticsearch-xpack')
 relpkgname=elasticsearch
 source=(
   https://artifacts.elastic.co/downloads/$relpkgname/$relpkgname-$pkgver-x86_64.rpm{,.asc}
