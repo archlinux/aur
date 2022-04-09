@@ -1,15 +1,16 @@
 pkgbase = voicechanger-tui-git
-	pkgdesc = A simple voice changer with a dialog frontend that uses sox
-	pkgver = r1.822b0c6
+	pkgdesc = A simple voice changer using a dialog frontend and sox
+	pkgver = r4.d55b4d9
 	pkgrel = 1
 	url = https://github.com/schrmh/voicechanger-tui
 	arch = any
 	license = unknown
 	makedepends = git
+	depends = dialog
+	depends = sox
 	provides = voicechanger-tui-git
 	conflicts = voicechanger-tui-git
 	source = voicechanger-tui-git::git+https://github.com/schrmh/voicechanger-tui.git
 	md5sums = SKIP
 
 pkgname = voicechanger-tui-git
-

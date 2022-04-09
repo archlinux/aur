@@ -1,11 +1,12 @@
 # Maintainer: Hans Müller <schreibemirhalt@gmail.com>
 pkgname=voicechanger-tui-git
-pkgver=r1.822b0c6
+pkgver=r4.d55b4d9
 pkgrel=1
-pkgdesc="A simple voice changer with a dialog frontend that uses sox"
+pkgdesc="A simple voice changer using a dialog frontend and sox"
 arch=('any')
 url="https://github.com/schrmh/voicechanger-tui"
 license=('unknown')
+depends=('dialog' 'sox')
 makedepends=('git')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
@@ -26,4 +27,3 @@ package() {
 	mv voicechanger-tui.sh "$pkgdir/usr/bin/voicechanger-tui"
 	chmod +x "$pkgdir/usr/bin/voicechanger-tui"
 }
-
