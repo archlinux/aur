@@ -1,9 +1,9 @@
 pkgbase = python-astroquery-git
 	pkgdesc = Set of tools for querying astronomical web forms and databases
 	pkgver = 0.4.6.r66.gc081ee4a
-	pkgrel = 1
+	pkgrel = 2
 	url = http://astroquery.readthedocs.org/en/latest/
-	arch = x86_64
+	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	makedepends = git
