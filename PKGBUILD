@@ -1,10 +1,10 @@
 # Maintainer: Dave Wheeler <dwwheeler at gmail dot com>
-# Maintainer: Eric Liu <eric@hnws.me>
-# Official repo maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Official repo maintainer: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
-# Official repo Contributor: Spider.007 <archlinux AT spider007 DOT net>
+# Contributor: Eric Liu <eric@hnws.me>
+# Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+# Contributor: Spider.007 <archlinux AT spider007 DOT net>
 
-pkgname=kibana-xpack
+pkgname=kibana-xpack7
 relpkgname=kibana
 pkgver=7.17.2
 pkgrel=1
@@ -15,7 +15,7 @@ license=('custom:Elastic2')
 depends=('nodejs-lts-gallium')
 optdepends=('elasticsearch')
 provides=("kibana=$pkgver")
-conflicts=('kibana')
+conflicts=('kibana' 'kibana-xpack')
 backup=('etc/kibana/kibana.yml')
 options=('!strip' 'emptydirs')
 source=(https://artifacts.elastic.co/downloads/$relpkgname/$relpkgname-${pkgver}-linux-x86_64.tar.gz{,.asc}

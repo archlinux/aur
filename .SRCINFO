@@ -1,4 +1,4 @@
-pkgbase = kibana-xpack
+pkgbase = kibana-xpack7
 	pkgdesc = Browser based analytics and search dashboard for Elasticsearch
 	pkgver = 7.17.2
 	pkgrel = 1
@@ -9,6 +9,7 @@ pkgbase = kibana-xpack
 	optdepends = elasticsearch
 	provides = kibana=7.17.2
 	conflicts = kibana
+	conflicts = kibana-xpack
 	options = !strip
 	options = emptydirs
 	backup = etc/kibana/kibana.yml
@@ -24,4 +25,4 @@ pkgbase = kibana-xpack
 	sha512sums = afed49c164561f3c658a6d2423519adcf4d5293c416cd93fa5c9d12421416c1e9cb4287e832009049cfd014b365dc1cd93d9cf879117c701cce4caad3b772a8e
 	sha512sums = 9085884430c656cc68b855c3d6740e5fd0854a8785930341b29e15e201deacc1870d8223255d9ebe096cb111319bea9bf4faa03d0760d5819976ebf912221c7d
 
-pkgname = kibana-xpack
+pkgname = kibana-xpack7
