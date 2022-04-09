@@ -1,6 +1,6 @@
 pkgbase = rocfft
 	pkgdesc = Next generation FFT implementation for ROCm
-	pkgver = 5.1.0
+	pkgver = 5.1.1
 	pkgrel = 1
 	url = https://rocmdocs.amd.com/en/latest/ROCm_Libraries/ROCm_Libraries.html#rocfft
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rocfft
 	makedepends = cmake
 	depends = hip
 	options = !lto
-	source = rocfft-5.1.0.tar.gz::https://github.com/ROCmSoftwarePlatform/rocFFT/archive/rocm-5.1.0.tar.gz
-	sha256sums = dc11c9061753ae43a9d5db9c4674aa113a8adaf50818b2701cbb940894147f68
+	source = rocfft-5.1.1.tar.gz::https://github.com/ROCmSoftwarePlatform/rocFFT/archive/rocm-5.1.1.tar.gz
+	sha256sums = 1006c869bcf2886fc51ca69946771083184e3664aadb51a706c34975c2782f8a
 
 pkgname = rocfft
