@@ -1,0 +1,20 @@
+pkgbase = smile-emoji-picker-git
+	pkgdesc = An emoji picker with custom tags support
+	pkgver = r179.1b52c19
+	pkgrel = 1
+	url = https://github.com/mijorus/smile
+	arch = any
+	license = GPL3
+	checkdepends = appstream-glib
+	checkdepends = desktop-file-utils
+	makedepends = git
+	makedepends = meson
+	depends = libwnck3
+	depends = python-manimpango
+	optdepends = noto-fonts-emoji
+	provides = smile-emoji-picker
+	conflicts = smile-emoji-picker
+	source = git+https://github.com/mijorus/smile.git
+	b2sums = SKIP
+
+pkgname = smile-emoji-picker-git
