@@ -5,9 +5,9 @@
 
 # Maintainer: BinHarby <lance.alameri@gmail.com>
 pkgname=yt-len
-pkgver=0.1
+pkgver=0.1.r
 pkgrel=1
-pkgdesc="Python program to get video/playlist length and titles"
+pkgdesc="Python program ,, get video/playlist length and titles"
 arch=('x86_64' 'i686' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/binHarby/yt-len"
 license=('MIT')
@@ -16,7 +16,10 @@ makedepends=(git)
 provides=(yt-len)
 source=(git+$url)
 md5sums=('SKIP')
-
+pkgver() {
+	cd ${_pkgname}
+	printf "0.1.r%s%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 prepare() {
 	if [ -e "$srcdir/$pkgname-$pkgver" ]
