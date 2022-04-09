@@ -2,26 +2,22 @@
 # Contributor: codyfish <fe27 at gmx dot net>
 # Contributor: sofiageo <george at sofianos dot dev>
 pkgname=rocm-validation-suite
-pkgver=5.0.2
+pkgver=5.1.0
 pkgrel=1
-pkgdesc="Tool for detecting and troubleshooting common problems affecting AMD
-GPUs"
+pkgdesc="Tool for detecting and troubleshooting common problems affecting AMD GPUs"
 arch=('x86_64')
 url="https://github.com/ROCm-Developer-Tools/ROCmValidationSuite"
 license=('MIT')
-depends=('pciutils' 'doxygen' 'rocblas' 'rocm-smi-lib64' 'git' 'libpciaccess')
+depends=('pciutils' 'doxygen' 'rocblas' 'rocm-smi-lib' 'git' 'libpciaccess')
 makedepends=('cmake')
 options=(!staticlibs strip !lto)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ROCm-Developer-Tools/ROCmValidationSuite/archive/rocm-$pkgver.tar.gz"
-        "gtest.patch::https://patch-diff.githubusercontent.com/raw/ROCm-Developer-Tools/ROCmValidationSuite/pull/523.patch"
         "rvs-os-type.patch::https://github.com/acxz/ROCmValidationSuite/commit/eb1a4bf5de8d8ba25f21ee13d6af1c46416e3961.patch")
-sha256sums=('f249fe700a5a96c6dabf12130a3e366ae6025fe1442a5d11d08801d6c0265af4'
-            'SKIP'
-            'SKIP')
+sha256sums=('d9b9771b885bd94e5d0352290d3fe0fa12f94ce3f384c3844002cd7614880010'
+            'd21dea379ba0bb17fdf270320ed3a93afc2bc58d3f822da5839aeb48120113a8')
 
 prepare() {
   cd "$srcdir/ROCmValidationSuite-rocm-$pkgver"
-  patch --forward --strip=1 --input="${srcdir}/gtest.patch"
   patch --forward --strip=1 --input="${srcdir}/rvs-os-type.patch"
 }
 
