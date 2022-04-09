@@ -2,7 +2,6 @@ pkgbase = avr-libc-git
 	pkgdesc = The C runtime library for the AVR family of microcontrollers
 	pkgver = r1962.b9deb4e8
 	pkgrel = 1
-	epoch = 2
 	url = https://github.com/avrdudes/avr-libc
 	arch = any
 	license = BSD

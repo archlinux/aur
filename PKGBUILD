@@ -9,7 +9,6 @@
 pkgname=avr-libc-git
 pkgver=r1962.b9deb4e8
 pkgrel=1
-epoch=2
 pkgdesc='The C runtime library for the AVR family of microcontrollers'
 arch=(any)
 url='https://github.com/avrdudes/avr-libc'
