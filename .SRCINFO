@@ -1,0 +1,16 @@
+pkgbase = gibberish-sender-go-git
+	pkgdesc = Send random gibberish to an endpoint
+	pkgver = 1.1.1.r0.g9572527
+	pkgrel = 1
+	url = https://github.com/database64128/gibberish-sender-go
+	arch = x86_64
+	arch = aarch64
+	license = GPL3
+	makedepends = git
+	makedepends = go
+	provides = gibberish-sender-go
+	conflicts = gibberish-sender-go
+	source = gibberish-sender-go-git::git+https://github.com/database64128/gibberish-sender-go.git
+	b2sums = SKIP
+
+pkgname = gibberish-sender-go-git

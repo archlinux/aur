@@ -1,0 +1,4 @@
+pkg/
+src/
+gibberish-sender-go-git/
+*.tar.zst
