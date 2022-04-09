@@ -1,13 +1,14 @@
 pkgbase = veloren-git
 	pkgdesc = An open-world, open-source multiplayer voxel RPG
 	pkgver = 0.10.0.r229.d479b6d20
-	pkgrel = 2
+	pkgrel = 3
 	url = https://veloren.net/
 	arch = x86_64
 	arch = i686
 	license = GPL3
 	makedepends = atk
 	makedepends = cairo
+	makedepends = cmake
 	makedepends = gdk-pixbuf2
 	makedepends = git
 	makedepends = git-lfs
