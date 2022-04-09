@@ -7,7 +7,7 @@
 
 pkgname=lxd
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
 url="https://linuxcontainers.org/lxd"
