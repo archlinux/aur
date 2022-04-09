@@ -3,13 +3,14 @@
 
 pkgname=dqlite
 pkgver=1.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Distributed SQLite"
 arch=('x86_64')
 url="https://github.com/CanonicalLtd/dqlite"
 license=('LGPL3')
 depends=('libuv' 'raft' 'sqlite')
 makedepends=('tcl' 'readline' 'zlib')
+options=(debug strip)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/canonical/${pkgname}/archive/v${pkgver}.tar.gz")
 sha256sums=('fd3a50f2bc14c0a03163bbed3bc5ca6943df144c502de5b497d3b323c24a6489')
 
