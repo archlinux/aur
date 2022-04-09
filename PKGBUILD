@@ -2,7 +2,7 @@
 
 pkgname=vosk-api
 pkgver=0.3.32
-pkgrel=1
+pkgrel=2
 _openblas_ver=0.3.13
 _clapack_ver=3.2.1
 _openfst_commit=7dfd808194105162f20084bb4d8e4ee4b65266d5
@@ -66,8 +66,7 @@ build() {
     
     # kaldi
     cd "${srcdir}/kaldi/src"
-    ./configure --mathlib='OPENBLAS_CLAPACK' --shared --use-cuda='no'
-    sed -i 's/-msse[[:space:]]-msse2/-msse -msse2/g' kaldi.mk
+    CXXFLAGS="${CXXFLAGS/-O2/-O3}" ./configure --mathlib='OPENBLAS_CLAPACK' --shared --use-cuda='no'
     sed -i 's/[[:space:]]-O1[[:space:]]/ -O3 /g' kaldi.mk
     make online2 lm rnnlm
     while read -r -d '' _file
@@ -79,6 +78,7 @@ build() {
     export CFLAGS="${CFLAGS/ -ffat-lto-objects/}"
     export CXXFLAGS="${CXXFLAGS/ -ffat-lto-objects/}"
     make -C "${srcdir}/${pkgname}-${pkgver}/src" \
+        EXTRA_CFLAGS="${CXXFLAGS/-O2/-O3}" \
         EXTRA_LDFLAGS="$LDFLAGS" \
         KALDI_ROOT="${srcdir}/kaldi" \
         OPENFST_ROOT="${srcdir}/kaldi/tools/openfst" \
@@ -102,5 +102,6 @@ package() {
     _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
     cd "${pkgname}-${pkgver}/python"
     python setup.py install --root="$pkgdir" --skip-build --optimize='1'
-    ln -sf ../../../libvosk.so "${pkgdir}/usr/lib/python${_pyver}/site-packages/vosk/libvosk.so"
+    rm "${pkgdir}/usr/lib/python${_pyver}/site-packages/vosk/libvosk.so"
+    ln -s ../../../libvosk.so "${pkgdir}/usr/lib/python${_pyver}/site-packages/vosk/libvosk.so"
 }

@@ -1,7 +1,7 @@
 pkgbase = vosk-api
 	pkgdesc = Offline speech recognition toolkit
 	pkgver = 0.3.32
-	pkgrel = 1
+	pkgrel = 2
 	url = https://alphacephei.com/vosk/
 	arch = x86_64
 	license = Apache
