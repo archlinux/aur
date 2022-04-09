@@ -1,6 +1,6 @@
 pkgbase = lemmy
 	pkgdesc = A link aggregator for the fediverse
-	pkgver = 0.15.4
+	pkgver = 0.16.3
 	pkgrel = 1
 	url = https://join-lemmy.org
 	arch = x86_64
@@ -13,7 +13,9 @@ pkgbase = lemmy
 	optdepends = lemmy-ui: for the web app
 	optdepends = pict-rs: for image hosting backend
 	options = !lto
-	source = lemmy::git+https://github.com/LemmyNet/lemmy.git#commit=8c015265d7169fcf8e5c87410f76f93f3d4e4041
+	source = lemmy::git+https://github.com/LemmyNet/lemmy.git#commit=c232564fdadd06a66841bfb1ad6aafc7ace51aab
+	source = git+https://github.com/LemmyNet/lemmy-translations.git
+	b2sums = SKIP
 	b2sums = SKIP
 
 pkgname = lemmy
