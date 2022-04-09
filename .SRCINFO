@@ -1,6 +1,6 @@
 pkgbase = denemo
 	pkgdesc = A music score editor
-	pkgver = 2.5.0
+	pkgver = 2.6.0
 	pkgrel = 1
 	url = http://www.denemo.org
 	arch = x86_64
@@ -19,12 +19,11 @@ pkgbase = denemo
 	depends = gtksourceview3
 	depends = guile1.8
 	depends = rubberband
-	noextract = denemo-2.5.0.tar.gz
-	source = https://ftp.gnu.org/gnu/denemo/denemo-2.5.0.tar.gz
-	source = https://ftp.gnu.org/gnu/denemo/denemo-2.5.0.tar.gz.sig
+	noextract = denemo-2.6.0.tar.gz
+	source = https://ftp.gnu.org/gnu/denemo/denemo-2.6.0.tar.gz
+	source = https://ftp.gnu.org/gnu/denemo/denemo-2.6.0.tar.gz.sig
 	validpgpkeys = C66734FA5D60E4DDD882EF81AE6F83BB6C574235
-	sha256sums = 07a19b04bfe8ff3d1e993f88c3a5ef5a602c242988c12182c95d439210f27c16
+	sha256sums = 4be5970c69847f97f1f876275c9744e5034e7c983b12a1045fb20c236494b55d
 	sha256sums = SKIP
 
 pkgname = denemo
-
