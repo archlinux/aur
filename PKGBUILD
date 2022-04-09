@@ -3,7 +3,7 @@
 # Contributor: PedroHLC <root AT pedrohlc DOT com>
 
 pkgname='notejot'
-pkgver='3.4.9'
+pkgver='3.5.0'
 pkgrel=1
 pkgdesc='A stupidly-simple sticky notes application for any type of short term notes or ideas'
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('gtk4' 'gtksourceview3' 'json-glib' 'libgee' 'libadwaita')
 makedepends=('meson' 'vala')
 conflicts=('notejot-git')
 source=("https://github.com/lainsce/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('5d907d12a8256dbee8bba73d43fa4273e0a4bfc5aba121cd6a11cb8b5e17aa2f')
+sha256sums=('3db3edddfc052c2d87b33254a79aaa514d54b85f9ebb051d82a36c2e1fe88c38')
 
 build() {
 
