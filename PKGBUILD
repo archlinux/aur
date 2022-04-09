@@ -7,8 +7,8 @@ url="https://github.com/sameer/$pkgname"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/sameer/sway-mpris-idle-inhibit/archive/refs/tags/$pkgver.tar.gz")
 arch=('i686' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 license=('MIT' 'APACHE')
-makedepends=('git' 'cargo' 'wayland' 'wayland-protocols')
-depends=('wayland')
+makedepends=('git' 'cargo' 'wayland' 'wayland-protocols' 'dbus')
+depends=('wayland' 'dbus')
 optdepends=('swayidle: Idle management daemon')
 b2sums=('SKIP')
 
