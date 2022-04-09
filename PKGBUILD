@@ -2,7 +2,7 @@
 # Contributor: Malte Rabenseifner <mail@malte-rabenseifner.de>
 
 pkgname=icingaweb2
-pkgver=2.10.0
+pkgver=2.10.1
 pkgrel=1
 pkgdesc="Icinga Web 2 Interface"
 license=('GPL')
@@ -17,7 +17,7 @@ url="https://icinga.com/"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Icinga/icingaweb2/archive/v$pkgver.tar.gz"
         'https://github.com/Icinga/icingaweb2/pull/4640.patch')
 install='icingaweb2.install'
-sha256sums=('c5f4ec937ef790f3f508ab911ad6c770ffd331cab7c627d66d49ba8a0038a762'
+sha256sums=('96eea821a02b9fe5b2cfd193c25d7eef50483c56d26cbeffa028cbaf906f3d5e'
             'bf664e5aa4d1c8e4f09eb6f0e02dac5805432118bbcf06ec078943910ee3de22')
 
 prepare() {
