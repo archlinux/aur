@@ -2,7 +2,7 @@
 # Maintainer: Pika Kolendo <pikakolendo02[a]gmail.c0m>
 pkgname='fastgithub-bin'
 _pkgName='fastgithub'
-pkgver=2.1.3
+pkgver=2.1.4
 pkgrel=1
 pkgdesc="Speedup github access in China"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!strip')
 provides=('fastgithub')
 install="${pkgname}.install"
 source=("${_urlprefix}${url}/releases/download/${pkgver}/${_pkgName}_linux-x64.zip")
-sha256sums=('94a881d9099fb5c40fcf0132f7fcb03552699dd23f8c2338e1f84dfd4c45c5d3')
+sha256sums=('01106995885a907c5832c594880f79763e6074877e20d61c391b3e9912a3b038')
 
 package() {
     mkdir -p "${pkgdir}/opt/${pkgname}"
