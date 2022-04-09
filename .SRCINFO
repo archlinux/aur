@@ -1,0 +1,13 @@
+pkgbase = plymouth-theme-arch-darwin
+	pkgdesc = Arch Linux splash screen for plymouth
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/armoredvortex/plymouth-theme-arch-darwin
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = plymouth
+	source = git+https://github.com/armoredvortex/plymouth-theme-arch-darwin.git
+	md5sums = SKIP
+
+pkgname = plymouth-theme-arch-darwin
