@@ -3,7 +3,7 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Bin Harby <lance.alameri@gmail.com>
+# Maintainer: BinHarby <lance.alameri@gmail.com>
 pkgname=yt-len
 pkgver=0.1
 pkgrel=1
