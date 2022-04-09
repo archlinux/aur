@@ -6,6 +6,7 @@ pkgbase = uvw-git
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = git
 	depends = libuv
 	provides = uvw
 	conflicts = uvw
