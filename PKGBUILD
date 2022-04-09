@@ -1,7 +1,7 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: Markus Näther <naether.markus@gmail.com>
 pkgname=rocblas
-pkgver=5.0.2
+pkgver=5.1.0
 pkgrel=1
 pkgdesc='Next generation BLAS implementation for ROCm platform'
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cmake' 'git' 'python' 'python-virtualenv' 'python-pyaml'
              'perl-file-which' 'msgpack-c' 'rocm-cmake' 'gcc-fortran')
 _rocblas='https://github.com/ROCmSoftwarePlatform/rocBLAS'
 source=("$pkgname-$pkgver.tar.gz::$_rocblas/archive/rocm-$pkgver.tar.gz")
-sha256sums=('358a0902fc279bfc80205659a90e96269cb7d83a80386b121e4e3dfe221fec23')
+sha256sums=('efa0c424b5ada697314aa8a78c19c93ade15f1612c4bfc8c53d71d1c9719aaa3')
 _dirname="$(basename "$_rocblas")-$(basename "${source[0]}" ".tar.gz")"
 
 build() {
