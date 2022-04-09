@@ -5,7 +5,7 @@ pkgdesc="Simple MarkDown Reader"
 
 arch=("any")
 
-makedepends=("git" "binutils" "make" "gcc" "gzip")
+makedepends=("git" "binutils" "make" "gcc" "gzip" "libadvo")
 depends=("glibc")
 
 license=("MIT")
