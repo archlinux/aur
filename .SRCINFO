@@ -1,6 +1,6 @@
 pkgbase = d-tracker-control-git
 	pkgdesc = Polybar module to control d-tracker
-	pkgver = r10.554a002
+	pkgver = r13.05e1be8
 	pkgrel = 1
 	url = https://github.com/ubermanu/polybar-d-tracker-control.git
 	arch = x86_64
