@@ -1,0 +1,21 @@
+pkgbase = paper-git
+	pkgdesc = A pretty note-taking app for GNOME
+	pkgver = r39.2b472c3
+	pkgrel = 1
+	url = https://gitlab.com/posidon_software/paper
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = gobject-introspection
+	makedepends = vala
+	depends = glib2
+	depends = libadwaita
+	depends = gtksourceview5
+	depends = libgee
+	provides = paper
+	conflicts = paper
+	source = git+https://gitlab.com/posidon_software/paper.git
+	b2sums = SKIP
+
+pkgname = paper-git
