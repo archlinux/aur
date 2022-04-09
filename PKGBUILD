@@ -6,14 +6,15 @@
 
 pkgname=kibana-xpack
 _relpkgname=kibana
-pkgver=8.0.1
+pkgver=8.1.2
 pkgrel=1
 pkgdesc='Browser based analytics and search dashboard for Elasticsearch'
 url='https://www.elastic.co/products/kibana'
 arch=('x86_64')
 license=('custom:Elastic2')
 depends=('nodejs-lts-gallium')
-optdepends=('elasticsearch')
+optdepends=('elasticsearch'
+            'nss: screenshotting plugin')
 provides=("kibana=$pkgver")
 conflicts=('kibana')
 backup=('etc/kibana/kibana.yml' 'etc/kibana/node.options')
@@ -22,7 +23,7 @@ source=(https://artifacts.elastic.co/downloads/$_relpkgname/$_relpkgname-${pkgve
         kibana.service
         tmpfile.conf
         user.conf)
-sha512sums=('460750b415f9c21d373224e377beecb84d8244a83faf53e7dacfc723721b332193e94b2d4e25e5c9f4f27314ad05370c11d654c91a3ebb26d7d9b9b6b0dab01e'
+sha512sums=('0b783ce049283f3c72d882cbb59b1019109b5daf57edd8fd760f86a7d5c13f2bd4129fc5769b6f51a7e628b488f3ed039ca1bd0dff3376e69bf8dae597996066'
             'SKIP'
             'be50713d4e4db3a8b2d0d02ec68b56ce1636ffa9a41738b0abf276c562c36ef6118f440f25b220f39302ba23b2351b5a38f961c8693ad03ea19424e4d40409e6'
             'afed49c164561f3c658a6d2423519adcf4d5293c416cd93fa5c9d12421416c1e9cb4287e832009049cfd014b365dc1cd93d9cf879117c701cce4caad3b772a8e'
