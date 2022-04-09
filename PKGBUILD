@@ -7,7 +7,7 @@
 pkgname=yt-len
 pkgver=0.1
 pkgrel=1
-pkgdesc="Python program, get video/playlist length and titles"
+pkgdesc="Python program to get video/playlist length and titles"
 arch=('x86_64' 'i686' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/binHarby/yt-len"
 license=('MIT')
