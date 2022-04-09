@@ -4,10 +4,10 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=bigloo-devel
-pkgver=4.4c
-pkgrel=16
+pkgver=4.5a
+pkgrel=1
 epoch=1
-_suffix=latest
+_suffix=unstable
 pkgdesc="Fast scheme compiler"
 arch=('x86_64')
 url="https://www-sop.inria.fr/mimosa/fp/Bigloo/"
@@ -19,7 +19,7 @@ options=('!makeflags' 'staticlibs')
 conflicts=('bigloo')
 provides=("bigloo=$pkgver")
 source=(ftp://ftp-sop.inria.fr/indes/fp/Bigloo/${pkgname%-devel}-${_suffix}.tar.gz bigloo-emacs.patch)
-sha256sums=('b2335635f61a4c9a40ada1df79f7bd5fc2b497a2f0f6117fd321a6d06f36c045'
+sha256sums=('2d28e657cb3f966494656d501aa8b17e705003f414ef4fda1f660b0c0567a122'
             '80356c27b58a302775f75e848a89ab2d588796a548f4ce7a20df048e215deab0')
 
 prepare() {
@@ -46,7 +46,7 @@ build() {
     --enable-sqlite \
     --enable-ssl \
     --disable-gstreamer
-  sed -i '80d' Makefile.config
+ 
   EXTRALIBS="-ldl -lresolv -lunistring -lpcre -lgmp -lm -lc" make build compile-bee
 }
 
