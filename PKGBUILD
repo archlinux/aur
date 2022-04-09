@@ -2,7 +2,7 @@
 pkgname=v2ray-rust-git
 _pkgname=v2ray-rust
 pkgver=r62.22ae05d
-pkgrel=1
+pkgrel=2
 pkgdesc="An Opinionated Lightweight Implementation of V2Ray, in Rust Programming Language"
 arch=('x86_64')
 url="https://github.com/Qv2ray/v2ray-rust"
