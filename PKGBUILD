@@ -1,6 +1,6 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-lts
-_pkgver=5.15.32
+_pkgver=5.15.33
 _pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
 KERNNAME="${_pkgver}-${_pkgrel}-lts"
@@ -42,9 +42,9 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('621b745dc1202572413c04a6e2b46bd159d87938a9f98d35772e10648fb56564'
-            'e74957ad32d27ac494aca6fc051f7fc9593c7206e9b9f2312ad581e4091f086a'
-            'b82eee755fd431959a467043c34ff16c89e352f666e1234993ba2f040ade640f')
+sha256sums=('0a1c8911aea8015465fdcbaedf486421f8050066045e352c024cede29e941762'
+            '797c9a557c7f80e0ea0634182146da826b7d7c8364ca94b75fc0ddb5e55d66a7'
+            '09d8da160ae3141447ea098f9fe1ad7732c938e8a02846343af8921eed65b034')
 
 package_linux-lts-versioned-bin() {
   pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
@@ -62,14 +62,14 @@ package_linux-lts-versioned-docs-bin() {
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.15.32-1-lts-bin() {
+package_linux5.15.33-1-lts-bin() {
   pkgdesc="The LTS Linux kernel and modules, version ${KERNNAME}"
   depends=(coreutils
            initramfs
            kmod)
   conflicts=("${_pkgname}")
-  optdepends=('crda: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices')
+  optdepends=('linux-firmware: firmware images needed for some devices'
+              'wireless-regdb: to set the correct wireless channels of your country')
   provides=(VIRTUALBOX-GUEST-MODULES
             WIREGUARD-MODULE)
   replaces=(wireguard-lts)
@@ -78,7 +78,7 @@ package_linux5.15.32-1-lts-bin() {
   sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
 }
 
-package_linux5.15.32-1-lts-headers-bin() {
+package_linux5.15.33-1-lts-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the LTS Linux kernel ${KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -87,7 +87,7 @@ package_linux5.15.32-1-lts-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.15.32-1-lts-docs-bin() {
+package_linux5.15.33-1-lts-docs-bin() {
   pkgdesc="Documentation for the LTS Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
