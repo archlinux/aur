@@ -14,7 +14,7 @@ license=('MIT')
 groups=('vim-plugins')
 makedepends=('git')
 install='vimdoc.install'
-source=("git://github.com/ap/vim-buftabline.git")
+source=("git+https://github.com/ap/vim-buftabline.git")
 md5sums=('SKIP')
 
 package() {
@@ -24,4 +24,3 @@ package() {
     install -Dm755 plugin/buftabline.vim "$_installpath/plugin/buftabline.vim"
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
