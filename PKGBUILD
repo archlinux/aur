@@ -2,22 +2,23 @@
 
 pkgname=fetchcord-testing
 pkgver=2.7.8
-pkgrel=1
+pkgrel=2
 pkgdesc="FetchCord grabs your OS info and displays it as Discord Rich Presence"
 arch=('any')
 url="https://github.com/MrPotatoBobx/fetchcord"
 license=('MIT')
 depends=('python')
+optdepends=('systemd: SystemD user service')
 provides=('fetchcord')
-depends=('neofetch' 'python-psutil' 'python-setuptools')
+depends=('neofetch' 'python-psutil' 'python-setuptools' 'python-pypresence')
 source=("fetchcord::git+$url#branch=testing")
 sha256sums=('SKIP')
 install=fetchcord.install
 
-pkgver() {
-  cd "$srcdir/fetchcord"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+#pkgver() {
+#  cd "$srcdir/fetchcord"
+#  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+#}
 
 build() {
   cd "$srcdir/fetchcord"
