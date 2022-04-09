@@ -1,0 +1,17 @@
+[Unit]
+Description="Alert dashboard for Prometheus Alertmanager"
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+User=karma
+Group=karma
+Restart=on-failure
+ExecStart=/usr/bin/karma --config.file=/etc/karma/karma.yml
+ExecReload=/bin/kill -HUP $MAINPID
+NoNewPrivileges=true
+ProtectHome=read-only
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target
