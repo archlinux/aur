@@ -2,13 +2,13 @@
 
 _pkgname=rssguard
 pkgname=$_pkgname-git
-pkgver=3.5.9.8.gf12c395e
+pkgver=4.2.1.72.g52798f9e
 pkgrel=1
 pkgdesc='Simple, lightweight and easy-to-use RSS/ATOM feed aggregator developed using Qt'
 arch=('i686' 'x86_64')
 url='https://github.com/martinrotter/rssguard'
 license=('GPL3')
-depends=('qt5-webengine')
+depends=('qt5-webengine' 'qt5-multimedia')
 optdepends=('oxygen-icons: fallback icon theme')
 makedepends=('git' 'cmake' 'qt5-tools')
 provides=("$_pkgname")
