@@ -1,12 +1,12 @@
 pkgname="md-git"
-pkgver=1.15
+pkgver=1.16
 pkgrel=1
 pkgdesc="Simple MarkDown Reader"
 
 arch=("any")
 
-makedepends=("git" "binutils" "make" "gcc" "gzip" "libadvo")
-depends=("glibc")
+makedepends=("git" "binutils" "make" "gcc" "gzip")
+depends=("glibc" "libadvo")
 
 license=("MIT")
 
