@@ -1,8 +1,8 @@
 # Maintainer: Torsten Keßler <t dot kessler at posteo dot de>
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=rocprofiler
-pkgver=5.1.0
-pkgrel=2
+pkgver=5.1.1
+pkgrel=1
 pkgdesc="ROC profiler library. Profiling with perf-counters and derived metrics."
 arch=('x86_64')
 url='https://rocmdocs.amd.com/en/latest/ROCm_Tools/ROCm-Tools.html'
@@ -14,8 +14,8 @@ _git='https://github.com/ROCm-Developer-Tools/rocprofiler'
 _roctracer='https://github.com/ROCm-Developer-Tools/roctracer'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/refs/tags/rocm-$pkgver.tar.gz"
         "$pkgname-roctracer-$pkgver.tar.gz::$_roctracer/archive/refs/tags/rocm-$pkgver.tar.gz")
-sha256sums=('4a1c6ed887b0159392406af8796508df2794353a4c3aacc801116044fb4a10a5'
-            '58b535f5d6772258190e4adcc23f37c916f775057a91b960e1f2ee1f40ed5aac')
+sha256sums=('829eeec642575aed5deceff194ca53fc8f0d687cdec09a333360c97ac3060fcd'
+            '7b42544a84652813fcd0b2c1c8f73d9638050d89747b6f02a85178a2063655fa')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" ".tar.gz")"
 _dirtracer="$(basename "$_roctracer")-$(basename "${source[1]}" ".tar.gz")"
 
