@@ -1,6 +1,6 @@
 pkgbase = nut-git
 	pkgdesc = A collection of programs which provide a common interface for monitoring and administering UPS, PDU and SCD hardware
-	pkgver = 2.8.0.rc1.r0.g86af0b98
+	pkgver = 2.8.0.rc1.r39.g88acc3578
 	pkgrel = 1
 	url = https://networkupstools.org/
 	arch = x86_64

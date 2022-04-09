@@ -2,7 +2,7 @@
 
 pkgname=nut-git
 _srcname=${pkgname%-git}
-pkgver=2.8.0.rc1.r0.g86af0b98
+pkgver=2.8.0.rc1.r39.g88acc3578
 pkgrel=1
 pkgdesc='A collection of programs which provide a common interface for monitoring and administering UPS, PDU and SCD hardware'
 arch=(x86_64)
@@ -70,6 +70,7 @@ build() {
     --prefix=/usr \
     --datadir=/usr/share/nut \
     --sbindir=/usr/bin \
+    --libexecdir=/usr/lib/nut \
     --sysconfdir=/etc/nut \
     --disable-static \
     --with-user=nut \
