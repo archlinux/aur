@@ -1,7 +1,7 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python-oldest-supported-numpy
 _pyname=${pkgname#python-}
-pkgver=2022.3.27
+pkgver=2022.4.8
 pkgrel=1
 pkgdesc="Meta-package providing oldest supported Numpy for given Python version"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python-numpy')
 makedepends=('python-setuptools')
 #checkdepends=('python-pytest')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('3b90ca8cffdb98120474ebec267d8f14')
+md5sums=('5e7a78d5ab39bb0bca674f70b74bee98')
 
 get_pyver () {
     python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
