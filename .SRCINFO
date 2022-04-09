@@ -1,12 +1,12 @@
 pkgbase = kaf-cli
 	pkgdesc = 把txt文本转成epub与mobi电子书的命令行工具
-	pkgver = v1.2.3
-	pkgrel = 2
+	pkgver = v1.2.5
+	pkgrel = 1
 	url = https://github.com/ystyle/kaf-cli
 	arch = x86_64
 	license = MulanPSL
 	depends = kindlegen
-	source = https://github.com/ystyle/TmdTextEpub/releases/download/v1.2.3/kaf-cli_v1.2.3_linux_amd64.zip
-	md5sums = 45d3bd3dbd251aa966f8b5dee92087d1
+	source = https://github.com/ystyle/TmdTextEpub/releases/download/v1.2.5/kaf-cli_v1.2.5_linux_amd64.zip
+	md5sums = 2d7933966747696793b0277fdf7c3ea2
 
 pkgname = kaf-cli
