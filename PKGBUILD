@@ -3,8 +3,8 @@
 # Co-Maintainer: Daemon Lee Schmidt <DaemonLeeSchmidt@gmail.com>
 # Maintainer: Zoey Mertes <zmertes@zmertes.net>
 pkgname=fargo-git
-pkgver=r19.2dd84e1
-pkgrel=3
+pkgver=r21.37103cf
+pkgrel=1
 pkgdesc="Removes unseeable and ghost alpha from PNG images."
 arch=('i686' 'x86_64')
 url="https://github.com/DaemonLee/fargo"
