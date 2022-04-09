@@ -1,0 +1,24 @@
+pkgbase = cef-jetbrains-bin-git
+	pkgdesc = A simple framework for embedding Chromium-based browsers in other applications. (Used for JetBrainsRuntime)
+	pkgver = 98.3.31+gcfc070d+chromium+98.0.4758.102
+	pkgrel = 1
+	url = https://github.com/JetBrains/cef
+	arch = x86_64
+	license = BSD
+	depends = at-spi2-atk
+	depends = libxkbcommon
+	depends = libxcomposite
+	depends = mesa
+	depends = libcups
+	depends = pango
+	depends = libxrandr
+	depends = alsa-lib
+	depends = nss
+	provides = cef-jetbrains
+	conflicts = cef-jetbrains
+	source = https://github.com/JetBrains/jcef/raw/master/CMakeLists.txt
+	source = https://github.com/JetBrains/cef/raw/master/LICENSE.txt
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = cef-jetbrains-bin-git
