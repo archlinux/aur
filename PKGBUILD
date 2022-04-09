@@ -1,19 +1,21 @@
-# Maintainer: Hurstel Alexandre <alexandre at hurstel dot eu>
-# Co-Maintainer: Tobias Manske <aur at rad4day dot de>
+# Maintainer: Moon Sungjoon <sumoon at seoulsaram dot org>
+# Contributor: Hurstel Alexandre <alexandre at hurstel dot eu>
+# Contributor: Tobias Manske <aur at rad4day dot de>
+
 pkgname=xp-pen-tablet
-pkgver=3.2.1.211019
-epoch=1
+pkgver=3.2.3.220323
 pkgrel=1
+epoch=1
 pkgdesc="XP-Pen (Official) Linux utility (New UI driver)"
 arch=('x86_64')
 url='https://www.xp-pen.com/download/index.html'
 license=('LGPL3')
-conflicts=(xp-pen)
-source=("https://download01.xp-pen.com/file/20${pkgver: -6:2}/11/XP-PEN-pentablet-${pkgver}-1.${CARCH}.tar.gz"
+source=("XPPen-pentablet-${pkgver}-1.${arch}.tar.gz::https://www.xp-pen.com/download/file/id/1936/pid/56/ext/gz.html"
         "install.sh.patch"
 )
-sha256sums=('46c1bafe6cd4d9e33b9ebb4697a4183275bbc63e59e73be4e78ae12204e75493'
-            'ae59e8006eb79b6a623e0b3cc1063d337c789d9fd5f1ea5aceedb743e955c085')
+
+sha256sums=('70b6dc1345958c1858d091a3d48bdd75c91fcc879ba175739ef9152790bdcb2b'
+            'c9bab03f78f8d0b3393ce118dce6f314919478049283bdfff2f96b16c869b643')
 
 prepare() {
     cd "$srcdir/xp-pen-pentablet-${pkgver}-1.${CARCH}"
@@ -30,6 +32,7 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/icons/"
 	mkdir -p "${pkgdir}/etc/xdg/autostart"
 	mkdir -p "${pkgdir}/usr/lib/udev/rules.d/"
+	mkdir -p "${pkgdir}/usr/lib/pentablet/conf/xppen"
 
 	./install.sh "${pkgdir}"
 }

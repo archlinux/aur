@@ -1,11 +1,12 @@
---- xp-pen-pentablet-3.2.0.210804-1.x86_64/install.sh	2021-05-17 08:06:23.000000000 +0200
-+++ patch/install.sh	2021-06-14 11:43:08.834793268 +0200
-@@ -9,6 +9,20 @@
+--- install.sh	2022-04-10 00:24:31.501640234 +0900
++++ src/xp-pen-pentablet-3.2.3.220323-1.x86_64/install.sh	2022-04-10 00:48:36.858236874 +0900
+@@ -9,6 +9,21 @@
  echo $dirname
  cd "$dirname"
  
 +
 +
++# add rootDir for package
 +rootDir="$1"
 +if [ -n "${rootDir}" ]; then
 +	if [ -d "${rootDir}" ]; then
@@ -21,7 +22,7 @@
  # close driver if it running
  AppName=pentablet
  AppDir=pentablet
-@@ -37,8 +51,8 @@
+@@ -37,15 +52,15 @@
  fi
  
  #Copy rule
@@ -32,7 +33,15 @@
  ruleName="10-xp-pen.rules"
  
  #echo "$appRuleDir/$ruleName"
-@@ -55,8 +69,8 @@
+ #echo "$sysRuleDir/$ruleName"
+ 
+ if [ -f $appRuleDir/$ruleName ]; then
+-	str=`cp $appRuleDir/$ruleName $sysRuleDir/$ruleName`
++	str=`install -D -m644 $appRuleDir/$ruleName $sysRuleDir/$ruleName`
+ 	if [ "$str" !=  "" ]; then 
+ 		echo "$str";
+ 	fi
+@@ -55,8 +70,8 @@
  fi
  
  #install app
@@ -43,7 +52,16 @@
  exeShell="pentablet.sh"
  
  #echo $sysAppDir
-@@ -97,13 +111,13 @@
+@@ -86,7 +101,7 @@
+ 
+ #echo "exe path "$sysAppDir/$AppDir/$AppName
+ if [ -f $sysAppDir/$AppDir/$AppName ]; then
+-	str=`chmod +0555 $sysAppDir/$AppDir/$AppName`
++	str=`chmod +0755 $sysAppDir/$AppDir/$AppName`
+ 	if [ "$str" !=  "" ]; then 
+ 		echo "Cannot add permission to app"
+ 		echo "$str";
+@@ -97,13 +112,13 @@
  fi
  
  # install shortcut
@@ -56,36 +74,112 @@
 -appAutoStartDir=./App$sysAutoStartDir
 +sysDesktopDir="${rootDir}/usr/share/applications"
 +sysAppIconDir="${rootDir}/usr/share/icons"
-+sysAutoStartDir="${rootDir}/etc/xdg/autostart"
++#sysAutoStartDir="${rootDir}/etc/xdg/autostart"
 +
 +appDesktopDir=./App/usr/share/applications
 +appAppIconDir=./App/usr/share/icons
-+appAutoStartDir=./App/etc/xdg/autostart
++#appAutoStartDir=./App/etc/xdg/autostart
  
  appDesktopName=xp$AppName.desktop
  appIconName=$AppName.png
-@@ -144,9 +158,9 @@
+@@ -134,60 +149,60 @@
+ 	exit
  fi
  
- #Copy config files
--chmod +x /usr/lib/pentablet/pentablet
--chmod +x /usr/lib/pentablet/pentablet.sh
--confPath="/usr/lib/pentablet/conf/xppen"
-+chmod +x "${rootDir}/usr/lib/pentablet/pentablet"
-+chmod +x "${rootDir}/usr/lib/pentablet/pentablet.sh"
-+confPath="${rootDir}/usr/lib/pentablet/conf/xppen"
+-if [ -f $appAutoStartDir/$appDesktopName ]; then
+-	str=`cp $appAutoStartDir/$appDesktopName $sysAutoStartDir/$appDesktopName`
+-	if [ "$str" !=  "" ]; then 
+-		echo "$str"
+-	fi
+-else
+-	echo "Cannot find set auto start"
+-fi
++#if [ -f $appAutoStartDir/$appDesktopName ]; then
++#	str=`cp $appAutoStartDir/$appDesktopName $sysAutoStartDir/$appDesktopName`
++#	if [ "$str" !=  "" ]; then 
++#		echo "$str"
++#	fi
++#else
++#	echo "Cannot find set auto start"
++#fi
  
- chmod +0777 $confPath
+-absAppDir=/usr/lib/pentablet
++absAppDir=${rootDir}/usr/lib/pentablet
+ absConfPath=$absAppDir/conf/xppen
+ absLibPath=$absAppDir/lib
+ absPlatPath=$absAppDir/platforms
  
-@@ -162,9 +176,9 @@
- 	chmod +0666 $confPath/name_config.ini
- fi
+ 
+-chmod +0777 /etc/xdg/autostart/xppentablet.desktop
+-chmod +0777 /usr/share/applications/xppentablet.desktop
+-chmod +0777 /usr/share/icons/pentablet.png
+-
+-chmod +0777 $absAppDir/pentablet
+-chmod +0777 $absAppDir/pentablet.sh
+-chmod +0666 $absAppDir/resource.rcc
+-
+-chmod +0777 $absConfPath
+-chmod +0777 $absLibPath
+-chmod +0777 $absPlatPath
+-
+-chmod +0666 $absConfPath/config.xml
+-chmod +0666 $absConfPath/language.ini
+-chmod +0666 $absConfPath/name_config.ini
+-
+-chmod +0666 $absLibPath/libicudata.so.56
+-chmod +0666 $absLibPath/libicui18n.so.56
+-chmod +0666 $absLibPath/libicuuc.so.56
+-chmod +0666 $absLibPath/libQt5Core.so.5
+-chmod +0666 $absLibPath/libQt5DBus.so.5
+-chmod +0666 $absLibPath/libQt5Gui.so.5
+-chmod +0666 $absLibPath/libQt5Network.so.5
+-chmod +0666 $absLibPath/libQt5Widgets.so.5
+-chmod +0666 $absLibPath/libQt5X11Extras.so.5
+-chmod +0666 $absLibPath/libQt5XcbQpa.so.5
+-chmod +0666 $absLibPath/libQt5Xml.so.5
++#chmod +0777 /etc/xdg/autostart/xppentablet.desktop
++#chmod +0777 /usr/share/applications/xppentablet.desktop
++#chmod +0777 /usr/share/icons/pentablet.png
++
++chmod +0755 $absAppDir/pentablet
++chmod +0755 $absAppDir/pentablet.sh
++chmod +0644 $absAppDir/resource.rcc
++
++#chmod +0777 $absConfPath
++#chmod +0777 $absLibPath
++#chmod +0777 $absPlatPath
++
++#chmod +0666 $absConfPath/config.xml
++#chmod +0666 $absConfPath/language.ini
++#chmod +0666 $absConfPath/name_config.ini
++
++#chmod +0666 $absLibPath/libicudata.so.56
++#chmod +0666 $absLibPath/libicui18n.so.56
++#chmod +0666 $absLibPath/libicuuc.so.56
++#chmod +0666 $absLibPath/libQt5Core.so.5
++#chmod +0666 $absLibPath/libQt5DBus.so.5
++#chmod +0666 $absLibPath/libQt5Gui.so.5
++#chmod +0666 $absLibPath/libQt5Network.so.5
++#chmod +0666 $absLibPath/libQt5Widgets.so.5
++#chmod +0666 $absLibPath/libQt5X11Extras.so.5
++#chmod +0666 $absLibPath/libQt5XcbQpa.so.5
++#chmod +0666 $absLibPath/libQt5Xml.so.5
+ 
+-chmod +0666 $absPlatPath/libqxcb.so
++#chmod +0644 $absPlatPath/libqxcb.so
+ 
+ lockfile="/tmp/qtsingleapp-Pentab-9c9b-lockfile"
+ touch $lockfile
+ chmod +0666 $lockfile
+ 
  
 -if [ -f "/etc/xdg/autostart/pentablet.desktop" ]; then
 -	rm /etc/xdg/autostart/ugee-pentablet.desktop
-+if [ -f "${rootDir}/etc/xdg/autostart/pentablet.desktop" ]; then
-+	rm "${rootDir}/etc/xdg/autostart/ugee-pentablet.desktop"
- fi
+-fi
++#if [ -f "${rootDir}/etc/xdg/autostart/pentablet.desktop" ]; then
++#	rm ${rootDir}/etc/xdg/autostart/ugee-pentablet.desktop
++#fi
+ 
  
 -echo "Installation successful!"
 +#echo "Installation successful!"
