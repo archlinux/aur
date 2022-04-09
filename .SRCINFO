@@ -1,0 +1,18 @@
+pkgbase = libadvo
+	pkgdesc = Advanced Output Library
+	pkgver = 1.0.r2097ec70.r2097ec70
+	pkgrel = 1
+	url = https://github.com/Noah-Arcouette/advo.git
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = binutils
+	makedepends = make
+	makedepends = gcc
+	depends = glibc
+	provides = libadvo
+	conflicts = libadvo
+	source = git+https://github.com/Noah-Arcouette/advo.git
+	sha256sums = SKIP
+
+pkgname = libadvo
