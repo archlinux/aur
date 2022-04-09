@@ -1,6 +1,6 @@
 pkgbase = intel-graphics-compiler-bin
 	pkgdesc = Intel Graphics Compiler for OpenCL (pre-compiled binaries)
-	pkgver = 1.0.10778
+	pkgver = 1.0.10840
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/intel/intel-graphics-compiler/
@@ -13,22 +13,22 @@ pkgbase = intel-graphics-compiler-bin
 	provides = intel-opencl-clang
 	conflicts = intel-graphics-compiler
 	conflicts = intel-opencl-clang
-	noextract = intel-igc-core_1.0.10778_amd64.deb
-	noextract = intel-igc-media_1.0.10778_amd64.deb
-	noextract = intel-igc-opencl-devel_1.0.10778_amd64.deb
-	noextract = intel-igc-opencl_1.0.10778_amd64.deb
+	noextract = intel-igc-core_1.0.10840_amd64.deb
+	noextract = intel-igc-media_1.0.10840_amd64.deb
+	noextract = intel-igc-opencl-devel_1.0.10840_amd64.deb
+	noextract = intel-igc-opencl_1.0.10840_amd64.deb
 	options = !strip
 	options = !emptydirs
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.10778/intel-igc-core_1.0.10778_amd64.deb
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.10778/intel-igc-media_1.0.10778_amd64.deb
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.10778/intel-igc-opencl-devel_1.0.10778_amd64.deb
-	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.10778/intel-igc-opencl_1.0.10778_amd64.deb
-	source = git+https://github.com/intel/opencl-clang.git#commit=1815034e375518c9985b3e074af58bdad3a982d2
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.10840/intel-igc-core_1.0.10840_amd64.deb
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.10840/intel-igc-media_1.0.10840_amd64.deb
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.10840/intel-igc-opencl-devel_1.0.10840_amd64.deb
+	source = https://github.com/intel/intel-graphics-compiler/releases/download/igc-1.0.10840/intel-igc-opencl_1.0.10840_amd64.deb
+	source = git+https://github.com/intel/opencl-clang.git#commit=bbdd1587f577397a105c900be114b56755d1f7dc
 	source = LICENSE
-	sha256sums = 5685f49350c2c69c7b8f2d23760d4630b7b8df0c2a539afe660b9b844a058225
-	sha256sums = 6008d4ef57ade2ad4868b7eb2dd7fd360737b0f083af8eb23f9fb99492a32d0f
-	sha256sums = 08410e761d8acc1aeba9021c102f44330a6265fd5b5a9bcb463269da4dc3780a
-	sha256sums = 73942cc32a3b8767dcbd1fbdf5d3faa5ca83887a7c087bacbd1f5998faaf7868
+	sha256sums = ee4a8d9ba1c2ae5d605d597fa6ad9042b55af283164e25547e80325e6d3a2b32
+	sha256sums = d5d806842e96e4fad978b6167f734570acf7460bfe4a5517284aaf3fc4343970
+	sha256sums = b47e34f92bb98058363445702d97ef7e145dcdefa0de91324c2b6f5bbe369ba7
+	sha256sums = e061a295c7aedd436d1a60ba4878a13b7d3d3677abc1d035025a3485faea8f40
 	sha256sums = SKIP
 	sha256sums = 0ddcc820928d5fc03b6c1271de8c0f9e9be74717f872956cc3fc4ae25eca9d90
 
