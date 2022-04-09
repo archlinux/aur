@@ -8,10 +8,10 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/database64128/$pkgname"
 license=('AGPL3')
 makedepends=('go')
-backup=('etc/swgp-go/config.json')
+backup=("etc/$pkgname/config.json")
 source=(
     "$url/archive/refs/tags/v$pkgver.tar.gz"
-    'swgp-go.service'
+    "$pkgname.service"
     'config.json'
 )
 b2sums=(
@@ -27,11 +27,10 @@ build() {
     export CGO_CXXFLAGS="${CXXFLAGS}"
     export CGO_LDFLAGS="${LDFLAGS}"
     export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
-    go build -ldflags='-s -w -linkmode=external' ./cmd/swgp-go
+    go build -ldflags='-s -w -linkmode=external' ./cmd/$pkgname
 }
 
 package() {
-    pwd
     install -Dm644 $pkgname.service "$pkgdir"/usr/lib/systemd/system/$pkgname.service
     install -d "$pkgdir"/etc/$pkgname
     install -Dm644 config.json "$pkgdir"/etc/$pkgname/config.json
