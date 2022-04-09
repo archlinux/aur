@@ -26,7 +26,6 @@ depends=(
 	'python-pyqt6-webengine'
 	'python-send2trash'
 	'python-waitress'
-    'python-pyqt6-webengine'
 
 	# anki
 	'python-decorator'

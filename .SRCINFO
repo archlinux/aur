@@ -15,7 +15,6 @@ pkgbase = anki-bin
 	depends = python-pyqt6-webengine
 	depends = python-send2trash
 	depends = python-waitress
-	depends = python-pyqt6-webengine
 	depends = python-decorator
 	depends = python-distro
 	depends = python-markdown
