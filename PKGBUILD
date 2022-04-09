@@ -4,7 +4,7 @@
 
 pkgname=rocm-opencl-runtime
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Radeon Open Compute - OpenCL runtime'
 arch=('x86_64')
 url='https://github.com/RadeonOpenCompute/ROCm-OpenCL-Runtime'
@@ -15,11 +15,20 @@ provides=('opencl-driver')
 conflicts=('opencl-amdgpu-pro-pal')
 _rocclr='https://github.com/ROCm-Developer-Tools/ROCclr'
 source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz"
-        "$pkgname-rocclr-$pkgver.tar.gz::$_rocclr/archive/rocm-$pkgver.tar.gz")
+        "$pkgname-rocclr-$pkgver.tar.gz::$_rocclr/archive/rocm-$pkgver.tar.gz"
+        "enable-gfx800.patch")
 sha256sums=('362d81303048cf7ed5d2f69fb65ed65425bc3da4734fff83e3b8fbdda51b0927'
-            'f4f265604b534795a275af902b2c814f416434d9c9e16db81b3ed5d062187dfa')
+            'f4f265604b534795a275af902b2c814f416434d9c9e16db81b3ed5d062187dfa'
+            'b186dd4a604d6e8a2c94ba6569638aaa8066558d764aa0d9cf76f998724ed90a')
 _dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
 _rocclr_dir="$(basename "$_rocclr")-$(basename "${source[1]}" .tar.gz)"
+
+prepare() {
+	#From xuhuisheng
+	#at https://github.com/RadeonOpenCompute/ROCm/issues/1659#issuecomment-1041026624
+	cd "$_rocclr_dir"
+	patch -p1 -i "$srcdir/enable-gfx800.patch"
+}
 
 build() {
     cmake -Wno-dev -B build-rocclr \
