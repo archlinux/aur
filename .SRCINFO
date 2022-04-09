@@ -1,6 +1,6 @@
 pkgbase = rocm-opencl-sdk
 	pkgdesc = Develop applications in OpenCL for the AMD platform
-	pkgver = 5.0.2
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://rocm-documentation.readthedocs.io/en/latest/
 	arch = x86_64
@@ -8,5 +8,7 @@ pkgbase = rocm-opencl-sdk
 	depends = rocm-language-runtime
 	depends = rocm-opencl-runtime
 	depends = rocm-llvm
+	source = rocm-opencl-sdk-5.1.0.deb::https://repo.radeon.com/rocm/apt/5.1/pool/main/r/rocm-opencl-sdk/rocm-opencl-sdk_5.1.0.50100-36_amd64.deb
+	sha256sums = e42832e3624fee4c893c380d6682725e08348f9cee780c38a0d6dcf530c64f71
 
 pkgname = rocm-opencl-sdk
