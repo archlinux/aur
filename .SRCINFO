@@ -1,6 +1,6 @@
 pkgbase = rocm-hip-runtime
 	pkgdesc = Packages to run HIP applications on the AMD platform
-	pkgver = 5.0.2
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://rocm-documentation.readthedocs.io/en/latest/
 	arch = x86_64
@@ -11,5 +11,7 @@ pkgbase = rocm-hip-runtime
 	depends = rocm-llvm
 	depends = rocm-cmake
 	optdepends = hipify-clang: Translate CUDA code into HIP. Requires CUDA.
+	source = rocm-hip-runtime-5.1.0.deb::https://repo.radeon.com/rocm/apt/5.1/pool/main/r/rocm-hip-runtime/rocm-hip-runtime_5.1.0.50100-36_amd64.deb
+	sha256sums = 3b420acdfe8d37eb73dd4bf8077e5a24a26a30085919e8b12720b4c683813368
 
 pkgname = rocm-hip-runtime
