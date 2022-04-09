@@ -1,0 +1,25 @@
+pkgbase = dragonfm-git
+	pkgdesc = A screenreader optimized, flexible command line filemanager
+	pkgver = r629.4322339
+	pkgrel = 1
+	epoch = 1
+	url = https://www.patreon.com/posts/64904217
+	arch = any
+	license = LGPL
+	makedepends = git
+	makedepends = python-setuptools
+	depends = ncurses
+	depends = python-pyinotify
+	depends = python
+	depends = python-sh
+	optdepends = atool: compression support
+	optdepends = mutt: send as e-mail support
+	optdepends = mpv: audio und video support for TTY
+	optdepends = w3m: HTML support
+	optdepends = xdg-utils: xdg-open support
+	optdepends = magic-wormhole: wormhole support
+	backup = etc/dragonfm/settings/settings.conf
+	source = git+https://github.com/chrys87/dragonfm.git
+	md5sums = SKIP
+
+pkgname = dragonfm-git
