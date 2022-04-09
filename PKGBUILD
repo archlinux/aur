@@ -6,8 +6,8 @@
 pkgname=plots
 _name=Plots
 
-pkgver=0.6.1
-pkgrel=2
+pkgver=0.6.2
+pkgrel=1
 pkgdesc="A graph plotting app for GNOME"
 
 arch=(any)
@@ -16,13 +16,6 @@ license=('GPL')
 depends=(
     'gtk3'
     'otf-latinmodern-math'
-	'python-freetype-py' #auto-deps
-	'python-jinja' #auto-deps
-	'python-lark-parser' #auto-deps
-	'python-numpy' #auto-deps
-	'python-pyglm' #auto-deps
-	'python-gobject' #auto-deps
-	'python-opengl' #auto-deps
 )
 
 makedepends=('python-setuptools')
@@ -31,7 +24,7 @@ checkdepends=('python-pytest')
 source=(
     "$pkgname-$pkgver.tar.gz::https://github.com/alexhuntley/$_name/archive/v$pkgver.tar.gz"
 )
-sha256sums=('c099888e31c00327254715e54fc3e770ed13768e4aea782d0860ba4b6a5d9e42')
+sha256sums=('f6b720298271ebe8f8cba73fdf528ad8c499ce12a096ad9973e239fa515ab14b')
 
 build() {
     cd "$_name-$pkgver"
