@@ -3,10 +3,10 @@
 
 _anki=anki
 _aqt=aqt
-_py=cp38
+_py=cp39
 
 pkgname=anki-bin
-pkgver=2.1.49
+pkgver=2.1.50
 pkgrel=1
 pkgdesc='Helps you remember facts (like words/phrases in a foreign language) efficiently.
 Installed with wheel.'
@@ -26,6 +26,7 @@ depends=(
 	'python-pyqtwebengine'
 	'python-send2trash'
 	'python-waitress'
+    'python-pyqt6-webengine'
 
 	# anki
 	'python-decorator'
@@ -49,17 +50,17 @@ optdepends=(
 provides=(anki=$pkgver)
 conflicts=(anki)
 source=(
-	"https://files.pythonhosted.org/packages/$_py/${_anki::1}/$_anki/$_anki-$pkgver-$_py-abi3-manylinux2014_$arch.whl"
+	"https://files.pythonhosted.org/packages/$_py/${_anki::1}/$_anki/$_anki-$pkgver-$_py-abi3-manylinux_2_28_$arch.whl"
 	"https://files.pythonhosted.org/packages/py3/${_aqt::1}/$_aqt/$_aqt-$pkgver-py3-none-any.whl"
 	"https://raw.githubusercontent.com/ankitects/anki/$pkgver/qt/runanki.py"
-	"https://raw.githubusercontent.com/ankitects/anki/$pkgver/qt/linux/anki.desktop"
-	"https://raw.githubusercontent.com/ankitects/anki/$pkgver/qt/linux/anki.png"
+	"https://raw.githubusercontent.com/ankitects/anki/$pkgver/qt/bundle/lin/anki.desktop"
+	"https://raw.githubusercontent.com/ankitects/anki/$pkgver/qt/bundle/lin/anki.png"
 )
 noextract=("${source[@]##*/}")
-sha256sums=('746c9807d5f2f87503eb993b28b660fd8e0bc70b969796855dbd48bdaa995af4'
-            'e9aee6a19ab4f4cf7142f4ccf776a34245013d2800d873177854b0ec5dfb2411'
-            '520225521a013546c521c2c8d60db3d03d7fceb6126fa61b8a70e1d2c398e4a4'
-            '5121f5877cd6fe15e262317eb2ac08a01f7039e3fd5d85e3193b4b0ff7974e13'
+sha256sums=('0f1dbcaf89a7584e6ebef848a7abad6f008f4be882d634bc245a0e2bddfc18c6'
+            '5b2d10e940dbc82c584bb9cb5657ad70a9bdfebb70bc82f4b1f90052184d6355'
+            '9648e7e915f51f08e05c48ef5f39b4015922fe1cf3d7f2895535ef10ef4507ae'
+            '53db2e5bfeb00aa249667e09466a34bfacb17b61097875a8cdd93ee1a9380b9a'
             '97ad2134ef1a7686789c7becd8bd05dd8693cf0d3127951ca6ba7b29a80b402a')
 
 package() {
