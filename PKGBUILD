@@ -2,7 +2,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 pkgname=hip-runtime-nvidia
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Heterogeneous Interface for Portability ROCm"
 arch=('x86_64')
 url='https://rocmdocs.amd.com/en/latest/Installation_Guide/HIP.html'
@@ -15,7 +15,7 @@ _hip='https://github.com/ROCm-Developer-Tools/HIP'
 _hipamd='https://github.com/ROCm-Developer-Tools/hipamd'
 source=("$pkgname-$pkgver.tar.gz::$_hip/archive/rocm-$pkgver.tar.gz"
         "$pkgname-hipamd-$pkgver.tar.gz::$_hipamd/archive/rocm-$pkgver.tar.gz"
-        "nvcc.patch::https://patch-diff.githubusercontent.com/raw/ROCm-Developer-Tools/hipamd/pull/23.patch"
+        "nvcc.patch::https://patch-diff.githubusercontent.com/raw/ROCm-Developer-Tools/HIP/pull/2623.patch"
         "git-hash.patch")
 sha256sums=('47e542183699f4005c48631d96f6a1fbdf27e07ad3402ccd7b5f707c2c602266'
             '77984854bfe00f938353fe4c7604d09967eaf5c609d05f1e6423d3c3dea86e61'
@@ -28,6 +28,7 @@ prepare() {
     cd "$_dirhipamd"
     patch -Np1 -i "$srcdir/git-hash.patch"
 
+    cd "$srcdir/$_dirhip"
     patch -Np1 -i "$srcdir/nvcc.patch"
 }
 
