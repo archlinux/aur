@@ -1,40 +1,32 @@
 # Maintainer: Axel Gembe <derago@gmail.com>
 pkgname=plexdrive
-pkgver=5.1.0
+pkgver=5.2.1
 pkgrel=1
-pkgdesc='Plexdrive allows you to mount your Google Drive account as read-only fuse filesystem, with direct delete option on the filesystem.'
-arch=('any')
-url='https://github.com/dweidenfeld/plexdrive'
+pkgdesc='Plexdrive mounts your Google Drive FUSE filesystem (optimized for media playback)'
+arch=('x86_64' 'aarch64')
+url='https://github.com/plexdrive/plexdrive'
 license=('MIT')
 depends=('fuse')
-makedepends=(
-  'go'
-  'git'
-)
+makedepends=('go')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=(https://github.com/dweidenfeld/plexdrive/archive/5.1.0.tar.gz)
-sha256sums=('4fa3afc59edcd4ba1917e32af8b0202b9ab7256541c54e417b591d7fd54c632e')
-
-prepare() {
-  mkdir -p gopath/src/github.com/dweidenfeld
-  ln -rTsf $pkgname-$pkgver gopath/src/github.com/dweidenfeld/$pkgname
-  export GOPATH="$srcdir"/gopath
-
-  cd gopath/src/github.com/dweidenfeld/$pkgname
-  go get -v
-}
+source=("https://github.com/plexdrive/plexdrive/archive/$pkgver.tar.gz")
+sha256sums=('37d64c4c201419054d33b0313c70e79c53bb55e3c6d35eabdebc43b634c41100')
 
 build() {
-  export GOPATH="$srcdir"/gopath
-  cd gopath/src/github.com/dweidenfeld/$pkgname
-  go build \
-    -trimpath \
-    -o $pkgname \
-    .
+  cd "$pkgname-$pkgver/"
+
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  pwd
+  go build
 }
 
 package() {
-  cd $pkgname-$pkgver
-  install -Dm755 $pkgname "$pkgdir"/usr/bin/$pkgname
+  cd "$pkgname-$pkgver/"
+  install -Dm755 plexdrive "$pkgdir"/usr/bin/plexdrive
 }
