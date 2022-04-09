@@ -1,6 +1,6 @@
 pkgbase = freetype2-infinality-remix
 	pkgdesc = TrueType font rendering library with Infinality Remix patches
-	pkgver = 2.11.1
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = http://www.freetype.org/
 	install = freetype2.install
@@ -10,16 +10,16 @@ pkgbase = freetype2-infinality-remix
 	makedepends = libx11
 	makedepends = libpng
 	makedepends = harfbuzz
-	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-2.11.1.tar.xz
-	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-2.11.1.tar.xz.sig
+	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-2.12.0.tar.xz
+	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-2.12.0.tar.xz.sig
 	source = 0001-Enable-table-validation-modules.patch
 	source = 0002-infinality-2.11.1-2021.12.10.patch
 	source = 0004-Enable-long-PCF-family-names.patch
 	source = freetype2.sh
 	source = infinality-settings.sh
 	source = xft-settings.sh
-	validpgpkeys = 58E0C111E39F5408C5D3EC76C1A60EACE707FDA5
-	sha256sums = 3333ae7cfda88429c97a7ae63b7d01ab398076c3b67182e960e5684050f2c5c8
+	validpgpkeys = E30674707856409FF1948010BE6C3AAC63AD8E3F
+	sha256sums = ef5c336aacc1a079ff9262d6308d6c2a066dd4d2a905301c4adda9b354399033
 	sha256sums = SKIP
 	sha256sums = ac11a24b62a6c044cc245ea9fa2a0cbd9e2e62f2371873dd33084c28a76e7176
 	sha256sums = 6d563b1f9f9ef52379818ff3ede26b44e0b4cb6e3cf46ea44ca5d36b6d29ae9d
@@ -35,7 +35,7 @@ pkgname = freetype2-infinality-remix
 	depends = sh
 	depends = libpng
 	depends = harfbuzz
-	provides = freetype2=2.11.1
+	provides = freetype2=2.12.0
 	provides = freetype2-infinality
 	provides = libfreetype.so
 	conflicts = freetype2
