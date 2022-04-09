@@ -1,6 +1,6 @@
 pkgbase = vosk-api-git
 	pkgdesc = Offline speech recognition toolkit (git version)
-	pkgver = 0.3.32.r48.g2daf67f
+	pkgver = 0.3.32.r49.g7b7d814
 	pkgrel = 1
 	url = https://alphacephei.com/vosk/
 	arch = x86_64

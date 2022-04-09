@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=vosk-api-git
-pkgver=0.3.32.r48.g2daf67f
+pkgver=0.3.32.r49.g7b7d814
 pkgrel=1
 pkgdesc='Offline speech recognition toolkit (git version)'
 arch=('x86_64')
@@ -74,8 +74,7 @@ build() {
     
     # kaldi
     cd "${srcdir}/kaldi/src"
-    ./configure --mathlib='OPENBLAS_CLAPACK' --shared --use-cuda='no'
-    sed -i 's/-msse[[:space:]]-msse2/-msse -msse2/g' kaldi.mk
+    CXXFLAGS="${CXXFLAGS/-O2/-O3}" ./configure --mathlib='OPENBLAS_CLAPACK' --shared --use-cuda='no'
     sed -i 's/[[:space:]]-O1[[:space:]]/ -O3 /g' kaldi.mk
     make online2 lm rnnlm
     while read -r -d '' _file
@@ -87,6 +86,7 @@ build() {
     export CFLAGS="${CFLAGS/ -ffat-lto-objects/}"
     export CXXFLAGS="${CXXFLAGS/ -ffat-lto-objects/}"
     make -C "${srcdir}/vosk-api/src" \
+        EXTRA_CFLAGS="${CXXFLAGS/-O2/-O3}" \
         EXTRA_LDFLAGS="$LDFLAGS" \
         KALDI_ROOT="${srcdir}/kaldi" \
         OPENFST_ROOT="${srcdir}/kaldi/tools/openfst" \
@@ -113,5 +113,6 @@ package() {
     _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
     cd vosk-api/python
     python setup.py install --root="$pkgdir" --skip-build --optimize='1'
-    ln -sf ../../../libvosk.so "${pkgdir}/usr/lib/python${_pyver}/site-packages/vosk/libvosk.so"
+    rm "${pkgdir}/usr/lib/python${_pyver}/site-packages/vosk/libvosk.so"
+    ln -s ../../../libvosk.so "${pkgdir}/usr/lib/python${_pyver}/site-packages/vosk/libvosk.so"
 }
