@@ -8,7 +8,7 @@ User=nobody
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE
 NoNewPrivileges=true
-ExecStart=/usr/bin/v2ray-rust run -config /etc/v2ray-rust/config.json
+ExecStart=/usr/bin/v2ray-rust --config /etc/v2ray-rust/config.toml
 
 [Install]
 WantedBy=multi-user.target

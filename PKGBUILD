@@ -11,7 +11,7 @@ makedepends=('git' 'cargo' 'clang' 'cmake')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=('git+https://github.com/Qv2ray/v2ray-rust.git' 'v2ray-rust.service' 'v2ray-rust@.service')
-b2sums=('SKIP' '54d07250782385804031080b80899d40cc893ad5db6327e571aea610f433b36107ae5a35bcfce285c8fcd4846367b83eb3ec0472b36b24659741fae04ac7a0cd' '753c9dc4c98ce35d982a07b4a1398c8fae037d863714d8eeeda7fda66aab123254a7c0735b21d7f327cf34562b4bee6bd90b4426319a1dc23088a457ba2bb9a4')
+b2sums=('SKIP' '1c5e31a6e2ca1b29d269b1b3fc6e8d8b3054b40676be767e6d57460faefa7335d3c1f4cf74255ab341c34322d033107ab16308957fa4c107225e5126698db793' 'f4f4ac0bd58b66865d09ca85034341aa93c0f8d86714f6befd7b35a637d76bff0b240191225c605f2363097487b2958b2fb8262900d40ffc2931a61e3feb45ca')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
