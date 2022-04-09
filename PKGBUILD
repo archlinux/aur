@@ -1,5 +1,5 @@
 pkgname=arkenfox-user.js-git
-pkgver=98.0.r2.gb4225ba
+pkgver=99.0.r0.g4ff9317
 pkgrel=1
 pkgdesc="Firefox privacy, security and anti-tracking: a comprehensive user.js template for configuration and hardening."
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/arkenfox/${_repo}"
 license=('MIT')
 makedepends=('git')
 provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+conflicts=("${provides[@]}")
 options=('!strip')
 
 source=(
@@ -28,18 +28,16 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/${_repo}"
-    patch -p0 -N -i "${srcdir}/${source[1]}"
+    patch -i "${srcdir}/${source[1]}"
 }
 
 package() {
-    local bin="${pkgdir}/usr/bin"
     local lib="${pkgdir}/usr/lib/${pkgname}"
-    local script="updater.sh"
-    install -dm755 "${bin}"
-    ln -s "${lib#${pkgdir}}/${script}" "${bin}/arkenfox-updater"
+    install -dm755 "${pkgdir}/usr/bin" &&
+        ln -s "${lib#${pkgdir}}/updater.sh" "$_/arkenfox-updater"
 
     cd "${srcdir}/${_repo}"
-    install -Dm755 -t "${lib}" "${script}"
+    install -Dm755 -t "${lib}" "updater.sh"
     install -Dm644 -t "${lib}" "user.js"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" "LICENSE.txt"
 }
