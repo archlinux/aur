@@ -3,7 +3,7 @@
 _pkgname="onivim2"
 pkgname=onivim2-bin
 pkgver=0.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Native, lightweight modal code editor."
 arch=('x86_64')
 url="https://github.com/santilococo/oni2"
