@@ -7,7 +7,7 @@ _py=cp39
 
 pkgname=anki-bin
 pkgver=2.1.50
-pkgrel=1
+pkgrel=2
 pkgdesc='Helps you remember facts (like words/phrases in a foreign language) efficiently.
 Installed with wheel.'
 arch=('x86_64')
