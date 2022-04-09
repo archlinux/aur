@@ -3,14 +3,14 @@
 pkgname=librewolf-bin
 provides=(${pkgname//-bin/""})
 conflicts=(${pkgname//-bin/""})
-pkgver=98.0.2
+pkgver=99.0
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
 url="https://librewolf-community.gitlab.io/"
 depends=(gtk3 libxt startup-notification mime-types dbus-glib
-         nss ttf-font libpulse ffmpeg4.4)
+         nss ttf-font libpulse ffmpeg)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
             'pulseaudio: Audio support'
@@ -30,9 +30,9 @@ _uploadpath_sig_aarch64=${_base_url}/${pkgname//-bin/""}-${pkgver}-${pkgrel}-aar
 _uploadpath_sig_x86_64=${_base_url}/${pkgname//-bin/""}-${pkgver}-${pkgrel}-x86_64.pkg.tar.zst.sig
 source_aarch64=("${_uploadpath_aarch64}" "${_uploadpath_sig_aarch64}")
 source_x86_64=("${_uploadpath_x86_64}" "${_uploadpath_sig_x86_64}")
-sha256sums_x86_64=('4d295ebdc202f90751ec6cdae1666199d7c0ea6636f651ac6ede465dc6c79fa7'
+sha256sums_x86_64=('cfe2dd962365ac9e323bba4053f1e13940e2da09a25c223d0a3738dd11d0bf38'
                    'SKIP')
-sha256sums_aarch64=('1a9772f121313a3cacee2cdf23c0617d64ea36a1741087fb93d5ed1450fa180c'
+sha256sums_aarch64=('d709e78579a7da89c74045cc66e839f8f3a04a0ca502c269c91bbfbb8799437f'
                     'SKIP')
 
 package() {
