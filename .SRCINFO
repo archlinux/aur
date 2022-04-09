@@ -1,20 +1,19 @@
 pkgbase = xlivebg
 	pkgdesc = Live wallpapers for the X window system
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://nuclear.mutantstargoat.com/sw/xlivebg
 	arch = x86_64
 	license = GPL3
 	makedepends = glu
-	makedepends = ffmpeg
+	makedepends = ffmpeg4.4
 	makedepends = libxrandr
 	makedepends = openmotif
 	depends = glu
-	depends = ffmpeg
+	depends = ffmpeg4.4
 	depends = libxrandr
 	depends = openmotif
 	source = xlivebg-1.0.tar.gz::https://github.com/jtsiomb/xlivebg/archive/v1.0.tar.gz
 	sha256sums = 58bc89d263f32c5ac69a86c99ad715d2a3e87a225f6803d247db6f4bda7d7064
 
 pkgname = xlivebg
-

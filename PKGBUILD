@@ -2,13 +2,13 @@
 
 pkgname=xlivebg
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Live wallpapers for the X window system"
 arch=('x86_64')
 url="http://nuclear.mutantstargoat.com/sw/xlivebg"
 license=('GPL3')
 depends=('glu'
-         'ffmpeg'
+         'ffmpeg4.4'
          'libxrandr'
          'openmotif')
 makedepends=("${depends[@]}")
