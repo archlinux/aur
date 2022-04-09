@@ -143,7 +143,7 @@ _vmware_fusion_ver=8.5.10_7527438
 makedepends+=(
   python
   unzip
-  uefitool
+  uefipatch
 )
 
 source+=(
@@ -461,7 +461,7 @@ if [ -n "$_enable_macOS_guests" ]; then
     objcopy "$pkgdir"/usr/lib/vmware/bin/vmware-vmx -O binary -j efi${arch} --set-section-flags efi${arch}=a efi${arch}.rom.Z
     perl -e 'use Compress::Zlib; my $v; read STDIN, $v, '$(stat -c%s "./efi${arch}.rom.Z")'; $v = uncompress($v); print $v;' < efi${arch}.rom.Z > efi${arch}.rom
 
-    UEFIPatch efi${arch}.rom "$srcdir/efi-patches.txt" -o efi${arch}.rom > /dev/null
+    uefipatch efi${arch}.rom "$srcdir/efi-patches.txt" -o efi${arch}.rom > /dev/null
 
     perl -e 'use Compress::Zlib; my $v; read STDIN, $v, '$(stat -c%s "./efi${arch}.rom")'; $v = compress($v); print $v;' < efi${arch}.rom > efi${arch}.rom.Z
     objcopy "$pkgdir"/usr/lib/vmware/bin/vmware-vmx --update-section efi${arch}=efi${arch}.rom.Z
