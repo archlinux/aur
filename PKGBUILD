@@ -1,7 +1,7 @@
 # Maintainer: enderghast13 <29264120+enderghast13 at users dot noreply dot github dot com>
 pkgname=nxdt_host-git
 pkgver=0.3.r25.4a512db
-pkgrel=1
+pkgrel=2
 pkgdesc="nxdumptool host script"
 arch=('any')
 url="https://github.com/DarkMatterCore/nxdumptool"
@@ -17,7 +17,7 @@ sha1sums=('SKIP'
 pkgver() {
 	# The script was moved several times, breaking git-log continuity
 	# even when using --follow
-	_names=(host/nxdt_host.py nxdt_host.pyw nxdt_host.py host.py)
+	_names=('host/nxdt_host.py' 'nxdt_host.pyw' 'nxdt_host.py' 'host.py')
 	cd "$srcdir"/nxdumptool
 	_version="$( sed -n "s/APP_VERSION = '\(.*\)'/\1/p" "${_names[0]}" )"
 	_commits="$( git log --pretty=format:%h -- "${_names[@]}" )"
@@ -38,7 +38,7 @@ prepare() {
 package() {
 	depends=('python' 'python-pyusb' 'python-tqdm' 'tk')
 	install -Dm755 nxdumptool/host/nxdt_host.py "$pkgdir"/usr/bin/nxdt_host.py
-	install -Dm644 nxdumptool/host/nxdt.png "$pkgdir"/usr/share/icons/hicolor/48x48/apps/nxdt.png
+	install -Dm644 nxdumptool/host/nxdt.png "$pkgdir"/usr/share/pixmaps/nxdt.png
 	install -Dm644 10-nxdumptool.rules "$pkgdir"/usr/lib/udev/rules.d/10-nxdumptool.rules
 	install -Dm644 nxdt_host.desktop "$pkgdir"/usr/share/applications/nxdt_host.desktop
 }
