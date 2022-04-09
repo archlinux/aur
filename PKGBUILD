@@ -4,7 +4,7 @@
 _pkgname=sile
 pkgname=$_pkgname-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.11.1.r187.g324fd91
+pkgver=0.12.4.r37.gb584be5
 pkgrel=1
 arch=(x86_64)
 url=https://www.sile-typesetter.org
@@ -48,8 +48,8 @@ checkdepends=(poppler)
 provides=(libtexpdf.so
           "$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git://github.com/sile-typesetter/$_pkgname.git"
-        "git://github.com/sile-typesetter/libtexpdf.git")
+source=("git+https://github.com/sile-typesetter/$_pkgname.git"
+        "git+https://github.com/sile-typesetter/libtexpdf.git")
 sha256sums=('SKIP'
             'SKIP')
 
