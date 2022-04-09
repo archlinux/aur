@@ -1,5 +1,5 @@
 # Maintainer: bitwave <aur [aT] oomlu {d.0t} de>
-pkgname=notepadnext
+pkgname=notepadnext-git
 pkgver=0.4.9
 pkgrel=1
 pkgdesc="A cross-platform, reimplementation of Notepad++"

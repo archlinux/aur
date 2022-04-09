@@ -1,4 +1,4 @@
-pkgbase = notepadnext
+pkgbase = notepadnext-git
 	pkgdesc = A cross-platform, reimplementation of Notepad++
 	pkgver = 0.4.9
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = notepadnext
 	source = git+https://github.com/dail8859/NotepadNext.git
 	sha256sums = SKIP
 
-pkgname = notepadnext
+pkgname = notepadnext-git
