@@ -1,28 +1,16 @@
 pkgbase = xmind
 	pkgdesc = Brainstorming and Mind Mapping Software
-	pkgver = 3.7.9+8update9
+	pkgver = 12.0.1.202203290828
 	pkgrel = 1
 	url = https://www.xmind.net
-	install = xmind.install
 	arch = x86_64
-	license = EPL
-	license = LGPL
-	depends = java-runtime>=8
-	optdepends = gtk2: gtk2 or gtk3 must install one
-	optdepends = gtk3: gtk2 or gtk3 must install one
-	optdepends = lame: needed for the feature audio notes
-	provides = xmind
-	source = https://www.xmind.net/xmind/downloads/xmind-8-update9-linux.zip
-	source = XMind
-	source = xmind.desktop
-	source = xmind.xml
-	source = xmind.png
-	source = xmind_file.png
-	sha256sums = 835f7eaa93e2b7d52f44f02324089363ed65a61e0713e01652871143becb070e
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
-	sha256sums = SKIP
+	license = unknown
+	depends = gtk3
+	depends = alsa-lib
+	depends = libxkbfile
+	depends = nss
+	options = !strip
+	source_x86_64 = https://dl3.xmind.net/XMind-for-Linux-amd-64bit-12.0.1-202203290828.deb
+	sha256sums_x86_64 = fef372511e3b6390f9125dfc4ed50d5c6a0a87e8e1d27728b1655dbc582ba0e5
 
 pkgname = xmind
