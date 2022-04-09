@@ -11,6 +11,6 @@ pre_remove() {
     rm /opt/android-ndk-ollvm/source.properties
     rm /opt/android-ndk-ollvm/toolchains/llvm/prebuilt/linux-x86_64/sysroot
     
-    ollvm_ver=`${OLLVM_PATH}/toolchains/llvm/prebuilt/linux-x86_64/bin/clang --version | head -1 | awk {'print $3'}`
-    rm /opt/android-ndk-ollvm/toolchains/llvm/prebuilt/linux-x86_64/lib/clang/${ollvm_ver}/lib
+    rm `readlink /opt/android-ndk-ollvm/toolchains/llvm/prebuilt/linux-x86_64/ndk-libs`
+    rm /opt/android-ndk-ollvm/toolchains/llvm/prebuilt/linux-x86_64/ndk-libs
 }

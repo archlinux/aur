@@ -1,7 +1,7 @@
 pkgbase = android-ndk-ollvm
-	pkgdesc = Obfuscated llvm for Android NDK
+	pkgdesc = Obfuscated llvm for Android NDK. It install LLVM with obfuscation support outside of android-ndk and use symlinks to NDK. Symlinks updates automaticly (via pacman hooks) on each android-ndk upgrade
 	pkgver = 14.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sr-tream/obfuscator
 	install = android-ndk-ollvm.install
 	arch = x86_64
@@ -11,14 +11,15 @@ pkgbase = android-ndk-ollvm
 	makedepends = cmake
 	makedepends = clang
 	makedepends = lld
+	makedepends = patch
 	depends = android-ndk>=r23
 	replaces = android-ndk64-ollvm
-	options = !strip
-	options = staticlibs
+	options = strip
+	options = !staticlibs
 	source = update_links.sh
 	source = android-ndk-ollvm.hook
 	source = git+https://github.com/sr-tream/obfuscator.git#branch=release/14.x
-	sha256sums = 8b644e42e6e33a607bcf2529c034007ee8bf2c3980f40c9da21cfc9450a4e7f5
+	sha256sums = 7f4e245fa079367b26108cead08b5cb5033cba7595b842b97f3c1abec52c1d4f
 	sha256sums = 4ff51c89e7b047b0ca396c829fa5dbbf572559f15cefdf6d14e56251e208c5e9
 	sha256sums = SKIP
 

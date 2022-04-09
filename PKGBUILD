@@ -1,19 +1,19 @@
 pkgname=android-ndk-ollvm
 pkgver=14.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Obfuscated llvm for Android NDK. It install LLVM with obfuscation support outside of android-ndk and use symlinks to NDK. Symlinks updates automaticly (via pacman hooks) on each android-ndk upgrade'
 arch=('x86_64')
 url='https://github.com/sr-tream/obfuscator'
 license=('GPL' 'LGPL' 'custom')
-options=('!strip' '!staticlibs')
+options=('strip' '!staticlibs')
 install="$pkgname.install"
 replaces=('android-ndk64-ollvm')
 depends=('android-ndk>=r23')
-makedepends=('cmake' 'clang' 'lld')
+makedepends=('cmake' 'clang' 'lld' 'patch')
 source=("update_links.sh"
         "${pkgname}.hook"
         "git+${url}.git#branch=release/14.x")
-sha256sums=('8b644e42e6e33a607bcf2529c034007ee8bf2c3980f40c9da21cfc9450a4e7f5'
+sha256sums=('7f4e245fa079367b26108cead08b5cb5033cba7595b842b97f3c1abec52c1d4f'
             '4ff51c89e7b047b0ca396c829fa5dbbf572559f15cefdf6d14e56251e208c5e9'
             'SKIP')
 
@@ -21,7 +21,7 @@ prepare() {
     cd ${srcdir}/obfuscator
     git submodule update --init llvm-project
     cd - && cd ${srcdir}/obfuscator/llvm-project
-    git apply ../obfuscator.patch
+    patch -p1 -i  ../obfuscator.patch
     cd -
 }
 
@@ -46,10 +46,16 @@ build() {
             -DLLVM_CCACHE_BUILD=ON
     fi
     
-    cmake --build build --parallel
+    cmake --build build --parallel 4
     cmake --install build --prefix install
     
-    ln -s install/bin/ld.lld install/bin/ld
+    cd install/bin
+    ln -s ld.lld ld
+    cd -
+    
+    cd install/lib
+    rm -f lib*\.a
+    cd -
 }
 
 package() {
