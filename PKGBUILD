@@ -30,7 +30,7 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  sed -i 's/=[Ee]ncode$/=3ncode/g' debian/encode.desktop 
+  sed -i 's/=[Ee]ncode$/=3ncode/g' debian/encode.desktop
   sed -i 's|/usr/share/encode|/usr/share/3ncode|g' encode
 }
 
@@ -40,9 +40,9 @@ package() {
   install -Dm644 qml/img/encode.png "$pkgdir/usr/share/pixmaps/${pkgname%-git}.png"
   install -Dm755 encode "$pkgdir/usr/bin/${pkgname%-git}"
 
-  install -dm755      "$pkgdir/usr/share/${pkgname%-git}/qml/img"
-  cp -a *.py *.qml    "$pkgdir/usr/share/${pkgname%-git}"
-  cp -a qml/*.qml     "$pkgdir/usr/share/${pkgname%-git}/qml"
-  cp -a qml/img/*.png "$pkgdir/usr/share/${pkgname%-git}/qml/img"
+  install -dm755       "$pkgdir/usr/share/${pkgname%-git}/qml/img"
+  cp -a ./*.py ./*.qml "$pkgdir/usr/share/${pkgname%-git}"
+  cp -a qml/*.qml      "$pkgdir/usr/share/${pkgname%-git}/qml"
+  cp -a qml/img/*.png  "$pkgdir/usr/share/${pkgname%-git}/qml/img"
 }
 
