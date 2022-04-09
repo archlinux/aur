@@ -1,0 +1,4 @@
+pkg/
+src/
+swgp-go-git/
+*.tar.zst

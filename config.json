@@ -1,0 +1,26 @@
+{
+    "interfaces": [
+        {
+            "name": "wg0",
+            "proxyListen": "[::]:20220",
+            "proxyMode": "zero-overhead",
+            "proxyPSK": "sAe5RvzLJ3Q0Ll88QRM1N01dYk83Q4y0rXMP1i4rDmI=",
+            "proxyFwmark": 0,
+            "wgEndpoint": "[::1]:20221",
+            "wgFwmark": 0,
+            "mtu": 1500
+        }
+    ],
+    "peers": [
+        {
+            "name": "laptop",
+            "wgListen": "[::]:20222",
+            "wgFwmark": 0,
+            "proxyEndpoint": "[2001:db8:1f74:3c86:aef9:a75:5d2a:425e]:20220",
+            "proxyMode": "zero-overhead",
+            "proxyPSK": "sAe5RvzLJ3Q0Ll88QRM1N01dYk83Q4y0rXMP1i4rDmI=",
+            "proxyFwmark": 0,
+            "mtu": 1500
+        }
+    ]
+}
