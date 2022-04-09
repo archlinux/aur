@@ -51,14 +51,15 @@ _major=5.17
 _minor=2
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=3
+pkgrel=4
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
 license=('GPL2')
 options=('!strip')
 makedepends=('bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
-             'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz')
+             'graphviz' 'imagemagick' 'pahole' 'cpio' 'perl' 'tar' 'xz'
+             'texlive-latexextra' 'xmlto')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 _aufs_path="aufs-patches"
