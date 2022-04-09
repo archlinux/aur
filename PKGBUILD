@@ -17,10 +17,7 @@ provides=(yt-len)
 source=(git+$url)
 md5sums=('SKIP')
 
-pkgver() {
-	cd ${_pkgname}
-	printf "0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
+
 prepare() {
 	if [ -e "$srcdir/$pkgname-$pkgver" ]
 	then
