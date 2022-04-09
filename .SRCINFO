@@ -7,6 +7,7 @@ pkgbase = rssguard-git
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = cmake
 	makedepends = qt5-tools
 	depends = qt5-webengine
 	optdepends = oxygen-icons: fallback icon theme
@@ -18,4 +19,3 @@ pkgbase = rssguard-git
 	sha256sums = SKIP
 
 pkgname = rssguard-git
-

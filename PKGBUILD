@@ -10,10 +10,10 @@ url='https://github.com/martinrotter/rssguard'
 license=('GPL3')
 depends=('qt5-webengine')
 optdepends=('oxygen-icons: fallback icon theme')
-makedepends=('git' 'qt5-tools')
+makedepends=('git' 'cmake' 'qt5-tools')
 provides=("$_pkgname")
 conflicts=("$_pkgname" rss-guard{,-git})
-source=("git+https://github.com/martinrotter/rssguard.git")
+source=("git+${url}.git")
 sha256sums=("SKIP")
 
 pkgver() {
@@ -24,11 +24,11 @@ pkgver() {
 build() {
   rm -Rf build && mkdir build
   cd build
-  qmake $srcdir/$_pkgname/ -r CONFIG+=debug PREFIX=/usr
+  cmake $srcdir/$_pkgname/ -DCMAKE_BUILD_TYPE=debug -DCMAKE_INSTALL_PREFIX=/usr
   make
 }
 
 package() {
   cd build
-  make INSTALL_ROOT=$pkgdir install
+  make DESTDIR=$pkgdir install
 }
