@@ -22,21 +22,21 @@ sha256sums=('b8a1503371fa0c0f3d07d3b39a3de2769b8ed25923d0d931b7075bc88e3f508f'
             '9b0c6a786d0697edc3569cfa8d59a8a0ad60d10f4c1eb0b038a77e181f823a22')
 
 prepare() {
-  rm -rf th
-  mkdir th
+  rm -rf build
+  mkdir build
 
-  ln -s -f $srcdir/th_movie.{cpp,h} "$srcdir/CorsixTH-$pkgver/CorsixTH/Src/"
+  ln -s -f "$srcdir"/th_movie.{cpp,h} "$srcdir/CorsixTH-$pkgver/CorsixTH/Src/"
 }
 
 build() {
-  cmake -B th -G Ninja -DCMAKE_BUILD_TYPE=Release -Wno-dev \
-        -DCMAKE_INSTALL_PREFIX=/usr CorsixTH-$pkgver
-  cmake --build th
+  cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -Wno-dev \
+        -DCMAKE_INSTALL_PREFIX=/usr "CorsixTH-$pkgver"
+  cmake --build build
 }
 
 package() {
-  DESTDIR="$pkgdir/" cmake --install th
+  DESTDIR="$pkgdir/" cmake --install build
   # license
-  install -d "$pkgdir"/usr/share/licenses/$pkgname
-  ln -s /usr/share/corsix-th/LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/
+  install -d "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s /usr/share/corsix-th/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/"
 }
