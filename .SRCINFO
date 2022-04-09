@@ -1,7 +1,7 @@
 pkgbase = xrick
 	pkgdesc = Clone of Rick Dangerous, a classic platform game
 	pkgver = 021212
-	pkgrel = 10
+	pkgrel = 11
 	url = http://www.bigorno.net/xrick
 	arch = i686
 	arch = x86_64
@@ -17,4 +17,3 @@ pkgbase = xrick
 	sha256sums = 5d8c57aeb0b4e445576f86aaa8b851315c4c31d03544f7ad4b95c9507551a625
 
 pkgname = xrick
-

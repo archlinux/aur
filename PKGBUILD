@@ -3,7 +3,7 @@
 
 pkgname=xrick
 pkgver=021212
-pkgrel=10
+pkgrel=11
 pkgdesc='Clone of Rick Dangerous, a classic platform game'
 arch=('i686' 'x86_64')
 url='http://www.bigorno.net/xrick'
@@ -22,8 +22,10 @@ prepare() {
 
   # change data path
   sed 's|"data.zip"|"/usr/share/xrick/data.zip"|' -i src/xrick.c
-  # add our build flags
-  sed "s|CFLAGS=|CFLAGS+=|;s|LDFLAGS=|LDFLAGS+=|" -i Makefile
+  # add our build flags and gcc10+ fix
+  sed "s|CFLAGS=|CFLAGS+=-fcommon |;s|LDFLAGS=|LDFLAGS+=|" -i Makefile
+  # fix format-security
+  sed 's|printf(s)|printf("%s\\n", s)|' -i src/system.c
 
   # create icon
   convert src/xrickST.ico xrick.png
