@@ -62,15 +62,15 @@ _lqxpatchname=liquorix-package
 _lqxpatchrel=4
 _lqxpatchver=${_lqxpatchname}-${_major}-${_lqxpatchrel}
 pkgbase=linux-lqx
-pkgver=5.17.2.lqx2
-pkgrel=1
+pkgver=5.17.2.lqx1
+pkgrel=2
 pkgdesc='Linux Liquorix'
 url='https://liquorix.net/'
 arch=(x86_64)
 license=(GPL2)
 makedepends=(bc libelf cpio python pahole)
 if [ -n "$_htmldocs_enable" ]; then
-    makedepends+=(xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick)
+    makedepends+=(xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra)
 fi
 options=('!strip')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
