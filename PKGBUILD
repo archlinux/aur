@@ -2,7 +2,7 @@
 pkgname=pocket-casts-linux-bin
 provides=('pocket-casts-linux')
 conflicts=('pocket-casts-linux')
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=2
 pkgdesc="Electron wrapper around the Pocket Casts web app with support for MPRIS (media controls)"
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
   "https://github.com/fuadsaud/pocket-casts-linux/releases/download/v$pkgver/pocket-casts-linux-$pkgver-x64.pacman"
   "https://raw.githubusercontent.com/fuadsaud/pocket-casts-linux/v$pkgver/LICENSE"
 )
-md5sums=('55089a97018d9884abd0a47a62d1ef4e'
+md5sums=('d104503183f1689e0c6b889ca9081eb5'
          'd33641b160d63ec0a1de56f9f89fe400')
 
 package() {
