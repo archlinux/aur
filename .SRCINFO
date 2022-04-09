@@ -1,6 +1,6 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 98.0.2
+	pkgver = 97.0.1
 	pkgrel = 1
 	url = https://librewolf-community.gitlab.io/
 	install = librewolf.install
@@ -43,7 +43,6 @@ pkgbase = librewolf
 	depends = nss
 	depends = ttf-font
 	depends = libpulse
-	depends = ffmpeg4.4
 	optdepends = networkmanager: Location detection via available WiFi networks
 	optdepends = libnotify: Notification integration
 	optdepends = pulseaudio: Audio support
@@ -57,30 +56,22 @@ pkgbase = librewolf
 	options = !debug
 	backup = usr/lib/librewolf/librewolf.cfg
 	backup = usr/lib/librewolf/distribution/policies.json
-	source = https://archive.mozilla.org/pub/firefox/releases/98.0.2/source/firefox-98.0.2.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/98.0.2/source/firefox-98.0.2.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/97.0.1/source/firefox-97.0.1.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/97.0.1/source/firefox-97.0.1.source.tar.xz.asc
 	source = librewolf.desktop
-	source = git+https://gitlab.com/librewolf-community/browser/source.git#tag=98.0.2-1
-	source = git+https://gitlab.com/librewolf-community/settings.git#tag=6.0
+	source = git+https://gitlab.com/librewolf-community/browser/source.git#tag=272f05d69b40953729bf05a1d7acda69f30804e6
+	source = git+https://gitlab.com/librewolf-community/settings.git#tag=f88024283b0dfb60fcaea9a3374aa6ea036260f5
 	source = default192x192.png
-	source = 0031-bgo-831903-pip-dont-fail-with-optional-deps.patch
-	source = 0032-skip-pip-check.patch
-	source = 0033-resolve-fs-symlinks-bmo1753182.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = c144b6016aaa8ceab8154b9f0b2bbeee6cbc22ab7f811fcece28d36e49565890
+	sha256sums = 3f2c87cf28645130777e875ddc9c67e8994c8d5c859f425f3ddced6fecb78d45
 	sha256sums = SKIP
 	sha256sums = 0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1
-	sha256sums = 582303b7d97dae11f1c760e129be03e270a0800a0bae9e140c032e57ae00c06d
-	sha256sums = 35eaa5ad3ade5351dc072f7e3e240265818d40c77c637dfdb492a91128b65d27
-	sha256sums = 5d4117f2aa185495d0e94318a7945c43df0dce9afb4a3e0972ef516c4b84e5fd
-	source_aarch64 = 98.0.2-1_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch
-	source_aarch64 = 98.0.2-1_revert-crossbeam-crates-upgrade.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/434abe24fa6bc70940b2f1e69e047af38b4be68a/extra/firefox/revert-crossbeam-crates-upgrade.patch
-	source_aarch64 = 98.0.2-1_psutil-remove-version-cap.patch::https://github.com/archlinuxarm/PKGBUILDs/raw/434abe24fa6bc70940b2f1e69e047af38b4be68a/extra/firefox/psutil-remove-version-cap.patch
+	depends_x86_64 = ffmpeg4.4
+	source_aarch64 = 97.0.1-1_build-arm-libopus.patch::https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/firefox/build-arm-libopus.patch
+	depends_aarch64 = ffmpeg
 	sha256sums_aarch64 = 2d4d91f7e35d0860225084e37ec320ca6cae669f6c9c8fe7735cdbd542e3a7c9
-	sha256sums_aarch64 = 56bd09bfd2fa594c2af7dbe923d72bed9da23b7c001f923bf33784554e323541
-	sha256sums_aarch64 = 2bb0ac385b54972eb3e665ac70fb13565ed9da77b33349b844b2e0ad4948cff5
 
 pkgname = librewolf
