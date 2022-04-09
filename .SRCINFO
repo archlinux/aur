@@ -1,6 +1,6 @@
 pkgbase = rocm-smi-lib
 	pkgdesc = ROCm System Management Interface Library
-	pkgver = 5.1.0
+	pkgver = 5.1.1
 	pkgrel = 1
 	url = https://github.com/RadeonOpenCompute/rocm_smi_lib
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = rocm-smi-lib
 	makedepends = doxygen
 	makedepends = texlive-latexextra
 	depends = hsa-rocr
-	provides = rocm-smi-lib64=5.1.0
+	provides = rocm-smi-lib64=5.1.1
 	conflicts = rocm-smi-lib64
 	replaces = rocm-smi-lib64
 	options = !lto
-	source = rocm-smi-lib-5.1.0.tar.gz::https://github.com/RadeonOpenCompute/rocm_smi_lib/archive/rocm-5.1.0.tar.gz
-	sha256sums = 21b31b43015b77a9119cf4c1d4ff3864f9ef1f34e2a52a38f985a3f710dc5f87
+	source = rocm-smi-lib-5.1.1.tar.gz::https://github.com/RadeonOpenCompute/rocm_smi_lib/archive/rocm-5.1.1.tar.gz
+	sha256sums = aa7ca64392f9194bcf19f980e6696761ef9408a9d4ceb397d6cdec7dc75eed8a
 
 pkgname = rocm-smi-lib
