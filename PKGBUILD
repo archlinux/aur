@@ -1,79 +1,113 @@
 # Maintainer: Florian Bruhin (The Compiler) <archlinux.org@the-compiler.org>
+# Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Alex Reznichenko <sa5gap@yandex.ru>
 # Contributor: Roman Kyrylych <roman@archlinux.org>
 # Contributor: Giuseppe Lucarelli <luk@rebelsoft.org>
 # Contributor: Dan Ziemba <zman0900@gmail.com>
 
 pkgname=network-ups-tools-git
-pkgver=v2.7.4.r371.g30e04684
+pkgver=2.7.4.r5111.g88acc3578
 pkgrel=1
-pkgdesc="NUT is a collection of programs for monitoring and administering UPS hardware"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="http://www.networkupstools.org/"
-license=('GPL2')
-depends=('openssl-1.0' 'libusb-compat' 'libltdl' 'neon' 'net-snmp')
-provides=('network-ups-tools')
-conflicts=('network-ups-tools')
-makedepends=('asciidoc' 'git')
-backup=(etc/ups/{ups.conf,upsd.conf,upsd.users,upsmon.conf,upssched.conf})
+pkgdesc='A collection of programs which provide a common interface for monitoring and administering UPS, PDU and SCD hardware'
+arch=(x86_64)
+url=https://networkupstools.org/
+license=(
+  GPL2
+  GPL3
+)
+depends=(
+  gcc-libs
+  glibc
+  libtool
+  libusb-compat
+  neon
+  net-snmp
+  openssl
+)
+makedepends=(
+  asciidoc
+  gd
+  git
+  python
+)
+optdepends=('gd: CGI support')
+provides=(network-ups-tools nut)
+conflicts=(network-ups-tools nut)
+options=(!makeflags)
 install=nut.install
-source=("git+https://github.com/networkupstools/nut.git")
-options=()
-md5sums=('SKIP')
+backup=(
+  etc/nut/hosts.conf
+  etc/nut/nut.conf
+  etc/nut/ups.conf
+  etc/nut/upsd.conf
+  etc/nut/upsd.users
+  etc/nut/upsmon.conf
+  etc/nut/upssched.conf
+  etc/nut/upsstats.html
+  etc/nut/upsstats-single.html
+)
+source=(
+  git+https://github.com/networkupstools/nut.git
+  nut.sysusers
+  nut.tmpfiles
+)
+sha256sums=('SKIP'
+            '3001e24969545136361670c5d615684d2b37830525e090c2ab3bcfa90d90e4ac'
+            'c924ccaae9ec75ee7795c872e1708d10201402642a6d5de2304cc644744bbcc5')
 
 pkgver() {
-  cd "$srcdir/nut"
-  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  cd nut
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-  find "$srcdir/nut" -name '*.py' -exec sed -i 's|^#!/usr/bin/env python|&2|' {} \;
+  cd nut
+  ./autogen.sh
 }
 
 build() {
-  cd "$srcdir/nut"
-  export PKG_CONFIG_PATH=/usr/lib/openssl-1.0/pkgconfig
-  ./autogen.sh
+  cd nut
+
   ./configure \
-    --without-wrap \
-    --with-user=ups \
-    --with-group=nut \
+    --prefix=/usr \
+    --datadir=/usr/share/nut \
+    --sbindir=/usr/bin \
+    --sysconfdir=/etc/nut \
     --disable-static \
-    --with-serial \
-    --with-usb \
+    --with-user=nut \
+    --with-group=nut \
+    --with-altpidpath=/run/nut \
+    --with-cgipath=/usr/share/nut/cgi \
+    --with-drvpath=/usr/lib/nut \
+    --with-htmlpath=/usr/share/nut/html \
+    --with-pidpath=/run/nut \
+    --with-statepath=/var/lib/nut \
+    --with-systemdsystemunitdir=/usr/lib/systemd/system \
+    --with-udev-dir=/usr/lib/udev \
+    --with-cgi \
+    --with-dev \
     --with-doc=html-single \
-    --without-avahi \
-    --with-snmp \
+    --with-libltdl \
     --with-neon \
-    --without-powerman \
+    --with-openssl \
+    --with-serial \
+    --with-snmp \
+    --with-usb \
+    --without-avahi \
+    --without-doc \
     --without-ipmi \
     --without-freeipmi \
-    --with-libltdl \
-    --without-cgi \
-    --prefix=/usr \
-    --with-udev-dir=/usr/lib/udev \
-    --with-systemdsystemunitdir=/usr/lib/systemd/system \
-    --datadir=/usr/share/ups \
-    --sbindir=/usr/bin \
-    --with-drvpath=/usr/lib/network-ups-tools \
-    --sysconfdir=/etc/ups \
-    --with-openssl \
-    --with-dev
-  make
+    --without-powerman \
+    --without-wrap
+  make -j1
 }
 
 package() {
-  cd "$srcdir/nut"
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="${pkgdir}" -C nut install
+  find "${pkgdir}"/etc/nut -name *.sample -exec rename '.sample' '' {} \;
 
-  install -D -m644 "conf/ups.conf.sample" "$pkgdir/etc/ups/ups.conf"
-  install -D -m640 "conf/upsd.conf.sample" "$pkgdir/etc/ups/upsd.conf"
-  install -D -m640 "conf/upsd.users.sample" "$pkgdir/etc/ups/upsd.users"
-  install -D -m640 "conf/upsmon.conf.sample" "$pkgdir/etc/ups/upsmon.conf"
-  install -D -m644 "conf/upssched.conf.sample" "$pkgdir/etc/ups/upssched.conf"
-
-  install -d -v -m755 "$pkgdir/usr/share/doc/network-ups-tools/images/cables"
-  install -v -m 644 docs/*.html "$pkgdir/usr/share/doc/network-ups-tools"
-  install -v -m 644 docs/images/*.png "$pkgdir/usr/share/doc/network-ups-tools/images"
-  install -v -m 644 docs/images/cables/*.{png,jpg} "$pkgdir/usr/share/doc/network-ups-tools/images/cables"
+  install -Dm 644 nut.sysusers "${pkgdir}"/usr/lib/sysusers.d/nut.conf
+  install -Dm 644 nut.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/nut.conf
 }
+
+# vim: ts=2 sw=2 et:
