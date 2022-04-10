@@ -13,7 +13,7 @@ pkgbase = lib32-libarchive
 	depends = lib32-xz
 	depends = lib32-zlib
 	depends = lib32-zstd
-	depends = libarchive=3.6.1
+	depends = libarchive
 	source = http://libarchive.org/downloads/libarchive-3.6.1.tar.gz
 	sha512sums = 58f7ac0c52116f73326a07dec10ff232be33b318862078785dc39f1fb2f8773b5194eabfa14764bb51ce6a5a1aa8820526e7f4c76087a6f4fcbe7789a22275b4
 
