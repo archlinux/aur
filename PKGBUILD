@@ -10,7 +10,7 @@ _pkgname=lxc
 _pkgvariant=nosystemd
 pkgname="${_pkgname}-${_pkgvariant}-git"
 pkgver=4.0.0.r1729.g78598e2b3
-pkgrel=2
+pkgrel=3
 pkgdesc="Linux Containers git version. Without systemd dependencies."
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://linuxcontainers.org"
@@ -38,9 +38,9 @@ conflicts=(
   'anbox-launchers-git'
 )
 source=(
-  "${_pkgname}::git://github.com/lxc/lxc"
+  "${_pkgname}::git+https://github.com/lxc/lxc.git"
   # to build from the stable branch instead of master use
-  # ${_pkgname}-stable-4.0::git://github.com/lxc/lxc#branch=stable-4.0
+  # ${_pkgname}-stable-4.0::git+https://github.com/lxc/lxc.git#branch=stable-4.0
   "lxc.tmpfiles.d"
 )
 sha256sums=(
