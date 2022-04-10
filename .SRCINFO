@@ -1,0 +1,14 @@
+pkgbase = rocm-llvm-mlir
+	pkgdesc = Radeon Open Compute - LLVM Multi-Level IR Compiler Framework
+	pkgver = 5.1
+	pkgrel = 1
+	url = https://github.com/ROCmSoftwarePlatform/llvm-project-mlir
+	arch = x86_64
+	license = custom:Apache 2.0 with LLVM Exception
+	makedepends = cmake
+	makedepends = sqlite
+	depends = rocm-llvm
+	source = https://github.com/ROCmSoftwarePlatform/llvm-project-mlir/archive/release/rocm-5.1.tar.gz
+	sha256sums = 7bc1eba4af74a4884efcf1cc73933efd7d8bc97445bf2a2e441d4db4ed624c4f
+
+pkgname = rocm-llvm-mlir
