@@ -15,4 +15,5 @@ package() {
 	 tar -xf data.tar.xz -C "${pkgdir}"
      install -Dm644 "${pkgdir}/usr/share/icons/hicolor/0x0/apps/viper.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/viper.png"
      rm -rf "${pkgdir}/usr/share/icons/hicolor/0x0"
+     mv "${pkgdir}/opt/Viper" "${pkgdir}/opt/viper"
 }
