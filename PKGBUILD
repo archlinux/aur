@@ -36,7 +36,8 @@ depends=('python'
 	'lib32-libjpeg6-turbo'
 	'lib32-libgudev'
 	'lib32-flac'
-	'lib32-mpg123')
+	'lib32-mpg123'
+	'lib32-libusb')
 optdepends=('kdialog: KDE splash dialog support'
 	'zenity: GNOME splash dialog support'
 	'python-kivy: splash dialog support (big picture mode)'
@@ -45,11 +46,11 @@ optdepends=('kdialog: KDE splash dialog support'
 	'vulkan-driver: driver to be used by dxvk'
 	'winetricks: protonfixes backend - highly recommended'
 	'wine: support for 32bit prefixes'
-	'xboxdrv: gamepad driver service'
-	'lib32-libusb: wine usb support')
+	'xboxdrv: gamepad driver service')
 
 ## makepkg options
 options=(!strip emptydirs)
+install=pleasenote.install
 
 ## fix naming conventions, matching upstream
 _pkgname=${pkgname//-bin/}
@@ -70,7 +71,7 @@ url='https://github.com/GloriousEggroll/proton-ge-custom'
 source=("${_pkgver}_${pkgrel}.tar.gz::${url}/releases/download/${_pkgver}/${_pkgver}.tar.gz"
 	'supplementary.tar.zst')
 sha512sums=('3cbe99a2659dab1871cef0b50deb8cab4f101cc4d0531ed3d2cd7cf89dcee6aa08357b3d485e4260ab7a46af13bf6349daed16deb382cbadd5b2831ba7ad5503'
-            'a484c4cd2003057cf0cbbd32ca5d0106e97c75434e7bef34b35be8239ad98a482358852e41e85abedf5b24ac4d0375c8fffc7deee81a9b08c7799a398f23773b')
+            '78f4874746b45151890edede89acc5fef6c6143d93d63db27b592a17f9a3eaa7bcfd25049807f9600794ba1244b121636ebf58ea51a5079e7c7ceef36d0c56a0')
 
 build() {
 	## patches
@@ -88,6 +89,7 @@ package() {
 	install -d "${pkgdir}/${_protondir}/"
 	install -d "${pkgdir}/${_licensedir}/"
 	install -d "${pkgdir}/$(dirname ${_execfile})/"
+	install -d "${pkgdir}/etc/security/limits.d/"
 	## licenses
 	mv "${_srcdir}/LICENSE" "${pkgdir}/${_licensedir}/license"
 	mv "${_srcdir}/LICENSE.OFL" "${pkgdir}/${_licensedir}/license_OFL"
@@ -95,6 +97,7 @@ package() {
 	mv "${_srcdir}/protonfixes/LICENSE" "${pkgdir}/${_licensedir}/license_protonfixes"
 	## config files
 	install --mode=0775 --group=50 "${srcdir}"/configs/user_settings.py "${pkgdir}/${_protoncfg}"
+	install --mode=0644 "${srcdir}"/configs/limits.conf "${pkgdir}"/etc/security/limits.d/10-games.conf
 	## executables
 	mv "${_srcdir}"/* "${pkgdir}/${_protondir}"
 	install --mode=0755 "${srcdir}"/launchers/proton.sh "${pkgdir}/${_execfile}"
