@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 pkgname=mixtool
-_commit=4c3a8416095b4ef1a4b87a267d71f97961beb277
-_rev=r58
+_commit=3c25f120db2c681f2d9ff5b8cbfa34dc4d5027e7
+_rev=r63
 # VERSION file contains 'v0.1.0-pre' but no tag exists upstream
 # so this will remain 0.0.0.rREVISION.gSHORTSHA
 pkgver=0.0.0.$_rev.g${_commit:0:12}
@@ -14,7 +14,7 @@ depends=('glibc')
 makedepends=('go')
 #backup=()
 source=("$url"/archive/"$_commit"/"$pkgname-$pkgver.tar.gz")
-sha256sums=('1a09875b9a9cd0d3bb9b74f0814e370ebc83343f2a4c784d836c9a6a835bebd9')
+sha256sums=('ebacc7a78dae2f3f43cbf7831d3153047744a2043611425f37f183f0cb9be6bc')
 
 build() {
   cd "$pkgname-$_commit"
