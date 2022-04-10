@@ -1,14 +1,14 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=znc-palaver-git
 _gitname=znc-palaver
-pkgver=r95.cb74b8f
-pkgrel=2
+pkgver=r96.825cb68
+pkgrel=1
 pkgdesc="Palaver ZNC module provides push notifications"
 arch=('i686' 'x86_64')
 url="git://github.com/cocodelabs/znc-palaver"
 license=('MIT')
 depends=('znc')
-source=("git://github.com/cocodelabs/${_gitname}.git")
+source=("git+https://github.com/cocodelabs/${_gitname}.git")
 md5sums=('SKIP')
 
 pkgver() {
