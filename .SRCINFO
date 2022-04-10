@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-lottie-static
 	pkgdesc = A family of player software for a certain json-based file format for describing 2d vector graphics animations (mingw-w64)
-	pkgver = 6.2.4
+	pkgver = 6.3.0
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = mingw-w64-qt6-lottie-static
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.2/6.2.4/submodules/qtlottie-everywhere-src-6.2.4.tar.xz
-	sha256sums = 299b8070ed931060ef8ff72dbb453666d12654ddb065f8f3a6f21a1c03a4f3f2
+	source = https://download.qt.io/official_releases/qt/6.3/6.3.0/submodules/qtlottie-everywhere-src-6.3.0.tar.xz
+	sha256sums = 39db570bbba5b527a1eb6a5774bed47398ace2f7217bbf45b1194ada6cf97deb
 
 pkgname = mingw-w64-qt6-lottie-static
