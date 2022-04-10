@@ -1,8 +1,8 @@
 pkgbase = tn5250j
 	pkgdesc = 5250 terminal emulator for iSeries and AS/400 written in Java
 	pkgver = 0.7.6
-	pkgrel = 2
-	url = http://tn5250j.sourceforge.net/
+	pkgrel = 3
+	url = http://tn5250j.org/
 	arch = any
 	license = GPL2
 	makedepends = ant

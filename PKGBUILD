@@ -2,9 +2,9 @@
 # Contributor: Gino Pezzin <pezzin@gmail.com>
 pkgname=tn5250j
 pkgver=0.7.6
-pkgrel=2
+pkgrel=3
 pkgdesc="5250 terminal emulator for iSeries and AS/400 written in Java"
-url="http://tn5250j.sourceforge.net/"
+url="http://tn5250j.org/"
 arch=('any')
 license=('GPL2')
 depends=('bash' 'java-runtime' 'hicolor-icon-theme')
@@ -68,3 +68,4 @@ package() {
   install -m 644 -t "${pkgdir}/usr/share/doc/${pkgname}" \
     *.txt *.policy *.properties *.html *.php *.ssl
 }
+
