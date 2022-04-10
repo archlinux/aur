@@ -6,7 +6,7 @@ _pkgvariant=nosystemd
 pkgname="${_pkgname}-${_pkgvariant}-git"
 _pkgver=latest
 pkgver=0.8.3.43.r271.d20210923.a341754
-pkgrel=1
+pkgrel=2
 pkgdesc="sdbus-c++ is a high-level C++ D-Bus library for Linux designed to provide expressive, easy-to-use API in modern C++. This package is without systemd dependencies; it will have it's own static libsystemd baked in."
 url="https://github.com/Kistler-Group/sdbus-cpp"
 arch=('i686' 'x86_64')
@@ -33,8 +33,8 @@ conflicts=(
   "${_pkgname}-${_pkgvariant}"
 )
 source=(
-  "${_pkgname}::git+git://github.com/Kistler-Group/sdbus-cpp.git"
-  "systemd-stable::git+git://github.com/systemd/systemd-stable.git"
+  "${_pkgname}::git+https://github.com/Kistler-Group/sdbus-cpp.git"
+  "systemd-stable::git+https://github.com/systemd/systemd-stable.git"
 )
 sha256sums=(
   'SKIP'
