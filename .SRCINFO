@@ -1,11 +1,12 @@
 pkgbase = rocm-validation-suite
 	pkgdesc = Tool for detecting and troubleshooting common problems affecting AMD GPUs
 	pkgver = 5.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ROCm-Developer-Tools/ROCmValidationSuite
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
+	makedepends = systemd
 	depends = pciutils
 	depends = doxygen
 	depends = rocblas
