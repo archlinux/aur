@@ -1,6 +1,6 @@
 pkgbase = nanominer
 	pkgdesc = nanopool mining software
-	pkgver = 3.5.2
+	pkgver = 3.6.0
 	pkgrel = 1
 	url = https://github.com/nanopool/nanominer/releases
 	install = nanominer.install
@@ -8,9 +8,9 @@ pkgbase = nanominer
 	license = custom:nanopool
 	depends = pciutils
 	depends = bash
-	source = https://github.com/nanopool/nanominer/releases/download/v3.5.2/nanominer-linux-3.5.2.tar.gz
+	source = https://github.com/nanopool/nanominer/releases/download/v3.6.0/nanominer-linux-3.6.0.tar.gz
 	source = https://github.com/nanopool/nanominer/raw/master/Terms%20of%20Use%20Nanominer.pdf
-	sha256sums = a528733aa3f89419fa1b6ab99376fa5f7ffe7f1062e93e78da8b196a07be03fa
+	sha256sums = 716952b3c395165844020c45035cb0692e023aac5154cde11583fe03f484feea
 	sha256sums = SKIP
 
 pkgname = nanominer

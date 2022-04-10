@@ -1,6 +1,6 @@
 # Maintainer: Edvin Alvarado <ealvarado301 g-mail>
 pkgname=nanominer
-pkgver=3.5.2
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="nanopool mining software"
 arch=('any')
@@ -8,7 +8,7 @@ depends=('pciutils' 'bash')
 license=('custom:nanopool')
 install=$pkgname.install
 url='https://github.com/nanopool/nanominer/releases'
-sha256sums=("a528733aa3f89419fa1b6ab99376fa5f7ffe7f1062e93e78da8b196a07be03fa"
+sha256sums=("716952b3c395165844020c45035cb0692e023aac5154cde11583fe03f484feea"
 			"SKIP")
 
 prepare() {
