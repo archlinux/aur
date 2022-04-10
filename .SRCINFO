@@ -1,13 +1,13 @@
 pkgbase = felix-rs
 	pkgdesc = tui file manager with vim-like key mapping, written in Rust
-	pkgver = 0.5.1
+	pkgver = 0.5.2
 	pkgrel = 1
 	url = https://github.com/kyoheiu/felix
 	arch = x86_64
 	license = custom:MIT
 	makedepends = cargo
 	depends = gcc-libs
-	source = felix-0.5.1.tar.gz::https://github.com/kyoheiu/felix/archive/refs/tags/v0.5.1.tar.gz
-	sha256sums = 2716328b102a6512e8350ff4c4f480046a2f6e60560efeee10f491807c172fc8
+	source = felix-0.5.2.tar.gz::https://github.com/kyoheiu/felix/archive/refs/tags/v0.5.2.tar.gz
+	sha256sums = 7d6ae6014b00f173913c730c0ec801eb2875628a1e12801ca7620e7bff3301a2
 
 pkgname = felix-rs
