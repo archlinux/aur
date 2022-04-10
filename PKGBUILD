@@ -7,16 +7,16 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=98.0
+pkgver=99.0
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
 license=(MPL GPL LGPL)
 url="https://cachyos.org"
 depends=(gtk3 libxt mime-types dbus-glib
-         ffmpeg4.4 nss ttf-font libpulse
+         ffmpeg nss ttf-font libpulse
          aom harfbuzz graphite
-         libvpx libjpeg zlib icu libevent pipewire)
+         libvpx libjpeg zlib icu libevent pipewire dav1d)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
              rust xorg-server-xwayland xorg-server-xvfb
              autoconf2.13 clang llvm jack nodejs cbindgen nasm
@@ -41,7 +41,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         $pkgname.desktop
         "git+https://github.com/cachyos/cachyos-browser-settings.git"
         "git+https://github.com/cachyos/cachyos-browser-common.git")
-sha256sums=('fd0a4c11d007d9045706667eb0f99f9b7422945188424cb937bfef530cb6f4dd'
+sha256sums=('513f8d2cafa39a2d50f2c4a25cc48093e89f715a706b941170fa48e397976327'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
@@ -90,8 +90,8 @@ ac_add_options --with-system-icu
 ac_add_options --with-system-zlib
 ac_add_options --with-system-jpeg
 ac_add_options --with-system-harfbuzz
-#ac_add_options --with-system-graphite2
-#ac_add_options --with-system-av1
+ac_add_options --with-system-graphite2
+ac_add_options --with-system-av1
 
 # Features
 ac_add_options --enable-pulseaudio
@@ -109,7 +109,6 @@ ac_add_options --disable-debug-symbols
 ac_add_options --disable-debug-js-modules
 ac_add_options --disable-trace-logging
 ac_add_options --disable-rust-tests
-ac_add_options --disable-ipdl-tests
 ac_add_options --disable-necko-wifi
 ac_add_options --disable-webspeech
 ac_add_options --disable-webspeechtestbackend
@@ -159,19 +158,17 @@ END
   patch -Np1 -i ${_patches_dir}/gentoo/0004-bmo-847568-Support-system-harfbuzz.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0005-bmo-847568-Support-system-graphite2.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0006-bmo-1559213-Support-system-av1.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0033-bmo-1559213-fix-system-av1-libs.patch
+
 
   msg2 "---- Librewolf patches"
   msg2 "Remove some pre-installed addons that might be questionable"
-  patch -Np1 -i ${_patches_dir}/remove_addons.patch
-
-  msg2 "Disable (some) megabar functionality"
-  # Adapted from https://github.com/WesleyBranton/userChrome.css-Customizations
-  patch -Np1 -i ${_patches_dir}/megabar.patch
+  patch -Np1 -i ${_patches_dir}/librewolf/remove_addons.patch
 
   # disabled for the default build, as it seems to cause issues in some configurations
   # 2022-01-21: re-enabled because it seems to not mess things up anymore nowadays?
   msg2 "Debian patch to enable global menubar"
-  patch -Np1 -i ${_patches_dir}/unity-menubar.patch
+  patch -Np1 -i ${_patches_dir}/librewolf/unity-menubar.patch
 
   # KDE patches (W. Rosenauer)
   msg2 "---- Patching for KDE"
@@ -182,7 +179,7 @@ END
   patch -Np1 -i ${_patches_dir}/sed-patches/disable-pocket.patch
 
   msg2 "remove mozilla vpn ads"
-  patch -Np1 -i ${_patches_dir}/mozilla-vpn-ad.patch
+  patch -Np1 -i ${_patches_dir}/mozilla-vpn-ad2.patch
 
 
   # Remove Internal Plugin Certificates
@@ -197,11 +194,11 @@ END
   cp "${srcdir}/cachyos-browser-common/source_files/search-config.json" services/settings/dumps/main/search-config.json
 
   msg2  "stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
-  patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch
+  patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests2.patch
 
   msg2 "Assorted patches"
-  patch -Np1 -i ${_patches_dir}/context-menu.patch
-  patch -Np1 -i ${_patches_dir}/urlbarprovider-interventions.patch
+  patch -Np1 -i ${_patches_dir}/librewolf/context-menu.patch
+  patch -Np1 -i ${_patches_dir}/librewolf/urlbarprovider-interventions.patch
 
 
   #msg2 "allow overriding the color scheme light/dark preference with RFP"
@@ -211,16 +208,16 @@ END
   patch -Np1 -i ${_patches_dir}/about-dialog.patch
 
   msg2 "change some hardcoded directory strings that could lead to unnecessarily created directories"
-  patch -Np1 -i ${_patches_dir}/mozilla_dirs.patch
+  patch -Np1 -i ${_patches_dir}/librewolf/mozilla_dirs.patch
 
   msg2 "change bus/dbus/remoting names to org.cachyos"
-  patch -Np1 -i ${_patches_dir}/dbus_name.patch
+  patch -Np1 -i ${_patches_dir}/librewolf/dbus_name.patch
 
   msg2 "allow uBlockOrigin to run in private mode by default, without user intervention."
-  patch -Np1 -i ${_patches_dir}/allow-ubo-private-mode.patch
+  patch -Np1 -i ${_patches_dir}/librewolf/allow-ubo-private-mode.patch
 
   msg2 "add custom uBO assets (on first launch only)"
-  patch -Np1 -i ${_patches_dir}/custom-ubo-assets-bootstrap-location.patch
+  patch -Np1 -i ${_patches_dir}/librewolf/custom-ubo-assets-bootstrap-location.patch
 
   # ui patches
 
@@ -230,30 +227,35 @@ END
 
   # Explain that we force en-US and suggest enabling history near the session restore checkbox.
   msg2 "remove references to firefox from the settings UI, change text in some of the links"
-  patch -Np1 -i ${_patches_dir}/ui-patches/pref-naming.patch
+  patch -Np1 -i ${_patches_dir}/librewolf-ui/pref-naming.patch
 
-  patch -Np1 -i ${_patches_dir}/ui-patches/hide-safe-browsing.patch
+  #
+  patch -Np1 -i ${_patches_dir}/librewolf-ui/remap-links.patch
+  patch -Np1 -i ${_patches_dir}/librewolf-ui/hide-default-browser.patch
+  patch -Np1 -i ${_patches_dir}/librewolf-ui/privacy-preferences.patch
 
   msg2 "remove firefox references in the urlbar, when suggesting opened tabs."
-  patch -Np1 -i ${_patches_dir}/ui-patches/remove-branding-urlbar.patch
+  patch -Np1 -i ${_patches_dir}/librewolf-ui/remove-branding-urlbar.patch
 
   msg2 "remove cfr UI elements, as they are disabled and locked already."
-  patch -Np1 -i ${_patches_dir}/ui-patches/remove-cfrprefs.patch
+  patch -Np1 -i ${_patches_dir}/librewolf-ui/remove-cfrprefs.patch
 
   msg2 "do not display your browser is being managed by your organization in the settings."
-  patch -Np1 -i ${_patches_dir}/ui-patches/remove-organization-policy-banner.patch
+  patch -Np1 -i ${_patches_dir}/librewolf-ui/remove-organization-policy-banner.patch
 
   msg2 "hide \"snippets\" section from the home page settings, as it was already locked."
-  patch -Np1 -i ${_patches_dir}/ui-patches/remove-snippets-from-home.patch
+  patch -Np1 -i ${_patches_dir}/librewolf-ui/remove-snippets-from-home.patch
 
   msg2 "add warning that sanitizing exceptions are bypassed by the options in History > Clear History when LibreWolf closes > Settings"
-  patch -Np1 -i ${_patches_dir}/ui-patches/sanitizing-description.patch
+  patch -Np1 -i ${_patches_dir}/librewolf-ui/sanitizing-description.patch
 
   msg2 "customized pref panel"
-  patch -Np1 -i ${_patches_dir}/librewolf-pref-pane.patch
+  patch -Np1 -i ${_patches_dir}/librewolf/librewolf-pref-pane.patch
 
   msg2 "fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example"
-  patch -Np1 -i ${_patches_dir}/disable-data-reporting-at-compile-time.patch
+  patch -Np1 -i ${_patches_dir}/librewolf/disable-data-reporting-at-compile-time.patch
+
+  patch -Np1 -i ${_patches_dir}/fix-psutil.patch
 
   rm -f ${srcdir}/cachyos-browser-common/source_files/mozconfig
   cp -r ${srcdir}/cachyos-browser-common/source_files/browser ./
@@ -308,7 +310,6 @@ ac_add_options --enable-profile-use=cross
 ac_add_options --with-pgo-profile-path=${PWD@Q}/merged.profdata
 ac_add_options --with-pgo-jarlog=${PWD@Q}/jarlog
 ac_add_options --enable-linker=lld
-ac_add_options --disable-elf-hack
 ac_add_options --disable-bootstrap
 END
 
