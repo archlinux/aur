@@ -1,6 +1,6 @@
 # Maintainer: Holger Schramm <dev@strace.it>
 pkgname=mingo-bin
-pkgver=1.7.1
+pkgver=1.7.2
 pkgrel=1
 pkgdesc="A MongoDB GUI based on electron from developers for developers"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ depends=('alsa-lib' 'atk' 'at-spi2-atk' 'at-spi2-core' 'cairo' 'dbus' 'desktop-f
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://github.com/mingo-app/mingo/releases/download/v${pkgver}/mingo_${pkgver}_amd64.deb")
-sha512sums_x86_64=('0f50116f96eed47f0aa806ca12a3f584fcdc3c7f33d89a0fd972e2b7aa30b0b77ab3c06385fd6411e0341b989637f4b71f52ff90aba11bfda11c6f8798f3cfc5')
+sha512sums_x86_64=('fbdb0056a91ce0f5dc08af29596fb5207dc8abf7bb1053a7fa9339b6af88f45fddf5c23064652220563982ea8fcbd9363826927f95660c4131fab93945a9e1e8')
 
 package(){
 
