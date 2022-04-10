@@ -6,10 +6,10 @@
 pkgname=postsrsd-git
 epoch=1
 pkgver=1.11+2.r177.20210713.gafa2ca1
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides the Sender Rewriting Scheme (SRS) via TCP-based lookup tables for Postfix"
-provides=(postsrsd)
-conflicts=(postsrsd)
+provides=("postsrsd=${pkgver}")
+conflicts=("postsrsd")
 arch=(
   'i686'
   'x86_64'
