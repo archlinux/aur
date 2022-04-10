@@ -1,4 +1,4 @@
-From a51400ce845484b44aea004d144f6b22b7295518 Mon Sep 17 00:00:00 2001
+From dda151c4601c0f5453ffa7b80f4c77f65ae04bcd Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Mon, 2 Nov 2020 13:47:45 +0100
 Subject: [PATCH 5/8] Fix libjpeg workaround for conflict with rpcndr.h

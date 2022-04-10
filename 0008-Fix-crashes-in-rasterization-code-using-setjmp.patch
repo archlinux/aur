@@ -1,4 +1,4 @@
-From bc1d5f5f195f9b80f092e531aa566e1e95fb114f Mon Sep 17 00:00:00 2001
+From 3a7e6c01e86ff8b4ffaec5a7690d680198d59f57 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sat, 26 Jun 2021 22:24:12 +0200
 Subject: [PATCH 8/8] Fix crashes in rasterization code using setjmp
@@ -28,7 +28,7 @@ Change-Id: I01937d13569dd01ab4cb1f608020544c93bc343c
  rename src/gui/painting/{qgrayraster.c => qgrayraster.cpp} (98%)
 
 diff --git a/src/gui/CMakeLists.txt b/src/gui/CMakeLists.txt
-index e3062561df..4d64d1588d 100644
+index 43a2366063..4c5c42abb6 100644
 --- a/src/gui/CMakeLists.txt
 +++ b/src/gui/CMakeLists.txt
 @@ -165,7 +165,7 @@ qt_internal_add_module(Gui
@@ -40,8 +40,8 @@ index e3062561df..4d64d1588d 100644
          painting/qicc.cpp painting/qicc_p.h
          painting/qimagescale.cpp
          painting/qmemrotate.cpp painting/qmemrotate_p.h
-@@ -272,6 +272,11 @@ qt_internal_add_module(Gui
-         "kernel/qt_gui_pch.h"
+@@ -273,6 +273,11 @@ qt_internal_add_module(Gui
+     GENERATE_CPP_EXPORTS
  )
  
 +# enable exceptions for painting/qgrayraster.cpp
