@@ -1,0 +1,14 @@
+# required
+# server: "https://example.com"
+
+# required for token authentication
+# authToken: "example-token"
+
+# required for username/password authentication
+# username: "example"
+# password: "example"
+
+# optional
+# listenAddress: ":9205"
+# timeout: "5s"
+# tlsSkipVerify: false

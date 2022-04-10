@@ -1,15 +1,20 @@
 pkgbase = prometheus-nextcloud-exporter
 	pkgdesc = Prometheus exporter for Nextcloud metrics
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = https://github.com/xperimental/nextcloud-exporter
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	makedepends = go
 	depends = glibc
 	options = !lto
-	source = prometheus-nextcloud-exporter-0.5.0.tar.gz::https://github.com/xperimental/nextcloud-exporter/archive/v0.5.0.tar.gz
-	sha512sums = 6592d0da5fe6c0721ab67d34a7384d2d4b441f0d82482db02e10f4e51f8c1f5f0e9ad0ae0e04fb911d8e7a0d232fbc6f12cc8cfc8f6aa2a5cf540aebd2c02d83
-	b2sums = 4c59a399b0867ef3c5b078f34dacad2859fc3989db949c64d395a08e8d9552803fed140548714fa2e4fe990e181acb9ee624e631e85e03a47df925ff4de999f5
+	backup = etc/nextcloud-exporter.yml
+	source = prometheus-nextcloud-exporter::git+https://github.com/xperimental/nextcloud-exporter.git#commit=c1bf70e07107ca7a96a42d7afa014b8284aadb9c
+	source = sysusers.conf
+	source = nextcloud-exporter.yml
+	b2sums = SKIP
+	b2sums = 059b6235912cd7b94dfa0cf611e82fef572af3f76c268be821cc07d10a8e2752881497bc24ead48a6a7f2940b732a0d783c1193302eab943a594673bbbaa65fd
+	b2sums = 1399770f51b195caef7303f71a4971e0be2361b5b638d5c88ed11a86dc260792fce0fa24e5140f2c0b2e655170bb52d6bfece6665c8a33ae00d367072e78a92b
 
 pkgname = prometheus-nextcloud-exporter

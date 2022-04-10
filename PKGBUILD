@@ -2,21 +2,34 @@
 
 pkgname=prometheus-nextcloud-exporter
 _pkgname=nextcloud-exporter
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="Prometheus exporter for Nextcloud metrics"
 arch=('x86_64')
 url="https://github.com/xperimental/nextcloud-exporter"
 license=('MIT')
 depends=('glibc')
-makedepends=('go')
+makedepends=('git' 'go')
+backup=("etc/$_pkgname.yml")
 options=('!lto')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('6592d0da5fe6c0721ab67d34a7384d2d4b441f0d82482db02e10f4e51f8c1f5f0e9ad0ae0e04fb911d8e7a0d232fbc6f12cc8cfc8f6aa2a5cf540aebd2c02d83')
-b2sums=('4c59a399b0867ef3c5b078f34dacad2859fc3989db949c64d395a08e8d9552803fed140548714fa2e4fe990e181acb9ee624e631e85e03a47df925ff4de999f5')
+_commit='c1bf70e07107ca7a96a42d7afa014b8284aadb9c'
+source=(
+  "$pkgname::git+$url.git#commit=$_commit"
+  'sysusers.conf'
+  "$_pkgname.yml"
+)
+b2sums=('SKIP'
+        '059b6235912cd7b94dfa0cf611e82fef572af3f76c268be821cc07d10a8e2752881497bc24ead48a6a7f2940b732a0d783c1193302eab943a594673bbbaa65fd'
+        '1399770f51b195caef7303f71a4971e0be2361b5b638d5c88ed11a86dc260792fce0fa24e5140f2c0b2e655170bb52d6bfece6665c8a33ae00d367072e78a92b')
+
+pkgver() {
+  cd "$pkgname"
+
+  git describe --tags | sed 's/^v//'
+}
 
 prepare() {
-  cd "$_pkgname-$pkgver"
+  cd "$pkgname"
 
   # create folder for build output
   mkdir build
@@ -26,7 +39,13 @@ prepare() {
 }
 
 build() {
-  cd "$_pkgname-$pkgver"
+  cd "$pkgname"
+
+  # set Go flags
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+
   go build -v \
     -buildmode=pie \
     -trimpath \
@@ -34,21 +53,28 @@ build() {
     -modcacherw \
     -ldflags "-linkmode external -extldflags ${LDFLAGS} \
     -X main.Version=$pkgver \
-    -X main.GitCommit=tarball" \
+    -X main.GitCommit=$_commit" \
     -o build \
     .
 }
 
 check() {
-  cd "$_pkgname-$pkgver"
+  cd "$pkgname"
   go test ./...
 }
 
 package() {
-  cd "$_pkgname-$pkgver"
+  # config
+  install -vDm644 -t "$pkgdir/etc" "$_pkgname.yml"
+
+  cd "$pkgname"
+
+  # systemd integration
+  install -vDm644 "$srcdir/sysusers.conf" "$pkgdir/usr/lib/sysusers.d/$_pkgname.conf"
+  install -vDm644 "contrib/$_pkgname.service" -t "$pkgdir/usr/lib/systemd/system"
 
   # binary
-  install -Dm755 "build/$_pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 -t "$pkgdir/usr/bin" "build/$_pkgname"
 
   # documentation
   install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" ./*.md
