@@ -2,9 +2,8 @@
 # Contributor: Thomas Bächler <thomas@archlinux.org>
 
 pkgname=intel-ucode-git
-_pkgname=intel-ucode
-pkgver=20191115.r0.g33b7b2f
-pkgrel=2
+pkgver=20220207.r0.g115c3e4
+pkgrel=1
 pkgdesc='Microcode update files for Intel CPUs'
 arch=('any')
 url='https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files'
@@ -13,7 +12,7 @@ makedepends=('iucode-tool')
 conflicts=('intel-ucode')
 provides=('intel-ucode')
 license=('custom')
-source=("git://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files")
+source=("git+https://github.com/intel/Intel-Linux-Processor-Microcode-Data-Files")
 sha256sums=('SKIP')
 
 pkgver() {
