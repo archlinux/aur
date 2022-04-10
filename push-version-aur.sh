@@ -7,4 +7,4 @@ makepkg --printsrcinfo > .SRCINFO
 # Push it to AUR
 git add PKGBUILD .SRCINFO
 git commit -m "New version"
-git push
+git push ssh://aur@aur.archlinux.org/wofi-calc-git.git master
