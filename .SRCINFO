@@ -1,7 +1,7 @@
 pkgbase = wacom-utility
 	pkgdesc = Graphical tablet configuration utility
 	pkgver = 1.21
-	pkgrel = 6
+	pkgrel = 7
 	url = https://www.linux-apps.com/content/show.php/Wacom+Control+Panel?content=104309
 	arch = i686
 	arch = x86_64
@@ -12,9 +12,10 @@ pkgbase = wacom-utility
 	depends = xf86-input-wacom
 	depends = gksu
 	source = http://ppa.launchpad.net/hughescih/ppa/ubuntu/pool/main/w/wacom-utility/wacom-utility_1.21-3.tar.gz
+	source = wacom-utility.sh
 	source = wacom-utility.desktop
 	sha256sums = 91b8e7e658071e67f3fb0b684ae815138789e810fb5c423b98f6ed550dbea972
+	sha256sums = d3afc5467da4f588211e6241ffceeb851199f5a71cd157c8016e7e3d14974e34
 	sha256sums = c6235b40e55aa7266d7bc47a2f11bcef98c3bb30c4d80223ee910c6b461bebc2
 
 pkgname = wacom-utility
-
