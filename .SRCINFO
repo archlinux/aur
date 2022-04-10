@@ -1,6 +1,6 @@
 pkgbase = tomb-git
 	pkgdesc = simple tool to manage encrypted storage
-	pkgver = 2.9.r24.g8ceeca8
+	pkgver = 2.9.r26.gb7822af
 	pkgrel = 1
 	url = https://www.dyne.org/software/tomb/
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = tomb-git
 	makedepends = libgcrypt
 	provides = tomb
 	conflicts = tomb
-	source = tomb::git://github.com/dyne/Tomb.git
+	source = tomb::git+https://github.com/dyne/Tomb.git
 	source = _tomb
 	sha256sums = SKIP
 	sha256sums = 8007bc208fdac3fbd7a61320b48c4c8073639b478fcc410145a3792986aca9e8

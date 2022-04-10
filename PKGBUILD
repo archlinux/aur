@@ -7,7 +7,7 @@
 _name=tomb
 pkgbase="${_name}-git"
 pkgname=("${_name}-git" "${_name}-kdf-git")
-pkgver=2.9.r24.g8ceeca8
+pkgver=2.9.r26.gb7822af
 pkgrel=1
 pkgdesc="simple tool to manage encrypted storage"
 arch=('any')
@@ -16,7 +16,7 @@ license=('GPL3')
 makedepends=('git' 'libgcrypt')
 conflicts=("${_name}")
 provides=("${_name}")
-source=("${_name}::git://github.com/dyne/${_name//t/T}.git"
+source=("${_name}::git+https://github.com/dyne/${_name//t/T}.git"
         "_${_name}")
 sha256sums=('SKIP'
             '8007bc208fdac3fbd7a61320b48c4c8073639b478fcc410145a3792986aca9e8')
