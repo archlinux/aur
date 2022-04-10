@@ -2,13 +2,13 @@
 
 pkgname=certbot-dns-namecheap-git
 _pkgbase=certbot_dns_namecheap
-pkgver=r2.591508b
-pkgrel=2
+pkgver=r4.269d2bf
+pkgrel=1
 pkgdesc="Namecheap API plugin for Let’s Encrypt client"
 arch=('any')
 license=('Apache')
 depends=('certbot' 'dns-lexicon' 'python-acme' 'python-pynamecheap' 'python-setuptools')
-source=("git://github.com/schubc/certbot_dns_namecheap")
+source=("git://github.com/jkl1337/certbot_dns_namecheap")
 sha512sums=('SKIP')
 
 pkgver() {
