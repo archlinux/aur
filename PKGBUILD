@@ -1,7 +1,7 @@
 # Maintainer: Pippo Peppo <abc@gmx.ch>
 # Contributor: Sebastian Weisgerber <sweisgerber.dev@gmail.com>
 pkgname=synology-note-station
-pkgver=2.2.1_553
+pkgver=2.2.2_609
 pkgrel=1
 pkgdesc="Synology Note Station Client connects you with Note Station on your Synology NAS. You can manage all the notes/to-do list offline, right from your local computer."
 arch=('i686' 'x86_64')
@@ -12,10 +12,10 @@ options=('emptydirs')
 # https://www.synology.com/en-us/support/download/DS216
 if [[ ${CARCH} == "i686" ]]; then
     source=("https://global.download.synology.com/download/Utility/NoteStationClient/${pkgver/_/-}/Ubuntu/i686/synology-note-station-client-${pkgver/_/-}-linux-x86.deb")
-    md5sums=('cbe057ee637083f1da7bfdb9b901061d')
+    md5sums=('1b9f504972dd4d7bea9d800f4b66bcaa')
 elif [[ ${CARCH} == "x86_64" ]]; then
     source=("https://global.download.synology.com/download/Utility/NoteStationClient/${pkgver/_/-}/Ubuntu/x86_64/synology-note-station-client-${pkgver/_/-}-linux-x64.deb")
-    md5sums=('51a48b2e8a5f11f8df9a68960482998f')
+    md5sums=('f62aae864816834495e0ec7b82176fb1')
 fi
 
 prepare() {
