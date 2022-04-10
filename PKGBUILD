@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-charts
-_qtver=6.2.4
+_qtver=6.3.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,7 +18,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtcharts-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('3c2e6267ef0fb5345c7737e3a12e09ce9ec09117792e78af9a8617f828b2249a')
+sha256sums=('672762c5f641ccc88a30aeedefb63f03c0f837649b334f46eea57592e87e36cd')
 
 build() {
   source android-env ${_android_arch}
