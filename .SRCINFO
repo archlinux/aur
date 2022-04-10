@@ -1,0 +1,11 @@
+pkgbase = backupmenu
+	pkgdesc = Backup program,TUI utility for Linux distro's , bash
+	pkgver = 2.2
+	pkgrel = 3
+	url = https://github.com/gavinlyonsrepo/backupmenu
+	arch = any
+	license = MIT
+	source = https://github.com/gavinlyonsrepo/backupmenu/archive/2.2.tar.gz
+	sha256sums = 400e165613d4470a9ebc622f83786e6d539ac2adbc8fc9e7b9b31242c2cdd3bc
+
+pkgname = backupmenu
