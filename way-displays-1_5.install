@@ -51,6 +51,9 @@ post_install() {
     plain ""
     plain "  Lid now detected at startup, before connecting to display. This results in slightly slower startup."
     plain ""
+    yello "1.5.1"
+    plain "${blue}#33${all_off} prevent infinite loop following some mode change failures"
+    plain ""
 }
 
 post_upgrade() {
