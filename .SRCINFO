@@ -1,6 +1,6 @@
 pkgbase = simpleitk
 	pkgdesc = A simplified layer built on top of ITK
-	pkgver = 2.1.1
+	pkgver = 2.1.1.1
 	pkgrel = 1
 	url = http://www.simpleitk.org/
 	arch = x86_64
@@ -22,8 +22,8 @@ pkgbase = simpleitk
 	makedepends = ruby
 	depends = gcc-libs
 	depends = insight-toolkit>=5.2.1
-	source = https://github.com/SimpleITK/SimpleITK/archive/refs/tags/v2.1.1.tar.gz
-	sha256sums = e4c2d29d3d99f6aad361f9f66b68a65946fe7ad7cc23e848e87bdaf1d5384fc6
+	source = git+https://github.com/SimpleITK/SimpleITK#tag=v2.1.1.1
+	sha256sums = SKIP
 
 pkgname = simpleitk
 

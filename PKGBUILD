@@ -13,7 +13,7 @@ pkgname=(
     'ruby-simpleitk'
     'tcl-simpleitk'
 )
-pkgver=2.1.1
+pkgver=2.1.1.1
 pkgrel=1
 pkgdesc="A simplified layer built on top of ITK"
 arch=('x86_64')
@@ -40,12 +40,12 @@ makedepends=(
     'ruby'
 )
 optdepends=()
-source=("https://github.com/SimpleITK/SimpleITK/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('e4c2d29d3d99f6aad361f9f66b68a65946fe7ad7cc23e848e87bdaf1d5384fc6')
+source=("git+https://github.com/SimpleITK/SimpleITK#tag=v${pkgver}")
+sha256sums=('SKIP')
 _lua53_version=$(pacman -Qi lua53 | grep '^Version' | grep -Eo '[0-9]\.[0-9]\.[0-9]')
 
 prepare() {
-    cd "${srcdir}/${_pkgname}-${pkgver}"
+    cd "${srcdir}/${_pkgname}"
     rm -rf build
     mkdir -p build
     cd build
@@ -87,15 +87,15 @@ prepare() {
 }
 
 build() {
-    cd "${srcdir}/${_pkgname}-${pkgver}/build"
+    cd "${srcdir}/${_pkgname}/build"
 
     make all
 
-    LD_LIBRARY_PATH="${srcdir}/${_pkgname}-${pkgver}/build/lib" make PythonVirtualEnv dist
+    LD_LIBRARY_PATH="${srcdir}/${_pkgname}/build/lib" make PythonVirtualEnv dist
 }
 
 package_simpleitk() {
-    cd "${srcdir}/${_pkgname}-${pkgver}/build"
+    cd "${srcdir}/${_pkgname}/build"
 
     make DESTDIR="$pkgdir/" install
 }
@@ -103,7 +103,7 @@ package_simpleitk() {
 package_python-simpleitk() {
     depends=('simpleitk' 'python' 'python-numpy')
 
-    cd "${srcdir}/${_pkgname}-${pkgver}/build"
+    cd "${srcdir}/${_pkgname}/build"
 
     local _py_version
     _py_version=$(python -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
@@ -114,7 +114,7 @@ package_python-simpleitk() {
             --isolated \
             --no-deps \
             --root="$pkgdir" \
-            "${srcdir}/${_pkgname}-${pkgver}/build/Wrapping/Python/dist/$_pkgname-"*"-linux_$CARCH.whl"
+            "${srcdir}/${_pkgname}/build/Wrapping/Python/dist/$_pkgname-"*"-linux_$CARCH.whl"
 
     python -O -m compileall "${pkgdir}/usr/lib/python${_py_version}/site-packages/SimpleITK"
 }
@@ -122,55 +122,55 @@ package_python-simpleitk() {
 package_lua-simpleitk() {
     depends=('simpleitk' 'lua53')
 
-    cd "${srcdir}/${_pkgname}-${pkgver}/build"
+    cd "${srcdir}/${_pkgname}/build"
 
     install -d -Dm755 "$pkgdir/usr/lib/lua/5.3/"
     install -Dm755 \
-        "${srcdir}/${_pkgname}-${pkgver}/build/Wrapping/Lua/lib/$_pkgname.so" \
+        "${srcdir}/${_pkgname}/build/Wrapping/Lua/lib/$_pkgname.so" \
         "$pkgdir/usr/lib/lua/5.3/$_pkgname.so"
 }
 
 package_tcl-simpleitk() {
     depends=('simpleitk' 'tcl' 'tk')
-    cd "${srcdir}/${_pkgname}-${pkgver}/build"
+    cd "${srcdir}/${_pkgname}/build"
 
     install -Dm755 \
-        "${srcdir}/${_pkgname}-${pkgver}/build/Wrapping/Tcl/bin/SimpleITKTclsh" \
+        "${srcdir}/${_pkgname}/build/Wrapping/Tcl/bin/SimpleITKTclsh" \
         "$pkgdir/usr/bin/SimpleITKTclsh"
 }
 
 package_mono-simpleitk() {
     depends=('simpleitk' 'mono')
-    cd "${srcdir}/${_pkgname}-${pkgver}/build"
+    cd "${srcdir}/${_pkgname}/build"
 
     install -Dm755 \
-        "${srcdir}/${_pkgname}-${pkgver}/build/Wrapping/CSharp/CSharpBinaries/libSimpleITKCSharpNative.so" \
+        "${srcdir}/${_pkgname}/build/Wrapping/CSharp/CSharpBinaries/libSimpleITKCSharpNative.so" \
         "$pkgdir/usr/lib/libSimpleITKCSharpNative.so"
 
     install -Dm755 \
-        "${srcdir}/${_pkgname}-${pkgver}/build/Wrapping/CSharp/CSharpBinaries/SimpleITKCSharpManaged.dll"\
+        "${srcdir}/${_pkgname}/build/Wrapping/CSharp/CSharpBinaries/SimpleITKCSharpManaged.dll"\
         "$pkgdir/usr/lib/SimpleITKCSharpManaged.dll"
 }
 
 package_r-simpleitk() {
     depends=('simpleitk' 'r')
-    cd "${srcdir}/${_pkgname}-${pkgver}/build"
+    cd "${srcdir}/${_pkgname}/build"
 
     install -d -Dm755 "$pkgdir/usr/lib/R/library/"
 
     cp -dr --no-preserve=ownership \
-        "${srcdir}/${_pkgname}-${pkgver}/build/Wrapping/R/Packaging/$_pkgname" \
+        "${srcdir}/${_pkgname}/build/Wrapping/R/Packaging/$_pkgname" \
         "$pkgdir/usr/lib/R/library/"
 }
 
 package_java-simpleitk() {
     depends=('simpleitk' 'java-runtime')
-    cd "${srcdir}/${_pkgname}-${pkgver}/build"
+    cd "${srcdir}/${_pkgname}/build"
 
     install -d -Dm755 "$pkgdir/usr/share/java/SimpleITK/"
 
     cp -dr --no-preserve=ownership \
-        "${srcdir}/${_pkgname}-${pkgver}/build/Wrapping/Java/dist/SimpleITK-$pkgver"*/* \
+        "${srcdir}/${_pkgname}/build/Wrapping/Java/dist/SimpleITK-$pkgver"*/* \
         "$pkgdir/usr/share/java/SimpleITK/"
 }
 
@@ -178,6 +178,6 @@ package_ruby-simpleitk() {
     depends=('simpleitk' 'ruby')
 
     install -Dm755 \
-        "${srcdir}/${_pkgname}-${pkgver}/build/Wrapping/Ruby/lib/simpleitk.so" \
+        "${srcdir}/${_pkgname}/build/Wrapping/Ruby/lib/simpleitk.so" \
         "$pkgdir/usr/lib/ruby/gems/${_lua53_version}/gems/ruby-simpleitk-${pkgver}/lib/simpleitk.so"
 }
