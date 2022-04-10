@@ -1,6 +1,6 @@
 pkgbase = migraphx
 	pkgdesc = AMD's graph optimization engine
-	pkgver = 4.5.2
+	pkgver = 5.1.1
 	pkgrel = 1
 	url = https://rocmsoftwareplatform.github.io/AMDMIGraphX/doc/html/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = migraphx
 	depends = protobuf
 	depends = msgpack-cxx
 	depends = blaze
-	source = migraphx-4.5.2.tar.gz::https://github.com/ROCmSoftwarePlatform/AMDMIGraphX/archive/rocm-4.5.2.tar.gz
-	sha256sums = ecfd9a8e7967076f056d5b6a90b22f8919b82226443769b181193f16ebf58b83
+	source = migraphx-5.1.1.tar.gz::https://github.com/ROCmSoftwarePlatform/AMDMIGraphX/archive/rocm-5.1.1.tar.gz
+	sha256sums = b77b7ef1dfa566822cfe46ead838c9cdfcfad7bd2d64ee9b385d7dcd0270ad13
 
 pkgname = migraphx
