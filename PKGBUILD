@@ -1,8 +1,8 @@
 # Maintainer: shulhan <ms@kilabit.info>
 
 pkgname=google-cloud-ops-agent-git
-pkgver=2.7.0.r7.g43187fc
-pkgrel=2
+pkgver=2.13.0.r3.gec157cd8
+pkgrel=1
 
 pkgdesc="Ops Agents that are part of the Google Cloud Operations product suite (specifically Cloud Logging and Cloud Monitoring)"
 arch=(x86_64)
@@ -38,7 +38,7 @@ md5sums=(
 	'SKIP'
 	'SKIP'
 	'SKIP'
-	'aa21cd77ff9aba8ba7b8583c97e71c8f'
+	'9a4dfd7fe6298c12c46ca50d7f473094'
 )
 
 pkgver() {
