@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://www.elastic.co/products/elasticsearch"
 license=('custom:SSPL+Elastic-2.0')
 depends=('java-environment=17' 'systemd' 'libxml2')
-makedepends=('java-environment=17')
+makedepends=('java-environment>=17')
 source=(
   $pkgname-$pkgver.tar.gz::"https://github.com/elastic/elasticsearch/archive/v${pkgver}.tar.gz"
   elasticsearch.service
