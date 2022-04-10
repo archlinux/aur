@@ -136,7 +136,7 @@ build() {
 package_linux-acs-manjaro() {
   pkgdesc="The Linux Manjaro standart kernel and modules with ACS patch"
   depends=('coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=27')
-  optdepends=('crda: to set the correct wireless channels of your country')
+  optdepends=('wireless-regdb: to set the correct wireless channels of your country')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
   replaces=(virtualbox-guest-modules wireguard)
 
