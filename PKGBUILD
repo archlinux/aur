@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=onevpl-intel-gpu
-pkgver=22.1.0
+pkgver=22.3.2
 pkgrel=1
 pkgdesc='oneVPL runtime implementation for Intel GPU (TigerLake and later)'
 arch=('x86_64')
@@ -11,15 +11,12 @@ depends=('libdrm' 'libva')
 makedepends=('cmake')
 provides=('onevpl-runtime')
 source=("https://github.com/oneapi-src/oneVPL-intel-gpu/archive/intel-onevpl-${pkgver}/${pkgname}-${pkgver}.tar.gz"
-        '010-onevpl-intel-gpu-disable-verbose-makefile.patch'
-        '020-onevpl-intel-gpu-gcc11-fix.patch'::'https://github.com/oneapi-src/oneVPL-intel-gpu/commit/a8702a9eb94a306ec8f592b5fcac41c84564f7c4.patch')
-sha256sums=('730f8241cec6259228455840e817194cd12df5842f0caa3b605e7998f70ca5c1'
-            'c6b17b7026d16d02c3cab7b5081366c24021a86fa173eaee5db310691ce76879'
-            '1d9bb5952dc818c12642544226717a097e363c096020105d3534b8ad3ee532bd')
+        '010-onevpl-intel-gpu-disable-verbose-makefile.patch')
+sha256sums=('abbddfcec943e61a9e1a8a336250884058f7885d459025dd040baee36cc5016b'
+            'c6b17b7026d16d02c3cab7b5081366c24021a86fa173eaee5db310691ce76879')
 
 prepare() {
     patch -d "oneVPL-intel-gpu-intel-onevpl-${pkgver}" -Np1 -i "${srcdir}/010-onevpl-intel-gpu-disable-verbose-makefile.patch"
-    patch -d "oneVPL-intel-gpu-intel-onevpl-${pkgver}" -Np1 -i "${srcdir}/020-onevpl-intel-gpu-gcc11-fix.patch"
 }
 
 build() {
