@@ -1,6 +1,6 @@
 pkgbase = cargo-geiger
 	pkgdesc = Detects usage of unsafe Rust in a Rust crate and its dependencies
-	pkgver = 0.11.1
+	pkgver = 0.11.2
 	pkgrel = 1
 	url = https://crates.io/crates/cargo-geiger
 	arch = x86_64
@@ -10,8 +10,7 @@ pkgbase = cargo-geiger
 	makedepends = cargo
 	depends = openssl
 	depends = curl
-	source = cargo-geiger-0.11.1.tar.gz::https://github.com/rust-secure-code/cargo-geiger/archive/cargo-geiger-0.11.1.tar.gz
-	sha256sums = d3c88fc3bdb574108504a1a49ae7b8ee5b55b1744a47d58214d0f088d2b2ef00
+	source = cargo-geiger-0.11.2.tar.gz::https://github.com/rust-secure-code/cargo-geiger/archive/cargo-geiger-0.11.2.tar.gz
+	sha256sums = 425638232f4c617a1dde1071f865c5140546bf9b6b61b9a9a186d0a5c146ac03
 
 pkgname = cargo-geiger
-
