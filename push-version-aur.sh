@@ -10,5 +10,5 @@ git commit -m "New version"
 git push ssh://aur@aur.archlinux.org/wofi-calc-git.git master
 
 # Bye
-echo -e "/n-------------------------------------------------------------------"
-echo "NEW VERSION GENERATED
+echo -e "\n-------------------------------------------------------------------"
+echo "NEW VERSION GENERATED"
