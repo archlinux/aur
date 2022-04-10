@@ -1,0 +1,11 @@
+--- OliveTin.service	2022-04-10 17:11:55.890445310 +0000
++++ OliveTin.patched.service	2022-04-10 17:58:53.932017773 +0000
+@@ -2,7 +2,7 @@
+ Description=OliveTin
+ 
+ [Service]
+-ExecStart=/usr/local/bin/OliveTin
++ExecStart=/usr/bin/OliveTin
+ Restart=always
+ 
+ [Install]

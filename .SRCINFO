@@ -1,0 +1,15 @@
+pkgbase = olivetin
+	pkgdesc = Give safe and simple access to predefined shell commands from a web interface.
+	pkgver = 2022.07.04
+	pkgrel = 2
+	url = http://www.olivetin.app
+	arch = x86_64
+	license = GPL
+	makedepends = go
+	makedepends = git
+	source = olivetin-2022.07.04::git+https://github.com/OliveTin/OliveTin.git?tag=2022-07-04
+	source = systemd-unit-usr-bin.patch
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = olivetin
