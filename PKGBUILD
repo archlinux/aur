@@ -6,9 +6,9 @@ _base=requests-cache
 pkgname=python-${_base}-git
 _pkgname=${pkgname%-git}
 pkgdesc="Transparent persistent cache for http://python-requests.org library (git version)"
-pkgver=0.9.0.r68.g71ea521
-pkgrel=2
-arch=('any')
+pkgver=0.9.3.r59.g8fa9c24
+pkgrel=1
+arch=(any)
 url="https://github.com/reclosedev/${_base}"
 license=('custom:BSD-2-clause')
 depends=(python-requests python-appdirs python-cattrs python-url-normalize)
@@ -21,7 +21,7 @@ optdepends=('python-boto3: Cache backend for Amazon DynamoDB database'
   'python-itsdangerous: for pass trusted data to untrusted environments'
   'python-yaml: for bindings yaml support'
   'python-ujson: for JSON serializer for improved performance') # python-sphinx-furo python-linkify-it-py python-myst-parser
-checkdepends=(python-pytest python-requests-mock python-responses python-itsdangerous python-ujson python-timeout-decorator)
+checkdepends=(python-pytest python-requests-mock python-responses python-itsdangerous python-ujson python-timeout-decorator python-rich)
 source=("git+${url}")
 sha512sums=('SKIP')
 provides=(${_pkgname})
@@ -37,6 +37,7 @@ build() {
   # Note: set `GIT_CEILING_DIRECTORIES` to prevent poetry
   # from incorrectly using a parent git checkout info.
   # https://github.com/pypa/build/issues/384#issuecomment-947675975
+  export PYTHONHASHSEED=0
   GIT_CEILING_DIRECTORIES="${PWD}/.." python -m build --wheel --skip-dependency-check --no-isolation
 }
 
@@ -48,6 +49,6 @@ check() {
 package() {
   cd "${_base}"
   export PYTHONHASHSEED=0
-  python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
