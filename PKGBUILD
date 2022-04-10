@@ -2,17 +2,16 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
-pkgname=gdb-git
+pkgname=('gdb-git' 'gdb-common-git')
 pkgver=109622.f190d13c78b
 pkgrel=1
 pkgdesc="The GNU Debugger from git"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/gdb/"
 license=('GPL3')
-depends=('expat' 'guile' 'ncurses' 'xz' 'python' 'source-highlight' 'mpfr' 'xxhash' 'libelf')
 makedepends=('git')
-provides=('gdb')
-conflicts=('gdb')
+provides=('gdb-common' 'gdb')
+conflicts=('gdb-common' 'gdb')
 backup=('etc/gdb/gdbinit')
 options=('!libtool')
 source=('gdb::git+https://sourceware.org/git/binutils-gdb.git')
@@ -49,7 +48,11 @@ build() {
   make
 }
 
-package() {
+package_gdb-git() {
+  depends=('expat' 'guile' 'ncurses' 'xz' 'python' 'source-highlight' 'mpfr' 'xxhash' 'libelf' 'gdb-common-git')
+  provides=('gdb')
+  conflicts=('gdb')
+  backup=(etc/gdb/gdbinit)
   cd "$srcdir/gdb/build"
 
   # install only gdb, otherwise it would install files already provided by binutils
@@ -58,4 +61,15 @@ package() {
   # install "custom" system gdbinit
   install -dm755 $pkgdir/etc/gdb
   touch $pkgdir/etc/gdb/gdbinit
+  
+  # comes from gdb-common
+  rm -r "$pkgdir/usr/share/gdb/"
+}
+
+package_gdb-common-git() {
+  provides=('gdb-common')
+  conflicts=('gdb-common')
+  depends=('python' 'guile') backup=(etc/gdb/gdbinit)
+  cd "$srcdir/gdb/build"
+  make -C gdb/data-directory DESTDIR="$pkgdir" install
 }
