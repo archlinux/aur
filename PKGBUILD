@@ -2,7 +2,7 @@
 
 pkgname=python-pydeps
 _pkgname=pydeps
-pkgver=1.10.2
+pkgver=1.10.14
 pkgrel=1
 pkgdesc="python module dependency visualization tool"
 arch=('any')
@@ -23,4 +23,4 @@ package() {
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-sha512sums=('5e1367dc22d7fae1794d16be02971d996510eded88afa2114ab99f3e400ff2b08925795b8609f48cb730b7b93cc33fff195a9aad949e43649492a2e9f736a051')
+sha512sums=('300b28ce2692bb997e29880d0ee745eaf6808954ab7dede1bc66e4a84edacdd0f49d4d8ec0112befee37af5bcacf69be93a91da36080574c0a432294c7381477')
