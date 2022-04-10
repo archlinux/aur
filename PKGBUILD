@@ -5,7 +5,7 @@
 
 # Maintainer: Adrian Lopez <zeioth@hotmail.com>
 pkgname=wofi-calc-git
-pkgver=1.0.r3.7e6ecfa
+pkgver=1.0.r4.9fd4142
 pkgrel=1
 epoch=
 pkgdesc="A simple calculator for wofi, inspired in rofi-calc."
