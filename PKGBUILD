@@ -2,12 +2,12 @@
 
 pkgname=eternalmodmanager
 pkgver=1.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform mod manager for DOOM Eternal.'
 arch=('x86_64')
 url='https://github.com/PowerBall253/EternalModManager'
 license=('MIT')
-depends=('electron')
+depends=('electron13')
 makedepends=('npm')
 source=("${url}/archive/v${pkgver}/EternalModManager-v${pkgver}.tar.gz"
         eternalmodmanager)
