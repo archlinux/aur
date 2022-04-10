@@ -4,8 +4,8 @@ _pkgname=sip4-sip-provides
 pkgname="${_pkgname}"
 epoch=1
 _pkgver=4
-pkgver=4.19.24
-pkgrel=2
+pkgver=4.19.25
+pkgrel=1
 
 pkgdesc="Metapackage: Depends on 'sip4' and makes 'sip4' provide 'sip'-dependency (with \$pkgver automatically bumped to the one if the installed 'sip4' during build)."
 url="https://archlinux.org/packages/extra/x86_64/sip4/"
@@ -37,6 +37,10 @@ sha256sums=(
 )
 
 pkgver() {
+  LC_ALL=C
+  LANG=C
+  export LC_ALL
+  export LANG
   pacman -Qi sip4 | grep -E '^Version[[:space:]]*:' | awk -F ':' '{print $2}' | tr -d '[[:space:]]' | sed -E 's|\-[^-]*$||'
 }
 
