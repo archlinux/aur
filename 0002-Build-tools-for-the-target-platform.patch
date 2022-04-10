@@ -1,4 +1,4 @@
-From 8147aba1e69acf79bbc358b39ca2043c13632831 Mon Sep 17 00:00:00 2001
+From cf297227a2bab55bac8f458f6547bfa89920396d Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Fri, 7 May 2021 16:10:47 +0200
 Subject: [PATCH 2/2] Build tools for the target platform
@@ -13,7 +13,7 @@ executed using WINE.
  3 files changed, 5 insertions(+), 6 deletions(-)
 
 diff --git a/src/tools/idc/CMakeLists.txt b/src/tools/idc/CMakeLists.txt
-index 19784db..d401e45 100644
+index 3a3e946..11dcad5 100644
 --- a/src/tools/idc/CMakeLists.txt
 +++ b/src/tools/idc/CMakeLists.txt
 @@ -5,12 +5,13 @@
@@ -30,10 +30,10 @@ index 19784db..d401e45 100644
 +    PUBLIC_LIBRARIES
 +        Qt::Core
  )
+ qt_internal_return_unless_building_tools()
  
- #### Keys ignored in scope 1:.:.:idc.pro:<TRUE>:
 diff --git a/tools/dumpcpp/CMakeLists.txt b/tools/dumpcpp/CMakeLists.txt
-index 8d8db8f..2c86194 100644
+index fb7b1db..d1806ab 100644
 --- a/tools/dumpcpp/CMakeLists.txt
 +++ b/tools/dumpcpp/CMakeLists.txt
 @@ -5,9 +5,8 @@
@@ -48,7 +48,7 @@ index 8d8db8f..2c86194 100644
          main.cpp
          moc.cpp moc.h
 diff --git a/tools/dumpdoc/CMakeLists.txt b/tools/dumpdoc/CMakeLists.txt
-index 073ce62..a646314 100644
+index 515a5fc..86369ae 100644
 --- a/tools/dumpdoc/CMakeLists.txt
 +++ b/tools/dumpdoc/CMakeLists.txt
 @@ -5,9 +5,8 @@
