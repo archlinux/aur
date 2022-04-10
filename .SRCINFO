@@ -1,7 +1,7 @@
 pkgbase = glc-lib
 	pkgdesc = OpenGL Library Class
 	pkgver = 2.5.0
-	pkgrel = 5
+	pkgrel = 6
 	url = http://www.glc-lib.net/
 	arch = i686
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = glc-lib
 	makedepends = git
 	depends = libgl
 	depends = qt4
-	source = git://github.com/laumaya/GLC_lib.git#tag=Version_2_5_0
+	source = git+https://github.com/laumaya/GLC_lib.git#tag=Version_2_5_0
 	source = glu.patch
 	source = zlib.patch
 	md5sums = SKIP
@@ -17,4 +17,3 @@ pkgbase = glc-lib
 	md5sums = 687ed819254496d964ce9e9d3a5e672a
 
 pkgname = glc-lib
-
