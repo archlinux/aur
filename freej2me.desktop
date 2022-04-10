@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=FreeJ2ME
+Comment=A free J2ME emulator with libretro, awt and sdl2 frontends.
+Exec=freej2me
+Icon=/usr/share/pixmaps/freej2me.png
+Terminal=false
+Categories=Game;

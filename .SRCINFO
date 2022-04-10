@@ -1,0 +1,25 @@
+pkgbase = freej2me-git
+	pkgdesc = A free J2ME emulator with libretro, awt and sdl2 frontends.
+	pkgver = r208.a32e5b2
+	pkgrel = 1
+	url = https://github.com/hex007/freej2me
+	arch = any
+	license = GPL3
+	license = custom
+	makedepends = git
+	makedepends = ant
+	depends = java-runtime
+	provides = freej2me
+	conflicts = freej2me
+	source = git+https://github.com/hex007/freej2me
+	source = freej2me.patch
+	source = freej2me.sh
+	source = freej2me-sdl.sh
+	source = freej2me.desktop
+	md5sums = SKIP
+	md5sums = ca9bfb86b778eaf6f8a39db34260a2fd
+	md5sums = 023f95105f1d778373c54b8e907cee31
+	md5sums = 82d53e26cd43b9f23687d9e54c7c3615
+	md5sums = 96aafeee35968aa0950cc56a7a9ef459
+
+pkgname = freej2me-git

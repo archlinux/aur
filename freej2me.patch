@@ -1,0 +1,13 @@
+diff --git a/src/org/recompile/freej2me/Anbu.java b/src/org/recompile/freej2me/Anbu.java
+index 410b9d3..8d5df08 100644
+--- a/src/org/recompile/freej2me/Anbu.java
++++ b/src/org/recompile/freej2me/Anbu.java
+@@ -135,7 +135,7 @@ public class Anbu
+ 		{
+ 			try
+ 			{
+-				args[0] = "/usr/local/bin/sdl_interface";
++				args[0] = "/usr/bin/sdl_interface";
+ 				proc = new ProcessBuilder(args).start();
+ 
+ 				keys = proc.getInputStream();
