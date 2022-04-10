@@ -1,6 +1,6 @@
 pkgbase = quarto-cli-bin
 	pkgdesc = An open-source scientific and technical publishing system built on Pandoc (binary from official repo)
-	pkgver = 0.9.226
+	pkgver = 0.9.227
 	pkgrel = 1
 	url = http://quarto.org/
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = quarto-cli-bin
 	depends = bash
 	provides = quarto
 	options = !strip
-	source = https://github.com/quarto-dev/quarto-cli/releases/download/v0.9.226/quarto-0.9.226-linux-amd64.deb
-	sha256sums = 8ddce177b5c8dc9ce43959fdad79d1aef068594dbc84acc76d3acf9d476fa8d1
+	source = https://github.com/quarto-dev/quarto-cli/releases/download/v0.9.227/quarto-0.9.227-linux-amd64.deb
+	sha256sums = 2293a44bdeb8e2c7ae102c4bd5597987db6b30891f00e8ee75146f216d9858c3
 
 pkgname = quarto-cli-bin
