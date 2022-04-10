@@ -7,6 +7,7 @@ url="https://github.com/JetBrains/cef"
 license=('BSD')
 depends=('at-spi2-atk' 'libxkbcommon' 'libxcomposite' 'mesa' 'libcups' 'pango' 'libxrandr' 'alsa-lib' 'nss')
 #makedepends=('java-environment=11' 'cmake' 'git' 'ninja' 'python' 'ant')
+makedepends=('unzip')
 source=("https://github.com/JetBrains/jcef/raw/master/CMakeLists.txt"
 "https://github.com/JetBrains/cef/raw/master/LICENSE.txt")
 sha256sums=('SKIP' 'SKIP')

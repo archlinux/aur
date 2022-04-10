@@ -5,6 +5,7 @@ pkgbase = cef-jetbrains-bin-git
 	url = https://github.com/JetBrains/cef
 	arch = x86_64
 	license = BSD
+	makedepends = unzip
 	depends = at-spi2-atk
 	depends = libxkbcommon
 	depends = libxcomposite
