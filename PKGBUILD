@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Adrian Lopez <zeioth@hotmail.com>
-pkgname=wofi-calc
+pkgname=wofi-calc-git
 pkgver=1.0.r17.56372a9
 pkgrel=1
 epoch=
