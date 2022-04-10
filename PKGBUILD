@@ -1,27 +1,28 @@
-# Maintainer: gaelic <gaelic@luchmhor.net>
-#             Fincer <fincer@example.com>
-#             qs9rx <qs9rx.aur@enjoys.it>
+# Maintainer: qs9rx <qs9rx.aur@enjoys.it>
 
-# Previous Maintainer: scimmia, XavierCLL, SaultDon, Lantald, Thomas Dziedzic, dibblethewrecker, Gerardo Exequiel Pozzi, Eric Forgeot
+# Previous Maintainers: scimmia, XavierCLL, SaultDon, Lantald, Thomas
+#     Dziedzic, dibblethewrecker, Gerardo Exequiel Pozzi, Eric Forgeot,
+#     Fincer, gaelic
 
 pkgname=qgis-git
 _pkgname=qgis
-pkgver=3.99_master.r69399.14e5c6094df
+pkgver=3.99_master.r76684.2ce495f4391
 _pkgver=3.99_master  # fake pkgver prefix for the name
-pkgrel=1
+pkgrel=2
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats - Development master'
 url='http://qgis.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
-depends=('exiv2' 'expat' 'geos' 'gsl' 'libzip' 'ocl-icd' 'proj' 'protobuf' 'pyqt-builder'
-         'python-future' 'python-gdal' 'python-jinja' 'python-numpy' 'python-owslib'
-	 'python-psycopg2' 'python-pygments' 'python-pyqt5' 'python-qscintilla-qt5'
-         'python-yaml'
-	 'qca-qt5'
-	 'qt5-3d' 'qt5-script' 'qt5-serialport' 'qt5-tools' 'qt5-webkit' 'qt5-xmlpatterns'
-	 'qtkeychain' 'qwtpolar' 'sip' 'spatialindex' 'sqlite')
+depends=(
+  'proj' 'geos' 'sqlite' 'qwtpolar' 'expat' 'spatialindex' 'gsl' 'libzip' 'exiv2' 'ocl-icd' 'protobuf' 'pdal-git'
+  'qt5-tools' 'qt5-script' 'qtkeychain' 'sip' 'qca-qt5' 'qt5-webkit' 'qt5-3d' 'qt5-serialport' 'qt5-xmlpatterns'
+  'python-gdal' 'python-owslib' 'python-future' 'python-psycopg2' 'python-yaml' 'python-numpy' 'python-jinja' 'python-pygments'
+  'python-pyqt5' 'python-qscintilla-qt5'
+)
 
-makedepends=('git' 'cmake' 'txt2tags')
+options=(debug !strip)
+
+makedepends=('git' 'cmake' 'txt2tags' 'ninja')
 optdepends=('grass: for GRASS providers and plugin (6 or 7)'
 #            'gsl: for georeferencer'
             'postgresql: for postgis and SPIT support'
@@ -29,7 +30,7 @@ optdepends=('grass: for GRASS providers and plugin (6 or 7)'
             'fcgi: for qgis mapserver'
             'ocilib: oracle provider')
 
-source=("${_pkgname}::git://github.com/qgis/QGIS.git")
+source=("${_pkgname}::git+https://github.com/qgis/QGIS.git")
 md5sums=('SKIP')
 provides=('qgis')
 
@@ -61,14 +62,16 @@ prepare() {
 build() {
   cd $_pkgname/build
 
-  cmake -G "Unix Makefiles" ../ \
+  cmake -G "Ninja" ../ \
     -DCMAKE_INSTALL_PREFIX=/opt/$pkgname \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
     -DQGIS_MANUAL_SUBDIR=share/man \
     -DENABLE_TESTS=FALSE \
-    -DWITH_3D=TRUE
-#    -DWITH_SERVER=TRUE
+    -DWITH_3D=TRUE \
+    -DWITH_PDAL=TRUE
+    #-DWITH_SERVER=TRUE
 
-  cmake --build .
+  ninja
 }
 
 package() {
@@ -79,7 +82,7 @@ package() {
   [[ -n "$(sed -n '/^GRASS_PREFIX7:/ s/.*=//p' CMakeCache.txt)" ]] && optdepends+=('grass: GRASS7 plugin')
   [[ "$(sed -n '/^WITH_SERVER:/ s/.*=//p' CMakeCache.txt)" == "TRUE" ]] && optdepends+=('fcgi: Map Server')
 
-  make DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install .
 
   cd "$srcdir/$_pkgname"
   
