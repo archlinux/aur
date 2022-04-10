@@ -54,6 +54,9 @@ post_install() {
     yello "1.5.1"
     plain "${blue}#33${all_off} prevent infinite loop following some mode change failures"
     plain ""
+    yello "1.5.2"
+    plain "${blue}#37${all_off} clang compilation failure"
+    plain ""
 }
 
 post_upgrade() {
