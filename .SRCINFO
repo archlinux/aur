@@ -1,7 +1,7 @@
 pkgbase = lxc-nosystemd-git
 	pkgdesc = Linux Containers git version. Without systemd dependencies.
 	pkgver = 4.0.0.r1729.g78598e2b3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://linuxcontainers.org
 	arch = x86_64
 	arch = armv6h
@@ -9,6 +9,7 @@ pkgbase = lxc-nosystemd-git
 	arch = aarch64
 	license = LGPL
 	makedepends = docbook2x
+	makedepends = doxygen
 	makedepends = lua
 	makedepends = python-setuptools
 	makedepends = apparmor

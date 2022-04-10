@@ -10,12 +10,12 @@ _pkgname=lxc
 _pkgvariant=nosystemd
 pkgname="${_pkgname}-${_pkgvariant}-git"
 pkgver=4.0.0.r1729.g78598e2b3
-pkgrel=3
+pkgrel=4
 pkgdesc="Linux Containers git version. Without systemd dependencies."
 arch=('x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://linuxcontainers.org"
 depends=('bash' 'perl' 'libseccomp' 'libcap' 'python' 'rsync' 'wget')
-makedepends=('docbook2x' 'lua' 'python-setuptools' 'apparmor' 'git')
+makedepends=('docbook2x' 'doxygen' 'lua' 'python-setuptools' 'apparmor' 'git')
 optdepends=(
   'lua'
   'lua-filesystem: lxc-top'
