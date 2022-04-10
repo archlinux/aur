@@ -1,11 +1,5 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
-# Maintainer: Adrian Lopez <zeioth@hotmail.com>
 pkgname=wofi-calc-git
-pkgver=1.0.r4.9fd4142
+pkgver=1.0.r3.7e6ecfa
 pkgrel=1
 epoch=
 pkgdesc="A simple calculator for wofi, inspired in rofi-calc."
