@@ -11,7 +11,7 @@
 # All patches are managed at https://github.com/Martchus/qtbase
 
 pkgname=mingw-w64-qt6-base-static
-_qtver=6.2.4
+_qtver=6.3.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -39,15 +39,15 @@ source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/subm
         '0006-Support-finding-static-MariaDB-client-library.patch'
         '0007-Allow-overriding-CMAKE_FIND_LIBRARY_SUFFIXES-to-pref.patch'
         '0008-Fix-crashes-in-rasterization-code-using-setjmp.patch')
-sha256sums=('d9924d6fd4fa5f8e24458c87f73ef3dfc1e7c9b877a5407c040d89e6736e2634'
-            'fbe69e74e323464ef9f47947fab599ae856427836c540f7aecb0658632ced136'
-            'c53aa6a55d02d0574c9cefd1228d44ed264ed2c1a00d1117dc201114a64e26f8'
-            'e94d874958913c80a4863dfafc68a6c9c9fa9bf6a0b64a47051951221328d1db'
-            '8a00b5de194b1118f41eeeb0d82989f71d2e833064053130201e1d253afff37e'
-            '10fb54c70f78cc5da75f115d3ad7508ae5aa21dfacaa87e30635dfce94476a73'
-            'fc3d7916c72ae949bb8a79350ba79e5c0255a4423c881eec4055adede19202f7'
-            '60d954158b2afd5767373444a2f027fe4d8259c42bd509169b46de0e44bc86e6'
-            '7c8b68c72802f4d8c87e0d58e443fdcd711a45034333700343af58264225bf50')
+sha256sums=('b865aae43357f792b3b0a162899d9bf6a1393a55c4e5e4ede5316b157b1a0f99'
+            'bff8b8af7b4eec0961890190bc1d31d98c2270985698a8071b5ee1434a12f13a'
+            'bdc4834c7c88176113770356e24104040622c30779a770da3292e487d0b451c8'
+            '08647a0b4f3beef39a2308cea4ed7b63887e58ef7b8f53294ba8d136eaf32109'
+            'e1f619607afca17031c3eebdc01a95a7de4296b8ce01b15c9797475a4e7918f1'
+            '1994ab8f69ac4146c9332aff1bbaacecb87fcfc1d2c521ddfa0f6fd7e3b1aa63'
+            'e9170a6b158b500e34913b0ee78641bf95fcfb5f84d27934a8a7c08b7a45e345'
+            '45a0bf8e485d0c21e916c8260ebbf4a1869d9902f4d749a41804535f05ef54b4'
+            'a018bb72f3424c30c04f1f72429d891dd6b615566c98642d55a9a72e6110fd76')
 
 _architectures='i686-w64-mingw32 x86_64-w64-mingw32'
 

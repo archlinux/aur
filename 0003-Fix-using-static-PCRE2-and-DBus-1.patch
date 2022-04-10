@@ -1,4 +1,4 @@
-From 3073fd5aa7d6251b4c66b1fa114cdb3eaa6bae1a Mon Sep 17 00:00:00 2001
+From c32b8866da5b01a75b61c26a288d4c1497bd197b Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 21:13:19 +0100
 Subject: [PATCH 3/8] Fix using static PCRE2 and DBus-1
@@ -13,7 +13,7 @@ Change-Id: I2387b79462b6d183b71f9433dd937f63fc7ef26e
  2 files changed, 9 insertions(+)
 
 diff --git a/src/corelib/text/qregularexpression.cpp b/src/corelib/text/qregularexpression.cpp
-index b0728bca4a..2bfe48bd21 100644
+index 1db27fc4e4..0438d1401a 100644
 --- a/src/corelib/text/qregularexpression.cpp
 +++ b/src/corelib/text/qregularexpression.cpp
 @@ -57,6 +57,11 @@
