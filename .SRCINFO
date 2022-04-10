@@ -1,6 +1,6 @@
 pkgbase = epy-git
 	pkgdesc = CLI Ebook Reader
-	pkgver = 2022.3.25.r269.a9c4ba6
+	pkgver = 2022.3.25.r270.f9427cf
 	pkgrel = 1
 	url = https://github.com/wustho/epy
 	arch = any
