@@ -4,7 +4,7 @@
 # Contributor: Bernhard Landauer <oberon@manjaro.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
-pkgname=audacity-git
+pkgname=audacity-release-git
 pkgver=3.1.3.r0.gff6d6739f
 pkgrel=1
 pkgdesc="A program that lets you manipulate digital audio waveforms <- latest release version in git"
