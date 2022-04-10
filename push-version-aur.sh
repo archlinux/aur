@@ -11,4 +11,4 @@ git push ssh://aur@aur.archlinux.org/wofi-calc-git.git master
 
 # Bye
 echo -e "\n-------------------------------------------------------------------"
-echo "NEW VERSION GENERATED"
+echo -e "NEW VERSION GENERATED\n"
