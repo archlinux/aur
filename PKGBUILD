@@ -66,7 +66,7 @@ prepare() {
     cd "${srcdir}/$_srcname" &&
     make mrproper &&
     git fetch --depth 1 "$_srcurl" "$_srctag" "+refs/tags/${_srctag}:refs/tags/${_srctag}" &&
-    git checkout -f FETCH_HEAD && git clean -fdq
+    git checkout -f FETCH_HEAD && git clean -fdxq
   ) || (
     cd "$srcdir" &&
     rm -rf "$_srcname" &&
