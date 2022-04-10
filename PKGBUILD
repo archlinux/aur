@@ -1,8 +1,8 @@
 # Maintainer: Gavin Lyons <glyons66@hotmail.com>
 # https://github.com/gavinlyonsrepo/bashmultitool
 pkgname=bashmultitool
-pkgver=1.5
-pkgrel=6
+pkgver=1.7
+pkgrel=8
 pkgdesc="A library for bash shell programs containing useful functions, written in bash, can be imported into scripts"
 arch=('any')
 url="https://github.com/gavinlyonsrepo/bashmultitool"
@@ -10,7 +10,7 @@ license=('MIT')
 
 source=("https://github.com/gavinlyonsrepo/bashmultitool/archive/$pkgver.tar.gz")
 
-md5sums=('51389d726381ab55aff6a8a758ee44fe')
+sha256sums=('c09e7f1e529b2dad200fb7423e72d39de0c02b3d7f2ce1e2819f9ed1db23431f')
 
 package() {
 
