@@ -5,7 +5,7 @@
 
 # Maintainer: Adrian Lopez <zeioth@hotmail.com>
 pkgname=wofi-calc-git
-pkgver=1.0.r17.56372a9
+pkgver=1.0.r3.7e6ecfa
 pkgrel=1
 epoch=
 pkgdesc="A simple calculator for wofi, inspired in rofi-calc."
@@ -26,7 +26,7 @@ install=
 changelog=
 source=("https://raw.githubusercontent.com/Zeioth/wofi-calc/main/wofi-calc.sh")
 noextract=()
-md5sums=('db674463102b04493962f4ed1f3d73fa')
+sha256sums=('0bc4930e7df685389309198ce214ebf3b88aee71ca0198f586ff0afe6bea716b')
 validpgpkeys=()
 
 pkgver() {
@@ -35,6 +35,7 @@ pkgver() {
 }
 
 package() {
-  sudo cp "${srcdir}"/wofi-calc/wofi-calc.sh /usr/bin/wofi-calc
-  sudo chmod u+x /usr/bin/wofi-calc
+   # Note: 'install' is a chmod+cp one-liner command by GNU
+   mkdir -p "$pkgdir"/usr/bin
+   install -m 111 "${srcdir}"/wofi-calc.sh "$pkgdir"/usr/bin/wofi-calc
 }
