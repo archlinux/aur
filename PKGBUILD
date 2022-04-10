@@ -4,7 +4,7 @@
 pkgname=maptool
 _pkgname=MapTool
 pkgver=1.11.5
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source virtual tabletop program"
 arch=('x86_64')
 url="https://rptools.net/tools/maptool"
@@ -45,7 +45,7 @@ check() {
 package() {
 	cd "${pkgdir}"
 	
-	dpkg-deb -x "${srcdir}/${pkgname}/releases/${pkgname}_${pkgver}-1_amd64.deb" .
+	dpkg-deb -x "${srcdir}/${pkgname}/releases/${pkgname}_${pkgver}_amd64.deb" .
 	mkdir -p "usr/share/licenses/${pkgname}"
 	mv "${pkgdir}/${_prefix}/share/doc/copyright" "usr/share/licenses/${pkgname}/"
 	rm -rf "${pkgdir}/${_prefix}/share"
