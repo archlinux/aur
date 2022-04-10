@@ -1,0 +1,88 @@
+diff --git a/prepare_vscode.sh b/prepare_vscode.sh
+index bc169cd..d8116e0 100755
+--- a/prepare_vscode.sh
++++ b/prepare_vscode.sh
+@@ -7,12 +7,12 @@ cp -f LICENSE vscode/LICENSE.txt
+ 
+ cd vscode || exit
+ 
+-../update_settings.sh
++../vscodium/update_settings.sh
+ 
+ # apply patches
+ { set +x; } 2>/dev/null
+ 
+-for file in ../patches/*.patch; do
++for file in ../vscodium/patches/*.patch; do
+   if [ -f "$file" ]; then
+     echo applying patch: $file;
+     git apply --ignore-whitespace "$file"
+@@ -22,7 +22,7 @@ for file in ../patches/*.patch; do
+   fi
+ done
+ 
+-for file in ../patches/user/*.patch; do
++for file in ../vscodium/patches/user/*.patch; do
+   if [ -f "$file" ]; then
+     echo applying user patch: $file;
+     git apply --ignore-whitespace "$file"
+@@ -34,12 +34,12 @@ done
+ 
+ set -x
+ 
+-if [[ "$OS_NAME" == "osx" ]]; then
+-  CHILD_CONCURRENCY=1 yarn --frozen-lockfile --ignore-optional
+-  npm_config_argv='{"original":["--ignore-optional"]}' yarn postinstall
+-else
+-  CHILD_CONCURRENCY=1 yarn --frozen-lockfile
+-fi
++# if [[ "$OS_NAME" == "osx" ]]; then
++#   CHILD_CONCURRENCY=1 yarn --frozen-lockfile --ignore-optional
++#   npm_config_argv='{"original":["--ignore-optional"]}' yarn postinstall
++# else
++#   CHILD_CONCURRENCY=1 yarn --frozen-lockfile
++# fi
+ 
+ mv product.json product.json.bak
+ 
+@@ -77,12 +77,12 @@ licenseUrl='setpath(["licenseUrl"]; "https://github.com/VSCodium/vscodium/blob/m
+ product_json_changes="${checksumFailMoreInfoUrl} | ${tipsAndTricksUrl} | ${twitterUrl} | ${requestFeatureUrl} | ${documentationUrl} | ${introductoryVideosUrl} | ${updateUrl} | ${releaseNotesUrl} | ${keyboardShortcutsUrlMac} | ${keyboardShortcutsUrlLinux} | ${keyboardShortcutsUrlWin} | ${quality} | ${extensionsGallery} | ${linkProtectionTrustedDomains} | ${nameShort} | ${nameLong} | ${linuxIconName} | ${applicationName} | ${win32MutexName} | ${win32DirName} | ${win32NameVersion} | ${win32RegValueName} | ${win32AppUserModelId} | ${win32ShellNameShort} | ${win32x64UserAppId} | ${urlProtocol} | ${serverDataFolderName} | ${reportIssueUrl} | ${licenseUrl}"
+ cat product.json.bak | jq "${product_json_changes}" > product.json.tmp
+ 
+-jq -s '.[0] * .[1]' product.json.tmp ../product.json > product.json
++jq -s '.[0] * .[1]' product.json.tmp ../vscodium/product.json > product.json
+ rm -f product.json.tmp
+ 
+ cat product.json
+ 
+-../undo_telemetry.sh
++../vscodium/undo_telemetry.sh
+ 
+ if [[ "$OS_NAME" == "linux" ]]; then
+   # microsoft adds their apt repo to sources
+diff --git a/undo_telemetry.sh b/undo_telemetry.sh
+index 58a88aa..77fae44 100755
+--- a/undo_telemetry.sh
++++ b/undo_telemetry.sh
+@@ -4,7 +4,7 @@ TELEMETRY_URLS="(dc\.services\.visualstudio\.com)|(vortex\.data\.microsoft\.com)
+ REPLACEMENT="s/$TELEMETRY_URLS/0\.0\.0\.0/g"
+ 
+ #include common functions
+-. ../utils.sh
++. ../vscodium/utils.sh
+ 
+ if [[ "$OS_NAME" == "osx" ]]; then
+   if is_gnu_sed; then
+diff --git a/update_settings.sh b/update_settings.sh
+index 7593716..96ac208 100755
+--- a/update_settings.sh
++++ b/update_settings.sh
+@@ -6,7 +6,7 @@ TELEMETRY_CRASH_REPORTER="'telemetry.enableCrashReporter':"
+ TELEMETRY_CONFIGURATION=" TelemetryConfiguration.ON"
+ 
+ #include common functions
+-. ../utils.sh
++. ../vscodium/utils.sh
+ 
+ update_setting () {
+   local FILENAME="$2"
