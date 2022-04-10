@@ -6,7 +6,7 @@ arch=('x86_64')
 url="https://github.com/JetBrains/jcef"
 license=('BSD')
 depends=('java-runtime' 'cef-jetbrains' 'libxcursor')
-makedepends=('java-environment=11' 'cmake' 'git' 'ninja' 'python' 'ant')
+makedepends=('java-environment=11' 'cmake' 'git' 'ninja' 'python' 'ant' 'unzip')
 source=("git+$url")
 sha256sums=('SKIP')
 provides=('jcef-jetbrains')

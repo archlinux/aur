@@ -11,6 +11,7 @@ pkgbase = jcef-jetbrains-git
 	makedepends = ninja
 	makedepends = python
 	makedepends = ant
+	makedepends = unzip
 	depends = java-runtime
 	depends = cef-jetbrains
 	depends = libxcursor
