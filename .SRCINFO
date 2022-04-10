@@ -1,10 +1,11 @@
 pkgbase = tmetric-desktop
 	pkgdesc = Simple time tracking software for teams of any size. Track tasks from multiple project management systems with one click.
-	pkgver = 19.3.0
+	pkgver = 20.2.4
 	pkgrel = 1
 	url = https://tmetric.com
 	install = tmetric-desktop.install
 	arch = x86_64
+	groups = 
 	license = GPL
 	depends = gnome-themes-standard
 	depends = libappindicator-gtk2
@@ -12,8 +13,7 @@ pkgbase = tmetric-desktop
 	conflicts = tmetric
 	options = !strip
 	options = !emptydirs
-	source_x86_64 = https://static.tmetric.com/desktop/download/linux/deb/amd64
-	sha256sums_x86_64 = 3c978a3e5e8db35aadf24792fe6cf8c46efddc88d10775af6fc9b2662a715b2e
+	source_x86_64 = https://static.tmetric.com/desktop/tmetric_desktop_20.2.4_amd64.deb
+	sha256sums_x86_64 = 106579fb9467ec13b681d4a8ea24d447dc2c2206dde5aa9e3c6c4c7896d2d91e
 
 pkgname = tmetric-desktop
-
