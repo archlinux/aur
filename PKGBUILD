@@ -1,5 +1,5 @@
 pkgname="libadvo"
-pkgver=1.0.r2097ec70.r2097ec70
+pkgver=1.1
 pkgrel=1
 pkgdesc="Advanced Output Library"
 
@@ -35,7 +35,7 @@ build () {
 	cd "advo"
 
 	make configure
-	make build_d
+	make build
 }
 
 package() {
@@ -46,10 +46,10 @@ package() {
 	mkdir -p "${pkgdir}/usr/include/"
 
 	# make binary root owned and executable
-	chown root:root ${srcdir}/advo/bin/libadvo.so
-	chmod a+x ${srcdir}/advo/bin/libadvo.so
+	chown root:root ${srcdir}/advo/bin/libadvo.a
+	chmod a+x ${srcdir}/advo/bin/libadvo.a
 
 	# copy binary
-	mv "${srcdir}/advo/bin/libadvo.so" "${pkgdir}/usr/lib/libadvo.so"
+	mv "${srcdir}/advo/bin/libadvo.a" "${pkgdir}/usr/lib/libadvo.a"
 	mv "${srcdir}/advo/inc/ao.h" "${pkgdir}/usr/include/advo.h"
 }
