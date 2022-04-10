@@ -38,16 +38,14 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         psutil.patch
         # https://github.com/openSUSE/firefox-maintenance
         mozilla-kde.patch::$_patchurl/mozilla-kde.patch
-        firefox-branded-icons.patch::$_patchurl/firefox/firefox-branded-icons.patch
         firefox-kde.patch::$_patchurl/firefox/firefox-kde.patch)
 sha256sums=('7944cf62e046902b903b3e1c36a63eff81d1441332df9f63eaaec93220691176'
             'SKIP'
-            '67e1934ed8ac0fb4bb020cde11157956151e4c48ec5405783763a5fe4b887e6d'
+            '9b6c3cbc5a441acf1b66dc97f5787968ef78a056066c79fec598aaf35e5117f2'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
             '99dccc8a955bee85ce69c02a32888f7d79ba7dd0fe5aa6aaf6f52102286d544c'
             'f811e6408fa8900bed80055403dec889e0249681bba2b85911f96571595f78ce'
             'bc5397bbccf158e12e058646ab88a636040ba810e5f8270a2efa914e3b8b52d0'
-            'bcedaf4feb3ec56c86cb3b99c0fa99c3f38090485454d4beacf23bd90056433a'
             'da420deac6bfdcbf0bba31011ec23be31cdc5ab10f95a6fef5a2d6d6defc739d')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
@@ -102,7 +100,7 @@ ac_add_options --with-distribution-id=org.archlinux
 ac_add_options --with-unsigned-addon-scopes=app,system
 ac_add_options --allow-addon-sideload
 export MOZILLA_OFFICIAL=1
-export MOZ_APP_REMOTINGNAME=${_pkgname//-/}
+export MOZ_APP_REMOTINGNAME=firefox-developer-edition
 
 # Keys
 ac_add_options --with-google-location-service-api-keyfile=${PWD@Q}/google-api-key
