@@ -3,13 +3,13 @@
 pkgname=standardnotes-desktop
 _pkgname=desktop
 pkgver=3.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A standard notes app with an un-standard focus on longevity, portability, and privacy."
 arch=('x86_64' 'aarch64')
 url="https://standardnotes.org/"
 license=('GPL3')
 conflicts=('sn-bin')
-depends=('electron')
+depends=('electron17')
 makedepends=('npm' 'node-gyp' 'git' 'jq' 'yarn' 'nvm')
 _nodeversion=14
 # we need to use a commit directly for 3.14.1, as the tag points to an old/wrong wommit
@@ -23,7 +23,7 @@ sha256sums=('SKIP'
             'SKIP'
             'a0b2b5e95750b5c58fd65bbe7e9797b8560d1fa61b5d0164e160cdd74ecc883d'
             '8045c3baa6a3f5e0a20387913599eafb2d8c6e843745f38f34daea1ab44e73e7'
-            '2d90137b689cc38d6c68b17fad2336503846152a0061a91ac2073ea0873a6fc5')
+            '07dea8de00bcbc2f061cffe75389b90e228d8d598e77437402446dfb72a506ec')
 
 prepare() {
   cd $_pkgname
@@ -39,11 +39,7 @@ prepare() {
   cp .env.sample .env
 
   # Set system Electron version for ABI compatibility
-  sed -r 's#("electron": ").*"#\1'$(cat /usr/lib/electron/version)'"#' -i package.json
-
-  # workaround for TS compilation failing due to a "might be null" error.
-  # this might be an ugly thing to just ignore, but, well, uh... (electron >=11/12 needs this)
-  # patch -Np1 -i ${srcdir}/webpack.patch
+  sed -r 's#("electron": ").*"#\1'$(cat /usr/lib/electron17/version)'"#' -i package.json
 
   if [[ $CARCH == 'aarch64' ]]; then
     export npm_config_target_arch=arm64
@@ -75,7 +71,7 @@ build() {
     export npm_config_host_arch=arm64
   fi
 
-  _electron_dist=/usr/lib/electron
+  _electron_dist=/usr/lib/electron17
   _electron_ver=$(cat ${_electron_dist}/version)
   case "$CARCH" in
           aarch64)
