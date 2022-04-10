@@ -1,6 +1,6 @@
 _pkgname=duplicacy
 pkgname=$_pkgname-git
-pkgver=r2
+pkgver=v2.7.2.r29.0d8a37f
 pkgrel=1
 pkgdesc="A new generation cloud backup tool based on lock-free deduplication"
 arch=('x86_64' 'i686')
@@ -24,19 +24,24 @@ prepare() {
   mkdir -p "src/github.com/gilbertchen"
   ln -nsf "$srcdir/$_pkgname" "src/github.com/gilbertchen/$_pkgname"
 
-  GOPATH="$srcdir/$_pkgname/$_pkgname" go get -d -v
+  GO111MODULE=auto GOPATH="$srcdir/$_pkgname/$_pkgname" go get -d -v
 }
 
 build() {
   cd "$_pkgname/$_pkgname"
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
-  GOPATH="$srcdir/$_pkgname/$_pkgname" go build -x
+  GO111MODULE=auto GOPATH="$srcdir/$_pkgname/$_pkgname" go build -x
 }
 
 check() {
   cd "$_pkgname/$_pkgname"
 
-  GOPATH="$srcdir/$_pkgname/$_pkgname" go test -v -x
+  GO111MODULE=auto GOPATH="$srcdir/$_pkgname/$_pkgname" go test -v -x
 }
 
 package() {
