@@ -1,7 +1,7 @@
 pkgbase = todoist
 	pkgdesc = Todoist CLI Client, written in Golang.
-	pkgver = 0.15.0
-	pkgrel = 2
+	pkgver = 0.16.0
+	pkgrel = 1
 	url = https://github.com/sachaos/todoist
 	arch = x86_64
 	arch = i686
@@ -9,9 +9,15 @@ pkgbase = todoist
 	makedepends = go
 	makedepends = git
 	optdepends = peco: for zsh functions script
+	provides = todoist
+	provides = todoist-cli
+	conflicts = todoist
+	conflicts = todoist-cli
 	options = !strip
 	options = !emptydirs
-	source = todoist-0.15.0.tar.gz::https://github.com/sachaos/todoist/archive/v0.15.0.tar.gz
-	sha256sums = b7ffa14574bd241ab9e21a28f3d40c17b1a12250e89cfbc8ad708cfbfcdd84b3
+	source = todoist-0.16.0.tar.gz::https://github.com/sachaos/todoist/archive/v0.16.0.tar.gz
+	source = rename_todoist_to_todoist_cli.patch
+	sha256sums = 9d5a8f5c6b92d3d6df292f9ae96bec46049b4e4b7a482f7232e4e5b9708dfffa
+	sha256sums = 2d0f8626b98c6b178d6be15ad03be20a49c18add0cb3ec2a1f06e8e727785564
 
 pkgname = todoist

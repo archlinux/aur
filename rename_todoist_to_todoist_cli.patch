@@ -1,0 +1,141 @@
+diff --git a/todoist_functions.sh b/todoist_functions.sh
+index ad4e7ce..b7b1e7a 100644
+--- a/todoist_functions.sh
++++ b/todoist_functions.sh
+@@ -1,4 +1,4 @@
+-select_items_command="todoist --namespace --project-namespace list | peco | cut -d ' ' -f 1 | tr '\n' ' '"
++select_items_command="todoist-cli --namespace --project-namespace list | peco | cut -d ' ' -f 1 | tr '\n' ' '"
+ 
+ function insert-in-buffer () {
+     if [ -n "$1" ]; then
+@@ -25,7 +25,7 @@ bindkey "^xtt" peco-todoist-item
+ 
+ # todoist find project
+ function peco-todoist-project () {
+-    local SELECTED_PROJECT="$(todoist --project-namespace projects | peco | head -n1 | cut -d ' ' -f 1)"
++    local SELECTED_PROJECT="$(todoist-cli --project-namespace projects | peco | head -n1 | cut -d ' ' -f 1)"
+     insert-in-buffer "${SELECTED_PROJECT}" "-P"
+ }
+ zle -N peco-todoist-project
+@@ -33,7 +33,7 @@ bindkey "^xtp" peco-todoist-project
+ 
+ # todoist find labels
+ function peco-todoist-labels () {
+-    local SELECTED_LABELS="$(todoist labels | peco | cut -d ' ' -f 1 | tr '\n' ',' | sed -e 's/,$//')"
++    local SELECTED_LABELS="$(todoist-cli labels | peco | cut -d ' ' -f 1 | tr '\n' ',' | sed -e 's/,$//')"
+     insert-in-buffer "${SELECTED_LABELS}" "-L"
+ }
+ zle -N peco-todoist-labels
+@@ -58,7 +58,7 @@ bindkey "^xtd" peco-todoist-date
+ 
+ function todoist-exec-with-select-task () {
+     if [ -n "$2" ]; then
+-        BUFFER="todoist $1 $(echo "$2" | tr '\n' ' ')"
++        BUFFER="todoist-cli $1 $(echo "$2" | tr '\n' ' ')"
+         CURSOR=$#BUFFER
+         zle accept-line
+     fi
+diff --git a/todoist_functions_fzf.sh b/todoist_functions_fzf.sh
+index b234dd5..9b01e73 100644
+--- a/todoist_functions_fzf.sh
++++ b/todoist_functions_fzf.sh
+@@ -1,4 +1,4 @@
+-select_items_command="todoist --namespace --project-namespace list | fzf | cut -d ' ' -f 1 | tr '\n' ' '"
++select_items_command="todoist-cli --namespace --project-namespace list | fzf | cut -d ' ' -f 1 | tr '\n' ' '"
+ 
+ function insert-in-buffer () {
+     if [ -n "$1" ]; then
+@@ -25,7 +25,7 @@ bindkey "^xtt" fzf-todoist-item
+ 
+ # todoist find project
+ function fzf-todoist-project () {
+-    local SELECTED_PROJECT="$(todoist --project-namespace projects | fzf | head -n1 | cut -d ' ' -f 1)"
++    local SELECTED_PROJECT="$(todoist-cli --project-namespace projects | fzf | head -n1 | cut -d ' ' -f 1)"
+     insert-in-buffer "${SELECTED_PROJECT}" "-P"
+ }
+ zle -N fzf-todoist-project
+@@ -33,7 +33,7 @@ bindkey "^xtp" fzf-todoist-project
+ 
+ # todoist find labels
+ function fzf-todoist-labels () {
+-    local SELECTED_LABELS="$(todoist labels | fzf | cut -d ' ' -f 1 | tr '\n' ',' | sed -e 's/,$//')"
++    local SELECTED_LABELS="$(todoist-cli labels | fzf | cut -d ' ' -f 1 | tr '\n' ',' | sed -e 's/,$//')"
+     insert-in-buffer "${SELECTED_LABELS}" "-L"
+ }
+ zle -N fzf-todoist-labels
+@@ -58,7 +58,7 @@ bindkey "^xtd" fzf-todoist-date
+ 
+ function todoist-exec-with-select-task () {
+     if [ -n "$2" ]; then
+-        BUFFER="todoist $1 $(echo "$2" | tr '\n' ' ')"
++        BUFFER="todoist-cli $1 $(echo "$2" | tr '\n' ' ')"
+         CURSOR=$#BUFFER
+         zle accept-line
+     fi
+diff --git a/todoist_functions_fzf_bash.sh b/todoist_functions_fzf_bash.sh
+index b804b4f..792b20c 100644
+--- a/todoist_functions_fzf_bash.sh
++++ b/todoist_functions_fzf_bash.sh
+@@ -27,14 +27,14 @@ _todoist() {
+ 
+     for arg in "${COMP_WORDS[@]}"; do
+         case "$arg" in
+-        todoist)
+-            cmd='todoist'
++        todoist-cli)
++            cmd='todoist-cli'
+             ;;
+         # These are the current commands; not all have completion options,
+         # but they're listed here anyway, for the future
+         list|show|completed-list|add|modify|close|delete|labels|projects|\
+         karma|sync|quick|help)
+-            [ "$cmd" == 'todoist' ] && cmd+="__$arg"
++            [ "$cmd" == 'todoist-cli' ] && cmd+="__$arg"
+             ;;
+         l)
+             cmd+='__list'
+@@ -74,7 +74,7 @@ _todoist() {
+ ' --project-namespace --help -h --version -v '
+ 
+     case "$cmd" in
+-    todoist)
++    todoist-cli)
+         opts+='list l show completed-list c-l cl add a modify m close c'\
+ ' delete d labels projects karma sync s quick q help h'
+         ;;
+@@ -98,17 +98,17 @@ _todoist() {
+             ;;
+         --label-ids|-L)
+             # shellcheck disable=SC2207
+-            COMPREPLY=( $(todoist labels | $fzfcmd --multi | cut -d ' ' -f 1 \
++            COMPREPLY=( $(todoist-cli labels | $fzfcmd --multi | cut -d ' ' -f 1 \
+             | paste -d, -s -) )
+             return 0
+             ;;
+         --project-id|-P)
+             # shellcheck disable=SC2207
+-            COMPREPLY=( $(todoist projects | $fzfcmd | cut -d ' ' -f 1) )
++            COMPREPLY=( $(todoist-cli projects | $fzfcmd | cut -d ' ' -f 1) )
+             return 0
+             ;;
+         --project-name|-N)
+-            COMPREPLY=( "'$(todoist projects | $fzfcmd | cut -d ' ' -f 2- \
++            COMPREPLY=( "'$(todoist-cli projects | $fzfcmd | cut -d ' ' -f 2- \
+             | cut -b 2- )'" )
+             return 0
+             ;;
+@@ -144,7 +144,7 @@ _todoist() {
+         __todoist_debug "fzfcmd=$fzfcmd"
+ 
+         # shellcheck disable=SC2207
+-        COMPREPLY=( $(todoist --namespace --project-namespace list \
++        COMPREPLY=( $(todoist-cli --namespace --project-namespace list \
+         | $fzfcmd | cut -d ' ' -f 1 | tr -d "'") )
+         return 0
+     fi
+@@ -155,4 +155,4 @@ _todoist() {
+     [ -n "$opts" ] && COMPREPLY=( $(compgen -W "$opts" -- "$cur") )
+ }
+ 
+-complete -F _todoist todoist
++complete -F _todoist todoist-cli
