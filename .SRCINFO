@@ -1,4 +1,4 @@
-pkgbase = audacity-git
+pkgbase = audacity-release-git
 	pkgdesc = A program that lets you manipulate digital audio waveforms <- latest release version in git
 	pkgver = 3.1.3.r0.gff6d6739f
 	pkgrel = 1
@@ -46,4 +46,4 @@ pkgbase = audacity-git
 	source = git+https://github.com/audacity/audacity.git#branch=release-3.1.3
 	sha256sums = SKIP
 
-pkgname = audacity-git
+pkgname = audacity-release-git

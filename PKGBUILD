@@ -63,7 +63,7 @@ pkgver() {
 
 build() {
   cd audacity
-  mkdir build && cd build
+  mkdir -p build && cd build
   CC=gcc cmake \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
