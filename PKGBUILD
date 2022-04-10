@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-serialport
-_qtver=6.2.4
+_qtver=6.3.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,7 +18,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qtserialport-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('8fdbfbb2aeee0e6400c90406927a784d3790bb0dfa7e5d7b9da7b2ded52bb744')
+sha256sums=('eebd6934d48cc044b8c87795a4fd91bb81f7195d4b5a2ddb12802f343d5db64f')
 
 build() {
   source android-env ${_android_arch}
