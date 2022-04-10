@@ -4,12 +4,12 @@
 # then please put 'unknown'.
 
 # Maintainer: Adrian Lopez <zeioth@hotmail.com>
-pkgname=wofi-calc-git
-pkgver=1.0
+pkgname=wofi-calc
+pkgver=1.0.r17.56372a9
 pkgrel=1
 epoch=
 pkgdesc="A simple calculator for wofi, inspired in rofi-calc."
-arch=(x86_64 i686)
+arch=(any)
 url="https://github.com/Zeioth/wofi-calc.git"
 license=('MIT')
 groups=()
@@ -18,15 +18,15 @@ makedepends=(wofi libqalculate)
 checkdepends=()
 optdepends=()
 provides=(wofi-calc-git)
-conflicts=(wofi-calc)
+conflicts=(wofi-calc-git)
 replaces=()
 backup=()
 options=()
 install=
 changelog=
-source=("git+$url")
+source=("https://raw.githubusercontent.com/Zeioth/wofi-calc/main/wofi-calc.sh")
 noextract=()
-md5sums=('SKIP')
+md5sums=('db674463102b04493962f4ed1f3d73fa')
 validpgpkeys=()
 
 pkgver() {
@@ -35,6 +35,6 @@ pkgver() {
 }
 
 package() {
-  cp "${srcdir}"/wofi-calc/wofi-calc.sh ~/.local/bin/wofi-calc
-  chmod u+x ~/.local/bin/wofi-calc
+  sudo cp "${srcdir}"/wofi-calc/wofi-calc.sh /usr/bin/wofi-calc
+  sudo chmod u+x /usr/bin/wofi-calc
 }
