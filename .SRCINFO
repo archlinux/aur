@@ -1,13 +1,13 @@
 pkgbase = vblade
 	pkgdesc = Virtual EtherDrive(R) blade AoE target
 	pkgver = 25
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenAoE/vblade
 	arch = i686
 	arch = x86_64
 	license = GPL2
 	depends = bash
-	source = git://github.com/OpenAoE/vblade.git#tag=vblade-25
+	source = git+https://github.com/OpenAoE/vblade.git#tag=vblade-25
 	md5sums = SKIP
 
 pkgname = vblade
