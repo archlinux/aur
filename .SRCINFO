@@ -1,13 +1,13 @@
 pkgbase = 0ad-community-maps-2
 	pkgdesc = Mod that provides maps made by players and fans of 0ad and shared in the WFG forum
-	pkgver = 0.25.14
+	pkgver = 0.25.15
 	pkgrel = 1
 	url = https://github.com/0ad-matters/community-maps-2
 	arch = any
 	license = GPL2
 	makedepends = unzip
-	noextract = community-maps-2-0.25.14.pyromod
-	source = https://github.com/0ad-matters/community-maps-2/releases/download/v0.25.14/community-maps-2-0.25.14.pyromod
-	sha256sums = aa524252f0d484068f3d50425bedf9903c84bdd412398359ee2eea6e713cffca
+	noextract = community-maps-2-0.25.15.pyromod
+	source = https://github.com/0ad-matters/community-maps-2/releases/download/v0.25.15/community-maps-2-0.25.15.pyromod
+	sha256sums = 363a191b87c70817801f78931cc1cb9e6d4ec62834b59f70c4147ca21e980fa9
 
 pkgname = 0ad-community-maps-2
