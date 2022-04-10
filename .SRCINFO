@@ -1,6 +1,6 @@
 pkgbase = python-buildlog-consultant
 	pkgdesc = Build log parser and analyser
-	pkgver = 0.0.20
+	pkgver = 0.0.21
 	pkgrel = 1
 	url = https://github.com/jelmer/buildlog-consultant
 	arch = any
@@ -9,10 +9,10 @@ pkgbase = python-buildlog-consultant
 	depends = python-debian
 	depends = python-pyaml
 	depends = python-requirements-parser
-	source = https://files.pythonhosted.org/packages/source/b/buildlog-consultant/buildlog-consultant-0.0.20.tar.gz
-	source = https://files.pythonhosted.org/packages/source/b/buildlog-consultant/buildlog-consultant-0.0.20.tar.gz.asc
+	source = https://files.pythonhosted.org/packages/source/b/buildlog-consultant/buildlog-consultant-0.0.21.tar.gz
+	source = https://files.pythonhosted.org/packages/source/b/buildlog-consultant/buildlog-consultant-0.0.21.tar.gz.asc
 	validpgpkeys = DC837EE14A7E37347E87061700806F2BD729A457
-	sha256sums = 23723a04df204577a525f2cf7021655fdc1c69615cf91c26837fd7b2d74e1755
+	sha256sums = 21158a8697665457ad5bc90032fab5bbdf8b1d3709b0bd30b0e68c6b825da7f0
 	sha256sums = SKIP
 
 pkgname = python-buildlog-consultant
