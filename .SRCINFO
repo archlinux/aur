@@ -1,5 +1,5 @@
 pkgbase = dt-cli
-	pkgdesc = $HOME, $HOME everywhere
+	pkgdesc = Dotfile management and templating client
 	pkgver = 0.7.7
 	pkgrel = 1
 	url = https://dt.cli.rs
