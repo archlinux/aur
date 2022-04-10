@@ -5,7 +5,7 @@
 
 _android_arch=aarch64
 pkgname=android-$_android_arch-qt6-translations
-_qtver=6.2.4
+_qtver=6.3.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(any)
@@ -18,7 +18,7 @@ options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(android-${_android_arch}-qt6)
 _pkgfqn="qttranslations-everywhere-src-${_qtver}"
 source=("https://download.qt.io/official_releases/qt/${pkgver%.*}/${_qtver}/submodules/${_pkgfqn}.tar.xz")
-sha256sums=('bd1aac74a892c60b2f147b6d53bb5b55ab7a6409e63097d38198933f8024fa51')
+sha256sums=('e4dd4ef892a34a9514a19238f189a33ed85c76f31dcad6599ced93b1e33440b3')
 
 build() {
   source android-env ${_android_arch}
