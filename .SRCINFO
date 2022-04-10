@@ -1,13 +1,14 @@
 pkgbase = wayfire-plugins-extra
 	pkgdesc = Additional plugins for Wayfire
 	pkgver = 0.7.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wayfire.org
 	arch = x86_64
 	license = custom:MIT
 	makedepends = meson
 	makedepends = ninja
 	makedepends = glm
+	makedepends = git
 	depends = wayfire>=0.7
 	depends = cairo
 	depends = glibmm
@@ -17,4 +18,3 @@ pkgbase = wayfire-plugins-extra
 	sha256sums = 01dcb040ced5509cf8f8a1f46dba6f61b613209b76b82550906140266c4921eb
 
 pkgname = wayfire-plugins-extra
-
