@@ -1,12 +1,12 @@
 # Maintainer: tercean <cg@zknt.org>
 pkgname=deltachat-desktop
 pkgver=1.28.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A privacy oriented chat application built on e-mail"
 arch=("any")
 url="https://github.com/deltachat/deltachat-desktop"
 license=("GPL")
-depends=('electron')
+depends=('electron14')
 makedepends=('npm' 'nodejs' 'rustup' 'python' 'unzip')
 conflicts=("deltachat-desktop-git")
 source=(
