@@ -1,7 +1,7 @@
 pkgbase = tv_viewer
 	pkgdesc = GUI to view television show details using TV maze API. Python3 Pyqt5 SQLite
-	pkgver = 1.1
-	pkgrel = 3
+	pkgver = 1.2
+	pkgrel = 4
 	url = https://github.com/gavinlyonsrepo/tv_viewer
 	arch = any
 	license = GPL
@@ -10,8 +10,7 @@ pkgbase = tv_viewer
 	depends = python-prettytable
 	depends = python-pyqt5
 	depends = python-pytvmaze
-	source = https://github.com/gavinlyonsrepo/tv_viewer/archive/1.1.tar.gz
-	md5sums = 37c7fa915c232d605ada57f1968a13c4
+	source = https://github.com/gavinlyonsrepo/tv_viewer/archive/1.2.tar.gz
+	sha256sums = 5dd14a4d1439f311fba87b800132aba1de9c5463a180dcc01ed45f2d31ee9afd
 
 pkgname = tv_viewer
-
