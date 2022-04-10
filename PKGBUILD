@@ -4,7 +4,7 @@
 
 _pkgname=postforward
 pkgname="${_pkgname}-git"
-pkgver=1.1.1_1+r15.20190222.51d259d
+pkgver=1.1.1_2+r16.20201206.ce7f4fd
 epoch=1
 pkgrel=1
 
@@ -17,23 +17,29 @@ arch=(
   'x86_64'
   'arm'
   'arm64'
+  'aarch64'
 )
 
 depends=(
   'postsrsd'
 )
 makedepends=(
+  'git'
   'go'
 )
 optdepends=()
-provides=("${_pkgname}=${pkgver}")
+provides=(
+  "${_pkgname}=${pkgver}"
+)
 replaces=()
-conflicts=("${_pkgname}")
+conflicts=(
+  "${_pkgname}"
+)
 
 options=('emptydirs' 'strip')
 
 source=(
-  "${_pkgname}::git+git://github.com/zoni/${_pkgname}.git"
+  "${_pkgname}::git+https://github.com/zoni/${_pkgname}.git"
 )
 
 sha256sums=(
