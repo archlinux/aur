@@ -2,7 +2,7 @@
 # Contributor: Daniel Haß <aur@hass.onl>
 pkgname=standardnotes-desktop
 _pkgname=desktop
-pkgver=3.13.0
+pkgver=3.14.1
 pkgrel=1
 pkgdesc="A standard notes app with an un-standard focus on longevity, portability, and privacy."
 arch=('x86_64' 'aarch64')
@@ -10,10 +10,12 @@ url="https://standardnotes.org/"
 license=('GPL3')
 conflicts=('sn-bin')
 depends=('electron')
-makedepends=('npm' 'node-gyp' 'git' 'jq' 'python2' 'yarn' 'nvm')
+makedepends=('npm' 'node-gyp' 'git' 'jq' 'yarn' 'nvm')
 _nodeversion=14
-source=("git+https://github.com/standardnotes/desktop.git#tag=v${pkgver}"
-        "git+https://github.com/standardnotes/web.git#commit=b030a4ad29949b348a6f1dee9ae9a3e9cf411d00"
+# we need to use a commit directly for 3.14.1, as the tag points to an old/wrong wommit
+# source=("git+https://github.com/standardnotes/desktop.git#tag=v${pkgver}"
+source=("git+https://github.com/standardnotes/desktop.git#commit=2d58b449b31c48f4ce1f47983434dfcbe58da50a"
+        "git+https://github.com/standardnotes/web.git#commit=03f707ee63f0c5bd0c8240011efcce0794eeb851"
         'webpack.patch'
         'standardnotes-desktop.desktop'
         'standardnotes-desktop.js')
