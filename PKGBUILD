@@ -10,8 +10,8 @@
 
 pkgbase=util-linux-selinux
 pkgname=(util-linux-selinux util-linux-libs-selinux)
-_pkgmajor=2.37
-_realver=${_pkgmajor}.4
+_pkgmajor=2.38
+_realver=${_pkgmajor}
 pkgver=${_realver/-/}
 pkgrel=1
 pkgdesc='SELinux aware miscellaneous system utilities for Linux'
@@ -28,15 +28,13 @@ license=('GPL2')
 options=('strip')
 validpgpkeys=('B0C64D14301CC6EFAEDF60E4E4B71D5EEC39C284')  # Karel Zak
 source=("https://www.kernel.org/pub/linux/utils/util-linux/v${_pkgmajor}/${pkgbase/-selinux}-${_realver}.tar."{xz,sign}
-        '0001-agetty-resolve-tty-name-even-if-stdin-is-specified.patch'
         pam-{login,common,runuser,su}
         'util-linux.sysusers'
         '60-rfkill.rules'
         'rfkill-unblock_.service'
         'rfkill-block_.service')
-sha256sums=('634e6916ad913366c3536b6468e7844769549b99a7b2bf80314de78ab5655b83'
+sha256sums=('6d111cbe4d55b336db2f1fbeffbc65b89908704c01136371d32aa9bec373eb64'
             'SKIP'
-            '53395b7e434b32e6fee25f1b6fa59330ab72c1a2f99a17c3d3fd92473379fd9a'
             '99cd77f21ee44a0c5e57b0f3670f711a00496f198fc5704d7e44f5d817c81a0f'
             '57e057758944f4557762c6def939410c04ca5803cbdd2bfa2153ce47ffe7a4af'
             '48d6fba767631e3dd3620cf02a71a74c5d65a525d4c4ce4b5a0b7d9f41ebfea1'
@@ -46,18 +44,9 @@ sha256sums=('634e6916ad913366c3536b6468e7844769549b99a7b2bf80314de78ab5655b83'
             '8ccec10a22523f6b9d55e0d6cbf91905a39881446710aa083e935e8073323376'
             'a22e0a037e702170c7d88460cc9c9c2ab1d3e5c54a6985cd4a164ea7beff1b36')
 
-prepare() {
-  cd "${pkgbase/-selinux}-${_realver}"
-
-  patch -Np1 < ../0001-agetty-resolve-tty-name-even-if-stdin-is-specified.patch
-}
-
 build() {
   cd "${pkgbase/-selinux}-${_realver}"
 
-  # Do no enable raw, as it no longer builds with linux-api-headers 5.16.8-1,
-  # which removed /usr/include/linux/raw.h
-  # cf. https://www.mail-archive.com/debian-bugs-dist@lists.debian.org/msg1820043.html
   ./configure \
     --prefix=/usr \
     --libdir=/usr/lib \
