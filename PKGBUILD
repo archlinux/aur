@@ -4,8 +4,8 @@
 pkgname=rocm-hip-runtime
 _pkgver_major=5
 _pkgver_minor=1
-_pkgver_patch=0
-_pkgver_magic=36
+_pkgver_patch=1
+_pkgver_magic=48
 pkgver=$_pkgver_major.$_pkgver_minor.$_pkgver_patch
 pkgrel=1
 pkgdesc="Packages to run HIP applications on the AMD platform"
@@ -15,8 +15,8 @@ license=()
 depends=('rocm-core' 'rocm-language-runtime' 'rocminfo' 'hip-runtime-amd' 'rocm-llvm' 'rocm-cmake')
 makedepends=()
 optdepends=('hipify-clang: Translate CUDA code into HIP. Requires CUDA.')
-source=("${pkgname}-${pkgver}.deb::https://repo.radeon.com/rocm/apt/${pkgver%.*}/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}.${_pkgver_major}$(printf '%02d' $_pkgver_minor $_pkgver_patch)-${_pkgver_magic}_amd64.deb")
-sha256sums=('3b420acdfe8d37eb73dd4bf8077e5a24a26a30085919e8b12720b4c683813368')
+source=("${pkgname}-${pkgver}.deb::https://repo.radeon.com/rocm/apt/${pkgver}/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}.${_pkgver_major}$(printf '%02d' $_pkgver_minor $_pkgver_patch)-${_pkgver_magic}_amd64.deb")
+sha256sums=('1cb3b7fb7ee4b55e9f8de8759830ce02a874711e3c95e5d7de870639fc6e90ea')
 
 
 package() {
