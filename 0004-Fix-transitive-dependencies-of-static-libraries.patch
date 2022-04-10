@@ -1,4 +1,4 @@
-From 37bf424036f912d433c76af752aea89477a72b7c Mon Sep 17 00:00:00 2001
+From ffdf568ee684a97d59e4668eea92d9e3cedaed30 Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Thu, 5 Nov 2020 21:59:33 +0100
 Subject: [PATCH 4/8] Fix transitive dependencies (of static libraries)
@@ -23,10 +23,10 @@ Change-Id: I3baec612ee071eec77f756b18bbb9af87663527c
  8 files changed, 9 insertions(+), 7 deletions(-)
 
 diff --git a/cmake/3rdparty/extra-cmake-modules/find-modules/FindGLIB2.cmake b/cmake/3rdparty/extra-cmake-modules/find-modules/FindGLIB2.cmake
-index 8f873c1b45..831ca8e624 100644
+index 24a194c9cb..a6a16b494f 100644
 --- a/cmake/3rdparty/extra-cmake-modules/find-modules/FindGLIB2.cmake
 +++ b/cmake/3rdparty/extra-cmake-modules/find-modules/FindGLIB2.cmake
-@@ -95,7 +95,7 @@ if(GLIB2_FOUND AND NOT TARGET GLIB2::GLIB2)
+@@ -135,7 +135,7 @@ if(GLIB2_FOUND AND NOT TARGET GLIB2::GLIB2)
    add_library(GLIB2::GLIB2 UNKNOWN IMPORTED)
    set_target_properties(GLIB2::GLIB2 PROPERTIES
                          IMPORTED_LOCATION "${GLIB2_LIBRARIES}"
