@@ -1,4 +1,6 @@
 src/
+todoist/
 pkg/
+*.zst
 *.tar.gz
 *.tar.xz
