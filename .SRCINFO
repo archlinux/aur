@@ -1,0 +1,24 @@
+pkgbase = xdg-desktop-portal-gnome-noprompt-git
+	pkgdesc = A backend implementation for xdg-desktop-portal for the GNOME desktop environment without permission prompts
+	pkgver = 42.0.1+r12+gb9850a5
+	pkgrel = 1
+	url = https://gitlab.gnome.org/TestingPlant/xdg-desktop-portal-gnome-noprompt
+	arch = x86_64
+	license = LGPL
+	makedepends = xdg-desktop-portal
+	makedepends = meson
+	makedepends = git
+	depends = xdg-desktop-portal-gtk>=1.10.0-2
+	depends = libadwaita
+	depends = gnome-keyring
+	depends = gnome-desktop-4
+	optdepends = evince: Print previews
+	provides = xdg-desktop-portal-gnome
+	provides = xdg-desktop-portal-impl
+	conflicts = xdg-desktop-portal-gnome
+	conflicts = xdg-desktop-portal-gtk<1.10.0-2
+	replaces = xdg-desktop-portal-gtk<1.10.0-2
+	source = git+https://gitlab.gnome.org/TestingPlant/xdg-desktop-portal-gnome-noprompt.git
+	sha256sums = SKIP
+
+pkgname = xdg-desktop-portal-gnome-noprompt-git
