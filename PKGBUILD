@@ -6,7 +6,7 @@ pkgname=rocm-llvm-mlir
 pkgdesc="Radeon Open Compute - LLVM Multi-Level IR Compiler Framework"
 _pkgver=5.1
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url="https://github.com/ROCmSoftwarePlatform/llvm-project-mlir"
 license=('custom:Apache 2.0 with LLVM Exception')
@@ -14,6 +14,7 @@ depends=("hip")
 makedepends=("cmake" "sqlite" "python")
 source=("$pkgname-$pkgver.tar.gz::$url/archive/release/rocm-$_pkgver.tar.gz")
 sha256sums=('7bc1eba4af74a4884efcf1cc73933efd7d8bc97445bf2a2e441d4db4ed624c4f')
+options=(!lto)
 _dirname="$(basename "$url")-release-$(basename "${source[0]}" .tar.gz)"
 
 build() {
