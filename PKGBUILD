@@ -4,8 +4,8 @@
 pkgname=rocm-opencl-sdk
 _pkgver_major=5
 _pkgver_minor=1
-_pkgver_patch=0
-_pkgver_magic=36
+_pkgver_patch=1
+_pkgver_magic=48
 pkgver=$_pkgver_major.$_pkgver_minor.$_pkgver_patch
 pkgrel=1
 pkgdesc="Develop applications in OpenCL for the AMD platform"
@@ -14,8 +14,8 @@ url="https://rocm-documentation.readthedocs.io/en/latest/"
 license=()
 depends=('rocm-core' 'rocm-language-runtime' 'rocm-opencl-runtime' 'rocm-llvm')
 makedepends=()
-source=("${pkgname}-${pkgver}.deb::https://repo.radeon.com/rocm/apt/${pkgver%.*}/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}.${_pkgver_major}$(printf '%02d' $_pkgver_minor $_pkgver_patch)-${_pkgver_magic}_amd64.deb")
-sha256sums=('e42832e3624fee4c893c380d6682725e08348f9cee780c38a0d6dcf530c64f71')
+source=("${pkgname}-${pkgver}.deb::https://repo.radeon.com/rocm/apt/${pkgver}/pool/main/${pkgname:0:1}/${pkgname}/${pkgname}_${pkgver}.${_pkgver_major}$(printf '%02d' $_pkgver_minor $_pkgver_patch)-${_pkgver_magic}_amd64.deb")
+sha256sums=('338ce518edae8eecdc3717d872531aa036f2c878612b40f0e02afad5798b3570')
 
 
 package() {
