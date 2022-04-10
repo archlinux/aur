@@ -1,6 +1,6 @@
 pkgbase = rocsolver
 	pkgdesc = Subset of LAPACK functionality on the ROCm platform
-	pkgver = 5.1.0
+	pkgver = 5.1.1
 	pkgrel = 1
 	url = https://rocsolver.readthedocs.io/en/latest/userguidedocu.html
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = rocsolver
 	makedepends = rocm-cmake
 	depends = hip
 	depends = rocblas
-	source = rocsolver-5.1.0.tar.gz::https://github.com/ROCmSoftwarePlatform/rocSOLVER/archive/rocm-5.1.0.tar.gz
+	source = rocsolver-5.1.1.tar.gz::https://github.com/ROCmSoftwarePlatform/rocSOLVER/archive/rocm-5.1.1.tar.gz
 	source = fmt.patch::https://github.com/acxz/rocSOLVER/commit/0f4658e04ac7b48fea213f29b209a0206b67c43f.patch
-	sha256sums = 88de515a6e75eaa3c50c9c8ae1e7ae8e3b46e712e388f44f79b63fefa9fc0831
+	sha256sums = 7b81d7d8ca5fcb86a4e1ac824e7ac884f635c61bf593e91a9322fc925aae8276
 	sha256sums = 3c2935fea8136ce6d1078318a50aa3c58bd39384da7e3a7e12e8d7fec5e31f69
 
 pkgname = rocsolver
