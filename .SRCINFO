@@ -1,14 +1,14 @@
 pkgbase = hipify-clang
 	pkgdesc = Convert CUDA to Portable C++ Code
-	pkgver = 5.0.2
+	pkgver = 5.1.1
 	pkgrel = 1
 	url = https://github.com/ROCm-Developer-Tools/HIPIFY
 	arch = x86_64
-	license = unknown
+	license = MIT
 	makedepends = cmake
 	depends = rocm-llvm
 	depends = cuda
-	source = hipify-clang-5.0.2.tar.gz::https://github.com/ROCm-Developer-Tools/HIPIFY/archive/rocm-5.0.2.tar.gz
-	sha256sums = 812bccfeb044483a1c7df89f45843afcb28d8146f348c792f082b693cbff3984
+	source = hipify-clang-5.1.1.tar.gz::https://github.com/ROCm-Developer-Tools/HIPIFY/archive/rocm-5.1.1.tar.gz
+	sha256sums = 2d1bdfc75f5be4895e4b15a00cbf5a6869df17c79a8fefdf65a3834c47201429
 
 pkgname = hipify-clang
