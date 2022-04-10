@@ -3,7 +3,7 @@
 # Contributor: JP-Ellis <josh@jpellis.me>
 
 pkgname=miopen-opencl
-pkgver=5.1.0
+pkgver=5.1.1
 pkgrel=1
 pkgdesc="AMD's Machine Intelligence Library (OpenCL backend)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ provides=('miopen')
 conflicts=('miopen')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/rocm-$pkgver.tar.gz"
        "https://github.com/ROCmSoftwarePlatform/MIOpen/pull/1490.patch")
-sha256sums=('bb50201334d68addf153b84b88ab803027c4913d71bdbda6f5ccde3f672f6fdd'
+sha256sums=('5d4af84d490c9922b9592a0d08d0bd1a2ce56a7488566407209f0043579bd616'
             '35936708253212ddeb0b0c96344c85fb8455bd48037d8d25ab635adbbb97c263')
 _dirname="$(basename "$url")-$(basename "${source[0]}" .tar.gz)"
 
