@@ -2,7 +2,7 @@
 
 pkgname=tachidesk-jui-bin
 pkgdesc='A free and open source manga reader to read manga from a Tachidesk-Server instance.'
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=2
 arch=('x86_64')
 url='https://github.com/Suwayomi/Tachidesk-JUI'
@@ -11,7 +11,7 @@ depends=("jre-openjdk>=17")
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 source=("https://github.com/Suwayomi/Tachidesk-JUI/releases/download/v$pkgver/${pkgname%-bin}_${pkgver}-1_amd64.deb")
-sha256sums=('14fda889f50fcc479f3861faab62d30a6c6ac0ab7dc9760d0283a5f14e944bac')
+sha256sums=('28eeb9f98929949546fc97df36617f4f7d0c275c24618ce90dee59288a22a0df')
 
 package() {
     tar -xf data.tar.xz -C "$pkgdir"
