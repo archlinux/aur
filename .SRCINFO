@@ -1,6 +1,6 @@
 pkgbase = rcssmonitor-git
 	pkgdesc = Robocup 2D simulator's monitor.
-	pkgver = VERSION
+	pkgver = 17.0.0
 	pkgrel = 1
 	url = https://github.com/rcsoccersim/rcssmonitor
 	arch = any

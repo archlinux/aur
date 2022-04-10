@@ -8,7 +8,7 @@
 
 # Maintainer: Your Name <youremail@domain.com>
 pkgname=rcssmonitor-git # '-bzr', '-git', '-hg' or '-svn'
-pkgver=VERSION
+pkgver=17.0.0
 pkgrel=1
 pkgdesc="Robocup 2D simulator's monitor."
 arch=('any')
@@ -32,8 +32,8 @@ md5sums=('SKIP')
 
 pkgver() {
 	cd "$srcdir/${pkgname%-VCS}"
-# Git, tags available
-	printf "%s" "$(git describe --tags | sed 's/rcssmonitor-//')"
+	# Git, tags available
+	printf "%s" "$(grep AC_INIT configure.ac | cut -d '[' -f 3 | sed 's/],//g')"
 }
 
 build() {
