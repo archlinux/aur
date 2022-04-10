@@ -7,7 +7,7 @@ pkgname="${_pkgname}-git"
 epoch=0
 _pkgver=latest
 pkgver=21+r24821_20200828_7f72ddf
-pkgrel=4
+pkgrel=5
 pkgdesc="An elaborate realtime multiplayer strategy game with emphasis on economy and transport - development version. In the spirit of BlueByte's 'Siedler II/ Settlers 2'."
 url="http://widelands.org/"
 arch=(
@@ -17,7 +17,7 @@ arch=(
 )
 license=('GPL2')
 depends=(
-  'boost-libs'
+  'asio'
   'gettext'
   'glew'
   'hicolor-icon-theme'
@@ -28,7 +28,6 @@ depends=(
   'zlib'
 )
 makedepends=(
-  'boost'
   'cmake'     # For configuring the build
   'coreutils' # For `nproc`
   'doxygen'   # For documentation (?)
