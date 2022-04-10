@@ -1,46 +1,32 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Murli Tawari <kraanzu@gmail.com>
 pkgname=termtyper-git
-pkgver=0.1.r.
+_gitname=termtyper
+pkgver=1.0.1.r18.g3c4f42b
 pkgrel=1
-epoch=
 pkgdesc="A TUI application written in python for typing!"
-arch=(x86_64)
-url="https://github.com/kraanzu/termtyper.git"
+arch=('any')
+url="https://github.com/kraanzu/termtyper"
 license=('MIT')
-groups=()
-depends=(git)
-makedepends=(python)
-checkdepends=()
-optdepends=()
+depends=(python-rich python-textual python-playsound)
+makedepends=(python-build python-installer python-wheel python-poetry git)
 provides=(termtyper)
 conflicts=(termtyper)
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("git+$url")
-noextract=()
+source=("git+https://github.com/kraanzu/termtyper")
 md5sums=('SKIP')
-validpgpkeys=()
 
 pkgver() {
-	cd "${_pkgname}"
-    printf "0.1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "${_gitname}"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd termtyper
-    pip install .
+	cd "${_gitname}"
+    python -m build --wheel --no-isolation
 }
 
 package() {
-    cd termtyper
+    cd "${_gitname}"
+    python -m installer --destdir="${pkgdir}" dist/*.whl
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/termtyper/LICENSE"
     install -Dm644 README.md "${pkgdir}/usr/share/doc/termtyper/README.md"
 }
