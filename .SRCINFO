@@ -4,13 +4,13 @@ pkgbase = certbot-dns-namecheap-git
 	pkgrel = 1
 	arch = any
 	license = Apache
+	makedepends = git
 	depends = certbot
 	depends = dns-lexicon
 	depends = python-acme
 	depends = python-pynamecheap
 	depends = python-setuptools
-	source = git://github.com/jkl1337/certbot_dns_namecheap
+	source = git+https://github.com/jkl1337/certbot_dns_namecheap
 	sha512sums = SKIP
 
 pkgname = certbot-dns-namecheap-git
-

@@ -8,7 +8,8 @@ pkgdesc="Namecheap API plugin for Let’s Encrypt client"
 arch=('any')
 license=('Apache')
 depends=('certbot' 'dns-lexicon' 'python-acme' 'python-pynamecheap' 'python-setuptools')
-source=("git://github.com/jkl1337/certbot_dns_namecheap")
+makedepends=('git')
+source=("git+https://github.com/jkl1337/certbot_dns_namecheap")
 sha512sums=('SKIP')
 
 pkgver() {
