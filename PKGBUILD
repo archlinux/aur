@@ -4,7 +4,7 @@ _pkgbase=rssguard
 pkgbase=$_pkgbase-git
 pkgname=($_pkgbase-{,nowebengine-}git)
 pkgver=4.2.1.72.g52798f9e
-pkgrel=2
+pkgrel=3
 pkgdesc='Simple, lightweight and easy-to-use RSS/ATOM feed aggregator developed using Qt'
 arch=('i686' 'x86_64')
 url='https://github.com/martinrotter/rssguard'
@@ -40,7 +40,7 @@ package_rssguard-git() {
 }
 
 package_rssguard-nowebengine-git() {
-  pkgdescr+=' Variant without Qt WebEngine support.'
+  pkgdesc+='. Variant without Qt WebEngine support.'
   depends=('qt5-declarative' 'qt5-multimedia')
   provides=("$_pkgbase-nowebengine")
   conflicts=("$_pkgbase-nowebengine")
