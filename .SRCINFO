@@ -1,0 +1,26 @@
+pkgbase = proftpd-git
+	pkgdesc = High-performance, scalable FTP server
+	pkgver = 1.3.8rc2.135.ga34cb3043
+	pkgrel = 1
+	url = http://www.proftpd.org/
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	depends = mariadb-libs
+	depends = postgresql-libs
+	depends = libcap
+	depends = pam
+	depends = hiredis
+	options = !emptydirs
+	backup = etc/proftpd.conf
+	source = git+https://github.com/proftpd/proftpd.git
+	source = proftpd.logrotate
+	source = proftpd.service
+	source = proftpd.tmpfiles
+	sha256sums = SKIP
+	sha256sums = eaacf8df09c3d267cb08e962910af9cab50d1d5b007b232eb79b5240d8c5a721
+	sha256sums = 3a4558773ed747ab66b51551b6fc1732148e30908edc010f00a5e8675c817e64
+	sha256sums = 359cb8f5b30e66627929f7c50cbdd7dcc6919f7261f36eb617045210caf90abb
+
+pkgname = proftpd-git
