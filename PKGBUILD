@@ -2,13 +2,13 @@
 pkgname=ipython-yf-git
 _gitname=ipython-yf
 pkgver=r10.dd488d0
-pkgrel=2
+pkgrel=3
 pkgdesc="An ipython extension to make it asyncio compatible"
 arch=('any')
 url="https://github.com/tecki/ipython-yf/"
 license=('BSD')
 depends=('ipython')
-source=("git://github.com/tecki/${_gitname}.git"
+source=("git+https://github.com/tecki/${_gitname}.git"
         'pyqt5.patch')
 md5sums=('SKIP'
          '2aa5425630f0182db1d76bdf67625b59')
