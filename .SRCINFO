@@ -1,7 +1,7 @@
 pkgbase = rssguard-git
 	pkgdesc = Simple, lightweight and easy-to-use RSS/ATOM feed aggregator developed using Qt
 	pkgver = 4.2.1.72.g52798f9e
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/martinrotter/rssguard
 	arch = i686
 	arch = x86_64
@@ -9,14 +9,22 @@ pkgbase = rssguard-git
 	makedepends = git
 	makedepends = cmake
 	makedepends = qt5-tools
-	depends = qt5-webengine
-	depends = qt5-multimedia
+	makedepends = qt5-webengine
+	makedepends = qt5-multimedia
 	optdepends = oxygen-icons: fallback icon theme
-	provides = rssguard
-	conflicts = rssguard
-	conflicts = rss-guard
-	conflicts = rss-guard-git
 	source = git+https://github.com/martinrotter/rssguard.git
 	sha256sums = SKIP
 
 pkgname = rssguard-git
+	depends = qt5-webengine
+	depends = qt5-multimedia
+	provides = rssguard
+	conflicts = rssguard
+	conflicts = rss-guard
+	conflicts = rss-guard-git
+
+pkgname = rssguard-nowebengine-git
+	depends = qt5-declarative
+	depends = qt5-multimedia
+	provides = rssguard-nowebengine
+	conflicts = rssguard-nowebengine
