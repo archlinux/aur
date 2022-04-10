@@ -14,7 +14,7 @@ _dirname="$(basename "$url")-$(basename "${source[0]}" ".tar.gz")"
 
 prepare() {
     cd "$_dirname"
-    # From https://git.archlinux.org/svntogit/packages.git/tree/trunk/PKGBUILD?h=packages/gdb
+    # From https://github.com/archlinux/svntogit-packages/blob/packages/gdb/trunk/PKGBUILD
     # hack! - libiberty configure tests for header files using "$CPP $CPPFLAGS"
     sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
 }
