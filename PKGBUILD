@@ -11,7 +11,7 @@ pkgrel=1
 arch=(any)
 url="https://github.com/reclosedev/${_base}"
 license=('custom:BSD-2-clause')
-depends=(python-requests python-appdirs python-cattrs python-url-normalize)
+depends=(python-requests python-platformdirs python-cattrs python-url-normalize)
 makedepends=(python-build python-install python-poetry git)
 optdepends=('python-boto3: Cache backend for Amazon DynamoDB database'
   'python-botocore: Interface for Amazon Web Services'
