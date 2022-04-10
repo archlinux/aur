@@ -1,0 +1,18 @@
+pkgbase = azure-storage-cpp
+	pkgdesc = Microsoft Azure Storage Client Library for C++
+	pkgver = 7.5.0
+	pkgrel = 1
+	url = https://github.com/Azure/azure-storage-cpp
+	arch = x86_64
+	license = APACHE
+	makedepends = cmake
+	makedepends = util-linux
+	makedepends = boost
+	depends = libxml2
+	depends = util-linux-libs
+	depends = boost-libs
+	depends = cpprestsdk
+	source = azure-storage-cpp-7.5.0.tar.gz::https://github.com/Azure/azure-storage-cpp/archive/v7.5.0.tar.gz
+	sha256sums = 446a821d115949f6511b7eb01e6a0e4f014b17bfeba0f3dc33a51750a9d5eca5
+
+pkgname = azure-storage-cpp
