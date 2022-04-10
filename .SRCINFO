@@ -1,0 +1,26 @@
+pkgbase = gnome-calculator-gtk3
+	pkgdesc = GNOME Scientific calculator (last GTK3 release)
+	pkgver = 41.1
+	pkgrel = 1
+	url = https://wiki.gnome.org/Apps/Calculator
+	arch = x86_64
+	license = GPL
+	makedepends = yelp-tools
+	makedepends = vala
+	makedepends = git
+	makedepends = meson
+	makedepends = gobject-introspection
+	depends = gtk3
+	depends = dconf
+	depends = gtksourceview4
+	depends = mpfr
+	depends = libsoup
+	depends = libmpc
+	depends = libgee
+	depends = libhandy
+	provides = gnome-calculator=41.1
+	conflicts = gnome-calculator
+	source = https://gitlab.gnome.org/GNOME/gnome-calculator/-/archive/41.1/gnome-calculator-41.1.tar.bz2
+	sha256sums = d99a6517094444d400f580f5386a0e6a857fc4826e5d3422f732c269600b7ffc
+
+pkgname = gnome-calculator-gtk3
