@@ -2,7 +2,7 @@
 
 pkgname=vopono
 pkgver=0.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Run applications through VPN connections in network namespaces'
 arch=('any')
 url='https://github.com/jamesmcm/vopono'
@@ -13,6 +13,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 sha256sums=('6d8f349d44b06d5f68e98b94fa8c9286d52e3773e95d7abb46d9c3371086a05c')
 provides=('vopono')
 conflicts=('vopono')
+options=('!lto')
 
 build() {
   cd "$pkgname-$pkgver"

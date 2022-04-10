@@ -1,7 +1,7 @@
 pkgbase = vopono
 	pkgdesc = Run applications through VPN connections in network namespaces
 	pkgver = 0.9.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jamesmcm/vopono
 	arch = any
 	license = GPL3
@@ -13,6 +13,7 @@ pkgbase = vopono
 	optdepends = openfortivpn: for FortiClient VPN connections
 	provides = vopono
 	conflicts = vopono
+	options = !lto
 	source = vopono-0.9.0.tar.gz::https://github.com/jamesmcm/vopono/archive/0.9.0.tar.gz
 	sha256sums = 6d8f349d44b06d5f68e98b94fa8c9286d52e3773e95d7abb46d9c3371086a05c
 
