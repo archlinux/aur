@@ -1,6 +1,6 @@
 pkgbase = canaries-form-420
 	pkgdesc = Helper program for filling out Modelo 420 of Agencia Tributaria Canaria
-	pkgver = 8.2.1
+	pkgver = 8.3.0
 	pkgrel = 1
 	url = https://www3.gobiernodecanarias.org/tributos/atc/jsf/publico/asistenciaContribuyente/modelos/listado.jsp?tributo=IGIC
 	install = canaries-form-420.install
@@ -11,7 +11,7 @@ pkgbase = canaries-form-420
 	makedepends = imagemagick
 	depends = java-runtime=11
 	depends = ttf-ms-fonts
-	source = canaries-form-420-8.2.1.zip::https://www.gobiernodecanarias.org/tributos/atc/estatico/asistencia_contribuyente/modelos/ref_y_propios/igic/mod420/bin/M420V821E21.zip
-	sha256sums = e92ccc682c2c0af4150d78912f654eee6326ac874000829ef52dac19f88423f0
+	source = canaries-form-420-8.3.0.zip::https://www.gobiernodecanarias.org/tributos/atc/estatico/asistencia_contribuyente/modelos/ref_y_propios/igic/mod420/bin/M420V830E22.zip
+	sha256sums = 313efef7d84afeca1386ef79b8d2ee601ff8371df790c6aa50badc16c7a48880
 
 pkgname = canaries-form-420
