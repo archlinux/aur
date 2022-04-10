@@ -10,8 +10,9 @@ license=('MIT OR Apache 2.0')
 groups=()
 depends=()
 makedepends=(
-    git
-    rustup
+    'git'
+    'rust'
+    'cargo'
 )
 checkdepends=()
 optdepends=()
