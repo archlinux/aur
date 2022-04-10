@@ -1,0 +1,16 @@
+pkgbase = python-svgling
+	pkgdesc = linguistics tree drawing to SVG in python, aimed at Jupyter
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://pypi.org/project/svgling
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-svgwrite
+	source = https://files.pythonhosted.org/packages/source/s/svgling/svgling-0.3.1.tar.gz
+	sha256sums = a793134fa17bf1fbbcbe73cd32dab729d14fd168999b1136ea1d530a46a9d5f4
+
+pkgname = python-svgling
