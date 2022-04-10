@@ -1,0 +1,12 @@
+diff --color --unified --recursive --text web-greeter-3.4.1/Makefile web-greeter-3.4.1.new/Makefile
+--- web-greeter-3.4.1/Makefile	2022-04-10 16:32:45.000000000 -0600
++++ web-greeter-3.4.1.new/Makefile	2022-04-10 17:40:59.446495071 -0600
+@@ -197,7 +197,7 @@
+ $(bin_local/web-greeter): build_install_root $(resources.py) $(bin/screensaver.so)
+ 	@rm -rf "${INSTALL_PREFIX}/lib/web-greeter/*"
+ 	@cp -R "${BUILD_DIR}/web-greeter"/* "${INSTALL_PREFIX}/lib/web-greeter"
+-	@printf "#!/usr/bin/env bash\npython3 ${DESTDIR_PREFIX}/lib/web-greeter \$$@" > \
++	@printf "#!/usr/bin/env bash\npython3 /usr/lib/web-greeter \$$@" > \
+ 		"${bin_local/web-greeter}"
+ 	@chmod +x "${bin_local/web-greeter}"
+ 	@echo "✔ web-greeter binary copied"
