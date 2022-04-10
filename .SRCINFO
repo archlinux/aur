@@ -1,6 +1,6 @@
 pkgbase = mingw-w64-qt6-declarative
 	pkgdesc = Classes for QML and JavaScript languages (mingw-w64)
-	pkgver = 6.2.4
+	pkgver = 6.3.0
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = any
@@ -25,9 +25,9 @@ pkgbase = mingw-w64-qt6-declarative
 	options = !buildflags
 	options = staticlibs
 	options = !emptydirs
-	source = https://download.qt.io/official_releases/qt/6.2/6.2.4/submodules/qtdeclarative-everywhere-src-6.2.4.tar.xz
+	source = https://download.qt.io/official_releases/qt/6.3/6.3.0/submodules/qtdeclarative-everywhere-src-6.3.0.tar.xz
 	source = 0001-Exclude-qmltime-when-cross-compiling.patch
-	sha256sums = fa6a8b5bfe43203daf022b7949c7874240ec28b9c4b7ebc52b2e5ea440e6e94f
-	sha256sums = c5890ff7deb09459b67852148e46a596c531e32eba6b658a6eb78490c22423e8
+	sha256sums = d294b029dc2b2d4f65da516fdc3b8088d32643eb7ff77db135a8b9ce904caa37
+	sha256sums = d10e2d89c38460d9f356aeca7033e510f5110885207283a1934dfbd7d1b5aebf
 
 pkgname = mingw-w64-qt6-declarative
