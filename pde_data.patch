@@ -1,0 +1,532 @@
+diff --git a/configure.ac b/configure.ac
+index 44148d2..1670ab9 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -59,7 +59,7 @@ AS_IF([test -n "$kbuilddir"], [
+ 		yoff
+ 	], [
+ 		echo "$kmajor.$kminor.$kmicro.$kstable in $kbuilddir";
+-		if test "$kmajor" -gt 5 -o "$kmajor" -eq 5 -a "$kminor" -gt 16; then
++		if test "$kmajor" -gt 5 -o "$kmajor" -eq 5 -a "$kminor" -gt 17; then
+ 			yon
+ 			echo "WARNING: That kernel version is not officially supported yet. Continue at own luck.";
+ 			yoff
+diff --git a/doc/changelog.rst b/doc/changelog.rst
+new file mode 100644
+index 0000000..77a7c17
+--- /dev/null
++++ b/doc/changelog.rst
+@@ -0,0 +1,156 @@
++v3.19 (2022-02-01)
++==================
++
++* bumped minimum supported kernel version from 4.15 to 4.16
++* xt_condition: make mutex per-net
++* xt_ipp2p: add IPv6 support
++* xt_ECHO, xt_TARPIT: do not build IPv6 parts if kernel has
++  IPv6 build-time disabled
++
++
++v3.18 (2021-03-11)
++==================
++
++* xt_pknock: fix a build failure on ARM 32-bit
++
++
++v3.17 (2021-02-28)
++==================
++
++* xt_pknock: cure a NULL deref
++
++
++v3.16 (2021-02-24)
++==================
++
++* xt_pknock: build fix for ILP32 targets
++
++
++v3.15 (2021-02-05)
++==================
++
++* xt_ECHO: support new function signature of security_skb_classify_flow
++* xt_lscan: add --mirai option
++* Support for Linux 5.11
++
++
++v3.14 (2020-11-24)
++==================
++
++* DELUDE, ECHO, TARPIT: use actual tunnel socket (ip_route_me_harder).
++* geoip: scripts for use with MaxMind DB have been brought back,
++  partly under new names.
++* Gave xt_geoip_fetch a more fitting name, xt_geoip_query.
++
++
++v3.13 (2020-11-20)
++==================
++
++* Support for Linux 4.19.158 and 5.4.78 (ip_route_me_harder)
++
++
++v3.12 (2020-11-19)
++==================
++
++* Support for Linux 5.10 and 5.9.9 API
++  (changes to ip_route_me_harder there)
++
++
++v3.11 (2020-09-06)
++==================
++
++* Support for up to Linux 5.9
++
++
++v3.10 (2020-07-28)
++==================
++
++* Support for up to Linux 5.8
++
++
++v3.9 (2020-02-25)
++=================
++
++* Support for Linux 5.6 procfs changes
++
++
++v3.8 (2020-02-03)
++=================
++
++* Support for Linux 5.5
++* xt_geoip_build now expects the DBIP format as input,
++  Maxmind is thrown out.
++
++
++v3.7 (2019-12-01)
++=================
++
++Fixes:
++
++* xt_geoip: fix in6_addr little-endian byte swapping
++
++
++v3.6 (2019-11-20)
++=================
++
++Enhancements:
++
++* support for up to Linux 5.4
++
++
++v3.5 (2019-09-10)
++=================
++
++Enhancements:
++
++* xt_DELUDE, xt_TARPIT: added additional code needed to work with
++  bridges from Linux 5.0 onwards.
++
++
++v3.4 (2019-09-06)
++=================
++
++Enhancements:
++
++* support for up to Linux 5.3
++* xt_PROTO module
++
++
++v3.3 (2019-03-07)
++=================
++
++Enhancements:
++
++* support for Linux 5.0
++
++
++v3.2 (2018-09-07)
++=================
++
++Changes:
++
++* rework xt_geoip_build to scan the immediate directory for .csv,
++  not to scan for GeoLite2-Country-CSV_\d+.
++
++
++v3.1 (2018-08-14)
++=================
++
++Enhancements:
++
++* support for Linux 4.17, 4.18
++
++
++v3.0 (2018-02-12)
++=================
++
++Enhancements:
++
++* support for Linux 4.15, 4.16
++
++Changes:
++
++* remove support for Linux 3.7--4.14
++
++If you want to use Xtables-addons with kernels older than 4.15,
++use the addons 2.x series.
+diff --git a/doc/changelog.txt b/doc/changelog.txt
+deleted file mode 100644
+index ad17abc..0000000
+--- a/doc/changelog.txt
++++ /dev/null
+@@ -1,251 +0,0 @@
+-v3.19 (2022-02-01)
+-==================
+-- bumped minimum supported kernel version from 4.15 to 4.16
+-- xt_condition: make mutex per-net
+-- xt_ipp2p: add IPv6 support
+-- xt_ECHO, xt_TARPIT: do not build IPv6 parts if kernel has
+-  IPv6 build-time disabled
+-
+-
+-v3.18 (2021-03-11)
+-==================
+-- xt_pknock: fix a build failure on ARM 32-bit
+-
+-
+-v3.17 (2021-02-28)
+-==================
+-- xt_pknock: cure a NULL deref
+-
+-
+-v3.16 (2021-02-24)
+-==================
+-- xt_pknock: build fix for ILP32 targets
+-
+-
+-v3.15 (2021-02-05)
+-==================
+-- xt_ECHO: support new function signature of security_skb_classify_flow
+-- xt_lscan: add --mirai option
+-- Support for Linux 5.11
+-
+-
+-v3.14 (2020-11-24)
+-==================
+-- DELUDE, ECHO, TARPIT: use actual tunnel socket (ip_route_me_harder).
+-- geoip: scripts for use with MaxMind DB have been brought back,
+-  partly under new names.
+-- Gave xt_geoip_fetch a more fitting name, xt_geoip_query.
+-
+-
+-v3.13 (2020-11-20)
+-==================
+-- Support for Linux 4.19.158 and 5.4.78 (ip_route_me_harder)
+-
+-
+-v3.12 (2020-11-19)
+-==================
+-- Support for Linux 5.10 and 5.9.9 API
+-  (changes to ip_route_me_harder there)
+-
+-
+-v3.11 (2020-09-06)
+-==================
+-- Support for up to Linux 5.9
+-
+-
+-v3.10 (2020-07-28)
+-==================
+-- Support for up to Linux 5.8
+-
+-
+-v3.9 (2020-02-25)
+-=================
+-- Support for Linux 5.6 procfs changes
+-
+-
+-v3.8 (2020-02-03)
+-=================
+-- Support for Linux 5.5
+-- xt_geoip_build now expects the DBIP format as input,
+-  Maxmind is thrown out.
+-
+-
+-v3.7 (2019-12-01)
+-=================
+-Fixes:
+-- xt_geoip: fix in6_addr little-endian byte swapping
+-
+-
+-v3.6 (2019-11-20)
+-=================
+-Enhancements:
+-- support for up to Linux 5.4
+-
+-
+-v3.5 (2019-09-10)
+-=================
+-Enhancements:
+-- xt_DELUDE, xt_TARPIT: added additional code needed to work with
+-  bridges from Linux 5.0 onwards.
+-
+-
+-v3.4 (2019-09-06)
+-=================
+-Enhancements:
+-- support for up to Linux 5.3
+-- xt_PROTO module
+-
+-
+-v3.3 (2019-03-07)
+-=================
+-Enhancements:
+-- support for Linux 5.0
+-
+-
+-v3.2 (2018-09-07)
+-=================
+-Changes:
+-- rework xt_geoip_build to scan the immediate directory for .csv,
+-  not to scan for GeoLite2-Country-CSV_\d+.
+-
+-
+-v3.1 (2018-08-14)
+-=================
+-Enhancements:
+-- support for Linux 4.17, 4.18
+-
+-
+-v3.0 (2018-02-12)
+-=================
+-Enhancements:
+-- support for Linux 4.15, 4.16
+-Changes:
+-- remove support for Linux 3.7--4.14
+-
+-
+-v2.14 (2017-11-22)
+-==================
+-Enhancements:
+-- support for Linux up to 4.14
+-Fixes:
+-- xt_DNETMAP: fix some reports from PVSStudio (a static checker)
+-
+-
+-v2.13 (2017-06-29)
+-==================
+-Enhancements:
+-- support for Linux up to 4.12
+-- xt_condition: namespace support
+-Fixes:
+-- xt_geoip: check for allocation overflow
+-- xt_DNETMAP: fix a buffer overflow
+-
+-
+-v2.12 (2017-01-11)
+-==================
+-Enhancements:
+-- support for Linux up to 4.10
+-
+-
+-v2.11 (2016-05-20)
+-==================
+-Enhancements:
+-- support for Linux 4.5, 4.6
+-- xt_ECHO: tentatively support responding to fragments
+-
+-
+-v2.10 (2015-11-20)
+-==================
+-Enhancements:
+-- Support for Linux 4.4
+-Fixes:
+-- xt_ACCOUNT: call free_page with the right amount of pages
+-
+-
+-v2.9 (2015-10-12)
+-=================
+-Enhancements:
+-- Support for Linux 4.3
+-
+-
+-v2.8 (2015-08-19)
+-=================
+-Enhancements:
+-- Support for Linux 4.2
+-- Enable xt_ECHO for Linux 4.0+
+-
+-
+-v2.7 (2015-07-06)
+-=================
+-Enhancements:
+-- Support for Linux up to 4.1
+-
+-
+-v2.6 (2014-09-29)
+-=================
+-Enhancements:
+-- Support for Linux up to 3.17
+-Fixes:
+-- xt_pknock: UDP SPA mode erroneously returned an error saying
+-  crypto was unavailable
+-
+-
+-v2.5 (2014-04-18)
+-=================
+-Enhancements:
+-- Support for Linux up to 3.15
+-- xt_quota2: introduce support for network namespaces
+-
+-
+-v2.4 (2014-01-09)
+-=================
+-Enhancements:
+-- Support for Linux up to 3.13
+-Changes:
+-- remove unmaintained RAWSNAT/RAWDNAT code
+-- remove unused parts of compat_xtables that served Linux <3.7
+-Fixes:
+-- xt_quota2: --no-change should not alter quota to zero ever
+-- xt_quota2: --packet should not be set to zero based on skb->len
+-
+-
+-v2.3 (2013-06-18)
+-=================
+-Enhancements:
+-- Support for Linux 3.10
+-Fixes:
+-- xt_DNETMAP, xt_condition, xt_quota2: resolve compile error when
+-  CONFIG_UIDGID_STRICT_TYPE_CHECKS=y
+-- xt_RAWNAT: ensure correct operation in the presence of IPv4 options
+-- xt_geoip: do not throw a warnings when country database is size 0
+-- xt_quota2: print "!" at the correct position during iptables-save
+-Changes:
+-- Make print (iptables -L) output the same as save (-S)
+-
+-
+-v2.2 (2013-03-31)
+-=================
+-Enhancements:
+-- Support for Linux 3.9
+-- iptaccount: fix entire program being erroneously optimized away on PPC
+-
+-
+-v2.1 (2012-11-27)
+-=================
+-Fixes:
+-- DNETMAP: fix compile error with Linux 3.7
+-Enhancements:
+-- Support for Linux 3.8
+-
+-
+-v2.0 (2012-11-12)
+-=================
+-Changes:
+-- remove support for Linux 2.6.17–3.6
+-- remove xt_TEE (this is available upstream since 2.6.35)
+-- remove xt_CHECKSUM (this is available upstream since 2.6.36)
+-Enhancements:
+-- Support for Linux 3.7
+-
+-If you want to use Xtables-addons with kernels older than 4.15,
+-use the addons 2.x series.
+diff --git a/extensions/compat_xtables.h b/extensions/compat_xtables.h
+index eff3bde..1feea88 100644
+--- a/extensions/compat_xtables.h
++++ b/extensions/compat_xtables.h
+@@ -26,6 +26,9 @@
+ #	define ip_route_me_harder(xnet, xsk, xskb, xaddrtype) ip_route_me_harder((xnet), (xskb), (xaddrtype))
+ #	define ip6_route_me_harder(xnet, xsk, xskb) ip6_route_me_harder((xnet), (xskb))
+ #endif
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 17, 0)
++#	define pde_data(inode) PDE_DATA(inode)
++#endif
+ 
+ static inline struct net *par_net(const struct xt_action_param *par)
+ {
+diff --git a/extensions/pknock/xt_pknock.c b/extensions/pknock/xt_pknock.c
+index 3c304e0..287d525 100644
+--- a/extensions/pknock/xt_pknock.c
++++ b/extensions/pknock/xt_pknock.c
+@@ -277,7 +277,7 @@ pknock_proc_open(struct inode *inode, struct file *file)
+ 	int ret = seq_open(file, &pknock_seq_ops);
+ 	if (ret == 0) {
+ 		struct seq_file *sf = file->private_data;
+-		sf->private = PDE_DATA(inode);
++		sf->private = pde_data(inode);
+ 	}
+ 	return ret;
+ }
+diff --git a/extensions/xt_DNETMAP.c b/extensions/xt_DNETMAP.c
+index b850918..68074e7 100644
+--- a/extensions/xt_DNETMAP.c
++++ b/extensions/xt_DNETMAP.c
+@@ -575,15 +575,14 @@ static int dnetmap_seq_open(struct inode *inode, struct file *file)
+ 	st = __seq_open_private(file, &dnetmap_seq_ops, sizeof(*st));
+ 	if (st == NULL)
+ 		return -ENOMEM;
+-
+-	st->p = PDE_DATA(inode);
++	st->p = pde_data(inode);
+ 	return 0;
+ }
+ 
+ static ssize_t
+ dnetmap_tg_proc_write(struct file *file, const char __user *input,size_t size, loff_t *loff)
+ {
+-	struct dnetmap_prefix *p = PDE_DATA(file_inode(file));
++	struct dnetmap_prefix *p = pde_data(file_inode(file));
+ 	struct dnetmap_entry *e;
+ 	char buf[sizeof("+192.168.100.100:200.200.200.200")];
+ 	const char *c = buf;
+@@ -793,7 +792,7 @@ static int dnetmap_stat_proc_show(struct seq_file *m, void *data)
+ 
+ static int dnetmap_stat_proc_open(struct inode *inode, struct file *file)
+ {
+-	return single_open(file, dnetmap_stat_proc_show, PDE_DATA(inode));
++	return single_open(file, dnetmap_stat_proc_show, pde_data(inode));
+ }
+ 
+ static const struct proc_ops dnetmap_stat_proc_fops = {
+diff --git a/extensions/xt_condition.c b/extensions/xt_condition.c
+index cf07966..41639c3 100644
+--- a/extensions/xt_condition.c
++++ b/extensions/xt_condition.c
+@@ -83,14 +83,14 @@ static int condition_proc_show(struct seq_file *m, void *data)
+ 
+ static int condition_proc_open(struct inode *inode, struct file *file)
+ {
+-	return single_open(file, condition_proc_show, PDE_DATA(inode));
++	return single_open(file, condition_proc_show, pde_data(inode));
+ }
+ 
+ static ssize_t
+ condition_proc_write(struct file *file, const char __user *buffer,
+                      size_t length, loff_t *loff)
+ {
+-	struct condition_variable *var = PDE_DATA(file_inode(file));
++	struct condition_variable *var = pde_data(file_inode(file));
+ 	char newval;
+ 
+ 	if (length > 0) {
+diff --git a/extensions/xt_quota2.c b/extensions/xt_quota2.c
+index 70bf095..182771e 100644
+--- a/extensions/xt_quota2.c
++++ b/extensions/xt_quota2.c
+@@ -73,14 +73,14 @@ static int quota_proc_show(struct seq_file *m, void *data)
+ 
+ static int quota_proc_open(struct inode *inode, struct file *file)
+ {
+-	return single_open(file, quota_proc_show, PDE_DATA(inode));
++	return single_open(file, quota_proc_show, pde_data(inode));
+ }
+ 
+ static ssize_t
+ quota_proc_write(struct file *file, const char __user *input,
+                  size_t size, loff_t *loff)
+ {
+-	struct xt_quota_counter *e = PDE_DATA(file_inode(file));
++	struct xt_quota_counter *e = pde_data(file_inode(file));
+ 	char buf[sizeof("+-18446744073709551616")];
+ 
+ 	if (size > sizeof(buf))
