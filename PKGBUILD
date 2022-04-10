@@ -1,18 +1,19 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=master-key-git
-pkgver=1.2.0.r1.g345c41b
+pkgver=1.3.0.r2.g4d6c44e
 pkgrel=1
-pkgdesc="Master Key is a password manager application built with Python 3 and GTK that generates and manages passwords without the need to store them"
+pkgdesc="A password manager application"
 arch=('any')
 url="https://gitlab.com/guillermop/master-key"
 license=('GPL3')
-depends=('gtk4' 'glib2' 'libadwaita' 'sassc' 'libsass' 'python' 'python-gobject' 'libpwquality' 'sqlcipher' 'tcl')
+depends=('glib2' 'libadwaita' 'python-gobject' 'libpwquality' 'sqlcipher' 'tcl')
 makedepends=('git' 'meson' 'gobject-introspection')
+checkdepends=('appstream-glib' 'desktop-file-utils')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(git+$url.git)
-sha256sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -23,15 +24,17 @@ pkgver() {
 }
 
 build() {
-  arch-meson "${pkgname%-git}" _build
-  meson compile -C _build
+  arch-meson "${pkgname%-git}" build
+  meson compile -C build
 }
+
+#check() {
+#  meson test -C build
+#}
 
 package() {
-  cd "$srcdir"
-  DESTDIR="$pkgdir" ninja install -C _build
+  meson install -C build --destdir "$pkgdir"
 }
-
 
 
 
