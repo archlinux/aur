@@ -1,0 +1,139 @@
+diff -ur itools-1.0/ical.c itools-1.0p/ical.c
+--- itools-1.0/ical.c	2009-03-09 07:17:51.000000000 +0300
++++ itools-1.0p/ical.c	2022-04-10 19:56:52.275173153 +0300
+@@ -98,17 +98,17 @@
+ do_init(Date *mydate,
+ 	sDate *pdate)
+ {
+-   mydate->year		= (int) NULL;
+-   mydate->month	= (int) NULL;
+-   mydate->day		= (int) NULL;
++   mydate->year		= (long) NULL;
++   mydate->month	= (long) NULL;
++   mydate->day		= (long) NULL;
+ 
+-   pdate->day		= (int) NULL;
+-   pdate->month		= (int) NULL;
+-   pdate->year		= (int) NULL;
+-   pdate->weekday	= (int) NULL;
+-   pdate->frm_numdays	= (int) NULL;
+-   pdate->to_numdays	= (int) NULL;
+-   pdate->to_numdays2	= (int) NULL;
++   pdate->day		= (long) NULL;
++   pdate->month		= (long) NULL;
++   pdate->year		= (long) NULL;
++   pdate->weekday	= (long) NULL;
++   pdate->frm_numdays	= (long) NULL;
++   pdate->to_numdays	= (long) NULL;
++   pdate->to_numdays2	= (long) NULL;
+    pdate->frm_dname	= (char *) NULL;
+    pdate->frm_mname	= (char *) NULL;
+    pdate->frm_dname_sh	= (char *) NULL;
+diff -ur itools-1.0/idate.c itools-1.0p/idate.c
+--- itools-1.0/idate.c	2009-03-09 07:17:51.000000000 +0300
++++ itools-1.0p/idate.c	2022-04-10 19:56:32.064509284 +0300
+@@ -115,17 +115,17 @@
+ do_init(Date *mydate,
+ 	sDate *pdate)
+ {
+-   mydate->year		= (int) NULL;
+-   mydate->month	= (int) NULL;
+-   mydate->day		= (int) NULL;
++   mydate->year		= (long) NULL;
++   mydate->month	= (long) NULL;
++   mydate->day		= (long) NULL;
+ 
+-   pdate->day		= (int) NULL;
+-   pdate->month		= (int) NULL;
+-   pdate->year		= (int) NULL;
+-   pdate->weekday	= (int) NULL;
+-   pdate->frm_numdays	= (int) NULL;
+-   pdate->to_numdays	= (int) NULL;
+-   pdate->to_numdays2	= (int) NULL;
++   pdate->day		= (long) NULL;
++   pdate->month		= (long) NULL;
++   pdate->year		= (long) NULL;
++   pdate->weekday	= (long) NULL;
++   pdate->frm_numdays	= (long) NULL;
++   pdate->to_numdays	= (long) NULL;
++   pdate->to_numdays2	= (long) NULL;
+ //   pdate->units		= (char *) NULL;
+    pdate->units		= "A.H";
+    pdate->frm_dname	= (char *) NULL;
+diff -ur itools-1.0/ipraytime.c itools-1.0p/ipraytime.c
+--- itools-1.0/ipraytime.c	2009-03-09 07:17:51.000000000 +0300
++++ itools-1.0p/ipraytime.c	2022-04-10 20:12:49.453224301 +0300
+@@ -384,9 +384,9 @@
+    loc->gmtDiff                 = -99;
+    loc->dst                     = -99;
+    
+-   date->year                   = (int) NULL;
+-   date->month                  = (int) NULL;
+-   date->day                    = (int) NULL;
++   date->year                   = (long) NULL;
++   date->month                  = (long) NULL;
++   date->day                    = (long) NULL;
+ 
+    filename = get_rcfilename();
+ 
+@@ -460,21 +460,21 @@
+ 
+    int deg, min;
+    double sec;
+-   const char symb = (char)0xB0;
++   const char *symb_str = "\xC2\xB0";
+ 
+    printf("\n");
+    printf("Prayer schedule for,\n");
+ 
+    /* Print Cityname if there is something to print */
+-   if (city_name[0] != (char) NULL)
++   if (city_name[0] != (char) 0)
+       printf(" City             : %s\n", city_name);
+     
+    decimal2Dms(loc->degreeLat, &deg, &min, &sec);
+-   printf(" Latitude         : %03d%c %02d\' %02d\" %c\n", abs(deg), symb,
++   printf(" Latitude         : %03d%s %02d\' %02d\" %c\n", abs(deg), symb_str,
+           abs(min), abs(sec), (loc->degreeLat >=0 ? 'N' : 'S'));
+ 
+    decimal2Dms(loc->degreeLong, &deg, &min, &sec);
+-   printf(" Longitude        : %03d%c %02d\' %02d\" %c\n", abs(deg), symb,
++   printf(" Longitude        : %03d%s %02d\' %02d\" %c\n", abs(deg), symb_str,
+           abs(min), abs(sec), (loc->degreeLong >=0 ? 'E' : 'W'));
+ 
+    printf(" Angle Method     : %s\n", method_name);
+@@ -485,8 +485,8 @@
+    /* Deal with Qibla Information */
+    qibla        = getNorthQibla(loc);
+    decimal2Dms (qibla, &deg, &min, &sec);
+-   printf(" Qibla            : %03d%c %02d\' %02d\" %c of true North\n",
+-          abs (deg), symb, abs (min), abs (sec), (qibla >=0 ? 'W' : 'E'));
++   printf(" Qibla            : %03d%s %02d\' %02d\" %c of true North\n",
++          abs (deg), symb_str, abs (min), abs (sec), (qibla >=0 ? 'W' : 'E'));
+ 
+    printf("\n");
+ 
+@@ -908,7 +908,7 @@
+    /* Fill the city name */
+    if (user_input.city && !user_cmdline)
+    {
+-      sprintf(city_name, user_input.city);
++      sprintf(city_name, "%s", user_input.city);
+       free(user_input.city);
+    }
+    else
+@@ -932,11 +932,11 @@
+ #endif
+ 
+    /* see if the date strucutre has been set to a value */
+-   if (date.day == (int) NULL)
++   if (date.day == (long) NULL)
+       date.day   = t_ptr->tm_mday;
+-   if (date.month == (int) NULL)
++   if (date.month == (long) NULL)
+       date.month = t_ptr->tm_mon  + 1;
+-   if (date.year == (int) NULL)
++   if (date.year == (long) NULL)
+       date.year  = t_ptr->tm_year + 1900;
+   
+    /* Fill the location info. structure */
