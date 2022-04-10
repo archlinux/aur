@@ -1,7 +1,7 @@
 pkgbase = davinci-resolve
 	pkgdesc = Professional A/V post-production software suite from Blackmagic Design
 	pkgver = 17.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.blackmagicdesign.com/support/family/davinci-resolve-and-fusion
 	install = davinci-resolve.install
 	arch = any
@@ -22,12 +22,13 @@ pkgbase = davinci-resolve
 	depends = qt5-webkit
 	depends = qt5-webengine
 	depends = qt5-websockets
+	depends = libxcrypt-compat
 	provides = davinci-resolve
 	conflicts = davinci-resolve-studio
 	conflicts = davinci-resolve-beta
 	conflicts = davinci-resolve-studio-beta
 	options = !strip
-	source = DaVinci_Resolve_17.4.6_Linux.zip::https://sw.blackmagicdesign.com/DaVinciResolve/v17.4.6/DaVinci_Resolve_17.4.6_Linux.zip?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=aGQ3bAnnERjfhossqp70+hxOkjvwOamTge5hoLaStgYRFjvNe8Wiibu093tHI9eh1p5iJ3UzQUnxkG8/f30yW5+YV/nyBjATDsGaE49aDZwWc1fRgVVO7SyTUBoi5z+zQOnMDZuouJjC4KKb5ognYOHMVY8RJ05uGgFGuM18fvp0KCBHFEgNQPLcuIinpzbaL/FENdP3LOCUCKFLiOZNW7yJAxxYELkcgVbBW56+jN3ZSBIOGyvaDpOi5+upiEQ491FTJ21ZKNpZD8ZuSXxCl9j2W0309R9TlL9V7BqnwoxHNJpcqBp2NgqXxJDWzeQJ8HkTuBbG5RoRId/Itqziiw==&Expires=1648987846
+	source = DaVinci_Resolve_17.4.6_Linux.zip::https://sw.blackmagicdesign.com/DaVinciResolve/v17.4.6/DaVinci_Resolve_17.4.6_Linux.zip?Key-Pair-Id=APKAJTKA3ZJMJRQITVEA&Signature=lMfGNmvOrCA4dPHerB/uVKBqjsgKm5uxqXuNpaZmZ3Hrsw8IJhqBkbOFb2fiFrGfu8tuExYuy7X+8ToL7gQxfFJJ3tdQZkXDNNIoX7Ehx3G+ASzixE36qkZ/uhNOgMUhtnDfZRNfBSr44S5T2VMuLKj/9QNS4CDMhi597TeqnwbqN5lDNPy4VsRpAW5JgebuS9QPrfw5IXpTYm+Jv6033CZ4iCprZrCHIxAajO7ZcNaNyE6ev6YliYXGyacGIIFiisHNfL+afGPlBnkbJ74W7n/ieJYj1RYi+PPivQUBS3rr6p91DoG6WVttWbZ5PMY1+qBGoMhadU8ExstxKMVD2g==&Expires=1649596011
 	sha256sums = 1b40cd2d0fc9590f4a2b732d70fb232c96a5999ce49638b739e5d7ed308b9b6e
 
 pkgname = davinci-resolve
