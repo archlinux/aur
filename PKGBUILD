@@ -2,7 +2,7 @@
 # Maintainer: Patrick Wicki <patrick.wicki96@gmail.com>
 
 pkgname=gnome-meta
-pkgver=40
+pkgver=42
 pkgrel=1
 pkgdesc='Meta package for installing the gnome group'
 arch=(any)
@@ -27,7 +27,6 @@ depends=(
   gnome-contacts
   gnome-control-center
   gnome-disk-utility
-  gnome-documents
   gnome-font-viewer
   gnome-keyring
   gnome-logs
@@ -44,7 +43,6 @@ depends=(
   gnome-software
   gnome-system-monitor
   gnome-terminal
-  gnome-themes-extra
   gnome-user-docs
   gnome-user-share
   gnome-video-effects
@@ -60,13 +58,13 @@ depends=(
   gvfs-smb
   mutter
   nautilus
-  networkmanager
   orca
   rygel
   sushi
   totem
   tracker
   tracker-miners
+  tracker3-miners
   vino
   xdg-user-dirs-gtk
   yelp
