@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-backslide-git
 _pkgname="backslide"
-pkgver=r130.954274f
+pkgver=r144.d700daf
 pkgrel=1
 pkgdesc="A simple Gnome-Shell Extension for an automatic background-image (wallpaper) slideshow."
 arch=('any')
