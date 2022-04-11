@@ -9,7 +9,7 @@
 
 pkgname=mutter-rounded
 pkgver=42.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A window manager for GNOME, with rounded corners patch (integrate mr1441)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -21,7 +21,6 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof gi-docgen)
 checkdepends=(xorg-server-xvfb python-dbusmock wireplumber)
-options=(debug)
 provides=(libmutter-10.so mutter)
 conflicts=(mutter)
 install=mutter-rounded.install
@@ -70,6 +69,13 @@ prepare() {
   mv mutter_settings/dist/mutter_settings.js mutter_settings/dist/mutter_settings
 
   cd $pkgname
+
+  # Fix Dash-to-dock not autohiding
+  git cherry-pick -n 2aad56b949b8 0280b0aaa563
+
+  # https://bugs.archlinux.org/task/74360
+  git cherry-pick -n f9857cb8bd7af20e819283917ae165fa40c19f07
+  
   find -name "*.orig" -exec rm {} \;
   cp $srcdir/*.[ch] $srcdir/$pkgname/src
   patch -p1 < $srcdir/rounded_corners.patch
