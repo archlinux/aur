@@ -1,0 +1,41 @@
+post_install() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	echo "Настройка работы приложения"
+
+	/opt/assistant/scripts/daemon.sh --install
+
+	/opt/assistant/scripts/cert.sh --install
+
+	/opt/assistant/scripts/trust_change.sh --install
+
+	if [[ $? != 0 ]]
+	then
+	    echo "Настройка приложения завершена с ошибкой"
+	    exit 1
+	fi
+
+	[[ -d /usr/share/applications ]] && cp -p /opt/assistant/scripts/assistant.desktop /usr/share/applications/
+
+	echo "Настройка приложения завершена"
+	update-desktop-database -q
+}
+
+post_upgrade() {
+	post_install
+}
+
+pre_remove() {
+
+	[[ -f /opt/assistant/scripts/daemon.sh ]] && /opt/assistant/scripts/daemon.sh --uninstall || true
+	[[ -f /opt/assistant/scripts/cert.sh ]] && /opt/assistant/scripts/cert.sh --uninstall || true
+	[[ -f /opt/assistant/scripts/trust_change.sh ]] && /opt/assistant/scripts/trust_change.sh --uninstall || true
+
+	rm -f /usr/share/applications/assistant.desktop
+
+}
+
+post_remove() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	update-desktop-database -q
+}
