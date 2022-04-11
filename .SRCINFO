@@ -1,7 +1,7 @@
 pkgbase = fceux-git
 	pkgdesc = Fast and ultra-compatible NES/Famicom emulator with SDL, OpenGL and SVGALIB support
 	pkgver = 2.3.0.17.gc6752c41
-	pkgrel = 1
+	pkgrel = 2
 	url = http://fceux.com/
 	arch = i686
 	arch = x86_64
@@ -19,8 +19,7 @@ pkgbase = fceux-git
 	optdepends = xchm: for viewing the help manual
 	provides = fceux
 	conflicts = fceux
-	source = git://github.com/TASVideos/fceux.git
+	source = git+https://github.com/TASVideos/fceux.git
 	md5sums = SKIP
 
 pkgname = fceux-git
-

@@ -1,8 +1,8 @@
-# Maintainer: Lukas Sabota <LTsmooth42 _at_ gmail _dot_ com>
+# Maintainer: prg <prg-archlinux _at_ xannode _dot com>
 
 pkgname=fceux-git
 pkgver=2.3.0.17.gc6752c41
-pkgrel=1
+pkgrel=2
 pkgdesc="Fast and ultra-compatible NES/Famicom emulator with SDL, OpenGL and SVGALIB support"
 arch=('i686' 'x86_64')
 url="http://fceux.com/"
@@ -12,7 +12,7 @@ makedepends=('git' 'cmake' 'make' 'pkgconf' 'mesa-libgl' 'glu')
 optdepends=('xchm: for viewing the help manual')
 provides=('fceux')
 conflicts=('fceux')
-source=(git://github.com/TASVideos/fceux.git)
+source=(git+https://github.com/TASVideos/fceux.git)
 md5sums=('SKIP')
 
 pkgver() {
