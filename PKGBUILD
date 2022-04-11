@@ -29,7 +29,7 @@ depends=(
         'python-langdetect'
         'python-setproctitle'
         'python-redis'
-        'python-mistletoe'
+        'python-markdown-it-py'
         'python-typing_extensions')
 conflicts=('searx' 'searx-git')
 backup=('etc/searxng/settings.yml' 'etc/uwsgi/vassals/searxng.ini')
