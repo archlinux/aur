@@ -1,8 +1,10 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Robert Kubosz <kubosz.robert@gmail.com>
 
+## GPG key: https://github.com/trevorbaca.gpg
+
 pkgname=python-abjad-ext-nauert
-pkgver=3.6
+pkgver=3.8
 pkgrel=1
 pkgdesc="Abjad quantization extension, based on Paul Nauert's Q-Grids"
 arch=('any')
@@ -10,13 +12,14 @@ url="https://github.com/abjad/abjad-ext-nauert"
 license=('MIT')
 groups=('abjad')
 depends=("python-abjad>=$pkgver")
-makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+makedepends=('git' 'python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 # checkdepends=('python-pytest')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('87d0aa7aa075805f68bbf71552b8494d7affe1d512f6fb27b891a47d61893e96')
+source=("$pkgname::git+$url#tag=v$pkgver?signed")
+sha256sums=('SKIP')
+validpgpkeys=('B76E156E7824B5040027E7C6205943F230B622B9') ## Trevor Baca
 
 build() {
-	cd "abjad-ext-nauert-$pkgver"
+	cd "$pkgname"
 	python -m build --wheel --no-isolation
 }
 
@@ -27,8 +30,11 @@ build() {
 # }
 
 package() {
-	export PYTHONHASHSEED=0
-	cd "abjad-ext-nauert-$pkgver"
-	python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	cd "$pkgname"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s \
+		"$_site/abjad_ext_nauert-$pkgver.dist-info/LICENSE" \
+		"$pkgdir/usr/share/licenses/$pkgname/"
 }
