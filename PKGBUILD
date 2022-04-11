@@ -1,7 +1,7 @@
 # Maintainer: silverhikari
 pkgname=audacium-git
 pkgver=1.0.0.r56.ge9ea30102
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="telemetry free version of audacity"
 arch=(x86_64)
