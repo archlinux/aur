@@ -2,7 +2,7 @@
 
 pkgname=whatsapp-nativefier-notray-hook
 pkgver=1
-pkgrel=3
+pkgrel=4
 pkgdesc="Pacman hook to disable whatsapp-nativefier tray after install or upgrade."
 arch=("any")
 install=whatsapp-nativefier-notray-hook.install
