@@ -1,7 +1,7 @@
 pkgbase = tetris-cli-git
 	pkgdesc = A tetris game that runs in a terminal
 	pkgver = 22.411
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.github.com/blueOkiris/tetris-cli
 	arch = any
 	license = GPL3
