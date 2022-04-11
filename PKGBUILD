@@ -1,7 +1,7 @@
 # Maintainer: Juliette Cordor
 pkgname="cmd-not-found"
 pkgver="1.0.0"
-pkgrel="4"
+pkgrel="5"
 pkgdesc="A simple hook to display required packages when a command is not found"
 url=""
 arch=("any")
