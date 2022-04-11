@@ -1,0 +1,14 @@
+pkgbase = spiritfarer-appimage
+	pkgdesc = Spiritfarer (AppImage version)
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://www.linuxgame.cn/%e7%81%b5%e9%ad%82%e6%91%86%e6%b8%a1%e4%ba%ba-spiritfarer
+	arch = x86_64
+	provides = spiritfarer=1.0
+	options = !strip
+	source = spiritfarer-1.0.appimage::https://de.linuxgame.cn/%E7%81%B5%E9%AD%82%E6%91%86%E6%B8%A1%E4%BA%BA/Spiritfarer_32138b_amd64.appimage
+	source = spiritfarer.sh
+	sha256sums = 182e14e8bc64db4f505365ec5d88e1481ea7bcd0f4a8691b3a827c948e6e8b03
+	sha256sums = 237e093d8fc27a48d65e337a4bb56f17308f8b28271d173a4e8295b34385ecf3
+
+pkgname = spiritfarer-appimage
