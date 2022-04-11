@@ -2,7 +2,7 @@
 
 pkgname=clash-premium-bin
 pkgver=2022.04.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Close-sourced pre-built Clash binary with TUN support"
 provides=("clash")
 conflicts=("clash" "clash-tun" "clash-dev-git")
