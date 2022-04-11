@@ -1,7 +1,7 @@
 # Maintainer: Justin Holz <jholz88@arcaneventures.llc>
 pkgname=chromium-extension-privacy-redirect-av
 pkgver=1.1.49
-pkgrel=0
+pkgrel=1
 pkgdesc="Chromium Privacy Redirect extension"
 arch=('any')
 url="https://github.com/SimonBrazell/privacy-redirect"
@@ -10,6 +10,7 @@ provides=('chromium-extension-privacy-redirect')
 conflicts=('chromium-extension-privacy-redirect')
 makedepends=(
 	'chromium'
+	'freetube'
 	'jq'
 	'npm'
 	'openssl'
@@ -48,6 +49,10 @@ build() {
 	cd ../privacy-redirect.chromium
 	jq --ascii-output --arg key "${public_key}" '. + {key: $key}' manifest.json > manifest.json.new
 	mv manifest.json.new manifest.json
+
+	# Modify defaults
+	sed -i '642s/],/, "useFreeTube"],/' ./pages/background/background.js
+	sed -i '659 i \ \ \ \ \ \ if (result.useFreeTube === undefined) {\n        browser.storage.sync.set({\n          useFreeTube: true,\n        });\n      }' ./pages/background/background.js
 
 	# Pack extension
 	cd ..

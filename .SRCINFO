@@ -1,11 +1,12 @@
 pkgbase = chromium-extension-privacy-redirect-av
 	pkgdesc = Chromium Privacy Redirect extension
 	pkgver = 1.1.49
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/SimonBrazell/privacy-redirect
 	arch = any
 	license = gpl-3.0
 	makedepends = chromium
+	makedepends = freetube
 	makedepends = jq
 	makedepends = npm
 	makedepends = openssl
