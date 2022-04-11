@@ -1,0 +1,18 @@
+pkgbase = thingsboard-bin
+	pkgdesc = ThingsBoard is an open-source IoT platform for data collection, processing, visualization, and device management.
+	pkgver = 3.3.4.1
+	pkgrel = 1
+	url = https://github.com/thingsboard/thingsboard
+	install = thingsboard.install
+	arch = any
+	license = APACHE
+	depends = jdk11-openjdk
+	provides = thingsboard
+	provides = thingsboard-bin
+	conflicts = thingsboard
+	conflicts = thingsboard-git
+	backup = etc/thingsboard/conf
+	source = https://github.com/thingsboard/thingsboard/releases/download/v3.3.4.1/thingsboard-3.3.4.1.deb
+	sha256sums = SKIP
+
+pkgname = thingsboard-bin
