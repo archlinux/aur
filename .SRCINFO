@@ -1,0 +1,14 @@
+pkgbase = copycat-git
+	pkgdesc = A library for intercepting system calls
+	pkgver = 0.1.r0.gfeda396
+	pkgrel = 1
+	url = https://github.com/vimpostor/copycat
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	source = git+https://github.com/vimpostor/copycat.git
+	md5sums = SKIP
+
+pkgname = copycat-git
