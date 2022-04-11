@@ -12,7 +12,7 @@ makedepends=(wofi libqalculate)
 checkdepends=()
 optdepends=()
 provides=(wofi-calc-git)
-conflicts=(wofi-calc-git)
+conflicts=(wofi-calc-git wofi-calc)
 replaces=()
 backup=()
 options=()
@@ -31,5 +31,5 @@ pkgver() {
 package() {
    # Note: 'install' is a chmod+cp one-liner command by GNU
    mkdir -p "$pkgdir"/usr/bin
-   install -m 111 "${srcdir}"/wofi-calc.sh "$pkgdir"/usr/bin/wofi-calc
+   install -m 555 "${srcdir}"/wofi-calc.sh "$pkgdir"/usr/bin/wofi-calc
 }
