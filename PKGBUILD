@@ -2,10 +2,10 @@
 
 pkgname=4store
 pkgver=1.1.6
-pkgrel=2
+pkgrel=4
 pkgdesc="Efficient, scalable and stable RDF database"
 arch=('i686' 'x86_64')
-url="http://www.4store.org"
+url="https://github.com/4store/4store"
 license=('GPL')
 depends=('raptor' 'rasqal' 'glib2' 'libxml2' 'pcre' 'avahi' 'readline' 'ncurses' 'termcap' 'expat' 'zlib')
 options=('!emptydirs')
@@ -21,13 +21,14 @@ prepare()
 	./autogen.sh
 	./configure --prefix=/usr
 	sed -i 's/#define _XOPEN_SOURCE/#define _GNU_SOURCE/' src/frontend/filter-datatypes.c
+	sed -i 's/GStaticMutex rasqal_mutex/extern GStaticMutex rasqal_mutex/' src/frontend/query.h
 }
 
 build()
 {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 
-	make
+	LDFLAGS=-Wl make
 }
 
 package()
