@@ -2,15 +2,15 @@
 
 pkgname=whatsapp-nativefier-notray-hook
 pkgver=1
-pkgrel=2
+pkgrel=3
 pkgdesc="Pacman hook to disable whatsapp-nativefier tray after install or upgrade."
 arch=("any")
 install=whatsapp-nativefier-notray-hook.install
 license=("MIT")
 depends=('whatsapp-nativefier')
 source=(whatsapp-nativefier-notray.hook whatsapp-nativefier-notray)
-sha1sums=("019bc488c1b5ebf402a9e0a6e47eaf9565f20411"
-	"8ad521854a407a848b21db10b557491240a60f84")
+sha1sums=('019bc488c1b5ebf402a9e0a6e47eaf9565f20411'
+          '23237f192fab460129ceb3a0b27821be028d4f8a')
 
 package() {
     install -m755 -d "${pkgdir}/usr/share/libalpm/hooks"
