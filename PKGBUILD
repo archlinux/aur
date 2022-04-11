@@ -9,29 +9,27 @@
 
 pkgname=gnome-terminal-transparency
 _pkgname=gnome-terminal
-pkgver=3.42.2
+pkgver=3.44.0
 pkgrel=1
 pkgdesc="The GNOME Terminal Emulator with background transparency"
 url="https://wiki.gnome.org/Apps/Terminal"
 arch=(x86_64)
 license=(GPL)
-depends=('vte3>=0.66.0' gsettings-desktop-schemas)
+depends=(vte3 gsettings-desktop-schemas)
 makedepends=(docbook-xsl libnautilus-extension gnome-shell yelp-tools meson)
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 groups=(gnome)
 changelog=package.changelog
+options=(debug)
 source=(https://download.gnome.org/sources/$_pkgname/${pkgver:0:4}/$_pkgname-$pkgver.tar.xz
-        transparency.patch
-		build_fix_for_newer_meson.patch)
-sha256sums=('8a9c8e5ef7a3a73b246a947e1190bb08ec98935af860cf0b3aa2fbf4606817a0'
-            '54dd17bdfacee0b7da5ddb2628eae3d5d2bb931ed5666faa7af8fd6cba1c5ea1'
-            '47ef721df168ba3e7e451df0669b01bec2ce3d553d4e59dcfb10462215470ba2')
+        transparency.patch)
+sha256sums=('aa967189eeb609459e6c0a468a01ea70cb8c4530da1d500b2d3f4fc438b8fe2a'
+            '095d356e0740a4e7a029175c75556bcf20f612cdda79a26d5885254d06f54e42')
 
 prepare() {
   cd $_pkgname-$pkgver
   patch -Np1 -i ../transparency.patch
-  patch -Np1 -i ../build_fix_for_newer_meson.patch
 }
 
 build() {

@@ -1,7 +1,301 @@
-From 81cc88e1f0ce5db52def90d54f035d2b45f8fa91 Mon Sep 17 00:00:00 2001
+From d45f7110f6774c1eaf334fc11bae1311e7e36ac1 Mon Sep 17 00:00:00 2001
+From: Christian Persch <chpe@src.gnome.org>
+Date: Mon, 13 Sep 2021 00:17:00 +0200
+Subject: [PATCH 01/18] metainfo: Remove XML namespaces
+
+They breaks merging translations due to gettext bug
+https://savannah.gnu.org/bugs/?54472 .
+
+https://gitlab.gnome.org/GNOME/gnome-terminal/-/issues/356
+---
+ data/org.gnome.Terminal.Nautilus.metainfo.xml.in | 6 +-----
+ data/org.gnome.Terminal.metainfo.xml.in          | 6 +-----
+ 2 files changed, 2 insertions(+), 10 deletions(-)
+
+diff --git a/data/org.gnome.Terminal.Nautilus.metainfo.xml.in b/data/org.gnome.Terminal.Nautilus.metainfo.xml.in
+index bce73491..a28b79f8 100644
+--- a/data/org.gnome.Terminal.Nautilus.metainfo.xml.in
++++ b/data/org.gnome.Terminal.Nautilus.metainfo.xml.in
+@@ -27,11 +27,7 @@
+   of the GNU Free Documentation License along with this program.
+   If not, see <https://www.gnu.org/licenses/>.
+ -->
+-<component
+-  xmlns="https://specifications.freedesktop.org/metainfo/1.0"
+-  xmlns:xi="http://www.w3.org/2001/XInclude"
+-  xmlns:its="http://www.w3.org/2005/11/its"
+-  type="addon">
++<component type="addon">
+   <id>org.gnome.Terminal.Nautilus</id>
+   <extends>org.gnome.Nautilus.desktop</extends>
+   <metadata_license>GPL-3.0+ or GFDL-1.3-only</metadata_license>
+diff --git a/data/org.gnome.Terminal.metainfo.xml.in b/data/org.gnome.Terminal.metainfo.xml.in
+index 6a4e7de5..da5e7d2b 100644
+--- a/data/org.gnome.Terminal.metainfo.xml.in
++++ b/data/org.gnome.Terminal.metainfo.xml.in
+@@ -27,11 +27,7 @@
+   of the GNU Free Documentation License along with this program.
+   If not, see <https://www.gnu.org/licenses/>.
+ -->
+-<component
+-  xmlns="https://specifications.freedesktop.org/metainfo/1.0"
+-  xmlns:xi="http://www.w3.org/2001/XInclude"
+-  xmlns:its="http://www.w3.org/2005/11/its"
+-  type="desktop-application">
++<component type="desktop-application">
+   <id>org.gnome.Terminal.desktop</id>
+   <metadata_license>GPL-3.0+ or GFDL-1.3-only</metadata_license>
+   <project_license>GPL-3.0+</project_license>
+-- 
+2.35.1
+
+
+From 79ff1e786c63a7e40dc433499949b2ae7112c47f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Marek=20=C4=8Cernock=C3=BD?= <marek@manet.cz>
+Date: Fri, 24 Sep 2021 15:06:52 +0200
+Subject: [PATCH 02/18] Updated Czech translation
+
+---
+ po/cs.po | 120 +++++++++++--------------------------------------------
+ 1 file changed, 23 insertions(+), 97 deletions(-)
+
+diff --git a/po/cs.po b/po/cs.po
+index 1beaf216..5a4d02a4 100644
+--- a/po/cs.po
++++ b/po/cs.po
+@@ -14,10 +14,10 @@
+ #
+ msgid ""
+ msgstr ""
+-"Project-Id-Version: gnome-terminal\n"
++"Project-Id-Version: gnome-terminal gnome-41\n"
+ "Report-Msgid-Bugs-To: https://gitlab.gnome.org/GNOME/gnome-terminal/issues\n"
+-"POT-Creation-Date: 2021-07-31 12:57+0000\n"
+-"PO-Revision-Date: 2021-02-07 19:52+0100\n"
++"POT-Creation-Date: 2021-09-22 16:39+0000\n"
++"PO-Revision-Date: 2021-09-24 15:05+0200\n"
+ "Last-Translator: Marek Černocký <marek@manet.cz>\n"
+ "Language-Team: čeština <gnome-cs-list@gnome.org>\n"
+ "Language: cs\n"
+@@ -28,32 +28,14 @@ msgstr ""
+ "X-Generator: Gtranslator 2.91.7\n"
+ 
+ #: data/org.gnome.Terminal.Nautilus.metainfo.xml.in:35
+-msgid "org.gnome.Terminal.Nautilus"
+-msgstr ""
+-
+-#: data/org.gnome.Terminal.Nautilus.metainfo.xml.in:36
+-msgid "org.gnome.Nautilus.desktop"
+-msgstr ""
+-
+-#: data/org.gnome.Terminal.Nautilus.metainfo.xml.in:37
+-#: data/org.gnome.Terminal.metainfo.xml.in:36
+-msgid "GPL-3.0+ or GFDL-1.3-only"
+-msgstr "GPL-3.0+ nebo GFDL-1.3 výhradně"
+-
+-#: data/org.gnome.Terminal.Nautilus.metainfo.xml.in:38
+-#: data/org.gnome.Terminal.metainfo.xml.in:37
+-msgid "GPL-3.0+"
+-msgstr "GPL-3.0+"
+-
+-#: data/org.gnome.Terminal.Nautilus.metainfo.xml.in:39
+ msgid "Terminal plugin for Files"
+ msgstr "Zásuvný modul Terminál pro Soubory"
+ 
+-#: data/org.gnome.Terminal.Nautilus.metainfo.xml.in:40
++#: data/org.gnome.Terminal.Nautilus.metainfo.xml.in:36
+ msgid "Open a terminal from Files"
+ msgstr "Otevírá terminál z aplikace Soubory"
+ 
+-#: data/org.gnome.Terminal.Nautilus.metainfo.xml.in:42
++#: data/org.gnome.Terminal.Nautilus.metainfo.xml.in:38
+ msgid ""
+ "Open Terminal is a plugin for the Files application that adds a menu item to "
+ "the context menu to open a terminal in the currently browsed directory."
+@@ -61,28 +43,8 @@ msgstr ""
+ "Otevřít terminál je zásuvný modul pro aplikaci Soubory, který přidává do "
+ "kontextové nabídky položku pro otevření terminálu v právě procházené složce."
+ 
+-#: data/org.gnome.Terminal.Nautilus.metainfo.xml.in:44
+-#: data/org.gnome.Terminal.metainfo.xml.in:59
+-msgid "https://wiki.gnome.org/Apps/Terminal"
+-msgstr "https://wiki.gnome.org/Apps/Terminal"
+-
+-#. This is the name of a colour scheme
+-#: data/org.gnome.Terminal.Nautilus.metainfo.xml.in:45
+-#: data/org.gnome.Terminal.metainfo.xml.in:60 src/preferences.ui:214
+-msgid "GNOME"
+-msgstr "GNOME"
+-
+-#: data/org.gnome.Terminal.Nautilus.metainfo.xml.in:46
+-#: data/org.gnome.Terminal.metainfo.xml.in:61
+-msgid "https://wiki.gnome.org/Apps/Terminal/ReportingBugs"
+-msgstr "https://wiki.gnome.org/Apps/Terminal/ReportingBugs"
+-
+-#: data/org.gnome.Terminal.Nautilus.metainfo.xml.in:47
+-msgid "gnome-terminal"
+-msgstr ""
+-
+ #: data/org.gnome.Terminal.desktop.in:3
+-#: data/org.gnome.Terminal.metainfo.xml.in:38 src/server.cc:150
++#: data/org.gnome.Terminal.metainfo.xml.in:34 src/server.cc:150
+ #: src/terminal-accels.cc:232 src/terminal-menubar.ui.in:144
+ #: src/terminal-tab-label.cc:81 src/terminal-window.cc:1894
+ #: src/terminal-window.cc:2160 src/terminal-window.cc:2443 src/terminal.cc:570
+@@ -90,7 +52,7 @@ msgid "Terminal"
+ msgstr "Terminál"
+ 
+ #: data/org.gnome.Terminal.desktop.in:4
+-#: data/org.gnome.Terminal.metainfo.xml.in:39
++#: data/org.gnome.Terminal.metainfo.xml.in:35
+ msgid "Use the command line"
+ msgstr "Používejte příkazový řádek"
+ 
+@@ -100,7 +62,7 @@ msgstr "shell;prompt;výzva;příkaz;příkazový řádek;příkazová řádka;"
+ 
+ #: data/org.gnome.Terminal.desktop.in:8
+ msgid "org.gnome.Terminal"
+-msgstr ""
++msgstr "org.gnome.Terminal"
+ 
+ #: data/org.gnome.Terminal.desktop.in:17 src/terminal-accels.cc:127
+ msgid "New Window"
+@@ -110,11 +72,7 @@ msgstr "Nové okno"
+ msgid "Preferences"
+ msgstr "Předvolby"
+ 
+-#: data/org.gnome.Terminal.metainfo.xml.in:35
+-msgid "org.gnome.Terminal.desktop"
+-msgstr ""
+-
+-#: data/org.gnome.Terminal.metainfo.xml.in:41
++#: data/org.gnome.Terminal.metainfo.xml.in:37
+ msgid ""
+ "GNOME Terminal is a terminal emulator application for accessing a UNIX shell "
+ "environment which can be used to run programs available on your system."
+@@ -123,51 +81,13 @@ msgstr ""
+ "UNIXového shellu a v něm umožňuje spouštět programy dostupné ve vašem "
+ "systému."
+ 
+-#: data/org.gnome.Terminal.metainfo.xml.in:42
++#: data/org.gnome.Terminal.metainfo.xml.in:38
+ msgid ""
+ "It supports several profiles, multiple tabs and implements several keyboard "
+ "shortcuts."
+ msgstr ""
+ "Podporuje více profilů, více terminálů v kartách a řadu klávesových zkratek."
+ 
+-#: data/org.gnome.Terminal.metainfo.xml.in:45
+-msgid "console"
+-msgstr ""
+-
+-#: data/org.gnome.Terminal.metainfo.xml.in:46
+-msgid "keyboard"
+-msgstr ""
+-
+-#: data/org.gnome.Terminal.metainfo.xml.in:47
+-msgid "pointing"
+-msgstr ""
+-
+-#: data/org.gnome.Terminal.metainfo.xml.in:50
+-msgid ""
+-"https://help.gnome.org/users/gnome-terminal/stable/figures/gnome-terminal.png"
+-msgstr ""
+-"https://help.gnome.org/users/gnome-terminal/stable/figures/gnome-terminal.png"
+-
+-#: data/org.gnome.Terminal.metainfo.xml.in:53
+-msgid "HiDpiIcon"
+-msgstr ""
+-
+-#: data/org.gnome.Terminal.metainfo.xml.in:54
+-msgid "HighContrast"
+-msgstr ""
+-
+-#: data/org.gnome.Terminal.metainfo.xml.in:55
+-msgid "ModernToolkit"
+-msgstr ""
+-
+-#: data/org.gnome.Terminal.metainfo.xml.in:56
+-msgid "SearchProvider"
+-msgstr ""
+-
+-#: data/org.gnome.Terminal.metainfo.xml.in:57
+-msgid "UserDocs"
+-msgstr ""
+-
+ #. Translators: Keep single quote please!
+ #: src/org.gnome.Terminal.gschema.xml:133
+ msgctxt "visible-name"
+@@ -959,6 +879,11 @@ msgstr "spustit příkaz znovu"
+ msgid "Hold the terminal open"
+ msgstr "nechat terminál otevřený"
+ 
++#. This is the name of a colour scheme
++#: src/preferences.ui:214
++msgid "GNOME"
++msgstr "GNOME"
++
+ #. This is the name of a colour scheme
+ #: src/preferences.ui:217
+ msgid "Tango"
+@@ -1760,7 +1685,7 @@ msgstr "_4. 132 × 42"
+ msgid "_Inspector"
+ msgstr "_Inspektor"
+ 
+-#: src/terminal-headermenu.ui:106 src/terminal-screen.cc:1540
++#: src/terminal-headermenu.ui:106 src/terminal-screen.cc:1543
+ #: src/terminal-window.cc:1788
+ msgid "_Preferences"
+ msgstr "_Předvolby"
+@@ -2257,29 +2182,29 @@ msgstr "Klávesové zkratky"
+ msgid "Profiles"
+ msgstr "Profily"
+ 
+-#: src/terminal-screen.cc:1425
++#: src/terminal-screen.cc:1428
+ msgid "No command supplied nor shell requested"
+ msgstr "Není ani zadán příkaz ani požadován shell"
+ 
+-#: src/terminal-screen.cc:1541 src/terminal-screen.cc:1888
++#: src/terminal-screen.cc:1544 src/terminal-screen.cc:1891
+ msgid "_Relaunch"
+ msgstr "_Spustit znovu"
+ 
+-#: src/terminal-screen.cc:1544
++#: src/terminal-screen.cc:1547
+ msgid "There was an error creating the child process for this terminal"
+ msgstr "Při vytváření procesu potomka pro tento terminál došlo k chybě"
+ 
+-#: src/terminal-screen.cc:1892
++#: src/terminal-screen.cc:1895
+ #, c-format
+ msgid "The child process exited normally with status %d."
+ msgstr "Proces potomka skončil normálně se stavovým kódem %d."
+ 
+-#: src/terminal-screen.cc:1895
++#: src/terminal-screen.cc:1898
+ #, c-format
+ msgid "The child process was aborted by signal %d."
+ msgstr "Proces potomka byl zrušen na základě signálu %d."
+ 
+-#: src/terminal-screen.cc:1898
++#: src/terminal-screen.cc:1901
+ msgid "The child process was aborted."
+ msgstr "Proces potomka byl zrušen."
+ 
+@@ -2452,3 +2377,4 @@ msgstr "_Zavřít okno"
+ #, c-format
+ msgid "Failed to parse arguments: %s\n"
+ msgstr "Selhala analýza argumentů: %s\n"
++
+-- 
+2.35.1
+
+
+From 6ec2b129581d7f381e98a5a6d5a432c40f7ff339 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Mon, 12 May 2014 14:57:18 +0200
-Subject: [PATCH 01/16] Restore transparency
+Subject: [PATCH 03/18] Restore transparency
 
 The transparency settings were removed as a side effect of
 2bff4b63ed3ceef6055e35563e9b0b33ad57349d
@@ -155,10 +449,10 @@ index b146ba82..d2917fac 100644
  #define TERMINAL_SETTING_CONTEXT_INFO_KEY               "context-info"
  #define TERMINAL_SETTING_DEFAULT_SHOW_MENUBAR_KEY       "default-show-menubar"
 diff --git a/src/terminal-screen.cc b/src/terminal-screen.cc
-index e2e7d2bc..5feb8f7e 100644
+index f60b0e32..edca6cde 100644
 --- a/src/terminal-screen.cc
 +++ b/src/terminal-screen.cc
-@@ -1082,7 +1082,9 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
+@@ -1055,7 +1055,9 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
        prop_name == I_(TERMINAL_PROFILE_HIGHLIGHT_COLORS_SET_KEY) ||
        prop_name == I_(TERMINAL_PROFILE_HIGHLIGHT_BACKGROUND_COLOR_KEY) ||
        prop_name == I_(TERMINAL_PROFILE_HIGHLIGHT_FOREGROUND_COLOR_KEY) ||
@@ -169,7 +463,7 @@ index e2e7d2bc..5feb8f7e 100644
      update_color_scheme (screen);
  
    if (!prop_name || prop_name == I_(TERMINAL_PROFILE_AUDIBLE_BELL_KEY))
-@@ -1167,6 +1169,8 @@ update_color_scheme (TerminalScreen *screen)
+@@ -1140,6 +1142,8 @@ update_color_scheme (TerminalScreen *screen)
    GdkRGBA *cursor_bgp = nullptr, *cursor_fgp = nullptr;
    GdkRGBA *highlight_bgp = nullptr, *highlight_fgp = nullptr;
    GtkStyleContext *context;
@@ -178,7 +472,7 @@ index e2e7d2bc..5feb8f7e 100644
    gboolean use_theme_colors;
  
    context = gtk_widget_get_style_context (widget);
-@@ -1210,6 +1214,18 @@ update_color_scheme (TerminalScreen *screen)
+@@ -1183,6 +1187,18 @@ update_color_scheme (TerminalScreen *screen)
      }
  
    colors = terminal_g_settings_get_rgba_palette (priv->profile, TERMINAL_PROFILE_PALETTE_KEY, &n_colors);
@@ -197,7 +491,7 @@ index e2e7d2bc..5feb8f7e 100644
    vte_terminal_set_colors (VTE_TERMINAL (screen), &fg, &bg,
                             colors, n_colors);
    vte_terminal_set_color_bold (VTE_TERMINAL (screen), boldp);
-@@ -1217,6 +1233,10 @@ update_color_scheme (TerminalScreen *screen)
+@@ -1190,6 +1206,10 @@ update_color_scheme (TerminalScreen *screen)
    vte_terminal_set_color_cursor_foreground (VTE_TERMINAL (screen), cursor_fgp);
    vte_terminal_set_color_highlight (VTE_TERMINAL (screen), highlight_bgp);
    vte_terminal_set_color_highlight_foreground (VTE_TERMINAL (screen), highlight_fgp);
@@ -209,10 +503,10 @@ index e2e7d2bc..5feb8f7e 100644
  
  static void
 diff --git a/src/terminal-window.cc b/src/terminal-window.cc
-index 02a96d81..0b68a8e9 100644
+index 76f18000..d739f693 100644
 --- a/src/terminal-window.cc
 +++ b/src/terminal-window.cc
-@@ -2119,6 +2119,8 @@ terminal_window_init (TerminalWindow *window)
+@@ -2133,6 +2133,8 @@ terminal_window_init (TerminalWindow *window)
    };
    TerminalWindowPrivate *priv;
    TerminalApp *app;
@@ -221,7 +515,7 @@ index 02a96d81..0b68a8e9 100644
    GSettings *gtk_debug_settings;
    GtkWindowGroup *window_group;
    //  GtkAccelGroup *accel_group;
-@@ -2134,6 +2136,11 @@ terminal_window_init (TerminalWindow *window)
+@@ -2148,6 +2150,11 @@ terminal_window_init (TerminalWindow *window)
  
    gtk_widget_init_template (GTK_WIDGET (window));
  
@@ -234,13 +528,13 @@ index 02a96d81..0b68a8e9 100644
    uuid_unparse (u, uuidstr);
    priv->uuid = g_strdup (uuidstr);
 -- 
-2.33.1
+2.35.1
 
 
-From 0e08a901e4b397a92133e219e6635410dcb5460d Mon Sep 17 00:00:00 2001
+From b68e27ddaf60a38df73130f7752a011b5f888acd Mon Sep 17 00:00:00 2001
 From: Lars Uebernickel <lars.uebernickel@canonical.com>
 Date: Wed, 28 May 2014 14:11:02 +0200
-Subject: [PATCH 02/16] window: Make the drawing robust across all themes
+Subject: [PATCH 04/18] window: Make the drawing robust across all themes
 
 There are lots of themes out there in the wild that do not specify a
 background-color for all widgets and the default is transparent. This
@@ -257,10 +551,10 @@ https://bugzilla.gnome.org/show_bug.cgi?id=730016
  1 file changed, 21 insertions(+)
 
 diff --git a/src/terminal-window.cc b/src/terminal-window.cc
-index 0b68a8e9..5019a3ac 100644
+index d739f693..04d977ed 100644
 --- a/src/terminal-window.cc
 +++ b/src/terminal-window.cc
-@@ -1978,6 +1978,26 @@ terminal_window_realize (GtkWidget *widget)
+@@ -1963,6 +1963,26 @@ terminal_window_realize (GtkWidget *widget)
    terminal_window_update_size (window);
  }
  
@@ -287,7 +581,7 @@ index 0b68a8e9..5019a3ac 100644
  static gboolean
  terminal_window_state_event (GtkWidget            *widget,
                               GdkEventWindowState  *event)
-@@ -2296,6 +2316,7 @@ terminal_window_class_init (TerminalWindowClass *klass)
+@@ -2303,6 +2323,7 @@ terminal_window_class_init (TerminalWindowClass *klass)
  
    widget_class->show = terminal_window_show;
    widget_class->realize = terminal_window_realize;
@@ -296,13 +590,13 @@ index 0b68a8e9..5019a3ac 100644
    widget_class->screen_changed = terminal_window_screen_changed;
    widget_class->style_updated = terminal_window_style_updated;
 -- 
-2.33.1
+2.35.1
 
 
-From ecd90177c78a8a41593d4042c655736d338874de Mon Sep 17 00:00:00 2001
+From 989d8498a308cccfbab166d8161c9b6bc75b5d49 Mon Sep 17 00:00:00 2001
 From: "Owen W. Taylor" <otaylor@fishsoup.net>
 Date: Fri, 13 Nov 2015 15:16:42 +0100
-Subject: [PATCH 03/16] screen, window: Extra padding around transparent
+Subject: [PATCH 05/18] screen, window: Extra padding around transparent
  terminals in Wayland
 
 https://bugzilla.redhat.com/show_bug.cgi?id=1207943
@@ -312,7 +606,7 @@ https://bugzilla.redhat.com/show_bug.cgi?id=1207943
  2 files changed, 49 insertions(+), 10 deletions(-)
 
 diff --git a/src/terminal-screen.cc b/src/terminal-screen.cc
-index 5feb8f7e..c1cf61f1 100644
+index edca6cde..9ca83c3e 100644
 --- a/src/terminal-screen.cc
 +++ b/src/terminal-screen.cc
 @@ -152,6 +152,8 @@ static void terminal_screen_system_font_changed_cb (GSettings *,
@@ -324,7 +618,7 @@ index 5feb8f7e..c1cf61f1 100644
  static void terminal_screen_child_exited  (VteTerminal *terminal,
                                             int status);
  
-@@ -622,6 +624,7 @@ terminal_screen_class_init (TerminalScreenClass *klass)
+@@ -595,6 +597,7 @@ terminal_screen_class_init (TerminalScreenClass *klass)
    widget_class->drag_data_received = terminal_screen_drag_data_received;
    widget_class->button_press_event = terminal_screen_button_press;
    widget_class->popup_menu = terminal_screen_popup_menu;
@@ -332,7 +626,7 @@ index 5feb8f7e..c1cf61f1 100644
  
    terminal_class->child_exited = terminal_screen_child_exited;
  
-@@ -1154,6 +1157,32 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
+@@ -1127,6 +1130,32 @@ terminal_screen_profile_changed_cb (GSettings     *profile,
    g_object_thaw_notify (object);
  }
  
@@ -365,7 +659,7 @@ index 5feb8f7e..c1cf61f1 100644
  static void
  update_color_scheme (TerminalScreen *screen)
  {
-@@ -1169,7 +1198,6 @@ update_color_scheme (TerminalScreen *screen)
+@@ -1142,7 +1171,6 @@ update_color_scheme (TerminalScreen *screen)
    GdkRGBA *cursor_bgp = nullptr, *cursor_fgp = nullptr;
    GdkRGBA *highlight_bgp = nullptr, *highlight_fgp = nullptr;
    GtkStyleContext *context;
@@ -373,7 +667,7 @@ index 5feb8f7e..c1cf61f1 100644
    gboolean transparent;
    gboolean use_theme_colors;
  
-@@ -1234,9 +1262,7 @@ update_color_scheme (TerminalScreen *screen)
+@@ -1207,9 +1235,7 @@ update_color_scheme (TerminalScreen *screen)
    vte_terminal_set_color_highlight (VTE_TERMINAL (screen), highlight_bgp);
    vte_terminal_set_color_highlight_foreground (VTE_TERMINAL (screen), highlight_fgp);
  
@@ -384,7 +678,7 @@ index 5feb8f7e..c1cf61f1 100644
  }
  
  static void
-@@ -1756,6 +1782,13 @@ terminal_screen_do_popup (TerminalScreen *screen,
+@@ -1729,6 +1755,13 @@ terminal_screen_do_popup (TerminalScreen *screen,
    terminal_screen_popup_info_unref (info);
  }
  
@@ -399,10 +693,10 @@ index 5feb8f7e..c1cf61f1 100644
  terminal_screen_button_press (GtkWidget      *widget,
                                GdkEventButton *event)
 diff --git a/src/terminal-window.cc b/src/terminal-window.cc
-index 5019a3ac..5513eedc 100644
+index 04d977ed..be8533e6 100644
 --- a/src/terminal-window.cc
 +++ b/src/terminal-window.cc
-@@ -1984,15 +1984,21 @@ terminal_window_draw (GtkWidget *widget,
+@@ -1969,15 +1969,21 @@ terminal_window_draw (GtkWidget *widget,
  {
    if (gtk_widget_get_app_paintable (widget))
      {
@@ -431,12 +725,13 @@ index 5019a3ac..5513eedc 100644
  
    return GTK_WIDGET_CLASS (terminal_window_parent_class)->draw (widget, cr);
 -- 
-2.33.1
+2.35.1
 
-From d0534fad64788e6f70389b8fa815d277a00ae51a Mon Sep 17 00:00:00 2001
+
+From d15ca046ffcf00a05966b833c5b321d235e50e25 Mon Sep 17 00:00:00 2001
 From: Debarshi Ray <debarshir@gnome.org>
 Date: Tue, 17 Feb 2015 17:06:17 +0100
-Subject: [PATCH 11/16] Restore translations for setting a title and
+Subject: [PATCH 13/18] Restore translations for setting a title and
  transparency
 
 ---
@@ -771,10 +1066,10 @@ index 82ef0664..27e9877f 100644
  #: ../src/profile-preferences.glade.h:74
  msgid "_Update login records when command is launched"
 diff --git a/po/bg.po b/po/bg.po
-index 554f1dc6..b63c2211 100644
+index 920deb57..ceecc323 100644
 --- a/po/bg.po
 +++ b/po/bg.po
-@@ -2448,3 +2448,12 @@ msgstr "_Затваряне на този прозорец"
+@@ -2459,3 +2459,12 @@ msgstr "_Затваряне на този прозорец"
  #, c-format
  msgid "Failed to parse arguments: %s\n"
  msgstr "Аргументите не могат да бъдат анализирани: %s\n"
@@ -889,7 +1184,7 @@ index 49e71085..87035529 100644
 +msgid "Set Title"
 +msgstr "Postavi naslov"
 diff --git a/po/ca.po b/po/ca.po
-index 639b1123..be42e1f5 100644
+index 6cee9a84..a18941db 100644
 --- a/po/ca.po
 +++ b/po/ca.po
 @@ -2512,3 +2512,15 @@ msgstr "Ha fallat l'anàlisi dels arguments: %s\n"
@@ -994,10 +1289,10 @@ index 8ca75914..a27a354f 100644
 +msgid "Transparent background"
 +msgstr "Gennemsigtig baggrund"
 diff --git a/po/de.po b/po/de.po
-index 1f3b75d4..c2dce072 100644
+index 7bb9024d..86619d52 100644
 --- a/po/de.po
 +++ b/po/de.po
-@@ -2571,3 +2571,15 @@ msgstr "Einlesen der Argumente schlug fehl: %s\n"
+@@ -2572,3 +2572,15 @@ msgstr "Einlesen der Argumente schlug fehl: %s\n"
  
  #~ msgid "_Quit"
  #~ msgstr "_Beenden"
@@ -1201,7 +1496,7 @@ index 0e83b981..0d98ea57 100644
  #~ msgid "On the left side"
  #~ msgstr "Maldekstre"
 diff --git a/po/es.po b/po/es.po
-index 98e99bf3..c7ba421e 100644
+index 3e9b3d37..905a24f5 100644
 --- a/po/es.po
 +++ b/po/es.po
 @@ -2921,17 +2921,17 @@ msgstr "Falló al analizar los argumentos: %s\n"
@@ -1251,7 +1546,7 @@ index 4b1c2a7c..77076116 100644
 +msgid "Transparent background"
 +msgstr "Läbipaistev taust"
 diff --git a/po/eu.po b/po/eu.po
-index 6e014314..16f485b4 100644
+index 528fc21d..2be39ac1 100644
 --- a/po/eu.po
 +++ b/po/eu.po
 @@ -2362,3 +2362,15 @@ msgstr "Huts egin du argumentuak analizatzean: %s\n"
@@ -1366,10 +1661,10 @@ index 3a9ee71e..64d56414 100644
 +msgid "Set Title"
 +msgstr "Définir le titre"
 diff --git a/po/fur.po b/po/fur.po
-index f72ff621..f1cc939c 100644
+index edbba329..87755fc1 100644
 --- a/po/fur.po
 +++ b/po/fur.po
-@@ -545,6 +545,10 @@ msgstr ""
+@@ -557,6 +557,10 @@ msgstr ""
  msgid "Which encoding to use"
  msgstr "Codifiche di doprâ"
  
@@ -1380,7 +1675,7 @@ index f72ff621..f1cc939c 100644
  #: src/org.gnome.Terminal.gschema.xml:350
  msgid ""
  "Whether ambiguous-width characters are narrow or wide when using UTF-8 "
-@@ -3556,6 +3560,9 @@ msgstr "_Siere barcon"
+@@ -3576,6 +3580,9 @@ msgstr "Analisi dai argoments falide: %s\n"
  #~ msgid "The text you clicked on doesn't seem to be a valid OTP challenge."
  #~ msgstr "Il test fracât nol samee jessi un OTP challenge."
  
@@ -1390,7 +1685,7 @@ index f72ff621..f1cc939c 100644
  #~ msgid "Switch to Tab 3"
  #~ msgstr "Passe a la schede 3"
  
-@@ -3611,8 +3618,8 @@ msgstr "_Siere barcon"
+@@ -3631,8 +3638,8 @@ msgstr "Analisi dai argoments falide: %s\n"
  #~ msgid "_Input Methods"
  #~ msgstr "_Cemût inserî test"
  
@@ -1413,10 +1708,10 @@ index 93d5fa9d..feb87dce 100644
 +msgid "Transparent background"
 +msgstr "Cúlra trédhearcach"
 diff --git a/po/gl.po b/po/gl.po
-index de3dc5b9..e3a7944c 100644
+index 00325496..8c6f3472 100644
 --- a/po/gl.po
 +++ b/po/gl.po
-@@ -2481,3 +2481,15 @@ msgstr "P_echar a xanela"
+@@ -2480,3 +2480,15 @@ msgstr "P_echar a xanela"
  #, c-format
  msgid "Failed to parse arguments: %s\n"
  msgstr "Produciuse un erro ao analizar os argumentos: %s\n"
@@ -1569,7 +1864,7 @@ index 2d7dc5b1..8d3d0529 100644
  #~ msgid "S/Key Challenge Response"
  #~ msgstr "एस/कुंजी चैलेंज प्रतिक्रिया"
 diff --git a/po/hr.po b/po/hr.po
-index cdf91b4f..8c43a4ca 100644
+index 92792203..9f4862ca 100644
 --- a/po/hr.po
 +++ b/po/hr.po
 @@ -2768,3 +2768,13 @@ msgstr "Greška u obradi argumenata: %s\n"
@@ -1633,7 +1928,7 @@ index aaf2d9b2..4d466f16 100644
  #: ../src/profile-preferences.glade.h:74
  msgid "_Update login records when command is launched"
 diff --git a/po/id.po b/po/id.po
-index 66603f20..173067e4 100644
+index 868795ca..04459302 100644
 --- a/po/id.po
 +++ b/po/id.po
 @@ -2471,3 +2471,15 @@ msgstr "Gagal mengurai argumen: \"%s\"\n"
@@ -1855,10 +2150,10 @@ index c2729c2f..55165274 100644
 +msgid "Set Title"
 +msgstr "Nustatyti pavadinimą"
 diff --git a/po/lv.po b/po/lv.po
-index 2e119003..30f28b55 100644
+index dd601873..1544e268 100644
 --- a/po/lv.po
 +++ b/po/lv.po
-@@ -2694,3 +2694,19 @@ msgstr "Aizvērt _logu"
+@@ -2715,3 +2715,19 @@ msgstr "Neizdevās parsēt parametrus — “%s”\n"
  
  #~ msgid "_Add or Remove…"
  #~ msgstr "_Pievienot vai izņemt…"
@@ -2057,13 +2352,13 @@ index 114f0d4e..5d3f2e01 100644
  #~ msgid "_Update login records when command is launched"
  #~ msgstr "_Kemaskini rekod logmasuk bila arahan dilancarkan"
 diff --git a/po/nb.po b/po/nb.po
-index e48f82bf..4a311f73 100644
+index 99cb5599..5b1a79ad 100644
 --- a/po/nb.po
 +++ b/po/nb.po
-@@ -2406,3 +2406,15 @@ msgstr ""
- #: src/terminal-window.c:3224
- msgid "C_lose Window"
- msgstr "_Lukk vindu"
+@@ -2436,3 +2436,15 @@ msgstr "_Lukk vindu"
+ #, c-format
+ msgid "Failed to parse arguments: %s\n"
+ msgstr "Klarte ikke å lese argumenter: %s\n"
 +
 +msgid "Transparent background"
 +msgstr "Gjennomsiktig bakgrunn"
@@ -2139,10 +2434,10 @@ index 901aa954..48b9b219 100644
  #~ msgid "text/plain dropped on terminal had wrong format (%d) or length (%d)\n"
  #~ msgstr "टर्मिनलमा छोडिएको पाठ/सादा गलत ढाँचा (%d) वा लम्बाइ (%d)को थियो\n"
 diff --git a/po/nl.po b/po/nl.po
-index 215774cf..c5df70c5 100644
+index 6c433a25..fd3be16e 100644
 --- a/po/nl.po
 +++ b/po/nl.po
-@@ -2786,3 +2786,15 @@ msgstr "Venster sl_uiten"
+@@ -2806,3 +2806,15 @@ msgstr "Argumenten ontleden is mislukt: %s\n"
  
  #~ msgid "_Add or Remove…"
  #~ msgstr "_Toevoegen of verwijderen…"
@@ -2185,10 +2480,10 @@ index 5aa43b11..f892290c 100644
  #: ../src/profile-preferences.glade.h:74
  msgid "_Update login records when command is launched"
 diff --git a/po/oc.po b/po/oc.po
-index 559f5fe4..ad35d847 100644
+index d7cddaec..7eab4a47 100644
 --- a/po/oc.po
 +++ b/po/oc.po
-@@ -3027,8 +3027,8 @@ msgstr "Impossible d'analisar los paramètres : %s\n"
+@@ -3031,8 +3031,8 @@ msgstr "Impossible d'analisar los paramètres : %s\n"
  #~ msgid "Save as..."
  #~ msgstr "Enregistrar jos..."
  
@@ -2199,7 +2494,7 @@ index 559f5fe4..ad35d847 100644
  
  #~ msgid "_Detach tab"
  #~ msgstr "Des_tacar l'onglet"
-@@ -3488,8 +3488,8 @@ msgstr "Impossible d'analisar los paramètres : %s\n"
+@@ -3492,8 +3492,8 @@ msgstr "Impossible d'analisar los paramètres : %s\n"
  #~ msgid "_Use the system fixed width font"
  #~ msgstr "_Utilizar la poliça de chassa fixa del sistèma"
  
@@ -2210,7 +2505,7 @@ index 559f5fe4..ad35d847 100644
  
  #~ msgid "The shortcut key “%s” is already bound to the “%s” action"
  #~ msgstr "L'acorchi de clavièr « %s » es ja atribuit a l'accion « %s »"
-@@ -3806,8 +3806,8 @@ msgstr "Impossible d'analisar los paramètres : %s\n"
+@@ -3810,8 +3810,8 @@ msgstr "Impossible d'analisar los paramètres : %s\n"
  #~ msgid "Run;"
  #~ msgstr "Executar;Consòla;Shell;"
  
@@ -2319,10 +2614,10 @@ index b25a2cb4..3855b2f3 100644
  #: ../src/profile-preferences.glade.h:70
  msgid "_Update login records when command is launched"
 diff --git a/po/pt.po b/po/pt.po
-index fe592f2d..3b3d411f 100644
+index 6b3188d1..2f78ed6d 100644
 --- a/po/pt.po
 +++ b/po/pt.po
-@@ -2843,11 +2843,11 @@ msgstr "Falha ao processar argumentos: %s\n"
+@@ -2842,11 +2842,11 @@ msgstr "Falha ao processar argumentos: %s\n"
  #~ msgid "Default size:"
  #~ msgstr "Tamanho predefinido:"
  
@@ -2338,7 +2633,7 @@ index fe592f2d..3b3d411f 100644
  
  #~ msgid "Title and Command"
  #~ msgstr "Título e comando"
-@@ -2855,8 +2855,8 @@ msgstr "Falha ao processar argumentos: %s\n"
+@@ -2854,8 +2854,8 @@ msgstr "Falha ao processar argumentos: %s\n"
  #~ msgid "_Unlimited"
  #~ msgstr "_Ilimitado"
  
@@ -2349,7 +2644,7 @@ index fe592f2d..3b3d411f 100644
  
  #~ msgid "Current Locale"
  #~ msgstr "Configuração Regional Atual"
-@@ -3610,8 +3610,8 @@ msgstr "Falha ao processar argumentos: %s\n"
+@@ -3609,8 +3609,8 @@ msgstr "Falha ao processar argumentos: %s\n"
  #~ msgid "Background image _scrolls"
  #~ msgstr "Imagem de fundo _rola"
  
@@ -2548,10 +2843,10 @@ index 158f6cb1..a3494fb7 100644
  #: ../src/gnome-terminal.glade2.h:86
  msgid "_Update login records when command is launched"
 diff --git a/po/sr.po b/po/sr.po
-index 2612029b..0b6077ad 100644
+index a5998996..ff19c5b9 100644
 --- a/po/sr.po
 +++ b/po/sr.po
-@@ -2756,10 +2756,9 @@ msgstr "_Затвори прозор"
+@@ -2776,10 +2776,9 @@ msgstr "Нисам успео да обрадим аргументе: %s\n"
  #~ msgid "GNOME Terminal Client"
  #~ msgstr "Клијент Гномовог терминала"
  
@@ -2565,7 +2860,7 @@ index 2612029b..0b6077ad 100644
  
  #~ msgid "Title for terminal"
  #~ msgstr "Наслов за терминал"
-@@ -2805,11 +2804,11 @@ msgstr "_Затвори прозор"
+@@ -2825,11 +2824,11 @@ msgstr "Нисам успео да обрадим аргументе: %s\n"
  #~ msgid "Default size:"
  #~ msgstr "Основна величина:"
  
@@ -2581,7 +2876,7 @@ index 2612029b..0b6077ad 100644
  
  #~ msgid "Title and Command"
  #~ msgstr "Наслов и наредба"
-@@ -2817,8 +2816,8 @@ msgstr "_Затвори прозор"
+@@ -2837,8 +2836,8 @@ msgstr "Нисам успео да обрадим аргументе: %s\n"
  #~ msgid "_Unlimited"
  #~ msgstr "_Неограничено"
  
@@ -2592,7 +2887,7 @@ index 2612029b..0b6077ad 100644
  
  #~ msgid "Current Locale"
  #~ msgstr "Текући локалитет"
-@@ -2828,3 +2827,6 @@ msgstr "_Затвори прозор"
+@@ -2848,3 +2847,6 @@ msgstr "Нисам успео да обрадим аргументе: %s\n"
  
  #~ msgid "Hidden"
  #~ msgstr "Скривен"
@@ -2888,7 +3183,7 @@ index 63263749..496da331 100644
  #~ msgid ""
  #~ "You already have a profile called “%s”. Do you want to create another "
 diff --git a/po/tr.po b/po/tr.po
-index 18edefc7..8b4893c4 100644
+index e5bb0082..851e7f97 100644
 --- a/po/tr.po
 +++ b/po/tr.po
 @@ -2759,3 +2759,15 @@ msgstr "Bağımsız değişkenler ayrıştırılamadı: %s\n"
@@ -3064,7 +3359,7 @@ index cb78ec67..a4f3b4dd 100644
  #: ../src/terminal-window.c:986
  msgid "Set _Character Encoding"
 diff --git a/po/zh_CN.po b/po/zh_CN.po
-index 8546f215..cd1d380a 100644
+index 4fa6ce25..05203670 100644
 --- a/po/zh_CN.po
 +++ b/po/zh_CN.po
 @@ -2783,17 +2783,17 @@ msgstr "无法处理参数：%s\n"
@@ -3169,4 +3464,4 @@ index 80cb2343..20e2a93c 100644
 +msgid "Transparent background"
 +msgstr "透明背景"
 -- 
-2.33.1
+2.35.1
