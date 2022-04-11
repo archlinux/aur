@@ -39,9 +39,9 @@ package() {
 	install -Dm644 "profex/icons/${pkgname}5.png" \
 		"${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 	
+	make install
 	
   mkdir -p "${pkgdir}/usr/bin"
 	install -Dm755 ${srcdir}/${pkgname}-${pkgver}/bin/* "${pkgdir}/usr/bin/"
-	make install
 
 }
