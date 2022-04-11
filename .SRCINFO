@@ -5,6 +5,7 @@ pkgbase = libfixposix
 	url = https://github.com/sionescu/libfixposix
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = Boost
 	makedepends = git
 	depends = glibc
