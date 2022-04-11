@@ -2,8 +2,8 @@
 # Maintainer: Todd E Johnson <todd@toddejohnson.net>
 
 pkgname=restic-automatic-backup-scheduler
-pkgver=7.3.0
-pkgrel=3
+pkgver=7.3.1
+pkgrel=1
 pkgdesc="Automatic backups using restic + systemd timers with Backblaze B2 storage backend."
 arch=('any')
 url="https://github.com/erikw/$pkgname"
@@ -12,7 +12,7 @@ depends=('restic' 'bash' 'systemd')
 replaces=('restic-systemd-automatic-backup')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/erikw/$pkgname/archive/v$pkgver.tar.gz")
 install="restic-automatic-backup-scheduler.install"
-sha256sums=('df942e5ba780311cdb0ff9db6e43e4e165d73567bbc662be9a5f808e9b51ddea')
+sha256sums=('099a0b799a126194ebc5a057e84de52013c7491e801a562e9e993bf83dca2851')
 backup=('etc/restic/backup_exclude.txt' 'etc/restic/default.env.sh' 'etc/restic/_global.env.sh' 'etc/restic/pw.txt')
 # Backup <5.0.0 conf files for those who upgrade.
 backup+=('etc/restic/default.env' 'etc/restic/_global.env')
