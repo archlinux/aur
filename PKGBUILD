@@ -36,7 +36,7 @@ package() {
 
   # Create startup file for burpsuite.
   echo "#!/bin/sh" > ${pkgdir}/usr/bin/${pkgname}
-  echo "exec \$JAVA_HOME/bin/java --illegal-access=permit -jar /usr/share/burpsuite/burpsuite.jar \$@" >> ${pkgdir}/usr/bin/${pkgname}
+  echo "exec \$JAVA_HOME/bin/java --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.desktop/javax.swing=ALL-UNNAMED -jar /usr/share/burpsuite/burpsuite.jar \$@" >> ${pkgdir}/usr/bin/${pkgname}
   chmod 755 ${pkgdir}/usr/bin/${pkgname}
 }
 
