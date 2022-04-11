@@ -7,7 +7,7 @@ pkgbase = firefox-extension-flagfox
 	groups = firefox-addons
 	license = GPLV3
 	depends = firefox
-	source = extension.xpi::https://addons.mozilla.org/firefox/downloads/file/3752663/flagfox-6.1.49-fx.xpi
-	md5sums = 79c371d6c20d231aa1ffc954a544cbf6
+	source = extension.xpi::https://addons.mozilla.org/firefox/downloads/file/3929226/flagfox-6.1.49-fx.xpi
+	md5sums = b17e92ae5c388552bb3528d4f04fc81f
 
 pkgname = firefox-extension-flagfox
