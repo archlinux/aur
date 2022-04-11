@@ -1,5 +1,5 @@
 pkgname=kwin-bismuth
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Addon for KDE Plasma to arrange your windows automatically and switch between them using keyboard shortcuts, like tiling window managers."
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=('!emptydirs')
 _snapshot="${_repo}-${pkgver}"
 
 source=("${_snapshot}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('95b9b02bb549af6efbd36100d8518e90e99f1ad3810335b30a925067bc212861')
+sha256sums=('5e589df26f27fefa1da34221b80b1d352c74a45373bfa1792866cf4587b921c8')
 
 prepare() {
     cd "${srcdir}"
