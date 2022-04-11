@@ -1,0 +1,11 @@
+pkgbase = mg-lru-helper
+	pkgdesc = Enable or disable multigenerational LRU
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/hakavlad/mg-lru-helper
+	arch = any
+	license = custom
+	source = mg-lru-helper-0.3.0.tar.gz::https://github.com/hakavlad/mg-lru-helper/archive/v0.3.0.tar.gz
+	sha256sums = c0364495edd8336a2ff207cd707d03b75c916afbdbd1e80e3bd2eeba2058357d
+
+pkgname = mg-lru-helper
