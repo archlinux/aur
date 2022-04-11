@@ -3,8 +3,8 @@
 # Contributor: Daniel Scharrer <daniel@constexpr.org>
 
 pkgname=arx-libertatis
-pkgver=1.2
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 pkgdesc='Cross-platform port of Arx Fatalis, a first-person role-playing game (executables only)'
 url='https://arx-libertatis.org/'
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ makedepends=('boost' 'cmake' 'glm' 'cppunit')
 provides=('arx')
 conflicts=('arx-git' 'arx-libertatis-git')
 source=("https://arx-libertatis.org/files/arx-libertatis-$pkgver.tar.xz")
-sha1sums=('afec697725d2cffee4c5ba04479cd5ba78502408')
+sha256sums=('aafd8831ee2d187d7647ad671a03aabd2df3b7248b0bac0b3ac36ffeb441aedf') # https://arx-libertatis.org/files/arx-libertatis-1.2.1/SHA256SUMS
 install='arx-libertatis.install'
 
 build() {
@@ -60,11 +60,6 @@ build() {
   #   can be changed to CMAKE_BUILD_TYPE=Debug to get a debug build,
   #   which will run signifincantly slower but enables more runtime
   #   checks and generates better crash reports.
-
-
-  # Fixes a crash (fixed upstream in https://arx.vg/9805464 for the next release).
-  CFLAGS="$CFLAGS -Wp,-U_GLIBCXX_ASSERTIONS"
-  CXXFLAGS="$CXXFLAGS -Wp,-U_GLIBCXX_ASSERTIONS"
   
   cmake . "${_cmakeargs[@]}"
   make
