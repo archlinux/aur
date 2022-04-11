@@ -1,7 +1,7 @@
 pkgbase = 86box
 	pkgdesc = An emulator for classic IBM PC clones
 	pkgver = 3.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://86box.net/
 	arch = pentium4
 	arch = x86_64
@@ -21,6 +21,7 @@ pkgbase = 86box
 	depends = rtmidi
 	depends = sdl2
 	optdepends = 86box-roms: ROM files
+	optdepends = discord-game-sdk: Discord Rich Presence
 	optdepends = libpcap: Networking not limited to TCP/IP
 	options = !buildflags
 	source = https://github.com/86Box/86Box/archive/refs/tags/v3.3.tar.gz

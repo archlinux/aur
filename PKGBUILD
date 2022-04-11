@@ -2,7 +2,7 @@
 pkgname=86box
 _pkgname=86Box
 pkgver=3.3
-pkgrel=2
+pkgrel=3
 pkgdesc='An emulator for classic IBM PC clones'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
 url='https://86box.net/'
@@ -11,6 +11,7 @@ depends=('alsa-lib' 'faudio' 'freetype2' 'libpng' 'libslirp' 'openal' 'qt6-base'
 makedepends=('cmake>=3.21' 'ninja' 'qt6-tools')
 optdepends=(
     '86box-roms: ROM files'
+    'discord-game-sdk: Discord Rich Presence'
     'libpcap: Networking not limited to TCP/IP'
 )
 options=('!buildflags')
