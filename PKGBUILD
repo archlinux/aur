@@ -2,7 +2,7 @@
 # Contributor: Shatur95 <genaloner@gmail.com>
 
 pkgname=vim-language-server
-pkgver=2.2.5
+pkgver=2.2.7
 pkgrel=1
 pkgdesc="VimScript language server"
 arch=('any')
@@ -11,11 +11,13 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('40144aa5eb6ab0d9e2e6c3438f5d68a37ee26ce1a77666ef49c84fef1fa22c62')
+sha256sums=('1538f3202b4406f7b4455990a9f5c016b5edbfc2a2f82e3bf6613bbfecd3c982')
 noextract=("$pkgname-$pkgver.tgz")
 
 package() {
 	export NODE_ENV=production
 	npm install -g --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "$pkgname-$pkgver.tgz"
 	chown -R root:root "$pkgdir"
+	## why does !emptydirs run after PURGE_TARGETS
+	rm -rf "$pkgdir/usr/lib/node_modules/vim_language_server/.github/"
 }
