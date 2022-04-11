@@ -1,2 +1,6 @@
 # Ignore built packages
 *.tar.zst
+
+# Ignore build directories
+mcomix-git/
+src/
