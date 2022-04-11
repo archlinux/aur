@@ -10,7 +10,7 @@ license=("MIT")
 depends=('whatsapp-nativefier')
 source=(whatsapp-nativefier-notray.hook whatsapp-nativefier-notray)
 sha1sums=('019bc488c1b5ebf402a9e0a6e47eaf9565f20411'
-          '23237f192fab460129ceb3a0b27821be028d4f8a')
+          'baff857c317baf7c640fc37b5a1e543d87e44136')
 
 package() {
     install -m755 -d "${pkgdir}/usr/share/libalpm/hooks"
