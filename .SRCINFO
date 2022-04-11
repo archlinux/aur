@@ -5,7 +5,6 @@ pkgbase = keepass-plugin-kpuinput
 	url = https://keepass.info/
 	arch = x86_64
 	makedepends = gcc
-	makedepends = linux-headers
 	depends = keepass
 	depends = libxkbcommon
 	depends = systemd
