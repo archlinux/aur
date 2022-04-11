@@ -1,16 +1,16 @@
 # Maintainer: Tom Wadley <tom@tomwadley.net>
 pkgname=gdx-skin-composer
-pkgver=45
+pkgver=48
 pkgrel=1
-pkgdesc="Create skins for LibGDX scene2d.ui with a graphical interface"
+pkgdesc="Create skins for LibGDX's Scene2D.UI"
 arch=('any')
 url="https://github.com/raeleus/skin-composer"
 license=('MIT')
 depends=('java-runtime>=11')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/raeleus/skin-composer/releases/download/$pkgver/skin-composer-linux.tar.gz"
         "$pkgname-$pkgver-LICENSE::https://raw.githubusercontent.com/raeleus/skin-composer/$pkgver/LICENSE")
-sha256sums=('75c7e6fb11642fe1253e249212fc5709bfc0cc99f46eee7eeb553d24f86c0063'
-            'fe1238180e16b079e64e39b5a22de7ef4a8a5eaff1e144718baa7ca6b59bf461')
+sha256sums=('78c700bc1a740c5e3cfeb4791d287a910b4f2461ba415d0e41ef7e9c9adf27a0'
+            '6045b9948f5cdd11712c42bb86fe4d413a579e52db8eba6cea39df818bb876fc')
 
 prepare() {
     cat <<EOF > $pkgname
