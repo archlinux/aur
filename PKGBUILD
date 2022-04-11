@@ -4,13 +4,13 @@
 pkgname=xdg-desktop-portal-git
 _pkgname=xdg-desktop-portal
 pkgver=1.14.1.r15.gdfd9539
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Desktop integration portals for sandboxed apps"
 url="https://github.com/flatpak/xdg-desktop-portal"
 arch=(x86_64)
 license=(LGPL2.1)
-depends=('glib2' 'pipewire' 'fuse3' 'gdk-pixbuf2' 'geoclue' 'json-glib')
+depends=('glib2' 'pipewire' 'fuse3' 'gdk-pixbuf2' 'geoclue' 'json-glib' 'systemd')
 makedepends=('python' 'xmlto' 'docbook-xsl' 'git' 'flatpak' 'libportal')
 # checkdepends=('epiphany' 'gedit' 'gvfs') # disable if not used in check()
 provides=($_pkgname)
@@ -42,7 +42,7 @@ build() {
 }
 
 package() {
-  depends+=(xdg-desktop-portal-impl)
+  depends+=('xdg-desktop-portal-impl' 'rtkit')
   cd $_pkgname
   make DESTDIR="$pkgdir" install
 }
