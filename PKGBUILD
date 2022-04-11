@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Sandelinos
 pkgname='freej2me-git'
 pkgver='r208.a32e5b2'
 pkgrel=1
