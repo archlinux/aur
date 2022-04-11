@@ -11,12 +11,13 @@
 
 pkgname=apache-mod_auth_mellon
 pkgver=0.18.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Authentication module for Apache that authenticates the user against a SAML 2.0 IdP, and grants access to directories depending on attributes received from the IdP."
 arch=('i686' 'x86_64')
 url="https://github.com/latchset/mod_auth_mellon"
 license=('LGPL')
-depends=('apache' 'lasso')
+depends=('apache' 'lasso>=2.8.0' 'curl')
+makedepends=('apache' 'lasso>=2.8.0' 'curl')
 source=("https://github.com/latchset/mod_auth_mellon/archive/refs/tags/v${pkgver}.tar.gz")
 sha512sums=('477ac302fda9ed33b2ca51e88379250a41cc85111e71cacc8ba9f16cd8a2b63af6393fb038fc8f5c211b97926ef368c5989c92570c2e3c9eae072c7b4d32d7d5')
 
@@ -24,7 +25,7 @@ build() {
   cd "$srcdir"/mod_auth_mellon-$pkgver
   ./autogen.sh
   ./configure
-  apxs -L/usr/lib -I/usr/include -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/libxml2 -I/usr/include/xmlsec1 -c mod_auth_mellon.c
+  apxs -L/usr/lib -I/usr/include -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/libxml2 -I/usr/include/xmlsec1 -llasso -lcurl -c mod_auth_mellon.c auth_mellon_*.c
 }
 
 package() {
