@@ -1,6 +1,6 @@
 pkgbase = prusa-slicer-bin
-	pkgdesc = G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.) (binary AppImage)
-	pkgver = 2.4.1
+	pkgdesc = G-code generator for 3D printers (binary AppImage, includes rc releases)
+	pkgver = 2.4.2_rc1
 	pkgrel = 1
 	url = https://github.com/prusa3d/PrusaSlicer
 	arch = x86_64
@@ -11,13 +11,13 @@ pkgbase = prusa-slicer-bin
 	conflicts = prusa-slicer
 	conflicts = prusa-slicer-git
 	conflicts = prusa-slicer-gtk2
-	noextract = PrusaSlicer-2.4.1.AppImage
+	noextract = PrusaSlicer-2.4.2-rc1.AppImage
 	options = !strip
-	source_x86_64 = PrusaSlicer-2.4.1.AppImage::https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.4.1/PrusaSlicer-2.4.1+linux-x64-GTK3-202203101056.AppImage
+	source_x86_64 = PrusaSlicer-2.4.2-rc1.AppImage::https://github.com/prusa3d/PrusaSlicer/releases/download/version_2.4.2-rc1/PrusaSlicer-2.4.2-rc1+linux-x64-GTK3-202204051358.AppImage
 	source_x86_64 = prusa-slicer.patch
 	source_x86_64 = prusa-gcode.patch
-	sha256sums_x86_64 = a588f3e7a9a333dfce727188194bb883d2528c757f9437ad5b62f6dc5644b1f5
-	sha256sums_x86_64 = SKIP
-	sha256sums_x86_64 = SKIP
+	sha256sums_x86_64 = 7a6c1609e3003e663b90d8b49e3e7dbac0bcb59072ebff838b10a505c6497b21
+	sha256sums_x86_64 = 4c70f1b7e9fcc327fee70d5632fe1c8c3ea5c3d48c7f9998571631559d5d5010
+	sha256sums_x86_64 = a4133d2c1e171f55eecaeab9bae16b1f83843f30960830305235401d3662a043
 
 pkgname = prusa-slicer-bin

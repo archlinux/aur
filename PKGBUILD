@@ -2,10 +2,11 @@
 
 pkgname=prusa-slicer-bin
 _pkgname="${pkgname%-bin}"
-pkgver=2.4.1
-_pkgdate=202203101056
+pkgver=2.4.2_rc1
+_pkgver="${pkgver//_/-}"
+_pkgdate=202204051358
 pkgrel=1
-pkgdesc="G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.) (binary AppImage)"
+pkgdesc="G-code generator for 3D printers (binary AppImage, includes rc releases)"
 arch=('x86_64')
 url="https://github.com/prusa3d/PrusaSlicer"
 license=('AGPL3')
@@ -13,17 +14,17 @@ conflicts=("$_pkgname" 'prusa-slicer-git' 'prusa-slicer-gtk2')
 provides=("$_pkgname")
 depends=('zlib' 'fuse')
 options=('!strip')
-_appimage="PrusaSlicer-$pkgver.AppImage"
+_appimage="PrusaSlicer-${_pkgver}.AppImage"
 noextract=("${_appimage}")
 source_x86_64=(
-    "${_appimage}::${url}/releases/download/version_${pkgver}/PrusaSlicer-${pkgver}+linux-x64-GTK3-${_pkgdate}.AppImage"
+    "${_appimage}::${url}/releases/download/version_${_pkgver}/PrusaSlicer-${_pkgver}+linux-x64-GTK3-${_pkgdate}.AppImage"
     'prusa-slicer.patch'
     'prusa-gcode.patch'
 )
 sha256sums_x86_64=(
-    'a588f3e7a9a333dfce727188194bb883d2528c757f9437ad5b62f6dc5644b1f5'
-    'SKIP'
-    'SKIP'
+    '7a6c1609e3003e663b90d8b49e3e7dbac0bcb59072ebff838b10a505c6497b21'
+    '4c70f1b7e9fcc327fee70d5632fe1c8c3ea5c3d48c7f9998571631559d5d5010'
+    'a4133d2c1e171f55eecaeab9bae16b1f83843f30960830305235401d3662a043'
 )
 
 prepare() {
