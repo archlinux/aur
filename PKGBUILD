@@ -1,4 +1,3 @@
-#!/bin/bash
 # Maintainer: Your Name <youremail@domain.com>
 pkgname='freej2me-git'
 pkgver='r208.a32e5b2'
@@ -39,7 +38,6 @@ build() {
 
 package() {
 	cd "${srcdir}/${pkgname%-git}"
-	ls -lh
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-git}/LICENSE"
 	install -Dm644 build/freej2me.jar "${pkgdir}/usr/share/java/freej2me/freej2me.jar"
 	install -Dm644 build/freej2me-lr.jar "${pkgdir}/usr/share/java/freej2me/freej2me-lr.jar"
