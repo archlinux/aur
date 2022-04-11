@@ -4,7 +4,7 @@ url='https://moveit.ros.org'
 pkgname='ros-noetic-moveit-core'
 pkgver='1.1.8'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -43,6 +43,7 @@ ros_depends=(
     ros-noetic-xmlrpcpp
     ros-noetic-pluginlib
     ros-noetic-tf2-kdl
+    ros-noetic-angles
 )
 
 depends=(
