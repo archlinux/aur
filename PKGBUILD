@@ -1,14 +1,14 @@
 # Maintainer: Dylan Turner dylantdmt@gmail.com
 pkgname=bgrm-git
 pkgver=21.1231
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A utility for removing backgrounds from a webcam and returning a virtual webcam for use in applications like Teams, OBS, etc"
 arch=('any')
 url="https://www.github.com/blueOkiris/bgrm"
 license=('GPL3')
 makedepends=('git' 'python' 'python-pip' 'v4l2loopback-dkms')
-source=('git://github.com/blueOkiris/bgrm.git')
+source=('git+https://github.com/blueOkiris/bgrm.git')
 md5sums=('SKIP')
 install='bgrm.install'
 

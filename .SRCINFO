@@ -1,7 +1,7 @@
 pkgbase = bgrm-git
 	pkgdesc = A utility for removing backgrounds from a webcam and returning a virtual webcam for use in applications like Teams, OBS, etc
 	pkgver = 21.1231
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.github.com/blueOkiris/bgrm
 	install = bgrm.install
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = bgrm-git
 	makedepends = python
 	makedepends = python-pip
 	makedepends = v4l2loopback-dkms
-	source = git://github.com/blueOkiris/bgrm.git
+	source = git+https://github.com/blueOkiris/bgrm.git
 	md5sums = SKIP
 
 pkgname = bgrm-git
