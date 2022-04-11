@@ -1,6 +1,6 @@
 pkgbase = xnvme
 	pkgdesc = Cross-platform libraries and tools for NVMe devices
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://xnvme.io/
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = xnvme
 	depends = libutil-linux
 	depends = numactl
 	depends = python3
-	source = https://github.com/OpenMPDK/xNVMe/releases/download/v0.1.0/xnvme-0.1.0.tar.gz
-	md5sums = 6b40c3c06a3e66547bad4c1dda1e4368
+	source = https://github.com/OpenMPDK/xNVMe/releases/download/v0.2.0/xnvme-0.2.0.tar.gz
+	md5sums = d4b185ca6cce5d289983989fb297abf4
 
 pkgname = xnvme

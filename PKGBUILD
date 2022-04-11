@@ -1,6 +1,6 @@
 # Maintainer: Karl Bonde Torp <k.torp@samsung.com>
 pkgname=xnvme
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Cross-platform libraries and tools for NVMe devices"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('APACHE')
 depends=(python-pyelftools libaio libutil-linux numactl python3)
 makedepends=(meson ninja cunit ncurses)
 source=("https://github.com/OpenMPDK/xNVMe/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('6b40c3c06a3e66547bad4c1dda1e4368')
+md5sums=('d4b185ca6cce5d289983989fb297abf4')
 
 build() {
 	arch-meson "$pkgname-$pkgver" build
