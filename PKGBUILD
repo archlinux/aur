@@ -1,7 +1,7 @@
 # Maintainer: Danny Grove <dgrove@hashbang.sh>
 pkgname=mtls
 pkgver=0.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A short-lived certificate tool based on the Zero Trust network model"
 url="https://github.com/drgrove/mtls-cli"
 license=("Apache")

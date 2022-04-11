@@ -1,7 +1,7 @@
 pkgbase = mtls
 	pkgdesc = A short-lived certificate tool based on the Zero Trust network model
-	pkgver = 0.15.0
-	pkgrel = 1
+	pkgver = 0.16.0
+	pkgrel = 2
 	url = https://github.com/drgrove/mtls-cli
 	arch = any
 	license = Apache
@@ -14,11 +14,10 @@ pkgbase = mtls
 	depends = python-pyopenssl
 	depends = python-requests
 	depends = python-urllib3
-	source = https://pypi.io/packages/source/m/mtls/mtls-0.15.0.tar.gz
-	source = https://pypi.io/packages/source/m/mtls/mtls-0.15.0.tar.gz.asc
+	source = https://pypi.io/packages/source/m/mtls/mtls-0.16.0.tar.gz
+	source = https://pypi.io/packages/source/m/mtls/mtls-0.16.0.tar.gz.asc
 	validpgpkeys = C92FE5A3FBD58DD3EC5AA26BB10116B8193F2DBD
-	sha256sums = 97747fc0fbf0835f2ae8d010a7a4788deb8aff0d368c000de4fdb4bc66a5a944
+	sha256sums = 3dfd2e437150844900c7945755b1d4cf39867717215a3fef76a4df388057a945
 	sha256sums = SKIP
 
 pkgname = mtls
-
