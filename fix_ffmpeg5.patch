@@ -1,0 +1,14 @@
+# Source: https://github.com/Moonbase59/loudgain/pull/50#issuecomment-1050879198
+--- a/src/scan.c~	2019-09-06 16:31:19.000000000 +0100
++++ b/src/scan.c	2022-02-25 13:33:06.186080276 +0000
+@@ -69,8 +69,9 @@ int scan_init(unsigned nb_files) {
+ 	 * It is now useless
+ 	 * https://github.com/FFmpeg/FFmpeg/blob/70d25268c21cbee5f08304da95be1f647c630c15/doc/APIchanges#L86
+ 	 */
+-  if (avformat_version() < AV_VERSION_INT(58,9,100))
++#if LIBAVFORMAT_VERSION_INT < AV_VERSION_INT(58,9,100)
+     av_register_all();
++#endif
+ 
+ 	av_log_set_callback(scan_av_log);
+ 
