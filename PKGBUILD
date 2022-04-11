@@ -41,5 +41,6 @@ prepare() {
 }
 
 package() {
+    mkdir -p "$pkgdir/usr/lib"
     cp "$srcdir/yue.so" "$pkgdir/usr/lib/yue-lua-5.1.so"
 }
