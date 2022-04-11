@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=nanoemoji
-pkgver=0.12.2
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='A wee tool to build color fonts'
 arch=(any)
@@ -21,25 +21,31 @@ depends=(absl-py
          picosvg
          python
          "${_py_deps[@]/#/python-}")
-makedepends=(python-setuptools-scm)
+makedepends=(python-{build,installer}
+             python-setuptools-scm
+             python-wheel)
 optdepends=('resvg: Support CBDT and sbix color fonts')
-checkdepends=(python-pytest)
+checkdepends=(python-pytest
+              resvg)
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('99219b96da070cda95c80266ed11934fae780c24084721a611acda0136baa35e')
+sha256sums=('a9347a7e96ffe5dd0d15ac5f1a11cdb577dc60b8b9480c2a647ada1708d54f43')
 
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build -wn
 }
 
 check() {
 	cd "$_archive"
+	# Skip tests that assume shell access to installed executable
 	PYTHONPATH=build/lib pytest \
+		--deselect tests/extract_svgs_test.py \
+		--deselect tests/maximum_color_test.py \
 		--deselect tests/nanoemoji_test.py
 }
 
 package() {
 	cd "$_archive"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 }
