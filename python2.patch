@@ -1,0 +1,47 @@
+diff --git a/man/mid3cp.1 b/man/mid3cp2.1
+similarity index 100%
+rename from man/mid3cp.1
+rename to man/mid3cp2.1
+diff --git a/man/mid3iconv.1 b/man/mid3iconv2.1
+similarity index 100%
+rename from man/mid3iconv.1
+rename to man/mid3iconv2.1
+diff --git a/man/mid3v2.1 b/man/mid3v2_2.1
+similarity index 100%
+rename from man/mid3v2.1
+rename to man/mid3v2_2.1
+diff --git a/man/moggsplit.1 b/man/moggsplit2.1
+similarity index 100%
+rename from man/moggsplit.1
+rename to man/moggsplit2.1
+diff --git a/man/mutagen-inspect.1 b/man/mutagen-inspect2.1
+similarity index 100%
+rename from man/mutagen-inspect.1
+rename to man/mutagen-inspect2.1
+diff --git a/man/mutagen-pony.1 b/man/mutagen-pony2.1
+similarity index 100%
+rename from man/mutagen-pony.1
+rename to man/mutagen-pony2.1
+diff --git a/setup.py b/setup.py
+index fedfa5f..21c3ba4 100755
+--- a/setup.py
++++ b/setup.py
+@@ -286,12 +286,12 @@ if __name__ == "__main__":
+             '>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*, <4'),
+           entry_points={
+             'console_scripts': [
+-              'mid3cp=mutagen._tools.mid3cp:entry_point',
+-              'mid3iconv=mutagen._tools.mid3iconv:entry_point',
+-              'mid3v2=mutagen._tools.mid3v2:entry_point',
+-              'moggsplit=mutagen._tools.moggsplit:entry_point',
+-              'mutagen-inspect=mutagen._tools.mutagen_inspect:entry_point',
+-              'mutagen-pony=mutagen._tools.mutagen_pony:entry_point',
++              'mid3cp2=mutagen._tools.mid3cp:entry_point',
++              'mid3iconv2=mutagen._tools.mid3iconv:entry_point',
++              'mid3v2_2=mutagen._tools.mid3v2:entry_point',
++              'moggsplit2=mutagen._tools.moggsplit:entry_point',
++              'mutagen-inspect2=mutagen._tools.mutagen_inspect:entry_point',
++              'mutagen-pony2=mutagen._tools.mutagen_pony:entry_point',
+             ],
+           },
+           long_description=long_description,

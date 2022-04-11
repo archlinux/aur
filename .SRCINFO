@@ -1,16 +1,18 @@
 pkgbase = python2-mutagen
 	pkgdesc = An audio metadata tag reader and writer (python2 library)
 	pkgver = 1.43.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/quodlibet/mutagen
 	arch = any
 	license = GPL2
-	depends = python2-setuptools
-	source = https://github.com/quodlibet/mutagen/releases/download/release-1.43.1/mutagen-1.43.1.tar.gz
-	source = https://github.com/quodlibet/mutagen/releases/download/release-1.43.1/mutagen-1.43.1.tar.gz.sig
+	makedepends = python2-setuptools
+	depends = python2
+	source = python2-mutagen-1.43.1.tar.gz::https://github.com/quodlibet/mutagen/releases/download/release-1.43.1/mutagen-1.43.1.tar.gz
+	source = python2-mutagen-1.43.1.tar.gz.sig::https://github.com/quodlibet/mutagen/releases/download/release-1.43.1/mutagen-1.43.1.tar.gz.sig
+	source = python2.patch
 	validpgpkeys = 0EBF782C5D53F7E5FB02A66746BD761F7A49B0EC
 	sha256sums = d873baeb7815311d3420aab0a1d83f050f628228cbc2d6045a14a16460411bc9
 	sha256sums = SKIP
+	sha256sums = f529b4f9aaeb5a6f8a12ab90361be671bc65c2abdb6ac78e70a776dd59c97abc
 
 pkgname = python2-mutagen
-
