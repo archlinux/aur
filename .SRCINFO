@@ -1,13 +1,13 @@
 pkgbase = gnome-shell-extension-desk-changer
 	pkgdesc = DeskChanger is a gnome-shell wallpaper slideshow extension with multiple profile support. The extension allows you to switch profiles on the fly without reloading the daemon.
-	pkgver = 32
+	pkgver = 33
 	pkgrel = 1
 	url = https://github.com/BigE/desk-changer/
 	arch = any
 	license = MIT
 	depends = gnome-shell>=3.40
 	depends = gjs
-	source = https://github.com/BigE/desk-changer/archive/version-32.tar.gz
-	sha512sums = afa0eb84ed3d3aa9c6f82d5eccfee719a1937c5a1263a613c7bf7fe699b8244fb6cb49b169ff739b54d3e82c89781a1c00a1f633635cfcc66d6ce9f4ea59d8ab
+	source = https://github.com/BigE/desk-changer/archive/refs/tags/version-33.tar.gz
+	sha512sums = cbe1ea599996d1bd864fea1864c5208ebe93e683202096d39d6861c0b8308d6ec30e85bd0652eb92f01f826bb7500f185d05e00825e5e65a48e0e21064cfbbb8
 
 pkgname = gnome-shell-extension-desk-changer
