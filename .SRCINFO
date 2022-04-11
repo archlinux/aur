@@ -1,18 +1,18 @@
 pkgbase = electron-netease-cloud-music
 	pkgdesc = UNOFFICIAL client for music.163.com . Powered by Electron, Vue, and Muse-UI.
 	pkgver = 0.9.34
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Rocket1184/electron-netease-cloud-music
 	arch = any
 	license = GPL3
 	makedepends = yarn
-	depends = electron
+	depends = electron17
 	optdepends = dbus: MPRIS support
 	source = electron-netease-cloud-music-0.9.34.tar.gz::https://github.com/Rocket1184/electron-netease-cloud-music/archive/v0.9.34.tar.gz
 	source = electron-netease-cloud-music.desktop
 	source = electron-netease-cloud-music.sh
 	md5sums = e98662eb77e05443fea7f8686c835355
 	md5sums = 7f35c2dbfc5cd0fd63cd0be16cf35f3c
-	md5sums = 155178854f344b3d56283beb739c8730
+	md5sums = 1bcb196feec3fc9f04697a712a1c872d
 
 pkgname = electron-netease-cloud-music
