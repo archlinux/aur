@@ -5,7 +5,7 @@
 
 pkgname=elasticsearch
 pkgver=8.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Distributed RESTful search engine built on top of Lucene"
 arch=('x86_64')
 url="https://www.elastic.co/products/elasticsearch"
