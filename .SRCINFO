@@ -1,6 +1,6 @@
 pkgbase = plasma5-wallpapers-dynamic
 	pkgdesc = Dynamic wallpaper plugin for KDE Plasma
-	pkgver = 4.1.0
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://github.com/zzag/plasma5-wallpapers-dynamic
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = plasma5-wallpapers-dynamic
 	depends = qt5-declarative
 	depends = qt5-location
 	optdepends = geoclue: automatic location detection support
-	source = plasma5-wallpapers-dynamic-4.1.0.tar.gz::https://github.com/zzag/plasma5-wallpapers-dynamic/archive/4.1.0.tar.gz
-	sha256sums = ebaf72d82e5be4bb8196ca04aa4216f3197583f658f1f2f2282e91ec5526b782
+	source = plasma5-wallpapers-dynamic-4.2.0.tar.gz::https://github.com/zzag/plasma5-wallpapers-dynamic/archive/4.2.0.tar.gz
+	sha256sums = 5b5ece97017e2c779c296892f88f1f70479e2da4cbee872e28e5f64f5c2a42f8
 
 pkgname = plasma5-wallpapers-dynamic
