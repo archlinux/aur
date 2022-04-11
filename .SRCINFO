@@ -1,6 +1,6 @@
 pkgbase = guake-git
 	pkgdesc = Top-down terminal for Gnome using gtk3 and vte3
-	pkgver = 3.7.0.44.g00d880f7
+	pkgver = 3.8.5.15.g08f32aab
 	pkgrel = 1
 	url = https://github.com/Guake/guake
 	arch = i686
@@ -27,8 +27,7 @@ pkgbase = guake-git
 	provides = guake
 	conflicts = guake
 	conflicts = guake-gtk2-git
-	source = git://github.com/Guake/guake.git
+	source = git+https://github.com/Guake/guake.git
 	sha512sums = SKIP
 
 pkgname = guake-git
-

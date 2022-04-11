@@ -5,7 +5,7 @@
 # Contributor: Florian Reimair <office /at/ florianreimair.at>
 
 pkgname=guake-git
-pkgver=3.7.0.44.g00d880f7
+pkgver=3.8.5.15.g08f32aab
 pkgrel=1
 pkgdesc="Top-down terminal for Gnome using gtk3 and vte3"
 arch=('i686' 'x86_64' 'armv7h')
@@ -16,7 +16,7 @@ depends=('vte3' 'gtk3' 'python-pbr' 'python-dbus' 'python-xdg' 'libutempter' 'li
 makedepends=('git' 'python-pip' 'make')
 conflicts=('guake' 'guake-gtk2-git')
 provides=('guake')
-source=("git://github.com/Guake/guake.git")
+source=("git+https://github.com/Guake/guake.git")
 sha512sums=('SKIP')
 
 pkgver() {
