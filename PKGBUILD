@@ -4,7 +4,7 @@
 ## Do not use git source; tree contains massive objects
 
 pkgname=python-abjad
-pkgver=3.6
+pkgver=3.8
 pkgrel=1
 pkgdesc='Python API for building LilyPond files'
 arch=('any')
@@ -15,8 +15,6 @@ depends=(
 	'lilypond'
 	'python>=3.10'
 	'python-ply'
-	'python-six'
-	## deps below are AUR only
 	'python-quicktions'
 	'python-roman'
 	'python-uqbar')
@@ -28,11 +26,14 @@ makedepends=(
 	'python-wheel')
 optdepends=(
 	'fluidsynth: playback generated MIDI files'
-	'timidity++: playback generated MIDI files'
-	'graphviz: creates rhythm-trees graphs and other tree structures')
-checkdepends=('python-pytest')
+	'graphviz: creates rhythm-trees graphs and other tree structures'
+	'python-abjad-ext-ipython: IPython extension'
+	'python-abjad-ext-nauert: quantization extension'
+	'python-abjad-ext-rmakers: rhythm-maker extension'
+	'timidity++: playback generated MIDI files')
+# checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('482f883f5385994ff073a91368f8c9be1c89e8ad4897006e0168a19ef5137ae1')
+sha256sums=('a5c387a60475262e95745ef42821d54510c32f6e9d381a345f480e87709a4702')
 # validpgpkeys=('EF80D3D6F5926FC997919D6A27A5BE0A6ADE7F36') ## Trevor Baca
 
 build() {
@@ -47,8 +48,6 @@ build() {
 # }
 
 package() {
-	export PYTHONHASHSEED=0
 	cd "abjad-$pkgver"
-	python -m installer --destdir="$pkgdir/" dist/*.whl
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 }
