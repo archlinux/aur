@@ -6,7 +6,7 @@
 # Maintainer: Adrian Lopez <zeioth@hotmail.com>
 pkgname=wofi-calc
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="A simple calculator for wofi, inspired in rofi-calc."
 arch=(any)
@@ -30,6 +30,7 @@ sha256sums=('SKIP')
 validpgpkeys=()
 
 package() {
-  cp "${srcdir}"/wofi-calc/wofi-calc.sh ~/.local/bin/wofi-calc
-  chmod u+x ~/.local/bin/wofi-calc
+   # Note: 'install' is a chmod+cp one-liner command by GNU
+   mkdir -p "$pkgdir"/usr/bin
+   install -m 555 "${srcdir}"/wofi-calc/wofi-calc.sh "$pkgdir"/usr/bin/wofi-calc
 }
