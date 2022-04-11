@@ -1,0 +1,15 @@
+pkgbase = can
+	pkgdesc = Command-line trash manager
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/sawshep/can
+	arch = any
+	license = GPL-3.0
+	depends = ruby
+	depends = ruby-highline
+	noextract = can_cli-0.1.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/can_cli-0.1.2.gem
+	sha1sums = 6d3fd48ce8bcfb6e4e5293178d9b0feb155ae497
+
+pkgname = can
