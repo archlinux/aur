@@ -4,25 +4,25 @@
 
 _name=libcap
 pkgname=lib32-libcap
-pkgver=2.63
+pkgver=2.64
 pkgrel=1
 pkgdesc="POSIX 1003.1e capabilities (32-bit)"
 arch=(x86_64)
 url="https://sites.google.com/site/fullycapable/"
 license=(GPL2)
-depends=("libcap=${pkgver}" lib32-gcc-libs lib32-glibc lib32-pam)
+depends=(libcap=$pkgver lib32-gcc-libs lib32-glibc lib32-pam)
 makedepends=(linux-api-headers)
 provides=(libcap.so libpsx.so)
-source=("https://kernel.org/pub/linux/libs/security/linux-privs/${_name}2/${_name}-$pkgver.tar."{xz,sign}
-)
-sha512sums=('832842b71ca32db8f53ca5f1a3010f14e7f42693f62f29632e9948c860f990899bb094165c37307ce8b9e5bc5eb1c833e780ebca98442df3e6d900e4b238834b'
+options=(debug)
+source=(https://kernel.org/pub/linux/libs/security/linux-privs/${_name}2/$_name-$pkgver.tar.{xz,sign})
+sha512sums=('3c5cf478cef249585ee1a0dfd75c6b41b0daf4e1ecb59dce894eac5523841aa79ca499be4161f73193dd8e7363edcd51063f3e281930cee939ebd50983eecbaf'
             'SKIP')
-b2sums=('a49a628f5b9ddf5a3d077428544a53b9cdedf62053ff296a0aa7d61e12ca05f9ba7597f20ee16a3843736bee2417a3d1585ad6b336651fcb3e4ee29b108cfa0f'
+b2sums=('078ce2505a79c1bd4ca0a8eaf3444178bc19a566f0505d28c6959f86fbbac2fe2fc88c06fd0d988087a6e20e8ec66a2633146cea957f0f3fd92eaff4f81d7c66'
         'SKIP')
 validpgpkeys=(38A644698C69787344E954CE29EE848AE2CCF3F4) # Andrew G. Morgan <morgan@kernel.org>
 
 build() {
-  make DYNAMIC=yes KERNEL_HEADERS='/usr/include' CC="gcc -m32" lib='lib32' prefix='/usr' sbindir='bin' -C "${_name}-$pkgver"
+  make DYNAMIC=yes KERNEL_HEADERS=/usr/include CC="gcc -m32" lib=lib32 prefix=/usr sbindir=bin -C $_name-$pkgver
 }
 
 check() {
@@ -30,8 +30,8 @@ check() {
 }
 
 package() {
-  make DESTDIR="$pkgdir" RAISE_SETFCAP='no' lib='lib32' prefix='/usr' sbindir='bin' install -C "${_name}-$pkgver"
-  install -vDm 644 "${_name}-$pkgver/"{CHANGELOG,README} -t "${pkgdir}/usr/share/doc/${pkgname}/"
+  make DESTDIR="$pkgdir" RAISE_SETFCAP=no lib=lib32 prefix=/usr sbindir=bin install -C $_name-$pkgver
+  install -vDm 644 $_name-$pkgver/{CHANGELOG,README} -t "$pkgdir/usr/share/doc/$pkgname/"
   # remove files provided by libcap
-  rm -rv "${pkgdir}/usr/"{include,share/man,bin}
+  rm -rv "$pkgdir/usr/"{include,share/man,bin}
 }
