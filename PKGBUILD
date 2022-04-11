@@ -15,7 +15,7 @@ depends=('tar')
 makedepends=('git')
 provides=("${_pkgname}=${pkgver%.r*}")
 conflicts=("${_pkgname}")
-source=("${_pkgname}::${url//https/git}.git")
+source=("${_pkgname}::git+${url}.git")
 sha256sums=('SKIP')
 
 pkgver() {
