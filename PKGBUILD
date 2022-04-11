@@ -1,7 +1,7 @@
 # Maintainer: Ferdinand B <theferdi265@gmail.com>
 
 pkgname=wl-mirror
-pkgver=0.10.0
+pkgver=0.11.0
 pkgrel=4
 pkgdesc="a simple Wayland output mirror client"
 url="https://github.com/Ferdi265/wl-mirror"
@@ -16,7 +16,7 @@ optdepends=(
 )
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Ferdi265/wl-mirror/releases/download/v$pkgver/wl-mirror-$pkgver.tar.gz")
-sha256sums=('7cdb9645504d79bebbcdf7ce604386025026f2a5274ce6002e53af5c3cd47d53')
+sha256sums=('dfc7bfee26feb7810847ba3c106f37e6cf7b6790128867b5250c4fac1ed88a30')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
