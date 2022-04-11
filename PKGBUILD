@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=bore
-pkgver=0.2.1
+pkgver=0.2.3
 pkgrel=1
 pkgdesc="A command line tool for making tunnels to localhost"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('84508455e2c9cfbdb154f02b00e0c24bba8c3c20461d5ed92f5e0b96c2c6815952509bf9fd269ec4c98695a5864a50266d64e3b2ca6ef2a464c1e00f0d8248ba')
+sha512sums=('96fb7d21320664eebf6013fd283eab34ec53b3d42e2373dc5c2da9eacd9558a75f894f12633c7f00166b7bfc0553ea1eb44ccc32e003125463dce8af07062480')
 
 prepare() {
   cd "$pkgname-$pkgver"
