@@ -1,3 +1,6 @@
+# Generate checksums
+sed -i "s/^sha256sums=.*/$(makepkg -g -f -p PKGBUILD)/" ./PKGBUILD
+
 # Generate metadata
 makepkg --printsrcinfo > .SRCINFO
 
