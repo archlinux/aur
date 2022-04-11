@@ -84,7 +84,7 @@ pkgdesc='Clear Linux lts2020'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2020"
 license=('GPL2')
-makedepends=('bc' 'cpio' 'git' 'kmod' 'libelf' 'pahole' 'xmlto')
+makedepends=('bc' 'cpio' 'git' 'libelf' 'pahole' 'xmlto')
 options=('!strip')
 _gcc_more_v='20211114'
 source=(
@@ -256,7 +256,8 @@ _package() {
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     echo "Installing modules..."
-    make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+    make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+        DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
     # remove build and source links
     rm "$modulesdir"/{source,build}
