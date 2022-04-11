@@ -2,7 +2,7 @@
 
 pkgname=aom-psy-git
 pkgver=r32422.g48d21fe00
-pkgrel=1
+pkgrel=2
 pkgdesc="An open, royalty-free video coding format, includes tune=vmaf and BlueSwordM's psy patches"
 arch=('i686' 'x86_64')
 url="https://aomedia.org/"
@@ -51,6 +51,7 @@ package() {
   cd "aom"
 
   make -C "_build" DESTDIR="$pkgdir" install
+  cp "_build/examples/photon_noise_table" "$pkgdir/usr/bin/photon_noise_table"
 
   install -d "$pkgdir/usr/share/doc/aom"
   cp -R "_build/docs/." "$pkgdir/usr/share/doc/aom"
