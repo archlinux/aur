@@ -28,10 +28,6 @@ validpgpkeys=()
 package() {
   install -Dm755 "$srcdir/$pkgname.zsh" "$pkgdir/usr/share/zsh/functions/$pkgname.zsh"
 
-  ZSHRC=$(cat ~/.zshrc)
-  SOURCE="source /usr/share/zsh/functions/$pkgname.zsh"
-
-  if ![["$ZSHRC" =~ "$SOURCE"]]; then
-    echo "$SOURCE" >>~/.zshrc
-  fi
+  echo "Add the following line to your zshrc:"
+  echo "  source /usr/share/zsh/functions/$pkgname.zsh"
 }
