@@ -1,7 +1,7 @@
 pkgbase = profex
 	pkgdesc = A program for Rietveld refinement of powder X-ray diffraction data.
 	pkgver = 5.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://profex.doebelin.org
 	arch = i686
 	arch = x86_64
