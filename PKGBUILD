@@ -3,8 +3,8 @@
 
 pkgname=emacs-ng
 pkgver=28.0.50
-_fix_commit=1e46579
-pkgrel=4
+_fix_commit=6b6dfb3
+pkgrel=5
 pkgdesc="A new approach to Emacs - Including TypeScript, Threading, Async I/O, and WebRender"
 arch=('x86_64')
 url="https://emacs-ng.github.io/emacs-ng"
@@ -17,7 +17,7 @@ depends=('jansson' 'ncurses' 'libgccjit' 'librsvg' 'libxpm' 'libjpeg-turbo' 'lib
 	 )
 makedepends=('rustup' 'python' 'texlive-core')
 source=("$pkgname-$pkgver_${_fix_commit}.tar.gz::https://github.com/emacs-ng/emacs-ng/archive/refs/tags/v0.0.${_fix_commit}.tar.gz")
-sha256sums=('13b09b7d01149fbf8095160fb9a94b8a84f10c58ad959456505227ba2bfbcb6b')
+sha256sums=('afd3bf705f503cc44dfbbc571ff15cf3e33f4fdc757c0122507f00e1b6d30f52')
  
 prepare() {
     cd ${pkgname}-0.0.${_fix_commit}
