@@ -1,11 +1,11 @@
 pkgbase = parch-os-wallpapers
 	pkgdesc = parch-os wallpapers
-	pkgver = 0.0.1
+	pkgver = 1.0.0.r0.gf9fc0f6
 	pkgrel = 1
 	url = https://github.com/parch-os/artwork
 	arch = any
-	license = BSD-3-Clause
-	provides = parch-os-wallpapers
+	license = BSD
+	makedepends = git
 	source = git+https://github.com/parch-os/artwork
 	md5sums = SKIP
 
