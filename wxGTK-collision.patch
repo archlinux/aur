@@ -24,14 +24,14 @@
  locale_install:
  	$(INSTALL_DIR) $(DESTDIR)$(datadir)/locale
 diff --git a/utils/wxrc/Makefile.in b/utils/wxrc/Makefile.in
-index 9b24d92a79..a189dcb454 100644
+index 25a00a7ac2..0e76683b09 100644
 --- a/utils/wxrc/Makefile.in
 +++ b/utils/wxrc/Makefile.in
 @@ -126,6 +126,7 @@ distclean: clean
-
- @COND_USE_XRC_1@uninstall_wxrc:
- @COND_USE_XRC_1@	rm -f $(DESTDIR)$(bindir)/wxrc$(EXEEXT)
+ 
+ @COND_USE_XML_1@uninstall_wxrc: 
+ @COND_USE_XML_1@	rm -f $(DESTDIR)$(bindir)/wxrc$(EXEEXT)
 +@COND_USE_XRC_1@	rm -f $(DESTDIR)$(bindir)/wxrc-$(WX_RELEASE)$(WX_FLAVOUR)$(EXEEXT)
-
+ 
  wxrc_wxrc.o: $(srcdir)/wxrc.cpp
  	$(CXXC) -c -o $@ $(WXRC_CXXFLAGS) $(srcdir)/wxrc.cpp

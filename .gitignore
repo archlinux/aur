@@ -3,3 +3,4 @@
 !.SRCINFO
 !PKGBUILD
 !wxGTK-collision.patch
+!wxgtk-abicheck.patch

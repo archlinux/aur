@@ -1,7 +1,7 @@
 pkgbase = wxwidgets-dev-light
 	pkgdesc = wxWidgets suite for Base, GTK2 and GTK3 toolkits . Development branch (GNOME/GStreamer free!)
-	pkgver = 3.1.5
-	pkgrel = 2
+	pkgver = 3.1.6
+	pkgrel = 1
 	url = http://wxwidgets.org
 	arch = x86_64
 	license = custom:wxWindows
@@ -16,14 +16,18 @@ pkgbase = wxwidgets-dev-light
 	makedepends = libsecret
 	makedepends = libxtst
 	options = debug
-	source = wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v3.1.5
-	source = https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/wxgtk/trunk/wxgtk-abicheck.patch
+	source = wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v3.1.6
+	source = wxgtk-abicheck.patch
 	source = git+https://github.com/wxWidgets/Catch.git
+	source = git+https://github.com/wxWidgets/pcre.git
+	source = git+https://github.com/wxWidgets/nanosvg.git
 	source = wxGTK-collision.patch
 	sha256sums = SKIP
-	sha256sums = 53501db871290b71967af08b60aedb738c920a307ef9bd32dd19c30498732cf8
+	sha256sums = 81d596168253b05a36758235b054542f53e00e488a20da60f458126d46992ce3
 	sha256sums = SKIP
-	sha256sums = 48b528acbbbbb0bc409c1efed04a0a055a5c81393ae3133c6339aee6821acfe5
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = 605df102a0f1610ab37c5294166644de0d17592d806147b0fb283cb5c3ce172e
 
 pkgname = wxgtk2-dev-light
 	pkgdesc = wxWidgets GTK2 Toolkit. Development branch (GNOME/GStreamer free!)

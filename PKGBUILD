@@ -5,8 +5,8 @@ pkgname=('wxgtk2-dev-light'
          'wxgtk3-dev-light'
          'wxcommon-dev-light'
          )
-pkgver=3.1.5
-pkgrel=2
+pkgver=3.1.6
+pkgrel=1
 pkgdesc="wxWidgets suite for Base, GTK2 and GTK3 toolkits . Development branch (GNOME/GStreamer free!)"
 arch=('x86_64')
 url='http://wxwidgets.org'
@@ -23,14 +23,18 @@ makedepends=('git'
              'libxtst'
              )
 source=("wxwidgets::git+https://github.com/wxWidgets/wxWidgets.git#tag=v${pkgver}"
-        'https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/wxgtk/trunk/wxgtk-abicheck.patch'
+        'wxgtk-abicheck.patch'
         'git+https://github.com/wxWidgets/Catch.git'
+        'git+https://github.com/wxWidgets/pcre.git'
+        'git+https://github.com/wxWidgets/nanosvg.git'
         'wxGTK-collision.patch'
         )
 sha256sums=('SKIP'
-            '53501db871290b71967af08b60aedb738c920a307ef9bd32dd19c30498732cf8'
+            '81d596168253b05a36758235b054542f53e00e488a20da60f458126d46992ce3'
             'SKIP'
-            '48b528acbbbbb0bc409c1efed04a0a055a5c81393ae3133c6339aee6821acfe5'
+            'SKIP'
+            'SKIP'
+            '605df102a0f1610ab37c5294166644de0d17592d806147b0fb283cb5c3ce172e'
             )
 options=('debug')
 
@@ -40,7 +44,12 @@ prepare() {
   cd wxwidgets
 
   git config submodule.3rdparty/catch.url "${srcdir}/Catch"
-  git submodule update --init 3rdparty/catch
+  git config submodule.3rdparty/pcre.url "${srcdir}/pcre"
+  git config submodule.3rdparty/nanosvg.url "${srcdir}/nanosvg"
+  git submodule update --init \
+    3rdparty/catch \
+    3rdparty/pcre \
+    3rdparty/nanosvg
 
   patch -Np1 -i "${srcdir}/wxGTK-collision.patch"
 
