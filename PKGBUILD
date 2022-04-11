@@ -1,7 +1,7 @@
 # Maintainer: Misha <mishakmak at gmail dot com>
 
 pkgname=pam-fprint-grosshack
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="PAM module enabling simultaneous fingerprint (fprintd) and password authentication"
 url="https://fprint.freedesktop.org/"
