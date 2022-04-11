@@ -8,7 +8,6 @@ pkgbase = linux-clear
 	makedepends = bc
 	makedepends = cpio
 	makedepends = git
-	makedepends = kmod
 	makedepends = libelf
 	makedepends = pahole
 	makedepends = xmlto
