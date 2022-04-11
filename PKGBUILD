@@ -30,5 +30,4 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 mo-server "$pkgdir"/usr/bin/mo-server
-  install -Dm644 system_vars_config.toml "$pkgname/etc/$pkgname/system_vars_config.toml"
 }
