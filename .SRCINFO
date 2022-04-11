@@ -10,10 +10,12 @@ pkgbase = moosync
 	depends = electron
 	depends = libvips
 	provides = moosync
-	source = moosync-2.0.0.tar::https://github.com/Moosync/Moosync/archive/v2.0.0.tar.gz
+	source = moosync-2.0.0-prebuilt.tar::https://github.com/Moosync/Moosync/releases/download/v2.0.0/Moosync-2.0.0-linux-x64.pacman
+	source = moosync-2.0.0.tar::https://github.com/Moosync/Moosync/archive/adcdc02036867e93e4aacdf6f0dafb42bc444825.tar.gz
 	source = moosync
 	source = moosync.desktop
-	sha256sums = 2b3cb52b97f2d600f28a2e299dd7e905bc815c859c3ab4c2627c3b51e0705e10
+	sha256sums = bc934259fcfc26257030be7f7ecddc6aa66d897536b3f8e5d3e98e1c9ef88c6c
+	sha256sums = 03e5d1daffdd34fa0bbc28e848dc1e2d61c4d2af1239f748a7cc3ef6b8035076
 	sha256sums = 36867efee6f9a491e64979ed329ce87f2136da2afcce4c9ef5696a9f2538d9ba
 	sha256sums = 4b63fa17717239db8a87ebeae1fdd96c5318b71d7d851d6c5a4f337793d3fecd
 

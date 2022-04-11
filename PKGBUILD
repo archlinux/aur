@@ -10,52 +10,45 @@ license=('GPL3')
 provides=("${pkgname}")
 depends=('electron' 'libvips')
 makedepends=('nodejs-lts-gallium' 'yarn')
-source=("${pkgname}-${pkgver}.tar::https://github.com/Moosync/Moosync/archive/v${pkgver}.tar.gz" moosync moosync.desktop)
-sha256sums=('2b3cb52b97f2d600f28a2e299dd7e905bc815c859c3ab4c2627c3b51e0705e10'
+_patchcommit="adcdc02036867e93e4aacdf6f0dafb42bc444825"
+source=("${pkgname}-${pkgver}-prebuilt.tar::https://github.com/Moosync/Moosync/releases/download/v${pkgver}/Moosync-${pkgver}-linux-x64.pacman" "${pkgname}-${pkgver}.tar::https://github.com/Moosync/Moosync/archive/${_patchcommit}.tar.gz" moosync moosync.desktop)
+sha256sums=('bc934259fcfc26257030be7f7ecddc6aa66d897536b3f8e5d3e98e1c9ef88c6c'
+            '03e5d1daffdd34fa0bbc28e848dc1e2d61c4d2af1239f748a7cc3ef6b8035076'
             '36867efee6f9a491e64979ed329ce87f2136da2afcce4c9ef5696a9f2538d9ba'
             '4b63fa17717239db8a87ebeae1fdd96c5318b71d7d851d6c5a4f337793d3fecd')
-_sourcedirectory="Moosync-$pkgver"
-
-prepare() {
-    cd "$srcdir/$_sourcedirectory/"
-    
-    # Remove electron from package.json
-    sed -E -i 's|("electron": ").*"|\1'"$(cat "/usr/lib/electron/version")"'"|' 'package.json'
-
-
-    # Change electronDist from electron18 to electron
-    sed -E -i 's/electron18/electron/g' vue.config.js
-
-    yarn install
-}
+_sourcedirectory="Moosync-$_patchcommit"
 
 build() {
     cd "$srcdir/$_sourcedirectory/"
 
-    yarn electron:build --linux --dir
+    # Remove electron from package.json
+    sed -E -i 's|("electron": ").*"|\1'"$(cat "/usr/lib/electron/version")"'"|' 'package.json'
+
+    yarn install
 }
 
 package() {
-    cd "$srcdir/$_sourcedirectory/"
-    local _outpath='dist_electron/linux-unpacked'
+    cd ${srcdir}
 
-    # Place files
-    install -d "${pkgdir}/opt/Moosync"
-    cp -R "${_outpath}/resources" "${pkgdir}/opt/Moosync/resources"
+    local _prebuiltpath="${srcdir}/opt/Moosync"
+
+    install -d "${pkgdir}/opt/Moosync/resources/app.asar.unpacked/node_modules"
+
+    cd "${srcdir}/${_sourcedirectory}/node_modules"
+    find . -name '*.node' -exec cp --parents \{\} /"${pkgdir}/opt/Moosync/resources/app.asar.unpacked/node_modules" \;
+
+    cp -R ${srcdir}/${_sourcedirectory}/node_modules/sharp "${pkgdir}/opt/Moosync/resources/app.asar.unpacked/node_modules/"
+    cp -R "${_prebuiltpath}/resources/app.asar" "${pkgdir}/opt/Moosync/resources/app.asar"
+    cp ${_prebuiltpath}/resources/app.asar.unpacked/*.js ${pkgdir}/opt/Moosync/resources/app.asar.unpacked/
 
     for _size in 16 32 48 256 512; do
-		install -Dm644 "build/icons/${_size}x${_size}.png" "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/moosync.png"
+		install -Dm644 "${srcdir}/${_sourcedirectory}/build/icons/${_size}x${_size}.png" "$pkgdir/usr/share/icons/hicolor/${_size}x${_size}/apps/moosync.png"
 	done
 
     cd "$srcdir"
     install -d "${pkgdir}/usr/bin"
     install "moosync" "${pkgdir}/usr/bin/moosync"
 
-    # Edit desktop entry executable path
-    # sed -i "s/opt\/Moosync\/moosync/usr\/bin\/moosync/g" "${srcdir}/usr/share/applications/moosync.desktop"
-
     # Place desktop entry and icons
     desktop-file-install -m 644 --dir "${pkgdir}/usr/share/applications/" "moosync.desktop"
-    # install -dm755 "${pkgdir}/usr/share/icons/hicolor/"
-    # cp -R "${srcdir}/usr/share/icons/hicolor/"* "${pkgdir}/usr/share/icons/hicolor/"
 }
