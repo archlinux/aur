@@ -1,0 +1,14 @@
+pkgbase = reddit-video-downloader
+	pkgdesc = A simple shell script that downloads reddit videos given a post url as an mp4. Only uses pure shell scripting, no python, javascript, etc.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/DapperCore/reddit-video-downloader.git
+	arch = any
+	license = MIT
+	depends = jq
+	depends = wget
+	depends = ffmpeg
+	source = reddit-video-downloader
+	md5sums = SKIP
+
+pkgname = reddit-video-downloader
