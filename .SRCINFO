@@ -1,15 +1,16 @@
 pkgbase = tmpmail
 	pkgdesc = A temporary email right from your terminal written in POSIX sh
-	pkgver = 1.1.9
-	pkgrel = 2
+	pkgver = 1.2.1
+	pkgrel = 1
 	url = https://github.com/sdushantha/tmpmail
 	arch = any
 	license = MIT
 	makedepends = git
-	depends = w3m
 	depends = curl
 	depends = jq
-	source = git+https://github.com/sdushantha/tmpmail.git#commit=0fdfe4955cfd0fff44a6c9073a4c30816e1cd615
+	optdepends = w3m: email rendering support
+	optdepends = xclip: address copy support
+	source = git+https://github.com/sdushantha/tmpmail.git#commit=81b733ca469c52ca018bcbcecfa7239c24a95001
 	md5sums = SKIP
 
 pkgname = tmpmail

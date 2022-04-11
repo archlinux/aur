@@ -1,15 +1,17 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=tmpmail
-pkgver=1.1.9
-_commit=0fdfe4955cfd0fff44a6c9073a4c30816e1cd615
-pkgrel=2
+pkgver=1.2.1
+_commit=81b733ca469c52ca018bcbcecfa7239c24a95001
+pkgrel=1
 pkgdesc='A temporary email right from your terminal written in POSIX sh'
 arch=(any)
 url=https://github.com/sdushantha/tmpmail
 license=(MIT)
-depends=(w3m curl jq)
+depends=(curl jq)
 makedepends=(git)
+optdepends=('w3m: email rendering support'
+            'xclip: address copy support')
 source=("git+$url.git#commit=$_commit")
 md5sums=(SKIP)
 
