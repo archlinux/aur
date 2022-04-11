@@ -1,0 +1,26 @@
+pkgbase = python-blackrenderer
+	pkgdesc = a Python-based renderer for OpenType COLR fonts, with multiple backends
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/BlackFoundryCom/black-renderer
+	arch = any
+	license = Apache
+	checkdepends = python-cairo
+	checkdepends = python-numpy
+	checkdepends = python-skia
+	checkdepends = python-pillow
+	checkdepends = python-pytest
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	depends = python
+	depends = python-fonttools
+	depends = python-uharfbuzz
+	optdepends = python-cairo: cairo backend
+	optdepends = python-numpy: skia backend
+	optdepends = python-skia: skia backend
+	source = https://files.pythonhosted.org/packages/source/b/blackrenderer/blackrenderer-0.5.0.tar.gz
+	sha256sums = ebded44c93b35d4109ed6067f5af21d6e74fd456b718fcef2a73a698ad46d2e4
+
+pkgname = python-blackrenderer
