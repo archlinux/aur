@@ -1,11 +1,10 @@
 # Maintainer: Ayush Jha <ayushjha@pm.me>
 pkgname="cmd-not-found"
 pkgver="1.0.0"
-pkgrel="2"
+pkgrel="3"
 pkgdesc="A simple hook to display required packages when a command is not found"
 url=""
 arch=("any")
-url=""
 license=("MIT")
 groups=()
 depends=("pkgfile" "zsh")
@@ -29,8 +28,10 @@ validpgpkeys=()
 package() {
   install -Dm755 "$srcdir/$pkgname.zsh" "$pkgdir/usr/share/zsh/functions/$pkgname.zsh"
 
-  echo "source /usr/share/zsh/functions/$pkgname.zsh" >>~/.zshrc
+  ZSHRC=$(cat ~/.zshrc)
+  SOURCE="source /usr/share/zsh/functions/$pkgname.zsh"
 
-  echo "Add the following line to your .zshrc if they are not added automatically:"
-  echo "  source /usr/share/zsh/functions/$pkgname.zsh"
+  if ![["$ZSHRC" =~ "$SOURCE"]]; then
+    echo "$SOURCE" >>~/.zshrc
+  fi
 }
