@@ -2,20 +2,24 @@
 
 _pyname=glyphsets
 pkgname=python-${_pyname,,}
-pkgver=0.2.1
+pkgver=0.3.1
 pkgrel=1
 pkgdesc='an API with data about glyph sets for many different scripts and languages'
 arch=(any)
 url="https://github.com/googlefonts/$_pyname"
 license=(Apache)
-_pydeps=(fonttools)
+_pydeps=(defcon
+         fonttools
+         fs # for fonttools[ufo]
+         glyphslib)
 depends=(python
          "${_pydeps[@]/#/python-}")
-makedepends=(python-setuptools)
+makedepends=(python-{build,installer}
+             python-setuptools
+             python-wheel)
 _archive="$_pyname-$pkgver"
-source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('dab3c915f1137eb5a16ea22b679b9e1408d1184134946b1905d90268fe46fe82')
-
+source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
+sha256sums=('b52d2364dd57e37c021d459eb95e3b014e4e60091bbd74366bc704b8e73752a2')
 prepare() {
 	cd "$_archive"
 	# Upstream requires outdated setuptools_scm, work around
@@ -25,10 +29,10 @@ prepare() {
 
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build -wn
 }
 
 package() {
 	cd "$_archive"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 }
