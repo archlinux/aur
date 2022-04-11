@@ -14,13 +14,13 @@ _wechat_devtools_url="https://servicewechat.com/wxa-dev-logic/download_redirect?
 _wechat_devtools_md5="2785d569b88d72a8e238d438d92faf44"
 
 _wechat_devtools_exe="wechat_devtools_${_wechat_devtools_ver}_x64.exe"
-_nwjs_ver="0.53.1"
+_nwjs_ver="0.55.0"
 _install_dir="/opt/wechat-devtools"
-_node_version="16.1.0"
+_node_version="16.4.2"
 
 pkgname=wechat-devtools
 pkgver="${_wechat_devtools_ver}"  # 主版本号
-pkgrel=6   # 修订版本号release
+pkgrel=8   # 修订版本号release
 epoch=2    # 大版本迭代强制更新（维护者变更，尽量不用）
 pkgdesc="WeChat Devtools For Linux. "
 arch=("x86_64")
@@ -35,6 +35,7 @@ source=("nwjs-v${_nwjs_ver}.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs
         "compiler.tar.gz::https://github.rc1844.workers.dev/msojocs/wechat-web-devtools-linux/releases/download/v1.05.2203070-6/compiler.tar.gz"
         "wechat-devtools.desktop"
         "logo.svg"
+        "wechat-devtools"
         "fix-cli.sh"
         "fix-menu.sh"
         "fix-core.sh"
@@ -43,12 +44,13 @@ source=("nwjs-v${_nwjs_ver}.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs
         "wxvpkg_pack.js"
         "wxvpkg_unpack.js"
         "fix-other.sh")
-md5sums=(b6f49803c51d0abacca2d1e566c7fe19   # nwjs
+md5sums=(ac7680788544c457daee11aaf69798fe   # nwjs
          "${_wechat_devtools_md5}"
-         2280bfbbf29981fd5adce334f40146ff   # nodejs
+         4d14589085ebbf79ce504dc27330d33b   # nodejs
          7d78f10d04fff0b525df493d95847b37   # compiler
-         01ea705bfe43f5f9683f0dbefb3f1574   # desktop
+         4d3f5273be80a74741c841fcfa4185d3   # desktop
          0f4353664123320280ea4d6bb295dce2   # svg
+         "SKIP"
          "SKIP"
          "SKIP"
          "SKIP"
@@ -83,6 +85,7 @@ build() {
 
     # prepare nw-gyp
     _log "prepare nw-gyp"
+    node --version
     npm uninstall node-gyp -g
     npm install nw-gyp node-gyp -g
 
@@ -93,6 +96,7 @@ build() {
     # run fix scripts
     export NW_PACKAGE_DIR="${srcdir}/package.nw"
     export NW_VERSION=$_nwjs_ver
+    # fix-package-name.js使用
     export srcdir=$srcdir
     export NO_WINE=true
     
@@ -109,13 +113,14 @@ package() {
     mkdir -p "${pkgdir}${_install_dir}"
     cd "${pkgdir}${_install_dir}"
 
-    cp -r "${srcdir}/nwjs/"* ./
-    cp -r "${srcdir}/package.nw" ./package.nw
+    cp -r "${srcdir}/nwjs" .
+    cp -r "${srcdir}/package.nw" .
     find ./package.nw -type d | xargs -I {} chmod -R a+rx {}
 
-    cp ${srcdir}/node.${_node_version} node
-    ln -s node node.exe
+    cp ${srcdir}/node.${_node_version} nwjs/node
+    cd nwjs && ln -s node node.exe
 
+    install -Dm755 "${srcdir}/wechat-devtools" "${pkgdir}${_install_dir}/bin/wechat-devtools"
     install -Dm644 "${srcdir}/wechat-devtools.desktop" "${pkgdir}/usr/share/applications/wechat-devtools.desktop"
     install -Dm644 "${srcdir}/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/wechat-devtools.svg"
 }
