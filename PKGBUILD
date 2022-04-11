@@ -12,7 +12,7 @@ url="https://taisei-project.org/"
 license=('MIT')
 depends=('opengl-driver' 'sdl2' 'cglm' 'freetype2' 'libwebp' 'libzip' 'opusfile' 'hicolor-icon-theme')
 optdepends=('spirv-cross: OpenGL ES backends'
-            'libshaderc: OpenGL ES backends'
+            'shaderc: OpenGL ES backends'
             'gamemode: GameMode integration'
             'openssl: for a better SHA-256 implementation')
 provides=('taisei')
