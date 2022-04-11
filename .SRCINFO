@@ -1,0 +1,15 @@
+pkgbase = amberol
+	pkgdesc = Plays music, and nothing else
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/ebassi/amberol
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	depends = libadwaita
+	depends = gstreamer
+	source = https://gitlab.gnome.org/ebassi/amberol/-/archive/0.2.0/amberol-0.2.0.tar
+	b2sums = 398102908f6c2806c38eb3b80f680593ae0f7e1969a4cde8e4646043ae5ea6ec7c4b34216b63d17a8214e6a53a9fe79b69aa7c869d9c157cc9ee0d432bbac2aa
+
+pkgname = amberol
