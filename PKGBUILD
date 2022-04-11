@@ -1,12 +1,13 @@
 # Maintainer: Stezko <stezko@gmail.com>
 pkgname=assistant-bin
 pkgver=4.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Secure remote access to computers over a local network or over the Internet."
 arch=('x86_64')
 url="https://xn--80akicokc0aablc.xn--p1ai"
 license=('custom:OOO SAFIT')
 depends=('bash' 'desktop-file-utils' 'gtk2' 'hicolor-icon-theme')
+conflicts=(assistant)
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 DLAGENTS=("https::/usr/bin/wget --no-check-certificate")

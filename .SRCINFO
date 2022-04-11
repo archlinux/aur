@@ -1,7 +1,7 @@
 pkgbase = assistant-bin
 	pkgdesc = Secure remote access to computers over a local network or over the Internet.
 	pkgver = 4.8
-	pkgrel = 3
+	pkgrel = 4
 	url = https://xn--80akicokc0aablc.xn--p1ai
 	install = assistant-bin.install
 	arch = x86_64
@@ -10,9 +10,10 @@ pkgbase = assistant-bin
 	depends = desktop-file-utils
 	depends = gtk2
 	depends = hicolor-icon-theme
+	conflicts = assistant
 	options = !strip
 	options = !emptydirs
-	source = assistant-bin_4.8-3_amd64.deb::https://xn--80akicokc0aablc.xn--p1ai/скачать/Download/545
+	source = assistant-bin_4.8-4_amd64.deb::https://xn--80akicokc0aablc.xn--p1ai/скачать/Download/545
 	sha512sums = ea5624c7e9622e16ec281ec844b5ff0502b99ccb7e841be5e8996b0f45ff4b7ab35c1d72dc55e55d9cb2d26ae09aaa3b9a59c9fa51b16889d92226c5ec97002a
 
 pkgname = assistant-bin
