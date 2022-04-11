@@ -1,0 +1,18 @@
+pkgbase = hck-git
+	pkgdesc = A close to drop in replacement for cut(1) that can use a regex delimiter instead of a fixed string
+	pkgver = 0.7.1.r1.ge6850b6
+	pkgrel = 1
+	url = https://github.com/sstadick/hck
+	arch = i686
+	arch = x86_64
+	license = MIT
+	license = custom:Unlicense
+	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
+	provides = hck
+	conflicts = hck
+	source = git+https://github.com/sstadick/hck.git
+	sha256sums = SKIP
+
+pkgname = hck-git
