@@ -4,9 +4,9 @@
 # aarch64 tester: Irissman    <irissman@probus.ca>
 # armv7h tester: kauron
 pkgname=duplicati-latest
-pkgver=2.0.6.100
-pkgrel=2
-_date=2021-08-11
+pkgver=2.0.6.102
+pkgrel=1
+_date=2022-04-06
 _branch=canary
 pkgdesc='A free backup client that securely stores encrypted, incremental, compressed backups on cloud storage services and remote file servers'
 url='http://duplicati.com'
@@ -21,14 +21,14 @@ source=(
   duplicati.tmpfiles.conf
   duplicati-cli
 )
-sha256sums=('06e84a698e9723598bf821e1a3df2bb62423a362c7075dc521768389cdd6f1f8'
+sha256sums=('8fad9da771a803c00330df5dd370daa409846a6dea79fd862fe7f795168ca6c4'
             '2eb973cef79731d407bfbc83f754cef588c62ec83dae2112ac93f9c9f0baa403'
             '499eb63532bcad50b897c0874b723eebc6693816fcb9626532f367b5ff51da70'
             'b9389b399467f3e02aa8e76bb98f6efbca1166fbc4d0bdf939493f8403462959'
             'b6ca3d280feb753ded94bb44eef821a0dac0c0c7ed7f37dea76d445a64386c86'
             'f6f903ca443935314afeab4cd2e46cf4bef7c5fb1e81c2d95f670f0993774ce5')
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
-depends=('gtk-sharp-2' 'mono')
+depends=(gtk-sharp-2 mono libappindicator-gtk2)
 optdepends=('notify-sharp: for tray notifications')
 
 package() {
