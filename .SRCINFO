@@ -1,6 +1,6 @@
 pkgbase = siji-ng
 	pkgdesc = A fixed and maintained Siji.
-	pkgver = 1.1
+	pkgver = 1.2
 	pkgrel = 1
 	url = https://github.com/begss/siji-ng
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = siji-ng
 	conflicts = siji
 	conflicts = siji-git
 	conflicts = neosiji
-	source = siji-ng-1.1.tar.gz::https://github.com/begss/siji-ng/archive/refs/tags/v1.1.tar.gz
-	sha512sums = 00eecb55cf777c1a6d767e5785f1b16f38e740b2b25502c48f3117eda1ce2c835a49ec6c8ac5c553181ae21de88c84e9a48b77e01b1b01e306955da8a5ad70ac
+	source = siji-ng-1.2.tar.gz::https://github.com/begss/siji-ng/archive/refs/tags/v1.2.tar.gz
+	sha512sums = 01c12d033b9cca98ff9292951149949ecee85c9d14cd859ad260e050a40230ecc00c683a905459d0254115d578265a5ea67a81ea4b11e442f41078c45eb192dc
 
 pkgname = siji-ng

@@ -1,7 +1,7 @@
 # Maintainer: imp0 <jan <(@)> siteworld <(.)> be>
 _pkgname=siji
 pkgname="${_pkgname}-ng"
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc='A fixed and maintained Siji.'
 provides=("${_pkgname}")
@@ -11,7 +11,7 @@ url="https://github.com/begss/${pkgname}"
 license=('GPL2')
 makedepends=('xorg-bdftopcf' 'python3')
 source=("${pkgname}-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=('00eecb55cf777c1a6d767e5785f1b16f38e740b2b25502c48f3117eda1ce2c835a49ec6c8ac5c553181ae21de88c84e9a48b77e01b1b01e306955da8a5ad70ac')
+sha512sums=('01c12d033b9cca98ff9292951149949ecee85c9d14cd859ad260e050a40230ecc00c683a905459d0254115d578265a5ea67a81ea4b11e442f41078c45eb192dc')
 
 build() {
   cd "${pkgname}-${pkgver}"
