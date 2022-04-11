@@ -1,7 +1,7 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 
 pkgname=searxng-git
-pkgver=1.0.0+r1693+g288e3086
+pkgver=1.0.0+r1944+g27f8fa6f
 pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
