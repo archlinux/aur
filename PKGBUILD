@@ -1,7 +1,7 @@
 # Maintainer: DarkBlackChocolate <smuky2k@gmail.com>
 pkgname="muezzin-bin"
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Islamic prayer times and adhan application"
 arch=('x86_64')
 conflicts=(${pkgname%-*}-{appimage,electron} "muezzin")
