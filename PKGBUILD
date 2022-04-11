@@ -1,6 +1,6 @@
 # Maintainer: Yamada Hayao <hayao@fascode.net>
 
-_pkgver="24"
+_pkgver="43"
 
 _extname='desktop-icons-ng'
 pkgname="gnome-shell-extension-${_extname}"
@@ -17,8 +17,8 @@ makedepends=('git' 'meson' 'glib2')
 conflicts=("${pkgname}-git")
 
 source=("${_extname}-${pkgver}.tar.gz::https://gitlab.com/rastersoft/${_extname}/-/archive/${_pkgver}/${_extname}-${_pkgver}.tar.gz")
-sha256sums=('403da492e1507e2e204c8019a2522c633096ec25ff5152ea40e6e3079ec1dfb4')
-sha512sums=('aae4a20544f5ffbcae5dd87f0233dff4f72895db6c5eba8c6c56c97a782ec8a774a355af55cde6c42754c9267aa8d905e3ed718c47d4b307ab02ff50b382a537')
+sha256sums=('d9d603ed64f070fe64697d0ed0bce80f8b85ef05d813ded599c36b337d557910')
+sha512sums=('58db77ca41856248ac4781550b0d438aec384aaa0a1037b2928feb24ba9e700f5a55b07871dcc0a35ab540014cd791920631641a3e992fd1025694a8ec815f1d')
 
 package() {
 
