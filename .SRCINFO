@@ -7,7 +7,7 @@ pkgbase = firefox-extension-localcdn
 	groups = firefox-addons
 	license = GPLV3
 	depends = firefox
-	source = extension.xpi::https://addons.mozilla.org/firefox/downloads/file/3750918/localcdn-2.6.25-an+fx.xpi
-	md5sums = ad5c9a62ec1581a5a337f1a6e21fee56
+	source = extension.xpi::https://addons.mozilla.org/firefox/downloads/file/3930632/localcdn-2.6.25-an+fx.xpi
+	md5sums = b3d3d3fcfb79434b045894b6175ac49d
 
 pkgname = firefox-extension-localcdn
