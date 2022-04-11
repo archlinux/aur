@@ -1,7 +1,7 @@
 pkgbase = clash-premium-bin
 	pkgdesc = Close-sourced pre-built Clash binary with TUN support
 	pkgver = 2022.04.11
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Dreamacro/clash/releases/tag/premium
 	install = clash-premium-bin.install
 	arch = i686
