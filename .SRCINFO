@@ -1,7 +1,7 @@
 pkgbase = 86box-roms
 	pkgdesc = ROMs for the 86Box emulator.
 	pkgver = 3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/86Box/roms
 	arch = any
 	license = custom
