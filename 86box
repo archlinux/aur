@@ -1,2 +1,2 @@
 #!/bin/sh
-86Box -R /usr/share/86box/roms "$@"
+86Box -R /usr/share/86Box/roms "$@"
