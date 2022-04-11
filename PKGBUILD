@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=bore-git
-pkgver=0.2.1.r0.gb0bfd52
+pkgver=0.2.3.r0.g634af3f
 pkgrel=1
 pkgdesc="A command line tool for making tunnels to localhost (git)"
 arch=('x86_64')
