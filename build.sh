@@ -32,6 +32,17 @@ check() {
     "$pkgdir"/usr/bin/sigi --version
 }
 
+push() {
+    git push
+
+    local branch="packaging/arch-aur"
+    git branch -d $branch || true
+    git checkout -b $branch
+    git push mirror $branch
+    git checkout master
+    git branch -d $branch
+}
+
 bootstrap() {
     pacman -S git base-devel cargo
 }
@@ -43,9 +54,10 @@ help() {
 run() {
     case "$1" in
         bootstrap) bootstrap ;;
-        clean)     clean   ;;
-        install)   install ;;
-        check)     check   ;;
+        clean)     clean     ;;
+        install)   install   ;;
+        check)     check     ;;
+        push)      push      ;;
         *)         >&2 help
                    >&2 echo "Unknown target: $1"
                    exit 1 ;;
