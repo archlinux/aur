@@ -3,14 +3,14 @@
 
 _gitname='dragonfm'
 pkgname="${_gitname}-git"
-pkgver=r654.50a2023
+pkgver=r655.2a051e2
 pkgrel=1
 epoch=1
 pkgdesc='A screenreader optimized, flexible command line filemanager'
 arch=('any')
 url="https://www.patreon.com/posts/64904217"
 license=('LGPL')
-depends=('ncurses' 'python-inotify' 'python' 'python-sh')
+depends=('ncurses' 'python-inotify-simple' 'python' 'python-sh')
 optdepends=('atool: compression support'
   'mutt: send as e-mail support'
   'mpv: audio und video support for TTY'

@@ -1,6 +1,6 @@
 pkgbase = dragonfm-git
 	pkgdesc = A screenreader optimized, flexible command line filemanager
-	pkgver = r654.50a2023
+	pkgver = r655.2a051e2
 	pkgrel = 1
 	epoch = 1
 	url = https://www.patreon.com/posts/64904217
@@ -9,7 +9,7 @@ pkgbase = dragonfm-git
 	makedepends = git
 	makedepends = python-setuptools
 	depends = ncurses
-	depends = python-inotify
+	depends = python-inotify-simple
 	depends = python
 	depends = python-sh
 	optdepends = atool: compression support
