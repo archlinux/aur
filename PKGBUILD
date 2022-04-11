@@ -1,16 +1,21 @@
-# Maintainer: Konrad Malik (https://konradmalik.github.io/)
+# Maintainer: Jay Chang <changsijay [at] gmail [DoT] com>
+# Contributor: Konrad Malik (https://konradmalik.github.io/)
 
 pkgname=evernote-beta-bin
-pkgver=10.24.4
-buildver=3050
-pkgrel=2
+pkgver=10.33.4
+buildver=3285-c3c0da8cee
+pkgrel=1
 pkgdesc="Official Evernote client for Linux (beta, early-access)"
 arch=('x86_64')
 url="https://evernote.com/earlyaccess"
 license=('custom')
 provides=('evernote')
 depends=(
-    'libnotify' 'libappindicator-gtk3' 'libxtst' 'nss' 'attr'
+    'libnotify'
+    'libappindicator-gtk3'
+    'libxtst'
+    'nss'
+    'attr'
 )
 optdepends=('gnome-keyring: for credentials persistence after reboot')
 conflicts=('evernote-for-linux-bin' 'evernote-bin')
@@ -21,7 +26,7 @@ source=(
     )
 noextract=("Evernote-Beta-${pkgver}-linux-ddl-beta-${buildver}.deb")
 sha256sums=(
-    '930b2553ecca67f9451b98ecc39b6852232a0e0eee504aa15eda4e54ef4a5057'
+    '505ef5118721f0e5f5718ec3fb1cb462d6aac6594228ef2cf747bd1b3faed608'
 )
 
 package() {
