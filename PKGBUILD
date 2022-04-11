@@ -1,6 +1,6 @@
 # Maintainer: Danny Grove <dgrove@hashbang.sh>
 pkgname=mtls
-pkgver=0.15.0
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="A short-lived certificate tool based on the Zero Trust network model"
 url="https://github.com/drgrove/mtls-cli"
@@ -15,16 +15,16 @@ depends=("nss"
          "python-urllib3")
 makedepends=("python-setuptools" "python-setuptools-scm")
 source=("https://pypi.io/packages/source/m/mtls/${pkgname}-${pkgver}.tar.gz"{,.asc})
-sha256sums=('97747fc0fbf0835f2ae8d010a7a4788deb8aff0d368c000de4fdb4bc66a5a944'
+sha256sums=('3dfd2e437150844900c7945755b1d4cf39867717215a3fef76a4df388057a945'
             'SKIP')
 validpgpkeys=('C92FE5A3FBD58DD3EC5AA26BB10116B8193F2DBD') # Danny Grove <dgrove@hashbang.sh>
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
   python setup.py build
-  _MTLS_COMPLETE=source_zsh python -c 'import sys;from mtls.cli import cli;sys.argv[0]="mtls";cli()' > completion.zsh || true
-  _MTLS_COMPLETE=source_bash python -c 'import sys;from mtls.cli import cli;sys.argv[0]="mtls";cli()' > completion.bash || true
-  _MTLS_COMPLETE=source_fish python -c 'import sys;from mtls.cli import cli;sys.argv[0]="mtls";cli()' > completion.fish || true
+  _MTLS_COMPLETE=zsh_source python -c 'import sys;from mtls.cli import cli;sys.argv[0]="mtls";cli()' > completion.zsh || true
+  _MTLS_COMPLETE=bash_source python -c 'import sys;from mtls.cli import cli;sys.argv[0]="mtls";cli()' > completion.bash || true
+  _MTLS_COMPLETE=fish_source python -c 'import sys;from mtls.cli import cli;sys.argv[0]="mtls";cli()' > completion.fish || true
 }
 
 package() {
