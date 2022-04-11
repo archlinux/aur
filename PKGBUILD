@@ -1,7 +1,7 @@
-# Maintainer: Ayush Jha <ayushjha@pm.me>
+# Maintainer: Juliette Cordor
 pkgname="cmd-not-found"
 pkgver="1.0.0"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="A simple hook to display required packages when a command is not found"
 url=""
 arch=("any")
