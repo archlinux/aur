@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=astc-encoder
-pkgver=3.5
+pkgver=3.6
 pkgrel=1
 pkgdesc='A tool for compressing and decompressing images using the ASTC texture compression standard'
 arch=('x86_64')
