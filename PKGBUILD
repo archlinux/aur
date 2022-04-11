@@ -1,9 +1,8 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=freecad-git
-pkgver=0.20.0.r3237.ga6f0f69ed6
+pkgver=0.20.0.28679.g35913fc695
 pkgrel=1
-epoch=0
 pkgdesc='A general purpose 3D CAD modeler - git checkout'
 arch=('x86_64')
 url='https://www.freecadweb.org/'
@@ -25,6 +24,7 @@ python-ply
 qt5-svg
 qt5-tools
 qt5-webkit
+qt5-webengine
 qt5-x11extras
 qt5-xmlpatterns
 qt5-base
@@ -126,10 +126,6 @@ check() {
 package() {
   cd FreeCAD
   DESTDIR="${pkgdir}" cmake --install build_dir
-
-  # get python site package folder in the right place
-  cp -a "${pkgdir}${_destdir}"/lib/freecad/lib "${pkgdir}${_destdir}"
-  rm -rf "${pkgdir}${_destdir}"/lib/freecad/lib
 
   # link all the .sos into python site package dir
   python_site_packages="$(python -c 'import sys; print(sys.path[-1])')"
