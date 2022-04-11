@@ -1,4 +1,5 @@
-# Maintainer:  Oliver Jaksch <arch-aur@com-in.de>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor:  Oliver Jaksch <arch-aur@com-in.de>
 
 pkgname=capsimage
 pkgver=5.1
