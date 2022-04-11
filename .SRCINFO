@@ -5,9 +5,6 @@ pkgbase = xdg-desktop-portal-git
 	url = https://github.com/flatpak/xdg-desktop-portal
 	arch = x86_64
 	license = LGPL2.1
-	checkdepends = epiphany
-	checkdepends = gedit
-	checkdepends = gvfs
 	makedepends = python
 	makedepends = xmlto
 	makedepends = docbook-xsl
@@ -29,4 +26,3 @@ pkgname = xdg-desktop-portal-git
 	depends = fuse2
 	depends = geoclue2
 	depends = xdg-desktop-portal-impl
-

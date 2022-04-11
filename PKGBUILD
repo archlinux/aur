@@ -1,3 +1,6 @@
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Kevin Majewski < kevin.majewski02 AT gmail.com >
+
 pkgname=xdg-desktop-portal-git
 _pkgname=xdg-desktop-portal
 pkgver=1.6.0+18+g552a4f3
@@ -8,7 +11,7 @@ arch=(x86_64)
 license=(LGPL2.1)
 depends=('glib2' 'pipewire' 'fuse2' 'geoclue2')
 makedepends=('python' 'xmlto' 'docbook-xsl' 'git' 'flatpak' 'libportal')
-checkdepends=('epiphany' 'gedit' 'gvfs')
+# checkdepends=('epiphany' 'gedit' 'gvfs') # disable if not used in check()
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("git+https://github.com/flatpak/xdg-desktop-portal")
