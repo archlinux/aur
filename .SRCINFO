@@ -1,7 +1,7 @@
 pkgbase = linux-status
-	pkgdesc = Simple Linux status web page
-	pkgver = 1.2
-	pkgrel = 2
+	pkgdesc = Simple Linux server monitoring
+	pkgver = 2.0
+	pkgrel = 1
 	url = https://github.com/egor-tensin/linux-status
 	install = linux-status.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = linux-status
 	depends = procps-ng
 	depends = python
 	depends = systemd
-	source = linux-status-1.2.tar.gz::https://github.com/egor-tensin/linux-status/archive/v1.2.tar.gz
+	source = linux-status-2.0.tar.gz::https://github.com/egor-tensin/linux-status/archive/v2.0.tar.gz
 	md5sums = SKIP
 
 pkgname = linux-status
