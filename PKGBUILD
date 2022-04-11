@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-custom-hot-corners-extended-git
 _pkgname=custom-hot-corners-extended
-pkgver=15.fixed.r14.g2adc099
+pkgver=15.fixed.r61.g98b8164
 pkgrel=1
 pkgdesc="A GNOME Shell Extension that allows you to use corners and edges as triggers for various actions - git"
 arch=('any')
@@ -14,19 +14,36 @@ conflicts=('gnome-shell-extension-custom-hot-corners-extended')
 source=("$_pkgname::git+$url")
 sha256sums=('SKIP')
 
-
 pkgver() {
   cd "${_pkgname}"
   git describe --tags | sed 's/[^-]*-g/r&/;s/Ext.v*//;s/-/./g'
 }
 
 build() {
-    cd "${_pkgname}"
-    autoreconf -vi
-    ./configure --prefix=/usr
+  cd "${_pkgname}"
+  echo '
+  temp_all: $(ZIP_CONTENT)' >> Makefile
+
+  make temp_all
 }
 
 package() {
-    cd "${_pkgname}"
-    DESTDIR=${pkgdir} make install
+  cd "${_pkgname}"
+  local _uuid=$(grep -Po '(?<="uuid": ")[^"]*' metadata.json)
+  local _destdir="${pkgdir}/usr/share/gnome-shell/extensions/${_uuid}"
+
+  install -Dm644 -t "${_destdir}" metadata.json *.js
+  for i in src/*
+    do
+      install -Dm644 -t "${_destdir}/${i}" ${i}/*
+    done
+  install -Dm644 -t "${_destdir}/resources" resources/*.gresource
+  install -Dm644 -t "${pkgdir}/usr/share/glib-2.0/schemas/" schemas/*.xml
+  install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
+
+  cd locale
+  for locale in */
+    do
+      install -Dm644 -t "${pkgdir}/usr/share/locale/${locale}/LC_MESSAGES" "${locale}/LC_MESSAGES"/*.mo
+    done
 }
