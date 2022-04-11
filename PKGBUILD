@@ -5,7 +5,7 @@
 
 # Maintainer: Emmanuel Vodor <manu@paca.happy-dev.fr>
 pkgname=d-tracker-control-git
-pkgver=r14.bc3499f
+pkgver=r25.4c7e470
 pkgrel=1
 epoch=
 pkgdesc="Polybar module to control d-tracker"
@@ -14,7 +14,7 @@ url="https://github.com/ubermanu/polybar-d-tracker-control.git"
 license=('MIT')
 groups=()
 depends=(d-tracker rofi)
-makedepends=(git)
+makedepends=(git haxe)
 checkdepends=()
 optdepends=()
 provides=(d-tracker-control)
@@ -36,5 +36,5 @@ pkgver() {
 
 package() {
   cd "polybar-d-tracker-control"
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="$pkgdir/" all
 }
