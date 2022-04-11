@@ -8,12 +8,15 @@ arch=(x86_64)
 url="https://github.com/SartoxOnlyGNU/audacium"
 license=('GPL2')
 groups=()
-depends=(alsa-lib libx11 gtk2 expat libid3tag libogg libsndfile libvorbis lilv lv2 portsmf suil libmad twolame vamp-plugin-sdk libsoxr soundtouch ffmpeg4.4)
+depends=(alsa-lib libx11 gtk2 expat libid3tag libogg libsndfile libvorbis lilv lv2 portsmf suil libmad twolame vamp-plugin-sdk libsoxr soundtouch)
 makedepends=(git cmake sdl2 libsoup libnotify gstreamer gst-plugins-bad-libs jack nasm conan)
+optdepends=('ffmpeg4.4: additional imports and exports')
 provides=('audacity')
-conflicts=('audacity' 'audacity-git')
+conflicts=('audacity' 'audacity-git' 'tenacity')
 source=('git+https://github.com/SartoxOnlyGNU/audacium')
 md5sums=('SKIP')
+
+export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
 
 pkgver() {
   cd "audacium"

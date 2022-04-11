@@ -33,10 +33,11 @@ pkgbase = audacium-git
 	depends = vamp-plugin-sdk
 	depends = libsoxr
 	depends = soundtouch
-	depends = ffmpeg4.4
+	optdepends = ffmpeg4.4: additional imports and exports
 	provides = audacity
 	conflicts = audacity
 	conflicts = audacity-git
+	conflicts = tenacity
 	source = git+https://github.com/SartoxOnlyGNU/audacium
 	md5sums = SKIP
 
