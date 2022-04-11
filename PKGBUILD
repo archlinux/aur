@@ -3,11 +3,12 @@
 pkgname=keepass-plugin-kpuinput
 pkgver=1.3
 pkgrel=1
-pkgdesc="Keepass plugin to use /dev/uinput for auto-typing"
+pkgdesc='Keepass plugin to use /dev/uinput for auto-typing'
 depends=('keepass' 'libxkbcommon' 'systemd')
 makedepends=('gcc')
 arch=('x86_64')
-url="https://keepass.info/"
+url='https://keepass.info/'
+license=('GPL')
 source=("https://keepass.info/extensions/v2/kpuinput/KPUInput-${pkgver}-Source.zip"
         "https://keepass.info/extensions/v2/kpuinput/KPUInput-${pkgver}.zip"
         "path_fix.patch")
