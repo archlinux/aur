@@ -1,6 +1,6 @@
 pkgbase = python-comtool-git
 	pkgdesc = A cross platform serial debug tools written by python
-	pkgver = 2.3.0.r0.gb2e6381
+	pkgver = 2.5.0.r1.g74df389
 	pkgrel = 1
 	url = https://github.com/Neutree/COMTool
 	arch = any
@@ -18,6 +18,7 @@ pkgbase = python-comtool-git
 	depends = python-paramiko
 	depends = python-pyte
 	depends = python-pyperclip
+	depends = python-coloredlogs
 	provides = COMTool
 	conflicts = comtool
 	conflicts = python-comtool

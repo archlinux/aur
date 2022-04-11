@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 
 pkgname=python-comtool-git
-pkgver=2.5.0.r1.g74df389
+pkgver=3.0.0.r0.gba215be
 pkgrel=1
 epoch=
 pkgdesc="A cross platform serial debug tools written by python"
@@ -9,7 +9,7 @@ arch=('any')
 url="https://github.com/Neutree/COMTool"
 license=('LGPL3.0')
 groups=()
-depends=('python' 'python-pyqt5' 'python-pyserial' 'python-requests' 'python-babel' 'python-qtawesome' 'python-paramiko' 'python-pyte' 'python-pyperclip')
+depends=('python' 'python-pyqt5' 'python-pyserial' 'python-requests' 'python-babel' 'python-qtawesome' 'python-paramiko' 'python-pyte' 'python-pyperclip' 'python-coloredlogs')
 makedepends=('python-build' 'python-installer' 'python-wheel' 'git')
 checkdepends=()
 optdepends=()
