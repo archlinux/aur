@@ -1,0 +1,8 @@
+post_upgrade() {
+	if [ $(vercmp "$2" 0.5.0) == -1 ];
+	then
+		echo ':: Rover 0.5.0 contains BREAKING CHANGES.'
+		echo ':: Upstream deprecated apollo-rover-fed2.'
+		echo ':: If you need to use Federation 2, set `federation_version: 2` in your supergraph.yaml file instead.'
+	fi
+}

@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
-pkgname=('apollo-rover' 'apollo-rover-fed2')
-pkgver=0.4.8
+pkgname=apollo-rover
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="CLI for Apollo's suite of GraphQL developer productivity tools"
 arch=('x86_64')
@@ -9,15 +9,15 @@ url='https://github.com/apollographql/rover'
 license=('MIT')
 depends=('gcc-libs' 'zlib')
 makedepends=('cargo')
+replaces=('apollo-rover-fed2')
 options=('!lto')
+install=rover.install
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('e95c5f6f01efe4381334cbd2637bf9f8c849855b0705a87cf4d5c5103bc4ecdb')
+sha256sums=('560708b3018ddbe2bafff2c26e312fdeb3842f41ed4671e54e2faef9d93b25fc')
 
 prepare() {
 	cd "rover-$pkgver"
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
-	cd plugins/rover-fed2
 	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
@@ -27,8 +27,6 @@ build() {
 
 	cd "rover-$pkgver"
 	cargo build --frozen --release --all-features
-	cd plugins/rover-fed2
-	cargo build --frozen --release --all-features
 }
 
 check() {
@@ -37,22 +35,9 @@ check() {
 	cargo test --frozen --all-features
 }
 
-package_apollo-rover() {
-	optdepends=('apollo-rover-fed2: experimental Federation v2 support')
-
+package() {
 	cd "rover-$pkgver"
 	install -D "target/release/rover" -t "$pkgdir/usr/bin/"
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
-}
-
-package_apollo-rover-fed2() {
-	pkgdesc='Plugin for Apollo Rover enabling Federation v2 support'
-	depends+=("apollo-rover=$pkgver")
-	license=('custom:EL2')
-
-	cd "rover-$pkgver/plugins/rover-fed2/"
-	install -D target/release/rover-fed2 -t "$pkgdir/usr/bin/"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
