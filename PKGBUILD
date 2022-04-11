@@ -2,7 +2,7 @@
 # Author: Hossein Bakhtiarifar <abakh@tuta.io>
 # Discussion: https://www.reddit.com/r/linux/comments/b8y7rp/i_have_made_a_bunch_of_fancy_terminal_games_more/
 pkgname=nbsdgames-git
-pkgver=5.r1.g556b6a8_score_patch
+pkgver=5.r16.g0fee553_score_patch
 pkgrel=1
 pkgdesc="A collection of curses-based console games"
 arch=('x86_64' 'i686')
@@ -63,8 +63,4 @@ package() {
     make $(make_opts) nbinstall nbmanpages
 	install -Dt "$pkgdir/usr/share/applications" nbsdgames.desktop
 	install -Dt "$pkgdir/usr/share/pixmaps" nbsdgames.svg
-
-    # Clean up after bugs in makefile
-    rm "$pkgdir"/usr/bin/nbsdgames.{c,desktop,svg}
-    rm "$pkgdir"/usr/bin/nbnbsdgames
 }
