@@ -19,7 +19,7 @@ pkgbase = bspwm-git
 	optdepends = python3: for some scripting examples
 	provides = bspwm=0.9.10-1
 	conflicts = bspwm
-	source = bspwm-git::git://github.com/baskerville/bspwm.git
+	source = bspwm-git::git+https://github.com/baskerville/bspwm.git
 	md5sums = SKIP
 
 pkgname = bspwm-git

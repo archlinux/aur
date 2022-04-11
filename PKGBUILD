@@ -17,7 +17,7 @@ optdepends=('sxhkd-git: to define keyboard and pointer bindings'
 	    'sutils-git: for the example panel'
 	    'terminus-font: for the example panel'
 	    'python3: for some scripting examples')
-source=("$pkgname::git://github.com/baskerville/${_pkgname}.git")
+source=("$pkgname::git+https://github.com/baskerville/${_pkgname}.git")
 md5sums=('SKIP')
 provides=("${_pkgname}=${pkgver%%.r*}-${pkgrel}")
 conflicts=("${_pkgname}")
