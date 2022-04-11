@@ -3,7 +3,7 @@
 # Contributor: Sergio Correia <sergio@correia.cc> (modifications derived from icecream-git package)
 
 pkgname=icecream
-pkgver=1.3.1
+pkgver=1.4
 pkgrel=1
 pkgdesc="takes compile jobs from your build and distributes it to remote machines allowing a parallel build on several machines."
 url="http://en.opensuse.org/Icecream"
@@ -18,14 +18,14 @@ conflicts=('icecream-git')
 backup=('etc/icecream.conf')
 arch=('x86_64')
 install=icecream.install
-source=("https://github.com/icecc/$pkgname/archive/$pkgver.tar.gz"
+source=("https://github.com/icecc/$pkgname/archive/refs/tags/$pkgver.tar.gz"
         icecream.conf
         icecream.service
         icecream-scheduler.service
         icecreamd
         icecream-schedulerd
         ld-icecream.conf)
-sha256sums=('9f45510fb2251d818baebcff19051c1cf059e48c6b830fb064a8379480159b9d'
+sha256sums=('249dcf74f0fc477ff9735ff0bdcdfaa4c257a864c4db5255d8b25c9f4fd20b6b'
             '4c1b993761600955a2be53e945a698638ef861a513258956d8aac0e0f8df3dfe'
             '3bd9286e2a4ef29a41fe414caf3ffb56ae24e2287272dc0d60d62599d20d8cf9'
             '9b756a140ac3983efa4cddf6590af72d3681834b95ef1f879f34da775dd418cd'
