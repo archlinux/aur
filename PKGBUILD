@@ -7,7 +7,7 @@
 
 pkgname=burpsuite
 pkgver=2022.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An integrated platform for performing security testing of web applications (free edition)"
 url="https://portswigger.net/burp/"
 depends=('java-runtime>=17')
