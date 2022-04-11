@@ -5,11 +5,11 @@
 
 # Maintainer: Adrian Lopez <zeioth@hotmail.com>
 pkgname=wofi-calc
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 epoch=
 pkgdesc="A simple calculator for wofi, inspired in rofi-calc."
-arch=(x86_64 i686)
+arch=(any)
 url="https://github.com/Zeioth/wofi-calc.git"
 license=('MIT')
 groups=()
@@ -26,7 +26,7 @@ install=
 changelog=
 source=("git+$url")
 noextract=()
-md5sums=('SKIP')
+sha256sums=('SKIP')
 validpgpkeys=()
 
 package() {
