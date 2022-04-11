@@ -1,15 +1,15 @@
 # Maintainer: chaozhi_l <chaozhi_l@foxmail.com>
 
 pkgname=gnome-shell-extension-lunar-calendar
-pkgver=27
-pkgrel=2
+pkgver=28
+pkgrel=1
 pkgdesc="Display Chinese Lunar Calendar in panel"
 arch=('any')
 url="https://extensions.gnome.org/extension/675/lunar-calendar/"
 license=('GPL3')
-depends=('gnome-shell>3.41' 'unzip' 'lunar-date')
-source=("https://extensions.gnome.org/extension-data/lunarcalailin.nemui.v27.shell-extension.zip")
-md5sums=('315946a9a764c077cc21f2d2650e60da')
+depends=('gnome-shell>3.42' 'unzip' 'lunar-date')
+source=("https://extensions.gnome.org/extension-data/lunarcalailin.nemui.v28.shell-extension.zip")
+md5sums=('0b4a2b528518ba4655389bd93985708b')
 
 package() {
   for function in $(declare -F | grep -Po 'package_[[:digit:]]+[[:alpha:]_]*$')
