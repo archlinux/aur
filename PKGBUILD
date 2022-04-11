@@ -2,7 +2,7 @@
 
 pkgname=notepadpp
 _pkgname=notepad-plus-plus
-pkgver=8.3
+pkgver=8.3.3
 pkgrel=1
 pkgdesc="A free source code editor for Windows"
 arch=('x86_64')
@@ -22,8 +22,8 @@ source=(notepadpp
 sha256sums=('d4352139a459f532b807262b5b1933c98142fc772de713abc39e6073d291b200'
             'a1c34d444893d56ae165c8457260e11b729ea2afc10bb9e2690bc89e1f523238'
             '04c8ad254a41350078bba4d56ad54f7b4c0df125029aee021ea0ac632971ebad'
-            '0457ccbc82978a917944283fdad7416bf6ed9d7e5dd37c5b02404168a8bad745'
-            '1a5c01fc3fbb0f0a99daef7ca25b8c6aa30f34bd52e1ac9f645c189efc173e53')
+            '1b8d194f823b2eb63aff8d7ac4f39078f674df1bc1a711de147f0e87da6bef02'
+            '463a7f48d0763aae6497949db7fe751794e367dd75ff3d450cfbb167d8522c5d')
 
 noextract=("npp.${pkgver}.bin.zip"
            "npp.${pkgver}.bin.x64.zip")
