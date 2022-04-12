@@ -1,14 +1,14 @@
 # Submitter: Marcel Robitaille <mail@marcelrobitaille.me>
 # Maintainer: Marcel Robitaille <mail@marcelrobitaille.me>
 pkgname=arc-welder-bin
-pkgver=1.1.1
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="Anti Stutter Libraries and Binaries"
 url='https://github.com/FormerLurker/ArcWelderLib'
 arch=('x86_64' 'i686')
 license=('unknown')
-source=("https://github.com/FormerLurker/ArcWelderLib/releases/download/$pkgver/Linux_$pkgver.tar")
-md5sums=('3b924a9800710b28d57f5c81e6b1708c')
+source=("https://github.com/FormerLurker/ArcWelderLib/releases/download/$pkgver/Linux.zip")
+md5sums=('ea755417eb7d4c402a7a55816e7493fa')
 
 package() {
     install -Dm755 bin/ArcWelder -t "$pkgdir/usr/bin/"
