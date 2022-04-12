@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="olivetin-bin"
-_pkgver=2022-01-06
+_pkgver=2022-04-07
 pkgver="${_pkgver//-/}"
 pkgrel=1
 pkgdesc="Safe and simple access to predefined shell commands from a web interface"
@@ -9,16 +9,17 @@ url="https://www.olivetin.app/"
 license=("AGPL3")
 arch=("x86_64" "armv5h" "armv6h" "armv7h" "aarch64")
 provides=("olivetin")
+conflicts=("olivetin")
 source_x86_64=("https://github.com/OliveTin/OliveTin/releases/download/$_pkgver/OliveTin-$_pkgver-linux-amd64.tar.gz")
 source_armv5h=("https://github.com/OliveTin/OliveTin/releases/download/$_pkgver/OliveTin-$_pkgver-linux-arm32v5.tar.gz")
 source_armv6h=("https://github.com/OliveTin/OliveTin/releases/download/$_pkgver/OliveTin-$_pkgver-linux-arm32v6.tar.gz")
 source_armv7h=("https://github.com/OliveTin/OliveTin/releases/download/$_pkgver/OliveTin-$_pkgver-linux-arm32v7.tar.gz")
 source_aarch64=("https://github.com/OliveTin/OliveTin/releases/download/$_pkgver/OliveTin-$_pkgver-linux-arm64.tar.gz")
-sha256sums_x86_64=('1b760465e1ff93d46d985c604f2cd9798ac298b75420e8c4ca8ec2a7e34e6be1')
-sha256sums_armv5h=('02d333366483e5ffac88540e013bc725ac3cfaafaa3adb239814711173e8b127')
-sha256sums_armv6h=('b77e5648b396585ffb610ceaa6968a2d57c54933be0b16988a5764e865dea1db')
-sha256sums_armv7h=('658df43ad0cfa94c713ed6e747fc89ae1a142a63a9c8ac7cd73435852fc5f24c')
-sha256sums_aarch64=('c4badaac91973e83330b3d868ceefdbc03cc06cbf4d00ef7008c5cb1cfe945e1')
+sha256sums_x86_64=('834adb89db7bed9819c8a600b8e368145019b84db9d53b0b7cecf0c7ca1b9115')
+sha256sums_armv5h=('b767a246b516741afcc2f491519aba88c2b78f8da0f299f5c99c8896136cade5')
+sha256sums_armv6h=('a31d9f61323ec9ae9f46f6dba6292214c84a0d9fbd70ac067b289618a972286c')
+sha256sums_armv7h=('0e3a748b1f0ef453bf4821ebd65b0b33e114de16e56b37ffa05a29f607897f0f')
+sha256sums_aarch64=('43554c7194200adf912981c4fc0ff8c479ba2d1c39a7f65517666014cfa3d120')
 backup=("etc/OliveTin/config.yaml")
 
 prepare(){
