@@ -1,6 +1,6 @@
 pkgbase = searxng-git
 	pkgdesc = A privacy-respecting, hackable metasearch engine
-	pkgver = 1.0.0+r1944+g27f8fa6f
+	pkgver = 1.0.0+r1948+g1388b44f
 	pkgrel = 1
 	url = https://searxng.github.io/searxng/
 	arch = any
@@ -36,8 +36,10 @@ pkgbase = searxng-git
 	source = git+https://github.com/searxng/searxng#branch=master
 	source = searxng.ini
 	source = searxng.sysusers
+	source = settings.yml
 	sha512sums = SKIP
 	sha512sums = fd81a9b8eb36a32c031ce082176ec3a44f266e2f6ffc4218ce19e87353c4441ca7e252e8487d7a339eb084130157bc6c705eb4d2064605589f42e410d4eb8fb8
 	sha512sums = af9a4539f0b6949ec504068f28232553547804a49bb588a1fff75ad612196e3722c097f076bb3b4b1f1cf905d01f8915ed2af73d7e1b08bbdbad06dba41e8ea7
+	sha512sums = 9aa470d0be0e943d1d49c30eba91ee141a847106eecfb3278f66ff6ca73527069820faf3792630a217dc9a30df56d65a40e569ebd9661f5f0478dffc50c26c0d
 
 pkgname = searxng-git

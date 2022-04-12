@@ -1,7 +1,7 @@
 # Maintainer: HLFH <gaspard@dhautefeuille.eu>
 
 pkgname=searxng-git
-pkgver=1.0.0+r1944+g27f8fa6f
+pkgver=1.0.0+r1948+g1388b44f
 pkgrel=1
 pkgdesc="A privacy-respecting, hackable metasearch engine"
 arch=('any')
@@ -37,10 +37,12 @@ _giturl="https://github.com/searxng/searxng"
 _gitbranch="master"
 source=(git+$_giturl#branch=$_gitbranch
         'searxng.ini'
-        'searxng.sysusers')
+        'searxng.sysusers'
+        'settings.yml')
 sha512sums=('SKIP'
             'fd81a9b8eb36a32c031ce082176ec3a44f266e2f6ffc4218ce19e87353c4441ca7e252e8487d7a339eb084130157bc6c705eb4d2064605589f42e410d4eb8fb8'
-            'af9a4539f0b6949ec504068f28232553547804a49bb588a1fff75ad612196e3722c097f076bb3b4b1f1cf905d01f8915ed2af73d7e1b08bbdbad06dba41e8ea7')            
+            'af9a4539f0b6949ec504068f28232553547804a49bb588a1fff75ad612196e3722c097f076bb3b4b1f1cf905d01f8915ed2af73d7e1b08bbdbad06dba41e8ea7'
+            '9aa470d0be0e943d1d49c30eba91ee141a847106eecfb3278f66ff6ca73527069820faf3792630a217dc9a30df56d65a40e569ebd9661f5f0478dffc50c26c0d')            
 
 pkgver() {
   cd searxng
@@ -48,13 +50,11 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir/searxng"
-
   # Allow newer versions of the dependencies
-  sed -i "s|==|>=|g" requirements.txt
+  sed -i "s|==|>=|g" "$srcdir/searxng/requirements.txt"
 
   # Generate a random secret key
-  sed -ie   "s/ultrasecretkey\"  # change this\!/`openssl rand -hex 32`\"/g" searx/settings.yml
+  sed -i -e "s/ultrasecretkey\"  # change this\!/`openssl rand -hex 32`\"/g" "$srcdir/settings.yml"
 }
 
 package() {
@@ -69,10 +69,9 @@ package() {
   mv "${pkgdir}${_site_packages}"/{README.rst,requirements*,searx}
 
   mkdir -p "$pkgdir/etc/searxng"
-  mv "${pkgdir}${_site_packages}/searx/settings.yml" $pkgdir/etc/searxng/
-  ln -s /etc/searxng/settings.yml "${pkgdir}${_site_packages}/searx/settings.yml"
 
   install -Dm644 "${srcdir}/searxng.sysusers" "${pkgdir}/usr/lib/sysusers.d/searxng.conf"
-  install -Dm644 "${srcdir}/searxng.ini" "${pkgdir}/etc/uwsgi/vassals/searxng.ini" 
+  install -Dm644 "${srcdir}/searxng.ini" "${pkgdir}/etc/uwsgi/vassals/searxng.ini"
+  install -Dm644 "${srcdir}/settings.yml" "${pkgdir}/etc/searxng/settings.yml" 
   install -Dm644 "${srcdir}/searxng/searx/version_frozen.py" "${pkgdir}${_site_packages}/searx"
 }
