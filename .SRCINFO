@@ -11,7 +11,11 @@ pkgbase = bloom-git
 	makedepends = qt6-tools
 	makedepends = php
 	depends = libusb>=1.0
+	depends = hidapi
 	depends = qt6-base
+	depends = libxcb
+	depends = libpng
+	depends = icu
 	source = bloom-git::git+https://github.com/navnavnav/Bloom.git
 	sha256sums = SKIP
 

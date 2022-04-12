@@ -7,7 +7,7 @@ pkgdesc="Bloom AVR debugger - A debug interface for embedded systems development
 arch=('i686' 'x86_64')
 url="https://github.com/navnavnav/Bloom"
 license=('LGPL')
-depends=('libusb>=1.0' 'qt6-base')
+depends=('libusb>=1.0' 'hidapi' 'qt6-base' 'libxcb' 'libpng' 'icu')
 makedepends=('git' 'cmake' 'qt6-tools' 'php')
 source=(${pkgname}::"git+https://github.com/navnavnav/Bloom.git")
 sha256sums=('SKIP')
