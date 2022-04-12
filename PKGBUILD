@@ -1,7 +1,7 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=1.2.3.r5.g5346104
+pkgver=1.2.3.r18.g8d5ce7b
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c"
 arch=("x86_64" "i686" "pentium4" "armv5" "armv6h" "armv7h" "aarch64")
@@ -57,10 +57,21 @@ pkgver() {
 }
 
 build() {
-  cmake -B "${_build_dir}" -S "${_src_dir}" -Wno-dev
-  cmake --build "${_build_dir}" --target fastfetch --target flashfetch
+  cmake \
+    -B "${_build_dir}" \
+    -S "${_src_dir}" \
+    -DENABLE_RPM=OFF \
+    -DENABLE_IMAGEMAGICK6=OFF \
+    -Wno-dev
+
+  cmake \
+    --build "${_build_dir}" \
+    --target fastfetch \
+    --target flashfetch
 }
 
 package() {
-  cmake --install "${_build_dir}" --prefix "${pkgdir}/usr"
+  cmake \
+    --install "${_build_dir}" \
+    --prefix "${pkgdir}/usr"
 }
