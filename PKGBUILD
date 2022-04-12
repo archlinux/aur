@@ -2,14 +2,14 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=atuin-git
-pkgver=0.8.0.r3.g7fa3e1c0
+pkgver=0.8.1.r0.gac0d29f6
 pkgrel=1
 pkgdesc="Magical shell history (git)"
 arch=('x86_64')
 url="https://github.com/ellie/atuin"
 license=('MIT')
 depends=('gcc-libs')
-makedepends=('rust' 'git')
+makedepends=('cargo' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+${url}")
@@ -23,7 +23,7 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  cargo fetch --locked
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
   mkdir completions/
 }
 
