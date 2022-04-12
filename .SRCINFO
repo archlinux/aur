@@ -1,0 +1,21 @@
+pkgbase = sioyek
+	pkgdesc = PDF viewer for research papers and technical books.
+	pkgver = 1.2.0
+	pkgrel = 1
+	url = https://github.com/ahrm/sioyek
+	arch = any
+	license = GPL3
+	depends = qt5-base
+	depends = qt5-3d
+	depends = harfbuzz
+	depends = gzip
+	depends = libmupdf
+	depends = zlib
+	depends = gumbo-parser
+	depends = openjpeg2
+	depends = jbig2dec
+	provides = sioyek
+	source = sioyek-1.2.0.tar.gz::https://github.com/ahrm/sioyek/archive/v1.2.0.tar.gz
+	sha256sums = 28a67c5e4151a7c71d7fef7ee13c64e8cb928f68594e796e921fdfec2d105b58
+
+pkgname = sioyek
