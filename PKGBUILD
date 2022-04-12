@@ -23,4 +23,7 @@ package() {
     cd "${pkgname%-git}"
     install -Dm755 mark2 "${pkgdir}/usr/bin/"${pkgname%-git}""
     # install -Dm644 COPYING "$pkgdir/usr/share/licenses/"${pkgname%-git}"/LICENSE"
+    # install -Dm755 mk2/* -t "${pkgdir}/usr/bin/"${pkgname%-git}"/mk2"
+    cp -r mk2/ "${pkgdir}/usr/bin/mk2"
+    chmod -R 755 "${pkgdir}/usr/bin/"${pkgname%-git}""
 }
