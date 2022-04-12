@@ -18,6 +18,7 @@ pkgdesc="Morisawa BIZ UD Fonts."
 arch=('any')
 url="https://github.com/googlefonts/morisawa-biz-ud-mincho"
 license=('OFL')
+groups=($pkgbase)
 
 _base_url="https://github.com/googlefonts/morisawa-biz-ud-mincho/raw/main/"
 _base_url_g="https://github.com/googlefonts/morisawa-biz-ud-gothic/raw/main/"
@@ -79,24 +80,24 @@ sha256sums=(
 
 package_morisawa-biz-ud-mincho-fonts (){
   install -dm0755 "$pkgdir"/usr/share/fonts/TTF
-  install -Dm0644 "$srcdir"/*.ttf "$pkgdir"/usr/share/fonts/TTF
+  install -Dm0644 "$srcdir"/*Mincho*.ttf "$pkgdir"/usr/share/fonts/TTF
   install -Dm644 LICENSE-OFL-mincho.txt -t "$pkgdir"/usr/share/licenses/morisawa-biz-ud-mincho
   install -Dm644 AUTHORS-mincho.txt -t "$pkgdir"/usr/share/licenses/morisawa-biz-ud-mincho
   install -Dm644 CONTRIBUTORS-mincho.txt -t "$pkgdir"/usr/share/licenses/morisawa-biz-ud-mincho
 
   install -dm0755 "$pkgdir"/usr/share/fonts/OTF/
-  install -Dm0644 "$srcdir"/*.otf "$pkgdir"/usr/share/fonts/OTF
+  install -Dm0644 "$srcdir"/*Mincho*.otf "$pkgdir"/usr/share/fonts/OTF
 }
 
  
 package_morisawa-biz-ud-gothic-fonts (){
   install -dm0755 "$pkgdir"/usr/share/fonts/TTF
-  install -Dm0644 "$srcdir"/*.ttf "$pkgdir"/usr/share/fonts/TTF
+  install -Dm0644 "$srcdir"/*Gothic*.ttf "$pkgdir"/usr/share/fonts/TTF
   install -Dm644 LICENSE-OFL-gothic.txt -t "$pkgdir"/usr/share/licenses/morisawa-biz-ud-gothic
   install -Dm644 OFL-gothic.txt -t "$pkgdir"/usr/share/licenses/morisawa-biz-ud-gothic
   install -Dm644 AUTHORS-gothic.txt -t "$pkgdir"/usr/share/licenses/morisawa-biz-ud-gothic
   install -Dm644 CONTRIBUTORS-gothic.txt -t "$pkgdir"/usr/share/licenses/morisawa-biz-ud-gothic
 
   install -dm0755 "$pkgdir"/usr/share/fonts/OTF
-  install -Dm0644 "$srcdir"/*.otf "$pkgdir"/usr/share/fonts/OTF
+  install -Dm0644 "$srcdir"/*Gothic*.otf "$pkgdir"/usr/share/fonts/OTF
 }
