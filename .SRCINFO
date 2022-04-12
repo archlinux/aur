@@ -9,7 +9,7 @@ pkgbase = libopenaptx-git
 	depends = glibc
 	provides = libopenaptx.so
 	conflicts = libopenaptx
-	source = 0.2.1.tar.gz::https://github.com/pali/libopenaptx/archive/0.2.1.tar.gz
-	sha512sums = 7c7f515585ed41cd276cd3141037ce21e3ebdb713dc932bcdb33320d9910c734bc81e581e2c09b3399b3516c789e5da7128fdab5ab6b5e4f42a86b6ac6d3f28c
+	source = git+https://github.com/pali/libopenaptx#commit=811bc18586d634042618d633727ac0281d4170b8
+	sha512sums = SKIP
 
 pkgname = libopenaptx-git

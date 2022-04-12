@@ -1,3 +1,4 @@
+# Maintainer: Kicker0429 <kicker0429@yahoo.com>
 # Contributor: katt <magunasu.b97@gmail.com>
 
 pkgname=libopenaptx-git
@@ -11,17 +12,17 @@ depends=(glibc)
 makedepends=(git)
 provides=(libopenaptx.so)
 conflicts=(libopenaptx)
-source=("$pkgver.tar.gz::https://github.com/pali/libopenaptx/archive/$pkgver.tar.gz")
-sha512sums=('7c7f515585ed41cd276cd3141037ce21e3ebdb713dc932bcdb33320d9910c734bc81e581e2c09b3399b3516c789e5da7128fdab5ab6b5e4f42a86b6ac6d3f28c')
-_pkgaltname=libopenaptx
+_commit=811bc18586d634042618d633727ac0281d4170b8  # tags/0.2.1
+source=("git+$url#commit=$_commit")
+sha512sums=('SKIP')
 
 pkgver() {
-	cd "${_pkgaltname%}-${pkgver}"
+	cd "${pkgname%-git}"
 	git describe --tags | sed 's/-/+/g'
 }
 
 build() {
-	cd "${_pkgaltname%}-${pkgver}"
+	cd "${pkgname%-git}"
 	make CPPFLAGS="$CPPFLAGS" \
 	CFLAGS="-O3 -mavx2 $CFLAGS" \
 	LDFLAGS="$LDFLAGS" \
@@ -29,6 +30,6 @@ build() {
 }
 
 package() {
-	cd "${_pkgaltname%}-${pkgver}"
+	cd "${pkgname%-git}"
 	make PREFIX=/usr DESTDIR="$pkgdir" install
 }
