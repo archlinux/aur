@@ -1,0 +1,11 @@
+pkgbase = toml-fmt
+	pkgdesc = Format .toml files
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/segeljakt/toml-fmt
+	arch = any
+	license = MIT
+	source = git+https://github.com/segeljakt/toml-fmt.git
+	md5sums = SKIP
+
+pkgname = toml-fmt
