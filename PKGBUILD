@@ -20,8 +20,7 @@ sha256sums=('SKIP'
 prepare () {
   cd "$_pkgname"
 
-  git submodule init
-  git submodule update
+  git submodule update --init subprojects/ixwebsocket/
 }
 
 build () {
