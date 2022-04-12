@@ -1,5 +1,5 @@
 pkgname="jabcode-git"
-pkgver=r21.bb36d1d
+pkgver=r39.e342b64
 pkgrel=1
 pkgdesc='JABCode - just another barcode. color bar code'
 arch=('i686' 'x86_64')
@@ -7,7 +7,7 @@ url='https://github.com/jabcode/jabcode'
 makedepends=('python-setuptools')
 depends=('libpng' 'libzip')
 license=('LGPL')
-source=('git://github.com/jabcode/jabcode.git')
+source=('git+https://github.com/jabcode/jabcode.git')
 md5sums=('SKIP')
 
 pkgver() {
