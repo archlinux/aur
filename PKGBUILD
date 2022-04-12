@@ -4,7 +4,7 @@
 # Contributor Sindwiller
 
 pkgname=pyspread
-pkgver=2.0.2
+pkgver=2.1
 pkgrel=1
 pkgdesc="Python based non-traditional spreadsheet application"
 arch=('any')
@@ -21,13 +21,13 @@ optdepends=('python-matplotlib'
             'python-pip')
 options=(!emptydirs)
 source=("https://gitlab.com/pyspread/pyspread/-/archive/v${pkgver}/pyspread-v${pkgver}.tar.gz")
-sha512sums=('2e3ce8796b1ea3e123440e36873c57ba4e143107cfd7d4d88419928d3ae78c14a5882c921bc150667cccdb4ee8fc47fcbccbad536e7daa324b3027682fb344e2')
+sha512sums=('f5f1c8555680bc23d93baf50dbda245c5739ad881123994b2eb36d7ee1efc7ce036df038ecd2593aef9f5f3bd0585667b8a0c535ebda74ee70d82f80956e750c')
 
 package() {  
   cd "${srcdir}/${pkgname}-v${pkgver}"
   python setup.py install --root=$pkgdir/ --optimize=1
 
-  install -D "${pkgname}/share/icons/$pkgname.svg" "$pkgdir/usr/share/pixmaps/$pkgname.svg"
+  install -D "${pkgname}/share/icons/hicolor/svg/$pkgname.svg" "$pkgdir/usr/share/pixmaps/$pkgname.svg"
   install -D -m644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
 }
 
