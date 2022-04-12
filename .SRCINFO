@@ -1,6 +1,6 @@
 pkgbase = dagger
 	pkgdesc = A portable devkit for CI/CD pipelines
-	pkgver = 0.2.5
+	pkgver = 0.2.6
 	pkgrel = 1
 	url = https://dagger.io
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = dagger
 	makedepends = go
 	depends = glibc
 	options = !lto
-	source = dagger::git+https://github.com/dagger/dagger.git#commit=7d2f279c59ddf18e62d065001490e4edb263adea
+	source = dagger::git+https://github.com/dagger/dagger.git#commit=e2c2213a38f9b6d63dc6d0aa07e192ce8613a503
 	b2sums = SKIP
 
 pkgname = dagger
