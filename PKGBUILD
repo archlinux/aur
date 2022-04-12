@@ -1,13 +1,13 @@
 pkgname=voms-clients
-pkgver=3.0.7
-_gitrev="730a42813a8d520b7d82e34f27adc568dba8fe55" # v3.0.7
+pkgver=3.3.2
+_gittag="v$pkgver"
 pkgrel=1
 pkgdesc="Virtual Organization Membership Service (Java-based clients)"
 arch=(any)
 url="http://italiangrid.github.io/voms/"
 depends=(java-runtime)
 makedepends=(java-environment maven)
-source=("git+https://github.com/italiangrid/voms-clients#commit=$_gitrev")
+source=("git+https://github.com/italiangrid/voms-clients#tag=$_gittag")
 sha256sums=('SKIP')
 
 pkgver() {
