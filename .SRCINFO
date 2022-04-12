@@ -1,7 +1,7 @@
 pkgbase = yue-lua51-bin
 	pkgdesc = Lua 5.1 bindings for Yue UI library
 	pkgver = 0.10.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/yue/yue
 	arch = x86_64
 	arch = i686

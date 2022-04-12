@@ -1,6 +1,6 @@
 pkgname=yue-lua51-bin
 pkgver=0.10.3
-pkgrel=1
+pkgrel=2
 provides=(yue-lua51)
 pkgdesc='Lua 5.1 bindings for Yue UI library'
 arch=(x86_64 i686 armv7h aarch64)
@@ -41,6 +41,6 @@ prepare() {
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/lib"
-    cp "$srcdir/yue.so" "$pkgdir/usr/lib/yue-lua-5.1.so"
+    mkdir -p "$pkgdir/usr/local/lib/lua/5.1"
+    cp "$srcdir/yue.so" "$pkgdir/usr/local/lib/lua/5.1/yue.so"
 }
