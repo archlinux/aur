@@ -1,8 +1,8 @@
 # Maintainer: ratata
 
 pkgname=minq-ananicy-git
-pkgver=2.2.1.r85.gc42c9c9
-pkgrel=1
+pkgver=2.2.1.r95.g5c4b787
+pkgrel=2
 pkgdesc="Minq Ananicy - fork of Ananicy with support for cmdline and more frequently updated rules"
 arch=('any')
 url="https://github.com/kuche1/minq-ananicy"
@@ -22,13 +22,16 @@ pkgver() {
 }
 
 package() {
-	cd "$srcdir/${pkgname}/"
+	cd "${srcdir}/${pkgname}/"
 
 	# this is needed so that paru can report on updates
 	mkdir -p "${pkgdir}/opt/${pkgname}"
 	cp -rf * "${pkgdir}/opt/${pkgname}"
 
-	make install PREFIX="$pkgdir"
-	mkdir -p "$pkgdir/usr/"
-	mv -v "$pkgdir/lib" "$pkgdir/usr/"
+	make install PREFIX="${pkgdir}"
+	mkdir -p "${pkgdir}/usr/"
+	mv -v "${pkgdir}/lib" "${pkgdir}/usr/"
+
+	# sometimes the rules don't update for some reason, so we need to do this
+	cp -rf "./ananicy.d/"* "${pkgdir}/etc/ananicy.d/"
 }
