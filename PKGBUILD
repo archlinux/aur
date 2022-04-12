@@ -8,7 +8,7 @@
 
 pkgbase=network-manager-applet-nolibappindicator
 pkgname=(network-manager-applet-nolibappindicator)
-pkgver=1.24.0
+pkgver=1.26.0
 pkgrel=1
 pkgdesc="Applet for managing network connections (without dependency to libappindicator)"
 url="https://gitlab.gnome.org/GNOME/network-manager-applet"
@@ -16,7 +16,7 @@ arch=(x86_64)
 license=(GPL LGPL)
 makedepends=(libsecret libnotify libmm-glib gobject-introspection git gtk-doc meson libnma
              libgudev)
-_commit=2376585a0612c8ea65703cc32f6fb5c4578fbe38  # tags/1.24.0^0
+_commit=d274db150995ddc120963735963c98cd741add7d  # tags/1.26.0^0
 source=("git+https://gitlab.gnome.org/GNOME/network-manager-applet.git#commit=$_commit")
 sha256sums=('SKIP')
 conflicts=(network-manager-applet)
