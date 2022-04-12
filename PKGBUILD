@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=nct6775-master-dkms-git
-pkgver=r163.c027986
+pkgver=r164.b2edd29
 pkgrel=1
 pkgdesc="Nuvoton module for nct67xx chips synced with latest upstream kernel."
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/tonylambiris/nct6775"
 license=('GPLv2')
 makedepends=('git')
 depends=('dkms')
-source=("${pkgname}::git://github.com/tonylambiris/nct6775.git"
+source=("${pkgname}::git+https://github.com/tonylambiris/nct6775"
         "dkms.conf.in")
 sha256sums=('SKIP'
             '991980f5e5d4b0c45d3b8ef823d983c1fe6059ad4f9ea462900a6d11e137ae74')
