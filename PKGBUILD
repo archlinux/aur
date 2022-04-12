@@ -6,7 +6,7 @@
 # Contributor: Andreas Baumann <abaumann at yahoo dot com>
 
 pkgname=cgit-git
-pkgver=1.2.3.r13.gbd6f568
+pkgver=1.2.3.r18.g5258c29
 pkgrel=1
 pkgdesc='A web interface for git written in plain C - git checkout'
 arch=('i686' 'x86_64')
@@ -28,8 +28,8 @@ optdepends=('groff: about page using man page syntax'
 conflicts=('cgit')
 provides=('cgit')
 install=cgit.install
-source=('git://git.zx2c4.com/cgit.git'
-        'git://github.com/git/git.git'
+source=('git+https://git.zx2c4.com/cgit.git'
+        'git+https://github.com/git/git.git'
         'tmpfiles.conf'
         'apache.example.conf')
 sha256sums=('SKIP'
