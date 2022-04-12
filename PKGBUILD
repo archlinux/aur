@@ -3,7 +3,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=fhc
-pkgver=0.6.1
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Fast HTTP Checker"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('620f01a339497c98e08efb90cfc6f96cdeed4e92dff97a2378081dd46eebf5e2b8899b64882ce04bc9681485fa0c781bf3e624b7134973652a8ee0cd6533260c')
+sha512sums=('4b542a4810ecb734c02cc285b06f13fe72dd42b671b36a1eb745da0e979593ab20576f19ece31adee010b6ec790117d30c5f05244abe5ae36ce9e61e29db6f33')
 options=('!lto')
 
 prepare() {
