@@ -24,7 +24,9 @@ pkgver() {
 
 package() {
 	cd "$srcdir/${_pkgname}"
-	npm install -g --prefix "${pkgdir}/usr" --cache "${srcdir}/npm-cache" .
+	diff --git a/PKGBUILD b/PKGBUILD
+	BINARCHIVE="$(npm pack --cache "${srcdir}/npm-cache")"
+	npm install -g --prefix "${pkgdir}/usr" "${BINARCHIVE}"
 	install -D -m644 license "${pkgdir}/usr/share/licenses/${pkgname}/README.txt"
 	chown -R root:root "${pkgdir}"
 }
