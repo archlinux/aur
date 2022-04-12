@@ -1,6 +1,6 @@
 pkgbase = zephyr-sdk
 	pkgdesc = SDK for Zephyr real-time operating system
-	pkgver = 0.13.2
+	pkgver = 0.14.0
 	pkgrel = 1
 	url = https://www.zephyrproject.org/
 	install = zephyr-sdk.install
@@ -46,9 +46,9 @@ pkgbase = zephyr-sdk
 	depends = cmake>=3.8.2
 	optdepends = pyocd: programming and debugging ARM MCUs
 	options = !strip
-	source = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.13.2/zephyr-sdk-0.13.2-linux-x86_64-setup.run
+	source = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.14.0/zephyr-sdk-0.14.0_linux-x86_64.tar.gz
 	source = zephyrrc
-	sha256sums = 334dd3bfb3ca69659b381ae2012a2188a414a6c86dec75e3eec3b0b33e11ac1e
+	sha256sums = eb486e1944c715c984410481425c75f8c019a3a9aaec885a23ce1a2059498ba0
 	sha256sums = 7a1257272c64bdec281283d391e3149cece065935c9e8394d6bece32d0f6fc05
 
 pkgname = zephyr-sdk

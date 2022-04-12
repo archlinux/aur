@@ -1,7 +1,7 @@
 # Maintainer: Alexei Colin <ac@alexeicolin.com>
 
 pkgname=zephyr-sdk
-pkgver=0.13.2
+pkgver=0.14.0
 pkgrel=1
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64')
@@ -27,8 +27,7 @@ depends=('python-breathe>=4.9.1' 'python-docutils>=0.14'
          'doxygen' 'dfu-util' 'dtc' 'cmake>=3.8.2')
 optdepends=('pyocd: programming and debugging ARM MCUs')
 makedepends=('patchelf')
-_installer=zephyr-sdk-${pkgver}-linux-x86_64-setup.run
-source=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/${_installer}"
+source=("https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v${pkgver}/zephyr-sdk-${pkgver}_linux-x86_64.tar.gz"
         "zephyrrc"
 )
 
@@ -42,64 +41,17 @@ build() {
   cd "$srcdir"
 }
 
-# Matches per-toolchain commands in $_installdir/setup.sh
-_TC_CMD="tar -C \\\$target_sdk_dir \\(-[A-Za-z0-9]\\+\\)* .\/__TC__.tar.bz2.*"
-
-_list_toolchains() {
-  echo $(sed -n "s@^$(echo $_TC_CMD | sed 's/__TC__/\\(.*\\)/g')@\2@p" $1 \
-    | grep -v cmake | sort)
-}
-
 package ()
 {
   cd "$srcdir"
 
-  mkdir -p $pkgdir/$_installdir
-  echo ">>> Running installer...."
-  sh ${_installer} --target $pkgdir/$_installdir --nochown --noexec --keep -- -d $pkgdir/$_installdir
+  mkdir -p $pkgdir/opt
+  echo ">>> Unpacking...."
+  cp -a $srcdir/zephyr-sdk-$pkgver $pkgdir/$_installdir
 
   # Add a flag to not relocate executables, because the path to pkgdir is invalid after installation
   # -R disables relocation, -S saves the relocation script so that it can be run manually.
-  sed -i 's#^\(\./zephyr-sdk-x86_64-hosttools-standalone-[0-9.]\+sh\)#\1 -R -S#' $pkgdir/$_installdir/$_setupsh
-
-  # Install hosttools always, but let the toolchains be selectable below:
-  ALL_TOOLCHAINS=($(_list_toolchains $pkgdir/$_installdir/$_setupsh))
-  echo ">>> To select a subset of toolchains set TOOLCHAINS in environment, like so:"
-  echo ">>>     TOOLCHAINS='arm.x86_64 arm64.x86_64' makepkg"
-  echo ">>> Available toolchains: ${ALL_TOOLCHAINS[*]}"
-
-  # Validate selected toolchains
-  if [ ! -z "$TOOLCHAINS" ]
-  then
-    TOOLCHAINS=(${TOOLCHAINS}) # convert to array
-
-    for tc in "${TOOLCHAINS[@]}"
-    do
-      if ! echo "${ALL_TOOLCHAINS[@]}" | grep -q -w "$tc"
-      then
-        echo ">>> ERROR: unknown toolchain: $tc"
-        exit 1
-      fi
-    done
-  else
-    TOOLCHAINS=("${ALL_TOOLCHAINS[@]}")
-  fi
-  echo ">>> Selected toolchains: ${TOOLCHAINS[*]}"
-
-  for tc in ${ALL_TOOLCHAINS[@]}
-  do
-    if ! echo "${TOOLCHAINS[@]}" | grep -q -w "$tc"
-    then
-      DISABLED_TOOLCHAINS+=("$tc")
-    fi
-  done
-
-  for tc in ${DISABLED_TOOLCHAINS[@]}
-  do
-    sed -i "/$(echo $_TC_CMD | sed s/__TC__/${tc}/g)/,+3d" $pkgdir/$_installdir/$_setupsh
-  done
-
-  echo ">>> Installing toolchains: $(_list_toolchains $pkgdir/$_installdir/$_setupsh)"
+  sed -i 's#\(\./zephyr-sdk-\${HOSTTYPE}-hosttools-standalone-[0-9.]\+sh\)#\1 -R -S#' $pkgdir/$_installdir/$_setupsh
 
   install -Dm644 zephyrrc $pkgdir/usr/share/zephyr-sdk/zephyrrc
 
@@ -107,7 +59,7 @@ package ()
 
   ######### NOTE: we are in $_installdir after this point
 
-  ./$_setupsh -d $pkgdir/$_installdir -norc -nocmake -y
+  ./$_setupsh -t
 
   # Manually install the CMake module, because upstream paths are no good:
   # file installed into $HOME and path is the package build path. Upstream
@@ -128,8 +80,6 @@ package ()
   ./relocate_sdk.sh
 
   rm zephyr-sdk-*-hosttools-standalone-*.sh
-  rm "${ALL_TOOLCHAINS[@]/%/.tar.bz2}"
-  rm -f mips.tar.bz2 # workaround: mips is part of archive but not in setup.sh
 }
 
 # Manual test procedure: get Zephyr Kernel, build an example, and run in Qemu:
@@ -160,5 +110,5 @@ package ()
 
 # More info: https://docs.zephyrproject.org/latest/getting_started/index.html
 
-sha256sums=('334dd3bfb3ca69659b381ae2012a2188a414a6c86dec75e3eec3b0b33e11ac1e'
+sha256sums=('eb486e1944c715c984410481425c75f8c019a3a9aaec885a23ce1a2059498ba0'
             '7a1257272c64bdec281283d391e3149cece065935c9e8394d6bece32d0f6fc05')
