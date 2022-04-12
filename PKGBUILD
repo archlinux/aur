@@ -2,7 +2,7 @@
 
 pkgname=minq-ananicy-git
 pkgver=2.2.1.r96.g6de4295
-pkgrel=2
+pkgrel=3
 pkgdesc="Minq Ananicy - fork of Ananicy with support for cmdline and more frequently updated rules"
 arch=('any')
 url="https://github.com/kuche1/minq-ananicy"
@@ -31,7 +31,4 @@ package() {
 	make install PREFIX="${pkgdir}"
 	mkdir -p "${pkgdir}/usr/"
 	mv -v "${pkgdir}/lib" "${pkgdir}/usr/"
-
-	# sometimes the rules don't update for some reason, so we need to do this
-	cp -rf "./ananicy.d/"* "${pkgdir}/etc/ananicy.d/"
 }
