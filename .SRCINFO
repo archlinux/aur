@@ -1,6 +1,6 @@
 pkgbase = zephyr-sdk
 	pkgdesc = SDK for Zephyr real-time operating system
-	pkgver = 0.14.0
+	pkgver = 0.14.1
 	pkgrel = 1
 	url = https://www.zephyrproject.org/
 	install = zephyr-sdk.install
@@ -48,7 +48,7 @@ pkgbase = zephyr-sdk
 	options = !strip
 	source = https://github.com/zephyrproject-rtos/sdk-ng/releases/download/v0.14.0/zephyr-sdk-0.14.0_linux-x86_64.tar.gz
 	source = zephyrrc
-	sha256sums = eb486e1944c715c984410481425c75f8c019a3a9aaec885a23ce1a2059498ba0
+	sha256sums = b7b70e5e70968ac6ae3184c90c3f3f8a6836acadd1432bf7b3702be7a1d317d8
 	sha256sums = 7a1257272c64bdec281283d391e3149cece065935c9e8394d6bece32d0f6fc05
 
 pkgname = zephyr-sdk
