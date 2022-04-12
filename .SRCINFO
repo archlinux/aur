@@ -1,6 +1,6 @@
 pkgbase = findomain-git
 	pkgdesc = The fastest and cross-platform subdomain enumerator, do not waste your time.
-	pkgver = 316.fdb95ac
+	pkgver = 826.8f00eac
 	pkgrel = 1
 	url = https://github.com/Edu4rdSHL/findomain
 	arch = any

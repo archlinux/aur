@@ -2,7 +2,7 @@
 
 pkgname=findomain-git
 _pkgname=findomain
-pkgver=316.fdb95ac
+pkgver=826.8f00eac
 pkgrel=1
 pkgdesc='The fastest and cross-platform subdomain enumerator, do not waste your time.'
 arch=('any')
