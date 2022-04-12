@@ -11,7 +11,7 @@ source=("git+$url")
 md5sums=('SKIP')
 
 build() {
-	cd "$pkgname"
+	cd "tictactoe"
 	gcc *.c -o tictactoe
 }
 
