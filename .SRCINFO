@@ -1,7 +1,7 @@
 pkgbase = waterfox-classic-kpe
 	pkgdesc = Customizable privacy conscious web browser with better integration with KDE
-	pkgver = 2022.02
-	pkgrel = 1
+	pkgver = 2022.04
+	pkgrel = 0
 	url = https://classic.waterfox.net/
 	arch = x86_64
 	license = MPL
@@ -41,24 +41,24 @@ pkgbase = waterfox-classic-kpe
 	optdepends = jack: Audio support
 	optdepends = speech-dispatcher: Text-to-Speech
 	optdepends = hunspell-en_US: Spell checking, American English
-	provides = waterfox-classic=2022.02
+	provides = waterfox-classic=2022.04
 	conflicts = waterfox-classic
 	conflicts = waterfox-kde
 	replaces = waterfox-kde
 	options = !emptydirs
 	options = !makeflags
 	options = zipman
-	source = git+https://github.com/WaterfoxCo/Waterfox-Classic.git#tag=2022.02-classic
-	source = waterfox-classic.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/2a0b88ee80b2ec6bbd4642290402392185570f52/waterfox-classic-kpe/waterfox-classic.desktop
-	source = kde.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/2a0b88ee80b2ec6bbd4642290402392185570f52/waterfox-classic-kpe/kde.js
-	source = distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/2a0b88ee80b2ec6bbd4642290402392185570f52/waterfox-classic-kpe/distribution.ini
-	source = waterfox-classic.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/2a0b88ee80b2ec6bbd4642290402392185570f52/waterfox-classic-kpe/waterfox-classic.1
+	source = git+https://github.com/WaterfoxCo/Waterfox-Classic.git#tag=2022.04-classic
+	source = waterfox-classic.desktop::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/c6b305eaf1eded6be2702034930a36831cdc86aa/waterfox-classic-kpe/waterfox-classic.desktop
+	source = kde.js::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/c6b305eaf1eded6be2702034930a36831cdc86aa/waterfox-classic-kpe/kde.js
+	source = distribution.ini::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/c6b305eaf1eded6be2702034930a36831cdc86aa/waterfox-classic-kpe/distribution.ini
+	source = waterfox-classic.1::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/c6b305eaf1eded6be2702034930a36831cdc86aa/waterfox-classic-kpe/waterfox-classic.1
 	source = jack-system-ports.patch
 	source = no-plt.diff
-	source = dont-statically-link-libstdc++.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/2a0b88ee80b2ec6bbd4642290402392185570f52/waterfox-classic-kpe/patches/dont-statically-link-libstdc%2B%2B.patch
+	source = dont-statically-link-libstdc++.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/c6b305eaf1eded6be2702034930a36831cdc86aa/waterfox-classic-kpe/patches/dont-statically-link-libstdc%2B%2B.patch
 	source = pgo_fix_missing_kdejs.patch
-	source = classic-kde.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/2a0b88ee80b2ec6bbd4642290402392185570f52/waterfox-classic-kpe/patches/classic-kde.patch
-	source = classic-kde-xul.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/2a0b88ee80b2ec6bbd4642290402392185570f52/waterfox-classic-kpe/patches/classic-kde-xul.patch
+	source = classic-kde.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/c6b305eaf1eded6be2702034930a36831cdc86aa/waterfox-classic-kpe/patches/classic-kde.patch
+	source = classic-kde-xul.patch::https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/c6b305eaf1eded6be2702034930a36831cdc86aa/waterfox-classic-kpe/patches/classic-kde-xul.patch
 	sha256sums = SKIP
 	sha256sums = 65601b7b75dc1a5b622201b02f9bd95005ca258b53f1e3d47ffe160dce6a16f3
 	sha256sums = 0850a8a8dea9003c67a8ee1fa5eb19a6599eaad9f2ad09db753b74dc5048fdbc

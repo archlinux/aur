@@ -2,8 +2,8 @@
 # Contributor: meatatt <meatatt at aliyun dot com>
 
 pkgname=waterfox-classic-kpe
-pkgver=2022.02
-pkgrel=1
+pkgver=2022.04
+pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE"
 arch=('x86_64')
 license=('MPL')
@@ -23,7 +23,7 @@ provides=("waterfox-classic=${pkgver}")
 conflicts=('waterfox-classic' 'waterfox-kde')
 replaces=('waterfox-kde')
 options=('!emptydirs' '!makeflags' 'zipman')
-_filesrev=2a0b88ee80b2ec6bbd4642290402392185570f52
+_filesrev=c6b305eaf1eded6be2702034930a36831cdc86aa
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-classic-kpe
 _commit=709bbfedcb2750665fbda4993b253737615ee8f8
 #"git+https://github.com/WaterfoxCo/Waterfox-Classic.git#commit=$_commit"
