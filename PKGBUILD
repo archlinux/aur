@@ -1,7 +1,7 @@
 # Maintainer: hawkeye116477 <hawkeye116477 at gmail dot com>
 
 pkgname=waterfox-g4-kpe
-pkgver=0.8
+pkgver=1.1
 pkgrel=0
 pkgdesc="Customizable privacy conscious web browser with better integration with KDE and primary support for webextensions"
 arch=('x86_64')
@@ -13,7 +13,7 @@ makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake' 'inetutils' 'xorg-s
              'autoconf2.13' 'rust' 'clang' 'llvm' 'alsa-lib' 'jack' 'cbindgen' 'nasm'
              'nodejs' 'lld' 'bc' 'python-setuptools' 'python-psutil' 'python-zstandard' 'pciutils' 'git')
 options=('!emptydirs' '!makeflags' 'zipman')
-_filesrev=011ca923053e61cd9449fafc435607c0c28182ca
+_filesrev=8c9a506df60327cdd52d83227163575d131de4bb
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-g4-kpe
 source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G4.$pkgver"
         "waterfox-g4.desktop::$_filesurl/waterfox-g4.desktop"
