@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-chomp-motion-planner
 	pkgdesc = ROS - chomp motion planner
 	pkgver = 1.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/chomp_motion_planner
 	arch = i686
 	arch = x86_64
@@ -12,9 +12,7 @@ pkgbase = ros-noetic-chomp-motion-planner
 	makedepends = cmake
 	makedepends = ros-build-tools
 	makedepends = ros-noetic-moveit-core
-	makedepends = ros-noetic-moveit-experimental
 	depends = ros-noetic-moveit-core
-	depends = ros-noetic-moveit-experimental
 	source = ros-noetic-chomp-motion-planner-1.1.8.tar.gz::https://github.com/ros-planning/moveit/archive/1.1.8.tar.gz
 	sha256sums = 2a88440169593037c4adbf14896c30def63f8b3af85f1239e8ef94ee62b0b969
 

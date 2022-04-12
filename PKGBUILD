@@ -4,12 +4,11 @@ url='https://wiki.ros.org/chomp_motion_planner'
 pkgname='ros-noetic-chomp-motion-planner'
 pkgver='1.1.8'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
     ros-noetic-moveit-core
-    ros-noetic-moveit-experimental
 )
 
 makedepends=(
@@ -20,7 +19,6 @@ makedepends=(
 
 ros_depends=(
     ros-noetic-moveit-core
-    ros-noetic-moveit-experimental
 )
 depends=(
     ${ros_depends[@]}
