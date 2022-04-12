@@ -1,13 +1,19 @@
 pkgbase = python-autosub3
 	pkgdesc = Auto-generates subtitles for any video or audio file, upgrades original autosub and adds support for windows.
-	pkgver = 0.4.7
-	pkgrel = 0
+	pkgver = 0.1.0
+	pkgrel = 1
 	url = https://pypi.org/project/autosub3
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/a/autosub3/autosub3-0.4.7.tar.gz
-	sha256sums = 7fe8a351de227ec46b768b2b92ff0fa01cedbfe83a9fe1800fa183ff9356e3e0
+	depends = ffmpeg
+	depends = python-google-api-python-client
+	depends = python-progressbar
+	depends = python-pysrt
+	depends = python-requests
+	depends = python-six
+	source = https://files.pythonhosted.org/packages/source/a/autosub3/autosub3-0.1.0.tar.gz
+	sha256sums = a8e937384ed9b7b1f3f08e1ec77885cb75089afeeec47687ff627fd6a49cc254
 
 pkgname = python-autosub3
