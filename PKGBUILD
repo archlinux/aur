@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=system76-firmware-daemon-git
-pkgver=1.0.32.r0.g8989805
+pkgver=1.0.32.r2.gea7dd3c
 pkgrel=1
 pkgdesc="System76 Firmware Daemon provides a daemon for installing firmware updates."
 arch=('any')
@@ -11,7 +11,7 @@ depends=('dbus' 'systemd' 'openssl-1.0')
 makedepends=('rust')
 conflicts=('system76-driver<=17.10.32' 'system76-firmware-daemon')
 provides=('system76-firmware-daemon')
-source=("${pkgname}::git://github.com/pop-os/system76-firmware.git")
+source=("${pkgname}::git+https://github.com/pop-os/system76-firmware.git")
 sha256sums=('SKIP')
 
 pkgver() {
