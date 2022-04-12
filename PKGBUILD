@@ -2,7 +2,7 @@
 
 pkgname=minq-ananicy-git
 pkgver=2.2.1.r96.g6de4295
-pkgrel=1
+pkgrel=2
 pkgdesc="Minq Ananicy - fork of Ananicy with support for cmdline and more frequently updated rules"
 arch=('any')
 url="https://github.com/kuche1/minq-ananicy"
