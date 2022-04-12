@@ -1,0 +1,18 @@
+pkgbase = surfshark-wireguard-git
+	pkgdesc = Sets-up a vpn interface using wg-quick
+	pkgver = v0.2.0.beta.r1.gad05edb
+	pkgrel = 1
+	url = https://github.com/kyndair/linux-surfshark-wireguard
+	install = surfshark-wireguard-git.install
+	arch = any
+	license = MIT
+	depends = wireguard-tools
+	depends = jq
+	depends = curl
+	provides = surfshark-wireguard
+	source = git+https://github.com/kyndair/linux-surfshark-wireguard.git
+	source = https://addons.mozilla.org/user-media/addon_icons/963/963216-64.png
+	sha256sums = SKIP
+	sha256sums = df9dda0009bf36dec4caf5de47f07ad36d12fe7b96ba2faa22448f5e124bc012
+
+pkgname = surfshark-wireguard-git
