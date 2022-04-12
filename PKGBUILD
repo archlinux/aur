@@ -18,7 +18,6 @@ pkgdesc="Morisawa BIZ UD Fonts."
 arch=('any')
 url="https://github.com/googlefonts/morisawa-biz-ud-mincho"
 license=('OFL')
-groups=($pkgbase)
 
 _base_url="https://github.com/googlefonts/morisawa-biz-ud-mincho/raw/main/"
 _base_url_g="https://github.com/googlefonts/morisawa-biz-ud-gothic/raw/main/"
