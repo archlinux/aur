@@ -1,25 +1,31 @@
-# Maintainer: Qontinuum <qontinuum.dev@protonmail.ch>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Qontinuum <qontinuum.dev@protonmail.ch>
 
 pkgname=python-awesometkinter
-pkgver=2021.10.12
+_pkg=AwesomeTkinter
+pkgver=2021.11.8
 pkgrel=1
 pkgdesc="Pretty tkinter widgets"
 arch=('any')
 url='https://github.com/Aboghazala/AwesomeTkinter'
 license=('MIT')
-depends=('python' 'tk' 'python-pillow' 'python-bidi')
-makedepends=('python-setuptools')
-changelog="$pkgname.changelog"
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Aboghazala/AwesomeTkinter/archive/refs/tags/$pkgver.tar.gz")
-b2sums=('96c4fa47a9c090f2819dcdc4acb14ba444c4dea30be0aacfd8d3081cf12afc5796372a00a35319c9504c6fce9a9e149e5bed83da8e8d2f25af8fe3883a84efe4')
+depends=('tk' 'python-pillow' 'python-bidi')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+changelog=CHANGELOG
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/A/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('2944e11468a437d51859f596b755c64f0df557b92b7641626fe3cfb222e4c180')
 
 build() {
-  cd "AwesomeTkinter-$pkgver"
-  python setup.py build
+  cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "AwesomeTkinter-$pkgver"
-  python setup.py install --root="$pkgdir" --skip-build --optimize=1
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s \
+		"$_site/$_pkg-$pkgver.dist-info/LICENSE" \
+		"$pkgdir/usr/share/licenses/$pkgname/"
 }

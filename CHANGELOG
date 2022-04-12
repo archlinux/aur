@@ -1,3 +1,31 @@
+2021.11.8:
+- fix for arabic letter "hamza" on windows, issue #9
+
+2021.10.12:
+- new widgets:
+  * AutoWrappingLabel
+  * AutofitLabel
+  * Segment progressbar
+  * DatePicker
+- alternative filechooser, and folderchooser for linux using zenity or kdialog if installed on target system.
+- add center window function
+- fix tooltip truncated text (on windows), issue #8
+
+2021.10.2:
+- fix de-render bidi text.
+
+2021.9.30:
+- [right click menu] fix "button widget" show pressed status on mouse hover
+
+2021.9.28:
+- fix scrolling for ScrollableFrame
+- increase scroll step when scroll horizontally (shift + mousewheel)
+- [ScrolledText] change superclass to tk.Text instead of tk.Frame.
+- tooltip auto adjust position to stay inside screen border.
+
+2021.7.25:
+- fix error sometimes raised by entry bidi-handler.
+
 2021.6.4:
 - Add tooltip to tkinter widgets.
 - used python-bidi and custom reshaper instead of pyfribidi.
