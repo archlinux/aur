@@ -7,7 +7,7 @@ pkgdesc='Keepass plugin to use /dev/uinput for auto-typing'
 depends=('keepass' 'libxkbcommon' 'systemd')
 makedepends=('gcc' 'linux-api-headers')
 arch=('x86_64')
-url='https://keepass.info/'
+url='https://keepass.info/help/kb/autotype_wayland.html'
 license=('GPL')
 source=("https://keepass.info/extensions/v2/kpuinput/KPUInput-${pkgver}-Source.zip"
         "https://keepass.info/extensions/v2/kpuinput/KPUInput-${pkgver}.zip"
