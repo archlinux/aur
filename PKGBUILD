@@ -2,14 +2,13 @@
 # Co-maintainer: Sergey A. <murlakatamenka@disroot.org>
 
 pkgname=noisetorch-bin
-pkgver=0.11.4
-pkgrel=2
+pkgver=0.11.5
+pkgrel=1
 pkgdesc='Easy to use noise suppression for PulseAudio'
 arch=('x86_64')
 url="https://github.com/lawl/NoiseTorch"
 license=('GPL3')
 depends=('polkit')
-optdepends=()
 provides=('noisetorch')
 conflicts=('noisetorch-git' 'noisetorch')
 options=(!strip)
@@ -20,7 +19,7 @@ source=(
     "noisetorch-pulse.service"
     "noisetorch-pipewire.service"
 )
-sha256sums=('4b449db816afdaa8f70e534497f7fa395f901148f99ad0c579f89fb4d67e6edf'
+sha256sums=('c8105a576fbbf79622105228e957cec80a27bce9e5b9b224ef9dfe87fe82f97b'
             '84359c186c870220eeb56e9750319bb0c334c1440dd0f974df9e21a4084f80a5'
             'bad2997f5eb4a9de50ce906187e4a34543c03b6803039bc79031ebee198b05bd'
             '2dd8842ce40faf71ab5e87a96c3bf2a90e5e1a9118d5060b5b9b33abdfeded73')
