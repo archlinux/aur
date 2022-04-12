@@ -1,6 +1,6 @@
 pkgbase = linux-slim
 	pkgver = 5.17.v.2
-	pkgrel = 4
+	pkgrel = 5
 	url = http://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -19,7 +19,7 @@ pkgbase = linux-slim
 	source = linux.install
 	source = https://raw.githubusercontent.com/graysky2/kernel_compiler_patch/20220315/more-uarches-for-kernel-5.17+.patch
 	sha256sums = SKIP
-	sha256sums = 8b50f5d2c0f61fe8774317268e8b0c77840836852bdf91685ad765822a45b0f1
+	sha256sums = a0214ba1f2872a7894dc0f280a634bf6299e866ae757a5fdf9869fb52e5e2ebb
 	sha256sums = e60d58e60c809d5bd6bc2c258bce0e811a818b6a4b9ccb928902e519e90ab6d5
 	sha256sums = d590e751ab4cf424b78fd0d57e53d187f07401a68c8b468d17a5f39a337dacf0
 	sha256sums = dea86a521603414a8c7bf9cf1f41090d5d6f8035ce31407449e25964befb1e50
