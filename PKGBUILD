@@ -76,7 +76,7 @@ fi
 pkgbase=linux-manjaro-xanmod-tt
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 _major=5.15
-pkgver=${_major}.32
+pkgver=${_major}.33
 _branch=5.x
 xanmod=1
 pkgrel=1
@@ -84,7 +84,7 @@ pkgdesc='Linux Xanmod TT'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="10a676bdf248435bcb1482f9f323c22d14986fac" # 5.15.32
+__commit="cc11d4df9015a517a30f3726540ded8ce9d35bcf" # 5.15.33
 
 license=(GPL2)
 makedepends=(
@@ -111,9 +111,9 @@ done
         
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            'cce290968321ca89b70133083da9cb2ee8fc06bb689ab8218f3f2f0a6f34bd93'
+            'eb1f9eb5f96bc86fe0e27d81db766d9008d49224a142449778a70f7f16fcb375'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
-            '6bc83ec5ab5cf920a6dec51367dd1d89be89ccd4413c40446f5a54e6a24daf9c')
+            'a7b8218770205a4d57a95d82f8013f9fe71fd132b360974a15db58634b61c9d1')
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -150,6 +150,7 @@ prepare() {
   rm ../linux${_major//.}-$__commit/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
   rm ../linux${_major//.}-$__commit/0101-i2c-nuvoton-nc677x-hwmon-driver.patch
   rm ../linux${_major//.}-$__commit/0102-iomap-iomap_bmap-should-accept-unwritten-maps.patch
+  rm ../linux${_major//.}-$__commit/0202-mt76-mt7921-add-support-for-PCIe-ID-0x7922-0x0608-0x0616.patch
 
   local _patch
   for _patch in ../linux${_major//.}-$__commit/*; do
