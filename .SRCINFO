@@ -1,0 +1,12 @@
+pkgbase = blin-git
+	pkgdesc = Breaks lines in last-blank.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://www.github.com/weebcyberpunk/blin
+	arch = x86_64
+	license = MIT
+	provides = blin
+	source = git+https://www.github.com/weebcyberpunk/blin
+	md5sums = SKIP
+
+pkgname = blin-git
