@@ -1,8 +1,8 @@
 # Maintainer: ratata
 
 pkgname=minq-ananicy-git
-pkgver=2.2.1.r95.g5c4b787
-pkgrel=2
+pkgver=2.2.1.r96.g6de4295
+pkgrel=1
 pkgdesc="Minq Ananicy - fork of Ananicy with support for cmdline and more frequently updated rules"
 arch=('any')
 url="https://github.com/kuche1/minq-ananicy"
