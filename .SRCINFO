@@ -1,6 +1,6 @@
 pkgbase = afdko
 	pkgdesc = Adobe Font Development Kit for OpenType
-	pkgver = 3.8.1
+	pkgver = 3.8.2
 	pkgrel = 1
 	url = https://github.com/adobe-type-tools/afdko
 	arch = x86_64
@@ -26,7 +26,7 @@ pkgbase = afdko
 	depends = python-unicodedata2
 	depends = python-zopfli
 	depends = psautohint
-	source = https://github.com/adobe-type-tools/afdko/releases/download/3.8.1/afdko-3.8.1.tar.gz
-	sha256sums = 05a4a9c3b4e2072982be83f4ff3d73ca758a4091ff3e36db19ff39648f4b399c
+	source = https://github.com/adobe-type-tools/afdko/releases/download/3.8.2/afdko-3.8.2.tar.gz
+	sha256sums = 7fd3f9ca51392717f49ea115df5d6d8d3a32affe33d05e1753f0fa076b0de1d8
 
 pkgname = afdko
