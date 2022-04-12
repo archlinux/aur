@@ -1,10 +1,11 @@
 # Maintainer: Eklektisk <eklektisk at eklektiskiscoding dot xyz>
 # Project Maintainer: Jeison Yehuda Amihud <blenderdumbass at gmail dot com>
+# Project Maintainer: tristan <tristan at tristans dot cloud>
 # Project Maintainer: vertbyqb <vertbyqb at tuta dot io>
 
 _pkgname=fastlbry-terminal
 pkgname=${_pkgname}-git
-pkgver=0.5.r201.gc7775d4
+pkgver=0.5.r204.g8b37699
 pkgrel=1
 pkgdesc="A fully featured, terminal application to interact with LBRY"
 arch=('any')
@@ -12,8 +13,8 @@ url="https://www.notabug.org/jyamihud/FastLBRY-terminal"
 license=('GPL3')
 makedepends=('git')
 depends=('python')
-optdepends=('lbry-app-bin: for login support to the LBRY network'
-            'lbry-desktop-git: for login support to the LBRY network')
+optdepends=('lbry-app-bin: for login support to Odysee servers'
+            'lbry-desktop-git: for login support Odysee servers')
 source=("git+$url.git"
         "${_pkgname}.desktop")
 sha256sums=('SKIP' 'a4b9625cf5d47ebb1a5987926f26ad9ea7391c7c1dc26ebc6a9c933e860862a1')

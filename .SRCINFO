@@ -1,14 +1,14 @@
 pkgbase = fastlbry-terminal-git
 	pkgdesc = A fully featured, terminal application to interact with LBRY
-	pkgver = 0.5.r201.gc7775d4
+	pkgver = 0.5.r204.g8b37699
 	pkgrel = 1
 	url = https://www.notabug.org/jyamihud/FastLBRY-terminal
 	arch = any
 	license = GPL3
 	makedepends = git
 	depends = python
-	optdepends = lbry-app-bin: for login support to the LBRY network
-	optdepends = lbry-desktop-git: for login support to the LBRY network
+	optdepends = lbry-app-bin: for login support to Odysee servers
+	optdepends = lbry-desktop-git: for login support Odysee servers
 	source = git+https://www.notabug.org/jyamihud/FastLBRY-terminal.git
 	source = fastlbry-terminal.desktop
 	sha256sums = SKIP
