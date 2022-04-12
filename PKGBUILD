@@ -9,9 +9,9 @@ url='https://ooni.org/'
 license=('GPL3')
 depends=('glibc')
 makedepends=('go')
-source=("${_pkgname}-${pkgver}::https://github.com/ooni/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
+source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/ooni/${_pkgname}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('a0b71089444c899ba99c7f63f9e05819cdbe964cfa17bb95ca5672343e6aec22')
-sha512sum=('63270c046869e25d40290d6f7720eafea6179ed8c0e3e535b98852c02f7ff642c0866c039667a4394228697ec61f8caa18e59be476265616ed448f903f6b19e9')
+sha512sums=('63270c046869e25d40290d6f7720eafea6179ed8c0e3e535b98852c02f7ff642c0866c039667a4394228697ec61f8caa18e59be476265616ed448f903f6b19e9')
 
 build() {
   cd "${_pkgname}-${pkgver}"

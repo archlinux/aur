@@ -7,7 +7,8 @@ pkgbase = ooniprobe-cli
 	license = GPL3
 	makedepends = go
 	depends = glibc
-	source = probe-cli-3.14.2::https://github.com/ooni/probe-cli/archive/refs/tags/v3.14.2.tar.gz
+	source = probe-cli-3.14.2.tar.gz::https://github.com/ooni/probe-cli/archive/refs/tags/v3.14.2.tar.gz
 	sha256sums = a0b71089444c899ba99c7f63f9e05819cdbe964cfa17bb95ca5672343e6aec22
+	sha512sums = 63270c046869e25d40290d6f7720eafea6179ed8c0e3e535b98852c02f7ff642c0866c039667a4394228697ec61f8caa18e59be476265616ed448f903f6b19e9
 
 pkgname = ooniprobe-cli
