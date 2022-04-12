@@ -13,5 +13,5 @@ source=("https://github.com/ligos/readablepassphrasegenerator/releases/download/
 sha256sums=('d91261ae0001fd1c78775e8d4354b69bb4b33432811e8e66a4ba19eb185ac35a')
 
 package() {
-    install -Dm644 "${srcdir}/ReadablePassphrase.${pkgver}.plgx" "${pkgdir}/usr/share/keepass/plugins/ReadablePassphrase.plgx"
+    install -Dm644 "${srcdir}/ReadablePassphrase.${pkgver}.plgx" "${pkgdir}/usr/share/keepass/Plugins/ReadablePassphrase.plgx"
 }
