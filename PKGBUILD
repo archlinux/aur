@@ -1,7 +1,7 @@
 # Maintainer: fridtjof <fridtjof@das-labor.org>
 _pkgname=ABswitchStereo
 pkgname=abswitchstereo-lv2-git
-pkgver=gc38891e
+pkgver=r3.c38891e
 pkgrel=1
 epoch=1
 pkgdesc="Stereo source comparison tool"
@@ -17,6 +17,11 @@ makedepends=(
 )
 source=('git+https://github.com/sonejostudios/ABswitchStereo.git')
 sha256sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/$_pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 build() {
 	cd "$srcdir/$_pkgname"
