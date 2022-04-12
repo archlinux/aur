@@ -1,17 +1,18 @@
 pkgname=pocillo-gtk-theme-git
-pkgver=0.6.r15.gaa800c9
+pkgver=0.9.r0.g7a12511c
 pkgrel=1
 pkgdesc='Theme for the Budgie Desktop that has Material Design elements and styled using the Arc colour palette'
 arch=('any')
 url=https://github.com/UbuntuBudgie/pocillo-gtk-theme
 license=(GPL2)
-depends=(gtk-engine-murrine gtk3)
-makedepends=(inkscape optipng gtk-engine-murrine gdk-pixbuf2 git libsass sassc make glib2 libxml2 parallel)
-optdepends=('budgie-desktop: The Budgie desktop' 'gdk-pixbuf2')
+depends=(gtk-engine-murrine gnome-themes-extra)
+makedepends=(meson dart-sass git)
+optdepends=('budgie-desktop: The Budgie desktop')
 provides=(pocillo-gtk-theme)
 conflicts=(pocillo-gtk-theme)
-source=("${pkgname}::git+${url}")
-sha256sums=('SKIP')
+source=("${pkgname}::git+${url}" meson-fixes.patch)
+b2sums=('SKIP'
+        '21964b269b34ac7c601cdc098d2d9be9e8d98685385d5bad5c80c231ea2edee5969fc9d17df4fa72e617d8dc3402cc1b21b01668c30a35dcf905c1a41d224acd')
 
 pkgver() {
 	cd "${pkgname}"
@@ -22,20 +23,23 @@ pkgver() {
 	)
 }
 
-build() {
+prepare() {
 	cd "${pkgname}"
-	make -j$(nproc)
+	patch -p1 < "${srcdir}/meson-fixes.patch"
+}
+
+build() {
+	arch-meson \
+		-Ddocumentation=true \
+		-Dflatpak=false \
+		-Dgtk4_version=4.6 \
+		-Dgnome_shell_version=42 \
+		-Dcolors=default,light,dark \
+		-Dsizes=default,slim \
+		_build "${pkgname}"
+	meson compile -C _build
 }
 
 package() {
-	cd "${pkgname}"
-	make DESTDIR="${pkgdir}" install
-	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-	# Fix dangling symlink
-	local symlink
-	for symlink in $(find "${pkgdir}" -type l -name 'gtk-3.0') ; do
-		rm "${symlink}"
-		ln -vs 'gtk-3.22' "${symlink}"
-	done
+	meson install -C _build --destdir="${pkgdir}"
 }
