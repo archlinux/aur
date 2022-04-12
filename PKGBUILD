@@ -2,11 +2,11 @@
 
 pkgname=stl-thumb
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 license=('MIT')
 pkgdesc="A fast lightweight thumbnail generator for STL files"
 url='https://github.com/unlimitedbacon/stl-thumb'
-source=(git://github.com/unlimitedbacon/stl-thumb.git)
+source=(git+https://github.com/unlimitedbacon/stl-thumb.git)
 depends=('libgl')
 makedepends=("rust" "git")
 arch=("i386" "x86_64")
@@ -16,6 +16,12 @@ build() {
 	cd "${srcdir}/${pkgname}"
 
 	git checkout tags/v${pkgver}
+	
+	# Remove cargo config
+	# This file has gcc paths specifically for building on Debian/ARM
+	# Removing it allows this package to build on Arch Linux Arm
+	rm .cargo/config
+
 	cargo build --release
 }
 
