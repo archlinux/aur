@@ -3,35 +3,6 @@ post_install() {
     echo 'Configuration OK'
   fi
 
-  if chmod -R 766 /home/*/.config/slimbookbattery; then
-    echo 'Read/Write permissions given to config files.'
-  fi
-
-  if chmod -R 755 /usr/share/slimbookbattery/src/*.sh; then
-    echo 'Exec permissions given.'
-  fi
-
-  if chmod -R 755 /usr/share/slimbookbattery/src/*.py; then
-    echo 'Exec permissions given to src.'
-  fi
-
-  # Enabling tlp.service
-  if sudo systemctl enable tlp.service; then
-    echo 'Tlp service enabled'
-  fi
-
-  echo 'Checking users autostart files'
-  for user in $(ls /home); do
-    echo
-    echo $user
-
-    if test -f /home/$user/.config/autostart/slimbookbattery-autostart.desktop; then
-      echo "Restoring /home/$user/.config/autostart/slimbookbattery-autostart.desktop"
-      cp /usr/share/slimbookbattery/src/slimbookbattery-autostart.desktop /home/$user/.config/autostart/slimbookbattery-autostart.desktop
-    fi
-  done
-}
-
 post_upgrade() {
     post_install
 }

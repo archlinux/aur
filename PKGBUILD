@@ -2,40 +2,40 @@
 # Co-Maintainer: Slimbook <dev at slimbook dot es>
 # Contributor: tioguda <guda.flavio@gmail.com>
 pkgname=slimbookbattery
-pkgver=4.0.4
+pkgver=4.0.5beta
 pkgrel=1
 pkgdesc="Battery optimization application for portable devices."
 arch=('x86_64')
 url="https://github.com/slimbook/slimbookbattery"
 license=('GPL3')
-depends=('libnotify'
-         'tlp'
-         'tlp-rdw'
-         'cron'
+depends=('cron'
          'dbus-python'
          'dmidecode'
          'gtk3'
          'libayatana-appindicator'
+         'libnotify'
          'python-gobject'
          'python-pillow'
+         'tlp'
+         'tlp-rdw'
+         'vte3'
          'xorg-xdpyinfo')
 optdepends=('nvidia-prime: for hybrid graphics switching'
             'slimbookamdcontroller: Synchronize battery mode with CPU TDP mode'
             'slimbookintelcontroller: Synchronize battery mode with CPU TDP mode')
 install="$pkgname.install"
 source=("https://launchpad.net/~slimbook/+archive/ubuntu/slimbook/+files/${pkgname}_${pkgver}_all.deb")
-sha256sums=('d8191fa2d7641c4aa55066063f34687ca649bd71a304eedb18a6730a6f3f76fa')
+sha256sums=('0add99225f24f8f58092cbe9e66b38072674a43f95b5ce788a89507400b62ecc')
 
 package() {
   bsdtar xf data.tar.xz -C "$pkgdir"
+
+  chmod -R 755 "$pkgdir"/usr/share/slimbookbattery/src/*.py
 
   # Symlink service
   install -d "$pkgdir/usr/lib/systemd/system"
   ln -s "/usr/share/$pkgname/src/service/$pkgname.service" \
     "$pkgdir/usr/lib/systemd/system"
-
-  # Remove duplicate GPL3 license
-  rm "$pkgdir/usr/share/doc/$pkgname/copyright"
 
   # Install locales
   # cd "$pkgdir/usr/share/$pkgname/src/translations"
