@@ -1,0 +1,4 @@
+src/
+pkg/
+gauche-json-c/
+*.zst
