@@ -10,34 +10,13 @@ arch=('x86_64')
 url="https://github.com/rimpy-custom/RimPy"
 license=('Unknown')
 
-#depends=()
-#makedepends=()
-#checkdepends=()
-#optdepends=()
-# provides=()
-# conflicts=()
-# replaces=()
-# backup=()
-# options=()
-# install=
-# changelog=
 source=("$url/releases/download/${pkgver}/RimPy_Linux.tar.gz")
-# noextract=()
 md5sums=('45a780aa3f8bfccb9ffd0a4093ad8468')
-# validpgpkeys=()
-
-#prepare() {
-#}
-
-#build() {
-#}
 
 package() { 
   mkdir -p "$pkgdir/usr/local/lib/$pkgname"
   cp -rL "." "$pkgdir/usr/local/lib/$pkgname/"
   chmod 755 -R "$pkgdir/usr/local/lib/$pkgname/" 
   mkdir -p "$pkgdir/usr/local/bin/"
-  ln -sr "$pkgdir/usr/local/lib/$pkgname/RimPy.sh" "$pkgdir/usr/local/bin/rimpy"
+  ln -sr "$pkgdir/usr/local/lib/$pkgname/RimPy" "$pkgdir/usr/local/bin/rimpy"
 }
-
-
