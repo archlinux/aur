@@ -5,7 +5,7 @@
 # https://github.com/Cutehacks/qpm
 
 pkgname=qpm-git
-pkgver=v0.11.0.r2.g7c41bcc
+pkgver=v0.11.0.r7.g855d71e
 pkgrel=1
 pkgdesc='Qt Package Manager'
 arch=('x86_64' 'i686')
@@ -13,7 +13,7 @@ url='http://qpm.io'
 license=('LGPL')
 provides=('qpm-git')
 makedepends=('go' 'git')
-source=("qpm.io::git://github.com/Cutehacks/qpm")
+source=("qpm.io::https://github.com/Cutehacks/qpm")
 sha256sums=('SKIP')
 
 pkgver() {
