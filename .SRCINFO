@@ -1,13 +1,13 @@
 pkgbase = python-kucoin
 	pkgdesc = Unofficial Python wrapper for KuCoin's API
-	pkgver = 2.1.2
+	pkgver = 2.1.3
 	pkgrel = 1
 	url = https://github.com/sammchardy/python-kucoin
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-requests
-	source = https://files.pythonhosted.org/packages/source/p/python-kucoin/python-kucoin-2.1.2.tar.gz
-	sha256sums = 9167b0f832d54400d4ad7eecbdd6cc4060f7fa3bad4b14ecb9413829a29c3a6e
+	source = https://files.pythonhosted.org/packages/source/p/python-kucoin/python-kucoin-2.1.3.tar.gz
+	sha256sums = 94d8e7112d53c9474a07b0f9173a0f2e7091d90bbbcae892d35ae417139c9cd7
 
 pkgname = python-kucoin
