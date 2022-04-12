@@ -1,6 +1,6 @@
 # Maintainer: 4censord <mail@business-insulting.de>
 pkgver=7.22.0
-pkgrel=1
+pkgrel=2
 
 pkgbase=xe-guest-utilities-xcp-ng
 pkgname=('xe-guest-utilities-xcp-ng' 'xenstore-xcp-ng')
@@ -13,14 +13,19 @@ arch=('x86_64')
 depends=('lsb-release')
 makedepends=('go-pie')
 conflicts=('xe-guest-utilities')
-source=(https://github.com/xcp-ng/xe-guest-utilities/archive/v$pkgver.tar.gz 'xe-linux-distribution.service' '001-go1.16.patch')
+source=(https://github.com/xcp-ng/xe-guest-utilities/archive/v$pkgver.tar.gz
+  'xe-linux-distribution.service'
+  '001-go1.16.patch'
+  '002-Fix-archlinux-guestmetric-for-ip-interfaces.patch')
 sha256sums=('f1ef8445b11e5c03e9c8f347e243da06d54b09d407b835d2a16db08964ee9f55'
             'a5f725a26140fb4e2d3ec60c32be78ab224a6cc1f7f176fafa65529175b7d731'
-            'c4cba12a7bf65021625f2591ee3905e6e6c29428c8d28eae406d64e8551cd2ab')
+            'c4cba12a7bf65021625f2591ee3905e6e6c29428c8d28eae406d64e8551cd2ab'
+            '382fe26273cd66675425f506c3055a63ff827c2c805a634cb1593ad70be5383c')
 
 prepare(){
   cd $srcdir/xe-guest-utilities-$pkgver
   patch --forward --strip=1 --input="${srcdir}/001-go1.16.patch"
+  patch -p1 --input="${srcdir}/002-Fix-archlinux-guestmetric-for-ip-interfaces.patch"
 }
 
 

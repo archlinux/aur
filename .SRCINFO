@@ -1,7 +1,7 @@
 pkgbase = xe-guest-utilities-xcp-ng
 	pkgdesc = XenServer Tools, XCP-NG fork version
 	pkgver = 7.22.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/xcp-ng/xe-guest-utilities
 	arch = x86_64
 	license = BSD
@@ -11,9 +11,11 @@ pkgbase = xe-guest-utilities-xcp-ng
 	source = https://github.com/xcp-ng/xe-guest-utilities/archive/v7.22.0.tar.gz
 	source = xe-linux-distribution.service
 	source = 001-go1.16.patch
+	source = 002-Fix-archlinux-guestmetric-for-ip-interfaces.patch
 	sha256sums = f1ef8445b11e5c03e9c8f347e243da06d54b09d407b835d2a16db08964ee9f55
 	sha256sums = a5f725a26140fb4e2d3ec60c32be78ab224a6cc1f7f176fafa65529175b7d731
 	sha256sums = c4cba12a7bf65021625f2591ee3905e6e6c29428c8d28eae406d64e8551cd2ab
+	sha256sums = 382fe26273cd66675425f506c3055a63ff827c2c805a634cb1593ad70be5383c
 
 pkgname = xe-guest-utilities-xcp-ng
 	depends = xenstore-xcp-ng
