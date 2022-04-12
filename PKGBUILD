@@ -3,7 +3,7 @@
 
 _gitname=geany
 pkgname=${_gitname}-git
-pkgver=1.36.0.r49.gd8f532b5a
+pkgver=1.38.0.r151.gdf27d1b22
 pkgrel=1
 pkgdesc="Fast and lightweight IDE (git version)"
 arch=('x86_64' 'i686')
@@ -17,7 +17,7 @@ optdepends=(
 )
 conflicts=("${_gitname}" "${_gitname}-gtk3" "${_gitname}-gtk3-git")
 provides=("${_gitname}" "${_gitname}=$pkgver")
-source=(${_gitname}::git://github.com/${_gitname}/${_gitname}.git)
+source=(${_gitname}::git+https://github.com/${_gitname}/${_gitname}.git)
 md5sums=('SKIP')
 
 
