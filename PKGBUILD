@@ -1,10 +1,11 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Thomas Weißschuh <thomas t-8ch de>
 
 pkgname=git-review
 pkgver=1.28.0
-pkgrel=5
+pkgrel=6
 pkgdesc='Tool to submit code to Gerrit'
 arch=('any')
 url='https://github.com/openstack-infra/git-review'
@@ -12,9 +13,9 @@ license=('APACHE')
 depends=('git' 'python-requests')
 makedepends=('python-pbr')
 checkdepends=('java-runtime=11' 'libcups' 'openssh' 'procps-ng' 'python-stestr' 'python-mock')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/openstack-infra/git-review/archive/$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::https://opendev.org/opendev/git-review/archive/$pkgver.tar.gz"
         https://tarballs.openstack.org/ci/gerrit/gerrit-v2.11.4.13.cb9800e.war)
-sha512sums=('21a71172b474ca0446f58d567e2c1b37059af3b680a3e441bcf94607d05f1fefa932ecef95328e1d77f0b71928477fd2878806ea26d2c4da030f281de15a210d'
+sha512sums=('6ff078377fdfaf7c6663222fa05d354bcab3fe64e34f9f0662f41c809ca077e83f1ea8a8f14d893424c5d1430ab3facb246acdf91a2e7c46a286e6fb0c77166f'
             '764388dc0ee381e2f05f5aaef9fc4156b4659a329eaf815ad7beb0b2a924a8d171444b8824ea9aad6b8aa7a3cc0b60bf8daa9d483298e6226cb692ea1caafa7f')
 
 prepare() {
