@@ -1,4 +1,6 @@
-# Maintainer: ml <>
+# Maintainer: bgme <i@bgme.me>
+# Contributor: ml <>
+
 _pkgname=probe-cli
 pkgname=ooniprobe-cli
 pkgver=3.14.2
