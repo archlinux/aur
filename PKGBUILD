@@ -13,7 +13,7 @@ source=("$pkgname"::'git+https://github.com/kuche1/minq-ananicy.git#branch=maste
 md5sums=('SKIP')
 install=$pkgname.install
 provides=(ananicy)
-backup=( 'etc/ananicy.d/ananicy.conf' )
+backup=('etc/ananicy.d/ananicy.conf')
 
 pkgver() {
 	cd "$pkgname"
@@ -23,8 +23,11 @@ pkgver() {
 
 package() {
 	cd "$srcdir/${pkgname}/"
+
+	# this is needed so that paru can report on updates
 	mkdir -p "${pkgdir}/opt/${pkgname}"
 	cp -rf * "${pkgdir}/opt/${pkgname}"
+
 	make install PREFIX="$pkgdir"
 	mkdir -p "$pkgdir/usr/"
 	mv -v "$pkgdir/lib" "$pkgdir/usr/"
