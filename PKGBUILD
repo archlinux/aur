@@ -8,7 +8,7 @@ arch=(any)
 url="https://gitlab.com/a4to/${pkgname}"
 license=('MIT')
 source=("https://gitlab.com/a4to/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
-sha256sums=('337fc116d143cf6351791cc2685a1ee91f42b04ff1392d34ac5e8009fc56b99e')
+sha256sums=('f1cc9c53f7319e88fb9a954432b563777eee3717e36840356b93b985a261173b')
 
 package() {
   install -Dm644 ${srcdir}/usr/share/pacman/keyrings/* -t "${pkgdir}/usr/share/pacman/keyrings/"
