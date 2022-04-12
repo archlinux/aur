@@ -4,8 +4,8 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=chromium
-pkgver=100.0.4896.75
-pkgrel=2
+pkgver=100.0.4896.88
+pkgrel=1
 _launcher_ver=8
 _gcc_patchset=4
 pkgdesc="A web browser built for speed, simplicity, and security"
@@ -30,7 +30,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/$pkgn
         enable-GlobalMediaControlsCastStartStop.patch
         sql-make-VirtualCursor-standard-layout-type.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('244ed352dfaa1ab6b1f0877c4884fd17aa7d7133fa52f129a9fb01325ea0c0c0'
+sha256sums=('c5a5708678f30679a1181f89401c966cb335799926a5e4dc7f52e7194847c250'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'a6120e7d4eb5e131b87b6ab3b922e0c6cd78e15501e54cfb2019875173688d80'
             '064daaa2b9d95b96ec04d8ddebf4af441f92263d123365b58fe73966866080af'
