@@ -3,7 +3,7 @@
 pkgname=bloom-git
 pkgver=r677.2647415
 pkgrel=1
-pkgdesc="Bloom AVR debugger"
+pkgdesc="Bloom AVR debugger - A debug interface for embedded systems development on Linux."
 arch=('i686' 'x86_64')
 url="https://github.com/navnavnav/Bloom"
 license=('LGPL')
