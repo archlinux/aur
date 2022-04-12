@@ -1,11 +1,10 @@
 post_install() {
 	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-	echo "To stop until next restart:"
-	echo "\$ sudo systemctl stop ananicy"
-	echo "To disable:"
+	echo "To enable until next restart:"
+	echo "\$ sudo systemctl start ananicy"
+	echo "To enable and presist after restart:"
+	echo "\$ sudo systemctl start ananicy"
 	echo "\$ sudo systemctl disable ananicy"
 	echo "Configs are located in /etc/ananicy.d/"
 	echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
-	sudo systemctl restart ananicy
-	sudo systemctl enable ananicy
 }
