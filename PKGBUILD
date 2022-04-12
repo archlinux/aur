@@ -1,7 +1,7 @@
 # Maintainer: Dylan Turner dylantdmt@gmail.com
 pkgname=tetris-cli-git
 pkgver=22.411
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="A tetris game that runs in a terminal"
 arch=('any')
