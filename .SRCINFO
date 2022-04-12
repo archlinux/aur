@@ -5,8 +5,7 @@ pkgbase = concise-keyring
 	url = https://gitlab.com/a4to/concise-keyring
 	arch = any
 	license = MIT
-	makedepends = git
 	source = https://gitlab.com/a4to/concise/-/raw/master/x86_64/concise-keyring-1.0.3-1-any.pkg.tar.zst
-	sha256sums = 7d8875a0f2777601057f5041ace7dd29c04f567f67afd8aef329fab580b85343
+	sha256sums = 337fc116d143cf6351791cc2685a1ee91f42b04ff1392d34ac5e8009fc56b99e
 
 pkgname = concise-keyring

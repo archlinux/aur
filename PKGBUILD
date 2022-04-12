@@ -7,9 +7,8 @@ pkgdesc='Allows for installing packages from Concise repositories'
 arch=(any)
 url="https://gitlab.com/a4to/${pkgname}"
 license=('MIT')
-makedepends=(git)                 
 source=("https://gitlab.com/a4to/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
-sha256sums=('7d8875a0f2777601057f5041ace7dd29c04f567f67afd8aef329fab580b85343')
+sha256sums=('337fc116d143cf6351791cc2685a1ee91f42b04ff1392d34ac5e8009fc56b99e')
 
 package() {
   install -Dm644 ${srcdir}/usr/share/pacman/keyrings/* -t "${pkgdir}/usr/share/pacman/keyrings/"
