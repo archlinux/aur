@@ -1,6 +1,6 @@
 pkgbase = stretchly-xeruf-git
 	pkgdesc = The break reminder app with more restrictive menus
-	pkgver = 986.7d28747
+	pkgver = 1125.a3264ed
 	pkgrel = 1
 	url = https://github.com/xeruf/stretchly
 	arch = any
@@ -20,8 +20,7 @@ pkgbase = stretchly-xeruf-git
 	depends = libsecret
 	depends = libappindicator-gtk3
 	depends = libxcrypt-compat
-	depends = electron>=17
-	depends = electron<18
+	depends = electron17
 	provides = stretchly
 	source = git+https://github.com/xeruf/stretchly.git
 	sha256sums = SKIP

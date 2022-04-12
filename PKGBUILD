@@ -2,13 +2,13 @@
 
 _pkgname=stretchly
 pkgname=${_pkgname}-xeruf-git
-pkgver=986.7d28747
+pkgver=1125.a3264ed
 pkgrel=1
 pkgdesc="The break reminder app with more restrictive menus"
 arch=('any')
 url="https://github.com/xeruf/${_pkgname}"
 license=('BSD')
-depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-atk' 'util-linux-libs' 'libsecret' 'libappindicator-gtk3' 'libxcrypt-compat' 'electron>=17' 'electron<18')
+depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-atk' 'util-linux-libs' 'libsecret' 'libappindicator-gtk3' 'libxcrypt-compat' 'electron17')
 makedepends=('git' 'nvm' 'jq' 'python')
 provides=("$_pkgname")
 source=("git+${url}.git")
