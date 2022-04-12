@@ -3,7 +3,6 @@ _pkgname=ABswitchStereo
 pkgname=abswitchstereo-lv2-git
 pkgver=r3.c38891e
 pkgrel=1
-epoch=1
 pkgdesc="Stereo source comparison tool"
 arch=('x86_64') #todo
 url="https://github.com/sonejostudios/ABswitchStereo"
