@@ -1,5 +1,5 @@
 pkgbase = bloom-git
-	pkgdesc = Bloom AVR debugger
+	pkgdesc = Bloom AVR debugger - A debug interface for embedded systems development on Linux.
 	pkgver = r677.2647415
 	pkgrel = 1
 	url = https://github.com/navnavnav/Bloom
@@ -8,9 +8,10 @@ pkgbase = bloom-git
 	license = LGPL
 	makedepends = git
 	makedepends = cmake
+	makedepends = qt6-tools
+	makedepends = php
 	depends = libusb>=1.0
-	depends = qt6-tools
-	depends = php
+	depends = qt6-base
 	source = bloom-git::git+https://github.com/navnavnav/Bloom.git
 	sha256sums = SKIP
 
