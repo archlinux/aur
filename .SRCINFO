@@ -9,6 +9,7 @@ pkgbase = sxhkhm-git
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python-wheel
+	makedepends = python-pip
 	depends = sxhkd
 	depends = python
 	depends = bash
