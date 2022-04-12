@@ -1,0 +1,12 @@
+pkgbase = fcitx5-skin-fluentdark-git
+	pkgdesc = A Fluent-Design dark theme with blur effect and shadow.
+	pkgver = v0.1.0dev.r0.g3ae6396
+	pkgrel = 1
+	url = https://github.com/Reverier-Xu/FluentDark-fcitx5
+	arch = x86_64
+	license = MPL
+	depends = fcitx5
+	source = git+https://github.com/Reverier-Xu/FluentDark-fcitx5.git
+	md5sums = SKIP
+
+pkgname = fcitx5-skin-fluentdark-git
