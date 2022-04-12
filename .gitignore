@@ -1,5 +1,6 @@
 *
 !alps.conf
+!alps-fix-160.patch
 !alps-system.service
 !alps-themes-path.patch
 !alps-user.service
