@@ -1,9 +1,8 @@
 pkgbase = oaml
-	pkgdesc = A library that makes it easy to implement adaptive music in games
+	pkgdesc = Library for implementing adaptive music in games
 	pkgver = 1.3.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://oamldev.github.io/
-	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
@@ -13,8 +12,8 @@ pkgbase = oaml
 	optdepends = alsa-lib: realtime audio support via ALSA
 	optdepends = libpulse: realtime audio support via PulseAudio
 	optdepends = jack: realtime audio support via JACK
+	provides = liboaml.so=1-64
 	source = oaml-1.3.4.tar.gz::https://github.com/oamldev/oaml/archive/v1.3.4.tar.gz
-	md5sums = 177ec311931ed7bf917654fb057dafa4
+	sha256sums = 4000dabf043938bcff3069ead1052fb06a77a7004bda67adcc5bc9538d32908f
 
 pkgname = oaml
-
