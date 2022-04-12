@@ -3,7 +3,7 @@ pkgname=rimpy
 
 # We can't update this "dynamically" since some releases are not available for Linux. Maybe a deeper check could do the trick
 pkgver=1.2.4.21
-pkgrel=0
+pkgrel=1
 
 pkgdesc="Mod Manager For Rimworld game"
 arch=('x86_64')
