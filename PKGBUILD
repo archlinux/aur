@@ -4,7 +4,7 @@
 # Contributor: Jeramy Rutley <jrutley@gmail.com>
 
 pkgname=ruby2.7
-pkgver=2.7.5
+pkgver=2.7.6
 pkgrel=1
 arch=(x86_64)
 pkgdesc='An object-oriented language for quick and easy programming, version 2.7'
@@ -15,9 +15,9 @@ optdepends=(
     'tk: for Ruby/TK'
 )
 makedepends=(tk)
-options=(!emptydirs)
+options=(!emptydirs !lto) # Disable LTO until fixes for https://bugs.ruby-lang.org/issues/18062 released
 source=(https://cache.ruby-lang.org/pub/ruby/${pkgver:0:3}/ruby-${pkgver}.tar.xz)
-sha512sums=('21c8a713e3ce115fc4c405113ac691ddcefc3419f528b93ca1ac59e7052c1b6e9e241da0e570e291e567f28f3d840824dbcc5967b216cbe7d6ca7a05580fa311')
+sha512sums=('e86410b59d5917786fe43b00fd75dedd0e7f84611286b9274c542d2e562088fcee6bcc6c2596c30ccf793280d2bac6bfbb2619ef0513b3ca31f10f88684c7b1f')
 
 build() {
   cd ruby-${pkgver}
