@@ -5,18 +5,21 @@ _pkgname=thelounge
 pkgname=thelounge-beta
 _pkgver=4.3.1-rc.1
 pkgver=${_pkgver/-/}
-pkgrel=1
+pkgrel=2
 pkgdesc='Modern self-hosted web IRC client (Latest release/pre-release)'
 url='https://thelounge.chat/'
 arch=('any')
 license=('MIT')
 depends=('nodejs')
-makedepends=('npm')
+options=('!lto')
+makedepends=('yarn' 'python' 'git')
 conflicts=('thelounge')
 provides=('thelounge')
 backup=('etc/thelounge/config.js')
 source=(
     "https://registry.npmjs.org/$_pkgname/-/$_pkgname-$_pkgver.tgz"
+    "https://raw.githubusercontent.com/thelounge/thelounge/v${_pkgver}/yarn.lock"
+    "https://raw.githubusercontent.com/thelounge/thelounge/v${_pkgver}/package.json"
     'system.service'
     'user.service'
     'sysusers.d'
@@ -24,20 +27,52 @@ source=(
 )
 noextract=("$_pkgname-$_pkgver.tgz")
 sha256sums=('22abb61c6e17718e5a05d57a5f9400dca941447d91d5e834a84528e414a8fbf8'
+            'b6ac08b40385dd173f97cb668ff07c5e1fa98d286250715de6d291960358f31c'
+            '5c37703756bde8cf0844f663395309f71cd720550810429bc63d0e74511e91de'
             'c92210f6ac8f01c1cd01b6b26793094cd2feea583ed21fab3564d6bcafdc7a20'
             'c609f3309f54bd6285e99ff29ca2464828bec7bbbca67243ee688bd2d605dbf0'
             '30fab63b8a4ffcfdda4c5b8d7c66822a323c4f1de6ca62b77fe9500f4befc0a5'
-            'bade9cf0e9fb27328db0c9d7300e9e215f2ff79305d94f1797d946e065a714bf')
+            'c07fc7aaa91f6d2407d9ea2d15bfa780bfc06e3487efa138a9385307dcf9f41d')
+
+prepare() {
+    yarn install --prod --frozen-lockfile --non-interactive --ignore-scripts --cache-folder "$srcdir/yarn-cache"
+}
+
+build() {
+    mkdir _build
+    cp package.json yarn.lock _build
+    cd _build
+
+    # Install the package itself
+    # we on purpose don't use yarn global add, because --ignore-scripts
+    # is ignored: https://github.com/yarnpkg/yarn/issues/8291 but we tried
+    yarn add --no-default-rc --frozen-lockfile \
+    --prod --non-interactive --ignore-scripts \
+    --cache-folder "$srcdir/yarn-cache" --offline \
+    file:"$srcdir/$_pkgname-${_pkgver}.tgz"
+
+    # fetch sqlite3 binary blob
+    cd node_modules/sqlite3
+    ./node_modules/.bin/node-pre-gyp install --fallback-to-build
+}
 
 package() {
-    export NODE_ENV=production
+    install -dm755 "$pkgdir/usr/lib/thelounge"
+    cp -r "$srcdir/_build/node_modules" "$pkgdir/usr/lib/thelounge"
 
-    npm install -g --user root --prefix "$pkgdir/usr" "$_pkgname-$_pkgver.tgz" --cache "${srcdir}/npm-cache"
+    install -dm755 "$pkgdir/usr/bin/"
+    ln -s "/usr/lib/thelounge/node_modules/thelounge/index.js" "$pkgdir/usr/bin/thelounge"
 
-    echo /etc/thelounge > "$pkgdir/usr/lib/node_modules/$_pkgname/.thelounge_home"
+    # Non-deterministic race in npm gives 777 permissions to random directories.
+    # See https://github.com/npm/npm/issues/9359 for details.
+    # yarn is probably not much better
+    find "${pkgdir}"/usr/lib/thelounge -type d -exec chmod 755 {} +
+    chown -R root:root "${pkgdir}"
+
+    echo /etc/thelounge > "$pkgdir/usr/lib/thelounge/node_modules/thelounge/.thelounge_home"
 
     # add default config
-    install -Dm 644 "$pkgdir/usr/lib/node_modules/$_pkgname/defaults/config.js" "$pkgdir/etc/thelounge/config.js"
+    install -Dm 644 "$pkgdir/usr/lib/thelounge/node_modules/thelounge/defaults/config.js" "$pkgdir/etc/thelounge/config.js"
 
     # services
     install -Dm644 "$srcdir/system.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
@@ -46,8 +81,4 @@ package() {
     # setting up system user
     install -Dm644 "${srcdir}/sysusers.d" "${pkgdir}/usr/lib/sysusers.d/thelounge.conf"
     install -Dm644 "${srcdir}/tmpfiles.d" "${pkgdir}/usr/lib/tmpfiles.d/thelounge.conf"
-
-    # Non-deterministic race in npm gives 777 permissions to random directories.
-    # See https://github.com/npm/npm/issues/9359 for details.
-    find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
 }
