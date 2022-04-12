@@ -1,6 +1,6 @@
 pkgbase = vncdotool-git
 	pkgdesc = A command line VNC client
-	pkgver = 1.0.0.r7.gc248393
+	pkgver = 1.0.0.r39.g857cb7e
 	pkgrel = 1
 	url = https://github.com/sibson/vncdotool
 	arch = any

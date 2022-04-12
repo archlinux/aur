@@ -1,7 +1,7 @@
 # Maintainer: Gerry Demaret <oss plus archlinux at x-net dot be>
 # Category: system
 pkgname='vncdotool-git'
-pkgver=1.0.0.r7.gc248393
+pkgver=1.0.0.r39.g857cb7e
 pkgrel=1
 pkgdesc='A command line VNC client'
 arch=('any')
