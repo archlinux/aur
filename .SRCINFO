@@ -1,0 +1,11 @@
+pkgbase = libfyaml
+	pkgdesc = Fully feature complete YAML parser and emitter
+	pkgver = 0.7.12
+	pkgrel = 1
+	url = https://pantoniou.github.io/libfyaml
+	arch = x86_64
+	license = MIT
+	source = https://github.com/pantoniou/libfyaml/releases/download/v0.7.12/libfyaml-0.7.12.tar.gz
+	sha256sums = 485342c6920e9fdc2addfe75e5c3e0381793f18b339ab7393c1b6edf78bf8ca8
+
+pkgname = libfyaml
