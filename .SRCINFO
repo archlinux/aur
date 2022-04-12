@@ -1,0 +1,27 @@
+pkgbase = mark2-git
+	pkgdesc = A minecraft server wrapper, written in python and twisted.
+	pkgver = r826.24db946
+	pkgrel = 1
+	url = https://github.com/mark2devel/mark2
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = python
+	depends = python-psutil
+	depends = python-urwid
+	depends = python-twisted
+	depends = python-service-identity
+	depends = python-feedparser
+	depends = python-pyopenssl
+	depends = xclip
+	depends = python-pyperclip
+	depends = python-twisted
+	depends = python-psutil
+	depends = python-urwid
+	depends = python-treq
+	provides = mark2
+	conflicts = mark2
+	source = git+https://github.com/mark2devel/mark2.git
+	sha256sums = SKIP
+
+pkgname = mark2-git
