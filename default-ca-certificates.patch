@@ -1,0 +1,12 @@
+--- a/docs/neomuttrc.head
++++ b/docs/neomuttrc.head.new
+@@ -48,6 +48,9 @@ bind browser y exit
+ # be undone with unmime_lookup.
+ mime_lookup application/octet-stream
+
++# System-wide CA file managed by the ca-certificates package
++set ssl_ca_certificates_file="/etc/ssl/certs/ca-certificates.crt"
++
+ ##
+ ## *** DEFAULT SETTINGS FOR THE ATTACHMENTS PATCH ***
+ ##

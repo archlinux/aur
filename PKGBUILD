@@ -4,22 +4,34 @@
 # Contributor: Chris Salzberg <chris@dejimata.com>
 _pkgname=neomutt
 pkgname=neomutt-git
-pkgver=20211029.r144.gb77af0218
+pkgver=20220408.r12.gccde81231
 pkgrel=1
 pkgdesc='A version of mutt with added features - development branch'
 url='http://www.neomutt.org/'
 license=('GPL')
-source=('git+https://github.com/neomutt/neomutt.git#branch=master')
-sha256sums=('SKIP')
 arch=('i686' 'x86_64')
-depends=('lua' 'perl' 'notmuch-runtime' 'lmdb' 'kyotocabinet' 'python')
+depends=('glibc' 'gpgme' 'lua53' 'notmuch-runtime' 'krb5' 'gnutls' 'sqlite'
+         'libsasl' 'ncurses' 'libidn2' 'lmdb' 'gdbm' 'kyotocabinet'
+         'lz4' 'zlib' 'zstd' 'db')
+optdepends=('python: keybase.py'
+            'perl: smime_keys'
+            'ca-certificates: default CA certificates')
 makedepends=('git' 'gnupg' 'libxslt' 'docbook-xsl' 'w3m')
+source=("git+https://github.com/neomutt/neomutt.git#branch=master"
+        "default-ca-certificates.patch")
+sha256sums=('SKIP'
+            '571716b8979e9b43328416c3c56eff228b6c58355d7c080b8987ea89c6360776')
 conflicts=('neomutt')
 provides=('neomutt')
 
 pkgver() {
     cd "$_pkgname"
     git describe --long --tags | sed -r 's/(.*)-(.*)-/\1.r\2./; s/-//g'
+}
+
+prepare() {
+    cd "$_pkgname"
+    patch -Np1 -i "$srcdir/default-ca-certificates.patch"
 }
 
 build() {
@@ -29,18 +41,24 @@ build() {
         --sysconfdir=/etc \
         --libexecdir=/usr/lib \
         --gpgme \
-        --enable-lua \
+        --sqlite \
+        --autocrypt \
+        --lua \
         --notmuch \
         --gss \
-        --ssl \
+        --gnutls \
         --sasl \
         --with-ui=ncurses \
         --with-idn2=/usr \
-        --idn=0 \
-        --idn2=1 \
+        --disable-idn \
+        --idn2 \
+        --bdb \
         --lmdb \
         --kyotocabinet \
-        --gdbm
+        --gdbm \
+        --lz4 \
+        --zlib \
+        --zstd
     make
 }
 
