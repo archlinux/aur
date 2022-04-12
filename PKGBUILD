@@ -3,7 +3,7 @@
 _pkgname=sxhkhm
 pkgname=${_pkgname}-git
 longpkgname=sxhkd-helper-menu
-pkgver=r78.afec96a
+pkgver=r85.f3be1c7
 pkgrel=1
 pkgdesc='Parse and fuzzy-find keybinds from sxhkd-configuration - built from latest sources at github'
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/fiskhest/aur-${pkgname}"
 license=('BSD')
 depends=('sxhkd' 'python' 'bash' 'rofi' 'grep' 'fzf')
 install=${pkgname}.install
-makedepends=('git' 'python-setuptools' 'python-wheel')
+makedepends=('git' 'python-setuptools' 'python-wheel' 'python-pip')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
 source=("git+https://github.com/fiskhest/${longpkgname}.git")
