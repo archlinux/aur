@@ -2,8 +2,8 @@
 # Maintainer: Pau Espin Pedrol <pespin@espeweb.net>
 pkgname=titan-git
 _pkgname=titan.core
-pkgver=8.1.1
-pkgrel=3
+pkgver=8.1.1.r40.g6be5a7f23
+pkgrel=1
 pkgdesc="TTCN3 test automation platform"
 arch=('i686' 'x86_64')
 url="https://projects.eclipse.org/projects/tools.titan"
@@ -28,7 +28,7 @@ md5sums=('SKIP'
 
 pkgver() {
     cd "$_pkgname"
-    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
