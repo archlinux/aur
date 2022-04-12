@@ -1,6 +1,6 @@
 pkgbase = minq-ananicy-git
 	pkgdesc = Minq Ananicy - fork of Ananicy with support for cmdline and more frequently updated rules
-	pkgver = r630.67ba26f7c67270e122faabf8c83cd3d512552759
+	pkgver = 2.2.1.r81.g8665be4
 	pkgrel = 1
 	url = https://github.com/kuche1/minq-ananicy
 	install = minq-ananicy-git.install
