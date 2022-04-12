@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-moveit-setup-assistant
 	pkgdesc = ROS - Generates a configuration package that makes it easy to use MoveIt!.
 	pkgver = 1.1.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://moveit.ros.org
 	arch = i686
 	arch = x86_64
@@ -19,6 +19,7 @@ pkgbase = ros-noetic-moveit-setup-assistant
 	makedepends = ros-noetic-moveit-ros-visualization
 	makedepends = yaml-cpp
 	makedepends = log4cxx
+	makedepends = ompl
 	depends = ros-noetic-srdfdom
 	depends = ros-noetic-xacro
 	depends = ros-noetic-moveit-core
@@ -26,6 +27,7 @@ pkgbase = ros-noetic-moveit-setup-assistant
 	depends = ros-noetic-moveit-ros-visualization
 	depends = yaml-cpp
 	depends = log4cxx
+	depends = ompl
 	source = ros-noetic-moveit-setup-assistant-1.1.8.tar.gz::https://github.com/ros-planning/moveit/archive/1.1.8.tar.gz
 	sha256sums = 2a88440169593037c4adbf14896c30def63f8b3af85f1239e8ef94ee62b0b969
 

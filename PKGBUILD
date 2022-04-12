@@ -4,7 +4,7 @@ url='https://moveit.ros.org'
 pkgname='ros-noetic-moveit-setup-assistant'
 pkgver='1.1.8'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=2
+pkgrel=3
 license=('BSD')
 
 ros_makedepends=(ros-noetic-srdfdom
@@ -16,7 +16,8 @@ ros_makedepends=(ros-noetic-srdfdom
 makedepends=(cmake ros-build-tools
   ${ros_makedepends[@]}
   yaml-cpp
-  log4cxx)
+  log4cxx
+  ompl)
 
 ros_depends=(ros-noetic-srdfdom
   ros-noetic-xacro
@@ -25,7 +26,8 @@ ros_depends=(ros-noetic-srdfdom
   ros-noetic-moveit-ros-visualization)
 depends=(${ros_depends[@]}
   yaml-cpp
-  log4cxx)
+  log4cxx
+  ompl)
 
 _dir="moveit-${pkgver}/moveit_setup_assistant"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-planning/moveit/archive/${pkgver}.tar.gz")
