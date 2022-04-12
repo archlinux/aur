@@ -14,12 +14,6 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/stephaneguindon/phyml/archi
 sha512sums=('039543ebdff8c33c7b30212f6d08883a757f00711e4e051e047b0c7971de5980171198fed7a4638117968d05b203c828e71a694294394e3d1d173f131b9d4580')
 depends=('openmpi')
 
-prepare() {
-  # https://github.com/stephaneguindon/phyml/issues/156#issuecomment-949475758
-  cd "${pkgname%-mpi}-$pkgver"
-  sed -i '/^AM_INIT_AUTOMAKE$/d' configure.ac
-}
-
 build() {
   cd "${pkgname%-mpi}-$pkgver"
   ./autogen.sh
