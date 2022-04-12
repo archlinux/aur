@@ -1,6 +1,6 @@
 pkgbase = python-mbedtls
 	pkgdesc = A free cryptographic library for Python that uses mbed TLS for back end.
-	pkgver = 2.0.0
+	pkgver = 2.0.1
 	pkgrel = 1
 	url = https://pypi.org/project/python-mbedtls/
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-mbedtls
 	depends = python
 	depends = python-certifi
 	depends = python-typing-extensions
-	source = https://files.pythonhosted.org/packages/source/p/python-mbedtls/python-mbedtls-2.0.0.tar.gz
-	sha256sums = 726ff40e64ece905569f4c06efe8e8dea3209b0c5b9d4524710d17af1a21d051
+	source = https://files.pythonhosted.org/packages/source/p/python-mbedtls/python-mbedtls-2.0.1.tar.gz
+	sha256sums = c4f079625d17ef3e2f44b69cd171be334541da758842e99ee96c4c1fca964f31
 
 pkgname = python-mbedtls
