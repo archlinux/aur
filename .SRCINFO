@@ -1,6 +1,6 @@
 pkgbase = qt6-base-headless
 	pkgdesc = A cross-platform application and UI framework - headless build, no QtGui or QtWidgets
-	pkgver = 6.2.4
+	pkgver = 6.3.0
 	pkgrel = 1
 	url = https://www.qt.io
 	arch = x86_64
@@ -28,12 +28,12 @@ pkgbase = qt6-base-headless
 	provides = qt6-base
 	conflicts = qt6-base
 	options = debug
-	source = https://download.qt.io/official_releases/qt/6.2/6.2.4/submodules/qtbase-everywhere-src-6.2.4.tar.xz
-	source = qmake-cflags.patch
-	source = qmake-config.patch
-	sha256sums = d9924d6fd4fa5f8e24458c87f73ef3dfc1e7c9b877a5407c040d89e6736e2634
+	source = https://download.qt.io/official_releases/qt/6.3/6.3.0/submodules/qtbase-everywhere-src-6.3.0.tar.xz
+	source = qt6-base-cflags.patch
+	source = qt6-base-nostrip.patch
+	sha256sums = b865aae43357f792b3b0a162899d9bf6a1393a55c4e5e4ede5316b157b1a0f99
 	sha256sums = 5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78
-	sha256sums = 4abc22150fa3e06b2fdcec32146abc9be4e316692aa4d5bd5aa53b4b726783fa
+	sha256sums = 4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094
 
 pkgname = qt6-base-headless
 	optdepends = postgresql-libs: PostgreSQL driver

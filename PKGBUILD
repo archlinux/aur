@@ -4,7 +4,7 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=qt6-base-headless
-_qtver=6.2.4
+_qtver=6.3.0
 pkgver=${_qtver/-/}
 pkgrel=1
 arch=(x86_64)
@@ -24,15 +24,15 @@ provides=(qt6-base)
 options=(debug)
 _pkgfn="qtbase-everywhere-src-$_qtver"
 source=(https://download.qt.io/official_releases/qt/${pkgver%.*}/$_qtver/submodules/$_pkgfn.tar.xz
-        qmake-cflags.patch
-        qmake-config.patch)
-sha256sums=('d9924d6fd4fa5f8e24458c87f73ef3dfc1e7c9b877a5407c040d89e6736e2634'
+        qt6-base-cflags.patch
+        qt6-base-nostrip.patch)
+sha256sums=('b865aae43357f792b3b0a162899d9bf6a1393a55c4e5e4ede5316b157b1a0f99'
             '5411edbe215c24b30448fac69bd0ba7c882f545e8cf05027b2b6e2227abc5e78'
-            '4abc22150fa3e06b2fdcec32146abc9be4e316692aa4d5bd5aa53b4b726783fa')
+            '4b93f6a79039e676a56f9d6990a324a64a36f143916065973ded89adc621e094')
 
 prepare() {
-  patch -d $_pkgfn -p1 < qmake-cflags.patch # Use system CFLAGS
-  patch -d $_pkgfn -p1 < qmake-config.patch # Don't strip binaries with qmake and use -ltcg, cf. QTBUG-73834
+  patch -d $_pkgfn -p1 < qt6-base-cflags.patch # Use system CFLAGS
+  patch -d $_pkgfn -p1 < qt6-base-nostrip.patch # Don't strip binaries with qmake
 }
 
 build() {
