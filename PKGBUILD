@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=ognibuild
-pkgver=0.0.12
+pkgver=0.0.13
 pkgrel=1
 pkgdesc="Detect and invoke build systems"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL2')
 depends=('breezy' 'python-buildlog-consultant' 'python-requirements-parser'
          'python-setuptools' 'python-toml')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"{,.asc})
-sha256sums=('3eec3f26bfeaaf0aa28487b694230abdf6ea40a1feefb1c1186031fc24e2d8a7'
+sha256sums=('15d05c36c555b68101ba68a6659f09cdea6a25e06cd4d455dbaecb78bff94cbe'
             'SKIP')
 validpgpkeys=('DC837EE14A7E37347E87061700806F2BD729A457') # Jelmer Vernooĳ <jelmer@jelmer.uk>
 
