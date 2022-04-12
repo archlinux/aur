@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-moveit-ros-perception
 	pkgdesc = ROS - Components of MoveIt connecting to perception.
 	pkgver = 1.1.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.ros.org/moveit_ros_perception
 	arch = i686
 	arch = x86_64
@@ -29,6 +29,8 @@ pkgbase = ros-noetic-moveit-ros-perception
 	depends = ros-noetic-tf2-geometry-msgs
 	depends = ros-noetic-tf2-ros
 	depends = ros-noetic-moveit-ros-occupancy-map-monitor
+	depends = ros-noetic-moveit-ros-planning
+	depends = ros-noetic-nodelet
 	depends = glut
 	depends = glew
 	depends = mesa-libgl

@@ -4,7 +4,7 @@ url='https://wiki.ros.org/moveit_ros_perception'
 pkgname='ros-noetic-moveit-ros-perception'
 pkgver='1.1.8'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=1
+pkgrel=2
 license=('BSD')
 
 ros_makedepends=(
@@ -34,6 +34,8 @@ ros_depends=(
     ros-noetic-tf2-geometry-msgs
     ros-noetic-tf2-ros
     ros-noetic-moveit-ros-occupancy-map-monitor
+    ros-noetic-moveit-ros-planning
+    ros-noetic-nodelet
 )
 depends=(
     ${ros_depends[@]}
