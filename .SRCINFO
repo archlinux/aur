@@ -1,12 +1,12 @@
 pkgbase = sv4git
 	pkgdesc = Semantic version and conventional commits for git (git-sv)
-	pkgver = 2.7.0
+	pkgver = 2.8.0
 	pkgrel = 1
 	url = https://github.com/bvieira/sv4git
 	arch = x86_64
 	license = MIT
 	depends = git
-	source = https://github.com/bvieira/sv4git/releases/download/v2.7.0/git-sv_2.7.0_linux_amd64.tar.gz
-	b2sums = de376d04cc8b0f0026e5b67420ee61e23a9d76eea28683dc5735abe32a1bad63a8b1f5e398f9fc06d23a6abe51a5682466d4d399f211cb1f7b6dbf2d5d795f67
+	source = https://github.com/bvieira/sv4git/releases/download/v2.8.0/git-sv_2.8.0_linux_amd64.tar.gz
+	b2sums = feae6ed52c930318a74d940a426ef49e77c58a37c479eaceb52633ae28c35673ed87ed68551827f3f6ed23f7146d5454017ea08c7b0971795d68347f112a35cc
 
 pkgname = sv4git
