@@ -1,0 +1,17 @@
+#!/bin/bash
+
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+root_dir="$( cd -P "$( dirname "$SOURCE" )"/.. >/dev/null 2>&1 && pwd )"
+
+cd $root_dir
+
+export WECHAT_DEVTOOLS_DIR="$root_dir/nwjs"
+export APPDATA="$root_dir/nwjs"
+export PATH="$root_dir/wine:$root_dir/node/bin:$root_dir/nwjs:$PATH"
+
+node $root_dir/package.nw/js/common/cli/index.js "$@"

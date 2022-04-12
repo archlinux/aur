@@ -36,6 +36,7 @@ source=("nwjs-v${_nwjs_ver}.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs
         "wechat-devtools.desktop"
         "logo.svg"
         "wechat-devtools"
+        "wechat-devtools-cli"
         "fix-cli.sh"
         "fix-menu.sh"
         "fix-core.sh"
@@ -50,6 +51,7 @@ md5sums=(ac7680788544c457daee11aaf69798fe   # nwjs
          7d78f10d04fff0b525df493d95847b37   # compiler
          4d3f5273be80a74741c841fcfa4185d3   # desktop
          0f4353664123320280ea4d6bb295dce2   # svg
+         "SKIP"
          "SKIP"
          "SKIP"
          "SKIP"
@@ -121,6 +123,10 @@ package() {
     cd nwjs && ln -s node node.exe
 
     install -Dm755 "${srcdir}/wechat-devtools" "${pkgdir}${_install_dir}/bin/wechat-devtools"
+    install -Dm755 "${srcdir}/wechat-devtools-cli" "${pkgdir}${_install_dir}/bin/wechat-devtools-cli"
     install -Dm644 "${srcdir}/wechat-devtools.desktop" "${pkgdir}/usr/share/applications/wechat-devtools.desktop"
     install -Dm644 "${srcdir}/logo.svg" "${pkgdir}/usr/share/icons/hicolor/scalable/apps/wechat-devtools.svg"
+    mkdir -p "${pkgdir}/usr/bin"
+    ln -s "${_install_dir}/bin/wechat-devtools" "${pkgdir}/usr/bin/wechat-devtools"
+    ln -s "${_install_dir}/bin/wechat-devtools-cli" "${pkgdir}/usr/bin/wechat-devtools-cli"
 }
