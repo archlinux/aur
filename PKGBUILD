@@ -1,7 +1,7 @@
 # Maintainer: Eduardo Bart <edub4rt@gmail.com>
 pkgname=nelua-git
-pkgver=0.2.0.r1276.dc245ba
-pkgrel=1
+pkgver=0.2.0.r1505.9840cc8e
+pkgrel=2
 pkgdesc='The Nelua programming language'
 arch=('any')
 url='https://nelua.io/'
@@ -16,9 +16,9 @@ sha1sums=('SKIP')
 pkgver() {
   cd nelua-lang
   printf "%s.%s.%s.r%s.%s" \
-    "$(git show HEAD:nelua/version.lua | sed -n 's/.*VERSION_MAJOR = //p')" \
-    "$(git show HEAD:nelua/version.lua | sed -n 's/.*VERSION_MINOR = //p')" \
-    "$(git show HEAD:nelua/version.lua | sed -n 's/.*VERSION_PATCH = //p')" \
+    "$(git show HEAD:lualib/nelua/version.lua | sed -n 's/.*VERSION_MAJOR = //p')" \
+    "$(git show HEAD:lualib/nelua/version.lua | sed -n 's/.*VERSION_MINOR = //p')" \
+    "$(git show HEAD:lualib/nelua/version.lua | sed -n 's/.*VERSION_PATCH = //p')" \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short HEAD)"
 }
