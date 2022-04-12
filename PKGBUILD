@@ -3,7 +3,7 @@
 
 _gitname='dragonfm'
 pkgname="${_gitname}-git"
-pkgver=r655.2a051e2
+pkgver=r658.b96cdcc
 pkgrel=1
 epoch=1
 pkgdesc='A screenreader optimized, flexible command line filemanager'
