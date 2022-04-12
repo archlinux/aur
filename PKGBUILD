@@ -12,7 +12,7 @@ depends=(ruby ruby-highline)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('6d3fd48ce8bcfb6e4e5293178d9b0feb155ae497')
+sha1sums=('d3415e748a7688d5fc0d8ddb1252e56e8d1cb4b5')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
