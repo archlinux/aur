@@ -1,6 +1,6 @@
 pkgbase = python-web3
 	pkgdesc = A Python library for interacting with Ethereum, inspired by web3.js
-	pkgver = 5.27.0
+	pkgver = 5.28.0
 	pkgrel = 1
 	url = https://github.com/ethereum/web3
 	arch = any
@@ -19,7 +19,7 @@ pkgbase = python-web3
 	depends = python-protobuf
 	depends = python-requests
 	depends = python-websockets
-	source = https://files.pythonhosted.org/packages/source/w/web3/web3-5.27.0.tar.gz
-	sha256sums = e4ca28643b74365e7b50ec5db2d1be9799c14ad8d8b6ba31c0ecd3b573725bbd
+	source = https://files.pythonhosted.org/packages/source/w/web3/web3-5.28.0.tar.gz
+	sha256sums = 15209f1da8b99f85dadaa10f1117a8ec0624fc04426c62d8fe2d126bf0498b6e
 
 pkgname = python-web3
