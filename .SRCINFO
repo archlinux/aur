@@ -1,0 +1,13 @@
+pkgbase = kmines-classic-dark-git
+	pkgdesc = A dark variant of KMines classic theme
+	pkgver = 1.0.r0.g6bb3632
+	pkgrel = 1
+	url = https://github.com/Hou-Rui/kmines_classic_dark
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = kmines
+	source = kmines-classic-dark::git+https://github.com/Hou-Rui/kmines_classic_dark
+	md5sums = SKIP
+
+pkgname = kmines-classic-dark-git
