@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-custom-hot-corners-extended-git
 _pkgname=custom-hot-corners-extended
-pkgver=15.fixed.r61.g98b8164
+pkgver=15.fixed.r63.g14c0897
 pkgrel=1
 pkgdesc="A GNOME Shell Extension that allows you to use corners and edges as triggers for various actions - git"
 arch=('any')
@@ -21,10 +21,7 @@ pkgver() {
 
 build() {
   cd "${_pkgname}"
-  echo '
-  temp_all: $(ZIP_CONTENT)' >> Makefile
-
-  make temp_all
+  make all
 }
 
 package() {
