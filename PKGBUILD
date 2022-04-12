@@ -3,7 +3,7 @@
 _gemname=can_cli
 pkgname=can
 pkgver=0.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Command-line trash manager'
 arch=(any)
 url='https://github.com/sawshep/can'

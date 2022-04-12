@@ -1,7 +1,7 @@
 pkgbase = can
 	pkgdesc = Command-line trash manager
 	pkgver = 0.1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/sawshep/can
 	arch = any
 	license = GPL-3.0
