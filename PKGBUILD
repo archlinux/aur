@@ -13,7 +13,7 @@ pkgname=('pipewire-git'
          'pipewire-libcamera-git'
          'pipewire-x11-bell-git'
          )
-pkgver=0.3.46.3.gae14ef7a4
+pkgver=0.3.49.53.gdf6fb25e0
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -45,15 +45,16 @@ makedepends=('git'
              'lilv'
              'roc-toolkit-git'
              'libx11'
+             'libxfixes'
              'libcanberra'
              'chrpath'
              )
 checkdepends=('desktop-file-utils'
               'valgrind'
               )
-options=('debug')
 source=('git+https://gitlab.freedesktop.org/pipewire/pipewire.git')
 sha256sums=('SKIP')
+options=('debug')
 
 pkgver() {
   cd pipewire
@@ -151,8 +152,8 @@ package_pipewire-git() {
 
   DESTDIR="${pkgdir}" meson install -C build
 
-  # install directory for overrides
-  install -vdm 755 "${pkgdir}/etc/${pkgbase}/"
+  # directories for overrides
+  mkdir -p "${pkgdir}/etc/pipewire/"{client-rt,client,minimal,pipewire}.conf.d
 
   (cd "${pkgdir}"
 
@@ -235,6 +236,9 @@ package_pipewire-jack-git() {
 
   mv jack/* "${pkgdir}"
 
+  # directories for overrides
+  mkdir -p "${pkgdir}/etc/pipewire/jack.conf.d"
+
   install -Dm644 /dev/null "${pkgdir}/usr/share/pipewire/media-session.d/with-jack"
 
   install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" pipewire/COPYING
@@ -262,6 +266,9 @@ package_pipewire-pulse-git() {
   install=pipewire-pulse.install
 
   mv pulse/* "${pkgdir}"
+
+  # directories for overrides
+  mkdir -p "${pkgdir}/etc/pipewire/pipewire-pulse.conf.d"
 
   install -Dm644 /dev/null "${pkgdir}/usr/share/pipewire/media-session.d/with-pulseaudio"
 
@@ -370,6 +377,7 @@ package_pipewire-x11-bell-git() {
   depends=('libcanberra.so'
            "libpipewire-${_ver}.so"
            'libx11'
+           'libxfixes'
            )
   provides=("pipewire-x11-bell=${pkgver}")
   conflicts=('pipewire-x11-bell')
