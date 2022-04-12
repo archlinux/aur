@@ -8,9 +8,8 @@ pkgdesc="The break reminder app with more restrictive menus"
 arch=('any')
 url="https://github.com/xeruf/${_pkgname}"
 license=('BSD')
-depends=('c-ares' 'ffmpeg' 'gtk3' 'http-parser' 'libevent' 'libvpx' 'libxslt' 'libxss' 'minizip' 'nss' 're2' 'snappy' 'libnotify' 'libappindicator-gtk3' 'electron')
-makedepends=(git nvm jq python)
-optdepends=('libxss')
+depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-atk' 'util-linux-libs' 'libsecret' 'libappindicator-gtk3' 'libxcrypt-compat' 'electron>=17' 'electron<18')
+makedepends=('git' 'nvm' 'jq' 'python')
 provides=("$_pkgname")
 source=("git+${url}.git")
 sha256sums=('SKIP')
@@ -35,44 +34,51 @@ prepare() {
     cd "${srcdir}/${_pkgname}"
     _ensure_local_nvm
     _node_version=$(jq -r '.engines.node' package.json)
-    nvm ls "$_node_version" &>/dev/null || nvm install "$_node_version"
-    nvm exec "$_node_version" npm install \
-        electron@"$(cat /usr/lib/electron/version)"
+    # ` || false` is a workaround until this upstream fix is released:
+    # https://github.com/nvm-sh/nvm/pull/2698
+    nvm ls "$_node_version" &>/dev/null ||
+        nvm install "$_node_version" || false
+    nvm use "$_node_version"
+    npm install --no-save --no-audit --no-progress --no-fund
 }
 
 build() {
     cd "${srcdir}/${_pkgname}"
     _ensure_local_nvm
+    nvm use "$_node_version"
     # electron-builder only generates /usr/share/* assets for target package
     # types 'apk', 'deb', 'freebsd', 'p5p', 'pacman', 'rpm' and 'sh', so build a
     # pacman package and unpack it
-    local _unpackdir=${srcdir}/${_pkgname}.unpacked _outfile
-    rm -Rf "${_unpackdir}"
-    mkdir -p "${_unpackdir}"
+    local _outfile _appname _electron _unpackdir=${srcdir}/${_pkgname}.unpacked
     _outfile=dist/$(jq -r '"\(.name)-\(.version)"' package.json).pacman
-    nvm exec "$_node_version" npx electron-builder build --linux pacman \
-        -c.electronDist=/usr/lib/electron \
-        -c.electronVersion="$(cat /usr/lib/electron/version)"
-    tar -C "${_unpackdir}" -Jxf "${_outfile}"
-}
-
-package() {
-    cd "${srcdir}/${_pkgname}"
-    local _unpackdir=${srcdir}/${_pkgname}.unpacked _appname _electron
     _appname=$(jq -r .name package.json)
     _electron=${_unpackdir}/opt/${_appname}/${_pkgname}
+    rm -Rf "${_unpackdir}"
+    mkdir -p "${_unpackdir}"
+    local i686=ia32 x86_64=x64
+    ./node_modules/.bin/electron-builder build \
+        --linux pacman \
+        --"${!CARCH}" \
+        -c.electronDist=/usr/lib/electron \
+        -c.electronVersion="$(</usr/lib/electron/version)"
+    tar -C "${_unpackdir}" -Jxf "${_outfile}"
+
     echo "Deleting Electron ($(du -h "$_electron" | awk '{print $1}'))..." >&2
     rm -v "$_electron"
+
     # Replace absolute path in desktop entry
     sed -Ei "s/^(Exec=).*/\1stretchly/" \
         "${_unpackdir}/usr/share/applications/${_pkgname}.desktop"
+
     # Create /usr/bin/stretchly
     install -D -m 0755 /dev/null "${_unpackdir}/usr/bin/stretchly"
     cat >"${_unpackdir}/usr/bin/stretchly" <<EOF
 #!/bin/sh
-exec electron /opt/$(printf '%q' "${_appname}")/resources/app.asar "\$@"
+exec electron '/opt/$(sed -E "s/'/'\\\\''/g" <<<"${_appname}")/resources/app.asar' "\$@"
 EOF
-    # Move everything into place
-    mv "${_unpackdir}/"{usr,opt} "${pkgdir}"
-    install -D -m 0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package() {
+    mv "${srcdir}/${_pkgname}.unpacked/"{usr,opt} "${pkgdir}"
+    install -D -m 0644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
