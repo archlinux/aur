@@ -14,7 +14,7 @@ source=("${pkgname}-${pkgver}::https://github.com/qarmin/czkawka/releases/downlo
         "LICENSE::https://github.com/qarmin/czkawka/raw/master/LICENSE"
         "czkawka-gui.png")
 sha256sums=('b05de15dd339f6e2feec7367786230817260d42af9857626a8e8b43c2ab1649e'
-            '116ec95bb6520f0944846be8f6a2e6ae3bcaf8eaa2c67318c8b24e0ea389bb86'
+            'SKIP'
             '1614565bc6f143b4bb4fc80c71cb1fe0b2ba2719037046719d5a3a89c3f5905e')
 
 package() {
