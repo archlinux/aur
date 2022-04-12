@@ -1,7 +1,7 @@
 # Maintainer: kumen
 pkgname="nrfconnect-appimage"
 pkgver=3.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform development software for Bluetooth Low Energy and cIoT"
 arch=("x86_64")
 depends=('jlink-software-and-documentation')
@@ -50,9 +50,8 @@ END
         msg2 'Installing icons'
 	mv "${pkgdir}/opt/${pkgname}/usr/share/icons" "${pkgdir}/usr/share/"
 	
-	# fix file permissions - all files as 644 - directories as 755
+	# fix file permissions - all directories as 755
 	find "${pkgdir}/"{opt,usr} -type d -exec chmod 755 {} \;
-	find "${pkgdir}/"{opt,usr} -type f -exec chmod 644 {} \;
 	
 	chmod +x "${pkgdir}/opt/${pkgname}/nrfconnect"
 	install -d -m755 "${pkgdir}/usr/bin"
