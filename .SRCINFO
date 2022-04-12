@@ -1,0 +1,16 @@
+pkgbase = paramountplus-bin
+	pkgdesc = Unnofficial Paramount+ desktop application
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/paramountplus/application
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	conflicts = paramountplus-git
+	source_x86_64 = https://gitlab.com/paramountplus/binaries/1.0.0-1/-/raw/main/ParamountPlus-linux-x64.tar.gz
+	sha256sums_x86_64 = SKIP
+
+pkgname = paramountplus-bin
