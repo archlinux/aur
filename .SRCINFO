@@ -1,0 +1,11 @@
+pkgbase = rimpy
+	pkgdesc = Mod Manager For Rimworld game
+	pkgver = 1.2.4.21
+	pkgrel = 0
+	url = https://github.com/rimpy-custom/RimPy
+	arch = x86_64
+	license = Unknown
+	source = https://github.com/rimpy-custom/RimPy/releases/download/1.2.4.21/RimPy_Linux.tar.gz
+	md5sums = 45a780aa3f8bfccb9ffd0a4093ad8468
+
+pkgname = rimpy
