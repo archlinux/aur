@@ -1,7 +1,7 @@
 # Maintainer: Alexei Colin <ac@alexeicolin.com>
 
 pkgname=zephyr-sdk
-pkgver=0.14.0
+pkgver=0.14.1
 pkgrel=1
 pkgdesc="SDK for Zephyr real-time operating system"
 arch=('x86_64')
@@ -53,13 +53,16 @@ package ()
   # -R disables relocation, -S saves the relocation script so that it can be run manually.
   sed -i 's#\(\./zephyr-sdk-\${HOSTTYPE}-hosttools-standalone-[0-9.]\+sh\)#\1 -R -S#' $pkgdir/$_installdir/$_setupsh
 
+  # Disables sanboxing on systems where libseccomp is available
+  sed -i 's/xargs -n100 file/xargs -n100 file -S/' $pkgdir/$_installdir/zephyr-sdk-x86_64-hosttools-standalone-*.sh
+
   install -Dm644 zephyrrc $pkgdir/usr/share/zephyr-sdk/zephyrrc
 
   cd $pkgdir/$_installdir
 
   ######### NOTE: we are in $_installdir after this point
 
-  ./$_setupsh -t
+  ./$_setupsh -h -t all
 
   # Manually install the CMake module, because upstream paths are no good:
   # file installed into $HOME and path is the package build path. Upstream
@@ -80,6 +83,8 @@ package ()
   ./relocate_sdk.sh
 
   rm zephyr-sdk-*-hosttools-standalone-*.sh
+  rm relocate_sdk.{py,sh}
+  rm setup.sh
 }
 
 # Manual test procedure: get Zephyr Kernel, build an example, and run in Qemu:
@@ -110,5 +115,5 @@ package ()
 
 # More info: https://docs.zephyrproject.org/latest/getting_started/index.html
 
-sha256sums=('eb486e1944c715c984410481425c75f8c019a3a9aaec885a23ce1a2059498ba0'
+sha256sums=('b7b70e5e70968ac6ae3184c90c3f3f8a6836acadd1432bf7b3702be7a1d317d8'
             '7a1257272c64bdec281283d391e3149cece065935c9e8394d6bece32d0f6fc05')
