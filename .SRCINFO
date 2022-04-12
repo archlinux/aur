@@ -1,6 +1,6 @@
 pkgbase = abswitchstereo-lv2-git
 	pkgdesc = Stereo source comparison tool
-	pkgver = gc38891e
+	pkgver = r3.c38891e
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/sonejostudios/ABswitchStereo
