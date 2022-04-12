@@ -3,7 +3,7 @@
 
 _pkgname="figma-fonthelper"
 pkgname="${_pkgname}-git"
-pkgver=0.1.5+4+g658b7f5
+pkgver=0.1.7.r1.ggce14780
 pkgrel=1
 pkgdesc="Figma font daemon written in Rust."
 arch=($CARCH)
@@ -19,7 +19,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd ${_pkgname}
-  printf $(git describe --always | sed 's/^v//;s/-/+/g')
+  printf $(git describe --always | sed 's/^v//;s/-/.r/;s/-/.g/')
 }
 
 prepare() {
