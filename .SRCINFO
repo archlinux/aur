@@ -1,0 +1,16 @@
+pkgbase = krabby-git
+	pkgdesc = Print pokemon sprites in your terminal
+	pkgver = r10.dee9311
+	pkgrel = 1
+	url = https://github.com/yannjor/krabby
+	arch = any
+	license = GPL-3.0
+	makedepends = git
+	makedepends = rust
+	makedepends = cargo
+	provides = krabby
+	conflicts = krabby
+	source = git+https://github.com/yannjor/krabby.git
+	sha256sums = SKIP
+
+pkgname = krabby-git
