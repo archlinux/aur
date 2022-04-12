@@ -3,7 +3,7 @@
 pkgname="python-west"
 _name=${pkgname##"python-"}
 pkgdesc="Zephyr RTOS Project meta-tool"
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 arch=("any")
 url="https://pypi.org/project/west/"
@@ -21,4 +21,4 @@ package() {
     python setup.py install --root="$pkgdir" --optimize=1
 }
 
-sha256sums=("d7ce0d719fd218fee5983442fe93a33a21a6be6a736915a7ffbe75369714e9ce")
+sha256sums=("8e53a678833a35f818ca48e182cecaa6701714c6d3fe5a5b4ff6c1689d82198e")
