@@ -5,7 +5,7 @@
 _pkgname=fchat
 
 pkgname="${_pkgname}"-rising-appimage
-pkgver=1.17.1
+pkgver=1.18.1
 pkgrel=1
 pkgdesc="A heavily customized version of the mainline F-Chat 3.0 client."
 arch=('x86_64')
@@ -19,7 +19,7 @@ source_x86_64=("${_appimage}::https://github.com/mrstallion/fchat-rising/release
                "https://raw.githubusercontent.com/mrstallion/fchat-rising/v${pkgver}/LICENSE"
               )
 noextract=("${_appimage}")
-sha256sums_x86_64=('b063c99d4ffd377812a617f4240c6fba42563faa7200819e89f4a173d97cd06b'
+sha256sums_x86_64=('51aa4f2c569570bec848e359b86b7b58074efb26b5fc93c1f804b6da9104b615'
                    'SKIP')
 
 prepare() {
