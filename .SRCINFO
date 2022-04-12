@@ -1,0 +1,12 @@
+pkgbase = tictactoe-git
+	pkgdesc = The stupid terminal based tictactoe game
+	pkgver = 1.0.1
+	pkgrel = 2
+	url = https://www.github.com/weebcyberpunk/tictactoe
+	arch = x86_64
+	license = MIT
+	provides = tictactoe
+	source = git+https://www.github.com/weebcyberpunk/tictactoe
+	md5sums = SKIP
+
+pkgname = tictactoe-git
