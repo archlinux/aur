@@ -1,6 +1,6 @@
 # Maintainer: luisbocanegra <luis.bocanegra0 at protonmail dot com>
 pkgname=kde-material-you-colors
-pkgver=0.2.0BETA
+pkgver=0.3.0BETA
 pkgrel=1
 pkgdesc="Automatic KDE Material You Colors Generator from your wallpaper"
 arch=('x86_64')
@@ -10,7 +10,7 @@ depends=("dbus-python" "python-numpy")
 optdepends=('python-colr: colored hex codes printing')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::$url/archive/v${pkgver}.tar.gz")
-sha256sums=('5a46af0bb9c5fe96a7825db135fefe7da79b587ec5e24a986dd723c3c0f3da70')
+sha256sums=('dc584655634e988cd6ed38068976e21a752f1363a27c3a234db0a0883652f8ae')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -31,4 +31,3 @@ package() {
   ln -s /usr/lib/${pkgname}/material-color-utility-bin ${pkgdir}/usr/bin/material-color-utility
   install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
-
