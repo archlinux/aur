@@ -2,7 +2,7 @@
 
 pkgname=ruby-ctf-party
 _gemname=ctf-party
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='A CLI tool & library to enhance and speed up script/exploit writing with string conversion/manipulation.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(!emptydirs)
 source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
 #source=("https://github.com/noraj/$pkgname/archive/v$pkgver.tar.gz")
 noextract=("$_gemname-$pkgver.gem")
-b2sums=('dc3c1ced81a4c7e46d08f4bb430dc4f618fd7cade349d624f9421ade51f99c238ca6466268ff8debac043098f094e36e6bd969202899538cb42867066bfadaf8')
+b2sums=('4f0bc3a84ee3ca6cae5ba37d15181b46e76c2a8008dfb3ee698118ce1768d7ae05bb066b263816e54254fd6c260616b9ba6e6626d11c2c65d7370011a193694f')
 
 package() {
   _gemdir="$(ruby -e'puts Gem.default_dir')"
