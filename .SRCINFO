@@ -1,0 +1,15 @@
+pkgbase = abswitchstereo-lv2-git
+	pkgdesc = Stereo source comparison tool
+	pkgver = gc38891e
+	pkgrel = 1
+	epoch = 1
+	url = https://github.com/sonejostudios/ABswitchStereo
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = faust
+	makedepends = qt5-tools
+	source = git+https://github.com/sonejostudios/ABswitchStereo.git
+	sha256sums = SKIP
+
+pkgname = abswitchstereo-lv2-git
