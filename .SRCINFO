@@ -1,6 +1,6 @@
 pkgbase = ros-noetic-imu-filter-madgwick
 	pkgdesc = IMU Madgwick filter
-	pkgver = 1.2.3
+	pkgver = 1.2.4
 	pkgrel = 1
 	url = https://wiki.ros.org/imu_filter_madgwick?distro=noetic
 	arch = i686
@@ -33,8 +33,7 @@ pkgbase = ros-noetic-imu-filter-madgwick
 	depends = ros-noetic-pluginlib
 	depends = ros-noetic-message-filters
 	depends = ros-noetic-dynamic-reconfigure
-	source = ros-noetic-imu-filter-madgwick-1.2.3.tar.gz::https://github.com/ccny-ros-pkg/imu_tools/archive/1.2.3.tar.gz
-	sha256sums = 8c5eb01a2bcb8855e6fb5bb66795a0d5b1eb6c4586282bf177f3552f72e357af
+	source = ros-noetic-imu-filter-madgwick-1.2.4.tar.gz::https://github.com/ccny-ros-pkg/imu_tools/archive/1.2.4.tar.gz
+	sha256sums = ff3ddceb244c9f9112682274287b2a0bb15ae019e64bf70aed5c28142d6e0769
 
 pkgname = ros-noetic-imu-filter-madgwick
-
