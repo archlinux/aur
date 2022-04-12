@@ -4,6 +4,7 @@ pkgbase = morisawa-biz-ud-fonts
 	pkgrel = 3
 	url = https://github.com/googlefonts/morisawa-biz-ud-mincho
 	arch = any
+	groups = morisawa-biz-ud-fonts
 	license = OFL
 	source = BIZUDMincho-Regular.ttf::https://github.com/googlefonts/morisawa-biz-ud-mincho/raw/main/fonts/ttf/BIZUDMincho-Regular.ttf
 	source = BIZUDPMincho-Regular.ttf::https://github.com/googlefonts/morisawa-biz-ud-mincho/raw/main/fonts/ttf/BIZUDPMincho-Regular.ttf
