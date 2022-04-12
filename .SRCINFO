@@ -1,0 +1,27 @@
+pkgbase = hyprland-git
+	pkgdesc = Hyprland is a Dynamic Tiling Wayland Compositor in early development stages
+	pkgver = 1.0.0.6911ed3
+	pkgrel = 1
+	url = https://github.com/vaxerski/Hyprland
+	arch = any
+	license = BSD
+	depends = gdb
+	depends = ninja
+	depends = gcc
+	depends = cmake
+	depends = libxcb
+	depends = xcb-proto
+	depends = xcb-util
+	depends = xcb-util-keysyms
+	depends = libxfixes
+	depends = libx11
+	depends = libxcomposite
+	depends = xorg-xinput
+	depends = libxrender
+	depends = pixman
+	depends = wayland-protocols
+	depends = wlroots-git
+	source = hyprland::git+https://github.com/vaxerski/Hyprland.git
+	sha256sums = SKIP
+
+pkgname = hyprland-git
