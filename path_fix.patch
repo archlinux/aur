@@ -7,7 +7,7 @@ index 2e981ba..794f8ed 100644
  	public class SiEngineUInput : ISiEngine, IDisposable
  	{
 -		private const string KPUInputDll = "KPUInputN.so";
-+		private const string KPUInputDll = "/usr/share/keepass/plugins/KPUInputN.so";
++		private const string KPUInputDll = "/usr/share/keepass/Plugins/KPUInputN.so";
  
  		[DllImport(KPUInputDll)]
  		private static extern IntPtr KpuiOpenDevice(IntPtr pKeys, uint cKeys);

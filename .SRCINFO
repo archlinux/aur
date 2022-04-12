@@ -15,6 +15,6 @@ pkgbase = keepass-plugin-kpuinput
 	source = path_fix.patch
 	sha256sums = f4619df4c27f0ca07cc4705124aeffb4072dbd164c5920d95e1fc4a946c79e40
 	sha256sums = 20fb468085a6c0b0f87f95efe7b94406acbacbc132d2f52b17d3d3087ee4a294
-	sha256sums = 81dbb6d635f6f52347e43dbbb27b6171eeb2f2bdedb6312d308ddf5a240cd982
+	sha256sums = 44f988874f4bf7fe7b154b075293bf7cdd048be59ea99252fa9d48bcc0995cab
 
 pkgname = keepass-plugin-kpuinput
