@@ -7,9 +7,10 @@ pkgbase = findomain-git
 	license = GPL3
 	makedepends = git
 	makedepends = cargo
+	depends = gcc-libs
 	optdepends = postgresql: for subdomains monitoring.
+	options = !lto
 	source = git+https://github.com/Edu4rdSHL/findomain.git
 	sha512sums = SKIP
 
 pkgname = findomain-git
-

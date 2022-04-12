@@ -9,14 +9,22 @@ arch=('any')
 url='https://github.com/Edu4rdSHL/findomain'
 license=('GPL3')
 optdepends=('postgresql: for subdomains monitoring.')
+depends=('gcc-libs')
 makedepends=('git' 'cargo')
 source=("git+https://github.com/Edu4rdSHL/$_pkgname.git")
 sha512sums=('SKIP')
+options=(!lto)
 
 pkgver() {
   cd $_pkgname
 
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+check() {
+  cd ${_pkgname}-${pkgver}
+
+  cargo test --release --locked
 }
 
 build() {
