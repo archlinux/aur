@@ -1,7 +1,7 @@
 pkgbase = nelua
 	pkgdesc = The Nelua programming language
-	pkgver = 0.2.0.r1276.dc245ba
-	pkgrel = 1
+	pkgver = 0.2.0.r1505.9840cc8e
+	pkgrel = 2
 	url = https://nelua.io/
 	arch = any
 	license = MIT
