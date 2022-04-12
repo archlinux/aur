@@ -28,7 +28,7 @@ fi
 if [ "${_opt_UTIL}" -eq 1 ]; then
   pkgname+=("zfs-utils${_opt_git}")
 fi
-pkgver=2.1.99.r909.g1282274f33
+pkgver=2.1.99.r1070.g35d81a75a8
 pkgrel=1
 _pkgver="${pkgver%%.r*}"
 #_commit="#branch=zfs-${_pkgver%.*}-release"
@@ -90,7 +90,7 @@ _fn_calc_extramodules() {
 }
 
 if [ ! -z "${_opt_git}" ]; then
-  source[0]="git://github.com/zfsonlinux/zfs.git${_commit:-}"
+  source[0]="git+https://github.com/zfsonlinux/zfs.git${_commit:-}"
   md5sums[0]='SKIP'
   sha256sums[0]='SKIP'
   b2sums[0]='SKIP'
