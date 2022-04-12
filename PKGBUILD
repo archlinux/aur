@@ -2,14 +2,14 @@
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 
 pkgname=gnome-shell-extension-gtile-git
-pkgver=50.r0.g14de178
-pkgrel=2
+pkgver=50.r5.gc59e79d
+pkgrel=1
 pkgdesc="A window tiling extension for GNOME"
 arch=('any')
 url="https://github.com/gTile/gTile"
 license=('GPL2')
 depends=('gnome-shell')
-makedepends=('git' 'bazel' 'yarn')
+makedepends=('git' 'bazel' 'python' 'yarn')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/gTile/gTile.git")
