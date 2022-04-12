@@ -10,7 +10,7 @@
 
 _electron=electron17
 pkgname=(element-{desktop,web}-greentext)
-pkgver=1.10.8
+pkgver=1.10.9
 pkgrel=3
 pkgdesc="Glossy Matrix collaboration client with greentext baked in — "
 arch=(any)
@@ -33,9 +33,9 @@ source=(element-web-${pkgver}.tar.gz::${_url}-web/archive/v${pkgver}.tar.gz
         element-config.json
         element-web.sh
         element-desktop.sh)
-sha256sums=('25df778509c1f88f36b44e29f9629a12b2c30f35c0baeb6c2d866c22bbb47784'
+sha256sums=('444003b42aef8f8b75c49378584968e87c4d8102221113c25b56980262f49377'
             'SKIP'
-            'ec11e6046ed445fe11c5c9a0241ab0875b9d18940b3fb121e1ef0feeca3b92e4'
+            '4045ecca2ec23bd4026b70f15fa1eea98f0d9ae6c3c92b87a51bca0b3564d389'
             'SKIP'
             '63ff6e4264b85da29f9147f5cbe58cc3ff395a936683988bca6ef6d0ebeabc99'
             'aaae4ffa41590361dac0c159aecc1166f69e459e89faa9d5cab1202f0277e06f'
@@ -119,7 +119,7 @@ package_element-web-greentext() {
   cp -r webapp/* "${pkgdir}"/usr/share/webapps/element/
   install -Dm644 config.sample.json -t "${pkgdir}"/etc/webapps/element/
   ln -s /etc/webapps/element/config.json "${pkgdir}"/usr/share/webapps/element/
-  echo "${pkgver}+greentext" > "$pkgdir/usr/share/webapps/element/version"
+  echo "${pkgver}" > "$pkgdir/usr/share/webapps/element/version"
 
   # Install element web launcher
   install -Dm755 "$srcdir/element-web.sh" "$pkgdir/usr/bin/element-web"
