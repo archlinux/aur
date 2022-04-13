@@ -1,7 +1,7 @@
 # Maintainer: Anders Damsgaard <anders@adamsgaard.dk>
 # Contributor: Caltlgin Stsodaat <contact@fossdaily.xyz>
 pkgname='json2tsv'
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 pkgdesc='JSON to TSV converter'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -10,7 +10,7 @@ _url_source='https://codemadness.org/releases/json2tsv'
 license=('ISC')
 depends=('glibc')
 source=("${_url_source}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('ccc52e1963b4322ca56499ea62136fd75e2612b5fe833135675b7988fb4a7f37')
+sha256sums=('2a8186115693855f0aef422171e36ed509d2588707377583adb75d001524a9a9')
 
 build() {
   make -C "${pkgname}-${pkgver}"
