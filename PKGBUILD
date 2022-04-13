@@ -5,7 +5,7 @@
 # Contributor: Timm Preetz <timm@preetz.us>
 
 pkgname=vala0.52
-pkgver=0.52.7
+pkgver=0.52.11
 pkgrel=1
 pkgdesc="Compiler for the GObject type system"
 url="https://wiki.gnome.org/Projects/Vala"
@@ -17,7 +17,7 @@ checkdepends=(dbus libx11 gobject-introspection)
 provides=(vala valadoc libvala-${pkgver%.*}.so libvaladoc-${pkgver%.*}.so)
 conflicts=(vala valadoc)
 source=("https://download.gnome.org/sources/vala/0.52/vala-${pkgver}.tar.xz")
-sha256sums=('0bb5a9b4f6d175499ec0a58024adc035aa5170080f533c28d9c358d1a32c536a')
+sha256sums=('7c7c3cb3e5eb03c918544c6ab8130a2fc05a8cad0942836cdfded9aec5787077')
 
 build() {
   cd "vala-$pkgver"
