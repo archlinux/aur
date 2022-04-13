@@ -7,7 +7,7 @@ pkgdesc='Diagram drawing application built on web technology'
 arch=('any')
 url='https://github.com/jgraph/drawio-desktop'
 license=('Apache')
-depends=(electron18 libnotify)
+depends=(electron16 libnotify)
 makedepends=(yarn ant 'nodejs>=12')
 options=('!strip')
 source=("drawio-$pkgver.tar.gz::https://github.com/jgraph/drawio/archive/v$pkgver.tar.gz"
@@ -68,7 +68,7 @@ package() {
   mkdir -p "$pkgdir/usr/bin"
   printf '%s\n' \
   '#!/bin/sh' \
-  'exec electron18 /usr/lib/draw.io "$@"' \
+  'exec electron16 /usr/lib/draw.io "$@"' \
   > "$pkgdir/usr/bin/draw.io"
   chmod a+x "$pkgdir/usr/bin/draw.io"
 
