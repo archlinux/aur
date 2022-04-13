@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=apollo-rover
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
 pkgdesc="CLI for Apollo's suite of GraphQL developer productivity tools"
 arch=('x86_64')
@@ -14,7 +14,7 @@ options=('!lto')
 install=rover.install
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('560708b3018ddbe2bafff2c26e312fdeb3842f41ed4671e54e2faef9d93b25fc')
+sha256sums=('5382cbafbfae451a12dc43c0d6ddc529199e5bea9272e2a4fad13ed44c388c44')
 
 prepare() {
 	cd "rover-$pkgver"

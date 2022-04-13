@@ -18,6 +18,18 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## 📚 Documentation -->
 
+# [0.5.1] - 2022-04-11
+
+## 🐛 Fixes
+
+- **Return a hard error in CI when the ELv2 license is not accepted instead of hanging for eternity - @EverlastingBugstopper, #1082 fixes #1081**
+
+  If you ran `rover supergraph compose` with `federation_version: 2` in CI - it would prompt you to accept the ELv2 license and hang waiting for the input for eternity. This is no longer the case and you will get a helpful error message detailing exactly what you need to do to never see the error again. For more details on the license, see our [FAQ](https://www.apollographql.com/docs/resources/elastic-license-v2-faq/).
+
+- **Removes extraneous debug statement - @EverlastingBugstopper, #1079**
+
+  In my rush this morning I missed the removal of an `eprintln` statement. It's gone now.
+
 # [0.5.0] - 2022-04-11
 
 > Important: X breaking changes below, indicated by **❗ BREAKING ❗**
