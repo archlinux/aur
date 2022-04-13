@@ -1,14 +1,14 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-lualine-git
-pkgver=r394.ef063f7
-pkgrel=1
+pkgver=r511.385580e
+pkgrel=2
 pkgdesc="Lua-based statusline for Neovim"
 arch=('any')
 url="https://github.com/nvim-lualine/lualine.nvim"
 license=('MIT')
 groups=('neovim-plugins')
-depends=('neovim>=0.5.0')
+depends=('neovim')
 makedepends=('git')
 checkdepends=('neovim-plenary')
 provides=("${pkgname%-git}")
@@ -33,7 +33,8 @@ check() {
 package() {
 	cd "$pkgname"
 	find doc lua \
-		-type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
-	install -Dm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.md THEMES.md BREAKING_CHANGES.md -t "$pkgdir/usr/share/doc/$pkgname/"
+		-type f \
+		-exec install -Dm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 README.md THEMES.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }

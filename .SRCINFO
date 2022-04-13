@@ -1,7 +1,7 @@
 pkgbase = neovim-lualine-git
 	pkgdesc = Lua-based statusline for Neovim
-	pkgver = r394.ef063f7
-	pkgrel = 1
+	pkgver = r511.385580e
+	pkgrel = 2
 	url = https://github.com/nvim-lualine/lualine.nvim
 	install = lualine.install
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = neovim-lualine-git
 	license = MIT
 	checkdepends = neovim-plenary
 	makedepends = git
-	depends = neovim>=0.5.0
+	depends = neovim
 	provides = neovim-lualine
 	conflicts = neovim-lualine
 	source = neovim-lualine-git::git+https://github.com/nvim-lualine/lualine.nvim
