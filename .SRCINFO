@@ -1,0 +1,17 @@
+pkgbase = difftastic-git
+	pkgdesc = a diff that understands syntax
+	pkgver = 1
+	pkgrel = 1
+	url = https://github.com/Wilfred/difftastic
+	arch = i686
+	arch = x86_64
+	license = MIT
+  depends = gcc-libs
+	makedepends = git
+	makedepends = cargo
+	provides = difft
+	conflicts = difft
+	source = difftastic-git::git+http://github.com/Wilfred/difftastic.git
+	md5sums = SKIP
+
+pkgname = difftastic-git
