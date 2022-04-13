@@ -43,6 +43,12 @@ _use_current=
 ### Running with a 1000 HZ tick rate
 _1k_HZ_ticks=
 
+### Download bfq patchset
+# ATTENTION - one of two predefined values should be selected!
+# 'stable' - stable releases (recommended)
+# 'unstable' - dev releases
+_bfq_ver='stable'
+
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-bfq-dev
@@ -50,7 +56,7 @@ pkgbase=linux-bfq-dev
 _major=5.17
 _minor=2
 pkgver=${_major}.${_minor}
-pkgrel=6
+pkgrel=7
 _srcname=linux-${pkgver}
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
@@ -62,25 +68,27 @@ makedepends=('bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'texlive-latexextra' 'xmlto')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
-# Some patches for BFQ conflict with patches for BFQ-dev.
-# To use linux-bfq-dev smoothly apply bfq-reverts before bfq-dev patch.
-# Otherwise the kernel will not compile.
-#_bfq_rev_path="bfq-reverts-all"
-#_bfq_rev_patch="0001-bfq-reverts.patch"
-#_bfq_path="bfq-dev-lucjan"
-#_bfq_ver="v14"
-#_bfq_rel="r2K210223"
-#_bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
-_bfq_path="bfq-lucjan"
-_bfq_rel="r2K220408v3"
-_bfq_patch="${_major}-${_bfq_path}-${_bfq_rel}.patch"
+
+if [ "$_bfq_ver" = "stable" ]; then
+
+ _bfq_name='bfq-lucjan'
+ _bfq_ver='r2K220408v3'
+ _bfq_patch="${_major}-${_bfq_name}-${_bfq_ver}.patch"
+
+elif [ "$_bfq_ver" = "unstable" ]; then
+
+ _bfq_name='bfq-dev-lucjan'
+ _bfq_ver='r2K220408v3'
+ _bfq_patch="${_major}-${_bfq_name}-${_bfq_ver}.patch"
+
+fi
+
 _compiler_path="cpu-patches-sep"
 _compiler_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
 
 source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
-        #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
-        "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
+        "${_lucjanpath}/${_bfq_name}/${_bfq_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
         "${_lucjanpath}/arch-patches-v10-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_lucjanpath}/arch-patches-v10-sep/0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch"
