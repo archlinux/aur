@@ -1,7 +1,7 @@
 # Maintainer: Angelo Theodorou <encelo at gmail dot com>
 
 pkgname=tracy-git
-pkgver=v0.7.2.r64.g06a0d6d7
+pkgver=v0.8.r47.g6998546f
 pkgrel=1
 pkgdesc="Real-time, nanosecond resolution frame profiler"
 arch=('i686' 'x86_64')
@@ -35,4 +35,6 @@ package() {
   install -Dm755 update/build/unix/update-release $pkgdir/usr/bin/tracy-update
   install -Dm755 capture/build/unix/capture-release $pkgdir/usr/bin/tracy-capture
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 extra/desktop/tracy.desktop $pkgdir/usr/share/applications/tracy.desktop
+  install -Dm644 icon/icon.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/tracy.svg
 }
