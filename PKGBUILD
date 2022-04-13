@@ -9,13 +9,13 @@
 
 pkgname=libunity
 pkgver=7.1.4
-pkgrel=14
+pkgrel=15
 pkgdesc='Library for instrumenting and integrating with all aspects of the Unity shell'
 arch=('i686' 'x86_64')
 url="https://launchpad.net/libunity"
 license=('LGPL')
 depends=('dee' 'gtk3' 'libdbusmenu-glib')
-makedepends=('gnome-common' 'gobject-introspection' 'intltool' 'vala' 'icu69-bin')
+makedepends=('gnome-common' 'gobject-introspection' 'intltool' 'vala')
 source=("https://launchpad.net/ubuntu/+archive/primary/+files/${pkgname}_${pkgver}+19.04.20190319.orig.tar.gz"
         "0001-Fix-FTB-with-recent-vala-requiring-non-public-abstra.patch"
         "libunity-7.1.4-vala-053.patch")
