@@ -7,7 +7,7 @@
 # Contributor: Felix Schindler <aur dot felixschindler dot net>
 # Contributor: Lucas H. Gabrielli <heitzmann@gmail.com>
 pkgname=slepc
-pkgver=3.17.0
+pkgver=3.17.1
 pkgrel=1
 pkgdesc="Scalable library for Eigenvalue problem computations"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=("petsc>=${pkgver:0:4}")
 makedepends=(gcc-fortran)
 install=slepc.install
 source=(${url}/download/distrib/${pkgname}-${pkgver/_/-}.tar.gz)
-md5sums=('8e1514936f581217d0febeac889a2379')
+md5sums=('a0ee1d2306b5388b4b94339f82f93550')
 
 # export MAKEFLAGS="-j1"
 
