@@ -2,21 +2,14 @@
 
 set -e
 
-VERSION=$1
+export VERSION=$1
+export PKGREL=${2:-1}
 
-echo $VERSION
-FILE=helmfile_linux_amd64_${VERSION}
+envsubst '$VERSION $PKGREL' < PKGBUILD.tpl > PKGBUILD
 
-wget https://github.com/roboll/helmfile/releases/download/v${VERSION}/helmfile_linux_amd64 -O $FILE
-SUM=$(sha256sum $FILE | awk '{print $1}')
-echo $SUM
-rm $FILE
-
-sed -i /pkgver=/c\pkgver=$VERSION PKGBUILD
-sed -i /pkgrel=/c\pkgrel=1 PKGBUILD
-sed -i /sha256sums=/c\sha256sums=\(\'$SUM\'\) PKGBUILD
-
+makepkg --geninteg >> PKGBUILD
 makepkg --printsrcinfo > .SRCINFO
-git add -A
-git commit -m "Updated to v${VERSION}"
-git push
+
+#git add -A
+#git commit -m "Updated to v${VERSION}"
+#git push

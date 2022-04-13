@@ -1,12 +1,21 @@
 pkgbase = kubernetes-helmfile-bin
 	pkgdesc = Deploy Kubernetes Helm Charts
 	pkgver = 0.144.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/roboll/helmfile
 	arch = x86_64
+	arch = aarch64
+	arch = i486
+	arch = i686
 	license = MIT
 	depends = helm
-	source = helmfile_linux_amd64_0.144.0::https://github.com/roboll/helmfile/releases/download/v0.144.0/helmfile_linux_amd64
-	sha256sums = dcf865a715028d3a61e2fec09f2a0beaeb7ff10cde32e096bf94aeb9a6eb4f02
+	source_x86_64 = helmfile_linux_0.144.0_x86_64::https://github.com/roboll/helmfile/releases/download/v0.144.0/helmfile_linux_amd64
+	sha256sums_x86_64 = dcf865a715028d3a61e2fec09f2a0beaeb7ff10cde32e096bf94aeb9a6eb4f02
+	source_aarch64 = helmfile_linux_0.144.0_aarch64::https://github.com/roboll/helmfile/releases/download/v0.144.0/helmfile_linux_arm64
+	sha256sums_aarch64 = 8461bbb13ba23f4333dc99d96bf7a24c283cd7683e746acf639d80bbd828926a
+	source_i486 = helmfile_linux_0.144.0_i486::https://github.com/roboll/helmfile/releases/download/v0.144.0/helmfile_linux_386
+	sha256sums_i486 = 7c75e13b062ebbe1ea09120f5ca03556895482ea92c545c13148407005eb1a66
+	source_i686 = helmfile_linux_0.144.0_i686::https://github.com/roboll/helmfile/releases/download/v0.144.0/helmfile_linux_386
+	sha256sums_i686 = 7c75e13b062ebbe1ea09120f5ca03556895482ea92c545c13148407005eb1a66
 
 pkgname = kubernetes-helmfile-bin
