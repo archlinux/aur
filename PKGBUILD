@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-aufs
 # pkgname=('linux-aufs' 'linux-aufs-headers' 'linux-aufs-docs')
 _major=5.17
-_minor=2
+_minor=3
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=5
+pkgrel=1
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
@@ -63,7 +63,7 @@ makedepends=('bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 _aufs_path="aufs-patches"
-_aufs_ver="20220404"
+_aufs_ver="20220412"
 _aufs_patch="0001-aufs-${_aufs_ver}.patch"
 _compiler_path="cpu-patches-sep"
 _compiler_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
@@ -72,14 +72,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v10-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0003-tick-Detect-and-fix-jiffies-update-stall.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0004-tick-rcu-Remove-obsolete-rcu_needs_cpu-parameters.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0005-tick-rcu-Stop-allowing-RCU_SOFTIRQ-in-idle.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0006-lib-irq_poll-Declare-IRQ_POLL-softirq-vector-as-ksof.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0007-x86-speculation-Restore-speculation-related-MSRs-dur.patch"
-        "${_lucjanpath}/arch-patches-v10-sep/0008-Revert-ACPI-processor-idle-Only-flush-cache-on-enter.patch"
+        "${_lucjanpath}/arch-patches-v12-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v12-sep/0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch"
+        "${_lucjanpath}/arch-patches-v12-sep/0003-tick-Detect-and-fix-jiffies-update-stall.patch"
+        "${_lucjanpath}/arch-patches-v12-sep/0004-tick-rcu-Remove-obsolete-rcu_needs_cpu-parameters.patch"
+        "${_lucjanpath}/arch-patches-v12-sep/0005-tick-rcu-Stop-allowing-RCU_SOFTIRQ-in-idle.patch"
+        "${_lucjanpath}/arch-patches-v12-sep/0006-lib-irq_poll-Declare-IRQ_POLL-softirq-vector-as-ksof.patch"
          # the main kernel config files
         'config')
 
@@ -320,18 +318,16 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('d62537333c1cedf839e95bfcbf757f45dd063f27ecf7fbba910f04663c9bb259438c1616f4bd68c5b59157d79dbd40815bf13d3b3e99a18cbade2b32e4dc5483'
+sha512sums=('093cfcc2531b879540318ef2096d00d87f2e91699a5f00087e3fb4ffe8f8c281d02ea9fdaae35cad1a751c85faddfb954a5c1e83a2f0bca9919ab169b3426803'
             'SKIP'
-            '31704f773849882f5184c14c5a4cf26009a8de8fdd4cba1f37b6ea5ac17d95e4e26e63e5b117638d1a035d7a343484c293f8a0d000c1844b814a6fa27a72ac1c'
+            '87e88b3e4bccbf7b21eb5ffe5971f4e85593b153ea0c4ef3a7f17715812ef1478e16786cab42fcfe226f4933091280c068ad89c08ba9b264887baffcf522d87d'
             'b63921b6246bd1b9545a8042d76334bef8a7ee46e5404c5efec4a842a455a84046e92423b2bc6d950f19dcf85805d7493fe71d6d177e3b46b52a279b0a44d0c9'
-            '017722a0044acac58fcbd4f1a7ce0b89dce7d40bbbdc94b522a782460cd4d5fe262defa4d450942f718812eb194428edb76689cfd10616f124c62a50453d6583'
-            'cca78bdb4a675f5f2affe4c1eaac98645bce415ba4a2d44905291f499872c08998fb6dc9d661072c54fc7e9b19e83f36a9c0768ee6204f2695b6bb62e1dd82d1'
-            '0f537750dc46752dc060bc5bb4bb648a8073ca1334758478276f683ca5456e10213a934a4b279687548720ba9389a9eb5898a687e15123dd03106da4d4b45511'
-            'af401362dd252bc8133e50dcce295fe71e05cfc84ad8280c4644068a484088b34297fc32bb9619f6241bdc59edd400d4b204f77a9f9aa47831efedac751fcadc'
-            'a9415bdf42163e868da9b4e0f0f8114f167f480e3789c8b5f6abbf08985e9c70c79e0bba10bc3964786b4b8f6d4ada828ba5a2d23ec6ce7625c19653f46d5fac'
-            'a6b89fd887f0ecd8512b4295d025b0c9bda2c711f1ae3b0f5687ff852ffbf6adabcea571ada324b04254dc41e23bec42adc2a5de485bbaae6216de94791adc92'
-            '053f2244bfbe4527dfc9de24e266b7ae35242fa0b5b713d75ba53dad4f71f9bd03349e5a96de3a1cb731ad2dd6fa7225e5cb3633c7b290ac85b8991775de1938'
-            '45462454ac4294d507faf5f68102f38126b8e96bd0f0c5a52441b6af5acf5c6069f5a61b1429365556ccf9a92f2e188d82d500f915e7a2fad83bcabdabdc2086'
+            '6c6b336b7fe025154dc936aea8597f6efd0f7f7fd9dbe85fe2936dc8624da41e56b3b48420aaaa0a9d7d05e247ae7e4ce491eddd54bc74cac222aa9c4b5f5669'
+            '6861b1755b3ccf52ca75d187b380646f9ae2f35f5175a3181a90cef68125eca6bcdc2ebaf2013ff2ff966af4de49fd8e053149d9fd87792c53dc07f7eaaf04b0'
+            'ca52bd303f0b8deba29b1616f81c3195ce1a8cab16473d9d3e0315ef9ecaaa0922fdc0f10a80e28344cb1d2ad97d5ff2c36a26fe2ee4f68b4a783e873aaecacd'
+            '13603dd605f37151596960f0324d53e23be9285b417c5337549c2e94bd6d850baa80b2f40c02fc5c2422290b6ceb85b1b8ab50e725fb05ac607290a3d47cc9d8'
+            '45d8690b6d9f59a43152157d52a0f81c6d1fe8ec1f89c53b274651f3b3177f34bdc556938df1dfdc16471d34484d444cf0e64f8500421bd0eda1596bce289be9'
+            'dd10a6f2c86de10797485f96ca45c7bcaa03934303fee0178d9b0c60bda00fdcefbc1ac2fde35906b07b7803cf3d9085d39f661c6ab6e45bb27441408dcea086'
             '134633333081af1502ed252998c7c67b8fdb4e160afdbcfa72746ccbcab704acda7c13f7c72d0e67f4b0833354fe773b0b323cece2782334b497c7c7e7fa7673')
 
 validpgpkeys=(
