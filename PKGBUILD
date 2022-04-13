@@ -47,7 +47,7 @@ _1k_HZ_ticks=
 # ATTENTION - one of two predefined values should be selected!
 # 'stable' - stable releases (recommended)
 # 'unstable' - dev releases
-_bfq_ver='stable'
+_bfq_rel='stable'
 
 ### Do not edit below this line unless you know what you're doing
 
@@ -56,7 +56,7 @@ pkgbase=linux-bfq-dev
 _major=5.17
 _minor=2
 pkgver=${_major}.${_minor}
-pkgrel=7
+pkgrel=8
 _srcname=linux-${pkgver}
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
@@ -69,13 +69,13 @@ makedepends=('bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
 
-if [ "$_bfq_ver" = "stable" ]; then
+if [ "$_bfq_rel" = "stable" ]; then
 
  _bfq_name='bfq-lucjan'
  _bfq_ver='r2K220408v3'
  _bfq_patch="${_major}-${_bfq_name}-${_bfq_ver}.patch"
 
-elif [ "$_bfq_ver" = "unstable" ]; then
+elif [ "$_bfq_rel" = "unstable" ]; then
 
  _bfq_name='bfq-dev-lucjan'
  _bfq_ver='r2K220408v3'
