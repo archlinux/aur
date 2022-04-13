@@ -7,12 +7,12 @@ _srcname=linux-5.17
 _major=5.17
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=1
+_minor=2
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 [[ -z $_minor ]] && _fullver=$_major || _fullver=$_major.$_minor
 #_fullver=$_major.$_minor
-_rcver=2
+_rcver=1
 _rcpatch=patch-${_major}.${_minorc}-rc${_rcver}
 pkgver=${_major}.${_minorc}rc${_rcver}
 arch=(x86_64)
@@ -31,6 +31,10 @@ source=(
   config         # the main kernel config file
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch
+  0003-tick-Detect-and-fix-jiffies-update-stall.patch
+  0004-tick-rcu-Remove-obsolete-rcu_needs_cpu-parameters.patch
+  0005-tick-rcu-Stop-allowing-RCU_SOFTIRQ-in-idle.patch
+  0006-lib-irq_poll-Declare-IRQ_POLL-softirq-vector-as-ksof.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -38,13 +42,17 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
-b2sums=('254d82d42bc9e38c2dd8a101be3e01b0314e7fb6475fc70885a1d42063f869ca4de5ba320c4c304ce7ec32d3dd6e47f67c4d75e8eb457f011852007c05bf08d3'
+b2sums=('810d9f49d3a1f2120c18b5e5a8205bd477dd433c38176ff14b5794cf68107e1de1a1a434a02e871689b2c022e79ce07fdb53285d3a555eaf5ccab66dbd6016cd'
         'SKIP'
-        '1275903955f014d0a0b4cad9074710d36825b274814cde457cf9e1f9acc188b21da7de01100f99cfe9644fb7fd182a95257d124a6992ac3be47adb907e230616'
+        'd3fce962b0243ad30a4385626cf90da2f04a6b8e745bcedd1d6f2e01fdd9c32beb443b2ae7979bcee32c730461cb4653ff726432ea28f2a5ab5c12e63ef4b6b4'
         'SKIP'
-        '000ab21fc39af4ba189881fd1ad0997043a166488ae73affd6ecb7c621ae4f71f2e8778b4112569309da4c937e045a53240a44be08808d8ef6853d02e0a28448'
-        'e01ccd70d0180fb6d270505fbc8cb2bd4815b334b3366365d931e758ebcad14fabd13644f5adf79be2d85f44dde39542c5318fa135cd18366d38eed85ebb01d7'
-        'b48d97933d3ff496c0ee3aba369f2a671df4fb56a21c800d47871f9b78513f1ab5a997cd6be7affd2421cb83adb2a17a8a57ed76f42a4dcf81d4b66bb75137d5')
+        '3d1e2c1dff1e828c655b449962fb47c49fdf77d58c65c8af41ee8c56fbb2d8fdb7d0b963c775b26ac4022c6e0f9c8d19c11bc1e0e358580396520e9261bc8eeb'
+        '80bb7cc9c21721c6db0180f094cd6fa0bc441ee9103d81b203c76028752041504fa53f57f066cd79937623ae4d4f7d05ad6cc18a59b544cc0ce689675a483432'
+        'c1187ed81fc89682679fb9968f7f02a81c5cb748d87e16b4f5cf733c02df64c1e1cb58f7a028e79c31d7f8ca6fdb814932da66835bde321676ea8afe3e1b4ae1'
+        'a1a258341cc1b0b27b036a2ef701ae3e3ac202b24647b845a1df1f3cc87756f610b81cd93d442b412beaeef1e4ccff21f7b5ef77efb06db5dd245a32b70823a1'
+        '1d763f9a80fc0d5c15a2b6d9fcfa1d5702f6b53786129332f8cc110f91fdecc234f6ded6337fd9afffd70afac01fb317ae9f1f25032eb2ae72d523c38520088c'
+        '556227cebb817d7b3f98ea3118c912cfd57d712c5695ec893d0837184f89a7b8848030e1f8519e7bc4119fbd45041902f1fcc04b7901701e6c384889b0b001b2'
+        '992b3665a33a181581d5beaec5b68ac8de4590f606550a816d5d6bc9621cd13e7d89c6e46378f0fda3ad263d3a9172a9bb6c5a8eacf9aee1ffe17f89f80d4bf9')
 
 
 export KBUILD_BUILD_HOST=archlinux

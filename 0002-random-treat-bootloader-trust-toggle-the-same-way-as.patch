@@ -1,7 +1,7 @@
-From 22365749abd27f2cb582a049da42b7c7a02b6bfe Mon Sep 17 00:00:00 2001
+From 7245d2b84aa844b071b833e25d49cf5138b822a3 Mon Sep 17 00:00:00 2001
 From: "Jason A. Donenfeld" <Jason@zx2c4.com>
 Date: Wed, 23 Mar 2022 23:09:30 -0600
-Subject: [PATCH 2/4] random: treat bootloader trust toggle the same way as cpu
+Subject: [PATCH 2/9] random: treat bootloader trust toggle the same way as cpu
  trust toggle
 
 If CONFIG_RANDOM_TRUST_CPU is set, the RNG initializes using RDRAND.
@@ -29,10 +29,10 @@ Signed-off-by: Jason A. Donenfeld <Jason@zx2c4.com>
  3 files changed, 15 insertions(+), 2 deletions(-)
 
 diff --git a/Documentation/admin-guide/kernel-parameters.txt b/Documentation/admin-guide/kernel-parameters.txt
-index 7123524a86b8..973e1de5f29e 100644
+index 59f881f36779..bdc733c2561d 100644
 --- a/Documentation/admin-guide/kernel-parameters.txt
 +++ b/Documentation/admin-guide/kernel-parameters.txt
-@@ -4356,6 +4356,12 @@
+@@ -4355,6 +4355,12 @@
  			fully seed the kernel's CRNG. Default is controlled
  			by CONFIG_RANDOM_TRUST_CPU.
  
