@@ -2,7 +2,7 @@
 pkgname=gdm-settings
 __pkgver='0.4'
 pkgver=${__pkgver/-/+}
-pkgrel=5
+pkgrel=6
 pkgdesc="A settings app for Gnome's Login Manager (GDM)"
 arch=(any)
 url="https://github.com/realmazharhussain/gdm-settings"
@@ -18,7 +18,7 @@ prepare() {
   cd "$srcdir/$pkgname-${__pkgver}"
 }
 build() {
-   arch-meson "${srcdir}/${pkgname}-${__pkgver}" build
+   arch-meson --buildtype=release "${srcdir}/${pkgname}-${__pkgver}" build
 }
 check() {
   meson test -C build --print-errorlogs
