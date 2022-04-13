@@ -4,7 +4,7 @@
 _name=gaphor
 _pkgname="python-${_name}"
 pkgname="${_pkgname}-git"
-pkgver=2.9.2.r86.g45fed5eb
+pkgver=2.9.2.r110.g806a2e9b3
 pkgrel=1
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('x86_64' 'i686')
@@ -15,7 +15,6 @@ source=(
 )
 md5sums=('SKIP')
 depends=(
-	'gtk3'
 	'gtksourceview4'
 	'python-darkdetect'
 	'python-gaphas'
