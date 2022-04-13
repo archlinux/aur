@@ -12,7 +12,7 @@
 ### MERGE REQUESTS SELECTION
 
 # available MR: ('1884' '1915')
-_merge_requests_to_use=('1915')
+_merge_requests_to_use=('1884' '1915')
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
@@ -20,7 +20,7 @@ _merge_requests_to_use=('1915')
 pkgname=gnome-shell-performance
 _pkgname=gnome-shell
 pkgver=42.0+53+gff29159df
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Next generation desktop shell | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://wiki.gnome.org/Projects/GnomeShell"
