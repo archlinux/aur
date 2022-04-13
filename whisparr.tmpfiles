@@ -1,0 +1,4 @@
+# Override this file with a modified version in /etc/tmpfiles.d/
+d /var/lib/whisparr 0755 whisparr whisparr
+Z /var/lib/whisparr - whisparr whisparr
+L /var/log/whisparr - - - - /var/lib/whisparr/logs/

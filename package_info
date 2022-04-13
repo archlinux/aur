@@ -1,0 +1,5 @@
+# PackageVersion is added by PKGBUILD
+PackageAuthor=[whisparr-nightly](https://aur.archlinux.org/packages/whisparr-nightly/)
+UpdateMethod=External
+UpdateMethodMessage=flag [whisparr-nightly](https://aur.archlinux.org/packages/whisparr-nightly/) [out-of-date](https://aur.archlinux.org/pkgbase/whisparr-nightly/flag/), use an [aur helper](https://wiki.archlinux.org/index.php/AUR_helpers) or the [manual method](https://wiki.archlinux.org/index.php/Arch_User_Repository#Installing_packages) to update.
+Branch=nightly
