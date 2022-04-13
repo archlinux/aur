@@ -1,7 +1,7 @@
 # Maintainer: zoorat <zoorat [at] protonmail [dot] com>
 
 pkgname="mymonero"
-pkgver=1.2.6
+pkgver=1.2.7
 pkgrel=1
 
 pkgdesc="The simplest way to use the next-generation private digital currency Monero, at the sweet spot between security, convenience, and features."
@@ -20,7 +20,7 @@ changelog="changelog.md"
 source=("${pkgname}-${pkgver}.${CARCH}.AppImage::https://github.com/mymonero/mymonero-app-js/releases/download/v${pkgver}/MyMonero-${pkgver}.AppImage"
 	"LICENSE::https://raw.githubusercontent.com/mymonero/mymonero-app-js/master/LICENSE.txt")
 noextract=("${pkgname}-${pkgver}.${CARCH}.AppImage")
-b2sums=('3ec45b67cb1e5205734744ad91adf653dd73ab62f3bcb6ceedb7d537c88391069fd941088dedfc695ec8c62bbda72a68299fd394feb3b1978396ef90f3f72b42'
+b2sums=('771f8c09589a0dc6e8fc55fa6f1be4fd6dd86750553ad873a0943bf2dcd5d7bfca26b45787543bfaf5464917259ea86fc80b74b013e1b80c4818cf60f3e5c945'
 	'e15003acc9be63fd7b76a1021d86045f82fe19a63551c0f2ab1478d4e3e3be8a9bb7dc7f4f06b79fa1005995cebd73807259c3c5c36861f085ca7ad7959eef52')
 
 prepare() {
@@ -46,6 +46,8 @@ package() {
 		chmod -v 755 "${pkgdir}/opt/${pkgname}/$d"
 		find "${pkgdir}/opt/${pkgname}/$d" -type d -exec chmod -v 755 {} +
 	done
+	chown root:root "${pkgdir}/opt/${pkgname}/chrome-sandbox"
+	chmod 4755 "${pkgdir}/opt/${pkgname}/chrome-sandbox"
 
 	# Link entry point
 	install -vdm 755 "${pkgdir}/usr/bin"
