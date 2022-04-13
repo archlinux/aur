@@ -6,8 +6,8 @@ pkgbase=linux-firmware-uncompressed
 pkgname=(linux-firmware-uncompressed amd-ucode-uncompressed
          linux-firmware-{nfp,mellanox,marvell,qcom,liquidio,qlogic,bnx2x}-uncompressed
 )
-_tag=20220310
-pkgver=20220309.cd01f85
+_tag=20220411
+pkgver=20220411.705f19a
 pkgrel=1
 pkgdesc="Firmware files for Linux (without module compression)"
 url="https://git.kernel.org/?p=linux/kernel/git/firmware/linux-firmware.git;a=summary"
@@ -71,8 +71,8 @@ _pick() {
 
 #package_linux-firmware-whence() {
 #  pkgdesc+=" - contains the WHENCE license file which documents the vendor license details"
-#  cd "$_pkgbase"
-#  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 WHENCE
+#
+#  install -Dt "${pkgdir}/usr/share/licenses/${pkgname}" -m644 ${_pkgbase}/WHENCE
 #}
 
 package_linux-firmware-uncompressed() {
