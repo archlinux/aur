@@ -26,7 +26,7 @@ package() {
 
 	install -dm 755 "$pkgdir"/usr/bin
 	install -dm 755 "$pkgdir"/usr/share/{licenses,pixmaps,"$_appname",icons/hicolor/scalable/apps}
-	cp -dr --no-preserve='ownership' bin lib plugins redist build.txt product-info.json "$pkgdir"/usr/share/"$_appname/"
+	cp -dr --no-preserve='ownership' bin lib plugins build.txt product-info.json "$pkgdir"/usr/share/"$_appname/"
 	cp -dr --no-preserve='ownership' license "$pkgdir"/usr/share/licenses/"$_appname"
 	ln -s /usr/share/"$_appname"/bin/idea.png "$pkgdir"/usr/share/pixmaps/"$_appname".png
 	ln -s /usr/share/"$_appname"/bin/idea.svg "${pkgdir}"/usr/share/icons/hicolor/scalable/apps/"$_appname".svg
