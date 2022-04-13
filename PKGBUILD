@@ -13,11 +13,10 @@ options=('!strip' 'staticlibs')
 depends=('sqlite')
 optdepends=('sabnzbd: usenet downloader'
             'nzbget: usenet downloader'
-            'transmission-cli: torrent downloader (CLI and daemon)'
-            'transmission-gtk: torrent downloader (GTK+)'
-            'transmission-qt: torrent downloader (Qt)'
+            'qbittorrent: torrent downloader'
             'deluge: torrent downloader'
             'rtorrent: torrent downloader'
+            'transmission: torrent downloader'
             'jackett: torrent indexer proxy'
             'libgdiplus: provides a gdi+ compatible api')
 
