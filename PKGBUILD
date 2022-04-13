@@ -13,13 +13,13 @@
 ### MERGE REQUESTS SELECTION
 
 # Merge Requests List: ('579' '1441' '1877')
-_merge_requests_to_use=('1441')
+_merge_requests_to_use=('1441' '1877')
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=mutter-performance
 pkgname=(mutter-performance mutter-performance-docs)
-pkgver=42.0+r45+g9d0f612de
+pkgver=42.0+r49+g14ab0238d
 pkgrel=1
 pkgdesc="A window manager for GNOME | Attempts to improve performances with non-upstreamed merge-requests and frequent stable branch resync"
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -32,13 +32,13 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof gi-docgen)
 checkdepends=(xorg-server-xvfb wireplumber python-dbusmock)
-_commit=9d0f612de14ca47d0a0cd89021367a49060c61ee  # tags/42.0^45
+_commit=14ab0238d09789809fb614a808bd7ae7f1d139d1  # tags/42.0^49
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch'
         'mr1877.patch')
 sha256sums=('SKIP'
-            'a37a4ec7e4a4b771f0d78e1a20a320d004f6bb7d1a1f220ba6054cf55bf1c4be'
-            '4407abe706a8569659f44c8a564eaba0cac1c201679a966859f2a6b595a2aa13')
+            '1772df4182d482bf385ca1746b9577fefa0886f79c3f142bb1dd961980432fcc'
+            '5284e17ac5cc129ecd21a0726d8159d44abc2e0da5dbcf195f2f05aab8e06120')
 
 pkgver() {
   cd $pkgname
@@ -124,8 +124,8 @@ prepare() {
   # URL:  https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1441
   # Type: 1
   # Status: 3
-  # Comment: Help GPU frequencies to scale up but not currently working on Wayland
-  #          Thanks @JockeTF in AUR for a quick backported patch to gnome-41 base.
+  # Comment: Help GPU frequencies to scale up but not currently working on Wayland.
+  #          Thanks @JockeTF in AUR for the patch backported to gnome-41 base.
   pick_mr '1441' 'mr1441.patch' 'patch'
 
   # Title: compositor: Use native GL mipmapping instead of MetaTextureTower

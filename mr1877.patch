@@ -1,11 +1,17 @@
 Author: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Source: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1877
 Editor: Sung Mingi <FiestaLake@protonmail.com>
-Commit: 5f62dc8b585bbb7fe83b65ef56395a15c73e15af
-Last Updated: 04/08/22 (Mutter 42.0+r45+g9d0f612de-1)
+Commit: 463d746d30f66925657fea8711acd6cfa5ab01d7
+Last Updated: 04/13/22 (Mutter 42.0+r45+g9d0f612de-2)
+---
 
+By avoiding StScrollViewFade we avoid offscreening and therefore
+avoid painting everything twice to get it on screen. So this almost
+halves the render time of the icon grid.
+
+---
 diff --git a/src/compositor/clutter-utils.c b/src/compositor/clutter-utils.c
-index 86d788562..3c7165f1e 100644
+index 86d788562e383c38961de1b385bb7bbf16424d28..3c7165f1ef1bb70f2fab58adb4d09716ef816e35 100644
 --- a/src/compositor/clutter-utils.c
 +++ b/src/compositor/clutter-utils.c
 @@ -69,8 +69,7 @@ gboolean
@@ -64,7 +70,7 @@ index 86d788562..3c7165f1e 100644
  }
  
 diff --git a/src/compositor/clutter-utils.h b/src/compositor/clutter-utils.h
-index 8ed0e2a4d..039e61a61 100644
+index 8ed0e2a4d127d037a0371d01d1d7dbd349adc161..039e61a61998dba8acff584017daf258fe763f18 100644
 --- a/src/compositor/clutter-utils.h
 +++ b/src/compositor/clutter-utils.h
 @@ -23,18 +23,21 @@
@@ -94,7 +100,7 @@ index 8ed0e2a4d..039e61a61 100644
  
  #endif /* __META_CLUTTER_UTILS_H__ */
 diff --git a/src/compositor/meta-background-content.c b/src/compositor/meta-background-content.c
-index 49f5885ca..93de521d0 100644
+index 49f5885ca70d1a69ee81be4139f448fcb7c70dce..93de521d05bb7a334fbccfc872d220a43ca7d7da 100644
 --- a/src/compositor/meta-background-content.c
 +++ b/src/compositor/meta-background-content.c
 @@ -561,7 +561,7 @@ setup_pipeline (MetaBackgroundContent *self,
@@ -107,7 +113,7 @@ index 49f5885ca..93de521d0 100644
        min_filter = COGL_PIPELINE_FILTER_NEAREST;
        mag_filter = COGL_PIPELINE_FILTER_NEAREST;
 diff --git a/src/compositor/meta-cullable.c b/src/compositor/meta-cullable.c
-index 6f38c5e47..e306c56e2 100644
+index 6f38c5e47c8f8e219bd195fc2da274c97ba298ec..e306c56e287752ab9e09ec3958e205de3a4d47a9 100644
 --- a/src/compositor/meta-cullable.c
 +++ b/src/compositor/meta-cullable.c
 @@ -175,7 +175,7 @@ meta_cullable_default_is_untransformed (MetaCullable *cullable)
@@ -120,7 +126,7 @@ index 6f38c5e47..e306c56e2 100644
  
  static void
 diff --git a/src/compositor/meta-shaped-texture.c b/src/compositor/meta-shaped-texture.c
-index 34fec6852..2f0736d90 100644
+index 34fec6852ad8dd348934e16474e97265a7f390d8..222095587a3f258721e69d647459c8af85fd4946 100644
 --- a/src/compositor/meta-shaped-texture.c
 +++ b/src/compositor/meta-shaped-texture.c
 @@ -41,7 +41,6 @@
@@ -448,8 +454,17 @@ index 34fec6852..2f0736d90 100644
    stex->prev_invalidation = stex->last_invalidation;
    stex->last_invalidation = g_get_monotonic_time ();
  
+@@ -1214,8 +1323,6 @@ meta_shaped_texture_set_snippet (MetaShapedTexture *stex,
+   g_clear_pointer (&stex->snippet, cogl_object_unref);
+   if (snippet)
+     stex->snippet = cogl_object_ref (snippet);
+-
+-  meta_texture_tower_set_snippet (stex->paint_tower, snippet);
+ }
+ 
+ /**
 diff --git a/src/compositor/meta-surface-actor.c b/src/compositor/meta-surface-actor.c
-index c2bf6696a..fcd94b86d 100644
+index c2bf6696a2092882215da37ef865ddaeb79bf5e4..fcd94b86d3a3e3e0df6923095196a9ee3c4a5e6c 100644
 --- a/src/compositor/meta-surface-actor.c
 +++ b/src/compositor/meta-surface-actor.c
 @@ -331,7 +331,7 @@ meta_surface_actor_is_untransformed (MetaCullable *cullable)
@@ -463,7 +478,7 @@ index c2bf6696a..fcd94b86d 100644
  static void
 diff --git a/src/compositor/meta-texture-tower.c b/src/compositor/meta-texture-tower.c
 deleted file mode 100644
-index 510e85f79..000000000
+index 510e85f7968eb09edaace5479a0ac9d43f4d9728..0000000000000000000000000000000000000000
 --- a/src/compositor/meta-texture-tower.c
 +++ /dev/null
 @@ -1,513 +0,0 @@
@@ -982,7 +997,7 @@ index 510e85f79..000000000
 -}
 diff --git a/src/compositor/meta-texture-tower.h b/src/compositor/meta-texture-tower.h
 deleted file mode 100644
-index 5522dfbb1..000000000
+index 5522dfbb16ac9b207e979065413ac3c06f1ac974..0000000000000000000000000000000000000000
 --- a/src/compositor/meta-texture-tower.h
 +++ /dev/null
 @@ -1,71 +0,0 @@
@@ -1058,7 +1073,7 @@ index 5522dfbb1..000000000
 -
 -#endif /* __META_TEXTURE_TOWER_H__ */
 diff --git a/src/compositor/meta-window-group.c b/src/compositor/meta-window-group.c
-index 16ff2db09..c6af609ae 100644
+index 16ff2db097e17210d319d1dadcf00a6a55ef3cc1..c6af609aea50f38b444f8e0436fa1008322fadce 100644
 --- a/src/compositor/meta-window-group.c
 +++ b/src/compositor/meta-window-group.c
 @@ -92,6 +92,7 @@ meta_window_group_paint (ClutterActor        *actor,
@@ -1088,7 +1103,7 @@ index 16ff2db09..c6af609ae 100644
    else
      {
 diff --git a/src/meson.build b/src/meson.build
-index 7b456f524..4ebe351b0 100644
+index 7b456f524fb5e16904b6f2c27b7e88a8ec7b0506..4ebe351b04145dfa590d4b0e8b52e5ceedb05361 100644
 --- a/src/meson.build
 +++ b/src/meson.build
 @@ -345,8 +345,6 @@ mutter_sources = [
