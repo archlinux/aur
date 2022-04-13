@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.8.0.r16.ge78d253
+pkgver=0.8.0.r18.g0ee2dcd
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
@@ -60,7 +60,7 @@ _python_deps=(isbnlib
               pantable
               ruamel-yaml
               usfm2osis-cw-git)
-depends+=("${_lua_deps[@]/#/lua-}" "${_lua_deps[@]/#/lua53-}"
+depends+=("${_lua_deps[@]/#/lua-}"
           "${_perl_deps[@]/#/perl-}"
           "${_python_deps[@]/#/python-}")
 depends+=(libgit2.so)
