@@ -1,7 +1,7 @@
 # Maintainer: levinit <levinit at outlook>
 
 pkgname=mockingbot
-pkgver=1.1.9
+pkgver=1.2.5
 pkgrel=1
 pkgdesc="A prototyping & collaboration tool.墨刀/modao/MockingBot"
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('custom')
 #depends=('')
 
 source=("https://cdn.modao.cc/mockitt_${pkgver}_amd64.deb")
-sha512sums=('957ad44f56779da35242d51956b53605faa3d65f67a8772118e36ad6ed6e1a47bbd864986a3f4fe18e37a290f7991d71a99f9cb94ba61bf9f9405207f0002b91')
+sha512sums=('508eddd92eee5eb5fb2334207f9fd4e53bacf7148b4012ab189fdc7031d86e47a5fb9ffc2f511017c914dd743f6dd1d8cad0bf54f205f582f5a7e51d36837d20')
 
 package() {
     tar -xvf data.tar.xz -C ${pkgdir}
