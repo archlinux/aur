@@ -1,0 +1,12 @@
+pkgbase = aya-neo-fixes-git
+	pkgdesc = Various fixes for Aya Neo Handheld consoles.
+	pkgver = 22.04.r18.c5b7293
+	pkgrel = 1
+	url = https://github.com/ShadowBlip/aya-neo-fixes
+	arch = any
+	license = GPL
+	makedepends = git
+	source = aya-neo-fixes::git+https://github.com/ShadowBlip/aya-neo-fixes.git
+	md5sums = SKIP
+
+pkgname = aya-neo-fixes-git
