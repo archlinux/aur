@@ -1,11 +1,13 @@
 pkgbase = minigalaxy-git
-	pkgdesc = A simple GOG client for Linux, git version
-	pkgver = 0.9.4.r66.gf7552ce
+	pkgdesc = A simple GOG client for Linux
+	pkgver = 1.1.0.r91.g3882973
 	pkgrel = 1
 	url = https://github.com/sharkwouter/minigalaxy
 	arch = any
-	license = GPL-3
-	makedepends = python
+	license = GPL3
+	license = CCPL:cc-by-sa-3.0
+	checkdepends = python-pytest
+	checkdepends = python-simplejson
 	makedepends = python-setuptools
 	makedepends = git
 	depends = python
@@ -13,11 +15,13 @@ pkgbase = minigalaxy-git
 	depends = python-gobject
 	depends = gtk3
 	depends = webkit2gtk
-	optdepends = scummvm
-	optdepends = dosbox
-	optdepends = wine
-	source = git://github.com/sharkwouter/minigalaxy.git
-	md5sums = SKIP
+	optdepends = dosbox: Use the system DOSBox installation
+	optdepends = innoextract: Extract Windows installers
+	optdepends = scummvm: Use the system ScummVM installation
+	optdepends = wine: Install Windows games
+	provides = minigalaxy
+	conflicts = minigalaxy
+	source = git+https://github.com/sharkwouter/minigalaxy.git
+	sha256sums = SKIP
 
 pkgname = minigalaxy-git
-
