@@ -1,6 +1,6 @@
 pkgbase = odin-dev-bin
 	pkgdesc = A fast, concise, readable, pragmatic and open sourced programming language.
-	pkgver = 2022.03
+	pkgver = 2022.04
 	pkgrel = 1
 	url = https://odin-lang.org/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = odin-dev-bin
 	provides = odin
 	conflicts = odin
 	options = !strip
-	source = odin-dev-2022-03.tar.gz::https://github.com/odin-lang/Odin/archive/refs/tags/dev-2022-03.tar.gz
-	sha256sums = 6bf8f60978b6f8968aa723e1dd92a975c6ce3f811190369ba9019f37328f1852
-	source_x86_64 = https://github.com/odin-lang/Odin/releases/download/dev-2022-03/odin-ubuntu-dev-2022-03.zip
-	sha256sums_x86_64 = 69d5e71841f986cd536c86eac17365eed8b27c51f91d1c1be1edcacc8e150628
+	source = odin-dev-2022-04.tar.gz::https://github.com/odin-lang/Odin/archive/refs/tags/dev-2022-04.tar.gz
+	sha256sums = 42983d411902e837792f3cf4c60871da7be67a0b8c23d92a31ac6a069a8fc5c3
+	source_x86_64 = https://github.com/odin-lang/Odin/releases/download/dev-2022-04/odin-ubuntu_amd64-dev-2022-04.zip
+	sha256sums_x86_64 = a5e68d276c7aab4873a3a2753367684eb162ccd8db83d825c3945f7b4b9bbf63
 
 pkgname = odin-dev-bin
