@@ -1,6 +1,6 @@
 pkgbase = povray-git
 	pkgdesc = Script based raytracer for creating 3D graphics
-	pkgver = 3.8.0beta.2
+	pkgver = 3.8.0beta.2.r0.gca89731
 	pkgrel = 1
 	url = https://povray.org
 	arch = x86_64
@@ -13,11 +13,11 @@ pkgbase = povray-git
 	depends = libpng
 	depends = libtiff
 	depends = openexr
-	provides = povray3.8.0beta.2
+	provides = povray=3.8.0beta.2.r0.gca89731
 	conflicts = povray
 	backup = etc/povray/3.8/povray.conf
 	backup = etc/povray/3.8/povray.ini
-	source = https://github.com/POV-Ray/povray/archive/v3.8.0-beta.2/povray-3.8.0-beta.2.tar.gz
-	sha256sums = 5d275daf159e3cf5ad655d11b53956ea0087687169fc81cfc81fa12166f30344
+	source = povray-git::git+https://github.com/POV-Ray/povray.git#branch=release/v3.8.0
+	sha256sums = SKIP
 
 pkgname = povray-git

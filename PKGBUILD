@@ -6,37 +6,48 @@
 # Contributor: neri
 
 pkgname=povray-git
-pkgver=3.8.0beta.2
+pkgver=3.8.0beta.2.r0.gca89731
+_branch='release/v3.8.0'
+_v=$(sed -E 's/^([0-9]+.[0-9]+).*$/\1/' <<< $pkgver) # MAJOR.MINOR
 pkgrel=1
-_v=${pkgver%.*.*} # 3.7
 pkgdesc='Script based raytracer for creating 3D graphics'
 arch=(x86_64)
 license=(AGPL3)
 url=https://povray.org
-depends=(boost-libs imath libpng libtiff openexr)
-makedepends=(boost git glu)
+depends=(boost-libs
+         imath
+         libpng
+         libtiff
+         openexr)
+makedepends=(boost
+             git
+             glu)
 backup=(etc/povray/$_v/povray.conf
         etc/povray/$_v/povray.ini)
-provides=("${pkgname%-git}$pkgver")
+provides=("${pkgname%-git}=$pkgver")
 conflicts=(${pkgname%-git})
-_tag="${pkgver/b/-b}"
-_archive="${pkgname%-git}-$_tag"
-source=("https://github.com/POV-Ray/povray/archive/v$_tag/$_archive.tar.gz")
-sha256sums=('5d275daf159e3cf5ad655d11b53956ea0087687169fc81cfc81fa12166f30344')
+source=("$pkgname::git+https://github.com/POV-Ray/povray.git#branch=$_branch")
+sha256sums=('SKIP')
 
 prepare() {
-	cd "$_archive"
+	cd "$pkgname"
 	rm -frv libraries/ilmbase/Imath
-	cd unix
+	pushd unix
 	sed 's/automake --w/automake --add-missing --w/g' -i prebuild.sh
 	sed 's/dist-bzip2/dist-bzip2 subdir-objects/g' -i configure.ac
 	./prebuild.sh
-	cd ..
+	popd
 	./bootstrap
 }
 
+pkgver() {
+	cd "$pkgname"
+	git describe --long --abbrev=7 --tags --match="v*" |
+		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g;s/\.\([ab]\)/\1/'
+}
+
 build() {
-	cd "$_archive"
+	cd "$pkgname"
 	./configure \
 		LIBS="-lboost_system -lboost_thread" \
 		COMPILED_BY="Arch Linux AUR $PACKAGER" \
@@ -46,7 +57,7 @@ build() {
 }
 
 package() {
-	cd "$_archive"
+	cd "$pkgname"
 	install -d "$pkgdir"/usr/share/{doc/,}"${pkgname%-git}-$_v"
 	cp -r icons include ini scenes scripts "$pkgdir/usr/share/${pkgname%-git}-$_v"
 	cp -r doc "$pkgdir/usr/share/doc/${pkgname%-git}-$_v"
