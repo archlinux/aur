@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.17.2 Kernel Configuration
+# Linux/x86 5.17.3 Kernel Configuration
 #
 CONFIG_CC_VERSION_TEXT="gcc (GCC) 11.2.0"
 CONFIG_CC_IS_GCC=y
@@ -4999,7 +4999,6 @@ CONFIG_ACERHDF=m
 # CONFIG_TOPSTAR_LAPTOP is not set
 # CONFIG_I2C_MULTI_INSTANTIATE is not set
 # CONFIG_MLX_PLATFORM is not set
-# CONFIG_X86_ANDROID_TABLETS is not set
 # CONFIG_INTEL_IPS is not set
 # CONFIG_INTEL_SCU_PCI is not set
 # CONFIG_INTEL_SCU_PLATFORM is not set
