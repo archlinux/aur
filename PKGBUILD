@@ -43,6 +43,12 @@ _localmodcfg=
 # a new kernel is released, but again, convenient for package bumps.
 _use_current=
 
+### Download bfq patchset
+# ATTENTION - one of two predefined values should be selected!
+# 'stable' - stable releases (recommended)
+# 'unstable' - dev releases
+_bfq_ver='stable'
+
 ### Do not edit below this line unless you know what you're doing
 
 pkgbase=linux-rt-bfq-dev
@@ -54,7 +60,7 @@ _rtpatchver=rt${_rtver}
 pkgver=${_major}.${_minor}.${_rtpatchver}
 _pkgver=${_major}.${_minor}
 _srcname=linux-${_pkgver}
-pkgrel=8
+pkgrel=9
 pkgdesc='Linux RT-BFQ-dev'
 arch=('x86_64')
 url="https://github.com/sirlucjan/bfq-mq-lucjan"
@@ -65,18 +71,21 @@ makedepends=('bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'texlive-latexextra' 'xmlto')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
-# Some patches for BFQ conflict with patches for BFQ-dev.
-# To use linux-bfq-dev smoothly apply bfq-reverts before bfq-dev patch.
-# Otherwise the kernel will not compile.
-#_bfq_rev_path="bfq-reverts-all"
-#_bfq_rev_patch="0001-bfq-reverts.patch"
-#_bfq_path="bfq-dev-lucjan"
-#_bfq_ver="v14"
-#_bfq_rel="r2K210223"
-#_bfq_patch="${_major}-${_bfq_path}-${_bfq_ver}-${_bfq_rel}.patch"
-_bfq_path="bfq-lucjan"
-_bfq_rel="r2K220408v1"
-_bfq_patch="${_major}-${_bfq_path}-${_bfq_rel}.patch"
+
+if [ "$_bfq_ver" = "stable" ]; then
+
+ _bfq_name='bfq-lucjan'
+ _bfq_ver='r2K220408v3'
+ _bfq_patch="${_major}-${_bfq_name}-${_bfq_ver}.patch"
+
+elif [ "$_bfq_ver" = "unstable" ]; then
+
+ _bfq_name='bfq-dev-lucjan'
+ _bfq_ver='r2K220408v3'
+ _bfq_patch="${_major}-${_bfq_name}-${_bfq_ver}.patch"
+
+fi
+
 _compiler_path="cpu-patches-sep"
 _compiler_patch="0001-cpu-${_major}-merge-graysky-s-patchset.patch"
 
@@ -84,8 +93,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_pkgver}-${_rtpatchver}.patch.xz"
         "http://www.kernel.org/pub/linux/kernel/projects/rt/${_major}/patch-${_pkgver}-${_rtpatchver}.patch.sign"
-        #"${_lucjanpath}/${_bfq_rev_path}/${_bfq_rev_patch}"
-        "${_lucjanpath}/${_bfq_path}/${_bfq_patch}"
+        "${_lucjanpath}/${_bfq_name}/${_bfq_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
         "${_lucjanpath}/arch-patches-v10-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
         "${_lucjanpath}/arch-patches-v10-sep/0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch"
@@ -350,7 +358,7 @@ sha512sums=('bb73202e770d10767739664b5320b47d78bc374b2bde38b289f1ede1b7b33a8be0a
             'SKIP'
             '6c39e02803b2962adadb839a6d7844b4ba22ab09ccf4040371683fc0abb8d6f17372f159666209c7eb90fcee05dd01767df739a5dc545ceffe3bfb43f30463cd'
             'SKIP'
-            '79c3473364f47a4b92faca8318af147e5dd70423567afbdf78db7a58363aa48429aa0bffeaa20c4640a13105511b4b41be3f9824501a74f23aaac21d41e3efc5'
+            '3c3d13f89209258218024223061099267e9836ba1794cda646d2d920c3dcf8b54424c6aff0f681e074293c104d2d9d767b223648558180431a7595dc47938a06'
             'b63921b6246bd1b9545a8042d76334bef8a7ee46e5404c5efec4a842a455a84046e92423b2bc6d950f19dcf85805d7493fe71d6d177e3b46b52a279b0a44d0c9'
             '017722a0044acac58fcbd4f1a7ce0b89dce7d40bbbdc94b522a782460cd4d5fe262defa4d450942f718812eb194428edb76689cfd10616f124c62a50453d6583'
             'cca78bdb4a675f5f2affe4c1eaac98645bce415ba4a2d44905291f499872c08998fb6dc9d661072c54fc7e9b19e83f36a9c0768ee6204f2695b6bb62e1dd82d1'
