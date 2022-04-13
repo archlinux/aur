@@ -2,7 +2,7 @@
 # ---
 _pkgname=EZ
 pkgname=ez
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc='Task simplificaltion scripts for increasing the speed and efficiency of common tasks'
 arch=(x86_64)
@@ -19,7 +19,7 @@ optdepends=(
   )
 provides=(ezdl ezgc eztst ezssl)
 source=("https://gitlab.com/a4to/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
-sha256sums=('c8b33ff4701dc0cc268c35771e07336060b36bec7e502e6204c3b1c83ffbca46')
+sha256sums=('53ebc17a9f26a40136e08f0935b1387bbbca5a1bb1907110a7fb0873fff2ae50')
 
 package() {
   install -Dm775 usr/bin/* -g wheel -o ${USER} -t "${pkgdir}/usr/bin/"

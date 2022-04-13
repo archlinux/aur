@@ -1,6 +1,6 @@
 pkgbase = ez
 	pkgdesc = Task simplificaltion scripts for increasing the speed and efficiency of common tasks
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://gitlab.com/a4to/EZ
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = ez
 	provides = ezgc
 	provides = eztst
 	provides = ezssl
-	source = https://gitlab.com/a4to/concise/-/raw/master/x86_64/ez-1.0.2-1-x86_64.pkg.tar.zst
-	sha256sums = c8b33ff4701dc0cc268c35771e07336060b36bec7e502e6204c3b1c83ffbca46
+	source = https://gitlab.com/a4to/concise/-/raw/master/x86_64/ez-1.0.3-1-x86_64.pkg.tar.zst
+	sha256sums = 53ebc17a9f26a40136e08f0935b1387bbbca5a1bb1907110a7fb0873fff2ae50
 
 pkgname = ez
