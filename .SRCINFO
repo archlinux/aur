@@ -6,6 +6,7 @@ pkgbase = aya-neo-fixes-git
 	arch = any
 	license = GPL
 	makedepends = git
+	depends = python
 	source = aya-neo-fixes::git+https://github.com/ShadowBlip/aya-neo-fixes.git
 	md5sums = SKIP
 
