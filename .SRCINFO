@@ -1,0 +1,15 @@
+pkgbase = android-image-kitchen-bin
+	pkgdesc = Automated scripts to inspect and rebuild Android boot images - including patched binaries only used by the scripts provided by this package
+	pkgver = 3.8
+	pkgrel = 3
+	url = https://github.com/osm0sis/Android-Image-Kitchen/tree/AIK-Linux
+	arch = i686
+	arch = x86_64
+	license = unknown
+	options = !strip
+	source = AIK-Linux-v3.8-ALL.tar.gz::https://forum.xda-developers.com/attachments/aik-linux-v3-8-all-tar-gz.5300923/
+	source = work-in-present-working-directory-only.patch
+	md5sums = 36eb592b1dbef0c6c4bb96cd6e6524a6
+	md5sums = 670b25e7bb925a80091349c62794abae
+
+pkgname = android-image-kitchen-bin

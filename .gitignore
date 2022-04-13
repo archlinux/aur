@@ -1,0 +1,6 @@
+# ignore all irrelevant files
+*
+!.gitignore
+!.SRCINFO
+!PKGBUILD
+!work-in-present-working-directory-only.patch

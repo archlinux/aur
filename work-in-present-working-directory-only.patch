@@ -1,0 +1,94 @@
+diff --git a/cleanup.sh b/cleanup.sh
+index d8f1d61..8099f54 100755
+--- a/cleanup.sh
++++ b/cleanup.sh
+@@ -18,13 +18,13 @@ aik="${BASH_SOURCE:-$0}";
+ aik="$(dirname "$(readlink -f "$aik")")";
+ bin="$aik/bin";
+ 
+-case $1 in
+-  --local) shift;;
+-  *) cd "$aik";;
+-esac;
++#case $1 in
++#  --local) shift;;
++#  *) cd "$aik";;
++#esac;
+ 
+-chmod -R 755 "$bin" "$aik"/*.sh;
+-chmod 644 "$bin/magic" "$bin/androidbootimg.magic" "$bin/boot_signer.jar" "$bin/avb/"* "$bin/chromeos/"*;
++#chmod -R 755 "$bin" "$aik"/*.sh;
++#chmod 644 "$bin/magic" "$bin/androidbootimg.magic" "$bin/boot_signer.jar" "$bin/avb/"* "$bin/chromeos/"*;
+ 
+ if [ -d ramdisk ] && [ "$(stat $statarg ramdisk | head -n 1)" = "root" -o ! "$(find ramdisk 2>&1 | cpio -o >/dev/null 2>&1; echo $?)" -eq "0" ]; then
+   sudo=sudo;
+diff --git a/repackimg.sh b/repackimg.sh
+index 07c54c6..ead4a2c 100755
+--- a/repackimg.sh
++++ b/repackimg.sh
+@@ -20,7 +20,7 @@ arch=$plat/`uname -m`;
+ aik="${BASH_SOURCE:-$0}";
+ aik="$(dirname "$(readlink -f "$aik")")";
+ bin="$aik/bin";
+-cur="$(readlink -f "$PWD")";
++cur="$PWD";
+ 
+ case $plat in
+   macos)
+@@ -45,12 +45,12 @@ case $plat in
+   ;;
+ esac;
+ 
+-case $1 in
+-  --local) shift;;
+-  *) cd "$aik";;
+-esac;
+-chmod -R 755 "$bin" "$aik/"*.sh;
+-chmod 644 "$bin/magic" "$bin/androidbootimg.magic" "$bin/boot_signer.jar" "$bin/avb/"* "$bin/chromeos/"*;
++#case $1 in
++#  --local) shift;;
++#  *) cd "$aik";;
++#esac;
++#chmod -R 755 "$bin" "$aik/"*.sh;
++#chmod 644 "$bin/magic" "$bin/androidbootimg.magic" "$bin/boot_signer.jar" "$bin/avb/"* "$bin/chromeos/"*;
+ 
+ if [ -z "$(ls split_img/* 2>/dev/null)" -o ! -e ramdisk ]; then
+   echo "No files found to be packed/built.";
+diff --git a/unpackimg.sh b/unpackimg.sh
+index 947cbbf..cbab3bf 100755
+--- a/unpackimg.sh
++++ b/unpackimg.sh
+@@ -9,6 +9,7 @@ case $1 in
+   --help) echo "usage: unpackimg.sh [--local] [--nosudo] <file>"; exit 1;;
+   --local) local="--local"; shift;;
+ esac;
++local="--local"
+ case $1 in
+   --nosudo) nosudo=1; shift;;
+   --sudo) shift;;
+@@ -29,7 +30,7 @@ arch=$plat/`uname -m`;
+ aik="${BASH_SOURCE:-$0}";
+ aik="$(dirname "$(readlink -f "$aik")")";
+ bin="$aik/bin";
+-cur="$(readlink -f "$PWD")";
++cur="$PWD";
+ 
+ case $plat in
+   macos)
+@@ -50,11 +51,11 @@ case $plat in
+   ;;
+ esac;
+ 
+-if [ ! "$local" ]; then
+-  cd "$aik";
+-fi;
+-chmod -R 755 "$bin" "$aik"/*.sh;
+-chmod 644 "$bin/magic" "$bin/androidbootimg.magic" "$bin/boot_signer.jar" "$bin/avb/"* "$bin/chromeos/"*;
++#if [ ! "$local" ]; then
++#  cd "$aik";
++#fi;
++#chmod -R 755 "$bin" "$aik"/*.sh;
++#chmod 644 "$bin/magic" "$bin/androidbootimg.magic" "$bin/boot_signer.jar" "$bin/avb/"* "$bin/chromeos/"*;
+ 
+ img="$1";
+ [ -f "$cur/$1" ] && img="$cur/$1";
