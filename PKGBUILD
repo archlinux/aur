@@ -1,5 +1,5 @@
 pkgname=hdl-make
-pkgver=3.0.r429.gfa571b5
+pkgver=3.0.r537.gf3c20ff
 pkgrel=1
 pkgdesc="Hdlmake is a tool for generating multi-purpose makefiles for FPGA projects."
 arch=('x86_64')
