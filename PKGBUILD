@@ -1,7 +1,7 @@
 # Maintainer: Cédric Connes <cedric.connes@gmail.com>
 
 pkgname=grpcui-bin
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='An interactive web UI for gRPC, along the lines of postman (binary release)'
 arch=('i686' 'x86_64')
@@ -13,8 +13,8 @@ source=("README_$pkgver.md::https://raw.githubusercontent.com/fullstorydev/grpcu
 source_i686=("grpcui_${pkgver}_i686.tar.gz::https://github.com/fullstorydev/grpcui/releases/download/v$pkgver/grpcui_${pkgver}_linux_x86_32.tar.gz")
 source_x86_64=("grpcui_${pkgver}_x86_64.tar.gz::https://github.com/fullstorydev/grpcui/releases/download/v$pkgver/grpcui_${pkgver}_linux_x86_64.tar.gz")
 sha256sums=('7b4a32609bdcd0064be15d8e99b5cd13a2867f6665b196ed56e7a3f759775a84')
-sha256sums_i686=('89f73584cbf8650909cc1be9e6fefeee61f32301e6546382201e59711bf19777')
-sha256sums_x86_64=('becdd7bc81e49b457286089eca627e4bdb6317eb4743c2be990997229919d334')
+sha256sums_i686=('0d570326b95305414aaf841a8793f23c2236930b4db7c6121d26bfd2a75da6f2')
+sha256sums_x86_64=('9a7ebe31b89d585a80971f3795b3a8ada9345499c5f987a5a24d02368c314fae')
 
 package() {
   install -Dm755 grpcui "$pkgdir"/usr/bin/grpcui
