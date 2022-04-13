@@ -2,9 +2,9 @@
 # Contributor: the NICOS contributors, MLZ
 
 pkgname=nicos
-pkgver=3.9
+pkgver=3.9.0
 pkgrel=1
-pkgdesc="NICOS, the Networked Instrument Control System of the MLZ"
+pkgdesc="The Networked Instrument Control System of the MLZ"
 arch=('x86_64')
 url="https://nicos-controls.org/"
 license=('GPL3')
@@ -60,26 +60,20 @@ depends=(
 )
 provides=('nicos')
 conflicts=('nicos-git')
-source=('git+https://forge.frm2.tum.de/review/frm2/nicos/nicos')
-sha256sums=('SKIP')
-
-
-prepare() {
-  cd "$srcdir/$pkgname"
-  git switch origin/release-${pkgver} -c release-${pkgver} || git switch release-${pkgver}
-}
+source=("https://forge.frm2.tum.de/packages/nicos-${pkgver}.tar.gz")
+sha256sums=('19c4a6fe244f3e8362d78191ae6d194d170f6321923f4b0a2ad2622add158cfb')
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-${pkgver}"
   python setup.py build
 }
 
 check() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-${pkgver}"
   python setup.py check -mr
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-${pkgver}"
   python setup.py install --root=$pkgdir/
 }

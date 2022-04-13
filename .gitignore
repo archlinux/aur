@@ -1,4 +1,4 @@
 /src/
 /pkg/
 *.pkg.*
-/nicos/
+nicos-3.9.0.tar.gz
