@@ -2,15 +2,15 @@
 
 _pkgname=xfce4-settings
 pkgname=${_pkgname}-git
-pkgver=4.16.0+366+g78d614fe
+pkgver=4.16.0+368+ge83a447d
 pkgrel=1
 pkgdesc="Settings manager for xfce (git checkout)"
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="http://www.xfce.org/"
 license=('GPL2')
 groups=('xfce4-git')
-depends=('exo' 'garcon' 'libxfce4ui>=4.15.1' 'xfconf' 'libnotify' 'colord'
-         'libxklavier' 'adwaita-icon-theme' 'gnome-themes-extra')
+depends=('exo' 'garcon' 'libxfce4ui>=4.17.0' 'libxfce4util>=4.17.2' 'xfconf'
+         'libnotify' 'colord' 'libxklavier' 'adwaita-icon-theme' 'gnome-themes-extra')
 makedepends=('intltool' 'git' 'xfce4-dev-tools')
 optdepends=('libcanberra: for sound control')
 provides=("${_pkgname}=${pkgver%%+*}")

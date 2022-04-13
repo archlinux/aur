@@ -1,6 +1,6 @@
 pkgbase = xfce4-settings-git
 	pkgdesc = Settings manager for xfce (git checkout)
-	pkgver = 4.16.0+366+g78d614fe
+	pkgver = 4.16.0+368+ge83a447d
 	pkgrel = 1
 	url = http://www.xfce.org/
 	arch = x86_64
@@ -14,7 +14,8 @@ pkgbase = xfce4-settings-git
 	makedepends = xfce4-dev-tools
 	depends = exo
 	depends = garcon
-	depends = libxfce4ui>=4.15.1
+	depends = libxfce4ui>=4.17.0
+	depends = libxfce4util>=4.17.2
 	depends = xfconf
 	depends = libnotify
 	depends = colord
