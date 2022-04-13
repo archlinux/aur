@@ -1,0 +1,14 @@
+pkgbase = laze-bin
+	pkgdesc = A declarative build system for C projects aiming to be simple, fast and correct
+	pkgver = 0.1.7
+	pkgrel = 1
+	url = https://github.com/kaspar030/laze
+	arch = x86_64
+	license = Apache-2.0
+	depends = ninja
+	provides = laze
+	conflicts = laze
+	source = https://github.com/kaspar030/laze/releases/download/0.1.7/laze-0.1.7-x86_64-unknown-linux-musl.tar.gz
+	sha256sums = 5ce525fb89f1684f1eb8a75140b2aa441d25b6eac58b4eb0e0d8e093b24a1a40
+
+pkgname = laze-bin
