@@ -1,0 +1,15 @@
+[Desktop Entry]
+Comment=A simple and easy to use mod manager for several Unity games using Thunderstore.
+Encoding=UTF-8
+Exec=env DESKTOPINTEGRATION=false /usr/bin/r2modman
+Icon=r2modman
+StartupWMClass=r2modman
+Name=r2modman
+StartupNotify=true
+Terminal=false
+Type=Application
+Version={pkgversion}
+X-AppImage-Version={pkgversion}
+X-KDE-SubstituteUID=false
+MimeType=x-scheme-handler/ror2mm;
+Categories=Game;
