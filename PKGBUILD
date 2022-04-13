@@ -6,7 +6,7 @@
 _electron=electron
 pkgbase=element-desktop-git
 pkgname=(element-web-git element-desktop-git)
-pkgver=1.9.9.r27.gc6c1238ce
+pkgver=1.10.9.r19.g03ab1237e
 pkgrel=1
 pkgdesc="Glossy Matrix collaboration client — "
 arch=(x86_64)
@@ -52,7 +52,6 @@ prepare() {
   yarn install --no-fund
 
   cd ../element-web/node_modules/matrix-react-sdk
-  yarn reskindex
 }
 
 build() {
