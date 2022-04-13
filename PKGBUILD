@@ -1,8 +1,8 @@
 # Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
-_ver=RC-0.7.1
+_tag=BETA-0.8.1
 pkgname=pocket-core
-pkgver=0.7.1_rc
+pkgver=0.8.1_beta
 pkgrel=1
 pkgdesc='Official implementation of the Pocket Network Protocol'
 arch=('x86_64')
@@ -10,20 +10,20 @@ url='https://www.pokt.network/'
 license=('MIT')
 makedepends=('go')
 source=(
-    "https://github.com/pokt-network/pocket-core/archive/refs/tags/$_ver.tar.gz"
+    "https://github.com/pokt-network/pocket-core/archive/refs/tags/$_tag.tar.gz"
     'pocket.service'
     'pocket.sysusers'
     'pocket.tmpfiles'
 )
 sha512sums=(
-    '9bbb69c4d2574868d093b53f44b0b1d65775beba8732d30caceeb3b5c04d3a52517b57336a324e07375d8a2c0404e4bdacb8505cbe6c7fa27eeedd480523f283'
+    'd57ac21aa33d3491e1a0691d9dd0df11396beaa3f8142dc816e4461efbc249898a1586b76d10f45c3f43922c97464e9a19dc37144de74e4c69462bfbe0e49928'
     '5a566112c8b6fa7a9b62d5e9375789258ee7d5e9e9fbd2987490a5e11e97d0d5069490c96a246d26efc0c61a78216835dd297230c36876563081f12fefd4a001'
-    '8cd1a098212829477142eb69cc5202cbe08c96c641c426af4498fb8d3c769ba0d77335540443605fd7d91a2f3a986b79a4eeed0a84d0770f12b4cf6d5c7d0f64'
+    'c20438004fc5e1f178bc85422202043083615ce77772c5af46e50ddb58890374202f269f5ab51baa692f3d0b82febde452ea8150f10e5e6edb1e5117dab1affc'
     '6ca773151a8e97bc463758893b312d10311ee88add0a93ba0c0703d02e19b9002b53fe746dd9ef62fcda67e2dfe8e966f5343ce35003999091c9a44878a038a6'
 )
 
 build() {
-    cd $pkgname-$_ver
+    cd $pkgname-$_tag
 
     export CGO_CPPFLAGS="${CPPFLAGS}"
     export CGO_CFLAGS="${CFLAGS}"
@@ -39,7 +39,7 @@ package() {
     install -Dm644 pocket.tmpfiles "$pkgdir/usr/lib/tmpfiles.d/pocket.conf"
     install -Dm644 pocket.service -t "$pkgdir/usr/lib/systemd/system"
 
-    cd $pkgname-$_ver
+    cd $pkgname-$_tag
 
     install -Dm755 build/pocket_core "$pkgdir/usr/bin/pocket"
     install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname"

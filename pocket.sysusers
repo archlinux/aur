@@ -1,1 +1,1 @@
-u pocket - "Pocket user" /var/lib/pocket /bin/bash
+u pocket - "Pocket user" /var/lib/pocket /sbin/nologin
