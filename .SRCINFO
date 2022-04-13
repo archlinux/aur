@@ -8,5 +8,6 @@ pkgbase = felix-rs
 	makedepends = cargo
 	depends = gcc-libs
 	source = felix-0.6.0.tar.gz::https://github.com/kyoheiu/felix/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = b8945e889f047664856efc6e041005fc3e69032894a6a84da270c3f9ee81473c
 
 pkgname = felix-rs
