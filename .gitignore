@@ -1,0 +1,6 @@
+obs-ios-camera-source/
+obs-studio/
+pkg/
+src/
+obs-plugin-ios-camera-source-git*.zst
+

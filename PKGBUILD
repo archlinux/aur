@@ -1,15 +1,15 @@
 # Maintainer: Rhys Perry <rhysperry111@gmail.com> 
 
 pkgname=obs-plugin-ios-camera-source-git
-pkgver=v2.5.0.r1.g2b6ed18
-pkgrel=2
+pkgver=v2.5.0.r133.g1e41856
+pkgrel=1
 pkgdesc="Use your iPhone camera as a video source in OBS Studio and stream high quality video from your iPhone's camera over USB"
 arch=('x86_64')
 url='https://obs.camera'
 license=('GPL2')
 depends=('obs-studio')
 makedepends=('cmake')
-source=('git+https://github.com/obsproject/obs-studio'
+source=('git+https://github.com/obsproject/obs-studio#tag=27.2.1'
         'git+https://github.com/dougg3/obs-ios-camera-source')
 
 md5sums=('SKIP'
