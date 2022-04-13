@@ -2,7 +2,7 @@
 
 pkgname=amazon-ec2-instance-selector-bin
 _realname="${pkgname%-bin}"
-pkgver=2.1.0
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="A CLI tool and go library which recommends instance types based on resource criteria like vcpus and memory"
 arch=("x86_64" "aarch64")
@@ -12,8 +12,8 @@ provides=("ec2-instance-selector")
 conflicts=("${_realname}")
 source_x86_64=("https://github.com/aws/${_realname}/releases/download/v${pkgver}/ec2-instance-selector-linux-amd64.tar.gz")
 source_aarch64=("https://github.com/aws/${_realname}/releases/download/v${pkgver}/ec2-instance-selector-linux-arm64.tar.gz")
-sha256sums_x86_64=('c2e5384794db7352d3b2f78bdc965a707968600481df00c90ccd4167bb24e701')
-sha256sums_aarch64=('ad2b20d01509b6bf232f3ec2c92c8e3164191b66dc1841319df59ec439d2d16f')
+sha256sums_x86_64=('995613a18fbd702a65322649d77bc5800a5b88302766b42b07124b29df2eb22e')
+sha256sums_aarch64=('a8b6342368b0211b111f08d7e1cfa58536f2087b98f4ab288476c292e6c889ab')
 
 package() {
   cd "${srcdir}/"
