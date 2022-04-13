@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile-git
-pkgver=0.7.4.r41.g822d7f3
+pkgver=0.8.0.r16.ge78d253
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
@@ -44,6 +44,7 @@ depends=(bc
          tex-gyre-fonts
          texlive-core
          ttf-hack
+         xcftools
          xorg-server-xvfb
          yq
          zint
