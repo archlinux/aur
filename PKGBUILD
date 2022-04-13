@@ -3,8 +3,8 @@
 
 pkgname=adguardhome
 _pkgname=AdGuardHome
-pkgver=0.107.5
-pkgrel=3
+pkgver=0.107.6
+pkgrel=1
 epoch=1
 pkgdesc="Network-wide ads and trackers blocking DNS server"
 arch=(x86_64 aarch64 armv7h armv6h)
@@ -14,24 +14,36 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/AdguardTeam/AdGuardHome/arc
         "$pkgname.service"
         "$pkgname.defaults"
 )
-makedepends=(go 'nodejs<17.0.0' npm yarn git)
+makedepends=(go 'nodejs<17' npm yarn git)
+depends=(glibc)
 backup=('etc/default/adguardhome')
-b2sums=('92b7027296622862715479b265b79b7147afd69beef6cbb7bf02409ab288965f5bf77d87390ddd9068e0c061247a5071e43ad65e3337b919985964792fbc5ed1'
+b2sums=('a12c440a0f658227b495c1f622564c9a19f30fa44d470a5dd2d12c5a7f00012519e6a592766e6d04415e166d584eb786241599a7346e716cc4c77bcee5833f2f'
         'd55d1667916e291b201dde5bd0a5d2d6dd16c654ecec4ea47c4a3a54b898e7008ba0538c9d5a4c7572cc304cc625b39accd69692766c1618890efff88e96e5a0'
         'ec3a3cd8debae4dcb4a723ef2ba31960aa1f897e2f8c857fcf9861bc7959072b22fed3091c0d07084c280be0755d03bf6ca4fef5f2d08ae20397378e13cf9c9b')
 
 prepare() {
   cd "$_pkgname-$pkgver"
-  go get github.com/lucas-clemente/quic-go@9c8cadba9e359c2339372071e4f4fb0bd6c2f75b
+  npm --prefix client ci
+  yarn --cwd client2 install
+  go mod download
 }
 
 build() {
   cd "$_pkgname-$pkgver"
-  make -j1 CHANNEL=release VERBOSE=1 VERSION=v$pkgver
+  #make -j1 CHANNEL=release VERBOSE=1 VERSION=v$pkgver
+  npm --prefix client run build-prod
+  yarn --cwd client2 build
+  go build \
+    -trimpath \
+    -buildmode=pie \
+    -mod=readonly \
+    -modcacherw \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -X 'github.com/AdguardTeam/AdGuardHome/internal/version.version=$pkgver-$pkgrel' -X 'github.com/AdguardTeam/AdGuardHome/internal/version.channel=AUR'" \
+    -o $pkgname
 }
 
 package() {
-  install -Dm755 "$_pkgname-$pkgver/$_pkgname" "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 "$_pkgname-$pkgver/$pkgname" "$pkgdir/usr/bin/$pkgname"
   install -Dm644 "$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
   install -Dm644 "$srcdir"/$pkgname.defaults "$pkgdir/etc/default/$pkgname"
 }
