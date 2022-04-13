@@ -1,26 +1,37 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
-pkgname=mn88472-firmware
-pkgver=200917
+pkgname=(mn8847{2,3}-firmware)
+_pkgver=170427
+pkgver=6.427.2017
 pkgrel=1
-pkgdesc="Firmware for Panasonic MN88472 DVB-T/T2/C demodulator"
 arch=('any')
 url="http://www.astrometa.com.tw/"
 license=('unknown')
+groups=('dvb-firmware')
 makedepends=('p7zip')
-source=("https://dl.dropbox.com/s/nggcmw3uewduchp/AMDVBT2_Setup_$pkgver.exe")
-b2sums=('632548b4a7feae81379aa5b6db925b368b24eea65bf4190c4beac2ee6f004c85245db9d875936d292cdbebce5fec4c42d12ac443b029a8bdea261ecc8b8c9565')
+source=("https://dl.dropbox.com/s/ffckhetzp3vmjio/AMDVBT2_Setup_$_pkgver.exe")
+b2sums=('b8027cd4715b3c9c08827dd30e99b69b6b2b8cd45ccd35ac01bac527eaa5cbf09219dc4b2515b1635ada690d4b845db0b12d12aaf1be57117b6a8222f81464c1')
 
 prepare() {
-	7z x AMDVBT2_Setup_$pkgver.exe
-	dd if=X64/AMDVBT2BDA.sys ibs=1 skip=220368 count=2005 of=dvb-demod-mn88472-02.fw
+	7z x AMDVBT2_Setup_$_pkgver.exe
+	tail -c +220369 X64/AMDVBT2BDA.sys | head -c 2005 > dvb-demod-mn88472-02.fw
+	tail -c +222385 X64/AMDVBT2BDA.sys | head -c 2271 > dvb-demod-mn88473-01.fw
+	xz -C crc32 -k -- *.fw
 }
 
 check() {
-	# https://palosaari.fi/linux/v4l-dvb/firmware/MN88472/02/README
-	md5sum -c <<< '088b891ac9273ff8c6818fca27b24d81 dvb-demod-mn88472-02.fw'
+	echo 088b891ac9273ff8c6818fca27b24d81 dvb-demod-mn88472-02.fw | md5sum -c
+	echo bdb15b2311581db4c8411fca5e4ce3ce dvb-demod-mn88473-01.fw | md5sum -c
 }
 
-package() {
+package_mn88472-firmware() {
+	pkgdesc="Firmware for Panasonic MN88472 DVB-T/T2/C demodulator"
+
 	# shellcheck disable=SC2154
-	install -Dm644 -t "$pkgdir"/usr/lib/firmware dvb-demod-mn88472-02.fw
+	install -Dm644 -t "$pkgdir"/usr/lib/firmware dvb-demod-mn88472-02.fw.xz
+}
+
+package_mn88473-firmware() {
+	pkgdesc="Firmware for Panasonic MN88473 DVB-T/T2/C demodulator"
+
+	install -Dm644 -t "$pkgdir"/usr/lib/firmware dvb-demod-mn88473-01.fw.xz
 }
