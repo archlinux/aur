@@ -4,7 +4,7 @@
 pkgname=adguardhome
 _pkgname=AdGuardHome
 pkgver=0.107.6
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Network-wide ads and trackers blocking DNS server"
 arch=(x86_64 aarch64 armv7h armv6h)
@@ -38,7 +38,7 @@ build() {
     -buildmode=pie \
     -mod=readonly \
     -modcacherw \
-    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -X 'github.com/AdguardTeam/AdGuardHome/internal/version.version=$pkgver-$pkgrel' -X 'github.com/AdguardTeam/AdGuardHome/internal/version.channel=release'" \
+    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\" -X 'github.com/AdguardTeam/AdGuardHome/internal/version.version=v$pkgver' -X 'github.com/AdguardTeam/AdGuardHome/internal/version.channel=release'" \
     -o $pkgname
 }
 
