@@ -3,7 +3,7 @@
 
 pkgname=grok-jpeg2000
 pkgver=9.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A high performance open source JPEG 2000 codec."
 arch=(x86_64)
 license=('AGPL')
@@ -11,7 +11,7 @@ url="https://github.com/GrokImageCompression/grok"
 makedepends=('cmake')
 depends=('zlib' 'libpng' 'libtiff' 'lcms2' 'libjpeg' 'jbigkit')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GrokImageCompression/grok/archive/v$pkgver.tar.gz")
-sha256sums=('0ea68e3aabfaa50e5a9e21676911a9fa87f6daaf64cc0cf6c701a5a52b70e934')
+sha256sums=('f5e61ba2f016b2239fadccf03a12bcaeb9b88f63e5bd640b5aae4f8ee698f5f5')
 
 prepare() {
   cd "${srcdir}"
