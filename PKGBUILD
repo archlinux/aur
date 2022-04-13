@@ -3,7 +3,7 @@
 
 pkgname=tracy
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Real-time, nanosecond resolution frame profiler"
 arch=('i686' 'x86_64')
 url="https://github.com/wolfpld/tracy"
@@ -13,7 +13,7 @@ makedepends=('pkgconf' 'git')
 provides=('tracy')
 conflicts=('tracy')
 source=("git+$url#tag=v$pkgver" "tracy.desktop")
-sha256sums=('SKIP' 'd70322648a10aacab4b471fa657ae57bf477ac98c77383d1a8491b3aa5a1c907')
+sha256sums=('SKIP' 'd3e0e3433e10a154ed38103a98600585a20ac49212f53370b2ead89971f47652')
 
 build() {
   cd tracy
@@ -30,5 +30,5 @@ package() {
   install -Dm755 update/build/unix/update-release $pkgdir/usr/bin/tracy-update
   install -Dm755 capture/build/unix/capture-release $pkgdir/usr/bin/tracy-capture
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-  install -Dm644 icon/icon.png $pkgdir/usr/share/icons/hicolor/256x256/apps/tracy.png
+  install -Dm644 icon/icon.svg $pkgdir/usr/share/icons/hicolor/scalable/apps/tracy.svg
 }
