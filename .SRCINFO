@@ -1,6 +1,6 @@
 pkgbase = drawio-desktop
 	pkgdesc = Diagram drawing application built on web technology
-	pkgver = 17.2.4
+	pkgver = 17.4.2
 	pkgrel = 1
 	url = https://github.com/jgraph/drawio-desktop
 	arch = any
@@ -8,13 +8,12 @@ pkgbase = drawio-desktop
 	makedepends = yarn
 	makedepends = ant
 	makedepends = nodejs>=12
-	depends = electron16
+	depends = electron18
 	depends = libnotify
-	conflicts = electron<16.1.0
 	options = !strip
-	source = drawio-17.2.4.tar.gz::https://github.com/jgraph/drawio/archive/v17.2.4.tar.gz
-	source = drawio-desktop-17.2.4.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v17.2.4.tar.gz
-	sha512sums = 513ba48451cc27d51e3a7d61f8589bb81d0b0c11a4db26bbdb8b3b015a619b8bdce3032ce58f61f37c11f464229f289eeedc061eda37ccc617b75bcfcc877f7a
-	sha512sums = 647e90c614064309e4ab0f98d592256c782880689511e68466fa1da1669d6e03e0b1eb513b8bc763bc4467b4e7c6aaf6edb4f24c05e57b100d57648cb5b4af81
+	source = drawio-17.4.2.tar.gz::https://github.com/jgraph/drawio/archive/v17.4.2.tar.gz
+	source = drawio-desktop-17.4.2.tar.gz::https://github.com/jgraph/drawio-desktop/archive/v17.4.2.tar.gz
+	sha512sums = 52db76836abd322cf9669e9bb80548dd4e4eb31afb1a0706f77fcd16cb90b162c2cacde0e13433202e78a14c254331a09db3cda93ea1bf6b7df7c280106aa37e
+	sha512sums = c9b0ab7a298bede99e07c0c0212575bb5cec47071b72d0b136c7ae5bcb5d4f45f371c5dc6cf07b8f98397d960f6ece65c6fade56f5e9e9a598ed1e3d4a957c81
 
 pkgname = drawio-desktop
