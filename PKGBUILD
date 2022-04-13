@@ -1,7 +1,7 @@
 # maintainer: libele <libele@disroot.org>
 
 pkgname=ifbabel
-pkgver=0.5
+pkgver=0.6
 pkgrel=1
 pkgdesc="Treaty of Babel software suite."
 arch=('armv6h' 'armv7h' 'aarch64' 'i686' 'pentium4' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=('dos2unix' 'unzip')
 source=("https://babel.ifarchive.org/downloads/babel-${pkgver}.zip")
 noextract=("babel-${pkgver}.zip")
 
-md5sums=('3176366462c9001e6cb266b3b4989515')
+md5sums=('28ce74370dc90bbdd2aa21f602a4f348')
 
 prepare() {
   cd "${srcdir}"
@@ -27,7 +27,7 @@ build() {
   make
 
   cd "${srcdir}"/"babel-${pkgver}"/test
-  make
+  make test-alan test-bronze test-sensory test-twine
 
   cd "${srcdir}"/"babel-${pkgver}"/extras
 

@@ -1,6 +1,6 @@
 pkgbase = ifbabel
 	pkgdesc = Treaty of Babel software suite.
-	pkgver = 0.5
+	pkgver = 0.6
 	pkgrel = 1
 	url = https://babel.ifarchive.org/program.html
 	arch = armv6h
@@ -14,8 +14,8 @@ pkgbase = ifbabel
 	makedepends = unzip
 	depends = curl
 	depends = glibc
-	noextract = babel-0.5.zip
-	source = https://babel.ifarchive.org/downloads/babel-0.5.zip
-	md5sums = 3176366462c9001e6cb266b3b4989515
+	noextract = babel-0.6.zip
+	source = https://babel.ifarchive.org/downloads/babel-0.6.zip
+	md5sums = 28ce74370dc90bbdd2aa21f602a4f348
 
 pkgname = ifbabel
