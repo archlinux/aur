@@ -5,7 +5,7 @@
 # Contributor: Frederik “Freso” S. Olesen <freso.dk@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 pkgname=lutris-git
-pkgver=0.5.10.r26.g293ed419
+pkgver=0.5.10.r36.ga5186593
 pkgrel=1
 pkgdesc='Open Gaming Platform'
 arch=('any')
@@ -16,8 +16,9 @@ depends=('dbus-python' 'cabextract' 'curl' 'glib2' 'gtk3' 'mesa-utils'
          'python-pillow' 'python-requests' 'python-yaml' 'unzip'
          'webkit2gtk' 'xorg-xrandr')
 makedepends=('git' 'meson')
-checkdepends=('appstream-glib' 'pciutils' 'python-nose2' 'python-poetry'
-              'xorg-server-xvfb' 'xterm')
+checkdepends=('appstream-glib')
+#checkdepends=('appstream-glib' 'pciutils' 'python-nose2' 'python-poetry'
+#              'xorg-server-xvfb' 'xterm')
 optdepends=(
   'gamemode: Allows games to request a temporary set of optimisations'
   'gamescope: Draw the game window isolated from your desktop'
@@ -55,12 +56,11 @@ build() {
 check() {
   meson test -C build --print-errorlogs
 
-  cd "$srcdir/${pkgname%-git}"
-
   # Run test suite
   # Will produce errors if ~/.local/share/lutris, ~/.config/lutris
   # and ~/.cache/lutris are not avialable / writable
-  xvfb-run --auto-servernum poetry run nose2
+#  cd "$srcdir/${pkgname%-git}"
+#  xvfb-run --auto-servernum poetry run nose2
 }
 
 package() {
