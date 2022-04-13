@@ -14,7 +14,7 @@ _JBR=
 
 pkgname=intellij-idea-ce-eap
 _pkgname=idea-IC
-_buildver=221.5080.169
+_buildver=221.5080.210
 _veryear=2022
 _verrelease=1
 _verextra=
@@ -27,9 +27,9 @@ url="http://www.jetbrains.com/idea/nextversion"
 license=('Apache2')
 depends=('java-environment' 'giflib' 'libxtst' 'libdbusmenu-glib')
 if [ -n "${_JBR}" ]; then
-    _archive=("ideaIC-${_buildver}-${_JBR}.tar.gz")
+    _archive=("ideaIC-${_veryear}.${_verrelease}-${_JBR}.tar.gz")
 else
-    _archive=("ideaIC-${_buildver}.tar.gz")
+    _archive=("ideaIC-${_veryear}.${_verrelease}.tar.gz")
 fi
 source=("https://download.jetbrains.com/idea/${_archive}"
         "intellij-idea-ce-eap.desktop")
