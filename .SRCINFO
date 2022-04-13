@@ -1,13 +1,13 @@
 pkgbase = smrender-git
 	pkgdesc = A rule-based renderer for OSM data
-	pkgver = dcd2a65
+	pkgver = v4.3.0
 	pkgrel = 1
 	url = http://www.abenteuerland.at/smrender/
 	arch = any
 	license = GPLv3
 	makedepends = git
 	provides = smrender
-	source = git+https://github.com/rahra/smrender.git
+	source = git+https://github.com/rahra/smrender.git#tag=v4.3.0
 	md5sums = SKIP
 
 pkgname = smrender-git
