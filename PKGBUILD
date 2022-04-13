@@ -1,13 +1,13 @@
 # Maintainer: akaessens
 
 pkgname=google-keep-nativefier
-pkgver=2021.04.24
+pkgver=2022.04.13
 pkgrel=1
 pkgdesc='Google Keep in shared Electron runtime'
 arch=('x86_64')
 url='https://keep.google.com'
 license=('MIT')
-depends=('electron')
+depends=('electron17')
 makedepends=(
   'gendesk'
   'nodejs-nativefier'
@@ -21,7 +21,7 @@ _name='Google Keep'
 prepare() {
   cat > "${pkgname}" <<EOF
 #!/usr/bin/env bash
-exec electron /usr/share/${pkgname} "\$@"
+exec electron17 /usr/share/${pkgname} "\$@"
 EOF
   gendesk \
     --pkgname "${pkgname}" \
@@ -38,11 +38,13 @@ build() {
   nativefier \
     --name "${_name}" \
     --icon "${pkgname}.png" \
-    --maximize \
+    --width "800px" \
+    --height "600px" \
+    --browserwindow-options '{ "webPreferences": { "defaultFontFamily": { "standard": "Open Sans", "serif": "Open Sans", "sansSerif": "Open Sans" } } }' \
     --user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0" \
     --single-instance \
-    --verbose \
-    https://keep.google.com
+    --zoom "0.8" \
+    https://keep.google.com/
 }
 
 package() {
