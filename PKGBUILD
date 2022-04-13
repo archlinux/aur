@@ -2,11 +2,12 @@
 
 pkgname=dropbear-client
 pkgver=2022.82
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight SSH client'
 arch=('x86_64')
 url='https://github.com/mkj/dropbear'
 license=('MIT')
+conflicts=('dropbear')
 depends=('libxcrypt' 'zlib')
 makedepends=('git')
 validpgpkeys=('F7347EF2EE2E07A267628CA944931494F29C6773')
