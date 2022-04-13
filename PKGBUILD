@@ -10,12 +10,12 @@
 
 pkgname=mongodb
 # #.<odd number>.# releases are unstable development/testing
-pkgver=5.0.6
-pkgrel=2
+pkgver=5.0.7
+pkgrel=1
 pkgdesc="A high-performance, open source, schema-free document-oriented database"
 arch=("x86_64")
 url="https://www.mongodb.com/"
-license=("custom:SSPL")
+license=("Apache" "custom:SSPL1")
 depends=('curl' 'libstemmer' 'snappy' 'gperftools' 'boost-libs' 'pcre' 'yaml-cpp')
 makedepends=('scons' 'python-psutil' 'python-setuptools' 'python-regex' 'python-cheetah3' 'python-yaml' 'python-requests' 'boost')
 optdepends=('mongodb-tools: mongoimport, mongodump, mongotop, etc')
@@ -27,7 +27,7 @@ source=(https://fastdl.mongodb.org/src/mongodb-src-r$pkgver.tar.gz
         mongodb-5.0.2-skip-no-exceptions.patch
         mongodb-5.0.2-no-compass.patch
         mongodb-4.4.1-boost.patch)
-sha256sums=('9d514eef9093d383120aebe4469c8118a39f390afcd8cd9af2399076b27abb52'
+sha256sums=('d4f78305924da895c71ff7128767be591d0f7d2fdbed7b891339246eb453fe07'
             '3757d548cfb0e697f59b9104f39a344bb3d15f802608085f838cb2495c065795'
             'b7d18726225cd447e353007f896ff7e4cbedb2f641077bce70ab9d292e8f8d39'
             '5b81ebc3ed68b307df76277aca3226feee33a00d8bb396206bdc7a8a1f58f3e4'
@@ -97,7 +97,10 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-src-r${pkgver}"
 
-  scons PREFIX=/usr DESTDIR="$pkgdir" install-core "${_scons_args[@]}"
+  # Install binaries
+  install -D build/install/bin/mongo "$pkgdir/usr/bin/mongo"
+  install -D build/install/bin/mongod "$pkgdir/usr/bin/mongod"
+  install -D build/install/bin/mongos "$pkgdir/usr/bin/mongos"
 
   # Keep historical Arch conf file name
   install -Dm644 "rpm/mongod.conf" "${pkgdir}/etc/${pkgname}.conf"
@@ -110,12 +113,12 @@ package() {
   install -Dm644 "debian/mongod.1" "${pkgdir}/usr/share/man/man1/mongod.1"
   install -Dm644 "debian/mongos.1" "${pkgdir}/usr/share/man/man1/mongos.1"
 
+  # Install systemd files
   install -Dm644 "${srcdir}/${pkgname}.sysusers" "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
   install -Dm644 "${srcdir}/${pkgname}.tmpfiles" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
 
-  # move licenses
-  mkdir -p $pkgdir/usr/share/licenses/$pkgname
-  mv $pkgdir/usr/{LICENSE-Community.txt,MPL-2,README,THIRD-PARTY-NOTICES} $pkgdir/usr/share/licenses/$pkgname
+  # Install license
+  install -D LICENSE-Community.txt "$pkgdir/usr/share/licenses/mongodb/LICENSE"
 }
 # vim:set ts=2 sw=2 et:
 
