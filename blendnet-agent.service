@@ -11,8 +11,8 @@ KillSignal=SIGKILL
 WorkingDirectory=~
 ConfigurationDirectory=blendnet
 StateDirectory=blendnet
-ExecStartPre=/usr/share/blender/3.0/scripts/addons/blendnet/blendnet-validate agent
-ExecStart=/usr/bin/blender -b -noaudio -P /usr/share/blender/3.0/scripts/addons/blendnet/agent.py
+ExecStartPre=/usr/share/blender/%v/scripts/addons/blendnet/blendnet-validate agent
+ExecStart=/usr/bin/blender -b -noaudio -P /usr/share/blender/%v/scripts/addons/blendnet/agent.py
 Restart=always
 RestartSec=2s
 
