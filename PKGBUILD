@@ -2,14 +2,14 @@
 # ---
 _pkgbase=st
 pkgname=auto-st
-pkgver=0.8.5.r14
+pkgver=0.8.5.r17
 pkgrel=1
 pkgdesc="Concise Build of Suckless Simple Terminal"
 arch=('x86_64')
 url="https://gitlab.com/a4to/${_pkgbase}"
 license=('MIT')
 options=('zipman')
-depends=('libxft')
+depends=('libxft' 'ttf-hack')
 makedepends=('ncurses' 'libxft' 'git')
 optdepends=(
     'dmenu: feed urls to dmenu'

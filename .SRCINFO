@@ -1,6 +1,6 @@
 pkgbase = auto-st
 	pkgdesc = Concise Build of Suckless Simple Terminal
-	pkgver = 0.8.5.r14
+	pkgver = 0.8.5.r17
 	pkgrel = 1
 	url = https://gitlab.com/a4to/st
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = auto-st
 	makedepends = libxft
 	makedepends = git
 	depends = libxft
+	depends = ttf-hack
 	optdepends = dmenu: feed urls to dmenu
 	optdepends = libcurl: for curl
 	provides = st
