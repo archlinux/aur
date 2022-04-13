@@ -7,7 +7,7 @@
 # Contributor: Jamesjon <universales@protonmail.com>
 
 pkgname=peazip-qt5-bin
-pkgver=8.5.0
+pkgver=8.6.0
 pkgrel=1
 pkgdesc="File and archive manager, 7Z BR RAR TAR ZST ZIP files extraction utility"
 arch=('x86_64')
@@ -18,11 +18,12 @@ conflicts=('peazip')
 depends=('qt5pas')
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/peazip/PeaZip/releases/download/${pkgver}/peazip_portable-${pkgver}.LINUX.Qt5.x86_64.tar.gz")
-sha256sums=('39fa078c1b9ca60bcb575fd7eee0da878a33564fac8333a85dc6007e426c9769')
+sha256sums=('7f0ec8c92f9be28976be5991115b4e59a8dadaa3e23426e70909369cfceae4ae')
 
 package() {
     local opt_dir="/opt/peazip-qt5-bin"
     local freedesktop_dir="${opt_dir}/res/share/batch/freedesktop_integration"
+    local icons_dir="${opt_dir}/res/share/icons"
 
     install -d "${pkgdir}/opt" "${pkgdir}/usr/bin" "${pkgdir}/usr/share/licenses/peazip"
 
@@ -36,11 +37,11 @@ package() {
 
     install -Dm644 "${pkgdir}${freedesktop_dir}/"*.desktop -t "${pkgdir}/usr/share/applications"
 
-    install -Dm644 "${pkgdir}${freedesktop_dir}/"peazip{,_alt}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps"
+    install -Dm644 "${pkgdir}${icons_dir}/"peazip{,_app}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps/"
 
-    install -Dm644 "${pkgdir}${freedesktop_dir}/"peazip_{7z,rar,zip}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/mimetypes"
+    install -Dm644 "${pkgdir}${icons_dir}/"peazip_{7z,rar,zip}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/mimetypes"
 
-    install -Dm644 "${pkgdir}${freedesktop_dir}/"peazip_{add,extract}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/actions"
+    install -Dm644 "${pkgdir}${icons_dir}/"peazip_{add,extract,browse,convert}.png -t "${pkgdir}/usr/share/icons/hicolor/256x256/actions"
 
     rm "${pkgdir}${opt_dir}/res/portable"
 }
