@@ -1,4 +1,4 @@
-pkgbase = php-yaml
+pkgbase = php7-yaml
 	pkgdesc = Support for YAML 1.1 (YAML Ain't Markup Language) serialization using the LibYAML library.
 	pkgver = 2.2.2
 	pkgrel = 1
@@ -8,8 +8,8 @@ pkgbase = php-yaml
 	license = MIT
 	depends = php
 	depends = libyaml
-	backup = etc/php/conf.d/yaml.ini
+	backup = etc/php7/conf.d/yaml.ini
 	source = http://pecl.php.net/get/yaml-2.2.2.tgz
 	sha256sums = 119052f0461d57d86f44c252f9c9b2dd743486c701c1a0aba0aebecdd0d8b82a
 
-pkgname = php-yaml
+pkgname = php7-yaml
