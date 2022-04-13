@@ -1,4 +1,5 @@
-# Maintainer: akaessens
+# Maintainer: Jouni Rinne <l33tmmx swirlything gmail dot com>
+# Contributor: akaessens
 
 pkgname=google-keep-nativefier
 pkgver=2022.04.13
