@@ -1,7 +1,7 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=curl-impersonate-firefox
-pkgver=r101.af38d2b
+pkgver=r120.7717c22
 _gitname=curl-impersonate
 pkgrel=1
 pkgdesc="A special compilation of curl that makes it impersonate Firefox"
@@ -88,24 +88,46 @@ patch_curl () {
 build_curl () {
   cd ${srcdir}
   cd ${CURL_VERSION}
-  ./configure --with-nss=${srcdir}/${NSS_VERSION}/dist/Release --enable-static --disable-shared --with-nghttp2=${srcdir}/${NGHTTP2_VERSION}/build --with-brotli=${srcdir}${BROTLI_VERSION}/build/installed LIBS="-pthread" CFLAGS="-I${srcdir}/${NSS_VERSION}/dist/public/nss -I${srcdir}/${NSS_VERSION}/dist/Release/include/nspr -I${srcdir}/${NGHTTP2_VERSION}/build" USE_CURL_SSLKEYLOGFILE=true
+  ./configure \
+     --prefix=${srcdir}/${CURL_VERSION}/install \
+     --with-nss=${srcdir}/${NSS_VERSION}/dist/Release \
+     --enable-static \
+     --disable-shared \
+     --with-nghttp2=${srcdir}/${NGHTTP2_VERSION}/build \
+     --with-brotli=${srcdir}${BROTLI_VERSION}/build/installed \
+     LIBS="-pthread" \
+     CFLAGS="-I${srcdir}/${NSS_VERSION}/dist/public/nss \
+     -I${srcdir}/${NSS_VERSION}/dist/Release/include/nspr \
+     -I${srcdir}/${NGHTTP2_VERSION}/build" \
+     USE_CURL_SSLKEYLOGFILE=true
   make
+  make install
   mkdir -p out
-  cp src/curl out/curl-impersonate
+  cp install/bin/curl-impersonate-ff out/curl-impersonate-ff
   cp ${srcdir}/${browser_dir}/curl_* out/
+  strip out/curl-impersonate-ff
   chmod +x out/*
-  strip out/curl-impersonate
 }
 
 build_libcurl () {
   cd ${srcdir}
   cd ${CURL_VERSION}
-  ./configure --with-nss=${srcdir}/${NSS_VERSION}/dist/Release --with-nghttp2=${srcdir}/${NGHTTP2_VERSION}/build --with-brotli=${srcdir}${BROTLI_VERSION}/build/installed LIBS="-pthread" CFLAGS="-I${srcdir}/${NSS_VERSION}/dist/public/nss -I${srcdir}/${NSS_VERSION}/dist/Release/include/nspr -I${srcdir}/${NGHTTP2_VERSION}/build" USE_CURL_SSLKEYLOGFILE=true
+  ./configure \
+     --prefix=${srcdir}/${CURL_VERSION}/libinstall \
+     --with-nss=${srcdir}/${NSS_VERSION}/dist/Release \
+     --with-nghttp2=${srcdir}/${NGHTTP2_VERSION}/build \
+     --with-brotli=${srcdir}${BROTLI_VERSION}/build/installed \
+     LIBS="-pthread" \
+     CFLAGS="-I${srcdir}/${NSS_VERSION}/dist/public/nss \
+     -I${srcdir}/${NSS_VERSION}/dist/Release/include/nspr \
+     -I${srcdir}/${NGHTTP2_VERSION}/build" \
+     USE_CURL_SSLKEYLOGFILE=true
   make clean
   make
-  ver=$(readlink -f lib/.libs/libcurl.so | sed 's/.*so\.//')
-  cp "lib/.libs/libcurl.so.$ver" "out/libcurl-impersonate.so.$ver"
-  strip "out/libcurl-impersonate.so.$ver"
+  make install
+  ver=$(readlink -f libinstall/lib/libcurl-impersonate-ff.so | sed 's/.*so\.//')
+  cp -d libinstall/lib/libcurl-impersonate* out/
+  strip "out/libcurl-impersonate-ff.so.$ver"
 }
 
 prepare () {
@@ -125,16 +147,15 @@ package () {
   mkdir -p "${pkgdir}/usr/lib/"
 
   cd ${CURL_VERSION}
-  ver=$(readlink -f lib/.libs/libcurl.so | sed 's/.*so\.//')
+  ver=$(readlink -f libinstall/lib/libcurl-impersonate-ff.so | sed 's/.*so\.//')
   major=$(echo -n $ver | cut -d'.' -f1)
   cd out/
 
-  sed -i "s/\$dir\/curl-impersonate/${pkgname}/g" curl_*
-  install -Dm755 curl-impersonate "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 curl-impersonate-ff "${pkgdir}/usr/bin/${pkgname}"
   install -Dm755 curl_* "${pkgdir}/usr/bin/"
-  install -Dm755 libcurl-impersonate.so.$ver "${pkgdir}/usr/lib/libcurl-impersonate-firefox.so.$ver"
+  install -Dm755 libcurl-impersonate-ff.so.$ver "${pkgdir}/usr/lib/libcurl-impersonate-ff.so.$ver"
 
   cd "${pkgdir}/usr/lib/"
-  ln -s "libcurl-impersonate-firefox.so.$ver" "libcurl-impersonate-firefox.so.$major"
-  ln -s "libcurl-impersonate-firefox.so.$ver" "libcurl-impersonate-firefox.so"
+  ln -s "libcurl-impersonate-ff.so.$ver" "libcurl-impersonate-ff.so.$major"
+  ln -s "libcurl-impersonate-ff.so.$ver" "libcurl-impersonate-ff.so"
 }
