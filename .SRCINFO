@@ -1,6 +1,6 @@
 pkgbase = ddrescueview-bin
 	pkgdesc = Graphical viewer for GNU ddrescue log files
-	pkgver = 0.4~alpha4
+	pkgver = 0.4.5
 	pkgrel = 1
 	url = http://sourceforge.net/projects/ddrescueview
 	arch = i686
@@ -10,8 +10,9 @@ pkgbase = ddrescueview-bin
 	depends = gtk2
 	provides = ddrescueview
 	conflicts = ddrescueview
-	source = https://downloads.sourceforge.net/project/ddrescueview/Test%20builds/v0.4%20alpha%204/Linux-x86_64/ddrescueview-linux-x86_64-0.4~alpha4.tar.xz
-	sha512sums = 68ad638105eeecb241f9d4345d2048f0d459908c70967f47ebdbc2441e3ec946b8f181de3f7006a02106a5b991e64d3d23116d8a71f579bd99cfcca2910b0dde
+	source_i686 = https://downloads.sourceforge.net/project/ddrescueview/Test%20builds/v0.4.5/Linux-i386/ddrescueview-linux-i386-0.4.5.tar.xz
+	sha512sums_i686 = 314288d7b693a4bc4dd63a197fbbe9b735d28a2fe68139770ec1389c02f6c1a4eea4e8bbb0d4d6811ab211edc9b0ab779d00dec0a330c23b0bc40d3e44fd5506
+	source_x86_64 = https://downloads.sourceforge.net/project/ddrescueview/Test%20builds/v0.4.5/Linux-x86_64/ddrescueview-linux-x86_64-0.4.5.tar.xz
+	sha512sums_x86_64 = 2a56488f1369a720ef1f119f941f456e121212a70ca52daa1e6ffa1d47898caf6a21218e41ec5ad02152b03ccc96ba6e050113d4d2ef4a2635ac5d5b467fd1dd
 
 pkgname = ddrescueview-bin
-
