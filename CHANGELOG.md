@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.8.0-1] - 2022-04-07
+
+### Fixed
+
+- do not get `stderr` when preprocessing slides by [@maaslalani](https://github.com/maaslalani) in [#145](https://github.com/maaslalani/slides/pull/145)
+- Respect `GLAMOUR_STYLE` if environment variable is set by [@maaslalani](https://github.com/maaslalani) in [#146](https://github.com/maaslalani/slides/pull/146)
+- Slides tutor by [@maaslalani](https://github.com/maaslalani) in [#147](https://github.com/maaslalani/slides/pull/147)
+
 ## [0.7.3-1] - 2022-02-15
 
 - Bump lots of dependencies
