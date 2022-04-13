@@ -1,11 +1,12 @@
 # Maintainer: Vitaly Ankh (vitalyr) <vitalyankh@gmail.com>
+# Contributor: jonathon <https://aur.archlinux.org/account/jonathon>
 # Contributor: Ignacy Kuchciński (ignapk) <ignacykuchcinski@gmail.com>
 # Contributor: Simon Gardling <titaniumtown@gmail.com>
 # Contributor: Ricardo Liang (rliang) <ricardoliang@gmail.com>
 
 pkgname=mutter-git
 _pkgname=mutter
-pkgver=42.rc+2+g73780ea76
+pkgver=42.0+48+gdd94c448e
 pkgrel=1
 pkgdesc="A window manager for GNOME."
 url="https://gitlab.gnome.org/GNOME/mutter"
@@ -17,7 +18,7 @@ depends=(dconf gobject-introspection-runtime gsettings-desktop-schemas
          xorg-xwayland graphene libxkbfile)
 makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols)
-provides=(mutter)
+provides=(mutter libmutter-10.so)
 conflicts=(mutter)
 groups=(gnome)
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git")
