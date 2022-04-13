@@ -1,7 +1,7 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
 
 pkgname=gnome-shell-extension-vitals
-pkgver=52.0.15
+pkgver=53.0.0
 pkgrel=1
 pkgdesc="Displays system vitals in a GNOME Shell top bar pop-down."
 arch=('any')
