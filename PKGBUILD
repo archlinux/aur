@@ -3,7 +3,7 @@ pkgname=viper-bin
 _pkgname=viper
 pkgver=1.3.1
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="Viper is a launcher and updater for Northstar, and not much more than that."
 arch=('x86_64')
 depends=('nss' 'alsa-lib' 'gtk3')
@@ -14,6 +14,8 @@ sha256sums=('032b688bbbb5a765c5a08425685e243c323f8c1702529ec0ba8e6cc40b6cc6db')
 
 package() {
 	 tar -xf data.tar.xz -C "${pkgdir}"
+	 mkdir ${pkgdir}/usr/bin
      install -Dm644 "${pkgdir}/usr/share/icons/hicolor/0x0/apps/viper.png" "${pkgdir}/usr/share/icons/hicolor/512x512/apps/viper.png"
      rm -rf "${pkgdir}/usr/share/icons/hicolor/0x0"
+     ln -s /opt/Viper/${_pkgname} ${pkgdir}/usr/bin/${_pkgname}
 }
