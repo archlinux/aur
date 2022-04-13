@@ -1,18 +1,20 @@
 pkgbase = libceed
 	pkgdesc = Performance Visualization for Parallel Program
-	pkgver = 0.10.0
+	pkgver = 0.10.1
 	pkgrel = 1
 	url = https://github.com/ceed/libceed
 	arch = x86_64
 	license = BSD
 	makedepends = gcc-fortran
+	makedepends = git
 	makedepends = python-cffi
 	makedepends = python-setuptools
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel
-	source = libceed-0.10.0.tar.gz::https://github.com/ceed/libceed/archive/v0.10.0.tar.gz
-	sha256sums = 7bff5d54110e4dd0abab2cb08b1429573541512e2e4000847b0660a81fa65831
+	source = libceed::git+https://github.com/ceed/libceed#tag=v0.10.1?signed
+	validpgpkeys = BA543CE09D732BE604D53F6FCA6D4A3B32D335A0
+	sha256sums = SKIP
 
 pkgname = libceed
 	depends = glibc
