@@ -1,6 +1,6 @@
 # Maintainer: zjuyk <ownbyzjuyk@gmail.com>
 pkgname=nordic-wallpapers
-pkgver=20220329
+pkgver=20220408
 pkgrel=1
 pkgdesc="A collection of wallpapers that go well with the rices inspired by the Nord Colorscheme."
 arch=('any')
