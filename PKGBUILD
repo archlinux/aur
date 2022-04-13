@@ -1,7 +1,7 @@
 pkgname=twitch-bin
 _pkgname=Twitch-bin
 pkgver=1.0.4
-pkgrel=4
+pkgrel=5
 _pkgrel_x86_64=1
 _pkgrel_armv7h=1
 _pkgrel_aarch64=1
