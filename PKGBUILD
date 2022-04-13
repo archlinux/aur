@@ -4,7 +4,7 @@
 # then please put 'unknown'.
 
 # Maintainer: Thomas Zink <thomas.zink@uni-konstanz.de>
-pkgname="gen-oath-safe"
+pkgname="gen-oath-safe-git"
 pkgver=r18.c7bdb98
 pkgrel=1
 #epoch=
@@ -31,8 +31,10 @@ source=("git+$url")
 md5sums=('SKIP')
 validpgpkeys=('75EB2032F8AAE544A6468786D2B90FE25DB6B019')
 
+_gitname="gen-oath-safe"
+
 pkgver() {
-  cd "$pkgname"
+  cd "$_gitname"
   #git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
@@ -54,9 +56,7 @@ pkgver() {
 #}
 
 package() {
-    echo "$pkgver"
-    echo "$pkgname"
-	cd "$pkgname"
+	cd "$_gitname"
     install -Dm755 ./gen-oath-safe "$pkgdir/usr/local/bin/gen-oath-safe" 
     install -Dm644 ./gen-oath-safe.1 "$pkgdir/usr/local/man/man1/gen-oath-safe.1"
 }

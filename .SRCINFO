@@ -1,4 +1,4 @@
-pkgbase = gen-oath-safe
+pkgbase = gen-oath-safe-git
 	pkgdesc = generate OTP uri, qrcode, and configurations for linOTP, mod_authn_otp, Yubikey
 	pkgver = r18.c7bdb98
 	pkgrel = 1
@@ -15,4 +15,4 @@ pkgbase = gen-oath-safe
 	validpgpkeys = 75EB2032F8AAE544A6468786D2B90FE25DB6B019
 	md5sums = SKIP
 
-pkgname = gen-oath-safe
+pkgname = gen-oath-safe-git
