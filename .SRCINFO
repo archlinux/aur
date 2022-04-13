@@ -1,6 +1,6 @@
 pkgbase = python-srsly
 	pkgdesc = Modern high-performance serialization utilities for Python
-	pkgver = 2.4.2
+	pkgver = 2.4.3
 	pkgrel = 1
 	url = https://pypi.org/project/srsly/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = python-srsly
 	depends = python-pytz
 	depends = python-mock
 	depends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/s/srsly/srsly-2.4.2.tar.gz
-	sha256sums = 2aba252292767875086adf4e4380e27b024d73655456f796f8e07eb3a4dfacc0
+	source = https://files.pythonhosted.org/packages/source/s/srsly/srsly-2.4.3.tar.gz
+	b2sums = 57788adcf436099dbf9557a15c1bd3bf8195cafd5b38e31343f711551d4a825b9c440ffdb6b194f2dd9929167b0c65fae305b2cc2a3446a24cbc843cd6ca49ff
 
 pkgname = python-srsly
