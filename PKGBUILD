@@ -3,7 +3,7 @@
 
 _pkgname=python-gaphas
 pkgname="${_pkgname}-git"
-pkgver=3.6.0.r3.gf012089
+pkgver=3.6.0.r9.gc89cf2c
 pkgrel=1
 pkgdesc="Diagramming widget library for Python"
 arch=('x86_64' 'i686')
@@ -14,6 +14,7 @@ source=(
 )
 md5sums=('SKIP')
 depends=(
+	'gtk3'
 	'python-gobject'
 	'python-cairo'
 	'python-importlib-metadata'
