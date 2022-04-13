@@ -1,11 +1,11 @@
 # Maintainer: Konsonanz <maximilian.lehmann@protonmail.com>
 pkgname=bitburner
 pkgver=1.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Bitburner is a programming-based incremental game"
 arch=('x86_64')
 url="https://github.com/danielyxie/bitburner"
-license=('apache')
+license=('Apache')
 depends=('electron')
 makedepends=('git' 'npm')
 optdepends=('steam: achievement support'
