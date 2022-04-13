@@ -22,7 +22,7 @@ pkgver () {
 build() {
   cd $_gitname
   ./autoconf.sh
-  ./configure
+  ./configure --prefix=/usr
   make
 }
 
