@@ -3,20 +3,17 @@
 # Contributor: Zhaofeng Li <hello@zhaofeng.li>
 # Contributor: Carlo Cabanilla <carlo.cabanilla@gmail.com>
 
+## GPG key: https://github.com/jsirois.gpg
+
 pkgname=python-pex
-pkgver=2.1.78
+pkgver=2.1.79
 pkgrel=1
 arch=('any')
 pkgdesc='Generates executable Python environments'
 url='https://github.com/pantsbuild/pex'
 license=('Apache')
 depends=('python')
-makedepends=(
-	'git'
-	'python-build'
-	'python-installer'
-	'python-flit-core'
-	'python-sphinx')
+makedepends=('git' 'python-build' 'python-installer' 'python-flit-core' 'python-sphinx')
 # checkdepends=('python-pytest-runner' 'python-pkginfo')
 changelog=CHANGES.rst
 provides=('pex')
