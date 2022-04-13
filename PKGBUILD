@@ -1,4 +1,5 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
+# Maintainer: skrewball <aur at joickle dot com>
 
 pkgname=gnome-shell-extension-vitals
 pkgver=53.0.0
