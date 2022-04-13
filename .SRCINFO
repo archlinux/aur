@@ -1,7 +1,7 @@
 pkgbase = libunity
 	pkgdesc = Library for instrumenting and integrating with all aspects of the Unity shell
 	pkgver = 7.1.4
-	pkgrel = 13
+	pkgrel = 14
 	url = https://launchpad.net/libunity
 	arch = i686
 	arch = x86_64
@@ -9,14 +9,16 @@ pkgbase = libunity
 	makedepends = gnome-common
 	makedepends = gobject-introspection
 	makedepends = intltool
-	makedepends = vala0.44
+	makedepends = vala
 	makedepends = icu69-bin
 	depends = dee
 	depends = gtk3
 	depends = libdbusmenu-glib
 	source = https://launchpad.net/ubuntu/+archive/primary/+files/libunity_7.1.4+19.04.20190319.orig.tar.gz
-	source = https://launchpadlibrarian.net/443817430/0001-Fix-FTB-with-recent-vala-requiring-non-public-abstra.patch
+	source = 0001-Fix-FTB-with-recent-vala-requiring-non-public-abstra.patch
+	source = libunity-7.1.4-vala-053.patch
 	sha256sums = 56ecb380d74bf74caba193d9e8ad6b0c85ccf9eeb461bc9731c2b8636e1f1492
 	sha256sums = 98a2562dcf3b3a864d1c05331b4dc672d8bff4b592ca796a0bc132a416f33262
+	sha256sums = b6e01a4b25f6c25aaf364334547f58c2fdca8ad2e6645bbe4cee3c72f7074326
 
 pkgname = libunity
