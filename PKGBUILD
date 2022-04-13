@@ -80,7 +80,7 @@ if [[ $CLI == "YES" ]] ; then
 else
   pkgname="emacs-git"
 fi
-pkgver=29.0.50.154965
+pkgver=29.0.50.155541
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
@@ -229,7 +229,6 @@ build() {
     --localstatedir=/var
     --mandir=/usr/share/man
     --with-gameuser=:games
-    --with-sound=alsa
     --with-modules
     --without-libotf
     --without-m17n-flt
