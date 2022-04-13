@@ -14,7 +14,7 @@ _JBR=
 
 pkgname=intellij-idea-ue-eap
 _pkgname=idea-IU
-_buildver=221.5080.169
+_buildver=221.5080.210
 _veryear=2022
 _verrelease=1
 _verextra=
@@ -27,9 +27,9 @@ url="http://www.jetbrains.com/idea/nextversion"
 license=('custom')
 depends=('java-environment' 'giflib' 'libxtst' 'libdbusmenu-glib')
 if [ -n "${_JBR}" ]; then
-    _archive=("ideaIU-${_buildver}-${_JBR}.tar.gz")
+    _archive=("ideaIU-${_veryear}.${_verrelease}-${_JBR}.tar.gz")
 else
-    _archive=("ideaIU-${_buildver}.tar.gz")
+    _archive=("ideaIU-${_veryear}.${_verrelease}.tar.gz")
 fi
 source=("https://download.jetbrains.com/idea/${_archive}"
         "intellij-idea-ue-eap.desktop")
