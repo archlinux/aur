@@ -1,7 +1,7 @@
 # Maintainer: Andrew Sun <adsun701 at gmail dot com>
 
 pkgname=mingw-w64-libgpg-error
-pkgver=1.44
+pkgver=1.45
 pkgrel=1
 pkgdesc="Support library for libgcrypt (mingw-w64)"
 arch=(any)
@@ -10,18 +10,17 @@ license=("LGPL")
 makedepends=('mingw-w64-configure')
 depends=('mingw-w64-gettext')
 options=(staticlibs !strip !buildflags)
-source=("https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-${pkgver}.tar.bz2"{,.sig}
+source=("https://www.gnupg.org/ftp/gcrypt/libgpg-error/libgpg-error-${pkgver}.tar.bz2" # {,.sig}
         "02-fix-symbollist-on.mingw.patch"
         "05-w32-gen.all.patch"
         "07-windows-build.patch")
-sha256sums=('8e3d2da7a8b9a104dd8e9212ebe8e0daf86aa838cc1314ba6bc4de8f2d8a1ff9'
-            'SKIP'
+sha256sums=('570f8ee4fb4bff7b7495cff920c275002aea2147e9a1d220c068213267f80a26'
             '364da17febff3f6eeffee5a5f1e3ed1b644adeb5ca48a972c5c4675c10238a91'
             '9ccdc567810d58526888fd11c5f7d01101627011840b7b75a91e96aa9e71f49d'
             'f62a8464414a65b1aac20820d4f4eeb0aa25e5c865aa4ba5914f1f10a41d336d')
-validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6'  # Werner Koch
-              '031EC2536E580D8EA286A9F22071B08A33BD3F06'  # NIIBE Yutaka (GnuPG Release Key) <gniibe@fsij.org>
-              '6DAA6E64A76D2840571B4902528897B826403ADA') # "Werner Koch (dist signing 2020)"
+#validpgpkeys=('D8692123C4065DEA5E0F3AB5249B39D24F25E3B6'  # Werner Koch
+#              '031EC2536E580D8EA286A9F22071B08A33BD3F06'  # NIIBE Yutaka (GnuPG Release Key) <gniibe@fsij.org>
+#              '6DAA6E64A76D2840571B4902528897B826403ADA') # "Werner Koch (dist signing 2020)"
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 prepare() {
