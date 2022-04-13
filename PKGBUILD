@@ -3,7 +3,7 @@
 pkgname=hqplayer4
 pkgver=4.17.2
 _rpmpkgver=4.17.2-53
-pkgrel=3
+pkgrel=4
 pkgdesc="The high-end upsampling multichannel software HD-audio player"
 arch=('x86_64')
 url="http://www.signalyst.com/consumer.html"
@@ -12,6 +12,7 @@ depends=('glibc' 'gcc-libs' 'libx11' 'openmp' 'qt5-base' 'qt5-webengine' 'qt5-sc
 optdepends=('evince: hqplayer manual reading')
 source=("https://www.signalyst.eu/bins/hqplayer/fc35/hqplayer4desktop-$_rpmpkgver.fc35.x86_64.rpm")
 sha256sums=('SKIP')
+options=(!strip)
 
 package() {
  bsdtar xf hqplayer4desktop-"$_rpmpkgver".fc35.x86_64.rpm -C "$pkgdir"
