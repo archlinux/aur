@@ -1,0 +1,13 @@
+pkgbase = plymouth-theme-lenovo-bgrt
+	pkgdesc = Adapted bgrt theme that enables flicker free boot on encrypted Lenovo devices.
+	pkgver = 1
+	pkgrel = 1
+	url = https://gitlab.rimikis.de/Leptopoda/plymouth-bgrt-lenovo
+	install = plymouth-theme-lenovo-bgrt.install
+	arch = any
+	license = GPL
+	depends = plymouth
+	source = bgrt-lenovo.plymouth
+	sha256sums = 9e2fe71f25cdcd89f51d58244fbe2b921c48e1d3ce5629e11c9c94e16574146c
+
+pkgname = plymouth-theme-lenovo-bgrt
