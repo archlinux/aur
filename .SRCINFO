@@ -8,6 +8,6 @@ pkgbase = fm-bin
 	provides = fm
 	conflicts = fm
 	source_x86_64 = https://github.com/knipferrc/fm/releases/download/v0.14.0/fm_0.14.0_linux_amd64.tar.gz
-	sha256sums_x86_64 = ceb76015282339a3cca3e18cc318cb0df1b52e8675ca7e359e3b3702228a0d2d
+	sha256sums_x86_64 = 1a7aa18bb830421d14d6416d22b0726167b0add98068d52583aef97a644d3a46
 
 pkgname = fm-bin
