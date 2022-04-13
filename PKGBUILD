@@ -1,4 +1,4 @@
-# Maintainer: skrewball <jason at joickle dot com>
+# Maintainer: skrewball <aur at joickle dot com> gitlab.com/skrewball/aur
 
 pkgname=gnome-shell-extension-clipboard-history
 _pkgbase=gnome-clipboard-history
