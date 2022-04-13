@@ -1,0 +1,39 @@
+From 35099f763e19c054c4d01b83d25a5e8506ed0a18 Mon Sep 17 00:00:00 2001
+From: 7Ji <pugokushin@gmail.com>
+Date: Wed, 13 Apr 2022 19:35:03 +0800
+Subject: [PATCH] beep-main.c: yolo it when running with sudo
+
+---
+ beep-main.c | 16 ----------------
+ 1 file changed, 16 deletions(-)
+
+diff --git a/beep-main.c b/beep-main.c
+index 6b890ff..889a38b 100644
+--- a/beep-main.c
++++ b/beep-main.c
+@@ -475,22 +475,6 @@ int main(const int argc, char *const argv[])
+         exit(EXIT_FAILURE);
+     }
+ 
+-    /* Bail out if running as root under sudo.
+-     */
+-    if ((getuid() == 0) || (geteuid() == 0) ||
+-        (getgid() == 0) || (getegid() == 0)) {
+-        LOG_VERBOSE("Running with root permissions. "
+-                    "Checking for SUDO_* in environment.");
+-        if (getenv("SUDO_COMMAND") || getenv("SUDO_USER") ||
+-            getenv("SUDO_UID") || getenv("SUDO_GID")) {
+-            LOG_ERROR("Running as root under sudo, "
+-                      "which is not supported for security reasons.");
+-            LOG_ERROR("Set up permissions for the pcspkr evdev device "
+-                      "file and run as non-root user instead.");
+-            exit(EXIT_FAILURE);
+-        }
+-    }
+-
+     /* Parse command line */
+     beep_parms_T *parms = (beep_parms_T *)malloc(sizeof(beep_parms_T));
+     if (NULL == parms) {
+-- 
+2.35.1
+
