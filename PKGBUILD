@@ -1,6 +1,7 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 # Contributor: Stephen Zhang <zsrkmyn at gmail dot com>
+# Contributor: Federico Zappone <federico dot zappone at unimol dot it>
 
 pkgname=python-pytorch-rocm
 _pkgname="pytorch"
@@ -261,7 +262,7 @@ _package() {
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  pytorchpath="usr/lib/python${get_pyver}/site-packages/torch"
+  pytorchpath="usr/lib/python$(get_pyver)/site-packages/torch"
   install -d "${pkgdir}/usr/lib"
 
   # put CMake files in correct place
