@@ -1,6 +1,6 @@
 pkgbase = ananicy-rules-git
 	pkgdesc = Rules for ananicy-cpp
-	pkgver = 2.2.1.r48.gb3b666a
+	pkgver = 2.2.1.r102.g7dbaa5c
 	pkgrel = 1
 	url = https://github.com/Nefelim4ag/Ananicy.git
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = ananicy-rules-git
 	conflicts = ananicy
 	conflicts = ananicy-git
 	backup = etc/ananicy.d/ananicy.conf
-	source = ananicy::git+https://github.com/Nefelim4ag/Ananicy.git#branch=master
+	source = ananicy::git+https://github.com/kuche1/minq-ananicy
 	md5sums = SKIP
 
 pkgname = ananicy-rules-git
