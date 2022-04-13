@@ -1,0 +1,11 @@
+[Unit]
+Description=OliveTin
+
+[Service]
+WorkingDirectory=/usr/share/webapps/olivetin
+User=root
+ExecStart=/usr/bin/olivetin -configdir /etc/olivetin
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
