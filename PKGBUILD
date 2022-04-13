@@ -4,13 +4,12 @@
 _name=gaphor
 pkgname=python-${_name}
 pkgver=2.9.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Simple and easy to use modeling tool for UML using GTK3"
 arch=('any')
 url="https://github.com/gaphor/${_name}"
 license=('Apache')
 depends=(
-	'gtk3'
 	'gtksourceview4'
 	'python-darkdetect'
 	'python-gaphas'
