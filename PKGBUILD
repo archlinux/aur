@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=casile
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc='Caleb’s SILE publishing toolkit'
 arch=(x86_64)
@@ -44,6 +44,7 @@ depends=(bc
          tex-gyre-fonts
          texlive-core
          ttf-hack
+         xcftools
          xorg-server-xvfb
          yq
          zint
@@ -59,7 +60,7 @@ _python_deps=(isbnlib
               pantable
               ruamel-yaml
               usfm2osis-cw-git)
-depends+=("${_lua_deps[@]/#/lua-}" "${_lua_deps[@]/#/lua53-}"
+depends+=("${_lua_deps[@]/#/lua-}"
           "${_perl_deps[@]/#/perl-}"
           "${_python_deps[@]/#/python-}")
 depends+=(libgit2.so)
@@ -70,7 +71,7 @@ makedepends=(autoconf-archive
              yarn)
 _archive="$pkgname-$pkgver"
 source=("$url/releases/download/v$pkgver/$_archive.tar.xz")
-sha256sums=('e43d476226857a18a27526b04741e3832904e1ca19f88994ce888ca7aacbcd34')
+sha256sums=('2629e766f34bc792207d8c4318afc7bfdf19c750800bc57183b13a3b2d36f384')
 
 prepare() {
 	cd "$_archive"
