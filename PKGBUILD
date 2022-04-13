@@ -2,10 +2,10 @@
 
 _target=ft32-elf
 pkgname=$_target-gcc
-pkgver=11.2.0
+pkgver=8.5.0
 _islver=0.24
-pkgrel=1
-pkgdesc='The GNU Compiler Collection - cross compiler for Bridgetek FT9xx (bare-metal) target - bootstrap version. only used to build initial glibc and compiler'
+pkgrel=2
+pkgdesc='The GNU Compiler Collection - cross compiler for Bridgetek FT9xx (bare-metal) target'
 arch=(x86_64)
 url='https://gcc.gnu.org/'
 license=(GPL LGPL FDL)
@@ -13,24 +13,15 @@ depends=($_target-binutils zlib libmpc)
 makedepends=(gmp mpfr $_target-newlib)
 optdepends=("$_target-newlib: Standard C library optimized for embedded systems")
 options=(!emptydirs !strip)
-provides=(${pkgname%-bootstrap})
-conflicts=(${pkgname%-bootstrap})
 source=("https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"{,.sig}
-        #"ftp://gcc.gnu.org/pub/gcc/snapshots/$_snapshot/gcc-$_snapshot.tar.xz"
         "https://libisl.sourceforge.io/isl-$_islver.tar.xz")
-sha512sums=('d53a0a966230895c54f01aea38696f818817b505f1e2bfa65e508753fcd01b2aedb4a61434f41f3a2ddbbd9f41384b96153c684ded3f0fa97c82758d9de5c7cf'
+sha512sums=('92f599680e6b7fbce88bcdda810f468777d541e5fddfbb287f7977d51093de2a5178bd0e6a08dfe37090ea10a0508a43ccd00220041abbbec33f1179bfc174d8'
             'SKIP'
             'ff6bdcff839e1cd473f2a0c1e4dd4a3612ec6fee4544ccbc62b530a7248db2cf93b4b99bf493a86ddf2aba00e768927265d5d411f92061ea85fd7929073428e8')
-validpgpkeys=('F3691687D867B81B51CE07D9BBE43771487328A9'  # Bartlomiej Piotrowski <b@bpiotrowski.pl>
-              '13975A70E63C361C73AE69EF6EEB81F8981C74C7'  # Richard Guenther <richard.guenther@gmail.com>
-              '33C235A34C46AA3FFB293709A328C3A2C3C45C06') # Jakub Jelinek <jakub@redhat.com>
+validpgpkeys=('13975A70E63C361C73AE69EF6EEB81F8981C74C7'  # Richard Guenther <richard.guenther@gmail.com>
+              'D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62') # Jakub Jelinek <jakub@redhat.com>
 
-
-if [ -n "$_snapshot" ]; then
-  _basedir=gcc-$_snapshot
-else
-  _basedir=gcc-$pkgver
-fi
+_basedir=gcc-$pkgver
 
 prepare() {
   cd $_basedir
