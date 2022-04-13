@@ -1,0 +1,14 @@
+diff --unified --recursive --text binutils-2.35.2/ld/scripttempl/ft32.sc binutils_mod/ld/scripttempl/ft32.sc
+--- binutils-2.35.2/ld/scripttempl/ft32.sc	2022-04-13 17:29:41.047889530 +0100
++++ binutils_mod/ld/scripttempl/ft32.sc	2022-04-13 17:31:47.498894237 +0100
+@@ -35,8 +35,8 @@
+     *(.text${RELOCATING+*})
+     ${RELOCATING+*(.strings)
+     *(._pm*)
+-    KEEP (*(SORT_NONE(.init)))
+-    KEEP (*(SORT_NONE(.fini)))
++    *(.init)
++    *(.fini)
+     _etext = .;
+     . = ALIGN(4);}
+   } ${RELOCATING+ > flash}
