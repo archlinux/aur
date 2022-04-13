@@ -1,6 +1,6 @@
 pkgbase = rider-eap
 	pkgdesc = A cross-platform .NET IDE by JetBrains.
-	pkgver = 221.5080.29
+	pkgver = 221.5080.110
 	pkgrel = 1
 	epoch = 1
 	url = https://www.jetbrains.com/rider/eap/
@@ -15,10 +15,10 @@ pkgbase = rider-eap
 	provides = rider-eap
 	options = !strip
 	options = staticlibs
-	source = https://download.jetbrains.com/rider/JetBrains.Rider-2022.1-EAP7-221.5080.29.Checked.tar.gz
+	source = https://download.jetbrains.com/rider/JetBrains.Rider-2022.1-EAP9-221.5080.110.Checked.tar.gz
 	source = rider-eap.desktop
 	source = ResharperHost-runtime-folder.sh
-	sha256sums = e0d3f83a11e43577cde3f921ccb8c691a40ea99095b87447ca6f47234dc1a7f5
+	sha256sums = cba4e00baa8b88d36d8cde09050e5caf844935a9a8f965b78c10562701653b43
 	sha256sums = ada362803d6d2b5ff84680277694d0ecdcb97d46f85d140f79850500966f1ecf
 	sha256sums = 4bc086ff245cf18c5fd2351008b05a0d0e792e8af0394fb094a9118c312c373d
 
