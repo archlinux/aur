@@ -1,6 +1,6 @@
 pkgbase = curl-impersonate-chrome
 	pkgdesc = A special compilation of curl that makes it impersonate Chrome
-	pkgver = r59.979750a
+	pkgver = r120.7717c22
 	pkgrel = 1
 	url = https://github.com/lwthiker/curl-impersonate
 	arch = x86_64
@@ -16,7 +16,6 @@ pkgbase = curl-impersonate-chrome
 	makedepends = automake
 	makedepends = libtool
 	makedepends = patch
-	depends = brotli
 	depends = nss
 	provides = curl-impersonate-chrome
 	options = !buildflags
@@ -29,5 +28,6 @@ pkgbase = curl-impersonate-chrome
 	md5sums = afaf515861012f435653fab96cae2a5f
 	md5sums = de2aaa48ae0bf9713da3a9bfc3f1629f
 	md5sums = 41954fa09f879fccb57d88be23fe8606
+	md5sums = c2274f0c7af8470ad514637c35bcee7d
 
 pkgname = curl-impersonate-chrome

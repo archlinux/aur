@@ -1,7 +1,7 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=curl-impersonate-chrome
-pkgver=r101.af38d2b
+pkgver=r120.7717c22
 _gitname=curl-impersonate
 pkgrel=1
 pkgdesc="A special compilation of curl that makes it impersonate Chrome"
@@ -108,24 +108,45 @@ patch_curl () {
 build_curl () {
   cd ${srcdir}
   cd ${CURL_VERSION}
-  ./configure --with-openssl=${srcdir}/${BORING_SSL_DIR}/build --enable-static --disable-shared --with-nghttp2=${srcdir}/${NGHTTP2_VERSION}/build --with-brotli=${srcdir}${BROTLI_VERSION}/build/installed LIBS="-pthread" CFLAGS="-I${srcdir}/${BORING_SSL_DIR}/build -I${srcdir}/${NGHTTP2_VERSION}/build" USE_CURL_SSLKEYLOGFILE=true
+  ./configure \
+    --prefix=${srcdir}/${CURL_VERSION}/install \
+    --enable-static \
+    --disable-shared \
+    --with-openssl=${srcdir}/${BORING_SSL_DIR}/build \
+    --with-nghttp2=${srcdir}/${NGHTTP2_VERSION}/build \
+    --with-brotli=${srcdir}${BROTLI_VERSION}/build/installed \
+    LIBS="-pthread" \
+    CFLAGS="-I${srcdir}/${BORING_SSL_DIR}/build \
+    -I${srcdir}/${NGHTTP2_VERSION}/build" \
+    USE_CURL_SSLKEYLOGFILE=true
   make
+  make install
   mkdir -p out
-  cp src/curl out/curl-impersonate
+  cp install/bin/curl-impersonate-chrome out/curl-impersonate-chrome
   cp ${srcdir}/${browser_dir}/curl_* out/
-  strip out/curl-impersonate
+  strip out/curl-impersonate-chrome
   chmod +x out/*
 }
 
 build_libcurl () {
   cd ${srcdir}
   cd ${CURL_VERSION}
-  ./configure --with-openssl=${srcdir}/${BORING_SSL_DIR}/build --with-nghttp2=${srcdir}/${NGHTTP2_VERSION}/build --with-brotli=${srcdir}${BROTLI_VERSION}/build/installed LIBS="-pthread" CFLAGS="-I${srcdir}/${BORING_SSL_DIR}/build -I${srcdir}/${NGHTTP2_VERSION}/build" LIBS="-pthread" USE_CURL_SSLKEYLOGFILE=true 
   make clean 
+  ./configure \
+    --prefix=${srcdir}/${CURL_VERSION}/libinstall \
+    --with-openssl=${srcdir}/${BORING_SSL_DIR}/build \
+    --with-nghttp2=${srcdir}/${NGHTTP2_VERSION}/build \
+    --with-brotli=${srcdir}${BROTLI_VERSION}/build/installed \
+    LIBS="-pthread" \
+    CFLAGS="-I${srcdir}/${BORING_SSL_DIR}/build \
+    -I${srcdir}/${NGHTTP2_VERSION}/build" \
+    LIBS="-pthread" \
+    USE_CURL_SSLKEYLOGFILE=true
   make
-  ver=$(readlink -f lib/.libs/libcurl.so | sed 's/.*so\.//')
-  cp "lib/.libs/libcurl.so.$ver" "out/libcurl-impersonate.so.$ver"
-  strip "out/libcurl-impersonate.so.$ver"
+  make install
+  ver=$(readlink -f libinstall/lib/libcurl-impersonate-chrome.so | sed 's/.*so\.//')
+  cp -d libinstall/lib/libcurl-impersonate* out/
+  strip "out/libcurl-impersonate-chrome.so.$ver"
 }
 
 prepare () {
@@ -146,14 +167,13 @@ package () {
   mkdir -p "${pkgdir}/usr/lib/"
 
   cd ${CURL_VERSION}
-  ver=$(readlink -f lib/.libs/libcurl.so | sed 's/.*so\.//')
+  ver=$(readlink -f libinstall/lib/libcurl-impersonate-chrome.so | sed 's/.*so\.//')
   major=$(echo -n $ver | cut -d'.' -f1)
   cd out/
 
-  sed -i "s/\$dir\/curl-impersonate/${pkgname}/g" curl_*
-  install -Dm755 curl-impersonate "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm755 curl-impersonate-chrome "${pkgdir}/usr/bin/${pkgname}"
   install -Dm755 curl_* "${pkgdir}/usr/bin/"
-  install -Dm755 libcurl-impersonate.so.$ver "${pkgdir}/usr/lib/libcurl-impersonate-chrome.so.$ver"
+  install -Dm755 libcurl-impersonate-chrome.so.$ver "${pkgdir}/usr/lib/libcurl-impersonate-chrome.so.$ver"
 
   cd "${pkgdir}/usr/lib/"
   ln -s "libcurl-impersonate-chrome.so.$ver" "libcurl-impersonate-chrome.so.$major"
