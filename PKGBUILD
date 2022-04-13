@@ -1,6 +1,6 @@
 basename=libsurvive
 pkgname=$basename-git
-pkgver=2109.30f5b7b
+pkgver=2207.d939c24
 pkgrel=1
 pkgdesc="Open-Source tool for working with lighthouse-based tracking data, including support for the HTC Vive, Vive Pro and Valve Index."
 arch=(x86_64 i686)
@@ -28,6 +28,7 @@ prepare() {
   cd $basename
   git submodule update --init --recursive
   sed "s!cnmatrix/matrix.h!cnmatrix/cn_matrix.h!g" -i tools/vive_mouse/vive_mouse.c
+  git revert --no-commit 84423daf44b430f8ec12e7650f46027070d7df73
 }
 
 build() {

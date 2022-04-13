@@ -1,6 +1,6 @@
 pkgbase = libsurvive-git
 	pkgdesc = Open-Source tool for working with lighthouse-based tracking data, including support for the HTC Vive, Vive Pro and Valve Index.
-	pkgver = 2023.feca145
+	pkgver = 2207.d939c24
 	pkgrel = 1
 	url = https://github.com/cntools/libsurvive
 	arch = x86_64
