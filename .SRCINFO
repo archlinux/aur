@@ -1,7 +1,7 @@
 pkgbase = python-gaphas
 	pkgdesc = Diagramming widget library for Python
 	pkgver = 3.6.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/gaphor/gaphas
 	arch = any
 	license = Apache
@@ -10,6 +10,7 @@ pkgbase = python-gaphas
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-poetry-core
+	depends = gtk3
 	depends = python-gobject
 	depends = python-cairo
 	depends = python-importlib-metadata

@@ -4,12 +4,13 @@
 _name=gaphas
 pkgname=python-${_name}
 pkgver=3.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Diagramming widget library for Python"
 arch=('any')
 url="https://github.com/gaphor/${_name}"
 license=('Apache')
 depends=(
+	'gtk3'
 	'python-gobject'
 	'python-cairo'
 	'python-importlib-metadata'
