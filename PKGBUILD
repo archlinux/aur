@@ -2,7 +2,7 @@
 
 pkgbase=lightway-core
 pkgname=('lightway-core' 'lightway-core-doc')
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 pkgdesc='A VPN protocol by ExpressVPN'
 arch=('x86_64')
@@ -11,8 +11,8 @@ license=('GPL2')
 makedepends=('git' 'ruby-ceedling' 'doxygen' 'graphviz')
 source=("https://github.com/expressvpn/lightway-core/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         'git+https://github.com/wolfSSL/wolfssl.git'
-        '010-lighway-core-disable-werror-on-wolfssl.patch')
-sha256sums=('c67be127110866029996cc70ef93a19f2ce7101f4f953ae14d5c8c7539660d0e'
+        '010-lightway-core-disable-werror-on-wolfssl.patch')
+sha256sums=('623cdcd7d8955e45c16c5c336353fb2561346621ebee671fdd03a1911d80c15c'
             'SKIP'
             '60e4d5490192bc1ed6840665345e854eca5715a898824b90fa012245272f619b')
 
@@ -22,7 +22,7 @@ prepare() {
     git -C wolfssl config --local advice.detachedHead false
     git -C wolfssl checkout --quiet "$_wolfssl_commit"
     
-    patch -d wolfssl -Np1 -i "${srcdir}/010-lighway-core-disable-werror-on-wolfssl.patch"
+    patch -d wolfssl -Np1 -i "${srcdir}/010-lightway-core-disable-werror-on-wolfssl.patch"
     
     mkdir -p "${pkgname}-${pkgver}/third_party"
     cp -af wolfssl "${pkgname}-${pkgver}/third_party"
