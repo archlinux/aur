@@ -1,11 +1,10 @@
 # Maintainer: Fabian Bornschein <fabiscafe@mailbox.org>
 
 pkgname=misskey
-pkgver=12.109.2
+pkgver=12.110.0
 pkgrel=1
 pkgdesc="🌎 An interplanetary microblogging platform 🚀 (Experimental)"
 url="https://github.com/misskey-dev/misskey"
-options=("!strip")
 arch=("x86_64")
 license=("AGPL3" "MIT")
 depends=("nodejs-lts-gallium" "npm" "postgresql" "redis" "yarn")
@@ -14,19 +13,19 @@ install="misskey.install"
 optdepends=("elasticsearch: Search functionality"
             "ffmpeg: Media de-encode functionality"
             "nginx: Reverse-proxy usage")
-_commit="090f8eff670b841499348fc0ccfb0e7b42928e2a" #tag/12.109.2
+_commit="33c22b5f3efa4110c9b517c224c9fdfba7e6c64b" #tag/12.110.0
 source=("git+https://github.com/misskey-dev/misskey.git#commit=${_commit}"
         "${pkgname}.install"
         "${pkgname}.service"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
 md5sums=('SKIP'
-         'aa0312f32fe331cd7a2e471902dad1f4'
+         '51808d834f3d8b7af6c93a338511ec60'
          '9abc87cea2314b95334d4ad3b309e931'
          'a3fe48c606eabebf818106648c0bf0d9'
          'c6f7dc5885f8db2329b3b1e3c2a67ef5')
 sha256sums=('SKIP'
-            'd860082dbc90b0e7ecadcb1bfeeeb11dae6f24544d4746883e4a2bfafd052284'
+            '92d92b142313d918b4f83d3e8ebf9ac4eab7b3d12e2083169642153353ee575d'
             '5cd19f1798eb1852c47c7786021adede99d95ab83feb0802e7b1fba50a308517'
             'a3ff9c1b77920ebbb0df8fb1affe9e8ef54d907bd4d16ed7c6076cbf52726df7'
             'c368b2ed2efbeca0e488f883defb2ccb7ed4661cc6832d2c396176206a794f34')
@@ -65,7 +64,11 @@ build() {
         -type d \
         \( -iname '.git' \
         -o -iname '.github' \
-        -o -iname '.vscode' \) \
+        -o -iname '.vscode' \
+        -o -iname 'darwin-arm64' \
+        -o -iname 'darwin-x64' \
+        -o -iname 'win32-ia32' \
+        -o -iname 'win32-x64' \) \
         -execdir rm -rf '{}' \;
     find "${srcdir}/${pkgname}" \
         -type f \
@@ -76,7 +79,9 @@ build() {
         -o -name '.docker*' \
         -o -iname 'docker*' \
         -o -name '.editor*' \
-        -o -name '.vsls.json' \) \
+        -o -name '.vsls.json' \
+        -o -name 'darwin.js' \
+        -o -name 'win32.js' \) \
         -not -name 'docker*.js' \
         -delete
     rm -r "${srcdir}/${pkgname}/cypress"
