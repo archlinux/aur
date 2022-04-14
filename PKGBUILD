@@ -1,6 +1,6 @@
 # Maintainer: Thenujan Sandramohan <sthenujan2002@gmail.com>
 pkgname=grub-editor
-pkgver=0.95
+pkgver=0.96
 pkgrel=1
 epoch=
 pkgdesc="GUI to edit grub configurations"
