@@ -22,6 +22,10 @@ pkgver() {
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+prepare() {
+	sed -i 's/-O[0123s]//;s/-Ofast//' $_pkgname/Makefile
+}
+
 build() {
 	make -C $_pkgname
 }
