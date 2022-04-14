@@ -1,7 +1,7 @@
 # Maintainer: Anatol Pomozov
 
 pkgname=booster-git
-pkgver=0.7.r92.g4b2bd1d
+pkgver=0.7.r106.gc7e328f
 pkgrel=1
 pkgdesc='Fast and secure initramfs generator'
 arch=(x86_64)
@@ -55,7 +55,7 @@ package() {
   cd booster
   mkdir "$pkgdir/etc/"
   touch "$pkgdir/etc/booster.yaml"
-  install -Dp -m755 generator/booster "$pkgdir/usr/bin/booster"
+  install -Dp -m755 generator/generator "$pkgdir/usr/bin/booster"
   install -Dp -m644 docs/manpage.1 "$pkgdir/usr/share/man/man1/booster.1"
   install -Dp -m755 init/init "$pkgdir/usr/lib/booster/init"
   install -Dp -m755 packaging/arch/regenerate_images "$pkgdir/usr/lib/booster/regenerate_images"
