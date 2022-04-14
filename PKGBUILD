@@ -3,7 +3,7 @@
 # Contributor: tioguda <guda.flavio@gmail.com>
 pkgname=slimbookbattery
 pkgver=4.0.5beta
-pkgrel=1
+pkgrel=2
 pkgdesc="Battery optimization application for portable devices."
 arch=('x86_64')
 url="https://github.com/slimbook/slimbookbattery"
