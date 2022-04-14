@@ -1,7 +1,7 @@
 # Maintainer: Linus Dierheimer <Linus@Dierheimer.de>
 
 pkgname=fastfetch-git
-pkgver=1.2.3.r18.g8d5ce7b
+pkgver=1.2.3.r25.g6accb58
 pkgrel=1
 pkgdesc="Like neofetch, but much faster because written in c"
 arch=("x86_64" "i686" "pentium4" "armv5" "armv6h" "armv7h" "aarch64")
@@ -20,8 +20,10 @@ makedepends=(
   "libxrandr" # Depends on libX11, which headers are also needed
   "dconf"     # Depends on glib2, which headers are also needed
   "imagemagick"
+  "zlib"
   "dbus"
   "xfconf"
+  # "libmagick6"
   # "rpm-tools"
 )
 optdepends=(
@@ -34,8 +36,10 @@ optdepends=(
   "glib2: Output for values that are only stored in GSettings"
   "dconf: Output for values that are only stored in DConf"
   "dbus: Media player and song output"
-  "imagemagick: Image output using sixel"
+  "imagemagick: Image output using sixel or kitty graphics protocol"
+  "zlib: Faster image output when using kitty graphics protocol"
   "xfconf: XFWM theme + xfce-terminal font"
+  # "libmagick6: ImageMagick 6 support" 
   # "rpm-tools: rpm package count"
 )
 
