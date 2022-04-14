@@ -7,7 +7,7 @@ pkgver=2.0.2
 pkgrel=1
 pkgdesc="portable and modular SIP User-Agent with audio and video support"
 arch=('i686' 'x86_64' 'armv6h')
-url="http://www.creytiv.com/baresip.html"
+url="https://github.com/baresip/baresip"
 license=('BSD')
 depends=('rem'
          'openssl'
