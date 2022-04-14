@@ -1,4 +1,5 @@
 /pkg/
 /src/
 /*.tar.gz
+/*.whl
 /python-flake8-simplify-*.pkg.tar
