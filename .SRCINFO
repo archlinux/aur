@@ -1,0 +1,21 @@
+pkgbase = libmirisdr5-git
+	pkgdesc = LibUSB driver for Mirics MSi001 + MSi2500 SDR devices
+	pkgver = r32.e9cd752
+	pkgrel = 1
+	url = https://github.com/ericek111/libmirisdr-5
+	arch = any
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	depends = libusb>=1.0
+	provides = libmirisdr
+	provides = libmirisdr5
+	provides = libmirisdr-git
+	conflicts = libmirisdr
+	conflicts = libmirisdr4
+	conflicts = libmirisdr5
+	conflicts = libmirisdr-git
+	source = libmirisdr5-git::git+https://github.com/ericek111/libmirisdr-5
+	md5sums = SKIP
+
+pkgname = libmirisdr5-git
