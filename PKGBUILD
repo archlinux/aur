@@ -1,6 +1,6 @@
 # Maintainer: Dennis van der Schagt <dennisschagt@gmail.com>
 pkgname=eprosima-fast-cdr
-pkgver=1.0.23
+pkgver=1.0.24
 pkgrel=1
 pkgdesc="eProsima's Fast-CDR for serialization and deserialization"
 arch=('x86_64')
@@ -19,7 +19,7 @@ install=
 changelog=
 source=("https://github.com/eProsima/Fast-CDR/archive/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('6f7c9c6c0c82c150b5ea2b0a58d5c9a466b87a1fcfca40d5786d99d4963a6721')
+sha256sums=('ecd688ab89ff1c03b9031c314891ae60995e2e73d919b93569eb840d6e87dec2')
 validpgpkeys=()
 
 build() {
