@@ -7,7 +7,7 @@
 # match! -rc[0-9]+$
 
 pkgname=libvirt-xen
-pkgver=8.1.0
+pkgver=8.2.0
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
@@ -16,7 +16,8 @@ license=('LGPL' 'GPL3') #libvirt_parthelper links to libparted which is GPL3 onl
 install="libvirt.install"
 depends=('fuse2' 'gnutls' 'libpciaccess' 'libssh' 'libxml2' 'numactl' 'parted' 'polkit' 'yajl' 'xen')
 makedepends=('bash-completion' 'ceph-libs' 'dnsmasq' 'glusterfs' 'iproute2' 'libiscsi' 'libxslt'
-			 'lvm2' 'meson' 'open-iscsi' 'python-docutils' 'qemu-headless' 'rpcsvc-proto' )
+			 'lvm2' 'meson' 'open-iscsi' 'python-docutils' 'qemu-headless' 'rpcsvc-proto' 'grep'
+			 'coreutils' 'findutils')
 optdepends=('libvirt-storage-gluster: Gluster storage backend'
 			'libvirt-storage-iscsi-direct: iSCSI-direct storage backend'
 			'libvirt-storage-rbd: RBD storage backend'
@@ -33,22 +34,6 @@ optdepends=('libvirt-storage-gluster: Gluster storage backend'
 conflicts=('libvirt')
 provides=("libvirt=$pkgver" 'libvirt.so' 'libvirt-admin.so' 'libvirt-lxc.so' 'libvirt-qemu.so')
 backup=(
-	'etc/conf.d/libvirtd'
-	'etc/conf.d/libvirt-guests'
-	'etc/conf.d/virtchd'
-	'etc/conf.d/virtinterfaced'
-	'etc/conf.d/virtlockd'
-	'etc/conf.d/virtlogd'
-	'etc/conf.d/virtlxcd'
-	'etc/conf.d/virtnetworkd'
-	'etc/conf.d/virtnodedevd'
-	'etc/conf.d/virtnwfilterd'
-	'etc/conf.d/virtproxyd'
-	'etc/conf.d/virtqemud'
-	'etc/conf.d/virtsecretd'
-	'etc/conf.d/virtstoraged'
-	'etc/conf.d/virtvboxd'
-	'etc/conf.d/virtxend'
 	'etc/libvirt/libvirt-admin.conf'
 	'etc/libvirt/libvirt.conf'
 	'etc/libvirt/libvirtd.conf'
@@ -105,7 +90,7 @@ backup=(
 )
 source=("https://libvirt.org/sources/${pkgname%*-xen}-$pkgver.tar.xz"{,.asc}
 		"find_programs.ini")
-sha256sums=('3c6c43becffeb34a3f397c616206aa69a893ff8bf5e8208393c84e8e75352934'
+sha256sums=('0ecd9c7dd52db7a2d124155ffa5e11de2fbd05014eceffbd1972b022d21becba'
             'SKIP'
             '735ac805fbf06021418f82297845babf481d5681bd939a6994fbdf36fe1661e4')
 validpgpkeys=('453B65310595562855471199CA68BE8010084C9C') # Jiří Denemark <jdenemar@redhat.com>
@@ -121,14 +106,10 @@ prepare() {
 	sed -i 's|/usr/libexec/qemu-bridge-helper|/usr/lib/qemu/qemu-bridge-helper|g' \
 		src/qemu/qemu.conf \
 		src/qemu/test_libvirtd_qemu.aug.in
-
-	sed -i 's/notify/simple/' src/remote/libvirtd.service.in
 }
 
 build() {
-	cd "${pkgname%*-xen}-$pkgver"
-
-	arch-meson build \
+	arch-meson build "${pkgname%*-xen}-$pkgver" \
 		--libexecdir=lib/libvirt \
 		--native-file "$srcdir"/find_programs.ini \
 		-Drunstatedir=/run \
@@ -158,34 +139,31 @@ build() {
 }
 
 check() {
-	cd "${pkgname%*-xen}-$pkgver"
-
 	ninja -C build test
 }
 
 package() {
-	cd "${pkgname%*-xen}-${pkgver}"
-
 	DESTDIR="$pkgdir" ninja -C build install
 
-	mv "$pkgdir"/etc/{sysconfig,conf.d}
 	mkdir "$pkgdir"/usr/lib/{sysusers,tmpfiles}.d
 	echo "g libvirt - -" > "$pkgdir/usr/lib/sysusers.d/libvirt.conf"
+	echo 'u libvirt-qemu /var/lib/libvirt "Libvirt QEMU user"' >> "$pkgdir/usr/lib/sysusers.d/libvirt.conf"
+	echo 'm libvirt-qemu kvm' >> "$pkgdir/usr/lib/sysusers.d/libvirt.conf"
 	echo "z /var/lib/libvirt/qemu 0751" > "$pkgdir/usr/lib/tmpfiles.d/libvirt.conf"
 
 	chown 0:102 "$pkgdir/usr/share/polkit-1/rules.d"
 	chmod 0750 "$pkgdir/usr/share/polkit-1/rules.d"
 	chmod 600 "$pkgdir"/etc/libvirt/nwfilter/*.xml \
 		"$pkgdir/etc/libvirt/qemu/networks/default.xml"
-
-	# Strip auto-generated UUID, so it will be generated per-install. (reproducible builds)
-	sed -i 's|<uuid>.*</uuid>|<uuid></uuid>|' "$pkgdir"/etc/libvirt/qemu/networks/default.xml
+	chmod 700 "$pkgdir"/etc/libvirt/secrets
 
 	rm -rf \
 		"$pkgdir/run" \
 		"$pkgdir/var/lib/libvirt/qemu" \
 		"$pkgdir/var/cache/libvirt/qemu"
+
 	rm -f "$pkgdir/etc/libvirt/qemu/networks/autostart/default.xml"
+
 	rm "$pkgdir"/usr/lib/libvirt/storage-backend/libvirt_storage_backend_{rbd,gluster}.so
 	rm "$pkgdir/usr/lib/libvirt/storage-backend/libvirt_storage_backend_iscsi-direct.so"
 	rm "$pkgdir/usr/lib/libvirt/storage-file/libvirt_storage_file_gluster.so"
