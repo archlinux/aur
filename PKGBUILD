@@ -1,39 +1,33 @@
-# Maintainer: Ivan Semkin (ivan at semkin dot ru)
-
-_pkgname=steam
-pkgname=(python-steam python2-steam)
-pkgver=0.9.1
-pkgrel=3
-pkgdesc='Module for interacting with various Steam features'
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+pkgname=python-steam
+_name=${pkgname#python-}
+pkgver=1.2.0
+pkgrel=1
+pkgdesc="Python package for interacting with Steam"
 arch=('any')
-url='https://github.com/ValvePython/steam'
+url="https://github.com/ValvePython/steam"
 license=('MIT')
-depends=()
-makedepends=(python-setuptools python2-setuptools)
-pythondepends='python python-six python-pycryptodomex python-requests python-gevent python-protobuf python-pyaml python-sphinx python-vdf python-gevent-eventemitter python-cachetools'
-python2depends='python2 python2-six python2-pycryptodomex python2-requests python2-gevent python2-protobuf python2-enum34 python2-pyaml python2-sphinx python2-vdf python2-gevent-eventemitter python2-cachetools'
-checkdepends=(
-  $pythondepends python-pytest python-pytest-cov python-coverage python-mock python-vcrpy
-  $python2depends python2-pytest python2-pytest-cov python2-coverage python2-mock
-)
-source=("https://github.com/ValvePython/steam/archive/v$pkgver.tar.gz")
-sha256sums=('a28fdddc19c6298c4066e050d9cece712d7800a2935ef411fb5ecb50ae1bd018')
+depends=('python' 'python-cachetools' 'python-pycryptodomex' 'python-requests'
+         'python-six' 'python-vdf')
+makedepends=('python-setuptools')
+checkdepends=('python-gevent-eventemitter' 'python-gevent' 'python-google-api-python-client'
+              'python-mock' 'python-protobuf' 'python-pytest-cov' 'python-vcrpy' 'python-yaml')
+source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('13744875373663892f0f39dcf63180c5a73404ab5634cf6fc6c3f7de8f87ea39')
+
+build() {
+  cd "$_name-$pkgver"
+  python setup.py build
+}
 
 check() {
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py test
-  python2 setup.py test
+  cd "$_name-$pkgver"
+  make test
 }
 
-package_python-steam() {
-  depends=($pythondepends)
-  cd "$srcdir/$_pkgname-$pkgver"
-  python setup.py install --optimize=1 --root="${pkgdir}/"
-}
+package() {
+  cd "$_name-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
-package_python2-steam() {
-  depends=($python2depends)
-  cd "$srcdir/$_pkgname-$pkgver"
-  python2 setup.py install --optimize=1 --root="${pkgdir}/"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
-# vim:set ts=2 sw=2 et:
