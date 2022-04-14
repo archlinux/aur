@@ -1,8 +1,8 @@
-# Maintainer: Wallun <wallun@disroot.org>
+# Maintainer: Wallun <wallun AT disroot DOT org>
 pkgname=karma-dashboard
 _pkgname=karma
 pkgver=0.102
-pkgrel=2
+pkgrel=3
 pkgdesc="Alert dashboard for Prometheus Alertmanager"
 arch=(x86_64)
 url="https://github.com/prymitive/karma"
