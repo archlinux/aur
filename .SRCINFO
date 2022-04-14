@@ -1,11 +1,12 @@
 pkgbase = python-sewpy-git
 	pkgdesc = Python interface to SExtractor
-	pkgver = 0.r87.g67e36b7
-	pkgrel = 1
+	pkgver = r87.67e36b7
+	pkgrel = 2
 	url = http://sewpy.readthedocs.io/en/latest
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	makedepends = git
 	depends = python
 	depends = python-astropy
