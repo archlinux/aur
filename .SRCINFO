@@ -1,0 +1,11 @@
+pkgbase = ttf-iansui-git
+	pkgdesc = Free font derived from Source Han Serif.
+	pkgver = v0.940.r1.64efa9f
+	pkgrel = 1
+	url = https://github.com/ButTaiwan/iansui
+	arch = any
+	license = OFL
+	source = git+https://github.com/ButTaiwan/iansui.git
+	sha256sums = SKIP
+
+pkgname = ttf-iansui-git
