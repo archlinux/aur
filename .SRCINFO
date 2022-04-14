@@ -1,6 +1,6 @@
 pkgbase = aurutils
 	pkgdesc = helper tools for the arch user repository
-	pkgver = 9.5
+	pkgver = 9.6
 	pkgrel = 1
 	url = https://github.com/AladW/aurutils
 	install = aurutils.install
@@ -17,7 +17,7 @@ pkgbase = aurutils
 	optdepends = devtools: aur-chroot
 	optdepends = vifm: default pager
 	optdepends = ninja: aur-sync ninja support
-	source = aurutils-9.5.tar.gz::https://github.com/AladW/aurutils/archive/refs/tags/9.5.tar.gz
-	sha256sums = fa748cc8babd3f1e5ddfcc48633ebc51ad8c2120024e74f430e89b618f539e53
+	source = aurutils-9.6.tar.gz::https://github.com/AladW/aurutils/archive/refs/tags/9.6.tar.gz
+	sha256sums = 825d6ab3d66faf84ee3856e677de138dcdb3af2a5c38164f69601ee0a4e96954
 
 pkgname = aurutils
