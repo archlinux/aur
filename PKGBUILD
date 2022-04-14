@@ -2,7 +2,7 @@
 
 pkgname=tokio-console
 pkgver=0.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="The Tokio console: a debugger for async Rust"
 url="https://github.com/tokio-rs/console/tree/main/tokio-console"
 license=('MIT')
@@ -18,7 +18,7 @@ export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 prepare() {
   cd "console-tokio-console-v$pkgver"
 
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {

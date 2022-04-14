@@ -1,7 +1,7 @@
 pkgbase = tokio-console
 	pkgdesc = The Tokio console: a debugger for async Rust
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/tokio-rs/console/tree/main/tokio-console
 	arch = x86_64
 	license = MIT
