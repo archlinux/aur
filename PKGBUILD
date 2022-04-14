@@ -3,8 +3,8 @@
 _target=sunxi
 pkgbase="linux-$_target"
 pkgname=("$pkgbase" "$pkgbase-headers")
-pkgver=5.15.33
-_armbver=22.05.0-trunk.0044
+pkgver=5.15.34
+_armbver=22.05.0-trunk.0045
 _kernver="$pkgver-$_target"
 pkgrel=1
 arch=('armv7h')
