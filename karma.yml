@@ -1,0 +1,8 @@
+alertmanager:
+  interval: 1m
+  servers:
+    - name: production
+      uri: http://localhost:9093/
+      timeout: 20s
+      proxy: false
+      readonly: true
