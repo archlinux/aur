@@ -1,7 +1,7 @@
 pkgbase = librewolf
 	pkgdesc = Community-maintained fork of Firefox, focused on privacy, security and freedom.
-	pkgver = 99.0
-	pkgrel = 2
+	pkgver = 99.0.1
+	pkgrel = 1
 	url = https://librewolf-community.gitlab.io/
 	install = librewolf.install
 	arch = x86_64
@@ -57,17 +57,17 @@ pkgbase = librewolf
 	options = !debug
 	backup = usr/lib/librewolf/librewolf.cfg
 	backup = usr/lib/librewolf/distribution/policies.json
-	source = https://archive.mozilla.org/pub/firefox/releases/99.0/source/firefox-99.0.source.tar.xz
-	source = https://archive.mozilla.org/pub/firefox/releases/99.0/source/firefox-99.0.source.tar.xz.asc
+	source = https://archive.mozilla.org/pub/firefox/releases/99.0.1/source/firefox-99.0.1.source.tar.xz
+	source = https://archive.mozilla.org/pub/firefox/releases/99.0.1/source/firefox-99.0.1.source.tar.xz.asc
 	source = librewolf.desktop
-	source = git+https://gitlab.com/librewolf-community/browser/source.git#commit=94365400be86a22b7aaaba86627c0aca7dc8f50a
-	source = git+https://gitlab.com/librewolf-community/settings.git#commit=1a84d38bab56551f9ec2650644c4906650e75603
+	source = git+https://gitlab.com/librewolf-community/browser/source.git#tag=99.0.1-1
+	source = git+https://gitlab.com/librewolf-community/settings.git#tag=6.2
 	source = default192x192.png
 	source = 0028-bgo-831903-pip-dont-fail-with-optional-deps.patch
 	source = 0029-skip-pip-check.patch
 	source = 0031-pgo-use-toolchain-disable-watchdog-fix-on-gcc.patch
 	validpgpkeys = 14F26682D0916CDD81E37B6D61B7B526D98F0353
-	sha256sums = 513f8d2cafa39a2d50f2c4a25cc48093e89f715a706b941170fa48e397976327
+	sha256sums = 76d22279ce99588a728bb2d034064be0d5918b5900631f2148d4565b8a72e00b
 	sha256sums = SKIP
 	sha256sums = 0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2
 	sha256sums = SKIP
@@ -76,7 +76,7 @@ pkgbase = librewolf
 	sha256sums = 582303b7d97dae11f1c760e129be03e270a0800a0bae9e140c032e57ae00c06d
 	sha256sums = 35eaa5ad3ade5351dc072f7e3e240265818d40c77c637dfdb492a91128b65d27
 	sha256sums = 3735197d2c6c38b0482ae56a7b7dbd5815a38042ba7e1418cd93cdea1b564391
-	source_aarch64 = 99.0-2_psutil-remove-version-cap.patch::https://github.com/archlinuxarm/PKGBUILDs/raw/434abe24fa6bc70940b2f1e69e047af38b4be68a/extra/firefox/psutil-remove-version-cap.patch
+	source_aarch64 = 99.0.1-1_psutil-remove-version-cap.patch::https://github.com/archlinuxarm/PKGBUILDs/raw/434abe24fa6bc70940b2f1e69e047af38b4be68a/extra/firefox/psutil-remove-version-cap.patch
 	sha256sums_aarch64 = 2bb0ac385b54972eb3e665ac70fb13565ed9da77b33349b844b2e0ad4948cff5
 
 pkgname = librewolf
