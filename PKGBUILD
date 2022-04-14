@@ -3,9 +3,9 @@
 pkgname=gnome-shell-extension-openweather
 _pkgbase=openweather
 pkgver=1.4
-_rlsver=1
-pkgrel=1
-pkgdesc="OpenWeather 2 displays weather information for any location on Earth in the GNOME Panel"
+_rlsver=107
+pkgrel=2
+pkgdesc="Display weather information for any location on Earth in the GNOME Panel"
 arch=(any)
 url="https://gitlab.com/skrewball/openweather"
 license=(GPL3)
@@ -13,9 +13,9 @@ depends=('glib2' 'gettext' 'pkg-config' 'gnome-shell' 'gnome-icon-theme')
 makedepends=('gnome-common' 'autoconf' 'automake' 'intltool')
 conflicts=('gnome-shell-extension-openweather-git' 'gnome-shell-extension-weather-git')
 
-_commit=ee408588
+_commit=2baadaa3
 source=("${_pkgbase}-v${pkgver}.tar.gz::${url}/-/archive/${_commit}/${_pkgbase}-${_commit}.tar.gz")
-sha256sums=('3364576ddc129cc5c3b042851b29fa8bcc2afc5c7abfc602a2567e55108d683d')
+sha256sums=('a0d2720fd9d7864435392134dffc227b8cfad5a99401866351baa6366bb6659f')
 
 build() {
   cd "${_pkgbase}-${_commit}"
