@@ -2,7 +2,7 @@
 
 pkgname=bertini
 pkgver=1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Homotopy continuation solver for systems of polynomial equations"
 url="http://bertini.nd.edu/"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ depends=('boost' 'mpfr')
 optdepends=('openmpi: multithreading support')
 source=("${url}/BertiniSource_v${pkgver}.tar.gz"
         "${url}/BertiniUsersManual.pdf")
-sha256sums=('b742d4a55623092eb0c46f8ee644aa487e5decf4ad05eb9297306b599795a424'
+sha256sums=('f5f546ca662a05eeee091640e0fba343d5ba94da136d8ed9a7e21668af14230d'
             '017313464d162bb32640858faa0dc40ec8498eee439cb703dc22507baa15394f')
 
 prepare () {
