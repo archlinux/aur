@@ -26,7 +26,7 @@ pkgver() {
 }
 
 prepare() {
-	sed -i 's/-O[0123s]//g' $_pkgname/Makefile
+	sed -i 's/-O[0123s]//;s/-Ofast//' $_pkgname/Makefile
 }
 
 build() {
