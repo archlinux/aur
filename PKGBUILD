@@ -2,7 +2,7 @@
 
 pkgname=kdb
 pkgver=3.2.0
-pkgrel=8
+pkgrel=9
 pkgdesc="A database connectivity and creation framework for various database vendors"
 arch=(x86_64)
 url="http://www.kexi-project.org/"
