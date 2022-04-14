@@ -2,7 +2,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=opencascade-cadquery
-_pkgver="V7_6_0"
+_pkgver="V7_6_1"
 pkgver=$(echo ${_pkgver} | sed 's,^V,,g;s,_,.,g')
 pkgrel=1
 pkgdesc="Opencascade for python-cadquery"
@@ -14,16 +14,33 @@ depends=(
 tk
 vtk
 gl2ps
-ffmpeg
+"ffmpeg4.4"
 freeimage
 intel-tbb
+openmpi
+glew
 )
 
 makedepends=(
+adios2
+boost
 cmake
+eigen
+gdal
+glew
+libharu
+liblas
+openvr
+pdal
+proj
+pugixml
+python
+python-mpi4py
 qt5-base
-ninja
 rapidjson
+unixodbc
+utf8cpp
+ninja
 )
 
 source=(
@@ -31,7 +48,7 @@ source=(
 cmake.patch
 opencascade-tbb-2021.patch
 )
-sha256sums=('e7f989d52348c3b3acb7eb4ee001bb5c2eed5250cdcceaa6ae97edc294f2cabd'
+sha256sums=('c111c635fa4cae05821640f5afbbf362efaee8dc51fcbee953866eec7482cd6a'
             'b3a2583fd21576d454952894f92a2a9e710015051403a3759b4a2ccbfc78a048'
             'b0c4601fd9b2905e4b3bc3ed8af1493960c80bfe10332a0c562c59786efd57a2')
 
@@ -60,7 +77,7 @@ build() {
 
   _install_prefix="/opt/opencascade-cadquery/usr"
   #_install_prefix="/usr"
-  
+
   cmake -B build_dir -S . -W no-dev -G Ninja \
     -D CMAKE_BUILD_TYPE=None \
     -D CMAKE_INSTALL_PREFIX="${_install_prefix}" \
@@ -79,7 +96,9 @@ build() {
     -D BUILD_RESOURCES=ON \
     -D BUILD_SAMPLES_QT=OFF \
     -D BUILD_Inspector=OFF \
-    -D 3RDPARTY_VTK_INCLUDE_DIR="/usr/include/vtk"
+    -D 3RDPARTY_VTK_INCLUDE_DIR="/usr/include/vtk" \
+    -D 3RDPARTY_FFMPEG_INCLUDE_DIR="/usr/include/ffmpeg4.4" \
+    -D CMAKE_LIBRARY_PATH="/usr/lib/ffmpeg4.4"
 
   cmake --build build_dir
   rm -rf "${DESTDIR}"
