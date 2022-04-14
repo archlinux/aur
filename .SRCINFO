@@ -1,6 +1,6 @@
 pkgbase = python-imageio-ffmpeg
 	pkgdesc = FFMPEG wrapper for Python
-	pkgver = 0.4.5
+	pkgver = 0.4.6
 	pkgrel = 1
 	url = https://github.com/imageio/imageio-ffmpeg
 	arch = any
@@ -8,9 +8,9 @@ pkgbase = python-imageio-ffmpeg
 	makedepends = python-setuptools
 	depends = python
 	depends = ffmpeg
-	source = https://github.com/imageio/imageio-ffmpeg/archive/v0.4.5.tar.gz
+	source = https://github.com/imageio/imageio-ffmpeg/archive/v0.4.6.tar.gz
 	source = pip_requirement.patch
-	sha256sums = 28ce2c625bbf71476a6e0840de98850a3696697809e18952befca7dc1c9cb10a
-	sha256sums = 596d2c8a2cdbe157fd9da8f440075c8827c68f3595ac6106af74d802730b83d1
+	sha256sums = 570d742a3195ca3e6cd371700cf7c2d7e26aa9f7c11d7eab4cc8a9db4516513f
+	sha256sums = 16d32a6e263fa30ae43c7d050d5a3d657ab1222fccd4f4d603c797317ccb57ae
 
 pkgname = python-imageio-ffmpeg
