@@ -1,0 +1,27 @@
+pkgbase = ferdium-git
+	pkgdesc = A messaging browser that allows you to combine your favorite messaging services into one application - git version
+	pkgver = 5.7.0.r0.g094d3762
+	pkgrel = 1
+	url = https://getferdium.com
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = Apache
+	makedepends = git
+	makedepends = nodejs-lts-gallium
+	makedepends = npm>=8.1.0
+	makedepends = pnpm
+	makedepends = python
+	depends = electron15
+	depends = libxkbfile
+	provides = ferdium
+	conflicts = ferdium
+	source = ferdium-git::git+https://github.com/ferdium/ferdium-app
+	source = ferdium-git-recipes::git+https://github.com/ferdium/ferdium-recipes
+	source = fix-autostart-path.diff
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = 5263a9e1f4f9e4435f857181e67eb6b3ed254a18371ab5430bdf614821831aea2474f385b3860e783119fed5eb0c5f0cc94c74b1510e2ae29da524cd0d77fee3
+
+pkgname = ferdium-git

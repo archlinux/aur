@@ -1,0 +1,13 @@
+diff --git a/src/stores/AppStore.js b/src/stores/AppStore.js
+index 81cef377..737b24a7 100644
+--- a/src/stores/AppStore.js
++++ b/src/stores/AppStore.js
+@@ -33,7 +33,7 @@ const debug = require('debug')('Ferdi:AppStore');
+ 
+ const mainWindow = getCurrentWindow();
+ 
+-const executablePath = isMac ? remoteProcess.execPath : process.execPath;
++const executablePath = '/usr/bin/ferdi';
+ const autoLauncher = new AutoLaunch({
+   name: 'Ferdi',
+   path: executablePath,
