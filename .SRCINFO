@@ -1,0 +1,15 @@
+pkgbase = doko
+	pkgdesc = The docker you know, but with TUI
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/abdfnx/doko
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	options = !lto
+	source = doko::git+https://github.com/abdfnx/doko.git#commit=1e0f07029ba62ea5d4005eb79d960102302d2742
+	b2sums = SKIP
+
+pkgname = doko
