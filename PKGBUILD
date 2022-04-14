@@ -2,19 +2,16 @@
 
 _name=slade
 pkgname=${_name}-git
-pkgver=3.2.0_b4+3+g5f8ff989
+pkgver=3.2.0_b4+35+gf7bd1432
 pkgrel=1
 pkgdesc='SLADE3 Doom editor (git version)'
 arch=('i686' 'x86_64')
 url='http://slade.mancubus.net/'
 license=('GPL')
 depends=('bzip2'
-         'curl'
          'fluidsynth>=2.2'
-         'fmt>=8.0.1'
          'freeimage'
          'ftgl'
-         'glew>=2.2'
          'glu'
          'gtk3'
          'libgl'
@@ -22,7 +19,7 @@ depends=('bzip2'
          'mpg123'
          'sfml>=2.5'
          'webkit2gtk'
-         'wxgtk3>=3.0'
+         'wxgtk3-dev-opt=3.1.5'
          'zlib')
 makedepends=('cmake'
              'git'
@@ -44,7 +41,7 @@ build() {
     export CCACHE_SLOPPINESS=pch_defines,time_macros
     cmake -DCMAKE_BUILD_TYPE=Release \
           -DCMAKE_INSTALL_PREFIX=/usr \
-          -DwxWidgets_CONFIG_EXECUTABLE=/usr/bin/wx-config-gtk3 \
+          -DwxWidgets_CONFIG_EXECUTABLE=/opt/wxgtk-dev/bin/wx-config-gtk3 \
           .
     make
 }
