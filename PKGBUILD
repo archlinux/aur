@@ -14,7 +14,8 @@ depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libxslt' 'minizip' 'nss' 're2'
          'snappy')
 makedepends=('clang' 'git' 'gn-m87' 'gperf' 'harfbuzz-icu' 'http-parser'
              'java-runtime-headless' 'jsoncpp' 'libnotify' 'lld' 'llvm' 'ninja'
-             'npm' 'pciutils' 'pipewire' 'python2' 'wget' 'yarn')
+             'npm' 'pciutils' 'pipewire' 'python2' 'python' 'python-httplib2'
+             'python-pyparsing' 'python-six' 'wget' 'yarn')
 optdepends=('kde-cli-tools: file deletion support (kioclient5)'
             'libappindicator-gtk3: StatusNotifierItem support'
             'pipewire: WebRTC desktop sharing under Wayland'
