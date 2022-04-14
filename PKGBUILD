@@ -1,12 +1,11 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
-pkgname=gnome-symphony-git
-_reponame=symphony
-pkgver=r264.6b5bf10
+pkgname=pods-git
+pkgver=r493.5c6c578
 pkgrel=1
 pkgdesc='A Podman desktop application'
 arch=(x86_64)
-url=https://github.com/marhkb/symphony
+url=https://github.com/marhkb/pods
 license=(GPL3)
 depends=(gtk4 libadwaita podman)
 makedepends=(git meson rust)
@@ -17,13 +16,13 @@ source=("git+$url.git")
 md5sums=(SKIP)
 
 pkgver() {
-	cd "$srcdir/$_reponame"
+	cd "$srcdir/${pkgname%-git}"
 
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	arch-meson "$_reponame" build
+	arch-meson "${pkgname%-git}" build
 	meson compile -C build
 }
 

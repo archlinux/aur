@@ -1,8 +1,8 @@
-pkgbase = gnome-symphony-git
+pkgbase = pods-git
 	pkgdesc = A Podman desktop application
-	pkgver = r264.6b5bf10
+	pkgver = r493.5c6c578
 	pkgrel = 1
-	url = https://github.com/marhkb/symphony
+	url = https://github.com/marhkb/pods
 	arch = x86_64
 	license = GPL3
 	checkdepends = appstream-glib
@@ -12,9 +12,9 @@ pkgbase = gnome-symphony-git
 	depends = gtk4
 	depends = libadwaita
 	depends = podman
-	provides = gnome-symphony
-	conflicts = gnome-symphony
-	source = git+https://github.com/marhkb/symphony.git
+	provides = pods
+	conflicts = pods
+	source = git+https://github.com/marhkb/pods.git
 	md5sums = SKIP
 
-pkgname = gnome-symphony-git
+pkgname = pods-git
