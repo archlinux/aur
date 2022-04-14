@@ -1,6 +1,6 @@
 pkgbase = immudb
 	pkgdesc = Immutable database built on a zero-trust model
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://codenotary.com/technologies/immudb/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = immudb
 	noextract = immudb-webconsole-1.0.15.tar.gz
 	options = !lto
 	backup = etc/immudb/immudb.toml
-	source = immudb::git+https://github.com/codenotary/immudb.git#commit=89c3e3e8a4293909421d23025d7a26bb04b35a5e
+	source = immudb::git+https://github.com/codenotary/immudb.git#commit=3d945f7d3c1330249e722f6c80864ead8ca18610
 	source = immudb-webconsole-1.0.15.tar.gz::https://github.com/codenotary/immudb-webconsole/releases/download/v1.0.15/immudb-webconsole.tar.gz
 	source = systemd.service
 	source = sysusers.conf
