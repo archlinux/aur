@@ -64,51 +64,51 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=5.16.20
-pkgrel=1
+pkgver=5.17.3
+pkgrel=2
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
+depends=(coreutils kmod initramfs)
 makedepends=(
-  bc kmod libelf        cpio perl tar xz
+  bc libelf        cpio perl tar xz
 )
 options=('!strip')
 
 # https://ck-hack.blogspot.com/2021/08/514-and-future-of-muqss-and-ck-once.html
 # thankfully xanmod keeps the hrtimer patches up to date
-_commit=c8fd0bce08e6219df068e717c53aa08a7fbb496d
-_xan=linux-5.16.y-xanmod
+_commit=bc1b55888981e44698a1dfccc06821522e6be010
+_xan=linux-5.17.y-xanmod
 
-_gcc_more_v=20211114
+_gcc_more_v=20220315
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "xanmod-patches-from-ck-$_commit.tar.gz::https://github.com/xanmod/linux-patches/archive/$_commit.tar.gz"
+  #"xanmod-patches-from-ck-$_commit.tar.gz::https://github.com/xanmod/linux-patches/archive/$_commit.tar.gz"
+  "xanmod-patches-from-ck-$_commit.tar.gz::https://github.com/graysky2/linux-patches/archive/$_commit.tar.gz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch
-  0003-Bluetooth-Read-codec-capabilities-only-if-supported.patch
-  0004-Bluetooth-fix-deadlock-for-RFCOMM-sk-state-change.patch
-  0005-mt76-mt7921-add-support-for-PCIe-ID-0x0608-0x0616.patch
-  0006-mt76-mt7921-reduce-log-severity-levels-for-informati.patch
-  0007-Revert-NFSv4.1-query-for-fs_location-attr-on-a-new-f.patch
+  0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch
+  0003-tick-Detect-and-fix-jiffies-update-stall.patch
+  0004-tick-rcu-Remove-obsolete-rcu_needs_cpu-parameters.patch
+  0005-tick-rcu-Stop-allowing-RCU_SOFTIRQ-in-idle.patch
+  0006-lib-irq_poll-Declare-IRQ_POLL-softirq-vector-as-ksof.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('798baf7051b3f20d34741067769c6a59a04ba922468789e61ce5a6c4d0c3d336a0f3bacc9f482827722e7577828140772e5cbd76b844cc836d4d6b26e0c154ec'
+b2sums=('03fd68cd2a9c70fcb20dbec8b62f524f032924cf3ba555d78a2348b80bbe61735e6140d0d38d74bf3051ac19a67be7c62c67dfc9ef697097ed24637427e72dc7'
         'SKIP'
-        'f37b180eac2737e7398654c9cf2d3b0ee93b194804d22827ad776a605692ddc098cba8ca7ba7dc2f2959cabc4eca92c73cdacbfa34182fdb98ab9199f161b5c4'
-        '534091fb5034226d48f18da2114305860e67ee49a1d726b049a240ce61df83e840a9a255e5b8fa9279ec07dd69fb0aea6e2e48962792c2b5367db577a4423d8d'
-        '47843d5eae56b388742ef6d73372962a2f28c03d73501ddf30b62a194b81b781d0d5ce73131e30c70d09cdb27a2960bf952ed9e4767222c5bd44605047087ee7'
-        '85ff480287d5e9b26eec6392022d1496c10900d3c015ff2f65130b347477930222c2a28e1e2175f39a324f39148bdd75cadfaa66100c65df2fa7106d8e86ce06'
-        '1f3bbd94a7a4d3cce39786a5c7a5b5aa60c7efef3f4608908d0f8e463bcdaa390f467c1c78cd2ecbc683e81ee6d7ce6a5ebbe8634c7e9c203e3d3abbf929b051'
-        '12a5d08ceef328f3353833eed2f206ca6c08377abee8802de0ae32194b15c243b996b4c7bed257597b823683c0e80aadfdac94f32c7456a4f2af98ef3cecbe73'
-        '7a386793b84f0eb5d38cd8f9cd063748c3f3d9adebebdfa9b16d2c889d510f35b3c01d1d185008336c08e87c3597d4a7bd09e1f5d0038138a4af0c88459da6e4'
-        'a9f0b7954ba77f94ae3bc49c621610a88f0888f91c93b4a4188569c0e06c5afe355971ad4323b03d79aa5cb63bfe5dc4a52dbf0267fd6a1f3e6d3c64dcc77b13'
-        '5f4af41492f1a13f2a40764f5e1838588d2fd53addfd2cea05de4d51f760da5e6968ffaba9b6749fcdec5034dc1572777def8497cc978a01fd4b5eb82673f2e4'
-        '03096c8152ed3a671a9f59565dd891f10a5a8a91d03fa1fa8a5db85291f41a6f1cc5f44c47a2c8e78a690599afbd79d2ed12498b0494b4bc0d0311c0102598a3')
+        '3d1e2c1dff1e828c655b449962fb47c49fdf77d58c65c8af41ee8c56fbb2d8fdb7d0b963c775b26ac4022c6e0f9c8d19c11bc1e0e358580396520e9261bc8eeb'
+        '20674a8fcc0a85726e06460a7dbccfe731c46bf377cc3bf511b7591175e7df892f271bc1909e77d9a02913c753d241493502c5ab15d9f78e95f31aa4399c2c27'
+        '96a893b65eb7f87c133b7a8d069c776950d41589e89096aad08601acaa3d67e3cad00c1611de526797d9f8785996ceb7c083aeb9aa248b5151fdc45b34764fba'
+        '576fcf6c4aa7a34af4c613e6bf9b2311bf60f328435e3ebfff292b5fcf5e6db30305396346ac71473cd7ee1efa44bb28019b9db1e0c4f705682aff77b77e7f9f'
+        '2e1fb80e3058241341b3d1b1f92c045a9d05308315e132bc8675e6a0f6ea693a0a826b160027d5db37cfab9dd4490c2288fe0dfe60f22f13f0758e0f9525320f'
+        'd81e1336f760290cc93112162d0d5a1ff8443f552e7a6ef35a27838b0b2f7705f974846a148dfe3dad51de63084f6390e2c4ce70ab03dab31963198c82449c24'
+        'e603f7f460f0e9ca69b7c94a81941cfe91c21cc1a2d2dae14487010c9935b7bd1bb458dc2286a5365995cdeec3f28f3c0e4271995b74cd89bf0673c4dd65362a'
+        'a6ae40cbf866d3d8add726a262b67818f0348897896e50e112523ad8e72f2bfde57afbfbd02c863661200f9b5caa389d49eac9aa8cbcffa8e52acb5a69fe7f02'
+        'fd94c5e3e186c1c953008190b2c913eab0d1b1bc410993fc6995ebdbcc82404c7b352805ee8cff9dfdbbddd5f9bd51b1a63fbaac00bd1552c630b8c9b48eca22')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -162,8 +162,7 @@ prepare() {
   # these are ck's htrimer patches
   echo "Patching with ck hrtimer patches..."
 
-  #for i in ../linux-patches-"$_commit"/"$_xan"/ck-hrtimer/0*.patch; do
-  for i in ../linux-patches-"$_commit"/linux-5.15.y-xanmod/ck-hrtimer/0*.patch; do
+  for i in ../linux-patches-"$_commit"/"$_xan"/ck-hrtimer/0*.patch; do
     patch -Np1 -i $i
   done
 
@@ -175,7 +174,7 @@ prepare() {
   # https://github.com/graysky2/kernel_gcc_patch
   # make sure to apply after olddefconfig to allow the next section
   echo "Patching to enable GCC optimization for other uarchs..."
-  patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.15+.patch"
+  patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.17+.patch"
 
   if [ -n "$_subarch" ]; then
     # user wants a subarch so apply choice defined above interactively via 'yes'
@@ -217,7 +216,7 @@ build() {
 _package() {
   pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with ck's hrtimer patches"
   depends=(coreutils kmod initramfs)
-  optdepends=('crda: to set the correct wireless channels of your country'
+  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
   #groups=('ck-generic')
@@ -240,10 +239,8 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  #make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
-  # not needed since not building with CONFIG_DEBUG_INFO=y
-
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
   rm "$modulesdir"/{source,build}

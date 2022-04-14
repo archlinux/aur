@@ -1,7 +1,7 @@
-From 6ff06b04b715e3fbd96ecf8fb5b1d930fda7f643 Mon Sep 17 00:00:00 2001
+From 777ff4bb6acdade5c23653c63e2860b01046a358 Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Mon, 16 Sep 2019 04:53:20 +0200
-Subject: [PATCH 1/8] ZEN: Add sysctl and CONFIG to disallow unprivileged
+Subject: [PATCH 1/7] ZEN: Add sysctl and CONFIG to disallow unprivileged
  CLONE_NEWUSER
 
 Our default behavior continues to match the vanilla kernel.
@@ -36,7 +36,7 @@ index 33a4240e6a6f..82213f9c4c17 100644
  {
  	return &init_user_ns;
 diff --git a/init/Kconfig b/init/Kconfig
-index 4b7bac10c72d..40ea1367f14a 100644
+index e9119bf54b1f..a1a5a68aea07 100644
 --- a/init/Kconfig
 +++ b/init/Kconfig
 @@ -1231,6 +1231,22 @@ config USER_NS
@@ -63,10 +63,10 @@ index 4b7bac10c72d..40ea1367f14a 100644
  	bool "PID Namespaces"
  	default y
 diff --git a/kernel/fork.c b/kernel/fork.c
-index d846dfde6691..5682bbbcb062 100644
+index f1e89007f228..49144b49a3d1 100644
 --- a/kernel/fork.c
 +++ b/kernel/fork.c
-@@ -97,6 +97,10 @@
+@@ -98,6 +98,10 @@
  #include <linux/io_uring.h>
  #include <linux/bpf.h>
  
@@ -77,7 +77,7 @@ index d846dfde6691..5682bbbcb062 100644
  #include <asm/pgalloc.h>
  #include <linux/uaccess.h>
  #include <asm/mmu_context.h>
-@@ -1947,6 +1951,10 @@ static __latent_entropy struct task_struct *copy_process(
+@@ -1922,6 +1926,10 @@ static __latent_entropy struct task_struct *copy_process(
  	if ((clone_flags & (CLONE_NEWUSER|CLONE_FS)) == (CLONE_NEWUSER|CLONE_FS))
  		return ERR_PTR(-EINVAL);
  
@@ -88,7 +88,7 @@ index d846dfde6691..5682bbbcb062 100644
  	/*
  	 * Thread groups must share signals as well, and detached threads
  	 * can only be started up within the thread group.
-@@ -3063,6 +3071,12 @@ int ksys_unshare(unsigned long unshare_flags)
+@@ -3036,6 +3044,12 @@ int ksys_unshare(unsigned long unshare_flags)
  	if (unshare_flags & CLONE_NEWNS)
  		unshare_flags |= CLONE_FS;
  
@@ -102,12 +102,12 @@ index d846dfde6691..5682bbbcb062 100644
  	if (err)
  		goto bad_unshare_out;
 diff --git a/kernel/sysctl.c b/kernel/sysctl.c
-index 0586047f7323..e0355cd3d2f2 100644
+index 730ab56d9e92..6cf4e5c36ec9 100644
 --- a/kernel/sysctl.c
 +++ b/kernel/sysctl.c
-@@ -105,6 +105,9 @@
- #ifdef CONFIG_LOCKUP_DETECTOR
- #include <linux/nmi.h>
+@@ -91,6 +91,9 @@
+ #if defined(CONFIG_PROVE_LOCKING) || defined(CONFIG_LOCK_STAT)
+ #include <linux/lockdep.h>
  #endif
 +#ifdef CONFIG_USER_NS
 +#include <linux/user_namespace.h>
@@ -115,10 +115,10 @@ index 0586047f7323..e0355cd3d2f2 100644
  
  #if defined(CONFIG_SYSCTL)
  
-@@ -1956,6 +1959,15 @@ static struct ctl_table kern_table[] = {
+@@ -1814,6 +1817,15 @@ static struct ctl_table kern_table[] = {
+ 		.mode		= 0644,
  		.proc_handler	= proc_dointvec,
  	},
- #endif
 +#ifdef CONFIG_USER_NS
 +	{
 +		.procname	= "unprivileged_userns_clone",
@@ -150,5 +150,5 @@ index 5481ba44a8d6..423ab2563ad7 100644
  static DEFINE_MUTEX(userns_state_mutex);
  
 -- 
-2.35.1
+2.35.2
 
