@@ -10,7 +10,7 @@ _pkgarch=$(dpkg --print-architecture)
 #leave arch package as any
 arch=('any')
 #manually version for now
-pkgver='0.5.1'
+pkgver='0.6.0'
 _pkgver=${pkgver}
 pkgrel=2
 _pkgrel=${pkgrel}
@@ -26,8 +26,8 @@ _scripts="skywire-deb-scripts"
 #source=("git+${url}.git#branch=${BRANCH:-develop}"
 source=( "${url}/archive/refs/tags/v${pkgver}.tar.gz"
 "${_scripts}.tar.gz"  )
-sha256sums=('f76bba50525c2057a9aba5d3a1fe95d1913890a19bc7ad2ff9113b278bf8d489'
-            'e47b816303ab824960feb74e205299c067a104c33f7ef59328e88931e92081f9')
+sha256sums=('f1c6ae2dbe36cda0767855ac1b8676751358ca782e2c3d8ee16ba9b0de9b2bc3'
+            '85cea451eec057fa7e734548ca3ba6d779ed5836a3f9de14b8394575ef0d7d8e')
 
 #tar -czvf skywire-deb-scripts.tar.gz skywire-deb-scripts
 #updpkgsums deb.PKGBUILD
@@ -108,16 +108,7 @@ _skyscripts="${_skydir}/scripts"
 _systemddir="etc/systemd/system"
 _skybin="${_skydir}/bin"
 mkdir -p ${_pkgdir}/usr/bin
-#this was done at my discretion for tls autoconfig
-mkdir -p ${_pkgdir}/${_skydir}/ssl
-#the skeleton of the hyperviorkey package; created with a script run on target machines
-mkdir -p ${_pkgdir}/${_skydir}/hypervisorkey/opt/${_pkgname}
-#other dirs must be created or the visor will create them at runtime with weird permissions
 mkdir -p ${_pkgdir}/${_skydir}/local
-mkdir -p ${_pkgdir}/${_skydir}/dmsgpty
-mkdir -p ${_pkgdir}/${_skydir}/${_pkgname}    #needed?
-mkdir -p ${_pkgdir}/${_skydir}/skycache    #local package repository
-mkdir -p ${_pkgdir}/${_skydir}/transport_logs
 mkdir -p ${_pkgdir}/${_skydir}/scripts
 
 cd $_pkgdir
@@ -152,17 +143,10 @@ _msg2 'installing skywire systemd services'
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${_pkgdir}/${_systemddir}/${_pkgname}.service
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-visor.service ${_pkgdir}/${_systemddir}/${_pkgname}-visor.service
 
-_msg2 'installing tls key and certificate generation scripts'
-#install -Dm755 ${srcdir}/${_pkgname}/static/skywire-manager-src/ssl/generate-1.sh ${pkgdir}/${_skydir}/ssl/generate.sh
-install -Dm755 ${srcdir}/${_scripts}/ssl/generate.sh ${_pkgdir}/${_skydir}/ssl/generate.sh
-ln -rTsf ${_pkgdir}/${_skydir}/ssl/generate.sh ${_pkgdir}/usr/bin/skywire-tls-gen
-install -Dm644 ${srcdir}/${_pkgname}/static/skywire-manager-src/ssl/certificate.cnf ${pkgdir}/${_skydir}/ssl/certificate.cnf
-#install -Dm644 ${srcdir}/${_scripts}/ssl/certificate.cnf ${_pkgdir}/${_skydir}/ssl/certificate.cnf
-
 _msg2 'installing skywire control file, postinst & postrm scripts'
 install -Dm755 ${srcdir}/control ${_pkgdir}/DEBIAN/control
 install -Dm755 ${srcdir}/${_scripts}/postinst.sh ${_pkgdir}/DEBIAN/postinst
-install -Dm755 ${srcdir}/${_scripts}/postrm.sh ${_pkgdir}/DEBIAN/postrm
+[[ -f ${srcdir}/${_scripts}/postrm.sh ]] && install -Dm755 ${srcdir}/${_scripts}/postrm.sh ${_pkgdir}/DEBIAN/postrm
 
 _msg2 'creating the debian package'
 #create the debian package
