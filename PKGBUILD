@@ -25,7 +25,7 @@ prepare() {
 	sed -E \
 		-e 's/^(\s*(CFLAGS|LDFLAGS)\s*):=/\1+=/' \
 		-e 's/-Wno-format//' \
-		-e 's/-O[0123s]//' \
+		-e 's/-O[0123s]//;s/-Ofast//' \
 		-e '/\$\(LDFLAGS\)/s/$/ -lpthread/' \
 		-i $_reponame/Makefile
 }
