@@ -1,7 +1,7 @@
 pkgbase = devilutionx
 	pkgdesc = Diablo devolved for linux
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/diasurgical/devilutionX
 	arch = armv6h
 	arch = armv7h
@@ -24,7 +24,7 @@ pkgbase = devilutionx
 	source = https://github.com/diasurgical/devilutionX-assets/releases/download/v2/pl.mpq
 	source = https://github.com/diasurgical/devilutionX-assets/releases/download/v2/ru.mpq
 	sha256sums = 0cbb3df85c92838d3ecb08110535dc37cd926b15ec9576e2c6c33f67ddce27da
-	sha256sums = eddd389578e080c10b433d1c9367cf4bf99727227e9d3bd09a18203dc9cdae20
+	sha256sums = 0988354014c0b969d06001eb1f7e6395de9b41a8de06315745e75d98b5334201
 	sha256sums = d2b4b794312e5c79b49eda19f97820e213d8feff3f479834cd290faf22eb6469
 	sha256sums = 2b65103615d68a146fa8685f82f40c82417050baee351dc5b92813240537aac9
 

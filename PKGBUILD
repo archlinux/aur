@@ -5,7 +5,7 @@ pkgbase=devilutionx
 pkgname=("${pkgbase}" "${pkgbase}-fonts" "${pkgbase}-voices")
 _pkgname=devilutionX
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Diablo devolved for linux"
 arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'i686' 'x86_64')
 url="https://github.com/diasurgical/devilutionX"
@@ -28,6 +28,7 @@ prepare() {
 build() {
   cd build
   cmake ../${_pkgname}-${pkgver} \
+    -DBUILD_TESTING=off \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DVERSION_NUM="${pkgver}"
 
@@ -63,6 +64,6 @@ package_devilutionx-fonts() {
 }
 
 sha256sums=('0cbb3df85c92838d3ecb08110535dc37cd926b15ec9576e2c6c33f67ddce27da'
-  'eddd389578e080c10b433d1c9367cf4bf99727227e9d3bd09a18203dc9cdae20'
-  'd2b4b794312e5c79b49eda19f97820e213d8feff3f479834cd290faf22eb6469'
-  '2b65103615d68a146fa8685f82f40c82417050baee351dc5b92813240537aac9')
+            '0988354014c0b969d06001eb1f7e6395de9b41a8de06315745e75d98b5334201'
+            'd2b4b794312e5c79b49eda19f97820e213d8feff3f479834cd290faf22eb6469'
+            '2b65103615d68a146fa8685f82f40c82417050baee351dc5b92813240537aac9')
