@@ -1,6 +1,6 @@
 # Maintainer: Kazel <address at domain dot tld>
 pkgname=usbguard-applet-qt
-pkgver=0.7.6
+pkgver=0.7.7
 pkgrel=1
 pkgdesc="USBguard QT GUI"
 arch=("x86_64")
@@ -14,8 +14,8 @@ sha512sums=("SKIP")
 prepare() {
     cd "${srcdir}/usbguard-applet-qt-$pkgver-src/src"
     qmake-qt5 -o Makefile usbguard-applet-qt.pro
-    uic-qt5 -o DeviceDialog.ui.h DeviceDialog.ui
-    uic-qt5 -o MainWindow.ui.h MainWindow.ui
+    #uic-qt5 -o DeviceDialog.ui.h DeviceDialog.ui
+    #uic-qt5 -o MainWindow.ui.h MainWindow.ui
 }
 
 build() {
