@@ -1,7 +1,7 @@
 # Maintainer: ml <>
 pkgname=golang-mockery
 pkgver=2.10.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A mock code autogenerator for golang'
 arch=('x86_64')
 url='https://github.com/vektra/mockery'
@@ -20,10 +20,18 @@ build() {
   export CGO_CXXFLAGS="$CXXFLAGS"
   export GOFLAGS='-buildmode=pie -modcacherw -trimpath'
   go build -o mockery -ldflags "-linkmode=external -X github.com/vektra/mockery/v2/pkg/config.SemVer=$pkgver" main.go
+
+  for i in bash zsh fish; do
+    # --config=/dev/null to avoid reading .mockery.yaml
+    ./mockery --config=/dev/null completion "$i" >completion."$i"
+  done
 }
 
 package() {
   cd mockery-"$pkgver"
-  install -Dm755 mockery -t "$pkgdir/usr/bin"
-  install -Dm755 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm755 mockery -t "$pkgdir"/usr/bin
+  install -Dm755 LICENSE -t "$pkgdir"/usr/share/licenses/"$pkgname"
+  install -Dm644 completion.bash "$pkgdir"/usr/share/bash-completion/completions/mockery
+  install -Dm644 completion.zsh "$pkgdir"/usr/share/zsh/site-functions/_mockery
+  install -Dm644 completion.fish "$pkgdir"/usr/share/fish/vendor_completions.d/mockery.fish
 }
