@@ -1,6 +1,6 @@
 pkgbase = tldr-git
 	pkgdesc = C++ command line client for tldr
-	pkgver = 1.4.2+4.g0a5004f819
+	pkgver = 1.4.2+7.gc5a1b0d70f
 	pkgrel = 1
 	url = https://github.com/tldr-pages/tldr-cpp-client
 	arch = i686
