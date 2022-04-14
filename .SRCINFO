@@ -1,0 +1,25 @@
+pkgbase = mavsdk-git
+	pkgdesc = C++ API and library for MAVLink compatible systems.
+	pkgver = v1.2.0.r18.0c13d0fe
+	pkgrel = 1
+	url = https://mavsdk.mavlink.io/main/en/index.html
+	arch = i686
+	arch = x86_64
+	license = Apache
+	makedepends = curl
+	makedepends = make
+	makedepends = cmake
+	makedepends = git
+	depends = jsoncpp
+	depends = tinyxml2
+	provides = mavsdk
+	source = mavsdk::git+https://github.com/mavlink/MAVSDK
+	source = git+https://github.com/mavlink/c_library_v2
+	source = git+https://github.com/mavlink/mavsdk-proto.git
+	source = git+https://github.com/google/googletest.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = mavsdk-git
