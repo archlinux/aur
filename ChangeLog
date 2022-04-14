@@ -362,3 +362,14 @@ Fixes:
 === Morgen 2.5.2
 Fixes:
 - with recent updates, some CalDAV providers started reporting errors while trying to update or create an event. Morgen 2.5.2 fixes this issue.
+
+
+=== Morgen 2.5.3
+New Features:
+- This release contains mostly internal changes to power the awesome features that are coming next, but there is also some great news.
+- In the free plan, the number of meetings that can be booked with a Morgen Scheduling Link increases from 5/month to unlimited! The free includes one active Recurrent Scheduling Link at a time, while One-time Scheduling Links remain unlimited. Not yet explored the full potential of Morgen Scheduling Links? Visit morgen.so/schedule-meetings-with-ease to see how this can simplify your scheduling.
+
+Fixes:
+- We are also bringing some fixes for problems that have been reported to us, for example
+- We fixed an issue saving events with some CalDAV providers.
+- We fixed a problem causing tasks lists to disappear when renamed using an empty title.
