@@ -6,7 +6,7 @@
 # Submitter: sputnick <gilles.quenot <AT> gmail <DOT> com>
 
 pkgname=pjsua
-pkgver=2.11.1
+pkgver=2.12
 pkgrel=1
 pkgdesc="Open source command line SIP user agent"
 arch=(i686 x86_64)
@@ -17,7 +17,7 @@ depends=(
 )
 license=('GPL')
 source=("https://github.com/pjsip/pjproject/archive/${pkgver}.tar.gz")
-sha512sums=('fda8e4bf9d5f34d3940c69414a20f177d09ca79c76753f6597326f8afc72f847dd70df4e1f2c34fae173f5728d5ac1419ed602651c68167c747c40280dbe117e')
+sha512sums=('866039e9a2bfb8ace171db3dbc75e6a0d19102e90ba2077b32c89439ebf6b65bcf5c81b7b6b91b9bee3df458cfa949207e7ed40d23d9294b876b6e6bdb49494c')
  
 build() {
   cd $srcdir/pjproject-$pkgver
