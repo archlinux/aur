@@ -2,18 +2,18 @@
 # Contributor: Anthony Wang <ta180m@gmail.com>
 _name=jupyterlab-git
 pkgname=jupyterlab-extension-jupyterlab_git
-pkgver=0.34.0
+pkgver=0.36.0
 pkgrel=1
 pkgdesc='Git extension for JupyterLab'
 arch=(any)
 url=https://github.com/jupyterlab/$_name
 license=(BSD)
-depends=(jupyterlab jupyter-server python-nbdime python-packaging python-pexpect)
+depends=(jupyterlab jupyter-server python-nbdime jupyter-nbformat python-packaging python-pexpect)
 makedepends=(unzip)
 provides=(jupyterlab-extension-git python-jupyterlab-git)
 _wheel="${_name/-/_}-$pkgver-py3-none-any.whl"
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/$_wheel")
-sha256sums=('64a39f62d07b624b9e3fb4c2d5a03263812803d052164dadf22bee49ec272065')
+sha256sums=('0af436290f2f6c18a52ad3b40631d637b398205623158157faebd02ef6666e2c')
 
 package() {
 	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
