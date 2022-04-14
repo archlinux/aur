@@ -15,7 +15,7 @@ conflicts=($_pkgname)
 install=pangoterm.install
 source=('bzr+https://launchpad.net/pangoterm' 'pangoterm.install')
 sha256sums=('SKIP'
-            'b8e0a46ff41aa4b51ce1d1875fba4410181ff4c1ef436cc02b5108da3446f23b')
+            'd51e7b8fbf5ecd9766bb4ea997971be240342bd1eb50fa1505da2ffdeedd6645')
 
 build() {
     cd $_pkgname
