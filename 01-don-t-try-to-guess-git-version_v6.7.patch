@@ -11,7 +11,7 @@ diff --unified --recursive --text a/build.gradle b/build.gradle
  group = 'com.conveyal'
  // set version to `git describe --tags --always --first-parent`, plus '.dirty' if local changes are present.
 -version gitVersion()
-+version 'v6.6'
++version 'v6.7'
 
  java {
      sourceCompatibility = JavaVersion.VERSION_11
