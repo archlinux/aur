@@ -3,7 +3,7 @@
 _pkgname=pangoterm
 pkgname=$_pkgname-bzr
 pkgver=r626
-pkgrel=1
+pkgrel=2
 pkgdesc='A GTK/Pango-based terminal that uses libvterm to provide terminal emulation.'
 arch=('x86_64')
 url='https://www.leonerd.org.uk/code/pangoterm'

@@ -1,7 +1,7 @@
 pkgbase = pangoterm-bzr
 	pkgdesc = A GTK/Pango-based terminal that uses libvterm to provide terminal emulation.
 	pkgver = r626
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.leonerd.org.uk/code/pangoterm
 	install = pangoterm.install
 	arch = x86_64
