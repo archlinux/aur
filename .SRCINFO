@@ -1,0 +1,15 @@
+pkgbase = usbkill-git
+	pkgdesc = An anti-forensic kill-switch that waits for a change on your USB ports and then immediately shuts down your computer.
+	pkgver = r213.d3df79e
+	pkgrel = 1
+	url = https://github.com/fabiogermann/usbkill
+	install = usbkill-git.install
+	arch = any
+	license = unknown
+	depends = python
+	source = usbkill-git::git+https://github.com/fabiogermann/usbkill.git
+	source = LICENSE
+	sha512sums = SKIP
+	sha512sums = cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e
+
+pkgname = usbkill-git
