@@ -1,0 +1,22 @@
+pkgbase = python-desispec
+	pkgdesc = Scripts and packages for building and running DESI spectroscopic analyses
+	pkgver = 0.27.1
+	pkgrel = 2
+	url = https://github.com/desihub/desispec
+	arch = any
+	license = custom
+	depends = python-requests
+	depends = python-astropy
+	depends = python-numba
+	depends = python-healpy
+	depends = python-speclite
+	depends = python-sqlalchemy
+	depends = python-fitsio
+	depends = python-desiutil
+	depends = python-desimodel
+	source = desispec-0.27.1::https://github.com/desihub/desispec/archive/refs/tags/0.27.1.tar.gz
+	source = python-desispec-0.27.1.patch
+	sha256sums = 673bc59f521074a6a237e72a2ed25972f8bd0dda341e9c81081f659a17646420
+	sha256sums = 7c55008a7964ceaf8ba736999e4d15ba2837e3a05c8ace5a868dfe069d65421f
+
+pkgname = python-desispec
