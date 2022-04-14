@@ -1,7 +1,7 @@
 # Maintainer: John Ramsden <johnramsden [at] riseup [dot] net>
 
 pkgname=znapzend
-pkgver=0.21.0
+pkgver=0.21.1
 pkgrel=1
 pkgdesc="A ZFS centric backup tool to create snapshots and send them to backup locations."
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('perl' 'zfs')
 optdepends=('mbuffer: stream buffering')
 source=("https://github.com/oetiker/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('c9218f8540269a85d83b4d9159b7990ce074bac5f56566049ba355fd45ab16c5')
+sha256sums=('1b438816a9a647a5bb3282ad26a6a8cd3ecce0a874f2fb506cbc156527e188f7')
 
 build() {
     cd "${pkgname}-${pkgver}"
