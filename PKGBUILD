@@ -30,7 +30,7 @@ install="$pkgname.install"
 sha512sums=('SKIP'
             'e062d52b3d12fba285e881175ec7c834b24e28b366a9a19d8dbdbe7b6ffae9462ab5d0f9f84119276a30f9c7b6f8745b00eb98c3e90e344a740824cec26505e9'
             '669f9b6016f911ec8e44461e7a81dc557637c600c4b1b58a83ef3ea7d046c83d9ff5064c1dca3fe6fc29653d79d293b82b58de91f5db197489e1f088741b4a54'
-            '3a508869c35f6df2fd3445ed0a9ef4e5f26b498eaeede33c5412024c90a68fa00854c0937f2173731d264ed584dff4b3eadf997a1defdf96c2b8c264a8d24681'
+            '4cb9278cbf318dcafc56bdc5a109a18f45a58bfe013a88ba3a972516c0bf6037c027ec9bc17bf5ed537eb90079491fc7f5e436b47dac967692e608bec049e86b'
             'bc7d1e1a420a439283b4fcf2f06a8a50ca06d3934b79f6a93ff4ad4d269d6b246eb6a1824381c36bbb73fc7d24e9883281ab66eab05b2cc2fdbac3ed14a775d5')
 
 _reponame="SSVOpenHexagon"
@@ -59,17 +59,25 @@ build() {
 }
 
 package() {
-	mkdir -p "$pkgdir/usr/lib/"
+	mkdir -p "$pkgdir/opt"
 
 	cd "$srcdir/$_reponame/_RELEASE"
-	rm -f *.bat *.dll *.lib
 	install -Dm644 "Assets/Open Hexagon Assets License.txt" -t "$pkgdir/usr/share/licenses/open-hexagon/"
 
+	# Move libraries to separate dir
+	rm -f *.bat *.dll *.lib
+	mkdir -p _deps/
+	mv *.so _deps/
+
 	cd "$srcdir/$_reponame"
-	cp -r "_RELEASE" "$pkgdir/usr/lib/open-hexagon"
+	cp -r "_RELEASE" "$pkgdir/opt/open-hexagon"
 	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/open-hexagon/"
+
+	# Install CMake-pulled dependencies
+	find buildlx/_deps/*-build/ \( -name '*.so.*' -o -name '*.so' \) \
+		-execdir mv -- '{}' "$pkgdir/opt/open-hexagon/_deps" \;
 	
-	cd "$pkgdir/usr/lib/open-hexagon"
+	cd "$pkgdir/opt/open-hexagon"
 
 	# Dirty hack to allow writing data to current directory
 	# (also see .install file)

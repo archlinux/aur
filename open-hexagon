@@ -1,8 +1,8 @@
 #!/bin/sh
 
 if id --name --groups --zero | grep --quiet --null-data --line-regexp --fixed-strings 'games'; then
-	cd /usr/lib/open-hexagon
-	./SSVOpenHexagon
+	cd /opt/open-hexagon
+	LD_LIBRARY_PATH=/opt/open-hexagon/_deps ./SSVOpenHexagon
 else
 	zenity --error --text="Your user must be in 'games' group."
 	exit 1
