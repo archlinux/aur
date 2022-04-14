@@ -1,13 +1,13 @@
 pkgbase = python-censys
 	pkgdesc = An easy-to-use and lightweight API wrapper for Censys APIs.
 	pkgver = 2.1.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/censys/censys-python
 	arch = any
 	license = APACHE
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-poetry
+	makedepends = python-poetry-core
 	depends = python
 	depends = python-requests
 	depends = python-backoff
