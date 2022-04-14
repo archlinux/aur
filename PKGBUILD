@@ -9,8 +9,8 @@ pkgdesc='The Open Source build of Visual Studio Code (vscode) editor, with ozone
 # NodeJS versioning cheatsheet:
 #   - fermium: 14
 # Important: Remember to check https://github.com/microsoft/vscode/blob/master/.yarnrc (choose correct tag) for target electron version
-_electron=electron13
-pkgver=1.65.2
+_electron=electron17
+pkgver=1.66.2
 pkgrel=1
 arch=('x86_64')
 url='https://github.com/microsoft/vscode'
@@ -19,7 +19,7 @@ depends=("$_electron" 'libsecret' 'libx11' 'libxkbfile' 'ripgrep')
 optdepends=('bash-completion: Bash completions'
             'zsh-completions: ZSH completitons'
             'x11-ssh-askpass: SSH authentication')
-makedepends=('git' 'gulp' 'npm' 'python' 'yarn' 'nodejs-lts-fermium' 'imagemagick')
+makedepends=('git' 'gulp' 'npm' 'python' 'yarn' 'nodejs-lts-gallium' 'imagemagick')
 provides=('vscode')
 conflicts=('code')
 source=("$pkgname::git+$url.git#tag=$pkgver"
@@ -29,7 +29,7 @@ source=("$pkgname::git+$url.git#tag=$pkgver"
 sha512sums=('SKIP'
             '6e8ee1df4dd982434a8295ca99e786a536457c86c34212546e548b115081798c5492a79f99cd5a3f1fa30fb71d29983aaabc2c79f4895d4a709d8354e9e2eade'
             '84c4f14bfa79210721f18b46e2d672f3816638b526721475445ad437b373a7574d96b808e5a16eb1026ea60d5b50e30aa5eef7f69d4bd64019291ee195b2ec89'
-            '4b76eb1b628f921f6050dc370cbf294bde531c34edac86ff0ba0e6f47d6833485ddcbe20fb66c031d6f355a8bbf14318f9dd010917a3e5630a32ead4774f25b6')
+            '9aca8a8987d4f6e0e027a795e614c828d434b17e2ff13ed1ce26387b1a079a4227a85169decbc9c9edf6b4db0450989b3970b4ce485bed853600f83f71d399ed')
 
 # Even though we don't officially support other archs, let's
 # allow the user to use this PKGBUILD to compile the package
