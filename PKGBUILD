@@ -15,10 +15,10 @@
 ###############################################################################
 _phpbase="74"
 _suffix=""
-pkgver="7.4.28"
-pkgrel="3"
+pkgver="7.4.29"
+pkgrel="1"
 pkgbase="php74"
-pkgdesc="PHP 7.4.28 compiled as to not conflict with mainline php"
+pkgdesc="PHP 7.4.29 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1  -DU_DEFINE_FALSE_AND_TRUE=1 "
 _build_apache_cfg="etc/httpd/conf/extra"
 _build_bundled_gd="0"
@@ -132,7 +132,7 @@ source=(
     "https://php.net/distributions/php-${pkgver}.tar.xz"
     "mysql-socket-php7.1.patch"
     "php74-enchant.patch"
-    "debian-php-7.4.28.patch"
+    "debian-php-7.4.29.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
     "timezonedb-php7.4.patch"
@@ -203,7 +203,7 @@ arch=(
 _patches=(
     "mysql-socket-php7.1.patch"
     "php74-enchant.patch"
-    "debian-php-7.4.28.patch"
+    "debian-php-7.4.29.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
     "timezonedb-php7.4.patch"
@@ -215,20 +215,20 @@ _sapi_depends=(
     "argon2"
 )
 _ext_depends_snmp=(
-    "php74=7.4.28"
+    "php74=7.4.29"
     "net-snmp"
     "openssl"
 )
 _ext_depends_ftp=(
-    "php74=7.4.28"
+    "php74=7.4.29"
     "openssl"
 )
 _ext_depends_intl=(
-    "php74=7.4.28"
+    "php74=7.4.29"
     "icu"
 )
 _ext_depends_imap=(
-    "php74=7.4.28"
+    "php74=7.4.29"
     "pam"
     "krb5"
     "c-client"
@@ -236,45 +236,45 @@ _ext_depends_imap=(
     "openssl"
 )
 _ext_depends_gd=(
-    "php74=7.4.28"
+    "php74=7.4.29"
     "gd"
 )
 _ext_depends_mysql=(
-    "php74=7.4.28"
-    "php74-pdo=7.4.28"
-    "php74-openssl=7.4.28"
+    "php74=7.4.29"
+    "php74-pdo=7.4.29"
+    "php74-openssl=7.4.29"
 )
 _ext_depends_dba=(
-    "php74=7.4.28"
+    "php74=7.4.29"
     "db"
     "lmdb"
 )
 _ext_depends_odbc=(
-    "php74=7.4.28"
+    "php74=7.4.29"
     "unixodbc"
-    "php74-pdo=7.4.28"
+    "php74-pdo=7.4.29"
 )
 _ext_depends_pgsql=(
-    "php74=7.4.28"
+    "php74=7.4.29"
     "postgresql-libs"
-    "php74-pdo=7.4.28"
+    "php74-pdo=7.4.29"
 )
 _ext_depends_firebird=(
-    "php74=7.4.28"
+    "php74=7.4.29"
     "libfbclient"
-    "php74-pdo=7.4.28"
+    "php74-pdo=7.4.29"
 )
 _ext_depends_sqlite=(
-    "php74=7.4.28"
+    "php74=7.4.29"
     "sqlite"
-    "php74-pdo=7.4.28"
+    "php74-pdo=7.4.29"
 )
 _ext_depends_mbstring=(
-    "php74=7.4.28"
+    "php74=7.4.29"
     "oniguruma"
 )
 _ext_depends_openssl=(
-    "php74=7.4.28"
+    "php74=7.4.29"
     "krb5"
     "e2fsprogs"
     "openssl"
@@ -1527,7 +1527,7 @@ sha256sums=('e6b8530d747000eebb0089249ec70a3b14add7b501337046700544883f62b17b'
             '0b7e98dca9c996ec10cb9b3f6296bb7547c68797fd5f35006fdfd3e97700672d'
             'ba72fc64f77822755a469314160d5889d5298f4eb5758dd7939dac9b811afe52'
             '6d0ad9becb5470ce8e5929d7d45660b0f32579038978496317544c5310281a91'
-            '9cc3b6f6217b60582f78566b3814532c4b71d517876c25013ae51811e65d8fce'
+            '7d0f07869f33311ff3fe1138dc0d6c0d673c37fcb737eaed2c6c10a949f1aed6'
             '0a3a6e8ff04ff1e0869befcf2c7bca4e886d94065da6d7a10b809a4750b961a0'
             '8fb103438fe12875dbe7c1f5b0899a81a76b4ce1456f16960e23e287d273df14'
             'ccaad50d9e855bebd9d98bec4db6085dde3446ecd68bdbb58c1d450e1f5aeab9'
