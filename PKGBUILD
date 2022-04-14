@@ -4,9 +4,9 @@
 # Package Information
 _crate="cargo-diet"
 pkgname="$_crate"
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
-pkgdesc='Make your crate lean by computing size-optimal include directives for Cargo manifests'
+pkgdesc='Make your crate lean by computing size-optimal include directives for Cargo m...'
 license=('MIT')
 
 # Tier 1 architectures supported by Rust (https://doc.rust-lang.org/nightly/rustc/platform-support.html#tier-1)
@@ -17,7 +17,7 @@ url="https://crates.io/crates/$_crate"
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$_crate/$pkgver/download")
-sha512sums=('f3917a2a625e7dee9f675a87b07843674cb96ba0b0b95bcc7fa9bf2843c8dfdb9ad37a48847dc35d804a9058bee179235714ad0c5676a1f1d931408375a15445')
+sha512sums=('65dc66be3c11e75d08152ccc8b8a44902ad986b3e6acc2cc3980d78c25898e5c22cf9d91b12bbde4063e1cc4aa0937b2c3009c3f8a1fac94d2f187cfc879fdd9')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
