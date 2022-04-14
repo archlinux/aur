@@ -5,7 +5,7 @@ _pkgname=${pkgname/-bin}
 _githuborg=skycoin
 pkgdesc="Skywire: Decentralize the web. Skycoin.com"
 pkgver='0.6.0'
-pkgrel=16
+pkgrel=17
 _pkgver=${pkgver}
 _tag_ver="v${_pkgver}"
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
@@ -82,7 +82,7 @@ done
 
 _msg2 'Correcting symlink names'
 ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}
-ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}-hypervisor
+#ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}-hypervisor
 
 #make sure everything is executable
 chmod +x ${_pkgdir}/usr/bin/*
@@ -98,8 +98,10 @@ install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-autoconfig-remote.servi
 
 #desktop integration
 install -Dm644 "${srcdir}"/${_scripts}/desktop/com.skywire.Skywire.desktop ${_pkgdir}/usr/share/applications/com.skywire.Skywire.desktop
-install -Dm644 "${srcdir}"/${_scripts}/desktop/skywire.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/skywire.png
-
+#desktop integration
+install -Dm644 "${srcdir}"/${_scripts}/desktop/com.skywire.Skywire.desktop ${_pkgdir}/usr/share/applications/com.skywire.Skywire.desktop
+install -Dm644 "${srcdir}"/${_scripts}/desktop/skywire.png ${_pkgdir}/${_skydir}/icon.png
+ln -rTsf ${_pkgdir}/${_skydir}/icon.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/skywire.png
 }
 
 _install2() {
@@ -107,7 +109,7 @@ _binname="${1##*/}"
 _binname="${_binname%%.*}"
 install -Dm755 ${1} ${pkgdir}/${2}/${_binname}
 ln -rTsf ${pkgdir}/${2}/${_binname} ${pkgdir}/usr/bin/${_binname}
-chmod +x ${pkgdir}/usr/bin/${_binname}
+#chmod +x ${pkgdir}/usr/bin/${_binname}
 }
 
 _msg2() {

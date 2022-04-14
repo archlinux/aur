@@ -5,7 +5,7 @@ _pkgname=${pkgname/-bin}
 _githuborg=skycoin
 pkgdesc="Skywire: Decentralize the web. Skycoin.com. Debian package"
 pkgver='0.6.0'
-pkgrel=16
+pkgrel=17
 _pkgver=${pkgver}
 _pkgrel=${pkgrel}
 _tag_ver="v${_pkgver}"
@@ -132,8 +132,9 @@ install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-autoconfig.service ${_p
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-autoconfig-remote.service ${_pkgdir}/${_systemddir}/${_pkgname}-autoconfig-remote.service
 
 #desktop integration
-install -Dm644 "${srcdir}"/${_scripts}/desktop/com.skywire.Skywire.desktop ${pkgdir}/usr/share/applications/com.skywire.Skywire.desktop
-install -Dm644 "${srcdir}"/${_scripts}/desktop/skywire.png ${pkgdir}/usr/share/icons/hicolor/48x48/apps/skywire.png
+install -Dm644 "${srcdir}"/${_scripts}/desktop/com.skywire.Skywire.desktop ${_pkgdir}/usr/share/applications/com.skywire.Skywire.desktop
+install -Dm644 "${srcdir}"/${_scripts}/desktop/skywire.png ${_pkgdir}/${_skydir}/icon.png
+ln -rTsf ${_pkgdir}/${_skydir}/icon.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/skywire.png
 
 _msg2 'installing control file and install scripts'
 install -Dm755 ${srcdir}/${_pkgarch}.control ${_pkgdir}/DEBIAN/control
