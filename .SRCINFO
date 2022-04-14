@@ -1,0 +1,12 @@
+pkgbase = python-empca
+	pkgdesc = Weighted Expectation Maximization PCA
+	pkgver = 0.2
+	pkgrel = 3
+	url = https://github.com/sbailey/empca
+	arch = any
+	license = BSD
+	depends = python
+	source = empca-c34abb3f7a2bed4baaf25f15f00791d5f60f8be8::https://github.com/sbailey/empca/archive/c34abb3f7a2bed4baaf25f15f00791d5f60f8be8.zip
+	sha256sums = 8fcd350cb1e7fcb6761a8ea4c6de81715f9203a15d2c03f1e1afaa4aafd214a8
+
+pkgname = python-empca
