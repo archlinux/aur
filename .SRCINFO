@@ -1,12 +1,11 @@
 pkgbase = linux-bnx2x-2.5g
 	pkgdesc = Linux
-	pkgver = 5.17.1.arch1
+	pkgver = 5.17.2.arch3
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v5.17.1-arch1
+	url = https://github.com/archlinux/linux/commits/v5.17.2-arch3
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
-	makedepends = kmod
 	makedepends = libelf
 	makedepends = pahole
 	makedepends = cpio
@@ -15,7 +14,7 @@ pkgbase = linux-bnx2x-2.5g
 	makedepends = xz
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.17.1-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.17.2-arch3
 	source = bnx2x_warpcore+8727_2_5g_sgmii_arch.patch
 	source = config
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
@@ -24,14 +23,14 @@ pkgbase = linux-bnx2x-2.5g
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha256sums = SKIP
 	sha256sums = d655669179109ae8e801a259c35dbe442ca67a49b9ceb6ca3ef0e56f48149a7d
-	sha256sums = bd1e57c15d4eb62024d2ee935b54d36e74e73b22c3800b45ecf9233521a9f74b
+	sha256sums = c0ef360e34fd21c23509224abae894b0d6d37256cccf82575062a05986ee5dba
 
 pkgname = linux-bnx2x-2.5g
 	pkgdesc = The Linux kernel and modules
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
-	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
