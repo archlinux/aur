@@ -1,8 +1,8 @@
 # Maintainer: Roshless <pkg@roshless.com>
 
 pkgname=lagrange
-pkgrel=2
-pkgver=1.12.0
+pkgrel=1
+pkgver=1.12.1
 pkgdesc="Beautiful Gemini Client"
 url="https://git.skyjake.fi/skyjake/lagrange"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
@@ -44,4 +44,4 @@ package() {
     make DESTDIR="$pkgdir" install
 }
 
-sha256sums=('3212e36ed0d7fd7a15c07236dd922c65bef71c4027187d853eec2ecffda05e75')
+sha256sums=('8a342d9b7e980cd6d9771d72215dd543d411721685fb60fc2202e300cb5d6483')
