@@ -1,12 +1,13 @@
 # Maintainer: Chinmay Dalal <w5vwg64uy@relay.firefox.com>
 pkgname=gotktrix-git
 license=('AGPL3')
-pkgver=r334.f46ae83
-pkgrel=2
+pkgver=r361.6e72a40
+pkgrel=1
 pkgdesc="Matrix client in Go and GTK4"
 arch=('x86_64')
 url="https://github.com/diamondburned/${pkgname%-git}"
-makedepends=("go")
+makedepends=('go' 'git' 'cairo' 'gobject-introspection' 'graphene' 'pango' 'gdk-pixbuf2')
+depends=('gobject-introspection-runtime' 'gtk4')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=($pkgname::"git+${url}.git")
@@ -18,21 +19,20 @@ pkgver() {
 }
 
 build() {
-    export GOPATH="$srcdir/go"
-    cd "$srcdir/$pkgname"
+    cd "$pkgname"
 
-    go build \
-        -trimpath \
-        -buildmode=pie \
-        -mod=readonly \
-        -modcacherw \
-        -o "${pkgname%-git}" .
+    export CGO_CPPFLAGS="${CPPFLAGS}"
+    export CGO_CFLAGS="${CFLAGS}"
+    export CGO_CXXFLAGS="${CXXFLAGS}"
+    export CGO_LDFLAGS="${LDFLAGS}"
+    export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+    go build -o "${pkgname%-git}" .
 }
 
 
 package() {
-    cd "$srcdir/$pkgname"
-    export GOPATH="$srcdir/go"
-    echo $PWD
+    cd "$pkgname"
     install -Dm755 "$srcdir/$pkgname/${pkgname%-git}" "$pkgdir/usr/bin/${pkgname%-git}"
+    install -Dm644 .nix/com.github.diamondburned.gotktrix.desktop "$pkgdir//usr/share/applications/${pkgname%-git}.desktop"
 }
