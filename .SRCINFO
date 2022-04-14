@@ -1,0 +1,22 @@
+pkgbase = python-desisim
+	pkgdesc = Scripts and packages for simulating DESI spectra
+	pkgver = 0.28.0
+	pkgrel = 1
+	url = https://github.com/desihub/desim
+	arch = any
+	license = BSD
+	depends = python-setuptools
+	depends = python-requests
+	depends = python-astropy
+	depends = python-healpy
+	depends = python-pytz
+	depends = python-speclite
+	depends = python-fitsio
+	depends = python-numba
+	depends = python-desiutil
+	depends = python-desimodel
+	depends = python-specter
+	source = desisim-0.28.0::https://github.com/desihub/desisim/archive/refs/tags/0.28.0.tar.gz
+	sha256sums = 4b635584d96c0892de93c4dad67d5d053d3cb1f03f73c99bbf47932cae76ec67
+
+pkgname = python-desisim
