@@ -4,8 +4,8 @@
 pkgbase=devilutionx
 pkgname=("${pkgbase}" "${pkgbase}-fonts" "${pkgbase}-voices")
 _pkgname=devilutionX
-pkgver=1.3.0
-pkgrel=3
+pkgver=1.4.0
+pkgrel=1
 pkgdesc="Diablo devolved for linux"
 arch=('armv6h' 'armv7h' 'arm' 'aarch64' 'i686' 'x86_64')
 url="https://github.com/diasurgical/devilutionX"
@@ -14,12 +14,20 @@ depends=('fmt' 'libpng' 'libsodium' 'sdl2')
 makedepends=('cmake' 'gettext' 'git' 'smpq')
 options=('strip')
 source=("${url}/archive/${pkgver}.tar.gz"
-  "${url}-assets/releases/download/v1/fonts.mpq"
-  "${url}-assets/releases/download/v1/pl.mpq")
+  "${url}-assets/releases/download/v2/fonts.mpq"
+  "${url}-assets/releases/download/v2/pl.mpq"
+  "${url}-assets/releases/download/v2/ru.mpq"
+)
+
+prepare() {
+  if [ ! -d build ]; then
+    mkdir build
+  fi
+}
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}/build"
-  cmake .. \
+  cd build
+  cmake ../${_pkgname}-${pkgver} \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DVERSION_NUM="${pkgver}"
 
@@ -31,7 +39,7 @@ package_devilutionx() {
   install="${pkgbase}".install
   optdepends=("${pkgbase}-fonts" "${pkgbase}-voices")
 
-  cd "${srcdir}/${_pkgname}-${pkgver}/build"
+  cd build
   DESTDIR=${pkgdir} \
     cmake --install .
 }
@@ -42,6 +50,8 @@ package_devilutionx-voices() {
 
   install -Dm644 pl.mpq \
     ${pkgdir}/usr/share/diasurgical/devilutionx/pl.mpq
+  install -Dm644 ru.mpq \
+    ${pkgdir}/usr/share/diasurgical/devilutionx/ru.mpq
 }
 
 package_devilutionx-fonts() {
@@ -52,6 +62,7 @@ package_devilutionx-fonts() {
     ${pkgdir}/usr/share/diasurgical/devilutionx/fonts.mpq
 }
 
-sha256sums=('6911ec6432430ff30212b6817f311987793c0661f39dc395103d01555fdc8c77'
+sha256sums=('0cbb3df85c92838d3ecb08110535dc37cd926b15ec9576e2c6c33f67ddce27da'
   'eddd389578e080c10b433d1c9367cf4bf99727227e9d3bd09a18203dc9cdae20'
-  '9ca72ceea406b9b58de549a782d794502e8aea566e5c2d5bc3f8f051772fe797')
+  'd2b4b794312e5c79b49eda19f97820e213d8feff3f479834cd290faf22eb6469'
+  '2b65103615d68a146fa8685f82f40c82417050baee351dc5b92813240537aac9')
