@@ -1,0 +1,11 @@
+pkgbase = ttf-genyog-git
+	pkgdesc = Free font derived from Source Han Serif.
+	pkgver = v1.501
+	pkgrel = 1
+	url = https://github.com/ButTaiwan/genyog-font
+	arch = any
+	license = OFL
+	source = git+https://github.com/ButTaiwan/genyog-font.git
+	sha256sums = SKIP
+
+pkgname = ttf-genyog-git
