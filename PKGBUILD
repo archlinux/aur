@@ -1,7 +1,7 @@
 # Maintainer Nathan Fisher <jeang3nie at hitchhiker-linux dot org>
 pkgname=eva-browser
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A gemini browser in Gtk4'
 arch=('x86_64')
 url='https://codeberg.org/jeang3nie/eva'
