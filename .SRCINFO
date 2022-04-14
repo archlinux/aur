@@ -1,0 +1,11 @@
+pkgbase = ttf-gensen-git
+	pkgdesc = A free font family derived from Source Han Sans.
+	pkgver = v1.501.r2.a95f5df
+	pkgrel = 1
+	url = https://github.com/ButTaiwan/gensen-font
+	arch = any
+	license = OFL
+	source = git+https://github.com/ButTaiwan/gensen-font.git
+	sha256sums = SKIP
+
+pkgname = ttf-gensen-git
