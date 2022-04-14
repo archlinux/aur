@@ -1,11 +1,12 @@
 pkgbase = cros-container-guest-tools-git
 	pkgdesc = Linux guest tools for the Crostini containers on ChromeOS
-  pkgver = r275.19eab9e
-	pkgrel = 3
+	pkgver = r334.d0714026
+	pkgrel = 1
 	url = https://chromium.googlesource.com/chromiumos/containers/cros-container-guest-tools
 	install = cros-container-guest-tools.install
 	arch = any
 	license = custom
+	makedepends = git
 	depends = openssh
 	depends = xdg-utils
 	depends = xkeyboard-config
@@ -37,4 +38,3 @@ pkgbase = cros-container-guest-tools-git
 	sha1sums = f05da51a3913c5815d320c8ed536f2a7ac1fdcd5
 
 pkgname = cros-container-guest-tools-git
-

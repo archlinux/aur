@@ -14,6 +14,10 @@ post_install() {
 	# workaround for https://bugs.archlinux.org/task/58701 - remove after fix
 	ln -sf /opt/google/cros-containers/cros-adapta /usr/share/themes/CrosAdapta
 
+	# cros-host-fonts
+	systemctl unmask usr-share-fonts-chromeos.mount
+	systemctl enable usr-share-fonts-chromeos.mount --now
+
 	post_upgrade
 }
 
@@ -43,6 +47,12 @@ EOF
 
 }
 
+pre_remove() {
+
+	# cros-host-fonts
+	systemctl stop usr-share-fonts-chromeos.mount
+}
+
 post_remove() {
 
 	# update dconf after GTK+ theme installed
@@ -59,4 +69,7 @@ post_remove() {
 	# workaround for https://bugs.archlinux.org/task/58701 - remove after fix
 	rm -f /usr/share/themes/CrosAdapta
 	rm -f /usr/bin/sommelier
+
+	# cros-host-fonts
+	systemctl mask usr-share-fonts-chromeos.mount
 }
