@@ -2,7 +2,7 @@
 
 _cratename=melody_cli
 pkgname=melody
-pkgver=0.14.3
+pkgver=0.16.0
 pkgrel=1
 pkgdesc='A language designed to compile to and maintain a 1-1 relationship with regular expressions, while being more readable and maintainable.'
 url='https://github.com/yoav-lavi/melody'
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 arch=('x86_64')
 license=('MIT')
 source=("https://github.com/yoav-lavi/melody/archive/v${pkgver}/v${pkgver}.tar.gz")
-sha256sums=('812f058c60eba281758288d14f7a605d5684995b12a5598da73cb49d840eeda4')
+sha256sums=('36e3aa6f14f9a94705c2b2f58f19cd8e5f111b43127670eda0318feae141c517')
 
 prepare() {
     cd "$pkgname-$pkgver"
