@@ -9,7 +9,7 @@ url="https://github.com/FriendsOfShopware/shopware-cli"
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/FriendsOfShopware/shopware-cli/releases/download/${pkgver}/${pkgname}_${pkgver}_linux_x86_64.tar.gz"
         "LICENSE-${pkgver}::https://raw.githubusercontent.com/FriendsOfShopware/shopware-cli/main/LICENSE")
-sha256sums=('f99d9e7f843108734f881d5cd57820e81bccee739e056b964397654ae0be325b'
+sha256sums=('66791122a98792a68532d5c670bbd43dd884ec9258beff13e42f6c388893aa41'
             'd7aa16ba3040471c1f8958214ca26e957586f6a95434adc476edbaa9ca3a46ae')
 
 package() {
