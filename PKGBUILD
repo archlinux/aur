@@ -1,38 +1,30 @@
-# Maintainer: Manuel Mendez <mmendez534@gmail.com>
-# github.com/mmlb/pangoterm-bzr
+# Maintainer: Marco Rubin <marco.rubin@protonmail.com>
 
-pkgname=pangoterm-bzr
-pkgver=r594
-pkgrel=2
+_pkgname=pangoterm
+pkgname=$_pkgname-bzr
+pkgver=r626
+pkgrel=1
 pkgdesc='A GTK/Pango-based terminal that uses libvterm to provide terminal emulation.'
-arch=('i686' 'x86_64')
-url='http://www.leonerd.org.uk/code/pangoterm'
+arch=('x86_64')
+url='https://www.leonerd.org.uk/code/pangoterm'
 license=('MIT')
-depends=('libvterm-bzr' 'gtk2')
-makedepends=('bzr' 'libvterm-bzr' 'gtk2')
-provides=("${pkgname%-bzr}")
-conflicts=("${pkgname%-bzr}")
+depends=('libvterm' 'gtk2')
+makedepends=('bzr' 'libvterm' 'gtk2')
+provides=($_pkgname)
+conflicts=($_pkgname)
 install=pangoterm.install
-source=('bzr+http://bazaar.leonerd.org.uk/code/pangoterm/'
-    'pangoterm.install')
+source=('bzr+https://launchpad.net/pangoterm' 'pangoterm.install')
 sha256sums=('SKIP'
-    'd51e7b8fbf5ecd9766bb4ea997971be240342bd1eb50fa1505da2ffdeedd6645')
-
-pkgver() {
-    cd "$srcdir/${pkgname%-bzr}"
-    printf "r%s" "$(bzr revno)"
-}
+            'b8e0a46ff41aa4b51ce1d1875fba4410181ff4c1ef436cc02b5108da3446f23b')
 
 build() {
-    cd "$srcdir/${pkgname%-bzr}"
+    cd $_pkgname
     make PREFIX=/usr
 }
 
 package() {
-    cd "$srcdir/${pkgname%-bzr}"
-    make PREFIX=/usr DESTDIR="${pkgdir}" install
-    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname%-bzr}/LICENSE"
-    install -Dm644 pangoterm.cfg "${pkgdir}/usr/share/${pkgname%-bzr}/pangoterm.cfg"
+    cd $_pkgname
+    make PREFIX=/usr DESTDIR="$pkgdir" install
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
+    install -Dm644 pangoterm.cfg "$pkgdir/usr/share/$_pkgname/pangoterm.cfg"
 }
-
-# vim:set sw=4 sts=4 et:
