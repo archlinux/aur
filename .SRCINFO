@@ -1,8 +1,8 @@
 pkgbase = cxx-run
-	pkgdesc = simple, clean and customisable run dialog in sfml
-	pkgver = 2022.04.14.added.install
+	pkgdesc = simple run prompt in sfml
+	pkgver = 2022.04.14
 	pkgrel = 1
-	url = https://github.com/0x7fff-git/cxx-run
+	url = https://github.com/3llena-arch/cxx-run
 	arch = x86_64
 	license = GPL
 	makedepends = git
@@ -11,7 +11,7 @@ pkgbase = cxx-run
 	makedepends = sfml
 	provides = cxx-run
 	conflicts = cxx-run
-	source = git+https://github.com/0x7fff-git/cxx-run
+	source = git+https://github.com/3llena-arch/cxx-run
 	sha256sums = SKIP
 
 pkgname = cxx-run

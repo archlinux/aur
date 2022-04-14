@@ -1,14 +1,14 @@
 # Maintainer: 3llena-arch <3llena-arch@protonmail.com>
 
 pkgname=cxx-run
-pkgver=2022.04.14.added.install
+pkgver=2022.04.14
 pkgrel=1
-pkgdesc="simple, clean and customisable run dialog in sfml"
+pkgdesc="simple run prompt in sfml"
 arch=('x86_64')
 makedepends=('git' 'gcc' 'make' 'sfml')
-url="https://github.com/0x7fff-git/cxx-run"
+url="https://github.com/3llena-arch/cxx-run"
 license=('GPL')
-source=(git+https://github.com/0x7fff-git/cxx-run)
+source=(git+https://github.com/3llena-arch/cxx-run)
 sha256sums=('SKIP')
 provides=('cxx-run')
 conflicts=('cxx-run')
@@ -33,6 +33,4 @@ package() {
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
-  
-  msg2 'Config avatar path ==> $HOME/.config/cxx-run.conf'
 }
