@@ -1,14 +1,17 @@
 pkgbase = python-lief
 	pkgdesc = Cross-platform library for parsing, modifying, and abstracting binary formats
-	pkgver = 0.11.5
+	pkgver = 0.12.1
 	pkgrel = 1
 	url = https://github.com/lief-project/lief
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
-	source = python-lief-0.11.5.zip::https://files.pythonhosted.org/packages/source/l/lief/lief-0.11.5.zip
-	sha256sums = 932ba495388fb52b4ba056a0b00abe0bda3567ad3ebc6d726be1e87b8be08b3f
+	source = python-lief-0.12.1.zip::https://files.pythonhosted.org/packages/source/l/lief/lief-0.12.1.zip
+	sha256sums = 4ff4ccfae2e1ee4ccba2b5556027dbb56282b8a973c5835c5b597e8b7b664416
 
 pkgname = python-lief
