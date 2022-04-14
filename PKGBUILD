@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("git://github.com/m4tx/tundra"
+source=("git+https://github.com/m4tx/tundra.git"
         "https://raw.githubusercontent.com/erengy/anime-relations/master/anime-relations.txt")
 noextract=()
 md5sums=('SKIP'
