@@ -7,6 +7,7 @@ pkgbase = grub-editor
 	license = GPL3
 	makedepends = make
 	depends = python>=3.8
+	depends = python-pyzmq
 	source = https://github.com/Thenujan-0/grub-editor/archive/refs/tags/v0.95.tar.gz
 	md5sums = SKIP
 

@@ -8,7 +8,7 @@ arch=('any')
 url="https://github.com/Thenujan-0/grub-editor"
 license=('GPL3')
 groups=()
-depends=('python>=3.8')
+depends=('python>=3.8' 'python-pyzmq')
 makedepends=('make')
 checkdepends=()
 optdepends=()
