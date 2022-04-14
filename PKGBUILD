@@ -2,7 +2,7 @@
 # Contributor: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-google-cloud-storage
-pkgver=2.2.1
+pkgver=2.3.0
 pkgrel=1
 pkgdesc='Google Cloud Storage API client library'
 arch=('any')
@@ -25,7 +25,7 @@ makedepends=(
 # checkdepends=('python-pytest-runner' 'python-mock' 'python-google-cloud-testutils')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('aa102905c1deca0b74f5860f0893b946d076302cfb6e691c12425a4fa5da39d4')
+sha256sums=('73bc63caf791a2ccbe5ac3f4181a423fa679fb64a74da637ca8f29d002ee96bb')
 
 build() {
 	cd "python-storage-$pkgver"
@@ -41,9 +41,8 @@ build() {
 # }
 
 package() {
-	export PYTHONHASHSEED=0
 	cd "python-storage-$pkgver"
-	python -m installer --destdir="$pkgdir/" dist/*.whl
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 	install -Dm644 SECURITY.md -t "$pkgdir/usr/share/doc/$pkgname/"
 	install -Dm644 docs/build/google-cloud-storage.1 -t "$pkgdir/usr/share/man/man1/"
 }
