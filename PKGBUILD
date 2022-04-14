@@ -3,7 +3,7 @@
 
 pkgname=lite-xl-git
 _pkgname=lite-xl
-pkgver=2.0.3.r335.g8c8bd46
+pkgver=2.0.4.r512.g16fcb2e7
 pkgrel=1
 pkgdesc='A lightweight text editor written in Lua'
 arch=('x86_64')
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-  git describe --tags --long | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
+  git describe --tags --long --exclude 'testing*' | sed 's/^v//; s/\([^-]*-g\)/r\1/; s/-/./g'
 }
 
 
