@@ -1,0 +1,14 @@
+diff --git a/setup.py b/setup.py
+index 1a7c866..fa00389 100755
+--- a/setup.py
++++ b/setup.py
+@@ -29,9 +29,6 @@ setup(
+     license="BSD 2-Clause",
+     packages=find_packages(exclude=('tests', 'docs')),
+     install_requires=requirements,
+-    data_files=[
+-        ('', ['LICENSE']),
+-    ],
+     classifiers=[
+         "Development Status :: 4 - Beta",
+         "License :: OSI Approved :: BSD License",
