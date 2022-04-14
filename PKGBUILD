@@ -10,6 +10,7 @@ url="https://github.com/alexhuntley/Plots/"
 license=('GPL')
 depends=(
 	'gtk3'
+	'libhandy'
 	'python-gobject'
 	'python-opengl'
 	'python-jinja'

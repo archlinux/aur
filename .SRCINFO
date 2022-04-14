@@ -8,6 +8,7 @@ pkgbase = plots-git
 	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = gtk3
+	depends = libhandy
 	depends = python-gobject
 	depends = python-opengl
 	depends = python-jinja
