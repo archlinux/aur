@@ -27,7 +27,7 @@ package() {
   # bin
   install -Dm755 "./wishlist" "${pkgdir}/usr/bin/wishlist"
   # license
-  install -Dm644 "./LICENSE.md" "${pkgdir}/usr/share/licenses/wishlist/LICENSE"
+  install -Dm644 ./LICENSE* "${pkgdir}/usr/share/licenses/wishlist/"
   # completions
   mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
   mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
