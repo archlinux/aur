@@ -1,14 +1,14 @@
 pkgbase = tokio-console
 	pkgdesc = The Tokio console: a debugger for async Rust
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/tokio-rs/console/tree/main/tokio-console
 	arch = x86_64
 	license = MIT
 	makedepends = rust
 	depends = gcc-libs
-	source = tokio-console-0.1.3.tar.gz::https://github.com/tokio-rs/console/archive/refs/tags/tokio-console-v0.1.3.tar.gz
-	sha256sums = 0861b5d5e5233349ac9d74e18001be0e1a3cf1082ba25ad29be4a9b4a32bfe71
-	b2sums = 760a2701d82f6de06c288253150501f86d2351fbf6d1d4d689637084e581f378588b34cb4cd3e596bb20353cb8347e96d5403672f281706086e0901597093d3f
+	source = tokio-console-0.1.4.tar.gz::https://github.com/tokio-rs/console/archive/refs/tags/tokio-console-v0.1.4.tar.gz
+	sha256sums = bb40511a49a1318e5f34aa82f717cd2f98ed2db88a773da50190bb6fa6867539
+	b2sums = 4ec237e72e4054c7fcc3eea604f18dc78dbded7cf6e82694afd9603e21aba56fa3a4fb427a627c571f7d995b7fd046ebeda2c13836fc3e0625bd376413575cb6
 
 pkgname = tokio-console
