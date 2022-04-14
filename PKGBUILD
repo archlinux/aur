@@ -8,7 +8,7 @@
 
 _pkgbase=mutt
 pkgname=${_pkgbase}-slang
-pkgver=2.2.1
+pkgver=2.2.3
 pkgrel=1
 pkgdesc="Small but very powerful text-based mail client - slang version"
 arch=(x86_64)
@@ -26,7 +26,7 @@ optdepends=(
 )
 backup=(etc/Muttrc)
 options=(debug)
-source=("git+https://gitlab.com/muttmua/${_pkgbase}.git#tag=${_pkgbase}-${pkgver//./-}-rel?signed")
+source=(git+https://gitlab.com/muttmua/${_pkgbase}.git#tag=${_pkgbase}-${pkgver//./-}-rel?signed)
 sha512sums=('SKIP')
 b2sums=('SKIP')
 validpgpkeys=('8975A9B33AA37910385C5308ADEF768480316BDA') # Kevin J. McCarthy <kevin@8t8.us>
