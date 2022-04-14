@@ -1,6 +1,6 @@
 pkgbase = lcarswm
 	pkgdesc = LCARS Window Manager for lcarsde
-	pkgver = 21.3
+	pkgver = 22.1
 	pkgrel = 1
 	url = https://lcarsde.github.io
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = lcarswm
 	depends = freetype2
 	optdepends = ttf-ubuntu-font-family
 	optdepends = alsa-utils
-	source = lcarswm-21.3.tar.gz::https://github.com/lcarsde/lcarswm/archive/21.3.tar.gz
-	md5sums = 7d111f5d2a5265a37177bb0f229cbeac
+	source = lcarswm-22.1.tar.gz::https://github.com/lcarsde/lcarswm/archive/22.1.tar.gz
+	md5sums = 9a09bd16937a0654c33a679b24c98d37
 
 pkgname = lcarswm
