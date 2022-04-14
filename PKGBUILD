@@ -7,14 +7,14 @@ pkgdesc="typora历史旧版本，中国下载地址构建。"
 arch=('x86_64')
 filename="Typora_Linux_${pkgver}_amd64.deb"
 license=('custom:"Copyright (c) 2015 Abner Lee All Rights Reserved."')
-url="https://repo.linuxacme.cn/"
+url="https://www.typora.net/"
 depends=('gtk3' 'libxss')
 optdepends=(
 	'noto-fonts-emoji: Or some other emoji font to see emojis'
 	'pandoc: Import/export for extra file formats')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-source=("https://oss.linuxacme.cn/$filename")
+source=("https://repo.linuxacme.cn/$filename")
 sha512sums=('8933cb4eab13a37719a3771d14a7a3f5951f6bbce06381ffe37ad5bc3029efed3878723427a4e97b83dbc1d7ccc43b31551b0c336663c843f0e685f8a4e2390e')
 
 package() {
