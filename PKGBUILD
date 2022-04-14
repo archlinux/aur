@@ -16,7 +16,7 @@ prepare() {
   cd "$pkgname-$pkgver"
 
   # Relax pkginfo requirement
-  find . -type f -exec sed -i 's|pkginfo>=1.4.2,<1.8|pkginfo>=1.4.2|g' {} \;
+  sed -i 's/pkginfo>=1.4.2,<1.8/pkginfo>=1.4.2/g' requirements/prod.txt
 }
 
 build() {
