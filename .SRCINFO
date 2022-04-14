@@ -1,6 +1,6 @@
 pkgbase = java-openjdk-ea-bin
 	pkgdesc = Java OpenJDK 19 Early-Access Build
-	pkgver = 19b17
+	pkgver = 19b18
 	pkgrel = 1
 	url = https://jdk.java.net/19
 	arch = x86_64
@@ -20,7 +20,7 @@ pkgbase = java-openjdk-ea-bin
 	provides = java-runtime-openjdk=19
 	provides = java-runtime-headless=19
 	provides = java-runtime-headless-openjdk=19
-	source = https://download.java.net/java/early_access/jdk19/17/GPL/openjdk-19-ea+17_linux-x64_bin.tar.gz
-	sha256sums = 263cc28c3abc084b653e28887ee67701189283a5d29f840062eb778b47c65dbe
+	source = https://download.java.net/java/early_access/jdk19/18/GPL/openjdk-19-ea+18_linux-x64_bin.tar.gz
+	sha256sums = c79b13e466464b0054cad0301cf53bcd4b083d591f5fe61e932f39d34063f93b
 
 pkgname = java-openjdk-ea-bin
