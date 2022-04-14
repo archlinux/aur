@@ -12,9 +12,9 @@ arch=('any')
 #manually version for now
 pkgver='0.6.0'
 _pkgver=${pkgver}
-pkgrel=2
+pkgrel=3
 _pkgrel=${pkgrel}
-#pkgrel=2
+#pkgrel=3
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 url="https://${_pkggopath}"
 license=()
@@ -79,7 +79,7 @@ echo "Priority: optional" >> ${srcdir}/control
 echo "Section: web" >> ${srcdir}/control
 echo "Architecture: ${_pkgarch}" >> ${srcdir}/control
 echo "Depends: ${_debdeps}" >> ${srcdir}/control
-echo "Maintainer: github.com/the-skycoin-project" >> ${srcdir}/control
+echo "Maintainer: skycoin" >> ${srcdir}/control
 echo "Description: ${pkgdesc}" >> ${srcdir}/control
 
 }
@@ -136,12 +136,19 @@ for i in ${_skywirescripts}; do
   _install2 ${srcdir}/${_scripts}/${_pkgname}/${i} ${_skyscripts}
 done
 
-_msg2 'renaming skywire-visor to skywire'
 mv ${_pkgdir}/usr/bin/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}
+
+_msg2 'installing dmsghttp-config.json'
+install -Dm644 ${srcdir}/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
 
 _msg2 'installing skywire systemd services'
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${_pkgdir}/${_systemddir}/${_pkgname}.service
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-visor.service ${_pkgdir}/${_systemddir}/${_pkgname}-visor.service
+
+_msg2 'installing desktop files and icon'
+install -Dm644 ${srcdir}/${_scripts}/desktop/com.skywire.Skywire.desktop ${_pkgdir}/usr/share/applications/com.skywire.Skywire.desktop
+install -Dm644 ${srcdir}/${_scripts}/desktop/skywire.png ${_pkgdir}/${_skydir}/icon.png
+ln -rTsf ${_pkgdir}/${_skydir}/icon.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/skywire.png
 
 _msg2 'installing skywire control file, postinst & postrm scripts'
 install -Dm755 ${srcdir}/control ${_pkgdir}/DEBIAN/control
