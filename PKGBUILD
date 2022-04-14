@@ -31,12 +31,13 @@ source=(
   0011-x86-sgx-Keep-record-of-SGX-page-type.patch
   0012-x86-sgx-Export-sgx_encl_-grow-shrink.patch
   0013-x86-sgx-Export-sgx_encl_page_alloc.patch
-  0014-x86-sgx-Support-restricting-of-enclave-page-permissi.patch
-  0015-x86-sgx-Support-adding-of-pages-to-an-initialized-en.patch
-  0016-x86-sgx-Tighten-accessible-memory-range-after-enclav.patch
-  0017-x86-sgx-Support-modifying-SGX-page-type.patch
-  0018-x86-sgx-Support-complete-page-removal.patch
-  0019-x86-sgx-Free-up-EPC-pages-directly-to-support-large-.patch
+  0014-x86-sgx-Support-VA-page-allocation-without-reclaimin.patch
+  0015-x86-sgx-Support-restricting-of-enclave-page-permissi.patch
+  0016-x86-sgx-Support-adding-of-pages-to-an-initialized-en.patch
+  0017-x86-sgx-Tighten-accessible-memory-range-after-enclav.patch
+  0018-x86-sgx-Support-modifying-SGX-page-type.patch
+  0019-x86-sgx-Support-complete-page-removal.patch
+  0020-x86-sgx-Free-up-EPC-pages-directly-to-support-large-.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
