@@ -1,30 +1,31 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=comictagger
-pkgver=1.1.31.rc1.r38.be698a1
+pkgver=1.3.2.alpha.4
 pkgrel=1
 pkgdesc='Application for writing metadata to digital comics, written in Python and PyQt'
 arch=(any)
-url='https://github.com/lordwelch/comictagger/'
+url='https://github.com/comictagger/comictagger'
 license=(Apache)
 makedepends=('git' 'python-setuptools')
 depends=('python'
     'python-beautifulsoup4'
-    'python-configparser'
     'python-natsort'
-    'python-pathvalidate'
     'python-pillow'
     'python-requests'
+    'python-pycountry'
+    'python-py7zr'
     'python-unrar-cffi'
     'python-pyqt5'
+    'python-pybcj'
 )
-_commit=be698a17d68cb037e5874313f222b90b315918f1
-source=(git+https://github.com/lordwelch/comictagger.git#commit=$_commit)
+_tag=1.3.2-alpha.4
+source=(git+https://github.com/comictagger/comictagger.git#tag=$_tag)
 sha256sums=('SKIP')
 
 pkgver() {
   cd comictagger
-  printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "${_tag//-/.}"
 }
 
 build() {
