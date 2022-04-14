@@ -4,7 +4,7 @@ pkgbase = ft9xx-libc
 	pkgrel = 2
 	url = https://github.com/BRTSG-FOSS/ft90x-sdk
 	arch = any
-	license = custom
+	license = MIT
 	makedepends = ft32-elf-gcc
 	options = !strip
 	source = ft9xx-libc::git+https://github.com/BRTSG-FOSS/ft90x-sdk.git#commit=9230beeaa5e1500db2117f6dec26dec5f434e565

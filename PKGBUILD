@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc='C register and peripheral library for the FT9XX family of microcontrollers'
 arch=(any)
 url='https://github.com/BRTSG-FOSS/ft90x-sdk'
-license=(custom)
+license=(MIT)
 makedepends=(ft32-elf-gcc)
 options=(!strip)
 source=("$pkgname::git+https://github.com/BRTSG-FOSS/ft90x-sdk.git"#commit=9230beeaa5e1500db2117f6dec26dec5f434e565)
