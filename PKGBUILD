@@ -3,21 +3,23 @@
 
 _pkgname='ferdium'
 pkgname="ferdium-git"
-pkgver='5.7.0.r0.g094d3762'
-pkgrel='1'
+pkgver=develop.r0.gaa8c7df7
+pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://getferdium.com"
 license=('Apache')
 _electronpkg='electron15'
 depends=("$_electronpkg" 'libxkbfile')
+appbranch="develop"
+recipiesbranch="master"
 # We're depending on node v16 until https://github.com/nodejs/node-gyp/issues/2534 is fixed
 makedepends=('git' 'nodejs-lts-gallium' 'npm>=8.1.0' 'pnpm' 'python')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
-	"$pkgname::git+https://github.com/ferdium/ferdium-app"
-	"$pkgname-recipes::git+https://github.com/ferdium/ferdium-recipes"
+	"$pkgname::git+https://github.com/ferdium/ferdium-app#branch=${appbranch}"
+	"$pkgname-recipes::git+https://github.com/ferdium/ferdium-recipes#branch=${recipiesbranch}"
 	'fix-autostart-path.diff'
 )
 sha512sums=('SKIP'
@@ -80,7 +82,7 @@ prepare() {
 
 pkgver() {
 	cd "$srcdir/$_sourcedirectory/"
-	git describe --long --tags | sed -e 's/^v//' -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g'
+	git describe --long --all | sed -e 's/^v//' -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g' | sed -e 's#^heads/##g'
 }
 
 build() {

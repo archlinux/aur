@@ -1,6 +1,6 @@
 pkgbase = ferdium-git
 	pkgdesc = A messaging browser that allows you to combine your favorite messaging services into one application - git version
-	pkgver = 5.7.0.r0.g094d3762
+	pkgver = develop.r0.gaa8c7df7
 	pkgrel = 1
 	url = https://getferdium.com
 	arch = x86_64
@@ -17,8 +17,8 @@ pkgbase = ferdium-git
 	depends = libxkbfile
 	provides = ferdium
 	conflicts = ferdium
-	source = ferdium-git::git+https://github.com/ferdium/ferdium-app
-	source = ferdium-git-recipes::git+https://github.com/ferdium/ferdium-recipes
+	source = ferdium-git::git+https://github.com/ferdium/ferdium-app#branch=develop
+	source = ferdium-git-recipes::git+https://github.com/ferdium/ferdium-recipes#branch=master
 	source = fix-autostart-path.diff
 	sha512sums = SKIP
 	sha512sums = SKIP
