@@ -1,6 +1,6 @@
 pkgbase = homebridge-config-ui-x
 	pkgdesc = Web-based management tool for Homebridge
-	pkgver = 4.42.0
+	pkgver = 4.43.0
 	pkgrel = 1
 	url = https://github.com/oznu/homebridge-config-ui-x
 	install = homebridge-config-ui-x.install
@@ -11,7 +11,7 @@ pkgbase = homebridge-config-ui-x
 	depends = npm
 	options = !emptydirs
 	options = !strip
-	source = homebridge-config-ui-x::git+https://github.com/oznu/homebridge-config-ui-x.git#commit=7c585f745378884f1af6f5f0421b24612114c2fc
+	source = homebridge-config-ui-x::git+https://github.com/oznu/homebridge-config-ui-x.git#commit=4a50d1f66a24776d10344d44ec3357dd867e72bf
 	source = systemd.service
 	source = tmpfiles.conf
 	source = sysusers.conf
