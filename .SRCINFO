@@ -1,12 +1,12 @@
 pkgbase = trello
 	pkgdesc = Unofficial Trello Desktop app
 	pkgver = 0.1.9
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/danielchatfield/trello-desktop
 	arch = any
 	license = MIT
 	makedepends = yarn
-	depends = electron
+	depends = electron17
 	provides = trello
 	conflicts = trello-bin
 	conflicts = trello-git
@@ -14,4 +14,3 @@ pkgbase = trello
 	sha256sums = 8c028ee831b2deddb7b35e368540832f05d58ae9904730d0c1200ec5096cf8f2
 
 pkgname = trello
-

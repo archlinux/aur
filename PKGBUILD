@@ -4,12 +4,12 @@
 #
 pkgname="trello"
 pkgver="0.1.9"
-pkgrel="3"
+pkgrel="4"
 pkgdesc="Unofficial Trello Desktop app"
 arch=('any')
 url="https://github.com/danielchatfield/trello-desktop"
 license=('MIT')
-depends=('electron')
+depends=('electron17')
 makedepends=('yarn')
 conflicts=('trello-bin' 'trello-git')
 provides=("${pkgname}")
@@ -18,7 +18,7 @@ source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('8c028ee831b2deddb7b35e368540832f05d58ae9904730d0c1200ec5096cf8f2')
 
 _trello="#!/bin/bash
-exec electron --app=/usr/lib/trello \"\$@\""
+exec electron17 --app=/usr/lib/trello \"\$@\""
 
 _trello_desktop="[Desktop Entry]
 Name=Trello
