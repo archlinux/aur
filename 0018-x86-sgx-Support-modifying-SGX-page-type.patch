@@ -1,7 +1,7 @@
-From 1d37a875597233c79bf09c64d310d75ebb4cb083 Mon Sep 17 00:00:00 2001
+From 710eae1c72f307515eda27b51dac3b320ddd3305 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Mon, 9 Aug 2021 14:03:54 -0700
-Subject: [PATCH 17/30] x86/sgx: Support modifying SGX page type
+Date: Wed, 13 Apr 2022 14:10:18 -0700
+Subject: [PATCH 18/31] x86/sgx: Support modifying SGX page type
 
 Every enclave contains one or more Thread Control Structures (TCS). The
 TCS contains meta-data used by the hardware to save and restore thread
@@ -27,15 +27,15 @@ Changing the enclave page type to SGX_PAGE_TYPE_TRIM is the first step
 of dynamically removing pages from an initialized enclave. The complete
 page removal flow is:
 1) Change the type of the pages to be removed to SGX_PAGE_TYPE_TRIM
-   using the SGX_IOC_ENCLAVE_MODIFY_TYPE ioctl() introduced here.
+   using the SGX_IOC_ENCLAVE_MODIFY_TYPES ioctl() introduced here.
 2) Approve the page removal by running ENCLU[EACCEPT] from within
    the enclave.
 3) Initiate actual page removal using the ioctl() introduced in the
    following patch.
 
-Add ioctl() SGX_IOC_ENCLAVE_MODIFY_TYPE to support changing SGX
+Add ioctl() SGX_IOC_ENCLAVE_MODIFY_TYPES to support changing SGX
 enclave page types within an initialized enclave. With
-SGX_IOC_ENCLAVE_MODIFY_TYPE the user specifies a page range and the
+SGX_IOC_ENCLAVE_MODIFY_TYPES the user specifies a page range and the
 enclave page type to be applied to all pages in the provided range.
 The ioctl() itself can return an error code based on failures
 encountered by the kernel. It is also possible for SGX specific
@@ -52,41 +52,40 @@ will encounter a page fault with SGX flag set in error code.
 
 Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
 ---
- arch/x86/include/uapi/asm/sgx.h |  20 +++
- arch/x86/kernel/cpu/sgx/ioctl.c | 209 ++++++++++++++++++++++++++++++++
- 2 files changed, 229 insertions(+)
+ arch/x86/include/uapi/asm/sgx.h |  19 +++
+ arch/x86/kernel/cpu/sgx/ioctl.c | 201 ++++++++++++++++++++++++++++++++
+ 2 files changed, 220 insertions(+)
 
 diff --git a/arch/x86/include/uapi/asm/sgx.h b/arch/x86/include/uapi/asm/sgx.h
-index a0a24e94fb27..529f4ab28410 100644
+index 82648c006470..de4d1af628d5 100644
 --- a/arch/x86/include/uapi/asm/sgx.h
 +++ b/arch/x86/include/uapi/asm/sgx.h
 @@ -31,6 +31,8 @@ enum sgx_page_flags {
  	_IO(SGX_MAGIC, 0x04)
  #define SGX_IOC_ENCLAVE_RESTRICT_PERMISSIONS \
  	_IOWR(SGX_MAGIC, 0x05, struct sgx_enclave_restrict_permissions)
-+#define SGX_IOC_ENCLAVE_MODIFY_TYPE \
++#define SGX_IOC_ENCLAVE_MODIFY_TYPES \
 +	_IOWR(SGX_MAGIC, 0x06, struct sgx_enclave_modify_type)
  
  /**
   * struct sgx_enclave_create - parameter structure for the
-@@ -97,6 +99,24 @@ struct sgx_enclave_restrict_permissions {
+@@ -97,6 +99,23 @@ struct sgx_enclave_restrict_permissions {
  	__u64 count;
  };
  
 +/**
-+ * struct sgx_enclave_modify_type - parameters for %SGX_IOC_ENCLAVE_MODIFY_TYPE
++ * struct sgx_enclave_modify_type - parameters for %SGX_IOC_ENCLAVE_MODIFY_TYPES
 + * @offset:	starting page offset (page aligned relative to enclave base
 + *		address defined in SECS)
 + * @length:	length of memory (multiple of the page size)
-+ * @secinfo:	address for the SECINFO data containing the new type
-+ *		for pages in range described by @offset and @length
++ * @page_type:	new type for pages in range described by @offset and @length
 + * @result:	(output) SGX result code of ENCLS[EMODT] function
 + * @count:	(output) bytes successfully changed (multiple of page size)
 + */
 +struct sgx_enclave_modify_type {
 +	__u64 offset;
 +	__u64 length;
-+	__u64 secinfo;
++	__u64 page_type;
 +	__u64 result;
 +	__u64 count;
 +};
@@ -95,28 +94,28 @@ index a0a24e94fb27..529f4ab28410 100644
  
  /**
 diff --git a/arch/x86/kernel/cpu/sgx/ioctl.c b/arch/x86/kernel/cpu/sgx/ioctl.c
-index 4d88bfd163e7..6f769e67ec2d 100644
+index 395b4e58a295..8709f131ae40 100644
 --- a/arch/x86/kernel/cpu/sgx/ioctl.c
 +++ b/arch/x86/kernel/cpu/sgx/ioctl.c
-@@ -898,6 +898,212 @@ static long sgx_ioc_enclave_restrict_permissions(struct sgx_encl *encl,
+@@ -872,6 +872,204 @@ static long sgx_ioc_enclave_restrict_permissions(struct sgx_encl *encl,
  	return ret;
  }
  
 +/**
 + * sgx_enclave_modify_type() - Modify type of SGX enclave pages
 + * @encl:	Enclave to which the pages belong.
-+ * @modt:	Checked parameters from user about which pages need modifying.
-+ * @page_type:	New page type.
++ * @modt:	Checked parameters from user about which pages need modifying
++ *              and their new page type.
 + *
 + * Return:
 + * - 0:		Success
 + * - -errno:	Otherwise
 + */
 +static long sgx_enclave_modify_type(struct sgx_encl *encl,
-+				    struct sgx_enclave_modify_type *modt,
-+				    enum sgx_page_type page_type)
++				    struct sgx_enclave_modify_type *modt)
 +{
 +	unsigned long max_prot_restore;
++	enum sgx_page_type page_type;
 +	struct sgx_encl_page *entry;
 +	struct sgx_secinfo secinfo;
 +	unsigned long prot;
@@ -124,6 +123,8 @@ index 4d88bfd163e7..6f769e67ec2d 100644
 +	unsigned long c;
 +	void *epc_virt;
 +	int ret;
++
++	page_type = modt->page_type & SGX_PAGE_TYPE_MASK;
 +
 +	/*
 +	 * The only new page types allowed by hardware are PT_TCS and PT_TRIM.
@@ -247,7 +248,7 @@ index 4d88bfd163e7..6f769e67ec2d 100644
 +}
 +
 +/**
-+ * sgx_ioc_enclave_modify_type() - handler for %SGX_IOC_ENCLAVE_MODIFY_TYPE
++ * sgx_ioc_enclave_modify_type() - handler for %SGX_IOC_ENCLAVE_MODIFY_TYPES
 + * @encl:	an enclave pointer
 + * @arg:	userspace pointer to a &struct sgx_enclave_modify_type instance
 + *
@@ -272,8 +273,6 @@ index 4d88bfd163e7..6f769e67ec2d 100644
 +static long sgx_ioc_enclave_modify_type(struct sgx_encl *encl, void __user *arg)
 +{
 +	struct sgx_enclave_modify_type params;
-+	enum sgx_page_type page_type;
-+	struct sgx_secinfo secinfo;
 +	long ret;
 +
 +	ret = sgx_ioc_sgx2_ready(encl);
@@ -286,21 +285,13 @@ index 4d88bfd163e7..6f769e67ec2d 100644
 +	if (sgx_validate_offset_length(encl, params.offset, params.length))
 +		return -EINVAL;
 +
-+	if (copy_from_user(&secinfo, (void __user *)params.secinfo,
-+			   sizeof(secinfo)))
-+		return -EFAULT;
-+
-+	if (secinfo.flags & ~SGX_SECINFO_PAGE_TYPE_MASK)
-+		return -EINVAL;
-+
-+	if (memchr_inv(secinfo.reserved, 0, sizeof(secinfo.reserved)))
++	if (params.page_type & ~SGX_PAGE_TYPE_MASK)
 +		return -EINVAL;
 +
 +	if (params.result || params.count)
 +		return -EINVAL;
 +
-+	page_type = (secinfo.flags & SGX_SECINFO_PAGE_TYPE_MASK) >> 8;
-+	ret = sgx_enclave_modify_type(encl, &params, page_type);
++	ret = sgx_enclave_modify_type(encl, &params);
 +
 +	if (copy_to_user(arg, &params, sizeof(params)))
 +		return -EFAULT;
@@ -311,16 +302,16 @@ index 4d88bfd163e7..6f769e67ec2d 100644
  long sgx_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
  {
  	struct sgx_encl *encl = filep->private_data;
-@@ -923,6 +1129,9 @@ long sgx_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
+@@ -897,6 +1095,9 @@ long sgx_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
  		ret = sgx_ioc_enclave_restrict_permissions(encl,
  							   (void __user *)arg);
  		break;
-+	case SGX_IOC_ENCLAVE_MODIFY_TYPE:
++	case SGX_IOC_ENCLAVE_MODIFY_TYPES:
 +		ret = sgx_ioc_enclave_modify_type(encl, (void __user *)arg);
 +		break;
  	default:
  		ret = -ENOIOCTLCMD;
  		break;
 -- 
-2.35.1
+2.35.2
 

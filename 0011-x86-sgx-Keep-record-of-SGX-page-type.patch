@@ -1,7 +1,7 @@
-From d759347c5feada6386aa3883bb9e0c18d377bd77 Mon Sep 17 00:00:00 2001
+From 588655546cf6bda0ae880233e40240b6a0a6cbbe Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Wed, 9 Jun 2021 15:59:02 -0700
-Subject: [PATCH 11/30] x86/sgx: Keep record of SGX page type
+Date: Wed, 13 Apr 2022 14:10:11 -0700
+Subject: [PATCH 11/31] x86/sgx: Keep record of SGX page type
 
 SGX2 functions are not allowed on all page types. For example,
 ENCLS[EMODPR] is only allowed on regular SGX enclave pages and
@@ -28,6 +28,7 @@ members to support the additional information without increasing
 the space consumed by the struct.
 
 Acked-by: Jarkko Sakkinen <jarkko@kernel.org>
+Reviewed-by: Jarkko Sakkinen <jarkko@kernel.org>
 Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
 ---
  arch/x86/include/asm/sgx.h      | 3 +++
@@ -64,7 +65,7 @@ index 1b15d22f6757..07abfc70c8e3 100644
  	struct sgx_encl *encl;
  	struct sgx_va_page *va_page;
 diff --git a/arch/x86/kernel/cpu/sgx/ioctl.c b/arch/x86/kernel/cpu/sgx/ioctl.c
-index f487549bccba..0c211af8e948 100644
+index a66795e0b685..21078c6643f7 100644
 --- a/arch/x86/kernel/cpu/sgx/ioctl.c
 +++ b/arch/x86/kernel/cpu/sgx/ioctl.c
 @@ -107,6 +107,7 @@ static int sgx_encl_create(struct sgx_encl *encl, struct sgx_secs *secs)
@@ -84,5 +85,5 @@ index f487549bccba..0c211af8e948 100644
  
  	if (flags & SGX_PAGE_MEASURE) {
 -- 
-2.35.1
+2.35.2
 

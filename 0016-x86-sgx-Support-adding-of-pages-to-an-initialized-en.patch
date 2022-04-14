@@ -1,7 +1,7 @@
-From c2c09a7fbb72fd5eb423f8e84ade9d1511503612 Mon Sep 17 00:00:00 2001
+From 467c051f0ccb4a65846d9c174fbb4587e028d008 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Tue, 13 Jul 2021 08:58:53 -0700
-Subject: [PATCH 15/30] x86/sgx: Support adding of pages to an initialized
+Date: Wed, 13 Apr 2022 14:10:16 -0700
+Subject: [PATCH 16/31] x86/sgx: Support adding of pages to an initialized
  enclave
 
 With SGX1 an enclave needs to be created with its maximum memory demands
@@ -14,10 +14,10 @@ Pages can be added during enclave runtime.
 
 Add support for dynamically adding pages to an initialized enclave,
 architecturally limited to RW permission at creation but allowed to
-obtain RWX permissions after enclave runs EMODPE. Add pages via the
-page fault handler at the time an enclave address without a backing
-enclave page is accessed, potentially directly reclaiming pages if
-no free pages are available.
+obtain RWX permissions after trusted enclave runs EMODPE. Add pages
+via the page fault handler at the time an enclave address without a
+backing enclave page is accessed, potentially directly reclaiming
+pages if no free pages are available.
 
 The enclave is still required to run ENCLU[EACCEPT] on the page before
 it can be used. A useful flow is for the enclave to run ENCLU[EACCEPT]
@@ -40,16 +40,18 @@ triggers this flow but the page will remain inaccessible (access will
 result in #PF) until accepted from within the enclave via
 ENCLU[EACCEPT].
 
+Reviewed-by: Jarkko Sakkinen <jarkko@kernel.org>
+Tested-by: Jarkko Sakkinen <jarkko@kernel.org>
 Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
 ---
- arch/x86/kernel/cpu/sgx/encl.c | 124 +++++++++++++++++++++++++++++++++
- 1 file changed, 124 insertions(+)
+ arch/x86/kernel/cpu/sgx/encl.c | 117 +++++++++++++++++++++++++++++++++
+ 1 file changed, 117 insertions(+)
 
 diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
-index 546423753e4c..fa4f947f8496 100644
+index 8729b254b0cc..91d648f68080 100644
 --- a/arch/x86/kernel/cpu/sgx/encl.c
 +++ b/arch/x86/kernel/cpu/sgx/encl.c
-@@ -194,6 +194,119 @@ struct sgx_encl_page *sgx_encl_load_page(struct sgx_encl *encl,
+@@ -153,6 +153,112 @@ struct sgx_encl_page *sgx_encl_load_page(struct sgx_encl *encl,
  	return __sgx_encl_load_page(encl, entry);
  }
  
@@ -98,20 +100,14 @@ index 546423753e4c..fa4f947f8496 100644
 +		return VM_FAULT_SIGBUS;
 +	}
 +
-+	va_page = sgx_encl_grow(encl);
-+	if (IS_ERR(va_page)) {
-+		ret = PTR_ERR(va_page);
-+		goto err_out_free;
-+	}
-+
 +	mutex_lock(&encl->lock);
 +
-+	/*
-+	 * Copy comment from sgx_encl_add_page() to maintain guidance in
-+	 * this similar flow:
-+	 * Adding to encl->va_pages must be done under encl->lock.  Ditto for
-+	 * deleting (via sgx_encl_shrink()) in the error path.
-+	 */
++	va_page = sgx_encl_grow(encl, false);
++	if (IS_ERR(va_page)) {
++		ret = PTR_ERR(va_page);
++		goto err_out_unlock;
++	}
++
 +	if (va_page)
 +		list_add(&va_page->list, &encl->va_pages);
 +
@@ -122,7 +118,7 @@ index 546423753e4c..fa4f947f8496 100644
 +	 * running without encl->lock
 +	 */
 +	if (ret)
-+		goto err_out_unlock;
++		goto err_out_shrink;
 +
 +	pginfo.secs = (unsigned long)sgx_get_epc_virt_addr(encl->secs.epc_page);
 +	pginfo.addr = encl_page->desc & PAGE_MASK;
@@ -155,11 +151,10 @@ index 546423753e4c..fa4f947f8496 100644
 +err_out:
 +	xa_erase(&encl->page_array, PFN_DOWN(encl_page->desc));
 +
-+err_out_unlock:
++err_out_shrink:
 +	sgx_encl_shrink(encl, va_page);
++err_out_unlock:
 +	mutex_unlock(&encl->lock);
-+
-+err_out_free:
 +	sgx_encl_free_epc_page(epc_page);
 +	kfree(encl_page);
 +
@@ -169,7 +164,7 @@ index 546423753e4c..fa4f947f8496 100644
  static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
  {
  	unsigned long addr = (unsigned long)vmf->address;
-@@ -213,6 +326,17 @@ static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
+@@ -172,6 +278,17 @@ static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
  	if (unlikely(!encl))
  		return VM_FAULT_SIGBUS;
  
@@ -188,5 +183,5 @@ index 546423753e4c..fa4f947f8496 100644
  
  	entry = sgx_encl_load_page_in_vma(encl, addr, vma->vm_flags);
 -- 
-2.35.1
+2.35.2
 

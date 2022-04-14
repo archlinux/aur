@@ -1,7 +1,7 @@
-From cd16553f3cb42e94f3e5ed83c28375e85c4462f7 Mon Sep 17 00:00:00 2001
+From 8ff9ec59a55ea1ccc5f17f8053e747a963efc327 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Mon, 7 Jun 2021 09:13:44 -0700
-Subject: [PATCH 14/30] x86/sgx: Support restricting of enclave page
+Date: Wed, 13 Apr 2022 14:10:15 -0700
+Subject: [PATCH 15/31] x86/sgx: Support restricting of enclave page
  permissions
 
 In the initial (SGX1) version of SGX, pages in an enclave need to be
@@ -39,18 +39,18 @@ an access attempt.
 
 No checking is done to ensure that the permissions are actually
 being restricted. This is because the enclave may have relaxed
-the EPCM permissions from within the enclave without letting the
-kernel know. An attempt to relax permissions using this call will
+the EPCM permissions from within the enclave without the kernel
+knowing. An attempt to relax permissions using this call will
 be ignored by the hardware.
 
 Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
 ---
- arch/x86/include/uapi/asm/sgx.h |  21 +++
- arch/x86/kernel/cpu/sgx/ioctl.c | 242 ++++++++++++++++++++++++++++++++
- 2 files changed, 263 insertions(+)
+ arch/x86/include/uapi/asm/sgx.h |  21 ++++
+ arch/x86/kernel/cpu/sgx/ioctl.c | 216 ++++++++++++++++++++++++++++++++
+ 2 files changed, 237 insertions(+)
 
 diff --git a/arch/x86/include/uapi/asm/sgx.h b/arch/x86/include/uapi/asm/sgx.h
-index f4b81587e90b..a0a24e94fb27 100644
+index f4b81587e90b..82648c006470 100644
 --- a/arch/x86/include/uapi/asm/sgx.h
 +++ b/arch/x86/include/uapi/asm/sgx.h
 @@ -29,6 +29,8 @@ enum sgx_page_flags {
@@ -72,15 +72,15 @@ index f4b81587e90b..a0a24e94fb27 100644
 + * @offset:	starting page offset (page aligned relative to enclave base
 + *		address defined in SECS)
 + * @length:	length of memory (multiple of the page size)
-+ * @secinfo:	address for the SECINFO data containing the new permission bits
-+ *		for pages in range described by @offset and @length
++ * @permissions:new permission bits for pages in range described by @offset
++ *              and @length
 + * @result:	(output) SGX result code of ENCLS[EMODPR] function
 + * @count:	(output) bytes successfully changed (multiple of page size)
 + */
 +struct sgx_enclave_restrict_permissions {
 +	__u64 offset;
 +	__u64 length;
-+	__u64 secinfo;
++	__u64 permissions;
 +	__u64 result;
 +	__u64 count;
 +};
@@ -89,10 +89,10 @@ index f4b81587e90b..a0a24e94fb27 100644
  
  /**
 diff --git a/arch/x86/kernel/cpu/sgx/ioctl.c b/arch/x86/kernel/cpu/sgx/ioctl.c
-index 0460fd224a05..4d88bfd163e7 100644
+index 5d41aa204761..395b4e58a295 100644
 --- a/arch/x86/kernel/cpu/sgx/ioctl.c
 +++ b/arch/x86/kernel/cpu/sgx/ioctl.c
-@@ -660,6 +660,244 @@ static long sgx_ioc_enclave_provision(struct sgx_encl *encl, void __user *arg)
+@@ -660,6 +660,218 @@ static long sgx_ioc_enclave_provision(struct sgx_encl *encl, void __user *arg)
  	return sgx_set_attribute(&encl->attributes_mask, params.fd);
  }
  
@@ -113,46 +113,15 @@ index 0460fd224a05..4d88bfd163e7 100644
 +}
 +
 +/*
-+ * Return valid permission fields from a secinfo structure provided by
-+ * user space. The secinfo structure is required to only have bits in
-+ * the permission fields set.
-+ */
-+static int sgx_perm_from_user_secinfo(void __user *_secinfo, u64 *secinfo_perm)
-+{
-+	struct sgx_secinfo secinfo;
-+	u64 perm;
-+
-+	if (copy_from_user(&secinfo, (void __user *)_secinfo,
-+			   sizeof(secinfo)))
-+		return -EFAULT;
-+
-+	if (secinfo.flags & ~SGX_SECINFO_PERMISSION_MASK)
-+		return -EINVAL;
-+
-+	if (memchr_inv(secinfo.reserved, 0, sizeof(secinfo.reserved)))
-+		return -EINVAL;
-+
-+	perm = secinfo.flags & SGX_SECINFO_PERMISSION_MASK;
-+
-+	/*
-+	 * Read access is required for the enclave to be able to use the page.
-+	 * SGX instructions like ENCLU[EMODPE] and ENCLU[EACCEPT] require
-+	 * read access.
-+	 */
-+	if (!(perm & SGX_SECINFO_R))
-+		return -EINVAL;
-+
-+	*secinfo_perm = perm;
-+
-+	return 0;
-+}
-+
-+/*
 + * Some SGX functions require that no cached linear-to-physical address
 + * mappings are present before they can succeed. Collaborate with
 + * hardware via ENCLS[ETRACK] to ensure that all cached
 + * linear-to-physical address mappings belonging to all threads of
 + * the enclave are cleared. See sgx_encl_cpumask() for details.
++ *
++ * Must be called with enclave's mutex held from the time the
++ * SGX function requiring that no cached linear-to-physical mappings
++ * are present is executed until this ETRACK flow is complete.
 + */
 +static int sgx_enclave_etrack(struct sgx_encl *encl)
 +{
@@ -188,8 +157,8 @@ index 0460fd224a05..4d88bfd163e7 100644
 +/**
 + * sgx_enclave_restrict_permissions() - Restrict EPCM permissions
 + * @encl:	Enclave to which the pages belong.
-+ * @modp:	Checked parameters from user on which pages need modifying.
-+ * @secinfo_perm: New (validated) permission bits.
++ * @modp:	Checked parameters from user on which pages need modifying and
++ *              their new permissions.
 + *
 + * Return:
 + * - 0:		Success.
@@ -197,8 +166,7 @@ index 0460fd224a05..4d88bfd163e7 100644
 + */
 +static long
 +sgx_enclave_restrict_permissions(struct sgx_encl *encl,
-+				 struct sgx_enclave_restrict_permissions *modp,
-+				 u64 secinfo_perm)
++				 struct sgx_enclave_restrict_permissions *modp)
 +{
 +	struct sgx_encl_page *entry;
 +	struct sgx_secinfo secinfo;
@@ -208,7 +176,7 @@ index 0460fd224a05..4d88bfd163e7 100644
 +	int ret;
 +
 +	memset(&secinfo, 0, sizeof(secinfo));
-+	secinfo.flags = secinfo_perm;
++	secinfo.flags = modp->permissions & SGX_SECINFO_PERMISSION_MASK;
 +
 +	for (c = 0 ; c < modp->length; c += PAGE_SIZE) {
 +		addr = encl->base + modp->offset + c;
@@ -232,11 +200,12 @@ index 0460fd224a05..4d88bfd163e7 100644
 +		}
 +
 +		/*
-+		 * Do not verify the permission bits requested. Kernel
-+		 * has no control over how EPCM permissions can be relaxed
-+		 * from within the enclave. ENCLS[EMODPR] can only
-+		 * remove existing EPCM permissions, attempting to set
-+		 * new permissions will be ignored by the hardware.
++		 * Apart from ensuring that read-access remains, do not verify
++		 * the permission bits requested. Kernel has no control over
++		 * how EPCM permissions can be relaxed from within the enclave.
++		 * ENCLS[EMODPR] can only remove existing EPCM permissions,
++		 * attempting to set new permissions will be ignored by the
++		 * hardware.
 +		 */
 +
 +		/* Change EPCM permissions. */
@@ -305,7 +274,6 @@ index 0460fd224a05..4d88bfd163e7 100644
 +						 void __user *arg)
 +{
 +	struct sgx_enclave_restrict_permissions params;
-+	u64 secinfo_perm;
 +	long ret;
 +
 +	ret = sgx_ioc_sgx2_ready(encl);
@@ -318,15 +286,21 @@ index 0460fd224a05..4d88bfd163e7 100644
 +	if (sgx_validate_offset_length(encl, params.offset, params.length))
 +		return -EINVAL;
 +
-+	ret = sgx_perm_from_user_secinfo((void __user *)params.secinfo,
-+					 &secinfo_perm);
-+	if (ret)
-+		return ret;
++	if (params.permissions & ~SGX_SECINFO_PERMISSION_MASK)
++		return -EINVAL;
++
++	/*
++	 * Read access is required for the enclave to be able to use the page.
++	 * SGX instructions like ENCLU[EMODPE] and ENCLU[EACCEPT] require
++	 * read access.
++	 */
++	if (!(params.permissions & SGX_SECINFO_R))
++		return -EINVAL;
 +
 +	if (params.result || params.count)
 +		return -EINVAL;
 +
-+	ret = sgx_enclave_restrict_permissions(encl, &params, secinfo_perm);
++	ret = sgx_enclave_restrict_permissions(encl, &params);
 +
 +	if (copy_to_user(arg, &params, sizeof(params)))
 +		return -EFAULT;
@@ -337,7 +311,7 @@ index 0460fd224a05..4d88bfd163e7 100644
  long sgx_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
  {
  	struct sgx_encl *encl = filep->private_data;
-@@ -681,6 +919,10 @@ long sgx_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
+@@ -681,6 +893,10 @@ long sgx_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
  	case SGX_IOC_ENCLAVE_PROVISION:
  		ret = sgx_ioc_enclave_provision(encl, (void __user *)arg);
  		break;
@@ -349,5 +323,5 @@ index 0460fd224a05..4d88bfd163e7 100644
  		ret = -ENOIOCTLCMD;
  		break;
 -- 
-2.35.1
+2.35.2
 

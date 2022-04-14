@@ -1,21 +1,22 @@
-From ecacf0430a389f012555938381664e8f8d86af54 Mon Sep 17 00:00:00 2001
+From 87e7f3c34d6cdd9e2e4d5ff630e85c954c087122 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Fri, 21 Jan 2022 13:35:21 -0800
-Subject: [PATCH 10/30] x86/sgx: Create utility to validate user provided
+Date: Wed, 13 Apr 2022 14:10:10 -0700
+Subject: [PATCH 10/31] x86/sgx: Create utility to validate user provided
  offset and length
 
 User provided offset and length is validated when parsing the parameters
 of the SGX_IOC_ENCLAVE_ADD_PAGES ioctl(). Extract this validation
-into a utility that can be used by the SGX2 ioctl()s that will
-also provide these values.
+(with consistent use of IS_ALIGNED) into a utility that can be used
+by the SGX2 ioctl()s that will also provide these values.
 
+Reviewed-by: Jarkko Sakkinen <jarkko@kernel.org>
 Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
 ---
  arch/x86/kernel/cpu/sgx/ioctl.c | 28 ++++++++++++++++++++++------
  1 file changed, 22 insertions(+), 6 deletions(-)
 
 diff --git a/arch/x86/kernel/cpu/sgx/ioctl.c b/arch/x86/kernel/cpu/sgx/ioctl.c
-index 83df20e3e633..f487549bccba 100644
+index 83df20e3e633..a66795e0b685 100644
 --- a/arch/x86/kernel/cpu/sgx/ioctl.c
 +++ b/arch/x86/kernel/cpu/sgx/ioctl.c
 @@ -372,6 +372,26 @@ static int sgx_encl_add_page(struct sgx_encl *encl, unsigned long src,
@@ -33,7 +34,7 @@ index 83df20e3e633..f487549bccba 100644
 +	if (!IS_ALIGNED(offset, PAGE_SIZE))
 +		return -EINVAL;
 +
-+	if (!length || length & (PAGE_SIZE - 1))
++	if (!length || !IS_ALIGNED(length, PAGE_SIZE))
 +		return -EINVAL;
 +
 +	if (offset + length - PAGE_SIZE >= encl->size)
@@ -63,5 +64,5 @@ index 83df20e3e633..f487549bccba 100644
  
  	if (copy_from_user(&secinfo, (void __user *)add_arg.secinfo,
 -- 
-2.35.1
+2.35.2
 

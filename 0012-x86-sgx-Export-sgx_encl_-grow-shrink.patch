@@ -1,12 +1,13 @@
-From 1408fa054374699618f56528ce7eda1a9640b0aa Mon Sep 17 00:00:00 2001
+From 224652fefdf04993c3e61f8a5beefe395489c7d0 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Thu, 10 Mar 2022 16:08:12 -0800
-Subject: [PATCH 12/30] x86/sgx: Export sgx_encl_{grow,shrink}()
+Date: Wed, 13 Apr 2022 14:10:12 -0700
+Subject: [PATCH 12/31] x86/sgx: Export sgx_encl_{grow,shrink}()
 
 In order to use sgx_encl_{grow,shrink}() in the page augmentation code
 located in encl.c, export these functions.
 
 Suggested-by: Jarkko Sakkinen <jarkko@kernel.org>
+Reviewed-by: Jarkko Sakkinen <jarkko@kernel.org>
 Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
 ---
  arch/x86/kernel/cpu/sgx/encl.h  | 2 ++
@@ -26,7 +27,7 @@ index 07abfc70c8e3..9d673d9531f0 100644
  
  #endif /* _X86_ENCL_H */
 diff --git a/arch/x86/kernel/cpu/sgx/ioctl.c b/arch/x86/kernel/cpu/sgx/ioctl.c
-index 0c211af8e948..746acddbb774 100644
+index 21078c6643f7..2df27dd8b30d 100644
 --- a/arch/x86/kernel/cpu/sgx/ioctl.c
 +++ b/arch/x86/kernel/cpu/sgx/ioctl.c
 @@ -17,7 +17,7 @@
@@ -48,5 +49,5 @@ index 0c211af8e948..746acddbb774 100644
  	encl->page_cnt--;
  
 -- 
-2.35.1
+2.35.2
 

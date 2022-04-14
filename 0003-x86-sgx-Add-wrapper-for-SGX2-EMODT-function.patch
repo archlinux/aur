@@ -1,7 +1,7 @@
-From 9c86a3f70dadbcd0b31a624041ab25c658cdcb95 Mon Sep 17 00:00:00 2001
+From 65f997c50816e3314722b49a4f55ea51eb865d1d Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Fri, 7 Jan 2022 11:27:29 -0800
-Subject: [PATCH 03/30] x86/sgx: Add wrapper for SGX2 EMODT function
+Date: Wed, 13 Apr 2022 14:10:03 -0700
+Subject: [PATCH 03/31] x86/sgx: Add wrapper for SGX2 EMODT function
 
 Add a wrapper for the EMODT ENCLS leaf function used to
 change the type of an enclave page as maintained in the
@@ -24,6 +24,7 @@ and is required for the enclave's EACCEPT/EACCEPTCOPY to succeed.
 Ensuring that no references to the changed page remain is
 accomplished with the ETRACK flow.
 
+Reviewed-by: Jarkko Sakkinen <jarkko@kernel.org>
 Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
 ---
  arch/x86/kernel/cpu/sgx/encls.h | 6 ++++++
@@ -45,5 +46,5 @@ index 2b091912f038..7a1ecf704ec1 100644
 +
  #endif /* _X86_ENCLS_H */
 -- 
-2.35.1
+2.35.2
 

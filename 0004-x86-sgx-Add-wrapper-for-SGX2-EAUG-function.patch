@@ -1,7 +1,7 @@
-From d6d1ac0735a6e105e37ca3d010d59ce070566ea6 Mon Sep 17 00:00:00 2001
+From c2eaa596a76f7f407e8e590d8b78839a8ac034a8 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Fri, 7 Jan 2022 11:28:42 -0800
-Subject: [PATCH 04/30] x86/sgx: Add wrapper for SGX2 EAUG function
+Date: Wed, 13 Apr 2022 14:10:04 -0700
+Subject: [PATCH 04/31] x86/sgx: Add wrapper for SGX2 EAUG function
 
 Add a wrapper for the EAUG ENCLS leaf function used to
 add a page to an initialized enclave.
@@ -16,6 +16,7 @@ EAUG:
 Access from within the enclave to the new enclave page is not
 possible until the PENDING bit is cleared.
 
+Reviewed-by: Jarkko Sakkinen <jarkko@kernel.org>
 Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
 ---
  arch/x86/kernel/cpu/sgx/encls.h | 6 ++++++
@@ -37,5 +38,5 @@ index 7a1ecf704ec1..99004b02e2ed 100644
 +
  #endif /* _X86_ENCLS_H */
 -- 
-2.35.1
+2.35.2
 

@@ -1,7 +1,7 @@
-From ad4892ff45c6bb365cfc090572059bba52b79a78 Mon Sep 17 00:00:00 2001
+From e190e78cfceb89eb658cb27afe5456dc2ba24dd4 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Mon, 13 Sep 2021 11:08:47 -0700
-Subject: [PATCH 16/30] x86/sgx: Tighten accessible memory range after enclave
+Date: Wed, 13 Apr 2022 14:10:17 -0700
+Subject: [PATCH 17/31] x86/sgx: Tighten accessible memory range after enclave
  initialization
 
 Before an enclave is initialized the enclave's memory range is unknown.
@@ -31,16 +31,17 @@ the access was from outside the enclave.
 Disallowing invalid memory to be mapped in the first place avoids
 preventable failures.
 
+Reviewed-by: Jarkko Sakkinen <jarkko@kernel.org>
 Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
 ---
  arch/x86/kernel/cpu/sgx/encl.c | 5 +++++
  1 file changed, 5 insertions(+)
 
 diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
-index fa4f947f8496..7909570736a0 100644
+index 91d648f68080..ae4f444f4a43 100644
 --- a/arch/x86/kernel/cpu/sgx/encl.c
 +++ b/arch/x86/kernel/cpu/sgx/encl.c
-@@ -409,6 +409,11 @@ int sgx_encl_may_map(struct sgx_encl *encl, unsigned long start,
+@@ -361,6 +361,11 @@ int sgx_encl_may_map(struct sgx_encl *encl, unsigned long start,
  
  	XA_STATE(xas, &encl->page_array, PFN_DOWN(start));
  
@@ -53,5 +54,5 @@ index fa4f947f8496..7909570736a0 100644
  	 * Disallow READ_IMPLIES_EXEC tasks as their VMA permissions might
  	 * conflict with the enclave page permissions.
 -- 
-2.35.1
+2.35.2
 

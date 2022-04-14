@@ -1,7 +1,7 @@
-From dfb13ff65827a0f229ee0401ea194cd47d17682e Mon Sep 17 00:00:00 2001
+From 100959e3e9bf237de44f769e204aee46e61b5765 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Thu, 3 Jun 2021 14:58:01 -0700
-Subject: [PATCH 06/30] x86/sgx: Export sgx_encl_ewb_cpumask()
+Date: Wed, 13 Apr 2022 14:10:06 -0700
+Subject: [PATCH 06/31] x86/sgx: Export sgx_encl_ewb_cpumask()
 
 Using sgx_encl_ewb_cpumask() to learn which CPUs might have executed
 an enclave is useful to ensure that TLBs are cleared when changes are
@@ -22,6 +22,7 @@ to a more prominent location before the function.
 
 No functional change.
 
+Reviewed-by: Jarkko Sakkinen <jarkko@kernel.org>
 Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
 ---
  arch/x86/kernel/cpu/sgx/encl.c | 67 ++++++++++++++++++++++++++++++++++
@@ -30,10 +31,10 @@ Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
  3 files changed, 68 insertions(+), 29 deletions(-)
 
 diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
-index 05ae1168391c..c6525eba74e8 100644
+index b45fcecea4bd..2845ec4faf24 100644
 --- a/arch/x86/kernel/cpu/sgx/encl.c
 +++ b/arch/x86/kernel/cpu/sgx/encl.c
-@@ -613,6 +613,73 @@ int sgx_encl_mm_add(struct sgx_encl *encl, struct mm_struct *mm)
+@@ -570,6 +570,73 @@ int sgx_encl_mm_add(struct sgx_encl *encl, struct mm_struct *mm)
  	return 0;
  }
  
@@ -120,7 +121,7 @@ index 6b34efba1602..d2acb4debde5 100644
  			 struct sgx_backing *backing);
  void sgx_encl_put_backing(struct sgx_backing *backing, bool do_write);
 diff --git a/arch/x86/kernel/cpu/sgx/main.c b/arch/x86/kernel/cpu/sgx/main.c
-index 8e4bc6453d26..2de85f459492 100644
+index 4b41efc9e367..d481e8b0e7bc 100644
 --- a/arch/x86/kernel/cpu/sgx/main.c
 +++ b/arch/x86/kernel/cpu/sgx/main.c
 @@ -203,35 +203,6 @@ static void sgx_ipi_cb(void *info)
@@ -160,5 +161,5 @@ index 8e4bc6453d26..2de85f459492 100644
   * Swap page to the regular memory transformed to the blocked state by using
   * EBLOCK, which means that it can no longer be referenced (no new TLB entries).
 -- 
-2.35.1
+2.35.2
 

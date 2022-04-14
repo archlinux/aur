@@ -1,0 +1,136 @@
+From dc8e57ec148e5f440afaedea7705742bf2f00236 Mon Sep 17 00:00:00 2001
+From: Reinette Chatre <reinette.chatre@intel.com>
+Date: Wed, 13 Apr 2022 14:10:14 -0700
+Subject: [PATCH 14/31] x86/sgx: Support VA page allocation without reclaiming
+
+struct sgx_encl should be protected with the mutex
+sgx_encl->lock. One exception is sgx_encl->page_cnt that
+is incremented (in sgx_encl_grow()) when an enclave page
+is added to the enclave. The reason the mutex is not held
+is to allow the reclaimer to be called directly if there are
+no EPC pages (in support of a new VA page) available at the time.
+
+Incrementing sgx_encl->page_cnt without sgc_encl->lock held
+is currently (before SGX2) safe from concurrent updates because
+all paths in which sgx_encl_grow() is called occur before
+enclave initialization and are protected with an atomic
+operation on SGX_ENCL_IOCTL.
+
+SGX2 includes support for dynamically adding pages after
+enclave initialization where the protection of SGX_ENCL_IOCTL
+is not available.
+
+Make direct reclaim of EPC pages optional when new VA pages
+are added to the enclave. Essentially the existing "reclaim"
+flag used when regular EPC pages are added to an enclave
+becomes available to the caller when used to allocate VA pages
+instead of always being "true".
+
+When adding pages without invoking the reclaimer it is possible
+to do so with sgx_encl->lock held, gaining its protection against
+concurrent updates to sgx_encl->page_cnt after enclave
+initialization.
+
+No functional change.
+
+Reported-by: Haitao Huang <haitao.huang@intel.com>
+Tested-by: Haitao Huang <haitao.huang@intel.com>
+Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
+---
+ arch/x86/kernel/cpu/sgx/encl.c  | 6 ++++--
+ arch/x86/kernel/cpu/sgx/encl.h  | 4 ++--
+ arch/x86/kernel/cpu/sgx/ioctl.c | 8 ++++----
+ 3 files changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
+index 38e42c2d3592..8729b254b0cc 100644
+--- a/arch/x86/kernel/cpu/sgx/encl.c
++++ b/arch/x86/kernel/cpu/sgx/encl.c
+@@ -828,6 +828,8 @@ void sgx_zap_enclave_ptes(struct sgx_encl *encl, unsigned long addr)
+ 
+ /**
+  * sgx_alloc_va_page() - Allocate a Version Array (VA) page
++ * @reclaim: Reclaim EPC pages directly if none available. Enclave
++ *           mutex should not be held if this is set.
+  *
+  * Allocate a free EPC page and convert it to a Version Array (VA) page.
+  *
+@@ -835,12 +837,12 @@ void sgx_zap_enclave_ptes(struct sgx_encl *encl, unsigned long addr)
+  *   a VA page,
+  *   -errno otherwise
+  */
+-struct sgx_epc_page *sgx_alloc_va_page(void)
++struct sgx_epc_page *sgx_alloc_va_page(bool reclaim)
+ {
+ 	struct sgx_epc_page *epc_page;
+ 	int ret;
+ 
+-	epc_page = sgx_alloc_epc_page(NULL, true);
++	epc_page = sgx_alloc_epc_page(NULL, reclaim);
+ 	if (IS_ERR(epc_page))
+ 		return ERR_CAST(epc_page);
+ 
+diff --git a/arch/x86/kernel/cpu/sgx/encl.h b/arch/x86/kernel/cpu/sgx/encl.h
+index 253ebdd1c5be..66adb8faec45 100644
+--- a/arch/x86/kernel/cpu/sgx/encl.h
++++ b/arch/x86/kernel/cpu/sgx/encl.h
+@@ -116,14 +116,14 @@ struct sgx_encl_page *sgx_encl_page_alloc(struct sgx_encl *encl,
+ 					  unsigned long offset,
+ 					  u64 secinfo_flags);
+ void sgx_zap_enclave_ptes(struct sgx_encl *encl, unsigned long addr);
+-struct sgx_epc_page *sgx_alloc_va_page(void);
++struct sgx_epc_page *sgx_alloc_va_page(bool reclaim);
+ unsigned int sgx_alloc_va_slot(struct sgx_va_page *va_page);
+ void sgx_free_va_slot(struct sgx_va_page *va_page, unsigned int offset);
+ bool sgx_va_page_full(struct sgx_va_page *va_page);
+ void sgx_encl_free_epc_page(struct sgx_epc_page *page);
+ struct sgx_encl_page *sgx_encl_load_page(struct sgx_encl *encl,
+ 					 unsigned long addr);
+-struct sgx_va_page *sgx_encl_grow(struct sgx_encl *encl);
++struct sgx_va_page *sgx_encl_grow(struct sgx_encl *encl, bool reclaim);
+ void sgx_encl_shrink(struct sgx_encl *encl, struct sgx_va_page *va_page);
+ 
+ #endif /* _X86_ENCL_H */
+diff --git a/arch/x86/kernel/cpu/sgx/ioctl.c b/arch/x86/kernel/cpu/sgx/ioctl.c
+index bb8cdb2ad0d1..5d41aa204761 100644
+--- a/arch/x86/kernel/cpu/sgx/ioctl.c
++++ b/arch/x86/kernel/cpu/sgx/ioctl.c
+@@ -17,7 +17,7 @@
+ #include "encl.h"
+ #include "encls.h"
+ 
+-struct sgx_va_page *sgx_encl_grow(struct sgx_encl *encl)
++struct sgx_va_page *sgx_encl_grow(struct sgx_encl *encl, bool reclaim)
+ {
+ 	struct sgx_va_page *va_page = NULL;
+ 	void *err;
+@@ -30,7 +30,7 @@ struct sgx_va_page *sgx_encl_grow(struct sgx_encl *encl)
+ 		if (!va_page)
+ 			return ERR_PTR(-ENOMEM);
+ 
+-		va_page->epc_page = sgx_alloc_va_page();
++		va_page->epc_page = sgx_alloc_va_page(reclaim);
+ 		if (IS_ERR(va_page->epc_page)) {
+ 			err = ERR_CAST(va_page->epc_page);
+ 			kfree(va_page);
+@@ -64,7 +64,7 @@ static int sgx_encl_create(struct sgx_encl *encl, struct sgx_secs *secs)
+ 	struct file *backing;
+ 	long ret;
+ 
+-	va_page = sgx_encl_grow(encl);
++	va_page = sgx_encl_grow(encl, true);
+ 	if (IS_ERR(va_page))
+ 		return PTR_ERR(va_page);
+ 	else if (va_page)
+@@ -275,7 +275,7 @@ static int sgx_encl_add_page(struct sgx_encl *encl, unsigned long src,
+ 		return PTR_ERR(epc_page);
+ 	}
+ 
+-	va_page = sgx_encl_grow(encl);
++	va_page = sgx_encl_grow(encl, true);
+ 	if (IS_ERR(va_page)) {
+ 		ret = PTR_ERR(va_page);
+ 		goto err_out_free;
+-- 
+2.35.2
+

@@ -1,7 +1,7 @@
-From b53096d9fcb368a8d2568c04817c4d2ebd4b24d4 Mon Sep 17 00:00:00 2001
+From 25c6413856fe1d73bef5dfb3c8a6bddc728fe37a Mon Sep 17 00:00:00 2001
 From: Jarkko Sakkinen <jarkko@kernel.org>
-Date: Tue, 8 Mar 2022 13:28:32 +0200
-Subject: [PATCH 13/30] x86/sgx: Export sgx_encl_page_alloc()
+Date: Wed, 13 Apr 2022 14:10:13 -0700
+Subject: [PATCH 13/31] x86/sgx: Export sgx_encl_page_alloc()
 
 Move sgx_encl_page_alloc() to encl.c and export it so that it can be
 used in the implementation for support of adding pages to initialized
@@ -16,10 +16,10 @@ Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
  3 files changed, 35 insertions(+), 32 deletions(-)
 
 diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
-index c77a62432862..546423753e4c 100644
+index a872bd7e953a..38e42c2d3592 100644
 --- a/arch/x86/kernel/cpu/sgx/encl.c
 +++ b/arch/x86/kernel/cpu/sgx/encl.c
-@@ -792,6 +792,38 @@ int sgx_encl_test_and_clear_young(struct mm_struct *mm,
+@@ -751,6 +751,38 @@ int sgx_encl_test_and_clear_young(struct mm_struct *mm,
  	return ret;
  }
  
@@ -73,7 +73,7 @@ index 9d673d9531f0..253ebdd1c5be 100644
  struct sgx_epc_page *sgx_alloc_va_page(void);
  unsigned int sgx_alloc_va_slot(struct sgx_va_page *va_page);
 diff --git a/arch/x86/kernel/cpu/sgx/ioctl.c b/arch/x86/kernel/cpu/sgx/ioctl.c
-index 746acddbb774..0460fd224a05 100644
+index 2df27dd8b30d..bb8cdb2ad0d1 100644
 --- a/arch/x86/kernel/cpu/sgx/ioctl.c
 +++ b/arch/x86/kernel/cpu/sgx/ioctl.c
 @@ -169,38 +169,6 @@ static long sgx_ioc_enclave_create(struct sgx_encl *encl, void __user *arg)
@@ -116,5 +116,5 @@ index 746acddbb774..0460fd224a05 100644
  {
  	u64 perm = secinfo->flags & SGX_SECINFO_PERMISSION_MASK;
 -- 
-2.35.1
+2.35.2
 
