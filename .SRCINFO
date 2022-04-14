@@ -1,6 +1,6 @@
 pkgbase = watchman-bin
 	pkgdesc = An inotify-based file watching and job triggering command line utility
-	pkgver = 2022.04.04.00
+	pkgver = 2022.04.11.00
 	pkgrel = 1
 	url = https://facebook.github.io/watchman/
 	install = watchman.install
@@ -10,10 +10,10 @@ pkgbase = watchman-bin
 	makedepends = python
 	depends = openssl
 	depends = gcc-libs
-	provides = watchman=2022.04.04.00
+	provides = watchman=2022.04.11.00
 	conflicts = watchman
 	options = !strip
-	source = https://github.com/facebook/watchman/releases/download/v2022.04.04.00/watchman-v2022.04.04.00-linux.zip
-	sha256sums = b982f8b808e0c93e3b45538bf8945ce5a07a8557e78796f08a15610edf2d66b1
+	source = https://github.com/facebook/watchman/releases/download/v2022.04.11.00/watchman-v2022.04.11.00-linux.zip
+	sha256sums = fddf41fcb2a2a5e5d48ff238b0214c3c7b2e103dc47c4b98475e7cba26d6b800
 
 pkgname = watchman-bin
