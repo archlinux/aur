@@ -1,6 +1,6 @@
 pkgbase = mate-layouts
 	pkgdesc = a simple panel layout switching application for the MATE Desktop
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://github.com/FreaxMATE/mate-layouts
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = mate-layouts
 	optdepends = mate-netbook: for Netbook panel layout
 	optdepends = plank: for Cupertino panel layout
 	optdepends = vala-panel-appmenu-mate: for Mutiny,Cupertino
-	source = mate-layouts-0.1.0.tar.gz::https://github.com/FreaxMATE/mate-layouts/archive/v0.1.0.tar.gz
-	sha512sums = 40c65372315e5fc90a9bb5712611f851b0496c93ea263e4319b64caa3825244af091b7b9317c50b2a24cad689009bf97120a954de08a842f7226e3d5cc5a6a9e
+	source = mate-layouts-0.1.1.tar.gz::https://github.com/FreaxMATE/mate-layouts/archive/v0.1.1.tar.gz
+	sha512sums = 58546dc4469cc1be6cd07ee8f9e9d43cf4ec0bbd9c92addf0b732d3f9a128c704d2ebba5aaec4b2bf08e0ee5bfc09c875737337fa14813d04147bd6c2b9d6f99
 
 pkgname = mate-layouts
