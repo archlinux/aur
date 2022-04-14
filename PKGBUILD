@@ -16,7 +16,7 @@
 _phpbase="80"
 _suffix=""
 pkgver="8.0.17"
-pkgrel="2"
+pkgrel="3"
 pkgbase="php80"
 pkgdesc="PHP 8.0.17 compiled as to not conflict with mainline php"
 _cppflags=" -DU_USING_ICU_NAMESPACE=1 "
@@ -129,7 +129,7 @@ source=(
     "php-makefile-patcher.php"
     "php-apache.conf"
     "https://php.net/distributions/php-${pkgver}.tar.xz"
-    "debian-php-8.0.15.patch"
+    "debian-php-8.0.17.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
     "timezonedb-php8.0.patch"
@@ -198,7 +198,7 @@ makedepends=(
 arch=(
 )
 _patches=(
-    "debian-php-8.0.15.patch"
+    "debian-php-8.0.17.patch"
     "php-phpinfo.patch"
     "timezonedb-guess.patch"
     "timezonedb-php8.0.patch"
