@@ -9,9 +9,10 @@ PKGBUILD for Anytype's binary AUR package.
 > privacy and data ownership to users.
 
 More information can be found [here](https://anytype.io).
+
 ## AUR
 
-The AUR package can be found [here](https://aur.archlinux.org/packages/anytype-bin/).
+The AUR package can be found [here](https://aur.archlinux.org/packages/anytype-bin/).x
 
 ## License
 
