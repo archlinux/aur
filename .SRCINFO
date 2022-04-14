@@ -10,7 +10,8 @@ pkgbase = gnome-shell-extension-gnome-clipboard-history
 	makedepends = glib2
 	depends = gnome-shell>=40
 	provides = gnome-shell-extension-gnome-clipboard-history
-	conflicts = gnome-shell-extension-clipboard-indicator-git
+	conflicts = gnome-shell-extension-gnome-clipboard-history
+	conflicts = gnome-shell-extension-clipboard-indicator
 	options = !strip
 	source = https://github.com/SUPERCILEX/gnome-clipboard-history/archive/1.1.3.tar.gz
 	sha256sums = 14b632595a6efeaefa7b5519cb4ed51d9bfdffe8acdf36d3f8f22beb3e220801

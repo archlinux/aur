@@ -12,7 +12,8 @@ depends=('gnome-shell>=40')
 makedepends=('git'
              'glib2')
 provides=("${pkgname}")
-conflicts=('gnome-shell-extension-clipboard-indicator-git')
+conflicts=('gnome-shell-extension-gnome-clipboard-history'
+           'gnome-shell-extension-clipboard-indicator')
 options=('!strip')
 source=("${url}/archive/${pkgver}.tar.gz")
 sha256sums=('14b632595a6efeaefa7b5519cb4ed51d9bfdffe8acdf36d3f8f22beb3e220801')
