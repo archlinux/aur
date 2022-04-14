@@ -1,14 +1,17 @@
 pkgbase = ft32-elf-newlib
 	pkgdesc = A C standard library implementation intended for use on embedded systems (Bridgetek FT9xx bare-metal)
 	pkgver = 2.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.sourceware.org/newlib/
 	arch = any
 	license = BSD
 	makedepends = ft32-elf-gcc
+	noextract = libstub.a
 	options = !emptydirs
 	options = !strip
 	source = https://sourceware.org/pub/newlib/newlib-2.5.0.tar.gz
+	source = libstub.a
 	sha512sums = 4c99e8dfcb4a7ad0769b9e173ff06628d82e4993ef87d3adf9d6b5578626b14de81b4b3c5f0673ddbb49dc9f3d3628f9f8d4432dcded91f5cd3d27b7d44343cd
+	sha512sums = 8775bf081d632676f28d1ba768d88bbd4a88e2cc03bcb84408d47a7f66c0a9b1aacf0532a93fd979657a0cf6f5de677c68f1c3dd272b4c616f9905625f40e448
 
 pkgname = ft32-elf-newlib
