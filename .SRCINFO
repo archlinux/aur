@@ -1,0 +1,11 @@
+pkgbase = ttf-genryu-git
+	pkgdesc = A free font family derived from Source Han Serif.
+	pkgver = v1.501
+	pkgrel = 1
+	url = https://github.com/ButTaiwan/genryu-font
+	arch = any
+	license = OFL
+	source = git+https://github.com/ButTaiwan/genryu-font.git
+	sha256sums = SKIP
+
+pkgname = ttf-genryu-git
