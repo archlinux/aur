@@ -1,6 +1,6 @@
 pkgbase = ahoviewer-git
 	pkgdesc = A GTK2 image viewer, manga reader, and booru browser.
-	pkgver = 1.6.5.134.g3e83f81
+	pkgver = 1.6.5.233.gce4f2ab
 	pkgrel = 1
 	url = http://github.com/ahodesuka/ahoviewer
 	arch = i686
@@ -19,8 +19,7 @@ pkgbase = ahoviewer-git
 	optdepends = libunrar
 	optdepends = libzip
 	provides = ahoviewer
-	source = git://github.com/ahodesuka/ahoviewer
+	source = git+https://github.com/ahodesuka/ahoviewer
 	md5sums = SKIP
 
 pkgname = ahoviewer-git
-

@@ -2,7 +2,7 @@
 
 pkgname=ahoviewer-git
 _pkgname=ahoviewer
-pkgver=1.6.5.134.g3e83f81
+pkgver=1.6.5.233.gce4f2ab
 pkgrel=1
 pkgdesc='A GTK2 image viewer, manga reader, and booru browser.'
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('gtkmm3>=3.22.0' 'libconfig>=1.4')
 optdepends=('gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plugins-good' 'gst-libav' 'libpeas>=1.22.0' 'libsecret' 'libunrar' 'libzip' )
 makedepends=('meson')
 provides=('ahoviewer')
-source=('git://github.com/ahodesuka/ahoviewer')
+source=('git+https://github.com/ahodesuka/ahoviewer')
 md5sums=('SKIP')
 
 prepare() {
