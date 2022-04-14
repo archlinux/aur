@@ -1,0 +1,11 @@
+pkgbase = plank-theme-bloomish
+	pkgdesc = Bloomish Theme for Plank
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://www.gnome-look.org/p/1216527
+	arch = any
+	license = cc-by-sa
+	source = https://github.com/MMcQueenGNU/plank-theme-bloomish/archive/refs/tags/v1.0.1.tar.gz
+	sha256sums = 66834a21258ff8ba9b6a0aa76f4017e968c64e4618f330a9c84efb7179ba5513
+
+pkgname = plank-theme-bloomish
