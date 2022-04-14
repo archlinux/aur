@@ -10,8 +10,8 @@ license=('MIT')
 depends=('python' 'python-cachetools' 'python-pycryptodomex' 'python-requests'
          'python-six' 'python-vdf')
 makedepends=('python-setuptools')
-checkdepends=('python-gevent-eventemitter' 'python-gevent' 'python-google-api-python-client'
-              'python-mock' 'python-protobuf' 'python-pytest-cov' 'python-vcrpy' 'python-yaml')
+checkdepends=('python-gevent-eventemitter' 'python-google-api-python-client' 'python-mock'
+              'python-protobuf' 'python-pytest-cov' 'python-vcrpy' 'python-yaml')
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('13744875373663892f0f39dcf63180c5a73404ab5634cf6fc6c3f7de8f87ea39')
 

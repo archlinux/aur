@@ -6,7 +6,6 @@ pkgbase = python-steam
 	arch = any
 	license = MIT
 	checkdepends = python-gevent-eventemitter
-	checkdepends = python-gevent
 	checkdepends = python-google-api-python-client
 	checkdepends = python-mock
 	checkdepends = python-protobuf
