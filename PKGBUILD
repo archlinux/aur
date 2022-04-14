@@ -17,14 +17,15 @@ conflicts=("${_pkgname}")
 GDRIVENAME="BLHeliSuite32xLinux64_1037.zip"
 GDRIVELINK="https://drive.google.com/file/d/1k_awtt_ZdaIKHw-bPrbcC9Te6fNkli7H/view?usp=sharing"
 
-# Files larger than 25MB requires confirmation key from cookie.
 GDRIVELINK="https://drive.google.com/uc?export=download&id=$(echo "$GDRIVELINK" | cut -d'/' -f 6)"
-CONFIRMKEY=$(/usr/bin/curl -c - -r 0-0 "$GDRIVELINK" --silent -o /dev/null | tee /tmp/bl32cookie | grep -F download_warning | head -n 1 | tr -d '[:space:]' | tail -c 4)
 
-if [ -n "$CONFIRMKEY" ] ; then
-    GDRIVELINK="$GDRIVELINK&confirm=$CONFIRMKEY"
-    DLAGENTS=('https::/usr/bin/curl -b /tmp/bl32cookie -gqb "" -fLC - --retry 3 --retry-delay 3 -o %o %u')
-fi
+# Files larger than 25MB requires confirmation key from cookie.
+#CONFIRMKEY=$(/usr/bin/curl -c - -r 0-0 "$GDRIVELINK" --silent -o /dev/null | tee /tmp/bl32cookie | grep -F download_warning | head -n 1 | tr -d '[:space:]' | tail -c 4)
+#
+#if [ -n "$CONFIRMKEY" ] ; then
+#    GDRIVELINK="$GDRIVELINK&confirm=$CONFIRMKEY"
+#    DLAGENTS=('https::/usr/bin/curl -b /tmp/bl32cookie -gqb "" -fLC - --retry 3 --retry-delay 3 -o %o %u')
+#fi
 
 source=("$GDRIVENAME::$GDRIVELINK")
 sha256sums=('c7405a36b7d3f922601e77e3a4269d10b352262b9e8009d7fc5e23577e7a4b4a')
