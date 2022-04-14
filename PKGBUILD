@@ -2,7 +2,7 @@
 
 pkgname=cutefish-settings
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="System Settings application for Cutefish Desktop"
 arch=('x86_64')
 url="https://github.com/cutefishos/settings"
