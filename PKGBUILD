@@ -96,7 +96,7 @@ prepare() {
   },
 ]" > .gclient
 
-  python2 "${srcdir}/depot_tools/gclient.py" sync \
+  python3 "${srcdir}/depot_tools/gclient.py" sync \
       --with_branch_heads \
       --with_tags \
       --nohooks
