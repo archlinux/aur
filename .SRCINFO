@@ -1,0 +1,17 @@
+pkgbase = cxx-run
+	pkgdesc = simple, clean and customisable run dialog in sfml
+	pkgver = 2022.04.14.added.install
+	pkgrel = 1
+	url = https://github.com/0x7fff-git/cxx-run
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = gcc
+	makedepends = make
+	makedepends = sfml
+	provides = cxx-run
+	conflicts = cxx-run
+	source = git+https://github.com/0x7fff-git/cxx-run
+	sha256sums = SKIP
+
+pkgname = cxx-run
