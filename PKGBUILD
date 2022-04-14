@@ -2,7 +2,7 @@
 # Contributor: Shatur95 <genaloner@gmail.com>
 
 pkgname=vim-language-server
-pkgver=2.2.7
+pkgver=2.2.10
 pkgrel=1
 pkgdesc="VimScript language server"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
-sha256sums=('1538f3202b4406f7b4455990a9f5c016b5edbfc2a2f82e3bf6613bbfecd3c982')
+sha256sums=('ee09909846bc02880e240b3b5c682ef18235c97243ab24227034f2f27530a771')
 noextract=("$pkgname-$pkgver.tgz")
 
 package() {
