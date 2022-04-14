@@ -1,7 +1,7 @@
 pkgbase = midiomatic
 	pkgdesc = A collection of MIDI filter, generator and processor LV2 and VST plugins
 	pkgver = 0.2.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SpotlightKid/midiomatic
 	arch = x86_64
 	groups = pro-audio
