@@ -33,7 +33,7 @@ optdepends=('ipython: For enhanced interactive Python shell inside Pycharm'
             'vagrant: For support virtualized development environments'
             'python-pytest: For support testing inside Pycharm'
             'python-tox: Python environments for testing tool'
-            'jupyter-notebook: For support Jupyter Notebook')
+            'jupyter-server: For Jupyter notebooks and apps')
             
 build() {
     # clean up and compile PyDev debugger used by PyCharm to speedup debugging
