@@ -1,15 +1,15 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 _pyname=tweakwcs
 pkgname=python-${_pyname}-doc
-pkgver=0.7.3
+pkgver=0.7.4
 pkgrel=1
 pkgdesc="Documentation for tweakwcs"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://tweakwcs.readthedocs.io"
 license=('BSD')
 makedepends=("python-${_pyname}=${pkgver}" 'python-numpydoc' 'python-sphinx_rtd_theme' 'python-stsci_rtd_theme' 'texlive-latexextra')
 source=("https://github.com/spacetelescope/${_pyname}/archive/${pkgver}.tar.gz")
-md5sums=('bcee3e2cc984b9ae3050ac2f938a9861')
+md5sums=('56b649bf28a3542b3c14d7a1e7ec12d0')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
