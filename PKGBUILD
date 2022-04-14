@@ -3,7 +3,7 @@
 _pkgname='desitarget'
 pkgname=python-desitarget
 pkgver=0.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Scripts and packages for selecting DESI targets from photometric catalogs"
 arch=(any)
 url="https://github.com/desihub/desitarget"
