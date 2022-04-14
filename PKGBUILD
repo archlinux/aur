@@ -3,7 +3,7 @@
 
 _name=ClearUrls
 pkgname=firefox-clearurls
-pkgver=1.22.0
+pkgver=1.23.1
 pkgrel=1
 pkgdesc='Removes tracking elements from URLs'
 arch=('any')
@@ -12,7 +12,7 @@ license=('LGPL3')
 groups=('firefox-addons')
 makedepends=('strip-nondeterminism' 'zip')
 source=("https://gitlab.com/KevinRoebert/$_name/-/archive/$pkgver/$_name-$pkgver.tar.gz")
-b2sums=('c1536b14cb4b8a584497273f38bd35b14ac3540e4ced7ef3f3fdb1d613113e19233402a03aa1f2344139ae2c86a7d626e79ae56d91acf74d1beb0c3b83325eb9')
+md5sums=('6c7250c5e547198fdce7fec07010f731')
 
 prepare() {
   cd $_name-$pkgver
