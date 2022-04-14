@@ -20,12 +20,14 @@ pkgbase = slade-git
 	depends = mpg123
 	depends = sfml>=2.5
 	depends = webkit2gtk
-	depends = wxgtk3-dev-opt=3.1.5
+	depends = wxgtk3>=3.0
 	depends = zlib
 	provides = slade
 	conflicts = slade
 	source = slade::git+https://github.com/sirjuddington/SLADE.git
+	source = 0001-compatibility-with-stable-wxWidgets.patch
 	sha256sums = SKIP
+	sha256sums = ababb76f64b4cfbdabd283ffb8e5d7900f270893161433e84a93f2655767d5d2
 
 pkgname = slade-git
 
