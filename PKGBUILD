@@ -13,7 +13,7 @@ makedepends=('unzip' 'zip' 'diffutils' 'yasm' 'mesa' 'imake' 'inetutils' 'xorg-s
              'autoconf2.13' 'rust' 'clang' 'llvm' 'alsa-lib' 'jack' 'cbindgen' 'nasm'
              'nodejs' 'lld' 'bc' 'python-setuptools' 'python-psutil' 'python-zstandard' 'pciutils' 'git')
 options=('!emptydirs' '!makeflags' 'zipman')
-_filesrev=8c9a506df60327cdd52d83227163575d131de4bb
+_filesrev=b52f71e9cc014f624ecca194a8e3033d512eb71c
 _filesurl=https://raw.githubusercontent.com/hawkeye116477/waterfox-deb-rpm-arch-AppImage/$_filesrev/waterfox-g4-kpe
 source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G4.$pkgver"
         "waterfox-g4.desktop::$_filesurl/waterfox-g4.desktop"
@@ -34,7 +34,7 @@ source=("git+https://github.com/MrAlex94/Waterfox.git#tag=G4.$pkgver"
 sha256sums=('SKIP'
             '76fde87eda671338d58a29d78ab081ca47aac2cde8faccafa646b0546b22bcfb'
             'bf06887c00bbc7176f452a3d18092e1b222731218e461782b2877cba938aaa26'
-            '6cfde5b71c2e25d2e032b2b20cde346decf4d60689e1465eb90e4235296dc4e0'
+            '5a3b4ebefbd9e5dd3abdc9e694ef4dadcce6fcc93f9352ee30f1fcb639a227f6'
             '37ff7802cddae42f9c13fef5ce83f07858a22076b701b623412e5422636c35ee'
             '0120e01edb0bf3d42f4e0280345f2c44372b097739cd2ddb85fa69bb2233ebab'
             '15cbfd8812c2396ab9cae6ad5a388b71fece7782fffe4b50b707b04b7221bb76'
@@ -45,7 +45,7 @@ sha256sums=('SKIP'
             '2bb12adfdb1e26e6dbb184cae8aeb85c83c886d9ce1f6a243b613bc192ad248f'
             '138b972a40a74104791783167770c4a01e62cce00bb9cc75119e152f9ea9f14d'
             'c3d0bc01466c4d1164c7bc9e1cdece7e0cfdf6c408c813b766b11730200c43c4'
-            'e928447807472e3cb318135a0be278ac86b41c5ce060230e37fbe8741d3925d5')
+            'e293a816a375650f9b121cc28de8091732f177169feb7c045179845558df196c')
 
 prepare() {
 
