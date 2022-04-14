@@ -2,27 +2,36 @@
 
 pkgname=ft9xx-libc
 pkgver=2.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='C register and peripheral library for the FT9XX family of microcontrollers'
 arch=(any)
-url='https://brtchip.com/ft9xx-toolchain/'
+url='https://github.com/BRTSG-FOSS/ft90x-sdk'
 license=(custom)
-depends=(ft32-elf-gcc)
+makedepends=(ft32-elf-gcc)
 options=(!strip)
-source=("https://github.com/perigoso/ft9xx-libc/archive/refs/tags/$pkgver.tar.gz")
-sha1sums=('23b627691d2261cea05e7a168338819187457de8')
+source=("$pkgname::git+https://github.com/BRTSG-FOSS/ft90x-sdk.git"#commit=9230beeaa5e1500db2117f6dec26dec5f434e565)
+sha512sums=('SKIP')
 
 build() {
-  cd $pkgname-$pkgver
+  cd $pkgname
+
+  rm -r Source/Release/*
+
+  export CFLAGS='-fno-math-errno -fno-common -fsigned-char -fdata-sections'
+
+  make TARGET=ft900 CONFIG=Release MKDIR='mkdir -p' -C Source/
+  make TARGET=ft930 CONFIG=Release MKDIR='mkdir -p' -C Source/
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
 
-  mkdir -p "$pkgdir/usr/ft32-elf/lib" "$pkgdir/usr/ft32-elf/include/ft9xx/private" "$pkgdir/usr/ft32-elf/include/ft9xx/registers"
+  mkdir -p "$pkgdir/usr/ft32-elf/lib"
 
-  cp -r --no-preserve=ownership lib/* "$pkgdir/usr/ft32-elf/lib"
-  cp -r --no-preserve=ownership include/* "$pkgdir/usr/ft32-elf/include/ft9xx"
+  cp -r --no-preserve=ownership Source/include "$pkgdir/usr/ft32-elf/"
+
+  install -Dm644 Source/Release/ft900/libft900.a "$pkgdir/usr/ft32-elf/lib"
+  install -Dm644 Source/Release/ft930/libft930.a "$pkgdir/usr/ft32-elf/lib"
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

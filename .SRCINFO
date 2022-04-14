@@ -1,13 +1,13 @@
 pkgbase = ft9xx-libc
 	pkgdesc = C register and peripheral library for the FT9XX family of microcontrollers
 	pkgver = 2.5.0
-	pkgrel = 1
-	url = https://brtchip.com/ft9xx-toolchain/
+	pkgrel = 2
+	url = https://github.com/BRTSG-FOSS/ft90x-sdk
 	arch = any
 	license = custom
-	depends = ft32-elf-gcc
+	makedepends = ft32-elf-gcc
 	options = !strip
-	source = https://github.com/perigoso/ft9xx-libc/archive/refs/tags/2.5.0.tar.gz
-	sha1sums = 23b627691d2261cea05e7a168338819187457de8
+	source = ft9xx-libc::git+https://github.com/BRTSG-FOSS/ft90x-sdk.git#commit=9230beeaa5e1500db2117f6dec26dec5f434e565
+	sha512sums = SKIP
 
 pkgname = ft9xx-libc
