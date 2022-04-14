@@ -1,7 +1,7 @@
 pkgbase = nvidia-tweaks
 	pkgdesc = A collection of tweaks and improvements to the NVIDIA driver
 	pkgver = 510
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.nvidia.com/
 	arch = any
 	license = custom
@@ -16,7 +16,7 @@ pkgbase = nvidia-tweaks
 	source = https://raw.githubusercontent.com/keylase/nvidia-patch/master/patch-fbc.sh
 	source = https://raw.githubusercontent.com/keylase/nvidia-patch/master/patch.sh
 	sha256sums = 038b1170ac750b0dbcd59f2758e8fa12bc807e87b39c079c0396e33d0f83b37f
-	sha256sums = db6ec617e27de2872fc56ea0e04da3f75d07f0ed9022dce89aa36fa01f4b3ea9
+	sha256sums = e83a22a3ce0fc9a0657216cb452275348eb05a7f94907b2c7fd87f7ae1be7dba
 	sha256sums = 81464bfeda86b9683a6f739a1cec1a2fe37717af5480671be70fe43f51fba420
 	sha256sums = b4bde9eecd90fc9498a8d47c7bb7edfe877ae64ea9e7069c405710a76c749144
 	sha256sums = c8fd71e3885b18c88c800cc9693112846d1889a008ae7dc6cbc9bb6fadd67ec6

@@ -2,8 +2,9 @@
 Operation=Install
 Operation=Upgrade
 Operation=Remove
-Type=Package
-Target=nvidia-tweaks
+Type=File
+Target=usr/lib/modprobe.d/90-nvidia-tweaks.conf
+Target=usr/src/nvidia-*/dkms.conf
 
 [Action]
 Description=Update Nvidia module in initcpio (for DRM KMS)
