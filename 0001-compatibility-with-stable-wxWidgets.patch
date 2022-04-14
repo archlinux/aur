@@ -1,0 +1,43 @@
+From be61a443c87e97d7a1b8716428c7e3fedcc7a34c Mon Sep 17 00:00:00 2001
+From: Jan Cholasta <jan@cholasta.net>
+Date: Thu, 14 Apr 2022 14:15:13 +0200
+Subject: [PATCH] compatibility with stable wxWidgets
+
+---
+ src/Graphics/Icons.cpp | 2 ++
+ src/UI/SAuiTabArt.cpp  | 5 ++++-
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/src/Graphics/Icons.cpp b/src/Graphics/Icons.cpp
+index 61d5475c..8c6e5c44 100644
+--- a/src/Graphics/Icons.cpp
++++ b/src/Graphics/Icons.cpp
+@@ -373,7 +373,9 @@ wxBitmap loadPNGIcon(const IconDef& icon, int size, Point2i padding)
+ bool icons::loadIcons()
+ {
+ 	// Check for dark mode
++#if wxCHECK_VERSION(3, 1, 0)
+ 	ui_icons_dark = wxSystemSettings::GetAppearance().IsDark();
++#endif
+ 
+ 	// Get slade.pk3
+ 	auto* res_archive = app::archiveManager().programResourceArchive();
+diff --git a/src/UI/SAuiTabArt.cpp b/src/UI/SAuiTabArt.cpp
+index 15aad09e..1fa29b73 100644
+--- a/src/UI/SAuiTabArt.cpp
++++ b/src/UI/SAuiTabArt.cpp
+@@ -550,7 +550,10 @@ void SAuiDockArt::DrawCaption(wxDC& dc, wxWindow* window, const wxString& text,
+ 	    }
+ 
+ 	    // Draw the icon centered vertically
+-	    int xOffset = window->FromDIP(2);
++	    int xOffset = 2;
++#if wxCHECK_VERSION(3, 1, 0)
++	    xOffset = window->FromDIP(xOffset);
++#endif
+ 	    dc.DrawBitmap(pane.icon,
+ 	                  rect.x+xOffset, rect.y+(rect.height-pane.icon.GetHeight())/2,
+ 	                  true);
+-- 
+2.35.1
+

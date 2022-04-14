@@ -1,20 +1,16 @@
 # Maintainer: Jan Cholasta <grubber at grubber cz>
 
-_name=slade
-pkgname=${_name}
-pkgver=3.2.0_b4
+pkgname=slade
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='SLADE3 Doom editor'
 arch=('i686' 'x86_64')
 url='http://slade.mancubus.net/'
 license=('GPL')
 depends=('bzip2'
-         'curl'
          'fluidsynth>=2.2'
-         'fmt>=8.0.1'
          'freeimage'
          'ftgl'
-         'glew>=2.2'
          'glu'
          'gtk3'
          'libgl'
@@ -26,8 +22,16 @@ depends=('bzip2'
          'zlib')
 makedepends=('cmake'
              'p7zip')
-source=("https://github.com/sirjuddington/SLADE/archive/${pkgver}.tar.gz")
-sha256sums=('ab9e658054de9d34abf8f7d749c42228b6a88923fa7d887691496790e3a08057')
+source=("https://github.com/sirjuddington/SLADE/archive/${pkgver}.tar.gz"
+        '0001-compatibility-with-stable-wxWidgets.patch')
+sha256sums=('e23cb1238d184a13912231c22e96208d6dff4eb55f38181ae92d2b67f205dfa5'
+            'ababb76f64b4cfbdabd283ffb8e5d7900f270893161433e84a93f2655767d5d2')
+
+prepare() {
+    cd SLADE-${pkgver}
+
+    patch -i "$srcdir"/0001-compatibility-with-stable-wxWidgets.patch -p 1
+}
 
 build() {
     cd SLADE-${pkgver}
