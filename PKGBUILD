@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=sysmon-git
 pkgver=1.0.1.r0.g9d5b2d8
-pkgrel=1
+pkgrel=2
 pkgdesc="Graphical system monitor. Similar to windows task manager."
 arch=('any')
 url="https://github.com/MatthiasSchinzel/sysmon"
 license=('GPL3')
 depends=('python-pyqtgraph' 'python-pyqt5' 'wireless_tools')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-build' 'python-installer'  'python-setuptools' 'python-wheel')
 optdepends=('nvidia-utils: NVIDIA GPU utilization and clock speed')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -23,12 +23,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}/src"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}/src"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t \
     "$pkgdir/usr/share/applications"
