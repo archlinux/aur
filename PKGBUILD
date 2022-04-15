@@ -1,14 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=dbxfs
 pkgver=1.0.63
-pkgrel=1
+pkgrel=2
 pkgdesc="User-space file system for Dropbox"
 arch=('x86_64')
 url="https://thelig.ht/code/dbxfs"
 license=('GPL3')
 depends=('fuse2' 'python-dropbox' 'python-appdirs' 'python-userspacefs'
-         'python-block_tracing' 'python-privy' 'python-keyrings-alt' 'python-sentry_sdk')
-makedepends=('python-setuptools')
+         'python-block_tracing' 'python-privy' 'python-keyrings-alt' 'python-sentry_sdk'
+         'python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"{,.asc}
         "$pkgname.patch")
 sha256sums=('3e8b5323cf6cd6d5c3d0cfc138a8a31fc5bcd981b60bf9a6420e30c33c4ce58b'
@@ -25,10 +26,10 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
