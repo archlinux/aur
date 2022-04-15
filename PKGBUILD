@@ -4,13 +4,13 @@
 
 pkgname=belle-sip-git
 _pkgname=belle-sip
-pkgver=5.0.0.alpha.r11.gc8ee0aee
+pkgver=5.2.0.alpha.r5.g635b163a
 pkgrel=1
 pkgdesc="A Voice-over-IP phone"
 arch=('x86_64')
 url="https://github.com/BelledonneCommunications/belle-sip/"
 license=('GPL3')
-depends=('avahi' 'bctoolbox>=4.5' 'belr>=4.5.22')
+depends=('avahi' 'bctoolbox-git' 'belr>=4.5.22')
 makedepends=('cmake' 'git')
 provides=("belle-sip=$pkgver")
 conflicts=('belle-sip')
