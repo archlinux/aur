@@ -11,12 +11,12 @@ _microarchitecture=98
 ## Major kernel version
 _major=5.17
 ## Minor kernel version
-_minor=1
+_minor=3
 
 pkgbase=linux-multimedia
 #pkgver=${_major}
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=1
 pkgdesc='Linux Multimedia Optimized'
 url="https://www.kernel.org/"
 arch=(x86_64)
@@ -39,7 +39,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('7cd5c5d432a25f45060868ce6a8578890e550158a2f779c4a20804b551e84c24'
+sha256sums=('32d0a8e366b87e1cbde951b9f7a01287546670ba60fac35cccfc8a7c005a162c'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -87,22 +87,6 @@ prepare() {
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
-  ### Configure Kernel Compression
-  msg2 "Setting ZSTD Compression Globally..."
-  scripts/config --enable CONFIG_KERNEL_ZSTD
-
-  msg2 "Setting ZSTD Compression Level Globally..."
-  scripts/config --set-val CONFIG_KERNEL_ZSTD_LEVEL 19
-  scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
-
-  ### Configure Kernel Module Compression
-  msg2 "Setting ZSTD Compression For Modules..."
-  scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD
-
-  msg2 "Setting ZSTD Compression Level For Modules..."
-  scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
-  scripts/config --disable CONFIG_MODULE_COMPRESS_ZSTD_ULTRA
-
   ## Optimize Kernel for Performance Using (GCC -O3)
   msg2 "Setting Up A GCC -O3 Optimized Kernel"
   scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
@@ -114,7 +98,7 @@ prepare() {
   scripts/config --disable CONFIG_NO_HZ_IDLE
   scripts/config --enable CONFIG_NO_HZ_FULL
   scripts/config --disable CONFIG_NO_HZ
-  scripts/config --disable CONFIG_NO_HZ_COMMON
+  scripts/config --enable CONFIG_NO_HZ_COMMON
   
   ### Enable Preemptation
   msg2 "Enable PREEMPT..."
@@ -124,6 +108,17 @@ prepare() {
   scripts/config --enable CONFIG_PREEMPT_COUNT
   scripts/config --enable CONFIG_PREEMPTION
   scripts/config --enable CONFIG_PREEMPT_DYNAMIC
+
+  ### Set tickrate to 1000HZ
+  msg2 "Setting tick rate to 1000HZ..."
+  scripts/config --disable CONFIG_HZ_300
+  scripts/config --enable CONFIG_HZ_1000
+  scripts/config --set-val CONFIG_HZ 1000
+
+  ### Set Default Governor To Performance
+  msg2 "Set Default Governor To Performance..."
+  scripts/config --disable CONFIG_CPU_FREQ_DEFAULT_GOV_SCHEDUTIL
+  scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
 
   ### Disable Kernel Debugging
   msg2 "Disable Kernel Debugging For Smaller Builds"
@@ -140,12 +135,6 @@ prepare() {
   scripts/config --disable CONFIG_KGDB
   scripts/config --disable CONFIG_FUNCTION_TRACER
   scripts/config --disable CONFIG_STACK_TRACER
-
-  ### Set tickrate to 1000HZ
-  msg2 "Setting tick rate to 750HZ..."
-  scripts/config --disable CONFIG_HZ_300
-  scripts/config --enable CONFIG_HZ_750
-  scripts/config --set-val CONFIG_HZ 750
   
   ### Use Nconfig to customize compile options
   #msg2 "Enabling Ncurses Config Menu..."
