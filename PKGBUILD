@@ -2,13 +2,13 @@
 pkgname=python-fusepyng
 _name=${pkgname#python-}
 pkgver=1.0.7
-pkgrel=5
+pkgrel=6
 pkgdesc="Simple ctypes bindings for FUSE"
 arch=('any')
 url="https://thelig.ht/code/fusepyng"
 license=('ISC')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"{,.asc}
         'LICENSE')
 sha256sums=('8b4f6ef81e8600f23da7509169acb2615582ef116d46a2a1ad4b7e530d8f899f'
@@ -18,12 +18,12 @@ validpgpkeys=('584EDA5AAC13B9FBFB13F678A6A5398DACC9C15C') # Rian Hunter <rian@th
 
 build() {
   cd "$_name-$pkgver"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$_name-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 "$srcdir/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname"
 }
