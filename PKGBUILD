@@ -2,7 +2,7 @@
 
 pkgname=ttf-roboto-flex
 pkgver=3.100
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Upgrades Roboto to become a more powerful typeface system"
 arch=('any')
@@ -16,6 +16,6 @@ sha256sums=('ffb35bd872d82064f8700db3a2d810af58412518909072a38cbc1de294dfa164'
 package() {
   cd roboto-flex-fonts/
 
-  install -Dt "$pkgdir"/usr/share/fonts/TTF -m644 fonts/variable/*.ttf
+  install -Dm644 fonts/variable/*.ttf "$pkgdir"/usr/share/fonts/TTF/RobotoFlex.ttf
   install -Dt "$pkgdir"/usr/share/licenses/$pkgname -m644 ../OFL.txt
 }
