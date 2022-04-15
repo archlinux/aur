@@ -1,15 +1,16 @@
 # Maintainer: Sharky <sharky@sharky.pw>
+# Maintainer: Carlo Sala <carlosalag@protonmail.com>
 
 pkgname=surfshark-vpn
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Surfshark VPN client"
 arch=('x86_64')
 url="https://surfshark.com/download/linux"
 license=('custom:surfshark')
 depends=(glibc openvpn)
 source=("https://ocean.surfshark.com/debian/pool/main/s/surfshark-vpn/surfshark-vpn_${pkgver}_amd64.deb")
-sha256sums=('07afd9b77bf2fd9d53fe46481b13623727ae32813d99aff32d23e14e00404f72')
+sha256sums=('5ef76e6a9f61272ff927ccd965fce4b752de1083c3c4b25aecee513515cca819')
 
 prepare() {
     tar xf data.tar.xz
