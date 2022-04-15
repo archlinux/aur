@@ -1,26 +1,32 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
-pkgname=vosk-api-git
-pkgver=0.3.32.r49.g7b7d814
+pkgbase=vosk-api-git
+pkgname=('vosk-api-git' 'python-vosk-git')
+pkgver=0.3.32.r50.ga87f2e1
 pkgrel=1
+_model_small_ver=0.15
+_model_spk_ver=0.4
 pkgdesc='Offline speech recognition toolkit (git version)'
 arch=('x86_64')
 url='https://alphacephei.com/vosk/'
 license=('Apache')
-depends=('gcc-libs')
-optdepends=('java-runtime: for java bindings'
-            'python-cffi: for python module')
-makedepends=('git' 'cmake' 'gradle' 'python' 'python-cffi' 'python-setuptools')
+makedepends=('git' 'cmake' 'gradle' 'python' 'python-build' 'python-cffi'
+             'python-installer' 'python-setuptools' 'python-wheel')
+checkdepends=('ffmpeg' 'python-numpy')
 source=('git+https://github.com/alphacep/vosk-api.git'
         'git+https://github.com/xianyi/OpenBLAS.git'
         'git+https://github.com/alphacep/clapack.git'
         'git+https://github.com/alphacep/openfst.git'
-        'git+https://github.com/alphacep/kaldi.git#branch=vosk')
+        'git+https://github.com/alphacep/kaldi.git#branch=vosk'
+        "https://alphacephei.com/kaldi/models/vosk-model-small-en-us-${_model_small_ver}.zip"
+        "https://alphacephei.com/vosk/models/vosk-model-spk-${_model_spk_ver}.zip")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP')
+            'SKIP'
+            '30f26242c4eb449f948e42cb302dd7a686cb29a3423a8367f99ff41780942498'
+            'a74d8f51144484813e16af689bb0f916b7a111e2347f467c4933c1166097b5a7')
 
 prepare() {
     local _curl='curl -sqgb "" -fLC - --retry 3 --retry-delay 3'
@@ -30,6 +36,8 @@ prepare() {
     git -C OpenBLAS checkout "$(awk '/xianyi\/OpenBLAS/ { print $5 }' <($_curl "$_url"))"
     git -C clapack checkout "$(awk '/alphacep\/clapack/ { print $5 }' <($_curl "$_url"))"
     
+    ln -sf "../../../vosk-model-small-en-us-${_model_small_ver}" vosk-api/python/example/model
+    ln -sf "../../../vosk-model-spk-${_model_spk_ver}" vosk-api/python/example/model-spk
     ln -sf ../../OpenBLAS kaldi/tools/OpenBLAS
     ln -sf ../../clapack kaldi/tools/clapack
     ln -sf ../../openfst kaldi/tools/openfst
@@ -97,10 +105,26 @@ build() {
     
     # python module
     cd "${srcdir}/vosk-api/python"
-    python setup.py build
+    python ./vosk_builder.py
+    python -m build --wheel --no-isolation
 }
 
-package() {
+check() {
+    local _test
+    cd vosk-api/python/example
+    for _test in alternatives empty ffmpeg reset simple speaker text words
+    do
+        printf '%s\n' "Running test_${_test}..."
+        PYTHONPATH="${PWD}/../build/lib" python "./test_${_test}.py" test.wav
+    done
+}
+
+package_vosk-api-git() {
+    depends=('gcc-libs')
+    optdepends=('java-runtime: for java bindings')
+    provides=('vosk-api')
+    conflicts=('vosk-api')
+    
     install -d -m755 "${pkgdir}/usr/lib"
     install -D -m644 vosk-api/src/vosk_api.h -t "${pkgdir}/usr/include"
     cp -dr --no-preserve='ownership' vosk-api/src/*.so* "${pkgdir}/usr/lib"
@@ -108,11 +132,18 @@ package() {
     local _ver
     _ver="$(awk "/^version[[:space:]]=/ { gsub(/'/, \"\", \$3); print \$3 }" vosk-api/java/lib/build.gradle)"
     install -D -m644 "vosk-api/java/lib/build/libs/vosk-${_ver}.jar" "${pkgdir}/usr/share/java/vosk.jar"
+}
+
+package_python-vosk-git() {
+    pkgdesc='Python module for vosk-api (git version)'
+    depends=('python' 'python-cffi' "vosk-api-git=${pkgver}")
+    provides=('python-vosk')
+    conflicts=('python-vosk')
     
     local _pyver
     _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
     cd vosk-api/python
-    python setup.py install --root="$pkgdir" --skip-build --optimize='1'
+    python -m installer --destdir="$pkgdir" dist/*.whl
     rm "${pkgdir}/usr/lib/python${_pyver}/site-packages/vosk/libvosk.so"
     ln -s ../../../libvosk.so "${pkgdir}/usr/lib/python${_pyver}/site-packages/vosk/libvosk.so"
 }
