@@ -1,0 +1,14 @@
+pkgbase = kaar-git
+	pkgdesc = Kubernetes Application Archive
+	pkgver = r10.853efc1
+	pkgrel = 1
+	url = https://github.com/kris-nova/kaar
+	arch = x86_64
+	license = Apache
+	makedepends = go
+	makedepends = git
+	makedepends = make
+	source = git+https://github.com/kris-nova/kaar.git
+	sha256sums = SKIP
+
+pkgname = kaar-git
