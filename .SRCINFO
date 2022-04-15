@@ -1,5 +1,5 @@
 pkgbase = resident-evil-2-leon-ita
-	pkgdesc = 1998 survival horror video game developed and published by Capcom for the PlayStation.
+	pkgdesc = 1998 survival horror video game developed and published by Capcom for the PlayStation (Italian version).
 	pkgver = 1.0
 	pkgrel = 1
 	url = https://en.wikipedia.org/wiki/Resident_Evil_2
