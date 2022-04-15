@@ -2,10 +2,10 @@
 
 pkgname=libcalfbox-lss
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for real time midi sequencing and loading of various sampler formats"
 arch=(x86_64)
-url="https://laborejo.org/downloads/libcalfbox-lss-1.0.0.tar.xz"
+url="https://git.laborejo.org/lss/libcalfbox-lss"
 license=(GPL3)
 depends=(glibc)
 makedepends=(fluidsynth glib2 jack libsndfile meson util-linux)
