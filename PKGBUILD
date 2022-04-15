@@ -1,7 +1,7 @@
 # Maintainer: Shell Chen <aur@sorz.org>
 pkgname=minissdpd
 pkgver=1.5.20211105
-pkgrel=1
+pkgrel=2
 pkgdesc="MiniSSDPd - daemon keeping track of UPnP devices up"
 arch=('x86_64' 'i686')
 url="https://miniupnp.tuxfamily.org/minissdpd.html"
@@ -16,12 +16,12 @@ sha256sums=('a073be9c6d9194feaeccf31cd986c48afd2212426b6594e75166cedff1c461aa'
 build() {
     cd "$srcdir/$pkgname-$pkgver"
     make
+    gzip minissdpd.1
 }
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    mkdir -p "$pkgdir/etc/init.d"
-    make DESTDIR="$pkgdir" SBININSTALLDIR="$pkgdir/usr/bin" install
-    rm -r "$pkgdir/etc/init.d"
+    install -Dm755 minissdpd "$pkgdir/usr/bin/minissdpd"
+    install -Dm644 minissdpd.1.gz "$pkgdir/usr/share/man/man1/minissdpd.1.gz"
     install -Dm644 "$srcdir/minissdpd@.service" "$pkgdir/usr/lib/systemd/system/minissdpd@.service"
 }
