@@ -1,14 +1,13 @@
 pkgbase = mousai
 	pkgdesc = Simple application for identifying songs
 	pkgver = 0.6.6
-	pkgrel = 3
+	pkgrel = 4
 	url = https://apps.gnome.org/app/io.github.seadve.Mousai
-	arch = x86_64
+	arch = any
 	license = GPL3
 	checkdepends = appstream-glib
 	makedepends = meson
 	depends = gstreamer
-	depends = gtk4
 	depends = libadwaita
 	depends = python-gobject
 	depends = python-requests
