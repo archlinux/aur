@@ -2,7 +2,7 @@
 # Co-Maintainer: librewish <librewish at gmail dot com>
 pkgname=qomui-git
 pkgver=0.8.2.r22.23650ab
-pkgrel=2
+pkgrel=3
 pkgdesc="Qt OpenVPN Management UI"
 arch=('x86_64')
 url="https://github.com/corrad1nho/qomui"
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('python-pyqt5' 'python-dbus' 'openvpn' 'stunnel' 'bind-tools'
          'python-psutil' 'python-requests' 'python-lxml' 'python-beautifulsoup4'
          'python-pexpect' 'wireguard-tools' 'python-cryptography')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('geoip: to identify server locations'
             'dnsmasq: required for bypassing OpenVPN'
             'libcgroup: required for bypassing OpenVPN'
@@ -27,15 +27,10 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  python setup.py build
-}
-
-check() {
-  cd "$srcdir/${pkgname%-git}"
-  python setup.py test
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }

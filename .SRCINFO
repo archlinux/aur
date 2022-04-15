@@ -1,12 +1,15 @@
 pkgbase = qomui-git
 	pkgdesc = Qt OpenVPN Management UI
 	pkgver = 0.8.2.r22.23650ab
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/corrad1nho/qomui
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-pyqt5
 	depends = python-dbus
 	depends = openvpn
