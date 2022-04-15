@@ -1,0 +1,12 @@
+pkgbase = rome
+	pkgdesc = Formatter, linter, bundler, and more for Javascript, Typescript, JSON, HTML, Markdown, and CSS.
+	pkgver = 0.4.2
+	pkgrel = 1
+	url = https://rome.tools
+	arch = any
+	license = MIT
+	makedepends = cargo
+	source = rome-0.4.2.tar.gz::https://github.com/rome/tools/archive/v0.4.2.tar.gz
+	md5sums = 1fd1d34fc5ed1b138310a839d9c0741e
+
+pkgname = rome
