@@ -1,11 +1,14 @@
 pkgbase = python-pynput
 	pkgdesc = Python library to monitor and control user input devices
 	pkgver = 1.7.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/moses-palmer/pynput
 	arch = any
 	license = LGPL3
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-xlib
 	depends = python-six
 	depends = python-evdev

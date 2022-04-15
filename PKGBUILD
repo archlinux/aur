@@ -3,13 +3,13 @@
 pkgname=python-pynput
 _name=${pkgname#python-}
 pkgver=1.7.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library to monitor and control user input devices"
 arch=('any')
 url="https://github.com/moses-palmer/pynput"
 license=('LGPL3')
 depends=('python-xlib' 'python-six' 'python-evdev')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz"
         'setup.patch')
 sha256sums=('3a5726546da54116b687785d38b1db56997ce1d28e53e8d22fc656d8b92e533c'
@@ -22,14 +22,10 @@ prepare() {
 
 build() {
   cd "$_name-$pkgver"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$_name-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-
-  # Fix permissions
-  find "$pkgdir" -type d -exec chmod -v 0755 {} \;
-  find "$pkgdir" -type f -exec chmod -v 0644 {} \;
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
