@@ -12,13 +12,16 @@ index a8239208..4d5b3ce5 100644
 +    // const [ , origin ] = stackTrace.match(new RegExp(`${global._.escapeRegExp(powercord.pluginManager.pluginDir)}.([-\\w]+)`));
  
      if (typeof command === 'string') {
-       console.error('no');diff --git a/src/Powercord/managers/plugins.js b/src/Powercord/managers/plugins.js
-index 2bb7beaf..ef13b4ad 100644
+       console.error('no');
+diff --git a/src/Powercord/managers/plugins.js b/src/Powercord/managers/plugins.js
+index fbe52c94..9fdf1b95 100644
 --- a/src/Powercord/managers/plugins.js
 +++ b/src/Powercord/managers/plugins.js
-@@ -5,9 +5,11 @@ const { rmdirRf } = require('powercord/util');
- const { exec } = require('child_process');
- const security = require('./security.js');
+@@ -1,10 +1,12 @@
+-const { resolve } = require('path');
++const { resolve, join } = require('path');
+ const { readdirSync } = require('fs');
+ const { rmdirRf } = require('powercord/util');
  
 +const XDG_DATA_HOME = process.env.XDG_DATA_HOME || join(process.env.HOME, '.local', 'share');
 +

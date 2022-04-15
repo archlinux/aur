@@ -2,7 +2,7 @@
 pkgname=powercord-electron-git
 _pkgname=${pkgname%-electron-*}
 pkgver=r1372.b4103b08
-pkgrel=3
+pkgrel=4
 pkgdesc="A lightweight discord client mod focused on simplicity and performance."
 arch=('any')
 url="https://github.com/powercord-org/powercord"
@@ -28,7 +28,7 @@ md5sums=('SKIP'
          '567d9d8abddefa0417035759348230d1'
          '4fb3e5258f0f6a380798c989463ac39a'
          'ecf6cd5b74cf81762fad6f82985b3c95'
-         '520e96679376f7ef32cc8ee227b70462'
+         'fcf9ec514f003a1711fe85394f924491'
          '4370ed3647d62b1f1cb0e791d960f253')
 
 pkgver() {
