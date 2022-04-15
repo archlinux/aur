@@ -1,6 +1,6 @@
 pkgbase = gen-oath-safe-git
 	pkgdesc = generate OTP uri, qrcode, and configurations for linOTP, mod_authn_otp, Yubikey
-	pkgver = r18.c7bdb98
+	pkgver = r22.23dd7af
 	pkgrel = 1
 	url = https://github.com/72Zn/gen-oath-safe
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = gen-oath-safe-git
 	makedepends = gzip
 	depends = openssl
 	depends = qrencode
+	depends = xxd
 	optdepends = yubikey-personalization: yubikey support
 	optdepends = yubikey-manager: yubikey totp support
 	source = git+https://github.com/72Zn/gen-oath-safe

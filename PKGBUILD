@@ -5,15 +5,15 @@
 
 # Maintainer: Thomas Zink <thomas.zink@uni-konstanz.de>
 pkgname="gen-oath-safe-git"
-pkgver=r18.c7bdb98
-pkgrel=1
+pkgver=r22.23dd7af
+pkgrel=2
 #epoch=
 pkgdesc="generate OTP uri, qrcode, and configurations for linOTP, mod_authn_otp, Yubikey"
 arch=('x86_64')
 url="https://github.com/72Zn/gen-oath-safe"
 license=('MIT')
 #groups=()
-depends=('openssl' 'qrencode')
+depends=('openssl' 'qrencode' 'xxd')
 makedepends=('git' 'gzip')
 #checkdepends=()
 optdepends=('yubikey-personalization: yubikey support'  'yubikey-manager: yubikey totp support' )
