@@ -3,7 +3,7 @@
 
 _name=manimgl
 pkgname=python-$_name
-pkgver=1.6.1
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Animation engine for explanatory math videos"
 arch=(any)
@@ -26,17 +26,17 @@ depends=(
     'python-pydub'
 )
 optdepends=('texlive-most: latex support')
-makedepends=(python-build python-installer python-pbr python-wheel)
-source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
+makedepends=(python-setuptools python-pbr)
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 build() {
     cd "$_name-$pkgver"
-    python -m build --wheel --no-isolation
+    python setup.py build
 }
 
 package() {
     cd "$_name-$pkgver"
-    python -m installer --destdir="$pkgdir" dist/*.whl
+    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
     install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
