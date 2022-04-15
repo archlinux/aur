@@ -3,7 +3,7 @@
 # Contributor: Diab Neiroukh <lazerl0rd@thezest.dev>
 
 pkgname=mimalloc
-pkgver=2.0.5
+pkgver=2.0.6
 pkgrel=1
 pkgdesc="General-purpose allocator with excellent performance characteristics"
 arch=('x86_64')
@@ -12,8 +12,8 @@ license=('MIT')
 depends=('glibc')
 makedepends=('cmake')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('d164392ace523a3fa0aa00fc58d8a9e8fbe913f07957e19ca977675b389e6d2a2eaf4772e72cae0d87aabb960f3fd6ea3923a066ece4ba4fdaa0c6860cfa414d')
-b2sums=('9148ba4af7620eec36e1dde0f6fd2d1e3e9937bd2286ac790a727052402c3286b55387236de3a77e4405983c080bb7acae8deb3334cf9103fcf3f90250080204')
+sha512sums=('f2fc0fbfb6384e85959897f129e5d5d9acc51bda536d5cabcd7d4177dbda9fb735b8a8c239b961f8bea31d37c9ae10f66da23aa91d497f95393253d4ac792bb3')
+b2sums=('bd8a38cc0eab6ad950a63f494f24e6a91c50d2104335e9ce70963a7baadd26c7a2b7440b2fcabe502d9961549222873d017cb525bf5b32da967cf51aa167603c')
 
 build() {
   cmake \
