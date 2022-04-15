@@ -1,0 +1,19 @@
+pkgbase = tcc-ziyao
+	pkgdesc = Tiny C Compiler,with mob branch and patches applied by ziyao
+	pkgver = 0.9.27+e86aae4f
+	pkgrel = 1
+	url = https://bellard.org/tcc/
+	arch = x86_64
+	license = LGPL
+	depends = glibc
+	conflicts = tcc
+	source = tcc-ziyao-0.9.27+e86aae4f::git+https://repo.or.cz/tinycc.git#commit=e86aae4f6dbdc44994d582758f496c7493cbc183
+	source = empty_archive.patch
+	source = linker_option_entry.patch
+	source = mxcsr.patch
+	md5sums = SKIP
+	md5sums = 2914d156ae387f5245040923a96a4d53
+	md5sums = 45c326136a54ef47db8488f71a10e71b
+	md5sums = 1eb77e112370d613526641f663a44214
+
+pkgname = tcc-ziyao

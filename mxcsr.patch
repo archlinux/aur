@@ -1,0 +1,26 @@
+diff --git a/i386-asm.h b/i386-asm.h
+index 65d5179..dfc5183 100644
+--- a/i386-asm.h
++++ b/i386-asm.h
+@@ -447,6 +447,8 @@ ALT(DEF_ASM_OP2(psrlq, 0x0f73, 2, OPC_MODRM, OPT_IM8, OPT_MMXSSE ))
+     DEF_ASM_OP2(pxor, 0x0fef, 0, OPC_MODRM, OPT_EA | OPT_MMXSSE, OPT_MMXSSE )
+ 
+     /* sse */
++    DEF_ASM_OP1(ldmxcsr, 0x0fae, 2, OPC_MODRM, OPT_EA)
++    DEF_ASM_OP1(stmxcsr, 0x0fae, 3, OPC_MODRM, OPT_EA)
+     DEF_ASM_OP2(movups, 0x0f10, 0, OPC_MODRM, OPT_EA | OPT_REG32, OPT_SSE )
+ ALT(DEF_ASM_OP2(movups, 0x0f11, 0, OPC_MODRM, OPT_SSE, OPT_EA | OPT_REG32 ))
+     DEF_ASM_OP2(movaps, 0x0f28, 0, OPC_MODRM, OPT_EA | OPT_REG32, OPT_SSE )
+diff --git a/x86_64-asm.h b/x86_64-asm.h
+index cb9eb16..4e03773 100644
+--- a/x86_64-asm.h
++++ b/x86_64-asm.h
+@@ -483,6 +483,8 @@ ALT(DEF_ASM_OP2(psrlq, 0x0f73, 2, OPC_MODRM, OPT_IM8, OPT_MMXSSE ))
+     DEF_ASM_OP2(pxor, 0x0fef, 0, OPC_MODRM, OPT_EA | OPT_MMXSSE, OPT_MMXSSE )
+ 
+     /* sse */
++    DEF_ASM_OP1(ldmxcsr, 0x0fae, 2, OPC_MODRM, OPT_EA)
++    DEF_ASM_OP1(stmxcsr, 0x0fae, 3, OPC_MODRM, OPT_EA)
+     DEF_ASM_OP2(movups, 0x0f10, 0, OPC_MODRM, OPT_EA | OPT_REG32, OPT_SSE )
+ ALT(DEF_ASM_OP2(movups, 0x0f11, 0, OPC_MODRM, OPT_SSE, OPT_EA | OPT_REG32 ))
+     DEF_ASM_OP2(movaps, 0x0f28, 0, OPC_MODRM, OPT_EA | OPT_REG32, OPT_SSE )
