@@ -1,7 +1,7 @@
 # Maintainer: Shohei Maruyama <cheat.sc.linux@outlook.com>
 
 pkgname=ttf-plemoljp
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
 pkgdesc='Plex Mono Language JP'
 arch=('any')
@@ -20,5 +20,5 @@ build() {
 package() {
 	cd PlemolJP
 	find build -type f -name '*.ttf' -exec install -Dm644 {} -t "${pkgdir}/usr/share/fonts/PlemolJP" \;
-	install -Dm644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
