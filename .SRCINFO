@@ -1,6 +1,6 @@
 pkgbase = python-panel
 	pkgdesc = A high-level app and dashboarding solution for Python
-	pkgver = 0.12.7
+	pkgver = 0.13.0
 	pkgrel = 1
 	url = https://panel.holoviz.org
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = python-panel
 	depends = python-tqdm
 	depends = python-pyct
 	depends = python-bleach
-	source = panel-0.12.7::https://github.com/holoviz/panel/archive/v0.12.7.tar.gz
-	sha512sums = 9ac74b6a60b8150976651623281f659ed696bf297d4ea443ef530474349b8b97b1362f27559cf8a10255638c51add380808c4c9acf38326c37bcff7fff35acca
+	source = panel-0.13.0::https://github.com/holoviz/panel/archive/v0.13.0.tar.gz
+	sha512sums = d74790e3cbb660d63b31c0903c14c428e6a7690b006a8a596e24dccb22f9d92bc4724a3e80629f12ae94f7f9fb1d190b912a45d68a49700318e350d65694c306
 
 pkgname = python-panel
