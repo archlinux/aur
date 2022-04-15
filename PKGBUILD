@@ -1,0 +1,35 @@
+# Maintainer: Walter Broemeling <wallebroem at gmail dot com>
+pkgname=dict-git
+_pkgbase=dict
+pkgver=r9.c28f87f
+pkgrel=1
+pkgdesc="A dictionary, for the command line."
+arch=('x86_64')
+url="https://github.com/BetaPictoris/dict"
+license=('MIT')
+makedepends=('go' 'git')
+provides=('dict')
+conflicts=('dict')
+source=('git+https://github.com/BetaPictoris/dict.git')
+md5sums=('SKIP')
+
+pkgver() {
+	cd "$_pkgbase"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+	cd "$_pkgbase"
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	go build -o dict ./src/main.go
+}
+
+package() {
+	cd "$_pkgbase"
+	install -Dm755 dict "$pkgdir/usr/bin/dict"
+	install -Dm644 license "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
