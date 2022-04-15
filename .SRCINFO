@@ -1,11 +1,14 @@
 pkgbase = python-unpackable
 	pkgdesc = Destructure Python objects
 	pkgver = 0.0.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/alexdelorenzo/unpackable
 	arch = any
 	license = LGPL3
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-typing_extensions
 	source = https://files.pythonhosted.org/packages/source/u/unpackable/unpackable-0.0.4.tar.gz
 	source = https://raw.githubusercontent.com/alexdelorenzo/unpackable/master/requirements.txt
