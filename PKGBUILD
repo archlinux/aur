@@ -1,7 +1,7 @@
 # Maintainer: Peter Mattern <pmattern at arcor dot de>
 
 pkgname=meteo-qt
-pkgver=3.1
+pkgver=3.2
 pkgrel=1
 pkgdesc='System tray application for weather status information'
 arch=('any')
@@ -11,7 +11,7 @@ depends=('python-lxml' 'python-pyqt5' 'python-sip4' 'python-urllib3')
 makedepends=('qt5-tools')
 optdepends=('qt5-translations: translations of some native UI components')
 source=("$pkgname-$pkgver.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('58efaebea38786cd76257b97c747a57e6337024a53d1c994d4c57a867a69fbbd')
+sha256sums=('6e6bc3b1537fbf891382537849e1e238abae5ca1446e5090f9e1cfee5da4b428')
 
 package() {
   cd $pkgname-$pkgver
