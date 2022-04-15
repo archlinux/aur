@@ -3,12 +3,12 @@
 
 pkgname=lief
 pkgver=0.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Library to instrument executable formats'
 arch=('x86_64')
 url='https://github.com/lief-project/lief'
 license=('Apache')
-depends=('boost-libs' 'spdlog')
+depends=('spdlog')
 makedepends=('boost' 'cmake' 'nlohmann-json' 'utf8cpp')
 provides=('libLIEF.so')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")

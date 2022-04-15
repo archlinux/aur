@@ -1,7 +1,7 @@
 pkgbase = lief
 	pkgdesc = Library to instrument executable formats
 	pkgver = 0.12.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lief-project/lief
 	arch = x86_64
 	license = Apache
@@ -9,7 +9,6 @@ pkgbase = lief
 	makedepends = cmake
 	makedepends = nlohmann-json
 	makedepends = utf8cpp
-	depends = boost-libs
 	depends = spdlog
 	provides = libLIEF.so
 	source = lief-0.12.1.tar.gz::https://github.com/lief-project/lief/archive/0.12.1.tar.gz
