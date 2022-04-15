@@ -1,11 +1,14 @@
 pkgbase = python-daemons
 	pkgdesc = Python unix daemon base classes.
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kevinconway/daemons
 	arch = any
 	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-eventlet
 	depends = python-gevent
 	source = https://files.pythonhosted.org/packages/source/d/daemons/daemons-1.3.2.tar.gz
