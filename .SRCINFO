@@ -1,0 +1,17 @@
+pkgbase = treedude-git
+	pkgdesc = The TreeDude minigame from SUPERHOT
+	pkgver = 1.0.r10.319ee92
+	pkgrel = 1
+	url = https://github.com/nkrichronos/TreeDude/
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = gcc
+	makedepends = ncurses
+	depends = ncurses
+	provides = treedude
+	conflicts = treedude
+	source = git+https://github.com/nkrichronos/TreeDude/
+	md5sums = SKIP
+
+pkgname = treedude-git
