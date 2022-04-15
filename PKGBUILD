@@ -2,14 +2,14 @@
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 pkgname=python-liblarch-git
 _name=liblarch
-pkgver=3.1.0.r9.gab053ac
-pkgrel=1
+pkgver=3.2.0.r0.g628f588
+pkgrel=2
 pkgdesc="Python library to easily handle data structure, with a GTK binding"
 arch=('any')
 url="https://wiki.gnome.org/Projects/liblarch"
 license=('LGPL3')
 depends=('gtk3' 'python-gobject' 'python-cairo')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-nose')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_name"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -33,5 +33,5 @@ check() {
 
 package() {
   cd "$srcdir/$_name"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 }
