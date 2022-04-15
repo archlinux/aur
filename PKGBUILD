@@ -1,14 +1,14 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-sentry_sdk
 _name=sentry-sdk
-pkgver=1.5.9
+pkgver=1.5.10
 pkgrel=1
 pkgdesc="The new Python SDK for Sentry.io"
 arch=('any')
 url="https://sentry.io/for/python"
 license=('BSD')
 depends=('python-urllib3' 'python-certifi')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('python-aiohttp: adds support for the AIOHTTP-Server Web Framework'
             'python-asgiref: adds support for ASGI'
             'python-apache-beam: experimental BeamIntegration'
@@ -31,16 +31,16 @@ optdepends=('python-aiohttp: adds support for the AIOHTTP-Server Web Framework'
             'python-pure_eval: for richer stacktraces & additional variables'
             'python-executing: for richer stacktraces & better function names')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('afd9f92711556739172f3bc845a02fc921ca1560bee974ae65072ef6a30e3921')
+sha256sums=('0a9eb20a84f4c17c08c57488d59fdad18669db71ebecb28fb0721423a33535f9')
 
 build() {
   cd "$_name-$pkgver"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$_name-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
