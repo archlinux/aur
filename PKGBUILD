@@ -2,7 +2,7 @@
 # Contributor: FabioLolix <fabio.loli@disroot.org>
 # Contributor: duxet <duxetlg@gmail.com>
 pkgname=k3s-1.21-bin
-pkgver=1.21.10+k3s1
+pkgver=1.21.11+k3s1
 pkgrel=1
 pkgdesc="Lightweight Kubernetes"
 url="https://k3s.io"
@@ -20,22 +20,22 @@ source=(
 )
 
 source_x86_64=(
-  "k3s-${pkgver}-x86_64::https://github.com/rancher/k3s/releases/download/v${pkgver}/k3s"
+  "k3s-${pkgver}-x86_64::https://github.com/k3s-io/k3s/releases/download/v${pkgver}/k3s"
 )
 
 source_armv7h=(
-  "k3s-${pkgver}-armv7h::https://github.com/rancher/k3s/releases/download/v${pkgver}/k3s-armhf"
+  "k3s-${pkgver}-armv7h::https://github.com/k3s-io/k3s/releases/download/v${pkgver}/k3s-armhf"
 )
 
 source_aarch64=(
-  "k3s-${pkgver}-aarch64::https://github.com/rancher/k3s/releases/download/v${pkgver}/k3s-arm64"
+  "k3s-${pkgver}-aarch64::https://github.com/k3s-io/k3s/releases/download/v${pkgver}/k3s-arm64"
 )
 sha256sums=('4f613d87b6fca9b2f2d15700f448538b5537b846405451a1fdc060727445c529'
             'cde96553e9609791cd9fe1ff33482e33c4cfec22761f7766f5c278a9ce2ec679'
             'a09747c9541cd22df97adcabc44c09d97a4305a9d976e9bf8191849cb1ce30b6')
-sha256sums_x86_64=('7a9cf9a0f2318b09f8b449f96440fdd3d877fcfd5e25b275a0e705400641ce3d')
-sha256sums_armv7h=('0519a9a9e5d924fd40313107463ee9cc6b69d88e2e89cb346d5be756d4a34ec5')
-sha256sums_aarch64=('242f19039ad1d1185e7b7b70db679e064066ab119d5cdc557e19791f5a292862')
+sha256sums_x86_64=('6450ece4cf5d7ada78c0ef9e27b45bdf5aa1049fccc8e5fc55720ae1087bf0a8')
+sha256sums_armv7h=('a7dd0e6406604f998b59b0a272e6e9a7ec8e750af6565ea86ff4272d505581fc')
+sha256sums_aarch64=('a56631bee26c65b300094a29d3b38aadac0fa079ca4253c68bd4bebf3d2c714e')
 
 
 package() {
