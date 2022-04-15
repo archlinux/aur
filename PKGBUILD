@@ -1,39 +1,30 @@
-# Maintainer: WhiredPlanck
+# Maintainer: Marco Rubin <marco.rubin@protonmail.com>
+# Contributor: WhiredPlanck
 
-pkgname=python-easyocr
 _name=EasyOCR
-pkgver=1.2.2
+pkgname=python-easyocr
+pkgver=1.4.2
 pkgrel=1
-pkgdesc="Ready-to-use OCR with 40+ languages supported including Chinese, Japanese, Korean and Thai"
+pkgdesc="End-to-End Multi-Lingual Optical Character Recognition (OCR) Solution"
 arch=("any")
 url="https://github.com/JaidedAI/EasyOCR"
 license=("Apache-2.0")
 depends=('python-torchvision' 'python-pytorch' 'python-scikit-image'
-         'python-pillow' 'python-numpy' 'opencv' 'hdf5' 'python-scipy' 'python-bidi' 'python-pyaml')
+         'python-pillow' 'python-numpy' 'opencv' 'hdf5' 'python-scipy' 'python-pyaml')
 makedepends=('python-setuptools')
-#checkdepends=('python-pytest-runner' 'python-tornado' 'python-nose' 'python-psutil' 'python-trustme'
-#              'python-gcp-devrel-py-tools' 'python-pytest-timeout' 'python-flaky')
 provides=('python-easyocr')
 conflicts=('python-easyocr-git')
 replaces=('python-easyocr-git')
-source=("${_name}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=(#'42d65f0da9cde6b1b183b6fdebdc8e077ad03deeb6b0b622fa5926c2f31bed7f'
-            'SKIP')
-install=${pkgname}.install
+source=("$url/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('ead4df03a61e07def7aeee04e27f8a13a393ef98acc80da790100c687fb033bb')
 
 build() {
-    #cd "$srcdir"/${_name}-${pkgver}
-    #sed -i "s/,'opencv-python'//g" setup.py
-    #sed -i 's/Pillow<7.0/Pillow/g' setup.py
-    #cd easyocr
-    #sed -i '4d' detection.py
-    cd "$srcdir"/${_name}-${pkgver}
+    cd "$_name-$pkgver"
     python setup.py build
 }
 
 package() {
-    depends+=('python')
-    cd ${_name}-${pkgver}
-    python setup.py install --root="${pkgdir}"
-    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+    cd "$_name-$pkgver"
+    python setup.py install --root="$pkgdir"
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }

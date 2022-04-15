@@ -1,5 +1,0 @@
-post_install() {
-    echo ""
-    echo "---------------------------- TIPS ----------------------------"
-    echo "Visit https://github.com/JaidedAI/EasyOCR#usage for detail usage."
-}
