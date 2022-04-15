@@ -1,7 +1,7 @@
 # Maintainer: Ildus Kurbangaliev <i.kurbangaliev@gmail.com>
 
 pkgname=yosys-uhdm-plugin
-pkgver=1c7f719
+pkgver=c7b3eb9
 pkgrel=1
 pkgdesc='UDHM plugin for Yosys (SystemVerilog support)'
 arch=('x86_64')
@@ -25,7 +25,7 @@ pkgver() {
 package() {
 	YOSYS_DATDIR=$(yosys-config --datdir)
 	YOSYS_PLUGIN_DIR=$pkgdir/$YOSYS_DATDIR/plugins
-	UHDM_PLUGIN_PATH=$srcdir/image/share/yosys/plugins/uhdm.so
+	UHDM_PLUGIN_PATH=$srcdir/image/share/yosys/plugins/systemverilog.so
 
 	mkdir -p $YOSYS_PLUGIN_DIR
 	cp -v $UHDM_PLUGIN_PATH $pkdir/$YOSYS_PLUGIN_DIR/systemverilog.so
