@@ -12,7 +12,7 @@ pkgbase = python-yolk3k
 	optdepends = rstcheck: Check invalid reStructuredText in descriptions on PyPI
 	provides = python-yolk
 	conflicts = python-yolk
-	source = https://files.pythonhosted.org/packages/source/y/yolk/yolk-0.9.tar.gz
-	sha256sums = 84222c4f7df2f5582a206fb9e86fead53321fd882a8e2f586a44538b830ffc94
+	source = https://files.pythonhosted.org/packages/source/y/yolk3k/yolk3k-0.9.tar.gz
+	sha256sums = cf8731dd0a9f7ef50b5dc253fe0174383e3fed295a653672aa918c059eef86ae
 
 pkgname = python-yolk3k
