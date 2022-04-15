@@ -33,4 +33,5 @@ package() {
     # install link
     mkdir "${pkgdir}/usr/bin"
     ln -s /opt/surfshark-wireguard/gen_wg_config.sh "${pkgdir}/usr/bin/surfshark-wireguard"
+    install -Dm644 "${srcdir}/surfshark-wireguard.desktop" "${pkgdir}/usr/share/applications/"
 }

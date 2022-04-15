@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=SurfShark WireGuard
+Comment=Setup surfsharks wireguard vpn
+Exec=/usr/bin/surfshark-wireguard
+Icon=surfshark-wireguard.png
+Terminal=true
+Type=Application
+X-DCOP-ServiceType=Multi
+X-KDE-StartupNotify=true
+Categories=Settings;ConsoleOnly;Security
