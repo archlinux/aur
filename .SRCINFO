@@ -1,0 +1,23 @@
+pkgbase = twinkle-git
+	pkgdesc = A SIP-based VoIP client
+	pkgver = 1.10.3.r415.15ece11
+	pkgrel = 1
+	url = https://twinkle.dolezel.info
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	makedepends = cmake
+	makedepends = qt5-tools
+	depends = libzrtpcpp
+	depends = alsa-lib
+	depends = libsndfile
+	depends = bcg729
+	depends = hicolor-icon-theme
+	depends = qt5-declarative
+	provides = twinkle
+	conflicts = twinkle
+	source = git+https://github.com/lubosd/twinkle.git
+	sha256sums = SKIP
+
+pkgname = twinkle-git
