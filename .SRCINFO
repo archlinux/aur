@@ -1,7 +1,7 @@
 pkgbase = subsync
 	pkgdesc = Subtitle Speech Synchronizer
 	pkgver = 0.17
-	pkgrel = 2
+	pkgrel = 3
 	url = https://subsync.online
 	arch = x86_64
 	license = GPL3
@@ -9,7 +9,8 @@ pkgbase = subsync
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = ffmpeg
+	depends = ffmpeg4.4
+	depends = git
 	depends = pocketsphinx
 	depends = pybind11
 	depends = python-certifi
@@ -18,7 +19,7 @@ pkgbase = subsync
 	depends = python-pyaml
 	depends = python-requests
 	depends = python-wxpython
-	source = subsync-0.17.tar.gz::https://github.com/sc0ty/subsync/archive/refs/tags/0.17.tar.gz
-	sha256sums = 9c0d1a6bcbdf6736517ba173b4d844412f8badd32d45e7e85edcfe542625781c
+	source = git+https://github.com/sc0ty/subsync.git#tag=0.17
+	sha256sums = SKIP
 
 pkgname = subsync
