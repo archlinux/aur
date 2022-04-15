@@ -3,7 +3,7 @@ _pkgname=chatterino
 _appimage=Chatterino-x86_64.AppImage
 
 pkgname=chatterino2-appimage
-pkgver=2.3.4
+pkgver=2.3.5
 pkgrel=1
 pkgdesc='Second installment of the Twitch chat client series "Chatterino", release appimage'
 arch=('x86_64')
@@ -18,7 +18,7 @@ conflicts=('chatterino')
 options=(!strip)
 install=$pkgname.install
 source=("https://github.com/Chatterino/chatterino2/releases/download/v$pkgver/$_appimage")
-md5sums=('0368a12c38f96385269760af24f4e80b')
+sha256sums=('f2835516b0c2f98d11afe8d75d4fa017e7eab1ebb1bc9b32fdc9058e70673989')
 
 prepare () {
     cd "$srcdir"
