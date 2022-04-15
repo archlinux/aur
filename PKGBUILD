@@ -7,9 +7,9 @@ pkgdesc="Library for real time midi sequencing and loading of various sampler fo
 arch=(x86_64)
 url="https://laborejo.org/downloads/libcalfbox-lss-1.0.0.tar.xz"
 license=(GPL3)
-groups=()
 depends=(glibc)
 makedepends=(fluidsynth glib2 jack libsndfile meson util-linux)
+options=(debug)
 source=(https://laborejo.org/downloads/$pkgname-$pkgver.tar.xz{,.sig})
 sha512sums=('b81b09d61c5478baf390d533fc5a257f9cf815a21e8eda17513da212505ec986b4af6ac74189b951169dbc3bd4b942796ec4b53285c6571a67cb91cf397628a1'
             'SKIP')
