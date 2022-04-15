@@ -1,6 +1,6 @@
 pkgbase = autokey
 	pkgver = 0.95.10
-	pkgrel = 5
+	pkgrel = 6
 	url = https://github.com/autokey/autokey
 	arch = x86_64
 	license = GPL3

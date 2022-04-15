@@ -4,7 +4,7 @@
 pkgname=('autokey-common' 'autokey-gtk' 'autokey-qt')
 pkgbase=autokey
 pkgver=0.95.10
-pkgrel=5
+pkgrel=6
 arch=('x86_64')
 url="https://github.com/autokey/autokey"
 license=('GPL3')
@@ -71,7 +71,7 @@ package_autokey-gtk() {
   rm -f "$pkgdir/usr/share/applications/$pkgbase-qt.desktop"
   rm -f "$pkgdir/usr/share/man/man1/$pkgbase"{-qt*,-run*}
   rm -rf "$pkgdir$site_packages/$pkgbase/"{iomediator,qtui}
-  rm -rf "$pkgdir$site_packages/"*.egg-info
+  rm -rf "$pkgdir$site_packages/$pkgbase-$pkgver.dist-info"
   rm -rf "$pkgdir/usr/share/icons"
 }
 
@@ -92,6 +92,6 @@ package_autokey-qt() {
   rm -f "$pkgdir/usr/share/applications/$pkgbase-gtk.desktop"
   rm -f "$pkgdir/usr/share/man/man1/$pkgbase"{-gtk*,-run*}
   rm -rf "$pkgdir$site_packages/$pkgbase/"{iomediator,gtkui}
-  rm -rf "$pkgdir$site_packages/"*.egg-info
+  rm -rf "$pkgdir$site_packages/$pkgbase-$pkgver.dist-info"
   rm -rf "$pkgdir/usr/share/icons"
 }
