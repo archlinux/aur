@@ -3,4 +3,4 @@ src
 *.deb
 *.zip
 *.pkg.tar.zst
-
+*.rpm

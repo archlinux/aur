@@ -1,18 +1,15 @@
 pkgbase = aliyunpan-liupan1890
 	pkgdesc = 阿里云盘小白羊版 阿里云盘PC版
-	pkgver = 2.11.29
+	pkgver = 2.12.14
 	pkgrel = 1
 	url = https://github.com/liupan1890/aliyunpan
-	arch = x86_64
+	arch = any
 	license = None
+	makedepends = rpmextract
 	depends = electron12
 	depends = aria2
 	optdepends = mpv: media preview support
-	source = https://d.store.deepinos.org.cn//store/network/liupan1890.github.aliyunpan/liupan1890.github.aliyunpan_2.11.29_all.deb
-	source = aliyunpan-liupan1890.svg
-	source = aliyunpan-liupan1890.desktop
-	sha256sums = 3a078faf72042b55779fb12fa825c218dc7b99459387923607885635df5e4349
-	sha256sums = d2601a3d659348395a853ff3659a664b464dd82a841c0ee51462d2446d054cf4
-	sha256sums = d66ea764845bf3f7619d447aef33c78b2b06470c855941f337d2b37e6de5a347
+	source = https://download.copr.fedorainfracloud.org/results/zhullyb/zhullyb/fedora-35-x86_64/04222746-aliyunpan-liupan1890-bin/aliyunpan-liupan1890-bin-2.12.14-1.x86_64.rpm
+	sha256sums = 6f046e3f4f3f116996b2cfb195234489c1b7fa9b137929818c34bb8193a85a5d
 
 pkgname = aliyunpan-liupan1890
