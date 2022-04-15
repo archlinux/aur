@@ -1,7 +1,7 @@
 pkgbase = libfyaml
 	pkgdesc = Fully feature complete YAML parser and emitter
 	pkgver = 0.7.12
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pantoniou.github.io/libfyaml
 	arch = x86_64
 	license = MIT

@@ -1,7 +1,7 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 pkgname=libfyaml
 pkgver=0.7.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Fully feature complete YAML parser and emitter'
 arch=('x86_64')
 url='https://pantoniou.github.io/libfyaml'
@@ -15,6 +15,12 @@ build() {
   ./bootstrap.sh
   ./configure --prefix=/usr
   make
+}
+
+
+check() {
+  cd "$srcdir"/libfyaml-${pkgver}
+  make check
 }
 
 
