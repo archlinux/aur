@@ -2,8 +2,8 @@
 # Contributor: Thomas Hipp <thomashipp at gmail dot com>
 
 pkgname=dqlite
-pkgver=1.9.1
-pkgrel=2
+pkgver=1.10.0
+pkgrel=1
 pkgdesc="Distributed SQLite"
 arch=('x86_64')
 url="https://github.com/CanonicalLtd/dqlite"
@@ -12,7 +12,7 @@ depends=('libuv' 'raft' 'sqlite')
 makedepends=('tcl' 'readline' 'zlib')
 options=(debug strip)
 source=("$pkgname-$pkgver.tar.gz::https://github.com/canonical/${pkgname}/archive/v${pkgver}.tar.gz")
-sha256sums=('fd3a50f2bc14c0a03163bbed3bc5ca6943df144c502de5b497d3b323c24a6489')
+sha256sums=('46f57036bd5ac4c67b76c07ef3ce58b674458eb1564131c80f11a2d5ec7db962')
 
 build() {
 	cd "$pkgname-$pkgver"
