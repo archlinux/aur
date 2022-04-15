@@ -1,13 +1,16 @@
 pkgbase = sysmontask
 	pkgdesc = System monitor with the compactness and usefulness of Windows Task Manager
 	pkgver = 1.x.x
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = https://github.com/KrispyCamel4u/SysMonTask
 	arch = any
 	license = BSD
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = gtk3
 	depends = libwnck3
 	depends = lshw
