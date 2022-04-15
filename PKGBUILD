@@ -21,19 +21,6 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-: '
-prepare() {
-	cd "$pkgname-$pkgver"
-	patch -p1 -i "$srcdir/$pkgname-$pkgver.patch"
-}
-
-build() {
-	cd "$pkgname-$pkgver"
-	./configure --prefix=/usr
-	make
-}
-'
-
 package() {
   install -Dm644 "$srcdir"/"$_pkgname"/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm755 "$srcdir"/"$_pkgname"/set-config.sh "$pkgdir/usr/bin/$_pkgname"
