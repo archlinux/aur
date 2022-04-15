@@ -1,12 +1,15 @@
 pkgbase = python-tesserocr
 	pkgdesc = A simple, Pillow-friendly, Python wrapper around tesseract-ocr API using Cython
 	pkgver = 2.5.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/sirfz/tesserocr
 	arch = x86_64
 	license = MIT
 	makedepends = cython
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	depends = leptonica
 	depends = tesseract
