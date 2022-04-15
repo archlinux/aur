@@ -26,17 +26,18 @@ source_aarch64=(
 md5sums_aarch64=(SKIP)
 
 package() {
-    case $CARCH in
-        x86_64 )
-            _output="$pkgname-$pkgver-x86_64-unknown-linux-gnu"
-            ;;
-        armv7 )
-            _output="$pkgname-$pkgver-armv7-unknown-linux-gnueabihf"
-            ;;
-        aarch64 )
-            _output="$pkgname-$pkgver-aarch64-unknown-linux-gnu"
-            ;;
-    esac
+    # case $CARCH in
+    #     x86_64 )
+    #         _output="$pkgname-$pkgver-x86_64-unknown-linux-gnu"
+    #         ;;
+    #     armv7 )
+    #         _output="$pkgname-$pkgver-armv7-unknown-linux-gnueabihf"
+    #         ;;
+    #     aarch64 )
+    #         _output="$pkgname-$pkgver-aarch64-unknown-linux-gnu"
+    #         ;;
+    # esac
 
-	install -Dm755 "${srcdir}/${_output}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	# install -Dm755 "${srcdir}/${_output}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+	install -Dm755 "${srcdir}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
