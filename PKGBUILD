@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=getextensions-git
 pkgver=1.0.r4.g01fe032
-pkgrel=1
+pkgrel=2
 pkgdesc="Python GTK app to install extensions from extensions.gnome.org"
 arch=('any')
 url="https://github.com/ekistece/GetExtensions"
 license=('none')
 depends=('python-gobject' 'python-lxml' 'python-requests')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/ekistece/GetExtensions.git"
@@ -23,12 +23,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm755 "$srcdir/${pkgname%-git}.sh" "$pkgdir/usr/bin/${pkgname%-git}"
 }

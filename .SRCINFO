@@ -1,12 +1,15 @@
 pkgbase = getextensions-git
 	pkgdesc = Python GTK app to install extensions from extensions.gnome.org
 	pkgver = 1.0.r4.g01fe032
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ekistece/GetExtensions
 	arch = any
 	license = none
 	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-gobject
 	depends = python-lxml
 	depends = python-requests
