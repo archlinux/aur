@@ -1,11 +1,12 @@
 pkgbase = python-pybcj
 	pkgdesc = BCJ(Branch-Call-Jump) filter for python
 	pkgver = 0.5.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/miurahr/pybcj
 	arch = x86_64
 	license = LGPL
-	checkdepends = python-tests
+	checkdepends = python-pytest
+	checkdepends = python-hypothesis
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-setuptools-scm
