@@ -1,6 +1,6 @@
 pkgbase = python-cupy
 	pkgdesc = NumPy-like API accelerated with CUDA
-	pkgver = 10.1.0
+	pkgver = 10.3.1
 	pkgrel = 1
 	url = https://cupy.dev
 	arch = x86_64
@@ -14,11 +14,11 @@ pkgbase = python-cupy
 	depends = python-numpy
 	depends = python-fastrlock
 	optdepends = libcutensor
-	source = https://github.com/cupy/cupy/archive/v10.1.0.tar.gz
+	source = https://github.com/cupy/cupy/archive/v10.3.1.tar.gz
 	source = https://github.com/NVIDIA/cub/archive/1.8.0.tar.gz
-	source = https://github.com/NVIDIA/jitify/archive/60e9e7231fe7529ecfc76fa97b9c02b3033f4157.zip
-	md5sums = 6a50894f5943669efdda3cab6340ad78
+	source = https://github.com/NVIDIA/jitify/archive/4a37de0be4639f222c6565ebd0654cb922b5180e.zip
+	md5sums = 0cbbd8ac262068f766980970bd5879ad
 	md5sums = 9203ea2499b56782601fddf8a12e9b08
-	md5sums = 73cf45dcb46f20e27d16b23243fe9efe
+	md5sums = b4e0a3cee0cae738f505a12f2b7df8d3
 
 pkgname = python-cupy

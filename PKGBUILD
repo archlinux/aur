@@ -1,9 +1,9 @@
 # Maintainer: Leo Mao <leomaoyw at gmail dot com>
 pkgname=python-cupy
 _pkgname=cupy
-pkgver=10.1.0
+pkgver=10.3.1
 _cubver=1.8.0
-_jitify_commit=60e9e7231fe7529ecfc76fa97b9c02b3033f4157
+_jitify_commit=4a37de0be4639f222c6565ebd0654cb922b5180e
 pkgrel=1
 pkgdesc="NumPy-like API accelerated with CUDA"
 _github="cupy/cupy"
@@ -16,9 +16,9 @@ optdepends=('libcutensor')
 source=("https://github.com/cupy/cupy/archive/v$pkgver.tar.gz"
         "https://github.com/NVIDIA/cub/archive/$_cubver.tar.gz"
         "https://github.com/NVIDIA/jitify/archive/$_jitify_commit.zip")
-md5sums=('6a50894f5943669efdda3cab6340ad78'
+md5sums=('0cbbd8ac262068f766980970bd5879ad'
          '9203ea2499b56782601fddf8a12e9b08'
-         '73cf45dcb46f20e27d16b23243fe9efe')
+         'b4e0a3cee0cae738f505a12f2b7df8d3')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
