@@ -2,7 +2,7 @@
 
 _pkgname=samloader
 pkgname=${_pkgname}-git
-pkgver=r33.15f0887
+pkgver=r39.576bd29
 pkgrel=1
 pkgdesc="Download firmware for Samsung devices"
 arch=('any')
@@ -12,7 +12,7 @@ conflicts=('samloader')
 depends=(
 	'python'
 	'python-setuptools'
-	'python-clint'
+	'python-tqdm'
 	'python-pycryptodomex'
 	'python-pip'
 	)
