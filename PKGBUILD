@@ -5,7 +5,7 @@
 pkgname=os-prober-btrfs
 _pkgname=os-prober
 pkgver=1.79
-pkgrel=4
+pkgrel=5
 pkgdesc="Utility to detect other OSes on a set of drives (with additional patches to detect btrfs systems and other systems)"
 url="http://joey.kitenet.net/code/os-prober/"
 arch=('x86_64')
@@ -44,8 +44,8 @@ md5sums=('08d3bfff00f1f7c068ce509656728eba'
          'ed3242f992b525a4af0a9df9af51e334'
          'ec05aaa35c83ab669291e8895c252cc8'
          '20dc42ef9b69f79b920380cd95191ed3'
-         'e1d73db25562d357b7371a936843488b'
-         '344d6a6a08c3adae84ea2c8ad84712da')
+         '11022b82f0640b62549f8f0ebdd73b9b'
+         'a5cb186a987900d07f41eaa732407fbe')
 sha256sums=('abe6317d078c4e51e322e62036b6df4a698bfe80c5be110a08894841179810ee'
             '9a6c22c91ea5955d665bc20d85d899f6721875a6216862d59a1b7f3f4241fd02'
             '092b0caef6fff45560531c0735e9449cb05a677e2296d72b5a0b4fb568fa4476'
@@ -60,8 +60,8 @@ sha256sums=('abe6317d078c4e51e322e62036b6df4a698bfe80c5be110a08894841179810ee'
             'a9331117892dd9876b346d941969f70da96d54ce122d7a5ff40d9efe36aded42'
             '02741e0edbc46327501be5d74977ff2bffa5ddaffe6a55a689e38ce4b8372444'
             '87bbb0f69ebb47f5136291d6851967fba791db4f27d8883b35fc5be1653ff7a6'
-            'cae7e02a2d21fe176525fe8270cd01f4ae4395d5178b45d7e681bb611a33ea05'
-            '44b5a25152ebad786d8d7225fae207294e5d6c12eaf8273e8d2d244f28c471da')
+            'e9c734b0631c735f77b48ec57e765744971fce3f7f03eac204a78f21b79287cf'
+            '7092754efb20ec9b748b1c678bcf50b6d4f55ac0d8f01520f319a5d337136a79')
 
 prepare() {
   cd ${_pkgname}
@@ -91,7 +91,12 @@ build() {
 }
 
 package() {
-  cd ${_pkgname}
+  cd "${srcdir}"
+
+  install -Dm644 grub-initrd-generation-fix.hook $pkgdir/usr/share/libalpm/hooks/grub-initrd-generation-fix.hook
+  install -Dm755 grub-initrd-generation-fix $pkgdir/usr/share/libalpm/scripts/grub-initrd-generation-fix
+
+  cd "${_pkgname}"
 
   install -Dm 755 os-prober linux-boot-prober -t "${pkgdir}/usr/bin"
   install -Dm 755 newns -t "${pkgdir}/usr/lib/os-prober"
@@ -105,10 +110,4 @@ package() {
 
   install -Dm 755 os-probes/mounted/powerpc/20macosx "${pkgdir}"/usr/lib/os-probes/mounted/20macosx
   install -dm 755 "${pkgdir}"/var/lib/os-prober
-
-  install -d $pkgdir/usr/share/libalpm/hooks
-  install -Dm644 grub-initrd-generation-fix.hook $pkgdir/usr/share/libalpm/hooks/grub-initrd-generation-fix.hook
-
-  install -d $pkgdir/usr/share/libalpm/scripts
-  install -Dm755 grub-initrd-generation-fix $pkgdir/usr/share/libalpm/scripts/grub-initrd-generation-fix
 }
