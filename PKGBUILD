@@ -2,11 +2,12 @@
 
 pkgname=('psiphon-console-client' 'psiphon-server')
 pkgbase=psiphon-tunnel-core
-pkgver=2.0.20
+pkgver=2.0.22
 pkgrel=1
 pkgdesc="Psiphon Internet censorship circumvention system."
 arch=('i686' 'x86_64')
-url="https://github.com/Psiphon-Labs/psiphon-tunnel-core"
+_gomod="github.com/Psiphon-Labs/psiphon-tunnel-core"
+url="https://$_gomod"
 license=('GPL')
 makedepends=('go')
 source=("$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
@@ -26,18 +27,17 @@ build() {
 		"$@"
 	}
 
-	mkdir -p go/
-	mkdir -p go/src/github.com/Psiphon-Labs/
-	ln -srf "$srcdir/$pkgbase-$pkgver/" go/src/github.com/Psiphon-Labs/psiphon-tunnel-core
+	mkdir -vp "$srcdir/go/src/$(dirname "$_gomod")"
+	ln -srvf "$srcdir/$pkgbase-$pkgver/" "$srcdir/go/src/$_gomod"
 
 	export GOPATH="$srcdir/go/"
 
 	echorun go build \
 		-o bin/psiphon-console-client \
-		github.com/Psiphon-Labs/psiphon-tunnel-core/ConsoleClient
+		"$_gomod/ConsoleClient"
 	echorun go build \
 		-o bin/psiphon-server \
-		github.com/Psiphon-Labs/psiphon-tunnel-core/Server
+		"$_gomod/Server"
 }
 
 package_psiphon-console-client() {
@@ -100,4 +100,4 @@ package_psiphon-server() {
 }
 
 # sums
-sha256sums=('fb19a312566647ba10cc075e6d04c616202c52d8922d19b43f83f3447bca7506')
+sha256sums=('6ae987536d2dd3715238e6376505d73ba45a3811d85280acd03065a6d9324be0')
