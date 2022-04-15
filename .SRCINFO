@@ -6,6 +6,7 @@ pkgbase = tcc-ziyao
 	arch = x86_64
 	license = LGPL
 	depends = glibc
+	provides = tcc
 	conflicts = tcc
 	source = tcc-ziyao-0.9.27+e86aae4f::git+https://repo.or.cz/tinycc.git#commit=e86aae4f6dbdc44994d582758f496c7493cbc183
 	source = empty_archive.patch

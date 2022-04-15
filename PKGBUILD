@@ -8,6 +8,7 @@ arch=('x86_64')
 url="https://bellard.org/tcc/"
 license=('LGPL')
 depends=('glibc')
+provides=("tcc")
 conflicts=("tcc")
 
 _url="https://repo.or.cz/tinycc.git"
