@@ -9,22 +9,23 @@
 
 pkgbase=tensorrt
 pkgname=('tensorrt' 'python-tensorrt' 'tensorrt-doc')
-pkgver=8.2.3.0
-_tensorrt_tag=22.02
+pkgver=8.2.4.2
+_ossver=22.04
 _cudaver=11.4
 _cudnnver=8.2
 _protobuf_ver=3.17.3
-_graphsurgeonver=0.4.5
+_pybind11_ver=2.9.2
+_graphsurgeon_ver=0.4.5
 _uffver=0.6.9
 pkgrel=1
 pkgdesc='A platform for high-performance deep learning inference on NVIDIA hardware'
 arch=('x86_64')
 url='https://developer.nvidia.com/tensorrt/'
 license=('custom:NVIDIA-SLA' 'Apache')
-makedepends=('git' 'cmake' 'poppler' 'cuda' 'cudnn' 'pybind11' 'python' 'python-onnx'
-             'python-pip' 'python-wheel')
+makedepends=('git' 'cmake' 'poppler' 'cuda' 'cudnn' 'python' 'python-build'
+             'python-installer' 'python-onnx' 'python-setuptools' 'python-wheel')
 source=("local://TensorRT-${pkgver}.Linux.${CARCH}-gnu.cuda-${_cudaver}.cudnn${_cudnnver}.tar.gz"
-        "git+https://github.com/NVIDIA/TensorRT.git#tag=${_tensorrt_tag}"
+        "git+https://github.com/NVIDIA/TensorRT.git#tag=${_ossver}"
         'protobuf-protocolbuffers'::'git+https://github.com/protocolbuffers/protobuf.git'
         'cub-nvlabs'::'git+https://github.com/NVlabs/cub.git'
         'git+https://github.com/onnx/onnx-tensorrt.git'
@@ -35,7 +36,7 @@ source=("local://TensorRT-${pkgver}.Linux.${CARCH}-gnu.cuda-${_cudaver}.cudnn${_
         '010-tensorrt-use-local-protobuf-sources.patch'
         '020-tensorrt-fix-python.patch')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('207c0c4820e5acf471925b7da4c59d48c58c265a27d88287c4263038c389e106'
+sha256sums=('826180eaaecdf9a7e76116855b9f1f3400ea9b06e66b06a3f6a0747ba6f863ad'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -45,7 +46,7 @@ sha256sums=('207c0c4820e5acf471925b7da4c59d48c58c265a27d88287c4263038c389e106'
             'SKIP'
             '51cec99f108b83422b7af1170afd7aeb2dd77d2bcbb7b6bad1f92509e9ccf8cb'
             'ea25bb1b188d53cbfbec35d242ab2a2fa8d6009c547c9f5f67bc2f1ad127ceac'
-            '10a94e8117e2c0b43de7fdf6f5c1a7fbdd954f8603fe054edd88689d3714e1c2')
+            'c9b83508768836158abf5990419951e4a9389a221fcb7d1f1c3425fdfbacc6e1')
 
 prepare() {
     # tensorrt git submodules
@@ -65,6 +66,8 @@ prepare() {
     git -C TensorRT/parsers/onnx/third_party/onnx config --local submodule.third_party/pybind11.url  "${srcdir}/pybind11"
     git -C TensorRT/parsers/onnx/third_party/onnx config --local submodule.third_party/benchmark.url "${srcdir}/benchmark"
     git -C TensorRT/parsers/onnx/third_party/onnx submodule update
+    
+    git -C pybind11 config --local advice.detachedHead false
     
     # protobuf
     mkdir -p build/third_party.protobuf/src
@@ -101,6 +104,7 @@ build() {
     export ROOT_PATH="${srcdir}/TensorRT"
     export EXT_PATH="$srcdir"
     export TRT_NONOSS_ROOT="${srcdir}/TensorRT-${pkgver}"
+    git -C pybind11 checkout v${_pybind11_ver}
     cd TensorRT/python
     ./build.sh
     
@@ -109,7 +113,7 @@ build() {
     for _dir in onnx-graphsurgeon Polygraphy #pytorch-quantization
     do
         cd "${srcdir}/TensorRT/tools/${_dir}"
-        python setup.py build
+        python -m build --wheel --no-isolation
     done
     
     # license
@@ -133,42 +137,34 @@ package_tensorrt() {
 
 package_python-tensorrt() {
     pkgdesc+=' (python bindings and tools)'
+    license=('custom' 'Apache')
     depends=('python' 'python-numpy' 'python-pycuda' 'tensorrt')
     optdepends=('python-onnx: for onnx_graphsurgeon python module'
                 'python-onnxruntime: for onnx_graphsurgeon and polygraphy python modules'
                 'python-protobuf: for polygraphy and uff python modules'
                 'python-tensorflow-cuda: for graphsurgeon, polygraphy and uff python modules and convert-to-uff tool')
     
-    local _pyver
-    _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
-    
-    local _trt_major
-    local _trt_minor
-    local _trt_patch
-    local _trt_build
-    _trt_major="$(awk '/^#define NV_TENSORRT_MAJOR/ { print $3 }' TensorRT/include/NvInferVersion.h)"
-    _trt_minor="$(awk '/^#define NV_TENSORRT_MINOR/ { print $3 }' TensorRT/include/NvInferVersion.h)"
-    _trt_patch="$(awk '/^#define NV_TENSORRT_PATCH/ { print $3 }' TensorRT/include/NvInferVersion.h)"
-    _trt_build="$(awk '/^#define NV_TENSORRT_BUILD/ { print $3 }' TensorRT/include/NvInferVersion.h)"
-    local _trtver="${_trt_major}.${_trt_minor}.${_trt_patch}.${_trt_build}"
-    
-    PIP_CONFIG_FILE='/dev/null' pip install --isolated --root="$pkgdir" --ignore-installed --no-deps --no-warn-script-location \
-        "TensorRT-${pkgver}/graphsurgeon/graphsurgeon-${_graphsurgeonver}-py2.py3-none-any.whl" \
-        "TensorRT-${pkgver}/uff/uff-${_uffver}-py2.py3-none-any.whl" \
-        "TensorRT/python/build/dist/tensorrt-${_trtver}-cp${_pyver%%.*}${_pyver#*.}-none-linux_${CARCH}.whl"
-    python -O -m compileall "${pkgdir}/usr/lib/python${_pyver}/site-packages"/{graphsurgeon,uff,tensorrt}
-    
     local _dir
-    for _dir in onnx-graphsurgeon Polygraphy #pytorch-quantization
+    for _dir in "TensorRT-${pkgver}"/{graphsurgeon,uff} \
+                 TensorRT/{python/build/dist,tools/{onnx-graphsurgeon,Polygraphy}/dist}
     do
-        cd "${srcdir}/TensorRT/tools/${_dir}"
-        python setup.py install --root="$pkgdir" --skip-build --optimize='1'
+        cd "${srcdir}/${_dir}"
+        python -m installer --destdir="$pkgdir" *.whl
     done
     
+    local _pyver
+    _pyver="$(python -c 'import sys; print("%s.%s" %sys.version_info[0:2])')"
     install -d -m755 "${pkgdir}/usr/share/licenses/${pkgname}"
     ln -s "../../../lib/python${_pyver}/site-packages/tensorrt-${pkgver}.dist-info/LICENSE.txt" \
-        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -D -m644 "${srcdir}/TensorRT-${pkgver}/doc/Acknowledgements.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ACKNOWLEDGEMENTS"
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-tensorrt"
+    ln -s "../../../lib/python${_pyver}/site-packages/graphsurgeon-${_graphsurgeon_ver}.dist-info/LICENSE.txt" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-graphsurgeon"
+    ln -s "../../../lib/python${_pyver}/site-packages/uff-${_uffver}.dist-info/LICENSE.txt" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-uff"
+    install -D -m644 "${srcdir}/TensorRT-${pkgver}/doc/pdf/TensorRT-SLA.txt" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-NVIDIA-SLA"
+    install -D -m644 "${srcdir}/TensorRT-${pkgver}/doc/Acknowledgements.txt" \
+        "${pkgdir}/usr/share/licenses/${pkgname}/ACKNOWLEDGEMENTS"
     install -D -m644 "${srcdir}/TensorRT/NOTICE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 

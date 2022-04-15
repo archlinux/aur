@@ -1,6 +1,6 @@
 pkgbase = tensorrt
 	pkgdesc = A platform for high-performance deep learning inference on NVIDIA hardware
-	pkgver = 8.2.3.0
+	pkgver = 8.2.4.2
 	pkgrel = 1
 	url = https://developer.nvidia.com/tensorrt/
 	arch = x86_64
@@ -11,14 +11,15 @@ pkgbase = tensorrt
 	makedepends = poppler
 	makedepends = cuda
 	makedepends = cudnn
-	makedepends = pybind11
 	makedepends = python
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-onnx
-	makedepends = python-pip
+	makedepends = python-setuptools
 	makedepends = python-wheel
 	noextract = protobuf-cpp-3.17.3.tar.gz
-	source = local://TensorRT-8.2.3.0.Linux.x86_64-gnu.cuda-11.4.cudnn8.2.tar.gz
-	source = git+https://github.com/NVIDIA/TensorRT.git#tag=22.02
+	source = local://TensorRT-8.2.4.2.Linux.x86_64-gnu.cuda-11.4.cudnn8.2.tar.gz
+	source = git+https://github.com/NVIDIA/TensorRT.git#tag=22.04
 	source = protobuf-protocolbuffers::git+https://github.com/protocolbuffers/protobuf.git
 	source = cub-nvlabs::git+https://github.com/NVlabs/cub.git
 	source = git+https://github.com/onnx/onnx-tensorrt.git
@@ -28,7 +29,7 @@ pkgbase = tensorrt
 	source = https://github.com/google/protobuf/releases/download/v3.17.3/protobuf-cpp-3.17.3.tar.gz
 	source = 010-tensorrt-use-local-protobuf-sources.patch
 	source = 020-tensorrt-fix-python.patch
-	sha256sums = 207c0c4820e5acf471925b7da4c59d48c58c265a27d88287c4263038c389e106
+	sha256sums = 826180eaaecdf9a7e76116855b9f1f3400ea9b06e66b06a3f6a0747ba6f863ad
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -38,7 +39,7 @@ pkgbase = tensorrt
 	sha256sums = SKIP
 	sha256sums = 51cec99f108b83422b7af1170afd7aeb2dd77d2bcbb7b6bad1f92509e9ccf8cb
 	sha256sums = ea25bb1b188d53cbfbec35d242ab2a2fa8d6009c547c9f5f67bc2f1ad127ceac
-	sha256sums = 10a94e8117e2c0b43de7fdf6f5c1a7fbdd954f8603fe054edd88689d3714e1c2
+	sha256sums = c9b83508768836158abf5990419951e4a9389a221fcb7d1f1c3425fdfbacc6e1
 
 pkgname = tensorrt
 	depends = cuda
@@ -46,6 +47,8 @@ pkgname = tensorrt
 
 pkgname = python-tensorrt
 	pkgdesc = A platform for high-performance deep learning inference on NVIDIA hardware (python bindings and tools)
+	license = custom
+	license = Apache
 	depends = python
 	depends = python-numpy
 	depends = python-pycuda
