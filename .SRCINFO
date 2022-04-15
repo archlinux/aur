@@ -1,6 +1,6 @@
 pkgbase = secrets
 	pkgdesc = Manage your passwords
-	pkgver = 6.3
+	pkgver = 6.4
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/secrets
 	arch = any
@@ -8,9 +8,8 @@ pkgbase = secrets
 	checkdepends = appstream-glib
 	makedepends = gobject-introspection
 	makedepends = meson
-	depends = gtk4>=4.5.0
 	depends = glib2
-	depends = libadwaita>=1.0.0
+	depends = libadwaita
 	depends = libpwquality>=1.4.0
 	depends = python-gobject
 	depends = python-pykeepass>=4.0.1
@@ -18,7 +17,7 @@ pkgbase = secrets
 	depends = python-cairo
 	conflicts = gnome-passwordsafe
 	replaces = gnome-passwordsafe
-	source = https://gitlab.gnome.org/World/secrets/-/archive/6.3/secrets-6.3.tar.gz
-	b2sums = efcd75d4382338627dd248d37953acaf8bb2d534567283212ce962e239827529918f667884c169a798fe7f8f3290fe4f976e33d2a08aa2b8b4d274e4c9598ead
+	source = https://gitlab.gnome.org/World/secrets/-/archive/6.4/secrets-6.4.tar.gz
+	b2sums = 9c974cb5930afb741644bc2a698f4a570534be3537607dc69c80b44cd646de5345ca97e9674679e177ec031a8bdb4c18283badf0716f749fec3f75b46ae63d1b
 
 pkgname = secrets
