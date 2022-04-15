@@ -1,19 +1,17 @@
 pkgbase = davs2
 	pkgdesc = Open-Source decoder of AVS2-P2/IEEE1857.4 video coding standard
-	pkgver = 1.6
-	pkgrel = 7
+	pkgver = 1.7
+	pkgrel = 1
 	url = https://github.com/pkuvcl/davs2/
 	arch = x86_64
 	license = GPL
-	makedepends = yasm
+	makedepends = nasm
 	depends = glibc
 	provides = libdavs2
 	conflicts = libdavs2
 	replaces = libdavs2
-	source = davs2-1.6.tar.gz::https://github.com/pkuvcl/davs2/archive/1.6.tar.gz
-	source = davs2-1.6-gcc8-fix.patch
-	sha256sums = de93800f016cbaf08cb40184a8069050dc625da5240a528155137052d1cf81c8
-	sha256sums = 4bea78a55bf6a34591ae016cee800aa75c3c5b1706724534095cf2a0e9fc6e71
+	options = !lto
+	source = https://github.com/pkuvcl/davs2/archive/1.7/davs2-1.7.tar.gz
+	sha256sums = b697d0b376a1c7f7eda3a4cc6d29707c8154c4774358303653f0a9727f923cc8
 
 pkgname = davs2
-
