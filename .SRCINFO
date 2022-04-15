@@ -1,0 +1,13 @@
+pkgbase = gnome-shell-extension-wireguard-indicator
+	pkgdesc = Manage WireGuard VPN from Desktop
+	pkgver = 8
+	pkgrel = 1
+	url = https://github.com/atareao/wireguard-indicator
+	arch = any
+	license = MIT
+	makedepends = jq
+	depends = gnome-shell>=40.0
+	source = gnome-shell-extension-wireguard-indicator-8.zip::https://extensions.gnome.org/extension-data/wireguard-indicatoratareao.es.v8.shell-extension.zip
+	sha256sums = c5b768d81bdecc7581b85bb4b16e97e9b809790f07527c0bbeb3a0b04ff30545
+
+pkgname = gnome-shell-extension-wireguard-indicator
