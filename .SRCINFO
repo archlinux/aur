@@ -17,6 +17,8 @@ pkgbase = camotics-git
 	provides = camotics
 	conflicts = camotics
 	source = camotics::git+https://github.com/CauldronDevelopmentLLC/CAMotics.git#commit=master
+	source = 0001_mime.patch
 	sha256sums = SKIP
+	sha256sums = 162df92ac2523d561cdd82c87360b17ee2d715cfd567bcb8d00ae528994151e9
 
 pkgname = camotics-git
