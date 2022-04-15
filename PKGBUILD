@@ -9,7 +9,7 @@ pkgdesc="Display weather information for any location on Earth in the GNOME Pane
 arch=(any)
 url="https://gitlab.com/skrewball/openweather"
 license=(GPL3)
-depends=('dconf' 'gnome-shell-extensions')
+depends=('dconf' 'gnome-shell')
 makedepends=('gnome-common')
 conflicts=('gnome-shell-extension-openweather-git'
            'gnome-shell-extension-weather-git')
