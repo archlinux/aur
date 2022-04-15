@@ -1,8 +1,10 @@
-# Maintainer: Butui Hu <hot123tea123@gmail.com>
+#Maintainer: Franck Lominé <flomine@insa-rennes.fr>
+#Previous maintainer: Butui Hu <hot123tea123@gmail.com>
+#Previous maintainer: lilac <lilac@build.archlinuxcn.org>
 
 _pkgname=fiji
 pkgname=fiji-bin
-pkgver=20201104.1356
+pkgver=20220414.1745
 pkgrel=1
 epoch=2
 pkgdesc="ImageJ distribution with a lot of plugins for scientific (especially biology related) image processing."
@@ -16,7 +18,7 @@ depends=(
 makedepends=('gendesk')
 
 source=("${pkgname}-${pkgver}.zip::https://downloads.imagej.net/fiji/archive/${pkgver/./-}/fiji-linux64.zip")
-sha256sums=('1343bd5a8472541f9e5a67a9fb86e82671c70c48f8c356ed96b2cca96281e46c')
+sha256sums=('c678ce27b642ec1a499ffc68db20a9e8798e449cf26559477e00a36a9c9a012c')
 
 
 prepare() {
