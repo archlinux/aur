@@ -1,12 +1,15 @@
 pkgbase = oryx-kb-leds
 	pkgdesc = Control your Oryx Pro's Keyboard LEDs
 	pkgver = 1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/davemcphee/oryx-kb-leds
 	install = oryx-kb-leds.install
 	arch = x86_64
 	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-colour
 	depends = python-psutil
 	depends = python-pyaml
