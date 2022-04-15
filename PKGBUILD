@@ -17,7 +17,7 @@ _protobuf_ver=3.17.3
 _pybind11_ver=2.9.2
 _graphsurgeon_ver=0.4.5
 _uffver=0.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A platform for high-performance deep learning inference on NVIDIA hardware'
 arch=('x86_64')
 url='https://developer.nvidia.com/tensorrt/'
@@ -125,10 +125,12 @@ package_tensorrt() {
     
     make -C build DESTDIR="$pkgdir" install
     install -D -m755 "TensorRT-${pkgver}/bin"/* -t "${pkgdir}/usr/bin"
+    install -D -m644 "TensorRT-${pkgver}/lib/libnvinfer_builder_resource.so.${pkgver%.*}" -t "${pkgdir}/usr/lib"
     install -D -m644 build/libnv{caffeparser,infer_plugin}_static.a -t "${pkgdir}/usr/lib"
     cp -dr --no-preserve='ownership' "TensorRT-${pkgver}/include" "${pkgdir}/usr"
-    cp -dr --no-preserve='ownership' "TensorRT-${pkgver}/lib"/libnvinfer_builder_resource.so* "${pkgdir}/usr/lib"
     cp -dr --no-preserve='ownership' "TensorRT-${pkgver}/lib"/libnv{infer,parsers}{.so*,_static.a} "${pkgdir}/usr/lib"
+    ln -s "libnvinfer_builder_resource.so.${pkgver%.*}" "${pkgdir}/usr/lib/libnvinfer_builder_resource.so.${pkgver%%.*}"
+    ln -s "libnvinfer_builder_resource.so.${pkgver%%.*}" "${pkgdir}/usr/lib/libnvinfer_builder_resource.so"
     
     install -D -m644 "TensorRT-${pkgver}/doc/pdf/TensorRT-SLA.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -D -m644 "TensorRT-${pkgver}/doc/Acknowledgements.txt" "${pkgdir}/usr/share/licenses/${pkgname}/ACKNOWLEDGEMENTS"
