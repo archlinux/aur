@@ -1,16 +1,15 @@
 pkgbase = gauche-json-c
 	pkgdesc = Fast parse-json via json-c in gauche.
-	pkgver = 1.0
+	pkgver = 0.1
 	pkgrel = 1
 	url = https://github.com/fbrosda/gauche-json-c
 	arch = i686
 	arch = x86_64
 	license = BSD
 	makedepends = make
-	makedepends = git
 	depends = gauche
 	depends = json-c
-	source = git+https://github.com/fbrosda/gauche-json-c#commit=2a9507dd22ada5e8e41318cdfc227a9064581023
-	sha256sums = SKIP
+	source = https://github.com/fbrosda/gauche-json-c/releases/download/v0.1/gauche-json-c-0.1.tgz
+	sha256sums = 5cb65b5e11dd17aacbb15930cb5d3e68175eb35cd9dfc396ef6fcbb0b7fae530
 
 pkgname = gauche-json-c
