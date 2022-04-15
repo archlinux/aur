@@ -1,7 +1,7 @@
 pkgbase = surfshark-wireguard-git
 	pkgdesc = Sets-up a vpn interface using wg-quick
 	pkgver = 0.3.1.beta.r1.g92ffcd0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/kyndair/linux-surfshark-wireguard
 	install = surfshark-wireguard-git.install
 	arch = any
