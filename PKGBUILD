@@ -2,7 +2,7 @@
 
 pkgname=ttf-roboto-serif
 pkgver=1.007
-pkgrel=1
+pkgrel=2
 pkgdesc="A variable typeface family designed to create a comfortable and frictionless reading experience"
 arch=('any')
 url="https://fonts.google.com/specimen/Roboto+Serif"
@@ -15,7 +15,8 @@ sha256sums=('035e06ced913bda2c1bdc9b58b7034562f6f6b3efb9c5618a1236082a6df7c5a'
             '70da8db8df17d248a08b2b909396e2ce944f0841548ff2a897e564cafe34a1c6')
 
 package() {
-  install -Dt "$pkgdir"/usr/share/fonts/TTF -m644 variable/*.ttf
+  install -Dm644 variable/RobotoSerif[GRAD,opsz,wdth,wght].ttf "$pkgdir"/usr/share/fonts/TTF/RobotoSerif-VF.ttf
+  install -Dm644 variable/RobotoSerif-Italic[GRAD,opsz,wdth,wght].ttf "$pkgdir"/usr/share/fonts/TTF/RobotoSerif-Italic-VF.ttf
   install -Dt "$pkgdir"/usr/share/licenses/$pkgname -m644 OFL.txt
 
   # Install fontconfig files

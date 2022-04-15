@@ -1,7 +1,7 @@
 pkgbase = ttf-roboto-serif
 	pkgdesc = A variable typeface family designed to create a comfortable and frictionless reading experience
 	pkgver = 1.007
-	pkgrel = 1
+	pkgrel = 2
 	url = https://fonts.google.com/specimen/Roboto+Serif
 	arch = any
 	license = custom:OFL
