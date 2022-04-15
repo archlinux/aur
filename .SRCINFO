@@ -1,16 +1,18 @@
 pkgbase = lief
 	pkgdesc = Library to instrument executable formats
-	pkgver = 0.11.4
+	pkgver = 0.12.1
 	pkgrel = 1
-	url = https://lief.quarkslab.com/
+	url = https://github.com/lief-project/lief
 	arch = x86_64
-	license = APACHE
-	makedepends = git
+	license = Apache
+	makedepends = boost
 	makedepends = cmake
-	makedepends = python-setuptools
-	depends = python
-	source = git+https://github.com/lief-project/LIEF#tag=0.11.4
-	sha256sums = SKIP
+	makedepends = nlohmann-json
+	makedepends = utf8cpp
+	depends = boost-libs
+	depends = spdlog
+	provides = libLIEF.so
+	source = lief-0.12.1.tar.gz::https://github.com/lief-project/lief/archive/0.12.1.tar.gz
+	sha256sums = 745710ad2b74a70ee8b37c529063da4769a9ed5091df4627dd8216deac86d27c
 
 pkgname = lief
-

@@ -1,29 +1,35 @@
-# Maintainer: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
 
 pkgname=lief
-pkgver=0.11.4
+pkgver=0.12.1
 pkgrel=1
 pkgdesc='Library to instrument executable formats'
-arch=(x86_64)
-url='https://lief.quarkslab.com/'
-license=(APACHE)
-depends=(python)
-makedepends=(git cmake python-setuptools)
-source=("git+https://github.com/lief-project/LIEF#tag=${pkgver}")
-sha256sums=(SKIP)
+arch=('x86_64')
+url='https://github.com/lief-project/lief'
+license=('Apache')
+depends=('boost-libs' 'spdlog')
+makedepends=('boost' 'cmake' 'nlohmann-json' 'utf8cpp')
+provides=('libLIEF.so')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('745710ad2b74a70ee8b37c529063da4769a9ed5091df4627dd8216deac86d27c')
 
 build() {
-  cd "${srcdir}/LIEF"
-  mkdir build
-
-  cmake . -B build -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=1
+	cmake \
+		-B build \
+		-S "LIEF-$pkgver" \
+		-DCMAKE_BUILD_TYPE=Release \
+		-DBUILD_SHARED_LIBS=ON \
+		-DLIEF_EXAMPLES=OFF \
+		-DLIEF_PYTHON_API=OFF \
+		-DLIEF_OPT_EXTERNAL_LEAF=ON \
+		-DLIEF_OPT_NLOHMANN_JSON_EXTERNAL=ON \
+		-DLIEF_EXTERNAL_SPDLOG=ON \
+		-DLIEF_OPT_UTFCPP_EXTERNAL=ON \
+		-Wno-dev
   make -C build
-  python setup.py build --build-temp=build
 }
 
 package() {
-  cd "${srcdir}/LIEF"
-
   make -C build DESTDIR="${pkgdir}" install
-  python setup.py install --optimize=1 --root="${pkgdir}" --skip-build
 }
