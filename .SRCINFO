@@ -1,7 +1,7 @@
 pkgbase = zenv
 	pkgdesc = Dotenv (.env) loader written in rust
 	pkgver = 0.8.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/numToStr/zenv
 	arch = x86_64
 	arch = aarch64
