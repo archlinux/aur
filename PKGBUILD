@@ -3,10 +3,10 @@
 _base=pyamg
 pkgname=python-${_base}
 pkgdesc="Algebraic Multigrid Solvers in Python"
-_gitcommit=e9f22184813dbc39ae51bba95b4b8aaa0b805818
-pkgver=4.2.2
+_gitcommit=1fd1ef6915969ebd24cf16cf6b9532644e0e0e23
+pkgver=4.2.3
 pkgrel=1
-arch=('x86_64')
+arch=(x86_64)
 url="https://github.com/${_base}/${_base}"
 license=(MIT)
 depends=(python-scipy python-pytest)
