@@ -4,11 +4,11 @@
 
 pkgname=alda-git
 pkgver=2.2.1.r0.g798e6df
-pkgrel=2
+pkgrel=3
 pkgdesc='A music programming language for musicians'
 arch=('x86_64')
 url='https://github.com/alda-lang/alda'
-license=('EPL')
+license=('custom:EPL2')
 depends=('bash' 'java-runtime>=8')
 makedepends=('git' 'go' 'gradle')
 provides=('alda')
