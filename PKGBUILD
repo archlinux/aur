@@ -9,7 +9,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium
-pkgver=100.0.4896.88
+pkgver=100.0.4896.127
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=4
@@ -35,7 +35,7 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         enable-GlobalMediaControlsCastStartStop.patch
         sql-make-VirtualCursor-standard-layout-type.patch
         use-oauth2-client-switches-as-default.patch)
-sha256sums=('c5a5708678f30679a1181f89401c966cb335799926a5e4dc7f52e7194847c250'
+sha256sums=('4710e3453c972c91e68a21f6b0b76ba73d4d617f299a5208615ed6e41b1af84d'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'a6120e7d4eb5e131b87b6ab3b922e0c6cd78e15501e54cfb2019875173688d80'
             '064daaa2b9d95b96ec04d8ddebf4af441f92263d123365b58fe73966866080af'
@@ -50,7 +50,7 @@ source=(${source[@]}
         chromium-drirc-disable-10bpc-color-configs.conf
         wayland-egl.patch)
 sha256sums=(${sha256sums[@]}
-            '94c737538b9d1e926f63918b47d7791703b09b36f255ed0daaf0fef04e865891'
+            '855e12e68ee767571f9032e1465ba4acd97f500fe8cf0cf67ce15f2bd9573154'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             '34d08ea93cb4762cb33c7cffe931358008af32265fc720f2762f0179c3973574')
 
