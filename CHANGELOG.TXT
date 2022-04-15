@@ -1,0 +1,30 @@
+1.2.0
+  - [DEPRECATED] records() in HBINBlock, use the more correct cells() instead, by @NiKiZe
+  - fix bug in parsing of resident values with length zero, reported and patched by @BridgeyTheGeek
+  - fix handling of path cycles, reported and patched by @sbv-csis
+
+1.1.0
+  - add raw_data method
+  - fix testing scripts and methods
+  - add amcache.hve parsing script
+  - add script for mounting hive as file system via FUSE
+  - many fixes, including checksum calculations, by @NiKiZe
+  - fixes to RegDateTime parsing by @woanware
+
+1.0.4
+  - correctly handle value types on Vista+ that require a DEVPROP_MASK_TYPE mask, thanks to @woanware
+  - support the new RegDateTime value type, used for instance in some USBSTOR values, thanks to @woanware
+
+1.0.3
+  - use setuptools over distutils
+
+1.0.2
+  - can now fetch hive name from a Registry hive, thanks to @woanware, @jallmantalbot
+  - can now guess the Registry hive type (NTUSER, USRCLASS, etc) from the hive name, thanks to @woanware
+  - better handling of key/value names through use of Windows-1252 encoding, thanks to @jallmantalbot and Joel Schnieder
+
+1.0.1
+  - better detection and handling of malformed Unicode, thanks to @jallmantalbot
+
+1.0.0
+  - implemented Python3 support thanks to @3ev0
