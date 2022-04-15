@@ -3,7 +3,7 @@ Description=ThinLinc vsmagent
 
 [Service]
 Type=simple
-PIDFile=/var/run/vsmagent.pid
+PIDFile=/run/vsmagent.pid
 ExecStart=/opt/thinlinc/sbin/vsmagent
 
 [Install]

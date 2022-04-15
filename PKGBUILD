@@ -28,10 +28,10 @@ source=("${_archive_name}.zip::https://www.cendio.com/downloads/server/download.
         'vsmserver.service')
 sha256sums=('c53f7c8721876f9e7e8f6c4e9cc748d8729091cc9f59fc5db97ea7a5af58a040'
             '179583f1e2f61a9a75a99bbe8bb988e35a0216fc2ddcbd4c85ad8bdc70c3149e'
-            '8e70ef23f9716dcb100eba660932e7f5d05351d63074fb262cf925812dbdbb63'
-            '5a92c5beac6c64487debd92a4d94b56074b9f9b0cd38d154a14a320105f3bccd'
-            '292e6ef1295f329ab95d1d16c5bf7286f5c5c288d6637d0d736b9a144e85449d'
-            'a1fe20c565e7e468407d73a0f59c8c352318a7e4c8e85fe068d89cbb0afd5e71')
+            'fc06091345702b4fe264840307ec83579b82ea24000a920770249e631534bfa9'
+            'ca00d5ef2cb79a86ac1e428fe20c0a967e61927fc9a0fa49ceb2b218484266d7'
+            'a15240406eaa7f952acb76bf09e65e6aa33ab621f29ff02d6cc15a95f1e6c31b'
+            'fe9174542170be990d7d4579b34e534bb1c0756d838665ff27173dbc3e5ac84e')
 
 _extract_dir="extract"
 

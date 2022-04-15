@@ -3,7 +3,7 @@ Description=ThinLinc vsmserver
 
 [Service]
 Type=simple
-PIDFile=/var/run/vsmserver.pid
+PIDFile=/run/vsmserver.pid
 ExecStart=/opt/thinlinc/sbin/vsmserver
 
 [Install]

@@ -3,7 +3,7 @@ Description=ThinLinc Web Administration
 
 [Service]
 Type=simple
-PIDFile=/var/run/tlwebadm.pid
+PIDFile=/run/tlwebadm.pid
 ExecStart=/opt/thinlinc/sbin/tlwebadm
 
 [Install]
