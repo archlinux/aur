@@ -13,6 +13,6 @@ pkgbase = m4b-tool-bin
 	optdepends = ffmpeg-libfdk_aac: to use fdkaac in conversions
 	options = !strip
 	source = m4b-tool.tar.gz::https://github.com/sandreas/m4b-tool/files/6598116/m4b-tool.tar.gz
-	sha256sums = 0ec79733770379dbd11ea9d76fd03d62d8aacca8e66730779f7caaa92f577ba7
+	sha256sums = ae3b350ddc4b3037205a8594cd9255c406130fe264cf965f40357927acbc9925
 
 pkgname = m4b-tool-bin
