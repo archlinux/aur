@@ -1,23 +1,38 @@
-# Maintainer: Dario Pellegrini <pellegrini.dario at gmail dot com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Dario Pellegrini <pellegrini.dario at gmail dot com>
+
 pkgname=python-anticaptcha
-pkgver=0.7.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Client library for solving captchas with anticaptcha.com support."
 arch=('any')
 url="https://github.com/ad-m/python-anticaptcha"
 license=('MIT')
-depends=('python' 'python-wheel')
-makedepends=('python-setuptools')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=(!emptydirs)
-source=("https://files.pythonhosted.org/packages/28/f1/8e08b3e7cc0b67f774c62a5011efe3bd8cb234e4ef1364b1e12868613d7c/python-anticaptcha-0.7.0.tar.gz")
-md5sums=('11c216f6fbf2236834536901092b364a')
+depends=('python-requests' 'python-six')
+makedepends=('python-setuptools-scm' 'python-build' 'python-installer' 'python-sphinx' 'python-wheel')
+# checkdepends=('python-retry' 'python-nose2' 'python-selenium')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/$pkgname/$pkgname-$pkgver.tar.gz")
+sha256sums=('058a9e3ca5dbdcaa98108c8b5181404cb4ffdba5261162a4301d60f985c63710')
 
-package() {
-  cd "$srcdir/python-anticaptcha-$pkgver"
-  python setup.py install --root=$pkgdir/ --optimize=1
+build() {
+	cd "$pkgname-$pkgver"
+	python -m build --wheel --no-isolation
+	make -C docs man
 }
 
+## tests require API key to run
+# check() {
+# 	cd "$pkgname-$pkgver"
+# 	python -m unittest discover
+# }
+
+package() {
+	cd "$pkgname-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	install -Dm644 "docs/_build/man/$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s \
+		"$_site/${pkgname/-/_}-$pkgver.dist-info/LICENSE.md" \
+		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

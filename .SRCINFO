@@ -1,16 +1,18 @@
 pkgbase = python-anticaptcha
 	pkgdesc = Client library for solving captchas with anticaptcha.com support.
-	pkgver = 0.7.0
+	pkgver = 1.0.0
 	pkgrel = 1
 	url = https://github.com/ad-m/python-anticaptcha
 	arch = any
 	license = MIT
-	makedepends = python-setuptools
-	depends = python
-	depends = python-wheel
-	options = !emptydirs
-	source = https://files.pythonhosted.org/packages/28/f1/8e08b3e7cc0b67f774c62a5011efe3bd8cb234e4ef1364b1e12868613d7c/python-anticaptcha-0.7.0.tar.gz
-	md5sums = 11c216f6fbf2236834536901092b364a
+	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-sphinx
+	makedepends = python-wheel
+	depends = python-requests
+	depends = python-six
+	source = python-anticaptcha-1.0.0.tar.gz::https://files.pythonhosted.org/packages/source/p/python-anticaptcha/python-anticaptcha-1.0.0.tar.gz
+	sha256sums = 058a9e3ca5dbdcaa98108c8b5181404cb4ffdba5261162a4301d60f985c63710
 
 pkgname = python-anticaptcha
-
