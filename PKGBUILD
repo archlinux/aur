@@ -32,10 +32,6 @@ pkgver() {
     git -C dt describe | sed 's:-:.:g'
 }
 
-prepare() {
-    rustup toolchain update stable
-}
-
 build() {
     cd dt
     cargo +stable build --bin=dt-cli --release --all-features --locked
