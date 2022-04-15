@@ -1,7 +1,7 @@
 pkgname=briar-desktop-bin
 _pkgname=briar-desktop
 pkgver=0.2.0.beta
-pkgrel=1
+pkgrel=2
 _bin_ver=0.2.0
 _build_type=beta
 pkgdesc='Prototyping the next generation for Briar on desktop devices'
@@ -13,7 +13,8 @@ depends=('java-runtime>=17' 'java-runtime<18' 'bash')
 source=("https://desktop.briarproject.org/jars/linux/${_bin_ver}-${_build_type}/${_pkgname}-linux-${_bin_ver}-${_build_type}.jar"
         "${_pkgname}.svg::https://code.briarproject.org/briar/${_pkgname}/-/raw/main/src/main/resources/images/logo_circle.svg"
         "briar16.png" "briar32.png" "briar48.png" "briar64.png" "briar128.png" "briar192.png"
-        "${_pkgname}.desktop")
+        "${_pkgname}.desktop"
+        "https://code.briarproject.org/briar/briar-desktop/-/raw/${_bin_ver}-${_build_type}/src/appResources/linux/org.briarproject.Briar.metainfo.xml")
 noextract=("${_pkgname}-linux-${_bin_ver}-${_build_type}.jar")
 sha256sums=('1f31a0e0e3a1364172f8bfbf1d24bc34d4fe654fba83168d728ed0fb379ea591'
             '95400a8578272600e0b350c4b664c09631c737ce11e750faefe27473460d7923'
@@ -53,4 +54,7 @@ EOF
 
   install -Dm644 ${srcdir}/$_pkgname.desktop \
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
+
+  install -Dm644 ${srcdir}/org.briarproject.Briar.metainfo.xml \
+    "$pkgdir/usr/share/metainfo/org.briarproject.Briar.metainfo.xml"
 }

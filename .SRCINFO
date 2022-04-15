@@ -1,7 +1,7 @@
 pkgbase = briar-desktop-bin
 	pkgdesc = Prototyping the next generation for Briar on desktop devices
 	pkgver = 0.2.0.beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://code.briarproject.org/briar/briar-desktop
 	arch = any
 	license = GPL
@@ -18,6 +18,7 @@ pkgbase = briar-desktop-bin
 	source = briar128.png
 	source = briar192.png
 	source = briar-desktop.desktop
+	source = https://code.briarproject.org/briar/briar-desktop/-/raw/0.2.0-beta/src/appResources/linux/org.briarproject.Briar.metainfo.xml
 	sha256sums = 1f31a0e0e3a1364172f8bfbf1d24bc34d4fe654fba83168d728ed0fb379ea591
 	sha256sums = 95400a8578272600e0b350c4b664c09631c737ce11e750faefe27473460d7923
 	sha256sums = 965d7c617e345b809f84c8bf73d9cb0acaf763c16a4b367698218b90c1c92669
