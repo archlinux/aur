@@ -1,11 +1,14 @@
 pkgbase = grub-reboot-picker
 	pkgdesc = Tray application to reboot into different OSes or UEFI/BIOS
 	pkgver = 0.0.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mendhak/grub-reboot-picker
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-gobject
 	depends = python-cairo
 	depends = libappindicator-gtk3
