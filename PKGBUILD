@@ -128,7 +128,7 @@ _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux PDS scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
 license=('GPL2')
@@ -145,28 +145,22 @@ source=(
   #  "${_patchsource}/sched/0001-cacULE.patch"
   #  "${_patchsource}/sched/0001-bore-sched.patch"
   #  "${_patchsource}/sched/0001-tt.patch"
-  "${_patchsource}/0001-arch-patches.patch"
-  "${_patchsource}/0001-anbox.patch"
-  "${_patchsource}/0001-bbr2.patch"
-  "${_patchsource}/0001-block-patches.patch"
-  "${_patchsource}/0001-btrfs-patches.patch"
-  "${_patchsource}/0001-cachy.patch"
-  "${_patchsource}/0001-cfi.patch"
-  "${_patchsource}/0001-clearlinux.patch"
-  "${_patchsource}/0001-cpu.patch"
-  "${_patchsource}/0001-cpupower-patches.patch"
-  "${_patchsource}/0001-fixes-miscellaneous.patch"
-  "${_patchsource}/0001-lrng.patch"
-  "${_patchsource}/0001-pf-patches.patch"
-  "${_patchsource}/0001-hwmon.patch"
-  "${_patchsource}/0001-MG-LRU.patch"
-  "${_patchsource}/0001-spf-lru-patches.patch"
-  "${_patchsource}/0001-uksm.patch"
-  "${_patchsource}/0001-rcu.patch"
-  "${_patchsource}/0001-v4l2loopback.patch"
-  "${_patchsource}/0001-xanmod.patch"
-  #  "${_patchsource}/0001-zen-patches.patch"
-  #  "${_patchsource}/0001-FG-KASLR.patch"
+  "${_patchsource}/0001-arch.patch"
+  "${_patchsource}/0002-anbox.patch"
+  "${_patchsource}/0003-bbr2.patch"
+  "${_patchsource}/0004-fs-patches.patch"
+  "${_patchsource}/0005-cachy.patch"
+  "${_patchsource}/0006-clearlinux.patch"
+  "${_patchsource}/0007-cpu-patches.patch"
+  "${_patchsource}/0008-fixes-miscellaneous.patch"
+  "${_patchsource}/0009-fixes.patch"
+  "${_patchsource}/0010-hwmon.patch"
+  "${_patchsource}/0011-MG-LRU.patch"
+  "${_patchsource}/0012-spf-lru.patch"
+  "${_patchsource}/0013-uksm.patch"
+  "${_patchsource}/0014-v4l2loopback.patch"
+  "${_patchsource}/0015-xanmod.patch"
+  "${_patchsource}/0016-lrng.patch"
   "auto-cpu-optimization.sh"
 )
 
@@ -393,49 +387,49 @@ prepare() {
   ### Enable Linux Random Number Generator
   if [ -n "$_lrng_enable" ]; then
     echo "Enabling Linux Random Number Generator ..."
-		scripts/config --disable CONFIG_RANDOM_DEFAULT_IMPL
-		scripts/config --enable CONFIG_LRNG
-		scripts/config --enable CONFIG_LRNG_OVERSAMPLE_ENTROPY_SOURCES
-		scripts/config --set-val CONFIG_CONFIG_LRNG_OVERSAMPLE_ES_BITS 64
-		scripts/config --set-val CONFIG_LRNG_SEED_BUFFER_INIT_ADD_BITS 128
-		scripts/config --enable CONFIG_LRNG_IRQ
-		scripts/config --enable CONFIG_LRNG_CONTINUOUS_COMPRESSION_ENABLED
-		scripts/config --disable CONFIG_LRNG_CONTINUOUS_COMPRESSION_DISABLED
-		scripts/config --enable CONFIG_LRNG_ENABLE_CONTINUOUS_COMPRESSION
-		scripts/config --enable CONFIG_LRNG_SWITCHABLE_CONTINUOUS_COMPRESSION
-		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_512
-		scripts/config --enable CONFIG_LRNG_COLLECTION_SIZE_1024
-		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_2048
-		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_4096
-		scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_8192
-		scripts/config --set-val CONFIG_LRNG_COLLECTION_SIZE 1024
-		scripts/config --enable CONFIG_LRNG_HEALTH_TESTS
-		scripts/config --set-val CONFIG_LRNG_RCT_CUTOFF 31
-		scripts/config --set-val CONFIG_LRNG_APT_CUTOFF 325
-		scripts/config --set-val CONFIG_LRNG_IRQ_ENTROPY_RATE 256
-		scripts/config --enable CONFIG_LRNG_JENT
-		scripts/config --set-val CONFIG_LRNG_JENT_ENTROPY_RATE 16
-		scripts/config --enable CONFIG_LRNG_CPU
-		scripts/config --set-val CONFIG_LRNG_CPU_ENTROPY_RATE 8
-		scripts/config --enable CONFIG_LRNG_DRNG_SWITCH
-		scripts/config --enable CONFIG_LRNG_KCAPI_HASH
-		scripts/config --module CONFIG_LRNG_DRBG
-		scripts/config --module CONFIG_LRNG_KCAPI
-		scripts/config --enable CONFIG_LRNG_TESTING_MENU
-		scripts/config --disable CONFIG_LRNG_RAW_HIRES_ENTROPY
-		scripts/config --disable CONFIG_LRNG_RAW_JIFFIES_ENTROPY
-		scripts/config --disable CONFIG_LRNG_RAW_IRQ_ENTROPY
-		scripts/config --disable CONFIG_LRNG_RAW_IRQFLAGS_ENTROPY
-		scripts/config --disable CONFIG_LRNG_RAW_RETIP_ENTROPY
-		scripts/config --disable CONFIG_LRNG_RAW_REGS_ENTROPY
-		scripts/config --disable CONFIG_LRNG_RAW_ARRAY
-		scripts/config --disable CONFIG_LRNG_IRQ_PERF
-		scripts/config --disable CONFIG_LRNG_ACVT_HASH
-		scripts/config --enable CONFIG_LRNG_RUNTIME_ES_CONFIG
-		scripts/config --disable CONFIG_LRNG_RUNTIME_MAX_WO_RESEED_CONFIG
-		scripts/config --disable CONFIG_LRNG_TEST_CPU_ES_COMPRESSION
-		scripts/config --enable CONFIG_LRNG_SELFTEST
-		scripts/config --disable CONFIG_LRNG_SELFTEST_PANIC
+    scripts/config --disable CONFIG_RANDOM_DEFAULT_IMPL
+    scripts/config --enable CONFIG_LRNG
+    scripts/config --enable CONFIG_LRNG_OVERSAMPLE_ENTROPY_SOURCES
+    scripts/config --set-val CONFIG_CONFIG_LRNG_OVERSAMPLE_ES_BITS 64
+    scripts/config --set-val CONFIG_LRNG_SEED_BUFFER_INIT_ADD_BITS 128
+    scripts/config --enable CONFIG_LRNG_IRQ
+    scripts/config --enable CONFIG_LRNG_CONTINUOUS_COMPRESSION_ENABLED
+    scripts/config --disable CONFIG_LRNG_CONTINUOUS_COMPRESSION_DISABLED
+    scripts/config --enable CONFIG_LRNG_ENABLE_CONTINUOUS_COMPRESSION
+    scripts/config --enable CONFIG_LRNG_SWITCHABLE_CONTINUOUS_COMPRESSION
+    scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_512
+    scripts/config --enable CONFIG_LRNG_COLLECTION_SIZE_1024
+    scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_2048
+    scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_4096
+    scripts/config --disable CONFIG_LRNG_COLLECTION_SIZE_8192
+    scripts/config --set-val CONFIG_LRNG_COLLECTION_SIZE 1024
+    scripts/config --enable CONFIG_LRNG_HEALTH_TESTS
+    scripts/config --set-val CONFIG_LRNG_RCT_CUTOFF 31
+    scripts/config --set-val CONFIG_LRNG_APT_CUTOFF 325
+    scripts/config --set-val CONFIG_LRNG_IRQ_ENTROPY_RATE 256
+    scripts/config --enable CONFIG_LRNG_JENT
+    scripts/config --set-val CONFIG_LRNG_JENT_ENTROPY_RATE 16
+    scripts/config --enable CONFIG_LRNG_CPU
+    scripts/config --set-val CONFIG_LRNG_CPU_ENTROPY_RATE 8
+    scripts/config --enable CONFIG_LRNG_DRNG_SWITCH
+    scripts/config --enable CONFIG_LRNG_KCAPI_HASH
+    scripts/config --module CONFIG_LRNG_DRBG
+    scripts/config --module CONFIG_LRNG_KCAPI
+    scripts/config --enable CONFIG_LRNG_TESTING_MENU
+    scripts/config --disable CONFIG_LRNG_RAW_HIRES_ENTROPY
+    scripts/config --disable CONFIG_LRNG_RAW_JIFFIES_ENTROPY
+    scripts/config --disable CONFIG_LRNG_RAW_IRQ_ENTROPY
+    scripts/config --disable CONFIG_LRNG_RAW_IRQFLAGS_ENTROPY
+    scripts/config --disable CONFIG_LRNG_RAW_RETIP_ENTROPY
+    scripts/config --disable CONFIG_LRNG_RAW_REGS_ENTROPY
+    scripts/config --disable CONFIG_LRNG_RAW_ARRAY
+    scripts/config --disable CONFIG_LRNG_IRQ_PERF
+    scripts/config --disable CONFIG_LRNG_ACVT_HASH
+    scripts/config --enable CONFIG_LRNG_RUNTIME_ES_CONFIG
+    scripts/config --disable CONFIG_LRNG_RUNTIME_MAX_WO_RESEED_CONFIG
+    scripts/config --disable CONFIG_LRNG_TEST_CPU_ES_COMPRESSION
+    scripts/config --enable CONFIG_LRNG_SELFTEST
+    scripts/config --disable CONFIG_LRNG_SELFTEST_PANIC
   fi
 
 
@@ -458,40 +452,40 @@ prepare() {
     exit
   fi
 
-    ### Selecting the ZSTD modules and kernel compression level
-	if [ "$_zstd_level_value" = "ultra" ]; then
-		echo "Enabling highest ZSTD modules compression ratio..."
-		scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
-		scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD_ULTRA
-		scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL_ULTRA 22
-		echo "Enabling highest ZSTD kernel compression ratio..."
-		scripts/config --set-val CONFIG_ZSTD_COMP_VAL 22
-	elif [ "$_zstd_level_value" = "normal" ]; then
-		echo "Enabling standard ZSTD modules compression ratio..."
-		scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
-		scripts/config --disable CONFIG_MODULE_COMPRESS_ZSTD_ULTRA
-		echo "Enabling standard ZSTD kernel compression ratio..."
-		scripts/config --set-val CONFIG_ZSTD_COMP_VAL 19
-	else
-		if [ -n "$_zstd_level_value" ]; then
-			error "The value $_zstd_level_value is invalid. Choose the correct one again."
-		else
-			error "The value is empty. Choose the correct one again."
-		fi
-		error "Selecting the ZSTD modules and kernel compression level failed!"
-		exit
-	fi
+  ### Selecting the ZSTD modules and kernel compression level
+  if [ "$_zstd_level_value" = "ultra" ]; then
+    echo "Enabling highest ZSTD modules compression ratio..."
+    scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
+    scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD_ULTRA
+    scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL_ULTRA 22
+    echo "Enabling highest ZSTD kernel compression ratio..."
+    scripts/config --set-val CONFIG_ZSTD_COMP_VAL 22
+  elif [ "$_zstd_level_value" = "normal" ]; then
+    echo "Enabling standard ZSTD modules compression ratio..."
+    scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
+    scripts/config --disable CONFIG_MODULE_COMPRESS_ZSTD_ULTRA
+    echo "Enabling standard ZSTD kernel compression ratio..."
+    scripts/config --set-val CONFIG_ZSTD_COMP_VAL 19
+  else
+    if [ -n "$_zstd_level_value" ]; then
+      error "The value $_zstd_level_value is invalid. Choose the correct one again."
+    else
+      error "The value is empty. Choose the correct one again."
+    fi
+    error "Selecting the ZSTD modules and kernel compression level failed!"
+    exit
+  fi
 
-    ### Enable zram/zswap ZSTD compression
-	if [ -n "$_zstd_swap_compression" ]; then
-		echo "Enabling zram ZSTD compression..."
-		scripts/config --disable CONFIG_ZRAM_DEF_COMP_LZORLE
-		scripts/config --enable CONFIG_ZRAM_DEF_COMP_ZSTD
-		scripts/config --set-str CONFIG_ZRAM_DEF_COMP zstd
-		echo "Enabling zswap ZSTD compression..."
-		scripts/config --disable CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZ4
-		scripts/config --enable CONFIG_ZSWAP_COMPRESSOR_DEFAULT_ZSTD
-		scripts/config --set-str CONFIG_ZSWAP_COMPRESSOR_DEFAULT zstd
+  ### Enable zram/zswap ZSTD compression
+  if [ -n "$_zstd_swap_compression" ]; then
+    echo "Enabling zram ZSTD compression..."
+    scripts/config --disable CONFIG_ZRAM_DEF_COMP_LZORLE
+    scripts/config --enable CONFIG_ZRAM_DEF_COMP_ZSTD
+    scripts/config --set-str CONFIG_ZRAM_DEF_COMP zstd
+    echo "Enabling zswap ZSTD compression..."
+    scripts/config --disable CONFIG_ZSWAP_COMPRESSOR_DEFAULT_LZ4
+    scripts/config --enable CONFIG_ZSWAP_COMPRESSOR_DEFAULT_ZSTD
+    scripts/config --set-str CONFIG_ZSWAP_COMPRESSOR_DEFAULT zstd
   fi
 
   echo "Enable Anbox"
@@ -669,26 +663,22 @@ for _p in "${pkgname[@]}"; do
 done
 
 sha256sums=('32d0a8e366b87e1cbde951b9f7a01287546670ba60fac35cccfc8a7c005a162c'
-            '2326154da7383bd6a3b84e27a2dbc36d7bf8c533cda438fac7e08abefb71e9b0'
-            'ba65acd3f1168a7479e3665b5b13f7d1066e713eadb5a0e5110423ba97d7ccd3'
-            'df466f91e9560e258da5816f037760e511172e789dee01c267ac7213706919b9'
-            'b81d81435984662cc5948e5e26389402d6803ceb4cd3fe346f632fdf4c81f9ed'
-            'ec150c2d74c58de56ab230679fe4c27b63a8bb4180f57e1985ff7fe7dced0401'
-            '863d3627ef5eb474840a5847ee0b479a80e2521261b8ca3e0f71fcfb78a392b4'
-            '8d3594fdbef77a86b85df751de48d64418efd34813dbf1a2f0c2841928275f37'
-            '2ccacea819390dfa67251b0c211804bcc03a079a9970fd6e147bb09248e75b6f'
-            'fbc98ae990ef1f75ac5a11eb822e01503b5cc09b412f3b3d2e03adde04123068'
-            '2dd17bce8a02bba63e1fb437bbfc6efb2c8e657e3d3049c57d975dac8dadadbb'
-            'd8be9d58186b09cd6d8ac0633889e9483f88c59702579b26d45d0a42a906de8f'
-            'c92373359de38b4ac831ab69f57c6bb962a14d214beba55593616c9077003aff'
-            '308ce8da7022fae3a5efcc7d87603ed238b044525b42d7203273aaad702a9cd0'
-            'ccdc989e3600ec098060696fc87168b655ebbaaaac00d2b424f56c1697c50abb'
-            '27b29c0de9ac4e327f76d060c747196c59536754cb2288c7d121e700d9a976c8'
-            'c6e3fe5b1736c343f25632a23318c91ccc8b84e896ce7a0a1f7eb2a05e7a596f'
-            '0682d64dd5be9699ccfbd8a2c4f39ab899f6d13e18e5e0f1ca30b282606ac958'
-            '0c71a8f1cf99f01d2f6fdafde8b5b96e1f56b686b505aa2e18396855966c11f9'
-            'eccb27352c4e87998900a9b8b0e0ec6322c33f542643085a20db45a09c78fdba'
-            '91b8eebde0f0704808b16e0c7a64be791d9c93319ecb05cb4cdb35dcce7387f3'
-            '65d7b7fe507302e77affbfdd2e92991ae37c413c17d6b96559b5794487421d58'
-            'aa87843e5e44e0f5ad20e3acacccc54e9931ae5dce6bb9a357731deb19d182b0'
-            '65ec9ac5b8b28d5b61df1c72498059be2e7cb1f9b965bac0e4ffed3c05520b2b')
+  '2326154da7383bd6a3b84e27a2dbc36d7bf8c533cda438fac7e08abefb71e9b0'
+  'ba65acd3f1168a7479e3665b5b13f7d1066e713eadb5a0e5110423ba97d7ccd3'
+  '86881dd86c0982d86b66aca11f440ce3a0c88a28fb7120fdf8f7d6ad7d328e05'
+  '7616bde11139d419ef190f2870e3a848b7157b9a4dc769a6f1ff59cb99508126'
+  '576d14d12b54a8756117d4839fa63241fcde0ff7799ddfd07f0b25e7e852407c'
+  '3b9a5a31c77e1b708793fd735ad82bd5906f0d8c0b055eae03ea0242ef83509c'
+  'a801630a75a59363c99144836a13aef4f36f93b3b5b64299faa11e21e329cfe4'
+  '440f463d88183ced1ca0e1e8dafa227e6c0212752de7a0d5203e293e8ccb2f88'
+  '7c76f76baccf3ca163f7889bb3d5b28a0551b94cd08312a63581b6df9f439693'
+  'bda7360b44d033dc274649d4c99e252321145162cbe7463ac1f97d79eae7101e'
+  'cf3554d737c52663dd3048906788c28ade3e53a660049ea0bdb792f096965c70'
+  '8de7224e9d84605b7498dd003018dc94cc421d9871500ae885176f051fe048f8'
+  'f6e422d11a5389c5da330501a2a816f9fc088627124ab0910252dfa4d5eac367'
+  'ea4174aa8fbeb309c17fb0aedb4eacbf269ba02123d28067ec46142823782ca7'
+  '69d4eb1a09e0c3d942c54b13e5576c372c81deadadaf06f94076c157f8599045'
+  '1e486bf2a8d33762ed429569d4220a218e1d6db0e96d7cfb57e4ed8090a349bf'
+  '6d2c65532a81468d15f8fb326837eef12f07e10c24e7219fc49c941eb40450db'
+  'c921936c051dd5efe66d7b53eb03a2f26b14b138047cd76702ba6cedf4474432'
+'65ec9ac5b8b28d5b61df1c72498059be2e7cb1f9b965bac0e4ffed3c05520b2b')
