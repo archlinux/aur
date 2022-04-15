@@ -1,32 +1,27 @@
-# Maintainer: 0x715C
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: 0x715C
 
 pkgname=alda-bin
-_pkgname=alda
-pkgver=2.1.0
+pkgver=2.2.1
 pkgrel=1
-pkgdesc='A music programming language for musicians. 🎶'
-arch=('x86_64')
+pkgdesc='A music programming language for musicians'
+arch=('i686' 'x86_64')
 url='https://github.com/alda-lang/alda'
 license=('custom:EPL2')
+depends=('java-runtime>=8')
 provides=('alda')
 conflicts=('alda')
-depends=('java-environment>=8')
-options=('!strip')
-source=("https://${_pkgname}-releases.nyc3.digitaloceanspaces.com/${pkgver}/client/linux-amd64/${_pkgname}"
-        "https://${_pkgname}-releases.nyc3.digitaloceanspaces.com/${pkgver}/player/non-windows/${_pkgname}-player"
-	"https://raw.githubusercontent.com/${_pkgname}-lang/${_pkgname}/release-${pkgver}/LICENSE")
-sha512sums=('e411d512a90cdd9579e958c6ed75e858c9868271af9566bcd81b6ecf76d18ec87062de01dac6989f86f4152c2fc01a1ed145f4655a990052182952ffd6ccb468'
-            '1280cfda27b7c5de58829a8a5ff824a3c35a5e2f16a49df28f04e7eef1ad488b574b717b074d28d2b35a4e482563884aea57ddd592f7a6c2a4d1f937cd651cdf'
-            '7d45830c2f7c0d234f02c69da8ccc86865b2168c5f273f299bbfdf0746aa61d471ee571c15d32f676bc515a74ec3d76135e3e45ed5cf453b0cf2ac4e103ed5ea')
-noextract=('alda'
-           'alda-player'
-	   'LICENSE')
+source=("alda-player-$pkgver::https://alda-releases.nyc3.digitaloceanspaces.com/$pkgver/player/non-windows/alda-player"
+        'LICENSE')
+source_x86_64=("alda-$pkgver-x86_64::https://alda-releases.nyc3.digitaloceanspaces.com/$pkgver/client/linux-amd64/alda")
+source_i686=("alda-$pkgver-i686::https://alda-releases.nyc3.digitaloceanspaces.com/$pkgver/client/linux-386/alda")
+sha256sums=('0d76ac05cb6d68dc1c1e0e42ffdd5f63a74cb2cc527cfc02e93af2c8477256fa'
+            'f05036abc9c2bf11abecbdd874e9a4cbac8e0f6274afdf56c5cf8395238d1dc8')
+sha256sums_i686=('0722b4d21fd64643a52c69269406c85bf46b348d03d51034c5f55e1a707624d6')
+sha256sums_x86_64=('001764042eb3d73952410f0a34137983fc483282a28db4d36cb6fcd96fcb6e2b')
 
 package() {
-  cd "$srcdir"
-  install -Dm755 alda \
-    "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm755 alda-player \
-    "${pkgdir}/usr/bin/${_pkgname}-player"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	install -D "alda-$pkgver-$CARCH" "$pkgdir/usr/bin/alda"
+	install -D "alda-player-$pkgver" "$pkgdir/usr/bin/alda-player"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
