@@ -4,11 +4,11 @@
 pkgname=('autokey-common' 'autokey-gtk' 'autokey-qt')
 pkgbase=autokey
 pkgver=0.95.10
-pkgrel=4
+pkgrel=5
 arch=('x86_64')
 url="https://github.com/autokey/autokey"
 license=('GPL3')
-makedepends=('python-setuptools' 'python-pyqt5')
+makedepends=('python-build' 'python-installer' 'python-pyqt5' 'python-setuptools' 'python-wheel')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/autokey/autokey/archive/v$pkgver.tar.gz"
         "$pkgbase.patch")
 sha256sums=('e622ca04b3340f1ca0999bf03f05c9071a9f8aa3bc91c26c45c35509d63ff23d'
@@ -23,7 +23,7 @@ prepare() {
 
 build() {
   cd "$pkgbase-$pkgver"
-  python setup.py build
+  python -m build --wheel --no-isolation
 
   # remove shebang from python libraries
   for lib in $(find lib/autokey/ -name "*.py"); do
@@ -41,7 +41,7 @@ package_autokey-common() {
   conflicts=("$pkgbase")
 
   cd "$pkgbase-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
@@ -61,7 +61,7 @@ package_autokey-gtk() {
   conflicts=("$pkgbase-qt")
 
   cd "$pkgbase-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 
@@ -82,7 +82,7 @@ package_autokey-qt() {
   conflicts=("$pkgbase-gtk")
 
   cd "$pkgbase-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
 

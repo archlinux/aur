@@ -1,11 +1,14 @@
 pkgbase = autokey
 	pkgver = 0.95.10
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/autokey/autokey
 	arch = x86_64
 	license = GPL3
-	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-pyqt5
+	makedepends = python-setuptools
+	makedepends = python-wheel
 	source = autokey-0.95.10.tar.gz::https://github.com/autokey/autokey/archive/v0.95.10.tar.gz
 	source = autokey.patch
 	sha256sums = e622ca04b3340f1ca0999bf03f05c9071a9f8aa3bc91c26c45c35509d63ff23d
