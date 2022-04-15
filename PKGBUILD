@@ -2,13 +2,13 @@
 pkgname=python-privy-git
 _name=privy
 pkgver=6.0.0.r67.624bb58
-pkgrel=2
+pkgrel=3
 pkgdesc="An easy, fast lib to correctly password-protect your data"
 arch=('any')
 url="https://github.com/ofek/privy"
 license=('MIT' 'Apache')
 depends=('python-cryptography' 'python-argon2_cffi')
-makedepends=('python-setuptools')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/ofek/privy.git')
@@ -21,12 +21,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_name"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/$_name"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   rm -rf "$pkgdir/$site_packages/tests"
