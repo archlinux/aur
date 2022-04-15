@@ -1,7 +1,7 @@
 pkgname=briar-desktop-git
 _pkgname=briar-desktop
-pkgver=r307.38723c4
-pkgrel=3
+pkgver=r385.22ef2f3
+pkgrel=2
 _build_type=nightly
 pkgdesc='Prototyping the next generation for Briar on desktop devices'
 arch=('x86_64' 'aarch64' 'armv7h')
@@ -85,4 +85,7 @@ EOF
 
   install -Dm644 ${srcdir}/$_pkgname.desktop \
     "$pkgdir/usr/share/applications/$_pkgname.desktop"
+
+  install -Dm644 ${srcdir}/${_pkgname}/src/appResources/linux/org.briarproject.Briar.metainfo.xml \
+    "$pkgdir/usr/share/metainfo/org.briarproject.Briar.metainfo.xml"
 }
