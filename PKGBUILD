@@ -1,7 +1,7 @@
 # Maintainer: Grey Christoforo <first name at last name dot net>
 
 pkgname=python-ocp-git
-pkgver=7.5.3.0.1.g34e223c8
+pkgver=7.5.3.0.2.g92eacb99
 pkgrel=1
 pkgdesc="Python wrapper for OCCT generated using pywrap"
 arch=(x86_64)
