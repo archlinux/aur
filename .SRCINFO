@@ -1,11 +1,14 @@
 pkgbase = python-pylyrics
 	pkgdesc = A Pythonic Implementation of lyrics.wikia.com for getting lyrics of songs
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/geekpradd/PyLyrics
 	arch = any
 	license = GPL
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-beautifulsoup4
 	depends = python-requests
 	source = https://files.pythonhosted.org/packages/source/P/PyLyrics/PyLyrics-1.1.0.zip
