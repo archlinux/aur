@@ -13,7 +13,7 @@ pkgbase = archrepo2-git
 	depends = python-pyinotify
 	depends = pacman
 	backup = etc/archrepo2.ini
-	source = git://github.com/lilydjwg/archrepo2.git
+	source = git+https://github.com/lilydjwg/archrepo2.git
 	md5sums = SKIP
 
 pkgname = archrepo2-git
