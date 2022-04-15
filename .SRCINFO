@@ -1,6 +1,6 @@
 pkgbase = linux-ck
 	pkgver = 5.17.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://wiki.archlinux.org/index.php/Linux-ck
 	arch = x86_64
 	license = GPL2
@@ -13,7 +13,6 @@ pkgbase = linux-ck
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
-	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.17.3.tar.xz
 	source = https://www.kernel.org/pub/linux/kernel/v5.x/linux-5.17.3.tar.sign
 	source = config
@@ -40,7 +39,7 @@ pkgbase = linux-ck
 	b2sums = fd94c5e3e186c1c953008190b2c913eab0d1b1bc410993fc6995ebdbcc82404c7b352805ee8cff9dfdbbddd5f9bd51b1a63fbaac00bd1552c630b8c9b48eca22
 
 pkgname = linux-ck
-	pkgdesc = The Linux-ck kernel and modules with ck's hrtimer patches
+	pkgdesc = The Linux kernel and modules with ck's hrtimer patches
 	depends = coreutils
 	depends = kmod
 	depends = initramfs

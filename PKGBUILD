@@ -2,7 +2,8 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 ### BUILD OPTIONS
-# Set the next two variables to ANYTHING that is not null to enable them
+# Any/all of the next three variables may be set to ANYTHING
+# that is not null to enable their respective build options
 
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
@@ -15,10 +16,14 @@ _makenconfig=
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
 
+# Compile using clang rather than gcc
+_clangbuild=
+
 # Optionally select a sub architecture by number or leave blank which will
 # require user interaction during the build. Note that the generic (default)
 # option is 36.
-#
+_subarch=
+
 #  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
 #  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3) (NEW)
 #  3. AMD 61xx/7x50/PhenomX3/X4/II/K10 (MK10) (NEW)
@@ -60,12 +65,11 @@ _localmodcfg=
 #  39. Generic-x86-64-v4 (GENERIC_CPU4) (NEW)
 #  40. Intel-Native optimizations autodetected by GCC (MNATIVE_INTEL) (NEW)
 #  41. AMD-Native optimizations autodetected by GCC (MNATIVE_AMD) (NEW)
-_subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
 pkgver=5.17.3
-pkgrel=2
+pkgrel=3
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
@@ -73,10 +77,10 @@ depends=(coreutils kmod initramfs)
 makedepends=(
   bc libelf        cpio perl tar xz
 )
-options=('!strip')
+[[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld)
 
 # https://ck-hack.blogspot.com/2021/08/514-and-future-of-muqss-and-ck-once.html
-# thankfully xanmod keeps the hrtimer patches up to date
+# acknowledgment to xanmod for initially keeping the hrtimer patches up to date
 _commit=bc1b55888981e44698a1dfccc06821522e6be010
 _xan=linux-5.17.y-xanmod
 
@@ -85,7 +89,6 @@ source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  #"xanmod-patches-from-ck-$_commit.tar.gz::https://github.com/xanmod/linux-patches/archive/$_commit.tar.gz"
   "xanmod-patches-from-ck-$_commit.tar.gz::https://github.com/graysky2/linux-patches/archive/$_commit.tar.gz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch
@@ -109,10 +112,6 @@ b2sums=('03fd68cd2a9c70fcb20dbec8b62f524f032924cf3ba555d78a2348b80bbe61735e6140d
         'e603f7f460f0e9ca69b7c94a81941cfe91c21cc1a2d2dae14487010c9935b7bd1bb458dc2286a5365995cdeec3f28f3c0e4271995b74cd89bf0673c4dd65362a'
         'a6ae40cbf866d3d8add726a262b67818f0348897896e50e112523ad8e72f2bfde57afbfbd02c863661200f9b5caa389d49eac9aa8cbcffa8e52acb5a69fe7f02'
         'fd94c5e3e186c1c953008190b2c913eab0d1b1bc410993fc6995ebdbcc82404c7b352805ee8cff9dfdbbddd5f9bd51b1a63fbaac00bd1552c630b8c9b48eca22')
-
-export KBUILD_BUILD_HOST=archlinux
-export KBUILD_BUILD_USER=$pkgbase
-export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EPOCH})"
 
 prepare() {
   cd linux-${pkgver}
@@ -155,7 +154,7 @@ prepare() {
   # FS#66613
   # https://bugzilla.kernel.org/show_bug.cgi?id=207173#c6
   scripts/config --disable CONFIG_KVM_WERROR
-  
+
   # ck recommends 1000 Hz tick and the hrtimer patches in lieu of ck1
   scripts/config --enable CONFIG_HZ_1000
 
@@ -166,9 +165,15 @@ prepare() {
     patch -Np1 -i $i
   done
 
+  if [[ -n "$_clangbuild" ]]; then
+    scripts/config -e LTO_CLANG_THIN
+    export _LLVM=1
+    export _LLVM_IAS=$_LLVM
+  fi
+
   # non-interactively apply ck1 default options
   # this isn't redundant if we want a clean selection of subarch below
-  make olddefconfig
+  make LLVM=$_LLVM LLVM_IAS=$_LLVM olddefconfig
   diff -u ../config .config || :
 
   # https://github.com/graysky2/kernel_gcc_patch
@@ -178,10 +183,10 @@ prepare() {
 
   if [ -n "$_subarch" ]; then
     # user wants a subarch so apply choice defined above interactively via 'yes'
-    yes "$_subarch" | make oldconfig
+    yes "$_subarch" | make LLVM=$_LLVM LLVM_IAS=$_LLVM oldconfig
   else
     # no subarch defined so allow user to pick one
-    make oldconfig
+    make LLVM=$_LLVM LLVM_IAS=$_LLVM oldconfig
   fi
 
   ### Optionally load needed modules for the make localmodconfig
@@ -189,7 +194,7 @@ prepare() {
     if [ -n "$_localmodcfg" ]; then
       if [ -f $HOME/.config/modprobed.db ]; then
         echo "Running Steven Rostedt's make localmodconfig now"
-        make LSMOD=$HOME/.config/modprobed.db localmodconfig
+        make LLVM=$_LLVM LLVM_IAS=$_LLVM LSMOD="$HOME/.config/modprobed.db" localmodconfig
       else
         echo "No modprobed.db data found"
         exit
@@ -199,7 +204,7 @@ prepare() {
   make -s kernelrelease > version
   echo "Prepared $pkgbase version $(<version)"
 
-  [[ -z "$_makenconfig" ]] || make nconfig
+  [[ -z "$_makenconfig" ]] || make LLVM=$_LLVM LLVM_IAS=$_LLVM nconfig
 
   # save configuration for later reuse
   cat .config > "${startdir}/config.last"
@@ -210,11 +215,11 @@ prepare() {
 
 build() {
   cd linux-${pkgver}
-  make all
+  make LLVM=$_LLVM LLVM_IAS=$_LLVM all
 }
 
 _package() {
-  pkgdesc="The ${pkgbase/linux/Linux} kernel and modules with ck's hrtimer patches"
+  pkgdesc="The Linux kernel and modules with ck's hrtimer patches"
   depends=(coreutils kmod initramfs)
   optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
@@ -239,7 +244,7 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+  make LLVM=$_LLVM LLVM_IAS=$_LLVM INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
     DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
