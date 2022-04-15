@@ -2,7 +2,7 @@
 # Contributor: slact
 pkgname=tlpui-git
 pkgver=1.5.0.r0.g83e4129
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc="A GTK user interface for TLP written in Python"
 arch=('any')
@@ -30,6 +30,9 @@ build() {
 package() {
   cd "$srcdir/${pkgname%-git}"
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+    rm -rf "${pkgdir}${site_packages}/usr"
 
   install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t \
     "$pkgdir/usr/share/applications"
