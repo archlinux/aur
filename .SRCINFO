@@ -1,0 +1,17 @@
+pkgbase = ems-qart-git
+	pkgdesc = A cross-platform Qt application to flash EMS 64M USB cartridges.
+	pkgver = 2b88a04302865caefd7531c5972e053eaf01283e
+	pkgrel = 1
+	url = https://github.com/rbino/ems-qart
+	arch = any
+	license = GPL3
+	makedepends = unzip
+	depends = qt5-base
+	depends = qt5-declarative
+	depends = qt5-svg
+	depends = qt5-quickcontrols
+	depends = libusb
+	source = ems-qart-git-2b88a04302865caefd7531c5972e053eaf01283e.zip::https://github.com/rbino/ems-qart-git/archive/2b88a04302865caefd7531c5972e053eaf01283e.zip
+	sha512sums = a1b162ab487715b2aa7eeab621d5ee95fb35aacfa92239680076bae3c3469146365d57bf2de55bfd462cc3e4d084e913910853b053b22482525e735c7db6079c
+
+pkgname = ems-qart-git
