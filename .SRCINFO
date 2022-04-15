@@ -1,7 +1,7 @@
 pkgbase = 86box-appimage
-	pkgdesc = Emulator of x86-based machines based on PCem.
+	pkgdesc = An emulator for classic IBM PC clones
 	pkgver = 3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://86box.net/
 	arch = x86_64
 	arch = arm7h

@@ -6,8 +6,8 @@ _build=b3700
 
 pkgname="${_pkgname}-appimage"
 pkgver=3.3
-pkgrel=1
-pkgdesc='Emulator of x86-based machines based on PCem.'
+pkgrel=2
+pkgdesc='An emulator for classic IBM PC clones'
 arch=('x86_64' 'arm7h' 'aarch64')
 url='https://86box.net/'
 license=(GPL2)
@@ -53,5 +53,5 @@ package() {
     ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_pkgname}"
 
     # Symlink to roms folder from 86box-roms
-    ln -s "/usr/share/${_pkgname}/roms" "${pkgdir}/opt/${pkgname}/roms"
+    ln -s "/usr/share/86Box/roms" "${pkgdir}/opt/${pkgname}/roms"
 }
