@@ -1,12 +1,15 @@
 pkgbase = python-retry
 	pkgdesc = Easy to use retry decorator
 	pkgver = 0.9.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/invl/retry
 	arch = any
 	license = Apache
-	checkdepends = python-pytest-runner
+	checkdepends = python-pytest
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
 	optdepends = python-decorator: preserves function signatures
 	source = python-retry-0.9.3.tar.gz::https://github.com/invl/retry/archive/c3f386aa279b130b37a4a4e91e758c7f02ec898c.tar.gz
