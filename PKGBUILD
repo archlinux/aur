@@ -69,27 +69,27 @@ _subarch=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
 pkgver=5.17.3
-pkgrel=3
+pkgrel=4
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
-depends=(coreutils kmod initramfs)
 makedepends=(
   bc libelf        cpio perl tar xz
 )
-[[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld)
+[[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld python)
+options=('!strip')
 
 # https://ck-hack.blogspot.com/2021/08/514-and-future-of-muqss-and-ck-once.html
 # acknowledgment to xanmod for initially keeping the hrtimer patches up to date
-_commit=bc1b55888981e44698a1dfccc06821522e6be010
-_xan=linux-5.17.y-xanmod
+_ckhrtimer=linux-5.17.y
+_commit=5d3a0424bdbfdf2fc4cca389bf0f1ee4876e782d
 
 _gcc_more_v=20220315
 source=(
   "https://www.kernel.org/pub/linux/kernel/v5.x/linux-$pkgver.tar".{xz,sign}
   config         # the main kernel config file
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "xanmod-patches-from-ck-$_commit.tar.gz::https://github.com/graysky2/linux-patches/archive/$_commit.tar.gz"
+  "ck-hrtimer-$_commit.tar.gz::https://github.com/graysky2/linux-patches/archive/$_commit.tar.gz"
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch
   0003-tick-Detect-and-fix-jiffies-update-stall.patch
@@ -101,22 +101,22 @@ validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('03fd68cd2a9c70fcb20dbec8b62f524f032924cf3ba555d78a2348b80bbe61735e6140d0d38d74bf3051ac19a67be7c62c67dfc9ef697097ed24637427e72dc7'
-        'SKIP'
-        '3d1e2c1dff1e828c655b449962fb47c49fdf77d58c65c8af41ee8c56fbb2d8fdb7d0b963c775b26ac4022c6e0f9c8d19c11bc1e0e358580396520e9261bc8eeb'
-        '20674a8fcc0a85726e06460a7dbccfe731c46bf377cc3bf511b7591175e7df892f271bc1909e77d9a02913c753d241493502c5ab15d9f78e95f31aa4399c2c27'
-        '96a893b65eb7f87c133b7a8d069c776950d41589e89096aad08601acaa3d67e3cad00c1611de526797d9f8785996ceb7c083aeb9aa248b5151fdc45b34764fba'
-        '576fcf6c4aa7a34af4c613e6bf9b2311bf60f328435e3ebfff292b5fcf5e6db30305396346ac71473cd7ee1efa44bb28019b9db1e0c4f705682aff77b77e7f9f'
-        '2e1fb80e3058241341b3d1b1f92c045a9d05308315e132bc8675e6a0f6ea693a0a826b160027d5db37cfab9dd4490c2288fe0dfe60f22f13f0758e0f9525320f'
-        'd81e1336f760290cc93112162d0d5a1ff8443f552e7a6ef35a27838b0b2f7705f974846a148dfe3dad51de63084f6390e2c4ce70ab03dab31963198c82449c24'
-        'e603f7f460f0e9ca69b7c94a81941cfe91c21cc1a2d2dae14487010c9935b7bd1bb458dc2286a5365995cdeec3f28f3c0e4271995b74cd89bf0673c4dd65362a'
-        'a6ae40cbf866d3d8add726a262b67818f0348897896e50e112523ad8e72f2bfde57afbfbd02c863661200f9b5caa389d49eac9aa8cbcffa8e52acb5a69fe7f02'
-        'fd94c5e3e186c1c953008190b2c913eab0d1b1bc410993fc6995ebdbcc82404c7b352805ee8cff9dfdbbddd5f9bd51b1a63fbaac00bd1552c630b8c9b48eca22')
+sha256sums=('32d0a8e366b87e1cbde951b9f7a01287546670ba60fac35cccfc8a7c005a162c'
+            'SKIP'
+            'c0ef360e34fd21c23509224abae894b0d6d37256cccf82575062a05986ee5dba'
+            '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c'
+            '0506bdad4255ccc8165e39b2567450a3b12de2759ed7b42c0c90de1c57b1a283'
+            '7b30963bad1ca6a7dbf8a8be88ec1cd0594d919363ac5ae03dce6636891de920'
+            '6d0a3b7d030a321707e55c2e7186e78095d455fe5ab027466e172442cd70b0de'
+            '6e3eef39a94b4e89e156e4cbcd274f7942c4a9d7842266c7ee75b705bbac4e70'
+            '786b819da51c17e7586c483d68052ba6243dfa5d0da8276b7417af1fab1bae45'
+            '9ff6cbfa20c412de75b1ebfdd9a5a0c7842eb64869e1f1d21fcb952cb5a5e88f'
+            '4f9fe9c9a15c19c8a384f51edc450a30539b0ff34bcf54d32e1b82f626045642')
 
 prepare() {
   cd linux-${pkgver}
 
-  echo "Setting version..."
+  msg2 "Setting version..."
   scripts/setlocalversion --save-scmversion
   echo "-$pkgrel" > localversion.10-pkgrel
   echo "${pkgbase#linux}" > localversion.20-pkgname
@@ -161,7 +161,7 @@ prepare() {
   # these are ck's htrimer patches
   echo "Patching with ck hrtimer patches..."
 
-  for i in ../linux-patches-"$_commit"/"$_xan"/ck-hrtimer/0*.patch; do
+  for i in ../linux-patches-"$_commit"/"$_ckhrtimer"/ck-hrtimer/0*.patch; do
     patch -Np1 -i $i
   done
 
@@ -224,6 +224,7 @@ _package() {
   optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
+  replaces=(virtualbox-guest-modules-arch wireguard-arch)
   #groups=('ck-generic')
 
   cd linux-${pkgver}
