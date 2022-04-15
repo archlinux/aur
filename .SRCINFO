@@ -1,6 +1,6 @@
 pkgbase = python-manimlib
 	pkgdesc = An animation engine for explanatory math videos
-	pkgver = 0.1.11
+	pkgver = 1.4.1
 	pkgrel = 1
 	url = https://github.com/3b1b/manim
 	arch = any
@@ -22,8 +22,7 @@ pkgbase = python-manimlib
 	depends = sox
 	depends = python-pydub
 	optdepends = texlive-most: latex support
-	source = https://files.pythonhosted.org/packages/source/m/manimlib/manimlib-0.1.11.tar.gz
-	sha256sums = a211c55056b82651b1a92e4572661521312037e85aa6d086da70f346eeaf56f9
+	source = https://files.pythonhosted.org/packages/source/m/manimgl/manimgl-1.4.1.tar.gz
+	sha256sums = SKIP
 
-pkgname = python-manimlib
-
+pkgname = python-manimgl

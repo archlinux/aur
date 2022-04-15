@@ -1,8 +1,10 @@
-# Maintainer: Tang Ziya <tcztzy@gmail.com>
+# Maintainer: Marco Rubin <marco.rubin@protonmail.com>
+# Contributor: Tang Ziya <tcztzy@gmail.com>
 
-pkgname=python-manimlib
-_name=${pkgname#python-}
-pkgver=0.1.11
+pkgbase=python-manimlib
+_name=manimgl
+pkgname=python-$_name
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="An animation engine for explanatory math videos"
 arch=('any')
@@ -27,7 +29,7 @@ depends=(
 optdepends=('texlive-most: latex support')
 makedepends=('python-setuptools' 'python-pbr')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('a211c55056b82651b1a92e4572661521312037e85aa6d086da70f346eeaf56f9')
+sha256sums=('SKIP')
 
 build() {
     cd "$_name-$pkgver"
@@ -37,5 +39,5 @@ build() {
 package() {
     cd "$_name-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
