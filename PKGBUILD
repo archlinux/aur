@@ -1,15 +1,15 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: slact
 pkgname=tlpui-git
-pkgver=1.4.0.r1.g2148706
-pkgrel=1
+pkgver=1.5.0.r0.g83e4129
+pkgrel=2
 epoch=2
 pkgdesc="A GTK user interface for TLP written in Python"
 arch=('any')
 url="https://github.com/d4nj1/TLPUI"
 license=('GPL2')
 depends=('tlp' 'python-gobject')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/d4nj1/TLPUI.git"
@@ -24,12 +24,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 "$srcdir/${pkgname%-git}.desktop" -t \
     "$pkgdir/usr/share/applications"
