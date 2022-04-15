@@ -1,0 +1,16 @@
+pkgbase = discord-canary-update-skip-git
+	pkgdesc = A simple script to fix Discord Canary wanting to update while the update isn't in the repos.
+	pkgver = r4.3cc6b1e
+	pkgrel = 1
+	url = https://github.com/n3oney/discord-update-skip
+	install = discord-canary-update-skip.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = jq
+	depends = discord-ptb
+	depends = bash
+	source = git+https://github.com/n3oney/discord-update-skip.git#branch=ptb
+	sha256sums = SKIP
+
+pkgname = discord-canary-update-skip-git
