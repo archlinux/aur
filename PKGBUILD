@@ -1,4 +1,4 @@
-# Maintainer: Daniel Bermond < yahoo-com: danielbermond >
+# Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 # This is an improved package for flite version 1 (flite1).
 #
@@ -12,81 +12,64 @@
 # 6dfcbd8. Without the propper patch, ffmpeg versions 3.5 and later will
 # not compile, failing to detect libflite.
 
-_srcname=flite
 pkgname=flite1-patched
 pkgver=1.4
-pkgrel=3
+pkgrel=4
 pkgdesc='A lighweight speech synthesis engine (version 1, patched with fixes and improvements)'
 arch=('x86_64')
 url='http://www.speech.cs.cmu.edu/flite/'
 license=('custom')
+depends=('glibc')
 makedepends=('texlive-core' 'texinfo' 'ed')
 provides=("flite=${pkgver}")
 conflicts=('flite')
-source=("http://www.festvox.org/flite/packed/${_srcname}-${pkgver}/${_srcname}-${pkgver}-release.tar.bz2"
-        'flite-1.4-audio-interface.patch'
-        'flite-1.4-fix-parallel-builds.patch'
-        'flite-1.4-ldflags.patch'
-        'flite-1.4-respect-destdir.patch'
-        'flite-1.4-tempfile-CVE-2014-0027.patch'
-        'flite.texi.patch'
-        'texi2html_to_texi2any_migration.patch'
-        'no_rpath.patch')
+source=("http://www.festvox.org/flite/packed/flite-${pkgver}/flite-${pkgver}-release.tar.bz2"
+        '010-flite1-tempfile-CVE-2014-0027.patch'
+        '020-flite1-fix-parallel-builds.patch'
+        '030-flite1-respect-destdir.patch'
+        '040-flite1-ldflags.patch'
+        '050-flite1-audio-interface.patch'
+        '060-flite1-texi.patch'
+        '070-flite1-texi2html-to-texi2any-migration.patch'
+        '080-flite1-no-rpath.patch'
+        '090-flite1-rename-conflicting-variable.patch')
 sha256sums=('45c662160aeca6560589f78daf42ab62c6111dd4d244afc28118c4e6f553cd0c'
-            '405320984e098c3d788b7751935b2774972ee7970dbe0fef0718ce1e5cc725c9'
-            'bfd51888ea533bb9ee74cadb68b2e507cb715ab5043aa679b7f42ab52336a7a1'
-            'ff43e11241c9aea26483865c672c20421d12c688ae8b59b39471bafb52c1463e'
-            '093538c3a7cd2b9b9edd1f0956a34c4261c3ccdd4feb55e8ecedc338562495f3'
             '597f1516060917faab008819e3ceb5bb487f5b3948e97eef1020dc10b62c6edf'
+            'bfd51888ea533bb9ee74cadb68b2e507cb715ab5043aa679b7f42ab52336a7a1'
+            '093538c3a7cd2b9b9edd1f0956a34c4261c3ccdd4feb55e8ecedc338562495f3'
+            'ff43e11241c9aea26483865c672c20421d12c688ae8b59b39471bafb52c1463e'
+            '405320984e098c3d788b7751935b2774972ee7970dbe0fef0718ce1e5cc725c9'
             'd38fa5dfd4fef71970d904622ec106b9ac18ece002c671b14bc1ce9b342b56b6'
             '1b51d528e3927b80159c6f6c2155fc022f807db7a0cf19c50e9a5e5831086efb'
-            '462b9ecdb3e4992cb2fc026b6483ec83d883ece530a3fa0794a00e4f6fbfbb1a')
+            '462b9ecdb3e4992cb2fc026b6483ec83d883ece530a3fa0794a00e4f6fbfbb1a'
+            '9ad072d57d7b3d6a623f4885cf90a6548d6c5091cd00a7c0c8ff317f4fc0f7f1')
 
 prepare() {
-    cd "${_srcname}-${pkgver}-release"
-    
-    patch -Np1 -i "${srcdir}/flite-1.4-tempfile-CVE-2014-0027.patch"
-    patch -Np1 -i "${srcdir}/flite-1.4-fix-parallel-builds.patch"
-    patch -Np1 -i "${srcdir}/flite-1.4-respect-destdir.patch"
-    patch -Np1 -i "${srcdir}/flite-1.4-ldflags.patch"
-    patch -N   -i "${srcdir}/flite-1.4-audio-interface.patch"
-    patch -Np1 -i "${srcdir}/flite.texi.patch"
-    patch -Np1 -i "${srcdir}/texi2html_to_texi2any_migration.patch"
-    patch -Np1 -i "${srcdir}/no_rpath.patch"
-    
-    # rename the conflicting variable 'BUILDDIR' to allow building with AUR helpers
-    sed -i 's/BUILDDIR/_FLITE1_BUILDPATH/g' config/common_make_rules
+    patch -d "flite-${pkgver}-release" -Np1 -i "${srcdir}/010-flite1-tempfile-CVE-2014-0027.patch"
+    patch -d "flite-${pkgver}-release" -Np1 -i "${srcdir}/020-flite1-fix-parallel-builds.patch"
+    patch -d "flite-${pkgver}-release" -Np1 -i "${srcdir}/030-flite1-respect-destdir.patch"
+    patch -d "flite-${pkgver}-release" -Np1 -i "${srcdir}/040-flite1-ldflags.patch"
+    patch -d "flite-${pkgver}-release" -N   -i "${srcdir}/050-flite1-audio-interface.patch"
+    patch -d "flite-${pkgver}-release" -Np1 -i "${srcdir}/060-flite1-texi.patch"
+    patch -d "flite-${pkgver}-release" -Np1 -i "${srcdir}/070-flite1-texi2html-to-texi2any-migration.patch"
+    patch -d "flite-${pkgver}-release" -Np1 -i "${srcdir}/080-flite1-no-rpath.patch"
+    patch -d "flite-${pkgver}-release" -Np1 -i "${srcdir}/090-flite1-rename-conflicting-variable.patch"
 }
 
 build() {
-    cd "${_srcname}-${pkgver}-release"
-    
+    cd "flite-${pkgver}-release"
     ./configure \
         --prefix='/usr' \
         --enable-shared \
         --disable-static \
         --with-vox='cmu_us_kal16'
-        
     make
-    
-    printf '%s\n' '  -> Building documentation...'
-    cd   doc
-    make doc
+    make -C doc flite.{html,pdf}
 }
 
 package() {
-    cd "${_srcname}-${pkgver}-release"
-    
-    make DESTDIR="$pkgdir" install
-    
-    # documentation
-    mkdir -p "${pkgdir}/usr/share/doc/${pkgname}/html"
-    cd doc
-    install -D -m644 flite.pdf "${pkgdir}/usr/share/doc/${pkgname}/flite.pdf"
-    cd html
-    install    -m644 *.html    "${pkgdir}/usr/share/doc/${pkgname}/html"
-    
-    # license
-    cd "${srcdir}/${_srcname}-${pkgver}-release"
-    install -D -m644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    make -C "flite-${pkgver}-release" DESTDIR="$pkgdir" install
+    install -D -m644 "flite-${pkgver}-release/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -D -m644 "flite-${pkgver}-release/doc/flite.pdf" -t "${pkgdir}/usr/share/doc/flite1"
+    cp -dr --no-preserve='ownership' "flite-${pkgver}-release/doc/html" "${pkgdir}/usr/share/doc/flite1"
 }
