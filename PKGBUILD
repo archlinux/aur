@@ -2,32 +2,26 @@
 # Contributor: Nils Kvist <robstenklippa@gmail.com>
 
 pkgname=bashbud
-pkgver=2019.02.02.7
+pkgver=2022.04.15.2
+_pkgver=2.0.0
 pkgrel=1
-pkgdesc='Generate documents and manage projects'
+pkgdesc='make(1) bash scripting better'
 arch=('any')
+# url="file://${HOME}/git/lab/${pkgname}OLD"
 url='https://github.com/budlabs/bashbud'
 license=('MIT')
 groups=()
 depends=('bash>=4.0.0')
-makedepends=()
-optdepends=('go-md2man: generate man page with default template')
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/budlabs/$pkgname/archive/$pkgver.tar.gz")
+makedepends=(gawk lowdown)
+source=("$url/archive/$_pkgver.tar.gz")
+# source=("${pkgname}::git+$url")
 noextract=()
-sha256sums=('2f437bd1f3190a49a024bd640456ffb128adc3f6def618519d4757582da91e8b')
+sha256sums=('56b3e78295a9448a066ff521ff215e88b4e1115b170ac374f5e9341e44ba8a5e')
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$_pkgver"
 
   make DESTDIR="$pkgdir/" PREFIX=/usr install
 
-  install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
   install -Dm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 }
