@@ -6,13 +6,13 @@
 # Contributor: moostik <mooostik at gmail dot com>
 
 pkgname=geogebra-5
-pkgver=5.0.697.0
+pkgver=5.0.700.0
 pkgrel=1
 pkgdesc="Dynamic mathematics software with interactive graphics, algebra and spreadsheet"
 arch=('any')
 url='https://www.geogebra.org/'
 license=('GPL3' 'CCPL:by-sa' 'CCPL:by-nc')
-depends=('hicolor-icon-theme' 'java-runtime' 'xdg-utils')
+depends=('hicolor-icon-theme' 'java-runtime=8' 'xdg-utils')
 provides=("${pkgname//-5/}")
 conflicts=("${pkgname//-5/}")
 source=("https://download.geogebra.org/installers/5.0/GeoGebra-Linux-Portable-${pkgver//./-}.tar.bz2"
@@ -21,9 +21,9 @@ source=("https://download.geogebra.org/installers/5.0/GeoGebra-Linux-Portable-${
         "geogebra.desktop"
         "geogebra-mime.xml")
 
-sha512sums=('4cf32f1704549887af3682bedd11bf687021ba5094af53275674fbcb805f8e5ea63de7d019e5b06b99c4cb641e353c597550e222bdf57220523501fdc256b334'
+sha512sums=('4ef712925cc742bcdd062d1c1be364b1c459e045f838e19a62d7d74d0c53b50d7ed6c489fe023a2176864e062c85ac513bc5e32ef32ec7f0debf4bcec35c3879'
             'a946acb8867f497c68ce6f8fff8172da4a43a9ca118aafcc5ac414318fd52c4bc6ada387bdfa296f0ff2e1d7411ae345b61197b4adaa3f54299aab837647df55'
-            '65f49cc85ee450e52c7ba8d2f9222a64a81571630afee032c4b680dea35e3c48e5e96d60148bd25163b3e3bdf1b99e55fb8ec010a7f3a47a64ad3b957a232f7b'
+            'db6db21cfcaeb6fbff412330d909a4781e640ec6fefe965b28b1b75e0ad1f2bc43d3eac588bc40925bd227e00a72a123f23b1842a77173a8411937aa929e89cf'
             '64954e749dcd8a9233a932718a4722aab5dfcde868d93998b64f79d54e51c2c34b545665f191f041455f1e945fa46b273417089981d6dff8ed8256519f7e8ae6'
             '0206240e9b1fc3a7f222a033b85e7f9fe9d3096af99c2c97ad93a2a9cb2fffc60b72baad9fbc07f0e136a5b23a7a34ee6a90820d65796757521fa0014a881626')
 
