@@ -1,0 +1,11 @@
+--- a/third_party/abseil-cpp/absl/debugging/failure_signal_handler.cc
++++ b/third_party/abseil-cpp/absl/debugging/failure_signal_handler.cc
+@@ -136,7 +136,7 @@
+ #else
+   const size_t page_mask = sysconf(_SC_PAGESIZE) - 1;
+ #endif
+-  size_t stack_size = (std::max(SIGSTKSZ, 65536) + page_mask) & ~page_mask;
++  size_t stack_size = (std::max<unsigned>(SIGSTKSZ, 65536) + page_mask) & ~page_mask;
+ #if defined(ABSL_HAVE_ADDRESS_SANITIZER) || \
+     defined(ABSL_HAVE_MEMORY_SANITIZER) || defined(ABSL_HAVE_THREAD_SANITIZER)
+   // Account for sanitizer instrumentation requiring additional stack space.

@@ -30,11 +30,14 @@ source=('git+https://github.com/electron/electron.git'
         'default_app-icon.patch'
         'use-system-libraries-in-node.patch'
         'add-dependency-on-opus-in-webcodecs.patch'
+        'breakpad-fix-for-non-constant-SIGSTKSZ.patch'
         'chromium-fix-libva-redef.patch'
         'chromium-glibc-2.33.patch'
         'chromium-harfbuzz-3.0.0.patch'
+        'sandbox-build-if-glibc-2.34-dynamic-stack-size-is-en.patch'
         'skia-harfbuzz-3.0.0.patch'
         'sql-make-VirtualCursor-standard-layout-type.patch'
+        'std-max-fix.patch'
         'ffmpeg5.patch'
        )
 sha256sums=('SKIP'
@@ -45,11 +48,14 @@ sha256sums=('SKIP'
             'dd2d248831dd4944d385ebf008426e66efe61d6fdf66f8932c963a12167947b4'
             'f16103daf05713dea632b5f01e45db20ff12d1770a6539b4e8d3957a0242dd54'
             'b86b11de8db438c47f0a84c7956740f648d21035f4ee46bfbd50c3348d369121'
+            'b4d28867c1fabde6c50a2cfa3f784730446c4d86e5191e0f0000fbf7b0f91ecf'
             'de9eb3612d44616a500c2eccdffac814eb90ad9a868cc1030d17fc6783d544e2'
             '2fccecdcd4509d4c36af873988ca9dbcba7fdb95122894a9fdf502c33a1d7a4b'
             '7ce947944a139e66774dfc7249bf7c3069f07f83a0f1b2c1a1b14287a7e15928'
+            'f910be9370c880de6e1d61cc30383c069e421d7acf406166e4fbfad324fc7d61'
             'c9ed1dbadaf4be6097e25bc5577b91751799befc2d0376b143e1bd10def5754e'
             'dd317f85e5abfdcfc89c6f23f4c8edbcdebdd5e083dcec770e5da49ee647d150'
+            'c315dd56b354cf5ad3458e1edf397cc7b492fefe82138135a881206a82b9d9dc'
             '4f32b815349357ef1f17b36059cee588c994472b9754a194fff41ec21a93826b'
            )
 
@@ -139,21 +145,18 @@ prepare() {
 
   echo "Applying local patches..."
   # Fixes for building with libstdc++ instead of libc++
+  patch -Np1 -d third_party/breakpad/breakpad < ../breakpad-fix-for-non-constant-SIGSTKSZ.patch
   patch -Np1 -i ../patches/chromium-89-quiche-dcheck.patch
   patch -Np1 -i ../patches/chromium-89-AXTreeSerializer-include.patch
-
   patch -Np1 -i ../ffmpeg5.patch
-  # Patches to build with ffmpeg 4.4; remove when ffmpeg 5.0 moves to stable
-  if ! pkg-config --atleast-version 59 libavformat; then
-    patch -Rp1 -i ../ffmpeg5.patch
-  fi
-
   patch -Np1 -i ../add-dependency-on-opus-in-webcodecs.patch
   patch -Np1 -i ../chromium-fix-libva-redef.patch
   patch -Np1 -i ../chromium-glibc-2.33.patch
   patch -Np1 -i ../chromium-harfbuzz-3.0.0.patch
+  patch -Np1 -i ../sandbox-build-if-glibc-2.34-dynamic-stack-size-is-en.patch
   patch -Np1 -d third_party/skia <../skia-harfbuzz-3.0.0.patch
   patch -Np1 -i ../sql-make-VirtualCursor-standard-layout-type.patch
+  patch -Np1 -i ../std-max-fix.patch
   patch -Np1 -i ../use-system-libraries-in-node.patch
   patch -Np1 -i ../default_app-icon.patch  # Icon from .desktop file
 
