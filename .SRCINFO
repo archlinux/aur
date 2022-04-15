@@ -1,8 +1,9 @@
 pkgbase = powercord-electron-git
 	pkgdesc = A lightweight discord client mod focused on simplicity and performance.
 	pkgver = r1372.b4103b08
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/powercord-org/powercord
+	install = powercord.install
 	arch = any
 	license = MIT
 	makedepends = git

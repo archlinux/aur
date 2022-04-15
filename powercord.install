@@ -1,0 +1,6 @@
+#!/bin/sh
+
+post_install() {
+	echo "Use the 'powercord' command to launch discord with powercord loaded"
+	echo "also, please report bugs/errors to the AUR package page before reporting upstream."
+}

@@ -2,25 +2,21 @@
 pkgname=powercord-electron-git
 _pkgname=${pkgname%-electron-*}
 pkgver=r1372.b4103b08
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight discord client mod focused on simplicity and performance."
 arch=('any')
 url="https://github.com/powercord-org/powercord"
 license=('MIT')
-groups=()
 depends=('electron15' 'discord-canary-electron-bin' 'curl' 'jq')
 makedepends=('git' 'npm')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-replaces=()
-backup=()
-options=()
-install=
+install="$_pkgname.install"
 _branch="v2"
 source=('git+https://github.com/powercord-org/powercord.git#branch='${_branch}
-		'powercord.sh'
-		"powercord.desktop"
-		"powercord.png"
+		"$_pkgname.sh"
+		"$_pkgname.desktop"
+		"$_pkgname.png"
 		"$_pkgname.patch"
 		"$_pkgname-themes.patch"
 		"$_pkgname-plugins.patch"
@@ -68,23 +64,20 @@ package() {
 	cd "$srcdir/$_pkgname"
 
 	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	install -Dm755 $srcdir/powercord.sh "$pkgdir/usr/bin/powercord" 
+	install -Dm755 "$srcdir/$_pkgname.sh" "$pkgdir/usr/bin/powercord" 
 
-	install -dm755 $pkgdir/usr/share/powercord
+	install -dm755 "$pkgdir/usr/share/$_pkgname"
 
-	cp -r * $pkgdir/usr/share/powercord
-	rm -rf $pkgdir/usr/share/powercord/{test,LICENSE,README.md,release.sh,jsconfig.json}
+	cp -r * "$pkgdir/usr/share/$_pkgname"
+	rm -rf "$pkgdir/usr/share/$_pkgname/{test,LICENSE,README.md,release.sh,jsconfig.json}"
 
 	# chmod -R u+rwX,go+rX,go-w $pkgdir/usr/share/powercord
 
-	install -dm755 $pkgdir/usr/share/powercord/app
+	install -dm755 "$pkgdir/usr/share/$_pkgname/app"
 
-	echo '{"main":"index.js","name":"discord"}' > $pkgdir/usr/share/powercord/app/package.json
-	echo 'require(`../src/patcher.js`)' > $pkgdir/usr/share/powercord/app/index.js
+	echo '{"main":"index.js","name":"discord"}' > "$pkgdir/usr/share/$_pkgname/app/package.json"
+	echo 'require(`../src/patcher.js`)' > "$pkgdir/usr/share/$_pkgname/app/index.js"
 
 	install -D "$srcdir/powercord.png" "$pkgdir/usr/share/pixmaps/$_pkgname.png"
 	install -D "$srcdir/powercord.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
-
-	echo "Use the 'powercord' command to launch discord with powercord loaded"
-	echo "also, please report bugs/errors to the AUR package page."
 }
