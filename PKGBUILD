@@ -2,11 +2,11 @@
 pkgname=powercord-electron-git
 _pkgname=${pkgname%-electron-*}
 pkgver=r1372.b4103b08
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight discord client mod focused on simplicity and performance."
 arch=('any')
 url="https://github.com/powercord-org/powercord"
-license=('custom:Porkord')
+license=('MIT')
 groups=()
 depends=('electron15' 'discord-canary-electron-bin' 'curl' 'jq')
 makedepends=('git' 'npm')
