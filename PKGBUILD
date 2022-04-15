@@ -2,7 +2,7 @@
 # Contributor: ml <>
 
 pkgname=alda
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc='A music programming language for musicians'
 arch=('x86_64')
@@ -12,8 +12,8 @@ depends=('bash' 'java-runtime>=8')
 makedepends=('go' 'gradle')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/release-$pkgver.tar.gz"
         alda-player)
-sha256sums=('315875daf0df5540e31463bf2fd71d16804258e8a11985cfb8c3216acfbe2087'
-            '4b47a09bc3d4b897b0549f223ba8fe41064f854e5f25bc092cafdee8cc80ef5e')
+sha256sums=('ec407e58ae0dd537021cf98bd65411114c58e7a3639201442d0a94d98cbcb43c'
+            '29550c5c69f95d6eba1155e3b45430e205e8a2502f597c8c36b7b5b5a126f900')
 
 prepare() {
 	cd "$pkgname-release-$pkgver/client"
@@ -44,10 +44,7 @@ package() {
 	cd "$pkgname"-release-"$pkgver"
 	install -D client/alda -t "$pkgdir/usr/bin"
 	install -Dm644 player/build/libs/alda-player-fat.jar -T "$pkgdir/usr/share/java/alda-player.jar"
-
-	install -d "$pkgdir/usr/share/doc"
-	cp -aTf doc "$pkgdir/usr/share/doc/$pkgname/"
-	cp -a examples -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 doc/* -t "$pkgdir/usr/share/doc/$pkgname/"
 
 	# EPL v2 is not part of core/licenses. Let's add it here
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
