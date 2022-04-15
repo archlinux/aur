@@ -1,0 +1,15 @@
+pkgbase = fclash
+	pkgdesc = A Clash Proxy Fronted based on Clash
+	pkgver = 1.0.0
+	pkgrel = 2
+	url = https://github.com/kingtous/fclash
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = dpkg
+	depends = libappindicator-gtk3
+	source = fclash::git+https://github.com/Kingtous/Fclash.git#branch=stable
+	source = https://github.com/Kingtous/Fclash/releases/download/v1.0.0-2/cn.kingtous.fclash.deb
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = fclash
