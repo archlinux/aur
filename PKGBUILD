@@ -1,7 +1,7 @@
 # Maintainer: devvick <root@devvick.eu>
 
 pkgname=zeronsd
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="Unicast DNS resolver for ZeroTier networks"
 url="https://github.com/zerotier/zeronsd"
@@ -10,7 +10,7 @@ arch=("any")
 depends=("zerotier-one")
 makedepends=("cargo" "git")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c9872dd0454f7edacbe1a136323dfc8fc4e49ca706e401d5f06d4c0263b46715')
+sha256sums=('cc7e657aa29cb95d481e89b825fdd72d77cac42868de5c62866e86c0c1202038')
 
 build() {
   cd "${pkgname}-${pkgver}"

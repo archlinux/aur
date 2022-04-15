@@ -1,6 +1,6 @@
 pkgbase = zeronsd
 	pkgdesc = Unicast DNS resolver for ZeroTier networks
-	pkgver = 0.4.2
+	pkgver = 0.4.3
 	pkgrel = 1
 	url = https://github.com/zerotier/zeronsd
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = zeronsd
 	makedepends = cargo
 	makedepends = git
 	depends = zerotier-one
-	source = zeronsd-0.4.2.tar.gz::https://github.com/zerotier/zeronsd/archive/refs/tags/v0.4.2.tar.gz
-	sha256sums = c9872dd0454f7edacbe1a136323dfc8fc4e49ca706e401d5f06d4c0263b46715
+	source = zeronsd-0.4.3.tar.gz::https://github.com/zerotier/zeronsd/archive/refs/tags/v0.4.3.tar.gz
+	sha256sums = cc7e657aa29cb95d481e89b825fdd72d77cac42868de5c62866e86c0c1202038
 
 pkgname = zeronsd
