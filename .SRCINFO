@@ -1,0 +1,13 @@
+pkgbase = fnlfmt
+	pkgdesc = A formatter for Fennel code
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://git.sr.ht/~technomancy/fnlfmt
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = lua
+	source = fnlfmt::git+https://git.sr.ht/~technomancy/fnlfmt#commit=6325724f26fa48e5e60ca3064ae87eefb9e2e66b
+	b2sums = SKIP
+
+pkgname = fnlfmt
