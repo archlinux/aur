@@ -1,0 +1,15 @@
+pkgbase = jsed
+	pkgdesc = Command-line JSON editor
+	pkgver = 0.2.2.r2.g724b05d
+	pkgrel = 1
+	url = https://github.com/jtopjian/jsed
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	options = !lto
+	source = jsed::git+https://github.com/jtopjian/jsed.git#commit=724b05dd00da568058c1cbd4122c146fb5139497
+	b2sums = SKIP
+
+pkgname = jsed
