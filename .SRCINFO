@@ -1,0 +1,15 @@
+pkgbase = rome-git
+	pkgdesc = Formatter, linter, bundler, and more for Javascript, Typescript, JSON, HTML, Markdown, and CSS.
+	pkgver = 0.4.2.r56.g03c946ed9c
+	pkgrel = 1
+	url = https://rome.tools
+	arch = any
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = rome
+	conflicts = rome
+	source = rome-git::git+https://github.com/rome/tools.git
+	md5sums = SKIP
+
+pkgname = rome-git
