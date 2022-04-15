@@ -5,7 +5,7 @@
 
 pkgname=subliminal-git
 pkgver=2.1.0.r22.g160ea63
-pkgrel=5
+pkgrel=6
 pkgdesc="Python library and CLI tool for searching and downloading subtitles."
 arch=('any')
 url="https://github.com/Diaoul/subliminal"
@@ -14,8 +14,8 @@ depends=('python-guessit' 'python-babelfish'  'python-enzyme' 'python-beautifuls
          'python-requests' 'python-click' 'python-dogpile.cache' 'python-stevedore'
          'python-chardet'  'python-pysrt' 'python-six' 'python-appdirs' 'python-rarfile'
          'python-pytz' 'python-importlib_resources')
-makedepends=('git' 'python-setuptools' 'python-sphinxcontrib-programoutput'
-             'python-sphinx_rtd_theme')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools'
+             'python-sphinxcontrib-programoutput' 'python-sphinx_rtd_theme' 'python-wheel')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/Diaoul/subliminal.git#branch=develop')
@@ -33,7 +33,7 @@ prepare() {
 
 build() {
     cd "$srcdir/${pkgname%-git}"
-    python setup.py build
+    python -m build --wheel --no-isolation
 
     cd "$srcdir/${pkgname%-git}/docs"
     make man
@@ -41,8 +41,7 @@ build() {
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    export PYTHONHASHSEED=0
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 
     install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
     install -Dm644 "docs/_build/man/${pkgname%-git}.1" -t "$pkgdir/usr/share/man/man1"
