@@ -1,7 +1,7 @@
 # Maintainer: kyndair <kyndair at gmail dot com>
 pkgname=surfshark-wireguard-git
 _pkgname=linux-surfshark-wireguard
-pkgver=0.3.1.beta.r0.g730453e
+pkgver=0.3.1.beta.r1.g92ffcd0
 pkgrel=1
 pkgdesc="Sets-up a vpn interface using wg-quick"
 arch=('any')
@@ -33,5 +33,5 @@ package() {
     # install link
     mkdir "${pkgdir}/usr/bin"
     ln -s /opt/surfshark-wireguard/gen_wg_config.sh "${pkgdir}/usr/bin/surfshark-wireguard"
-    install -Dm644 "${srcdir}/surfshark-wireguard.desktop" "${pkgdir}/usr/share/applications/"
+    install -Dm644 "${srcdir}/surfshark-wireguard.desktop" "${pkgdir}/usr/share/applications"
 }
