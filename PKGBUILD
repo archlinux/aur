@@ -1,7 +1,7 @@
 # Maintainer: Ivan Krivosheev <py.krivosheev@gmail.com>
 
 pkgname=pa-notify
-pkgver=1.3.1
+pkgver=1.3.2
 pkgrel=1
 pkgdesc="PulseAudio volume notification"
 arch=(x86_64)
@@ -17,14 +17,13 @@ build() {
     export CXXFLAGS+=" ${CPPFLAGS}"
 
     source_dir="${pkgname}-${pkgver}"
-    build_dir="${source_dir}/build"
-    cmake -B "${build_dir}" -S "${source_dir}" \
+    cmake -B build -S "${source_dir}" \
         -DCMAKE_INSTALL_PREFIX='/usr' \
         -Wno-dev
-    cmake --build "${build_dir}" 
+    cmake --build build
 }
 
 package() {
-    make -C "${pkgname}-${pkgver}/build" DESTDIR="$pkgdir" install
+    DESTDIR="$pkgdir" cmake --install build
 }
 
