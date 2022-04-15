@@ -1,7 +1,7 @@
 # Maintainer: DeedleFake <deedlefake@users.noreply.github.com>
 
 pkgname=trayscale
-pkgver=0.3.0
+pkgver=0.3.1
 pkgrel=1
 pkgdesc="An unofficial GUI wrapper for the Tailscale CLI client."
 arch=(i686 x86_64)
@@ -11,11 +11,11 @@ depends=('gtk4' 'libadwaita' 'tailscale')
 makedepends=('go>=1.18')
 provides=(trayscale)
 source=("https://github.com/DeedleFake/trayscale/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('970b22d7719680e67b8092cf2f89a1dd248b4f9ea9dd96e43f168953fda90944')
+sha256sums=('b25335401f022ab42cb018a94762adcb4fadb02b38fce3c6c6cf372e0c2c5bf2')
 
 build() {
 	cd "$pkgname-$pkgver"
-	go build -v -x -o trayscale ./cmd/trayscale
+	go build -v -x -ldflags="-X 'deedles.dev/trayscale/internal/version.version=v${pkgver}'" -o trayscale ./cmd/trayscale
 }
 
 package() {
