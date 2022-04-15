@@ -2,7 +2,7 @@
 # Maintainer: Jack Johannesen <jack AT insertdomain DOT name>
 
 pkgname="freshfetch-git"
-pkgver=v0.1.2.r6.g093e489
+pkgver=v0.2.0.r5.g1383c8f
 pkgrel=1
 pkgdesc="A fresh take on Neofetch"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('cargo' 'git')
 optdepends=('xorg-xrandr' 'xorg-xwininfo')
 provides=('freshfetch')
 conflicts=('freshfetch' 'freshfetch-git')
-source=('git://github.com/K4rakara/freshfetch.git'
+source=('git+https://github.com/K4rakara/freshfetch.git'
         "https://raw.githubusercontent.com/K4rakara/${pkgname//-git}/master/LICENSE.md")
 md5sums=('SKIP'
          'a4c191c500e67564935777e1abaebbab')
