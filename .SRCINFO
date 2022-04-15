@@ -1,6 +1,6 @@
 pkgbase = neovim-bqf
 	pkgdesc = Better quickfix window in Neovim
-	pkgver = 0.3.1
+	pkgver = 0.3.2
 	pkgrel = 1
 	url = https://github.com/kevinhwang91/nvim-bqf
 	changelog = CHANGELOG.md
@@ -10,7 +10,7 @@ pkgbase = neovim-bqf
 	depends = neovim
 	optdepends = fzf
 	optdepends = neovim-tree-sitter
-	source = neovim-bqf-0.3.1.tar.gz::https://github.com/kevinhwang91/nvim-bqf/archive/v0.3.1.tar.gz
-	sha256sums = 52aa276e848298c47dde67e86d76e3af118084680b453919a75f75e65eb93843
+	source = neovim-bqf-0.3.2.tar.gz::https://github.com/kevinhwang91/nvim-bqf/archive/v0.3.2.tar.gz
+	sha256sums = 4a3d647acb2aab84cec738cba39449772a53980ba5005f143cbb096bd35cd7e3
 
 pkgname = neovim-bqf
