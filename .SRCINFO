@@ -1,7 +1,7 @@
-pkgbase = python-manimgl
+pkgbase = python-manimlib
 	pkgdesc = An animation engine for explanatory math videos
 	pkgver = 1.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/3b1b/manim
 	arch = any
 	license = MIT
@@ -25,4 +25,4 @@ pkgbase = python-manimgl
 	source = https://files.pythonhosted.org/packages/source/m/manimgl/manimgl-1.4.1.tar.gz
 	sha256sums = SKIP
 
-pkgname = python-manimgl
+pkgname = python-manimlib

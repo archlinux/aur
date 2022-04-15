@@ -1,11 +1,11 @@
 # Maintainer: Marco Rubin <marco.rubin@protonmail.com>
 # Contributor: Tang Ziya <tcztzy@gmail.com>
 
-pkgbase=python-manimgl
 _name=manimgl
-pkgname=python-$_name
+_pkgname=python-$_name
+pkgname=python-manimlib
 pkgver=1.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="An animation engine for explanatory math videos"
 arch=('any')
 url="https://github.com/3b1b/manim"
@@ -39,5 +39,5 @@ build() {
 package() {
     cd "$_name-$pkgver"
     python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
-    install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -D -m644 LICENSE.md "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 }
