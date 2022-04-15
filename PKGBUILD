@@ -3,7 +3,7 @@
 
 pkgname=ffmpeg-full
 pkgver=5.0
-pkgrel=3
+pkgrel=4
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -24,7 +24,7 @@ depends=(
         'vulkan-icd-loader' 'libxv' 'libx11'  'libxext' 'zlib' 'cuda'
         'libomxil-bellagio' 'libdrm' 'intel-media-sdk' 'libva' 'libvdpau'
     # AUR:
-        'chromaprint-fftw' 'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
+        'chromaprint-fftw' 'davs2' 'flite1' 'libklvanc-git' 'openh264'
         'libopenmpt-svn' 'librist' 'shine' 'uavs3d-git' 'vo-amrwbenc' 'xavs'
         'xavs2' 'pocketsphinx' 'rockchip-mpp' 'lensfun-git'
 )
