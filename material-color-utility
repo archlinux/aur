@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/lib/kde-material-you-colors/material-color-utility-bin "$@"
