@@ -60,7 +60,7 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=ffmpeg-obs
 pkgver=5.0
-pkgrel=6
+pkgrel=7
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('i686' 'x86_64' 'aarch64')
 url=https://ffmpeg.org/
@@ -395,7 +395,7 @@ if [[ $FFMPEG_OBS_FULL == 'ON' ]]; then
   depends+=(
     sndio 'chromaprint-fftw' frei0r-plugins libgcrypt
     aribb24 libbs2b libcaca celt libcdio-paranoia codec2
-    'davs2' libdc1394 'flite1-patched' libgme libilbc 'libklvanc-git'
+    'davs2' libdc1394 flite1 libgme libilbc 'libklvanc-git'
     kvazaar 'lensfun-git' 'openh264' libopenmpt librabbitmq-c rubberband
     rtmpdump 'shine' smbclient snappy tesseract
     twolame 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2' zeromq
