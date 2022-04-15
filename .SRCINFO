@@ -1,6 +1,6 @@
 pkgbase = ffmpeg-full-git
 	pkgdesc = Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)
-	pkgver = 5.1.r106386.ge78173557d
+	pkgver = 5.1.r106624.g391ce570c8
 	pkgrel = 1
 	url = https://www.ffmpeg.org/
 	arch = x86_64
@@ -103,7 +103,7 @@ pkgbase = ffmpeg-full-git
 	depends = libvdpau
 	depends = chromaprint-fftw
 	depends = davs2
-	depends = flite1-patched
+	depends = flite1
 	depends = libklvanc-git
 	depends = openh264
 	depends = libopenmpt-svn
