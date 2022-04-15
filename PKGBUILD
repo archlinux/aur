@@ -1,11 +1,11 @@
 # Maintainer: Marco Rubin <marco.rubin@protonmail.com>
 # Contributor: Tang Ziya <tcztzy@gmail.com>
 
-pkgbase=python-manimlib
+pkgbase=python-manimgl
 _name=manimgl
 pkgname=python-$_name
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An animation engine for explanatory math videos"
 arch=('any')
 url="https://github.com/3b1b/manim"
