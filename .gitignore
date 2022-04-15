@@ -1,0 +1,4 @@
+src/
+*.tar.zst
+pkg/
+discord-update-skip/

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+post_install() {
+  echo -e "\e[32mUse the 'discord-update-skip' to patch your Discord config file."
+  echo -e "This command only needs to run once, after which you can remove the package.\e[0m"
+}

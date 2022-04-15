@@ -1,0 +1,16 @@
+pkgbase = discord-update-skip-git
+	pkgdesc = A simple script to fix Discord wanting to update while the update isn't in the repos.
+	pkgver = r2.b860122
+	pkgrel = 1
+	url = https://github.com/n3oney/discord-update-skip
+	install = discord-update-skip.install
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = jq
+	depends = discord
+	depends = bash
+	source = git+https://github.com/n3oney/discord-update-skip.git#branch=stable
+	sha256sums = SKIP
+
+pkgname = discord-update-skip-git
