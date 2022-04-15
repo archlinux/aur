@@ -1,13 +1,13 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=cdir-git
 pkgver=1.3.r48.a2e4ad8
-pkgrel=2
+pkgrel=3
 pkgdesc="A faster way to navigate folders and browse files in Windows and Linux shells."
 arch=('any')
 url="https://github.com/EskelinenAntti/cdir"
 license=('MIT')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('git' 'python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/EskelinenAntti/cdir.git')
@@ -20,12 +20,12 @@ pkgver() {
 
 build() {
   cd "$srcdir/${pkgname%-git}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/${pkgname%-git}"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 }
