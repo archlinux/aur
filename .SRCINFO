@@ -1,6 +1,6 @@
 pkgbase = python-simplematrixbotlib
 	pkgdesc = An easy to use bot library for the Matrix ecosystem written in Python
-	pkgver = 2.6.2
+	pkgver = 2.6.3
 	pkgrel = 1
 	url = https://github.com/i10b/simplematrixbotlib
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = python-simplematrixbotlib
 	depends = python-pillow
 	depends = python-markdown
 	depends = python-toml
-	source = simplematrixbotlib-2.6.2.tar.gz::https://github.com/i10b/simplematrixbotlib/archive/refs/tags/v2.6.2.tar.gz
-	sha256sums = 8b6be75804c9ad54faf39cbc08b60ee9cca61373fba415722d632825fb966620
+	source = simplematrixbotlib-2.6.3.tar.gz::https://github.com/i10b/simplematrixbotlib/archive/refs/tags/v2.6.3.tar.gz
+	sha256sums = 63b889140455ac9075445185b16e07159e065751a8e009c8f566c91a7670bcd3
 
 pkgname = python-simplematrixbotlib

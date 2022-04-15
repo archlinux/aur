@@ -2,7 +2,7 @@
 
 _pkgname=simplematrixbotlib
 pkgname="python-$_pkgname"
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
 pkgdesc="An easy to use bot library for the Matrix ecosystem written in Python"
 arch=(any)
@@ -14,7 +14,7 @@ depends=('python-matrix-nio' 'python-cryptography-fernet-wrapper' 'python-pillow
          'python-toml')
 checkdepends=('python-pytest')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('8b6be75804c9ad54faf39cbc08b60ee9cca61373fba415722d632825fb966620')
+sha256sums=('63b889140455ac9075445185b16e07159e065751a8e009c8f566c91a7670bcd3')
 
 build() {
 	cd "$_pkgname-$pkgver"
