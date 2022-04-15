@@ -1,11 +1,14 @@
 pkgbase = python-app_paths
 	pkgdesc = Like appdirs, but with pathlib, path creation and async support.
 	pkgver = 0.0.7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/alexdelorenzo/app_paths
 	arch = any
 	license = LGPL3
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python-strenum
 	depends = python-aiopath
 	depends = python-anyio
