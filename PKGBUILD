@@ -1,15 +1,14 @@
 pkgname=briar-desktop-git
 _pkgname=briar-desktop
-pkgver=r385.22ef2f3
-pkgrel=2
+pkgver=r389.d48afe8
+pkgrel=1
 _build_type=nightly
 pkgdesc='Prototyping the next generation for Briar on desktop devices'
 arch=('x86_64' 'aarch64' 'armv7h')
 url="https://code.briarproject.org/briar/briar-desktop"
 license=('GPL')
-# let's limit it to <18 just in case 18 comes out sooner than expected (causing our hard java-17-path to cause trouble):
-depends=('java-runtime>=17' 'java-runtime<18' 'bash')
-makedepends=('git' 'jdk-openjdk>=17' 'jdk-openjdk<18')
+depends=('java-runtime=17' 'bash')
+makedepends=('git' 'java-environment=17')
 conflicts=('briar-desktop')
 source=("${_pkgname}::git+https://code.briarproject.org/briar/${_pkgname}.git"
         "briar::git+https://code.briarproject.org/briar/briar"
