@@ -4,7 +4,7 @@
 pkgname=cope-git
 _gitname=cope
 pkgver=170.0dc82a9
-pkgrel=1
+pkgrel=2
 pkgdesc='A colourful wrapper for terminal programs'
 url=http://stuff.cytzol.org/cope/
 arch=(any)
@@ -17,7 +17,7 @@ conflicts=($_gitname)
 provides=($_gitname)
 install="${pkgname}.install"
 
-source=("git://github.com/lotrfan/${_gitname}.git")
+source=("git+https://github.com/lotrfan/${_gitname}.git")
 md5sums=('SKIP')
 
 pkgver() {

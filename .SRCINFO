@@ -1,7 +1,7 @@
 pkgbase = cope-git
 	pkgdesc = A colourful wrapper for terminal programs
 	pkgver = 170.0dc82a9
-	pkgrel = 1
+	pkgrel = 2
 	url = http://stuff.cytzol.org/cope/
 	install = cope-git.install
 	arch = any
@@ -21,8 +21,7 @@ pkgbase = cope-git
 	depends = perl-module-install
 	provides = cope
 	conflicts = cope
-	source = git://github.com/lotrfan/cope.git
+	source = git+https://github.com/lotrfan/cope.git
 	md5sums = SKIP
 
 pkgname = cope-git
-
