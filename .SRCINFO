@@ -1,51 +1,51 @@
 pkgbase = linux-hardened-versioned-bin
 	pkgdesc = The Security-Hardened Linux kernel and modules | repackaged with a unique package name for each version
-	pkgver = 5.16.18.hardened1
+	pkgver = 5.16.20.hardened1
 	pkgrel = 1
 	url = https://github.com/anthraxx/linux-hardened
 	arch = x86_64
 	license = GPL2
-	noextract = linux-hardened-5.16.18.hardened1-1-x86_64.pkg.tar.zst
-	noextract = linux-hardened-headers-5.16.18.hardened1-1-x86_64.pkg.tar.zst
-	noextract = linux-hardened-docs-5.16.18.hardened1-1-x86_64.pkg.tar.zst
+	noextract = linux-hardened-5.16.20.hardened1-1-x86_64.pkg.tar.zst
+	noextract = linux-hardened-headers-5.16.20.hardened1-1-x86_64.pkg.tar.zst
+	noextract = linux-hardened-docs-5.16.20.hardened1-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://syd.mirror.rackspace.com/archlinux/extra/os/x86_64/linux-hardened-5.16.18.hardened1-1-x86_64.pkg.tar.zst
-	source = https://syd.mirror.rackspace.com/archlinux/extra/os/x86_64/linux-hardened-headers-5.16.18.hardened1-1-x86_64.pkg.tar.zst
-	source = https://syd.mirror.rackspace.com/archlinux/extra/os/x86_64/linux-hardened-docs-5.16.18.hardened1-1-x86_64.pkg.tar.zst
-	sha256sums = 7035929864cf3ae552ab07401c847e6c064f392dff263dd0e4eb5bd121b73a10
-	sha256sums = 6e314658a7b03926e4f471a427e36f95e493c71d01bf61b30b270d55a0a35864
-	sha256sums = 6e871576810d344bcac03b056871d4c9c7858d0139d4d12a0101e851c6a15320
+	source = https://syd.mirror.rackspace.com/archlinux/extra/os/x86_64/linux-hardened-5.16.20.hardened1-1-x86_64.pkg.tar.zst
+	source = https://syd.mirror.rackspace.com/archlinux/extra/os/x86_64/linux-hardened-headers-5.16.20.hardened1-1-x86_64.pkg.tar.zst
+	source = https://syd.mirror.rackspace.com/archlinux/extra/os/x86_64/linux-hardened-docs-5.16.20.hardened1-1-x86_64.pkg.tar.zst
+	sha256sums = 547122cf366ccb4077040acb3783eb2d7ed534225e797a6b460c81f96bd69a9f
+	sha256sums = 5c72012505ba83a4f93047c0b392517ed177696e4be02a0a4fc2decf9065fc9d
+	sha256sums = eb379e7ffea4a5d48b5bdbc5c51525c41b696bdd40fdba38723e18140d7c7011
 
 pkgname = linux-hardened-versioned-bin
-	pkgdesc = Dummy package depending on linux5.16.18.hardened1-1-hardened-bin
-	depends = linux5.16.18.hardened1-1-hardened-bin
+	pkgdesc = Metapackage depending on linux5.16.20.hardened1-1-hardened-bin
+	depends = linux5.16.20.hardened1-1-hardened-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-hardened-versioned-headers-bin
-	pkgdesc = Dummy package depending on linux5.16.18.hardened1-1-hardened-headers-bin
-	depends = linux5.16.18.hardened1-1-hardened-headers-bin
+	pkgdesc = Metapackage depending on linux5.16.20.hardened1-1-hardened-headers-bin
+	depends = linux5.16.20.hardened1-1-hardened-headers-bin
 
 pkgname = linux-hardened-versioned-docs-bin
-	pkgdesc = Dummy package depending on linux5.16.18.hardened1-1-hardened-docs-bin
-	depends = linux5.16.18.hardened1-1-hardened-docs-bin
+	pkgdesc = Metapackage depending on linux5.16.20.hardened1-1-hardened-docs-bin
+	depends = linux5.16.20.hardened1-1-hardened-docs-bin
 
-pkgname = linux5.16.18.hardened1-1-hardened-bin
-	pkgdesc = The Security-Hardened Linux kernel and modules, version 5.16.18-hardened1-1-hardened
+pkgname = linux5.16.20.hardened1-1-hardened-bin
+	pkgdesc = The Security-Hardened Linux kernel and modules, version 5.16.20-hardened1-1-hardened
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
-	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 	optdepends = usbctl: deny_new_usb control
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 	conflicts = linux-hardened
 
-pkgname = linux5.16.18.hardened1-1-hardened-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Security-Hardened Linux kernel 5.16.18-hardened1-1-hardened
+pkgname = linux5.16.20.hardened1-1-hardened-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Security-Hardened Linux kernel 5.16.20-hardened1-1-hardened
 	depends = pahole
 	conflicts = linux-hardened-headers
 
-pkgname = linux5.16.18.hardened1-1-hardened-docs-bin
-	pkgdesc = Documentation for the Security-Hardened Linux kernel 5.16.18-hardened1-1-hardened
+pkgname = linux5.16.20.hardened1-1-hardened-docs-bin
+	pkgdesc = Documentation for the Security-Hardened Linux kernel 5.16.20-hardened1-1-hardened
 	conflicts = linux-hardened-docs

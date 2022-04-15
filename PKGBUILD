@@ -1,11 +1,11 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-hardened
-_pkgver=5.16.18.hardened1
-_kernver=5.16.18
+_pkgver=5.16.20.hardened1
+_kernver=5.16.20
 _hardenedver=hardened1
 _pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
-_KERNNAME=5.16.18-hardened1-1-hardened
+_KERNNAME=5.16.20-hardened1-1-hardened
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}-hardened"
 pkgname=("${_pkgname}-versioned-bin"
          "${_pkgname}-versioned-headers-bin"
@@ -44,35 +44,35 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('7035929864cf3ae552ab07401c847e6c064f392dff263dd0e4eb5bd121b73a10'
-            '6e314658a7b03926e4f471a427e36f95e493c71d01bf61b30b270d55a0a35864'
-            '6e871576810d344bcac03b056871d4c9c7858d0139d4d12a0101e851c6a15320')
+sha256sums=('547122cf366ccb4077040acb3783eb2d7ed534225e797a6b460c81f96bd69a9f'
+            '5c72012505ba83a4f93047c0b392517ed177696e4be02a0a4fc2decf9065fc9d'
+            'eb379e7ffea4a5d48b5bdbc5c51525c41b696bdd40fdba38723e18140d7c7011')
 
 package_linux-hardened-versioned-bin() {
-  pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
+  pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
   depends=("${_versioned_pkgname}-bin")
   optdepends=('grub-hook: to run grub-mkconfig when kernels are added/removed')
 }
 
 package_linux-hardened-versioned-headers-bin() {
-  pkgdesc="Dummy package depending on ${_versioned_pkgname}-headers-bin"  
+  pkgdesc="Metapackage depending on ${_versioned_pkgname}-headers-bin"  
   depends=("${_versioned_pkgname}-headers-bin")
 }
 
 package_linux-hardened-versioned-docs-bin() {
-  pkgdesc="Dummy package depending on ${_versioned_pkgname}-docs-bin"  
+  pkgdesc="Metapackage depending on ${_versioned_pkgname}-docs-bin"  
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.16.18.hardened1-1-hardened-bin() {
+package_linux5.16.20.hardened1-1-hardened-bin() {
   pkgdesc="The Security-Hardened Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
            kmod)
   conflicts=("${_pkgname}")
-  optdepends=('crda: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices'
-              'usbctl: deny_new_usb control')
+  optdepends=('linux-firmware: firmware images needed for some devices'
+              'usbctl: deny_new_usb control'
+              'wireless-regdb: to set the correct wireless channels of your country')
   provides=(VIRTUALBOX-GUEST-MODULES
             WIREGUARD-MODULE)
   tar -xf "${_kernpkg}" -C "${pkgdir}"
@@ -80,7 +80,7 @@ package_linux5.16.18.hardened1-1-hardened-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux5.16.18.hardened1-1-hardened-headers-bin() {
+package_linux5.16.20.hardened1-1-hardened-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Security-Hardened Linux kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -89,7 +89,7 @@ package_linux5.16.18.hardened1-1-hardened-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.16.18.hardened1-1-hardened-docs-bin() {
+package_linux5.16.20.hardened1-1-hardened-docs-bin() {
   pkgdesc="Documentation for the Security-Hardened Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
