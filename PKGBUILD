@@ -1,6 +1,6 @@
 # Maintainer: Gaoyang Zhang <gy@blurgy.xyz>
 pkgname=dt-cli
-pkgver=0.7.7
+pkgver=0.7.8
 pkgrel=1
 epoch=
 pkgdesc="Dotfile management and templating client"
@@ -27,7 +27,7 @@ source=(
     "https://github.com/blurgyy/dt/archive/refs/tags/v${pkgver}.tar.gz"
 )
 b2sums=(
-    'b19a9ca67820b1eb7059e1294821e331c8e9dd0771730eae7766110d941a187017ad0ef1433042d322e97b88ec9c2c8f1c19a182d83aa7d5f335f50185411f90'
+    '300d80c414afbcbbdfb9e943aa6cdbd3902ff600c82ef7916893389f25734ce495d3ee3e497b20b6474ab3f290f89c933c3b86064f2b22907f8b7ba0b7ba65ba'
 )
 noextract=()
 validpgpkeys=()
