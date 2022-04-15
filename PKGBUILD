@@ -8,7 +8,7 @@ pkgname=(
     'docspell-restserver'
     # 'firefox-extension-docspell'
 )
-pkgver=0.34.0
+pkgver=0.35.0
 pkgrel=1
 changelog=.CHANGELOG
 arch=('any')
@@ -25,8 +25,8 @@ source=("$pkgbase-$pkgver-restserver.zip::https://github.com/eikek/$pkgbase/rele
         "${pkgname[1]}.service"
         "$pkgbase.sysusers"
         "$pkgbase.tmpfiles")
-sha512sums=('d5f04691cceeab40297486c5a63814bdebbcc16141320ed209aeadccd71fe628095108e78f45c8cc09227750566737f0ddaf575af539b29b2d4e0cc86f88df1f'
-            '39656b9518d407a812a04b2385a49db3f27e758788e9b2e883ad5c77a98a0f37ad066e466a68c36f4dafddd2285ad3b2f8e808c2ea31a3f745de40bf4aafaa72'
+sha512sums=('03c29764ae405910618e28d97e3643ec745cceb3fc5271a24947b1ac63d0ca88f66c218287d4c39e20bcc1326a344c65daef89ea2046ea72c1c89df647a884ed'
+            'dba474bfc5613cc67997d9dca2f49e6b87126ef915ed1babbf46c7b63d073266e5075df198fa7e73ad274fbab98303edf12b50f162933db0f5eaf7bf7314f520'
             '6ab8b24eb76f02b68e4fa4194b8771ef4f57c8375b34bf7bf914563528e347ea127beb5547e432910911d4fd15982cccdd1df50aeb76058129b909824ce49093'
             '0b8b08f47f1cb46a3bfc16df4b0574cebfb4a851562d134fcba3c4bf80fb011443499a549c3a04480456c048346d09f36fbcbc9d792810001c9c8b370d3926a8'
             'c1a7a9cb942413d0febb083554a15ded0ead5c7124624f0ec5fe43d3bc73a1637f89bc27f7b6e0bbdbd0d886799e5331beb5f45f476db70b69ae17c0d803f004'
