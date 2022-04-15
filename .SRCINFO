@@ -1,52 +1,52 @@
 pkgbase = linux-versioned-bin
 	pkgdesc = The Linux kernel and modules | repackaged with a unique package name for each version
-	pkgver = 5.17.1.arch1
+	pkgver = 5.17.3.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v5.17.1-arch1
+	url = https://github.com/archlinux/linux/commits/v5.17.3-arch1
 	arch = x86_64
 	license = GPL2
-	noextract = linux-5.17.1.arch1-1-x86_64.pkg.tar.zst
-	noextract = linux-headers-5.17.1.arch1-1-x86_64.pkg.tar.zst
-	noextract = linux-docs-5.17.1.arch1-1-x86_64.pkg.tar.zst
+	noextract = linux-5.17.3.arch1-1-x86_64.pkg.tar.zst
+	noextract = linux-headers-5.17.3.arch1-1-x86_64.pkg.tar.zst
+	noextract = linux-docs-5.17.3.arch1-1-x86_64.pkg.tar.zst
 	options = !strip
-	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-5.17.1.arch1-1-x86_64.pkg.tar.zst
-	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-headers-5.17.1.arch1-1-x86_64.pkg.tar.zst
-	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-docs-5.17.1.arch1-1-x86_64.pkg.tar.zst
-	sha256sums = 2c2afae0022878162ce76f9cde66780364e02f2b75773d8610745dafd1e2905f
-	sha256sums = 246376e19274c0cc48de835635209e51d46a6820f5051d7c543b7028d48116a3
-	sha256sums = aec5f3a4216a2783251c06496ee09e2c74c4e4ee252fc830cef2cdcb91318e18
+	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-5.17.3.arch1-1-x86_64.pkg.tar.zst
+	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-headers-5.17.3.arch1-1-x86_64.pkg.tar.zst
+	source = https://syd.mirror.rackspace.com/archlinux/core/os/x86_64/linux-docs-5.17.3.arch1-1-x86_64.pkg.tar.zst
+	sha256sums = 73b143d112612cd9054537608675675bf4993659bf25b33913b15c1782b75efb
+	sha256sums = c8041b68b481873a4c781a90369ece795f5f5dbe3214b03df89efed412309235
+	sha256sums = 6b1a2478192c297208abdf05131931b5d244d4fad41ec672a18a7fde40dda580
 
 pkgname = linux-versioned-bin
-	pkgdesc = Dummy package depending on linux5.17.1.arch1-1-bin
-	depends = linux5.17.1.arch1-1-bin
+	pkgdesc = Metapackage depending on linux5.17.3.arch1-1-bin
+	depends = linux5.17.3.arch1-1-bin
 	optdepends = grub-hook: to run grub-mkconfig when kernels are added/removed
 
 pkgname = linux-versioned-headers-bin
-	pkgdesc = Dummy package depending on linux5.17.1.arch1-1-headers-bin
-	depends = linux5.17.1.arch1-1-headers-bin
+	pkgdesc = Metapackage depending on linux5.17.3.arch1-1-headers-bin
+	depends = linux5.17.3.arch1-1-headers-bin
 
 pkgname = linux-versioned-docs-bin
-	pkgdesc = Dummy package depending on linux5.17.1.arch1-1-docs-bin
-	depends = linux5.17.1.arch1-1-docs-bin
+	pkgdesc = Metapackage depending on linux5.17.3.arch1-1-docs-bin
+	depends = linux5.17.3.arch1-1-docs-bin
 
-pkgname = linux5.17.1.arch1-1-bin
-	pkgdesc = The Linux kernel and modules, version 5.17.1-arch1-1
+pkgname = linux5.17.3.arch1-1-bin
+	pkgdesc = The Linux kernel and modules, version 5.17.3-arch1-1
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
-	optdepends = crda: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
 	conflicts = linux
 	replaces = virtualbox-guest-modules-arch
 	replaces = wireguard-arch
 
-pkgname = linux5.17.1.arch1-1-headers-bin
-	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.17.1-arch1-1
+pkgname = linux5.17.3.arch1-1-headers-bin
+	pkgdesc = Headers and scripts for building modules for the Linux kernel 5.17.3-arch1-1
 	depends = pahole
 	conflicts = linux-headers
 
-pkgname = linux5.17.1.arch1-1-docs-bin
-	pkgdesc = Documentation for the Linux kernel 5.17.1-arch1-1
+pkgname = linux5.17.3.arch1-1-docs-bin
+	pkgdesc = Documentation for the Linux kernel 5.17.3-arch1-1
 	conflicts = linux-docs

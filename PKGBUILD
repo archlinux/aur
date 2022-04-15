@@ -1,10 +1,10 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux
-_kernver=5.17.1
+_kernver=5.17.3
 _archver=arch1
 _pkgrel=1
 _pkgver="${_kernver}.${_archver}"
-_KERNNAME=5.17.1-arch1-1
+_KERNNAME=5.17.3-arch1-1
 pkgbase="${_pkgname}-versioned-bin"
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}"
 pkgname=("${_pkgname}-versioned-bin"
@@ -16,7 +16,7 @@ pkgname=("${_pkgname}-versioned-bin"
 pkgver=${_pkgver}
 pkgrel=${_pkgrel}
 pkgdesc="The Linux kernel and modules | repackaged with a unique package name for each version"
-url="https://github.com/archlinux/linux/commits/v5.17.1-arch1"
+url="https://github.com/archlinux/linux/commits/v5.17.3-arch1"
 arch=(x86_64)
 license=(GPL2)
 options=('!strip')
@@ -44,34 +44,34 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('2c2afae0022878162ce76f9cde66780364e02f2b75773d8610745dafd1e2905f'
-            '246376e19274c0cc48de835635209e51d46a6820f5051d7c543b7028d48116a3'
-            'aec5f3a4216a2783251c06496ee09e2c74c4e4ee252fc830cef2cdcb91318e18')
+sha256sums=('73b143d112612cd9054537608675675bf4993659bf25b33913b15c1782b75efb'
+            'c8041b68b481873a4c781a90369ece795f5f5dbe3214b03df89efed412309235'
+            '6b1a2478192c297208abdf05131931b5d244d4fad41ec672a18a7fde40dda580')
 
 package_linux-versioned-bin() {
-  pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
+  pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
   depends=("${_versioned_pkgname}-bin")
   optdepends=('grub-hook: to run grub-mkconfig when kernels are added/removed')
 }
 
 package_linux-versioned-headers-bin() {
-  pkgdesc="Dummy package depending on ${_versioned_pkgname}-headers-bin"  
+  pkgdesc="Metapackage depending on ${_versioned_pkgname}-headers-bin"  
   depends=("${_versioned_pkgname}-headers-bin")
 }
 
 package_linux-versioned-docs-bin() {
-  pkgdesc="Dummy package depending on ${_versioned_pkgname}-docs-bin"  
+  pkgdesc="Metapackage depending on ${_versioned_pkgname}-docs-bin"  
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.17.1.arch1-1-bin() {
+package_linux5.17.3.arch1-1-bin() {
   pkgdesc="The Linux kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
            kmod)
   conflicts=("${_pkgname}")
-  optdepends=('crda: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices')
+  optdepends=('linux-firmware: firmware images needed for some devices'
+              'wireless-regdb: to set the correct wireless channels of your country')
   provides=(VIRTUALBOX-GUEST-MODULES
             WIREGUARD-MODULE)
   replaces=(virtualbox-guest-modules-arch
@@ -81,7 +81,7 @@ package_linux5.17.1.arch1-1-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux5.17.1.arch1-1-headers-bin() {
+package_linux5.17.3.arch1-1-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -90,7 +90,7 @@ package_linux5.17.1.arch1-1-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.17.1.arch1-1-docs-bin() {
+package_linux5.17.3.arch1-1-docs-bin() {
   pkgdesc="Documentation for the Linux kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
