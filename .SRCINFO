@@ -1,15 +1,20 @@
 pkgbase = python-strenum
 	pkgdesc = A Python Enum that inherits from str.
 	pkgver = 0.4.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/irgeek/StrEnum
 	arch = any
 	license = MIT
+	checkdepends = python-pytest-black
+	checkdepends = python-pytest-cov
+	checkdepends = python-pytest-pylint
+	checkdepends = python-pytest-runner
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/S/StrEnum/StrEnum-0.4.7.tar.gz
-	source = https://raw.githubusercontent.com/irgeek/StrEnum/v0.4.7/LICENSE
-	sha256sums = 6019e9cc1738af6a236c022b82184372178ecadf12438f11f5b680a02a462377
-	sha256sums = bcd733d0a46522162b95dbab61f7cdc1c3e36861dfa127d68a4435240d36ad36
+	source = StrEnum-0.4.7.tar.gz::https://github.com/irgeek/StrEnum/archive/refs/tags/v0.4.7.tar.gz
+	sha256sums = 996e2ebf5eab505dbfdf2c03ea0c54753dde352e1aa31a930b0e917962bedd2f
 
 pkgname = python-strenum
