@@ -12,6 +12,7 @@ pkgbase = surfshark-wireguard-git
 	provides = surfshark-wireguard
 	source = git+https://github.com/kyndair/linux-surfshark-wireguard.git
 	source = https://addons.mozilla.org/user-media/addon_icons/963/963216-64.png
+	source = surfshark-wireguard.desktop
 	sha256sums = SKIP
 	sha256sums = df9dda0009bf36dec4caf5de47f07ad36d12fe7b96ba2faa22448f5e124bc012
 
