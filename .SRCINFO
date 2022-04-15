@@ -1,0 +1,22 @@
+pkgbase = deepin-diskmanager-git
+	pkgdesc = A disk management tool for creating, reorganizing and formatting partitions
+	pkgver = r526.e2caf0d
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/deepin-diskmanager
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-tools
+	makedepends = cmake
+	makedepends = git
+	makedepends = gtest
+	depends = dtkwidget
+	depends = parted
+	depends = polkit-qt5
+	depends = smartmontools
+	depends = hicolor-icon-theme
+	provides = deepin-diskmanager
+	conflicts = deepin-diskmanager
+	source = git+https://github.com/linuxdeepin/deepin-diskmanager.git
+	sha512sums = SKIP
+
+pkgname = deepin-diskmanager-git
