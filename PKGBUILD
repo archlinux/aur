@@ -1,6 +1,6 @@
 pkgname=briar-desktop
 pkgver=0.2.0.beta
-pkgrel=1
+pkgrel=2
 _bin_ver=0.2.0
 _build_type=beta
 pkgdesc='Prototyping the next generation for Briar on desktop devices'
@@ -78,4 +78,7 @@ EOF
 
   install -Dm644 ${srcdir}/$pkgname.desktop \
     "$pkgdir/usr/share/applications/$pkgname.desktop"
+
+  install -Dm644 ${srcdir}/${pkgname}/src/appResources/linux/org.briarproject.Briar.metainfo.xml \
+    "$pkgdir/usr/share/metainfo/org.briarproject.Briar.metainfo.xml"
 }
