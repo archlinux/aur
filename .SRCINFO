@@ -1,7 +1,7 @@
 pkgbase = pa-notify
 	pkgdesc = PulseAudio volume notification
 	pkgver = 1.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ikrivosheev/pa-notify
 	arch = x86_64
 	license = MIT
