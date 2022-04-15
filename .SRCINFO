@@ -1,10 +1,12 @@
 pkgbase = ognibuild
 	pkgdesc = Detect and invoke build systems
 	pkgver = 0.0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://jelmer.uk/code/ognibuild
 	arch = any
 	license = GPL2
+	makedepends = python-build
+	makedepends = python-installer
 	depends = breezy
 	depends = python-buildlog-consultant
 	depends = python-requirements-parser
