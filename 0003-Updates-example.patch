@@ -1,0 +1,24 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Michael Herold <quabla@hemio.de>
+Date: Fri, 10 Jun 2016 00:49:06 +0200
+Subject: [PATCH] Updates example
+
+---
+ README.md | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/README.md b/README.md
+index a37d640..f13e280 100644
+--- a/README.md
++++ b/README.md
+@@ -47,8 +47,8 @@ Quick example:
+ ``` {.php}
+ <?php
+ sd_journal_send('MESSAGE=Hello world.');
+-sd_journal_send('MESSAGE=Hello, again, world.', 'FIELD2=Greetings!', 'FIELD3=Guten tag.');
+-sd_journal_send('ARBITRARY=anything', 'FIELD3=Greetings!');
++// message with priority "3" (warning) and identifier (also called *TAG*) set to "appname" 
++sd_journal_send('MESSAGE=Error message','PRIORITY=3', 'SYSLOG_IDENTIFIER=appname');"
+ ```
+ 
+ Notes:

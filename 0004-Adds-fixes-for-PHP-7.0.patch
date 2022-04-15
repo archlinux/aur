@@ -1,0 +1,42 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Michael Herold <quabla@hemio.de>
+Date: Fri, 10 Jun 2016 21:53:54 +0200
+Subject: [PATCH] Adds fixes for PHP 7.0
+
+---
+ systemd.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/systemd.c b/systemd.c
+index 9479556..1eaf98b 100644
+--- a/systemd.c
++++ b/systemd.c
+@@ -30,11 +30,11 @@ ZEND_GET_MODULE(systemd)
+ PHP_FUNCTION(sd_journal_send)
+ {
+     struct iovec *iov = NULL;
+-    zval ***args;
++    zval *args;
+     int argc, len, i;
+     char *val;
+     
+-    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "+", &args, &argc) != SUCCESS) {
++    if (zend_parse_parameters(ZEND_NUM_ARGS(), "+", &args, &argc) != SUCCESS) {
+         return;
+     }
+     
+@@ -46,10 +46,10 @@ PHP_FUNCTION(sd_journal_send)
+     }
+ 
+     // Iterate through the PHP arguments and fill the iovector.
+-    for (i = 0; i < ZEND_NUM_ARGS() TSRMLS_CC; ++i) {
+-        convert_to_string_ex(args[i]);
+-        val = Z_STRVAL_PP(args[i]);
+-        len = Z_STRLEN_PP(args[i]);
++    for (i = 0; i < argc; ++i) {
++        convert_to_string_ex(&args[i]);
++        val = Z_STRVAL(args[i]);
++        len = Z_STRLEN(args[i]);
+         iov[i].iov_base = val;
+         iov[i].iov_len = len;
+     }

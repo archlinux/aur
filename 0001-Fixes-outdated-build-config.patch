@@ -1,0 +1,48 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Michael Herold <quabla@hemio.de>
+Date: Fri, 10 Jun 2016 00:16:12 +0200
+Subject: [PATCH] Fixes outdated build config
+
+Build working on debian stretch
+---
+ README.md | 4 +++-
+ config.m4 | 4 ++--
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/README.md b/README.md
+index e181798..cd80bef 100644
+--- a/README.md
++++ b/README.md
+@@ -6,7 +6,9 @@ PHP extension allowing native interaction with systemd and journald
+ Installation
+ ============
+ 
+-    sudo yum install -y php-devel systemd-devel
++    sudo dnf install php-devel systemd-devel
++    sudo apt install php5-dev  libsystemd-dev
++
+     phpize
+     ./configure --with-systemd
+     make
+diff --git a/config.m4 b/config.m4
+index 728c1b3..de64f36 100644
+--- a/config.m4
++++ b/config.m4
+@@ -5,7 +5,7 @@ PHP_ARG_WITH(systemd, enable support for systemd,
+ if test "$PHP_SYSTEMD" != "no"; then
+ 
+   SEARCH_PATH="/usr /usr/local"
+-  SEARCH_FOR="/include/sd-journal.h"
++  SEARCH_FOR="/include/systemd/sd-journal.h"
+ 
+   SYSTEMD_DIR=
+ 
+@@ -32,7 +32,7 @@ if test "$PHP_SYSTEMD" != "no"; then
+ 
+   PHP_ADD_INCLUDE($SYSTEMD_DIR/include)
+ 
+-  LIBNAME=systemd-journal
++  LIBNAME=systemd
+   LIBSYMBOL=sd_journal_sendv
+ 
+   if test "x$PHP_LIBDIR" = "x"; then

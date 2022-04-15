@@ -1,0 +1,22 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bj=C3=B6rn=20Bidar?= <theodorstormgrade@gmail.com>
+Date: Sat, 27 Mar 2021 19:24:32 +0200
+Subject: [PATCH] Define SD_JOURNAL_SUPPRESS_LOCATION. Fixes #2
+
+---
+ php_systemd.h | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/php_systemd.h b/php_systemd.h
+index 2e2f2e6..14c1f72 100644
+--- a/php_systemd.h
++++ b/php_systemd.h
+@@ -8,4 +8,8 @@ PHP_FUNCTION(sd_journal_send);
+ extern zend_module_entry systemd_module_entry;
+ #define phpext_systemd_ptr &systemd_module_entry
+ 
++#ifndef SD_JOURNAL_SUPPRESS_LOCATION
++#define SD_JOURNAL_SUPPRESS_LOCATION 1
++#endif
++
+ #endif

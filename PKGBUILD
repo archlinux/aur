@@ -3,7 +3,7 @@
 
 pkgname=php-systemd
 pkgver=0.1.2
-pkgrel=5
+pkgrel=6
 
 pkgdesc="PHP extension allowing native interaction with systemd and its journal"
 arch=("any")
@@ -13,26 +13,35 @@ makedepends=("php"
             "systemd")
 depends=("libsystemd")
 backup=("etc/php/conf.d/systemd.ini")
-
-source=("https://github.com/systemd/php-systemd/archive/release-${pkgver}.zip" 
-        "php7-support.patch" 
-        "fix-systemd-include-path.patch"
-        "fix-file-macro.patch"
+source=("https://github.com/systemd/php-systemd/archive/release-${pkgver}.zip"
+        '0001-Fixes-outdated-build-config.patch'
+        '0002-Updates-build-instructions-and-example.patch'
+        '0003-Updates-example.patch'
+        '0004-Adds-fixes-for-PHP-7.0.patch'
+        '0005-Define-SD_JOURNAL_SUPPRESS_LOCATION.-Fixes-2.patch'
+        '0006-Provide-arginfo.patch'
         "systemd.ini")
-sha512sums=('c2d8ec02b49630ebf51106f6113674b4bed130ae92a1e87b9349f90f28fa3b5f435efd5e4f86e76265aa27b5ef864ef0100f20b8a2e9b7f65c5612a35948b9c7'
-            '550f8068e5d0ea0f7af40164f8fc19ccf0453ec2ac07aa32d9ea09786888cb86c0b42c10258b3c7ebed80cdb3cac447e1a1e80a0407f59d68932cd454ed6cf10'
-            '9c83e357e5ff160120d004c2abe8c9f4c34043a3f2962d55a4801f79fc14e06b023f3af793d89b43a201164fbe96c74c8dcfd427f40201fe44acb232b2d77271'
-            '67c275c76a478792ea1c68a908ef81a6ef72da9d7b1dd7f9c382d9f5cc672b47f5d48ab288a064f73831e90fc4d91adfb23d86b70ded61073cfa3fa2338a9dca'
-            '86155fd1ea7eec8e6d1dfb292633c7731df1180bbb9988bb409a9bc0316fb597f5398e6956788bb3fb9bad15612fceef7742b877af0996e4c255d2952628b3e4')
+md5sums=('986a24e147ae2a816ee315edb0b2e856'
+         'db88453f4d1c254be84c941961b2e5bc'
+         '04f8dec9d734456468acf258e36edb29'
+         '7f91d23f7c029668ee2929acc4558524'
+         'ba5e6ce2dc5cf74736b1d811b7e57ead'
+         'ed934935ee94b7544f6ffdf8232c9695'
+         'd9ce19b36ddd0edda815be3022356473'
+         '2ad951af42f6957ac3bc1ff4f151e363')
+
 
 
 
 prepare() {
   cd ${srcdir}/${pkgname}-release-${pkgver}
-  patch -p0 < ../fix-systemd-include-path.patch
-  patch -p0 < ../php7-support.patch
-  patch -p0 < ../fix-file-macro.patch
-  sed -ie 's/ZEND_NUM_ARGS() TSRMLS_CC/ZEND_NUM_ARGS()/' systemd.c
+
+  patch -p1 -i "${srcdir}/0001-Fixes-outdated-build-config.patch"
+  patch -p1 -i "${srcdir}/0002-Updates-build-instructions-and-example.patch"
+  patch -p1 -i "${srcdir}/0003-Updates-example.patch"
+  patch -p1 -i "${srcdir}/0004-Adds-fixes-for-PHP-7.0.patch"
+  patch -p1 -i "${srcdir}/0005-Define-SD_JOURNAL_SUPPRESS_LOCATION.-Fixes-2.patch"patch -p1 -i "${srcdir}/0006-Provide-arginfo.patch"
+
   phpize
 }
 
