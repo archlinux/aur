@@ -1,6 +1,6 @@
 pkgbase = transfer-git
 	pkgdesc = Large file transfer tool with multiple file transfer services support
-	pkgver = r72.6da9944
+	pkgver = r74.7a44ca3
 	pkgrel = 1
 	url = https://github.com/Mikubill/transfer
 	arch = any

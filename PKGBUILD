@@ -1,6 +1,6 @@
 # Maintainer: tkit <ch1994@outlook.com>
 pkgname=transfer-git
-pkgver=r72.6da9944
+pkgver=r74.7a44ca3
 pkgrel=1
 pkgdesc="Large file transfer tool with multiple file transfer services support"
 arch=('any')
