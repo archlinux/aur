@@ -2,7 +2,7 @@
 pkgname=surfshark-wireguard-git
 _pkgname=linux-surfshark-wireguard
 pkgver=0.3.1.beta.r1.g92ffcd0
-pkgrel=1
+pkgrel=2
 pkgdesc="Sets-up a vpn interface using wg-quick"
 arch=('any')
 url="https://github.com/kyndair/linux-surfshark-wireguard"
@@ -11,9 +11,11 @@ depends=('wireguard-tools' 'jq' 'curl')
 provides=('surfshark-wireguard')
 install=surfshark-wireguard-git.install
 source=('git+https://github.com/kyndair/linux-surfshark-wireguard.git'
-        'https://addons.mozilla.org/user-media/addon_icons/963/963216-64.png')
+        'https://addons.mozilla.org/user-media/addon_icons/963/963216-64.png'
+        'surfshark-wireguard.desktop')
 sha256sums=('SKIP'
-            'df9dda0009bf36dec4caf5de47f07ad36d12fe7b96ba2faa22448f5e124bc012')
+            'df9dda0009bf36dec4caf5de47f07ad36d12fe7b96ba2faa22448f5e124bc012'
+            '6c757b548423adeedd0e0b3a07ab0eece0e483b795ea760f1de20e683d73492e')
 
 # update the package version to the current git version
 pkgver() {
