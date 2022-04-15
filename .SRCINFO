@@ -1,0 +1,20 @@
+pkgbase = qalculate-qt-git
+	pkgdesc = Qt frontend for libqalculate
+	pkgver = r145.b9ef6df
+	pkgrel = 1
+	url = https://qalculate.github.io/
+	arch = x86_64
+	arch = i686
+	arch = aarch64
+	arch = armv7h
+	license = GPL
+	makedepends = qt6-tools
+	depends = libqalculate-git
+	depends = qt6-svg
+	depends = hicolor-icon-theme
+	provides = qalculate-qt
+	conflicts = qalculate-qt
+	source = git+https://github.com/Qalculate/qalculate-qt.git
+	md5sums = SKIP
+
+pkgname = qalculate-qt-git
