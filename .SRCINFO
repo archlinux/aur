@@ -7,6 +7,7 @@ pkgbase = ognibuild
 	license = GPL2
 	makedepends = python-build
 	makedepends = python-installer
+	makedepends = python-wheel
 	depends = breezy
 	depends = python-buildlog-consultant
 	depends = python-requirements-parser

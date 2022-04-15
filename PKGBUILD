@@ -9,7 +9,7 @@ url="https://jelmer.uk/code/ognibuild"
 license=('GPL2')
 depends=('breezy' 'python-buildlog-consultant' 'python-requirements-parser'
          'python-setuptools' 'python-toml')
-makedepends=('python-build' 'python-installer')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"{,.asc})
 sha256sums=('15d05c36c555b68101ba68a6659f09cdea6a25e06cd4d455dbaecb78bff94cbe'
             'SKIP')
