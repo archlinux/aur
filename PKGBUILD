@@ -3,13 +3,14 @@
 _pkgname=lv2lint
 pkgname="$_pkgname-git"
 pkgver=0.16.0.r1.g9e5f789
-pkgrel=1
+pkgrel=2
 pkgdesc='Check whether a given LV2 plugin is up to the specification (git version)'
 arch=(x86_64)
 url="https://github.com/OpenMusicKontrollers/lv2lint"
 license=(Artistic2.0)
 depends=(glibc libelf)
-makedepends=(curl git lilv meson reuse)
+makedepends=(curl git lilv meson)
+checkdepends=(reuse)
 provides=($_pkgname)
 conflicts=($_pkgname)
 source=("$_pkgname::git+https://github.com/OpenMusicKontrollers/$_pkgname.git"
