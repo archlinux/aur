@@ -1,47 +1,57 @@
-# Maintainer: 0x715C
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: ml <>
+# Contributor: 0x715C
 
 pkgname=alda-git
-_pkgname=alda
-pkgver=2.1.0.r1.ge0fc6be
+pkgver=2.2.1.r0.g798e6df
 pkgrel=1
-pkgdesc='A music programming language for musicians. 🎶'
+pkgdesc='A music programming language for musicians'
 arch=('x86_64')
 url='https://github.com/alda-lang/alda'
-license=('custom:EPL2')
-provides=('alda')
-conflicts=('alda')
-depends=('java-environment>=8')
-makedepends=('fakeroot' 'binutils' 'git' 'go' 'java-environment>=8')
-source=('git+https://github.com/alda-lang/alda')
-sha256sums=('SKIP')
+license=('EPL')
+depends=('bash' 'java-runtime>=8')
+makedepends=('git' 'go' 'gradle')
+source=("$pkgname::git+$url"
+        alda-player)
+sha256sums=('SKIP'
+            '29550c5c69f95d6eba1155e3b45430e205e8a2502f597c8c36b7b5b5a126f900')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/release.//'
+	git -C "$pkgname" describe --long --tags | sed 's/^release-//;s/-/.r/;s/-/./'
+}
+
+prepare() {
+	cd "$pkgname/client"
+	go mod download
 }
 
 build() {
-  #Build alda client
-  cd "$srcdir/$_pkgname/client"
-  go generate
-  go build -trimpath -o ../bin/alda alda.io/client
-  cd ..
+	cd "$pkgname"
+	(
+		cd client
+		export CGO_ENABLED=1
+		export CGO_LDFLAGS="$LDFLAGS"
+		export CGO_CFLAGS="$CFLAGS"
+		export CGO_CPPFLAGS="$CPPFLAGS"
+		export CGO_CXXFLAGS="$CXXFLAGS"
+		export GOFLAGS='-buildmode=pie -modcacherw -trimpath -ldflags=-linkmode=external'
+		go generate
+		go build -o alda
+	)
 
-  #Build alda-player
-  fat_jar="build/libs/alda-player-fat.jar"
-  jvm_opts="-XX:+UseG1GC -XX:MaxGCPauseMillis=100 -Xmx1024m -Xms256m -DlogPath=tmplog"
-  cd "player"
-  ./gradlew -q -g . build
-  cat \
-    <(echo -e "#!/bin/sh\n\nexec java $jvm_opts -jar \$0 \"\$@\"\n\n\n") \
-    "$fat_jar" \
-    > ../bin/alda-player
+	cd player
+	gradle --no-daemon build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}/bin"
-  install -Dm755 alda "${pkgdir}/usr/bin/${_pkgname}"
-  install -Dm755 alda-player "${pkgdir}/usr/bin/${_pkgname}-player"
-  cd "${srcdir}/${_pkgname}"
-  install -Dm444 LICENSE "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+	install -D alda-player -t "$pkgdir/usr/bin"
+
+	cd "$pkgname"
+	install -D client/alda -t "$pkgdir/usr/bin"
+	install -Dm644 player/build/libs/alda-player-fat.jar -T "$pkgdir/usr/share/java/alda-player.jar"
+	install -Dm644 doc/* -t "$pkgdir/usr/share/doc/$pkgname/"
+
+	# EPL v2 is not part of core/licenses. Let's add it here
+	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
 }
+
