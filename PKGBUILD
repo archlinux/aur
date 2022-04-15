@@ -3,7 +3,7 @@
 # Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=('gdb-git' 'gdb-common-git')
-pkgver=109622.f190d13c78b
+pkgver=109739.4311246bb1f
 pkgrel=1
 pkgdesc="The GNU Debugger from git"
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ provides=('gdb-common' 'gdb')
 conflicts=('gdb-common' 'gdb')
 backup=('etc/gdb/gdbinit')
 options=('!libtool')
-source=('gdb::git+https://sourceware.org/git/binutils-gdb.git')
+source=('gdb::git+https://sourceware.org/git/binutils-gdb.git#branch=gdb-12-branch')
 sha256sums=('SKIP')
 
 pkgver() {
@@ -43,13 +43,13 @@ build() {
     --enable-tui \
     --with-system-readline \
     --with-python=/usr/bin/python \
-    --with-guile=guile-2.2 \
+    --with-guile=guile-3.0 \
     --with-system-gdbinit=/etc/gdb/gdbinit
   make
 }
 
 package_gdb-git() {
-  depends=('expat' 'guile' 'ncurses' 'xz' 'python' 'source-highlight' 'mpfr' 'xxhash' 'libelf' 'gdb-common-git')
+  depends=('expat' 'guile3' 'ncurses' 'xz' 'python' 'source-highlight' 'mpfr' 'xxhash' 'libelf' 'gdb-common-git')
   provides=('gdb')
   conflicts=('gdb')
   backup=(etc/gdb/gdbinit)
@@ -69,7 +69,7 @@ package_gdb-git() {
 package_gdb-common-git() {
   provides=('gdb-common')
   conflicts=('gdb-common')
-  depends=('python' 'guile') backup=(etc/gdb/gdbinit)
+  depends=('python' 'guile3')
   cd "$srcdir/gdb/build"
   make -C gdb/data-directory DESTDIR="$pkgdir" install
 }
