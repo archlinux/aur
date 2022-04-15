@@ -1,11 +1,11 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-zen
-_pkgver=5.17.1.zen1
-_kernver=5.17.1
+_pkgver=5.17.3.zen1
+_kernver=5.17.3
 _zenver=zen1
 _pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
-_KERNNAME=5.17.1-zen1-1-zen
+_KERNNAME=5.17.3-zen1-1-zen
 _versioned_pkgname="linux${_pkgver}-${_pkgrel}-zen"
 pkgname=("${_pkgname}-versioned-bin"
          "${_pkgname}-versioned-headers-bin"
@@ -16,7 +16,7 @@ pkgname=("${_pkgname}-versioned-bin"
 pkgver=${_pkgver}
 pkgrel=${_pkgrel}
 pkgdesc="The Linux ZEN kernel and modules | repackaged with a unique package name for each version"
-url="https://github.com/zen-kernel/zen-kernel/commits/v5.17.1-zen1"
+url="https://github.com/zen-kernel/zen-kernel/commits/v5.17.3-zen1"
 arch=(x86_64)
 license=(GPL2)
 options=('!strip')
@@ -44,34 +44,34 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('4811159bf10d6e778f9cac11f208a3fcf0a713a8e1af8cacec336938523754ee'
-            '220a68c69aea8481956a43c6789c8e74c59f4de011d71467dac5aa38259b21c2'
-            '2081e6cfd58e9ec1ee859b5e26361bf84d5e78f6665f52248a6ff9896fc039f4')
+sha256sums=('604eae2bbcdf1e432e884dd5b431081efee713f889c7f9ac2cd9d95df3790c54'
+            '91d96100ce4284fdf1a4daeca05b618c668342cac12391ef636fb3fda6c8d8f2'
+            '8036882d035b625208526ea752610d7de5dbd439452fe9e0f46c008076a1cd0b')
 
 package_linux-zen-versioned-bin() {
-  pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
+  pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
   depends=("${_versioned_pkgname}-bin")
   optdepends=('grub-hook: to run grub-mkconfig when kernels are added/removed')
 }
 
 package_linux-zen-versioned-headers-bin() {
-  pkgdesc="Dummy package depending on ${_versioned_pkgname}-headers-bin"  
+  pkgdesc="Metapackage depending on ${_versioned_pkgname}-headers-bin"  
   depends=("${_versioned_pkgname}-headers-bin")
 }
 
 package_linux-zen-versioned-docs-bin() {
-  pkgdesc="Dummy package depending on ${_versioned_pkgname}-docs-bin"  
+  pkgdesc="Metapackage depending on ${_versioned_pkgname}-docs-bin"  
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.17.1.zen1-1-zen-bin() {
+package_linux5.17.3.zen1-1-zen-bin() {
   pkgdesc="The Linux ZEN kernel and modules, version ${_KERNNAME}"
   depends=(coreutils
            initramfs
            kmod)
   conflicts=("${_pkgname}")
-  optdepends=('crda: to set the correct wireless channels of your country'
-              'linux-firmware: firmware images needed for some devices')
+  optdepends=('linux-firmware: firmware images needed for some devices'
+              'wireless-regdb: to set the correct wireless channels of your country')
   provides=(VHBA-MODULE
             VIRTUALBOX-GUEST-MODULES
             WIREGUARD-MODULE)
@@ -80,7 +80,7 @@ package_linux5.17.1.zen1-1-zen-bin() {
   sed -ic "s/${_pkgname}/${_KERNNAME}/" "${pkgdir}/usr/lib/modules/${_KERNNAME}/pkgbase"
 }
 
-package_linux5.17.1.zen1-1-zen-headers-bin() {
+package_linux5.17.3.zen1-1-zen-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the Linux ZEN kernel ${_KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -89,7 +89,7 @@ package_linux5.17.1.zen1-1-zen-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.17.1.zen1-1-zen-docs-bin() {
+package_linux5.17.3.zen1-1-zen-docs-bin() {
   pkgdesc="Documentation for the Linux ZEN kernel ${_KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
