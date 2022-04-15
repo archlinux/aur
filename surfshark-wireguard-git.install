@@ -4,7 +4,6 @@ post_install() {
         useradd -Urs /usr/bin/nologin surfsharkwg
     fi
     chown root:surfsharkwg /opt/surfshark-wireguard/
-    chmod 770 /opt/surfshark-wireguard/
     chown root:surfsharkwg /opt/surfshark-wireguard/gen_wg_config.sh
     chown root:surfsharkwg /opt/surfshark-wireguard/config.json
     echo "Any user wanting start/stop surfshark wireguard must be in surfsharkwg group"
