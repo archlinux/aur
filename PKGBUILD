@@ -1,6 +1,6 @@
 # Maintainer: Chris Billington <chrisjbillington@gmail.com>
 _pkgname=linux-lts
-_pkgver=5.15.33
+_pkgver=5.15.34
 _pkgrel=1
 pkgbase="${_pkgname}-versioned-bin"
 KERNNAME="${_pkgver}-${_pkgrel}-lts"
@@ -42,27 +42,27 @@ source=("${_kernsrc}"
 
 noextract=("${source[@]##*/}")
 
-sha256sums=('0a1c8911aea8015465fdcbaedf486421f8050066045e352c024cede29e941762'
-            '797c9a557c7f80e0ea0634182146da826b7d7c8364ca94b75fc0ddb5e55d66a7'
-            '09d8da160ae3141447ea098f9fe1ad7732c938e8a02846343af8921eed65b034')
+sha256sums=('0b97dfe5dae63585bf875d665a17c5f33ace50df716acb6e79a22e968cf71f2f'
+            'f57cabffce86f793fe3110737e25783123d8ce361028584e436e019c1359a70b'
+            '163c2c60e4fd9c3decbc1e548d96665bd9f32be40adb2f8736c7b2c701c2acf7')
 
 package_linux-lts-versioned-bin() {
-  pkgdesc="Dummy package depending on ${_versioned_pkgname}-bin"  
+  pkgdesc="Metapackage depending on ${_versioned_pkgname}-bin"  
   depends=("${_versioned_pkgname}-bin")
   optdepends=('grub-hook: to run grub-mkconfig when kernels are added/removed')
 }
 
 package_linux-lts-versioned-headers-bin() {
-  pkgdesc="Dummy package depending on ${_versioned_pkgname}-headers-bin"  
+  pkgdesc="Metapackage depending on ${_versioned_pkgname}-headers-bin"  
   depends=("${_versioned_pkgname}-headers-bin")
 }
 
 package_linux-lts-versioned-docs-bin() {
-  pkgdesc="Dummy package depending on ${_versioned_pkgname}-docs-bin"  
+  pkgdesc="Metapackage depending on ${_versioned_pkgname}-docs-bin"  
   depends=("${_versioned_pkgname}-docs-bin")
 }
 
-package_linux5.15.33-1-lts-bin() {
+package_linux5.15.34-1-lts-bin() {
   pkgdesc="The LTS Linux kernel and modules, version ${KERNNAME}"
   depends=(coreutils
            initramfs
@@ -78,7 +78,7 @@ package_linux5.15.33-1-lts-bin() {
   sed -ic "s/${_pkgname}/${KERNNAME}/" "${pkgdir}/usr/lib/modules/${KERNNAME}/pkgbase"
 }
 
-package_linux5.15.33-1-lts-headers-bin() {
+package_linux5.15.34-1-lts-headers-bin() {
   pkgdesc="Headers and scripts for building modules for the LTS Linux kernel ${KERNNAME}"
   depends=(pahole)
   conflicts=("${_pkgname}-headers")
@@ -87,7 +87,7 @@ package_linux5.15.33-1-lts-headers-bin() {
   mv "${pkgdir}/usr/src/"{"${_pkgname}","${_versioned_pkgname}"}
 }
 
-package_linux5.15.33-1-lts-docs-bin() {
+package_linux5.15.34-1-lts-docs-bin() {
   pkgdesc="Documentation for the LTS Linux kernel ${KERNNAME}"
   conflicts=("${_pkgname}-docs")
   tar -xf "${_docspkg}" -C "${pkgdir}"
