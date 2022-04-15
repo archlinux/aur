@@ -4,13 +4,13 @@
 pkgname=python-rarfile
 _name=${pkgname#python-}
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python module for RAR archive reading"
 arch=('any')
 url="https://github.com/markokr/rarfile"
 license=('ISC')
 depends=('python')
-makedepends=('python-setuptools')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 optdepends=('unarchiver: alternative decompression backend'
             'libarchive: alternative decompression backend'
             'python-crypto: process archives with password-protected headers')
@@ -19,12 +19,12 @@ sha256sums=('67548769229c5bda0827c1663dce3f54644f9dbfba4ae86d4da2b2afd3e602a1')
 
 build() {
   cd "$_name-$pkgver"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$_name-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
