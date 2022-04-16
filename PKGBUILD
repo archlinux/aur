@@ -34,7 +34,7 @@ package() {
 Categories=Game;ArcadeGame;
 Comment="A better Minecraft Launcher that supports cross-platform and many functionalities for you to explore!"
 Encoding=UTF-8
-Exec="/opt/RPMLauncher/RPMLauncher"
+Exec="/opt/RPMLauncher/RPMLauncher --origin archUserRepository"
 Icon="/opt/RPMLauncher/data/flutter_assets/assets/images/Logo.png"
 Name=RPMLauncher
 Path=/opt/RPMLauncher
