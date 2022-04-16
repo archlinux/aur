@@ -6,11 +6,9 @@ pkgbase = jupyter_highlight_selected_word
 	arch = any
 	license = BSD
 	depends = python
-	depends = jupyter
 	depends = jupyter-notebook
 	noextract = jupyter_highlight_selected_word-0.2.0-py2.py3-none-any.whl
 	source = jupyter_highlight_selected_word-0.2.0-py2.py3-none-any.whl::https://files.pythonhosted.org/packages/py2.py3/j/jupyter_highlight_selected_word/jupyter_highlight_selected_word-0.2.0-py2.py3-none-any.whl
 	sha256sums = 9545dfa9cb057eebe3a5795604dcd3a5294ea18637e553f61a0b67c1b5903c58
 
 pkgname = jupyter_highlight_selected_word
-
