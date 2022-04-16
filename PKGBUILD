@@ -3,10 +3,10 @@
 _rockname=cldr
 _project=$_rockname-lua
 pkgname=("lua-$_rockname-git" "lua53-$_rockname-git" "lua52-$_rockname-git" "lua51-$_rockname-git")
-pkgver=0.1.0.r21.gfc7d81d
+pkgver=0.2.0.r0.g51e4760
 _branch='master'
 _rockrel=0
-pkgrel=1
+pkgrel=2
 pkgdesc='Lua interface to Unicode CLDR data'
 arch=(any)
 url="https://github.com/alerque/$_project"
@@ -28,7 +28,7 @@ pkgver() {
 
 _package_helper() {
 	cd "$_project"
-	depends=("${pkgname%-*}" "${_luadeps[@]/#/${pkgname%-*}-}")
+	depends=("${pkgname%%-*}" "${_luadeps[@]/#/${pkgname%%-*}-}")
 	provides=("${pkgname/-git}=$pkgver")
 	conflicts=("${pkgname/-git}")
 	luarocks --lua-version="$1" --tree="$pkgdir/usr/" \
