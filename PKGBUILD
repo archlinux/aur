@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.2614
+pkgver=1.7.2617
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -52,6 +52,8 @@ git+https://github.com/fmtlib/fmt.git
 git+https://github.com/ocornut/imgui.git
 git+https://github.com/rtissera/libchdr.git
 git+https://github.com/google/googletest.git
+git+https://github.com/nih-at/libzip.git
+git+https://github.com/facebook/zstd.git
 git+https://github.com/mozilla/cubeb.git
 git+https://github.com/KhronosGroup/glslang.git
 git+https://github.com/libsdl-org/SDL.git
@@ -77,6 +79,8 @@ prepare()
   git config submodule.https://github.com/ocornut/imgui.git.url imgui
   git config submodule.https://github.com/KhronosGroup/glslang.git glslang
   git config submodule.https://github.com/libsdl-org/SDL.git SDL
+  git config submodule.https://github.com/nih-at/libzip.git libzip
+  git config submodule.https://github.com/facebook/zstd.git ztsd
   git submodule update
 }
 
@@ -86,7 +90,7 @@ build()
   cd build
 
   cmake ../pcsx2 \
-    -DCMAKE_BUILD_TYPE=Debug \
+    -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DUSE_SYSTEM_YAML=TRUE \
     -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON \
@@ -106,6 +110,8 @@ package()
 
 # vim: ts=2 sw=2 et:
 sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
