@@ -1,6 +1,6 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 pkgname=sonixd
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc="A full-featured Subsonic/Jellyfin compatible desktop music player"
 arch=('x86_64')
@@ -13,7 +13,7 @@ replaces=("$pkgname-appimage")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jeffvli/sonixd/archive/refs/tags/v$pkgver.tar.gz"
 	"$pkgname"
 	"$pkgname.desktop")
-sha256sums=('7cd65c242e1e724ec97cb7e1b9e975639853968834561a290c5e462a3fb8e70a'
+sha256sums=('92820a922fbd6def4caab4f39553d507cd253f093b25c3296cc1744f3abb1c4e'
             '89039f59dc58490cc5a2e05bb38b3645448df56b2e763d6170facb64e73241d0'
             '9e2e1cce47b594b75b8df7a1cf3a5a6da340dda9d0cfdf2aa305d097fc0bbc7a')
 
