@@ -3,11 +3,11 @@
 
 pkgname=kde-material-you-colors-git
 _pkgname=${pkgname%-git}
-pkgver=0.2.0BETA.r28.g9258f40
+pkgver=0.2.0BETA.r33.g4d45951
 pkgrel=1
 pkgdesc="Automatic Material You Colors generator from your wallpaper for the Plasma Desktop - git dev branch version"
 arch=("x86_64")
-url="https://github.com/luisbocanegra/kde-material-you-colors"
+url="https://github.com/luisbocanegra/kde-material-you-colors/tree/dev"
 license=("APACHE")
 makedepends=("git")
 depends=(
@@ -22,7 +22,7 @@ options=("!strip")
 conflicts=("$_pkgname")
 provides=("$_pkgname")
 source=(
-  "git+$url.git#branch=dev"
+  "git+${url/\/tree\/dev/}.git#branch=dev"
   "material-color-utility"
 )
 sha256sums=(
@@ -48,7 +48,7 @@ package() {
     sample_config.conf
     kde-material-you-colors.py
     kde-material-you-colors
-    color_scheme.py
+    utils.py
     color_utils.py
     schemeconfigs.py
     material-color-utility-bin
