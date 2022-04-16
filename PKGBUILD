@@ -1,9 +1,9 @@
 # Maintainer: Llewelyn Trahaearn <WoefulDerelict at GMail dot com>
-# Maintainer: skrewball <jason at joickle dot com>
+# Maintainer: skrewball <aur at joickle dot com>
 
 pkgname=gnome-shell-extension-freon
-pkgver=45
-pkgrel=3
+pkgver=48
+pkgrel=1
 pkgdesc="Displays: CPU temperature, HDD/SSD temperature, video card temperature (nVidia/Catalyst), voltage and fan RPM in a GNOME Shell top bar pop-down."
 arch=('any')
 url="https://github.com/UshakovVasilii/gnome-shell-extension-freon"
@@ -16,13 +16,7 @@ optdepends=(
 )
 conflicts=('gnome-shell-extensions-git')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/EGO-${pkgver}.tar.gz")
-sha512sums=('a83e1f58881cb7816e39519302ab13499625d7bd85f45317b24f1706bf421fefafcf68812cafab86f7d7ee11a772f18a51bf4b58570325159e555144c956e3f3')
-
-prepare() {
-  # Patch for Gnome 42
-  cd "$(dirname $(find -name 'metadata.json' -print -quit))"
-  sed -i 's/  "shell-.*/ \ "shell-version": ["40", "41", "42"],/g' metadata.json
-}
+sha512sums=('56dc63e0252ac10d548bd4345bc14e076e324ee973e19a5ec5adf9ea851beaa26a7e46ab79eae5b78bf5ba7d9628a6e43779b1396732fa8f38c22a2a03bc3341')
 
 package() {
   # Locate the extension.
