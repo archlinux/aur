@@ -6,6 +6,7 @@ pkgbase = python-greenery
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	makedepends = python-build
 	makedepends = python-installer
 	depends = python

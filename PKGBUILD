@@ -17,7 +17,10 @@ url='https://github.com/qntm/greenery'
 license=('MIT')
 depends=('python')
 optdepends=()
-makedepends=('python-setuptools' 'python-build' 'python-installer')
+makedepends=('python-setuptools'
+             'python-wheel'
+             'python-build'
+             'python-installer')
 source=("https://files.pythonhosted.org/packages/source/${_pypi_package::1}/${_pypi_package}/${_pypi_package}-${pkgver}.tar.gz")
 sha256sums=('b50f4fd2c9af5ddf9ac26e678b2a01b69ae46a530d6742f1c67960eb659bbdbd')
 
