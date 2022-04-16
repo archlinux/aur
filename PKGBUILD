@@ -1,9 +1,9 @@
 # Maintainer: Ersei <samb at disroot dot org>
-# Contributer: Anthony Wang <ta180m@pm.me>
+# Maintainer: Anthony Wang <ta180m@pm.me>
 
 pkgname=woodpecker-cli
 _pkgname=${pkgname/-cli/}
-pkgver=0.15.0
+pkgver=0.15.1
 _pkgver=${pkgver/_/-}
 pkgrel=1
 pkgdesc="A community fork of the Drone CI system. CLI tool."
@@ -15,7 +15,7 @@ depends=('glibc')
 source=(
   "$pkgname-$_pkgver.tar.gz::https://github.com/woodpecker-ci/$_pkgname/archive/v$_pkgver.tar.gz"
 )
-sha256sums=('b1a64d5e47f003ce8bc785375663239b45532d80d6e17b358344b7e3cba930c4')
+sha256sums=('1c968296674593ea983c1b4a183a5b41c620bfc90be363de8535b24b6469c2ad')
 prepare() {
   cd "$_pkgname-$_pkgver"
 

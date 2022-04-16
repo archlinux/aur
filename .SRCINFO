@@ -1,6 +1,6 @@
 pkgbase = woodpecker-cli
 	pkgdesc = A community fork of the Drone CI system. CLI tool.
-	pkgver = 0.15.0
+	pkgver = 0.15.1
 	pkgrel = 1
 	url = https://woodpecker-ci.org/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = woodpecker-cli
 	makedepends = git
 	makedepends = go
 	depends = glibc
-	source = woodpecker-cli-0.15.0.tar.gz::https://github.com/woodpecker-ci/woodpecker/archive/v0.15.0.tar.gz
-	sha256sums = b1a64d5e47f003ce8bc785375663239b45532d80d6e17b358344b7e3cba930c4
+	source = woodpecker-cli-0.15.1.tar.gz::https://github.com/woodpecker-ci/woodpecker/archive/v0.15.1.tar.gz
+	sha256sums = 1c968296674593ea983c1b4a183a5b41c620bfc90be363de8535b24b6469c2ad
 
 pkgname = woodpecker-cli
