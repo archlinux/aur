@@ -1,7 +1,7 @@
 pkgbase = browsh
 	pkgdesc = A fully-modern text-based browser, rendering to TTY and browsers
 	pkgver = 1.6.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.brow.sh
 	arch = x86_64
 	arch = i686
@@ -26,4 +26,3 @@ pkgbase = browsh
 
 pkgname = browsh
 	depends = firefox>=63
-

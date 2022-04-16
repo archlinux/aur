@@ -2,7 +2,7 @@
 
 pkgname=browsh
 pkgver=1.6.4
-pkgrel=2
+pkgrel=3
 pkgdesc='A fully-modern text-based browser, rendering to TTY and browsers'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://www.brow.sh'
@@ -22,6 +22,7 @@ prepare() {
 	## Go is fussy.
 	export GOPATH="${srcdir}/.gopath"
 	export _interfacer="${GOPATH}/src/${pkgname}/interfacer"
+	export GO111MODULE=off
 	mkdir -p "${GOPATH}/src"
 	mv "${srcdir}/${pkgname}-${pkgver}" "${GOPATH}/src/${pkgname}"
 	cd "${_interfacer}"
@@ -47,6 +48,7 @@ prepare() {
 build() {
 	export GOPATH="${srcdir}/.gopath"
 	export _interfacer="${GOPATH}/src/${pkgname}/interfacer"
+	export GO111MODULE=off
 	cd "$_interfacer"
 	echo Build ${pkgname}...
 	go build	-x\
