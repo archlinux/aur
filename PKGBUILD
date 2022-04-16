@@ -1,7 +1,7 @@
 # Maintainer: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
 
 pkgname=filebrowser
-pkgver=2.20.1
+pkgver=2.21.1
 pkgrel=1
 pkgdesc="Standalone web file manager"
 arch=(x86_64)
@@ -13,7 +13,7 @@ source=("git+https://github.com/filebrowser/filebrowser.git#tag=v${pkgver}"
         "filebrowser@.service")
 sha512sums=('SKIP'
             '0846815afbb3c5ccbb097a5361461ca0ada69e04246935afb123f4609d09cd61f9e3fe50e3b6698b3e4c1f335cbb0aa3d998cae13b422e2989aad62ed7ce4682')
-options=(emptydirs)
+options=(emptydirs !lto)
 
 build() {
   cd "${srcdir}/${pkgname}/frontend"
