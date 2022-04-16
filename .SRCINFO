@@ -1,6 +1,6 @@
 pkgbase = johncena141-meta
 	pkgdesc = meta package for johncena141
-	pkgver = 1
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://johncena141.eu.org:8141/reqs
 	arch = any
@@ -55,9 +55,9 @@ pkgname = johncena141-meta-nvidia
 	depends = lib32-vulkan-icd-loader
 	depends = libglvnd
 	depends = vulkan-icd-loader
-	depends = vulkan-driver
+	depends = nvidia-utils
 	optdepends = nvidia: for the stanard kernel
-	optdepends = nvidia-dmks: for dynamic kernel module
+	optdepends = nvidia-dkms: for dynamic kernel module
 
 pkgname = johncena141-meta-amd
 	depends = gamescope
