@@ -1,7 +1,7 @@
 pkgname=rpmlauncher-git
 pkgver=1.0.6+880.r1.g45fe3b5
 pkgrel=1
-pkgdesc="A multi-functional Minecraft Launcher power by the RPMTW Team, made with Flutter and Dart"
+pkgdesc="A better Minecraft Launcher that supports cross-platform and many functionalities for you to explore!"
 license=('GPL3')
 depends=('git')
 makedepends=('ninja' 'cmake' 'clang' 'dart' 'flutter-beta')
@@ -39,7 +39,7 @@ package() {
   cp -R "$srcdir/RPMLauncher/build/linux/x64/release/bundle/." "$pkgdir/opt/RPMLauncher"
   echo "[Desktop Entry]
 Categories=Game;ArcadeGame;
-Comment=Edit
+Comment="A better Minecraft Launcher that supports cross-platform and many functionalities for you to explore!"
 Encoding=UTF-8
 Exec="/opt/RPMLauncher/RPMLauncher"
 Icon="/opt/RPMLauncher/data/flutter_assets/assets/images/Logo.png"

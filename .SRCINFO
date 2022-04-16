@@ -1,5 +1,5 @@
 pkgbase = rpmlauncher-git
-	pkgdesc = A multi-functional Minecraft Launcher power by the RPMTW Team, made with Flutter and Dart
+	pkgdesc = A better Minecraft Launcher that supports cross-platform and many functionalities for you to explore!
 	pkgver = 1.0.6+880.r1.g45fe3b5
 	pkgrel = 1
 	arch = x86_64
