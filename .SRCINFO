@@ -1,7 +1,7 @@
 pkgbase = alps
 	pkgdesc = A simple and extensible webmail
 	pkgver = 2022.03.01
-	pkgrel = 2
+	pkgrel = 3
 	url = https://git.sr.ht/~migadu/alps
 	arch = i686
 	arch = x86_64

@@ -3,7 +3,7 @@
 _commit='f4523b51af0787795973b403b978ff74737a47ef'
 pkgname=alps
 pkgver=2022.03.01
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple and extensible webmail'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://git.sr.ht/~migadu/alps'
@@ -53,8 +53,13 @@ package() {
   # binary
   install -D -m755 ${pkgname} "${pkgdir}/usr/bin/${pkgname}"
   # themes
-  install -d -m755 "${pkgdir}/usr/lib/${pkgname}"
-  cp -a themes "${pkgdir}/usr/lib/${pkgname}"
+  install -d -m755 "${pkgdir}/usr/lib/${pkgname}/themes"
+  cp -a themes/alps "${pkgdir}/usr/lib/${pkgname}/themes/alps"
+  cp -a themes/alps "${pkgdir}/usr/lib/${pkgname}/themes/sourcehut"
+  cp -a themes/sourcehut/*html \
+    "${pkgdir}/usr/lib/${pkgname}/themes/sourcehut"
+  cp -a themes/sourcehut/assets/*css \
+    "${pkgdir}/usr/lib/${pkgname}/themes/sourcehut/assets"
   # docs
   install -D -m644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
   cp -a docs "${pkgdir}/usr/share/doc/${pkgname}"
