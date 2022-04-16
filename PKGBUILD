@@ -9,6 +9,8 @@ arch=('x86_64')
 url="http://www.qtile.org"
 license=('MIT')
 
+_pywlroots_requirement="0.15.12"
+
 # Technically the X-related dependencies are *not* required, if the user only
 # wants to use the Wayland backend. However this would cause disruption, so
 # let's hold off on changing that for now.
@@ -26,7 +28,7 @@ makedepends=(
   'python-setuptools'
   'python-setuptools-scm'
   'libpulse'
-  'python-pywlroots>=0.15.9' 'python-pywlroots<0.16.0'
+  "python-pywlroots>=$_pywlroots_requirement" 'python-pywlroots<0.16.0'
 )
 checkdepends=(
   'dbus'
@@ -40,7 +42,7 @@ checkdepends=(
   'python-dbus-next'
   'python-gobject'
   'python-pytest'
-  'python-pywlroots>=0.15.9' 'python-pywlroots<0.16.0'
+  "python-pywlroots>=$_pywlroots_requirement" 'python-pywlroots<0.16.0'
   'python-xdg'
   'python-xvfbwrapper'
   'wlroots'
