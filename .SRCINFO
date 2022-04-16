@@ -1,12 +1,15 @@
 pkgbase = comictagger
 	pkgdesc = Application for writing metadata to digital comics, written in Python and PyQt
 	pkgver = 1.3.2.alpha.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/comictagger/comictagger
 	arch = any
 	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
 	makedepends = git
-	makedepends = python-setuptools
 	depends = python
 	depends = python-beautifulsoup4
 	depends = python-natsort
@@ -17,6 +20,7 @@ pkgbase = comictagger
 	depends = python-unrar-cffi
 	depends = python-pyqt5
 	depends = python-pybcj
+	depends = python-brotli
 	source = git+https://github.com/comictagger/comictagger.git#tag=1.3.2-alpha.4
 	sha256sums = SKIP
 
