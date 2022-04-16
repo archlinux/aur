@@ -1,6 +1,7 @@
 post_install() {
 	mv /usr/share/gtk-4.0/settings.ini /usr/share/gtk-4.0/settings-old.ini
 	mv /usr/share/gtk-4.0/settings-modified.ini /usr/share/gtk-4.0/settings.ini
+	flatpak override --filesystem=xdg-config/gtk-4.0
 }
 
 post_remove() {
