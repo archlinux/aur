@@ -1,5 +1,5 @@
 pkgname=libtorrent-rasterbar-1
-pkgver=1.2.15
+pkgver=1.2.16
 pkgrel=1
 pkgdesc="Open source C++ library implementing the BitTorrent protocol."
 url="https://libtorrent.org/"
@@ -7,15 +7,16 @@ arch=('x86_64')
 license=('BSD')
 depends=('boost-libs' 'openssl')
 makedepends=('boost' 'cmake' 'ninja' 'python-setuptools')
-provides=("libtorrent-rasterbar=${pkgver}")
-conflicts=('libtorrent-rasterbar')
+_name="${pkgname%-1}"
+provides=("${_name}=${pkgver}")
+conflicts=("${_name}")
 options=('!emptydirs')
 
-_snapshot="libtorrent-rasterbar-${pkgver}"
-_archive="${_snapshot}.tar.gz"
+_repo="${_name%-rasterbar}"
+_snapshot="${_repo}-${pkgver}"
 
-source=("${_archive}::https://github.com/arvidn/libtorrent/releases/download/v${pkgver}/${_archive}")
-sha256sums=('c8ad8638684c0a903ebabc30490079e31b1a6a638da2adec5a8bef6a0e62214b')
+source=("${_snapshot}.tar.gz::https://github.com/arvidn/${_repo}/archive/v${pkgver}.tar.gz")
+sha256sums=('2ee435c3e2e6dd8825903230b41fbaf0741b7aed57094f2ca0e6214d89fef9d4')
 
 build() {
     cd "${srcdir}"
