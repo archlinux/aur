@@ -1,8 +1,10 @@
-# Maintainer: Kazuki Shigemichi <shigemichik@gmail.com>
+# Contributor: Kazuki Shigemichi <shigemichik@gmail.com>
 # Forked from https://aur.archlinux.org/packages/roswell/
-# Maintainer: Thayne McCombs <bytecurry.software@gmail.com>
-pkgname="roswell-git"
-pkgver="18.3.10.89.r25.ge39397a"
+# Contributor: Thayne McCombs <bytecurry.software@gmail.com>
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+
+pkgname=roswell-git
+pkgver=21.10.14.111.r20.g1c8e46d
 pkgrel=1
 pkgdesc="Lisp installer and launcher"
 url="https://github.com/roswell/roswell"
@@ -12,7 +14,7 @@ depends=('curl')
 makedepends=('git')
 conflicts=('roswell')
 provides=('roswell')
-source=("git+https://github.com/roswell/roswell.git")
+source=("git+https://github.com/jgarte/roswell.git")
 md5sums=('SKIP')
 
 pkgver() {
