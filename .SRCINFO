@@ -1,0 +1,14 @@
+pkgbase = dl_poly-git
+	pkgdesc = General purpose molecular dynamics simulation package
+	pkgver = r60.f2712ca
+	pkgrel = 1
+	url = https://gitlab.com/DL_POLY_Classic/dl_poly
+	arch = x86_64
+	license = custom
+	makedepends = gcc-fortran
+	makedepends = git
+	depends = openmpi
+	source = git+https://gitlab.com/DL_POLY_Classic/dl_poly.git
+	sha256sums = SKIP
+
+pkgname = dl_poly-git
