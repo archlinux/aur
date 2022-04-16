@@ -2,11 +2,11 @@
 pkgname=sinsy-isengaara-git
 _pkgname=sinsy
 pkgver=0.9.6rc0.r3.g036c33a
-pkgrel=2
+pkgrel=3
 pkgdesc="fork of sinsy made to use with qtau"
 arch=('x86_64')
 url="https://notabug.org/isengaara/sinsy"
-license=('GPL')
+license=('BSD')
 depends=('hts-engine-api-git' 'sekai-git' 'boost-libs')
 makedepends=('git' 'cmake')
 provides=("${pkgname%-VCS}")
@@ -14,12 +14,12 @@ conflicts=("${pkgname%-VCS}")
 source=('git+https://notabug.org/isengaara/sinsy' 'utaudb.patch')
 md5sums=('SKIP' 'SKIP')
 pkgver() {
-	cd "$srcdir/${_pkgname%-git}"
+	cd "$srcdir/${_pkgname}"
     git describe --long --tags | sed 's|^upstream/||;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
-    cd "$srcdir/${_pkgname%-git}"
+    cd "$srcdir/${_pkgname}"
     patch -p1 < "$srcdir/utaudb.patch"
 }
 
@@ -32,6 +32,8 @@ build() {
 }
 
 package() {
-	cd "build"
+    cd "$srcdir/${_pkgname}/src"
+    install -Dm755 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd "${srcdir}/build"
 	make DESTDIR="$pkgdir/" install
 }
