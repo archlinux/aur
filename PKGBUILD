@@ -1,8 +1,8 @@
 # Maintainer: Bart De Vries <bart at mogwai dot be>
 
 pkgname=box86
-pkgver=0.2.4
-pkgrel=2
+pkgver=0.2.6
+pkgrel=1
 pkgdesc='Linux Userspace x86 Emulator with a twist'
 arch=('armv7h')
 url='https://github.com/ptitSeb/box86'
@@ -11,7 +11,7 @@ depends=('gcc-libs')
 optdepends=('gl4es: OpenGL 2 for GLES 2 devices')
 makedepends=('git' 'cmake' 'python')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ptitSeb/box86/archive/v${pkgver}.tar.gz")
-sha256sums=('e15667eb34207c382cbc1906222c6b0a66f79c3afe7e37fd67f4960e1f98b4b7')
+sha256sums=('f975b423455d44f196547e9316dc493d0fa84a138ee76f8e8a504450496cdf4e')
 
 build() {
   cd ${pkgname}-${pkgver}
