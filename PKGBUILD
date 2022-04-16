@@ -54,7 +54,7 @@ package_johncena141-meta-nvidia() {
     'lib32-vulkan-icd-loader'
     'libglvnd'
     'vulkan-icd-loader'
-    'vulkan-driver'
+    'nvidia-utils'
   )
   optdepends=(
     'nvidia: for the stanard kernel'
