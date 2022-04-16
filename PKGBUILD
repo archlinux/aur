@@ -1,16 +1,15 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-pkgbase=lua-cldr
-_rockname=${pkgbase#lua-}
+_rockname=cldr
 _project=$_rockname-lua
-pkgname=("$pkgbase" "lua51-$_rockname" "lua52-$_rockname" "lua53-$_rockname")
-pkgver=0.1.0
+pkgname=("lua-$_rockname" "lua51-$_rockname" "lua52-$_rockname" "lua53-$_rockname")
+pkgver=0.2.0
 _rockrel=0
 pkgrel=1
-pkgdesc='Unicode CLDR data and Lua interface'
+pkgdesc='Lua interface to Unicode CLDR data'
 arch=(any)
 url="https://github.com/alerque/$_project"
-license=(MIT)
+license=(MIT custom:ICU)
 _luadeps=(penlight)
 makedepends=(lua
              lua51
@@ -19,7 +18,7 @@ makedepends=(lua
              luarocks)
 _archive="$_project-$pkgver"
 source=("$_rockname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('633c4fdf60de8eb56d9c019f85ae7ada77b9b45a8153d4ebc1b13129a5d2fbd6')
+sha256sums=('9e7ac91fec23fea571d08d5663145842d463d0778967ff6f6fa29cc621647aa9')
 
 _package() {
 	cd "$_archive"
