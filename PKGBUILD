@@ -1,9 +1,9 @@
 # Maintainer: Justus Tartz <aur at jrtberlin dot de>
 pkgname=steam-boilr-gui
-pkgver=1.0.1
+pkgver=1.0.5
 pkgrel=1
-_tag="v${pkgver}"
-_ver="${pkgver}"
+_tag="v.${pkgver}"
+_ver="v.${pkgver}"
 pkgdesc="Synchronize games from other platforms into your Steam library"
 arch=(x86_64)
 license=('MIT')
@@ -24,7 +24,7 @@ provides=('boilr-gui')
 source=("https://github.com/PhilipK/BoilR/archive/refs/tags/${_tag}.tar.gz"
         "boilr.png"
         "boilr.desktop")
-sha256sums=("4661bf8c79f2fdb6266fec1a82c98dae94fbb78270c3f72741458b1645afe653"
+sha256sums=("3a3adbd99bc514decf76c42330e4605e73c3070eedb16f3e8806e86411dce5dd"
             "baab109c6311f05ddbf647aa384b42098db9308c27cb50537f99bb341930387f"
             "c8e71371c9dc39db087e79d5a32df1ee0f4dd2cf5d069e38b491c3b9812d8424")
 
@@ -35,12 +35,12 @@ prepare() {
 
 build() {
   cd "${srcdir}/BoilR-${_ver}"
-  cargo build --frozen --release --features ui
+  cargo build --frozen --release
 }
 
 check() {
   cd "${srcdir}/BoilR-${_ver}"
-  cargo test --frozen --features ui
+  cargo test --frozen
 }
 
 package() {
