@@ -1,11 +1,12 @@
 pkgbase = python-fenics-plotly
 	pkgdesc = A package for plotting FEniCS objects using plotly
 	pkgver = 2021.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/finsberg/fenics-plotly
 	arch = any
 	license = MIT
 	checkdepends = python-ipywidgets
+	checkdepends = python-pytest
 	makedepends = python-setuptools
 	depends = python-dolfin
 	depends = python-plotly

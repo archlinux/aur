@@ -3,13 +3,13 @@ _base=fenics-plotly
 pkgname=python-${_base}
 pkgdesc="A package for plotting FEniCS objects using plotly"
 pkgver=2021.0.1
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/finsberg/${_base}"
 license=(MIT)
 depends=(python-dolfin python-plotly)
 makedepends=(python-setuptools)
-checkdepends=(python-ipywidgets)
+checkdepends=(python-ipywidgets python-pytest)
 source=(${url}/archive/v${pkgver}.tar.gz)
 sha512sums=('bcaeca430d149b8ec5ed855dc0994c13877584bb4835c3e05b3b862a949d6b7c874f5f24d7b4802e9f4660e73bb443474ebe38d4202f19697d7445ded22fd032')
 
