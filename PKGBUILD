@@ -2,7 +2,7 @@
 pkgname=krabby-git
 _pkgname=krabby
 _binname=krabby
-pkgver=r10.dee9311
+pkgver=r18.824c45f
 pkgrel=1
 pkgdesc="Print pokemon sprites in your terminal"
 url="https://github.com/yannjor/krabby"
