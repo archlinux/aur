@@ -1,6 +1,6 @@
 pkgbase = airsane-git
 	pkgdesc = Publish SANE scanners to MacOS and Android via Apple AirScan
-	pkgver = 0.3.2.r0.g53909a5
+	pkgver = 0.3.4.r2.g0736ea3
 	pkgrel = 1
 	url = https://github.com/SimulPiscator/AirSane
 	arch = i686
@@ -16,14 +16,10 @@ pkgbase = airsane-git
 	provides = airsane
 	conflicts = airsane
 	source = airsane::git+https://github.com/SimulPiscator/AirSane.git
-	source = airsane-png-h.patch
 	source = airsane-systemd-dir.patch
 	md5sums = SKIP
-	md5sums = c0adf20be58acc81963cdb83a3c6b75e
-	md5sums = 3d7c6bc2b6c9993626a5d7e6580ee307
+	md5sums = 7c14c073eb6fae88baad06c195eb6907
 	sha256sums = SKIP
-	sha256sums = ef034dcdefbaf6b41873d33256b44756c5752184af6c885944527453d8a87162
-	sha256sums = 806b92de06b404fba23fb7f5c1bcdeecd7cf1d479481d2d61d5587c8a4354f69
+	sha256sums = 10f53fb504224e5a814023342933a6143cde6af0f9479ab8ae4b5a84b929a5ea
 
 pkgname = airsane-git
-
