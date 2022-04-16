@@ -31,8 +31,9 @@ package() {
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
-
-  msg2 'Installing configuration...'
-  mkdir $HOME/.config/cxx-run
-  cp config/* $HOME/.config/cxx-run/
+  if [ ! -d "$HOME/.config/cxx-run" ]; then
+	  msg2 'Installing configuration...'
+	  mkdir $HOME/.config/cxx-run
+	  cp config/* $HOME/.config/cxx-run/
+  fi
 }
