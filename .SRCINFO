@@ -1,6 +1,6 @@
 pkgbase = quick-lint-js
 	pkgdesc = Find bugs in JavaScript programs
-	pkgver = 2.3.0
+	pkgver = 2.4.0
 	pkgrel = 1
 	url = https://quick-lint-js.com/
 	arch = aarch64
@@ -18,11 +18,13 @@ pkgbase = quick-lint-js
 	makedepends = gcc
 	makedepends = ninja
 	depends = gcc-libs
+	depends = hicolor-icon-theme
 	conflicts = quick-lint-js
-	source = quick-lint-js-2.3.0.tar.gz::https://c.quick-lint-js.com/releases/2.3.0/source/quick-lint-js-2.3.0.tar.gz
-	source = quick-lint-js-2.3.0.tar.gz.asc::https://c.quick-lint-js.com/releases/2.3.0/source/quick-lint-js-2.3.0.tar.gz.asc
+	options = lto
+	source = quick-lint-js-2.4.0.tar.gz::https://c.quick-lint-js.com/releases/2.4.0/source/quick-lint-js-2.4.0.tar.gz
+	source = quick-lint-js-2.4.0.tar.gz.asc::https://c.quick-lint-js.com/releases/2.4.0/source/quick-lint-js-2.4.0.tar.gz.asc
 	validpgpkeys = 0327DE8F9CEF499851D19F6ED20BA9DCCF0E9D20
-	sha512sums = 441077bfc5109f41bd8c40cc5286c8fcb14d1c4ae3e37f8ea191b8f46d584b46e2d3f09c5651a45da38f5ddf69a17f086bdcd9facfe539d4797bc04a018fba9d
+	sha512sums = 91132a316604ce981fb3d81b235917762044a782be2c8382e7de62539b2a42c1c1aef198edb09a5969fc7c41e46163f71706a2d30d79533030220e2c2dd97ef0
 	sha512sums = SKIP
 
 pkgname = quick-lint-js
