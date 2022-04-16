@@ -5,8 +5,8 @@
 pkgbase='ceph'
 pkgname=('ceph' 'ceph-libs' 'ceph-mgr')
 _zstdver=1.5.2
-pkgver=15.2.14
-pkgrel=9
+pkgver=16.2.7
+pkgrel=1
 pkgdesc='Distributed, fault-tolerant storage platform delivering object, block, and file system'
 arch=('x86_64')
 url='https://ceph.com/'
@@ -77,7 +77,7 @@ source=(
   # https://github.com/ceph/ceph/pull/44112
   'fix-python310-ssize-macro.patch'
 )
-sha512sums=('eacc4dea0d8dfe2753aff78d89324d81c5634a784313c3da8ded778e2734958c216f8c705b25f070d7ba66b559424ad3c47cb68852f66f8c9c83a83ca78ad5a5'
+sha512sums=('eab047e646970d444acf1064d98237b8b1677fb16b5e771082d55880f7bc6d8bdb278c2fe514c82ae12c438878d9ecea29139fa6b8d890f9f737138f10fb740c'
             '4354001c1abd9a0c385ba7bd529e3638fb6660b6a88d4e49706d4ac21c81b8e829303a20fb5445730bdac18c4865efb10bc809c1cd56d743c12aa9a52e160049'
             'e107508a41fca50845cc2494e64adaba93efb95a2fa486fc962510a8ba4b2180d93067cae9870f119e88e5e8b28a046bc2240b0b23cdd8933d1fb1a6a9668c1e'
             '9e6bb46d5bbdc5d93f4f026b2a8d6bdb692d9ea6e7018c1bb0188d95ea8574c76238d968b340fd67ddaa3d8183b310e393e3549dc3a63a795fde696413b0ca94'
@@ -326,7 +326,7 @@ package_ceph-mgr() {
               'python-kubernetes: rook module'
               'python-prometheus_client: prometheus module'
               'python-remoto: ssh module')
-  conflicts=('ceph<14.2.1-1')
+  conflicts=('ceph<15.2.1-1')
 
   cd "${srcdir}/${pkgbase}-${pkgver}"
 
