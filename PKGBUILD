@@ -2,7 +2,7 @@
 
 _gemname=regexp_property_values
 pkgname=ruby-${_gemname}
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Inspect property values supported by Ruby's regex engine"
 arch=(x86_64)
@@ -12,7 +12,7 @@ url=https://github.com/jaynetics/regexp_property_values
 license=(MIT)
 options=(!emptydirs)
 source=(${url}/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
-sha256sums=('4ce0ac93f73e78d5016e1401d7fa4b3e26f6fc4c83e4e6d463f3252cdf31ebcd')
+sha256sums=('22d69e9b76a560a39bf83f01cdcbb9a1db17c52224a929a273e9e9dcea4bfa30')
 
 prepare() {
   cd $_gemname-$pkgver
