@@ -1,14 +1,19 @@
 pkgbase = python-readmemaker
 	pkgdesc = Python utility library to help make a README file from document files
-	pkgver = 1.0.2
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/thombashi/readmemaker
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-path
-	source = https://files.pythonhosted.org/packages/source/r/readmemaker/readmemaker-1.0.2.tar.gz
-	sha256sums = ffb1a939393ff176d6c8d5bb86028fff89ef04112fbc97e4de2ab9c9eb8bffe2
+	source = python-readmemaker-1.1.0.tar.gz::https://files.pythonhosted.org/packages/source/r/readmemaker/readmemaker-1.1.0.tar.gz
+	source = python-readmemaker-1.1.0.tar.gz.asc::https://files.pythonhosted.org/packages/source/r/readmemaker/readmemaker-1.1.0.tar.gz.asc
+	validpgpkeys = BCF9203E5E80B5607EAE6FDD98CDA9A5F0BFC367
+	sha256sums = 3d8b4d290790044a34e8737b43a3d9865415154680ab9bde3e74742df3aa8ba3
+	sha256sums = SKIP
 
 pkgname = python-readmemaker
-
