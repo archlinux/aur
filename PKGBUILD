@@ -1,11 +1,11 @@
 # Maintainer: silverhikari
 pkgname=qtau-git
 pkgver=0.5.5.r0.g453cc85
-pkgrel=1
+pkgrel=2
 pkgdesc="open source utau music editor"
 arch=(x86_64)
 url="https://notabug.org/isengaara/qtau"
-license=('GPL')
+license=('GPL3')
 depends=('jack' 'libsmf' 'qt5-base' 'libsamplerate' 'hts-engine-api-git' 'sekai-git' 'sinsy-isengaara-git')
 makedepends=('git' 'cmake')
 provides=("${pkgname%-git}")

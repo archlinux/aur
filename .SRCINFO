@@ -1,10 +1,10 @@
 pkgbase = qtau-git
 	pkgdesc = open source utau music editor
 	pkgver = 0.5.5.r0.g453cc85
-	pkgrel = 1
+	pkgrel = 2
 	url = https://notabug.org/isengaara/qtau
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	makedepends = git
 	makedepends = cmake
 	depends = jack
