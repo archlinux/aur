@@ -9,7 +9,6 @@ pkgbase = jupyter_contrib_core
 	license = BSD
 	makedepends = python-pip
 	depends = python
-	depends = jupyter
 	depends = jupyter-notebook
 	depends = python-tornado
 	source = https://files.pythonhosted.org/packages/py2.py3/j/jupyter_contrib_core/jupyter_contrib_core-0.3.3-py2.py3-none-any.whl
