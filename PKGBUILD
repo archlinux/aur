@@ -6,16 +6,16 @@
 
 _name=sxiv
 pkgname="${_name}-photoorg-git"
-pkgver=0.r768.2a3c329
+pkgver=0.r907.e907737
 pkgrel=1
 pkgdesc="Simple X Image Viewer, photo organiser version"
 arch=('i686' 'x86_64')
 url="https://github.com/cdown/${_name}"
 license=('GPL2')
-depends=('imlib2' 'libexif' 'libxft' 'hicolor-icon-theme')
+depends=('imlib2' 'desktop-file-utils' 'xdg-utils' 'hicolor-icon-theme' 'libexif' 'libxft' 'giflib' 'libwebp')
 makedepends=('git')
-provides=("${_name}")
-conflicts=("${_name}")
+provides=(nsxiv)
+conflicts=(nsxiv)
 source=("${_name}::git+${url}.git")
 sha256sums=('SKIP')
 
@@ -43,8 +43,6 @@ build() {
 package() {
   cd "$srcdir/${_name}"
   make PREFIX="/usr" DESTDIR="$pkgdir" install
-  make -C icon PREFIX="/usr" DESTDIR="$pkgdir" install
-  install -Dm644 sxiv.desktop "$pkgdir/usr/share/applications/${_name}.desktop"
 }
 
 # vim:set ts=2 sw=2 et:
