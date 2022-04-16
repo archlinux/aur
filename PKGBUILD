@@ -1,12 +1,12 @@
 # Maintainer: silverhikari
 pkgname=hts-engine-api-git
 _pkgname=hts_engine_API
-pkgver=1.0.9.r38.g3df2613
-pkgrel=2
+pkgver=1.0.9.r41.g214e26d
+pkgrel=1
 pkgdesc="api to synthesize speech waveform from HMMs trained by the HMM-based speech synthesis system forked by r9y9"
 arch=('x86_64')
 url="https://github.com/r9y9/hts_engine_API"
-license=('GPL')
+license=('BSD')
 depends=('glibc')
 makedepends=('git' 'cmake')
 provides=("${pkgname%-git}")
@@ -27,6 +27,8 @@ cmake -B build -S "hts_engine_API/src" \
 }
 
 package() {
-	cd "build"
+    cd "${srcdir}/hts_engine_API/src"
+    install -Dm755 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	cd "${srcdir}/build"
 	make DESTDIR="$pkgdir/" install
 }
