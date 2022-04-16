@@ -1,6 +1,6 @@
 pkgbase = modprobed-db
 	pkgdesc = Keeps track of EVERY kernel module ever used - useful for make localmodconfig
-	pkgver = 2.45
+	pkgver = 2.46
 	pkgrel = 1
 	url = https://wiki.archlinux.org/index.php/Modprobed-db
 	install = readme.install
@@ -10,7 +10,7 @@ pkgbase = modprobed-db
 	optdepends = sudo: needed for recall function
 	conflicts = modprobed_db
 	replaces = modprobed_db
-	source = modprobed-db-2.45.tar.gz::https://github.com/graysky2/modprobed-db/archive/v2.45.tar.gz
-	sha256sums = 779258faf8fa1522a948b3abfe4f52005510d1d4dcc7544c7b786739d94f0eda
+	source = modprobed-db-2.46.tar.gz::https://github.com/graysky2/modprobed-db/archive/v2.46.tar.gz
+	sha256sums = 041ce837b4e28ea742d00c1aba8ee934915b968ea8acc758cf5abdafc4a2e017
 
 pkgname = modprobed-db
