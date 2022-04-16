@@ -1,12 +1,11 @@
 pkgbase = linux-covolunablu-gaming
 	pkgdesc = Linux
-	pkgver = 5.17.1.arch1
+	pkgver = 5.17.3.arch1
 	pkgrel = 1
-	url = https://github.com/archlinux/linux/commits/v5.17.1-arch1
+	url = https://github.com/archlinux/linux/commits/v5.17.3-arch1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
-	makedepends = kmod
 	makedepends = libelf
 	makedepends = pahole
 	makedepends = cpio
@@ -18,9 +17,10 @@ pkgbase = linux-covolunablu-gaming
 	makedepends = python-sphinx_rtd_theme
 	makedepends = graphviz
 	makedepends = imagemagick
+	makedepends = texlive-latexextra
 	makedepends = git
 	options = !strip
-	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.17.1-arch1
+	source = archlinux-linux::git+https://github.com/archlinux/linux?signed#tag=v5.17.3-arch1
 	source = config
 	source = bfq-default.patch
 	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
@@ -28,7 +28,7 @@ pkgbase = linux-covolunablu-gaming
 	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha256sums = SKIP
-	sha256sums = c05ff4ca7a69b94ace73d1019c398f3fd93dfa0ebcc9b2396b56aaa191fc72e0
+	sha256sums = c0ef360e34fd21c23509224abae894b0d6d37256cccf82575062a05986ee5dba
 	sha256sums = f6701a4b9ed60ad98396606a4c7db26c7197e76d00a28f5299d2567bf6d17d3d
 
 pkgname = linux-covolunablu-gaming
@@ -36,7 +36,7 @@ pkgname = linux-covolunablu-gaming
 	depends = coreutils
 	depends = kmod
 	depends = initramfs
-	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
