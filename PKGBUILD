@@ -3,8 +3,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: farseerfc <farseerfc@gmail.com>
 pkgname=glmark2-git
-pkgver=r960.ca8de51
-pkgrel=2
+pkgver=r971.af498f4
+pkgrel=1
 pkgdesc="An OpenGL 2.0 and ES 2.0 benchmark (X11, Wayland, DRM)"
 arch=('x86_64' 'aarch64')
 url="https://github.com/glmark2/glmark2"
@@ -13,7 +13,7 @@ depends=('libjpeg-turbo' 'libpng' 'libx11' 'mesa' 'systemd-libs' 'libgl' 'libgle
 makedepends=('git' 'meson' 'systemd' 'wayland-protocols')
 conflicts=('glmark2')
 provides=('glmark2')
-source=("$pkgname"::'git://github.com/glmark2/glmark2.git')
+source=("$pkgname"::'git+https://github.com/glmark2/glmark2.git')
 md5sums=('SKIP')
 
 # GLMARK2 features

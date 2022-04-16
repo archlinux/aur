@@ -1,7 +1,7 @@
 pkgbase = glmark2-git
 	pkgdesc = An OpenGL 2.0 and ES 2.0 benchmark (X11, Wayland, DRM)
-	pkgver = r960.ca8de51
-	pkgrel = 2
+	pkgver = r971.af498f4
+	pkgrel = 1
 	url = https://github.com/glmark2/glmark2
 	arch = x86_64
 	arch = aarch64
@@ -22,7 +22,7 @@ pkgbase = glmark2-git
 	depends = egl-wayland
 	provides = glmark2
 	conflicts = glmark2
-	source = glmark2-git::git://github.com/glmark2/glmark2.git
+	source = glmark2-git::git+https://github.com/glmark2/glmark2.git
 	md5sums = SKIP
 
 pkgname = glmark2-git
