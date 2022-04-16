@@ -1,6 +1,6 @@
 pkgbase = draquet-polyglot-bin
 	pkgdesc = PolyGlot is a conlang construction toolkit
-	pkgver = 3.5
+	pkgver = 3.5.1
 	pkgrel = 1
 	url = http://draquet.github.io/PolyGlot/index.html
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = draquet-polyglot-bin
 	depends = libxtst
 	depends = zlib
 	provides = draquet-polyglot
-	source = draquet-polyglot-bin-3.5-1.deb::https://github.com/DraqueT/PolyGlot/releases/download/3.5/PolyGlot-Ins-Lin.deb
-	md5sums = d20fc2a5e638f80cc73d5b2e6b37a0e6
+	source = draquet-polyglot-bin-3.5.1-1.deb::https://github.com/DraqueT/PolyGlot/releases/download/3.5.1/PolyGlot-Ins-Lin.deb
+	md5sums = 49ed5f7c0547cfa5420eeb3c979a1617
 
 pkgname = draquet-polyglot-bin
