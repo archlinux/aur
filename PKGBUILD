@@ -81,10 +81,10 @@
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
-_major=5.16
-_minor=20
+_major=5.17
+_minor=3
 _srcname=linux-${_major}
-_clr=${_major}.18-1138
+_clr=${_major}.3-1139
 pkgbase=linux-clear
 pkgver=${_major}.${_minor}
 pkgrel=1
@@ -97,15 +97,15 @@ if [ -n "$_use_llvm_lto" ]; then
   makedepends+=(clang llvm lld python)
 fi
 options=('!strip')
-_gcc_more_v='20211114'
+_gcc_more_v='20220315'
 source=(
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.xz"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${_major}.tar.sign"
   "https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz"
   "$pkgbase::git+https://github.com/clearlinux-pkgs/linux.git#tag=${_clr}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch::https://raw.githubusercontent.com/xanmod/linux-patches/6b08df20f31708099a7fbccf5448958b4836118f/linux-${_major}.y-xanmod/pci_acso/0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch"
-  "0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch::https://raw.githubusercontent.com/xanmod/linux-patches/6b08df20f31708099a7fbccf5448958b4836118f/linux-${_major}.y-xanmod/userns/0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch"
+  "0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch::https://raw.githubusercontent.com/xanmod/linux-patches/6c29f5a54ba99cca11730cd0c85b1b77a2e02aa8/linux-${_major}.y-xanmod/pci_acso/0001-pci-Enable-overrides-for-missing-ACS-capabilities.patch"
+  "0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch::https://raw.githubusercontent.com/xanmod/linux-patches/6c29f5a54ba99cca11730cd0c85b1b77a2e02aa8/linux-${_major}.y-xanmod/userns/0001-sysctl-add-sysctl-to-disallow-unprivileged-CLONE_NEW.patch"
 )
 
 if [ -n "$_use_llvm_lto" ]; then
@@ -133,7 +133,7 @@ prepare() {
     echo "${pkgbase#linux}" > localversion.20-pkgname
 
     ### Add Clearlinux patches
-    for i in $(grep '^Patch' ${srcdir}/$pkgbase/linux.spec | sed -n 's/.*: //p'); do
+    for i in $(grep '^Patch' ${srcdir}/$pkgbase/linux.spec | grep -Ev '^Patch0129' | sed -n 's/.*: //p'); do
         echo "Applying patch ${i}..."
         patch -Np1 -i "$srcdir/$pkgbase/${i}"
     done
@@ -185,12 +185,6 @@ prepare() {
                    --enable-after SND_PCM_OSS SND_PCM_OSS_PLUGINS \
                    --module AGP --module-after AGP AGP_INTEL --module-after AGP_INTEL AGP_VIA \
                    --enable FW_LOADER_COMPRESS
-                   # fix for FS#72645 FS#72658
-    scripts/config --undefine SYSFB_SIMPLEFB \
-                   --enable FB_VESA \
-                   --enable FB_EFI \
-                   --enable FB_MODE_HELPERS \
-                   --enable FB_TILEBLITTING
 
     # Kernel hacking -> Compile-time checks and compiler options -> Make section mismatch errors non-fatal
     scripts/config --enable SECTION_MISMATCH_WARN_ONLY
@@ -250,7 +244,7 @@ prepare() {
     # https://github.com/graysky2/kernel_compiler_patch
     # make sure to apply after olddefconfig to allow the next section
     echo "Patching to enable GCC optimization for other uarchs..."
-    patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.15+.patch"
+    patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.17+.patch"
 
     if [ -n "$_subarch" ]; then
         # user wants a subarch so apply choice defined above interactively via 'yes'
@@ -423,13 +417,13 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha256sums=('027d7e8988bb69ac12ee92406c3be1fe13f990b1ca2249e226225cd1573308bb'
+sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
             'SKIP'
-            '619cd0e39db62b581107cd71dbc1fc52654f94d4306fd02e806ab599f06d0cd8'
+            'ff55c64fdbb9490570d0a3f203b0e3ea98a8755f3aafb6e01cd7a23130999975'
             'SKIP'
-            'fffcd3b2c139e6a0b80c976a4ce407d450cf8f454e697d5ed39d85e8232ddeba'
+            '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c'
             'c19a16f7cd760d79016c5108ae5d655d7f785d093edb4a186f69531f65889197'
-            'ece72251dacc37d239a5bbf170629c155cee634c05febd8d654b110077d29f28')
+            '51134394987f1486cc7f3c0a10dcb732a6c79f890eb352469d53cd0ddfa38835')
 
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
