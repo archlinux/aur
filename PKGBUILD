@@ -2,17 +2,17 @@
 # Contributor: miwinning <miwinning@miwcloud.me>
 pkgname=ttf-camingocode
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern monospaced typeface designed for code editors"
 arch=('any')
-url="http://www.janfromm.de/typefaces/camingomono/overview/"
+url="https://janfromm.de/typefaces/camingocode/"
 license=('custom:CC-BY-ND 3.0')
-source=("$pkgname-$pkgver.zip::http://janfromm.de/_data/downloads/CamingoCode-v$pkgver.zip")
+source=("$pkgname-$pkgver.zip::https://janfromm.de/typefaces/camingocode/camingocode.zip")
 
 package() {
     cd "$srcdir"
 
-    files=(CamingoCode-BoldItalic.ttf CamingoCode-Bold.ttf CamingoCode-Italic.ttf CamingoCode-Regular.ttf)
+    files=(TTF/CamingoCode-BoldItalic.ttf TTF/CamingoCode-Bold.ttf TTF/CamingoCode-Italic.ttf TTF/CamingoCode-Regular.ttf)
     for f in "${files[@]}"; do
         install -Dm644 "$f" -t "$pkgdir/usr/share/fonts/TTF/"
     done
@@ -20,4 +20,4 @@ package() {
     install -Dm644 "readme.txt" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('13b188ca8d1b5fe2c3ba880771f20a6faac550405ae98d12edd46240f8896714')
+sha256sums=('1ac164cbf2efdc5aacd75a0c77338acd080ebea785c60c81a0dfa0b68f485290')
