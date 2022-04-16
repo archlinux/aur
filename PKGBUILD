@@ -11,7 +11,7 @@ replaces=('modprobed_db')
 conflicts=('modprobed_db')
 url="https://wiki.archlinux.org/index.php/Modprobed-db"
 source=("$pkgname-$pkgver.tar.gz::https://github.com/graysky2/$pkgname/archive/v$pkgver.tar.gz")
-sha256sums=('041ce837b4e28ea742d00c1aba8ee934915b968ea8acc758cf5abdafc4a2e017')
+sha256sums=('34a0cd3fa67efea8a2ba657d90ce2f5e3ef480babb7f3bcae6c13bac1eb4eeab')
 install=readme.install
 
 build() {
