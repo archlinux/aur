@@ -1,36 +1,30 @@
-# PKGBUILD Maintainer: Bumsik Kim <k.bumsik@gmail.com>
+# Maintainer: Letu Ren <fantasquex@gmail.com>
+# Contributor: Bumsik Kim <k.bumsik@gmail.com>
+
 pkgname=uftrace
-pkgver=0.9.3
-pkgrel=3
-pkgdesc="Tool to trace and analyze execution of a program written in C/C++"
-arch=(armv6h armv7h aarch64 x86_64)
+pkgver=0.11
+pkgrel=1
+pkgdesc="Function graph tracer for C/C++/Rust"
+arch=('x86_64')
 url="https://github.com/namhyung/uftrace"
 license=('GPL2')
-groups=()
-depends=(libelf python2 ncurses pkgconf luajit capstone)
-makedepends=(pandoc)
-optdepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=(!emptydirs)
-install=
-changelog=
+depends=('libelf' 'python' 'ncurses' 'pkgconf' 'luajit' 'capstone' 'libunwind')
+makedepends=('pandoc')
+# Disable LTO due to upstream issue
+# https://github.com/namhyung/uftrace/issues/1343
+options=('!lto')
 source=("https://github.com/namhyung/uftrace/archive/v$pkgver.tar.gz")
-noextract=()
 # Use updpkgsums to update the checksum
-sha256sums=('d801d72e3cdd83c510aeecc5160482d879498cf08fffd21e64f84151001e18ea')
+sha256sums=('101dbb13cb3320ee76525ec26426f2aa1de4e3ee5af74f79cb403ae4d2c6c871')
 
 build() {
-  mkdir -p build
-  cd build
-  ../"$pkgname-$pkgver"/configure --prefix=/usr
-  make
+    cd "${pkgname}-${pkgver}"
+    ./configure --prefix=/usr
+    make
 }
 
 package() {
-  cd build
-  make DESTDIR="$pkgdir/" install
+    cd "${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" install
 }
 
