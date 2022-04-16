@@ -1,14 +1,14 @@
 pkgbase = minify-bin
 	pkgdesc = CLI implementation of the minify library package
-	pkgver = 2.9.10
+	pkgver = 2.11.1
 	pkgrel = 1
-	url = https://go.tacodewolff.nl/minify
+	url = https://github.com/tdewolff/minify
 	arch = x86_64
 	license = MIT
 	optdepends = bash: For auto-completions
 	provides = minify
-	source = minify-bin-2.9.10.tar.gz::https://github.com/tdewolff/minify/releases/download/v2.9.10/minify_linux_amd64.tar.gz
-	sha256sums = cbbe82f966b63768cf4fa678b0993a0d4b2918ff611d3e693fdb42d08d4c6c67
+	conflicts = minify
+	source = minify-bin-2.11.1.tar.gz::https://github.com/tdewolff/minify/releases/download/v2.11.1/minify_linux_amd64.tar.gz
+	sha256sums = 826cb78ddc91f61553399b8649fabab816bb90e8e43d8c111fff462ee331e4c5
 
 pkgname = minify-bin
-
