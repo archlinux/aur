@@ -11,8 +11,7 @@ url='https://www.rokoko.com/motion-library'
 license=('custom')
 depends=('maya>=2022' 'maya<2023.0')
 
-DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
-source=("manual://RokokoMotionLibraryMaya$_mayaver-$pkgver-1.x86_64.rpm")
+source=("https://cdn.rokoko.com/motion-library/autodesk-maya/2022/2.0.0/RokokoMotionLibraryMaya2022-2.0.0-1.x86_64.rpm")
 sha256sums=('ef2322c0584f21d0df8016a1126b0419682dbc91eab856fe243a2d752ae0a253')
 
 options=(!strip)

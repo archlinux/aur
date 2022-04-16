@@ -8,7 +8,7 @@ pkgbase = maya-rokoko-motion-library
 	depends = maya>=2022
 	depends = maya<2023.0
 	options = !strip
-	source = manual://RokokoMotionLibraryMaya2022-2.0.0-1.x86_64.rpm
+	source = https://cdn.rokoko.com/motion-library/autodesk-maya/2022/2.0.0/RokokoMotionLibraryMaya2022-2.0.0-1.x86_64.rpm
 	sha256sums = ef2322c0584f21d0df8016a1126b0419682dbc91eab856fe243a2d752ae0a253
 
 pkgname = maya-rokoko-motion-library
