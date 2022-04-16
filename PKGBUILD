@@ -4,7 +4,7 @@
 # Contributor: Dany Martineau <dany.luc.martineau@gmail.com>
 
 pkgname=fox-devel
-pkgver=1.7.77
+pkgver=1.7.79
 pkgrel=1
 pkgdesc="Free Objects for X: GUI Toolkit for C++, development version."
 arch=(x86_64)
@@ -12,8 +12,15 @@ url="http://www.fox-toolkit.org/"
 license=(LGPL 'custom')
 depends=(glu libsm libtiff libxcursor libxft libxi libxrandr)
 makedepends=(mesa)
-source=("http://www.fox-toolkit.org/ftp/fox-${pkgver}.tar.gz")
-sha512sums=('65835161d42e1fd57aff3f10b3ff7ab7e881f44df30868b6e1fd414ded4375a4772b18f2829b3fc9acfd91920c99f664f128da4445225e66ed10e98aa20a8388')
+source=("http://www.fox-toolkit.org/ftp/fox-${pkgver}.tar.gz"
+        "https://cgit.freebsd.org/ports/plain/x11-toolkits/fox17/files/patch-lib_FXRex.cpp?id=893259c1ecd95a08ca1579901608257d4ebaf0b1")
+sha512sums=('4a3dc0fb0f98fa036c0c91776af65ff1049a8047f47efedbf9864d2351d7590ed36a258e18f295f94c24169862cac7e075351a0b443495d46a535aee8dca6482'
+            '94e769c6cefdab2b4585d1071d44f2a7b5cbec2525bbdececd74ff0dcb5359d9db1dabe9509a809f281913be5082c5b436fc9cc5e6b61b17f8e5b64ca81a28e4')
+
+prepare() {
+  cd "fox-${pkgver}"
+  patch -p1 -i "${srcdir}/patch-lib_FXRex.cpp?id=893259c1ecd95a08ca1579901608257d4ebaf0b1" lib/FXRex.cpp
+}
 
 build() {
   cd "fox-${pkgver}"
