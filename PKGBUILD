@@ -2,7 +2,7 @@
 pkgname=discord-canary-electron-wayland-bin
 _pkgname=discord-canary
 __pkgname=DiscordCanary
-pkgver=0.0.134
+pkgver=0.0.135
 pkgrel=2.1
 pkgdesc="Discord (popular voice + video app) using system electron (v13) and set up for wayland"
 arch=('x86_64')
@@ -21,7 +21,7 @@ source=("https://dl-canary.discordapp.net/apps/linux/${pkgver}/${_pkgname}-${pkg
         'LICENSE.html::https://discord.com/terms'
         'OSS-LICENSES.html::https://discord.com/licenses')
 
-sha512sums=('c2c35c5152b7bc67ce144cbaa957cd25799a5d986da5ba9fe9e1193c369499024c16c05a86c281746886b53de40d3a802a35c1c5b214225e2183c0faa58aa9d9'
+sha512sums=('954ef83265edbe5ff9db001836830ddb0e63fb66cc89a0f680c6b964392b37116b507f52cd0bfd8abd6495ba019ab5465c67c42e93dadf5839feb5918487cf1a'
             'SKIP'
             'SKIP')
 prepare() {
