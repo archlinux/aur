@@ -2,14 +2,14 @@
 # Contributor: Nico <d3sox at protonmail dot com>
 pkgname=sysmontask
 pkgver=1.x.x
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc="System monitor with the compactness and usefulness of Windows Task Manager"
 arch=('any')
 url="https://github.com/KrispyCamel4u/SysMonTask"
 license=('BSD')
 depends=('gtk3' 'libwnck3' 'lshw' 'polkit' 'python-cairo' 'python-gobject' 'python-psutil')
-makedepends=('git' 'python-build' 'python-installer'  'python-setuptools' 'python-wheel')
+makedepends=('git' 'python-build' 'python-installer'  'python-setuptools' 'python-wheel' 'rsync')
 optdepends=('python-matplotlib: For Log Plot utility'
             'nvidia-utils: for NVIDIA GPU monitoring')
 #source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
@@ -43,6 +43,10 @@ build() {
 package() {
   cd "$srcdir/SysMonTask"
   python -m installer --destdir="$pkgdir" dist/*.whl
+
+  local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+  rsync -av "${pkgdir}${site_packages}/usr" "$pkgdir/"
+  rm -rf "${pkgdir}${site_packages}/usr"
 
   install -Dm755 "$srcdir/$pkgname-pkexec" -t "$pkgdir/usr/bin"
   install -Dm644 "$srcdir/org.freedesktop.$pkgname.policy" -t \
