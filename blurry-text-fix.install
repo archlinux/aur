@@ -1,0 +1,9 @@
+post_install() {
+	mv /usr/share/gtk-4.0/settings.ini /usr/share/gtk-4.0/settings-old.ini
+	mv /usr/share/gtk-4.0/settings-modified.ini /usr/share/gtk-4.0/settings.ini
+}
+
+post_remove() {
+	rm /usr/share/gtk-4.0/settings.ini
+	mv /usr/share/gtk-4.0/settings-old.ini /usr/share/gtk-4.0/settings.ini
+}
