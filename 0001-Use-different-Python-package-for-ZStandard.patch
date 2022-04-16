@@ -1,0 +1,88 @@
+From 463bef3f91e2051da2f7d861bc2325338ee623a3 Mon Sep 17 00:00:00 2001
+From: Carl Smedstad <carl.smedstad@protonmail.com>
+Date: Mon, 3 Jan 2022 20:54:02 +0100
+Subject: [PATCH] Use different Python package for ZStandard
+
+The Python package zstd does not have an open() function so I suspect the
+intention was to use the zstandard package all along. The zstandard package
+also seems more actively maintained.
+---
+ .github/workflows/main.yml | 4 ++--
+ .packit/rpmlint.spec       | 4 ++--
+ rpmlint/pkg.py             | 2 +-
+ setup.py                   | 2 +-
+ 4 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/.github/workflows/main.yml b/.github/workflows/main.yml
+index d049a903..a99fea41 100644
+--- a/.github/workflows/main.yml
++++ b/.github/workflows/main.yml
+@@ -49,7 +49,7 @@ jobs:
+               python3-flake8-import-order
+               python3-flake8-quotes
+               python3-pyxdg
+-              python3-zstd
++              python3-zstandard
+               python3-toml
+               python3-pip
+               rpm-build
+@@ -86,7 +86,7 @@ jobs:
+               python3-flake8-import-order
+               python3-pyxdg
+               python3-toml
+-              python3-zstd
++              python3-zstandard
+               python3-pip
+               rpm-build
+               git
+diff --git a/.packit/rpmlint.spec b/.packit/rpmlint.spec
+index 66f89ed1..51ea2f7a 100644
+--- a/.packit/rpmlint.spec
++++ b/.packit/rpmlint.spec
+@@ -28,7 +28,7 @@ BuildRequires:  python3-pytest-xdist
+ BuildRequires:  python3-pyxdg
+ BuildRequires:  python3-rpm
+ BuildRequires:  python3-toml
+-BuildRequires:  python3-zstd
++BuildRequires:  python3-zstandard
+ %else
+ BuildRequires:  python3dist(setuptools)
+ # For tests
+@@ -42,7 +42,7 @@ BuildRequires:  python3dist(pytest-xdist)
+ BuildRequires:  python3dist(pyxdg)
+ BuildRequires:  python3dist(rpm)
+ BuildRequires:  python3dist(toml)
+-BuildRequires:  python3dist(zstd)
++BuildRequires:  python3dist(zstandard)
+ %endif
+ 
+ # Rest of the test dependencies
+diff --git a/rpmlint/pkg.py b/rpmlint/pkg.py
+index 6532a59f..24e2ad94 100644
+--- a/rpmlint/pkg.py
++++ b/rpmlint/pkg.py
+@@ -22,7 +22,7 @@ except ImportError:
+ import rpm
+ from rpmlint.helpers import byte_to_string, ENGLISH_ENVIROMENT, print_warning
+ from rpmlint.pkgfile import PkgFile
+-import zstd
++import zstandard as zstd
+ 
+ 
+ DepInfo = namedtuple('DepInfo', ('name', 'flags', 'version'))
+diff --git a/setup.py b/setup.py
+index 5a0e5260..6d2fd64d 100755
+--- a/setup.py
++++ b/setup.py
+@@ -45,7 +45,7 @@ setup(
+         'pyxdg',
+         'rpm',
+         'toml',
+-        'zstd',
++        'zstandard',
+         'importlib-metadata;python_version<"3.8"',
+     ],
+     tests_require=[
+-- 
+2.35.3
+

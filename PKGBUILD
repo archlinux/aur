@@ -4,7 +4,7 @@
 
 pkgname=rpmlint
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool for checking common errors in rpm packages"
 arch=('any')
 url="https://github.com/rpm-software-management/$pkgname"
@@ -19,7 +19,7 @@ depends=(
   'python-pybeam'
   'python-pyxdg'
   'python-toml'
-  'python-zstd'
+  'python-zstandard'
   'rpm-tools'
   'xz'
   'zstd'
@@ -27,9 +27,6 @@ depends=(
 makedepends=('python-setuptools')
 checkdepends=(
   'python-pytest'
-  'python-pytest-cov'
-  'python-pytest-flake8'
-  'python-pytest-xdist'
 )
 optdepends=(
   'appstream-glib: for AppData file validation'
@@ -40,8 +37,18 @@ optdepends=(
 )
 source=(
   "$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz"
+  "0001-Use-different-Python-package-for-ZStandard.patch"
 )
-sha512sums=('5e16747231e3f815b405db194e5d1768d19a2b378db674f57b1ebcba17d0f3320626e4c2b648e79cc180621444439c2c84fd176cd1e0fd7b6585d50492a7f272')
+sha256sums=(
+  '53d61cb3c31663c8e86703548bec38f21a49cf0e5a4bdb26f7f6bc3cee899178'
+  '8775c5f66987a8f6a99fdb24cc769a5ca253acdb1f03c96134763ac7eda02f3b'
+)
+
+prepare() {
+  cd "$pkgname-$pkgver"
+
+  patch --forward --strip=1 --input="${srcdir}/0001-Use-different-Python-package-for-ZStandard.patch"
+}
 
 build() {
   cd "$pkgname-$pkgver"
@@ -52,7 +59,7 @@ build() {
 check() {
   cd "$pkgname-$pkgver"
 
-  python -m pytest
+  python -m pytest -c /dev/null
 }
 
 package() {

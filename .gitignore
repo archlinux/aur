@@ -1,4 +1,5 @@
-*.pkg.tar.zst
-*.tar.gz
-pkg/
-src/
+*
+!.gitignore
+!PKGBUILD
+!.SRCINFO
+!0001-Use-different-Python-package-for-ZStandard.patch
