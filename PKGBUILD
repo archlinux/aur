@@ -1,11 +1,11 @@
 # Maintainer: 3llena-arch <3llena-arch@protonmail.com>
 
 pkgname=cxx-run
-pkgver=2022.04.14
-pkgrel=1
-pkgdesc="simple run prompt in sfml"
+pkgver=16.04.2022
+pkgrel=2
+pkgdesc="customisable sfml launcher"
 arch=('x86_64')
-makedepends=('git' 'gcc' 'make' 'sfml')
+makedepends=('git' 'gcc' 'make' 'sfml' 'noto-fonts')
 url="https://github.com/3llena-arch/cxx-run"
 license=('GPL')
 source=(git+https://github.com/3llena-arch/cxx-run)
@@ -14,13 +14,11 @@ provides=('cxx-run')
 conflicts=('cxx-run')
 
 pkgver() {
-  cd ${pkgname%-git}
-  git log -1 --format=format:'%as-%f' | tr - .
+	echo "16.04.2022"
 }
 
 build() {
   cd ${pkgname%-git}
-  
   g++ main.cxx -w -lsfml-graphics -lsfml-system -lsfml-window -std=c++20 -Wl,--as-needed -Ofast -march=native -flto -o cxx-run -DNDEBUG -mtune=native -s --fast-math -fpermissive
   strip --strip-unneeded -R .comment cxx-run
 }
@@ -33,4 +31,8 @@ package() {
 
   msg2 'Cleaning up pkgdir...'
   find "$pkgdir" -type d -name .git -exec rm -r '{}' +
+
+  msg2 'Installing configuration...'
+  mkdir $HOME/.config/cxx-run
+  cp config/* $HOME/.config/cxx-run/
 }
