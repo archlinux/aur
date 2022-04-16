@@ -1,23 +1,17 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+
 pkgname=amberol-git
-pkgver=0.2.0.r1.g8f524d0
+pkgver=0.3.0.r13.g2ce09b4
 pkgrel=1
 pkgdesc="Plays music, and nothing else"
 arch=('x86_64')
 url="https://gitlab.gnome.org/ebassi/amberol"
 license=('GPL3')
-depends=('libadwaita' 'gstreamer')
-makedepends=('meson')
+depends=('libadwaita' 'gstreamer' 'gst-plugins-base')
+makedepends=('git' 'meson' 'rust')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=()
-install=
-changelog=
 source=(git+$url.git)
 b2sums=('SKIP')
 
