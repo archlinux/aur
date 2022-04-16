@@ -6,7 +6,6 @@ pkgbase = jupyter_latex_envs
 	arch = any
 	license = BSD
 	depends = python
-	depends = jupyter
 	depends = jupyter-notebook
 	source = https://files.pythonhosted.org/packages/source/j/jupyter-latex_envs/jupyter_latex_envs-1.4.6.tar.gz
 	sha256sums = 070a31eb2dc488bba983915879a7c2939247bf5c3b669b398bdb36a9b5343872
