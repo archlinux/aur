@@ -1,1 +1,2 @@
 d /var/lib/filebeat 0750 filebeat filebeat
+d /var/log/filebeat 0755 filebeat filebeat
