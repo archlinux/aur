@@ -1,14 +1,14 @@
 # Maintainer: Thenujan Sandramohan <sthenujan2002@gmail.com>
 pkgname=grub-editor
-pkgver=0.96
+pkgver=0.97
 pkgrel=1
 epoch=
-pkgdesc="GUI to edit grub configurations"
+pkgdesc="GUI application to edit grub configurations"
 arch=('any')
 url="https://github.com/Thenujan-0/grub-editor"
 license=('GPL3')
 groups=()
-depends=('python>=3.8' 'python-pyzmq')
+depends=('python' 'grub')
 makedepends=('make')
 checkdepends=()
 optdepends=()
@@ -26,7 +26,7 @@ validpgpkeys=()
 
 package() {
     echo $pwd
-        cd "$pkgname-$pkgver"
+    cd "$pkgname-$pkgver"
     echo "$pkgdir"
     make PKG_DIR="$pkgdir" install
 }
