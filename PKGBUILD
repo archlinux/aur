@@ -1,6 +1,6 @@
 # Maintainer: Hisbaan Noorani <hisbaan@gmail.com>
 pkgname=didyoumean-git
-pkgver=1.0.r7.2099456
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="A cli spelling corrector"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
