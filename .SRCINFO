@@ -1,20 +1,21 @@
 pkgbase = mint-themes-git
 	pkgdesc = Linux Mint themes
-	pkgver = 400.44239e7
+	pkgver = 1.9.6.r13.g4e19d767
 	pkgrel = 1
 	url = https://github.com/linuxmint/mint-themes
 	arch = any
 	license = GPL3
 	makedepends = git
-	makedepends = ruby-sass
+	makedepends = python
+	makedepends = sassc
 	provides = mint-themes
 	provides = mint-x-theme
 	provides = mint-y-theme
 	conflicts = mint-themes
 	conflicts = mint-x-theme
 	conflicts = mint-y-theme
-	source = mint-themes::git+https://github.com/linuxmint/mint-themes.git
+	options = !strip
+	source = git+https://github.com/linuxmint/mint-themes.git
 	sha256sums = SKIP
 
 pkgname = mint-themes-git
-
