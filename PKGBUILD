@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=python-kiss-headers
 _name=${pkgname#python-}
-pkgver=2.3.0
-pkgrel=4
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="Python package for HTTP/1.1 style headers. Parse headers to objects."
 arch=('any')
 url="https://www.kiss-headers.tech"
@@ -11,7 +11,7 @@ depends=('python')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 checkdepends=('python-pytest-cov')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('bdf60780f867d80780e70abea9ad8c7f6d903a17789538cbd1670908bdced64b')
+sha256sums=('86e80d58da2af71fdb7c3adfe57544442fd0595928a95f6e8a9d490aa6ea29aa')
 
 build() {
   cd "$_name-$pkgver"
