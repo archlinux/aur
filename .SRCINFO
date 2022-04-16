@@ -1,6 +1,6 @@
 pkgbase = dict-git
 	pkgdesc = A dictionary, for the command line.
-	pkgver = r14.c4c929a
+	pkgver = r20.0d40ace
 	pkgrel = 1
 	url = https://github.com/BetaPictoris/dict
 	arch = x86_64
