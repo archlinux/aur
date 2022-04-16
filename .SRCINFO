@@ -1,0 +1,15 @@
+pkgbase = hyfetch
+	pkgdesc = Neofetch with LGBTQ pride flags.
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/hykilpikonna/hyfetch
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python
+	depends = python-hypyutils
+	source = hyfetch::git+https://github.com/hykilpikonna/hyfetch.git#tag=1.0.4
+	md5sums = SKIP
+
+pkgname = hyfetch
