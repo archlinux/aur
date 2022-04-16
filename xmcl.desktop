@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=X Minecraft Launcher
+Comment=X Minecraft Launcher - 一个现代化的 Minecraft 启动器
+GenericName=X Minecraft Launcher
+Exec=/usr/share/xmcl/xmcl-0.23.0/xmcl %U
+Icon=xmcl
+Type=Application
+StartupNotify=false
+StartupWMClass=xmcl
+Categories=Game;Application;
+Keywords=xmcl;

@@ -1,0 +1,13 @@
+pkgbase = xmcl-bin
+	pkgdesc = X Minecraft Launcher - 一个现代化的 Minecraft 启动器
+	pkgver = 0.23.0
+	pkgrel = 1
+	url = https://xmcl.app/
+	arch = x86_64
+	license = MIT
+	makedepends = wget
+	optdepends = jdk17-openjdk: 支持启动1.18以上的版本
+	source = https://github.com/Voxelum/x-minecraft-launcher/releases/download/v0.23.0/xmcl-0.23.0.tar.xz
+	md5sums = SKIP
+
+pkgname = xmcl-bin
