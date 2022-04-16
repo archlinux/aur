@@ -8,13 +8,13 @@
 
 pkgname=iproute2-selinux
 pkgver=5.17.0
-pkgrel=1
+pkgrel=2
 pkgdesc='IP Routing Utilities with SELinux support'
 arch=('x86_64' 'aarch64')
 license=('GPL2')
 groups=('selinux')
 url='https://git.kernel.org/pub/scm/network/iproute2/iproute2.git'
-depends=('glibc' 'iptables' 'libelf' 'libselinux')
+depends=('glibc' 'iptables' 'libelf' 'libbpf' 'libselinux')
 optdepends=('db: userspace arp daemon'
             'libcap: tipc'
             'linux-atm: ATM support')
