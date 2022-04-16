@@ -1,8 +1,8 @@
 # Maintainer: Tyler Anderson <unlimitedbacon@gmail.com>
 
 pkgname=stl-thumb
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 license=('MIT')
 pkgdesc="A fast lightweight thumbnail generator for STL files"
 url='https://github.com/unlimitedbacon/stl-thumb'
