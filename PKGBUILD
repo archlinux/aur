@@ -8,8 +8,7 @@ url="https://xmcl.app/"
 license=('MIT')
 #depends=('')
 makedepends=('wget')
-optdepends=('jdk8-openjdk: 支持启动1.18以下的版本')
-optdepends=('jdk17-openjdk: 支持启动1.18以上的版本')
+optdepends=('jre8-openjdk: 启动低版本游戏的最低要求' 'jre11-openjdk: 推荐使用此版本Java启动1.12(17w13a)-1.17(21w18a)' 'jre17-openjdk: 推荐使用此Java版本启动1.17(21w19a)及以上的版本')
 source=("https://github.com/Voxelum/x-minecraft-launcher/releases/download/v$pkgver/xmcl-$pkgver.tar.xz")
 md5sums=('SKIP')
 
