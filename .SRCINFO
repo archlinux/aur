@@ -3,13 +3,16 @@ pkgbase = rpmlauncher-git
 	pkgver = 1.0.6+880.r1.g45fe3b5
 	pkgrel = 1
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	makedepends = ninja
 	makedepends = cmake
 	makedepends = clang
 	makedepends = dart
 	makedepends = flutter-beta
 	depends = git
+	provides = rpmlauncher
+	conflicts = rpmlauncher
+	conflicts = rpmlauncher-bin
 	source = RPMLauncher::git+https://github.com/RPMTW/RPMLauncher#branch=develop
 	md5sums = SKIP
 
