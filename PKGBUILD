@@ -3,7 +3,7 @@
 
 pkgname=josm-javaws
 pkgver='tested'
-pkgrel=1
+pkgrel=2
 pkgdesc="An editor for OpenStreetMap written in Java, Java Web Start version (auto updates on startup)"
 arch=('any')
 url="http://josm.openstreetmap.de/"
@@ -18,7 +18,7 @@ source=('https://josm.openstreetmap.de/download/josm.jnlp'
         'josm'
         'josm.conf.d')
 
-sha256sums=('3bc056c6bcea2de77901f95b691e873c5fe4e63dba92d4c5008cb356a7f23557'
+sha256sums=('a4b196bfe34796c76441586abadafd4e48478caef3debb8248021d3f6ba906fe'
             '4f7ac6e53fe4660a69b183b0d46596f9ee496d4736a2652326c64ebc5e3023fb'
             'edfb2cbf2aa7e6582b4d43cd402ea58be7990702e5ffffc3ff7afdc518c28ca9'
             '345bc3e4436f93f4980051ccec226224fa8d6b513cde8da98294cc3b4bcdc9dc'
