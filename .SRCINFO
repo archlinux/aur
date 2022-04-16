@@ -1,6 +1,6 @@
 pkgbase = octave-optim
 	pkgdesc = Non-linear optimization toolkit.
-	pkgver = 1.6.1
+	pkgver = 1.6.2
 	pkgrel = 1
 	url = https://octave.sourceforge.io/optim/index.html
 	install = octave-optim.install
@@ -10,9 +10,8 @@ pkgbase = octave-optim
 	depends = octave>=4.0.0
 	depends = octave-struct>=1.0.12
 	depends = octave-statistics>=1.4.0
-	noextract = optim-1.6.1.tar.gz
-	source = http://downloads.sourceforge.net/octave/optim-1.6.1.tar.gz
-	md5sums = e3501e43ccd33e793947ad120a21fc37
+	noextract = optim-1.6.2.tar.gz
+	source = http://downloads.sourceforge.net/octave/optim-1.6.2.tar.gz
+	md5sums = 593ddc62e8b5a880be9406fde9ac3492
 
 pkgname = octave-optim
-
