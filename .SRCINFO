@@ -1,39 +1,24 @@
 pkgbase = lua-cldr-git
 	pkgdesc = Lua interface to Unicode CLDR data
-	pkgver = 0.1.0.r15.g253f8d5
+	pkgver = 0.1.0.r21.gfc7d81d
 	pkgrel = 1
 	url = https://github.com/alerque/cldr-lua
 	arch = any
 	license = MIT
+	license = custom:ICU
 	makedepends = git
 	makedepends = lua
-	makedepends = lua53
-	makedepends = lua52
 	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
 	makedepends = luarocks
 	source = git+https://github.com/alerque/cldr-lua.git#branch=master
 	sha256sums = SKIP
 
 pkgname = lua-cldr-git
-	depends = lua
-	depends = lua-penlight
-	provides = lua-cldr
-	conflicts = lua-cldr
 
 pkgname = lua53-cldr-git
-	depends = lua53
-	depends = lua53-penlight
-	provides = lua53-cldr
-	conflicts = lua53-cldr
 
 pkgname = lua52-cldr-git
-	depends = lua52
-	depends = lua52-penlight
-	provides = lua52-cldr
-	conflicts = lua52-cldr
 
 pkgname = lua51-cldr-git
-	depends = lua51
-	depends = lua51-penlight
-	provides = lua51-cldr
-	conflicts = lua51-cldr
