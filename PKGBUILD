@@ -4,7 +4,7 @@
 ## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
-_microarchitecture=0
+_microarchitecture=98
 
 ## --- PKGBUILD
 
@@ -16,7 +16,7 @@ _minor=3
 pkgbase=linux-multimedia
 #pkgver=${_major}
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux Multimedia Optimized'
 url="https://www.kernel.org/"
 arch=(x86_64)
@@ -66,11 +66,10 @@ prepare() {
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0002-clear-patches.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0002-mm-Support-soft-dirty-flag-read-with-reset.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-base.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0005-glitched-pds.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0006-add-acs-overrides_iommu.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v5.17-fsync1_via_futex_waitv.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v5.17-winesync.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0009-glitched-bmq.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0009-glitched-ondemand-bmq.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0009-prjc_v5.17-r0.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0012-misc-additions.patch
 
@@ -87,19 +86,14 @@ prepare() {
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
-  ## Optimize Kernel for Performance Using (GCC -O3)
-  msg2 "Setting Up A GCC -O3 Optimized Kernel"
-  scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
-  scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
-
   ### Enable Full Tickless Timer
-  msg2 "Enabling Full Tickless..."
+  msg2 "Enable Full Tickless..."
   scripts/config --disable CONFIG_HZ_PERIODIC
   scripts/config --disable CONFIG_NO_HZ_IDLE
   scripts/config --enable CONFIG_NO_HZ_FULL
   scripts/config --disable CONFIG_NO_HZ
   scripts/config --enable CONFIG_NO_HZ_COMMON
-  
+
   ### Enable Preemptation
   msg2 "Enable PREEMPT..."
   scripts/config --disable CONFIG_PREEMPT_NONE
@@ -109,8 +103,22 @@ prepare() {
   scripts/config --enable CONFIG_PREEMPTION
   scripts/config --enable CONFIG_PREEMPT_DYNAMIC
 
+  ### Disable NUMA
+  msg2 "Disable NUMA..."
+  scripts/config --disable CONFIG_NUMA
+
+  ### Set CPU Scheduler to PDS
+  msg2 "Set CPU Scheduler to PDS..."
+  scripts/config --disable CONFIG_SCHED_BMQ
+  scripts/config --enable CONFIG_SCHED_PDS
+
+  ### Optimize Kernel for Performance Using (GCC -O3)
+  msg2 "Set Up A GCC -O3 Optimized Kernel..."
+  scripts/config --disable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE
+  scripts/config --enable CONFIG_CC_OPTIMIZE_FOR_PERFORMANCE_O3
+
   ### Set tickrate to 1000HZ
-  msg2 "Setting tick rate to 1000HZ..."
+  msg2 "Set tick rate to 1000HZ..."
   scripts/config --disable CONFIG_HZ_300
   scripts/config --enable CONFIG_HZ_1000
   scripts/config --set-val CONFIG_HZ 1000
@@ -121,7 +129,7 @@ prepare() {
   scripts/config --enable CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE
 
   ### Disable Kernel Debugging
-  msg2 "Disable Kernel Debugging For Smaller Builds"
+  msg2 "Disable Kernel Debugging For Smaller Builds..."
   scripts/config --disable CONFIG_CONTEXT_TRACKING
   scripts/config --disable CONFIG_CONTEXT_TRACKING_FORCE
   scripts/config --disable CONFIG_DEBUG_KERNEL
@@ -137,7 +145,6 @@ prepare() {
   scripts/config --disable CONFIG_STACK_TRACER
   
   ### Use Nconfig to customize compile options
-  #msg2 "Enabling Ncurses Config Menu..."
   #make nconfig
 
   make -s kernelrelease > version
@@ -152,10 +159,10 @@ build() {
 _package() {
   pkgdesc="The $pkgdesc kernel and modules"
   depends=(coreutils kmod initramfs)
-  optdepends=('crda: to set the correct wireless channels of your country'
+  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
-  replaces=(virtualbox-guest-modules-arch wireguard-arch)
+  replaces=(virtualbox-guest-modules-mainline wireguard-mainline)
 
   cd $_srcname
   local kernver="$(<version)"
@@ -190,11 +197,8 @@ _package-headers() {
   install -Dt "$builddir/arch/x86" -m644 arch/x86/Makefile
   cp -t "$builddir" -a scripts
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
+  # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
-
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
