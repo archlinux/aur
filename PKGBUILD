@@ -3,7 +3,7 @@
 
 _gemname=rubocop
 pkgname=ruby-${_gemname}
-pkgver=1.26.1
+pkgver=1.27.0
 pkgrel=1
 pkgdesc="A Ruby static code analyzer and formatter"
 arch=(any)
@@ -35,16 +35,11 @@ makedepends=(rubygems ruby-rdoc)
 url=https://rubocop.org
 license=(MIT)
 options=(!emptydirs)
-source=(https://github.com/rubocop/rubocop/archive/v$pkgver/$_gemname-$pkgver.tar.gz
-        https://github.com/rubocop/rubocop/commit/2b434c5d823442cb0ec0a982438140df59336f37.patch)
-sha256sums=('888dd9c15453e4aa0c02bd83e9292042aff86d3190c2da6b929ed04db037b9d7'
-            '84858c0c4507d2ee932aa3458243de727a3f9ee1c828a199099334f7ade4fbcf')
+source=(https://github.com/rubocop/rubocop/archive/v$pkgver/$_gemname-$pkgver.tar.gz)
+sha256sums=('94eb2b7523c0028e0f0b31142e4e846aa4e96fcc3847bf3992cee17e163c68f9')
 
 prepare() {
   cd $_gemname-$pkgver
-
-  # fix a broken test about the changelog
-  patch -p1 -N -i "$srcdir/2b434c5d823442cb0ec0a982438140df59336f37.patch"
 
   sed -i 's|~>|>=|g' ${_gemname}.gemspec
 
