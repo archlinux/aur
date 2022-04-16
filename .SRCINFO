@@ -1,0 +1,17 @@
+pkgbase = denseflow
+	pkgdesc = Extracting optical flow and frames
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/open-mmlab/denseflow
+	arch = x86_64
+	license = BSD
+	makedepends = boost
+	makedepends = cmake
+	makedepends = qt5-base
+	depends = cuda
+	depends = hdf5
+	depends = opencv-cuda
+	source = denseflow-0.1.0.tar.gz::https://github.com/open-mmlab/denseflow/archive/refs/tags/v0.1.0.tar.gz
+	sha512sums = 37262dd107e0b80ed8bf735727d59c73bcc2dc79dfbdffbd9ff63139c590e63a4b3063c0138d0fea8ff7a87e30b3f329c09b1b5c8025912c86f40d113da5e51a
+
+pkgname = denseflow
