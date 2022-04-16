@@ -1,19 +1,19 @@
 # Maintainer: William Tang <galaxyking0419@gmail.com>
 
-_mayaver=2022
+_mayaver=2023
 
 pkgname=maya-substance
-pkgver=2.1.9
+pkgver=2.2.2
 pkgrel=1
 pkgdesc='Autodesk Maya Substance Plugin'
 arch=('x86_64')
 url='https://www.substance3d.com/ecosystem-plug-ins/substance-in-maya'
 license=('custom')
-depends=('maya>=2022.0' 'maya<2023.0')
+depends=('maya>=2023.0' 'maya<2024.0')
 
 DLAGENTS+=('manual::/usr/bin/echo \ \ Note: Please download the package manually from the official website')
-source=("manual://SubstanceInMaya-$pkgver-$_mayaver-Linux.rpm")
-sha256sums=('025dd73d895bb721f73847bbd88ed2f28ce3a653223d609210ebab4a4d9cf375')
+source=("manual://AdobeSubstance3DforMaya-$pkgver-$_mayaver.Linux.rpm")
+sha256sums=('b7d9757312328e932f015210f3e904faa9f7daefb92f189043b1a64f08ad0e89')
 
 options=(!strip)
 
