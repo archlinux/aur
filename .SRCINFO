@@ -1,0 +1,12 @@
+pkgbase = exiftool-rs-git
+	pkgdesc = Image metadata scrubber written in Rust.
+	pkgver = r6.gd4fd6b1
+	pkgrel = 1
+	url = https://github.com/jae1911/exiftool-rs
+	arch = x86_64
+	license = MIT
+	depends = rust
+	source = git+https://github.com/jae1911/exiftool-rs.git
+	sha512sums = SKIP
+
+pkgname = exiftool-rs-git
