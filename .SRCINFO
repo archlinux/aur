@@ -1,0 +1,16 @@
+pkgbase = vim-aylin-git
+	pkgdesc = Modern and minimal dark vim theme with bright colors
+	pkgver = r24.3616fb0
+	pkgrel = 1
+	url = https://github.com/ahmedabdulrahman/aylin.vim
+	arch = any
+	groups = vim-plugins
+	license = MIT
+	makedepends = git
+	depends = vim-plugin-runtime
+	provides = vim-aylin
+	conflicts = vim-aylin
+	source = vim-aylin-git::git+https://github.com/ahmedabdulrahman/aylin.vim
+	md5sums = SKIP
+
+pkgname = vim-aylin-git
