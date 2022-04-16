@@ -1,7 +1,7 @@
 pkgbase = jupyter_latex_envs
 	pkgdesc = Jupyter notebook extension which supports (some) LaTeX environments within markdown cells
 	pkgver = 1.4.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ipython-contrib/
 	arch = any
 	license = BSD
