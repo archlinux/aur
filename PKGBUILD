@@ -1,7 +1,7 @@
 pkgname=googlekeep-bin
 _pkgname=GoogleKeep-bin
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 _pkgrel_x86_64=1
 _pkgrel_armv7h=1
 _pkgrel_aarch64=1
