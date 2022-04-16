@@ -1,7 +1,7 @@
 pkgbase = cxx-run
 	pkgdesc = customisable sfml launcher
 	pkgver = 16.04.2022
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/3llena-arch/cxx-run
 	arch = x86_64
 	license = GPL

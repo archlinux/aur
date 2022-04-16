@@ -2,7 +2,7 @@
 
 pkgname=cxx-run
 pkgver=16.04.2022
-pkgrel=2
+pkgrel=3
 pkgdesc="customisable sfml launcher"
 arch=('x86_64')
 makedepends=('git' 'gcc' 'make' 'sfml' 'noto-fonts')
