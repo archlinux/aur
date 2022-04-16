@@ -3,7 +3,7 @@
 
 pkgname=rudo
 _pkgname=rudo
-pkgver=r8.f9c5fad
+pkgver=r9.178ea23
 pkgrel=1
 pkgdesc="A minimal todo manager written in Rust."
 arch=('any')
