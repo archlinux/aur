@@ -10,7 +10,7 @@ pkgbase = rpmlauncher
 	makedepends = clang
 	makedepends = dart
 	makedepends = flutter-beta
-	source = git+https://github.com/RPMTW/RPMLauncher#tag=1.0.6+859
+	source = git+https://github.com/RPMTW/RPMLauncher#branch=main
 	md5sums = SKIP
 
 pkgname = rpmlauncher
