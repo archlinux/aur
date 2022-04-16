@@ -1,7 +1,7 @@
 # Maintainer: Juliette Cordor
 pkgname="cmd-not-found"
-pkgver="1.0.0"
-pkgrel="5"
+pkgver="1.1.0"
+pkgrel="1"
 pkgdesc="A simple hook to display required packages when a command is not found"
 url=""
 arch=("any")
@@ -20,7 +20,7 @@ install=
 changelog=
 source=("uninstall.sh" "cmd-not-found.zsh")
 sha256sums=('4ea211759bb6f865f98c01eb972c8ba3a3040f785736c55d8183e6d12c68e3e9'
-  'e63386d563b66c4aa1beae78052631c93b81922c5167af0bd8dfa858b31b447c')
+  '61ba8632993f374b21b626c31e31fda87f6331f948429aa31fb06ab58f56b251')
 
 noextract=()
 validpgpkeys=()

@@ -14,10 +14,10 @@ command_not_found_handler() {
     if read -q "choice? "; then
     		echo
     		echo "Installing $pkgname"
-            if "which pamac">/dev/null; then
+            if which pamac>/dev/null; then
                 pamac install $pkgname
             else
-                pacman -S $pkgname
+                sudo pacman -S $pkgname
             fi
     else
     		echo " "
