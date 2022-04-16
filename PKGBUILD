@@ -1,8 +1,8 @@
 # Maintainer: kyndair <kyndair at gmail dot com>
 pkgname=surfshark-wireguard-git
 _pkgname=linux-surfshark-wireguard
-pkgver=0.3.1.beta.r1.g92ffcd0
-pkgrel=3
+pkgver=0.3.1.beta.r5.gb7818d2
+pkgrel=1
 pkgdesc="Sets-up a vpn interface using wg-quick"
 arch=('any')
 url="https://github.com/kyndair/linux-surfshark-wireguard"
