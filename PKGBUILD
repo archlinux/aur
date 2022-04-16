@@ -1,7 +1,7 @@
 # Maintainer: silentnoodle
 pkgbase=johncena141-meta
 pkgname=('johncena141-meta-intel' 'johncena141-meta-nvidia' 'johncena141-meta-amd')
-pkgver=1
+pkgver=1.0
 pkgrel=1
 pkgdesc="meta package for johncena141"
 arch=('any')
@@ -58,7 +58,7 @@ package_johncena141-meta-nvidia() {
   )
   optdepends=(
     'nvidia: for the stanard kernel'
-    'nvidia-dmks: for dynamic kernel module'
+    'nvidia-dkms: for dynamic kernel module'
   )
 }
 
