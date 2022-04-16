@@ -1,0 +1,21 @@
+From 67497e3a5bb93713c9f869a67ab633efd56cfae1 Mon Sep 17 00:00:00 2001
+From: S7evinK <s73vink@gmail.com>
+Date: Sat, 26 Feb 2022 09:08:27 +0100
+Subject: [PATCH 2/2] Add info that the config is only an example
+
+---
+ conduit-example.toml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/conduit-example.toml b/conduit-example.toml
+index 23c1844..ec9178b 100644
+--- a/conduit-example.toml
++++ b/conduit-example.toml
+@@ -1,3 +1,4 @@
++# THIS IS AN EXAMPLE CONFIGURATION WHICH NEEDS TO BE UPDATED.
+ [global]
+ # The server_name is the pretty name of this server. It is used as a suffix for userd
+ # and room ids. Examples: matrix.org, conduit.rs
+-- 
+2.35.1
+
