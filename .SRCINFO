@@ -1,24 +1,25 @@
 pkgbase = freeablo
 	pkgdesc = Modern, FLOSS reimplementation of the Diablo 1 game engine
-	pkgver = 0.3
+	pkgver = 0.4+191+g921ac20b
 	pkgrel = 1
-	url = http://freeablo.org/
+	url = https://freeablo.org/
 	install = freeablo.install
-	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
-	makedepends = boost
+	makedepends = git
 	depends = sdl2_image
 	depends = sdl2_mixer
-	depends = boost-libs
-	depends = librocket
+	depends = zlib
+	depends = enet
+	depends = bzip2
 	depends = libgl
 	depends = qt5-base
-	source = freeablo-0.3.tar.gz::https://github.com/wheybags/freeablo/archive/v0.3.tar.gz
-	source = stormlib-for-0.3.tar.gz::https://github.com/wheybags/StormLib/archive/5da7bbb379e99014fbb9a2de5a43daf1483bb201.zip
-	sha256sums = c1b47e0944004e8cd7d76a323b03ef38e466ad697be34d2030eba3bc63b38533
-	sha256sums = 5580a5e1ffc7ce43040895c3c295a9e186e438139042d2c6425743d52dfea0d2
+	source = git+https://github.com/wheybags/freeablo.git#commit=921ac20be95828460ccc184a9de11eca5c7c0519
+	source = https://github.com/wheybags/freeablo/pull/500/commits/1ec095873d725b44f4e0f5616625722de1f85dce.patch
+	source = https://github.com/wheybags/freeablo/pull/504/commits/ae952ca143aa0313b2f9018dc33f7f07047fad0a.patch
+	sha256sums = SKIP
+	sha256sums = 31d0455fb4b3ef37b6f9569990d344fa9501ca37d86ba41be1f44fbd028c576a
+	sha256sums = a8b6601d684a0ed6697a3eedb50889645c5557911b7a137767eef830944cb469
 
 pkgname = freeablo
-

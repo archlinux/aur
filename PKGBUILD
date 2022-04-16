@@ -1,46 +1,54 @@
-# Maintainer: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
+# Maintainer: 
+# Contributor: Fabio 'Lolix' Loli <fabio.loli@disroot.org> -> https://github.com/FabioLolix
+# Contributor: carstene1ns <arch carsten-teibes de> - http://git.io/ctPKG
 
 pkgname=freeablo
-pkgver=0.3
+pkgver=0.4+191+g921ac20b
 pkgrel=1
-_stormlibhash=5da7bbb379e99014fbb9a2de5a43daf1483bb201
-pkgdesc='Modern, FLOSS reimplementation of the Diablo 1 game engine'
-arch=('i686' 'x86_64')
-url="http://freeablo.org/"
-license=('GPL3')
-depends=('sdl2_image' 'sdl2_mixer' 'boost-libs' 'librocket' 'libgl' 'qt5-base')
-makedepends=('cmake' 'boost')
-install=$pkgname.install
-source=(freeablo-$pkgver.tar.gz::"https://github.com/wheybags/freeablo/archive/v$pkgver.tar.gz"
-        stormlib-for-$pkgver.tar.gz::"https://github.com/wheybags/StormLib/archive/$_stormlibhash.zip")
-sha256sums=('c1b47e0944004e8cd7d76a323b03ef38e466ad697be34d2030eba3bc63b38533'
-            '5580a5e1ffc7ce43040895c3c295a9e186e438139042d2c6425743d52dfea0d2')
+pkgdesc="Modern, FLOSS reimplementation of the Diablo 1 game engine"
+arch=(x86_64)
+url="https://freeablo.org/"
+license=(GPL3)
+depends=(sdl2_image sdl2_mixer zlib enet bzip2 libgl qt5-base)
+makedepends=(cmake git)
+install=freeablo.install
+source=("git+https://github.com/wheybags/freeablo.git#commit=921ac20be95828460ccc184a9de11eca5c7c0519"
+        "https://github.com/wheybags/freeablo/pull/500/commits/1ec095873d725b44f4e0f5616625722de1f85dce.patch"
+        "https://github.com/wheybags/freeablo/pull/504/commits/ae952ca143aa0313b2f9018dc33f7f07047fad0a.patch")
+sha256sums=('SKIP'
+            '31d0455fb4b3ef37b6f9569990d344fa9501ca37d86ba41be1f44fbd028c576a'
+            'a8b6601d684a0ed6697a3eedb50889645c5557911b7a137767eef830944cb469')
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  git describe --long --tags | sed 's/-/+/g;s/^v//'
+}
 
 prepare() {
-  # copy submodule to right location
-  cp -rup StormLib-$_stormlibhash/* $pkgname-$pkgver/extern/StormLib
-
-  # reset build folder
-  rm -rf build
-  mkdir build
+  cd "${srcdir}/${pkgname}"
+  mkdir -p build
+  patch -Np1 -i ../1ec095873d725b44f4e0f5616625722de1f85dce.patch
+  patch -Np1 -i ../ae952ca143aa0313b2f9018dc33f7f07047fad0a.patch
 }
 
 build() {
-  cd build
+  cd "${srcdir}/${pkgname}/build"
+  cmake .. -Wno-dev \
+    -DVIDEO_OPENGLES:BOOL=OFF \
+    -DVIDEO_RPI:BOOL=OFF \
+    -DVIDEO_VIVANTE:BOOL=OFF \
+    -DVIDEO_WAYLAND:BOOL=OFF \
+    -DVIDEO_WAYLAND_QT_TOUCH:BOOL=OFF \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr
 
-  cmake ../$pkgname-$pkgver
   make
 }
 
 package() {
-  # binaries
-  install -Dm755 build/freeablo "$pkgdir"/usr/bin/freeablo
-  for _f in celview exedump mpqtool launcher; do
-    install -Dm755 build/$_f "$pkgdir"/usr/bin/freeablo-$_f
-  done
-  # data
-  install -d "$pkgdir"/usr/share/freeablo
-  cp -r freeablo-$pkgver/resources "$pkgdir"/usr/share/freeablo
-  # doc
-  install -Dm644 freeablo-$pkgver/readme.md "$pkgdir"/usr/share/doc/freeablo/readme.md
+  cd "${srcdir}/${pkgname}/build"
+  make DESTDIR=${pkgdir} install
+  install -Dm644 ../readme.md "${pkgdir}/usr/share/doc/freeablo/readme.md"
+
+  install -D "${srcdir}/freeablo/resources/launcher/play.png" "${pkgdir}/usr/share/pixmaps/freeablo.png"
 }

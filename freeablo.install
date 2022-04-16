@@ -1,4 +1,3 @@
-
 post_install() {
   echo "Additional setup is needed, as freeablo only searches for resources in the"
   echo "current directory:"
