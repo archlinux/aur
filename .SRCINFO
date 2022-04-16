@@ -1,18 +1,20 @@
 pkgbase = apache-netbeans
 	pkgdesc = Apache Netbeans IDE development platform
-	pkgver = 12.6
+	pkgver = 13
 	pkgrel = 1
 	url = https://netbeans.apache.org
 	arch = i686
 	arch = x86_64
 	license = Apache
 	depends = java-runtime>=8
+	depends = ttf-font
 	provides = apache-netbeans
 	conflicts = apache-netbeans
+	conflicts = netbeans
 	options = !strip
-	source = https://downloads.apache.org/netbeans/netbeans/12.6/netbeans-12.6-bin.zip
+	source = https://downloads.apache.org/netbeans/netbeans/13/netbeans-13-bin.zip
 	source = apache-netbeans.desktop
-	sha512sums = 2b41e310eff2c3d87edbe6390afc72606d7e931f8a1fd3529fe42c282b2f87fac6fe29582d8cb2f778997f1fb0cf0ae011f46d7cca591ad0c0c5dea7c944a708
+	sha512sums = 5e78763a19c73a8fbe8063f1d68fd699c4c757b28d55e793eaeb7dc47d99a34105b6de371858b6f872ce5e6deefc87230335a56c6bc8a7df935549f00eeb03a0
 	sha512sums = e8160bb80c333a6b478766f176092caa8d87394202c923df22a8f4e3a336a72b0c3ee7f724743b13bfdc785fca32c1b984c2f719b0b153f943a9beaa9d877909
 
 pkgname = apache-netbeans
