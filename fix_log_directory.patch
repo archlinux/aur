@@ -1,0 +1,25 @@
+--- FreeserfNet/MainWindow.cs.old	2022-04-16 23:21:13.097648136 +0200
++++ FreeserfNet/MainWindow.cs	2022-04-16 23:22:24.783871217 +0200
+@@ -75,10 +75,12 @@
+             if (mainWindow != null)
+                 throw new ExceptionFreeserf(ErrorSystemType.Application, "A main window can not be created twice.");
+ 
++			string logDirectory = string.Empty;
++
+             try
+             {
+ #if !DEBUG
+-                string logDirectory = FileSystem.Paths.IsWindows() ? Program.ExecutablePath : "/var/log/freeserf.net";
++                logDirectory = FileSystem.Paths.IsWindows() ? Program.ExecutablePath : Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) + "/.local/share/freeserf";
+                 string logPath = Path.Combine(logDirectory, UserConfig.DefaultLogFile);
+                 Directory.CreateDirectory(logDirectory);
+                 Log.SetStream(new LogFileStream(logPath));
+@@ -114,7 +116,7 @@
+                     string logFile = string.IsNullOrWhiteSpace(UserConfig.Logging.LogFileName) ? UserConfig.DefaultLogFile : UserConfig.Logging.LogFileName;
+ 
+                     if (!Path.IsPathRooted(logFile))
+-                        logFile = Path.Combine(Program.ExecutablePath, logFile);
++                        logFile = Path.Combine(logDirectory, logFile);
+ 
+                     Log.SetStream(new LogFileStream(logFile));
+                     Log.MaxSize = UserConfig.Logging.MaxLogSize;

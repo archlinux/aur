@@ -1,0 +1,11 @@
+--- FreeserfNet/DynamicLibrary.cs.old	2022-04-16 20:48:27.005942128 +0200
++++ FreeserfNet/DynamicLibrary.cs	2022-04-16 20:48:32.959315394 +0200
+@@ -9,7 +9,7 @@
+         const int RtldNow = 0x0002;
+         const int RtldGlobal = 0x0100;
+ 
+-        [DllImport("libdl.so", EntryPoint = "dlopen")]
++        [DllImport("libdl.so.2", EntryPoint = "dlopen")]
+         static extern IntPtr LoadLinux(string FileName, int Flags = RtldNow | RtldGlobal);
+ 
+         static string GetPath(string fileName, string folder)

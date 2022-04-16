@@ -1,0 +1,26 @@
+pkgbase = freeserf.net
+	pkgdesc = Settlers 1 clone written in C# (requires original game file)
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/Pyrdacor/freeserf.net
+	install = freeserf.net.install
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = dotnet-sdk
+	makedepends = dotnet-targeting-pack
+	depends = dotnet-runtime-3.1
+	source = https://github.com/Pyrdacor/freeserf.net/archive/refs/tags/v2.1.0.tar.gz
+	source = freeserf.net.install
+	source = FreeserfNet
+	source = FreeserfNet.desktop
+	source = fix_libdl.patch
+	source = fix_log_directory.patch
+	md5sums = 04e6eec26b3717aca6b4d22bfdeb014e
+	md5sums = ed08c80955615acd1697a0395d5dff41
+	md5sums = 3d3216451a91a5e39ec54cb37678ec84
+	md5sums = 59a76e9b8f0dfc0acf7ed7ca0927ab58
+	md5sums = 2bd44c28ccced72c99a307109265a884
+	md5sums = 316d3bc772637eccb729bd55499e3dd4
+
+pkgname = freeserf.net
