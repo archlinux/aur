@@ -2,7 +2,7 @@
 
 pkgname=exiftool-rs-git
 _pkgname=exiftool-rs
-pkgver=r6.gd4fd6b1
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='Image metadata scrubber written in Rust.'
 arch=('x86_64')
