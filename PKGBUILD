@@ -2,8 +2,8 @@
 # Maintainer: Ersei <samb at disroot dot org>
 
 pkgname=woodpecker
-pkgver=0.15.0
-pkgrel=9
+pkgver=0.15.1
+pkgrel=1
 pkgdesc="A community fork of the Drone CI system. Frontend server."
 arch=(x86_64 armv7h aarch64)
 url="https://woodpecker-ci.org/"
@@ -19,7 +19,7 @@ source=(
   'sysusers.conf'
   'woodpecker.conf'
 )
-sha256sums=('b1a64d5e47f003ce8bc785375663239b45532d80d6e17b358344b7e3cba930c4'
+sha256sums=('1c968296674593ea983c1b4a183a5b41c620bfc90be363de8535b24b6469c2ad'
             '9777483a90bb1c51e7a84908b4193338c1dbfd63b198fc59b4b84026d304d175'
             '1bf038355c6ec78adb9e8ae194c9df1c4a47fc7195fe97c68d8c44af3ef72f60'
             '878466f384b124353a7247bcc26f374a8c174874afc47c227eefaf38b9905e5a'
