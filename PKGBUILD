@@ -3,7 +3,7 @@
 
 pkgname=vice-sdl2-svn
 _pkgname=vice-svn
-pkgver=r42009
+pkgver=r42242
 pkgrel=1
 pkgdesc="The Versatile Commodore Emulator 8-bits (PET/C64/C128/Plus4/Vic20) - SDL2 development version"
 arch=('i686' 'x86_64')
@@ -26,7 +26,7 @@ build() {
        
     ./autogen.sh
     # Forcing use of ffmpeg 4.4.
-    PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig" ./configure --prefix=/usr --libdir=/usr/lib --enable-external-ffmpeg --enable-sdlui2
+    PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig" ./configure --prefix=/usr --libdir=/usr/lib --enable-ffmpeg --enable-sdlui2
     make
 }
 
