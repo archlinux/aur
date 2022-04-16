@@ -4,5 +4,5 @@ Name=Fly Casual
 Comment=A fan-made "Star Wars: X-Wing Miniatures Game" simulator
 Categories=Game;BoardGame;
 Terminal=false
-Icon=flycasual
+Icon=/opt/FlyCasual/FlyCasual_Data/Resources/UnityPlayer.png
 Exec=flycasual
