@@ -1,8 +1,8 @@
 # Maintainer Wings-Fantasy <1056947073@qq.com>
 
 pkgname=badlion-client
-pkgver=3.6.3
-pkgrel=2
+pkgver=3.8.0
+pkgrel=1
 pkgdesc="A Minecraft client with anti-cheat protection"
 url="https://client.badlion.net"
 arch=('x86_64')
@@ -11,7 +11,7 @@ provides=('BadlionClient')
 source=('BadlionClient::https://client-updates-cdn77.badlion.net/BadlionClient'
 'AppRun'
 'BadlionClient.desktop')
-sha256sums=('ed02961e3942deda403d63ad60205d40384fb412aa04ef7db5ac5f728573ec2c'
+sha256sums=('8eb19a6bbabd38cb7cf901980b1798f5fab2ccf4d84d3f21a6ad5b400e7bb647'
             '5baab55280a92c293b2453c22a67fd40cf3e10855cda217ddce50abec1df6816'
             '3f5730cff2f8d1f0d36b14ebf6dd83ea25548fdc287c448716a3533e6f2d0885')
 
@@ -23,15 +23,12 @@ prepare() {
 }
 
 package() {
-    mkdir -p "$pkgdir/usr/share/applications"
-    mkdir -p "$pkgdir/usr/share/licenses/BadlionClient"
-    mkdir -p "$pkgdir/opt/BadlionClient"
-
     cd "${srcdir}"
     install -Dm644 BadlionClient.desktop "${pkgdir}/usr/share/applications/BadlionClient.desktop"
     install -Dm755 AppRun                "${pkgdir}/opt/BadlionClient/AppRun"
 
     cd "squashfs-root"
+    mkdir -p "$pkgdir/usr/share/licenses/BadlionClient"
     mv license.txt                       "$pkgdir/usr/share/licenses/BadlionClient"
     cp -r usr/share                      "$pkgdir/usr"
     rm -rf usr/share
