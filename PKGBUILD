@@ -2,7 +2,7 @@
 # Maintainer: squitch
 
 pkgname=tess-git
-pkgver=0.5.4.r0.g5f299fe
+pkgver=0.6.0.r0.g8843fa0
 pkgrel=1
 epoch=1
 pkgdesc="Hackable, simple, rapid and beautiful terminal for the new era"
@@ -21,12 +21,12 @@ pkgver() {
 
 package() {
   cd "Tess"
-  install -D Tess.desktop "${pkgdir}/usr/share/applications/Tess.desktop"
-  install -D tesshere.desktop "${pkgdir}/usr/share/kservices5/ServiceMenus/tesshere.desktop"
-  install -D appintess.desktop "${pkgdir}/usr/share/kservices5/ServiceMenus/appintess.desktop"
-  install -D build/icon.png "${pkgdir}/usr/share/pixmaps/tess.png"
+  install -D "build/ressources/desktop/tess.desktop" "${pkgdir}/usr/share/applications/Tess.desktop"
+  install -D "build/ressources/desktop/open-tess-here.desktop" "${pkgdir}/usr/share/kservices5/ServiceMenus/tesshere.desktop"
+  install -D "build/ressources/desktop/open-app-in-tess.desktop" "${pkgdir}/usr/share/kservices5/ServiceMenus/appintess.desktop"
+  install -D "build/ressources/icon/icon.png" "${pkgdir}/usr/share/pixmaps/tess.png"
   mkdir -p "${pkgdir}/usr/share/man"
-  cp -r -f ./man/* "${pkgdir}/usr/share/man/"
+  cp -r -f build/ressources/man/ "${pkgdir}/usr/share/man/"
 
   if type "$kbuildsycoca5" > /dev/null; then
     kbuildsycoca5
@@ -35,6 +35,7 @@ package() {
   cd cli
   cmake . -B build
   make -C build
+  strip build/tess-cli
   install -Dm755 build/tess-cli -t "${pkgdir}/usr/bin/"
 
   npm install
