@@ -1,6 +1,6 @@
 pkgbase = xemu-git
 	pkgdesc = Original Xbox emulator (fork of XQEMU)
-	pkgver = 0.6.1.r27.g42f8873b23
+	pkgver = 0.6.2.r90.g6f507c80af
 	pkgrel = 1
 	url = https://xemu.app/
 	install = xemu.install
@@ -38,6 +38,7 @@ pkgbase = xemu-git
 
 pkgname = xemu-git
 	depends = sdl2
+	depends = libepoxy.so
 	depends = libgdk-3.so
 	depends = libglib-2.0.so
 	depends = libgobject-2.0.so

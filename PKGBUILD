@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=xemu
 pkgname=$_pkgname-git
-pkgver=0.6.1.r27.g42f8873b23
+pkgver=0.6.2.r90.g6f507c80af
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
@@ -67,6 +67,7 @@ build() {
 	cd $_pkgname
 	./configure \
 		--audio-drv-list="sdl" \
+		--disable-debug-info \
 		--enable-slirp=system \
 		--extra-cflags="-DXBOX=1" \
 		--ninja=samu \
@@ -77,6 +78,7 @@ build() {
 
 package() {
 	depends+=(
+		'libepoxy.so'
 		'libgdk-3.so'
 		'libglib-2.0.so'
 		'libgobject-2.0.so'
