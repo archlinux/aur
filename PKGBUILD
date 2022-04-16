@@ -1,7 +1,7 @@
 # Maintainer: Alyxia Sother <yrkvfbgu2005@tznvy.pbz(rot13)>
 _pkgname=impregnate
 pkgname="${_pkgname}-git"
-pkgver=r16.62e0798
+pkgver=r66.9a01360
 pkgrel=1
 pkgdesc="Official installer for Discord client mod 'Cumcord'"
 arch=(x86_64 i686)
@@ -38,7 +38,7 @@ build() {
 
 package() {
   export GOPATH="${srcdir}/${pkgname}-gopath"
-  install -Dm755 "${GOPATH}/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 "${srcdir}/${pkgname}/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
   install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

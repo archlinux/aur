@@ -1,6 +1,6 @@
 pkgbase = impregnate-git
 	pkgdesc = Official installer for Discord client mod 'Cumcord'
-	pkgver = r16.62e0798
+	pkgver = r66.9a01360
 	pkgrel = 1
 	url = https://github.com/Cumcord/Impregnate
 	arch = x86_64
