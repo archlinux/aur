@@ -1,0 +1,17 @@
+pkgbase = camilladsp
+	pkgdesc = IIR and FIR engine for crossovers, room correction etc.
+	pkgver = 0.6.3
+	pkgrel = 1
+	url = https://github.com/HEnquist/camilladsp
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = GPL
+	makedepends = cargo
+	makedepends = pkg-config
+	depends = alsa-lib
+	depends = openssl
+	source = https://github.com/HEnquist/camilladsp/archive/refs/tags/v0.6.3.tar.gz
+	sha256sums = 9a108e202f6c4b30f05cb1d7702c0649a29c0f612d510346e5825c8e1fc9855f
+
+pkgname = camilladsp
