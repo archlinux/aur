@@ -1,12 +1,13 @@
 pkgbase = dict-git
 	pkgdesc = A dictionary, for the command line.
-	pkgver = r9.c28f87f
+	pkgver = r14.c4c929a
 	pkgrel = 1
 	url = https://github.com/BetaPictoris/dict
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	makedepends = git
+	depends = glibc
 	provides = dict
 	conflicts = dict
 	source = git+https://github.com/BetaPictoris/dict.git
