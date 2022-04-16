@@ -1,10 +1,10 @@
 pkgbase = sekai-git
 	pkgdesc = extended version of the world speech kit for qtau
-	pkgver = 0.5.5.r10.g44c7f8e
+	pkgver = 0.6rc0.r1.g460490c
 	pkgrel = 1
 	url = https://notabug.org/isengaara/sekai
 	arch = x86_64
-	license = GPL
+	license = AGPL3
 	makedepends = git
 	makedepends = boost-libs
 	makedepends = boost
