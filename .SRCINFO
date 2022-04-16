@@ -1,17 +1,17 @@
 pkgbase = maya-arnold
 	pkgdesc = Autodesk Maya Arnold Renderer Plugin
-	pkgver = 4.2.1
+	pkgver = 5.1.0
 	pkgrel = 1
 	url = https://www.arnoldrenderer.com/arnold/arnold-for-maya/
 	arch = x86_64
 	license = custom
-	depends = maya>=2022.0
-	depends = maya<2023.0
+	depends = maya>=2023.0
+	depends = maya<2024.0
 	depends = smbclient
 	depends = tbb
 	optdepends = maya-usd: Universal Scene Discription Support
 	options = !strip
 	source = manual://package.zip
-	sha256sums = f5802a922d5960f2465963f9221e4377ea2daa70482db89076defa68ea478a39
+	sha256sums = 4e2ed84e6c10eed69f7b079f62077d15010641224d28154ae30c844526306bb8
 
 pkgname = maya-arnold
