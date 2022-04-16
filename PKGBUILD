@@ -1,6 +1,6 @@
 pkgname=python-pz
 _module='pz'
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Utility to substitute awk, sed and/or grep with Python"
 url="https://github.com/CZ-NIC/pz"
@@ -8,8 +8,8 @@ depends=('python')
 makedepends=('python-setuptools')
 license=('GPL')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('5142614f9d0ca1afd68efc57bf65218aaa52d093999de647f7268034ce8e2e95')
+source=("https://github.com/CZ-NIC/pz/archive/refs/tags/${pkgver}.tar.gz")
+sha256sums=('e08b0c56924eac532c0630526cf66d4e038485ce353da11c521e3ec4e4a4c9f5')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
