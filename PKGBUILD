@@ -2,7 +2,7 @@
 
 pkgname=yabridge-git
 _pkgname=yabridge
-pkgver=3.8.1.r73.g9420bade
+pkgver=3.8.1.r76.g470f4dfa
 pkgrel=1
 pkgdesc="A modern and transparent way to use Windows VST2 and VST3 plugins on Linux"
 arch=('x86_64')
@@ -35,8 +35,8 @@ build() {
   # If you don't want to build lib32-boost-libs and you don't need the 32-bit
   # bitbridge, then you can leave out the dependency for it and set the
   # `use-bitbridge` option to false.
-  # You can also add `-Dwith-vst3=false` to disable building with VST3 support.
-  # If building takes up too much RAM then you can decrease the unity size or
+  # You can also add `-Dvst3=false` to disable building with VST3 support.  If
+  # building takes up too much RAM then you can decrease the unity size or
   # completely disable unity builds.
   meson setup \
     build \
@@ -44,7 +44,7 @@ build() {
     --buildtype=release \
     --unity=on \
     --unity-size=1000 \
-    -Dwith-bitbridge=true
+    -Dbitbridge=true
 
   # The unity build takes can take up to 2 GB of RAM per target, so if the
   # system does not have enough RAM to build everything at once we'll limit the
