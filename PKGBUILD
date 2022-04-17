@@ -6,7 +6,7 @@
 pkgname=intel-hexl
 _pkgname=hexl
 pkgver=1.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Intel® Homomorphic Encryption Acceleration Library accelerates modular arithmetic operations used in homomorphic encryption'
 arch=(any)
 license=(Apache-2)
