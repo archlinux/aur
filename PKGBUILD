@@ -2,7 +2,7 @@
 # Contributor: Clayton Craft <clayton at craftyguy dot net>
 
 pkgname=python-grip
-pkgver=4.6.0
+pkgver=4.6.1
 pkgrel=1
 pkgdesc="Preview GitHub Markdown files like Readme locally before committing them"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python' 'python-docopt' 'python-flask' 'python-markdown'
          'python-path-and-address' 'python-pygments' 'python-requests')
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/joeyespo/grip/archive/v$pkgver.tar.gz")
-sha256sums=('a0f7cf2e740f8b2a122e274e533ad480b6308f9c477abc17e6ed8f5fc0f947be')
+sha256sums=('6bc3883f63395c566101187bc1f1d103641c99913b7122f942d56e108e649d83')
 
 package() {
   cd grip-$pkgver
