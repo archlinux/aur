@@ -1,5 +1,5 @@
 pkgname=rpmlauncher-bin
-pkgver=1.0.6+888
+pkgver=1.0.6+889
 pkgrel=1
 pkgdesc="A better Minecraft Launcher that supports cross-platform and many functionalities for you to explore! "
 license=('GPL3')
