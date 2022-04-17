@@ -1,0 +1,28 @@
+[Desktop Entry]
+Type=Service
+Actions=scan;
+ServiceTypes=all/all
+Icon=clamav
+Version=1.0.1
+
+[Desktop Action scan]
+Name=Scan for viruses with ClamTK
+Name[en]=Scan for viruses with ClamTK
+Name[pt]=Escanear por vírus com ClamTK
+Name[es]=Buscar virus con ClamTK
+Name[ru]=Сканировать на вирусы с помощью ClamTK
+Name[zh]=使用 ClamTK 扫描病毒
+Name[ar]=المسح بحثًا عن الفيروسات باستخدام ClamTK
+Name[ja]=ClamTKでウイルスをスキャンする
+Name[ko]=ClamTK로 바이러스 검사
+Name[uk]=Скануйте на віруси за допомогою ClamTK
+Name[de]=Scannen Sie mit ClamTK nach Viren
+Name[vi]=Quét vi rút bằng ClamTK
+Name[pl]=Skanuj w poszukiwaniu wirusów za pomocą ClamTK
+Name[it]=Cerca virus con ClamTK
+Name[iw]=סרוק לאיתור וירוסים עם ClamTK
+Name[be]=Сканіраванне вірусаў з дапамогай ClamTK
+Name[fr]=Recherche de virus à l'aide de ClamTK
+Name[el]=Σάρωση για ιούς με το ClamTK
+Icon=clamav
+Exec=clamtk "%u"
