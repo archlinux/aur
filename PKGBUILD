@@ -3,6 +3,7 @@
 # Submitter: Hector Martinez-Seara Monne <hseara ##[at]## gmail?com>
 
 pkgname=packmol
+epoch=1
 pkgver=20.3.5
 pkgrel=1
 pkgdesc="Creates an initial point for molecular dynamics simulations by packing molecules in defined regions of space."

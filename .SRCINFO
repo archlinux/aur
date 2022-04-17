@@ -2,6 +2,7 @@ pkgbase = packmol
 	pkgdesc = Creates an initial point for molecular dynamics simulations by packing molecules in defined regions of space.
 	pkgver = 20.3.5
 	pkgrel = 1
+	epoch = 1
 	url = http://www.ime.unicamp.br/~martinez/packmol/
 	arch = x86_64
 	license = MIT
