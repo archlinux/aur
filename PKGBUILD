@@ -3,7 +3,7 @@
 _reponame=flycast
 _pkgname=libretro-$_reponame
 pkgname=$_pkgname-git
-pkgver=1.2.r245.g514eedbc
+pkgver=1.3.r81.gaa6c9e21
 pkgrel=1
 pkgdesc="Sega Dreamcast core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
@@ -31,7 +31,7 @@ source=(
 )
 b2sums=(
 	'SKIP'
-	'602341ffaabf36382565ce780b88419feb6bf46ec7e2600631ead6a65c6d07edbdfbaea8c99ae9e53b85d260370eda0c06142b8b3149468508c4ad592a247a8d'
+	'ad99c975bdfdeb6592a0496ac3e90665dda539de610003131dcaa98c4acf000e9b8c2a5b8567710dee6bd9710289e5b6081fef24f202d7e70955e56f1074e9a5'
 )
 
 pkgver() {
