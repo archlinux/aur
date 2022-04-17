@@ -3,7 +3,7 @@ Type=Service
 Actions=scan;
 ServiceTypes=all/all
 Icon=clamav
-Version=1.0.1
+Version=1.0.2
 
 [Desktop Action scan]
 Name=Scan for viruses with ClamTK
@@ -24,5 +24,6 @@ Name[iw]=סרוק לאיתור וירוסים עם ClamTK
 Name[be]=Сканіраванне вірусаў з дапамогай ClamTK
 Name[fr]=Recherche de virus à l'aide de ClamTK
 Name[el]=Σάρωση για ιούς με το ClamTK
+Name[nl]=Scannen op virussen met ClamTK
 Icon=clamav
 Exec=clamtk "%u"
