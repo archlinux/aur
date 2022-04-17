@@ -17,7 +17,7 @@ depends=("dovecot=${_dcpkgver}" 'icu' 'xapian-core')
 install="$pkgname.install"
 sha256sums=('SKIP')
 
-source=("git://github.com/slusarz/$pkgname.git"
+source=("git+https://github.com/slusarz/$pkgname.git"
         "$pkgname.install")
 
 sha256sums=('SKIP'
