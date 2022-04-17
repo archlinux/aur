@@ -25,7 +25,7 @@ _opt_keepdesktop=0
 # 0 = normal
 # 1 = install desktop file even in debug modes. This is dangerous as launching sudo in a .desktop crashes the DE
 
-_opt_fdpp=0
+_opt_fdpp=1
 # 0 = use freedos
 # 1 = use fdpp and comcom32 (boot only, freedos is still used for utilities)
 
@@ -33,7 +33,7 @@ _opt_fdpp=0
 
 _pkgname='dosemu2'
 pkgname="${_pkgname}-git"
-pkgver=2.0pre8.r2855.gb12525bbd
+pkgver=2.0pre9.dev.r124.g40192ee5a
 pkgrel=1
 _pkgver="${pkgver%%[a-z]*}"
 pkgdesc='Virtual machine that allows you to run DOS programs under Linux'
@@ -157,6 +157,7 @@ _configure() { # makepkg -e compatible
       _opts+=('-d' '--enable-debug')
       #_opts+=('-d' '--disable-xbacktrace')
     fi
+    # export CFLAGS='-O2' # doesn't compile without -O2
     if [ "${_opt_clang}" -ne 0 ]; then
       _opts+=('CC=clang' 'CXX=clang++')
       CFLAGS="${CFLAGS//-fstack-protector-strong/} -fno-stack-protector" # Issue #332
@@ -219,7 +220,7 @@ fi
       "${pkgdir}/usr/bin/dosemu"
   fi
   if [ "${_opt_fdpp}" -ne 0 ]; then
-    : find "${pkgdir}" -name 'command.com' -delete # remove files and symlinks
+    find "${pkgdir}" '(' -name 'command.com' -o -name 'kernel.sys' ')' -delete # remove files and symlinks
   fi
   set +u
 }
