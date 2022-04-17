@@ -1,12 +1,13 @@
-# Maintainer: Philipp A. <flying-sheep@web.de>
+# Maintainer: Maziar Saleh Ziabari
+# Contributor: Philipp A. <flying-sheep@web.de>
 pkgname=jupyter_nbextensions_configurator
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Jupyter serverextension providing configuration interfaces for nbextensions'
 arch=(any)
 url="https://github.com/jupyter-contrib/$pkgname"
 license=(BSD)
-depends=(python jupyter jupyter-notebook jupyter-nbconvert python-tornado python-yaml)
+depends=(python jupyter-notebook jupyter-nbconvert python-tornado python-yaml)
 #makedepends=(python-pip)
 #_wheel="$pkgname-$pkgver-py2.py3-none-any.whl"
 #source=("https://files.pythonhosted.org/packages/py2.py3/${pkgname::1}/$pkgname/$_wheel")
