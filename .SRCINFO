@@ -1,11 +1,12 @@
 pkgbase = gffread
 	pkgdesc = GFF/GTF utility providing format conversions, region filtering, FASTA sequence extraction and more
 	pkgver = 0.12.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gpertea/gffread
 	arch = x86_64
 	license = MIT
 	makedepends = make
+	makedepends = git
 	source = https://github.com/gpertea/gffread/archive/refs/tags/v0.12.7.tar.gz
 	sha256sums = 6f3417090b3beb74f435bf5d462c87475b3c704a8a0d71821f6c1321c47dbbbe
 
