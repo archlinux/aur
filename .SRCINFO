@@ -13,7 +13,6 @@ pkgbase = jupyter_contrib_nbextensions
 	depends = python-lxml
 	depends = python-yaml
 	depends = python-psutil
-	depends = jupyter
 	depends = jupyter-notebook
 	depends = jupyter-nbconvert
 	depends = jupyter_contrib_core>=0.3.3
@@ -31,4 +30,3 @@ pkgbase = jupyter_contrib_nbextensions
 	sha256sums = d141d36609422748b0b22b6c432f223bfc92d72359bbccaf709690f7de313e35
 
 pkgname = jupyter_contrib_nbextensions
-

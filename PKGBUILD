@@ -1,4 +1,5 @@
-# Maintainer: Philipp A. <flying-sheep@web.de>
+# Maintainer: Maziar Saleh Ziabari <helasraizam@gmail.com>
+# Contributor: Philipp A. <flying-sheep@web.de>
 pkgname=jupyter_contrib_nbextensions
 pkgver=0.5.1
 pkgrel=1
@@ -13,7 +14,6 @@ depends=(
 	python-lxml
 	python-yaml
 	python-psutil
-	jupyter
 	jupyter-notebook
 	jupyter-nbconvert
 	'jupyter_contrib_core>=0.3.3'
