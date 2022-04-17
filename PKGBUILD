@@ -12,7 +12,7 @@ license=('MIT')
 
 provides=('libstardustxr')
 depends=('flatbuffers>=2.0.0')
-makedepends=('git' 'meson' 'ninja')
+makedepends=('git' 'meson')
 
 source=(git+https://github.com/StardustXR/libstardustxr.git)
 sha256sums=('SKIP')

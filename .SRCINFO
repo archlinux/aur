@@ -9,7 +9,6 @@ pkgbase = libstardustxr-git
 	license = MIT
 	makedepends = git
 	makedepends = meson
-	makedepends = ninja
 	depends = flatbuffers>=2.0.0
 	provides = libstardustxr
 	source = git+https://github.com/StardustXR/libstardustxr.git
