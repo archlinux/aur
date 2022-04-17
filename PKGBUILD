@@ -1,7 +1,7 @@
 # Maintainer: Marius Orcsik <marius@littr.me>
 pkgname=mpris-scrobbler
 pkgver=0.4.95
-pkgrel=1
+pkgrel=2
 pkgdesc="Minimalistic user daemon which submits the currently playing song to libre.fm and compatible services."
 arch=('x86' 'x86_64')
 url="https://github.com/mariusor/mpris-scrobbler"
