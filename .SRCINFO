@@ -1,7 +1,7 @@
 pkgbase = hmcl
 	pkgdesc = A Minecraft Launcher which is multi-functional, cross-platform and popular
 	pkgver = 3.5.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/huanghongxun/HMCL
 	arch = any
 	license = GPL3
