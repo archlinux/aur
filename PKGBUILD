@@ -3,10 +3,10 @@
 _pkgorg=gitlab.com/mipimipi
 pkgname=smsync-git
 _pkgname=smsync
-pkgver=3.4.5
+pkgver=3.4.6
 pkgrel=1
 pkgdesc="smsync (Smart Music Sync) keeps huge music collections in sync and is takes care of conversions between different file formats. It's an easy-to-use command line application for Linux"
-arch=(x86_64)
+arch=(x86_64 aarch64)
 url="https://$_pkgorg/$_pkgname/"
 license=(GPL3)
 source=("git+https://$_pkgorg/$_pkgname.git")
