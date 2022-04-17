@@ -1,0 +1,11 @@
+pkgbase = terraboard
+	pkgdesc = A web dashboard to inspect Terraform States.
+	pkgver = 2.1.0
+	pkgrel = 1
+	url = https://github.com/camptocamp/terraboard/
+	arch = x86_64
+	license = Apache-2
+	source = https://github.com/camptocamp/terraboard/releases/download/v2.1.0/terraboard_2.1.0_linux_amd64.zip
+	sha256sums = 2b654f3c6fe3257854b9da5d2b215feb6e2614560154f989c6a6ee7e5158d7c1
+
+pkgname = terraboard
