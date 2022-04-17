@@ -53,16 +53,16 @@ source=(
   # 'ceph-14.2.0-link-crc32-statically.patch'
   'ceph-14.2.0-cython-0.29.patch'
   'ceph-15.2.0-rocksdb-cmake.patch'
-  'ceph-15.2.4-system-uring.patch'
+  # 'ceph-15.2.4-system-uring.patch'
   # 'ceph-15.2.5-missing-includes.patch'
   'ceph-15.2.14-gcc12.patch'
   'disable-empty-readable.sh-test.patch'
-  'qa-src-update-mypy-to-0.782.patch'
-  'fix-mgr-dashboard-partial_dict.patch'
+  # 'qa-src-update-mypy-to-0.782.patch'
+  # 'fix-mgr-dashboard-partial_dict.patch'
 
   # snappy 1.1.9 removed major parts from their namespace, including the
   # snappy::uint32 which was an alias for std::uint32_t
-  'fix_snappy_namespace_uint.patch'
+  # 'fix_snappy_namespace_uint.patch'
 
   # Add python >= 3.8 workaround logic for incompatible modules
   # This has been designated for upstream backporting into the octupus (15) and pacific (16) branches.
@@ -85,15 +85,10 @@ sha512sums=('eab047e646970d444acf1064d98237b8b1677fb16b5e771082d55880f7bc6d8bdb2
             '8ec0d668fefee12d2c7f5b5297dd81fc6a559f5823d069e6395d9b4240110eb8f95049d3054697a459948c1f3784b4450539849cf9d7f3b1aa1c7fbd96c475df'
             'ea069b75b786c22166c609b127b512802cc5c6e9512d792d7b7b34d276f5b86d57c8c35cfc7b5c855a59c0ba87ba1aabe2ca26da72b26bff46b6ba8410ddb27e'
             '82c1608928ee669ef60b8930ce82c443152c446e669e7bde9ce32f78571afb19a9620c3818b69ac8cb3ea33e7d7ac40f77c89162c71b19b157336d907fa23e3d'
-            '20256de5c3227caa149f8285bcc90fcbd67be8cefa568fb72ad0d43688f1f62db7c7fc231dfd4ecf2dd11be68bf1ccc284ebbc691a82a26f3968200f12c82097'
-            '8258661e56b5360f4260fdd29b07bac4d415068a112b61ca8c55c529fb1593d8d61a0d59a4eec8f1567b97167c058082198d008f55f8ee701cb46489df5f7823'
+            '2e62020cce33e3152cdb9a128023ee673124c4bcfdb9ee17718891ba5c9a16d98eb03ed06fe7dc7833c98487c1c1eb67fadfad1aa2f40c2c648829c86b4caab0'
             '69b058e7b215f85f347b1e4528800ed62635864fa32b24b0f9db97b08fe6576f30d260bf6a19bb5166482f43928feb535e9a6dca8f3c2b3ce7700c108db9fb7a'
             '2234d005df71b3b6013e6b76ad07a5791e3af7efec5f41c78eb1a9c92a22a67f0be9560be59b52534e90bfe251bcf32c33d5d40163f3f8f7e7420691f0f4a222'
-            '204741c65b8ceeddae0a58a49e2b4249ee7ffc624ce8d9faa6284af198abe63bffb6758e064eeff6d1857be044647f99749a45443e258b35e92cc36b9edeba80'
-            '79e337a78cc4bd9ed8c8ab66831b3efd5a3a34e16d2c73ecedef03d2a34c7ac65ea25641a808913cd2dc2dc0f992fac35822efe4188622add6898dce1e5f13e3'
-            '4b4d0528d909fb735975db290bc8495ee626fc78d68b82b3525326cb69326cfc310c3078c529246f3d76cec590a3a7c4e92950009211590ebfe55583c4f5b71d'
             'cc9f198692ab67ffdf2071c755ab7369fcaa4e1211d1428bb49db3bca5956ae4fbe98ead80a8f691d61e80402b4a06ce9b046a97cb4a3376334f64a4fd16bfb5')
-
 
 # -fno-plt causes linker errors (undefined reference to internal methods)
 # similar issue: https://bugs.archlinux.org/task/54845
