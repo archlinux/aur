@@ -1,11 +1,10 @@
 pkgbase = kde-servicemenus-clamtkscan
 	pkgdesc = KDE service context to scan files and directories with ClamTK
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gist.github.com/JoseskVolpe/b96966dd8fcde5eea96739d2a35c7e6a
 	arch = any
 	license = LGPL
-	makedepends = git
 	depends = dolphin
 	depends = clamtk
 	source = ClamTKScan.desktop
