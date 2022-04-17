@@ -1,13 +1,13 @@
 pkgbase = hyperrogue-git
 	pkgdesc = A puzzle-roguelike taking place on a hyperbolic plane. Latest git version.
-	pkgver = 12.0k.r71.g7f2d5792
+	pkgver = 12.0m.r0.gd3191731
 	pkgrel = 1
 	url = https://www.roguetemple.com/z/hyper/
 	arch = i686
 	arch = x86_64
 	license = GPL2
-	makedepends = glew
 	makedepends = git
+	depends = glew
 	depends = sdl_gfx
 	depends = sdl_ttf
 	depends = sdl_mixer

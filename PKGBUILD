@@ -1,15 +1,15 @@
 # Maintainer: lottieratworld <lottieratworld at proton mail dot com>
 _pkgname=hyperrogue
 pkgname=${_pkgname}-git
-pkgver='12.0k.r71.g7f2d5792'
+pkgver='12.0m.r0.gd3191731'
 pkgrel=1
 pkgdesc="A puzzle-roguelike taking place on a hyperbolic plane. Latest git version."
 arch=('i686' 'x86_64')
 url="https://www.roguetemple.com/z/hyper/"
 license=('GPL2')
 provides=("${_pkgname}")
-depends=('sdl_gfx' 'sdl_ttf' 'sdl_mixer' 'mesa' 'ttf-dejavu')
-makedepends=('glew' 'git')
+depends=('sdl_gfx' 'sdl_ttf' 'sdl_mixer' 'mesa' 'ttf-dejavu' 'glew')
+makedepends=('git')
 
 source=("git+https://github.com/zenorogue/hyperrogue.git"
         "${_pkgname}.desktop"
