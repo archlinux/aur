@@ -6,7 +6,7 @@ _use_poppler=OFF  # ON or OFF
 _qt_version_major=6  # 5 or 6
 
 pkgname=beamerpresenter-git
-pkgver=0.2.2_667.e7dec81
+pkgver=0.2.2_706.4d6e7ce
 pkgrel=1
 pkgdesc="Modular multi-screen pdf presenter (git)"
 arch=('x86_64')
@@ -16,6 +16,9 @@ license=('AGPL3' 'GPL3')
 depends=("qt${_qt_version_major}-multimedia")
 optdepends=('gst-libav: show videos' 'gst-plugins-good: show videos' 'hicolor-icon-theme: action button icons' "qt${_qt_version_major}-svg: tool button icons")
 makedepends=('cmake' 'git' "qt${_qt_version_major}-tools")
+backup=('etc/xdg/beamerpresenter/beamerpresenter.conf' 'etc/xdg/beamerpresenter/gui.json')
+source=('git+https://github.com/stiglers-eponym/BeamerPresenter.git')
+sha256sums=('SKIP')
 
 if [ "${_use_mupdf}" == 'ON' ]
 then
@@ -31,9 +34,6 @@ then
     depends+=("poppler-qt${_qt_version_major}")
 fi
 
-backup=('etc/xdg/beamerpresenter/beamerpresenter.conf' 'etc/xdg/beamerpresenter/gui.json')
-source=('git://github.com/stiglers-eponym/BeamerPresenter.git')
-sha256sums=('SKIP')
 
 pkgver() {
     printf "0.2.2_%s.%s" \
@@ -53,7 +53,10 @@ build() {
         -DGIT_VERSION=ON \
         -DUSE_POPPLER="${_use_poppler}" \
         -DUSE_MUPDF="${_use_mupdf}" \
+        -DUSE_QTPDF=OFF \
+        -DUSE_EXTERNAL_RENDERER=OFF \
         -DUSE_MUJS=OFF \
+        -DUSE_MUPDF_THIRD=ON \
         -DUSE_GUMBO=ON \
         -DUSE_TRANSLATIONS=ON \
         -DINSTALL_LICENSE=OFF \
