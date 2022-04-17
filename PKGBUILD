@@ -4,7 +4,7 @@
 
 _basename=openexr
 pkgname=lib32-openexr
-pkgver=3.1.4
+pkgver=3.1.5
 pkgrel=1
 pkgdesc="An high dynamic-range image file format library (32-bit)"
 url="https://www.openexr.com/"
@@ -15,7 +15,7 @@ makedepends=('cmake')
 conflicts=('lib32-ilmbase')
 replaces=('lib32-ilmbase')
 source=(https://github.com/openexr/openexr/archive/v$pkgver/$_basename-$pkgver.tar.gz)
-sha256sums=('cb019c3c69ada47fe340f7fa6c8b863ca0515804dc60bdb25c942c1da886930b')
+sha256sums=('93925805c1fc4f8162b35f0ae109c4a75344e6decae5a240afdfce25f8a433ec')
 
 build() {
     export CC='gcc -m32'
