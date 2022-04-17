@@ -25,7 +25,7 @@ source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/refs/tags/v${pkgver}.tar.gz
 )
 sha256sums=('3f707cd561e74bf8fd78dd5ffae8a8b7a4f2989c1367ae3e643ed3760728e435'
             '2da544814d26a95d1b4f88e19b2957059d9bd3c074424cb6553eaf84ed71c765'
-            'ac80f17d9eaf23239f86cb635fe55ce6182cd5877dd9c1235487247957a2e371')
+            '9c35b0e474517cbbf1b88dde5a5333e273a531e53657a839bd193a2f05842361')
 
 build() {
   cd ${pkgname}-${pkgver}
