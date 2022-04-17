@@ -1,7 +1,7 @@
 pkgbase = lib32-sdl12-compat
 	pkgdesc = Provides a binary and source compatible API for programs written against SDL 1.2, but it uses SDL 2.0 behind the scenes. (32-bit)
 	pkgver = 1.2.52
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/libsdl-org/sdl12-compat.git
 	arch = i686
 	arch = x86_64
