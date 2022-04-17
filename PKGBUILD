@@ -3,7 +3,7 @@
 
 _pkgname=ArmCord
 pkgname=armcord-bin
-pkgver=3.0.4
+pkgver=3.0.5
 pkgrel=3
 pkgdesc="Discord client for lower end and ARM devices."
 arch=('x86_64' 'aarch64')
@@ -13,7 +13,7 @@ license=('OSL-3.0')
 options=(!strip)
 
 source_x86_64=(
-    "armcord.tar.gz::https://github.com/smartfrigde/armcord/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz"
+    "armcord.tar.gz::https://github.com/ArmCord/ArmCord/releases/download/v$pkgver/$_pkgname-$pkgver.tar.gz"
     "armcord.desktop"
     "armcord.png"
 )
@@ -22,10 +22,10 @@ source_aarch64=(
     "armcord.desktop"
     "armcord.png"
 )
-sha256sums_x86_64=('eb4236d4ba24351f529d1e2091600bc3476ff8b54b2347591b6cdac07ba11139'
+sha256sums_x86_64=('aed2faac3c2ebf6239667fc272fba8baaf89862db4c7c0a7954486d792dff8c7'
                    'abda3b8b8f9a46c8a3dd5f24c0e3bddffbf1bf55109864ff218ab79dc500ed05'
                    '173d6ed02a16e9f02f5d4c4b34fe3a46ef29c46ff4ecbbad98747052fb5f954e')
-sha256sums_aarch64=('a58c66fe77f4e09ba3353cba5f19c73ed6b94b6974edde396df39d08bad71aa7'
+sha256sums_aarch64=('75c05f3a6bc4fa7d3c5cee1f12d791c563a94f700ab098f7d677ae860b695d8f'
                     'abda3b8b8f9a46c8a3dd5f24c0e3bddffbf1bf55109864ff218ab79dc500ed05'
                     '173d6ed02a16e9f02f5d4c4b34fe3a46ef29c46ff4ecbbad98747052fb5f954e')
 
