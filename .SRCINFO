@@ -1,5 +1,5 @@
 pkgbase = linux-lts49
-	pkgver = 4.9.308
+	pkgver = 4.9.310
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = linux-lts49
 	makedepends = libelf
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.9.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.9.308.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.9.310.xz
 	source = config
 	source = 60-linux.hook
 	source = 90-linux.hook

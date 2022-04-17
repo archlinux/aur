@@ -3,7 +3,7 @@
 
 set -u
 pkgbase="linux-lts49"
-pkgver="4.9.308"
+pkgver="4.9.310"
 _srcname="linux-${pkgver%.*}"
 pkgrel='1'
 arch=('x86_64')
