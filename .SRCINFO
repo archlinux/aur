@@ -1,6 +1,6 @@
 pkgbase = libstardustxr-git
 	pkgdesc = Client/Server libraries for Stardust XR
-	pkgver = r157.f622901
+	pkgver = r274.bab53a2
 	pkgrel = 1
 	url = https://stardustxr.org/
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = libstardustxr-git
 	makedepends = git
 	makedepends = meson
 	makedepends = ninja
-	depends = gcc-libs
+	depends = flatbuffers>=2.0.0
 	provides = libstardustxr
 	source = git+https://github.com/StardustXR/libstardustxr.git
 	sha256sums = SKIP

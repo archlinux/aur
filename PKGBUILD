@@ -2,7 +2,7 @@
 
 pkgname=libstardustxr-git
 _pkgname=libstardustxr
-pkgver=r157.f622901
+pkgver=r274.bab53a2
 pkgrel=1
 
 pkgdesc="Client/Server libraries for Stardust XR"
@@ -11,7 +11,7 @@ url="https://stardustxr.org/"
 license=('MIT')
 
 provides=('libstardustxr')
-depends=('gcc-libs')
+depends=('flatbuffers>=2.0.0')
 makedepends=('git' 'meson' 'ninja')
 
 source=(git+https://github.com/StardustXR/libstardustxr.git)
