@@ -1,7 +1,7 @@
 pkgbase = budgie-control-center
 	pkgdesc = Budgie's main interface to configure various aspects of the desktop
 	pkgver = 1.0.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/BuddiesOfBudgie/budgie-control-center
 	arch = x86_64
 	license = GPL2
@@ -24,6 +24,7 @@ pkgbase = budgie-control-center
 	depends = libhandy
 	depends = gsound
 	depends = colord-gtk
+	depends = icu
 	optdepends = system-config-printer: Printer settings
 	optdepends = gnome-user-share: WebDAV file sharing
 	optdepends = gnome-remote-desktop: screen sharing
