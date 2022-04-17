@@ -1,23 +1,27 @@
 pkgbase = pekwm-git
-	pkgdesc = Small, fast, functional, and flexible window manager
-	pkgver = 0.1.17.r146.g24f9f9b
+	pkgdesc = Tabbed X11 window manager
+	pkgver = 0.2.0.r57.gac6a637
 	pkgrel = 1
 	epoch = 1
-	url = http://www.pekwm.org/
+	url = https://github.com/pekdon/pekwm
 	arch = x86_64
 	arch = i686
 	license = GPL
-	makedepends = gendesk>=0.6
+	makedepends = cmake
+	makedepends = gendesk
 	makedepends = git
+	makedepends = ninja
 	depends = libjpeg
+	depends = libpng
 	depends = libxft
 	depends = libxinerama
 	depends = libxpm
 	depends = libxrandr
+	depends = bash
 	optdepends = lxappearance: feature-rich GTK+ theme switcher
 	optdepends = nitrogen: background browser and setter
 	optdepends = tint2: basic, good-looking task manager
-	provides = pekwm
+	provides = pekwm=0.2.0-1
 	conflicts = pekwm
 	backup = etc/pekwm/autoproperties
 	backup = etc/pekwm/autoproperties_typerules
@@ -29,6 +33,7 @@ pkgbase = pekwm-git
 	backup = etc/pekwm/mouse_click
 	backup = etc/pekwm/mouse_sloppy
 	backup = etc/pekwm/mouse_system
+	backup = etc/pekwm/panel
 	backup = etc/pekwm/start
 	backup = etc/pekwm/vars
 	source = pekwm-git::git+https://github.com/pekdon/pekwm.git
@@ -37,4 +42,3 @@ pkgbase = pekwm-git
 	md5sums = 74c74a53743dab90e605eb73e0579528
 
 pkgname = pekwm-git
-
