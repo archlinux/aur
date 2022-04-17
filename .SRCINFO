@@ -1,7 +1,7 @@
 pkgbase = philipstv
 	pkgdesc = CLI for controlling Philips Android-powered TVs
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 3
 	url = https://github.com/bcyran/philipstv
 	arch = any
 	license = MIT

@@ -2,7 +2,7 @@
 
 pkgname=philipstv
 pkgver=0.4.2
-pkgrel=2
+pkgrel=3
 pkgdesc='CLI for controlling Philips Android-powered TVs'
 url='https://github.com/bcyran/philipstv'
 depends=('python' 'python-requests' 'python-pydantic' 'python-click' 'python-appdirs')
@@ -42,5 +42,7 @@ package() {
     install -Dm 644 _philipstv -t "${pkgdir}/usr/share/zsh/site-functions"
     install -Dm 644 philipstv.fish -t "${pkgdir}/usr/share/fish/vendor_completions.d"
 
-    install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
+    install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+    ln -s "${site_packages}/${pkgname}-${pkgver}.dist-info/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
