@@ -2,7 +2,7 @@
 # Contributor: Eschwartz <eschwartz93@gmail.com>
 
 pkgname=winetricks-git
-pkgver=20211230.r0.gb458acf7
+pkgver=20220411.r7.g9f605b01
 pkgrel=1
 pkgdesc='Script to install various redistributable runtime libraries in Wine.'
 url='http://wiki.winehq.org/winetricks'
