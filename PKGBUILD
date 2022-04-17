@@ -3,14 +3,19 @@
 pkgname=python-waifu2x-vulkan
 _gitname=${pkgname#python-}
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="waifu2x-ncnn-vulkan-python, use nihui/waifu2x-ncnn-vulkan"
 arch=('x86_64')
 url="https://github.com/tonquer/waifu2x-vulkan"
 license=('MIT')
 makedepends=('python-setuptools'
-             'cmake')
-# depends=()
+             'cmake'
+             'git'
+             'glslang'
+             'vulkan-headers')
+# need Vulkan driver for your GPU card
+depends=('vulkan-icd-loader'
+         'vulkan-driver')
 # source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 source=("${pkgname}-${pkgver}.tar.gz::${url}/releases/download/v${pkgver}/${_gitname}-${pkgver}.tar.gz")
 provides=('python-waifu2x-ncnn-vulkan')
