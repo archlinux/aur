@@ -1,0 +1,10 @@
+pkgbase = mingw-w64-corrosion
+	pkgdesc = Integrate Rust into existing CMake projects (mingw-w64 symlinks)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/corrosion-rs/corrosion
+	arch = any
+	license = MIT
+	depends = corrosion
+
+pkgname = mingw-w64-corrosion
