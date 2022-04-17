@@ -7,8 +7,8 @@ pkgdesc='Plotting tools for CamillaDSP'
 url=https://github.com/HEnquist/pycamilladsp-plot
 license=(GPL)
 arch=(any)
-depends=(python)
-makedepends=(python-jsonschema python-matplotlib python-numpy)
+depends=(python-jsonschema python-matplotlib python-numpy)
+makedepends=(python)
 source=(https://github.com/HEnquist/pycamilladsp-plot/archive/refs/tags/v$pkgver.tar.gz)
 sha256sums=(9d9dc093f7b19c5888eaff2bbf1cfec91994f2005ae65bfa061da22f66105538)
 
