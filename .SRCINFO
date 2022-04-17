@@ -1,6 +1,6 @@
 pkgbase = tracy-git
 	pkgdesc = Real-time, nanosecond resolution frame profiler
-	pkgver = v0.8.r47.g6998546f
+	pkgver = v0.8.r49.gcd3f9c88
 	pkgrel = 1
 	url = https://github.com/wolfpld/tracy
 	arch = i686
