@@ -9,7 +9,7 @@ pkgbase = dovecot-fts-flatcurve
 	depends = dovecot=2.3.18
 	depends = icu
 	depends = xapian-core
-	source = git://github.com/slusarz/dovecot-fts-flatcurve.git
+	source = git+https://github.com/slusarz/dovecot-fts-flatcurve.git
 	source = dovecot-fts-flatcurve.install
 	sha256sums = SKIP
 	sha256sums = 4bdbf8780b5c7ce2040a08f175195ec2cdab536407e0d3454fbd6f2eb1101cc0
