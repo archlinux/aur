@@ -2,41 +2,22 @@
 # Contributer: Christian Krause ("wookietreiber") <christian.krause@mailbox.org>
 
 pkgname=gatk
-pkgver=4.0.7.0
+pkgver=4.2.6.1
 pkgrel=1
-epoch=2  # New licensing and versioning scheme as produced by the Broad
+epoch=2
 pkgdesc="Variant discovery in high-throughput bioinformatics sequencing data"
 arch=('any')
 url=https://software.broadinstitute.org/"${pkgname}"
 license=('BSD')
-makedepends=('gradle')
-depends=('java-runtime>=8' 'python')
-source=(gatk.sh)
-sha256sums=('279d9fa4f9711b31a312a372216fbc0a61901db5a8e1b6c714bd96bafd0714f2')
 
-prepare() {
-  cd "${srcdir}"
+depends=('java-runtime>=8' 'python' 'r')
+source=("https://github.com/broadinstitute/gatk/releases/download/4.2.6.1/gatk-${pkgver}.zip")
+sha256sums=('1125cfc862301d437310506c8774d36c3a90d00d52c7b5d6b59dac7241203628')
 
-  if [[ ! -d "${pkgname}"-"${pkgver}" ]]; then
-    git clone https://github.com/broadinstitute/gatk.git "${pkgname}"-"${pkgver}";
-  fi
-
-  cd "${srcdir}"/"${pkgname}"-"${pkgver}"
-  git checkout "${pkgver}"
-  ./gradlew clean
-}
-
-build() {
-  cd "${srcdir}"/"${pkgname}"-"${pkgver}"
-  ./gradlew localJar
-}
 
 package() {
-  install -Dm755 gatk.sh "${pkgdir}"/usr/bin/gatk
-
   cd "${srcdir}"/"${pkgname}"-"${pkgver}"
-  install -Dm644 LICENSE.TXT "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.TXT
-  install -Dm644 README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/README.md
-  install -Dm644 AUTHORS "${pkgdir}"/usr/share/doc/"${pkgname}"/AUTHORS
-  install -Dm644 build/libs/gatk-package-"${pkgver}"-SNAPSHOT-local.jar "${pkgdir}"/usr/share/java/"${pkgname}"/GenomeAnalysisTK.jar
+  install -Dm755 gatk $pkgdir/usr/bin/$pkgname
+  install -Dm644 "gatk-package-${pkgver}-local.jar" "${pkgdir}/usr/share/java/${pkgname}/GenomeAnalysisTK.jar"
+  install -Dm644 "gatk-completion.sh" "${pkgdir}/usr/share/bash-completion/completions/gatk"
 }
