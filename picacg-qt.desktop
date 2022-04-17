@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Name=PicACG
+Comment=PicACG
+Comment[zh_CN]=哔咔漫画
+Exec=/usr/bin/picacg-qt
+Icon=picacg-qt
+GenericName=PicACG PC Client for Linux
+GenericName[zh_CN]=哔咔漫画Linux桌面客户端
+keywords=PicACG
+Categories=Network;
+Terminal=false
