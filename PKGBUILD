@@ -38,11 +38,3 @@ package() {
 	cp -r $_full "$pkgdir/usr/share/xmcl/$_full"
 	chmod -R +x "$pkgdir/usr/share/xmcl/$_full"
 }
-
-pre_install() {
-	rm -rf "/usr/share/xmcl/"
-}
-
-#post_install() {
-#	chmod -R 644 "/usr/share/xmcl/$_full"
-#}
