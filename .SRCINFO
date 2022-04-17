@@ -1,0 +1,12 @@
+pkgbase = camillagui
+	pkgdesc = Web-based GUI for CamillaDSP
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/HEnquist/camillagui-backend
+	install = camillagui.install
+	arch = any
+	license = GPL
+	source = https://github.com/HEnquist/camillagui-backend/releases/download/v0.8.0/camillagui.zip
+	sha256sums = 6c70a8950a9dc3c8752efa77d60ec863035913d7775411034dd21c8b9a603bf3
+
+pkgname = camillagui

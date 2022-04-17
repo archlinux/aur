@@ -1,0 +1,18 @@
+camillaguidir=srv/http/settings/camillagui
+
+post_install() {
+	chown -R http:http $camillaguidir
+	chmod -R 755 $camillaguidir
+}
+
+pre_upgrade() {
+	mv $camillaguidir/build/index.html{,.backup}
+	mv $camillaguidir/config/camillagui.yml{,.backup}
+}
+
+post_upgrade() {
+	mv -f $camillaguidir/build/index.html{.backup,}
+	mv -f $camillaguidir/config/camillagui.yml{.backup,}
+	chown -R http:http $camillaguidir
+	chmod -R 755 $camillaguidir
+}
