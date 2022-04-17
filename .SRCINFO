@@ -5,6 +5,7 @@ pkgbase = zeus
 	url = https://github.com/threadexio/zeus
 	arch = any
 	license = GPL
+	makedepends = cargo
 	depends = docker
 	conflicts = zeus-bin
 	conflicts = podman-docker
