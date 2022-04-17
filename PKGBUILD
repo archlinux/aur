@@ -3,7 +3,7 @@
 
 pkgname=picsimlab-bin
 _pkgname=${pkgname%-bin}
-pkgver=0.8.9
+pkgver=0.8.10
 pkgrel=1
 pkgdesc="A realtime emulator of development boards with integrated MPLABX/avr-gdb debugger"
 arch=('x86_64')
@@ -15,9 +15,9 @@ depends=('wxgtk3'
          'picsim'
          'openal')
 makedepends=('tar')
-source=("${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Ubuntu_20.10_amd64.deb")
+source=("${_pkgname}-${pkgver}.deb::${url}/releases/download/v${pkgver}/${_pkgname}_${pkgver}_Ubuntu_18.04.6_LTS_amd64.deb")
 # source=("${_pkgname}-${pkgver}.deb::https://sourceforge.net/projects/picsim/files/v${pkgver}/${_pkgname}_${pkgver}_Ubuntu_20.10_amd64.deb/download")
-sha256sums=('0091ba9e7781bb598170cc5563e5ffa55e04d371ffe444eefe6048f1c0bc1375')
+sha256sums=('d775904a80828d7ab6f50df79cefde3844d2b0a1c4f61f100cd50897372c5d65')
 
 package() {
   # extract
