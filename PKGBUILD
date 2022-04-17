@@ -3,7 +3,7 @@
 set -u
 pkgname='fdpp'
 #pkgname+='-git'
-pkgver=1.4
+pkgver=1.6
 pkgrel=1
 pkgdesc='64 bit FreeDOS++ for dosemu2'
 arch=('x86_64')
@@ -11,14 +11,14 @@ url='https://github.com/dosemu2/fdpp'
 license=('GPL3')
 depends=('gcc-libs' 'comcom32')
 makedepends=('clang' 'nasm' 'lld')
+options=('!strip')
 _srcdir="${pkgname%-git}-${pkgver%.r*}"
 source=(
-  #"${url//https/git}"
   "${_srcdir}.tar.gz::${url}/archive/${pkgver%%.r*}.tar.gz"
 )
-md5sums=('58a08524b95364236df12dbeb020d939')
-sha256sums=('5df1e6db0385e0fe87307b8174a424afaf6c55cd6da21d20d4bf4ac223e7520b')
-b2sums=('e791c08b0074b7ba5430413fb6950a94a6e67af39590c64022d6bf157075f184bd1b5cfe125c11df6b82d691a3b8aedf1cc3ec8f418d9b9c2a5ff47ec70810ed')
+md5sums=('56b24cca206b6e6e0fc02fa3f9dea801')
+sha256sums=('07ec9472593f6d2018350c009cf11916cf4a3ed08036fbb5a0eabfb63192d38b')
+b2sums=('69965970fd69c62640a4f5596a18c52f2c06c9dfbd3c4a1b57161dc7232333e79663983e054a4c06c2bf8abbafa5e7f01a43f4c76909374aeb58d40242ca35dd')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
   source[0]="git+${url}.git"
