@@ -1,11 +1,12 @@
 pkgbase = gffcompare
 	pkgdesc = classify, merge, tracking and annotation of GFF files by comparing to a reference annotation GFF
 	pkgver = 0.12.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/gpertea/gffcompare
 	arch = x86_64
 	license = MIT
 	makedepends = make
+	makedepends = git
 	source = https://github.com/gpertea/gffcompare/archive/refs/tags/v0.12.6.tar.gz
 	sha256sums = 4e01344c533987a0a8227bfcca9d180504c1a1392aa343e1f6b0752341e712cf
 
