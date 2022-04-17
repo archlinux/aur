@@ -5,9 +5,10 @@ pkgbase = python-rpi-gpio
 	url = http://sourceforge.net/projects/raspberry-gpio-python
 	arch = any
 	license = MIT
+	makedepends = python
 	makedepends = python-distribute
 	depends = python
 	source = https://github.com/rern/rern.github.io/releases/download/20210307/python-rpi-gpio-0.7.1.tar.xz
-	sha256sums = ac087d76c331e9f5d66616f178aff8628f79f3fd1e05f44fad4cc935a49b709a
+	sha256sums = c4acb800fea3e256e95b6aa7de152ab7d20f5567954df3016dcef141b33d86bd
 
 pkgname = python-rpi-gpio
