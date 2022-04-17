@@ -2,30 +2,25 @@
 # Contributor: Cory Giles <mail@corygil.es>
 
 pkgname=bedops
-pkgver=2.4.19
+pkgver=2.4.40
 pkgrel=1
 pkgdesc="Highly scalable genomic feature operations."
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="http://github.com/bedops/bedops/"
 license=('GPL')
-depends=('python2')
-
-if [ "$CARCH" == "x86_64" ]; then
-md5sums=('52f519ce18ef0d9737422ee40e18048b')
-    _arch="$CARCH"
-else
-    _arch="i386"
-fi
-
-source=(https://github.com/${pkgname}/${pkgname}/releases/download/v${pkgver}/${pkgname}_linux_${_arch}-v${pkgver}.tar.bz2)
+depends=('glibc' 'python' 'tcsh')
+makedepends=('gcc' 'make')
+md5sums=('84c756bc92a023863ab564b96ba11067')
+source=(https://github.com/bedops/bedops/archive/refs/tags/v${pkgver}.tar.gz)
 
 build() {
-    cd "$srcdir"
-    sed -i 's/#!\/usr\/bin\/env python/#!\/usr\/bin\/env python2/g' bin/*
+    cd "$srcdir"/$pkgname-$pkgver
+    make
 }
 
 package() {
-    cd "$srcdir"
-    mkdir -p "$pkgdir/usr/bin"
-    install -t "$pkgdir/usr/bin" bin/*
+    cd "$srcdir"/$pkgname-$pkgver
+    make install
+    mkdir -p "$pkgdir"/usr/bin
+    cp -r bin/* $pkgdir/usr/
 }
