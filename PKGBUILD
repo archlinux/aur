@@ -1,4 +1,4 @@
-# Maintainer: Maziar Saleh Ziabari
+# Maintainer: Maziar Saleh Ziabari <helasraizam@gmail.com>
 # Contributor: Philipp A. <flying-sheep@web.de>
 pkgname=jupyter_contrib_core
 pkgver=0.3.3
