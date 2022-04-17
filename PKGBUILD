@@ -5,7 +5,7 @@
 # https://www.experts-exchange.com/questions/22609218/Canon-ImageRUNNER-3570-not-printing.html
 # http://www.copytechnet.com/forums/canon/82370-canon-ir-2530-driver-problem.html
 
-# models.4.0.8.txt
+# models.4.0.9.txt
 # ModelName: "Canon CLC4040-H1 Ver1.1 PCL"
 # ModelName: "Canon CLC4040-H1 PS Ver1.1"
 # ModelName: "Canon CLC5151-H1 Ver1.1 PCL"
@@ -336,6 +336,9 @@
 # ModelName: "Canon iR-ADV 6780 PCL"
 # ModelName: "Canon iR-ADV 6780 PS"
 # ModelName: "Canon iR-ADV 6780 PXL"
+# ModelName: "Canon iR-ADV 6860/6870 PCL"
+# ModelName: "Canon iR-ADV 6860/6870 PS"
+# ModelName: "Canon iR-ADV 6860/6870 PXL"
 # ModelName: "Canon iR-ADV 715 III PCL"
 # ModelName: "Canon iR-ADV 715 III PS"
 # ModelName: "Canon iR-ADV 715 III PXL"
@@ -439,6 +442,18 @@
 # ModelName: "Canon iR-ADV C3725/3730 PCL"
 # ModelName: "Canon iR-ADV C3725/3730 PS"
 # ModelName: "Canon iR-ADV C3725/3730 PXL"
+# ModelName: "Canon iR-ADV C3822 PCL"
+# ModelName: "Canon iR-ADV C3822 PS"
+# ModelName: "Canon iR-ADV C3822 PXL"
+# ModelName: "Canon iR-ADV C3826 PCL"
+# ModelName: "Canon iR-ADV C3826 PS"
+# ModelName: "Canon iR-ADV C3826 PXL"
+# ModelName: "Canon iR-ADV C3830 PCL"
+# ModelName: "Canon iR-ADV C3830 PS"
+# ModelName: "Canon iR-ADV C3830 PXL"
+# ModelName: "Canon iR-ADV C3835 PCL"
+# ModelName: "Canon iR-ADV C3835 PS"
+# ModelName: "Canon iR-ADV C3835 PXL"
 # ModelName: "Canon iR-ADV C475 III PCL"
 # ModelName: "Canon iR-ADV C475 III PS"
 # ModelName: "Canon iR-ADV C475 III PXL"
@@ -609,6 +624,9 @@
 # ModelName: "Canon iR C3220 PCL"
 # ModelName: "Canon iR C3220 PS"
 # ModelName: "Canon iR C3220 PXL"
+# ModelName: "Canon iR C3226 PCL"
+# ModelName: "Canon iR C3226 PS"
+# ModelName: "Canon iR C3226 PXL"
 # ModelName: "Canon iR C3380-J1 Ver1.0 PCL"
 # ModelName: "Canon iR C3380-J1 PS Ver1.0"
 # ModelName: "Canon iR C3380 PCL"
@@ -637,6 +655,12 @@
 # ModelName: "Canon iR C5185 PCL"
 # ModelName: "Canon iR C5185 PS"
 # ModelName: "Canon iR C5185 PXL"
+# ModelName: "Canon i-SENSYS X C1533P PCL"
+# ModelName: "Canon i-SENSYS X C1533P PS"
+# ModelName: "Canon i-SENSYS X C1533P PXL"
+# ModelName: "Canon i-SENSYS X C1538P PCL"
+# ModelName: "Canon i-SENSYS X C1538P PS"
+# ModelName: "Canon i-SENSYS X C1538P PXL"
 # ModelName: "Canon Fax L2000IP PCL"
 # ModelName: "Canon Fax L2000IP PXL"
 # ModelName: "Canon Fax L3000IP PCL"
@@ -729,6 +753,9 @@
 # ModelName: "Canon LBP712C PCL"
 # ModelName: "Canon LBP712C PS"
 # ModelName: "Canon LBP712C PXL"
+# ModelName: "Canon LBP722C PCL"
+# ModelName: "Canon LBP722C PS"
+# ModelName: "Canon LBP722C PXL"
 # ModelName: "Canon LBP7660cdn PCL"
 # ModelName: "Canon LBP7660cdn PS"
 # ModelName: "Canon LBP7680cx PCL"
@@ -847,7 +874,8 @@ pkgname='canon-cque'
 #_cnver='4.0-3'; _dl64t='48570'; _dl32t=$((_dl64-1))
 #_cnver='4.0-5'; _dl64r='45517'; _dl32r='45511'; _dl64d='45505'; _dl32d='45482'
 #_cnver='4.0-7'; _dl64r='45517'; _dl32r='45511'; _dl64d='45505'; _dl32d='45482'
-_cnver='4.0-8'; _dl64r='45517'; _dl32r='45511'; _dl64d='45505'; _dl32d='45482'
+#_cnver='4.0-8'; _dl64r='45517'; _dl32r='45511'; _dl64d='45505'; _dl32d='45482'
+_cnver='4.0-9'; _dl64r='45517'; _dl32r='45511'; _dl64d='45505'; _dl32d='45482'; _dl64t='48570'; _dl32t='48569'
 pkgver="${_cnver//-/.}"
 pkgrel='1'
 pkgdesc='CUPS printer driver for Canon imagePRESS imageRUNNER ADVANCE PRO C iR i-SENSYS FAX LBP MF Laser Shot PC-D copier printers, may require PCL/PXL or PS dealer LMS license'
@@ -858,21 +886,25 @@ depends=('cups' 'cups-filters')
 options=('!strip')
 source=('LICENSE')
 _srcdir="cque-en-${_cnver}"
-_fl="CQue_Linux_v${pkgver}_64_EN"
-#source_x86_64=("https://files.canon-europe.com/files/soft01-${_dl64t}/Driver/${_fl}.tar.gz")
-source_x86_64=("https://files.canon-europe.com/files/soft${_dl64r}/Software/${_fl}.rpm")
-#source_x86_64=("https://files.canon-europe.com/files/soft${_dl64d}/Driver/${_fl}.deb")
-_fl="${_fl//64/32}"
-#source_i686=("https://files.canon-europe.com/files/soft01-${_dl32t}/Driver/${_fl}.tar.gz")
-source_i686=("https://files.canon-europe.com/files/soft${_dl32r}/Software/${_fl}.rpm")
-#source_i686=("https://files.canon-europe.com/files/soft${_dl32d}/Software/${_fl}.deb")
+_flt="Cque_Linux_${_cnver//-/}_64_EN"
+_flr="Cque_Linux_Driver_${_cnver//-/}_64_EN"
+_fld="Cque_${_cnver//-/.}_Linux_64_EN"
+#source_x86_64=("https://files.canon-europe.com/files/soft01-${_dl64t}/Driver/${_flt}.tar.gz")
+source_x86_64=("https://files.canon-europe.com/files/soft${_dl64r}/Software/${_flr}.rpm")
+#source_x86_64=("https://files.canon-europe.com/files/soft${_dl64d}/Driver/${_fld}.deb")
+_flt="${_flt//64/32}"
+_flr="${_flr//64/32}"
+_fld="${_fld//64/32}"
+#source_i686=("https://files.canon-europe.com/files/soft01-${_dl32t}/Driver/${_flt}.tar.gz")
+source_i686=("https://files.canon-europe.com/files/soft${_dl32r}/Software/${_flr}.rpm")
+#source_i686=("https://files.canon-europe.com/files/soft${_dl32d}/Software/${_fld}.deb")
 unset _fl
 md5sums=('4df9593c184cd39bb9d9df6195c4d390')
-md5sums_i686=('e7dd071966288ffb33d40fef053f120a')
-md5sums_x86_64=('a15d260a855099eec0c314d2f853e305')
+md5sums_i686=('2d2b5ba29164edc083c0c86219cc0d05')
+md5sums_x86_64=('90123477f13bc1ea02380ccd140ea276')
 sha256sums=('343a624f559718d085b01605572fdf1cf33201931f06ef37567bbd497a29d333')
-sha256sums_i686=('67066e58a7aac0a962fa6790f8fc7ae634fa19d08b4ca90be2a9718162e11dc0')
-sha256sums_x86_64=('7970db9d070aef2e8620a3a626cd98dc08b3d6bdc83153f9dec981085b635744')
+sha256sums_i686=('02af46b896c7d004ddebbad99c30e1959afb3050aa307a75ce8692f5b428624e')
+sha256sums_x86_64=('193eaf175a94ffa36493bbbf7e0a3e69ccfc2b4d052fa841577e65dc09efb66f')
 
 prepare() {
   set -u
