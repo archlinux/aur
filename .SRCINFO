@@ -1,0 +1,14 @@
+pkgbase = python-pycamilladsp
+	pkgdesc = Communication with CamillaDSP via a websocket
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/HEnquist/pycamilladsp
+	arch = any
+	license = GPL
+	makedepends = python-websocket-client
+	makedepends = python-websockets
+	depends = python
+	source = https://github.com/HEnquist/pycamilladsp/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 37a749440e17882b5ec8761f45af1ac17f0183752abcfa7849abd917970e124a
+
+pkgname = python-pycamilladsp
