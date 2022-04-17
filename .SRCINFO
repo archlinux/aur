@@ -1,6 +1,6 @@
 pkgbase = linux-lts419
 	pkgdesc = LTS 4.19 Linux
-	pkgver = 4.19.236
+	pkgver = 4.19.238
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = linux-lts419
 	makedepends = imagemagick
 	options = !strip
 	source = https://www.kernel.org/pub/linux/kernel/v4.x/linux-4.19.tar.xz
-	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.19.236.xz
+	source = https://www.kernel.org/pub/linux/kernel/v4.x/patch-4.19.238.xz
 	source = config
 	source = 0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
 	md5sums = 740a90cf810c2105df8ee12e5d0bb900
