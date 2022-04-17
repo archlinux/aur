@@ -5,7 +5,7 @@
 pkgbase=lib32-lapack
 _basename=lapack
 pkgname=('lib32-lapack' 'lib32-blas' 'lib32-cblas' 'lib32-lapacke')
-pkgver=3.10.0
+pkgver=3.10.1
 pkgrel=1
 url="https://www.netlib.org/lapack"
 pkgdesc="Linear Algebra PACKage (32-bit)"
@@ -13,7 +13,7 @@ makedepends=('gcc-fortran' 'lib32-gcc-libs' 'cmake' 'python')
 arch=('x86_64')
 license=("custom")
 source=($_basename-$pkgver.tar.gz::"https://github.com/Reference-LAPACK/lapack/archive/v$pkgver.tar.gz")
-sha1sums=('4a9384523bf236c83568884e8c62d9517e41ac42')
+sha1sums=('c1a566cb91bf1170fb442eb2be9e1fd4005d4640')
 
 build() {
   mkdir -p ${srcdir}/build
