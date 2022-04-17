@@ -18,7 +18,7 @@ makedepends=("zstd=${_zstdver}" 'bash' 'bc' 'boost' 'boost-libs' 'bzip2' 'c-ares
              'jq' 'jre11-openjdk-headless' 'junit' 'keyutils' 'leveldb' 'libaio'
              'libatomic_ops' 'libcap' 'libcap-ng' 'libcroco' 'libcurl-compat'
              'libedit' 'libgudev' 'libnl' 'librabbitmq-c' 'libtool' 'util-linux'
-             'libuv' 'libxml2' 'librdkafka' 'libpciaccess' 'lsb-release' 'lz4' 'ncurses'
+             'libuv' 'libxml2' 'librdkafka' 'libpciaccess' 'lsb-release' 'lua' 'lz4' 'ncurses'
              'nss' 'numactl' 'oath-toolkit' 'openssl' 'parted' 'pcre' 'pcre2' 'pkgconf' 'protobuf'
              'procps-ng' 'python-astroid' 'python-attrs' 'python-bcrypt'
              'python-cheroot' 'python-cherrypy' 'python-coverage' 'python-dateutil'
