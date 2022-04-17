@@ -235,6 +235,9 @@ prepare() {
   # Otherwise pytorch will automatically detect your architecture
   # See: https://github.com/pytorch/pytorch/commit/8dfdc3df82ee34a83c1a0a9c59de8db195591a6b
   # export PYTORCH_ROCM_ARCH="gfx803;gfx900;gfx906;gfx908"
+
+  export ROCRAND_PATH=/opt/rocm
+  export HIPRAND_PATH=/opt/rocm
 }
 
 build() {
