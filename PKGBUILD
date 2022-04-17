@@ -1,25 +1,18 @@
-# Maintainer: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
+# Maintainer: Behnam Momeni <sbmomeni [at the] gmail [dot] com>
+# Contributor: Rodrigo Bezerra <rodrigobezerra21 at gmail dot com>
 
 _basename=imath
 pkgname=lib32-imath
-pkgver=3.1.3
+pkgver=3.1.5
 pkgrel=1
 pkgdesc='A C++ and python library of 2D and 3D vector, matrix, and math operations for computer graphics (32-bit)'
-url='https://www.openexr.com/'
+url='https://github.com/AcademySoftwareFoundation/Imath'
 arch=(x86_64)
 license=(BSD)
 depends=(lib32-gcc-libs imath)
 makedepends=(cmake)
-source=(https://github.com/AcademySoftwareFoundation/Imath/archive/v$pkgver/$_basename-$pkgver.tar.gz
-        fix_build.patch)
-sha256sums=('0bf7ec51162c4d17a4c5b850fb3f6f7a195cff9fa71f4da7735f74d7b5124320'
-            '8894825cb9bd4a3b70b1ff46fd30b435c42fba8b9438833bd50cf50f4a7da971')
-
-prepare() {
-    cd Imath-$pkgver
-
-    patch -Np1 -i ../fix_build.patch
-}
+source=("https://github.com/AcademySoftwareFoundation/Imath/archive/v$pkgver/$_basename-$pkgver.tar.gz")
+sha256sums=('1e9c7c94797cf7b7e61908aed1f80a331088cc7d8873318f70376e4aed5f25fb')
 
 build() {
     export CC='gcc -m32'
