@@ -1,0 +1,12 @@
+pkgbase = freec
+	pkgdesc = Copy number and genotype annotation in whole genome and whole exome sequencing data
+	pkgver = 11.6
+	pkgrel = 1
+	url = https://github.com/BoevaLab/FREEC
+	arch = x86_64
+	license = GPL
+	makedepends = make
+	source = https://github.com/BoevaLab/FREEC/archive/refs/tags/v11.6.tar.gz
+	sha256sums = SKIP
+
+pkgname = freec
