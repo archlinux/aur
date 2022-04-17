@@ -1,0 +1,17 @@
+pkgbase = openfpgaloader-bin
+	pkgdesc = Universal utility for programming FPGA
+	pkgver = 0.8.0
+	pkgrel = 1
+	url = https://github.com/trabucayre/openFPGALoader
+	arch = x86_64
+	license = Apache2
+	depends = libftdi
+	depends = libftdi-compat
+	depends = hidapi
+	depends = libudev.so
+	provides = openfpgaloader
+	conflicts = openfpgaloader
+	source = openfpgaloader-bin-0.8.0.tar.gz::https://github.com/trabucayre/openFPGALoader/releases/download/v0.8.0/ubtuntu18.04-openFPGALoader.tgz
+	sha256sums = 7166ed027dd45e43af76c7cc0fb5f7c0d755e63fa97502d90980b9572bdeac83
+
+pkgname = openfpgaloader-bin
