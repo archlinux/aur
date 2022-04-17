@@ -5,7 +5,7 @@
 pkgname=lib32-sdl12-compat
 _commit=030111ab691581d2eb0cd44586d69a4398185560
 pkgver=1.2.52
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides a binary and source compatible API for programs written against SDL 1.2, but it uses SDL 2.0 behind the scenes. (32-bit)"
 url="https://github.com/libsdl-org/sdl12-compat.git"
 depends=('lib32-sdl2' 'lib32-glu' 'sdl12-compat')
@@ -26,7 +26,7 @@ build() {
     export LDFLAGS+=" -m32"
     export PKG_CONFIG_PATH='/usr/lib32/pkgconfig'
 
-    cmake -DCMAKE_INSTALL_PREFIX=/usr ../sdl12-compat
+    cmake -DSDL12TESTS=0 -DCMAKE_INSTALL_PREFIX=/usr ../sdl12-compat
     make
 }
 
