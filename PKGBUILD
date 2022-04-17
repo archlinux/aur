@@ -1,6 +1,6 @@
 # Maintainer: Geballin - Guillaume Ballin <macniaque at free dot fr>
 pkgname=naturaldocs2
-pkgver=2.1.1
+pkgver=2.2
 pkgrel=1
 pkgdesc="Readable Source Code Documentation for 20 Programming Languages"
 url="https://www.naturaldocs.org/"
@@ -15,7 +15,7 @@ backup=()
 install=
 source=("https://www.naturaldocs.org/download/natural_docs/${pkgver}/Natural_Docs_${pkgver}.zip" naturaldocs2)
 
-md5sums=('9e0f23c0112ef535ba11862dbc0a0fe2' '92ec6333b5df1367b8464d0a0f06f49d')
+md5sums=('c3f8a7db957b1fcb535c3f4d2ec30335' '92ec6333b5df1367b8464d0a0f06f49d')
 
 build() {
   cd "${srcdir}/Natural Docs/"
