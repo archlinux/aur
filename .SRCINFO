@@ -1,0 +1,12 @@
+pkgbase = intel-hexl
+	pkgdesc = Intel® Homomorphic Encryption Acceleration Library accelerates modular arithmetic operations used in homomorphic encryption
+	pkgver = 1.2.4
+	pkgrel = 1
+	url = https://github.com/intel/hexl
+	arch = any
+	license = Apache-2
+	makedepends = cmake
+	source = intel-hexl-1.2.4.tar.gz::https://github.com/intel/hexl/archive/refs/tags/v1.2.4.tar.gz
+	b2sums = b2c0c54c978fd3801548c040c684dd8a6e61f1035e47cd2ba39a4da5cf4adb31106b20f2dd6d50f76643db2985c00122bb69dd225078d3d7506904f08b9e78d0
+
+pkgname = intel-hexl
