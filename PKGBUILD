@@ -13,6 +13,7 @@ optdepends=('jre8-openjdk: 启动低版本游戏的最低要求'
 'jre17-openjdk: 推荐使用此Java版本启动1.17(21w19a)及以上的版本')
 source=("https://github.com/Voxelum/x-minecraft-launcher/releases/download/v$pkgver/xmcl-$pkgver.tar.xz")
 md5sums=('SKIP')
+install="$pkgname.install"
 
 _setvars() {
 	cd "$srcdir"
