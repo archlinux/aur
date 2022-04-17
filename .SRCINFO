@@ -1,6 +1,6 @@
 pkgbase = pcsx2-git
 	pkgdesc = A Sony PlayStation 2 emulator
-	pkgver = 1.7.2617
+	pkgver = 1.7.2628
 	pkgrel = 1
 	url = https://www.pcsx2.net
 	install = dev9.install
@@ -33,8 +33,6 @@ pkgbase = pcsx2-git
 	depends = rapidyaml-git
 	provides = pcsx2
 	conflicts = pcsx2
-	options = debug
-	options = !strip
 	source = git+https://github.com/PCSX2/pcsx2.git
 	source = git+https://github.com/fmtlib/fmt.git
 	source = git+https://github.com/ocornut/imgui.git

@@ -3,7 +3,7 @@
 # Contributor: Themaister <maister@archlinux.us>
 
 pkgname=pcsx2-git
-pkgver=1.7.2617
+pkgver=1.7.2628
 pkgrel=1
 pkgdesc='A Sony PlayStation 2 emulator'
 arch=(x86_64)
@@ -16,8 +16,6 @@ license=(
 )
 
 install=dev9.install
-
-options=(!lto)
 
 depends=(
   libaio
@@ -47,7 +45,8 @@ makedepends=(
 )
 provides=(pcsx2)
 conflicts=(pcsx2)
-source=(git+https://github.com/PCSX2/pcsx2.git
+source=(
+git+https://github.com/PCSX2/pcsx2.git
 git+https://github.com/fmtlib/fmt.git
 git+https://github.com/ocornut/imgui.git
 git+https://github.com/rtissera/libchdr.git
@@ -59,8 +58,6 @@ git+https://github.com/KhronosGroup/glslang.git
 git+https://github.com/libsdl-org/SDL.git
 )
 sha256sums=(SKIP)
-
-options=(debug !strip)
 
 pkgver()
 {
