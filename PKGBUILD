@@ -1,14 +1,14 @@
 # Maintainer: Michał Minarowski <neoney@pm.me>
 _pkgname="discord-canary-update-skip"
 pkgname="$_pkgname"-git
-_discordversion="ptb"
+_discordversion="canary"
 pkgver=r4.3cc6b1e
 pkgrel=1
 pkgdesc="A simple script to fix Discord Canary wanting to update while the update isn't in the repos."
 arch=('any')
 url="https://github.com/n3oney/discord-update-skip"
 license=('MIT')
-depends=('jq' 'discord-ptb' 'bash')
+depends=('jq' 'discord-canary' 'bash')
 makedepends=('git')
 install="$_pkgname".install
 changelog=

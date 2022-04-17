@@ -8,7 +8,7 @@ pkgbase = discord-canary-update-skip-git
 	license = MIT
 	makedepends = git
 	depends = jq
-	depends = discord-ptb
+	depends = discord-canary
 	depends = bash
 	source = git+https://github.com/n3oney/discord-update-skip.git#branch=ptb
 	sha256sums = SKIP
