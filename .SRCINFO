@@ -1,6 +1,6 @@
 pkgbase = kde-material-you-colors
 	pkgdesc = Automatic Material You Colors Generator from your wallpaper for the Plasma Desktop
-	pkgver = 0.4.0BETA
+	pkgver = 0.5.0BETA
 	pkgrel = 1
 	url = https://github.com/luisbocanegra/kde-material-you-colors
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = kde-material-you-colors
 	optdepends = python-colr: colored hex codes printing
 	optdepends = python-pywal: theme other programs using Material You Colors
 	options = !strip
-	source = kde-material-you-colors-0.4.0BETA.tar.gz::https://github.com/luisbocanegra/kde-material-you-colors/archive/v0.4.0BETA.tar.gz
-	sha256sums = 7e8408dbd92a6ef71de8ce16d0162e35e2650a5853b02aecc033e1047320dec2
+	source = kde-material-you-colors-0.5.0BETA.tar.gz::https://github.com/luisbocanegra/kde-material-you-colors/archive/v0.5.0BETA.tar.gz
+	sha256sums = 540654d1269d0b80bbe47c9acc6b6c70cc0bdd9d769db986866b2a6677a0bbac
 
 pkgname = kde-material-you-colors
