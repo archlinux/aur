@@ -2,7 +2,7 @@
 
 pkgname=picacg-qt
 pkgver=1.3.6
-pkgrel=2
+pkgrel=3
 pkgdesc="PicACG Comic PC Client For Linux"
 arch=('any')
 url="https://github.com/tonquer/picacg-qt"
@@ -15,8 +15,8 @@ depends=('python-pyqt5'
          'python-urllib3'
          'python-pillow'
          'python-pysocks'
-         'python-waifu2x-vulkan'
 )
+optdepends=('python-waifu2x-vulkan: Waifu2x-Vulkan support')
 provides=('bika')
 conflicts=('bika')
 source=(${pkgname}-${pkgver}.tar.gz::"${url}/archive/refs/tags/v${pkgver}.tar.gz"
