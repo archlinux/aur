@@ -1,25 +1,26 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Andrew Sun <adsun701 at gmail dot com>
 # Contributor: Clint Valentine <valentine dot clint at gmail dot com>
 
-_name=gtfparse
-pkgname='python-gtfparse'
-pkgver=1.2.0
-pkgrel=3
+pkgname=python-gtfparse
+_pkg=gtfparse
+pkgver=1.2.1
+pkgrel=1
 pkgdesc="Python library for parsing GTF files"
 arch=('any')
 url="https://pypi.python.org/pypi/gtfparse"
 license=('Apache')
-makedepends=('python' 'python-setuptools' 'python-pypandoc')
-options=(!emptydirs)
-source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/g/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('2f27aa2b87eb43d613edabf27f9c11147dc595c8683b440ac1d88e9acdb85873')
+depends=('python-numpy' 'python-pandas')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/g/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('559d4d36b0bd5d4494f925cab3c00cd969783ebb6408fa025df92663965834b8')
 
 build(){
-  cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py build
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/${_name}-${pkgver}"
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 }
