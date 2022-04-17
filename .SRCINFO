@@ -1,0 +1,11 @@
+pkgbase = wtdbg
+	pkgdesc = A fuzzy Bruijn graph approach to long noisy reads assembly
+	pkgver = 2.5
+	pkgrel = 1
+	url = https://github.com/ruanjue/wtdbg2
+	arch = x86_64
+	license = GPL
+	source = https://github.com/ruanjue/wtdbg2/archive/refs/tags/v2.5.tar.gz
+	sha256sums = a2ffc8503d29f491a9a38ef63230d5b3c96db78377b5d25c91df511d0df06413
+
+pkgname = wtdbg
