@@ -8,7 +8,7 @@ arch=('x86_64')
 license=('GPL')
 depends=('docker')
 source=("https://github.com/threadexio/zeus/releases/download/v${pkgver}/zeus-bin.tar.gz")
-sha256sums=('d9aab774f576a937063c78c08cfa13dafb948c1e4f5a66308b13377de5a09b2d')
+sha256sums=('78c6fb0def2c84497e6cdc9fb956a060e3951ba5d501c9d153a1303c29e0922f')
 conflicts=(zeus podman-docker)
 
 package() {
