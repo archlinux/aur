@@ -1,3 +1,4 @@
 pkg/
 src/
-overgrive*.pkg.tar.xz
+overgrive*.pkg.tar.zst
+overgrive*.tar.xz
