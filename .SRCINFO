@@ -11,7 +11,12 @@ pkgbase = camilladsp
 	makedepends = pkg-config
 	depends = alsa-lib
 	depends = openssl
+	backup = etc/camilladsp/configs/camilladsp.yml
 	source = https://github.com/HEnquist/camilladsp/archive/refs/tags/v0.6.3.tar.gz
+	source = camilladsp.service
+	source = camilladsp.yml
 	sha256sums = 9a108e202f6c4b30f05cb1d7702c0649a29c0f612d510346e5825c8e1fc9855f
+	sha256sums = b59bcd50f1fad9444012c4aa1550ac1f295161efaac93854b26e107b4361b398
+	sha256sums = 1fd7aebfaa697050dde2235150601322d5bca66abb247448ed07058697a2bb39
 
 pkgname = camilladsp
