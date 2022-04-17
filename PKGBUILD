@@ -2,7 +2,7 @@
 
 pkgname=picacg-qt
 pkgver=1.3.6
-pkgrel=3
+pkgrel=4
 pkgdesc="PicACG Comic PC Client For Linux"
 arch=('any')
 url="https://github.com/tonquer/picacg-qt"
@@ -34,12 +34,14 @@ build() {
 
 package() {
   cd ${pkgname}-${pkgver}
+
+  cd src
   find . -type f -exec \
                  install -Dm644 {} ${pkgdir}/usr/share/${pkgname}/{} \;
   
   install -Dm75 ${srcdir}/${pkgname}.sh ${pkgdir}/usr/bin/${pkgname}
   install -Dm644 ${srcdir}/${pkgname}.desktop -t ${pkgdir}/usr/share/applications
-  install -Dm644 res/icon/icon_picacg.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
+  install -Dm644 ../res/icon/icon_picacg.png ${pkgdir}/usr/share/pixmaps/${pkgname}.png
 }
 
 # vim: set sw=2 ts=2 et:
