@@ -1,0 +1,10 @@
+--- a/usr/share/applications/webcatalog.desktop	2022-04-17 12:09:50.831174586 +0300
++++ b/usr/share/applications/webcatalog.desktop	2022-04-17 12:10:30.774235936 +0300
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Name=WebCatalog
+-Exec=AppRun --no-sandbox %U
++Exec=webcatalog %U
+ Terminal=false
+ Type=Application
+ Icon=webcatalog
