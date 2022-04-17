@@ -1,18 +1,18 @@
 # Maintainer: Arisa Snowbell <goddess@chizuru.space>
 pkgname=shiny-mirrors
-pkgver=r188.2d9dc27
+pkgver=r203.1ff7cf3
 pkgrel=1
 pkgdesc="An alternative to reflector, written in Rust! A tool to find the best mirrors for you!"
 arch=('x86_64' 'aarch64')
 url="https://gitlab.com/Arisa_Snowbell/shiny-mirrors"
 license=('GPL3')
 depends=('gcc-libs')
-makedepends=('cargo-nightly' 'git' 'pandoc')
+makedepends=('cargo-nightly' 'git')
 backup=("etc/$pkgname.conf")
-_commit=2d9dc2702ebd4c03d6f38a6f2c9d5a2ef04fa64c
+_commit=1ff7cf3f8d72a13c2cf6666c0195fd491e21536d
 source=("git+https://gitlab.com/Arisa_Snowbell/shiny-mirrors.git#commit=$_commit?signed")
 sha256sums=('SKIP')
-validpgpkeys=('E2C998FA1F7B651E45B20CDC56AA2C2801F619D7' '93F4694364C3E688BA33E3E41CBE6B7A2B054E06')
+validpgpkeys=('E2C998FA1F7B651E45B20CDC56AA2C2801F619D7' '93F4694364C3E688BA33E3E41CBE6B7A2B054E06' '4F9AC746631BB0BC52FAE73D3D526B3B3252C69E')
 options=(!lto)
 
 pkgver() {
@@ -32,19 +32,22 @@ build() {
   export CARGO_TARGET_DIR=target
   cargo build --frozen --release --features arch --no-default-features
 
-  pandoc "$pkgname/man/$pkgname.md" -s -t man -o "$pkgname/man/$pkgname.1"
+  #pandoc "$pkgname/man/$pkgname.md" -s -t man -o "$pkgname/man/$pkgname.1"
 }
 
 package() {
   cd "$srcdir/$pkgname"
   install -Dm755 "target/release/$pkgname" -t "$pkgdir/usr/bin/"
-  install -Dm644 "target/completions/_${pkgname}" -t \
+  install -Dm644 "target/gen/_${pkgname}" -t \
     "$pkgdir/usr/share/zsh/site-functions/"
-  install -Dm644 "target/completions/$pkgname.bash" \
+  install -Dm644 "target/gen/$pkgname.bash" \
     "$pkgdir/usr/share/bash-completion/completions/$pkgname"
-  install -Dm644 "target/completions/$pkgname.fish" -t \
+  install -Dm644 "target/gen/$pkgname.fish" -t \
     "$pkgdir/usr/share/fish/completions/"
-  install -Dm644 "$pkgname/man/$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
+  install -Dm644 "target/gen/$pkgname.1" -t "$pkgdir/usr/share/man/man1/"
+  install -Dm644 "target/gen/$pkgname-config.1" -t "$pkgdir/usr/share/man/man1/"
+  install -Dm644 "target/gen/$pkgname-status.1" -t "$pkgdir/usr/share/man/man1/"
+  install -Dm644 "target/gen/$pkgname-refresh.1" -t "$pkgdir/usr/share/man/man1/"
   install -Dm644 "conf/$pkgname.conf" -t "$pkgdir/etc/" # Config for Manjaro build, but at runtime it will be overwritten
   install -Dm644 "$pkgname/systemd/$pkgname.service" "$pkgdir/usr/lib/systemd/system/$pkgname.service"
   install -Dm644 "$pkgname/systemd/$pkgname.timer" "$pkgdir/usr/lib/systemd/system/$pkgname.timer"
