@@ -5,7 +5,7 @@
 # Contributor: Cedric Brancourt <cedric.brancourt at gmail dot com>
 
 pkgname=('imagemagick-no-hdri')
-pkgver=7.1.0.29
+pkgver=7.1.0.30
 pkgrel=1
 pkgdesc='An image viewing/manipulation program'
 url='https://www.imagemagick.org/'
@@ -32,7 +32,7 @@ _relname=ImageMagick-${pkgver%%.*}
 _tarname=ImageMagick-${pkgver%.*}-${pkgver##*.}
 source=(https://download.imagemagick.org/ImageMagick/download/releases/$_tarname.tar.xz{,.asc}
         arch-fonts.diff)
-sha256sums=('a89df63da5ec823ae77049d747bf6b370bc867a06659b410f42652e5773fc62c'
+sha256sums=('0b08200440a5967b35bdc2d26515613b01c747d1340796901a93d83bad15fafb'
             'SKIP'
             'a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73')
 validpgpkeys=(D8272EF51DA223E4D05B466989AB63D48277377A)  # Lexie Parsimoniae
