@@ -1,0 +1,256 @@
+From b283b4dd2058c26eb26205d666ea5a1561bce87c Mon Sep 17 00:00:00 2001
+From: Harald Sitter <sitter@kde.org>
+Date: Mon, 28 Mar 2022 12:37:27 +0200
+Subject: [PATCH 3/3] fuse fileopen urls on-demand
+
+instead of restricting ourselves to file urls we now accept any url
+(within the limitations from kprotocols ultimately) but then fuse them
+into the local file system using kio-fuse. this enables us to pass smb:
+and sftp: and whathaveyou urls into the sandbox without the sandbox
+having to worry about anything
+---
+ CMakeLists.txt               |  8 ++++-
+ cmake/FindKIOFuse.cmake      | 18 ++++++++++
+ data/org.kde.KIOFuse.VFS.xml | 17 +++++++++
+ src/CMakeLists.txt           |  4 ++-
+ src/filechooser.cpp          | 69 +++++++++++++++++++++++++++++++-----
+ 5 files changed, 106 insertions(+), 10 deletions(-)
+ create mode 100644 cmake/FindKIOFuse.cmake
+ create mode 100644 data/org.kde.KIOFuse.VFS.xml
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 59eb4b7..b4c6071 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -14,7 +14,7 @@ set(KDE_COMPILERSETTINGS_LEVEL "5.82")
+ ################# set KDE specific information #################
+ 
+ find_package(ECM ${KF5_MIN_VERSION} REQUIRED NO_MODULE)
+-set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH}  "${CMAKE_CURRENT_SOURCE_DIR}/cmake/modules")
++set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+ 
+ include(KDEInstallDirs)
+ include(KDECMakeSettings)
+@@ -50,6 +50,12 @@ find_package(Wayland 1.15 REQUIRED COMPONENTS Client)
+ find_package(PlasmaWaylandProtocols REQUIRED)
+ find_package(QtWaylandScanner REQUIRED)
+ 
++find_package(KIOFuse)
++set_package_properties(KIOFuse PROPERTIES
++    URL https://commits.kde.org/system/kio-fuse
++    TYPE RUNTIME
++    PURPOSE "Automatic mounting of remote URLs")
++
+ add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x050c00)
+ add_definitions(-DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x054200)
+ 
+diff --git a/cmake/FindKIOFuse.cmake b/cmake/FindKIOFuse.cmake
+new file mode 100644
+index 0000000..ef0e059
+--- /dev/null
++++ b/cmake/FindKIOFuse.cmake
+@@ -0,0 +1,18 @@
++# SPDX-License-Identifier: BSD-2-Clause
++# SPDX-FileCopyrightText: 2022 Harald Sitter <sitter@kde.org>
++
++execute_process(
++    COMMAND dbus-send --session --print-reply --dest=org.freedesktop.DBus  /org/freedesktop/DBus org.freedesktop.DBus.ListActivatableNames
++    OUTPUT_VARIABLE _kiofuseOut)
++
++set(${CMAKE_FIND_PACKAGE_NAME}_FOUND FALSE)
++if("${_kiofuseOut}" MATCHES "\"org.kde.KIOFuse\"")
++    set(${CMAKE_FIND_PACKAGE_NAME}_FOUND TRUE)
++endif()
++
++include(FindPackageHandleStandardArgs)
++find_package_handle_standard_args(${CMAKE_FIND_PACKAGE_NAME}
++    FOUND_VAR ${CMAKE_FIND_PACKAGE_NAME}_FOUND
++    REQUIRED_VARS ${CMAKE_FIND_PACKAGE_NAME}_FOUND
++    REASON_FAILURE_MESSAGE "Could not find DBus service org.kde.KIOFuse in org.freedesktop.DBus.ListActivatableNames"
++)
+diff --git a/data/org.kde.KIOFuse.VFS.xml b/data/org.kde.KIOFuse.VFS.xml
+new file mode 100644
+index 0000000..30d7859
+--- /dev/null
++++ b/data/org.kde.KIOFuse.VFS.xml
+@@ -0,0 +1,17 @@
++<!DOCTYPE node PUBLIC "-//freedesktop//DTD D-BUS Object Introspection 1.0//EN" "http://www.freedesktop.org/standards/dbus/1.0/introspect.dtd">
++<!--
++  SPDX-License-Identifier: CC0-1.0
++  SPDX-FileCopyrightText: none
++-->
++<node>
++  <interface name="org.kde.KIOFuse.VFS">
++    <method name="remoteUrl">
++      <arg type="s" direction="out"/>
++      <arg name="localPath" type="s" direction="in"/>
++    </method>
++    <method name="mountUrl">
++      <arg name="remoteUrl" type="s" direction="in"/>
++      <arg type="s" direction="out"/>
++    </method>
++  </interface>
++</node>
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index cba078b..115d961 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -50,9 +50,11 @@ ecm_add_qtwayland_client_protocol(xdg_desktop_portal_kde_SRCS
+ )
+ 
+ set_source_files_properties(../data/org.freedesktop.Accounts.User.xml PROPERTIES NO_NAMESPACE TRUE)
+-
+ qt_add_dbus_interface(xdg_desktop_portal_kde_SRCS ../data/org.freedesktop.Accounts.User.xml user_interface)
+ 
++set_source_files_properties(../data/org.kde.KIOFuse.VFS.xml PROPERTIES NO_NAMESPACE TRUE)
++qt_add_dbus_interface(xdg_desktop_portal_kde_SRCS ../data/org.kde.KIOFuse.VFS.xml fuse_interface)
++
+ add_executable(xdg-desktop-portal-kde ${xdg_desktop_portal_kde_SRCS})
+ 
+ target_link_libraries(xdg-desktop-portal-kde
+diff --git a/src/filechooser.cpp b/src/filechooser.cpp
+index d141212..4b3bb9b 100644
+--- a/src/filechooser.cpp
++++ b/src/filechooser.cpp
+@@ -4,6 +4,7 @@
+  * SPDX-License-Identifier: LGPL-2.0-or-later
+  *
+  * SPDX-FileCopyrightText: 2016-2018 Jan Grulich <jgrulich@redhat.com>
++ * SPDX-FileCopyrightText: 2022 Harald Sitter <sitter@kde.org>
+  */
+ 
+ #include "filechooser.h"
+@@ -14,6 +15,7 @@
+ #include <QDialogButtonBox>
+ #include <QFile>
+ #include <QFileDialog>
++#include <QFileInfo>
+ #include <QGridLayout>
+ #include <QLabel>
+ #include <QLoggingCategory>
+@@ -30,6 +32,7 @@
+ #include <KSharedConfig>
+ #include <KWindowConfig>
+ 
++#include "fuse_interface.h"
+ #include <mobilefiledialog.h>
+ 
+ Q_LOGGING_CATEGORY(XdgDesktopPortalKdeFileChooser, "xdp-kde-file-chooser")
+@@ -131,6 +134,13 @@ const QDBusArgument &operator>>(const QDBusArgument &arg, FileChooserPortal::Opt
+     return arg;
+ }
+ 
++static bool isKIOFuseAvailable()
++{
++    static bool available =
++        QDBusConnection::sessionBus().interface() && QDBusConnection::sessionBus().interface()->activatableServiceNames().value().contains("org.kde.KIOFuse");
++    return available;
++}
++
+ FileDialog::FileDialog(QDialog *parent, Qt::WindowFlags flags)
+     : QDialog(parent, flags)
+     , m_fileWidget(new KFileWidget(QUrl(), this))
+@@ -181,6 +191,47 @@ FileChooserPortal::~FileChooserPortal()
+ {
+ }
+ 
++static QStringList fuseRedirect(QList<QUrl> urls)
++{
++    qCDebug(XdgDesktopPortalKdeFileChooser) << "mounting urls with fuse" << urls;
++
++    OrgKdeKIOFuseVFSInterface kiofuse_iface(QStringLiteral("org.kde.KIOFuse"), QStringLiteral("/org/kde/KIOFuse"), QDBusConnection::sessionBus());
++    struct MountRequest {
++        QDBusPendingReply<QString> reply;
++        int urlIndex;
++        QString basename;
++    };
++    QVector<MountRequest> requests;
++    requests.reserve(urls.count());
++    for (int i = 0; i < urls.count(); ++i) {
++        QUrl url = urls.at(i);
++        if (!url.isLocalFile()) {
++            const QString path(url.path());
++            const int slashes = path.count(QLatin1Char('/'));
++            QString basename;
++            if (slashes > 1) {
++                url.setPath(path.section(QLatin1Char('/'), 0, slashes - 1));
++                basename = path.section(QLatin1Char('/'), slashes, slashes);
++            }
++            requests.push_back({kiofuse_iface.mountUrl(url.toString()), i, basename});
++        }
++    }
++
++    for (auto &request : requests) {
++        request.reply.waitForFinished();
++        if (request.reply.isError()) {
++            qWarning() << "FUSE request failed:" << request.reply.error();
++            continue;
++        }
++
++        urls[request.urlIndex] = QUrl::fromLocalFile(request.reply.value() + QLatin1Char('/') + request.basename);
++    };
++
++    qCDebug(XdgDesktopPortalKdeFileChooser) << "mounted urls with fuse, maybe" << urls;
++
++    return QUrl::toStringList(urls);
++}
++
+ uint FileChooserPortal::OpenFile(const QDBusObjectPath &handle,
+                                  const QString &app_id,
+                                  const QString &parent_window,
+@@ -265,7 +316,9 @@ uint FileChooserPortal::OpenFile(const QDBusObjectPath &handle,
+         dirDialog.setModal(modalDialog);
+         dirDialog.setFileMode(QFileDialog::Directory);
+         dirDialog.setOptions(QFileDialog::ShowDirsOnly);
+-        dirDialog.setSupportedSchemes(QStringList{QStringLiteral("file")});
++        if (!isKIOFuseAvailable()) {
++            dirDialog.setSupportedSchemes(QStringList{QStringLiteral("file")});
++        }
+         if (!acceptLabel.isEmpty()) {
+             dirDialog.setLabelText(QFileDialog::Accept, acceptLabel);
+         }
+@@ -282,7 +335,7 @@ uint FileChooserPortal::OpenFile(const QDBusObjectPath &handle,
+             return 2;
+         }
+ 
+-        results.insert(QStringLiteral("uris"), QUrl::toStringList(urls));
++        results.insert(QStringLiteral("uris"), fuseRedirect(urls));
+         results.insert(QStringLiteral("writable"), true);
+ 
+         return 0;
+@@ -305,7 +358,9 @@ uint FileChooserPortal::OpenFile(const QDBusObjectPath &handle,
+     fileDialog->setModal(modalDialog);
+     KFile::Mode mode = directory ? KFile::Mode::Directory : multipleFiles ? KFile::Mode::Files : KFile::Mode::File;
+     fileDialog->m_fileWidget->setMode(mode | KFile::Mode::ExistingOnly);
+-    fileDialog->m_fileWidget->setSupportedSchemes(QStringList{QStringLiteral("file")});
++    if (!isKIOFuseAvailable()) {
++        fileDialog->m_fileWidget->setSupportedSchemes(QStringList{QStringLiteral("file")});
++    }
+     fileDialog->m_fileWidget->okButton()->setText(!acceptLabel.isEmpty() ? acceptLabel : i18n("Open"));
+ 
+     bool bMimeFilters = false;
+@@ -327,7 +382,7 @@ uint FileChooserPortal::OpenFile(const QDBusObjectPath &handle,
+             return 2;
+         }
+ 
+-        results.insert(QStringLiteral("uris"), QUrl::toStringList(urls));
++        results.insert(QStringLiteral("uris"), fuseRedirect(urls));
+         results.insert(QStringLiteral("writable"), true);
+ 
+         if (optionsWidget) {
+@@ -486,10 +541,8 @@ uint FileChooserPortal::SaveFile(const QDBusObjectPath &handle,
+     }
+ 
+     if (fileDialog->exec() == QDialog::Accepted) {
+-        QStringList files;
+-        QUrl url = QUrl::fromLocalFile(fileDialog->m_fileWidget->selectedFile());
+-        files << url.toDisplayString();
+-        results.insert(QStringLiteral("uris"), files);
++        const auto urls = fileDialog->m_fileWidget->selectedUrls();
++        results.insert(QStringLiteral("uris"), fuseRedirect(urls));
+ 
+         if (optionsWidget) {
+             QVariant choices = EvaluateSelectedChoices(checkboxes, comboboxes);
+-- 
+2.35.0
+

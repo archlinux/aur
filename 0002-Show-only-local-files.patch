@@ -1,0 +1,49 @@
+From a42107c2ca206fadb32496057089c240cfc0d160 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Tue, 18 Jan 2022 09:42:12 +0100
+Subject: [PATCH 2/3] Show only local files
+
+Call setSupportedSchemes("file") to allow only local files to be selected.
+That way QUrl::toStringList can be used as well.
+---
+ src/filechooser.cpp | 13 ++++---------
+ 1 file changed, 4 insertions(+), 9 deletions(-)
+
+diff --git a/src/filechooser.cpp b/src/filechooser.cpp
+index 97a48fc..d141212 100644
+--- a/src/filechooser.cpp
++++ b/src/filechooser.cpp
+@@ -305,6 +305,7 @@ uint FileChooserPortal::OpenFile(const QDBusObjectPath &handle,
+     fileDialog->setModal(modalDialog);
+     KFile::Mode mode = directory ? KFile::Mode::Directory : multipleFiles ? KFile::Mode::Files : KFile::Mode::File;
+     fileDialog->m_fileWidget->setMode(mode | KFile::Mode::ExistingOnly);
++    fileDialog->m_fileWidget->setSupportedSchemes(QStringList{QStringLiteral("file")});
+     fileDialog->m_fileWidget->okButton()->setText(!acceptLabel.isEmpty() ? acceptLabel : i18n("Open"));
+ 
+     bool bMimeFilters = false;
+@@ -320,19 +321,13 @@ uint FileChooserPortal::OpenFile(const QDBusObjectPath &handle,
+     }
+ 
+     if (fileDialog->exec() == QDialog::Accepted) {
+-        QStringList files;
+-        const auto selectedFiles = fileDialog->m_fileWidget->selectedFiles();
+-        for (const QString &filename : selectedFiles) {
+-            QUrl url = QUrl::fromLocalFile(filename);
+-            files << url.toDisplayString();
+-        }
+-
+-        if (files.isEmpty()) {
++        const auto urls = fileDialog->m_fileWidget->selectedUrls();
++        if (urls.isEmpty()) {
+             qCDebug(XdgDesktopPortalKdeFileChooser) << "Failed to open file: no local file selected";
+             return 2;
+         }
+ 
+-        results.insert(QStringLiteral("uris"), files);
++        results.insert(QStringLiteral("uris"), QUrl::toStringList(urls));
+         results.insert(QStringLiteral("writable"), true);
+ 
+         if (optionsWidget) {
+-- 
+2.35.0
+
