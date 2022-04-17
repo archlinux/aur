@@ -13,7 +13,7 @@ license=(Apache-2)
 url="https://github.com/intel/$_pkgname"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 b2sums=('b2c0c54c978fd3801548c040c684dd8a6e61f1035e47cd2ba39a4da5cf4adb31106b20f2dd6d50f76643db2985c00122bb69dd225078d3d7506904f08b9e78d0')
-makedepends=(cmake)
+makedepends=(cmake git doxygen)
 
 prepare() {
 	cd "$_pkgname-$pkgver"
