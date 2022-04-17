@@ -1,6 +1,6 @@
 # Maintainer: GodLeaveMe <godleaveme233 at gmail dot com>
 pkgname=xmcl-bin
-pkgver=0.23.1
+pkgver=0.23.2
 pkgrel=1
 pkgdesc="X Minecraft Launcher - 一个现代化的 Minecraft 启动器"
 arch=('x86_64')
