@@ -10,6 +10,7 @@ post_install() {
     echo "+                                                               +"
     echo "+  Use 'systemctl start clash' to start                         +"
     echo "+  Use 'systemctl enable clash' to enable auto-restart on boot  +"
+	echo "+  Don't use this package with enabling 'tun.auto-route'        +"
     echo "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++"
 }
 
