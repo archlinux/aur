@@ -1,0 +1,26 @@
+From f86add72c1c7d8036a1229f3bdf116639da81bae Mon Sep 17 00:00:00 2001
+From: "j.r" <j.r@jugendhacker.de>
+Date: Sun, 17 Apr 2022 11:47:20 +0200
+Subject: [PATCH 3/3] Declare GNOME Shell 42 compatibility
+
+---
+ metadata.json | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/metadata.json b/metadata.json
+index 9da5655..1fbd6d4 100644
+--- a/metadata.json
++++ b/metadata.json
+@@ -4,7 +4,8 @@
+   "gettext-domain": "TopIcons-Plus",
+   "shell-version": [
+     "40",
+-    "41"
++    "41",
++    "42"
+   ],
+   "settings-schema": "org.gnome.shell.extensions.topicons",
+   "url": "https://github.com/phocean/TopIcons-plus",
+-- 
+2.35.3
+
