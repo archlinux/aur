@@ -3,7 +3,7 @@
 set -u
 pkgname='comcom32'
 #pkgname+='-git'
-_pkgver='alpha-2'
+_pkgver='alpha-3'
 # pkgver="0.0.${_pkgver//-/_}" # copy this line
 pkgver="0.0.${_pkgver//-/_}"
 pkgrel='1'
@@ -13,13 +13,13 @@ url='https://github.com/dosemu2/comcom32'
 license=('GPL3')
 makedepends=('djgpp-gcc' 'djgpp-djcrx')
 conflicts=('djgpp-djcrx-bootstrap')
-_srcdir="${pkgname%-git}-${_pkgver}"
+_srcdir="${pkgname%-git}-${_pkgver%.r*}"
 source=(
   "${_srcdir}.tar.gz::${url}/archive/${_pkgver}.tar.gz"
 )
-md5sums=('8121352fdd1b9d701ce4ca9db50dd5d4')
-sha256sums=('51e5bae2e04e5fc7328b94b064c0521c9bd89477d9e7d36495f8ad702dc92746')
-b2sums=('03a5b098f7d7b95bac1b5598afe79b0261e1b46660a311123d454a61276d46bbbbec7e27264fc4a0f6ec3a358b2b321bfa89956e1a2f9e9657c95ae7893da1e0')
+md5sums=('6b97ffae13786144b4a037477c744fe5')
+sha256sums=('ff9e878f9e3948e26a2ffd279c46d4193af114f43c087e96714fbba28831aaea')
+b2sums=('3c2e9cfe94e7acd01f282af1a5140ee61d430496802aa55dcc20ba26cda409c911cf39d37322dd1d55bfad8b23409219b77f976b2cc9a8e7fd49a5058530da2c')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then
   source[0]="git+${url}.git"
