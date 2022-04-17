@@ -6,6 +6,10 @@ pkgbase = camillagui
 	install = camillagui.install
 	arch = any
 	license = GPL
+	depends = camilladsp
+	depends = python-aiohttp
+	depends = python-pycamilladsp
+	depends = python-pycamilladsp-plot
 	source = https://github.com/HEnquist/camillagui-backend/releases/download/v0.8.0/camillagui.zip
 	sha256sums = 6c70a8950a9dc3c8752efa77d60ec863035913d7775411034dd21c8b9a603bf3
 
