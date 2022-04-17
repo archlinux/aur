@@ -1,14 +1,13 @@
 pkgbase = emacs-markdown-mode
 	pkgdesc = Emacs markdown-mode
-	pkgver = 2.4
+	pkgver = 2.5
 	pkgrel = 1
 	url = http://jblevins.org/projects/markdown-mode/
 	install = emacs-markdown-mode.install
 	arch = any
 	license = GPL3
 	depends = emacs
-	source = https://github.com/jrblevin/markdown-mode/archive/v2.4.tar.gz
-	sha256sums = 2dbc19c3d62e7147703daac7d51bf0a3cfbb903164b64fdce3c34cc2002f2da7
+	source = https://github.com/jrblevin/markdown-mode/archive/v2.5.tar.gz
+	sha256sums = 188964f604ac04728dc3cbb188b91f1b385d818f583a9930f4c8f781fe9e7e58
 
 pkgname = emacs-markdown-mode
-

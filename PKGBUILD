@@ -5,7 +5,7 @@
 # Contributor: Nils <mail n-sch de>
 
 pkgname=emacs-markdown-mode
-pkgver=2.4
+pkgver=2.5
 pkgrel=1
 pkgdesc='Emacs markdown-mode'
 arch=('any')
@@ -14,7 +14,7 @@ license=('GPL3')
 depends=('emacs')
 install="${pkgname}.install"
 source=("https://github.com/jrblevin/markdown-mode/archive/v${pkgver}.tar.gz")
-sha256sums=('2dbc19c3d62e7147703daac7d51bf0a3cfbb903164b64fdce3c34cc2002f2da7')
+sha256sums=('188964f604ac04728dc3cbb188b91f1b385d818f583a9930f4c8f781fe9e7e58')
 
 package() {
   cd "$srcdir/markdown-mode-${pkgver}"
