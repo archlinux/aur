@@ -5,11 +5,11 @@
 # Contributor: American_Jesus
 pkgname=palemoon-gtk3
 _pkgname=palemoon
-_repo=palemoon-dev
+_repo=Pale-Moon
 epoch=1
-pkgver=29.4.5.1
-# Commit can be found at https://repo.palemoon.org/MoonchildProductions/palemoon-dev/releases
-_commit=44d7f4b8c3
+pkgver=29.4.6
+# Commit can be found at https://repo.palemoon.org/MoonchildProductions/Pale-Moon/releases
+_commit=f694a76857
 pkgrel=1
 pkgdesc="Open source web browser based on Firefox focusing on efficiency."
 arch=('i686' 'x86_64')
@@ -24,9 +24,10 @@ makedepends=('python2' 'autoconf2.13' 'unzip' 'zip' 'yasm'
 optdepends=('libpulse: PulseAudio audio driver'
             'ffmpeg: various video and audio support')
 source=(git+"https://repo.palemoon.org/MoonchildProductions/${_repo}?signed#commit=${_commit}"
-        git+"https://repo.palemoon.org/MoonchildProductions/GRE"
+        git+"https://repo.palemoon.org/MoonchildProductions/UXP"
         mozconfig.in)
-validpgpkeys=('3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC')
+validpgpkeys=('3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC'
+              '3059E09144F56804F0FBF4E126B40624BDBFD9F3')
 sha1sums=('SKIP'
           'SKIP'
           '8b0c53f8975677b864ecfb04eb8611d129e1c05b')
@@ -35,7 +36,7 @@ prepare() {
   sed 's#%SRCDIR%#'"${srcdir}"'#g' mozconfig.in > mozconfig
   cd ${_repo}
   git submodule init
-  git config submodule.platform.url "${srcdir}/GRE"
+  git config submodule.platform.url "${srcdir}/UXP"
   git submodule update
 }
 
