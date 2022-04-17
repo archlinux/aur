@@ -1,7 +1,7 @@
 pkgbase = tracy
 	pkgdesc = Real-time, nanosecond resolution frame profiler
 	pkgver = 0.8
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/wolfpld/tracy
 	arch = i686
 	arch = x86_64
@@ -16,7 +16,11 @@ pkgbase = tracy
 	conflicts = tracy
 	source = git+https://github.com/wolfpld/tracy#tag=v0.8
 	source = tracy.desktop
+	source = application-tracy.xml
+	source = application-tracy.svg
 	sha256sums = SKIP
 	sha256sums = d3e0e3433e10a154ed38103a98600585a20ac49212f53370b2ead89971f47652
+	sha256sums = f814d8f15a25b0014ca5781ae2b8941326c9f1e777d61368ec4c5128f3ddefcb
+	sha256sums = 2f65177164c7601aef7b204d12c9e8dd94930056472d8f22d14339072cc6c8fb
 
 pkgname = tracy
