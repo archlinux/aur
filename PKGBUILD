@@ -3,8 +3,8 @@
 # Contributor: Holger Rauch <holger dot rauch at posteo dot de>
 # Contributor: Zdenek Obst <zdenek dot obst at gmail dot com>
 pkgname=wildfly
-pkgver=26.0.0
-pkgrel=2
+pkgver=26.1.0
+pkgrel=1
 pkgdesc='Wildfly Application Server.'
 url='http://www.wildfly.org/'
 license=('LGPL')
@@ -41,7 +41,7 @@ install="${pkgname}.install"
 source=("https://github.com/${pkgname}/${pkgname}/releases/download/${pkgver}.Final/${pkgname}-${pkgver}.Final.tar.gz"
         "${pkgname}-sysusers.conf"
         "${pkgname}-tmpfiles.conf")
-sha256sums=('f6ff4dcd5312f83e37b663e2e16ce6474f09324c11dc1712b79320aabfcd096f'
+sha256sums=('c8a478e7a57daeb767d88cd63de2b26e9e22562bed77a09a74b39c489ec5d7e3'
             'd2c43e331a76c363a621db3bff3db93889388fd656bf786e1dc7c2a8283046ac'
             '796faf23aba8acacd40701dae855e66990ac3c62e71903095200023adb6e8540')
 
