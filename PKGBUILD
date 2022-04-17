@@ -2,8 +2,8 @@
 
 pkgname=stardust-xr-git
 _pkgname=stardust-xr
-pkgver=r656.ec7be6b
-pkgrel=2
+pkgver=r734.3261dc7
+pkgrel=1
 
 pkgdesc="Reference server implementation for Stardust XR using StereoKit"
 arch=('x86_64' 'aarch64' 'armv7l')
@@ -11,15 +11,21 @@ url="https://stardustxr.org/"
 license=('GPL2')
 
 provides=('stardust-xr')
-depends=('openxr>=1.0.16' 'fontconfig' 'libegl' 'libgl' 'flatbuffers>=1.12.0' 'libstardustxr' 'xcb-util-wm' 'xcb-util-errors' 'libxkbcommon' 'seatd' 'pixman')
-makedepends=('git' 'meson>=0.55.0' 'ninja' 'cmake' 'wayland-protocols' 'xorgproto')
+depends=('libstardustxr' 'openxr>=1.0.16' 'fontconfig' 'libegl' 'libgl' 'xcb-util-wm' 'libxkbcommon' 'seatd' 'pixman')
+makedepends=('git' 'meson>=0.55.0' 'cmake' 'wayland-protocols' 'xorgproto')
 
-source=(git+https://github.com/StardustXR/stardust-xr.git#branch=dev)
+source=(git+https://github.com/StardustXR/stardust-xr.git)
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	cd "$srcdir/$_pkgname"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+	cd "$srcdir/$_pkgname"
+	git submodule init
+	git submodule update
 }
 
 build() {
@@ -28,6 +34,5 @@ build() {
 }
 
 package() {
-	#meson install -C build --destdir "$pkgdir" --skip-subprojects
 	meson install -C build --destdir "$pkgdir" --skip-subprojects
 }

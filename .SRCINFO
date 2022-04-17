@@ -1,7 +1,7 @@
 pkgbase = stardust-xr-git
 	pkgdesc = Reference server implementation for Stardust XR using StereoKit
-	pkgver = r656.ec7be6b
-	pkgrel = 2
+	pkgver = r734.3261dc7
+	pkgrel = 1
 	url = https://stardustxr.org/
 	arch = x86_64
 	arch = aarch64
@@ -9,23 +9,20 @@ pkgbase = stardust-xr-git
 	license = GPL2
 	makedepends = git
 	makedepends = meson>=0.55.0
-	makedepends = ninja
 	makedepends = cmake
 	makedepends = wayland-protocols
 	makedepends = xorgproto
+	depends = libstardustxr
 	depends = openxr>=1.0.16
 	depends = fontconfig
 	depends = libegl
 	depends = libgl
-	depends = flatbuffers>=1.12.0
-	depends = libstardustxr
 	depends = xcb-util-wm
-	depends = xcb-util-errors
 	depends = libxkbcommon
 	depends = seatd
 	depends = pixman
 	provides = stardust-xr
-	source = git+https://github.com/StardustXR/stardust-xr.git#branch=dev
+	source = git+https://github.com/StardustXR/stardust-xr.git
 	sha256sums = SKIP
 
 pkgname = stardust-xr-git
