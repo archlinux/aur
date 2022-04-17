@@ -2,9 +2,9 @@
 # Contributor: Det <nimetonmaili gmail a-dot com>
 
 pkgname=biglybt-extreme-mod
-pkgver=2.9.0.0
+pkgver=3.0.0.0
 _ver=${pkgver/b*/}
-_modver=20211119
+_modver=20220226
 pkgrel=1
 pkgdesc="A modded version of the BiglyBT client with multiple spoofing capabilities"
 arch=('x86_64')
@@ -15,10 +15,10 @@ optdepends=('jna' 'libappindicator-gtk3' 'ttf-dejavu')
 options=('!strip')
 install=${pkgname}.install
 source=("GitHub_BiglyBT_Installer_${pkgver}.sh::https://github.com/BiglySoftware/BiglyBT/releases/download/v$_ver/GitHub_BiglyBT_Installer.sh"
-  "BiglyBT_${pkgver}_${_modver}.zip::http://www.sb-innovation.de/attachment.php?attachmentid=21083&d=1637292957")
+  "BiglyBT_${pkgver}_${_modver}.zip::https://www.sb-innovation.de/attachment.php?attachmentid=21219&d=1645871561")
 noextract=($(basename ${source[1]}))
-sha512sums=('5049f361fe572b184bbf69dfc21994e7ab8768246682b98534beff100abbbc46bdf503412c059df0b16fed9c34b8fab2ff43a47c8f0bbef69f7e63aeda822639'
-            '1b637d4b55e43146b418945d6825994ead5d1fa59368843f1c41ae83f8b51f84fc9cbc6e31e315b94dce3ff5c7f103e2baae86e4de4e564c496896ed31f7d7d6')
+sha512sums=('543ea77d804d659e6d5e8ceef043b8f442c0f10cef03279aefb513eb9bee6ab5c12900984e9680327445fedf50620d502bf4bfa3325fe360ef3823f0cb6f05f4'
+            '451b2a6c9f353f83c57c6ef35d930782c98a71ee57906ce9ad2d37471a95aa31c85f74c58fdd16c12c13e62ec554d8c24096d50c84e53619585bf217cb20e598')
 
 package() {
   if [[ ! -f /usr/bin/javac ]]; then
