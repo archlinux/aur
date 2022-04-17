@@ -1,7 +1,7 @@
 # Maintainer: Buce <dmbuce@gmail.com>
 
 pkgname=buceutils-git
-pkgver=0.r75.g9fcdf21
+pkgver=0.r116.g991ef6f
 pkgver() {
   cd "$srcdir/$pkgname"
   if ! git describe --tags 2>/dev/null; then
@@ -32,25 +32,22 @@ depends=(
   perl
   perl-net-cidr-lite
   perl-spreadsheet-writeexcel
-  alsa-utils
   xorg-xrandr
   xclip
   awk
   imagemagick
+  tmux
   python
-  restic
+  python-transliterate
 )
 makedepends=('git')
 provides=(buceutils)
 conflicts=(buceutils)
 replaces=()
 backup=(
-	etc/resticbackup.d/config
-	etc/resticbackup.d/exclude
-	etc/resticbackup.d/password
+	etc/bashrc.d/apropos.sh
 	etc/bashrc.d/functions.sh
 	etc/bashrc.d/basic.sh
-	etc/bashrc.d/restic.sh
 	etc/bashrc.d/colorterm.sh
 	etc/bashrc.d/root.sh
 	etc/bashrc.d/login.sh
