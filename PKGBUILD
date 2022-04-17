@@ -5,7 +5,7 @@ _pkgname=libstardustxr
 pkgver=r274.bab53a2
 pkgrel=1
 
-pkgdesc="Client/Server libraries for Stardust XR"
+pkgdesc="Client/Server libraries for Stardust XR, now including Fusion"
 arch=('x86_64' 'aarch64' 'armv7l')
 url="https://stardustxr.org/"
 license=('MIT')
@@ -26,7 +26,7 @@ pkgver() {
 }
 
 build() {
-	arch-meson "libstardustxr" build -Dfusion=false
+	arch-meson "libstardustxr" build -Dclient=true -Dserver=true -Dfusion=true
 	meson compile -C build
 }
 

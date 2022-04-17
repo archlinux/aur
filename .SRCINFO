@@ -1,5 +1,5 @@
 pkgbase = libstardustxr-git
-	pkgdesc = Client/Server libraries for Stardust XR
+	pkgdesc = Client/Server libraries for Stardust XR, now including Fusion
 	pkgver = r274.bab53a2
 	pkgrel = 1
 	url = https://stardustxr.org/
