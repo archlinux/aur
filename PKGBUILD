@@ -8,6 +8,7 @@ url=https://github.com/HEnquist/camillagui-backend
 arch=(any)
 license=(GPL)
 depends=(camilladsp python-aiohttp python-pycamilladsp python-pycamilladsp-plot)
+makedepends=(unzip)
 install=camillagui.install
 source=(https://github.com/HEnquist/camillagui-backend/releases/download/v$pkgver/camillagui.zip)
 sha256sums=(6c70a8950a9dc3c8752efa77d60ec863035913d7775411034dd21c8b9a603bf3)
