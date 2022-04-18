@@ -80,7 +80,7 @@ if [[ $CLI == "YES" ]] ; then
 else
   pkgname="emacs-git"
 fi
-pkgver=29.0.50.155758
+pkgver=29.0.50.155762
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
@@ -92,7 +92,8 @@ makedepends=('git')
 provides=('emacs' 'emacs-pretest' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
 conflicts=('emacs' 'emacs-pretest' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
 replaces=('emacs' 'emacs-pretest' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-seq' 'emacs-nox')
-source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
+#source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
+source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git")
 options=(!strip)
 install=emacs-git.install
 b2sums=('SKIP')
@@ -208,9 +209,9 @@ pkgver() {
 # There is no need to run autogen.sh after first checkout.
 # Doing so, breaks incremental compilation.
 prepare() {
+  cd "$srcdir/emacs-git"
+  [[ -x configure ]] || ( ./autogen.sh git && ./autogen.sh autoconf )
   mkdir -p "$srcdir/emacs-git/build"
-  cd "$srcdir/emacs-git/build"
-  [[ -x ../configure ]] || ( ../autogen.sh git && ../autogen.sh autoconf )
 }
 
 if [[ $CHECK == "YES" ]]; then
