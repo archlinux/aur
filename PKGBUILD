@@ -2,7 +2,7 @@
 
 pkgname=todoman-git
 _pkgname=todoman
-pkgver=4.0.0.post15+gcaa5d86
+pkgver=4.1.1.dev19+g249f124
 pkgrel=1
 pkgdesc="A simple CalDav-based todo manager."
 arch=("any")
@@ -10,6 +10,9 @@ url="https://github.com/pimutils/todoman"
 license=('ISC')
 makedepends=(
   git
+  python-build
+  python-installer
+  python-setuptools-scm
 )
 depends=(
   python-atomicwrites
@@ -19,7 +22,6 @@ depends=(
   python-humanize
   python-icalendar
   python-parsedatetime
-  python-setuptools-scm
   python-tabulate
   python-urwid
   python-xdg
@@ -36,12 +38,12 @@ md5sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  python setup.py --version
+  python -m setuptools_scm 2> /dev/null
 }
 
 build() {
   cd "$srcdir/$_pkgname"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
@@ -49,12 +51,12 @@ check() {
 
   export PYTHONPATH="${PYTHONPATH%:}:${PWD}"
   export TZ=UTC
-  py.test
+  python -m pytest
 }
 
 package() {
   cd "$srcdir/$_pkgname"
-  python setup.py install --root="$pkgdir" --optimize=1
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm 644 config.py.sample \
     "$pkgdir/usr/share/doc/todoman/examples/config.py"
