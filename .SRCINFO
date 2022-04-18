@@ -1,0 +1,21 @@
+pkgbase = ruuvitag-listener-bin
+	pkgdesc = Listen to RuuviTag Bluetooth LE sensor measurements and output using InfluxDB line protocol.
+	pkgver = 0.5.5
+	pkgrel = 1
+	url = https://github.com/lautis/ruuvitag-listener
+	install = ruuvitag-listener-bin.install
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	source_x86_64 = https://github.com/lautis/ruuvitag-listener/releases/download/v0.5.5/ruuvitag-listener-v0.5.5-x86_64-unknown-linux-gnu.tar.gz
+	sha256sums_x86_64 = 89d143ce486cdc2946321de19e8876bd1d68b662df38c9190a8587994dba6497
+	source_armv6h = https://github.com/lautis/ruuvitag-listener/releases/download/v0.5.5/ruuvitag-listener-v0.5.5-arm-unknown-linux-gnueabi.tar.gz
+	sha256sums_armv6h = 62817f44667c0ccad94028757a00b2e9b5bb0305a16737d06ebe2d1ed239c594
+	source_armv7h = https://github.com/lautis/ruuvitag-listener/releases/download/v0.5.5/ruuvitag-listener-v0.5.5-armv7-unknown-linux-gnueabihf.tar.gz
+	sha256sums_armv7h = 2f17d0d821f81e8e0a1ab733ffd8ff6eff693d04d2108197bdbf8eed2fe4850c
+	source_aarch64 = https://github.com/lautis/ruuvitag-listener/releases/download/v0.5.5/ruuvitag-listener-v0.5.5-aarch64-unknown-linux-gnu.tar.gz
+	sha256sums_aarch64 = 48a8c0974af7ba4903d173e324956c2ade9b4eb81e3b1869bd103902037f99cb
+
+pkgname = ruuvitag-listener-bin
