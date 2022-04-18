@@ -1,0 +1,13 @@
+pkgbase = radio-cli-bin
+	pkgdesc = A simple radio cli for listening to your favourite streams from the console
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/margual56/radio-cli
+	arch = x86_64
+	license = GPL-2
+	provides = radio-cli
+	conflicts = radio-cli
+	source = https://github.com/margual56/radio-cli.git/releases/download/v0.2.0/radio-cli-0.2.0-x86_64.tar.gz
+	sha256sums = e3e03328faa28bdd0823667ccf9924e99ca3c96c0fc0777c32148e0a7a995dd9
+
+pkgname = radio-cli-bin
