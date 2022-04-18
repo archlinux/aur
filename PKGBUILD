@@ -4,13 +4,13 @@
 
 pkgname=python-vispy
 pkgver=0.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc='A high-performance interactive 2D/3D data visualization library.'
 arch=('any')
-url='http://vispy.org'
+url='https://vispy.org'
 license=('BSD')
 depends=('python-numpy' 'python-hsluv' 'python-freetype-py' 'python-kiwisolver')
-makedepends=('python-setuptools' 'cython' 'npm')
+makedepends=('python-setuptools' 'python-pip' 'cython' 'npm')
 optdepends=('ipython: ipython-static'
             'python-pyglet: pyglet'
             'python-pyqt5: pyqt5'
