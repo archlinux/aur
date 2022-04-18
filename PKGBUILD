@@ -80,7 +80,7 @@ if [[ $CLI == "YES" ]] ; then
 else
   pkgname="emacs-git"
 fi
-pkgver=29.0.50.155541
+pkgver=29.0.50.155758
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
@@ -190,7 +190,7 @@ if [[ $GPM == "YES" ]]; then
   fi
 fi
 
-if [[ $DOCS_PDF == "YES" ]]; then
+if [[ $DOCS_PDF == "YES" ]] && [[ ! -d '/usr/local/texlive' ]]; then
   makedepends+=( 'texlive-core' );
 fi
 ################################################################################
@@ -208,19 +208,20 @@ pkgver() {
 # There is no need to run autogen.sh after first checkout.
 # Doing so, breaks incremental compilation.
 prepare() {
-  cd "$srcdir/emacs-git"
-  [[ -x configure ]] || ( ./autogen.sh git && ./autogen.sh autoconf )
+  mkdir -p "$srcdir/emacs-git/build"
+  cd "$srcdir/emacs-git/build"
+  [[ -x ../configure ]] || ( ../autogen.sh git && ../autogen.sh autoconf )
 }
 
 if [[ $CHECK == "YES" ]]; then
 check() {
-  cd "$srcdir/emacs-git"
+  cd "$srcdir/emacs-git/build"
   make check
 }
 fi
 
 build() {
-  cd "$srcdir/emacs-git"
+  cd "$srcdir/emacs-git/build"
 
   local _conf=(
     --prefix=/usr
@@ -303,7 +304,7 @@ _conf+=('--program-transform-name=s/\([ec]tags\)/\1.emacs/')
 
 ################################################################################
 
-  ./configure "${_conf[@]}"
+  ../configure "${_conf[@]}"
 
   # Using "make" instead of "make bootstrap" enables incremental
   # compiling. Less time recompiling. Yay! But you may
@@ -322,7 +323,7 @@ _conf+=('--program-transform-name=s/\([ec]tags\)/\1.emacs/')
   # You may need to run this if 'loaddefs.el' files become corrupt.
   #cd "$srcdir/emacs-git/lisp"
   #make autoloads
-  #cd ../
+  #cd ../build
 
   # Optional documentation formats.
   if [[ $DOCS_HTML == "YES" ]]; then
@@ -335,7 +336,7 @@ _conf+=('--program-transform-name=s/\([ec]tags\)/\1.emacs/')
 }
 
 package() {
-  cd "$srcdir/emacs-git"
+  cd "$srcdir/emacs-git/build"
 
   make DESTDIR="$pkgdir/" install
 
