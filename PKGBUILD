@@ -1,4 +1,4 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: ultraviolet <ultravioletnanokitty@gmail.com>
 
 pkgname=mediasmartserverd-git
 pkgver=0.5.6.r6.bc30e0b
@@ -25,11 +25,6 @@ build() {
 	cd "$srcdir/${pkgname%-git}"
 	make
 }
-
-#check() {
-#	cd "$srcdir/${pkgname%-VCS}"
-#	make -k check
-#}
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
