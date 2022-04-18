@@ -1,14 +1,14 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-tree-sitter-git
-pkgver=r1811.58dd95f4
+pkgver=r2567.a8bce851
 pkgrel=1
 pkgdesc="Neovim tree-sitter configurations and abstraction layer"
 arch=('any')
 url="https://github.com/nvim-treesitter/nvim-treesitter"
 license=('Apache')
 groups=('neovim-plugins')
-depends=('neovim>=0.5.0' 'tree-sitter')
+depends=('neovim' 'tree-sitter')
 makedepends=('git')
 optdepends=(
 	'tree-sitter-bash: Bash shell grammar'
@@ -56,7 +56,7 @@ install="$pkgname.install"
 source=("$pkgname::git+$url"
         'no_install.patch')
 sha256sums=('SKIP'
-            '797053e726692b6017f5c121f433213feb717bdb718798abaf7c73d9818ae941')
+            'a186c5291d498a1fe598ae06ca81491f631a25f9c7f80c42999afdb43885ef64')
 
 pkgver() {
 	cd "$pkgname"
@@ -71,7 +71,7 @@ prepare() {
 
 package() {
 	cd "$pkgname"
-	find after autoload doc ftdetect lua plugin queries \
-		-type f -exec install -Dm 644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
-	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	find autoload doc lua plugin queries \
+		-type f -exec install -Dm644 '{}' "$pkgdir/usr/share/nvim/runtime/{}" \;
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }

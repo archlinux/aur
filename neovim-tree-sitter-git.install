@@ -1,6 +1,6 @@
 post_install() {
 	echo ':: Please consult upstream documentation on how to set up this plugin.'
-	echo ':: A copy has been installed under /usr/share/neovim-tree-sitter-git/README.md.'
+	echo ':: A copy has been installed under /usr/share/doc/neovim-tree-sitter-git/README.md.'
 	echo ''
 	echo 'NOTICE'
 	echo '----------'

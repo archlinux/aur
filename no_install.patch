@@ -1,22 +1,12 @@
 diff --git a/lua/nvim-treesitter.lua b/lua/nvim-treesitter.lua
-index af46bd0..2819d01 100644
+index 0165b53..5784692 100644
 --- a/lua/nvim-treesitter.lua
 +++ b/lua/nvim-treesitter.lua
-@@ -2,7 +2,7 @@ if not pcall(require, "vim.treesitter.languagetree") then
-   error "nvim-treesitter requires a more recent Neovim nightly version!"
- end
- 
--local install = require "nvim-treesitter.install"
-+-- local install = require "nvim-treesitter.install"
- local utils = require "nvim-treesitter.utils"
- local ts_utils = require "nvim-treesitter.ts_utils"
- local info = require "nvim-treesitter.info"
-@@ -15,7 +15,7 @@ require "nvim-treesitter.query_predicates"
+@@ -12,7 +12,6 @@ require "nvim-treesitter.query_predicates"
  local M = {}
  
  function M.setup()
 -  utils.setup_commands("install", install.commands)
-+--  utils.setup_commands("install", install.commands)
    utils.setup_commands("info", info.commands)
    utils.setup_commands("configs", configs.commands)
    configs.init()
