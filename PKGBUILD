@@ -1,14 +1,14 @@
 # Maintainer: Jah Way <jahway603 at protonmail dot com>
 
 pkgname=astrolog
-pkgver=7.30
+pkgver=7.40
 pkgrel=1
 pkgdesc='A 100% freeware astrology program'
 url='http://www.astrolog.org'
 arch=('x86_64')
 license=('GPL2')
-source=("$url/ftp/ast73src.zip")
-sha256sums=('daf1efea87fc424de8a8416d39d4759ffdb86df9410606ac0a55700614d2deba')
+source=("$url/ftp/ast74src.zip")
+sha256sums=('083fa4ef9b406f2437f15dc81396958f3008bfc54ba75c0994ff66e9bec765b6')
 
 build() {
   cc -c -O *.cpp
