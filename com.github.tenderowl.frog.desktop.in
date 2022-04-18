@@ -1,0 +1,16 @@
+[Desktop Entry]
+Name=Frog
+GenericName=Text extraction tool
+Comment=Extract text from any image, video or web page
+Exec=env XDG_DATA_HOME="\\$HOME/.local/share/" frog
+Icon=com.github.tenderowl.frog
+Terminal=false
+Type=Application
+Categories=GTK;Utility;Office;
+StartupNotify=true
+Keywords=OCR;Text;Extraction;
+Actions=extractToClipboard;
+
+[Desktop Action extractToClipboard]
+Name=Extract Text to the Clipboard
+Exec=env XDG_DATA_HOME="\\$HOME/.local/share/" frog --extract_to_clipboard
