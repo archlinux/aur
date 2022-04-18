@@ -9,9 +9,7 @@ pkgbase = 2p-kt
 	depends = java-runtime
 	depends = bash
 	noextract = 2p-kt-0.20.2.tar.gz
-	source = 2p-repl-0.20.2.jar::https://github.com/tuProlog/2p-kt/releases/download/0.20.2/2p-repl-0.20.2-redist.jar,
-	source = 2p-ide-0.20.2.jar::https://github.com/tuProlog/2p-kt/releases/download/0.20.2/2p-ide-0.20.2-redist.jar
-	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855,
+	source = 2p-repl-0.20.2.jar::https://github.com/tuProlog/2p-kt/releases/download/0.20.2/2p-repl-0.20.2-redist.jar
 	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 
 pkgname = 2p-kt
