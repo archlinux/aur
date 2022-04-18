@@ -2,8 +2,8 @@
 # Based on i3-gaps-next-git PKGBUILD 
 
 pkgname=i3-gaps-rounded-git
-pkgver=4.20.1.r82.gad7c74ac
-pkgrel=2
+pkgver=4.20.1.r84.g8e5eed5b
+pkgrel=1
 pkgdesc='A fork of i3wm tiling window manager with more features, including gaps and rounded corners'
 arch=('i686' 'x86_64')
 url='https://github.com/FinnHering/i3'
@@ -17,10 +17,10 @@ makedepends=('git' 'bison' 'flex' 'asciidoc' 'xmlto' 'meson')
 optdepends=('i3lock: For locking your screen.'
             'i3status: To display system information with a bar.')
 options=('docs')
-source=('i3-gaps-rounded::git+https://github.com/FinnHering/i3.git')
+source=('i3-gaps-round::git+https://github.com/FinnHering/i3#branch=main')
 sha1sums=('SKIP')
 
-_gitname='i3-gaps-rounded'
+_gitname='i3-gaps-round'
 
 pkgver() {
   cd "$srcdir/$_gitname"

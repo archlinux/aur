@@ -1,7 +1,7 @@
 pkgbase = i3-gaps-rounded-git
 	pkgdesc = A fork of i3wm tiling window manager with more features, including gaps and rounded corners
-	pkgver = 4.20.1.r82.gad7c74ac
-	pkgrel = 2
+	pkgver = 4.20.1.r84.g8e5eed5b
+	pkgrel = 1
 	url = https://github.com/FinnHering/i3
 	arch = i686
 	arch = x86_64
@@ -33,7 +33,7 @@ pkgbase = i3-gaps-rounded-git
 	conflicts = i3-gaps-git
 	conflicts = i3-gaps
 	options = docs
-	source = i3-gaps-rounded::git+https://github.com/FinnHering/i3.git
+	source = i3-gaps-round::git+https://github.com/FinnHering/i3#branch=main
 	sha1sums = SKIP
 
 pkgname = i3-gaps-rounded-git
