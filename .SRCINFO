@@ -1,0 +1,15 @@
+pkgbase = plymouth-theme-dotlock
+	pkgdesc = A simple plymouth theme with two-step module.
+	pkgver = 1.1
+	pkgrel = 1
+	url = https://github.com/vikashraghavan/dotLock
+	install = plymouth-theme-dotlock.install
+	arch = any
+	license = custom
+	depends = plymouth
+	source = dotLock.tar.xz::https://github.com/vikashraghavan/dotLock/releases/download/v1.1/dotLock.tar.xz
+	source = plymouth-theme-dotlock.install
+	md5sums = e9611fcaf1813d7f18c344401be993e6
+	md5sums = bcccf5eab07c8258a43127b55981e6c6
+
+pkgname = plymouth-theme-dotlock
