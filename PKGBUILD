@@ -1,6 +1,6 @@
 # Maintainer: Cobra <najahannah [at] gmail [dot] com>
 pkgname=portfolio
-pkgver=0.57.1
+pkgver=0.57.2
 pkgrel=1
 pkgdesc="Track your portfolio performance (finance)"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ license=('EPL')
 #depends=('java-runtime>=11' 'java-runtime<15' 'webkit2gtk')
 depends=('java-runtime=11' 'webkit2gtk')
 #makedepends=('maven' 'java-runtime>=11' 'archlinux-java-run' 'gendesk')
-makedepends=('maven' 'java-runtime=11' 'archlinux-java-run' 'gendesk')
+makedepends=('maven' 'archlinux-java-run' 'gendesk')
 
 _DEST="/usr/share/portfolio"
 
@@ -17,7 +17,7 @@ _DEST="/usr/share/portfolio"
 [ "$CARCH" = "x86_64" ] && _platform="x86_64"
 
 source=("https://github.com/buchen/portfolio/archive/$pkgver.tar.gz")
-sha1sums=('56a827c48db2b875c6bb0c4757923d4f84e2257a')
+sha1sums=('40a0f2d2e6d2fadf475fc89f5c944f06942f6178')
 
 prepare() {
 	gendesk -f -n --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
@@ -50,7 +50,7 @@ package() {
     cp -r ./* ${pkgdir}${_DEST}
     chmod a+x ${pkgdir}${_DEST}/PortfolioPerformance
 
-    msg2 "Symlink /usr/bin/portfolio -> ${_DEST}/PortfolioPerformance"
+    #msg2 "Symlink /usr/bin/portfolio -> ${_DEST}/PortfolioPerformance"
     
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "${_DEST}/PortfolioPerformance" "${pkgdir}/usr/bin/portfolio"
