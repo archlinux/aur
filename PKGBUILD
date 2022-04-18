@@ -10,7 +10,7 @@ license=('Apache-2.0')
 depends=('python' 'libusb')
 makedepends=('python' 'python-setuptools-scm' 'libusb')
 source=("$pkgname-$pkgver::https://github.com/pyocd/libusb-package/archive/v$pkgver.tar.gz")
-sha256sums=('851a7a6a49330e9d4bf51ce9507de49a3cc7c8c25b8c09f1cdd496a8dfade3c1')
+sha256sums=('d70bd5832b033e462b2cd938db940c69ae9dbe604d48bc8831bbfb6d641b9c05')
 
 _pkgname=libusb-package
 
