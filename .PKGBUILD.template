@@ -1,4 +1,4 @@
-# Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer:  Giovanni Ciatto <giovanni.ciatto at gmail dot com>
 
 pkgname=2p-kt
 pkgver=__VERSION__
@@ -15,7 +15,7 @@ sha256sums=('__DIGEST__')
 
 package() {
   echo "#!/bin/sh
-  exec /usr/bin/java -jar '/usr/share/java/${pkgname}/2p-repl.jar' \"\$@\"" > "2p"
-  install -Dm755 2p-${pkgver}.jar "${pkgdir}/usr/share/java/${pkgname}/2p-repl.jar"
+exec /usr/bin/java -jar '/usr/share/java/${pkgname}/2p-repl.jar' \"\$@\"" > "2p"
+  install -Dm755 2p-repl-${pkgver}.jar "${pkgdir}/usr/share/java/${pkgname}/2p-repl.jar"
   install -Dm755 2p "${pkgdir}/usr/bin/2p"
 }
