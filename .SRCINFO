@@ -1,13 +1,13 @@
 pkgbase = onlykey
 	pkgdesc = OnlyKey Chrome Desktop App
-	pkgver = 5.3.4
+	pkgver = 5.3.6
 	pkgrel = 1
 	url = https://onlykey.io/
 	arch = x86_64
 	license = custom
-	source = https://github.com/trustcrypto/OnlyKey-App/releases/download/v5.3.4/OnlyKey_5.3.4_amd64.deb
+	source = https://github.com/trustcrypto/OnlyKey-App/releases/download/v5.3.6/OnlyKey_5.3.6_amd64.deb
 	source = 49-onlykey.rules
-	sha256sums = 09eade68cc05909b8657db123c14a35668289dcfbcb9227d53f5e7e3c6dbfdc5
+	sha256sums = d5e223581b459c869a2f2d4c84cd77f52b851dced5c87dea5f8d93ec1cecc7c4
 	sha256sums = 6bb0a54748ec6ce1a1186b41f45a6bfc1363998c1a88722a8f1518c3278aabef
 
 pkgname = onlykey
