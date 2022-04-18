@@ -1,6 +1,6 @@
 # Maintainer: Lev Levitsky <levlev at mail.ru>
 pkgname=diann
-pkgver=1.8
+pkgver=1.8.1
 pkgrel=1
 epoch=
 pkgdesc="DIA-NN - a universal software for data-independent acquisition (DIA) proteomics data processing"
@@ -22,8 +22,8 @@ changelog=
 source=("https://github.com/vdemichev/DiaNN/releases/download/${pkgver}/${pkgname}_${pkgver}.deb"
         "https://raw.githubusercontent.com/vdemichev/DiaNN/master/LICENSE.txt")
 noextract=()
-sha256sums=("03efec31370b7be0cba9bcb60a99dacb42a818af031fd712df76b493c966e422"
-            "SKIP")
+sha256sums=('2c38201b5e04e9e0df621ba053bbad93d70dc9b23bd6e0b78a1f6b22315cc1c0'
+            'SKIP')
 validpgpkeys=()
 
 package() {
