@@ -21,8 +21,8 @@ depends=('gambas3-runtime'
 makedepends=('gambas3-dev-tools' 'gcc' 'imagemagick')
 source=("https://github.com/i-nex/I-Nex/archive/${pkgver}.tar.gz"
         "Fix-error-if-proc-mtrr-doesn-t-exist.patch"
-		"Fix-libcpuid-SOVERSION.patch"
-		"Adapt-for-new-libcpuid-structure.patch"
+        "Fix-libcpuid-SOVERSION.patch"
+        "Adapt-for-new-libcpuid-structure.patch"
         "Fix-for-gambas-compiler-change.patch"
         "Hack-for-weird-json-issue.patch"
 )
@@ -33,24 +33,13 @@ sha256sums=('81236eb729fbd29b356762c0883fe295cf1181cc7d14f00b1dfcceb517b47960'
             'ed09156fda0e85f9135e4cb60a93b2462ed2f7d42326b3349fd7e5abade8b85e'
             '377a045e13f3cdbc4c107cdaaa5cfe373788a0b716f3cbd728cd30b23e8f7233')
 conflicts=('i-nex-git')
-backup=('etc/i-nex/Database/i2c/devices.json'
-        'etc/i-nex/Database/A6.json'
-        'etc/i-nex/Database/amd.json'
-        'etc/i-nex/Database/atom.json'
-        'etc/i-nex/Database/i3.json'
-        'etc/i-nex/Database/i5.json'
-        'etc/i-nex/Database/i7.json'
-        'etc/i-nex/Database/intel_Core_2_Duo.json'
-        'etc/i-nex/Database/intel.json'
-        'etc/i-nex/Database/Opteron.json'
-        'etc/i-nex/Database/Xeon.json')
 
 prepare() {
     cd "${srcdir}/I-Nex-${pkgver}"
 
-	patch -Np1 -i "${srcdir}/Fix-error-if-proc-mtrr-doesn-t-exist.patch"
-	patch -Np1 -i "${srcdir}/Fix-libcpuid-SOVERSION.patch"
-	patch -Np1 -i "${srcdir}/Adapt-for-new-libcpuid-structure.patch"
+    patch -Np1 -i "${srcdir}/Fix-error-if-proc-mtrr-doesn-t-exist.patch"
+    patch -Np1 -i "${srcdir}/Fix-libcpuid-SOVERSION.patch"
+    patch -Np1 -i "${srcdir}/Adapt-for-new-libcpuid-structure.patch"
     patch -Np1 -i "${srcdir}/Fix-for-gambas-compiler-change.patch"
     patch -Np1 -i "${srcdir}/Hack-for-weird-json-issue.patch"
 
