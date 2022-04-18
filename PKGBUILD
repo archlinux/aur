@@ -1,16 +1,13 @@
 # Maintainer: Alec Mev <alec@mev.earth>
 
 pkgname=todoist-nativefier
-pkgver=2021.06.30
-pkgrel=2
+pkgver=2022.03.18
+pkgrel=1
 pkgdesc='Todoist in shared Electron runtime'
 arch=('x86_64')
 url='https://todoist.com'
 license=('MIT')
-# Would be nice to use the latest Electron, but, for example, I've encountered
-# an issue where new windows get stuck on about:blank in Electron 13, but not in
-# Electron 12, the latest supported by Nativefier.
-_electronv=
+_electronv=17 # https://bugs.archlinux.org/task/74328
 depends=("electron${_electronv}")
 makedepends=(
   'curl'
@@ -44,7 +41,7 @@ build() {
     --name "${_name}" \
     --icon "${pkgname}.png" \
     --maximize \
-    --user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0" \
+    --user-agent "safari" \
     --single-instance \
     --verbose \
     https://todoist.com
