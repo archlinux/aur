@@ -1,7 +1,7 @@
 pkgbase = buckets-bin
 	pkgdesc = Private budgeting with the envelope budgeting method
-	pkgver = 0.66.0
-	pkgrel = 2
+	pkgver = 0.66.2
+	pkgrel = 1
 	url = https://www.budgetwithbuckets.com/
 	arch = x86_64
 	license = custom: commercial
@@ -10,7 +10,7 @@ pkgbase = buckets-bin
 	depends = libxss
 	depends = nss
 	noextract = Buckets_0.66.0_amd64.deb
-	source = https://github.com/buckets/application/releases/download/v0.66.0/Buckets_0.66.0_amd64.deb
-	sha256sums = 1b73b93ca1454a394c93e417933cf22a0e91804fc68b71b53b0d925fac3db9fc
+	source = https://github.com/buckets/application/releases/download/v0.66.2/Buckets_0.66.2_amd64.deb
+	sha256sums = 16f784c00a40c9344a2a5da0e8679040fbb1bd3dbff86a6a945ddf4931c72575
 
 pkgname = buckets-bin
