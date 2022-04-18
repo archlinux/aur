@@ -1,7 +1,7 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=darkman
-pkgver=1.1.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="Framework for dark-mode and light-mode transitions on Linux desktop."
 arch=('x86_64' 'aarch64')
