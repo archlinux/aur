@@ -1,0 +1,15 @@
+pkgbase = rust-drawing-git
+	pkgdesc = Rust drawing allows you to draw incredible and admirable art in your terminal
+	pkgver = r2.28a2f5e
+	pkgrel = 1
+	url = https://github.com/SkwalExe/rust-drawing
+	install = rust-drawing.install
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	provides = rust-drawing
+	source = git+https://github.com/SkwalExe/rust-drawing
+	md5sums = SKIP
+
+pkgname = rust-drawing-git
