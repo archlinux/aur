@@ -8,7 +8,7 @@
 
 pkgname=tenacity-wxgtk3-git
 pkgver=r13926.g0665614b8
-pkgrel=2
+pkgrel=1
 pkgdesc="An easy-to-use multi-track audio editor and recorder, forked from Audacity - stable wxgtk3"
 arch=(i686 x86_64)
 url="https://tenacityaudio.org"
@@ -21,7 +21,7 @@ makedepends=(git cmake clang libsoup libnotify gstreamer gst-plugins-bad-libs
              flac libogg libsndfile libvorbis ffmpeg)
 optdepends=('ffmpeg4.4: additional import/export capabilities')
 provides=(tenacity)
-conflicts=(tenacity tenacity-git)
+conflicts=(tenacity)
 source=("git+https://git.sr.ht/~tenacity/tenacity")
 sha256sums=('SKIP')
 
