@@ -1,0 +1,20 @@
+pkgbase = loop-archive-git
+	pkgdesc = A program that archives items from a source location to a destination location while maintaining a fixed size on the destination by deleting oldest items first.
+	pkgver = master
+	pkgrel = 1
+	url = https://github.com/directed-graph/loop-archive
+	arch = x86_64
+	license = MIT
+	checkdepends = bazel
+	checkdepends = protobuf
+	checkdepends = python-protobuf
+	makedepends = bazel
+	makedepends = git
+	makedepends = protobuf
+	makedepends = python-protobuf
+	provides = loop-archive
+	conflicts = loop-archive
+	source = loop-archive-git::git+https://github.com/directed-graph/loop-archive.git
+	md5sums = SKIP
+
+pkgname = loop-archive-git
