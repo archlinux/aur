@@ -76,6 +76,10 @@ source=(
   # https://tracker.ceph.com/issues/53441
   # https://github.com/ceph/ceph/pull/44112
   'fix-python310-ssize-macro.patch'
+
+  # RGW string header is missing includes that are required when boost is >=1.75
+  # https://tracker.ceph.com/issues/50924
+  'ceph-16.2.4-rgw-string-missing-includes.patch'
 )
 sha512sums=('eab047e646970d444acf1064d98237b8b1677fb16b5e771082d55880f7bc6d8bdb278c2fe514c82ae12c438878d9ecea29139fa6b8d890f9f737138f10fb740c'
             '4354001c1abd9a0c385ba7bd529e3638fb6660b6a88d4e49706d4ac21c81b8e829303a20fb5445730bdac18c4865efb10bc809c1cd56d743c12aa9a52e160049'
@@ -88,7 +92,8 @@ sha512sums=('eab047e646970d444acf1064d98237b8b1677fb16b5e771082d55880f7bc6d8bdb2
             '2e62020cce33e3152cdb9a128023ee673124c4bcfdb9ee17718891ba5c9a16d98eb03ed06fe7dc7833c98487c1c1eb67fadfad1aa2f40c2c648829c86b4caab0'
             '69b058e7b215f85f347b1e4528800ed62635864fa32b24b0f9db97b08fe6576f30d260bf6a19bb5166482f43928feb535e9a6dca8f3c2b3ce7700c108db9fb7a'
             '2234d005df71b3b6013e6b76ad07a5791e3af7efec5f41c78eb1a9c92a22a67f0be9560be59b52534e90bfe251bcf32c33d5d40163f3f8f7e7420691f0f4a222'
-            'cc9f198692ab67ffdf2071c755ab7369fcaa4e1211d1428bb49db3bca5956ae4fbe98ead80a8f691d61e80402b4a06ce9b046a97cb4a3376334f64a4fd16bfb5')
+            'cc9f198692ab67ffdf2071c755ab7369fcaa4e1211d1428bb49db3bca5956ae4fbe98ead80a8f691d61e80402b4a06ce9b046a97cb4a3376334f64a4fd16bfb5'
+            '1c43b1d466b39b6ad46dd5eb9e5dea4708142ba911b6e901daff427de7889c2018e69e39d5c6b40dc6f979e8533114716ad57b25f7dc3d57e012b5c47a5efb16')
 
 # -fno-plt causes linker errors (undefined reference to internal methods)
 # similar issue: https://bugs.archlinux.org/task/54845
