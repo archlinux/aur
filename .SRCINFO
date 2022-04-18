@@ -9,10 +9,9 @@ pkgbase = cov-analysis
 	makedepends = libarchive
 	depends = java-environment
 	options = !strip
-	source_i686 = https://scan.coverity.com/download/cxx/linux32
+	source_i686 = file://cov-analysis-linux-2020.09.tar.gz
 	sha256sums_i686 = d251243887c3219738bae254c6bfcbc24ccde9633a53283587576d333d41bff0
-	source_x86_64 = https://scan.coverity.com/download/cxx/linux64
+	source_x86_64 = file://cov-analysis-linux64-2020.09.tar.gz
 	sha256sums_x86_64 = dd520c04197d58d01e2b3cdaf4fe67d8e9af8e55236e556a19fb0d0a72531223
 
 pkgname = cov-analysis
-
