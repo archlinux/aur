@@ -1,6 +1,6 @@
 pkgbase = band
 	pkgdesc = BAND desktop application
-	pkgver = 1.10.7
+	pkgver = 1.10.10
 	pkgrel = 1
 	url = https://band.us/
 	arch = x86_64
@@ -41,9 +41,9 @@ pkgbase = band
 	depends = at-spi2-core
 	depends = at-spi2-atk
 	depends = alsa-lib
-	source = https://ssl.pstatic.net/cmstatic/desktop/v1.10.7/BAND-1.10.7-amd64.deb
+	source = https://ssl.pstatic.net/cmstatic/desktop/v1.10.10/BAND-1.10.10-amd64.deb
 	source = LICENSE
-	sha256sums = c2062e680c2477e5314c333e91b965419c15154cccc015e10a9291857e49423b
+	sha256sums = c1ed7394c5e6cf010248b241cda9a5249e80930d8c628a5beb15c85ba9422853
 	sha256sums = 263470054abd943b85dd3fa80807b8747d93dcc514cfc64f547e5029cc48d169
 
 pkgname = band
