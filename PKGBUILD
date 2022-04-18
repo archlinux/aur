@@ -2,8 +2,8 @@
 
 _pkgname="holehe"
 pkgname="${_pkgname}-git"
-pkgver=r383.1808bb2
-pkgrel=2
+pkgver=r385.aba9857
+pkgrel=1
 pkgdesc="Efficiently finding registered accounts from emails."
 arch=("any")
 url="https://github.com/megadose/holehe"
