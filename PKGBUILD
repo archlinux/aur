@@ -1,8 +1,8 @@
 # Maintainer: Posi<posi1981@gmail.com>
 pkgname=betterbird-ja-bin
 _pkgname=betterbird
-pkgver=91.8.0
-_build=bb29
+pkgver=91.8.1
+_build=bb30
 pkgrel=1
 pkgdesc="JAPANESE // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
 arch=('x86_64')
@@ -32,6 +32,6 @@ package() {
             "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png
     done
 }
-sha256sums=('f27c495f8a43de00e2c2b8154b17555ebf36bea5246c3f95af36dfaebd033b03'
+sha256sums=('6d5fa5b2cb37342b7dbed81a62a63e79d2f482802865366654a49dca2989fc0a'
             'c99879de5ec8e8f98c2436bf414c7c167762c06df0846b42bb51195d6c8a3031')
 
