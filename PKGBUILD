@@ -1,7 +1,7 @@
 # Maintainer: RoGuBa <roguba@tutanota.com>
 
 pkgname=gr-limesdr-3.9-git
-pkgver=1.0.0
+pkgver=385.57fc840
 pkgrel=1
 pkgdesc='gr-limesdr Plugin for GNURadio >=3.9'
 arch=('x86_64')
@@ -16,7 +16,7 @@ source=("git+$url#branch=master")
 md5sums=('SKIP')
 
 pkgver() {
-  cd gr-limesdr
+  cd "gr-limesdr"
 
   printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
