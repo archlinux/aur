@@ -1,8 +1,8 @@
 pkgbase = lucky-git
-	pkgdesc = A web framework written in Crystal
-	pkgver = 0.22.0.r13.1fb6e57
+	pkgdesc = A Crystal command-line tool for generating new Lucky Web Applications
+	pkgver = r659.9618c44
 	pkgrel = 1
-	url = https://luckyframework.org/
+	url = https://github.com/luckyframework/lucky_cli
 	arch = x86_64
 	license = MIT
 	makedepends = git
@@ -10,8 +10,7 @@ pkgbase = lucky-git
 	depends = shards
 	provides = lucky
 	conflicts = lucky
-	source = git+https://github.com/luckyframework/lucky_cli.git
+	source = lucky-git::git+https://github.com/luckyframework/lucky_cli.git
 	sha256sums = SKIP
 
 pkgname = lucky-git
-

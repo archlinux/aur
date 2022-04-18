@@ -1,0 +1,5 @@
+/lucky-git/
+/src/
+/pkg/
+/*.tar.gz
+/*.pkg.tar.zst
