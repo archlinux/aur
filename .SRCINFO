@@ -1,22 +1,21 @@
 pkgbase = gextractwinicons-git
 	pkgdesc = Extract cursors and icons from MS Windows compatible resource files
-	pkgver = 0.4.2.g77d95e2
+	pkgver = 0.5.0
 	pkgrel = 1
-	url = http://url.muflone.com/gextractwinicons
-	install = gextractwinicons-git.install
+	url = https://www.muflone.com/gextractwinicons
 	arch = any
-	license = GPL2
+	license = GPL3
 	makedepends = git
+	makedepends = python-setuptools
+	makedepends = gettext
 	depends = gtk3
 	depends = gobject-introspection
-	depends = python2-xdg
-	depends = python2-gobject
-	depends = gtk-update-icon-cache
+	depends = python-xdg
+	depends = python-gobject
 	depends = icoutils
 	provides = gextractwinicons
 	conflicts = gextractwinicons
 	source = git+https://github.com/muflone/gextractwinicons.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = gextractwinicons-git
-
