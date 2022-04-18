@@ -1,15 +1,15 @@
-From 561b0358d5832416b0bbb1d81ba7e7f6bd04ffa1 Mon Sep 17 00:00:00 2001
+From 502c7a5bea8f35d9e5bacdf0d4f2e96845ad0240 Mon Sep 17 00:00:00 2001
 From: KokaKiwi <kokakiwi+git@kokakiwi.net>
 Date: Mon, 31 Jan 2022 20:20:40 +0100
 Subject: [PATCH 2/2] archlinux-compat: Remove unused mbedTLS code from libcurl
  usage
 
 ---
- lib/libimhex/source/helpers/net.cpp | 25 +------------------------
- 1 file changed, 1 insertion(+), 24 deletions(-)
+ lib/libimhex/source/helpers/net.cpp | 28 +---------------------------
+ 1 file changed, 1 insertion(+), 27 deletions(-)
 
 diff --git a/lib/libimhex/source/helpers/net.cpp b/lib/libimhex/source/helpers/net.cpp
-index 3201f330..8f333e27 100644
+index a0693534..96f60fea 100644
 --- a/lib/libimhex/source/helpers/net.cpp
 +++ b/lib/libimhex/source/helpers/net.cpp
 @@ -7,8 +7,6 @@
@@ -21,11 +21,14 @@ index 3201f330..8f333e27 100644
  #include <curl/curl.h>
  #include <nlohmann/json.hpp>
  
-@@ -50,20 +48,6 @@ namespace hex {
+@@ -44,23 +42,6 @@ namespace hex {
          return fwrite(contents, size, nmemb, file);
      }
  
--    static CURLcode sslCtxFunction(CURL *ctx, void *sslctx, void *userdata) {
+-    [[maybe_unused]]
+-    static CURLcode sslCtxFunction(CURL *ctx, void *sslctx, void *userData) {
+-        hex::unused(ctx, userData);
+-
 -        auto *cfg = static_cast<mbedtls_ssl_config *>(sslctx);
 -
 -        static mbedtls_x509_crt crt;
@@ -42,7 +45,7 @@ index 3201f330..8f333e27 100644
      int progressCallback(void *contents, curl_off_t dlTotal, curl_off_t dlNow, curl_off_t ulTotal, curl_off_t ulNow) {
          auto &net = *static_cast<Net *>(contents);
  
-@@ -109,13 +93,6 @@ namespace hex {
+@@ -106,13 +87,6 @@ namespace hex {
          curl_easy_setopt(this->m_ctx, CURLOPT_XFERINFOFUNCTION, progressCallback);
          curl_easy_setopt(this->m_ctx, CURLOPT_NOSIGNAL, 1L);
          curl_easy_setopt(this->m_ctx, CURLOPT_NOPROGRESS, 0L);
@@ -56,7 +59,7 @@ index 3201f330..8f333e27 100644
      }
  
      std::optional<i32> Net::execute() {
-@@ -244,4 +221,4 @@ namespace hex {
+@@ -241,4 +215,4 @@ namespace hex {
          return {};
      }
  
@@ -64,5 +67,5 @@ index 3201f330..8f333e27 100644
 \ No newline at end of file
 +}
 -- 
-2.35.1
+2.35.3
 

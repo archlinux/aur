@@ -1,0 +1,17 @@
+# Modules
+/capstone
+/libromfs
+/nativefiledialog
+/pattern_language
+/xdgpp
+/yara
+
+# Package
+/imhex
+/src
+/pkg
+*.pkg.tar.*
+
+# Misc
+.*
+!.gitignore
