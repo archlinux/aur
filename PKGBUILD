@@ -2,12 +2,12 @@
 
 pkgname=yaml-bindings-git
 pkgver=r635.ba55f96
-pkgrel=1
+pkgrel=2
 pkgdesc='Tooling for devicetree validation using YAML and jsonschema'
 arch=(any)
 url="https://github.com/devicetree-org/dt-schema"
 license=('BSD')
-depends=('python' 'python-ruamel-yaml' 'python-jsonschema' 'python-rfc3987')
+depends=('python' 'python-ruamel-yaml' 'python-jsonschema' 'python-rfc3987' 'dtc')
 makedepends=('python-setuptools' 'python-pip')
 source=('yaml-bindings::git+https://github.com/devicetree-org/dt-schema.git')
 sha1sums=('SKIP')
