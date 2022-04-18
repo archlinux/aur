@@ -1,6 +1,6 @@
---- hfaxd/Jobs.c++.Arch	2018-06-27 18:15:01.000000000 -0400
-+++ hfaxd/Jobs.c++	2019-03-29 20:57:09.408205318 -0400
-@@ -2240,11 +2240,17 @@ HylaFAXServer::Jprintf(FILE* fd, const c
+--- hfaxd/Jobs.c++.Arch	2020-07-31 18:37:47.000000000 -0400
++++ hfaxd/Jobs.c++	2022-01-25 15:31:31.103951194 -0500
+@@ -2252,11 +2252,17 @@ HylaFAXServer::Jprintf(FILE* fd, const c
  		break;
  	    case 'l':
  		fprintf(fd, fspec, job.pagelength);
@@ -8,11 +8,11 @@
  	    case 'm':
 -		fprintf(fd, fspec, (const char*) job.modem);
 +		{
-+		const char *p=job.modemused;
++		const char *q,*p=job.modemused;
 +		if (*p == '\0') p=job.modem;
 +		if (0==strcmp(p,"any")) p="";
-+		if ( p[0]=='t' && p[1]=='t' && p[2]=='y') p+=3;
-+		fprintf(fd, fspec, (const char*) p);
++		q=strstr(p,"tty"); /* I'd rather search backwards */
++		fprintf(fd, fspec, q?(q+3):p);
 +		}
  		break;
  	    case 'n':

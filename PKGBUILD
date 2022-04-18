@@ -180,7 +180,7 @@ _opt_pagesize="Letter" # A4, Letter, Legal
 set -u
 pkgname='hylafaxplus'
 _pkgnick='hylafax'
-pkgver='7.0.4'
+pkgver='7.0.5'
 pkgrel='1'
 _sendfaxvsicommit='18fabc74490362cd26690331d546d727c727db25'
 pkgdesc='Enterprise Fax Server'
@@ -211,6 +211,7 @@ optdepends=(
 provides=("hylafax=${pkgver}")
 conflicts=('hylafax')
 # backup=(var/spool/hylafax/bin/{faxrcvd,notify})
+options=('!buildflags') # get rid of Class 1 errors No response to PPS MPS, RSPREC DCN, No receiver protocol, Failure to train remote modem
 install="${_pkgnick}.install"
 # 'var/spool/hylafax/etc/hosts.hfaxd') # This is better handled with a .default file.
 _verwatch=("${url}" 'news/\([0-9\.]\+\)\.php' 'l')
@@ -228,29 +229,29 @@ source=(
   '0006-hylafaxplus-jobfmt-assigned-modem-to-used-modem.patch'
   '1000-hylafaxplus-modem-support.patch'
 )
-md5sums=('af3e1c241965891fedaa5ce2e7b266e7'
+md5sums=('ac8450d7aa8e5d6dd726e4d601702d69'
          '3af38f1eaa4f9fb92cac2f0cf9544321'
          '916f2c100eb2b41ef6b35f96bdb9444a'
-         'c1d54ea1f50abfb3834488b428754714'
+         'ae0a86260ab7ed94187a5d8e560a82ac'
          '0edd9dbf9b745437a5a4c174d6418e96'
          'a2d08cfd91be2aa608dd3bc9ef6c69bc'
          'c8c3aab59725c20eddc7d31d21c7b31e'
          'fd0395521f6c2b8681e5fbcfd943043d'
          'a14922b05223f703c41dff8035477706'
          '0de848f554e2a93c09352eadb2b2e260'
-         'f6692d5cb0033abe7865c47ec581ea87'
+         '151567ca960d860c88ff0e5154cb5b78'
          'dd1e2859dd1cc13db863ba74bc539ca0')
-sha256sums=('2512e93d23bd04c12304c67fefb1646735c4bcb5d75b866adf91a89ed1098bf8'
+sha256sums=('0e55067ec6b852a4179b72ea0887c0a05055467e723e9e6687167a9043119bae'
             '0aed186ab30fdb7cf36895a0ff50b03bd4a68db63cf4f19763995dabd9caffb0'
             '466ab17cdaa1eb1f1f0b5bdc444a90df5835a1896b1363584264920bbc3929f2'
-            '80d2e28ee7a7d8f93501e32c96e9895e242409da1326761d36dbf28e5a0e3677'
+            '8b2dbf38d13d0c25e6164e691187b4f45ae971c009e80911cd96aac0f61cf871'
             'dd4728f8204d0bba2a026768f0e0216778ed26583c3f799f6266554e21b48fe2'
             '5f19fa1f3b12fd480f4c28a9a2bdf041359d5510e1040b735d5f312071dcbd04'
             'b4b93c149164ed7c96f4f04373c32198c1e19c89ca9e2ab6e92e17c0a48bd1af'
             '989d6f71a8cfe99a3ca983981f8d8e9368776e2fc7667a809755d8d7292d52ad'
             '528f267805203b792741423f46114fee7b48664f1aab35a0edff7d519555ccc2'
             'e2b43c19705ce112dd3a08ecd0cae4c5558910366291524566cdd5890b2c6095'
-            '96d106278ac68b95f0d1916f76066904c2108a2bb0c97651c22d025d989f4acb'
+            '4efef67287b2b5ebaa2485ac5be5a62d2a86b2830b416f7a6905cfe17d6e76bb'
             '98e79e16e9cda5bb853501daaac7734cd5a367eb7543990f6a3c16fef49d0968')
 
 # The HylaFAX binaries work very well. The scripts need major fixes!
@@ -412,7 +413,7 @@ build() {
     CHGRP="${srcdir}/chgrp" \
     ./configure \
       --nointeractive \
-      --with-OPTIMIZER="${CFLAGS}" \
+      --with-OPTIMIZER="${CFLAGS:-}" \
       --target="${CARCH}-arch-linux" \
       --with-DIR_BIN='/usr/bin' \
       --with-DIR_LIB='/usr/lib' \
@@ -633,7 +634,7 @@ if [ -s "\${QFILE}" ]; then
   [0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]*) echo "RejectNotice: \"Invalid number (\${#number} digits)\"";;
   [0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]-*) echo "RejectNotice: \"Invalid number (\${#number} digits)\"";;
   ???111*|000*|111*|???000*) echo 'RejectNotice: "Invalid number"';;
-  #5175551214-*) echo 'ModemGroup: "Rockwell"';; # not compatible with Lucent
+  #5175551214-*) echo 'Modem: "Rockwell"';; # not compatible with Lucent
   #2705551214-*) # bad lines at this location won't let the fax complete
   #  # man sendq
   #  echo 'DesiredBR: 0' # 0 for 2400 bps, 1 for 4800 bps, 2 for 7200 bps, 3 for 9600 bps, 4 for 12000 bps, 5 for 14400 bps, 6 for 16800 bps, 7 for 19200 bps, 8 for 21600 bps, 9 for 24000 bps, 10 for 26400 bps, 11 for 28800 bps, 12 for 31200 bps, and 13 for 33600 bps (default).
@@ -725,12 +726,12 @@ EOF
 # https://aur.archlinux.org/
 
 [Unit]
-Description=HylaFAX+ faxgetty on %i
+Description=HylaFAX+ faxgetty on %I
 Documentation=man:faxgetty(8)
 After=faxq.service hfaxd.service
 
 [Service]
-ExecStart=/usr/bin/faxgetty %i
+ExecStart=/usr/bin/faxgetty %I
 Nice=-10
 Type=simple
 Restart=always
