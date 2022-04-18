@@ -1,19 +1,20 @@
-# Maintainer: 7k5x <7k5xlp0onfire@gmail.com>
-# Submitter : djnk8 <djnk8@mailinator.com>
+# Maintainer: KatTheFox <katthefoxmaid at gmail dot com>
+# Contributor: 7k5x <7k5xlp0onfire at gmail dot com>
+# Submitter : djnk8 <djnk8 at mailinator dot com>
 pkgname='band'
-pkgver=1.10.7
+pkgver=1.10.10
 pkgrel=1
 pkgdesc='BAND desktop application'
 arch=('x86_64')
 source=(
-	'https://ssl.pstatic.net/cmstatic/desktop/v1.10.7/BAND-1.10.7-amd64.deb'
+	"https://ssl.pstatic.net/cmstatic/desktop/v${pkgver}/BAND-${pkgver}-amd64.deb"
 	'LICENSE'
 )
 url='https://band.us/'
 license=('custom:band')
 depends=('xdg-utils' 'util-linux-libs' 'pango' 'nss' 'nspr' 'mesa' 'libxtst' 'libxss' 'libxrender' 'libxrandr' 'libxi' 'libxext' 'libxdamage' 'libxcursor' 'libxcomposite' 'libxcb' 'libx11' 'libsecret' 'libnotify' 'libdrm' 'libcups' 'libappindicator-gtk3' 'hicolor-icon-theme' 'gtk3' 'glibc' 'glib2' 'gdk-pixbuf2' 'gcc-libs' 'expat' 'desktop-file-utils' 'dbus' 'cairo' 'atk' 'at-spi2-core' 'at-spi2-atk' 'alsa-lib')
 sha256sums=(
-	'c2062e680c2477e5314c333e91b965419c15154cccc015e10a9291857e49423b'
+	'c1ed7394c5e6cf010248b241cda9a5249e80930d8c628a5beb15c85ba9422853'
 	'263470054abd943b85dd3fa80807b8747d93dcc514cfc64f547e5029cc48d169'
 )
 pre_install() {
