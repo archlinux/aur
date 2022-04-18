@@ -1,13 +1,13 @@
 pkgbase = ignition-utils
 	pkgdesc = Classes and functions for robot applications
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://ignitionrobotics.org/libs/utils
 	arch = any
 	license = Apache
 	depends = cmake
 	depends = ignition-cmake
-	source = https://github.com/ignitionrobotics/ign-utils/archive/ignition-utils1_1.2.0.tar.gz
-	sha256sums = fba9d1d3cdafa73148697433bba206aa1251d24c0afa22f09bb3289092021449
+	source = https://github.com/ignitionrobotics/ign-utils/archive/ignition-utils1_1.3.0.tar.gz
+	sha256sums = 4ca4f553c2a1cf77c02bd37e0cba35837fd4f46145eac2b0334e33f74fd98163
 
 pkgname = ignition-utils
