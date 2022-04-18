@@ -3,30 +3,45 @@
 
 set -u
 pkgname='ike-scan'
-pkgver='1.9'
-pkgrel='3'
+pkgver='1.9.5'
+pkgrel='1'
 pkgdesc='A tool that uses IKE protocol to discover, fingerprint and test IPSec VPN servers'
 arch=('i686' 'x86_64')
 #url="http://www.nta-monitor.com/tools/${pkgname}/"
-url="https://github.com/royhills/${pkgname}"
+url="https://github.com/royhills/${pkgname}/archive/refs/tags"
 license=('GPL')
 depends=('openssl')
+_srcdir="${pkgname}-${pkgver}"
 #_verwatch=('http://www.nta-monitor.com/tools-resources/security-tools/ike-scan-archive' ".*${pkgname}-\([0-9\.]\+\)\.tar\.gz" 'l')
 #source=("${url}download/${pkgname}-${pkgver}.tar.gz")
-_verwatch=("${url}/releases" "${url#*github.com}/releases/download/.*/${pkgname}-\(.*\)\.tar\.gz" 'l')
-source=("${url}/releases/download/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('05d15c7172034935d1e46b01dacf1101a293ae0d06c0e14025a4507656f1a7b6')
+#_verwatch=("${url}/releases" "${url#*github.com}/releases/download/.*/${pkgname}-\(.*\)\.tar\.gz" 'l')
+source=("${_srcdir}.tar.gz::${url}/${pkgver}.tar.gz")
+md5sums=('c72010d37f75642adcc0ec7d001fe1c5')
+sha256sums=('5152bf06ac82d0cadffb93a010ffb6bca7efd35ea169ca7539cf2860ce2b263f')
 
-prepare() {
+build() {
   set -u
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix='/usr' --mandir='/usr/share/man' --with-openssl
+  cd "${_srcdir}"
+  if [ ! -s 'configure' ]; then
+    autoreconf --install
+  fi
+  if [ ! -s 'Makefile' ]; then
+    ./configure --prefix='/usr' --mandir='/usr/share/man' --with-openssl
+  fi
+  make -s
+  set +u
+}
+
+check() {
+  set -u
+  cd "${_srcdir}"
+  make check
   set +u
 }
 
 package() {
   set -u
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${_srcdir}"
   make -s DESTDIR="${pkgdir}" install
   set +u
 }
