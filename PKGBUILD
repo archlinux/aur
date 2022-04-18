@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=2p-kt
-pkgver=0.18.1
+pkgver=0.20.2
 pkgrel=1
 pkgdesc='A Kotlin Multi-Platform ecosystem for symbolic AI'
 arch=('any')
@@ -9,13 +9,24 @@ url='https://github.com/tuProlog/2p-kt'
 license=('Apache')
 depends=('java-runtime' 'bash')
 makedepends=('gendesk')
-source=("${pkgname}-${pkgver}.jar::https://github.com/tuProlog/2p-kt/releases/download/${pkgver}/2p-repl-${pkgver}-redist.jar")
+source=(
+  "2p-repl-${pkgver}.jar::${url}/releases/download/${pkgver}/2p-repl-${pkgver}-redist.jar",
+  "2p-ide-${pkgver}.jar::${url}/releases/download/${pkgver}/2p-ide-${pkgver}-redist.jar"
+)
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('5f95e186aa33c83fd1c0fe11f2d6f1a7de55cda41d34e5388a984f8f5d57dfb2')
+sha256sums=(
+  'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+  'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855'
+)
 
 package() {
   echo "#!/bin/sh
-exec /usr/bin/java -jar '/usr/share/java/2p-kt/2p-kt.jar' \"\$@\"" > "2p-kt"
-  install -Dm755 ${pkgname}-${pkgver}.jar "${pkgdir}/usr/share/java/2p-kt/2p-kt.jar"
-  install -Dm755 2p-kt "${pkgdir}/usr/bin/2p-kt"
+  exec /usr/bin/java -jar '/usr/share/java/${pkgname}/2p-repl.jar' \"\$@\"" > "2p-repl"
+  install -Dm755 2p-repl-${pkgver}.jar "${pkgdir}/usr/share/java/${pkgname}/2p-repl.jar"
+  install -Dm755 2p-repl "${pkgdir}/usr/bin/2p-repl"
+
+  echo "#!/bin/sh
+  exec /usr/bin/java -jar '/usr/share/java/${pkgname}/2p-ide.jar' \"\$@\"" > "2p-ide"
+  install -Dm755 2p-ide-${pkgver}.jar "${pkgdir}/usr/share/java/${pkgname}/2p-ide.jar"
+  install -Dm755 2p-ide "${pkgdir}/usr/bin/2p-ide"
 }
