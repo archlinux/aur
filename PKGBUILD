@@ -3,7 +3,7 @@
 _plug=soifunc
 pkgname=vapoursynth-plugin-${_plug}-git
 pkgver=1.bb15a18
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://gitlab.com/shssoichiro/soifunc'
@@ -11,6 +11,7 @@ license=('MIT')
 depends=('vapoursynth'
          'vapoursynth-plugin-vsutil'
          'vapoursynth-plugin-muvsfunc'
+         'vapoursynth-plugin-jincresize'
          )
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")

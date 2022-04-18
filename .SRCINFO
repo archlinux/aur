@@ -1,7 +1,7 @@
 pkgbase = vapoursynth-plugin-soifunc-git
 	pkgdesc = Plugin for Vapoursynth: soifunc (GIT version)
 	pkgver = 1.bb15a18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/shssoichiro/soifunc
 	arch = any
 	license = MIT
@@ -9,6 +9,7 @@ pkgbase = vapoursynth-plugin-soifunc-git
 	depends = vapoursynth
 	depends = vapoursynth-plugin-vsutil
 	depends = vapoursynth-plugin-muvsfunc
+	depends = vapoursynth-plugin-jincresize
 	provides = vapoursynth-plugin-soifunc
 	conflicts = vapoursynth-plugin-soifunc
 	source = soifunc::git+https://gitlab.com/shssoichiro/soifunc.git
