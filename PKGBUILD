@@ -1,6 +1,6 @@
 pkgname=wiki-loves-earth-wallpapers
 pkgver=2021
-pkgrel=1
+pkgrel=2
 pkgdesc="Use images from Wikipedia's 'Wiki Loves Earth' annual photographic competition on your desktop"
 url="https://wikilovesearth.org"
 arch=('any')
@@ -24,7 +24,6 @@ source=(
     'image-33290221.jpg::https://upload.wikimedia.org/wikipedia/commons/b/bf/Brandganzen_Ezumakeeg.JPG'
     'image-33388758.jpg::https://upload.wikimedia.org/wikipedia/commons/0/04/Main_du_juive_%C3%A0_Tikjda.jpg'
     'image-40526867.jpg::https://upload.wikimedia.org/wikipedia/commons/5/53/Shangrila_Resorts.jpg'
-    'image-40473409.jpg::https://upload.wikimedia.org/wikipedia/commons/6/6e/O_Fanal%2C_Ilha_da_Madeira%2C_Portugal.jpg'
     'image-40071439.jpg::https://upload.wikimedia.org/wikipedia/commons/9/9f/Steinbock_14962940265.jpg'
     'image-40230459.jpg::https://upload.wikimedia.org/wikipedia/commons/4/46/Spinne_Bratental_Ps.jpg'
     'image-40184301.jpg::https://upload.wikimedia.org/wikipedia/commons/3/3d/Guepier_d%27europe_au_parc_national_Ichkeul.jpg'
@@ -55,28 +54,23 @@ source=(
     'image-58442111.jpg::https://upload.wikimedia.org/wikipedia/commons/7/77/Ogoy_island_in_winter.jpg'
     'image-59455008.jpg::https://upload.wikimedia.org/wikipedia/commons/f/fb/On%C3%A7a_do_Pantanal.jpg'
     'image-58425469.jpg::https://upload.wikimedia.org/wikipedia/commons/1/17/%D0%9A%D0%BE%D1%81%D0%B0%D1%80%D1%96_%D0%B2_%D0%B4%D0%B5%D0%BB%D1%8C%D1%82%D1%96_%D0%94%D1%83%D0%BD%D0%B0%D1%8E.jpg'
-    'image-59926988.jpg::https://upload.wikimedia.org/wikipedia/commons/b/b4/Golden_hour_at_bekol_savannah.jpg'
     'image-59801394.jpg::https://upload.wikimedia.org/wikipedia/commons/1/15/Sassendalen_1.jpg'
     'image-60089763.jpg::https://upload.wikimedia.org/wikipedia/commons/8/80/Pedra_Azul_Milky_Way.jpg'
-    'image-60332364.jpg::https://upload.wikimedia.org/wikipedia/commons/a/ad/Orangutan_Kalimantan.jpg'
     'image-58515305.jpg::https://upload.wikimedia.org/wikipedia/commons/4/4c/%D0%9F%D0%BE%D0%BB%D1%8F%D0%BD%D0%B8%D1%86%D1%8C%D0%BA%D0%B8%D0%B9_%D1%80%D0%B5%D0%B3%D1%96%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%B8%D0%B9_%D0%BF%D0%B0%D1%80%D0%BA._%D0%A1%D0%BA%D0%B5%D0%BB%D1%96_%D0%94%D0%BE%D0%B2%D0%B1%D1%83%D1%88%D0%B0.jpg'
     'image-59363844.jpg::https://upload.wikimedia.org/wikipedia/commons/c/c7/%D0%94%D0%B6%D0%B0%D1%80%D0%B8%D0%BB%D0%B3%D0%B0%D1%87%2C_%D0%BF%D1%96%D0%BD%D0%B4%D0%B8%D0%BA%D0%B8.jpg'
     'image-58767612.jpg::https://upload.wikimedia.org/wikipedia/commons/a/a7/Perereca-macaco_-_Phyllomedusa_rohdei.jpg'
     'image-59224590.jpg::https://upload.wikimedia.org/wikipedia/commons/4/4f/Life_around_jungle.jpg'
     'image-59352856.jpg::https://upload.wikimedia.org/wikipedia/commons/2/2d/160316-031_Bridge_near_Tatopani.jpg'
     'image-58522482.jpg::https://upload.wikimedia.org/wikipedia/commons/f/f6/%D0%9D%D0%B0%D0%B1%D0%BB%D1%8E%D0%B4%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%B0%D1%8F_%D0%BF%D0%BE%D0%B7%D0%B0_%D0%BF%D0%B8%D1%89%D1%83%D1%85%D0%B8.jpg'
-    'image-59141686.jpg::https://upload.wikimedia.org/wikipedia/commons/a/af/%CE%A0%CE%B1%CF%81%CE%BD%CE%B7%CE%B8%CE%B1_%28%CE%BA%CE%B1%CE%BC%CE%B5%CE%BD%CE%B1%29_04.jpg'
     'image-58631372.jpg::https://upload.wikimedia.org/wikipedia/commons/9/99/Capivara%28Hydrochoerus_hydrochaeris%29.jpg'
     'image-69960916.jpg::https://upload.wikimedia.org/wikipedia/commons/8/89/%D0%9C%D1%8B%D1%81_%D0%A1%D1%82%D0%BE%D0%BB%D0%B1%D1%87%D0%B0%D1%82%D1%8B%D0%B9._%D0%9F%D0%BE%D1%81%D0%BB%D0%B5_%D0%B7%D0%B0%D0%BA%D0%B0%D1%82%D0%B0.jpg'
     'image-69961161.jpg::https://upload.wikimedia.org/wikipedia/commons/0/03/%D0%9E%D1%81%D1%82%D1%80%D0%BE%D0%B2_%D0%91%D0%B5%D0%BB%D0%BB_%D0%B8_%D0%A3%D0%B1%D0%B5%D0%B6%D0%B8%D1%89%D0%B5_%D0%AD%D0%B9%D1%80%D1%8B.jpg'
     'image-69594652.jpg::https://upload.wikimedia.org/wikipedia/commons/0/0e/Satchari_National_Park%2C_Habiganj%2C_Sylhet.jpg'
     'image-70051605.jpg::https://upload.wikimedia.org/wikipedia/commons/2/2a/%D8%A7%D8%B3%D9%83%D8%B1%D8%A7%D9%85_2_-_%D8%AA%D9%85%D9%86%D8%B1%D8%A7%D8%B3%D8%AA.jpg'
-    'image-69116544.jpg::https://upload.wikimedia.org/wikipedia/commons/f/f6/Hunza_-_Altit_Valley_-_Nasr_Rahman.jpg'
     'image-69924253.jpg::https://upload.wikimedia.org/wikipedia/commons/c/ca/%D0%91%D0%BE%D0%BB%D0%BE%D1%82%D0%BD%D1%8B%D0%B5_%D0%9A%D0%B8%D0%BF%D0%B0%D1%80%D0%B8%D1%81%D1%8B.jpg'
     'image-70155469.jpg::https://upload.wikimedia.org/wikipedia/commons/7/70/Por_do_Sol_em_Baixa_Grande.jpg'
     'image-69961168.jpg::https://upload.wikimedia.org/wikipedia/commons/c/ca/%D0%9B%D0%B5%D0%B6%D0%BA%D0%B0_%D0%BC%D0%BE%D1%80%D0%B6%D0%B5%D0%B9_%D0%BD%D0%B0_%D0%BE%D1%81%D1%82%D1%80%D0%BE%D0%B2%D0%B5_%D0%9D%D0%BE%D1%80%D1%82%D0%B1%D1%80%D1%83%D0%BA.jpg'
     'image-69954711.jpg::https://upload.wikimedia.org/wikipedia/commons/a/a4/%D0%91%D0%B5%D1%80%D0%B5%D0%B3_%D0%AD%D0%BB%D1%8C%D1%82%D0%BE%D0%BD_%D1%81_%D0%B2%D1%8B%D1%81%D0%BE%D1%82%D1%8B_%D0%BF%D1%82%D0%B8%D1%87%D1%8C%D0%B5%D0%B3%D0%BE_%D0%BF%D0%BE%D0%BB%D1%91%D1%82%D0%B0.jpg'
-    'image-69692176.jpg::https://upload.wikimedia.org/wikipedia/commons/1/1d/Gipeto_adulto.jpg'
     'image-69595567.jpg::https://upload.wikimedia.org/wikipedia/commons/c/ca/Chestnut-tailed_starling%2C_Satchari_National_Park.jpg'
     'image-68822431.jpg::https://upload.wikimedia.org/wikipedia/commons/a/a4/Sunrise_Djanet.jpg'
     'image-68724727.jpg::https://upload.wikimedia.org/wikipedia/commons/2/2f/Meteora%60s_monastery_2.jpg'
@@ -89,7 +83,6 @@ source=(
     'image-80015135.jpg::https://upload.wikimedia.org/wikipedia/commons/9/9b/Ratargul_0276.jpg'
     'image-80072115.jpg::https://upload.wikimedia.org/wikipedia/commons/a/a3/Kayakistas_en_Glaciar_Grey.jpg'
     'image-78648150.jpg::https://upload.wikimedia.org/wikipedia/commons/e/e9/Morning_fog_in_Kemeri.jpg'
-    'image-79600980.jpg::https://upload.wikimedia.org/wikipedia/commons/4/46/%D0%A1%D0%B5%D1%80%D0%BF%D0%B0%D0%BD%D1%82%D0%B8%D0%BD_%D0%B2_%D0%93%D0%BE%D0%BD%D0%B0%D1%87%D1%85%D0%B8%D1%80%D1%81%D0%BA%D0%BE%D0%BC_%D1%83%D1%89%D0%B5%D0%BB%D1%8C%D0%B5.jpg'
     'image-79419046.jpg::https://upload.wikimedia.org/wikipedia/commons/4/46/%D0%9C%D0%BE%D0%B6%D0%B6%D0%B5%D0%B2%D0%B5%D0%BB%D0%BE%D0%B2%D0%B0%D1%8F_%D1%80%D0%BE%D1%89%D0%B0_%D0%B2_%D0%9D%D0%BE%D0%B2%D0%BE%D0%BC_%D0%A1%D0%B2%D0%B5%D1%82%D0%B5_%D0%BC%D1%8B%D1%81_%D0%9A%D0%B0%D0%BF%D1%87%D0%B8%D0%BA.jpg'
     'image-79884837.jpg::https://upload.wikimedia.org/wikipedia/commons/0/0a/Mah_ya_waterfall_intranon.jpg'
     'image-79909003.jpg::https://upload.wikimedia.org/wikipedia/commons/4/4d/Female_Toque_macaque_with_her_child_at_Katagamuwa_Sanctuary_-_%28Don%27t_let_them_fade_away%29.jpg'
@@ -102,7 +95,7 @@ source=(
     'image-91595752.jpg::https://upload.wikimedia.org/wikipedia/commons/5/55/Mulu_Pinnacles.jpg'
     'image-91504198.jpg::https://upload.wikimedia.org/wikipedia/commons/8/85/%E0%B8%99%E0%B8%81%E0%B8%97%E0%B8%B6%E0%B8%94%E0%B8%97%E0%B8%B7%E0%B8%AD%E0%B8%A1%E0%B8%A5%E0%B8%B2%E0%B8%A2%E0%B8%B9.jpg'
     'image-91479996.jpg::https://upload.wikimedia.org/wikipedia/commons/a/ab/Spot-tailed_Pitviper_in_attack_mode.jpg'
-    'image-91706258.jpg::https://upload.wikimedia.org/wikipedia/commons/5/56/The_Crown_within_the_Lake.jpg'
+    'image-91706258.jpg::https://upload.wikimedia.org/wikipedia/commons/6/6a/Taal_Volcano_eruption_on_January_12%2C_2020.jpg'
     'image-92668687.jpg::https://upload.wikimedia.org/wikipedia/commons/e/e8/%D0%9A%D1%80%D0%B8%D1%88%D1%82%D0%B0%D0%BB%D0%B5%D0%B2%D1%96_%D0%BA%D1%80%D0%B8%D0%BB%D0%B0.jpg'
     'image-91555511.jpg::https://upload.wikimedia.org/wikipedia/commons/c/cf/%D0%9B%D0%B8%D1%81%D0%B0-%D0%BE%D0%B3%D0%BD%D0%B5%D0%B2%D0%BA%D0%B0_%D0%BD%D0%B0_%D1%84%D0%BE%D0%BD%D0%B5_%D0%92%D0%B8%D0%BB%D1%8E%D1%87%D0%B8%D0%BD%D1%81%D0%BA%D0%BE%D0%B3%D0%BE_%D0%B2%D1%83%D0%BB%D0%BA%D0%B0%D0%BD%D0%B0.jpg'
     'image-92774372.jpg::https://upload.wikimedia.org/wikipedia/commons/3/33/Ol_Doinyo_Lengai_and_Lake_Empakaai.jpg'
@@ -110,11 +103,9 @@ source=(
     'image-91662685.jpg::https://upload.wikimedia.org/wikipedia/commons/2/24/Eisvogel%2C_M%C3%A4nnchen_mit_erbeuteter_Groppe_im_Geo-Naturpark_Bergstra%C3%9Fe-Odenwald.jpg'
     'image-90788699.jpg::https://upload.wikimedia.org/wikipedia/commons/a/a4/Andhika_bayu_nugraha-taman_nasional_bromo_tengger_semeru.jpg'
     'image-91756926.jpg::https://upload.wikimedia.org/wikipedia/commons/f/f2/Kingfisher_With_aCatch.jpg'
-    'image-107145562.jpg::https://upload.wikimedia.org/wikipedia/commons/f/f2/Praia_do_Abano_at_Sunset.jpg'
     'image-107569796.jpg::https://upload.wikimedia.org/wikipedia/commons/7/72/Emerso_dalle_acque.jpg'
     'image-107045104.jpg::https://upload.wikimedia.org/wikipedia/commons/f/fc/%CE%9B%CE%AF%CE%BC%CE%BD%CE%B7_%CE%A3%CF%84%CF%85%CE%BC%CF%86%CE%B1%CE%BB%CE%AF%CE%B1%CF%82_8.jpg'
     'image-107127464.jpg::https://upload.wikimedia.org/wikipedia/commons/f/fe/Zilkale.jpg'
-    'image-104839088.jpg::https://upload.wikimedia.org/wikipedia/commons/7/7c/Erupsi_Gunung_Merapi.jpg'
     'image-106793464.jpg::https://upload.wikimedia.org/wikipedia/commons/3/3a/%D0%94%D0%BE%D0%B1%D1%80%D0%BE%D0%B5_%D1%83%D1%82%D1%80%D0%BE_%D0%B2_%D0%BB%D0%B5%D1%81%D1%83.jpg'
     'image-105896617.jpg::https://upload.wikimedia.org/wikipedia/commons/b/bf/Flowerish_Sunbird.jpg'
     'image-106851915.jpg::https://upload.wikimedia.org/wikipedia/commons/8/8a/Dipsas_albifrons%2C_Cobra_Papa_Lesmas.jpg'
@@ -127,7 +118,7 @@ source=(
     'image-106003876.jpg::https://upload.wikimedia.org/wikipedia/commons/a/a6/Flying_colors.jpg'
 )
 sha1sums=(
-    'e733015e17721f639024fd18924d434d3038b547'
+    '5634b4e563a02cbebfdd4bc4fb5af52faada7fc4'
     'e58397f4cee346f2beeabc95d8902eba1db691a9'
     '1246b2cffb3709013d410024a322a8ff63760e99'
     '7d08f021a40eb746e137ab6efdf81a68c1737fee'
@@ -143,7 +134,6 @@ sha1sums=(
     'fb1368bbf31222a67e1d1bf4db4ba5a81250dfa0'
     'bca517aea6d6c56fb3565fbd678e95aca75e87b3'
     '618a970c1e3d30ef51290b74caeceb4d3f0acd0d'
-    'd17f88886b4998059187f2912f211ce3bb8d5cca'
     '4e6f8c49653e307439a48db9bc5a29dfd91a5419'
     '1321ed421c246a67c221093e3137565989801d9d'
     '3c694b289b53c802d6ddea8569b5045d76fc71cb'
@@ -174,28 +164,23 @@ sha1sums=(
     '90dea6074fc5ef9b240e1b2b72dd1a91d5fc5ff0'
     'a5da9a39f812cd522f24e3d124304b5b2957604b'
     '7de24a1130b48d3a2ba4d5311645fea410b1c105'
-    '6538cd71ab2796f278950cd1f19648aa83181cd6'
     '151da7a20ab907e02736a8352554b8f578f74309'
     '7c2beab7afcc3b9fe17d58aa74633946502acff3'
-    '528f6ce08cc293a0bed7f78409a452e9308677e8'
     '7fe576ac031901d008a44527b4625cde936ee1fb'
     '84eba6f57dd9ed5165bd721e7d5ad28e2a9f347d'
     '03e36498b4eec19d946a7507eaf3a0c310541100'
     '4e4a02c5770648ce5ab181a524e785c037695634'
     '9ff4269b86327433a5ac319099066056092429cd'
     '9a8ea086a2a05e9648ce7d0a2b40082ddd992034'
-    'a9cda01266d08be5a66afa2d3f25c89bbe873875'
     '3597a0acc4ca072e28a0e964272af0c85c81c98e'
     '3bb94b60de45f0bf9b3f5062294a550915d64efb'
     'd87cac8dcbc12e132a5d9ff38c54bf1e1bf50081'
     '3df1932d6219a5a4c713bb0628e1ca797cdb445d'
     '9ac3790edf503e38d0412c2abacac379193af260'
-    'e958e1726ed9b2124124b33ac591a435db5a4cd7'
     'cd6b82aa7b29bf80903d8d4360f99e626a9dd6c0'
     '443bc013b0f0d382850f698280b574329683a250'
     'a5ab8f069a83c7db22a328dc4954d301c59f092c'
     '1591ed38dca36205dcf36904ada859bbd5ebf77a'
-    'fa55cc3581e61d5ef5e21da3246055668cef02d2'
     '6cc32ccb5de770139ea1ccd0042720aedb3a9f73'
     'bbe0951cd7947b79c0092ceb5520d5502be85638'
     '8e3c1d5e6619f19b0f14c8764db9daf0b014bae6'
@@ -208,7 +193,6 @@ sha1sums=(
     'b2f01d8b607117190f5de036ed69f3fafa8ff70e'
     '3218bcec188b65aaff0f4b5103e87054978ba5cc'
     '8adcec76a5c8e662e5b8f65fa890d1dd3ed1330d'
-    '9426b4fc093e0cf93204a20494cfff40d683462e'
     '1e53bdc7216ee2a0d118343f2e45cc23845f69fb'
     'e42dc5db8b3f7ae20daa3535899e1a8d022d0230'
     '6b1c5960f3e98d059337b985132ba3f455e0a244'
@@ -229,11 +213,9 @@ sha1sums=(
     'cc1ff5e2cac6a8e9c121a3b9ddf229d782315f26'
     '894c590d8adbd11c06a227ef509addde99deead4'
     '675aad1e2d232dd65ea062934c9531d9605bc74a'
-    'c0f09e1b2c8690e2b04f2e87a948208675569028'
     '9ccd5c7690bedfe8dd5ba90c094f3f6a9b96d699'
     '275967c302bd67fe7681aa1e2985f2c77c9baf97'
     '526c1c05a529819fd7d3f62770b387455a0c11db'
-    '3979bdbbed257cabe22076d24612aefdc6acd16c'
     '830cdb572118468bc227e4ddd4213d9fc503ee42'
     'e348ef57a469b8d8992a7f882601c3aae4482019'
     '587d89a5f32248bef2adad435829a55601453d2f'
@@ -245,14 +227,22 @@ sha1sums=(
     'a8fc6228bc51c802b43e65d7d287ddb8d90f33b3'
     '212a63a68a75ffe0646f2617f9faa18625fab6d8'
 )
+_index=(
+    80 66 55 43 28 15 1 95 81 67 56 44 29 2 96 82 68 57 16 3 97 83 69 58 45 30
+    17 84 70 31 18 4 98 85 71 59 46 32 19 5 99 86 72 60 47 33 20 6 100 87 73 34
+    21 7 101 88 74 61 48 35 22 8 102 89 62 49 36 23 9 103 90 75 50 37 10 104 91
+    76 63 51 38 24 11 105 92 52 39 12 106 93 77 64 53 40 25 13 107 94 78 65 41
+    26 14 79 54 42 27
+)
 
 prepare() {
-    local count image images=("${source[@]:1}") i=0
+    local count i j image file
     install -d "$srcdir/$pkgname"
-    echo "Resampling ${count:=${#images[@]}} images..." >&2
-    for image in "${images[@]%%::*}"; do
-        ((++i))
-        echo "-> ($i/$count) $image" >&2
+    echo "Resampling ${count:=${#_index[@]}} images..." >&2
+    for i in "${!_index[@]}"; do
+        j=${_index[i]}
+        image=${source[j]%%::*}
+        echo "-> ($((i + 1))/$count) $image" >&2
         file=$srcdir/$pkgname/$image
         if [ -f "$file" ]; then
             continue
@@ -266,12 +256,13 @@ prepare() {
 }
 
 package() {
-    local image images=("${source[@]:1}") i=0 file
+    local i j image file
     install -d "$pkgdir/usr/share/backgrounds/$pkgname"
-    for image in "${images[@]%%::*}"; do
-        ((++i))
+    for i in "${!_index[@]}"; do
+        j=${_index[i]}
+        image=${source[j]%%::*}
         file=$(printf '%s/usr/share/backgrounds/%s/%03d-%s\n' \
-            "$pkgdir" "$pkgname" "$i" "${image#image-}")
+            "$pkgdir" "$pkgname" "$((i + 1))" "${image#image-}")
         image=$srcdir/$pkgname/$image
         install "$image" "$file"
     done

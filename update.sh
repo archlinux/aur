@@ -11,6 +11,8 @@ export LC_ALL=C
 #_debug=1
 _dir=$(realpath "$(dirname "$BASH_SOURCE")")
 _pkgname=wiki-loves-earth-wallpapers
+_firstyear=2014
+_limit=0
 _pkgver=0
 _pkgrel=1
 _json=$_dir/$_pkgname.json
@@ -34,7 +36,9 @@ _wiki_json() {
         cmd=(curl -fsSLA "$_agent"
             "https://commons.wikimedia.org/w/api.php?$query") &&
         if [ -n "${_debug:+1}" ]; then
-            mkdir -p "$_dir/.tmp" || return
+            mkdir -p "$_dir/.tmp" &&
+                { printf '%q%s\n' "$cmd" "$(printf ' %q' \
+                    "${cmd[@]:1}")"; } >>"$_dir/.tmp/$FUNCNAME.log" || return
             "${cmd[@]}" | tee "$_dir/.tmp/$(date +"%s.%N")-$(sed -E \
                 's/[/:]+/__/g; s/^(.{54}).*/\1/' <<<"${query#action=}").json"
         else
@@ -53,11 +57,12 @@ while IFS= read -r page; do
         exit 1
     fi
     year=${BASH_REMATCH[2]}
+    ((year >= _firstyear)) || continue
 
     echo "Parsing '$page'..." >&2
     section=$(_wiki_json action=parse \
         page="$page" prop=sections | jq -r '
-[ .parse.sections[] | select(.line | test("winners$"; "i")) ] | first | .index')
+[ .parse.sections[] | select(.line | test("winners?$"; "i")) ] | first | .index')
     if [ -z "$section" ]; then
         echo "ERROR: no \"winners\" section on '$page'" >&2
         exit 1
@@ -75,18 +80,24 @@ while IFS= read -r page; do
     echo "Retrieving image information..." >&2
     _wiki_json action=query titles="$titles" prop=imageinfo \
         iiprop="canonicaltitle|extmetadata|sha1|size|url" |
-        jq -r --arg titles "$titles" --arg year "$year" '
+        jq -r \
+            --arg titles "$titles" \
+            --argjson year "$year" \
+            --argjson limit $((_limit)) '
 (.query.normalized | map( { (.from): .to } ) | add) as $normalized |
   ($titles | split("|") | to_entries |
     map( { ($normalized[.value] // .value): .key } ) | add) as $titles |
+  ((now | gmtime[0]) - $year) as $yearIndex |
   [ .query.pages[] | [.pageid, .title] as [$pageid, $title] | .imageinfo[0] |
-    select(.width > .height and .width >= 1920 and .height >= 1080 and
+    select(.width > .height and .height >= 1440 and
+        (.width >= 2560 or (.width / .height < 1.34)) and
         .canonicaltitle == $title) |
-    .year = ($year | tonumber) |
-    .index = $titles[$title] |
+    .year = $year |
+    .index = ($titles[$title] * 100) + $yearIndex |
     .file = .canonicaltitle[5:] |
     .pageid = $pageid ] |
-  sort_by(.index) | .[]' >"$_temp"
+  sort_by(.index) |
+  if $limit > 0 then limit($limit; .[]) else .[] end' >"$_temp"
     if [ ! -s "$_temp" ]; then
         echo "ERROR: no hi-res landscape images on '$page'" >&2
         exit 1
@@ -96,7 +107,7 @@ while IFS= read -r page; do
 done < <(
     echo "Parsing 'Commons:Wiki Loves Earth'..." >&2
     _wiki_json action=parse page="Commons:Wiki Loves Earth" prop=links |
-        jq -r '.parse.links[]["*"] | select(test("/winners$";"i"))'
+        jq -r '.parse.links[]["*"] | select(test("\\bwinners$";"i"))'
 )
 
 _pkgver=$(jq -s '[ .[].year ] | max' <"$_json")
@@ -121,7 +132,7 @@ while IFS=$'\t' read -r file pageid; do
     <filename>${pkgfile}</filename>
   </wallpaper>
 XML
-done < <(jq -r '[.file, .pageid] | @tsv' <"$_json")
+done < <(jq -sr 'sort_by(.index)[] | [.file, .pageid] | @tsv' <"$_json")
 
 cat <<XML >>"$_xml"
 </wallpapers>
@@ -160,14 +171,23 @@ sha1sums=(
 $({ sha1sum "$_xml" | awk '{print "\047" $1 "\047"}' &&
         jq -r '.sha1 | @sh' <"$_json"; } | _indent)
 )
+_index=(
+$(jq -sr '[ .[].index ] | to_entries | sort_by(.value) | .[].key + 1' \
+        <"$_json" | awk '
+    { n = l (l ? " " : "") $1
+      if (length(n) > 76) { print l; l = $1 }
+      else { l = n } }
+END { if (l) { print l } }' | _indent)
+)
 
 prepare() {
-    local count image images=("\${source[@]:1}") i=0
+    local count i j image file
     install -d "\$srcdir/\$pkgname"
-    echo "Resampling \${count:=\${#images[@]}} images..." >&2
-    for image in "\${images[@]%%::*}"; do
-        ((++i))
-        echo "-> (\$i/\$count) \$image" >&2
+    echo "Resampling \${count:=\${#_index[@]}} images..." >&2
+    for i in "\${!_index[@]}"; do
+        j=\${_index[i]}
+        image=\${source[j]%%::*}
+        echo "-> (\$((i + 1))/\$count) \$image" >&2
         file=\$srcdir/\$pkgname/\$image
         if [ -f "\$file" ]; then
             continue
@@ -181,12 +201,13 @@ prepare() {
 }
 
 package() {
-    local image images=("\${source[@]:1}") i=0 file
+    local i j image file
     install -d "\$pkgdir/usr/share/backgrounds/\$pkgname"
-    for image in "\${images[@]%%::*}"; do
-        ((++i))
-        file=\$(printf '%s/usr/share/backgrounds/%s/%03d-%s\n' \\
-            "\$pkgdir" "\$pkgname" "\$i" "\${image#image-}")
+    for i in "\${!_index[@]}"; do
+        j=\${_index[i]}
+        image=\${source[j]%%::*}
+        file=\$(printf '%s/usr/share/backgrounds/%s/%03d-%s\\n' \\
+            "\$pkgdir" "\$pkgname" "\$((i + 1))" "\${image#image-}")
         image=\$srcdir/\$pkgname/\$image
         install "\$image" "\$file"
     done
