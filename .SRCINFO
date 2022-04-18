@@ -1,8 +1,8 @@
 pkgbase = arif-git
 	pkgdesc = ADV Realtime Image Filtering: quality filtering for lucky imaging.
-	pkgver = 20150207
+	pkgver = 20220418
 	pkgrel = 1
-	url = https://gitorious.org/adv/arif
+	url = https://github.com/AD-Vega/arif
 	arch = i686
 	arch = x86_64
 	license = GPL3
@@ -16,4 +16,3 @@ pkgbase = arif-git
 	conflicts = arif
 
 pkgname = arif-git
-

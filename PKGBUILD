@@ -1,11 +1,11 @@
 # Maintainer: Jure Varlec <jure.varlec@ad-vega.si>
 _pkgname=arif
 pkgname=arif-git
-pkgver=20150207
+pkgver=20220418
 pkgrel=1
 pkgdesc="ADV Realtime Image Filtering: quality filtering for lucky imaging."
 arch=( i686 x86_64 )
-url="https://gitorious.org/adv/${_pkgname}"
+url="https://github.com/AD-Vega/${_pkgname}"
 license=('GPL3')
 depends=( qarv boost-libs )
 makedepends=( git cmake boost tclap )
@@ -22,7 +22,7 @@ source=()
 noextract=()
 md5sums=() #generate with 'makepkg -g'
 
-_gitroot="git://gitorious.org/adv/${_pkgname}.git"
+_gitroot="https://github.com/AD-Vega/${_pkgname}.git"
 _gitname="master"
 
 build() {
