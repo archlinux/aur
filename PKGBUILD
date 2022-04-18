@@ -1,6 +1,6 @@
 # Maintainer: igo95862 <address at domain dot tld>
 pkgname=bubblejail-git
-pkgver=r287.2e1df52
+pkgver=r339.2723b8a
 pkgrel=1
 pkgdesc="Bubblewrap based sandboxing utility"
 arch=('any')
@@ -27,7 +27,7 @@ check () {
 }
 
 build () {
-	arch-meson "$srcdir/$pkgname" build
+	arch-meson "$srcdir/$pkgname" build -Dversion_display="AUR-git $pkgver"
 	ninja -C build
 }
 
