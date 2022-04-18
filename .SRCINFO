@@ -1,0 +1,14 @@
+pkgbase = mediasmartserverd-git
+	pkgdesc = Daemon to control LEDs on HP MediaSmart and similar servers
+	pkgver = 0.5.6.r6.bc30e0b
+	pkgrel = 1
+	url = https://github.com/merelin/mediasmartserverd
+	arch = any
+	license = GPL
+	makedepends = git
+	provides = mediasmartserverd
+	conflicts = mediasmartserverd
+	source = git+https://github.com/merelin/mediasmartserverd.git
+	md5sums = SKIP
+
+pkgname = mediasmartserverd-git
