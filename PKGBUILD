@@ -2,7 +2,7 @@
 
 _pkgname=krita
 pkgname=${_pkgname}-appimage
-pkgver=5.0.2
+pkgver=5.0.5
 pkgrel=1
 pkgdesc="Edit and paint images"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=(
 	"${_pkgname}.sh"
 )
 sha256sums=(
-	'139e621ec3a4ec1918e6046bdd7be4c0b392cdf2571ca83a065a3e2f00f585e8'
+	'80e5faa5458359fd14134f79e3ec7ade4a7c5bc8c1b87b47a79fed3abf786ae4'
 	'SKIP'
 )
 options=(!strip)
