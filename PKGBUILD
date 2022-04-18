@@ -2,20 +2,21 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=stegano
-pkgver=0.5.0
+pkgver=0.5.1
 pkgrel=1
-pkgdesc="CLI tool for steganography. Supports hiding data in PNG images via LSB Encoding."
+pkgdesc="A CLI tool for steganography. Supports hiding data in PNG images via LSB Encoding."
 arch=('x86_64')
 url="https://github.com/steganogram/stegano-rs"
 license=('GPL3')
 depends=('bzip2')
-makedepends=('rust')
+makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('c8b2862a87125a6fb9db2582fbcda8e3268c6ca2987a8def8ce0baf5689fe8c407b6214f7bfb0b87c9c0d646fe58bf3eecc1f92c9b8e19564ea3d7cac79c2736')
+sha512sums=('e48e6177d1e59651d4e519423f64081aa83a8c9282e1d6bd8668e381022690c0ca654be8ef33c1a5b3b58045194d10ac16ffe123467b6b660768e4fa2ac8528d')
+options=('!lto')
 
 prepare() {
   cd "$pkgname-rs-$pkgver/$pkgname-cli"
-  cargo fetch --locked
+  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
