@@ -28,7 +28,7 @@ pkgbase = libretro-flycast-git
 	source = flycast::git+https://github.com/flyinghead/flycast.git
 	source = unbundle-libs.patch
 	b2sums = SKIP
-	b2sums = ad99c975bdfdeb6592a0496ac3e90665dda539de610003131dcaa98c4acf000e9b8c2a5b8567710dee6bd9710289e5b6081fef24f202d7e70955e56f1074e9a5
+	b2sums = e958858e145819df2156856b55b441b960716403c140cf79c6bbec5fbfae06303e27ea42f9fa4d58250046c9700ac04e5d26feb6a469ea9cd9cdda4c471ad896
 
 pkgname = libretro-flycast-git
 	depends = libgl

@@ -2,17 +2,6 @@ diff --git a/CMakeLists.txt b/CMakeLists.txt
 index 151dc653..3e18378d 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -1,10 +1,5 @@
- cmake_minimum_required(VERSION 3.10.2)
- 
--find_program(CCACHE_PROGRAM ccache)
--if(CCACHE_PROGRAM)
--	set(CMAKE_C_COMPILER_LAUNCHER ${CCACHE_PROGRAM} CACHE STRING "Compiler launcher for C.")
--	set(CMAKE_CXX_COMPILER_LAUNCHER ${CCACHE_PROGRAM} CACHE STRING "Compiler launcher for CXX.")
--endif()
- 
- option(ENABLE_CTEST "Enables unit tests" OFF)
- option(ENABLE_OPROFILE "Enable OProfile" OFF)
 @@ -217,14 +212,12 @@ else()
      target_compile_definitions(${PROJECT_NAME} PRIVATE TARGET_NO_OPENMP)
  endif()
@@ -45,7 +34,7 @@ index 151dc653..3e18378d 100644
  	    target_link_libraries(${PROJECT_NAME} PRIVATE ZLIB::ZLIB)
  	endif()
 -	
-+if(NOT LIBRETRO)
++if(FALSE)
  	find_package(Lua)
  	if(NOT APPLE AND LUA_FOUND)
  		target_compile_definitions(${PROJECT_NAME} PRIVATE USE_LUA)
@@ -75,7 +64,7 @@ index 151dc653..3e18378d 100644
  		endif()
      endif()
 -
-+if(PKG_CONFIG_FOUND AND NOT ANDROID AND NOT APPLE AND NOT LIBRETRO)
++if(FALSE)
      if(ENABLE_OPROFILE)
          target_compile_definitions(${PROJECT_NAME} PRIVATE DYNA_OPROF)
          target_link_libraries(${PROJECT_NAME} PRIVATE opagent)
