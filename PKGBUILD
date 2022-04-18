@@ -4,7 +4,7 @@
 
 set -u
 pkgname='bytecode-viewer'
-pkgver='2.10.16'
+pkgver='2.11.2'
 pkgrel='1'
 pkgdesc='A Java decompiler, editor, debugger, and more'
 url='https://bytecodeviewer.com'
@@ -19,14 +19,14 @@ source=(
   'bytecodeviewer.desktop'
 )
 noextract=("${source[0]##*/}")
-md5sums=('b9577125f207b2f4737c3858d4d9573e'
-         '7b706fa37dd73c80cce81de88c96fd83'
+md5sums=('00b9f89bc18fad1d87f6723c0be80e8b'
+         '86f6d2d12561d7098343954b5e73f0c3'
          'a3d3b9e14f92bdd44febe05d9981a685'
-         'd28753c688f7068650258d35f4e9572d')
-sha256sums=('75a4144ef351334a4c29d55c88111412b1202bef61cc7fd3223ac9569c3bc3ad'
-            '6c40ed470b3fc9aa0ee585ef71d86c8a822877e832d406ea365ce3b279e9f95c'
+         'bb4cf22a28611b6b3a684ad1d0567c08')
+sha256sums=('536ad387424106083f76cd0cb7c051a22aff21f08663ba2539c11f1ddef9147f'
+            'fd1d7b95daaff6221904e76663fdb629ac15fe3737add0016729afeb07a19acd'
             '380fbc2d958fc5e0c3f7c05b21de83e3d7e956b00ab476439f893f1d10a61a3e'
-            'c61b6bc996e7d6f58991a4119db74a7387864b74a2b7aa1979a992b77477c5bb')
+            '24a537c7e5e727457007d75b49d731ae41ad2d355a806553a52cc111f80ecd53')
 
 package() {
   set -u

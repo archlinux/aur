@@ -8,3 +8,4 @@ Type=Application
 Categories=Development;
 Keywords=decompile;decompiler;java;fernflower;procyon;
 MimeType=application/x-java
+StartupWMClass=the-bytecode-club-bytecodeviewer-BytecodeViewer
