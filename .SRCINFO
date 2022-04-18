@@ -1,0 +1,20 @@
+pkgbase = relabsd-git
+	pkgdesc = Turns your input devices into joysticks by converting relative axes into absolute ones.
+	pkgver = r56.3e76054
+	pkgrel = 1
+	url = https://github.com/nsensfel/relabsd
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake>=3.0
+	depends = libevdev
+	depends = udev
+	provides = relabsd
+	conflicts = relabsd
+	source = relabsd-r56.3e76054::git+https://github.com/nsensfel/relabsd.git
+	source = CMakeLists.patch
+	sha512sums = SKIP
+	sha512sums = 2e4150f973b366c501ce488a93818c61be264d7ca3b945744afd8e7906c7cf5e175455c25558423386e8a1dce49f37679b40d498773d7c4079acc030f1961cb7
+
+pkgname = relabsd-git

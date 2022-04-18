@@ -1,0 +1,12 @@
+diff --unified --recursive --text --color relabsd-r56.3e76054/CMakeLists.txt relabsd-r56.3e76054.new/CMakeLists.txt
+--- relabsd-r56.3e76054/CMakeLists.txt	2022-04-18 13:57:16.835900829 -0500
++++ relabsd-r56.3e76054.new/CMakeLists.txt	2022-04-18 14:33:44.278637553 -0500
+@@ -28,7 +28,7 @@
+ # Be loud about dubious code.
+ if (CMAKE_COMPILER_IS_GNUCC)
+    message(STATUS "CMake is using GNUCC. Verbose flags are activated.")
+-   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -pedantic -Werror -Wextra")
++   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -pedantic -Wextra")
+ endif (CMAKE_COMPILER_IS_GNUCC)
+ 
+ option(
