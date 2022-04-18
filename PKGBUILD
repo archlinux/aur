@@ -1,14 +1,13 @@
 # Maintainer: Xyem <xyem@electricjungle.org>
 pkgname=sheepit-client-bin
 pkgver=6.22092.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Client for the SheepIt render farm'
 arch=('x86_64')
 url='https://www.sheepit-renderfarm.com'
 license=('GPL2')
-depends=('java-runtime')
+depends=('java-runtime>=11')
 conflicts=('sheepit-client-git')
-backup=('etc/conf.d/sheepit-client')
 source=(
   "https://www.sheepit-renderfarm.com/media/applet/${pkgname%-bin}-${pkgver}.jar"
   'sheepit-client.sh'
