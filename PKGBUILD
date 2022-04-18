@@ -5,7 +5,7 @@ set -u
 _perlmod='Text-Levenshtein'
 _modnamespace="${_perlmod%%-*}"
 pkgname="perl-${_perlmod,,}"
-pkgver='0.14'
+pkgver='0.15'
 pkgrel='1'
 pkgdesc="Perl CPAN ${_perlmod//-/::} - An implementation of the Levenshtein edit distance"
 arch=('any')
@@ -16,7 +16,8 @@ options=('!emptydirs')
 _verwatch=("http://www.cpan.org/modules/by-module/${_modnamespace}/" "${_perlmod}-\([0-9\.]*\)\.tar\.gz" 'l')
 _srcdir="${_perlmod}-${pkgver}"
 source=("${_verwatch[0]}${_perlmod}-${pkgver}.tar.gz")
-sha256sums=('24fd63aa83c73fdc1d610c562720a618f6f9766ab6194ffd6d9558b8a94b9b8d')
+md5sums=('8d20308d078a3c01638b964e3d5008cb')
+sha256sums=('6d2e92232caf7550bd6fa8034b8ebbacccd81a8dcefa7a605a8ca539a15d2f22')
 
 build() {
   set -u
