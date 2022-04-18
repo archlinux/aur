@@ -1,3 +1,88 @@
+ftputil 5.0.3 is now available from
+https://ftputil.sschwarzer.net/download .
+
+
+Changes since the last stable release 5.0.2
+-------------------------------------------
+
+Fixed potential data loss bug with FTPS [1].
+
+Upgrading is highly recommended.
+
+
+What is ftputil?
+----------------
+
+ftputil is a high-level FTP client library for the Python programming
+language. ftputil implements a virtual file system for accessing FTP
+servers, that is, it can generate file-like objects for remote files.
+The library supports many functions similar to those in the `os`,
+`os.path` and `shutil` modules. ftputil has convenience functions for
+conditional uploads and downloads, and handles FTP clients and servers
+in different timezones.
+
+See the documentation for details:
+https://ftputil.sschwarzer.net/trac/wiki/Documentation
+
+
+License
+-------
+
+ftputil is open source software, released under the 3-clause BSD
+license (see https://opensource.org/licenses/BSD-3-Clause ).
+
+
+[1] https://ftputil.sschwarzer.net/trac/ticket/149
+
+
+Best regards,
+Stefan
+
+----------------------------------------------------------------------
+ftputil 5.0.2 is now available from
+https://ftputil.sschwarzer.net/download .
+
+
+Changes since the last stable release 5.0.1
+-------------------------------------------
+
+Fixed handling of empty strings as paths [1].
+
+`FTPHost.path.isdir` (and `isfile` and `islink`) now return `False` for
+an empty path. Most public methods, with the exception of
+`FTPHost.chdir`, raise an `FTPIOError` if passed remote paths are
+empty.
+
+
+What is ftputil?
+----------------
+
+ftputil is a high-level FTP client library for the Python programming
+language. ftputil implements a virtual file system for accessing FTP
+servers, that is, it can generate file-like objects for remote files.
+The library supports many functions similar to those in the `os`,
+`os.path` and `shutil` modules. ftputil has convenience functions for
+conditional uploads and downloads, and handles FTP clients and servers
+in different timezones.
+
+See the documentation for details:
+https://ftputil.sschwarzer.net/trac/wiki/Documentation
+
+
+License
+-------
+
+ftputil is open source software, released under the 3-clause BSD
+license (see https://opensource.org/licenses/BSD-3-Clause ).
+
+
+[1] https://ftputil.sschwarzer.net/trac/ticket/148
+
+
+Best regards,
+Stefan
+
+----------------------------------------------------------------------
 ftputil 5.0.1 is now available from
 https://ftputil.sschwarzer.net/download .
 
