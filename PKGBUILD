@@ -1,8 +1,7 @@
 # Maintainer: Eric Engestrom <aur@engestrom.ch>
 
 _TARBALL_PKGVER=1.1.0-2
-_UPLOAD_YEAR=2021
-_UPLOAD_MONTH=10
+_UPLOAD_DATE=20211109
 
 pkgname=xencelabs
 pkgver=${_TARBALL_PKGVER/-/.}
@@ -13,7 +12,7 @@ url='https://www.xencelabs.com'
 license=(LGPL3)
 depends=(qt5-base qt5-x11extras icu)
 install=$pkgname.install
-source_x86_64=("$url/wp-content/uploads/$_UPLOAD_YEAR/$_UPLOAD_MONTH/Linux-$_TARBALL_PKGVER-driver.zip")
+source_x86_64=("https://download01.xencelabs.com/file/$_UPLOAD_DATE/XencelabsLinux_$_TARBALL_PKGVER.zip")
 sha256sums_x86_64=('7063c441cd594f7200f6a14c25505f25c1a129749a017478b802915f8df1b226')
 
 prepare() {

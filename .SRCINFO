@@ -9,7 +9,7 @@ pkgbase = xencelabs
 	depends = qt5-base
 	depends = qt5-x11extras
 	depends = icu
-	source_x86_64 = https://www.xencelabs.com/wp-content/uploads/2021/10/Linux-1.1.0-2-driver.zip
+	source_x86_64 = https://download01.xencelabs.com/file/20211109/XencelabsLinux_1.1.0-2.zip
 	sha256sums_x86_64 = 7063c441cd594f7200f6a14c25505f25c1a129749a017478b802915f8df1b226
 
 pkgname = xencelabs
