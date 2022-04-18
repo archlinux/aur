@@ -1,15 +1,16 @@
 # Maintainer: Jack Kamm <jackkamm at gmail dot com>
 pkgname=biosyntax-less-git
-pkgver=1.0.0.r11.g5705f0c
-pkgrel=3
+pkgver=1.0.0.r20.g23259cd
+pkgrel=1
 pkgdesc="Syntax Highlighting for Computational Biology, less plugin"
 arch=('any')
 url="https://biosyntax.org/"
 license=('GPL3')
 depends=('less' 'source-highlight')
 makedepends=('sed' 'git')
-source=("biosyntax-less-git::git://github.com/bioSyntax/bioSyntax.git")
-md5sums=('SKIP')
+source=("biosyntax-less-git::git+https://github.com/bioSyntax/bioSyntax.git")
+sha256sums=('SKIP')
+
 
 pkgver() {
   cd "$pkgname"
