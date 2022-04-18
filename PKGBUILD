@@ -2,7 +2,7 @@
 
 pkgname=python-rtpplayapi
 _module='rtpplayapi'
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="An unofficial python api to fetch media from RTPPlay, based on their mobile API."
 url="https://github.com/guipenedo/rtp-play-api"
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('0f54272378f3bf9302827b202176f8ddc58f3e2c6f91ec90b01dd78bd7507a80')
+sha256sums=('2519aa024db297779943740fcc63c50b76634fe6ef6e6f773eed8e19b81af67d')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
