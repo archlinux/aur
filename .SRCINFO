@@ -1,0 +1,18 @@
+pkgbase = argc-git
+	pkgdesc = A handy way to handle sh/bash cli parameters (git)
+	pkgver = 0.8.0.r0.g5d07716
+	pkgrel = 1
+	url = https://github.com/sigoden/argc
+	arch = x86_64
+	license = MIT
+	license = Apache
+	makedepends = cargo
+	makedepends = git
+	depends = gcc-libs
+	provides = argc
+	conflicts = argc
+	options = !lto
+	source = git+https://github.com/sigoden/argc
+	sha512sums = SKIP
+
+pkgname = argc-git
