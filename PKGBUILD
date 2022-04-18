@@ -19,6 +19,10 @@ sha256sums=('SKIP')
 depends=(jdk11-openjdk)
 install=$REPO_NAME.install
 
+pkgver() {
+    echo "$LATEST_INFO" | grep "tag_name" | cut -d'"' -f4 | sed 's/v//g'
+}
+
 package() {
     cd "$srcdir" || exit
     tar -xvzf data.tar.gz -C "$pkgdir"
