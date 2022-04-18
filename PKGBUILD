@@ -2,13 +2,13 @@
 
 pkgname=stretchly-git
 _pkgname=${pkgname%-git}
-pkgver=1084.5bb8047
+pkgver=1135.8a6068a
 pkgrel=1
 pkgdesc="The break time reminder app"
 arch=('any')
 url="https://github.com/hovancik/stretchly/"
 license=('BSD')
-depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-atk' 'util-linux-libs' 'libsecret' 'libappindicator-gtk3' 'libxcrypt-compat' 'electron>=17' 'electron<18')
+depends=('gtk3' 'libnotify' 'nss' 'libxss' 'libxtst' 'xdg-utils' 'at-spi2-atk' 'util-linux-libs' 'libsecret' 'libappindicator-gtk3' 'libxcrypt-compat' 'electron17')
 makedepends=('git' 'nvm' 'jq' 'python')
 provides=("$_pkgname")
 conflicts=("$_pkgname" "${_pkgname}-bin")
@@ -60,8 +60,8 @@ build() {
     ./node_modules/.bin/electron-builder build \
         --linux pacman \
         --"${!CARCH}" \
-        -c.electronDist=/usr/lib/electron \
-        -c.electronVersion="$(</usr/lib/electron/version)"
+        -c.electronDist=/usr/lib/electron17 \
+        -c.electronVersion="$(</usr/lib/electron17/version)"
     tar -C "${_unpackdir}" -Jxf "${_outfile}"
 
     echo "Deleting Electron ($(du -h "$_electron" | awk '{print $1}'))..." >&2
@@ -75,7 +75,7 @@ build() {
     install -D -m 0755 /dev/null "${_unpackdir}/usr/bin/stretchly"
     cat >"${_unpackdir}/usr/bin/stretchly" <<EOF
 #!/bin/sh
-exec electron '/opt/$(sed -E "s/'/'\\\\''/g" <<<"${_appname}")/resources/app.asar' "\$@"
+exec electron17 '/opt/$(sed -E "s/'/'\\\\''/g" <<<"${_appname}")/resources/app.asar' "\$@"
 EOF
 }
 
