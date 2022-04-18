@@ -13,7 +13,7 @@ optdepends=("pulseaudio")
 makedepends=("git" "intltool" "lynx")
 provides=("$_pkgname" "$_pkgname-git" "$pkgname")
 conflicts=("$_pkgname" "$_pkgname-git" "$pkgname")
-source=("git://github.com/rafalcieslak/pavucontrol")
+source=("git+https://github.com/rafalcieslak/pavucontrol.git")
 sha256sums=("SKIP")
 
 pkgver() {
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
 	cd "$_pkgname"
-        ./autogen.sh --prefix=/usr
+  ./autogen.sh --prefix=/usr
 	make
 }
 

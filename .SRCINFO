@@ -18,8 +18,7 @@ pkgbase = pavucontrol-compact-git
 	conflicts = pavucontrol
 	conflicts = pavucontrol-git
 	conflicts = pavucontrol-compact-git
-	source = git://github.com/rafalcieslak/pavucontrol
+	source = git+https://github.com/rafalcieslak/pavucontrol.git
 	sha256sums = SKIP
 
 pkgname = pavucontrol-compact-git
-
