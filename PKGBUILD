@@ -7,7 +7,7 @@ _srcname=linux-5.17
 _major=5.17
 ### on initial release this is null otherwise it is the current stable subversion
 ### ie 1,2,3 corresponding $_major.1, $_major.3 etc
-_minor=2
+_minor=3
 _minorc=$((_minor+1))
 ### on initial release this is just $_major
 [[ -z $_minor ]] && _fullver=$_major || _fullver=$_major.$_minor
@@ -42,9 +42,9 @@ validpgpkeys=(
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
-b2sums=('810d9f49d3a1f2120c18b5e5a8205bd477dd433c38176ff14b5794cf68107e1de1a1a434a02e871689b2c022e79ce07fdb53285d3a555eaf5ccab66dbd6016cd'
+b2sums=('3f401cf73757dd92e46d9a98d27454a1f6d1161716c780d136ca75a74d734c0fef434bf240fad46318cbf83a67bac1e3870d0e2edd27fa4d976e00bd820c2c77'
         'SKIP'
-        'd3fce962b0243ad30a4385626cf90da2f04a6b8e745bcedd1d6f2e01fdd9c32beb443b2ae7979bcee32c730461cb4653ff726432ea28f2a5ab5c12e63ef4b6b4'
+        '03fd68cd2a9c70fcb20dbec8b62f524f032924cf3ba555d78a2348b80bbe61735e6140d0d38d74bf3051ac19a67be7c62c67dfc9ef697097ed24637427e72dc7'
         'SKIP'
         '3d1e2c1dff1e828c655b449962fb47c49fdf77d58c65c8af41ee8c56fbb2d8fdb7d0b963c775b26ac4022c6e0f9c8d19c11bc1e0e358580396520e9261bc8eeb'
         '80bb7cc9c21721c6db0180f094cd6fa0bc441ee9103d81b203c76028752041504fa53f57f066cd79937623ae4d4f7d05ad6cc18a59b544cc0ce689675a483432'
@@ -112,6 +112,7 @@ prepare() {
   fi
 
   make olddefconfig
+  diff -u ../config .config || :
  # make nconfig
 
   make -s kernelrelease > version
@@ -126,7 +127,7 @@ build() {
 _package() {
   pkgdesc="The release candidate kernel and modules"
   depends=(coreutils kmod initramfs)
-  optdepends=('crda: to set the correct wireless channels of your country'
+  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
   replaces=(virtualbox-guest-modules-arch wireguard-arch)
@@ -144,10 +145,8 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  #make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
-  # not needed since not building with CONFIG_DEBUG_INFO=y
-
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
@@ -168,6 +167,9 @@ _package-headers() {
 
   # required when STACK_VALIDATION is enabled
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
+
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  # install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
