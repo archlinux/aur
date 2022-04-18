@@ -1,0 +1,11 @@
+--- a/plugin.go	2022-04-18 08:26:37.395274661 +0200
++++ b/plugin.go	2022-04-18 08:28:09.476688414 +0200
+@@ -7,7 +7,7 @@
+ )
+ 
+ // PluginDir is the path to the plugins directory.
+-const PluginDir = "plugins"
++const PluginDir = "/usr/lib/alps/plugins"
+ 
+ // Plugin extends alps with additional functionality.
+ type Plugin interface {
