@@ -1,6 +1,6 @@
 pkgbase = python-mleap
 	pkgdesc = Common serialization format and execution engine for machine learning pipelines (Python API)
-	pkgver = 0.19.0
+	pkgver = 0.20.0
 	pkgrel = 1
 	url = https://combust.github.io/mleap-docs/
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = python-mleap
 	depends = python-scipy
 	depends = python-pandas
 	depends = python-scikit-learn
-	source = python-mleap-0.19.0::https://pypi.org/packages/source/m/mleap/mleap-0.19.0.tar.gz
-	sha256sums = 1ae1959b16d804474676bab2ef84725bf2db5aa39b316c6892f4ef20f35d75bd
+	source = python-mleap-0.20.0::https://pypi.org/packages/source/m/mleap/mleap-0.20.0.tar.gz
+	sha256sums = 71e1e794dca351b2fc3dc4355b351d95a99f499e95843fe3c49bb6d421139b06
 
 pkgname = python-mleap
