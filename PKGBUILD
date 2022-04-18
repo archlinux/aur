@@ -3,7 +3,7 @@
 
 _pkgname=vdirsyncer
 pkgname=${_pkgname}-git
-pkgver=0.18.1.dev113+g68c5968
+pkgver=0.18.1.dev128+gf3f8eb6
 pkgrel=1
 pkgdesc="Synchronize CalDAV and CardDAV."
 arch=('any')
@@ -22,6 +22,8 @@ makedepends=(
   "python-setuptools-scm"
   "python-sphinx"
   "python-sphinx_rtd_theme"
+  python-build
+  python-installer
 )
 checkdepends=(
   "python-hypothesis<7.0.0"
@@ -41,18 +43,19 @@ provides=("vdirsyncer=${pkgver}")
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  python setup.py --version
+  python -m setuptools_scm 2> /dev/null
 }
 
 build() {
   # Build vdirsyncer
   cd "${srcdir}/${_pkgname}"
-  python setup.py build
+  python -m build --wheel --no-isolation
 
   # "Install" development stuff needed to build the man page
   rm -rf "${srcdir}/develop"
   mkdir "${srcdir}/develop"
   export PYTHONPATH="${srcdir}/develop":${PYTHONPATH}
+  # TODO: Remove deprecated call to setup.py
   python setup.py develop --install-dir="${srcdir}/develop/"
 
   # Build man page
@@ -71,13 +74,13 @@ check(){
   fi
 
   export DETERMINISTIC_TESTS=true
-  pytest --tb=short -c /dev/null
+  python -m pytest --tb=short -c /dev/null
 }
 
 package() {
   cd "${srcdir}/${_pkgname}"
 
-  python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm 644 "contrib/vdirsyncer.service" "$pkgdir/usr/lib/systemd/user/vdirsyncer.service"
