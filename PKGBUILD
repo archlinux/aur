@@ -3,7 +3,7 @@
 # Contributor: Graziano Giuliani <giuliani@lamma.rete.toscana.it>
 
 pkgname=wgrib2
-pkgver=3.1.0
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="Utility to read and write grib2 files"
 arch=('x86_64')
@@ -12,7 +12,7 @@ license=('GPL' 'Apache' 'custom')
 depends=('glibc' 'gcc-libs')
 makedepends=('gcc-fortran')
 source=("https://www.ftp.cpc.ncep.noaa.gov/wd51we/wgrib2/$pkgname.tgz.v$pkgver")
-sha256sums=('5757ef9016b19ae87491918e0853dce2d3616b14f8c42efe3b2f41219c16b78f')
+sha256sums=('9236f6afddad76d868c2cfdf5c4227f5bdda5e85ae40c18bafb37218e49bc04a')
 
 build() {
   cd grib2
