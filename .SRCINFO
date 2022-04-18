@@ -1,13 +1,13 @@
 pkgbase = minitimer
 	pkgdesc = Mini Timer - A timer in your terminal
-	pkgver = 4.1.1
-	pkgrel = 4
+	pkgver = 4.1.2
+	pkgrel = 1
 	url = https://sr.ht/~arivigo/minitimer
 	arch = x86_64
 	arch = aarch64
 	license = MIT
 	conflicts = minitimer-git
-	source = minitimer-4.1.1.tar.gz::https://git.sr.ht/~arivigo/minitimer/archive/4.1.1.tar.gz
-	sha256sums = 5a07140c91008a0802fce15760dd4f9a6fef6245951b2ad41a5f63cad4a16128
+	source = minitimer-4.1.2.tar.gz::https://git.sr.ht/~arivigo/minitimer/archive/4.1.2.tar.gz
+	sha256sums = 7fba7ee09ccbbd2c749d4382a5e2399591acbcee700723fe32895b91ba95a01b
 
 pkgname = minitimer
