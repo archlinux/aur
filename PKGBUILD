@@ -11,7 +11,7 @@ depends=('java-runtime' 'bash')
 makedepends=('gendesk')
 source=("2p-repl-${pkgver}.jar::${url}/releases/download/${pkgver}/2p-repl-${pkgver}-redist.jar")
 noextract=("${pkgname}-${pkgver}.tar.gz")
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+sha256sums=('30d87129f2160b7f12c083bdf5797220a3cfa4d962b39e8dabfaa7db2a550e0b')
 
 package() {
   echo "#!/bin/sh

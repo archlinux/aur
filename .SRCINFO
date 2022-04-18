@@ -10,6 +10,6 @@ pkgbase = 2p-kt
 	depends = bash
 	noextract = 2p-kt-0.20.3.tar.gz
 	source = 2p-repl-0.20.3.jar::https://github.com/tuProlog/2p-kt/releases/download/0.20.3/2p-repl-0.20.3-redist.jar
-	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+	sha256sums = 30d87129f2160b7f12c083bdf5797220a3cfa4d962b39e8dabfaa7db2a550e0b
 
 pkgname = 2p-kt

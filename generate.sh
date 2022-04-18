@@ -16,7 +16,9 @@ LATEST_VERSION=`get_latest_release`
 URL="https://github.com/$REPO"
 VERSION=${1:-$LATEST_VERSION}
 
-DIGEST=$(wget -q $URL/releases/download/$VERSION/2p-repl-$VERSION-redist.jar | sha256sum)
+wget -q $URL/releases/download/$VERSION/2p-repl-$VERSION-redist.jar
+
+DIGEST=$(cat 2p-repl-$VERSION-redist.jar | sha256sum - | cut -d' ' -f 1)
 
 cat .PKGBUILD.template  | 
     sed -e "s/__VERSION__/$VERSION/g" |
