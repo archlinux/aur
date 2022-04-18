@@ -1,7 +1,7 @@
 # Maintainer:  Dimitris Kiziridis <ragouel at outlook dot com>
 
 pkgname=2p-kt
-pkgver=0.20.2
+pkgver=0.20.2-2
 pkgrel=1
 pkgdesc='A Kotlin Multi-Platform ecosystem for symbolic AI'
 arch=('any')
