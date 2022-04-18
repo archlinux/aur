@@ -17,9 +17,11 @@ provides=('shc')
 #source=("${_verwatch[0]}${pkgname}-${pkgver}.tgz")
 _verwatch=("${url}/releases.atom" "\s\+<title>${pkgname}-\([^<]\+\)</title>.*" 'f') # RSS
 source=(
-  "${pkgname}-${pkgver}.tgz::${url}/archive/${pkgver}.tar.gz"
+  "${pkgname}-${pkgver}.tgz::${url}/archive/refs/tags/${pkgver}.tar.gz"
   'disableencryption.diff'
 )
+md5sums=('c3f7aef42f12bccd0a54db92e3946f4e'
+         'c5c8035f5c5ee7a5dd371e690855b619')
 sha256sums=('7d7fa6a9f5f53d607ab851d739ae3d3b99ca86e2cb1425a6cab9299f673aee16'
             '08f9ae1e3fdb2b2f86f9d96257930158fbaa302d3e0d71eadbc5e246fc01150d')
 
