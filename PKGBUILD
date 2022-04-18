@@ -1,7 +1,7 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 pkgname=sonixd
 pkgver=0.15.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A full-featured Subsonic/Jellyfin compatible desktop music player"
 arch=('x86_64')
 url="https://github.com/jeffvli/sonixd"
@@ -28,7 +28,7 @@ prepare() {
 	cd "$pkgname-$pkgver"
 
 	_ensure_local_nvm
-	nvm install --no-progress 15.14.0
+	nvm install --no-progress 16
 
 	_ver="$(</usr/lib/electron13/version)"
 	yarn upgrade --cache-folder="$srcdir/yarn-cache" "electron@$_ver"
