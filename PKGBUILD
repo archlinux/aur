@@ -4,11 +4,12 @@
 pkgname=python-ftputil
 _pkg=ftputil
 pkgver=5.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="High-level FTP client library"
 arch=('any')
 url="https://ftputil.sschwarzer.net/"
 license=('BSD')
+depends=('python')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 # checkdepends=('python-pytest' 'python-freezegun')
 changelog=announcements.txt
