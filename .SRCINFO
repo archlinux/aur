@@ -1,0 +1,16 @@
+pkgbase = nautilus-code
+	pkgdesc = Adds right-click menu items to open current folder in VSCode or GNOME Builder
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/realmazharhussain/nautilus-code
+	arch = any
+	license = AGPL3
+	makedepends = git
+	makedepends = meson
+	depends = libnautilus-extension
+	optdepends = code: for 'Open in VSCode' menu item,
+	optdepends = gnome-builder: for 'Open in Builder' menu item
+	source = nautilus-code-0.1.tar.gz::https://github.com/realmazharhussain/nautilus-code/archive/refs/tags/v0.1.tar.gz
+	md5sums = dcaed238763737c11835fadc76ab6f30
+
+pkgname = nautilus-code
