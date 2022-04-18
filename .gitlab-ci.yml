@@ -1,24 +1,12 @@
 include:
-  - project: 'common/gitlab-helper'
+  - project: "common/gitlab-helper"
     ref: master
-    file: 'deploy-helper.yml'
+    file: "ci-helper.yml"
 
-workflow:
-  rules:
-    # don't create pipeline if the commit message starts with WIP
-    - if: $CI_COMMIT_MESSAGE =~ /^WIP/
-      when: never
-    # don't create pipeline if we're merging from master or version branches
-    - if: $CI_MERGE_REQUEST_IID && $CI_COMMIT_REF_NAME =~ /^(master|VER_\d+_\d+)$/
-      when: never
-    - if: $CI_MERGE_REQUEST_IID
-    - if: $CI_COMMIT_REF_NAME =~ /^(master|VER_\d+_\d+)$/
-    - if: $CI_COMMIT_TAG
-    - if: $CI_PIPELINE_SOURCE =~ /^(trigger|pipeline|web|api|merge_request_event)$/
+workflow: !reference [ .common, workflow ]
 
-.rules_templates:
-  rules:
-    - if: &on_master $CI_COMMIT_REF_NAME =~ /^master$/
+variables:
+  PKG_NAME: "klepto"
 
 stages:
   - build
@@ -26,34 +14,16 @@ stages:
   - deploy
 
 build-klepto:
-  stage: build
+  extends: .arch-build
   image: ${CI_REGISTRY}/common/gitlab-helper/archlinux-yay:master
-  artifacts:
-    name: "${CI_JOB_NAME}-${CI_COMMIT_REF_NAME}"
-    expire_in: 1 day
-    paths:
-      - klepto*.pkg.tar.zst
-  script:
-    - makepkg -s --noconfirm
-
+  before_script:
+    - git config --global --add safe.directory /builds/arch/klepto
+  needs: []
+  
 test-klepto:
-  stage: test
+  extends: .arch-test
   image: ${CI_REGISTRY}/common/gitlab-helper/archlinux-yay:master
   needs: ["build-klepto"]
-  script:
-    - sudo pacman -U --noconfirm klepto*.pkg.tar.zst
-    - namcap -m PKGBUILD
-    - namcap -m klepto*.pkg.tar.zst
 
 deploy-klepto:
-  stage: deploy
-  extends: .git-ssh-push-remote
-  variables:
-    REMOTE_HOST: "aur.archlinux.org"
-    REMOTE_USER: "aur"
-    REMOTE_REPOSITORY: "klepto.git"
-  before_script:
-    - echo "Uploading to AUR..."
-  rules:
-    - if: *on_master
-      when: manual
+  extends: .arch-deploy

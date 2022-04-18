@@ -1,7 +1,7 @@
 pkgbase = klepto
 	pkgdesc = A tool that copies and anonymises data from other sources.
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hellofresh/klepto
 	arch = x86_64
 	license = MIT

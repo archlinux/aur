@@ -1,7 +1,7 @@
 # Maintainer: Jan Kohnert <bughunter@jan.kohnert.de>
 pkgname=klepto
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool that copies and anonymises data from other sources."
 arch=("x86_64")
 url="https://github.com/hellofresh/klepto"
