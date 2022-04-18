@@ -16,7 +16,7 @@ conflicts=('overgrive')
 install='overgrive.install'
 changelog=
 
-source=('overgrive.tar.xz::https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive-3.4.3-0-any.pkg.tar.xz')
+source=("https://www.thefanclub.co.za/sites/default/files/public/overgrive/overgrive-$pkgver-0-any.pkg.tar.xz")
 md5sums=('e5dd2d82e3f1a23e83e20bacded9e207')
 
 prepare() {
