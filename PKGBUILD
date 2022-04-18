@@ -3,7 +3,7 @@
 
 pkgname=polymc-bin
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('x86_64')
 url="https://github.com/PolyMC/PolyMC"
@@ -14,9 +14,11 @@ conflicts=('polymc')
 optdepends=('java-runtime=8: support for Minecraft versions < 1.17'
             'java-runtime=17: support for Minecraft versions >= 1.17')
 source=("https://github.com/PolyMC/PolyMC/releases/download/${pkgver}/PolyMC-Linux-${pkgver}.tar.gz")
+noextract=("PolyMC-Linux-${pkgver}.tar.gz")
 sha256sums=('9a1fcc41217bb45ab675817411bd4e69061e1d51299ac1b925e3121fa93b1d98')
 
 package() {
-    install -d $pkgdir/usr
-    cp -r $srcdir/usr/. $pkgdir/usr
+    install -d "$pkgdir/usr"
+    tar -C "$pkgdir/usr" -xvf PolyMC-Linux-${pkgver}.tar.gz
+    chown -R root:root "$pkgdir/usr"  # fils in tarball are not owned by root
 }
