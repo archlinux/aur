@@ -4,7 +4,7 @@ set -u
 _pyver="python"
 _pybase='parse_type'
 pkgname="${_pyver}-${_pybase}"
-pkgver='0.5.6'
+pkgver='0.6.0'
 pkgrel='1'
 pkgdesc='simplifies to build parse types based on the parse module'
 arch=('any')
@@ -24,8 +24,8 @@ _srcdir="${_pybase}-${pkgver}"
 #source=("https://pypi.io/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
 source=("${_srcdir}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 #https://github.com/jenisys/parse_type/archive/v0.5.6.tar.gz
-md5sums=('872136263b915e051115669b4467876e')
-sha256sums=('12b75aa048595457fa5d15558c1a49a688ad4a585d5d1378b1aff4d99fb532ae')
+md5sums=('ab09de81bd748c66376abe9e5f12faf7')
+sha256sums=('b20e386a8091ba9a37f706827a5a3b81df2d7c323f886ade5f27b0c0af3e9e23')
 
 build() {
   set -u
