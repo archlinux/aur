@@ -1,8 +1,8 @@
 # Maintainer: Hisbaan Noorani <hisbaan@gmail.com>
 pkgname=didyoumean-git
-pkgver=1.0.2
+pkgver=1.1.0
 pkgrel=1
-pkgdesc="A cli spelling corrector"
+pkgdesc="A CLI spelling corrector"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/hisbaan/didyoumean"
 license=('GPL3')
