@@ -1,7 +1,7 @@
 pkgbase = tangram
 	pkgdesc = Browser for your pinned tabs
-	pkgver = 1.4.0
-	pkgrel = 2
+	pkgver = 1.4.1
+	pkgrel = 1
 	url = https://apps.gnome.org/app/re.sonny.Tangram
 	arch = any
 	license = GPL3
@@ -14,7 +14,7 @@ pkgbase = tangram
 	conflicts = gigagram
 	conflicts = tangram-web
 	replaces = tangram-web
-	source = git+https://github.com/sonnyp/Tangram.git#tag=v1.4.0
+	source = git+https://github.com/sonnyp/Tangram.git#tag=v1.4.1
 	source = git+https://github.com/sonnyp/troll.git
 	sha256sums = SKIP
 	sha256sums = SKIP

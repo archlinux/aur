@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: Sonny Piers <sonny at fastmail dot net>
 pkgname=tangram
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.4.1
+pkgrel=1
 pkgdesc="Browser for your pinned tabs"
 arch=('any')
 url="https://apps.gnome.org/app/re.sonny.Tangram"
