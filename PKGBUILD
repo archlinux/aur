@@ -8,7 +8,7 @@ pkgdesc="flexible, screen-oriented MUD client, for use with any type of MUD"
 url="http://tinyfugue.sourceforge.net/"
 license=("GPL")
 depends=(pcre zlib ncurses openssl)
-source=("git://github.com/gary9872/tf40s1.git")
+source=("git+https://github.com/gary9872/tf40s1.git")
 sha256sums=('SKIP')
 
 # build function

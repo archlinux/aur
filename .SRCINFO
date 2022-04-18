@@ -10,8 +10,7 @@ pkgbase = tinyfugue4-stable
 	depends = zlib
 	depends = ncurses
 	depends = openssl
-	source = git://github.com/gary9872/tf40s1.git
+	source = git+https://github.com/gary9872/tf40s1.git
 	sha256sums = SKIP
 
 pkgname = tinyfugue4-stable
-
