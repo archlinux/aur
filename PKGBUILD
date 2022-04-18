@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-lspconfig
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc='Quickstart configurations for the Neovim LSP client'
 arch=('any')
@@ -11,7 +11,7 @@ groups=('neovim-plugins')
 depends=('neovim')
 install=lspconfig.install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('d9aa89b890a441338b974f46640a54b42ab8c8b959687e6f052140cfa88b3af3')
+sha256sums=('27308bfa7bf48eb6caf363e2753182a3dc653e6b94d6b3307223a79f59a352b2')
 
 PURGE_TARGETS=('tags')
 
