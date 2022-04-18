@@ -1,0 +1,790 @@
+From 2a05e5f30a2c2a07cb5fab612de9709d7f6b6ae3 Mon Sep 17 00:00:00 2001
+From: Bruno Korbar <bkorbar@quansight.com>
+Date: Fri, 18 Mar 2022 14:05:33 +0000
+Subject: [PATCH 01/18] fix for FFMPEG 5.0
+
+---
+ torchvision/csrc/io/decoder/decoder.cpp       | 50 +++++++------------
+ torchvision/csrc/io/decoder/stream.cpp        |  2 +-
+ .../csrc/io/decoder/subtitle_stream.cpp       | 22 +++++---
+ 3 files changed, 32 insertions(+), 42 deletions(-)
+
+diff --git a/torchvision/csrc/io/decoder/decoder.cpp b/torchvision/csrc/io/decoder/decoder.cpp
+index 9ff2bd75bb..e24f4592eb 100644
+--- a/torchvision/csrc/io/decoder/decoder.cpp
++++ b/torchvision/csrc/io/decoder/decoder.cpp
+@@ -18,25 +18,6 @@ constexpr size_t kIoBufferSize = 96 * 1024;
+ constexpr size_t kIoPaddingSize = AV_INPUT_BUFFER_PADDING_SIZE;
+ constexpr size_t kLogBufferSize = 1024;
+ 
+-int ffmpeg_lock(void** mutex, enum AVLockOp op) {
+-  std::mutex** handle = (std::mutex**)mutex;
+-  switch (op) {
+-    case AV_LOCK_CREATE:
+-      *handle = new std::mutex();
+-      break;
+-    case AV_LOCK_OBTAIN:
+-      (*handle)->lock();
+-      break;
+-    case AV_LOCK_RELEASE:
+-      (*handle)->unlock();
+-      break;
+-    case AV_LOCK_DESTROY:
+-      delete *handle;
+-      break;
+-  }
+-  return 0;
+-}
+-
+ bool mapFfmpegType(AVMediaType media, MediaType* type) {
+   switch (media) {
+     case AVMEDIA_TYPE_AUDIO:
+@@ -202,8 +183,6 @@ void Decoder::initOnce() {
+     avcodec_register_all();
+ #endif
+     avformat_network_init();
+-    // register ffmpeg lock manager
+-    av_lockmgr_register(&ffmpeg_lock);
+     av_log_set_callback(Decoder::logFunction);
+     av_log_set_level(AV_LOG_ERROR);
+     VLOG(1) << "Registered ffmpeg libs";
+@@ -277,7 +256,7 @@ bool Decoder::init(
+           break;
+       }
+ 
+-      fmt = av_find_input_format(fmtName);
++      fmt = (AVInputFormat*)av_find_input_format(fmtName);
+     }
+ 
+     const size_t avioCtxBufferSize = kIoBufferSize;
+@@ -505,10 +484,14 @@ int Decoder::getFrame(size_t workingTimeInMs) {
+   // once decode() method gets called and grab some bytes
+   // run this method again
+   // init package
+-  AVPacket avPacket;
+-  av_init_packet(&avPacket);
+-  avPacket.data = nullptr;
+-  avPacket.size = 0;
++  // update 03/22: moving memory management to ffmpeg
++  AVPacket* avPacket;
++  avPacket = av_packet_alloc();
++  if (avPacket == NULL) {
++    LOG(ERROR) << "decoder as not able to allocate the packet.";
++  }
++  avPacket->data = nullptr;
++  avPacket->size = 0;
+ 
+   auto end = std::chrono::steady_clock::now() +
+       std::chrono::milliseconds(workingTimeInMs);
+@@ -521,7 +504,7 @@ int Decoder::getFrame(size_t workingTimeInMs) {
+   size_t decodingErrors = 0;
+   bool decodedFrame = false;
+   while (!interrupted_ && inRange_.any() && !decodedFrame && watcher()) {
+-    result = av_read_frame(inputCtx_, &avPacket);
++    result = av_read_frame(inputCtx_, avPacket);
+     if (result == AVERROR(EAGAIN)) {
+       VLOG(4) << "Decoder is busy...";
+       std::this_thread::yield();
+@@ -538,10 +521,11 @@ int Decoder::getFrame(size_t workingTimeInMs) {
+       break;
+     }
+ 
+-    // get stream
+-    auto stream = findByIndex(avPacket.stream_index);
++    // get stream; if stream cannot be found reset the packet to
++    // default settings
++    auto stream = findByIndex(avPacket->stream_index);
+     if (stream == nullptr || !inRange_.test(stream->getIndex())) {
+-      av_packet_unref(&avPacket);
++      av_packet_unref(avPacket);
+       continue;
+     }
+ 
+@@ -553,7 +537,7 @@ int Decoder::getFrame(size_t workingTimeInMs) {
+       bool hasMsg = false;
+       // packet either got consumed completely or not at all
+       if ((result = processPacket(
+-               stream, &avPacket, &gotFrame, &hasMsg, params_.fastSeek)) < 0) {
++               stream, avPacket, &gotFrame, &hasMsg, params_.fastSeek)) < 0) {
+         LOG(ERROR) << "processPacket failed with code: " << result;
+         break;
+       }
+@@ -585,10 +569,10 @@ int Decoder::getFrame(size_t workingTimeInMs) {
+ 
+     result = 0;
+ 
+-    av_packet_unref(&avPacket);
++    av_packet_unref(avPacket);
+   }
+ 
+-  av_packet_unref(&avPacket);
++  av_packet_unref(avPacket);
+ 
+   VLOG(2) << "Interrupted loop"
+           << ", interrupted_ " << interrupted_ << ", inRange_.any() "
+diff --git a/torchvision/csrc/io/decoder/stream.cpp b/torchvision/csrc/io/decoder/stream.cpp
+index 3fd49efbfc..0d625ef211 100644
+--- a/torchvision/csrc/io/decoder/stream.cpp
++++ b/torchvision/csrc/io/decoder/stream.cpp
+@@ -28,7 +28,7 @@ Stream::~Stream() {
+ 
+ // look up the proper CODEC querying the function
+ AVCodec* Stream::findCodec(AVCodecParameters* params) {
+-  return avcodec_find_decoder(params->codec_id);
++  return (AVCodec*)avcodec_find_decoder(params->codec_id);
+ }
+ 
+ // Allocate memory for the AVCodecContext, which will hold the context for
+diff --git a/torchvision/csrc/io/decoder/subtitle_stream.cpp b/torchvision/csrc/io/decoder/subtitle_stream.cpp
+index 0d3fc9f12c..e1d29bc7bb 100644
+--- a/torchvision/csrc/io/decoder/subtitle_stream.cpp
++++ b/torchvision/csrc/io/decoder/subtitle_stream.cpp
+@@ -44,20 +44,26 @@ int SubtitleStream::analyzePacket(const AVPacket* packet, bool* gotFrame) {
+   // clean-up
+   releaseSubtitle();
+   // check flush packet
+-  AVPacket avPacket;
+-  av_init_packet(&avPacket);
+-  avPacket.data = nullptr;
+-  avPacket.size = 0;
+-  auto pkt = packet ? *packet : avPacket;
++  AVPacket* avPacket;
++  avPacket = av_packet_alloc();
++  if (avPacket == NULL) {
++    LOG(ERROR) << "decoder as not able to allocate the packet.";
++  }
++  avPacket->data = nullptr;
++  avPacket->size = 0;
++
++  auto pkt = packet ? packet : avPacket;
+   int gotFramePtr = 0;
+-  int result = avcodec_decode_subtitle2(codecCtx_, &sub_, &gotFramePtr, &pkt);
++  // is these a better way than cast from const?
++  int result =
++      avcodec_decode_subtitle2(codecCtx_, &sub_, &gotFramePtr, (AVPacket*)pkt);
+ 
+   if (result < 0) {
+     LOG(ERROR) << "avcodec_decode_subtitle2 failed, err: "
+                << Util::generateErrorDesc(result);
+     return result;
+   } else if (result == 0) {
+-    result = pkt.size; // discard the rest of the package
++    result = pkt->size; // discard the rest of the package
+   }
+ 
+   sub_.release = gotFramePtr;
+@@ -66,7 +72,7 @@ int SubtitleStream::analyzePacket(const AVPacket* packet, bool* gotFrame) {
+   // set proper pts in us
+   if (gotFramePtr) {
+     sub_.pts = av_rescale_q(
+-        pkt.pts, inputCtx_->streams[format_.stream]->time_base, timeBaseQ);
++        pkt->pts, inputCtx_->streams[format_.stream]->time_base, timeBaseQ);
+   }
+ 
+   return result;
+
+From 3a927c6e7b09e8fde545d940fb80e6faaf250032 Mon Sep 17 00:00:00 2001
+From: Joao Gomes <jdsgomes@fb.com>
+Date: Tue, 22 Mar 2022 14:12:29 +0000
+Subject: [PATCH 02/18] Attempt to fix memory leak
+
+---
+ torchvision/csrc/io/decoder/decoder.cpp | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/torchvision/csrc/io/decoder/decoder.cpp b/torchvision/csrc/io/decoder/decoder.cpp
+index e24f4592eb..f167a264e1 100644
+--- a/torchvision/csrc/io/decoder/decoder.cpp
++++ b/torchvision/csrc/io/decoder/decoder.cpp
+@@ -497,6 +497,7 @@ int Decoder::getFrame(size_t workingTimeInMs) {
+       std::chrono::milliseconds(workingTimeInMs);
+   // return true if elapsed time less than timeout
+   auto watcher = [end]() -> bool {
++    av_packet_free(&avPacket);
+     return std::chrono::steady_clock::now() <= end;
+   };
+ 
+@@ -585,6 +586,7 @@ int Decoder::getFrame(size_t workingTimeInMs) {
+   // 3. unrecoverable error or ENODATA (end of stream)
+   // 4. decoded frames pts are out of the specified range
+   // 5. success decoded frame
++  av_packet_free(&avPacket);
+   if (interrupted_) {
+     return EINTR;
+   }
+
+From 7984483358138dac2bf575ea913ba3a740db6452 Mon Sep 17 00:00:00 2001
+From: Joao Gomes <jdsgomes@fb.com>
+Date: Tue, 22 Mar 2022 14:19:22 +0000
+Subject: [PATCH 03/18] early stop when mem alloc fails
+
+---
+ torchvision/csrc/io/decoder/decoder.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/torchvision/csrc/io/decoder/decoder.cpp b/torchvision/csrc/io/decoder/decoder.cpp
+index f167a264e1..ed35d85370 100644
+--- a/torchvision/csrc/io/decoder/decoder.cpp
++++ b/torchvision/csrc/io/decoder/decoder.cpp
+@@ -4,6 +4,7 @@
+ #include <future>
+ #include <iostream>
+ #include <mutex>
++#include <cerrno>
+ #include "audio_stream.h"
+ #include "cc_stream.h"
+ #include "subtitle_stream.h"
+@@ -487,8 +488,10 @@ int Decoder::getFrame(size_t workingTimeInMs) {
+   // update 03/22: moving memory management to ffmpeg
+   AVPacket* avPacket;
+   avPacket = av_packet_alloc();
+-  if (avPacket == NULL) {
++  if (avPacket == nullptr) {
+     LOG(ERROR) << "decoder as not able to allocate the packet.";
++    av_packet_free(&avPacket);
++    return ENOMEM;
+   }
+   avPacket->data = nullptr;
+   avPacket->size = 0;
+
+From f9c898723a41f96ab593adfc8275e3ea34131410 Mon Sep 17 00:00:00 2001
+From: Joao Gomes <jdsgomes@fb.com>
+Date: Tue, 22 Mar 2022 14:31:00 +0000
+Subject: [PATCH 04/18] fix c lint error
+
+---
+ torchvision/csrc/io/decoder/decoder.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/torchvision/csrc/io/decoder/decoder.cpp b/torchvision/csrc/io/decoder/decoder.cpp
+index ed35d85370..3779f2fadc 100644
+--- a/torchvision/csrc/io/decoder/decoder.cpp
++++ b/torchvision/csrc/io/decoder/decoder.cpp
+@@ -1,10 +1,10 @@
+ #include "decoder.h"
+ #include <c10/util/Logging.h>
+ #include <libavutil/avutil.h>
++#include <cerrno>
+ #include <future>
+ #include <iostream>
+ #include <mutex>
+-#include <cerrno>
+ #include "audio_stream.h"
+ #include "cc_stream.h"
+ #include "subtitle_stream.h"
+
+From 4c6c8fceb508a03b6f5a4d0856ff24dc77a8f305 Mon Sep 17 00:00:00 2001
+From: Joao Gomes <jdsgomes@fb.com>
+Date: Tue, 22 Mar 2022 14:44:33 +0000
+Subject: [PATCH 05/18] fix bug
+
+---
+ torchvision/csrc/io/decoder/decoder.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/torchvision/csrc/io/decoder/decoder.cpp b/torchvision/csrc/io/decoder/decoder.cpp
+index 3779f2fadc..c69476f5e6 100644
+--- a/torchvision/csrc/io/decoder/decoder.cpp
++++ b/torchvision/csrc/io/decoder/decoder.cpp
+@@ -490,7 +490,7 @@ int Decoder::getFrame(size_t workingTimeInMs) {
+   avPacket = av_packet_alloc();
+   if (avPacket == nullptr) {
+     LOG(ERROR) << "decoder as not able to allocate the packet.";
+-    av_packet_free(&avPacket);
++    av_packet_free(avPacket);
+     return ENOMEM;
+   }
+   avPacket->data = nullptr;
+@@ -500,7 +500,7 @@ int Decoder::getFrame(size_t workingTimeInMs) {
+       std::chrono::milliseconds(workingTimeInMs);
+   // return true if elapsed time less than timeout
+   auto watcher = [end]() -> bool {
+-    av_packet_free(&avPacket);
++    av_packet_free(avPacket);
+     return std::chrono::steady_clock::now() <= end;
+   };
+ 
+@@ -589,7 +589,7 @@ int Decoder::getFrame(size_t workingTimeInMs) {
+   // 3. unrecoverable error or ENODATA (end of stream)
+   // 4. decoded frames pts are out of the specified range
+   // 5. success decoded frame
+-  av_packet_free(&avPacket);
++  av_packet_free(avPacket);
+   if (interrupted_) {
+     return EINTR;
+   }
+
+From 08232e4246a1b1c1cb4b2bbcbddb015c5fbc573b Mon Sep 17 00:00:00 2001
+From: Joao Gomes <jdsgomes@fb.com>
+Date: Tue, 22 Mar 2022 15:01:40 +0000
+Subject: [PATCH 06/18] revert changes
+
+---
+ torchvision/csrc/io/decoder/decoder.cpp | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/torchvision/csrc/io/decoder/decoder.cpp b/torchvision/csrc/io/decoder/decoder.cpp
+index c69476f5e6..3779f2fadc 100644
+--- a/torchvision/csrc/io/decoder/decoder.cpp
++++ b/torchvision/csrc/io/decoder/decoder.cpp
+@@ -490,7 +490,7 @@ int Decoder::getFrame(size_t workingTimeInMs) {
+   avPacket = av_packet_alloc();
+   if (avPacket == nullptr) {
+     LOG(ERROR) << "decoder as not able to allocate the packet.";
+-    av_packet_free(avPacket);
++    av_packet_free(&avPacket);
+     return ENOMEM;
+   }
+   avPacket->data = nullptr;
+@@ -500,7 +500,7 @@ int Decoder::getFrame(size_t workingTimeInMs) {
+       std::chrono::milliseconds(workingTimeInMs);
+   // return true if elapsed time less than timeout
+   auto watcher = [end]() -> bool {
+-    av_packet_free(avPacket);
++    av_packet_free(&avPacket);
+     return std::chrono::steady_clock::now() <= end;
+   };
+ 
+@@ -589,7 +589,7 @@ int Decoder::getFrame(size_t workingTimeInMs) {
+   // 3. unrecoverable error or ENODATA (end of stream)
+   // 4. decoded frames pts are out of the specified range
+   // 5. success decoded frame
+-  av_packet_free(avPacket);
++  av_packet_free(&avPacket);
+   if (interrupted_) {
+     return EINTR;
+   }
+
+From 2f79d6c5ec5f09a803ac7f4e4e2a3608cff64f77 Mon Sep 17 00:00:00 2001
+From: Joao Gomes <jdsgomes@fb.com>
+Date: Tue, 22 Mar 2022 15:38:38 +0000
+Subject: [PATCH 07/18] remove incorrect av_packet_free
+
+---
+ torchvision/csrc/io/decoder/decoder.cpp | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/torchvision/csrc/io/decoder/decoder.cpp b/torchvision/csrc/io/decoder/decoder.cpp
+index 3779f2fadc..76ece7839a 100644
+--- a/torchvision/csrc/io/decoder/decoder.cpp
++++ b/torchvision/csrc/io/decoder/decoder.cpp
+@@ -490,7 +490,6 @@ int Decoder::getFrame(size_t workingTimeInMs) {
+   avPacket = av_packet_alloc();
+   if (avPacket == nullptr) {
+     LOG(ERROR) << "decoder as not able to allocate the packet.";
+-    av_packet_free(&avPacket);
+     return ENOMEM;
+   }
+   avPacket->data = nullptr;
+
+From d124ee1b2874941cf1d46fa7f8fdd0d2ab4e6354 Mon Sep 17 00:00:00 2001
+From: Bruno Korbar <bkorbar@quansight.com>
+Date: Wed, 23 Mar 2022 11:58:57 +0000
+Subject: [PATCH 08/18] add `av_packet_free` to subtitle stream
+
+---
+ torchvision/csrc/io/decoder/subtitle_stream.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/torchvision/csrc/io/decoder/subtitle_stream.cpp b/torchvision/csrc/io/decoder/subtitle_stream.cpp
+index e1d29bc7bb..ac97628bdf 100644
+--- a/torchvision/csrc/io/decoder/subtitle_stream.cpp
++++ b/torchvision/csrc/io/decoder/subtitle_stream.cpp
+@@ -61,6 +61,8 @@ int SubtitleStream::analyzePacket(const AVPacket* packet, bool* gotFrame) {
+   if (result < 0) {
+     LOG(ERROR) << "avcodec_decode_subtitle2 failed, err: "
+                << Util::generateErrorDesc(result);
++    // free packet
++    av_packet_free(&avPacket);
+     return result;
+   } else if (result == 0) {
+     result = pkt->size; // discard the rest of the package
+@@ -75,6 +77,7 @@ int SubtitleStream::analyzePacket(const AVPacket* packet, bool* gotFrame) {
+         pkt->pts, inputCtx_->streams[format_.stream]->time_base, timeBaseQ);
+   }
+ 
++  av_packet_free(&avPacket);
+   return result;
+ }
+ 
+
+From 2f7c02a1e0dd3b0f9f358fef7156141c28b733d9 Mon Sep 17 00:00:00 2001
+From: Bruno Korbar <bkorbar@quansight.com>
+Date: Thu, 24 Mar 2022 10:10:24 +0000
+Subject: [PATCH 09/18] Addressing subtitle stream comments
+
+---
+ torchvision/csrc/io/decoder/subtitle_stream.cpp | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/torchvision/csrc/io/decoder/subtitle_stream.cpp b/torchvision/csrc/io/decoder/subtitle_stream.cpp
+index ac97628bdf..5d6b4fa842 100644
+--- a/torchvision/csrc/io/decoder/subtitle_stream.cpp
++++ b/torchvision/csrc/io/decoder/subtitle_stream.cpp
+@@ -46,8 +46,10 @@ int SubtitleStream::analyzePacket(const AVPacket* packet, bool* gotFrame) {
+   // check flush packet
+   AVPacket* avPacket;
+   avPacket = av_packet_alloc();
+-  if (avPacket == NULL) {
+-    LOG(ERROR) << "decoder as not able to allocate the packet.";
++  if (avPacket == nullptr) {
++    LOG(ERROR)
++        << "decoder as not able to allocate the subtitle-specific packet.";
++    return ENOMEM;
+   }
+   avPacket->data = nullptr;
+   avPacket->size = 0;
+
+From 926a11e7d8fab01597ee31560e7206ebc6d30892 Mon Sep 17 00:00:00 2001
+From: Bruno Korbar <bkorbar@quansight.com>
+Date: Thu, 24 Mar 2022 10:16:54 +0000
+Subject: [PATCH 10/18] addressing decoder changes
+
+---
+ torchvision/csrc/io/decoder/decoder.cpp | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/torchvision/csrc/io/decoder/decoder.cpp b/torchvision/csrc/io/decoder/decoder.cpp
+index 76ece7839a..e96da5a5be 100644
+--- a/torchvision/csrc/io/decoder/decoder.cpp
++++ b/torchvision/csrc/io/decoder/decoder.cpp
+@@ -575,8 +575,7 @@ int Decoder::getFrame(size_t workingTimeInMs) {
+     av_packet_unref(avPacket);
+   }
+ 
+-  av_packet_unref(avPacket);
+-
++  av_packet_free(&avPacket);
+   VLOG(2) << "Interrupted loop"
+           << ", interrupted_ " << interrupted_ << ", inRange_.any() "
+           << inRange_.any() << ", decodedFrame " << decodedFrame << ", result "
+@@ -588,7 +587,6 @@ int Decoder::getFrame(size_t workingTimeInMs) {
+   // 3. unrecoverable error or ENODATA (end of stream)
+   // 4. decoded frames pts are out of the specified range
+   // 5. success decoded frame
+-  av_packet_free(&avPacket);
+   if (interrupted_) {
+     return EINTR;
+   }
+
+From 2602ef4dfff353356b76f8d7cf00637c6ae52871 Mon Sep 17 00:00:00 2001
+From: Bruno Korbar <bkorbar@quansight.com>
+Date: Thu, 24 Mar 2022 10:19:12 +0000
+Subject: [PATCH 11/18] nit
+
+---
+ .../csrc/io/decoder/subtitle_stream.cpp       | 24 +++++++++++--------
+ 1 file changed, 14 insertions(+), 10 deletions(-)
+
+diff --git a/torchvision/csrc/io/decoder/subtitle_stream.cpp b/torchvision/csrc/io/decoder/subtitle_stream.cpp
+index 5d6b4fa842..1e3e9f419b 100644
+--- a/torchvision/csrc/io/decoder/subtitle_stream.cpp
++++ b/torchvision/csrc/io/decoder/subtitle_stream.cpp
+@@ -43,18 +43,22 @@ int SubtitleStream::initFormat() {
+ int SubtitleStream::analyzePacket(const AVPacket* packet, bool* gotFrame) {
+   // clean-up
+   releaseSubtitle();
+-  // check flush packet
+-  AVPacket* avPacket;
+-  avPacket = av_packet_alloc();
+-  if (avPacket == nullptr) {
+-    LOG(ERROR)
+-        << "decoder as not able to allocate the subtitle-specific packet.";
+-    return ENOMEM;
++
++  auto pkt = packet;
++  if (pkt == nullptr) {
++    // check flush packet
++    AVPacket* avPacket;
++    avPacket = av_packet_alloc();
++    if (avPacket == nullptr) {
++      LOG(ERROR)
++          << "decoder as not able to allocate the subtitle-specific packet.";
++      return ENOMEM;
++    }
++    avPacket->data = nullptr;
++    avPacket->size = 0;
++    pkt = avPacket;
+   }
+-  avPacket->data = nullptr;
+-  avPacket->size = 0;
+ 
+-  auto pkt = packet ? packet : avPacket;
+   int gotFramePtr = 0;
+   // is these a better way than cast from const?
+   int result =
+
+From b978ba12586e7aae5d8f17dbdf30e35b5f37a322 Mon Sep 17 00:00:00 2001
+From: Bruno Korbar <bkorbar@quansight.com>
+Date: Thu, 24 Mar 2022 10:59:15 +0000
+Subject: [PATCH 12/18] addressing datumbox concernsz
+
+---
+ .../csrc/io/decoder/subtitle_stream.cpp       | 27 +++++++++----------
+ 1 file changed, 12 insertions(+), 15 deletions(-)
+
+diff --git a/torchvision/csrc/io/decoder/subtitle_stream.cpp b/torchvision/csrc/io/decoder/subtitle_stream.cpp
+index 1e3e9f419b..c4fbf00790 100644
+--- a/torchvision/csrc/io/decoder/subtitle_stream.cpp
++++ b/torchvision/csrc/io/decoder/subtitle_stream.cpp
+@@ -44,20 +44,18 @@ int SubtitleStream::analyzePacket(const AVPacket* packet, bool* gotFrame) {
+   // clean-up
+   releaseSubtitle();
+ 
+-  auto pkt = packet;
+-  if (pkt == nullptr) {
+-    // check flush packet
+-    AVPacket* avPacket;
+-    avPacket = av_packet_alloc();
+-    if (avPacket == nullptr) {
+-      LOG(ERROR)
+-          << "decoder as not able to allocate the subtitle-specific packet.";
+-      return ENOMEM;
+-    }
+-    avPacket->data = nullptr;
+-    avPacket->size = 0;
+-    pkt = avPacket;
++  // FIXME: should this even be created?
++  AVPacket* avPacket;
++  avPacket = av_packet_alloc();
++  if (avPacket == nullptr) {
++    LOG(ERROR)
++        << "decoder as not able to allocate the subtitle-specific packet.";
++    return ENOMEM;
+   }
++  avPacket->data = nullptr;
++  avPacket->size = 0;
++  // check flush packet
++  auto pkt = packet ? packet : avPacket;
+ 
+   int gotFramePtr = 0;
+   // is these a better way than cast from const?
+@@ -67,7 +65,7 @@ int SubtitleStream::analyzePacket(const AVPacket* packet, bool* gotFrame) {
+   if (result < 0) {
+     LOG(ERROR) << "avcodec_decode_subtitle2 failed, err: "
+                << Util::generateErrorDesc(result);
+-    // free packet
++    // free the packet we've created
+     av_packet_free(&avPacket);
+     return result;
+   } else if (result == 0) {
+@@ -83,7 +81,6 @@ int SubtitleStream::analyzePacket(const AVPacket* packet, bool* gotFrame) {
+         pkt->pts, inputCtx_->streams[format_.stream]->time_base, timeBaseQ);
+   }
+ 
+-  av_packet_free(&avPacket);
+   return result;
+ }
+ 
+
+From 0f02ed93a49875b80f36399cb04aeae74040746e Mon Sep 17 00:00:00 2001
+From: Bruno Korbar <bkorbar@quansight.com>
+Date: Thu, 24 Mar 2022 11:21:44 +0000
+Subject: [PATCH 13/18] averror push
+
+---
+ torchvision/csrc/io/decoder/decoder.cpp         | 2 +-
+ torchvision/csrc/io/decoder/subtitle_stream.cpp | 3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/torchvision/csrc/io/decoder/decoder.cpp b/torchvision/csrc/io/decoder/decoder.cpp
+index e96da5a5be..7c53d302b3 100644
+--- a/torchvision/csrc/io/decoder/decoder.cpp
++++ b/torchvision/csrc/io/decoder/decoder.cpp
+@@ -490,7 +490,7 @@ int Decoder::getFrame(size_t workingTimeInMs) {
+   avPacket = av_packet_alloc();
+   if (avPacket == nullptr) {
+     LOG(ERROR) << "decoder as not able to allocate the packet.";
+-    return ENOMEM;
++    return AVERROR_BUFFER_TOO_SMALL;
+   }
+   avPacket->data = nullptr;
+   avPacket->size = 0;
+diff --git a/torchvision/csrc/io/decoder/subtitle_stream.cpp b/torchvision/csrc/io/decoder/subtitle_stream.cpp
+index c4fbf00790..ac0c777070 100644
+--- a/torchvision/csrc/io/decoder/subtitle_stream.cpp
++++ b/torchvision/csrc/io/decoder/subtitle_stream.cpp
+@@ -50,7 +50,8 @@ int SubtitleStream::analyzePacket(const AVPacket* packet, bool* gotFrame) {
+   if (avPacket == nullptr) {
+     LOG(ERROR)
+         << "decoder as not able to allocate the subtitle-specific packet.";
+-    return ENOMEM;
++    // alternative to ENOMEM
++    return AVERROR_BUFFER_TOO_SMALL;
+   }
+   avPacket->data = nullptr;
+   avPacket->size = 0;
+
+From 50d234f8a13ffc8c8416fbfbc06116869f6402ee Mon Sep 17 00:00:00 2001
+From: Bruno Korbar <bkorbar@quansight.com>
+Date: Thu, 24 Mar 2022 13:03:45 +0000
+Subject: [PATCH 14/18] addressing comments
+
+---
+ torchvision/csrc/io/decoder/decoder.cpp         | 3 +--
+ torchvision/csrc/io/decoder/subtitle_stream.cpp | 1 +
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/torchvision/csrc/io/decoder/decoder.cpp b/torchvision/csrc/io/decoder/decoder.cpp
+index 7c53d302b3..c34049b909 100644
+--- a/torchvision/csrc/io/decoder/decoder.cpp
++++ b/torchvision/csrc/io/decoder/decoder.cpp
+@@ -490,7 +490,7 @@ int Decoder::getFrame(size_t workingTimeInMs) {
+   avPacket = av_packet_alloc();
+   if (avPacket == nullptr) {
+     LOG(ERROR) << "decoder as not able to allocate the packet.";
+-    return AVERROR_BUFFER_TOO_SMALL;
++    return AVERROR(ENOMEM);
+   }
+   avPacket->data = nullptr;
+   avPacket->size = 0;
+@@ -499,7 +499,6 @@ int Decoder::getFrame(size_t workingTimeInMs) {
+       std::chrono::milliseconds(workingTimeInMs);
+   // return true if elapsed time less than timeout
+   auto watcher = [end]() -> bool {
+-    av_packet_free(&avPacket);
+     return std::chrono::steady_clock::now() <= end;
+   };
+ 
+diff --git a/torchvision/csrc/io/decoder/subtitle_stream.cpp b/torchvision/csrc/io/decoder/subtitle_stream.cpp
+index ac0c777070..27c61d4dbd 100644
+--- a/torchvision/csrc/io/decoder/subtitle_stream.cpp
++++ b/torchvision/csrc/io/decoder/subtitle_stream.cpp
+@@ -82,6 +82,7 @@ int SubtitleStream::analyzePacket(const AVPacket* packet, bool* gotFrame) {
+         pkt->pts, inputCtx_->streams[format_.stream]->time_base, timeBaseQ);
+   }
+ 
++  av_packet_free(&avPacket);
+   return result;
+ }
+ 
+
+From f0212c04fbe89c7db4505cf527274b343048dd12 Mon Sep 17 00:00:00 2001
+From: Joao Gomes <joaopsgomes@gmail.com>
+Date: Fri, 25 Mar 2022 12:52:15 +0000
+Subject: [PATCH 15/18] Apply suggestions from code review
+
+---
+ torchvision/csrc/io/decoder/decoder.cpp | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/torchvision/csrc/io/decoder/decoder.cpp b/torchvision/csrc/io/decoder/decoder.cpp
+index c34049b909..ce3a44274c 100644
+--- a/torchvision/csrc/io/decoder/decoder.cpp
++++ b/torchvision/csrc/io/decoder/decoder.cpp
+@@ -1,7 +1,6 @@
+ #include "decoder.h"
+ #include <c10/util/Logging.h>
+ #include <libavutil/avutil.h>
+-#include <cerrno>
+ #include <future>
+ #include <iostream>
+ #include <mutex>
+@@ -490,7 +489,7 @@ int Decoder::getFrame(size_t workingTimeInMs) {
+   avPacket = av_packet_alloc();
+   if (avPacket == nullptr) {
+     LOG(ERROR) << "decoder as not able to allocate the packet.";
+-    return AVERROR(ENOMEM);
++    return AVERROR_BUFFER_TOO_SMALL;
+   }
+   avPacket->data = nullptr;
+   avPacket->size = 0;
+
+From 1811fa1bf281a2ee41f0c5bfa55523a7862866b4 Mon Sep 17 00:00:00 2001
+From: Joao Gomes <jdsgomes@fb.com>
+Date: Fri, 25 Mar 2022 13:20:33 +0000
+Subject: [PATCH 16/18] add new error code to documentation
+
+---
+ torchvision/csrc/io/decoder/decoder.cpp | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/torchvision/csrc/io/decoder/decoder.cpp b/torchvision/csrc/io/decoder/decoder.cpp
+index ce3a44274c..4a91e5c774 100644
+--- a/torchvision/csrc/io/decoder/decoder.cpp
++++ b/torchvision/csrc/io/decoder/decoder.cpp
+@@ -475,7 +475,8 @@ void Decoder::cleanUp() {
+ // function does actual work, derived class calls it in working thread
+ // periodically. On success method returns 0, ENODATA on EOF, ETIMEDOUT if
+ // no frames got decoded in the specified timeout time, and error on
+-// unrecoverable error.
++// unrecoverable error or AVERROR_BUFFER_TOO_SMALL when unable to allocate 
++// packet.
+ int Decoder::getFrame(size_t workingTimeInMs) {
+   if (inRange_.none()) {
+     return ENODATA;
+
+From 93e0863cdee6e2b590d7599c1c0f45a288b061b6 Mon Sep 17 00:00:00 2001
+From: Joao Gomes <jdsgomes@fb.com>
+Date: Fri, 25 Mar 2022 14:28:33 +0000
+Subject: [PATCH 17/18] re-introducing timeout
+
+---
+ torchvision/csrc/io/decoder/decoder.cpp | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/torchvision/csrc/io/decoder/decoder.cpp b/torchvision/csrc/io/decoder/decoder.cpp
+index 4a91e5c774..c9105e4709 100644
+--- a/torchvision/csrc/io/decoder/decoder.cpp
++++ b/torchvision/csrc/io/decoder/decoder.cpp
+@@ -474,9 +474,8 @@ void Decoder::cleanUp() {
+ 
+ // function does actual work, derived class calls it in working thread
+ // periodically. On success method returns 0, ENODATA on EOF, ETIMEDOUT if
+-// no frames got decoded in the specified timeout time, and error on
+-// unrecoverable error or AVERROR_BUFFER_TOO_SMALL when unable to allocate 
+-// packet.
++// no frames got decoded in the specified timeout time, AVERROR_BUFFER_TOO_SMALL
++// when unable to allocate packet and error on unrecoverable error
+ int Decoder::getFrame(size_t workingTimeInMs) {
+   if (inRange_.none()) {
+     return ENODATA;
+@@ -505,7 +504,10 @@ int Decoder::getFrame(size_t workingTimeInMs) {
+   int result = 0;
+   size_t decodingErrors = 0;
+   bool decodedFrame = false;
+-  while (!interrupted_ && inRange_.any() && !decodedFrame && watcher()) {
++  while (!interrupted_ && inRange_.any() && !decodedFrame) {
++    if watcher() == false:
++      result = ETIMEDOUT
++      break;
+     result = av_read_frame(inputCtx_, avPacket);
+     if (result == AVERROR(EAGAIN)) {
+       VLOG(4) << "Decoder is busy...";
+@@ -582,8 +584,7 @@ int Decoder::getFrame(size_t workingTimeInMs) {
+ 
+   // loop can be terminated, either by:
+   // 1. explcitly iterrupted
+-  // 2. terminated by workable timeout
+-  // 3. unrecoverable error or ENODATA (end of stream)
++  // 3. unrecoverable error or ENODATA (end of stream) or ETIMEDOUT (timeout)
+   // 4. decoded frames pts are out of the specified range
+   // 5. success decoded frame
+   if (interrupted_) {
+
+From 3487c680fc86358fc2d4f9109d2c3fa0df6e4e54 Mon Sep 17 00:00:00 2001
+From: Joao Gomes <jdsgomes@fb.com>
+Date: Fri, 25 Mar 2022 14:32:06 +0000
+Subject: [PATCH 18/18] fix c++ syntax
+
+---
+ torchvision/csrc/io/decoder/decoder.cpp | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/torchvision/csrc/io/decoder/decoder.cpp b/torchvision/csrc/io/decoder/decoder.cpp
+index c9105e4709..845a0cc80a 100644
+--- a/torchvision/csrc/io/decoder/decoder.cpp
++++ b/torchvision/csrc/io/decoder/decoder.cpp
+@@ -505,9 +505,10 @@ int Decoder::getFrame(size_t workingTimeInMs) {
+   size_t decodingErrors = 0;
+   bool decodedFrame = false;
+   while (!interrupted_ && inRange_.any() && !decodedFrame) {
+-    if watcher() == false:
+-      result = ETIMEDOUT
++    if (watcher() == false) {
++      result = ETIMEDOUT;
+       break;
++    }
+     result = av_read_frame(inputCtx_, avPacket);
+     if (result == AVERROR(EAGAIN)) {
+       VLOG(4) << "Decoder is busy...";

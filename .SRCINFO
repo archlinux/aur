@@ -1,0 +1,27 @@
+pkgbase = python-torchvision-rocm
+	pkgdesc = Datasets, transforms, and models specific to computer vision (with ROCM GPU support)
+	pkgver = 0.12.0
+	pkgrel = 1
+	url = https://github.com/pytorch/vision
+	arch = x86_64
+	license = BSD
+	makedepends = rocm-hip-sdk
+	makedepends = miopen
+	makedepends = python-setuptools
+	makedepends = qt5-base
+	depends = python-typing_extensions
+	depends = python-numpy
+	depends = python-requests
+	depends = python-pillow
+	depends = python-scipy
+	depends = python-pytorch-rocm
+	depends = ffmpeg4.4
+	optdepends = python-pycocotools: support for MS-COCO dataset
+	provides = python-torchvision
+	conflicts = python-torchvision
+	source = vision-0.12.0.tar.gz::https://github.com/pytorch/vision/archive/v0.12.0.tar.gz
+	source = 5644.patch
+	sha512sums = ebc48a9e9ef58cc93c1b095e565c67feb2bc1bf06551e8f891a0369c211c6732e10bf191298b0633a05664371fa6dc637aab851b01a57f6b3e0d5936e87ee8ae
+	sha512sums = 113f44dac9417b2cdfcdfb48ca4097083e73419ebf0619e747cb73f440536a1fd9f720d233ccd22309fff1968fe22975f1bc183abb567e0c67ef74765d3eca29
+
+pkgname = python-torchvision-rocm
