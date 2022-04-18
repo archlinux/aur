@@ -1,7 +1,7 @@
 # Contributor: Connor Behan <connor.behan@gmail.com>
 
 pkgname=mememaker-quiet
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Non-interactive version of mememaker with no bundled images"
 arch=('any')
