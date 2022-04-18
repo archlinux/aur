@@ -41,7 +41,7 @@ build() {
     --name "${_name}" \
     --icon "${pkgname}.png" \
     --maximize \
-    --user-agent "safari" \
+    --user-agent safari \
     --single-instance \
     --verbose \
     https://todoist.com
