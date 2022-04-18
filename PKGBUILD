@@ -5,59 +5,41 @@
 # Contributor: cornholio <vigo.the.unholy.carpathian@gmail.com>
 
 pkgname=hipmagma
-pkgver=2.0.0
+pkgver=2.6.2
 pkgrel=1
 pkgdesc="Matrix Algebra on GPU and Multicore Architectures"
 arch=('x86_64')
 url="https://icl.cs.utk.edu/magma/"
 license=('custom')
-depends=('blas' 'lapack' 'rocm' 'rocm-libs')
+depends=('blas' 'lapack' 'rocm-hip-sdk')
 makedepends=('gcc-fortran' 'cmake' 'ninja')
 optdepends=('python: for examples and tests'
             'gcc-fortran: Fortran interface')
-source=("${pkgname}-${pkgver}.tar.gz::https://bitbucket.org/icl/magma/get/hipMAGMAv${pkgver}.tar.gz"
-        'disable_magma_sparse.patch')
-sha256sums=('81a16042b81561155189c1450f08d9282ad1ac1e7212ec5015a2063ee52ba3b2'
-            '259c38004b26395278cdaf431591974e0589dedc0f8bfc14413f854c2a10424f')
-
-_dir="icl-magma-dda09490fbae"
-
-prepare() {
-  cd ${_dir}
-
-  # Temporarily disable magma-sparse until it's fixed by magma upstream:
-  # https://bugs.archlinux.org/task/67094
-  patch -Np1 -i "${srcdir}/disable_magma_sparse.patch"
-}
+_pkgname="magma"
+source=("${_pkgname}-${pkgver}.tar.gz::http://icl.cs.utk.edu/projectsfiles/${_pkgname}/downloads/${_pkgname}-${pkgver}.tar.gz")
+sha256sums=('f7892a14067d92f73714196e4d76e0354c8dc3da80053612ec98965ce6793627')
+options=(!lto)
 
 build() {
-  cd ${_dir}
-  mkdir -p build
+  cd ${_pkgname}-${pkgver}
 
-  cp make.inc-examples/make.inc.hip_openblas make.inc
-
-  export CC=/usr/bin/gcc
-  export CXX=/usr/bin/g++
-  export FC=/usr/bin/gfortran
-  export OPENBLASDIR=/usr
-
-  make -f make.gen.hipMAGMA
-  make generate
-
+  CC=/usr/bin/gcc \
+  CXX=/opt/rocm/g++ \
+  FC=/usr/bin/gfortran \
+  CXXFLAGS="${CXXFLAGS} -fcf-protection=none" \
   cmake \
-    -B build \
-    -G Ninja \
+    -Bbuild \
+    -GNinja \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_SHARED_LIBS=ON \
-    .
-
+    -DMAGMA_ENABLE_HIP=ON \
+    -DCMAKE_CXX_COMPILER=/usr/bin/hipcc
   ninja -C build
-
 }
 
 package() {
-  cd ${_dir}
+  cd "${_pkgname}-${pkgver}"
   DESTDIR="${pkgdir}" ninja -Cbuild install
 
   install -d "${pkgdir}"/usr/share/magma/example

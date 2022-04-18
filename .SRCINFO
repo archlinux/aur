@@ -1,6 +1,6 @@
 pkgbase = hipmagma
 	pkgdesc = Matrix Algebra on GPU and Multicore Architectures
-	pkgver = 2.0.0
+	pkgver = 2.6.2
 	pkgrel = 1
 	url = https://icl.cs.utk.edu/magma/
 	arch = x86_64
@@ -10,14 +10,11 @@ pkgbase = hipmagma
 	makedepends = ninja
 	depends = blas
 	depends = lapack
-	depends = rocm
-	depends = rocm-libs
+	depends = rocm-hip-sdk
 	optdepends = python: for examples and tests
 	optdepends = gcc-fortran: Fortran interface
-	source = hipmagma-2.0.0.tar.gz::https://bitbucket.org/icl/magma/get/hipMAGMAv2.0.0.tar.gz
-	source = disable_magma_sparse.patch
-	sha256sums = 81a16042b81561155189c1450f08d9282ad1ac1e7212ec5015a2063ee52ba3b2
-	sha256sums = 259c38004b26395278cdaf431591974e0589dedc0f8bfc14413f854c2a10424f
+	options = !lto
+	source = magma-2.6.2.tar.gz::http://icl.cs.utk.edu/projectsfiles/magma/downloads/magma-2.6.2.tar.gz
+	sha256sums = f7892a14067d92f73714196e4d76e0354c8dc3da80053612ec98965ce6793627
 
 pkgname = hipmagma
-
