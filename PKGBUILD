@@ -1,7 +1,7 @@
 # Maintainer: Noah Vogt (noahvogt) <noah@noahvogt.com>
 # Maintainer: Seppia <seppia@seppio.fish>
 # Maintainer: JustKidding <jk@vin.ovh>
- 
+
 # Based on aur/chromium-vaapi, with ungoogled-chromium patches
 
 # Maintainer: Evangelos Foutras <evangelos@foutrelis.com>
@@ -10,7 +10,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-xdg
-pkgver=100.0.4896.75
+pkgver=100.0.4896.127
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=4
@@ -33,15 +33,17 @@ source=(https://commondatastorage.googleapis.com/chromium-browser-official/chrom
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
         webcodecs-stop-using-AudioOpusEncoder.patch
         webrtc-check-existence-of-cursor-metadata.patch
+        enable-GlobalMediaControlsCastStartStop.patch
         sql-make-VirtualCursor-standard-layout-type.patch
         use-oauth2-client-switches-as-default.patch
         xdg-basedir.patch
         no-omnibox-suggestion-autocomplete.patch)
-sha256sums=('244ed352dfaa1ab6b1f0877c4884fd17aa7d7133fa52f129a9fb01325ea0c0c0'
+sha256sums=('4710e3453c972c91e68a21f6b0b76ba73d4d617f299a5208615ed6e41b1af84d'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
             'a6120e7d4eb5e131b87b6ab3b922e0c6cd78e15501e54cfb2019875173688d80'
             '064daaa2b9d95b96ec04d8ddebf4af441f92263d123365b58fe73966866080af'
             '88b2c8d9c6c1917f6632453f18aad7a3fd94d605eecb6c77ae2394ac5856ba95'
+            '779fb13f2494209d3a7f1f23a823e59b9dded601866d3ab095937a1a04e19ac6'
             'b94b2e88f63cfb7087486508b8139599c89f96d7a4181c61fec4b4e250ca327a'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
             'cd844867b5b2197ad097662fee32579a7091dfba1d46cb438c4c7e696690440a'
@@ -53,7 +55,7 @@ source=(${source[@]}
         chromium-drirc-disable-10bpc-color-configs.conf
         wayland-egl.patch)
 sha256sums=(${sha256sums[@]}
-            '69980eca2895b8f02d9475e4e0100e818bf46977ddce54a5645568241b0e9c2a'
+            '855e12e68ee767571f9032e1465ba4acd97f500fe8cf0cf67ce15f2bd9573154'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
             '34d08ea93cb4762cb33c7cffe931358008af32265fc720f2762f0179c3973574')
 
@@ -105,6 +107,10 @@ prepare() {
   # Upstream fixes
   patch -Np1 -i ../webcodecs-stop-using-AudioOpusEncoder.patch
   patch -Np1 -d third_party/webrtc <../webrtc-check-existence-of-cursor-metadata.patch
+
+  # Revert kGlobalMediaControlsCastStartStop enabled by default
+  # https://crbug.com/1314342
+  patch -Rp1 -F3 -i ../enable-GlobalMediaControlsCastStartStop.patch
 
   # https://chromium-review.googlesource.com/c/chromium/src/+/2862724
   patch -Np1 -i ../sql-make-VirtualCursor-standard-layout-type.patch
