@@ -1,20 +1,20 @@
 # Maintainer: Clint Valentine <valentine.clint@gmail.com>
 
 pkgname=bbmap
-pkgver=37.99
-pkgrel=3
+pkgver=38.96
+pkgrel=1
 pkgdesc="A short read aligner and other bioinformatic tools"
 arch=('x86_64')
 url=https://jgi.doe.gov/data-and-tools/bbtools/
 license=('BSD')
-depends=('jre8-openjdk>=7')
+depends=('jre8-openjdk' 'jdk8-openjdk')
 optdepends=(
   'env-modules: for any scripts requiring `module`' 
   'pigz: for parallel GZIP (de)compression'
   'samtools: for BAM output'
 )
 source=("${pkgname}"-"${pkgver}".tar.gz::https://downloads.sourceforge.net/project/"${pkgname}"/BBMap_"${pkgver}".tar.gz)
-sha256sums=('e796b399ba1a8d3ce4688b7d2d35f065754d4cdeddf09bb9a2f15ba77694f401')
+sha256sums=('18d9c89b02c0ab044b2795a65f6236b2262a494ed83d27e31750437b350ef080')
 
 prepare() {
   cd "${srcdir}"/"${pkgname}"/jni
