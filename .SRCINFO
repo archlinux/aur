@@ -1,7 +1,7 @@
 pkgbase = radio-cli-git
 	pkgdesc = A simple radio cli for listening to your favourite streams from the console
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.2.0
+	pkgrel = 1
 	url = https://github.com/margual56/radio-cli
 	arch = i686
 	arch = x86_64

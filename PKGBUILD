@@ -1,8 +1,8 @@
 # Maintainer: Marcos Gutiérrez Alonso <margual56@gmail.com>
 
 pkgname=radio-cli-git
-pkgver=0.1.0
-pkgrel=2
+pkgver=0.2.0
+pkgrel=1
 pkgdesc="A simple radio cli for listening to your favourite streams from the console"
 arch=('i686' 'x86_64')
 url="https://github.com/margual56/radio-cli"
@@ -39,6 +39,5 @@ build() {
 package() {
 	install -Dm755 "${srcdir}/${pkgname}/target/release/radio-cli" "${pkgdir}/usr/bin/radio"
 	cp "${srcdir}/${pkgname}/config.json" "${XDG_CONFIG_HOME}/radio-cli/config.json"
-
 }
 
