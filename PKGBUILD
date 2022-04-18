@@ -2,8 +2,8 @@
 _base=cplot
 pkgname=python-${_base}
 pkgdesc="Plot complex functions"
-pkgver=0.9.0
-pkgrel=4
+pkgver=0.9.1
+pkgrel=1
 arch=(any)
 url="https://github.com/nschloe/${_base}"
 license=(GPL3)
@@ -12,7 +12,7 @@ makedepends=(python-build python-flit-core python-install)
 checkdepends=(python-pytest-codeblocks python-networkx) #python-pyvista
 optdepends=('python-pyvista: for create an unstructured grid')
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('f6f8da1e973b714d482fb9623bc030b467bc8b117175fae6f92315ca612dec80a84a7837aabf93a35746dd27bbb20c8cd473307e540b459ef66ceb73e1cad335')
+sha512sums=('9fb1f69f29bea1064db6b3e661e06b7f0688bc4dde0c707d55e81260f85d09317c48e889f1d0835c0a139e538a83f6a356fc0591561841b9aba4656739609354')
 
 build() {
   cd ${_base}-${pkgver}
@@ -24,7 +24,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m install --optimize=1 dist/*.whl
-  MPLBACKEND=Agg test-env/bin/python -m pytest --codeblocks -k 'not README and not riemann'
+  MPLBACKEND=Agg test-env/bin/python -m pytest --codeblocks
 }
 
 package() {
