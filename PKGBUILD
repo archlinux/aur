@@ -4,7 +4,8 @@ set -u
 _pyver="python"
 _pybase='cement'
 pkgname="${_pyver}-${_pybase}"
-pkgver='3.0.4'
+pkgver='3.0.6'
+#pkgver='2.8.2' # for aws-eb-cli
 pkgrel='1'
 pkgdesc='CLI Application Framework for Python'
 arch=('any')
@@ -15,8 +16,8 @@ makedepends=("${_pyver}" "${_pyver}-distribute") # same as python-setuptools
 _srcdir="${_pybase}-${pkgver}"
 _verwatch=("https://pypi.org/simple/${_pybase}/" "${_pybase}-\([0-9\.]\+\)\.tar\.gz" 't')
 source=("https://pypi.io/packages/source/${_pybase: 0:1}/${_pybase}/${_pybase}-${pkgver}.tar.gz")
-md5sums=('8dc2025e18e314012f7e28075d34b9f3')
-sha256sums=('10a8459dc9fc31d6c038ede24a9081c5c3bd5fcd75b071e01baf281f81c9eace')
+md5sums=('55eb8d021ce0d751b207291520e7ff9b')
+sha256sums=('fccec41eab3f15a03445b1ce24c8a7e106d4d5520f6507a7145698ce68923d31')
 
 build() {
   set -u
