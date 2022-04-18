@@ -1,6 +1,6 @@
 pkgbase = grub-editor
 	pkgdesc = GUI application to edit grub configurations
-	pkgver = 0.97
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://github.com/Thenujan-0/grub-editor
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = grub-editor
 	makedepends = make
 	depends = python
 	depends = grub
-	source = https://github.com/Thenujan-0/grub-editor/archive/refs/tags/v0.97.tar.gz
+	source = https://github.com/Thenujan-0/grub-editor/archive/refs/tags/v1.0.tar.gz
 	md5sums = SKIP
 
 pkgname = grub-editor
