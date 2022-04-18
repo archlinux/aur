@@ -1,6 +1,6 @@
 pkgbase = howdy-beta-git
 	pkgdesc = Windows Hello for Linux (Beta)
-	pkgver = 2.6.1.r77.g96767fe
+	pkgver = 2.6.1.r143.g7cf31fe
 	pkgrel = 1
 	url = https://github.com/boltgolt/howdy
 	arch = x86_64
