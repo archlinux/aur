@@ -1,8 +1,9 @@
+# Maintainer: Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor: N. Izumi - izmntuk
 # Contributor: Dmitry Nosachev - quartz64 at gmail dot com
-# Maintainer: N. Izumi - izmntuk
 
 pkgname='ddpt'
-pkgver='0.96'
+pkgver='0.97'
 pkgrel='1'
 pkgdesc="Variant of the standard 'dd' for SCSI/storage devices"
 arch=('i686' 'x86_64')
@@ -10,9 +11,9 @@ url='http://sg.danny.cz/sg/ddpt.html'
 license=('BSD')
 depends=('sg3_utils')
 source=("http://sg.danny.cz/sg/p/${pkgname}-${pkgver}.tar.xz")
-md5sums=('4166b452421276d2a9b3d9071d4df7ad')
-sha1sums=('049322b132e99453d43af998f20700967361335f')
-sha256sums=('63e28a191568af0273624f5ed77428820fcc289b99aa604ac7682b2f98a143ca')
+md5sums=('5217a3a2f316b8d1e5ea6e4645cd8ec6')
+sha1sums=('2ab1df78583efffdf198ed016453ce9b25a3c1c5')
+sha256sums=('13686b1b6e19b75cfafe731ee338b4d45554b81c2a3b6c7a57e406e75b4472ce')
 
 build() {
   cd "${pkgname}-${pkgver}"
