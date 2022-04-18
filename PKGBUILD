@@ -1,7 +1,7 @@
-# Maintainer: Simon Legner <Simon.Legner@gmail.com>
+# Maintainer: Davide Ferrero <bad.deid@gmail.com>
 pkgname=quicktype
-pkgver=15.0.260
-pkgrel=2
+pkgver=15.0.261
+pkgrel=3
 pkgdesc="Generate types and converters from JSON, Schema, and GraphQL"
 arch=(any)
 url="https://github.com/quicktype/quicktype"
@@ -18,4 +18,4 @@ package() {
   chown -R root:root "${pkgdir}"
 }
 
-sha256sums=('57ffeb7f12f3c3476bd7e0213716006b49a8159c20e63fd60cb07eefa4289b6f')
+sha256sums=('26953ad6e2e61ed26c893c4bf593e2ff63680eef8c2f8ef014475dffa3983103')
