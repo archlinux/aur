@@ -1,7 +1,7 @@
 # Maintainer: Caleb Fontenot <foley2431@gmail.com>
 
 pkgname=howdy-beta-git
-pkgver=2.6.1.r77.g96767fe
+pkgver=2.6.1.r143.g7cf31fe
 pkgrel=1
 pkgdesc="Windows Hello for Linux (Beta)"
 arch=('x86_64')
@@ -73,7 +73,7 @@ package() {
 	install -Dm755 "howdy/src/autocomplete/howdy" "${pkgdir}/usr/share/bash-completion/completions/howdy"
 	rm -rf "howdy/src/autocomplete"
 
-	install -Dm755 "pam_howdy/build/libpam_howdy.so" "${pkgdir}/usr/lib/security/pam_howdy.so"
+	install -Dm755 "pam_howdy/build/pam_howdy.so" "${pkgdir}/usr/lib/security/pam_howdy.so"
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/howdy/LICENSE"
 	install -dm700 "${pkgdir}/usr/lib/security/howdy"
