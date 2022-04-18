@@ -1,6 +1,6 @@
 # Maintainer: Mazhar Hussain <mmazharhussainkgb1145@gmail.com>
 pkgname=nautilus-code
-__pkgver='0.1'
+__pkgver='0.2'
 pkgver=${__pkgver/-/+}
 pkgrel=1
 pkgdesc="Adds right-click menu items to open current folder in VSCode or GNOME Builder"
@@ -13,7 +13,7 @@ optdepends=("code: for 'Open in VSCode' menu item"
             "gnome-builder: for 'Open in Builder' menu item")
 backup=()
 source=("${pkgname}-${__pkgver}.tar.gz"::"$url/archive/refs/tags/v${__pkgver}.tar.gz")
-md5sums=('dcaed238763737c11835fadc76ab6f30')
+md5sums=('22fe4e8d0188404a08f57e0c11fe7e6d')
 
 prepare() {
   cd "$srcdir/$pkgname-${__pkgver}"
