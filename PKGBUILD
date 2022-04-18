@@ -5,7 +5,7 @@
 
 _pkgname=fastlbry-terminal
 pkgname=${_pkgname}-git
-pkgver=0.5.r204.g8b37699
+pkgver=0.5.r207.g11e4d0d
 pkgrel=1
 pkgdesc="A fully featured, terminal application to interact with LBRY"
 arch=('any')
