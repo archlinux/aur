@@ -4,7 +4,7 @@ set -u
 _pkgnick='FontLib'
 _pkgname='php-font-lib'
 pkgname="${_pkgname}"
-pkgver='0.5.2'
+pkgver='0.5.4'
 pkgrel='1'
 pkgdesc="${_pkgnick} :: A library to read, parse, export and make subsets of different types of font files."
 arch=('any')
@@ -14,7 +14,7 @@ depends=('php>=5.3')
 options=('!strip')
 _verwatch=("${url}/releases" "${url#*github.com}/archive/\(.*\)\.tar\.gz" 'l')
 source=("${_pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
-sha256sums=('ef5cb45ec8099bfdd6390496b3354e5d14daaccccce8a6e4b04f4462653d27b8')
+sha256sums=('6950bf1ec4e9e21067c0ed5336268e0806217b5f92bf071e48047f3a50385758')
 
 prepare() {
   set -u
