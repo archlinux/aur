@@ -1,9 +1,9 @@
 # Maintainer: Mm2PL <mm2pl plus (shorthand for Arch User Repository) at kotmisia period pl>
 pkgname=justgrep-git
 
-pkgver=r53.157f652
+pkgver=r63.690f5db
 
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for searching justlog logs and manipulating IRC messages'
 arch=('any')
 url="https://github.com/Mm2PL/justgrep"
@@ -14,7 +14,7 @@ makedepends=('git' 'go')
 provides=('irc2json' 'justgrep')
 conflicts=()
 options=('zipman')
-source=('justgrep::git://github.com/Mm2PL/justgrep.git')
+source=('justgrep::git+https://github.com/Mm2PL/justgrep.git')
 sha256sums=('SKIP')
 
 pkgver() {
