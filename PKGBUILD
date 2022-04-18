@@ -4,7 +4,7 @@
 set -u
 _pkgname='foolsm'
 pkgname='lsm'
-pkgver='1.0.14'
+pkgver='1.0.21'
 pkgrel='1'
 pkgdesc="a Link Status Monitor which can be used to monitor for example a Linux router/firewall connectivity ${_pkgname}"
 arch=('i686' 'x86_64')
@@ -12,8 +12,8 @@ url='https://lsm.foobar.fi/'
 license=('GPL2')
 _verwatch=("${url}/download/" "${_pkgname}-\([0-9\.]\+\)\.tar\.gz" 'l')
 source=("${url}/download/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('8598bbc14796997aa2652cba1d19caae')
-sha256sums=('2ccaaee695e3cca8c7c3a58f6e258febfd0e1bbd3ed37183fed909a35b932b8b')
+md5sums=('45a2abd175ff6e7c1d93ad2caae7c47e')
+sha256sums=('527d9c363aa62b9fc511b42c5a06f774a8767c4b5330db4d959c10b46b0dede7')
 
 build() {
   set -u
