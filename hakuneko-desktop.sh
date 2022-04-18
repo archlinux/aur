@@ -1,3 +1,3 @@
 #!/bin/sh
 
-/usr/lib/hakuneko-desktop/hakuneko
+exec /usr/lib/hakuneko-desktop/hakuneko "$@"
