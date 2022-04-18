@@ -13,7 +13,7 @@ depends=(
 makedepends=(
   'go'
 )
-source=("git://github.com/onaio/sre-tooling.git")
+source=("git+https://github.com/onaio/sre-tooling")
 sha1sums=('SKIP')
 provides=("sre-tooling")
 conflicts=("sre-tooling")
