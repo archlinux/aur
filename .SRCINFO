@@ -1,7 +1,7 @@
 pkgbase = opensnitch
 	pkgdesc = GNU/Linux port of the Little Snitch application firewall
-	pkgver = 1.5.0
-	pkgrel = 7
+	pkgver = 1.5.1
+	pkgrel = 1
 	url = https://github.com/evilsocket/opensnitch
 	arch = i686
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = opensnitch
 	optdepends = python-pyasn: display IP's network name
 	backup = etc/opensnitchd/default-config.json
 	backup = etc/opensnitchd/system-fw.json
-	source = opensnitch-1.5.0.tar.gz::https://github.com/evilsocket/opensnitch/archive/v1.5.0.tar.gz
-	sha512sums = 1f6bed64493dbf39ea0114adf302a5aaddecb2c36a67ce571be989779bb8c41939886d69c673d7a2afc7e51575233dca27b1544ab56564cafd01271d4b4d6810
+	source = opensnitch-1.5.1.tar.gz::https://github.com/evilsocket/opensnitch/archive/v1.5.1.tar.gz
+	sha512sums = 06ed68acf34acb519e1942badf38c9686e60b904d479e73ff4839c0ae0cde780c1a4b4c3419396d276e7836de52805a677c19f41ced7bb9ddaf90115e696816f
 
 pkgname = opensnitch
