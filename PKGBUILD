@@ -1,16 +1,16 @@
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=octosql
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
-pkgdesc="A CLI tool which lets you query a plethora of databases and file formats using SQL"
+pkgdesc='A CLI tool which lets you query a plethora of databases and file formats using SQL'
 arch=('x86_64')
-url="https://github.com/cube2222/octosql"
+url='https://github.com/cube2222/octosql'
 license=('MPL2')
 depends=('glibc')
 makedepends=('git' 'go')
 options=('!lto')
-_commit='38ba308f43f667e56c849e9f244907e5dffdc3e4'
+_commit='e756384d228eb2b048adf74c6d1f29b72c2a6349'
 source=("$pkgname::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 
