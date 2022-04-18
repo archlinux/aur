@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-todotxt
 	pkgdesc = Todo.txt GUI for gnome-shell
-	pkgver = 34
+	pkgver = 37
 	pkgrel = 1
 	url = https://gitlab.com/bartl/todo-txt-gnome-shell-extension
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = gnome-shell-extension-todotxt
 	makedepends = glib2
 	makedepends = jq
 	depends = gnome-shell
-	source = todo-txt::git+https://gitlab.com/bartl/todo-txt-gnome-shell-extension.git#tag=v34
+	source = todo-txt::git+https://gitlab.com/bartl/todo-txt-gnome-shell-extension.git#tag=v37
 	sha512sums = SKIP
 
 pkgname = gnome-shell-extension-todotxt

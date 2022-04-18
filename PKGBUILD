@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-todotxt
 _pkgdir=todo-txt
-pkgver=34
+pkgver=37
 pkgrel=1
 pkgdesc="Todo.txt GUI for gnome-shell"
 arch=('any')
