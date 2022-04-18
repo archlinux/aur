@@ -2,7 +2,7 @@
 _base=pytest-codeblocks
 pkgname=python-${_base}
 pkgdesc="Test code blocks in your READMEs"
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 arch=(any)
 url="https://github.com/nschloe/${_base}"
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(python-pytest)
 makedepends=(python-build python-flit-core python-install)
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('740b6a74a3451cee25e37969706d7b603f258c76bb8b1cd608eaf63021aaaed99136a41885b453a2708302f53e8d9516a3487dc3f5cc8ad39ca6c3ab9721ae86')
+sha512sums=('57d14aefc0cd49aa1b8fc54dfaec47965d4b1c867cad78ba9e8fd53da85898b7eac303ac402abe10b2d63d7621979bb8bad91f66f1e264568d56f4ff70488021')
 
 build() {
   cd ${_base}-${pkgver}
