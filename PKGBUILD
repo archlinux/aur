@@ -1,13 +1,13 @@
 # Maintainer: Alec Mev <alec@mev.earth>
 
 pkgname=notion-app-nativefier
-pkgver=2021.06.30
-pkgrel=2
+pkgver=2022.03.18
+pkgrel=1
 pkgdesc='Notion in shared Electron runtime'
 arch=('x86_64')
 url='https://www.notion.so'
 license=('MIT')
-_electronv= # See todoist-nativefier for rationale
+_electronv=17 # See todoist-nativefier for rationale
 depends=("electron${_electronv}")
 makedepends=(
   'curl'
@@ -39,7 +39,7 @@ build() {
     --name "${_name}" \
     --icon "${pkgname}.png" \
     --maximize \
-    --user-agent "Mozilla/5.0 (X11; Linux x86_64; rv:88.0) Gecko/20100101 Firefox/88.0" \
+    --user-agent safari \
     --single-instance \
     --verbose \
     https://www.notion.so
