@@ -1,8 +1,8 @@
 # Maintainer: Andrea Girotto <andrea.girotto@gmail.com>
 
 pkgname=stm32flash
-pkgver=0.6
-pkgrel=3
+pkgver=0.7
+pkgrel=1
 pkgdesc='Open source flash program for the STM32 ARM processors using the ST serial bootloader over UART or I2C'
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url='https://sourceforge.net/projects/stm32flash/'
@@ -11,7 +11,7 @@ makedepends=()
 provides=("$pkgname")
 conflicts=("$pkgname-git")
 source=(http://downloads.sourceforge.net/project/stm32flash/$pkgname-$pkgver.tar.gz)
-sha512sums=('2d92ecf4f82b8a702b596cbf3c4ff594f67083f7dcec82c064555f73b47834b41a918efa1846e47fc8740ae63fa818b16dfb5b38fa242c17f465666a651eee3a')
+sha512sums=('328254dd043dc707cf8c3edf8ddd4a9441c85d9cb2ca1682bcb3f5301d526b04ed6fb335e72a94e3d26341f18bef45968bf321f0ffeb80eaa0c3add6701349ff')
 
 build() {
   cd "${pkgname}-${pkgver}"
