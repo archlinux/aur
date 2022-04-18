@@ -1,4 +1,4 @@
-# Maintainer: acxz
+# Maintainer: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: MCMic <come@chilliet.eu>
 # Generated with pip2pkgbuild
 
@@ -6,11 +6,12 @@ pkgbase='python-bson'
 pkgname=('python-bson')
 _module='bson'
 pkgver='0.5.10'
-pkgrel=1
+pkgrel=2
 pkgdesc="BSON codec for Python"
-url="http://github.com/py-bson/bson"
+url="https://github.com/py-bson/bson"
 depends=('python')
 makedepends=('python-setuptools')
+conflicts=('python-pymongo')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")

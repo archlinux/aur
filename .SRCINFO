@@ -1,12 +1,13 @@
 pkgbase = python-bson
 	pkgdesc = BSON codec for Python
 	pkgver = 0.5.10
-	pkgrel = 1
-	url = http://github.com/py-bson/bson
+	pkgrel = 2
+	url = https://github.com/py-bson/bson
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
+	conflicts = python-pymongo
 	source = https://files.pythonhosted.org/packages/source/b/bson/bson-0.5.10.tar.gz
 	sha256sums = d6511b2ab051139a9123c184de1a04227262173ad593429d21e443d6462d6590
 
