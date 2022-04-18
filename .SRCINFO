@@ -1,7 +1,7 @@
 pkgbase = i-nex
 	pkgdesc = System information tool like hardinfo, sysinfo
 	pkgver = 7.6.1
-	pkgrel = 7
+	pkgrel = 8
 	url = http://i-nex.linux.pl/
 	arch = i686
 	arch = x86_64
@@ -34,9 +34,11 @@ pkgbase = i-nex
 	source = Fix-error-if-proc-mtrr-doesn-t-exist.patch
 	source = Fix-libcpuid-SOVERSION.patch
 	source = Adapt-for-new-libcpuid-structure.patch
+	source = Fix-for-gambas-compiler-change.patch
 	sha256sums = 81236eb729fbd29b356762c0883fe295cf1181cc7d14f00b1dfcceb517b47960
 	sha256sums = 5c812da66cf8627e1749722d8e98f0871e6b3dbc30efbce29b785912ff39e96b
 	sha256sums = a6cee05fcf07c2d2ddbabd4012a3975178c07e0f9d1e876425567d9504eb99cd
 	sha256sums = fb286cf3bc0b1104e59219e0ba9a236129b20db52b70cd44d65f578404a93cbe
+	sha256sums = 390ab7e9817e1d9a121954592e00b906312fe9a10e37d16bfd4af9a5cd7d7dd9
 
 pkgname = i-nex

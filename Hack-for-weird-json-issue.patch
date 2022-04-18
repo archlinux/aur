@@ -1,0 +1,25 @@
+From 8f0a03154e18260db4f30e7f6710060d904b5e1f Mon Sep 17 00:00:00 2001
+From: Fabian Maurer <dark.shadow4@web.de>
+Date: Mon, 18 Apr 2022 04:31:00 +0200
+Subject: [PATCH] asd
+
+---
+ I-Nex/i-nex/.src/Modules/JSON.module | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/I-Nex/i-nex/.src/Modules/JSON.module b/I-Nex/i-nex/.src/Modules/JSON.module
+index d4f3ea6..38efe39 100644
+--- a/I-Nex/i-nex/.src/Modules/JSON.module
++++ b/I-Nex/i-nex/.src/Modules/JSON.module
+@@ -99,7 +99,7 @@ Private Sub ReadObject() As Collection
+   Dim sKey As String
+   
+   If $bUseNull Then
+-    cObject = New JSONCollection
++    cObject = New Collection
+   Else
+     cObject = New Collection
+   Endif
+-- 
+2.35.3
+

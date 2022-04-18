@@ -1,0 +1,20 @@
+---
+ I-Nex/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/I-Nex/Makefile.am b/I-Nex/Makefile.am
+index 611b3f2..e55c3d7 100644
+--- a/I-Nex/Makefile.am
++++ b/I-Nex/Makefile.am
+@@ -7,7 +7,7 @@ all:
+ 	 echo "Compiling $(PACKAGE) project..."; \
+ 	fi)
+ 	@(cd $(srcdir)/$(PACKAGE); \
+-	$(GAMBAS_path)/gbc3 -e -a -g -p -m -x ; \
++	$(GAMBAS_path)/gbc3 -e -a -g -f public-control -f public-module -x ; \
+ 	$(GAMBAS_path)/gba3)
+ 
+ install-exec-local:
+-- 
+2.35.3
+
