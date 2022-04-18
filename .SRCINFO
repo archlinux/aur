@@ -1,0 +1,12 @@
+pkgbase = fireperf
+	pkgdesc = Command line tool for network benchmarks - max traffic, min resources
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://wiki.ipfire.org/addons/fireperf
+	arch = x86_64
+	license = GPL
+	depends = glibc
+	source = https://source.ipfire.org/source-2.x/fireperf-0.2.0.tar.gz
+	b2sums = 0ff72d810e97d0f553f2fc43d4fb4b5af275e156599ac0b982651b584859cbe394a8168e2d0436329053ee0e406ef764d054d1433999cf3d5194d66a656d274e
+
+pkgname = fireperf
