@@ -1,0 +1,20 @@
+pkgbase = wii-grrlib-mod-git
+	pkgdesc = A C/C++ 2D/3D graphics library for Wii application developers
+	pkgver = mod.v1.0.0.r0.gf3b1b96
+	pkgrel = 1
+	url = https://github.com/HTV04/GRRLIB-mod
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	depends = devkitPPC
+	depends = libfat-ogc
+	depends = ppc-libpngu
+	depends = ppc-freetype
+	depends = ppc-libjpeg-turbo
+	provides = wii-grrlib-mod
+	conflicts = wii-grrlib-mod
+	options = !strip
+	source = git+https://github.com/HTV04/GRRLIB-mod.git
+	sha256sums = SKIP
+
+pkgname = wii-grrlib-mod-git
