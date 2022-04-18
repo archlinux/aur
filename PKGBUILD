@@ -1,6 +1,6 @@
 pkgname=nncp
 pkgver=8.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Node-to-Node Copy Protocol utilities for secure store-and-forward"
 url="http://www.nncpgo.org/"
 arch=(x86_64)
@@ -13,14 +13,19 @@ sha256sums=('a0eec9b0f33059de33f13084599805d0f4a1c8c379e925bacfe8dc94d1ddc23d'
             'SKIP')
 validpgpkeys=('92C2F0AEFE73208E46BFF3DE2B25868E75A1A953')
 
+backup=(etc/nncp/nncp.json)
+
 build() {
   cd $pkgname-$pkgver
 
-  export CGO_CPPFLAGS="${CPPFLAGS}"
-  export CGO_CFLAGS="${CFLAGS}"
-  export CGO_CXXFLAGS="${CXXFLAGS}"
-  export CGO_LDFLAGS="${LDFLAGS}"
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export CGO_LDFLAGS="$LDFLAGS"
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+  export PREFIX="/usr"
+  export CFGPATH="/etc/nncp/nncp.hjson"
 
   contrib/do all
 }
@@ -28,8 +33,10 @@ build() {
 package() {
   cd $pkgname-$pkgver
 
-  export DESTDIR="$pkgdir"
   export PREFIX="/usr"
+  export CFGPATH="/etc/nncp/nncp.hjson"
+
+  export DESTDIR="$pkgdir"
   export INFODIR="$pkgdir/usr/share/info"
 
   contrib/do install
