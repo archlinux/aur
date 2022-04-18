@@ -17,11 +17,11 @@ create_meme() {
 	top="$(echo $top | fold -s -w $letters_per_line)"
 	bottom="$(echo $bottom | fold -s -w $letters_per_line)"
 	
-	[[ -n "$bottom" ]] && convert -font /usr/share/fonts/TTF/Impact.ttf -pointsize 35 \
+	[[ -n "$bottom" ]] && convert -font /usr/share/fonts/TTF/Impact.TTF -pointsize 35 \
 		-background '#0000' -fill white -stroke black -strokewidth 2 \
 		-gravity south -size ${width}x${height} label:"$bottom" /tmp/out.png +swap \
 		-gravity center -composite  /tmp/out.png
-	[[ -n "$top" ]] && convert -font /usr/share/fonts/TTF/Impact.ttf -pointsize 35 \
+	[[ -n "$top" ]] && convert -font /usr/share/fonts/TTF/Impact.TTF -pointsize 35 \
 		-background '#0000' -fill white -stroke black -strokewidth 2 \
 		-gravity north -size ${width}x${height} label:"$top" /tmp/out.png +swap \
 		-gravity center -composite  /tmp/out.png
