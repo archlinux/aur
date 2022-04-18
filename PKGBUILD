@@ -1,7 +1,7 @@
 # Maintainer: Nathan Vance <natervance@gmail.com>
 
 pkgname=libbible
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="A simplified interface to the SWORD project."
 arch=('x86_64')
@@ -23,5 +23,5 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
-sha256sums=('9b4161f1662f3f35e1973bd5af9f8f0039a2d32deb8a613b8d43080e9b58398c'
+sha256sums=('4ed00b0b90dc63b4fc700512fc1956c8a5f34bac3f23ec1ec7d2af04b54e4cfc'
             'SKIP')
