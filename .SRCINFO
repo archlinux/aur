@@ -1,13 +1,13 @@
 pkgbase = python-oldest-supported-numpy
 	pkgdesc = Meta-package providing oldest supported Numpy for given Python version
-	pkgver = 2022.4.10
+	pkgver = 2022.4.18
 	pkgrel = 1
 	url = https://github.com/scipy/oldest-supported-numpy
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/o/oldest-supported-numpy/oldest-supported-numpy-2022.4.10.tar.gz
-	md5sums = f113e12d1e98783e9386cbe5795ac071
+	source = https://files.pythonhosted.org/packages/source/o/oldest-supported-numpy/oldest-supported-numpy-2022.4.18.tar.gz
+	md5sums = cf106ad08b28d63f3fe7ebf40ada6b2f
 
 pkgname = python-oldest-supported-numpy
