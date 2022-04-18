@@ -1,6 +1,6 @@
 pkgbase = gr-limesdr-3.9-git
 	pkgdesc = gr-limesdr Plugin for GNURadio >=3.9
-	pkgver = 385.57fc840
+	pkgver = r85.57fc840
 	pkgrel = 1
 	url = https://github.com/chrisjohgorman/gr-limesdr
 	arch = x86_64
