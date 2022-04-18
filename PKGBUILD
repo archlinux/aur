@@ -9,7 +9,7 @@ url="https://github.com/realmazharhussain/nautilus-code"
 license=('AGPL3')
 depends=('libnautilus-extension')
 makedepends=('git' 'meson')
-optdepends=("code: for 'Open in VSCode' menu item",
+optdepends=("code: for 'Open in VSCode' menu item"
             "gnome-builder: for 'Open in Builder' menu item")
 backup=()
 source=("${pkgname}-${__pkgver}.tar.gz"::"$url/archive/refs/tags/v${__pkgver}.tar.gz")
