@@ -6,24 +6,26 @@
 set -u
 _pkgname='le'
 pkgname="${_pkgname}"
-pkgver=1.16.7
-pkgrel=1
+pkgver='1.16.8'
+pkgrel='1'
 pkgdesc='A text editor in memorial to Norton Editor with block and binary operations'
 arch=('i686' 'x86_64')
 #url='https://directory.fsf.org/wiki/Le_editor'
 url="https://github.com/lavv17/${_pkgname}"
 license=('GPL3')
 makedepends=('git')
-_verwatch=("${url}/releases" "${url#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
+#_verwatch=("${url}/releases" "${url#*github.com}/archive/v\(.*\)\.tar\.gz" 'l')
 _srcdir="${_pkgname}-${pkgver}"
 #source=("http://fossies.org/linux/misc/${_pkgname}-${pkgver}.tar.xz")
 #source=("http://lav.yar.ru/download/le/${_pkgname}-${pkgver}.tar.gz")
 source=(
   'git://git.sv.gnu.org/gnulib'
-  "${_pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz"
+  "${_pkgname}-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz"
 )
+md5sums=('SKIP'
+         '94a24b344084324f07ab1a4fd3181fda')
 sha256sums=('SKIP'
-            '93ee87b1d2eb6dcc2bf9b43653baba78d3f89f18b339761a6e0a5521cd865e6d')
+            '6c5a0e3bfbc522e57953f237269c1772283454fb6947f6257fde99d48ea9c3b1')
 
 if [ "${pkgname%-git}" != "${pkgname}" ]; then # this is easily done with case
   unset _verwatch
@@ -55,8 +57,7 @@ build() {
       ./configure --prefix='/usr' CXX='g++'
     fi
   fi
-  local _nproc="$(nproc)"; _nproc=$((_nproc>8?8:_nproc))
-  nice make -s -j "${_nproc}"
+  nice make -s
   set +u
 }
 
