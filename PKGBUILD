@@ -1,7 +1,7 @@
 # Maintainer: Andrej Radović <r.andrej@gmail.com>
 pkgname=namedtype-git
 pkgver=v1.1.0.r61.g020be1e
-pkgrel=1
+pkgrel=2
 pkgdesc="C++ strong type library"
 arch=(any)
 url="https://github.com/joboccara/NamedType"
@@ -17,9 +17,9 @@ pkgver() {
     git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-
 build() {
-    ls
+    sed -i -e 's#DESTINATION lib/cmake/#\0NamedType/#g' \
+        "$srcdir/$pkgname/CMakeLists.txt"
     cmake \
         -B "build" \
         -S "$srcdir/$pkgname" \
