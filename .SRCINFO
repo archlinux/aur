@@ -1,6 +1,6 @@
 pkgbase = auto-st
 	pkgdesc = Concise Build of Suckless Simple Terminal
-	pkgver = 0.8.5.r17
+	pkgver = 0.8.5.r18
 	pkgrel = 1
 	url = https://gitlab.com/a4to/st
 	arch = x86_64

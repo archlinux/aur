@@ -2,7 +2,7 @@
 # ---
 _pkgbase=st
 pkgname=auto-st
-pkgver=0.8.5.r17
+pkgver=0.8.5.r18
 pkgrel=1
 pkgdesc="Concise Build of Suckless Simple Terminal"
 arch=('x86_64')
@@ -19,11 +19,6 @@ provides=(st)
 conflicts=(st)
 source=("git+$url.git")
 md5sums=('SKIP')
-
-pkgver() {
-  cd "${_pkgbase}"
-  printf "0.8.5.r$(git rev-list --count HEAD)"
-}
 
 prepare() {
 	cd $srcdir/${_pkgbase}
