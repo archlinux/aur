@@ -3,7 +3,7 @@
 # Contributor: Allan McRae <allan at archlinux dot org>
 
 pkgname=mbpfan-git
-pkgver=2.2.1.r1.gdd4ed65
+pkgver=2.3.0.r1.g7981306
 pkgrel=1
 pkgdesc="A simple daemon to control fan speed on all MacBook/MacBook Pros"
 arch=('x86_64' 'i686')
@@ -11,7 +11,7 @@ url="https://github.com/dgraziotin/mbpfan"
 license=('GPL3')
 makedepends=('git')
 provides=('mbpfan')
-source=("$pkgname"::'git://github.com/dgraziotin/mbpfan.git' 'mbpfan.install')
+source=("$pkgname"::'git+https://github.com/dgraziotin/mbpfan.git' 'mbpfan.install')
 md5sums=('SKIP' '750a90c1ff128d9b7eafcdd765d3595b')
 install='mbpfan.install'
 backup=('etc/mbpfan.conf')
