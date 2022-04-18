@@ -4,19 +4,23 @@
 _pkgname=sile
 pkgname=$_pkgname-luajit-git
 pkgdesc='Modern typesetting system inspired by TeX'
-pkgver=0.12.4.r37.gb584be5
+pkgver=0.12.5.r44.gbca0f36
 pkgrel=1
 arch=(x86_64)
 url=https://www.sile-typesetter.org
+_url="https://github.com/sile-typesetter/$_pkgname"
 license=(MIT)
 _luadeps=(bit32
           cassowary
+          cldr
           cliargs
           compat53 # Not needed for Lua 5.3+, LuaJIT is 5.1(ish)
           cosmo
           expat
           filesystem
+          fluent
           linenoise
+          loadkit
           lpeg
           luaepnf
           luarepl
@@ -49,16 +53,11 @@ checkdepends=(poppler)
 provides=(libtexpdf.so
           "$_pkgname=$pkgver")
 conflicts=("$_pkgname")
-source=("git+https://github.com/sile-typesetter/$_pkgname.git"
-        "git+https://github.com/sile-typesetter/libtexpdf.git")
+options=(debug)
+source=("git+$_url.git"
+        "git+${_url%/$_pkgname}/libtexpdf.git")
 sha256sums=('SKIP'
             'SKIP')
-
-pkgver() {
-	cd "$_pkgname"
-	git describe --long --tags --abbrev=7 --match="v*" HEAD |
-		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-}
 
 prepare () {
 	cd "$_pkgname"
@@ -66,6 +65,12 @@ prepare () {
 	git config submodule.libtexpdf.url "$srcdir/libtexpdf"
 	git submodule update
 	./bootstrap.sh
+}
+
+pkgver() {
+	cd "$_pkgname"
+	git describe --long --tags --abbrev=7 --match="v*" HEAD |
+		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build () {
