@@ -2,7 +2,7 @@
 
 pkgname=v17-photometry-color-db-astap
 pkgver=2020.12.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Color database of 105 million stars up to Johnson V-magnitude 17, for use with ASTAP"
 arch=('any')
 url="https://www.hnsky.org/astap.htm"
@@ -13,7 +13,8 @@ depends=('astap')
 
 # the deb is automatically unpacked in the automatic prepare() step, but the files we want are doubly archived
 package() {
-    tar xpfv data.tar.xz -C "${pkgdir}"
+    tar xfv data.tar.xz -C "${pkgdir}"
     chmod 755 -R "${pkgdir}"
+    chmod 644 "${pkgdir}"/opt/astap/*
 }
 

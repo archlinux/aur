@@ -1,7 +1,7 @@
 pkgbase = v17-photometry-color-db-astap
 	pkgdesc = Color database of 105 million stars up to Johnson V-magnitude 17, for use with ASTAP
 	pkgver = 2020.12.20
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.hnsky.org/astap.htm
 	arch = any
 	license = LGPL3
