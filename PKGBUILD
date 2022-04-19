@@ -1,6 +1,6 @@
 # Maintainer: Julian Oes <julian at oes dot ch>
 pkgname=mavsdk
-pkgver=0.49.0
+pkgver=1.3.1
 pkgrel=1
 epoch=
 pkgdesc="API and library for MAVLink compatible systems written in C++17"
