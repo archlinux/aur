@@ -1,7 +1,7 @@
 # Maintainer: Michael Schubert <mschu.dev at gmail> https://github.com/mschubert/PKGBUILDs
 pkgname=latex-media9
 _pkgname=${pkgname#latex-}
-pkgver=1.20
+pkgver=1.24
 pkgrel=1
 pkgdesc="Embed video/sound (SWF, MP4, FLV, MP3) files in PDFs"
 arch=('any')
@@ -11,7 +11,7 @@ depends=('texlive-core')
 source=($_pkgname-$pkgver.zip::http://tug.ctan.org/tex-archive/install/macros/latex/contrib/$_pkgname.tds.zip)
 install=$pkgname.install
 noextract=($_pkgname.tds.zip)
-sha256sums=('03377ecf63fd5ff1f40a02b28955355c126c5a57dcd3ca1f82e6a9703bebb8a9')
+sha256sums=('cc73bd343666c6f2c14b2e6d62351d20a398577dfc2e93300eb88d4d7873a179')
 
 package() {
   install -dm755 "$pkgdir"/usr/share/texmf
