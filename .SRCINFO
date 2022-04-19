@@ -1,0 +1,11 @@
+pkgbase = ccao
+	pkgdesc = A tool for C/C++ to build project and manage lib from starserver.
+	pkgver = 0.7
+	pkgrel = 1
+	url = http://www.freet.tech/
+	arch = x86_64
+	license = MIT
+	source = https://gitee.com/cfreet/ccao/attach_files/1032652/download/ccao
+	md5sums = 95694e0f121deef1f3abe6e6c46359cc
+
+pkgname = ccao
