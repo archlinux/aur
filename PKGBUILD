@@ -10,7 +10,7 @@ arch=('any')
 url="http://www.debian.org/"
 license=('GPL')
 depends=('gettext' 'perl')
-source=(http://ftp.debian.org/debian/pool/main/i/intltool-debian/${pkgname}_${pkgver}+20060710.5_all.deb)
+source=(https://deb.debian.org/debian/pool/main/i/intltool-debian/${pkgname}_${pkgver}+20060710.5_all.deb)
 sha256sums=('1ab5215e135b2b55178083ef6115913e49c6d661e7fb4f0086c1d740dc69aa5d')
 
 build() {
