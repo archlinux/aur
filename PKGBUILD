@@ -14,5 +14,6 @@ depends=('astap')
 # the deb is automatically unpacked in the automatic prepare() step, but the files we want are doubly archived
 package() {
     tar xpfv data.tar.xz -C "${pkgdir}"
+    chmod 755 -R "${pkgdir}"
 }
 
