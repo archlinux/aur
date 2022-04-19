@@ -1,6 +1,6 @@
 # Maintainer: Fabian Brosda <fabi3141@gmx.de>
 pkgname=gauche-json-c
-pkgver=0.1
+pkgver=0.1.1
 pkgrel=1
 epoch=
 pkgdesc="Fast parse-json via json-c in gauche."
@@ -9,8 +9,8 @@ url="https://github.com/fbrosda/gauche-json-c"
 license=('BSD')
 depends=('gauche' 'json-c')
 makedepends=('make')
-source=('https://github.com/fbrosda/gauche-json-c/releases/download/v0.1/gauche-json-c-0.1.tgz')
-sha256sums=('5cb65b5e11dd17aacbb15930cb5d3e68175eb35cd9dfc396ef6fcbb0b7fae530')
+source=('https://github.com/fbrosda/gauche-json-c/releases/download/v0.1.1/gauche-json-c-0.1.1.tgz')
+sha256sums=('5e6ac326252f049a570d3485749976a52048a54857b282d216dd1558b8d7efc3')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
