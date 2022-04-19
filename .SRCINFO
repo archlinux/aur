@@ -1,6 +1,6 @@
 pkgbase = yay-cache-cleanup-hook
 	pkgdesc = Pacman hook to clean up both pacman and yay caches
-	pkgver = 1.1.3
+	pkgver = 1.1.4
 	pkgrel = 1
 	url = https://github.com/rmeno12/yay-cache-cleanup-hook
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = yay-cache-cleanup-hook
 	depends = pacman-contrib
 	depends = jq
 	depends = yay
-	source = yay-cache-cleanup-hook-1.1.3.tar.gz::https://github.com/rmeno12/yay-cache-cleanup-hook/archive/refs/tags/v1.1.3.tar.gz
-	sha256sums = 3ab72de900bc6119c6b058c7ce871aae44479541790f73e095d98783760112c3
+	source = yay-cache-cleanup-hook-1.1.4.tar.gz::https://github.com/rmeno12/yay-cache-cleanup-hook/archive/refs/tags/v1.1.4.tar.gz
+	sha256sums = 843cb14acfaf40ffee6e6358288149549a59d2013c9984e3bd3dcfeaa5e34531
 
 pkgname = yay-cache-cleanup-hook
