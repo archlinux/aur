@@ -1,6 +1,6 @@
 pkgbase = tradingview-bin
 	pkgdesc = Track all markets
-	pkgver = 1.0.4
+	pkgver = 1.0.6
 	pkgrel = 1
 	url = https://www.tradingview.com/desktop/
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = tradingview-bin
 	makedepends = squashfs-tools
 	depends = electron16
 	provides = tradingview
-	source = tradingview-1.0.4.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_16.snap
+	source = tradingview-1.0.6.snap::https://api.snapcraft.io/api/v1/snaps/download/nJdITJ6ZJxdvfu8Ch7n5kH5P99ClzBYV_17.snap
 	source = tradingview.sh
-	sha512sums = ce1907bbd5d13855196621b1965b3a5a691bebfc50f7caefe23afeec8bc6ced7a79f11c3440397d07446165a503795057ae27fe1d97d0ac5a8286f52a6d9ec77
-	sha512sums = 1983a5f7967442e968c446adb7afe740650c7f4cc0e66a5e150239043f78fa1cc3243f2f7a1121173243f08570d618dc29d7fd87699b19b9cb4d94d2928078a7
+	sha512sums = ae533e4b94f10526980e0949eebb3bd57ad4097e567051e91f30ac8efeb4c7d3e7fb13676758a1cce84d3f0d78525437b45e13ef22a979fc30ff5611bf5a13b0
+	sha512sums = 9e85733091484278eb40e699f5741cc72ffa14c34b546238a15854c9c8d0373f904d2d36f943659f78038bbdb8a0fb7d7258598e08afe3228dd5d51797fc582b
 
 pkgname = tradingview-bin
