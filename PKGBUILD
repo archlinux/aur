@@ -14,7 +14,8 @@ _appimage="ff-logs-uploader-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::${url}releases/download/v${pkgver}/FF-Logs-Uploader-${pkgver}.AppImage"
 		"${_pkgname}.desktop")
 noextract=("${_appimage}")
-sha256sums_x86_64=('b1652297a0d6ab490fca266ad1b534d7838d490855d0ee3b976a24a48297c988')
+sha256sums_x86_64=('b1652297a0d6ab490fca266ad1b534d7838d490855d0ee3b976a24a48297c988'
+                   '1e4c3f4a0afaf2c007e0fa74b6513a67e79e5a7aaa8713c014dc37a827c77457')
 
 prepare() {
     chmod +x "${_appimage}"
