@@ -2,8 +2,8 @@
 
 _plug=soifunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=1.bb15a18
-pkgrel=2
+pkgver=2.357f34b
+pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
 url='https://gitlab.com/shssoichiro/soifunc'
@@ -11,8 +11,10 @@ license=('MIT')
 depends=('vapoursynth'
          'vapoursynth-plugin-vsutil'
          'vapoursynth-plugin-muvsfunc'
+         'vapoursynth-plugin-mvsfunc'
          'vapoursynth-plugin-jincresize'
          )
+optdepends=('vapoursynth-plugin-bm3dcuda: Fast BM3D cuda/cuda_rtc/cpu support')
 makedepends=('git')
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
