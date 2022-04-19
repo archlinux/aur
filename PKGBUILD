@@ -11,7 +11,7 @@ license=('unknown')
 depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
 _appimage="ff-logs-uploader-${pkgver}.AppImage"
-source_x86_64=("${_appimage}::${url}releases/download/v${pkgver}/${_pkgname}-${pkgver}.AppImage"
+source_x86_64=("${_appimage}::${url}releases/download/v${pkgver}/FF-Logs-Uploader-${pkgver}.AppImage"
 		"${_pkgname}.desktop")
 noextract=("${_appimage}")
 sha256sums_x86_64=('b1652297a0d6ab490fca266ad1b534d7838d490855d0ee3b976a24a48297c988')
