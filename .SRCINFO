@@ -1,7 +1,7 @@
 pkgbase = awsvpnclient
 	pkgdesc = AWS VPN Client
 	pkgver = 3.0.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://aws.amazon.com/vpn/
 	install = awsvpnclient.install
 	arch = x86_64

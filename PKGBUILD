@@ -1,7 +1,7 @@
 # Maintainer: Richard Hillmann <richie at project0 dot de>
 pkgname=awsvpnclient
 pkgver=3.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc="AWS VPN Client"
 arch=('x86_64')
 license=('custom')
@@ -27,7 +27,7 @@ package(){
 
   # Apply patch for broken ICU detection, no localisation
   patch -s "${pkgdir}/opt/awsvpnclient/AWS VPN Client.runtimeconfig.json" "${srcdir}/awsvpnclient.runtimeconfig.json.patch"
-
+  patch -s "${pkgdir}/opt/awsvpnclient/Service/ACVC.GTK.Service.runtimeconfig.json" "${srcdir}/awsvpnclient.runtimeconfig.json.patch"
   # Workaround for missing compatibility of the SQL library with arch linux:
   # Intentionally break the metrics agent,
   # it will be unable to laod the dynamic lib and wont start but continue with error message
