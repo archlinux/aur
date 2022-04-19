@@ -1,30 +1,38 @@
 # Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 # ex-Maintainer: Davide Depau <davide@depau.eu>
 
-_pkgname=authenticator
-pkgname=$_pkgname-git
-pkgver=4.0.3.r47.g900b5bd
+pkgname=authenticator-git
+_pkgname=Authenticator
+pkgver=4.1.0.r3.gb4ba55a
 pkgrel=1
-pkgdesc="2FA code generator for GNOME "
+pkgdesc="2FA code generator for GNOME"
 arch=('any')
 url="https://gitlab.gnome.org/World/Authenticator"
 license=('GPL3')
-depends=('gtk4' 'glib2' 'libsecret' 'zbar' 'libadwaita' 'gstreamer')
-makedepends=('git' 'meson' 'ninja' 'gobject-introspection' 'rust')
-provides=('authenticator')
-conflicts=('authenticator')
-source=("$_pkgname::git+https://gitlab.gnome.org/World/Authenticator.git")
-sha256sums=('SKIP')
+depends=('glib2' 'libsecret' 'zbar' 'libadwaita' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad')
+makedepends=('git' 'meson' 'gobject-introspection' 'rust')
+checkdepends=('appstream-glib')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=(git+$url.git)
+b2sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${_pkgname%-git}"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
 }
 
 build() {
-  arch-meson "$_pkgname" build
+  arch-meson "${_pkgname%-git}" build
   meson compile -C build
 }
+
+#check() {
+#  meson test -C build
+#}
 
 package() {
   meson install -C build --destdir "$pkgdir"
