@@ -15,7 +15,7 @@ source_x86_64=("${_appimage}::${url}releases/download/v${pkgver}/FF-Logs-Uploade
 		"${_pkgname}.desktop")
 noextract=("${_appimage}")
 sha256sums_x86_64=('b1652297a0d6ab490fca266ad1b534d7838d490855d0ee3b976a24a48297c988'
-                   '1e4c3f4a0afaf2c007e0fa74b6513a67e79e5a7aaa8713c014dc37a827c77457')
+                   '72fa6c3d71521f04ea45fc35b5f353d54ac0c547514d31d9b4c178b90cb05194')
 
 prepare() {
     chmod +x "${_appimage}"
@@ -25,8 +25,8 @@ prepare() {
 build() {
 	# fix permissions; .AppImage permissions are 700 for all directories
 	chmod -R a-x+rX squashfs-root/usr
-	#making desktop file
-	echo "X-AppImage-Version=${pkgver}" >> ${pkgname}.desktop
+	#appending version to desktop file
+	echo -e "\nX-AppImage-Version=${pkgver}" >> "${_pkgname}.desktop"
 }
 
 package() {
@@ -34,7 +34,7 @@ package() {
     install -Dm755 "${srcdir}/${_appimage}" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
 
     # install .desktop and append version
-    install -Dm644 "${srcdir}/${pkgname}.desktop"\
+    install -Dm644 "${srcdir}/${_pkgname}.desktop"\
             "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
     # install icons
     install -dm755 "${pkgdir}/usr/share/"

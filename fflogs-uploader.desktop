@@ -7,4 +7,3 @@ Icon=fflogs
 Comment=Upload logs to FFLogs
 Categories=Gaming
 StartupWMClass=fflogs
-Name[en_US]=fflogs-uploader
