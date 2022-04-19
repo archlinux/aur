@@ -6,7 +6,7 @@ pkgbase = w08-star-db-astap
 	arch = any
 	license = LGPL3
 	depends = astap
-	source = w08.deb::https://sourceforge.net/projects/astap-program/files/star_databases/w08_star_database_mag08_astap.deb/download
+	source = w08.deb::https://downloads.sourceforge.net/project/astap-program/star_databases/w08_star_database_mag08_astap.deb
 	sha256sums = 523131fbf448c547d42051df5d23aea7e92b0ca75484043abb35cd128da7beed
 
 pkgname = w08-star-db-astap
