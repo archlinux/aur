@@ -2,8 +2,8 @@
 # Contributor: Celogeek <private-4zokpdq6@mrhyde.xyz>
 
 _basename=jicofo
-_version=1.0+862
-_url=https://download.jitsi.org/stable/jicofo_1.0-862-1_all.deb
+_version=1.0+874
+_url=https://download.jitsi.org/stable/jicofo_1.0-874-1_all.deb
 
 _pkgbase=${_basename}
 pkgname=${_pkgbase}-bin
@@ -13,7 +13,7 @@ pkgdesc="JItsi meet COnference FOcus binary"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
 license=('Apache')
-depends=("java-runtime" "bash")
+depends=("java-runtime-openjdk=11" "bash")
 optdepends=("prosody")
 makedepends=('tar' 'unzip')
 options=('!strip')
@@ -53,7 +53,7 @@ package() {
 
         chown -R root:root "${DESTDIR}"
 
-	install -dm700 "${CONFDIR}"
+        install -dm700 "${CONFDIR}"
         install -Dm600 -t "${CONFDIR}" "etc/jitsi/jicofo/logging.properties"
         sed -i 's@/var/log/jitsi@/var/log/'${_pkgbase}'@' "${CONFDIR}/logging.properties"
 
@@ -66,9 +66,9 @@ package() {
         install -Dm644 "sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${_pkgbase}.conf"
         install -Dm644 "tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgbase}.conf"
 }
-sha256sums=('410777ca731c3b12578dcccbdee3dc0789fec2d828de95502952d6cdf0343887'
+sha256sums=('5f0c75eb3ab4371e403358e65dc590a02b682cd4aeac50e5a744e52dc91add99'
             'f3928f382fbfd5bc40bd0c2a9553d2480b4fa7cf2fd04109257cdac535ed3d9f'
             'f295f5f8ee13edd019defc037c60e04c6ea2d30e69cc4a896c010b8570f5efab'
-            '6eff8e605966fc827e9074d2f42c80e61feaeba307395b16423c2e5984d750e1'
+            '21d9596eba7342cc02cb37f6c1bb651792e2c79df0374b4fd850e4fbad4cfaec'
             '0681e97ca1e06d8ea7bdec0a874c6fc7a6ea84628923005130cd444547a1b440'
             '9f6fb4759099feefaee6fd44cac5854401e58f7ce929949cbc3994faaa3487d3')

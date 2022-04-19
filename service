@@ -3,6 +3,7 @@ Description=Jitsi-Meet Conference Focus
 After=network-online.target
 
 [Service]
+Environment=PATH=/usr/lib/jvm/java-11-openjdk/bin:/bin:/usr/bin:/usr/local/bin
 EnvironmentFile=/etc/jicofo/config
 User=jicofo
 ExecStart=/usr/lib/jicofo/jicofo.sh --host=${JICOFO_HOST} --domain=${JICOFO_HOSTNAME} --user_name=${JICOFO_AUTH_USER} --user_domain=${JICOFO_AUTH_DOMAIN} ${JICOFO_OPTS}
