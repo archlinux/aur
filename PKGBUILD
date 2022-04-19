@@ -1,6 +1,6 @@
 # Maintainer: Michał Walenciak <kicer86@gmail.com>
 pkgname=media-downloader
-pkgver=2.2.0
+pkgver=2.2.1
 pkgrel=1
 pkgdesc="This project is a Qt/C++ based frontend to youtube-dl and it can be used to download any media file supported by youtube-dl"
 arch=('i686' 'x86_64')
@@ -19,7 +19,7 @@ install=
 changelog=
 source=(https://codeload.github.com/mhogomchungu/$pkgname/tar.gz/$pkgver)
 noextract=()
-md5sums=('3b53cbbf4ddff87284aeff6e930b6c56')
+md5sums=('e653989201a82639267a213422ee551b')
 
 build()
 {
