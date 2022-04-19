@@ -1,7 +1,7 @@
 pkgbase = dt-cli
 	pkgdesc = Dotfile management and templating client
 	pkgver = 0.7.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://dt.cli.rs
 	arch = any
 	license = MIT OR Apache 2.0

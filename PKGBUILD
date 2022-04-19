@@ -1,7 +1,7 @@
 # Maintainer: Gaoyang Zhang <gy@blurgy.xyz>
 pkgname=dt-cli
 pkgver=0.7.8
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Dotfile management and templating client"
 arch=("any")
@@ -39,7 +39,7 @@ build() {
 
 check() {
     cd "dt-$pkgver"
-    cargo +stable test --bin=dt-cli --lib=dt-core --release --all-features --locked
+    cargo +stable test --lib --release --all-features --locked
 }
 
 package() {
