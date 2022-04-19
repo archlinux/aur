@@ -2,8 +2,8 @@
 
 pkgname=cider-git
 _pkgname=Cider
-pkgver=1.4.3.3105.8b7b8c3d
-pkgrel=1
+pkgver=1.4.3
+pkgrel=2
 pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Compiled from the GitHub repositories develop branch."
 arch=("armv7h" "i686" "x86_64")
 url="https://github.com/CiderApp/${_pkgname}.git"
@@ -28,8 +28,6 @@ pkgver() {
 
 build() {
     cd "${srcdir}/${_pkgname}"
-
-	ls 
 
     if [ -f cider.lock ]; then
         mv cider.lock yarn.lock
