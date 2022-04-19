@@ -1,10 +1,11 @@
-# Maintainer: Frederic Bezies <fredbezies at gmail dot com>
+# Maintainer: A Farzat <a@farzat.xyz>
+# Contributor: Frederic Bezies <fredbezies at gmail dot com>
 # Contributor: Alad Wenter <alad@mailbox.org>
 # Contributor: Sean Haugh <seanphaugh@gmail.com>
 # Contributor: Chris Salzberg <chris@dejimata.com>
 _pkgname=neomutt
 pkgname=neomutt-git
-pkgver=20220408.r12.gccde81231
+pkgver=20220415.r12.gd88d7b783
 pkgrel=1
 pkgdesc='A version of mutt with added features - development branch'
 url='http://www.neomutt.org/'
@@ -17,7 +18,7 @@ optdepends=('python: keybase.py'
             'perl: smime_keys'
             'ca-certificates: default CA certificates')
 makedepends=('git' 'gnupg' 'libxslt' 'docbook-xsl' 'w3m')
-source=("git+https://github.com/neomutt/neomutt.git#branch=master"
+source=("git+https://github.com/neomutt/neomutt.git#branch=main"
         "default-ca-certificates.patch")
 sha256sums=('SKIP'
             '571716b8979e9b43328416c3c56eff228b6c58355d7c080b8987ea89c6360776')
