@@ -6,13 +6,14 @@ pkgbase = fetchcord-git
 	install = fetchcord.install
 	arch = any
 	license = MIT
+	makedepends = git
 	depends = python-pypresence
 	depends = neofetch
 	depends = python-psutil
 	depends = python-setuptools
 	provides = fetchcord
+	conflicts = fetchcord
 	source = fetchcord::git+https://github.com/MrPotatoBobx/fetchcord#branch=master
 	sha256sums = SKIP
 
 pkgname = fetchcord-git
-
