@@ -1,6 +1,6 @@
 # Maintainer: threadexio <pzarganitis at gmail dot com>
 pkgname=zeus
-pkgver=1.1.3
+pkgver=1.2.0
 pkgrel=1
 pkgdesc="The containerized AUR helper"
 url="https://github.com/threadexio/zeus"
@@ -9,7 +9,7 @@ license=('GPL')
 depends=('docker')
 makedepends=('cargo')
 source=("https://github.com/threadexio/zeus/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('efd27e6bf00f90581f92f1b80dab9e022811aedb05d5f6d5e23f594217435f09')
+sha256sums=('107d28c9705b6925a80b7b9a6831586fd14429f95eaa24105a57f507db833b0f')
 conflicts=(zeus-bin podman-docker)
 
 prepare() {
@@ -22,7 +22,7 @@ build() {
 
 	export RUSTUP_TOOLCHAIN=stable
 	export CARGO_TARGET_DIR=target
-	make BUILD_TYPE=release build
+	make BUILD_TYPE=release PREFIX="/usr" build
 }
 
 package() {
