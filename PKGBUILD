@@ -2,16 +2,16 @@
 # Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 
 # Arch Linux kernel source
-_ver=5.16.arch1
+_ver=5.17.arch1
 _srcname=archlinux-linux
 _srcurl="https://github.com/archlinux/linux.git"
 # Bcachefs kernel source
-_bcachefstag=v5.16
+_bcachefstag=v5.17
 _bcachefsname=bcachefs-linux
 _bcachefsurl="https://evilpiepirate.org/git/bcachefs.git"
 
 pkgbase=linux-simple-bcachefs-git
-pkgver=5.16.arch1.r1232
+pkgver=5.17.arch1.r1339
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${_ver%.*}-${_ver##*.}
@@ -19,13 +19,13 @@ url="https://github.com/archlinux/linux/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc kmod libelf pahole cpio perl tar xz
+  bc libelf pahole cpio perl tar xz
   git
 )
 options=('!strip')
 source=(config         # the main kernel config file
 )
-sha256sums=('7cbba374356a189faac71001c5344ce8f02434684b1ce1accefc0cc4bd6718e5'
+sha256sums=('05381b085c83737922a85fa6f42aa61b3d1400840a7952bf8524726e1d8f74f8'
 )
 
 export KBUILD_BUILD_HOST=archlinux
@@ -121,7 +121,7 @@ build() {
 _package() {
   pkgdesc="The $pkgdesc kernel and modules with bcachefs support"
   depends=(coreutils kmod initramfs)
-  optdepends=('crda: to set the correct wireless channels of your country'
+  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
   replaces=(virtualbox-guest-modules-arch wireguard-arch)
@@ -139,7 +139,8 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
