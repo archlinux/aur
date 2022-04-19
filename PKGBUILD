@@ -2,7 +2,7 @@
 
 pkgname=hyperleda-galaxy-db-astap
 pkgver=2019.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Massive database of galaxies and other non-star objects, for use with ASTAP"
 arch=('any')
 url="http://leda.univ-lyon1.fr/"
@@ -15,6 +15,6 @@ depends=('astap')
 package() {
     tar xfv data.tar.xz -C "${pkgdir}"
     chmod 755 -R "${pkgdir}"
-    chmod 644 "${pkgdir}"/*
+    chmod 644 "${pkgdir}"/opt/astap/*
 }
 
