@@ -1,6 +1,6 @@
 pkgbase = nextpnr-all-nightly
 	pkgdesc = nextpnr portable FPGA place and route tool - all FPGA architectures
-	pkgver = 20220418_nextpnr_0.3_10_gd76a6093
+	pkgver = 20220419_nextpnr_0.3_10_gd76a6093
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/YosysHQ/nextpnr
