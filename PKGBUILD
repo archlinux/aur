@@ -3,7 +3,7 @@
 _npmname=concurrently
 
 pkgname=nodejs-concurrently
-pkgver=6.2.1
+pkgver=7.1.0
 pkgrel=1
 pkgdesc="Run multiple commands concurrently"
 arch=(any)
@@ -13,7 +13,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=(http://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('93ed2d394c3f3f35ae069074899498416fe21d0eab9a6205ca823ef72a7923c1')
+sha256sums=('ca51b9b058f7de54f02d5353baaa432bb2f47f1b59133f06cc2624c1682a1334')
 
 package() {
 	npm install -g --user root --prefix "$pkgdir/usr" "$srcdir/$_npmname-$pkgver.tgz"

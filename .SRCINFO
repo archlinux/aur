@@ -1,14 +1,14 @@
 pkgbase = nodejs-concurrently
 	pkgdesc = Run multiple commands concurrently
-	pkgver = 6.2.1
+	pkgver = 7.1.0
 	pkgrel = 1
 	url = https://github.com/open-cli-tools/concurrently
 	arch = any
 	license = MIT
 	makedepends = npm
 	depends = nodejs
-	noextract = concurrently-6.2.1.tgz
-	source = http://registry.npmjs.org/concurrently/-/concurrently-6.2.1.tgz
-	sha256sums = 93ed2d394c3f3f35ae069074899498416fe21d0eab9a6205ca823ef72a7923c1
+	noextract = concurrently-7.1.0.tgz
+	source = http://registry.npmjs.org/concurrently/-/concurrently-7.1.0.tgz
+	sha256sums = ca51b9b058f7de54f02d5353baaa432bb2f47f1b59133f06cc2624c1682a1334
 
 pkgname = nodejs-concurrently
