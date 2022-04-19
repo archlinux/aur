@@ -1,7 +1,7 @@
 # Maintainer: Daniel Martí <mvdan@mvdan.cc>
 
 pkgname=xurls
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Extract urls from plain text"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://github.com/mvdan/${pkgname}"
 license=('BSD')
 makedepends=('git' 'go')
 source=("$pkgname-$pkgver::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('c4a5451eab432f6ac4c033fc197b7ceb947910bc1eae0db750b7c5c5ad703c46')
+sha256sums=('8c9850c80eff452eeca2fe0f945a33543302dc31df66c3393ed52f6d8e921702')
 
 prepare(){
 	cd "$pkgname-$pkgver"
