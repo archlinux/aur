@@ -12,6 +12,12 @@ source=("https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
 sha256sums=('b9cbf342e9634c07a79299874cac8d649352e944d9a9b3e2f51c67eecf2f6317')
 
+pkgver() {
+	curl --silent -L "https://registry.npmjs.org/solve3-cli/latest" |
+		grep -oP '"version":\K".*?"' |
+		sed -e 's/"//g'
+}
+
 package() {
 	npm install -g --prefix "$pkgdir/usr" "$srcdir/$pkgname-$pkgver.tgz"
 
