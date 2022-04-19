@@ -1,7 +1,7 @@
 # Maintainer: Steve Engledow <steve@engledow.me>
 pkgname=amazon-workspaces-bin
 pkgver=4.1.0.1523
-pkgrel=1
+pkgrel=2
 pkgdesc='Amazon Workspace Client'
 arch=('i686' 'x86_64')
 url="https://clients.amazonworkspaces.com/"
@@ -9,6 +9,7 @@ license=('non-free')
 depends=(
     'gtk3'
     'webkit2gtk'
+    'icu63'
 )
 options=('staticlibs')
 makedepends=(
