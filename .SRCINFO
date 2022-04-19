@@ -10,7 +10,7 @@ pkgbase = paramountplus-bin
 	depends = gtk3
 	depends = libxss
 	conflicts = paramountplus-git
-	source_x86_64 = https://gitlab.com/paramountplus/binaries/1.0.1-1/-/raw/main/ParamountPlus-linux-x64.tar.gz
+	source_x86_64 = https://gitlab.com/paramountplus/binaries/1.0.1-1/-/raw/main/Paramountplus-linux-x64.tar.gz
 	sha256sums_x86_64 = SKIP
 
 pkgname = paramountplus-bin
