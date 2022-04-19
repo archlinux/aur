@@ -1,0 +1,2 @@
+d /var/lib/vertcoind 0770 vertcoin vertcoin - -
+d /etc/vertcoin     0770 vertcoin vertcoin - -
