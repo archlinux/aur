@@ -23,7 +23,7 @@ pkgver() {
 }
 
 prepare() {
-	sed -i 's/-O[0123]//' stella-emu/src/libretro/Makefile
+	sed -i 's/-O[0123s]//;s/-Ofast//' stella-emu/src/libretro/Makefile
 }
 
 build() {
