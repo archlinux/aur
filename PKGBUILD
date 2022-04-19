@@ -5,7 +5,7 @@
 
 pkgname=knossos
 pkgver=5.1
-pkgrel=4
+pkgrel=5
 arch=("x86_64")
 pkgdesc="A software tool for the visualization and annotation of 3D image data. It was developed for the rapid reconstruction of neural morphology and connectivity."
 url="https://knossos.app"
