@@ -216,21 +216,18 @@ build() {
   VERBOSE=1 make -C build all
 }
 
-###
-### testsuite currently broken, needs some debugging
-###
-# check() {
-#   cd "${srcdir}/${pkgbase}-${pkgver}"
-# 
-#   export CTEST_PARALLEL_LEVEL=8
-#   export CTEST_OUTPUT_ON_FAILURE=1
-#   VERBOSE=1 make -C build check
-# 
-#   # sometimes processes are not properly terminated...
-#   for process in ceph-mon ceph-mgr ceph-osd; do
-#     pkill -9 "${process}" || true
-#   done
-# }
+check() {
+  cd "${srcdir}/${pkgbase}-${pkgver}"
+
+  export CTEST_PARALLEL_LEVEL=7
+  export CTEST_OUTPUT_ON_FAILURE=1
+  VERBOSE=1 make -C build check || true
+
+  # sometimes processes are not properly terminated...
+  for process in ceph-mon ceph-mgr ceph-osd; do
+    pkill -9 "${process}" || true
+  done
+}
 
 package_ceph-libs() {
   depends=('boost-libs' 'curl' 'glibc' 'keyutils' 'libutil-linux' 'bzip2' 'lz4' 'nss'
