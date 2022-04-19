@@ -1,7 +1,7 @@
 pkgbase = unofficial-homestuck-collection
 	pkgdesc = The Unofficial Homestuck Collection
 	pkgver = 2.0.5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://bambosh.github.io/unofficial-homestuck-collection/
 	arch = x86_64
 	license = custom:chrome

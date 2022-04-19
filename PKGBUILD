@@ -2,7 +2,7 @@
 
 pkgname=unofficial-homestuck-collection
 pkgver=2.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="The Unofficial Homestuck Collection"
 arch=('x86_64')
 url="https://bambosh.github.io/unofficial-homestuck-collection/"
@@ -23,7 +23,7 @@ prepare() {
 
 build() {
     cd "${pkgname}-${pkgver}"
-    make publish
+    SHARP_IGNORE_GLOBAL_LIBVIPS=true make publish
 }
 
 package() {
