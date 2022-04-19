@@ -7,7 +7,7 @@ _Pkgname=Vial
 pkgname="${_pkgname}"-appimage
 pkgname=vial-appimage
 pkgver=v0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Vial is an open-source cross-platform (Windows, Linux and Mac) GUI and a QMK fork for configuring your keyboard in real time, similar to VIA."
 arch=('x86_64')
 url="https://get.vial.today/"
@@ -46,5 +46,8 @@ package() {
     # Symlink executable
     install -dm755 "${pkgdir}/usr/bin"
     ln -s "/opt/${pkgname}/${pkgname}.AppImage" "${pkgdir}/usr/bin/${_Pkgname}"
+
+    install -dm755 "${pkgdir}/etc/udev/rules.d"
+    echo 'KERNEL=="hidraw*", SUBSYSTEM=="hidraw", MODE="0666", TAG+="uaccess", TAG+="udev-acl"' > ${pkgdir}/etc/udev/rules.d/92-viia.rules
 }
 
