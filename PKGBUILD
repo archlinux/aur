@@ -3,7 +3,7 @@
 
 pkgname=open-hexagon-git
 pkgver=2.0.6.r267.gbabe8b4c
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Free software clone of Super Hexagon - a music-based arcade game'
 url='https://openhexagon.org/'
