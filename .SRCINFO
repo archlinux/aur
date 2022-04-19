@@ -1,6 +1,6 @@
 pkgbase = libglibutil
 	pkgdesc = Library of glib utilities
-	pkgver = 1.0.61
+	pkgver = 1.0.62
 	pkgrel = 1
 	url = https://github.com/sailfishos/libglibutil
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = libglibutil
 	license = BSD
 	makedepends = git
 	depends = glib2
-	source = libglibutil::git+https://github.com/sailfishos/libglibutil.git#commit=508e1255782e59725c25068874337e6309da04b2
+	source = libglibutil::git+https://github.com/sailfishos/libglibutil.git#commit=8219188c26d45f3ac17aad6d15091cf1ac608114
 	sha512sums = SKIP
 
 pkgname = libglibutil
