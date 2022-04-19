@@ -1,6 +1,6 @@
 # Maintainer: Carson Rueter <roachh at proton mail dot com>
 pkgname=vscodium-bin-features
-pkgver=1.63.2
+pkgver=1.66.1
 pkgrel=1
 pkgdesc='Unblock some features in VSCodium'
 arch=('any')
@@ -13,8 +13,8 @@ conflicts=('vscodium-bin-features')
 install="${pkgname}.install"
 source=("${pkgname}.hook"
         'patch.sh')
-md5sums=('9c0fcfdb3427f4a7705114eedbd3b6b8'
-         '486c3bf8ef2c355330cbad53609f6b1e')
+md5sums=('db01557a15a28a0a0c6c967cdcbb36e3'
+         '3bf36543da8f91afc5e508877fbe9f0c')
 
 package() {
   install -Dm 644 "${srcdir}/${pkgname}.hook" "${pkgdir}/usr/share/libalpm/hooks/${pkgname}.hook"
