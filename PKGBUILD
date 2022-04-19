@@ -12,7 +12,7 @@ md5sums=('SKIP')
 
 build() {
 	cd "todo"
-	gcc *.c *.h -o todo
+	make
 }
 
 package() {
