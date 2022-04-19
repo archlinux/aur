@@ -2,7 +2,7 @@ pkgbase = fetchcord-testing
 	pkgdesc = FetchCord grabs your OS info and displays it as Discord Rich Presence
 	pkgver = de98dee
 	pkgrel = 1
-	url = https://github.com/MrPotatoBobx/fetchcord/tree/testing/
+	url = https://github.com/MrPotatoBobx/fetchcord/#branch=testing
 	install = fetchcord.install
 	arch = any
 	license = MIT
@@ -13,7 +13,7 @@ pkgbase = fetchcord-testing
 	depends = python-pypresence
 	optdepends = systemd: SystemD user service
 	provides = fetchcord
-	source = fetchcord::git+https://github.com/MrPotatoBobx/fetchcord/tree/testing/#branch=testing
+	source = fetchcord::git+https://github.com/MrPotatoBobx/fetchcord/#branch=testing#branch=testing
 	sha256sums = SKIP
 
 pkgname = fetchcord-testing
