@@ -72,7 +72,7 @@ If your MATLAB installation follows the exact steps listed down here, you can ru
 
 4. Launch the installer with:
    ```sh
-   ./matlab/install
+   ./MATLABROOT/install
    ```
 5. After having logged in and accepted the license agreement, select
 `Advanced Options` → `I want to download without installing`
