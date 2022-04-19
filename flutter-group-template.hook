@@ -8,4 +8,4 @@ Target = usr/share/libalpm/hooks/flutter-group.hook
 [Action]
 Description = Granting permission to group $FLUTTER_GROUP for flutter SDK ($FLUTTER_PATH)
 When = PostTransaction
-Exec = /bin/sh -c 'chown -R :$FLUTTER_GROUP "$FLUTTER_PATH" && chmod -R g+w "$FLUTTER_PATH"'
+Exec = /bin/sh -c 'chown -R :$FLUTTER_GROUP "$FLUTTER_PATH" && chmod -R g+w "$FLUTTER_PATH" && git config --global --add safe.directory "$FLUTTER_PATH"'
