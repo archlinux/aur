@@ -1,11 +1,11 @@
 pkgbase = rpmlauncher-bin
 	pkgdesc = A better Minecraft Launcher that supports cross-platform and many functionalities for you to explore! 
-  pkgver = 1.0.6+894
+  pkgver = 1.0.6+895
   pkgrel = 1
   arch = x86_64
   license = GPL
   conflicts = rpmlauncher-bin
-  source = https://github.com/RPMTW/RPMLauncher/releases/download/1.0.6+894/RPMLauncher-Linux.zip
+  source = https://github.com/RPMTW/RPMLauncher/releases/download/1.0.6+895/RPMLauncher-Linux.zip
  md5sums = SKIP
   
 pkgname = rpmlauncher-bin
