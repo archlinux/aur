@@ -10,6 +10,7 @@ pkgbase = screego-server
 	makedepends = yarn
 	optdepends = nginx: to allow reverse proxy connections
 	provides = screego-server
+	conflicts = screego-server
 	source = screego-server-1.6.2.tar.gz::https://github.com/screego/server/archive/v1.6.2.tar.gz
 	source = screego-server.service
 	source = tmpfiles.conf
