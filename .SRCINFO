@@ -1,0 +1,16 @@
+pkgbase = gauche-kyotocabinet
+	pkgdesc = Gauche bindings for kyotocabinet
+	pkgver = 0.8
+	pkgrel = 1
+	url = https://karme.de/gauche-kyotocabinet/
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = make
+	makedepends = autoconf
+	depends = gauche
+	depends = kyotocabinet
+	source = http://karme.de/gauche-kyotocabinet/gauche-kyotocabinet-0.8.tgz
+	sha256sums = a195f1a9849ced27a2b52bd6c5c010879d40cd52bc8f0841fa39bb2130d3d36c
+
+pkgname = gauche-kyotocabinet
