@@ -1,6 +1,6 @@
 pkgbase = luakit-git
 	pkgdesc = Luakit: now updated for WebKit 2
-	pkgver = 2.1.r2.g9bbe4d69
+	pkgver = 2.2.r62.g6cac8334
 	pkgrel = 1
 	epoch = 1
 	url = https://luakit.github.io
@@ -14,8 +14,8 @@ pkgbase = luakit-git
 	makedepends = git
 	makedepends = pkg-config
 	depends = webkit2gtk
-	depends = lua51-filesystem
 	depends = luajit
+	optdepends = lua51-filesystem: for the default configuration file
 	provides = luakit
 	conflicts = luakit
 	backup = etc/xdg/luakit/rc.lua
@@ -24,4 +24,3 @@ pkgbase = luakit-git
 	md5sums = SKIP
 
 pkgname = luakit-git
-

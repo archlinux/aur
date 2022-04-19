@@ -8,7 +8,7 @@ _disable_tests=1 #disable tests
 pkgname=luakit-git
 _gitname=luakit
 epoch=1
-pkgver=2.1.r2.g9bbe4d69
+pkgver=2.2.r62.g6cac8334
 pkgrel=1
 pkgdesc='Luakit: now updated for WebKit 2'
 arch=('x86_64' 'i686' 'armv7h')
@@ -16,10 +16,11 @@ srcurl='https://github.com/luakit/luakit'
 url='https://luakit.github.io'
 license=('GPL3')
 makedepends=('git' 'pkg-config')
-checkdepends=('xorg-server-xvfb' 'lua51-luacheck' 'lua51-luassert' )
+checkdepends=('xorg-server-xvfb' 'lua51-luacheck' 'lua51-luassert')
+optdepends=('lua51-filesystem: for the default configuration file')
 provides=('luakit')
 conflicts=('luakit')
-depends=('webkit2gtk' 'lua51-filesystem' 'luajit')
+depends=('webkit2gtk' 'luajit')
 backup=('etc/xdg/luakit/rc.lua'
         'etc/xdg/luakit/theme.lua')
 source=(git+"$srcurl".git#branch=develop)
