@@ -2,7 +2,7 @@
 # Contributor: Valerio Pizzi (pival81) <pival81@yahoo.com>
 
 pkgname=mybsmart
-pkgver=7.2.1
+pkgver=7.2.5
 pkgrel=1
 pkgdesc="Una piattaforma proprietaria di servizi e contenuti digitali per la scuola"
 arch=("i686" "x86_64")
@@ -13,8 +13,8 @@ source=('LICENSE')
 source_i686=("https://s3-eu-west-1.amazonaws.com/res.bsmart.it/mybsmart_desktop/releases/production_v2/linux/MybSmart-$pkgver-ia32.deb")
 source_x86_64=("https://s3-eu-west-1.amazonaws.com/res.bsmart.it/mybsmart_desktop/releases/production_v2/linux/MybSmart-$pkgver-x64.deb")
 sha256sums=('2ca3e6e7951873c7d82829299181838bb7cacb5c2ad372d7ce752d6d10543b39')
-sha256sums_i686=('8731d5b974e2021866a8120cdaae7f0f9a22c2cad5d175e6ed2614ed1e706613')
-sha256sums_x86_64=('dce9c6c58206907872ea7c2a4dc89f990df42dba724449a524eb57ea39cc17a8')
+sha256sums_i686=('15b8ac9a7f5990ca5988c5dffb9937472031f7767378d66ba40fe3fec9b14e17')
+sha256sums_x86_64=('827ac75bc21d355abb34f80de79084371cfe3fbc6a34bb9912ea6feb99359359')
 
 package() {
 	tar -xf data.tar.xz --exclude='./usr/share/doc' -C "$pkgdir"
