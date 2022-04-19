@@ -1,34 +1,37 @@
 # Maintainer: Patrick Northon <northon_patrick3@yahoo.ca>
 # Contributor: BrainDamage
 
-pkgname="comic-dl"
-pkgver=1.0.437
+pkgname='comic-dl'
+pkgver=2022.04.19
 pkgrel=1
-pkgdesc="Comic-dl is a command line tool to download Comics and Manga from various Manga and Comic sites easily."
+pkgdesc='Comic-dl is a command line tool to download Comics and Manga from various Manga and Comic sites easily.'
 arch=(any)
 url="https://github.com/Xonshiz/${pkgname}"
-license=("MIT")
+license=('MIT')
 optdepends=('phantomjs: to access some sites')
-depends=("python" "python-tqdm" "python-requests" "python-cfscrape" "python-clint" "img2pdf" "python-colorama" "python-future" "python-beautifulsoup4" "python-cloudscraper" "phantomjs" "nodejs")
-sha256sums=('a4875e3342d5ecdacc2f89da1ed301e69e311aa8ebc9c621fc9e5345e12856b6')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/Xonshiz/comic-dl/archive/$pkgver.tar.gz")
+depends=(
+	'python' 'python-tqdm' 'python-requests' 'python-cfscrape' 
+	'python-clint' 'img2pdf' 'python-colorama' 'python-future' 
+	'python-beautifulsoup4' 'python-cloudscraper' 'phantomjs' 
+	'nodejs' 'python-jsbeautifier')
+sha256sums=('e9a6c694a4f3716d981f84bfb3609c0e7eefdc98c83c461af7bea0528142c1fd')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Xonshiz/${pkgname}/archive/$pkgver.tar.gz")
+
+_srcdir="$pkgname-$pkgver"
 
 prepare() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$_srcdir"
 
-	sed -i 's/from comic_dl import __version__/#from comic_dl import __version__/' 'setup.py'
-	sed -i "s/__version__\.__version__/\"${pkgver}\"/" 'setup.py'
-	printf '%s\n' '#!/bin/sh' >> "${pkgname}"
-	printf 'python %s/comic_dl/__main__.py "$@"' "$(python -c 'import site; print(site.getsitepackages()[0])')" >> "${pkgname}"
-	chmod +x "${pkgname}"
+	printf '%s\n' '#!/usr/bin/env python' > "${pkgname}"
+	cat 'cli.py' >> "${pkgname}"
 	
 	python 'setup.py' build
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$_srcdir"
 	
 	python 'setup.py' install --optimize=1 --root="$pkgdir/" --prefix="/usr"
-	install -Dm755 "${pkgname}" -t "$pkgdir"/usr/bin/
+	install -Dm755 "${pkgname}" -t "$pkgdir/usr/bin/"
 }
 
