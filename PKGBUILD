@@ -9,6 +9,7 @@ license=("custom:THE MONSTERWARE LICENSE")
 source=("https://github.com/kognise/arpchat/releases/download/v$pkgver/arpchat-linux")
 md5sums=("3a7d93e2541c917d86d5cdc362c23b7d")
 install=${pkgname}.install
+provides=('arpchat')
 
 package() {
   mkdir -p "${pkgdir}/usr/bin"
