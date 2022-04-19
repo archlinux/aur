@@ -1,6 +1,6 @@
 # Maintainer: aulonsal <aulonsal at gmail dot com>
 pkgname=dbgate-bin
-pkgver=4.8.2
+pkgver=4.8.6
 pkgrel=1
 pkgdesc='Database manager for MySQL, PostgreSQL, SQL Server, MongoDB, SQLite and others'
 arch=('x86_64')
@@ -17,7 +17,7 @@ source=(
 	"$pkgname-$pkgver-LICENSE::${url/github/raw.githubusercontent}/v$pkgver/LICENSE"
 )
 
-b2sums=('40c8d073bdd8be4a29dfee94264c8e2a975faa2afb783ca3e674b26a9ecfa1c0c5a30c16b07320030a58c4296dc1cf7bc00680538089787ad676ca8c05c5f06a'
+b2sums=('88165cfb48e804a562c42a779b8fc46d1956b9213a8b0d44fed11e5309a43958b7cb53bcbb6a3c4abe4a6835a3998fe8c7b86acd7431594b10f6d167dbc074cc'
         '9cc4e2813f0978862b0960aa0c8d5b0bc75ae299f10b793ae152202f2e6f43127381c9153c6f51ca1bc83ab633d198dac5d817105a8e7b43e1aad401e0b6eb2f')
 
 package() {
