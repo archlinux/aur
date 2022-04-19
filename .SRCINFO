@@ -1,6 +1,6 @@
 pkgbase = python-commitizen
 	pkgdesc = Create committing rules for projects, auto bump versions, and auto changelog generation
-	pkgver = 2.20.4
+	pkgver = 2.24.0
 	pkgrel = 0
 	url = https://github.com/commitizen-tools/commitizen
 	arch = any
@@ -20,7 +20,7 @@ pkgbase = python-commitizen
 	depends = python-questionary
 	depends = python-termcolor
 	depends = python-tomlkit
-	source = python-commitizen-2.20.4.tar.gz::https://github.com/commitizen-tools/commitizen/archive/refs/tags/v2.20.4.tar.gz
-	sha256sums = e2501c081e162b14ddc2e5023c333a950529ead4ec48dcdd2aa96c35864f0839
+	source = python-commitizen-2.24.0.tar.gz::https://github.com/commitizen-tools/commitizen/archive/refs/tags/v2.24.0.tar.gz
+	sha256sums = c84f7fc8de0f90c955babfc9d0ba90ad1131e49e03f7bf028e03cc547a69029f
 
 pkgname = python-commitizen
