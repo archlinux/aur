@@ -16,5 +16,5 @@ source=(https://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgver/$pkg
 md5sums=('1dd9f7d1063b492ac2ec26bbbf794161')
 
 package() { 
-	install -Dm755 "$srcdir/$pkgname-5-3/tkdiff" "$pkgdir/usr/bin/tkdiff"; 
+	install -Dm755 "$srcdir/$pkgname-5-4/tkdiff" "$pkgdir/usr/bin/tkdiff"; 
 } 
