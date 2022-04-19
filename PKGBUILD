@@ -42,7 +42,7 @@ fi
 if (("${_disable_budgie}" == 0));then
 	_opts+=(-Dbudgie=enabled)
 	pkgname+=('vala-panel-appmenu-budgie-git')
-	makedepends+=('budgie-desktop')
+	makedepends+=('budgie-desktop' 'gobject-introspection')
 #	msg "Budgie applet enabled"
 fi
 
@@ -52,7 +52,7 @@ fi
 _pkgbase=vala-panel-appmenu
 pkgbase=${_pkgbase}-xfce-git
 pkgver=0.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="AppMenu (Global Menu) plugin"
 url="https://gitlab.com/vala-panel-project/vala-panel-appmenu"
 arch=('i686' 'x86_64')
@@ -125,8 +125,7 @@ package_vala-panel-appmenu-budgie-git() {
             'unity-gtk-module: for gtk2/gtk3 menus'
             'vala-panel-appmenu-registrar: for DBusMenu registrar' 
 			'jayatana: for Java applications support'
-            'appmenu-qt: for qt4 menus'
-            'appmenu-qt5: for qt5 menus')
+            'appmenu-qt4: for qt4 menus')
   DESTDIR="${pkgdir}" meson install -C build
   rm -rf "${pkgdir}/usr/share/"
   rm -rf ${pkgdir}/usr/lib/{mate-panel,vala-panel,xfce4}

@@ -1,7 +1,7 @@
 pkgbase = vala-panel-appmenu-xfce-git
 	pkgdesc = AppMenu (Global Menu) plugin
 	pkgver = 0.7.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/vala-panel-project/vala-panel-appmenu
 	arch = i686
 	arch = x86_64
@@ -17,6 +17,7 @@ pkgbase = vala-panel-appmenu-xfce-git
 	makedepends = xfconf
 	makedepends = vala-panel>=0.4.50
 	makedepends = budgie-desktop
+	makedepends = gobject-introspection
 	source = git+https://gitlab.com/vala-panel-project/vala-panel-appmenu.git
 	sha256sums = SKIP
 
@@ -83,6 +84,4 @@ pkgname = vala-panel-appmenu-budgie-git
 	optdepends = unity-gtk-module: for gtk2/gtk3 menus
 	optdepends = vala-panel-appmenu-registrar: for DBusMenu registrar
 	optdepends = jayatana: for Java applications support
-	optdepends = appmenu-qt: for qt4 menus
-	optdepends = appmenu-qt5: for qt5 menus
-
+	optdepends = appmenu-qt4: for qt4 menus
