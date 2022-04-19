@@ -1,6 +1,6 @@
 # Maintainer: Lev Levitsky <levlev@mail.ru>
 pkgname=msgfplus
-pkgver=2022.02.16
+pkgver=2022.04.18
 pkgrel=1
 pkgdesc="MS/MS database search tool"
 arch=('any')
@@ -9,22 +9,15 @@ license=('custom')
 depends=('java-environment')
 makedepends=('maven')
 source=("https://github.com/MSGFPlus/msgfplus/archive/refs/tags/v${pkgver}.zip"
-		"msgf+"
-		"mzid2tsv"
+	"msgf+"
+	"mzid2tsv"
         "scoringParamGen"
-        "pom.patch"
         "https://raw.githubusercontent.com/sangtaekim/msgfplus/master/LICENSE.txt")
-md5sums=('01fd16b630d721123da7ad81aa0b05d7'
+md5sums=('9fde4c6329611cd6fe481d0c81aa6a68'
          'c43c6581b373266171c3930c3718eb9c'
          'c860b9c30b74dae43de2d3933a405ac1'
          '315d84069d6333a83599aa93b782eb5c'
-         'f6bd212470d26a69c8998fef9ad73703'
          '88b22e0922010401ea88bcf03e3bb5d2')
-
-prepare() {
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    patch -p1 < ../pom.patch
-}
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
