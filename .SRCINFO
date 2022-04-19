@@ -9,7 +9,7 @@ pkgbase = fflogs-uploader-appimage
 	depends = hicolor-icon-theme
 	noextract = ff-logs-uploader-5.8.9.AppImage
 	options = !strip
-	source_x86_64 = ff-logs-uploader-5.8.9.AppImage::https://github.com/RPGLogs/Uploaders-fflogs//releases/download/v5.8.9/fflogs-uploader-5.8.9.AppImage
+	source_x86_64 = ff-logs-uploader-5.8.9.AppImage::https://github.com/RPGLogs/Uploaders-fflogs/releases/download/v5.8.9/fflogs-uploader-5.8.9.AppImage
 	source_x86_64 = fflogs-uploader.desktop
 	sha256sums_x86_64 = b1652297a0d6ab490fca266ad1b534d7838d490855d0ee3b976a24a48297c988
 
