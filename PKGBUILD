@@ -8,14 +8,14 @@
 
 pkgname=discord_arch_electron_wayland
 pkgver=0.0.17
-pkgrel=5
+pkgrel=6
 pkgdesc="Discord (popular voice + video app) using system electron (v13) and set up for wayland"
 arch=('x86_64')
 provides=('discord')
 conflicts=('discord')
 url='https://discordapp.com'
 license=('custom')
-depends=('electron')
+depends=('electron13')
 makedepends=('asar' 'curl' 'python-html2text')
 optdepends=(
 	'libpulse: Pulseaudio support'
@@ -31,11 +31,11 @@ prepare() {
 
 if [ "$(loginctl show-session "$XDG_SESSION_ID" -p Type --value)" = wayland ]; then
 	# Using wayland
-	exec electron --enable-features=UseOzonePlatform \
+	exec electron13 --enable-features=UseOzonePlatform \
 		--ozone-platform=wayland /usr/lib/discord/app.asar \$@
 else
 	# Using x11
-	exec electron /usr/lib/discord/app.asar \$@
+	exec electron13 /usr/lib/discord/app.asar \$@
 fi
 EOF
 
@@ -47,7 +47,7 @@ EOF
 	curl https://discord.com/terms | html2text >"$srcdir"/LICENSE.md
 	curl https://discord.com/licenses | html2text >"$srcdir"/OSS-LICENSES.md
 
-	# use system electron version 13
+	# use system electron13
 	asar e Discord/resources/app.asar Discord/resources/app
 	rm Discord/resources/app.asar
 	sed -i "s|process.resourcesPath|'/usr/lib/discord'|" Discord/resources/app/app_bootstrap/buildInfo.js
