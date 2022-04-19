@@ -1,6 +1,6 @@
 pkgbase = knossos-git
 	pkgdesc = A software tool for the visualization and annotation of 3D image data. It was developed for the rapid reconstruction of neural morphology and connectivity.
-	pkgver = 5.1+677.g18f7931c
+	pkgver = 5.1+828.g3a50896f
 	pkgrel = 1
 	url = https://knossos.app
 	arch = x86_64
@@ -22,4 +22,3 @@ pkgbase = knossos-git
 	md5sums = 85ae9c1721e627ccbe4eb850dcb7c42d
 
 pkgname = knossos-git
-
