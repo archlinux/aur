@@ -9,6 +9,7 @@ pkgbase = apertium-recursive
 	makedepends = pkgconf
 	makedepends = autoconf
 	makedepends = gcc
+	makedepends = utf8cpp
 	depends = lttoolbox>=3.6.0
 	depends = apertium>=3.8.0
 	depends = libxml2>=2.6.17
