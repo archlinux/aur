@@ -5,7 +5,6 @@ pkgbase = element-desktop-nightly-bin
 	url = https://element.io
 	arch = x86_64
 	license = Apache
-	depends = sqlcipher
 	replaces = riot-desktop-nightly-bin
 	source = https://packages.element.io/debian/pool/main/e/element-nightly/element-nightly_2022041901_amd64.deb
 	source = element-desktop-nightly.sh
