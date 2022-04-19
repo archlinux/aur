@@ -1,0 +1,5 @@
+pre_install() {
+echo "if you are looking for the cookbook.pdf and guide.pdf are located in /usr/docs/qasarbeach"
+echo "to run from the commandline, the name of the binary link is Qasarbeach"
+echo "cookbook and QasarBeach demos and libraries are located in /opt/qasarbeach"
+}

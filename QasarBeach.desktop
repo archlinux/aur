@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=QasarBeach
+Comment=a recreation of the Fairlight CMI 2x
+Path=/bin/Qasarbeach
+Exec=qasarbeach
+Icon=QasarBeach
+Terminal=false
+Categories=Multimedia;
