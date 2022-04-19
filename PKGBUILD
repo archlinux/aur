@@ -14,8 +14,8 @@ arch=('aarch64' 'i686' 'x86_64')
 
 # Generic Stuff for cargo packages
 url="https://crates.io/crates/$_crate"
-depends=('gcc-libs' 'clang')
-makedepends=('cargo')
+depends=('gcc-libs')
+makedepends=('cargo' 'clang')
 source=("$pkgname-$pkgver.tar.gz::https://crates.io/api/v1/crates/$_crate/$pkgver/download")
 sha512sums=('1750f17498468da83c28bf455870ff601b825220ae6b5a7be51f5b4ee68414fabd89b4a82d2bc9128d0e321639d7cae41a3c4274b544488df3f9d63562781995')
 
