@@ -1,7 +1,7 @@
 # Maintainer: Vincent Post <cent@spline.de>
 pkgname=xivlauncher
 pkgver=6.2.31
-pkgrel=2
+pkgrel=3
 pkgdesc="Custom Launcher for Final Fantasy XIV Online (Crossplatform rewrite)"
 arch=('x86_64')
 url='https://github.com/goatcorp/FFXIVQuickLauncher/'
@@ -27,7 +27,7 @@ sha512sums=(
 build() {
     mkdir "${srcdir}/build"
     cd "${srcdir}/FFXIVQuickLauncher/src/XIVLauncher.Core/"
-    dotnet publish -r linux-x64 --sc -o "${srcdir}/build"
+    dotnet publish -r linux-x64 --sc -o "${srcdir}/build" --configuration Release
 }
 
 package() {
