@@ -1,7 +1,7 @@
 # Maintainer: taotieren <admin@taotieren.com>
 _pkgname=SerialTool
 pkgname=serialtool
-pkgver=1.5.5
+pkgver=1.5.7
 pkgrel=1
 pkgdesc="A practical Serial-Port/TCP/UDP debugging tool."
 arch=('any')
@@ -17,7 +17,7 @@ options=('!strip')
 install=${pkgname}.install
 source=("${_pkgname}-${pkgver}.zip::${url}/archive/refs/tags/v${pkgver}.zip"
         "${pkgname}")
-sha256sums=('5ee4013f73321cd5443e842f82e96eb1ccac31527591977a2deda686bd87f47c'
+sha256sums=('e4847511b9837a394d7609038bcb52fc6cc5a7953dc60ef2c8066515cfe601b0'
             'b93065b98d21ce9054da53004edf703d7801fe7657583f4f594eb04f25df672c')
 
 build() {
