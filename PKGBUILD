@@ -2,7 +2,7 @@
 # Co-Maintainer: Alan Jenkins <alan.james.jenkins@gmail.com>
 # Co-Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=steamtinkerlaunch-git
-pkgver=9.2_r673.60b1a16
+pkgver=9.3_r735.872e222
 pkgrel=1
 pkgdesc="Wrapper script for Steam custom launch options"
 arch=('any')
@@ -34,6 +34,7 @@ optdepends=(
 	'p7zip: optional for extracting SpecialK archives'
 	'pev: optional for extracting data from the game exe'
 	'gdb: optional for starting the game under the debugger gdb'
+	'xdg-utils: optional for opening game paths'
 )
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
