@@ -34,11 +34,6 @@ build() {
 	make PREFIX="${_PREFIX}"
 }
 
-check() {
-	cd "${srcdir}/yosys"
-	make test
-}
-
 package() {
 	cd "${srcdir}/yosys"
 	make STRIP=':' PREFIX="${_PREFIX}" PYTHON_PREFIX="${pkgdir}${_PREFIX}" DESTDIR="${pkgdir}" install
