@@ -1,6 +1,6 @@
 pkgbase = teams
 	pkgdesc = Microsoft Teams for Linux is your chat-centered workspace in Office 365
-	pkgver = 1.4.00.26453
+	pkgver = 1.5.00.10453
 	pkgrel = 1
 	url = https://teams.microsoft.com/downloads
 	arch = x86_64
@@ -16,8 +16,8 @@ pkgbase = teams
 	optdepends = org.freedesktop.secrets: Keyring password store support
 	conflicts = ms-teams
 	replaces = ms-teams
-	noextract = teams_1.4.00.26453_amd64.deb
-	source = https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/teams_1.4.00.26453_amd64.deb
-	sha256sums = ee15b57793aa6b79ccda744d5232da670335abd931bae2a020f5043a129ab859
+	noextract = teams_1.5.00.10453_amd64.deb
+	source = https://packages.microsoft.com/repos/ms-teams/pool/main/t/teams/teams_1.5.00.10453_amd64.deb
+	b2sums = f9570bedd12dc9113c956d0b9c34c4124939b0a855f73a7611ce640b00fd4a7d8288af94aa3f087482040619c11f79a144e2292dd853254fe4f55fe694165a26
 
 pkgname = teams
