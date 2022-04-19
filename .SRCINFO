@@ -1,15 +1,15 @@
 pkgbase = dagger-bin
 	pkgdesc = A portable devkit for CI/CD pipelines
-	pkgver = 0.2.6
+	pkgver = 0.2.7
 	pkgrel = 1
 	url = https://github.com/dagger/dagger
 	arch = x86_64
 	arch = aarch64
 	license = Apache License 2.0
 	conflicts = dagger
-	source_x86_64 = https://github.com/dagger/dagger/releases/download/v0.2.6/dagger_v0.2.6_linux_amd64.tar.gz
-	sha512sums_x86_64 = b1a0a4aeb55c9902d73f23d6ea72fb6df14ced3e254c65f81cb4f13a963cefe048f490dc4f24b2303f3d4bf38f52ca8e0ee5b41680a4a9d38bf61e7cfb22e02b
-	source_aarch64 = https://github.com/dagger/dagger/releases/download/v0.2.6/dagger_v0.2.6_linux_arm64.tar.gz
-	sha512sums_aarch64 = 6db141459414041c32a45d3e75d46e3974d7a9a7488cc31f7acafa48869b44306385da571e1afbbe51eb7a1ae71ec70a03a4f25c15a6e59ded33537642f540ed
+	source_x86_64 = https://github.com/dagger/dagger/releases/download/v0.2.7/dagger_v0.2.7_linux_amd64.tar.gz
+	sha512sums_x86_64 = b5098e5da22dbfebff9f64c57d881ceb757a56e180c3074c7064304140f3e14cd37c2e11186c3ca29fa792ddb5a9c918d710e193acc235f62cbe07d8e4e9ea49
+	source_aarch64 = https://github.com/dagger/dagger/releases/download/v0.2.7/dagger_v0.2.7_linux_arm64.tar.gz
+	sha512sums_aarch64 = aa23a34d9f4ab1882bdf4ea5e9fbcaa87192aa26f444597f1a6a3b81838ac4081c7c133f16ca42a8bf306ff14319e4a6d43ad9a845e92a05bc7b8d0f5b456fbe
 
 pkgname = dagger-bin
