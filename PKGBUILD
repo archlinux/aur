@@ -1,4 +1,5 @@
-# Maintainer: Simone Cimarelli <aquilairreale@ymail.com>
+# Maintainer Simone Cimarelli <aquilairreale@ymail.com>
+# Contributor Peri Vance <perivance@posteo.net>
 
 pkgname=unofficial-homestuck-collection
 pkgver=2.0.5
