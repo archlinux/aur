@@ -1,0 +1,14 @@
+pkgbase = python-vertcoinhash-git
+        pkgdesc = Python bindings for proof of work used by Vertcoin
+        pkgver = 1.0.1
+        pkgrel = 1
+        url = https://github.com/vertcoin-project/vertcoinhash-python
+        arch = any
+        license = MIT
+        depends = python-setuptools
+        provides = vertcoinhash-python
+        conflicts = vertcoinhash-python
+        source = git+https://github.com/vertcoin-project/vertcoinhash-python
+        sha256sums = SKIP
+
+pkgname = python-vertcoinhash-git
