@@ -1,0 +1,19 @@
+pkgbase = ruby-pandoc-ruby
+	pkgdesc = Ruby wrapper for Pandoc
+	pkgver = 2.1.6
+	pkgrel = 0
+	url = https://github.com/xwmx/pandoc-ruby
+	arch = any
+	license = GPL-3.0
+	depends = ruby
+	depends = pandoc
+	depends = ruby-minitest
+	depends = ruby-mocha
+	depends = ruby-rake
+	depends = ruby-rdoc
+	noextract = pandoc-ruby-2.1.6.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/pandoc-ruby-2.1.6.gem
+	sha256sums = 4d6808913bbbbfa0466e51c6f13c067b5d50eec5bfd537348ff43ffc1e475a9f
+
+pkgname = ruby-pandoc-ruby
