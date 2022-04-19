@@ -6,6 +6,10 @@ pkgbase = runebook-bin
 	arch = x86_64
 	license = MIT
 	source = https://github.com/Soundofdarkness/RuneBook/releases/download/v1.15.0/RuneBook_1.15.0.tar.xz
+	source = runebook-logo.png::https://raw.githubusercontent.com/Soundofdarkness/Runebook/master/img/logo.png
+	source = runebook.desktop
 	sha256sums = 9b90a2324ed90fc9fe849c188a5755fc517826584e61afcd0b016e77992573e6
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = runebook-bin
