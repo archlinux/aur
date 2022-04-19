@@ -1,0 +1,33 @@
+pkgbase = privacy-protection-messenger-qt
+	pkgdesc = Privacy Protection Messenger Qt GUI
+	pkgver = 1.0
+	pkgrel = 0
+	url = https://github.com/imperzer0/privacy-protection-messenger-qt
+	arch = x86_64
+	license = GPL3
+	makedepends = cmake>=3.0
+	makedepends = qt6-base
+	depends = qt6-base
+	depends = privacy-protection-messenger>=1.2-1
+	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger-qt/master/CMakeLists.txt
+	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger-qt/master/main.cpp
+	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger-qt/master/mainwindow.cpp
+	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger-qt/master/mainwindow.h
+	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger-qt/master/call_backend.hpp
+	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger-qt/master/mainwindow.ui
+	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger-qt/master/resources.qrc
+	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger-qt/master/privacy-protection-messenger-qt_uk_UA.ts
+	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger-qt/master/privacy-protection-messenger-qt_ru_UA.ts
+	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger-qt/master/privacy-protection-messenger-qt_ru_RU.ts
+	md5sums = 208f4dc62ecd087db95961fc095f3f89
+	md5sums = 19701c33c592f57e964d4a4d6e9c64f5
+	md5sums = f55347b6da2079d0867dd9074d85fa0a
+	md5sums = 334adfb9460b7ce460160ca427f320b0
+	md5sums = 4a11723938d5f540812b0f0b52b46ae7
+	md5sums = e3f9ff227d4727c384daad3bcd0fc0a9
+	md5sums = baff22f5e98a6c117c609b3078d4d373
+	md5sums = 05cf19b4d413f0cfbefe3415b4d4e80f
+	md5sums = 43ca58212a0ebb4d303b581844799928
+	md5sums = 980681771058d0cc584f9fa154e5296b
+
+pkgname = privacy-protection-messenger-qt
