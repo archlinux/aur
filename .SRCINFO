@@ -1,7 +1,7 @@
 pkgbase = h18-star-db-astap
 	pkgdesc = Database of 208 million stars up to BP-magnitude 18, for use with ASTAP
 	pkgver = 2021.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.hnsky.org/astap.htm
 	arch = any
 	license = LGPL3

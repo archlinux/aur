@@ -2,7 +2,7 @@
 
 pkgname=h18-star-db-astap
 pkgver=2021.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Database of 208 million stars up to BP-magnitude 18, for use with ASTAP"
 arch=('any')
 url="https://www.hnsky.org/astap.htm"
@@ -14,6 +14,7 @@ depends=('astap')
 # the deb is automatically unpacked in the automatic prepare() step, but the files we want are doubly archived
 package() {
     tar xfv data.tar.xz -C "${pkgdir}"
-    chmod 755 -R "${pkgdir}" 
+    chmod 755 -R "${pkgdir}"
+    chmod 644 "${pkgdir}"/opt/astap/*
 }
 
