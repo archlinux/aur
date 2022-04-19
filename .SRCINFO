@@ -1,0 +1,12 @@
+pkgbase = h17-star-db-astap
+	pkgdesc = Database of 105 million stars up to BP-magnitude 17, for use with ASTAP
+	pkgver = 2021.1.5
+	pkgrel = 1
+	url = https://www.hnsky.org/astap.htm
+	arch = any
+	license = LGPL3
+	depends = astap
+	source = h17.deb::https://sourceforge.net/projects/astap-program/files/star_databases/h17_star_database_mag17_astap.deb/download
+	sha256sums = 64c9d4715cf807ca8763bd0e16c60ae335c2a66e86dd78e7a81f1ca20da3bd51
+
+pkgname = h17-star-db-astap
