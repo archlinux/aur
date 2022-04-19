@@ -2,21 +2,21 @@
 
 _basename=jitsi
 _pkgname=videobridge
-_tag=2.1-634-gff8609ad
-_version=2.1+634+gff8609ad
+_tag=2.1-665-g3a90ccdc
+_version=2.1+665+g3a90ccdc
 
 pkgname=${_basename}-${_pkgname}
 pkgver=${_version}
-pkgrel=2
+pkgrel=1
 pkgdesc="Jitsi Meet Videobridge"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
 license=('Apache')
-depends=("java-runtime" "bash")
+depends=("java-runtime-openjdk=11" "bash")
 optdepends=("prosody")
 makedepends=(
         "git"
-        "java-environment"
+        "java-environment-openjdk=11"
         "unzip" "maven"
 )
 options=('!strip')
@@ -39,6 +39,8 @@ install=install
 
 build() {
         cd "$pkgname"
+        export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+        export PATH=$JAVA_HOME/bin:$PATH
         mvn clean
         mvn package -DskipTests -Dassembly.skipAssembly=true install
         mvn dependency:copy-dependencies -DincludeScope=runtime
@@ -71,6 +73,6 @@ package() {
 sha256sums=('SKIP'
             'ecf266d0fe026ced8121a0491ee560fed4e9e586ff510c8e9b2f21ce505f0a2d'
             'cc9fbf77497bce3c9673b2d144928f11cdd0c0823940c2b60c8369a2f086b9b7'
-            '5d78e8eec07c6aae84a1f1c0922f951217741ccc6f1a50ed7ef966c665bbf291'
+            '7e066bfff0d169187ad26982ba9f6d489d789bcd53eaf5dfa666bee1356964a1'
             '998cbc64def56ab98080ff7150dd0913a5e10325cd2b038cf3db14baf8cb19fc'
             '8a8f2fd5d02f196dff0ce7ceb75e45d19028a9f22dc9e55653ab17cce29051af')
