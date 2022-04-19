@@ -1,21 +1,21 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 _basename=jicofo
-_tag=862
-_version=1.0.862
+_tag=874
+_version=1.0.874
 
 pkgname=${_basename}
 pkgver=${_version}
-pkgrel=2
+pkgrel=1
 pkgdesc="JItsi Meet COnference FOcus"
 arch=('any')
 url="https://jitsi.org/jitsi-meet/"
 license=('Apache')
-depends=("java-runtime" "bash")
+depends=("java-runtime-openjdk=11" "bash")
 optdepends=("prosody")
 makedepends=(
         "git"
-        "java-environment"
+        "java-environment-openjdk=11"
         "unzip" "maven"
 )
 options=('!strip')
@@ -37,6 +37,8 @@ install=install
 
 build() {
         cd "$pkgname"
+        export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+        export PATH=$JAVA_HOME/bin:$PATH
         mvn clean
         mvn package -DskipTests -Dassembly.skipAssembly=true
         mvn dependency:copy-dependencies -DincludeScope=runtime
@@ -67,6 +69,6 @@ package() {
 sha256sums=('SKIP'
             'f3928f382fbfd5bc40bd0c2a9553d2480b4fa7cf2fd04109257cdac535ed3d9f'
             'f295f5f8ee13edd019defc037c60e04c6ea2d30e69cc4a896c010b8570f5efab'
-            '6eff8e605966fc827e9074d2f42c80e61feaeba307395b16423c2e5984d750e1'
+            '21d9596eba7342cc02cb37f6c1bb651792e2c79df0374b4fd850e4fbad4cfaec'
             '0681e97ca1e06d8ea7bdec0a874c6fc7a6ea84628923005130cd444547a1b440'
             '9f6fb4759099feefaee6fd44cac5854401e58f7ce929949cbc3994faaa3487d3')
