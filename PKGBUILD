@@ -4,7 +4,7 @@
 
 pkgbase=matlab
 pkgname=('python-matlabengine' 'matlab')
-pkgrel=1
+pkgrel=2
 # No need to modify the pkgver here, it will be determined by the script
 # in the offline installer.
 pkgver=9.12.0.1903524
@@ -16,26 +16,25 @@ makedepends=('findutils' 'gendesk' 'icoutils' 'python')
 # Some of the dependencies probably are not needed.
 # If you play around with them and find which one can be removed,
 # please contact the maintainers.
+# For a list of possible dependencies, see here:
+# https://hub.docker.com/r/mathworks/matlab-deps/dockerfile.
 depends=(
-  'ca-certificates'
-  'lsb-release'
   'alsa-lib'
   'atk'
+  'ca-certificates'
+  'cairo'
+  'fontconfig'
+  'gdk-pixbuf2'
+  'glib2'
+  'gst-plugins-base'
+  'gstreamer'
+  'gtk3'
+  'krb5'
   'libcap'
   'libcups'
   'libdbus'
-  'fontconfig'
+  'libdrm'
   'libgcrypt'
-  'gdk-pixbuf2'
-  'gst-plugins-base'
-  'gstreamer'
-  'gtk2'
-  'krb5'
-  'nspr'
-  'nss'
-  'pam'
-  'pango'
-  'cairo'
   'libselinux'
   'libsm'
   'libsndfile'
@@ -57,17 +56,27 @@ depends=(
   'libxt'
   'libxtst'
   'libxxf86vm'
+  'lsb-release'
+  'make'
+  'mesa'
+  'net-tools'
+  'nspr'
+  'nss'
+  'pam'
+  'pango'
   'procps-ng'
-  'xorg-server-xvfb'
-  'x11vnc'
   'sudo'
+  'unzip'
+  'util-linux-libs'
+  'wget'
+  'x11vnc'
+  'xorg-server-xvfb'
   'zlib')
 # We should check even these ones.
 # GCC: https://www.mathworks.com/support/requirements/supported-compilers.html
 depends+=(
   'gconf'
   'glu'
-  'gstreamer'
   'libunwind'
   'libxp'
   'libxpm'
