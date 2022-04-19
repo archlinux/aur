@@ -24,7 +24,7 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname/src/burner/libretro
-	sed -i 's/-O[0123]//' Makefile
+	sed -i 's/-O[0123s]//;s/-Ofast//' Makefile
 	make generate-files
 }
 
