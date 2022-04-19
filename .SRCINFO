@@ -6,7 +6,7 @@ pkgbase = h18-star-db-astap
 	arch = any
 	license = LGPL3
 	depends = astap
-	source = h18.deb::https://sourceforge.net/projects/astap-program/files/star_databases/h18_star_database_mag18_astap.deb/download
+	source = h18.deb::https://downloads.sourceforge.net/project/astap-program/star_databases/h18_star_database_mag18_astap.deb
 	sha256sums = 98e659aba0d8e09d816fa6e4ef40620a1f681f9373ae4ba1bc3c278c8bebd5a5
 
 pkgname = h18-star-db-astap
