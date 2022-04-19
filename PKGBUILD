@@ -1,46 +1,42 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=ooniprobe-desktop
-pkgver=3.6.1
-_cliver=3.10.0-beta.3
+pkgver=3.7.0
+_cliver=3.14.1
 pkgrel=1
 pkgdesc="The next generation OONI Probe desktop app"
 arch=('x86_64')
 url="https://ooni.org"
 license=('MIT')
-depends=('nss' 'libxss' 'libxtst' 'xdg-utils')
+depends=('alsa-lib' 'gtk3' 'nss')
 makedepends=('yarn')
 conflicts=("${pkgname%-desktop}")
 replaces=("${pkgname%-desktop}")
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ooni/probe-desktop/archive/v$pkgver.tar.gz"
-        "${pkgname%-desktop}-cli-$_cliver.tar.gz::https://github.com/ooni/probe-cli/releases/download/v$_cliver/ooniprobe_linux_amd64.tar.gz"
-        "${pkgname%-desktop}-cli-$_cliver.tar.gz.asc::https://github.com/ooni/probe-cli/releases/download/v$_cliver/ooniprobe_linux_amd64.tar.gz.asc"
+        "${pkgname%-desktop}-${_cliver}-linux-amd64::https://github.com/ooni/probe-cli/releases/download/v$_cliver/${pkgname%-desktop}-linux-amd64"
         "$pkgname.desktop")
-noextract=("${pkgname%-desktop}-cli-$_cliver.tar.gz")
-sha256sums=('6a64a622fea9f14cc4e102003938a44ff78039b4100acb6ba18db80066e6b2ec'
-            'bcd72321de6b703f6103df9c5994040113d19cf1253d41f4d1dfc58a4ec44a67'
-            'SKIP'
+sha256sums=('00b2fb6d51ecdc3f0e071183ab96b5c8c8f1a7e96ab3517af712065e9da3bcc3'
+            'b6abce139d56f0bd80c61210e0c28359b85a8f633932a56ee7d617ea255151ca'
             'baaf4f3cca079dddc0b4e048c8778c6cc84786bb88fd9d218424b7b9f04f1135')
-validpgpkeys=('738877AA6C829F26A431C5F480B691277733D95B') # Simone Basso <simone@openobservatory.org>
 
 prepare() {
   cd "${pkgname#ooni}-$pkgver"
 
   # Disable downloading probe-cli for other platforms
-  sed -i "s/'darwin_amd64', 'linux_amd64', 'windows_amd64'/'linux_amd64'/g" \
-    scripts/download-bin.js
+  sed -i "/    'darwin-amd64',/d" scripts/download-probe-cli.js
+  sed -i "/    'windows-amd64',/d" scripts/download-probe-cli.js
 
-  # Place files for verification
+  # Place files
   mkdir -p build/probe-cli/linux_amd64
-  cp "$srcdir/${pkgname%-desktop}-cli-$_cliver.tar.gz" \
-    "build/probe-cli/${pkgname%-desktop}_linux_amd64.tar.gz"
-  cp "$srcdir/${pkgname%-desktop}-cli-$_cliver.tar.gz.asc" \
-    "build/probe-cli/${pkgname%-desktop}_linux_amd64.tar.gz.asc"
+  cp "$srcdir/${pkgname%-desktop}-${_cliver}-linux-amd64" \
+    "build/probe-cli/${_cliver}__${pkgname%-desktop}-linux-amd64"
 }
 
 build() {
   cd "${pkgname#ooni}-$pkgver"
   yarn install --cache-folder "$srcdir/yarn-cache"
-  yarn run build
+  node_modules/.bin/next build renderer
+  node_modules/.bin/next export renderer
+  yarn run download:probe-cli
   node_modules/.bin/electron-builder --linux
 }
 
@@ -48,6 +44,7 @@ package() {
   cd "${pkgname#ooni}-$pkgver"
   install -d "$pkgdir/opt/OONI Probe"
   cp -a dist/linux-unpacked/* "$pkgdir/opt/OONI Probe"
+  chmod 4755 "$pkgdir/opt/OONI Probe/chrome-sandbox"
 
   install -d "$pkgdir/usr/bin"
   ln -sf "/opt/OONI Probe/$pkgname" "$pkgdir/usr/bin/$pkgname"
