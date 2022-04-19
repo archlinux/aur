@@ -5,7 +5,7 @@
 _pkgname=obsidian
 
 pkgname="${_pkgname}"-appimage
-pkgver=0.14.5
+pkgver=0.14.6
 pkgrel=1
 pkgdesc="Obsidian is a powerful knowledge base that works on top of a local folder of plain text Markdown files"
 arch=('x86_64')
@@ -18,7 +18,7 @@ options=(!strip)
 _appimage="${pkgname}-${pkgver}.AppImage"
 source_x86_64=("${_appimage}::https://github.com/obsidianmd/obsidian-releases/releases/download/v${pkgver}/Obsidian-${pkgver}.AppImage")
 noextract=("${_appimage}")
-sha256sums_x86_64=('3512ffef1638b31709c6788a252ecce2bb86965da72a9f2d0a1fb3da7bfbaeab')
+sha256sums_x86_64=('771ba6de43aa58a74636e4b27411f3f82530039d9097b69b47b51376d9e4d89a')
 
 prepare() {
     chmod +x "${_appimage}"
