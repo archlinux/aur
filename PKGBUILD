@@ -2,17 +2,17 @@
 
 _gemname=can_cli
 pkgname=can
-pkgver=0.1.7
-pkgrel=5
+pkgver=0.1.8
+pkgrel=1
 pkgdesc='Command-line trash manager'
 arch=(any)
 url='https://github.com/sawshep/can'
-license=(GPL-3.0)
+license=(GPL3)
 depends=(ruby ruby-highline)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('da46816510b9f6f69fe5f2fcf7bb2a704832d75748e81c85ca17bf2ea164b1da')
+sha256sums=('a99a9b4a132b5c4db28e880c1bbef82f1ec06a2512d0412e63cbbaf3fc6bdedd')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
