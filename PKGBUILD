@@ -49,6 +49,7 @@ prepare() {
 	sed 's|a/annotation/file_io.cpp|a/file_io.cpp|' -i ../f3bfcd80dc582248a59b857609a796d133bb1fa5.patch
 	sed 's|quazip5/quazip|quazip/quazip|' -i ../f3bfcd80dc582248a59b857609a796d133bb1fa5.patch
 	patch -p 1 -i ../f3bfcd80dc582248a59b857609a796d133bb1fa5.patch
+	sed 's/snprintf(remoteURL, CSTRING_SIZE, url.toStdString().c_str());/snprintf(remoteURL, CSTRING_SIZE, "%s", url.toStdString().c_str());/' -i network.cpp
 }
 
 build() {
