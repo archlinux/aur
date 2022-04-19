@@ -3,7 +3,7 @@
 
 pkgname=networkmanager-ssh
 pkgver=1.2.12
-pkgrel=1
+pkgrel=2
 pkgdesc="SSH VPN support for NetworkManager"
 arch=('any')
 url="https://github.com/danfruehauf/NetworkManager-ssh"
@@ -16,7 +16,7 @@ options=()
 makedepends=('git' 'make' 'gcc' 'autoconf' 'intltool')
 provides=('networkmanager-ssh')
 
-source=($pkgname::"git://github.com/danfruehauf/NetworkManager-ssh.git#tag=${pkgver}")
+source=($pkgname::"git+https://github.com/danfruehauf/NetworkManager-ssh.git#tag=${pkgver}")
 md5sums=('SKIP')
 
 build() {
