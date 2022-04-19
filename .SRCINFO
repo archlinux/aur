@@ -1,7 +1,7 @@
 pkgbase = distrobox
 	pkgdesc = Use any linux distribution inside your terminal.
 	pkgver = 1.2.14
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/89luca89/distrobox
 	arch = any
 	license = GPL3
