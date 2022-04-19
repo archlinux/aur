@@ -2,7 +2,7 @@
 
 pkgname=hyperleda-galaxy-db-astap
 pkgver=2019.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Massive database of galaxies and other non-star objects, for use with ASTAP"
 arch=('any')
 url="http://leda.univ-lyon1.fr/"
