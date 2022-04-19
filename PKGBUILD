@@ -12,7 +12,7 @@ md5sums=('SKIP')
 
 build() {
 	cd "tictactoe"
-	gcc *.c -o tictactoe
+	make
 }
 
 package() {
