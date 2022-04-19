@@ -1,7 +1,7 @@
 # Maintainer: Chinmay Dalal <w5vwg64uy@relay.firefox.com>
 pkgname=gotktrix-git
 license=('AGPL3')
-pkgver=r361.6e72a40
+pkgver=r362.a1876b4
 pkgrel=1
 pkgdesc="Matrix client in Go and GTK4"
 arch=('x86_64')
@@ -19,6 +19,7 @@ pkgver() {
 }
 
 build() {
+    export GOPATH="$srcdir/go"
     cd "$pkgname"
 
     export CGO_CPPFLAGS="${CPPFLAGS}"
