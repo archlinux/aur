@@ -1,18 +1,20 @@
 pkgname=fxload-libusb
 _spkgname=libusb
-pkgver=1.0.22
+pkgver=1.0.26
 pkgrel=1
 pkgdesc='fxload from the libusb examples'
 arch=('i686' 'x86_64')
 url='http://libusb.info/'
 license=('LGPL')
 depends=('libusb')
-source=(http://downloads.sourceforge.net/libusb/libusb-$pkgver.tar.bz2)
-md5sums=('466267889daead47674df933cea9cacb')
+source=(https://github.com/libusb/libusb/releases/download/v$pkgver/libusb-$pkgver.tar.bz2)
+sha256sums=('12ce7a61fc9854d1d2a1ffe095f7b5fac19ddba095c259e6067a46500381b5a5')
 
 build() {
-  cd $_spkgname-$pkgver/examples
-  gcc $CFLAGS $(pkg-config --libs --cflags libusb-1.0) fxload.c ezusb.c -o fxload-libusb
+  cd $_spkgname-$pkgver
+  ./configure
+  cd examples
+  gcc $CFLAGS $(pkg-config --libs --cflags libusb-1.0) fxload.c ezusb.c -I.. -o fxload-libusb
 }
 
 
