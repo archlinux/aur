@@ -8,7 +8,7 @@ _CUDA_ARCH_LIST="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.6+PTX"
 pkgname=('python-torchvision' 'python-torchvision-cuda')
 _pkgname=vision
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Datasets, transforms, and models specific to computer vision'
 arch=('x86_64')
 url='https://github.com/pytorch/vision'
@@ -42,8 +42,8 @@ get_pyver() {
 
 prepare() {
   # fix building with ffmpeg4.4
-  sed -i "s#ffmpeg_include_dir = os.path.join(ffmpeg_root, 'include')#ffmpeg_include_dir = os.path.join(ffmpeg_root, 'include', 'ffmpeg4.4')#" "${srcdir}/${_pkgname}-${pkgver}/setup.py"
-  sed -i "s#ffmpeg_library_dir = os.path.join(ffmpeg_root, 'lib')#ffmpeg_library_dir = os.path.join(ffmpeg_root, 'lib', 'ffmpeg4.4')#" "${srcdir}/${_pkgname}-${pkgver}/setup.py"
+  sed -i 's#ffmpeg_include_dir = os.path.join(ffmpeg_root, "include")#ffmpeg_include_dir = os.path.join(ffmpeg_root, "include", "ffmpeg4.4")#' "${srcdir}/${_pkgname}-${pkgver}/setup.py"
+  sed -i 's#ffmpeg_library_dir = os.path.join(ffmpeg_root, "lib")#ffmpeg_library_dir = os.path.join(ffmpeg_root, "lib", "ffmpeg4.4")#' "${srcdir}/${_pkgname}-${pkgver}/setup.py"
   cp -a "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/${_pkgname}-cuda-${pkgver}"
 }
 
