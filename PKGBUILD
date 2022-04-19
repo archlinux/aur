@@ -2,7 +2,7 @@
 
 pkgname=mcbelauncher-bin
 pkgver=0.3.4.688
-pkgrel=1
+pkgrel=2
 pkgdesc="Minecraft Bedrock Launcher for Linux"
 arch=("x86_64")
 url="https://mcpelauncher.readthedocs.io"
@@ -25,7 +25,7 @@ source=("$pkgname-$pkgver.AppImage::https://github.com/ChristopherHX/linux-packa
 noextract=("$pkgname-$pkgver.AppImage")
 sha256sums=('4cfefa4b2a5293d24838f9d21b3a589a9fa0e34444e290ae06601aa4beefab36' 
     'd676e742b549cf7b4698cb9dc5be5f1734bc59313958cf9a7b7acd92a5ff3d76'
-    'dbef26a908220a186df4a5a1f4510e2cf0139952056279777a9bd514ecfb22fa')
+    '4d42b1382d315262920243cc500ce1a00138c46fdeb931d521599be40d1f7ad8')
 
 package() {
     # Install image

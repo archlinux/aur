@@ -4,6 +4,6 @@ Name=Minecraft Bedrock Launcher
 MimeType=
 Icon=/usr/share/pixmaps/mcbe.png
 Comment=Bedrock Launcher for Linux
-Exec=env QTWEBENGINE_CHROMIUM_FLAGS="--no-sandbox"; /usr/bin/mcbelauncher
+Exec=/usr/bin/mcbelauncher
 Categories=Game;
 Path=$HOME/.local/share/mcpelauncher
