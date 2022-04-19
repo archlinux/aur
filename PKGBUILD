@@ -2,14 +2,17 @@
 pkgbase=python-ablog
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=0.10.23
+pkgver=0.10.24
 pkgrel=1
 pkgdesc=" ABlog for blogging with Sphinx"
 arch=('any')
 url="https://ablog.readthedocs.io"
 license=('MIT')
 makedepends=('python-setuptools-scm'
-            'python-sphinx-automodapi'
+             'python-wheel'
+             'python-build'
+             'python-installer'
+             'python-sphinx-automodapi'
              'python-nbsphinx'
 #            'python-feedgen'
              'python-invoke'
@@ -17,10 +20,14 @@ makedepends=('python-setuptools-scm'
              'python-watchdog'
              'pandoc'
              'graphviz')
-checkdepends=('python-pytest' 'python-sphinx' 'python-feedgen')
+checkdepends=('python-pytest>=6.0.0' 'python-sphinx' 'python-feedgen')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 #source=("https://github.com/sunpy/ablog/archive/refs/tags/v${pkgver}.tar.gz")
-md5sums=('fe6039ccc08113911f9610a8d46221d9')
+md5sums=('67a8f2ac557cc54d8378f4f58cd531e3')
+
+get_pyver () {
+    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
+}
 
 #prepare() {
 #    export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
@@ -28,35 +35,37 @@ md5sums=('fe6039ccc08113911f9610a8d46221d9')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python setup.py build
+    python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    python setup.py build_sphinx
+    ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
+        build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver).egg-info
+    cd ${srcdir}/${_pyname}-${pkgver}/docs
+    PYTHONPATH="../build/lib" make html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-#   python setup.py test
-    pytest
+    pytest || warning "Tests failed"
 }
 
 package_python-ablog() {
-    depends=('python-sphinx' 'python-feedgen' 'python-invoke' 'python-watchdog')    # dateutil pulled by feedgen; docutils by sphinx
+    depends=('python-sphinx>=4.0.0' 'python-feedgen>=0.9.0' 'python-invoke>=1.6.0' 'python-watchdog>=2.0.0')    # dateutil pulled by feedgen; docutils by sphinx
     optdepends=('ipython: notebook'
                 'python-nbsphinx: notebook'
-                'python-myst-parser: markdown'
+                'python-myst-parser>=0.17.0: markdown'
                 'python-ablog-doc: Documentation')
     cd ${srcdir}/${_pyname}-${pkgver}
 
     install -D -m644 LICENSE.rst -t "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
-    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
 package_python-ablog-doc() {
     pkgdesc="Documentation for ABlog"
-    cd ${srcdir}/${_pyname}-${pkgver}/build/sphinx
+    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE.rst
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
