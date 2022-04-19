@@ -1,7 +1,7 @@
 pkgbase = libosmocore-git
 	pkgdesc = Osmocom core library
 	pkgver = 0.9.6.r165.ff20641
-	pkgrel = 2
+	pkgrel = 3
 	url = https://osmocom.org/projects/libosmocore/wiki/Libosmocore
 	arch = x86_64
 	arch = i686
@@ -18,6 +18,7 @@ pkgbase = libosmocore-git
 	depends = talloc
 	depends = libusb
 	depends = lksctp-tools
+	depends = libmnl
 	provides = libosmocore
 	conflicts = libosmocore
 	source = git://git.osmocom.org/libosmocore.git

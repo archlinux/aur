@@ -1,12 +1,12 @@
 # Maintainer: Vadim Yanitskiy <fixeria@osmocom.org>
 pkgname=libosmocore-git
 pkgver=0.9.6.r165.ff20641
-pkgrel=2
+pkgrel=3
 pkgdesc="Osmocom core library"
 arch=('x86_64' 'i686')
 url="https://osmocom.org/projects/libosmocore/wiki/Libosmocore"
 license=('GPL')
-depends=('pcsclite' 'talloc' 'libusb' 'lksctp-tools')
+depends=('pcsclite' 'talloc' 'libusb' 'lksctp-tools' 'libmnl')
 makedepends=('git' 'autoconf' 'automake' 'make' 'gcc' 'libtool' 'pkg-config' 'python')
 conflicts=('libosmocore')
 provides=('libosmocore')
@@ -29,7 +29,8 @@ build() {
               --libexecdir=/usr/lib \
               --localstatedir=/var \
               --docdir=/usr/share/doc/libosmocore \
-              --libdir=/usr/lib/
+              --libdir=/usr/lib/ \
+              --enable-systemd-logging
   make
 }
 
