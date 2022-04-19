@@ -2,8 +2,8 @@
 # Maintainer SimPilotAdamT <adam_tazul@outlook.com>
 
 pkgname=fetchcord-testing
-pkgver=de98dee
-pkgrel=2
+pkgver=2.7.7
+pkgrel=15
 pkgdesc="FetchCord grabs your OS info and displays it as Discord Rich Presence"
 arch=('any')
 url="https://github.com/MrPotatoBobx/fetchcord/#branch=testing"
