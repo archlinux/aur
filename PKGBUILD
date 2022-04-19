@@ -7,7 +7,7 @@ pkgdesc="Massive database of galaxies and other non-star objects, for use with A
 arch=('any')
 url="http://leda.univ-lyon1.fr/"
 license=('LGPL3')
-source=("hyperleda.deb::https://sourceforge.net/projects/astap-program/files/star_databases/hyperleda.deb/download")
+source=("hyperleda.deb::https://downloads.sourceforge.net/project/astap-program/star_databases/hyperleda.deb")
 sha256sums=('98ab5a23a468addce87f3fc534a67f8b53d64388af0e1ed162b22f3765f27758')
 depends=('astap')
 
