@@ -2,12 +2,12 @@
 
 pkgname=lexmark-aey
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="CUPS printer driver for Lexmark C3200 C3300 CS330 CX330 MC3200 MC3300 series"
 arch=('x86_64')
 url="http://www.lexmark.com/"
 license=('custom')
-depends=('cups' 'glibc' 'ncurses' 'libusb' 'libxext' 'libxtst' 'libxi' 'libstdc++5' 'krb5' 'lua' 'java-runtime')
+depends=('cups' 'gcc-libs' 'glibc' 'ncurses' 'libusb' 'libxext' 'libxtst' 'libxi' 'krb5' 'lua' 'java-runtime')
 conflicts=()
 source=(https://downloads.lexmark.com/downloads/drivers/Lexmark-AEY-PPD-Files.tar.Z)
 md5sums=('2eba4fd8e8939038c8fe7aa9ba88b944')
