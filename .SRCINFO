@@ -1,6 +1,6 @@
 pkgbase = ctags-git
 	pkgdesc = Generates an index (or tag) file of language objects found in source files
-	pkgver = 5.9.20210110.0.r12.g14609424
+	pkgver = 5.9.20220417.0.r9.gb35f157c4
 	pkgrel = 1
 	url = https://ctags.io
 	arch = x86_64
@@ -13,9 +13,7 @@ pkgbase = ctags-git
 	depends = libyaml
 	provides = ctags
 	conflicts = ctags
-	conflicts = universal-ctags-git
 	source = git+https://github.com/universal-ctags/ctags.git
 	b2sums = SKIP
 
 pkgname = ctags-git
-

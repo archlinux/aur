@@ -1,11 +1,12 @@
-# Maintainer: Daniel M. Capella <polyzen@archlinux.org>
+# Contributor: Daniel M. Capella <polyzen@archlinux.org>
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 # Contributor: VargArch <roels.jorick@gmail.com>
 # Contributor: zsrkmyn
 # Contributor: marsam
+# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=ctags-git
-pkgver=5.9.20210110.0.r12.g14609424
+pkgver=5.9.20220417.0.r9.gb35f157c4
 pkgrel=1
 pkgdesc='Generates an index (or tag) file of language objects found in source files'
 arch=('x86_64')
@@ -14,7 +15,7 @@ license=('GPL')
 depends=('jansson' 'libseccomp' 'libxml2' 'libyaml')
 makedepends=('git' 'python-docutils')
 provides=('ctags')
-conflicts=('ctags' 'universal-ctags-git')
+conflicts=('ctags')
 source=("git+https://github.com/universal-ctags/ctags.git")
 b2sums=('SKIP')
 
@@ -33,15 +34,9 @@ build() {
 }
 
 check() {
-  cd ctags
-  mkdir -p testhome
-  export HOME=./testhome XDG_CONFIG_HOME=
-  make check
+  make -C ctags check
 }
 
 package() {
-  cd ctags
-  make DESTDIR="$pkgdir" install
+  make -C ctags DESTDIR="$pkgdir" install
 }
-
-# vim:set ts=2 sw=2 et:
