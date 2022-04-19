@@ -1,0 +1,12 @@
+pkgbase = trilium-notes
+	pkgdesc = Trilium Notes is a hierarchical note taking application with focus on building large personal knowledge bases.
+	pkgver = 0.50.3
+	pkgrel = 1
+	url = https://github.com/zadam/trilium
+	arch = x86_64
+	license = AGPLv3
+	options = !strip
+	source = https://github.com/zadam/trilium/releases/download/v0.50.3/trilium-linux-x64-0.50.3.tar.xz
+	sha512sums = 218cc68ce0410f17d1a8c2192bbafd588a4d1ba6d1a3dbfa10c851d7eb558063072cdc51b1e26f1d3bf9a08bafe484679d7466b5f1fd584f038c9529d3d8b30f
+
+pkgname = trilium-notes

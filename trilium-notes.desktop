@@ -1,0 +1,8 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Exec=trilium-notes
+Name=Trilium Notes
+Comment=Trilium Notes is a hierarchical note taking application with focus on building large personal knowledge bases.
+Icon=/opt/trilium-notes/icon.png
