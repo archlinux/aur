@@ -12,7 +12,7 @@ md5sums=('SKIP')
 
 build() {
 	cd "blin"
-	gcc main.c -o blin
+	make
 }
 
 package() {
