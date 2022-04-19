@@ -2,7 +2,7 @@
 
 pkgname=cider-git
 _pkgname=Cider
-pkgver=1.4.3
+pkgver=1.4.3.3105.8b7b8c3d
 pkgrel=1
 pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Compiled from the GitHub repositories develop branch."
 arch=("armv7h" "i686" "x86_64")
@@ -18,19 +18,23 @@ source=(
     "cider.desktop"
 )
 sha256sums=('SKIP'
-            'c41e9b1019411019fce8509e32f770edf33c9e864bf707c30ffe2e3f2dcf1571')
+    'c41e9b1019411019fce8509e32f770edf33c9e864bf707c30ffe2e3f2dcf1571')
 
-    pkgver() {
-        cd "$srcdir/$_pkgname"
-        var=$(grep '"version":.*' package.json | cut -d '"' -f 4 | head -1)
-        echo ${var/-/.}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
-    }
+pkgver() {
+    cd "$srcdir/$_pkgname"
+    var=$(grep '"version":.*' package.json | cut -d '"' -f 4 | head -1)
+    echo ${var/-/.}.$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
 
 build() {
     cd "${srcdir}/${_pkgname}"
 
+    if [ -f cider.lock ]; then
+        mv cider.lock yarn.lock
+    fi
+
     echo "Building ${_pkgname} on v${pkgver} : [Install Build Dependencies] | Build | Done"
-	yarn install --non-interactive --pure-lockfile --cache-folder "${srcdir}/yarn-cache"
+    yarn install --non-interactive --pure-lockfile --cache-folder "${srcdir}/yarn-cache"
 
     echo "Building : Install Build Dependencies | [Build] | Done"
     if [[ ${CARCH} == "armv7h" ]]; then
@@ -40,7 +44,7 @@ build() {
         yarn build
         yarn electron-builder build --ia32 --linux dir
     elif [[ ${CARCH} == "x86_64" ]]; then
-        yarn build 
+        yarn build
         yarn electron-builder build --x64 --linux dir
     fi
 
@@ -64,13 +68,10 @@ package() {
     cp -r --preserve=mode * "${pkgdir}/opt/${pkgname%-git}"
     ln -sf "/opt/${pkgname%-git}/${pkgname%-git}" "${pkgdir}/usr/bin/${pkgname%-git}"
 
-
     echo "Packaging : Desktop Shortcut | Icon | Build Files | [Other Files] | Done"
     install -d "$pkgdir/usr/share/licenses" "$pkgdir/usr/share/doc"
     install -Dm644 "${srcdir}/${_pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
     install -Dm644 "${srcdir}/${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 
-
     echo "Packaging : Desktop Shortcut | Icon | Build Files | Other Files | [Done]"
 }
-
