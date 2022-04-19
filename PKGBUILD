@@ -2,7 +2,7 @@
 pkgname=ooniprobe-desktop
 pkgver=3.7.0
 _cliver=3.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The next generation OONI Probe desktop app"
 arch=('x86_64')
 url="https://ooni.org"
@@ -21,14 +21,11 @@ sha256sums=('00b2fb6d51ecdc3f0e071183ab96b5c8c8f1a7e96ab3517af712065e9da3bcc3'
 prepare() {
   cd "${pkgname#ooni}-$pkgver"
 
-  # Disable downloading probe-cli for other platforms
-  sed -i "/    'darwin-amd64',/d" scripts/download-probe-cli.js
-  sed -i "/    'windows-amd64',/d" scripts/download-probe-cli.js
-
   # Place files
   mkdir -p build/probe-cli/linux_amd64
   cp "$srcdir/${pkgname%-desktop}-${_cliver}-linux-amd64" \
-    "build/probe-cli/${_cliver}__${pkgname%-desktop}-linux-amd64"
+    "build/probe-cli/linux_amd64/${pkgname%-desktop}"
+  chmod +x "build/probe-cli/linux_amd64/${pkgname%-desktop}"
 }
 
 build() {
@@ -36,7 +33,6 @@ build() {
   yarn install --cache-folder "$srcdir/yarn-cache"
   node_modules/.bin/next build renderer
   node_modules/.bin/next export renderer
-  yarn run download:probe-cli
   node_modules/.bin/electron-builder --linux
 }
 
