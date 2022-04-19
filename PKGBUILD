@@ -3,15 +3,15 @@
 
 pkgname=fetchcord-testing
 pkgver=2.7.8
-pkgrel=15
+pkgrel=20
 pkgdesc="FetchCord grabs your OS info and displays it as Discord Rich Presence"
 arch=('any')
-url="https://github.com/MrPotatoBobx/fetchcord/#branch=testing"
+url="https://github.com/MrPotatoBobx/fetchcord/tree/testing/"
 license=('MIT')
 depends=('python' 'neofetch' 'python-psutil' 'python-setuptools' 'python-pypresence')
 optdepends=('systemd: SystemD user service')
 provides=('fetchcord')
-source=("fetchcord::git+$url#branch=testing")
+source=("fetchcord::git+https://github.com/MrPotatoBobx/fetchcord/#branch=testing")
 sha256sums=('SKIP')
 install=fetchcord.install
 
@@ -34,6 +34,8 @@ package() {
     else 
       install -Dm644 systemd/fetchcord.service "$pkgdir$systemddir/fetchcord.service";
     fi
+  else
+    echo "If you see a command not found here, don't worry. It's normal on non-systemd systems."
   fi
 
 }
