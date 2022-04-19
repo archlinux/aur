@@ -1,6 +1,6 @@
 pkgbase = fingerpaint
 	pkgdesc = Draw using your laptop's mousepad
-	pkgver = 1.2.2
+	pkgver = 1.2.3
 	pkgrel = 1
 	url = https://github.com/Wazzaps/fingerpaint
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = fingerpaint
 	depends = python-pyudev
 	depends = xorg-xinput
 	depends = tk
-	source = fingerpaint-1.2.2.tar.gz::https://github.com/Wazzaps/fingerpaint/archive/refs/tags/v1.2.2.tar.gz
-	md5sums = 5e79807fef6b011f381e90866981a185
+	source = fingerpaint-1.2.3.tar.gz::https://github.com/Wazzaps/fingerpaint/archive/refs/tags/v1.2.3.tar.gz
+	sha256sums = 7efad16f29f5a6914058744cf54f1ff98f3ec41bb3136562acc7699af36885a6
 
 pkgname = fingerpaint
