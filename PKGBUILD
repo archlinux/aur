@@ -13,10 +13,10 @@ depends=('nss' 'gtk3' 'libxss')
 makedepends=('unzip')
 conflicts=("paramountplus-git")
 sha256sums_x86_64=('SKIP')
-source_x86_64=("https://gitlab.com/"$_name"/binaries/"$pkgver"-"$pkgrel"/-/raw/main/Paramountplus-linux-x64.tar.gz")
+source_x86_64=("https://gitlab.com/"$_name"/binaries/"$pkgver"-"$pkgrel"/-/raw/main/"$name"-linux-x64.tar.gz")
 
 package() {
-    for dir in Paramountplus-linux-*/ ; do mv "${dir}" "$_pkgname" ;done
+    for dir in $name-linux-*/ ; do mv "${dir}" "$_pkgname" ;done
     cd $_pkgname
     install -dm755 "$pkgdir/opt/$name"
     install -dm755 "$pkgdir/usr/share/pixmaps"    
