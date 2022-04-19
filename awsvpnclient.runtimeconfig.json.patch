@@ -1,0 +1,11 @@
+--- "AWS VPN Client.runtimeconfig.json"	2022-04-19 12:43:28.876647215 +0200
++++ "AWS VPN Client.runtimeconfig copy.json"	2022-04-19 12:44:11.735426127 +0200
+@@ -1,5 +1,8 @@
+ {
+   "runtimeOptions": {
++    "configProperties": {
++      "System.Globalization.Invariant": true
++    },
+     "tfm": "netcoreapp3.1",
+     "includedFrameworks": [
+       {
