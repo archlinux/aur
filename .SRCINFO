@@ -6,6 +6,7 @@ pkgbase = arpchat-bin
 	install = arpchat-bin.install
 	arch = x86_64
 	license = custom:THE MONSTERWARE LICENSE
+	provides = arpchat
 	source = https://github.com/kognise/arpchat/releases/download/v1.0.0/arpchat-linux
 	md5sums = 3a7d93e2541c917d86d5cdc362c23b7d
 
