@@ -1,7 +1,7 @@
 # Maintainer: willemw <willemw12@gmail.com>
 
 pkgname=ffmpeg-normalize-git
-pkgver=1.22.1.r2.ga3eb8bd
+pkgver=1.22.9.r1.gd375ad0
 pkgrel=1
 pkgdesc="Normalize loudness of audio and video files using FFmpeg"
 arch=('any')
@@ -32,5 +32,6 @@ check() {
 
 package() {
   cd $pkgname
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
   python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
 }
