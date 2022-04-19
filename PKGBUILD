@@ -1,7 +1,7 @@
 # Maintainer: Vincent Post <cent@spline.de>
 pkgname=xivlauncher-git
 pkgver=6.2.31.r18.g93a818c
-pkgrel=3
+pkgrel=4
 pkgdesc="Custom Launcher for Final Fantasy XIV Online (Crossplatform rewrite)"
 arch=('x86_64')
 url='https://github.com/goatcorp/FFXIVQuickLauncher/'
@@ -14,6 +14,7 @@ depends=(
 makedepends=('dotnet-sdk>=6')
 optdepends=('steam')
 provides=("xivlauncher=${pkgver}")
+conflicts=("xivlauncher")
 source=(
     "FFXIVQuickLauncher::git+https://github.com/goatcorp/FFXIVQuickLauncher.git"
     "https://raw.githubusercontent.com/goatcorp/FFXIVQuickLauncher/master/src/XIVLauncher.Core/Resources/logo.png"
