@@ -1,0 +1,13 @@
+pkgbase = libsubprocess
+	pkgdesc = C++ header-only subprocessing library
+	pkgver = 2.0
+	pkgrel = 1
+	url = https://github.com/arun11299/cpp-subprocess
+	arch = any
+	license = MIT
+	makedepends = cmake
+	provides = cpp-subprocess
+	source = libsubprocess-2.0.tar.gz::https://github.com/arun11299/cpp-subprocess/archive/v2.0.tar.gz
+	sha256sums = 886df0a814a7bb7a3fdeead22f75400abd8d3235b81d05817bc8c1125eeebb8f
+
+pkgname = libsubprocess
