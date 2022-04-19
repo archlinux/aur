@@ -8,7 +8,7 @@ pkgbase = hugo-extended-git
 	conflicts = hugo
 	conflicts = hugo-git
 	conflicts = hugo-extended-bin
-	source = https://github.com/gohugoio/hugo/releases/download/v0.96.0/hugo_extended_0.96.0_Linux-64bit.tar.gz
+	source = https://github.com/gohugoio/hugo/releases/download/v0.96.0/hugo_0.96.0_checksums.txt
 	md5sums = SKIP
 
 pkgname = hugo-extended-git
