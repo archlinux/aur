@@ -8,14 +8,14 @@
 
 pkgname=discord_arch_electron_wayland
 pkgver=0.0.17
-pkgrel=4
+pkgrel=5
 pkgdesc="Discord (popular voice + video app) using system electron (v13) and set up for wayland"
 arch=('x86_64')
 provides=('discord')
 conflicts=('discord')
 url='https://discordapp.com'
 license=('custom')
-depends=('electron13')
+depends=('electron')
 makedepends=('asar' 'curl' 'python-html2text')
 optdepends=(
 	'libpulse: Pulseaudio support'
@@ -31,11 +31,11 @@ prepare() {
 
 if [ "$(loginctl show-session "$XDG_SESSION_ID" -p Type --value)" = wayland ]; then
 	# Using wayland
-	exec electron13 --enable-features=UseOzonePlatform \
+	exec electron --enable-features=UseOzonePlatform \
 		--ozone-platform=wayland /usr/lib/discord/app.asar \$@
 else
 	# Using x11
-	exec electron13 /usr/lib/discord/app.asar \$@
+	exec electron /usr/lib/discord/app.asar \$@
 fi
 EOF
 
