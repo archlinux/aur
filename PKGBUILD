@@ -19,33 +19,49 @@
 # 20151027: sudo chmod 000 /usr/lib/codelite/LLDBDebugger.so
 #
 
-_pkgname=codelite
-_pkgver=15.0.2
-#_commit=60fa5c21871e46c1a7013c22a039eb7347173046
+#
+_pkg_name=codelite
+_pkg_ver=16.0.0-1
+#_commit=70ff062252ca69617fd227472a6492720dc19cfd
 
-pkg_ident="${pkgver//_/-}"
-pkg_name_ver="${_pkgname}-${_pkgver//_/-}"
-
-#pkg_ident="${_commit}"
-#pkg_name_ver="${_pkgname}-${_commit}"
-
-pkgname=${_pkgname}
-pkgver=${_pkgver}
+# pkg
+pkgname=${_pkg_name}
+#pkgver=${_pkg_ver}
+#pkgver="${_pkg_ver//_/-}"
+pkgver="${_pkg_ver/-*/}"
 pkgrel=1
+
+
+# version
+_pkg_ident="${_pkg_ver}"
+_pkg_name_ver="${_pkg_name}-${_pkg_ver}"
+#_pkg_name_ver="${_pkg_name}-${_pkg_ver//_/-}"
+
+# commit
+#pkg_ident="${_commit}"
+#pkg_name_ver="${_pkg_name}-${_commit}"
+
+
+#
 pkgdesc="Cross platform C/C++/PHP and Node.js IDE written in C++"
 arch=('i686' 'x86_64')
 url="http://www.codelite.org/"
 license=('GPL')
 makedepends=('pkgconfig' 'cmake' 'clang')
 depends=('wxgtk3'
-          #'webkit2gtk'
+          'webkit2gtk'
           'clang' 'lldb'
           'libedit'
           'libssh'
           'mariadb-libs'
           'ncurses'
-          #'xterm'
-          #'wget' 'curl'
+          'uchardet'
+          'hunspell'
+          'ctags'
+          #'universal-ctags'
+          #'xterm' 'wget' 'curl'
+          #'python2'
+          #'python'
         )
 optdepends=('graphviz: callgraph visualization'
              'clang: compiler'
@@ -53,15 +69,15 @@ optdepends=('graphviz: callgraph visualization'
              'gdb: debugger'
              'valgrind: debugger'
             )
+conflicts=('codelite-unstable')
 
 source=(
-    "${_pkgname}-${pkgver}.tar.gz::https://github.com/eranif/${_pkgname}/archive/${pkgver//_/-}.tar.gz"
+    "${_pkg_name_ver}.tar.gz::https://github.com/eranif/${_pkg_name}/archive/${_pkg_ident}.tar.gz"
     http://repos.codelite.org/wxCrafterLibs/wxgui.zip
   )
 
-md5sums=('5cf921aa81526e65311dacbeb21451a4'
-         '20f3428eb831c3ff2539a7228afaa3b4'
-         )
+sha256sums=('96c6c3c0889ed05a176a569e9fb697a0f82c877efd49eaf1700a476b65fb091d'
+            '498c39ad3cc46eab8232d5fa37627c27a27f843cbe9521f05f29b19def436e12')
 
 noextract=('wxgui.zip')
 
@@ -85,7 +101,7 @@ BUILD_DIR="_build"
 #
 prepare()
 {
-  cd "${srcdir}/${pkg_name_ver}"
+  cd "${srcdir}/${_pkg_name_ver}"
   #patch -p0 < "${startdir}/CMakeLists.txt.patch"
 }
 
@@ -95,7 +111,7 @@ prepare()
 #
 build()
 {
-cd "${srcdir}/${pkg_name_ver}"
+cd "${srcdir}/${_pkg_name_ver}"
 
 CXXFLAGS="${CXXFLAGS} -fno-devirtualize"
 export CXXFLAGS
@@ -119,12 +135,17 @@ make -C "${BUILD_DIR}"
 #
 package()
 {
-cd "${srcdir}/${pkg_name_ver}"
+cd "${srcdir}/${_pkg_name_ver}"
 
 make -C "${BUILD_DIR}" -j1 DESTDIR="${pkgdir}" install
-install -m 644 -D "${srcdir}/${pkg_name_ver}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+install -m 644 -D "${srcdir}/${_pkg_name_ver}/LICENSE" "${pkgdir}/usr/share/licenses/${_pkg_name}/LICENSE"
 #install -m 755 -D "${srcdir}/wxCrafter.so" "${pkgdir}/usr/lib/codelite/wxCrafter.so"
 #install -m 644 -D "${srcdir}/wxgui.zip" "${pkgdir}/usr/share/codelite/wxgui.zip"
+
+# universal-ctags experiment
+mv "${pkgdir}/usr/bin/codelite-ctags" "${pkgdir}/usr/bin/codelite-ctags.dist"
+ln -s /usr/bin/ctags "${pkgdir}/usr/bin/codelite-ctags"
+
 }
 
 #
