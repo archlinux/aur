@@ -1,0 +1,10 @@
+pkgbase = sheepit-client-launcher
+	pkgdesc = A launcher for the SheepIt client, which always uses the latest released version
+	pkgver = 0.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL2
+	source = sheepit-client-launcher.sh
+	sha256sums = a7ea6fa214d77ff5eeb1c241fad621ce7b605a4f15f3431fab8d7f666916222f
+
+pkgname = sheepit-client-launcher
