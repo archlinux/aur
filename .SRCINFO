@@ -1,0 +1,12 @@
+pkgbase = w08-star-db-astap
+	pkgdesc = Wide-field database of 14000 stars up to BP-magnitude 8, for use with ASTAP
+	pkgver = 2021.10.24
+	pkgrel = 1
+	url = https://www.hnsky.org/astap.htm
+	arch = any
+	license = LGPL3
+	depends = astap
+	source = w08.deb::https://sourceforge.net/projects/astap-program/files/star_databases/w08_star_database_mag08_astap.deb/download
+	sha256sums = 523131fbf448c547d42051df5d23aea7e92b0ca75484043abb35cd128da7beed
+
+pkgname = w08-star-db-astap
