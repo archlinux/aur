@@ -1,18 +1,18 @@
 pkgbase = lexmark-aey
 	pkgdesc = CUPS printer driver for Lexmark C3200 C3300 CS330 CX330 MC3200 MC3300 series
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.lexmark.com/
 	arch = x86_64
 	license = custom
 	depends = cups
+	depends = gcc-libs
 	depends = glibc
 	depends = ncurses
 	depends = libusb
 	depends = libxext
 	depends = libxtst
 	depends = libxi
-	depends = libstdc++5
 	depends = krb5
 	depends = lua
 	depends = java-runtime
@@ -21,4 +21,3 @@ pkgbase = lexmark-aey
 	sha1sums = cb67bccdc245bda135847798dc5066d5cee13368
 
 pkgname = lexmark-aey
-
