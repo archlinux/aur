@@ -1,7 +1,7 @@
 # Maintainer: musiclover <musiclover382@protonmail.com>
 
 pkgname=detwinner
-pkgver=0.4.1
+pkgver=0.4.2
 pkgrel=2
 pkgdesc='Duplicate file finder for the Linux desktop'
 url='https://neatdecisions.com/products/detwinner-linux/'
@@ -11,12 +11,7 @@ depends=('gtkmm3>=3.22' 'graphicsmagick')
 makedepends=('meson' 'gtest' 'cppcheck')
 checkdepends=('appstream-glib')
 source=("https://github.com/neatdecisions/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('08e348dff6ac40cec5f6bf3bd1ab4d7fbcde0932550a682d3171b5c1c34f7ffe')
-
-prepare() {
-	# Fix meson build removing positional arguments from i18n.merge_file
-	sed -i -e 's/\x27desktop\x27,//g' -e 's/\x27appdata\x27,//g' $pkgname-$pkgver/data/meson.build
-}
+sha256sums=('a14928a9bcaf006fb05639978c0acc53011fbcef4552a699c61485b07b0d69bb')
 
 build() {
 	arch-meson $pkgname-$pkgver build
