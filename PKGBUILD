@@ -1,11 +1,11 @@
 # Maintainer: Amy B <axtlos[at]getcryst[dot]al>
 pkgname=lapis
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Flutter GUI to convert arch to crystal"
 arch=('any')
 url="https://git.tar.black/crystal/programs/lapis"
-depends=('gtk3' 'jade')
+depends=('gtk3')
 makedepends=('clang' 'ninja' 'cmake' 'git' 'unzip' 'flutter' 'flutter-group-pacman-hook')
 
 source=("gui::git+${url}.git")
