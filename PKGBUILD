@@ -1,22 +1,19 @@
-# Maintainer: skrewball <jason at joickle dot com>
+# Maintainer: skrewball <aur at joickle dot com>
 # Maintainer: Christian Brassat <christian.brassat at gmail dot com>
 
 pkgname=gnome-shell-extension-arc-menu
 _pkgbase=ArcMenu
-pkgver=30
+pkgver=31
 pkgrel=1
 pkgdesc="Application Menu Extension for GNOME"
 arch=('any')
 url="https://gitlab.com/arcmenu/ArcMenu"
 license=('GPL2')
-depends=(
-    'dconf'
-    'gnome-shell-extensions>=42'
-    'gnome-menus'
-)
+depends=('dconf' 'gnome-shell' 'gnome-menus')
 conflicts=('gnome-shell-extension-arc-menu-git')
+
 source=("${url}/-/archive/v${pkgver}/${_pkgbase}-v${pkgver}.tar.gz")
-sha256sums=('b1df8163427e4833e8d34ecfc597427e1280c89997f231cadcfe9c496eed4f72')
+sha256sums=('b91da2af28789bba2829328dd9925bae41692f8fb237dc66eaebce9381e3d1ab')
 
 build() {
   cd "${_pkgbase}-v${pkgver}"
