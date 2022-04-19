@@ -13,6 +13,7 @@ url="https://www.chef.io/downloads/tools/workstation"
 license=('custom:Chef EULA')
 depends=()
 conflicts=(chef-dk chef chef-solo cinc)
+replaces=('chef-dk')
 source=('https://packages.chef.io/files/stable/chef-workstation/22.4.861/ubuntu/18.04/chef-workstation_22.4.861-1_amd64.deb')
 sha256sums=('1a1522e20cc4d031cfd1d3ccef93177bb54e07bed30707d089f265360083af78')
 
