@@ -1,5 +1,5 @@
 pkgname=amazon-corretto-18
-pkgver=18.0.0.37.1
+pkgver=18.0.1.10.1
 pkgrel=1
 pkgdesc='No-cost, multiplatform, production-ready distribution of OpenJDK'
 arch=('x86_64')
@@ -18,6 +18,6 @@ package() {
   cp -a "amazon-corretto-$pkgver-linux-x64" "$pkgdir/usr/lib/jvm/java-18-amazon-corretto"
 }
 
-md5sums=('46a1799cc170ced9fc4fd9aaa7420561'
+md5sums=('87d68ef4a00c5742f1dd52a1321c7335'
          'SKIP')
 
