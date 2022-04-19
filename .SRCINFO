@@ -1,0 +1,19 @@
+pkgbase = lapis
+	pkgdesc = Flutter GUI to convert arch to crystal
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://git.tar.black/crystal/programs/lapis
+	arch = any
+	makedepends = clang
+	makedepends = ninja
+	makedepends = cmake
+	makedepends = git
+	makedepends = unzip
+	makedepends = flutter
+	makedepends = flutter-group-pacman-hook
+	depends = gtk3
+	depends = jade
+	source = gui::git+https://git.tar.black/crystal/programs/lapis.git
+	sha256sums = SKIP
+
+pkgname = lapis
