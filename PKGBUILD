@@ -1,14 +1,15 @@
 pkgname=python-ccxt
-pkgver=1.65.76
+_pkgname=${pkgname:7}
+pkgver=1.79.88
 pkgrel=1
 pkgdesc="A JavaScript / Python / PHP cryptocurrency trading library with support for 130+ exchanges"
 arch=(any)
 url="https://ccxt.trade"
 license=(MIT)
-depends=("python")
-makedepends=("python-setuptools")
-source=("https://pypi.python.org/packages/source/c/ccxt/ccxt-$pkgver.tar.gz")
-sha256sums=('eb8ab64bace00d12fcea8666f48125adde3fe14e409384b4b12f8b69758fa9b0')
+depends=(python python-certifi python-requests python-cryptography python-aiohttp python-aiodns python-yarl)
+makedepends=(python-build python-installer python-wheel python-setuptools)
+source=(https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz)
+sha256sums=('a1c08421163927da3cec31c88a89fb8549e9a46fa926736b38196c53b70f2aee')
 
 prepare() {
   cd "$srcdir"/ccxt-$pkgver
@@ -16,15 +17,12 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir"/ccxt-$pkgver
-  python setup.py build
+  cd ${srcdir}/${_pkgname}-${pkgver}
+  python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "$srcdir"/ccxt-$pkgver
-  python setup.py install -O1 --skip-build --root="$pkgdir"
+  cd ${srcdir}/${_pkgname}-${pkgver}
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -m0644 -D LICENSE.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
-
-  _site_packages=$(python -sSc 'import site; print(site.getsitepackages()[0])')
-  sed -r 's/^([^\[][^<>=]+)[<>=].*/\1/g' -i "$pkgdir"$_site_packages/*.egg-info/requires.txt
 }
