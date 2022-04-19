@@ -1,7 +1,7 @@
 pkgbase = radio-cli-bin
 	pkgdesc = A simple radio cli for listening to your favourite streams from the console
-	pkgver = 1.0.0
-	pkgrel = 2
+	pkgver = 1.0.1
+	pkgrel = 1
 	url = https://github.com/margual56/radio-cli
 	arch = x86_64
 	license = GPL2
@@ -9,7 +9,7 @@ pkgbase = radio-cli-bin
 	optdepends = youtube-dl
 	provides = radio-cli
 	conflicts = radio-cli
-	source = https://github.com/margual56/radio-cli/releases/download/v1.0.0/radio-cli-1.0.0-x86_64.tar.gz
-	sha256sums = 353221a5ec27809e0de1209ad47ca5f155386e236a2bea5dca709ce290eee39d
+	source = https://github.com/margual56/radio-cli/releases/download/v1.0.1/radio-cli-1.0.1-x86_64.tar.gz
+	sha256sums = 2a915ffd899c1bbe2db6f6bf280bc4752d0332025d525079c114bb38b9581b89
 
 pkgname = radio-cli-bin
