@@ -11,15 +11,16 @@ url="https://${_base}.org"
 license=('custom')
 depends=(python-dask python-datashape python-numba python-pillow python-xarray python-colorcet python-scipy)
 source=(${_base}-${pkgver}::https://github.com/holoviz/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('24272e75a8f7417531b5e35e8e74649f50a101b382475ba478cff11dcb819c4cb2773a8a26d19ee0993cb9988d26a5b82a1dc108ec511e505ebaffef72668477')
+sha512sums=('b51628ad2eb9842d1dc043c655b5373d9b71ef139c470ae62113960a13977049faae2bc03cdba3d03370bcaad80453ae333630fb6fd2a33162234956119e01c2')
 
 build() {
-  cd "${_base}-${pkgver}"
+  cd ${_base}-${pkgver}
+  export PYTHONHASHSEED=0
   python setup.py build
 }
 
 package() {
-  cd "${_base}-${pkgver}"
+  cd ${_base}-${pkgver}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
   install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"

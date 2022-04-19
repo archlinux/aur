@@ -13,6 +13,6 @@ pkgbase = python-datashader
 	depends = python-colorcet
 	depends = python-scipy
 	source = datashader-0.13.0::https://github.com/holoviz/datashader/archive/v0.13.0.tar.gz
-	sha512sums = 24272e75a8f7417531b5e35e8e74649f50a101b382475ba478cff11dcb819c4cb2773a8a26d19ee0993cb9988d26a5b82a1dc108ec511e505ebaffef72668477
+	sha512sums = b51628ad2eb9842d1dc043c655b5373d9b71ef139c470ae62113960a13977049faae2bc03cdba3d03370bcaad80453ae333630fb6fd2a33162234956119e01c2
 
 pkgname = python-datashader
