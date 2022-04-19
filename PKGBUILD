@@ -2,7 +2,7 @@
 
 pkgname=w08-star-db-astap
 pkgver=2021.10.24
-pkgrel=1
+pkgrel=2
 pkgdesc="Wide-field database of 14000 stars up to BP-magnitude 8, for use with ASTAP"
 arch=('any')
 url="https://www.hnsky.org/astap.htm"
@@ -15,5 +15,6 @@ depends=('astap')
 package() {
     tar xfv data.tar.xz -C "${pkgdir}"
     chmod 755 -R "${pkgdir}"
+    chmod 644 "${pkgdir}"/opt/astap/*
 }
 

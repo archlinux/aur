@@ -1,7 +1,7 @@
 pkgbase = w08-star-db-astap
 	pkgdesc = Wide-field database of 14000 stars up to BP-magnitude 8, for use with ASTAP
 	pkgver = 2021.10.24
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.hnsky.org/astap.htm
 	arch = any
 	license = LGPL3
