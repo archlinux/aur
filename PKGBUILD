@@ -29,6 +29,8 @@ pkgver() {
 build() {
     cd "${srcdir}/${_pkgname}"
 
+	ls 
+
     if [ -f cider.lock ]; then
         mv cider.lock yarn.lock
     fi
