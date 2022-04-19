@@ -1,0 +1,14 @@
+pkgbase = hugo-extended-git
+	pkgdesc = Extended version of Hugo
+	pkgver = 0.96.0
+	pkgrel = 1
+	url = https://gohugo.io/
+	arch = x86_64
+	license = Apache 2.0
+	conflicts = hugo
+	conflicts = hugo-git
+	conflicts = hugo-extended-bin
+	source = https://github.com/gohugoio/hugo/releases/download/v0.96.0/hugo_extended_0.96.0_Linux-64bit.tar.gz
+	md5sums = SKIP
+
+pkgname = hugo-extended-git
