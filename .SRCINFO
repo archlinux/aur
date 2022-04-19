@@ -1,0 +1,12 @@
+pkgbase = hyperleda-galaxy-db-astap
+	pkgdesc = Massive database of galaxies and other non-star objects, for use with ASTAP
+	pkgver = 2019.5.3
+	pkgrel = 1
+	url = http://leda.univ-lyon1.fr/
+	arch = any
+	license = LGPL3
+	depends = astap
+	source = hyperleda.deb::https://sourceforge.net/projects/astap-program/files/star_databases/hyperleda.deb/download
+	sha256sums = 98ab5a23a468addce87f3fc534a67f8b53d64388af0e1ed162b22f3765f27758
+
+pkgname = hyperleda-galaxy-db-astap
