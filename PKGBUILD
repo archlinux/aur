@@ -2,7 +2,7 @@
 # Contributor: Wyatt J. Brown <sushidudeteam at gmail dot com>
 # shellcheck disable=SC2034,SC2148,SC2154
 pkgname=all-repository-fonts
-pkgver=20210827
+pkgver=20220419
 pkgrel=1
 pkgdesc='Meta package for all fonts in the official repositories.'
 arch=('any')
@@ -23,7 +23,6 @@ depends=(
 	'adobe-source-sans-fonts'
 	'adobe-source-serif-fonts'
 	'awesome-terminal-fonts'
-	'bdf-unifont'
 	'cantarell-fonts'
 	'dina-font'
 	'gentium-plus-font'
@@ -109,11 +108,11 @@ depends=(
 	'ttf-liberation'
 	'ttf-monofur'
 	'ttf-nerd-fonts-symbols'
+	'ttf-nerd-fonts-symbols-mono'
 	'ttf-opensans'
 	'ttf-proggy-clean'
 	'ttf-roboto'
 	'ttf-roboto-mono'
-	'ttf-sarasa-gothic'
 	'ttf-sarasa-gothic'
 	'ttf-sazanami'
 	'ttf-tibetan-machine'
