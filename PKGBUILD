@@ -3,7 +3,7 @@
 
 _pkgname='ferdium'
 pkgname="ferdium-git"
-pkgver=develop.r0.gaa8c7df7
+pkgver=develop.r0.ge72bf2cc
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -13,8 +13,11 @@ _electronpkg='electron15'
 depends=("$_electronpkg" 'libxkbfile')
 appbranch="develop"
 recipiesbranch="master"
+pnpmversion="6.32.8"
+npmversion="8.7.0"
+nodejsversion='16.14.2'
 # We're depending on node v16 until https://github.com/nodejs/node-gyp/issues/2534 is fixed
-makedepends=('git' 'nodejs-lts-gallium' 'npm>=8.1.0' 'pnpm' 'python')
+makedepends=('nvm' 'git' 'python')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
@@ -59,12 +62,31 @@ prepare() {
 
 	# Specify path for autostart file
 	patch --forward -p1 < '../fix-autostart-path.diff'
+}
 
+pkgver() {
+	cd "$srcdir/$_sourcedirectory/"
+	git describe --long --all | sed -e 's/^v//' -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g' | sed -e 's#^heads/##g'
+}
+
+build() {
 	# Prepare recipes
 	cd "$srcdir/$_sourcedirectory/recipes/"
 
 	# Disable the prepare script for recipes as we don't want husky to run
 	sed -E -i 's|"prepare": ".*"|"prepare": ""|' 'package.json'
+
+    # Deactivate any pre-loaded nvm, and make sure we use our own in the current source directory
+    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
+
+	# Install the correct version of NodeJS
+    nvm install ${nodejsversion}
+
+	# Install the correct versions of npm and pnpm
+	npm i -gf npm@${npmversion}
+	npm i -gf pnpm@${pnpmversion}
 
 	# Build recipe archives
 	pnpm install
@@ -78,14 +100,7 @@ prepare() {
 
 	# Install ferdi dependencies
 	npm install
-}
 
-pkgver() {
-	cd "$srcdir/$_sourcedirectory/"
-	git describe --long --all | sed -e 's/^v//' -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g' | sed -e 's#^heads/##g'
-}
-
-build() {
 	cd "$srcdir/$_sourcedirectory/"
 
 	# Run pre-build tasks: prepare build info, run gulp
