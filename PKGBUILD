@@ -7,9 +7,9 @@
 pkgname=chef-workstation
 pkgver=22.4.861
 pkgrel=1
-pkgdesc="Chef Workstation gives you everything you need to get started with Chef. Start scanning and configuring your environments today with InSpec and chef-run."
+pkgdesc="Chef's developer toolkit that includes Infra, InSpec, Habitat, and tools like knife."
 arch=('x86_64')
-url="https://downloads.chef.io/chef-workstation/"
+url="https://www.chef.io/downloads/tools/workstation"
 license=('custom:Chef EULA')
 depends=()
 conflicts=(chef-dk chef chef-solo cinc)
