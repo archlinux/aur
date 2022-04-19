@@ -1,6 +1,6 @@
 pkgbase = distrobox-git
 	pkgdesc = Use any linux distribution inside your terminal.
-	pkgver = 1.2.13.r15.7960dbd
+	pkgver = 1.2.14.r26.458eeb2
 	pkgrel = 1
 	url = https://github.com/89luca89/distrobox
 	arch = any

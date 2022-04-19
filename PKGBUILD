@@ -1,7 +1,7 @@
 # Maintainer: robertfoster
 
 pkgname=distrobox-git
-pkgver=1.2.13.r15.7960dbd
+pkgver=1.2.14.r26.458eeb2
 pkgrel=1
 pkgdesc="Use any linux distribution inside your terminal."
 arch=('any')
@@ -22,8 +22,7 @@ pkgver() {
 
 package() {
   cd "${srcdir}/${pkgname%-git}"
-  mkdir -p "${pkgdir}/usr/bin"
-  ./install -P "${pkgdir}/usr/bin"
+  ./install -P "${pkgdir}/usr"
 }
 
 sha256sums=('SKIP')
