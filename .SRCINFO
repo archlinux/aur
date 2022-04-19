@@ -1,17 +1,17 @@
 pkgbase = bdf-unifont
 	pkgdesc = GNU Unifont Glyphs
-	pkgver = 14.0.02
+	pkgver = 14.0.03
 	pkgrel = 1
 	url = https://ftp.gnu.org/gnu/unifont
 	arch = any
 	license = custom
 	license = GPL2
-	source = https://ftp.gnu.org/gnu/unifont/unifont-14.0.02/unifont-14.0.02.bdf.gz
-	source = https://ftp.gnu.org/gnu/unifont/unifont-14.0.02/unifont-14.0.02.bdf.gz.sig
+	source = https://ftp.gnu.org/gnu/unifont/unifont-14.0.03/unifont-14.0.03.bdf.gz
+	source = https://ftp.gnu.org/gnu/unifont/unifont-14.0.03/unifont-14.0.03.bdf.gz.sig
 	source = LICENSE
 	validpgpkeys = 95D2E9AB8740D8046387FD151A09227B1F435A33
-	sha256sums = 5b314364d23143755a4b11b641a953c07837f48fefcc7454318e334265e4974b
-	sha256sums = SKIP
-	sha256sums = b301a70ea554b471ca22f9654d8fe0573a93c1ecae3f59f17026f12e58f31e3a
+	sha512sums = 5a182eb8cc197b98088af957d4a8889211c3d6ffb2892ff9cd288348c77c691f0c6cea74ff221cac6f48f8e5ccde2d05c1307b3bb522608c330e58c3ca795be7
+	sha512sums = SKIP
+	sha512sums = 064e7c0afe836d48610fcdd5d2d080c2583be0f2b70e565440d743072f41a242aec29a500df7a2bd39f423089c291250eabe0cefae5d000aecd7f27a052ee242
 
 pkgname = bdf-unifont
