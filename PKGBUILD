@@ -3,7 +3,7 @@
 
 pkgname=fetchcord-testing
 pkgver=de98dee
-pkgrel=1
+pkgrel=2
 pkgdesc="FetchCord grabs your OS info and displays it as Discord Rich Presence"
 arch=('any')
 url="https://github.com/MrPotatoBobx/fetchcord/#branch=testing"
