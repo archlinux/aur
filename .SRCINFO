@@ -1,0 +1,20 @@
+pkgbase = dwall-git
+	pkgdesc = A simple bash script to set wallpapers according to current time, using cron job scheduler.
+	pkgver = r6.fe7b1c4
+	pkgrel = 1
+	url = https://github.com/adi1090x/dynamic-wallpaper
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = sed
+	depends = feh
+	depends = cronie
+	optdepends = xorg-xrandr: XFCE support
+	optdepends = pywal-git: pywal support
+	provides = dwall
+	conflicts = dwall
+	source = git+https://github.com/adi1090x/dynamic-wallpaper.git
+	sha1sums = SKIP
+
+pkgname = dwall-git
