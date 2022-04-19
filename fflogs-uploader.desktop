@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=FF Logs Uploader
+Exec=env DESKTOPINTEGRATION=0 APPIMAGELAUNCHER_DISABLE=1 /usr/bin/ff-logs-uploader --no-sandbox %U
+Terminal=false
+Type=Application
+Icon=fflogs
+Comment=Upload logs to FFLogs
+Categories=Gaming
+StartupWMClass=fflogs
+Name[en_US]=fflogs-uploader
