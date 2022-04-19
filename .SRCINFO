@@ -1,0 +1,17 @@
+pkgbase = clash-verge-bin
+	pkgdesc = A Clash GUI based on tauri.
+	pkgver = 0.0.29
+	pkgrel = 1
+	url = https://github.com/zzzgydi/clash-verge
+	arch = x86_64
+	license = GPL3
+	makedepends = dpkg
+	depends = libappindicator-gtk3
+	depends = webkit2gtk
+	depends = gtk3
+	provides = clash
+	conflicts = clash
+	source = clash-verge-0.0.29-x86_64.deb::https://github.com/zzzgydi/clash-verge/releases/download/v0.0.29/clash-verge_0.0.29_amd64.deb
+	sha512sums = 57b38e22c54d622c365a12f6d807850742a2edfd2d51804babe872b3b7292ee4f24da649cff911ff6d59a30e316e3340bb31f60ed1b5f20b69051322bcc9af1b
+
+pkgname = clash-verge-bin
