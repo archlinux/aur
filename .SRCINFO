@@ -1,7 +1,7 @@
 pkgbase = ultimmc-bin
 	pkgdesc = Free, open source launcher and instance manager for Minecraft
 	pkgver = nightly
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/AfoninZ/MultiMC5-Cracked
 	arch = x86_64
 	license = custom
@@ -14,7 +14,7 @@ pkgbase = ultimmc-bin
 	optdepends = jprofiler: performance metrics
 	optdepends = mcedit-unified: world editor
 	provides = ultimmc
-	source = ultimmc-bin-nightly.zip::https://nightly.link/AfoninZ/MultiMC5-Cracked/workflows/main/develop/mmc-cracked-lin64.zip
+	source = ultimmc-bin-nightly.zip::https://nightly.link/AfoninZ/UltimMC/workflows/main/develop/mmc-cracked-lin64.zip
 	source = ultimmc.svg
 	source = ultimmc.desktop
 	source = ultimmc

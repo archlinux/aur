@@ -2,7 +2,7 @@
 
 pkgname="ultimmc-bin"
 pkgver=nightly
-pkgrel=1
+pkgrel=2
 pkgdesc="Free, open source launcher and instance manager for Minecraft"
 url="https://github.com/AfoninZ/MultiMC5-Cracked"
 license=("custom")
@@ -13,7 +13,7 @@ optdepends=("jre8-openjdk: java for minecraft < 1.17"
             "jre-openjdk: java for minecraft >= 1.17"
             "jprofiler: performance metrics"
             "mcedit-unified: world editor")
-source=("$pkgname-$pkgver.zip::https://nightly.link/AfoninZ/MultiMC5-Cracked/workflows/main/develop/mmc-cracked-lin64.zip"
+source=("$pkgname-$pkgver.zip::https://nightly.link/AfoninZ/UltimMC/workflows/main/develop/mmc-cracked-lin64.zip"
         "ultimmc.svg"
         "ultimmc.desktop"
         "ultimmc")
