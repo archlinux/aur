@@ -3,12 +3,11 @@
 # Contributor: Sven-Hendrik Haase <sh@lutzhaase.com>
 # Contributor: Linus Sjögren <thelinx@unreliablepollution.net>
 # Contributor: Eric Forgeot < http://anamnese.online.fr >
-# Contributor: dreeze, bageljr, pio
+# Contributor: dreeze, bageljr, pio, caffineetim
 pkgname=love10
 pkgver=0.10.2
-pkgrel=3
-pkgdesc="An open-source 2D game engine which uses the versatile Lua scripting language to create dynamic g
-aming experiences"
+pkgrel=4
+pkgdesc="2D game engine which uses the versatile Lua scripting language"
 arch=(i686 x86_64)
 url="http://love2d.org/"
 license=('zlib')
@@ -26,6 +25,10 @@ prepare() {
 
   # Skip installing desktop files, icons, etc
   sed -i 4q Makefile.am
+
+  # Fix for the latest version of lua
+  find "$srcdir/love-$pkgver/src/libraries/luasocket/libluasocket/" \
+       -type f -print0 | xargs -0 sed -i "s/luaL_reg/luaL_Reg/g"
 }
 
 build() {
