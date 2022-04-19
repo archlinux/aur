@@ -1,7 +1,7 @@
 # Maintainer: riey <creeper844@gmail.com>
 # Maintainer: Moon Sungjoon <sumoon at seoulsaram dot org>
 pkgname=kime-git
-pkgver=2.5.6.r18.c242569
+pkgver=2.5.6.r29.gba9c2c2
 pkgrel=1
 pkgdesc="Korean IME"
 url="https://github.com/Riey/kime"
@@ -12,8 +12,7 @@ optdepends=('gtk2: gtk2 support'
             'gtk4: gtk4 support'
             'qt5-base: qt5 support'
             'qt6-base: qt6 support'
-			'wayland: wayland support'
-			)
+            'wayland: wayland support')
 depends=('dbus' 'fontconfig' 'freetype2' 'libxcb')
 makedepends=('git' 'cargo' 'clang' 'llvm' 'cmake' 'wayland')
 arch=('any')
@@ -23,11 +22,10 @@ sha512sums=('SKIP')
 
 pkgver() {
     cd "${pkgname}"
-    local tag=$(git tag --sort=v:refname | grep '^v[0-9]\+.[0-9]\+.[0-9]\+$' | tail -1)
-    local commits_since=$(git rev-list $tag..HEAD --count)
-    echo "$(echo $tag | cut -b2-).r$commits_since.$(git log --pretty=format:'%h' -n 1)"
+    git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | cut -b2-
 }
 
+# FIXME
 build() {
     cd "${pkgname}"
     # Clean build cache
