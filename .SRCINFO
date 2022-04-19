@@ -1,0 +1,15 @@
+pkgbase = python-pdf2video
+	pkgdesc = A tool for making videos from PDF presentations
+	pkgver = 0.2.1
+	pkgrel = 1
+	url = https://github.com/tjunttila/pdf2video
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = poppler
+	depends = ffmpeg
+	depends = aws-cli
+	source = pdf2video-0.2.1.tar.gz::https://github.com/tjunttila/pdf2video/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = c9649653ffbd7e2069541681674a07c1131c48bb09cb0ad316b3ce1d15ec8479
+
+pkgname = python-pdf2video
