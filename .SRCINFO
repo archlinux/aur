@@ -1,0 +1,27 @@
+pkgbase = overlayaz-git
+	pkgdesc = Photo visibility analysis software
+	pkgver = 20220418
+	pkgrel = 1
+	url = https://github.com/kkonradpl/overlayaz
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = pkgconf
+	makedepends = json-c
+	makedepends = gtk3
+	makedepends = osm-gps-map
+	makedepends = sqlite3
+	makedepends = cmocka
+	depends = curl
+	depends = json-c
+	depends = gtk3
+	depends = osm-gps-map
+	depends = sqlite3
+	provides = overlayaz
+	conflicts = overlayaz
+	source = git+https://github.com/kkonradpl/overlayaz
+	md5sums = SKIP
+
+pkgname = overlayaz-git
