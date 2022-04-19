@@ -1,7 +1,7 @@
 # Maintainer: TabulateJarl8 <tabulatejarl8 at gmail dot com>
 
 pkgname="wordle-finder"
-pkgver=2.2.6
+pkgver=2.3.0
 pkgrel=1
 pkgdesc="A cross-platform CLI/GUI utility to assist in finding the word for the game "Wordle" and other
 similar knock-offs"
@@ -13,7 +13,7 @@ optdepends=('webkit2gtk: GUI Frontend')
 options=('strip')
 
 source=("https://github.com/TabulateJarl8/wordle-finder/archive/v$pkgver.tar.gz")
-sha512sums=('0cad49b93e1ea95c13e0cbb4b08968cf47385c77b57dfe29e5ef9eee274e22adc5f0af9bd860eba1d8b85034a75fcad98dcdcbc72c393be4d29ffdeb3a2d416a')
+sha512sums=('606fc3689b535e81d4cfb98c2b932f419bc38b17ca625917c50e48b180baa1fb7ff7ba617556d5ce7d0851305fa628fe0401e46db45541be42b0ad49fa8fdd25')
 
 _dir="${pkgname}-${pkgver}"
 
