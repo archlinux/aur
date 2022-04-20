@@ -2,7 +2,7 @@
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 
 pkgname='gosmee-bin'
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc='Gosmee - smee.io forwarder in go'
 url='https://github.com/chmouel/gosmee'
@@ -11,12 +11,26 @@ license=('Apache 2.0')
 provides=('gosmee')
 conflicts=('gosmee')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/chmouel/gosmee/releases/download/0.0.6/gosmee_0.0.6_Linux_arm64.tar.gz")
-sha256sums_aarch64=('dd412db4c91a749d4e83ad122fcd0f9550e1233405b8f028eb00088a0f6c640e')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/chmouel/gosmee/releases/download/0.0.7/gosmee_0.0.7_Linux_arm64.tar.gz")
+sha256sums_aarch64=('eb7795bb4f7bbc55285b1906a2d9ee51b99da07c5439af812c8af0dc701d57a3')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/gosmee/releases/download/0.0.6/gosmee_0.0.6_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('30e31b6498b07e70a7ba36b89751d6a2c3c15f2148ce0c5e4c0c153af25f6ebb')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/gosmee/releases/download/0.0.7/gosmee_0.0.7_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('066abe93d5d32b560bd89130979dfeace980885655735d370b1c5e8018fb492c')
 
 package() {
+  # bin
   install -Dm755 "./gosmee" "${pkgdir}/usr/bin/gosmee"
+
+  # license
+  install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/gosmee/LICENSE"
+
+  # completions
+  mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
+  mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
+
+  ./gosmee completion zsh > gosmee.zsh
+  ./gosmee completion bash > gosmee.bash
+
+  install -Dm644 "gosmee.bash" "${pkgdir}/usr/share/bash-completion/completions/gosmee"
+  install -Dm644 "gosmee.zsh" "${pkgdir}/usr/share/zsh/site-functions/_gosmee"
 }
