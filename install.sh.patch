@@ -1,5 +1,5 @@
 --- install.sh	2022-04-10 00:24:31.501640234 +0900
-+++ src/xp-pen-pentablet-3.2.3.220323-1.x86_64/install.sh	2022-04-10 00:48:36.858236874 +0900
++++ src/xp-pen-pentablet-3.2.3.220323-1.x86_64/install.sh	2022-04-20 18:00:07.554764546 +0900
 @@ -9,6 +9,21 @@
  echo $dirname
  cd "$dirname"
@@ -121,22 +121,6 @@
 -chmod +0777 $absConfPath
 -chmod +0777 $absLibPath
 -chmod +0777 $absPlatPath
--
--chmod +0666 $absConfPath/config.xml
--chmod +0666 $absConfPath/language.ini
--chmod +0666 $absConfPath/name_config.ini
--
--chmod +0666 $absLibPath/libicudata.so.56
--chmod +0666 $absLibPath/libicui18n.so.56
--chmod +0666 $absLibPath/libicuuc.so.56
--chmod +0666 $absLibPath/libQt5Core.so.5
--chmod +0666 $absLibPath/libQt5DBus.so.5
--chmod +0666 $absLibPath/libQt5Gui.so.5
--chmod +0666 $absLibPath/libQt5Network.so.5
--chmod +0666 $absLibPath/libQt5Widgets.so.5
--chmod +0666 $absLibPath/libQt5X11Extras.so.5
--chmod +0666 $absLibPath/libQt5XcbQpa.so.5
--chmod +0666 $absLibPath/libQt5Xml.so.5
 +#chmod +0777 /etc/xdg/autostart/xppentablet.desktop
 +#chmod +0777 /usr/share/applications/xppentablet.desktop
 +#chmod +0777 /usr/share/icons/pentablet.png
@@ -148,11 +132,22 @@
 +#chmod +0777 $absConfPath
 +#chmod +0777 $absLibPath
 +#chmod +0777 $absPlatPath
-+
-+#chmod +0666 $absConfPath/config.xml
-+#chmod +0666 $absConfPath/language.ini
-+#chmod +0666 $absConfPath/name_config.ini
-+
+ 
+ chmod +0666 $absConfPath/config.xml
+ chmod +0666 $absConfPath/language.ini
+ chmod +0666 $absConfPath/name_config.ini
+ 
+-chmod +0666 $absLibPath/libicudata.so.56
+-chmod +0666 $absLibPath/libicui18n.so.56
+-chmod +0666 $absLibPath/libicuuc.so.56
+-chmod +0666 $absLibPath/libQt5Core.so.5
+-chmod +0666 $absLibPath/libQt5DBus.so.5
+-chmod +0666 $absLibPath/libQt5Gui.so.5
+-chmod +0666 $absLibPath/libQt5Network.so.5
+-chmod +0666 $absLibPath/libQt5Widgets.so.5
+-chmod +0666 $absLibPath/libQt5X11Extras.so.5
+-chmod +0666 $absLibPath/libQt5XcbQpa.so.5
+-chmod +0666 $absLibPath/libQt5Xml.so.5
 +#chmod +0666 $absLibPath/libicudata.so.56
 +#chmod +0666 $absLibPath/libicui18n.so.56
 +#chmod +0666 $absLibPath/libicuuc.so.56

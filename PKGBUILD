@@ -4,7 +4,7 @@
 
 pkgname=xp-pen-tablet
 pkgver=3.2.3.220323
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="XP-Pen (Official) Linux utility (New UI driver)"
 arch=('x86_64')
