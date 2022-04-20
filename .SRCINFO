@@ -1,6 +1,6 @@
 pkgbase = metadata-cleaner
 	pkgdesc = Python GTK application to view and clean metadata in files, using mat2
-	pkgver = 2.2.1
+	pkgver = 2.2.2
 	pkgrel = 1
 	url = https://gitlab.com/rmnvgr/metadata-cleaner
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = metadata-cleaner
 	depends = libadwaita
 	depends = mat2
 	depends = python-gobject
-	source = metadata-cleaner-2.2.1.tar.gz::https://gitlab.com/rmnvgr/metadata-cleaner/-/archive/v2.2.1/metadata-cleaner-v2.2.1.tar.gz
-	sha256sums = 4a17af7c99472e02ce24f6f17afbe9febad526ed1a93d58b127ec5977c49f440
+	source = metadata-cleaner-2.2.2.tar.gz::https://gitlab.com/rmnvgr/metadata-cleaner/-/archive/v2.2.2/metadata-cleaner-v2.2.2.tar.gz
+	sha256sums = 7d7301cc4bc3890147cdf609b1d28735d14cc6e05f51d856843ddea3f7af3751
 
 pkgname = metadata-cleaner
