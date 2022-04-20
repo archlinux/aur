@@ -1,10 +1,10 @@
 # Maintainer sakura1943 <1436700265@qq.com>
 pkgname='windterm-bin'
 _pkgname='WindTerm'
-pkgver='2.3.1'
-_pkgver='2.3.0'
+pkgver='2.4.0'
+_pkgver='2.4.0'
 _author='kingToolbox'
-pkgrel=4
+pkgrel=5
 pkgdesc='A Quicker and better SSH/Telnet/Serial/Shell/Sftp client for DevOps.'
 arch=('x86_64')
 depends=()
@@ -15,7 +15,7 @@ source=("${pkgname}-${pkgver}-${arch}.tar.gz::https://github.com/${_author}/${_p
 	"windterm.png::https://raw.githubusercontent.com/${_author}/${_pkgname}/master/images/${_pkgname}_icon_1024x1024.png"
 	"windterm"
 	"windterm.desktop")
-sha512sums=('3d5b85a8ab5078000b15628c5089bb55c56dfc717a4282133774a260592e05ce6b4bb7439d87c2b2f97602ab52ad97918d58344495188897a09a76f011965f3f'
+sha512sums=('032fccec53c53490457436300273b33b90d122d09692605b527884cc8e7569dbadad2c6429851ebeac381f6f70cb45cdfd0c2bb88fa220daf84cef7f66ed532b'
 	"bfdcb9064eca32b06e6c493a48e8b38240cf9133a2d14a8ab45a4c0280bcfbef45f671dc1b86b64d7e6429cfaa6a95a9db7bb8c9c605b3b9aa852998a5abc17e"
 	"ef48e2a9c62af858cf172f4b2beb56ad495e1a5f1fdb0ee479cf28759ac63e6a1ef53a56fd85723e03f33bf2af9891f25a9d33b07f8fe8840394faf15a9562ef"
 	"ff9246d8075e65e9efce9e5c2f6e1d5ed9b03d848951b0d8cc5555c475f7af406c4ef51d2ee514399e28218850a866740eb79b411acccfa621d9df7efa0f9c0a")
