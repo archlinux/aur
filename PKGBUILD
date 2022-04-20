@@ -1,32 +1,65 @@
-# Maintainer: Alexander Bruegmann <mail[at]abruegmann[dot]eu>
-pkgname=('python-pytenable')
-_pyname=pyTenable
-depends=('python-defusedxml' 'python-requests' 'python-dateutil' 'python-semver' 'python-ipaddress' 'python-requests-pkcs12' 'python-restfly' 'python-box' 'python-marshmallow')
-checkdepends=('python-pytest')
-makedepends=('python-setuptools')
-optdepends=('python-docker: Docker support')
-pkgver=1.2.8
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Alexander Bruegmann <mail[at]abruegmann[dot]eu>
+
+pkgname=python-pytenable
+_pkg=pyTenable
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="Python library to interface into Tenable's products and applications"
 arch=('any')
-url="https://github.com/tenable/pyTenable/"
+url="https://github.com/tenable/pyTenable"
 license=('MIT')
-source=("${_pyname}-${pkgver}.tar.gz::https://github.com/tenable/pyTenable/archive/${pkgver}.tar.gz")
-sha512sums=('421b4e49d4820e00f1fdc77ed72f1dfe6b4f171ff67be4ae309611f4bb801ec46edb2c6c53ab66528a149d44a150d5ff14dedfb2d853c603aa485f51e6d913a5')
+depends=(
+	'python-box'
+	'python-dateutil'
+	'python-defusedxml'
+	'python-ipaddress'
+	'python-marshmallow'
+	'python-requests'
+	'python-requests-pkcs12'
+	'python-restfly'
+	'python-semver'
+	'python-typing-extensions'
+	'python-urllib3')
+makedepends=(
+	'python-build'
+	'python-installer'
+	'python-setuptools'
+	'python-sphinx'
+	'python-wheel')
+optdepends=('python-docker: Docker support')
+checkdepends=(
+	'python-pytest'
+	'python-pytest-datafiles'
+	'python-pytest-vcr'
+	'python-responses')
+changelog=CHANGELOG.md
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('5c78977314942568925a438ba953b23914a8aebc985ceb4b3adfffe9688e6d5b')
+
+prepare() {
+	cd "$_pkg-$pkgver"
+	sed -i '/exclude=/s/tests/*tests*/' setup.py
+}
 
 build() {
-  cd "${srcdir}/${_pyname}-${pkgver}"
-  python setup.py build
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
+	make -C docs man
 }
 
 check() {
-  cd "${srcdir}/${_pyname}-${pkgver}"
-  python setup.py test
+	cd "$_pkg-$pkgver"
+	pytest -x --disable-warnings
 }
 
 package() {
-  cd "${srcdir}/${_pyname}-${pkgver}"
-  python setup.py install -O1 --root="${pkgdir}" --skip-build
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	install -Dm644 docs/_build/man/pytenable.1 -t "$pkgdir/usr/share/man/man1/"
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s \
+		"$_site/$_pkg-$pkgver.dist-info/LICENSE" \
+		"$pkgdir/usr/share/licenses/$pkgname/"
 }
-
