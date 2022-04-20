@@ -4,6 +4,7 @@ pkgname=drata-agent
 pkgver=3.1.0
 pkgrel=1
 pkgdesc="The Drata Agent is a light-weight tray-application that runs in the background, reporting important read-only data to Drata about your machine’s state for compliance tracking."
+pkgdir="/opt/Drata Agent"
 arch=('x86_64')
 url="https://github.com/drata/the-agent"
 license=('unknown')
