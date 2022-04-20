@@ -1,12 +1,13 @@
 pkgbase = craftos-pc-accelerated
 	pkgdesc = Advanced ComputerCraft emulator written in C++, using the LuaJIT engine
 	pkgver = 2.6.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.craftos-pc.cc/
 	arch = x86_64
 	arch = i386
 	arch = armv7l
 	license = MIT
+	makedepends = base-devel
 	makedepends = unzip
 	depends = craftos-pc-data>=2.5
 	depends = sdl2>=2.0.8

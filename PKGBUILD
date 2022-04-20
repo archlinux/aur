@@ -1,7 +1,7 @@
 # Maintainer: JackMacWindows <jackmacwindowslinux@gmail.com>
 pkgname=craftos-pc-accelerated
 pkgver=2.6.5.1
-pkgrel=2
+pkgrel=3
 epoch=
 pkgdesc="Advanced ComputerCraft emulator written in C++, using the LuaJIT engine"
 arch=('x86_64' 'i386' 'armv7l')
@@ -9,7 +9,7 @@ url="https://www.craftos-pc.cc/"
 license=('MIT')
 groups=()
 depends=('craftos-pc-data>=2.5' 'sdl2>=2.0.8' 'sdl2_mixer' 'poco')
-makedepends=('unzip')
+makedepends=('base-devel' 'unzip')
 optdepends=('libharu: PDF output support' 'png++: PNG screenshot support' 'ncurses: CLI mode support')
 checkdepends=()
 provides=()
@@ -34,25 +34,25 @@ prepare() {
 }
 
 build() {
-	cd "craftos2-$pkgver-luajit"
-	./configure --prefix=/usr
-	make -C craftos2-luajit -j$(nproc)
-	make -j$(nproc)
+    cd "craftos2-$pkgver-luajit"
+    ./configure --prefix=/usr
+    make -C craftos2-luajit -j$(nproc)
+    make -j$(nproc)
 }
 
 check() {
-	cd "craftos2-$pkgver-luajit"
-	make -k test
+    cd "craftos2-$pkgver-luajit"
+    make -k test
 }
 
 package() {
-	cd "craftos2-$pkgver-luajit"
-	install -D -m 0755 craftos "$pkgdir/usr/bin/craftos-luajit"
-	install -D -m 0644 icons/CraftOS-PC.desktop "$pkgdir/usr/share/applications/CraftOS-PC-Accelerated.desktop"
-	install -D -m 0644 icons/16.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/craftos-luajit.png"
-	install -D -m 0644 icons/24.png "$pkgdir/usr/share/icons/hicolor/24x24/apps/craftos-luajit.png"
-	install -D -m 0644 icons/32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/craftos-luajit.png"
-	install -D -m 0644 icons/48.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/craftos-luajit.png"
-	install -D -m 0644 icons/64.png "$pkgdir/usr/share/icons/hicolor/64x64/apps/craftos-luajit.png"
-	install -D -m 0644 icons/96.png "$pkgdir/usr/share/icons/hicolor/96x96/apps/craftos-luajit.png"
+    cd "craftos2-$pkgver-luajit"
+    install -D -m 0755 craftos "$pkgdir/usr/bin/craftos-luajit"
+    install -D -m 0644 icons/CraftOS-PC.desktop "$pkgdir/usr/share/applications/CraftOS-PC-Accelerated.desktop"
+    install -D -m 0644 icons/16.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/craftos-luajit.png"
+    install -D -m 0644 icons/24.png "$pkgdir/usr/share/icons/hicolor/24x24/apps/craftos-luajit.png"
+    install -D -m 0644 icons/32.png "$pkgdir/usr/share/icons/hicolor/32x32/apps/craftos-luajit.png"
+    install -D -m 0644 icons/48.png "$pkgdir/usr/share/icons/hicolor/48x48/apps/craftos-luajit.png"
+    install -D -m 0644 icons/64.png "$pkgdir/usr/share/icons/hicolor/64x64/apps/craftos-luajit.png"
+    install -D -m 0644 icons/96.png "$pkgdir/usr/share/icons/hicolor/96x96/apps/craftos-luajit.png"
 }
