@@ -15,7 +15,7 @@ pkgbase = rpi-clone-git
 	provides = rpi-clone-setup
 	conflicts = rpi-clone
 	conflicts = rpi-clone-setup
-	source = rpi-clone::git+git://github.com/billw2/rpi-clone.git
+	source = rpi-clone::git+https://github.com/billw2/rpi-clone.git
 	md5sums = SKIP
 
 pkgname = rpi-clone-git

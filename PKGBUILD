@@ -11,7 +11,7 @@ depends=('bsdmainutils' 'dosfstools' 'parted' 'rsync' 'util-linux')
 makedepends=('git')
 provides=("$_pkgname" "${_pkgname}-setup")
 conflicts=("$_pkgname" "${_pkgname}-setup")
-source=("$_pkgname::git+git://github.com/billw2/$_pkgname.git")
+source=("$_pkgname::git+https://github.com/billw2/$_pkgname.git")
 md5sums=("SKIP")
 
  pkgver()
