@@ -1,7 +1,7 @@
 # Maintainer: Ralph Plawetzki <ralph@purejava.org>
 
 pkgname=keepassxc-cryptomator
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Store Cryptomator vault passwords in KeePassXC"
 arch=('x86_64')
@@ -9,14 +9,13 @@ url="https://plugin.purejava.org/"
 license=('MIT')
 depends=('cryptomator' 'keepassxc')
 makedepends=('java-environment=17' 'maven')
-source=("keepassxc-cryptomator-${pkgver}::https://github.com/purejava/keepassxc-cryptomator/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('b580adcb4b23a7b645a6e116599129e89103ecbb5ced0433976a507547457561')
+source=("keepassxc-cryptomator-${pkgver}.tar.gz::https://github.com/purejava/keepassxc-cryptomator/archive/refs/tags/${pkgver}.tar.gz"
+        "keepassxc-cryptomator-${pkgver}.tar.gz.sig::https://github.com/purejava/keepassxc-cryptomator/releases/download/${pkgver}/keepassxc-cryptomator-${pkgver}.tar.gz.sig")
+sha256sums=('0a05462f548e34481adee9676a81077d468edea885667b3f2da5f9f059137604'
+            'SKIP')
 options=('!strip')
 
-build() {
-  cd "${srcdir}/keepassxc-cryptomator-${pkgver}"
-  mvn -B clean package --file pom.xml
-}
+validpgpkeys=('54CF8E1F55CE7E977A0E41895BFB2076ABC48776')
 
 prepare() {
 
@@ -45,6 +44,11 @@ prepare() {
   echo '     For instance:'
   echo -e "\n        ${_COL_LIGHTGREY_}ln -s /usr/local/share/Cryptomator/plugins/keepassxc-cryptomator-${pkgver}.jar ~/.local/share/Cryptomator/plugins/${_COL_DEFAULT_}\n"
 
+}
+
+build() {
+  cd "${srcdir}/keepassxc-cryptomator-${pkgver}"
+  mvn -B clean package --file pom.xml
 }
 
 package() {
