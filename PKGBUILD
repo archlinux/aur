@@ -3,9 +3,9 @@
 # Contributor: Abhishek Mukherjee <amukherjee@tripadvisor.com>
 pkgname=docker-credential-secretservice
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="program to use secretservice to keep Docker credentials safe"
-arch=(x86_64)
+arch=(x86_64 i686 aarch64)
 url="https://github.com/docker/docker-credential-helpers"
 license=('MIT')
 depends=('libsecret')
