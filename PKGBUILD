@@ -3,7 +3,7 @@
 # Maintainer: Varakh <varakh@varakh.de>
 
 pkgname=rapidminer-studio
-pkgver=9.10.6
+pkgver=9.10.7
 pkgrel=1
 pkgdesc="Real data science, fast and simple. Reinvents enterprise AI so that anyone has the power to positively shape the future. Empowers data scientists and business analysts to effortlessly design predictive analytics from mashup to modeling to deployment."
 arch=('any')
@@ -13,7 +13,7 @@ depends=('java-runtime=8')
 makedepends=('unzip' 'gendesk')
 source=(https://releases.rapidminer.com/latest/rapidminer-studio/rapidminer-studio.zip \
         rapidminer-studio.sh)
-sha256sums=('dad04be0091c78e3824edbd27b2455f469d9e22dfec99541dadd397676f084de'
+sha256sums=('0f0ce4cfeb2967a94d688f230fd5388217a9c583f4a719f40fd112104e9c6a3b'
             'd3d76353c1ae15eec44c2fc638bbde98a192b70447bd467763f6d41cf24b6e5a')
 
 prepare() {
