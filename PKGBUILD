@@ -2,7 +2,7 @@
 #
 pkgname=blender249
 pkgver=2.49b
-pkgrel=2
+pkgrel=3
 pkgdesc='A fully integrated 3D graphics creation suite (version 2.49b)'
 arch=('x86_64')
 url='http://blender.org'
@@ -12,9 +12,11 @@ makedepends=('cmake' 'dos2unix')
 license=('GPL')
 
 source=('https://download.blender.org/source/blender-2.49b.tar.gz'
-        'blender249py27_gcc9_all.patch')
+        'blender249py27_gcc9_all.patch'
+        'blender249-namespace-std.patch')
 sha256sums=('23554db4aa10b00e0e760a8bf9c4a9f749670d815c8bc874a04746adc4752488'
-            '6282cb81967862eca928babbe1446126070591c71111d3178d0e3ff31fb455cd')
+            '6282cb81967862eca928babbe1446126070591c71111d3178d0e3ff31fb455cd'
+            '3e8b432606fbe0bace5e3fe6c3938ba3690fe37fd512f4287d3b51e454a83867')
 
 prepare() {
     cd ${srcdir}/blender-${pkgver}
@@ -28,6 +30,9 @@ prepare() {
     # applying various patches
     patch -Np1 -i ${srcdir}/blender249py27_gcc9_all.patch
 
+    # 2022-04: problem with using namespace::std; now fixed
+    patch -Np1 -i ${srcdir}/blender249-namespace-std.patch
+
     mkdir -p build
 }
 
@@ -40,7 +45,7 @@ build() {
     cmake \
         -GNinja \
         -DCMAKE_EXE_LINKER_FLAGS:STRING="-lX11 -ldl -lpthread -lGL" \
-        -DCMAKE_CXX_FLAGS:STRING="-fcommon -fpermissive" \
+        -DCMAKE_CXX_FLAGS:STRING="-fcommon -fpermissive -Wno-register" \
         -DCMAKE_C_FLAGS:STRING="-fcommon" \
         -DPYTHON_EXECUTABLE:PATH=/usr/bin/python2 \
         -DPYTHON_LIBRARY:PATH=/usr/lib/libpython2.7.so \

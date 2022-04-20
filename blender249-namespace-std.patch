@@ -1,0 +1,392 @@
+diff --unified --recursive --text blender-2.49b.orig/CMakeLists.txt blender-2.49b.new/CMakeLists.txt
+--- blender-2.49b.orig/CMakeLists.txt	2022-04-20 07:43:42.011563418 +0200
++++ blender-2.49b.new/CMakeLists.txt	2022-04-20 07:48:37.944828358 +0200
+@@ -42,8 +42,8 @@
+ ")
+ ENDIF(${CMAKE_SOURCE_DIR} STREQUAL ${CMAKE_BINARY_DIR})
+ 
+-CMAKE_MINIMUM_REQUIRED(VERSION 2.4)
+-PROJECT(Blender)
++CMAKE_MINIMUM_REQUIRED(VERSION 3.0)
++PROJECT(Blender VERSION 2.49)
+ 
+ #-----------------------------------------------------------------------------
+ # Redirect output files
+diff --unified --recursive --text blender-2.49b.orig/intern/elbeem/intern/utilities.cpp blender-2.49b.new/intern/elbeem/intern/utilities.cpp
+--- blender-2.49b.orig/intern/elbeem/intern/utilities.cpp	2022-04-20 07:43:41.854895023 +0200
++++ blender-2.49b.new/intern/elbeem/intern/utilities.cpp	2022-04-20 07:54:35.275436155 +0200
+@@ -48,7 +48,7 @@
+ 	return gElbeemState;
+ }
+ int  isSimworldOk(void) {
+-	return (getElbeemState>=0);
++	return (getElbeemState!=0);
+ }
+ 
+ // last error as string, acces with get/setElbeemErrorString
+diff --unified --recursive --text blender-2.49b.orig/intern/iksolver/intern/TNT/fcscmat.h blender-2.49b.new/intern/iksolver/intern/TNT/fcscmat.h
+--- blender-2.49b.orig/intern/iksolver/intern/TNT/fcscmat.h	2022-04-20 07:43:41.868228503 +0200
++++ blender-2.49b.new/intern/iksolver/intern/TNT/fcscmat.h	2022-04-20 08:12:25.700602228 +0200
+@@ -42,8 +42,6 @@
+ #include "tnt.h"
+ #include "vec.h"
+ 
+-using namespace std;
+-
+ namespace TNT
+ {
+ 
+diff --unified --recursive --text blender-2.49b.orig/intern/iksolver/intern/TNT/fspvec.h blender-2.49b.new/intern/iksolver/intern/TNT/fspvec.h
+--- blender-2.49b.orig/intern/iksolver/intern/TNT/fspvec.h	2022-04-20 07:43:41.868228503 +0200
++++ blender-2.49b.new/intern/iksolver/intern/TNT/fspvec.h	2022-04-20 08:13:05.987713325 +0200
+@@ -40,8 +40,6 @@
+ #include <cassert>
+ #include <iostream>
+ 
+-using namespace std;
+-
+ namespace TNT
+ {
+ 
+diff --unified --recursive --text blender-2.49b.orig/intern/string/STR_String.h blender-2.49b.new/intern/string/STR_String.h
+--- blender-2.49b.orig/intern/string/STR_String.h	2022-04-20 07:43:41.871561874 +0200
++++ blender-2.49b.new/intern/string/STR_String.h	2022-04-20 07:50:28.056042445 +0200
+@@ -48,7 +48,8 @@
+ #include <cstring>
+ #include <cstdlib>
+ 
+-using namespace std;
++using std::vector;
++using std::swap;
+ 
+ 
+ class STR_String;
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/Converter/KX_BlenderSceneConverter.h blender-2.49b.new/source/gameengine/Converter/KX_BlenderSceneConverter.h
+--- blender-2.49b.orig/source/gameengine/Converter/KX_BlenderSceneConverter.h	2022-04-20 07:43:41.914895685 +0200
++++ blender-2.49b.new/source/gameengine/Converter/KX_BlenderSceneConverter.h	2022-04-20 07:58:31.974726214 +0200
+@@ -35,6 +35,8 @@
+ #include "KX_ISceneConverter.h"
+ #include "KX_IpoConvert.h"
+ 
++using std::pair;
++
+ class KX_WorldInfo;
+ class SCA_IActuator;
+ class SCA_IController;
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/GameLogic/SCA_ActuatorEventManager.h blender-2.49b.new/source/gameengine/GameLogic/SCA_ActuatorEventManager.h
+--- blender-2.49b.orig/source/gameengine/GameLogic/SCA_ActuatorEventManager.h	2022-04-20 07:43:41.914895685 +0200
++++ blender-2.49b.new/source/gameengine/GameLogic/SCA_ActuatorEventManager.h	2022-04-20 08:03:33.158056854 +0200
+@@ -33,8 +33,6 @@
+ 
+ #include <vector>
+ 
+-using namespace std;
+-
+ class SCA_ActuatorEventManager : public SCA_EventManager
+ {
+ 	class SCA_LogicManager*	m_logicmgr;
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/GameLogic/SCA_AlwaysEventManager.cpp blender-2.49b.new/source/gameengine/GameLogic/SCA_AlwaysEventManager.cpp
+--- blender-2.49b.orig/source/gameengine/GameLogic/SCA_AlwaysEventManager.cpp	2022-04-20 07:43:41.914895685 +0200
++++ blender-2.49b.new/source/gameengine/GameLogic/SCA_AlwaysEventManager.cpp	2022-04-20 08:13:43.734796376 +0200
+@@ -39,8 +39,6 @@
+ #include <config.h>
+ #endif
+ 
+-using namespace std;
+-
+ SCA_AlwaysEventManager::SCA_AlwaysEventManager(class SCA_LogicManager* logicmgr)
+ 	: SCA_EventManager(ALWAYS_EVENTMGR),
+ 	m_logicmgr(logicmgr)
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/GameLogic/SCA_AlwaysEventManager.h blender-2.49b.new/source/gameengine/GameLogic/SCA_AlwaysEventManager.h
+--- blender-2.49b.orig/source/gameengine/GameLogic/SCA_AlwaysEventManager.h	2022-04-20 07:43:41.918229055 +0200
++++ blender-2.49b.new/source/gameengine/GameLogic/SCA_AlwaysEventManager.h	2022-04-20 08:03:39.621461600 +0200
+@@ -31,7 +31,6 @@
+ #include "SCA_EventManager.h"
+ #include <vector>
+ 
+-using namespace std;
+ class SCA_AlwaysEventManager : public SCA_EventManager
+ {
+ 	
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/GameLogic/SCA_IActuator.cpp blender-2.49b.new/source/gameengine/GameLogic/SCA_IActuator.cpp
+--- blender-2.49b.orig/source/gameengine/GameLogic/SCA_IActuator.cpp	2022-04-20 07:43:41.918229055 +0200
++++ blender-2.49b.new/source/gameengine/GameLogic/SCA_IActuator.cpp	2022-04-20 08:13:24.574585025 +0200
+@@ -32,8 +32,6 @@
+ #include <config.h>
+ #endif
+ 
+-using namespace std;
+-
+ SCA_IActuator::SCA_IActuator(SCA_IObject* gameobj,
+ 							 PyTypeObject* T) :
+ 	SCA_ILogicBrick(gameobj,T),
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/GameLogic/SCA_JoystickManager.cpp blender-2.49b.new/source/gameengine/GameLogic/SCA_JoystickManager.cpp
+--- blender-2.49b.orig/source/gameengine/GameLogic/SCA_JoystickManager.cpp	2022-04-20 07:43:41.918229055 +0200
++++ blender-2.49b.new/source/gameengine/GameLogic/SCA_JoystickManager.cpp	2022-04-20 08:13:40.534761077 +0200
+@@ -33,8 +33,6 @@
+ #ifdef HAVE_CONFIG_H
+ #include <config.h>
+ #endif
+-//using namespace std;
+-
+ 
+ SCA_JoystickManager::SCA_JoystickManager(class SCA_LogicManager* logicmgr)
+ 	: SCA_EventManager(JOY_EVENTMGR),
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/GameLogic/SCA_JoystickManager.h blender-2.49b.new/source/gameengine/GameLogic/SCA_JoystickManager.h
+--- blender-2.49b.orig/source/gameengine/GameLogic/SCA_JoystickManager.h	2022-04-20 07:43:41.918229055 +0200
++++ blender-2.49b.new/source/gameengine/GameLogic/SCA_JoystickManager.h	2022-04-20 08:03:29.008011001 +0200
+@@ -32,7 +32,6 @@
+ #include "Joystick/SCA_Joystick.h"
+ #include <vector>
+ 
+-using namespace std;
+ class SCA_JoystickManager : public SCA_EventManager
+ {
+ 	
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/GameLogic/SCA_KeyboardManager.h blender-2.49b.new/source/gameengine/GameLogic/SCA_KeyboardManager.h
+--- blender-2.49b.orig/source/gameengine/GameLogic/SCA_KeyboardManager.h	2022-04-20 07:43:41.918229055 +0200
++++ blender-2.49b.new/source/gameengine/GameLogic/SCA_KeyboardManager.h	2022-04-20 08:03:11.084479621 +0200
+@@ -37,8 +37,6 @@
+ 
+ #include <vector>
+ 
+-using namespace std;
+-
+ #include "SCA_IInputDevice.h"
+ 
+ 
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/GameLogic/SCA_LogicManager.h blender-2.49b.new/source/gameengine/GameLogic/SCA_LogicManager.h
+--- blender-2.49b.orig/source/gameengine/GameLogic/SCA_LogicManager.h	2022-04-20 07:43:41.918229055 +0200
++++ blender-2.49b.new/source/gameengine/GameLogic/SCA_LogicManager.h	2022-04-20 08:13:42.211446239 +0200
+@@ -47,7 +47,6 @@
+ 
+ #include "KX_HashedPtr.h"
+ 
+-using namespace std;
+ typedef std::list<class SCA_IController*> controllerlist;
+ typedef std::map<class SCA_ISensor*,controllerlist > sensormap_t;
+ 
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/GameLogic/SCA_MouseManager.h blender-2.49b.new/source/gameengine/GameLogic/SCA_MouseManager.h
+--- blender-2.49b.orig/source/gameengine/GameLogic/SCA_MouseManager.h	2022-04-20 07:43:41.914895685 +0200
++++ blender-2.49b.new/source/gameengine/GameLogic/SCA_MouseManager.h	2022-04-20 08:13:38.894742987 +0200
+@@ -38,8 +38,6 @@
+ 
+ #include <vector>
+ 
+-using namespace std;
+-
+ #include "SCA_IInputDevice.h"
+ 
+ 
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/GameLogic/SCA_PropertyEventManager.h blender-2.49b.new/source/gameengine/GameLogic/SCA_PropertyEventManager.h
+--- blender-2.49b.orig/source/gameengine/GameLogic/SCA_PropertyEventManager.h	2022-04-20 07:43:41.914895685 +0200
++++ blender-2.49b.new/source/gameengine/GameLogic/SCA_PropertyEventManager.h	2022-04-20 08:13:37.408059921 +0200
+@@ -33,8 +33,6 @@
+ 
+ #include <vector>
+ 
+-using namespace std;
+-
+ class SCA_PropertyEventManager : public SCA_EventManager
+ {
+ 	class SCA_LogicManager*	m_logicmgr;
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/GameLogic/SCA_RandomEventManager.cpp blender-2.49b.new/source/gameengine/GameLogic/SCA_RandomEventManager.cpp
+--- blender-2.49b.orig/source/gameengine/GameLogic/SCA_RandomEventManager.cpp	2022-04-20 07:43:41.918229055 +0200
++++ blender-2.49b.new/source/gameengine/GameLogic/SCA_RandomEventManager.cpp	2022-04-20 08:09:37.988751750 +0200
+@@ -32,8 +32,6 @@
+ #include "SCA_LogicManager.h"
+ #include "SCA_ISensor.h"
+ #include <vector>
+-using namespace std;
+-
+ #include <iostream>
+ #include <stdio.h>
+ 
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/GameLogic/SCA_RandomEventManager.h blender-2.49b.new/source/gameengine/GameLogic/SCA_RandomEventManager.h
+--- blender-2.49b.orig/source/gameengine/GameLogic/SCA_RandomEventManager.h	2022-04-20 07:43:41.914895685 +0200
++++ blender-2.49b.new/source/gameengine/GameLogic/SCA_RandomEventManager.h	2022-04-20 08:13:35.628040286 +0200
+@@ -35,8 +35,6 @@
+ #include "SCA_EventManager.h"
+ #include <vector>
+ 
+-using namespace std;
+-
+ class SCA_RandomEventManager : public SCA_EventManager
+ {
+ 	class SCA_LogicManager* m_logicmgr;
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/GameLogic/SCA_TimeEventManager.h blender-2.49b.new/source/gameengine/GameLogic/SCA_TimeEventManager.h
+--- blender-2.49b.orig/source/gameengine/GameLogic/SCA_TimeEventManager.h	2022-04-20 07:43:41.918229055 +0200
++++ blender-2.49b.new/source/gameengine/GameLogic/SCA_TimeEventManager.h	2022-04-20 08:05:06.842425072 +0200
+@@ -33,8 +33,6 @@
+ #include "Value.h"
+ #include <vector>
+ 
+-using namespace std;
+-
+ class SCA_TimeEventManager : public SCA_EventManager
+ {
+ 	vector<CValue*>		m_timevalues; // values that need their time updated regularly
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/GamePlayer/common/GPC_Engine.cpp blender-2.49b.new/source/gameengine/GamePlayer/common/GPC_Engine.cpp
+--- blender-2.49b.orig/source/gameengine/GamePlayer/common/GPC_Engine.cpp	2022-04-20 07:43:41.908228945 +0200
++++ blender-2.49b.new/source/gameengine/GamePlayer/common/GPC_Engine.cpp	2022-04-20 08:32:45.924163972 +0200
+@@ -65,7 +65,8 @@
+ #include "GPC_RawImage.h"
+ #include "GPC_RawLoadDotBlendArray.h"
+ 
+-
++using std::cout;
++using std::endl;
+ 
+ GPC_Engine::GPC_Engine(char *customLoadingAnimationURL,
+ 		int foregroundColor, int backgroundColor, int frameRate) :
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/Ketsji/KX_GameObject.cpp blender-2.49b.new/source/gameengine/Ketsji/KX_GameObject.cpp
+--- blender-2.49b.orig/source/gameengine/Ketsji/KX_GameObject.cpp	2022-04-20 07:43:41.928229165 +0200
++++ blender-2.49b.new/source/gameengine/Ketsji/KX_GameObject.cpp	2022-04-20 08:19:02.238309010 +0200
+@@ -79,6 +79,8 @@
+ 
+ #include "KX_SG_NodeRelationships.h"
+ 
++using std::cout;
++
+ static MT_Point3 dummy_point= MT_Point3(0.0, 0.0, 0.0);
+ static MT_Vector3 dummy_scaling = MT_Vector3(1.0, 1.0, 1.0);
+ static MT_Matrix3x3 dummy_orientation = MT_Matrix3x3(	1.0, 0.0, 0.0,
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/Ketsji/KX_ISystem.h blender-2.49b.new/source/gameengine/Ketsji/KX_ISystem.h
+--- blender-2.49b.orig/source/gameengine/Ketsji/KX_ISystem.h	2022-04-20 07:43:41.924895795 +0200
++++ blender-2.49b.new/source/gameengine/Ketsji/KX_ISystem.h	2022-04-20 08:13:28.007956231 +0200
+@@ -33,7 +33,6 @@
+ #define __KX_ISYSTEM
+ 
+ #include <vector>
+-using namespace std;
+ 
+ #include "STR_String.h"
+ 
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/Ketsji/KX_KetsjiEngine.cpp blender-2.49b.new/source/gameengine/Ketsji/KX_KetsjiEngine.cpp
+--- blender-2.49b.orig/source/gameengine/Ketsji/KX_KetsjiEngine.cpp	2022-04-20 07:43:41.921562425 +0200
++++ blender-2.49b.new/source/gameengine/Ketsji/KX_KetsjiEngine.cpp	2022-04-20 08:18:05.074345320 +0200
+@@ -80,6 +80,8 @@
+ #include "DNA_world_types.h"
+ #include "DNA_scene_types.h"
+ 
++using std::pair;
++
+ // If define: little test for Nzc: guarded drawing. If the canvas is
+ // not valid, skip rendering this frame.
+ //#define NZC_GUARDED_OUTPUT
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/Ketsji/KX_RayEventManager.h blender-2.49b.new/source/gameengine/Ketsji/KX_RayEventManager.h
+--- blender-2.49b.orig/source/gameengine/Ketsji/KX_RayEventManager.h	2022-04-20 07:43:41.928229165 +0200
++++ blender-2.49b.new/source/gameengine/Ketsji/KX_RayEventManager.h	2022-04-20 08:10:36.846067904 +0200
+@@ -33,7 +33,6 @@
+ #define __KX_RAYEVENTMGR
+ #include "SCA_EventManager.h"
+ #include <vector>
+-using namespace std;
+ 
+ class KX_RayEventManager : public SCA_EventManager
+ {
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/Ketsji/KX_Scene.h blender-2.49b.new/source/gameengine/Ketsji/KX_Scene.h
+--- blender-2.49b.orig/source/gameengine/Ketsji/KX_Scene.h	2022-04-20 07:43:41.924895795 +0200
++++ blender-2.49b.new/source/gameengine/Ketsji/KX_Scene.h	2022-04-20 07:57:29.250698341 +0200
+@@ -47,6 +47,8 @@
+ 
+ #include "PyObjectPlus.h"
+ 
++using std::list;
++
+ /**
+  * @section Forward declarations
+  */
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/Physics/Sumo/Fuzzics/src/SM_Object.cpp blender-2.49b.new/source/gameengine/Physics/Sumo/Fuzzics/src/SM_Object.cpp
+--- blender-2.49b.orig/source/gameengine/Physics/Sumo/Fuzzics/src/SM_Object.cpp	2022-04-20 07:43:41.898228834 +0200
++++ blender-2.49b.new/source/gameengine/Physics/Sumo/Fuzzics/src/SM_Object.cpp	2022-04-20 08:32:11.580440923 +0200
+@@ -58,7 +58,7 @@
+ 	MT_Point3 pos;
+ 	
+ 	// Sort objects by height
+-	bool operator()(const Contact *a, const Contact *b)
++	bool operator()(const Contact *a, const Contact *b) const
+ 	{
+ 		return a->pos[2] < b->pos[2];
+ 	}
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/Rasterizer/RAS_IRasterizer.h blender-2.49b.new/source/gameengine/Rasterizer/RAS_IRasterizer.h
+--- blender-2.49b.orig/source/gameengine/Rasterizer/RAS_IRasterizer.h	2022-04-20 07:43:41.931562535 +0200
++++ blender-2.49b.new/source/gameengine/Rasterizer/RAS_IRasterizer.h	2022-04-20 08:13:18.444517404 +0200
+@@ -41,7 +41,6 @@
+ #include "RAS_TexVert.h"
+ 
+ #include <vector>
+-using namespace std;
+ 
+ class RAS_ICanvas;
+ class RAS_IPolyMaterial;
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/Rasterizer/RAS_MaterialBucket.h blender-2.49b.new/source/gameengine/Rasterizer/RAS_MaterialBucket.h
+--- blender-2.49b.orig/source/gameengine/Rasterizer/RAS_MaterialBucket.h	2022-04-20 07:43:41.931562535 +0200
++++ blender-2.49b.new/source/gameengine/Rasterizer/RAS_MaterialBucket.h	2022-04-20 08:14:34.358688100 +0200
+@@ -42,7 +42,8 @@
+ #include <vector>
+ #include <set>
+ #include <list>
+-using namespace std;
++using std::set;
++using std::list;
+ 
+ /* Display List Slot */
+ 
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/Rasterizer/RAS_OpenGLRasterizer/RAS_OpenGLRasterizer.h blender-2.49b.new/source/gameengine/Rasterizer/RAS_OpenGLRasterizer/RAS_OpenGLRasterizer.h
+--- blender-2.49b.orig/source/gameengine/Rasterizer/RAS_OpenGLRasterizer/RAS_OpenGLRasterizer.h	2022-04-20 07:43:41.931562535 +0200
++++ blender-2.49b.new/source/gameengine/Rasterizer/RAS_OpenGLRasterizer/RAS_OpenGLRasterizer.h	2022-04-20 08:13:14.417806319 +0200
+@@ -35,7 +35,6 @@
+ 
+ #include "MT_CmMatrix4x4.h"
+ #include <vector>
+-using namespace std;
+ 
+ #include "RAS_IRasterizer.h"
+ #include "RAS_MaterialBucket.h"
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/Rasterizer/RAS_Polygon.h blender-2.49b.new/source/gameengine/Rasterizer/RAS_Polygon.h
+--- blender-2.49b.orig/source/gameengine/Rasterizer/RAS_Polygon.h	2022-04-20 07:43:41.931562535 +0200
++++ blender-2.49b.new/source/gameengine/Rasterizer/RAS_Polygon.h	2022-04-20 08:13:16.424495121 +0200
+@@ -33,7 +33,6 @@
+ #include "RAS_MaterialBucket.h"
+ 
+ #include <vector>
+-using namespace std;
+ 
+ /* polygon flags */
+ 
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/SceneGraph/SG_Node.cpp blender-2.49b.new/source/gameengine/SceneGraph/SG_Node.cpp
+--- blender-2.49b.orig/source/gameengine/SceneGraph/SG_Node.cpp	2022-04-20 07:43:41.894895464 +0200
++++ blender-2.49b.new/source/gameengine/SceneGraph/SG_Node.cpp	2022-04-20 08:23:25.577879238 +0200
+@@ -34,9 +34,6 @@
+ #include <config.h>
+ #endif
+ 
+-using namespace std;
+-
+-
+ SG_Node::SG_Node(
+ 	void* clientobj,
+ 	void* clientinfo,
+diff --unified --recursive --text blender-2.49b.orig/source/gameengine/SceneGraph/SG_Tree.h blender-2.49b.new/source/gameengine/SceneGraph/SG_Tree.h
+--- blender-2.49b.orig/source/gameengine/SceneGraph/SG_Tree.h	2022-04-20 07:43:41.894895464 +0200
++++ blender-2.49b.new/source/gameengine/SceneGraph/SG_Tree.h	2022-04-20 08:31:25.596584754 +0200
+@@ -34,7 +34,8 @@
+ #include "MT_Point3.h"
+ #include "SG_BBox.h"
+ 
+-#include <set> 
++#include <set>
++using std::multiset;
+ 
+ class SG_Node;
+ 
+@@ -105,7 +106,7 @@
+ 	
+ 	struct greater
+ 	{
+-		bool operator()(const SG_Tree *a, const SG_Tree *b)
++		bool operator()(const SG_Tree *a, const SG_Tree *b) const
+ 		{
+ 			return a->volume() > b->volume();
+ 		}
