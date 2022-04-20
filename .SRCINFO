@@ -1,11 +1,12 @@
 pkgbase = notepadnext-git
 	pkgdesc = A cross-platform, reimplementation of Notepad++
-	pkgver = 0.4.9.r8.ga879901
+	pkgver = 0.5.r7.gbfce019
 	pkgrel = 1
 	url = https://github.com/dail8859/NotepadNext
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = qt6-tools
 	depends = qt6-5compat
 	depends = hicolor-icon-theme
 	provides = notepadnext

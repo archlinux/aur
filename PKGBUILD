@@ -1,14 +1,14 @@
 # Maintainer: bitwave <aur [aT] oomlu {d.0t} de>
 # Contributor: yochananmarqos
 pkgname=notepadnext-git
-pkgver=0.4.9.r8.ga879901
+pkgver=0.5.r7.gbfce019
 pkgrel=1
 pkgdesc="A cross-platform, reimplementation of Notepad++"
 arch=('x86_64')
 url="https://github.com/dail8859/NotepadNext"
 license=('GPL3')
 depends=('qt6-5compat' 'hicolor-icon-theme')
-makedepends=('git')
+makedepends=('git' 'qt6-tools')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=('git+https://github.com/dail8859/NotepadNext.git'
