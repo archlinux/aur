@@ -1,9 +1,9 @@
-pkgbase = jdk-temurin
-	pkgdesc = Temurin (OpenJDK 17 Java binaries by Adoptium, formerly AdoptOpenJDK)
+pkgbase = jdk17-temurin
+	pkgdesc = Temurin 17 (OpenJDK 17 Java binaries by Adoptium, formerly AdoptOpenJDK)
 	pkgver = 17.0.2.u8
 	pkgrel = 1
 	url = https://adoptium.net/
-	install = install_jdk-temurin.sh
+	install = install_jdk17-temurin.sh
 	arch = x86_64
 	license = custom
 	depends = java-runtime-common>=3
@@ -29,22 +29,21 @@ pkgbase = jdk-temurin
 	provides = jdk-openjdk=17.0.2.u8
 	provides = openjdk17-src=17.0.2.u8
 	provides = openjdk-src=17.0.2.u8
-	replaces = jdk-adoptopenjdk
-	backup = etc/java-temurin/logging.properties
-	backup = etc/java-temurin/management/jmxremote.access
-	backup = etc/java-temurin/management/jmxremote.password.template
-	backup = etc/java-temurin/management/management.properties
-	backup = etc/java-temurin/net.properties
-	backup = etc/java-temurin/sdp/sdp.conf.template
-	backup = etc/java-temurin/security/java.policy
-	backup = etc/java-temurin/security/java.security
-	backup = etc/java-temurin/security/policy/limited/default_local.policy
-	backup = etc/java-temurin/security/policy/limited/default_US_export.policy
-	backup = etc/java-temurin/security/policy/limited/exempt_local.policy
-	backup = etc/java-temurin/security/policy/README.txt
-	backup = etc/java-temurin/security/policy/unlimited/default_local.policy
-	backup = etc/java-temurin/security/policy/unlimited/default_US_export.policy
-	backup = etc/java-temurin/sound.properties
+	backup = etc/java-17-temurin/logging.properties
+	backup = etc/java-17-temurin/management/jmxremote.access
+	backup = etc/java-17-temurin/management/jmxremote.password.template
+	backup = etc/java-17-temurin/management/management.properties
+	backup = etc/java-17-temurin/net.properties
+	backup = etc/java-17-temurin/sdp/sdp.conf.template
+	backup = etc/java-17-temurin/security/java.policy
+	backup = etc/java-17-temurin/security/java.security
+	backup = etc/java-17-temurin/security/policy/limited/default_local.policy
+	backup = etc/java-17-temurin/security/policy/limited/default_US_export.policy
+	backup = etc/java-17-temurin/security/policy/limited/exempt_local.policy
+	backup = etc/java-17-temurin/security/policy/README.txt
+	backup = etc/java-17-temurin/security/policy/unlimited/default_local.policy
+	backup = etc/java-17-temurin/security/policy/unlimited/default_US_export.policy
+	backup = etc/java-17-temurin/sound.properties
 	source = https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.2%2B8/OpenJDK17U-jdk_x64_linux_hotspot_17.0.2_8.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
@@ -54,4 +53,4 @@ pkgbase = jdk-temurin
 	sha256sums = dc278160ca7df32bcfab0a5420c09eaf6f4602d30f57b6c5bedb0f60062c5228
 	sha256sums = d0913ae3b9f469f8567432b0867222d66f50008c313f5a0882d15994ba19ec01
 
-pkgname = jdk-temurin
+pkgname = jdk17-temurin

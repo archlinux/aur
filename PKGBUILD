@@ -15,8 +15,8 @@ pkgver=${_completever}.u${_updatever}
 _tag_ver=${_completever}+${_updatever}
 [ $_majorver != $_completever ] && _versuffix=U
 
-pkgname=jdk-temurin
-pkgdesc="Temurin (OpenJDK ${_majorver} Java binaries by Adoptium, formerly AdoptOpenJDK)"
+pkgname=jdk17-temurin
+pkgdesc="Temurin ${_majorver} (OpenJDK ${_majorver} Java binaries by Adoptium, formerly AdoptOpenJDK)"
 arch=('x86_64')
 url='https://adoptium.net/'
 license=('custom')
@@ -38,23 +38,22 @@ provides=("java-runtime-headless=${_majorver}"
           "jdk-openjdk=${pkgver}"
           "openjdk${_majorver}-src=${pkgver}"
           "openjdk-src=${pkgver}")
-replaces=("jdk-adoptopenjdk")
-backup=(etc/java-temurin/logging.properties
-        etc/java-temurin/management/jmxremote.access
-        etc/java-temurin/management/jmxremote.password.template
-        etc/java-temurin/management/management.properties
-        etc/java-temurin/net.properties
-        etc/java-temurin/sdp/sdp.conf.template
-        etc/java-temurin/security/java.policy
-        etc/java-temurin/security/java.security
-        etc/java-temurin/security/policy/limited/default_local.policy
-        etc/java-temurin/security/policy/limited/default_US_export.policy
-        etc/java-temurin/security/policy/limited/exempt_local.policy
-        etc/java-temurin/security/policy/README.txt
-        etc/java-temurin/security/policy/unlimited/default_local.policy
-        etc/java-temurin/security/policy/unlimited/default_US_export.policy
-        etc/java-temurin/sound.properties)
-install=install_jdk-temurin.sh
+backup=(etc/java-${_majorver}-temurin/logging.properties
+        etc/java-${_majorver}-temurin/management/jmxremote.access
+        etc/java-${_majorver}-temurin/management/jmxremote.password.template
+        etc/java-${_majorver}-temurin/management/management.properties
+        etc/java-${_majorver}-temurin/net.properties
+        etc/java-${_majorver}-temurin/sdp/sdp.conf.template
+        etc/java-${_majorver}-temurin/security/java.policy
+        etc/java-${_majorver}-temurin/security/java.security
+        etc/java-${_majorver}-temurin/security/policy/limited/default_local.policy
+        etc/java-${_majorver}-temurin/security/policy/limited/default_US_export.policy
+        etc/java-${_majorver}-temurin/security/policy/limited/exempt_local.policy
+        etc/java-${_majorver}-temurin/security/policy/README.txt
+        etc/java-${_majorver}-temurin/security/policy/unlimited/default_local.policy
+        etc/java-${_majorver}-temurin/security/policy/unlimited/default_US_export.policy
+        etc/java-${_majorver}-temurin/sound.properties)
+install=install_jdk17-temurin.sh
 
 source=(https://github.com/adoptium/temurin${_majorver}-binaries/releases/download/jdk-${_tag_ver/+/%2B}/OpenJDK${_majorver}${_versuffix}-jdk_x64_linux_hotspot_${_tag_ver/+/_}.tar.gz
         freedesktop-java.desktop
@@ -77,8 +76,8 @@ package() {
 
   # Conf
   install -dm 755 "${pkgdir}/etc"
-  mv conf "${pkgdir}/etc/java-temurin"
-  ln -sf /etc/java-temurin conf
+  mv conf "${pkgdir}/etc/java-${_majorver}-temurin"
+  ln -sf /etc/java-${_majorver}-temurin conf
 
   # Legal
   install -dm 755 "${pkgdir}/usr/share/licenses"
