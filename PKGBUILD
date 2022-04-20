@@ -1,6 +1,6 @@
 # Maintainer: David Husička <contact@bydave.net>
-# Co-maintainer: Tuhana GAYRETLİ <tuhana at tuta dot io>
 # Contributor: Tyler Nelson <neo@cybercat.cc>
+# Contributor: Tuhana GAYRETLİ <tuhana at tuta dot io>
 
 pkgname=osu-lazer-bin
 _pkgname=${pkgname%-bin}
