@@ -8,8 +8,8 @@
 # Contributor: Dave Pretty <david dot pretty at gmail dot com>
 
 pkgname=anki
-pkgver=2.1.49
-pkgrel=3
+pkgver=2.1.50
+pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
@@ -59,9 +59,9 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ankitects/anki/archive/refs
 "no-update.patch"
 "inc_timeout_time.patch"
 )
-sha256sums=('0a072f9a2babdde67b233104c73450e297c7feff41e0a43b76dd590bafcef5d5'
+sha256sums=('2d36d54ce1ec70b615fc889ccac3726e6b8221819afb05b614dc6150d5d04a4c'
 '137827586d2a72adddaaf98599afa9fc80cdd73492d7f5cbcf4d2f6082e5f797'
-'4db92644293ff67e667e31821de524984795117d66b86b539f04899722037fd7'
+'281e12217f6b60ff64ad66e58aaf0cdb8bed16ffe2a3e6ab9e6ff5e773b4cabf'
 )
 
 prepare(){
@@ -81,17 +81,16 @@ build() {
     fi
     # build requires java 11 to work, does not compile with java 17
     export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
-    rm -rf bazel-dist
-    bazel build -c opt dist
+    bazel build -c opt wheels
 }
 
 package() {
     cd "anki-$pkgver"
-    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps bazel-bin/pylib/anki/anki-*.whl bazel-bin/qt/aqt/aqt-*.whl
+    PIP_CONFIG_FILE=/dev/null pip install --isolated --root="$pkgdir" --ignore-installed --no-deps .bazel/out/k8-opt/bin/qt/aqt/aqt-*.whl .bazel/out/k8-opt/bin/pylib/anki/anki-*.whl
 
     install -Dm755 qt/runanki.py "$pkgdir"/usr/bin/anki
-    install -Dm644 qt/linux/anki.desktop "$pkgdir"/usr/share/applications/anki.desktop
-    install -Dm644 qt/linux/anki.png "$pkgdir"/usr/share/pixmaps/anki.png
+    install -Dm644 qt/bundle/lin/anki.desktop "$pkgdir"/usr/share/applications/anki.desktop
+    install -Dm644 qt/bundle/lin/anki.png "$pkgdir"/usr/share/pixmaps/anki.png
     find $pkgdir -iname __pycache__ | xargs -r rm -rf
     find $pkgdir -iname direct_url.json | xargs -r rm -rf
 }
