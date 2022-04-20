@@ -1,13 +1,14 @@
 pkgbase = craftos-pc
 	pkgdesc = Advanced ComputerCraft emulator written in C++
 	pkgver = 2.6.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.craftos-pc.cc/
 	arch = x86_64
 	arch = i386
 	arch = armv7l
 	arch = aarch64
 	license = MIT
+	makedepends = base-devel
 	makedepends = unzip
 	makedepends = patchelf
 	depends = craftos-pc-data>=2.5
