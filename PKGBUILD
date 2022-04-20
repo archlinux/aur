@@ -1,7 +1,7 @@
 # Maintainer: mzz2017 <m@mzz.pub>
 
 pkgname=v2raya
-pkgver=1.5.6.2
+pkgver=1.5.7
 pkgrel=1
 install=.INSTALL
 pkgdesc="A web GUI client of Project V which supports VMess, VLESS, SS, SSR, Trojan and Pingtunnel protocols"
@@ -16,8 +16,6 @@ sha512sums=('SKIP')
 
 build() {
     cd "$srcdir/v2rayA-$pkgver/gui"
-    yarn config set registry https://registry.npm.taobao.org
-    yarn config set sass_binary_site https://cdn.npm.taobao.org/dist/node-sass -g
     yarn --check-files
     OUTPUT_DIR="$srcdir/v2rayA-$pkgver/service/server/router/web" yarn build
 
@@ -33,6 +31,6 @@ package() {
     install -dm 750 "${pkgdir}"/etc/v2raya/
     install -Dm 644 install/universal/v2raya.desktop -t "${pkgdir}"/usr/share/applications/
     install -Dm 644 install/universal/v2raya.service -t "${pkgdir}"/usr/lib/systemd/system/
-    install -Dm 644 install/universal/v2raya@.service -t "${pkgdir}"/usr/lib/systemd/system/
+    install -Dm 644 install/universal/v2raya-lite.service -t "${pkgdir}"/usr/lib/systemd/user/
     install -Dm 644 gui/public/img/icons/android-chrome-512x512.png "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/v2raya.png
 }
