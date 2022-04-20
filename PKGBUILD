@@ -4,7 +4,7 @@
 ## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
-_microarchitecture=0
+_microarchitecture=98
 
 ## --- PKGBUILD
 
@@ -16,7 +16,7 @@ _minor=3
 pkgbase=linux-multimedia
 #pkgver=${_major}
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux Multimedia Optimized'
 url="https://www.kernel.org/"
 arch=(x86_64)
@@ -66,11 +66,11 @@ prepare() {
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0002-clear-patches.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0002-mm-Support-soft-dirty-flag-read-with-reset.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-base.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0005-glitched-pds.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-cfs-additions.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0003-glitched-cfs.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0006-add-acs-overrides_iommu.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v5.17-fsync1_via_futex_waitv.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v5.17-winesync.patch
-  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0009-prjc_v5.17-r0.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-fsync1_via_futex_waitv.patch
+  patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0007-v${_major}-winesync.patch
   patch -Np1 < ${srcdir}/linux-tkg/linux-tkg-patches/${_major}/0012-misc-additions.patch
 
   msg2 "Apply GCC Optimization Patch..."
@@ -86,31 +86,9 @@ prepare() {
   # Let's user choose microarchitecture optimization in GCC
   sh ${srcdir}/choose-gcc-optimization.sh $_microarchitecture
 
-  ### Enable Full Tickless Timer
-  msg2 "Enable Full Tickless..."
-  scripts/config --disable CONFIG_HZ_PERIODIC
-  scripts/config --disable CONFIG_NO_HZ_IDLE
-  scripts/config --enable CONFIG_NO_HZ_FULL
-  scripts/config --disable CONFIG_NO_HZ
-  scripts/config --enable CONFIG_NO_HZ_COMMON
-
-  ### Enable Preemptation
-  msg2 "Enable PREEMPT..."
-  scripts/config --disable CONFIG_PREEMPT_NONE
-  scripts/config --disable CONFIG_PREEMPT_VOLUNTARY
-  scripts/config --enable CONFIG_PREEMPT
-  scripts/config --enable CONFIG_PREEMPT_COUNT
-  scripts/config --enable CONFIG_PREEMPTION
-  scripts/config --enable CONFIG_PREEMPT_DYNAMIC
-
   ### Disable NUMA
   msg2 "Disable NUMA..."
   scripts/config --disable CONFIG_NUMA
-
-  ### Set CPU Scheduler to PDS
-  msg2 "Set CPU Scheduler to PDS..."
-  scripts/config --disable CONFIG_SCHED_BMQ
-  scripts/config --enable CONFIG_SCHED_PDS
 
   ### Optimize Kernel for Performance Using (GCC -O3)
   msg2 "Set Up A GCC -O3 Optimized Kernel..."
