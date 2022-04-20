@@ -1,10 +1,11 @@
-# Maintainer: Simon Legner <Simon.Legner@gmail.com>
+# Maintainer: Fabian Köhler <fabian.koehler@protonmail.ch>
+# Contributor: Simon Legner <Simon.Legner@gmail.com>
 # Contributor: Filippo Berto <berto.f at protonmail dot com>
 # Contributor: Viktor Hundahl Strate <viktorstrate@gmail.com>
 
 _gitname=tinyMediaManager
 pkgname=tiny-media-manager
-pkgver=4.2.7
+pkgver=4.2.8
 pkgrel=1
 pkgdesc="A multi-OS media managment tool"
 arch=('any')
@@ -34,7 +35,7 @@ package() {
   install -D "$srcdir/tinymediamanager" "$pkgdir/usr/bin/tinymediamanager"
 }
 
-sha256sums=('e2304db6778a511129920febe15335a92ab18d3910ededb13247ec0e922891a9'
+sha256sums=('faff2fe9c1e7c731634f13646afd04dbb9a0164025c9fa4773f8522fce875e66'
             '02bbfd492d10114cd314fc24fd7016532b0b992077d722d8bfccc4f99a79b7a3'
             '4bf36dd16bfc02a39ddde88cfcf30b4f4a5f0b08d2b34ffbab03f6553f57d596'
             '2d3df36c67a710b03b8fea3ac58c49307da8db22b7c6f8fd0011552fe94dde26'
