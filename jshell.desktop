@@ -5,5 +5,5 @@ Keywords=java;shell
 Exec=/usr/lib/jvm/java-17-jdk/bin/jshell
 Terminal=true
 Type=Application
-Icon=java-jdk
+Icon=java17-jdk
 Categories=Application;System;

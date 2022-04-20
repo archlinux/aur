@@ -2,11 +2,11 @@
 
 pkgbase=jdk-lts
 pkgname=('jre-lts' 'jdk-lts' 'jdk-lts-doc')
-pkgver=17.0.2
+pkgver=17.0.3
 _build=8
-_hash=dfd4a8d0985749f896bed50d7138ee7f
+_hash=1f8bdfff119442c398cf2ccde6d67c03
 _majver="${pkgver%%.*}"
-pkgrel=2
+pkgrel=1
 pkgdesc='Oracle Java'
 arch=('x86_64')
 url='https://www.oracle.com/java/'
@@ -22,12 +22,12 @@ source=("https://download.oracle.com/java/${_majver}/archive/jdk-${pkgver}_linux
         'java_48.png'
         'LICENSE')
 noextract=("jdk-${pkgver}_doc-all.zip")
-sha256sums=('342e76bb9ded80aa1edd566efbae42f8f1c2366e19b9189e5941b45893b9861f'
-            'd25b34eb17053bf23a7a4a82ac2ab7a85b5d53a1109d6561e302761e23f33895'
+sha256sums=('67b390651dea7223b684a2003c4bd630f3ab915033c26c2237367c1da2fa91c5'
+            'e25f1ec021e23f47ef1a2df8604ca68c7f46dfc1aad8e972bf846ef78037e170'
             'ab50940bda40a9e8935d1a8f002debda0fdd0b3e2bcc0319827ec19acd8b34f3'
-            'f17fe6e3d1b7ffbe854364e127509144057878a344d74673393782b90b6f054a'
-            '321dc88a1a0289c1f0a3113e75bd2f488829a0b82c11ac047272e464fb3f3ab3'
-            'e7638e42cbe38f32cb7a1ec800c27408e8559f576d8dd7698fdd5856c4c9b842'
+            'ee891aca4c92f6485218b17273cf00ec0ac4df4915daa461271006081450aeae'
+            '7046b820d138317dec4601f6159f2837b8ff8c6a6628e3d956454b20c9dea8fe'
+            '3b7a0f46e2fd7d715e2af270b7702c511f96937b3e9c0bf46c4d575b704d40e6'
             'd27fec1d74f7a3081c3d175ed184d15383666dc7f02cc0f7126f11549879c6ed'
             '7cf8ca096e6d6e425b3434446b0835537d0fc7fe64b3ccba7a55f7bd86c7e176'
             '20becfcac0bdeaa29a76e6966d727f8cc79381354cbd5d530cdec823954df19f')
@@ -135,11 +135,11 @@ package_jdk-lts() {
     install -D -m644 lib/src.zip -t "${pkgdir}/${_jvmdir}/lib"
     
     # desktop and icons
-    install -D -m644 "${srcdir}/java.desktop"     "${pkgdir}/usr/share/applications/java-java-jdk.desktop"
-    install -D -m644 "${srcdir}/jconsole.desktop" "${pkgdir}/usr/share/applications/jconsole-java-jdk.desktop"
-    install -D -m644 "${srcdir}/jshell.desktop"   "${pkgdir}/usr/share/applications/jshell-java-jdk.desktop"
-    install -D -m644 "${srcdir}/java_16.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/java-jdk.png"
-    install -D -m644 "${srcdir}/java_48.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/java-jdk.png"
+    install -D -m644 "${srcdir}/java.desktop"     "${pkgdir}/usr/share/applications/java-java${_majver}-jdk.desktop"
+    install -D -m644 "${srcdir}/jconsole.desktop" "${pkgdir}/usr/share/applications/jconsole-java${_majver}-jdk.desktop"
+    install -D -m644 "${srcdir}/jshell.desktop"   "${pkgdir}/usr/share/applications/jshell-java${_majver}-jdk.desktop"
+    install -D -m644 "${srcdir}/java_16.png" "${pkgdir}/usr/share/icons/hicolor/16x16/apps/java${_majver}-jdk.png"
+    install -D -m644 "${srcdir}/java_48.png" "${pkgdir}/usr/share/icons/hicolor/48x48/apps/java${_majver}-jdk.png"
     
     # man pages
     local _file
@@ -151,7 +151,7 @@ package_jdk-lts() {
     
     # legal/licenses
     cp -a legal/* "${pkgdir}/usr/share/licenses/${pkgname}"
-    ln -s "$pkgname" "${pkgdir}/usr/share/licenses/java-${pkgname}"
+    ln -s "$pkgname" "${pkgdir}/usr/share/licenses/java${_majver}-${pkgname}"
     install -D -m644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
 
@@ -160,8 +160,8 @@ package_jdk-lts-doc() {
     arch=('any')
     
     install -d -m755 "${pkgdir}/usr/share"/{doc,licenses}
-    cp -dr --no-preserve='ownership' "jdk-doc-${pkgver}" "${pkgdir}/usr/share/doc/java-jdk"
-    mv "${pkgdir}/usr/share/doc/java-jdk/legal" "${pkgdir}/usr/share/licenses/${pkgname}"
+    cp -dr --no-preserve='ownership' "jdk-doc-${pkgver}" "${pkgdir}/usr/share/doc/java${_majver}-jdk"
+    mv "${pkgdir}/usr/share/doc/java${_majver}-jdk/legal" "${pkgdir}/usr/share/licenses/${pkgname}"
     install -D -m644 LICENSE-doc "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    ln -s "../../licenses/${pkgname}" "${pkgdir}/usr/share/doc/java-jdk/legal"
+    ln -s "../../licenses/${pkgname}" "${pkgdir}/usr/share/doc/java${_majver}-jdk/legal"
 }

@@ -5,6 +5,6 @@ Keywords=java;runtime
 Exec=/usr/lib/jvm/java-17-jdk/bin/java -jar
 Terminal=false
 Type=Application
-Icon=java-jdk
+Icon=java17-jdk
 MimeType=application/x-java-archive;application/java-archive;application/x-jar;
 NoDisplay=true
