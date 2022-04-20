@@ -5,14 +5,14 @@
 
 pkgname=herbstluftwm-git
 _pkgname=herbstluftwm
-pkgver=0.9.4.r1.g1cbe7d10
+pkgver=0.9.4.r10.g5a627d55
 pkgrel=1
 epoch=1
 pkgdesc="Manual tiling window manager for X"
 arch=('x86_64' 'i686')
 url="https://herbstluftwm.org"
 license=('BSD')
-depends=('bash' 'libxinerama' 'libxrandr' 'libxft')
+depends=('bash' 'libxinerama' 'libxrandr' 'libxft' 'libxext' 'libxfixes' 'libxrender' 'freetype2')
 makedepends=('git' 'cmake' 'asciidoc')
 optdepends=('xorg-xsetroot: to set wallpaper color in default autostart'
             'xterm: used as the terminal in default autostart'
