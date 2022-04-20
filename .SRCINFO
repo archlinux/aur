@@ -20,7 +20,7 @@ pkgname = opencl-legacy-amdgpu-pro
 	optdepends = rocm-opencl-runtime
 	provides = opencl-orca-amdgpu-pro-icd
 	provides = opencl-driver
-	conflicts = rocm-opencl-runtime
+	conflicts = opencl-amd
 
 pkgname = lib32-opencl-legacy-amdgpu-pro
 	pkgdesc = Legacy non-free AMD OpenCL ICD Loaders (PAL) (32-bit)
@@ -28,4 +28,4 @@ pkgname = lib32-opencl-legacy-amdgpu-pro
 	depends = opencl-legacy-amdgpu-pro
 	provides = lib32-opencl-orca-amdgpu-pro-icd
 	provides = lib32-opencl-driver
-	conflicts = rocm-opencl-runtime
+	conflicts = opencl-amd

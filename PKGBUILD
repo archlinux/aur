@@ -85,7 +85,7 @@ patch32() {
 package_opencl-legacy-amdgpu-pro () {
     pkgdesc="Legacy non-free AMD OpenCL ICD Loaders (PAL)"
     license=('custom: AMDGPU-PRO EULA')
-    conflicts=('rocm-opencl-runtime')
+    conflicts=('opencl-amd')
 	provides=("opencl-orca-amdgpu-pro-icd" "opencl-driver")
 	optdepends=('clinfo' 'rocm-opencl-runtime')
     
@@ -100,7 +100,7 @@ package_lib32-opencl-legacy-amdgpu-pro () {
     pkgdesc="Legacy non-free AMD OpenCL ICD Loaders (PAL) (32-bit)"
     license=('custom: AMDGPU-PRO EULA')
     depends=("opencl-legacy-amdgpu-pro")
-    conflicts=('rocm-opencl-runtime')
+    conflicts=('opencl-amd')
 	provides=("lib32-opencl-orca-amdgpu-pro-icd" "lib32-opencl-driver")
 
     get_debs_32
