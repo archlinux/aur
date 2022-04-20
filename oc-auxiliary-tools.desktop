@@ -1,8 +1,9 @@
 [Desktop Entry]
 Name=OC Auxiliary Tools
+Version=20220206
 Comment=Cross-platform GUI management tools for OpenCore
 Exec=/usr/bin/oc-auxiliary-tools
 Icon=oc-auxiliary-tools
 Terminal=false
 Type=Application
-Categories=Application;
+Categories=Application;Utilities
