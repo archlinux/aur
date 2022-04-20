@@ -1,23 +1,23 @@
 pkgbase = beanstalkd-git
-	pkgdesc = Fast, simple message queue server, git version patched to support unix sockets
-	pkgver = dev1.10.r1.g86231ba
-	pkgrel = 2
+	pkgdesc = Fast, simple message queue server, git version
+	pkgver = dev1.12.r11.g4c275d5
+	pkgrel = 1
+	url = https://beanstalkd.github.io/
 	arch = i686
 	arch = x86_64
 	license = GPL
 	provides = beanstalkd
 	conflicts = beanstalkd
 	backup = etc/conf.d/beanstalkd
-	source = git://github.com/kr/beanstalkd.git
-	source = unix_sockets.patch::https://patch-diff.githubusercontent.com/raw/kr/beanstalkd/pull/150.patch
+	source = git+http://github.com/kr/beanstalkd.git
 	source = beanstalkd@.service
 	source = beanstalkd.service
 	source = beanstalkd.conf
-	md5sums = SKIP
-	md5sums = c17cd694afab67d2d72055f3184c7335
-	md5sums = f6151d5d2f07c24977cafba38a9e67c9
-	md5sums = d05b907abfb19174a7321676ecc0c819
-	md5sums = 7fdc2e3d1dc9c6559b7b007b74588a09
+	source = wno-error.patch
+	sha1sums = SKIP
+	sha1sums = 8ef8fe89b7da43ed92ae7b2428f1126a5a0d060a
+	sha1sums = 3ba17f1786aeabcba7e11c5a42415a7882c67c1b
+	sha1sums = 96f94770b132a0c26acddeab224c64bb5bed359a
+	sha1sums = 4098dfbbc0639c4c772b0e53a17fb175bc7f4086
 
 pkgname = beanstalkd-git
-
