@@ -2,7 +2,7 @@
 
 pkgname=lua-i3ipc-git
 _pkgname="${pkgname%-git}"
-pkgver=v1.2.r4.gb45393d
+pkgver=v1.3.r0.gb5f0328
 pkgrel=1
 pkgdesc="A lua library for controlling i3wm & Sway"
 arch=('any')
