@@ -56,7 +56,7 @@ pkgbase=linux-bfq-dev
 _major=5.17
 _minor=4
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 _srcname=linux-${pkgver}
 pkgdesc='Linux BFQ-dev'
 arch=('x86_64')
@@ -90,12 +90,13 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_bfq_name}/${_bfq_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v12-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v12-sep/0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch"
-        "${_lucjanpath}/arch-patches-v12-sep/0003-tick-Detect-and-fix-jiffies-update-stall.patch"
-        "${_lucjanpath}/arch-patches-v12-sep/0004-tick-rcu-Remove-obsolete-rcu_needs_cpu-parameters.patch"
-        "${_lucjanpath}/arch-patches-v12-sep/0005-tick-rcu-Stop-allowing-RCU_SOFTIRQ-in-idle.patch"
-        "${_lucjanpath}/arch-patches-v12-sep/0006-lib-irq_poll-Declare-IRQ_POLL-softirq-vector-as-ksof.patch"
+        "${_lucjanpath}/arch-patches-v13-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v13-sep/0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch"
+        "${_lucjanpath}/arch-patches-v13-sep/0003-tick-Detect-and-fix-jiffies-update-stall.patch"
+        "${_lucjanpath}/arch-patches-v13-sep/0004-tick-rcu-Remove-obsolete-rcu_needs_cpu-parameters.patch"
+        "${_lucjanpath}/arch-patches-v13-sep/0005-tick-rcu-Stop-allowing-RCU_SOFTIRQ-in-idle.patch"
+        "${_lucjanpath}/arch-patches-v13-sep/0006-lib-irq_poll-Declare-IRQ_POLL-softirq-vector-as-ksof.patch"
+        "${_lucjanpath}/arch-patches-v13-sep/0007-gpio-Request-interrupts-after-IRQ-is-initialized.patch"
          # the main kernel config files
         'config')
 
@@ -348,12 +349,13 @@ sha512sums=('a0f1945eb61527aac886875a83ad720bff3d6cd06ed0ee92ff7795e4f854d797f76
             'SKIP'
             'f02e4428c29f28bc896a33b1a40df31db05523e8e63215166c516c7519a063733e0ec472f001d4761931e627f5752eb02d06a30057daf6b9ce17668a0f215b22'
             'b63921b6246bd1b9545a8042d76334bef8a7ee46e5404c5efec4a842a455a84046e92423b2bc6d950f19dcf85805d7493fe71d6d177e3b46b52a279b0a44d0c9'
-            '6c6b336b7fe025154dc936aea8597f6efd0f7f7fd9dbe85fe2936dc8624da41e56b3b48420aaaa0a9d7d05e247ae7e4ce491eddd54bc74cac222aa9c4b5f5669'
-            '6861b1755b3ccf52ca75d187b380646f9ae2f35f5175a3181a90cef68125eca6bcdc2ebaf2013ff2ff966af4de49fd8e053149d9fd87792c53dc07f7eaaf04b0'
-            'ca52bd303f0b8deba29b1616f81c3195ce1a8cab16473d9d3e0315ef9ecaaa0922fdc0f10a80e28344cb1d2ad97d5ff2c36a26fe2ee4f68b4a783e873aaecacd'
-            '13603dd605f37151596960f0324d53e23be9285b417c5337549c2e94bd6d850baa80b2f40c02fc5c2422290b6ceb85b1b8ab50e725fb05ac607290a3d47cc9d8'
-            '45d8690b6d9f59a43152157d52a0f81c6d1fe8ec1f89c53b274651f3b3177f34bdc556938df1dfdc16471d34484d444cf0e64f8500421bd0eda1596bce289be9'
-            'dd10a6f2c86de10797485f96ca45c7bcaa03934303fee0178d9b0c60bda00fdcefbc1ac2fde35906b07b7803cf3d9085d39f661c6ab6e45bb27441408dcea086'
+            'c3aa069a1553ed987adcd2002495ab7b0ec967425447a90dfd09d38a6c3fa166abdb596e8d130039bb2640a017a0c86c8de303a3883cb606fedc0d8692098c80'
+            '62d2b528f5ceb719a5b837b73914cd23329165f9d8b0773e0327b306f601d61d33f5d17352c21f82979f4aa36a0987bb167a7555990d3130e9a2f6f228e3ba28'
+            '3090ee7eddc8bea3124deb777f39bfbbc749510add2964d26e599e338649fda5208535b30fa48b8532404f57c871e77c578ba7a2813938f5dd0b780d5fb18724'
+            'a22d9b65889981f06345d45192238622e3c47233c3d30a9c81065f201ef6e0b624edf62c456ae8cd211f75228e649f2c967e2e9d399389d3df4407e24e7bb920'
+            '1c5a1bfaefda3bc34e8a0aeaa50e9e02468b6c67fb3a52eff45651e20ca7c72ed65c1c1317f2e80ec79bff4c35da2a4b65a53137060bc22989ece8aeaa19ac2e'
+            'b7ddcfea71bece5e48cb67d7d4f668f719b63b3744bb4366696f6e356c7938f93e6ccf49e80ca347c6914d25fbcbe0c9d0c9b6288cf395c6e41191fb46ca2995'
+            '5fac7d972766a376cd785de43406b7ffce1e19014356d8a277d5755438402132ef6de49799401f8ecdc519369870b73ce195c5f84a666bd42afb1a2e844a93fe'
             '15ffbb25ceaec17d567a114c22e8e8749a85969fdb7f85d74fdffeb600448c3c5819f5ed4a2e16de979a2558b5d5fadae03b7b351096d66aac578ce48392fead')
 
 validpgpkeys=(
