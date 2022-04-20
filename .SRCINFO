@@ -8,6 +8,9 @@ pkgbase = ucommon
 	license = LGPL3
 	depends = gnutls
 	source = https://ftp.gnu.org/gnu/commoncpp/ucommon-7.0.0.tar.gz
+	source = https://ftp.gnu.org/gnu/commoncpp/ucommon-7.0.0.tar.gz.sig
+	validpgpkeys = 5CF995AAD5CC1E4079F76C38B1732A9CB37C87BA
 	sha256sums = 6ac9f76c2af010f97e916e4bae1cece341dc64ca28e3881ff4ddc3bc334060d7
+	sha256sums = SKIP
 
 pkgname = ucommon

@@ -11,8 +11,10 @@ arch=('i686' 'x86_64')
 url='https://www.gnu.org/software/commoncpp/'
 license=('LGPL3')
 depends=('gnutls')
-source=("https://ftp.gnu.org/gnu/commoncpp/$pkgname-$pkgver.tar.gz")
-sha256sums=('6ac9f76c2af010f97e916e4bae1cece341dc64ca28e3881ff4ddc3bc334060d7')
+source=("https://ftp.gnu.org/gnu/commoncpp/$pkgname-$pkgver.tar.gz"{,.sig})
+sha256sums=('6ac9f76c2af010f97e916e4bae1cece341dc64ca28e3881ff4ddc3bc334060d7'
+            'SKIP')
+validpgpkeys=('5CF995AAD5CC1E4079F76C38B1732A9CB37C87BA')
 
 build() {
   cd ${pkgname}-${pkgver}
