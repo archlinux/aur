@@ -1,0 +1,152 @@
+diff --git a/src/stockfish/index.ts b/src/stockfish/index.ts
+index 75cf3ec01..0adb23643 100644
+--- a/src/stockfish/index.ts
++++ b/src/stockfish/index.ts
+@@ -1,58 +1,69 @@
+-import { Capacitor, registerPlugin } from '@capacitor/core'
+-import { Stockfish, StockfishPlugin as IStockfishPlugin } from 'capacitor-stockfish'
+ import { VariantKey } from '../lichess/interfaces/variant'
+-import settings from '../settings'
+ 
+-export const StockfishVariants = registerPlugin<IStockfishPlugin>('StockfishVariants', {
+-  web: () => import('./StockfishVariantsWeb').then(m => new m.StockfishVariantsWeb()),
+-})
++// stub for externally used functionality
++export const StockfishVariants = {
++  getMaxMemory: () => Promise.reject("unimplemented"),
++  getCPUArch: () => Promise.reject("unimplemented"),
++};
++
++interface INativeEngine {
++  send(line: string): void;
++  addListener(listener: (line: string) => void): void;
++  removeListener(listener: (line: string) => void): void;
++  kill(): boolean;
++}
++
++declare const startStockfish: () => INativeEngine;
+ 
+ export class StockfishPlugin {
+-  private plugin: IStockfishPlugin
++  private engine: INativeEngine | undefined
++  private startPromise: Promise<{ engineName: string }> | undefined
+ 
+   constructor(readonly variant: VariantKey) {
+-    this.plugin = !this.isVariant() &&
+-      canUseNNUE() &&
+-      settings.analyse.cevalUseNNUE() ? Stockfish : StockfishVariants
+   }
+ 
+   public async start(): Promise<{ engineName: string }> {
+-    return new Promise((resolve) => {
+-      let engineName = 'Stockfish'
+-      const listener = (e: Event) => {
+-        const line = (e as any).output
+-        console.debug('[stockfish >>] ' + line)
+-        if (line.startsWith('id name ')) {
+-          engineName = line.substring('id name '.length)
+-        }
+-        if (line.startsWith('uciok')) {
+-          window.removeEventListener('stockfish', listener, false)
+-          resolve({ engineName })
+-        }
+-      }
+-      window.addEventListener('stockfish', listener, { passive: true })
+-      this.plugin.start()
+-      .then(() => this.send('uci'))
+-    })
++    console.log('trying to start stockfish')
++    if(typeof this.startPromise === 'undefined') {
++      this.startPromise = new Promise<{engineName: string}>((resolve) => {
++        let engineName = 'Stockfish'
++        this.engine = startStockfish();
++        
++        const listener = (line: string) => {
++          console.debug('[stockfish >>] ' + line)
++          if (line.startsWith('id name ')) {
++            engineName = line.substring('id name '.length)
++          }
++          if (line.startsWith('uciok')) {
++            this.engine!.removeListener(listener)
++            resolve({ engineName })
++          }
++         }
++        this.engine.addListener(listener)
++        this.send('uci')
++      })
++    }
++
++    return this.startPromise
+   }
+ 
+   public isReady(): Promise<void> {
+     return new Promise((resolve) => {
+-      const listener = (e: Event) => {
+-        const line = (e as any).output
++      const listener = (line: string) => {
+         if (line.startsWith('readyok')) {
+-          window.removeEventListener('stockfish', listener, false)
++          this.engine!.removeListener(listener)
+           resolve()
+         }
+       }
+-      window.addEventListener('stockfish', listener, { passive: true })
++      this.engine!.addListener(listener)
+       this.send('isready')
+     })
+   }
+ 
+   public send(text: string): Promise<void> {
+     console.debug('[stockfish <<] ' + text)
+-    return this.plugin.cmd({ cmd: text })
++    this.engine!.send(text)
++    return Promise.resolve()
+   }
+ 
+   public setOption(name: string, value: string | number | boolean): Promise<void> {
+@@ -61,10 +72,8 @@ export class StockfishPlugin {
+ 
+   public setVariant(): Promise<void> {
+     if (this.isVariant()) {
+-      if (Capacitor.getPlatform() !== 'web' && this.variant === 'threeCheck')
++      if (this.variant === 'threeCheck')
+         return this.setOption('UCI_Variant', '3check')
+-      if (Capacitor.getPlatform() === 'web' && this.variant === 'antichess')
+-        return this.setOption('UCI_Variant', 'giveaway')
+       else
+         return this.setOption('UCI_Variant', this.variant.toLowerCase())
+     } else {
+@@ -73,7 +82,11 @@ export class StockfishPlugin {
+   }
+ 
+   public exit(): Promise<void> {
+-    return this.plugin.exit()
++    if(this.engine!.kill()) {
++      return Promise.resolve()
++    } else {
++      return Promise.reject('Failed to kill process')
++    }
+   }
+ 
+   private isVariant() {
+@@ -95,11 +108,13 @@ export function getNbCores(): number {
+ }
+ 
+ export function canUseNNUE(): boolean {
+-  if (Capacitor.getPlatform() === 'android') {
+-    return window.lichess.cpuArch === 'arm64-v8a'
+-  } else if (Capacitor.getPlatform() === 'ios') {
+-    return true
+-  } else {
+-    return false
+-  }
++  // TODO maybe later
++  return false
+ }
++
++window.addEventListener("stockfish-outer" as any, (evt: CustomEvent) => {
++  const newEvent = new CustomEvent("stockfish");
++  (newEvent as any).output = evt.detail;
++
++  window.dispatchEvent(newEvent);
++});

@@ -1,7 +1,14 @@
 const { app, BrowserWindow } = require("electron");
+const path = require("path");
 
 app.whenReady().then(() => {
-	const mainWindow = new BrowserWindow({autoHideMenuBar: true, backgroundColor: "#161512"});
+	const mainWindow = new BrowserWindow({
+		autoHideMenuBar: true,
+		backgroundColor: "#161512",
+		webPreferences: {
+			preload: path.join(app.getAppPath(), "preload.js"),
+		},
+	});
 	mainWindow.loadFile("www/index.html");
 	mainWindow.webContents.session.webRequest.onBeforeSendHeaders(
 		{urls: ["wss://socket.lichess.org/*"]},
