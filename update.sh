@@ -12,6 +12,7 @@ export LC_ALL=C
 _dir=$(realpath "$(dirname "$BASH_SOURCE")")
 _pkgname=wiki-loves-earth-wallpapers
 _firstyear=2014
+_lastyear= # If set, skips retrieving list from "Commons:Wiki Loves Earth"
 _limit=0
 _pkgver=0
 _pkgrel=1
@@ -105,9 +106,15 @@ while IFS= read -r page; do
 
     cat "$_temp" >>"$_json"
 done < <(
-    echo "Parsing 'Commons:Wiki Loves Earth'..." >&2
-    _wiki_json action=parse page="Commons:Wiki Loves Earth" prop=links |
-        jq -r '.parse.links[]["*"] | select(test("\\bwinners$";"i"))'
+    if ((!_lastyear)); then
+        echo "Parsing 'Commons:Wiki Loves Earth'..." >&2
+        _wiki_json action=parse page="Commons:Wiki Loves Earth" prop=links |
+            jq -r '.parse.links[]["*"] | select(test("\\bwinners$";"i"))'
+    else
+        for ((i = _firstyear; i <= _lastyear; i++)); do
+            echo "Commons:Wiki Loves Earth $i/Winners"
+        done
+    fi
 )
 
 _pkgver=$(jq -s '[ .[].year ] | max' <"$_json")
