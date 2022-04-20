@@ -1,10 +1,10 @@
 pkgbase = zinc
 	pkgdesc = A lightweight alternative to elasticsearch that requires minimal resources
 	pkgver = 0.1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://zinclabs.io/
 	arch = x86_64
-	license = GPL
+	license = Apache
 	makedepends = git
 	makedepends = go
 	makedepends = nodejs

@@ -2,11 +2,11 @@
 
 pkgname=zinc
 pkgver=0.1.9
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight alternative to elasticsearch that requires minimal resources'
 arch=('x86_64')
 url='https://zinclabs.io/'
-license=('GPL')
+license=('Apache')
 depends=('glibc')
 makedepends=('git' 'go' 'nodejs' 'npm')
 options=('!lto')
