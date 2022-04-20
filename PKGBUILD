@@ -105,8 +105,7 @@ package_vulkan-mesa-layers-steamos() {
 
 package_opencl-mesa-steamos() {
   pkgdesc="OpenCL support for AMD/ATI Radeon mesa drivers"
-  # Jupiter: clang-libs is a local thing, which we should upstream in Arch
-  depends=('libdrm' 'libclc' 'clang-libs')
+  depends=('libdrm' 'libclc')
   optdepends=('opencl-headers: headers necessary for OpenCL development')
   provides=('opencl-driver' 'opencl-mesa')
 
