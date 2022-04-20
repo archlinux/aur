@@ -12,7 +12,7 @@ backup=('usr/lib/firedragon/firedragon.cfg'
         'usr/lib/firedragon/distribution/policies.json')
 license=(MPL GPL LGPL)
 url="https://gitlab.com/dr460nf1r3/settings/"
-depends=(gtk3 libxt mime-types dbus-glib ffmpeg4.4 nss ttf-font libpulse
+depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse
          aom harfbuzz libvpx libjpeg zlib icu libevent pipewire
          kfiredragonhelper)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils
@@ -88,6 +88,7 @@ prepare() {
   patch -Np1 -i ${_patches_dir}/gentoo/0030-bgo-816975-fix-build-on-x86.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0031-bgo-831903-pip-dont-fail-with-optional-deps.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0032-skip-pip-check.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0033-bmo-1559213-fix-system-av1-libs.patch
 
   # Use more system libs
   echo "---- Patching for system libs"
@@ -195,8 +196,8 @@ export MOZ_ADDON_SIGNING=1
 export MOZ_APP_REMOTINGNAME=${pkgname}
 
 # System libraries
-#ac_add_options --with-system-av1
-#ac_add_options --with-system-graphite2
+ac_add_options --with-system-av1
+ac_add_options --with-system-graphite2
 ac_add_options --with-system-harfbuzz
 ac_add_options --with-system-icu
 ac_add_options --with-system-jpeg
