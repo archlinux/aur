@@ -2,7 +2,7 @@
 # Contributor: Simon Thorpe <simon at hivetechnology dot com dot au>
 pkgname=openmpt
 pkgver=1.30.03.00
-pkgrel=3
+pkgrel=4
 pkgdesc="Open-source audio module tracker"
 arch=('i686' 'x86_64')
 url="https://openmpt.org/"
@@ -14,14 +14,19 @@ optdepends=(
   'ccache: for Wine native host support'
 )
 source=(
+  'https://manx.datengang.de/openmpt/OpenMPT-1.30.03.00-hotfix-wine-integration.zip'
   'openmpt'
   'openmpt-bash-completion'
   'x-mptm.xml'
 )
 source_i686=("$pkgname-$pkgver.zip::https://download.openmpt.org/archive/openmpt/$(echo $pkgver | grep -Po '^\d+.\d+')/OpenMPT-$pkgver-portable-x86.zip")
 source_x86_64=("$pkgname-$pkgver.zip::https://download.openmpt.org/archive/openmpt/$(echo $pkgver | grep -Po '^\d+.\d+')/OpenMPT-$pkgver-portable-amd64.zip")
-noextract=("$pkgname-$pkgver.zip")
+noextract=(
+  "OpenMPT-1.30.03.00-hotfix-wine-integration.zip"
+  "$pkgname-$pkgver.zip"
+)
 sha256sums=(
+  'b07f262d5bf01c51693e887769778775e53f7f51d2ce078c706e36c696ac52bc'
   '8b3da74d09640985e324441e459d0ac43f956dd95b89e0003b0ad2df46742685'
   '602639496997a74fab0914b1cff519dff207524ba0adf516ecc55466a4e83253'
   '44065d91a46203dae1378d6d99e70d882d28f66e3a584236242937856a9a8d56'
@@ -33,6 +38,8 @@ prepare() {
   cd "$srcdir"
   mkdir -p "$pkgname-$pkgver"
   unzip -o -d "$pkgname-$pkgver" "$pkgname-$pkgver.zip"
+  # See https://bugs.openmpt.org/view.php?id=1580#c5137.
+  unzip -o -d "$pkgname-$pkgver" "OpenMPT-1.30.03.00-hotfix-wine-integration.zip"
 
   convert "$pkgname-$pkgver/OpenMPT File Icon.ico" "icon.png"
   gendesk -n -f --pkgname "$pkgname" --pkgdesc "$pkgdesc" \
