@@ -316,6 +316,6 @@ package_matlab() {
   install -d -m755 "${pkgdir}/${instdir}/backup/${sysdir}"
   mv "${pkgdir}/${instdir}/${sysdir}/"{libstdc++.so.*,libgcc_s.so.*,libgfortran.so.*,libquadmath.so.*} \
     "${pkgdir}/${instdir}/backup/${sysdir}/"
-  mv ${pkgdir}/${instdir}/bin/glnxa64/libfreetype.so.* \ # See the README, "Off-line installer", step 3
-    "${pkgdir}/${instdir}/backup/bin/glnxa64/"
+  mv "${pkgdir}/${instdir}"/bin/glnxa64/libfreetype.so.* \
+    "${pkgdir}/${instdir}"/backup/bin/glnxa64/
 }
