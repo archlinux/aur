@@ -3,7 +3,7 @@
 
 pkgname=wsjtx-git
 pkgver=r9132.d28164e92
-pkgrel=1
+pkgrel=2
 pkgdesc='Software for Amateur Radio Weak-Signal Communication (JT9 and JT65)'
 # change _wsjtx_tag to other versions such as wsjtx-2.5.0-rc1
 _wsjtx_tag=master
@@ -24,18 +24,16 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${pkgname%-git}"
+  patch -i ../../0001_translations_fix.patch
 }
 
 build() {
-	mkdir -p "$srcdir/${pkgname%-git}/build"
-	cd "$srcdir/${pkgname%-git}/build"
-        cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
-	make
+    cmake -B build -S "${pkgname%-git}" \
+        -DCMAKE_INSTALL_PREFIX='/usr' \
+        -DCMAKE_BUILD_TYPE='Release'
+	  cmake --build build
 }
 
-# make pkg file and reverse patch so its ready for next update
 package() {
-	cd "$srcdir/${pkgname%-git}/build"
-	make DESTDIR="$pkgdir/" install
-	cd "$srcdir/${pkgname%-git}"
+	DESTDIR="$pkgdir" cmake --install build
 }
