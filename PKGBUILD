@@ -18,7 +18,7 @@ arch=('any')
 url="https://github.com/jaraco/$_name"
 license=('LGPL3' 'GPL3')
 
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-toml')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-toml' 'python-wheel')
 depends=('python')
 
 changelog=CHANGES.rst
