@@ -1,16 +1,16 @@
 pkgbase = gosmee-bin
 	pkgdesc = Gosmee - smee.io forwarder in go
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/chmouel/gosmee
 	license = Apache 2.0
 	conflicts = gosmee
 	provides = gosmee
 	arch = aarch64
-	source_aarch64 = https://github.com/chmouel/gosmee/releases/download/0.0.4/gosmee_0.0.4_Linux_arm64.tar.gz
-	sha256sums_aarch64 = bc1ec71c0ee1026aba080864e609e9feefd84a11ac69a2b4a49adc7073d81e91
+	source_aarch64 = https://github.com/chmouel/gosmee/releases/download/0.0.5/gosmee_0.0.5_Linux_arm64.tar.gz
+	sha256sums_aarch64 = 30620e26b1459eb746e453bf97daf677c99a419f6002353bbbc3e35807b695c4
 	arch = x86_64
-	source_x86_64 = https://github.com/chmouel/gosmee/releases/download/0.0.4/gosmee_0.0.4_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = 852ddce188caa7e74ab7ec9c20ceb97ee5620aa0658b6b35ba00dc373fcbb080
+	source_x86_64 = https://github.com/chmouel/gosmee/releases/download/0.0.5/gosmee_0.0.5_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = 8485a8206fa3634b61a24fc0c5ba41929ad83beb35a910f38ee2d6b47bb4071b
 	
 pkgname = gosmee-bin
