@@ -71,15 +71,15 @@ pkgver() {
 
 build() {
 	# Prepare recipes
-# 	cd "$srcdir/$_sourcedirectory/recipes/"
 	cd "$srcdir/$_sourcedirectory/"
 
 	# Disable the prepare script for recipes as we don't want husky to run
-# 	sed -E -i 's|"prepare": ".*"|"prepare": ""|' 'package.json'
+# 	sed -E -i 's|"prepare": ".*"|"prepare": ""|' 'recipes/package.json'
 
 	export ELECTRON_CACHE="${srcdir}"/.cache/electron
     export ELECTRON_BUILDER_CACHE="${srcdir}"/.cache/electron-builder
     export CSC_IDENTITY_AUTO_DISCOVERY=false
+    export CI=true
 
     # Deactivate any pre-loaded nvm, and make sure we use our own in the current source directory
     which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
@@ -91,33 +91,19 @@ build() {
 
 	# Install the correct versions of npm and pnpm
 	npm i -gf npm@${npmversion}
-# 	npm i -gf pnpm@${pnpmversion}
+	npm i -gf pnpm@${pnpmversion}
 
 	# Build recipe archives
-# 	pnpm install
-# 	pnpm run package
-	npm i -f
-	npm run build -- --linux --"${_electronbuilderarch}" --dir
+	pnpm install
+	# Ignore errors for now
+	pnpm run prepare-code || true
 
-	# Prepare ferdi dependencies
-	cd "$srcdir/$_sourcedirectory/"
-
-	# Disable the prepare script for ferdi itself as we don't want husky to run
-	sed -E -i 's|"prepare": ".*"|"prepare": ""|' 'package.json'
-
-	# Install ferdi dependencies
-	npm install
-
-	cd "$srcdir/$_sourcedirectory/"
-
-	# Run pre-build tasks: prepare build info, run gulp
-	npm run prebuild
-
-	# Use npmrc from the root folder for npm>=6 compatibility
-	cp '.npmrc' 'build/.npmrc'
-
-	# Build the actual application
-	NODE_ENV='production' ./node_modules/.bin/electron-builder --linux dir "--$_electronbuilderarch" -c.electronDist="/usr/lib/$_electronpkg" -c.electronVersion="$(cat "/usr/lib/$_electronpkg/version")"
+	cd recipes
+	pnpm i
+	pnpm run package
+	cd ..
+	export NODE_ENV='production'
+	pnpm run build -- --linux --"${_electronbuilderarch}" --dir -c.electronDist="/usr/lib/$_electronpkg" -c.electronVersion="$(cat "/usr/lib/$_electronpkg/version")"
 }
 
 package() {
