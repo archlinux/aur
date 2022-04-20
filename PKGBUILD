@@ -2,12 +2,13 @@
 
 pkgname=pridefetch
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Neofetch clone written in Python with the ability to display pride flags"
 arch=('any')
 url="https://github.com/megabytesofrem/pridefetch"
 source=("git+https://github.com/megabytesofrem/pridefetch")
 depends=('python3' 'python-distro')
+makedepends=('git')
 sha512sums=('SKIP')
 
 package() {
