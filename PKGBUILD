@@ -7,13 +7,14 @@
 # This PKGBUILD is maintained on github:
 # https://github.com/michaellass/AUR
 
-_majorver=17
-_completever=17.0.2
-_updatever=8
+_majorver=18
+_completever=18
+_updatever=36
 pkgrel=1
 pkgver=${_completever}.u${_updatever}
 _tag_ver=${_completever}+${_updatever}
-[ $_majorver != $_completever ] && _versuffix=U
+#[ $_majorver != $_completever ] && _versuffix=U
+_versuffix=U
 
 pkgname=jdk-temurin
 pkgdesc="Temurin (OpenJDK ${_majorver} Java binaries by Adoptium, formerly AdoptOpenJDK)"
@@ -60,10 +61,10 @@ source=(https://github.com/adoptium/temurin${_majorver}-binaries/releases/downlo
         freedesktop-java.desktop
         freedesktop-jconsole.desktop
         freedesktop-jshell.desktop)
-sha256sums=('288f34e3ba8a4838605636485d0365ce23e57d5f2f68997ac4c2e4c01967cd48'
-            'ae076317d93a389cc0c893fd9ec6769ae860c2cc01f8c8bed3f4ee476c73e625'
-            'dc278160ca7df32bcfab0a5420c09eaf6f4602d30f57b6c5bedb0f60062c5228'
-            'd0913ae3b9f469f8567432b0867222d66f50008c313f5a0882d15994ba19ec01')
+sha256sums=('82d67983f92f16b5fb57176fa4c228e44ecc6f671b3c3523140fba7fb904dceb'
+            'ea75ce65e1393a91fcb83beed3b84759a88bbe9df1ab4efa440062bbd2fe6c1f'
+            '36b2ff191c81ce5eef9e1eed2acc54dba78b2bcdf47532607f0cc9302503a265'
+            'b73453a639017037627d926cf2179d1c7e296d9c0804747848d1c799ca38652c')
 
 _jvmdir=/usr/lib/jvm/java-${_majorver}-temurin
 _jdkdir=jdk-${_tag_ver}

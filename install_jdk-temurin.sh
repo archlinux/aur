@@ -1,4 +1,4 @@
-THIS_JDK='java-17-temurin'
+THIS_JDK='java-18-temurin'
 
 fix_default() {
   if [ ! -x /usr/bin/java ]; then
