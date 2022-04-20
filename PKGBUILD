@@ -2,7 +2,7 @@
 
 pkgname=misskey
 pkgver=12.110.0
-pkgrel=1
+pkgrel=2
 pkgdesc="🌎 An interplanetary microblogging platform 🚀 (Experimental)"
 url="https://github.com/misskey-dev/misskey"
 arch=("x86_64")
@@ -20,12 +20,12 @@ source=("git+https://github.com/misskey-dev/misskey.git#commit=${_commit}"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
 md5sums=('SKIP'
-         '51808d834f3d8b7af6c93a338511ec60'
+         'aa0312f32fe331cd7a2e471902dad1f4'
          '9abc87cea2314b95334d4ad3b309e931'
          'a3fe48c606eabebf818106648c0bf0d9'
          'c6f7dc5885f8db2329b3b1e3c2a67ef5')
 sha256sums=('SKIP'
-            '92d92b142313d918b4f83d3e8ebf9ac4eab7b3d12e2083169642153353ee575d'
+            'd860082dbc90b0e7ecadcb1bfeeeb11dae6f24544d4746883e4a2bfafd052284'
             '5cd19f1798eb1852c47c7786021adede99d95ab83feb0802e7b1fba50a308517'
             'a3ff9c1b77920ebbb0df8fb1affe9e8ef54d907bd4d16ed7c6076cbf52726df7'
             'c368b2ed2efbeca0e488f883defb2ccb7ed4661cc6832d2c396176206a794f34')
