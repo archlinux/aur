@@ -1,7 +1,7 @@
 pkgbase = xp-pen-tablet
 	pkgdesc = XP-Pen (Official) Linux utility (New UI driver)
 	pkgver = 3.2.3.220323
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://www.xp-pen.com/download/index.html
 	arch = x86_64
@@ -9,6 +9,6 @@ pkgbase = xp-pen-tablet
 	source = XPPen-pentablet-3.2.3.220323-1.x86_64.tar.gz::https://www.xp-pen.com/download/file/id/1936/pid/56/ext/gz.html
 	source = install.sh.patch
 	sha256sums = 70b6dc1345958c1858d091a3d48bdd75c91fcc879ba175739ef9152790bdcb2b
-	sha256sums = c9bab03f78f8d0b3393ce118dce6f314919478049283bdfff2f96b16c869b643
+	sha256sums = 7307056c90591b750fe5c38f5ad0e7f53c6346e14a18413ae544143ddf6f7357
 
 pkgname = xp-pen-tablet

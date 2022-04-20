@@ -4,7 +4,7 @@
 
 pkgname=xp-pen-tablet
 pkgver=3.2.3.220323
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="XP-Pen (Official) Linux utility (New UI driver)"
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=("XPPen-pentablet-${pkgver}-1.${arch}.tar.gz::https://www.xp-pen.com/down
 )
 
 sha256sums=('70b6dc1345958c1858d091a3d48bdd75c91fcc879ba175739ef9152790bdcb2b'
-            'c9bab03f78f8d0b3393ce118dce6f314919478049283bdfff2f96b16c869b643')
+            '7307056c90591b750fe5c38f5ad0e7f53c6346e14a18413ae544143ddf6f7357')
 
 prepare() {
     cd "$srcdir/xp-pen-pentablet-${pkgver}-1.${CARCH}"
