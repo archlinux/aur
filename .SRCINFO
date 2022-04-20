@@ -1,6 +1,6 @@
 pkgbase = basiliskii-git
 	pkgdesc = Open Source 68k Macintosh Emulator
-	pkgver = r2667.4671258b
+	pkgver = r2682.6393d14a
 	pkgrel = 1
 	url = https://basilisk.cebix.net
 	arch = x86_64
@@ -18,9 +18,6 @@ pkgbase = basiliskii-git
 	provides = basiliskii
 	conflicts = basiliskii
 	source = git+https://github.com/cebix/macemu
-	source = https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/basiliskii-unnecessary-AM_GNU_GETTEXT-in-configure.ac.patch
 	sha256sums = SKIP
-	sha256sums = 202aacbd70f290d6ba300d5fe727aa05af7bb9028bc7d0869575268be477481c
 
 pkgname = basiliskii-git
-

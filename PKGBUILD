@@ -2,7 +2,7 @@
 # Contributor: William Termini <aur@termini.me>
 
 pkgname=basiliskii-git
-pkgver=r2667.4671258b
+pkgver=r2682.6393d14a
 pkgrel=1
 pkgdesc="Open Source 68k Macintosh Emulator"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
@@ -12,10 +12,8 @@ depends=(gtk2 sdl vde2)
 makedepends=(git)
 provides=(basiliskii)
 conflicts=(basiliskii)
-source=("git+https://github.com/cebix/macemu"
-        "https://raw.githubusercontent.com/FabioLolix/AUR-artifacts/master/basiliskii-unnecessary-AM_GNU_GETTEXT-in-configure.ac.patch")
-sha256sums=('SKIP'
-            '202aacbd70f290d6ba300d5fe727aa05af7bb9028bc7d0869575268be477481c')
+source=("git+https://github.com/cebix/macemu")
+sha256sums=('SKIP')
 
 pkgver() {
   cd macemu
@@ -23,10 +21,7 @@ pkgver() {
 }
 
 prepare() {
-  cd macemu
-  patch -Np1 -i ../basiliskii-unnecessary-AM_GNU_GETTEXT-in-configure.ac.patch
-
-  cd BasiliskII/src/Unix
+  cd macemu/BasiliskII/src/Unix
   NO_CONFIGURE=1 ./autogen.sh
 }
 
