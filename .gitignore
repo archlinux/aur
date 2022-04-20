@@ -1,0 +1,5 @@
+dist
+pkg
+src
+drata-agent-*.deb
+drata-agent-*.tar.zst
