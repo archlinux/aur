@@ -3,7 +3,7 @@
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
 pkgbase=matlab
-pkgname=('python-matlabengine' 'matlab')
+pkgname=('matlab' 'python-matlabengine')
 pkgrel=2
 # No need to modify the pkgver here, it will be determined by the script
 # in the offline installer.
@@ -88,9 +88,9 @@ depends+=(
   'xerces-c')
 provides=('matlab-bin' 'matlab' 'python-matlabengine')
 source=(
-  'matlab.tar'
-  'matlab.fik'
-  'matlab.lic'
+  'local://matlab.tar'
+  'local://matlab.fik'
+  'local://matlab.lic'
 )
 md5sums=(SKIP SKIP SKIP)
 
@@ -109,7 +109,7 @@ pkgver() {
 }
 
 prepare() {
-  # Extract file installation key
+  # Extract file installation key.
   release=$(cat "${srcdir}/${pkgbase}/VersionInfo.xml" | grep "<release>" | sed "s|\s*<release>\(.*\)</release>\s*|\1|g")
 
   msg2 "Release from tarball: ${release}"
@@ -132,8 +132,7 @@ prepare() {
     done
   fi
 
-  msg2 "Generating the desktop file..."
-
+  msg2 "Generating desktop file..."
   # Add a fix for Intel GPUs with mesa 20, see:
   # https://wiki.archlinux.org/index.php/MATLAB#OpenGL_acceleration
   # https://wiki.archlinux.org/index.php/Intel_graphics#Old_OpenGL_Driver_(i965)
@@ -149,16 +148,16 @@ prepare() {
 }
 
 build() {
-  msg2 "Installing with the original installer..."
+  msg2 "Running original installer..."
   # Using the installer with the -inputFile parameter will automatically
   # cause the installation to be non-interactive
   "${srcdir}/${pkgbase}/install" -inputFile "${srcdir}/${pkgbase}/installer_input.txt"
 
-  msg2 "Building the python API..."
+  msg2 "Building Python API..."
 
   cd "${srcdir}/build/extern/engines/python"
 
-  msg2 "Checking supported vs existing matlab versions..."
+  msg2 "Checking supported vs existing MATLAB versions..."
   _matminor="$(find "${srcdir}/build/extern/engines/python" \
     -name 'matlabengineforpython3*.so' |
     sort |
@@ -166,13 +165,14 @@ build() {
     tail -1)"
   _pytminor="$(python -c 'import sys; print(sys.version_info.minor)')"
 
-  msg2 "Spoofing version compatibility if not applicable..."
+  msg2 "Spoofing Python version compatibility if not applicable..."
   if [[ "${_pytminor}" != "${_matminor}" ]]; then
     _matcustom="${srcdir}/sitecustomize.py"
     touch "${_matcustom}"
     echo 'import sys'                               >> "${_matcustom}"
     echo "sys.version_info = (3, ${_matminor}, 0)"  >> "${_matcustom}"
   fi
+
   PYTHONPATH="${srcdir}" python setup.py build
 
   msg2 "Removing build licenses..."
@@ -183,11 +183,11 @@ build() {
 package_python-matlabengine() {
   depends+=("python" "matlab")
 
-  msg2 "Installing the license..."
+  msg2 "Installing license..."
   install -D -m644 "${srcdir}/${pkgbase}/license_agreement.txt" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  msg2 "Packaging the python API..."
+  msg2 "Packaging Python API..."
   cd "${srcdir}/build/extern/engines/python"
   PYTHONPATH="${srcdir}" python setup.py install --root="${pkgdir}" --optimize 1 --skip-build
 
@@ -221,7 +221,7 @@ package_python-matlabengine() {
 }
 
 package_matlab() {
-  # Compilers should be optional depends
+  # Compilers should be optional dependencies.
   msg2 "Determining compiler versions..."
   if [ "$(vercmp ${pkgver} "9.10" )" -ge "0" ]; then
     optdepends+=('gcc9: For MEX support'
@@ -272,7 +272,7 @@ package_matlab() {
   install -dm755 "${pkgdir}/usr/lib/"
   mv "${srcdir}/build" "${pkgdir}/${instdir}"
 
-  msg2 "Installing the license..."
+  msg2 "Installing license..."
   install -D -m644 "${srcdir}/${pkgbase}/license_agreement.txt" \
     "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
