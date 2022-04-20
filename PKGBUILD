@@ -1,6 +1,7 @@
 # Maintainer: David Li <davidtianli@gmail.com>
 pkgname=pax-mc
-pkgver=1.9.10
+pkgver=1.9.10_fix
+_pkgver=${pkgver//_/-}
 pkgrel=1
 pkgdesc="The MC modpack manager for professionals."
 arch=('x86_64')
@@ -11,19 +12,19 @@ provides=('pax-mc')
 conflicts=('pax-mc-bin' 'pax-mc-git')
 replaces=()
 changelog=
-source=("pax-${pkgver}.tar.gz::https://github.com/froehlichA/pax/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('f459c3dd326f1a73e6d7c63246aae2c310cc9777d83853cb69ee33e8294b2508')
+source=("pax-${pkgver}.tar.gz::https://github.com/froehlichA/pax/archive/refs/tags/v${_pkgver}.tar.gz")
+sha256sums=('bd729af2bbf07151a2f48085cda4210434afa8101bb7ebc1f5aa603c28c238ba')
 
 prepare() {
-    echo "const currentPaxVersion*: string = \"v${pkgver}\"" > "${srcdir}/pax-${pkgver}/src/util/paxVersion.nim"
+    echo "const currentPaxVersion*: string = \"v${_pkgver}\"" > "${srcdir}/pax-${_pkgver}/src/util/paxVersion.nim"
 }
 
 build() {
-    cd "${srcdir}/pax-${pkgver}"
-    nimble buildCI --nimbleDir:"${srcdir}/nimble"
+    cd "${srcdir}/pax-${_pkgver}"
+    nimble build -d:release -y --nimbleDir:"${srcdir}/nimble"
 }
 
 package() {
     install -d -m755 "${pkgdir}/usr/bin"
-    install -m755 "${srcdir}/pax-${pkgver}/pax" "${pkgdir}/usr/bin/pax"
+    install -m755 "${srcdir}/pax-${_pkgver}/pax" "${pkgdir}/usr/bin/pax"
 }
