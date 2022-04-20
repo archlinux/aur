@@ -1,12 +1,12 @@
 pkgname=('vim-vi' 'gvim-vi')
 pkgver=11
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/palopezv/vim-vi"
 license=('GPL')
 
 package_vim-vi() {
-  pkgdesc="Replace heirloom vi from core with vim using symlinks."
+  pkgdesc="Replace heirloom vi from core with vim using symlinks and add missing links in the official package."
   depends=('vim')
   provides+=('vi' 'gvim-vi')
   replaces+=('vi')
@@ -22,7 +22,7 @@ package_vim-vi() {
 }
 
 package_gvim-vi() {
-  pkgdesc="Replace heirloom vi from core with gvim using symlinks."
+  pkgdesc="Replace heirloom vi from core with gvim using symlinks and add missing links in the official package."
   mkdir -p "$pkgdir"/usr/bin
   depends=('gvim')
   provides+=('vi' 'vim-vi')

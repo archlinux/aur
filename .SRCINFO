@@ -1,19 +1,19 @@
 pkgbase = vim-vi
 	pkgver = 11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/palopezv/vim-vi
 	arch = any
 	license = GPL
 
 pkgname = vim-vi
-	pkgdesc = Replace heirloom vi from core with vim using symlinks.
+	pkgdesc = Replace heirloom vi from core with vim using symlinks and add missing links in the official package.
 	depends = vim
 	provides = vi
 	provides = gvim-vi
 	replaces = vi
 
 pkgname = gvim-vi
-	pkgdesc = Replace heirloom vi from core with gvim using symlinks.
+	pkgdesc = Replace heirloom vi from core with gvim using symlinks and add missing links in the official package.
 	depends = gvim
 	provides = vi
 	provides = vim-vi
