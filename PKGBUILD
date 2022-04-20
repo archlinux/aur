@@ -2,7 +2,7 @@
 
 pkgname=v2raya-bin
 _pkgname=v2raya
-pkgver=1.5.6.2
+pkgver=1.5.7
 pkgrel=1
 install=.INSTALL
 pkgdesc="A web GUI client of Project V which supports VMess, VLESS, SS, SSR, Trojan and Pingtunnel protocols"
@@ -14,14 +14,14 @@ optdepends=('v2ray>=4.37.0-1' 'xray>=1.4.2-1')
 provides=('v2raya')
 conflicts=('v2raya')
 
-sha_service=6dbb90226662fd1d2312db7650a8aea313c60448
-sha_service_at=c7aea13ed7e22f43e420bc51821f5ffc93a919b1
+sha_service=7b201c058782a7382c3ec183e80af528c5310a6d
+sha_service_lite=de6a4d5a4e1a418d2a3b27af9c513f69e5abc3b6
 sha_png=5c51b3e670733d6d1cf22e1cb5fe45305f4b8014
 sha_desktop=f4abf270b2ce588a4e8ab4b5ccdc9168b96791fe
 
 source=(
     "v2raya.service"
-    "v2raya@.service"
+    "v2raya-lite.service"
     "v2raya.png"
     "v2raya.desktop"
 )
@@ -44,25 +44,25 @@ source_armv7h=(
 
 sha1sums=(
     "$sha_service"
-    "$sha_service_at"
+    "$sha_service_lite"
     "$sha_png"
     "$sha_desktop"
 )
 
 sha1sums_i686=(
-    '9d1fabb84d7d408583fb350c413e1c8d9d4d76fc'
+    '473e98e5637732115b14ce8d1097c84b17ec579e'
 )
 sha1sums_x86_64=(
-    'b05b27e2d50acab3e6441ad9171a2ebe3c87944b'
+    '3cb010480c1383b9443b025211174cf1ff98e105'
 )
 sha1sums_aarch64=(
-    '1303115f6955032fcbcccbbe104b928a05453202'
+    '49c1b7bb12009c61cc32ebd833c76c386842a386'
 )
 sha1sums_armv6h=(
-    'dcd0ae86131d5eb5767170984f168656135a3d6d'
+    '14073932c7b756c1d9518502c282d5a807b48873'
 )
 sha1sums_armv7h=(
-    'dcd0ae86131d5eb5767170984f168656135a3d6d'
+    '14073932c7b756c1d9518502c282d5a807b48873'
 )
 
 package() {
@@ -70,6 +70,6 @@ package() {
     install -Dm 755 v2raya_"${pkgver}" "${pkgdir}"/usr/bin/v2raya
     install -Dm 644 v2raya.desktop -t "${pkgdir}"/usr/share/applications/
     install -Dm 644 v2raya.service -t "${pkgdir}"/usr/lib/systemd/system/
-    install -Dm 644 v2raya@.service -t "${pkgdir}"/usr/lib/systemd/system/
+    install -Dm 644 v2raya-lite.service -t "${pkgdir}"/usr/lib/systemd/user/
     install -Dm 644 v2raya.png "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/v2raya.png
 }
