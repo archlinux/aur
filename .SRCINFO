@@ -1,0 +1,9 @@
+pkgbase = pacman-maintenance
+	pkgver = 0.0.1
+	pkgrel = 1
+	arch = any
+	license = MIT-0
+	source = https://github.com/droserasprout/pacman-maintenance/archive/refs/heads/master.zip
+	sha256sums = SKIP
+
+pkgname = pacman-maintenance
