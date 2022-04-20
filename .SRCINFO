@@ -1,0 +1,15 @@
+pkgbase = create-verthash-datafile
+        pkgdesc = verthash.dat generation for electrum-vtc
+        pkgver = 1.0.1
+        pkgrel = 1
+        url = https://github.com/vertcoin-project/vertcoinhash-python
+        arch = any
+        license = MIT
+        depends = git
+        depends = make
+        provides = create-verthash-datafile
+        conflicts = create-verthash-datafile
+        source = git+https://github.com/vertcoin-project/vertcoinhash-python.git
+        sha256sums = SKIP
+
+pkgname = create-verthash-datafile
