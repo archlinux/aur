@@ -1,0 +1,15 @@
+pkgbase = perl-array-utils
+	pkgdesc = small utils for array manipulation
+	pkgver = 0.5
+	pkgrel = 1
+	url = https://metacpan.org/pod/Array::Utils
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/Z/ZM/ZMIJ/Array/Array-Utils-0.5.tar.gz
+	md5sums = ac15e6dce2c7c9d1855ecab9eb00aee6
+	sha512sums = 2761533f97412eb03f2dd1117b9de1a8278afe1b589dd9041630a03c11212049b804d8efa90caf28aa7a2098771669c55861f45dd3054f0d5654f0976f909a49
+
+pkgname = perl-array-utils
