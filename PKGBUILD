@@ -1,10 +1,10 @@
 _pkgname=cyberdrop-dl
 pkgname="cyberdropdownloader"
 pkgver=2.16.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Bulk downloader for multiple file hosts"
 arch=('any')
-depends=('python-aiofiles' 'python-aiohttp' 'python-beautifulsoup4' 'python-certifi' 'python-colorama' 'python-gofile-client' 'python-requests' 'python-tqdm' 'python-yarl')
+depends=('python-aiofiles' 'python-aiohttp' 'python-beautifulsoup4' 'python-certifi' 'python-colorama' 'python-gofile-client' 'python-tqdm' 'python-yarl')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 url="https://github.com/Jules-WinnfieldX/CyberDropDownloader"
 license=('GPL3')

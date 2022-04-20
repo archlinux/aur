@@ -1,7 +1,7 @@
 pkgbase = cyberdropdownloader
 	pkgdesc = Bulk downloader for multiple file hosts
 	pkgver = 2.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Jules-WinnfieldX/CyberDropDownloader
 	arch = any
 	license = GPL3
@@ -15,7 +15,6 @@ pkgbase = cyberdropdownloader
 	depends = python-certifi
 	depends = python-colorama
 	depends = python-gofile-client
-	depends = python-requests
 	depends = python-tqdm
 	depends = python-yarl
 	conflicts = cyberdropdownloader-bin
