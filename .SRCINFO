@@ -1,0 +1,11 @@
+pkgbase = shelldel
+	pkgdesc = Simple script, which provides more convenient backup options for QuiteRSS
+	pkgver = 0.5.3
+	pkgrel = 1
+	url = https://github.com/Jorengarenar/shellDel
+	arch = any
+	license = GPL2
+	source = shellDel::https://github.com/Jorengarenar/shellDel/archive/refs/tags/v0.5.3.tar.gz
+	sha256sums = 97d106a0e4c55a0d1a37072252a1e7928dbd3bb14cae40208e8af7cab09c10b7
+
+pkgname = shelldel
