@@ -1,8 +1,8 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 _pkgname=telegram-tg
 pkgname=$_pkgname-git
-pkgver=0.17.0.r8.c2f5fca
-pkgrel=3
+pkgver=0.18.0.r0.2a809fb
+pkgrel=1
 pkgdesc="terminal telegram client that really works"
 arch=(any)
 url="https://github.com/paul-nameless/tg"
@@ -20,11 +20,9 @@ optdepends=(
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$_pkgname::git+https://github.com/paul-nameless/tg.git"
-	"0001-Change-setup.py-to-accept-new-python-telegram-ver.patch"
-	"0002-Update-to-TDLib-1.7.10.patch")
+	"0001-Change-setup.py-to-accept-new-python-telegram-ver.patch")
 md5sums=('SKIP'
-         '1977134e8c8fcd093d7081877711255d'
-         '84f26c2df9961f4f88f5f8b20daa0b18')
+         '1977134e8c8fcd093d7081877711255d')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"
@@ -36,7 +34,6 @@ prepare() {
 	cd "$srcdir/$_pkgname"
 
 	patch -p1 -i "$srcdir/0001-Change-setup.py-to-accept-new-python-telegram-ver.patch"
-	patch -p1 -i "$srcdir/0002-Update-to-TDLib-1.7.10.patch"
 }
 
 build() {
