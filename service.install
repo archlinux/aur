@@ -1,0 +1,7 @@
+post_install(){
+    sudo systemctl enable deepl-api.service --now
+}
+
+post_remove(){
+    sudo systemctl disable deepl-api.service --now
+}
