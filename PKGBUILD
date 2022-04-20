@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=didyoumean
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A CLI spelling corrector"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('gcc-libs' 'libxcb')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('6c1fccf581d553ba50300b782d5cf797627f4ce36682efdc0304db6a356cf86881058a0675399c5de7596848a314d97e5cafc5f2bdd242aae7f6fb3fab1a0c9f')
+sha512sums=('5af0579872fb63be5b4b96416db03ce93aacd302e74e96dbbdbb45283598d81e250863ad8f76c6c3277503d9ad269dd4f431ffb92e66b9eebe13c7caa274a02b')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -27,8 +27,7 @@ build() {
 
 check() {
   cd "$pkgname-$pkgver"
-  # https://github.com/hisbaan/didyoumean/issues/5
-  cargo test --frozen
+  cargo test --frozen --lib
 }
 
 package() {
