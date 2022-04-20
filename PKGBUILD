@@ -12,7 +12,7 @@ pkgver=20130201.45.ge1eb3b8
 pkgrel=2
 pkgdesc="An experimental Qt GUI for Vim"
 arch=("i686" "x86_64")
-url="https://bitbucket.org/equalsraf/vim-qt"
+url=https://github.com/equalsraf/vim-qt
 license=("unknown" "custom:vim")
 depends=("gpm" "gawk" "qt4" "gtk-update-icon-cache")
 optdepends=("lua: Lua interpreter" "python: Python 3 interpreter" "python2: Python 2 interpreter"
@@ -24,7 +24,7 @@ provides=("$_pkgname" "qvim"
 conflicts=("$_pkgname" "qvim"
            "vim-runtime" "vim" "vim-minimal" "vim-python3" "gvim" "gvim-python3")
 install=vim-qt-git.install
-source=("git+https://github.com/equalsraf/vim-qt.git"
+source=("git+${url}.git"
         "vim-qt.desktop")
 sha256sums=("SKIP"
             "0ff453488a4b04b6364e6a6a8fd17cf0bfe66ef2c19fd39cc9263d99845a0db5")
