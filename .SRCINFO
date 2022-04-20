@@ -1,0 +1,13 @@
+pkgbase = libbassmix
+	pkgdesc = An extension providing the ability to mix together multiple BASS channels, with resampling and matrix mixing features. Also provides the ability to split a BASS channel into multiple channels.
+	pkgver = 2.4.11.2
+	pkgrel = 1
+	url = http://www.un4seen.com/
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = libbass
+	source = libbassmix-2.4.11.2.zip::https://www.un4seen.com/files/bassmix24-linux.zip
+	sha256sums = a69092d10d33700991f27df6619c8906b061de4377c8614ef0389dee688c59fb
+
+pkgname = libbassmix
