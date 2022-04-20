@@ -1,0 +1,13 @@
+[Unit]
+Description=deepl-api
+After=network.target
+
+[Service]
+Type=forking
+WorkingDirectory=/
+ExecStart=deepl-api
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target
