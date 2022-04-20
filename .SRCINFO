@@ -1,0 +1,16 @@
+pkgbase = vanity_gpg
+	pkgdesc = Tool for generating and filtering vanity GPG keys
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/RedL0tus/VanityGPG
+	arch = x86_64
+	license = Apache
+	makedepends = cargo
+	makedepends = clang
+	makedepends = openssl
+	depends = nettle
+	depends = bzip2
+	source = https://github.com/RedL0tus/VanityGPG/archive/v0.3.1/vanity_gpg-0.3.1.tar.gz
+	sha512sums = 74a5027d5567c03eeab8b0cde3d4578155b6b7dcc6704dcf786c8b2809cdbad149438f8600c398a655a41c98d5aa674f32aa2d867b7304ac2f45d68358be42d0
+
+pkgname = vanity_gpg
