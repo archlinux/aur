@@ -1,9 +1,7 @@
 # Maintainer: Fabian Bornschein <fabiscafe-cat-mailbox-dog-org>
 
 pkgname=pokemon-revolution-online-bin
-__LIN_DESKTOP_ASSET_VER=0.4.1
-__PROCLIENT_VER=20220215
-pkgver=${__PROCLIENT_VER}+${__LIN_DESKTOP_ASSET_VER}
+pkgver=20220416+asset0.5
 pkgrel=1
 pkgdesc="A free-to-play, fan-made, MMO game that is predicated around the official Pokémon games."
 arch=('x86_64')
@@ -13,11 +11,18 @@ depends=('vulkan-driver' 'opengl-driver')
 makedepends=('git')
 optdepends=('gtk2: required for the Unity ScreenSelector plugin')
 conflicts=('pokemon-revolution-online')
-source=("git+https://gitlab.com/fabiscafe/pro_assets_lin_desktop.git#tag=${__LIN_DESKTOP_ASSET_VER}"
+__PROCLIENT_VER=20220416
+__LIN_DESKTOP_ASSET_COMMIT=da21f5467ed5b29d59cc67df3ccdc7686d763406  #tag 0.5
+source=("git+https://gitlab.com/fabiscafe/pro_assets_lin_desktop.git#commit=${__LIN_DESKTOP_ASSET_COMMIT}"
         "PROClient_linux-${__PROCLIENT_VER}.zip::https://ddl.pokemonrevolution.net/PROClient_linux.zip"
 )
 sha512sums=('SKIP'
-            '525e414ae4c9f2f81a58e753ea7a9f6d2cd1031ad841fa32118ace4027c814b1e51ee5318c8f793edbb6b0dec3a26cecfd65ca9a278872dda94dd3259b42bdc2')
+            '8c686adc1d9a9fb2c5432df18ae1fe917571bccc012bcc0b640855cb04f76a5ca37f850d39e6aab37258adc3cbc921e64c4da055c855f5a315f7201bb46c9d5e')
+
+pkgver() {
+    cd pro_assets_lin_desktop
+    printf "${__PROCLIENT_VER}+asset$(git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g')"
+}
 
 package() {
     cd "PROClient"
@@ -42,11 +47,14 @@ package() {
     /usr/bin/install -m755 "${srcdir}/PROClient/PROClient.x86_64" "${pkgdir}/opt/PROClient/PROClient.x86_64"
 
     # Integration (by pro_assets_lin_desktop.git)
-    /usr/bin/install -D -m644 "${srcdir}/pro_assets_lin_desktop/net.pokemonrevolution.svg" \
-        "${pkgdir}/usr/share/pixmaps/net.pokemonrevolution.svg"
+    /usr/bin/install -D -m644 "${srcdir}/pro_assets_lin_desktop/net.pokemonrevolution.PROClient.svg" \
+        "${pkgdir}/usr/share/pixmaps/net.pokemonrevolution.PROClient.svg"
 
-    /usr/bin/install -D -m644 "${srcdir}/pro_assets_lin_desktop/net.pokemonrevolution.desktop" \
-        "${pkgdir}/usr/share/applications/net.pokemonrevolution.desktop"
+    /usr/bin/install -D -m644 "${srcdir}/pro_assets_lin_desktop/net.pokemonrevolution.PROClient-symbolic.svg" \
+        "${pkgdir}/usr/share/pixmaps/net.pokemonrevolution.PROClient-symbolic.svg"
+
+    /usr/bin/install -D -m644 "${srcdir}/pro_assets_lin_desktop/net.pokemonrevolution.PROClient.desktop" \
+        "${pkgdir}/usr/share/applications/net.pokemonrevolution.PROClient.desktop"
 
     /usr/bin/install -D -m755 "${srcdir}/pro_assets_lin_desktop/PROClient" \
         "${pkgdir}/usr/bin/PROClient"
