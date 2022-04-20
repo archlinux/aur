@@ -9,7 +9,7 @@ arch=("i686" "x86_64" "aarch64")
 url="https://github.com/LorenDB/nheko-krunner/"
 license=("GPL3")
 
-depends=("qt5-base" "krunner")
+depends=("qt5-base" "krunner" "ki18n")
 makedepends=("git" "cmake" "gcc" "fontconfig" "qt5-tools")
 provides=("nheko-krunner=${pkgver}")
 
