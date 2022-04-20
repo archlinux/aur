@@ -3,17 +3,17 @@
 
 _gemname=sawyer
 pkgname=ruby-$_gemname
-pkgver=0.9.0
+pkgver=0.9.1
 pkgrel=1
 pkgdesc="Secret User Agent of HTTP."
 arch=(any)
 url="https://github.com/lostisland/sawyer"
 license=('MIT')
-depends=('ruby' 'ruby-addressable>=2.3.5' 'ruby-faraday>=0.9')
+depends=('ruby' 'ruby-addressable>=2.3.5' 'ruby-faraday>=0.17.3')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('fd0cc2854a6515ab544e56861fb469c0b8b2b06af5c851249046fddc6588edd8')
+sha256sums=('4af4ee3a9cf464980401a10a6740c2592f48cf1c532ae2b2ba5c820dd4088914')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
