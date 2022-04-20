@@ -4,14 +4,14 @@ pkgname=hqplayer-embedded
 _debpkgver=4.31.0-131
 _debpkgverarm=4.31.0-131
 pkgver=4.31.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Signalyst HQPlayer Embedded
  HQPlayer - the high-end upsampling multichannel software HD-audio player"
 arch=('x86_64' 'aarch64')
 url="http://www.signalyst.com/custom.html"
 license=('custom')
 depends=('alsa-lib' 'glibc' 'flac' 'gcc-libs' 'libgmpris' 'glib2' 'rygel' 'zip' 'unzip' 'wavpack' 'gupnp' 'openmp' 'mpg123' 'lame')
-conflicts=('hqplayer-embedded-amd' 'hqplayer-embedded-rocm')
+conflicts=('hqplayer-embedded-amd' 'hqplayer-embedded-rocm' 'hqplayer4')
 source=('hqplayerd.service'
         'hqplayerd_user.service'
         'sysusers.d'
@@ -39,7 +39,7 @@ package() {
   install -Dm644 tmpfiles.d             "${pkgdir}"/usr/lib/tmpfiles.d/hqplayer.conf
   install -Dm644 sysusers.d             "${pkgdir}"/usr/lib/sysusers.d/hqplayer.conf
   install -Dm644 "$pkgdir/etc/hqplayer/hqplayerd.xml" "$pkgdir/usr/share/doc/hqplayerd/hqplayerd.xml"
-  install -Dm755 "$pkgdir/opt/hqplayerd/lib/libsgllnx64-2.29.02.so" "$pkgdir/usr/lib/hqplayerd/libsgllnx64-2.29.02.so"
+  install -Dm755 "$pkgdir/opt/hqplayerd/lib/libsgllnx64-2.29.02.so" "$pkgdir/usr/lib/libsgllnx64-2.29.02.so"
   rm -rf "$pkgdir/opt"
   rm -rf "$pkgdir/etc/modules-load.d"
   rm -rf "$pkgdir/etc/udev"
