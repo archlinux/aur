@@ -1,4 +1,5 @@
-# Maintainer: robertfoster
+# Maintainer: xiretza <xiretza+aur@xiretza.xyz>
+# Contributor: robertfoster
 
 pkgname=python-gpsoauth
 pkgver='1.0.0'
