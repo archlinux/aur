@@ -31,7 +31,4 @@ package() {
 	mkdir -p ${dir}
 	cd ${dir}
 	cp -R ${srcdir}/${_pkgname}/i3ipc/ .
-	mkdir -p ${pkgdir}/usr/bin
-	cd ${pkgdir}/usr/bin
-	cp ${srcdir}/${_pkgname}/bin/* .
 }
