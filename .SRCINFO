@@ -1,0 +1,31 @@
+pkgbase = opencl_legacy_amdgpu-pro
+	pkgver = 22.10.1_1401426
+	pkgrel = 1
+	url = https://www.amd.com/en/support/kb/release-notes/rn-amdgpu-unified-linux-21-50
+	arch = x86_64
+	groups = opencl_legacy_amdgpu-pro
+	license = custom: multiple
+	makedepends = wget
+	source = GET-32DEBS.sh
+	source = GET-64DEBS.sh
+	source = versions
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = opencl-legacy-amdgpu-pro
+	pkgdesc = Legacy non-free AMD OpenCL ICD Loaders (PAL)
+	license = custom: AMDGPU-PRO EULA
+	optdepends = clinfo
+	optdepends = rocm-opencl-runtime
+	provides = opencl-orca-amdgpu-pro-icd
+	provides = opencl-driver
+	conflicts = rocm-opencl-runtime
+
+pkgname = lib32-opencl-legacy-amdgpu-pro
+	pkgdesc = Legacy non-free AMD OpenCL ICD Loaders (PAL) (32-bit)
+	license = custom: AMDGPU-PRO EULA
+	depends = opencl-legacy-amdgpu-pro
+	provides = lib32-opencl-orca-amdgpu-pro-icd
+	provides = lib32-opencl-driver
+	conflicts = rocm-opencl-runtime
