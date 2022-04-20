@@ -1,8 +1,8 @@
 # Maintainer: aulonsal <aulonsal at gmail dot com>
 pkgname=outfieldr-git
 _pkgname="${pkgname%-git}"
-pkgver=1.0.2.r1.ge1f165c
-pkgrel=1
+pkgver=1.0.2.r5.g0224b91
+pkgrel=2
 pkgdesc='TLDR client in zig'
 arch=('x86_64')
 url='https://gitlab.com/ve-nt/outfieldr'
@@ -13,7 +13,7 @@ conflicts=("$_pkgname" 'tldr')
 source=(
 	"git+$url.git"
 	'git+https://github.com/truemedian/zfetch.git'
-	'git+https://github.com/Hejsil/zig-clap.git#branch=zig-master'
+	'git+https://github.com/Hejsil/zig-clap.git'
 	'zig-tar::git+https://github.com/mattnite/tar.git'
 	'git+https://github.com/MasterQ32/zig-network.git'
 	'git+https://github.com/MasterQ32/zig-uri.git'
