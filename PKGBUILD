@@ -1,25 +1,27 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
-_pipname=plum
-pkgname=python-${_pipname,,}
-pkgver=0.7.2
+_pyname=plum
+pkgname=python-${_pyname,,}
+pkgver=0.7.9
 pkgrel=1
 pkgdesc='Pack/Unpack Memory'
 arch=(any)
-url="https://$_pipname-py.readthedocs.io/en/latest/"
+url="https://$_pyname-py.readthedocs.io/en/latest/"
 license=(MIT)
 depends=(python)
-makedepends=(python-setuptools)
-_archive="$_pipname-$pkgver"
-source=("https://gitlab.com/dangass/$_pipname/-/archive/$pkgver/$_archive.tar.bz2")
-sha256sums=('6b2863af4db754892d690563b8304b43c246e8d3a1124ad8aeab83f2fc86ffbc')
+makedepends=(python-{build,installer}
+             python-setuptools
+             python-wheel)
+_archive="$_pyname-$pkgver"
+source=("https://gitlab.com/dangass/$_pyname/-/archive/$pkgver/$_archive.tar.bz2")
+sha256sums=('0f660a767ceb7a0374066ab3077fc274c409e751a00a904ddfe6ec88b52549a9')
 
 build() {
 	cd "$_archive"
-	python setup.py build
+	python -m build -wn
 }
 
 package() {
 	cd "$_archive"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 }
