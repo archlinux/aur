@@ -10,7 +10,7 @@ _pkgname=firefox-developer-edition
 _patchurl=https://raw.githubusercontent.com/openSUSE/firefox-maintenance/master
 
 pkgname=firefox-developer-edition-kde
-pkgver=100.0b4
+pkgver=100.0b8
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(x86_64)
@@ -39,7 +39,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         # https://github.com/openSUSE/firefox-maintenance
         mozilla-kde.patch::$_patchurl/mozilla-kde.patch
         firefox-kde.patch::$_patchurl/firefox/firefox-kde.patch)
-sha256sums=('c78b6d1f09bb0c356f5ca78e48f2103b737bb26f4707538e917a6c19271db409'
+sha256sums=('c719b761964b8b15567e3299a9e19550ebdc61c020ed74823a169b9a60926539'
             'SKIP'
             '9b6c3cbc5a441acf1b66dc97f5787968ef78a056066c79fec598aaf35e5117f2'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
