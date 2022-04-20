@@ -51,7 +51,7 @@ _major=5.17
 _minor=4
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=2
+pkgrel=3
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -73,13 +73,14 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_uksm_path}/${_uksm_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v13-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v13-sep/0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch"
-        "${_lucjanpath}/arch-patches-v13-sep/0003-tick-Detect-and-fix-jiffies-update-stall.patch"
-        "${_lucjanpath}/arch-patches-v13-sep/0004-tick-rcu-Remove-obsolete-rcu_needs_cpu-parameters.patch"
-        "${_lucjanpath}/arch-patches-v13-sep/0005-tick-rcu-Stop-allowing-RCU_SOFTIRQ-in-idle.patch"
-        "${_lucjanpath}/arch-patches-v13-sep/0006-lib-irq_poll-Declare-IRQ_POLL-softirq-vector-as-ksof.patch"
-        "${_lucjanpath}/arch-patches-v13-sep/0007-gpio-Request-interrupts-after-IRQ-is-initialized.patch"
+        "${_lucjanpath}/arch-patches-v15-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v15-sep/0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch"
+        "${_lucjanpath}/arch-patches-v15-sep/0003-tick-Detect-and-fix-jiffies-update-stall.patch"
+        "${_lucjanpath}/arch-patches-v15-sep/0004-tick-rcu-Remove-obsolete-rcu_needs_cpu-parameters.patch"
+        "${_lucjanpath}/arch-patches-v15-sep/0005-tick-rcu-Stop-allowing-RCU_SOFTIRQ-in-idle.patch"
+        "${_lucjanpath}/arch-patches-v15-sep/0006-lib-irq_poll-Declare-IRQ_POLL-softirq-vector-as-ksof.patch"
+        "${_lucjanpath}/arch-patches-v15-sep/0007-gpio-Request-interrupts-after-IRQ-is-initialized.patch"
+        "${_lucjanpath}/arch-patches-v15-sep/0008-NFSv4.1-provide-mount-option-to-toggle-trunking-disc.patch"
          # the main kernel config files
         'config')
 
@@ -324,14 +325,15 @@ sha512sums=('a0f1945eb61527aac886875a83ad720bff3d6cd06ed0ee92ff7795e4f854d797f76
             'SKIP'
             'bb458673cd6d1d71c78edeb06c1c5e9ee663e43c0a058c87ac7a0cf542192d8478d06c9df60c2d7032289d7bf31953b41475638c30cd52e54c18c6e7c06f09bd'
             'b63921b6246bd1b9545a8042d76334bef8a7ee46e5404c5efec4a842a455a84046e92423b2bc6d950f19dcf85805d7493fe71d6d177e3b46b52a279b0a44d0c9'
-            'c3aa069a1553ed987adcd2002495ab7b0ec967425447a90dfd09d38a6c3fa166abdb596e8d130039bb2640a017a0c86c8de303a3883cb606fedc0d8692098c80'
-            '62d2b528f5ceb719a5b837b73914cd23329165f9d8b0773e0327b306f601d61d33f5d17352c21f82979f4aa36a0987bb167a7555990d3130e9a2f6f228e3ba28'
-            '3090ee7eddc8bea3124deb777f39bfbbc749510add2964d26e599e338649fda5208535b30fa48b8532404f57c871e77c578ba7a2813938f5dd0b780d5fb18724'
-            'a22d9b65889981f06345d45192238622e3c47233c3d30a9c81065f201ef6e0b624edf62c456ae8cd211f75228e649f2c967e2e9d399389d3df4407e24e7bb920'
-            '1c5a1bfaefda3bc34e8a0aeaa50e9e02468b6c67fb3a52eff45651e20ca7c72ed65c1c1317f2e80ec79bff4c35da2a4b65a53137060bc22989ece8aeaa19ac2e'
-            'b7ddcfea71bece5e48cb67d7d4f668f719b63b3744bb4366696f6e356c7938f93e6ccf49e80ca347c6914d25fbcbe0c9d0c9b6288cf395c6e41191fb46ca2995'
-            '5fac7d972766a376cd785de43406b7ffce1e19014356d8a277d5755438402132ef6de49799401f8ecdc519369870b73ce195c5f84a666bd42afb1a2e844a93fe'
-            '4884f0200751b810f0dcd1a2e705f2ac0f2f5dc9d88698fb5ff1f0dc0a290d4c7d3a55b825b49fec2607cbc2ee4648c2140c748861b623115fd95039384e021c')
+            'e46caf09f93297e8dc906cbd333314295d87a71e0c6d3e236d1be7eb7d7aea635093699d869bae3b5388ff20ac09b53d23e708bb0f05578a4ee440507c2696bf'
+            'ef438b99826e2f967114719c96f98d76a23e66f9bb6577d46c5bc0b9132dce966f1bd0d24d1b19ed916e534141b3a73da38e63565381d2ff09e89ce6fdd64ee6'
+            'e98a9e0bc3f798e33fc0fa42434b3f8c03456f66f0b95f419aaeb77b71d9e60b02d1559bf1bb31c0376fd73aee824dcdcfbf619da3fbe6345db6e7b645c6d99b'
+            '0c9ea6c73693cf91699c9691f424d80a11de860585d2d1f522ccfa34506e9dd4de3bac7d2b7226e09cc4f3daf0f5e0beec2b921829a911d280d9c0b2ea649b78'
+            'b4fb5de2d839e3a1db854d8efeb4f604df1dd6de4bb0367a5bff873c1515f003a5fca8f115ae96ed3669de62ef0ce18039313f103aa0f868808c51985aee06e2'
+            'c713e61cc1cf2d9402dd419f8c5367e7f4c0c0444ffd8c56c8407d943286bc104a315e8f4547d522b973b23ed4722137c82a2716b3c43710e0e38307994911d8'
+            '61e0469fd061af316cd896f87c3d87a99687a1d9fe85f1a4fcc3dafcbe4c489fd42d3ee7ba9b9691f643c5f442f5a2bd5d0ffb1b1081415ec1030aa4ba85123d'
+            'e3f7d5889e136724b94fee7feef25e412eac1c149e7049afbf25513b08e642a99dda5385e3246914fe18e04dcde7e48a09a264a77f442aab1cf97e26208a9026'
+            '4ac5010d7c78b4bb50b4de3cb1518724576228b81c799760011b31c7c39dcf617fe33ca94531dce0f873ef35dcf5db70f8555c136a58a3e096bb1037044dc959')
 
 validpgpkeys=(
               'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linus Torvalds
