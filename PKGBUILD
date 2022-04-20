@@ -6,7 +6,7 @@ pkgname=ccstudio
 _semver=11.2.0
 _bldver=00007
 pkgver=$_semver.$_bldver
-pkgrel=1
+pkgrel=2
 pkgdesc="Texas Instruments Code Composer Studio IDE"
 arch=('x86_64')
 url="http://www.ti.com/tool/ccstudio"
@@ -71,8 +71,8 @@ package() {
     find $srcdir/$_installpath/ccs/eclipse/p2/org.eclipse.equinox.p2.engine/profileRegistry/epp.package.cpp.profile/.data/.settings/org.eclipse.equinox.p2.metadata.repository.prefs -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
     find $srcdir/$_installpath/ccs/eclipse/plugins/com.ti.ccstudio.base_*/properties -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
     find $srcdir/$_installpath/ccs/eclipse/configuration/org.eclipse.osgi/*/data/*/*.xml -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
-    find $srcdir/$_installpath/ccs/eclipse/configuration/org.eclipse.osgi/362/data/timestamps* -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
-    find $srcdir/$_installpath/ccs/eclipse/configuration/org.eclipse.osgi/362/data/cache.timestamps -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
+    find $srcdir/$_installpath/ccs/eclipse/configuration/org.eclipse.osgi/365/data/timestamps* -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
+    find $srcdir/$_installpath/ccs/eclipse/configuration/org.eclipse.osgi/365/data/cache.timestamps -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
     find $srcdir/$_installpath/ccs/eclipse/configuration/ccs.properties -print0 | xargs -0 sed -i "s#$srcdir/$_installdir##" 
 
     install -D -m0755 "$srcdir/$_installpath/$_desktop" $pkgdir/usr/share/applications/$pkgname.desktop
