@@ -4,7 +4,7 @@
 
 pkgname=gnumeric-minimal
 _pkgname=gnumeric
-_minorver=51
+_minorver=52
 pkgver=1.12.${_minorver}
 pkgrel=1
 pkgdesc="A GNOME-less spreadsheet program"
@@ -17,7 +17,7 @@ conflicts=('gnumeric')
 provides=('gnumeric')
 options=('libtool')
 source=(https://gitlab.gnome.org/GNOME/gnumeric/-/archive/GNUMERIC_${pkgver//./_}/gnumeric-GNUMERIC_${pkgver//./_}.tar.bz2)
-sha256sums=('51f1190e42cfa7f03717a396a7679182ce8fd339bc1885bc170bb1fd018dd393')
+sha256sums=('5b2743c3a440a3a062e19cf41590951b2b86ae7f7a987f0955eeea0a1002f5f2')
 
 build() {
   cd ${_pkgname}-GNUMERIC_${pkgver//./_}
