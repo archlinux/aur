@@ -12,6 +12,6 @@ pkgbase = pax-mc
 	conflicts = pax-mc-bin
 	conflicts = pax-mc-git
 	source = pax-1.9.10_fix.tar.gz::https://github.com/froehlichA/pax/archive/refs/tags/v1.9.10-fix.tar.gz
-	sha256sums = f459c3dd326f1a73e6d7c63246aae2c310cc9777d83853cb69ee33e8294b2508
+	sha256sums = bd729af2bbf07151a2f48085cda4210434afa8101bb7ebc1f5aa603c28c238ba
 
 pkgname = pax-mc
