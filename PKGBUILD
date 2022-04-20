@@ -4,7 +4,7 @@ pkgname=hqplayer-embedded
 _debpkgver=4.31.0-131
 _debpkgverarm=4.31.0-131
 pkgver=4.31.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Signalyst HQPlayer Embedded
  HQPlayer - the high-end upsampling multichannel software HD-audio player"
 arch=('x86_64' 'aarch64')
@@ -39,7 +39,8 @@ package() {
   install -Dm644 tmpfiles.d             "${pkgdir}"/usr/lib/tmpfiles.d/hqplayer.conf
   install -Dm644 sysusers.d             "${pkgdir}"/usr/lib/sysusers.d/hqplayer.conf
   install -Dm644 "$pkgdir/etc/hqplayer/hqplayerd.xml" "$pkgdir/usr/share/doc/hqplayerd/hqplayerd.xml"
-
+  install -Dm755 "$pkgdir/opt/hqplayerd/lib/libsgllnx64-2.29.02.so" "$pkgdir/usr/lib/hqplayerd/libsgllnx64-2.29.02.so"
+  rm -rf "$pkgdir/opt"
   rm -rf "$pkgdir/etc/modules-load.d"
   rm -rf "$pkgdir/etc/udev"
 }
