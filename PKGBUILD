@@ -4,7 +4,7 @@
 _pkgname=gpsoauth
 pkgname=python-$_pkgname
 pkgver='1.0.0'
-pkgrel=1
+pkgrel=2
 pkgdesc="A python client library for Google Play Services OAuth."
 url="https://github.com/simon-weber/gpsoauth"
 depends=('python' 'python-requests' 'python-pycryptodomex')
