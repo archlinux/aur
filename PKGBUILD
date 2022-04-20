@@ -3,13 +3,13 @@
 
 _pkgname='ferdium'
 pkgname="ferdium-git"
-pkgver=develop.r0.gd283f1d4
+pkgver=develop.r0.g7df3cffd
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://ferdium.org/"
 license=('Apache')
-_electronpkg='electron15'
+_electronpkg='electron'
 depends=("$_electronpkg" 'libxkbfile')
 appbranch="develop"
 recipiesbranch="master"
