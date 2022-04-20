@@ -3,7 +3,7 @@
 # Contributor: Tom Richards <tom@tomrichards.net>
 
 pkgname=neovim-symlinks
-pkgver=4
+pkgver=5
 pkgrel=1
 pkgdesc='Runs neovim if vi or vim is called'
 arch=('any')
@@ -16,8 +16,6 @@ package() {
   cd "$pkgdir/usr/bin/"
 
   echo -e '#!/bin/sh\nexec nvim -e "$@"'  > ex
-  echo -e '#!/bin/sh\nexec nvim -RZ "$@"' > rview
-  echo -e '#!/bin/sh\nexec nvim -Z "$@"'  > rvim
   echo -e '#!/bin/sh\nexec nvim -R "$@"'  > view
   echo -e '#!/bin/sh\nexec nvim -d "$@"'  > vimdiff
   chmod 755 *
