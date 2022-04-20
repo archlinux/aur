@@ -1,6 +1,6 @@
 pkgbase = prometheus_wireguard_exporter
 	pkgdesc = A prometheus exporter for wireguard stats
-	pkgver = 3.4.1
+	pkgver = 3.6.3
 	pkgrel = 1
 	url = https://github.com/MindFlavor/prometheus_wireguard_exporter/
 	arch = i686
@@ -8,10 +8,12 @@ pkgbase = prometheus_wireguard_exporter
 	license = MIT
 	makedepends = rustup
 	depends = wireguard-tools
+	backup = etc/conf.d/prometheus-wireguard-exporter
 	source = prometheus-wireguard-exporter.service
-	source = prometheus_wireguard_exporter-3.4.1.tar.gz::https://github.com/MindFlavor/prometheus_wireguard_exporter/archive/3.4.1.tar.gz
-	sha512sums = f793e2cf5016dd571c04fe1bccd561ef433e8559749fa43added732df27529fb4801de26a8b3869de78a018ee8d3adfccc7cf245d79841a834704a1357bc6376
-	sha512sums = d5ee1e415f1774c8a4909695160b1c818053966770295162c2a8cf5e3612a22ee615c9c4f0a4690fa1af8c853c58cfe5aa51c97bbc112b6e1bccc35e37fe3d33
+	source = prometheus-wireguard-exporter.confd
+	source = prometheus_wireguard_exporter-3.6.3.tar.gz::https://github.com/MindFlavor/prometheus_wireguard_exporter/archive/refs/tags/3.6.3.tar.gz
+	sha512sums = 65682733b64e3d6fe274859afa8e43539befa0e4e5347326469178db3b458d7668f13fa2b500016245109a7346d1fadaabcf48e439bed12773f155b1ab95edf8
+	sha512sums = 9227742536d97a9bf36c763b5a67c0953295375affadd4caee46849a0828e7d08ca850146040e81eed87d4dc0fb5b33543411af9f46d1e0d0d146c2fd8edc21b
+	sha512sums = e4b66aa92f1710a56d8d21317b7777c014b1399cdebda470007e6cc6508aa6fa8b0f81404e2c59128d18c1d73f988afad3b9e9b34266811d7fcb8dfedfa6bd16
 
 pkgname = prometheus_wireguard_exporter
-
