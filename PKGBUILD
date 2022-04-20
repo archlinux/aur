@@ -68,8 +68,8 @@ _subarch=
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 pkgbase=linux-ck
-pkgver=5.17.3
-pkgrel=4
+pkgver=5.17.4
+pkgrel=1
 arch=(x86_64)
 url="https://wiki.archlinux.org/index.php/Linux-ck"
 license=(GPL2)
@@ -96,14 +96,16 @@ source=(
   0004-tick-rcu-Remove-obsolete-rcu_needs_cpu-parameters.patch
   0005-tick-rcu-Stop-allowing-RCU_SOFTIRQ-in-idle.patch
   0006-lib-irq_poll-Declare-IRQ_POLL-softirq-vector-as-ksof.patch
+  0007-gpio-Request-interrupts-after-IRQ-is-initialized.patch
+  0008-NFSv4.1-provide-mount-option-to-toggle-trunking-disc.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-sha256sums=('32d0a8e366b87e1cbde951b9f7a01287546670ba60fac35cccfc8a7c005a162c'
+sha256sums=('6e3cd56ee83a9cb5ac3fde1442c40367ab67368946c4c93bbeb1c65664a0d3c5'
             'SKIP'
-            'c0ef360e34fd21c23509224abae894b0d6d37256cccf82575062a05986ee5dba'
+            '3f02a0f2fe820f678d15fb0efce04e3716bdc7590d452317bf1b0b63f3b31cd2'
             '5a29d172d442a3f31a402d7d306aaa292b0b5ea29139d05080a55e2425f48c5c'
             '0506bdad4255ccc8165e39b2567450a3b12de2759ed7b42c0c90de1c57b1a283'
             '7b30963bad1ca6a7dbf8a8be88ec1cd0594d919363ac5ae03dce6636891de920'
@@ -111,7 +113,9 @@ sha256sums=('32d0a8e366b87e1cbde951b9f7a01287546670ba60fac35cccfc8a7c005a162c'
             '6e3eef39a94b4e89e156e4cbcd274f7942c4a9d7842266c7ee75b705bbac4e70'
             '786b819da51c17e7586c483d68052ba6243dfa5d0da8276b7417af1fab1bae45'
             '9ff6cbfa20c412de75b1ebfdd9a5a0c7842eb64869e1f1d21fcb952cb5a5e88f'
-            '4f9fe9c9a15c19c8a384f51edc450a30539b0ff34bcf54d32e1b82f626045642')
+            '4f9fe9c9a15c19c8a384f51edc450a30539b0ff34bcf54d32e1b82f626045642'
+            '43b42e7cb66a18f24c8f3f1d49eae9d76614baa770b6d001c6cad6542fbf3b4a'
+            '66e03651bf51fff4b25cb541de2fde9af5e47b0af1ecf5b4ee42a6a530cc3ec0')
 
 prepare() {
   cd linux-${pkgver}

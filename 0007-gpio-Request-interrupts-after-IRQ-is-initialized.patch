@@ -1,0 +1,63 @@
+From c1df6787c9f39c4896fa46522656fb33a2b8c738 Mon Sep 17 00:00:00 2001
+From: Mario Limonciello <mario.limonciello@amd.com>
+Date: Wed, 13 Apr 2022 21:57:05 -0500
+Subject: [PATCH 7/9] gpio: Request interrupts after IRQ is initialized
+
+commit 5467801f1fcb ("gpio: Restrict usage of GPIO chip irq members before
+initialization") attempted to fix a race condition that lead to a NULL
+pointer, but in the process caused a regression for _AEI/_EVT declared
+GPIOs. This manifests in messages showing deferred probing while trying
+to allocate IRQs like so:
+
+[    0.688318] amd_gpio AMDI0030:00: Failed to translate GPIO pin 0x0000 to IRQ, err -517
+[    0.688337] amd_gpio AMDI0030:00: Failed to translate GPIO pin 0x002C to IRQ, err -517
+[    0.688348] amd_gpio AMDI0030:00: Failed to translate GPIO pin 0x003D to IRQ, err -517
+[    0.688359] amd_gpio AMDI0030:00: Failed to translate GPIO pin 0x003E to IRQ, err -517
+[    0.688369] amd_gpio AMDI0030:00: Failed to translate GPIO pin 0x003A to IRQ, err -517
+[    0.688379] amd_gpio AMDI0030:00: Failed to translate GPIO pin 0x003B to IRQ, err -517
+[    0.688389] amd_gpio AMDI0030:00: Failed to translate GPIO pin 0x0002 to IRQ, err -517
+[    0.688399] amd_gpio AMDI0030:00: Failed to translate GPIO pin 0x0011 to IRQ, err -517
+[    0.688410] amd_gpio AMDI0030:00: Failed to translate GPIO pin 0x0012 to IRQ, err -517
+[    0.688420] amd_gpio AMDI0030:00: Failed to translate GPIO pin 0x0007 to IRQ, err -517
+
+The code for walking _AEI doesn't handle deferred probing and so this leads
+to non-functional GPIO interrupts.
+
+Fix this issue by moving the call to `acpi_gpiochip_request_interrupts` to
+occur after gc->irc.initialized is set.
+
+Cc: Shreeya Patel <shreeya.patel@collabora.com>
+Cc: stable@vger.kernel.org
+Fixes: 5467801f1fcb ("gpio: Restrict usage of GPIO chip irq members before initialization")
+Reported-by: Mario Limonciello <mario.limonciello@amd.com>
+Link: https://lore.kernel.org/linux-gpio/BL1PR12MB51577A77F000A008AA694675E2EF9@BL1PR12MB5157.namprd12.prod.outlook.com/T/#u
+Signed-off-by: Mario Limonciello <mario.limonciello@amd.com>
+---
+ drivers/gpio/gpiolib.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpio/gpiolib.c b/drivers/gpio/gpiolib.c
+index 344e376b2ee9..d5a5cf269102 100644
+--- a/drivers/gpio/gpiolib.c
++++ b/drivers/gpio/gpiolib.c
+@@ -1601,8 +1601,6 @@ static int gpiochip_add_irqchip(struct gpio_chip *gc,
+ 
+ 	gpiochip_set_irq_hooks(gc);
+ 
+-	acpi_gpiochip_request_interrupts(gc);
+-
+ 	/*
+ 	 * Using barrier() here to prevent compiler from reordering
+ 	 * gc->irq.initialized before initialization of above
+@@ -1612,6 +1610,8 @@ static int gpiochip_add_irqchip(struct gpio_chip *gc,
+ 
+ 	gc->irq.initialized = true;
+ 
++	acpi_gpiochip_request_interrupts(gc);
++
+ 	return 0;
+ }
+ 
+-- 
+2.36.0
+
