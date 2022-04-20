@@ -1,0 +1,11 @@
+pkgbase = okay
+	pkgdesc = Prints Okay
+	pkgver = 1.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL
+	makedepends = gcc
+	source = okay.cpp
+	sha512sums = 9e8553e57e43a1c07560d073aeea18b16a4b76d8bceadd5147ff23a2e865027128ba232112ece78e9feb95959e984e0b0af96cc0056cb17cbff41f80168d60fa
+
+pkgname = okay
