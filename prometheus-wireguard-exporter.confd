@@ -1,0 +1,2 @@
+# You can specify additional daemon options here
+WIREGUARD_EXPORTER_ARGS=""

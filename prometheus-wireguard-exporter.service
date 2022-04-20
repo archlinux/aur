@@ -5,7 +5,8 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/prometheus_wireguard_exporter -l 127.0.0.1
+EnvironmentFile=-/etc/conf.d/prometheus-wireguard-exporter
+ExecStart=/usr/bin/prometheus_wireguard_exporter $WIREGUARD_EXPORTER_ARGS
 
 [Install]
 WantedBy=multi-user.target

@@ -1,0 +1,4 @@
+src/
+pkg/
+prometheus_wireguard_exporter-*.tar.gz
+*.pkg.tar.zst
