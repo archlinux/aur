@@ -1,7 +1,7 @@
 pkgbase = blender249
 	pkgdesc = A fully integrated 3D graphics creation suite (version 2.49b)
 	pkgver = 2.49b
-	pkgrel = 1
+	pkgrel = 3
 	url = http://blender.org
 	arch = x86_64
 	license = GPL
@@ -17,8 +17,9 @@ pkgbase = blender249
 	depends = glu
 	source = https://download.blender.org/source/blender-2.49b.tar.gz
 	source = blender249py27_gcc9_all.patch
+	source = blender249-namespace-std.patch
 	sha256sums = 23554db4aa10b00e0e760a8bf9c4a9f749670d815c8bc874a04746adc4752488
 	sha256sums = 6282cb81967862eca928babbe1446126070591c71111d3178d0e3ff31fb455cd
+	sha256sums = 3e8b432606fbe0bace5e3fe6c3938ba3690fe37fd512f4287d3b51e454a83867
 
 pkgname = blender249
-
