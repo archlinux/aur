@@ -3,7 +3,7 @@
 # Contributor: David Runge <dave@sleepmap.de>
 
 pkgname=nextcloud-app-files-antivirus
-pkgver=3.2.0
+pkgver=3.2.2
 pkgrel=1
 pkgdesc="Antivirus app for Nextcloud"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('nextcloud' 'clamav')
 makedepends=()
 options=('!strip')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nextcloud/files_antivirus/releases/download/v${pkgver}/files_antivirus.tar.gz")
-sha512sums=('a8c5326928956fec6daa18689b588612970237686169c56ba159df53e63910ae146c00550ed7eab88d805aa71b786fcc34f1417833eba097e2258409c61cea1e')
+sha512sums=('bb240edcefc95e56a21dae7e5d8ac817a57dda52cd9a559a77d75876857a664ab493b8116fc5696c5947a2c8212b86e4f84d2c9c36ad216d50cdc2986febb33e')
 
 package() {
   install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
