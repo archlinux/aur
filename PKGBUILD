@@ -2,12 +2,12 @@
 
 pkgname=esoreflex
 pkgver=2.11.5
-pkgrel=1
+pkgrel=2
 pkgdesc="EsoReflex is an environment that provides an easy and flexible way to reduce VLT/VLTI science data using the ESO pipelines. "
 url="https://www.eso.org/sci/software/esoreflex/"
 arch=('x86_64')
 license=('GPL3')
-depends=('java-environment')
+depends=('java-environment' 'libxtst')
 makedepends=()
 # Note all of them needs to be installed for interactivity to work, but conda environments 
 # can also alternatively be used to set it up
