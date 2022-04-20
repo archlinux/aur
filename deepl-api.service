@@ -3,6 +3,7 @@ Description=Free deepL api, written in rust.
 After=network.target
 
 [Service]
+Type=simple
 ExecStart=deepl-api
 Restart=on-abort
 RestartSec=10
