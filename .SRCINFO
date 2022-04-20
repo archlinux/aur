@@ -1,7 +1,7 @@
 pkgbase = philipstv
 	pkgdesc = CLI for controlling Philips Android-powered TVs
 	pkgver = 0.4.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/bcyran/philipstv
 	arch = any
 	license = MIT
@@ -9,7 +9,7 @@ pkgbase = philipstv
 	checkdepends = python-requests-mock
 	makedepends = python-build
 	makedepends = python-installer
-	makedepends = python-wheel
+	makedepends = python-poetry-core
 	depends = python
 	depends = python-requests
 	depends = python-pydantic

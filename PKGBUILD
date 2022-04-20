@@ -2,11 +2,11 @@
 
 pkgname=philipstv
 pkgver=0.4.2
-pkgrel=3
+pkgrel=4
 pkgdesc='CLI for controlling Philips Android-powered TVs'
 url='https://github.com/bcyran/philipstv'
 depends=('python' 'python-requests' 'python-pydantic' 'python-click' 'python-appdirs')
-makedepends=('python-build' 'python-installer' 'python-wheel')
+makedepends=('python-build' 'python-installer' 'python-poetry-core')
 checkdepends=('python-pytest' 'python-requests-mock')
 license=('MIT')
 arch=('any')
@@ -15,7 +15,7 @@ sha256sums=('6c46378dbdbabce37496af5cef0c6076dabf1cd4f1542fe0be2a5725bd33c112')
 
 build() {
     cd "${pkgname}-${pkgver}"
-    python -m build --wheel --no-isolation
+    python -m build --wheel --no-isolation --skip-dependency-check
 
     python -m venv --system-site-packages tmp-install
     tmp-install/bin/python -m installer dist/*.whl
