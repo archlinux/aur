@@ -2,7 +2,7 @@
 
 pkgname=freefilesync-bin
 _pkgname=freefilesync
-pkgver=11.18
+pkgver=11.20
 pkgrel=1
 pkgdesc="Folder comparison and synchronization"
 arch=("i686" "x86_64")
@@ -25,16 +25,10 @@ depends_i686=(
 source=(
     dlagent
     "${pkgname}-${pkgver}.tar.gz::${url}/download/FreeFileSync_${pkgver}_Linux.tar.gz"
-    FreeFileSync.desktop
-    RealTimeSync.desktop
-    freefilesync-mime.xml
 )
 sha256sums=(
     "3b8121fdf7d91d19680b6ff91f6f10ba79193379e1fdad5227d805b4ea65312a"
-    "404c5b248b890bc472e81774f49f989bdc1dd80e32d2001980c28d555fd47ac9"
-    "cf4fc81793572cc3e757e8ac26ce20807ce9c731eef0e96c046038075e2e3ecf"
-    "810403667792b732768e7be442f43244c4297df6c4b5decb6d07e04ef13f545a"
-    "30d938d1f385ea5c660fc4080d36391267a6e9c01939bd1eb535c5857af256f8"
+    "c0fb4e502a2771e85aed30c4edf4c1245b9d47ee22bc41df0c572e3c78bc0b44"
 )
 options=(!strip)
 install=".install"
@@ -44,10 +38,13 @@ package() {
     install -d "$pkgdir/opt/$_pkgname"
 
     # extract installer archive from installer binary
-    tail -c +38412 "$srcdir/FreeFileSync_${pkgver}_Install.run" > "$srcdir/FreeFileSync_${pkgver}_Install.tar"
+    tail -c +37816 "$srcdir/FreeFileSync_${pkgver}_Install.run" > "$srcdir/FreeFileSync_${pkgver}_Install.tar"
 
-    # extract inner archive from installer archive
-    tar -xf "$srcdir/FreeFileSync_${pkgver}_Install.tar" FreeFileSync.tar.gz -C "$srcdir"
+    # extract inner archive, freefilesync-mime.xml and .desktop files from installer archive
+    tar -xf "$srcdir/FreeFileSync_${pkgver}_Install.tar" -C "$srcdir" --wildcards \
+        FreeFileSync.tar.gz \
+        freefilesync-mime.xml \
+        '*.desktop'
 
     # extract inner archive
     tar -xzf "$srcdir/FreeFileSync.tar.gz" -C "$pkgdir/opt/$_pkgname"
@@ -62,13 +59,19 @@ package() {
     ln -sf "/opt/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$_pkgname/LICENSE"
 
     # MIME types
-    install -Dm644 freefilesync-mime.xml "$pkgdir/usr/share/mime/packages/freefilesync-mime.xml"
+    install -Dm644 -t "$pkgdir/usr/share/mime/packages/" "$srcdir/freefilesync-mime.xml"
 
-    # desktop launcher for FreeFileSync
-    install -Dm644 "$pkgdir/opt/$_pkgname/Resources/FreeFileSync.png" "$pkgdir/usr/share/pixmaps/FreeFileSync.png"
-    install -Dm644 FreeFileSync.desktop "$pkgdir/usr/share/applications/FreeFileSync.desktop"
+    # icons
+    install -Dm644 -t "$pkgdir/usr/share/pixmaps/" \
+        "$pkgdir/opt/$_pkgname/Resources/FreeFileSync.png" \
+        "$pkgdir/opt/$_pkgname/Resources/RealTimeSync.png"
 
-    # desktop launcher for RealTimeSync
-    install -Dm644 "$pkgdir/opt/$_pkgname/Resources/RealTimeSync.png" "$pkgdir/usr/share/pixmaps/RealTimeSync.png"
-    install -Dm644 RealTimeSync.desktop "$pkgdir/usr/share/applications/RealTimeSync.desktop"
+    # desktop launcher
+    for tmpl in "$srcdir"/*.template.desktop; do
+        f="${tmpl/.template/}"
+        sed -E -e 's#^(Exec=")FFS_INSTALL_PATH/([^"]+")#\1/opt/freefilesync/\2#' \
+            -e 's#^(Icon="?)FFS_INSTALL_PATH/Resources/#\1#' \
+            "$tmpl" > "$f"
+        install -Dm644 -t "$pkgdir/usr/share/applications/" "$f"
+    done
 }
