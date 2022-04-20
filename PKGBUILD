@@ -6,8 +6,8 @@
 
 _pkgname=polymc
 pkgname=${_pkgname}-git
-pkgver=1.1.1.r246.gba5946dc
-pkgrel=1
+pkgver=1.2.1.r0.g5adcc261
+pkgrel=2
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="https://github.com/PolyMC/PolyMC"
@@ -47,7 +47,7 @@ build() {
   mkdir -p build
 
   cd build
-  cmake -DCMAKE_BUILD_TYPE=None \
+  cmake -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DLauncher_APP_BINARY_NAME="${_pkgname}" \
     ..
