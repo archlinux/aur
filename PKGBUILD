@@ -3,7 +3,7 @@
 _pkgbase='frp'
 pkgbase='frp-bin'
 pkgname=('frpc-bin' 'frps-bin')
-pkgver=0.39.1
+pkgver=0.41.0
 pkgrel=1
 pkgdesc="A fast reverse proxy to help you expose a local server behind a NAT or firewall to the internet."
 arch=('x86_64' 'i686' 'arm' 'aarch64')
@@ -16,10 +16,10 @@ source_i686=("${_pkgbase}-${pkgver}-linux-386.tar.gz::${url}/releases/download/v
 source_arm=("${_pkgbase}-${pkgver}-linux-arm.tar.gz::${url}/releases/download/v${pkgver}/${_pkgbase}_${pkgver}_linux_arm.tar.gz")
 source_aarch64=("${_pkgbase}-${pkgver}-linux-arm64.tar.gz::${url}/releases/download/v${pkgver}/${_pkgbase}_${pkgver}_linux_arm64.tar.gz")
 
-sha256sums_x86_64=('a4623a06a0787afdbebf56aa1f406229d7457beb36c316e67ea90346e6921bb6')
-sha256sums_i686=('8a222ae6ff9a59164b44aac7d3005e4d75bd97997c48a51e05b5d50dbe6983af')
-sha256sums_arm=('5dbe659f612640086d3a7dc05b397f4e444c92d784951c49bfe4020b934cb559')
-sha256sums_aarch64=('ba4439ded52eb5c5994dd10181ff83ef350933753198e50bf04b5f21333f2a12')
+sha256sums_x86_64=('f6b96c46d8395d08ae91d5a19d55f8c9f19d512207612a89ca4c79df0c2f3c5d')
+sha256sums_i686=('43534e7300dc4de9b8dc796f15ff168eb017fd8e895ad73b183ce71dbe0b9beb')
+sha256sums_arm=('21d0ed799e2d277a941a92a68b69a1ad4cdfe058fbdc6cb6141fff2c81421c57')
+sha256sums_aarch64=('9a56f4e3bf3a276c7be0b2f180a4d6ffbad1258dc09fe2d6637666dee9c840f6')
 
 packaging() {
   declare -A ARCH_MAP
