@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=muwire
-pkgver=0.8.11
+pkgver=0.8.12
 pkgrel=1
 pkgdesc='An I2P file sharing program'
 arch=('any')
@@ -15,7 +15,7 @@ source=("git+https://github.com/zlatinb/muwire.git#tag=muwire-${pkgver}?signed"
         'muwire.sh')
 sha256sums=('SKIP'
             '7d61c69613029bd2b2e82f227a230104b880635fd8d44a649b2192b03c3cc509'
-            'aff6884d8977a2aba2871b215edfced5b22838b05eadeee660e3a670e4dea987')
+            '390c11231788eb36601d68c74dc08bf94422792c098926444c688f92a143f599')
 validpgpkeys=('471B9FD45517A5ED101FC57DA72832072D525E41') # Zlatin Balevsky
 
 build() {
@@ -23,6 +23,10 @@ build() {
 }
 
 check() {
+    local _javamaj
+    _javamaj="$(javac --version | awk '/javac/ { sub(/\..*/, "", $2); print $2 }')"
+    
+    [ "$_javamaj" -ge '18' ] && return 0
     gradle -p muwire test
 }
 
