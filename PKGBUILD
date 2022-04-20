@@ -1,22 +1,28 @@
 # Maintainer: Hetsh <aur@hetsh.de>
+# Maintainer: peterfab9845 <archlinux@peterfab.com>
 
 pkgname=mcsctl-git
-pkgver=master
-pkgrel=16
+pkgver=2.2.0.r19.gc862ceb
+pkgrel=1
 pkgdesc='Manage multiple minecraft servers with a simple bash script and systemd unit templates.'
 arch=('any')
 license=('Unlicense')
 depends=('bash' 'grep' 'java-runtime>=16' 'openbsd-netcat' 'sed' 'jq' 'screen' 'sudo')
-provides=('mcsctl')
-conflicts=('mcsctl')
+makedepends=('git')
+provides=("${pkgname%-*}")
+conflicts=("${pkgname%-*}")
 install="$pkgname.install"
 url='https://github.com/Hetsh/mcsctl'
-commit=('254884c4f7c19a7b8c24e78a1ae901f2419cebd1')
-source=("$url/archive/$commit.tar.gz")
-sha256sums=('5832160fc0e0ddca9984a843da6b16aff63feed503713816ff26217b54bf1c4c')
+source=("${pkgname%-*}::git+${url}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+	cd "${pkgname%-*}"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/; s/-/./g'
+}
 
 package() {
-	work_dir="${pkgname%-git}-$commit"
+	work_dir="${pkgname%-*}"
 	install -Dm 644 "$work_dir/mcs@.service" "$pkgdir/usr/lib/systemd/system/mcs@.service"
 	install -Dm 755 "$work_dir/mcsctl.sh" "$pkgdir/usr/bin/mcsctl"
 	install -Dm 644 "$work_dir/mcs-update@.timer" "$pkgdir/usr/lib/systemd/system/mcs-update@.timer"
