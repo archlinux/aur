@@ -3,7 +3,7 @@
 
 pkgname=termius-app
 _pkgname=${pkgname%-*}
-pkgver=7.38.2
+pkgver=7.39.0
 pkgrel=1
 pkgdesc="Desktop SSH Client"
 url="https://termius.com/"
@@ -28,10 +28,10 @@ source=(
         "$pkgname-$pkgver.deb::https://termius.com/download/linux/Termius.deb"
         "TERMS_OF_USE"
 )
-sha512sums=(
-        "2bc5ee77126fc81955cb596bb1d52d0b6b6cc7b0f1b052043cf99fd2c4527ce735a2b9bf14dd95e3e77b8a2a197069f67bbd433cd1a04f49ccac9451a352823f"
-        "af6d8ebe360d9c71d02c11a2b0ecf62226f9c2a2a55a30a2b368b73bcbc38066f88ad7d6600e72c93f0c470cb10438beeb037c7d7bb6a37d83899193dc0fd151"
-        'bf187f1ec9387d9c3ddbd0e401a235ec9bafab14698f49a182546ed4a057c398f3532f472b2a6be22b9a200b29d1ccb6e3c2fb69a92dfce2a4bf29264617565b'
+sha256sums=(
+        "a709034d0c2d2983744f29cf5040786761facd2f274f5d2897e3c0295ac2ce88"
+        "dad8bb6125f7258814cfa5550b12e5b714c5823877d382d6c040b0d93a0302f7"
+        "09c7bc00c70480a6b0281a971a15337f98fc440a5d671bb946eea403395432a2"
 )
 
 pkgver() {

@@ -1,6 +1,6 @@
 pkgbase = termius-app
         pkgdesc = Desktop SSH Client
-        pkgver = 7.38.2
+        pkgver = 7.39.0
         pkgrel = 1
         url = https://termius.com/
         arch = x86_64
@@ -18,11 +18,11 @@ pkgbase = termius-app
         depends = libsecret
         provides = termius
         conflicts = termius
-        source = pkgs-7.38.2.gz::https://deb.termius.com/dists/squeeze/main/binary-amd64/Packages.gz
-        source = termius-app-7.38.2.deb::https://termius.com/download/linux/Termius.deb
+        source = pkgs-7.39.0.gz::https://deb.termius.com/dists/squeeze/main/binary-amd64/Packages.gz
+        source = termius-app-7.39.0.deb::https://termius.com/download/linux/Termius.deb
         source = TERMS_OF_USE
-        sha512sums = 01ff80056f846ed450953fbf077e62daa5b9304ae04a04e0903a23758cb841cb95d8f81762c9de4d54a082f0499d70f634fedafdf485575368204c4e2214d54f
-        sha512sums = 32b73725e953db7642491c2f3d9f5c4163f1dde15c64a27f8a11edf2b91bb92384a10b80f62b5fb6fd6e87b85199d261492e61d227350274d9025ad30f177227
-        sha512sums = bf187f1ec9387d9c3ddbd0e401a235ec9bafab14698f49a182546ed4a057c398f3532f472b2a6be22b9a200b29d1ccb6e3c2fb69a92dfce2a4bf29264617565b
+        sha256sums = a709034d0c2d2983744f29cf5040786761facd2f274f5d2897e3c0295ac2ce88
+        sha256sums = dad8bb6125f7258814cfa5550b12e5b714c5823877d382d6c040b0d93a0302f7
+        sha256sums = 09c7bc00c70480a6b0281a971a15337f98fc440a5d671bb946eea403395432a2
 
 pkgname = termius-app
