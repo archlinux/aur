@@ -11,8 +11,7 @@ pkgbase = xcmenu-git
 	depends = zlib
 	optdepends = dmenu
 	replaces = loliclip
-	source = git://github.com/dindon-sournois/xcmenu
+	source = https://github.com/dindon-sournois/xcmenu
 	md5sums = SKIP
 
 pkgname = xcmenu-git
-

@@ -14,7 +14,7 @@ depends=('libxcb' 'zlib')
 optdepends=('dmenu')
 makedepends=('gcc')
 replaces=('loliclip')
-source=(git://github.com/dindon-sournois/xcmenu)
+source=(https://github.com/dindon-sournois/xcmenu)
 md5sums=(SKIP)
 
 pkgver() {
