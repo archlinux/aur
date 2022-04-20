@@ -30,14 +30,14 @@ validpgpkeys=(
 )
 # https://www.kernel.org/pub/linux/kernel/v4.x/sha256sums.asc
 md5sums=('0a68ef3615c64bd5ee54a3320e46667d'
-         '4ae8465e29b9505718d620a4e5e8a9d3'
+         'b1afac3ff6412261918cee67da3a0ff6'
          'cccfb42f3da5b3319ed6f2cb3da20206'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          'a85bfae59eb537b973c388ffadb281ff'
          'a329f9581060d555dc7358483de9760a'
          'df7fceae6ee5d7e7be7b60ecd7f6bb35')
 sha256sums=('029098dcffab74875e086ae970e3828456838da6e0ba22ce3f64ef764f3d7f1a'
-            'ed07b387a8603fe20da7a121ce8ac593c19baeb831b0f93885fc5dd0378c4e1b'
+            'ad2ca5be2703d8b69b7f074b41728e77b84d6b180c8f8bf9d33db22d8a59d24c'
             '7f2a2489b8002a99a78be75f473681aac980073d0e8a14f35257993baa76cbfa'
             'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
             '75f99f5239e03238f88d1a834c50043ec32b1dc568f2cc291b07d04718483919'
