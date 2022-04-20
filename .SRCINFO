@@ -1,14 +1,14 @@
 pkgbase = python-py3_sg
 	pkgdesc = Python3 SCSI generic library
-	pkgver = 0.0.2
+	pkgver = 0.13
 	pkgrel = 1
-	url = https://github.com/7aman/py3_sg
+	url = https://github.com/crypto-universe/py3_sg
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/p/py3_sg/py3_sg-0.0.2.tar.gz
-	sha256sums = 2d9813a1e95841d705176d7a4f3ae89cdc28bf7494e3ef4f171058679525a23d
+	source = py3_sg.zip::https://github.com/crypto-universe/py3_sg/archive/ceea144c35a754c60e476de88bd10697901ba55e.zip
+	sha256sums = 35ec783ec06818587640162b1e0b94ada7faadcc6d755c1a266ac02c242e7e51
+	b2sums = 1e507124e05c608852501b8e108acafa08ec2e6b83ac397ac752ab3975df69eea4958d8386617aa5b78fc1f5127a2bd232c49b18c1757c977cae50128d3b8ef7
 
 pkgname = python-py3_sg
-
