@@ -1,5 +1,5 @@
 pkgbase = dprint-bin
-	pkgdesc = Pluggable and configurable code formatting platform written in Rust.
+	pkgdesc = Pluggable and configurable code formatting platform
 	pkgver = 0.26.0
 	pkgrel = 1
 	url = https://github.com/dprint/dprint

@@ -4,7 +4,7 @@
 pkgname=dprint-bin
 pkgver=0.26.0
 pkgrel=1
-pkgdesc='Pluggable and configurable code formatting platform written in Rust.'
+pkgdesc='Pluggable and configurable code formatting platform'
 arch=('x86_64')
 url='https://github.com/dprint/dprint'
 license=('MIT')
