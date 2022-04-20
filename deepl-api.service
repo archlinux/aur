@@ -1,13 +1,11 @@
 [Unit]
-Description=deepl-api
+Description=Free deepL api, written in rust.
 After=network.target
 
 [Service]
-Type=forking
-WorkingDirectory=/
 ExecStart=deepl-api
-Restart=on-failure
+Restart=on-abort
 RestartSec=10
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target

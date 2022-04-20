@@ -11,8 +11,8 @@ depends=()
 provides=("deepl-api")
 source=("deepl-api.service"
         "${url}/releases/download/${pkgver}/deepl-${arch}-unknown-linux-musl-${pkgver}.gz")
-sha256sums=("bc151aa4bc7433a895eda895a2ba831968a8a27826369eedea9d68bc6a86d4cc"
-            "acb974bdc50d267d20a615b5f5890f7bae90609c6406bb7b63d0e6b2930d16bf")
+sha256sums=('f213ec053b1bdfc6277bd0c55d4d5caa36b9406763b2ff1759e8ee8ae960e053'
+            'acb974bdc50d267d20a615b5f5890f7bae90609c6406bb7b63d0e6b2930d16bf')
 
 package() {
     install -Dm644 "deepl-api.service" -t "$pkgdir/usr/lib/systemd/system/"
