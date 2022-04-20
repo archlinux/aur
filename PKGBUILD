@@ -2,7 +2,7 @@
 # Maintainer: jonah <me@jon4hz.io>
 
 pkgname='deadshot-bin'
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc='terminal based trading bot'
 url='https://jon4hz.io'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('deadshot')
 conflicts=('deadshot')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jon4hz/deadshot/releases/download/v0.0.4/deadshot-v0.0.4-linux-arm64.tar.gz")
-sha256sums_aarch64=('4e8df88b70dbc487a985abf90d8c2301b8535956ac0857cf833286a5865823a2')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jon4hz/deadshot/releases/download/v0.0.5/deadshot-v0.0.5-linux-arm64.tar.gz")
+sha256sums_aarch64=('6375e625455892ade9f19636fdf38eba0b8d1bdbae37e2997ea2c72fd6117a7c')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jon4hz/deadshot/releases/download/v0.0.4/deadshot-v0.0.4-linux-armv7.tar.gz")
-sha256sums_armv7h=('8e25f9d802bbf3b8828de28fd6a6cdad14efafff40fa95c5a3a1d5e7d60a1d7b')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jon4hz/deadshot/releases/download/v0.0.5/deadshot-v0.0.5-linux-armv7.tar.gz")
+sha256sums_armv7h=('9fed5d48d9ee604d6141b5c78bece670b5105dcdcf218d95c5ab869a8480ea8b')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/jon4hz/deadshot/releases/download/v0.0.4/deadshot-v0.0.4-linux-386.tar.gz")
-sha256sums_i686=('2ed0b1145c4c6ce849136b9f9390156873fbda6b1ad01434d65751c7bd9a9c32')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/jon4hz/deadshot/releases/download/v0.0.5/deadshot-v0.0.5-linux-386.tar.gz")
+sha256sums_i686=('60b4ac1a367585ece3bdd84ec66a60ba98049657f27ffc6f6c5821d5e9782d2c')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jon4hz/deadshot/releases/download/v0.0.4/deadshot-v0.0.4-linux-amd64.tar.gz")
-sha256sums_x86_64=('155aa61d79467ca99e8b46443e0d11340ff5e712085fc66723a47413c17cf363')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jon4hz/deadshot/releases/download/v0.0.5/deadshot-v0.0.5-linux-amd64.tar.gz")
+sha256sums_x86_64=('493094172884a6ff13fca5e241ee00be333e8f4bdfe9a93da2c6e969a7bdec6b')
 
 package() {
   # bin
