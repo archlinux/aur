@@ -3,7 +3,7 @@
 pkgname=strace-with-colors
 _pkgname=strace
 pkgver=5.17
-pkgrel=2
+pkgrel=3
 pkgdesc='A diagnostic, debugging and instructional userspace tracer (with colors)'
 arch=(x86_64)
 url='https://strace.io/'

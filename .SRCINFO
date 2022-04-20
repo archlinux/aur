@@ -1,7 +1,7 @@
 pkgbase = strace-with-colors
 	pkgdesc = A diagnostic, debugging and instructional userspace tracer (with colors)
 	pkgver = 5.17
-	pkgrel = 2
+	pkgrel = 3
 	url = https://strace.io/
 	arch = x86_64
 	license = BSD

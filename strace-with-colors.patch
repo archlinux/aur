@@ -699,7 +699,7 @@ index a6e698d4b..910b887f1 100644
  
  	if (xlat_verbose(xlat_verbosity) == XLAT_STYLE_VERBOSE || !cid_str)
 diff --git a/src/strace.c b/src/strace.c
-index 94d6169db..b873bf631 100644
+index 94d6169db..55989569c 100644
 --- a/src/strace.c
 +++ b/src/strace.c
 @@ -41,6 +41,7 @@
@@ -842,11 +842,14 @@ index 94d6169db..b873bf631 100644
  		case 'a':
  			acolumn = string_to_uint(optarg);
  			if (acolumn < 0)
-@@ -2791,6 +2830,9 @@ init(int argc, char *argv[])
+@@ -2791,6 +2830,12 @@ init(int argc, char *argv[])
  			      qflag_short == 2 ? qqflag_qual : qqqflag_qual);
  	}
  
 +	if((getenv("NO_COLOR")))
++		no_color_flag = 1;
++
++	if(outfname)
 +		no_color_flag = 1;
 +
  	/*
