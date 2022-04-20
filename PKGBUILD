@@ -5,14 +5,14 @@
 
 pkgname='peazip-qt5'
 pkgver=8.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Free file archiver utility, open, extract RAR TAR ZIP archives'
 license=('GPL3')
 url='http://peazip.org'
 arch=('i686' 'x86_64')
 depends=('brotli' 'zstd' '7-zip' 'qt5pas')
 optdepends=('quad' 'unace' 'paq8o' 'upx' 'zpaq')
-makedepends=('lazarus')
+makedepends=('lazarus' 'git')
 provides=('peazip')
 conflicts=('peazip')
 options=('!strip')
