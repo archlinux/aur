@@ -2,7 +2,7 @@
 
 pkgname=v2raya-git
 pkgver=20220420.r1112.a18b689
-pkgrel=1
+pkgrel=2
 install=.INSTALL
 pkgdesc="v2rayA nightly version"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -42,6 +42,6 @@ package() {
     install -dm 750 "${pkgdir}"/etc/v2raya/
     install -Dm 644 install/universal/v2raya.desktop -t "${pkgdir}"/usr/share/applications/
     install -Dm 644 install/universal/v2raya.service -t "${pkgdir}"/usr/lib/systemd/system/
-    install -Dm 644 install/universal/v2raya-lite.service -t "${pkgdir}"/usr/lib/systemd/system/
+    install -Dm 644 install/universal/v2raya-lite.service -t "${pkgdir}"/usr/lib/systemd/user/
     install -Dm 644 gui/public/img/icons/android-chrome-512x512.png "${pkgdir}"/usr/share/icons/hicolor/512x512/apps/v2raya.png
 }
