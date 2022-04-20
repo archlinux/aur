@@ -3,7 +3,7 @@
 
 _pkgname='ferdium'
 pkgname="ferdium-git"
-pkgver=develop.r0.ge72bf2cc
+pkgver=develop.r0.gd283f1d4
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -52,7 +52,7 @@ prepare() {
 	# Provide git submodules
 	git submodule init
 	git config submodule.recipes.url "$srcdir/$pkgname-recipes"
-	git submodule update --init --recursive
+	git submodule update --init --recursive --remote --rebase --force
 
 	# Set system Electron version for ABI compatibility
 	sed -E -i 's|("electron": ").*"|\1'"$(cat "/usr/lib/$_electronpkg/version")"'"|' 'package.json'
@@ -71,10 +71,15 @@ pkgver() {
 
 build() {
 	# Prepare recipes
-	cd "$srcdir/$_sourcedirectory/recipes/"
+# 	cd "$srcdir/$_sourcedirectory/recipes/"
+	cd "$srcdir/$_sourcedirectory/"
 
 	# Disable the prepare script for recipes as we don't want husky to run
-	sed -E -i 's|"prepare": ".*"|"prepare": ""|' 'package.json'
+# 	sed -E -i 's|"prepare": ".*"|"prepare": ""|' 'package.json'
+
+	export ELECTRON_CACHE="${srcdir}"/.cache/electron
+    export ELECTRON_BUILDER_CACHE="${srcdir}"/.cache/electron-builder
+    export CSC_IDENTITY_AUTO_DISCOVERY=false
 
     # Deactivate any pre-loaded nvm, and make sure we use our own in the current source directory
     which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
@@ -86,11 +91,13 @@ build() {
 
 	# Install the correct versions of npm and pnpm
 	npm i -gf npm@${npmversion}
-	npm i -gf pnpm@${pnpmversion}
+# 	npm i -gf pnpm@${pnpmversion}
 
 	# Build recipe archives
-	pnpm install
-	pnpm run package
+# 	pnpm install
+# 	pnpm run package
+	npm i -f
+	npm run build -- --linux --"${_electronbuilderarch}" --dir
 
 	# Prepare ferdi dependencies
 	cd "$srcdir/$_sourcedirectory/"
