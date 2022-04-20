@@ -1,8 +1,9 @@
 # Maintainer: Hetsh <aur@hetsh.de>
+# Maintainer: peterfab9845 <archlinux@peterfab.com>
 
 pkgname=mcsctl
-pkgver=2.2.0
-pkgrel=3
+pkgver=3.0.0
+pkgrel=1
 pkgdesc='Manage multiple minecraft servers with a simple bash script and systemd unit templates.'
 arch=('any')
 license=('Unlicense')
@@ -12,7 +13,7 @@ conflicts=('mcsctl-git')
 install="$pkgname.install"
 url='https://github.com/Hetsh/mcsctl'
 source=("$url/archive/${pkgver}.tar.gz")
-sha256sums=('209864e49556dfeae12c80198ee6cbadf130dc92bee1728238765a07e301b8fc')
+sha256sums=('a56ca557e5e1cf6d1c001b86ac2811715d5cd7cb1018deb0060d376daa18fb75')
 
 package() {
 	work_dir="$pkgname-$pkgver"
