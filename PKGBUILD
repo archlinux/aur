@@ -16,5 +16,5 @@ sha256sums=("bc151aa4bc7433a895eda895a2ba831968a8a27826369eedea9d68bc6a86d4cc"
 
 package() {
     install -Dm644 "deepl-api.service" -t "$pkgdir/usr/lib/systemd/system/"
-    install -Dm644 "deepl-${arch}-unknown-linux-musl-${pkgver}" "$pkgdir/usr/bin/deepl-api"
+    install -Dm755 "deepl-${arch}-unknown-linux-musl-${pkgver}" "$pkgdir/usr/bin/deepl-api"
 }
