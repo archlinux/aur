@@ -1,4 +1,5 @@
-# Maintainer: Dominic Brekau <aur@dominic.brekau.de>
+# Maintainer: Peter Mattern <pmattern at arcor dot de>
+# Contributor: Dominic Brekau <aur@dominic.brekau.de>
 # Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Jeff Mickey <jeff@archlinux.org>
@@ -10,11 +11,11 @@ pkgver=2.1.2
 pkgrel=2
 pkgdesc="An implementation of RTP, the real-time transport protocol from the IETF"
 arch=('i686' 'x86_64')
-url="http://www.gnu.org/software/ccrtp/"
+url="https://www.gnu.org/software/ccrtp/"
 license=('GPL' 'custom')
 depends=('ucommon>=6.2.2' 'libgcrypt')
 install=$pkgname.install
-source=("http://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz")
+source=("https://ftp.gnu.org/gnu/$pkgname/$pkgname-$pkgver.tar.gz")
 sha256sums=('f035ca0e1b5d37b78e358f07a25b05c5cdaf2c85c4b31cf29f6be17f288a349e')
 
 build() {
