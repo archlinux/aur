@@ -1,7 +1,7 @@
 pkgbase = hqplayer-embedded
 	pkgdesc = Signalyst HQPlayer Embedded HQPlayer - the high-end upsampling multichannel software HD-audio player
 	pkgver = 4.31.0
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.signalyst.com/custom.html
 	install = hqplayer-embedded.install
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = hqplayer-embedded
 	license = custom
 	depends = alsa-lib
 	depends = glibc
+	depends = libusb-compat
 	depends = flac
 	depends = gcc-libs
 	depends = libgmpris
