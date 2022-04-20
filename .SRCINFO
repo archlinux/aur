@@ -1,0 +1,13 @@
+pkgbase = git-estimate-bin
+	pkgdesc = Estimates hours and days spent by all developers on a git repository
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/luigitni/git-estimate
+	arch = x86_64
+	license = MIT
+	makedepends = zip
+	depends = git-hours
+	source = https://github.com/luigitni/git-estimate/releases/download/v1.1.0/git-estimate-linux-amd64.zip
+	sha512sums = 50a63747721a8a7de1f65ea654f96efef57a32a80d341ccdf061fbc982658b5a2b35080c269beba60aab5274e8cfb188bba1d96f0a061b1e226e88f520e47390
+
+pkgname = git-estimate-bin
