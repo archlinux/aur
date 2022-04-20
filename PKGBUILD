@@ -1,7 +1,7 @@
-# Maintainer: Sondre Nilsen <echo "bmlsc2VuLnNvbmRyZUBnbWFpbC5jb20K" | base64 -d>
+# Maintainer: Sondre Aasemoen <echo "bmlsc2VuLnNvbmRyZUBnbWFpbC5jb20K" | base64 -d>
 
 pkgname=fsatrace
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Filesystem access tracer"
 arch=('x86_64')
@@ -11,7 +11,7 @@ conflics=()
 depends=('gcc-libs')
 makedepends=('make')
 source=("https://github.com/jacereda/fsatrace/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('3839df3380bec62846f715c692c28bb4d497b0f988e6364001cb949f762e9ce2')
+sha256sums=('91c7081ea49e7395c6a9e7bff78f6621cc085be1cdaa1e3b4c0e699cd75d7062')
 
 build() {
   cd "$pkgname-$pkgver"

@@ -1,13 +1,13 @@
 pkgbase = fsatrace
 	pkgdesc = Filesystem access tracer
-	pkgver = 0.0.4
+	pkgver = 0.0.5
 	pkgrel = 1
 	url = https://github.com/jacereda/fsatrace
 	arch = x86_64
 	license = ISC
 	makedepends = make
 	depends = gcc-libs
-	source = https://github.com/jacereda/fsatrace/archive/refs/tags/v0.0.4.tar.gz
-	sha256sums = 3839df3380bec62846f715c692c28bb4d497b0f988e6364001cb949f762e9ce2
+	source = https://github.com/jacereda/fsatrace/archive/refs/tags/v0.0.5.tar.gz
+	sha256sums = 91c7081ea49e7395c6a9e7bff78f6621cc085be1cdaa1e3b4c0e699cd75d7062
 
 pkgname = fsatrace
