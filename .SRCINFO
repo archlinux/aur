@@ -1,6 +1,6 @@
 pkgbase = efm-langserver
 	pkgdesc = General purpose Language Server
-	pkgver = 0.0.42
+	pkgver = 0.0.43
 	pkgrel = 1
 	url = https://github.com/mattn/efm-langserver
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = efm-langserver
 	makedepends = go
 	depends = glibc
 	optdepends = ctags: for "go to definition" requests
-	source = https://github.com/mattn/efm-langserver/archive/v0.0.42/efm-langserver-v0.0.42.tar.gz
-	sha256sums = 44ef0d86c7a1e9d64f205cbcb69ce242b6ca94d933963ef512747a6d03a553a3
+	source = https://github.com/mattn/efm-langserver/archive/v0.0.43/efm-langserver-v0.0.43.tar.gz
+	sha256sums = 2e0773a5a61f4995235a036082068955725435b80e522e2df21f2a1540286b64
 
 pkgname = efm-langserver
