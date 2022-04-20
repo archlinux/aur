@@ -83,16 +83,6 @@ pkgbase = matlab
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = matlab
-	optdepends = gcc9: For MEX support
-	optdepends = gcc8-fortran: For MEX support
-	optdepends = gcc8: For MEX support
-	optdepends = gcc8-fortran: For MEX support
-	optdepends = gcc6: For MEX support
-	optdepends = gcc6-fortran: For MEX support
-	optdepends = gcc49: For MEX support
-	optdepends = gcc47: For MEX support
-
 pkgname = python-matlabengine
 	depends = alsa-lib
 	depends = atk
@@ -160,3 +150,13 @@ pkgname = python-matlabengine
 	depends = xerces-c
 	depends = python
 	depends = matlab
+
+pkgname = matlab
+	optdepends = gcc9: For MEX support
+	optdepends = gcc8-fortran: For MEX support
+	optdepends = gcc8: For MEX support
+	optdepends = gcc8-fortran: For MEX support
+	optdepends = gcc6: For MEX support
+	optdepends = gcc6-fortran: For MEX support
+	optdepends = gcc49: For MEX support
+	optdepends = gcc47: For MEX support

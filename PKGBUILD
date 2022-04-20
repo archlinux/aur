@@ -3,7 +3,9 @@
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
 pkgbase=matlab
-pkgname=('matlab' 'python-matlabengine')
+# python-matlabengine must be packaged before matlab, because package_matlab
+# moves files needed by package_python-matlabengine, they're expensive to copy.
+pkgname=('python-matlabengine' 'matlab')
 pkgrel=3
 # No need to modify the pkgver here, it will be determined by the script
 # in the offline installer.
@@ -178,7 +180,6 @@ build() {
   msg2 "Removing build licenses..."
   rm -rf "${srcdir}/build/licenses/*"
 }
-
 
 package_python-matlabengine() {
   depends+=("python" "matlab")
