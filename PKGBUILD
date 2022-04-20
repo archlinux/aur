@@ -1,9 +1,9 @@
 # Maintainer: Marc Vidal <mvidaldp@gmail.com>
 
 pkgname=liblsl
-pkgver=1.15.2
-_pkgver=v1.15.2
-pkgrel=2
+pkgver=1.16.0
+_pkgver=v1.16.0
+pkgrel=1
 pkgdesc='C++ lsl library for multi-modal time-synched data transmission over the local network (stable release)'
 arch=('any')
 url='https://github.com/sccn/liblsl/'
