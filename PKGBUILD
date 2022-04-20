@@ -4,7 +4,7 @@
 
 pkgbase=matlab
 pkgname=('matlab' 'python-matlabengine')
-pkgrel=2
+pkgrel=3
 # No need to modify the pkgver here, it will be determined by the script
 # in the offline installer.
 pkgver=9.12.0.1903524
@@ -309,24 +309,12 @@ package_matlab() {
     "${pkgdir}/${instdir}/backup/${sysdir}/"
   sed -i "s/gfortran/${gfortranexc}/g" "${pkgdir}/${instdir}/${sysdir}/gfortran6.xml"
 
-  msg2 "Removing unused library files..."
+  msg2 "Remove unused library files"
   # <MATLABROOT>/sys/os/glnxa64/README.libstdc++
   sysdir="sys/os/glnxa64"
   install -d -m755 "${pkgdir}/${instdir}/backup/${sysdir}"
-  mv "${pkgdir}/${instdir}/${sysdir}/"{libstdc++.so.6.0.28,libstdc++.so.6} \
+  mv "${pkgdir}/${instdir}/${sysdir}/"{libstdc++.so.*,libgcc_s.so.*,libgfortran.so.*,libquadmath.so.*} \
     "${pkgdir}/${instdir}/backup/${sysdir}/"
-  mv "${pkgdir}/${instdir}/${sysdir}/libgcc_s.so.1" \
-    "${pkgdir}/${instdir}/backup/${sysdir}/"
-  mv "${pkgdir}/${instdir}/${sysdir}/"{libgfortran.so.5.0.0,libgfortran.so.5} \
-    "${pkgdir}/${instdir}/backup/${sysdir}/"
-  mv "${pkgdir}/${instdir}/${sysdir}/"{libquadmath.so.0.0.0,libquadmath.so.0} \
-    "${pkgdir}/${instdir}/backup/${sysdir}/"
-
-  # Make sure MATLAB can find the proper library libgfortran.so.3.
-  mkdir -p "${pkgdir}/${instdir}/backup/bin"
-  cp "${pkgdir}/${instdir}/bin/matlab" "${pkgdir}/${instdir}/backup/bin"
-  # The GCC dependency should be determined at runtime.
-  sed -i "1s#^#if pacman -Q "${gfortranlib}' > /dev/null 2>&1 ; then \n export GCCVERSION=$(pacman -Q '${gfortranlib}" | awk '{print \$2}' | cut -d- -f1) \nfi\n\n#" "${pkgdir}/${instdir}/bin/matlab"
-  sed -i "1s/^/# Check the optional GCC dependency.\n/" "${pkgdir}/${instdir}/bin/matlab"
-  sed -i 's|LD_LIBRARY_PATH="`eval echo $LD_LIBRARY_PATH`"|if [ -n "${GCCVERSION}" ]; then \n LD_LIBRARY_PATH="`eval echo $LD_LIBRARY_PATH`:/usr/lib/gcc/x86_64-pc-linux-gnu/${GCCVERSION}"; \n else \n LD_LIBRARY_PATH="`eval echo $LD_LIBRARY_PATH`" \n fi \n|g' "${pkgdir}/${instdir}/bin/matlab"
+  mv ${pkgdir}/${instdir}/bin/glnxa64/libfreetype.so.* \
+    "${pkgdir}/${instdir}/backup/bin/glnxa64/"
 }
