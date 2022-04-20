@@ -2,14 +2,14 @@
 
 pkgbase=pretendard
 pkgname=("otf-${pkgbase}" "ttf-${pkgbase}")
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="A cross-platform multilingual sans-serif font mainly for Korean support"
 url="https://github.com/orioncactus/pretendard"
 arch=('any')
 license=('OFL')
 source=("https://github.com/orioncactus/pretendard/releases/download/v${pkgver}/Pretendard-${pkgver}.zip")
-sha256sums=('3e54c46625112213e1bbf1420ba5c2e1e67f91891ea13a38ef00370a3e8941c8')
+sha256sums=('c27e66f9697603c3f3e60eed88d93bd0150e8d6832a8e80a1c26c0c7b9f2752d')
 
 package_otf-pretendard() {
     install -Dm644 public/static/*.otf -t "$pkgdir"/usr/share/fonts/OTF
