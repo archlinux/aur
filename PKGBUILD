@@ -1,44 +1,47 @@
-# Maintainer: SuchBlue
+# Maintainer: <abishekj274@gmail.com>
 pkgname=salad-git
-pkgver=0.5.2
+pkgver=0.5.8.r45.gf3419660
 pkgrel=1
-epoch=
-pkgdesc="Salad allows gamers to mine crypto in their downtime. We turn your GPU power into credits you can spend on items like subscriptions, games, gift cards, and more from our curated storefront."
+pkgdesc="Allows gamers to mine crypto in their downtime [git version]."
 arch=(x86_64)
-url=""
-license=('MIT')
-groups=()
-depends=(nodejs npm)
-makedepends=(unzip wget sudo sed)
-checkdepends=()
+url="https://salad.com"
+license=("MIT")
+depends=("nodejs" "libxcrypt-compat" "nss" "gtk3" "alsa-lib")
+makedepends=("yarn" "git")
 optdepends=()
-provides=(salad)
-conflicts=(salad)
-replaces=()
-backup=()
-options=()
-install=
-changelog=
-source=("https://github.com/SaladTechnologies/salad-applications/archive/refs/tags/0.5.2.zip")
-noextract=()
-md5sums=('SKIP')
-validpgpkeys=()
+source=("git+https://github.com/SaladTechnologies/salad-applications.git")
+sha256sums=('SKIP')
+conflicts=("salad")
+provides=("salad")
+
+pkgver() {
+	cd "${srcdir}/salad-applications"
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
-	cd "salad-applications-0.5.2/packages/desktop-app"
-	sed -i 's/: "electron-builder/: "electron-builder -l pacman/g' package.json	
+	cd "salad-applications/packages/desktop-app"
+	sed -i 's/: "electron-builder/: "electron-builder --linux pacman/g' package.json	
 }
 
 build() {
-	cd "salad-applications-0.5.2/packages/desktop-app"	
-	npm install --force
-	npm run lint
-	npm run build-app
-	npm run build-installer
+	cd "salad-applications/packages/desktop-app"	
+	yarn install
+	yarn run lint
+	yarn run build-app
+	yarn run build-installer
 }
 
 package() {
-#	cd "salad-applications-0.5.2/packages/desktop-app"
-	cd "salad-applications-0.5.2/packages/desktop-app/dist/app"
-	sudo pacman -U Salad-0.5.2.pacman
+	SLDVER="0.5.8"
+	cd "salad-applications/packages/desktop-app/dist/app"
+	tar xf "Salad-${SLDVER}.pacman" --directory="${pkgdir}"
+	rm "${pkgdir}/.MTREE"
+	rm "${pkgdir}/.INSTALL"
+	rm "${pkgdir}/.PKGINFO"
+	mkdir -p "${pkgdir}/usr/bin"
+	ln -s "/opt/Salad/salad" "${pkgdir}/usr/bin/salad"
+	install -Dm644 "${srcdir}/salad-applications/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
+
+
