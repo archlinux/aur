@@ -1,15 +1,12 @@
 pkgbase = fx
 	pkgdesc = Command-line tool and terminal JSON viewer
-	pkgver = 20.0.2
+	pkgver = 21.0.0
 	pkgrel = 1
 	url = https://github.com/antonmedv/fx
 	arch = any
 	license = MIT
-	makedepends = npm
-	makedepends = jq
-	noextract = fx-20.0.2.tgz
-	source = https://registry.npmjs.org/fx/-/fx-20.0.2.tgz
-	sha256sums = 7ec01246c8291cd6194587e4fe0eba92a554336ec2342a74c9eb47cf1b41179c
+	makedepends = go
+	source = https://github.com/antonmedv/fx/archive/refs/tags/21.0.0.tar.gz
+	sha256sums = cd3a34b9072e0aafd0fb362daf7400d7e1fad9ae326c85302191e9179e6be749
 
 pkgname = fx
-
