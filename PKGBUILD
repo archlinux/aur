@@ -3,17 +3,17 @@
 
 pkgname=python-quantlib
 _pkgname=QuantLib-SWIG
-pkgver=1.25
+pkgver=1.26
 pkgrel=1
 pkgdesc="A Python binding for QuantLib."
 arch=("x86_64")
 url="http://quantlib.org"
 license=("BSD")
 options=(!libtool)
-depends=("quantlib>=1.25" "python" "openmp")
+depends=("quantlib>=1.26" "python" "openmp")
 makedepends=("clang" "boost")
 source=(https://github.com/lballabio/$_pkgname/releases/download/$_pkgname-v$pkgver/$_pkgname-$pkgver.tar.gz)
-sha256sums=("cd525da3cc7a0dde344eecebe0e04844f1eef675e9f5a099928de1c24f28cd3a")
+sha256sums=("84838a1d0ad3994a195646c04e9c85bfc9314b8b3987c26853ea5d645fb62a8e")
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
