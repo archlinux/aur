@@ -1,5 +1,5 @@
 pkgname=wiki-loves-monuments-wallpapers
-pkgver=2020
+pkgver=2021
 pkgrel=1
 pkgdesc="Use images from Wikipedia's 'Wiki Loves Monuments' annual photographic competition on your desktop"
 url="https://www.wikilovesmonuments.org"
@@ -124,9 +124,21 @@ source=(
     'image-94589712.jpg::https://upload.wikimedia.org/wikipedia/commons/a/a2/Pietrapertosa_in_bianco.jpg'
     'image-95311993.jpg::https://upload.wikimedia.org/wikipedia/commons/f/f3/%D8%A7%D9%87%D9%88%D8%A7%D8%B1_%D8%A7%D9%84%D8%B9%D8%B1%D8%A7%D9%82_%D9%84%D9%8A%D9%84%D8%A7.jpg'
     'image-94383958.jpg::https://upload.wikimedia.org/wikipedia/commons/e/e2/%E5%98%89%E7%BE%A9%E7%B8%A3%E6%96%B0%E6%B8%AF%E5%A5%89%E5%A4%A9%E5%AE%AE%E8%99%8E%E7%88%BA%E8%81%96%E8%AA%95%E9%A6%99%E6%9C%9F.jpg'
+    'image-111795830.jpg::https://upload.wikimedia.org/wikipedia/commons/7/74/Real_Gabinete_Portugu%C3%AAs_de_Leitura_10.jpg'
+    'image-110318569.jpg::https://upload.wikimedia.org/wikipedia/commons/d/d2/Kaplica_%C5%9Bw_Rocha_w_Krasnobrodzie.jpg'
+    'image-109836888.jpg::https://upload.wikimedia.org/wikipedia/commons/6/69/%D0%9F%D0%B0%D0%BD%D0%BE%D1%80%D0%B0%D0%BC%D0%B0_%D0%B1%D0%BB%D0%B0%D0%BA%D0%B8%D1%82%D0%BD%D0%BE%D1%97_%D0%BA%D1%96%D0%BC%D0%BD%D0%B0%D1%82%D0%B8.jpg'
+    'image-110086276.jpg::https://upload.wikimedia.org/wikipedia/commons/6/60/Z_brzaskiem.jpg'
+    'image-110406429.jpg::https://upload.wikimedia.org/wikipedia/commons/8/85/GALIMANTAPA.jpg'
+    'image-110111674.jpg::https://upload.wikimedia.org/wikipedia/commons/b/bd/%D0%A3%D1%81%D0%BF%D0%B5%D0%BD%D1%81%D1%8C%D0%BA%D0%B8%D0%B9_%D1%81%D0%BE%D0%B1%D0%BE%D1%80_%D0%B2%D0%B7%D0%B8%D0%BC%D0%BA%D1%83%2C_%D0%B0%D0%B5%D1%80%D0%BE%D1%84%D0%BE%D1%82%D0%BE.jpg'
+    'image-110604623.jpg::https://upload.wikimedia.org/wikipedia/commons/c/c7/County_Kerry_-_Ross_Castle_-_20200914175843.jpeg'
+    'image-110219328.jpg::https://upload.wikimedia.org/wikipedia/commons/2/26/%D0%9F%D0%BE%D0%BA%D1%80%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9_%D1%85%D1%80%D0%B0%D0%BC_%D1%81%D0%B5%D0%BB%D0%B0_%D0%9F%D0%BE%D1%81%D0%B5%D0%B2%D0%BA%D0%B8%D0%BD%D0%BE._%D0%93%D0%BE%D0%B4_%D0%BF%D0%BE%D1%81%D1%82%D1%80%D0%BE%D0%B9%D0%BA%D0%B8_1799._%D0%93%D1%80%D0%B8%D0%B1%D0%B0%D0%BD%D0%BE%D0%B2%D1%81%D0%BA%D0%B8%D0%B9_%D1%80%D0%B0%D0%B9%D0%BE%D0%BD._%D0%98%D1%8E%D0%BB%D1%8C._2021.jpg'
+    'image-110161981.jpg::https://upload.wikimedia.org/wikipedia/commons/b/b8/Altenburg_Luftaufnahme-20210523-RM-205559.jpg'
+    'image-110597108.jpg::https://upload.wikimedia.org/wikipedia/commons/1/1c/Shivalaya%2C_Badami_fort.jpg'
+    'image-110785934.jpg::https://upload.wikimedia.org/wikipedia/commons/f/f8/%CE%99%CE%B5%CF%81%CE%AC_%CE%9C%CE%BF%CE%BD%CE%AE_%CE%A0%CE%B1%CE%BD%CE%B1%CE%B3%CE%AF%CE%B1%CF%82_%CE%A0%CE%B5%CE%BB%CE%B5%CE%BA%CE%B7%CF%84%CE%AE%CF%82.jpg'
+    'image-110986152.jpg::https://upload.wikimedia.org/wikipedia/commons/7/7c/%CE%9F%CE%B4%CF%8C%CF%82_%CE%99%CF%80%CF%80%CE%BF%CF%84%CF%8E%CE%BD.jpg'
 )
 sha1sums=(
-    'd1571cd4c2210ba4b1b0161a31d0920004a47381'
+    '37d2a3cefefe129dfa1a2eed618b20683e432d1c'
     'f33f3cdd4d3c2485bc119ff4a72c54d260c3668d'
     '9f46d71d43317e3a84776c23af0e4c960f06aff0'
     '5a74a622db738dab05bac5f4be96cb9b607a31d2'
@@ -242,13 +254,26 @@ sha1sums=(
     '53187a670c620735dd0f55149c3cf754f179532b'
     '61231142b75e6dd163617ab679182733fb98d930'
     '4d5367ef6b24311c6347f39b95b354bade4d57c0'
+    'a63850d37701980fae44c01abaac6b6c3f79636e'
+    '28f24c7d41e543d632854c401ef5316ee07f1e8e'
+    'e760f1446f3b2f1273bf78efc6a61bfa60405fbe'
+    '87a09b79bf97edfcfeaa08cc0149d026c3a23a3f'
+    '0015e6a80101219280a595ca2dd1d3d9c641afc1'
+    '8e5c3e853bb6532e62ca47a0c24845a6678b52e4'
+    '5b50e2b3b53d6bbb863c18e3d363d6067cb2ae3a'
+    '86ae4f1f8e6286d356d340c57af472436cfe3103'
+    '62e2239a739347ef9d9d932d114f91ed0ff01420'
+    '6193e591b8c9607021be1098ea65546cca2c1359'
+    '9c3b2d849a2d8ef2804b1db7d8b38f0c193ea0de'
+    '5488115e0ef96204066e03c83e8a8e23b7fb629b'
 )
 _index=(
-    103 92 78 63 49 36 28 13 1 104 79 64 50 37 29 14 2 105 93 80 65 51 38 15 3
-    106 94 81 66 52 39 30 16 4 107 95 82 67 40 31 17 5 108 96 83 68 53 41 32 18
-    6 97 84 69 54 42 33 19 7 109 85 70 55 43 20 8 110 98 86 71 56 44 34 21 87 72
-    57 35 22 111 99 73 58 45 23 9 112 100 88 74 46 24 10 101 89 75 59 47 25 11
-    113 102 90 76 60 48 26 114 91 77 61 27 12 115 62
+    116 103 92 78 63 49 36 28 13 1 117 104 79 64 50 37 29 14 2 118 105 93 80 65
+    51 38 15 3 119 106 94 81 66 52 39 30 16 4 120 107 95 82 67 40 31 17 5 108 96
+    83 68 53 41 32 18 6 121 97 84 69 54 42 33 19 7 122 109 85 70 55 43 20 8 110
+    98 86 71 56 44 34 21 123 87 72 57 35 22 124 111 99 73 58 45 23 9 125 112 100
+    88 74 46 24 10 126 101 89 75 59 47 25 11 113 102 90 76 60 48 26 127 114 91
+    77 61 27 12 115 62
 )
 
 prepare() {
