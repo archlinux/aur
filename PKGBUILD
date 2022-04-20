@@ -1,10 +1,10 @@
 _pkgname="gofile-client"
 pkgname="python-$_pkgname"
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A wrapper around the gofile.io API"
 arch=('any')
-depends=('python')
+depends=('python-requests')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 url="https://github.com/rdnkarchiver/gofile-client"
 license=('Apache')

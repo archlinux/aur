@@ -1,7 +1,7 @@
 pkgbase = python-gofile-client
 	pkgdesc = A wrapper around the gofile.io API
 	pkgver = 1.0.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/rdnkarchiver/gofile-client
 	arch = any
 	license = Apache
@@ -9,7 +9,7 @@ pkgbase = python-gofile-client
 	makedepends = python-installer
 	makedepends = python-setuptools
 	makedepends = python-wheel
-	depends = python
+	depends = python-requests
 	source = https://files.pythonhosted.org/packages/source/g/gofile-client/gofile-client-1.0.1.tar.gz
 	sha256sums = 1cc54630f1f4cbc09654ded012b4a5cd4992aa6ee67442dbba873edd63d01eff
 
