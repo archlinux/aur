@@ -1,0 +1,22 @@
+[Unit]
+Description=Service for SheepIt client
+After=network.target
+
+[Service]
+User=sheepit-client
+ExecStart=/usr/bin/sheepit-client -config /etc/conf.d/sheepit-client
+CacheDirectoryMode=700
+CacheDirectory=sheepit-client/
+NoNewPrivileges=true
+PrivateDevices=true
+ProtectControlGroups=true
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectSystem=strict
+Restart=on-failure
+RestartSec=60
+RestrictNamespaces=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
