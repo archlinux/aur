@@ -4,7 +4,7 @@
 
 pkgname=franz
 #pkgver=${_pkgver//-/_} # Leaving it here for possible dev/beta package :)
-pkgver=5.8.0
+pkgver=5.9.2
 pkgrel=1
 # Due to the previous "_beta" naming
 epoch=1
@@ -13,10 +13,10 @@ arch=(x86_64 i686)
 url='https://meetfranz.com'
 license=(Apache)
 # Allow to easily switch between Electron versions.
-# Expected one is 'electron14' (Electron 14). May change soon.
+# Expected one is 'electron' (Electron 18). May change soon.
 # This is automatically replaced in `franz.sh` with the package name, as
 # the executable matches the package name (as of 2022-03-14).
-_electron='electron14'
+_electron='electron'
 depends=($_electron)
 makedepends=(expac git nvm python python2)
 source=("git+https://github.com/meetfranz/$pkgname#tag=v$pkgver"
