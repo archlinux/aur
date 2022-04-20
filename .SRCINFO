@@ -1,0 +1,23 @@
+pkgbase = plasma5-wallpapers-wallpaper-engine
+	pkgdesc = A simple kde wallpaper plugin integrating wallpaper engine
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://github.com/catsout/wallpaper-engine-kde-plugin
+	arch = any
+	license = GPL2
+	makedepends = extra-cmake-modules
+	makedepends = mpv
+	makedepends = vulkan-headers
+	depends = gst-libav
+	depends = python-websockets
+	depends = plasma-framework
+	depends = qt5-declarative
+	depends = qt5-websockets
+	depends = qt5-webchannel
+	optdepends = mpv: video playback
+	source = https://github.com/catsout/wallpaper-engine-kde-plugin/archive/refs/tags/v0.5.0.tar.gz
+	source = https://github.com/KhronosGroup/glslang/archive/refs/tags/11.9.0.tar.gz
+	sha256sums = 13e320a2e2758827daf7fc1132935cc1082235f8f38f7138b78996cbc85730d0
+	sha256sums = d5744adba19eef9ad3d73f524226b39fec559d94cb582cd442e3c5de930004b2
+
+pkgname = plasma5-wallpapers-wallpaper-engine
