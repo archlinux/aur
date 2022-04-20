@@ -1,4 +1,5 @@
-# Maintainer: Dominic Brekau <aur@dominic.brekau.de>
+# Maintainer: Peter Mattern <pmattern at arcor dot de>
+# Contributor: Dominic Brekau <aur@dominic.brekau.de>
 # Contributor: Timothy Redaelli <timothy.redaelli@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
