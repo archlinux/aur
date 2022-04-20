@@ -2,7 +2,7 @@
 
 pkgname=prometheus-nginxlog-exporter
 pkgver=1.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Export metrics from Nginx access log files to Prometheus"
 url="https://github.com/martin-helmich/prometheus-nginxlog-exporter"
 license=('Apache')
@@ -27,7 +27,7 @@ build() {
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export CGO_LDFLAGS="$LDFLAGS"
-  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+  export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw -buildvcs=false"
 
   go build -v -o prometheus-nginxlog-exporter .
 }
