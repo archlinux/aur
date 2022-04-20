@@ -12,3 +12,17 @@ pkgbase = pa-notify
 	md5sums = 263d9163d37dd580e8cda3bd7ee26fc5
 
 pkgname = pa-notify
+pkgbase = pa-notify
+	pkgdesc = PulseAudio volume notification
+	pkgver = 1.3.1
+	pkgrel = 1
+	url = https://github.com/ikrivosheev/pa-notify
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	depends = libnotify
+	depends = libpulse
+	source = pa-notify-1.3.1.tar.gz::https://github.com/ikrivosheev/pa-notify/archive/v1.3.1.tar.gz
+	md5sums = 263d9163d37dd580e8cda3bd7ee26fc5
+
+pkgname = pa-notify

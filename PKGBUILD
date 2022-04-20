@@ -1,8 +1,8 @@
 # Maintainer: Ivan Krivosheev <py.krivosheev@gmail.com>
 
 pkgname=pa-notify
-pkgver=1.3.2
-pkgrel=2
+pkgver=1.3.3
+pkgrel=1
 pkgdesc="PulseAudio volume notification"
 arch=(x86_64)
 url="https://github.com/ikrivosheev/pa-notify"
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(libnotify libpulse)
 makedepends=(cmake)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-md5sums=('263d9163d37dd580e8cda3bd7ee26fc5')
+md5sums=('5dc2f1c0deee50089c2c04032d4b73fc')
 
 build() {
     export CFLAGS+=" ${CPPFLAGS}"
