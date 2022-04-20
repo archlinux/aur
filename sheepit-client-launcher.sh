@@ -15,7 +15,7 @@ fi
 check_update() {
   echo 'Checking for update..';
 
-  { _CHECKED_AT=$(< "${_DATA}/update_checked_at"); } 2>/dev/null
+  { _CHECKED_AT=$(< "${_DATA}/update_checked_at"); } 2>/dev/null;
   _CHECKED_AT="${_CHECKED_AT:-0}";
   _NEXT_CHECK_AT=$(("${_CHECKED_AT}" + 60 * 10));
 
@@ -27,7 +27,7 @@ check_update() {
   echo -n 'Fetching MD5 of latest release.. ';
   _MD5_LATEST=$(curl --fail --silent https://www.sheepit-renderfarm.com/media/applet/client-info.php?get=md5);
   if [[ -z "${_MD5_LATEST}" ]]; then
-    echo 'FAILED (reason: request error)'
+    echo 'FAILED (reason: request error)';
     return 0;
   fi
   echo "${_MD5_LATEST}";
@@ -39,7 +39,7 @@ check_update() {
   if [[ "${_MD5_LATEST}" != "${_MD5_CURRENT}" ]]; then
     update;
   else
-    echo 'Checking for update.. DONE.'
+    echo 'Checking for update.. DONE.';
   fi
 
   date +%s > "${_DATA}/update_checked_at";
