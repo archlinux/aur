@@ -309,12 +309,12 @@ package_matlab() {
     "${pkgdir}/${instdir}/backup/${sysdir}/"
   sed -i "s/gfortran/${gfortranexc}/g" "${pkgdir}/${instdir}/${sysdir}/gfortran6.xml"
 
-  msg2 "Remove unused library files"
+  msg2 "Removing unused library files..."
   # <MATLABROOT>/sys/os/glnxa64/README.libstdc++
   sysdir="sys/os/glnxa64"
   install -d -m755 "${pkgdir}/${instdir}/backup/${sysdir}"
   mv "${pkgdir}/${instdir}/${sysdir}/"{libstdc++.so.*,libgcc_s.so.*,libgfortran.so.*,libquadmath.so.*} \
     "${pkgdir}/${instdir}/backup/${sysdir}/"
-  mv ${pkgdir}/${instdir}/bin/glnxa64/libfreetype.so.* \
+  mv ${pkgdir}/${instdir}/bin/glnxa64/libfreetype.so.* \ # See the README, "Off-line installer", step 3
     "${pkgdir}/${instdir}/backup/bin/glnxa64/"
 }
