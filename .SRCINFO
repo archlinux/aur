@@ -1,7 +1,7 @@
 pkgbase = python-torchvision
 	pkgdesc = Datasets, transforms, and models specific to computer vision
 	pkgver = 0.12.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/pytorch/vision
 	arch = x86_64
 	license = BSD
@@ -20,7 +20,11 @@ pkgbase = python-torchvision
 	optdepends = python-av: video reader backend (the default one)
 	optdepends = python-pycocotools: support for MS-COCO dataset
 	source = vision-0.12.0.tar.gz::https://github.com/pytorch/vision/archive/v0.12.0.tar.gz
+	source = https://github.com/NVIDIA/DALI/raw/main/dali/operators/reader/loader/video/nvdecode/cuviddec.h
+	source = https://github.com/NVIDIA/DALI/raw/main/dali/operators/reader/loader/video/nvdecode/nvcuvid.h
 	sha512sums = ebc48a9e9ef58cc93c1b095e565c67feb2bc1bf06551e8f891a0369c211c6732e10bf191298b0633a05664371fa6dc637aab851b01a57f6b3e0d5936e87ee8ae
+	sha512sums = 8f97deedab5b0de1154ce7f8486eadcc7556a9cbb01fb44a988729da80b982daafbfe8da32b7f3ced78c1544b3ac696a569c50a6b4cb244f502b07e615b4de10
+	sha512sums = 89f8d4410a238dc52b27200dfb8db9ff1a58777bdfebb346f3d157e16108930dc3b56f18b611f5de1cb081afa6be6768b52e2486cca57703b490194305dc1c67
 
 pkgname = python-torchvision
 	depends = python-numpy
