@@ -1,0 +1,13 @@
+pkgbase = scip
+	pkgdesc = Serial Console Interfacing Program
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/w0lff/scip
+	arch = x86_64
+	license = MIT
+	makedepends = rust
+	makedepends = git
+	source = scip-v1.0.0.tar.gz::https://gitlab.com/w0lff/scip/-/archive/v1.0.0/scip-v1.0.0.tar.gz
+	sha256sums = cc55b9da23b5eef01d06cadc295ef3543e67378f2f4206df3f06d9841afa3e7a
+
+pkgname = scip
