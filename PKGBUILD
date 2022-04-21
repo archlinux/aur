@@ -2,8 +2,8 @@
 # Developer: Taylor Marks <taylor@marksfam.com>
 
 pkgname=python-playsound-git
-pkgver=1.3.0
-pkgrel=31
+pkgver=git
+pkgrel=0
 pkgdesc="Pure Python, cross platform, single function module with no dependencies for playing sounds."
 arch=("any")
 url="https://github.com/TaylorSMarks/playsound"
@@ -24,5 +24,5 @@ package() {
 }
 pkgver() {
   cd "$srcdir"
-  printf ""$(git describe --tags --abbrev=0)".0."$(git log --format="%H" -n 1)""
+  printf ""$(git describe --tags --abbrev=0)""$(git log --format="%H" -n 1)""
 }
