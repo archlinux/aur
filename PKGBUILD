@@ -2,6 +2,7 @@
 # Contributor: Christopher A. Williamson
 # Contributor: Moritz Poldrack <moritz at poldrack dot dev>
 # Contributor: Pascal Mathis <mail@pascalmathis.com>
+# Contributor: Trustin Lee <t@motd.kr>
 pkgname=rambox-pro-bin
 _pkgname=rambox
 pkgver=2.0.2
