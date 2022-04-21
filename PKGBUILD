@@ -6,7 +6,7 @@ pkgdesc="Spotify alternative with no ads, payments or accounts"
 arch=("any")
 url="https://gitlab.com/zehkira/myuzi"
 license=("MIT")
-depends=("python-gobject" "youtube-dl" "gst-libav" "python-beautifulsoup4")
+depends=("python-gobject" "yt-dlp" "gst-libav" "python-beautifulsoup4")
 source=("https://gitlab.com/zehkira/myuzi/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=("SKIP")
 
