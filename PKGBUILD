@@ -3,7 +3,7 @@
 
 _pkgname=steamguard-cli
 pkgname=${_pkgname}-git
-pkgver=0.4.3.r1.145c03e9
+pkgver=0.4.3.r18.g2da17c9
 pkgrel=1
 pkgdesc="A command line utility to generate Steam 2FA codes and respond to confirmations."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -21,8 +21,16 @@ pkgver() {
 build() {
     cd "${srcdir}/${_pkgname}"
     cargo build --release
+
+    # completion
+    "target/release/${_pkgname}" completion --shell bash > "$srcdir/${_pkgname}/${_pkgname}"
+    "target/release/${_pkgname}" completion --shell zsh > "$srcdir/${_pkgname}/_${_pkgname}"
 }
 
 package() {
-    install -Dm755 "${srcdir}/${_pkgname}/target/release/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+    cd "${srcdir}/${_pkgname}"
+    # NOTE: Install as steamguard, otherwise completions won't work
+    install -Dm0755 "target/release/${_pkgname}" "${pkgdir}/usr/bin/steamguard"
+    install -Dm0644 "${_pkgname}" "${pkgdir}/usr/share/bash-completion/completions/steamguard"
+    install -Dm0644 "_${_pkgname}" "${pkgdir}/usr/share/zsh/site-functions/_steamguard"
 }
