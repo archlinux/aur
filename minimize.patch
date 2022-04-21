@@ -1,0 +1,168 @@
+diff --git a/configure.ac b/configure.ac
+index e89ad854f..7d4877299 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -128,11 +128,8 @@ GLIB_REQUIRED=2.67.1
+ GTK_REQUIRED=3.22.0
+ LIBWNCK_REQUIRED=40.0
+ LIBGNOME_MENU_REQUIRED=3.7.90
+-LIBECAL_REQUIRED=3.33.2
+-LIBEDATASERVER_REQUIRED=3.5.3
+ LIBSYSTEMD_REQUIRED=230
+ CAIRO_REQUIRED=1.0.0
+-GWEATHER_REQUIRED=3.91.0
+ DCONF_REQUIRED=0.13.4
+ XRANDR_REQUIRED=1.3.0
+ 
+@@ -144,12 +141,10 @@ PKG_CHECK_MODULES([PANEL], [
+   pango >= $PANGO_REQUIRED
+   gtk+-3.0 >= $GTK_REQUIRED
+   cairo-xlib
+-  gdm
+   glib-2.0 >= $GLIB_REQUIRED
+   gmodule-2.0 >= $GLIB_REQUIRED
+   gio-2.0 >= $GLIB_REQUIRED
+   gio-unix-2.0 >= $GLIB_REQUIRED
+-  gnome-desktop-3.0 >= $LIBGNOME_DESKTOP_REQUIRED
+   libgnome-menu-3.0 >= $LIBGNOME_MENU_REQUIRED
+   dconf >= $DCONF_REQUIRED
+   x11
+@@ -163,17 +158,6 @@ PKG_CHECK_MODULES([LIBGNOME_PANEL], [
+   gtk+-3.0 >= $GTK_REQUIRED
+ ])
+ 
+-PKG_CHECK_MODULES([ACTION_BUTTON], [
+-  gio-unix-2.0 >= $GLIB_REQUIRED
+-  gtk+-3.0 >= $GTK_REQUIRED
+-  libsystemd >= $LIBSYSTEMD_REQUIRED
+-  x11
+-])
+-
+-PKG_CHECK_MODULES(FISH, gtk+-3.0 >= $GTK_REQUIRED cairo >= $CAIRO_REQUIRED)
+-AC_SUBST(FISH_CFLAGS)
+-AC_SUBST(FISH_LIBS)
+-
+ PKG_CHECK_MODULES([LAUNCHER], [
+   gio-unix-2.0 >= $GLIB_REQUIRED
+   gtk+-3.0 >= $GTK_REQUIRED
+@@ -181,14 +165,6 @@ PKG_CHECK_MODULES([LAUNCHER], [
+   libsystemd >= $LIBSYSTEMD_REQUIRED
+ ])
+ 
+-PKG_CHECK_MODULES([MENU], [
+-  gdm
+-  gio-unix-2.0 >= $GLIB_REQUIRED
+-  gtk+-3.0 >= $GTK_REQUIRED
+-  libgnome-menu-3.0 >= $LIBGNOME_MENU_REQUIRED
+-  libsystemd >= $LIBSYSTEMD_REQUIRED
+-])
+-
+ PKG_CHECK_MODULES([NOTIFICATION_AREA], [
+   gtk+-3.0 >= $GTK_REQUIRED
+   x11
+@@ -210,45 +186,6 @@ AC_SUBST(WNCKLET_LIBS)
+ AC_CHECK_HEADERS(langinfo.h)
+ AC_CHECK_FUNCS(nl_langinfo)
+ 
+-PKG_CHECK_MODULES([CLOCK], [
+-  dconf >= $DCONF_REQUIRED
+-  gio-2.0 >= $GLIB_REQUIRED
+-  gio-unix-2.0 >= $GLIB_REQUIRED
+-  glib-2.0 >= $GLIB_REQUIRED
+-  gnome-desktop-3.0 >= $LIBGNOME_DESKTOP_REQUIRED
+-  gtk+-3.0 >= $GTK_REQUIRED
+-  gweather4 >= $GWEATHER_REQUIRED
+-  pango >= $PANGO_REQUIRED
+-  polkit-gobject-1
+-])
+-
+-# Check whether to enable e-d-s support for clock applet
+-AC_MSG_CHECKING([whether to enable evolution-data-server support])
+-AC_ARG_ENABLE([eds],
+-    AS_HELP_STRING([--enable-eds], [Whether to enable evolution-data-server support @<:@default=auto@:>@]),
+-    [], [enable_eds=auto])
+-AC_MSG_RESULT([$enable_eds])
+-CLOCK_EDS_ICONDIR=
+-if test "$enable_eds" != "no"; then
+-    PKG_CHECK_MODULES(CLOCK_EDS,[
+-        libecal-2.0 >= $LIBECAL_REQUIRED
+-        libedataserver-1.2 >= $LIBEDATASERVER_REQUIRED
+-     ], [have_eds=yes], [have_eds=no])
+-
+-    if test "$enable_eds" = "yes" -a "$have_eds" = "no"; then
+-        AC_MSG_ERROR([evolution-data-server support was requested but required dependencies were not found: $CLOCK_EDS_PKG_ERRORS])
+-    elif test "$have_eds" = "yes"; then
+-        enable_eds=yes
+-        AC_DEFINE([HAVE_EDS], 1, [Define to enable evolution-data-server support])
+-        CLOCK_EDS_ICONDIR=`$PKG_CONFIG --variable=datadir evolution-data-server-1.2`/pixmaps/evolution-data-server
+-    else
+-        enable_eds=no
+-    fi
+-fi
+-
+-AM_CONDITIONAL(ENABLE_EDS, test "$enable_eds" = "yes")
+-AC_SUBST(CLOCK_EDS_ICONDIR)
+-
+ dnl **************************************************************************
+ dnl Check if struct dirent contains a d_type member, for run dialog
+ dnl **************************************************************************
+@@ -296,18 +233,11 @@ AC_CONFIG_FILES([
+   docs/reference/libgnome-panel/Makefile
+ 
+   help/Makefile
+-  help/clock/Makefile
+-  help/fish/Makefile
+ 
+   man/Makefile
+ 
+   modules/Makefile
+-  modules/action-button/Makefile
+-  modules/clock/Makefile
+-  modules/clock/pixmaps/Makefile
+-  modules/fish/Makefile
+   modules/launcher/Makefile
+-  modules/menu/Makefile
+   modules/notification-area/Makefile
+   modules/separator/Makefile
+   modules/status-notifier/Makefile
+diff --git a/data/Makefile.am b/data/Makefile.am
+index 67339eae9..879905876 100644
+--- a/data/Makefile.am
++++ b/data/Makefile.am
+@@ -10,10 +10,8 @@ gsettings_ENUM_NAMESPACE = org.gnome.gnome-panel
+ gsettings_ENUM_FILES = $(top_srcdir)/gnome-panel/panel-enums-gsettings.h
+ 
+ gsettings_SCHEMAS = \
+-	org.gnome.gnome-panel.applet.fish.gschema.xml \
+ 	org.gnome.gnome-panel.applet.window-list.gschema.xml \
+ 	org.gnome.gnome-panel.applet.workspace-switcher.gschema.xml \
+-	org.gnome.gnome-panel.applet.clock.gschema.xml \
+ 	org.gnome.gnome-panel.applet.initial-settings.gschema.xml \
+ 	org.gnome.gnome-panel.gschema.xml \
+ 	org.gnome.gnome-panel.object.gschema.xml \
+diff --git a/help/Makefile.am b/help/Makefile.am
+index 8c086344e..9bd400e46 100644
+--- a/help/Makefile.am
++++ b/help/Makefile.am
+@@ -1,4 +1,4 @@
+-DIST_SUBDIRS = clock fish
++DIST_SUBDIRS =
+ SUBDIRS =
+ if ENABLE_DOCUMENTATION
+ SUBDIRS += $(DIST_SUBDIRS)
+diff --git a/modules/Makefile.am b/modules/Makefile.am
+index ee1ae0bf6..4b14792ac 100644
+--- a/modules/Makefile.am
++++ b/modules/Makefile.am
+@@ -1,11 +1,7 @@
+ NULL =
+ 
+ SUBDIRS = \
+-	action-button \
+-	clock \
+-	fish \
+ 	launcher \
+-	menu \
+ 	notification-area \
+ 	separator \
+ 	status-notifier \
