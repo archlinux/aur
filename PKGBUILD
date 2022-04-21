@@ -1,8 +1,8 @@
 # Maintainer: TNE <totallynotelite@gmail.com>
 
 pkgname=garuda-downloader-git
-pkgver=r17.5a2d5af
-pkgrel=1
+pkgver=r36.d3eccf2
+pkgrel=2
 pkgdesc="Installation image downloader for Garuda Linux with support for delta downloads"
 arch=('x86_64')
 url="https://gitlab.com/garuda-linux/applications/garuda-downloader"
