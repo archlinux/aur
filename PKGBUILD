@@ -75,7 +75,7 @@ _use_current=
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-mini
-pkgver=5.16.16
+pkgver=5.17.4
 pkgrel=1
 pkgdesc='Linux kernel and modules with minimal configuration'
 
@@ -88,7 +88,7 @@ makedepends=(
   'git'
 )
 options=('!strip')
-_gcc_more_v='20211114'
+_gcc_more_v='20220315'
 source=(
   "https://www.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/linux-${pkgver:0:4}.tar".{xz,sign}
   "https://cdn.kernel.org/pub/linux/kernel/v${pkgver:0:1}.x/patch-${pkgver}.xz"
@@ -100,11 +100,11 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-b2sums=('07a90cc640ff89e1359c06cee8c38abd33e51f9b9a89833e31a1d2750526fda4a59e8884db3c1ea63df0a37f0d3de6b5a922b014b7313d8abce20d90ac08adcb'
+b2sums=('82dc4a45cc25c781ac67aa6ed1e4c369544154960f41c4634d47621f381159687a227054976d078524cda28884d395a15f7542fe44ca74ce98ca6ff54a81d6d0'
         'SKIP'
-        'a9d94e225cfe46c4116a136da62240130efa32acc97f837abce15c37e1ac9174bd869e4208dbeff3d94fbf78585fbc46f5953f7eaa470607d0d88b7dbacc2db3'
-        '534091fb5034226d48f18da2114305860e67ee49a1d726b049a240ce61df83e840a9a255e5b8fa9279ec07dd69fb0aea6e2e48962792c2b5367db577a4423d8d'
-        'f37b180eac2737e7398654c9cf2d3b0ee93b194804d22827ad776a605692ddc098cba8ca7ba7dc2f2959cabc4eca92c73cdacbfa34182fdb98ab9199f161b5c4')
+        '453f8ff38a9c6bc69ebb18fe2ea413844e6987b6ff5e0c735f0d047b730349e35731d5a813c3732b330ae9e06e606987952f4d649b3b9b43144710dd296b769f'
+        '20674a8fcc0a85726e06460a7dbccfe731c46bf377cc3bf511b7591175e7df892f271bc1909e77d9a02913c753d241493502c5ab15d9f78e95f31aa4399c2c27'
+        'b473e6d41720ed96a47e8536e7834ce8656d1aa0055201e4158eea7fdf93d3b7cb591dfa1ea628ed5dbe64e07ea8acd05a680ebb7b88bcf2e3e1e84975ad17ce')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -209,7 +209,7 @@ prepare() {
         # https://github.com/graysky2/kernel_gcc_patch
         if [ "${_enable_gcc_more_v}" = "y" ]; then
         echo "Patching to enable GCC optimization for other uarchs..."
-        patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.15+.patch"
+        patch -Np1 -i "$srcdir/kernel_compiler_patch-$_gcc_more_v/more-uarches-for-kernel-5.17+.patch"
         fi
 
 		### Get kernel version
