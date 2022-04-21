@@ -15,7 +15,7 @@ makedepends=('python-setuptools-scm')
 license=('GPL3')
 arch=('any')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('291d33e12b9e038257a44015948f8c823872888b12b37f3a2f388cc28d9374bff81f7316098a98f1b460cd8efe7d1f3521999939315487ff0033bac9eb47caea')
+sha512sums=('a07fd19fe0c099e674a42a7894bf306c0e1c59b7d96ad84fa613bd2b60701473d243afde11f17a128362ca7e756f3cbe4d9adb8ffe618319253fda90c568e968')
 
 build() {
   export SETUPTOOLS_SCM_PRETEND_VERSION="${pkgver}"
