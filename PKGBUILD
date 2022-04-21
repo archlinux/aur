@@ -10,7 +10,6 @@ pkgrel=1
 pkgdesc='A simple Minecraft version that offers a common gaming experience'
 url=https://www.az-launcher.nz/
 arch=(x86_64)
-makedepends=(tar)
 options=(!strip)
 license=(unknown)
 _folder="AZ-Launcher_${pkgver}-linux64"
@@ -21,7 +20,7 @@ sha256sums=('7abb5a753d8e3077823b020cb6b631c13c222a8436c4f145c6688fb87ea82015')
 
 prepare() {
     #extract the tar then extract the appimage
-    tar -xf "${_filename}"
+    #tar -xf "${_filename}" - not needed
     chmod +x "${_folder}/${_appimage}"
     ./"${_folder}/${_appimage}" --appimage-extract
 }
