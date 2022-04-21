@@ -1,8 +1,9 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname=olaris-git
 _pkgname=olaris-server
-pkgver=v0.3.3.r71.g022d7aa
-pkgrel=2
+epoch=1
+pkgver=0.4.0rc1.r16.g6a31f14
+pkgrel=1
 pkgdesc='open-source, community driven, media manager and transcoding server'
 arch=('x86_64')
 url="https://gitlab.com/olaris/olaris-server"
@@ -21,7 +22,7 @@ sha256sums=('SKIP' 'SKIP' 'SKIP'
 
 pkgver() {
   cd ${_pkgname}
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
