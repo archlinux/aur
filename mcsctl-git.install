@@ -8,10 +8,23 @@ user_exists() {
 	fi
 }
 
+group_exists() {
+	if getent group "$MCS_USER" > /dev/null; then
+		return $(true)
+	else
+		return $(false)
+	fi
+}
+
 post_install() {
+	if ! group_exists; then
+		echo "Adding group \"$MCS_USER\"..."
+		groupadd "$MCS_USER"
+	fi
+
 	if ! user_exists; then
 		echo "Adding user \"$MCS_USER\"..."
-		useradd --user-group --comment 'Minecraft user' --shell /usr/bin/nologin --create-home "$MCS_USER" &> /dev/null
+		useradd --gid "$MCS_USER" --comment 'Minecraft user' --shell /usr/bin/nologin --create-home "$MCS_USER" &> /dev/null
 		passwd --lock "$MCS_USER" > /dev/null
 	fi
 }
