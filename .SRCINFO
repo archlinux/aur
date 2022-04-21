@@ -1,6 +1,6 @@
 pkgbase = oh-my-posh-bin
 	pkgdesc = A prompt theme engine for any shell.
-	pkgver = 7.64.2
+	pkgver = 7.67.0
 	pkgrel = 1
 	url = https://github.com/JanDeDobbeleer/oh-my-posh
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = oh-my-posh-bin
 	makedepends = sed
 	provides = oh-my-posh
 	conflicts = oh-my-posh
-	source = https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v7.64.2/posh-linux-amd64
-	sha256sums = df69959e48abfcab0010ea8100f535e15dccc1800ca43882224c5c13364cbc03
+	source = https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/v7.67.0/posh-linux-amd64
+	sha256sums = aeb46c8074de88338bb9061df80d50d780972ef088835bc439b616be2dab58df
 
 pkgname = oh-my-posh-bin
