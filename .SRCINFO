@@ -16,9 +16,9 @@ pkgbase = jdk17-dragonwell-bin
 	provides = java-runtime-openjdk=17
 	provides = java-runtime-headless=17
 	provides = java-runtime-headless-openjdk=17
-	source_x86_64 = jdk17-dragonwell-bin-17.0.2.0.2-x86_64.tar.gz::https://github.com/alibaba/dragonwell17/releases/download/dragonwell-17.0.2.0.2+8-GA_jdk-17.0.2-ga/Alibaba_Dragonwell_17.0.2.0.2+8-GA_x64_linux.tar.gz
+	source_x86_64 = jdk17-dragonwell-bin-17.0.2.0.2-x86_64.tar.gz::https://github.com/alibaba/dragonwell17/releases/download/dragonwell-17.0.2.0.2+8_jdk-17.0.2-ga/Alibaba_Dragonwell_17.0.2.0.2+8_x64_linux.tar.gz
 	sha256sums_x86_64 = a345601439294b56831ecdd1366ac4006c3828e25f18a0fc59f34aa07387a97b
-	source_aarch64 = jdk17-dragonwell-bin-17.0.2.0.2-aarch64.tar.gz::https://github.com/alibaba/dragonwell17/releases/download/dragonwell-17.0.2.0.2+8-GA_jdk-17.0.2-ga/Alibaba_Dragonwell_17.0.2.0.2+8-GA_aarch64_linux.tar.gz
+	source_aarch64 = jdk17-dragonwell-bin-17.0.2.0.2-aarch64.tar.gz::https://github.com/alibaba/dragonwell17/releases/download/dragonwell-17.0.2.0.2+8_jdk-17.0.2-ga/Alibaba_Dragonwell_17.0.2.0.2+8_aarch64_linux.tar.gz
 	sha256sums_aarch64 = cc9f9fbd33c117f164eacfbafa2ae92270d88bc9b3d4ea4a862a20cacdcf9115
 
 pkgname = jdk17-dragonwell-bin
