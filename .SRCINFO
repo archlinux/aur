@@ -1,15 +1,15 @@
 pkgbase = cro-chain-desktop-bin
 	pkgdesc = Crypto.org Chain desktop wallet (AppImage version)
-	pkgver = 0.7.4
+	pkgver = 0.7.6
 	pkgrel = 1
 	url = https://github.com/crypto-com/chain-desktop-wallet
 	arch = x86_64
 	license = Apache
 	provides = cro-chain-desktop
 	conflicts = cro-chain-desktop
-	source = chain-desktop-wallet-0.7.4-x86_64.AppImage::https://github.com/crypto-com/chain-desktop-wallet/releases/download/v0.7.4/chain-desktop-wallet-0.7.4-x86_64.AppImage
-	source = LICENSE::https://raw.githubusercontent.com/crypto-com/chain-desktop-wallet/v0.7.4/LICENSE
-	sha512sums = 7f3ae562eced8a3b84882010047a13e3cd3168a6484da93a7047c8f7ac1ff534b091020ff0a90778aeb5f54e140402776a790c5d5b2520f4b6e242396d5bd03f
+	source = chain-desktop-wallet-0.7.6-x86_64.AppImage::https://github.com/crypto-com/chain-desktop-wallet/releases/download/v0.7.6/chain-desktop-wallet-0.7.6-x86_64.AppImage
+	source = LICENSE::https://raw.githubusercontent.com/crypto-com/chain-desktop-wallet/v0.7.6/LICENSE
+	sha512sums = 86f89f4b8ff5098273b503098621890f5028c1be1fb39f783fcff3cfd7677fb34592b30a1899af45a6976f0077b1f3ceb523d051e99acc37c659e5502d202b26
 	sha512sums = 1a75d1990776c2c5cbc25b0d6381a67082c48ec3e7f18a4ad66caf55987548e5a622c1c8e330a1efaaf74e9c71aaad6d5a260062b50c5df9b26352c8efc6dd47
 
 pkgname = cro-chain-desktop-bin
