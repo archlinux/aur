@@ -1,0 +1,20 @@
+pkgbase = revela
+	pkgdesc = A static web image gallery generator.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://sr.ht/~yaroslav/revela/
+	arch = any
+	license = GPL2
+	makedepends = gcc
+	makedepends = make
+	makedepends = scdoc
+	makedepends = git
+	makedepends = binutils
+	depends = graphicsmagick
+	depends = libexif
+	provides = revela
+	conflicts = revela
+	source = revela-0.1.0::git+https://git.sr.ht/~yaroslav/revela#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = revela
