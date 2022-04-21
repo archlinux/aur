@@ -3,7 +3,7 @@
 # Contributer: Jamie Magee <jamie dot magee at gmail dot com>
 pkgname=java-openjfx-ea-bin
 _majorver=19
-_buildver=3
+_buildver=5
 pkgver=${_majorver}rc${_buildver}
 pkgrel=1
 pkgdesc="Java OpenJFX ${_majorver} Early-Access Build."
@@ -16,12 +16,12 @@ conflicts=("java${_majorver}-openjfx")
 source=("https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}_linux-x64_bin-sdk.zip"
         "https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}_linux-x64_bin-jmods.zip"
         "https://download2.gluonhq.com/openjfx/${_majorver}/openjfx-${_majorver}-ea+${_buildver}-javadoc.zip")
-sha256sums=('548d9028ea8c3e5912b4e95e41f9cc7ac172b360a44d847ef370867ecca30fac'
-            '528d1f81b0975740ceae822955208e638fab792505d009edfa3ebc7722432098'
-            '62bcd1d1268d045b58d7e1c1347806c8fa3726babbe19d60452a3775790811d7')
-sha512sums=('30d3d85bcc1283133fbdaf1ffb2587dddd744713d09b626323feb013add83756d4eaa14d1f04a122af6174b4121eca86c3ccd8eafdc0528bf0ca2272fa71a097'
-            '8f5a5b8756f09585e1bbe2fb02596706cedfdec0e5938e314ea88d331008f0a1033e9271fb941da853016274377f9dc4385d9a176880bdf6b51f5dffdf0610cd'
-            'e0db74e9d028fa74c09a1664418b316f9c164584e50de64142ba859ef9426688b14afa301e081f63f098d86d9769d5f4b27f116ffdc01b04c04a1b90eab33d7f')
+sha256sums=('d1882d364a145952438625a68e30e576594eaf58143267d5fa2c755c7c587c16'
+            'c4babb79e627a63da8cec6c661aa5ac26e5d70756a39686efadf512e28963a1f'
+            '16ffaaf82a6f143a201ebc318e78e8faffd8a3967c7fc4efc61ceb9394393c0b')
+sha512sums=('f17262e513b199efef2047ee6cc92dc07091040b79e44f7fcb6e0f37595651d6685ca444d28a61c36bf71e10f0701f37e1f0f3e344e01609949bbe44062cd364'
+            '70a649a3a85a395f3ac6a58935e39773c265bbbbbbbc2fced3329b0c8caf31352c87698e1820859d86a62dff9341cdc9e15a65980cb47d92ca62bc288d634764'
+            'a1141d991a4033f16e223191ade1a5b2de7f611d66059f56cba976b17b1d10e804dc4ca8799e009b1f179287e21e6791a80f96e63905635cd8d3b89cba1e4dec')
 
 
 _jvmdir="usr/lib/jvm/java-${_majorver}-openjdk"
