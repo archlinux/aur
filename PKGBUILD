@@ -3,7 +3,7 @@
 DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=vlc-luajit
-_vlcver=3.0.17.3
+_vlcver=3.0.17.4
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
@@ -167,7 +167,7 @@ options=('debug' '!emptydirs')
 source=(https://download.videolan.org/${_name}/${_vlcver}/${_name}-${_vlcver}${_vlcfixupver}.tar.xz
         'update-vlc-plugin-cache.hook'
         'vlc-live-media-2021.patch')
-sha512sums=('99095b39ed600c3a89ebc0d377a2fc2522b3623a56b0f6de2df50a3c6e0148c67c28c0f2d8dec28bbdf5c62cf29b3579429a79ed00440570643778a9871022b6'
+sha512sums=('dac14c6586603c064294672eb878253e52b3a7bef431fb10303345e5400591b5c1f2d452a2af03f503db0ca186582a84be06fdf05ab011c33f7b0bd5389c51fb'
             'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3'
             'ad17d6f4f2cc83841c1c89623c339ec3ee94f6084ea980e2c8cbc3903854c85e5396e31bfd8dc90745b41794670903d854c4d282d8adec263087a9d47b226ccc')
 
