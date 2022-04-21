@@ -1,5 +1,5 @@
 pkgname="backblaze-b2-bin"
-pkgver=3.2.1
+pkgver=3.3.0
 _pkgid="${pkgname%-bin}-${pkgver}"
 pkgrel=1
 pkgdesc="Backblaze B2 Command Line Client"
@@ -9,7 +9,7 @@ license=('MIT')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 
-sha256sums_x86_64=('60cdc2268d05a8178fde506c4820126e9edb8e756ab987a678f6da0caabdbbd0')
+sha256sums_x86_64=('1740e307c23c6145b96abc7ac49d0c2d71af42bf0b964a9cd15a7ff0a9bf7abf')
 source_x86_64=("b2-linux"::"${url}/releases/download/v${pkgver}/b2-linux")
 
 prepare() {
