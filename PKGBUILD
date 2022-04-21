@@ -18,7 +18,10 @@ source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-math/archive/${pkgname}6_${pkgver}.tar.gz"
   "cmake.patch::https://github.com/ignitionrobotics/ign-math/commit/6340f89b4d19e6b6aa38ae632760da264409c1ef.diff"
 )
-sha256sums=('9e00284cd6d51afe190165b2b44258e19bd4a28781cbacf21fd6b0bae43c16aa' SKIP)
+sha256sums=(
+  "9e00284cd6d51afe190165b2b44258e19bd4a28781cbacf21fd6b0bae43c16aa"
+  "d94835e0c1fe543ac47d7de1ee0906c171ce91c2f4e60bf597172c951d66a605"
+)
 
 depends=(
   swig
