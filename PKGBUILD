@@ -2,7 +2,7 @@
 
 pkgname=misskey
 pkgver=12.110.0
-pkgrel=2
+pkgrel=3
 pkgdesc="🌎 An interplanetary microblogging platform 🚀 (Experimental)"
 url="https://github.com/misskey-dev/misskey"
 arch=("x86_64")
@@ -17,16 +17,19 @@ _commit="33c22b5f3efa4110c9b517c224c9fdfba7e6c64b" #tag/12.110.0
 source=("git+https://github.com/misskey-dev/misskey.git#commit=${_commit}"
         "${pkgname}.install"
         "${pkgname}.service"
+        "${pkgname}-db-upgrade.sh"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
 md5sums=('SKIP'
-         'aa0312f32fe331cd7a2e471902dad1f4'
+         '74797428d78ba89b328c7ef98fda2786'
          '9abc87cea2314b95334d4ad3b309e931'
+         '482ab8e6ce416e4490459b4dd78cc158'
          'a3fe48c606eabebf818106648c0bf0d9'
          'c6f7dc5885f8db2329b3b1e3c2a67ef5')
 sha256sums=('SKIP'
-            'd860082dbc90b0e7ecadcb1bfeeeb11dae6f24544d4746883e4a2bfafd052284'
+            '60cd6fb87a1ecde4db123cfa70ea308fb4559c3a0f5f84920af8473dcc9522a1'
             '5cd19f1798eb1852c47c7786021adede99d95ab83feb0802e7b1fba50a308517'
+            '88d8c9853aa2ac070ff76c59d7ae4d61bbd5ae50b141794f50d91bc350954974'
             'a3ff9c1b77920ebbb0df8fb1affe9e8ef54d907bd4d16ed7c6076cbf52726df7'
             'c368b2ed2efbeca0e488f883defb2ccb7ed4661cc6832d2c396176206a794f34')
 
@@ -37,16 +40,16 @@ pkgver() {
 
 prepare() {
     cd "${pkgname}"
-    
+
     # Dependency handling
     git submodule update --init
     HOME="${srcdir}/${pkgname}" yarn install
-    
+
     # Example configuration
     ## Change example configuration to reflect
     ## this packages purpose
     _example_file="${srcdir}/${pkgname}/.config/example.yml"
-    
+
     sed -i \
         's|example-misskey-user|misskey|;
         s|  pass: example-misskey-pass|# pass: misskey|;
@@ -57,7 +60,7 @@ prepare() {
 build() {
     cd "${pkgname}"
     NODE_ENV=production HOME="${srcdir}/${pkgname}" yarn build
-    
+
     # Cleanup
     find "${srcdir}/${pkgname}" \
         -depth \
@@ -68,7 +71,8 @@ build() {
         -o -iname 'darwin-arm64' \
         -o -iname 'darwin-x64' \
         -o -iname 'win32-ia32' \
-        -o -iname 'win32-x64' \) \
+        -o -iname 'win32-x64' \
+        -o -iname 'linux-arm64' \) \
         -execdir rm -rf '{}' \;
     find "${srcdir}/${pkgname}" \
         -type f \
@@ -96,29 +100,33 @@ build() {
 package() {
     # systemd files
     install -Dm644 ${pkgname}.service -t "${pkgdir}"/usr/lib/systemd/system/
-    install -Dm644 ${pkgname}.sysusers "${pkgdir}"/usr/lib/sysusers.d/${pkgname}.conf
-    install -Dm644 ${pkgname}.tmpfiles "${pkgdir}"/usr/lib/tmpfiles.d/${pkgname}.conf
-    
+    install -Dm644 ${pkgname}.sysusers "${pkgdir}/usr/lib/sysusers.d/${pkgname}.conf"
+    install -Dm644 ${pkgname}.tmpfiles "${pkgdir}/usr/lib/tmpfiles.d/${pkgname}.conf"
+
     install -dm755 "${pkgdir}/usr/share/webapps"
     mv "${srcdir}/${pkgname}" "${pkgdir}/usr/share/webapps/"
-    
+
     # config setup
     install -dm755 "${pkgdir}/etc/webapps/${pkgname}"
     mv "${pkgdir}/usr/share/webapps/${pkgname}/.config/example.yml" -t \
         "${pkgdir}/etc/webapps/${pkgname}/"
     rmdir "${pkgdir}/usr/share/webapps/${pkgname}/.config"
     ln -s "/etc/webapps/${pkgname}" "${pkgdir}/usr/share/webapps/${pkgname}/.config"
-    
+
     # cache setup
     ln -s "/var/cache/${pkgname}" "${pkgdir}/usr/share/webapps/${pkgname}/.cache"
-    
+
     # yarn, npm setup
     ln -s "/var/lib/${pkgname}/yarn" "${pkgdir}/usr/share/webapps/${pkgname}/.yarn"
     ln -s "/var/lib/${pkgname}/npm" "${pkgdir}/usr/share/webapps/${pkgname}/.npm"
-    
+
     # files (upload, …)
-    ln -s "/var/lib/${pkgname}/files" "${pkgdir}/usr/share/webapps/${pkgname}/files" 
-    
+    ln -s "/var/lib/${pkgname}/files" "${pkgdir}/usr/share/webapps/${pkgname}/files"
+
+    # db-update script
+    install -dm755 "${pkgdir}/usr/lib/${pkgname}"
+    install -Dm700 "${pkgname}-db-upgrade.sh" -t "${pkgdir}/usr/lib/${pkgname}"
+
     # license
     install -Dm644 "${pkgdir}/usr/share/webapps/${pkgname}/COPYING" \
         "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
