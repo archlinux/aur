@@ -24,7 +24,7 @@ source=("$url/releases/download/v$__pkgver/$__jar"
         "$__pkgname-debug-launcher.sh"
         "$__pkgname-electron-launcher.sh")
 sha256sums=('aece7cebf31c977197e762304d5182b2a18111140da3dffa9a12311893ac2ce4'
-            '22a6a9a8c8198985759f66b35377d87bce82d46dbf7a4a7505b55621a9c5487e'
+            '7ec4e0722d0312384672ccd01d939cce0fe356cf16d23f3473e7502cdddbccd3'
             '7528715b5b8d8360a9fd7dc096b51fd52bf3da671167e224b6cb637437fc4831'
             '1a075de252d4d1e4a025e26d379985995893e03d2ac9182ab8a48624b7076470'
             '39636e9a235e129312cbea43ffdaa3739fa24737e1d6b3388b354d0219272f8b'
