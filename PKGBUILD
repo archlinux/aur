@@ -1,8 +1,8 @@
-# Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
+# Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=readxl
-_cranver=1.3.1
+_cranver=1.4.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -13,7 +13,7 @@ license=(GPL3)
 depends=(r r-cellranger 'r-rcpp>=0.12.18' 'r-tibble>=1.3.1' r-progress)
 optdepends=(r-covr r-knitr r-rmarkdown r-rprojroot r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('24b441713e2f46a3e7c6813230ad6ea4d4ddf7e0816ad76614f33094fbaaaa96')
+sha256sums=('ab9239c249f79b649f7665a612b3dbf4b774ab633115e6dee41091a8cb2491f7')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"
