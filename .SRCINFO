@@ -1,0 +1,13 @@
+pkgbase = udict-bin
+	pkgdesc = A CLI tool for fetching Urban Dictionary definitions
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/lsmb/udict
+	arch = x86_64
+	license = MIT
+	provides = udict
+	conflicts = udict
+	source = https://github.com/lsmb/udict/releases/download/v0.1.0/udict-0.1.0-x86_64.tar.gz
+	sha256sums = 6212db5ed07f695a0e8c07ee137e1a8373c4c977f0334850f39db2b6e1cb25b9
+
+pkgname = udict-bin
