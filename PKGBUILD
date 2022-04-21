@@ -2,8 +2,8 @@
 # Contributor: Xiang Gao <qasdfgtyuiop at gmail dot com>
 
 pkgname=bazel-buildtools
-pkgver=5.0.1
-pkgrel=3
+pkgver=5.1.0
+pkgrel=1
 arch=('x86_64')
 url='https://github.com/bazelbuild/buildtools'
 license=('Apache')
@@ -12,7 +12,7 @@ makedepends=("bazel" "git")
 depends=("java-runtime=11")
 
 source=("$url/archive/$pkgver.tar.gz")
-sha256sums=("7f43df3cca7bb4ea443b4159edd7a204c8d771890a69a50a190dc9543760ca21")
+sha256sums=("e3bb0dc8b0274ea1aca75f1f8c0c835adbe589708ea89bf698069d0790701ea3")
 
 build() {
   cd buildtools-$pkgver
