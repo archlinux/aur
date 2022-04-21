@@ -2,7 +2,7 @@
 
 pkgname=gnome-shell-extension-compiz-windows-effect-git
 pkgver=r21.fb74c2a
-pkgrel=1
+pkgrel=2
 pkgdesc="Compiz wobbly windows effect with libanimation engine."
 arch=('any')
 url="https://github.com/hermes83/compiz-windows-effect"
