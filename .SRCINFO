@@ -1,6 +1,6 @@
 pkgbase = r-clipr
 	pkgdesc = Read and Write from the System Clipboard
-	pkgver = 0.7.1
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=clipr
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = r-clipr
 	optdepends = r-rmarkdown
 	optdepends = r-rstudioapi
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/clipr_0.7.1.tar.gz
-	sha256sums = ffad477b07847e3b68f7e4406bbd323025a8dae7e3c768943d4d307ee3248afb
+	source = https://cran.r-project.org/src/contrib/clipr_0.8.0.tar.gz
+	sha256sums = 32c2931992fbec9c31b71de3e27059f1cbb45b4b1f45fd42e0e8dbcec6de3be9
 
 pkgname = r-clipr
