@@ -17,7 +17,7 @@ optdepends=(
   )
 provides=(ez ezdl ezgc eztst ezssl)
 source=("https://gitlab.com/a4to/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
-sha256sums=('cad8c63b529510cc485cf8331d5479b17abdad416ef66b88a0c7264ed7dfb889')
+sha256sums=('8cadc5057dfd314f8e9138f8e6b754174e9e6f9842fb2dcce38a9c1c9d0a3529')
 
 package() {
   install -Dm775 usr/bin/* -t "${pkgdir}/usr/bin/"
