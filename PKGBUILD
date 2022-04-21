@@ -2,7 +2,7 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 # Contributor: ganthern <https://github.com/ganthern>
 pkgname=tutanota-desktop
-pkgver=3.94.9
+pkgver=3.95.4
 pkgrel=1
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('nss' 'libappindicator-gtk3' 'libnotify' 'org.freedesktop.secrets')
 makedepends=('nvm' 'python')
 source=("https://github.com/tutao/tutanota/archive/$pkgname-release-$pkgver.tar.gz"
         "$pkgname.desktop")
-sha256sums=('c2fc1fcf8c9de4a5312f104806527e65bc92b296605fe548e88fb6ea22ccbc99'
+sha256sums=('b39d4dceef31cbe7e863630e720513206aa198f378dcc1941ddfcfa607afe0be'
             '9a41e5474e1568b13093c91fd54538fe614003f5f5d4f895553f73207c28cb08')
 
 _ensure_local_nvm() {
