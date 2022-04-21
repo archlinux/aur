@@ -4,9 +4,9 @@ _java=17
 _pkgname=dragonwell
 pkgname="jdk${_java}-${_pkgname}-bin"
 pkgver=17.0.2.0.2
-_pkgver=17.0.2.0.2+8-GA
+_pkgver=17.0.2.0.2+8
 __pkgver=17.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Alibaba Dragonwell, as a downstream version of OpenJDK, is the OpenJDK implementation at Alibaba optimized for online e-commerce, financial, logistics applications running on 100,000+ servers."
 arch=("x86_64" "aarch64")
 url="https://dragonwell-jdk.io"
@@ -27,5 +27,5 @@ sha256sums_aarch64=('cc9f9fbd33c117f164eacfbafa2ae92270d88bc9b3d4ea4a862a20cacdc
 
 package() {
     install -d $pkgdir/usr/lib/jvm/java-17-dragonwell
-    mv $srcdir/dragonwell-$_pkgver/* $pkgdir/usr/lib/jvm/java-17-dragonwell
+    mv $srcdir/dragonwell-$_pkgver-GA/* $pkgdir/usr/lib/jvm/java-17-dragonwell
 }
