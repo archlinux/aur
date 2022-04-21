@@ -1,7 +1,7 @@
 # Maintainer: max.bra <max dot bra at alice dot it>
 
 pkgname=hub-young
-pkgver=5.6.253
+pkgver=5.8.264
 pkgrel=1
 pkgdesc="La piattaforma facile, gratuita e innovativa per la didattica digitale."
 arch=('x86_64')
@@ -22,7 +22,7 @@ options=(!strip)
 _debname=HUB-Young.deb
 
 source=(https://bce.mondadorieducation.it/media_educar/contenuti/appdilettura/younglinux.zip)
-sha256sums=('63b292ae5797c8434bae7512c416a7b5d749caf611a3657e012d272319b9ef4c')
+sha256sums=('0421cf7897f2ce416bbb33b6ecbe99a746a71cd29800bac9b11a24ffe1391e0d')
 
 prepare() {
   cd "$srcdir"
