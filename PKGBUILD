@@ -8,8 +8,8 @@ arch=('any')
 url="https://gitlab.com/sixsixfive/DarK-icons"
 license=('CC BY-SA 4.0')
 depends=('gtk-update-icon-cache')
-provides=("${pkgname%-git}")
-conflicts=("${pkgname%-git}")
+provides=()
+conflicts=()
 options=('!strip')
 source=(
 	"git+https://gitlab.com/sixsixfive/DarK-icons.git"
