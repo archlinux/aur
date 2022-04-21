@@ -2,7 +2,7 @@
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 
 pkgname='gosmee-bin'
-pkgver=0.0.8
+pkgver=0.0.9
 pkgrel=1
 pkgdesc='Gosmee - smee.io forwarder in go'
 url='https://github.com/chmouel/gosmee'
@@ -11,11 +11,11 @@ license=('Apache 2.0')
 provides=('gosmee')
 conflicts=('gosmee')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/chmouel/gosmee/releases/download/0.0.8/gosmee_0.0.8_Linux_arm64.tar.gz")
-sha256sums_aarch64=('32fef0447e22d7b21ae67b2d85e544e1e091aa8b78108571c4b13608392de1c9')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/chmouel/gosmee/releases/download/0.0.9/gosmee_0.0.9_Linux_arm64.tar.gz")
+sha256sums_aarch64=('f7d2661b9566b60732ca6e1dba2352282211a65261a60b7bf7ecc60c4b726476')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/gosmee/releases/download/0.0.8/gosmee_0.0.8_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('d440398d387c0429914e3c692378d3b746dde8e006e140a11587ebc15a3cc7ef')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/gosmee/releases/download/0.0.9/gosmee_0.0.9_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('9562d8dec39579e2656c1333c4343f3428dbb91278140d4856a1f01bdb329dc5')
 
 package() {
   # bin
