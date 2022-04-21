@@ -1,0 +1,13 @@
+pkgbase = aws-amplify-cli
+	pkgdesc = The AWS Amplify CLI is a toolchain for simplifying serverless web and mobile development.
+	pkgver = 8.0.2
+	pkgrel = 1
+	url = https://docs.amplify.aws/cli/
+	arch = any
+	license = Apache License 2.0
+	makedepends = npm
+	depends = nodejs
+	source = https://registry.npmjs.org/@aws-amplify/cli/-/cli-8.0.2.tgz
+	sha512sums = 700b1276a972187018bdb1dc9910035a1704112539af0c1cf11f5ed0ed83b3ac5e5046f8a5d9693bbb3870a2ce972a2c2bcb33767cb61af23ef75667ce6280f1
+
+pkgname = aws-amplify-cli
