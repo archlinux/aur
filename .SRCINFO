@@ -1,0 +1,14 @@
+pkgbase = libsgllnx
+	pkgdesc = HQPlayer additional library
+	pkgver = 2.29.02
+	pkgrel = 1
+	url = http://www.signalyst.com/custom.html
+	arch = x86_64
+	arch = aarch64
+	license = custom
+	source_x86_64 = https://www.signalyst.eu/bins/hqplayerd/focal/hqplayerd_4.31.0-131_amd64.deb
+	sha256sums_x86_64 = b211c3259ecf350484dfa9fdcc3f57187695eeb26992f0f3e3ceeeffa79029e7
+	source_aarch64 = https://www.signalyst.eu/bins/hqplayerd/bullseye/hqplayerd__arm64.deb
+	sha256sums_aarch64 = 72dd6327d143c59b8c3f8b62281d13a4777b18603ff5164ee73ca864cfd54974
+
+pkgname = libsgllnx
