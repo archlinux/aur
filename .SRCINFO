@@ -1,19 +1,19 @@
 pkgbase = lemmy-help
-	pkgdesc = Generate vim help doc from emmylua
-	pkgver = 0.0.1
+	pkgdesc = Emmylua parser and transformer
+	pkgver = v0.0.1
 	pkgrel = 1
 	url = https://github.com/numToStr/lemmy-help
 	arch = x86_64
 	arch = aarch64
 	arch = armv7
-	license = GPL
+	license = MIT
 	provides = lemmy-help
 	conflicts = lemmy-help
-	source_x86_64 = https://github.com/numToStr/lemmy-help/releases/download/0.0.1/lemmy-help-x86_64-unknown-linux-gnu.tar.gz
+	source_x86_64 = https://github.com/numToStr/lemmy-help/releases/download/v0.0.1/lemmy-help-x86_64-unknown-linux-gnu.tar.gz
 	md5sums_x86_64 = SKIP
-	source_aarch64 = https://github.com/numToStr/lemmy-help/releases/download/0.0.1/lemmy-help-aarch64-unknown-linux-gnu.tar.gz
+	source_aarch64 = https://github.com/numToStr/lemmy-help/releases/download/v0.0.1/lemmy-help-aarch64-unknown-linux-gnu.tar.gz
 	md5sums_aarch64 = SKIP
-	source_armv7 = https://github.com/numToStr/lemmy-help/releases/download/0.0.1/lemmy-help-armv7-unknown-linux-gnueabihf.tar.gz
+	source_armv7 = https://github.com/numToStr/lemmy-help/releases/download/v0.0.1/lemmy-help-armv7-unknown-linux-gnueabihf.tar.gz
 	md5sums_armv7 = SKIP
 
 pkgname = lemmy-help

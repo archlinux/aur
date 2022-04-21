@@ -1,12 +1,12 @@
 # Maintainer: numToStr <sudo@vikasraj.dev>
 
 pkgname=lemmy-help
-pkgver=0.0.1
+pkgver=v0.0.1
 pkgrel=1
-pkgdesc="Generate vim help doc from emmylua"
+pkgdesc="Emmylua parser and transformer"
 arch=('x86_64' 'aarch64' 'armv7')
 url=https://github.com/numToStr/lemmy-help
-license=('GPL')
+license=('MIT')
 provides=($pkgname)
 conflicts=($pkgname)
 
