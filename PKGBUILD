@@ -1,6 +1,6 @@
 # Maintainer: oscareczek <oscareczek at gmail dot com>
 pkgname=86box-git
-pkgver=3.3.r136.g6a4b3fc7b
+pkgver=3.4.r0.g7d6ad0d65
 pkgrel=1
 pkgdesc='An emulator for classic IBM PC clones'
 arch=('pentium4' 'x86_64' 'arm7h' 'aarch64')
@@ -41,5 +41,5 @@ package() {
         install -Dm644 "$srcdir/$pkgname/src/unix/assets/$i/net.86box.86Box.png" -t "$pkgdir/usr/share/icons/hicolor/$i/apps"
     done
     mkdir "$pkgdir/usr/share/applications"
-    sed 's/^Exec.*/Exec=86Box -C .local\/share\/86Box/' "$srcdir/$pkgname/src/unix/assets/net.86box.86Box.desktop" > "$pkgdir/usr/share/applications/net.86box.86Box.desktop"
+    sed 's/^Exec.*/Exec=86Box -P .local\/share\/86Box/' "$srcdir/$pkgname/src/unix/assets/net.86box.86Box.desktop" > "$pkgdir/usr/share/applications/net.86box.86Box.desktop"
 }
