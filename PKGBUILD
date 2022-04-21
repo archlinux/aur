@@ -3,7 +3,7 @@
 pkgname=o3de-nightly-bin
 # <Stable release>.<Build date>
 _stablever=2111.2
-pkgver=${_stablever}_20220407
+pkgver=${_stablever}_20220217
 _engver=0.0.0.0
 pkgrel=1
 pkgdesc='Open 3D Engine - An open-source, real-time 3D development engine (Nightly build)'
@@ -56,9 +56,18 @@ package() {
         exit 1
     fi
 
-    # Link executable in /usr/bin
+    # Trying to create new project fails if launcher doesn't find clang-12
+    # Force use of system clang with local symlink in PATH
+    mkdir -p "${pkgdir}"/opt/O3DE/${_engver}/symbin
+    ln -s $(which clang) "${pkgdir}"/opt/O3DE/${_engver}/symbin/clang-12
+    ln -s $(which clang++) "${pkgdir}"/opt/O3DE/${_engver}/symbin/clang++-12
+    ln -s $(which clang++) "${pkgdir}"/opt/O3DE/${_engver}/symbin/clang++-13
+
+    # Script in /usr/bin to run o3de with modified env
     mkdir -p "${pkgdir}/usr/bin"
-    ln -s "/opt/O3DE/${_engver}/bin/Linux/profile/Default/o3de" "${pkgdir}/usr/bin/o3de-nightly"
+    echo '#!/bin/sh' >"${pkgdir}/usr/bin/o3de-nightly"
+    echo "PATH=\""'$PATH'":/opt/O3DE/${_engver}/symbin\" CC=/opt/O3DE/${_engver}/symbin/clang-12 CXX=/opt/O3DE/${_engver}/symbin/clang++-12 /opt/O3DE/${_engver}/bin/Linux/profile/Default/o3de" >>"${pkgdir}/usr/bin/o3de-nightly"
+    chmod +x "${pkgdir}/usr/bin/o3de-nightly"
 
     # Extract .ico and install icons
     icotool -x "${pkgdir}"/opt/O3DE/${_engver}/cmake/Platform/Windows/Packaging/product_icon.ico -o .
