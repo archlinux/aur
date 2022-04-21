@@ -1,9 +1,9 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=ez
-pkgver=1.0.5
+pkgver=1.1.1
 pkgrel=1
-pkgdesc='Task simplificaltion scripts for increasing the speed and efficiency of common tasks'
+pkgdesc='Task simplificaltion scripts that increase speed and efficiency in common tasks'
 arch=('any')
 url="https://gitlab.com/a4to/${pkgname}"
 license=('MIT')
@@ -17,7 +17,7 @@ optdepends=(
   )
 provides=(ez ezdl ezgc eztst ezssl)
 source=("https://gitlab.com/a4to/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
-sha256sums=('a994bfb2cd1618c5580274fd69bb4083ee1e6c89d5a8b9832d365f01411f8968')
+sha256sums=('cad8c63b529510cc485cf8331d5479b17abdad416ef66b88a0c7264ed7dfb889')
 
 package() {
   install -Dm775 usr/bin/* -t "${pkgdir}/usr/bin/"
