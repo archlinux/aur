@@ -1,0 +1,19 @@
+pkgbase = trenchbroom-bin
+	pkgdesc = A free (GPLv3+), cross platform level editor for Quake-engine based games
+	pkgver = 2021.1
+	pkgrel = 1
+	url = https://trenchbroom.github.io/
+	arch = x86_64
+	license = GPL3
+	depends = freeimage
+	depends = qt5-svg
+	depends = freetype2
+	depends = hicolor-icon-theme
+	provides = trenchbroom
+	conflicts = trenchbroom
+	conflicts = trenchbroom-git
+	noextract = TrenchBroom-Linux-v2021.1-Release.x86_64.deb
+	source = https://github.com/TrenchBroom/TrenchBroom/releases/download/v2021.1/TrenchBroom-Linux-v2021.1-Release.x86_64.deb
+	sha256sums = 438958f73a85e566c39de268a44684b2a3b8553862dfdc81eede48625995b4f9
+
+pkgname = trenchbroom-bin
