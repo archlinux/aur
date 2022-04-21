@@ -1,7 +1,7 @@
 # Maintainer: Edward Pacman <edward@edward-p.xyz>
 
 pkgname=go-stun-git
-pkgver=r128.877ebaf
+pkgver=r132.44e89ca
 pkgrel=1
 pkgdesc="A go implementation of the STUN client (RFC 3489 and RFC 5389)"
 arch=('x86_64')
