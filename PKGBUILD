@@ -1,7 +1,7 @@
 # Maintainer: András Wacha <awacha at gmail>
 pkgname=demeter
 pkgver=0.9.27
-pkgrel=4
+pkgrel=5
 pkgdesc="Demeter is a comprehensive system for processing and analyzing X-ray Absorption Spectroscopy data."
 arch=('i686' 'x86_64')
 url="https://bruceravel.github.io/demeter/"
@@ -33,7 +33,7 @@ prepare() {
 
 build() {
 	cd "$pkgname-$pkgver"
-	./Build
+	./Build --config optimize="${CFLAGS} -W'no-error=format-security'"
 }
 
 check() {
