@@ -1,0 +1,16 @@
+pkgbase = perl-test-skip-unlessexistsexecutable
+	pkgdesc = skips tests unless executable exists
+	pkgver = 0.041
+	pkgrel = 1
+	url = https://metacpan.org/pod/Test::Skip::UnlessExistsExecutable
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-module-install
+	depends = perl
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/K/KI/KITANO/Test-Skip-UnlessExistsExecutable-0.041.tar.gz
+	md5sums = 70f9ade8966b33217f8572d4cef88a13
+	sha512sums = a91dd74030853b994c4ac75a6cc676a224e7a41772a11b4079fe4079ebbd40b0c4d83e9d92d6e65955e0f0e39e29407561fca4718911295343fe89198508f6bc
+
+pkgname = perl-test-skip-unlessexistsexecutable
