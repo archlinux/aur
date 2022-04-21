@@ -81,9 +81,12 @@ build() {
     fi
     # build requires java 11 to work, does not compile with java 17
     export JAVA_HOME="/usr/lib/jvm/java-11-openjdk"
-    echo "Beginning compilation... This step is known to be prone to failure by the anki devs.
+    echo "####################
+Beginning compilation... This step is known to be prone to failure by the anki devs.
 If the build is failing retry the installation. This usually fixes the problem.
-If the problem persists consider removing data in ~/.cache/bazel and trying again."
+A too slow internet connection can also hinder the dependency gathering process because of hardcoded timeouts in bazel.
+If the problem persists consider removing data in ~/.cache/bazel and your AUR manager cache and retry again.
+####################"
     bazel build -c opt wheels
 }
 
