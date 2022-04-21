@@ -24,7 +24,7 @@
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
 if [ -z ${_microarchitecture+x} ]; then
-  _microarchitecture=0
+  _microarchitecture=41
 fi
 
 ## Disable NUMA since most users do not have multiple processors. Breaks CUDA/NvEnc.
@@ -76,7 +76,7 @@ fi
 pkgbase=linux-manjaro-xanmod-tt
 pkgname=("${pkgbase}" "${pkgbase}-headers")
 _major=5.15
-pkgver=${_major}.34
+pkgver=${_major}.35
 _branch=5.x
 xanmod=1
 pkgrel=1
@@ -84,7 +84,7 @@ pkgdesc='Linux Xanmod TT'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="204024d23181b82f95f1abdfb16eae060c801d1e" # 5.15.34
+__commit="364e3a80d246a10da2f6fb13ec1844b57acdcf03" # 5.15.35
 
 license=(GPL2)
 makedepends=(
@@ -111,9 +111,9 @@ done
         
 sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'
             'SKIP'
-            '30a7a79e01f3e04b95c4f221ded20a0fab3fdab521afad551be5636586199b5f'
+            '111bfec453138ee9e935bd4a206618bb953b7b24880f0ec8f68a533622744e6a'
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'
-            '2c8cf42bb666f9da76ee29a332b07a70bf9cebfc2a8ead9e8eca94f631ba3bff')
+            'c004aff3b024f863569d8d217249a236571633431130ec71b8896cae31fa88a3')
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -151,6 +151,7 @@ prepare() {
   rm ../linux${_major//.}-$__commit/0101-i2c-nuvoton-nc677x-hwmon-driver.patch
   rm ../linux${_major//.}-$__commit/0102-iomap-iomap_bmap-should-accept-unwritten-maps.patch
   rm ../linux${_major//.}-$__commit/0202-mt76-mt7921-add-support-for-PCIe-ID-0x7922-0x0608-0x0616.patch
+  rm ../linux${_major//.}-$__commit/0004-cpufreq_intel_pstate_ITMT_support_for_overclocked_system.patch
 
   local _patch
   for _patch in ../linux${_major//.}-$__commit/*; do
