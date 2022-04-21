@@ -1,15 +1,31 @@
 # Maintainer: Vincent Post <cent@spline.de>
 pkgname=xivlauncher
 pkgver=6.2.31
-pkgrel=4
+pkgrel=5
 pkgdesc="Custom Launcher for Final Fantasy XIV Online (Crossplatform rewrite)"
 arch=('x86_64')
 url='https://github.com/goatcorp/FFXIVQuickLauncher/'
 license=('GPL')
 depends=(
     'aria2'
-    'sdl2'
+    'sdl2' 'lib32-sdl2'
     'libsecret'
+    'attr'                  'lib32-attr'
+    'fontconfig'            'lib32-fontconfig'
+    'lcms2'                 'lib32-lcms2'
+    'libxml2'               'lib32-libxml2'
+    'libxcursor'            'lib32-libxcursor'
+    'libxrandr'             'lib32-libxrandr'
+    'libxdamage'            'lib32-libxdamage'
+    'libxi'                 'lib32-libxi'
+    'gettext'               'lib32-gettext'
+    'freetype2'             'lib32-freetype2'
+    'glu'                   'lib32-glu'
+    'libsm'                 'lib32-libsm'
+    'gcc-libs'              'lib32-gcc-libs'
+    'libpcap'               'lib32-libpcap'
+    'faudio'                'lib32-faudio'
+    'desktop-file-utils'    'jxrlib'
 )
 makedepends=('dotnet-sdk>=6')
 optdepends=('steam')
