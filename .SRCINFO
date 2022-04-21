@@ -1,11 +1,13 @@
 pkgbase = python-playsound-git
 	pkgdesc = Pure Python, cross platform, single function module with no dependencies for playing sounds.
 	pkgver = 1.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/TaylorSMarks/playsound
 	arch = any
 	license = MIT
 	makedepends = python-pip
 	depends = python
+	provides = python-playsound
+	conflicts = python-playsound
 
 pkgname = python-playsound-git
