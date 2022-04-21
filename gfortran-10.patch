@@ -1,0 +1,40 @@
+Description: Fix FTBFS with gfortran 10
+Origin: other, https://github.com/Reference-LAPACK/lapack/commit/7fb63b1cd386b099d7da6eeaafc3e7dce055a7d0
+Bug-Debian: https://bugs.debian.org/957015
+Forwarded: no
+Reviewed-by: Sébastien Villemot <sebastien@debian.org>
+Last-Update: 2020-05-20
+---
+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
+--- a/interfaces/blas/C/testing/c_dblat1.f
++++ b/interfaces/blas/C/testing/c_dblat1.f
+@@ -247,11 +247,11 @@
+             IF (ICASE.EQ.7) THEN
+ *              .. DNRM2TEST ..
+                STEMP(1) = DTRUE1(NP1)
+-               CALL STEST1(DNRM2TEST(N,SX,INCX),STEMP,STEMP,SFAC)
++               CALL STEST1(DNRM2TEST(N,SX,INCX),STEMP(1),STEMP,SFAC)
+             ELSE IF (ICASE.EQ.8) THEN
+ *              .. DASUMTEST ..
+                STEMP(1) = DTRUE3(NP1)
+-               CALL STEST1(DASUMTEST(N,SX,INCX),STEMP,STEMP,SFAC)
++               CALL STEST1(DASUMTEST(N,SX,INCX),STEMP(1),STEMP,SFAC)
+             ELSE IF (ICASE.EQ.9) THEN
+ *              .. DSCALTEST ..
+                CALL DSCALTEST(N,SA((INCX-1)*5+NP1),SX,INCX)
+--- a/interfaces/blas/C/testing/c_sblat1.f
++++ b/interfaces/blas/C/testing/c_sblat1.f
+@@ -247,11 +247,11 @@
+             IF (ICASE.EQ.7) THEN
+ *              .. SNRM2TEST ..
+                STEMP(1) = DTRUE1(NP1)
+-               CALL STEST1(SNRM2TEST(N,SX,INCX),STEMP,STEMP,SFAC)
++               CALL STEST1(SNRM2TEST(N,SX,INCX),STEMP(1),STEMP,SFAC)
+             ELSE IF (ICASE.EQ.8) THEN
+ *              .. SASUMTEST ..
+                STEMP(1) = DTRUE3(NP1)
+-               CALL STEST1(SASUMTEST(N,SX,INCX),STEMP,STEMP,SFAC)
++               CALL STEST1(SASUMTEST(N,SX,INCX),STEMP(1),STEMP,SFAC)
+             ELSE IF (ICASE.EQ.9) THEN
+ *              .. SSCALTEST ..
+                CALL SSCALTEST(N,SA((INCX-1)*5+NP1),SX,INCX)
