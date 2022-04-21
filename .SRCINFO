@@ -1,11 +1,12 @@
 pkgbase = perl-rpsl-parser
 	pkgdesc = Router Policy Specification Language (RFC2622) Parser
 	pkgver = 0.04000
-	pkgrel = 1
+	pkgrel = 2
 	url = https://metacpan.org/release/RPSL-Parser
 	arch = any
 	license = GPL
 	license = PerlArtistic
+	makedepends = perl-module-build
 	depends = perl>=5.10.0,
 	depends = perl-class-accessor>=0.31
 	options = !emptydirs
@@ -13,4 +14,3 @@ pkgbase = perl-rpsl-parser
 	sha256sums = 239cea155a166985892347b37968316f46f36114d050a0be8d71436fd08e90f1
 
 pkgname = perl-rpsl-parser
-
