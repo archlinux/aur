@@ -1,15 +1,16 @@
-# Maintainer: Sven Frenzel <aur@frenzel.dk>
-# Maintainer: Donald Webster <fryfrog@gmail.com>
+# Maintainer: Ryan O'Beirne <ryanobeirne@ryanobeirne.com>
 # Helpful url: https://services.lidarr.audio/v1/update/master?version=0.0.0.0&os=linux&runtime=netcore&arch=x64
 
-pkgname='lidarr'
-pkgver=0.8.1.2135
-pkgrel=2
+pkgname='lidarr-git'
+pkgver=1.0.0
+pkgrel=1
 pkgdesc="Music download automation for usenet and torrents."
 arch=('x86_64' 'aarch64' 'armv7h')
-url="https://github.com/lidarr/Lidarr"
+url='https://github.com/lidarr/Lidarr'
 license=("GPL3")
+conflicts=('lidarr' 'lidarr-develop' 'lidarr-nightly')
 depends=('sqlite' 'chromaprint')
+makedepends=('git' 'yarn' 'dotnet-sdk')
 options=('!strip' 'staticlibs')
 optdepends=(
   'sabnzbd: usenet downloader'
@@ -25,36 +26,53 @@ optdepends=(
   'libgdiplus: provides a gdi+ compatible api'
 )
 
-source_x86_64=("lidarr-${pkgver}-linux-core-x64.tar.gz::https://services.lidarr.audio/v1/update/master/updatefile?version=${pkgver}&os=linux&runtime=netcore&arch=x64")
-source_aarch64=("lidarr-${pkgver}-linux-core-arm64.tar.gz::https://services.lidarr.audio/v1/update/master/updatefile?version=${pkgver}&os=linux&runtime=netcore&arch=arm64")
-source_armv7h=("lidarr-${pkgver}-linux-core-arm.tar.gz::https://services.lidarr.audio/v1/update/master/updatefile?version=${pkgver}&os=linux&runtime=netcore&arch=arm")
-
 source=(
+  'git+https://github.com/lidarr/Lidarr.git'
   'lidarr.service'
   'lidarr.tmpfiles'
   'lidarr.sysusers'
   'package_info'
 )
 
-sha512sums=('156c1437b4d71858e01c60b5af65c0a52aab4554e3b26c3b5685291e230d93596a756ae4bcc5828238ad265bf066d6ebeea91f0e2c3e1732cdbb5ebdf9517238'
-            'e40ce79a3e1741e7e06312797e652a85d199bd6d719ef953ea8c3c030756ee44e202956ac9e13cff17fac38312c27398f457f79923a7d0f56bd563a69af6ab63'
-            'ffd466960527256d8de1d9887d90d4da87486eff062950c46cbc4fd4af1ef89e7d5c070ef1e649b23a95fbab15651e289fd5bdc6d34649e4a6ecdf2f6da06622'
-            'cabbd3d6387f4198097573da23032d80c1fec11835c180e55a28ee54c79c821d3c49c039762cc3ddc5126efc37d50d93cdd89a75ff809a3d533533a30353933e')
-sha512sums_x86_64=('c91d1771595ab99720f0c04a05710a3588daa50adb78887c4071420625fe7d60d0228d144983595af9c1a72a916b3398453f37724d6f84b9c9aaf5a4ae7e4e04')
-sha512sums_aarch64=('9e237eb757d1468ab79c0bba118f28a5a0ebf23df31ead47b89977357f4fd248aae8a54f4ca548dcef2b9fae16bf3bc8f172ba6d86cf4fa879f52b79721ce0ce')
-sha512sums_armv7h=('7498be08221dc6166ca795591e0d498ecedcecfa475339bc1c4ae445f3b98cecbb00ff4f5398d497f958fd9f12afe0804990b3063529a70d1d6cffa4a9001e7c')
+sha512sums=(
+  'SKIP'
+  '156c1437b4d71858e01c60b5af65c0a52aab4554e3b26c3b5685291e230d93596a756ae4bcc5828238ad265bf066d6ebeea91f0e2c3e1732cdbb5ebdf9517238'
+  'e40ce79a3e1741e7e06312797e652a85d199bd6d719ef953ea8c3c030756ee44e202956ac9e13cff17fac38312c27398f457f79923a7d0f56bd563a69af6ab63'
+  'ffd466960527256d8de1d9887d90d4da87486eff062950c46cbc4fd4af1ef89e7d5c070ef1e649b23a95fbab15651e289fd5bdc6d34649e4a6ecdf2f6da06622'
+  'cabbd3d6387f4198097573da23032d80c1fec11835c180e55a28ee54c79c821d3c49c039762cc3ddc5126efc37d50d93cdd89a75ff809a3d533533a30353933e'
+)
 
+_runtime() {
+  case "$CARCH" in
+    x86_64)  RUNTIME="linux-x64";;
+    aarch64) RUNTIME="linux-arm64";;
+    armv7h)  RUNTIME="linux-arm";;
+    *) echo "invalid architecture: $CARCH"; return 1;;
+  esac
+  echo "$RUNTIME"
+}
 
+_runtime_srcdir() {
+	echo "${srcdir}/Lidarr/_artifacts/$(_runtime)/net6.0/Lidarr"
+}
+
+build() {
+  RUNTIME="$(_runtime)"
+  cd "${srcdir}/Lidarr"
+  ./build.sh --frontend --backend --packages --framework "net6.0" --runtime "$RUNTIME"
+}
 
 package() {
+  RUNTIME="$(_runtime)"
+
   # Update environment isn't needed.
-  rm -rf "${srcdir}/Lidarr/Lidarr.Update"
+  rm -rf "$(_runtime_srcdir)/Lidarr.Update"
 
   # The fpcalc binary comes from chromaprint.
-  rm -rf "${srcdir}/Lidarr/fpcalc"
+  rm -rf "$(_runtime_srcdir)/fpcalc"
 
   install -d -m 755 "${pkgdir}/usr/lib/lidarr/bin"
-  cp -dpr --no-preserve=ownership "${srcdir}/Lidarr/"* "${pkgdir}/usr/lib/lidarr/bin"
+  cp -dpr --no-preserve=ownership "$(_runtime_srcdir)/"* "${pkgdir}/usr/lib/lidarr/bin"
   chmod -R a=,a+rX,u+w "${pkgdir}/usr/lib/lidarr/bin"
   chmod +x "${pkgdir}/usr/lib/lidarr/bin/Lidarr"
 
