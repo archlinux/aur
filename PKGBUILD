@@ -3,7 +3,7 @@
 _pkgname=keyboardlayouteditor
 pkgname="${_pkgname}"-git
 pkgver=1.1+r100.20190121.56726a3
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="PyGTK programme that helps create or edit XKB keyboard layouts."
 arch=('any')
@@ -36,8 +36,8 @@ provides=(
   "${_pkgname}=${pkgver}"
 )
 source=(
-  # "${_pkgname}::git+git://github.com/simos/${_pkgname}.git" # Original repo.
-  "${_pkgname}::git+git://github.com/hupfdule/${_pkgname}.git" # Fork with some fixes.
+  # "${_pkgname}::git+https://github.com/simos/${_pkgname}.git" # Original repo.
+  "${_pkgname}::git+https://github.com/hupfdule/${_pkgname}.git" # Fork with some fixes.
   "keyboardlayouteditor.sh"
 )
 sha256sums=(

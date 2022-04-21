@@ -1,7 +1,7 @@
 pkgbase = keyboardlayouteditor-git
 	pkgdesc = PyGTK programme that helps create or edit XKB keyboard layouts.
 	pkgver = 1.1+r100.20190121.56726a3
-	pkgrel = 3
+	pkgrel = 4
 	epoch = 1
 	url = http://github.com/hupfdule/keyboardlayouteditor
 	arch = any
@@ -16,10 +16,9 @@ pkgbase = keyboardlayouteditor-git
 	depends = python2-lxml
 	optdepends = gucharmap: To open a character map and drag and drop characters.
 	provides = keyboardlayouteditor=1.1+r100.20190121.56726a3
-	source = keyboardlayouteditor::git+git://github.com/hupfdule/keyboardlayouteditor.git
+	source = keyboardlayouteditor::git+https://github.com/hupfdule/keyboardlayouteditor.git
 	source = keyboardlayouteditor.sh
 	sha256sums = SKIP
 	sha256sums = 349b12f237a19f76af16082d58bf443892190faa5f741aced92e10f6e79d8761
 
 pkgname = keyboardlayouteditor-git
-
