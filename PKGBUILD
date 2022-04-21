@@ -1,7 +1,7 @@
 # Maintainer: j.r <j.r@jugendhacker.de>
 _pkgname=tg
 pkgname=telegram-$_pkgname
-pkgver=0.18.0
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="terminal telegram client that really works"
 arch=('any')
@@ -17,16 +17,8 @@ optdepends=(
 	'fzf: to create groups and secret chats, used for single and multiple user selection'
 )
 conflicts=('telegram-tg-git')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
-	"0001-Change-setup.py-to-accept-new-python-telegram-ver.patch")
-md5sums=('4ce6ede227faad924e5631c1e299ef74'
-         '1977134e8c8fcd093d7081877711255d')
-
-prepare() {
-	cd "$srcdir/$_pkgname-$pkgver"
-
-	patch -p1 -i "$srcdir/0001-Change-setup.py-to-accept-new-python-telegram-ver.patch"
-}
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+md5sums=('8ce8894aa02552526f912954e33c2174')
 
 build() {
 	cd "$srcdir/$_pkgname-$pkgver"
