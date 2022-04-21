@@ -1,12 +1,12 @@
 # Maintainer: Joe <kenwood364@gmail.com>
 pkgname=bluecherry-client-git
 pkgver=2.2.9.r7.gaeda0c2f
-pkgrel=1
+pkgrel=2
 pkgdesc="Bluecherry Client for use with a bluecherry DVR server."
 arch=(x86_64 i686)
 url="https://github.com/bluecherrydvr/bluecherry-client.git"
 license=('GPL')
-depends=(mpv ffmpeg sdl qt5-base)
+depends=(mpv ffmpeg4.4 sdl qt5-base)
 makedepends=(git qt5-tools)
 provides=(bluecherry-client)
 conflicts=(bluecherry-client)
@@ -19,6 +19,7 @@ pkgver(){
 }
 
 build() {
+	export PKG_CONFIG_PATH="/usr/lib/ffmpeg4.4/pkgconfig/:$PKG_CONFIG_PATH"
 	cd "${pkgname%-git}"
 	./autogen.sh
 	./configure
