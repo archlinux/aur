@@ -32,10 +32,10 @@ build() {
 	yarn run build-installer
 }
 
+_sldver=$(echo $pkgver | sed 's/[r].*//' | sed 's/.$//')
 package() {
-	SLDVER="0.5.8"
 	cd "salad-applications/packages/desktop-app/dist/app"
-	tar xf "Salad-${SLDVER}.pacman" --directory="${pkgdir}"
+	tar xf "Salad-${_sldver}.pacman" --directory="${pkgdir}"
 	rm "${pkgdir}/.MTREE"
 	rm "${pkgdir}/.INSTALL"
 	rm "${pkgdir}/.PKGINFO"
