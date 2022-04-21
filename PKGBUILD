@@ -1,15 +1,14 @@
 # Maintainer: Christian Schendel <doppelhelix@gmail.com>
 
 pkgname=gnome-shell-extension-compiz-windows-effect-git
-pkgver=r18.d72dd59
-pkgrel=2
+pkgver=r21.fb74c2a
+pkgrel=1
 pkgdesc="Compiz wobbly windows effect with libanimation engine."
 arch=('any')
 url="https://github.com/hermes83/compiz-windows-effect"
 install=${pkgname%-git}.install
 license=('GPL3')
 depends=("gnome-shell>=3.28")
-optdepends=("libanimation-gnome-shell-git")
 makedepends=('git'
              'glib2')
 provides=("${pkgname%-git}")
