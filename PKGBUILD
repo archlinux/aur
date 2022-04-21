@@ -1,5 +1,5 @@
 # Maintainer: Stezko <stezko@gmail.com>
-pkgname=dark-icons-theme-git
+pkgname=dark-icon-theme-git
 _pkgname=DarK-svg
 pkgver=r84.22fce9e7
 pkgrel=2
