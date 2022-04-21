@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=ez
-pkgver=1.0.4
+pkgver=1.0.5
 pkgrel=1
 pkgdesc='Task simplificaltion scripts for increasing the speed and efficiency of common tasks'
 arch=('any')
@@ -15,12 +15,13 @@ optdepends=(
   "python-pip: To install python packages with ezdl"
   "lf: To integrate the lf file manager with eztst"
   )
-provides=(ezdl ezgc eztst ezssl)
+provides=(ez ezdl ezgc eztst ezssl)
 source=("https://gitlab.com/a4to/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
-sha256sums=('dcbe0b1002adaf59167b62e68eaeb49ceb91b24e33ec918fca425a5f12347c3d')
+sha256sums=('a994bfb2cd1618c5580274fd69bb4083ee1e6c89d5a8b9832d365f01411f8968')
 
 package() {
-  install -Dm775 usr/bin/* -o ${USER} -t "${pkgdir}/usr/bin/"
+  install -Dm775 usr/bin/* -t "${pkgdir}/usr/bin/"
   install -Dm644 usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm644 usr/share/doc/${pkgname}/* -t "${pkgdir}/usr/share/doc/${pkgname}/"
-}
+  for x in ezdl ezgc eztst ezssl; do
+    install -Dm644 usr/share/doc/${pkgname}/${x}/README "${pkgdir}/usr/share/doc/${pkgname}/${x}/README"
+  done ; }

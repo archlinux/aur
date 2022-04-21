@@ -1,6 +1,6 @@
 pkgbase = ez
 	pkgdesc = Task simplificaltion scripts for increasing the speed and efficiency of common tasks
-	pkgver = 1.0.4
+	pkgver = 1.0.5
 	pkgrel = 1
 	url = https://gitlab.com/a4to/ez
 	arch = any
@@ -10,11 +10,12 @@ pkgbase = ez
 	optdepends = snapd: To install snap packages with ezdl
 	optdepends = python-pip: To install python packages with ezdl
 	optdepends = lf: To integrate the lf file manager with eztst
+	provides = ez
 	provides = ezdl
 	provides = ezgc
 	provides = eztst
 	provides = ezssl
-	source = https://gitlab.com/a4to/concise/-/raw/master/x86_64/ez-1.0.4-1-any.pkg.tar.zst
-	sha256sums = dcbe0b1002adaf59167b62e68eaeb49ceb91b24e33ec918fca425a5f12347c3d
+	source = https://gitlab.com/a4to/concise/-/raw/master/x86_64/ez-1.0.5-1-any.pkg.tar.zst
+	sha256sums = a994bfb2cd1618c5580274fd69bb4083ee1e6c89d5a8b9832d365f01411f8968
 
 pkgname = ez
