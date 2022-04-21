@@ -3,7 +3,7 @@
 _pkgname=libcwtch-go
 pkgname=$_pkgname-git
 
-pkgver=1.6.0.r0.ga6277fc
+pkgver=.1.7.0.r10.g02c7b0b
 pkgrel=1
 
 pkgdesc="C bindings for the Go Cwtch library"
