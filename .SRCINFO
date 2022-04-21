@@ -1,7 +1,7 @@
 pkgbase = mocu-xcursor
 	pkgdesc = A modest xcursor theme, inspired by DMZ and cz-Viator.
-	pkgver = 1.0
-	pkgrel = 3
+	pkgver = 1.1
+	pkgrel = 1
 	url = https://github.com/sevmeyer/mocu-xcursor
 	arch = any
 	license = CC0
@@ -10,8 +10,7 @@ pkgbase = mocu-xcursor
 	makedepends = librsvg
 	provides = mocu-xcursor
 	conflicts = mocu-xcursor
-	source = mocu-xcursor-1.0.zip::https://github.com/sevmeyer/mocu-xcursor/archive/refs/tags/1.0.zip
-	md5sums = 2835e969ed7856e3cb959707dc895422
+	source = mocu-xcursor-1.1.zip::https://github.com/sevmeyer/mocu-xcursor/archive/refs/tags/1.1.zip
+	md5sums = d511290542b7bf90161d74b37c460612
 
 pkgname = mocu-xcursor
-
