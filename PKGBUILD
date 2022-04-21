@@ -2,7 +2,7 @@
 
 pkgbase=ttf-lxgw-wenkai-lite
 pkgname=(ttf-lxgw-wenkai-lite ttf-lxgw-wenkai-mono-lite)
-pkgver=1.233.6
+pkgver=1.234
 pkgrel=1
 url="https://github.com/lxgw/LxgwWenKai-Lite"
 depends=('fontconfig')
@@ -18,12 +18,12 @@ source=(
     "LICENSE::https://raw.githubusercontent.com/lxgw/LxgwWenKai-Lite/main/License.txt"
 )
 
-sha256sums=('7170f6dc60718cf12d3506d0233f15a541b13ad1b6c679e37890b97383e8426b'
-            'cac774997ee58a24960f8b3ea4845fd5dce8c3a45254a9c99e19b15bbcd04531'
-            '01b8e077e35e0499e137c74abe59ed80a6930e7316f69167c5ca683fd55e2c7e'
-            'd0506c63a20df484ad12c770123a02fdac8db8550f9eb6574ca8b273494fdeb4'
-            'c1b426c72ef4c0e141332635f18e287ecdff215b4d0b780f70199aa095ea1c89'
-            'c536b0b66d83a0e290ea3104468848bb4cc74210d7f03ca8ed9eb23019ab37d5'
+sha256sums=('24ecf091e36341f3718b45616b2fd0b737b89afa168c991f64370f8f4e56cc8e'
+            'b32dc148933e77e1783c932ee2ab4f3c7b85d8cc530614ded47b0a7f1202a412'
+            '7916d981b1bb2775f24b08c7620087b7942c64eceb704328de97882a11646804'
+            '58604f110b346b5be39c03445c08ce59b7339f72a8a509c9cd9ca48e486e45fc'
+            '643e22d191697176f0ae54ae91268c5cd692283def6706672ac3a10a1dd8ce22'
+            '5d4d2a7e50d1f55a92486809fa07d78c687051fd8b4a791d8bbf8d60683b28a2'
             '7f18ec1ebb6b50e3ed0f74b2c61f25b8d7cd69e43f4de66e991bcfd3c419a8bb')
 
 package_ttf-lxgw-wenkai-lite() {
