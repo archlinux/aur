@@ -1,6 +1,6 @@
 pkgbase = python-opencensus
 	pkgdesc = A stats collection and distributed tracing framework
-	pkgver = 0.8.0
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/census-instrumentation/opencensus-python
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = python-opencensus
 	makedepends = python-setuptools
 	depends = python
 	depends = python-google-api-core
-	source = python-opencensus-0.8.0.tar.gz::https://github.com/census-instrumentation/opencensus-python/archive/v0.8.0.tar.gz
-	sha256sums = 5242f3e64e41f514a2afaac8fa6b6be3225f7145758c753368a2932bf5eaad83
+	source = python-opencensus-0.9.0.tar.gz::https://github.com/census-instrumentation/opencensus-python/archive/v0.9.0.tar.gz
+	sha256sums = 6315d6a258ea4b9af950811df1e4e30e8aa42f011775782d315e791738ff1022
 
 pkgname = python-opencensus
