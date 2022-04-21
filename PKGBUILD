@@ -1,7 +1,7 @@
 # Maintainer: Simon Williams <simon@clockcycles.net>
 pkgname=nordquery
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 epoch=
 pkgdesc="A tool to choose NordVPN servers based on filters, written in Python"
 arch=(any)
@@ -22,15 +22,6 @@ changelog=
 source=("git+https://github.com/simonpw/nordquery.git")
 noextract=()
 md5sums=('SKIP')
-
-pkgver() {
-  cd "$srcdir/$pkgname"
-  (
-    set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
-}
 
 package() {
         cd "$srcdir/$pkgname"
