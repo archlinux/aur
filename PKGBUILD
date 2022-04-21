@@ -3,19 +3,20 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: damir <damir@archlinux.org>
 # Contributor: Ben <contrasutra@myrealbox.com>
-# Maintainer: ferreum <code.danielk at gmail com>
+# Maintainer: ferreum <code at ferreum de>
 
 _pkgname=elinks
 pkgname=${_pkgname}-git
 pkgver=v0.14.1.r0.g9e0c85e5
 pkgrel=1
-pkgdesc="An advanced and well-established feature-rich text mode web browser. Git version."
+pkgdesc="An advanced and well-established feature-rich text mode web browser. Git version, JavaScript disabled."
 arch=(i686 x86_64 armv6h armv7h aarch64)
 url="https://github.com/rkd77/elinks"
 provides=(${_pkgname})
 license=('GPL')
 conflicts=(${_pkgname})
 depends=('bzip2' 'expat>=2.0' 'gpm>=1.20.4' 'openssl' 'lua51' 'libidn' 'gc' 'tre' 'zlib')
+makedepends=('git')
 source=("git+https://github.com/rkd77/elinks#branch=elinks-0.14")
 md5sums=('SKIP')
 
