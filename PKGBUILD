@@ -2,7 +2,7 @@
 pkgname=gnome-connection-manager-bin
 _pkgname=gnome-connection-manager
 pkgver=1.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Simple tabbed ssh and telnet connection manager for GTK+ environments."
 arch=('any')
 url="http://kuthulu.com/gcm"
