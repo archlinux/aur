@@ -11,8 +11,7 @@ pkgbase = 3270-fonts
 	depends = xorg-mkfontdir
 	depends = xorg-mkfontscale
 	depends = fontconfig
-	source = git://github.com/rbanffy/3270font.git
+	source = 3270font::git+https://github.com/rbanffy/3270font.git
 	md5sums = SKIP
 
 pkgname = 3270-fonts
-
