@@ -5,7 +5,7 @@
 # Contributor: Trustin Lee <t@motd.kr>
 pkgname=rambox-pro-bin
 _pkgname=rambox
-pkgver=2.0.2
+pkgver=2.0.3
 pkgrel=1
 pkgdesc='Workspace browser to manage many web applications in one place'
 arch=('x86_64')
@@ -25,7 +25,7 @@ source=("${_pkgname}-EULA"
         "${_pkgname}-${pkgver}.deb::https://github.com/ramboxapp/download/releases/download/v${pkgver}/Rambox-${pkgver}-linux-x64.deb")
 
 sha256sums=('220a1fe2afa6485bfc15dde23dd081804a29f94a86ce74164082aa8b2266e662'
-            'e845c631a620e3b8dd4d18262824f6eed399803b9b395114444e1a61bdf6b527')
+            '45bbc1d1daa0bbdf380e9f3ec5562a3d33b11353472ad15afb4278e451031ba4')
 
 build() {
     rm -rf "${srcdir}/root"
