@@ -2,7 +2,7 @@
 
 _crate="cargo-generate-rpm"
 pkgname="$_crate"
-pkgver=0.5.0
+pkgver=0.6.0
 pkgrel=1
 pkgdesc='Cargo helper command to generate a binary RPM package (.rpm) from Cargo project'
 license=('Apache')
@@ -10,7 +10,7 @@ arch=('aarch64' 'i686' 'x86_64')
 url="https://crates.io/crates/$_crate"
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
-sha512sums=('efb9169df863f7af3b39e994b68b90fe2d55d757bc7ced1d7fd7b0982701efb18488c76a000d6ca009d625cb155dba6a16f2cec71a9265b29446dfabe1d80d55')
+sha512sums=('daf94e52ed13716b89e84ccbe76cd42c898b1881a770ff794bf0cec6665574a8e1e6659bc1cdf7f86abab1496df1f7428decdb248edd4943571b585b39a16f8f')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
