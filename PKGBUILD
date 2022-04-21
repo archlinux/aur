@@ -19,6 +19,8 @@ pkgver() {
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
+_sldver=$(echo $pkgver | sed 's/[r].*//' | sed 's/.$//')
+
 prepare() {
 	cd "salad-applications/packages/desktop-app"
 	sed -i 's/: "electron-builder/: "electron-builder --linux pacman/g' package.json	
@@ -32,7 +34,7 @@ build() {
 	yarn run build-installer
 }
 
-_sldver=$(echo $pkgver | sed 's/[r].*//' | sed 's/.$//')
+
 package() {
 	cd "salad-applications/packages/desktop-app/dist/app"
 	tar xf "Salad-${_sldver}.pacman" --directory="${pkgdir}"
