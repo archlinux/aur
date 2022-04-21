@@ -6,7 +6,7 @@
 
 pkgbase=wps-office
 pkgname=('wps-office' 'wps-office-mime')
-pkgver=11.1.0.10920
+pkgver=11.1.0.10976
 #_pkgver=8372
 pkgrel=1
 #_pkgrel=1
@@ -22,7 +22,7 @@ options=('!emptydirs')
 source=("https://wdl1.pcfg.cache.wpscdn.com/wpsdl/wpsoffice/download/linux/${pkgver##*.}/wps-office_${pkgver}.XA_amd64.deb")
 #sha1sums_i686=('60b1c9e33ee6fc1edcefe40dc9ec529d4a668825'
 #               'dd8b5283ee17a88a3eb0531976abccd6e5e08c48')
-sha1sums=('2c08fd9b25f79e7c9bc3d934a189714686a3fd40')
+sha1sums=('91314b35c15b867d7034fa03a2ca97304d4a7837')
 
 prepare() {
     bsdtar -xpf data.tar.xz
