@@ -3,7 +3,7 @@
 pkgname=hqplayer4
 pkgver=4.18.1
 _rpmpkgver=4.18.1-55
-pkgrel=4
+pkgrel=5
 pkgdesc="The high-end upsampling multichannel software HD-audio player"
 arch=('x86_64')
 url="http://www.signalyst.com/consumer.html"
