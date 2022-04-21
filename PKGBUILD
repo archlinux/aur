@@ -3,7 +3,7 @@
 
 pkgname=mcsctl
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Manage multiple minecraft servers with a simple bash script and systemd unit templates.'
 arch=('any')
 license=('Unlicense')
