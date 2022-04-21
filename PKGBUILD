@@ -2,7 +2,7 @@
 
 pkgname=check_ssl_cert
 pkgver=2.25.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Nagios plugin for checking X.509 certificates'
 arch=('x86_64' 'i686' 'pentium4' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/matteocorti/check_ssl_cert/'
