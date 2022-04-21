@@ -97,16 +97,14 @@ build() {
     # Disable building rpm, deb, and AppImage packages which are not needed in an AUR build
     export SKIP_LINUX_PACKAGES="True"
 
-    # Set a temporary NVM directory to make sure the nvm in this script does not clash with a system-wide nvm install
-    export NVM_DIR=$(mktemp -d)
+    # Deactivate any pre-loaded nvm, and make sure we use our own in the current source directory
+    which nvm >/dev/null 2>&1 && nvm deactivate && nvm unload
+    export NVM_DIR="${srcdir}/.nvm"
+    source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
 
     # Build just like Travis does: install NodeJS and run the build.sh script.
-    source /usr/share/nvm/init-nvm.sh
     nvm install ${_nodejs}
     ./build.sh
-
-    # Clean up temp NVM directory
-    rm -rf "$NVM_DIR" || true
 }
 
 package() {
