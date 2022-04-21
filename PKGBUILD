@@ -1,7 +1,7 @@
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 
 pkgbase=linux-vfio-lts
-pkgver=5.15.34
+pkgver=5.15.35
 pkgrel=1
 pkgdesc='LTS Linux VFIO'
 url="https://www.kernel.org/"
@@ -19,10 +19,9 @@ source=(
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-PCI_Add_more_NVIDIA_controllers_to_the_MSI_masking_quirk.patch
   0003-iommu_intel_do_deep_dma-unmapping_to_avoid_kernel-flooding.patch
-  0004-cpufreq_intel_pstate_ITMT_support_for_overclocked_system.patch
-  0005-Bluetooth_btintel_Fix_bdaddress_comparison_with_garbage_value.patch
-  0006-lg-laptop_Recognize_more_models.patch
-  0007_fix_NFSv4_mount_regression.diff
+  0004-Bluetooth_btintel_Fix_bdaddress_comparison_with_garbage_value.patch
+  0005-lg-laptop_Recognize_more_models.patch
+  0006_fix_NFSv4_mount_regression.diff
   add-acs-overrides.patch
   i915-vga-arbiter.patch
 )
@@ -31,13 +30,12 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 # https://www.kernel.org/pub/linux/kernel/v5.x/sha256sums.asc
-sha256sums=('a7514685392f0f89b337fa252a10a004c6a97d23e8d1126059c8e373398fdb69'
+sha256sums=('0a1a5ae2f30eb2b38215e59077f045aabd7f4e2857a881482f02ea48186105d8'
             'SKIP'
-            '58d7a2536cb2cbdd659f6f2ffd24512355ce76c8c7a5379f001c802f6a8295ef'
+            'c1f3516b15b15d63382e40a71c16f348728b8e47a2337166a9d499234faf1894'
             '99df282c594cc269d9a5d19bb86ea887892d3654cfc53c4ce94a644cf3278423'
             'c35018601f04ae81e0a2018a8597595db6ae053158c206845399cdebb2d2b706'
             '7c7707c738983f3683d76295b496f578996b7341fa39ad334ec2833bfe4b966e'
-            '420844779356286057d931e30bbe1dabb8ee52bff575845a8fbf3c34e1a1d29e'
             '3fa8a4af66d5a3b99b48ca979a247c61e81c9b2d3bcdffa9d3895a5532a420b4'
             '79266c6cc970733fd35881d9a8f0a74c25c00b4d81741b8d4bba6827c48f7c78'
             'e9527ad81d5b1821a7b17c56cb3abaec85785563f51e448cb3c06f1c68e2966f'
@@ -53,7 +51,7 @@ prepare() {
 
   # fix NFSv4 mounting issue regression - FS#73838 / FS#73860
   # https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git/patch/?id=6f2836341d8a39e1e000572b10959347d7e61fd9
-  patch -Rp1 -i ../0007_fix_NFSv4_mount_regression.diff
+  patch -Rp1 -i ../0006_fix_NFSv4_mount_regression.diff
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
