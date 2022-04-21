@@ -1,7 +1,7 @@
 # Maintainer: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=tzdb
-_cranver=0.2.0
+_cranver=0.3.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -12,7 +12,7 @@ license=(MIT)
 depends=('r>=3.3' 'r-cpp11>=0.4.0')
 optdepends=(r-covr r-testthat)
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('c335905d452b400af7ed54b916b5246cb3f47ede0602911a2bcb25a1cf56d5a9')
+sha256sums=('6099f0ec1fba692b51b4360aa776902a39f10dae815933c31994b8e4d4277038')
 
 build() {
   R CMD INSTALL ${_cranname}_${_cranver}.tar.gz -l "${srcdir}"

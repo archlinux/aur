@@ -1,6 +1,6 @@
 pkgbase = r-tzdb
 	pkgdesc = Time Zone Database Information
-	pkgver = 0.2.0
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=tzdb
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = r-tzdb
 	depends = r-cpp11>=0.4.0
 	optdepends = r-covr
 	optdepends = r-testthat
-	source = https://cran.r-project.org/src/contrib/tzdb_0.2.0.tar.gz
-	sha256sums = c335905d452b400af7ed54b916b5246cb3f47ede0602911a2bcb25a1cf56d5a9
+	source = https://cran.r-project.org/src/contrib/tzdb_0.3.0.tar.gz
+	sha256sums = 6099f0ec1fba692b51b4360aa776902a39f10dae815933c31994b8e4d4277038
 
 pkgname = r-tzdb
