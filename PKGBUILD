@@ -2,7 +2,7 @@
 
 _npmname=lean-language-server
 pkgname=lean-language-server
-pkgver=3.1.1
+pkgver=3.2.0
 pkgrel=1
 pkgdesc='Language Server Protocol implementation for the Lean theorem prover, version 3'
 arch=('any')
@@ -12,7 +12,7 @@ depends=('nodejs')
 makedepends=('npm')
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('ac0240ee94043dd93c0e4bf897855f8b6433067a85bb88ae8965bcdcd8cfe5b4')
+sha256sums=('dd5686fe0d750a5b71118b6605b8d8b62f00cd5e57ea582f536b15653df85ed1')
 
 package() {
     cd "$srcdir"
