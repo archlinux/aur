@@ -1,7 +1,7 @@
 # Maintainer: Simon Williams <simon@clockcycles.net>
 pkgname=pywdgen
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A simple readable password generator, written in Python"
 arch=(any)
@@ -34,6 +34,6 @@ pkgver() {
 
 package() {
         cd "$srcdir/$pkgname"
-        install -Dm755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
+        install -Dm755 pywdgen.py ${pkgdir}/usr/bin/pywdgen
         install -Dm644 COPYING ${pkgdir}/usr/share/licenses/${$pkgname}/COPYING
 }
