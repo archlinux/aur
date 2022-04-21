@@ -3,7 +3,7 @@
 
 pkgname=tachidesk
 pkgver=0.6.3_r1087
-pkgrel=1
+pkgrel=2
 __pkgname=tachidesk-server
 __PkgName=Tachidesk-Server
 __pkgver="${pkgver%_*}"
