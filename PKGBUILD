@@ -3,7 +3,7 @@
 
 _pkgname='ferdium'
 pkgname="ferdium-git"
-pkgver=develop.r0.g7df3cffd
+pkgver=v6.0.0.nightly.3.r0.g6e126a8c
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -66,7 +66,7 @@ prepare() {
 
 pkgver() {
 	cd "$srcdir/$_sourcedirectory/"
-	git describe --long --all | sed -e 's/^v//' -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g' | sed -e 's#^heads/##g'
+	git describe --long --all | sed -e 's/^v//' -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g' | sed -e 's#^heads/##g' | sed -e 's#^tags/##g'
 }
 
 build() {
