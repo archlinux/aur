@@ -1,0 +1,10 @@
+post_install() {
+
+
+	sudo xdg-desktop-menu install /usr/share/applications/gnome-connection-manager.desktop
+
+}
+
+post_upgrade() {
+	post_install
+}
