@@ -13,7 +13,7 @@ pkgname=(
   qemu-pinning-guest-agent
 )
 pkgdesc="A generic and open source machine emulator and virtualizer, with the qemu-pinning patch from 64kramsystem (formerly saveriomiroddi) applied."
-pkgver=6.2.0
+pkgver=7.0.0
 pkgrel=1
 arch=(x86_64)
 license=(GPL2 LGPL2.1)
@@ -83,7 +83,7 @@ source=(https://download.qemu.org/qemu-$pkgver.tar.xz{,.sig}
         qemu-pinning-$pkgver.patch
         qemu-guest-agent.service
         65-kvm.rules)
-sha512sums=('e9f8231c9e1cfcc41cb47f10a55d63f6b8aee307af00cf6acf64acb7aa4f49fa7e9d6330703a2abea15d8b7bbaba7d3cb08c83edd98d82642367b527df730817'
+sha512sums=('44ecd10c018a3763e1bc87d1d35b98890d0d5636acd69fe9b5cadf5024d5af6a31684d60cbe1c3370e02986434c1fb0ad99224e0e6f6fe7eda169992508157b1'
             'SKIP'
             '5dd369f4d9b2e86fa8de811ee0fa239a69a95c6702aaba2b662efc4327d29c146c1c41a827fd0b99d1ca00e4b57a8bdb72f7f9d4bdeb9b3b8f4f3ff66cbd8cc7'
             '269c0f0bacbd06a3d817fde02dce26c99d9f55c9e3b74bb710bd7e5cdde7a66b904d2eb794c8a605bf9305e4e3dee261a6e7d4ec9d9134144754914039f176e4'
@@ -134,7 +134,6 @@ _build() (
     --enable-modules \
     --enable-sdl \
     --enable-slirp=system \
-    --enable-xfsctl \
     "${@:2}"
 
   ninja
