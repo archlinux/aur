@@ -20,6 +20,7 @@ license=('LGPL3' 'GPL3')
 
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-setuptools-scm' 'python-toml' 'python-wheel')
 depends=('python')
+checkdepends=('python-mock' 'python-pytest')
 
 changelog=CHANGES.rst
 source=("https://files.pythonhosted.org/packages/source/c/$_name/$_name-$pkgver.tar.gz")
