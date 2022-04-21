@@ -11,6 +11,12 @@
     compatible = "phicomm,n1", "amlogic,s905d", "amlogic,meson-gxl";
     model = "Phicomm N1";
 
+    reserved-memory {
+        linux,cma {
+            size = <0x0 0x38000000>;
+        };
+    };
+
     cvbs-connector {
         status = "disabled";
     };

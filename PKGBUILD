@@ -16,7 +16,7 @@ _srcname=linux-5.17
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for Phicomm N1"
 pkgver=5.17.3
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -38,8 +38,8 @@ source=(
 source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
 
 md5sums=('07321a70a48d062cebd0358132f11771'
-         'cb42990d36da8536220339c14ec27a6e'
-         'dcf3de24338cf84755011fedeb1bc8c2'
+         '14b9c040a7a9320ea91a779cd8f14f02'
+         'ea6fbed2433a6cfd22a7cff33f23414b'
          '30130b4dcd8ad4364ddbfd56c3058d5e'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '0d0435888ecad675870ecda4045a9d45'
