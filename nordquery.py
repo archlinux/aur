@@ -217,7 +217,7 @@ def main(argv):
                 print(server[0].split('.')[0])
                 if(args.verbose): print('Ping:', pinged, 'ms')
                 break
-            else:
+            elif(args.verbose):
                 print(server[0], 'timed out')
     else:
         if(args.verbose): print('No matching server found')
