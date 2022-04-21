@@ -3,7 +3,7 @@
 # Contributor: speps <speps at aur dot archlinux dot org>
 
 pkgname=friture
-pkgver=0.48
+pkgver=0.49
 pkgrel=1
 pkgdesc="An application to visualize and analyze live audio data in real-time."
 arch=(i686 x86_64)
@@ -13,19 +13,16 @@ depends=('python-appdirs' 'python-docutils' 'python-multipledispatch' 'python-nu
 optdepends=('jack: for JACK I/O support')
 makedepends=('cython' 'python-pip' 'python-setuptools' 'python-wheel')
 _commit=ea7210dae883edf17de8fec82f9428b18ee138b6
-#source=("https://github.com/tlecomte/friture/archive/v${pkgver}.tar.gz")
-source=("https://github.com/tlecomte/${pkgname}/archive/${_commit}.tar.gz")
+source=("https://github.com/tlecomte/friture/archive/refs/tags/v${pkgver}.tar.gz")
 
 build() {
-#  cd "${srcdir}/${pkgname}-${pkgver}"
-  cd "${srcdir}/${pkgname}-${_commit}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   python setup.py build
 }
 
 package() {
-#  cd "${srcdir}/${pkgname}-${pkgver}"
-  cd "${srcdir}/${pkgname}-${_commit}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   python setup.py install --root="${pkgdir}/"
 
@@ -37,4 +34,4 @@ package() {
     "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
 
-sha256sums=('c4b2a9db8cb460c19a94e754594ea1807d629ef8d20a00c5df0d422f3fb1961d')
+sha256sums=('9643c56c4901ae892e16a35c418099bb28784bc4baeebfcf1cd8ea0f9b5de743')
