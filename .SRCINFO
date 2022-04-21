@@ -1,4 +1,4 @@
-pkgbase = python-playsound
+pkgbase = python-playsound-git
 	pkgdesc = Pure Python, cross platform, single function module with no dependencies for playing sounds.
 	pkgver = 1.3.0
 	pkgrel = 1
@@ -8,4 +8,4 @@ pkgbase = python-playsound
 	makedepends = python-pip
 	depends = python
 
-pkgname = python-playsound
+pkgname = python-playsound-git

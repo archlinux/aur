@@ -1,7 +1,7 @@
 # Maintainer: SimPilotAdamT <adam_tazul@outlook.com>
 # Developer: Taylor Marks <taylor@marksfam.com>
 
-pkgname=python-playsound
+pkgname=python-playsound-git
 pkgver=1.3.0
 pkgrel=1
 pkgdesc="Pure Python, cross platform, single function module with no dependencies for playing sounds."
