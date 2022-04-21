@@ -20,6 +20,6 @@ bsdtar xf hqplayer4desktop-"$_rpmpkgver".fc35.x86_64.rpm -C "$pkgdir"
 rm -rf /usr/lib/build-id
 install -Dm644 "$pkgdir/usr/share/doc/hqplayer4desktop/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 rm "$pkgdir/usr/share/doc/hqplayer4desktop/LICENSE"
-install -Dm755 "$pkgdir/opt/hqplayer4desktop/lib/libsgllnx64-2.29.02.so" "$pkgdir/usr/lib/libsgllnx64-2.29.02.so"
+cp "$pkgdir"/opt/hqplayer4desktop/lib/* "$pkgdir"/usr/lib/
 rm -rf "$pkgdir/opt"
 }
