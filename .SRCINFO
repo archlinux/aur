@@ -1,0 +1,18 @@
+pkgbase = perl-posix-atfork
+	pkgdesc = Hook registrations at fork(2)
+	pkgver = 0.04
+	pkgrel = 1
+	url = https://metacpan.org/pod/POSIX::AtFork
+	arch = i686
+	arch = x86_64
+	arch = arm
+	license = PerlArtistic
+	license = GPL
+	checkdepends = perl-test-sharedfork
+	depends = perl
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/N/NI/NIKOLAS/POSIX-AtFork-0.04.tar.gz
+	md5sums = a7637380a7d7c4bfbc22544a0cfc5590
+	sha512sums = 3de1510a48c32a1596d744a9bc4498406031bff65cdcd598bd701f88daaa566aa3e0cdcdb0817dc8284c14aafd23d00405aa8adb8bd9640a16c6da988d4902de
+
+pkgname = perl-posix-atfork
