@@ -3,7 +3,7 @@
 
 pkgname=python-playsound-git
 pkgver=1.3.0
-pkgrel=20
+pkgrel=21
 pkgdesc="Pure Python, cross platform, single function module with no dependencies for playing sounds."
 arch=("any")
 url="https://github.com/TaylorSMarks/playsound"
@@ -14,10 +14,6 @@ provides=("python-playsound")
 conflicts=("python-playsound")
 source=("git+https://github.com/TaylorSMarks/playsound.git")
 md5sums=("SKIP")
-pkgver() {
-  cd "$pkgname"
-  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
-}
 build() {
   cd "$srcdir/playsound"
   python -m build --wheel --no-isolation
@@ -25,4 +21,8 @@ build() {
 package() {
   cd "$srcdir/playsound"
   python -m installer --destdir="$pkgdir" dist/*.whl
+}
+pkgver() {
+  cd "$pkgname"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
