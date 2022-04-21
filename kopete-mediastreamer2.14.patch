@@ -87,7 +87,7 @@ diff --git a/protocols/jabber/libjingle/CMakeLists.txt b/protocols/jabber/libjin
  	add_definitions ( -D_DEBUG )
  endif ( CMAKE_BUILD_TYPE STREQUAL "Debug" )
 @@ -284,6 +288,7 @@
- 	${EXPAT_LIBRARY}
+ 	EXPAT::EXPAT
  	${MEDIASTREAMER_LIBRARIES}
  	${LIBORTP_LIBRARY}
 +	${CMAKE_THREAD_LIBS_INIT}
