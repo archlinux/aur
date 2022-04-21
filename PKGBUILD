@@ -3,7 +3,8 @@
 pkgname=libsgllnx
 pkgver=2.29.02
 _debpkgver=4.31.0-131
-pkgrel=1
+_debpkgverarm=4.31.0-131
+pkgrel=2
 pkgdesc="HQPlayer additional library"
 url="http://www.signalyst.com/custom.html"
 arch=('x86_64' 'aarch64')
