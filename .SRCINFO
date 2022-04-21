@@ -1,7 +1,7 @@
 pkgbase = pywdgen
 	pkgdesc = A simple readable password generator, written in Python
 	pkgver = 1.0
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/simonpw/pywdgen
 	arch = any
 	license = GPL
