@@ -1,0 +1,16 @@
+pkgbase = i3-pager-git
+	pkgdesc = Plasmoid pager for integrating i3 with KDE Plasma
+	pkgver = r127.9e82a42
+	pkgrel = 1
+	url = https://github.com/duvholt/i3-pager
+	arch = any
+	license = GPLv3
+	makedepends = git
+	provides = i3-pager
+	conflicts = i3-pager
+	source = git+https://github.com/duvholt/i3-pager.git
+	source = git+https://github.com/drmgc/i3ipcpp.git
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = i3-pager-git
