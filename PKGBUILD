@@ -4,7 +4,7 @@ _npmname=vue-language-server
 _npmscope=@volar
 pkgname=volar-server-bin
 _pkgname=volar-server
-pkgver=0.34.8
+pkgver=0.34.9
 pkgrel=1
 pkgdesc='Explore high-performance tooling for Vue'
 arch=('any')
@@ -16,7 +16,7 @@ provides=("$_pkgname" 'vue-language-server')
 conflicts=("$_pkgname" 'vue-language-server')
 source=(https://registry.npmjs.org/$_npmscope/$_npmname/-/$_npmname-$pkgver.tgz)
 noextract=($_npmname-$pkgver.tgz)
-sha256sums=('e85c4e9623268bab9517a9df30e697cd421b037c5b65a352ffcfba4922a7277c')
+sha256sums=('3f1a16554ec7170c90fa6cfe0da8f88709a5b8639856c723482f4d745476d2d1')
 
 package() {
     cd "$srcdir"
