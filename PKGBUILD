@@ -3,7 +3,7 @@
 # Contributor: Tom <reztho at archlinux dot us>
 
 pkgname=pdfsam
-pkgver=4.2.12
+pkgver=4.3.0
 pkgrel=1
 pkgdesc="A free open source tool to split and merge pdf documents"
 arch=('any')
@@ -51,5 +51,5 @@ package() {
   install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
 
-sha512sums=('6cd4d6dd53bde814f0916577bd2dd5d08b55fe0d9e7de835279473d1da785befb1a5af8ab7058e742053496f5e9b08846d0bc68213e5c9f3bfe3078f4cdab272'
+sha512sums=('27a543f2475e00c24a357fc06e1d182818128566093cdb1b615a2fd0cfe535f05916a1a1e9988417709710c0a0bf8987e8be1e2424287958c697d900cbeffed5'
             'c0d8665e8f0a82e539cd70972f95f819d13b10166f1e4bb04d032d108ef5de45fe77f8716e8e2f0fa129e7042907928bde1d947cc54f691aa6d87a76dfaa10c1')
