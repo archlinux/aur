@@ -2,12 +2,12 @@
 
 _pkgname=lynx-dock
 pkgname=${_pkgname,}
-pkgver=0.0.4
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="Lynx Dock - Official Dock for LynxOS"
 url="https://gitlab.com/LynxOS/$pkgname"
 depends=(
-        'lynx-nw'
+        'nwjs-bin'
         'lynx-bootstrap'
         'lynx-menu'
         'nodejs'
@@ -19,7 +19,7 @@ depends=(
         )
 license=('GPL')
 arch=('any')
-md5sums=('f93fe7d66f9c8e313175f9106a9dae3d')
+md5sums=('cb1b6fb81793c2a5fd12ae06a9ac8a97')
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 
 package() {
