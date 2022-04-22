@@ -1,7 +1,7 @@
 # Maintainer: Tarn W. Burton <twburton@gmail.com>
 _srcname=clasp
 pkgname=clasp-cl-git
-pkgver=1.0.0.r42.gc4bff433a
+pkgver=1.0.0.r57.g88492167e
 pkgrel=1
 pkgdesc="Bringing Common Lisp and C++ Together"
 arch=('x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "$_srcname/"
-  ./koga --package-path $pkgdir --extensions cando,seqan-clasp --jupyter --prefix /usr/
+  ./koga --package-path=$pkgdir --extensions=cando,seqan-clasp --jupyter --bin-path=/usr/bin/ --share-path=/usr/share/clasp/ --lib-path=/usr/lib/clasp/
   ninja -C build
 }
 
