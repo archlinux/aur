@@ -7,7 +7,7 @@ index 81cef377..737b24a7 100644
  const mainWindow = getCurrentWindow();
  
 -const executablePath = isMac ? remoteProcess.execPath : process.execPath;
-+const executablePath = '/usr/bin/ferdi';
++const executablePath = '/usr/bin/ferdium';
  const autoLauncher = new AutoLaunch({
    name: 'Ferdi',
    path: executablePath,
