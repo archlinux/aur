@@ -1,9 +1,9 @@
-# Maintainer: Artem Vorotnikov <artem@vorotnikov.me>
+# Maintainer: Henrique Barcelos <ynrhzbuvj@relay.firefox.com>
 
-pkgname=erigon
-pkgver=2022.04.02
+pkgname=erigon-alpha
+pkgver=2022.04.03
 pkgrel=1
-pkgdesc='Ethereum implementation on the efficiency frontier.'
+pkgdesc='Ethereum implementation on the efficiency frontier (Alpha channel).'
 arch=('x86_64')
 url='https://github.com/ledgerwatch/erigon'
 license=('GPL3')
