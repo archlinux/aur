@@ -1,6 +1,6 @@
 # Maintainer: Curve <curve.platin at gmail.com>
 pkgname=il2cpp-dumper-bin
-pkgver=6.7.5
+pkgver=6.7.18
 pkgrel=4
 pkgdesc='A tool to reverse engineer il2cpp games'
 arch=('x86_64')
@@ -12,7 +12,7 @@ conflicts=('il2cpp-dumper')
 source=("https://github.com/Perfare/Il2CppDumper/releases/download/v${pkgver}/Il2CppDumper-net6-v${pkgver}.zip"
         'il2cpp-dumper'
         'https://raw.githubusercontent.com/Perfare/Il2CppDumper/master/LICENSE')
-sha256sums=('957dc241f340441258cd0084dd2d450c654bae9621fb87ccd46bc375eda6ed60'
+sha256sums=('484880b2f3612bbd0fbb67ed25b0c315fe0fefa68711a16e3c804e29ef72a55f'
             '2bfdb5eefa9dd52318f1ff8ee0e52ddc602022bdcb4411285d11c95587c7a9d2'
             '373bd2ed813eaa8245d1290138985c6fb025d588db254602720697455ae36c6c')
 
