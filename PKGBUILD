@@ -9,6 +9,8 @@ license=("GPL3" "custom:'vukmoji'")
 makedepends=("nodejs" "npm" "git")
 source=("git+https://github.com/vtheskeleton/SaladBind.git" "https://raw.githubusercontent.com/Vukkyy/vukmoji/master/LICENSE")
 options=("!strip")
+provides=("saladbind")
+conflicts=("saladbind")
 sha256sums=('SKIP'
             '07d8a5e0a4ddae657a6839142ebcc54f94b8cba92920bedded536f3ffcc43809')
 
