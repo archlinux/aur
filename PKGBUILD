@@ -1,26 +1,28 @@
-# Maintainer : Andres Urquijo <alfagalileox@gmail.com>
+# Maintainer: Patrick Günther <info@paddybu.de>
+
 pkgname=xmds
-pkgver=2.2.3
+pkgver=3.1.0
 pkgrel=1
-pkgdesc="software package that allows the fast 
-        and easy solution of sets of ordinary, partial and stochastic differential equations, 
-        using a variety of efficient numerical algorithms"
-arch=('i686' 'x86_64')
-url="http://www.${pkgname}.org/index.html"
+pkgdesc="A fast integrator of stochastic partial differential equations"
+arch=('any')
+url="http://xmds.org/"
 license=('GPL2')
-depends=('python2' 'hdf5' 'fftw' 'gsl' 'python2-numpy' 
-        'python2-lxml' 'python2-h5py' 'python2-mpmath' 
-        'python2-markdown' 'python2-cheetah' 'python2-pyparsing')
-optdepends=('openmp')
-source=("https://sourceforge.net/projects/${pkgname}/files/${pkgname}-${pkgver}.tar.gz")
-md5sums=('ab913b2983e922a36dd8c9b5bb401ba9')
+depends=('python'
+         'hdf5'
+         'fftw'
+         'python-numpy'
+         'python-cheetah3'
+         'python-mpmath'
+         'python-lxml')
+makedepends=('gcc' 'python-setuptools')
+optdepends=('openmpi')
+source=("https://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+md5sums=('SKIP')
 
-build(){
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    python2 setup.py build
-}
-
-package(){
-    cd "${srcdir}/${pkgname}-${pkgver}"
-    python2 setup.py install --prefix=/usr  --root="$pkgdir"
+package() {
+  cd "$srcdir"/${pkgname}-${pkgver}
+  ./setup.py develop --prefix="${pkgdir}/usr"
+  rm "${pkgdir}/usr/bin/f2py"
+  rm "${pkgdir}/usr/bin/f2py3"
+  rm "${pkgdir}/usr/bin/f2py3.10"
 }
