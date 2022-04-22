@@ -5,7 +5,7 @@ _patch=01
 
 pkgname=nexus-oss
 pkgver=${_version}.${_patch}
-pkgrel=1
+pkgrel=2
 pkgdesc='Nexus 3 Repository OSS'
 arch=('any')
 url='http://nexus.sonatype.org'
@@ -30,7 +30,7 @@ source=(
 		)
 sha256sums=('2f2b6e7e107e12522fa00de2737defe59837567e16cbec2d0339ba1aa57fdb79'
             '3d2ebc2a796dbdc7e7e3b97e4c3272292169c898776e111f503f0517e434caff'
-            'f03a4a2a454ab15bbe7b6d479ec4b6a86055a4ffb77704dc44fe11a19382278b'
+            '4134913c858fffa86d8873d16ff5d92b337289ff14f2f3776a36614361b8472d'
             'dcdef5614db12f38b3da0b9de1b52fb7fa402af6621a825981c6168a34a6ad9b'
             '3670748854d3f05623c9a8826605c3e2a97c7b3955104e74b5eed00ed17299c1'
             '77d699b5ccf6387fa2f69df2cd71cdb75b4ffbf46a10110dd6c0e2802783dbef'
