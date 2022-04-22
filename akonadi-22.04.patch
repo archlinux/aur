@@ -1,0 +1,16 @@
+diff --git a/core/utilities/extrasupport/addressbook/akonadiiface.cpp b/core/utilities/extrasupport/addressbook/akonadiiface.cpp
+index 6a78863cf6..8e65a405da 100644
+--- a/core/utilities/extrasupport/addressbook/akonadiiface.cpp
++++ b/core/utilities/extrasupport/addressbook/akonadiiface.cpp
+@@ -49,7 +49,11 @@
+ #include <AkonadiCore/Item>
+ #endif
+ 
++#if AKONADI_VERSION >= QT_VERSION_CHECK(5, 19, 80)
++#include <Akonadi/ContactSearchJob>
++#else
+ #include <Akonadi/Contact/ContactSearchJob>
++#endif
+ #include <KContacts/Addressee>
+ 
+ #if defined(Q_OS_DARWIN) && defined(Q_CC_CLANG)
