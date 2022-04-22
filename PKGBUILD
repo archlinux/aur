@@ -6,14 +6,20 @@
 # will be on config.extra file.
 
 pkgbase=linux-mainline-git
-pkgver=v5.17.r11138.f022814633e1
+pkgver=v5.18.rc3.r74.b05a5683eba6
 pkgrel=1
 pkgdesc="Linus Torvalds' Mainline Linux"
 url="https://www.kernel.org"
 arch=(x86_64)
 license=(GPL2)
 _userconfig="/etc/${pkgbase}/config"
-backup=("${_userconfig##/}")
+_userremote="/etc/${pkgbase}/remote"
+_userpatches="/etc/${pkgbase}/patches/patches"
+backup=(
+"${_userconfig##/}"
+"${_userremote##/}"
+"${_userpatches##/}"
+)
 makedepends=(
   bc kmod libelf pahole cpio perl tar xz
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
@@ -26,6 +32,8 @@ source=(
   config         # the main kernel config file
   config.extra   # additional configs
   config.user    # user custom config
+  remote         # custom remote config
+  patches        # user patches config
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -34,7 +42,9 @@ validpgpkeys=(
 sha256sums=('SKIP'
             '05381b085c83737922a85fa6f42aa61b3d1400840a7952bf8524726e1d8f74f8'
             '6e41a729c2f2946d3606ca2c0cb3a058c9700b0f73110eed36dcba91a271e50f'
-            'b5ced6ad1f03a5cfe6dccc0b2b31f91420cfe97823e5d15d5b94b7224362daa9')
+            'b5ced6ad1f03a5cfe6dccc0b2b31f91420cfe97823e5d15d5b94b7224362daa9'
+            '71c6047def065c291127cebd5878389ff1aa103e1a3c20ca4dd5b04cd9069705'
+            '986e39ee1cb41d342b19f1c5af8016d48afa1e182237dbdcc3f222ae4203ef2d')
 
 
 export KBUILD_BUILD_HOST=archlinux
@@ -43,11 +53,34 @@ export KBUILD_BUILD_TIMESTAMP="$(date -Ru${SOURCE_DATE_EPOCH:+d @$SOURCE_DATE_EP
 
 pkgver() {
   cd "$srcdir/$_srcname"
-  printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  if [[ -n "$REMOTE_URL" ]]; then
+    # if $REMOTE_URL was created, it's safe to use $REMOTE
+    printf "%s" "$(git describe --dirty=-patched --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g').${REMOTE/\//.}"
+  else
+    printf "%s" "$(git describe --dirty=-patched --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  fi
 }
 
 prepare() {
   cd $_srcname
+
+  [[ -f "$_userremote" ]] && source "$_userremote"
+  if [[ -n "$REMOTE" && -n "$COMMIT" ]]; then
+    REMOTE_PREFIX=${REMOTE_PREFIX##${_srcname}::git+}
+    REMOTE_PREFIX=${REMOTE_PREFIX%%torvalds/linux}
+    REMOTE_URL=${REMOTE_PREFIX}${REMOTE}
+    echo
+    echo "================================================================================"
+    echo "Build script detected custom variables \$REMOTE and \$COMMIT are being used:"
+    echo "REMOTE_PREFIX: $REMOTE_PREFIX"
+    echo "REMOTE_TIP   : $REMOTE"
+    echo "COMMIT       : $COMMIT"
+    echo "================================================================================"
+    echo
+    echo "Fetching ${REMOTE_PREFIX}${REMOTE} ${COMMIT}"
+    git fetch ${REMOTE_URL} ${COMMIT}
+    git checkout -f FETCH_HEAD
+  fi
 
   echo "Setting version..."
   scripts/setlocalversion --save-scmversion
@@ -62,6 +95,19 @@ prepare() {
     echo "Applying patch $src..."
     patch -Np1 < "../$src"
   done
+
+  [[ -f "$_userpatches" ]] && source "$_userpatches"
+  PATCHES_PREFIX=${_userpatches%%patches}
+  _USER_PATCHES="0"
+  for src in "${PATCHES}"; do
+    [[ $src = *.patch ]] || continue
+    echo "Applying user patch $src..."
+    patch -Np1 < "${PATCHES_PREFIX}$src"
+    _USER_PATCHES="1"
+  done
+
+  # Let user see the patches were applied before proceed with the build
+  [[ ${_USER_PATCHES} = "1" ]] && sleep 2
 
   echo "Setting config..."
   cat ../config ../config.extra > .config
@@ -106,8 +152,10 @@ _package() {
   # remove build and source links
   rm "$modulesdir"/{source,build}
 
-  # install user config file
+  # install config files
   install -Dm644 $srcdir/config.user "${pkgdir}${_userconfig}"
+  install -Dm644 $srcdir/remote "${pkgdir}${_userremote}"
+  install -Dm644 $srcdir/patches "${pkgdir}${_userpatches}"
 }
 
 _package-headers() {
