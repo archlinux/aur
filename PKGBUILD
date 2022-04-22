@@ -8,8 +8,8 @@ _provide_udev_rule=true
 
 pkgbase='winesync'
 pkgname=()
-pkgver=5.15
-pkgrel=3
+pkgver=5.16
+pkgrel=1
 pkgdesc="Wine synchronization primitive driver"
 arch=('any')
 url='https://repo.or.cz/linux/zf.git/shortlog/refs/heads/winesync3'
@@ -29,19 +29,17 @@ _header_conflicts=("$pkgbase-header")
 _udev_rule_conflicts=("$pkgbase-udev-rule")
 license=('GPL2')
 options=('!strip')
-_commit=ee18b220dde45003cd7ce7360fe3e633678b97df
+_commit=50ed00eef095c7799949b2523a5c21210b374f86
 source=("winesync.c-$_commit::https://repo.or.cz/linux/zf.git/blob_plain/$_commit:/drivers/misc/winesync.c"
         "winesync.h-$_commit::https://repo.or.cz/linux/zf.git/blob_plain/$_commit:/include/uapi/linux/winesync.h"
         '99-winesync.rules'
         'Makefile'
-        'dkms.conf'
-        'exported-symbols-hack.diff')
-sha256sums=('25b8100561939b85a775cd415db6f57ba452cc05a03dacfcc515469793520831'
-            'ad35e082b3e75080bde77a9c3c2f300efdec3cab64c0603eadbc301de9f33242'
+        'dkms.conf')
+sha256sums=('4bb2968fa98c24fa430eead4841f6398d836231701d83d57d7f042098a535a7c'
+            'd21b36d59c6cd69190fe51b6e60505464053cf5450b05a1625bbfcf9b0f26620'
             '9b22d9976a83785e6a1cfc4a3aa230a8c5e4e903730bbafc598ec86bfaa35c3e'
             '05735aa1fef1eda3c6dca8b7a0c2a7eebf1eba8af38f608b4b1c34d4acbad453'
-            '4f5a34a3d9cbc91789c6b42f3aa7a73e52d94610d34c4733abcd285abf446769'
-            '3806d2440ee0c32d6b0c3be3077dbd437a11ccf2426874db92771fbc3f5f8519')
+            'dec74d835e8f96ace131b7a16441d99b49d2e0ea4bb292dd17c617c8f156d812')
 
 if [ "${PRINTSRCINFO:-0}" -eq 1 ]; then
     _provide_nondkms=true
@@ -80,7 +78,6 @@ build() {
     install -Dm644 "$srcdir/winesync.h-$_commit" "$srcdir/$pkgbase-$pkgver/include/uapi/linux/winesync.h"
     install -Dm644 "$srcdir/winesync.c-$_commit" "$srcdir/$pkgbase-$pkgver/src/drivers/misc/winesync.c"
     install -Dm644 "$srcdir/dkms.conf" "$srcdir/$pkgbase-$pkgver/dkms.conf"
-    install -Dm644 "$srcdir/exported-symbols-hack.diff" "$srcdir/$pkgbase-$pkgver/patches/exported-symbols-hack.diff"
     mkdir "$srcdir/build"
     fakeroot dkms build --sourcetree "$srcdir" --dkmstree "$srcdir/build" -m "$pkgbase/$pkgver" -k "$_kernver"
 }
@@ -104,7 +101,6 @@ package_winesync-dkms() {
     install -Dm644 "$srcdir/winesync.h-$_commit" "$pkgdir/usr/src/$pkgbase-$pkgver/include/uapi/linux/winesync.h"
     install -Dm644 "$srcdir/winesync.c-$_commit" "$pkgdir/usr/src/$pkgbase-$pkgver/src/drivers/misc/winesync.c"
     install -Dm644 "$srcdir/dkms.conf" "$pkgdir/usr/src/$pkgbase-$pkgver/dkms.conf"
-    install -Dm644 "$srcdir/exported-symbols-hack.diff" "$pkgdir/usr/src/$pkgbase-$pkgver/patches/exported-symbols-hack.diff"
 }
 fi
 if [ "$_provide_header" = true ]; then

@@ -1,44 +1,42 @@
 pkgbase = winesync
 	pkgdesc = Wine synchronization primitive driver
-	pkgver = 5.15
-	pkgrel = 3
+	pkgver = 5.16
+	pkgrel = 1
 	url = https://repo.or.cz/linux/zf.git/shortlog/refs/heads/winesync3
 	arch = any
 	license = GPL2
 	makedepends = linux-headers
 	makedepends = dkms
 	options = !strip
-	source = winesync.c-ee18b220dde45003cd7ce7360fe3e633678b97df::https://repo.or.cz/linux/zf.git/blob_plain/ee18b220dde45003cd7ce7360fe3e633678b97df:/drivers/misc/winesync.c
-	source = winesync.h-ee18b220dde45003cd7ce7360fe3e633678b97df::https://repo.or.cz/linux/zf.git/blob_plain/ee18b220dde45003cd7ce7360fe3e633678b97df:/include/uapi/linux/winesync.h
+	source = winesync.c-50ed00eef095c7799949b2523a5c21210b374f86::https://repo.or.cz/linux/zf.git/blob_plain/50ed00eef095c7799949b2523a5c21210b374f86:/drivers/misc/winesync.c
+	source = winesync.h-50ed00eef095c7799949b2523a5c21210b374f86::https://repo.or.cz/linux/zf.git/blob_plain/50ed00eef095c7799949b2523a5c21210b374f86:/include/uapi/linux/winesync.h
 	source = 99-winesync.rules
 	source = Makefile
 	source = dkms.conf
-	source = exported-symbols-hack.diff
-	sha256sums = 25b8100561939b85a775cd415db6f57ba452cc05a03dacfcc515469793520831
-	sha256sums = ad35e082b3e75080bde77a9c3c2f300efdec3cab64c0603eadbc301de9f33242
+	sha256sums = 4bb2968fa98c24fa430eead4841f6398d836231701d83d57d7f042098a535a7c
+	sha256sums = d21b36d59c6cd69190fe51b6e60505464053cf5450b05a1625bbfcf9b0f26620
 	sha256sums = 9b22d9976a83785e6a1cfc4a3aa230a8c5e4e903730bbafc598ec86bfaa35c3e
 	sha256sums = 05735aa1fef1eda3c6dca8b7a0c2a7eebf1eba8af38f608b4b1c34d4acbad453
-	sha256sums = 4f5a34a3d9cbc91789c6b42f3aa7a73e52d94610d34c4733abcd285abf446769
-	sha256sums = 3806d2440ee0c32d6b0c3be3077dbd437a11ccf2426874db92771fbc3f5f8519
+	sha256sums = dec74d835e8f96ace131b7a16441d99b49d2e0ea4bb292dd17c617c8f156d812
 
 pkgname = winesync
 	pkgdesc = Wine synchronization primitive driver - out-of-tree module
 	arch = x86_64
 	depends = linux
-	provides = WINESYNC-MODULE=5.15
+	provides = WINESYNC-MODULE=5.16
 
 pkgname = winesync-dkms
 	pkgdesc = Wine synchronization primitive driver - out-of-tree module (dkms version)
 	depends = dkms
 	optdepends = linux-headers: build the module for Arch kernel
-	provides = WINESYNC-MODULE=5.15
+	provides = WINESYNC-MODULE=5.16
 
 pkgname = winesync-header
 	pkgdesc = Wine synchronization primitive driver - header file
-	provides = winesync-header=5.15
+	provides = winesync-header=5.16
 	conflicts = winesync-header
 
 pkgname = winesync-udev-rule
 	pkgdesc = Wine synchronization primitive driver - udev rule
-	provides = winesync-udev-rule=5.15
+	provides = winesync-udev-rule=5.16
 	conflicts = winesync-udev-rule
