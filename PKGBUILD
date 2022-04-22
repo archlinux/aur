@@ -7,8 +7,9 @@
 
 pkgbase=gradle6
 pkgname=('gradle6' 'gradle6-doc' 'gradle6-src')
+conflicts=('gradle' 'gradle-doc' 'gradle-src')
 pkgver=6.9.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Powerful build system for the JVM'
 url='https://gradle.org/'
 arch=('any')
