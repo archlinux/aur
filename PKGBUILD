@@ -6,7 +6,7 @@ _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=7.2.0
-pkgrel=1
+pkgrel=2
 epoch=2
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, GloriousEggroll's custom build"
 url="https://github.com/GloriousEggroll/proton-ge-custom"
@@ -32,6 +32,7 @@ depends=(
   lzo              lib32-lzo
   libxkbcommon     lib32-libxkbcommon
   faudio           lib32-faudio
+  libvpx           lib32-libvpx
   'sdl2>=2.0.16'   'lib32-sdl2>=2.0.16'
   desktop-file-utils
   python
