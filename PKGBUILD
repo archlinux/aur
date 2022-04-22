@@ -4,7 +4,7 @@ _name='magicgui'
 _author='tlambert03'
 pkgname="python-${_name}"
 pkgver=0.3.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Build GUIs from functions, using magic.'
 arch=('any')
 url="https://github.com/${_author}/${_name}"
@@ -17,6 +17,7 @@ depends=(
   'python'
   'python-typing_extensions'
   'python-qtpy'
+  'python-psygnal'
   'python-docstring-parser'
   'qt5-python-bindings'
 )

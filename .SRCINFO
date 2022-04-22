@@ -10,6 +10,7 @@ pkgbase = python-magicgui
 	depends = python
 	depends = python-typing_extensions
 	depends = python-qtpy
+	depends = python-psygnal
 	depends = python-docstring-parser
 	depends = qt5-python-bindings
 	provides = python-magicgui
