@@ -1,0 +1,13 @@
+pkgbase = falion-bin
+	pkgdesc = A fast, asynchronous tool for getting and reading various programming resources.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/Obscurely/falion
+	arch = x86_64
+	license = GPL-3.0-only
+	provides = falion
+	conflicts = falion
+	source = https://github.com/Obscurely/falion/releases/download/v0.2.0/falion-0.2.0-x86_64.tar.gz
+	sha256sums = f3e568a0c8c2eb78b0c6798196936d00c47a89b515dd5531caaf3eb3a4731e41
+
+pkgname = falion-bin
