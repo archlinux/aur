@@ -3,7 +3,7 @@
 # Contributor: Victor Häggqvist <aur a snilius d com>
 
 pkgname=solaar-git
-pkgver=1.1.2.r1.g38e42aff
+pkgver=1.1.3rc3.r0.g5a3ffe0
 pkgrel=1
 pkgdesc="Device manager for Logitech's Unifying receiver peripherals"
 url="https://pwr-solaar.github.io/Solaar/"
@@ -50,7 +50,7 @@ package() {
   install -vDm 644 rules.d/42-logitech-unify-permissions.rules \
     "${pkgdir}/usr/lib/udev/rules.d/42-logitech-unify-permissions.rules"
   # docs
-  install -vDm 644 {ChangeLog,README.md} \
+  install -vDm 644 {ChangeLog.md,README.md} \
     -t "${pkgdir}/usr/share/doc/${pkgname}/"
 }
 # vim:set ts=2 sw=2 et:
