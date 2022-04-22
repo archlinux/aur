@@ -2,7 +2,7 @@
 pkgbase=dune-mmesh
 pkgname=(${pkgbase} python-${pkgbase})
 pkgver=1.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc="MMesh is a grid implementation based on CGAL triangulations"
 arch=('x86_64')
 url="https://dune-project.org/modules/${pkgbase}"
@@ -14,7 +14,7 @@ optdepends=('vc: C++ Vectorization library'
   'graphviz: Graph visualization software'
   'dune-fem: for store static information about grid implementation or support type of boundary id provider specialized for each grid type')
 source=(https://github.com/samuelburbulla/${pkgbase}/archive/release/${pkgver}.tar.gz)
-sha512sums=('f704d33f77b37ef02a0b15af4a1feac4fc240e87544e2aa4ece4bdb427be24af475e9dd2c1f2f28df3036eee73e1ae246ddb0f46431367df4d7de6ab1a320ae5')
+sha512sums=('66a35bbbab6442653a575e5958e00f251bfb4ab0cfbaa7284a8f57eb973c0265c34f4f8ef6575d50b2f62aa95a1fac221b1c09987aa9ab304463b14624973bd3')
 
 prepare() {
   sed -i 's/^Version: 1.3-git/Version: '"${pkgver}"'/' ${pkgbase}-release-${pkgver}/dune.module
