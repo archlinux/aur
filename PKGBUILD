@@ -1,7 +1,7 @@
 # Maintainer: Torge Matthies <openglfreak at googlemail dot com>
 # Contributor: Krzysztof Bogacki <krzysztof dot bogacki at leancode dot pl>
 
-_provide_nondkms=false
+_provide_nondkms=true
 _provide_dkms=true
 _provide_header=true
 _provide_udev_rule=true
