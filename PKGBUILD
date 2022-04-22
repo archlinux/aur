@@ -1,39 +1,48 @@
-# Maintainer: bitwave <aur [aT] oomlu {d.0t} de>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: bitwave <aur [aT] oomlu {d.0t} de>
+# Contributor: yochananmarqos
+
 pkgname=notepadnext
-pkgver=0.4.9
+pkgver=0.5
 pkgrel=1
-pkgdesc="A cross-platform, reimplementation of Notepad++"
-arch=("i686" "x86_64")
+pkgdesc="Cross-platform reimplementation of Notepad++"
+arch=('x86_64')
 url="https://github.com/dail8859/NotepadNext"
 license=('GPL3')
-depends=('qt5-base')
-source=("git+https://github.com/dail8859/NotepadNext.git")
+depends=('qt6-5compat' 'hicolor-icon-theme')
+makedepends=('git' 'qt6-tools')
+source=("$pkgname::git+$url#tag=v$pkgver"
+        'git+https://github.com/alex-spataru/QSimpleUpdater'
+        'git+https://github.com/githubuser0xFFFF/Qt-Advanced-Docking-System'
+        'git+https://github.com/editorconfig/editorconfig-core-qt'
+        'git+https://github.com/itay-grudev/SingleApplication'
+        'git+https://gitlab.freedesktop.org/uchardet/uchardet')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP')
 
 prepare() {
-  cd "NotepadNext"
-  gendesk -n -f --pkgname=notepadnext --name=NotepadNext --exec=NotepadNext --icon=NotepadNext.svg
+	cd "$pkgname"
+	git submodule init
+	git config submodule.src/QSimpleUpdater.url "$srcdir/QSimpleUpdater"
+	git config submodule.src/src/ads.url "$srcdir/Qt-Advanced-Docking-System"
+	git config submodule.src/editorconfig-core-qt.url "$srcdir/editorconfig-core-qt"
+	git config submodule.src/singleapplication.url "$srcdir/SingleApplication"
+	git config submodule.src/uchardet.url "$srcdir/uchardet"
+	git submodule update
+
+	mkdir -p build
 }
 
 build() {
-  cd "NotepadNext"
-  git submodule update --init
-  mkdir -p build
-  cd build
-  qmake-qt5 ../src/NotepadNext.pro
-  make
+	cd "$pkgname/build"
+	qmake6 ../src/NotepadNext.pro
+	make
 }
 
 package() {
-  cd "NotepadNext"
-  
-  install -d "$pkgdir/usr/bin"
-  install -m755 -D "build/NotepadNext/NotepadNext" "$pkgdir/usr/bin"
-
-  install -d "$pkgdir/usr/share/pixmaps"
-  install -m644 -D "icon/NotepadNext.svg" "$pkgdir/usr/share/pixmaps"
-
-  install -d "$pkgdir/usr/share/applications"
-  install -m644 -D "notepadnext.desktop" "$pkgdir/usr/share/applications"
+	make -C "$pkgname/build" INSTALL_ROOT="$pkgdir" install
 }
-
-sha256sums=('SKIP')
