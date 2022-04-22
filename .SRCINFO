@@ -1,19 +1,18 @@
 pkgbase = gnome-connection-manager-bin
 	pkgdesc = Simple tabbed ssh and telnet connection manager for GTK+ environments.
 	pkgver = 1.2.1
-	pkgrel = 5
+	pkgrel = 6
 	url = http://kuthulu.com/gcm
 	arch = any
-	groups = 
-	license = GPLv3
+	license = GPL3
 	depends = expect
 	depends = python
 	depends = python-gobject
-	options = !strip
-	options = !emptydirs
+	provides = gnome-connection-manager
+	conflicts = gnome-connection-manager
 	source = https://github.com/kuthulux/gnome-connection-manager/releases/download/v1.2.1/gnome-connection-manager_1.2.1_all.deb
 	source = https://raw.githubusercontent.com/kuthulux/gnome-connection-manager/d2f66e3d668245f549ff6a69f662b1ebd669dc51/style.css
-	sha512sums = 0487cafda21d2a277ae2bf234a4d758c710e35b75eae2fffdef1d01ae19046bef0de13f4cde05c23f7d03d847a5548fb4ad5e0ae554a13f32a057d93feac8610
-	sha512sums = SKIP
+	sha256sums = 74550c2ce25c49886f34a5815ce5fd963eefeef8671c6e3656e515b00e11ef16
+	sha256sums = SKIP
 
 pkgname = gnome-connection-manager-bin
