@@ -1,7 +1,7 @@
 # Maintainer: ml <ml@visu.li>
 # TODO systemd service
 pkgname=keys-pub
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc='keys.pub CLI client and service (keys, keysd)'
 arch=('x86_64' 'i686')
@@ -11,11 +11,11 @@ depends=('libfido2')
 makedepends=('git' 'go')
 optdepends=('org.freedesktop.secrets: storing secrets')
 conflicts=('keys-pub-git')
-source=("https://github.com/keys-pub/keys-ext/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha256sums=('14d2dde561e9aa58de8816ffc66e4c7cdc803adc2b195436051c6fd75a5621f4')
+source=("https://github.com/keys-pub/keys-ext/archive/refs/tags/v${pkgver}.tar.gz")
+sha256sums=('fd0399f47746800442f278d634983df55c9264c1afc26b978b88435618700e40')
 
 build() {
-  local _commit=$(bsdcat "${pkgname}-${pkgver}.tar.gz" | git get-tar-commit-id)
+  local _commit=$(bsdcat "v${pkgver}.tar.gz" | git get-tar-commit-id)
   local -a x=(
     main.version="$pkgver"
     main.commit="${_commit:?}"
