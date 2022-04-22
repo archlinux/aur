@@ -1,0 +1,14 @@
+pkgbase = rofi-code-git
+	pkgdesc = Use rofi to quickly open Visual Studio Code or Codium workspaces.
+	pkgver = 0.2.r1.gf804543
+	pkgrel = 1
+	url = https://www.github.com/Coffelius/rofi-code
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = rofi-code
+	source = rofi-code-git::git+https://www.github.com/Coffelius/rofi-code
+	md5sums = SKIP
+
+pkgname = rofi-code-git
