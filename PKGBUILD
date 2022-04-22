@@ -66,7 +66,7 @@ prepare() {
 
   [[ -f "$_userremote" ]] && source "$_userremote"
   if [[ -n "$REMOTE" && -n "$COMMIT" ]]; then
-    REMOTE_PREFIX=${REMOTE_PREFIX##${_srcname}::git+}
+    REMOTE_PREFIX=${source[0]##${_srcname}::git+}
     REMOTE_PREFIX=${REMOTE_PREFIX%%torvalds/linux}
     REMOTE_URL=${REMOTE_PREFIX}${REMOTE}
     echo
