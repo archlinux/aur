@@ -1,7 +1,7 @@
 pkgbase = pmix4
 	pkgdesc = only pmix4, Process Management Interface Exascale
 	pkgver = 4.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pmix.org/
 	arch = x86_64
 	license = custom:OpenMPI
