@@ -2,7 +2,7 @@
 
 pkgname=flterm
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Tool for loading data over serial'
 arch=('x86_64')
 url='https://github.com/timvideos/flterm'
