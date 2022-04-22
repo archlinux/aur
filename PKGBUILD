@@ -6,7 +6,7 @@ pkgname=dingtalk-bin
 _pkgname=dingtalk
 _pkgname2=com.alibabainc.dingtalk
 pkgver=1.4.0.20413
-pkgrel=2
+pkgrel=3
 pkgdesc="钉钉"
 arch=("x86_64")
 url="https://www.dingtalk.com/"
@@ -24,7 +24,7 @@ source=("${_pkgname}_${pkgver}-${arch}.deb::https://dtapp-pub.dingtalk.com/dingt
         "dingtalk.sh"
         "${_pkgname2}.svg"
         "https://archive.archlinux.org/packages/c/cairo/cairo-1.17.4-5-x86_64.pkg.tar.zst"
-        'kde-open5.sh'
+        'xdg-open.sh'
         )
 
 
@@ -36,7 +36,7 @@ sha512sums=('7deba7b5e7723c0977e8c0754394d7140bf6e2eb733ac46889ae249e3cd1ad3baa6
             'a974db88cf2c0a7cac703dab5b4a84873273cd04a7904124122fde8bab7f9773704d3041816e0096bd3f7e383c012d3ff1e9b0482e241c2dd223ebb759734a88'
             '5f05f90704526fbd16371f6f9deaa171a3cac25a103b21daba72a3028ab7cdf9b566a3ac7842c6ce88d30cc29fe0c8b989c77aa36daab73793a827a1a0d6c775'
             '94a108a3f3f88bc7ede370d5e3f84afaedd78d892f7352926091881c066cbe0da55bebb5fc83978ca83c6420ed0c94fbba1f3454c5ff8d33a38669a0a11a80ac'
-            '4416de7afe1b6143101b3190237ea04241aaf6240102900b6d32f2e2618f79c8e0ea080035f3367c464fc0f25a76721ff53f3f3d1b2fedff3a7969450c14a878')
+            '685f7eb38fd0e34aac3f1e1272f4c6f9404765decee82831b9fc4e743e0b0a022f8e49bd5623f524890a719af0b1333b96773fb386b74aeded4307e8b1a626ed')
 
 prepare(){
     cd ${srcdir}
@@ -70,8 +70,8 @@ package(){
     cd $srcdir/usr/lib
     install -Dm755 libcairo.so.2 -t ${pkgdir}/usr/lib/dingtalk
 
-    # fix kde-open5
-    install -Dm755 $srcdir/kde-open5.sh ${pkgdir}/opt/dingtalk/release/kde-open5
+    # fix open url
+    install -Dm755 $srcdir/xdg-open.sh ${pkgdir}/opt/dingtalk/release/xdg-open
 
     rm -rf ${pkgdir}/opt/${_pkgname}/release/{libm.so.6,Resources/{i18n/tool/*.exe,qss/mac},libstdc*}
 }
