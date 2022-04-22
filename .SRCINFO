@@ -1,7 +1,7 @@
 pkgbase = zulu-15-bin
 	pkgdesc = Zulu Community builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads.
 	pkgver = 15.0.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.azul.com/products/zulu-community/
 	install = zulu-15-bin.install
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = zulu-15-bin
 	provides = java-runtime-headless-openjdk=15
 	provides = java-runtime=15
 	provides = java-runtime-openjdk=15
-	source = https://cdn.azul.com/zulu/bin/zulu15.40.19-ca-jdk15.0.7-linux_x64.tar.gz
-	sha256sums = 9171d0cb812d66d3da94e5c9767a04e0b3d5e67964258b60393ff721b2a79aaf
+	source = https://cdn.azul.com/zulu/bin/zulu15.40.19_1-ca-jdk15.0.7-linux_x64.tar.gz
+	sha256sums = a09cf38e7d7d1ef6861c84f0f55cbf2bc210280a7b6e451e21110974d4b18af1
 
 pkgname = zulu-15-bin
