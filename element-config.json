@@ -1,8 +1,8 @@
 {
     "default_server_config": {
         "m.homeserver": {
-            "base_url": "https://matrix.waifuhunter.club",
-            "server_name": "waifuhunter.club"
+            "base_url": "https://matrix.georgefloyd.link",
+            "server_name": "matrix.georgefloyd.link"
         },
         "m.identity_server": {
             "base_url": "https://midov.pl"
@@ -13,7 +13,7 @@
     "disable_guests": false,
     "disable_login_language_selector": false,
     "disable_3pid_login": false,
-    "brand": "Element",
+    "brand": "Element Greentext",
     "integrations_ui_url": "https://dimension.t2bot.io/element",
     "integrations_rest_url": "https://dimension.t2bot.io/api/v1/scalar",
     "integrations_jitsi_widget_url": "https://dimension.midov.pl/widgets/jitsi",
@@ -44,7 +44,6 @@
             "glowers.club",
             "midov.pl",
             "cutefunny.art",
-            "cuum.space",
             "waifuhunter.club",
             "nerdsin.space",
             "halogen.city",
@@ -52,7 +51,8 @@
             "matrix.thisisjoes.site",
             "poa.st",
             "kde.org",
-            "linuxdelta.com"
+            "linuxdelta.com",
+            "matrix.georgefloyd.link"
         ]
     },
     "piwik": false,

@@ -42,7 +42,7 @@ sha256sums=('2eacbebfab545aebee6d03b44120fc36c9e71ed5409533dfc0c662d4aa2f799e'
             '3b2112d25b258b67d18b9329faeb9e5c5b218732c9c020ee01911347a90a1cb8'
             '0103f28a32fe31f698836516783c1c70a76a0117b5df7fd0af5c422c224220f9'
             '0d65ffa85e486a48e8a844fcc8c21b4eaadb28756a74566b22e44f3bdb257e2c'
-            'eb422aca8b3dd71282aa432bdf66eaac0272a9ac5a91b332fde5f6fb9e885852'
+            '77fddb9f55c3dad10598873cca36b4e74c7a188aa81fbd7dfe79dab0dbc1da08'
             'bf4892cb7b76ea049d76e443c7d7c93afd19c44bd41839f378661275642cf9cd'
             'c1bd9ace215e3ec9af14d7f28b163fc8c8b42e23a2cf04ce6f4ce2fcc465feba')
 validpgpkeys=(712BFBEE92DCA45252DB17D7C7BE97EFA179B100) # Element Releases <releases@riot.im>
