@@ -1,5 +1,5 @@
 pkgbase = ferdium-bin
-	pkgdesc = A messaging browser that allows you to combine your favorite messaging services into one application - binary version
+	pkgdesc = A messaging browser that allows you to combine your favorite messaging services into one application (binary release).
 	pkgver = 6.0.0.nightly.7
 	pkgrel = 1
 	url = https://ferdium.org

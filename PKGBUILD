@@ -1,12 +1,12 @@
 # Maintainer: Cedric Roijakkers <cedric [the at sign goes here] roijakkers [the dot sign goes here] be>.
-# Inspired from the PKGBUILD for ferdi-git.
+# Inspired from the PKGBUILD for ferdi-bin.
 
 _pkgname='ferdium'
 pkgname="$_pkgname-bin"
 pkgverorg='6.0.0-nightly.7'
 pkgver='6.0.0.nightly.7'
 pkgrel='1'
-pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - binary version'
+pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (binary release).'
 arch=('x86_64' 'armv7l' 'arm64')
 url="https://$_pkgname.org"
 license=('Apache')
@@ -36,12 +36,12 @@ package() {
 	cd "$srcdir/$_sourcedirectory/"
 
 	install -dm755 "$pkgdir/opt/"
-	cp -r --no-preserve=ownership --preserve=mode "opt/${_pkgname^}/" "$pkgdir/opt/$_pkgname/"
+	cp -r --no-preserve=ownership --preserve=mode "opt/${_pkgname^}/" "$pkgdir/opt/$pkgname/"
 
-	chmod u+s "$pkgdir/opt/$_pkgname/chrome-sandbox"
+	chmod u+s "$pkgdir/opt/$pkgname/chrome-sandbox"
 
 	install -dm755 "$pkgdir/usr/bin/"
-	ln -sf "/opt/$_pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+	ln -sf "/opt/$pkgname/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
 
 	install -Dm644 "usr/share/applications/$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 	for _size in 16 24 32 48 64 96 128 256 512 1024; do
@@ -50,6 +50,6 @@ package() {
 
 	install -dm755 "$pkgdir/usr/share/licenses/$pkgname/"
 	for _license in 'LICENSE.electron.txt' 'LICENSES.chromium.html'; do
-		ln -sf "/opt/$_pkgname/$_license" "$pkgdir/usr/share/licenses/$pkgname/$_license"
+		ln -sf "/opt/$pkgname/$_license" "$pkgdir/usr/share/licenses/$pkgname/$_license"
 	done
 }
