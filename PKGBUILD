@@ -3,9 +3,9 @@
 pkgname=komikku
 _author=valos
 _gitname=Komikku
-pkgver=0.37.0
+pkgver=0.38.0
 pkgrel=1
-pkgdesc='Online/offline Manga reader for GNOME, built for the Librem 5'
+pkgdesc='Online/Offline Manga reader based on GNOME | PinePhone/Librem 5 Support'
 arch=(any)
 url=https://gitlab.com/valos/Komikku
 license=(GPL3)
@@ -38,7 +38,7 @@ makedepends=(
 )
 optdepends=('org.freedesktop.secrets: store passwords safely')
 source=("https://gitlab.com/$_author/$_gitname/-/archive/v$pkgver/$_gitname-v$pkgver.tar.gz")
-sha256sums=('f126d91a21663d60c502a45ad9171bad933255839bc17a20b2f6c83500dfc4bf')
+sha256sums=('fe4576a9373cc712828f22f13e20b5b40ebb9c49ad19f71f6dfe57aeb4b832e7')
 
 build() {
   arch-meson $_gitname-v$pkgver build
