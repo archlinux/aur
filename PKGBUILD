@@ -1,18 +1,18 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=system-monitoring-center
-pkgver=1.11.0
+pkgver=1.12.0
 _pkgver="$pkgver-deb_for_stores"
 pkgrel=1
 pkgdesc="System performance and usage monitoring tool"
 arch=('any')
 url="https://github.com/hakandundar34coding/system-monitoring-center"
 license=('GPL3')
-depends=('bash' 'dmidecode' 'gtk3' 'libwnck3' 'mesa-utils' 'python-cairo'
+depends=('bash' 'dmidecode' 'gtk3' 'libwnck3' 'python-cairo'
          'python-gobject' 'systemd' 'util-linux')
-makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel' 'rsync')
+makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 changelog="$pkgname.changelog"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$_pkgver.tar.gz")
-sha256sums=('08f02cbd683dd4763371510ef91026c97d09ccff6b991b22e2fec60d9d7c1e76')
+sha256sums=('2a6df69e11228c9577f3d9dc0a19c16f083b21b1e037582e8b9b6b148ffe5e3d')
 
 build() {
   cd "$pkgname-$_pkgver"
@@ -24,6 +24,6 @@ package() {
   python -m installer --destdir="$pkgdir" dist/*.whl
 
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  rsync -av "${pkgdir}${site_packages}/usr" "$pkgdir/"
+  mv "${pkgdir}${site_packages}"/usr/{bin,share} "$pkgdir/usr/"
   rm -rf "${pkgdir}${site_packages}/usr"
 }
