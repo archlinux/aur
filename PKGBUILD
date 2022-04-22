@@ -2,7 +2,7 @@
 # Please report issues at https://github.com/jojosch/pkgbuilds
 
 pkgname="phpmd"
-pkgver=2.10.0
+pkgver=2.10.1
 pkgrel=1
 pkgdesc="Takes a given PHP source code base and look for several potential problems within that source."
 url="http://phpmd.org/"
@@ -14,7 +14,7 @@ source=(
   "LICENSE"
 )
 install="${pkgname}.install"
-sha256sums=('324e9423b9c6a70566f65870a63e6e5822ab3fa8978e1d1f7b337f0175eaef88'
+sha256sums=('c516e4a90c72ccf8170dcc806621c0f0a7ed553b8853aca085e7c38d2e187e61'
             'faad499ee7fe2e75e18565c6b6b5cf43a3dc97a6eebffbfa5840d9205339fa9b')
 
 package() {
