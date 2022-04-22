@@ -28,7 +28,7 @@ pkgver(){
 }
 prepare(){
     cd "${srcdir}/SteamTools"
-    bash "${srcdir}/dotnet-install.sh"--install-dir "${srcdir}/dotnet-sdk"
+    bash "${srcdir}/dotnet-install.sh" --install-dir "${srcdir}/dotnet-sdk"
     git submodule update --init --recursive
     cp "${srcdir}"/Credentials-Public/*.pfx .
     PATH="${srcdir}/dotnet-sdk:${PATH}" dotnet workload install android

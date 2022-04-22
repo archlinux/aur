@@ -17,6 +17,7 @@ pkgbase = steam++-git
 	source = steamtools.desktop
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 760596d2e182e0edf05f4a10bd0fa266086d700fdd96438d2663f28e538912e3
 	sha256sums = 8255faa817982a81ee3c12599e6ca4b10b39a21eb49b2dfd6d0ad09939a25d0b
 
 pkgname = steam++-git
