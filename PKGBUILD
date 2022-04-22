@@ -1,4 +1,4 @@
-# Maintainer: Stefan Auditor <stefan.auditor@erdfisch.de>
+# Maintainer: Stefan Auditor <stefan@auditor.email>
 # Please report issues at https://github.com/sanduhrs/arch-aur-phpstorm-url-handler
 
 _pkgname=phpstorm-url-handler
