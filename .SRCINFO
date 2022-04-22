@@ -1,6 +1,6 @@
 pkgbase = electron18-bin
 	pkgdesc = Build cross platform desktop apps with web technologies - binary version 18
-	pkgver = 18.0.3
+	pkgver = 18.1.0
 	pkgrel = 1
 	url = https://electronjs.org/
 	arch = x86_64
@@ -22,25 +22,25 @@ pkgbase = electron18-bin
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron18=18.0.3
-	provides = electron=18.0.3
+	provides = electron18=18.1.0
+	provides = electron=18.1.0
 	conflicts = electron18
 	conflicts = electron
-	source_x86_64 = electron18-bin-chromedriver-18.0.3-1-x86_64.zip::https://github.com/electron/electron/releases/download/v18.0.3/chromedriver-v18.0.3-linux-x64.zip
-	source_x86_64 = electron18-bin-18.0.3-1-x86_64.zip::https://github.com/electron/electron/releases/download/v18.0.3/electron-v18.0.3-linux-x64.zip
-	sha256sums_x86_64 = 05a6be2a8149c1bbbd6f9fdcb77be080a149344fd3c9b1ba910e8348dc854506
-	sha256sums_x86_64 = 2db3c2b9d3523246a7d4a792fe01e85755b4d98e84efca62850b7777d2d5d759
-	source_i686 = electron18-bin-chromedriver-18.0.3-1-i686.zip::https://github.com/electron/electron/releases/download/v18.0.3/chromedriver-v18.0.3-linux-ia32.zip
-	source_i686 = electron18-bin-18.0.3-1-i686.zip::https://github.com/electron/electron/releases/download/v18.0.3/electron-v18.0.3-linux-ia32.zip
-	sha256sums_i686 = af3fb9c70cae136c1b445516e0c16c7fc6de893cb35139cb2cec45b5fca12ed5
-	sha256sums_i686 = cb6ad7183097c00ed748de0272a0db304d4a240f45744771e3e33fff42c8fc5f
-	source_armv7h = electron18-bin-chromedriver-18.0.3-1-armv7h.zip::https://github.com/electron/electron/releases/download/v18.0.3/chromedriver-v18.0.3-linux-armv7l.zip
-	source_armv7h = electron18-bin-18.0.3-1-armv7h.zip::https://github.com/electron/electron/releases/download/v18.0.3/electron-v18.0.3-linux-armv7l.zip
-	sha256sums_armv7h = 315539adae8d45de31127a7f4e8073eb57b6a8d3391598035e22ca1ca991e330
-	sha256sums_armv7h = 3d751664d2701faf7ecf3cb4a072be2c332a89356578ea51f70f6ecc94730563
-	source_aarch64 = electron18-bin-chromedriver-18.0.3-1-aarch64.zip::https://github.com/electron/electron/releases/download/v18.0.3/chromedriver-v18.0.3-linux-arm64.zip
-	source_aarch64 = electron18-bin-18.0.3-1-aarch64.zip::https://github.com/electron/electron/releases/download/v18.0.3/electron-v18.0.3-linux-arm64.zip
-	sha256sums_aarch64 = af3f7ec29e6ec8f99609aa93893fe57694666fd3273070d882c9c6d3d8fe7ccb
-	sha256sums_aarch64 = f1cd1948272b71ebb4a5d5fd1d8fdcec472e8eafcf286cf40003c17c3b9d94d6
+	source_x86_64 = electron18-bin-chromedriver-18.1.0-1-x86_64.zip::https://github.com/electron/electron/releases/download/v18.1.0/chromedriver-v18.1.0-linux-x64.zip
+	source_x86_64 = electron18-bin-18.1.0-1-x86_64.zip::https://github.com/electron/electron/releases/download/v18.1.0/electron-v18.1.0-linux-x64.zip
+	sha256sums_x86_64 = 37f20a888349fe737b94496574f5c29a03e0b49fb105f6f9926c2410e0c2e08c
+	sha256sums_x86_64 = 7f95069d58e6843e6ae2b8f02619d4dcef7db4c35bd6e90b903268d83b939fba
+	source_i686 = electron18-bin-chromedriver-18.1.0-1-i686.zip::https://github.com/electron/electron/releases/download/v18.1.0/chromedriver-v18.1.0-linux-ia32.zip
+	source_i686 = electron18-bin-18.1.0-1-i686.zip::https://github.com/electron/electron/releases/download/v18.1.0/electron-v18.1.0-linux-ia32.zip
+	sha256sums_i686 = ab0654612850f258650a52047e2d9a166718b6f2f610a58b7c2c4a37b725bc05
+	sha256sums_i686 = e952d06b3828695636de522e3af8140543ecbe02d7351dd002b0ffb9e2a09705
+	source_armv7h = electron18-bin-chromedriver-18.1.0-1-armv7h.zip::https://github.com/electron/electron/releases/download/v18.1.0/chromedriver-v18.1.0-linux-armv7l.zip
+	source_armv7h = electron18-bin-18.1.0-1-armv7h.zip::https://github.com/electron/electron/releases/download/v18.1.0/electron-v18.1.0-linux-armv7l.zip
+	sha256sums_armv7h = 5743dddf3e512dc89a47987a89313b0c39e2cb8ff140b5960eb45c89113843e1
+	sha256sums_armv7h = c2296f3f68938aab4cef07b747d2dd28973625b6717163b9c51fbcf1509fd8ff
+	source_aarch64 = electron18-bin-chromedriver-18.1.0-1-aarch64.zip::https://github.com/electron/electron/releases/download/v18.1.0/chromedriver-v18.1.0-linux-arm64.zip
+	source_aarch64 = electron18-bin-18.1.0-1-aarch64.zip::https://github.com/electron/electron/releases/download/v18.1.0/electron-v18.1.0-linux-arm64.zip
+	sha256sums_aarch64 = e6473fc6cad3aa270f81a60d2637e87fba1ad3771f6f2934c479c8bea14bb3d6
+	sha256sums_aarch64 = 13bd4998d0d86ccf4cb87d11f9581d5a6063b4585fc4828e130054527dfb9179
 
 pkgname = electron18-bin
