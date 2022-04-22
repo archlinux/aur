@@ -2,32 +2,32 @@
 
 _name=argparse_addons
 pkgname=python-argparse-addons
-pkgver=0.7.0
-pkgrel=2
+pkgver=0.8.0
+pkgrel=1
 pkgdesc="Additional Python argparse types and actions"
 arch=(any)
 url="https://github.com/eerimoq/argparse_addons"
 license=(MIT)
 depends=(python)
-makedepends=(python-setuptools)
+makedepends=(python-build python-installer python-setuptools python-wheel)
 checkdepends=(python-pytest)
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('0bc0c3e5d81ff79345ebb41b9a37d539b3923f5fb0fcd63dcb701108b89fc0df686653a43cee66e2a61bc667b207da8af4335a7ac175fd7e2e14c517cf7e358e')
-b2sums=('bff17194a18122e4cb8146d6888cc10636d6e5a3a65d3c4f44de6fa447031052182e08673dd321f71c5b681c18fb361d09ed1252d5ba3424badb939f1053797b')
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz)
+sha512sums=('254a22c6f3af85caba1bb499df5a607e4e4a70b5c9b263dcd9ef58b6e0844b40a017ed68d687c44609fb01e4c25c9fabcb9b9af2595bbeb4c85cededda871966')
+b2sums=('0c80126f48e0eef129d8b29cddbbdb33951916b6af8f20c996e2d8b360b1dbcc614d5ad226cb8ff5bd1fa8f335b076466f77765fbc3c8e93ad59a61fc8e84294')
 
 build() {
   cd $_name-$pkgver
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 check() {
   cd $_name-$pkgver
-  pytest -v
+  pytest -vv
 }
 
 package() {
   cd $_name-$pkgver
-  python setup.py install --optimize=1 --root="$pkgdir"
+  python -m installer --destdir="$pkgdir" dist/*.whl
   install -vDm 644 README.rst -t "$pkgdir/usr/share/doc/$pkgname"
   install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname"
 }
