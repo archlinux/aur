@@ -1,6 +1,6 @@
 pkgbase = python-botorch
 	pkgdesc = Bayesian Optimization in PyTorch
-	pkgver = 0.6.3.1
+	pkgver = 0.6.4
 	pkgrel = 1
 	url = https://github.com/pytorch/botorch
 	changelog = CHANGELOG.md
@@ -17,7 +17,7 @@ pkgbase = python-botorch
 	depends = python-scipy
 	depends = python-multipledispatch
 	depends = python-pyro-ppl
-	source = python-botorch-0.6.3.1.tar.gz::https://files.pythonhosted.org/packages/source/b/botorch/botorch-0.6.3.1.tar.gz
-	sha256sums = d62abb6246beedba8898ed2f3a78196178f8e3f02d633e9678e7e734caf8c934
+	source = python-botorch-0.6.4.tar.gz::https://files.pythonhosted.org/packages/source/b/botorch/botorch-0.6.4.tar.gz
+	sha256sums = 3fd28417f55749501a45378f72cd5ca7614e2e05b7b65c6b4eb9b72378bc665a
 
 pkgname = python-botorch
