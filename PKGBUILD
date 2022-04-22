@@ -18,13 +18,12 @@ optdepends=(
   )
 provides=(ez ezdl ezgc eztst ezssl)
 source=("https://gitlab.com/a4to/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
-sha256sums=('83da51cce10f358461569023bb29364f8871185697385f9161fb4c1b025e3999')
+sha256sums=('d2bbd4b6973a5a22fe2903d8bb62eda0a4c1d32e95f3d544306642d8b648b98e')
 
 package() {
-  cd ${pkgname}
   install -Dm775 usr/bin/* -t "${pkgdir}/usr/bin/"
   install -Dm644 usr/share/licenses/${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  for x in $(ls usr/doc/${pkgname}); do
+  for x in ezdl ezgc eztst; do
     install -Dm644 usr/share/doc/${pkgname}/${x}/README "${pkgdir}/usr/share/doc/${pkgname}/${x}/README"
   done
  }
