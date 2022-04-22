@@ -1,6 +1,6 @@
 pkgbase = ampache
 	pkgdesc = PHP web based audio/video streaming application and file manager
-	pkgver = 5.3.0
+	pkgver = 5.3.1
 	pkgrel = 1
 	url = http://www.ampache.org/
 	install = ampache.install
@@ -16,7 +16,7 @@ pkgbase = ampache
 	conflicts = ampache-git
 	conflicts = ampache-development
 	options = !strip
-	source = https://github.com/ampache/ampache/releases/download/5.3.0/ampache-5.3.0_all_squashed_php8.0.zip
+	source = https://github.com/ampache/ampache/releases/download/5.3.1/ampache-5.3.1_all_squashed_php8.0.zip
 	source = nginx-example.conf
 	source = ampache.install
 	sha256sums = ed4b9d5a7708c88011c8fceafa124072e58504d829caacdfa38b31a2f81c2546
