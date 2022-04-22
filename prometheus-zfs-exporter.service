@@ -1,0 +1,14 @@
+[Unit]
+Description=Prometheus exporter for ZFS
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+EnvironmentFile=-/etc/conf.d/prometheus-zfs-exporter
+ExecStart=/usr/bin/prometheus-zfs-exporter $ZFS_EXPORTER_ARGS
+NoNewPrivileges=yes
+ProtectHome=read-only
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target

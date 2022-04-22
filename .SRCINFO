@@ -1,0 +1,22 @@
+pkgbase = prometheus-zfs-exporter
+	pkgdesc = Prometheus exporter for ZFS (pools, filesystems, snapshots and volumes)
+	pkgver = 2.2.5
+	pkgrel = 1
+	url = https://github.com/pdf/zfs_exporter
+	arch = x86_64
+	arch = aarch64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	backup = etc/conf.d/prometheus-zfs-exporter
+	source = prometheus-zfs-exporter-2.2.5.tar.gz::https://github.com/pdf/zfs_exporter/archive/refs/tags/v2.2.5.tar.gz
+	source = prometheus-zfs-exporter.service
+	source = prometheus-zfs-exporter.conf
+	sha256sums = 7b176ae6c3d2e1dbff528adb0c9c1db9c9937e3b5ac44e12682a5a99c791b8ec
+	sha256sums = b760884dd87bf47d0f3bd733d1ba2aabe8f6049242ed92503533ddb8023cbf01
+	sha256sums = f83f5bb2c0fd93126ea76c29364fd23b80fe2acac286f74f9f92d7d6449b1e85
+	b2sums = ed8670fc491e74c8e31f4d4143bae98d4c8d77a170c22b2c2d79757516dd4a88484c20c3eb95238593fd58ee7ea2146593b97c8808f4ca204cbb4e698a18c25b
+	b2sums = 2da7e1f78b77c5cc73fafc38c28d3524fec6f313ed002e3342da2ec9bb5ce8387190f52f6e8e2937bafb09bc9925bdd4e2064e1db0c1e545df90c3b65b13aee6
+	b2sums = 9911aa90947ecbbecd036fd093e7c9bc649bd0bd7a0005c0c9eb33409adfc0476f4b95e562814943422ae6be49fd0031f54ad6ea3f6dde9541ba41d9f3effbfa
+
+pkgname = prometheus-zfs-exporter
