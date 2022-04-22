@@ -3,29 +3,29 @@
 
 pkgname=pmix
 pkgver=3.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Process Management Interface Exascale, only pmix3, most applications (like slurm) do not support pmix4, pmix4 has been submitted as a separate package'
 url='https://pmix.org/'
 arch=('x86_64')
 license=('custom:OpenMPI')
-conflicts=('openmpi' 'pmix4')
+conflicts=('pmix4')
 depends=('glibc' 'libevent' 'hwloc' 'zlib')
 source=(https://github.com/pmix/pmix/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.bz2)
 sha1sums=('97978abcd4da1b2a3d2bf2452247c4d47f8cc6a3')
 
 build() {
   cd ${pkgname}-${pkgver}
-  ./configure --prefix=/usr \
+  ./configure --prefix=/usr/local \
               --disable-pmi-backward-compatibility \
               --with-libevent \
               --with-zlib \
               --with-hwloc
-  make
+  make -j
 }
 
 package() {
   cd ${pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
 
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/local/share/licenses/${pkgname}"
 }
