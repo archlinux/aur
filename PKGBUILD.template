@@ -11,7 +11,7 @@ depends=(
     "libsecret"
 )
 source=(
-    "tabby-${pkgver}-linux.pacman::https://github.com/Eugeny/tabby/releases/download/v${pkgver}/tabby-${pkgver}-linux.pacman"
+    "tabby-${pkgver}-linux.pacman::https://github.com/Eugeny/tabby/releases/download/v${pkgver}/tabby-${pkgver}-linux-x64.pacman"
 )
 sha256sums=(
     "<SHA256>"
