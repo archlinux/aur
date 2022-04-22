@@ -3,7 +3,7 @@
 
 pkgname=kde-development-environment-meta
 pkgver=20220422
-pkgrel=1
+pkgrel=2
 pkgdesc='Metapackage to install a full KDE development environment'
 arch=(any)
 url='https://phabricator.kde.org/T3722'
@@ -118,8 +118,6 @@ depends=(akonadi-calendar
          libksieve
          libksysguard
          libktorrent
-         libkvkontakte
-         libmediawiki
          mailcommon
          mailimporter
          make
@@ -147,8 +145,8 @@ optdepends=(kate
             plasma-workspace)
 makedepends=()
 source=(org.kde.development.appdata.xml kdesdk-devenv-dependencies.svg)
-sha256sums=('7f12f33cce129d012454ee15ff795f37453b04d90d64a6a1f1a2bf42d4d410a1'
-            '92af2376f53429735903ff6706344566c7f0f1aa6cfd5d2cf7aaad7097c71238')
+sha256sums=(7f12f33cce129d012454ee15ff795f37453b04d90d64a6a1f1a2bf42d4d410a1
+            92af2376f53429735903ff6706344566c7f0f1aa6cfd5d2cf7aaad7097c71238)
 noextract=()
 
 package() {
