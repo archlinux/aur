@@ -4,13 +4,14 @@ _name='psygnal'
 _author='tlambert03'
 pkgname="python-${_name}"
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Pure python implementation of Qt Signals.'
 arch=('any')
 url="https://github.com/${_author}/${_name}"
 license=('BSD')
 makedepends=(
   'python-setuptools-scm'
+  'cython'
 )
 depends=(
   'python'
