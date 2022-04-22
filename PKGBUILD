@@ -3,7 +3,7 @@
  
 pkgname="ffscreencast"
 pkgver=0.6.4
-pkgrel=1
+pkgrel=2
 pkgdesc="ffmpeg screencast/desktop-recording with video overlay and multi monitor support "
 arch=('x86_64' 'i686')
 url="https://github.com/cytopia/ffscreencast" 
@@ -14,9 +14,9 @@ provides=('ffscreencast')
 source=("git+https://github.com/cytopia/ffscreencast.git")
 md5sums=('SKIP')
 package() {
-     mkdir -p "$pkgdir"/usr/local/bin 
+     mkdir -p "$pkgdir"/usr/bin 
      mkdir -p "$pkgdir"/usr/share/doc/"$pkgname"
-     cp "$srcdir"/"$pkgname"/bin/"$pkgname" "$pkgdir"/usr/local/bin
+     cp "$srcdir"/"$pkgname"/bin/"$pkgname" "$pkgdir"/usr/bin
      cp -r "$srcdir"/"$pkgname"/config "$pkgdir"/usr/share/doc/"$pkgname"
-     chmod +x "$pkgdir"/usr/local/bin/"$pkgname"
+     chmod +x "$pkgdir"/usr/bin/"$pkgname"
 }

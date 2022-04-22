@@ -1,7 +1,7 @@
 pkgbase = ffscreencast
 	pkgdesc = ffmpeg screencast/desktop-recording with video overlay and multi monitor support
 	pkgver = 0.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cytopia/ffscreencast
 	arch = x86_64
 	arch = i686
@@ -17,4 +17,3 @@ pkgbase = ffscreencast
 	md5sums = SKIP
 
 pkgname = ffscreencast
-
