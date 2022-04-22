@@ -2,4 +2,5 @@
 pkg
 src
 arch-mkinitcpio-clevis-hook-aur
+arch-mkinitcpio-clevis-hook
 *.pkg.tar.zst
