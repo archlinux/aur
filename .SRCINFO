@@ -1,11 +1,13 @@
 pkgbase = python-pyasn
 	pkgdesc = Offline IP address to Autonomous System Number lookup module
 	pkgver = 1.6.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hadiasghari/pyasn
-	arch = any
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = i686
 	license = MIT
-	makedepends = python
 	makedepends = python-setuptools
 	depends = python
 	source = https://github.com/hadiasghari/pyasn/archive/refs/tags/1.6.1-re.tar.gz

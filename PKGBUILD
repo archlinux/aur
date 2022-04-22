@@ -4,13 +4,13 @@ pkgname=python-pyasn
 _pkgbase=pyasn
 pkgver=1.6.1
 _pkgver=1.6.1-re
-pkgrel=1
+pkgrel=2
 pkgdesc='Offline IP address to Autonomous System Number lookup module'
 url='https://github.com/hadiasghari/pyasn'
-makedepends=('python' 'python-setuptools')
+makedepends=('python-setuptools')
 depends=('python')
 license=('MIT')
-arch=('any')
+arch=('x86_64' 'aarch64' 'armv7h' 'i686')
 # pypy release seems to lack data files
 # source=("https://files.pythonhosted.org/packages/source/p/${_pkgbase}/${_pkgbase}-${pkgver}.tar.gz")
 source=("https://github.com/hadiasghari/${_pkgbase}/archive/refs/tags/${_pkgver}.tar.gz")
