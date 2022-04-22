@@ -1,6 +1,6 @@
 pkgbase = rambox-bin
 	pkgdesc = Free and Open Source messaging and emailing app that combines common web applications into one.
-	pkgver = 0.7.9
+	pkgver = 0.8.0
 	pkgrel = 1
 	url = http://rambox.pro/
 	arch = i686
@@ -18,9 +18,9 @@ pkgbase = rambox-bin
 	depends = libutil-linux
 	provides = rambox
 	conflicts = rambox
-	source_i686 = https://github.com/ramboxapp/community-edition/releases/download/0.7.9/Rambox-0.7.9-linux-i386.deb
-	sha256sums_i686 = d8a820b32152dfb8404522cdaeec44da40f0879b3945a7db7bbf6ca35b9a21b0
-	source_x86_64 = https://github.com/ramboxapp/community-edition/releases/download/0.7.9/Rambox-0.7.9-linux-amd64.deb
-	sha256sums_x86_64 = 04b9aaae7ced1e1ba71800bea861a45e57fed73a53923d263e7cb173a04c779f
+	source_i686 = https://github.com/ramboxapp/community-edition/releases/download/0.8.0/Rambox-0.8.0-linux-i386.deb
+	sha256sums_i686 = 3529e194add9d1994c9cec09208609405d161e49e9a783e2eec9ad50ae54047f
+	source_x86_64 = https://github.com/ramboxapp/community-edition/releases/download/0.8.0/Rambox-0.8.0-linux-amd64.deb
+	sha256sums_x86_64 = 87fecf3985fed9b3cbc09aa544c738cbaae2cfab9bd49bdc5c613bace404055f
 
 pkgname = rambox-bin
