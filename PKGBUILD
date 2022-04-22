@@ -1,6 +1,6 @@
 # Maintainer: Gabriel Ortega <coffelius@gmail.com>
 pkgname=rofi-code-git
-pkgrel=1
+pkgrel=2
 epoch=
 pkgver=0.2.r1.gf804543
 pkgdesc="Use rofi to quickly open Visual Studio Code or Codium workspaces."
@@ -8,7 +8,7 @@ arch=($CARCH)
 url="https://www.github.com/Coffelius/rofi-code"
 license=('MIT')
 groups=()
-depends=()
+depends=('rofi')
 makedepends=(
     'git'
     'go'

@@ -7,6 +7,7 @@ pkgbase = rofi-code-git
 	license = MIT
 	makedepends = git
 	makedepends = go
+	depends = rofi
 	provides = rofi-code
 	source = rofi-code-git::git+https://www.github.com/Coffelius/rofi-code
 	md5sums = SKIP
