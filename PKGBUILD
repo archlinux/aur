@@ -12,7 +12,7 @@ depends=(dialog)
 source=(
   "https://gitlab.com/a4to/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst"
   "https://gitlab.com/a4to/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig")
-sha256sums=('5c7b3c33ac4f9c231606a948f47fa9ebbf1ba9952759535108b8d40b2bd2d761'
+sha256sums=('116c5e981b8a82776b8805e59f9b0da337febd9869f95ab580b772dd0a06e9e7'
             'SKIP')
 
 package() {
