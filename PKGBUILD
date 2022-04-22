@@ -3,6 +3,7 @@ pkgname=viper-bin
 _pkgname=viper
 pkgver=1.3.3
 pkgrel=1
+epoch=2
 pkgdesc="Viper is a launcher and updater for Northstar, and not much more than that."
 arch=('x86_64')
 depends=('nss' 'alsa-lib' 'gtk3')
