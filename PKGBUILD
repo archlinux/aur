@@ -3,11 +3,11 @@
 pkgname=steam++-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
 pkgver=2.7.0.pre1.r127.gcd6d7e72
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'aarch64')
 url=https://steampp.net/
 license=('GPL3')
-makedepends=('git')
+makedepends=('git' 'curl' 'lsb-release')
 optdepends=('steam: need official or flatpak version of steam')
 provides=('steam++')
 conflicts=('steam++')
@@ -28,7 +28,8 @@ pkgver(){
 }
 prepare(){
     cd "${srcdir}/SteamTools"
-    bash "${srcdir}/dotnet-install.sh" --install-dir "${srcdir}/dotnet-sdk"
+    [[ -d "${srcdir}/dotnet-sdk" ]] && rm -rf "${srcdir}/dotnet-sdk"
+    bash "${srcdir}/dotnet-install.sh" --install-dir "${srcdir}/dotnet-sdk" --channel Current --no-path
     git submodule update --init --recursive
     cp "${srcdir}"/Credentials-Public/*.pfx .
     PATH="${srcdir}/dotnet-sdk:${PATH}" dotnet workload install android

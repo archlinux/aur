@@ -1,12 +1,14 @@
 pkgbase = steam++-git
 	pkgdesc = 一个开源跨平台的多功能Steam工具箱。
 	pkgver = 2.7.0.pre1.r127.gcd6d7e72
-	pkgrel = 3
+	pkgrel = 4
 	url = https://steampp.net/
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
 	makedepends = git
+	makedepends = curl
+	makedepends = lsb-release
 	optdepends = steam: need official or flatpak version of steam
 	provides = steam++
 	conflicts = steam++
