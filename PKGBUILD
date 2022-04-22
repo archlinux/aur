@@ -1,6 +1,6 @@
 # Maintainer: f4iey <f4iey@f6kgl.ampr.org>
 pkgname=radiosonde_auto_rx
-pkgver=1.5.9
+pkgver=1.5.10
 pkgrel=1
 pkgdesc="Automatically Track Radiosonde Launches using RTLSDR"
 arch=('x86_64')
@@ -48,4 +48,7 @@ package() {
     install -Dm755 "demod/mod/meisei100mod" "$pkgdir/opt/$pkgname/auto_rx/meisei100mod"
     install -Dm755 "demod/mod/imet54mod" "$pkgdir/opt/$pkgname/auto_rx/imet54mod"
     install -Dm755 "demod/mod/mp3h1mod" "$pkgdir/opt/$pkgname/auto_rx/mp3h1mod"
+
+    #Inform th user that the building is done and the config file is in /opt/
+    echo -e "\033[32mAll Done!\nMake sure to edit the \033[93mstation.cfg\033[32m in \033[33m/opt/$pkgname/auto_rx!\033[0m"
 } 
