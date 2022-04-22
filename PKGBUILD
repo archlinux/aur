@@ -10,7 +10,7 @@ pkgver=${_srctag//-/.}
 _geckover=2.47.2
 _monover=7.1.2
 _asyncver=1.10.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components"
 url="https://github.com/ValveSoftware/Proton"
@@ -262,9 +262,9 @@ prepare() {
         # Fix wldap32 compilation on 32bit
         patch -p1 -i "$srcdir"/wine-25946b48148784e8275c1685f6498ab88f553ca3.patch
         # Add FSR for fshack
-        patch -p1 -i "$srcdir"/wine-winevulkan_fsr.patch
+        #patch -p1 -i "$srcdir"/wine-winevulkan_fsr.patch
         # Adds more 16:10 resolutions for use with FSR
-        patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
+        #patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
     popd
 
     pushd dxvk
@@ -272,7 +272,7 @@ prepare() {
         # Enable at your own risk. If you don't know what it is,
         # and its implications, leave it as is. You have been warned.
         # I am not liable if anything happens to you by using it.
-        patch -p1 -i "$srcdir"/dxvk-async-${_asyncver}.patch
+        #patch -p1 -i "$srcdir"/dxvk-async-${_asyncver}.patch
     popd
 
     patch -p1 -i "$srcdir"/proton-sanitize_makefile.patch
