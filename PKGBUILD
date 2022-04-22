@@ -7,14 +7,14 @@
 pkgname=(libvirt libvirt-storage-gluster libvirt-storage-iscsi-direct libvirt-storage-rbd)
 epoch=1
 pkgver=8.2.0
-pkgrel=4
+pkgrel=5
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('x86_64')
 url="https://libvirt.org/"
 license=('LGPL' 'GPL3') #libvirt_parthelper links to libparted which is GPL3 only
 depends=('libpciaccess' 'yajl' 'fuse3' 'gnutls' 'parted' 'libssh' 'libxml2' 'numactl' 'polkit')
 makedepends=('meson' 'libxslt' 'python-docutils' 'lvm2' 'open-iscsi' 'libiscsi' 'ceph-libs' 'glusterfs'
-             'bash-completion' 'rpcsvc-proto' 'dnsmasq' 'iproute2' 'qemu-headless')
+             'bash-completion' 'rpcsvc-proto' 'dnsmasq' 'iproute2' 'qemu-base')
 optdepends=('libvirt-storage-gluster: Gluster storage backend'
             'libvirt-storage-iscsi-direct: iSCSI-direct storage backend'
             'libvirt-storage-rbd: RBD storage backend'
@@ -24,7 +24,8 @@ optdepends=('libvirt-storage-gluster: Gluster storage backend'
             'dnsmasq: required for default NAT/DHCP for guests'
             'radvd: IPv6 RAD support'
             'ebtables: required for default NAT networking'
-            'qemu: QEMU/KVM support'
+            'qemu-desktop: QEMU/KVM support'
+            'qemu-emulators-full: Support of additional QEMU architectures'
             'lvm2: Logical Volume Manager support'
             'open-iscsi: iSCSI support via iscsiadm'
             'swtpm: TPM emulator support')
