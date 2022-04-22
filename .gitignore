@@ -5,3 +5,8 @@
 *.hpp
 *.cpp
 *.service
+*.ts
+*.h
+*.c
+*.ui
+*.qrc
