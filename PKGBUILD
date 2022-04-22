@@ -1,8 +1,9 @@
 # Maintainer: Wüstengecko <1579756+Wuestengecko@users.noreply.github.com>
-pkgname=python-lsp-mypy
-_name=pylsp-mypy
+pkgbase=python-lsp-mypy
+pkgname=(python-pylsp-mypy)
+_name=${pkgname#python-}
 pkgver=0.5.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Static type checking for python-lsp-server with mypy"
 arch=(any)
 url="https://github.com/python-lsp/pylsp-mypy"
@@ -27,7 +28,10 @@ check() {
   PYTHONPATH="$PWD" pytest
 }
 
-package() {
+package_python-pylsp-mypy() {
+  conflicts=(python-lsp-mypy)
+  replaces=(python-lsp-mypy)
+
   cd "$_name-$pkgver"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   PYTHONHASHSEED=0 python setup.py install --root="$pkgdir" --optimize=1 --skip-build
