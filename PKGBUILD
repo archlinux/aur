@@ -1,16 +1,16 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=reshape
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
-pkgdesc="A zero-downtime schema migration tool for PostgreSQL"
+pkgdesc='A zero-downtime schema migration tool for PostgreSQL'
 arch=('x86_64')
-url="https://github.com/fabianlindfors/reshape"
+url='https://github.com/fabianlindfors/reshape'
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'rust')
 options=('!lto')
-_commit='7be40f2b29aa8d1170e8d3d3a4222f91fc5d19d0'
+_commit='0195102e9bafb1a62dd4b050711e618fcbf475dc'
 source=("$pkgname::git+$url.git#commit=$_commit")
 b2sums=('SKIP')
 
