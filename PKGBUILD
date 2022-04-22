@@ -1,25 +1,29 @@
-# Maintainer: Leonidas Spyropoulos <artafinde AT gmail DOT com>
+# Maintainer: Leonidas Spyropoulos <artafinde AT archlinux DOT org>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 # Credit to graysky for shamelessly copying PKGBUILD from linux-ck
 
 ### BUILD OPTIONS
-# Set the next three variables to ANYTHING that is not null to enable them
+# Any/all of the next three variables may be set to ANYTHING
+# that is not null to enable their respective build options
 
 # Tweak kernel options prior to a build via nconfig
 _makenconfig=
 
-# Only compile active modules to VASTLY reduce the number of modules built and
-# the build time.
+# Only compile select modules to reduce the number of modules built
 #
 # To keep track of which modules are needed for your specific system/hardware,
 # give module_db a try: https://aur.archlinux.org/packages/modprobed-db
 # This PKGBUILD reads the database kept if it exists
-#
 # More at this wiki page ---> https://wiki.archlinux.org/index.php/Modprobed-db
 _localmodcfg=
+
+# Compile using clang rather than gcc
+_clangbuild=
 
 # Optionally select a sub architecture by number or leave blank which will
 # require user interaction during the build. Note that the generic (default)
 # option is 36.
+_subarch=36
 #
 #  1. AMD Opteron/Athlon64/Hammer/K8 (MK8)
 #  2. AMD Opteron/Athlon64/Hammer/K8 with SSE3 (MK8SSE3) (NEW)
@@ -62,21 +66,21 @@ _localmodcfg=
 #  39. Generic-x86-64-v4 (GENERIC_CPU4) (NEW)
 #  40. Intel-Native optimizations autodetected by GCC (MNATIVE_INTEL) (NEW)
 #  41. AMD-Native optimizations autodetected by GCC (MNATIVE_AMD) (NEW)
-_subarch=36
 
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 pkgbase=linux-prjc
-pkgver=5.17.1
+pkgver=5.17.4
 pkgrel=1
 pkgdesc='Linux'
 url="https://gitlab.com/alfredchen/linux-prjc"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(bc kmod libelf pahole cpio xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick git)
+[[ -n "$_clangbuild" ]] && makedepends+=(clang llvm lld python)
 options=('!strip')
 _srcname=linux-${pkgver}
-_arch_config_commit=cb8242a510d80d4e58215a639053fa61954e1b9d
+_arch_config_commit=d759dad77f07e96418e5550bed22ecc2e5563740
 _prjc_version=5.17-r1
 _prjc_patch="prjc_v${_prjc_version}.patch"
 _gcc_more_v=20220315
@@ -85,22 +89,34 @@ source=(
   "${pkgbase}-${pkgver}-config::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_arch_config_commit}/trunk/config"
   "${_prjc_patch}::https://gitlab.com/alfredchen/projectc/raw/master/${_prjc_version%-*}/${_prjc_patch}"
   "more-uarches-$_gcc_more_v.tar.gz::https://github.com/graysky2/kernel_compiler_patch/archive/$_gcc_more_v.tar.gz"
-  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/ba9638ad03df373965160a5bdb4173b544381767.patch"
-  "0002-${pkgbase}-${pkgver}-random-treat-bootloader-trust-toggle-the-same-way-as.patch::https://github.com/archlinux/linux/commit/22365749abd27f2cb582a049da42b7c7a02b6bfe.patch"
-  "0003-${pkgbase}-${pkgver}-Revert-swiotlb-rework-fix-info-leak-with-DMA_FROM_DEVICE.patch::https://github.com/archlinux/linux/commit/29f850827951966fefbea50555995775129f9516.patch"
+  "0001-${pkgbase}-${pkgver}-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch::https://github.com/archlinux/linux/commit/0d08f6e05307e6184dd245d6ad5b1964758dfd7e.patch"
+  "0002-${pkgbase}-${pkgver}-random-treat-bootloader-trust-toggle-the-same-way-as.patch::https://github.com/archlinux/linux/commit/da25063dc2e963f4b5d07f180b073d79deb1b9f8.patch"
+  "0003-${pkgbase}-${pkgver}-tick-Detect-and-fix-jiffies-update-stall.patch::https://github.com/archlinux/linux/commit/4258175eaf88cc4aa6c0d1c7fcf88354f548cfbf.patch"
+  "0004-${pkgbase}-${pkgver}-tick-rcu-Remove-obsolete-rcu_needs_cpu-parameters.patch::https://github.com/archlinux/linux/commit/d2f458dfd95628306f035b1080255499dc0dc368.patch"
+  "0005-${pkgbase}-${pkgver}-tick-rcu-Stop-allowing-RCU_SOFTIRQ-in-idle.patch::https://github.com/archlinux/linux/commit/6c03ea3961fd475bd19ef61665c58006c1e86d72.patch"
+  "0006-${pkgbase}-${pkgver}-lib-irq_poll-Declare-IRQ_POLL-softirq-vector-as-ksof.patch::https://github.com/archlinux/linux/commit/43f24fc4acb673ec5e4140632a4f73869c4631a2.patch"
+  "0007-${pkgbase}-${pkgver}-gpio-Request-interrupts-after-IRQ-is-initialized.patch::https://github.com/archlinux/linux/commit/c1df6787c9f39c4896fa46522656fb33a2b8c738.patch"
+  "0008-${pkgbase}-${pkgver}-NFSv4.1-provide-mount-option-to-toggle-trunking-disc.patch::https://github.com/archlinux/linux/commit/68ae3e7b9b621603d53fc5ce49e640b1df254a12.patch"
+  "${pkgbase}-${pkgver}-sched-uclamp-Add-dummy-functions-to-sched_alt.h.patch::https://gitlab.com/torvic9/linux-stable/-/commit/170a1f1454a4453c0053f87723fd15634c863e05.patch"
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
-b2sums=('1275903955f014d0a0b4cad9074710d36825b274814cde457cf9e1f9acc188b21da7de01100f99cfe9644fb7fd182a95257d124a6992ac3be47adb907e230616'
+b2sums=('a4ce00967f724753f5be39a3448ce6de18f46500d4dab8a4b93a4dfa4dfcb99cfcee6df3808ee355211cbb38819b2b9f7fea6e630db3e03e4a9f0bd952a32919'
         'SKIP'
-        '0f3943f9700848e5cd46e2c4d18cb53bc025ccc54dbc415bf1b522dc554ab43a58a81d479408fc69a27f2606e05b32d1060c1585c00994d3d5d1f77558071d25'
+        'b473e6d41720ed96a47e8536e7834ce8656d1aa0055201e4158eea7fdf93d3b7cb591dfa1ea628ed5dbe64e07ea8acd05a680ebb7b88bcf2e3e1e84975ad17ce'
         'e8640372c4a3a180ee475e786466147dca3b5afe1a78f0346b63fb2654ef05cf7515626aa02b0949e43cb593477820b675c31459ba66cc40549eca1a5d33989b'
         '20674a8fcc0a85726e06460a7dbccfe731c46bf377cc3bf511b7591175e7df892f271bc1909e77d9a02913c753d241493502c5ab15d9f78e95f31aa4399c2c27'
-        'a52e0335832daea76ecbbbb04b24706f9b7ffc7438ea632720520e2b46b50886cdd50422f31cdd0555dfc2e5974359ab97646d1dd5575547b95fc77ca1322f8e'
-        '13ca9b46187a5d52bf8b7c6d7c4dafc6caeb1614c85dee19f480e35ab8b03250722be2bc3442b351a17815efd27d8a8a1f785406fb111ff73973d149daef9c4f'
-        '98b4fcc7731648571535d1500f2e250241fd8b7054dbefd49aafa5efe1943fa9f639683f755e8dc2c463ede289ff75adb949e63e8ccf58fd36e0248f182dc7d2')
+        'cb0a420659836cebf7a6e1645860ac5df5c22ebed881625f3cf1337682ffb3dc01d531f89d37cb598b0665c5438e186e837e24386b32fa1069b05c166ef66afa'
+        '57cd172c92a38c00a7029061ce34a1527c442e471472b92e36213e729e7dd9973b2c113b3fa042f4ac927a60322ffb23ebaec161cfed7f57a68a58d90410cef6'
+        'f91f18904b5d1f64a8ff806803bc7197aa0b985f4df3c6c07ea9c63d9d71ee2f8e19c723b4ecd09eeabf997e3bcfd31c6f804880d6679ec77097b6c142961a00'
+        'eff96e01339398246ecd6817711e6f6a39ae02105e10c03112423a647483910bdac729341e6b66ed0fdd2559909940e8f8cda6d2aeb3bf63dadf58ce95df5739'
+        '67f9c1ee10e30d135c6e0cd9a1026c56fa9b8b964d2f2faf72b5f3558acb36a885bb14882337b8c97aa4d0eb3282a78b4a210a3ab319be52e075bbb6b3cee6d7'
+        '39ad90d4e0e76b55229cd0c846400c4e6b053810406b061bc64af2368403b919b69c6d0593bf4d7dca9710e3643f0a7cfaa624b1a285ae45b9a8c8d470f37456'
+        '6e1c1d99a1ce1c3a2c466c8a77b1d1e3bf4cdb27490df0c939abff26c0842f26e123b8ed56e963e3eb021bfe97ad606efda0240cf21ac0250da35cc41a8f4dd2'
+        '923e8765bec6054231909871b4be810c14d8ba4fef2558c2d17790e0b71f028b0689dd75f04c8133976112a73f69105cdbffc64f9be496640220c04be0cd6c7f'
+        '0f6d3b6f9b88fdfe0e7ebc20a49cdd2933e6fa65afbc954f97436c216651b23808f76931e26ce5d3cdd7eeadbb3b5e637a32afb0f3e0732650a621f66c2f3f7a')
 
 _kernelname=${pkgbase#linux}
 : ${_kernelname:=-prjc}
@@ -152,10 +168,18 @@ prepare() {
 
   echo "Applying patch ${_prjc_patch}..."
   patch -Np1 -i "$srcdir/${_prjc_patch}"
+  patch -Np1 -i "$srcdir/${pkgbase}-${pkgver}-sched-uclamp-Add-dummy-functions-to-sched_alt.h.patch"
+
+  if [[ -n "$_clangbuild" ]]; then
+    scripts/config -e LTO_CLANG_THIN
+    export _LLVM=1
+    export _LLVM_IAS=$_LLVM
+  fi
 
   # non-interactively apply prjc default options
   # this isn't redundant if we want a clean selection of subarch below
-  make olddefconfig
+  make LLVM=$_LLVM LLVM_IAS=$_LLVM olddefconfig
+  # diff -u ../${pkgbase}-${pkgver}-config .config || :
 
   # https://github.com/graysky2/kernel_gcc_patch
   # make sure to apply after olddefconfig to allow the next section
@@ -164,10 +188,10 @@ prepare() {
 
   if [ -n "$_subarch" ]; then
     # user wants a subarch so apply choice defined above interactively via 'yes'
-    yes "$_subarch" | make oldconfig
+    yes "$_subarch" | make LLVM=$_LLVM LLVM_IAS=$_LLVM oldconfig
   else
     # no subarch defined so allow user to pick one
-    make oldconfig
+    make LLVM=$_LLVM LLVM_IAS=$_LLVM oldconfig
   fi
 
   ### Optionally load needed modules for the make localmodconfig
@@ -175,7 +199,7 @@ prepare() {
   if [ -n "$_localmodcfg" ]; then
     if [ -f $HOME/.config/modprobed.db ]; then
       echo "Running Steven Rostedt's make localmodconfig now"
-      make LSMOD=$HOME/.config/modprobed.db localmodconfig
+      make LLVM=$_LLVM LLVM_IAS=$_LLVM LSMOD="$HOME/.config/modprobed.db" localmodconfig
     else
       echo "No modprobed.db data found"
       exit
@@ -185,7 +209,7 @@ prepare() {
   make -s kernelrelease > version
   echo "Prepared ${pkgbase} version $(<version)"
 
-  [[ -z "$_makenconfig" ]] || make nconfig
+  [[ -z "$_makenconfig" ]] || make LLVM=$_LLVM LLVM_IAS=$_LLVM nconfig
 
   # uncomment if you want to build with distcc
   ### sed -i '/HAVE_GCC_PLUGINS/d' arch/x86/Kconfig
@@ -193,7 +217,7 @@ prepare() {
 
 build() {
   cd $_srcname
-  make all
+  make LLVM=$_LLVM LLVM_IAS=$_LLVM all
 }
 
 _package() {
@@ -215,10 +239,8 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  #make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
-  # not needed since not building with CONFIG_DEBUG_INFO=y
-
-  make INSTALL_MOD_PATH="$pkgdir/usr" modules_install
+  make LLVM=$_LLVM LLVM_IAS=$_LLVM INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
@@ -241,8 +263,8 @@ _package-headers() {
   # add objtool for external module building and enabled VALIDATION_STACK option
   install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  #install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
@@ -259,6 +281,9 @@ _package-headers() {
   install -Dt "$builddir/drivers/media/usb/dvb-usb" -m644 drivers/media/usb/dvb-usb/*.h
   install -Dt "$builddir/drivers/media/dvb-frontends" -m644 drivers/media/dvb-frontends/*.h
   install -Dt "$builddir/drivers/media/tuners" -m644 drivers/media/tuners/*.h
+
+  # https://bugs.archlinux.org/task/71392
+  install -Dt "$builddir/drivers/iio/common/hid-sensors" -m644 drivers/iio/common/hid-sensors/*.h
 
   echo "Installing KConfig files..."
   find . -name 'Kconfig*' -exec install -Dm644 {} "$builddir/{}" \;
