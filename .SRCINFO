@@ -1,0 +1,11 @@
+pkgbase = ubuntu-backgrounds-jammy
+	pkgdesc = The backgrounds included in Ubuntu 22.04 jammy
+	pkgver = 22.04.4
+	pkgrel = 1
+	url = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers
+	arch = any
+	license = Commons Attribution-ShareAlike 3.0 Unported
+	source = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers/ubuntu-wallpapers_22.04.4.orig.tar.gz
+	sha256sums = 83a9469e84c908d29f9fb2484029575a2d05548f9d984dca556740b622c5dd1e
+
+pkgname = ubuntu-backgrounds-jammy
