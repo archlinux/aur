@@ -1,12 +1,12 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=caj2pdf-qt
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 pkgdesc='CAJ 转 PDF 转换器（GUI 版本）'
 arch=('x86_64')
 url='https://caj2pdf-qt.sainnhe.dev'
 license=('GPL')
-depends=('qt6-base' 'qt6-5compat')
+depends=('qt6-base' 'gcc-libs' 'glibc' 'icu' 'zstd' 'glib2' 'systemd-libs' 'zlib' 'double-conversion' 'libb2' 'pcre2' 'libglvnd' 'fontconfig' 'libx11' 'libxkbcommon' 'libpng' 'harfbuzz' 'md4c' 'freetype2' 'pcre' 'xz' 'lz4' 'libcap' 'libgcrypt' 'expat' 'libxcb' 'dbus' 'graphite' 'bzip2' 'brotli' 'libgpg-error' 'libxau' 'libxdmcp' 'openssl')
 makedepends=('git' 'python' 'cmake')
 provides=('caj2pdf-qt')
 conflicts=('caj2pdf-qt')
