@@ -1,6 +1,6 @@
 pkgbase = ubuntu-backgrounds
 	pkgdesc = All backgrounds of Ubuntu
-	pkgver = 0.1.0
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers
 	arch = any
@@ -8,6 +8,42 @@ pkgbase = ubuntu-backgrounds
 	source = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers/ubuntu-wallpapers_22.04.4.orig.tar.gz
 	sha256sums = 83a9469e84c908d29f9fb2484029575a2d05548f9d984dca556740b622c5dd1e
 
+pkgname = ubuntu-backgrounds-artful
+
+pkgname = ubuntu-backgrounds-cosmic
+
+pkgname = ubuntu-backgrounds-disco
+
+pkgname = ubuntu-backgrounds-eoan
+
+pkgname = ubuntu-backgrounds-hirsute
+
 pkgname = ubuntu-backgrounds-impish
 
 pkgname = ubuntu-backgrounds-karmic
+
+pkgname = ubuntu-backgrounds-lucid
+
+pkgname = ubuntu-backgrounds-maverick
+
+pkgname = ubuntu-backgrounds-natty
+
+pkgname = ubuntu-backgrounds-oneiric
+
+pkgname = ubuntu-backgrounds-precise
+
+pkgname = ubuntu-backgrounds-quantal
+
+pkgname = ubuntu-backgrounds-raring
+
+pkgname = ubuntu-backgrounds-saucy
+
+pkgname = ubuntu-backgrounds-utopic
+
+pkgname = ubuntu-backgrounds-vivid
+
+pkgname = ubuntu-backgrounds-wily
+
+pkgname = ubuntu-backgrounds-yakkety
+
+pkgname = ubuntu-backgrounds-zesty
