@@ -12,7 +12,7 @@ depends=(
         'gnome-menus'
         'python-dbus'
         'python-gobject'
-	'libwcnk3'
+	'libwnck3'
         'libxkbcommon-x11'
         )
 license=('GPL')
