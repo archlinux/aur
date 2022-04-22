@@ -13,7 +13,7 @@
 # Contributor: @holos
 
 pkgname=gnupg23
-pkgver=2.3.4
+pkgver=2.3.5
 pkgrel=0
 pkgdesc='Complete and free implementation of the OpenPGP standard'
 url='https://www.gnupg.org/'
@@ -29,7 +29,7 @@ optdepends=('libldap: gpg2keys_ldap'
             'pcsclite: scdaemon')
 source=("https://gnupg.org/ftp/gcrypt/${pkgname%23}/${pkgname%23}-${pkgver}.tar.bz2"{,.sig}
 	"drop-import-clean.patch")
-sha256sums=('f3468ecafb1d7f9ad7b51fd1db7aebf17ceb89d2efa8a05cf2f39b4d405402ae'
+sha256sums=('20aaeef2a18bc75430042a052598b0ab617e7a07247ad4943bf7cd08f7803ddb'
             'SKIP'
             '2d573d1a5a0d0272b0be0d70e6dabf2d8c7897e873ace4ce7fffd6e96599a30a')
 install=gnupg23.install
