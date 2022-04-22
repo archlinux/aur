@@ -1,7 +1,7 @@
 pkgbase = napari
 	pkgdesc = Multi-dimensional image viewer for Python.
 	pkgver = 0.4.14
-	pkgrel = 2
+	pkgrel = 3
 	url = https://napari.org
 	arch = any
 	license = BSD
@@ -27,7 +27,7 @@ pkgbase = napari
 	depends = python-pint
 	depends = python-psutil
 	depends = python-pyaml
-	depends = python-pydantic
+	depends = python-pydantic-latest
 	depends = python-qtpy
 	depends = python-scipy
 	depends = python-superqt

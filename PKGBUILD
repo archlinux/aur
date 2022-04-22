@@ -3,7 +3,7 @@
 _name='napari'
 pkgname="${_name}"
 pkgver=0.4.14
-pkgrel=2
+pkgrel=3
 pkgdesc='Multi-dimensional image viewer for Python.'
 arch=('any')
 url='https://napari.org'
@@ -33,7 +33,7 @@ depends=(
   'python-pint'
   'python-psutil'
   'python-pyaml'
-  'python-pydantic'
+  'python-pydantic-latest'  # community package has been out of date for months
   'python-qtpy'
   'python-scipy'
   'python-superqt'
