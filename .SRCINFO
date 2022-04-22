@@ -1,15 +1,16 @@
 pkgbase = pmix
-	pkgdesc = only pmix3, Process Management Interface Exascale
+	pkgdesc = Process Management Interface Exascale, only pmix3, most applications (like slurm) do not support pmix4, pmix4 has been submitted as a separate package
 	pkgver = 3.2.3
 	pkgrel = 1
 	url = https://pmix.org/
 	arch = x86_64
 	license = custom:OpenMPI
-	depends = gcc-libs
+	depends = glibc
 	depends = libevent
+	depends = hwloc
 	depends = zlib
-	depends = munge
 	conflicts = openmpi
+	conflicts = pmix4
 	source = https://github.com/pmix/pmix/releases/download/v3.2.3/pmix-3.2.3.tar.bz2
 	sha1sums = 97978abcd4da1b2a3d2bf2452247c4d47f8cc6a3
 
