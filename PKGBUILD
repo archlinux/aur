@@ -1,7 +1,7 @@
 # Maintainer: Stezko <stezko@gmail.com>
 pkgname=gnome-connection-manager-bin
 pkgver=1.2.1
-pkgrel=6
+pkgrel=7
 pkgdesc="Simple tabbed ssh and telnet connection manager for GTK+ environments."
 arch=('any')
 url="http://kuthulu.com/gcm"
@@ -14,7 +14,7 @@ source=(
 		"https://raw.githubusercontent.com/kuthulux/gnome-connection-manager/d2f66e3d668245f549ff6a69f662b1ebd669dc51/style.css"
 		)
 sha256sums=(
-			'74550c2ce25c49886f34a5815ce5fd963eefeef8671c6e3656e515b00e11ef16'
+			'bb6cc57aeddb1b4c42904b61a2c8db1b1f3d68b2bf1627e05944c0931ad78a4f'
 			'SKIP')
 
 package(){
