@@ -2,4 +2,5 @@ pkg
 src
 SteamTools
 Credentials-Public
+dotnet-install.sh
 *.pkg.tar.*
