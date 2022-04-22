@@ -25,6 +25,8 @@ package() {
 
   cp -r . "${pkgdir}/opt/${pkgname}"
 
+  rm -f "${pkgdir}/opt/${pkgname}/libstdc++.so.6"
+
   chmod +x "${pkgdir}/opt/${pkgname}/CQ-editor" 
 
   mkdir -p "${pkgdir}/usr/bin/"
