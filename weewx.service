@@ -1,5 +1,3 @@
-# systemd configuration for weewx
-
 [Unit]
 Description=weewx weather system
 Requires=time-sync.target
@@ -7,10 +5,8 @@ After=time-sync.target
 RequiresMountsFor=/etc /var/lib
 
 [Service]
-ExecStart=/usr/bin/weewxd --daemon --pidfile=/run/weewx.pid /etc/weewx/weewx.conf
-ExecReload=/bin/kill -HUP $MAINPID
-Type=forking
-PIDFile=/run/weewx.pid
+ExecStart=/usr/bin/weewxd /etc/weewx/weewx.conf
+StandardOutput=null
 #User=weewx
 #Group=weewx
 
