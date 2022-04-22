@@ -3,7 +3,7 @@
 # PLEASE do not mark it out-of date because "2.xx is released"
 # *2.xx a separate project with same name from other dev team*
 pkgname=tlauncher
-pkgver=1.138.11
+pkgver=1.140.1
 pkgrel=1
 epoch=1
 pkgdesc='TL (Legacy) is freeware launcher of Minecraft.'
@@ -15,22 +15,20 @@ optdepends=('xorg-xrandr: Required for some old Minecraft versions')
 
 _branch='aur'
 # try to change repo if default sends 404
-_repo='https://tlauncherrepo.com'
+# _repo='https://tlauncherrepo.com'
 # _repo='https://cdn.turikhay.ru/tlauncher'
-# _repo='https://u.tlauncher.ru' # temporary out of service
-# _repo='https://tlaun.ch'
+_repo='https://tlaun.ch'
 
 # _librepo='https://tlauncherrepo.com/repo/libraries'
-# _librepo='https://tlaun.ch/repo/libraries'
-_librepo='https://cdn.turikhay.ru/tlauncher/repo/libraries'
-# _librepo='https://tlauncherrepo.com/repo/libraries' # temporay out of service
+_librepo='https://tlaun.ch/repo/libraries'
+# _librepo='https://cdn.turikhay.ru/tlauncher/repo/libraries'
 
 _maven='https://repo1.maven.org/maven2'
 _mojang='https://libraries.minecraft.net'
 
-_bootstrap_version='1.14.0'
-_bootstrap_checksum='fb56dc76a1b4d1e44065cc297ea7fcfca805f554e4e22298cb828ddd13c514eb'
-_launcher_checksum='b2b58876cb75cfa1c59d0734ee09d44e5910b27b8403ebb5772c5d424e036a08'
+_bootstrap_version='1.15.5'
+_bootstrap_checksum='95f19a1a5565dc7cc088d498e5a40948cb4afc66392645b0979301271f680cb8'
+_launcher_checksum='1cc3f63e21bc1ef0bc3d2d3e77a3e9c518d7fe78870413fb13599643f54ca270'
 
 source=("tl-bootstrap-${_bootstrap_version}.jar::${_repo}/legacy_beta/bootstrap/${_bootstrap_checksum}.jar"
         "tl-launcher-${pkgver}.jar::${_repo}/${_branch}/launcher/${_launcher_checksum}.jar"
@@ -121,7 +119,7 @@ sha256sums=("${_bootstrap_checksum}"
             'd6da12b649df178826399a31e8f0f72be7428f90b5a3a95b7538cec0a58a4755'
             'beba733d11b80113007683cf61b122c4e1524c424f963960b08b74bf77d378e4'
 
-            'bbb0eaa8d6714cc1e297d351f8e23acc25c08e4ddaf0bdcd0eb2c5a995c3561a'
+            'd8c7b15306bbb620e22ae0ee59a350ab36e63c28b52bce012ab312522ef6dab6'
             '0b31e2afee3a709c74daa0df9345d15c01ea361f8beee26e6cfac2a3b518aa23')
 
 package() {

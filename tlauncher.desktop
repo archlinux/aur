@@ -1,11 +1,15 @@
 [Desktop Entry]
 Version=1.0
 Type=Application
-Name=TLauncher
-Comment=TLauncher is Minecraft Launcher
+Name=TL
+Comment=Simple, light and fast Minecraft launcher
 Icon=minecraft
 Exec=/usr/bin/tlauncher
+StartupWMClass=ru-turikhay-tlauncher-bootstrap-Bootstrap
 NoDisplay=false
-Categories=Application;Game;
+Categories=Game;
+Keywords=Minecraft
 StartupNotify=false
 Terminal=false
+PrefersNonDefaultGPU=true
+X-KDE-RunOnDiscreteGpu=true
