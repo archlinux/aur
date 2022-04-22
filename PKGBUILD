@@ -6,84 +6,67 @@
 # Contributor: angrycore (angrycore@gmail.com)
 # Contributor: Christophe Guéret (christophe.gueret@gmail.com)
 # Contributor: oguzkagan <me at oguzkaganeren dot com dot tr>
+# Contributor: a32633 <brunofernandes@ua.pt>
 
 pkgname='omnetpp'
-pkgver=5.6.2
-pkgrel=4
+pkgver=6.0
+pkgrel=1
 pkgdesc='Component-based simulation package designed for modeling communication networks'
 url='http://www.omnetpp.org'
 license=('Academic Public License')
-depends=('tcl' 'openscenegraph' 'tk' 'qt5-base')
-makedepends=('libxml2' 'bison' 'flex' 'openscenegraph' 'qt4')
+depends=(libxml2 qt5-base tcl jdk-openjdk openmpi libpcap doxygen graphviz clang openscenegraph python-scipy python-pandas python-posix_ipc)
+makedepends=(sh wget cmake bison flex perl python-scipy python-pandas python-posix_ipc)
 arch=('i686' 'x86_64')
 optdepends=(
-  'openmpi: message passing library for parallel simulation'
-  'java-environment: Java runtime for using OMNeT++/OMNEST IDE'
-  'osgearth: geospatial API with 3D rendering'
-)
+			'python-numpy: analysing simulation recordings' 
+			'python-matplotlib: analysing simulation recordings'
+			'python-pandas: analysing simulation recordings'
+			'python-posix_ipc: analysing simulation recordings'
+			'osgearth: geospatial API with 3D rendering')
+provides=('omnetpp')
+conflicts=('omnetpp')
 install=${pkgname}.install
 
 source=(
-  omnetpp-${pkgver}-src-linux.tgz::"https://github.com/omnetpp/omnetpp/releases/download/omnetpp-${pkgver}/omnetpp-${pkgver}-src-linux.tgz"
+  ${pkgname}-${pkgver}-src-linux.tgz::"https://github.com/omnetpp/omnetpp/releases/download/omnetpp-${pkgver}/omnetpp-${pkgver}-linux-x86_64.tgz"
   OMNeT++.desktop
-)
-sha512sums=('d36e1e1aee75ddaba3e61340e3fdd71beb00fc0d8bbf934ac4781ed65a2a9697495855f5fa3d7a5e54745cfc50c6df71e9538b274a8d3eaa341f408e5260991f'
-  'd92f9f791d6347317a1e833ca52a5423f30feaac6212ea5d280ad334541bcd8786252076598d45551b3c41d4b64423d9f4c05e67fe1a535bb03d951881f7e544')
+  omnetpp.sh)
+
+sha512sums=('f32461525282cc76aaf50a0c476f30b6032421df54cedafc6e2a41c580705d534d26aa490ac45e7faa332c339a2e8d9ec61f575db0c27e34849e7ba10df81249'
+  '064bb4747e9985dab8480de69978e2258111a38a7d49bb24c36f1ac070058bb2149bb4d2b2fd15d5a35f0ce02bf47e1d212a74397afd07a40a68b5eab7decfd1'
+  'facb711a01c41665c7909f82b4cee65ddee232e0c526f754ce1ab148dbc6c65abb9b24255f985be245fb2c33f91623365eac730ef83cb1a7c595a09726856fa1')
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  PATH=${srcdir}/${pkgname}-${pkgver}/bin:$PATH
-  changeText1=". .\/configure.user"
-  changeText2=".\/configure.user"
-  LD_LIBRARY_PATH=${srcdir}/${pkgname}-${pkgver}/lib:$LD_LIBRARY_PATH
-
-  # Disable OSGEARTH because even in AUR it's >3.0
-  sed -i 's/WITH_OSGEARTH=yes/WITH_OSGEARTH=no/' configure.user
-
-  sed -i 's!OMNETPP_ROOT/images!OMNETPP_ROOT/images;/usr/share/omnetpp/images!' configure*
-  sed -i '/for arg in \$ac_configure_args/,+8 d' configure
-  ./configure --prefix=/usr
-
-  sed -i 's!IDEDIR=.*!IDEDIR=/opt/omnetpp/ide!' src/utils/omnetpp src/utils/omnest
-  sed -i 's!osgi.instance.area.default=.*$!#osgi.instance.area.default=/usr/share/omnetpp/samples!g' ide/configuration/config.ini
-
-  make || return 1
+	cd ${srcdir}/${pkgname}-${pkgver}
+	echo WITH_OSGEARTH=no >> configure.user
+	# Fix configure script
+	sed -i "2152 a ac_configure_args=$(echo $ac_configure_args | sed s/\'//g)" configure
+	source setenv
+	./configure --prefix=/opt --libdir=/opt/lib --libexecdir=/opt/lib
+	PATH=${srcdir}/${pkgname}-${pkgver}/bin:$PATH
+	LD_LIBRARY_PATH=${srcdir}/${pkgname}-${pkgver}/lib:$LD_LIBRARY_PATH
+	make -j${nproc}
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  mkdir -p ${pkgdir}/usr/bin
-  install -m755 bin/* ${pkgdir}/usr/bin
+	# Install build to /opt
+	cd ${srcdir}
+	mkdir -p "${pkgdir}"/opt
+	mv  "${pkgname}-${pkgver}" ${pkgdir}/opt/${pkgname} || return 1
 
-  sed "s|${srcdir}/${pkgname}-${pkgver}|/usr|g" -i ${pkgdir}/usr/bin/opp_makemake
-  sed "s|OMNETPP_INCL_DIR=/usr/include|OMNETPP_INCL_DIR=/usr/include/omnetpp|" -i ${pkgdir}/usr/bin/opp_makemake
+	# run OMNeT++ as a normal user
+	touch ${pkgdir}/opt/${pkgname}/ide/error.log
+	chmod 777 ${pkgdir}/opt/${pkgname}/ide/error.log
 
-  mkdir -p ${pkgdir}/usr/lib
-  install lib/* ${pkgdir}/usr/lib
+	# copy profile.d file
+	mkdir -p ${pkgdir}/etc/profile.d/
+	cp omnetpp.sh ${pkgdir}/etc/profile.d/
+	
+	# copy desktop shortcut
+	mkdir -p ${pkgdir}/usr/share/applications/
+	cp OMNeT++.desktop ${pkgdir}/usr/share/applications/
 
-  mkdir -p ${pkgdir}/usr/include/omnetpp
-  mkdir -p ${pkgdir}/usr/include/omnetpp/platdep
-  install -m644 include/*.h ${pkgdir}/usr/include/omnetpp
-  install -m644 include/platdep/*.h ${pkgdir}/usr/include/omnetpp/platdep
-
-  install -d ${pkgdir}/usr/share/omnetpp/{images,doc,samples}
-  cp -R images/* ${pkgdir}/usr/share/omnetpp/images
-  cp -R doc/* ${pkgdir}/usr/share/omnetpp/doc
-
-  install -d ${pkgdir}/usr/share/emacs/site-lisp
-  install -m644 misc/emacs/ned-mode.el ${pkgdir}/usr/share/emacs/site-lisp
-  install -m644 misc/emacs/ini-mode.el ${pkgdir}/usr/share/emacs/site-lisp
-
-  install -d ${pkgdir}/opt/omnetpp
-  cp -R samples/* ${pkgdir}/opt/omnetpp
-  cp -R ide ${pkgdir}/opt/omnetpp
-  touch ${pkgdir}/opt/omnetpp/ide/error.log
-  chmod a+rw ${pkgdir}/opt/omnetpp/ide/error.log
-
-  mkdir -p ${pkgdir}/usr/share/icons/
-  cp ${srcdir}/omnetpp-${pkgver}/ide/icon.png ${pkgdir}/usr/share/icons/omnetpp.png
-
-  mkdir -p ${pkgdir}/usr/share/applications/
-  cd ${srcdir}
-  cp OMNeT++.desktop ${pkgdir}/usr/share/applications/
+	# Install License
+	cd ${pkgdir}/opt/${pkgname}/doc
+	install -D -m644 License "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
