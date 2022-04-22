@@ -2,7 +2,7 @@
 # Contributor: Jakob Gahde <j5lx@fmail.co.uk>
 
 pkgname=ocaml-lame
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="OCaml bindings to the LAME mp3 encoder"
 arch=('i686' 'x86_64')
@@ -28,4 +28,4 @@ package() {
   mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/"
 }
 
-sha256sums=('cfa22d659a28967dd4efe5b0bcc974c59b4704cf8bce5336bd0748ce9a17773b')
+sha256sums=('1b1887dba55e76182355173616670823fe3653507bd47c42c78febe54f195fc9')
