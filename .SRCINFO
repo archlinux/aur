@@ -1,7 +1,7 @@
 pkgbase = python-unicorn-binance-websocket-api
 	pkgdesc = An unofficial Python API to use the Binance REST API
-	pkgver = 1.40.7
-	pkgrel = 2
+	pkgver = 1.41.0
+	pkgrel = 1
 	url = https://github.com/LUCIT-Systems-and-Development/unicorn-binance-websocket-api
 	arch = any
 	license = MIT
@@ -16,7 +16,7 @@ pkgbase = python-unicorn-binance-websocket-api
 	depends = python-unicorn-fy
 	depends = python-websocket-client
 	depends = python-websockets
-	source = https://files.pythonhosted.org/packages/source/u/unicorn-binance-websocket-api/unicorn-binance-websocket-api-1.40.7.tar.gz
-	sha256sums = 259f18822b74ed92b262db2d18fd8b7d5a443fb0b5a1508eb721c21c402fa3ac
+	source = https://files.pythonhosted.org/packages/source/u/unicorn-binance-websocket-api/unicorn-binance-websocket-api-1.41.0.tar.gz
+	sha256sums = f10be7d062eccd3213ab2f54f16cfb8ebdb8e293b6a56dfefb89bb9ba41e4b7a
 
 pkgname = python-unicorn-binance-websocket-api
