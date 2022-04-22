@@ -88,6 +88,9 @@ source=(
   # Fixes an encoding test's expected output to include the new stuff from c++ 17
   # ... or at least, I think that's what is causing it
   'fix-test-encoding-exception-wording.patch'
+
+  # Add a missing dep to a tox virtualenv (python-nose)
+  'fix-test-import-tasks-deps.patch'
 )
 sha512sums=('eab047e646970d444acf1064d98237b8b1677fb16b5e771082d55880f7bc6d8bdb278c2fe514c82ae12c438878d9ecea29139fa6b8d890f9f737138f10fb740c'
             '4354001c1abd9a0c385ba7bd529e3638fb6660b6a88d4e49706d4ac21c81b8e829303a20fb5445730bdac18c4865efb10bc809c1cd56d743c12aa9a52e160049'
@@ -103,7 +106,8 @@ sha512sums=('eab047e646970d444acf1064d98237b8b1677fb16b5e771082d55880f7bc6d8bdb2
             'cc9f198692ab67ffdf2071c755ab7369fcaa4e1211d1428bb49db3bca5956ae4fbe98ead80a8f691d61e80402b4a06ce9b046a97cb4a3376334f64a4fd16bfb5'
             '1c43b1d466b39b6ad46dd5eb9e5dea4708142ba911b6e901daff427de7889c2018e69e39d5c6b40dc6f979e8533114716ad57b25f7dc3d57e012b5c47a5efb16'
             '6be59a31f0cad390bf9f40041c05049e7d525c6910eab200a5b2a707d59cb80f5119651a86a865680a074a021ff3be8cc3769eb5bf1978691dc2cd91d96e500c'
-            '380ae6d3a768dacaaf2bbe634aa4b1d296da3318553256e4bbae747eb477549968a6c4333b9d212d4ea2db74ae554ac3c4edd7408f46f5f86971d84284748686')
+            '380ae6d3a768dacaaf2bbe634aa4b1d296da3318553256e4bbae747eb477549968a6c4333b9d212d4ea2db74ae554ac3c4edd7408f46f5f86971d84284748686'
+            '7297ec3824815f6f5e534f225ae10f0b0c046713c062adf2cb7af12e44db6f699948a87851fc24b7c038bfa95646a9b66c6256c6bad9253f469b75cd4ed81c7d')
 
 # -fno-plt causes linker errors (undefined reference to internal methods)
 # similar issue: https://bugs.archlinux.org/task/54845
