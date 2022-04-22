@@ -1,3 +1,15 @@
+cloudflare-warp (2022.4.235) unstable; urgency=medium
+
+  * Removed periodic tunnel checks
+  * Changed `warp-cli connect` to mimic 'warp-cli enable-always-on`
+  * Changed `warp-cli disconnect` to mimic `warp-cli disable-always-on`
+  * Added a simple taskbar icon to show status
+  * Added virtual network switching support via warp-cli (`warp-cli
+    get-virtual-networks` and `warp-cli set-virtual-network`).
+  * Bug fixes and enhancements
+
+ -- Matt Schulte <mschulte@cloudflare.com> Mon, 18 April 2022 12:00:00 -0700
+
 cloudflare-warp (2022.3.253) unstable; urgency=medium
 
   * `warp-cli delete` run as root will remove the user for an organization

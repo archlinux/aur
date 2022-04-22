@@ -1,6 +1,6 @@
 # Maintainer: Leon Mergen <leon@solatis.com>
 pkgname=cloudflare-warp-bin
-pkgver=2022.3.253
+pkgver=2022.4.235
 pkgrel=1
 pkgdesc="Cloudflare Warp Client"
 url="https://1.1.1.1"
@@ -19,7 +19,7 @@ changelog=$pkgname.changelog
 #
 # `curl https://pkg.cloudflareclient.com/dists/focal/main/binary-amd64/Packages`
 source=(
-    "${pkgname}-${pkgver}-x86_64.deb::https://pkg.cloudflareclient.com/pool/dists/focal/main/cloudflare_warp_2022_3_253_1_amd64_74e314eeec_amd64.deb"
+    "${pkgname}-${pkgver}-x86_64.deb::https://pkg.cloudflareclient.com/pool/dists/focal/main/cloudflare_warp_2022_4_235_1_amd64_c71a3ae2e7_amd64.deb"
     "${pkgname}-${pkgver}-${pkgrel}-Release::https://pkg.cloudflareclient.com/dists/focal/Release"
     "${pkgname}-${pkgver}-${pkgrel}-Release.sig::https://pkg.cloudflareclient.com/dists/focal/Release.gpg"
     "${pkgname}-${pkgver}-${pkgrel}-x86_64-Packages::https://pkg.cloudflareclient.com/dists/focal/main/binary-amd64/Packages"
@@ -41,11 +41,11 @@ source=(
 
 validpgpkeys=('C068A2B5771775193CBE1F2F6E2DD2174FA1C3BA')
 
-md5sums=('b7e1cf840596bd1b1ace69daadb9d5e5'
+md5sums=('e1b4ef3ea8350f3e8f44654724e65c80'
          'SKIP'
          'SKIP'
          'SKIP')
-sha256sums=('227656c6d257e0c0ca8224a4d8c7687066f8807f9953dfb6bcd530921c8c5df4'
+sha256sums=('71b86448b8c03c1a06d61f3f5e54ffce3e2b6831cebe77c571fb9600d30224b7'
             'SKIP'
             'SKIP'
             'SKIP')
