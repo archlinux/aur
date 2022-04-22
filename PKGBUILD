@@ -3,7 +3,7 @@
 
 pkgname=brother-mfc-210c
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="LPR driver and CUPS wrapper for Brother MFC-210C. Covers MFC-215C as well."
 arch=("i686" "x86_64")
 url="http://support.brother.com"
@@ -50,6 +50,9 @@ prepare() {
   ./usr/share/brother/cupswrapper/cupswrapperMFC210C-1.0.0
   # revert path changes to get well-behaved FHS citizens again
   sed -i "s:$srcdir/usr:/usr:g" $(grep -rl "$srcdir/usr" .)
+  # adjust some permission bits
+  chmod 775 usr/share/brother/inf
+  chmod 600 usr/share/brother/inf/brMFC210Crc
 }
 
 package() {
