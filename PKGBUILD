@@ -2,7 +2,7 @@
 _target=mips64-ultra-elf
 pkgname=${_target}-binutils
 _binutilsver=2.38
-pkgver=2.38_r157.9bf208f
+pkgver=2.38_r170.c2bd862
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files for ${_target}"
 url="http://www.gnu.org/software/binutils/"
