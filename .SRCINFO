@@ -1,6 +1,6 @@
 pkgbase = python-requests-cache-git
 	pkgdesc = Transparent persistent cache for http://python-requests.org library (git version)
-	pkgver = 0.9.3.r59.g8fa9c24
+	pkgver = 0.9.3.r129.ga1d8d0d
 	pkgrel = 1
 	url = https://github.com/reclosedev/requests-cache
 	arch = any

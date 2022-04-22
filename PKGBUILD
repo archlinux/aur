@@ -6,7 +6,7 @@ _base=requests-cache
 pkgname=python-${_base}-git
 _pkgname=${pkgname%-git}
 pkgdesc="Transparent persistent cache for http://python-requests.org library (git version)"
-pkgver=0.9.3.r59.g8fa9c24
+pkgver=0.9.3.r129.ga1d8d0d
 pkgrel=1
 arch=(any)
 url="https://github.com/reclosedev/${_base}"
@@ -28,12 +28,12 @@ provides=(${_pkgname})
 conflicts=(${_pkgname})
 
 pkgver() {
-  cd "${_base}"
+  cd ${_base}
   git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-  cd "${_base}"
+  cd ${_base}
   # Note: set `GIT_CEILING_DIRECTORIES` to prevent poetry
   # from incorrectly using a parent git checkout info.
   # https://github.com/pypa/build/issues/384#issuecomment-947675975
@@ -42,13 +42,12 @@ build() {
 }
 
 check() {
-  cd "${_base}"
+  cd ${_base}
   python -m pytest --ignore=tests/integration
 }
 
 package() {
-  cd "${_base}"
-  export PYTHONHASHSEED=0
+  cd ${_base}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m install --optimize=1 --destdir="${pkgdir}" dist/*.whl
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 }
