@@ -2,8 +2,8 @@
 
 _name='napari'
 pkgname="${_name}"
-pkgver=0.4.14
-pkgrel=3
+pkgver=0.4.15
+pkgrel=1
 pkgdesc='Multi-dimensional image viewer for Python.'
 arch=('any')
 url='https://napari.org'
@@ -23,7 +23,6 @@ depends=(
   'python-cachey'
   'python-dask'
   'python-imageio'
-  'python-importlib-metadata'
   'python-jsonschema'
   'python-magicgui'
   'python-numpy'
@@ -50,7 +49,7 @@ source=(
   "${_name}.desktop"
 )
 sha256sums=(
-  '277dd9492bbdfa2cf5ae60f503abe07bcab851fe69f42bfcbf8d601965f3a92b'
+  '0d4cf6067d2112c78a705917aa5e74371463982d80147a898c6b5d2f0b514baa'
   '909cfd907ee6d78ad7f80a6d0aaf23b83d246e31f7e2331860072f6bf7e5edd6')
 provides=("${_name}")
 
