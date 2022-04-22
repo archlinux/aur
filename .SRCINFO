@@ -1,6 +1,6 @@
 pkgbase = sre-tooling-git
 	pkgdesc = A set of useful SRE tools.
-	pkgver = 0.7.1.04b628cd
+	pkgver = v0.11.0.ff96311
 	pkgrel = 1
 	url = https://github.com/onaio/sre-tooling
 	arch = x86_64
@@ -8,8 +8,9 @@ pkgbase = sre-tooling-git
 	makedepends = go
 	depends = sudo
 	depends = git
-	source = git://github.com/onaio/sre-tooling.git
+	provides = sre-tooling
+	conflicts = sre-tooling
+	source = git+https://github.com/onaio/sre-tooling
 	sha1sums = SKIP
 
 pkgname = sre-tooling-git
-
