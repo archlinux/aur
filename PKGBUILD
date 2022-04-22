@@ -1,7 +1,7 @@
 # Maintainer: AI5C <ai5c@ai5c.com>
 
 pkgname=valentina
-pkgver=0.7.49
+pkgver=0.7.51
 pkgrel=1
 pkgdesc="Open source pattern-making software"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('zlib')
 options=(!strip)
 source_x86_64=("${pkgname}-${pkgver}.AppImage::https://bitbucket.org/valentinaproject/valentinaproject.bitbucket.io/downloads/valentina_${pkgver}_glibc2.14-${arch}.AppImage")
 noextract=("${pkgname}-${pkgver}.AppImage")
-sha512sums_x86_64=('98335c5c1aaefd6347313460863e12dd4a2e97bee7e16d945f55784615d049a68eefd50ef9c9cad94b8bd3204d6f2bb6d6cd63f8f7e1d60366be9a47125f442c')
+sha512sums_x86_64=('7b68960edfe48d7007860c87b80b6653bf3b71715d1e3343fe77d72e9efd5a94c58131cfd24e782182063457175e7889790c1ada5d2904cc2773f93ee56c9768')
 
 package() {
     install -Dm755 "${srcdir}/${pkgname}-${pkgver}.AppImage" "${pkgdir}/opt/${pkgname}/${pkgname}.AppImage"
