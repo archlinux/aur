@@ -11,9 +11,8 @@ license=('MIT')
 depends=(dialog)
 source=(
   "https://gitlab.com/a4to/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst"
-  "https://gitlab.com/a4to/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig"
-  )
-sha256sums=('5888b18a66698cae9e98050ab6736f754094fe087d818b424ac648ed2d83d418'
+  "https://gitlab.com/a4to/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig")
+sha256sums=('5c7b3c33ac4f9c231606a948f47fa9ebbf1ba9952759535108b8d40b2bd2d761'
             'SKIP')
 
 package() {
