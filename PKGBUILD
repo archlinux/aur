@@ -40,6 +40,7 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   python -m installer --destdir="$pkgdir" dist/*.whl
+
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
   mv "${pkgdir}${site_packages}"{/etc,/usr/{bin,share}} "$pkgdir/usr/"
   rm -rf "${pkgdir}${site_packages}"{/etc,/usr}
