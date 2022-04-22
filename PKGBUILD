@@ -1,6 +1,6 @@
 #!/hint/bash
-# Maintainer : bartus <arch-local-repo(at).bartus.33mail.com>
-# Contributor : Daniel Menelkir <dmenelkir@gmail.com>
+# Maintainer : Daniel Menelkir <dmenelkir@gmail.com>
+# Contributor : bartus <arch-local-repo(at).bartus.33mail.com>
 # Contributor : Rafał Kozdrój <kozeid2+aur@gmail.com>
 # Contributor : kikadf <kikadf.01@gmail.com>
 # Contributor : Daniel Henry <d at hackr dot pl>
@@ -12,7 +12,7 @@
 
 pkgname=megasync-nopdfium
 pkgver=4.6.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Easy automated syncing between your computers and your MEGA cloud drive(stripped of pdfium dependency)"
 arch=('i686' 'x86_64')
 provides=(megasync=$pkgver)
@@ -23,7 +23,7 @@ depends=('c-ares' 'crypto++' 'libsodium' 'hicolor-icon-theme' 'libuv'
          'qt5-base' 'qt5-svg' 'qt5-x11extras' 'libmediainfo' 'libraw'
          'ffmpeg' 'freeimage')
 makedepends=('qt5-tools' 'swig' 'doxygen' 'lsb-release' 'git')
-_extname="_Win"
+_extname="_Linux"
 source=("git+https://github.com/meganz/MEGAsync.git#tag=v${pkgver}${_extname}"
         "meganz-sdk::git+https://github.com/meganz/sdk.git"
         "ffmpeg.patch")
