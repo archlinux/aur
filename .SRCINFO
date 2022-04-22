@@ -1,0 +1,18 @@
+pkgbase = polkit-fakesudo
+	pkgdesc = A very very stupid fake sudo,using polkit pkexec to grant permissions.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/Aleksanaa/polkit-fakesudo
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = bash
+	depends = coreutils
+	depends = gawk
+	depends = polkit
+	provides = sudo
+	conflicts = sudo
+	source = polkit-fakesudo::git+https://github.com/Aleksanaa/polkit-fakesudo.git#tag=0.0.1
+	md5sums = SKIP
+
+pkgname = polkit-fakesudo
