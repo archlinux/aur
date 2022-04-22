@@ -3,13 +3,15 @@
 pkgname=python-pyls-isort
 _name=${pkgname#python-}
 pkgver=0.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Isort plugin for python-language-server'
 url='https://github.com/paradoxxxzero/pyls-isort'
 arch=('any')
 license=('MIT')
 depends=('python-lsp-server' 'python-isort')
 makedepends=('python-setuptools')
+conflicts=(python-lsp-isort)
+replaces=(python-lsp-isort)
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 
 build() {

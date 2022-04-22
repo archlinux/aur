@@ -1,13 +1,15 @@
 pkgbase = python-pyls-isort
 	pkgdesc = Isort plugin for python-language-server
 	pkgver = 0.2.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/paradoxxxzero/pyls-isort
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
 	depends = python-lsp-server
 	depends = python-isort
+	conflicts = python-lsp-isort
+	replaces = python-lsp-isort
 	source = https://files.pythonhosted.org/packages/source/p/pyls-isort/pyls-isort-0.2.2.tar.gz
 	md5sums = 9861494cb118c309b06709b2aa1361e7
 
