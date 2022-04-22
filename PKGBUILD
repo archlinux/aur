@@ -3,7 +3,7 @@
 
 pkgname=thunderbird-beta
 _pkgname=thunderbird
-pkgver=100.0b1
+pkgver=100.0b3
 pkgrel=1
 pkgdesc='Beta version of standalone mail and news reader from mozilla.org'
 arch=('x86_64')
@@ -22,11 +22,13 @@ options=(!emptydirs !makeflags !strip !lto !debug)
 provides=("thunderbird=$pkgver")
 source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/source/thunderbird-$pkgver.source.tar.xz{,.asc}
         install-dir.patch
-        "$pkgname".desktop)
-sha256sums=('e362ddfabe166247c701b066f89bf2364ea484a34e4240b28648fcdbe15e316b'
+        "$pkgname".desktop
+        psutil.patch)
+sha256sums=('e83c3290faf74acf86383a6513cd6fd128f225a54de3550b34ad3874cf29b77d'
             'SKIP'
             'c959c9f2b60a42dc937f744c018196906727d468d8f1d7402fb4f743484c414b'
-            '336db628f428ea5efd2a58231fdb202db1521b604c8317b7151d1aa40793f3d3')
+            '336db628f428ea5efd2a58231fdb202db1521b604c8317b7151d1aa40793f3d3'
+            'f811e6408fa8900bed80055403dec889e0249681bba2b85911f96571595f78ce')
 validpgpkeys=(
   14F26682D0916CDD81E37B6D61B7B526D98F0353 # Mozilla Software Releases <release@mozilla.com>
   4360FE2109C49763186F8E21EBE41E90F6F12F6D # Mozilla Software Releases <release@mozilla.com>
@@ -106,7 +108,7 @@ build() {
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   export MOZ_ENABLE_FULL_SYMBOLS=1
-  export MACH_USE_SYSTEM_PYTHON=1
+  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE="system"
 
   echo "Building thunderbird..."
   ./mach build
