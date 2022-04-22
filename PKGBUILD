@@ -3,7 +3,7 @@
 pkgname=cq-editor-bin
 _gitname=CQ-editor
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 url="https://github.com/CadQuery/CQ-editor"
 pkgdesc="CadQuery GUI editor based on PyQT"
 provides=("cq-editor")
