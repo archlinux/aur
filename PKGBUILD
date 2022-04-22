@@ -1,7 +1,7 @@
 # Maintainer: Wüstengecko <1579756+Wuestengecko@users.noreply.github.com>
 pkgname=python-atlassian-api
 _name=atlassian-python-api
-pkgver=3.19.0
+pkgver=3.20.0
 pkgrel=1
 pkgdesc="Python Atlassian REST API Wrapper"
 arch=(any)
@@ -20,7 +20,7 @@ checkdepends=(python-pytest)
 optdepends=('python-requests-kerberos: Kerberos authentication')
 options=(!strip)
 source=("$_name-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('82a0b50461769b11a40a36ffb6ab25ce11923be0835140100b9366e21faf7dda')
+sha256sums=('dac779734a492ab3ff4501710c67e45c8604e2fff21bcb128db7b5f2383ae18b')
 
 build() {
   cd "$_name-$pkgver"
