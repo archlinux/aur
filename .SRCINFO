@@ -1,0 +1,14 @@
+pkgbase = rime-tupa
+	pkgdesc = TUPA input for rime
+	pkgver = 0.0.0.20220422
+	pkgrel = 1
+	url = https://github.com/ayaka14732/rime-tupa
+	arch = x86_64
+	license = CC0
+	makedepends = librime
+	depends = rime-luna-pinyin
+	depends = rime-cantonese
+	source = https://github.com/ayaka14732/rime-tupa/archive/3ce2e93ba501fdd766c8a7532566c126dfc810a3/rime-tupa-3ce2e93ba501fdd766c8a7532566c126dfc810a3.tar.gz
+	sha256sums = 163acd4d56d9034ab2e612bed4458b2b3087b5cc8526e2543041c2e61c8cd97f
+
+pkgname = rime-tupa
