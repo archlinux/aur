@@ -1,6 +1,6 @@
 pkgbase = lynx-desktop-service
 	pkgdesc = Lynx Desktop Service - Desktop Services for LynxOS
-	pkgver = 0.0.2
+	pkgver = 0.0.3
 	pkgrel = 1
 	url = https://gitlab.com/LynxOS/lynx-desktop-service
 	arch = any
@@ -10,8 +10,9 @@ pkgbase = lynx-desktop-service
 	depends = gnome-menus
 	depends = python-dbus
 	depends = python-gobject
+	depends = libwcnk3
 	depends = libxkbcommon-x11
-	source = https://gitlab.com/LynxOS/lynx-desktop-service/-/archive/0.0.2/lynx-desktop-service-0.0.2.tar.gz
-	md5sums = 0f72ef53f142e6fa9fd3b0b2002a47ed
+	source = https://gitlab.com/LynxOS/lynx-desktop-service/-/archive/0.0.3/lynx-desktop-service-0.0.3.tar.gz
+	md5sums = 9c7a0e032a952db7e950d5bd5b3209ae
 
 pkgname = lynx-desktop-service
