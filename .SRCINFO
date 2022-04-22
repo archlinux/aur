@@ -1,12 +1,11 @@
 pkgbase = downlords-faf-client
 	pkgdesc = Forged Alliance Forever - Lobby Client. Community-driven client system for Supreme Commander: Forged Alliance. Downlord's Java client reimplementation.
 	pkgver = 2022.3.0
-	pkgrel = 2
+	pkgrel = 1
 	epoch = 1
 	url = http://www.faforever.com/
 	arch = any
 	license = MIT
-	makedepends = jq
 	depends = jdk17-openjdk
 	depends = gtk3
 	source = https://github.com/FAForever/downlords-faf-client/releases/download/v2022.3.0/faf_unix_2022_3_0.tar.gz
