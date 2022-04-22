@@ -1,3 +1,23 @@
+## GE-Proton7-15 Released
+- vp9 support enabled in gst-plugins-good for ghostwire tokyo videos (they work now)
+- protonfix added for State of Decay 2 crashes (thanks ThisNekoGuy!)
+- protonfix added for Fall Guys EAC (works now, thanks rokam!)
+- WINE_DO_NOT_CREATE_DXGI_DEVICE_MANAGER video fix enabled for Car Mechanic Simulator 2021
+- WINE_DO_NOT_CREATE_DXGI_DEVICE_MANAGER video fix enabled for Harspace: Shipbreaker
+- WINE_DO_NOT_CREATE_DXGI_DEVICE_MANAGER video fix enabled for Solasta
+- WINE_DO_NOT_CREATE_DXGI_DEVICE_MANAGER video fix enabled for Monster Train
+- WINE_DO_NOT_CREATE_DXGI_DEVICE_MANAGER video fix enabled for The Complex
+- WINE_DO_NOT_CREATE_DXGI_DEVICE_MANAGER video fix enabled for Cook-Out
+- WINE_DO_NOT_CREATE_DXGI_DEVICE_MANAGER video fix enabled for DJMAX Respect V
+- WINE_DO_NOT_CREATE_DXGI_DEVICE_MANAGER video fix enabled for Gloomhaven
+- steam runtime and sdk updated (contains vp9 libraries required)
+- various build commits pulled from upstream proton
+- vkd3d-proton updated to git HansKristian-Work/vkd3d-proton@4a05360 prior to 4/21 (latest UAT updates on 4/21 caused gpu hang during testing)
+- vkd3d-proton upstream ghostwire tokyo commit HansKristian-Work/vkd3d-proton@119e00e cherry-picked and applied
+- dxvk updated to latest git
+- dxvk-nvapi updated to latest git
+- wine updated to latest bleeding edge
+
 ## GE-Proton7-14 Released
 
 - Hotfix: Received more complaints than praise surrounding the gamemode change so I've reverted the changes. Gamemode is removed from the build and will not be used by default.
