@@ -1,7 +1,7 @@
 # Maintainer: Joaquin (Pato) Decima <https://patojad.com.ar/>
 
 pkgname=lynx-desktop-settings
-pkgver=0.0.10
+pkgver=0.0.11
 pkgrel=1
 pkgdesc="Lynx Desktop Settings - Basic Configuration"
 arch=('any')
@@ -9,7 +9,7 @@ url="https://gitlab.com/LynxOS/$pkgname"
 license=('GPL')
 makedepends=('git')
 source=("$url/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
-md5sums=('6ba2c5e09644e8de7e1b45bf8906e03d')
+md5sums=('11bd10c6fdc7a1a60bdde7c3a9cc5b77')
 depends=(
         'dex'
         'qt5-styleplugins'
@@ -20,6 +20,7 @@ depends=(
         'lynx-gtk-theme'
         'openbox'
         'python-yaml'
+	'picom'
         )
 
 package() {
