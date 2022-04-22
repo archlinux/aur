@@ -2,14 +2,14 @@
 # Contributor: Harry Beadle <harrybeadle@protonmail.com>
 pkgname=otf-san-francisco-mono
 pkgver=1
-pkgrel=8
+pkgrel=9
 pkgdesc='Monospaced variant of San Francisco. Sourced directly from Apple.'
 arch=('any')
 url='https://developer.apple.com/fonts/'
 license=('custom')
 makedepends=('p7zip')
 source=("SF-Mono-$pkgrel.dmg::https://developer.apple.com/design/downloads/SF-Mono.dmg")
-sha256sums=('f278893e4de119f2b551222cf5ea3167a1a5338699ed939b9908f66689a3f86a')
+sha256sums=('6571966c11f74aa64a46ef3774fc8376f822e58d1b785bf5c2c89920e75b0d94')
 
 prepare() {
   # remove previous files
