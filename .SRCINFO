@@ -1,0 +1,12 @@
+pkgbase = clojure-query-bin
+	pkgdesc = Command-line Data Processor for EDN, YAML, JSON, XML and other data formats.
+	pkgver = 2022.01.26_15.35.00
+	pkgrel = 1
+	url = https://github.com/markus-wa/cq
+	arch = x86_64
+	license = EPL
+	provides = clojure-query
+	source = https://github.com/markus-wa/cq/releases/download/2022.01.26-15.35.00/cq-native-linux
+	sha256sums = 1dd31358047d65848ed037010d0986f472c47ecac7c78f7d3acb9cf2c01c8fcd
+
+pkgname = clojure-query-bin
