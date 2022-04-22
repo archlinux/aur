@@ -1,0 +1,14 @@
+pkgbase = auth0-bin
+	pkgdesc = auth0 is the command line to supercharge your development workflow
+	pkgver = 0.11.7
+	pkgrel = 1
+	url = https://github.com/auth0/auth0-cli
+	arch = x86_64
+	arch = arm64
+	license = MIT
+	source_x86_64 = auth0-cli_0.11.7_x86_64.tar.gz::https://github.com/auth0/auth0-cli/releases/download/v0.11.7/auth0-cli_0.11.7_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = d8114cc4896c7e33217c0de92bf03c4400e473ca56cdacc46af5bce53bb70157
+	source_arm64 = auth0-cli_0.11.7_arm64.tar.gz::https://github.com/auth0/auth0-cli/releases/download/v0.11.7/auth0-cli_0.11.7_Linux_arm64.tar.gz
+	sha256sums_arm64 = e767c9feeb66d11028db35b8c4450058e3d1ee6c167a07e4d0400719fe2b8d97
+
+pkgname = auth0-bin
