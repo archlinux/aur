@@ -1,13 +1,14 @@
 pkgbase = dark-icon-theme-git
 	pkgdesc = DarK is a monotone icon theme for X11-themes it can also be used as a fallback icon theme. Add papirus telegram icons
 	pkgver = r84.22fce9e7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/sixsixfive/DarK-icons
 	install = dark-icon-theme-git.install
 	arch = any
 	license = CC BY-SA 4.0
 	depends = gtk-update-icon-cache
-	options = !strip
+	provides = dark-icon-theme
+	conflicts = dark-icon-theme
 	source = git+https://gitlab.com/sixsixfive/DarK-icons.git
 	source = telegram16.svg::https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/Papirus/16x16/panel/telegram-panel.svg
 	source = telegram22.svg::https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/Papirus/22x22/panel/telegram-panel.svg
