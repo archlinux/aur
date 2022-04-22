@@ -56,8 +56,16 @@ post_upgrade() {
 
 	if test "x${_HAVE_PACNEW}" = 'xyes'; then
 		echo
-		echo 'One or more files have been saved as .pacnew files to preserve a current'
-		echo 'version. To discard these files launch:'
+		echo 'One or more files have been saved as `.pacnew` files to preserve a current'
+		echo 'version. To replace the preserved old version with the new version, launch:'
+		echo
+		echo '    sudo find -L '\''/opt/lampp/'\'' -name '\''*.pacnew'\'' | while read _fnew_; do \'
+		echo '      _fold_="`echo "${_fnew_}" | sed '\''s/\.pacnew$//'\''`"; \'
+		echo '      sudo rm -R "${_fold_}"; \'
+		echo '      sudo mv "${_fnew_}" "${_fold_}"; \'
+		echo '    done'
+		echo
+		echo 'If instead you want to discard the new files, launch:'
 		echo
 		echo '    sudo rm -r `sudo find -L '\''/opt/lampp/'\'' -name '\''*.pacnew'\''`'
 		echo
