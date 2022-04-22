@@ -10,7 +10,7 @@ install="auto.install"
 license=('MIT')
 depends=(dialog)
 source=("https://gitlab.com/a4to/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst")
-sha256sums=('ccdc90bb49d2744f3b5f4002c28eb23cf83d2e4dd4ae981373efad3643fca99c')
+sha256sums=('956399a4e574d558a4a646228a6366edf1811cfcb163dc2ea6bad8db30c02551')
 
 package() {
     install -Dm755 ${pkgname}/{auto,autoCleanInstall,autoInstall,autoPart} -t "${pkgdir}/usr/bin"
