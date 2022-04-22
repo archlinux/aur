@@ -5,7 +5,7 @@
 
 pkgname=bfgminer
 pkgver=5.5.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Bitcoin miner featuring overclocking, monitoring, fan speed control and remote management. For FPGA/GPU/CPU Bitcoin mining."
 arch=('x86_64')
 depends=('curl' 'jansson' 'libevent' 'libmicrohttpd' 'libusb' 'lm_sensors')
