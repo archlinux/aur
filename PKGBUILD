@@ -43,7 +43,7 @@ package() {
   cd "$pkgname"
 
   # binary
-  install -vDm755 -t "$pkgdir/usr/bin" target/release/secrets
+  install -vDm755 -t "$pkgdir/usr/bin" "target/release/$pkgname"
 
   # documentation
   install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
