@@ -24,7 +24,7 @@ pkgname=(
   ubuntu-backgrounds-zesty
 )
 pkgver=0.2.0
-pkgrel=1
+pkgrel=3
 pkgdesc="All backgrounds of Ubuntu"
 license=('Commons Attribution-ShareAlike 3.0 Unported')
 arch=('any')
@@ -36,6 +36,8 @@ sha256sums=('83a9469e84c908d29f9fb2484029575a2d05548f9d984dca556740b622c5dd1e')
 
 package_ubuntu-backgrounds-artful() {
   _pkgname=${pkgname/${pkgbase}-/}
+
+  pkgdesc="The backgrounds included in Ubuntu 17.10 ${pkgname/${pkgbase}-/}"
 
   local wallpapers=(
     "Bee_on_lavender_by_Martin.jpg"
@@ -58,6 +60,8 @@ package_ubuntu-backgrounds-artful() {
 
 package_ubuntu-backgrounds-cosmic() {
   _pkgname=${pkgname/${pkgbase}-/}
+
+  pkgdesc="The backgrounds included in Ubuntu 18.10 ${pkgname/${pkgbase}-/}"
 
   # encode to uft8
   mv ${srcdir}/ubuntu-wallpapers-${_pkgver}/touch_de_vert_by_François_Cante.jpg ${srcdir}/ubuntu-wallpapers-${_pkgver}/touch_de_vert_by_Francois_Cante.jpg
@@ -83,6 +87,8 @@ package_ubuntu-backgrounds-cosmic() {
 package_ubuntu-backgrounds-disco() {
   _pkgname=${pkgname/${pkgbase}-/}
 
+  pkgdesc="The backgrounds included in Ubuntu 19.04 ${pkgname/${pkgbase}-/}"
+
   # encode to uft8
   mv ${srcdir}/ubuntu-wallpapers-${_pkgver}/On_the_harbour_by_Víctor_Fernández_Rico.jpg ${srcdir}/ubuntu-wallpapers-${_pkgver}/On_the_harbour_by_Victor_Fernandez_Rico.jpg
 
@@ -104,6 +110,8 @@ package_ubuntu-backgrounds-disco() {
 
 package_ubuntu-backgrounds-eoan() {
   _pkgname=${pkgname/${pkgbase}-/}
+
+  pkgdesc="The backgrounds included in Ubuntu 19.10 ${pkgname/${pkgbase}-/}"
 
   # encode to uft8
   mv ${srcdir}/ubuntu-wallpapers-${_pkgver}/Stargazing_by_Marcel_Kächele.jpg ${srcdir}/ubuntu-wallpapers-${_pkgver}/Stargazing_by_Marcel_Kachele.jpg
@@ -127,6 +135,7 @@ package_ubuntu-backgrounds-eoan() {
 package_ubuntu-backgrounds-hirsute() {
   _pkgname=${pkgname/${pkgbase}-/}
 
+  pkgdesc="The backgrounds included in Ubuntu 21.04 ${pkgname/${pkgbase}-/}"
   local wallpapers=(
     "Hippopotamus_Swimming_Photo_by_Francesco_Ungaro.jpg"
     "Macro_Shot_of_Black_Animal_by_Gene_Taylor.jpg"
@@ -137,6 +146,8 @@ package_ubuntu-backgrounds-hirsute() {
 
 package_ubuntu-backgrounds-impish() {
   _pkgname=${pkgname/${pkgbase}-/}
+
+  pkgdesc="The backgrounds included in Ubuntu 21.10 ${pkgname/${pkgbase}-/}"
 
   # encode to uft8
   mv ${srcdir}/ubuntu-wallpapers-${_pkgver}/Milky_Way_by_Paulo_José_Oliveira_Amaro.jpg ${srcdir}/ubuntu-wallpapers-${_pkgver}/Milky_Way_by_Paulo_Jose_Oliveira_Amaro.jpg
@@ -152,6 +163,8 @@ package_ubuntu-backgrounds-impish() {
 
 package_ubuntu-backgrounds-karmic() {
   _pkgname=${pkgname/${pkgbase}-/}
+
+  pkgdesc="The backgrounds included in Ubuntu 9.10 ${pkgname/${pkgbase}-/}"
 
   local wallpapers=(
     "Bay.jpg"
@@ -181,6 +194,8 @@ package_ubuntu-backgrounds-karmic() {
 package_ubuntu-backgrounds-lucid() {
   _pkgname=${pkgname/${pkgbase}-/}
 
+  pkgdesc="The backgrounds included in Ubuntu 10.04 ${pkgname/${pkgbase}-/}"
+
   # encode to uft8
   mv ${srcdir}/ubuntu-wallpapers-${_pkgver}/FallDrops,AncientLight.jpg ${srcdir}/ubuntu-wallpapers-${_pkgver}/FallDrops_AncientLight.jpg
 
@@ -208,6 +223,8 @@ package_ubuntu-backgrounds-lucid() {
 package_ubuntu-backgrounds-maverick() {
   _pkgname=${pkgname/${pkgbase}-/}
 
+  pkgdesc="The backgrounds included in Ubuntu 10.10 ${pkgname/${pkgbase}-/}"
+
   local wallpapers=(
     "Aeg_by_Tauno_Erik.jpg"
     "Blue_box_number_2_by_orb9220.jpg"
@@ -233,6 +250,8 @@ package_ubuntu-backgrounds-maverick() {
 
 package_ubuntu-backgrounds-natty() {
   _pkgname=${pkgname/${pkgbase}-/}
+
+  pkgdesc="The backgrounds included in Ubuntu 11.04 ${pkgname/${pkgbase}-/}"
 
   local wallpapers=(
     "Aeg_by_Tauno_Erik.jpg"
@@ -260,6 +279,8 @@ package_ubuntu-backgrounds-natty() {
 
 package_ubuntu-backgrounds-oneiric() {
   _pkgname=${pkgname/${pkgbase}-/}
+
+  pkgdesc="The backgrounds included in Ubuntu 11.10 ${pkgname/${pkgbase}-/}"
 
   # encode to uft8
   mv ${srcdir}/ubuntu-wallpapers-${_pkgver}/Buck_off!_by_SirPecanGum.jpg ${srcdir}/ubuntu-wallpapers-${_pkgver}/Buck_off_by_SirPecanGum.jpg
@@ -289,6 +310,8 @@ package_ubuntu-backgrounds-oneiric() {
 package_ubuntu-backgrounds-precise() {
   _pkgname=${pkgname/${pkgbase}-/}
 
+  pkgdesc="The backgrounds included in Ubuntu 12.04 ${pkgname/${pkgbase}-/}"
+
   # encode to uft8
   mv ${srcdir}/ubuntu-wallpapers-${_pkgver}/Floorboards_by_Dawid_Huczyński.jpg ${srcdir}/ubuntu-wallpapers-${_pkgver}/Floorboards_by_Dawid_Huczynski.jpg
   mv ${srcdir}/ubuntu-wallpapers-${_pkgver}/London_Eye_From_Beneath_by_Fernando_García.jpg ${srcdir}/ubuntu-wallpapers-${_pkgver}/London_Eye_From_Beneath_by_Fernando_Garcia.jpg
@@ -317,6 +340,8 @@ package_ubuntu-backgrounds-precise() {
 package_ubuntu-backgrounds-quantal() {
   _pkgname=${pkgname/${pkgbase}-/}
 
+  pkgdesc="The backgrounds included in Ubuntu 12.10 ${pkgname/${pkgbase}-/}"
+
   local wallpapers=(
     "A_Little_Quetzal_by_vgerasimov.jpg"
     "Below_Clouds_by_kobinho.jpg"
@@ -336,6 +361,8 @@ package_ubuntu-backgrounds-quantal() {
 
 package_ubuntu-backgrounds-raring() {
   _pkgname=${pkgname/${pkgbase}-/}
+
+  pkgdesc="The backgrounds included in Ubuntu 13.04 ${pkgname/${pkgbase}-/}"
 
   # encode to uft8
   mv ${srcdir}/ubuntu-wallpapers-${_pkgver}/Cacomixtle_Ubunteño_by_Carlos_and_Paula_Morales.jpg ${srcdir}/ubuntu-wallpapers-${_pkgver}/Cacomixtle_Ubunteno_by_Carlos_and_Paula_Morales.jpg
@@ -361,6 +388,8 @@ package_ubuntu-backgrounds-raring() {
 
 package_ubuntu-backgrounds-saucy() {
   _pkgname=${pkgname/${pkgbase}-/}
+
+  pkgdesc="The backgrounds included in Ubuntu 13.10 ${pkgname/${pkgbase}-/}"
 
   # encode to uft8
   mv ${srcdir}/ubuntu-wallpapers-${_pkgver}/Gota_D\'água_by_Eiti_Kimura.jpg ${srcdir}/ubuntu-wallpapers-${_pkgver}/Gota_Dagua_by_Eiti_Kimura.jpg
@@ -394,6 +423,8 @@ package_ubuntu-backgrounds-saucy() {
 package_ubuntu-backgrounds-utopic() {
   _pkgname=${pkgname/${pkgbase}-/}
 
+  pkgdesc="The backgrounds included in Ubuntu 14.10 ${pkgname/${pkgbase}-/}"
+
   # encode to uft8
   mv ${srcdir}/ubuntu-wallpapers-${_pkgver}/Utopic_Unicorn__by_Bedis_ElAchКche.jpg ${srcdir}/ubuntu-wallpapers-${_pkgver}/Utopic_Unicorn__by_Bedis_ElAchkche.jpg
 
@@ -418,6 +449,8 @@ package_ubuntu-backgrounds-utopic() {
 package_ubuntu-backgrounds-vivid() {
   _pkgname=${pkgname/${pkgbase}-/}
 
+  pkgdesc="The backgrounds included in Ubuntu 15.04 ${pkgname/${pkgbase}-/}"
+
   local wallpapers=(
     "150305-cinqAA_by_Pierre_Cante.jpg"
     "Cedar_Wax_Wing_by_Raymond_Lavoie.jpg"
@@ -437,6 +470,8 @@ package_ubuntu-backgrounds-vivid() {
 package_ubuntu-backgrounds-wily() {
   _pkgname=${pkgname/${pkgbase}-/}
 
+  pkgdesc="The backgrounds included in Ubuntu 15.10 ${pkgname/${pkgbase}-/}"
+
   local wallpapers=(
     "Tramonto_a_Scalea_by_Renatvs88.jpg"
     "Tranquil_by_Pat_David.jpg"
@@ -455,6 +490,8 @@ package_ubuntu-backgrounds-wily() {
 
 package_ubuntu-backgrounds-yakkety() {
   _pkgname=${pkgname/${pkgbase}-/}
+
+  pkgdesc="The backgrounds included in Ubuntu 16.10 ${pkgname/${pkgbase}-/}"
 
   # encode to uft8
   mv ${srcdir}/ubuntu-wallpapers-${_pkgver}/Classic_Guitar_Detail_by_Sten_Jørgen_Pettersen.jpg ${srcdir}/ubuntu-wallpapers-${_pkgver}/Classic_Guitar_Detail_by_Sten_Jorgen_Pettersen.jpg
@@ -479,6 +516,8 @@ package_ubuntu-backgrounds-yakkety() {
 
 package_ubuntu-backgrounds-zesty() {
   _pkgname=${pkgname/${pkgbase}-/}
+
+  pkgdesc="The backgrounds included in Ubuntu 17.04 ${pkgname/${pkgbase}-/}"
 
   mv ${srcdir}/ubuntu-wallpapers-${_pkgver}/Seebrücke_Graal-Müritz_by_Oliver_hb.jpg ${srcdir}/ubuntu-wallpapers-${_pkgver}/Seebruecke_Graal-Mueritz_by_Oliver_hb.jpg
 

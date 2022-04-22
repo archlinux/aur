@@ -1,7 +1,7 @@
 pkgbase = ubuntu-backgrounds
 	pkgdesc = All backgrounds of Ubuntu
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 3
 	url = http://archive.ubuntu.com/ubuntu/pool/main/u/ubuntu-wallpapers
 	arch = any
 	license = Commons Attribution-ShareAlike 3.0 Unported
@@ -9,41 +9,61 @@ pkgbase = ubuntu-backgrounds
 	sha256sums = 83a9469e84c908d29f9fb2484029575a2d05548f9d984dca556740b622c5dd1e
 
 pkgname = ubuntu-backgrounds-artful
+	pkgdesc = The backgrounds included in Ubuntu 17.10 artful
 
 pkgname = ubuntu-backgrounds-cosmic
+	pkgdesc = The backgrounds included in Ubuntu 18.10 cosmic
 
 pkgname = ubuntu-backgrounds-disco
+	pkgdesc = The backgrounds included in Ubuntu 19.04 disco
 
 pkgname = ubuntu-backgrounds-eoan
+	pkgdesc = The backgrounds included in Ubuntu 19.10 eoan
 
 pkgname = ubuntu-backgrounds-hirsute
+	pkgdesc = The backgrounds included in Ubuntu 21.04 hirsute
 
 pkgname = ubuntu-backgrounds-impish
+	pkgdesc = The backgrounds included in Ubuntu 21.10 impish
 
 pkgname = ubuntu-backgrounds-karmic
+	pkgdesc = The backgrounds included in Ubuntu 9.10 karmic
 
 pkgname = ubuntu-backgrounds-lucid
+	pkgdesc = The backgrounds included in Ubuntu 10.04 lucid
 
 pkgname = ubuntu-backgrounds-maverick
+	pkgdesc = The backgrounds included in Ubuntu 10.10 maverick
 
 pkgname = ubuntu-backgrounds-natty
+	pkgdesc = The backgrounds included in Ubuntu 11.04 natty
 
 pkgname = ubuntu-backgrounds-oneiric
+	pkgdesc = The backgrounds included in Ubuntu 11.10 oneiric
 
 pkgname = ubuntu-backgrounds-precise
+	pkgdesc = The backgrounds included in Ubuntu 12.04 precise
 
 pkgname = ubuntu-backgrounds-quantal
+	pkgdesc = The backgrounds included in Ubuntu 12.10 quantal
 
 pkgname = ubuntu-backgrounds-raring
+	pkgdesc = The backgrounds included in Ubuntu 13.04 raring
 
 pkgname = ubuntu-backgrounds-saucy
+	pkgdesc = The backgrounds included in Ubuntu 13.10 saucy
 
 pkgname = ubuntu-backgrounds-utopic
+	pkgdesc = The backgrounds included in Ubuntu 14.10 utopic
 
 pkgname = ubuntu-backgrounds-vivid
+	pkgdesc = The backgrounds included in Ubuntu 15.04 vivid
 
 pkgname = ubuntu-backgrounds-wily
+	pkgdesc = The backgrounds included in Ubuntu 15.10 wily
 
 pkgname = ubuntu-backgrounds-yakkety
+	pkgdesc = The backgrounds included in Ubuntu 16.10 yakkety
 
 pkgname = ubuntu-backgrounds-zesty
+	pkgdesc = The backgrounds included in Ubuntu 17.04 zesty
