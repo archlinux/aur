@@ -1,6 +1,6 @@
 # Maintainer: Ian Huang <imyxhuang@gmail.com>
 pkgname=cardano-node-bin
-pkgver=1.33.0
+pkgver=1.34.1
 pkgrel=1
 pkgdesc="The core component that is used to participate in a Cardano \
 decentralised blockchain (binary package)."
@@ -10,15 +10,15 @@ license=("Apache")
 provides=("cardano-node=${pkgver}")
 conflicts=("cardano-node")
 install=cardano-node-bin.install
-source=("https://hydra.iohk.io/build/11955068/download/1/cardano-node-\
-${pkgver}-linux.tar.gz"
+source=(
+  "https://hydra.iohk.io/build/13065769/download/1/cardano-node-${pkgver}-linux.tar.gz"
   "cardano-node.sysusers"
   "cardano-node.tmpfiles"
   "cardano-node.service"
   "cardano-node.confd"
   "cardano-node-testnet.service"
   "cardano-node-testnet.confd")
-sha256sums=('1d357a8be28b157ef9e02c64fc0295259e1f2694cbb7316099edabb285c5a514'
+sha256sums=('5621ca7229d1e4c0eeb2e8eb1230b7620eabe1788e3de43d88c1e86c68b341aa'
             '782696d794db3c41cc96e301ed76c8108ac01cbd3347233eb9c4d4f970071633'
             '3212902b0d2bb0e6bacba0feeafd261516b9f6ab5f37f876a8c37239a1947542'
             '6db0b3bb81063f410499a6688a1abbbc5d63af165310ef709924985e5c0d1c4d'
