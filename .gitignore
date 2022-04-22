@@ -1,0 +1,5 @@
+.git
+pkg
+src
+arch-mkinitcpio-clevis-hook-aur
+*.pkg.tar.zst
