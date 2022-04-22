@@ -3,7 +3,7 @@
 _name='magicgui'
 _author='tlambert03'
 pkgname="python-${_name}"
-pkgver=0.3.3
+pkgver=0.3.6
 pkgrel=1
 pkgdesc='Build GUIs from functions, using magic.'
 arch=('any')
@@ -11,6 +11,7 @@ url="https://github.com/${_author}/${_name}"
 license=('BSD')
 makedepends=(
   'python-setuptools-scm'
+  'python-dephell'
 )
 depends=(
   'python'
@@ -20,8 +21,13 @@ depends=(
   'qt5-python-bindings'
 )
 source=("https://files.pythonhosted.org/packages/source/${_name:0:1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('ddbfa5c35c3d2a8d020a37e6cbfbb4b87b295959c4c1829c289d74f92a11e8f2')
+sha256sums=('fda7b20a6380623241dc9e2fd3317870e5e7e08521c6f98c38bbd68f81b450f7')
 provides=("python-${_name}")
+
+prepare() {
+  cd "${srcdir}/${_name}-${pkgver}"
+  dephell deps convert --from pyproject.toml --to setup.py
+}
 
 build() {
   cd "${srcdir}/${_name}-${pkgver}"
