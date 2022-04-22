@@ -1,0 +1,31 @@
+--- a/third_party/abseil-cpp/absl/synchronization/internal/graphcycles.cc
++++ b/third_party/abseil-cpp/absl/synchronization/internal/graphcycles.cc
+@@ -37,6 +37,7 @@
+ 
+ #include <algorithm>
+ #include <array>
++#include <limits>
+ #include "absl/base/internal/hide_ptr.h"
+ #include "absl/base/internal/raw_logging.h"
+ #include "absl/base/internal/spinlock.h"
+--- a/third_party/angle/src/libANGLE/HandleAllocator.cpp
++++ b/third_party/angle/src/libANGLE/HandleAllocator.cpp
+@@ -11,6 +11,7 @@
+ 
+ #include <algorithm>
+ #include <functional>
++#include <limits>
+ 
+ #include "common/debug.h"
+ 
+--- a/third_party/perfetto/src/trace_processor/containers/string_pool.h
++++ b/third_party/perfetto/src/trace_processor/containers/string_pool.h
+@@ -17,6 +17,8 @@
+ #ifndef SRC_TRACE_PROCESSOR_CONTAINERS_STRING_POOL_H_
+ #define SRC_TRACE_PROCESSOR_CONTAINERS_STRING_POOL_H_
+ 
++#include <limits>
++
+ #include <stddef.h>
+ #include <stdint.h>
+ 
