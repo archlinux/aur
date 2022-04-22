@@ -1,0 +1,12 @@
+pkgbase = fish-bash2env
+	pkgdesc = Source environment variables modified by given bash command in fish shell
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/EHfive/fish-bash2env
+	arch = any
+	license = MIT
+	depends = fish
+	source = fish-bash2env-0.1.tar.gz::https://github.com/EHfive/fish-bash2env/archive/refs/tags/v0.1.tar.gz
+	sha256sums = 7938f25effb1367ce10536d844cf2c41ffeebb3cd47500dba5fcb7d416355c49
+
+pkgname = fish-bash2env
