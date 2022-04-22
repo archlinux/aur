@@ -1,19 +1,19 @@
 pkgbase = clickhouse-bin
 	pkgdesc = ClickHouse is a fast open-source OLAP database management system
-	pkgver = 22.3.3.44
+	pkgver = 22.4.2.1
 	pkgrel = 1
 	url = https://clickhouse.tech/
 	arch = x86_64
 	license = Apache
 	provides = clickhouse
-	source = https://packages.clickhouse.com/tgz/stable/clickhouse-client-22.3.3.44-amd64.tgz
-	source = https://packages.clickhouse.com/tgz/stable/clickhouse-common-static-22.3.3.44-amd64.tgz
-	source = https://packages.clickhouse.com/tgz/stable/clickhouse-server-22.3.3.44-amd64.tgz
+	source = https://packages.clickhouse.com/tgz/stable/clickhouse-client-22.4.2.1-amd64.tgz
+	source = https://packages.clickhouse.com/tgz/stable/clickhouse-common-static-22.4.2.1-amd64.tgz
+	source = https://packages.clickhouse.com/tgz/stable/clickhouse-server-22.4.2.1-amd64.tgz
 	source = clickhouse.sysusers
 	source = clickhouse-server.service
-	sha512sums = 6d96970ced2e24d0d6cccf7eca41e674c7ef7758958ff4cc119eb9e45ba206d5316e7c2f988e928c42c96c06c66317a9fd8efa08ed83c2372452445bfcc386c6
-	sha512sums = 59c4c62694adf668b5dcca3a79eac2c201a6ffad8f423778d415e2981c416caa0b6791fe508f3ecd7bb63653417ee91ae3e52988dba08be0ec46b26d0f64f1ea
-	sha512sums = 28777777edab14343f32f9de4860c3c14b01584a6b9ac8f8af5c0c5df3686a8fe90c5b5cf29f84041515a076530834b6c22f0318d17e66176db4c3b5f6ff1d3e
+	sha512sums = 133e1a874587e7e58e34d3ee23b689aa624f94a0562db04fb7b098621de12a5c626e7d33cf75ae328f901c334e1cb12c31d596f60375512fbe43a3e11fbfc2bc
+	sha512sums = aebd971a565955bab034c456ec04124a603da80b70e216cce75c889418245efb91cc617921ea069fc6be94b8b78f56563b7d918c711994158040e066e4b755f9
+	sha512sums = bb13680ee19ec2447ee48682d5b6aee6d54122ee65d130177899367f390195013677715aaa1e8c2d536dd8bea33d3c14b280412ceb247e46ccd063ce6e9ad647
 	sha512sums = 70af4456ded1a1bb5cf29d2d3b29086aedc7875ef673e8817f389243f0c79eb491c9ce715b94542cbe16eb7489d97411ff0ab4a1a7f6c9b9120c659b87ea25b7
 	sha512sums = f70fb1fc8d26e1d6c8b4f5c808b373d464cd20ace363cfd735703d1af0f6ec6196a0c7c905d804fad789eb51acab4896397e70b64a0b61cdcd7457a6694fc4b3
 
