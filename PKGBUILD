@@ -1,10 +1,10 @@
-# Maintainer:  Chris Severance aur.severach aATt spamgourmet dott com
-# PKGBUILD file for link-vim-to-vi.
+# Maintainer: Alad Wenter <alad@archlinux.org>
+# Contributor:  Chris Severance aur.severach aATt spamgourmet dott com
 # Contributor: Patrick Goetz <pgoetz@linuxcs.com>
 
-pkgname='vi-vim-symlink'
-pkgver='1'
-pkgrel='2'
+pkgname=vi-vim-symlink
+pkgver=1
+pkgrel=2
 pkgdesc='Replace vi with vim'
 arch=('any')
 url='http://www.vim.org'
@@ -14,14 +14,13 @@ provides=('vi')
 conflicts=('vi')
 
 package() {
-  set -u
-  install -d "${pkgdir}/usr/bin"
-  install -d "${pkgdir}/usr/share/man/man1"
-  local _file
-  for _file in 'edit' 'ex' 'vedit' 'vi' 'view'; do
-    ln -sf 'vim' "${pkgdir}/usr/bin/${_file}"
-    ln -sf 'vim.1.gz' "${pkgdir}/usr/share/man/man1/${_file}.1.gz"
-  done
-  set +u
+    install -d "$pkgdir/usr/bin"
+    install -d "$pkgdir/usr/share/man/man1"
+
+    local _file
+    for _file in edit ex vedit vi view; do
+        ln -s vim "$pkgdir/usr/bin/$_file"
+        ln -s vim.1.gz "$pkgdir/usr/share/man/man1/$_file".1.gz
+    done
 }
 
