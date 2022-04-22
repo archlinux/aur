@@ -1,11 +1,11 @@
 # Maintainer: Pierre-Alexis Ciavaldini <pierre-alexis@ciavaldini.fr>
 
 # maintenance, files checksums
-pkgver="2.0.1"
+pkgver="3.1.3"
 pkgrel=1
 sha256sums=(
     # .zip linux-x64
-    "7d545518f5e4dd5557ac8369b97a529eb6e444882c567aeb532541e10fe453d5"
+    "d4adb005557b971574d22ce29dcb3847ed6d2f391046c310aa662d0f1f65aac9"
     # Particl Desktop.desktop -> change version
     "3fee1b62d18816680f7672af1ad7cce56bfa9c5529bafba7c528ec3ec136b691"
     # icon.png
