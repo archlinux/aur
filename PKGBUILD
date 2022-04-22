@@ -1,21 +1,28 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=tern
-pkgver=1.12.5
+pkgver=1.13.0
 pkgrel=1
-pkgdesc="A standalone migration tool for PostgreSQL"
+pkgdesc='A standalone migration tool for PostgreSQL'
 arch=('x86_64')
-url="https://github.com/jackc/tern"
+url='https://github.com/jackc/tern'
 license=('MIT')
 depends=('glibc')
-makedepends=('go' 'git')
+makedepends=('git' 'go')
 optdepends=('postgresql: for local instance of PostgreSQL')
-source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('3420437d81ec3ad05473ac5756ba26266afe34240485b8e672e8edcc9ea0bb3110b95de815825708e4d5ff8ca6f6bd118f44dbafca01b4d7e7a84a03ca4d84ef')
-b2sums=('e4b7588745d5107349bc3d16214e816dfc27c123de18aeea1642bf1fbc90cbd63e9ecc7a4a0ca4f97529429a9a95d0ef78d926e5b0468f8e456ef290857b40de')
+options=('!lto')
+_commit='0fcf1aa1266e91afb3c677be4991835dba24a10b'
+source=("$pkgname::git+$url.git#commit=$_commit")
+b2sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+
+  git describe --tags | sed 's/^v//'
+}
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
   # create directory for build output
   mkdir build
@@ -25,7 +32,7 @@ prepare() {
 }
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
   # set Go flags
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -43,7 +50,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname"
 
   # binary
   install -vDm755 -t "$pkgdir/usr/bin" build/tern
