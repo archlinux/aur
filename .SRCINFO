@@ -1,0 +1,16 @@
+pkgbase = hardinfo-gtk3-git
+	pkgdesc = A system information and benchmark tool. (GTK3 version)
+	pkgver = 0.5.1.1369.g6ecebbd
+	pkgrel = 1
+	url = https://github.com/lpereira/hardinfo
+	arch = x86_64
+	license = GPL2
+	makedepends = cmake
+	makedepends = git
+	depends = gtk3
+	provides = hardinfo
+	conflicts = hardinfo
+	source = hardinfo-gtk3-git::git+https://github.com/lpereira/hardinfo
+	sha1sums = SKIP
+
+pkgname = hardinfo-gtk3-git
