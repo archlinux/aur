@@ -2,7 +2,7 @@
 # Maintainer: applewing <applewing@protonmail.com>
 
 pkgname='mog-bin'
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc='Git Hooks managment tool written in Go'
 url='https://github.com/aw83/mog'
@@ -11,17 +11,17 @@ license=('Apache-2.0')
 provides=('mog')
 conflicts=('mog')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/aw83/mog/releases/download/v1.2.0/mog_Linux_arm64.tar.gz")
-sha256sums_aarch64=('7201f346ac6794709501f72eea6a0b7071faf9ef03d391a0cdb7d0ea5ca3f20b')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/aw83/mog/releases/download/v1.3.0/mog_Linux_arm64.tar.gz")
+sha256sums_aarch64=('24b7aa9fdcd586a17144ebd2d8f841b4476b53362ddb2e33242167d4b7c929a6')
 
-source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/aw83/mog/releases/download/v1.2.0/mog_Linux_armv6.tar.gz")
-sha256sums_armv6h=('dad8431b936a03a6cb395c17480510dd31d3ce048c4092a855e6c109c29b3998')
+source_armv6h=("${pkgname}_${pkgver}_armv6h.tar.gz::https://github.com/aw83/mog/releases/download/v1.3.0/mog_Linux_armv6.tar.gz")
+sha256sums_armv6h=('ab225a5ef9866744f14a0ec715591e1ba2b742a193dfa55f642e3327f5f1c927')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/aw83/mog/releases/download/v1.2.0/mog_Linux_i386.tar.gz")
-sha256sums_i686=('237f79a119a0d8ff89c1413b14857bc32f05676af01b1d633b63c0665bee8600')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/aw83/mog/releases/download/v1.3.0/mog_Linux_i386.tar.gz")
+sha256sums_i686=('cf102dee196bd8a1eff3e3ee42dc97b2c1987117255e4d23b53f48213c6882a7')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/aw83/mog/releases/download/v1.2.0/mog_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('85c1e16e99ce8489d6b0abe488ed4cc53695259fa6d95f9c5f03cf81d44470ac')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/aw83/mog/releases/download/v1.3.0/mog_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('7e505ec6e77050d0a4bbad2711a2ba81fd44db22cde45379633da25b97f5db63')
 
 package() {
   # bin
