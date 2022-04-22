@@ -1,18 +1,16 @@
 pkgbase = pa-applet-git
 	pkgdesc = PulseAudio control applet
-	pkgver = 17.33b413b
+	pkgver = 19.3b4f8b3
 	pkgrel = 1
 	url = https://github.com/fernandotcl/pa-applet
-	arch = i686
-	arch = x86_64
+	arch = any
 	license = BSD
 	makedepends = git
 	depends = gtk3
 	depends = libnotify
 	depends = libpulse
 	options = !libtool
-	source = pa-applet-git::git://github.com/fernandotcl/pa-applet.git
+	source = pa-applet-git::git+https://github.com/fernandotcl/pa-applet
 	md5sums = SKIP
 
 pkgname = pa-applet-git
-
