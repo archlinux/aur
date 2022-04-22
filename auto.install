@@ -1,10 +1,15 @@
 post_install() {
 echo -e '\n\033[1m\033[32m\033[4mAutomate BootStrapping Scripts
 
-\033[0m\033[36mAuto, was built as a method of providing users with simple yet extensive way to bootstrap and install Arch Linux.
+\033[0m\033[36mAuto, was built as a method of providing users with a simple yet extensive way to bootstrap and install Arch Linux.
 
-During the installation process, you will be given the option to install either bare Arch Linux, and make all further installations
-decisions yourself, or to choose from a selection of one of the supported desktop environment and window managers profiles.
+During the installation process, you will be given the option to install either bare Arch Linux, and make all further installations 
+decisions yourself, or to choose from a selection of one of the supported bare, or pre-configured desktop environment and window managers. 
+
+We beleive that Arch Linux, being a rolling release distribution, should if possible always be installed via a script in opposed to an ISO
+image. This will in turn ensure that the user is getting the most recent and up to date packages, enhancing user experience, numerous 
+security factors and ensuring a successfull installation.
+
 
 \033[32mThe package consists of 4 scripts:
 
