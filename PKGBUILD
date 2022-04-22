@@ -3,7 +3,7 @@
 
 _pkgname='ferdium'
 pkgname="ferdium-git"
-pkgver=v6.0.0.nightly.3.r0.g6e126a8c
+pkgver=develop.r0.g34a2a84c
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application - git version'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -13,11 +13,9 @@ _electronpkg='electron'
 depends=("$_electronpkg" 'libxkbfile')
 appbranch="develop"
 recipiesbranch="master"
-pnpmversion="6.32.8"
-npmversion="8.7.0"
 nodejsversion='16.14.2'
 # We're depending on node v16 until https://github.com/nodejs/node-gyp/issues/2534 is fixed
-makedepends=('nvm' 'git' 'python')
+makedepends=('nvm' 'git' 'python' 'jq')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
@@ -89,21 +87,43 @@ build() {
 	# Install the correct version of NodeJS
     nvm install ${nodejsversion}
 
+    # Extract the correct versions of npm and pnpm from the package.json files
+    EXPECTED_NPM_VERSION=$(jq --raw-output .engines.npm <"package.json")
+    EXPECTED_PNPM_VERSION=$(jq --raw-output .engines.pnpm <"./recipes/package.json")
+
+    echo "INFO: Will use the following tooling for the build: npm@${EXPECTED_NPM_VERSION} and pnpm@${EXPECTED_PNPM_VERSION}."
+
 	# Install the correct versions of npm and pnpm
-	npm i -gf npm@${npmversion}
-	npm i -gf pnpm@${pnpmversion}
+	npm i -gf npm@${EXPECTED_NPM_VERSION}
+	npm i -gf pnpm@${EXPECTED_PNPM_VERSION}
+
+	# This is useful if we move from 'npm' to 'pnpm' for the main repo as well
+    if [[ -s 'pnpm-lock.yaml' ]]; then
+      BASE_CMD=pnpm
+    else
+      BASE_CMD=npm
+    fi
 
 	# Build recipe archives
-	pnpm install
+	$BASE_CMD i
 	# Ignore errors for now
-	pnpm run prepare-code || true
+	$BASE_CMD run prepare-code || true
 
-	cd recipes
-	pnpm i
-	pnpm run package
-	cd ..
-	export NODE_ENV='production'
-	pnpm run build -- --linux --"${_electronbuilderarch}" --dir -c.electronDist="/usr/lib/$_electronpkg" -c.electronVersion="$(cat "/usr/lib/$_electronpkg/version")"
+	# Run the package script
+	pushd recipes
+    pnpm i
+    pnpm run package
+    popd
+
+	# Run the build script
+    $BASE_CMD run build -- "--${_electronbuilderarch}" --linux --dir -c.electronDist="/usr/lib/$_electronpkg" -c.electronVersion="$(cat "/usr/lib/$_electronpkg/version")"
+
+# 	cd recipes
+# 	pnpm i
+# 	pnpm run package
+# 	cd ..
+# 	export NODE_ENV='production'
+# 	pnpm run build -- --linux --"${_electronbuilderarch}" --dir -c.electronDist="/usr/lib/$_electronpkg" -c.electronVersion="$(cat "/usr/lib/$_electronpkg/version")"
 }
 
 package() {
