@@ -5,7 +5,7 @@ pkgver=0.5.7
 pkgrel=1
 pkgdesc="Static type checking for python-lsp-server with mypy"
 arch=(any)
-url="https://github.com/Richardk2n/pylsp-mypy"
+url="https://github.com/python-lsp/pylsp-mypy"
 license=('MIT')
 depends=(python-lsp-server mypy
   # https://bugs.archlinux.org/task/73090
