@@ -1,7 +1,7 @@
 
 _project_name='aioftp'
 pkgname="python-${_project_name}"
-pkgver=0.21.0
+pkgver=0.21.2
 pkgrel=1
 pkgdesc="ftp client/server for asyncio"
 url="https://github.com/aio-libs/aioftp"
@@ -17,4 +17,4 @@ package() {
   python3 setup.py install --prefix=/usr --root="${pkgdir}"
 }
 
-sha256sums=('4f03917c287299a0789394370803e3b0f6935e241d8f28bbb367c2379a934f92')
+sha256sums=('256cde05d08f5cb60c98a92f0aa41017f987a116dd46f8f4bca545e3e0fc2d22')
