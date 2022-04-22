@@ -20,7 +20,9 @@ conflicts=('lammps')
 provides=('lammps')
 source=('git+https://github.com/lammps/lammps.git')
 sha512sums=('SKIP')
-
+optdepends=(
+  'openmpi: 可选支持并行计算 mpirun -np 5 lmp -in file.in' 
+)
 
 prepare() {
   cd ${_pkgname}
