@@ -1,0 +1,26 @@
+pkgbase = kipi-plugins
+	pkgdesc = A collection of plugins extending the KDE graphics and image applications
+	pkgver = 22.04.0
+	pkgrel = 1
+	url = https://apps.kde.org/kipi_plugins/
+	arch = x86_64
+	groups = kde-applications
+	groups = kde-graphics
+	license = GPL
+	makedepends = extra-cmake-modules
+	makedepends = qt5-xmlpatterns
+	makedepends = libmediawiki
+	depends = kio
+	depends = libkipi
+	optdepends = libmediawiki: MediaWiki Export plugin
+	optdepends = qt5-xmlpatterns: rajce.net plugin
+	options = debug
+	source = https://download.kde.org/stable/release-service/22.04.0/src/kipi-plugins-22.04.0.tar.xz
+	source = https://download.kde.org/stable/release-service/22.04.0/src/kipi-plugins-22.04.0.tar.xz.sig
+	validpgpkeys = CA262C6C83DE4D2FB28A332A3A6A4DB839EAA6D7
+	validpgpkeys = F23275E4BF10AFC1DF6914A6DBD2CE893E2D1C87
+	validpgpkeys = D81C0CB38EB725EF6691C385BB463350D6EF31EF
+	sha256sums = 1a93de48397153e9f92c20130569ea63f852b9b51c5cd53c0937d2b70b34b633
+	sha256sums = SKIP
+
+pkgname = kipi-plugins
