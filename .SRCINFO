@@ -1,0 +1,19 @@
+pkgbase = deepin-grand-search-git
+	pkgdesc = System-wide desktop search for DDE
+	pkgver = r242.e1921c2
+	pkgrel = 1
+	url = https://github.com/linuxdeepin/dde-grand-search
+	arch = x86_64
+	license = GPL3
+	makedepends = qt5-tools
+	makedepends = cmake
+	makedepends = git
+	depends = deepin-anything
+	depends = deepin-dock
+	depends = poppler-qt5
+	provides = deepin-grand-search
+	conflicts = deepin-grand-search
+	source = git+https://github.com/linuxdeepin/dde-grand-search.git
+	sha512sums = SKIP
+
+pkgname = deepin-grand-search-git
