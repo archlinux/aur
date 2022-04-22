@@ -1,0 +1,107 @@
+pkgbase = postgresql13
+	pkgdesc = Sophisticated object-relational DBMS
+	pkgver = 13.6
+	pkgrel = 1
+	url = https://www.postgresql.org/
+	arch = x86_64
+	license = custom:PostgreSQL
+	makedepends = krb5
+	makedepends = libxml2
+	makedepends = python
+	makedepends = perl
+	makedepends = tcl>=8.6.0
+	makedepends = openssl>=1.0.0
+	makedepends = pam
+	makedepends = zlib
+	makedepends = icu
+	makedepends = systemd
+	makedepends = libldap
+	makedepends = llvm
+	makedepends = clang
+	makedepends = libxslt
+	options = debug
+	source = https://ftp.postgresql.org/pub/source/v13.6/postgresql-13.6.tar.bz2
+	source = postgresql-run-socket.patch
+	source = postgresql-perl-rpath.patch
+	source = postgresql.pam
+	source = postgresql.logrotate
+	source = postgresql.service
+	source = postgresql-check-db-dir
+	source = postgresql.sysusers
+	source = postgresql.tmpfiles
+	md5sums = 06161451ca1b9fc888ce6e18ca93f7d1
+	md5sums = 0f96c09cb07cb5bf7c0f74b399128f33
+	md5sums = 21816c9949ab9766c409421314045d2e
+	md5sums = 96f82c38f3f540b53f3e5144900acf17
+	md5sums = d28e443f9f65a5712c52018b84e27137
+	md5sums = 0418d1b78f15b969c1575657d47ab130
+	md5sums = 38fe206c794e2eff95556947af0e5ce5
+	md5sums = 2050d34e4dfa05f3c6fe4cd7615eaa4b
+	md5sums = 02d017978f0bba21f455feceb3f0a45a
+	sha256sums = bafc7fa3d9d4da8fe71b84c63ba8bdfe8092935c30c0aa85c24b2c08508f67fc
+	sha256sums = 02ffb53b0a5049233f665c873b96264db77daab30e5a2194d038202d815a8e6a
+	sha256sums = af6186d40128e043f333da4591455bf62b7c96e80214835f5c8c60b635ea9afb
+	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
+	sha256sums = 6abb842764bbed74ea4a269d24f1e73d1c0b1d8ecd6e2e6fb5fb10590298605e
+	sha256sums = 25fb140b90345828dc01a4f286345757e700a47178bab03d217a7a5a79105b57
+	sha256sums = 7db9626c322928b2465aa126b48ba7f0eebd366bf2aa19c9c0a92b488cb469c5
+	sha256sums = 7fa8f0ef3f9d40abd4749cc327c2f52478cb6dfb6e2405bd0279c95e9ff99f12
+	sha256sums = 4a4c0bb9ceb156cc47e9446d8393d1f72b4fe9ea1d39ba17213359df9211da57
+	b2sums = f5ea95fd9ffc8846e0aaf5bac03b02afa71e62e796bbe40f68af727a2f3c74eddd98cb68427bcc13b87b6fa00a8e2a7b18dd7749318f0a4a32cfdbf9b0e0a873
+	b2sums = 71dc1b4e41294fd235db05317c991d42de082c49d38a2f97d1394572a93a4aa77f42ec29b4e6cf0a17adb3a4471afcb1e2464870f2b9e847906bf49541763a53
+	b2sums = 5135c5f9dafe427de8d3740d4a67c6dba2869be47dc52b4190b8aa1148e702992fde1821371b68e93b224f5805f697d490ea28ec80d7ce55e5a224551b0a6247
+	b2sums = 3eab84d332d96678fe6e435ee243c8f1a82b838f601d61d3604d11e918aed7a62202edca5e476c4b9031ed284570e6fcd6c659cfdbd9624aa0019d3233755f81
+	b2sums = 2209b7550acad7955102ec6922754b4046b2a2ad2a7e1cfb2cc4053c0705abac7aa7d7968eab617f50894797d06345f51c9a669926bd2a77dcf688206a2027e0
+	b2sums = a4255df47b7ac1418d20aa73aa0f6e70c7952a10d706e5523043c48b2c3b6d8e39838049dfcc826913cd0f2c06502561d1abe8b19cce7071db66139ae93a37bf
+	b2sums = 2eaf8867cc71b8e838925e1e1e2c37b5edd69c3fe7c144410a8683662ba0c342122803217d436d808e18826d28da352978e5d15dd1bc91b6b44dbaf4cfcd4d51
+	b2sums = 5e9cba2f45604db83eb77c7bbb54bc499a38274be6cd97abb056c9bdf18e637a8ac354e18f41f614f7e1a2d6f13c2a0b562ab0aaebf9447cf5eb2d60e6501e12
+	b2sums = 8a8e5ec24ea338b2b51b8d2be5a336ac8d4cc6b25200ed0f0d564df9942997478df0c54da2fac7b27d677774a34398f69047eecd0f97bdc0df8fe50a1b5ed74d
+
+pkgname = postgresql13-libs
+	pkgdesc = Libraries for use with PostgreSQL
+	depends = krb5
+	depends = openssl>=1.0.0
+	depends = readline>=6.0
+	depends = zlib
+	depends = libldap
+	provides = postgresql-client
+	provides = postgresql-libs=13.6
+	provides = libpq.so
+	provides = libecpg.so
+	provides = libecpg_compat.so
+	provides = libpgtypes.so
+	conflicts = postgresql-client
+	conflicts = postgresql-libs
+
+pkgname = postgresql13-docs
+	pkgdesc = HTML documentation for PostgreSQL
+	provides = postgresql-docs=13.6
+	conflicts = postgresql-docs
+	options = debug
+	options = docs
+
+pkgname = postgresql13
+	pkgdesc = Sophisticated object-relational DBMS
+	install = postgresql.install
+	depends = postgresql-libs>=13.6
+	depends = krb5
+	depends = libxml2
+	depends = readline>=6.0
+	depends = openssl>=1.0.0
+	depends = pam
+	depends = icu
+	depends = systemd-libs
+	depends = libldap
+	depends = llvm-libs
+	depends = libxslt
+	optdepends = python: for PL/Python 3 support
+	optdepends = perl: for PL/Perl support
+	optdepends = tcl: for PL/Tcl support
+	optdepends = postgresql-old-upgrade: upgrade from previous major version using pg_upgrade
+	optdepends = logrotate: rotates system logs automatically
+	provides = postgresql=13.6
+	conflicts = postgresql
+	options = debug
+	options = staticlibs
+	backup = etc/pam.d/postgresql
+	backup = etc/logrotate.d/postgresql

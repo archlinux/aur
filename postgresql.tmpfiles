@@ -1,0 +1,2 @@
+d /var/lib/postgres/data 700 postgres postgres
+h /var/lib/postgres/data -   -        -        - +C
