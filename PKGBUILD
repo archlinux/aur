@@ -3,8 +3,8 @@
 srcname="archlinux-realtime-generic-setup"
 pkgname="realtime-generic-setup"
 pkgdesc="Generic realtime setup configuration"
-pkgver=r4.a423690
-pkgrel=2
+pkgver=r7.8e02b45
+pkgrel=1
 arch=('any')
 install="${pkgname}.install"
 depends=('realtime-privileges' 'fakeroot')
@@ -17,10 +17,10 @@ optdepends=('linux-rt: The Linux-rt kernel and modules'
             'sysstat: a collection of performance monitoring tools (iostat,isag,mpstat,pidstat,sadf,sar)'
             'schedtool: Query or alter a process scheduling policy')
 url="https://github.com/redtide/${srcname}"
-source=("git://github.com/redtide/${srcname}.git")
+source=("${srcname}::git+https://github.com/redtide/${srcname}.git")
 sha256sums=('SKIP')
 pkgver() {
-  cd "$srcname"
+  cd "${srcdir}/$srcname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 package() {
