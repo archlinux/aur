@@ -3,7 +3,7 @@
 pkgname=lokinet-bin
 _pkgname=lokinet
 pkgver=0.9.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Anonymous, decentralized and IP based overlay network for the internet. [LOKI, OXEN]'
 #url='https://github.com/oxen-io/loki-network'
 url='https://oxen.rocks/oxen-io/loki-network'
@@ -23,7 +23,7 @@ source=("${_pkgname}-$pkgver.tar.xz::$url/${_pkgname}-linux-amd64-v$pkgver.tar.x
         'lokinet.tmpfiles'
         'lokinet.pkla'
         'lokinet.rules'
-        "https://raw.githubusercontent.com/oxen-io/loki-network/dev/LICENSE.txt")
+        "https://raw.githubusercontent.com/oxen-io/lokinet/dev/LICENSE")
 sha256sums=('5c94032b971307f867187362b4e0a8f2c5de5d4b94c8c6a3a558cbacdbafd812'
             'SKIP'
             '41f02f6ca693cd596165a7431795f36a2559504361857063278d31f833b3b7b1'
@@ -35,10 +35,10 @@ sha256sums=('5c94032b971307f867187362b4e0a8f2c5de5d4b94c8c6a3a558cbacdbafd812'
             '53837c9cfc90b93d55558045108a5d1d7a8b8a75a266af264d7f9101363d043f'
             'e37178d0edaca5b764ed2381e4c670cb4a8c3565c6ab59533f2a783155fe1efc'
             '6ea4d917ce2e46b2c31af31b8c8c28054c5f977bab5b050c44e2029ab3248713'
-            '253084dd08255e13b1c0b8c9ad3a517dd8a341cba61f87de600fffeb6b79092f')
+            '8b1ba204bb69a0ade2bfcf65ef294a920f6bb361b317dba43c7ef29d96332b9b')
 
 package() {
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
   install -Dm755 lokinet.conf "$pkgdir/usr/lib/systemd/resolved.conf.d/00-lokinet.conf"
 
   # install binaries on system
