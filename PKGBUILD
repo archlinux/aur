@@ -2,18 +2,17 @@
 
 pkgname=gnome-shell-extension-taskwhisperer
 _pkgname=taskwhisperer
-pkgver=20
+pkgver=22
 pkgrel=1
 pkgdesc="Gnome Shell TaskWarrior integration"
 arch=('any')
 url="https://github.com/cinatic/taskwhisperer"
 license=('GPL3')
 depends=('gnome-shell')
-source=("https://github.com/cinatic/taskwhisperer/archive/v${pkgver}.tar.gz")
-sha256sums=('663d3d4d6997e517ab24b29ca75584d9ead69d36799e7c8aa91a95925bd4905e')
+source=("v${pkgver}.tar.gz::https://github.com/cinatic/taskwhisperer/releases/download/v${pkgver}/taskwhisperer-extension.zip")
+sha256sums=('2ce8ab02d53f97a525697dff8d952b119fa5123dc3a5abfef4d0a9b42ec9e293')
 
 package() {
-  _extid='taskwhisperer-extension@infinicode.de'
-  install -dm755 "$pkgdir/usr/share/gnome-shell/extensions"
-  cp -r "${_pkgname}-${pkgver}/${_extid}" "${pkgdir}/usr/share/gnome-shell/extensions"
+  install -dm755 "$pkgdir/usr/share/gnome-shell/extensions/taskwhisperer"
+  cp -r . "${pkgdir}/usr/share/gnome-shell/extensions/taskwhisperer"
 }
