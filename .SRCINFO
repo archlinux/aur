@@ -1,6 +1,6 @@
 pkgbase = treefetch-git
 	pkgdesc = A lightning-fast system fetch tool built with Rust - Git version
-	pkgver = v2.0.0.r22.b7e52ea
+	pkgver = 2.0.0.r22.gb7e52ea
 	pkgrel = 1
 	url = https://github.com/angelofallars/treefetch
 	arch = x86_64

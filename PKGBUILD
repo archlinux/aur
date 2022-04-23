@@ -3,7 +3,7 @@
 
 pkgname=treefetch-git
 _pkgname=${pkgname%-git}
-pkgver=v2.0.0.r22.b7e52ea
+pkgver=2.0.0.r22.gb7e52ea
 pkgrel=1
 pkgdesc="A lightning-fast system fetch tool built with Rust - Git version"
 arch=(x86_64)
@@ -18,7 +18,7 @@ sha256sums=(SKIP)
 pkgver() {
   cd "$srcdir/$_pkgname"
 
-  printf "%s" "$(git describe --long --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
+  printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 prepare() {
