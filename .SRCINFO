@@ -1,0 +1,13 @@
+pkgbase = python-music-tag
+	pkgdesc = Simple interface to edit audio file metadata
+	pkgver = 0.4.3
+	pkgrel = 1
+	url = https://github.com/KristoforMaynard/music-tag
+	arch = x86_64
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/m/music-tag/music-tag-0.4.3.tar.gz
+	sha256sums = 0aab6e6eeda8df0f5316ec2d2190bd74561b7e03562ab091ce8d5687cdbcfff6
+
+pkgname = python-music-tag
