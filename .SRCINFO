@@ -1,0 +1,13 @@
+pkgbase = wwise-audio-tools-git
+	pkgdesc = Tools for working with Wwise file types (only extraction at the moment)
+	pkgver = 0.5.0
+	pkgrel = 1
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = ninja
+	makedepends = git
+	source = git+https://github.com/WolvenKit/wwise-audio-tools
+	sha512sums = SKIP
+
+pkgname = wwise-audio-tools-git
