@@ -1,13 +1,13 @@
 pkgbase = lammps-git
 	pkgdesc = Large-scale Atomic/Molecular Massively Parallel Simulator
-	pkgver = aebbd04
+	pkgver = 30248.7bfa368
 	pkgrel = 1
 	url = https://lammps.sandia.gov/
 	arch = x86_64
 	license = GPL
 	makedepends = cmake>=3.1
 	depends = fftw
-	optdepends = openmpi: 可选支持并行计算 mpirun -np 5 lmp -in file.in
+	optdepends = openmpi-slurm: support openmpi in slurm-llnl
 	provides = lammps
 	conflicts = lammps
 	source = git+https://github.com/lammps/lammps.git

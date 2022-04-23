@@ -8,7 +8,7 @@
 
 _pkgname=lammps
 pkgname=${_pkgname}-git
-pkgver=aebbd04
+pkgver=30248.7bfa368
 pkgrel=1
 pkgdesc="Large-scale Atomic/Molecular Massively Parallel Simulator"
 url="https://lammps.sandia.gov/"
@@ -21,7 +21,7 @@ provides=('lammps')
 source=('git+https://github.com/lammps/lammps.git')
 sha512sums=('SKIP')
 optdepends=(
-  'openmpi: 可选支持并行计算 mpirun -np 5 lmp -in file.in' 
+  'openmpi-slurm: support openmpi in slurm-llnl' 
 )
 
 prepare() {
