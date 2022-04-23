@@ -13,7 +13,7 @@ _git='https://github.com/ROCmSoftwarePlatform/rocSOLVER'
 source=("$pkgname-$pkgver.tar.gz::$_git/archive/rocm-$pkgver.tar.gz"
         "fmt.patch::https://github.com/acxz/rocSOLVER/commit/0f4658e04ac7b48fea213f29b209a0206b67c43f.patch")
 sha256sums=('7b81d7d8ca5fcb86a4e1ac824e7ac884f635c61bf593e91a9322fc925aae8276'
-            '3c2935fea8136ce6d1078318a50aa3c58bd39384da7e3a7e12e8d7fec5e31f69')
+            '1f2ad0256013dcc3f3d6a494b864326d2ac0e79b528102cd5b235f55f8069c61')
 _dirname="$(basename "$_git")-$(basename "${source[0]}" .tar.gz)"
 
 prepare() {
