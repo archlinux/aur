@@ -21,11 +21,9 @@ conflicts=('coreutils')
 provides=('coreutils')
 makedepends=('rust' 'cargo')
 source=("https://ftp.gnu.org/gnu/$_pkgname/$_pkgname-$_pkgver.tar.xz"
-        "$__pkgname-$__pkgver.tar.gz::$_url/archive/$__pkgver.tar.gz"
-        "01-fix-fs72253.patch")
+        "$__pkgname-$__pkgver.tar.gz::$_url/archive/$__pkgver.tar.gz")
 sha512sums=('a6ee2c549140b189e8c1b35e119d4289ec27244ec0ed9da0ac55202f365a7e33778b1dc7c4e64d1669599ff81a8297fe4f5adbcc8a3a2f75c919a43cd4b9bdfa'
-            '80b76c13258945aa85925728141ee0b78de5ca385bd0a6f9d43f5b4008b30ac2ee52fca7f45df094e31f9231b45f2036a97143f9cefb46e8891268fc7e8e0c9b'
-            '10313ecc918de8ee007c3bc9a57a96372a537b7b1653577daa5609f1026bcc7e6ef4907b75243b37cef305c5c9b45eb446e49649059f667009a2b1fdf6ef3dc3')
+            '80b76c13258945aa85925728141ee0b78de5ca385bd0a6f9d43f5b4008b30ac2ee52fca7f45df094e31f9231b45f2036a97143f9cefb46e8891268fc7e8e0c9b')
 
 prepare() {
   cd $_pkgname-$_pkgver
