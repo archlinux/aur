@@ -26,7 +26,7 @@ pkgname=('graphite-gtk-theme-git'
          'graphite-gtk-theme-nord-rimless-normal-compact-git'
          'graphite-gtk-theme-black-rimless-normal-compact-git')
 _reponame='Graphite-gtk-theme'
-pkgver=2021.11.26.r45.gbdc64af
+pkgver=2022.03.22.r8.g4870896
 pkgrel=1
 pkgdesc='Graphite gtk theme'
 arch=("any")

@@ -1,6 +1,6 @@
 pkgbase = graphite-gtk-theme-git
 	pkgdesc = Graphite gtk theme
-	pkgver = 2021.11.26.r45.gbdc64af
+	pkgver = 2022.03.22.r8.g4870896
 	pkgrel = 1
 	url = https://github.com/vinceliuice/Graphite-gtk-theme
 	arch = any
@@ -13,6 +13,8 @@ pkgbase = graphite-gtk-theme-git
 	conflicts = graphite-gtk-theme
 	options = !strip
 	source = git+https://github.com/vinceliuice/Graphite-gtk-theme.git
+	source = Graphite-backgrounds.xml
+	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = graphite-gtk-theme-git
