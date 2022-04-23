@@ -1,4 +1,5 @@
 #Maintainer: Benjamin Reich <aur@benjaminreich.de>
+#Source found on github.com/b-reich/aur
 pkgname=smap-git # '-bzr', '-git', '-hg' or '-svn'
 pkgver=0.1.0.r2.08f4aee
 pkgrel=1
@@ -18,9 +19,6 @@ install=
 source=('git+https://github.com/s0md3v/smap')
 noextract=()
 md5sums=('SKIP')
-
-# Please refer to the 'USING VCS SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
 
 pkgver() {
   cd ${pkgname%-git}
