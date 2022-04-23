@@ -1,7 +1,7 @@
 pkgbase = xivlauncher-git
 	pkgdesc = Custom Launcher for Final Fantasy XIV Online (Crossplatform rewrite)
-	pkgver = 6.2.31.r18.g93a818c
-	pkgrel = 5
+	pkgver = 6.2.31.r29.g01c1de0
+	pkgrel = 6
 	url = https://github.com/goatcorp/FFXIVQuickLauncher/
 	arch = x86_64
 	license = GPL
@@ -43,8 +43,9 @@ pkgbase = xivlauncher-git
 	depends = desktop-file-utils
 	depends = jxrlib
 	optdepends = steam
-	provides = xivlauncher=6.2.31.r18.g93a818c
+	provides = xivlauncher=6.2.31.r29.g01c1de0
 	conflicts = xivlauncher
+	options = !strip
 	source = FFXIVQuickLauncher::git+https://github.com/goatcorp/FFXIVQuickLauncher.git
 	source = https://raw.githubusercontent.com/goatcorp/FFXIVQuickLauncher/master/src/XIVLauncher.Core/Resources/logo.png
 	source = XIVLauncher.desktop
