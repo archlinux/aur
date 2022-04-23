@@ -2,14 +2,14 @@
 # Maintainer: e-search
 # Contributor: e-search
 pkgname=e-search
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.4.3
+pkgrel=1
 pkgdesc="识屏 · 搜索"
 arch=('x86_64')
 url="https://xushengfeng.github.io/eSearch-website/"
 license=('GPL3')
 groups=('')
-depends=('electron17' 'at-spi2-core' 'clion' 'desktop-file-utils' 'glib2' 'gtk3' 'hicolor-icon-theme' 'kde-cli-tools' 'libdrm' 'libnotify' 'libxcb' 'libxtst' 'mesa' 'trash-cli' 'xdg-utils' 'libappindicator-gtk3')
+depends=('electron18' 'at-spi2-core' 'clion' 'desktop-file-utils' 'glib2' 'gtk3' 'hicolor-icon-theme' 'kde-cli-tools' 'libdrm' 'libnotify' 'libxcb' 'libxtst' 'mesa' 'trash-cli' 'xdg-utils' 'libappindicator-gtk3')
 optdepends=('alsa-lib'
             'apparmor'
             'libgnome-keyring'
@@ -18,7 +18,7 @@ conflicts=('e-search-git')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source=("https://download.fastgit.org/xushengfeng/eSearch/releases/download/${pkgver}/${pkgname}_${pkgver}.aur")
-sha512sums=('6eb56e2b6cf0aea26c6ca06af093741c6e94f4fd99c7fcccd23b42af02a1afd5dd34dbde76c8fd6d06334a5a7bb43137a769938b16640260929aeaddd24d806a')
+sha512sums=('235cd217915d2e009c4fc688cec496976207944526aeddc96340500bf5eb8630e399a54a6d6a1e0306f1e16fd7863352ae3e4e9cccaf942aac3debce0820b007')
 
 package(){
 
