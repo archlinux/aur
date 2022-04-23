@@ -1,7 +1,7 @@
 # Maintainer: jfx <me at jfx dot ac>
 
 pkgname=spotify-snapstore
-pkgver=1.1.80.699_gc3dac750
+pkgver=1.1.83.954.gd226dfe8
 pkgrel=1
 pkgdesc='A proprietary music streaming service'
 conflicts=('spotify')
@@ -19,11 +19,11 @@ options=('!strip')
 # curl -H 'Snap-Device-Series: 16' https://api.snapcraft.io/v2/snaps/info/spotify
 source=('spotify.protocol'
         'LICENSE'
-        "$pkgname-$pkgver.snap::https://api.snapcraft.io/api/v1/snaps/download/pOBIoZ2LrCB3rDohMxoYGnbN14EHOgD7_58.snap"
+        "$pkgname-$pkgver.snap::https://api.snapcraft.io/api/v1/snaps/download/pOBIoZ2LrCB3rDohMxoYGnbN14EHOgD7_59.snap"
 )
 sha512sums=('999abe46766a4101e27477f5c9f69394a4bb5c097e2e048ec2c6cb93dfa1743eb436bde3768af6ba1b90eaac78ea8589d82e621f9cbe7d9ab3f41acee6e8ca20'
             '2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615'
-            '91385a5a8de31d6e9f1945d23108447fd369c1cdc2e4d95cbb7cec5d403c3be14a1b0fabe3fb01aef809a39b033d289add1bcb307ab19c7fcb63689dbae57c53'
+            '156076d63315dbf169cf29678225ab71fb05c4c16594f5fc89e16d29866b6815f87886d875fc290024cece015becbe0e7ce3ac2f36cf253003da7eb80431fcf1'
 )
 
 package() {
@@ -40,7 +40,8 @@ package() {
     install -Dm644 "$squashed_path/usr/share/doc/spotify-client/changelog.gz" "$pkgdir/usr/share/doc/spotify-client/changelog.gz"
 
     # Enable spotify to open URLs from the webapp
-    sed -i 's/^Exec=.*/Exec=spotify --uri=%U/' $pkgdir/opt/spotify/spotify.desktop
+    sed -i 's/^Exec=.*/Exec=spotify --uri=%U/' "$pkgdir"/opt/spotify/spotify.desktop
+    sed -i "s|Icon=/usr/share/spotify/icons/spotify-linux-128.png|Icon=/usr/share/pixmaps/spotify-client.png|" "$pkgdir"/opt/spotify/spotify.desktop
 
     install -Dm644 "$pkgdir/opt/spotify/spotify.desktop" "$pkgdir"/usr/share/applications/spotify.desktop
     install -Dm644 "$pkgdir/opt/spotify/icons/spotify-linux-512.png" "$pkgdir"/usr/share/pixmaps/spotify-client.png
