@@ -2,14 +2,14 @@
 
 pkgname=pi-hole-standalone
 _pkgname=pi-hole
-pkgver=5.9
-pkgrel=2
+pkgver=5.10
+pkgrel=1
 _now=`date +%N`
 pkgdesc='The Pi-hole is an advertising-aware DNS/Web server. Arch alteration for standalone PC.'
 arch=('any')
 license=('EUPL-1.2')
 url="https://github.com/pi-hole/pi-hole"
-depends=('pi-hole-ftl' 'gnu-netcat' 'inetutils' 'iproute2' 'bind-tools' 'sudo' 'lsof')
+depends=('pi-hole-ftl' 'gnu-netcat' 'inetutils' 'iproute2' 'bind-tools' 'sudo' 'lsof' 'procps-ng')
 conflicts=('pi-hole-server')
 install=$pkgname.install
 backup=('etc/dnsmasq.d/01-pihole.conf')
@@ -26,8 +26,8 @@ source=($pkgname-core-$pkgver.tar.gz::https://github.com/$_pkgname/$_pkgname/arc
 	mimic_basic-install.sh
 	piholeDebug.sh)
 
-sha256sums=('13e7c3d7cdf19c9b9b8a449fea86d55ef68fce9b67ee3ad0429104c0ff509dde'
-            '2e1d1a9162025969e3004b0155b70a19272bb256c21960c948624b31a0878a67'
+sha256sums=('fb995f62ab83713222d538e0836557de651a94f61622bf930aa88187b70ae2ee'
+            'e1f79754486a0556a047ae3c72c25acacac3e8e3b1087cce7a6e1adb4dcc5a67'
             '96c1fb8b15e1d0e99c18dc768f5dc3d4991184fb2631af84c5e2111028bc5287'
             '6da6bba6cfac4e87a1f1e8e1488b71858ac6feb0a2e327470a58d8f1e9ad8cbf'
             '9b72d7769036f8f4bb7121968d2ae4bdba427e4b16787ce340205a5f62b45c7c'
