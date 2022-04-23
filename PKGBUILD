@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=neovim-bqf
-pkgver=0.3.2
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="Better quickfix window in Neovim"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('neovim')
 optdepends=('fzf' 'neovim-tree-sitter')
 changelog=CHANGELOG.md
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('4a3d647acb2aab84cec738cba39449772a53980ba5005f143cbb096bd35cd7e3')
+sha256sums=('7b7ddf2c38e23d0b6ad941350ba0cb44ae41fb5503944fe5e80f33ce9044c963')
 
 package() {
 	cd "nvim-bqf-$pkgver"
