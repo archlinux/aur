@@ -1,0 +1,31 @@
+pkgbase = spotify-edge
+	pkgdesc = A proprietary music streaming service. Edge version.
+	pkgver = 1.1.83.954
+	pkgrel = 1
+	url = https://www.spotify.com
+	arch = x86_64
+	license = custom
+	makedepends = squashfs-tools
+	depends = alsa-lib>=1.0.14
+	depends = gtk3
+	depends = libxss
+	depends = desktop-file-utils
+	depends = openssl
+	depends = nss
+	depends = at-spi2-atk
+	depends = libcurl-gnutls
+	depends = libsm
+	optdepends = ffmpeg-compat-57: Adds support for playback of local files
+	optdepends = zenity: Adds support for importing local files
+	optdepends = libnotify: Desktop notifications
+	provides = spotify
+	conflicts = spotify
+	replaces = spotify
+	source = spotify.protocol
+	source = LICENSE
+	source = https://api.snapcraft.io/api/v1/snaps/download/pOBIoZ2LrCB3rDohMxoYGnbN14EHOgD7_59.snap
+	sha512sums = 999abe46766a4101e27477f5c9f69394a4bb5c097e2e048ec2c6cb93dfa1743eb436bde3768af6ba1b90eaac78ea8589d82e621f9cbe7d9ab3f41acee6e8ca20
+	sha512sums = 2e16f7c7b09e9ecefaa11ab38eb7a792c62ae6f33d95ab1ff46d68995316324d8c5287b0d9ce142d1cf15158e61f594e930260abb8155467af8bc25779960615
+	sha512sums = 156076d63315dbf169cf29678225ab71fb05c4c16594f5fc89e16d29866b6815f87886d875fc290024cece015becbe0e7ce3ac2f36cf253003da7eb80431fcf1
+
+pkgname = spotify-edge
