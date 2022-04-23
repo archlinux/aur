@@ -3,7 +3,7 @@
 
 pkgname=snorenotify
 pkgver=0.7.0
-pkgrel=4
+pkgrel=5
 pkgdesc='Multi-platform Qt5 notification framework'
 arch=('i686' 'x86_64')
 url='https://github.com/Snorenotify/Snorenotify'
