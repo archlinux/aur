@@ -1,7 +1,7 @@
 pkgbase = pmix4
 	pkgdesc = Process Management Interface Exascale
 	pkgver = 4.1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pmix.org/
 	arch = x86_64
 	license = custom:OpenMPI
@@ -9,7 +9,6 @@ pkgbase = pmix4
 	depends = libevent
 	depends = hwloc
 	depends = zlib
-	conflicts = openmpi
 	conflicts = pmix
 	source = https://github.com/pmix/pmix/releases/download/v4.1.2/pmix-4.1.2.tar.bz2
 	sha1sums = 64d66d1897de64d7ae3ded2f90ad9e5e676d9b32
