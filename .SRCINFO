@@ -1,0 +1,16 @@
+pkgbase = prometheus-unbound-exporter
+	pkgdesc = Prometheus exporter for Unbound
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/letsencrypt/unbound_exporter
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	optdepends = unbound: for local instance
+	options = !lto
+	source = prometheus-unbound-exporter::git+https://github.com/letsencrypt/unbound_exporter.git#commit=8c54f36172092fe900745cdd135a7fa3394b233f
+	md5sums = SKIP
+
+pkgname = prometheus-unbound-exporter
