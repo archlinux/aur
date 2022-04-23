@@ -3,18 +3,18 @@
 
 pkgname=collision-hashes
 _app_id=dev.geopjr.Collision
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Check hashes for your files. A simple GUI tool to generate, compare and verify MD5, SHA1 & SHA256 hashes"
 arch=('x86_64')
 url="https://github.com/GeopJr/Collision"
 license=('BSD2')
-depends=('gtk4' 'libadwaita')
+depends=('libadwaita')
 makedepends=('crystal' 'gobject-introspection' 'gobject-introspection-runtime' 'shards' 'spglib')
 conflicts=('hashbrown' 'collision')
 source=("${url}/archive/v${pkgver}.tar.gz")
 _source=Collision
-b2sums=('e828750f9b1b1ea81a2235138a6a6d160f2eceb31a09a529881efcfe1724f3d7badbdf0b7f56190a24464f48b10f1c3b8637fc000041cdf21ea519996faa421c')
+b2sums=('2c91f0829e9de8b9f328d9664f75341d47e2a7740cfa57af1470fc91f3b2848af5d468ce25fe500bf242c21303a61bab179158153328335d1a0cf93346d13de2')
 
 build() {
   cd "$_source-$pkgver"
