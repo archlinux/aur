@@ -6,16 +6,18 @@
 
 pkgname=lib32-imlib2
 _pkgname=imlib2
-pkgver=1.8.1
+pkgver=1.9.0
 pkgrel=1
 pkgdesc='Library that does image file loading and saving as well as rendering, manipulation, arbitrary polygon support, lib32'
 url='https://sourceforge.net/projects/enlightenment/'
 arch=('x86_64')
 license=('BSD')
-# this could link against lib32-libheif if exists...
-depends=('lib32-libtiff' 'lib32-giflib' 'lib32-bzip2' 'lib32-freetype2' 'lib32-libxext' 'lib32-libpng' 'lib32-libid3tag' 'lib32-libjpeg-turbo' 'lib32-libwebp' 'lib32-librsvg' 'lib32-xz' "${_pkgname}")
+# this could link against lib32-libheif, lib32-libspectre & lib32-openjpeg2 if exists...
+# this could support jxl via libjxl, but dependencies are broken
+depends=("${_pkgname}" 'lib32-bzip2' 'lib32-freetype2' 'lib32-giflib' 'lib32-libid3tag' 'lib32-libjpeg-turbo'
+         'lib32-libpng' 'lib32-librsvg' 'lib32-libtiff' 'lib32-libwebp' 'lib32-libxext' 'lib32-xz')
 source=("https://downloads.sourceforge.net/project/enlightenment/imlib2-src/$pkgver/$_pkgname-$pkgver.tar.xz")
-sha512sums=('68366298eb3badc7e76ca3b8d73ac0d1489384061cd523cf58bbc9059720b835a82bed6fe87fcf53ed1b43de0c1b6a9e270e25463a30709b568c5b2f3fd06835')
+sha512sums=('958fdabc938ec03ab48001ca4df72c8352cb261b12b09334d38348b22b8859cff16a1cda0d4447b73261723f223f62a799f80eb85a710ac5a44a3fa4f90734fd')
 
 build() {
   cd "$_pkgname-$pkgver"
