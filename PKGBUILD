@@ -18,9 +18,9 @@
 pkgbase="zfs-linux-lts"
 pkgname=("zfs-linux-lts" "zfs-linux-lts-headers")
 _zfsver="2.1.4"
-_kernelver="5.15.34-1"
-_kernelver_full="5.15.34-1"
-_extramodules="5.15.34-1-lts"
+_kernelver="5.15.35-1"
+_kernelver_full="5.15.35-1"
+_extramodules="5.15.35-1-lts"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
 pkgrel=1
@@ -51,7 +51,7 @@ package_zfs-linux-lts() {
     conflicts=("zfs-dkms" "zfs-dkms-git" "zfs-dkms-rc" "spl-dkms" "spl-dkms-git" 'zfs-linux-lts-git' 'zfs-linux-lts-rc' 'spl-linux-lts')
     replaces=("spl-linux-lts")
     cd "${srcdir}/zfs-${_zfsver}"
-    make DESTDIR="${pkgdir}" INSTALL_MOD_PATH=${pkgdir}/usr install
+    make DESTDIR="${pkgdir}" INSTALL_MOD_PATH=${pkgdir}/usr INSTALL_MOD_STRIP=1 install
     # Remove src dir
     rm -r "${pkgdir}"/usr/src
 }
