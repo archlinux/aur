@@ -3,7 +3,7 @@
 
 pkgname=xplc
 pkgver=0.3.13
-pkgrel=9
+pkgrel=10
 pkgdesc="Cross-Platform Lightweight Components"
 arch=('x86_64')
 url="http://xplc.sourceforge.net"
@@ -24,6 +24,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
+  CFLAGS+=" -ffat-lto-objects" \
   ./configure --prefix=/usr \
     --mandir=/usr/share/man \
     --without-libuuid
