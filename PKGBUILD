@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=dynarmic
 pkgname=$_pkgname-git
-pkgver=5.r160.g0fd32c5f
+pkgver=5.r209.g5e95a231
 pkgrel=1
 pkgdesc="An ARM dynamic recompiler"
 arch=('x86_64')
@@ -29,6 +29,7 @@ pkgver() {
 }
 
 build() {
+	CXXFLAGS+=" -ffat-lto-objects"
 	cmake -S $_pkgname -B build \
 		-DBUILD_SHARED_LIBS=ON \
 		-DCMAKE_BUILD_TYPE=None \
