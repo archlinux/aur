@@ -1,10 +1,15 @@
 pkgbase = torrserver-git
 	pkgdesc = Torrent stream server
-	pkgver = MatriX.112.r2.gcfec7df
+	pkgver = MatriX.112.r4.g325f1fb
 	pkgrel = 1
 	url = https://github.com/YouROK/TorrServer
 	install = torrserver.install
 	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	arch = i686
 	license = GPL3
 	makedepends = git
 	makedepends = go

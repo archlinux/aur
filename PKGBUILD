@@ -1,14 +1,13 @@
 # Maintainer: solopasha <daron439 at gmail dot com>
 pkgname=torrserver-git
-_pkgname=torrserver
-pkgver=MatriX.112.r2.gcfec7df
+pkgver=MatriX.112.r4.g325f1fb
 pkgrel=1
 pkgdesc="Torrent stream server"
-arch=('x86_64')
+arch=('x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64' 'i686')
 url="https://github.com/YouROK/TorrServer"
 license=("GPL3")
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 depends=("glibc" "gcc-libs")
 makedepends=("git" "go" "yarn")
 options=(!lto)
@@ -42,9 +41,9 @@ build() {
     cd "$srcdir/$pkgname"
     go run gen_web.go
     cd "$srcdir/$pkgname/server"
-    go build -o "${_pkgname}" ./cmd
+    go build -o "${pkgname%-git}" ./cmd
 }
 package(){
-    install -Dm755 "${srcdir}/${pkgname}/server/${_pkgname}" -t "${pkgdir}/usr/bin"
+    install -Dm755 "${srcdir}/${pkgname}/server/${pkgname%-git}" -t "${pkgdir}/usr/bin"
     install -Dm644 "${srcdir}/torrserver.service" -t "${pkgdir}/usr/lib/systemd/user"
 }
