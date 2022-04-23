@@ -1,13 +1,13 @@
 pkgname=turengo
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc='CLI tool for tureng.com'
+pkgdesc='CLI tool for tureng.com (Turkish Dictionary)'
 arch=('x86_64')
 url="https://github.com/mesuutt/$pkgname"
 license=('MIT')
 makedepends=('go')
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('b4e876e2de19131320d947db30815ec50b2911a79fe3c7777734761ad4edf868')
+sha256sums=('dcae01b03d849fad3688ecf5efbc74c98c20f3558a057a1554a661e15ef09db2')
 
 prepare(){
   cd "$pkgname-$pkgver"
