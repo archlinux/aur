@@ -1,4 +1,4 @@
-From c93ac13ad8a215852c44fc11005ba77c0dc1ddf6 Mon Sep 17 00:00:00 2001
+From dc808746d6ff7c2f649bd0b725f9100a4f151fc5 Mon Sep 17 00:00:00 2001
 From: Xiretza <xiretza@xiretza.xyz>
 Date: Sun, 5 Dec 2021 20:08:42 +0100
 Subject: [PATCH 4/5] Fix install location of cmake config files
@@ -8,10 +8,10 @@ Subject: [PATCH 4/5] Fix install location of cmake config files
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 791ce4013..b9d7aa5ed 100644
+index a8ce76b19..444e9e17e 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -728,21 +728,21 @@ endif()
+@@ -751,21 +751,21 @@ endif()
  install(
    EXPORT Surelog
    FILE Surelog.cmake
@@ -37,5 +37,5 @@ index 791ce4013..b9d7aa5ed 100644
  ADD_CUSTOM_TARGET(
    link_target ALL
 -- 
-2.35.1
+2.36.1
 

@@ -2,7 +2,7 @@
 
 _pkgname=Surelog
 pkgname=${_pkgname,,}-git
-pkgver=r4293.9605843b0
+pkgver=r4734.beb0e674a
 pkgrel=1
 pkgdesc="SystemVerilog 2017 Pre-processor, Parser, Elaborator, UHDM Compiler."
 arch=(x86_64)
@@ -22,11 +22,11 @@ source=(
 	"0005-Build-shared-instead-of-static-library.patch"
 )
 sha256sums=('SKIP'
-            'a5ccdcb228860b1c20a87a6143a1d4ed32afe3ee246f7585adf1d9854d748aca'
-            'c0e6fbdff015e076621f8657d7ec4978b3c346c8ae8a17479497d92d8d8d5dd2'
-            'be218b888bec744b7cd490997908eef32d5efeca02bca986d9dd83c8ca3b24b4'
-            'c079f04d70faa09ec7dc691549d9d55e924f26649cfab74fa1cdc27792f39420'
-            '8dc742b181bc9f7886b8eee2579e3ae50b96d4bebb819c4f27b03db33de538e8')
+            '8d1646ced6b012be4aba7bd33dd9aa31aa2a76874eea450dac9707e0ac751fc3'
+            '7d7b916dfad22ca0faaa6328f5bb49e8ab5f90d812e405d0df6be0d0727b5853'
+            '6ab489941b309eae5e576de8329a0ec04b5721918613ae6502912201f1f94c12'
+            '597f77aa413ea23db8281ab92e3cdb7727021cb7ab4d0f340120bea0faac6026'
+            'bec4704a1217922fa22e18e5b4060e64bdcd4f5384fe22b4f80fa8f9012f4e3c')
 
 pkgver() {
 	cd "$srcdir/$_pkgname"

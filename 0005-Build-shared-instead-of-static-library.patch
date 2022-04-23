@@ -1,4 +1,4 @@
-From 8f7631564079f56de50beb6c21701e4ce3cc6891 Mon Sep 17 00:00:00 2001
+From 6b16b1f2e3a5ffa242faab5c83b68f1c795586cc Mon Sep 17 00:00:00 2001
 From: Xiretza <xiretza@xiretza.xyz>
 Date: Sun, 5 Dec 2021 20:52:12 +0100
 Subject: [PATCH 5/5] Build shared instead of static library
@@ -8,10 +8,10 @@ Subject: [PATCH 5/5] Build shared instead of static library
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index b9d7aa5ed..eef1b317f 100644
+index 444e9e17e..976163168 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -362,7 +362,7 @@ endforeach()
+@@ -375,7 +375,7 @@ endforeach()
  
  find_package(antlr4-runtime REQUIRED)
  
@@ -21,5 +21,5 @@ index b9d7aa5ed..eef1b317f 100644
  target_include_directories(surelog PRIVATE ${ANTLR4_INCLUDE_DIR})
  target_include_directories(surelog PUBLIC $<INSTALL_INTERFACE:include>)
 -- 
-2.35.1
+2.36.1
 
