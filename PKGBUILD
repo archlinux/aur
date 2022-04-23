@@ -2,7 +2,7 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-truecolor-wide-glyphs
 pkgver=9.30
-pkgrel=1
+pkgrel=2
 pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with true color, enhanced glyphs and improved font rendering support'
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
@@ -14,7 +14,10 @@ depends=(
     'startup-notification'
     'libptytty'
 )
-optdepends=('gtk2-perl: to use the urxvt-tabbed')
+optdepends=(
+    'gtk2-perl: to use the urxvt-tabbed'
+    'libxft-bgra: support for BGRA glyphs and scaling'
+)
 provides=(
     'rxvt-unicode'
     'rxvt-unicode-terminfo'
@@ -82,35 +85,44 @@ prepare() {
 build() {
     cd $_pkgname-$pkgver
 
+    ################################################################
+    #                                                              #
+    #   This is an opinionated build. If you miss features, feel   #
+    #   free to enable them below before you build the package.    #
+    #           (eg. --enable-pixbuf and --enable-fading)          #
+    #                                                              #
+    ################################################################
+
+    # disable smart-resize (FS#34807)
     # do not specify --with-terminfo (FS#46424)
     ./configure \
         --prefix=/usr \
-        --enable-24-bit-color \
-        --enable-256-color \
-        --enable-combining \
-        --disable-fading \
-        --disable-fallback \
+        --enable-xft \
         --enable-font-styles \
+        --enable-xim \
+        --enable-unicode3 \
+        --enable-combining \
+        --disable-fallback \
+        --disable-pixbuf \
+        --disable-startup-notification \
+        --enable-transparency \
+        --disable-fading \
+        --disable-rxvt-scroll \
+        --disable-next-scroll \
+        --disable-xterm-scroll \
         --enable-frills \
         --disable-iso14755 \
         --disable-keepscrolling \
-        --enable-mousewheel \
-        --disable-next-scroll \
-        --enable-perl \
-        --disable-pixbuf \
-        --enable-pointer-blank \
-        --disable-rxvt-scroll \
         --enable-selectionscrolling \
+        --enable-mousewheel \
         --disable-slipwheeling \
         --disable-smart-resize \
-        --disable-startup-notification \
         --enable-text-blink \
-        --enable-transparency \
-        --enable-unicode3 \
-        --enable-wide-glyphs \
-        --enable-xft \
-        --enable-xim \
-        --disable-xterm-scroll
+        --enable-pointer-blank \
+        --enable-perl \
+        --enable-256-color \
+        --enable-24-bit-color \
+        --enable-wide-glyphs
     make
 }
 

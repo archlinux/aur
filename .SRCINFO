@@ -1,7 +1,7 @@
 pkgbase = rxvt-unicode-truecolor-wide-glyphs
 	pkgdesc = Unicode enabled rxvt-clone terminal emulator (urxvt) with true color, enhanced glyphs and improved font rendering support
 	pkgver = 9.30
-	pkgrel = 1
+	pkgrel = 2
 	url = http://software.schmorp.de/pkg/rxvt-unicode.html
 	arch = i686
 	arch = x86_64
@@ -12,6 +12,7 @@ pkgbase = rxvt-unicode-truecolor-wide-glyphs
 	depends = startup-notification
 	depends = libptytty
 	optdepends = gtk2-perl: to use the urxvt-tabbed
+	optdepends = libxft-bgra: support for BGRA glyphs and scaling
 	provides = rxvt-unicode
 	provides = rxvt-unicode-terminfo
 	provides = urxvt-resize-font
