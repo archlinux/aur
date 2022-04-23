@@ -2,16 +2,16 @@
 # Maintainer: zocker_160 <zocker1600 at posteo dot net>
 
 pkgname=rehex
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="A cross-platform (Windows, Linux, Mac) hex editor for reverse engineering, and everything else"
 arch=('x86_64')
 url="https://github.com/solemnwarning/rehex"
 license=('GPL2')
 depends=('jansson' 'capstone' 'wxgtk3' 'lua>=5.3')
-#makedepends=()
+makedepends=('zip' 'perl-template-toolkit' 'busted')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz" "rehex.patch")
-sha256sums=('88a8ec41147a5ed5c542d40496b7231fb42ebfd1783c4498202fca5a1ddaae8f'
+sha256sums=('f6737e44d98da9a81ba0217da56fc0b4d36338204ab5f076b77af536a4b35981'
             '925aa979895253ba482780da91cb72fb11260dc44ce0a0f9650164f4831a5d83')
 
 build() {
