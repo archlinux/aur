@@ -1,3 +1,4 @@
+# Maintainer: chisbread <chisbread@gmail.com>
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=libmediawiki
@@ -16,6 +17,7 @@ validpgpkeys=(7C35920F1CE2899E8EA9AAD02E7C0367B9BFA089) # Scarlett Clark <sgclar
 
 prepare() {
   mkdir -p build 
+  sed -i '0,/.*add_subdirectory.*/s/.*add_subdirectory.*/REMOVE_DEFINITIONS(-DQT_NO_CAST_FROM_ASCII)\n&/' $pkgname-$pkgver/CMakeLists.txt
 }
 
 build() {
