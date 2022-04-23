@@ -1,0 +1,16 @@
+pkgbase = faketty
+	pkgdesc = Wrapper to exec a command in a pty, even if redirecting the output
+	pkgver = 1.0.5
+	pkgrel = 1
+	url = https://crates.io/crates/faketty
+	arch = aarch64
+	arch = i686
+	arch = x86_64
+	license = Apache
+	license = MIT
+	makedepends = cargo
+	depends = gcc-libs
+	source = faketty-1.0.5.tar.gz::https://crates.io/api/v1/crates/faketty/1.0.5/download
+	sha512sums = f969f65cc2638b5fadde60b39bdd232beb59749da9e76b0c0186d7bc123d31efda64b5aab6d6de66f603d4386583456ad5aac9f0dfc630c3cd42b9e91d558f68
+
+pkgname = faketty
