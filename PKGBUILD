@@ -1,18 +1,19 @@
 # Maintainer: xiretza <xiretza+aur@xiretza.xyz>
 
-_pkgname=yosys-symbiflow-plugins
+_pkgname=yosys-f4pga-plugins
 pkgname="$_pkgname-git"
 pkgver=1.0.0_7_g59ff1e6_23_g3a95697_17_g00b887b.r515.g3b9e83b
 pkgrel=1
-pkgdesc="Plugins for Yosys developed as part of the SymbiFlow project."
+pkgdesc="Plugins for Yosys developed as part of the F4PGA project."
 arch=(x86_64)
-url="https://github.com/SymbiFlow/yosys-symbiflow-plugins"
-license=('ISC')
+url="https://github.com/chipsalliance/$_pkgname"
+license=('Apache')
 depends=('yosys>0.9' 'gcc-libs' 'tcl' 'uhdm' 'surelog' 'flatbuffers')
 makedepends=('git')
 checkdepends=()
-provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname")
+provides=("$_pkgname=$pkgver" "yosys-symbiflow-plugins=$pkgver")
+conflicts=("$_pkgname" yosys-symbiflow-plugins)
+replaces=(yosys-symbiflow-plugins-git)
 source=("git+$url.git"
         "0001-Makefile-respect-DESTDIR.patch"
         "0002-Makefile-prepend-to-build-flags.patch"
@@ -55,5 +56,5 @@ package() {
 
 	make DESTDIR="$pkgdir" install
 
-	install -Dm 644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+	install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
