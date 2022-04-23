@@ -3,14 +3,14 @@
 # Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
 
 pkgname=neovim-git
-pkgver=0.6.0.r1332.gf2e5f509d9
+pkgver=0.7.0.r67.g5c53e29ca9
 pkgrel=1
 pkgdesc='Fork of Vim aiming to improve user experience, plugins, and GUIs.'
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url='https://neovim.io'
 backup=('etc/xdg/nvim/sysinit.vim')
 license=('custom:neovim')
-depends=('libluv' 'libtermkey' 'libutf8proc' 'libuv' 'libvterm-0.1' 'luajit' 'msgpack-c' 'unibilium' 'tree-sitter')
+depends=('libluv' 'libtermkey' 'libuv' 'libvterm-0.1' 'luajit' 'msgpack-c' 'unibilium' 'tree-sitter')
 makedepends=('cmake' 'git' 'gperf' 'lua51-mpack' 'lua51-lpeg')
 optdepends=('python2-neovim: for Python 2 plugin support (see :help provider-python)'
             'python-neovim: for Python 3 plugin support (see :help provider-python)'
