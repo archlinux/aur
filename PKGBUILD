@@ -3,7 +3,7 @@
 
 pkgname=libmediawiki
 pkgver=5.37.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A KDE C++ interface for MediaWiki based web service as wikipedia.org"
 arch=(x86_64)
 url='https://www.digikam.org/'
