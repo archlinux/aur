@@ -2,7 +2,7 @@
 # Original Maintainer: Daichi Shinozaki <dsdseg@gmail.com>
 pkgname=gibo
 pkgver=2.2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A shell script for easily accessing gitignore boilerplates"
 url="https://github.com/simonwhitaker/gibo"
 arch=('any')
@@ -31,5 +31,5 @@ package() {
 
     # fish
     mkdir -p $pkgdir/usr/share/fish/completions
-    install -Dm644 ./shell-completions/$pkgname.fish $pkgdir/usr/share/fish/completions/$pkgname.fish
+    install -Dm644 ./shell-completions/$pkgname.fish $pkgdir/usr/share/fish/vendor_completions.d/$pkgname.fish
 }

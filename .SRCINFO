@@ -1,7 +1,7 @@
 pkgbase = gibo
 	pkgdesc = A shell script for easily accessing gitignore boilerplates
 	pkgver = 2.2.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/simonwhitaker/gibo
 	install = gibo.install
 	arch = any
