@@ -2,7 +2,7 @@
 # Contributor: Eric Bélanger <eric at archlinux dot org>
 pkgname=hardinfo-git
 pkgver=0.6.alpha.1392.g6ecebbd
-pkgrel=2
+pkgrel=3
 pkgdesc="A system information and benchmark tool."
 arch=('x86_64')
 url="https://github.com/lpereira/hardinfo"
@@ -42,9 +42,9 @@ build() {
     -DHARDINFO_GTK3='ON' \
     -DHARDINFO_DEBUG='$(usex debug 1 0)' \
     -Wno-dev
-  make -C build
+  cmake --build build
 }
 
 package() {
-  make -C build DESTDIR="$pkgdir" install
+  DESTDIR="$pkgdir" cmake --install build
 }
