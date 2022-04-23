@@ -2,17 +2,17 @@
 
 pkgname=flowtime
 _pkgname=Flowtime
-pkgver=1.5.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Get what motivates you done, without losing concentration"
 arch=('x86_64')
 url="https://github.com/Diego-Ivan/Flowtime"
 license=('GPL3')
-depends=('glib2' 'gtk4' 'gstreamer' 'libadwaita')
+depends=('glib2' 'gstreamer' 'libadwaita' 'libxml2')
 makedepends=('meson' 'vala')
 checkdepends=('appstream-glib')
 source=("${url}/archive/v${pkgver}.tar.gz")
-b2sums=('f8e10180022f81bc9fa67e3a0c4cd8aea50942242fac98e2bc79519fbded39b9a98166f9841125407e862e145266ac6fc6e1580b0e8fbad1b9a43203ab6bd92e')
+b2sums=('d5e0120c9e6cc4efcd1d830134ad19441cf10c0fda93d92b1b42a0f277fbe1cfe118916b88b803fff73216feb735b7debf66c2d23a5089e665e68b2be44b6e4c')
 
 build() {
   arch-meson $_pkgname-$pkgver build
