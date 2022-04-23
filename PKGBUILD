@@ -1,6 +1,6 @@
 # Maintainer: Kazel <address at domain dot tld>
 pkgname=usbguard-applet-qt
-pkgver=0.7.7
+pkgver=0.7.8
 pkgrel=1
 pkgdesc="USBguard QT GUI"
 arch=("x86_64")
