@@ -1,0 +1,15 @@
+pkgbase = treefetch-git
+	pkgdesc = A lightning-fast system fetch tool built with Rust - Git version
+	pkgver = v2.0.0.r22.b7e52ea
+	pkgrel = 1
+	url = https://github.com/angelofallars/treefetch
+	arch = x86_64
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	provides = treefetch
+	conflicts = treefetch
+	source = git+https://github.com/angelofallars/treefetch.git
+	sha256sums = SKIP
+
+pkgname = treefetch-git
