@@ -1,5 +1,6 @@
 # ex: ts=2 sts=2 sw=2 et
-# Maintainer: yhfudev <yhfudev ta gmail dot com>
+# Maintainer: Ferdinand B <theferdi265 at gmail dot com>
+# Contributor: yhfudev <yhfudev ta gmail dot com>
 # Contributor: veox <veox ta wemakethings dot net>
 # Contributor: Nick Østergaard <oe.nick at gmail dot com>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
@@ -11,7 +12,7 @@ _pkgbase=openocd
 pkgname=openocd-raspberrypi-git
 pkgver=r8907.610f137d2
 pkgrel=1
-pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices (git version)"
+pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices (git version, raspberrypi fork)"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
 url="http://openocd.org"
 license=('GPL')
