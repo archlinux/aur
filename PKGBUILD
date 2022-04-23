@@ -4,7 +4,7 @@
 pkgname=treefetch-git
 _pkgname=${pkgname%-git}
 pkgver=2.0.0.r22.gb7e52ea
-pkgrel=1
+pkgrel=3
 pkgdesc="A lightning-fast system fetch tool built with Rust - Git version"
 arch=(x86_64)
 url="https://github.com/angelofallars/treefetch"
@@ -24,6 +24,7 @@ pkgver() {
 prepare() {
   cd "$srcdir/$_pkgname"
 
+  cargo update
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
