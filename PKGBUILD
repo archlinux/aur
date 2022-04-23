@@ -1,8 +1,8 @@
 # Maintainer: beliys <aur at bil dot com dot ua>
 pkgname=meowsql
-pkgver=0.4.14
+pkgver=0.4.15
 _pkgver="v${pkgver}-alpha"
-pkgrel=2
+pkgrel=1
 pkgdesc="An attempt to port a very useful GUI database client HeidiSQL to C++/Qt (currently alpha)"
 arch=('x86_64')
 url="https://github.com/ragnar-lodbrok/meow-sql"
