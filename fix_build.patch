@@ -1,0 +1,11 @@
+--- bytesex.c.orig	2002-07-06 07:34:18.000000000 +1000
++++ bytesex.c	2022-04-23 10:21:15.757339856 +1000
+@@ -36,7 +36,7 @@
+                 } else {
+                         panic("%s\n", strerror(errno));
+                 }
+-                panic(errmsg);
++                panic("%s\n", errmsg);
+         }
+ }
+ 

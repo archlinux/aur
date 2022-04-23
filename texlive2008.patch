@@ -1,5 +1,5 @@
---- catdvi-0.14-orig/config.mk.in
-+++ catdvi-0.14/config.mk.in
+--- config.mk.in.orig
++++ config.mk.in
 @@ -23,6 +23,7 @@
  
  CFG_HAS_GETOPT_LONG = @CFG_HAS_GETOPT_LONG@
