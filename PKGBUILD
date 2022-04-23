@@ -5,6 +5,7 @@ pkgver="0.5.0"
 pkgrel=1
 pkgdesc="Tools for working with Wwise file types (only extraction at the moment)"
 arch=("x86_64")
+url="https://github.com/WolvenKit/wwise-audio-tools"
 license=("MIT")
 makedepends=("cmake" "ninja" "git")
 source=("git+https://github.com/WolvenKit/wwise-audio-tools")
