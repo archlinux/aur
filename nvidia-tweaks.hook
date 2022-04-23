@@ -5,6 +5,7 @@ Operation=Remove
 Type=File
 Target=usr/lib/modprobe.d/90-nvidia-tweaks.conf
 Target=usr/src/nvidia-*/dkms.conf
+Target=usr/lib/modules/*/extramodules/nvidia-drm.ko.xz
 
 [Action]
 Description=Update Nvidia module in initcpio (for DRM KMS)
