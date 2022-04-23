@@ -1,6 +1,6 @@
 pkgname=cryptodredge
 pkgver=0.27.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple in use and highly optimized cryptocurrency mining software with stable power consumption. It is designed to take full advantage of your GPU."
 license=('none')
 arch=('x86_64')
