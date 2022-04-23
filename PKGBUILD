@@ -2,7 +2,7 @@ pkgname=cryptodredge
 pkgver=0.27.0
 pkgrel=1
 pkgdesc="Simple in use and highly optimized cryptocurrency mining software with stable power consumption. It is designed to take full advantage of your GPU."
-license=('custom')
+license=('none')
 arch=('x86_64')
 url="https://cryptodredge.org/"
 provides=('cryptodredge')
@@ -14,6 +14,6 @@ options=('!strip')
 
 package() {
   install -Dm755 CryptoDredge "${pkgdir}/usr/bin/${pkgname}"
-  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+#  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
 md5sums=('b70b31e07a651f52e4a3593a1358c6f1')
