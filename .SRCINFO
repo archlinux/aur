@@ -1,6 +1,6 @@
 pkgbase = yuzu
 	pkgdesc = Nintendo Switch emulator
-	pkgver = mainline.0.987
+	pkgver = mainline.0.994
 	pkgrel = 1
 	url = https://yuzu-emu.org/
 	arch = x86_64
@@ -11,7 +11,7 @@ pkgbase = yuzu
 	makedepends = cpp-httplib-compiled>=0.9.0.r5
 	makedepends = cubeb>=r1398
 	makedepends = discord-rpc>=3.4.0.r10
-	makedepends = dynarmic>=5.r160
+	makedepends = dynarmic>=5.r204
 	makedepends = ffmpeg>=4.3.1
 	makedepends = fmt>=8.0.1
 	makedepends = git
@@ -24,11 +24,11 @@ pkgbase = yuzu
 	makedepends = qt5-tools>=5.15
 	makedepends = sdl2>=2.0.18
 	makedepends = spirv-headers>=1.2.198
-	makedepends = vulkan-headers>=1.2.180
+	makedepends = vulkan-headers>=1.2.202
 	makedepends = xbyak>=5.995.r3
 	makedepends = zstd>=1.5
 	depends = qt5-webengine>=5.15
-	source = yuzu-mainline::git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=mainline-0-987
+	source = yuzu-mainline::git+https://github.com/yuzu-emu/yuzu-mainline.git#tag=mainline-0-994
 	source = yuzu-mbedtls::git+https://github.com/yuzu-emu/mbedtls.git
 	source = sirit::git+https://github.com/ReinUsesLisp/sirit.git
 	source = compatibility_list.json.xz
