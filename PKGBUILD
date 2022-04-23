@@ -1,13 +1,15 @@
 # Maintainer: Hisbaan Noorani <hisbaan@gmail.com>
 pkgname=didyoumean-git
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A CLI spelling corrector"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/hisbaan/didyoumean"
 license=('GPL3')
-depends=('libxcb' 'gcc-libs' 'wayland')
+depends=('gcc-libs')
 makedepends=('git' 'cargo')
+optdepends=('libxcb: X11 clipboard support'
+            'wayland: Wayland clipboard support')
 provides=("dym")
 conflicts=("dym")
 source=('git+https://github.com/hisbaan/didyoumean')
@@ -35,12 +37,13 @@ build() {
     strip target/release/dym
 }
 
-check() {
-    cd "$srcdir/${pkgname%-git}"
-    export RUSTUP_TOOLCHAIN=stable
-    export CARGO_TARGET_DIR=target
-    cargo test --release --frozen
-}
+# Testing is not strictly required as it is done by the CI/CD workflow on the git repository.
+# check() {
+#     cd "$srcdir/${pkgname%-git}"
+#     export RUSTUP_TOOLCHAIN=stable
+#     export CARGO_TARGET_DIR=target
+#     cargo test --release --frozen
+# }
 
 package() {
 	cd "$srcdir/${pkgname%-git}"
