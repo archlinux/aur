@@ -9,7 +9,7 @@ pkgbase = qbittorrent-enhanced
 	makedepends = cmake
 	makedepends = boost>=1.65
 	makedepends = qt6-tools
-	depends = libtorrent-rasterbar>=1:2.0
+	depends = libtorrent-rasterbar
 	depends = qt6-base
 	depends = qt6-svg
 	depends = hicolor-icon-theme
