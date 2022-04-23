@@ -1,6 +1,6 @@
 # Maintainer: Kingtous <me@kingtous.cn>
 pkgname=fclash
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 epoch=
 pkgdesc="A Clash Proxy Fronted based on Clash"
@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("${pkgname%-git}::git+https://github.com/Kingtous/Fclash.git#branch=stable" "https://github.com/Kingtous/Fclash/releases/download/v1.2.1-1/cn.kingtous.fclash.deb")
+source=("${pkgname%-git}::git+https://github.com/Kingtous/Fclash.git#branch=stable" "https://github.com/Kingtous/Fclash/releases/download/v1.2.2-1/cn.kingtous.fclash.deb")
 noextract=()
 sha256sums=('SKIP' 'SKIP')
 validpgpkeys=()
@@ -33,5 +33,5 @@ build() {
 
 package() {
     cp -r "${srcdir}/extract/opt"  "${pkgdir}/opt"
-	install -Dm0755 "${srcdir}/${pkgname%-git}/debian/build-src/opt/apps/cn.kingtous.fclash/entries/applications/cn.kingtous.service-monitor.desktop" "${pkgdir}/usr/share/applications/cn.kingtous.service-monitor.desktop"
+	install -Dm0755 "${srcdir}/${pkgname%-git}/debian/build-src/opt/apps/cn.kingtous.fclash/entries/applications/cn.kingtous.fclash.desktop" "${pkgdir}/usr/share/applications/cn.kingtous.fclash.desktop"
 }
