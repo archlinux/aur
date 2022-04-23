@@ -1,8 +1,8 @@
 # Maintainer: Sergey A. <murlakatamenka@disroot.org>
 
 pkgname=zenith-bin
-pkgver=0.13.0
-pkgrel=2
+pkgver=0.13.1
+pkgrel=1
 pkgdesc="Terminal system monitor with histograms, written in Rust"
 arch=('x86_64')
 url="https://github.com/bvaisvil/zenith"
@@ -10,8 +10,8 @@ license=('MIT')
 provides=('zenith')
 conflicts=('zenith')
 optdepends=('nvidia-utils')
-source=("${url}/releases/download/${pkgver}/zenith_${pkgver}-1_amd64.deb")
-sha256sums=('6efffe6c819bd7a5e6aeff90b8692a39855f7128c0fb78d8c83e2b278326d928')
+source=("${url}/releases/download/${pkgver}/zenith_0.13.0-1_amd64.deb")
+sha256sums=('0aaec2dd711f5904dc80a12a31be1867e11a8c204cc3feeecbf6fe5cef98a5db')
 
 package() {
     # extract package data
