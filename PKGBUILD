@@ -1,4 +1,5 @@
-# Maintainer: INhBQfUQO2eFzulN <281587887a at protonmail dot ch>
+# Maintainer: bacteriostat <dev.bacteriostat at aleeas dot com>
+# Contributor: INhBQfUQO2eFzulN <281587887a at protonmail dot ch>
 _pkgname=spotiflyer
 pkgname="${_pkgname}-bin"
 pkgver=3.6.1
