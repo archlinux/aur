@@ -1,11 +1,11 @@
 pkgbase = python-lsp-all
 	pkgver = 1
-	pkgrel = 3
+	pkgrel = 4
 	arch = x86_64
 	depends = python-lsp-server
 	depends = python-lsp-black
 	depends = python-lsp-isort
-	depends = python-lsp-mypy
+	depends = python-pylsp-mypy
 	depends = python-rope
 	depends = python-pyflakes
 	depends = python-mccabe
