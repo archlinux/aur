@@ -8,8 +8,8 @@
 # Contributor: Samuel Tardieu <sam@rfc1149.net>
 
 _pkgbase=openocd
-pkgname=openocd-git
-pkgver=0.11.0.r584.g103b1d68d
+pkgname=openocd-raspberrypi-git
+pkgver=r8907.610f137d2
 pkgrel=1
 pkgdesc="Debugging, in-system programming and boundary-scan testing for embedded target devices (git version)"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
@@ -19,10 +19,10 @@ depends=('libftdi-compat' 'libusb-compat' 'hidapi' 'libudev.so' 'capstone')
 makedepends=('git' 'automake>=1.11' 'autoconf' 'libtool' 'tcl')
 options=(!strip)
 provides=('openocd')
-conflicts=('openocd')
+conflicts=('openocd' 'openocd-git')
 
 source=(
-  "${pkgname}::git+https://repo.or.cz/openocd.git"
+  "${pkgname}::git+https://github.com/raspberrypi/openocd.git"
   "git+https://github.com/msteveb/jimtcl.git"
   "git+https://gitlab.zapb.de/libjaylink/libjaylink.git"
   "git+https://git.savannah.nongnu.org/git/git2cl.git"
@@ -80,7 +80,7 @@ _features=(
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  git describe --tags --long | sed -E 's/^v//;s/([^-]*-g)/r\1/;s/-/./g'
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
