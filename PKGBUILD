@@ -1,6 +1,6 @@
 #Maintainer: Benjamin Reich <aur@benjaminreich.de>
 pkgname=smap-bin # '-bzr', '-git', '-hg' or '-svn'
-pkgver=0.1.0
+pkgver=0.1.11
 pkgrel=1
 pkgdesc="a drop-in replacement for Nmap powered by shodan.io "
 arch=('x86_64')
@@ -18,7 +18,7 @@ source=("${url}/releases/download/${pkgver}/${pkgname%-bin}_${pkgver}_linux_amd6
 #source=("https://github.com/s0md3v/Smap/releases/download/0.1.0/smap_0.1.0_linux_amd64.tar.xz")
 #source=("https://github.com/s0md3v/Smap/releases/download/0.1.0/smap_0.1.0_liunx_amd64.tar.xz")
 noextract=()
-sha256sums=('2a2e9113af46365b74d02fc9168fd0ba277b3bfdb1dc2a8e46bbed70b6df44a8')
+sha256sums=('fa0f2870b4c956340de3444a25f0e751b89f92782716082e0070937d9462ef3d')
 
 package() {
   cd "$srcdir/${pkgname%-bin}_${pkgver}_linux_amd64"
