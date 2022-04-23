@@ -3,12 +3,12 @@
 pkgname=gtkcord4-git
 _pkgname=gtkcord4
 pkgver=r18.3a9dba7
-pkgrel=2
+pkgrel=3
 pkgdesc='Discord client written in go and gtk4'
 arch=('any')
 url='https://github.com/diamondburned/gtkcord4'
 license=('GPL3')
-depends=('gtk4')
+depends=('gtk4' 'gobject-introspection')
 provides=('gtkcord4')
 conflicts=('gtkcord4')
 makedepends=('git' 'go')

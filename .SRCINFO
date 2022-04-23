@@ -1,13 +1,14 @@
 pkgbase = gtkcord4-git
 	pkgdesc = Discord client written in go and gtk4
 	pkgver = r18.3a9dba7
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/diamondburned/gtkcord4
 	arch = any
 	license = GPL3
 	makedepends = git
 	makedepends = go
 	depends = gtk4
+	depends = gobject-introspection
 	provides = gtkcord4
 	conflicts = gtkcord4
 	source = git+https://github.com/diamondburned/gtkcord4
