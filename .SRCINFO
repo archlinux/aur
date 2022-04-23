@@ -1,11 +1,12 @@
 pkgbase = magic-trace-bin
 	pkgdesc = magic-trace collects and displays high-resolution traces of what a process is doing
 	pkgver = 1.0.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/janestreet/magic-trace
 	arch = x86_64
 	license = MIT
 	depends = perf
+	depends = fzf
 	provides = magic-trace
 	conflicts = magic-trace
 	source = magic-trace-bin-1.0.2.deb::https://github.com/janestreet/magic-trace/releases/download/v1.0.2/magic-trace_1.0.2+deb20.04_amd64.deb
