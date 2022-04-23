@@ -1,14 +1,16 @@
 pkgbase = huniq-git
 	pkgdesc = Filter out duplicates on the command line (git)
-	pkgver = r54.3669147
+	pkgver = r59.1e4d1f2
 	pkgrel = 1
 	url = https://github.com/koraa/huniq
 	arch = x86_64
 	license = BSD
-	makedepends = rust
+	makedepends = cargo
 	makedepends = git
 	depends = gcc-libs
 	source = git+https://github.com/koraa/huniq
+	source = cargo-lock.patch::https://github.com/koraa/huniq/commit/e4e29e257ea7e4c5800a4980228c36003a2e5f4d.patch
 	sha512sums = SKIP
+	sha512sums = 83f656c63200818a7b3a7d393faf04b656fbeb35ce90524f270c92b17686899d0b851fc15c54ae3edd8ba747e7a1fd07e0a1e104109016b9e4fe6fe7bbc635fc
 
 pkgname = huniq-git
