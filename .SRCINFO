@@ -45,8 +45,12 @@ pkgbase = proton-ge-custom-bin
 	options = emptydirs
 	backup = usr/share/steam/compatibilitytools.d/proton-ge-custom/user_settings.py
 	source = GE-Proton7-15_1.tar.gz::https://github.com/GloriousEggroll/proton-ge-custom/releases/download/GE-Proton7-15/GE-Proton7-15.tar.gz
-	source = supplementary.tar.zst
+	source = user_settings.py
+	source = launcher.sh
+	source = pam_limits.conf
 	sha512sums = c4fb4e9165d3a09a9a5e72042d2b2176072535678c745bbd27562050a43f74bc29f59fe10870c61ac01c98cc49af319d18d6e38d7691bc1ebb53da35c1e74505
-	sha512sums = 78f4874746b45151890edede89acc5fef6c6143d93d63db27b592a17f9a3eaa7bcfd25049807f9600794ba1244b121636ebf58ea51a5079e7c7ceef36d0c56a0
+	sha512sums = cd70fa35e8565197148c6135628ea4c751c7dc4d7eba6e59cf8a8f2315e79f45e80fc3adce68c8ca2c195a18aaa2a8b2b346e8843b369f3d0ac97e752dbb5399
+	sha512sums = 33efb407e47140a72f1024bec67f2d718eec56e13ca76bcc18e03471b2c64f2b04034eb1e20b0da79afb727e59672fd3539fecc8131da88a8a1330f48a1c8424
+	sha512sums = c64898bd41801470925fb0efdcf7d247e5cb476fb4745f83ceeccf12041474e5c309fb1c2ac1483b419d12b4ade7668c046bebded4e3bf4708737ee505b080a1
 
 pkgname = proton-ge-custom-bin

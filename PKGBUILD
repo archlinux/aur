@@ -69,13 +69,17 @@ backup=("${_protoncfg}")
 ## sources
 url='https://github.com/GloriousEggroll/proton-ge-custom'
 source=("${_pkgver}_${pkgrel}.tar.gz::${url}/releases/download/${_pkgver}/${_pkgver}.tar.gz"
-	'supplementary.tar.zst')
+	'user_settings.py'
+	'launcher.sh'
+	'pam_limits.conf')
 sha512sums=('c4fb4e9165d3a09a9a5e72042d2b2176072535678c745bbd27562050a43f74bc29f59fe10870c61ac01c98cc49af319d18d6e38d7691bc1ebb53da35c1e74505'
-            '78f4874746b45151890edede89acc5fef6c6143d93d63db27b592a17f9a3eaa7bcfd25049807f9600794ba1244b121636ebf58ea51a5079e7c7ceef36d0c56a0')
+            'cd70fa35e8565197148c6135628ea4c751c7dc4d7eba6e59cf8a8f2315e79f45e80fc3adce68c8ca2c195a18aaa2a8b2b346e8843b369f3d0ac97e752dbb5399'
+            '33efb407e47140a72f1024bec67f2d718eec56e13ca76bcc18e03471b2c64f2b04034eb1e20b0da79afb727e59672fd3539fecc8131da88a8a1330f48a1c8424'
+            'c64898bd41801470925fb0efdcf7d247e5cb476fb4745f83ceeccf12041474e5c309fb1c2ac1483b419d12b4ade7668c046bebded4e3bf4708737ee505b080a1')
 
 build() {
 	## patches
-	sed -i "s|_proton=echo|_proton=/${_protondir}/proton|" "${srcdir}"/launchers/proton.sh
+	sed -i "s|_proton=echo|_proton=/${_protondir}/proton|" "${srcdir}"/launcher.sh
 	sed -i -r 's|"GE-Proton.*"|"Proton-GE"|' "${_srcdir}"/compatibilitytool.vdf
 	## remove artifacts
 	rm "${_srcdir}"/protonfixes/*.tar.xz
@@ -96,9 +100,9 @@ package() {
 	mv "${_srcdir}/PATENTS.AV1" "${pkgdir}/${_licensedir}/license_AV1"
 	mv "${_srcdir}/protonfixes/LICENSE" "${pkgdir}/${_licensedir}/license_protonfixes"
 	## config files
-	install --mode=0775 --group=50 "${srcdir}"/configs/user_settings.py "${pkgdir}/${_protoncfg}"
-	install --mode=0644 "${srcdir}"/configs/limits.conf "${pkgdir}"/etc/security/limits.d/10-games.conf
+	install --mode=0775 --group=50 "${srcdir}"/user_settings.py "${pkgdir}/${_protoncfg}"
+	install --mode=0644 "${srcdir}"/pam_limits.conf "${pkgdir}"/etc/security/limits.d/10-games.conf
 	## executables
 	mv "${_srcdir}"/* "${pkgdir}/${_protondir}"
-	install --mode=0755 "${srcdir}"/launchers/proton.sh "${pkgdir}/${_execfile}"
+	install --mode=0755 "${srcdir}"/launcher.sh "${pkgdir}/${_execfile}"
 }
