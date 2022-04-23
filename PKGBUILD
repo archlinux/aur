@@ -72,13 +72,13 @@ patch64() {
     echo libamdocl-orca.so >> ${pkgdir}/etc/OpenCL/vendors/amdocl-orca.icd
     touch ${pkgdir}/etc/OpenCL/vendors/amdocl-orca-ld-64.icd
     echo /usr/lib/libamdocl-orca64.so >> ${pkgdir}/etc/OpenCL/vendors/amdocl-orca-ld-64.icd
-    ln -s ${pkgdir}/usr/lib/libamdocl-orca64.so ${pkgdir}/usr/lib/libamdocl-orca.so
+    ln -s /usr/lib/libamdocl-orca64.so ${pkgdir}/usr/lib/libamdocl-orca.so
 }
 
 patch32() {
     touch ${pkgdir}/etc/OpenCL/vendors/amdocl-orca-ld-32.icd
     echo /usr/lib32/libamdocl-orca32.so >> ${pkgdir}/etc/OpenCL/vendors/amdocl-orca-ld-32.icd
-    ln -s ${pkgdir}/usr/lib32/libamdocl-orca32.so ${pkgdir}/usr/lib32/libamdocl-orca.so
+    ln -s /usr/lib32/libamdocl-orca32.so ${pkgdir}/usr/lib32/libamdocl-orca.so
 }
 
 
