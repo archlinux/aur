@@ -1,7 +1,7 @@
 # Maintainer: Ward Segers <w@rdsegers.be>
 
 pkgname=vsco-scraper
-pkgver=0.53
+pkgver=0.65
 pkgrel=1
 epoch=
 pkgdesc="Allows for easy scraping of one VSCO at a time"
@@ -10,8 +10,8 @@ url="https://github.com/mvabdi/vsco-scraper"
 license=('MIT')
 depends=('python' 'python-tqdm' 'python-requests' 'python-beautifulsoup4')
 provides=('vsco-scraper')
-source=("https://files.pythonhosted.org/packages/e8/a9/fb0d4334843a078565268da74dfb12529f45ab14aeadaf7e11076e246c28/$pkgname-$pkgver.tar.gz")
-sha512sums=("66eceab85482eb3209dff0301dee9ad219433a4283f036d2a3e3f769fc603d7c6660e9a677a9655e99ed6450e78cbf2de23a0019cc3bed7bb7763871b205fc41")
+source=("https://files.pythonhosted.org/packages/b6/c2/bd35626f5ac4f7b479dfd897c020780827e21879a1bcd4dc29a9c8b92700/${pkgname}-${pkgver}.tar.gz")
+sha256sums=("566bf344a9ba9084982461812a4b642a0dc15818270b3b847bd6bc3782d7758a")
 
 build() {
 	cd "$pkgname-$pkgver"
