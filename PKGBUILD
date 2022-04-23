@@ -12,7 +12,7 @@ provides=('snazy')
 conflicts=('snazy')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/snazy/releases/download/0.0.1/snazy_0.0.1_linux_amd64.tar.gz")
-sha256sums_x86_64=('0ee2403d419341bbb1c00b4d8e93307d1e5eea1f2ed0edb6bc379625707e1ff8')
+sha256sums_x86_64=('c0b446a53d6616a03c4bdf3ad98d39a38b226d9ccb88cc1734433264a2b3a438')
 
 package() {
   # bin
