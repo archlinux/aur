@@ -18,8 +18,8 @@
 pkgbase="zfs-linux-zen"
 pkgname=("zfs-linux-zen" "zfs-linux-zen-headers")
 _zfsver="2.1.4"
-_kernelver="5.17.3.zen1-1"
-_kernelver_full="5.17.3.zen1-1"
+_kernelver="5.17.4.zen1-1"
+_kernelver_full="5.17.4.zen1-1"
 _extramodules="${_kernelver_full/.zen/-zen}-zen"
 
 pkgver="${_zfsver}_$(echo ${_kernelver} | sed s/-/./g)"
@@ -51,7 +51,7 @@ package_zfs-linux-zen() {
     conflicts=("zfs-dkms" "zfs-dkms-git" "zfs-dkms-rc" "spl-dkms" "spl-dkms-git" 'zfs-linux-zen-git' 'spl-linux-zen')
     replaces=("spl-linux-zen")
     cd "${srcdir}/zfs-${_zfsver}"
-    make DESTDIR="${pkgdir}" INSTALL_MOD_PATH=${pkgdir}/usr install
+    make DESTDIR="${pkgdir}" INSTALL_MOD_PATH=${pkgdir}/usr INSTALL_MOD_STRIP=1 install
     # Remove src dir
     rm -r "${pkgdir}"/usr/src
 }
