@@ -3,7 +3,7 @@
 
 pkgname=typeracer-bin
 _pkgname=terminal-typeracer
-pkgver=2.1.0
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="Terminal typing speed tester"
 arch=('x86_64')
