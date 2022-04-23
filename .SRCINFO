@@ -1,6 +1,6 @@
 pkgbase = mrcode-git
 	pkgdesc = A custom build of VSCodium / VSCode (git build from latest commit)
-	pkgver = 1.66.2+22113.r4.ga3f6f48
+	pkgver = 1.66.2+22113.r0.g0ba0a23
 	pkgrel = 1
 	url = https://github.com/zokugun/MrCode.git
 	arch = x86_64
