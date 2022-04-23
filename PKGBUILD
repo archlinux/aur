@@ -1,4 +1,5 @@
 #Maintainer: Benjamin Reich <aur@benjaminreich.de>
+#Source found on github.com/b-reich/aur
 pkgname=smap-bin # '-bzr', '-git', '-hg' or '-svn'
 pkgver=0.1.11
 pkgrel=1
