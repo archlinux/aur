@@ -16,7 +16,7 @@ provides=('eminent')
 #_gitroot=git://github.com/guotsuan/eminent.git
 _gitname=eminent
 
-source=("git://github.com/guotsuan/eminent.git")
+source=("git+https://github.com/guotsuan/eminent.git")
 md5sums=('SKIP')
 
 pkgver() {
