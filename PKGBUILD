@@ -1,7 +1,7 @@
 # Maintainer: Torben <git at letorbi dot com>
 
 pkgname=processing4-git
-pkgver=4.0b5.r1.gea13574ce
+pkgver=4.0b8.r0.g951d38eb3
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
@@ -13,11 +13,9 @@ depends=('java-environment-openjdk=17')
 makedepends=('ant' 'gendesk' 'rsync' 'unzip')
 options=(!strip)
 source=(disable_update_check.patch
-        get_reference_via_https.patch
         no_ffmpeg_download.patch
         no_jdk_download.patch)
 sha256sums=('35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
-            '1d549cf94d033e572050f85a59c6ba526aee2bce6b4c96e8b55764136e6c21b5'
             'b0742db84e6a6b148b56df6d4d1e8a3266461fe0f514f703301a310e99f1d126'
             '5c3314d6a63955fa472aa87c6c99a9675eed3db9c589b784593c9f14432ef201')
 
@@ -39,9 +37,6 @@ prepare() {
   # Don't download packages that can be provided via dependencies
   patch $pkgname/build/build.xml < no_jdk_download.patch
   patch $pkgname/build/shared/tools/MovieMaker/build.xml < no_ffmpeg_download.patch
-
-  # Ensure that reference.zip is downloaded via HTTPS
-  patch -p0 < get_reference_via_https.patch
 
   # Disable update check in default preferences
   patch $pkgname/build/shared/lib/defaults.txt < disable_update_check.patch
