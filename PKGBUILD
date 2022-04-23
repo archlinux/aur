@@ -1,8 +1,8 @@
 pkgname=golded-plus-git
-pkgver=r1548.9b28fa8
+pkgver=r1569.e823d0f
 _ncurses_pkgver=6.2
 _ncurses="ncurses"
-pkgrel=4
+pkgrel=1
 pkgdesc="golded-plus Fidonet Mail Reader/Editor"
 arch=('i686' 'x86_64')
 url="http://bbconf.sourceforge.net/"
@@ -10,7 +10,7 @@ license=('GPL2')
 source=(
     "${pkgname}::git+https://github.com/golded-plus/golded-plus.git"
      "https://ftp.gnu.org/pub/gnu/ncurses/${_ncurses}-${_ncurses_pkgver}.tar.gz"
-     "ncurses.patch" "addline.patch" "widescreen.patch" "golded"
+     "ncurses.patch" "golded"
 )
 makedepends=('git' 'gcc' 'make' 'glibc' 'groff' 'patchelf')
 depends=('luit')
@@ -45,8 +45,6 @@ prepare() {
     cd "${pkgname}"
     cp "golded3/mygolded.__h" "golded3/mygolded.h"
     patch -p1 -i "../ncurses.patch"
-    patch -p1 -i "../addline.patch"
-    patch -p1 -i "../widescreen.patch"
     iconv -c -f cp866 -t utf8 docs/rusfaq.txt |  sed 2s/cp866/utf-8/ >docs/rusfaq.utf8
     iconv -c -f cp866 -t utf8 docs/notework.rus |  sed 2s/cp866/utf-8/ >docs/notework_rus.utf8
     iconv -c -f cp866 -t koi8-r docs/rusfaq.txt |  sed 2s/cp866/koi8/ >docs/rusfaq.koi8
@@ -95,9 +93,7 @@ package() {
     install -m 644 docs/{tips,linux,notework,tokencfg,tokentpl}.txt "${pkgdir}/usr/share/goldedplus/docs"
 }
 
-md5sums=('SKIP'
-         'e812da327b1c2214ac1aed440ea3ae8d'
-         'ab59c44a926a1d5f699cc6fe9bea87b2'
-         '5af9e7339bcfa4eb12736599b6ee266a'
-         '5c05574fdfa982acfefc1ca45f830d05'
-         '46c9bbd1d4aacda4f8f0874ee15d298b')
+sha256sums=('SKIP'
+            '30306e0c76e0f9f1f0de987cf1c82a5c21e1ce6568b9227f7da5b71cbea86c9d'
+            'd1fbfeec65ace3ca7b8fc121e21c7896bcce825d5738b670060cdacde13918d6'
+            'f8c52480a056045a4ef8adcce6c820d448a2c6b7096940a4fbfc970dfe9c8738')

@@ -1,7 +1,7 @@
 #!/bin/bash
 GEDLNX=$(which gedlnx)
 if [ ! -x $GEDLNX ]; then
-    echo gedlnx is not avaiabled, sorry
+    echo gedlnx is not avaiable, sorry
     exit 1
 fi
-exec /usr/bin/luit -x -encoding koi8-r -- "$GEDLNX" $*
+TERM=xterm-256color exec /usr/bin/luit -x -encoding koi8-r -- "$GEDLNX" $*
