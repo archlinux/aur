@@ -1,7 +1,7 @@
 # Maintainer: Jonathan Liu <net147@gmail.com>
 pkgname=edid-decode-git
 _gitname=edid-decode
-pkgver=r465.01e7938
+pkgver=r621.8a8d673
 pkgrel=1
 pkgdesc="EDID decoder and conformance tester"
 url="https://git.linuxtv.org/edid-decode.git/"
@@ -10,7 +10,7 @@ license=('MIT')
 depends=('gcc-libs')
 makedepends=('git')
 provides=('edid-decode')
-source=('git://linuxtv.org/edid-decode.git')
+source=('git+https://git.linuxtv.org/edid-decode.git')
 md5sums=('SKIP')
 
 pkgver() {
