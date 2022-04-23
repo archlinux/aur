@@ -9,7 +9,7 @@ pkgbase = didyoumean-bin
 	optdepends = libxcb: X11 clipboard support
 	optdepends = wayland: Wayland clipboard support
 	provides = didyoumean
-	replaces = didyoumean
+	conflicts = didyoumean
 	source = https://github.com/hisbaan/didyoumean/releases/download/v1.1.1/dym-1.1.1-x86_64.tar.gz
 	sha256sums = c8e00a1ab51d952f317d093d187bce08dbde367ba588fd634e4f726da7484303
 

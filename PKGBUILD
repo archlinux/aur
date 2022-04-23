@@ -11,7 +11,7 @@ depends=('gcc-libs')
 optdepends=('libxcb: X11 clipboard support'
             'wayland: Wayland clipboard support')
 provides=('didyoumean')
-replaces=('didyoumean')
+conflicts=('didyoumean')
 source=("https://github.com/hisbaan/didyoumean/releases/download/v${pkgver}/dym-${pkgver}-x86_64.tar.gz")
 sha256sums=("c8e00a1ab51d952f317d093d187bce08dbde367ba588fd634e4f726da7484303")
 
