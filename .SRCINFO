@@ -1,7 +1,7 @@
 pkgbase = mrcode-bin
 	pkgdesc = A custom build of VSCodium / VSCode (binary release)
 	pkgver = 1.66.2+22113
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/zokugun/MrCode.git
 	arch = x86_64
 	arch = aarch64
@@ -26,10 +26,10 @@ pkgbase = mrcode-bin
 	source = mrcode.desktop
 	sha256sums = 362ef9b395929a66442f60be0e238ac69afbbda07728e4121c352fdea236af92
 	source_x86_64 = https://github.com/zokugun/MrCode/releases/download/1.66.2+22113/MrCode-linux-x64-1.66.2.22113.tar.gz
-	sha256sums_x86_64 = 15e49210fb53821c4fa487fecd6193c9dee06078435a6ff8f35a565722a08cb5
+	sha256sums_x86_64 = 584d21fda0b27017804c54a204e644b020e8fa52d825c02272f9155ef6e2add0
 	source_aarch64 = https://github.com/zokugun/MrCode/releases/download/1.66.2+22113/MrCode-linux-arm64-1.66.2.22113.tar.gz
-	sha256sums_aarch64 = 301d133d5f854a95c502406c94b4315b15c19b5a92fe449a1b40cab205987640
+	sha256sums_aarch64 = 7d74361c32e8cfc421070b4bb1f8bf8cb632d0e4cc40a1839b8d7c0690215234
 	source_armv7h = https://github.com/zokugun/MrCode/releases/download/1.66.2+22113/MrCode-linux-armhf-1.66.2.22113.tar.gz
-	sha256sums_armv7h = 5e962142cb2712c0067b0fa37dc83ee28ed125b6fc11bec3877fd05b9fab20d9
+	sha256sums_armv7h = 9986cd9c47c61cd6b7fdfb01e1ac0e95996a5bf379207b4d6882a331097bd4ca
 
 pkgname = mrcode-bin
