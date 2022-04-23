@@ -1,0 +1,17 @@
+pkgbase = rustzx
+	pkgdesc = ZX Spectrum emulator written in Rust
+	pkgver = 0.15.0
+	pkgrel = 1
+	url = https://github.com/rustzx/rustzx
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	makedepends = cmake
+	depends = gcc-libs
+	depends = alsa-lib
+	options = !lto
+	source = rustzx::git+https://github.com/rustzx/rustzx.git#commit=6818e164fae45029bd610f0b3caeb9655e5606c4
+	md5sums = SKIP
+
+pkgname = rustzx
