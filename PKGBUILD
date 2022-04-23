@@ -51,7 +51,7 @@ package_zfs-linux-hardened() {
     conflicts=("zfs-dkms" "zfs-dkms-git" "zfs-dkms-rc" "spl-dkms" "spl-dkms-git" 'zfs-linux-hardened-git' 'spl-linux-hardened')
     replaces=("spl-linux-hardened")
     cd "${srcdir}/zfs-${_zfsver}"
-    make DESTDIR="${pkgdir}" INSTALL_MOD_PATH=${pkgdir}/usr install
+    make DESTDIR="${pkgdir}" INSTALL_MOD_PATH=${pkgdir}/usr INSTALL_MOD_STRIP=1 install
     # Remove src dir
     rm -r "${pkgdir}"/usr/src
 }
