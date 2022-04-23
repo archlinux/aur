@@ -20,6 +20,12 @@ pkgbase = packettracer
 	depends = nss
 	depends = libxss
 	depends = java-runtime>=1.7.0
-
+	depends = qt5-multimedia
+	depends = qt5-webengine
+	depends = qt5-svg
+	depends = qt5-networkauth
+	depends = qt5-websockets
+	depends = qt5-script
+	depends = qt5-speech
 pkgname = packettracer
 
