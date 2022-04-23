@@ -1,13 +1,14 @@
-# Maintainer: Eduardo Sánchez Muñoz
+# Maintainer: Simon Reiser <me AT sfxr DOT de>
+# Original Maintainer: Eduardo Sánchez Muñoz
 
 pkgname=(cling-git cling-jupyter-git)
-pkgver=r4767.517d7e4b
+pkgver=r4811.19a2c1b7
 pkgrel=1
 pkgdesc="Interactive C++ interpreter built on the top of LLVM and Clang libraries."
 arch=('i686' 'x86_64')
 url="https://root.cern.ch/cling"
 license=('custom:Cling Release License')
-makedepends=('cmake' 'libffi' 'git' 'python' 'jupyter')
+makedepends=('cmake' 'libffi' 'git' 'python' 'jupyter-notebook')
 source=(
     "llvm::git+http://root.cern.ch/git/llvm.git#branch=cling-patches"
     "clang::git+http://root.cern.ch/git/clang.git#branch=cling-patches"
@@ -69,7 +70,7 @@ package_cling-git() {
 }
 
 package_cling-jupyter-git() {
-    depends=('cling-git' 'jupyter')
+    depends=('cling-git' 'jupyter-notebook')
 
     cd "$srcdir/cling/tools/Jupyter/kernel"
     python3 setup.py install --prefix=/usr --root="$pkgdir"
