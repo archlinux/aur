@@ -2,7 +2,7 @@
 # Contributor: Radoslaw Mejer <radmen@radmen.info>
 
 pkgname=contentful-cli
-pkgver=1.12.17
+pkgver=1.12.20
 pkgrel=1
 pkgdesc="Official Contentful CLI"
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('npm')
 options=('!emptydirs')
 source=("$pkgname-$pkgver.tgz::https://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz")
 noextract=("$pkgname-$pkgver.tgz")
-sha256sums=('9546cda604846fc8f3e548e579d27a96f154c1e9162a93b557d93f917ffd18b6')
+sha256sums=('3e8389024c8758fb03bd23506f2820748cffa4d9a6645c6d1bb50d0ee14b8245')
 
 PURGE_TARGETS=(*.1 *.1.txt info package.json)
 
@@ -21,7 +21,11 @@ package() {
 	export NODE_ENV=production
 	npm install -g --cache "$srcdir/npm-cache" --prefix "$pkgdir/usr" "$pkgname-$pkgver.tgz"
 	install -d $pkgdir/usr/share/{doc,licenses}/$pkgname
-	ln -s /usr/lib/node_modules/contentful-cli/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/"
-	ln -s /usr/lib/node_modules/contentful-cli/README.md "$pkgdir/usr/share/doc/$pkgname/"
+	ln -s \
+		/usr/lib/node_modules/contentful-cli/LICENSE.txt \
+		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+	ln -s \
+		/usr/lib/node_modules/contentful-cli/README.md \
+		"$pkgdir/usr/share/doc/$pkgname/"
 	chown -R root:root "$pkgdir/"
 }
