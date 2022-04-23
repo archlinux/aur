@@ -15,7 +15,7 @@ _replacesoldkernels=() # '%' gets replaced with kernel suffix
 _replacesoldmodules=() # '%' gets replaced with kernel suffix
 
 pkgbase=linux-libre
-pkgver=5.15.12
+pkgver=5.17.3 # (x86_64 only - other arches need re-working)
 pkgrel=1
 pkgdesc='Linux-libre'
 rcnver=5.11.11
@@ -24,12 +24,14 @@ url='https://linux-libre.fsfla.org/'
 arch=(i686 x86_64 armv7h)
 license=(GPL2)
 makedepends=(
-  bc kmod libelf pahole cpio perl tar xz
-  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
+  bc libelf pahole cpio perl tar xz
+  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
+  git
 )
+makedepends=( ${makedepends[*]/git/} )
 makedepends_armv7h=(uboot-tools vboot-utils dtc) # required by linux-libre-chromebook
 options=('!strip')
-_srcname=linux-5.15
+_srcname=linux-5.17
 source=(
   "https://linux-libre.fsfla.org/pub/linux-libre/releases/${_srcname##*-}-gnu/linux-libre-${_srcname##*-}-gnu.tar.xz"{,.sign}
   "https://linux-libre.fsfla.org/pub/linux-libre/releases/$pkgver-gnu/patch-${_srcname##*-}-gnu-$pkgver-gnu.xz"{,.sign}
@@ -45,13 +47,27 @@ source=(
   # https://labs.parabola.nu/issues/877
   # http://www.fsfla.org/pipermail/linux-libre/2015-November/003202.html
   0002-fix-Atmel-maXTouch-touchscreen-support.patch
-  # Arch Linux patches
+  # AUR 'linux-rc' patches
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
-  0002-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch
-  0003-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch
-  0004-cpufreq-intel_pstate-ITMT-support-for-overclocked-sy.patch
-  0005-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch
-  0006-lg-laptop-Recognize-more-models.patch
+  # the comment above is confusing - the arch 'linux' package has no patches
+  # presumably these patches are taken from https://aur.archlinux.org/linux-rc.git/
+  # some of them do not apply, and are not present in the 'linux-rc' 5.17.3 AUR repo
+  # error:
+  #   Applying patch 0002-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch...
+  #   patching file drivers/pci/quirks.c
+  #   Hunk #1 FAILED at 5802.
+  #   1 out of 1 hunk FAILED -- saving rejects to file drivers/pci/quirks.c.rej
+#   0002-PCI-Add-more-NVIDIA-controllers-to-the-MSI-masking-q.patch
+#   0003-iommu-intel-do-deep-dma-unmapping-to-avoid-kernel-fl.patch
+#   0004-cpufreq-intel_pstate-ITMT-support-for-overclocked-sy.patch
+#   0005-Bluetooth-btintel-Fix-bdaddress-comparison-with-garb.patch
+#   0006-lg-laptop-Recognize-more-models.patch
+  # so i replaced them with the patches from the 5.17.3 'linux-rc' 5.17.3 AUR repo
+  0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch
+  0003-tick-Detect-and-fix-jiffies-update-stall.patch
+  0004-tick-rcu-Remove-obsolete-rcu_needs_cpu-parameters.patch
+  0005-tick-rcu-Stop-allowing-RCU_SOFTIRQ-in-idle.patch
+  0006-lib-irq_poll-Declare-IRQ_POLL-softirq-vector-as-ksof.patch
 )
 source_i686=(
   # avoid using zstd compression in ultra mode (exhausts virtual memory)
@@ -77,9 +93,9 @@ validpgpkeys=(
   '474402C8C582DAFBE389C427BCB7CF877E7D47A7' # Alexandre Oliva
   '6DB9C4B4F0D8C0DC432CF6E4227CA7C556B2BA78' # David P.
 )
-sha512sums=('3c586054285ea0cb4d1a1ff257757d092db80c2413dcec6e58c63b22490d42b8f2c441cee62839603599d5ad75fbd7560bf51ec6c2f3ab9354adae0c2c7234e5'
+sha512sums=('565de7f956e40a931858cb29b61619f25fc57ce588b8762bef806e470d20bbbdf98a6e1c55eccae61a7365c0ecaae4825d81f7eec8689911710949ba5b34ce0c'
             'SKIP'
-            '80a0d8903c6ee462f966e3360d22f4894dc69239c99ef28d62a1ea6643008580a368b61cee5e6691f2bbf0ff162fb10e13ca31904ab89a5e679f91ae9860999b'
+            'dac91c125a65ae7843206eda3d6cc7aaf6e3e8e07ef9348f336c0feb846a1285ea34d9cc3e547430a872da1064dcf22dbb1e2a0ed616de8c36c5da73fca790a2'
             'SKIP'
             '13cb5bc42542e7b8bb104d5f68253f6609e463b6799800418af33eb0272cc269aaa36163c3e6f0aacbdaaa1d05e2827a4a7c4a08a029238439ed08b89c564bb3'
             'SKIP'
@@ -88,7 +104,7 @@ sha512sums=('3c586054285ea0cb4d1a1ff257757d092db80c2413dcec6e58c63b22490d42b8f2c
             '267295aa0cea65684968420c68b32f1a66a22d018b9d2b2c1ef14267bcf4cb68aaf7099d073cbfefe6c25c8608bdcbbd45f7ac8893fdcecbf1e621abdfe9ecc1'
             'SKIP'
             '751e1acf7c28bd98e90c96aa0732a333d44ce1d495cbce77b99b9dbbac0af047b4b473c2a8b4deb42f17daa7d724eb6b9f777dee036dc27c85a22ff4374e0ca4'
-            '5f3e3124607111e4227887e692c3f2188009d9c5a12a6fc2652c33019be3e0e24b5cf5fe4ed66eb1afd0653c34bd134cca4505a5de45bfaf139ad8032c11b3e9'
+            '97fcf8bb0d0e305dd9b3c257062f2e9de246fc372211dc957aee3055a7f795dbea81979d60c018fab03b79e090fb16f4c5babe3d5e3b957461834be1be83236b'
             '51e8b4da770067e8257d292622d865cb16ac57fdfd8967bdfb74efec197dae9eab958e5637a728640ae60885bdde41c06c8076227a4f83db0b752215f91f3a87'
             '53103bf55b957b657039510527df0df01279dec59cda115a4d6454e4135025d4546167fa30bdc99107f232561c1e096d8328609ab5a876cf7017176f92ad3e0b'
             '167bc73c6c1c63931806238905dc44c7d87c5a5c0f6293159f2133dfe717fb44081018d810675716d1605ec7dff5e8333b87b19e09e2de21d0448e447437873b'
@@ -97,11 +113,11 @@ sha512sums=('3c586054285ea0cb4d1a1ff257757d092db80c2413dcec6e58c63b22490d42b8f2c
             '02af4dd2a007e41db0c63822c8ab3b80b5d25646af1906dc85d0ad9bb8bbf5236f8e381d7f91cf99ed4b0978c50aee37cb9567cdeef65b7ec3d91b882852b1af'
             'b8fe56e14006ab866970ddbd501c054ae37186ddc065bb869cf7d18db8c0d455118d5bda3255fb66a0dde38b544655cfe9040ffe46e41d19830b47959b2fb168'
             '5ad31d899fa56b49efb6eec6d721e85e1b723f65c83a9aaec52c3281f1862c7b0ccf5ddac077af669aa222b4818c4ddbc64f39739fc2946c5ddab49101ba0924'
-            'c12a450a5026216676bd5728b43e04641d28a0eacd916e9304b6c38b03699005cf74ed8d3e4de67cab73f47cdaef728fdb1f75b3b1e5221cfc62c2a37e52ff67'
-            '65f4ecc64551d3e644fb6e95ed70dcb694aedd58fc6bed694a912c6d89bfdfd2382d1f20c3b79c0a9e6f5c479efe7e950e47f88b10925ac71276e4cad94ab07e'
-            '5b052dfc8f62ac2f86b1a08620109ec06154273a67ef011b18d38f7098b5b42026da2a8ba79a9234d10766bc00f740a2ce900552806a49937b7e33a35bca2809'
-            '6f139510d047cf0f915daded5221ea4cf2551ebb50c7350965ba417b9b2d0df8796e0508d772cdc6d50cdc5b8c1d8589ace86d6e7a779ea2abed0013696396a3'
-            'e54423a3f0162f76cd211706c48f05f4fd96ea99453ca84821018947dd05b3d1bb943c8ba9e5ce190d237663136122601e7edfe50540fef24ab16c813c6a02e1')
+            'd4dff95d2f4eb790d51a7a8c74d8730d211df40f38f92c2ada484a124161412a28a48862fa785a3003958d9874ba7b167b49fb9edebd70928277e726d0c02962'
+            '4514017c2d3e99e803052abe1fd90f3695fc0ea0630a25f52fc3994d77bc609d8c19dd302c1835b71fc13b917ab5cd25a27a1362ff42b99c089b61753b3c9220'
+            '060f701a9923ca5cafa879c2547b9b7be8e1f8cd5ff2a7e9635d5013ebbda8f402658a1680cb2f70da0df67ee443e9cd18219bdfad80641171a7a6e1dc243964'
+            '8d1507f6e32ab3dbf0ef22c3fcd6b116ed848431d0657166924bec46c7436991a5789ffc5ac8e1cbfb4e490deffe38a20000fc019c69d3087ba8337125e6339d'
+            '7994f3777099a59f535026bfc25e2b23939cc01adc28d19b3cbc9fa642eb167eca50e62a1532afdd067393b5ae7b64758fbf0c6718b9f237c978fa180aa15c11')
 sha512sums_i686=('3a346ff5e0fdefafd28bc3dd0e4b6cd68e3f0014e59d1611d99f2edb8d074fd32649eeb0894a7e340e4f907b5cfc0e08e0753e0427a68dc113bb22835a892968')
 sha512sums_armv7h=('a4aa00ca3f03d524d3fb6379116c4e4e7908e7c30f6347f55be256c44d806d8db5f04c96369d5a725e45b7390e9fde842f388cdc5d5699d80ec5d1519f7367f4'
                    'SKIP'
@@ -195,7 +211,7 @@ build() {
 _package() {
   pkgdesc="The $pkgdesc kernel and modules"
   depends=(coreutils kmod initramfs)
-  optdepends=('crda: to set the correct wireless channels of your country'
+  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-libre-firmware: firmware images needed for some devices')
   provides=(LINUX-ABI_VERSION="$pkgver" VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 
@@ -212,7 +228,8 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
@@ -246,13 +263,11 @@ _package-headers() {
   fi
   cp -t "$builddir" -a scripts
 
-  # add objtool for external module building and enabled VALIDATION_STACK option
-  if [[ -e tools/objtool/objtool ]]; then
-    install -Dt "$builddir/tools/objtool" tools/objtool/objtool
-  fi
+  # required when STACK_VALIDATION is enabled
+  install -Dt "$builddir/tools/objtool" tools/objtool/objtool
 
-  # add xfs and shmem for aufs building
-  mkdir -p "$builddir"/{fs/xfs,mm}
+  # required when DEBUG_INFO_BTF_MODULES is enabled
+  install -Dt "$builddir/tools/bpf/resolve_btfids" tools/bpf/resolve_btfids/resolve_btfids
 
   echo "Installing headers..."
   cp -t "$builddir" -a include
