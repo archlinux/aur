@@ -1,30 +1,34 @@
-# Maintainer: Tyler Thorn <firebirdracer79[at]gmail>
-# Adapted from openmpi package by:
+# Maintainer: yuhldr <yuhldr@gmail.com>
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Anatol Pomozov <anatol dot pomozov at gmail>
 # Contributor: Stéphane Gaudreault <stephane@archlinux.org>
 
-pkgname=openmpi-slurm
-pkgver=4.0.3
+_pkgname=openmpi
+pkgname=${_pkgname}-slurm
+pkgver=4.1.2
 pkgrel=1
-pkgdesc='High performance message passing library (MPI)'
+pkgdesc='patch for openmpi to support slurm-llnl'
 url='https://www.open-mpi.org'
-arch=('x86_64' 'aarch64')
+arch=('x86_64')
 license=('custom:OpenMPI')
-depends=('libltdl' 'hwloc' 'openssh' 'zlib' 'libnl')
-makedepends=('inetutils' 'valgrind' 'gcc-fortran')
-optdepends=('gcc-fortran: fortran support')
+depends=('openmpi' 'glibc' 'libltdl' 'hwloc' 'openssh' 'zlib' 'libnl' 'perl' 'libevent')
+makedepends=('inetutils' 'valgrind' 'gcc-fortran' 'cuda')
+optdepends=(
+  'gcc-fortran: fortran support'
+  'cuda: cuda support'
+)
 options=('staticlibs')
-source=(https://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/${pkgname}-${pkgver}.tar.bz2)
-sha256sums=('1402feced8c3847b3ab8252165b90f7d1fa28c23b6b2ca4632b6e4971267fd03')
-sha512sums=('01f773064c575a0fe6ab081c20c5cf07ba1c9eada5ecfe520d14ce2b9fc6d021d0f56a0159fa354fd6c8e2bb7354a272aa8d0063b351f59251deb56474849acc')
+source=(https://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/${_pkgname}-${pkgver}.tar.bz2)
+sha256sums=('9b78c7cf7fc32131c5cf43dd2ab9740149d9d87cadb2e2189f02685749a6b527')
+b2sums=('2e6fc12b4564a302d2c364528d0f6bea8b23f9b1cd6059763b8d5de583d86aae2812c239b1d0bb40c83f3c7682c8e666ce1de3112e95de54848169cb5e2805e8')
 
 build() {
-  cd ${pkgname}-${pkgver}
-  ./configure --prefix=/usr \
-    --sysconfdir=/etc/${pkgname} \
+  cd ${_pkgname}-${pkgver}
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc/${_pkgname} \
     --enable-mpi-fortran=all \
-    --libdir=/usr/lib/${pkgname} \
+    --libdir=/usr/lib/${_pkgname} \
     --enable-builtin-atomics \
     --enable-mpi-cxx \
     --with-valgrind \
@@ -33,29 +37,34 @@ build() {
     --with-slurm \
     --with-hwloc=/usr \
     --with-libltdl=/usr  \
+    --with-libevent=/usr  \
+    --with-cuda=/opt/cuda \
     FC=/usr/bin/gfortran \
     LDFLAGS="${LDFLAGS} -Wl,-z,noexecstack"
   make
 }
 
 check() {
-  cd ${pkgname}-${pkgver}
+  cd ${_pkgname}-${pkgver}
   make check
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd ${_pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
 
   # FS#28583
   install -dm 755 "${pkgdir}/usr/lib/pkgconfig"
-  for i in ompi-c.pc ompi-cxx.pc ompi-f77.pc ompi-f90.pc ompi.pc; do
-    ln -sf "/usr/lib/openmpi/pkgconfig/${i}" "${pkgdir}/usr/lib/pkgconfig/"
+  for i in "${pkgdir}/usr/lib/openmpi/pkgconfig/"*.pc; do
+    ln -sf "/usr/lib/openmpi/pkgconfig/$(basename ${i})" "${pkgdir}/usr/lib/pkgconfig/"
   done
 
   install -dm 755 "${pkgdir}/etc/ld.so.conf.d"
-  echo "/usr/lib/${pkgname}" > "${pkgdir}"/etc/ld.so.conf.d/${pkgname}.conf
-  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  echo "/usr/lib/${_pkgname}" > "${pkgdir}"/etc/ld.so.conf.d/${_pkgname}.conf
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
+
+  find ${pkgdir}  -type f -not -name '*slurm*' -exec rm {} \;
+
 }
 
 # vim: ts=2 sw=2 et:
