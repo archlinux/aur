@@ -3,7 +3,7 @@
 pkgname=pcem-git
 _pkgname=pcem
 pkgver=17.r149.gf4a1ab9c
-pkgrel=1
+pkgrel=2
 pkgdesc="Emulator for various IBM PC computers and clones - development version"
 url="http://pcem-emulator.co.uk/"
 arch=('x86_64' 'i686')
@@ -21,7 +21,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/pcem"
-  export WX_CONFIg=wx-config-gtk3
+  export WX_CONFIG=wx-config-gtk3
   mkdir -p build
   cd build
   cmake -G "Ninja" -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DUSE_NETWORKING=ON -DUSE_PCAP_NETWORKING=ON -DUSE_ALSA=ON -DPLUGIN_ENGINE=ON ..
