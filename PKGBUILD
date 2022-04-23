@@ -1,7 +1,7 @@
 # Maintainer: Kingtous <me@kingtous.cn>
 pkgname=fclash
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 epoch=
 pkgdesc="A Clash Proxy Fronted based on Clash"
 arch=('x86_64')
@@ -19,7 +19,7 @@ backup=()
 options=()
 install=
 changelog=
-source=("${pkgname%-git}::git+https://github.com/Kingtous/Fclash.git#branch=stable" "https://github.com/Kingtous/Fclash/releases/download/v1.0.0-2/cn.kingtous.fclash.deb")
+source=("${pkgname%-git}::git+https://github.com/Kingtous/Fclash.git#branch=stable" "https://github.com/Kingtous/Fclash/releases/download/v1.2.1-1/cn.kingtous.fclash.deb")
 noextract=()
 sha256sums=('SKIP' 'SKIP')
 validpgpkeys=()
