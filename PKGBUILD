@@ -1,7 +1,7 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
 
 pkgname=slaunch
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Tiny helper to run applications in their own cgroups"
 url="https://git.sr.ht/~whynothugo/slaunch"
