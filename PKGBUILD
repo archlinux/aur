@@ -3,15 +3,14 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=spectacle-git
-pkgver=20.08.2.r47.g89e9eed
+pkgver=22.04.0.r21.g8e00fd6
 pkgrel=1
 pkgdesc='KDE screenshot capture utility'
 arch=(i686 x86_64)
 url=https://kde.org/applications/utilities/org.kde.spectacle
 license=(GPL)
-depends=(xcb-util-cursor libkipi purpose knewstuff kwayland qt5-tools kimageannotator)
+depends=(xcb-util-cursor purpose knewstuff kwayland qt5-tools kimageannotator)
 makedepends=(extra-cmake-modules kdoctools git)
-optdepends=('kipi-plugins: export to various online services')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 groups=(kde-applications kde-graphics)
