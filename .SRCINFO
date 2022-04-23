@@ -16,8 +16,8 @@ pkgbase = didyoumean-git
 	depends = gcc-libs
 	optdepends = libxcb: X11 clipboard support
 	optdepends = wayland: Wayland clipboard support
-	provides = dym
-	conflicts = dym
+	provides = didyoumean
+	conflicts = didyoumean
 	source = git+https://github.com/hisbaan/didyoumean
 	sha256sums = SKIP
 

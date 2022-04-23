@@ -10,8 +10,8 @@ depends=('gcc-libs')
 makedepends=('git' 'cargo')
 optdepends=('libxcb: X11 clipboard support'
             'wayland: Wayland clipboard support')
-provides=("dym")
-conflicts=("dym")
+provides=("didyoumean")
+conflicts=("didyoumean")
 source=('git+https://github.com/hisbaan/didyoumean')
 sha256sums=('SKIP')
 
