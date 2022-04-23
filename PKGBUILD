@@ -1,5 +1,7 @@
 #!/hint/bash
 # Maintainer: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
+# Maintainer: bartus <'arch-user-repo' at the domain 'bartus.33mail.com'>
+# Co-Maintainer: Lahfa Samy (AkechiShiro) <'samy' at the domain 'lahfa.xyz'>
 
 # shellcheck disable=SC2015
 ((DISABLE_BUNDLED_RIZIN)) && {
@@ -17,20 +19,20 @@
 
 _name=cutter
 pkgname=rz-${_name}-git
-pkgver=2.0.2.r13.g2d05ae25
+pkgver=2.0.4.r44.gd2243006
 pkgrel=1
 pkgdesc="A Qt and C++ GUI for rizin reverse engineering framework (originally named Iaito)"
 url="https://cutter.re/"
 arch=('i686' 'x86_64')
 license=('GPL')
-depends+=('capstone' 'qt5-base' 'qt5-svg' 'qt5-webengine' 'icu' 'python' 'jupyter'
-         'pyside2' 'python-shiboken2' 'graphviz' 'gcc-libs' 'syntax-highlighting')
+depends+=('capstone' 'qt5-base' 'qt5-svg' 'qt5-webengine' 'icu' 'python' 'pyside2' 
+          'python-shiboken2' 'graphviz' 'gcc-libs' 'syntax-highlighting')
 makedepends=('git' 'cmake' 'ninja' 'shiboken2' 'qt5-tools' 'meson')
 provides+=('rz-cutter')
 conflicts+=('rz-cutter')
 optdepends=('rz-ghidra: ghidra decompiler plugin')
-source+=("${_name}::git://github.com/rizinorg/cutter.git"
-        "git://github.com/rizinorg/cutter-translations.git")
+source+=("cutter::git+https://github.com/rizinorg/cutter"
+        "git+https://github.com/rizinorg/cutter-translations")
 sha512sums+=('SKIP'
             'SKIP')
 b2sums+=('SKIP'
