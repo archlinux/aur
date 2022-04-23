@@ -1,7 +1,7 @@
 pkgbase = pmix
-	pkgdesc = Process Management Interface Exascale, only pmix3, most applications (like slurm) do not support pmix4, pmix4 has been submitted as a separate package
+	pkgdesc = Process Management Interface Exascale
 	pkgver = 3.2.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pmix.org/
 	arch = x86_64
 	license = custom:OpenMPI
