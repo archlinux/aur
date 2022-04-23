@@ -2,20 +2,24 @@
 
 pkgname=cmake-init
 _name=${pkgname#python-}
-pkgver=0.27.4
+pkgver=0.29.0
 pkgrel=1
 pkgdesc="The missing CMake project initializer"
 arch=('any')
 url="https://github.com/friendlyanon/cmake-init"
 license=('GPL3')
 depends=('python3')
-makedepends=('python-pip')
+makedepends=('python-pip' 'jq' 'curl' 'sed')
 source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py3-none-any.whl")
-sha256sums=('bba839c34fb192e136ecdd5e1a4e77d5ec80c9e4858534722dcb579499dff39a')
+sha256sums=('SKIP')
 
 # build() {
 #         echo ''
 # }
+
+pkgver() {
+	curl -sH "Accept: application/vnd.github.v3+json" https://api.github.com/repos/friendlyanon/cmake-init/tags  | jq -r '.[0].name' | sed 's/v//;s/-/./;s/-/./'
+}
 
 package() {
 	PIP_CONFIG_FILE=/dev/null pip install --no-warn-script-location --isolated --root="$pkgdir" --ignore-installed --no-deps "${_name//-/_}-$pkgver-py3-none-any.whl"
