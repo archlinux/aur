@@ -9,7 +9,7 @@ _base=requests-cache
 pkgname=python-${_base}
 pkgdesc="Transparent persistent cache for http://python-requests.org library"
 pkgver=0.9.4
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/reclosedev/${_base}"
 license=('custom:BSD-2-clause')
@@ -25,7 +25,7 @@ optdepends=('python-boto3: Cache backend for Amazon DynamoDB database'
   'python-ujson: for JSON serializer for improved performance')
 checkdepends=(python-pytest python-requests-mock python-responses python-itsdangerous python-ujson python-timeout-decorator)
 source=(${_base}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('ea978225056d654db9a67b4f0bb011ed3467a7d94d79d9bd71623492ea9e6f8978899805e1bde600c2d9bc6e5f7a11083e9bacf2266552be37456761088ad127')
+sha512sums=('66023dc8b153070a532f160af58ac2102f6b9d536a0045c4c62ad1d4175f59df6e7db5a25422f5610a2f17049270ad0b63c6023ddddf64235432a63d2cce9b91')
 
 build() {
   cd ${_base}-${pkgver}
