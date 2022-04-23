@@ -3,9 +3,9 @@
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
 pkgname=gpshell
-pkgver=2.1.0
-pkgrel=2
-_commit=3832300cc5ade0439c2757ead1cf04e0e946e903
+pkgver=2.2.0
+pkgrel=1
+_commit=3a2240428891746fe404c7aecbf76599a4598fdf
 pkgdesc="gpshell GlobalPlatform command shell"
 license=('GPL3')
 arch=('i686' 'x86_64')
@@ -13,13 +13,8 @@ url="https://github.com/kaoh/globalplatform"
 depends=('glibc' 'globalplatform')
 makedepends=('pandoc' 'cmake')
 source=(https://github.com/kaoh/globalplatform/archive/$_commit.zip)
-md5sums=('da5b1e46ac40221406e51ddf8f82ef4e')
+md5sums=('d91f9d1c9b7ef2c53834170308f93cfe')
 
-prepare() {
-  cd globalplatform-$_commit/globalplatform/cmake_modules
-  sed -e 's/libglobalplatform)/globalplatform)/g' -i FindGlobalPlatform.cmake
-
-}
 build() {
   cd globalplatform-$_commit/gpshell
   cmake . -DCMAKE_INSTALL_PREFIX=/usr
