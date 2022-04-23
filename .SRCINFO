@@ -1,7 +1,7 @@
 pkgbase = system-monitoring-center
 	pkgdesc = System performance and usage monitoring tool
 	pkgver = 1.12.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/hakandundar34coding/system-monitoring-center
 	changelog = system-monitoring-center.changelog
 	arch = any
@@ -13,7 +13,6 @@ pkgbase = system-monitoring-center
 	depends = bash
 	depends = dmidecode
 	depends = gtk3
-	depends = libwnck3
 	depends = python-cairo
 	depends = python-gobject
 	depends = systemd

@@ -2,13 +2,12 @@
 pkgname=system-monitoring-center
 pkgver=1.12.0
 _pkgver="$pkgver-deb_for_stores"
-pkgrel=1
+pkgrel=2
 pkgdesc="System performance and usage monitoring tool"
 arch=('any')
 url="https://github.com/hakandundar34coding/system-monitoring-center"
 license=('GPL3')
-depends=('bash' 'dmidecode' 'gtk3' 'libwnck3' 'python-cairo'
-         'python-gobject' 'systemd' 'util-linux')
+depends=('bash' 'dmidecode' 'gtk3'  'python-cairo' 'python-gobject' 'systemd' 'util-linux')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 changelog="$pkgname.changelog"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$_pkgver.tar.gz")
