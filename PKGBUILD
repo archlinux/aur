@@ -1,5 +1,5 @@
 # Maintainer: XMiao
-pkgname="techmino"
+pkgname="techmino-client"
 pkgver=0.17.3
 pkgrel=1
 pkgdesc="Techmino:方块研究所"
