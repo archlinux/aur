@@ -2,14 +2,148 @@
 
 ## 接口更名一览表
 
-| AKShare 版本 | 旧接口名称             | 新接口名称             | 修改日期     |
-|------------|-------------------|-------------------|----------|
-| 1.4.88     | fund_em_new_found | fund_new_found_em | 20220323 |
-| 1.4.86     | fund_em_aum_hist  | fund_aum_hist_em  | 20220322 |
-| 1.4.86     | fund_em_aum_trend | fund_aum_trend_em | 20220322 |
-| 1.4.86     | fund_em_aum       | fund_aum_em       | 20220322 |
+| AKShare 版本 | 旧接口名称                             | 新接口名称                             | 修改日期     |
+|------------|-----------------------------------|-----------------------------------|----------|
+| 1.5.34     | stock_em_gpzy_industry_data       | stock_gpzy_industry_data_em       | 20220420 |
+| 1.5.26     | stock_em_comment                  | stock_comment_em                  | 20220415 |
+| 1.5.25     | stock_em_analyst_detail           | stock_analyst_detail_em           | 20220415 |
+| 1.5.25     | stock_em_analyst_rank             | stock_analyst_rank_em             | 20220415 |
+| 1.5.18     | fund_em_open_fund_rank            | fund_open_fund_rank_em            | 20220414 |
+| 1.5.12     | stock_em_gpzy_pledge_ratio_detail | stock_gpzy_pledge_ratio_detail_em | 20220410 |
+| 1.5.10     | stock_em_gpzy_pledge_ratio        | stock_gpzy_pledge_ratio_em        | 20220410 |
+| 1.5.10     | stock_em_gpzy_profile             | stock_gpzy_profile_em             | 20220410 |
+| 1.4.88     | fund_em_new_found                 | fund_new_found_em                 | 20220323 |
+| 1.4.86     | fund_em_aum_hist                  | fund_aum_hist_em                  | 20220322 |
+| 1.4.86     | fund_em_aum_trend                 | fund_aum_trend_em                 | 20220322 |
+| 1.4.86     | fund_em_aum                       | fund_aum_em                       | 20220322 |
 
 ## 更新说明
+
+1.5.37 add: add stock_comment_detail_scrd_desire_em interface
+
+    1. 新增 stock_comment_detail_scrd_desire_em 接口，获取市场参与意愿数据
+
+1.5.36 add: add stock_comment_detail_scrd_focus_em interface
+
+    1. 新增 stock_comment_detail_scrd_focus_em 接口，获取用户关注指数数据
+
+1.5.35 add: add stock_comment_detail_zhpj_lspf_em interface
+
+    1. 新增 stock_comment_detail_zhpj_lspf_em 接口，获取综合评价-历史评分数据
+
+1.5.34 fix: fix stock_gpzy_industry_data_em interface
+
+    1. 修复 stock_gpzy_industry_data_em 接口，并重命名为 stock_gpzy_industry_data_em
+
+1.5.33 fix: fix fund_fh_em interface
+
+    1. 修复 fund_fh_em, fund_cf_em 和 fund_fh_rank_em 接口
+
+1.5.32 add: add stock_comment_detail_zlkp_jgcyd_em interface
+
+    1. 新增 stock_comment_detail_zlkp_jgcyd_em 接口
+
+1.5.31 fix: fix stock_individual_info_em interface
+
+    1. 修复 stock_individual_info_em 接口
+
+1.5.30 fix: fix hurun_rank interface
+
+    1. 修复 hurun_rank 接口，新增多个排行榜及统一数据输出格式
+
+1.5.29 fix: fix index_zh_a_hist_min_em interface
+
+    1. 修复 index_zh_a_hist_min_em 接口，个别指数数据获取
+
+1.5.28 fix: fix bond_zh_cov interface
+
+    1. 修复 bond_zh_cov 接口
+
+1.5.27 fix: fix stock_comment_em interface
+
+    1. 修复 stock_comment_em 接口，补充字段跟网页数据源统一并新增`交易日`字段
+
+1.5.26 fix: fix stock_comment_em interface
+
+    1. 修复 stock_comment_em 接口，将接口重命名为 stock_comment_em，修改字段名称和字段类型
+
+1.5.25 fix: fix stock_analyst_rank_em and stock_analyst_detail_em interface
+
+    1. 修复 stock_analyst_rank_em 接口，将接口重命名为 stock_analyst_rank_em
+    2. 修复 stock_analyst_detail_em 接口，将接口重命名为 stock_analyst_detail_em
+
+1.5.24 fix: fix stock_profit_forecast interface
+
+    1. 修复 stock_profit_forecast 接口，统一字段名称及类型
+
+1.5.23 fix: fix stock_board_concept_name_em interface
+
+    1. 修复 stock_board_concept_name_em 接口，增加字段的容错
+
+1.5.22 fix: fix futures_correlation_nh interface
+
+    1. 修复 futures_correlation_nh 接口，修改接口描述
+
+1.5.21 add: add futures_variety_index_nh interface
+
+    1. 新增 futures_variety_index_nh 接口，获取品种指数涨跌数据
+
+1.5.20 add: add futures_board_index_nh interface
+
+    1. 新增 futures_board_index_nh 接口，获取板块指数涨跌数据
+
+1.5.19 add: add futures_correlation_nh interface
+
+    1. 新增 futures_correlation_nh 接口，获取相关系数矩阵数据
+
+1.5.18 fix: fix fund_open_fund_rank_em interface
+
+    1. 修复 fund_open_fund_rank_em 接口，重命名 fund_em_open_fund_rank 为 fund_open_fund_rank_em
+
+1.5.17 add: add macro_china_bsi_index interface
+
+    1. 修复 macro_china_bsi_index 接口，获取超灵便型船运价指数数据
+
+1.5.16 fix: fix stock_info_sh_delist interface
+
+    1. 修复 stock_info_sh_delist 接口
+
+1.5.15 fix: fix bond_cov_jsl interface
+
+    1. 修复 bond_cov_jsl 接口
+
+1.5.14 add: add macro_china_bdti_index interface
+
+    1. 新增 macro_china_bdti_index 接口，获取原油运输指数数据
+
+1.5.13 add: add macro_china_lpi_index interface
+
+    1. 新增 macro_china_lpi_index 接口，获取物流景气指数数据
+
+1.5.12 fix: fix stock_gpzy_pledge_ratio_detail_em interface
+
+    1. 修复 stock_gpzy_pledge_ratio_detail_em 接口并重命名
+
+1.5.11 add: add index_bloomberg_billionaires_hist interface
+
+    1. 新增 index_bloomberg_billionaires_hist 接口，获取彭博亿万富豪历史数据
+
+1.5.10 fix: fix stock_gpzy_pledge_ratio_em and stock_gpzy_profile_em interface
+
+    1. 修复 stock_gpzy_profile_em 接口，对该接口重命名，并对返回的数据按时间升序排列
+    2. 修复 stock_gpzy_pledge_ratio_em 接口，对该接口重名，并对返回的字段规范化
+
+1.5.9 fix: fix air_quality_hist interface
+
+    1. 修复 air_quality_hist 接口，主要修改接口的加密及解密逻辑
+
+1.5.8 add: add macro_china_construction_price_index interface
+
+    1. 新增 macro_china_construction_price_index 接口，获取建材价格指数数据
+
+1.5.7 add: add macro_china_construction_index interface
+
+    1. 新增 macro_china_construction_index 接口，获取建材指数数据
 
 1.5.6 add: add macro_china_yw_electronic_index interface
 
@@ -175,9 +309,9 @@
 
     1. 修复 crypto_name_url_table 获取可以获得历史数据的货币名称
 
-1.4.66 fix: fix stock_em_gpzy_profile interface
+1.4.66 fix: fix stock_gpzy_profile_em interface
 
-    1. 修复 stock_em_gpzy_profile 接口并设定返回数据的数据类型
+    1. 修复 stock_gpzy_profile_em 接口并设定返回数据的数据类型
 
 1.4.65 fix: fix spot_hist_sge interface
 
@@ -277,6 +411,68 @@
 
 ## 版本更新说明
 
+1.5.37 add: add stock_comment_detail_scrd_desire_em interface
+
+1.5.36 add: add stock_comment_detail_scrd_focus_em interface
+
+1.5.35 add: add stock_comment_detail_zhpj_lspf_em interface
+
+1.5.34 fix: fix stock_gpzy_industry_data_em interface
+
+1.5.33 fix: fix fund_fh_em interface
+
+1.5.32 add: add stock_comment_detail_zlkp_jgcyd_em interface
+
+1.5.31 fix: fix stock_individual_info_em interface
+
+1.5.30 fix: fix hurun_rank interface
+
+1.5.29 fix: fix index_zh_a_hist_min_em interface
+
+1.5.28 fix: fix bond_zh_cov interface
+
+1.5.27 fix: fix stock_comment_em interface
+
+1.5.26 fix: fix stock_comment_em interface
+
+1.5.25 fix: fix stock_analyst_rank_em and stock_analyst_detail_em interface
+
+1.5.24 fix: fix stock_profit_forecast interface
+
+1.5.23 fix: fix stock_board_concept_name_em interface
+
+1.5.22 fix: fix futures_correlation_nh interface
+
+1.5.21 add: add futures_variety_index_nh interface
+
+1.5.20 add: add futures_board_index_nh interface
+
+1.5.19 add: add futures_correlation_nh interface
+
+1.5.18 fix: fix fund_open_fund_rank_em interface
+
+1.5.17 add: add macro_china_bsi_index interface
+
+1.5.16 fix: fix stock_info_sh_delist interface
+
+1.5.15 fix: fix bond_cov_jsl interface
+
+1.5.14 add: add macro_china_bdti_index interface
+
+1.5.13 add: add macro_china_lpi_index interface
+
+1.5.12 fix: fix stock_gpzy_pledge_ratio_detail_em interface
+
+1.5.11 add: add index_bloomberg_billionaires_hist interface
+
+1.5.10 fix: fix stock_gpzy_pledge_ratio_em and stock_gpzy_profile_em interface
+
+1.5.9 fix: fix air_quality_hist interface
+
+1.5.8 add: add macro_china_construction_price_index interface
+
+1.5.7 add: add macro_china_construction_index interface
+
 1.5.6 add: add macro_china_yw_electronic_index interface
 
 1.5.5 add: add macro_global_sox_index interface
@@ -355,7 +551,7 @@
 
 1.4.67 fix: fix crypto_name_url_table interface
 
-1.4.66 fix: fix stock_em_gpzy_profile interface
+1.4.66 fix: fix stock_gpzy_profile_em interface
 
 1.4.65 fix: fix spot_hist_sge interface
 
