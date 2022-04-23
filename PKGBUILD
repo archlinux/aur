@@ -7,9 +7,9 @@
 pkgname=coreutils-hybrid
 _pkgname=coreutils
 __pkgname=uutils-coreutils
-pkgver=9.0_0.0.12
-_pkgver=9.0
-__pkgver=0.0.12
+pkgver=9.1_0.0.13
+_pkgver=9.1
+__pkgver=0.0.13
 pkgrel=1
 pkgdesc='GNU coreutils / uutils-coreutils hybrid package. Uses stable uutils programs mixed with GNU counterparts if uutils counterpart is unfinished / buggy'
 arch=('x86_64')
@@ -23,8 +23,8 @@ makedepends=('rust' 'cargo')
 source=("https://ftp.gnu.org/gnu/$_pkgname/$_pkgname-$_pkgver.tar.xz"
         "$__pkgname-$__pkgver.tar.gz::$_url/archive/$__pkgver.tar.gz"
         "01-fix-fs72253.patch")
-sha512sums=('9be08212891dbf48e5b22e7689dc27dac50df4631ebf29313470b72b7921f0b2aa5242917d05587785358495ca56e3b21f5b3ca81043d53cab92354da6c53a03'
-            '9c78c1ffe8495e95ddb07ce104f68e48dc7ed0d5c156f9095a579b4a27fafbded276314b2a3a239dac693aa0e9bde9bfda6513dcf30ddb17c1925cea27a4578f'
+sha512sums=('a6ee2c549140b189e8c1b35e119d4289ec27244ec0ed9da0ac55202f365a7e33778b1dc7c4e64d1669599ff81a8297fe4f5adbcc8a3a2f75c919a43cd4b9bdfa'
+            '80b76c13258945aa85925728141ee0b78de5ca385bd0a6f9d43f5b4008b30ac2ee52fca7f45df094e31f9231b45f2036a97143f9cefb46e8891268fc7e8e0c9b'
             '10313ecc918de8ee007c3bc9a57a96372a537b7b1653577daa5609f1026bcc7e6ef4907b75243b37cef305c5c9b45eb446e49649059f667009a2b1fdf6ef3dc3')
 
 prepare() {
