@@ -1,6 +1,6 @@
 pkgbase = processing4
 	pkgdesc = Programming environment for creating images, animations and interactions
-	pkgver = 4.0b7
+	pkgver = 4.0b8
 	pkgrel = 1
 	url = https://github.com/processing/processing4
 	arch = x86_64
@@ -15,14 +15,12 @@ pkgbase = processing4
 	provides = processing4
 	conflicts = processing
 	options = !strip
-	source = https://github.com/processing/processing4/archive/processing-1282-4.0b7.tar.gz
+	source = https://github.com/processing/processing4/archive/processing-1283-4.0b8.tar.gz
 	source = disable_update_check.patch
-	source = get_reference_via_https.patch
 	source = no_ffmpeg_download.patch
 	source = no_jdk_download.patch
-	sha256sums = cc345f660ed00cf9e6c67748dbe1477c70f62e77de7ec82f165783ea67ede24d
+	sha256sums = e16c2d5e999119b816ab0f11b1d33dd6a57d48b21051542641fa8485e4a58893
 	sha256sums = 35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30
-	sha256sums = 970cab09bb2d22f9a72415d626ab77714b31b2727c51e4d8992eeee4f7f3645d
 	sha256sums = b0742db84e6a6b148b56df6d4d1e8a3266461fe0f514f703301a310e99f1d126
 	sha256sums = 5c3314d6a63955fa472aa87c6c99a9675eed3db9c589b784593c9f14432ef201
 

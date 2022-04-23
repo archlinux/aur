@@ -1,7 +1,7 @@
 # Maintainer: Torben <git at letorbi dot com>
 
 pkgname=processing4
-pkgver=4.0b7
+pkgver=4.0b8
 pkgrel=1
 arch=(x86_64)
 pkgdesc='Programming environment for creating images, animations and interactions'
@@ -14,12 +14,10 @@ makedepends=('ant' 'gendesk' 'rsync' 'unzip')
 options=(!strip)
 source=("https://github.com/processing/processing4/archive/processing-$((1275+${pkgver##4.0b}))-$pkgver.tar.gz"
         disable_update_check.patch
-        get_reference_via_https.patch
         no_ffmpeg_download.patch
         no_jdk_download.patch)
-sha256sums=('cc345f660ed00cf9e6c67748dbe1477c70f62e77de7ec82f165783ea67ede24d'
+sha256sums=('e16c2d5e999119b816ab0f11b1d33dd6a57d48b21051542641fa8485e4a58893'
             '35c4538e6e57c0ea296c6cea590cabeb2b0772f9a431838df270dcc581321e30'
-            '970cab09bb2d22f9a72415d626ab77714b31b2727c51e4d8992eeee4f7f3645d'
             'b0742db84e6a6b148b56df6d4d1e8a3266461fe0f514f703301a310e99f1d126'
             '5c3314d6a63955fa472aa87c6c99a9675eed3db9c589b784593c9f14432ef201')
 
@@ -33,9 +31,6 @@ prepare() {
   # Don't download JDK and JFX files during Ant's build process
   patch $pkgname/build/build.xml < no_jdk_download.patch
   patch $pkgname/build/shared/tools/MovieMaker/build.xml < no_ffmpeg_download.patch
-
-  # Ensure that reference.zip is downloaded via HTTPS
-  patch -p0 < get_reference_via_https.patch
 
   # Disable update check in default preferences
   patch $pkgname/build/shared/lib/defaults.txt < disable_update_check.patch
