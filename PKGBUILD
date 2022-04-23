@@ -7,7 +7,7 @@ pkgdesc="ZNC module for authenticating with QuakeNets Q bot"
 arch=('any')
 url="https://github.com/jkhsjdhjs/znc-q"
 license=('Apache')
-makedepends=('git')
+makedepends=('git' 'cmake')
 depends=('znc')
 source=("${pkgname%-git}::git+https://github.com/jkhsjdhjs/znc-q"
         'znc-q.hook')
