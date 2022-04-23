@@ -1,6 +1,6 @@
 pkgbase = mozc-ut-united
 	pkgdesc = A Japanese Input Method for Chromium OS, Windows, Mac and Linux (the Open Source Edition of Google Japanese Input)
-	pkgver = 2.26.4695.102_20220403_2.26.4660.102.r64.g120fce6e
+	pkgver = 2.28.4715.102_20220423_2.26.4660.102.r106.g4c5d516f
 	pkgrel = 1
 	url = https://osdn.net/users/utuhiro/pf/utuhiro/files/
 	arch = i686
@@ -18,7 +18,7 @@ pkgbase = mozc-ut-united
 	depends = qt5-base
 	depends = zinnia
 	source = mozc::git+https://github.com/google/mozc.git
-	source = https://osdn.net/downloads/users/38/38161/mozcdic-ut-20220403.tar.bz2
+	source = https://osdn.net/downloads/users/38/38352/mozcdic-ut-20220423.tar.bz2
 	source = config-arch-new.patch
 	source = git+https://chromium.googlesource.com/breakpad/breakpad
 	source = git+https://github.com/google/googletest.git
@@ -47,7 +47,7 @@ pkgname = mozc-ut-united
 	depends = qt5-base
 	depends = zinnia
 	optdepends = tegaki-models-zinnia-japanese: hand-writing recognition support
-	provides = mozc=2.26.4695.102
+	provides = mozc=2.28.4715.102
 	conflicts = mozc
 	conflicts = mozc-ut-unified
 	conflicts = mozc-neologd-ut
