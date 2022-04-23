@@ -1,0 +1,38 @@
+# Maintainer: icepie <icepie.dev@gmail.com>
+
+pkgname="fleet-rust"
+_pkgname="fleet"
+pkgver=0.0.6.77.g149d27c
+pkgrel=1
+pkgdesc="The blazing fast build tool for Rust."
+arch=("x86_64")
+url="https://github.com/dimensionhq/fleet"
+license=("MIT")
+depends=()
+optdepends=()
+makedepends=("rust" "cargo" "git")
+provides=("fleet-rust")
+conflicts=("fleet-rust-bin")
+source=("$_pkgname::git+https://github.com/dimensionhq/fleet.git")
+sha256sums=("SKIP")
+
+pkgver() {
+    cd "$_pkgname"
+    echo "$(grep '^version =' Cargo.toml | head -n1 | cut -d\" -f2).$(git rev-list --count HEAD).g$(git rev-parse --short HEAD)"
+}
+
+build() {
+    cd $_pkgname
+    export SHELL_COMPLETIONS_DIR="$PWD/completions"
+    cargo build --release
+}
+
+check() {
+    cd $_pkgname
+    cargo test --release
+}
+
+package() {
+    cd "$srcdir/$_pkgname"
+    install -Dm755 target/release/$_pkgname "$pkgdir/usr/bin/$_pkgname"
+}
