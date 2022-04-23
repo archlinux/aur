@@ -6,17 +6,12 @@
 _pkgname=openmpi
 pkgname=${_pkgname}-slurm
 pkgver=4.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='patch for openmpi to support slurm-llnl'
 url='https://www.open-mpi.org'
 arch=('x86_64')
 license=('custom:OpenMPI')
 depends=('openmpi' 'glibc' 'libltdl' 'hwloc' 'openssh' 'zlib' 'libnl' 'perl' 'libevent')
-makedepends=('inetutils' 'valgrind' 'gcc-fortran' 'cuda')
-optdepends=(
-  'gcc-fortran: fortran support'
-  'cuda: cuda support'
-)
 options=('staticlibs')
 source=(https://www.open-mpi.org/software/ompi/v${pkgver%.*}/downloads/${_pkgname}-${pkgver}.tar.bz2)
 sha256sums=('9b78c7cf7fc32131c5cf43dd2ab9740149d9d87cadb2e2189f02685749a6b527')
@@ -27,21 +22,16 @@ build() {
   ./configure \
     --prefix=/usr \
     --sysconfdir=/etc/${_pkgname} \
-    --enable-mpi-fortran=all \
     --libdir=/usr/lib/${_pkgname} \
     --enable-builtin-atomics \
     --enable-mpi-cxx \
-    --with-valgrind \
     --enable-memchecker \
     --enable-pretty-print-stacktrace \
     --with-slurm \
     --with-hwloc=/usr \
     --with-libltdl=/usr  \
-    --with-libevent=/usr  \
-    --with-cuda=/opt/cuda \
-    FC=/usr/bin/gfortran \
-    LDFLAGS="${LDFLAGS} -Wl,-z,noexecstack"
-  make
+    --with-libevent=/usr
+  make -j
 }
 
 check() {
@@ -63,7 +53,7 @@ package() {
   echo "/usr/lib/${_pkgname}" > "${pkgdir}"/etc/ld.so.conf.d/${_pkgname}.conf
   install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
 
-  find ${pkgdir}  -type f -not -name '*slurm*' -exec rm {} \;
+  find  ${pkgdir} -not -name '*slurm*' -exec rm {} \;
 
 }
 
