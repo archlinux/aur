@@ -3,7 +3,7 @@
 # Contributor: bitwave
 
 pkgname=python-pycaption
-pkgver=2.0.7
+pkgver=2.0.8
 pkgrel=1
 pkgdesc="Python module to read/write popular video caption formats"
 arch=('any')
@@ -13,14 +13,11 @@ depends=('python-beautifulsoup4' 'python-lxml' 'python-cssutils')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-lazy-fixture')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pycaption/pycaption-$pkgver.tar.gz")
-sha256sums=('43f935e5526df8214dcfd3e3f6be6d3aad941bb314c611f768b7709dfdefa68a')
+sha256sums=('deed87d38e7f03c0a4ecedad7914b937bf698ed00f46ad15ee94ec9560e98797')
 
 prepare() {
 	cd "pycaption-$pkgver"
 	sed -i "/packages=/s/()/(exclude=('tests*',))/" setup.py
-	## fix for python3.10, thanks to nikonaum
-	sed -i 's/collections.Callable/collections.abc.Callable/g' \
-		pycaption/scc/specialized_collections.py
 }
 
 build() {
