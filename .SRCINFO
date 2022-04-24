@@ -19,6 +19,7 @@ pkgbase = python-spotdl
 	depends = python-beautifulsoup4
 	depends = python-requests
 	depends = python-unidecode
+	depends = python-pycryptodomex
 	provides = python-spotdl
 	provides = spotdl
 	options = strip

@@ -24,7 +24,8 @@ depends=('python'
 	'python-tqdm'
 	'python-beautifulsoup4'
 	'python-requests'
-	'python-unidecode')
+	'python-unidecode'
+	'python-pycryptodomex')
 makedepends=('python-setuptools')
 provides=("$pkgname" "spotdl")
 options=(strip emptydirs zipman)
