@@ -7,7 +7,7 @@ arch=('x86_64')
 url="https://bixbydevelopers.com/"
 license=('commercial')
 depends=('at-spi2-core' 'desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nss' 'util-linux-libs' 'xdg-utils')
-optdepends('libappindicator-gtk3: For tray-icon support')
+optdepends=('libappindicator-gtk3: For tray-icon support')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://bixby-ide.s3.amazonaws.com/stable-c4f5c975-1d91-4065-b661-633de7275e11/BixbyStudio-${pkgver//_/-}-linux.deb")
