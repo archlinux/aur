@@ -11,7 +11,7 @@ makedepends=('git' 'cmake')
 optdepends=()
 provides=('thextech')
 install=${pkgname}.install
-source=("git://github.com/Wohlstand/TheXTech"
+source=("git+https://github.com/Wohlstand/TheXTech"
 "https://wohlsoft.ru/projects/TheXTech/_downloads/thextech-adventure-of-demo-assets-full.7z"
 "thextech-adventuresofdemo.desktop")
 sha256sums=("SKIP"
