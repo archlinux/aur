@@ -7,7 +7,7 @@
 
 pkgname=electrum-vtc
 pkgver=4.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Lightweight Vertcoin wallet'
 arch=('any')
 url='https://vertcoin.org/'
@@ -18,7 +18,7 @@ depends=('python-pyaes' 'python-ecdsa' 'python-pbkdf2' 'python-requests' 'python
          'python-protobuf' 'python-dnspython' 'python-jsonrpclib-pelix' 'python-pysocks'
          'python-pyqt5' 'python-pycryptodomex' 'python-websocket-client' 'python-certifi'
          'python-aiorpcx' 'python-aiohttp' 'python-aiohttp-socks'
-         'libsecp256k1' 'python-bitstring'
+         'libsecp256k1' 'python-bitstring' 'python-vertcoinhash-git'
          )
 optdepends=('python-btchip: BTChip hardware wallet support'
             'python-hidapi: Digital Bitbox hardware wallet support'
@@ -38,12 +38,11 @@ conflicts=('electrum-vtc')
 build() {
     cd "Electrum-VTC-${pkgver}"
     python setup.py build
-    pip install vertcoinhash
 }
 
 package() {
     cd "Electrum-VTC-${pkgver}"
-    python setup.py install --root="${pkgdir}" --optimize=1
+    python setup.py install --root="${pkgdir}" --optimize=1 --prefix=/usr
     install -Dm644 AUTHORS README.rst RELEASE-NOTES -t "$pkgdir"/usr/share/doc/$pkgname
     install -D -m644 LICENCE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
