@@ -5,7 +5,7 @@
 
 pkgname=goocanvasmm
 pkgver=1.90.11
-pkgrel=5
+pkgrel=6
 pkgdesc='C++ wrappers for goocanvas'
 arch=('x86_64')
 url='https://download.gnome.org/sources/goocanvasmm/'
