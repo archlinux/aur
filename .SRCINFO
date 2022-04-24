@@ -1,14 +1,15 @@
 pkgbase = gnome-panel-minimal
 	pkgdesc = Panel of GNOME Flashback (minimal build)
 	pkgver = 3.44.0+0a5a7081f
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.gnome.org/Projects/GnomePanel
 	arch = x86_64
 	license = GPL
-	makedepends = itstool
 	makedepends = autoconf-archive
+	makedepends = git
+	makedepends = gtk-doc
+	makedepends = itstool
 	makedepends = yelp-tools
-	depends = gnome-menus
 	depends = libwnck3
 	depends = pango
 	provides = gnome-panel=3.44.0

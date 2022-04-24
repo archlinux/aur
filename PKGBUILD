@@ -5,13 +5,13 @@ _pkgname=gnome-panel
 _pkgver=3.44.0
 pkgname=${_pkgname}-minimal
 pkgver=3.44.0+0a5a7081f
-pkgrel=1
+pkgrel=2
 pkgdesc='Panel of GNOME Flashback (minimal build)'
 arch=('x86_64')
 url='https://wiki.gnome.org/Projects/GnomePanel'
 license=('GPL')
-depends=('gnome-menus' 'libwnck3' 'pango')
-makedepends=('itstool' 'autoconf-archive' 'yelp-tools')
+depends=('libwnck3' 'pango')
+makedepends=('autoconf-archive' 'git' 'gtk-doc' 'itstool' 'yelp-tools')
 provides=("${_pkgname}=${pkgver%%+*}")
 conflicts=("${_pkgname}")
 source=("git+https://gitlab.gnome.org/GNOME/gnome-panel.git#tag=${_pkgver}"
