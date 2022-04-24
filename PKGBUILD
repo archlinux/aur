@@ -1,5 +1,4 @@
-# Maintainer: Daniel Bermond <dbermond@archlinux.org>
-# Maintainer: Bruno Pagani <archange@archlinux.org>
+# Melvyn <melvyn2@brcok.tk>
 
 _srcname=SPIRV-LLVM-Translator
 pkgname=lib32-${_srcname,,}
