@@ -7,8 +7,8 @@ pkgdesc='meson implementation in C'
 url='https://sr.ht/~lattis/muon'
 license=(GPL3)
 arch=(x86_64)
-depends=(pkgconf curl zlib)
-makedepends=(git meson scdoc)
+depends=(pkgconf curl zlib libarchive)
+makedepends=(git scdoc)
 conflicts=()
 provides=(muon)
 source=("git+https://git.sr.ht/~lattis/muon")
@@ -24,11 +24,24 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  meson -D prefix=/usr build
+  rm -rf build
+
+  msg2 "Building stage 1 (bootstrap)"
+  ./bootstrap.sh build-stage1
+
+  msg2 "Building stage 2 (muon from bootstrap)"
+  build-stage1/muon setup build-stage2
+  ninja -C build-stage2
+
+  msg2 "Building stage 3 (muon from muon)"
+  build-stage2/muon setup \
+    -D prefix=/usr \
+    -D meson-docs:prefix=/usr \
+    build
   ninja -C build
 }
 
 package() {
   cd "$_pkgname/build"
-  DESTDIR="$pkgdir" meson install
+  DESTDIR="$pkgdir" ./muon install
 }
