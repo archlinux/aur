@@ -1,13 +1,11 @@
 pkgbase = python-amaranth-git
 	pkgdesc = A modern hardware definition language and toolchain based on Python (formerly nMigen)
 	pkgver = 0.3.r19.g8b85afa
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/amaranth-lang/amaranth
 	arch = any
 	license = BSD
 	checkdepends = python-pytest
-	checkdepends = python-pyvcd
-	checkdepends = python-jinja
 	checkdepends = yosys>0.16
 	checkdepends = symbiyosys-git
 	checkdepends = yices
@@ -15,10 +13,9 @@ pkgbase = python-amaranth-git
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	makedepends = python-setuptools-scm
-	makedepends = python-pytest
 	depends = python
-	optdepends = python-pyvcd: for amaranth.pysim
-	optdepends = python-jinja: for amaranth.build
+	depends = python-jinja
+	depends = python-pyvcd
 	optdepends = python-paramiko: for remote builds
 	provides = python-nmigen=0.3.r19.g8b85afa
 	provides = python-amaranth=0.3.r19.g8b85afa

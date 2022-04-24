@@ -3,18 +3,16 @@
 _pkgname=amaranth
 pkgname="python-$_pkgname-git"
 pkgver=0.3.r19.g8b85afa
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern hardware definition language and toolchain based on Python (formerly nMigen)"
 arch=(any)
 url="https://github.com/amaranth-lang/amaranth"
 license=('BSD')
-depends=('python')
-makedepends=('git' 'python-wheel' 'python-setuptools' 'python-setuptools-scm' 'python-pytest')
-optdepends=('python-pyvcd: for amaranth.pysim'
-            'python-jinja: for amaranth.build'
-            'python-paramiko: for remote builds')
+depends=('python' 'python-jinja' 'python-pyvcd')
+makedepends=('git' 'python-wheel' 'python-setuptools' 'python-setuptools-scm')
+optdepends=('python-paramiko: for remote builds')
 # FIXME: symbiyosys
-checkdepends=('python-pytest' 'python-pyvcd' 'python-jinja' 'yosys>0.16' 'symbiyosys-git' 'yices')
+checkdepends=('python-pytest' 'yosys>0.16' 'symbiyosys-git' 'yices')
 provides=("python-nmigen=$pkgver" "python-$_pkgname=$pkgver")
 conflicts=('python-nmigen' "python-$_pkgname")
 replaces=('python-nmigen-git')
