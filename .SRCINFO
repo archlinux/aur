@@ -1,0 +1,15 @@
+pkgbase = adbtuifm
+	pkgdesc = A TUI File Manager for the Android Debug Bridge (ADB)
+	pkgver = 0.5.8
+	pkgrel = 1
+	url = https://github.com/darkhz/adbtuifm
+	arch = x86_64
+	arch = i686
+	arch = arm64
+	license = MIT
+	makedepends = go
+	depends = android-tools
+	source = adbtuifm-0.5.8.tar.gz::https://github.com/darkhz/adbtuifm/archive/v0.5.8.tar.gz
+	sha256sums = 1483c1dbf1a7bbd610f27d7ad3039f4731ca456fa059b5f84d3bb532e79efc66
+
+pkgname = adbtuifm
