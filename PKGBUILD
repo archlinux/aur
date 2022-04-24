@@ -3,13 +3,13 @@
 _pkgname=amaranth
 pkgname="python-$_pkgname-git"
 pkgver=0.3.r19.g8b85afa
-pkgrel=2
+pkgrel=3
 pkgdesc="A modern hardware definition language and toolchain based on Python (formerly nMigen)"
 arch=(any)
 url="https://github.com/amaranth-lang/amaranth"
 license=('BSD')
 depends=('python' 'python-jinja' 'python-pyvcd')
-makedepends=('git' 'python-wheel' 'python-setuptools' 'python-setuptools-scm')
+makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools-scm')
 optdepends=('python-paramiko: for remote builds')
 # FIXME: symbiyosys
 checkdepends=('python-pytest' 'yosys>0.16' 'symbiyosys-git' 'yices')
@@ -28,7 +28,7 @@ pkgver() {
 build() {
 	cd "$_pkgname"
 
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 check() {
@@ -40,7 +40,7 @@ check() {
 package() {
 	cd "$_pkgname"
 
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir" dist/*.whl
 
 	install -Dm 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
