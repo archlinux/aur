@@ -1,13 +1,13 @@
 pkgbase = ghi
 	pkgdesc = GitHub Issues on the command line
-	pkgver = 1.2.0.r23.g0bf0e97
-	pkgrel = 2
-	url = https://github.com/stephencelis/ghi
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/drazisil/ghi
 	arch = any
 	license = MIT
 	makedepends = git
 	depends = ruby
-	source = git+https://github.com/stephencelis/ghi.git#commit=0bf0e97016b36d8746fabd6dd71f79e94134407f
-	sha256sums = SKIP
+	source = ghi-1.2.1.tar.gz::https://github.com/drazisil/ghi/archive/refs/tags/1.2.1.tar.gz
+	sha256sums = 83fbc4918ddf14df77ef06b28922f481747c6f4dc99b865e15d236b1db98c0b8
 
 pkgname = ghi
