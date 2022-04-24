@@ -1,0 +1,13 @@
+pkgbase = rchat
+	pkgdesc = rautafarmi chat client with Vim keybinds written in Bash
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/speediegamer/rchat
+	arch = any
+	license = GPL3
+	depends = bash
+	depends = sed
+	source = https://github.com/speediegamer/rchat/archive/refs/tags/0.3-r1.tar.gz
+	sha256sums = 342f5a8bcb0575417f14f2c6be97e5e85c34f1ef933d5a019fe1b31c3432bd4c
+
+pkgname = rchat
