@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=VerilogX
+Exec=verilogx
+Icon=verilogx
+Comment=Easily Simulate Verilog Files
+Categories=Education;EDA;Programming;
+Keywords=Verilog;HDL;
+Terminal=false
