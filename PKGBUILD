@@ -1,38 +1,30 @@
-# Maintainer: ValHue <vhuelamo at gmail dot com>
-#
-# Contributor: ValHue <vhuelamo at gmail dot com>
-#
-_pkgname="Shortwave"
-pkgname="shortwave"
-pkgver="2.0.1"
-pkgrel="1"
-epoch="1"
-pkgdesc="Find and listen to internet radio stations."
+# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+
+pkgname=shortwave
+_pkgname=Shortwave
+pkgver=3.0.0
+pkgrel=1
+epoch=1
+pkgdesc="Find and listen to internet radio stations"
 arch=('x86_64' 'aarch64')
-url="https://gitlab.gnome.org/World/${_pkgname}"
+url="https://gitlab.gnome.org/World/Shortwave"
 license=('GPL3')
-depends=('gst-plugins-bad' 'libadwaita' 'libsoup')
-makedepends=('cmake' 'git' 'gst-plugins-base-libs' 'meson' 'rust')
-options=('!emptydirs')
-source=("${_pkgname}-${pkgver}.tar.gz::${url}/-/archive/${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('65dd02f7ad0b286613eae5d2f86adf9e8725ddc7885dd8658b2863cf13c6e594')
+depends=('glib2' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'libadwaita' 'libshumate')
+makedepends=('git' 'meson' 'rust')
+checkdepends=('appstream-glib')
+#options=('!emptydirs')
+source=($url/-/archive/$pkgver/$_pkgname-$pkgver.tar)
+b2sums=('8f1677582815371304595068012019e50b4b9c8c31a351eaeb9bb0443d79ab8c74f21e3809100e6308cfb5bfef5e6465c38957eae45e669c186fe2d32e44bcae')
 
 build() {
-    cd "${_pkgname}-${pkgver}"
-    arch-meson builddir --prefix=/usr
-    ninja -C builddir
+  arch-meson "$_pkgname-$pkgver" build
+  meson compile -C build
 }
 
 check() {
-    cd "${_pkgname}-${pkgver}"
-    ninja -C builddir test
+  meson test -C build
 }
 
 package() {
-    cd "${_pkgname}-${pkgver}"
-    DESTDIR="${pkgdir}" ninja -C builddir install
-
-    install -D -m644 COPYING.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  meson install -C build --destdir "$pkgdir"
 }
-
-# vim: set ts=4 sw=4 et syn=sh ft=sh:
