@@ -7,7 +7,7 @@
 pkgname=spotify-edge
 pkgver=1.1.83.954
 _commit=gd226dfe8
-pkgrel=1
+pkgrel=2
 pkgdesc='A proprietary music streaming service. Edge version.'
 arch=('x86_64')
 url='https://www.spotify.com'
@@ -49,6 +49,9 @@ package() {
 
     # Enable spotify to open URLs from the webapp
     sed -i 's/^Exec=.*/Exec=spotify --uri=%U/' "${pkgdir}"/opt/spotify/spotify.desktop
+
+    # Fix the icon
+    sed -i 's/^Icon=.*/Icon=spotify-client/' "${pkgdir}"/opt/spotify/spotify.desktop
 
     # Desktop Entry
     install -Dm644 "${pkgdir}"/opt/spotify/spotify.desktop "${pkgdir}"/usr/share/applications/spotify.desktop
