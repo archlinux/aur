@@ -1,12 +1,13 @@
+# Maintainer: AlphaJack <alphajack at tuta dot io>
+# Contributor: Andrey Vetrov <vetrov at mail dot ru>
 # Based on the file created for Arch Linux by:
 # Jan de Groot <jgc@archlinux.org>
 # Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Maintainer: Andrey Vetrov <vetrov at mail dot ru>
 
 pkgbase=dbus-x11
 pkgname=(dbus-x11 dbus-x11-docs)
 pkgver=1.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Freedesktop.org message bus system (with x11 autolaunch)"
 url="https://wiki.freedesktop.org/www/Software/dbus/"
 arch=(x86_64)
