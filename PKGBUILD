@@ -5,7 +5,7 @@
 
 pkgname=gauche
 pkgver=0.9.11
-pkgrel=2
+pkgrel=3
 url='https://practical-scheme.net/gauche/'
 arch=(x86_64)
 pkgdesc='R7RS Scheme implementation (includes gosh)'
