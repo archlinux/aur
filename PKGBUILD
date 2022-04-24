@@ -4,7 +4,7 @@
 
 pkgname=osu-lazer-bin
 _pkgname=${pkgname%-bin}
-pkgver=2022.424.0
+pkgver=2022.424.1
 pkgrel=1
 pkgdesc="The future of osu! and the beginning of an open era! Commonly known by the codename osu!lazer. Pew pew."
 arch=("x86_64")
@@ -29,11 +29,11 @@ source=(
 )
 noextract=("osu.AppImage")
 sha256sums=(
-  'fab8f13635b2e350c2d2466b9af630693fdfc3ced09765238a3b55867c2c0bdb'
-  '36f73cfe0a84cd65a8bb54fcde5a01c419b134bee4a88cc92eb4f33236343a10'
-  '30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244'
-  '43aba829341aa5542d7cedf9e95215d553a7db73a65f169f0de5a25aac75b801'
-  'a9a2ea43849e9cb94d40f8668406078b619e96d3b66fc5bce112d9b0e4d6c8a0'
+  "ee5cbcf6b3ba598124ea9c61aa4428e8b196f7802d11466f9cd202fa608cd637"
+  "36f73cfe0a84cd65a8bb54fcde5a01c419b134bee4a88cc92eb4f33236343a10"
+  "30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244"
+  "43aba829341aa5542d7cedf9e95215d553a7db73a65f169f0de5a25aac75b801"
+  "a9a2ea43849e9cb94d40f8668406078b619e96d3b66fc5bce112d9b0e4d6c8a0"
 )
 
 package() {
