@@ -3,19 +3,20 @@
 # Contributor: Jason Chu <jchu@xentac.net>
 
 pkgname=lib32-openal
-pkgver=1.21.1
-pkgrel=2
+pkgver=1.22.0
+pkgrel=1
 pkgdesc="Cross-platform 3D audio library, software implementation (32-bit)"
 arch=(x86_64)
 url="https://github.com/kcat/openal-soft"
 license=(LGPL)
 depends=(lib32-gcc-libs openal)
 makedepends=(lib32-alsa-lib lib32-libpulse lib32-fluidsynth lib32-portaudio
-             lib32-jack git cmake ninja)
+             lib32-jack lib32-pipewire git cmake ninja)
 optdepends=('lib32-fluidsynth: MIDI rendering')
-_commit=ae4eacf147e2c2340cc4e02a790df04c793ed0a9  # tags/1.21.1
+options=(debug)
+_commit=c1c63a27de66cd44ef756b190a73bfa8bc6dbbab  # master
 source=("git+https://github.com/kcat/openal-soft#commit=$_commit")
-sha512sums=('SKIP')
+b2sums=('SKIP')
 
 pkgver() {
   cd openal-soft
@@ -25,11 +26,8 @@ pkgver() {
 prepare() {
   cd openal-soft
 
-  # Missing include
-  git cherry-pick -n 302e88dbf0f10224a5b87be4ce43b3fdd9d20184
-
-  # https://bugs.archlinux.org/task/72729
-  git cherry-pick -n b7ff1de48efda9ad54e6a3b4c1526722c371e832
+  # Fixup missing tag
+  git tag -f 1.22.0 c1c63a27de66cd44ef756b190a73bfa8bc6dbbab
 }
 
 build() {
