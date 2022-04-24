@@ -1,14 +1,16 @@
+# Maintainer: Peter Mattern <pmattern at arcor dot de>
 # Contributor: Øyvind 'Mr.Elendig' Heggstad <mrelendig@har-ikkje.net>
 # Contributor: Evangelos Foutras <evangelos@foutrelis.com>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: FJ <joostef@gmail.com>
 # Contributor: Sebastien Piccand <sebcactus gmail com>
+
 _base=gaupol
 pkgname=${_base}-git
 pkgver=20220221.2510
 pkgrel=1
-pkgdesc="Editor for text-based subtitles (devel tree)"
+pkgdesc="Editor for text-based subtitles"
 arch=('any')
 url="https://otsaloma.io/gaupol"
 license=('GPL')
@@ -25,8 +27,8 @@ optdepends=('python-pyenchant: spell-checking'
   'gst-plugins-bad: extra media codecs'
   'gst-plugins-ugly: extra media codecs'
   'gst-libav: extra media codecs')
-source=(git+https://github.com/otsaloma/$_base)
-sha1sums=('SKIP')
+source=("git+https://github.com/otsaloma/${_base}.git")
+sha256sums=('SKIP')
 install=gaupol.install
 
 pkgver() {

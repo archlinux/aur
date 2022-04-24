@@ -1,5 +1,5 @@
 pkgbase = gaupol-git
-	pkgdesc = Editor for text-based subtitles (devel tree)
+	pkgdesc = Editor for text-based subtitles
 	pkgver = 20220221.2510
 	pkgrel = 1
 	url = https://otsaloma.io/gaupol
@@ -32,7 +32,7 @@ pkgbase = gaupol-git
 	optdepends = gst-libav: extra media codecs
 	provides = gaupol
 	conflicts = gaupol
-	source = git+https://github.com/otsaloma/gaupol
-	sha1sums = SKIP
+	source = git+https://github.com/otsaloma/gaupol.git
+	sha256sums = SKIP
 
 pkgname = gaupol-git
