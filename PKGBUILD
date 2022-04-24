@@ -1,7 +1,8 @@
 pkgname=fusedav-git
 _gitname=fusedav
-pkgver=v2.0.51+1031
+pkgver=2.0.51+1031.r2.g9fc165a
 pkgrel=1
+epoch=1
 arch=('i686' 'x86_64')
 pkgdesc="A webdav filesystem based on FUSE"
 url="https://github.com/pantheon-systems/fusedav/"
@@ -14,8 +15,7 @@ sha256sums=('SKIP')
 
 pkgver() {
   cd $_gitname
-  # Use the tag of the last commit
-  git describe --always | sed 's|-|.|g'
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 
