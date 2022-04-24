@@ -1,8 +1,8 @@
-# Maintainer: Márcio Sousa Rocha <marciosr10@gmail.com>
+# Maintainer:
  
 pkgname=irpf
 pkgver=2022.1.3
-pkgrel=1
+pkgrel=2
 license=('custom')
  
 arch=(any)
