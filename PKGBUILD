@@ -2,7 +2,7 @@
 
 pkgname=ha-glue
 pkgver=1.0.12
-pkgrel=5
+pkgrel=6
 pkgdesc="A set of libraries, tools and utilities suitable for the Heartbeat/Pacemaker cluster stack."
 arch=('i686' 'x86_64')
 url="http://linux-ha.org/wiki/Cluster_Glue"
@@ -15,11 +15,8 @@ depends=('net-snmp'
 	'curl' 
 	'glib2'
 	'asciidoc')
-source=("http://hg.linux-ha.org/glue/archive/glue-${pkgver}.tar.bz2"
-		"ha-glue.install")
-md5sums=('ec620466d6f23affa3b074b72bca7870'
-         'b3e3b0e1f6d0e1e6748c1d463d9f3bf4')
-install='ha-glue.install'
+source=("http://hg.linux-ha.org/glue/archive/glue-${pkgver}.tar.bz2")
+md5sums=('ec620466d6f23affa3b074b72bca7870')
 options=('!libtool' 'docs')
 
 build() {
@@ -58,6 +55,8 @@ build() {
 		--with-daemon-group=${_CLUSTER_GROUP} \
 		--enable-fatal-warnings=no
 	#sed -i 's/lib64\ //g' configure.ac
+	# Fight unused direct deps
+	sed -i -e "s| -shared | $LDFLAGS\0 |g" -e "s|    if test \"\$export_dynamic\" = yes && test -n \"\$export_dynamic_flag_spec\"; then|      func_append compile_command \" $LDFLAGS\"\n      func_append finalize_command \" $LDFLAGS\"\n\0|" libtool
 	make
 }
 
@@ -76,5 +75,10 @@ package() {
 		sed -i 's:/usr/bin/env python$:/usr/bin/env python2:g' ${py}
 	done
 	#end python path correction
+	install -Dm644 /dev/null "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+	cat>"$pkgdir/usr/lib/sysusers.d/$pkgname.conf"<<-EOF
+		g haclient 189
+		u hacluster 189:189 "cluster user" /var/lib/heartbeat/cores/hacluster /sbin/nologin
+	EOF
 }
 

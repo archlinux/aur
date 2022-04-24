@@ -1,7 +1,7 @@
 _CLUSTER_USER=hacluster
 _CLUSTER_GROUP=haclient
-_DGID=666
-_DUID=666
+_DGID=189
+_DUID=189
 
 pre_install() {
 
