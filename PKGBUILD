@@ -4,7 +4,7 @@
 
 pkgname=aerc-git
 _pkgname=aerc
-pkgver=0.6.0.r21.gbc593ac
+pkgver=0.9.0.r40.geb7e45d
 pkgrel=1
 pkgdesc='Email Client for your Terminal'
 arch=('x86_64')
@@ -17,6 +17,7 @@ provides=('aerc')
 conflicts=('aerc')
 source=("${_pkgname}::git+https://git.sr.ht/~rjarry/${_pkgname}")
 sha512sums=('SKIP')
+options=('!buildflags')
 
 pkgver () {
     cd "${srcdir}/${_pkgname}"
