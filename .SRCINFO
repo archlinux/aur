@@ -1,6 +1,6 @@
 pkgbase = fortran_stdlib
 	pkgdesc = Fortran standard library
-	pkgver = 0.2.0
+	pkgver = 0.2.1
 	pkgrel = 1
 	url = https://github.com/fortran-lang/stdlib
 	arch = i686
@@ -12,7 +12,7 @@ pkgbase = fortran_stdlib
 	makedepends = ninja
 	depends = gcc-libs
 	options = strip
-	source = fortran_stdlib-0.2.0.tar.gz::https://github.com/fortran-lang/stdlib/archive/refs/tags/v0.2.0.tar.gz
-	sha256sums = eccb7a1027b3055699e05e2a55cce9802c17292355380cfa5365dedd8ebe754d
+	source = fortran_stdlib-0.2.1.tar.gz::https://github.com/fortran-lang/stdlib/archive/refs/tags/v0.2.1.tar.gz
+	sha256sums = add8f1fa8d36757a9fef4141ebeec2386b70728ba6bb3d15e99221b9cf442f8d
 
 pkgname = fortran_stdlib
