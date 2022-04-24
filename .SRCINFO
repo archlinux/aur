@@ -1,0 +1,16 @@
+pkgbase = gauche-dbd-pg
+	pkgdesc = Gauche Scheme Database Drivers for PostgreSQL
+	pkgver = 0.2.1_24f3969
+	pkgrel = 1
+	url = https://github.com/kahua/Gauche-dbd-pg
+	arch = i686
+	arch = x86_64
+	license = BSD
+	makedepends = make
+	makedepends = autoconf
+	depends = gauche
+	depends = postgresql-libs
+	source = https://github.com/kahua/Gauche-dbd-pg/tarball/24f3969
+	sha256sums = 973abb6837193762a1a7bf7fd0997b05a9aa0ab3442df8a664050a6e2a024bfa
+
+pkgname = gauche-dbd-pg
