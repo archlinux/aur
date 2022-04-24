@@ -1,17 +1,18 @@
-# Maintainer: xiretza <xiretza+aur@xiretza.xyz>
+# Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
+# Contributor: xiretza <xiretza+aur@xiretza.xyz>
 _pkgname=Red-Lavalink
 pkgname=python-red-lavalink
-pkgver=0.8.1
+pkgver=0.11.0rc0
 pkgrel=1
 pkgdesc="Lavalink client library used in Red-DiscordBot"
 arch=(any)
 url="https://github.com/Cog-Creators/Red-Lavalink"
 license=('GPL3')
-depends=('python' 'python-aiohttp' 'python-discord')
+depends=('python-discord' 'python-red-commons')
 makedepends=('python-setuptools')
-checkdepends=('python-pytest' 'python-pytest-asyncio')
+checkdepends=('python-pytest-asyncio')
 source=("$_pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('36cb0a27d45f7b5c30c54b08303df44d6133fd1f23e814bfd1b63605fc72e39a')
+sha256sums=('59116b7b260472c76e6d40542a2c85fc099857de280954f52b69e7b9a51eba40')
 
 build() {
 	cd "$_pkgname-$pkgver"
