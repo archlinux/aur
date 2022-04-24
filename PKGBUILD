@@ -1,5 +1,5 @@
 pkgname=rpmlauncher-bin
-pkgver=1.0.6+898
+pkgver=1.0.0+23
 pkgrel=1
 pkgdesc="A better Minecraft Launcher that supports cross-platform and many functionalities for you to explore! "
 url="https://www.rpmtw.com/"
