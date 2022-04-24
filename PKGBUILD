@@ -9,7 +9,7 @@
 buildarch=4
 
 pkgname=mister-bin
-pkgver=20220224
+pkgver=20220413
 pkgrel=1
 pkgdesc="Userspace binary that manages MiSTer on the ARM side, prebuilt"
 arch=('armv7h')
@@ -22,18 +22,20 @@ optdepends=('linux-mister: MiSTer userspace probably needs custom kernel drivers
             'mister-menu: MiSTer needs an FPGA core to talk to')
 source=("https://github.com/MiSTer-devel/Main_MiSTer/raw/master/releases/MiSTer_${pkgver}"
         'mister-bin.install'
-        'MiSTer.service')
-sha256sums=('b910469bfebbc894c0f0672b75afbe761efefde297c5d5ea05df940a40a27d10'
+        'MiSTer.service'
+        'tmpfiles.d')
+sha256sums=('565c2a9b711f52a7e8805c5629c81ff71548a2ad27cd5673f645dafea0d2aaa3'
             'cab7d3dfc8b0fd15deaef00dd5931b66da3a59e721fba6f957de7f4a915b8c98'
-            '6f9a9a14420078c5fc5afeab364aba4a0be55992e95b897b913ed76e4fbe2971')
+            '6f9a9a14420078c5fc5afeab364aba4a0be55992e95b897b913ed76e4fbe2971'
+            '4e786d340f81762878251e02288630beb7e6caa0ec8a7d7f9e13a5dcdb96f342')
 
-package_mister-bin() {
+package() {
   install=mister-bin.install
 
   install MiSTer_${pkgver} -m744 -D "${pkgdir}"/usr/bin/MiSTer
   install MiSTer.service -Dt "${pkgdir}"/usr/lib/systemd/system
 
-  mkdir -p "${pkgdir}"/media/fat
+  install -Dm644 ../tmpfiles.d "${pkgdir}"/usr/lib/tmpfiles.d/mister.conf
 
   # TODO: add MiSTer.ini?
 }

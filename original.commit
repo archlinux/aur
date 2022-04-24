@@ -1,6 +1,6 @@
-This is an automatically generated copy of the package, originally from https://github.com/amstan/MiSTerArch:
-commit ff89507f658578f375c581cb2b63de4845bdfb5f
+This is an automatically generated copy of the package, originally from https://github.com/MiSTerArch/PKGBUILDs:
+commit a59d960572e01b71906e8bf19f7a7b3cd04d99fa
 Author: Alexandru M Stan <alex@hypertriangle.com>
-Date:   Sun Feb 27 13:32:36 2022 -0800
+Date:   Sat Apr 16 17:59:04 2022 -0700
 
-    mister-bin to 20220224-1
+    mister-bin to 20220413-1
