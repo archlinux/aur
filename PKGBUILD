@@ -1,6 +1,6 @@
 # Maintainer: GG weebcyberpunk@gmail.com
 pkgname=todo-stupid-git
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="The stupid todo list"
 arch=("x86_64")
