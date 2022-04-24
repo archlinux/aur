@@ -19,7 +19,6 @@ pkgbase = gimp-brush-max-512
 	depends = desktop-file-utils
 	depends = gegl
 	depends = glib-networking
-	depends = gvfs
 	depends = hicolor-icon-theme
 	depends = openjpeg2
 	depends = lcms2
@@ -43,6 +42,7 @@ pkgbase = gimp-brush-max-512
 	optdepends = alsa-lib: for MIDI event controller module
 	optdepends = curl: for URI support
 	optdepends = ghostscript: for postscript support
+	optdepends = gvfs: for HTTP/S support (and many other schemes)
 	provides = gimp=2.10.30
 	conflicts = gimp
 	replaces = gimp-plugin-wavelet-decompose

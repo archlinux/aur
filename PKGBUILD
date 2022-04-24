@@ -10,7 +10,7 @@ pkgdesc='Gimp with easy-to-handle tool sizes'
 url='https://www.gimp.org/'
 arch=('x86_64')
 license=('GPL' 'LGPL')
-depends=('babl' 'dbus-glib' 'desktop-file-utils' 'gegl' 'glib-networking' 'gvfs' 'hicolor-icon-theme'
+depends=('babl' 'dbus-glib' 'desktop-file-utils' 'gegl' 'glib-networking' 'hicolor-icon-theme'
          'openjpeg2' 'lcms2' 'libheif' 'libexif' 'libgudev' 'libmng' 'libmypaint' 'librsvg' 'libwebp'
          'libwmf' 'libxmu' 'libxpm' 'mypaint-brushes1' 'openexr' 'poppler-data' 'gtk2' 'graphviz')
 makedepends=('alsa-lib' 'curl' 'ghostscript' 'gtk-doc' 'intltool' 'iso-codes' 'poppler-glib')
@@ -18,7 +18,8 @@ optdepends=('gutenprint: for sophisticated printing only as gimp has built-in cu
             'poppler-glib: for pdf support'
             'alsa-lib: for MIDI event controller module'
             'curl: for URI support'
-            'ghostscript: for postscript support')
+            'ghostscript: for postscript support'
+            'gvfs: for HTTP/S support (and many other schemes)')
 conflicts=('gimp')
 provides=("${_pkgname}=${pkgver}")
 replaces=('gimp-plugin-wavelet-decompose')
