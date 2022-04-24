@@ -21,6 +21,7 @@ pkgbase = python-spotdl
 	depends = python-unidecode
 	depends = python-pycryptodomex
 	depends = python-websockets
+	depends = python-brotli
 	provides = python-spotdl
 	provides = spotdl
 	options = strip

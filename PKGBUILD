@@ -26,7 +26,8 @@ depends=('python'
 	'python-requests'
 	'python-unidecode'
 	'python-pycryptodomex'
-	'python-websockets')
+	'python-websockets'
+	'python-brotli')
 makedepends=('python-setuptools')
 provides=("$pkgname" "spotdl")
 options=(strip emptydirs zipman)
