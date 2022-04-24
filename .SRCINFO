@@ -1,6 +1,6 @@
 pkgbase = upplay-git
 	pkgdesc = A Qt-based UPnP audio Control point
-	pkgver = 1.4.8.r1.gf256b6a
+	pkgver = 1.4.10.r73.g4a95acc
 	pkgrel = 1
 	url = https://www.lesbonscomptes.com/upplay/
 	arch = x86_64
@@ -9,6 +9,7 @@ pkgbase = upplay-git
 	makedepends = qt5-script
 	depends = libupnpp
 	depends = qt5-webkit
+	depends = qtmpris
 	depends = jsoncpp
 	provides = upplay
 	conflicts = upplay
@@ -16,4 +17,3 @@ pkgbase = upplay-git
 	sha256sums = SKIP
 
 pkgname = upplay-git
-
