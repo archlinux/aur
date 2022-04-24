@@ -27,19 +27,15 @@ validpgpkeys=()
 
 pkgver() {
 	cd "${_pkgname}"
-	printf "v.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
-build() {
-	cd AnnoyingMarkdown
-	sh build.sh
+	printf "v.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
 	cd AnnoyingMarkdown
-	# git checkout stable
 
-	sh install.sh
+	chmod +x build.sh
+	./build.sh install
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
