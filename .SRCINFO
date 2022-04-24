@@ -1,0 +1,21 @@
+pkgbase = ortfo-bin
+	pkgdesc = The GUI for ortfo, a portfolio manager (pre-built binary)
+	pkgver = 0.1.0.alpha.2
+	pkgrel = 1
+	url = https://github.com/ortfo/gui
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = curl
+	depends = gtk3
+	depends = webkit2gtk
+	provides = ortfo
+	conflicts = ortfo
+	conflicts = ortfo-git
+	source = https://github.com/ortfo/gui/releases/download/v0.1.0-alpha.2/ortfo-linux
+	source = https://github.com/ortfo/gui/raw/v0.1.0-alpha.2/LICENSE
+	source = https://github.com/ortfo/gui/raw/v0.1.0-alpha.2/README.md
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = ortfo-bin
