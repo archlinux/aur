@@ -2,23 +2,23 @@
 # Contributor:  Joakim Hernberg <jbh@alchemy.lu>
 
 pkgbase=linux-rt-lts
-pkgver=5.15.31.38.realtime1
+pkgver=5.15.34.40.realtime1
 pkgrel=1
 pkgdesc='Linux RT LTS'
 arch=(x86_64)
 url="https://gitlab.archlinux.org/dvzrv/linux-rt-lts/-/commits/v$pkgver"
 license=(GPL2)
 makedepends=(bc git graphviz imagemagick kmod libelf pahole python-sphinx
-python-sphinx_rtd_theme xmlto)
+python-sphinx_rtd_theme texlive-latexextra xmlto)
 options=(!strip)
 source=(
   git+https://gitlab.archlinux.org/dvzrv/linux-rt-lts.git/#tag=v$pkgver?signed
   config
 )
 sha512sums=('SKIP'
-            'ff6586b973020e13635b8889279ed09dbd827b6405c311543f401f801138dff683d3c8cf596794421f5f822c9858807c17facd769898f907307ddadee292d5a3')
+            '6f13259c004e19632cf78cb6cf93eb1ccb6d11e16ec89ac685e5826428703dadffcf2bfe06d8441513446fdc9eea065a68ca9147fbdddc30ef8c5abb015c7ade')
 b2sums=('SKIP'
-        'ef4e17f76d8545fa6d268fc7367e8e8b1fddbee1c2315fb7d97a7a5822c3f0df4b179f3b561c070d3f8deadd65dfef46d20fa83eae389482bef24bf8eed8aa62')
+        '4d18ba3285200c6ec10061c02d48fc01cc964fc97e551a66abceafd9daaef3823581333912cbc1d39fb81cbc5ca5b39b7ca8f717334d5986b6fc1ab20da4cf0c')
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@linuxfoundation.org>
   '5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73'  # Steven Rostedt (Der Hacker) <rostedt@goodmis.org>
@@ -66,7 +66,7 @@ build() {
 _package() {
   pkgdesc="The $pkgdesc kernel and modules"
   depends=(coreutils initramfs kmod)
-  optdepends=('crda: to set the correct wireless channels of your country'
+  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 
@@ -83,7 +83,8 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
   rm "$modulesdir"/{source,build}

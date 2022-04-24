@@ -1,8 +1,8 @@
 pkgbase = linux-rt-lts
 	pkgdesc = Linux RT LTS
-	pkgver = 5.15.31.38.realtime1
+	pkgver = 5.15.34.40.realtime1
 	pkgrel = 1
-	url = https://gitlab.archlinux.org/dvzrv/linux-rt-lts/-/commits/v5.15.31.38.realtime1
+	url = https://gitlab.archlinux.org/dvzrv/linux-rt-lts/-/commits/v5.15.34.40.realtime1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -14,24 +14,25 @@ pkgbase = linux-rt-lts
 	makedepends = pahole
 	makedepends = python-sphinx
 	makedepends = python-sphinx_rtd_theme
+	makedepends = texlive-latexextra
 	makedepends = xmlto
 	options = !strip
-	source = git+https://gitlab.archlinux.org/dvzrv/linux-rt-lts.git/#tag=v5.15.31.38.realtime1?signed
+	source = git+https://gitlab.archlinux.org/dvzrv/linux-rt-lts.git/#tag=v5.15.34.40.realtime1?signed
 	source = config
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha512sums = SKIP
-	sha512sums = ff6586b973020e13635b8889279ed09dbd827b6405c311543f401f801138dff683d3c8cf596794421f5f822c9858807c17facd769898f907307ddadee292d5a3
+	sha512sums = 6f13259c004e19632cf78cb6cf93eb1ccb6d11e16ec89ac685e5826428703dadffcf2bfe06d8441513446fdc9eea065a68ca9147fbdddc30ef8c5abb015c7ade
 	b2sums = SKIP
-	b2sums = ef4e17f76d8545fa6d268fc7367e8e8b1fddbee1c2315fb7d97a7a5822c3f0df4b179f3b561c070d3f8deadd65dfef46d20fa83eae389482bef24bf8eed8aa62
+	b2sums = 4d18ba3285200c6ec10061c02d48fc01cc964fc97e551a66abceafd9daaef3823581333912cbc1d39fb81cbc5ca5b39b7ca8f717334d5986b6fc1ab20da4cf0c
 
 pkgname = linux-rt-lts
 	pkgdesc = The Linux RT LTS kernel and modules
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
-	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE
