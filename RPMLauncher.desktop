@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=RPMLauncher
+Icon=/opt/RPMLauncher/data/flutter_assets/assets/images/Logo.png
+Comment="A better Minecraft Launcher that supports cross-platform and many functionalities for you to explore! "
+Exec=/opt/RPMLauncher/RPMLauncher --origin archUserRepository
+Categories=Game;
