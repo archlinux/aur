@@ -1,7 +1,8 @@
-# Maintainer: Marcos Gutiérrez Alonso <margual56@gmail.com>
+# Maintainer: Amber <amber@mail.cyborgtrees.com>
+# Contributor: Marcos Gutiérrez Alonso <margual56@gmail.com>
 
 pkgname=radio-cli-git
-pkgver=0.2.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A simple radio cli for listening to your favourite streams from the console"
 arch=('i686' 'x86_64')
@@ -11,7 +12,7 @@ license=('GPL2')
 depends=('mpv')
 makedepends=('git' 'cargo')
 checkdepends=()
-optdepends=()
+optdepends=('youtube-dl')
 
 source=("radio-cli::git+${url}.git")
 md5sums=('SKIP')

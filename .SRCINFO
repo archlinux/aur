@@ -1,6 +1,6 @@
 pkgbase = radio-cli-git
 	pkgdesc = A simple radio cli for listening to your favourite streams from the console
-	pkgver = 0.2.0
+	pkgver = 2.0.0
 	pkgrel = 1
 	url = https://github.com/margual56/radio-cli
 	arch = i686
@@ -9,6 +9,7 @@ pkgbase = radio-cli-git
 	makedepends = git
 	makedepends = cargo
 	depends = mpv
+	optdepends = youtube-dl
 	source = radio-cli::git+https://github.com/margual56/radio-cli.git
 	md5sums = SKIP
 
