@@ -3,7 +3,7 @@
 pkgname=rakubrew
 pkgver=28
 pkgrel=1
-pkgdesc='Manage Raku (Formarly Perl 6+) installations in your $HOME'
+pkgdesc='Manage Raku (Formarly Perl 6+) installations in your HOME folder'
 arch=('any')
 url="https://rakubrew.org/"
 license=('MIT')
@@ -21,7 +21,7 @@ build() {
   cd App-Rakubrew-$pkgver
   unset PERL5LIB PERL_MM_OPT PERL_MB_OPT PERL_LOCAL_LIB_ROOT
   export PERL_MM_USE_DEFAULT=1 MODULEBUILDRC=/dev/null
-  perl Makefile.PL PREFIX=$pkgdir/usr
+  perl Makefile.PL PREFIX="$pkgdir/usr"
   make
 }
 
