@@ -1,0 +1,13 @@
+pkgbase = spotifatius
+	pkgdesc = A simple Spotify CLI primarily made for monitoring what songs you're listening to and displaying that in your bar of choice like waybar or polybar.
+	pkgver = 0.1.0
+	pkgrel = 2
+	url = https://github.com/AndreasBackx/spotifatius
+	arch = any
+	license = MIT
+	makedepends = cargo
+	source = spotifatius-0.1.0.tar.gz::https://github.com/AndreasBackx/spotifatius/archive/0.1.0.tar.gz
+	sha256sums = 62c4dcd367e2c74781863cb5f91300525c5f7e452d79865bb7cda6ef75b5be20
+
+pkgname = spotifatius
+
