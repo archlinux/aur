@@ -1,7 +1,7 @@
 pkgbase = show-git
 	pkgdesc = Realtime GLSL shader wallpapers
 	pkgver = r59.9657faf
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/danielfvm/Show
 	arch = any
 	license = GPL
@@ -11,7 +11,7 @@ pkgbase = show-git
 	depends = imlib2
 	depends = glew
 	depends = xorg-xrandr
-	source = git://github.com/danielfvm/Show.git
+	source = git+https://github.com/danielfvm/Show.git
 	sha256sums = SKIP
 
 pkgname = show-git
