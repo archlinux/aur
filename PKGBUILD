@@ -28,7 +28,7 @@ depends=(
   suil
   twolame
   vamp-plugin-sdk
-  #wxgtk3
+  #wxgtk3-dev
 )
 makedepends=(
   alsa-lib
