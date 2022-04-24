@@ -2,7 +2,6 @@ pkgbase = gdm-settings-git
 	pkgdesc = A settings app for Gnome's Login Manager (GDM)
 	pkgver = 0.5.1+0+gf0d828d
 	pkgrel = 1
-	epoch = 1
 	url = https://github.com/realmazharhussain/gdm-settings
 	arch = any
 	license = AGPL3
