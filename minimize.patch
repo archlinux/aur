@@ -366,10 +366,10 @@ index ee1ae0bf6..ba69b7d58 100644
  	$(NULL)
  
 diff --git a/modules/launcher/Makefile.am b/modules/launcher/Makefile.am
-index d336374c5..4528be19a 100644
+index d336374c5..81cf81395 100644
 --- a/modules/launcher/Makefile.am
 +++ b/modules/launcher/Makefile.am
-@@ -25,15 +25,9 @@ org_gnome_gnome_panel_launcher_la_SOURCES = \
+@@ -25,15 +25,10 @@ org_gnome_gnome_panel_launcher_la_SOURCES = \
  	gp-custom-launcher-applet.h \
  	gp-editor.c \
  	gp-editor.h \
@@ -380,14 +380,14 @@ index d336374c5..4528be19a 100644
  	gp-launcher-applet.h \
 -	gp-launcher-button.c \
 -	gp-launcher-button.h \
--	gp-launcher-module.c \
+ 	gp-launcher-module.c \
 -	gp-launcher-properties.c \
 -	gp-launcher-properties.h \
  	gp-launcher-utils.c \
  	gp-launcher-utils.h \
  	$(BUILT_SOURCES) \
 diff --git a/po/POTFILES.in b/po/POTFILES.in
-index fd6cfd5cb..e59eb4f78 100644
+index fd6cfd5cb..004cb4f9a 100644
 --- a/po/POTFILES.in
 +++ b/po/POTFILES.in
 @@ -1,7 +1,5 @@
@@ -398,7 +398,7 @@ index fd6cfd5cb..e59eb4f78 100644
  data/org.gnome.gnome-panel.applet.window-list.gschema.xml
  data/org.gnome.gnome-panel.applet.workspace-switcher.gschema.xml
  data/org.gnome.gnome-panel.gschema.xml
-@@ -23,60 +21,21 @@ gnome-panel/panel-bindings.c
+@@ -23,60 +21,22 @@ gnome-panel/panel-bindings.c
  gnome-panel/panel.c
  gnome-panel/panel-context-menu.c
  gnome-panel/panel-layout.c
@@ -435,7 +435,7 @@ index fd6cfd5cb..e59eb4f78 100644
  modules/launcher/gp-icon-name-chooser.c
  modules/launcher/gp-icon-name-chooser.ui
 -modules/launcher/gp-launcher-applet.c
--modules/launcher/gp-launcher-module.c
+ modules/launcher/gp-launcher-module.c
 -modules/launcher/gp-launcher-properties.c
  modules/launcher/gp-launcher-utils.c
  modules/launcher/launcher-menu.ui
