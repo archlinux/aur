@@ -1,0 +1,17 @@
+pkgbase = reple
+	pkgdesc = Interactive REPL for executable-based software toolchains
+	pkgver = 0.1.0.2
+	pkgrel = 1
+	url = https://github.com/BenBrock/reple
+	arch = any
+	license = custom:BSD
+	makedepends = python-pip
+	depends = python-pygments
+	depends = python-prompt_toolkit
+	noextract = reple-0.1.0.2-py3-none-any.whl
+	source = https://files.pythonhosted.org/packages/07/fc/579c3853db5ce2676ed198328d417cac18a2cd70dec2ef8accca37d88778/reple-0.1.0.2-py3-none-any.whl
+	source = https://github.com/BenBrock/reple/raw/cf704a1424dc8c79f70586ed90388f3fbe2be24a/LICENSE
+	b2sums = 0324875e2f5ac561ebd531dec4b427ef3b536a2c0adb044583bb8204bb4a2d68ab97173e4bf8afd6665d8af335f1c38d93ca0fe0b207931bf23c82c1bab56054
+	b2sums = 26e255de7269614724afe5417c6019dca78140dbbcd7ebfced7607e0ea163b60e8839710bc795a193e70ad73067643714e310a48b764f4eaca89ae1bcc256310
+
+pkgname = reple
