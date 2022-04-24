@@ -1,14 +1,14 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 pkgname=go2tv
 pkgver=1.10.1
-pkgrel=1
+pkgrel=2
 pkgdesc='cast your videos to UPnP/DLNA MediaRenderer'
 arch=('x86_64')
 url="https://github.com/alexballas/${pkgname}"
 license=('MIT')
 depends=('libglvnd')
-makedepends=('go')
-source=("${url}/archive/v${pkgver}.tar.gz")
+makedepends=('go' 'libxcursor' 'libxrandr' 'libxinerama' 'libxi')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 
 build() {
   export CGO_CPPFLAGS="${CPPFLAGS}"
