@@ -1,3 +1,3 @@
-f /etc/isso.conf 0640 root isso
+f /etc/isso.cfg 0640 root isso
 d /var/lib/isso 0700 isso isso
 Z /var/lib/isso - isso isso

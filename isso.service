@@ -5,7 +5,8 @@ After=network.target network-online.target nss-lookup.target
 [Service]
 User=isso
 Group=isso
-ExecStart=/usr/bin/isso -c /etc/isso.conf run
+WorkingDirectory=/var/lib/isso/
+ExecStart=/usr/bin/isso -c /etc/isso.cfg run
 
 [Install]
 WantedBy=multi-user.target
