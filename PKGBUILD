@@ -10,7 +10,7 @@ license=('GPL3')
 depends=("log-console>=1.18-1")
 _srcprefix="https://raw.githubusercontent.com/$author/$pkgname/$branch"
 source=("$_srcprefix/$pkgname")
-md5sums=("520684ecb0d62c681886092e0584bf4a")
+md5sums=("1015ed26e90ac5704b8ec022a371fbcd")
 
 prepare()
 {
