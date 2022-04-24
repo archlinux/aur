@@ -6,11 +6,11 @@ pkgrel=1
 pkgdesc="Ferium is an easy to use CLI program for downloading and updating Minecraft mods from Modrinth, CurseForge, and GitHub Releases."
 arch=("x86_64")
 url="https://github.com/theRookieCoder/ferium"
-license=('MPL')
+license=('MPL-2.0')
 source=("https://github.com/theRookieCoder/ferium/releases/download/v$pkgver/ferium-linux-gnu.zip"
 	"ferium.desktop")
-md5sums=('SKIP'
-	'SKIP')
+sha256sums=('4366a25ead91ab8d408587a6d9eaf118be3d4f1a6aa613cecc529e462cfa95a6'
+            '594cdfb846ab9cbac0fd781a445501ebb1e3f491fd21202bf3733b00f2151018')
 
 package() {
 	cd "$srcdir"
