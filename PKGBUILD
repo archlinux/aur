@@ -6,7 +6,7 @@
 
 pkgname=beebeep
 pkgver=5.8.4
-pkgrel=4
+pkgrel=5
 pkgdesc='Secure LAN messenger and file sender'
 arch=('x86_64')
 url='https://www.beebeep.net/'
