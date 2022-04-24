@@ -1,5 +1,5 @@
 pkgbase = spotify-1.1.42-deb
-	pkgdesc = A proprietary music streaming service
+	pkgdesc = A proprietary music streaming service version 1.1.42.622
 	pkgver = 1.1.42.622
 	pkgrel = 1
 	url = https://www.spotify.com
