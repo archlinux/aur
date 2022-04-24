@@ -8,9 +8,9 @@ arch=('any')
 url="https://github.com/AndreasBackx/spotifatius"
 license=('MIT')
 depends=()
-makedepends=('cargo', 'cmake')
+makedepends=('cargo' 'cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AndreasBackx/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('62c4dcd367e2c74781863cb5f91300525c5f7e452d79865bb7cda6ef75b5be20')
+sha256sums=('577662b867893451fd5d2d99196000d2aae83520a6c3802288d0110694992fb4')
 
 build() {
   cd "$pkgname-$pkgver"
