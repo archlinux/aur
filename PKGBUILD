@@ -3,7 +3,7 @@
 
 pkgname=gambit-c
 pkgver=4.9.4
-pkgrel=2
+pkgrel=3
 pkgdesc='Efficient implementation of the Scheme programming language'
 arch=(x86_64)
 url='https://github.com/gambit/gambit'
