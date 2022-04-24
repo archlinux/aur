@@ -383,6 +383,19 @@ index d336374c5..929ffcd1c 100644
  	gp-launcher-utils.c \
  	gp-launcher-utils.h \
  	$(BUILT_SOURCES) \
+diff --git a/modules/launcher/gp-custom-launcher-applet.c b/modules/launcher/gp-custom-launcher-applet.c
+index d29724686..5fffbe2cc 100644
+--- a/modules/launcher/gp-custom-launcher-applet.c
++++ b/modules/launcher/gp-custom-launcher-applet.c
+@@ -34,7 +34,7 @@ struct _GpCustomLauncherApplet
+ 
+ G_DEFINE_TYPE (GpCustomLauncherApplet,
+                gp_custom_launcher_applet,
+-               GP_TYPE_LAUNCHER_APPLET)
++               GP_TYPE_CUSTOM_LAUNCHER_APPLET)
+ 
+ static LauncherData *
+ launcher_data_new (GpInitialSetupDialog *dialog)
 diff --git a/modules/launcher/gp-launcher-module.c b/modules/launcher/gp-launcher-module.c
 index 336918319..197951e1d 100644
 --- a/modules/launcher/gp-launcher-module.c
