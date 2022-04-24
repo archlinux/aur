@@ -1,6 +1,6 @@
 pkgbase = stest
 	pkgdesc = filter a file list by properties (replacement for dmenu stest)
-	pkgver = 1.9b71496
+	pkgver = 1.d88d470
 	pkgrel = 1
 	url = http://github.com/Ferk/stest
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = stest
 	makedepends = git
 	provides = stest
 	conflicts = dmenu<=9
-	source = git://github.com/Ferk/stest.git
+	source = git+https://github.com/Ferk/stest.git
 	md5sums = SKIP
 
 pkgname = stest
-

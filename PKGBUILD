@@ -1,7 +1,7 @@
 # Maintainer: ferk <ferkiwi @at gmail dot com>
 
 pkgname=stest
-pkgver=1.9b71496
+pkgver=1.d88d470
 pkgrel=1
 pkgdesc="filter a file list by properties (replacement for dmenu stest)"
 arch=('any')
@@ -11,7 +11,7 @@ depends=()
 makedepends=('git')
 conflicts=('dmenu<=9')
 provides=('stest')
-source=("git://github.com/Ferk/stest.git")
+source=("git+https://github.com/Ferk/stest.git")
 md5sums=('SKIP')
 
 _gitroot="stest"
