@@ -3,7 +3,7 @@
 
 pkgname=shhmsg
 pkgver=1.4.2
-pkgrel=4
+pkgrel=5
 pkgdesc="Library for displaying messages"
 arch=('x86_64')
 url="https://shh.thathost.com/pub-unix"
@@ -15,6 +15,7 @@ md5sums=('30cab93040d2892539847437b7246b8b')
 build() {
   cd $pkgname-$pkgver
 
+  CFLAGS+=' -ffat-lto-objects'
   make OPTIM="$CFLAGS" dep
   make OPTIM="$CFLAGS"
 }
