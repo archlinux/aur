@@ -1,0 +1,19 @@
+pkgbase = desync-git
+	pkgdesc = Alternative casync implementation in Go
+	pkgver = r1
+	pkgrel = 1
+	url = https://github.com/folbricht/desync
+	arch = i686
+	arch = x86_64
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = BSD
+	makedepends = go
+	makedepends = git
+	provides = desync
+	source = git+https://github.com/folbricht/desync.git
+	md5sums = SKIP
+
+pkgname = desync-git
