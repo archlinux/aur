@@ -1,7 +1,7 @@
 pkgbase = gnome-shell-extension-windowisready_remover
 	pkgdesc = GNOME shell extension that removes the annoying "Windows is Ready" notification.
 	pkgver = 18
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nunofarruca/WindowIsReady_Remover
 	arch = any
 	license = Apache-2.0

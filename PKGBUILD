@@ -3,7 +3,7 @@
 pkgname=gnome-shell-extension-windowisready_remover
 _pkgname=WindowIsReady_Remover
 pkgver=18
-pkgrel=1
+pkgrel=2
 pkgdesc='GNOME shell extension that removes the annoying "Windows is Ready" notification.'
 arch=(any)
 url='https://github.com/nunofarruca/WindowIsReady_Remover'
@@ -16,7 +16,6 @@ package() {
     _uuid="windowIsReady_Remover@nunofarruca@gmail.com"
     _destdir="$pkgdir/usr/share/gnome-shell/extensions/$_uuid"
 
-    install --directory "$_destdir/schemas"
+    install --directory $_destdir
     install --target-directory "$_destdir" --mode 644 metadata.json *.js
-    install --target-directory "$_destdir/schemas" --mode 644 schemas/*
 }
