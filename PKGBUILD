@@ -2,7 +2,7 @@
 
 pkgname=xdp-tools
 pkgver=1.2.3
-pkgrel=4
+pkgrel=5
 pkgdesc='Utilities for use with XDP and libxdp'
 depends=('libelf' 'linux-api-headers' 'libbpf' 'libpcap.so')
 url='https://github.com/xdp-project/xdp-tools'
@@ -34,6 +34,13 @@ package() {
   export SBINDIR="/usr/bin"
   export PREFIX="/usr"
   make install V=1
+
+  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 LICENSES/BSD-2-Clause -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 LICENSES/GPL-2.0 -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 LICENSES/LGPL-2.1 -t "${pkgdir}/usr/share/licenses/${pkgname}"
+
   pushd "${pkgdir}/usr"
   rm -r share/xdp-tools ## Do not package examples or tests (https://github.com/xdp-project/xdp-tools/issues/134)
   popd

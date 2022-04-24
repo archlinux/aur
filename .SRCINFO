@@ -1,7 +1,7 @@
 pkgbase = xdp-tools
 	pkgdesc = Utilities for use with XDP and libxdp
 	pkgver = 1.2.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/xdp-project/xdp-tools
 	arch = x86_64
 	license = custom
