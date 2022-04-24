@@ -1,30 +1,31 @@
 pkgname="log-console"
-epoch=1
-pkgver=17
+pkgver=1.18
 pkgrel=1
 pkgdesc="console logger static library"
 arch=("x86_64")
-url="https://github.com/imperzer0/log-console"
+author="imperzer0"
+branch="master"
+url="https://github.com/$author/$pkgname"
 license=('GPL')
-# depends=()
-makedepends=("cmake>=3.0")
 
-_libfiles=("log-console" "log-console-defs")
-md5sums=("1042a793b5481de07262fccd09e2a2f9" "2fd9a98d504fba82afbc322976c6e4b6")
+_srcprefix="https://raw.githubusercontent.com/$author/$pkgname/$branch"
+_libfiles=("$pkgname" "$pkgname""-defs")
+md5sums=("a727176f5d208daceb4a9aab4b15cfad" "2fd9a98d504fba82afbc322976c6e4b6")
 
 # add all library files to sources
 for _libfile in ${_libfiles[@]}
 {
-    source=(${source[@]} "https://raw.githubusercontent.com/imperzer0/log-console/master/"$_libfile)
+    source=(${source[@]} "$_srcprefix/$_libfile")
 }
 
-# install=log-console.install
+prepare()
+{
+    curl -L "$_srcprefix/PKGBUILD" > PKGBUILD-git
+}
 
 package()
 {
-    for _libfile in ${_libfiles[@]}
-	{
-	    install -Dm755 "./$_libfile" "$pkgdir/usr/include/$_libfile"
-	}
+    . PKGBUILD-git && package
 }
+
 
