@@ -10,7 +10,7 @@ pkgrel=1
 epoch=
 pkgdesc="Just simple project to piss off Discord users."
 arch=(x86_64)
-url="https://github.com/ENGO150/AnnoyingMarkdown/tree/stable"
+url="https://github.com/ENGO150/AnnoyingMarkdown.git"
 license=('MIT')
 groups=()
 depends=()
@@ -41,6 +41,8 @@ build() {
 
 package() {
 	cd AnnoyingMarkdown
+	git checkout stable
+
 	sh install.sh
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
