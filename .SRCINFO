@@ -9,7 +9,7 @@ pkgbase = udev-media-automount
 	depends = bash
 	depends = util-linux
 	depends = systemd
-	source = git://github.com/Ferk/udev-media-automount.git
+	source = git+https://github.com/Ferk/udev-media-automount.git
 	md5sums = SKIP
 
 pkgname = udev-media-automount

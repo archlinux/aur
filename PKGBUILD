@@ -11,7 +11,7 @@ depends=('bash' 'util-linux' 'systemd')
 makedepends=('git')
 conflicts=()
 provides=()
-source=("git://github.com/Ferk/udev-media-automount.git")
+source=("git+https://github.com/Ferk/udev-media-automount.git")
 md5sums=('SKIP')
 
 _gitroot="udev-media-automount"
