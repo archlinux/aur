@@ -1,0 +1,83 @@
+diff --git a/app/mainwindow.cpp b/app/mainwindow.cpp
+index d1e0233..97392ba 100644
+--- a/app/mainwindow.cpp
++++ b/app/mainwindow.cpp
+@@ -18,6 +18,7 @@
+ #include "titlebar.h"
+ #include "ui_behaviorsettings.h"
+ 
++#include <cmath>
+ #include <KAboutData>
+ #include <KActionCollection>
+ #include <KConfigDialog>
+@@ -1522,6 +1523,8 @@ QRect MainWindow::getDesktopGeometry()
+     QRect screenGeometry = getScreenGeometry();
+ 
+     QAction *action = actionCollection()->action(QStringLiteral("view-full-screen"));
++    QScreen *screen = QGuiApplication::screens().at(getScreen());
++    QRect workArea = KWindowSystem::workArea();
+ 
+     if (action->isChecked())
+         return screenGeometry;
+@@ -1532,58 +1535,9 @@ QRect MainWindow::getDesktopGeometry()
+         return m_availableScreenRect.isValid() ? m_availableScreenRect : screenGeometry;
+     }
+ 
+-    if (QGuiApplication::screens().count() > 1) {
+-        const QList<WId> allWindows = KWindowSystem::windows();
+-        QList<WId> offScreenWindows;
+-
+-        QListIterator<WId> i(allWindows);
+-
+-        while (i.hasNext()) {
+-            WId windowId = i.next();
+-
+-            if (KWindowSystem::hasWId(windowId)) {
+-                KWindowInfo windowInfo = KWindowInfo(windowId, NET::WMDesktop | NET::WMGeometry, NET::WM2ExtendedStrut);
+-
+-                // If windowInfo is valid and the window is located at the same (current)
+-                // desktop with the yakuake window...
+-                if (windowInfo.valid() && windowInfo.isOnCurrentDesktop()) {
+-                    NETExtendedStrut strut = windowInfo.extendedStrut();
+-
+-                    // Get the area covered by each strut.
+-                    QRect topStrut(strut.top_start, 0, strut.top_end - strut.top_start, strut.top_width);
+-                    QRect bottomStrut(strut.bottom_start,
+-                                      screenGeometry.bottom() - strut.bottom_width,
+-                                      strut.bottom_end - strut.bottom_start,
+-                                      strut.bottom_width);
+-                    QRect leftStrut(0, strut.left_start, strut.left_width, strut.left_end - strut.left_start);
+-                    QRect rightStrut(screenGeometry.right() - strut.right_width, strut.right_start, strut.right_width, strut.right_end - strut.right_start);
+-
+-                    // If the window has no strut, no need to bother further.
+-                    if (topStrut.isEmpty() && bottomStrut.isEmpty() && leftStrut.isEmpty() && rightStrut.isEmpty())
+-                        continue;
+-
+-                    // If any of the strut and the window itself intersects with our screen geometry,
+-                    // it will be correctly handled by workArea(). If the window doesn't intersect
+-                    // with our screen geometry it's most likely a plasma panel and can/should be
+-                    // ignored
+-                    if ((topStrut.intersects(screenGeometry) || bottomStrut.intersects(screenGeometry) || leftStrut.intersects(screenGeometry)
+-                         || rightStrut.intersects(screenGeometry))
+-                        && windowInfo.geometry().intersects(screenGeometry)) {
+-                        continue;
+-                    }
+-
+-                    // This window has a strut on the same desktop as us but which does not cover our screen
+-                    // geometry. It should be ignored, otherwise the returned work area will wrongly include
+-                    // the strut.
+-                    offScreenWindows << windowId;
+-                }
+-            }
+-        }
+-
+-        return KWindowSystem::workArea(offScreenWindows).intersected(screenGeometry);
+-    }
+-
+-    return KWindowSystem::workArea();
++    workArea = workArea.intersected(screenGeometry);
++    workArea.moveTo(ceil(workArea.left() * screen->devicePixelRatio()), ceil(workArea.top() * screen->devicePixelRatio()));
++    return workArea;
+ }
+ 
+ void MainWindow::whatsThis()
