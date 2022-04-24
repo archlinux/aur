@@ -1,0 +1,16 @@
+pkgbase = python-red-commons
+	pkgdesc = Common utilities used by multiple projects maintained by Cog Creators.
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/Cog-Creators/Red-Commons
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-flit-core
+	depends = python
+	source = Red-Commons-1.0.0.tar.gz::https://files.pythonhosted.org/packages/source/R/Red-Commons/Red-Commons-1.0.0.tar.gz
+	sha256sums = b9bcc55c72801c33eb0c77aaf48041d018bfb5f1293053cff8a3e10e4d33e52d
+
+pkgname = python-red-commons
