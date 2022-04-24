@@ -3,7 +3,7 @@
 
 pkgname=shhopt
 pkgver=1.1.7
-pkgrel=5
+pkgrel=6
 pkgdesc="Library for parsing command line options"
 arch=('x86_64')
 url="https://shh.thathost.com/pub-unix"
@@ -15,6 +15,7 @@ md5sums=('caf24206354296e8a48771aea1f47fbd')
 build() {
   cd $pkgname-$pkgver
 
+  CFLAGS+=' -ffat-lto-objects'
   make OPTIM="$CFLAGS" dep
   make OPTIM="$CFLAGS"
 }
