@@ -1,0 +1,5 @@
+config.x86_64.mk
+harec-git-*
+harec/
+pkg/
+src/
