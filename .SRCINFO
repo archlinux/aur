@@ -1,10 +1,12 @@
 pkgbase = vimix-gtk-themes
 	pkgdesc = A flat Material Design theme for GTK 3, GTK 2, GNOME Shell, etc.
-	pkgver = 2021.08.17
+	pkgver = 2022.04.24
 	pkgrel = 1
 	url = https://vinceliuice.github.io/theme-vimix.html
 	arch = any
 	license = GPL3
+	makedepends = gnome-shell
+	makedepends = sassc
 	depends = gtk3
 	optdepends = gtk-engine-murrine: GTK2 theme support
 	optdepends = gtk-engines: GTK2 theme support
@@ -13,7 +15,7 @@ pkgbase = vimix-gtk-themes
 	optdepends = vimix-cursors: Matching cursor theme
 	optdepends = plank: for Plank theme
 	options = !strip
-	source = vimix-gtk-themes-2021.08.17.tar.gz::https://github.com/vinceliuice/vimix-gtk-themes/archive/2021-08-17.tar.gz
-	sha256sums = 5f34c86ec23c5d826ee79db68a38bb2f6a970ed865ebe81e5dc09df7fa506444
+	source = vimix-gtk-themes-2022.04.24.tar.gz::https://github.com/vinceliuice/vimix-gtk-themes/archive/2022-04-24.tar.gz
+	sha256sums = 5ce0200148fe7f85a38ef147918677db22496253a603d7eb9ca00f0265c2c2a1
 
 pkgname = vimix-gtk-themes
