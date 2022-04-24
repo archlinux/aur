@@ -3,7 +3,7 @@
 pkgname=show-git
 _pkgname=Show
 pkgver=r59.9657faf
-pkgrel=2
+pkgrel=3
 arch=(any)
 pkgdesc="Realtime GLSL shader wallpapers"
 url="https://github.com/danielfvm/Show"
