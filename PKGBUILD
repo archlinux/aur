@@ -2,7 +2,7 @@
 
 pkgname=jdk-mission-control-bin
 pkgver=8.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenJDK Mission Control"
 arch=('x86_64')
 license=('UPL')
