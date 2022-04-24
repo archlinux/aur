@@ -1,0 +1,14 @@
+pkgbase = qfetch
+	pkgdesc = A simple fetch tool written in rust
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://github.com/mrquantumoff/qfetch
+	arch = x86_64
+	groups = mrquantumoff
+	license = BSD-2-Clause
+	makedepends = cargo
+	provides = qfetch
+	source = https://github.com/mrquantumoff/qfetch/archive/refs/tags/v0.1.1.tar.gz
+	md5sums = SKIP
+
+pkgname = qfetch
