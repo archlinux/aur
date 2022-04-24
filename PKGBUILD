@@ -3,7 +3,7 @@
 pkgname=show-git
 _pkgname=Show
 pkgver=r59.9657faf
-pkgrel=1
+pkgrel=2
 arch=(any)
 pkgdesc="Realtime GLSL shader wallpapers"
 url="https://github.com/danielfvm/Show"
@@ -11,7 +11,7 @@ license=("GPL")
 # Show needs xrandr to build, but I don't know if its required for wayland systems.
 depends=(imlib2 glew xorg-xrandr)
 makedepends=(meson git cmake)
-source=('git://github.com/danielfvm/Show.git')
+source=('git+https://github.com/danielfvm/Show.git')
 sha256sums=('SKIP')
 
 pkgver() {
