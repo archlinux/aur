@@ -1,0 +1,11 @@
+post_install() {
+  echo 'run vimix-gtk4-switch to choose your theme for gtk4 application'
+}
+
+post_upgrade() {
+  echo 'run vimix-gtk4-switch to choose your theme for gtk4 application'
+}
+
+post_remove() {
+  echo 'use rm -rf ${HOME}/.config/gtk-4.0/{assets,gtk.css,gtk-dark.css} to clean chosen vimix gtk4 theme'
+}
