@@ -1,0 +1,60 @@
+diff --color -bur freeablo-0.4/apps/freeablo/fagui/menu/menuscreen.cpp freeablo-0.4-edit/apps/freeablo/fagui/menu/menuscreen.cpp
+--- freeablo-0.4/apps/freeablo/fagui/menu/menuscreen.cpp	2020-03-06 12:40:04.000000000 -0600
++++ freeablo-0.4-edit/apps/freeablo/fagui/menu/menuscreen.cpp	2022-04-24 14:53:15.605222217 -0500
+@@ -2,6 +2,7 @@
+ #include "../../engine/inputobserverinterface.h"
+ #include "../../farender/renderer.h"
+ #include "../menuhandler.h"
++#include <stdint.h>
+ 
+ namespace FAGui
+ {
+diff --color -bur freeablo-0.4/apps/freeablo/fagui/menu/menuscreen.h freeablo-0.4-edit/apps/freeablo/fagui/menu/menuscreen.h
+--- freeablo-0.4/apps/freeablo/fagui/menu/menuscreen.h	2020-03-06 12:40:04.000000000 -0600
++++ freeablo-0.4-edit/apps/freeablo/fagui/menu/menuscreen.h	2022-04-24 14:56:34.061338500 -0500
+@@ -2,6 +2,7 @@
+ #include <functional>
+ #include <queue>
+ #include <vector>
++#include <stdint.h>
+ 
+ struct nk_context;
+ 
+diff --color -bur freeablo-0.4/apps/freeablo/fagui/menu/pausemenuscreen.cpp freeablo-0.4-edit/apps/freeablo/fagui/menu/pausemenuscreen.cpp
+--- freeablo-0.4/apps/freeablo/fagui/menu/pausemenuscreen.cpp	2020-03-06 12:40:04.000000000 -0600
++++ freeablo-0.4-edit/apps/freeablo/fagui/menu/pausemenuscreen.cpp	2022-04-24 14:57:37.347830705 -0500
+@@ -1,3 +1,4 @@
++#include <stdint.h>
+ #include "pausemenuscreen.h"
+ #include "../../engine/enginemain.h"
+ #include "../../farender/animationplayer.h"
+diff --color -bur freeablo-0.4/apps/freeablo/farender/fontinfo.cpp freeablo-0.4-edit/apps/freeablo/farender/fontinfo.cpp
+--- freeablo-0.4/apps/freeablo/farender/fontinfo.cpp	2020-03-06 12:40:04.000000000 -0600
++++ freeablo-0.4-edit/apps/freeablo/farender/fontinfo.cpp	2022-04-24 14:41:38.360563331 -0500
+@@ -4,6 +4,7 @@
+ #include "faio/fafileobject.h"
+ #include "render/levelobjects.h"
+ #include <numeric>
++#include <string>
+ 
+ namespace FARender
+ {
+diff --color -bur freeablo-0.4/apps/freeablo/farender/fontinfo.h freeablo-0.4-edit/apps/freeablo/farender/fontinfo.h
+--- freeablo-0.4/apps/freeablo/farender/fontinfo.h	2020-03-06 12:40:04.000000000 -0600
++++ freeablo-0.4-edit/apps/freeablo/farender/fontinfo.h	2022-04-24 14:48:30.682690760 -0500
+@@ -1,6 +1,7 @@
+ #pragma once
+ #include "fa_nuklear.h"
+ #include <array>
++#include <string>
+ 
+ namespace DiabloExe
+ {
+diff --color -bur freeablo-0.4/apps/freeablo/faworld/actor/statemachine.cpp freeablo-0.4-edit/apps/freeablo/faworld/actor/statemachine.cpp
+--- freeablo-0.4/apps/freeablo/faworld/actor/statemachine.cpp	2020-03-06 12:40:04.000000000 -0600
++++ freeablo-0.4-edit/apps/freeablo/faworld/actor/statemachine.cpp	2022-04-24 14:32:32.322352759 -0500
+@@ -1,3 +1,4 @@
++#include <string>
+ #include "statemachine.h"
+ #include "../../fasavegame/gameloader.h"
+ #include "../world.h"
