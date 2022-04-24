@@ -1,9 +1,9 @@
-# Maintainer: sanon <sawanon at protonmail.com> 
+# Maintainer: Amber <amber@mail.cyborgtrees.com>
 # Contributor: Andrea Scarpino <andrea at archlinux.org>
 
 pkgname=amor
 pkgver=15.08.3
-pkgrel=5
+pkgrel=8
 pkgdesc='On-Screen Creature'
 url='https://projects.kde.org/projects/kde/kdetoys/amor'
 arch=('i686' 'x86_64')
