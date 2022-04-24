@@ -1,0 +1,10 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = filesystem
+
+[Action]
+Description = Re-pointing /etc/resolv.conf symlink to /run/systemd/resolve/resolv.conf...
+When = PostTransaction
+Exec = /usr/bin/ln -sfT /run/systemd/resolve/resolv.conf /etc/resolv.conf

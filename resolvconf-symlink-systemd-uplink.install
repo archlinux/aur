@@ -1,0 +1,13 @@
+post_install() {
+  /usr/bin/mv /etc/resolv.conf /run/systemd/resolve/resolv.conf
+  /usr/bin/ln -sfT /run/systemd/resolve/resolv.conf /etc/resolv.conf
+}
+
+post_upgrade() {
+  post_install
+}
+
+post_remove() {
+  /usr/bin/unlink /etc/resolv.conf
+  /usr/bin/mv /run/systemd/resolve/resolv.conf /etc/resolv.conf
+}
