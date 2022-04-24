@@ -20,6 +20,7 @@ pkgbase = python-spotdl
 	depends = python-requests
 	depends = python-unidecode
 	depends = python-pycryptodomex
+	depends = python-websockets
 	provides = python-spotdl
 	provides = spotdl
 	options = strip
