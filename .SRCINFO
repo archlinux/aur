@@ -1,0 +1,14 @@
+pkgbase = mved
+	pkgdesc = Batch-move, copy and delete files safely using a text editor
+	pkgver = 0.5.0
+	pkgrel = 1
+	url = https://gitlab.com/ferreum/mved
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-simplediff
+	source = https://pypi.io/packages/source/m/mved/mved-0.5.0.tar.gz
+	sha256sums = bbecfe0e1478f5a72ae9fc3bff18bb41b12f3c4503bf7053599c1d8e1440fda6
+
+pkgname = mved
