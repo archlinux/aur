@@ -2,7 +2,7 @@
 pkgname=olaris-git
 _pkgname=olaris-server
 epoch=1
-pkgver=0.4.0rc1.r16.g6a31f14
+pkgver=0.4.0.r5.g8fb0611
 pkgrel=1
 pkgdesc='open-source, community driven, media manager and transcoding server'
 arch=('x86_64')
@@ -22,7 +22,7 @@ sha256sums=('SKIP' 'SKIP' 'SKIP'
 
 pkgver() {
   cd ${_pkgname}
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
