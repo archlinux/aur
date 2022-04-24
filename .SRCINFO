@@ -1,6 +1,6 @@
 pkgbase = desync-git
 	pkgdesc = Alternative casync implementation in Go
-	pkgver = r1
+	pkgver = r271.b545768
 	pkgrel = 1
 	url = https://github.com/folbricht/desync
 	arch = i686
