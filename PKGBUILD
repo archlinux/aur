@@ -1,20 +1,18 @@
 # Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
-# Generator  : CPANPLUS::Dist::Arch 1.30
 
 pkgname='perl-sub-exporter-formethods'
-pkgver='0.100052'
+pkgver='0.100054'
 pkgrel='1'
 pkgdesc="helper routines for using Sub::Exporter to build methods"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-sub-exporter>=0.978' 'perl-sub-name' 'perl-namespace-autoclean')
-makedepends=()
+depends=('perl-sub-exporter')
+checkdepends=('perl-namespace-autoclean')
 url='https://metacpan.org/release/Sub-Exporter-ForMethods'
-source=('http://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Sub-Exporter-ForMethods-0.100052.tar.gz')
-md5sums=('2b0a23fd3fe6861959400bb4fc4d282f')
-sha512sums=('75dc9d150f0d0fe33f727363582f99f1ca5c4b76e789e33e640f648588c23531516a99affd9097bc38e175e099dac817d307406dd2380f422aae401f3b5405ca')
-_distdir="Sub-Exporter-ForMethods-0.100052"
+source=('https://search.cpan.org/CPAN/authors/id/R/RJ/RJBS/Sub-Exporter-ForMethods-0.100054.tar.gz')
+sha256sums=('eef61c9421688bb3a7beaca71623df11c8a749307ae428abdabc556e2bfafc3e')
+_distdir="Sub-Exporter-ForMethods-0.100054"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
@@ -42,9 +40,3 @@ package() {
 
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
