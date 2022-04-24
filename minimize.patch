@@ -386,6 +386,26 @@ index d336374c5..81cf81395 100644
  	gp-launcher-utils.c \
  	gp-launcher-utils.h \
  	$(BUILT_SOURCES) \
+diff --git a/modules/launcher/gp-launcher-module.c b/modules/launcher/gp-launcher-module.c
+index 336918319..197951e1d 100644
+--- a/modules/launcher/gp-launcher-module.c
++++ b/modules/launcher/gp-launcher-module.c
+@@ -61,15 +61,6 @@ launcher_get_applet_info (const gchar *id)
+       initial_setup_func = gp_custom_launcher_applet_initial_setup_dialog;
+       is_disabled_func = custom_launcher_is_disabled;
+     }
+-  else if (g_strcmp0 (id, "launcher") == 0)
+-    {
+-      type_func = gp_launcher_applet_get_type;
+-      name = _("Application Launcher...");
+-      description = _("Copy a launcher from the applications menu");
+-      icon = "gnome-panel-launcher";
+-
+-      initial_setup_func = gp_launcher_applet_initial_setup_dialog;
+-    }
+   else
+     {
+       g_assert_not_reached ();
 diff --git a/po/POTFILES.in b/po/POTFILES.in
 index fd6cfd5cb..004cb4f9a 100644
 --- a/po/POTFILES.in
