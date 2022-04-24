@@ -1,11 +1,7 @@
-# This is an example PKGBUILD file. Use this as a start to creating your own,
-# and remove these comments. For more information, see 'man PKGBUILD'.
-# NOTE: Please fill out the license field for your package! If it is unknown,
-# then please put 'unknown'.
-
 # Maintainer: Václav Šmejkal <business.engo150@gmail.com>
+
 pkgname=annoyingmarkdown-git
-pkgver=1.0.r33.972f69d
+pkgver=v.r33.972f69d
 pkgrel=1
 epoch=
 pkgdesc="Just simple project to piss off Discord users."
@@ -31,7 +27,7 @@ validpgpkeys=()
 
 pkgver() {
 	cd "${_pkgname}"
-	printf "1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "v.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
@@ -41,7 +37,7 @@ build() {
 
 package() {
 	cd AnnoyingMarkdown
-	git checkout stable
+	# git checkout stable
 
 	sh install.sh
 

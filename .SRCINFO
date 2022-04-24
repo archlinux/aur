@@ -1,6 +1,6 @@
 pkgbase = annoyingmarkdown-git
 	pkgdesc = Just simple project to piss off Discord users.
-	pkgver = 1.0.r33.972f69d
+	pkgver = v.r33.972f69d
 	pkgrel = 1
 	url = https://github.com/ENGO150/AnnoyingMarkdown.git
 	arch = x86_64
