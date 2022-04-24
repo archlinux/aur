@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Steam ROM Manager
+Exec=steam-rom-manager
+Terminal=false
+Type=Application
+Icon=steam-rom-manager
+StartupWMClass=Steam ROM Manager
+X-AppImage-Version=2.3.29
+Comment=An app for managing ROMs in Steam
+Categories=Utility;

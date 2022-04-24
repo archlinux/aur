@@ -1,0 +1,19 @@
+pkgbase = steam-rom-manager-git
+	pkgdesc = An app for managing ROMs in Steam (Git version).
+	pkgver = 2.3.29.r20.g71c11eb
+	pkgrel = 1
+	url = https://github.com/SteamGridDB/steam-rom-manager
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = nodejs-lts-gallium
+	makedepends = npm
+	provides = steam-rom-manager
+	conflicts = steam-rom-manager-git
+	conflicts = steam-rom-manager
+	source = steam-rom-manager-git::git+https://github.com/SteamGridDB/steam-rom-manager
+	source = steam-rom-manager.desktop
+	sha512sums = SKIP
+	sha512sums = ff714e294c4fe0282327614ee93249d154ee77086d41e0964e61ad297472e9a0787b71ef274ecd5b86fd97ec23ab655870519f673b113e893f1678f0897abaac
+
+pkgname = steam-rom-manager-git
