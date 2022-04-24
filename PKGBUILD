@@ -1,6 +1,6 @@
 # Maintainer: Reinhold Gschweicher <pyro4hell@gmail.com>
 pkgname=infinisim-git
-pkgver=r21.d6cc748
+pkgver=r31.7110fa0
 pkgrel=1
 pkgdesc="Simulator for InfiniTime user interface without needing a PineTime "
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
@@ -21,9 +21,11 @@ source=(
 	"git+https://github.com/glennrp/libpng.git"
 	"git+https://github.com/lvgl/lv_drivers.git"
 	"git+https://github.com/joaquimorg/lvgl.git"
+	"git+https://github.com/laurencelundblade/QCBOR.git"
 )
 noextract=()
 md5sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -50,7 +52,9 @@ prepare() {
 	git submodule update
 	cd "$srcdir/${pkgname}/InfiniTime"
 	git config submodule.src/libs/lvgl.url "${srcdir}/lvgl"
+	git config submodule.src/libs/QCBOR.url "${srcdir}/QCBOR"
 	git submodule update --init src/libs/lvgl
+	git submodule update --init src/libs/QCBOR
 }
 
 build() {

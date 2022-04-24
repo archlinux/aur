@@ -1,6 +1,6 @@
 pkgbase = infinisim-git
 	pkgdesc = Simulator for InfiniTime user interface without needing a PineTime
-	pkgver = r21.d6cc748
+	pkgver = r31.7110fa0
 	pkgrel = 1
 	url = https://github.com/InfiniTimeOrg/InfiniSim
 	arch = i686
@@ -18,6 +18,8 @@ pkgbase = infinisim-git
 	source = git+https://github.com/glennrp/libpng.git
 	source = git+https://github.com/lvgl/lv_drivers.git
 	source = git+https://github.com/joaquimorg/lvgl.git
+	source = git+https://github.com/laurencelundblade/QCBOR.git
+	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
