@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=retroarch-assets
 pkgname=$_pkgname-git
-pkgver=r376.8d114dd5
+pkgver=r424.f45dd135
 pkgrel=1
 pkgdesc="Assets needed for RetroArch"
 arch=('any')
@@ -12,7 +12,6 @@ makedepends=('git')
 optdepends=('retroarch')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
-options=('!strip')
 source=("$_pkgname::git+$url.git")
 b2sums=('SKIP')
 
@@ -21,7 +20,25 @@ pkgver() {
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+	rm $_pkgname/xmb/convert.sh
+}
+
 package() {
+	cd $_pkgname
 	# shellcheck disable=SC2154
-	make -C $_pkgname DESTDIR="$pkgdir" install
+	install -d "$pkgdir"/usr/share/libretro/assets
+	cp -r -t "$pkgdir"/usr/share/libretro/assets \
+		branding \
+		ctr \
+		glui \
+		menu_widgets \
+		nxrgui \
+		ozone \
+		pkg \
+		rgui \
+		sounds \
+		switch \
+		wallpapers \
+		xmb
 }

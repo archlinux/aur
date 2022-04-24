@@ -1,6 +1,6 @@
 pkgbase = retroarch-assets-git
 	pkgdesc = Assets needed for RetroArch
-	pkgver = r376.8d114dd5
+	pkgver = r424.f45dd135
 	pkgrel = 1
 	url = https://github.com/libretro/retroarch-assets
 	arch = any
@@ -10,7 +10,6 @@ pkgbase = retroarch-assets-git
 	optdepends = retroarch
 	provides = retroarch-assets
 	conflicts = retroarch-assets
-	options = !strip
 	source = retroarch-assets::git+https://github.com/libretro/retroarch-assets.git
 	b2sums = SKIP
 
