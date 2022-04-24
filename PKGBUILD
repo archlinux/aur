@@ -1,18 +1,19 @@
-# Maintainer: Anthony Wang <ta180m@pm.me>
+# Maintainer: Cody Wyatt Neiman (xangelix) <neiman@cody.to>
+# Contributor: Anthony Wang <ta180m@pm.me>
 # Contributor: teutat3s <teutates@mailbox.org>
 # Contributor: jaltek <post@ezod.de>
 # Contributor: Daniel Mason (idanoo) <daniel@m2.nz>
 
-_electron=electron
+_electron=electron17
 pkgbase=element-desktop-git
 pkgname=(element-web-git element-desktop-git)
-pkgver=1.10.9.r19.g03ab1237e
+pkgver=1.10.9.r24.g691b8d5c38
 pkgrel=1
 pkgdesc="Glossy Matrix collaboration client — "
 arch=(x86_64)
 url="https://element.io"
 license=(Apache)
-makedepends=(npm git yarn python rust sqlcipher ${_electron} nodejs-lts-gallium)
+makedepends=(npm git yarn python rust tcl ${_electron} nodejs-lts-gallium)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 _giturl="git+https://github.com/vector-im"
@@ -25,7 +26,7 @@ sha256sums=('SKIP'
             'SKIP'
             'aaae4ffa41590361dac0c159aecc1166f69e459e89faa9d5cab1202f0277e06f'
             '0103f28a32fe31f698836516783c1c70a76a0117b5df7fd0af5c422c224220f9'
-            '4c931121009985e7d3f73928c9db88508eedd974a7741e635bb290e3a2cd75db')
+            'c1bd9ace215e3ec9af14d7f28b163fc8c8b42e23a2cf04ce6f4ce2fcc465feba')
 
 pkgver() {
   cd "$srcdir/element-web"
@@ -68,7 +69,7 @@ package_element-web-git() {
   replaces=(riot-web vector-web)
   provides=(element-web)
   conflicts=(element-web)
-  
+
   cd element-web
 
   install -d "${pkgdir}"/{usr/share/webapps,etc/webapps}/element
@@ -82,7 +83,7 @@ package_element-web-git() {
 package_element-desktop-git() {
   pkgdesc+="desktop version."
   replaces=(riot-desktop)
-  depends=("element-web-git=${pkgver}" ${_electron} sqlcipher)
+  depends=("element-web-git=${pkgver}" ${_electron})
   provides=(element-desktop)
   conflicts=(element-desktop)
   backup=("etc/element/config.json")
