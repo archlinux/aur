@@ -1,4 +1,4 @@
-pkgbase = ferium
+pkgbase = ferium-bin
 	pkgdesc = Ferium is an easy to use CLI program for downloading and updating Minecraft mods from Modrinth, CurseForge, and GitHub Releases.
 	pkgver = 3.20.1
 	pkgrel = 1
@@ -10,4 +10,4 @@ pkgbase = ferium
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = ferium
+pkgname = ferium-bin
