@@ -1,0 +1,13 @@
+diff --git a/appinfo/info.xml.orig b/src/twofactor_u2f/appinfo/info.xml
+index 04b13f8..73ff798 100644
+--- a/appinfo/info.xml.orig
++++ b/appinfo/info.xml
+@@ -17,7 +17,7 @@
+ 	<screenshot>https://raw.githubusercontent.com/nextcloud/twofactor_u2f/4e0542d888236b7f212bed0b536244d08803466f/screenshots/settings.png</screenshot>
+ 
+ 	<dependencies>
+-		<php min-version="7.3" max-version="8.0"/>
++		<php min-version="7.3" max-version="8.1"/>
+ 		<database>sqlite</database>
+ 		<database>mysql</database>
+ 		<database>pgsql</database>
