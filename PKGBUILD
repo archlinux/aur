@@ -4,12 +4,12 @@
 _srcname=SPIRV-LLVM-Translator
 pkgname=lib32-${_srcname,,}
 pkgver=13.0.0.r24+gf1372c87
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool and a library for bi-directional translation between SPIR-V and LLVM IR"
 arch=(x86_64)
 url="https://github.com/KhronosGroup/SPIRV-LLVM-Translator"
 license=(custom)
-depends=(llvm-libs spirv-llvm-translator)
+depends=(llvm-libs lib32-llvm-libs spirv-llvm-translator)
 makedepends=(git cmake llvm spirv-headers spirv-tools lib32-llvm)
 checkdepends=(python python-setuptools clang)
 # Adapted from IGC release notes 99420daab98998a7e36858befac9c5ed109d4920
