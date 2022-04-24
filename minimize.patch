@@ -366,17 +366,14 @@ index ee1ae0bf6..ba69b7d58 100644
  	$(NULL)
  
 diff --git a/modules/launcher/Makefile.am b/modules/launcher/Makefile.am
-index d336374c5..81cf81395 100644
+index d336374c5..929ffcd1c 100644
 --- a/modules/launcher/Makefile.am
 +++ b/modules/launcher/Makefile.am
-@@ -25,15 +25,10 @@ org_gnome_gnome_panel_launcher_la_SOURCES = \
- 	gp-custom-launcher-applet.h \
- 	gp-editor.c \
+@@ -27,13 +27,8 @@ org_gnome_gnome_panel_launcher_la_SOURCES = \
  	gp-editor.h \
--	gp-icon-name-chooser.c \
+ 	gp-icon-name-chooser.c \
  	gp-icon-name-chooser.h \
 -	gp-launcher-applet.c \
-+	gp-icon-name-chooser.c \
  	gp-launcher-applet.h \
 -	gp-launcher-button.c \
 -	gp-launcher-button.h \
