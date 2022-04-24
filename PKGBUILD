@@ -2,7 +2,7 @@
 # Contributor: Zanny <lordzanny@gmail.com>
 
 pkgname=oda-file-converter
-pkgver=22.10.0.0
+pkgver=23.3
 pkgrel=2
 pkgdesc="Converts files between the .dwg and .dxf file formats"
 arch=('x86_64')
@@ -11,21 +11,21 @@ license=('custom')
 conflicts=('teigha-file-converter')
 replaces=('teigha-file-converter')
 depends=('qt5-base' 'hicolor-icon-theme')
-source=('https://download.opendesign.com/guestfiles/Demo/ODAFileConverter_QT5_lnxX64_7.2dll_22.10.deb'
+source=("https://download.opendesign.com/guestfiles/Demo/ODAFileConverter_QT5_lnxX64_8.3dll_$pkgver.deb"
         'oda-file-converter'
         'oda-file-converter.desktop')
-sha256sums=('ce47625d4c4be0ba40ed035f5a09450849486e98fa3e2e5e0afb3d9ada682722'
-            '717f27caf6be52ffa1de45022e1c7534827731a2b59d908d02b5970fc904081d'
-            '3c09891beeb4e1b07f547897f25b74a28ecb47fbf90d5c5c299ea316b44fc69d')
+md5sums=('aa4efbb34df8acd55ec659fac7aed246'
+         '9c4ac254a0fc8bbe099bc938f236ee64'
+         'cf41b2da616f6d7b124cba80f644ecbe')
 _ogname='ODAFileConverter'
 
 package() {
     tar xJf 'data.tar.xz'
 
-    install -Dm755 "$srcdir/usr/bin/${_ogname}_$pkgver/$_ogname" "$pkgdir/opt/$pkgname/$pkgname"
+    install -Dm755 "$srcdir/usr/bin/${_ogname}_$pkgver.0.0/$_ogname" "$pkgdir/opt/$pkgname/$pkgname"
 
     for ext in '*.tx' '*.so'; do
-        for file in "$srcdir/usr/bin/${_ogname}_$pkgver/$ext"; do
+        for file in "$srcdir/usr/bin/${_ogname}_$pkgver.0.0/$ext"; do
             install -m644 $file "$pkgdir/opt/$pkgname/"
         done
     done
