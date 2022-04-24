@@ -6,37 +6,50 @@
 # Contributor: FJ <joostef@gmail.com>
 # Contributor: Sebastien Piccand <sebcactus gmail com>
 
-_base=gaupol
-pkgname=${_base}-git
+_pkgbase=gaupol
+pkgbase=${_pkgbase}-git
+pkgname=('gaupol-git' 'aeidon-git')
 pkgver=1.11.1.g8eae3998
 pkgrel=1
-pkgdesc="Editor for text-based subtitles"
+pkgdesc="Editor for text-based subtitle files"
 arch=('any')
 url="https://otsaloma.io/gaupol"
 license=('GPL')
-provides=('gaupol')
-conflicts=('gaupol')
-depends=('python-gobject' 'gtk3' 'gst-plugins-'{base,good,bad,ugly}
-  'gst-libav' 'gst-plugin-gtk' 'gspell' 'iso-codes' 'python-chardet' 'python-cairo' 'desktop-file-utils' 'hicolor-icon-theme')
-makedepends=('intltool' 'git')
-optdepends=('python-pyenchant: spell-checking'
-  'gtkspell3: inline spell-checking'
-  'python-chardet: character encoding auto-detection'
-  'mplayer: subtitle preview'
-  'vlc: subtitle preview'
-  'gst-plugins-bad: extra media codecs'
-  'gst-plugins-ugly: extra media codecs'
-  'gst-libav: extra media codecs')
-source=("git+https://github.com/otsaloma/${_base}.git")
+makedepends=('intltool' 'git'
+             'python-gobject' 'gtk3' 'gst-plugins-'{base,good,bad,ugly}
+             'gst-libav' 'gst-plugin-gtk' 'gspell' 'iso-codes' 'python-chardet' 'python-cairo' 'desktop-file-utils' 'hicolor-icon-theme')
+source=("git+https://github.com/otsaloma/${_pkgbase}.git")
 sha256sums=('SKIP')
-install=gaupol.install
 
 pkgver() {
-  cd gaupol
+  cd ${_pkgbase}
   git describe --always | sed 's|-|.|g'
 }
 
-package() {
-  cd gaupol
-  python setup.py --without-iso-codes install --root="$pkgdir" -O1
+package_aeidon-git() {
+  pkgdesc='Python package that provides classes and functions for dealing with text-based subtitle files of many different formats'
+  depends=('iso-codes' 'python-chardet')
+  provides=('aeidon')
+  conflicts=('aeidon')
+  cd ${_pkgbase}
+  python setup.py --without-gaupol --without-iso-codes install --root="$pkgdir" -O1
+}
+
+package_gaupol-git() {
+  pkgdesc+='. GUI.'
+  depends=('aeidon-git'
+           'python-gobject' 'gtk3' 'gst-plugins-'{base,good,bad,ugly}
+           'gst-libav' 'gst-plugin-gtk' 'gspell' 'python-cairo' 'desktop-file-utils' 'hicolor-icon-theme')
+  optdepends=('python-pyenchant: spell-checking'
+    'gtkspell3: inline spell-checking'
+    'mplayer: subtitle preview'
+    'vlc: subtitle preview'
+    'gst-plugins-bad: extra media codecs'
+    'gst-plugins-ugly: extra media codecs'
+    'gst-libav: extra media codecs')
+  provides=("${_pkgbase}")
+  conflicts=("${_pkgbase}")
+  install=gaupol.install
+  cd ${_pkgbase}
+  python setup.py --without-aeidon install --root="$pkgdir" -O1
 }
