@@ -1,0 +1,19 @@
+pkgbase = ortfo-git
+	pkgdesc = The GUI for ortfo, a portfolio manager (latest git commit)
+	pkgver = 0.1.0.alpha.1.r14.g300beec
+	pkgrel = 1
+	url = https://github.com/ortfo/gui
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = go
+	makedepends = git
+	makedepends = curl
+	depends = gtk3
+	depends = webkit2gtk
+	provides = ortfo
+	conflicts = ortfo
+	conflicts = ortfo-bin
+	source = git+https://github.com/ortfo/gui
+	sha256sums = SKIP
+
+pkgname = ortfo-git
