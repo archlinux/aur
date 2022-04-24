@@ -11,7 +11,7 @@ pkgbase = rpmlauncher-bin
 	source = https://github.com/RPMTW/RPMLauncher/releases/download/1.0.6+898/RPMLauncher-Linux.zip
 	source = RPMLauncher.desktop
 	source = https://github.com/RPMTW/RPMLauncher/raw/develop/assets/images/Logo.png
-	sha256sums = SKIP
+	sha256sums = 7bccefc177bbee6136a0bd041d51c6c510164275aa0ae58ac64f604c19884816
 	sha256sums = af2720db5735cc5e9fb9fe76e20f12d51da452e5360fb90a7086f360efbb3828
 	sha256sums = 4fb011f8924ae51231875788181bd5800345500745364fb921c22448f368d570
 
