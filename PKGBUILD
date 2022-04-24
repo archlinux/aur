@@ -2,7 +2,7 @@
 
 pkgname=misskey
 pkgver=12.110.0
-pkgrel=3
+pkgrel=4
 pkgdesc="🌎 An interplanetary microblogging platform 🚀 (Experimental)"
 url="https://github.com/misskey-dev/misskey"
 arch=("x86_64")
@@ -17,19 +17,19 @@ _commit="33c22b5f3efa4110c9b517c224c9fdfba7e6c64b" #tag/12.110.0
 source=("git+https://github.com/misskey-dev/misskey.git#commit=${_commit}"
         "${pkgname}.install"
         "${pkgname}.service"
-        "${pkgname}-db-upgrade.sh"
+        "${pkgname}.sh"
         "${pkgname}.sysusers"
         "${pkgname}.tmpfiles")
 md5sums=('SKIP'
-         '74797428d78ba89b328c7ef98fda2786'
+         '1477ba0bb17656e9c26663af8daeb95b'
          '9abc87cea2314b95334d4ad3b309e931'
-         '482ab8e6ce416e4490459b4dd78cc158'
+         'd8eb96e073b0d49817c64f894762f4b6'
          'a3fe48c606eabebf818106648c0bf0d9'
          'c6f7dc5885f8db2329b3b1e3c2a67ef5')
 sha256sums=('SKIP'
-            '60cd6fb87a1ecde4db123cfa70ea308fb4559c3a0f5f84920af8473dcc9522a1'
+            'bc5faebd8ad9ebebc0ead16989a1803c8ae8ba65001ad32ff9de46e8809525bc'
             '5cd19f1798eb1852c47c7786021adede99d95ab83feb0802e7b1fba50a308517'
-            '88d8c9853aa2ac070ff76c59d7ae4d61bbd5ae50b141794f50d91bc350954974'
+            '0f5394f96f3fd4a17f58d1144b78883e52cd9cec2beaf0260ca62c03fe224c49'
             'a3ff9c1b77920ebbb0df8fb1affe9e8ef54d907bd4d16ed7c6076cbf52726df7'
             'c368b2ed2efbeca0e488f883defb2ccb7ed4661cc6832d2c396176206a794f34')
 
@@ -123,9 +123,8 @@ package() {
     # files (upload, …)
     ln -s "/var/lib/${pkgname}/files" "${pkgdir}/usr/share/webapps/${pkgname}/files"
 
-    # db-update script
-    install -dm755 "${pkgdir}/usr/lib/${pkgname}"
-    install -Dm700 "${pkgname}-db-upgrade.sh" -t "${pkgdir}/usr/lib/${pkgname}"
+    # misskey helper script
+    install -Dm755 "${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
 
     # license
     install -Dm644 "${pkgdir}/usr/share/webapps/${pkgname}/COPYING" \

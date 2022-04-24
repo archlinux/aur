@@ -22,6 +22,6 @@ pre_upgrade() {
 post_upgrade() {
     ## Ignore reinstallations of the same or older versions
     if [ $(vercmp $1 $2) -gt 0 ] ; then
-        /usr/lib/misskey/misskey-db-upgrade.sh
+        /usr/bin/misskey -m
     fi
 }
