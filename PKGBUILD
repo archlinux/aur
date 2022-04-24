@@ -5,7 +5,7 @@
 
 _pkgname=shattered-pixel-dungeon
 pkgname=$_pkgname-git
-pkgver=5442v1.2.2
+pkgver=5452v1.2.3
 pkgrel=1
 pkgdesc='Shattered fork of the popular rogue-like game'
 url='https://shatteredpixel.com'
