@@ -1,13 +1,14 @@
 # Maintainer: Huang-Huang Bao <eh5@sokka.cn>
-pkgname="fish-bash2env"
-pkgver=0.1
+
+pkgname='fish-bash2env'
+pkgver=0.2
 pkgrel=1
-pkgdesc='Source environment variables modified by given bash command in fish shell'
+pkgdesc='A lightweight fish plugin to import environment variables modified by given bash command/script'
 url='https://github.com/EHfive/fish-bash2env'
 arch=('any')
 license=('MIT')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('7938f25effb1367ce10536d844cf2c41ffeebb3cd47500dba5fcb7d416355c49')
+sha256sums=('16814eb81286f58794f00348a57f35d2255a31374c2325d2a2f89319d33b4f28')
 depends=('fish')
 
 check() {
