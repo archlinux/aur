@@ -1,20 +1,13 @@
 pkgname='lockbook-desktop'
 _pkgname="lockbook-desktop"
 pkgver=0.4.0
-pkgrel=3
+pkgrel=2
 arch=('x86_64' 'i686')
 url="https://github.com/lockbook/lockbook"
 pkgdesc="A secure, private, minimal, cross-platform document editor."
 license=('BSD-3-Clause')
 makedepends=('rust' 'cargo' 'git')
-depends=('gtksourceview3' 'gtk3' 'pango' 'glib2' 'gdk-pixbuf2' 'atk' 'gobject-introspection-runtime' 'libepoxy' 'gspell')
-optdepends=(
-  'aspell-en: english dictionary for spellcheck'
-  'aspell-es: spanish dictionary for spellcheck'
-  'aspell-fr: french dictionary for spellcheck'
-  'aspell-de: german dictionary for spellcheck'
-  'aspell-ru: russian dictionary for spellcheck'
-)
+depends=('gtksourceview4' 'gtk4')
 provides=('lockbook-desktop')
 conflicts=('lockbook-desktop')
 source=("git+https://github.com/lockbook/aur-lockbook-desktop.git" "git+https://github.com/lockbook/lockbook.git")
@@ -29,6 +22,7 @@ pkgver() {
 build(){
   echo $_pkgname
   cd $srcdir/lockbook/clients/linux
+  rustup update stable
   cargo build --release --locked
 }
 
