@@ -1,7 +1,7 @@
 # Maintainer: Martin Diehl <aur@martin-diehl.net>
 
 pkgname=python-sphinx-substitution-extensions
-pkgver=2020.09.30.0
+pkgver=2022.02.16
 pkgrel=1
 pkgdesc='Extensions for Sphinx which allow for substitutions'
 arch=('any')
@@ -10,7 +10,7 @@ license=('APACHE')
 depends=('python-sphinx')
 makedepends=('python-setuptools' 'python-pip')
 source=("https://github.com/adamtheturtle/sphinx-substitution-extensions/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('74dd0c3a9e96c89498befe89810a0a575f1880e58015789fa494bca01baeecae')
+sha256sums=('5a228398d91dd979d778dd08cc1468c811c5d453eaae7a4c8faf5b14f66a40f5')
 
 prepare() {
   cd $srcdir/sphinx-substitution-extensions-${pkgver}
