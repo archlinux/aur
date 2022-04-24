@@ -2,9 +2,9 @@
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=firecracker-git
-pkgver=r3316.d3e98b9a
+pkgver=1.0.0.r94.ge472386b
 pkgrel=1
-epoch=1
+epoch=2
 pkgdesc="Secure and fast microVMs for serverless computing"
 arch=('x86_64')
 license=('Apache:2.0')
@@ -20,7 +20,7 @@ _cargo_target="$CARCH-unknown-linux-musl"
 
 pkgver() {
   cd "$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --tags --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
