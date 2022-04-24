@@ -233,6 +233,38 @@ index 67339eae9..879905876 100644
  	org.gnome.gnome-panel.applet.initial-settings.gschema.xml \
  	org.gnome.gnome-panel.gschema.xml \
  	org.gnome.gnome-panel.object.gschema.xml \
+diff --git a/data/org.gnome.gnome-panel.gschema.xml b/data/org.gnome.gnome-panel.gschema.xml
+index 08c4bbfa3..c411da8c5 100644
+--- a/data/org.gnome.gnome-panel.gschema.xml
++++ b/data/org.gnome.gnome-panel.gschema.xml
+@@ -95,27 +95,4 @@
+     </key>
+   </schema>
+ 
+-  <schema id="org.gnome.gnome-panel.run-dialog" path="/org/gnome/gnome-panel/run-dialog/">
+-    <key type="as" name="history">
+-      <default>[]</default>
+-      <summary>History of "Run Application" dialog</summary>
+-      <description>The list of commands used in the past in the "Run Application" dialog.</description>
+-    </key>
+-    <key name="enable-program-list" type="b">
+-      <default>true</default>
+-      <summary>Enable program list in "Run Application" dialog</summary>
+-      <description>If true, the "Known Applications" listing in the "Run Application" dialog is made available. Whether or not the listing is expanded when the dialog is shown is controlled by the show_program_list key.</description>
+-    </key>
+-    <key name="show-program-list" type="b">
+-      <default>false</default>
+-      <summary>Expand program list in "Run Application" dialog</summary>
+-      <description>If true, the "Known Applications" listing in the "Run Application" dialog is expanded when the dialog is opened. This key is only relevant if the enable_program_list key is true.</description>
+-    </key>
+-    <key name="enable-autocompletion" type="b">
+-      <default>true</default>
+-      <summary>Enable autocompletion in "Run Application" dialog</summary>
+-      <description>If true, autocompletion in the "Run Application" dialog is made available.</description>
+-    </key>
+-  </schema>
+-
+ </schemalist>
 diff --git a/data/scalable/Makefile.am b/data/scalable/Makefile.am
 index 3933b3000..3acbaa593 100644
 --- a/data/scalable/Makefile.am
