@@ -7,7 +7,7 @@ pkgname=python-pytorch-rocm
 _pkgname="pytorch"
 pkgver=1.11.0
 _pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 _pkgdesc="Tensors and Dynamic neural networks in Python with strong GPU acceleration"
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -17,7 +17,7 @@ depends=('google-glog' 'gflags' 'opencv' 'openmp' 'rccl' 'pybind11' 'python' 'py
          'python-numpy' 'protobuf' 'ffmpeg4.4' 'python-future' 'qt5-base' 'onednn' 'intel-mkl'
          'python-typing_extensions')
 makedepends=('python' 'python-setuptools' 'python-yaml' 'python-numpy' 'cmake' 'rocm-hip-sdk' 'roctracer'
-             'miopen' 'git' 'ninja' 'pkgconfig' 'doxygen')
+             'miopen' 'git' 'hipmagma' 'ninja' 'pkgconfig' 'doxygen')
 source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v$_pkgver"
         # generated using parse-submodules
         # "${pkgname}::https://github.com/pytorch/pytorch#commit=7cc129e60c"
@@ -121,7 +121,7 @@ prepare() {
   git submodule deinit third_party/eigen
   git rm -f third_party/eigen
   rm -rf .git/modules/third_party/eigen
-  git submodule add --force https://gitlab.com/libeigen/eigen.git third_party/eigen
+  git submodule add --depth 1 --force https://gitlab.com/libeigen/eigen.git third_party/eigen
 
   # generated using parse-submodules
   git submodule init
@@ -290,7 +290,7 @@ _package() {
 
 package_python-pytorch-rocm() {
   pkgdesc="${_pkgdesc} (with ROCM and AVX2 CPU optimizations)"
-  depends+=(rocm-hip-sdk roctracer miopen)
+  depends+=(rocm-hip-sdk roctracer miopen hipmagma)
   replaces=(python-pytorch-opt-rocm)
   conflicts=(python-pytorch)
   provides=(python-pytorch)
