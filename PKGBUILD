@@ -1,8 +1,8 @@
 # Maintainer: Diego Miguel <hello@diegomiguel.me>
 
 pkgname='ttf-whatsapp-emoji'
-pkgver='2.21.23.23'
-pkgrel=4
+pkgver='2.22.8.79'
+pkgrel=1
 pkgdesc='TrueType WhatsApp emoji'
 arch=('any')
 url='https://github.com/dmlls/whatsapp-emoji-linux'
@@ -18,10 +18,10 @@ conflicts=(
 )
 
 source=(
-    WhatsAppEmoji.ttf::$url/releases/download/latest/WhatsAppEmoji.ttf
+    WhatsAppEmoji.ttf::$url/releases/download/2.22.8.79-1/WhatsAppEmoji.ttf
 )
 
-sha256sums=('b7de22f820bcd2458a0ac4706d2cddab50bbed584d37a85029c65c3b159ddebc')
+sha256sums=('ce6d2046b1983ce0e28d6c8c221fac6d45097c5ab95cab1c67735b633f65ce87')
 
 package() {
     install -dm 755 "${pkgdir}/usr/share/fonts/TTF"
