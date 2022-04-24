@@ -65,9 +65,11 @@ def main(argv):
         'proxy_cybersec','proxy_ssl','proxy_ssl_cybersec','ikev2_v6','open_udp_v6','open_tcp_v6','wireguard_udp',
         'openvpn_udp_tls_crypt','openvpn_tcp_tls_crypt','openvpn_dedicated_udp','openvpn_dedicated_tcp','skylark','mesh_relay'],
         metavar='protocol')
+    parser.add_argument('-e', '--exclude' , help='Exclude these servers from the selection', type=str, default='', nargs='+')
     parser.add_argument('--list-protocols', help='Show list of protocols', action='store_true')
     parser.add_argument('-u', '--update', help='Update the server database', action='store_true')
     parser.add_argument('--server-url', help='Override the default server info URL', type=str, default='https://nordvpn.com/api/server')
+    parser.add_argument('--no-ping', help='Don\'t ping the server to check connectivity', action='store_true')
     parser.add_argument('-v', '--verbose', help='Be verbose', action='store_true')
     
     args = parser.parse_args()
@@ -178,6 +180,16 @@ def main(argv):
     #print(parsed_features)
     
     if(args.verbose and args.protocol != ''): print('Protocols:', args.protocol)
+    
+    ##Merge --exlude and blacklist lists
+    exclude_list = []
+    for e in args.exclude:
+        exclude_list.append(e)
+    
+    for e in confparse.get('defaults','blacklist',fallback='').split(' '):
+        if((e != '') and (e not in exclude_list)): exclude_list.append(e)
+        
+    if(args.verbose and exclude_list != ''): print("Exclude list:", exclude_list)
 
     list_servers = []
 
@@ -196,7 +208,8 @@ def main(argv):
 
         if((server[1]['flag'] == country_code or country_code == '') and    # Match country code
             (set(parsed_features).issubset(set(features)) or parsed_features == ['']) and # Match features
-            (set(args.protocol).issubset(set(protocols)) or args.protocol == '')):  # Match protocols 
+            (set(args.protocol).issubset(set(protocols)) or args.protocol == '') and    # Match protocols
+            (server[1]['domain'].split('.')[0] not in exclude_list)):  # Filter out exluded servers
             list_servers.append((server[1]['domain'],server[1]['load'],server[1]['ip_address']))    # Add matched server to list
     
     if(args.verbose): 
@@ -211,11 +224,16 @@ def main(argv):
                 port = 80   # Obfuscated servers don't open port 443
             else:
                 port = 443
-            pinged = ping(server[2],port)
+                
+            if(not args.no_ping):
+                pinged = ping(server[2],port)
+            else:
+                pinged = 1
+                
             if(pinged != -1):
                 if(args.verbose): print('Recommended server: ')
                 print(server[0].split('.')[0])
-                if(args.verbose): print('Ping:', pinged, 'ms')
+                if(args.verbose and not args.no_ping): print('Ping:', pinged, 'ms')
                 break
             elif(args.verbose):
                 print(server[0], 'timed out')

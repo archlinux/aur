@@ -2,7 +2,7 @@
 
 usage: nordquery [-h] [-u] [-c country] [-f features] [-p protocols] [--list-protocols] [--server-url] [-v]
 
-A tool for choosing NordVPN servers, Version 1.0
+A tool for choosing NordVPN servers, Version 1.1
 
 ## Options:
   
@@ -11,8 +11,10 @@ A tool for choosing NordVPN servers, Version 1.0
   `-c COUNTRY, --country COUNTRY` - Filter by country.  
   `-f FEATURES, --number FEATURES` - Filter by server features, see list below  
   `-p PROTOCOLS, --protocols PROTOCOLS` - Filter by server protocols, see list below  
+  `-e EXCLUDE, --exclude EXCLUDE` - Exclude these servers from the list
   `--list-protocols` - List the protocol options available  
-  `--server-url` - Override the default server database url (https://nordvpn.com/api/server)  
+  `--server-url` - Override the default server database url (https://nordvpn.com/api/server)
+  `--no-ping` - Don't ping the server to check connectivity    
   `-v, --verbose` - Be verbose  
   
 ## Countries:  
@@ -62,6 +64,10 @@ The following protocols can be selected with the -p argument:
 `--list-protcols` will list these options.  
 For details of these protocols and their usage consult the NordVPN documentation.  
 
+## Exlude
+
+Servers can be manually exluded using the `-e` or `--exlude` option, enter the server with the short code e.g. `-e us1234`    
+  
 ## Configuration file:
 
 A user configuration file can be used in this location: /home/[USER]/.config/nordquery/nordquery.conf  
@@ -72,8 +78,9 @@ The structure is:
 `always_update = yes/no` - forces an update of the server database with every query  
 `country = xx` or `any` - an ISO3166 code for the default country  
 `features = xxx xxx` or `any`  - a list of the default features to use, e.g. `sta p2p`  
-`db_path` - path to store the server database file, overrides the default (`/home/[USER]/.cache/nordquery`)  
-`db_filename` - name for server database file, overrides the default (`server.db`)
+`db_path = /xxx/yyy` - path to store the server database file, overrides the default (`/home/[USER]/.cache/nordquery`)  
+`db_filename = xxx` - name for server database file, overrides the default (`server.db`)  
+`blacklist = xx1234 yy5678` - Never match these servers  
   
 These settings will be overriden by command line arguments.
   

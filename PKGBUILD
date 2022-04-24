@@ -1,7 +1,7 @@
 # Maintainer: Simon Williams <simon@clockcycles.net>
 pkgname=nordquery
-pkgver=1.0
-pkgrel=4
+pkgver=1.1
+pkgrel=1
 epoch=
 pkgdesc="A tool to choose NordVPN servers based on filters, written in Python"
 arch=(any)
