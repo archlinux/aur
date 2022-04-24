@@ -10,7 +10,7 @@ license=('Apache')
 source=("https://packages.element.io/debian/pool/main/e/element-nightly/element-nightly_${pkgver}_amd64.deb"
         "element-desktop-nightly.sh")
 sha256sums=('7ccf9a492cb27881f1748286a435f4a32e9bff40fc1aaeb30aef30baa466fa1c'
-            'eec30e5b0e549f7fa9c9c66fd3edb60bc8e0d9d0a77b79d8659cc06deced588d')
+            'cf5a9348d8ad3f4c7a46bb8abf6ea9059d65231de2cf89f1b5e1885071afb0e2')
 replaces=('riot-desktop-nightly-bin')
 
 package() {
