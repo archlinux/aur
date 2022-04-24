@@ -1,16 +1,17 @@
 pkgbase = stormlib
 	pkgdesc = A C/C++ API to read and write MPQ files with support for merged archives, patch MPQs and more.
 	pkgver = 9.23
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.zezula.net/en/mpq/stormlib.html
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = cmake
 	depends = bzip2
+	depends = libtomcrypt
+	depends = libtommath
 	depends = zlib
 	source = StormLib-9.23.tar.gz::https://github.com/ladislav-zezula/StormLib/archive/v9.23.tar.gz
 	sha256sums = d62ba42f1e02efcb2cbaa03bd2e20fbd18c45499ef5fe65ffb89ee52a7bd9c92
 
 pkgname = stormlib
-
