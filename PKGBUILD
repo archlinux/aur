@@ -1,7 +1,7 @@
 # Maintainer: Nimble Bun Works <contact@nimblebun.works>
 
 pkgname=wordle-cli-bin
-pkgver=1.0.6
+pkgver=1.0.7
 pkgrel=1
 pkgdesc='Play Wordle in your terminal.'
 arch=(x86_64)
