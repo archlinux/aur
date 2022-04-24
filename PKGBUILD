@@ -10,8 +10,7 @@ _pkgbase=gaupol
 pkgbase=${_pkgbase}-git
 pkgname=('gaupol-git' 'aeidon-git')
 pkgver=1.11.1.g8eae3998
-pkgrel=1
-pkgdesc="Editor for text-based subtitle files"
+pkgrel=2
 arch=('any')
 url="https://otsaloma.io/gaupol"
 license=('GPL')
@@ -36,7 +35,7 @@ package_aeidon-git() {
 }
 
 package_gaupol-git() {
-  pkgdesc+='. GUI.'
+  pkgdesc="Editor for text-based subtitle files. GUI."
   depends=('aeidon-git'
            'python-gobject' 'gtk3' 'gst-plugins-'{base,good,bad,ugly}
            'gst-libav' 'gst-plugin-gtk' 'gspell' 'python-cairo' 'desktop-file-utils' 'hicolor-icon-theme')
