@@ -1,7 +1,7 @@
 pkgbase = misskey
 	pkgdesc = 🌎 An interplanetary microblogging platform 🚀 (Experimental)
-	pkgver = 12.110.0
-	pkgrel = 4
+	pkgver = 12.110.1
+	pkgrel = 1
 	url = https://github.com/misskey-dev/misskey
 	install = misskey.install
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = misskey
 	optdepends = elasticsearch: Search functionality
 	optdepends = ffmpeg: Media de-encode functionality
 	optdepends = nginx: Reverse-proxy usage
-	source = git+https://github.com/misskey-dev/misskey.git#commit=33c22b5f3efa4110c9b517c224c9fdfba7e6c64b
+	source = git+https://github.com/misskey-dev/misskey.git#commit=3658f19d9800f331b3331080ac700dbae5db987a
 	source = misskey.install
 	source = misskey.service
 	source = misskey.sh
