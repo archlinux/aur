@@ -1,7 +1,7 @@
 # Maintainer: Abheek Dhawan <abheekd at protonmail dot com>
 
 pkgname="wwise-audio-tools-git"
-pkgver="0.5.0"
+pkgver=0.5.0.r3.g16400e4
 pkgrel=1
 pkgdesc="Tools for working with Wwise file types (only extraction at the moment)"
 arch=("x86_64")
@@ -10,6 +10,11 @@ license=("MIT")
 makedepends=("cmake" "ninja" "git")
 source=("git+https://github.com/WolvenKit/wwise-audio-tools")
 sha512sums=("SKIP")
+
+pkgver() {
+  cd ${srcdir}/wwise-audio-tools
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
 	cd "${srcdir}/wwise-audio-tools"
