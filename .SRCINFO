@@ -1,0 +1,23 @@
+pkgbase = python-amaranth-boards-git
+	pkgdesc = Board definitions for Amaranth HDL
+	pkgver = r208.2d0a23b
+	pkgrel = 1
+	url = https://github.com/amaranth-lang/amaranth-boards
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	makedepends = python-setuptools-scm
+	depends = python-amaranth
+	provides = python-nmigen-boards=r208.2d0a23b
+	provides = python-amaranth-boards=r208.2d0a23b
+	conflicts = python-nmigen-boards
+	conflicts = python-amaranth-boards
+	replaces = python-nmigen-boards-git
+	source = git+https://github.com/amaranth-lang/amaranth-boards.git
+	sha256sums = SKIP
+
+pkgname = python-amaranth-boards-git
