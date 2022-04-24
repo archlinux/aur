@@ -1,6 +1,6 @@
 pkgbase = rakubrew
 	pkgdesc = Manage Raku (Formarly Perl 6+) installations in your $HOME
-	pkgver = 26
+	pkgver = 28
 	pkgrel = 1
 	url = https://rakubrew.org/
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = rakubrew
 	depends = perl-json
 	depends = perl-file-copy-recursive
 	options = !emptydirs
-	source = v26.tar.gz::https://codeload.github.com/Raku/App-Rakubrew/tar.gz/refs/tags/v26
-	sha512sums = cf728b07e323fcf23a535fae54623275db0d7de822248b2e94d04fe5f2960dd0bcb2e3678dac6a4c2096da3fae753d01530fc39af9abf4e7ad8b9167dbc3adec
+	source = v28.tar.gz::https://github.com/Raku/App-Rakubrew/archive/refs/tags/v28.tar.gz
+	sha512sums = 132444a13af9709adf18ce95f546b8f580b82dc09a8b522fec7b4688e5096879b7f9c244099f29b71a1fb1abf5feae89fa414675e3fe93b85fc8aa1d02c450f3
 
 pkgname = rakubrew
