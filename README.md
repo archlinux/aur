@@ -13,7 +13,7 @@ A tool for choosing NordVPN servers, Version 1.1
   `-p PROTOCOLS, --protocols PROTOCOLS` - Filter by server protocols, see list below  
   `-e EXCLUDE, --exclude EXCLUDE` - Exclude these servers from the list
   `--list-protocols` - List the protocol options available  
-  `--server-url` - Override the default server database url (https://nordvpn.com/api/server)
+  `--server-url` - Override the default server database url (https://nordvpn.com/api/server)  
   `--no-ping` - Don't ping the server to check connectivity    
   `-v, --verbose` - Be verbose  
   
@@ -64,7 +64,7 @@ The following protocols can be selected with the -p argument:
 `--list-protcols` will list these options.  
 For details of these protocols and their usage consult the NordVPN documentation.  
 
-## Exlude
+## Exclude
 
 Servers can be manually exluded using the `-e` or `--exlude` option, enter the server with the short code e.g. `-e us1234`    
   
