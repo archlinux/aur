@@ -1,6 +1,6 @@
 pkgbase = piper-git
 	pkgdesc = Piper is a GUI interface to ratbagd, the system daemon for configurable mice
-	pkgver = 0.5.1.r5.gbf2444a
+	pkgver = 0.6.r19.gb192c20
 	pkgrel = 1
 	url = https://github.com/libratbag/piper
 	arch = any
@@ -8,6 +8,7 @@ pkgbase = piper-git
 	makedepends = git
 	makedepends = meson
 	makedepends = flake8
+	makedepends = appstream
 	depends = python3
 	depends = python-gobject>=3.0
 	depends = libratbag
@@ -22,4 +23,3 @@ pkgbase = piper-git
 	sha256sums = SKIP
 
 pkgname = piper-git
-

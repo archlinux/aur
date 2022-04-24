@@ -1,16 +1,17 @@
-# Maintainer: Fabian Piribauer <fabian.piribauer@gmail.com>
+# Maintainer: Markus Hartung <mail@hartmark.se>
+# Contributor: Fabian Piribauer <fabian.piribauer@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Original Carlos Silva <r3pek@r3pek.org>
 
 pkgname=piper-git
-pkgver=0.5.1.r5.gbf2444a
+pkgver=0.6.r19.gb192c20
 pkgrel=1
 pkgdesc='Piper is a GUI interface to ratbagd, the system daemon for configurable mice'
 arch=('any')
 url='https://github.com/libratbag/piper'
 license=('GPL')
 depends=('python3' 'python-gobject>=3.0' 'libratbag' 'python-evdev' 'python-lxml' 'python-cairo' 'hicolor-icon-theme')
-makedepends=('git' 'meson' 'flake8')
+makedepends=('git' 'meson' 'flake8' 'appstream')
 options=(!emptydirs)
 source=("${pkgname}::git+https://github.com/libratbag/piper.git")
 sha256sums=('SKIP')
