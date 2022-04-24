@@ -1,6 +1,7 @@
 # Maintainer: Polis Minus <polisminus2247@tuta.io>
 pkgname=activate-linux-git
-pkgver=1.0
+_pkgname=activate-linux
+pkgver=r68.05aef15
 pkgrel=1
 pkgdesc="The \"Activate Windows\" watermark ported to Linux with Xlib and cairo in C"
 arch=("x86_64")
@@ -13,13 +14,18 @@ sha512sums=('SKIP')
 
 source=(git+https://github.com/MrGlockenspiel/activate-linux)
 
-build(){
-  cd "$srcdir"/activate-linux
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "$srcdir/$_pkgname"
   make
 }
 
-package(){
-  cd "$srcdir/activate-linux"
+package() {
+  cd "$srcdir/$_pkgname"
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -D bin/activate_linux "$pkgdir/usr/bin/activate-linux"
+  install -D bin/activate-linux "$pkgdir/usr/bin/activate-linux"
 }
