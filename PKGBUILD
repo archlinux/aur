@@ -10,7 +10,7 @@ depends=('at-spi2-core' 'desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'libnot
 optdepends=('libappindicator-gtk3: For tray-icon support')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
-source_x86_64=("https://bixby-ide.s3.amazonaws.com/stable-c4f5c975-1d91-4065-b661-633de7275e11/BixbyStudio-${pkgver//_/-}-linux.deb")
+source_x86_64=("https://bixby-studio.s3.amazonaws.com/stable-c4f5c975-1d91-4065-b661-633de7275e11/BixbyStudio-${pkgver//_/-}-linux.deb")
 md5sums_x86_64=('81cffcb9dfe3af3f8423d2810b64115f')
 
 package(){
