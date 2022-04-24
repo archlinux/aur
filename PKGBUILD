@@ -2,14 +2,14 @@
 
 pkgbase=czkawka
 pkgname=('czkawka-cli' 'czkawka-gui')
-pkgver=4.0.1
+pkgver=4.1.0
 pkgrel=1
-pkgdesc='Multi functional app to find duplicates, empty folders, similar images etc. '
+pkgdesc='Multi functional app to find duplicates, empty folders, similar images etc.'
 url='https://github.com/qarmin/czkawka'
 arch=('x86_64')
 license=('MIT')
 makedepends=('cargo' 'rust' 'git' 'gtk3')
-_commit=c7ff65c11ae46c774970be5c5f263cf8d746223b # tags/4.0.1^0
+_commit=b00420d8c0c4621cdcb42c8ab7cd449bbc70904f # tags/4.1.0^0
 source=("git+https://github.com/qarmin/czkawka.git#commit=${_commit}")
 sha512sums=('SKIP')
 
@@ -32,6 +32,7 @@ check() {
 
 package_czkawka-cli() {
   depends=('bzip2')
+  pkgdesc+=" (CLI)"
 
   install -Dm644 "${srcdir}/czkawka/LICENSE" \
         "${pkgdir}/usr/share/licenses/czkawka-cli/LICENSE"
@@ -41,6 +42,7 @@ package_czkawka-cli() {
 
 package_czkawka-gui() {
   depends=('gtk3')
+  pkgdesc+=" (GTK3 GUI)"
 
   install -Dm644 "${srcdir}/czkawka/LICENSE" \
         "${pkgdir}/usr/share/licenses/czkawka-gui/LICENSE"
