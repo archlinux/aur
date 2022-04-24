@@ -2,7 +2,7 @@
 
 pkgname=labelme
 pkgver=5.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc='Image Polygonal Annotation with Python (polygon, rectangle, circle, line, point and image-level flag annotation).'
 arch=('any')
 url='https://github.com/wkentaro/labelme'
@@ -36,6 +36,6 @@ package() {
   install -Dm644 "labelme.desktop" -t "${pkgdir}/usr/share/applications"
   # make labelme use PySide2 by default, PyQt5 is not working
   # see also https://github.com/spyder-ide/qtpy/blob/master/qtpy/__init__.py
-  sed -i "3i impot PySide2" "${pkgdir}/usr/bin/labelme"
+  sed -i "3i import PySide2" "${pkgdir}/usr/bin/labelme"
 }
 # vim:set ts=2 sw=2 et:
