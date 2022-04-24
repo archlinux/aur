@@ -7,8 +7,8 @@ pkgdesc="The mkpasswd2 by Marco d'Itr, 'whois' project"
 arch=('i686' 'x86_64')
 url="https://github.com/rfc1036/whois"
 license=('GPL2')
-depends=('glibc' 'libidn2' 'libxcrypt')
-makedepends=('git' 'perl')
+depends=('glibc' 'libxcrypt')
+makedepends=('git' 'perl' 'libidn2')
 provides=('mkpasswd2')
 conflicts=('mkpasswd' 'debian-whois-mkpasswd')
 source=("git+${url}.git#branch=next")
