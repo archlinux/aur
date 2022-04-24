@@ -1,0 +1,15 @@
+#!/bin/bash
+
+post_install() {
+    chmod 644 /etc/systemd/system/pulseway.service
+    systemctl daemon-reload
+    systemctl enable pulseway.service
+}
+
+post_remove() {
+    systemctl stop pulseway
+    systemctl disable pulseway
+    systemctl daemon-reload
+    rm -rf /var/pulseway
+    rm -rf /var/lib/pulseway
+}
