@@ -7,6 +7,7 @@ pkgbase = seashell-git
 	license = MIT
 	makedepends = cmake
 	makedepends = make
+	makedepends = git
 	depends = readline
 	source = git+https://github.com/Mirko-r/SeaShell.git
 	md5sums = SKIP

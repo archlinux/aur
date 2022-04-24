@@ -9,7 +9,7 @@ arch=(x86_64)
 url="https://github.com/mirko-r/SeaShell"
 license=('MIT')
 depends=('readline')
-makedepends=('cmake' 'make')
+makedepends=('cmake' 'make' 'git')
 source=("git+https://github.com/Mirko-r/SeaShell.git")
 md5sums=("SKIP")
 
