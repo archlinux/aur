@@ -8,7 +8,7 @@
 
 _base=gaupol
 pkgname=${_base}-git
-pkgver=20220221.2510
+pkgver=1.11.1.g8eae3998
 pkgrel=1
 pkgdesc="Editor for text-based subtitles"
 arch=('any')
@@ -33,9 +33,7 @@ install=gaupol.install
 
 pkgver() {
   cd gaupol
-  _d=$(git log -n 1 --pretty=%ad --date=short | sed 's/-//g')
-  _c=$(git log --pretty=%h | wc -l)
-  printf '%s.%s' $_d $_c
+  git describe --always | sed 's|-|.|g'
 }
 
 package() {

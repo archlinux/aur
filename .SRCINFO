@@ -1,6 +1,6 @@
 pkgbase = gaupol-git
 	pkgdesc = Editor for text-based subtitles
-	pkgver = 20220221.2510
+	pkgver = 1.11.1.g8eae3998
 	pkgrel = 1
 	url = https://otsaloma.io/gaupol
 	install = gaupol.install
