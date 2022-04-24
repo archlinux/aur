@@ -1,10 +1,11 @@
-# Maintainer: Yusuf Aktepe <yusuf@yusufaktepe.com>
+# Maintainer:  Amber <amber@mail.cyborgtrees.com>
+# Contributor: Yusuf Aktepe <yusuf@yusufaktepe.com>
 # Contributor: Lukas Fleischer <lfleischer@archlinux.org>
 # Contributor: Aaron Schaefer <aaron@elasticdog.com>
 
 pkgname=transset-df
 pkgver=6
-pkgrel=7
+pkgrel=8
 pkgdesc="A patched version of X.Org's transset with added functionality."
 arch=('x86_64')
 url='https://forchheimer.se/transset-df/'

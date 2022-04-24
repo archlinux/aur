@@ -1,7 +1,7 @@
 pkgbase = transset-df
 	pkgdesc = A patched version of X.Org's transset with added functionality.
 	pkgver = 6
-	pkgrel = 7
+	pkgrel = 8
 	url = https://forchheimer.se/transset-df/
 	arch = x86_64
 	license = GPL
