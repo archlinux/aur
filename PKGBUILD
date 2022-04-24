@@ -2,37 +2,40 @@
 pkgbase=python-stsci.skypac
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc="Sky matching for image mosaic"
-arch=('i686' 'x86_64')
+arch=('any')
 url="https://stsci-skypac.readthedocs.io"
 license=('BSD')
-makedepends=('python-setuptools-scm' 'python-pytest-runner' 'python-stwcs' 'python-stsci.imagestats' 'python-spherical_geometry>=1.2.2' 'python-stsci_rtd_theme' 'python-sphinx_rtd_theme' 'python-numpydoc' 'texlive-latexextra')
+makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-installer' 'python-pytest-runner' 'python-stwcs' 'python-stsci.imagestats' 'python-spherical_geometry>=1.2.2' 'python-stsci_rtd_theme' 'python-sphinx_rtd_theme' 'python-numpydoc' 'texlive-latexextra')
 checkdepends=('python-pytest-doctestplus')
 source=("https://github.com/spacetelescope/stsci.skypac/archive/${pkgver}.tar.gz")
-md5sums=('30e5e2724de005f44a008d6c6e8cfaae')
+md5sums=('ceeadf5f02d6df7ac973d901edc32ccf')
+
+get_pyver () {
+    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
+}
 
 prepare() {
-    cd ${srcdir}/${_pyname}-${pkgver}/docs/source
-
-    sed -i "/^release/c release = '${pkgver}'" conf.py
     export SETUPTOOLS_SCM_PRETEND_VERSION=${pkgver}
-    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
 }
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python setup.py build
+    python -m build --wheel --no-isolation
 
     msg "Building Docs"
-    PYTHONPATH="./build/lib" python setup.py build_sphinx
+    ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname/-/_}*egg-info \
+        build/lib/${_pyname/-/_}-${pkgver}-py$(get_pyver).egg-info
+    cd ${srcdir}/${_pyname}-${pkgver}/docs
+    PYTHONPATH="../build/lib" make html
 }
 
 check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
-    pytest || warning "Tests failed"
+    PYTHONPATH="build/lib" pytest || warning "Tests failed"
 }
 
 package_python-stsci.skypac() {
@@ -42,14 +45,14 @@ package_python-stsci.skypac() {
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE.txt
     install -D -m644 -t "${pkgdir}/usr/share/doc/${pkgname}" README.md
-    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
-    rm "${pkgdir}/usr/lib/python${_pyver}/site-packages/stsci/__init__.py"
-    rm "${pkgdir}/usr/lib/python${_pyver}/site-packages/stsci/__pycache__"/*
+    python -m installer --destdir="${pkgdir}" dist/*.whl
+    rm "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/stsci/__init__.py"
+    rm "${pkgdir}/usr/lib/python$(get_pyver)/site-packages/stsci/__pycache__"/*
 }
 
 package_python-stsci.skypac-doc() {
     pkgdesc="Documentation for STScI skypac"
-    cd ${srcdir}/${_pyname}-${pkgver}/build/sphinx
+    cd ${srcdir}/${_pyname}-${pkgver}/docs/_build
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" ../../LICENSE.txt
     install -d -m755 "${pkgdir}/usr/share/doc/${pkgbase}"
