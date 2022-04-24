@@ -1,7 +1,7 @@
 pkgbase = mpris-scrobbler
 	pkgdesc = Minimalistic user daemon which submits the currently playing song to libre.fm and compatible services.
 	pkgver = 0.5.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/mariusor/mpris-scrobbler
 	arch = x86
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = mpris-scrobbler
 	depends = libevent
 	depends = curl
 	depends = json-c
-	optdepends = xdg-open
+	optdepends = xdg-utils
 	source = mpris-scrobbler-0.5.0.tar.gz::https://github.com/mariusor/mpris-scrobbler/archive/v0.5.0.tar.gz
 	validpgpkeys = 57D7D1ACC58E01C56961F9FB0FBA983067613EE6
 	sha256sums = 044290a9c07e5f6b5fbcb665ded2528e07a56e024f369857967f950a814ca775
