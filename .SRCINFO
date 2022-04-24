@@ -1,6 +1,6 @@
 pkgbase = seashell-git
 	pkgdesc = A Fast and Simple UNIX shell in C
-	pkgver = 0.0.5_alpha
+	pkgver = 0.0.6.alpha.r1.g58f6bd1
 	pkgrel = 1
 	url = https://github.com/mirko-r/SeaShell
 	arch = x86_64
