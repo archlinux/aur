@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Comment=A secure, private, minimal, cross-platform document editor.
+Terminal=false
+Exec=/usr/bin/lockbook-desktop
+Name=Lockbook
+Icon=dark-1.svg
