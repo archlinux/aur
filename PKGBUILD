@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=colloid-gtk-theme-git
-pkgver=2022.01.08.r17.g7ca237a
+pkgver=2022.04.22.r4.gf618c8e8
 pkgrel=1
 pkgdesc="Modern and clean Gtk theme for linux"
 arch=('any')
@@ -27,6 +27,6 @@ package() {
   ./install.sh -t all -s compact -d "$pkgdir/usr/share/themes"
 
   # Nord version - currently missing assets: src/assets/gtk/assets-grey-nord
-#  ./install.sh -t all --tweaks nord -d "$pkgdir/usr/share/themes"
-#  ./install.sh -t all -s compact --tweaks nord -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all --tweaks nord -d "$pkgdir/usr/share/themes"
+  ./install.sh -t all -s compact --tweaks nord -d "$pkgdir/usr/share/themes"
 }
