@@ -1,6 +1,6 @@
 # Maintainer: David Beley <dbeley@protonmail.com>
 pkgname=mpdscrobble-git
-pkgver=0.2.5
+pkgver=0.3.1
 pkgrel=1
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -13,6 +13,7 @@ depends=(
         'python-setuptools'
         'python-mpd2'
         'python-pylast'
+        'python-httpx'
         )
 source=("git+https://github.com/dbeley/${pkgname%-git}")
 md5sums=("SKIP")
