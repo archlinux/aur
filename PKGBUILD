@@ -44,7 +44,7 @@ package() {
   install -d "${pkgdir}/opt/${pkgname}"
   install -d "${pkgdir}/usr/bin"
   install -d "${pkgdir}/usr/share/applications"
-  install -d "${pkgdir}/usr/share/icons" 
+  #install -d "${pkgdir}/usr/share/icons" 
 
   install -m644 "${srcdir}/data/usr/share/code-insiders/resources/app/LICENSE.rtf" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.rtf"
   install -m644 "${srcdir}/data/usr/share/code-insiders/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
