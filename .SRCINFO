@@ -1,7 +1,8 @@
 pkgbase = riven
 	pkgver = 1.2_20030721_dvd
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 0
+	url = https://cyan.com/games/riven/
 	arch = any
 	makedepends = dos2unix
 	makedepends = imagemagick

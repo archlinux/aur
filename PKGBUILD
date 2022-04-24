@@ -8,9 +8,10 @@ pkgname=(
   "riven-makingof"
 )
 arch=('any')
+url='https://cyan.com/games/riven/'
 epoch="0"
 pkgver='1.2_20030721_dvd' # Obtained from the file 'Read Instructions First'.
-pkgrel=1
+pkgrel=2
 makedepends=(
   'dos2unix'    # To convert text files with Mac and DOS new line standard to Unix new line standard.
   'imagemagick' # To convert .ico to .png.
