@@ -1,7 +1,7 @@
 pkgbase = ortfo
-	pkgdesc = The GUI for ortfo, a portfolio manager (latest git commit)
+	pkgdesc = The GUI for ortfo, a portfolio manager
 	pkgver = 0.1.0.alpha.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ortfo/gui
 	arch = x86_64
 	license = GPL-3.0
