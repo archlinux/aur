@@ -4,7 +4,7 @@
 
 pkgname=erlang-docs
 pkgver=24.0
-pkgrel=1
+pkgrel=2
 pkgdesc='HTML and PDF documentation for Erlang'
 arch=(any)
 url='http://erlang.org/doc/'
