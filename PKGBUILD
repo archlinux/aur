@@ -2,7 +2,7 @@
 # Maintainer: Owen Wang <newo@duck.com>
 
 pkgname=vatsim-manager
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Installer and manager for VATSIM clients"
 arch=('x86_64')
@@ -14,7 +14,7 @@ optdepends=('wine: ATC and AFV client support'
 	    'winetricks: ATC and AFV client support')
 
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ea37a4ca0872d58e780bdc756f69a1a011a2cb0d78c449a73faf1e97e12bc2fa')
+sha256sums=('828847e99f619ed9c3c02e655f36a6bb7bf51e982b6ca73f136a42b8409e8b6c')
 options=('!buildflags')
 
 build() {
