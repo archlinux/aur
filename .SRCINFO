@@ -36,4 +36,3 @@ pkgbase = conky-git
 	sha256sums = SKIP
 
 pkgname = conky-git
-
