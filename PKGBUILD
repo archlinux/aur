@@ -32,7 +32,7 @@ build() {
 
 package() {
   cd $pkgname
-  DESTDIR="$pkgdir/" ninja -C build install
+  DESTDIR="$pkgdir" ninja -C build install
   
   # install license
   install -D -m644 "LICENSES/MIT" "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE-MIT
