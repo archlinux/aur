@@ -1,0 +1,27 @@
+pkgbase = python-flakeheaven
+	pkgdesc = Flake8 wrapper to make it nice, legacy-friendly, configurable. Flakehell fork.
+	pkgver = 0.11.0
+	pkgrel = 1
+	url = https://flakeheaven.readthedocs.io/
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	depends = python
+	depends = python-attrs
+	depends = python-entrypoints
+	depends = python-typing-extensions
+	depends = python-termcolor
+	depends = python-flake8-quotes
+	depends = python-pygments
+	depends = python-isort
+	depends = python-pylint
+	depends = python-urllib3
+	depends = flake8
+	depends = python-mccabe
+	depends = python-flake8-commas
+	depends = python-flit-core
+	source = https://github.com/flakeheaven/flakeheaven/archive/refs/tags/0.11.0.tar.gz
+	sha512sums = 0ed08faf8db82f76874000c383fed0743d28383c31df9dc74a80b4b997c3ae87458c147de9538ce84f3ac238230acd67ac0d3c9a5730855c7dd752c72c7f056f
+
+pkgname = python-flakeheaven
