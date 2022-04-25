@@ -1,21 +1,17 @@
 pkgbase = openvpn3
 	pkgdesc = OpenVPN 3 Linux client
 	pkgver = 17_beta
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/OpenVPN/openvpn3-linux
 	install = openvpn3.install
 	arch = any
 	license = AGPL3
-	makedepends = pkgconf
-	makedepends = autoconf
 	makedepends = autoconf-archive
-	makedepends = automake
-	makedepends = make
-	makedepends = gcc
 	makedepends = git
 	makedepends = libnl
+	makedepends = python-docutils
 	makedepends = python-jinja
-	makedepends = tinyxml2
+	makedepends = bash
 	depends = glib2>=2.50
 	depends = jsoncpp>=0.10.5
 	depends = libcap-ng>=0.7.5
@@ -23,14 +19,15 @@ pkgbase = openvpn3
 	depends = util-linux-libs>=2.23.2
 	depends = protobuf
 	depends = python-dbus
-	optdepends = python>=3.6
-	optdepends = python-docutils
+	depends = python-gobject
+	depends = python-systemd
+	depends = tinyxml2>=2.1.0
 	optdepends = openssl: OpenSSL version
 	optdepends = mbedtls: mbed TLS version
-	optdepends = python-gobject
 	optdepends = polkit>=0.105: for systemd-resolved integration
-	optdepends = tinyxml2>=2.1.0: for AWS-VPC integration
 	source = git+https://github.com/OpenVPN/openvpn3-linux.git#tag=v17_beta
+	source = archlinux-glib.patch
 	sha256sums = SKIP
+	sha256sums = 004c35951889d00caa09eac4a0d151fc8ecb95042a5a6a95023332b6a92d71ad
 
 pkgname = openvpn3
