@@ -4,7 +4,7 @@
 
 pkgname=qxmledit
 pkgver=0.9.16
-pkgrel=1
+pkgrel=2
 pkgdesc='Simple XML editor and XSD viewer'
 arch=('x86_64')
 url='https://qxmledit.org/'
