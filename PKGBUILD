@@ -7,7 +7,7 @@
 
 pkgname=byobu
 pkgver=5.133
-pkgrel=2
+pkgrel=3
 pkgdesc='Enhanced tmux'
 arch=(any)
 url='https://byobu.org/'
