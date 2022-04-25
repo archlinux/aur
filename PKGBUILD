@@ -25,6 +25,7 @@ _prams_France=(fr_FR 7884 'Logiciel de création CEWE' 7.1.3)
 _prams_Fnac=(fr_FR 18455 'Atelier Photo Fnac' 7.1.3)
 _prams_Fotobuch=(de_DE 16523 'Mein CEWE FOTOBUCH' 7.2.3 'CEWE Fotobuch')
 _prams_Germany=(de_DE 24441 'CEWE Fotowelt' 7.2.3)
+_prams_Italy=(it_IT 19991 'CEWE.IT Foto World' 7.1.5)
 _prams_Luxemburg=(de_LU 32905 'CEWE Photoservice' 7.1.5)
 _prams_Luxembourg=(fr_LU 32905 'CEWE Photoservice' 7.1.4)
 _prams_Netherlands=(nl_NL 28035 'CEWE Fotoservice' 7.1.4)
@@ -42,8 +43,8 @@ pkgver() {
 if [ -z "$_SETUP_FILE" ]
 then
 	declare -n _prams=_prams_$_productVariant
-	# replace spaces and remove any accents for setup file name
-	source="https://dls.photoprintit.com/download/Data/${_prams[1]}-${_prams[0]}/hps/setup_$(iconv -t ascii//TRANSLIT <(echo ${_prams[2]// /_})).tgz"
+	# remove any accents and replace spaces and dots for setup file name
+	source="https://dls.photoprintit.com/download/Data/${_prams[1]}-${_prams[0]}/hps/setup_$(echo ${_prams[2]} | iconv -t ascii//TRANSLIT | sed 's/[ .]/_/g').tgz"
 else
 	mkdir -p src
 	bsdtar -xf "$_SETUP_FILE" -C src install.pl
@@ -88,10 +89,14 @@ install="$pkgname.install"
 _installDir=/usr/share/$pkgname
 
 check() {
+	# from start of script, where parameters are set:
 	local setRightDownloadServer="$(sed '0,/AB HIER SOLLTE NICHTS MEHR GEAENDERT WERDEN/p;d' "$src"install.pl | grep -Po '^my \$DOWNLOAD_SERVER\t+= "https://dls.photoprintit.com";')"
 	local mentionDownloadServer="$(sed '0,/AB HIER SOLLTE NICHTS MEHR GEAENDERT WERDEN/p;d' "$src"install.pl | grep -Po '.*\$DOWNLOAD_SERVER[^\r]*')"
+	# for body of script, after parameters set:
 	local md5sum=$(md5sum <(sed '0,/AB HIER SOLLTE NICHTS MEHR GEAENDERT WERDEN/d' "$src"install.pl) | grep -Po '^[^ ]*')
 
+	# only mention of server variable in parameter section should be to set correct server;
+	# md5sum of script body should match package version unless a setup file was provided:
 	[ "$mentionDownloadServer" == "$setRightDownloadServer" ] && [ ${_scriptTailMd5sums[${pkgver%.*}]} == $md5sum -o -n "$_SETUP_FILE" ]
 }
 
