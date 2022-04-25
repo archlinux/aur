@@ -1,6 +1,6 @@
 pkgbase = xemu-git
 	pkgdesc = Original Xbox emulator (fork of XQEMU)
-	pkgver = 0.6.2.r90.g6f507c80af
+	pkgver = 0.6.3.r0.g87919cfb13
 	pkgrel = 1
 	url = https://xemu.app/
 	install = xemu.install
@@ -17,18 +17,21 @@ pkgbase = xemu-git
 	makedepends = meson
 	makedepends = openssl
 	makedepends = pixman
-	makedepends = python
+	makedepends = python-yaml
 	makedepends = samurai
-	makedepends = xxhash
+	makedepends = tomlplusplus>=3.0.1.r11
+	makedepends = xxhash>=0.7.4.r137
 	depends = sdl2
 	provides = xemu
 	conflicts = xemu
 	source = xemu::git+https://github.com/mborgerson/xemu.git
 	source = berkeley-softfloat-3::git+https://gitlab.com/qemu-project/berkeley-softfloat-3.git
 	source = berkeley-testfloat-3::git+https://gitlab.com/qemu-project/berkeley-testfloat-3.git
+	source = genconfig::git+https://github.com/mborgerson/genconfig.git
 	source = imgui::git+https://github.com/ocornut/imgui.git
 	source = implot::git+https://github.com/epezent/implot.git
 	source = keycodemapdb::git+https://gitlab.com/qemu-project/keycodemapdb.git
+	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP

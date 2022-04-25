@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=xemu
 pkgname=$_pkgname-git
-pkgver=0.6.2.r90.g6f507c80af
+pkgver=0.6.3.r0.g87919cfb13
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
@@ -20,9 +20,10 @@ makedepends=(
 	'meson'
 	'openssl'
 	'pixman'
-	'python'
+	'python-yaml'
 	'samurai'
-	'xxhash'
+	'tomlplusplus>=3.0.1.r11'
+	'xxhash>=0.7.4.r137'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -31,11 +32,13 @@ source=(
 	"$_pkgname::git+https://github.com/mborgerson/xemu.git"
 	'berkeley-softfloat-3::git+https://gitlab.com/qemu-project/berkeley-softfloat-3.git'
 	'berkeley-testfloat-3::git+https://gitlab.com/qemu-project/berkeley-testfloat-3.git'
+	'genconfig::git+https://github.com/mborgerson/genconfig.git'
 	'imgui::git+https://github.com/ocornut/imgui.git'
 	'implot::git+https://github.com/epezent/implot.git'
 	'keycodemapdb::git+https://gitlab.com/qemu-project/keycodemapdb.git'
 )
 b2sums=(
+	'SKIP'
 	'SKIP'
 	'SKIP'
 	'SKIP'
@@ -51,7 +54,8 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
-	git submodule init tests/fp/berkeley-{soft,test}float-3 ui/{imgui,implot,keycodemapdb}
+	git submodule init genconfig tests/fp/berkeley-{soft,test}float-3 ui/{imgui,implot,keycodemapdb}
+	git config submodule.genconfig.url ../genconfig
 	git config submodule.tests/fp/berkeley-softfloat-3.url ../berkeley-softfloat-3
 	git config submodule.tests/fp/berkeley-testfloat-3.url ../berkeley-testfloat-3
 	git config submodule.ui/imgui.url ../imgui
@@ -59,6 +63,8 @@ prepare() {
 	git config submodule.ui/keycodemapdb.url ../keycodemapdb
 	git submodule update
 	python scripts/gen-license.py > XEMU_LICENSE
+	# unbundle tomlplusplus
+	sed -i 's/<toml\.hpp>/<toml++\/toml.h>/' genconfig/cnode.h toml.cpp ui/xemu-settings.cc
 	# unbundle xxhash
 	sed -i 's/"util\/xxHash\/xxh3\.h"/<xxh3.h>/' util/fast-hash.c
 }
