@@ -1,6 +1,6 @@
 pkgbase = fava-git
 	pkgdesc = Web interface for beancount
-	pkgver = 1.15.r11.g2f140b23
+	pkgver = 1.21.r29.g877e4348
 	pkgrel = 1
 	url = https://beancount.github.io/fava/
 	arch = any
@@ -8,6 +8,10 @@ pkgbase = fava-git
 	makedepends = git
 	makedepends = nodejs
 	makedepends = npm
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools-scm
+	makedepends = python-wheel
 	depends = beancount>=2.3.0
 	depends = python>=3.6
 	depends = python-setuptools
@@ -29,8 +33,7 @@ pkgbase = fava-git
 	conflicts = fava
 	conflicts = beancount-fava-git
 	replaces = beancount-fava-git
-	source = git://github.com/beancount/fava.git
+	source = git+https://github.com/beancount/fava.git
 	md5sums = SKIP
 
 pkgname = fava-git
-

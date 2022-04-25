@@ -2,7 +2,7 @@
 # Contributor: Ng Oon-Ee <ngoonee.talk@gmail.com>
 pkgname=fava-git
 _name=${pkgname%-git}
-pkgver=1.15.r11.g2f140b23
+pkgver=1.21.r29.g877e4348
 pkgrel=1
 pkgdesc="Web interface for beancount"
 arch=('any')
@@ -31,12 +31,16 @@ optdepends=('python-pyexcel>=0.2.2: Spreadsheet (ODS/XLS/XLSX) support'
 
 makedepends=('git'
              'nodejs'
-             'npm')
+             'npm'
+             'python-build'
+             'python-installer'
+	     'python-setuptools-scm'
+             'python-wheel')
 
 provides=("${_name}")
 conflicts=("${_name}" "beancount-fava-git")
 replaces=("beancount-fava-git")
-source=('git://github.com/beancount/fava.git')
+source=('git+https://github.com/beancount/fava.git')
 md5sums=('SKIP')
 
 pkgver() {
@@ -47,10 +51,10 @@ pkgver() {
 build() {
 	cd "$srcdir/${_name}"
 	make
-	python setup.py build
+	python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "$srcdir/${_name}"
-	python setup.py install --root="${pkgdir}/" --optimize=1 --skip-build
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
