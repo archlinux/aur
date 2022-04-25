@@ -6,7 +6,7 @@ pkgbase=matlab
 # python-matlabengine must be packaged before matlab, because package_matlab
 # moves files needed by package_python-matlabengine, they're expensive to copy.
 pkgname=('python-matlabengine' 'matlab')
-pkgrel=3
+pkgrel=4
 # No need to modify the pkgver here, it will be determined by the script
 # in the offline installer.
 pkgver=9.12.0.1903524
