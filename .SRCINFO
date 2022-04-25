@@ -1,6 +1,6 @@
 pkgbase = go-carbon
 	pkgdesc = Golang implementation of Graphite/Carbon server with classic architecture: Agent -> Cache -> Persister
-	pkgver = 0.15.6
+	pkgver = 0.16.2
 	pkgrel = 1
 	url = https://github.com/go-graphite/go-carbon
 	arch = i686
@@ -11,12 +11,11 @@ pkgbase = go-carbon
 	backup = etc/go-carbon/go-carbon.conf
 	backup = etc/go-carbon/storage-aggregation.conf
 	backup = etc/go-carbon/storage-schemas.conf
-	source = go-carbon-0.15.6.tar.gz::https://github.com/go-graphite/go-carbon/archive/v0.15.6.tar.gz
+	source = go-carbon-0.16.2.tar.gz::https://github.com/go-graphite/go-carbon/archive/v0.16.2.tar.gz
 	source = go-carbon.conf.diff
 	source = go-carbon-dynamicuser.diff
-	sha256sums = 411c132cc70b981a44283268f9ece9a00d684253fcdefc282272609d68beea4e
+	sha256sums = 05e464a7171a82da68bb8b1fa0b54cd9bd4f1613b061f83a97a07c3ba3f03242
 	sha256sums = 174654ee0dfc98b220fa5be85365fce3a07fb94400ae8aecf5ae79e8af620758
 	sha256sums = dceef1378a24a7acf7677284ee52f86e197fadeeab87b3c289cc0ac5741add9d
 
 pkgname = go-carbon
-
