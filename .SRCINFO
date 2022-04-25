@@ -1,7 +1,7 @@
 pkgbase = openvpn3
 	pkgdesc = OpenVPN 3 Linux client
 	pkgver = 17_beta
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/OpenVPN/openvpn3-linux
 	install = openvpn3.install
 	arch = any
@@ -25,9 +25,12 @@ pkgbase = openvpn3
 	optdepends = openssl: OpenSSL version
 	optdepends = mbedtls: mbed TLS version
 	optdepends = polkit>=0.105: for systemd-resolved integration
+	optdepends = repkg: Automatically rebuild the package on dependency updates
 	source = git+https://github.com/OpenVPN/openvpn3-linux.git#tag=v17_beta
 	source = archlinux-glib.patch
+	source = openvpn3.rule
 	sha256sums = SKIP
 	sha256sums = 004c35951889d00caa09eac4a0d151fc8ecb95042a5a6a95023332b6a92d71ad
+	sha256sums = ec0b8e28ae77b4b074d3eb8a084626e6dcfc587a07bef5d53fe1c6e160c0fc01
 
 pkgname = openvpn3
