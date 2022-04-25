@@ -1,13 +1,13 @@
 # Maintainer:       Misaka13514 <Misaka13514 at gmail dot com>
 # Co-Maintainer:    zzjzxq33 <wojiushixxx at 126 dot com>
 pkgname=bbg-git
-pkgver=20220315.r0.f3d61ce
+pkgver=20220315.r18.ca6cae1
 pkgrel=1
 pkgdesc="A static blog generator built with electron"
 arch=('any')
 url="https://github.com/baiyang-lzy/bbg"
 license=('Unlicense')
-depends=('electron')
+depends=('electron16')
 makedepends=('git' 'yarn')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -18,7 +18,7 @@ source=(
 	"${pkgname%-git}::git+${url}.git"
 )
 sha256sums=(
-	'90eae5e0d3e5e89cf3a54c25ed6b8f94e9881b0b37c94e4592661137ba859c2e'
+	'ef39a1c67ffe2228d8bb51256a5a666d8ecbbfbc935c1f515a6c087ba5fbe924'
 	'b2055c02386eacb33fff9f53b2c1bf099d49e4c63d016704a220e9108ded262f'
 	'f503d93639c1f4d4e050eceb11adf64d369908e5941cfdbda3af30b2f3c73d96'
 	'SKIP'
