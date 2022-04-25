@@ -1,0 +1,16 @@
+pkgbase = python-adafruit-blinka-displayio
+	pkgdesc = displayio for Blinka
+	pkgver = 0.10.0
+	pkgrel = 0
+	url = https://github.com/adafruit/Adafruit_Blinka
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-pip
+	depends = python-adafruit-blinka
+	source = https://pypi.io/packages/source/a/adafruit-blinka-displayio/adafruit-blinka-displayio-0.10.0.tar.gz
+	sha256sums = afbab3ea81cd7adb6def5fd0bb68ed2070b1a53351d0981f415b46ee29b6f3d9
+
+pkgname = python-adafruit-blinka-displayio
