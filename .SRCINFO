@@ -6,7 +6,6 @@ pkgbase = zeno
 	arch = x86_64
 	license = MPL2
 	makedepends = git
-	makedepends = gcc
 	makedepends = cmake
 	makedepends = ninja
 	depends = qt5-base
