@@ -5,6 +5,7 @@ pkgbase = jdk11-temurin
 	url = https://adoptium.net/
 	install = install_jdk11-temurin.sh
 	arch = x86_64
+	arch = armv7h
 	license = custom
 	depends = java-runtime-common>=3
 	depends = java-environment-common
@@ -44,13 +45,15 @@ pkgbase = jdk11-temurin
 	backup = etc/java-11-temurin/management/jmxremote.access
 	backup = etc/java-11-temurin/management/jmxremote.password.template
 	backup = etc/java-11-temurin/sound.properties
-	source = https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.14.1%2B1/OpenJDK11U-jdk_x64_linux_hotspot_11.0.14.1_1.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = 43fb84f8063ad9bf6b6d694a67b8f64c8827552b920ec5ce794dfe5602edffe7
 	sha256sums = 502d5dbdde0e4ef009af0f088e8431e0c1721ba2967951e690bf86d184493f75
 	sha256sums = 464c9a7518831eef7cf952a7bd51a1f0d80c19910d21dc1fce693fa6c2ea65df
 	sha256sums = 0f53d0b34412d1a2f30c33bcd68a8f682f1fc86fc76bf290bbb91cb5c1ad28ed
+	source_x86_64 = https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.14.1%2B1/OpenJDK11U-jdk_x64_linux_hotspot_11.0.14.1_1.tar.gz
+	sha256sums_x86_64 = 43fb84f8063ad9bf6b6d694a67b8f64c8827552b920ec5ce794dfe5602edffe7
+	source_armv7h = https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.14.1%2B1/OpenJDK11U-jdk_arm_linux_hotspot_11.0.14.1_1.tar.gz
+	sha256sums_armv7h = f4d53a1753cdde830d7872c6a1279df441f3f9aeb5d5037a568b3a392ebce9c2
 
 pkgname = jdk11-temurin
