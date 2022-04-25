@@ -2,12 +2,12 @@
 # Co-Maintainer:    Misaka13514 <Misaka13514 at gmail dot com>
 pkgname=bbg
 pkgver=20220315
-pkgrel=1
+pkgrel=2
 pkgdesc="A static blog generator built with electron"
 arch=('any')
 url="https://github.com/baiyang-lzy/bbg"
 license=('Unlicense')
-depends=('electron')
+depends=('electron16')
 conflicts=("${pkgname}-git")
 source=(
 	'bbg.sh'
@@ -16,7 +16,7 @@ source=(
 	"app-${pkgver}.asar"::"${url}/releases/download/${pkgver}/app.asar"
 )
 sha256sums=(
-	'90eae5e0d3e5e89cf3a54c25ed6b8f94e9881b0b37c94e4592661137ba859c2e'
+	'ef39a1c67ffe2228d8bb51256a5a666d8ecbbfbc935c1f515a6c087ba5fbe924'
 	'b2055c02386eacb33fff9f53b2c1bf099d49e4c63d016704a220e9108ded262f'
 	'f503d93639c1f4d4e050eceb11adf64d369908e5941cfdbda3af30b2f3c73d96'
 	'ce9c8bdd36e174e4fb5fcd85daf0c8bc7910e93300979688e4e47b72c6b2bb50'
