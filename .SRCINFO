@@ -1,13 +1,14 @@
 pkgbase = todotxt
 	pkgdesc = Simple and extensible shell script for managing your todo.txt file
-	pkgver = 2.12.0.post1
-	pkgrel = 3
+	pkgver = 2.12.0.post2
+	pkgrel = 1
 	url = https://github.com/todotxt/todo.txt-cli
 	install = todotxt.install
 	arch = any
 	license = GPL3
 	makedepends = git
-	source = todotxt-2.12.0.post1::git+https://github.com/todotxt/todo.txt-cli.git#commit=77c1f34609070135143f29395edc647a2d308311
+	optdepends = bash-completion: tab completion
+	source = todotxt-2.12.0.post2::git+https://github.com/todotxt/todo.txt-cli.git#commit=ea32af34e6a0efef59bdf9acaa1c38d5d32bef0d
 	sha256sums = SKIP
 
 pkgname = todotxt

@@ -1,4 +1,4 @@
 post_install() {
   echo "==> To change the default configuration, copy /etc/todo/config to, for example,"
-  echo "    ~/.config/todo/config or ~/.todo/config and modify the file."
+  echo "    ~/.config/todo/config or ~/.todo/config and then modify the file."
 }
