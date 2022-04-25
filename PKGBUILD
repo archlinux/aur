@@ -1,9 +1,9 @@
-# Maintainer: neodarz <neodarz at neodarz dot net>
+# Maintainer: brodokk <brodokk at brodokk dot space>
 
 _pkgname=flake8-variables-names
 pkgname=python-$_pkgname
 
-pkgver=0.0.2
+pkgver=0.0.5
 pkgrel=1
 pkgdesc="A flake8 extension that helps to make more readable variables names"
 
@@ -14,7 +14,7 @@ license=('MIT')
 depends=('python')
 
 source=("https://github.com/best-doctor/$_pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('c59938076df1b8d4686511b76e402f7d13531cbb1ecb47d856535210e1b2d04ff6549ec4621d09927ca0f4a358bea381a6303714fa298f808811f70ccb1734ee')
+sha512sums=('3f0f87d36af4aa9782b4738637e8f1d4b1ca678e5387b0768d21c1aab078e0e1e48b635626bbae7399e2e97f0a1cd545f5c45db72f54af3c03b5a6eee872e36b')
 
 package() {
     cd "$_pkgname-$pkgver"
