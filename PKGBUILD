@@ -40,6 +40,8 @@ package() {
   mkdir "${srcdir}/data"
   tar -xf "${srcdir}/data.tar.xz" -C "${srcdir}/data"
 
+  rm -rf "${pkgdir}/usr/share/icons"
+
   install -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -d "${pkgdir}/opt/${pkgname}"
   install -d "${pkgdir}/usr/bin"
