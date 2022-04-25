@@ -2,8 +2,8 @@
 
 pkgname=liblsl
 pkgver=1.16.0
-_pkgver=v1.16.0
-pkgrel=1
+_pkgver="v${pkgver}"
+pkgrel=2
 pkgdesc='C++ lsl library for multi-modal time-synched data transmission over the local network (stable release)'
 arch=('any')
 url='https://github.com/sccn/liblsl/'
