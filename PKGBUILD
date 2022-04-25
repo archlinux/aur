@@ -1,4 +1,4 @@
-# Maintainer: neodarz <neodarz at neodarz dot net>
+# Maintainer: brodokk < brodokk at brodokk dot space>
 
 _pkgname=flake8-print
 pkgname=python-$_pkgname
