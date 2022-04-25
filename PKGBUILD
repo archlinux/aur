@@ -2,7 +2,7 @@
 # Contributor: Daniel Bermond < gmail-com: danielbermond >
 
 pkgname=mingw-w64-dav1d
-pkgver=0.9.2
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='AV1 cross-platform decoder focused on speed and correctness (mingw-w64)'
 arch=('any')
@@ -13,12 +13,12 @@ options=('!strip' '!buildflags' '!libtool' 'staticlibs')
 makedepends=('mingw-w64-gcc' 'mingw-w64-meson' 'mingw-w64-wine' 'mingw-w64-xxhash' 'nasm' 'ninja' 'doxygen' 'graphviz')
 source=(https://downloads.videolan.org/pub/videolan/dav1d/${pkgver}/dav1d-${pkgver}.tar.xz{,.asc}
         https://code.videolan.org/videolan/dav1d-test-data/-/archive/${pkgver}/dav1d-test-data-${pkgver}.tar.gz)
-sha512sums=('87026f8b14e408ff50fc8f137ec2ede4b14c5f69687e615d2359d0f718ae5cb5176522490786d9ae1f7838182f82615c2674f7c2961b6dcec83f1ee587c3af7c'
+sha512sums=('a3a7e162e45181449cd42af3a4d36669a850a4ee9ab17641dcd63d84406444566e8ebc7caa55b0620ab581039f36d19a90218a40f52ebbe525b37ed9493fb3f3'
             'SKIP'
-            '99c7546964b1c7187257b85057c41ad0698fd00920c7cd3b7e8cd8bc173965f03b3e64729ab11f72dd8125bd0fc7228752da64b69d8087cbd973b1a64f249188')
-b2sums=('7baa28821b06b05b95d3ea80b22dffe59d0793c9b4be4231ba0be99b548e1f5517a956dc865c2be1702576d078c2218e7e80342a26ab4003b4f06bcb0cdbb769'
+            '6ce106e13217296ab9521dfb447c988f499770b201bc34b3aa4e161274139f6c6654d01b0a09f75e599c485ab8ff1bbac417acab6716f8f7c7c134278eea2e0e')
+b2sums=('792ba23ce3bd2ed9245d94daebf3a1e3e1df3cb463a9c54a0c23190801fc71c98c66f54f52b821f7741c818c80b308f41c5aed3ba68e234034285a48044f433e'
         'SKIP'
-        '750b1fb40ee8db873b9eb1a7f3b8923546d4782ca790bcbcc25c7bf13ccd3193dff3adfc75c32d877c722afb0392fad74632bddc46090d00e15d57b25c2f7716')
+        '76a41bdfa50c68cb1133b7669698e2f463c5ddd716919235d7b3624039dd4ed1e78b2e917796372caec2290affb3713d118373109d6baec921adeb7367a8117c')
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 validpgpkeys=('65F7C6B4206BD057A7EB73787180713BE58D1ADC') # VideoLAN Release Signing Key
 
@@ -32,7 +32,11 @@ build() {
   export WINEDEBUG=-all
   for _arch in ${_architectures}; do
     mkdir -p "${srcdir}/dav1d-${pkgver}/build-${_arch}" && cd "${srcdir}/dav1d-${pkgver}/build-${_arch}"
-    ${_arch}-meson .. --default-library both -Dtestdata_tests=true
+    ${_arch}-meson \
+      --default-library both \
+      -Dtestdata_tests=true \
+      -Denable_docs=false \
+      ..
 
     ninja
   done
