@@ -11,7 +11,7 @@ pkgbase = thingsboard-bin
 	provides = thingsboard-bin
 	conflicts = thingsboard
 	conflicts = thingsboard-git
-	backup = etc/thingsboard/conf
+	backup = etc/thingsboard/conf/thingsboard.conf
 	source = https://github.com/thingsboard/thingsboard/releases/download/v3.3.4.1/thingsboard-3.3.4.1.deb
 	sha256sums = SKIP
 
