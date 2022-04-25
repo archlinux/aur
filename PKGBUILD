@@ -1,14 +1,14 @@
 # Maintainer: Marco Rubin <marco.rubin@protonmail.com>
 
 pkgname=cpu
-pkgver=20220414
+pkgver=20220420
 pkgrel=1
 pkgdesc='cpu command in Go, inspired by the Plan 9 cpu command'
 arch=('any')
 license=('BSD')
 makedepends=(git go)
 url='https://github.com/u-root/cpu'
-source=("git+$url#commit=d0d60193955b2cb597a03a150a4e0a75f395033d")
+source=("git+$url#commit=06d280bbc7c2e14b5a00ca00c1aed2fd15791bd5")
 sha256sums=('SKIP')
 
 prepare(){
