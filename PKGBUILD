@@ -2,17 +2,16 @@
 
 pkgbase=libjxl-git
 pkgname=('libjxl-git' 'libjxl-doc-git')
-pkgver=0.3.7.r832.gd98c7071
+pkgver=0.3.7.r991.g88bfed80
 pkgrel=1
 pkgdesc='JPEG XL image format reference implementation (git version)'
 arch=('x86_64')
 url='https://jpeg.org/jpegxl/'
 license=('BSD')
 makedepends=('git' 'cmake' 'clang' 'brotli' 'gdk-pixbuf2' 'giflib' 'gimp'
-             'gperftools' 'libjpeg-turbo' 'libpng' 'openexr' 'gflags'
-             'gtest' 'java-environment' 'python' 'asciidoc' 'doxygen'
-             'graphviz' 'xdg-utils' 'highway-git')
-options=('!lto')
+             'gperftools' 'highway-git' 'libjpeg-turbo' 'libpng' 'openexr'
+             'gflags' 'gtest' 'java-environment' 'python' 'asciidoc'
+             'doxygen' 'graphviz' 'xdg-utils')
 source=('git+https://github.com/libjxl/libjxl.git'
         'git+https://github.com/google/brotli.git'
         'git+https://github.com/mm2/Little-CMS.git'
@@ -22,8 +21,10 @@ source=('git+https://github.com/libjxl/libjxl.git'
         'git+https://github.com/google/highway.git'
         'git+https://github.com/glennrp/libpng.git'
         'git+https://github.com/madler/zlib.git'
-        'git+https://github.com/gflags/gflags.git')
+        'git+https://github.com/gflags/gflags.git'
+        'libjxl-testdata'::'git+https://github.com/libjxl/testdata.git')
 sha256sums=('SKIP'
+            'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -36,15 +37,13 @@ sha256sums=('SKIP'
 
 prepare() {
     git -C libjxl submodule init
-    git -C libjxl config --local submodule.third_party/brotli.url "${srcdir}/brotli"
+    local _submodule
+    for _submodule in brotli googletest sjpeg skcms highway libpng zlib gflags
+    do
+        git -C libjxl config --local "submodule.third_party/${_submodule}.url" "${srcdir}/${_submodule}"
+    done
     git -C libjxl config --local submodule.third_party/lcms.url "${srcdir}/Little-CMS"
-    git -C libjxl config --local submodule.third_party/googletest.url "${srcdir}/googletest"
-    git -C libjxl config --local submodule.third_party/sjpeg.url "${srcdir}/sjpeg"
-    git -C libjxl config --local submodule.third_party/skcms.url "${srcdir}/skcms"
-    git -C libjxl config --local submodule.third_party/highway.url "${srcdir}/highway"
-    git -C libjxl config --local submodule.third_party/libpng.url "${srcdir}/libpng"
-    git -C libjxl config --local submodule.third_party/zlib.url "${srcdir}/zlib"
-    git -C libjxl config --local submodule.third_party/gflags.url "${srcdir}/gflags"
+    git -C libjxl config --local submodule.third_party/testdata.url "${srcdir}/libjxl-testdata"
     git -C libjxl submodule update
 }
 
@@ -53,10 +52,8 @@ pkgver() {
 }
 
 build() {
-    export CC='clang'
-    export CXX='clang++'
-    export CFLAGS+=' -DNDEBUG'
-    export CXXFLAGS+=' -DNDEBUG'
+    export CFLAGS+=' -DNDEBUG -ffat-lto-objects'
+    export CXXFLAGS+=' -DNDEBUG -ffat-lto-objects'
     cmake -B build -S libjxl \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
@@ -70,6 +67,7 @@ build() {
         -DJPEGXL_FORCE_SYSTEM_HWY:BOOL='true' \
         -DJPEGXL_BUNDLE_LIBPNG:BOOL='NO' \
         -DJPEGXL_BUNDLE_GFLAGS='NO' \
+        -DJPEGXL_INSTALL_JARDIR='/usr/share/java' \
         -Wno-dev
     make -C build all doc
 }
@@ -89,8 +87,8 @@ package_libjxl-git() {
     replaces=('libjpeg-xl-git')
     
     make -C build DESTDIR="$pkgdir" install
-    install -D -m755 build/tools/libjxl_jni.so -t "${pkgdir}/usr/lib"
     install -D -m644 libjxl/{LICENSE,PATENTS} -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    mv "${pkgdir}/usr/share/java"/{org.jpeg.jpegxl,jpegxl}.jar
 }
 
 package_libjxl-doc-git() {
