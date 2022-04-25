@@ -1,0 +1,41 @@
+From ac0cd973586b44bcdb678f7edefa2175aca416ef Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Thu, 24 Jun 2021 15:56:34 +0200
+Subject: [PATCH] Fix configuration to point to installed files
+
+---
+ settings/env.defaults | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/settings/env.defaults b/settings/env.defaults
+index 4069270e..5f7e45cc 100644
+--- a/settings/env.defaults
++++ b/settings/env.defaults
+@@ -10,13 +10,13 @@ NOMINATIM_DATABASE_DSN="pgsql:dbname=nominatim"
+ 
+ # Database web user.
+ # Nominatim sets up read-only access for this user during installation.
+-NOMINATIM_DATABASE_WEBUSER="www-data"
++NOMINATIM_DATABASE_WEBUSER="http"
+ 
+ # Directory where to find the PostgreSQL server module.
+ # When empty the module is expected to be located in the 'module' subdirectory
+ # in the project directory.
+ # Changing this value requires to run 'nominatim refresh --functions'.
+-NOMINATIM_DATABASE_MODULE_PATH=
++NOMINATIM_DATABASE_MODULE_PATH="/usr/lib/nominatim/module"
+ 
+ # Number of occurances of a word before it is considered frequent.
+ # Similar to the concept of stop words. Frequent partial words get ignored
+@@ -65,7 +65,7 @@ NOMINATIM_HTTP_PROXY_PASSWORD=
+ # When empty, osm2pgsql is expected to reside in the osm2pgsql directory in
+ # the project directory.
+ # EXPERT ONLY. You should usually use the supplied osm2pgsql.
+-NOMINATIM_OSM2PGSQL_BINARY=
++NOMINATIM_OSM2PGSQL_BINARY="/usr/bin/osm2pgsql"
+ 
+ # Directory where to find US Tiger data files to import.
+ # OBSOLETE: use `nominatim add-data --tiger-data <dir>` to explicitly state
+-- 
+2.32.0
+
