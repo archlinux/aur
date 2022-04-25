@@ -1,6 +1,6 @@
 # Maintainer: Midna
 pkgname=jdk7r1-j9-bin
-_pkgver='7.1-4.90'
+_pkgver='7.1-5.5'
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="IBM® SDK, Java Technology Edition, Version 7 Release 1"
@@ -15,7 +15,7 @@ provides=(
 )
 makedepends=('coreutils' 'bash')
 source=("install-${_pkgver}.bin::https://public.dhe.ibm.com/ibmdl/export/pub/systems/cloud/runtimes/java/${pkgver}/linux/x86_64/ibm-java-sdk-${_pkgver}-x86_64-archive.bin")
-sha256sums=('4dd3f15daeccc8e93975442095e970613dc02f957a7c83986e4a827a55d7d601')
+sha256sums=('32585fa2c19a45c75e21ef66d560970f5f346e5ca9d2cf62702dadbc882861d8')
 
 package() {
 	cd "$srcdir"
