@@ -1,0 +1,13 @@
+pkgbase = python-sqlite-icu-git
+	pkgdesc = python module with loadable ICU extension for sqlite
+	pkgver = r8.79bc98f
+	pkgrel = 1
+	url = http://github.com/karlb/sqlite-icu
+	arch = any
+	license = MIT
+	depends = python
+	options = !emptydirs
+	source = python-sqlite-icu-git::git+http://github.com/karlb/sqlite-icu
+	md5sums = SKIP
+
+pkgname = python-sqlite-icu-git
