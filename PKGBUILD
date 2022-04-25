@@ -1,6 +1,6 @@
 pkgname=wsdd2
-pkgver=1.8.6
-pkgrel=3
+pkgver=1.8.7
+pkgrel=1
 pkgdesc="WSD/LLMNR Discovery/Name Service Daemon. Install it to make Samba shares discoverable on Windows hosts."
 url="https://github.com/Netgear/wsdd2"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -9,7 +9,7 @@ depends=('samba')
 source=(
   "wsdd2-${pkgver}.tar.gz::https://github.com/Netgear/wsdd2/archive/${pkgver}.tar.gz"
 )
-sha256sums=('707f9403559de70cc488c6c3deea12baf30d74068da88a59e7c0669a347b4661')
+sha256sums=('b0b6b31522f4a5e39d075b31d59d57af9a567f543e0b39b2fbdfec324d30310a')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
