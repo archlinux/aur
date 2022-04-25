@@ -1,6 +1,6 @@
 pkgbase = rstudio-desktop-bin
 	pkgdesc = An integrated development environment (IDE) for R (binary from RStudio official repository)
-	pkgver = 2022.02.0.443
+	pkgver = 2022.02.1.461
 	pkgrel = 1
 	url = http://www.rstudio.org/
 	install = rstudio-desktop-bin.install
@@ -16,12 +16,12 @@ pkgbase = rstudio-desktop-bin
 	depends = sqlite
 	depends = nss
 	optdepends = clang: C/C++ and Rcpp support
-	provides = rstudio-desktop=2022.02.0.443
+	provides = rstudio-desktop=2022.02.1.461
 	conflicts = rstudio-desktop
 	conflicts = rstudio-desktop-git
 	conflicts = rstudio-desktop-preview-bin
 	options = !strip
-	source_x86_64 = https://download1.rstudio.org/desktop/bionic/amd64/rstudio-2022.02.0-443-amd64.deb
-	sha256sums_x86_64 = ad186050952a427272cbd2481cfacbb134ebffffa3b717fdb6226898431e7519
+	source_x86_64 = https://download1.rstudio.org/desktop/bionic/amd64/rstudio-2022.02.1-461-amd64.deb
+	sha256sums_x86_64 = d5aaa02f2b218bde1e03ee5f1d3d8cdd15da1efe19891efc4b3ab1a403e4e37c
 
 pkgname = rstudio-desktop-bin
