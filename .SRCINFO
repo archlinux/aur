@@ -1,20 +1,20 @@
 pkgbase = qxmpp
 	pkgdesc = Cross-platform C++ XMPP client and server library
 	pkgver = 1.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/qxmpp-project/qxmpp
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = cmake
+	makedepends = doxygen
 	depends = qt5-base
-	optdepends = doxygen: required to build the HTML documentation
-	optdepends = opus: required to enable opus audio codec
-	optdepends = speex: required to enable speex audio codec
-	optdepends = libvpx: required to enable vpx video codec
-	optdepends = libtheora: required to enable theora video codec
-	conflicts = qxmpp-qt5
+	depends = gstreamer
 	source = https://github.com/qxmpp-project/qxmpp/archive/v1.4.0.tar.gz
 	sha256sums = 2148162138eaf4b431a6ee94104f87877b85a589da803dff9433c698b4cf4f19
 
 pkgname = qxmpp
+
+pkgname = qxmpp-doc
+	pkgdesc = Cross-platform C++ XMPP client and server library (documentation)
+	arch = any
