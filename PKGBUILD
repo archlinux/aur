@@ -1,7 +1,7 @@
 # Maintainer: ewen-lbh <hey@ewen.works>
 
 pkgname=ortfo-git
-pkgver=0.1.0.alpha.2.r3.gc97cc17
+pkgver=0.1.0.alpha.2.r28.g40b2dd0
 pkgrel=1
 pkgdesc="The GUI for ortfo, a portfolio manager (latest git commit)"
 arch=('x86_64')
