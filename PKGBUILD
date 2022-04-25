@@ -1,6 +1,6 @@
 
 # Maintainer: Kyle Shiue <shiue.kyle@gmail.com>
-# Maintainer: theRookieCoder <ileshkt@gmail.com"
+# Maintainer: theRookieCoder <ileshkt@gmail.com>
 pkgname=ferium-bin
 _pkgname=ferium
 pkgver=3.20.1
