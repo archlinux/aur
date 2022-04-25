@@ -1,15 +1,15 @@
 # Maintainer: Yubin Peng <1931127624@qq.com>
 pkgname=zeno
-pkgver=git
+pkgver=r11.e6cf2fd
 pkgrel=1
 pkgdesc="Open-source node system framework for simulation and others"
 arch=('x86_64')
-url='https://gitee.com/zenustech/zeno'
+url='https://github.com/zenustech/zeno'
 license=('MPL2')
 depends=("qt5-base" "qt5-svg" "openvdb" "eigen" "cgal" "openblas" "lapack" "hdf5")
 makedepends=("git" "cmake" "ninja")
 optdepends=()
-source=("${pkgname}-${pkgver}::git+${url}.git")
+source=("${pkgname}::git+${url}.git")
 noextract=()
 md5sums=('SKIP')
 
@@ -18,16 +18,17 @@ pkgver() {
 }
 
 prepare() {
-    cd ${pkgname}-${pkgver}
+    cd "${pkgname}"
+    git submodule update --init projects/cgmesh/libigl
 }
 
 build() {
-    cd ${pkgname}-${pkgver}
-    cmake --preset default -G Ninja -DCMAKE_INSTALL_PREFIX="${pkgdir}"
+    cd "${pkgname}"
+    cmake --preset default -G Ninja -DCMAKE_INSTALL_PREFIX="${pkgdir}" -DZENO_SYSTEM_ALEMBIC:BOOL=ON
     cmake --build --preset default --parallel
 }
 
 package() {
-    cd ${pkgname}-${pkgver}
+    cd "${pkgname}"
     cmake --build --preset default --target install
 }
