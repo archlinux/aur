@@ -1,0 +1,13 @@
+pkgbase = vim-hare
+	pkgdesc = Vim plugins for Hare
+	pkgver = r41.22e2b66
+	pkgrel = 1
+	url = https://git.sr.ht/~sircmpwn/hare.vim
+	arch = any
+	license = custom:vim
+	makedepends = git
+	depends = vim
+	source = vim-hare::git+https://git.sr.ht/~sircmpwn/hare.vim#commit=22e2b66129c6c65025274159dc975d3ca865d57b
+	md5sums = SKIP
+
+pkgname = vim-hare
