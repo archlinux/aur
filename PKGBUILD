@@ -4,7 +4,7 @@
 
 pkgname=slib
 pkgver=3b6
-pkgrel=1
+pkgrel=2
 pkgdesc='Library of functions for Scheme implementations'
 arch=(any)
 url='https://people.csail.mit.edu/jaffer/SLIB.html'
