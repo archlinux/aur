@@ -1,6 +1,6 @@
 pkgbase = libjxl-git
 	pkgdesc = JPEG XL image format reference implementation (git version)
-	pkgver = 0.3.7.r991.g88bfed80
+	pkgver = 0.6.1.r590.g7f5a2cd0
 	pkgrel = 1
 	url = https://jpeg.org/jpegxl/
 	arch = x86_64
