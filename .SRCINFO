@@ -1,0 +1,16 @@
+pkgbase = zee-git
+	pkgdesc = Terminal editor with emacs like kebinds.
+	pkgver = r137.1073474
+	pkgrel = 1
+	url = https://github.com/zee-editor/zee
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = rust
+	depends = libgit2
+	depends = libxcb
+	provides = zee
+	source = git+https://github.com/zee-editor/zee
+	sha256sums = SKIP
+
+pkgname = zee-git
