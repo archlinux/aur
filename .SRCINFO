@@ -1,6 +1,6 @@
 pkgbase = gnupg23
 	pkgdesc = Complete and free implementation of the OpenPGP standard
-	pkgver = 2.3.5
+	pkgver = 2.3.6
 	pkgrel = 0
 	url = https://www.gnupg.org/
 	install = gnupg23.install
@@ -26,12 +26,12 @@ pkgbase = gnupg23
 	optdepends = libldap: gpg2keys_ldap
 	optdepends = libusb-compat: scdaemon
 	optdepends = pcsclite: scdaemon
-	provides = gnupg=2.3.5
+	provides = gnupg=2.3.6
 	conflicts = gnupg
-	source = https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.3.5.tar.bz2
-	source = https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.3.5.tar.bz2.sig
+	source = https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.3.6.tar.bz2
+	source = https://gnupg.org/ftp/gcrypt/gnupg/gnupg-2.3.6.tar.bz2.sig
 	source = drop-import-clean.patch
-	sha256sums = 20aaeef2a18bc75430042a052598b0ab617e7a07247ad4943bf7cd08f7803ddb
+	sha256sums = 21f7fe2fc5c2f214184ab050977ec7a8e304e58bfae2ab098fec69f8fabda9c1
 	sha256sums = SKIP
 	sha256sums = 2d573d1a5a0d0272b0be0d70e6dabf2d8c7897e873ace4ce7fffd6e96599a30a
 
