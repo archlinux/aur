@@ -49,7 +49,7 @@ package() {
   #install -d "${pkgdir}/usr/share/icons" 
 
   install -m644 "${srcdir}/data/usr/share/code-insiders/resources/app/LICENSE.rtf" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.rtf"
-  install -m644 "${srcdir}/data/usr/share/code-insiders/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
+  #install -m644 "${srcdir}/data/usr/share/code-insiders/resources/app/resources/linux/code.png" "${pkgdir}/usr/share/icons/${pkgname}.png"
   install -m644 "${srcdir}/data/usr/share/applications/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -m644 "${srcdir}/data/usr/share/applications/${pkgname}-url-handler.desktop" "${pkgdir}/usr/share/applications/${pkgname}-url-handler.desktop"
 
