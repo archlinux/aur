@@ -3,7 +3,7 @@
 # Contributor : Anagastes
 
 pkgname=qownnotes-qt5-bin
-pkgver=22.3.3
+pkgver=22.4.2
 pkgrel=1
 pkgdesc="Plain-text file markdown note taking with Nextcloud/ownCloud integration - qt5-bin"
 arch=('x86_64')
@@ -16,7 +16,7 @@ options=(!strip)
 _appimage="QOwnNotes-x86_64.AppImage"
 source=("https://github.com/pbek/QOwnNotes/releases/download/v$pkgver/QOwnNotes-x86_64.AppImage")
 noextract=("${_appimage}")
-sha256sums=('4089c2f33dc933c95df24add2c2d8eb937eb9e9f2abab6f9f07e858d6480c641')
+sha256sums=('9a3ab260c71c58da1db5a71c2db77cf7e32657da476be63821a626f91db25a55')
 
 prepare() {
     chmod +x "${_appimage}"
