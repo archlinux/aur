@@ -1,18 +1,18 @@
 # Maintainer: Jonas Dellinger <jonas@dellinger.dev>
 pkgname=altair
-pkgver=4.4.0
+pkgver=4.4.1
 pkgrel=1
 pkgdesc='A beautiful feature-rich GraphQL Client for all platforms.'
 arch=('x86_64')
-depends=('gtk2' 'gtk3' 'nss' 'libxss' 'dbus-glib' 'electron')
+depends=('gtk2' 'gtk3' 'nss' 'libxss' 'dbus-glib' 'electron14')
 url="https://github.com/imolorhe/altair"
 license=('MIT')
 provides=('altair')
 
 source_x86_64=("${pkgname}-${pkgver}.AppImage::https://github.com/imolorhe/altair/releases/download/v${pkgver}/altair_${pkgver}_${arch}_linux.AppImage"
                altair)
-sha256sums_x86_64=('a5351ed7904ed4f8507146721723d02e50e766ebb48acf36239ac035955d4aab'
-                   'a3760d34334143f48d278f5cb17fd450da04048c7d3966e46bb44d35e9d171c7')
+sha256sums_x86_64=('6cc13b16fc81b3b7f8f53dde6b367899c1ff86afbfbec361a867b90472eea7ca'
+                   'b2a068cbaca2bc6f20cd84bc2e8d5b5edcddb8ef2e280402b3c008be984d7070')
 
 prepare() {
   # mark as executable so we can extract
