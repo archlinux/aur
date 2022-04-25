@@ -1,6 +1,6 @@
 pkgbase = zeno
 	pkgdesc = Open-source node system framework for simulation and others
-	pkgver = 2022.4.25
+	pkgver = git
 	pkgrel = 1
 	url = https://gitee.com/zenustech/zeno
 	arch = x86_64
@@ -17,7 +17,7 @@ pkgbase = zeno
 	depends = openblas
 	depends = lapack
 	depends = hdf5
-	source = zeno-2022.4.25::git+https://gitee.com/zenustech/zeno.git
+	source = zeno-git::git+https://gitee.com/zenustech/zeno.git
 	md5sums = SKIP
 
 pkgname = zeno
