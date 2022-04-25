@@ -1,6 +1,6 @@
 # Maintainer: Yubin Peng <1931127624@qq.com>
 pkgname=zeno
-pkgver=2022.3.18
+pkgver=2022.4.25
 pkgrel=1
 pkgdesc="Open-source node system framework for simulation and others"
 arch=('x86_64')

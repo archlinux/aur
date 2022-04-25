@@ -1,15 +1,22 @@
 pkgbase = zeno
 	pkgdesc = Open-source node system framework for simulation and others
-	pkgver = 2022.3.18
+	pkgver = 2022.4.25
 	pkgrel = 1
-	url = https://gitee.com/zenustech/zeno
+	url = https://github.com/zenustech/zeno
 	arch = x86_64
 	license = MPL2
 	makedepends = gcc
 	makedepends = cmake
 	makedepends = ninja
 	depends = qt5-base
-	source = zeno-release.tar.gz::https://github.com/zenustech/zeno/archive/refs/tags/2022.3.18.tar.gz
+	depends = qt5-svg
+	depends = openvdb
+	depends = eigen
+	depends = cgal
+	depends = openblas
+	depends = lapack
+	depends = alembic
+	source = zeno-release.tar.gz::https://github.com/zenustech/zeno/archive/refs/tags/2022.4.25.tar.gz
 	md5sums = SKIP
 
 pkgname = zeno
