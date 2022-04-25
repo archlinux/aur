@@ -27,8 +27,8 @@ optdepends=(
 	'libappindicator-gtk3: to hide Telegram in the tray bar in GTK3-based desktop environment'
 	'xdg-utils: for automatic opening of URLs, files and directories in proper applications'
 )
-conflicts=(telegram-bin)
-provides=(telegram-bin)
+conflicts=(telegram-desktop)
+provides=(telegram-desktop)
 
 # Sources
 source=(
