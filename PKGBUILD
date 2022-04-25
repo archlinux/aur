@@ -24,14 +24,14 @@ build() {
 
 package() {
 	depends=(camilladsp
-			 python-aiohttp
-			 python-jsonschema
-			 python-matplotlib
-			 python-numpy
-			 python-pycamilladsp
-			 python-pycamilladsp-plot
-			 python-websocket-client
-			 python-websockets)
+             python-aiohttp
+             python-jsonschema
+             python-matplotlib
+             python-numpy
+             python-pycamilladsp
+             python-pycamilladsp-plot
+             python-websocket-client
+             python-websockets)
 	mv $srcdir/srv $pkgdir
 	install -d $pkgdir/$installdir
 	install -Dm 644 camillagui.service -t $pkgdir/usr/lib/systemd/system
