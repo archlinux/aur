@@ -1,6 +1,6 @@
 pkgbase = iamroot
 	pkgdesc = Emulating the syscall chroot(2) in an unpriviliged process
-	pkgver = 3
+	pkgver = 4
 	pkgrel = 1
 	url = https://github.com/gportay/iamroot
 	arch = x86_64
@@ -12,8 +12,8 @@ pkgbase = iamroot
 	makedepends = kernel-headers-musl
 	makedepends = kernel-headers-musl-aarch64
 	makedepends = asciidoctor
-	source = https://github.com/gportay/iamroot/archive/v3.tar.gz
+	source = https://github.com/gportay/iamroot/archive/v4.tar.gz
 	validpgpkeys = 8F3491E60E62695ED780AC672FA122CA0501CA71
-	sha256sums = 1fca9ed4e7f30b231635da07554012ec1e3278696841a38079a233f7865436cd
+	sha256sums = 5259508a3d34caa8bffc6cf125027c37bca86fb78fd8011cacd646fcb13ff681
 
 pkgname = iamroot
