@@ -1,15 +1,15 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=hare
-pkgver=r2226.c7b0a929
+pkgver=r2241.cb9b5872
 pkgrel=1
-pkgdesc="The Hare programming language"
+pkgdesc='The Hare programming language'
 arch=('x86_64')
-url="https://harelang.org/"
+url='https://harelang.org/'
 license=('GPL3' 'MPL2')
 depends=('qbe' 'harec')
 makedepends=('git' 'scdoc')
-_commit='c7b0a929f568b1feb8d43df4498dd9b32f98187c'
+_commit='cb9b5872b39999f26ae57a994a3d932e449f89dd'
 source=(
   "hare::git+https://git.sr.ht/~sircmpwn/hare#commit=$_commit"
 )
@@ -34,14 +34,11 @@ build() {
   make
 }
 
-# hare r1909.5fae03c 1 test failed:
-# linux::keyctl::keyctl: Assertion failed: error occured at ./linux/keyctl/keyctl.ha:98:7
+check() {
+  cd hare
 
-#check() {
-#  cd hare
-#
-#  make check
-#}
+  make check
+}
 
 package() {
   cd hare
