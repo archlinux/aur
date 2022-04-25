@@ -1,5 +1,5 @@
+# Maintainer: Lahfa Samy (AkechiShiro) <'akechishiro-aur' at the domain 'lahfa.xyz'>
 # Contributor: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
-# Maintainer: Lahfa Samy (AkechiShiro) <'samy' at the domain 'lahfa.xyz'>
 pkgname=python-pwntools-git
 pkgver=4.9.0beta0.r1.g7f5866ab
 pkgrel=1
