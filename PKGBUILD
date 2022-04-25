@@ -7,7 +7,6 @@ pkgdesc='Web-based GUI for CamillaDSP'
 url=https://github.com/HEnquist/camillagui-backend
 arch=(any)
 license=(GPL)
-depends=(camilladsp python-aiohttp python-pycamilladsp python-pycamilladsp-plot)
 makedepends=(unzip)
 install=camillagui.install
 source=(https://github.com/HEnquist/camillagui-backend/releases/download/v$pkgver/camillagui.zip
@@ -24,6 +23,15 @@ build() {
 }
 
 package() {
+	depends=(camilladsp
+			 python-aiohttp
+			 python-jsonschema
+			 python-matplotlib
+			 python-numpy
+			 python-pycamilladsp
+			 python-pycamilladsp-plot
+			 python-websocket-client
+			 python-websockets)
 	mv $srcdir/srv $pkgdir
 	install -d $pkgdir/$installdir
 	install -Dm 644 camillagui.service -t $pkgdir/usr/lib/systemd/system
