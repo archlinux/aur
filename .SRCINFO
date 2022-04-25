@@ -1,7 +1,7 @@
 pkgbase = moonwm
 	pkgdesc = My own outstandingly named Window Manager (a dynamic window manager)
-	pkgver = 8.0.0
-	pkgrel = 3
+	pkgver = 8.1.0
+	pkgrel = 1
 	url = https://github.com/jzbor/moonwm
 	arch = x86_64
 	arch = i686
@@ -30,7 +30,7 @@ pkgbase = moonwm
 	optdepends = pimenu: middleclick on desktop for pie-shaped favorites menu
 	provides = moonwm
 	conflicts = moonwm
-	source = moonwm-8.0.0.tar.gz::https://github.com/jzbor/moonwm/archive/refs/tags/8.0.0.tar.gz
+	source = moonwm-8.1.0.tar.gz::https://github.com/jzbor/moonwm/archive/refs/tags/8.1.0.tar.gz
 	sha512sums = a1be68e30e637dec7aafb4427e5957b0a29f78c712b974cd744fb54cac95f8215bd075b55dac638c0c5899e78ef33ab5a56c66f0b48058fe38e1749269364052
 
 pkgname = moonwm
