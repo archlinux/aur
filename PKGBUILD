@@ -5,7 +5,7 @@
 
 pkgname=nitroshare
 pkgver=0.3.4
-pkgrel=3
+pkgrel=4
 pkgdesc='LAN file sender application, designed to make transferring files from one device to another extremely simple'
 arch=('x86_64')
 url='https://nitroshare.net'
