@@ -1,6 +1,6 @@
 pkgbase = pdfium-binaries
 	pkgdesc = PDFium binaries built with scripts from pdfium-binaries
-	pkgver = 4983
+	pkgver = 5010
 	pkgrel = 1
 	url = https://github.com/bblanchon/pdfium-binaries
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = pdfium-binaries
 	provides = libpdfium
 	conflicts = libpdfium-nojs
 	conflicts = pdfium-binaries-v8
-	source = https://github.com/bblanchon/pdfium-binaries/archive/refs/tags/chromium/4983.tar.gz
-	sha512sums = 27941dbcefdffe858986d98d6ec51abf5943cc427beec4de8595de27056c46e6b05d3ed3bd77ee4dc684216e3fa32db46e6805fd42b77f4b4c070efc22d6c27b
+	source = https://github.com/bblanchon/pdfium-binaries/archive/refs/tags/chromium/5010.tar.gz
+	sha512sums = b719ce9baaad2c25aeb102f2f8375eed27d264f88a7cdfcca39964685859256fdd76cd3f6131fbaf7621aa0f0c4ed2a9b06d00a5fae482aeb3e787727f0fe40b
 
 pkgname = pdfium-binaries
