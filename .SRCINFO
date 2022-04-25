@@ -1,0 +1,16 @@
+pkgbase = blender-plugin-cad-sketcher-git
+	pkgdesc = Constraint-based geometry sketcher for blender
+	pkgver = r269.e50b784
+	pkgrel = 1
+	url = https://github.com/hlorus/CAD_Sketcher
+	arch = any
+	license = GPL
+	makedepends = git
+	depends = blender>=2.92
+	depends = python-py-slvs
+	provides = blender-plugin-cad-sketcher
+	conflicts = blender-plugin-cad-sketcher
+	source = blender-plugin-cad-sketcher-git::git+https://github.com/hlorus/CAD_Sketcher.git
+	sha256sums = SKIP
+
+pkgname = blender-plugin-cad-sketcher-git
