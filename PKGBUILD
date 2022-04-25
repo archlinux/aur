@@ -40,7 +40,7 @@ check() {
 }
 
 package() {
-  cd "$srcdir/${pkgname}-${pkgver}"
+  cd "$srcdir/avalanchego-${pkgver}"
 
   install -d "${pkgdir}/usr/local/lib/avalanchego"
   install -d "${pkgdir}/usr/local/lib/avalanchego/plugins"
