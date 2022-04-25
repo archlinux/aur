@@ -1,0 +1,22 @@
+pkgbase = muon
+	pkgdesc = Graphical SFTP client and terminal emulator with helpful utilities.
+	pkgver = 1.0.4
+	pkgrel = 1
+	url = https://github.com/subhra74/snowflake
+	arch = any
+	license = GPL3
+	makedepends = java-environment>=11
+	makedepends = maven
+	depends = java-runtime>=11
+	depends = hicolor-icon-theme
+	depends = bash
+	conflicts = snowflake
+	replaces = snowflake
+	source = muon-1.0.4.tar.gz::https://github.com/subhra74/snowflake/archive/v1.0.4.tar.gz
+	source = muon
+	source = muon.desktop
+	sha256sums = 92b49024a21fb8369476cb77823851f710cc56eaec3fb219330afdac43fab36a
+	sha256sums = b06918fdb24a35e8c3b5348780780dbd40f9665d86e2d84e165add5d753bafc0
+	sha256sums = 00c904959ff8ce0ed19f9f62fe4feaf5e82d80e9bebeae4b9b672e6d681686f4
+
+pkgname = muon

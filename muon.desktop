@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Muon
+Icon=Muon
+Type=Application
+Exec=muon
+Comment=Graphical SFTP client and terminal emulator with helpful utilities
+Categories=Development;
