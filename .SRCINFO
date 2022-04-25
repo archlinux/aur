@@ -1,6 +1,6 @@
 pkgbase = riven
 	pkgver = 1.2_20030721_dvd
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 0
 	url = https://cyan.com/games/riven/
 	arch = any
@@ -12,15 +12,14 @@ pkgbase = riven
 	source = riven.desktop
 	source = license-note.txt
 	sha256sums = 90f4e43a4fcb6cddc50497eccd235b79590beaa4bf8e432ddb87755b8fbab0fe
-	sha256sums = d6fa553eadbab87700ef49cf609c5056740f9d1c53fe88c1e805d21920c04e37
+	sha256sums = c5eae343d70121fdeb3cfde2dba0e08a0e6419e29684f73f6680bd2da8f0aa34
 	sha256sums = 7b4d5fb2f60281cbd4c031f99923f8122ff7dd5996ce395cba99e498309dc270
 	sha256sums = f92e92e57ae86a3d490c81d965e5d51779afef61c869ed4c9d9e0b6411c1789c
 
 pkgname = riven
-	pkgdesc = 'Riven: The sequel to Myst' is an in-depth point-and-click adventure game with superb landscape and immersive puzzles.
+	pkgdesc = 'Riven: The Sequel to Myst' is an in-depth point-and-click adventure game with superb landscape and immersive puzzles.
 	url = https://cyan.com/games/riven/
 	license = GPL3
-	depends = bash
 	depends = riven-data
 	depends = scummvm
 
@@ -35,4 +34,5 @@ pkgname = riven-makingof
 	pkgdesc = Movie 'The Making of Riven', a point-and-click adventure/ puzzle game.
 	url = https://archive.org/details/riven_202001
 	license = custom: proprietary
+	optdepends = riven: To play the game.
 	optdepends = riven-data: The game files.

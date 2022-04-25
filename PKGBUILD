@@ -1,5 +1,20 @@
 # Maintainer: dreieck
 
+
+# _check_legal() {
+#   # We want to check for this _before_ downloading.
+#   # But this has the disadvantage that this is asked at the beginning of a makepkg run, and again when starting the package-functions, and each time `.SRCINFO` is generated, and `namcap` also fails on this `PKGBUILD`.
+#   # If anyone has an idea how to make it in a more clean way & that the question is only asked once, while still downloading the source via the 'source' array, please leave a comment!
+#   local _legalcopy
+#   msg2 "Please make sure you have obtained a legal copy of the game before continuing!"
+#   read -e -p "Enter 'i have a legal copy of riven' to continue, anything else to abort: " _legalcopy
+#   if [ "${_legalcopy}x" != "i have a legal copy of riven"x ]; then
+#     error "No legal copy, aborting."
+#     return 22
+#   fi
+# }
+# _check_legal || exit "$?"
+
 _pkgbase="riven"
 pkgbase="${_pkgbase}"
 pkgname=(
@@ -11,10 +26,11 @@ arch=('any')
 url='https://cyan.com/games/riven/'
 epoch="0"
 pkgver='1.2_20030721_dvd' # Obtained from the file 'Read Instructions First'.
-pkgrel=2
+pkgrel=3
 makedepends=(
   'dos2unix'    # To convert text files with Mac and DOS new line standard to Unix new line standard.
   'imagemagick' # To convert .ico to .png.
+  # 'littleutils' # For 'lowercase'.
 )
 options+=('emptydirs')
 
@@ -27,7 +43,7 @@ source=(
 
 sha256sums=(
   '90f4e43a4fcb6cddc50497eccd235b79590beaa4bf8e432ddb87755b8fbab0fe'
-  'd6fa553eadbab87700ef49cf609c5056740f9d1c53fe88c1e805d21920c04e37'
+  'c5eae343d70121fdeb3cfde2dba0e08a0e6419e29684f73f6680bd2da8f0aa34'
   '7b4d5fb2f60281cbd4c031f99923f8122ff7dd5996ce395cba99e498309dc270'
   'f92e92e57ae86a3d490c81d965e5d51779afef61c869ed4c9d9e0b6411c1789c'
 )
@@ -54,16 +70,15 @@ build() {
   dos2unix -n 'English/movie.txt' 'movie.txt'
 
   printf '%s\n' "Converting 'English/Icon.ICO' to 'riven.png'"
-  convert English/Icon.ICO riven.png
+  convert 'English/Icon.ICO' 'riven.png'
 }
 
 package_riven() {
-  pkgdesc="'Riven: The sequel to Myst' is an in-depth point-and-click adventure game with superb landscape and immersive puzzles."
+  pkgdesc="'Riven: The Sequel to Myst' is an in-depth point-and-click adventure game with superb landscape and immersive puzzles."
   # url='https://wiki.scummvm.org/index.php/Riven:_The_Sequel_to_Myst'
   url='https://cyan.com/games/riven/'
   license=('GPL3')
   depends=(
-    'bash'
     'riven-data'
     'scummvm'
   )
@@ -92,13 +107,15 @@ package_riven-data() {
 
   install -v -d -m755 "${pkgdir}/usr/lib/riven"
   for _mhk in Data/*.[mM][hH][kK]; do
-    install -v -D -m644 "${_mhk}" "${pkgdir}/usr/lib/riven/${_mhk}"
+    install -v -D -m644 "${_mhk}" "${pkgdir}/usr/lib/riven/$(basename "${_mhk}")"
   done
   for _mhk in ASSETS1/*.[mM][hH][kK]; do # Files in ASSETS1 might have better quality, so use them over the ones from Data1.
-    install -v -D -m644 "${_mhk}" "${pkgdir}/usr/lib/riven/${_mhk}"
+    install -v -D -m644 "${_mhk}" "${pkgdir}/usr/lib/riven/$(basename "${_mhk}")"
   done
+  # lowercase "${pkgdir}/usr/lib/riven"/*
+
+  # One of the following three may be used interchangeably for playing Riven with ScummVM:
   install -v -D -m755 "program/arcriven.z" "${pkgdir}/usr/lib/riven/arcriven.z"
-  # Alternatively, those could also be used instead of 'arcriven.z':
   #install -v -D -m755 "English/Riven"     "${pkgdir}/usr/lib/riven/riven"
   #install -v -D -m755 "English/Riven.exe" "${pkgdir}/usr/lib/riven/riven.exe"
 
@@ -116,6 +133,7 @@ package_riven-makingof() {
   url='https://archive.org/details/riven_202001'
   license=('custom: proprietary')
   optdepends=(
+    'riven: To play the game.'
     'riven-data: The game files.'
   )
 

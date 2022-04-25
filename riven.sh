@@ -1,13 +1,17 @@
-#!/bin/bash
+#!/bin/sh
 
 # This script is licensed under the GNU General Public License version 3.
 # The license text should be installed together with this software; otherwise it can be optained at https://www.gnu.org/licenses/gpl-3.0.en.html.
+
+_rivendir='/usr/lib/riven'
 
 printf '%s\n' \
   "Launching Riven with ScummVM ..." \
   ""  \
   "For further optional options (e.g. graphics scaling an audio), see 'man scummvm'/ 'scummvm --help'." \
-  "You can also consult this scrippt, '$0', for hints how to launch Riven manually with ScummVM". \
+  "You can also consult this script, '$0', for hints how to launch Riven manually with ScummVM". \
+  "" \
+  "For custom settings, you can add Riven to your local ScummVM configuration by just launching 'scummvm' (without options) and then click 'Add Game...' and point to '${_rivendir}'. Then you can launch Riven with your customisations from your ScummVM GUI instead of using this script '$0'." \
   "" \
   "In game controls:" \
   "  * Mouse:          Move pointer." \
@@ -23,4 +27,4 @@ printf '%s\n' \
   "Enjoy Riven!" \
   ""
 
-scummvm -g hq2x -p /usr/lib/riven "$@" riven
+scummvm -g supereagle --stretch-mode=fit -p "${_rivendir}" "$@" riven
