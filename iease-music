@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+electron /usr/lib/iease-music/iease-music.asar $@

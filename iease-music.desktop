@@ -1,0 +1,11 @@
+[Desktop Entry]
+
+Type=Application
+Terminal=false
+StartupNotify=true
+Name=ieaseMusic
+Comment=A third-party Netease Music Client
+Comment[zh_CN]=网易云音乐第三方
+Exec=iease-music
+Icon=iease-music.png
+Categories=AudioVideo;
