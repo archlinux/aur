@@ -1,7 +1,7 @@
 #!/hint/bash
-# Contributor: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 # Maintainer: bartus <'arch-user-repo' at the domain 'bartus.33mail.com'>
 # Co-Maintainer: Lahfa Samy (AkechiShiro) <'akechishiro-aur' at the domain 'lahfa.xyz'>
+# Contributor: Aaron McDaniel (mcd1992) <'aur' at the domain 'fgthou.se'>
 
 # shellcheck disable=SC2015
 ((DISABLE_BUNDLED_RIZIN)) && {
