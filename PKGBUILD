@@ -20,14 +20,25 @@ makedepends=(
   'libnl' 'python-jinja' 'tinyxml2'
 )
 install="${pkgname}.install"
-source=("git+https://github.com/OpenVPN/$_pkgname.git#tag=v${pkgver}")
-sha256sums=('SKIP')
+source=(
+  "git+https://github.com/OpenVPN/$_pkgname.git#tag=v${pkgver}"
+  'archlinux-glib.patch'
+)
+sha256sums=(
+  'SKIP'
+  '004c35951889d00caa09eac4a0d151fc8ecb95042a5a6a95023332b6a92d71ad'
+)
+
+prepare() {
+  cd "$_pkgname"
+  patch -Np1 -i ../archlinux-glib.patch
+}
 
 build() {
   cd "$_pkgname"
   ./bootstrap.sh
   ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --localstatedir=/var --enable-bash-completion --enable-dco
-  make -j $(nproc)
+  make
 }
 
 check() {
