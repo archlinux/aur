@@ -1,7 +1,7 @@
 # This is the PKGBUILD for avalanchego, the go client for the avalanche blockchain
 
 # Maintainer: holisticode <holistic.computing@gmail.com> 
-pkgname=avalanchego
+pkgname=avalanchego-bin
 pkgver="$(curl --silent "https://api.github.com/repos/ava-labs/avalanchego/releases/latest" | grep tag_name | cut -d\" -f4)"
 pkgrel=1
 epoch=

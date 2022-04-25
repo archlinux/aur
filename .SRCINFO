@@ -1,4 +1,4 @@
-pkgbase = avalanchego
+pkgbase = avalanchego-bin
 	pkgdesc = The avalanchego binary
 	pkgver = v1.7.10
 	pkgrel = 1
@@ -14,4 +14,4 @@ pkgbase = avalanchego
 	md5sums = SKIP
 	md5sums = SKIP
 
-pkgname = avalanchego
+pkgname = avalanchego-bin
