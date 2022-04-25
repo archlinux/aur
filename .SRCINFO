@@ -1,13 +1,13 @@
 pkgbase = libsedml
 	pkgdesc = Simulation Experiment Description - Markup Language
-	pkgver = 2.0.30
+	pkgver = 2.0.31
 	pkgrel = 1
 	url = https://github.com/fbergmann/libSEDML
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = libnuml
-	source = libSEDML-2.0.30.tar.gz::https://github.com/fbergmann/libSEDML/archive/v2.0.30.tar.gz
-	sha256sums = ba0111f7cc991ecc460f68e85182da75d62937522c9259c76e79a917e0fb9c24
+	source = libSEDML-2.0.31.tar.gz::https://github.com/fbergmann/libSEDML/archive/v2.0.31.tar.gz
+	sha256sums = f61954df7ead556eced3d8559e58fd01c9bb89766196aedbd1518ec640ed2a06
 
 pkgname = libsedml
