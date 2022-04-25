@@ -5,7 +5,7 @@
 
 _reponame=gnome-shell-system-monitor-applet
 pkgname=gnome-shell-extension-system-monitor-git
-pkgver=1150.11d43a8
+pkgver=1160.b359d88
 pkgrel=1
 pkgdesc="System monitor extension for Gnome-Shell (display mem swap cpu usage)"
 arch=('any')
