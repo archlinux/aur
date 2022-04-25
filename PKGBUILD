@@ -1,7 +1,7 @@
-# Maintainer: wostarxi <wostarxi@outlook.com>
+# Maintainer: Lynx <wostarxi@outlook.com>
 pkgname=browser360-bin
 _pkgname=com.360.browser-stable
-pkgver=10.4.1030.6
+pkgver=10.4.1032.22
 pkgrel=1
 epoch=
 pkgdesc="360 Browser stable version"
