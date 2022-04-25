@@ -2,7 +2,7 @@
 
 pkgname=paper-note
 _pkgname=paper
-pkgver=22.1
+pkgver=22.2
 pkgrel=1
 pkgdesc="A pretty note-taking app for GNOME"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('glib2' 'libadwaita' 'gtksourceview5' 'libgee')
 makedepends=('meson' 'gobject-introspection' 'vala')
 source=($url/-/archive/$pkgver/$_pkgname-$pkgver.tar)
-b2sums=('b6860fd9b34f86bae81a2573903d1f1579d17e98ef56f784d75327bc8c47d51cad76986e897ee70fb36f8f055fa0990ce4809f7a38b41fb2ff184a0982af696b')
+b2sums=('756a954fd16630f826319ca09b3001a26d2f1e86fe13463658ae37aa60b609fa1d1109ba3bb9abc408d7cea02f63e4c089ef3156d7648ced66fef33a4b9f9b48')
 
 prepare() {
 	cd "$_pkgname-$pkgver"
@@ -27,9 +27,9 @@ build() {
   meson compile -C build
 }
 
-check() {
-  meson test -C build
-}
+#check() {
+#  meson test -C build
+#}
 
 package() {
   meson install -C build --destdir "$pkgdir"
