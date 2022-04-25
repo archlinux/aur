@@ -182,7 +182,7 @@ build() {
 }
 
 package_python-matlabengine() {
-  depends+=("python" "matlab")
+  depends=('matlab' 'python')
 
   msg2 "Installing license..."
   install -D -m644 "${srcdir}/${pkgbase}/license_agreement.txt" \
