@@ -3,7 +3,7 @@
 
 pkgname=amor
 pkgver=15.08.3
-pkgrel=8
+pkgrel=9
 pkgdesc='On-Screen Creature'
 url='https://projects.kde.org/projects/kde/kdetoys/amor'
 arch=('i686' 'x86_64')
@@ -11,9 +11,8 @@ license=('GPL' 'LGPL' 'FDL')
 groups=('kde-applications')
 depends=('kxmlgui' 'kwindowsystem' 'kconfig' 'ki18n' 'kcoreaddons' 'kdbusaddons' 'kdoctools' 'qt5-x11extras')
 makedepends=('cmake' 'extra-cmake-modules')
-install=${pkgname}.install
 source=(git+https://github.com/KDE/amor.git)
-sha1sums=('SKIP')
+sha256sums=('SKIP')
 
 build() {
   mkdir -p build
