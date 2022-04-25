@@ -1,9 +1,9 @@
-# Maintainer: neodarz <neodarz at neodarz dot net>
+# Maintainer: brodokk <brodokk at brodokk dot space>
 
 _pkgname=flake8-bandit
 pkgname=python-$_pkgname
 
-pkgver=2.1.0
+pkgver=3.0.0
 pkgrel=1
 pkgdesc="Automated security testing using bandit and flake8."
 
@@ -14,7 +14,7 @@ license=('MIT')
 depends=('python' 'bandit')
 
 source=("https://github.com/tylerwince/$_pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('28e637d9dd59a18954b61b68c001a11784c5b0c750ef0701f04041f2cfd66ba4c33469f1bb8a338ac4016f70bdf44f4532c2bf67c9d8b822e7c8d1881b0b427c')
+sha512sums=('c60054dd869cb4b756cfa33a89630915a36c324f8b93b639c840d0ef9fda523af259d4bda3ba39fcc1317291b70293d727bebe845b55f1c3650ffe093afd6b0e')
 
 package() {
     cd "$_pkgname-$pkgver"
