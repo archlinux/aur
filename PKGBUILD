@@ -3,7 +3,7 @@
 
 pkgbase=linux-zen-e820-patched
 pkgver=5.17.4.zen1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux ZEN - patched with e820 PCIe device addresses overlap detection support'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
@@ -14,7 +14,6 @@ makedepends=(
   xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
   git
 )
-provides=('linux-zen' 'linux-zen-headers' 'linux-zen-docs')
 options=('!strip')
 _srcname=zen-kernel
 source=(
@@ -73,7 +72,7 @@ _package() {
   depends=(coreutils kmod initramfs)
   optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
-  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE VHBA-MODULE)
+  provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE VHBA-MODULE linux-zen linuz-zen-headers linux-zen-docs)
   replaces=()
 
   cd $_srcname
