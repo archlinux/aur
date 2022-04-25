@@ -1,0 +1,13 @@
+pkgbase = wallhack
+	pkgdesc = Connect two linux tun interfaces together over a TLS connection
+	pkgver = 0.0.6
+	pkgrel = 2
+	url = https://eqrx.net/wallhack
+	arch = x86_64
+	arch = aarch64
+	license = AGPL3
+	makedepends = go
+	source = wallhack-0.0.6.tar.gz::https://github.com/eqrx/wallhack/archive/refs/tags/v0.0.6.tar.gz
+	sha512sums = 2ce905ea766b1269fa135139f20c5df1032e142f356cbee9dc42e040a41f067a8432bc60b4b174e446db3458a7ec28eeea2aa0b9e36f92a011addd59383b0556
+
+pkgname = wallhack
