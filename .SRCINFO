@@ -1,7 +1,7 @@
 pkgbase = freeablo
 	pkgdesc = Modern, FLOSS reimplementation of the Diablo 1 game engine
 	pkgver = 0.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://freeablo.org/
 	install = freeablo.install
 	arch = x86_64
@@ -16,9 +16,11 @@ pkgbase = freeablo
 	depends = qt5-base
 	source = https://github.com/wheybags/freeablo/archive/refs/tags/v0.4.tar.gz
 	source = freeablo.patch
+	source = freeablo.sh
 	source = https://github.com/wheybags/freeablo/pull/504/commits/ae952ca143aa0313b2f9018dc33f7f07047fad0a.patch
 	sha256sums = 322a06bebf6c522ebac1195f48962abd330050f447ea3a9ee977cd2d60b1258f
 	sha256sums = bbff90626c0dbe278b2c39553ee307a66e3a1c5645454046c687b45f0d8ef78f
+	sha256sums = 40aaf73217ed11ac511d42ac26161a6b99a01e19e7c7d5dbd5095539c0239c7d
 	sha256sums = a8b6601d684a0ed6697a3eedb50889645c5557911b7a137767eef830944cb469
 
 pkgname = freeablo

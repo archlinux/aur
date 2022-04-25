@@ -1,13 +1,12 @@
 post_install() {
   echo "Additional setup is needed, as freeablo only searches for resources in the"
   echo "current directory:"
-  echo "$ mkdir -p ~/.freeablo ; cp -rup /usr/share/freeablo/resources ~/.freeablo"
-  echo "You also need to put the files 'DIABDAT.MPQ' and 'Diablo.exe' there."
+  echo "You will need to put the files 'DIABDAT.MPQ' and 'Diablo.exe'"
+  echo "in /opt/freeablo."
   echo ""
-  echo "To launch it, use this:"
-  echo "$ cd ~/.freeablo && freeablo"
+  echo "This will not work well on multi-user systems. I need to"
+  echo "figure out how to allow multiple users to use multiple save files"
 }
-# TODO: move to /opt and replace /usr/bin/freeable with a shell script
 post_upgrade() {
   post_install
 }
