@@ -1,0 +1,14 @@
+pkgbase = hare-png
+	pkgdesc = PNG implementation for Hare
+	pkgver = r53.47bbe9c
+	pkgrel = 1
+	url = https://git.sr.ht/~sircmpwn/hare-png
+	arch = any
+	license = MPL2
+	makedepends = git
+	depends = hare
+	depends = hare-compress
+	source = hare-png::git+https://git.sr.ht/~sircmpwn/hare-png#commit=47bbe9c46b993e2dbc7042398c931b7d6e9d5b59
+	md5sums = SKIP
+
+pkgname = hare-png
