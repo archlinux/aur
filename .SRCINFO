@@ -9,7 +9,7 @@ pkgbase = fleet-rust-git
 	makedepends = cargo
 	makedepends = git
 	provides = fleet-rust
-	conflicts = fleet-rust-bin
+	conflicts = fleet-rust
 	source = fleet::git+https://github.com/dimensionhq/fleet.git
 	sha256sums = SKIP
 

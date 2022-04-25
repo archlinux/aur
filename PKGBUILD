@@ -12,7 +12,7 @@ depends=()
 optdepends=()
 makedepends=("rust" "cargo" "git")
 provides=("fleet-rust")
-conflicts=("fleet-rust-bin")
+conflicts=("fleet-rust")
 source=("$_pkgname::git+https://github.com/dimensionhq/fleet.git")
 sha256sums=("SKIP")
 
