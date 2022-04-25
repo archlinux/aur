@@ -3,10 +3,10 @@
 
 pkgname=grocy-git
 _pkgname=grocy
-pkgver=3.0.1.r12.ga455a012
+pkgver=3.3.0.r11.g845e69fb
 pkgrel=1
 pkgdesc="Web-based self-hosted groceries & household management solution for your home"
-depends=('php7' 'php7-sqlite' 'php7-gd')
+depends=('php' 'php-sqlite' 'php-gd' 'php-intl')
 makedepends=('composer' 'yarn' 'git')
 license=('MIT')
 arch=('any')
@@ -28,8 +28,8 @@ build() {
 
     # composer need to have php-gd extension enabled, otherwise it will fail for a dependency of grocy.
     # note: you may need to adjust your php open_basedir setting, so that php can run!
-    php7 -n -dextension=gd.so /usr/bin/composer install --no-interaction --no-dev --optimize-autoloader
-    php7 /usr/bin/composer clear-cache
+    php -n -dextension=gd.so /usr/bin/composer install --no-interaction --no-dev --optimize-autoloader --ignore-platform-reqs
+    php /usr/bin/composer clear-cache 
 
     yarn install --modules-folder public/node_modules --production
     yarn cache clean

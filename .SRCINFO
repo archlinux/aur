@@ -1,6 +1,6 @@
 pkgbase = grocy-git
 	pkgdesc = Web-based self-hosted groceries & household management solution for your home
-	pkgver = 3.0.1.r12.ga455a012
+	pkgver = 3.3.0.r11.g845e69fb
 	pkgrel = 1
 	url = https://grocy.info/
 	arch = any
@@ -8,9 +8,10 @@ pkgbase = grocy-git
 	makedepends = composer
 	makedepends = yarn
 	makedepends = git
-	depends = php7
-	depends = php7-sqlite
-	depends = php7-gd
+	depends = php
+	depends = php-sqlite
+	depends = php-gd
+	depends = php-intl
 	provides = grocy
 	conflicts = grocy
 	options = !strip
@@ -19,4 +20,3 @@ pkgbase = grocy-git
 	sha256sums = SKIP
 
 pkgname = grocy-git
-
