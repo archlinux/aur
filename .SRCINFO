@@ -8,7 +8,7 @@ pkgbase = pachist-git
 	makedepends = git
 	provides = pachist
 	conflicts = pachist
-	source = https://github.com/Almehdi/pachist.git#branch=master
+	source = https://github.com/shellkr/pachist.git#branch=master
 	sha256sums = SKIP
 
 pkgname = pachist-git
