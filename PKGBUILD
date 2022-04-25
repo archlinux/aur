@@ -6,7 +6,7 @@ pkgname=audacity-systemlibs
 _pkgname=audacity
 pkgver=3.1.3
 pkgrel=3
-pkgdesc="A program that lets you manipulate digital audio waveforms"
+pkgdesc="A program that lets you manipulate digital audio waveforms - Pure System Libraries"
 arch=(x86_64)
 url="https://www.audacityteam.org/"
 license=(GPL2 CCPL)
@@ -18,17 +18,14 @@ depends=(
   libmad
   libsbsms
   libsoxr
-  libxtst
   lilv
   portaudio
   portmidi
   portsmf
-  sqlite
   soundtouch
   suil
   twolame
   vamp-plugin-sdk
-  #wxgtk3-dev
 )
 makedepends=(
   alsa-lib
@@ -37,13 +34,16 @@ makedepends=(
   expat
   ffmpeg
   lame
+  libogg
   libsndfile
   libvorbis
+  libxtst
   lv2
   serd
   sratom
-  sqlite
   sord
+  sqlite
+  #wxgtk3-dev
 )
 optdepends=('ffmpeg: additional import/export capabilities')
 provides=(audacity)
@@ -60,7 +60,8 @@ build() {
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DwxBUILD_TOOLKIT:STRING=gtk3 \
     -Daudacity_obey_system_dependencies=On \
-    -Daudacity_lib_preference=system
+    -Daudacity_lib_preference=system \
+    -Daudacity_use_wxwidgets=local
   cmake --build build
 }
 
