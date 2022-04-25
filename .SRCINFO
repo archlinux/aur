@@ -1,0 +1,13 @@
+pkgbase = paperlessmerge-bin
+	pkgdesc = PaperlessMerge can easily merge documents in paperless-ng(x)
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/Marco98/paperlessmerge
+	arch = x86_64
+	license = MIT
+	source = paperlessmerge::https://github.com/Marco98/paperlessmerge/releases/download/v0.1.0/paperlessmerge_0.1.0_linux_amd64
+	source = https://raw.githubusercontent.com/Marco98/paperlessmerge/v0.1.0/LICENSE
+	sha256sums = 754320f16e42bb518debf5ff1c3e82cdee04eac761c485c8971bc1af5927bb4c
+	sha256sums = e5a861367544ac0b354e8d097eac039c150895705b4447fb8af366e35c63dacc
+
+pkgname = paperlessmerge-bin
