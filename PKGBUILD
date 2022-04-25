@@ -4,28 +4,19 @@
 
 pkgname=trustedqsl
 __pkgname=tqsl
-pkgver=2.5.9
+pkgver=2.6
 pkgrel=1
 pkgdesc="QSO log signing data for the ARRL Logbook of The World (LoTW)"
 arch=('i686' 'x86_64')
 url="http://lotw.arrl.org/"
 license=('custom:ARRL')
-depends=('lmdb' 'wxgtk2.8' 'curl' 'hamradio-menus')
+depends=('lmdb' 'wxgtk3' 'curl' 'hamradio-menus')
 makedepends=('cmake' 'libxxf86vm')
 provides=('tqsllib' 'trustedqsl')
 conflicts=('trustedqsl-git')
 replaces=('tqsl')
 source=(http://www.arrl.org/files/file/LoTW%20Instructions/${__pkgname}-${pkgver}.tar.gz
-	diff.CMakeLists.txt.apps
-	diff.CMakeLists.txt.src
 	$pkgname.desktop)
-
-prepare() {
-	cd "$srcdir/${__pkgname}-$pkgver"
-
-	patch -p0 < ../diff.CMakeLists.txt.apps
-	patch -p0 < ../diff.CMakeLists.txt.src
-}
 
 build() {
 	cd "$srcdir/${__pkgname}-$pkgver"
@@ -34,8 +25,8 @@ build() {
 	cd build
 	cmake \
 		-DCMAKE_INSTALL_PREFIX=/usr \
-		-DwxWidgets_CONFIG_EXECUTABLE='/usr/bin/wx-config-2.8' \
-		-DwxWidgets_wxrc_EXECUTABLE='/usr/bin/wxrc-2.8' \
+		-DwxWidgets_CONFIG_EXECUTABLE='/usr/bin/wx-config-gtk3' \
+		-DwxWidgets_wxrc_EXECUTABLE='/usr/bin/wxrc-3.0' \
 		../
 	make
 }
@@ -53,11 +44,7 @@ package() {
 
 	rm -rf $pkgdir/usr/include $pkgdir/man5
 }
-md5sums=('918923ff3fbb4cab06e4973fffd11912'
-         'fb4f5e8437982d20f70d6641e36ea141'
-         '2440ccac773ce945ed416be3451c3dd8'
-         '860b305f9cf6db8cc1c14dc88cef34fc')
-sha256sums=('7e5bfbb48fd2600c7126c1c56b74148273b4825000405f3b1203f8c324d69cd5'
-            '9a92ce3d79c511a51bde9468020459dcc67f029e3390d267032583a43d924ca5'
-            '16d9c2ddcfe62e0872dd0367eb2defcbc4a894adb2065a654c854168dc239ec8'
-            'cb638467e305f6f9426a22841dbbb4d656a30f48e4c1c27e87dd82890794c167')
+md5sums=('d8d2486aaca11bf5a6ae76fde7d2644a'
+         '6dd4296f5fda2d77922c9cbe4a120d3b')
+sha256sums=('81adf55c47b1e18ae12384f21183c00a304257052e84bc4d3d66b1acf9739879'
+            '68129b7f7ddbb75be52f1b9164d43c6d9805c5877423546b50397c2d920c79e9')
