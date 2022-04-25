@@ -1,0 +1,4 @@
+#!/bin/sh
+cd $(dirname $(realpath $0))
+export LD_LIBRARY_PATH=lib
+mono Celeste.exe "$@"

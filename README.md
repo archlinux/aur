@@ -5,16 +5,13 @@ This repo contains a PKGBUILD file for compiling the support libs ([FNA3D], [FMO
 ## Requirements
 
 * You need a copy of Celeste.  The PKGBUILD has only been tested with the [v1.4.0.0 release on itch.io](https://mattmakesgames.itch.io/celeste), but may work with other releases.
-* You need to download [FMOD Studio][FMOD] in order to get ARM binaries.  This requires [registering an account](https://www.fmod.com/profile/register) with FMOD, going to the downloads page and downloading [the right version] of "FMOD Engine" - see below for version info.
+* You need to download [FMOD][FMOD] in order to get ARM binaries.  This requires [registering an account](https://www.fmod.com/profile/register) with FMOD, going to the downloads page and downloading the right version (see below) of "FMOD Engine" - see below for version info.
 
-### FMOD Studio versions
+### FMOD version
 
-FMOD didn't support aarch64 until version 2, whereas Celeste was built to work with version 1.  At present, the PKGBUILD therefore uses a different FMOD version depending on the architecture:
+FMOD didn't support aarch64 until version 2, whereas Celeste was built to work with version 1.  At present, the PKGBUILD therefore uses FMOD 2 and applies some further patches to make Celeste work with it.
 
-| Architecture | FMOD Version |
-| ------------ | ------------ |
-| aarch64      | 2.02.06      |
-| armv7h       | 1.10.14      |
+At present, the version used is 2.02.06.  Other 2.x versions may also work, and on platforms other than aarch64, you can also try FMOD 1.x.
 
 ## Building
 
@@ -28,7 +25,7 @@ Probably via AUR?
 
 * Tested most recently on Manjaro ARM running on a RockPro64 (RK3399).
 * The `fmodstudio_fix.c` file that is used to make FMOD 2.x work is a copy-paste from https://github.com/pixelomer/Celeste-ARM64/issues/2 and credit for it should go to @JohnnyonFlame.
-* The [Celeste-ARM64](https://github.com/pixelomer/Celeste-ARM64) repo takes a slightly different approach to opatching, which used to work for me, but stopped after an update to glibc.
+* The [Celeste-ARM64](https://github.com/pixelomer/Celeste-ARM64) repo takes a slightly different approach to patching, which used to work for me, but stopped after an update to glibc.
 * armv7h isn't working at the moment - maybe it should be updated to use FMOD 2.x as well...?
 
 [FNA3D]: https://github.com/FNA-XNA/FNA3D
