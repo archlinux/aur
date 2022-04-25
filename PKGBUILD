@@ -1,7 +1,7 @@
 # Maintainer: Arian Rezazadeh <notarian.rez@gmail.com>
 
 pkgname=picom-arian8j2-git
-pkgver=v0.1_20220113
+pkgver=v0.1_20220425
 pkgrel=1
 pkgdesc="Arian8j2's picom fork with configurable transitions"
 arch=('i686' 'x86_64')
