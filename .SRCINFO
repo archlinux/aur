@@ -1,13 +1,15 @@
 pkgbase = python-flake8-print
 	pkgdesc = Check for Print statements in python files.
-	pkgver = 3.1.4
+	pkgver = 4.0.0
 	pkgrel = 1
 	url = https://github.com/jbkahn/flake8-print
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
-	source = https://github.com/JBKahn/flake8-print/archive/3.1.4.tar.gz
-	sha512sums = f5caf02478c1bd47df7f922b560de97be5dc103e61461dea5e84b20111761f259dd231fb8c53f45f921ac5b0b010daf0cd5cca6024eae8e33f434d301eaba6bb
+	source = https://github.com/JBKahn/flake8-print/archive/4.0.0.tar.gz
+	sha512sums = cb62bd5a68835c1b5439593259260da7f3ca0c28afe0306cae77d8527d7572b485ab09622b149d67a79671a7f20e9507d6f760a70fda3b48916032dd898f873e
 
 pkgname = python-flake8-print
-
