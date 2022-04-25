@@ -1,6 +1,6 @@
 # Maintainer: Joshua Rubin <me at jawa dot dev>
 pkgname=soapysdrplay3-git
-pkgver=r53.e6fdb71
+pkgver=r63.f0a8439
 pkgrel=1
 pkgdesc="Soapy SDR module for SDRPlay"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ provides=('soapysdrplay')
 conflicts=('soapysdrplay-git')
 makedepends=('cmake')
 install=${pkgname}.install
-source=("$pkgname::git://github.com/pothosware/SoapySDRPlay3.git")
+source=("$pkgname::git+https://github.com/pothosware/SoapySDRPlay3.git")
 md5sums=('SKIP')
 
 pkgver() {
