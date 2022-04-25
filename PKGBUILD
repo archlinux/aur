@@ -5,7 +5,7 @@ pkgrel=1
 epoch=
 pkgdesc="Yet another fetching tool. "
 arch=(any)
-url=""
+url="https://github.com/demonkingswarn/scripts"
 license=('GPL3')
 groups=()
 depends=()
@@ -19,18 +19,14 @@ backup=()
 options=()
 install=
 changelog=
-source=()
+source=("git+$url")
 noextract=()
 md5sums=('SKIP')
 validpgpkeys=()
 
-pkgver() {
-	cd "${_pkgname}"
-	printf "1.0_r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 package() {
-        curl -sL "https://github.com/DemonKingSwarn/dotfiles-3/raw/main/.local/bin/dfetch" -o /usr/local/bin/dfetch
-		chmod +x /usr/local/bin/dfetch
+		rm -rf scripts
+        curl -sL "https://github.com/DemonKingSwarn/dotfiles-3/raw/main/.local/bin/dfetch" -o ~/.local/bin/dfetch
+		chmod +x ~/.local/bin/dfetch
 }
 

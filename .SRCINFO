@@ -2,10 +2,12 @@ pkgbase = dfetch
 	pkgdesc = Yet another fetching tool.
 	pkgver = 1.0.0
 	pkgrel = 1
+	url = https://github.com/demonkingswarn/scripts
 	arch = any
 	license = GPL3
 	makedepends = git
 	provides = dfetch
+	source = git+https://github.com/demonkingswarn/scripts
 	md5sums = SKIP
 
 pkgname = dfetch
