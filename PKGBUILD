@@ -1,7 +1,7 @@
 # Maintainer: Jarkko Sakkinen <jarkko.sakkinen@iki.fi>
 
-pkgbase=linux-sgx
-pkgver=5.17.1.arch1
+pkgbase=linux
+pkgver=5.17.4.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -9,8 +9,8 @@ url="https://github.com/archlinux/linux/commits/$_srctag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-  bc kmod libelf pahole cpio perl tar xz
-  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick
+  bc libelf pahole cpio perl tar xz
+  xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
   git
 )
 options=('!strip')
@@ -46,7 +46,7 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            'bd1e57c15d4eb62024d2ee935b54d36e74e73b22c3800b45ecf9233521a9f74b')
+            '3f02a0f2fe820f678d15fb0efce04e3716bdc7590d452317bf1b0b63f3b31cd2')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -87,7 +87,7 @@ build() {
 _package() {
   pkgdesc="The $pkgdesc kernel and modules"
   depends=(coreutils kmod initramfs)
-  optdepends=('crda: to set the correct wireless channels of your country'
+  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
   replaces=(virtualbox-guest-modules-arch wireguard-arch)
@@ -105,7 +105,8 @@ _package() {
   echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
   echo "Installing modules..."
-  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+  make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+    DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
   # remove build and source links
   rm "$modulesdir"/{source,build}
