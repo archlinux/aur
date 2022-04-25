@@ -1,0 +1,8 @@
+/.vscode
+/openvpn-update-resolv-conf
+/pkg
+/python-pia
+/src
+*.log
+*.tar.*
+*.zip
