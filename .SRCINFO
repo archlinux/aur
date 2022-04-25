@@ -1,7 +1,7 @@
 pkgbase = gradle6
 	pkgdesc = Powerful build system for the JVM
 	pkgver = 6.9.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gradle.org/
 	arch = any
 	license = Apache
@@ -13,9 +13,6 @@ pkgbase = gradle6
 	makedepends = java-environment=11
 	depends = java-environment
 	depends = bash
-	conflicts = gradle
-	conflicts = gradle-doc
-	conflicts = gradle-src
 	source = https://services.gradle.org/distributions/gradle-6.9.2-src.zip
 	source = gradle6
 	sha256sums = e1cf93f227498a243cc9502bcf9c0c5bc5a52276db0733acb4101b653bb66687

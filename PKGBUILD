@@ -1,4 +1,5 @@
 # Maintainer: AmberArch <amber@mail.cyborgtrees.com>
+# Contributor: Gerard Ribugent Navarro <ribugent@gmail.com>
 # Contributor: Arnaud Dovi <mr.dovi@gmail.com>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
@@ -7,9 +8,8 @@
 
 pkgbase=gradle6
 pkgname=('gradle6' 'gradle6-doc' 'gradle6-src')
-conflicts=('gradle' 'gradle-doc' 'gradle-src')
 pkgver=6.9.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Powerful build system for the JVM'
 url='https://gradle.org/'
 arch=('any')
@@ -69,8 +69,8 @@ package_gradle6-doc() {
   options=('!strip')
 
   cd ${pkgbase/6/}-${pkgver}/dist
-  install -d "${pkgdir}/usr/share/java/${pkgbase/6/}/docs"
-  cp -r docs/* "${pkgdir}/usr/share/java/${pkgbase/6/}/docs"
+  install -d "${pkgdir}/usr/share/java/${pkgbase}/docs"
+  cp -r docs/* "${pkgdir}/usr/share/java/${pkgbase}/docs"
 }
 
 package_gradle6-src() {
@@ -78,8 +78,8 @@ package_gradle6-src() {
   options=('!strip')
 
   cd ${pkgbase/6/}-${pkgver}/dist
-  install -d "${pkgdir}/usr/share/java/${pkgbase/6/}/src"
-  cp -r src/* "${pkgdir}/usr/share/java/${pkgbase/6/}/src"
+  install -d "${pkgdir}/usr/share/java/${pkgbase}/src"
+  cp -r src/* "${pkgdir}/usr/share/java/${pkgbase}/src"
 }
 
 # vim: ts=2 sw=2 et:
