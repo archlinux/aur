@@ -3,9 +3,9 @@
 
 pkgname=lib32-assimp
 _basename=assimp
-pkgver=5.2.1
+pkgver=5.2.3
 pkgrel=1
-pkgdesc="Portable Open Source library to import various well-known 3D model formats in an uniform manner"
+pkgdesc='Library to import various well-known 3D model formats in an uniform manner'
 url='http://www.assimp.org/'
 arch=('x86_64')
 license=('BSD')
@@ -13,16 +13,16 @@ depends=('lib32-gcc-libs' 'lib32-zlib' 'lib32-minizip')
 makedepends=('cmake' 'ninja')
 source=("https://github.com/assimp/assimp/archive/v${pkgver}.tar.gz"
         'minizip-openfile.patch')
-sha256sums=('c9cbbc8589639cd8c13f65e94a90422a70454e8fa150cf899b6038ba86e9ecff'
-	    '331ce3d73b43934eaa17be5855503ea751c083c83192b00807177bcdd982d95d')
+sha512sums=('accc1020877b631431bd0bc2de20b530d7e8d234e960904070292a4a08e768c55d1d0cf614c68d38f099fab2d086420c3ffd3f729cb538b169c1275ef0be1eaa'
+            '76cbabac99a22597209c9f5e6f266f8b0d318bdad3e681ba851d406630d9fda2a7c1a36a6a374eb6d2a7c751e1e6a60e1d4672ae83b5c25beed943c5cb2dead5')
 
 prepare() {
-  cd ${_basename}-${pkgver}
-  patch -p1 -i ${srcdir}/minizip-openfile.patch
+  cd "${_basename}-${pkgver}"
+  patch -p1 -i "${srcdir}/minizip-openfile.patch"
 }
 
 build() {
-  cd ${_basename}-${pkgver}
+  cd "${_basename}-${pkgver}"
 
   cmake . \
     -B build \
@@ -38,12 +38,12 @@ build() {
 }
 
 package() {
-  cd ${_basename}-${pkgver}
+  cd "${_basename}-${pkgver}"
 
-  DESTDIR="$pkgdir" ninja -C build install
+  DESTDIR="${pkgdir}" ninja -C build install
 
-  rm -rf "$pkgdir"/usr/include
-  mv "$pkgdir"/usr/lib{,32}
+  rm -rf "${pkgdir}/usr/include"
+  mv "${pkgdir}"/usr/lib{,32}
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

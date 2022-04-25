@@ -1,6 +1,6 @@
 pkgbase = lib32-assimp
-	pkgdesc = Portable Open Source library to import various well-known 3D model formats in an uniform manner
-	pkgver = 5.2.1
+	pkgdesc = Library to import various well-known 3D model formats in an uniform manner
+	pkgver = 5.2.3
 	pkgrel = 1
 	url = http://www.assimp.org/
 	arch = x86_64
@@ -10,9 +10,9 @@ pkgbase = lib32-assimp
 	depends = lib32-gcc-libs
 	depends = lib32-zlib
 	depends = lib32-minizip
-	source = https://github.com/assimp/assimp/archive/v5.2.1.tar.gz
+	source = https://github.com/assimp/assimp/archive/v5.2.3.tar.gz
 	source = minizip-openfile.patch
-	sha256sums = c9cbbc8589639cd8c13f65e94a90422a70454e8fa150cf899b6038ba86e9ecff
-	sha256sums = 331ce3d73b43934eaa17be5855503ea751c083c83192b00807177bcdd982d95d
+	sha512sums = accc1020877b631431bd0bc2de20b530d7e8d234e960904070292a4a08e768c55d1d0cf614c68d38f099fab2d086420c3ffd3f729cb538b169c1275ef0be1eaa
+	sha512sums = 76cbabac99a22597209c9f5e6f266f8b0d318bdad3e681ba851d406630d9fda2a7c1a36a6a374eb6d2a7c751e1e6a60e1d4672ae83b5c25beed943c5cb2dead5
 
 pkgname = lib32-assimp
