@@ -3,7 +3,7 @@
 
 _pkgname='ferdium'
 pkgname="ferdium-git"
-pkgver=develop.r0.g81b4aae6
+pkgver=v6.0.0.nightly.11.r0.g71bb18a7
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest commit).'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -12,7 +12,6 @@ license=('Apache')
 depends=('libxkbfile')
 appbranch="develop"
 recipiesbranch="master"
-nodejsversion='18.0.0'
 makedepends=('nvm' 'git' 'python' 'jq')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -77,12 +76,16 @@ build() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
 
-	# Install the correct version of NodeJS
-    nvm install ${nodejsversion}
-    nvm use ${nodejsversion}
+	# Install the correct version of NodeJS (read from .nvmrc)
+	nvm install $(cat .nvmrc)
+    nvm use
 
     # Check if the correct version of node is being used
-    [[ $(node --version) == "v${nodejsversion}" ]]
+    if [[ "$(node --version)" != "v$(cat .nvmrc)" ]]
+    then
+    	echo "Using the wrong version of NodeJS! Expected [v"$(cat .nvmrc)"] but using ["$(node --version)"]."
+    	exit 1
+    fi
 
     # Extract the correct versions of npm and pnpm from the package.json files
     EXPECTED_NPM_VERSION=$(jq --raw-output .engines.npm <"package.json")
