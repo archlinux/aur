@@ -1,0 +1,13 @@
+pkgbase = hare-linux
+	pkgdesc = Extended Linux support for Hare
+	pkgver = r60.1eff9c1
+	pkgrel = 1
+	url = https://git.sr.ht/~sircmpwn/hare-linux
+	arch = any
+	license = MPL2
+	makedepends = git
+	depends = hare
+	source = hare-linux::git+https://git.sr.ht/~sircmpwn/hare-linux#commit=1eff9c14877d1f49028e614ccba9ddd0dfa2168d
+	md5sums = SKIP
+
+pkgname = hare-linux
