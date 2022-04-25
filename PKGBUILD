@@ -11,17 +11,14 @@ url="https://ferdium.org/"
 license=('Apache')
 depends=('libxkbfile')
 apptag="v6.0.0-nightly.11"
-recipiesbranch="master"
 makedepends=('nvm' 'git' 'python')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
 	"$pkgname::git+https://github.com/ferdium/ferdium-app#tag=${apptag}"
-	"$pkgname-recipes::git+https://github.com/ferdium/ferdium-recipes#branch=${recipiesbranch}"
 	'fix-autostart-path.diff'
 )
 sha512sums=('SKIP'
-            'SKIP'
             'a38d053f249ab291049edb1afb61dcf4e513ab2ca15787861db6d06a181d41fa1a5a690688237bff4bb28efc8a09eae7759742699b1da5c124a037709c6f0eca')
 
 _sourcedirectory="$pkgname"
@@ -43,14 +40,11 @@ esac
 
 prepare() {
 	# Due to patches and sed's, reset the code to upstream before starting
-	cd "$srcdir/$_sourcedirectory/recipes"
-	git reset --hard origin/"${recipiesbranch}"
 	cd "$srcdir/$_sourcedirectory/"
-	git reset --hard tags/"${apptag}"
+	git reset --hard "refs/tags/${apptag}"
 
-	# Provide git submodules
+	# Initialise the recipes submodule
 	git submodule init
-	git config submodule.recipes.url "$srcdir/$pkgname-recipes"
 	git submodule update --init --recursive --remote --rebase --force
 
 	# Specify path for autostart file
@@ -58,7 +52,8 @@ prepare() {
 }
 
 pkgver() {
-	echo "$apptag" | sed -e 's/^v//' -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g'
+	cd "$srcdir/$_sourcedirectory/"
+	printf "%s" "$(git describe --tags | sed 's/\([^-]*-\)g/r\1/;s/-/./g' | sed 's/^v//')"
 }
 
 build() {
