@@ -11,6 +11,7 @@ depends=('python' 'python-setuptools' 'python-docopt' 'openvpn')
 makedepends=('git')
 optdepends=('networkmanager: Enables PIA for Network Manager (needs a openvpn plugin)'
             'connman: Enables PIA for Connman')
+conflicts=('xawtv') # Both packages install a `pia` executable
 
 sha256sums=('bc38427782aedc90cb65b322cd6f9d74af4e988cc5b3c884e43236ed7a5e4491'
             '38758f393590c51ec1566aba19beaed7c4fa8bd6f7c323f44ab00b9eb9fd7577'

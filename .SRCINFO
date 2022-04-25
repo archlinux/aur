@@ -12,6 +12,7 @@ pkgbase = private-internet-access-vpn
 	depends = openvpn
 	optdepends = networkmanager: Enables PIA for Network Manager (needs a openvpn plugin)
 	optdepends = connman: Enables PIA for Connman
+	conflicts = xawtv
 	noextract = default-3.4-2.zip
 	noextract = strong-3.4-2.zip
 	noextract = pia.8.gz
