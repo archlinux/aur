@@ -6,20 +6,16 @@ _owner=timbertson
 _uuid=impatience@gfxmonk.net
 
 pkgname=gnome-shell-extension-impatience
-pkgver=0.4.6
+pkgver=0.4.8
 _tag="version-$pkgver"
-pkgrel=2
+pkgrel=1
 pkgdesc='Speed up the gnome-shell animation speed'
 arch=('any')
 url="https://github.com/$_owner/$_name"
 license=('GPL3')
 depends=('gnome-shell>=1:40' 'gnome-shell<1:43')
 source=($_name-$pkgver.tar.gz::$url/archive/$_tag.tar.gz)
-sha256sums=('09799f9dfceecb68ca591008d83537a788541b2500ba81ffa2120f275ed9b650')
-
-prepare() {
-    sed -i '/shell-version/s|" ]|", "42" ]|' "$srcdir"/$_name-$_tag/impatience/metadata.json
-}
+sha256sums=('713ae730d0fd1afd3fd5b4124040124f53c7d0133bd48407706b3257d74fdb6b')
 
 package() {
     cd $_name-$_tag
