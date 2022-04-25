@@ -8,6 +8,7 @@ arch=("x86_64" "i686" "armv7h" "aarch64")
 url="https://github.com/rutrum/convert-case"
 license=("MIT")
 conflicts=("ccase-git" "ccase-bin")
+depends=("gcc-libs")
 makedepends=("cargo")
 source=("${pkgname}-${pkgver}.tar.gz::https://static.crates.io/crates/$pkgname/$pkgname-$pkgver.crate")
 sha256sums=('0b4eb702655a54157406187f18d491def2a7508baef3290175b43e836b2ee8a8')
