@@ -6,7 +6,7 @@
 ##
 ## Copyright © 2022 Fabian Bornschein <fabiscafe/at/mailbox/dot/org>
 ##
-##Permission is hereby granted, free of charge, to any person obtaining a copy 
+##Permission is hereby granted, free of charge, to any person obtaining a copy
 ##of this software and associated documentation files (the “Software”), to
 ##deal in the Software without restriction, including without limitation the
 ##rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
@@ -20,7 +20,7 @@
 ##IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 ##FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 ##AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-##LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING 
+##LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 ##FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 ##IN THE SOFTWARE.
 
@@ -84,7 +84,7 @@ PSQL_REDIS_STATUS()
 
 PSQL_REDIS_DEP()
 {
-if ! /usr/bin/systemctl is-active postgresql.service redis.service > /dev/null; then 
+if ! /usr/bin/systemctl is-active postgresql.service redis.service > /dev/null; then
     printf "This functionality requires PostgreSQL and Redis running\n"
     printf "Please start the services and run %s again\n" $0
     printf "\n"
