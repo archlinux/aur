@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=ffmpeg-full-git
-pkgver=5.1.r106624.g391ce570c8
+pkgver=5.1.r106675.gf2724d2b69
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac; git version)'
 arch=('x86_64')
@@ -10,10 +10,10 @@ license=('custom: nonfree and unredistributable')
 depends=(
     # official repositories:
         'alsa-lib' 'avisynthplus' 'bzip2' 'frei0r-plugins' 'libgcrypt' 'gmp' 'gnutls'
-        'ladspa' 'libass' 'aom' 'aribb24' 'libbluray' 'libbs2b' 'libcaca' 'celt'
+        'ladspa' 'lcms2' 'aom' 'aribb24' 'libass' 'libbluray' 'libbs2b' 'libcaca' 'celt'
         'libcdio-paranoia' 'codec2' 'dav1d' 'libdc1394' 'libavc1394' 'libfdk-aac'
         'fontconfig' 'freetype2' 'fribidi' 'glslang' 'spirv-tools' 'libgme' 'gsm'
-        'libiec61883' 'libilbc' 'jack' 'kvazaar' 'libmodplug' 'lame'
+        'libiec61883' 'libilbc' 'jack' 'libjxl-git' 'kvazaar' 'libmodplug' 'lame'
         'opencore-amr' 'openjpeg2' 'opus' 'libpulse' 'librabbitmq-c' 'rav1e' 'librsvg'
         'rubberband' 'rtmpdump' 'smbclient' 'snappy' 'libsoxr' 'speex' 'srt' 'libssh'
         'svt-av1' 'tesseract' 'libtheora' 'twolame'
@@ -96,6 +96,7 @@ build() {
         --enable-gnutls \
         --enable-iconv \
         --enable-ladspa \
+        --enable-lcms2 \
         --enable-libaom \
         --enable-libaribb24 \
         --enable-libass \
@@ -119,6 +120,7 @@ build() {
         --enable-libiec61883 \
         --enable-libilbc \
         --enable-libjack \
+        --enable-libjxl \
         --enable-libklvanc \
         --enable-libkvazaar \
         --enable-liblensfun \
