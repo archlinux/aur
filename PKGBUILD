@@ -3,7 +3,7 @@
 pkgbase=reactphysics3d
 pkgname=(reactphysics3d reactphysics3d-docs)
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Physics engine'
 arch=(x86_64)
 url='https://www.reactphysics3d.com'
@@ -13,7 +13,7 @@ source=("https://github.com/DanielChappuis/reactphysics3d/releases/download/v$pk
         "https://www.reactphysics3d.com/documentation/manual/ReactPhysics3D-UserManual.pdf"
         "$pkgbase.pc")
 sha256sums=('a58c6e88311e2d7da6ae60f486097e1fe522682cd84b0f93e0f97d39377571cb'
-            '5f866e28f7a64a0eddb0885536b6a1da524dd4b45c7a871e802eaeb659617882'
+            '4bd8e9cfd6459718592300eb748d90644958ea8e8aee3ea7a3fa5c67bf22010f'
             '38c8e276bc0601434f27e161036f310d40a28bef527dddabf5140375bf5bb712')
 
 prepare() {
