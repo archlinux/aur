@@ -1,7 +1,7 @@
 # Maintainer: Andreas Backx
 
 pkgname=spotifatius
-pkgver=0.1.1
+pkgver=0.1.2
 pkgrel=2
 pkgdesc="A simple Spotify CLI primarily made for monitoring what songs you're listening to and displaying that in your bar of choice like waybar or polybar."
 arch=('any')
@@ -10,7 +10,7 @@ license=('MIT')
 depends=()
 makedepends=('cargo' 'cmake')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/AndreasBackx/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('f844f9b04c0e3cd2bdfd1bb7228ceced19cf2f677c4458bb27edfdfbe92f20ba')
+sha256sums=('45baac835d5e471a17bbf4c9a37ef777024e9ac9af286edd0f0ab2a112483c9e')
 
 build() {
   cd "$pkgname-$pkgver"
