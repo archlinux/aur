@@ -3,7 +3,7 @@
 
 pkgname=penguin-subtitle-player
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Standalone subtitle player'
 arch=('x86_64')
 url='https://github.com/carsonip/Penguin-Subtitle-Player'
