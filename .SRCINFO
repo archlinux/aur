@@ -23,3 +23,9 @@ pkgbase = xf86-video-fbturbo-git
 	sha256sums = a8ca499527fc0da6177a7cca86badd021259e17b2d416bc7f7a6663821e90c12
 
 pkgname = xf86-video-fbturbo-git
+	depends = xf86-input-evdev
+	depends = xf86-video-fbdev
+	depends = xf86-video-vesa
+	depends = xinput_calibrator
+	depends = xorg-server
+	depends = xorg-xinit

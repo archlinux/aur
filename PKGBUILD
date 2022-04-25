@@ -51,6 +51,12 @@ build() {
 }
 
 package() {
+  depends=(xf86-input-evdev
+           xf86-video-fbdev 
+           xf86-video-vesa
+           xinput_calibrator
+           xorg-server
+           xorg-xinit)
   cd "${srcdir}/${_gitname}"
   mkdir -p "${pkgdir}/etc/X11/xorg.conf.d/"
   cp "xorg.conf" "${pkgdir}/etc/X11/xorg.conf.d/99-fbturbo.conf"
