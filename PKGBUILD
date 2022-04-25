@@ -13,7 +13,7 @@
 # update and just generally don't seem to care much.
 pkgname=synergy
 pkgver=1.10.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Share a single mouse and keyboard between multiple computers'
 url='https://symless.com/synergy/'
 arch=('x86_64')
