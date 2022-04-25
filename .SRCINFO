@@ -1,0 +1,20 @@
+pkgbase = muon-ssh
+	pkgdesc = Graphical SFTP client and terminal emulator (SSH) with helpful utilities.
+	pkgver = 2.2.0
+	pkgrel = 1
+	url = https://github.com/devlinx9/muon-ssh
+	arch = any
+	license = GPL3
+	makedepends = java-environment>=11
+	makedepends = maven
+	depends = java-runtime>=11
+	depends = hicolor-icon-theme
+	depends = bash
+	source = muon-ssh-2.2.0.tar.gz::https://github.com/devlinx9/muon-ssh/archive/v2.2.0.tar.gz
+	source = muon-ssh
+	source = muon-ssh.desktop
+	sha256sums = 1c8a0e632f689898d9965ff47ec7103f7b9743837b95f049c2009f9002f09d0c
+	sha256sums = 374479a35bd6cce746a8492107eac4c14fd257fb0e1aa79b5af4677e117c4e45
+	sha256sums = 2b0f73bb8c5fb950afe62270843642d65555c46082949e5636936507841396c1
+
+pkgname = muon-ssh

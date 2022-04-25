@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Muon SSH
+Icon=Muon-SSH
+Type=Application
+Exec=muon-ssh
+Comment=Graphical SFTP client and terminal emulator with helpful utilities
+Categories=Development;
