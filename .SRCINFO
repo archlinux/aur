@@ -22,7 +22,7 @@ pkgbase = private-internet-access-vpn
 	source = restart.conf
 	source = vpn.sh
 	source = pia.8.gz
-	source = git+https://github.com/flamusdiu/python-pia.git#tag=3.4
+	source = git+https://github.com/flamusdiu/python-pia.git#tag=v3.4
 	source = git+https://github.com/masterkorp/openvpn-update-resolv-conf.git
 	sha256sums = bc38427782aedc90cb65b322cd6f9d74af4e988cc5b3c884e43236ed7a5e4491
 	sha256sums = 38758f393590c51ec1566aba19beaed7c4fa8bd6f7c323f44ab00b9eb9fd7577
@@ -35,4 +35,3 @@ pkgbase = private-internet-access-vpn
 	sha256sums = SKIP
 
 pkgname = private-internet-access-vpn
-

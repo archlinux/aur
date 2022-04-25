@@ -29,7 +29,7 @@ source=("default-$pkgver-$pkgrel.zip::https://www.privateinternetaccess.com/open
 	      "restart.conf"
 	      "vpn.sh"
 	      "pia.8.gz"
-	      "git+https://github.com/flamusdiu/python-pia.git#tag=${pkgver}"
+	      "git+https://github.com/flamusdiu/python-pia.git#tag=v${pkgver}"
 	      "git+https://github.com/masterkorp/openvpn-update-resolv-conf.git")
 
 noextract=("default-$pkgver-$pkgrel.zip"
