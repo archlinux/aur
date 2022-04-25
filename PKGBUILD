@@ -85,25 +85,6 @@ _use_auto_optimization=y
 ## Apply Kernel Optimization selecting
 _use_optimization_select=
 
-### Selecting the ZSTD compression level
-# ATTENTION - one of two predefined values should be selected!
-# 'ultra' - highest compression ratio
-# 'normal' - standard compression ratio
-_zstd_level='normal'
-
-### Selecting the ZSTD module compression level
-# If you want to use ZSTD compression,
-# first install mkinitcpio-zstd:
-# https://gitlab.com/sirlucjan/lucjan-kernels/tree/master/depends
-# or
-# https://github.com/sirlucjan/lucjan-kernels/tree/master/depends
-# ATTENTION - one of two predefined values should be selected!
-# 'ultra' - highest compression ratio
-# 'normal' - standard compression ratio
-# WARNING: the ultra settings can sometimes
-# be counterproductive in both size and speed.
-_zstd_level_value='normal'
-
 # Enable zram/zswap ZSTD compression
 _zstd_compression=y
 
@@ -134,14 +115,18 @@ _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux TT scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=2
+pkgrel=3
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
 license=('GPL2')
 options=('!strip')
 makedepends=('bc' 'texlive-latexextra' 'libelf' 'pahole' 'cpio' 'perl' 'tar' 'xz' 'zstd' 'xmlto' 'git' 'gcc' 'gcc-libs' 'glibc' 'binutils' 'make' 'patch')
 if [ -n "$_use_llvm_lto" ]; then
-  depends=(clang llvm lld python)
+  depends+=(clang llvm lld python)
+  BUILD_FLAGS=(
+    LLVM=1
+    LLVM_IAS=1
+  )
 fi
 _patchsource="https://raw.githubusercontent.com/ptr1337/kernel-patches/master/${_major}"
 source=(
@@ -183,15 +168,9 @@ source+=(
   "${_patchsource}/0014-lrng.patch"
   "${_patchsource}/0015-le9.patch"
   "${_patchsource}/0016-ck-hrtimer.patch"
+  "${_patchsource}/0017-futex-winesync.patch"
   "auto-cpu-optimization.sh"
 )
-
-if [ -n "$_use_llvm_lto" ]; then
-  BUILD_FLAGS=(
-    LLVM=1
-    LLVM_IAS=1
-  )
-fi
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -234,10 +213,12 @@ prepare() {
   ### Selecting the CPU scheduler
   if [ "$_cpusched" = "bmq" ]; then
     echo "Selecting BMQ CPU scheduler..."
+    scripts/config --enable CONFIG_SCHED_ALT
     scripts/config --enable CONFIG_SCHED_BMQ
     scripts/config --disable CONFIG_SCHED_PDS
   elif [ "$_cpusched" = "pds" ]; then
     echo "Selecting PDS CPU scheduler..."
+    scripts/config --enable CONFIG_SCHED_ALT
     scripts/config --disable CONFIG_SCHED_BMQ
     scripts/config --enable CONFIG_SCHED_PDS
   elif [ "$_cpusched" = "cacule" ]; then
@@ -276,7 +257,7 @@ prepare() {
 
   ### Selecting the THIN or FULL-LTO compression level
   if [ "$_use_llvm_lto" = "thin" ]; then
-    echo "Enabling highest ZSTD compression ratio..."
+    echo "Enabling LLVM THIN LTO..."
     scripts/config --disable LTO_NONE \
       --enable LTO \
       --enable LTO_CLANG \
@@ -286,7 +267,7 @@ prepare() {
       --enable LTO_CLANG_THIN \
       --enable HAVE_GCC_PLUGINS
   elif [ "$_use_llvm_lto" = "full" ]; then
-    echo "Enabling standard ZSTD compression ratio..."
+    echo "Enabling LLVM FULL LTO..."
     scripts/config --disable LTO_NONE \
       --enable LTO \
       --enable LTO_CLANG \
@@ -294,14 +275,15 @@ prepare() {
       --enable ARCH_SUPPORTS_LTO_CLANG_THIN \
       --enable HAS_LTO_CLANG \
       --enable LTO_CLANG \
+      --enable LTO_CLANG_FULL \
       --enable HAVE_GCC_PLUGINS
   else
     scripts/config --enable CONFIG_LTO_NONE
   fi
 
-  ### Optionally set tickrate to 1000
+  ### Optionally set tickrate to 1000Hz
   if [ -n "$_1k_HZ_ticks" ]; then
-    echo "Setting tick rate to 1k..."
+    echo "Setting tick rate to 1k Hz..."
     scripts/config --disable CONFIG_HZ_300
     scripts/config --enable CONFIG_HZ_1000
     scripts/config --set-val CONFIG_HZ 1000
@@ -309,7 +291,7 @@ prepare() {
 
   ### Optionally set tickrate to 750HZ
   if [ -n "$_750_HZ_ticks" ]; then
-    echo "Setting tick rate to 750HZ..."
+    echo "Setting tick rate to 750Hz..."
     scripts/config --disable CONFIG_HZ_300
     scripts/config --enable CONFIG_HZ_750
     scripts/config --set-val CONFIG_HZ 750
@@ -317,7 +299,7 @@ prepare() {
 
   ### Optionally set tickrate to 600HZ
   if [ -n "$_600_HZ_ticks" ]; then
-    echo "Setting tick rate to 600HZ..."
+    echo "Setting tick rate to 600Hz..."
     scripts/config --disable CONFIG_HZ_300
     scripts/config --enable CONFIG_HZ_600
     scripts/config --set-val CONFIG_HZ 600
@@ -325,7 +307,7 @@ prepare() {
 
   ### Optionally set tickrate to 500HZ
   if [ -n "$_500_HZ_ticks" ]; then
-    echo "Setting tick rate to 500HZ..."
+    echo "Setting tick rate to 500Hz..."
     scripts/config --disable CONFIG_HZ_300
     scripts/config --enable CONFIG_HZ_500
     scripts/config --set-val CONFIG_HZ 500
@@ -498,49 +480,6 @@ prepare() {
     scripts/config --disable CONFIG_LRNG_SELFTEST_PANIC
   fi
 
-  ### Selecting the ZSTD compression level
-  if [ "$_zstd_level" = "ultra" ]; then
-    echo "Enabling highest ZSTD compression ratio..."
-    scripts/config --set-val CONFIG_KERNEL_ZSTD_LEVEL 19
-    scripts/config --enable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
-  elif [ "$_zstd_level" = "normal" ]; then
-    echo "Enabling standard ZSTD compression ratio..."
-    scripts/config --set-val CONFIG_KERNEL_ZSTD_LEVEL 19
-    scripts/config --disable CONFIG_KERNEL_ZSTD_LEVEL_ULTRA
-  else
-    if [ -n "$_zstd_level" ]; then
-      error "The value $_zstd_level is invalid. Choose the correct one again."
-    else
-      error "The value is empty. Choose the correct one again."
-    fi
-    error "Selecting the ZSTD compression level failed!"
-    exit
-  fi
-
-  ### Selecting the ZSTD modules and kernel compression level
-  if [ "$_zstd_level_value" = "ultra" ]; then
-    echo "Enabling highest ZSTD modules compression ratio..."
-    scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
-    scripts/config --enable CONFIG_MODULE_COMPRESS_ZSTD_ULTRA
-    scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL_ULTRA 22
-    echo "Enabling highest ZSTD kernel compression ratio..."
-    scripts/config --set-val CONFIG_ZSTD_COMP_VAL 22
-  elif [ "$_zstd_level_value" = "normal" ]; then
-    echo "Enabling standard ZSTD modules compression ratio..."
-    scripts/config --set-val CONFIG_MODULE_COMPRESS_ZSTD_LEVEL 19
-    scripts/config --disable CONFIG_MODULE_COMPRESS_ZSTD_ULTRA
-    echo "Enabling standard ZSTD kernel compression ratio..."
-    scripts/config --set-val CONFIG_ZSTD_COMP_VAL 19
-  else
-    if [ -n "$_zstd_level_value" ]; then
-      error "The value $_zstd_level_value is invalid. Choose the correct one again."
-    else
-      error "The value is empty. Choose the correct one again."
-    fi
-    error "Selecting the ZSTD modules and kernel compression level failed!"
-    exit
-  fi
-
   ### Enable zram/zswap ZSTD compression
   if [ -n "$_zstd_swap_compression" ]; then
     echo "Enabling zram ZSTD compression..."
@@ -574,6 +513,9 @@ prepare() {
 
   echo "Enable CONFIG_USER_NS_UNPRIVILEGED"
   scripts/config --enable CONFIG_USER_NS
+
+  echo "Enable WINE FASTSYNC"
+  scripts/config --enable CONFIG_WINESYNC
 
   ### Optionally use running kernel's config
   # code originally by nous; http://aur.archlinux.org/packages.php?ID=40191
@@ -747,20 +689,21 @@ done
 sha256sums=('6e3cd56ee83a9cb5ac3fde1442c40367ab67368946c4c93bbeb1c65664a0d3c5'
             '29c5dd2ae6b452b75b25816a8f6610fa2ff54f21b22a0ccef5c2e98a7077eb36'
             'c048c4d43196d5d003897012b40da442d932f322b85e9805824450faa5df00ef'
-            'e2109061823fe11e99eb5002b3d553ef9629c8495b974af36fc4113889dd0080'
-            'efd954e75525fb169c3e7d5f4a8b673f8a59469c9c5f8843c9255efbda48e6a9'
-            '80d4a1e4c7f3cbed102de9079859b34a942d4e6424bf86c34a6b00d90f51fdb3'
-            'c1f8023e0c60fb19f34e22616eda55b5aa0d5a9c9d3e801e23b18dd1de9b860f'
-            '983242865137a9b90de992d5b0c1b764da79c4f12e9a85029201b21f954383b5'
-            '0a170fa3526a28e6ff58f98ffa6e4a0fd48a2b0e68f17353086708c04b49898a'
-            'eedb29c8a6844094a21d1c1114f59508a3b03ba84bf54c4338740806bfafa993'
-            'd086a129018c4e8a899f4599a02765f9ebce1f0ec8565bdf802c9957935a3044'
-            'cc43eabeb8773b5a926f9d1897a409d8ac4b9509be662d6d81f590b70ffa0450'
-            '352d36b81ddce85e372e72fd99ddc2ff27f7796f15a8d24bf68a9507b135e9e0'
-            '6c64123aa846d9768c794385fa12cd145c6ad8f5007a6072f8ee4fc4e9c655a2'
-            'c5eb38271687a9952dab922361765b31cc0a0bf779f8386e8bacb6667f93ba35'
-            'd2405846ab0501eb993180a0f6fa1e1ef81bac51a73ca00ff8ee3e75551b1886'
-            'c7048e30409190daa5e1e5a7994f4a3c28d7bc4714b8256d3d67a562a3ab3bec'
-            '0ec74fbdd5c114026f07128fb84d0191157b2787141645545722b3f52aaa2187'
-            'd15fe026c0872ec902dcfd35c180746488b294d9ebf059b8e2699f970ead3734'
+            'e7a81fb26bb61875c07ba83075522d3d1c1ed463581c7067404a91bc724340b8'
+            'dea401c0efff7f7979b91b1a32524646d0bab38191d70daf18924f944a4f1fd5'
+            '9962cab7ce58729912c70f2dce345d088c0c61f640e0bd9ee2975d571b08a0d2'
+            '2abc3cd48db8e37cdaf3dd8e4bfd350a314ad91185b57faf78292c41620d1d7d'
+            '6f291e71de3df52728933d2e04da6a59eb08c3bdb3012ebeae40f05183744b93'
+            '18cfe65a2da89006f8aeb701a846a2e6ed2cac2e84b86cd7f6f9a25e988c4057'
+            '832781712c6c6a9523e1a9436f2131cc9f0b9d7131d44477c7e81739fc28e529'
+            '6d40f7697931628c7e55dff52248170f27230d4f6ab97a15d0432c4b5d3876d5'
+            'be3e41373ab7a6f112b5ebd96f4c2b0550333192b54b587be43727bf82003a2a'
+            '9c701eda6fda419ceab4b9e7b21b9d6e2a1eb0844b65404fc04bc609778b7419'
+            'b03d9ea1b2a7e5687e6e954dd3f039c341fa4d69fb047ca688ffe5b953e977be'
+            '6cb2a9282ebb4fd53058d22f8159e10d1d8c321b7d17d0f2d761bdab7f88eaf8'
+            'b64ccbec1080320fec7bfc3b55a6a2ebc33159d216039170ba58008ba7ec37b7'
+            '354616dccd88c5227c276ddbf184c083c77d9cea9ac143993101d9e67b7f0cfc'
+            '93eca845542db214f113c72df69c456f53ea0e77e1db865124384939ecd76e2d'
+            '3a2f95a37b4614f05ac5a7c5d81a99555ba01b0b192667896006db8490cb89fa'
+            '3135986d57900333a3a8a685fd7ab816f76948f926b3a8e00613e4fe21a35622'
             '65ec9ac5b8b28d5b61df1c72498059be2e7cb1f9b965bac0e4ffed3c05520b2b')
