@@ -1,10 +1,11 @@
 pkgbase = razer-nari-pipewire-profile
 	pkgdesc = Razer Nari headsets pipewire profile
 	pkgver = 1.0
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 1
 	url = https://github.com/mrquantumoff/razer-nari-pipewire-profile
 	arch = any
+	groups = mrquantumoff
 	license = UNKNOWN
 	depends = pipewire-pulse
 	depends = bash

@@ -2,13 +2,13 @@
 # Maintainer: Demir Yerli <demiryerli@gmail.com>
 pkgname=razer-nari-pipewire-profile
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc="Razer Nari headsets pipewire profile"
 arch=("any")
 url="https://github.com/mrquantumoff/razer-nari-pipewire-profile"
 license=('UNKNOWN')
-groups=()
+groups=("mrquantumoff")
 depends=('pipewire-pulse' 'bash')
 makedepends=()
 checkdepends=()
