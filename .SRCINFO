@@ -1,6 +1,6 @@
 pkgbase = riven
 	pkgver = 1.2_20030721_dvd
-	pkgrel = 4
+	pkgrel = 5
 	epoch = 0
 	url = https://cyan.com/games/riven/
 	arch = any

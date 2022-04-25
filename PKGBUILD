@@ -26,7 +26,7 @@ arch=('any')
 url='https://cyan.com/games/riven/'
 epoch="0"
 pkgver='1.2_20030721_dvd' # Obtained from the file 'Read Instructions First'.
-pkgrel=4
+pkgrel=5
 makedepends=(
   'dos2unix'    # To convert text files with Mac and DOS new line standard to Unix new line standard.
   'imagemagick' # To convert .ico to .png.
@@ -116,8 +116,8 @@ package_riven-data() {
 
   # One of the following three may be used interchangeably for playing Riven with ScummVM:
   install -v -D -m755 "program/arcriven.z" "${pkgdir}/usr/lib/riven/arcriven.z"
-  #install -v -D -m755 "English/Riven"     "${pkgdir}/usr/lib/riven/riven"
-  #install -v -D -m755 "English/Riven.exe" "${pkgdir}/usr/lib/riven/riven.exe"
+  #install -v -D -m755 "English/Riven"     "${pkgdir}/usr/lib/riven/Riven"
+  #install -v -D -m755 "English/Riven.exe" "${pkgdir}/usr/lib/riven/Riven.exe"
 
   install -v -D -m644 "${srcdir}/Riven_Instructions.txt" "${pkgdir}/usr/share/doc/${_pkgbase}/Riven_Instructions.txt"
   install -v -D -m644 "${srcdir}/English/Manual.pdf" "${pkgdir}/usr/share/doc/${_pkgbase}/Manual.pdf"
