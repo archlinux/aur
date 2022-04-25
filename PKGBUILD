@@ -1,9 +1,9 @@
-# Maintainer: neodarz <neodarz at neodarz dot net>
+# Maintainer: brodokk <brodokk at brodokk dot space>
 
 _pkgname=flake8-annotations-complexity
 pkgname=python-$_pkgname
 
-pkgver=0.0.6
+pkgver=0.0.7
 pkgrel=1
 pkgdesc="flake8 plugin to validate annotations complexity"
 
@@ -14,7 +14,7 @@ license=('MIT')
 depends=('python')
 
 source=("https://github.com/best-doctor/$_pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('41a441d669f7db9fd329f5d537b079e882a61df0f6761861f99bebd6d68a0e93a1247201d29df34dee5563cd6aba735d87387424d81675c28dadd7b9813b0926')
+sha512sums=('180f18f60188c0fae32cd4e996141b8ad68f3773abf923efde40a78203af839f9ae29bc6f10f9c22c95ce4a2ebb4d8cf33f5c27879ccde084c6a04593863818c')
 
 package() {
     cd "$_pkgname-$pkgver"
