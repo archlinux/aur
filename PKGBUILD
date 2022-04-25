@@ -2,7 +2,7 @@
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 
 pkgname='snazy-bin'
-pkgver=0.0.1
+pkgver=0.0.2
 pkgrel=1
 pkgdesc='Snazy - a snazy json log viewer'
 url='https://github.com/chmouel/snazy'
@@ -11,8 +11,8 @@ license=('Apache 2.0')
 provides=('snazy')
 conflicts=('snazy')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/snazy/releases/download/0.0.1/snazy_0.0.1_linux_amd64.tar.gz")
-sha256sums_x86_64=('c0b446a53d6616a03c4bdf3ad98d39a38b226d9ccb88cc1734433264a2b3a438')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/snazy/releases/download/0.0.2/snazy_0.0.2_linux_amd64.tar.gz")
+sha256sums_x86_64=('4435c7491f77a4bc186099c07b7453f7f38081b42bb24a1fa202cb484f1829f2')
 
 package() {
   # bin
@@ -20,5 +20,14 @@ package() {
 
   # license
   install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/snazy/LICENSE"
+
+  # completions
+  mkdir -p "${pkgdir}/usr/share/bash-completion/completions/"
+  mkdir -p "${pkgdir}/usr/share/zsh/site-functions/"
+  mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
+
+  install -Dm644 "completions/snazy.bash" "${pkgdir}/usr/share/bash-completion/completions/snazy"
+  install -Dm644 "completions/snazy.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/snazy.fish"
+  install -Dm644 "completions/_snazy" "${pkgdir}/usr/share/zsh/site-functions/_snazy"
 
 }
