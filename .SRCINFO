@@ -1,0 +1,54 @@
+pkgbase = linux-zen-e820-patched
+	pkgdesc = Linux ZEN - patched with e820 PCIe device addresses overlap detection support
+	pkgver = 5.17.4.zen1
+	pkgrel = 1
+	url = https://github.com/zen-kernel/zen-kernel/commits/v5.17.4-zen1
+	arch = x86_64
+	license = GPL2
+	makedepends = bc
+	makedepends = kmod
+	makedepends = libelf
+	makedepends = pahole
+	makedepends = cpio
+	makedepends = perl
+	makedepends = tar
+	makedepends = xz
+	makedepends = xmlto
+	makedepends = python-sphinx
+	makedepends = python-sphinx_rtd_theme
+	makedepends = graphviz
+	makedepends = imagemagick
+	makedepends = git
+	provides = linux-zen
+	provides = linux-zen-headers
+	provides = linux-zen-docs
+	options = !strip
+	source = zen-kernel::git+https://github.com/zen-kernel/zen-kernel?signed#tag=v5.17.4-zen1
+	source = config
+	source = efimap.patch
+	validpgpkeys = ABAF11C65A2970B130ABE3C479BE3E4300411886
+	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
+	validpgpkeys = A2FF3A36AAA56654109064AB19802F8B0D70FC30
+	validpgpkeys = C5ADB4F3FEBBCE27A3E54D7D9AE4078033F8024D
+	sha256sums = SKIP
+	sha256sums = 812250d12684c263c2db878d0d49539cb4f987790d74d42225ae3f51f3e28133
+	sha256sums = cb338ac3b742ddde14d90e9112bb2caff59afc0d82774b0beba0825ffc9188f4
+
+pkgname = linux-zen-e820-patched
+	pkgdesc = The Linux ZEN - patched with e820 PCIe device addresses overlap detection support kernel and modules
+	depends = coreutils
+	depends = kmod
+	depends = initramfs
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
+	optdepends = linux-firmware: firmware images needed for some devices
+	provides = VIRTUALBOX-GUEST-MODULES
+	provides = WIREGUARD-MODULE
+	provides = VHBA-MODULE
+	replaces = 
+
+pkgname = linux-zen-e820-patched-headers
+	pkgdesc = Headers and scripts for building modules for the Linux ZEN - patched with e820 PCIe device addresses overlap detection support kernel
+	depends = pahole
+
+pkgname = linux-zen-e820-patched-docs
+	pkgdesc = Documentation for the Linux ZEN - patched with e820 PCIe device addresses overlap detection support kernel
