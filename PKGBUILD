@@ -1,7 +1,7 @@
 # Maintainer: Strahinya Radich <contact@strahinja.org>
 pkgname=sled
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple text editor"
 arch=('x86_64')
 url="https://strahinja.srht.site/sled"
@@ -10,6 +10,7 @@ source=("$pkgname-$pkgver.tar.gz::https://git.sr.ht/~strahinja/sled/archive/v$pk
 md5sums=('7adf7ae9ed88cec80bca88be9801fb1d')
 
 build() {
+	local redo=$(command -v redo || echo ./do -c)
 	cd $pkgname-v$pkgver
 
 	# Example on how to apply patches: dark theme patch (uncomment last
@@ -21,10 +22,11 @@ build() {
 	# (uncomment next line)
 	#sed -i 's,^\(#define ENABLE_WRAP\),//\1,' config.h
 
-	FALLBACKVER=$pkgver-$pkgrel PREFIX="$pkgdir/usr" ./do -c
+	FALLBACKVER=$pkgver-$pkgrel PREFIX="$pkgdir/usr" ${redo}
 }
 
 package() {
+	local redo=$(command -v redo || echo ./do)
 	cd $pkgname-v$pkgver
-	PREFIX="$pkgdir/usr" ./do install
+	PREFIX="$pkgdir/usr" ${redo} install
 }
