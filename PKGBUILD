@@ -1,6 +1,6 @@
 # Maintainer: Siavash Askari Nasr <ciavash@protonmail.com>
 pkgname=rakudo-bin
-pkgver=2022.03_01
+pkgver=2022.04_01
 pkgrel=1
 pkgdesc="Raku compiler for MoarVM"
 arch=('x86_64')
@@ -13,7 +13,7 @@ install="${pkgname}.install"
 source=("https://rakudo.org/dl/${pkgname%-bin}/${pkgname%-bin}-moar-${pkgver//_/-}-linux-x86_64-gcc.tar.gz"
         "https://rakudo.org/dl/${pkgname%-bin}/${pkgname%-bin}-moar-${pkgver//_/-}-linux-x86_64-gcc.tar.gz.asc")
 validpgpkeys=('DB2BA39D1ED967B584D65D71C09FF113BB6410D0')
-sha512sums=('5e101189c335c620674a4aa372f5ee3ab2139f543bee782be8e663595ce6f5217c568486e5416f96ed648349f56182e1b3cfa4adebb714cc191b59bb2896dee6'
+sha512sums=('5da371bcada4476c9bc9ad11aa1a26246c3c7effd22a39c6041353d18a49c7a56cf50a496b80bb3d50215cb2c0bfc25f68edd2b8e30a299d539d287eb1eca2e6'
             'SKIP')
 
 package() {
