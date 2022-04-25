@@ -1,7 +1,7 @@
 pkgbase = bind-development
 	pkgdesc = A complete, highly portable implementation of the DNS protocol (development version)
-	pkgver = 9.17.21
-	pkgrel = 2
+	pkgver = 9.19.0
+	pkgrel = 1
 	url = https://www.isc.org/bind/
 	arch = x86_64
 	license = MPL2
@@ -47,7 +47,7 @@ pkgbase = bind-development
 	backup = var/named/127.0.0.zone
 	backup = var/named/localhost.zone
 	backup = var/named/localhost.ip6.zone
-	source = git+https://gitlab.isc.org/isc-projects/bind9.git#commit=ffdb8569f42cc6dddc367da933feffdfd038a14c
+	source = git+https://gitlab.isc.org/isc-projects/bind9.git#commit=cab15392afd841fe3b0bacd894003376d857459a
 	source = tmpfiles.conf
 	source = sysusers.conf
 	source = named.conf
