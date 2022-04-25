@@ -12,7 +12,7 @@ license=('Apache')
 depends=('libxkbfile')
 apptag="v6.0.0-nightly.10"
 recipiesbranch="master"
-makedepends=('nvm' 'git' 'python' 'jq')
+makedepends=('nvm' 'git' 'python')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
@@ -87,8 +87,8 @@ build() {
     fi
 
     # Extract the correct versions of npm and pnpm from the package.json files
-    EXPECTED_NPM_VERSION=$(jq --raw-output .engines.npm <"package.json")
-    EXPECTED_PNPM_VERSION=$(jq --raw-output .engines.pnpm <"./recipes/package.json")
+    EXPECTED_NPM_VERSION=$(node -p 'require("./package.json").engines.npm')
+    EXPECTED_PNPM_VERSION=$(node -p 'require("./recipes/package.json").engines.pnpm')
 
 	# Install the correct versions of npm and pnpm
 	npm i -gf npm@${EXPECTED_NPM_VERSION}
