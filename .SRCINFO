@@ -1,6 +1,7 @@
 pkgbase = riven
+	pkgdesc = 'Riven: The Sequel to Myst' is an in-depth point-and-click adventure game with superb landscape and immersive puzzles.
 	pkgver = 1.2_20030721_dvd
-	pkgrel = 6
+	pkgrel = 7
 	epoch = 0
 	url = https://cyan.com/games/riven/
 	arch = any
