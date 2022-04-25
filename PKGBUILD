@@ -10,7 +10,7 @@ source=(
   "paperlessmerge::https://github.com/Marco98/paperlessmerge/releases/download/v${pkgver}/paperlessmerge_${pkgver}_linux_amd64"
   "https://raw.githubusercontent.com/Marco98/paperlessmerge/v${pkgver}/LICENSE"
 )
-sha256sums=('754320f16e42bb518debf5ff1c3e82cdee04eac761c485c8971bc1af5927bb4c'
+sha256sums=('859b84adcdd6e2e350c77b8288c8e9939d2330e91823a04b09de4e59fd577f82'
             'e5a861367544ac0b354e8d097eac039c150895705b4447fb8af366e35c63dacc')
 
 package() {
