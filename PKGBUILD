@@ -6,8 +6,8 @@
 # Contributor: kageurufu
 
 pkgname=burpsuite
-pkgver=2022.3.1
-pkgrel=3
+pkgver=2022.3.5
+pkgrel=1
 pkgdesc="An integrated platform for performing security testing of web applications (free edition)"
 url="https://portswigger.net/burp/"
 depends=('java-runtime>=17')
@@ -19,7 +19,7 @@ source=("${pkgname}-${pkgver}.jar::https://portswigger.net/burp/releases/downloa
         burpsuite.desktop
         icon64.png)
 install=burpsuite.install
-sha256sums=('cc2dc8de7b56e67678d24ed6859803a8ef351e9ca9d5d0cd0244a0d587809968'
+sha256sums=('d2b0415a7a0da960de2cc95b633ca5155740a757a3260d77f3e3813649cdafeb'
             'a1146672de7084a1cddc5b7dab4d18b3530c194bd6e45a2b0ac04b579751ca30'
             '950c61d7ce1257c21a4152abebb8da320d0206ceb59247d6c912903d1ed39fc8'
             'd31232a7dbdab9d5723f12aa25c52d13fd46ef2e8837a85fb9a08c3a7f151541')
