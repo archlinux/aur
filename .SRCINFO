@@ -1,0 +1,16 @@
+pkgbase = noods-git
+	pkgdesc = A (hopefully!) speedy NDS emulator.
+	pkgver = r448.1c19eca
+	pkgrel = 1
+	url = https://github.com/Hydr8gon/NooDS
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	depends = wxgtk3
+	depends = portaudio
+	provides = noods
+	conflicts = noods
+	source = noods::git+https://github.com/Hydr8gon/NooDS
+	md5sums = SKIP
+
+pkgname = noods-git
