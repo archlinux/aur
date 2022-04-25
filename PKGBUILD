@@ -1,7 +1,7 @@
 # Maintainer: Karl-Felix Glatzer <karl[dot]glatzer[at]gmx[dot]de>
 
 pkgname=mingw-w64-fribidi
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
 pkgdesc="A Free Implementation of the Unicode Bidirectional Algorithm (mingw-w64)"
 arch=('any')
@@ -10,7 +10,7 @@ url="http://fribidi.org"
 depends=('mingw-w64-crt')
 options=('!strip' '!buildflags' '!libtool' 'staticlibs')
 makedepends=('mingw-w64-gcc' 'mingw-w64-meson' 'mingw-w64-wine' 'git')
-_commit=247fddc3599e3fe7b1b5cc21020c9eb51e662637  # tags/v1.0.11^0
+_commit=6428d8469e536bcbb6e12c7b79ba6659371c435a  # tags/v1.0.12^0
 source=("git+https://github.com/fribidi/fribidi#commit=$_commit"
         "testrunnerwine.patch")
 sha256sums=('SKIP'
