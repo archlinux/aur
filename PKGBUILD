@@ -1,10 +1,10 @@
 
 # Maintainer: Kyle Shiue <shiue.kyle@gmail.com>
-# Maintainer: theRookieCoder <ileshkt@gmail.com>
+# Maintainer: Ilesh Thiada <ileshkt@gmail.com>
 pkgname=ferium-bin
 _pkgname=ferium
 pkgver=3.20.1
-pkgrel=1
+pkgrel=1.1
 pkgdesc="Ferium is an easy to use CLI program for downloading and updating Minecraft mods from Modrinth, CurseForge, and GitHub Releases."
 arch=("x86_64")
 depends=("gtk3")
