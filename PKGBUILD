@@ -5,12 +5,12 @@
 
 pkgname=postgis-old-upgrade
 _pkgname="${pkgname%-old-upgrade}"
-pkgver=3.1.2
+pkgver=3.2.1
 pkgrel=1
-pg_majorver=12
-pkgdesc="Postgis build against postgresql-old-upgrade package for pg_upgrade"
+_pg_majorver=13
+pkgdesc='PostGIS build against postgresql-old-upgrade package for pg_upgrade'
 arch=('x86_64')
-url="http://postgis.net/"
+url='https://postgis.net/'
 license=('GPL')
 depends=(
   'postgresql-old-upgrade'
@@ -23,17 +23,17 @@ depends=(
 )
 makedepends=('clang' 'llvm')
 optdepends=('perl: for scripts in contrib folder')
-changelog=$pkgname.changelog
 options=('!makeflags')
 source=("https://download.osgeo.org/postgis/source/$_pkgname-$pkgver.tar.gz")
-sha256sums=('2cdd3760176926704b4eb25ff3357543c9637dee74425a49082906857c7e0732')
+sha512sums=('e0ea3d2304e71c98dd045a8031946235d9c26a1310e1ffa556db10dfd18378957ee3d88608fba7ff482835d8c8b41d7f7bddaff1279ce0b50cd7634237465b31')
+b2sums=('9c49ad518fb968dc4787bedf6480af29c3e70f986df8233ef034f117b8a8920ff6e39dab57813390b813a3d856476634b18e6ce324795839d019a11559155ff5')
 
 build() {
   cd "$_pkgname-$pkgver"
 
-  export PG_CONFIG="/opt/pgsql-${pg_majorver}/bin/pg_config"
+  export PG_CONFIG="/opt/pgsql-${_pg_majorver}/bin/pg_config"
 
-  ./configure --prefix="/opt/pgsql-${pg_majorver}"
+  ./configure --prefix="/opt/pgsql-${_pg_majorver}"
   make
 }
 

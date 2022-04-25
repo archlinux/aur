@@ -1,9 +1,8 @@
 pkgbase = postgis-old-upgrade
-	pkgdesc = Postgis build against postgresql-old-upgrade package for pg_upgrade
-	pkgver = 3.1.2
+	pkgdesc = PostGIS build against postgresql-old-upgrade package for pg_upgrade
+	pkgver = 3.2.1
 	pkgrel = 1
-	url = http://postgis.net/
-	changelog = postgis-old-upgrade.changelog
+	url = https://postgis.net/
 	arch = x86_64
 	license = GPL
 	makedepends = clang
@@ -17,7 +16,8 @@ pkgbase = postgis-old-upgrade
 	depends = libxml2
 	optdepends = perl: for scripts in contrib folder
 	options = !makeflags
-	source = https://download.osgeo.org/postgis/source/postgis-3.1.2.tar.gz
-	sha256sums = 2cdd3760176926704b4eb25ff3357543c9637dee74425a49082906857c7e0732
+	source = https://download.osgeo.org/postgis/source/postgis-3.2.1.tar.gz
+	sha512sums = e0ea3d2304e71c98dd045a8031946235d9c26a1310e1ffa556db10dfd18378957ee3d88608fba7ff482835d8c8b41d7f7bddaff1279ce0b50cd7634237465b31
+	b2sums = 9c49ad518fb968dc4787bedf6480af29c3e70f986df8233ef034f117b8a8920ff6e39dab57813390b813a3d856476634b18e6ce324795839d019a11559155ff5
 
 pkgname = postgis-old-upgrade
