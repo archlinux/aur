@@ -9,13 +9,9 @@ license=('MPL2')
 depends=("qt5-base" "qt5-svg" "openvdb" "eigen" "cgal" "openblas" "lapack" "hdf5")
 makedepends=("git" "gcc" "cmake" "ninja")
 optdepends=()
-source=("${srcdir}/source::git+${url}.git")
+source=("${pkgname}-${pkgver}::git+${url}.git")
 noextract=()
 md5sums=('SKIP')
-
-prepare() {
-    mv source ${pkgname}-${pkgver}
-}
 
 package() {
     cd ${pkgname}-${pkgver}
