@@ -1,4 +1,4 @@
-# Maintainer: LAHFA Samy <samy@lahfa.xyz>
+# Maintainer: Lahfa Samy <'akechishiro-aur' at domain 'lahfa.xyz'>
 pkgname=metacall-git
 pkgver=0.5.7
 pkgrel=1
