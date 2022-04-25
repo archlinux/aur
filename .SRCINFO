@@ -8,7 +8,6 @@ pkgbase = htmlunit
 	depends = java-runtime
 	provides = htmlunit-doc
 	conflicts = htmlunit-doc
-	replaces = htmlunit-doc
 	source = https://github.com/htmlunit//releases/download/2.61.0/htmlunit-2.61.0-bin.zip
 	sha256sums = 292b527fb77e1470428c5b7e8363d16146e6d28af6ad97ce5ad76ccfd933f59e
 

@@ -15,7 +15,6 @@ license=('Apache')
 
 provides=("$pkgname-doc")
 conflicts=("$pkgname-doc")
-replaces=("$pkgname-doc")
 
 depends=('java-runtime')
 
