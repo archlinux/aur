@@ -2,7 +2,7 @@
 # Contributor: Dr-Noob <peibolms at gmail dot com>
 
 pkgname=cpufetch
-pkgver=1.01
+pkgver=1.02
 pkgrel=1
 pkgdesc="Simple yet fancy CPU architecture fetching tool"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('glibc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         '001-Makefile.patch')
-sha256sums=('d4fe25adc4d12f5f1dc7a7e70a4ed92e9807b6a1ad0294c563a0250f7bd6aca1'
+sha256sums=('3d1c80aba3daa5fe300b6de6e06d9030f97b7be5210f8ea4110de733ea4373f8'
             'c9f71ab8ef432d8c808cac86e95ab5ddedc1e8355ccd634b877b908b58953d58')
 
 prepare() {
