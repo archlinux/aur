@@ -2,7 +2,7 @@
 
 pkgname=tinyemu
 pkgver=2019_12_21
-pkgrel=1
+pkgrel=2
 pkgdesc='RISC-V system emulator'
 arch=(x86_64)
 groups=(risc-v)
