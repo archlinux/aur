@@ -2,7 +2,7 @@
 # Inspired by PKGBUILD of AUR package sencha-cmd-6
 
 pkgname=sencha-cmd
-pkgver=7.4.0.39
+pkgver=7.5.0.5
 pkgrel=1
 pkgdesc='Sencha Cmd provides a collection of powerful, time-saving features that work together and in conjunction with the Sencha Ext JS and Sencha Touch frameworks'
 url='https://www.sencha.com/products/extjs/cmd-download/'
@@ -14,7 +14,7 @@ conflicts=(sencha-cmd-5 sencha-cmd-6)
 source=("https://cdn.sencha.com/cmd/$pkgver/no-jre/SenchaCmd-$pkgver-linux-amd64.sh.zip"
 	"LICENSE")
 sha512sums=(
-	'488cd790a74c40668b63eb1c8a090a060f290fc0b0c88f2a6c80893ce5a73d4c4f09ade0938e4bcab9e2e0aa2b503bb193066ddcac219153b9deffcd8d31825b'
+	'46974ebb4487a01cf54a32d9327c12471d4bcb3b50de4e5127705dcc5a900aa1a656f0fd5c80ecffae855195c06068ef9fb9131575eac68bbd591a5c399afad8'
 	'fda827d9cae0859f37c4b588ae4e1ad3e8e5b6316d23f070691db566291d5a10d17c03934c90d17a9ed9a88a6b80be9e2f4c74fcb25112fe0a3fce3154495915'
 )
 options=(!strip)
