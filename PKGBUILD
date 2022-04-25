@@ -9,7 +9,7 @@
 # URL: https://github.com/trollixx/aur-packages
 # Upstream: https://projects.archlinux.org/svntogit/community.git/tree/trunk?h=packages/awesome
 
-_pkgname=awesome
+_pkgname=awesome-telegramfix
 pkgname=${_pkgname}-git
 pkgver=4.3.1347.ga1f58ab97
 pkgrel=1
