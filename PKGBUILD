@@ -1,13 +1,13 @@
 # Maintainer: Aleksana QWQ <me@aleksana.moe>
 
 pkgname=polkit-fakesudo
-pkgver=0.0.2
+pkgver=0.0.3
 pkgrel=1
 pkgdesc="A very very stupid fake sudo,using polkit pkexec to grant permissions."
 arch=('any')
 url='https://github.com/Aleksanaa/polkit-fakesudo'
 license=('GPL3')
-depends=('bash' 'coreutils' 'gawk' 'polkit')
+depends=('bash' 'coreutils' 'gawk' 'findutils' 'polkit')
 provides=('sudo')
 conflicts=('sudo')
 makedepends=('git')
