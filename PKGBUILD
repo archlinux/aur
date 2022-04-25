@@ -4,9 +4,9 @@
 # Contributor: Abraham Levine <arc AT plusreed DOT com>
 pkgname=pa-applet-git
 pkgver=19.3b4f8b3
-pkgrel=1
+pkgrel=2
 pkgdesc="PulseAudio control applet"
-arch=('any')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/fernandotcl/pa-applet"
 license=('BSD')
 depends=('gtk3' 'libnotify' 'libpulse')
