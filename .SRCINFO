@@ -1,7 +1,7 @@
 pkgbase = huhnitor
 	pkgdesc = An intergalactic serial monitor for the ESP8266 Deauther v3
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/SpacehuhnTech/Huhnitor
 	arch = x86_64
 	license = MIT

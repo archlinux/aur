@@ -2,7 +2,7 @@
 
 pkgname=huhnitor
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='An intergalactic serial monitor for the ESP8266 Deauther v3'
 url='https://github.com/SpacehuhnTech/Huhnitor'
 arch=('x86_64')
@@ -18,15 +18,10 @@ build() {
 }
 
 package() {
-  cd "Huhnitor-$pkgver"
+  install -Dm755 "${srcdir}/Huhnitor-$pkgver/target/release/$pkgname" "${pkgdir}/opt/$pkgname/$pkgname"
+  install -Dm644 "${srcdir}/Huhnitor-$pkgver/LICENSE" "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
 
-  install -d "${pkgdir}/opt/${pkgname}"
-  install -d "${pkgdir}/usr/share/licenses/${pkgname}"
   install -d "${pkgdir}/usr/bin"
-  
-  install -m 755 target/release/${pkgname} "${pkgdir}/opt/${pkgname}"
-  install -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
-
   ln -s /opt/${pkgname}/${pkgname} "${pkgdir}/usr/bin"
 }
 
