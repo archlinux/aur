@@ -2,6 +2,7 @@
 
 set -e
 
+rm -rf ferdium-git-*.pkg.tar.zst
 makepkg
 makepkg --printsrcinfo > .SRCINFO
 newversion=$(grep pkgver .SRCINFO | awk -F= '{print $2}' | sed -e 's/ //g')
