@@ -1,4 +1,5 @@
-# Maintainer: Yunhui Fu <yhfudev@gmail.com>
+# Contributor: Yunhui Fu <yhfudev@gmail.com>
+# Maitainer: Lahfa Samy (AkechiShiro) <'akechishiro' at the domain 'lahfa.xyz'>
 
 pkgname=libosmosdr-git
 pkgver=r162.ba4fd96
