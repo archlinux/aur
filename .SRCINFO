@@ -9,6 +9,7 @@ pkgbase = ccase
 	arch = aarch64
 	license = MIT
 	makedepends = cargo
+	depends = gcc-libs
 	conflicts = ccase-git
 	conflicts = ccase-bin
 	source = ccase-0.2.0.tar.gz::https://static.crates.io/crates/ccase/ccase-0.2.0.crate
