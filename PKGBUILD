@@ -4,7 +4,7 @@
 pkgbase=grails
 pkgname=(grails grails-docs)
 pkgver=5.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Groovy on rails, web framework'
 url='https://grails.org/'
 arch=(any)
