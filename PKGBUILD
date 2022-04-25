@@ -25,5 +25,6 @@ build() {
 package() {
   cd ${pkgname}-${pkgver}
   install -Dm755 target/release/ccase "${pkgdir}/usr/bin/ccase"
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # Awaiting https://github.com/rutrum/convert-case/issues/7
+  #install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
