@@ -5,24 +5,24 @@
 # Contributor: Whovian9369 <Whovian9369@gmail.com>
 
 pkgname=gittyup-git
-pkgver=r534.4313005
+pkgver=1.0.0.r187.g54d9e5e
 pkgrel=1
 pkgdesc="Graphical Git client (GitAhead fork)"
 url="https://github.com/Murmele/Gittyup"
 arch=(x86_64)
 license=(MIT)
-depends=(qt5-base cmark libssh2 libsecret)
-makedepends=(git cmake ninja qt5-tools qt5-translations libgnome-keyring)
-optdepends=('libgnome-keyring: for GNOME Keyring for auth credentials'
-            'qt5-translations: translations '
-            'git-lfs: git-lfs support')
+depends=(qt5-base cmark libsecret hunspell)
+makedepends=(git cmake ninja qt5-tools qt5-translations libgnome-keyring libssh2) #libssh2 detected but not used
+optdepends=('git-lfs: git-lfs support'
+            'libgnome-keyring: for GNOME Keyring for auth credentials'
+            'qt5-translations: translations')
 provides=(gittyup)
 conflicts=(gittyup)
 source=("${pkgname%-git}::git+https://github.com/Murmele/Gittyup.git"
         "git+https://github.com/stinb/libgit2.git"
         "git+https://github.com/git/git.git"
         "git+https://github.com/libssh2/libssh2.git"
-        "git+https://github.com/hunspell/hunspell.git"
+        "git+https://github.com/kuba--/zip.git"
         'gittyup.desktop')
 sha256sums=('SKIP'
             'SKIP'
@@ -33,8 +33,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd "${srcdir}/${pkgname%-git}"
-  #git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags --exclude latest | sed 's/^gittyup_v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
@@ -44,8 +43,8 @@ prepare() {
   git config 'submodule.dep/libgit2/libgit2.url' "${srcdir}/libgit2"
   git config 'submodule.dep/git/git.url' "${srcdir}/git"
   git config 'submodule.dep/libssh2/libssh2.url' "${srcdir}/libssh2"
-  git config 'submodule.dep/hunspell/hunspell.url' "${srcdir}/hunspell"
-  git -c submodule.dep/openssl/openssl.update=none -c submodule.dep/cmark/cmark.update=none submodule update
+  git config 'submodule.test/dep/zip.url' "${srcdir}/zip"
+  git -c submodule.dep/openssl/openssl.update=none -c submodule.dep/cmark/cmark.update=none -c submodule.dep/hunspell/hunspell.update=none submodule update
 
   install -d build
 }
@@ -55,7 +54,6 @@ build() {
   cmake -G Ninja .. -Wno-dev \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr/lib/gittyup \
-    -DCMAKE_INSTALL_MANDIR=/usr/share/man \
     -DENABLE_REPRODUCIBLE_BUILDS=ON \
     -DBUILD_SHARED_LIBS=OFF
 
@@ -78,5 +76,5 @@ package() {
     install -Dm0644 "rsrc/Gittyup.iconset/icon_$s.png" "icons/hicolor/$s/apps/$pkgname.png"
   done
 
-  rm -rf "${pkgdir}/usr/share/man" # libssh2 man pages
+  rm -rf "${pkgdir}/usr/lib/gittyup/share" # libssh2 doc man pages
 }
