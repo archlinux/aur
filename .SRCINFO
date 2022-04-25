@@ -1,0 +1,31 @@
+pkgbase = xf86-video-fbturbo
+	pkgdesc = X.org MALI video driver
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/ssvb/xf86-video-fbturbo
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = xorg-server-devel
+	makedepends = X-ABI-VIDEODRV_VERSION>=24.0
+	makedepends = git
+	provides = xf86-video-fbturbo
+	conflicts = xorg-server<1.20
+	conflicts = X-ABI-VIDEODRV_VERSION<24
+	options = !libtool
+	source = git+https://github.com/ssvb/xf86-video-fbturbo
+	source = 0001-Use-own-thunk-functions-instead-of-fbdevHW-Weak.patch
+	source = 0002-GCC-8-fix.patch
+	source = 0003-backStorage-fix.patch
+	sha256sums = SKIP
+	sha256sums = 0af499820e3ade74ea6518caa96ec19f39150b1678ad6b33b2a3774b5a9f2c64
+	sha256sums = ccbd8f0d3fd9da180b2f5ab3be7284ec76e9dbf06762ec765e09a45c530d93bb
+	sha256sums = a8ca499527fc0da6177a7cca86badd021259e17b2d416bc7f7a6663821e90c12
+
+pkgname = xf86-video-fbturbo
+	depends = xf86-input-evdev
+	depends = xf86-video-fbdev
+	depends = xf86-video-vesa
+	depends = xinput_calibrator
+	depends = xorg-server
+	depends = xorg-xinit
