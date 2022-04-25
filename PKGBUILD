@@ -26,7 +26,7 @@ arch=('any')
 url='https://cyan.com/games/riven/'
 epoch="0"
 pkgver='1.2_20030721_dvd' # Obtained from the file 'Read Instructions First'.
-pkgrel=5
+pkgrel=6
 makedepends=(
   'dos2unix'    # To convert text files with Mac and DOS new line standard to Unix new line standard.
   'imagemagick' # To convert .ico to .png.
@@ -105,6 +105,7 @@ package_riven-data() {
 
   cd "${srcdir}"
 
+  local _mhk
   install -v -d -m755 "${pkgdir}/usr/lib/riven"
   for _mhk in Data/*.[mM][hH][kK]; do
     install -v -D -m644 "${_mhk}" "${pkgdir}/usr/lib/riven/$(basename "${_mhk}")"
