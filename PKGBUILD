@@ -3,16 +3,16 @@
 
 _pkgname='ferdium'
 pkgname="ferdium"
-pkgver=6.0.0.nightly.7
+pkgver=6.0.0.nightly.10
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest release).'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://ferdium.org/"
 license=('Apache')
 depends=('libxkbfile')
-apptag="v6.0.0-nightly.7"
+apptag="v6.0.0-nightly.10"
 recipiesbranch="master"
-nodejsversion='18.0.0'
+nodejsversion='16.14.2'
 makedepends=('nvm' 'git' 'python' 'jq')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
