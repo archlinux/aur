@@ -39,11 +39,11 @@ noextract=("default-$pkgver-$pkgrel.zip"
 prepare() {
   cd "${srcdir}"
 
-  msg2 "Extracting Certifications..."
+  echo >&2 "Extracting Certifications..."
   bsdtar -xf default-$pkgver-$pkgrel.zip "*.pem" "*.crt"
   bsdtar -xf strong-$pkgver-$pkgrel.zip "*.pem" "*.crt"
 
-  msg2 "Extracting OpenVPN Configurations..."
+  echo >&2 "Extracting OpenVPN Configurations..."
   if [ -d "vpn-configs" ]; then
       rm -rf vpn-configs
   fi
@@ -51,14 +51,14 @@ prepare() {
   bsdtar -xf default-$pkgver-$pkgrel.zip -C vpn-configs *.ovpn
 
   cd "vpn-configs"
-  msg2 "Creating Remote Host List..."
+  echo >&2 "Creating Remote Host List..."
   touch ../vpn-hosts.txt
 
   grep -Eo "\s(.*\.privacy\.network)\s" *.ovpn | \
     sed 's/_/ /g;s/.ovpn//;s/: /,/;s/[^ ]\+/\L\u&/g;s/\b\([a-z]\{2\}\)\s/\U&/gi' \
     >> ../vpn-hosts.txt
 
-  msg2 "Done."
+  echo >&2 "Done."
 }
 
 package() {
