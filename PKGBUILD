@@ -3,7 +3,7 @@
 
 _pkgname='ferdium'
 pkgname="ferdium-git"
-pkgver=makepkg.r0.gd9f9ca44
+pkgver=6.0.0.nightly.11.r5304.d9f9ca44
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest commit).'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -11,17 +11,14 @@ url="https://ferdium.org/"
 license=('Apache')
 depends=('libxkbfile')
 appbranch="develop"
-recipiesbranch="master"
 makedepends=('nvm' 'git' 'python')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
 	"$pkgname::git+https://github.com/ferdium/ferdium-app#branch=${appbranch}"
-	"$pkgname-recipes::git+https://github.com/ferdium/ferdium-recipes#branch=${recipiesbranch}"
 	'fix-autostart-path.diff'
 )
 sha512sums=('SKIP'
-            'SKIP'
             'a38d053f249ab291049edb1afb61dcf4e513ab2ca15787861db6d06a181d41fa1a5a690688237bff4bb28efc8a09eae7759742699b1da5c124a037709c6f0eca')
 
 _sourcedirectory="$pkgname"
@@ -43,14 +40,11 @@ esac
 
 prepare() {
 	# Due to patches and sed's, reset the code to upstream before starting
-	cd "$srcdir/$_sourcedirectory/recipes"
-	git reset --hard origin/"${recipiesbranch}"
 	cd "$srcdir/$_sourcedirectory/"
 	git reset --hard origin/"${appbranch}"
 
-	# Provide git submodules
+	# Initialise the recipes submodule
 	git submodule init
-	git config submodule.recipes.url "$srcdir/$pkgname-recipes"
 	git submodule update --init --recursive --remote --rebase --force
 
 	# Specify path for autostart file
@@ -59,7 +53,7 @@ prepare() {
 
 pkgver() {
 	cd "$srcdir/$_sourcedirectory/"
-	git describe --long --all | sed -e 's#^heads/##g' -e 's#^tags/##g' -e 's/^v//' -e 's/-\([^-]*-g[^-]*\)$/-r\1/' -e 's/-/./g'
+	printf "%s.r%s.%s" "$(node -p 'require("./package.json").version' | sed -e 's/-/./g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
