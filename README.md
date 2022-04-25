@@ -12,7 +12,7 @@
 ## Optional configuration
 Information on the lightning connection string can be found [here](https://github.com/btcpayserver/BTCPayServer.Lightning). Decide for one lightning implementation.
 
-### c-lightning
+### core-lightning
 1. `nano ~/.btcpayserver/Main/settings.config` and add the setting "BTC.lightning=type=clightning;server=unix://home/USERNAME/.lightning/lightning-rpc".
 
 ### LND
@@ -32,7 +32,7 @@ zmqpubrawtx=tcp://127.0.0.1:28333
 * Finally, all software needs to be run. The following shows how to run the software and its dependencies with `tmux`.
 * Start:
 ```
-tmux new-session -s c-lightning -d "lightningd --network bitcoin --bitcoin-rpcuser USERNAME --bitcoin-rpcpassword PASSWORD --rpc-file /home/USERNAME/.lightning/lightning-rpc --log-level info;bash -i"
+tmux new-session -s core-lightning -d "lightningd --network bitcoin --bitcoin-rpcuser USERNAME --bitcoin-rpcpassword PASSWORD --rpc-file /home/USERNAME/.lightning/lightning-rpc --log-level info;bash -i"
 ```
 or
 ```
@@ -46,7 +46,7 @@ tmux new-session -s btcpayserver -d "btcpayserver;bash -i"
 ```
 * Stop:
 ```
-tmux kill-session -t c-lightning
+tmux kill-session -t core-lightning
 ```
 or
 ```
