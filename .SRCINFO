@@ -1,5 +1,5 @@
 pkgbase = mved
-	pkgdesc = Batch-move, copy and delete files safely using a text editor
+	pkgdesc = Bulk-move, copy and delete files safely using a text editor
 	pkgver = 0.5.1
 	pkgrel = 1
 	url = https://gitlab.com/ferreum/mved

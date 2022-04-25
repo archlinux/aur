@@ -2,7 +2,7 @@
 pkgname=mved
 pkgver=0.5.1
 pkgrel=1
-pkgdesc="Batch-move, copy and delete files safely using a text editor"
+pkgdesc="Bulk-move, copy and delete files safely using a text editor"
 arch=('any')
 url="https://gitlab.com/ferreum/mved"
 license=('GPL3')
