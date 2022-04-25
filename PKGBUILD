@@ -17,7 +17,7 @@ optdepends=(
 )
 makedepends=(
   'pkgconf' 'autoconf' 'autoconf-archive' 'automake' 'make' 'gcc' 'git'
-  'libnl' 'python-jinja' 'tinyxml2'
+  'libnl' 'python-jinja' 'tinyxml2' 'bash'
 )
 install="${pkgname}.install"
 source=(
