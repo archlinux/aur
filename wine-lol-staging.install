@@ -1,0 +1,17 @@
+post_install()
+{
+    echo "+-----------------------------------------------------------------------------------+"
+    echo "|                                     IMPORTANT!                                [x] |"
+    echo "+-----------------------------------------------------------------------------------+"
+    echo "|                                                                                   |"
+    echo "| 1. run 'sudo sysctl -w abi.vsyscall32=0' on each reboot before starting a game    |"
+    echo "|                                                                                   |"
+    echo "| 2. run '/opt/wine-lol-staging/bin/wine' instead of regular 'wine' or add to PATH  |"
+    echo "|                                                                                   |"
+    echo "+-----------------------------------------------------------------------------------+"
+}
+
+post_upgrade()
+{
+    post_install
+}
