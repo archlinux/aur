@@ -1,6 +1,6 @@
 pkgbase = sov
 	pkgdesc = An overview application for sway
-	pkgver = 0.6
+	pkgver = 0.61
 	pkgrel = 1
 	url = https://github.com/milgra/sov
 	arch = i686
@@ -10,7 +10,7 @@ pkgbase = sov
 	makedepends = wayland-protocols
 	makedepends = freetype2
 	depends = wayland
-	source = sov-0.6.tar.xz::https://github.com/milgra/sov/releases/download/0.6/sov-0.6.tar.xz
-	sha256sums = 9f80bad9369efaa3362ded254321746779a7bd5bb15c64e69dc4b294bdd3f43f
+	source = sov-0.61.tar.xz::https://github.com/milgra/sov/releases/download/0.61/sov-0.61.tar.xz
+	sha256sums = baa9a13c7b64a8f811fc89768142d037f5b425baf850536cab1615858fe5fea1
 
 pkgname = sov
