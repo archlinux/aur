@@ -8,7 +8,7 @@
 # Contributor: Dave Pretty <david dot pretty at gmail dot com>
 
 pkgname=anki
-pkgver=2.1.50
+pkgver=2.1.51
 pkgrel=1
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="https://apps.ankiweb.net/"
@@ -59,7 +59,7 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/ankitects/anki/archive/refs
 "no-update.patch"
 "inc_timeout_time.patch"
 )
-sha256sums=('2d36d54ce1ec70b615fc889ccac3726e6b8221819afb05b614dc6150d5d04a4c'
+sha256sums=('decc58a45ff6f939d6c8274c50d2c3f896ff22f075bde5026d3deff9b36b74ee'
 '137827586d2a72adddaaf98599afa9fc80cdd73492d7f5cbcf4d2f6082e5f797'
 '281e12217f6b60ff64ad66e58aaf0cdb8bed16ffe2a3e6ab9e6ff5e773b4cabf'
 )
@@ -84,8 +84,8 @@ build() {
     echo "####################
 Beginning compilation... This step is known to be prone to failure by the anki devs.
 If the build is failing retry the installation. This usually fixes the problem.
-A too slow internet connection can also hinder the dependency gathering process because of hardcoded timeouts in bazel.
-If the problem persists consider removing data in ~/.cache/bazel and your AUR manager cache and retry again.
+A too slow internet connection can also hinder the dependency fetching process because of hardcoded timeouts in bazel.
+If the problem persists consider removing data in ~/.cache/bazel and your AUR manager cache (~/.cache/paru/clone/anki for paru) and retry again.
 ####################"
     bazel build -c opt wheels
 }
