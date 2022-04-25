@@ -4,7 +4,7 @@
 
 pkgname=qjournalctl
 pkgver=0.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc='Qt-based graphical user interface for the journalctl command'
 arch=('x86_64')
 url='https://github.com/pentix/qjournalctl'
