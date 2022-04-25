@@ -4,25 +4,21 @@ pkgver=2022.4.25
 pkgrel=1
 pkgdesc="Open-source node system framework for simulation and others"
 arch=('x86_64')
-url='https://github.com/zenustech/zeno'
+url='https://gitee.com/zenustech/zeno'
 license=('MPL2')
-depends=("qt5-base" "qt5-svg" "openvdb" "eigen" "cgal" "openblas" "lapack" "alembic")
-makedepends=("gcc" "cmake" "ninja")
+depends=("qt5-base" "qt5-svg" "openvdb" "eigen" "cgal" "openblas" "lapack" "hdf5")
+makedepends=("git" "gcc" "cmake" "ninja")
 optdepends=()
-source=("zeno-release.tar.gz::https://github.com/zenustech/zeno/archive/refs/tags/${pkgver}.tar.gz")
+source=("${srcdir}/source::git+${url}.git")
 noextract=()
 md5sums=('SKIP')
 
 prepare() {
-    rm -rf ${pkgname}-${pkgver}
-    mkdir -p ${pkgname}-${pkgver}
-    cd ${pkgname}-${pkgver}
-    tar zxvf zeno-release.tar.gz --directory=zeno-release
+    mv source ${pkgname}-${pkgver}
 }
 
 package() {
     cd ${pkgname}-${pkgver}
-    cd zeno-release
     cmake --preset default -G Ninja -DCMAKE_INSTALL_PREFIX="${pkgdir}"
     cmake --build --preset default --parallel
     cmake --build --preset default --target install
