@@ -1,13 +1,13 @@
 pkgbase = libnuml
 	pkgdesc = Numerical Markup Language (NuML) for exchange and archiving of numerical results
-	pkgver = 1.1.5
+	pkgver = 1.1.6
 	pkgrel = 1
 	url = https://github.com/NuML/NuML
 	arch = i686
 	arch = x86_64
 	license = LGPL
 	depends = libsbml
-	source = NuML-1.1.5.tar.gz::https://github.com/NuML/NuML/archive/v1.1.5.tar.gz
-	sha256sums = ae67c85d9323f855856a17685ed3e542e90350f25df1c7d727009ee998fe63e2
+	source = NuML-1.1.6.tar.gz::https://github.com/NuML/NuML/archive/v1.1.6.tar.gz
+	sha256sums = 1b51cd51bfe7e9c4e0bcd69f86d8199a23ebe9ea931d4f112b3f6e1666e4f2c8
 
 pkgname = libnuml
