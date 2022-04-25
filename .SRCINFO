@@ -1,0 +1,17 @@
+pkgbase = ccase
+	pkgdesc = A command line utility to convert to and from various cases
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/rutrum/convert-case
+	arch = x86_64
+	arch = i686
+	arch = armv7h
+	arch = aarch64
+	license = MIT
+	makedepends = cargo
+	conflicts = ccase-git
+	conflicts = ccase-bin
+	source = ccase-0.2.0.tar.gz::https://static.crates.io/crates/ccase/ccase-0.2.0.crate
+	sha256sums = 0b4eb702655a54157406187f18d491def2a7508baef3290175b43e836b2ee8a8
+
+pkgname = ccase
