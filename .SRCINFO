@@ -1,21 +1,21 @@
 pkgbase = python-duniterpy
 	pkgdesc = Python APIs library to implement Duniter clients software
-	pkgver = 0.60.1
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://git.duniter.org/clients/python/duniterpy
 	arch = any
 	license = GPL3
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
-	depends = python-setuptools
-	depends = python-dephell
 	depends = python-aiohttp
 	depends = python-scrypt
 	depends = python-libnacl
 	depends = python-base58
 	depends = attr
 	provides = duniterpy
-	source = https://git.duniter.org/clients/python/duniterpy/-/archive/0.60.1/duniterpy-0.60.1.tar.gz
-	sha512sums = 3763470ca20d6de94f8516fd33f7fdd4013f7585475cc8e826ab557e7f4fa924dbf090f83465d382e6bf0b08266318367dcb0d7d0540a6c3ac5071440cb88956
+	source = https://git.duniter.org/clients/python/duniterpy/-/archive/1.1.0/duniterpy-1.1.0.tar.gz
+	sha512sums = 3d11af4ed758cf8dd51691eadd3e57a6230d95622ea0e13aee05f153ab82e150c0efe30ca31f8c664ca35d2b112847ae44faa98abfc5e45a873537f196fd11c6
 
 pkgname = python-duniterpy
-
