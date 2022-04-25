@@ -1,0 +1,11 @@
+pkgbase = dfetch
+	pkgdesc = Yet another fetching tool.
+	pkgver = 1.0.0
+	pkgrel = 1
+	arch = any
+	license = GPL3
+	makedepends = git
+	provides = dfetch
+	md5sums = SKIP
+
+pkgname = dfetch
