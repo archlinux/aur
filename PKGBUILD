@@ -2,7 +2,7 @@
 
 pkgname=icons-in-terminal
 pkgver=r93.b12286d
-pkgrel=3
+pkgrel=4
 pkgdesc="Icon fonts in terminal without a need for replacing or patching existing"
 url="https://github.com/sebastiencs/icons-in-terminal"
 arch=('any')
@@ -11,7 +11,7 @@ provides=('icons-in-terminal')
 conflicts=('icons-in-terminal')
 depends=('bash')
 makedepends=('git')
-source=("git://github.com/sebastiencs/$pkgname.git")
+source=("$pkgname::git+https://github.com/sebastiencs/$pkgname.git")
 sha1sums=('SKIP')
 
 pkgver() {
@@ -29,18 +29,10 @@ prepare() {
 package() {
     cd "$srcdir/$pkgname"
 
-    install -dm755 "$pkgdir/usr/share/$pkgname"
-
-    if [ -d "/etc/$pkgname" ]; then
-        echo "  Backing up old config folder to location: /usr/share/$pkgname/backup"
-        echo "  If you haven't made any changes in the old folder you can safely remove this."
-        cp -RT "/etc/$pkgname" "$pkgdir/usr/share/$pkgname/backup"
-    fi
-
-    if [ ! -f "/etc/fonts/conf.avail/30-$pkgname.conf" ]; then
+    if [ ! -f "/usr/share/fontconfig/conf.avail/30-$pkgname.conf" ]; then
         install -dm755 "$pkgdir/etc/fonts/conf.d"
-        install -Dm644 "30-$pkgname.conf"       "$pkgdir/etc/fonts/conf.avail/30-$pkgname.conf"
-        ln -rs "$pkgdir"/etc/fonts/conf.avail/* "$pkgdir/etc/fonts/conf.d/"
+        install -Dm644 "30-$pkgname.conf"       "$pkgdir/usr/share/fontconfig/conf.avail/30-$pkgname.conf"
+        ln -rs "$pkgdir"/usr/share/fontconfig/conf.avail/* "$pkgdir/etc/fonts/conf.d/"
     fi
 
     install -Dm755 "print_icons.sh"         "$pkgdir/usr/bin/$pkgname"
