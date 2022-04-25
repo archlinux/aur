@@ -3,14 +3,14 @@
 
 _pkgname='ferdium'
 pkgname="ferdium"
-pkgver=6.0.0.nightly.10
+pkgver=6.0.0.nightly.11
 pkgrel=1
 pkgdesc='A messaging browser that allows you to combine your favorite messaging services into one application (git build from latest release).'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
 url="https://ferdium.org/"
 license=('Apache')
 depends=('libxkbfile')
-apptag="v6.0.0-nightly.10"
+apptag="v6.0.0-nightly.11"
 recipiesbranch="master"
 makedepends=('nvm' 'git' 'python')
 provides=("$_pkgname")
@@ -65,9 +65,7 @@ build() {
 	# Prepare recipes
 	cd "$srcdir/$_sourcedirectory/"
 
-	export ELECTRON_CACHE="${srcdir}"/.cache/electron
-    export ELECTRON_BUILDER_CACHE="${srcdir}"/.cache/electron-builder
-    export CSC_IDENTITY_AUTO_DISCOVERY=false
+	# Set environment variables needed for NodeJS/Electron
     export CI=true
 
     # Deactivate any pre-loaded nvm, and make sure we use our own in the current source directory
@@ -112,7 +110,7 @@ build() {
     popd
 
 	# Run the electron build script
-    $BASE_CMD run build -- --dir
+	NODE_ENV='production' $BASE_CMD run build -- --dir
 }
 
 package() {
