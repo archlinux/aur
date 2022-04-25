@@ -9,3 +9,4 @@ pkg*.xz
 TODO
 lost+found/
 set-source-mirror.sh
+patches

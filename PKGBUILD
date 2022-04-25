@@ -11,12 +11,15 @@
 # 02-revert-TEXT_OFFSET-deletion.patch: 
 # https://github.com/SuzukiHonoka/s905d-kernel-precompiled/tree/master/patch
 
+# Armbina patches
+# https://github.com/armbian/build/tree/master/patch/kernel/archive/meson64-5.17
+
 pkgbase=linux-phicomm-n1
 _srcname=linux-5.17
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for Phicomm N1"
-pkgver=5.17.3
-pkgrel=2
+pkgver=5.17.4
+pkgrel=1
 arch=('aarch64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -32,20 +35,54 @@ source=(
         '60-linux.hook'
         '90-linux.hook'
         '02-revert-TEXT_OFFSET-deletion.patch'
-        '03-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch')
+        '03-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch'
+        # patches from armbian
+        "general-meson-gx-mmc-fix-deferred-probing.patch"
+        "general-meson-gx-mmc-set-core-clock-phase-to-270-degres.patch"
+        "general-meson-aiu-Fix-HDMI-codec-control-selection.patch"
+        "general-gpu-drm-add-new-display-resolution-2560x1440.patch"
+        "general-drm-dw-hdmi-call-hdmi_set_cts_n-after-clock.patch"
+        "general-hdmi-codec-reorder-channel-allocation-list.patch"
+        "general-revert-meson_drv_shutdown.patch"
+        "general-meson-vdec-remove-redundant-if-statement.patch"
+        "general-meson-vdec-add-HEVC-decode-codec.patch"
+        "general-meson-vdec-check-if-parser-has-really-parser.patch"
+        "general-meson-vdec-add-handling-to-HEVC-decoder-.patch"
+        "general-meson-vdec-improve-mmu-and-fbc-handling-.patch"
+        "general-memory-marked-nomap.patch"
+        "general-usb-core-improve-handling-of-hubs-with-no-ports.patch"
+        "general-increase-cma-pool-896MB.patch"
+        "general-sound-soc-remove-mono-channel-as-it-curren.patch"
+)
 
 [[ ${pkgver##*.} != 0 ]] && \
 source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
 
 md5sums=('07321a70a48d062cebd0358132f11771'
          '14b9c040a7a9320ea91a779cd8f14f02'
-         'ea6fbed2433a6cfd22a7cff33f23414b'
+         'f9877f4fee835a3b5880d59855c356e0'
          '30130b4dcd8ad4364ddbfd56c3058d5e'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '0d0435888ecad675870ecda4045a9d45'
          '614a77d2f4c92817ab4e5f989f9a76c9'
          '7a18066683f3351b2bbd2653db783f80'
-         '72b09a90defb8367b4f2d971af2773f3')
+         '55f160f63da3d642dc274b9830622187'
+         '679e90aa8d00df767dbd9315238bcecc'
+         'f4573afe0c73b90e48186c32fd374040'
+         'd590f2af9d150f00bf9e5e4239e16105'
+         '116c87fd40aa252e6702ad61af27b824'
+         'd3ce443630c8c9768637d4b123dd8c70'
+         '06d09873c61527e9488bf65973dc96c5'
+         'c7f753fbb98202b9148ad7b4aed8ecad'
+         '87d3fc334bc0309968948a084a1c3459'
+         '90b82b89d96283e1f03d302676ecfe78'
+         'eed9d1f3957af438f1c60d3d405dbb2d'
+         'a4643fd62a9bf5b042d41cd0ddfa6906'
+         '3c2bada63ca2427c78e224db5ded7c09'
+         '425ec378dc6973e6185895d7a13a8d66'
+         '38e3b2c9490ac3b8201db37e73ff2534'
+         'dfcd0e763405a425b3f277394ed65a5d'
+         'b76bfbb5308a55f951ec17365fe3560d')
 
 prepare() {
   cd ${_srcname}
@@ -63,6 +100,31 @@ prepare() {
 
   # Make proc cpuinfo consistent on arm64 and arm
   patch -p1 < "${srcdir}/03-make-proc-cpuinfo-consistent-on-arm64-and-arm.patch"
+
+  # Patches from Armbian
+  # MMC
+  patch -p1 < "${srcdir}/general-meson-gx-mmc-set-core-clock-phase-to-270-degres.patch"
+  patch -p1 < "${srcdir}/general-meson-gx-mmc-fix-deferred-probing.patch"
+
+  # DRM and HDMI
+  patch -p1 < "${srcdir}/general-meson-aiu-Fix-HDMI-codec-control-selection.patch"
+  patch -p1 < "${srcdir}/general-gpu-drm-add-new-display-resolution-2560x1440.patch"
+  patch -p1 < "${srcdir}/general-drm-dw-hdmi-call-hdmi_set_cts_n-after-clock.patch"
+  patch -p1 < "${srcdir}/general-hdmi-codec-reorder-channel-allocation-list.patch"
+  patch -p1 < "${srcdir}/general-revert-meson_drv_shutdown.patch"
+
+  # MESON-VDEC
+  patch -p1 < "${srcdir}/general-meson-vdec-remove-redundant-if-statement.patch"
+  patch -p1 < "${srcdir}/general-meson-vdec-add-HEVC-decode-codec.patch"
+  patch -p1 < "${srcdir}/general-meson-vdec-check-if-parser-has-really-parser.patch"
+  patch -p1 < "${srcdir}/general-meson-vdec-add-handling-to-HEVC-decoder-.patch"
+  patch -p1 < "${srcdir}/general-meson-vdec-improve-mmu-and-fbc-handling-.patch"
+
+  # MISC
+  patch -p1 < "${srcdir}/general-memory-marked-nomap.patch"
+  patch -p1 < "${srcdir}/general-usb-core-improve-handling-of-hubs-with-no-ports.patch"
+  patch -p1 < "${srcdir}/general-increase-cma-pool-896MB.patch"
+  patch -p1 < "${srcdir}/general-sound-soc-remove-mono-channel-as-it-curren.patch"
 
   # Dts for Phicomm-N1
   target_dts="meson-gxl-s905d-phicomm-n1.dts"
