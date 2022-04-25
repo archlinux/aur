@@ -1,6 +1,6 @@
 pkgbase = picom-arian8j2-git
 	pkgdesc = Arian8j2's picom fork with configurable transitions
-	pkgver = v0.1_20220425
+	pkgver = v20220425
 	pkgrel = 1
 	url = https://github.com/Arian8j2/picom
 	arch = i686
