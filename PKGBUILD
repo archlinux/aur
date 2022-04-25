@@ -7,7 +7,7 @@
 
 pkgname=lib32-fluidsynth
 _name=fluidsynth
-pkgver=2.2.6
+pkgver=2.2.7
 pkgrel=1
 pkgdesc='A real-time software synthesizer based on the SoundFont 2 specifications'
 arch=(x86_64)
@@ -32,9 +32,10 @@ makedepends=(
   lib32-portaudio
 )
 optdepends=('pulseaudio: PulseAudio sound support')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/${_name}/${_name}/archive/v${pkgver}.tar.gz")
-sha512sums=('e4958c409e057fe6e09a0aa86cc0d7c939aa883de479aa90c43f19faa4d0c3a0f6aca7242fad11ec7a7776cb7e2e602c953c6249fc94b9f04425101584ae3e6c')
-b2sums=('5296d48809a457770a968fb9ae20ae4091bbae11d6fbf8a11f75e44de1ca9fa1c121e925e61f25ab1016907ced73364ff632ffa3e7edfa9d15019bf3f3e0bb3c')
+options=(debug)
+source=($pkgname-$pkgver.tar.gz::https://github.com/$_name/$_name/archive/v$pkgver.tar.gz)
+sha512sums=('62709f96fa07bbafb9b907438da7376abdf1a4e679cd2b105c5bca257f1ff62c18bd4c646ef2ccba64ca5273604da996fb2caaf61eeee44686bf45fef1ed83a7')
+b2sums=('fd53603947ddf5a76676cfc3d77b1d904146ec7c30ab6e54a2c32cae0e76ec4b66397506072cac277febdd1b799801d5b13c7b37cc0ea4a545fae26077a1d881')
 
 build() {
   export CC='gcc -m32'
@@ -48,7 +49,7 @@ build() {
         -Denable-portaudio=ON \
         -Wno-dev \
         -B build \
-        -S "${_name}-${pkgver}"
+        -S $_name-$pkgver
   make -C build VERBOSE=1
 }
 
@@ -60,7 +61,7 @@ package() {
   depends+=(libasound.so libglib-2.0.so libgmodule-2.0.so libgobject-2.0.so
   libinstpatch-1.0.so libjack.so libportaudio.so libsndfile.so)
 
-  make -C build DESTDIR="${pkgdir}" install
-  rm -rf "${pkgdir}"/usr/{include,share,bin}
+  make -C build DESTDIR="$pkgdir" install
+  rm -rf "$pkgdir"/usr/{include,share,bin}
 }
 # vim: ts=2 sw=2 et:
