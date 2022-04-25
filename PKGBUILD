@@ -9,8 +9,7 @@
 # URL: https://github.com/trollixx/aur-packages
 # Upstream: https://projects.archlinux.org/svntogit/community.git/tree/trunk?h=packages/awesome
 
-_pkgname=awesome-telegramfix
-pkgname=${_pkgname}-git
+pkgname=awesome-telegramfix
 pkgver=4.3.1347.ga1f58ab97
 pkgrel=1
 pkgdesc='Highly configurable framework window manager; fixes telegram dead keys bug'

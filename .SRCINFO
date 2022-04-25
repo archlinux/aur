@@ -1,4 +1,4 @@
-pkgbase = awesome-telegramfix-git
+pkgbase = awesome-telegramfix
 	pkgdesc = Highly configurable framework window manager; fixes telegram dead keys bug
 	pkgver = 4.3.1347.ga1f58ab97
 	pkgrel = 1
@@ -35,7 +35,7 @@ pkgbase = awesome-telegramfix-git
 	provides = awesome
 	conflicts = awesome
 	backup = etc/xdg/awesome/rc.lua
-	source = awesome-telegramfix-git::git+https://github.com/felipetavares/awesome.git
+	source = awesome-telegramfix::git+https://github.com/felipetavares/awesome.git
 	md5sums = SKIP
 
-pkgname = awesome-telegramfix-git
+pkgname = awesome-telegramfix
