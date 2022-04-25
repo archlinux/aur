@@ -38,8 +38,10 @@ build() {
                     -DTensile_LIBRARY_FORMAT=yaml
                     -DTensile_COMPILER=hipcc
                     -DTensile_LOGIC=asm_full
-                    -DTensile_CODE_OBJECT_VERSION=V3
-                    -DBUILD_CLIENTS_TESTS=OFF
+                    -DTensile_ARCHITECTURE=gfx803
+		    -DTensile_CODE_OBJECT_VERSION=V3
+                    -DTensile_TEST_LOCAL_PATH="$_tensile_dir"
+		    -DBUILD_CLIENTS_TESTS=OFF
                     -DBUILD_CLIENTS_BENCHMARKS=OFF
                     -DBUILD_CLIENTS_SAMPLES=OFF
                     -DBUILD_TESTING=OFF)
