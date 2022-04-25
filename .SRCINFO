@@ -22,3 +22,4 @@ pkgname = camillagui
 	depends = python-pycamilladsp-plot
 	depends = python-websocket-client
 	depends = python-websockets
+	depends = python-yaml
