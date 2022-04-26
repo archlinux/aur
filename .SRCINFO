@@ -10,7 +10,6 @@ pkgbase = simtrace2
 	makedepends = git
 	depends = libosmocore
 	depends = libusb
-	depends = lksctp-tools
 	depends = talloc
 	source = git://git.osmocom.org/simtrace2#tag=0.8.1
 	sha512sums = SKIP

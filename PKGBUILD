@@ -10,7 +10,7 @@ pkgdesc="Traces the communication between phones and SIM cards with second gener
 arch=('armv7h' 'i686' 'x86_64')
 url="https://osmocom.org/projects/simtrace2"
 license=('GPL2') # GPLv2-only according to the source files headers
-depends=('libosmocore' 'libusb' 'lksctp-tools' 'talloc')
+depends=('libosmocore' 'libusb' 'talloc')
 makedepends=('git')
 source=("git://git.osmocom.org/simtrace2#tag=$pkgver")
 sha512sums=('SKIP')
