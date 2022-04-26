@@ -30,4 +30,5 @@ package() {
     install -Dm755 "bin/mbpfan" "$pkgdir/usr/bin/mbpfan"
     install -Dm644 "mbpfan.conf" "$pkgdir/etc/mbpfan.conf"
     install -Dm644 "mbpfan.service" "$pkgdir/usr/lib/systemd/system/mbpfan.service"
+    install -Dm644 "mbpfan.8.gz" "$pkgdir/usr/share/man/man8/mbpfan.8.gz"
 }
