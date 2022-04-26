@@ -1,6 +1,6 @@
 pkgbase = muon-meson-git
 	pkgdesc = meson implementation in C
-	pkgver = r322.2a59d24
+	pkgver = r1502.d69f0cc93af60cb73ba7
 	pkgrel = 1
 	url = https://sr.ht/~lattis/muon
 	arch = x86_64
