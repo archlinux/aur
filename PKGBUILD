@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/kti/python-netfilterqueue"
 license=("GPL2")
 depends=('python' 'cython' 'libnetfilter_queue')
+makedepends=('python-build' 'python-installer' 'python-wheel')
 source=("${_pkgbase}::git+https://github.com/kti/python-netfilterqueue")
 sha256sums=('SKIP')
 
@@ -21,10 +22,12 @@ pkgver() {
 
 build() {
 	cd "${srcdir}/${_pkgbase}"
-    python setup.py build
+    #python setup.py build
+    python -m build --wheel --no-isolation
 }
 
 package() {
 	cd "${srcdir}/${_pkgbase}"
-    python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    #python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+    python -m installer --destdir="$pkgdir" dist/*.whl
 }
