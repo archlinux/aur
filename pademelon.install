@@ -1,0 +1,7 @@
+post_upgrade() {
+    echo
+    echo "WARNING: .dapp application files are no longer supported."
+    echo "  Please make sure to convert all your files in"
+    echo "  ~/.local/share/pademelon/applications to the new format."
+    echo
+}

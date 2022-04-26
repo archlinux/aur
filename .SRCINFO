@@ -1,8 +1,9 @@
 pkgbase = pademelon
 	pkgdesc = A desktop manager for modular Linux desktop setups
-	pkgver = 1.0.4
-	pkgrel = 1
+	pkgver = 1.1.0
+	pkgrel = 2
 	url = https://github.com/jzbor/pademelon
+	install = pademelon.install
 	arch = x86_64
 	license = MIT
 	makedepends = go-md2man
@@ -25,7 +26,8 @@ pkgbase = pademelon
 	optdepends = pademelon-desktop: applications to make a desktop environment out of pademelon
 	provides = xdg-xmenu
 	conflicts = xdg-xmenu
-	source = pademelon-1.0.4.tar.gz::https://github.com/jzbor/pademelon/archive/refs/tags/1.0.4.tar.gz
-	sha512sums = 7bf33765d2e67c4d3582a0f68199eac307d1ddfaec2430f7304fb92410842d662b7752766a847c76d285925bbdc4639f2023b1bb37b5990d2fc702ada582a6b0
+	backup = etc/pademelon/pademelon.conf
+	source = pademelon-1.1.0.tar.gz::https://github.com/jzbor/pademelon/archive/refs/tags/1.1.0.tar.gz
+	sha512sums = 29afe4fca992e924304ff6b4b6237080045a8d95cdfd2d0ab3446f8a4d7aad5fb394bfa382f3af09ebe0efa21b7fac174889b2fc76826917f094a2d794ec33c7
 
 pkgname = pademelon

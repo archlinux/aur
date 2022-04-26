@@ -1,7 +1,7 @@
 # Maintainer: jzbor <zborof at posteo dot de>
 pkgname=pademelon
-pkgver=1.0.4
-pkgrel=1
+pkgver=1.1.0
+pkgrel=2
 pkgdesc="A desktop manager for modular Linux desktop setups"
 arch=(x86_64)
 url="https://github.com/jzbor/pademelon"
@@ -16,12 +16,13 @@ optdepends=( 'moonwm: a good default wm'
 provides=(xdg-xmenu)
 conflicts=(xdg-xmenu)
 replaces=()
-backup=()
+backup=('etc/pademelon/pademelon.conf')
 options=()
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
 noextract=()
-sha512sums=('7bf33765d2e67c4d3582a0f68199eac307d1ddfaec2430f7304fb92410842d662b7752766a847c76d285925bbdc4639f2023b1bb37b5990d2fc702ada582a6b0')
+sha512sums=('29afe4fca992e924304ff6b4b6237080045a8d95cdfd2d0ab3446f8a4d7aad5fb394bfa382f3af09ebe0efa21b7fac174889b2fc76826917f094a2d794ec33c7')
 validpgpkeys=()
+install=$pkgname.install
 
 build() {
 	cd "$pkgname-$pkgver"
