@@ -1,6 +1,6 @@
 pkgbase = liberica-jdk-full-bin
 	pkgdesc = BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.
-	pkgver = 17.0.3+7
+	pkgver = 18.0.1+12
 	pkgrel = 1
 	url = https://bell-sw.com/
 	install = liberica-jdk-full.install
@@ -17,18 +17,18 @@ pkgbase = liberica-jdk-full-bin
 	optdepends = gtk2
 	optdepends = gtk3
 	optdepends = libnet
-	provides = java-environment=17
-	provides = java-environment-openjdk=17
-	provides = java-openjfx=17
-	provides = java-runtime-headless=17
-	provides = java-runtime-headless-openjdk=17
-	provides = java-runtime=17
-	provides = java-runtime-openjdk=17
-	provides = liberica-jdk-bin=17.0.3+7
-	provides = liberica-jdk-lite-bin=17.0.3+7
-	provides = liberica-jre-bin=17.0.3+7
-	provides = liberica-jre-full-bin=17.0.3+7
-	provides = liberica-jdk-17-full-bin=17.0.3+7
+	provides = java-environment=18
+	provides = java-environment-openjdk=18
+	provides = java-openjfx=18
+	provides = java-runtime-headless=18
+	provides = java-runtime-headless-openjdk=18
+	provides = java-runtime=18
+	provides = java-runtime-openjdk=18
+	provides = liberica-jdk-bin=18.0.1+12
+	provides = liberica-jdk-lite-bin=18.0.1+12
+	provides = liberica-jre-bin=18.0.1+12
+	provides = liberica-jre-full-bin=18.0.1+12
+	provides = liberica-jdk-17-full-bin=18.0.1+12
 	backup = etc/liberica-jdk-full/logging.properties
 	backup = etc/liberica-jdk-full/management/jmxremote.access
 	backup = etc/liberica-jdk-full/management/jmxremote.password.template
@@ -57,13 +57,13 @@ pkgbase = liberica-jdk-full-bin
 	sha1sums = b8233f9ff931ce97a265827fac18ed90f4e248c6
 	sha1sums = a0da2952bc87a425182c3ac88e88649fbaa7cb65
 	sha1sums = eb36aa73a9be98164447774217865b91e79d503c
-	source_aarch64 = https://download.bell-sw.com/java/17.0.3+7/bellsoft-jdk17.0.3+7-linux-aarch64-full.tar.gz
-	sha1sums_aarch64 = 4126adac423a394b39a9da98b138e0ffdea9f088
-	source_armv7h = https://download.bell-sw.com/java/17.0.3+7/bellsoft-jdk17.0.3+7-linux-arm32-vfp-hflt-full.tar.gz
-	sha1sums_armv7h = e05855beef88a65b0d00693d4aa7562087bfa24e
-	source_armv8h = https://download.bell-sw.com/java/17.0.3+7/bellsoft-jdk17.0.3+7-linux-arm32-vfp-hflt-full.tar.gz
-	sha1sums_armv8h = e05855beef88a65b0d00693d4aa7562087bfa24e
-	source_x86_64 = https://download.bell-sw.com/java/17.0.3+7/bellsoft-jdk17.0.3+7-linux-amd64-full.tar.gz
-	sha1sums_x86_64 = f7bdd20a47b24da337ce11c569f8b5f175cb1bb0
+	source_aarch64 = https://download.bell-sw.com/java/18.0.1+12/bellsoft-jdk18.0.1+12-linux-aarch64-full.tar.gz
+	sha1sums_aarch64 = 1869768ae6fcede66c8fe82b260be889bce37ea0
+	source_armv7h = https://download.bell-sw.com/java/18.0.1+12/bellsoft-jdk18.0.1+12-linux-arm32-vfp-hflt-full.tar.gz
+	sha1sums_armv7h = c0281517a1893defd9f8babc089bb654c6eac247
+	source_armv8h = https://download.bell-sw.com/java/18.0.1+12/bellsoft-jdk18.0.1+12-linux-arm32-vfp-hflt-full.tar.gz
+	sha1sums_armv8h = c0281517a1893defd9f8babc089bb654c6eac247
+	source_x86_64 = https://download.bell-sw.com/java/18.0.1+12/bellsoft-jdk18.0.1+12-linux-amd64-full.tar.gz
+	sha1sums_x86_64 = e321a1c32b4ca5354b65d750247d9e748552a9db
 
 pkgname = liberica-jdk-full-bin
