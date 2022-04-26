@@ -1,0 +1,21 @@
+pkgbase = haskell-extensions
+	pkgdesc = Parse Haskell Language Extensions
+	pkgver = 0.0.0.1
+	pkgrel = 1
+	url = https://github.com/kowainik/extensions
+	arch = x86_64
+	license = MPL2
+	makedepends = ghc
+	makedepends = haskell-hedgehog
+	makedepends = haskell-hspec
+	makedepends = haskell-hspec-hedgehog
+	makedepends = uusi
+	depends = ghc-libs
+	depends = haskell-colourista
+	depends = haskell-optparse-applicative
+	source = https://hackage.haskell.org/packages/archive/extensions/0.0.0.1/extensions-0.0.0.1.tar.gz
+	source = 0001-Fix-overlapping-instances-error-on-GHC-9.0.2.patch
+	sha256sums = d64cc9c0ea82ae8f2dbf0c08824f0a89d3e523105a235e788ef822ac779bb373
+	sha256sums = d7ed6ac8105bf36e23acc53a95e09b3a987b004b7f8f9b6f277f651fb73002ca
+
+pkgname = haskell-extensions

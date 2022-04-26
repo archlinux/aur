@@ -1,0 +1,23 @@
+From ae14f2c01b2f0c6d77b8eee2efa2971b632bf9f8 Mon Sep 17 00:00:00 2001
+From: max ulidtko <ulidtko@gmail.com>
+Date: Tue, 26 Apr 2022 19:00:53 +0300
+Subject: [PATCH] Fix overlapping instances error on GHC 9.0.2+
+
+See issue https://github.com/kowainik/extensions/issues/74
+and PR https://gitlab.haskell.org/ghc/ghc/-/merge_requests/2707
+---
+ src/Extensions/Types.hs | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/Extensions/Types.hs b/src/Extensions/Types.hs
+index 997034b..39ad2e5 100644
+--- a/src/Extensions/Types.hs
++++ b/src/Extensions/Types.hs
+@@ -267,4 +267,3 @@ default2010Extensions =
+     ]
+ 
+ deriving stock instance Read Extension
+-deriving stock instance Ord  Extension
+-- 
+2.36.0
+
