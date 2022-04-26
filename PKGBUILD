@@ -11,7 +11,7 @@ url="https://github.com/devshawn/kafka-gitops"
 depends=('java-runtime')
 license=('Apache-2')
 source=("https://github.com/devshawn/${_name}/releases/download/${pkgver}/${_name}.zip")
-sha256sums=('6794d29feca2512a6436393d62672da010839440e6a34be5ac1697e95e422c1a')
+sha256sums=('182e35a3693a6864e58d47ef419141486adb19acb9385120257a03088789abe8')
 
 package() {
   cd "${srcdir}"
