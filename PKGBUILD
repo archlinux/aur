@@ -5,7 +5,7 @@ pkgname=warsaw-bin
 pkgver=2.21.1.13
 pkgrel=1
 pkgdesc="Banking security tool developed by GAS Tecnologia"
-arch=(i686 x86_64)
+arch=(x86_64)
 url="https://diagnostico.gasantifraud.com"
 license=('custom')
 depends=('dbus' 'procps-ng' 'python' 'zenity')
@@ -16,9 +16,7 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 conflicts=('warsaw')
 provides=('warsaw')
-source_i686=("warsaw-${pkgver}-32.deb::https://cloud.gastecnologia.com.br/gas/diagnostico/warsaw_setup_32.deb")
-source_x86_64=("warsaw-${pkgver}-64.deb::https://cloud.gastecnologia.com.br/gas/diagnostico/warsaw_setup_64.deb")
-sha256sums_i686=('fb99b8ded9128b89b4bedd4a4cac0f0b19f2e9c712b1b011ab051fc6a0f63eb2')
+source_x86_64=("warsaw-${pkgver}-64.deb::https://cloud.gastecnologia.com.br/bb/downloads/ws/warsaw_setup64.deb")
 sha256sums_x86_64=('5dde8c45b477de0e9d05a063f66c5d99122480e17133421a2954b15344a6c942')
 
 prepare() {
