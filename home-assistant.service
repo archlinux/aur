@@ -15,8 +15,7 @@ Environment=HOME=/var/lib/hass
 ExecStart=/usr/bin/hass \
   --config /var/lib/hass/ \
   --log-file /var/log/hass/home-assistant.log \
-  --log-rotate-days 1 \
-  --runner
+  --log-rotate-days 1
 RestartForceExitStatus=100
 
 AmbientCapabilities=
