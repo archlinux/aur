@@ -2,7 +2,7 @@
 # Maintainer: Yoan Blanc <yoan@dosimple.ch>
 
 pkgname=tfsec-bin
-pkgver=1.18.0
+pkgver=1.19.0
 pkgrel=1
 pkgdesc="Static analysis powered security scanner for your terraform code"
 depends=(glibc)
@@ -17,9 +17,9 @@ source_aarch64=("tfsec-${pkgver}-${pkgrel}_aarch64::${url}/releases/download/v${
 source_x86_64=("tfsec-${pkgver}-${pkgrel}_x86_64::${url}/releases/download/v${pkgver}/tfsec-linux-amd64"
                "https://raw.githubusercontent.com/tfsec/tfsec/v${pkgver}/LICENSE")
 
-sha256sums_aarch64=('02f5d0cfee77eee5290b613555157558367a687ee9ec37774f6d959b4aeee707'
+sha256sums_aarch64=('a9a8c11c75eaa36ecc4c7ccffe9327f06aca0b0bd8ad28c1e423ba26f17dfa54'
                     'd59c7e06f84530a8464a352e7b7e153830d566e06aa8ca6a72defa809fad3a37')
-sha256sums_x86_64=('15bc4bec72b8e7bffa283fc1be4c55f6fc35eaa4a09d49126f58d9be6f4bb9ad'
+sha256sums_x86_64=('b013dc9c1f249869129873500c8ed2915ebf8bca6495277f0a3440d9df457a95'
                    'd59c7e06f84530a8464a352e7b7e153830d566e06aa8ca6a72defa809fad3a37')
 
 package() {
