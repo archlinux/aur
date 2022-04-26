@@ -4,8 +4,8 @@
 
 pkgbase='concourse-git'
 pkgname=('concourse-git' 'concourse-fly-cli-git')
-pkgver=v7.5.0.r331.gf138a7a9a
-pkgrel=2
+pkgver=v7.7.0.r157.gd6413ad91
+pkgrel=1
 arch=('x86_64')
 url='https://concourse-ci.org'
 license=('Apache-2.0')
