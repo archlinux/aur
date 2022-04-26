@@ -1,6 +1,6 @@
 pkgbase = python-vsdx
 	pkgdesc = A python library for processing Visio .vsdx files
-	pkgver = 0.4.4
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/dave-howard/vsdx
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = python-vsdx
 	depends = python-sphinx
 	depends = python-sphinx_rtd_theme
 	depends = python-jinja
-	source = git://github.com/dave-howard/vsdx#commit=06928c85b6d0e5dcd9b94a2d983257b6f6f061e8
-	sha256sums = SKIP
+	source = https://files.pythonhosted.org/packages/source/v/vsdx/vsdx-0.5.3.tar.gz
+	sha256sums = ed3ae2b6113da26782c964207733f1f6db68d8697db9e27097b220379ded1373
 
 pkgname = python-vsdx
