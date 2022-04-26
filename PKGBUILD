@@ -2,7 +2,7 @@
 
 pkgname=torchvision-cuda
 pkgdesc='datasets, transforms, and models specific to computer vision (C++ library only)'
-pkgver=0.11.2
+pkgver=0.12.0
 pkgrel=1
 license=("BSD")
 url='https://github.com/pytorch/vision'
@@ -15,7 +15,7 @@ source=(
 	"$pkgname-$pkgver.tar.gz::https://github.com/pytorch/vision/archive/v$pkgver.tar.gz"
 )
 
-sha512sums=('11891d19c1a17d27fbcc95b576a7bba7d2d2b96673661bc8488505aded9c70e7ee09229732d42eac4a590e11fb8f0066fb5a2d9f5b7fa95265f54d533ffc1359')
+sha512sums=('ebc48a9e9ef58cc93c1b095e565c67feb2bc1bf06551e8f891a0369c211c6732e10bf191298b0633a05664371fa6dc637aab851b01a57f6b3e0d5936e87ee8ae')
 
 depends=(
 	cuda
