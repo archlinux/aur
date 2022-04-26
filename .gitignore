@@ -1,0 +1,7 @@
+php-ds-*.pkg.tar.zst
+php-ds-*-build.log
+php-ds-*-build.log.?
+php-ds-*-package.log
+pkg/
+src/
+*.tar.gz
