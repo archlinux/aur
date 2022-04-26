@@ -1,13 +1,13 @@
 pkgbase = yourls
 	pkgdesc = your own URL shortener
 	pkgver = 1.9
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/YOURLS/YOURLS
 	install = yourls.install
 	arch = any
 	license = GPL3
 	depends = php>=7.4
-	depends = mysql>=5.0
+	optdepends = mysql>=5.0
 	conflicts = yourls-svn
 	backup = etc/webapps/yourls/config.php
 	source = yourls-1.9.tar.gz::https://github.com/YOURLS/YOURLS/archive/1.9.tar.gz

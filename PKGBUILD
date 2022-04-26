@@ -3,12 +3,13 @@
 
 pkgname=yourls
 pkgver=1.9
-pkgrel=1
+pkgrel=2
 pkgdesc="your own URL shortener"
 arch=('any')
 url="https://github.com/YOURLS/YOURLS"
 license=('GPL3')
-depends=('php>=7.4' 'mysql>=5.0')
+depends=('php>=7.4')
+optdepends=('mysql>=5.0')
 conflicts=('yourls-svn')
 backup=('etc/webapps/yourls/config.php')
 install=$pkgname.install
