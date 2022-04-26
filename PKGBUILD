@@ -3,7 +3,7 @@
 _pkgname=libcwtch-go
 pkgname=$_pkgname
 
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 
 pkgdesc="C bindings for the Go Cwtch library"
@@ -14,8 +14,8 @@ makedepends=('go')
 arch=('x86_64')
 url='https://cwtch.im'
 license=('MIT')
-source=("$_pkgname-v$pkgver.tar.gz::https://git.openprivacy.ca/cwtch.im/$_pkgname/archive/v.$pkgver.tar.gz")
-sha512sums=('00dbc0448bab7aaef3277a71e075a56a95fbbdbe6d2cb53523ed62a13892d6b2ec00437201db8b4eba2f042ab7577df5c74844b6233cf5a2c30930fe3eb36982')
+source=("$_pkgname-v$pkgver.tar.gz::https://git.openprivacy.ca/cwtch.im/$_pkgname/archive/$pkgver.tar.gz")
+sha512sums=('a7471d043af3af933969cf6d5745a8371842860e98af54510134c382769d0110397778d330548258adabb230a3810c7e7988938b77d3a8c8bd574cca60703ffe')
 
 prepare() {
     cd "$srcdir/$_pkgname"
