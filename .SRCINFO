@@ -8,6 +8,7 @@ pkgbase = wake-build-git
 	license = BSD 2 Clause
 	makedepends = git
 	makedepends = cargo
+	makedepends = make
 	depends = bash
 	optdepends = git
 	provides = wake-build
