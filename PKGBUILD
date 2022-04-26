@@ -21,5 +21,5 @@ package() {
   install -dm755 "${pkgdir}/usr/share/icons"
 
   cd "$pkgdir/usr/share/icons"
-  cp -r "$srcdir/$_folder-$_commit/Vertex-Maia" Vertex-Maia
+  cp -r "$srcdir/$_folder-$pkgver/Vertex-Maia" Vertex-Maia
 }
