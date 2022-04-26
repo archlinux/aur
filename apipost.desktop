@@ -1,0 +1,7 @@
+[Desktop Entry]
+Terminal=false
+Type=Application
+Name=ApiPost6
+Icon=apipost6
+Exec=apipost6 %U
+Categories=Development;
