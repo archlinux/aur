@@ -2,8 +2,8 @@
 
 pkgname="surface-dtx-daemon"
 pkgver=0.3.1
-pkgrel=1
-_pkgrel=1
+pkgrel=2
+_pkgrel=2
 pkgdesc="Surface Detachment System (DTX) Daemon"
 url="https://github.com/linux-surface/surface-dtx-daemon"
 license=('MIT')
@@ -14,7 +14,7 @@ provides=('surface-dtx-daemon')
 install=surface-dtx-daemon.install
 
 source=(
-    "${pkgname}::git+https://github.com/linux-surface/surface-dtx-daemon.git#tag=v${pkgver}-${_pkgrel}"
+    "${pkgname}-${pkgver}-${_pkgrel}.tar.gz::https://github.com/linux-surface/surface-dtx-daemon/archive/refs/tags/v${pkgver}-${_pkgrel}.tar.gz"
 )
 
 sha256sums=('SKIP')
@@ -27,14 +27,14 @@ backup=(
 )
 
 build() {
-    cd "${pkgname}"
+    cd "${srcdir}/${pkgname}-${pkgver}-${_pkgrel}"
     env CARGO_TARGET_DIR="$PWD/target" CARGO_INCREMENTAL=0 cargo build --release --locked
     strip --strip-all "target/release/surface-dtx-daemon"
     strip --strip-all "target/release/surface-dtx-userd"
 }
 
 package() {
-    cd "${pkgname}"
+    cd "${srcdir}/${pkgname}-${pkgver}-${_pkgrel}"
 
     # binary files
     install -D -m755 "target/release/surface-dtx-daemon" "$pkgdir/usr/bin/surface-dtx-daemon"
