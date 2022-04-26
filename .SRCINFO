@@ -1,6 +1,6 @@
 pkgbase = system-monitoring-center
 	pkgdesc = System performance and usage monitoring tool
-	pkgver = 1.12.0
+	pkgver = 1.12.1
 	pkgrel = 2
 	url = https://github.com/hakandundar34coding/system-monitoring-center
 	changelog = system-monitoring-center.changelog
@@ -13,11 +13,12 @@ pkgbase = system-monitoring-center
 	depends = bash
 	depends = dmidecode
 	depends = gtk3
+	depends = iproute2
 	depends = python-cairo
 	depends = python-gobject
 	depends = systemd
 	depends = util-linux
-	source = system-monitoring-center-1.12.0.tar.gz::https://github.com/hakandundar34coding/system-monitoring-center/archive/refs/tags/v1.12.0-deb_for_stores.tar.gz
-	sha256sums = 2a6df69e11228c9577f3d9dc0a19c16f083b21b1e037582e8b9b6b148ffe5e3d
+	source = system-monitoring-center-1.12.1.tar.gz::https://github.com/hakandundar34coding/system-monitoring-center/archive/refs/tags/v1.12.1-deb_for_stores.tar.gz
+	sha256sums = 852cb8d343849e9d18420f7bbde2bcb5bca0d6f69a8ac64efb18d70bb1976db3
 
 pkgname = system-monitoring-center

@@ -1,17 +1,18 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=system-monitoring-center
-pkgver=1.12.0
+pkgver=1.12.1
 _pkgver="$pkgver-deb_for_stores"
 pkgrel=2
 pkgdesc="System performance and usage monitoring tool"
 arch=('any')
 url="https://github.com/hakandundar34coding/system-monitoring-center"
 license=('GPL3')
-depends=('bash' 'dmidecode' 'gtk3'  'python-cairo' 'python-gobject' 'systemd' 'util-linux')
+depends=('bash' 'dmidecode' 'gtk3' 'iproute2' 'python-cairo' 'python-gobject'
+         'systemd' 'util-linux')
 makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel')
 changelog="$pkgname.changelog"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$_pkgver.tar.gz")
-sha256sums=('2a6df69e11228c9577f3d9dc0a19c16f083b21b1e037582e8b9b6b148ffe5e3d')
+sha256sums=('852cb8d343849e9d18420f7bbde2bcb5bca0d6f69a8ac64efb18d70bb1976db3')
 
 build() {
   cd "$pkgname-$_pkgver"
