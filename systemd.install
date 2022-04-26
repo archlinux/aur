@@ -36,9 +36,6 @@ post_install() {
     getty@tty1.service \
     remote-fs.target
 
-  echo ":: Append 'init=/usr/lib/systemd/systemd' to your kernel command line in your"
-  echo "   bootloader to replace sysvinit with systemd, or install systemd-sysvcompat"
-
   # group 'systemd-journal-remote' is created by systemd-sysusers
   mkdir -m2755 var/log/journal/remote
   chgrp systemd-journal-remote var/log/journal/remote
