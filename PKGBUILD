@@ -5,7 +5,7 @@
 pkgname=audacity-systemlibs
 _pkgname=audacity
 pkgver=3.1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="A program that lets you manipulate digital audio waveforms - Pure System Libraries"
 arch=(x86_64)
 url="https://www.audacityteam.org/"
