@@ -1,6 +1,6 @@
 pkgbase = wld-git
 	pkgdesc = A primitive drawing library targeted at Wayland
-	pkgver = r153.00ba7a7
+	pkgver = r171.6586736
 	pkgrel = 1
 	url = https://github.com/michaelforney/wld
 	arch = i686
@@ -13,8 +13,7 @@ pkgbase = wld-git
 	depends = pixman
 	provides = wld
 	conflicts = wld
-	source = git://github.com/michaelforney/wld.git
+	source = git+https://github.com/michaelforney/wld.git
 	md5sums = SKIP
 
 pkgname = wld-git
-
