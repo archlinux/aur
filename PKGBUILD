@@ -1,7 +1,7 @@
 # Maintainer: thorko contact@thorko.de
 pkgname=sensu-cli
 pkgver=6.7.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Sensu Go cli"
 arch=('x86_64' 'armv7h')
 url='https://sensu.io'
