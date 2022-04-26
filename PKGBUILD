@@ -41,6 +41,11 @@ build() {
   ninja -C build
 }
 
+check() {
+  cd "$_pkgname/build"
+  ./muon test
+}
+
 package() {
   cd "$_pkgname/build"
   DESTDIR="$pkgdir" ./muon install
