@@ -1,0 +1,19 @@
+pkgbase = perl-mojo-jwt
+	pkgdesc = JSON Web Token the Mojo way
+	pkgver = 0.09
+	pkgrel = 1
+	url = https://metacpan.org/dist/Mojo-JWT
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	makedepends = perl-module-build-tiny
+	depends = perl-digest-sha
+	depends = perl-mojolicious
+	optdepends = perl-crypt-openssl-bignum: RSA support
+	optdepends = perl-crypt-openssl-rsa: RSA support
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/J/JB/JBERGER/Mojo-JWT-0.09.tar.gz
+	md5sums = 793d9ab5471dbac21fa059456c29dee8
+	sha512sums = 9da5af40186ad305d186ea834f90bb7ee3677b46d0ee9490a46b9f9671ce3a6536879c235852532ef83c31063c2c539ebd845dc37b794e13e3682d21cd985607
+
+pkgname = perl-mojo-jwt
