@@ -1,4 +1,5 @@
-# Maintainer: Jonathan Gruber <gruberjonathan at gmail dot com>
+# Maintainer: Jack Kamm <jackkamm at gmail dot com>
+# Contributor: Jonathan Gruber <gruberjonathan at gmail dot com>
 # Contributor: Yamakaky <yamakaky at gmail dot com>
 # Contributor: Allan McRae <allan at archlinux dot org>
 
@@ -7,12 +8,12 @@ pkgver=2.3.0.r1.g7981306
 pkgrel=1
 pkgdesc="A simple daemon to control fan speed on all MacBook/MacBook Pros"
 arch=('x86_64' 'i686')
-url="https://github.com/dgraziotin/mbpfan"
+url="https://github.com/linux-on-mac/mbpfan"
 license=('GPL3')
 depends=('glibc')
 makedepends=('git')
 provides=('mbpfan')
-source=("$pkgname"::'git+https://github.com/dgraziotin/mbpfan.git')
+source=("$pkgname"::'git+https://github.com/linux-on-mac/mbpfan.git')
 md5sums=('SKIP')
 backup=('etc/mbpfan.conf')
 
