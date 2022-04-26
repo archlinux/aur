@@ -8,6 +8,8 @@ url="https://github.com/ed-asriyan/tgs-to-gif"
 license=('MIT')
 depends=('rlottie')
 makedepends=('conan' 'cmake')
+provides=('tgs-to-gif' 'tgs-to-gif-cpp' 'tgs-to-gif-git')
+conflicts=('tgs-to-gif' 'tgs-to-gif-cpp' 'tgs-to-gif-git')
 source=("git+https://github.com/ed-asriyan/tgs-to-gif"
 				basename.patch)
 sha256sums=('SKIP'
