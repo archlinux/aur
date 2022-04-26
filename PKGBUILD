@@ -1,43 +1,41 @@
-# Maintainer: Miguel Useche <migueluseche@skatox.com>
-# Contributor: mncarbone <mncarbone@gmail.com>
+# Maintainer: dakataca <danieldakataca@gmail.com>
 # Contributor: Cristophero <cristophero.alvarado@gmail.com>
 pkgname=pseint
-pkgver=20200501
+pkgver=20210609
 pkgrel=1
-pkgdesc="A tool for learning programming basis with a simple spanish pseudocode"
-arch=('i686' 'x86_64')
-url="http://pseint.sourceforge.net"
-license=('GPL')
-groups=()
+pkgdesc='Herramienta educativa para aprender los fundamentos y el desarrollo de la lógica de la programación'
+arch=('x86_64')
+url='http://pseint.sourceforge.net'
+license=('GPL2')
+conflicts=('pseint-bin')
 depends=('libpng12' 'glu')
-makedepends=()
-optdepends=()
-source_i686=(https://razaoinfo.dl.sourceforge.net/project/${pkgname}/${pkgver}/$pkgname-l32-${pkgver}.tgz)
-source_x86_64=(https://razaoinfo.dl.sourceforge.net/project/${pkgname}/${pkgver}/$pkgname-l64-${pkgver}.tgz)
-noextract=()
-sha256sums_x86=("bfe1a22b8f794640c1d5e4f24da890d3faa88432405fb9f94d93d43ac89b9f1c")
-sha256sums_x86_64=("a0d0af715163ae9052fc8b950923fb15d1503f6fc2fa3c564e964ff1f06922a7")
+makedepends=('gzip')
+noextract=(creator.psz)
+source=(https://razaoinfo.dl.sourceforge.net/project/pseint/${pkgver}/pseint-l64-${pkgver}.tgz)
+sha256sums=('a5df4e147c529e3da509b30dee02791642c32cb3b5bbbc6cd3cd7594f10cb9f4')  # 'makepkg -g' para generarlo.
 
-package() {
-    mkdir -p "${pkgdir}/opt/${pkgname}"
-    cp -rv "${srcdir}/${pkgname}/"* "${pkgdir}/opt/${pkgname}"
-    mkdir -p "${pkgdir}/usr/share/applications/"
-    desktopfile="${pkgdir}/opt/${pkgname}/${pkgname}.desktop"
-    touch $desktopfile
-    echo "[Desktop Entry]" >> $desktopfile
-    echo "Type=Application" >> $desktopfile
-    echo "Name=PSeInt" >> $desktopfile
-    echo "Comment=${pkgdesc}" >> $desktopfile
-    echo "Comment[es]=Una herramienta para aprender las bases de la programación mediante pseudocodigo en español" >> $desktopfile
-    echo "Exec=${pkgname}" >> $desktopfile
-    echo "Icon=/opt/${pkgname}/imgs/icon.svg" >> $desktopfile
-    echo "Terminal=false" >> $desktopfile
-    echo "Categories=Development;IDE;" >> $desktopfile
-    mkdir -p "${pkgdir}/usr/share/applications/"
-    cp $desktopfile "${pkgdir}/usr/share/applications/"
-    mkdir -p "${pkgdir}/usr/bin/"
-    touch "${pkgdir}/usr/bin/${pkgname}"
-    echo "#!/usr/bin/env sh" >> "${pkgdir}/usr/bin/${pkgname}"
-    echo "/opt/${pkgname}/wxPSeInt" >> "${pkgdir}/usr/bin/${pkgname}"
-    chmod +x "${pkgdir}/usr/bin/${pkgname}"
+package () {
+
+    mkdir -p ${pkgdir}/opt/
+    cp -r ${srcdir}/${pkgname}/ ${pkgdir}/opt/
+
+    mkdir -p ${pkgdir}/usr/share/applications/
+    tee ${pkgdir}/usr/share/applications/pseint.desktop <<EOF 
+    [Desktop Entry]
+    Name=PSeInt en GNU/Linux
+    GenericName=PSeInt
+    Comment=Una herramienta para aprender las bases de la programación mediante pseudocodigo en español
+    Type=Application
+    Exec=pseint
+    Icon=/opt/pseint/imgs/icon.icns
+    Terminal=false
+    Categories=Development
+EOF
+    mkdir -p ${pkgdir}/usr/bin/
+
+    tee ${pkgdir}/usr/bin/pseint <<EOF 
+    #!/usr/bin/env sh
+    /opt/pseint/wxPSeInt
+EOF
+    chmod +x ${pkgdir}/usr/bin/pseint
 }
