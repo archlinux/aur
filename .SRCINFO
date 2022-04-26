@@ -15,4 +15,3 @@ pkgname = python-jupyter_sphinx
 	depends = python-sphinx>2
 	depends = python-ipywidgets
 	depends = jupyter-nbconvert>=5.5
-
