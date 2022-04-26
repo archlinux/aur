@@ -1,6 +1,6 @@
 # Maintainer: Clayton Craft <clayton@craftyguy.net>
 pkgname=networkd-dispatcher
-pkgver=2.2
+pkgver=2.2.1
 pkgrel=0
 pkgdesc="A dispatcher daemon for systemd-networkd events"
 arch=('any')
@@ -13,7 +13,7 @@ provides=("${pkgname}")
 conflicts=("${pkgname}")
 backup=('etc/conf.d/networkd-dispatcher.conf')
 source=("https://gitlab.com/craftyguy/${pkgname}/-/archive/${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-sha512sums=('c628bae1b11f342251799d8d2e5c017cb79ade361e0bd7de7d02b70dfee90d4f6f29c1dccf53013db103e0a76a8da0d0b8185629b2ca7b4c06089d1c6eb09d83')
+sha512sums=('0032713a8efd7d1471e6f98d6d70172a13ea13c37971112a21d35594ad824f6f1c8d0d7cc30cb639d3b884c272f54f2ac1a22a8d36820aa65fc93bc0152c9b3a')
 
 package() {
         cd "${pkgname}-${pkgver}"
