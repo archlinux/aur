@@ -1,7 +1,7 @@
 # Maintainer: Connor Etherington <connor@concise.cc>
 # ---
 pkgname=auto
-pkgver=4.1
+pkgver=4.2
 pkgrel=1
 pkgdesc='ArchLinux bootstrap and partitioning script, with a selection of WM and DEs'
 arch=(x86_64)
@@ -12,7 +12,7 @@ depends=(dialog)
 source=(
   "https://gitlab.com/a4to/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst"
   "https://gitlab.com/a4to/concise/-/raw/master/x86_64/${pkgname}-${pkgver}-${pkgrel}-$arch.pkg.tar.zst.sig")
-sha256sums=('116c5e981b8a82776b8805e59f9b0da337febd9869f95ab580b772dd0a06e9e7'
+sha256sums=('5df6765fe13b8f8e51833bca0161a930c8eaa66f2c5468da205b8eb20463f81d'
             'SKIP')
 
 package() {
