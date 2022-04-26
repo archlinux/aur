@@ -2,10 +2,11 @@
 
 pkgname=resolvconf-symlink
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="Make /etc/resolv.conf a symlink to a runtime-writable location"
 arch=('any')
 license=('custom:CC0')
+conflicts=('resolvconf-symlink-systemd-uplink')
 install="${pkgname}.install"
 source=("${pkgname}.hook"
         "LICENSE")

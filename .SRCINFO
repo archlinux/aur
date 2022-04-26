@@ -1,10 +1,11 @@
 pkgbase = resolvconf-symlink
 	pkgdesc = Make /etc/resolv.conf a symlink to a runtime-writable location
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	install = resolvconf-symlink.install
 	arch = any
 	license = custom:CC0
+	conflicts = resolvconf-symlink-systemd-uplink
 	source = resolvconf-symlink.hook
 	source = LICENSE
 	sha256sums = 92dfa503eb283c616f3fdd63faaa9327877060859088e5870cc911d0ca356065
