@@ -5,7 +5,7 @@
 pkgname=ckb-next-git
 pkgver=0.4.4.r201.gcb37c692
 pkgrel=1
-epoch=0
+epoch=1
 pkgdesc="Corsair Keyboard and Mouse Input Driver, git master branch"
 arch=('i686' 'x86_64')
 url="https://github.com/ckb-next/ckb-next"
