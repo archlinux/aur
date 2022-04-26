@@ -1,7 +1,7 @@
 # Maintainer: Caleb Fontenot <foley2431@gmail.com>
 
 pkgname=howdy-beta-git
-pkgver=2.6.1.r143.g7cf31fe
+pkgver=2.6.1.r147.g943f1e1
 pkgrel=1
 pkgdesc="Windows Hello for Linux (Beta)"
 arch=('x86_64')
@@ -24,6 +24,10 @@ makedepends=(
 	'pkgfile'
 	'meson'
 	'git'
+	'libevdev'
+	'libinih'
+	'pam'
+	'gettext'
 )
 conflicts=(
 	'howdy'
@@ -41,7 +45,8 @@ source=(
 sha256sums=('SKIP'
 	'abb1f61041e434465855ce81c2bd546e830d28bcbed8d27ffbe5bb408b11553a'
 	'db9e9e40f092c118d5eb3e643935b216838170793559515541c56a2b50d9fc84'
-	'6e787bbebf5c9efdb793f6cd1f023230c4413306605f24f299f12869f95aa472')
+	'6e787bbebf5c9efdb793f6cd1f023230c4413306605f24f299f12869f95aa472'
+)
 
 pkgver() {
 	cd "$srcdir/howdy"
@@ -61,7 +66,7 @@ build() {
 	mv "howdy/src/pam" "pam_howdy"
 
 	pushd "pam_howdy"
-	meson setup build -Dinih:with_INIReader=true
+	meson setup build
 	meson compile -C build
 	popd
 }
