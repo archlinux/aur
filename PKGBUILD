@@ -2,20 +2,23 @@
 
 _name=get_version
 pkgname=python-$_name
-pkgver=3.5.3
+pkgver=3.5.4
 pkgrel=1
 pkgdesc='Automatically use the latest “vX.X.X” tag as version in your Python package'
 arch=('any')
 url="https://pypi.org/project/$_name"
 license=('GPL3')
-depends=(python python-setuptools)
-_wheel="$_name-$pkgver-py3-none-any.whl"
-source=("https://files.pythonhosted.org/packages/py3/${_name::1}/$_name/$_wheel")
-sha256sums=('7a6903db2da84fa3b38a0185bed7ea55a804a087a846680edc1a5df66dce0491')
-noextract=("$_wheel")
+depends=(python)
+makedepends=(python-flit-core python-installer python-build)
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
+sha256sums=('5901c846518d55d52c1f6f037f5d2433952b46bbf36e38c52f064ae836556343')
+
+build() {
+	cd "$_name-$pkgver"
+	python -m build --wheel --no-isolation --skip-dependency-check  # xlrd < 2 not available on arch
+}
 
 package() {
-	local site="$pkgdir/usr/lib/$(readlink /bin/python3)/site-packages"
-	install -d "$site"
-	unzip "$_wheel" -d "$site"
+	cd "$_name-$pkgver"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 }
