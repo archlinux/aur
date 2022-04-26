@@ -24,11 +24,11 @@ pkgver() {
 
 build() {
   cd "$_pkgname"
-  meson build
+  meson -D prefix=/usr build
   ninja -C build
 }
 
 package() {
-  cd "$_pkgname"
-  install -Dm755 "build/$_pkgname" "$pkgdir/usr/bin/$_pkgname"
+  cd "$_pkgname/build"
+  DESTDIR="$pkgdir" meson install
 }
