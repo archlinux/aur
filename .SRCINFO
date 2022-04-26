@@ -1,0 +1,19 @@
+pkgbase = rmfakecloud
+	pkgdesc = host your own cloud for the remarkable
+	pkgver = 0.0.7
+	pkgrel = 1
+	url = https://github.com/ddvk/rmfakecloud
+	arch = x86_64
+	license = AGPL3
+	makedepends = go
+	depends = nodejs
+	depends = yarn
+	backup = etc/rmfakecloud.conf
+	source = rmfakecloud-0.0.7.tar.gz::https://github.com/ddvk/rmfakecloud/archive/v0.0.7.tar.gz
+	source = rmfakecloud.service
+	source = rmfakecloud.conf
+	sha256sums = 089d86815606a7aa32a630c6a867a9e7dbaed4b6fb26231aa7e5f78fbf97b011
+	sha256sums = 5f5ba109ab19df8f00bae6300f0f7028a7995f2b54d0505e703dd5f04d83468a
+	sha256sums = f992a133142f9706e700531fc23ea7eb8ba7f2bfda97626bcccd121e06610a10
+
+pkgname = rmfakecloud

@@ -1,0 +1,11 @@
+[Unit]
+Description=rmfakecloud
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart=/usr/bin/rmfakecloud
+EnvironmentFile=/etc/rmfakecloud.conf
+
+[Install]
+WantedBy=multi-user.target
