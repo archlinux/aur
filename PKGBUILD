@@ -2,7 +2,7 @@
 
 pkgname=pacpreview
 pkgver=0.2.2
-pkgrel=1
+pkgrel=2
 makedepends=('rust' 'cargo')
 optdepends=('fzf: use as a search tool')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -10,7 +10,7 @@ pkgdesc="Pacman package info viewer, intended for use with fzf --preview"
 license=('GPL3')
 url='https://github.com/TheCycoONE/pacpreview'
 source=("$pkgname-$pkgver.tar.gz::https://github.com/TheCycoONE/$pkgname/archive/$pkgver.tar.gz")
-md5sums=('c4bd7b4b44be972d6985c979dffba66f')
+md5sums=('c960dc0a22d16ecb9dc4674167769ad5')
 
 build() {
     cd "$pkgname-$pkgver"
