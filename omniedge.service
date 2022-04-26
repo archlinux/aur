@@ -1,0 +1,18 @@
+[Unit]
+Description=omniedge process
+After=network-online.target syslog.target nfw.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStartPre=
+
+#Replace to your real virtual network id(can be found by run omniedge join) and auth.json path
+
+ExecStart=/usr/local/bin/omniedge join -n "your_virtual_network_id" -f your_auth_file_path
+Restart=on-abnormal
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+Alias=
