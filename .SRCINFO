@@ -1,0 +1,16 @@
+pkgbase = userspace-tablet-driver-gui
+	pkgdesc = A front-end GUI for Userspace Tablet Driver Daemon for non-Wacom tablets
+	pkgver = r1.61ef190
+	pkgrel = 1
+	url = https://github.com/kurikaesu/userspace-tablet-driver-gui.git
+	install = postremove.install
+	arch = x86_64
+	license = GPL3
+	depends = java-runtime>=11
+	depends = userspace-tablet-driver-daemon
+	provides = userspace-tablet-driver-gui
+	conflicts = userspace-tablet-driver-gui-git
+	source = userspace-tablet-driver-gui::git+https://github.com/kurikaesu/userspace-tablet-driver-gui#branch=release
+	sha256sums = SKIP
+
+pkgname = userspace-tablet-driver-gui
