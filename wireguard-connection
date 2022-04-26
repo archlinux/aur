@@ -1,0 +1,30 @@
+#!/bin/bash
+
+. /usr/lib/network/network
+: ${WIREGUARD:=wg-quick}
+
+[[ -z "$WG_CONFIG" ]] && WG_CONFIG='/etc/wireguard/default.conf'
+
+wireguard_up() {
+  load_profile "$1"
+
+  "${WIREGUARD}" up "${WG_CONFIG}"
+
+  if [[ $? -ne 0 ]]; then
+    report_fail "wireguard connection failed."
+    exit 1
+  fi
+}
+
+wireguard_down() {
+  load_profile "$1"
+
+  "${WIREGUARD}" down "${WG_CONFIG}"
+
+  if [[ $? -ne 0 ]]; then
+    report_fail "wireguard disconnection failed."
+  fi
+}
+
+wireguard_$1 "$2"
+exit $?

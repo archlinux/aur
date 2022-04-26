@@ -1,0 +1,18 @@
+pkgbase = netcfg-wireguard
+	pkgdesc = Wireguard extension for 'netcfg'.
+	pkgver = 0.1
+	pkgrel = 1
+	epoch = 0
+	url = https://github.com/GNU-Pony/netcfg/
+	arch = any
+	license = BSD
+	depends = netcfg
+	depends = wireguard-tools
+	source = wireguard-connection
+	source = wireguard-example
+	source = LICENSE
+	sha256sums = 6dd5cb8686e2fc7998126532cea74bbfd44df9db852b4f2fdc4fa35b3cb2d1b3
+	sha256sums = 991d070678bf7830b4f53407918fcddbc2ae03e7587e13208db1d147b73488b4
+	sha256sums = 9d1224e61e5d165335cb007013f1072a48c19bbca88a713f36e3e4814bdbba74
+
+pkgname = netcfg-wireguard

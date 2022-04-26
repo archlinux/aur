@@ -1,0 +1,4 @@
+CONNECTION="wireguard"
+# WIREGUARD="wg-quick" # Optional; specifies the `wg-quick` compatible executable to use. If not specified, defaults to `wg-quick`.
+INTERFACE="wg-ai"
+WG_CONFIG="/etc/wireguard/wg-ai.conf" # Specify the wireguard configuration to use.
