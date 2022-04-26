@@ -1,6 +1,6 @@
 pkgname=gtksourceview-git
 _pkgname=gtksourceview
-pkgver=6690
+pkgver=r6985.08185428
 pkgrel=1
 pkgdesc='A text widget adding syntax highlighting and more to GNOME'
 url='https://gitlab.gnome.org/GNOME/gtksourceview'
@@ -12,6 +12,7 @@ conflicts=(gtksourceview5)
 makedepends=(
 	gobject-introspection
 	gtk-doc
+	gi-docgen
 	meson
 	vala
 )
@@ -59,7 +60,7 @@ get_version_info_old() {
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  git rev-list --count HEAD
+  echo r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
