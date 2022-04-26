@@ -3,7 +3,7 @@
 
 pkgname=etcher-git
 _pkgname=etcher
-pkgver=1.7.5.r0.g7a012a92
+pkgver=1.7.9.r0.g5945ab1f
 pkgrel=1
 pkgdesc='Flash OS images to SD cards & USB drives, safely and easily'
 arch=('x86_64' 'i686' 'armv7h' 'aarch64')
@@ -14,7 +14,6 @@ makedepends=("npm" "python2" "git" "jq" "patch" "nodejs<17")
 optdepends=("libnotify: for notifications")
 provides=("$_pkgname")
 options=('!strip')
-_scripts_path='scripts/resin'
 _github_balena='https://github.com/balena-io'
 source=(
   "${_pkgname}::git+${_github_balena}/${_pkgname}.git"
@@ -35,7 +34,7 @@ pkgver() {
 prepare() {
   cd "${_pkgname}"
   git submodule init
-  git config "submodule.${_scripts_path}.url" "${srcdir}/${_pkgname}-scripts"
+  git config "submodule.scripts/resin.url" "${srcdir}/${_pkgname}-scripts"
   git submodule update
 }
 
