@@ -3,11 +3,11 @@
 pkgname=dmarc-cat-git
 _pkgname=dmarc-cat
 pkgver=0.15.0.r4.g0b3267d
-pkgrel=1
+pkgrel=2
 pkgdesc='Small utility to decode the report sent by various email providers following the DMARC spec'
 arch=('x86_64')
 url='https://github.com/keltia/dmarc-cat'
-license=('Custom')
+license=('BSD')
 makedepends=(git go)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -32,6 +32,6 @@ build() {
 
 package() {
   cd "$srcdir/$_pkgname"
-  install -Dm644 LICENSE.md -t "${pkgdir}"/usr/share/licenses/${pkgname}/
+  install -Dm644 LICENSE.md -t "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
   install -Dm755 $_pkgname "$pkgdir"/usr/bin/$_pkgname
 }
