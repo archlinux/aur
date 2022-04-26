@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=ferium
+Comment=Ferium is an easy to use CLI program for downloading and updating Minecraft mods from Modrinth, CurseForge, and GitHub Releases.
+Exec=/usr/bin/ferium
+Terminal=true
