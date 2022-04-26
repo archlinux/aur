@@ -1,0 +1,3 @@
+post_remove() {
+	rm -rfv /usr/lib/userspace-tablet-driver-utility
+}
