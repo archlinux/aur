@@ -2,7 +2,7 @@
 
 java_=17
 pkgname="espresso-jdk${java_}-bin"
-pkgver=22.0.0.2
+pkgver=22.1.0
 pkgrel=1
 pkgdesc="GraalVM-based Java implementation as a Truffle language, Java ${java_} version"
 arch=('x86_64'
@@ -12,8 +12,8 @@ license=('custom')
 depends=("jdk${java_}-graalvm-bin")
 source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/espresso-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
 source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/espresso-installable-svm-java${java_}-linux-aarch64-${pkgver}.jar")
-sha256sums_x86_64=('cb02dfd1b3397eddc10d14254fb8e7508d30a5164129a23f456870529d210a2c')
-sha256sums_aarch64=('a8bd85a902b1aeba82a229e4a077125755e8a7b51534926f7476ec2b879623b3')
+sha256sums_x86_64=('a4dd40f73494df389ed2668153faedcc071d72730b1239109ec6c7ae2d12d470')
+sha256sums_aarch64=('37c0ad8772be4ed677eea76ddec174fea8d9519086502a80816b4bfafd5853f3')
 
 package() {
     local file eq permissions mode name target
@@ -51,6 +51,9 @@ package() {
         mkdir -p -- "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/$(dirname -- "$name")"
         ln -s -- "$target" "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/$name"
     done < META-INF/symlinks
+
+    # already in jdk${java_}-graalvm-bin package
+    unlink "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/lib/installer/components/org.graalvm.component"
 
     install -DTm644 LICENSE_JAVAONTRUFFLE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
