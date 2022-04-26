@@ -1,7 +1,7 @@
 pkgbase = surfshark-gui-bin
 	pkgdesc = Surfshark VPN client. Keep your online activity and personal information secure. Put your privacy-conscious mind at rest and enjoy unrestricted internet.
 	pkgver = 1.0.5
-	pkgrel = 2
+	pkgrel = 3
 	url = https://surfshark.com
 	arch = x86_64
 	license = custom:surfshark

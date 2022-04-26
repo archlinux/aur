@@ -2,7 +2,7 @@
 
 pkgname=surfshark-gui-bin
 pkgver=1.0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Surfshark VPN client. Keep your online activity and personal information secure. Put your privacy-conscious mind at rest and enjoy unrestricted internet."
 arch=('x86_64')
 url="https://surfshark.com"
@@ -14,7 +14,7 @@ sha512sums=('b4d030f73fc575d908e57c71db5c59ed2a3a138fa7a3e40d5643a50beef8048a981
 
 package() {
 	tar -xJ -f data.tar.xz -C "${pkgdir}"
-	install -D -m644 "${srcdir}/opt/Surfshark/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "${pkgdir}/opt/Surfshark/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 post_install() {
