@@ -1,6 +1,6 @@
 # Maintainer: BeyondMagic <koetemagie@gmail.com>
 pkgname=nincat-git
-pkgver=7.0
+pkgver=7.1
 pkgrel=1
 pkgdesc="This a simple, lightweight and fast script that loads an ASCII art that fits on your terminal."
 arch=(any)
@@ -11,7 +11,7 @@ checkdepends=(coreutils)
 optdepends=(c-lolcat)
 provides=(nincat)
 conflicts=(nincat)
-source=("$pkgname::git+$url")
+source=("git+https://github.com/ninecath/nincat.git")
 md5sums=('SKIP')
 
 pkgver() {
