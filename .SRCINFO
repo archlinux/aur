@@ -5,6 +5,7 @@ pkgbase = ferium-gui-bin
 	url = https://github.com/theRookieCoder/ferium
 	arch = x86_64
 	license = MPL2
+	depends = gtk3
 	provides = ferium
 	conflicts = ferium-bin
 	source = ferium-gui-3.22.1-1.zip::https://github.com/theRookieCoder/ferium/releases/download/v3.22.1/ferium-linux-gnu.zip

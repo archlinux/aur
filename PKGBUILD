@@ -6,6 +6,7 @@ pkgver=3.22.1
 pkgrel=1
 pkgdesc="Ferium is an easy to use CLI program for downloading and updating Minecraft mods from Modrinth, CurseForge, and GitHub Releases."
 arch=("x86_64")
+depends=("gtk3")
 provides=("ferium")
 conflicts=("ferium-bin")
 url="https://github.com/theRookieCoder/ferium"
