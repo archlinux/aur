@@ -9,7 +9,7 @@
 
 pkgname=mutter-rounded
 pkgver=42.0
-pkgrel=2.1
+pkgrel=2.2
 pkgdesc="A window manager for GNOME, with rounded corners patch (integrate mr1441)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -27,8 +27,6 @@ install=mutter-rounded.install
 
 _commit=9249aba72a5c4454894c08735a4963ca1665e34d  # tag/42.0^0
 _mutter_src="$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
-_shell_blur_h_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/${pkgver}/src/shell-blur-effect.h"
-_shell_blur_c_src="https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/${pkgver}/src/shell-blur-effect.c"
 _settings_src="mutter_settings::git+https://github.com/yilozt/mutter-rounded-setting"
 
 # Mirrors in Gitee
@@ -44,8 +42,8 @@ source=("$_mutter_src"
         "meta_clip_effect.c"
         "meta_clip_effect.h"
         "shader.h"
-        "$_shell_blur_h_src"
-        "$_shell_blur_c_src"
+        "shell-blur-effect.h" # https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/${pkgver}/src/shell-blur-effect.h
+        "shell-blur-effect.c" # https://gitlab.gnome.org/GNOME/gnome-shell/-/raw/${pkgver}/src/shell-blur-effect.c
         "mr1441.patch"
         )
 sha256sums=('SKIP'
