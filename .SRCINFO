@@ -1,7 +1,7 @@
 pkgbase = gtksourceview-git
 	pkgdesc = A text widget adding syntax highlighting and more to GNOME
 	pkgver = r6985.08185428
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/GNOME/gtksourceview
 	arch = x86_64
 	arch = aarch64

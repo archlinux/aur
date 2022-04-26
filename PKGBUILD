@@ -1,7 +1,7 @@
 pkgname=gtksourceview-git
 _pkgname=gtksourceview
 pkgver=r6985.08185428
-pkgrel=1
+pkgrel=2
 pkgdesc='A text widget adding syntax highlighting and more to GNOME'
 url='https://gitlab.gnome.org/GNOME/gtksourceview'
 license=('LGPL')
@@ -82,6 +82,6 @@ package() {
    # Set Provides/Conflicts
    name=$(get_version_info name)
    version=$(get_version_info version)
-   declare -g provides=($name=$version)
-   declare -g conflicts=($name)
+   declare -g provides=($name=$version ${name}-docs=$version)
+   declare -g conflicts=($name ${name}-docs)
 }
