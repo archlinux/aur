@@ -1,0 +1,14 @@
+pkgbase = hush
+	pkgdesc = A unix shell scripting language based on the Lua programming language
+	pkgver = 0.1.1.alpha
+	pkgrel = 1
+	url = https://github.com/hush-shell/hush
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	depends = gcc-libs
+	source = hush::git+https://github.com/hush-shell/hush#commit=fd0f8c7e89fa088a10379e7838b606b3d35c4245
+	md5sums = SKIP
+
+pkgname = hush
