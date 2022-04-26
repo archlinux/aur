@@ -2,7 +2,7 @@
 # Contributor: Phil Schaf <flying-sheep@web.de>
 pkgname=jupyter_latex_envs
 pkgver=1.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Jupyter notebook extension which supports (some) LaTeX environments within markdown cells'
 arch=(any)
 url=https://github.com/ipython-contrib/$_gitname

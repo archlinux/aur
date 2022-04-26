@@ -11,4 +11,3 @@ pkgbase = jupyter_latex_envs
 	sha256sums = 070a31eb2dc488bba983915879a7c2939247bf5c3b669b398bdb36a9b5343872
 
 pkgname = jupyter_latex_envs
-
