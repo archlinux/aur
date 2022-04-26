@@ -1,0 +1,25 @@
+diff --git a/src/meson.build b/src/meson.build
+index 0e19bac..05f4d19 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -23,6 +23,7 @@ config_header = configure_file(
+ terminal_deps = [
+   dependency('gio-2.0', version: '>= 2.50'),
+   dependency('gtk4', version: '>= 4.6.2'),
++  dependency('gtk4-x11', version: '>= 4.6.2'),
+   dependency('libadwaita-1'),
+   dependency('marble', version: '>= 42'),
+   dependency('vte-2.91-gtk4', version: '>= 0.68.0'),
+diff --git a/src/widgets/Terminal.vala b/src/widgets/Terminal.vala
+index 65b0042..6b52854 100644
+--- a/src/widgets/Terminal.vala
++++ b/src/widgets/Terminal.vala
+@@ -72,7 +72,7 @@ public class Terminal.Terminal : Vte.Terminal {
+     this.connect_accels ();
+     this.on_theme_changed ();
+     this.on_font_changed ();
+-    this.on_padding_changed ();
++    this.settings.terminal_padding = this.settings.schema.get_value ("terminal-padding");
+ 
+     this.spawn (command, cwd);
+   }
