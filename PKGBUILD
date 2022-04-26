@@ -1,7 +1,7 @@
 # Maintainer: fossdd <fossdd@tutanota.com>
 pkgname=muon-meson-git
 _pkgname=${pkgname%-meson-git}
-pkgver=r1502.d69f0cc93af60cb73ba7
+pkgver=r1514.a46e98d31672ca3732cc
 pkgrel=1
 pkgdesc='meson implementation in C'
 url='https://sr.ht/~lattis/muon'
