@@ -2,7 +2,7 @@
 
 pkgname=zspotify
 pkgver=0.5.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A Spotify downloader needing only a python interpreter and ffmpeg."
 arch=("x86_64")
 url="https://github.com/afkcodes/zspotify"
