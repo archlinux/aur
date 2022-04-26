@@ -53,7 +53,7 @@ prepare() {
 
 pkgver() {
 	cd "$srcdir/$_sourcedirectory/"
-	printf "%s.r%s.%s" "$(node -p 'require("./package.json").version' | sed -e 's/-/./g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "%s.r%s.%s" "$(python -c "import sys, json; print(json.load(sys.stdin)['version'])" < package.json | sed -e 's/-/./g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
