@@ -5,8 +5,8 @@
 # Contributor: Andrew Simmons <andrew.simmons@gmail.com>
 
 pkgname=xmltv
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.2
+pkgrel=1
 pkgdesc="Set of utilities to download tv listings and format them in xml"
 arch=('any')
 url="http://xmltv.org/wiki/"
@@ -67,7 +67,7 @@ optdepends=('perl-file-chdir: testing grabbers'
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/XMLTV/${pkgname}/archive/v${pkgver}.tar.gz"
 )
-sha256sums=('2dd2cfb3571ca01afb2ddd568d0d6b1a8c5684fd2cbe11729d72aea3a20db5d9')
+sha256sums=('2ca763fcb8735d66a10bde005f7cf993436e6e5d4b6748ef9dca6626d5f43255')
 
 build() {
   cd "$pkgname-$pkgver"
