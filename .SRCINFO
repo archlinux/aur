@@ -1,11 +1,23 @@
 pkgbase = unicon
 	pkgdesc = A modern descendant of the Icon programming language.
-	pkgver = latest
-	pkgrel = 2
-	url = https://sourceforge.net/projects/unicon/
+	pkgver = 13.2
+	pkgrel = 1
+	url = https://github.com/uniconproject/unicon/
 	arch = x86_64
-	license = GPLv2
-	makedepends = subversion
+	license = GPL2
+	makedepends = git
+	depends = freetype2
+	depends = glu
+	depends = libjpeg-turbo
+	depends = libnsl
+	depends = libogg
+	depends = libvorbis
+	depends = libxft
+	depends = openal
+	depends = sdl
+	depends = unixodbc
+	conflicts = icon
+	source = unicon-13.2.tar.gz::https://github.com/uniconproject/unicon/archive/refs/tags/13.2.tar.gz
+	sha256sums = 0d0be976f12e3cc3067a4949d8f8a7e4a95368dfd015c43c2c76bc4f83fd0039
 
 pkgname = unicon
-
