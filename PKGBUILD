@@ -11,9 +11,8 @@ url="https://github.com/dgraziotin/mbpfan"
 license=('GPL3')
 makedepends=('git')
 provides=('mbpfan')
-source=("$pkgname"::'git+https://github.com/dgraziotin/mbpfan.git' 'mbpfan.install')
-md5sums=('SKIP' '750a90c1ff128d9b7eafcdd765d3595b')
-install='mbpfan.install'
+source=("$pkgname"::'git+https://github.com/dgraziotin/mbpfan.git')
+md5sums=('SKIP')
 backup=('etc/mbpfan.conf')
 
 pkgver(){
