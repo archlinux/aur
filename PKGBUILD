@@ -1,13 +1,13 @@
 # Maintainer: coldbug <coldBug@e.mail.de>
 _pkgbase=python-netfilterqueue
 pkgname=python-netfilterqueue-git
-pkgver=r68.ec2ae29
-pkgrel=2
+pkgver=r100.0bb948d
+pkgrel=1
 pkgdesc="Python 3.x for libnetfilter_queue."
 arch=('any')
 url="https://github.com/kti/python-netfilterqueue"
 license=("GPL2")
-depends=('python' 'libnetfilter_queue')
+depends=('python' 'cython' 'libnetfilter_queue')
 source=("${_pkgbase}::git+https://github.com/kti/python-netfilterqueue")
 sha256sums=('SKIP')
 
