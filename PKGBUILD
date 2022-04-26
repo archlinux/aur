@@ -5,12 +5,12 @@
 pkgbase='concourse-git'
 pkgname=('concourse-git' 'concourse-fly-cli-git')
 pkgver=v7.7.0.r157.gd6413ad91
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://concourse-ci.org'
 license=('Apache-2.0')
 source=("git+https://github.com/concourse/concourse.git")
-makedepends=('go-pie' 'yarn')
+makedepends=('go' 'yarn')
 sha256sums=('SKIP')
 
 pkgver() {
