@@ -1,7 +1,7 @@
 # Maintainer: database64128 <free122448@hotmail.com>
 
 pkgname=swgp-go
-pkgver=1.0.1
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Simple WireGuard proxy with minimal overhead for WireGuard traffic"
 arch=('x86_64' 'aarch64')
@@ -15,9 +15,9 @@ source=(
     'config.json'
 )
 b2sums=(
-    'd0ac364cff8ee136ab648597ae848335b464a172732226ca41a53e84924483d33e3060a2cbb8fd5caa8f3c133713353eb9a00a7b3b85ee29436025744348d841'
+    'e5debf655565c6cf010cc6ac35e4dab2509bbbcb91ce1d8ea3ab7cea8ef0a94c5e94e61da772fa8313240c1e347ece4aed8d08d40890302688f048f786e959f5'
     '13a0ddcad6138016956c8918873a6722b539367991bcb16530001237a18c0abe4f7a20c7043fb617f9e4cb00d753a5eda3ece16892d5eb478ad5f78b47a46650'
-    '6aa121a87edffbb95d350925b6f2edf54af59248cde8d99d332cc6ad912d55998f8ff9f52c626f5c4baeac80e35db952d96a5c90382ce3da4557271d7cff9101'
+    '6b8c7436b99dcdcfe706230cd1d30cbdeb3b70cf4d6815400a35c8a0c728edfb2ce5908057d7a4e0652daf2e161f8382b6035336bc43c27c23fbc0a369f769f1'
 )
 
 build() {
