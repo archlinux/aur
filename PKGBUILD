@@ -3,7 +3,7 @@
 pkgname=vala-language-server
 _pkgver=0.48.4
 pkgver=${_pkgver/-/+}
-pkgrel=1
+pkgrel=2
 pkgdesc='Language Server for Vala'
 arch=('x86_64')
 url="https://github.com/prince781/vala-language-server"
@@ -20,6 +20,8 @@ sha256sums=('9de5d476a3d3b5d4f22f50af6c2417abd44066ab4231cbc00628e9fdab735100')
 build() {
     cd "$pkgname-$_pkgver"
     arch-meson build
+    # disable gnome-builder plugin
+    meson configure -Dbuilder_abi=42.1 build
     ninja -C build
 }
  
