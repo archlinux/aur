@@ -2,7 +2,7 @@
 # Contributor: MCMic <come@chilliet.eu>
 
 pkgname=wyrmsun
-pkgver=5.3.4
+pkgver=5.3.5
 pkgrel=1
 pkgdesc="Real-time strategy game based on history, mythology and fiction"
 arch=('i686' 'x86_64')
@@ -17,18 +17,9 @@ depends=(
 )
 makedepends=('boost' 'cmake' 'glu')
 source=("wyrmsun-${pkgver}.tar.gz::https://github.com/Andrettin/Wyrmsun/archive/v${pkgver}.tar.gz"
-        "wyrmgus-${pkgver}.tar.gz::https://github.com/Andrettin/Wyrmgus/archive/v${pkgver}.tar.gz"
-        '5_3_4_source_location.patch')
-md5sums=('ce43520e9b2020fa1c341df4a8d4272d'
-         '7b578710922a10b807b3b56d144a76d6'
-         '530da5bea60ef115e66a7c491d99f9ce')
-
-prepare() {
-  cd "${srcdir}/Wyrmgus-${pkgver}"
-
-  # https://github.com/Andrettin/Wyrmgus/issues/179
-  patch --forward --strip=1 --input="${srcdir}/5_3_4_source_location.patch"
-}
+        "wyrmgus-${pkgver}.tar.gz::https://github.com/Andrettin/Wyrmgus/archive/v${pkgver}.tar.gz")
+md5sums=('f519b26169499e52517196b24813d2ac'
+         '73b2e1bf4e29c0663af23d025c104f7c')
 
 build() {
   cd "${srcdir}/Wyrmgus-${pkgver}"
