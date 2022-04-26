@@ -1,8 +1,8 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=invader
-pkgver=0.49.1
-_commit=c8d8aaa9b8739605cfb7ff759088916dcd6da28d
+pkgver=0.50.1
+_commit=2f677cec7e434d21af31a660a77d4e86dcd92061
 pkgrel=1
 pkgdesc="An open source toolkit for creating maps and assets for Halo: Combat Evolved"
 depends=('libtiff' 'libarchive' 'libsquish' 'flac' 'freetype2' 'libsamplerate'
@@ -12,7 +12,7 @@ arch=('x86_64')
 url="https://invader.opencarnage.net"
 license=('GPL3')
 source=("git+https://github.com/SnowyMouse/${pkgname}.git#commit=$_commit"
-        "git+https://github.com/SnowyMouse/hiat.git")
+        "git+https://github.com/SnowyMouse/riat.git")
 sha256sums=('SKIP'
             'SKIP')
 
@@ -20,7 +20,7 @@ prepare() {
     mkdir -p build
     cd invader
     git submodule init
-    git config submodule.hiat.url "${srcdir}/hiat"
+    git config submodule.riat.url "${srcdir}/riat"
     git submodule update
 }
 
@@ -35,7 +35,4 @@ build() {
 package() {
     cd "${srcdir}"/build
     ninja install
-
-    # Install HIAT library.
-    install -Dm644 libhiatc.so ${pkgdir}/usr/lib/libhiatc.so
 }
