@@ -3,7 +3,7 @@
 _pkgname=cwtch
 pkgname=$_pkgname-bin
 
-_pkgver=1.6.2
+_pkgver=1.7.0
 pkgver="${_pkgver//-/_}"
 pkgrel=1
 
@@ -16,8 +16,8 @@ license=('MIT')
 optdepends=(
     'tor: use system tor instead of packaged'
 )
-source_x86_64=("$url/releases/$_pkgname-v${_pkgver}/$_pkgname-v$_pkgver.tar.gz")
-sha512sums_x86_64=('6417943d2930e8c6cad43c1c6e5f8392d96b489c23af945e9e51d580e93f7f5d101113b860875825b0a40762fa6cdf56b9b8e741afc51c715a987184ff42e19f')
+source_x86_64=("$url/releases/$_pkgname-v${_pkgver%.0}/$_pkgname-v$_pkgver.tar.gz")
+sha512sums_x86_64=('5537e44d96ae91619d2524a25dd2403f1604cc06e095f7a36d61267943c0f8ed8227e806d10baf5a7cf3aa79f850ba72af975ad49f258fe2b9b4463d7a092360')
 
 package() {
     cd "$srcdir/$_pkgname"
