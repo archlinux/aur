@@ -1,0 +1,17 @@
+pkgbase = zed
+	pkgdesc = Tooling for super-structured data
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://zed.brimdata.io/
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	options = !lto
+	source = zed::git+https://github.com/brimdata/zed#commit=2cc33836b61dc10d7a1988e3381b09e7b7c2e1ff
+	md5sums = SKIP
+
+pkgname = zed
+
+pkgname = zq
