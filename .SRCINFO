@@ -1,6 +1,6 @@
 pkgbase = rocketchat-client-bin
 	pkgdesc = The Ultimate Open Source Web Chat Platform
-	pkgver = 3.8.4
+	pkgver = 3.8.5
 	pkgrel = 1
 	url = https://rocket.chat
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = rocketchat-client-bin
 	optdepends = libindicator-gtk3: For the system tray icon
 	provides = rocketchat-desktop
 	conflicts = rocketchat-desktop
-	source = https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/3.8.4/rocketchat-3.8.4-linux-amd64.deb
+	source = https://github.com/RocketChat/Rocket.Chat.Electron/releases/download/3.8.5/rocketchat-3.8.5-linux-amd64.deb
 	source = LICENSE
-	sha256sums = 46346df8a8b43f24a5ab5c5869230da4beea40637c0e667873202a259cb1ae51
+	sha256sums = 9ca11f75b1df2e3338c3bf61cd074a882e3e213dd65dd0dd9579337a508aa8ec
 	sha256sums = 362e3ce451a4aa3e51e5728a2102b01135827d3a4af0a450b672c54540dec5c5
 
 pkgname = rocketchat-client-bin
