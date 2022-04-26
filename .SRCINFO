@@ -1,0 +1,15 @@
+pkgbase = phosg-git
+	pkgdesc = C++ helpers library for some common tasks
+	pkgver = r302.b984d1b
+	pkgrel = 1
+	url = https://github.com/fuzziqersoftware/phosg
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	makedepends = python
+	provides = phosg
+	source = git+https://github.com/fuzziqersoftware/phosg.git#commit=b984d1b4903ef1ef0c6ac539ec5c4a63924cc86b
+	sha256sums = SKIP
+
+pkgname = phosg-git
