@@ -1,7 +1,7 @@
 # Maintainer: benwaffle <vala@iofel.me>
 # Maintainer: Prince781 <princetonferro@gmail.com>
 pkgname=vala-language-server-git
-pkgver=0.48.4.r1.3bc375fc
+pkgver=0.48.4.r44.484465d6
 pkgrel=1
 pkgdesc='Language Server for Vala'
 arch=('x86_64')
@@ -26,6 +26,8 @@ pkgver() {
 build() {
     cd "$srcdir/${pkgname%-git}"
     arch-meson build
+    # disable gnome-builder plugin
+    meson configure -Dbuilder_abi=42.1 build
     ninja -C build
 }
 
