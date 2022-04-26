@@ -1,0 +1,19 @@
+pkgbase = perl-critic-strictersubs
+	pkgdesc = Perl::Critic plugin for stricter subroutine checks
+	pkgver = 0.06
+	pkgrel = 1
+	url = https://metacpan.org/release/Perl-Critic-StricterSubs
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-file-pathlist>=0
+	depends = perl-list-moreutils>=0
+	depends = perl-module-build>=0.4
+	depends = perl-ppi>=0
+	depends = perl-perl-critic>=0
+	options = !emptydirs
+	source = https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/Perl-Critic-StricterSubs-0.06.tar.gz
+	md5sums = ebbb115e701d01222836611befa9703d
+	sha512sums = f5f918a81f415d80d0063f66585fec552fc76f084bc9605f938bbc6f89dbfce696b5596caaf5b0224d47e5eecb42aee7c9c5e7bc41e0a2c9ed6413dca2104506
+
+pkgname = perl-critic-strictersubs
