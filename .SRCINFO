@@ -1,6 +1,6 @@
 pkgbase = php-phalcon-git
 	pkgdesc = High performance, full-stack PHP framework delivered as a C extension. Git package.
-	pkgver = 4.1.0
+	pkgver = 4.1.3
 	pkgrel = 1
 	url = https://phalcon.io/
 	arch = i686
@@ -23,4 +23,3 @@ pkgbase = php-phalcon-git
 	sha1sums = ed25858fa5e997332d5bbed453f54ba3c8659b13
 
 pkgname = php-phalcon-git
-
