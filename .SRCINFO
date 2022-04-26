@@ -1,0 +1,14 @@
+pkgbase = thokr-git
+	pkgdesc = A sleek typing tui written in rust
+	pkgver = v0.1.0.r1.g84ff078
+	pkgrel = 1
+	url = https://github.com/coloradocolby/thokr
+	arch = any
+	license = MIT
+	makedepends = cargo
+	makedepends = git
+	provides = mow
+	source = git+https://github.com/coloradocolby/thokr.git
+	md5sums = SKIP
+
+pkgname = thokr-git
