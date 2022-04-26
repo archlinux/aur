@@ -2,7 +2,7 @@
 
 pkgname=protonvpn-cli-ng
 pkgver=2.2.11
-pkgrel=1
+pkgrel=2
 pkgdesc="A Community Linux CLI for ProtonVPN."
 arch=("any")
 url="https://github.com/ProtonVPN/linux-cli-community"
@@ -10,8 +10,8 @@ license=("GPLv3")
 depends=("openvpn" "python" "dialog" "python-pythondialog" "python-setuptools"
 	"python-docopt" "python-requests" "python-jinja" "python-distro")
 conflicts=("protonvpn-cli")
-source=("https://github.com/ProtonVPN/linux-cli-community/archive/v${pkgver}.tar.gz")
-source=("linux-cli-community-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+source=("https://github.com/ProtonVPN/linux-cli-community/archive/refs/tags/v${pkgver}.tar.gz")
+source=("linux-cli-community-${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
 sha256sums=('2fc643762e9156928b706c31a7826427a7ca12c7ae4cdfb656746cd2de3af66b')
 
 _protonvpn_src_dir="linux-cli-community-${pkgver}"
