@@ -1,0 +1,15 @@
+pkgbase = hare-specification
+	pkgdesc = Specification for the Hare programming language
+	pkgver = r377.ef58ba1
+	pkgrel = 1
+	url = https://git.sr.ht/~sircmpwn/hare-specification
+	arch = any
+	license = custom:CC-BY-ND
+	makedepends = git
+	makedepends = texlive-core
+	makedepends = texlive-latexextra
+	makedepends = texlive-fontsextra
+	source = hare-specification::git+https://git.sr.ht/~sircmpwn/hare-specification#commit=ef58ba16be6a77fd01d4ffc19ad59b9b9cbd600b
+	md5sums = SKIP
+
+pkgname = hare-specification
