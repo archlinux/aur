@@ -2,14 +2,14 @@
 # Contributor: Hannes Eichblatt <aur@hanneseichblatt.de>
 _base=SecLists
 pkgname=${_base,,}
-pkgver=2022.1
+pkgver=2022.2
 pkgrel=1
 pkgdesc="A collection of multiple types of lists used during security assessments, collected in one place."
 arch=(any)
 url="https://github.com/danielmiessler/${_base}"
 license=(MIT)
 source=(${url}/archive/${pkgver}.tar.gz)
-sha512sums=('0532d2a3179d5c7e82f4a6aaecbecb8071655c8639b4c4243b5b8aa79c0762828c576c935be42148c9ad813a8ac11ea2a208c23afcb6925a398ea21e9378b5c7')
+sha512sums=('d5c4a6f4d62c3179754de046ab5b0a10ee1b089b0c7503f236ca92aef320eabf3bf13825e3b9d13098461563ba25945af5bea302677d517b8401a47f78c2f63f')
 
 prepare() {
   cd ${_base}-${pkgver}
