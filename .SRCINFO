@@ -1,15 +1,15 @@
 pkgbase = graal-nodejs-jdk17-bin
 	pkgdesc = GraalVM-based, ployglot-enabled implementation of Node.js, Java 17 version
-	pkgver = 22.0.0.2
+	pkgver = 22.1.0
 	pkgrel = 1
 	url = https://github.com/oracle/graaljs
 	arch = x86_64
 	arch = aarch64
 	license = custom
 	depends = jdk17-graalvm-bin
-	source_x86_64 = https://github.com/oracle/graaljs/releases/download/vm-22.0.0.2/nodejs-installable-svm-java17-linux-amd64-22.0.0.2.jar
-	sha256sums_x86_64 = 7c2c7b785eb4038d2b8f4f596e78c371b0465418737252ceaed711fb044459b7
-	source_aarch64 = https://github.com/oracle/graaljs/releases/download/vm-22.0.0.2/nodejs-installable-svm-java17-linux-aarch64-22.0.0.2.jar
-	sha256sums_aarch64 = 81043c31373bd062dcd73693d14dff67de83cf214f0eff451e0a32b713967841
+	source_x86_64 = https://github.com/oracle/graaljs/releases/download/vm-22.1.0/nodejs-installable-svm-java17-linux-amd64-22.1.0.jar
+	sha256sums_x86_64 = 1c9a2324c96a6a0dfe8f966ce3a7f777702fb88e2802101f6aeb44c879bc5605
+	source_aarch64 = https://github.com/oracle/graaljs/releases/download/vm-22.1.0/nodejs-installable-svm-java17-linux-aarch64-22.1.0.jar
+	sha256sums_aarch64 = 33b3bbf6a527720a5e6939ce234f2488ca0e6c9469ac202c3c36bfd25d6a8b16
 
 pkgname = graal-nodejs-jdk17-bin
