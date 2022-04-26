@@ -1,0 +1,18 @@
+pkgbase = wake-build-git
+	pkgdesc = WAKE build system writen in rust
+	pkgver = r15.8b86501
+	pkgrel = 1
+	url = https://github.com/mrquantumoff/wake
+	arch = x86_64
+	groups = mrquantumoff
+	license = BSD 2 Clause
+	makedepends = git
+	makedepends = cargo
+	depends = bash
+	optdepends = git
+	provides = wake-build
+	conflicts = wake-build
+	source = git+https://github.com/mrquantumoff/wake.git
+	md5sums = SKIP
+
+pkgname = wake-build-git

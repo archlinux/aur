@@ -1,0 +1,5 @@
+*.pkg.tar.zst
+*.tar.gz
+[Ss]rc
+[Pp]kg
+qfetch/
