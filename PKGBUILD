@@ -1,7 +1,7 @@
 # Maintainer: jzbor <zborof at posteo dot de>
 pkgname=pademelon-desktop
-pkgver=1.0.4
-pkgrel=1
+pkgver=1.1.0
+pkgrel=2
 pkgdesc="Providing a modular desktop environment with pademelon"
 arch=(x86_64)
 url="https://github.com/jzbor/pademelon"
@@ -29,8 +29,7 @@ depends=(
 makedepends=(pkgconf)
 checkdepends=()
 optdepends=(
-    'matcha-gtk-theme: a fitting GTK theme - Matcha-dark-aliz'
-    'numix-circle-icon-theme: an icon theme that fits nicely'
+    'blueman: bluetooth support including applet'
     'pipewire: sound server - very good alternative to pulseaudio'
     'pipewire-pulse: pulse compatibility layer for pipewire'
     'sxhkd: hotkey daemon'
@@ -41,9 +40,14 @@ conflicts=()
 replaces=()
 backup=()
 options=()
-source=()
+source=(pademelon.conf::https://raw.githubusercontent.com/jzbor/pademelon/$pkgver/pademelon.conf)
 noextract=()
+sha512sums=('260b08e697ff13547778f53d9017c59c085443ca1dc8d5144b5c651ca9566df399df9a899e1affe7471d11d1a50e63f6a8c61fdb5167d4268904adf45a17e7bf')
 
 validpgpkeys=()
+
+package() {
+    install -Dm644 pademelon.conf "${pkgdir}/etc/pademelon/pademelon.conf"
+}
 
 
