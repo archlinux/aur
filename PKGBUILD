@@ -6,7 +6,7 @@
 pkgname=vertex-maia-icon-theme
 _folder=vertex-maia-icon-themes
 pkgver=20160526
-pkgrel=1
+pkgrel=2
 pkgdesc="Icons matching Vertex Maia themes, based on Menda Circle (Mirrored onto AUR)"
 _commit=31e46d7297a3bc729fbe4f40e75692fe764aed27
 arch=('any')
