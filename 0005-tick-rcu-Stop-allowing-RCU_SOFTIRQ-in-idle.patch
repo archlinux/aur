@@ -1,4 +1,4 @@
-From 894c674f70127b8fe02878ada383f534a1c63beb Mon Sep 17 00:00:00 2001
+From 6c03ea3961fd475bd19ef61665c58006c1e86d72 Mon Sep 17 00:00:00 2001
 From: Frederic Weisbecker <frederic@kernel.org>
 Date: Tue, 8 Feb 2022 17:16:34 +0100
 Subject: [PATCH 5/9] tick/rcu: Stop allowing RCU_SOFTIRQ in idle
@@ -46,7 +46,7 @@ index 9367f1cb2e3c..9613326d2f8a 100644
  /* map softirq index to softirq name. update 'softirq_to_name' in
   * kernel/softirq.c when adding a new softirq.
 diff --git a/kernel/time/tick-sched.c b/kernel/time/tick-sched.c
-index 566ad5bd83e9..2d76c91b85de 100644
+index 4c62fa0f70f1..3506f6ed790c 100644
 --- a/kernel/time/tick-sched.c
 +++ b/kernel/time/tick-sched.c
 @@ -999,6 +999,45 @@ static void tick_nohz_full_update_tick(struct tick_sched *ts)
@@ -115,5 +115,5 @@ index 566ad5bd83e9..2d76c91b85de 100644
  	if (tick_nohz_full_enabled()) {
  		/*
 -- 
-2.35.1
+2.36.0
 

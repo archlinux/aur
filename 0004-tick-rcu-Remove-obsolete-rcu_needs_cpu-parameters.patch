@@ -1,4 +1,4 @@
-From eac08058c1c52741e03fd82c98db336a5f4190da Mon Sep 17 00:00:00 2001
+From d2f458dfd95628306f035b1080255499dc0dc368 Mon Sep 17 00:00:00 2001
 From: Frederic Weisbecker <frederic@kernel.org>
 Date: Tue, 8 Feb 2022 17:16:33 +0100
 Subject: [PATCH 4/9] tick/rcu: Remove obsolete rcu_needs_cpu() parameters
@@ -62,7 +62,7 @@ index 73a4c9d07b86..5dae0da879ae 100644
  		!rcu_rdp_is_offloaded(this_cpu_ptr(&rcu_data));
  }
 diff --git a/kernel/time/tick-sched.c b/kernel/time/tick-sched.c
-index c89f50a7e690..566ad5bd83e9 100644
+index 0578c9301b17..4c62fa0f70f1 100644
 --- a/kernel/time/tick-sched.c
 +++ b/kernel/time/tick-sched.c
 @@ -785,7 +785,7 @@ static inline bool local_timer_softirq_pending(void)
@@ -97,5 +97,5 @@ index c89f50a7e690..566ad5bd83e9 100644
  
  	/*
 -- 
-2.35.1
+2.36.0
 
