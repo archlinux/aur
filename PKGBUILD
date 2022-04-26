@@ -2,7 +2,7 @@
 # Contributor: KspLite <ksplite@outlook.com>
 pkgname=64gram-desktop
 _pkgname=64Gram
-pkgver=1.0.32
+pkgver=1.0.33
 pkgrel=1
 epoch=1
 pkgdesc='Unofficial desktop version of Telegram messaging app'
@@ -18,7 +18,7 @@ optdepends=('webkit2gtk: embedded browser features'
             'xdg-desktop-portal: desktop integration')
 source=("https://github.com/TDesktop-x64/tdesktop/releases/download/v${pkgver}/${_pkgname}-${pkgver}-full.tar.gz"
         "block-sponsored_messages.patch")
-sha512sums=('dcbd44fc89fb19de459d0d28831257a5d727d392a187ab44968dccb172455fd25e6fe34e4bb4c115255364f4baf9a58002cb6d7e2a16c8ef9aaf17ae6806a4d3'
+sha512sums=('ca473b8bf489f2711f4fba1f8bceb0fce85263c70d60500f7ef44b847ff5093943fec68f2be0b36115eacd8e72a8e8383b992ca561c916140a1d5d603fee2064'
             'c662524ca4f4a8df021ee94696d84896ed9a271df321933942806dda4544ea25f51a650ec8b4fc72f9a2219ea54cbfaf37b9604124f7263c86f74f1d647587ae')
 conflicts=("telegram-desktop" "tdesktop-x64")
 replaces=("tdesktop-x64")
