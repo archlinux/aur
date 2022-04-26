@@ -1,0 +1,13 @@
+pkgbase = blender-lts-bin
+	pkgdesc = LTS blender version
+	pkgver = 2.93.9
+	pkgrel = 1
+	url = https://www.blender.org
+	arch = x86_64
+	license = GPL
+	source = https://mirror.clarkson.edu/blender/release/blender/release/Blender2.93/blender-2.93.9-linux-x64.tar.xz
+	source = blender.sh
+	b2sums = 6a8f81dd48ab0a29e95340c3629062e32ebe3a3a62a6bba2fbc5b962a8fd04515f734f72a56559f79fce344f272cf122a5a62ae1172bf472d7885c9bfbab164b
+	b2sums = 903039ab42d250063286fa6a5e3687e84c9c6018a0e6654423e7649542d8394c19e6ed8ccaa549bd373ad66bc8e5b7b65203781cde26420f4e00183935e766f3
+
+pkgname = blender-lts-bin
