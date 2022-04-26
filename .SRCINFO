@@ -1,12 +1,12 @@
 pkgbase = graalpython-jdk11-bin
 	pkgdesc = GraalVM-based, high-performance implementation of the Python language (early development), Java 11 version
-	pkgver = 22.0.0.2
+	pkgver = 22.1.0
 	pkgrel = 1
 	url = https://github.com/graalvm/graalpython
 	arch = x86_64
 	license = custom
 	depends = jdk11-graalvm-bin
-	source = https://github.com/graalvm/graalpython/releases/download/vm-22.0.0.2/python-installable-svm-java11-linux-amd64-22.0.0.2.jar
-	sha256sums = 2f01d1bbc2ed2c507952d8ceaab1cb2176fc67e2d8c4b3bf5864e8d930c60c55
+	source = https://github.com/graalvm/graalpython/releases/download/vm-22.1.0/python-installable-svm-java11-linux-amd64-22.1.0.jar
+	sha256sums = cec193b0647df8f8e95f86a34e296fbf1bab5c8a922cd009e2b7069d48022862
 
 pkgname = graalpython-jdk11-bin
