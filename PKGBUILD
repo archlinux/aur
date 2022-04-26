@@ -8,11 +8,11 @@ arch=('any')
 url="https://github.com/ChordPro/${_pkgname}"
 license=('Artistic2.0')
 provides=("${_pkgname}")
-depends=(git perl-app-packager perl-string-interpolate-named perl-font-ttf perl-image-info perl-io-string perl-json-pp perl-pdf-api2 perl-file-loadlines perl-pod-parser perl-text-layout)
-optdepends=()
+depends=(git perl-app-packager perl-string-interpolate-named perl-font-ttf perl-image-info perl-io-string perl-json-pp perl-pdf-api2 perl-file-loadlines perl-pod-parser perl-text-layout perl-file-homedir)
+optdepends=(perl-wx)
 options=('!emptydirs' '!purge')
 source=("git+${url}.git")
-md5sums=(SKIP)
+md5sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
