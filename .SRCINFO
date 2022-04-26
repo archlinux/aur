@@ -1,0 +1,12 @@
+pkgbase = python-cq_warehouse
+	pkgdesc = A cadquery parametric part collection
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/gumyr/cq_warehouse
+	arch = x86_64
+	license = Apache
+	depends = python-cadquery
+	source = python-cq_warehouse-0.6.0.tar.gz::https://github.com/gumyr/cq_warehouse/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 3f928eebde439b3c7c161059bb8a8442cf243c4f401916e4bda6ec97099768dc
+
+pkgname = python-cq_warehouse
