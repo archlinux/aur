@@ -104,6 +104,9 @@ build() {
     pnpm run package
     popd
 
+	# Make sure the internal version of electron-builder is being used by prefixing it to the $PATH
+	export PATH=./node_modules/.bin/:$PATH
+
 	# Run the electron build script
 	NODE_ENV='production' $BASE_CMD run build -- --dir
 }
