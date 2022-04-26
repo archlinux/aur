@@ -1,6 +1,6 @@
 # Maintainer: zehkira <(same as my name) at pm me>
 pkgname="myuzi"
-pkgver="v0.2.1"
+pkgver="v0.3.0"
 pkgrel=1
 pkgdesc="Spotify alternative with no ads, payments or accounts"
 arch=("any")
