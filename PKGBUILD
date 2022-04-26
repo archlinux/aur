@@ -8,9 +8,11 @@ url="https://github.com/ddvk/rmfakecloud"
 license=('AGPL3')
 depends=(
   'nodejs'
+)
+makedepends=(
+  'go'
   'yarn'
 )
-makedepends=('go')
 source=(
   "${pkgname}-${pkgver}.tar.gz::https://github.com/ddvk/rmfakecloud/archive/v${pkgver}.tar.gz"
   "rmfakecloud.service"
