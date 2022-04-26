@@ -1,12 +1,13 @@
 pkgbase = resolvconf-symlink-systemd-uplink
-	pkgdesc = resolvconf symlink for systemd-resolved running in uplink mode
+	pkgdesc = Make /etc/resolv.conf a symlink to a runtime-writable location (systemd-resolved uplink mode version)
 	pkgver = 1
-	pkgrel = 1
+	pkgrel = 2
 	install = resolvconf-symlink-systemd-uplink.install
 	arch = any
 	license = custom:CC0
 	depends = systemd
 	conflicts = resolvconf-symlink
+	conflicts = resolvconf-symlink-systemd-stub
 	source = resolvconf-symlink-systemd-uplink.hook
 	source = LICENSE
 	sha256sums = 2a83ac62d982663e4044b49f1f8d8f7ef8b9f4772ffbd10ebebf3ca9a3fd007b

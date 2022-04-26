@@ -2,12 +2,12 @@
 
 pkgname=resolvconf-symlink-systemd-uplink
 pkgver=1
-pkgrel=1
-pkgdesc="resolvconf symlink for systemd-resolved running in uplink mode"
+pkgrel=2
+pkgdesc="Make /etc/resolv.conf a symlink to a runtime-writable location (systemd-resolved uplink mode version)"
 arch=('any')
 license=('custom:CC0')
 depends=('systemd')
-conflicts=('resolvconf-symlink')
+conflicts=('resolvconf-symlink' 'resolvconf-symlink-systemd-stub')
 install="${pkgname}.install"
 source=("${pkgname}.hook"
         "LICENSE")
