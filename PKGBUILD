@@ -8,7 +8,7 @@ pkgdesc='Constructing Hardware in a Scala Embedded Language'
 arch=('any')
 url='https://chisel.eecs.berkeley.edu/'
 license=('BSD')
-depends=('java-environment' 'verilator')
+depends=('java-environment=11' 'verilator')
 makedepends=('sbt' 'graphviz')
 source=("https://github.com/freechipsproject/chisel3/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
 b2sums=('60dc92d5ade444fd491f69250d0036ece7b5adea3ef4b7a70abab332200b18df320bf9d09a3b430a8f34ab3bcc974818a7e1ef8d9a65793d51fc09ffd18f787e')

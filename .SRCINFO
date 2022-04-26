@@ -7,7 +7,7 @@ pkgbase = chisel
 	license = BSD
 	makedepends = sbt
 	makedepends = graphviz
-	depends = java-environment
+	depends = java-environment=11
 	depends = verilator
 	source = https://github.com/freechipsproject/chisel3/archive/v3.5.3/chisel-3.5.3.tar.gz
 	b2sums = 60dc92d5ade444fd491f69250d0036ece7b5adea3ef4b7a70abab332200b18df320bf9d09a3b430a8f34ab3bcc974818a7e1ef8d9a65793d51fc09ffd18f787e
