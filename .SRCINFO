@@ -1,0 +1,12 @@
+pkgbase = kodi-addon-kodi-karaoke
+	pkgdesc = Unofficial Kodi Karaoke addon
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/mrfixit2001/plugin.video.kodikaraoke
+	arch = any
+	license = GPL
+	depends = kodi>19.0
+	source = kodikaraoke-1.0.0.tar.gz::https://github.com/mrfixit2001/plugin.video.kodikaraoke/archive/refs/tags/1.0.0.tar.gz
+	sha256sums = 75e3ffa927eb0eb92524d792a20ec0734fb42b82305ce36f5d19449225eef502
+
+pkgname = kodi-addon-kodi-karaoke
