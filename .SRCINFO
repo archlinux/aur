@@ -1,0 +1,14 @@
+pkgbase = kvantum-theme-libadwaita-git
+	pkgdesc = Libaidwaita theme for Kvantum
+	pkgver = r12.4f52b42
+	pkgrel = 1
+	url = https://github.com/GabePoel/KvLibadwaita
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = kvantum
+	provides = libaidwaita-kvantum
+	source = git+https://github.com/GabePoel/KvLibadwaita.git
+	sha256sums = SKIP
+
+pkgname = kvantum-theme-libadwaita-git
