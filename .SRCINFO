@@ -21,7 +21,7 @@ pkgbase = core-lightning
 	optdepends = postgresql-libs: Libraries for use with PostgreSQL
 	optdepends = shellcheck: Shell script analysis
 	optdepends = valgrind: Tool for memory management
-	conflicts = c-lightning-git
+	conflicts = core-lightning-git
 	source = git+https://github.com/ElementsProject/lightning.git
 	sha512sums = SKIP
 

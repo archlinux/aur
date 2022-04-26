@@ -20,7 +20,7 @@ optdepends=("cppcheck: Static C/C++ code analysis"
 "postgresql-libs: Libraries for use with PostgreSQL"
 "shellcheck: Shell script analysis"
 "valgrind: Tool for memory management")
-conflicts=("c-lightning-git")
+conflicts=("core-lightning-git")
 source=("git+${url}.git")
 sha512sums=("SKIP")
 
