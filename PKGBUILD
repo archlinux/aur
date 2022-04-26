@@ -3,15 +3,16 @@
 java_=17
 pkgname_=fastr
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=22.0.0.2
+pkgver=22.1.0
 pkgrel=1
 pkgdesc="GraalVM-based, high-performance implementation of the R language (Java ${java_} version)"
 arch=('x86_64')
 url='https://github.com/oracle/fastr'
 license=('GPL3')
-depends=("jdk${java_}-graalvm-bin")
+depends=("jdk${java_}-graalvm-bin"
+         'zlib')
 source=("https://github.com/oracle/$pkgname_/releases/download/vm-${pkgver}/r-installable-java${java_}-linux-amd64-${pkgver}.jar")
-sha256sums=('5973ad995d60e46ba0c704addc3343438ce2810a85a03034724b7658f58ebfee')
+sha256sums=('857fe50bbc22ea34fd93950ec94f82836f8c0e7a926307a9223bc94a69941900')
 
 package() {
     local file eq permissions mode name target
@@ -50,6 +51,9 @@ package() {
         mkdir -p -- "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/$(dirname -- "$name")"
         ln -s -- "$target" "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/$name"
     done < META-INF/symlinks
+
+    # already in jdk${java_}-graalvm-bin package
+    unlink "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/lib/installer/components/org.graalvm.component"
 
     install -DTm644 LICENSE_FASTR "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
