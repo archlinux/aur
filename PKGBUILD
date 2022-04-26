@@ -3,7 +3,7 @@
 _name=get_version
 pkgname=python-$_name
 pkgver=3.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc='Automatically use the latest “vX.X.X” tag as version in your Python package'
 arch=('any')
 url="https://pypi.org/project/$_name"
@@ -15,7 +15,7 @@ sha256sums=('5901c846518d55d52c1f6f037f5d2433952b46bbf36e38c52f064ae836556343')
 
 build() {
 	cd "$_name-$pkgver"
-	python -m build --wheel --no-isolation --skip-dependency-check  # xlrd < 2 not available on arch
+	python -m build --wheel --no-isolation
 }
 
 package() {

@@ -1,7 +1,7 @@
 pkgbase = python-get_version
 	pkgdesc = Automatically use the latest “vX.X.X” tag as version in your Python package
 	pkgver = 3.5.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/get_version
 	arch = any
 	license = GPL3
