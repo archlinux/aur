@@ -1,7 +1,7 @@
 pkgbase = surface-control
 	pkgdesc = Control various aspects of Microsoft Surface devices from the Command-Line
 	pkgver = 0.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/linux-surface/surface-control
 	arch = x86_64
 	license = MIT
