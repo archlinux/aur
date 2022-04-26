@@ -2,7 +2,7 @@
 
 java_=11
 pkgname="graalwasm-jdk${java_}-bin"
-pkgver=22.0.0.2
+pkgver=22.1.0
 pkgrel=1
 pkgdesc="GraalVM-based, high-performance WebAssembly platform, Java ${java_} version"
 arch=('x86_64'
@@ -12,8 +12,8 @@ license=('custom')
 depends=("jdk${java_}-graalvm-bin")
 source_x86_64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/wasm-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
 source_aarch64=("https://github.com/graalvm/graalvm-ce-builds/releases/download/vm-${pkgver}/wasm-installable-svm-java${java_}-linux-aarch64-${pkgver}.jar")
-sha256sums_x86_64=('c0fdfc40374b70f6f1597dd21660535c813dc5c3948c8a6ea9559a20f4d3fb5e')
-sha256sums_aarch64=('a48470ae391c75cb2805b7fe27cde2c925c0466fdbc0623dfbb67c54f19dbf8c')
+sha256sums_x86_64=('ee53ff3ab0355f58fd20af642312a4a79eeb9696c9a11fcd4ad9a5b96f0b4b23')
+sha256sums_aarch64=('f97c3e3f2e27847f57da0f4550358703a262d06ce224ef28b3e6e7df2a49a1ca')
 
 package() {
     local file eq permissions mode name target
@@ -51,6 +51,9 @@ package() {
         mkdir -p -- "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/$(dirname -- "$name")"
         ln -s -- "$target" "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/$name"
     done < META-INF/symlinks
+
+    # already in jdk${java_}-graalvm-bin package
+    unlink "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/lib/installer/components/org.graalvm.component"
 
     install -DTm644 LICENSE_WASM.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
