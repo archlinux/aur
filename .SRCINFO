@@ -1,9 +1,9 @@
-pkgbase = liberica-jdk-full-bin
+pkgbase = liberica-jdk-17-full-bin
 	pkgdesc = BellSoft builds of OpenJDK are fully certified and 100% open source Java Development Kits (JDKs) for all Java development and production workloads. Full version includes OpenJFX.
 	pkgver = 17.0.3+7
 	pkgrel = 1
 	url = https://bell-sw.com/
-	install = liberica-jdk-full.install
+	install = liberica-jdk-17-full.install
 	arch = aarch64
 	arch = armv7h
 	arch = armv8h
@@ -24,32 +24,32 @@ pkgbase = liberica-jdk-full-bin
 	provides = java-runtime-headless-openjdk=17
 	provides = java-runtime=17
 	provides = java-runtime-openjdk=17
-	provides = liberica-jdk-bin=17.0.3+7
-	provides = liberica-jdk-lite-bin=17.0.3+7
-	provides = liberica-jre-bin=17.0.3+7
-	provides = liberica-jre-full-bin=17.0.3+7
+	provides = liberica-jdk-17-bin=17.0.3+7
+	provides = liberica-jdk-17-lite-bin=17.0.3+7
+	provides = liberica-jre-17-bin=17.0.3+7
+	provides = liberica-jre-17-full-bin=17.0.3+7
 	provides = liberica-jdk-17-full-bin=17.0.3+7
-	backup = etc/liberica-jdk-full/logging.properties
-	backup = etc/liberica-jdk-full/management/jmxremote.access
-	backup = etc/liberica-jdk-full/management/jmxremote.password.template
-	backup = etc/liberica-jdk-full/management/management.properties
-	backup = etc/liberica-jdk-full/net.properties
-	backup = etc/liberica-jdk-full/security/java.policy
-	backup = etc/liberica-jdk-full/security/java.security
-	backup = etc/liberica-jdk-full/security/policy/README.txt
-	backup = etc/liberica-jdk-full/security/policy/limited/default_US_export.policy
-	backup = etc/liberica-jdk-full/security/policy/limited/default_local.policy
-	backup = etc/liberica-jdk-full/security/policy/limited/exempt_local.policy
-	backup = etc/liberica-jdk-full/security/policy/unlimited/default_US_export.policy
-	backup = etc/liberica-jdk-full/security/policy/unlimited/default_local.policy
-	backup = etc/liberica-jdk-full/sound.properties
+	backup = etc/liberica-jdk-17-full/logging.properties
+	backup = etc/liberica-jdk-17-full/management/jmxremote.access
+	backup = etc/liberica-jdk-17-full/management/jmxremote.password.template
+	backup = etc/liberica-jdk-17-full/management/management.properties
+	backup = etc/liberica-jdk-17-full/net.properties
+	backup = etc/liberica-jdk-17-full/security/java.policy
+	backup = etc/liberica-jdk-17-full/security/java.security
+	backup = etc/liberica-jdk-17-full/security/policy/README.txt
+	backup = etc/liberica-jdk-17-full/security/policy/limited/default_US_export.policy
+	backup = etc/liberica-jdk-17-full/security/policy/limited/default_local.policy
+	backup = etc/liberica-jdk-17-full/security/policy/limited/exempt_local.policy
+	backup = etc/liberica-jdk-17-full/security/policy/unlimited/default_US_export.policy
+	backup = etc/liberica-jdk-17-full/security/policy/unlimited/default_local.policy
+	backup = etc/liberica-jdk-17-full/sound.properties
 	source = freedesktop-java.desktop.in
 	source = freedesktop-jconsole.desktop.in
 	source = freedesktop-jshell.desktop.in
-	source = liberica-jdk-full16.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon16.png
-	source = liberica-jdk-full24.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon24.png
-	source = liberica-jdk-full32.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon32.png
-	source = liberica-jdk-full48.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon48.png
+	source = liberica-jdk-17-full16.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon16.png
+	source = liberica-jdk-17-full24.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon24.png
+	source = liberica-jdk-17-full32.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon32.png
+	source = liberica-jdk-17-full48.png::https://hg.openjdk.java.net/jdk/jdk/raw-file/ee1d592a9f53/src/java.desktop/unix/classes/sun/awt/X11/java-icon48.png
 	sha1sums = 19873c53aaf234d215b9892450bfd4e95c13ed7c
 	sha1sums = 5347a8c12c16a29aada0babdfda5dbef236717c0
 	sha1sums = 8a66b7e3c5fa8b2f11ee1dd2b11127f7156cb60b
@@ -66,4 +66,4 @@ pkgbase = liberica-jdk-full-bin
 	source_x86_64 = https://download.bell-sw.com/java/17.0.3+7/bellsoft-jdk17.0.3+7-linux-amd64-full.tar.gz
 	sha1sums_x86_64 = f7bdd20a47b24da337ce11c569f8b5f175cb1bb0
 
-pkgname = liberica-jdk-full-bin
+pkgname = liberica-jdk-17-full-bin

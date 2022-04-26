@@ -5,7 +5,7 @@
 
 # This PKGBUILD adapted from zulu-11-bin
 
-_jdkname=liberica-jdk-full
+_jdkname=liberica-jdk-17-full
 pkgname="${_jdkname}-bin"
 _java_ver=17
 pkgver=${_java_ver}.0.3+7
@@ -24,10 +24,10 @@ provides=(
   "java-runtime-headless-openjdk=${pkgver/.*}"
   "java-runtime=${pkgver/.*}"
   "java-runtime-openjdk=${pkgver/.*}"
-  "liberica-jdk-bin=$pkgver"
-  "liberica-jdk-lite-bin=$pkgver"
-  "liberica-jre-bin=$pkgver"
-  "liberica-jre-full-bin=$pkgver"
+  "liberica-jdk-17-bin=$pkgver"
+  "liberica-jdk-17-lite-bin=$pkgver"
+  "liberica-jre-17-bin=$pkgver"
+  "liberica-jre-17-full-bin=$pkgver"
   "liberica-jdk-17-full-bin=$pkgver"
 )
 install=$_jdkname.install
