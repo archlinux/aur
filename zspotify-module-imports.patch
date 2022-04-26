@@ -1,0 +1,174 @@
+--- a/zspotify/__main__.py
++++ b/zspotify/__main__.py
+@@ -20,8 +20,8 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
+ 
+ import argparse
+ 
+-from app import client
+-from config import CONFIG_VALUES
++from zspotify.app import client
++from zspotify.config import CONFIG_VALUES
+ 
+ if __name__ == '__main__':
+     parser = argparse.ArgumentParser(prog='zspotify',
+--- a/zspotify/album.py
++++ b/zspotify/album.py
+@@ -1,8 +1,8 @@
+-from const import ITEMS, ARTISTS, NAME, ID
+-from termoutput import Printer
+-from track import download_track
+-from utils import fix_filename
+-from zspotify import ZSpotify
++from zspotify.const import ITEMS, ARTISTS, NAME, ID
++from zspotify.termoutput import Printer
++from zspotify.track import download_track
++from zspotify.utils import fix_filename
++from zspotify.zspotify import ZSpotify
+ 
+ ALBUM_URL = 'https://api.spotify.com/v1/albums'
+ ARTIST_URL = 'https://api.spotify.com/v1/artists'
+--- a/zspotify/app.py
++++ b/zspotify/app.py
+@@ -2,15 +2,15 @@ from librespot.audio.decoders import AudioQuality
+ from tabulate import tabulate
+ import os
+ 
+-from album import download_album, download_artist_albums
+-from const import TRACK, NAME, ID, ARTIST, ARTISTS, ITEMS, TRACKS, EXPLICIT, ALBUM, ALBUMS, \
++from zspotify.album import download_album, download_artist_albums
++from zspotify.const import TRACK, NAME, ID, ARTIST, ARTISTS, ITEMS, TRACKS, EXPLICIT, ALBUM, ALBUMS, \
+     OWNER, PLAYLIST, PLAYLISTS, DISPLAY_NAME
+-from playlist import get_playlist_songs, get_playlist_info, download_from_user_playlist, download_playlist
+-from podcast import download_episode, get_show_episodes
+-from termoutput import Printer, PrintChannel
+-from track import download_track, get_saved_tracks
+-from utils import splash, split_input, regex_input_for_urls
+-from zspotify import ZSpotify
++from zspotify.playlist import get_playlist_songs, get_playlist_info, download_from_user_playlist, download_playlist
++from zspotify.podcast import download_episode, get_show_episodes
++from zspotify.termoutput import Printer, PrintChannel
++from zspotify.track import download_track, get_saved_tracks
++from zspotify.utils import splash, split_input, regex_input_for_urls
++from zspotify.zspotify import ZSpotify
+ 
+ SEARCH_URL = 'https://api.spotify.com/v1/search'
+ 
+--- a/zspotify/loader.py
++++ b/zspotify/loader.py
+@@ -7,7 +7,7 @@ from shutil import get_terminal_size
+ from threading import Thread
+ from time import sleep
+ 
+-from termoutput import Printer
++from zspotify.termoutput import Printer
+ 
+ 
+ class Loader:
+--- a/zspotify/playlist.py
++++ b/zspotify/playlist.py
+@@ -1,8 +1,8 @@
+-from const import ITEMS, ID, TRACK, NAME
+-from termoutput import Printer
+-from track import download_track
+-from utils import split_input
+-from zspotify import ZSpotify
++from zspotify.const import ITEMS, ID, TRACK, NAME
++from zspotify.termoutput import Printer
++from zspotify.track import download_track
++from zspotify.utils import split_input
++from zspotify.zspotify import ZSpotify
+ 
+ MY_PLAYLISTS_URL = 'https://api.spotify.com/v1/me/playlists'
+ PLAYLISTS_URL = 'https://api.spotify.com/v1/playlists'
+--- a/zspotify/podcast.py
++++ b/zspotify/podcast.py
+@@ -4,11 +4,11 @@ from typing import Optional, Tuple
+ 
+ from librespot.metadata import EpisodeId
+ 
+-from const import ERROR, ID, ITEMS, NAME, SHOW, DURATION_MS
+-from termoutput import PrintChannel, Printer
+-from utils import create_download_directory, fix_filename
+-from zspotify import ZSpotify
+-from loader import Loader
++from zspotify.const import ERROR, ID, ITEMS, NAME, SHOW, DURATION_MS
++from zspotify.termoutput import PrintChannel, Printer
++from zspotify.utils import create_download_directory, fix_filename
++from zspotify.zspotify import ZSpotify
++from zspotify.loader import Loader
+ 
+ 
+ EPISODE_INFO_URL = 'https://api.spotify.com/v1/episodes'
+--- a/zspotify/termoutput.py
++++ b/zspotify/termoutput.py
+@@ -2,8 +2,8 @@ import sys
+ from enum import Enum
+ from tqdm import tqdm
+ 
+-from config import *
+-from zspotify import ZSpotify
++from zspotify.config import *
++from zspotify.zspotify import ZSpotify
+ 
+ 
+ class PrintChannel(Enum):
+--- a/zspotify/track.py
++++ b/zspotify/track.py
+@@ -8,14 +8,14 @@ from librespot.audio.decoders import AudioQuality
+ from librespot.metadata import TrackId
+ from ffmpy import FFmpeg
+ 
+-from const import TRACKS, ALBUM, GENRES, NAME, ITEMS, DISC_NUMBER, TRACK_NUMBER, IS_PLAYABLE, ARTISTS, IMAGES, URL, \
++from zspotify.const import TRACKS, ALBUM, GENRES, NAME, ITEMS, DISC_NUMBER, TRACK_NUMBER, IS_PLAYABLE, ARTISTS, IMAGES, URL, \
+     RELEASE_DATE, ID, TRACKS_URL, SAVED_TRACKS_URL, TRACK_STATS_URL, CODEC_MAP, EXT_MAP, DURATION_MS, HREF
+-from termoutput import Printer, PrintChannel
+-from utils import fix_filename, set_audio_tags, set_music_thumbnail, create_download_directory, \
++from zspotify.termoutput import Printer, PrintChannel
++from zspotify.utils import fix_filename, set_audio_tags, set_music_thumbnail, create_download_directory, \
+     get_directory_song_ids, add_to_directory_song_ids, get_previously_downloaded, add_to_archive, fmt_seconds
+-from zspotify import ZSpotify
++from zspotify.zspotify import ZSpotify
+ import traceback
+-from loader import Loader
++from zspotify.loader import Loader
+ 
+ 
+ def get_saved_tracks() -> list:
+--- a/zspotify/utils.py
++++ b/zspotify/utils.py
+@@ -10,9 +10,9 @@ from typing import List, Tuple
+ import music_tag
+ import requests
+ 
+-from const import ARTIST, GENRE, TRACKTITLE, ALBUM, YEAR, DISCNUMBER, TRACKNUMBER, ARTWORK, \
++from zspotify.const import ARTIST, GENRE, TRACKTITLE, ALBUM, YEAR, DISCNUMBER, TRACKNUMBER, ARTWORK, \
+     WINDOWS_SYSTEM, ALBUMARTIST
+-from zspotify import ZSpotify
++from zspotify.zspotify import ZSpotify
+ 
+ 
+ class MusicFormat(str, Enum):
+--- a/zspotify/zspotify.py
++++ b/zspotify/zspotify.py
+@@ -6,10 +6,10 @@ import requests
+ from librespot.audio.decoders import VorbisOnlyAudioQuality
+ from librespot.core import Session
+ 
+-from const import TYPE, \
++from zspotify.const import TYPE, \
+     PREMIUM, USER_READ_EMAIL, OFFSET, LIMIT, \
+     PLAYLIST_READ_PRIVATE, USER_LIBRARY_READ
+-from config import Config
++from zspotify.config import Config
+ 
+ class ZSpotify:    
+     SESSION: Session = None
+@@ -75,7 +75,7 @@ class ZSpotify:
+     @classmethod
+     def invoke_url(cls, url, tryCount=0):
+         # we need to import that here, otherwise we will get circular imports!
+-        from termoutput import Printer, PrintChannel
++        from zspotify.termoutput import Printer, PrintChannel
+         headers = cls.get_auth_header()
+         response = requests.get(url, headers=headers)
+         responsetext = response.text
