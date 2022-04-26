@@ -19,7 +19,7 @@ pkgver() {
 }
 
 build() {
-    arch-meson $_gitname build
+    arch-meson $_gitname build -Dchannel=AUR-devel
     meson compile -C build
 }
 
