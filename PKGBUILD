@@ -2,11 +2,11 @@
 # Contributor: Alexandre Bouvier <contact@amb.tf>
 
 pkgname=xemu
-pkgver=0.6.2.r98.g6dbd51fbe1
+pkgver=0.6.3.r1.g8125e1302f
 pkgrel=1
-pkgdesc="Original Xbox Emulator"
+pkgdesc='Original Xbox Emulator'
 arch=('x86_64')
-url="https://xemu.app"
+url='https://xemu.app'
 license=('GPL2')
 depends=(
   'sdl2'
@@ -24,22 +24,26 @@ makedepends=(
   'openssl'
   'pixman'
   'python'
+  'python-yaml'
   'samurai'
   'xxhash'
+  'tomlplusplus'
 )
 optdepends=(
   'fancy-mouse-boot-rom: first-stage xbox bootrom'
 )
-_commit='440f4c53ec72c2148f770fd908ed41e991a16f2a'
+_commit='8125e1302fbfce7662f139b1dcdcefa52fa44ceb'
 source=(
   "$pkgname::git+https://github.com/mborgerson/xemu.git#commit=$_commit"
-  'berkeley-softfloat-3::git+https://gitlab.com/qemu-project/berkeley-softfloat-3.git'
-  'berkeley-testfloat-3::git+https://gitlab.com/qemu-project/berkeley-testfloat-3.git'
-  'imgui::git+https://github.com/ocornut/imgui.git'
-  'implot::git+https://github.com/epezent/implot.git'
-  'keycodemapdb::git+https://gitlab.com/qemu-project/keycodemapdb.git'
+  'gitlab.com-qemu-project-berkeley-testfloat-3::git+https://gitlab.com/qemu-project/berkeley-testfloat-3.git'
+  'gitlab.com-qemu-project-berkeley-softfloat-3::git+https://gitlab.com/qemu-project/berkeley-softfloat-3.git'
+  'github.com-ocornut-imgui::git+https://github.com/ocornut/imgui.git'
+  'github.com-epezent-implot::git+https://github.com/epezent/implot.git'
+  'gitlab.com-qemu-project-keycodemapdb::git+https://gitlab.com/qemu-project/keycodemapdb.git'
+  'github.com-mborgerson-genconfig::git+https://github.com/mborgerson/genconfig.git'
 )
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
@@ -56,19 +60,32 @@ prepare() {
   cd "$pkgname"
 
   # manage git submodules
-  git submodule init tests/fp/berkeley-{soft,test}float-3 ui/{imgui,implot,keycodemapdb}
-  git config submodule.tests/fp/berkeley-softfloat-3.url ../berkeley-softfloat-3
-  git config submodule.tests/fp/berkeley-testfloat-3.url ../berkeley-testfloat-3
-  git config submodule.ui/imgui.url ../imgui
-  git config submodule.ui/implot.url ../implot
-  git config submodule.ui/keycodemapdb.url ../keycodemapdb
+  git submodule init \
+    tests/fp/berkeley-testfloat-3 \
+    tests/fp/berkeley-softfloat-3 \
+    ui/imgui \
+    ui/implot \
+    ui/keycodemapdb \
+    genconfig
+
+  git config submodule.tests/fp/berkeley-testfloat-3.url "$srcdir/gitlab.com-qemu-project-berkeley-testfloat-3"
+  git config submodule.tests/fp/berkeley-softfloat-3.url "$srcdir/gitlab.com-qemu-project-berkeley-softfloat-3"
+  git config submodule.ui/imgui.url "$srcdir/github.com-ocornut-imgui"
+  git config submodule.ui/implot.url "$srcdir/github.com-epezent-implot"
+  git config submodule.ui/keycodemapdb.url "$srcdir/gitlab.com-qemu-project-keycodemapdb"
+  git config submodule.genconfig.url "$srcdir/github.com-mborgerson-genconfig"
+
   git submodule update
+
 
   # generate license file
   python scripts/gen-license.py > XEMU_LICENSE
 
-  # unbundle xxhash
+  # use system xxhash
   sed -i 's/"util\/xxHash\/xxh3\.h"/<xxh3.h>/' util/fast-hash.c
+
+  # use system tomlplusplus
+  sed -i 's/<toml\.hpp>/<toml++\/toml.h>/' genconfig/cnode.h toml.cpp ui/xemu-settings.cc
 
   # patch build info
   sed \
