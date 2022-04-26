@@ -1,7 +1,7 @@
-From 984c35e68ef3b5fc17a31d3019b675d2564fe83b Mon Sep 17 00:00:00 2001
+From a7a3500fa02896d109e774ce50fe4c3386d54a6b Mon Sep 17 00:00:00 2001
 From: Martchus <martchus@gmx.net>
 Date: Sun, 4 Dec 2016 20:35:47 +0100
-Subject: [PATCH 24/32] Fix macro invoking moc, rcc and uic
+Subject: [PATCH 24/33] Fix macro invoking moc, rcc and uic
 
 * Otherwise the arguments aren't passed correctly leading to errors like
   ```
@@ -70,5 +70,5 @@ index 35d2a2dc54..99f061f1b8 100644
            MAIN_DEPENDENCY ${infile} VERBATIM)
          set_source_files_properties(${infile} PROPERTIES SKIP_AUTOUIC ON)
 -- 
-2.35.1
+2.36.0
 
