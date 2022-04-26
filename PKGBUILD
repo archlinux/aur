@@ -1,7 +1,7 @@
 # Maintainer: iniVation AG <support@inivation.com>
 
 pkgname=libcaer
-pkgver=3.3.12
+pkgver=3.3.13
 pkgrel=1
 pkgdesc="Minimal C library to access, configure and get data from neuromorphic sensors and processors."
 url="https://gitlab.com/inivation/dv/$pkgname/"
@@ -14,9 +14,9 @@ provides=()
 conflicts=()
 replaces=()
 options=('staticlibs')
-source=("https://gitlab.com/inivation/dv/$pkgname/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+source=("https://release.inivation.com/libcaer/$pkgname-$pkgver.tar.gz")
 noextract=()
-sha256sums=('768db4aaf426db23a54a59901cc9ce178bcb0235eb846d9f0d0370cc2fc04632')
+sha256sums=('efc2ba0e0e1a5bd1860046803addd6f0677e9923c189ac2ed922096edaa4d94d')
 
 build() {
 	cd "$srcdir/$pkgname-$pkgver"
@@ -30,10 +30,4 @@ package() {
 	cd "$srcdir/$pkgname-$pkgver"
 
 	DESTDIR="$pkgdir/" make install
-
-	cd "$pkgdir"
-
-	# Fix udev directory due to symlinks
-	mv lib/udev/ usr/lib/
-	rm -Rf lib/
 }
