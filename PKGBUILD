@@ -1,6 +1,6 @@
 # Maintainer: Achmad Fathoni <fathoni DOT id AT gmail DOT com>
 
-pkgname=evaltool
+pkgname=evaltool-bin
 pkgver=1.8.6.b
 pkgver_=${pkgver::-2}
 pkgrel=1

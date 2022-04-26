@@ -1,4 +1,4 @@
-pkgbase = evaltool
+pkgbase = evaltool-bin
 	pkgdesc = Explore and test functionality of the Inertial Sense products in real-time
 	pkgver = 1.8.6.b
 	pkgrel = 1
@@ -9,4 +9,4 @@ pkgbase = evaltool
 	source = https://github.com/inertialsense/inertial-sense-sdk/releases/download/1.8.6/EvalTool_1.8.6.b.deb
 	sha256sums = ed5faf6bc10179172bcd55c4b56f1c80939a51f9fab9d543daa5a9e53f257f3d
 
-pkgname = evaltool
+pkgname = evaltool-bin
