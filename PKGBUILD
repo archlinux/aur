@@ -9,6 +9,7 @@ pkgdesc="A simple daemon to control fan speed on all MacBook/MacBook Pros"
 arch=('x86_64' 'i686')
 url="https://github.com/dgraziotin/mbpfan"
 license=('GPL3')
+depends=('glibc')
 makedepends=('git')
 provides=('mbpfan')
 source=("$pkgname"::'git+https://github.com/dgraziotin/mbpfan.git')
