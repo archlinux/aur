@@ -3,7 +3,7 @@
 java_=17
 pkgname_=truffleruby
 pkgname="${pkgname_}-jdk${java_}-bin"
-pkgver=22.0.0.2
+pkgver=22.1.0
 pkgrel=1
 pkgdesc="GraalVM-based, high-performance implementation of the Ruby language (Java ${java_} version)"
 arch=('x86_64'
@@ -13,8 +13,8 @@ license=('EPL' 'GPL2' 'LGPL2.1')
 depends=("jdk${java_}-graalvm-bin")
 source_x86_64=("https://github.com/oracle/$pkgname_/releases/download/vm-${pkgver}/ruby-installable-svm-java${java_}-linux-amd64-${pkgver}.jar")
 source_aarch64=("https://github.com/oracle/$pkgname_/releases/download/vm-${pkgver}/ruby-installable-svm-java${java_}-linux-aarch64-${pkgver}.jar")
-sha256sums_x86_64=('d86c9ad50cbed980fa69d69b2eccd47d31880d8c55553483f59ce9eda15628bd')
-sha256sums_aarch64=('38cd733334efdecb040087341bccf0aed8031d70eccd857695eaee6b274a5a6d')
+sha256sums_x86_64=('7b6ba72623a67bbdcfeef28292af6fc0c2054d30cfbd59749bef292e67826e15')
+sha256sums_aarch64=('c00810c122427fdcc877c9b34360643e2eacede7b8000b665c3052f7fdb28576')
 
 package() {
     local file eq permissions mode name target
@@ -52,6 +52,9 @@ package() {
         mkdir -p -- "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/$(dirname -- "$name")"
         ln -s -- "$target" "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/$name"
     done < META-INF/symlinks
+
+    # already in jdk${java_}-graalvm-bin package
+    unlink "$pkgdir/usr/lib/jvm/java-${java_}-graalvm/lib/installer/components/org.graalvm.component"
 
     install -DTm644 LICENSE_TRUFFLERUBY.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
