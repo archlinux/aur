@@ -1,0 +1,19 @@
+pkgbase = marble-gtk4-git
+	pkgdesc = A collection of useful functions and reusable widget for GTK (wip/gtk4)
+	pkgver = v1.3.0.r4.g6dcc6fe
+	pkgrel = 1
+	url = https://gitlab.com/raggesilver/marble
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = meson
+	makedepends = vala
+	depends = gtk4
+	depends = glib2
+	provides = marble-gtk4
+	conflicts = marble-gtk
+	conflicts = marble-gtk-git
+	source = marble-gtk4-git::git+https://gitlab.com/raggesilver/marble.git#branch=wip/gtk4
+	sha256sums = SKIP
+
+pkgname = marble-gtk4-git
