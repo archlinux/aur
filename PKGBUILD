@@ -2,7 +2,7 @@
 # Maintainer: Joseph R. Quinn <quinn.josephr@protonmail.com>
 pkgname=zshdb-git
 pkgver=1.1.0
-pkgrel=2
+pkgrel=1
 pkgdesc='A debugger for zsh scripts.'
 arch=('i686' 'x86_64')
 url='https://github.com/rocky/zshdb'
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('zsh')
 makedepends=('git')
 provides=('zshdb')
-source=('git+git://github.com/rocky/zshdb.git')
+source=('git+https://github.com/rocky/zshdb.git')
 md5sums=('SKIP')
 
 pkgver() {

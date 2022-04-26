@@ -1,7 +1,7 @@
 pkgbase = zshdb-git
 	pkgdesc = A debugger for zsh scripts.
 	pkgver = 1.1.0
-	pkgrel = 2
+	pkgrel = 1
 	url = https://github.com/rocky/zshdb
 	arch = i686
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = zshdb-git
 	makedepends = git
 	depends = zsh
 	provides = zshdb
-	source = git+git://github.com/rocky/zshdb.git
+	source = git+https://github.com/rocky/zshdb.git
 	md5sums = SKIP
 
 pkgname = zshdb-git
-
