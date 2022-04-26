@@ -2,7 +2,7 @@
 pkgbase=ttf-golos
 pkgname=(ttf-golos-text ttf-golos-ui ttf-golos-ui-variable ttf-golos-text-variable)
 pkgver=2.000
-pkgrel=4
+pkgrel=5
 url=https://www.paratype.com/fonts/pt/golos-ui
 license=(custom:OFL)
 arch=(any)
@@ -11,7 +11,7 @@ source=("${pkgname}-${pkgver}.zip::https://api.paratype.com/api/editions/ofl/dow
 # Silly server seems to generate a new .zip file each time,
 # so manually check the contents instead.
 b2sums=('SKIP'
-        '9e754e598ff9e1b8bceed8d90a17715e157196ef73bdac03fe9f0b140754ff0b0a7999687efdd9e2031f9c05b8dea068447b29854329996f096a87484ed3d247')
+        '8fad5578971942fa47094bb6bcf9a8af8d40708b91be4cd0fe55120fa7c85cc636f5ff3e8114874ceb6fa3b437f3bd909bd296e587a0df099ce1e054a180b3ec')
 
 DLAGENTS=('https::/usr/bin/curl -gqb "" -fLC - --retry 3 --retry-delay 3 -o %o %u --referer https://www.paratype.com/ --user-agent Mozilla')
 
