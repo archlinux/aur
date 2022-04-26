@@ -1,5 +1,5 @@
 pkgbase = pseint
-	pkgdesc = Herramienta educativa para aprender los fundamentos y el desarrollo de la lógica de la programación
+	pkgdesc = Educational tool to learn the fundamentals and development of programming logic
 	pkgver = 20210609
 	pkgrel = 1
 	url = http://pseint.sourceforge.net
@@ -8,6 +8,7 @@ pkgbase = pseint
 	makedepends = gzip
 	depends = libpng12
 	depends = glu
+	depends = gendesk
 	conflicts = pseint-bin
 	noextract = creator.psz
 	source = https://razaoinfo.dl.sourceforge.net/project/pseint/20210609/pseint-l64-20210609.tgz
