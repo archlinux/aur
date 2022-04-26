@@ -1,0 +1,19 @@
+pkgbase = haskell-slist
+	pkgdesc = Sized list
+	pkgver = 0.2.0.0
+	pkgrel = 1
+	url = https://github.com/kowainik/slist
+	arch = x86_64
+	license = MPL2
+	makedepends = ghc
+	makedepends = haskell-glob
+	makedepends = haskell-doctest
+	makedepends = haskell-hedgehog
+	makedepends = haskell-hspec
+	makedepends = haskell-hspec-hedgehog
+	makedepends = uusi
+	depends = ghc-libs
+	source = https://hackage.haskell.org/packages/archive/slist/0.2.0.0/slist-0.2.0.0.tar.gz
+	sha256sums = 266d59c2e46059c7c7f613fcf29da24eef08b3f4cf4bd85422b7e73120e73aaa
+
+pkgname = haskell-slist
