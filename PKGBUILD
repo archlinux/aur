@@ -1,4 +1,4 @@
-# Maintainer: Lahfa Samy <samy@lahfa.xyz>
+# Maintainer: Lahfa Samy <'akechishiro-aur' at 'lahfa[dot]xyz'>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Sebastian Wieland <wieland.s[at]online[dot]de>
 _pkgname=nextcloud
