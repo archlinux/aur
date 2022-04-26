@@ -9,8 +9,8 @@ pkgdesc="A fast, asynchronous tool for getting and reading various programming r
 url="https://github.com/Obscurely/falion"
 license=("GPL-3.0-only")
 arch=("x86_64")
-provides=("falion")
-conflicts=("falion")
+provides=("falion-bin")
+conflicts=("falion" "falion-git")
 source=("https://github.com/Obscurely/falion/releases/download/v$pkgver/falion-$pkgver-x86_64.tar.gz")
 sha256sums=("f3e568a0c8c2eb78b0c6798196936d00c47a89b515dd5531caaf3eb3a4731e41")
 
