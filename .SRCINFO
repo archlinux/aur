@@ -16,9 +16,11 @@ pkgbase = chordpro-dev-git
 	depends = perl-file-loadlines
 	depends = perl-pod-parser
 	depends = perl-text-layout
+	depends = perl-file-homedir
+	optdepends = perl-wx
 	provides = chordpro
 	options = !emptydirs
-	options = purge
+	options = !purge
 	source = git+https://github.com/ChordPro/chordpro.git#branch=dev
 	md5sums = SKIP
 
