@@ -1,13 +1,15 @@
 pkgbase = netcfg-git
 	pkgdesc = Network configuration and profile scripts (install only if you really know that you want this instead of netctl). Includes patch to make wifi-menu work, OpenRC and systemd initscripts.
-	pkgver = 4.0.rg54f4656
-	pkgrel = 2
+	pkgver = 4.0.r563_20130808_54f4656
+	pkgrel = 1
+	epoch = 0
 	url = https://github.com/GNU-Pony/netcfg/
 	install = netcfg.install
 	arch = any
 	groups = base
 	license = BSD
 	makedepends = auto-auto-complete
+	makedepends = git
 	makedepends = gzip
 	makedepends = texinfo
 	makedepends = texman
@@ -18,23 +20,24 @@ pkgbase = netcfg-git
 	depends = grep
 	depends = iproute2
 	depends = sed
-	optdepends = bridge-utils: for bridge connections.
-	optdepends = dialog: for the menu based profile and wifi selectors.
-	optdepends = dhclient: for DHCPv6.
-	optdepends = ifenslave: for bond connections.
-	optdepends = ifplugd: for automatic wired connections through net-auto-wired.
-	optdepends = wireless_tools: for interface renaming through net-rename.
-	optdepends = wpa_actiond: for automatic wireless connections through net-auto-wireless.
-	optdepends = wpa_supplicant: for wireless networking support.
-	provides = netcfg=4.0.rg54f4656
-	provides = netcfg-openrc=4.0.rg54f4656
-	provides = netcfg-systemd=4.0.rg54f4656
+	optdepends = bridge-utils: For bridge connections.
+	optdepends = dialog: For the menu based profile and wifi selectors.
+	optdepends = dhclient: For alternative DHCP client.
+	optdepends = ifenslave: For bond connections.
+	optdepends = ifplugd: For automatic wired connections through net-auto-wired.
+	optdepends = netcfg-wireguard: For wireguard support.
+	optdepends = wireless_tools: For interface renaming through net-rename.
+	optdepends = wpa_actiond: For automatic wireless connections through net-auto-wireless.
+	optdepends = wpa_supplicant: For wireless networking support.
+	provides = netcfg=4.0.r563_20130808_54f4656
+	provides = netcfg-openrc=4.0.r563_20130808_54f4656
+	provides = netcfg-systemd=4.0.r563_20130808_54f4656
 	conflicts = netctl
 	conflicts = netcfg
-	replaces = netcfg<=4.0.rg54f4656
+	options = emptydirs
 	backup = etc/iftab
 	backup = etc/conf.d/netcfg
-	source = netcfg-master.zip::https://github.com/GNU-Pony/netcfg/archive/master.zip
+	source = netcfg::git+https://github.com/GNU-Pony/netcfg.git
 	source = netcfg.openrc
 	source = netcfg.conf
 	source = netcfg.bash-completion_extended
@@ -42,7 +45,7 @@ pkgbase = netcfg-git
 	source = newer-wpasupplicant.patch
 	source = Makefile.deduplicate-examples.patch
 	source = netcfg.install
-	sha256sums = 0ac7179314e73596fcd371de402af61291113fec66f2de2f25ed93d98803bfa7
+	sha256sums = SKIP
 	sha256sums = 4a21fb2a8eed541ff23ef93e8150607074d40f248fa923fcede27102ed2944da
 	sha256sums = 0525757fb59b9174f2c3bbc9828bb4590f89144f0506cadf13dafa0b76ec3e14
 	sha256sums = a353438378891f711902f13d4df5e19dfcde756b453bb865c0f6660e3c1bc68f
@@ -52,4 +55,3 @@ pkgbase = netcfg-git
 	sha256sums = 07c16d4de52acc97abe2633b5a3cf077bac6924159b47474c93d936816846468
 
 pkgname = netcfg-git
-
