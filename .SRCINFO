@@ -1,17 +1,17 @@
 pkgbase = libnbd
 	pkgdesc = NBD client library in userspace
-	pkgver = 1.10.4
+	pkgver = 1.12.2
 	pkgrel = 1
 	url = https://gitlab.com/nbdkit/libnbd
 	arch = i686
 	arch = x86_64
 	license = LGPL2.1
 	makedepends = perl
-	source = http://download.libguestfs.org/libnbd/1.10-stable/libnbd-1.10.4.tar.gz
-	source = http://download.libguestfs.org/libnbd/1.10-stable/libnbd-1.10.4.tar.gz.sig
+	source = http://download.libguestfs.org/libnbd/1.12-stable/libnbd-1.12.2.tar.gz
+	source = http://download.libguestfs.org/libnbd/1.12-stable/libnbd-1.12.2.tar.gz.sig
 	validpgpkeys = F7774FB1AD074A7E8C8767EA91738F73E1B768A0
 	validpgpkeys = 71C2CC22B1C4602927D2F3AAA7A16B4A2527436A
-	sha256sums = a201b49e3ace42c1a0a509355fabf0fbe90bfad242674418afc4127459ca423d
+	sha256sums = e7bbde25aa6def62e43f4db03b87359c37479a7a1da9f4feaca3cd0de4c640f3
 	sha256sums = SKIP
 
 pkgname = libnbd
