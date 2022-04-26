@@ -1,6 +1,6 @@
 pkgbase = pcsx2-git
 	pkgdesc = A Sony PlayStation 2 emulator
-	pkgver = 1.7.2643
+	pkgver = 1.7.2663
 	pkgrel = 1
 	url = https://www.pcsx2.net
 	install = dev9.install
@@ -30,7 +30,7 @@ pkgbase = pcsx2-git
 	depends = soundtouch
 	depends = wxgtk3
 	depends = wayland
-	depends = rapidyaml-git
+	depends = rapidyaml
 	provides = pcsx2
 	conflicts = pcsx2
 	source = git+https://github.com/PCSX2/pcsx2.git
