@@ -1,0 +1,15 @@
+pkgbase = python-cga4233de
+	pkgdesc = Library to interact with the CGA4233DE router, distributed by Vodafone Germany
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/Zebradil/CGA4233DE
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	makedepends = python-dephell
+	depends = python3
+	depends = python-requests
+	source = https://files.pythonhosted.org/packages/source/c/cga4233de/cga4233de-0.3.0.tar.gz
+	sha512sums = 02a3927ca2ef01826812826d16ccb8e92a409c226e6e1ee052f4afd632b19131b8f98b2febc5b446831f173aa3163708d973175e92418d2ea3d77f40b48a690d
+
+pkgname = python-cga4233de
