@@ -1,6 +1,6 @@
 # Maintainer: Marcel Hasler <marcel dot hasler at h-brs dot de>
 pkgname=sft
-pkgver=1.0.1
+pkgver=1.0.2
 _pkgname=SFT-${pkgver}
 pkgrel=1
 pkgdesc="A library for computing the fast Fourier transform (FFT)"
@@ -10,7 +10,7 @@ license=('LGPL3')
 depends=('gcc-libs')
 makedepends=('cmake')
 source=("${_pkgname}.tar.gz::https://github.com/ISF-H-BRS/SFT/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('4e1a2de9deb8e78d30c355ef56cc567b5c9e7fbb4ab990f2a0415b1e15d1d7ee')
+sha256sums=('3c0bf62fb1d63297d80ed2361b34e75fef1e207e76db42960fa34f1ed404880a')
 
 build() {
   cd ${_pkgname}
