@@ -38,9 +38,6 @@ package() {
   cd "${pkgdir}/opt/${pkgname}"
   git remote set-url origin git://node/ethoscope.git
   
-  #install the ethoclient file
-  ln -s /opt/ethoscope-device/src/scripts/ethoclient.py /usr/bin/ethoclient
-  
   #install service files
   cd "${srcdir}"/"${pkgname}"/scripts/
   install -D --mode=0755 ethoscope_device.service ethoscope_listener.service ethoscope_GPIO_listener.service "${pkgdir}/usr/lib/systemd/system/"
