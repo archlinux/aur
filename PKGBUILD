@@ -22,12 +22,12 @@ pkgname=(
   "riven-data"
   "riven-makingof"
 )
-pkgdesc="'Riven: The Sequel to Myst' is an in-depth point-and-click adventure game with superb landscape and immersive puzzles."
+pkgdesc="'Riven: The Sequel to Myst' is a 1997 point-and-click puzzle adventure game with superb landscape immersion."
 arch=('any')
 url='https://cyan.com/games/riven/'
 epoch="0"
 pkgver='1.2_20030721_dvd' # Obtained from the file 'Read Instructions First'.
-pkgrel=7
+pkgrel=8
 makedepends=(
   'dos2unix'    # To convert text files with Mac and DOS new line standard to Unix new line standard.
   'imagemagick' # To convert .ico to .png.
@@ -75,7 +75,7 @@ build() {
 }
 
 package_riven() {
-  pkgdesc="'Riven: The Sequel to Myst' is an in-depth point-and-click adventure game with superb landscape and immersive puzzles."
+  pkgdesc="'Riven: The Sequel to Myst' is a 1997 point-and-click puzzle adventure game with superb landscape immersion."
   # url='https://wiki.scummvm.org/index.php/Riven:_The_Sequel_to_Myst'
   url='https://cyan.com/games/riven/'
   license=('GPL3')
@@ -96,7 +96,7 @@ package_riven() {
 }
 
 package_riven-data() {
-  pkgdesc="Data files for the point-and-click adventure/ puzzle game 'Riven'."
+  pkgdesc="Data files for the point-and-click adventure/ puzzle game 'Riven: The Sequel to Myst'."
   url='https://archive.org/details/riven_202001'
   license=('custom: proprietary')
   optdepends=(
@@ -131,7 +131,7 @@ package_riven-data() {
 }
 
 package_riven-makingof() {
-  pkgdesc="Movie 'The Making of Riven', a point-and-click adventure/ puzzle game."
+  pkgdesc="Movie 'The Making of Riven', a point-and-click immersive puzzle adventure game."
   url='https://archive.org/details/riven_202001'
   license=('custom: proprietary')
   optdepends=(

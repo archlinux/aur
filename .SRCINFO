@@ -1,7 +1,7 @@
 pkgbase = riven
-	pkgdesc = 'Riven: The Sequel to Myst' is an in-depth point-and-click adventure game with superb landscape and immersive puzzles.
+	pkgdesc = 'Riven: The Sequel to Myst' is a 1997 point-and-click puzzle adventure game with superb landscape immersion.
 	pkgver = 1.2_20030721_dvd
-	pkgrel = 7
+	pkgrel = 8
 	epoch = 0
 	url = https://cyan.com/games/riven/
 	arch = any
@@ -18,21 +18,21 @@ pkgbase = riven
 	sha256sums = f92e92e57ae86a3d490c81d965e5d51779afef61c869ed4c9d9e0b6411c1789c
 
 pkgname = riven
-	pkgdesc = 'Riven: The Sequel to Myst' is an in-depth point-and-click adventure game with superb landscape and immersive puzzles.
+	pkgdesc = 'Riven: The Sequel to Myst' is a 1997 point-and-click puzzle adventure game with superb landscape immersion.
 	url = https://cyan.com/games/riven/
 	license = GPL3
 	depends = riven-data
 	depends = scummvm
 
 pkgname = riven-data
-	pkgdesc = Data files for the point-and-click adventure/ puzzle game 'Riven'.
+	pkgdesc = Data files for the point-and-click adventure/ puzzle game 'Riven: The Sequel to Myst'.
 	url = https://archive.org/details/riven_202001
 	license = custom: proprietary
 	optdepends = riven: To actually play the game.
 	optdepends = riven-makingof: Movie 'The Making of Riven'.
 
 pkgname = riven-makingof
-	pkgdesc = Movie 'The Making of Riven', a point-and-click adventure/ puzzle game.
+	pkgdesc = Movie 'The Making of Riven', a point-and-click immersive puzzle adventure game.
 	url = https://archive.org/details/riven_202001
 	license = custom: proprietary
 	optdepends = riven: To play the game.
