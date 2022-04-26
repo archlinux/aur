@@ -9,6 +9,8 @@ arch=('x86_64')
 url='https://github.com/keltia/dmarc-cat'
 license=('Custom')
 makedepends=(git go)
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=("dmarc-cat::git+$url.git")
 sha256sums=('SKIP')
 

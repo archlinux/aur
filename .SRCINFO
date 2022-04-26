@@ -7,6 +7,8 @@ pkgbase = dmarc-cat-git
 	license = Custom
 	makedepends = git
 	makedepends = go
+	provides = dmarc-cat
+	conflicts = dmarc-cat
 	source = dmarc-cat::git+https://github.com/keltia/dmarc-cat.git
 	sha256sums = SKIP
 
