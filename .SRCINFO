@@ -1,0 +1,11 @@
+pkgbase = moderndeck-bin
+	pkgdesc = A beautiful, powerful Twitter client for desktop.
+	pkgver = 9.4.4
+	pkgrel = 1
+	url = https://moderndeck.org
+	arch = x86_64
+	license = MIT
+	source = ModernDeck_x86_64.AppImage::https://github.com/dangeredwolf/ModernDeck/releases/download/v9.4.4/ModernDeck_x86_64.AppImage
+	sha256sums = 5c443686107f09d632ed8917e6ef9a80b6b65ee25cb40ff1aef79dd24acb3394
+
+pkgname = moderndeck-bin
