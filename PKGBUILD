@@ -12,7 +12,7 @@ optdepends=()
 makedepends=("rust" "cargo" "git")
 arch=("x86_64")
 provides=("falion")
-conflicts=("falion-bin")
+conflicts=("falion-bin" "falion-git")
 source=("$_pkgname::git+https://github.com/Obscurely/falion.git")
 sha256sums=("SKIP")
 
