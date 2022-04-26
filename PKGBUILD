@@ -27,9 +27,9 @@ build() {
 
 package() {
 	cd "$pkgname"
-	install -Dm644 src/assets/res/do.edfloreshz.github.desktop "$pkgdir/usr/share/applications/do.edfloreshz.github.desktop"
-	install -Dm644 src/assets/icons/do.edfloreshz.github.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/do.svg"
-	install -Dm644 src/assets/icons/do.edfloreshz.github.svg "$pkgdir/usr/share/icons/hicolor/256x256/apps/do.svg"
+	install -Dm644 src/resources/res/do.edfloreshz.github.desktop "$pkgdir/usr/share/applications/do.edfloreshz.github.desktop"
+	install -Dm644 src/resources/icons/do.edfloreshz.github.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/do.svg"
+	install -Dm644 src/resources/icons/do.edfloreshz.github.svg "$pkgdir/usr/share/icons/hicolor/256x256/apps/do.svg"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/do/README.md"
 	install -Dm755 target/release/do-app "$pkgdir/usr/bin/do-app"
 }
