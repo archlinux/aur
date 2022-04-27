@@ -3,7 +3,7 @@
 
 pkgname=crowdsec
 pkgver=1.3.3
-pkgrel=1
+pkgrel=3
 pkgdesc="The open-source and collaborative IPS"
 arch=('any')
 url="https://crowdsec.net"
@@ -44,4 +44,4 @@ package() {
 }
 
 sha256sums=('36f271db868df5f72804f0928b5459e9a8f243dfd3f2cff7cf36a12212732af1'
-            'e94363de7cef3d3b8896e812a8a682fb672780069ffb3157447839a55b191e16')
+            'aba15327f38f6477816cdea9f55330781b49e8421832191241c2586392fb36d0')
