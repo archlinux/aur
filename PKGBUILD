@@ -11,7 +11,7 @@ url="https://jupyter-sphinx.readthedocs.io"
 license=('BSD')
 makedepends=('python-setuptools')
 #'python-wheel' 'python-build' 'python-installer')
-checkdepends=('python-sphinx' 'jupyter-nbconvert')
+checkdepends=('python-sphinx' 'jupyter-nbconvert' 'jupyterlab-widgets' 'jupyter-widgetsnbextension')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
 md5sums=('e7ab370d9793be5b20bce5447ccbd45b')
 
