@@ -8,8 +8,8 @@
 # If you want to help keep it up to date, please open a Pull Request there.
 
 pkgname='cronie-selinux'
-pkgver=1.6.0
-pkgrel=2
+pkgver=1.6.1
+pkgrel=1
 pkgdesc='Daemon that runs specified programs at scheduled times and related tools with SELinux support'
 url='https://github.com/cronie-crond/cronie/'
 license=('custom:BSD')
@@ -22,13 +22,11 @@ provides=('cron' "${pkgname/-selinux}=${pkgver}-${pkgrel}"
           "selinux-${pkgname/-selinux}=${pkgver}-${pkgrel}")
 groups=('selinux')
 source=("https://github.com/cronie-crond/cronie/releases/download/${pkgname/-selinux}-${pkgver}/${pkgname/-selinux}-${pkgver}.tar.gz"
-        '0001-fix-range-entries.patch'
         '80-cronie.hook'
         'service'
         'pam.d'
         'deny')
-sha256sums=('3f7cc263d21838b53a9943eb2a26b862059e2ae36c3f11789ac33cd6818e3628'
-            '29830d76a12992e1c74249d2aa577b8f6c52fc041beef5b4a066bed1004ddf84'
+sha256sums=('2cd0f0dd1680e6b9c39bf1e3a5e7ad6df76aa940de1ee90a453633aa59984e62'
             'f85e9a68bf3bf446f8a6167f068371c06afffe11ca71935d8ee5487b38b2c9db'
             'ac3ff3c8a5ce1b6367b06877b4b12ff74e7f18a3c510fb9f80d6ea6b6321e3b1'
             '00864268b491bab8c66400a4a4b4bf85f168a6e44e85676105e084940924090c'
@@ -37,12 +35,6 @@ backup=('etc/cron.deny'
         'etc/pam.d/crond'
         'etc/cron.d/0hourly'
         'etc/anacrontab')
-
-prepare() {
-	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
-
-	patch -Np1 < ../0001-fix-range-entries.patch
-}
 
 build() {
 	cd "${srcdir}/${pkgname/-selinux}-${pkgver}"
