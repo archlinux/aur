@@ -1,23 +1,22 @@
-# Maintainer: Dan McCurry <dan.mc at protonmail dot com>
-# Maintainer: Ethan Best <ethan at totalsecond dot com>
-# with special thanks to deadlte for version 3.07.1
+# Maintainer Evgeniy Dombek <evgeniy.d@informmonitoring.ru>
 
-pkgname=libsdrplay
+pkgname=libsdrplay-raspberry-aarch64
 pkgver=3.07.1
 pkgrel=1
 pkgdesc="Modules for the SDRplay receiver"
-arch=('i686' 'x86_64')
+arch=('aarch64')
 url="http://www.sdrplay.com"
 license=('custom:EULA')
 depends=('libusb>=1.0')
-source=("http://www.sdrplay.com/software/SDRplay_RSP_API-Linux-${pkgver}.run")
-sha256sums=('aefe8733cba3e480157c28439c1ed5ab757724a7a26fe74eee92cda6f36145a8')
+provides=('libsdrplay')
+source=("http://www.sdrplay.com/software/SDRplay_RSP_API-ARM64-${pkgver}.run")
+sha256sums=('SKIP')
 
 prepare() {
 	cd ${srcdir}
 
 	msg2 "Extracting makeself archive..."
-	sh SDRplay_RSP_API-Linux-${pkgver}.run --tar xf
+	sh SDRplay_RSP_API-ARM64-${pkgver}.run --tar xf
 }
 
 package() {
