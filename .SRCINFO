@@ -1,0 +1,15 @@
+pkgbase = marmota
+	pkgdesc = Simple Markdown Presentations
+	pkgver = 22.17.0
+	pkgrel = 1
+	url = https://marmota.app/downloads/thank-you/#linux
+	arch = x86_64
+	depends = gtk3
+	depends = libxss
+	depends = libxtst
+	depends = nss
+	noextract = marmota_22.17.0_amd64.deb
+	source = https://download.marmota.app/linux/deb/x64/marmota_22.17.0_amd64.deb
+	b2sums = 190afa970dcc419ce6bca12f6cad7c557389aaa9d90f3999a473be316fce4bd73a9eff1eb0fc6e6399f9fecba8241866ddbe168d4692ad79a34130117f79c575
+
+pkgname = marmota
