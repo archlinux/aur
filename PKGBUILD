@@ -1,19 +1,19 @@
 # Maintainer: DisableGraphics elchifladod@gmail.com
-pkgbase="korai-git"
+pkgbase="korai"
 pkgname="korai"
 pkgrel=1
-pkgver=git
+pkgver=0.1.1
 pkgdesc="Fast, reliable and feature-packed manga and comics reader"
 arch=("any")
 makedepends=("git")
 depends=("libarchive" "gtkmm3" "webkit2gtk" "vte3" "mangodl")
 license=("GPL")
-source=("git+http://github.com/DisableGraphics/Korai.git" "https://raw.githubusercontent.com/DisableGraphics/Korai/main/src/icon.xpm")
-sha512sums=("SKIP" "SKIP")
+source=('https://github.com/DisableGraphics/Korai/archive/refs/tags/v0.1.1.tar.gz')
+sha512sums=('9c3b91edc7fd01b8d25b3c21f67c72693363fb6577c8480b30c9212fadb530ee46754de8df76144d0b0f620140a492184f1fc333b55306e34f0ed34e4421e6ed')
 prepare() {
-	cd Korai
+	tar xf v${pkgver}.tar.gz
+	cd ${srcdir}/Korai-${pkgver}/
 	make -j$(nproc)
-	cd ..
 }
 package() {
 	mkdir -p "${pkgdir}/usr/"
@@ -21,8 +21,8 @@ package() {
 	mkdir -p "${pkgdir}/usr/share/"
 	mkdir -p "${pkgdir}/usr/share/icons/"
 
-	cp Korai/build/* "${pkgdir}/usr/bin/"
-	cp icon.xpm "${pkgdir}/usr/share/icons/korai.xpm"
+	cp ${srcdir}/Korai-${pkgver}/build/korai "${pkgdir}/usr/bin/"
+	cp ${srcdir}/Korai-${pkgver}/src/icon.xpm "${pkgdir}/usr/share/icons/korai.xpm"
 
 	mkdir -p "${pkgdir}/usr/share/applications/"
 
