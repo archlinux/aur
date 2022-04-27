@@ -1,5 +1,5 @@
-pkgbase = sdrangel-git
-	pkgdesc = Qt5/OpenGL SDR and signal analyzer frontend.
+pkgbase = sdrangel_no_xtrx-git
+	pkgdesc = Qt5/OpenGL SDR and signal analyzer frontend without XTRX SDR support
 	pkgver = 6.19.0.r27.8e79cd7ff
 	pkgrel = 1
 	url = https://github.com/f4exb/sdrangel
@@ -31,7 +31,6 @@ pkgbase = sdrangel-git
 	makedepends = libperseus-sdr
 	makedepends = airspy
 	makedepends = airspyhf
-	makedepends = libxtrx
 	makedepends = libuhd
 	depends = pkg-config
 	depends = log4cpp
@@ -72,9 +71,9 @@ pkgbase = sdrangel-git
 	optdepends = airspyhf: Airspy HF+ support
 	optdepends = libxtrx: XTRX SDR support
 	optdepends = libuhd: USRP support
-	provides = sdrangel=6.19.0.r27.8e79cd7ff
-	conflicts = sdrangel
+	provides = sdrangel_no_xtrx=6.19.0.r27.8e79cd7ff
+	conflicts = sdrangel_no_xtrx
 	source = git+https://github.com/f4exb/sdrangel
 	sha512sums = SKIP
 
-pkgname = sdrangel-git
+pkgname = sdrangel_no_xtrx-git

@@ -1,12 +1,10 @@
-# Maintainer: xiretza <xiretza+aur@gmail.com>
-# Contributor: Filipe Laíns (FFY00) <filipe.lains@gmail.com>
-# Contributor: Michal Krenek (Mikos) <m.krenek@gmail.com>
+# Maintainer Evgeniy Dombek <evgeniy.d@informmonitoring.ru>
 
-_pkgname=sdrangel
+_pkgname=sdrangel_no_xtrx
 pkgname=$_pkgname-git
 pkgver=6.19.0.r27.8e79cd7ff
 pkgrel=1
-pkgdesc='Qt5/OpenGL SDR and signal analyzer frontend.'
+pkgdesc='Qt5/OpenGL SDR and signal analyzer frontend without XTRX SDR support'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/f4exb/sdrangel'
 license=('GPL3')
@@ -18,7 +16,7 @@ depends=('pkg-config' 'log4cpp' 'opencv' 'fftw'
 # libsigmf requires the vendored version at https://github.com/f4exb/libsigmf/tree/new-namespaces, which isn't packaged yet
 makedepends=('git' 'cmake' 'boost' 'doxygen' 'graphviz'
              'ffmpeg' 'libdab' 'zlib' 'faad2' 'sgp4' 'aptdec' 'codec2'
-             'libmirisdr4' 'rtl-sdr' 'hackrf' 'libiio' 'limesuite' 'bladerf' 'libperseus-sdr' 'airspy' 'airspyhf' 'libxtrx' 'libuhd')
+             'libmirisdr4' 'rtl-sdr' 'hackrf' 'libiio' 'limesuite' 'bladerf' 'libperseus-sdr' 'airspy' 'airspyhf' 'libuhd')
 optdepends=('ffmpeg: DATV demodulator'
             'libdab: DAB demodulator'
             'zlib: DAB demodulator'
