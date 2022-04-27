@@ -3,7 +3,7 @@
 
 pkgname=arduino-builder
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A command line tool for compiling Arduino sketches"
 arch=('x86_64')
 url="https://github.com/arduino/arduino-builder"
