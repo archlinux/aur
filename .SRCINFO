@@ -1,17 +1,17 @@
 pkgbase = mightymike
 	pkgdesc = High Powered Action Rescue in a Toy Store Gone Mad
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/jorio/mightymike
 	arch = x86_64
 	license = custom:CC-BY-NC-SA-4.0
-	makedepends = cmake
 	makedepends = git
+	makedepends = cmake
 	depends = sdl2
 	depends = glu
 	depends = hicolor-icon-theme
-	source = mightymike::git+https://github.com/jorio/mightymike.git#tag=v3.0.0
-	source = git+https://github.com/jorio/Pomme.git
+	source = mightymike::git+https://github.com/jorio/mightymike#commit=704ed5232081912d11b18edf423ca7823a98dd82
+	source = github.com-jorio-Pomme::git+https://github.com/jorio/Pomme
 	source = mightymike.desktop
 	source = mightymike.sh
 	b2sums = SKIP
