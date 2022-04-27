@@ -1,6 +1,6 @@
 # Maintainer: Nikola Tasić <nik at 7aske dot com>
 pkgname="rgs"
-pkgver="1.14"
+pkgver="1.14.1"
 pkgrel=1
 pkgdesc="Batch git repository analysis tool"
 arch=('x86_64')
