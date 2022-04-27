@@ -1,7 +1,7 @@
 # Maintainer: AudioLinux  <audiolinux AT fastmail DOT fm>
 
 pkgname=eezupnp
-pkgver=3.1.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="UPnP Audio control point"
 arch=('x86_64')
