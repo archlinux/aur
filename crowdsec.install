@@ -10,8 +10,8 @@ post_upgrade() {
 	# Version check is needed. Minor revs need a different options
 	cd /usr/local/installers/crowdsec/crowdsec
 	CSCLI=`which cscli` # Find CSCLI
-	current_ver="$(${CSCLI}|grep version | awk '{print $4}' | sed -e 's/[v\-]//g')" # Query existing 1.x.y revision
-	new_ver="$(./cmd/crowdsec-cli/cscli version | grep version | awk '{print $4}'| sed -e 's/[v\-]//g')" # Fetch new 1.x.y revision
+	current_ver="$(${CSCLI} version 2>&1 |grep version | awk '{print $4}' 2>&1 | sed -e 's/[varch-]//g')" # Query existing 1.x.y revision
+	new_ver="$(./cmd/crowdsec-cli/cscli version | grep version | awk '{print $4}' 2>&1| sed -e 's/[varch\-]//g')" # Fetch new 1.x.y revision
 	
 	# Check the 1.x revision 
 	IFS="." read -r -a current_ver_rev  <<< "$current_ver"
