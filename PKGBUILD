@@ -9,7 +9,7 @@ url="https://pypi.org/project/jxlpy/"
 arch=(any)
 license=('GPL3')
 depends=('python' 'libjxl')
-makedepends=('python-setuptools' 'cython')
+makedepends=('python-setuptools' 'cython' 'git')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/olokelo/jxlpy/archive/${pkgver}.tar.gz")
 sha256sums=('3ff9425833837905fe12a155c3dddbaf9361f5a7b4cfa79abbef050ca4b0653f')
 
