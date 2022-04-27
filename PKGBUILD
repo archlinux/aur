@@ -1,7 +1,7 @@
 # Contributor: taotieren <admin@taotieren.com>
 
 pkgname=lceda-pro-bin
-pkgver=1.5.32
+pkgver=1.6.29
 pkgrel=1
 pkgdesc="立创EDA专业版，专业、强大的国产PCB设计工具，永久免费全新的交互式布线引擎，流畅，不卡顿，完全的独立自主知识产权，让您放心专注于设计，下一代工程师的首选EDA工具"
 arch=('x86_64')
@@ -18,7 +18,7 @@ install=${pkgname}.install
 source=("${pkgname%-bin}-${pkgver}.zip::https://image.lceda.cn/files/lceda-pro-linux-x64-${pkgver}.zip"
         "LICENSE"
         "${pkgname}.install")
-sha256sums=('dc3c08c7d9168d83e2c08c9f6c27ea3d3d61f08804d234a22690bf820c8488ab'
+sha256sums=('8d0c46ee23f05c6c285a36ed1ae7c09aa342e28a837281cc405c21e6dd99406d'
             '686f681d913d7f943bb5aac66cc902f2eb251e7a20fda43412c048d6134b3592'
             'f8c3c7f65443801b8a70e40de7cdceade5dcd75974945695dd5a1bfb1f862e1a')
 # noextract=(${pkgname%-bin}-${pkgver}.zip)
