@@ -1,6 +1,6 @@
 pkgbase = cardano-node
 	pkgdesc = The core component that is used to participate in a Cardano decentralised blockchain.
-	pkgver = 1.33.0
+	pkgver = 1.34.1
 	pkgrel = 1
 	url = https://github.com/input-output-hk/cardano-node
 	arch = any
@@ -14,17 +14,17 @@ pkgbase = cardano-node
 	backup = var/lib/cardano-node/config/mainnet-topology.json
 	backup = var/lib/cardano-node/config/testnet-config.json
 	backup = var/lib/cardano-node/config/testnet-topology.json
-	source = git+https://github.com/input-output-hk/cardano-node.git#tag=1.33.0
-	source = https://hydra.iohk.io/build/7654130/download/1/mainnet-config.json
-	source = https://hydra.iohk.io/build/7654130/download/1/mainnet-byron-genesis.json
-	source = https://hydra.iohk.io/build/7654130/download/1/mainnet-shelley-genesis.json
-	source = https://hydra.iohk.io/build/7654130/download/1/mainnet-alonzo-genesis.json
-	source = https://hydra.iohk.io/build/7654130/download/1/mainnet-topology.json
-	source = https://hydra.iohk.io/build/7654130/download/1/testnet-config.json
-	source = https://hydra.iohk.io/build/7654130/download/1/testnet-byron-genesis.json
-	source = https://hydra.iohk.io/build/7654130/download/1/testnet-shelley-genesis.json
-	source = https://hydra.iohk.io/build/7654130/download/1/testnet-alonzo-genesis.json
-	source = https://hydra.iohk.io/build/7654130/download/1/testnet-topology.json
+	source = git+https://github.com/input-output-hk/cardano-node.git#tag=1.34.1
+	source = https://hydra.iohk.io/build/13695229/download/1/mainnet-config.json
+	source = https://hydra.iohk.io/build/13695229/download/1/mainnet-byron-genesis.json
+	source = https://hydra.iohk.io/build/13695229/download/1/mainnet-shelley-genesis.json
+	source = https://hydra.iohk.io/build/13695229/download/1/mainnet-alonzo-genesis.json
+	source = https://hydra.iohk.io/build/13695229/download/1/mainnet-topology.json
+	source = https://hydra.iohk.io/build/13695229/download/1/testnet-config.json
+	source = https://hydra.iohk.io/build/13695229/download/1/testnet-byron-genesis.json
+	source = https://hydra.iohk.io/build/13695229/download/1/testnet-shelley-genesis.json
+	source = https://hydra.iohk.io/build/13695229/download/1/testnet-alonzo-genesis.json
+	source = https://hydra.iohk.io/build/13695229/download/1/testnet-topology.json
 	source = cardano-node.sysusers
 	source = cardano-node.tmpfiles
 	source = cardano-node.service

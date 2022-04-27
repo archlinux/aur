@@ -1,6 +1,6 @@
 # Maintainer: Michał Sałaban <michal@salaban.info>
 pkgname=cardano-node
-pkgver=1.33.0
+pkgver=1.34.1
 pkgrel=1
 pkgdesc='The core component that is used to participate in a Cardano decentralised blockchain.'
 license=('Apache')
@@ -16,7 +16,7 @@ depends=('libsodium')
 #
 # The latest build is reachable via the following redirection link:
 # https://hydra.iohk.io/job/Cardano/cardano-node/cardano-deployment/latest-finished/download/1/index.html
-_config_build="7654130"
+_config_build="13695229"
 #
 backup=("etc/conf.d/cardano-node"
         "var/lib/cardano-node/config/mainnet-config.json"
