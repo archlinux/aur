@@ -1,19 +1,28 @@
 pkgbase = openal-hrtf
-	pkgdesc = Enable binaural audio globally in 3d applications
+	pkgdesc = Generate HRTF datasets for OpenAL
 	pkgver = 1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://wiki.archlinux.org/index.php/Gaming
 	arch = i686
 	arch = x86_64
-	license = LGPL
-	depends = openal>=1.14
-	noextract = data02.tgz
-	source = http://kcat.strangesoft.net/openal-releases/openal-soft-1.15.1.tar.bz2
-	source = http://www.sp.m.is.nagoya-u.ac.jp/HRTF/archive/data02.tgz
-	source = alsoftrc
-	md5sums = SKIP
-	md5sums = SKIP
-	md5sums = SKIP
+	license = custom
+	depends = openal
+	noextract = CIAIR.tar.gz
+	noextract = IRC_1005.zip
+	noextract = MIT_KEMAR.zip
+	source = https://openal-soft.org/openal-releases/openal-soft-1.17.2.tar.bz2
+	source = https://openal-soft.org/openal-releases/openal-soft-1.22.0.tar.bz2
+	source = CIAIR.tar.gz::http://www.sp.m.is.nagoya-u.ac.jp/HRTF/archive/data02.tgz
+	source = ftp://ftp.ircam.fr/pub/IRCAM/equipes/salles/listen/archive/SUBJECTS/IRC_1005.zip
+	source = MIT_KEMAR.zip::http://sound.media.mit.edu/resources/KEMAR/full.zip
+	source = http://sofacoustics.org/data/database/mit/mit_kemar_normal_pinna.sofa
+	source = http://sofacoustics.org/data/database/scut/SCUT_KEMAR_radius_all.sofa
+	sha256sums = a341f8542f1f0b8c65241a17da13d073f18ec06658e1a1606a8ecc8bbc2b3314
+	sha256sums = ce0f9300de3de7bc737b0be2a995619446e493521d070950eea53eddd533fc9b
+	sha256sums = 9ed522abbf34f5e3e049fc0371f597798fea3586d565daf6eea79884d9c9334c
+	sha256sums = 1c34116d4eeb02958d55f5e8803b593d05f1bc384e79ae1e447503f419929773
+	sha256sums = 3fb533f7af95a6c07944f31a2a1d9dca0c77ab525a44865fc508009efb692ef6
+	sha256sums = e7035994f5fd754058424c061380ee92b1d5ed58fccef2887a4266916616acdf
+	sha256sums = 789cf1cbc03076e0cecb9b8a4b123e7bdef2333acd52513f3c26b65eb62923e9
 
 pkgname = openal-hrtf
-
