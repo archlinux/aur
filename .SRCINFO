@@ -1,6 +1,6 @@
 pkgbase = griver
 	pkgdesc = Small database generator for iriver H100/H300 devices based on libiriverdb.
-	pkgver = 0.2.4
+	pkgver = 0.2.5
 	pkgrel = 1
 	url = https://github.com/prg318/griver
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = griver
 	depends = python2
 	depends = libiriverdb
 	depends = pygtk
-	source = https://github.com/prg318/griver/archive/refs/tags/v0.2.4.tar.gz
-	sha256sums = 3977633d42c954b42d3550a8ed83f2a9575e0d2261964628263e788bb9146c33
+	source = https://github.com/prg318/griver/archive/refs/tags/v0.2.5.tar.gz
+	sha256sums = 988031f0a6bbba529ffd1ef1628aac6fe1a9e47251731591e92222671511bcee
 
 pkgname = griver
