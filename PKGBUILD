@@ -48,10 +48,10 @@ _1k_HZ_ticks=
 pkgbase=linux-aufs
 # pkgname=('linux-aufs' 'linux-aufs-headers' 'linux-aufs-docs')
 _major=5.17
-_minor=4
+_minor=5
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=3
+pkgrel=1
 pkgdesc='Linux AUFS'
 arch=('x86_64')
 url="https://github.com/sfjro/aufs5-standalone"
@@ -72,14 +72,13 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
         "https://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.sign"
         "${_lucjanpath}/${_aufs_path}/${_aufs_patch}"
         "${_lucjanpath}/${_compiler_path}/${_compiler_patch}"
-        "${_lucjanpath}/arch-patches-v15-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
-        "${_lucjanpath}/arch-patches-v15-sep/0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch"
-        "${_lucjanpath}/arch-patches-v15-sep/0003-tick-Detect-and-fix-jiffies-update-stall.patch"
-        "${_lucjanpath}/arch-patches-v15-sep/0004-tick-rcu-Remove-obsolete-rcu_needs_cpu-parameters.patch"
-        "${_lucjanpath}/arch-patches-v15-sep/0005-tick-rcu-Stop-allowing-RCU_SOFTIRQ-in-idle.patch"
-        "${_lucjanpath}/arch-patches-v15-sep/0006-lib-irq_poll-Declare-IRQ_POLL-softirq-vector-as-ksof.patch"
-        "${_lucjanpath}/arch-patches-v15-sep/0007-gpio-Request-interrupts-after-IRQ-is-initialized.patch"
-        "${_lucjanpath}/arch-patches-v15-sep/0008-NFSv4.1-provide-mount-option-to-toggle-trunking-disc.patch"
+        "${_lucjanpath}/arch-patches-v16-sep/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch"
+        "${_lucjanpath}/arch-patches-v16-sep/0002-random-treat-bootloader-trust-toggle-the-same-way-as.patch"
+        "${_lucjanpath}/arch-patches-v16-sep/0003-tick-Detect-and-fix-jiffies-update-stall.patch"
+        "${_lucjanpath}/arch-patches-v16-sep/0004-tick-rcu-Remove-obsolete-rcu_needs_cpu-parameters.patch"
+        "${_lucjanpath}/arch-patches-v16-sep/0005-tick-rcu-Stop-allowing-RCU_SOFTIRQ-in-idle.patch"
+        "${_lucjanpath}/arch-patches-v16-sep/0006-lib-irq_poll-Declare-IRQ_POLL-softirq-vector-as-ksof.patch"
+        "${_lucjanpath}/arch-patches-v16-sep/0007-NFSv4.1-provide-mount-option-to-toggle-trunking-disc.patch"
          # the main kernel config files
         'config')
 
@@ -320,18 +319,17 @@ for _p in "${pkgname[@]}"; do
   }"
 done
 
-sha512sums=('a0f1945eb61527aac886875a83ad720bff3d6cd06ed0ee92ff7795e4f854d797f7688a102f1e8aa4425e96aab789f4b4c82104591de32fdf34ffd5c13622bbf3'
+sha512sums=('9a0b97b0179094fa4c3f91ad1f94ac274b4b7946b3c5112995fd5f60b263389772491f1a756186bb638ee868d42ccd7449cb9aa3227f1637949b6b54418c6bab'
             'SKIP'
             '87e88b3e4bccbf7b21eb5ffe5971f4e85593b153ea0c4ef3a7f17715812ef1478e16786cab42fcfe226f4933091280c068ad89c08ba9b264887baffcf522d87d'
             'b63921b6246bd1b9545a8042d76334bef8a7ee46e5404c5efec4a842a455a84046e92423b2bc6d950f19dcf85805d7493fe71d6d177e3b46b52a279b0a44d0c9'
-            'e46caf09f93297e8dc906cbd333314295d87a71e0c6d3e236d1be7eb7d7aea635093699d869bae3b5388ff20ac09b53d23e708bb0f05578a4ee440507c2696bf'
-            'ef438b99826e2f967114719c96f98d76a23e66f9bb6577d46c5bc0b9132dce966f1bd0d24d1b19ed916e534141b3a73da38e63565381d2ff09e89ce6fdd64ee6'
-            'e98a9e0bc3f798e33fc0fa42434b3f8c03456f66f0b95f419aaeb77b71d9e60b02d1559bf1bb31c0376fd73aee824dcdcfbf619da3fbe6345db6e7b645c6d99b'
-            '0c9ea6c73693cf91699c9691f424d80a11de860585d2d1f522ccfa34506e9dd4de3bac7d2b7226e09cc4f3daf0f5e0beec2b921829a911d280d9c0b2ea649b78'
-            'b4fb5de2d839e3a1db854d8efeb4f604df1dd6de4bb0367a5bff873c1515f003a5fca8f115ae96ed3669de62ef0ce18039313f103aa0f868808c51985aee06e2'
-            'c713e61cc1cf2d9402dd419f8c5367e7f4c0c0444ffd8c56c8407d943286bc104a315e8f4547d522b973b23ed4722137c82a2716b3c43710e0e38307994911d8'
-            '61e0469fd061af316cd896f87c3d87a99687a1d9fe85f1a4fcc3dafcbe4c489fd42d3ee7ba9b9691f643c5f442f5a2bd5d0ffb1b1081415ec1030aa4ba85123d'
-            'e3f7d5889e136724b94fee7feef25e412eac1c149e7049afbf25513b08e642a99dda5385e3246914fe18e04dcde7e48a09a264a77f442aab1cf97e26208a9026'
+            'db7645d57a8439e60f68dc58bcf26c106f170847a4dc2ce8de1fae1e021382d5330676fadd7af49519b5bb7e1f0b28a66595b4eaf32ea1c616d4e2c95fae9a23'
+            'e898db1663004c60758f74868da0fc4c36cb9c20cb53768b875f12b1af86c9b9d1891f6046ae3a06213b4a6e4259d34b86be865713c85883fef80259a966e558'
+            '1134a0e8bedef8e4c0305c85d2bb0652c4af0d403f0e961a157f3e4faf1cee2637aa219533009cb79db657cb583e8f013e5891980ad41536b17f391fbd38266b'
+            'd45f7d4dd7d54302afdae31c66aac5bf92b8fe42154bd4969dee0d3f96dfbdf9d747a732cd69f80110fa27790a6c57d4c3bf7c27f6f207015d2caf95311685d7'
+            '9d905da7321f165ed36bf42803f80a386c1d09c6335919164871a03dc15ffe8e1204de522099051f3effc07b126f5b2d692f3f7c20d576a384eb56540af890b6'
+            'de068782a004f79be4d56a6b207ea1dafc9aeb71688f26ee5f7c5ea1df17e63a29484bba10be1418a2f3643426541471d1bc28a699cfa94f86dc494e44f36712'
+            'e0f473fa58e4aa54aa598f5bd5af15b9d3055a7f9cefb73e050ae6602b4474ec4bce60a863f3ab6c2b28c313e9e104cbfedbe782edf0d51b3f136ea9863a4bc4'
             'e99adee8d2440010fc6298a30d22165d3a5c1a5bc8a6da272354d9c32146a259aa32979cdda20095a25926b5a582056375d8ed30bce9ea2007b7dd66f8afa499')
 
 validpgpkeys=(
