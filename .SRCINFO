@@ -6,7 +6,7 @@ pkgbase = python-pip_search
 	arch = any
 	depends = python-pip
 	depends = python-rich
-	depends = python-bs4
+	depends = python-beautifulsoup4
 	source = python-pip_search-0.0.11.tar.gz::https://github.com/victorgarric/pip_search/releases/download/0.0.11/pip_search-0.0.11.tar.gz
 	sha256sums = aad2e71aac70bea6dd2022773c67bb37a6374c8e109c214ef19dea05227b7028
 
