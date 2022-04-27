@@ -1,7 +1,7 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=dsq
-pkgver=0.15.1
+pkgver=0.16.0
 pkgrel=1
 pkgdesc="CLI tool for running SQL queries against JSON/CSV/Excel/Parquet and more"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('git' 'go')
 checkdepends=('python' 'jq')
 options=('!lto')
-_commit='2df2cbd77cdaf9d6e546e5d4054875714bc4de95'
+_commit='e07058e422b02efb89627bc778119ce23a48d258'
 source=("$pkgname::git+$url.git#commit=$_commit")
 md5sums=('SKIP')
 
@@ -28,6 +28,7 @@ prepare() {
   go mod download
 
   # fix failing test
+  # NOTE: this still fails when _commit is changed, and pkgver is not.
   sed \
     -i scripts/test.py \
     -e "s/dsq latest/dsq $pkgver/"
