@@ -2,11 +2,12 @@ pkgbase = featherpad-git
 	pkgdesc = Lightweight Qt5 plain text editor for Linux
 	pkgver = 0.10.0.2.gac3e510
 	pkgrel = 1
-	url = https://github.com/tsujan/FeatherPad
+	url = https://github.com/tsujan/featherpad
 	arch = i686
 	arch = x86_64
 	license = GPL3
 	makedepends = git
+	makedepends = cmake
 	makedepends = qt5-tools
 	depends = qt5-svg
 	depends = qt5-x11extras
@@ -16,8 +17,7 @@ pkgbase = featherpad-git
 	optdepends = qt5-translations: localized keyboard shortcuts
 	provides = featherpad
 	conflicts = featherpad
-	source = featherpad::git+https://github.com/tsujan/FeatherPad.git
+	source = git+https://github.com/tsujan/featherpad.git
 	sha256sums = SKIP
 
 pkgname = featherpad-git
-
