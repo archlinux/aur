@@ -5,6 +5,7 @@ arch=('i686' 'x86_64')
 license=('custom')
 pkgdesc="Generate HRTF datasets for OpenAL"
 depends=('openal')
+makedepends=('unzip')
 url="https://wiki.archlinux.org/index.php/Gaming"
 source=("https://openal-soft.org/openal-releases/openal-soft-1.17.2.tar.bz2"
         "https://openal-soft.org/openal-releases/openal-soft-1.22.0.tar.bz2"
@@ -30,7 +31,6 @@ prepare() {
   ln -sf "$srcdir/mit_kemar_normal_pinna.sofa" "$srcdir/MIT_KEMAR_sofa/mit_kemar_normal_pinna.sofa"
   ln -sf "$srcdir/SCUT_KEMAR_radius_all.sofa" "$srcdir/SCUT_KEMAR/SCUT_KEMAR_radius_all.sofa"
 }
-
 
 build() {
   tables_old=("CIAIR" "IRC_1005" "MIT_KEMAR")
