@@ -1,16 +1,19 @@
 pkgbase = su2
 	pkgdesc = An Open-Source Suite for Multiphysics Simulation and Design
-	pkgver = 7.2.1
+	pkgver = 7.3.1
 	pkgrel = 1
 	url = https://su2code.github.io
 	arch = x86_64
 	license = LGPL2.1
-	makedepends = gcc-fortran
 	makedepends = swig
+	makedepends = git
+	depends = python-numpy
 	depends = python-mpi4py
-	source = su2-7.2.1.tar.gz::https://github.com/su2code/SU2/archive/v7.2.1.tar.gz
+	depends = intel-mkl
+	depends = openblas
+	source = SU2-7.3.1::git+https://github.com/su2code/SU2.git#tag=v7.3.1
 	source = su2.sh
-	sha256sums = 4b4580136c4f686791a3e973d7b6a4a589cb329b2bc4232fa6be57a56de65cae
-	sha256sums = ff2123f09f5be843dae935b355d92d39bb1c264cbc8dc5de08168f1c84fe3881
+	sha512sums = SKIP
+	sha512sums = 1c753dc503cc56f86f784071a18ae71dd6fbf64a6d7948275f65cfb1187a68dbff9c01729ffdde86147fb2b8ff25cb5aaa934ffda7d3aa1563313a033d650993
 
 pkgname = su2
