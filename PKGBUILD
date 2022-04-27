@@ -3,8 +3,8 @@
 # Contributor: Funkin-Stoopid <>
 
 pkgname=mkv-extractor-qt
-pkgver=5.5.9
-pkgrel=2
+pkgver=5.5.10
+pkgrel=1
 pkgdesc="Graphical MKV demultiplexer"
 arch=('any')
 url='http://forum.ubuntu-fr.org/viewtopic.php?id=1508741'
@@ -20,22 +20,17 @@ optdepends=('ffmpeg: for DTS conversion'
             'bdsup2subpp: SUP subtitle conversion')
 conflicts=('mkv-extractor-gui')
 replaces=('mkv-extractor-gui')
-source=('https://github.com/Hizoka76/MKV-Extractor-Qt5/archive/c321f99cc00a89165a1f17b2c01a66a6bf6fbcd6.tar.gz'
-        'move.patch')
-sha256sums=('ba4ef604b7fff30ed4514b6019c1e76b2799a3065e1f523609a4256edb3f499e'
-            '53e95957e08d459552364a8ff35ea2553388aaceaf091866c0bb9f3c2c1e43b4')
+source=("https://github.com/Hizoka76/MKV-Extractor-Qt5/archive/v${pkgver}.tar.gz")
+sha256sums=('d7f73af02dcb4b7e19a0a52420f1435497e2d5c208919cc6746a3d564f7785ba')
 
 prepare() {
-  cd MKV-Extractor-Qt5*
+  cd "MKV-Extractor-Qt5-${pkgver}"
 
   sed -e 's|/usr/lib/x86_64-linux-gnu/qt5/bin/lrelease|/usr/bin/lrelease-qt5|g' \
       -e 's|/usr/lib/i386-linux-gnu/qt5/bin/lrelease|/usr/bin/lrelease-qt5|g' \
       -i build.sh
   sed -e 's|/usr/share/icons/hicolor/scalable/apps/||g' \
       -i mkv-extractor-qt5.desktop
-
-  # Patch: move: argument 1 has unexpected type 'float'
-  patch --forward --strip=1 --input="${srcdir}/move.patch"
 
   # Use bdsup2subpp instead of java app
   sed 's|BDSup2Sub.jar|bdsup2subpp|g' -i MKVExtractorQt5.py
@@ -47,12 +42,12 @@ prepare() {
 }
 
 build() {
-  cd MKV-Extractor-Qt5*
+  cd "MKV-Extractor-Qt5-${pkgver}"
   sh ./build.sh
 }
 
 package() {
-  cd MKV-Extractor-Qt5*
+  cd "MKV-Extractor-Qt5-${pkgver}"
 
   install -d "${pkgdir}/usr/bin"
   ln -s "/usr/share/${pkgname}/MKVExtractorQt5.py" "${pkgdir}/usr/bin/mkv-extractor-qt5"
