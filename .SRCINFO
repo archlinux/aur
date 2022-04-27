@@ -1,7 +1,7 @@
 pkgbase = widelands-git
 	pkgdesc = An elaborate realtime multiplayer strategy game with emphasis on economy and transport - development version. In the spirit of BlueByte's 'Siedler II/ Settlers 2'.
-	pkgver = 21+r24821_20200828_7f72ddf
-	pkgrel = 6
+	pkgver = 1.1+git
+	pkgrel = 1
 	epoch = 0
 	url = http://widelands.org/
 	arch = aarch64
@@ -10,9 +10,7 @@ pkgbase = widelands-git
 	license = GPL2
 	makedepends = cmake
 	makedepends = coreutils
-	makedepends = doxygen
 	makedepends = git
-	makedepends = graphviz
 	makedepends = python
 	depends = asio
 	depends = gettext
@@ -23,11 +21,12 @@ pkgbase = widelands-git
 	depends = sdl2_mixer
 	depends = sdl2_ttf
 	depends = zlib
-	provides = widelands=21+r24821_20200828_7f72ddf
+	optdepends = minizip: use system minizip instead of embedded one
+	provides = widelands=1.1+git
 	conflicts = widelands
 	conflicts = widelands-bzr
 	conflicts = widelands-data
-	replaces = widelands-bzr<=21+r24821_20200828_7f72ddf
+	replaces = widelands-bzr<=1.1+git
 	options = !strip
 	source = widelands::git+https://github.com/widelands/widelands.git
 	sha256sums = SKIP

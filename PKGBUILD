@@ -1,4 +1,5 @@
-# Maintainer: dreieck
+# Maintainer: matthiakl <t-m · 42 _strange_curved_character_ mailpost · spdns · org>
+# Contributor: dreieck
 # Contributor: Gabriel Margiani (gamag) <gabriel _strange_curved_character_ margiani · ch>
 # Contributor: matthiaskrgr <matthias · krueger _strange_curved_character_ famsike · de>
 
@@ -6,8 +7,8 @@ _pkgname=widelands
 pkgname="${_pkgname}-git"
 epoch=0
 _pkgver=latest
-pkgver=21+r24821_20200828_7f72ddf
-pkgrel=6
+pkgver=1.1+git25734_aa65c41_20220428
+pkgrel=1
 pkgdesc="An elaborate realtime multiplayer strategy game with emphasis on economy and transport - development version. In the spirit of BlueByte's 'Siedler II/ Settlers 2'."
 url="http://widelands.org/"
 arch=(
@@ -30,12 +31,12 @@ depends=(
 makedepends=(
   'cmake'     # For configuring the build
   'coreutils' # For `nproc`
-  'doxygen'   # For documentation (?)
   'git'       # For getting the source
-  'graphviz'  # For documentation (?)
-  'python'
+  'python'    # For revision detection
 )
-optdepends=()
+optdepends=(
+  'minizip: use system minizip instead of embedded one'
+)
 provides=(
   "${_pkgname}=${pkgver}"
 )
@@ -83,7 +84,7 @@ pkgver() {
   cd "${srcdir}/${_pkgname}"
 
   _get_build_ver() {
-    grep -Ei 'build[[:space:]]+[0-9]+' "ChangeLog" | head -n 1 | sed -E 's|^.*[Bb]uild[[:space:]]+([0-9]+).*$|\1|'
+    cat NEXT_STABLE_VERSION
   }
   _get_git_commit_count() {
     git rev-list --count HEAD
@@ -117,7 +118,7 @@ pkgver() {
     return 14
   fi
 
-  printf "%s" "${_ver}+r${_rev}_${_date}_${_hash}"
+  printf "%s" "${_ver}+git${_rev}_${_hash}_${_date}"
 }
 
 
@@ -159,7 +160,6 @@ build() {
   fi
 
   msg2 'Running `cmake` ...'
-  # YES, -DCMAKE_INSTALL_PREFIX="/usr/bin" is corrent (nothing ${pkgdir}-related!!).
   # If this failes on an existing build because of an mismatch of src and build cmake files, just delete build and try again.
   cmake \
     -DBUILD_TESTING=ON \
@@ -170,13 +170,12 @@ build() {
     -DCMAKE_C_FLAGS_RELEASE="${CFLAGS} -DNDEBUG" \
     -DCMAKE_EXE_LINKER_FLAGS="" \
     -DCMAKE_EXE_LINKER_FLAGS_RELEASE="${LDFLAGS}" \
-    -DCMAKE_INSTALL_PREFIX="/usr/bin" \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
     -DCMAKE_MODULE_LINKER_FLAGS="${LDFLAGS}" \
     -DCMAKE_SHARED_LINKER_FLAGS="${LDFLAGS}" \
     -DCMAKE_STATIC_LINKER_FLAGS="" \
     -DGETTEXT_MSGFMT_EXECUTABLE=/usr/bin/msgfmt \
     -DGETTEXT_MSGMERGE_EXECUTABLE=/usr/bin/msgmerge \
-    -DICU_CONFIG_EXECUTABLE=/usr/bin/icu-config \
     -DOPTION_ASAN=OFF \
     -DOPTION_BUILD_CODECHECK=OFF \
     -DOPTION_BUILD_TESTS=ON \
@@ -186,7 +185,9 @@ build() {
     -DOPTION_USE_GLBINDING=OFF \
     -DOpenGL_GL_PREFERENCE=LEGACY \
     -DUSE_XDG=OFF \
+    -DWL_INSTALL_BASEDIR=/usr/share/doc/${_pkgname} \
     -DWL_INSTALL_DATADIR=/usr/share/widelands \
+    -DWL_INSTALL_BINDIR=/usr/bin \
     ..
 
   msg2 'Running `make` ...'
@@ -211,9 +212,6 @@ package() {
 
   msg2 'Installing additional documentation files ...'
   cd "${srcdir}/${_pkgname}"
-  for _docfile in CREDITS ChangeLog; do
-    install -D -v -m644 "${_docfile}" "${pkgdir}/usr/share/doc/${_pkgname}/${_docfile}"
-  done
   install -D -v -m644 "${srcdir}/${_gitlog}" "${pkgdir}/usr/share/doc/${_pkgname}/git-log.txt"
 
 ### When re-activating the following, also uncomment the line which sets ${_keep_translations[]}!
