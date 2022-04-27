@@ -6,14 +6,14 @@ _module="$_name"
 
 pkgname=("python-$_module")
 pkgver=1.0.0
-pkgrel=5
+pkgrel=6
 pkgdesc="A support library for building plugins systems in Python."
 arch=("any")
 url="http://pluginbase.pocoo.org/"
 license=("BSD")
 makedepends=("python-setuptools")
 depends=("python")
-source=("https://github.com/mitsuhiko/pluginbase/archive/$pkgver.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/mitsuhiko/pluginbase/archive/$pkgver.tar.gz")
 sha256sums=('ab0e5fc405f1d28abe99724943ad54b5e7fb1c2f6b1519f0942e2074e6c8c22a')
 
 build() {
