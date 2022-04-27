@@ -1,4 +1,4 @@
-pkgbase = korai
+pkgbase = korai-git
 	pkgdesc = Fast, reliable and feature-packed manga and comics reader
 	pkgver = 0.1.1
 	pkgrel = 1

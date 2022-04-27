@@ -1,5 +1,5 @@
 # Maintainer: DisableGraphics elchifladod@gmail.com
-pkgbase="korai"
+pkgbase="korai-git"
 pkgname="korai"
 pkgrel=1
 pkgver=0.1.1
