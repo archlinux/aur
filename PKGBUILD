@@ -2,6 +2,7 @@
 
 pkgname=libsdrplay-raspberry-aarch64
 pkgver=3.07.1
+_apivers=3.07
 pkgrel=1
 pkgdesc="Modules for the SDRplay receiver"
 arch=('aarch64')
@@ -21,9 +22,6 @@ prepare() {
 
 package() {
 	cd "${srcdir}"
-	
-	msg2 "Getting API version..."
-	_apivers=$(sed -n 's/^VERS="\(.*\)"/\1/p' install_lib.sh)
 	msg2 "API version: ${_apivers}"
 
 	# These commands are equivalent to the scripts used in the supplied
