@@ -1,0 +1,112 @@
+From 8fc8516d9a707d047a4b02168b59828ed8ea51f6 Mon Sep 17 00:00:00 2001
+From: Tim Mok <tim.mok@rstudio.com>
+Date: Mon, 11 Apr 2022 10:52:13 -0400
+Subject: [PATCH] Update Quarto to v0.9.230
+
+Change default and Mac Pandoc lookup locations when using packaged Quarto
+---
+ dependencies/common/install-quarto                   | 2 +-
+ dependencies/tools/upload-quarto.sh                  | 2 +-
+ dependencies/windows/install-dependencies.cmd        | 2 +-
+ src/cpp/session/CMakeLists.txt                       | 2 +-
+ src/cpp/session/SessionOptions.cpp                   | 2 +-
+ src/cpp/session/include/session/SessionConstants.hpp | 2 +-
+ src/cpp/session/modules/quarto/SessionQuarto.cpp     | 4 ++--
+ src/cpp/session/session-options.json                 | 2 +-
+ 8 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/dependencies/common/install-quarto b/dependencies/common/install-quarto
+index fb96028a713..2003fc2dbba 100755
+--- a/dependencies/common/install-quarto
++++ b/dependencies/common/install-quarto
+@@ -26,7 +26,7 @@ if [ "$(arch)" = "aarch64" ]; then
+ fi
+ 
+ # variables that control download + installation process
+-QUARTO_VERSION="0.9.80"
++QUARTO_VERSION="0.9.230"
+ QUARTO_SUBDIR="quarto"
+ QUARTO_URL_BASE="https://s3.amazonaws.com/rstudio-buildtools/quarto/${QUARTO_VERSION}"
+ 
+diff --git a/dependencies/tools/upload-quarto.sh b/dependencies/tools/upload-quarto.sh
+index ad4140988d8..e6e6ae6773c 100755
+--- a/dependencies/tools/upload-quarto.sh
++++ b/dependencies/tools/upload-quarto.sh
+@@ -5,7 +5,7 @@
+ # tools (awscli) installed, and configured with a valid AWS account.
+ 
+ # Modify to set the Quarto version to upload
+-QUARTO_VERSION=0.9.80
++QUARTO_VERSION=0.9.230
+ 
+ BASEURL="https://github.com/quarto-dev/quarto-cli/releases/download/"
+ AWS_BUCKET="s3://rstudio-buildtools"
+diff --git a/dependencies/windows/install-dependencies.cmd b/dependencies/windows/install-dependencies.cmd
+index 15660710524..0511a94dfea 100644
+--- a/dependencies/windows/install-dependencies.cmd
++++ b/dependencies/windows/install-dependencies.cmd
+@@ -39,7 +39,7 @@ set PANDOC_VERSION=2.16.2
+ set PANDOC_NAME=pandoc-%PANDOC_VERSION%
+ set PANDOC_FILE=%PANDOC_NAME%-windows-x86_64.zip
+ 
+-set QUARTO_VERSION=0.9.80
++set QUARTO_VERSION=0.9.230
+ set QUARTO_FILE=quarto-%QUARTO_VERSION%-win.zip
+ 
+ set LIBCLANG_VERSION=5.0.2
+diff --git a/src/cpp/session/CMakeLists.txt b/src/cpp/session/CMakeLists.txt
+index 0485e3e6ca8..a2aebf8a7bd 100644
+--- a/src/cpp/session/CMakeLists.txt
++++ b/src/cpp/session/CMakeLists.txt
+@@ -56,7 +56,7 @@ endif()
+ # - by default, we use quarto + quarto's bundled pandoc
+ # - if quarto is not enabled, use pandoc fallback
+ if(QUARTO_ENABLED)
+-   set(RSTUDIO_DEPENDENCIES_PANDOC_DIR "${RSTUDIO_DEPENDENCIES_QUARTO_DIR}/bin")
++   set(RSTUDIO_DEPENDENCIES_PANDOC_DIR "${RSTUDIO_DEPENDENCIES_QUARTO_DIR}/bin/tools")
+ elseif(EXISTS "${RSTUDIO_TOOLS_ROOT}/pandoc/${PANDOC_VERSION}")
+    set(RSTUDIO_DEPENDENCIES_PANDOC_DIR "${RSTUDIO_TOOLS_ROOT}/pandoc/${PANDOC_VERSION}")
+ else()
+diff --git a/src/cpp/session/include/session/SessionConstants.hpp b/src/cpp/session/include/session/SessionConstants.hpp
+index 13e72e5a5b5..69b29685252 100644
+--- a/src/cpp/session/include/session/SessionConstants.hpp
++++ b/src/cpp/session/include/session/SessionConstants.hpp
+@@ -138,7 +138,7 @@
+ #define kSessionTmpDir             "rstudio-rsession"
+ 
+ #ifdef QUARTO_ENABLED
+-# define kDefaultPandocPath        "bin/quarto/bin"
++# define kDefaultPandocPath        "bin/quarto/bin/tools"
+ #else
+ # define kDefaultPandocPath        "bin/pandoc"
+ #endif
+diff --git a/src/cpp/session/modules/quarto/SessionQuarto.cpp b/src/cpp/session/modules/quarto/SessionQuarto.cpp
+index abea5b8620c..d359adf4e95 100644
+--- a/src/cpp/session/modules/quarto/SessionQuarto.cpp
++++ b/src/cpp/session/modules/quarto/SessionQuarto.cpp
+@@ -207,10 +207,10 @@ void detectQuartoInstallation()
+ {
+ #ifdef QUARTO_ENABLED
+    // required quarto version (quarto features don't work w/o it)
+-   const Version kQuartoRequiredVersion("0.9.80");
++   const Version kQuartoRequiredVersion("0.9.230");
+ 
+    // recommended quarto version (a bit more pestery than required)
+-   const Version kQuartoRecommendedVersion("0.9.80");
++   const Version kQuartoRecommendedVersion("0.9.230");
+ 
+    // reset
+    s_userInstalledPath = FilePath();
+diff --git a/src/cpp/session/session-options.json b/src/cpp/session/session-options.json
+index e79189b8196..ac1f16ba07d 100644
+--- a/src/cpp/session/session-options.json
++++ b/src/cpp/session/session-options.json
+@@ -694,7 +694,7 @@
+             "name": "external-pandoc-path",
+             "type": "core::FilePath",
+             "memberName": "pandocPath_",
+-            "defaultValue": {"code": "kDefaultPandocPath", "description": "bin/quarto/bin"},
++            "defaultValue": {"code": "kDefaultPandocPath", "description": "bin/quarto/bin/tools"},
+             "description": "Specifies the path to pandoc binaries."
+          },
+          {

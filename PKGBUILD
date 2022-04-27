@@ -16,7 +16,7 @@ _ginver=2.1.2
 _nodever=14.17.5
 _quarto="FALSE"
 
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('x86_64')
 url="https://www.rstudio.com/products/rstudio/"
@@ -36,7 +36,9 @@ source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs
         "https://nodejs.org/dist/v${_nodever}/node-v${_nodever}-linux-x64.tar.gz"
         "qt.conf"
         "cran_multithread.patch"
-        "sigstksz_gcc11.patch")
+        "sigstksz_gcc11.patch"
+        "10952.patch"
+        "quarto_pandoc_location.patch")
 
 sha256sums=('41e48e21ddc0a9c1ebf06ff16d846b0389720f2ee66d3fcfd5ff0707578b597d'
             'b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a'
@@ -44,7 +46,9 @@ sha256sums=('41e48e21ddc0a9c1ebf06ff16d846b0389720f2ee66d3fcfd5ff0707578b597d'
             'dc04c7e60235ff73536ba0d9e50638090f60cacabfd83184082dce3b330afc6e'
             '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
             'c907e6eec5ef324ad498b44fb9926bb5baafc4e0778ca01f6ba9b49dd3a2a980'
-            '7b8420db08f848f7baac0f3104c879ac7ce6e27e463f96a6b1c6589cd4b8df82')
+            '7b8420db08f848f7baac0f3104c879ac7ce6e27e463f96a6b1c6589cd4b8df82'
+            '71c41818d099c07d928aa9689a5fd57bb3dc187b9788a8d5cc528ef6208b7726'
+            'f496c8d012ec7211b7d76240932c1b33fc76c5bb756b354eb00dd5c4344baeab')
 
 noextract=("gin-${_ginver}.zip")
 
@@ -54,6 +58,11 @@ prepare() {
     sed "s/@@proc_num@@/${JOBS}/" -i ${srcdir}/cran_multithread.patch
     patch -p1 < ${srcdir}/cran_multithread.patch
     patch -p1 < ${srcdir}/sigstksz_gcc11.patch
+    # Fix for quarto/pandoc location
+    # https://github.com/rstudio/rstudio/pull/10952
+    patch -p1 < ${srcdir}/10952.patch
+    # Fix for missed path to new pandoc location in upstream
+    patch -p1 < ${srcdir}/quarto_pandoc_location.patch
 
     msg "Extracting dependencies..."
     cd "${srcdir}/${_srcname}/src/gwt"
@@ -79,9 +88,9 @@ prepare() {
 
     # Fix links for src/cpp/session/CMakeLists.txt
     cd "${srcdir}/${_srcname}/dependencies"
-    ln -sfT common/dictionaries dictionaries
-    ln -sfT common/mathjax-27 mathjax-27
-    ln -sfT common/pandoc pandoc
+    ln -sfT /usr/share/myspell/dicts dictionaries
+    ln -sfT /usr/share/mathjax2 mathjax-27
+    #ln -sfT /usr/bin/pandoc pandoc
 }
 
 build() {
@@ -93,9 +102,9 @@ build() {
         msg "Enabling Quarto support..."
         _quarto="TRUE"
         cd "${srcdir}/${_srcname}/dependencies"
-        install -d quarto/bin
+        install -d quarto/bin/tools
         ln -sfT /usr/bin/quarto quarto/bin/quarto
-        ln -sfT /usr/bin/pandoc quarto/bin/pandoc
+        ln -sfT /usr/bin/pandoc quarto/bin/tools/pandoc
     fi
 
     cd ${srcdir}

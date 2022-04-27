@@ -1,7 +1,7 @@
 pkgbase = rstudio-desktop
 	pkgdesc = A powerful and productive integrated development environment (IDE) for R programming language
 	pkgver = 2022.02.1+461
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.rstudio.com/products/rstudio/
 	arch = x86_64
 	license = AGPL3
@@ -49,6 +49,8 @@ pkgbase = rstudio-desktop
 	source = qt.conf
 	source = cran_multithread.patch
 	source = sigstksz_gcc11.patch
+	source = 10952.patch
+	source = quarto_pandoc_location.patch
 	sha256sums = 41e48e21ddc0a9c1ebf06ff16d846b0389720f2ee66d3fcfd5ff0707578b597d
 	sha256sums = b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a
 	sha256sums = 970701dacc55170088f5eb327137cb4a7581ebb4734188dfcc2fad9941745d1b
@@ -56,5 +58,7 @@ pkgbase = rstudio-desktop
 	sha256sums = 723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921
 	sha256sums = c907e6eec5ef324ad498b44fb9926bb5baafc4e0778ca01f6ba9b49dd3a2a980
 	sha256sums = 7b8420db08f848f7baac0f3104c879ac7ce6e27e463f96a6b1c6589cd4b8df82
+	sha256sums = 71c41818d099c07d928aa9689a5fd57bb3dc187b9788a8d5cc528ef6208b7726
+	sha256sums = f496c8d012ec7211b7d76240932c1b33fc76c5bb756b354eb00dd5c4344baeab
 
 pkgname = rstudio-desktop
