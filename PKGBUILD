@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=argc
-pkgver=0.8.0
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="A handy way to handle sh/bash cli parameters"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT' 'Apache')
 depends=('gcc-libs')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('eec492116c03214cb8cffa4fb7a8b257b29cae5d125168a3102a85e8412b8744235f93c44eed5b1fef6489fdd597559b878b01164cd9d24f10024b6e2225bfbd')
+sha512sums=('30c8da2d0d3342a7051928519031ec8aaae4c172e81b9c8411b104047fed786e3af39a00fff8965f0018b01372a8f1020cca9c25a7c9015d511037afb598329a')
 
 prepare() {
   cd "$pkgname-$pkgver"
