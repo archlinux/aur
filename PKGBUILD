@@ -3,7 +3,7 @@
 # Contributor: Mikita Iwanowski <info@slnt-opp.xyz>
 
 pkgname='nocloud-bin'
-pkgver=0.2.1
+pkgver=0.2.2
 pkgrel=1
 pkgdesc='NoCloud Platform CLI'
 url='https://github.com/slntopp/nocloud'
@@ -12,11 +12,11 @@ license=('Apache-2.0')
 provides=('NoCloudCLI')
 conflicts=('NoCloudCLI')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/slntopp/nocloud-cli/releases/download/v0.2.1-r2/nocloud_0.2.1-r2_Linux_arm64.tar.gz")
-sha256sums_aarch64=('9a3b9efb6d702702d56011a59b7fa781c07a6d729baba63b4262fdc2ceab6d50')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/slntopp/nocloud-cli/releases/download/v0.2.2-r1/nocloud_0.2.2-r1_Linux_arm64.tar.gz")
+sha256sums_aarch64=('4720002b3dd6d089e1dffa0209e533fe4413ee41a1ccd2259ac1ae49fbdb1eb3')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/slntopp/nocloud-cli/releases/download/v0.2.1-r2/nocloud_0.2.1-r2_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('db52d306074f283eb3c5359d5a8fb2dec9dc5a689444bbe680413b782ecec2d9')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/slntopp/nocloud-cli/releases/download/v0.2.2-r1/nocloud_0.2.2-r1_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('e066ffb011ea63ab67e0a9425b653a1888b8f0e8436a5a9ae3519e63e4572cb9')
 
 package() {
   install -Dm755 "./nocloud" "${pkgdir}/usr/bin/nocloud"
