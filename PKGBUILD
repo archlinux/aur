@@ -1,7 +1,7 @@
 # Maintainer: Strahinya Radich <contact@strahinja.org>
 pkgname=slweb
 pkgver=0.4.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple static website generator"
 arch=('x86_64')
 url="https://strahinja.srht.site/slweb"
@@ -18,5 +18,5 @@ build() {
 package() {
 	local redo=$(command -v redo || echo ./do)
 	cd $pkgname-v$pkgver
-	PREFIX="$pkgdir/usr" ${redo} install
+	FALLBACKVER=$pkgver-$pkgrel PREFIX="$pkgdir/usr" ${redo} install
 }
