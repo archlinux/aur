@@ -1,6 +1,6 @@
 pkgbase = nq
 	pkgdesc = Unix command line queue utility
-	pkgver = 0.4
+	pkgver = 0.5
 	pkgrel = 1
 	url = https://github.com/leahneukirchen/nq
 	arch = i686
@@ -9,7 +9,7 @@ pkgbase = nq
 	checkdepends = perl
 	depends = glibc
 	depends = sh
-	source = nq-0.4-src.tar.gz::https://github.com/leahneukirchen/nq/archive/refs/tags/v0.4.tar.gz
-	sha256sums = 287d6700063b64cfa9db51df95e2a046736eb38c0d3b6e0af0a8e7da6df8880b
+	source = nq-0.5-src.tar.gz::https://github.com/leahneukirchen/nq/archive/refs/tags/v0.5.tar.gz
+	sha256sums = 3f01aaf0b8eee4f5080ed1cd71887cb6485d366257d4cf5470878da2b734b030
 
 pkgname = nq

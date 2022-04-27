@@ -2,7 +2,7 @@
 # Previous maintainer: John "ShaggyTwoDope" Jenkins <twodopeshaggy at gmail dot com>
 
 pkgname=nq
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="Unix command line queue utility"
 arch=('i686' 'x86_64')
@@ -11,7 +11,7 @@ license=('custom: Public domain')
 depends=('glibc' 'sh')
 checkdepends=('perl')
 source=("$pkgname-$pkgver-src.tar.gz::https://github.com/leahneukirchen/nq/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('287d6700063b64cfa9db51df95e2a046736eb38c0d3b6e0af0a8e7da6df8880b')
+sha256sums=('3f01aaf0b8eee4f5080ed1cd71887cb6485d366257d4cf5470878da2b734b030')
 
 
 build() {
