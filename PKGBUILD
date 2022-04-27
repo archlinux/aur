@@ -1,22 +1,22 @@
 # Maintainer: Yurii Kolesnykov <root@yurikoles.com>
-# Contributor: Oleksandr Natalenko <oleksandr@natalenko.name>
+# Based on aur/uksmd by
+# Oleksandr Natalenko <oleksandr@natalenko.name>
 
 pkgname=uksmd-git
 _repouser=post-factum
 _reponame=uksmd
-_product="${_reponame}"
-pkgver=0.0.0.r19.b6af35c
+pkgver=0.0.0.r29.e1d4b12
 pkgrel=1
-pkgdesc="Userspace KSM helper daemon"
+pkgdesc="Userspace KSM helper daemon (git version)"
 url="https://gitlab.com/post-factum/uksmd"
 license=(GPL3)
 arch=(x86_64)
 depends=(UKSMD-BUILTIN procps-ng libcap-ng)
 makedepends=(git)
-source=(${_product}::git+https://gitlab.com/${_repouser}/${_reponame}.git)
+source=(${_reponame}::git+${url}.git)
 sha256sums=('SKIP')
-conflicts=("${_product}")
-provides=("${_product}")
+conflicts=("${_reponame}")
+provides=("${_reponame}")
 
 pkgver() {
   cd "${_reponame}"
@@ -34,6 +34,5 @@ package() {
 
 	make DESTDIR="${pkgdir}" PREFIX="/usr" install
 
-	install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dt "${pkgdir}"/usr/lib/systemd/system -m0644 distro/${_product}.service
+	install -Dt "${pkgdir}"/usr/lib/systemd/system -m0644 distro/${_reponame}.service
 }

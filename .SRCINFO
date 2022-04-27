@@ -1,6 +1,6 @@
 pkgbase = uksmd-git
-	pkgdesc = Userspace KSM helper daemon
-	pkgver = 0.0.0.r19.b6af35c
+	pkgdesc = Userspace KSM helper daemon (git version)
+	pkgver = 0.0.0.r29.e1d4b12
 	pkgrel = 1
 	url = https://gitlab.com/post-factum/uksmd
 	arch = x86_64
