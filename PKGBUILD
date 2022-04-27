@@ -1,7 +1,7 @@
 # Maintainer: Stezko <stezko@gmail.com>
 pkgname=assistant-bin
 pkgver=4.8
-pkgrel=4
+pkgrel=5
 pkgdesc="Secure remote access to computers over a local network or over the Internet."
 arch=('x86_64')
 url="https://xn--80akicokc0aablc.xn--p1ai"
@@ -19,6 +19,6 @@ package(){
 	# Extract package data
 	tar xf data.tar.xz -C "${pkgdir}"
 
-	install -D -m644 "/opt/assistant/license/License.rtf" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "${pkgdir}/opt/assistant/license/License.rtf" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 }
