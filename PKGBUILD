@@ -29,7 +29,7 @@ package() {
 	install -D -m644 sdrplay_license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 	install -D -m644 "${CARCH}/libsdrplay_api.so.${_apivers}" 		"${pkgdir}/usr/lib/libsdrplay_api.so.${_apivers}"
 	install -D -m755 "${CARCH}/sdrplay_apiService" "${pkgdir}//usr/bin/sdrplay_apiService"
-	install -D -m644 "scripts/sdrplay.service.usr" "${pkgdir}/etc/systemd/system/sdrplay.service"
+	install -D -m644 "sdrplay.service.usr" "${pkgdir}/etc/systemd/system/sdrplay.service"
 
 	install -D -m644 inc/sdrplay_api.h "${pkgdir}/usr/include/sdrplay_api.h"
 	install -D -m644 inc/sdrplay_api_callback.h "${pkgdir}/usr/include/sdrplay_api_callback.h"
