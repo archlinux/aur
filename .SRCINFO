@@ -1,4 +1,4 @@
-pkgbase = korai-git
+pkgbase = korai
 	pkgdesc = Fast, reliable and feature-packed manga and comics reader
 	pkgver = git
 	pkgrel = 1
@@ -15,4 +15,4 @@ pkgbase = korai-git
 	sha512sums = SKIP
 	sha512sums = SKIP
 
-pkgname = korai
+pkgname = korai-git

@@ -1,6 +1,6 @@
 # Maintainer: DisableGraphics elchifladod@gmail.com
-pkgbase="korai-git"
-pkgname="korai"
+pkgbase="korai"
+pkgname="korai-git"
 pkgrel=1
 pkgver=git
 pkgdesc="Fast, reliable and feature-packed manga and comics reader"
