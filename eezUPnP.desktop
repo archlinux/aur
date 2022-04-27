@@ -1,13 +1,21 @@
-#!/usr/bin/env xdg-open
 [Desktop Entry]
 Categories=Audio;Player;Qt;
+Comment[en_US]=UPnP audio Control Point
 Comment=UPnP audio Control Point
 Exec=bash -c "export LANG=C; /opt/eezUPnP/CP"
+GenericName[en_US]=UPnP audio Control Point
 GenericName=UPnP audio Control Point
 Icon=/opt/eezUPnP/icon.xpm
+Keywords=audio;upnp;
+MimeType=
+Name[en_US]=eezUPnP
 Name=eezUPnP
+Path=
 StartupNotify=true
 Terminal=false
+TerminalOptions=
 Type=Application
-Keywords=audio;upnp;
-
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=
