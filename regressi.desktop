@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Regressi
+Comment=Regressi allows you to calculate combined quantities into a function of differential equational.
+Exec=regressi
+Icon=regressi
+Terminal=false
+StartupNotify=false
+Categories=Application;
