@@ -1,8 +1,6 @@
 # Copyright (C) 2020 Denis 'GNUtoo' Carikli <GNUtoo@cyberdimension.org>
 # This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
+# it under the terms of the CC0 1.0 License.
 
 _pkgname=imx_usb_loader
 pkgname=${_pkgname}-git
