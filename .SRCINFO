@@ -1,7 +1,7 @@
 pkgbase = subspace-git
 	pkgdesc = A Wireguard management interface
 	pkgver = r223.7d12b87
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/subspacecommunity/subspace
 	arch = x86_64
 	license = GPL
