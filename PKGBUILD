@@ -55,7 +55,7 @@ prepare() {
 build() {
 	# https://bugs.gentoo.org/704322
 	export CXXFLAGS="$CXXFLAGS -fpermissive"
-	cmake -B build -S "$sdrangel" \
+	cmake -B build -S "sdrangel" \
 		-Wno-dev \
 		-DARCH_OPT="" \
 		-DCMAKE_BUILD_TYPE=Release \
