@@ -1,7 +1,7 @@
 # Maintainer: Strahinya Radich <contact@strahinja.org>
 pkgname=table
 pkgver=0.6.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Command line utility to format and display CSV"
 arch=('x86_64')
 url="https://strahinja.srht.site/table"
@@ -18,5 +18,5 @@ build() {
 package() {
 	local redo=$(command -v redo || echo ./do)
 	cd $pkgname-v$pkgver
-	PREFIX="$pkgdir/usr" ${redo} install
+	FALLBACKVER=$pkgver-$pkgrel PREFIX="$pkgdir/usr" ${redo} install
 }
