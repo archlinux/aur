@@ -1,7 +1,7 @@
 pkgbase = emsdk
 	pkgdesc = The Emscripten SDK
-	pkgver = 2.0.34
-	pkgrel = 2
+	pkgver = 3.1.9
+	pkgrel = 3
 	url = https://kripken.github.io/emscripten-site/
 	arch = x86_64
 	license = MIT
