@@ -71,8 +71,8 @@ pkgbase = sdrangel_no_xtrx-git
 	optdepends = airspyhf: Airspy HF+ support
 	optdepends = libxtrx: XTRX SDR support
 	optdepends = libuhd: USRP support
-	provides = sdrangel_no_xtrx=6.19.0.r27.8e79cd7ff
-	conflicts = sdrangel_no_xtrx
+	provides = sdrangel
+	conflicts = sdrangel
 	source = git+https://github.com/f4exb/sdrangel
 	sha512sums = SKIP
 
