@@ -1,11 +1,11 @@
 pkgname=openal-hrtf
 pkgver=1.0
 pkgrel=2
-arch=('i686' 'x86_64')
+arch=('any')
 license=('custom')
 pkgdesc="Generate HRTF datasets for OpenAL"
 depends=('openal')
-makedepends=('unzip')
+makedepends=('unzip' 'libmysofa')
 url="https://wiki.archlinux.org/index.php/Gaming"
 source=("https://openal-soft.org/openal-releases/openal-soft-1.17.2.tar.bz2"
         "https://openal-soft.org/openal-releases/openal-soft-1.22.0.tar.bz2"
