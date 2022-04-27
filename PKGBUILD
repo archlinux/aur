@@ -30,9 +30,8 @@ build() {
 
 check() {
 	cd "${_name%-git}"
-	cp build/lib.*/tpm2_pytss/_libtpm2_pytss.abi3.so tpm2_pytss
-	cp build/lib.*/tpm2_pytss/internal/{type_mapping,versions}.py tpm2_pytss/internal
-	python -B -m pytest
+	local _python_version=$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')
+	PYTHONPATH="$PWD/build/lib.linux-$CARCH-$_python_version" pytest --import-mode=append
 }
 
 package() {
