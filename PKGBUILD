@@ -5,7 +5,7 @@
 _pkgbase=etlegacy
 pkgbase=etlegacy32
 pkgname=('etlegacy32' 'etlegacy32-mod')
-pkgver=2.80.0
+pkgver=2.80.1
 pkgrel=1
 arch=('i686' 'x86_64')
 url="http://www.etlegacy.com/"
@@ -14,9 +14,9 @@ makedepends=('cmake' 'zip')
 makedepends_i686=('alsa-lib' 'curl' 'freetype2' 'gcc-libs' 'glew' 'libjpeg-turbo' 'libvorbis' 'sdl2' 'minizip' 'openal' 'libtheora' 'sqlite')
 makedepends_x86_64=('lib32-alsa-lib' 'lib32-curl' 'lib32-freetype2' 'lib32-gcc-libs' 'lib32-glew' 'lib32-libjpeg-turbo' 'lib32-libvorbis' 'lib32-sdl2' 'lib32-minizip' 'lib32-openal' 'lib32-libtheora' 'lib32-sqlite')
 source=("https://github.com/etlegacy/etlegacy/archive/v$pkgver.tar.gz"
-        "https://www.etlegacy.com/download/file/385")
-sha256sums=('57429806f554dfb9ce4942b14673dd7603f05a6bc716a4ef91ba08faeca195f6'
-            'cff671773fc498694c7be3c6a7d762e19eed8141c57fae903ec15980634e5dbd')
+        "https://www.etlegacy.com/download/file/398")
+sha256sums=('fdd4c36fdd2c8a06dcffab1d09ab6b5cc3a499ef4193975ba0b8e9148edf2946'
+            '19ebae466d0655ea08c5180d33283af280af04f9007d52320337fb689c70657e')
 
 build() {
     cd "$_pkgbase-$pkgver"
@@ -114,3 +114,4 @@ package_etlegacy32-mod() {
     # geoip
     ln -s /usr/share/GeoIP/GeoIP.dat $pkgdir/usr/lib/$_pkgbase/legacy
 }
+
