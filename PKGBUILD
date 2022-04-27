@@ -3,7 +3,7 @@ pkgname=notable-insiders-electron
 pkgdesc='Insider build of the Notable note-taking app'
 _electron=electron17
 packager="nemo"
-_pkgver="1.9.0-beta.9"
+_pkgver="1.9.0-beta.10"
 pkgver=${_pkgver/-/.}
 pkgrel=2
 arch=('any')
@@ -13,7 +13,7 @@ makedepends=('asar')
 depends=($_electron sh)
 source=("$url/releases/download/v$_pkgver/Notable-$_pkgver.AppImage"
         "notable.desktop")
-sha512sums=('f260695af381d3d5c8598c38f726b5f60b4c2469a9b1ed9e293286ed337c500657316528aee1373a2f414d271a6c38817c846e64e11b5de4a63bcafa9329b209'
+sha512sums=('d817ad3167ed41a4c5f2b57c91924c81f374dc90a557af8186a367cc0288a70e76ddf0b7f6cccb93de5f8fcfde514acecad373a0b4bd385d863d65db835f7b54'
             '3f95463979fb112d08077ecda88663a1bf978b6367b035037a6615039bafd7f3d248eaf1cce0182844f2b7d727ba8430cf2d954fe776314a1da966c5cbf99270')
 provides=('notable')
 conflicts=('notable-insiders-bin')
