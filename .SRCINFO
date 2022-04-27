@@ -1,11 +1,17 @@
 pkgbase = fleet
-	pkgdesc = A distributed init system.
-	pkgver = v0.11.7
+	pkgdesc = Experimental build tool for Rust
+	pkgver = r95.4273ea8
 	pkgrel = 1
-	url = https://github.com/coreos/fleet
-	arch = any
+	url = https://fleet.rs
+	arch = x86_64
 	license = Apache
-	source = https://github.com/coreos/fleet/releases/download/v0.11.7/fleet-v0.11.7-linux-amd64.tar.gz
-	md5sums = 69a0c0188d593e6ecdeceb571f0a2b37
+	makedepends = git
+	depends = sccache
+	depends = rustup
+	depends = lld
+	depends = clang
+	options = !lto
+	source = fleet::git+https://github.com/dimensionhq/fleet.git#commit=4273ea8d3bda31c1f6b27f132312bff6d0f0e985
+	md5sums = SKIP
 
 pkgname = fleet
