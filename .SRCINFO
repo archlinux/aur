@@ -11,6 +11,8 @@ pkgbase = citus
 	makedepends = llvm
 	depends = postgresql
 	source = https://github.com/citusdata/citus/archive/refs/tags/v10.2.5.tar.gz
+	source = citus.install
 	sha512sums = 95ee1225c850bc986025f6960cb5784b02f2ac5af8f312f5dd4a270c4ebf46dd60388ba604a9cd4cf2e22f8b7a855bd18654cbe9f701ba7cd35c1576414d185f
+	sha512sums = 1ccf8c4a0b1353134ba85dad024d438f4492e88b3139f11db958e0460a925260d8c9cd7eeb8e11b7f8adbc0c4ede4820fdb3a90073b93f699c50d648418789c3
 
 pkgname = citus
