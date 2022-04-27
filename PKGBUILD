@@ -1,22 +1,14 @@
-# Maintainer: Lukas Sabota <LTsmooth42 _at_  gmail _dot _ com>
+# Maintainer: prg <prg-archlinux@xannode.com>
 pkgname=griver
-pkgver=0.2.3
+pkgver=0.2.4
 pkgrel=1
 pkgdesc="Small database generator for iriver H100/H300 devices based on libiriverdb."
 arch=('any')
-url="http://code.google.com/p/griver/"
+url="https://github.com/prg318/griver"
 license=('GPL')
-groups=()
-depends=('python2' 'libiriverdb')
-makedepends=()
-provides=()
-conflicts=()
-replaces=()
-backup=()
-options=(!emptydirs)
-install=
-source=(http://griver.googlecode.com/files/$pkgname-$pkgver.tar.gz)
-md5sums=('ca83abe6d8b022d826249f8606d752cb')
+depends=('python2' 'libiriverdb' 'pygtk')
+source=("https://github.com/prg318/$pkgname/archive/refs/tags/v$pkgver.tar.gz")
+sha256sums=('3977633d42c954b42d3550a8ed83f2a9575e0d2261964628263e788bb9146c33')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
