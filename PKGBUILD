@@ -2,7 +2,8 @@
 # Contributor: Rafael Fontenlle <rafaelff@gnome.org>
 
 pkgname=warsaw-bin
-pkgver=2.21.1.13
+_pkgver=2.21.2-2
+pkgver=${_pkgver/-/.}
 pkgrel=1
 pkgdesc="Banking security tool developed by GAS Tecnologia"
 arch=(x86_64)
@@ -16,15 +17,20 @@ options=('!strip' '!emptydirs')
 install=${pkgname}.install
 conflicts=('warsaw')
 provides=('warsaw')
-source_x86_64=("warsaw-${pkgver}-64.deb::https://cloud.gastecnologia.com.br/bb/downloads/ws/warsaw_setup64.deb")
-sha256sums_x86_64=('5dde8c45b477de0e9d05a063f66c5d99122480e17133421a2954b15344a6c942')
+source_x86_64=("warsaw-${pkgver}-64.run::https://cloud.gastecnologia.com.br/gas/diagnostico/ubuntu_64bits.run")
+sha256sums_x86_64=('4f9f5ef178dcaa6a7eaf0bda080f62e38110bdba8d4c56085a0357df059940ac')
 
 prepare() {
+    cd "${srcdir}"
+    bsdtar -xpf warsaw-${pkgver}-64.run
+
+    cd warsaw_setup
+    ar -x warsaw_${_pkgver}_amd64.deb
     tar -xJf data.tar.xz
 }
 
 package() {
-    cd "$srcdir"
+    cd "${srcdir}/warsaw_setup"
     # dump etc files to /etc
     cp -r etc "$pkgdir"
     # dump usr files to /usr

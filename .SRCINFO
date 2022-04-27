@@ -1,6 +1,6 @@
 pkgbase = warsaw-bin
 	pkgdesc = Banking security tool developed by GAS Tecnologia
-	pkgver = 2.21.1.13
+	pkgver = 2.21.2.2
 	pkgrel = 1
 	url = https://diagnostico.gasantifraud.com
 	install = warsaw-bin.install
@@ -18,7 +18,7 @@ pkgbase = warsaw-bin
 	options = !emptydirs
 	backup = etc/init.d/warsaw
 	backup = etc/init/warsaw.conf
-	source_x86_64 = warsaw-2.21.1.13-64.deb::https://cloud.gastecnologia.com.br/bb/downloads/ws/warsaw_setup64.deb
-	sha256sums_x86_64 = 5dde8c45b477de0e9d05a063f66c5d99122480e17133421a2954b15344a6c942
+	source_x86_64 = warsaw-2.21.2.2-64.run::https://cloud.gastecnologia.com.br/gas/diagnostico/ubuntu_64bits.run
+	sha256sums_x86_64 = 4f9f5ef178dcaa6a7eaf0bda080f62e38110bdba8d4c56085a0357df059940ac
 
 pkgname = warsaw-bin
