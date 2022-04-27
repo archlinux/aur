@@ -1,7 +1,7 @@
 # Maintainer: Radim Sückr <kontakt@radimsuckr.cz>
 
 pkgname=dagger-bin
-pkgver=0.2.7
+pkgver=0.2.8
 pkgrel=1
 pkgdesc='A portable devkit for CI/CD pipelines'
 arch=('x86_64' 'aarch64')
@@ -12,8 +12,8 @@ depends=()
 makedepends=()
 source_x86_64=("https://github.com/dagger/dagger/releases/download/v${pkgver}/dagger_v${pkgver}_linux_amd64.tar.gz")
 source_aarch64=("https://github.com/dagger/dagger/releases/download/v${pkgver}/dagger_v${pkgver}_linux_arm64.tar.gz")
-sha512sums_x86_64=('b5098e5da22dbfebff9f64c57d881ceb757a56e180c3074c7064304140f3e14cd37c2e11186c3ca29fa792ddb5a9c918d710e193acc235f62cbe07d8e4e9ea49')
-sha512sums_aarch64=('aa23a34d9f4ab1882bdf4ea5e9fbcaa87192aa26f444597f1a6a3b81838ac4081c7c133f16ca42a8bf306ff14319e4a6d43ad9a845e92a05bc7b8d0f5b456fbe')
+sha512sums_x86_64=('44d6fd36c32ea41a619db2afe99af5470cfea3743d9a7d99abbd927d6793685b3e607a51840698f51e7bae1d888b0f9e5dc61285e2caa19af0b22c89b5b68752')
+sha512sums_aarch64=('1a5d156da0f3ca8105ba0de2e74dd8f767d9fa5f3d8c0061cf186769aaba51d1ddf7e2684fd564f20aaa06c2c6b16015c5a954dc1fe6a86d378cc53420870072')
 
 package() {
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
