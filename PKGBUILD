@@ -37,13 +37,13 @@ optdepends=('ffmpeg: DATV demodulator'
             'libxtrx: XTRX SDR support'
             'libuhd: USRP support'
 )
-provides=("$_pkgname=$pkgver")
-conflicts=("$_pkgname")
+provides=("sdrangel")
+conflicts=("sdrangel")
 source=("git+$url")
 sha512sums=('SKIP')
 
 pkgver() {
-	cd "$_pkgname"
+	cd "sdrangel"
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g;s/\.rc./rc/g'
 }
 
