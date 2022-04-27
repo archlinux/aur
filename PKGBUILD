@@ -1,21 +1,18 @@
 # Maintainer: Funami
 pkgname=cargo-clone
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A cargo subcommand to fetch the source code of a Rust crate"
 arch=('x86_64')
 url="https://github.com/JanLikar/cargo-clone"
 license=('APACHE' 'MIT')
 depends=('libgit2' 'curl')
 makedepends=('cargo' 'libssh2')
-source=("https://github.com/JanLikar/cargo-clone/archive/v$pkgver.tar.gz"
-        'cargo_lock.patch')
-sha256sums=('7aa873ab3e13b70e979905e268a35410827b530667996c5c0a427dbfafd78784'
-            'd1d3062a225b87482d787aec2d097ecea7eca82478c6994c7ea60c178d58c66f')
+source=("https://github.com/JanLikar/cargo-clone/archive/v$pkgver.tar.gz")
+sha256sums=('7cc5cc00124b92efa8c914d0b088c8314783f1a7450de49e3dfba9cc7c1f5330')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  patch --forward --strip=1 --input="$srcdir/cargo_lock.patch"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
