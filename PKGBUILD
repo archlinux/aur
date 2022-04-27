@@ -2,7 +2,7 @@
 # Contributor: Kirill Goncharov <kdgoncharov at gmail dot com>
 
 pkgname=radicle-upstream-bin
-pkgver=0.2.14
+pkgver=0.3.0
 pkgrel=1
 pkgdesc='Desktop client for Radicle code collaboration protocol'
 arch=('x86_64')
@@ -13,8 +13,8 @@ conflicts=("${pkgname%-bin}")
 replaces=('upstream-bin')
 source=("$pkgname-$pkgver.AppImage::https://releases.radicle.xyz/${pkgname%-bin}-$pkgver.AppImage"
         "LICENSE-$pkgver::https://raw.githubusercontent.com/radicle-dev/${pkgname%-bin}/v$pkgver/LICENSE")
-sha256sums=('261119f16436c23662ed1936822d74f49ef4e705b739465d9f6ca43e714a0563'
-            '6e27c2e7f1fe948473c77f78e67d0d4168c3a682d4cd2bf92e39b25115b5ed7d')
+sha256sums=('63b57cf46fa75d1b649ceba4bc137c43eb0dc7dd5834f0d3d29e61ac561efd29'
+            'f296a5d3ec56bed4f3a20d2d29fa700eadca035d7f3db4be38071b1ae9ddcb91')
 
 PURGE_TARGETS=('AppRun')
 
