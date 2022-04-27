@@ -1,0 +1,18 @@
+pkgbase = mac-telnet
+	pkgdesc = Console tools for connecting to, and serving, devices using MikroTik RouterOS MAC-Telnet protocol.
+	pkgver = 0.4.4
+	pkgrel = 2
+	url = https://github.com/haakonnessjoen/MAC-Telnet
+	arch = x86_64
+	license = GPL2
+	makedepends = git
+	makedepends = automake
+	makedepends = autoconf
+	makedepends = clang
+	makedepends = make
+	makedepends = gettext
+	depends = glibc
+	source = mac-telnet-0.4.4.tar.gz::https://github.com/haakonnessjoen/MAC-Telnet/archive/refs/tags/v0.4.4.tar.gz
+	sha512sums = 344eb7fc4008ffaffda7359ba6d266c1a416eaea8b017859f652962c95135a5466d1f94e9afd8ad91f8045d2134067f2b2395e065d619dc116371ea13dbeb575
+
+pkgname = mac-telnet
