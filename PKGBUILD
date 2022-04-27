@@ -3,14 +3,14 @@
 _target=m68k-elf
 pkgname=$_target-toolchain
 pkgver=20220313
-pkgrel=1
+pkgrel=2
 pkgdesc="A complete gcc/binutils/newlib toolchain for $_target"
 depends=('zlib' 'bash' 'libmpc' 'libisl')
 url="http://www.gnu.org"
 conflicts=($_target-gcc $_target-binutils $_target-elf-newlib)
 arch=('x86_64')
 depends=(libelf libmpc libisl)
-_gcc=gcc-11.2.0
+_gcc=gcc-11.3.0
 _binutils=binutils-2.38
 _newlib=newlib-4.2.0.20211231
 license=('GPL' 'BSD')
@@ -20,7 +20,7 @@ source=("http://gnuftp.uib.no/gcc/${_gcc}/${_gcc}.tar.xz"
 	"http://gnuftp.uib.no/binutils/${_binutils}.tar.xz"
 	"ftp://sourceware.org/pub/newlib/${_newlib}.tar.gz")
 
-sha512sums=('d53a0a966230895c54f01aea38696f818817b505f1e2bfa65e508753fcd01b2aedb4a61434f41f3a2ddbbd9f41384b96153c684ded3f0fa97c82758d9de5c7cf'
+sha512sums=('f0be5ad705c73b84477128a69c047f57dd47002f375eb60e1e842e08cf2009a509e92152bca345823926d550b7395ae6d4de7db51d1ee371c2dc37313881fca7'
             '8bf0b0d193c9c010e0518ee2b2e5a830898af206510992483b427477ed178396cd210235e85fd7bd99a96fc6d5eedbeccbd48317a10f752b7336ada8b2bb826d'
             '0c3efd7b74a6b8457a717cbb6aa6c5ff268eeaba375535465c6bd6502c3d32b54a9bc3ba7f2c6990f78e29152eee2f62acb39b674d24f9ddf440374a1ec9d2e8')
 
