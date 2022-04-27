@@ -3,8 +3,9 @@
 
 pkgbase=qbittorrent-git
 pkgname=(qbittorrent-git qbittorrent-nox-git)
-pkgver=4.5.0.alpha1.r238.gcf061b7d3
+pkgver=4.5.0alpha1.r320.gde8377ab5
 pkgrel=1
+epoch=1
 arch=(x86_64)
 url='https://www.qbittorrent.org'
 license=(custom GPL)
@@ -26,7 +27,7 @@ pkgver() {
   local _cmake_ver=`printf "${_major}.${_minor}.${_bugfix}"`
 
   [[ "${_build}" -ne 0 ]] && _cmake_ver=`printf "${_cmake_ver}.${_build}"`
-  [[ -n "${_status}" ]] && _cmake_ver=`printf "${_cmake_ver}.${_status}"`
+  [[ -n "${_status}" ]] && _cmake_ver=`printf "${_cmake_ver}${_status}"`
 
   # cutting off 'release-' prefix that presents in the git tag
   local _git_ver=`git describe --long --tags | sed 's/^release-//;s/\([^-]*-g\)/r\1/;s/-/./g'`
