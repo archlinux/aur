@@ -1,54 +1,39 @@
-# Maintainer: Muflone <webreg@vbsimple.net>
-# Contributor: Jesus Lazaro Plaza <jesuslazaro84 at gmail dot com>
-
+# Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Co-Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
+# Contributor: Eli Schwartz
 pkgname=smile
-pkgver=1.0
-pkgrel=4
-pkgdesc="Slideshow Maker In Linux Environnement"
-url="http://smile.tuxfamily.org/"
-license=('GPL')
-arch=('i686' 'x86_64')
-depends=('qtwebkit' 'mesa' 'sox' 'mplayer' 'imagemagick' 'perl' 'desktop-file-utils')
-install=smile.install
-source=("http://repository.slacky.eu/slackware-13.0/multimedia/${pkgname}/${pkgver}/src/${pkgname}-${pkgver}.tar.gz"
-        "smile.desktop")
-md5sums=('7f1fa1b1e0ab661d5a74ac4b8ee02511'
-         'aefd88b769e18f5406647539ed953937')
-sha1sums=('d8b962c11d6dac657fd722f2ec1467a159379265'
-          'fbf44a3550412024d4de40d515f7a2e1f8a5ad1d')
-sha256sums=('d6a6f5a2c7bce2dff174c4cb7f09a6326a926416c1ea47c6bdfc592b9cece9bf'
-            '43d0e301533d27ede195fdfa7ce7b9b0bedafe8d6ae76c0edcf840f35cfea868')
+pkgver=1.5.6
+pkgrel=1
+pkgdesc="An emoji picker with custom tags support"
+arch=('any')
+url="https://github.com/mijorus/smile"
+license=('GPL3')
+depends=('libwnck3' 'python-manimpango')
+makedepends=('meson')
+checkdepends=('appstream-glib' 'desktop-file-utils')
+conflicts=("$pkgname-emoji-picker")
+replaces=("$pkgname-emoji-picker")
+source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('cbd24aee743c4616e66877ccba0208e109f07cb8445ef3b84e67613014a96bc9')
 
 prepare() {
-  cd "${pkgname}"
-  find . -name "*.*~" -delete
-  find . -name ".directory" -delete
+  cd "$pkgname-$pkgver"
+  sed -i 's/MESON_INSTALL_PREFIX/MESON_INSTALL_DESTDIR_PREFIX/g' \
+    build-aux/meson/emoji_list/generate_emoji_dict.py
+
+  sed -i 's/MESON_INSTALL_PREFIX/MESON_INSTALL_DESTDIR_PREFIX/g' \
+    build-aux/meson/postinstall.py
 }
 
 build() {
-  cd "${pkgname}"
-  qmake-qt4
-  make
+  arch-meson "$pkgname-$pkgver" build
+  meson compile -C build
+}
+
+check() {
+  meson test -C build --print-errorlogs
 }
 
 package() {
-  cd "${pkgname}"
-  install -m 755 -d "${pkgdir}/usr/share/${pkgname}"
-  install -m 755 -t "${pkgdir}/usr/share/${pkgname}" fake.pl
-  install -m 755 -t "${pkgdir}/usr/share/${pkgname}" smile
-  for _lang in de en es it pl pt ru
-  do
-    install -m 644 -t "${pkgdir}/usr/share/${pkgname}" smile_${_lang}.qm
-  done
-  cp -R BIB_ManSlide Interface "${pkgdir}/usr/share/${pkgname}"
-  chmod -R 744 "${pkgdir}/usr/share/${pkgname}/BIB_ManSlide" "${pkgdir}/usr/share/${pkgname}/Interface"
-  find "${pkgdir}/usr/share/${pkgname}" -type d -exec chmod 755 "{}" \;
-
-  # Add symlink to executable file
-  install -d -m 755 "${pkgdir}/usr/bin"
-  ln -sf "/usr/share/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/smile"
-
-  # Creating menu item
-  install -D -m644 "Interface/Theme/logostart.png" "${pkgdir}/usr/share/pixmaps/smile.png"
-  install -D -m644 "${srcdir}/smile.desktop" "${pkgdir}/usr/share/applications/smile.desktop"
+  meson install -C build --destdir "$pkgdir"
 }
