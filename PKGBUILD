@@ -1,7 +1,7 @@
 #Maintainer: Bazza <bazza@riseup.net>
 
 pkgname=blender-rhubarb-lipsync
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc="Blender Rhubarb Lipsync is an addon for Blender integrating Rhubarb Lip Sync to automatically generate mouth-shape keyframes from a pose library."
 arch=('any')
@@ -9,7 +9,7 @@ url="https://github.com/scaredyfish/blender-rhubarb-lipsync"
 license=('GPL')
 source=("${pkgname}-v${pkgver}.tar.gz::https://codeload.github.com/scaredyfish/${pkgname}/tar.gz/refs/tags/v${pkgver}")
 
-md5sums=('2336e7dbe56953da21eac5a09ab3cab1')
+md5sums=('5924cab27b9a7180207d1568d0b40d2b')
 
 prepare() {
 	cd "${srcdir}/${pkgname}-${pkgver}"

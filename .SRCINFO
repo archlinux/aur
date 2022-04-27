@@ -1,12 +1,11 @@
 pkgbase = blender-rhubarb-lipsync
 	pkgdesc = Blender Rhubarb Lipsync is an addon for Blender integrating Rhubarb Lip Sync to automatically generate mouth-shape keyframes from a pose library.
-	pkgver = 3.0.1
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = https://github.com/scaredyfish/blender-rhubarb-lipsync
 	arch = any
 	license = GPL
-	source = blender-rhubarb-lipsync-v3.0.1.tar.gz::https://codeload.github.com/scaredyfish/blender-rhubarb-lipsync/tar.gz/refs/tags/v3.0.1
-	md5sums = 2336e7dbe56953da21eac5a09ab3cab1
+	source = blender-rhubarb-lipsync-v3.0.2.tar.gz::https://codeload.github.com/scaredyfish/blender-rhubarb-lipsync/tar.gz/refs/tags/v3.0.2
+	md5sums = 5924cab27b9a7180207d1568d0b40d2b
 
 pkgname = blender-rhubarb-lipsync
-
