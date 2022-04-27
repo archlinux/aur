@@ -1,7 +1,7 @@
 # Maintainer: Alex Wilson <alex at cooperi dot net>
 pkgname=pivy
 pkgver=0.9.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Tools for using PIV smartcards/Yubikeys with ssh-agent and disk encryption"
 url="https://github.com/arekinath/pivy"
 license=('MPL2')
@@ -17,7 +17,7 @@ optdepends=('cryptsetup: LUKS encrypted disk support (pivy-luks)'
             'pam: PAM plugin (pam_pivy.so)')
 makedepends=(pkgconf cryptsetup zfs-utils json-c pam)
 sha256sums=('7925467b71227ae835cc5bf5ebf0b74ea6d740738af5d13be05e0416a78f8acc'
-            '44b5a004a06ffe214df2810bb2d58a3ecb2bdcf1c892411a8d574afac935f678'
+            '8da0bc793ba9b7fb1cb784af1ed066aea478b93715f484e7fb7921184d675b84'
             'a2e4574142e7112cf2434566a51697ebabe28916d42ab0729c54dfea6f7c420e'
             'a2c23b7b9e3dc976b54627a08da68b76fd6194ba45d211959dedf4700879379e')
 

@@ -21,6 +21,11 @@ build() {
         map add_binary pcscd
     fi
 
+    map add_file \
+        /usr/lib/libusb-1.0.so.0 \
+        /usr/lib/libudev.so.1 \
+        /usr/lib/libatomic.so.1
+
     map add_binary \
         fsck.zfs \
         mount.zfs \
