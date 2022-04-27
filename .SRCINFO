@@ -1,6 +1,6 @@
 pkgbase = xf86-video-qxl-git
 	pkgdesc = X Window System QXL driver including Xspice server
-	pkgver = 0.1.5.16.g52c421c
+	pkgver = 0.1.5.19.g4e1963a
 	pkgrel = 1
 	url = https://www.spice-space.org
 	arch = i686
@@ -18,8 +18,6 @@ pkgbase = xf86-video-qxl-git
 	conflicts = X-ABI-VIDEODRV_VERSION<25
 	conflicts = X-ABI-VIDEODRV_VERSION>=26
 	source = git+https://gitlab.freedesktop.org/xorg/driver/xf86-video-qxl.git
-	source = fix-build-against-current-x-server.diff
 	sha256sums = SKIP
-	sha256sums = a5e4292d3a6bc9641a8d4ec4d9eb92094ee3d20581c590051e878c8829b9a035
 
 pkgname = xf86-video-qxl-git
