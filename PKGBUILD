@@ -5,7 +5,7 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=python-djlint
 epoch=
-pkgver=0.7.6
+pkgver=1.0.0
 pkgrel=00
 pkgdesc='HTML Template Linter and Formatter'
 arch=(any)
@@ -20,9 +20,9 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/53/47/eeb4fdda87e1b7753e3f594a10ca0b46280f784e2dd02ff86b1ea23ddd98/djlint-0.7.6-py3-none-any.whl)
-md5sums+=(9a18672e2051d36a1f6ccb1466e466a5)
-noextract+=(djlint-0.7.6-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/9b/e8/f0c505dca96035dfdac180c254da2964df8b4f76eb01aba58ee0115bb23b/djlint-1.0.0-py3-none-any.whl)
+md5sums+=(15c50c5db336dff5b0195ee071afd72f)
+noextract+=(djlint-1.0.0-py3-none-any.whl)
 source+=(LICENSE)
 md5sums+=(97a733ff40c50b4bfc74471e1f6ca88b)
 
