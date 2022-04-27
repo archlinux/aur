@@ -1,0 +1,12 @@
+pkgbase = jaq
+	pkgdesc = jaq is a clone of the JSON data processing tool jq. jaq aims to support a large subset of jq's syntax and operations.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/01mf02/jaq
+	arch = x86_64
+	license = BSD
+	makedepends = cargo
+	source = 0.6.0.tar.gz::https://crates.io/api/v1/crates/jaq/0.6.0/download
+	sha256sums = aebeabacdd1571bd650e628c424a17ca92744a7b1f8b587059eb0a7ba7668987
+
+pkgname = jaq
