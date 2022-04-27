@@ -1,13 +1,14 @@
 pkgbase = python-google-cloud-core
 	pkgdesc = Google Cloud API client core library
 	pkgver = 2.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/googleapis/python-cloud-core
 	arch = any
 	license = APACHE
 	makedepends = python-setuptools
 	makedepends = python-wheel
 	makedepends = python-installer
+	makedepends = python-build
 	depends = python
 	depends = python-google-api-core
 	depends = python-google-auth

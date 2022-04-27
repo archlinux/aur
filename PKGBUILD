@@ -6,7 +6,7 @@
 _name=google-cloud-core
 pkgname=python-google-cloud-core
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Google Cloud API client core library'
 url='https://github.com/googleapis/python-cloud-core'
 arch=('any')
@@ -20,6 +20,7 @@ makedepends=(
   'python-setuptools'
   'python-wheel'
   'python-installer'
+  'python-build'
 )
 optdepends=(
   'python-grpcio: for grpc support'
