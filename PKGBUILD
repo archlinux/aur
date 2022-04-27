@@ -1,7 +1,7 @@
 # Maintainer: 4censord <mail@business-insulting.de>
 pkgname=subspace
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="A Wireguard management interface"
 arch=('x86_64')
@@ -27,5 +27,5 @@ build() {
 
 package() {
 	cd "$pkgname-$pkgver"
-	install -Dm444 subspace ${pkgdir}/usr/bin/subspace
+	install -Dm755 subspace ${pkgdir}/usr/bin/subspace
 }
