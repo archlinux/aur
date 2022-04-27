@@ -1,0 +1,16 @@
+pkgbase = stegsnow-git
+	pkgdesc = Conceal messages in ASCII text by appending whitespace to the end of lines
+	pkgver = 2020.04.07.g69c5029
+	pkgrel = 1
+	url = http://www.darkside.com.au/snow
+	changelog = ChangeLog
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	depends = glibc
+	source = git+https://salsa.debian.org/pkg-security-team/stegsnow.git
+	source = stegsnow.patch
+	sha256sums = SKIP
+	sha256sums = d27d97a950a99f649b705d03ef334fa33bfb76280cb6fcf21a73ad4c0fdcaafc
+
+pkgname = stegsnow-git

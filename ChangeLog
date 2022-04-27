@@ -1,0 +1,3 @@
+2013-06-16 Matthew Kwan <mkwan@darkside.com.au>
+ - compress.c: Fixed some fprintf format warnings.
+ - Makefile: Added new compile flags.
