@@ -10,7 +10,6 @@ pkgbase = su2
 	depends = python-numpy
 	depends = python-mpi4py
 	depends = intel-mkl
-	depends = openblas
 	source = SU2-7.3.1::git+https://github.com/su2code/SU2.git#tag=v7.3.1
 	source = su2.sh
 	sha512sums = SKIP

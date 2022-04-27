@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc="An Open-Source Suite for Multiphysics Simulation and Design"
 url="https://${pkgname}code.github.io"
 license=(LGPL2.1)
-depends=(python-numpy python-mpi4py intel-mkl openblas)
+depends=(python-numpy python-mpi4py intel-mkl)
 makedepends=(swig git)
 arch=(x86_64)
 source=("${_base}-${pkgver}::git+https://github.com/${pkgname}code/${_base}.git#tag=v${pkgver}" "${pkgname}.sh")
