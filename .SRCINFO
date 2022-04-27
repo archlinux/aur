@@ -1,6 +1,6 @@
 pkgbase = quixel-bridge
 	pkgdesc = A tool for browsing, searching, downloading, importing and exporting Megascans assets
-	pkgver = 2021.0.3
+	pkgver = 2022.0.2
 	pkgrel = 1
 	url = https://quixel.com/bridge
 	arch = x86_64
@@ -10,6 +10,6 @@ pkgbase = quixel-bridge
 	noextract = Bridge.AppImage
 	options = !strip
 	source_x86_64 = https://d2shgxa8i058x8.cloudfront.net/bridge/linux/Bridge.AppImage
-	sha256sums_x86_64 = a3ded82295f11f71bf3e439756f960550e218c002906169df0ec19235a8fb4ba
+	sha256sums_x86_64 = c78255f779c565fb041e988796679e9e09bc7b4bb0798fb8d04aedb643ee8d5d
 
 pkgname = quixel-bridge

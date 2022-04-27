@@ -4,7 +4,7 @@ _appimage="Bridge.AppImage"
 _desktop="megascans-bridge.desktop"
 
 pkgname="quixel-bridge"
-pkgver=2021.0.3
+pkgver=2022.0.2
 pkgrel=1
 pkgdesc="A tool for browsing, searching, downloading, importing and exporting Megascans assets"
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('zlib' 'hicolor-icon-theme')
 options=(!strip)
 source_x86_64=("https://d2shgxa8i058x8.cloudfront.net/bridge/linux/${_appimage}")
 noextract=("${_appimage}")
-sha256sums_x86_64=('a3ded82295f11f71bf3e439756f960550e218c002906169df0ec19235a8fb4ba')
+sha256sums_x86_64=('c78255f779c565fb041e988796679e9e09bc7b4bb0798fb8d04aedb643ee8d5d')
 
 prepare() {
     chmod +x "${_appimage}"
@@ -23,7 +23,7 @@ prepare() {
 
 build() {
     # Adjust .desktop so it will work outside of AppImage container
-    sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${pkgname}|"\
+    sed -i -E "s|Exec=AppRun|Exec=env DESKTOPINTEGRATION=false /usr/bin/${pkgname}|" \
         "squashfs-root/${_desktop}"
 
     # Fix permissions; .AppImage permissions are 700 for all directories
