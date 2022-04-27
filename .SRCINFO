@@ -1,0 +1,18 @@
+pkgbase = python-versioneer-518
+	pkgdesc = Easy VCS-based management of project version strings
+	pkgver = 0.19
+	pkgrel = 1
+	url = https://github.com/python-versioneer/python-versioneer
+	arch = any
+	license = custom:Public Domain
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-setuptools
+	optdepends = python-cx-freeze: Executable generation support
+	provides = python-versioneer=0.19
+	conflicts = python-versioneer
+	source = python-versioneer-518-0.19.tar.gz::https://files.pythonhosted.org/packages/source/v/versioneer-518/versioneer-518-0.19.tar.gz
+	sha256sums = a287608997415f45401849d1227a42bb41b80a6e4a7da5776666f85ce6faec41
+
+pkgname = python-versioneer-518
