@@ -48,14 +48,14 @@ pkgver() {
 }
 
 prepare() {
-	cd "$_pkgname"
+	cd "sdrangel"
 
 }
 
 build() {
 	# https://bugs.gentoo.org/704322
 	export CXXFLAGS="$CXXFLAGS -fpermissive"
-	cmake -B build -S "$_pkgname" \
+	cmake -B build -S "$sdrangel" \
 		-Wno-dev \
 		-DARCH_OPT="" \
 		-DCMAKE_BUILD_TYPE=Release \
