@@ -1,6 +1,6 @@
 pkgbase = kmetronome
 	pkgdesc = MIDI metronome with KDE interface and based on the ALSA sequencer
-	pkgver = 1.2.0
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = http://sourceforge.net/projects/kmetronome/
 	arch = i686
@@ -9,8 +9,8 @@ pkgbase = kmetronome
 	makedepends = cmake
 	depends = alsa-lib
 	depends = drumstick
-	source = http://kent.dl.sourceforge.net/project/kmetronome/kmetronome/1.2.0/kmetronome-1.2.0.tar.bz2
-	md5sums = 6f1de25d3134145fb690a1db83548828
+	depends = pandoc
+	source = http://kent.dl.sourceforge.net/project/kmetronome/kmetronome/1.3.0/kmetronome-1.3.0.tar.bz2
+	md5sums = 6e3b1d48892fdf9f00b6a78058b996a9
 
 pkgname = kmetronome
-

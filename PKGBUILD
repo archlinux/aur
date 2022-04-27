@@ -1,5 +1,5 @@
 pkgname=kmetronome
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="MIDI metronome with KDE interface and based on the ALSA sequencer"
 arch=('i686' 'x86_64')
@@ -7,11 +7,11 @@ url="http://sourceforge.net/projects/kmetronome/"
 license=('GPL')
 #depends=('kdelibs' 'alsa-lib' 'phonon-qt4' 'drumstick' 'automoc4')
 #depends=('alsa-lib' 'drumstick' 'automoc4')
-depends=('alsa-lib' 'drumstick')
+depends=('alsa-lib' 'drumstick' 'pandoc')
 makedepends=('cmake')
 source=(http://downloads.sourceforge.net/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.bz2)
 source=(http://kent.dl.sourceforge.net/project/${pkgname}/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.bz2)
-md5sums=('6f1de25d3134145fb690a1db83548828')
+md5sums=('6e3b1d48892fdf9f00b6a78058b996a9')
 
 
 build() {
