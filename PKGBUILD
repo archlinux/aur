@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=argc-git
-pkgver=0.8.0.r0.g5d07716
+pkgver=0.8.1.r0.gb5207b7
 pkgrel=1
 pkgdesc="A handy way to handle sh/bash cli parameters (git)"
 arch=('x86_64')
