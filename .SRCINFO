@@ -1,6 +1,6 @@
 pkgbase = platypush-git
 	pkgdesc = Universal multi-platform command executor and automation manager
-	pkgver = 0.23.2.r0.371fd7e4
+	pkgver = 0.23.2.r0.fee5fc4a
 	pkgrel = 2
 	url = https://git.platypush.tech/platypush/platypush
 	arch = any
