@@ -1,7 +1,8 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Contributor: Armin Preiml <apreiml@strohwolke.at>
 
 pkgname=hare
-pkgver=r2241.cb9b5872
+pkgver=r2267.a9c144a8
 pkgrel=1
 pkgdesc='The Hare programming language'
 arch=('x86_64')
@@ -9,7 +10,7 @@ url='https://harelang.org/'
 license=('GPL3' 'MPL2')
 depends=('qbe' 'harec')
 makedepends=('git' 'scdoc')
-_commit='cb9b5872b39999f26ae57a994a3d932e449f89dd'
+_commit='a9c144a8d09cbdfee82857f926a413fea0e57298'
 source=(
   "hare::git+https://git.sr.ht/~sircmpwn/hare#commit=$_commit"
 )
@@ -31,13 +32,15 @@ prepare() {
 build() {
   cd hare
 
-  make
+  # XXX: parallel build driver builds are broken
+  LOCALVER=arch make -j1
 }
 
 check() {
   cd hare
 
-  make check
+  # XXX: parallel build driver builds are broken
+  make check -j1
 }
 
 package() {
