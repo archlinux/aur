@@ -1,6 +1,6 @@
 # Maintainer: Alex Wilson <alex at cooperi dot net>
 pkgname=pivy
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=2
 pkgdesc="Tools for using PIV smartcards/Yubikeys with ssh-agent and disk encryption"
 url="https://github.com/arekinath/pivy"
@@ -8,8 +8,7 @@ license=('MPL2')
 source=(
 	"zfs-pivy.hook"
 	"zfs-pivy.install"
-	"https://github.com/arekinath/pivy/archive/v$pkgver.tar.gz"
-	"https://ftp.openbsd.org/pub/OpenBSD/LibreSSL/libressl-3.1.0.tar.gz"
+	"https://github.com/arekinath/pivy/releases/download/v$pkgver/pivy-$pkgver-src.tar.gz"
 	"https://github.com/arekinath/mini-pcsc/archive/v0.2.0.tar.gz")
 arch=(x86 x86_64)
 depends=(libbsd pcsclite libedit)
@@ -19,16 +18,11 @@ optdepends=('cryptsetup: LUKS encrypted disk support (pivy-luks)'
 makedepends=(pkgconf cryptsetup zfs-utils json-c pam)
 sha256sums=('7925467b71227ae835cc5bf5ebf0b74ea6d740738af5d13be05e0416a78f8acc'
             '44b5a004a06ffe214df2810bb2d58a3ecb2bdcf1c892411a8d574afac935f678'
-            'c32b008a730ddc8661e4b0542408b30d46868ee66890612b7f1cbc84803eaf57'
-            'f91aad0c8fb9cbc67c910ad6dcffb401a819b4fd122007ea7f978638db044cf6'
+            'a2e4574142e7112cf2434566a51697ebabe28916d42ab0729c54dfea6f7c420e'
             'a2c23b7b9e3dc976b54627a08da68b76fd6194ba45d211959dedf4700879379e')
 
 # Don't use --as-needed when linking, will break pam_pivy
 LDFLAGS+=" -Wl,--no-as-needed"
-
-prepare() {
-	mv "libressl-3.1.0" "$pkgname-$pkgver/libressl"
-}
 
 build() {
 	cd "$pkgname-$pkgver"
