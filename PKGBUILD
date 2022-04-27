@@ -1,7 +1,7 @@
 # Maintainer: Strahinya Radich <contact@strahinja.org>
 pkgname=sled
 pkgver=0.10.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple text editor"
 arch=('x86_64')
 url="https://strahinja.srht.site/sled"
@@ -28,5 +28,5 @@ build() {
 package() {
 	local redo=$(command -v redo || echo ./do)
 	cd $pkgname-v$pkgver
-	PREFIX="$pkgdir/usr" ${redo} install
+	FALLBACKVER=$pkgver-$pkgrel PREFIX="$pkgdir/usr" ${redo} install
 }
