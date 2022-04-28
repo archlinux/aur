@@ -3,7 +3,7 @@
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-gui
-pkgver=2.2.31
+pkgver=2.2.32
 pkgrel=1
 pkgdesc='GNS3 network simulator. Graphical user interface package.'
 arch=('any')
@@ -28,14 +28,14 @@ optdepends=(
     'wireshark-qt: Live packet capture')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/GNS3/$pkgname/archive/v$pkgver.tar.gz"
         'gns3.desktop')
-sha256sums=('7b6f041f88a63dc44e33680ea489556abc7d96d1c3d4bb5d85dd15b15db6d036'
+sha256sums=('a43f51567ac69db894d2ac6e41edf1549bc992ddf98979e1576c59b08571d943'
             '51e6db5b47e6af3d008d85e8c597755369fafb75ddb2af9e79a441f943f4c166')
 
 prepare() {
     cd "$pkgname-$pkgver"
     # Arch usually has the latest versions. Patch requirements to allow them.
     sed -i \
-        -e 's|^sentry-sdk==1\.5\.4$|sentry-sdk>=1.5.4|' \
+        -e 's|^sentry-sdk==1\.5\.10$|sentry-sdk>=1.5.10|' \
         -e 's|^psutil==5\.9\.0$|psutil>=5.9.0|' \
         -e 's|^distro==1\.6\.0$|distro>=1.6.0|' \
         -e 's|^setuptools==60\.6\.0|setuptools<=60.6.0|' \
