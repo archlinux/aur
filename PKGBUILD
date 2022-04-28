@@ -4,13 +4,13 @@ pkgname=avaloniailspy
 _gitname="AvaloniaILSpy"
 pkgver=v7.1
 _gittag=v7.1-rc
-pkgrel=3
+pkgrel=4
 url="https://github.com/icsharpcode/AvaloniaILSpy"
 pkgdesc="Avalonia-based .NET Decompiler (port of ILSpy)"
 arch=("any")
 provides=("avaloniailspy")
 license=("MIT" "LGPLv2.1" "Ms-PL")
-depends=("dotnet-runtime")
+depends=("dotnet-runtime" "mono")
 makedepends=("dotnet-sdk" "libicns" "git")
 
 source=("git+https://github.com/icsharpcode/${_gitname}.git#tag=${_gittag}" 
