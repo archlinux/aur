@@ -1,7 +1,8 @@
-# Maintainer: onbjerg <hi@notbjerg.me>
-pkgname=frame-eth-dev
+# Maintainer: topocount <top at counts dot club>
+# Contributor: onbjerg <hi@notbjerg.me>
+pkgname=frame-eth-git
 pkgver="0.5.0"
-pkgrel=4
+pkgrel=16
 pkgdesc="System-wide Web3"
 arch=('x86_64')
 url='https://frame.sh'
@@ -9,10 +10,10 @@ license=('GPL3')
 depends=('gtk3' 'nss' 'libxss')
 _node_ver=16
 makedepends=('npm' 'nvm' 'libusb' 'python3' 'git' 'node-gyp')
-provides=('frame')
-conflicts=('frame-eth')
+provides=('frame-eth')
+conflicts=('frame-eth' 'frame-eth-dev' 'frame-eth-dev-appimage')
 install=$pkgname.install
-source=("git+https://github.com/floating/frame.git#tag=v0.5.0-beta.9"
+source=("git+https://github.com/floating/frame.git#tag=v0.5.0-beta.16"
         "$pkgname.desktop")
 sha256sums=('SKIP' 'SKIP')
 
@@ -34,7 +35,7 @@ prepare() {
 build() {
   _ensure_local_nvm
   cd frame
-  npm install --cache "${srcdir}/npm-cache"
+  npm run setup
   npm run build -- --linux dir
 }
 
@@ -44,5 +45,5 @@ package() {
   cp -r --preserve=mode dist/linux-unpacked/* "$pkgdir/opt/$pkgname/"
   install -Dm644 "../$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 "asset/png/FrameAppIcon.png" "$pkgdir/usr/share/pixmaps/frame.png"
-  printf "#!/bin/sh\n\n/opt/$pkgname/frame \"\$@\"\n" | install -Dm755 /dev/stdin "$pkgdir/usr/bin/frame"
+  printf "#!/bin/sh\n\n/opt/$pkgname/frame-eth \"\$@\"\n" | install -Dm755 /dev/stdin "$pkgdir/usr/bin/frame-eth"
 }
