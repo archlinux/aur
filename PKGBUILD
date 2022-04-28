@@ -2,32 +2,28 @@
 
 pkgname=gpu-viewer
 _pkgname=GPU-Viewer
-pkgver=1.38
+pkgver=1.40
 pkgrel=1
 pkgdesc="A frontend to glxinfo and vulkaninfo."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/arunsivaramanneo/GPU-Viewer/"
 license=('GPL3')
 depends=('gtk3' 'python' 'python-gobject' 'vulkan-tools' 'clinfo' 'mesa-utils' 'vdpauinfo')
+makedepends=('meson' 'ninja')
 optdepends=('nvidia: Vulkan nvidia driver'
             'mesa'
             'vulkan-radeon: Vulkan AMD drivers'
             'vulkan-intel: Vulkan Intel drivers')
 source=("https://github.com/arunsivaramanneo/$_pkgname/archive/v$pkgver.tar.gz")
 
-package() {
-    install -dm755 $pkgdir/usr/share/$pkgname
-	install -dm755 $pkgdir/usr/share/applications
-	install -d $pkgdir/usr/bin/
-	cp -rf $srcdir/$_pkgname-$pkgver/Files $pkgdir/usr/share/$pkgname
-    cp -rf $srcdir/$_pkgname-$pkgver/Images $pkgdir/usr/share/$pkgname
-	cp -rf $srcdir/$_pkgname-$pkgver/"About GPU Viewer" $pkgdir/usr/share/$pkgname
-	cp -rf $srcdir/$_pkgname-$pkgver/GPUViewer $pkgdir/usr/share/$pkgname
-	cp -rf $srcdir/$_pkgname-$pkgver/"Change Log.md" $pkgdir/usr/share/$pkgname
-	cp -rf $srcdir/$_pkgname-$pkgver/LICENSE $pkgdir/usr/share/$pkgname
-	cp -rf $srcdir/$_pkgname-$pkgver/README.md $pkgdir/usr/share/$pkgname
-	cp -rf $srcdir/$_pkgname-$pkgver/$pkgname.desktop $pkgdir/usr/share/applications/$pkgname.desktop
-	ln -s "/usr/share/$pkgname/GPUViewer" "$pkgdir/usr/bin/$pkgname"
+build() {
+	cd "$_pkgname-$pkgver"
+	meson _build
 }
 
-md5sums=('65d61d480a4c2a100503241ebb9fc3da')
+package() {
+	cd "$_pkgname-$pkgver/_build"
+	DESTDIR="$pkgdir" ninja install
+}
+
+md5sums=('708671324ebd18eb4b9f60907083ab7d')
