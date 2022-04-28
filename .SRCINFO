@@ -1,0 +1,21 @@
+pkgbase = flowify
+	pkgdesc = Turn a font into a flow font
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/simoncozens/flowify
+	arch = any
+	license = Apache
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-poetry
+	makedepends = python-wheel
+	depends = python
+	depends = python-fontfeatures
+	depends = python-inflect
+	depends = python-numpy
+	depends = python-ufo2ft
+	depends = python-ufolib2
+	source = https://files.pythonhosted.org/packages/source/f/flowify/flowify-0.1.0.tar.gz
+	sha256sums = d884e5132b319b0f67fc86c4555e07a3a93351c95c8b37b52bfd4cecdaf297be
+
+pkgname = flowify
