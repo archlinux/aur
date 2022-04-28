@@ -1,5 +1,5 @@
 # Maintainer: xpt <user.xpt@gmail.com>
-# Contributor: Serge K <arch@phnx47.net>
+# Contributor: Serge K <serge.arch@zmail.pro>
 
 pkgname=prey-node-client
 pkgver=1.9.23
