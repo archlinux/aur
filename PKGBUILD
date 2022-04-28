@@ -1,60 +1,18 @@
-# Maintainer: Pierre Chapuis <catwell at archlinux dot us>
+# $Id$
+# Contributor: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
+_name=lima
 pkgname=lima
-pkgver=1.3
-pkgrel=2
-pkgdesc="Personal Cloud software"
-depends=(python2 fuse libyaml ffmpeg libjpeg-turbo)
-optdepends=(
-    "python2-gnomekeyring: Gnome Keyring support"
-    "kdebindings-python2: KWallet support"
-)
-makedepends=(execstack)
-arch=("x86_64")
-url="https://meetlima.com"
-license=(custom)
-install="lima.install"
-source=(
-    "https://static.meetlima.com/linux-client/$pkgname-$pkgver-amd64.tgz"
-    "lima.service"
-)
-sha256sums=(
-    "10aafdcfc34462e82184084faf2625ebcc2aab184f4ca77bc010e134a886e0b2"
-    "68662c1437f88403f38b0e80da3b2b546512fe524b791cba27791cd2d5033e7c"
-)
+pkgver=0.10.0
+pkgrel=1
+pkgdesc="Linux virtual machines, typically on macOS, for running containerd."
+arch=('x86_64')
+url="https://github.com/lima-vm/lima"
+license=('MIT')
+source=("https://github.com/lima-vm/${_name}/releases/download/v${pkgver}/${_name}-${pkgver}-Linux-x86_64.tar.gz")
+sha256sums=('7919d50dc5bc45e29a3fb90b4ae3e1bb5687d04dae06e329c7599adf17008acc')
 
 package() {
-    cd "$pkgname-$pkgver"
-
-    # Copy lib directory.
-    mkdir -p "$pkgdir/usr"
-    cp -r lib "$pkgdir/usr"
-
-    # Use python2 instead of python to make Namcap happy.
-    sed -i -e "s|#!/usr/bin/env python\r\?$|#!/usr/bin/env python2|g" \
-        $(find "$pkgdir" -name "*.py")
-    sed -i -e "s|#!/usr/local/bin/python\r\?$|#!/usr/bin/env python2|g" \
-        $(find "$pkgdir" -name "*.py")
-
-    # All .pyc files are OK.
-    find "$pkgdir" -name "*.pyc" -exec touch {} \;
-
-    # Mark stack of libraries as non-executable.
-    execstack -c "$pkgdir/usr/lib/lima/pylima.so"
-    for i in "$pkgdir/usr/lib/lima/deps/gnsdk/lib/linux_x86-64/"*".so"*; do
-        execstack -c "$i"
-    done
-
-    # Systemd unit file
-    install -Dm0644 "$srcdir/lima.service" \
-        "$pkgdir/usr/lib/systemd/user/lima.service"
-
-    # Executable and license file
-    install -Dm0755 lima "$pkgdir/usr/bin/lima"
-    install -Dm0644 "lib/lima/TAC.txt" \
-        "$pkgdir/usr/share/licenses/$pkgname/TAC.txt"
-
-    # Man page
-    install -Dm0644 "lib/lima/lima.1.gz" \
-        "$pkgdir/usr/share/man/man1/lima.1.gz"
+  cp -r "${srcdir}" "${pkgdir}"/usr
+  find $pkgdir -iname ${_name}-${pkgver}* | xargs -r rm -rf
 }

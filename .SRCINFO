@@ -1,23 +1,11 @@
 pkgbase = lima
-	pkgdesc = Personal Cloud software
-	pkgver = 1.3
-	pkgrel = 2
-	url = https://meetlima.com
-	install = lima.install
+	pkgdesc = Linux virtual machines, typically on macOS, for running containerd.
+	pkgver = 0.10.0
+	pkgrel = 1
+	url = https://github.com/lima-vm/lima
 	arch = x86_64
-	license = custom
-	makedepends = execstack
-	depends = python2
-	depends = fuse
-	depends = libyaml
-	depends = ffmpeg
-	depends = libjpeg-turbo
-	optdepends = python2-gnomekeyring: Gnome Keyring support
-	optdepends = kdebindings-python2: KWallet support
-	source = https://static.meetlima.com/linux-client/lima-1.3-amd64.tgz
-	source = lima.service
-	sha256sums = 10aafdcfc34462e82184084faf2625ebcc2aab184f4ca77bc010e134a886e0b2
-	sha256sums = 68662c1437f88403f38b0e80da3b2b546512fe524b791cba27791cd2d5033e7c
+	license = MIT
+	source = https://github.com/lima-vm/lima/releases/download/v0.10.0/lima-0.10.0-Linux-x86_64.tar.gz
+	sha256sums = 7919d50dc5bc45e29a3fb90b4ae3e1bb5687d04dae06e329c7599adf17008acc
 
 pkgname = lima
-
