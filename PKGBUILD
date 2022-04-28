@@ -32,7 +32,7 @@ sha1sums=('SKIP'
 makedepends=(premake git)
 depends=(glslang)
 conflicts=(shader-slang shader-slang-bin)
-provides=(shader-slang shader-slang-bin)
+provides=(shader-slang)
 
 prepare() {
   cd slang

@@ -9,7 +9,6 @@ pkgbase = shader-slang-git
 	makedepends = git
 	depends = glslang
 	provides = shader-slang
-	provides = shader-slang-bin
 	conflicts = shader-slang
 	conflicts = shader-slang-bin
 	source = git+https://github.com/shader-slang/slang
