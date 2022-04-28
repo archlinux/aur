@@ -7,15 +7,8 @@ arch=("any")
 license=("zlib")
 depends=("php" "php-gd")
 options=("emptydirs")
-source=("$pkgname-$pkgver.tar.gz::https://github.com/PrivateBin/PrivateBin/archive/$pkgver.tar.gz"
-        "config.patch")
-md5sums=('87363e5faa961c8a740fe3de746b48de'
-         '912b477a3d0c7505111bbe17c3901f4a')
-
-prepare(){
-    cd PrivateBin-$pkgver/cfg
-    patch conf.sample.php ../../config.patch
-}
+source=("$pkgname-$pkgver.tar.gz::https://github.com/PrivateBin/PrivateBin/archive/$pkgver.tar.gz")
+md5sums=('87363e5faa961c8a740fe3de746b48de')
 
 package(){
     cd PrivateBin-$pkgver

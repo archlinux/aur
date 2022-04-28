@@ -9,8 +9,6 @@ pkgbase = privatebin
 	depends = php-gd
 	options = emptydirs
 	source = privatebin-1.4.0.tar.gz::https://github.com/PrivateBin/PrivateBin/archive/1.4.0.tar.gz
-	source = config.patch
 	md5sums = 87363e5faa961c8a740fe3de746b48de
-	md5sums = 912b477a3d0c7505111bbe17c3901f4a
 
 pkgname = privatebin
