@@ -1,0 +1,79 @@
+From aa4d518fadee155d9fd6d4cb31d5a4d35c3d791d Mon Sep 17 00:00:00 2001
+From: Olga Kornievskaia <kolga@netapp.com>
+Date: Wed, 16 Mar 2022 18:24:26 -0400
+Subject: [PATCH] NFSv4.1 provide mount option to toggle trunking discovery
+
+Introduce a new mount option -- trunkdiscovery,notrunkdiscovery -- to
+toggle whether or not the client will engage in actively discovery
+of trunking locations.
+
+v2 make notrunkdiscovery default
+
+Signed-off-by: Olga Kornievskaia <kolga@netapp.com>
+Cherry-picked-for: https://bugs.archlinux.org/task/74272
+---
+ fs/nfs/client.c           | 3 ++-
+ fs/nfs/fs_context.c       | 8 ++++++++
+ include/linux/nfs_fs_sb.h | 1 +
+ 3 files changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/fs/nfs/client.c b/fs/nfs/client.c
+index d1f34229e11ab5..e828504cc396c9 100644
+--- a/fs/nfs/client.c
++++ b/fs/nfs/client.c
+@@ -857,7 +857,8 @@ static int nfs_probe_fsinfo(struct nfs_server *server, struct nfs_fh *mntfh, str
+ 	}
+
+ 	if (clp->rpc_ops->discover_trunking != NULL &&
+-			(server->caps & NFS_CAP_FS_LOCATIONS)) {
++			(server->caps & NFS_CAP_FS_LOCATIONS &&
++			 (server->flags & NFS_MOUNT_TRUNK_DISCOVERY))) {
+ 		error = clp->rpc_ops->discover_trunking(server, mntfh);
+ 		if (error < 0)
+ 			return error;
+diff --git a/fs/nfs/fs_context.c b/fs/nfs/fs_context.c
+index ea17fa1f31ecb0..e2d59bb5e6bbe7 100644
+--- a/fs/nfs/fs_context.c
++++ b/fs/nfs/fs_context.c
+@@ -80,6 +80,7 @@ enum nfs_param {
+ 	Opt_source,
+ 	Opt_tcp,
+ 	Opt_timeo,
++	Opt_trunkdiscovery,
+ 	Opt_udp,
+ 	Opt_v,
+ 	Opt_vers,
+@@ -180,6 +181,7 @@ static const struct fs_parameter_spec nfs_fs_parameters[] = {
+ 	fsparam_string("source",	Opt_source),
+ 	fsparam_flag  ("tcp",		Opt_tcp),
+ 	fsparam_u32   ("timeo",		Opt_timeo),
++	fsparam_flag_no("trunkdiscovery", Opt_trunkdiscovery),
+ 	fsparam_flag  ("udp",		Opt_udp),
+ 	fsparam_flag  ("v2",		Opt_v),
+ 	fsparam_flag  ("v3",		Opt_v),
+@@ -529,6 +531,12 @@ static int nfs_fs_context_parse_param(struct fs_context *fc,
+ 		else
+ 			ctx->flags &= ~NFS_MOUNT_NOCTO;
+ 		break;
++	case Opt_trunkdiscovery:
++		if (result.negated)
++			ctx->flags &= ~NFS_MOUNT_TRUNK_DISCOVERY;
++		else
++			ctx->flags |= NFS_MOUNT_TRUNK_DISCOVERY;
++		break;
+ 	case Opt_ac:
+ 		if (result.negated)
+ 			ctx->flags |= NFS_MOUNT_NOAC;
+diff --git a/include/linux/nfs_fs_sb.h b/include/linux/nfs_fs_sb.h
+index ca0959e51e817c..b0e3fd550122c4 100644
+--- a/include/linux/nfs_fs_sb.h
++++ b/include/linux/nfs_fs_sb.h
+@@ -151,6 +151,7 @@ struct nfs_server {
+ #define NFS_MOUNT_SOFTREVAL		0x800000
+ #define NFS_MOUNT_WRITE_EAGER		0x01000000
+ #define NFS_MOUNT_WRITE_WAIT		0x02000000
++#define NFS_MOUNT_TRUNK_DISCOVERY	0x04000000
+
+ 	unsigned int		fattr_valid;	/* Valid attributes */
+ 	unsigned int		caps;		/* server capabilities */
+
