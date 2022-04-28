@@ -1,9 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Type=Application
-Name=SpotiFlyer
-Comment=Kotlin multiplatform music downloader
-Exec=spotiflyer
-Icon=spotiflyer
-Categories=Audio;AudioVideo;
-Terminal=false
