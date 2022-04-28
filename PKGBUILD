@@ -3,7 +3,7 @@
 
 _name=kubergrunt
 pkgname=kubergrunt
-pkgver=$PKGVER
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Kubergrunt is a standalone go binary with a collection of commands to fill in the gaps between Terraform, Helm, and Kubectl"
 arch=('x86_64')
