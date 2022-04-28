@@ -1,7 +1,7 @@
 pkgbase = chez-scheme
-	pkgdesc = Chez Scheme is a compiler and run-time system for the language of the Revised^6 Report on Scheme (R6RS), with numerous extensions.
-	pkgver = 9.5.6
-	pkgrel = 2
+	pkgdesc = Compiler and run-time system for the language of the Revised^6 Report on Scheme (R6RS), with numerous extensions.
+	pkgver = 9.5.8
+	pkgrel = 1
 	url = https://github.com/cisco/ChezScheme
 	arch = i686
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = chez-scheme
 	conflicts = chez-scheme-git
 	replaces = petite-chez-scheme
 	replaces = chez-scheme-git
-	source = https://github.com/cisco/ChezScheme/releases/download/v9.5.6/csv9.5.6.tar.gz
-	sha256sums = 9aaa208c63eda8edfad72566790db0f9cedc7c6bb860157c400c98e22583c6b4
+	source = https://github.com/cisco/ChezScheme/releases/download/v9.5.8/csv9.5.8.tar.gz
+	sha256sums = af83e80cbfe1a9a7c868e7c069a40c449fadd5e2a1737fd0f1260fc9d4159906
 
 pkgname = chez-scheme
