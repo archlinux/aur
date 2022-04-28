@@ -1,0 +1,20 @@
+pkgbase = unityhub-cn
+	pkgdesc = The Unity Hub is a standalone application that streamlines the way you find, download, and manage your Unity Projects and installations. (China localized version)
+	pkgver = 3.1.1
+	pkgrel = 1
+	url = https://unity.cn/
+	arch = x86_64
+	license = custom
+	depends = nss
+	depends = gtk3
+	optdepends = libappindicator-gtk3: The DEB says this an optional dependency
+	optdepends = gconf: Used by old editors
+	optdepends = cpio: used for Android build support
+	provides = unityhub
+	conflicts = unityhub
+	source = unityhub-cn-3.1.1.deb::https://public-cdn.cloud.unitychina.cn/hub/prod/UnityHubSetup.deb
+	source = license.txt
+	sha256sums = 2953526a671543af613998d50808df204c5fbf70685564e208f36f663679d34a
+	sha256sums = f0eb3a4bb148bb7f426e4f5b97e891265ac487710cbcba9282518537c7b5d833
+
+pkgname = unityhub-cn
