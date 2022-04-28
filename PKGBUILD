@@ -1,7 +1,7 @@
 # Maintainer: John N Bilbrey <beelzebud@gmail.com>
 _pkgname=plug
 pkgname=$_pkgname-git
-pkgver=v1.4.2.r55.gb1c58e7
+pkgver=v1.4.2.r58.g59d957a
 pkgrel=1
 pkgdesc="Software for the Fender Mustang series of guitar amplifiers."
 arch=(x86_64)
