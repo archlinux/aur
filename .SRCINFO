@@ -1,17 +1,17 @@
 pkgbase = cilium-cli-bin
 	pkgdesc = Network, Service & Security Observability for Kubernetes using eBPF
-	pkgver = 0.11.2
+	pkgver = 0.11.3
 	pkgrel = 1
 	url = https://cilium.io/
 	arch = x86_64
 	arch = aarch64
 	license = Apache
-	provides = cilium-cli=0.11.2
+	provides = cilium-cli=0.11.3
 	conflicts = cilium-cli
 	options = !strip
-	source_x86_64 = cilium-cli-bin-0.11.2-amd64.tar.gz::https://github.com/cilium/cilium-cli/releases/download/v0.11.2/cilium-linux-amd64.tar.gz
-	sha256sums_x86_64 = 5a35a4f4f87140a09f96707665490ee394ec887eae6e3918591695c924d927db
-	source_aarch64 = cilium-cli-bin-0.11.2-arm64.tar.gz::https://github.com/cilium/cilium-cli/releases/download/v0.11.2/cilium-linux-arm64.tar.gz
-	sha256sums_aarch64 = caffee1f15445e0237a2cbef2e01b0ea5508518491f2000447809c8c93cb92e9
+	source_x86_64 = cilium-cli-bin-0.11.3-amd64.tar.gz::https://github.com/cilium/cilium-cli/releases/download/v0.11.3/cilium-linux-amd64.tar.gz
+	sha256sums_x86_64 = 05346691b96c386bf0f55b5c6bf9b3ad15f500a83415ce9d10f2b749750afb00
+	source_aarch64 = cilium-cli-bin-0.11.3-arm64.tar.gz::https://github.com/cilium/cilium-cli/releases/download/v0.11.3/cilium-linux-arm64.tar.gz
+	sha256sums_aarch64 = c51f45f2cd7b6548bb7e2a2ffb90ada25c6a93ec9ad134ee776eee92ec060a4a
 
 pkgname = cilium-cli-bin
