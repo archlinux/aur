@@ -1,6 +1,6 @@
 pkgbase = mved
 	pkgdesc = Bulk-move, copy and delete files safely using a text editor
-	pkgver = 0.7.0
+	pkgver = 0.7.1
 	pkgrel = 1
 	url = https://gitlab.com/ferreum/mved
 	arch = any
@@ -8,7 +8,7 @@ pkgbase = mved
 	makedepends = python-setuptools
 	depends = python
 	depends = python-simplediff
-	source = https://pypi.io/packages/source/m/mved/mved-0.7.0.tar.gz
-	sha256sums = 796c830d3126497ae001bcb8f15a9d7d75f2f7c91b1b0ecd853833c113f1f4fb
+	source = https://pypi.io/packages/source/m/mved/mved-0.7.1.tar.gz
+	sha256sums = d98590a872883e7e31f17c0faf522fe00335be43e1f67efa94e955ab59333fe1
 
 pkgname = mved
