@@ -3,8 +3,8 @@ _srcname=LuaFormatter
 _pkgname=lua-format
 _patch=(g4)
 pkgname=$_pkgname-ext-git
-pkgver=r126.2c3edd0
-pkgrel=1
+pkgver=r263.0ef3575
+pkgrel=2
 pkgdesc='LuaFormatter with extended identifiers'
 arch=(x86_64 aarch64)
 url=https://github.com/tkkcc/LuaFormatter
@@ -12,10 +12,15 @@ provides=($_pkgname-ext $_pkgname $_srcname)
 conflicts=($_pkgname-ext $_pkgname $_srcname)
 license=(Apache2)
 depends=()
-makedepends=(git cmake antlr4)
-source=(git+https://github.com/Koihik/LuaFormatter ${_patch[@]/%/.patch})
-sha512sums=(SKIP
+makedepends=(git cmake java-environment)
+source=(
+  git+https://github.com/Koihik/LuaFormatter ${_patch[@]/%/.patch}
+  antlr4.jar::https://www.antlr.org/download/antlr-4.7.1-complete.jar
+)
+sha512sums=(
+  SKIP
   8747d10775b34b8e413263439b1284bd524ef0ef867e3646774cb5ed4dddf008f852b7a2b6f8a6a1492739a7f931d57e6346cb8b65e00542b7aa8d0b868a4ebc
+  de1c230d7294e05ac7b451cbc639bab9d416a674b281e21092fb4a9329ca8b6d4b92b9ad78a9771cff475a1610f1d0419819c4619bdff36c683019da67ef13b1
 )
 pkgver() {
   cd $_srcname
@@ -30,7 +35,7 @@ prepare() {
 }
 build() {
   cd $_srcname
-  antlr4 -Dlanguage=Cpp -no-listener -visitor -o generated Lua.g4
+  java -jar ../antlr4.jar -Dlanguage=Cpp -no-listener -visitor -o generated Lua.g4
   cmake -D BUILD_TESTS=OFF COVERAGE=OFF .
   make
 }

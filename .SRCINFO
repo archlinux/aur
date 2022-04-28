@@ -1,14 +1,14 @@
 pkgbase = lua-format-ext-git
 	pkgdesc = LuaFormatter with extended identifiers
-	pkgver = r126.2c3edd0
-	pkgrel = 1
+	pkgver = r263.0ef3575
+	pkgrel = 2
 	url = https://github.com/tkkcc/LuaFormatter
 	arch = x86_64
 	arch = aarch64
 	license = Apache2
 	makedepends = git
 	makedepends = cmake
-	makedepends = antlr4
+	makedepends = java-environment
 	provides = lua-format-ext
 	provides = lua-format
 	provides = LuaFormatter
@@ -17,7 +17,9 @@ pkgbase = lua-format-ext-git
 	conflicts = LuaFormatter
 	source = git+https://github.com/Koihik/LuaFormatter
 	source = g4.patch
+	source = antlr4.jar::https://www.antlr.org/download/antlr-4.7.1-complete.jar
 	sha512sums = SKIP
 	sha512sums = 8747d10775b34b8e413263439b1284bd524ef0ef867e3646774cb5ed4dddf008f852b7a2b6f8a6a1492739a7f931d57e6346cb8b65e00542b7aa8d0b868a4ebc
+	sha512sums = de1c230d7294e05ac7b451cbc639bab9d416a674b281e21092fb4a9329ca8b6d4b92b9ad78a9771cff475a1610f1d0419819c4619bdff36c683019da67ef13b1
 
 pkgname = lua-format-ext-git
