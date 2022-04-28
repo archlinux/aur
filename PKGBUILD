@@ -1,6 +1,6 @@
 _pipname=yamk
 pkgname="python-${_pipname}"
-pkgver=2.3.3
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="Yet another make"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/spapanik/yamk"
 license=('MIT')
 depends=('python-tomli' 'python-yaml')
 source=("https://files.pythonhosted.org/packages/source/${_pipname::1}/${_pipname}/${_pipname}-${pkgver}.tar.gz")
-sha256sums=('f8c2825d79f8357388d1c85d8d96a249e88e4d6152e1fadda96e2a12c5acfd0e')
+sha256sums=('1bfcf91bc28938409f8ee6f902991b1dd4e13383b85995d51a0ce9e58432182f')
 
 build() {
 	cd "${srcdir}"/${_pipname}-${pkgver}
