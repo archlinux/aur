@@ -1,0 +1,71 @@
+#!/bin/bash
+
+# Fail immediately if any line fails
+set -e
+
+# If environment variable XDG_CONFIG_HOME is unset, ${XDG_CONFIG_HOME} will have its value; otherwise, ${XDG_CONFIG_HOME} is set to "$HOME/.config"
+: ${XDG_CONFIG_HOME:=$HOME/.config}
+
+pkgname="heros-hour-gog"
+pkgdir="/opt/${pkgname}"
+pkgbin="Hero's Hour.exe"
+
+# Set up wine
+
+export WINEPREFIX="${HOME}/.local/share/${pkgname}"
+
+if [[ ! -d "${WINEPREFIX}" ]]; then
+	mkdir -p "${WINEPREFIX}"
+	wineboot -i
+fi
+
+
+
+# Set up unionfs
+
+# LOWER="${pkgdir}"
+# UPPER="${HOME}/.local/share/${pkgname}/heros-hour-gog-data"
+# UNION="${HOME}/.local/share/${pkgname}/heros-hour-gog-working"
+#
+# if [[ ! -d "${UPPER}" ]]; then
+	# mkdir -p "${UPPER}"
+# fi
+#
+# if [[ ! -d "${UNION}" ]]; then
+	# mkdir -p "${UNION}"
+# fi
+#
+#
+# unionfs -o cow "${UPPER}"=RW:"${LOWER}"=RO "${UNION}"
+#
+# # Unmount unionfs when anything after these lines exit, with or without error
+# unmount_unionfs() {
+	# fusermount -u "${UNION}"
+# }
+# trap unmount_unionfs EXIT
+
+
+
+run="wine \"${pkgdir}/${pkgbin}\""
+run_firejail="firejail --profile=/etc/firejail/${pkgname}.profile ${run}"
+
+
+if hash firejail; then
+    echo "Firejail detected; attempting to enforce a sandbox..."
+    if [[ -f "${XDG_CONFIG_HOME}/firejail/${pkgname}.profile" ]]; then
+        echo "Firejail profile for ${pkgname} found in ${XDG_CONFIG_HOME}/firejail/"
+        echo "Enforcing a sandbox!"
+        eval "${run_firejail}"
+    elif [[ -f "/etc/firejail/${pkgname}.profile" ]]; then
+        echo "Firejail profile for ${pkgname} found in /etc/firejail/"
+        echo "Enforcing a sandbox!"
+        eval "${run_firejail}"
+    else
+        echo "No Firejail profile detected!"
+        echo "Skipping Firejail sandbox..."
+        eval "${run}"
+    fi
+else
+	${run}
+fi
+

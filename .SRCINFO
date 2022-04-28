@@ -1,0 +1,23 @@
+pkgbase = heros-hour-gog
+	pkgdesc = Fantasy-themed, hybrid turn-based and real-time Strategy Role-Playing Game
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = https://www.gog.com/game/heros_hour
+	arch = x86_64
+	groups = games
+	groups = gog
+	license = custom
+	makedepends = innoextract
+	depends = wine
+	optdepends = firejail: sandboxing
+	options = !strip
+	source = gog://setup_heros_hour_2.0.5_(54206).exe
+	source = heros-hour-gog
+	source = heros-hour-gog.profile
+	source = heros-hour-gog.desktop
+	sha512sums = b6c1422ff192f42519789a6832fab2b0a545b243902d1ea998a7c9000ff2e5a0cf38ed7dcc8497e26683bbb547efdaf43b957fd338acdb68f2bfdf2f7a9ee2e0
+	sha512sums = SKIP
+	sha512sums = SKIP
+	sha512sums = SKIP
+
+pkgname = heros-hour-gog
