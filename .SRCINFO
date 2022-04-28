@@ -10,6 +10,7 @@ pkgbase = firecracker-git
 	makedepends = rust
 	makedepends = rust-musl
 	makedepends = kernel-headers-musl
+	makedepends = clang
 	provides = firecracker
 	conflicts = firecracker
 	options = !lto
