@@ -4,7 +4,7 @@
 
 _name=protracker
 pkgname=protracker-git
-pkgver=v1.06.r0.g4beea68
+pkgver=v1.46.r3.gf6f4566
 pkgrel=1
 epoch=1
 pkgdesc="Rewrite of ProTracker v2.3D (Amiga)"
@@ -15,7 +15,7 @@ makedepends=('git')
 depends=('sdl2')
 conflicts=('protracker-svn')
 
-source=("${_name}::git://github.com/8bitbubsy/pt2-clone.git"
+source=("${_name}::git+https://github.com/8bitbubsy/pt2-clone.git"
 	protracker.png
 	protracker.desktop
 )
