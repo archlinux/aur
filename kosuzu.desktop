@@ -1,0 +1,11 @@
+[Desktop Entry]
+
+Type=Application
+Version=1.0
+Name=Kosuzu
+Comment=danbooru downloader and viewer
+Path=/opt/kosuzu-git
+Exec=/opt/kosuzu-git/kosuzu
+Icon=kosuzu
+Terminal=false
+Categories=Internet
