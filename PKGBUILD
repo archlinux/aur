@@ -3,7 +3,7 @@
 _pkgname=ryaml
 pkgname="python-${_pkgname}"
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple yaml serializer and deserializer using Rust."
 arch=(x86_64)
 url="https://pypi.org/project/${_pkgname}"
@@ -24,7 +24,7 @@ prepare() {
 
   patch -Np1 -i "$srcdir/0001-Fix-pyo3-file-dependency-requirement.patch"
 
-  cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+  cargo fetch --locked
 }
 
 build() {
