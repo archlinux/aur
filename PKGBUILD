@@ -1,7 +1,7 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
-pkgname=warpd-git
-pkgver=r73.f7d1202
+pkgname=warpd-wayland-git
+pkgver=r124.4dcfffc
 _gitname=warpd
 pkgrel=1
 pkgdesc="A small X program which facilitates recursively warping the pointer to different quadrants on the screen."
@@ -10,7 +10,7 @@ license=('MIT')
 arch=('x86_64')
 md5sums=('SKIP')
 makedepends=(git)
-depends=(libxinerama libxft libxfixes libxtst libx11)
+depends=(wayland libxkbcommon cairo)
 provides=(warpd)
 source=("git+$url")
 
@@ -21,6 +21,7 @@ pkgver() {
 
 build () {
   cd ${_gitname}
+  export PLATFORM=wayland
   make
 }
 
