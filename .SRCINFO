@@ -1,0 +1,13 @@
+pkgbase = apt-offline
+	pkgdesc = Offline APT Package Manager
+	pkgver = 1.8.4
+	pkgrel = 1
+	url = https://rickysarraf.github.io/apt-offline/
+	arch = any
+	license = GPL
+	depends = python3
+	depends = python-pyqt5
+	source = apt-offline-1.8.4.tar.gz::https://github.com/rickysarraf/apt-offline/releases/download/v1.8.4/apt-offline-1.8.4.tar.gz
+	sha256sums = c6f4afae6082d1eeada7791793ae29ec02a2444b95edfa46956a0299878c3882
+
+pkgname = apt-offline
