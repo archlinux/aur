@@ -3,7 +3,7 @@
 
 _name=kafka-gitops
 pkgname=kafka-gitops
-pkgver=$PKGVER
+pkgver=0.2.15
 pkgrel=1
 pkgdesc="Manage Apache Kafka topics and generate ACLs through a desired state file."
 arch=('x86_64')
