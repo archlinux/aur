@@ -1,0 +1,12 @@
+diff -ur a/CMakeGlobals.txt b/CMakeGlobals.txt
+--- a/CMakeGlobals.txt	2022-03-18 10:10:38.000000000 +1300
++++ b/CMakeGlobals.txt	2022-04-28 10:46:17.695649880 +1200
+@@ -214,7 +214,7 @@
+ endif()
+ 
+ # pandoc version
+-set(PANDOC_VERSION "2.16.2" CACHE INTERNAL "Pandoc version")
++set(PANDOC_VERSION "current" CACHE INTERNAL "Pandoc version")
+ 
+ # quarto support
+ if(LINUX AND UNAME_M STREQUAL aarch64)
