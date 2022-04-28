@@ -3,7 +3,7 @@
 
 _name=terrascan
 pkgname=terrascan
-pkgver=$PKGVER
+pkgver=1.14.0
 pkgrel=1
 pkgdesc="Detect compliance and security violations across Infrastructure as Code"
 arch=('x86_64')
