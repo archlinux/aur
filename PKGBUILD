@@ -4,7 +4,7 @@
 # Contributor: Stijn Segers <francesco dot borromini at gmail dot com>
 
 pkgname=freerdp-gstfree
-pkgver=2.6.1.r36.g52f3e5139
+pkgver=2.7.0
 pkgrel=1
 pkgdesc="Free implementation of the Remote Desktop Protocol (RDP)"
 arch=(x86_64)
@@ -18,7 +18,7 @@ conflicts=(freerdp)
 provides=(freerdp libfreerdp2.so libfreerdp-client2.so libfreerdp-server2
           libfreerdp-shadow2.so libfreerdp-shadow-subsystem2.so libwinpr2.so
           libwinpr-tools2.so libuwac0.so)
-_commit=52f3e5139f7c75258b95ac49f53b8ca49e63f1e2  # stable-2.0/HEAD
+_commit=40ee5d3bcc70343af6c0300d71968858c1f1948f  # tags/2.7.0
 source=("freerdp::git+https://github.com/freerdp/freerdp.git#commit=${_commit}"
         "freerdp-manpage_formatting.patch")
 sha256sums=('SKIP'
