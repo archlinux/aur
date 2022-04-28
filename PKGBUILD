@@ -3,7 +3,7 @@
 pkgname=gpu-viewer
 _pkgname=GPU-Viewer
 pkgver=1.40
-pkgrel=2
+pkgrel=3
 pkgdesc="A frontend to glxinfo and vulkaninfo."
 arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/arunsivaramanneo/GPU-Viewer/"
@@ -18,7 +18,7 @@ source=("https://github.com/arunsivaramanneo/$_pkgname/archive/v$pkgver.tar.gz")
 
 build() {
 	cd "$_pkgname-$pkgver"
-	meson _build
+	meson -D prefix=/usr _build
 }
 
 package() {
