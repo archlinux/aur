@@ -1,7 +1,7 @@
-_pipname=dj-settings
-pkgname="python-${_pipname}"
+_pipname=dj_settings
+pkgname="python-${_pipname//_/-}"
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Settings manager and configuration parser"
 arch=('any')
 url="https://github.com/spapanik/dj_settings"
