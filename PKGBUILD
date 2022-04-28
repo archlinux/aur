@@ -3,7 +3,7 @@
 
 pkgname=smile-emoji-picker
 _pkgname=smile
-pkgver=1.5.4
+pkgver=1.5.6
 pkgrel=1
 pkgdesc="An emoji picker with custom tags support"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('meson')
 checkdepends=('appstream-glib' 'desktop-file-utils')
 optdepends=('noto-fonts-emoji')
 source=($url/archive/$pkgver.tar.gz)
-b2sums=('8df48b9de96ad7a1eddf847da641873799a787cc04835d037597e8c5fc2348a2e6a0beb849023456fd524c4ec6feb7b09506ebeb6565392fd3cb3dedec08254e')
+b2sums=('dc9fbc830327dd3774e07e6c99e2b7210443bb8282197d0718facc9ebcf0b92ff672615f820136e8c9faa5efae01d0b9939f99402989cd8b0b77e2ea53256eed')
 
 # Special thanks to Mark Wagie https://github.com/yochananmarqos/pkgbuilds/blob/master/smile/PKGBUILD
 prepare() {
