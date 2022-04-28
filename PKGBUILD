@@ -2,7 +2,7 @@
 
 pkgname='pul'
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='C utils library for the average project'
 arch=('x86_64' 'armv7a')
 makedepends=('nasm')
@@ -14,6 +14,6 @@ source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 package () {
-	make -C $pkgname-$pkgver install clean DIR_INSTALL=$pkgdir
+	make -C $pkgname-$pkgver install clean OS=gnu+linux DIR_INSTALL=$pkgdir
 }
 
