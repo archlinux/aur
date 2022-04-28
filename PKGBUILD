@@ -2,13 +2,14 @@
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-acpi-dkms
 pkgver=1.0.2+4+gb49caa5
-pkgrel=1
+pkgrel=2
 pkgdesc="This provides the system76_acpi in-tree driver for systems missing it."
 arch=('x86_64')
 url="https://github.com/pop-os/system76-acpi-dkms"
 license=('GPL')
 depends=('dkms')
 makedepends=('git')
+conflicts=('linux>=5.16')
 _commit=b49caa557e6f902381ca76b6bb8f8a2825ad099b
 source=("git+https://github.com/pop-os/system76-acpi-dkms.git#commit=$_commit")
 sha256sums=('SKIP')
