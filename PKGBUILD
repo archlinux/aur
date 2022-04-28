@@ -1,15 +1,15 @@
 # Maintainer: Sauyon Lee <arch@sauyon.com>
 # Contributor: Douglas Creager <dcreager@dcreager.net>
 pkgname=fdr
-pkgver=4.2.4
+pkgver=4.2.7
 pkgrel=1
 pkgdesc="Refinement checker for CSP"
 arch=('x86_64')
 url="https://www.cs.ox.ac.uk/projects/fdr/"
 license=('custom')
-depends=('libtinfo5' 'openssl-1.0' 'gcc-libs' 'qt5-base' 'qt5-3d' 'qt5-x11extras' 'libxcb' 'mesa' 'libffi' 'libgl' 'libdrm')
-source=('https://www.cs.ox.ac.uk/projects/fdr/downloads/fdr-3800-linux-x86_64.tar.gz')
-sha256sums=('d51a5a31062152e4af4020eb6193c2697dc05fdcf069047c4ca2a5ac3d4caa3d')
+depends=('libtinfo5' 'openssl-1.0' 'gcc-libs' 'qt5-base' 'qt5-3d' 'qt5-x11extras' 'libxcb' 'mesa' 'libffi6' 'libgl' 'libdrm')
+source=('https://dl.cocotec.io/fdr/fdr-3814-linux-x86_64.tar.gz')
+sha256sums=('1032b31f2974132e91cb1458341028894d40fb6bb8a10a9d4d986af25ff85231')
 
 package() {
   install -d "${pkgdir}/opt/fdr"

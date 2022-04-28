@@ -1,6 +1,6 @@
 pkgbase = fdr
 	pkgdesc = Refinement checker for CSP
-	pkgver = 4.2.4
+	pkgver = 4.2.7
 	pkgrel = 1
 	url = https://www.cs.ox.ac.uk/projects/fdr/
 	arch = x86_64
@@ -13,11 +13,10 @@ pkgbase = fdr
 	depends = qt5-x11extras
 	depends = libxcb
 	depends = mesa
-	depends = libffi
+	depends = libffi6
 	depends = libgl
 	depends = libdrm
-	source = https://www.cs.ox.ac.uk/projects/fdr/downloads/fdr-3800-linux-x86_64.tar.gz
-	sha256sums = d51a5a31062152e4af4020eb6193c2697dc05fdcf069047c4ca2a5ac3d4caa3d
+	source = https://dl.cocotec.io/fdr/fdr-3814-linux-x86_64.tar.gz
+	sha256sums = 1032b31f2974132e91cb1458341028894d40fb6bb8a10a9d4d986af25ff85231
 
 pkgname = fdr
-
