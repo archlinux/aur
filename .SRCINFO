@@ -7,7 +7,7 @@ pkgbase = gnome-backgrounds-macos-git
 	license = CCPL:by-sa
 	license = GPL3 or any later version
 	makedepends = glib2
-	makedepends = meson>=0.50.0
+	makedepends = meson
 	makedepends = curl
 	provides = gnome-backgrounds
 	provides = gnome-backgrounds-git
