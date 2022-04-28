@@ -1,0 +1,41 @@
+diff --git a/src/editor-application-actions.c b/src/editor-application-actions.c
+index 2478829..2dd885e 100644
+--- a/src/editor-application-actions.c
++++ b/src/editor-application-actions.c
+@@ -290,7 +290,7 @@ editor_application_actions_quit (GSimpleAction *action,
+         g_ptr_array_add (unsaved, g_object_ref (page));
+     }
+ 
+-  if (unsaved->len > 0)
++/*  if (unsaved->len > 0)
+     {
+       _editor_save_changes_dialog_run_async (gtk_application_get_active_window (GTK_APPLICATION (self)),
+                                              unsaved,
+@@ -299,6 +299,7 @@ editor_application_actions_quit (GSimpleAction *action,
+                                              g_object_ref (self));
+       return;
+     }
++*/
+ 
+   editor_session_save_async (self->session,
+                              NULL,
+diff --git a/src/editor-window.c b/src/editor-window.c
+index 3e8f5cb..ec7fb2d 100644
+--- a/src/editor-window.c
++++ b/src/editor-window.c
+@@ -399,6 +399,7 @@ editor_window_close_request (GtkWindow *window)
+         g_ptr_array_add (unsaved, g_object_ref (page));
+     }
+ 
++/*
+   if (unsaved->len > 0)
+     {
+       _editor_save_changes_dialog_run_async (GTK_WINDOW (self),
+@@ -408,6 +409,7 @@ editor_window_close_request (GtkWindow *window)
+                                              g_object_ref (self));
+       return TRUE;
+     }
++*/
+ 
+   editor_window_do_close (self);
+ 
