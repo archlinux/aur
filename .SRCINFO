@@ -1,8 +1,8 @@
 pkgbase = kanboard
 	pkgdesc = Simple visual task board
 	pkgver = 1.2.22
-	pkgrel = 1
-	url = http://kanboard.net/
+	pkgrel = 2
+	url = http://kanboard.org/
 	install = kanboard.install
 	arch = any
 	license = MIT
