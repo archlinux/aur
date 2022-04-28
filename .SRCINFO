@@ -1,0 +1,13 @@
+pkgbase = lima-gui
+	pkgdesc = Making a GUI for lima VM.
+	pkgver = 0.2.2
+	pkgrel = 1
+	url = https://github.com/afbjorklund/lima-gui
+	arch = x86_64
+	license = MIT
+	makedepends = qt5-tools
+	depends = qtermwidget
+	source = https://github.com/afbjorklund/lima-gui/archive/refs/tags/v0.2.2.tar.gz
+	sha256sums = f6115c0743bca9c1fc0f8c763e4f96412e227576e118f61de725c75b22b13eb7
+
+pkgname = lima-gui
