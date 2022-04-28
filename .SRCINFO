@@ -1,12 +1,14 @@
 pkgbase = kafka-gitops
 	pkgdesc = Manage Apache Kafka topics and generate ACLs through a desired state file.
 	pkgver = 0.2.15
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/devshawn/kafka-gitops
 	arch = x86_64
 	license = Apache-2
 	depends = java-runtime
 	source = https://github.com/devshawn/kafka-gitops/releases/download/0.2.15/kafka-gitops.zip
+	source = https://raw.githubusercontent.com/devshawn/kafka-gitops/0.2.15/LICENSE
 	sha256sums = 182e35a3693a6864e58d47ef419141486adb19acb9385120257a03088789abe8
+	sha256sums = 43ad86bd3bd2db3b6b240fa83987ff785e05b775c0a5309dee80aa6f1a72031f
 
 pkgname = kafka-gitops
