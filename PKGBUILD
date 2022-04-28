@@ -2,7 +2,7 @@
 
 pkgname=gitoxide
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A command-line application for interacting with git repositories"
 url="https://github.com/Byron/gitoxide"
 license=('Apache' 'MIT')
@@ -34,7 +34,7 @@ package() {
   cd "$pkgname-$pkgver"
 
   install -Dm0755 -t "$pkgdir/usr/bin" \
-    target/release/gix
+    target/release/gix target/release/ein
 
   install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE-APACHE LICENSE-MIT
 }
