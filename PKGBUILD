@@ -1,7 +1,7 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=curl-impersonate-chrome
-pkgver=r120.7717c22
+pkgver=r133.3f1c350
 _gitname=curl-impersonate
 pkgrel=1
 pkgdesc="A special compilation of curl that makes it impersonate Chrome"
@@ -81,9 +81,7 @@ build_boringssl () {
 
 patch_nghttp2 () {
   cd ${srcdir}
-  cp ${browser_dir}/patches/libnghttp2-*.patch ${NGHTTP2_VERSION}/
   cd ${NGHTTP2_VERSION}
-  for p in $(ls libnghttp2-*.patch); do patch -p1 < $p; done
   autoreconf -i 
   automake 
   autoconf
