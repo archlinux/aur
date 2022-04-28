@@ -1,7 +1,7 @@
 # Maintainer: Camille 'DrasLorus' Monière <draslorus@draslorus.fr>
 
 pkgname=libmatio-cpp
-pkgver=0.1.1
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="A C++ wrapper of the matio library, with memory ownership handling."
 arch=('x86_64')
@@ -17,9 +17,9 @@ replaces=()
 backup=()
 options=()
 install=
-source=("libmatio-cpp-${pkgver}.tar.gz::https://github.com/dic-iit/matio-cpp/archive/v${pkgver}.tar.gz")
+source=("libmatio-cpp-${pkgver}.tar.gz::https://github.com/ami-iit/matio-cpp/archive/v${pkgver}.tar.gz")
 noextract=()
-sha256sums=('8c52ccb08ef31311161eb0f2e348a4d0a170a4b18e1232ff974cf6514a72a706')
+sha256sums=('38703817d0bd8184348d848ed537f0ec14e4c288ac5dc4c2396243afd898d987')
 
 prepare() {
 	cd "$srcdir"
