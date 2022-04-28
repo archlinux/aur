@@ -1,5 +1,5 @@
 pkgbase = warpd-wayland-git
-	pkgdesc = A small X program which facilitates recursively warping the pointer to different quadrants on the screen.
+	pkgdesc = A small program which facilitates recursively warping the pointer to different quadrants on the screen (wayland build).
 	pkgver = r124.4dcfffc
 	pkgrel = 1
 	url = https://github.com/rvaiya/warpd

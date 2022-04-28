@@ -1,10 +1,8 @@
-# Maintainer mattf <matheusfillipeag@gmail.com>
-
 pkgname=warpd-wayland-git
 pkgver=r124.4dcfffc
 _gitname=warpd
 pkgrel=1
-pkgdesc="A small X program which facilitates recursively warping the pointer to different quadrants on the screen."
+pkgdesc="A small program which facilitates recursively warping the pointer to different quadrants on the screen (wayland build)."
 url="https://github.com/rvaiya/warpd"
 license=('MIT')
 arch=('x86_64')
