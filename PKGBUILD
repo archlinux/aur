@@ -1,18 +1,20 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: CrocoDuck <crocoduck dot oducks at gmail dot com>
 pkgname=gmsh-bin
-pkgver=4.9.5
+pkgver=4.10.0
 pkgrel=1
 pkgdesc="An three-dimensional finite element mesh generator with built-in pre- and post-processing facilities (includes SDK)"
-arch=('x86_64')
+arch=(x86_64)
 url="http://gmsh.info"
-license=('GPL2')
+license=(GPL2)
 depends=(libxft libxinerama libxcursor glu)
 makedepends=(gendesk chrpath)
+optdepends=('python: for gmsh.py'
+  'julia: for gmsh.jl')
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=(${url}/bin/Linux/${pkgname%-*}-${pkgver}-Linux64-sdk.tgz)
-sha512sums=('1bcbd6df764b46fa6d189b40d2119084fe459ad51a119def3e81d209134110d0d71bb4f951269c2be1101ee31946ad960198ca07b5544dd2284cf16ae8d7af1d')
+sha512sums=('25262668a172641e4b39823c8ee1effa539760df00422adfa9f1a3178a5ee6bfc4a732e7bbb7bd69e15461c5f5e48bb833b49bec1849410e0a421ebc9ba59b5a')
 
 prepare() {
   # Set Icon and Launcher:
@@ -46,4 +48,12 @@ package() {
   # Launcher
   install -Dm 644 "${srcdir}/gmsh_icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname%-}.png"
   install -Dm 644 "${srcdir}/${pkgname%-*}.desktop" "${pkgdir}/usr/share/applications/${pkgname%-*}.desktop"
+
+  # Bindings for Python, Julia
+  install -D -m644 "${pkgdir}/usr/lib/gmsh.py" "${pkgdir}/usr/share/gmsh/api/python/gmsh.py"
+  install -D -m644 "${pkgdir}/usr/lib/gmsh.jl" "${pkgdir}/usr/share/gmsh/api/julia/gmsh.jl"
+  rm -f "${pkgdir}/usr/lib/gmsh.py" "${pkgdir}/usr/lib/gmsh.jl"
+  install -d "${pkgdir}/etc/profile.d"
+  echo 'export PYTHONPATH="/usr/share/gmsh/api/python:$PYTHONPATH"' >>"${pkgdir}"/etc/profile.d/gmsh.sh
+  echo 'export JULIA_LOAD_PATH="/usr/share/gmsh/api/julia:$JULIA_LOAD_PATH"' >>"${pkgdir}/etc/profile.d/gmsh.sh"
 }

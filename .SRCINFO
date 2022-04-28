@@ -1,6 +1,6 @@
 pkgbase = gmsh-bin
 	pkgdesc = An three-dimensional finite element mesh generator with built-in pre- and post-processing facilities (includes SDK)
-	pkgver = 4.9.5
+	pkgver = 4.10.0
 	pkgrel = 1
 	url = http://gmsh.info
 	arch = x86_64
@@ -11,9 +11,11 @@ pkgbase = gmsh-bin
 	depends = libxinerama
 	depends = libxcursor
 	depends = glu
+	optdepends = python: for gmsh.py
+	optdepends = julia: for gmsh.jl
 	provides = gmsh
 	conflicts = gmsh
-	source = http://gmsh.info/bin/Linux/gmsh-4.9.5-Linux64-sdk.tgz
-	sha512sums = 1bcbd6df764b46fa6d189b40d2119084fe459ad51a119def3e81d209134110d0d71bb4f951269c2be1101ee31946ad960198ca07b5544dd2284cf16ae8d7af1d
+	source = http://gmsh.info/bin/Linux/gmsh-4.10.0-Linux64-sdk.tgz
+	sha512sums = 25262668a172641e4b39823c8ee1effa539760df00422adfa9f1a3178a5ee6bfc4a732e7bbb7bd69e15461c5f5e48bb833b49bec1849410e0a421ebc9ba59b5a
 
 pkgname = gmsh-bin
