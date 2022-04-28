@@ -1,6 +1,6 @@
 pkgbase = openmsx-catapult-git
 	pkgdesc = Front-end for openMSX: the MSX emulator that aims for perfection.
-	pkgver = 1000.8962a2d
+	pkgver = 1010.504b33f
 	pkgrel = 1
 	url = http://openmsx.org
 	arch = i686
@@ -17,8 +17,7 @@ pkgbase = openmsx-catapult-git
 	optdepends = openmsx
 	provides = openmsx-catapult
 	conflicts = openmsx-catapult
-	source = git://github.com/openMSX/wxcatapult.git
+	source = git+https://github.com/openMSX/wxcatapult.git
 	md5sums = SKIP
 
 pkgname = openmsx-catapult-git
-
