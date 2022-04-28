@@ -9,7 +9,7 @@ license=('BSD')
 depends=('libzip' 'zlib')
 makedepends=('cmake')
 checkdepends=('gtest' 'openssl')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/3MFConsortium/lib3mf/archive/v$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/3MFConsortium/lib3mf/archive/refs/tags/v$pkgver.tar.gz")
 sha512sums=('2a9ee92312396b8966967a7ed696c58c69a77438f94432ad071659adc8c9d12fba34a3cf3d8c8d3ad3b26c12c9a89f4d8645e6f396987dc05b04952b004a1f07')
 
 build() {
