@@ -1,0 +1,17 @@
+pkgbase = emacs-dracula-theme-git
+	pkgdesc = Dark theme for Emacs
+	pkgver = 1.7.0.r74.ge725c9e
+	pkgrel = 1
+	url = https://draculatheme.com/emacs
+	arch = any
+	groups = dracula-theme
+	license = MIT
+	makedepends = emacs-nox
+	makedepends = git
+	optdepends = emacs>=24.3
+	provides = emacs-dracula-theme
+	conflicts = emacs-dracula-theme
+	source = emacs-dracula-theme::git+https://github.com/dracula/emacs.git
+	b2sums = SKIP
+
+pkgname = emacs-dracula-theme-git
