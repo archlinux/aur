@@ -3,10 +3,10 @@
 
 _pkgname=jwcrypto
 pkgname=python-$_pkgname
-pkgver=1.0
-# git rev-parse v1.0.0.sig
-_tag=8040a603b5281cdc5876aa4b0c771f30fe60de62
-pkgrel=3
+pkgver=1.2.0
+# curl https://api.github.com/repos/latchset/jwcrypto/git/ref/tags/v$pkgver | jq -r .object.sha
+_tag=dcae59d007a9a41916e738c284419b3106fbaba6
+pkgrel=1
 pkgdesc='Python implementation of JWK, JWS, JWE specifications'
 arch=(any)
 url='https://github.com/latchset/jwcrypto'
@@ -25,6 +25,11 @@ validpgpkeys=(
   'BB97AF8BC4E7A5C0D96223D3C788C4C1D4550D45'  # https://github.com/tiran
   '7C7BD146943B206BB645B64594EAD67E004B65AB'  # Simo Sorce <simo@redhat.com>
 )
+
+pkgver() {
+  cd $_pkgname
+  git describe --tags | sed 's/^v//;s/-/+/g'
+}
 
 build() {
   cd $_pkgname
