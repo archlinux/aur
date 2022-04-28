@@ -6,6 +6,9 @@ pkgbase = shader-slang-bin
 	arch = x86_64
 	license = MIT
 	depends = glslang
+	provides = shader-slang
+	conflicts = shader-slang
+	conflicts = shader-slang-git
 	source = https://github.com/shader-slang/slang/releases/download/v0.23.10/slang-0.23.10-linux-x86_64.tar.gz
 	sha256sums = 92eca05505ec70d7b4b93d7850b96bfbabc49aa897582b629d3d24f153a8446c
 

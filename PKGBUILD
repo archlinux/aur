@@ -10,6 +10,8 @@ license=('MIT')
 source=("$url/releases/download/v$pkgver/slang-$pkgver-linux-x86_64.tar.gz")
 sha256sums=('92eca05505ec70d7b4b93d7850b96bfbabc49aa897582b629d3d24f153a8446c')
 depends=(glslang)
+conflicts=(shader-slang shader-slang-git)
+provides=(shader-slang)
 
 package() {
   mkdir -p $pkgdir/usr/{bin,lib,include/shader-slang,share/{,licenses/}shader-slang}
