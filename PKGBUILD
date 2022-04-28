@@ -3,7 +3,7 @@
 
 _name=terraboard
 pkgname=terraboard
-pkgver=$PKGVER
+pkgver=2.1.1
 pkgrel=1
 pkgdesc="A web dashboard to inspect Terraform States."
 arch=('x86_64')
