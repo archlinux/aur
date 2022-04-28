@@ -1,4 +1,4 @@
-# Maintainer: Serge K <arch@phnx47.net>
+# Maintainer: Serge K <serge.arch@zmail.pro>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 
 # https://github.com/phnx47/pkgbuilds
