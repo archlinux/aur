@@ -1,8 +1,11 @@
 post_install() {
   echo "To use Warsaw, start its service using:"
   echo "# systemctl start warsaw"
+  echo "And enable the service at boot time using:"
+  echo "# systemctl enable warsaw"
 }
 
 pre_remove() {
-    systemctl stop warsaw  
+    systemctl stop warsaw
+    systemctl disable warsaw
 }
