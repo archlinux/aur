@@ -6,7 +6,7 @@ pkgbase=matlab
 # python-matlabengine must be packaged before matlab, because package_matlab
 # moves files needed by package_python-matlabengine, they're expensive to copy.
 pkgname=('python-matlabengine' 'matlab')
-pkgrel=4
+pkgrel=5
 # No need to modify the pkgver here, it will be determined by the script
 # in the offline installer.
 pkgver=9.12.0.1903524
@@ -18,7 +18,7 @@ makedepends=('findutils' 'gendesk' 'icoutils' 'python')
 # Some of the dependencies probably are not needed.
 # If you play around with them and find which one can be removed,
 # please contact the maintainers.
-# For a list of possible dependencies, see here:
+# For a list of possible dependencies, see the package `namcap` and here:
 # https://hub.docker.com/r/mathworks/matlab-deps/dockerfile.
 depends=(
   'alsa-lib'
@@ -97,14 +97,14 @@ source=(
 md5sums=(SKIP SKIP SKIP)
 
 # Set this to `true` to do a partial install, otherwise install all products.
-partialinstall=false
+_partialinstall=false
 # Example list of products for a partial install. Check the README for details.
-products=(
+_products=(
   "MATLAB"
   "Simulink"
 )
 
-instdir="usr/lib/${pkgbase}"
+_instdir="usr/lib/${pkgbase}"
 
 pkgver() {
   cat "${srcdir}/${pkgbase}/VersionInfo.xml" | grep "<version>" | sed "s|\s*<version>\(.*\)</version>\s*|\1|g"
@@ -127,10 +127,10 @@ prepare() {
   sed -i "s|^# improveMATLAB=yes|improveMATLAB=no|"                   "${_set}"
   sed -i "s|^# licensePath=|licensePath=${srcdir}/matlab.lic|"        "${_set}"
 
-  # Install specified products if partialinstall is set to 'true'.
-  if [ "${partialinstall}" = 'true' ]; then
-    for _prod in "${products[@]}"; do
-      sed -i 's|^#\(product.'"${_prod}"'\)|\1|' "${_set}"
+  # Install specified products if _partialinstall is set to 'true'.
+  if [ "${_partialinstall}" = 'true' ]; then
+    for _prod in "${_products[@]}"; do
+      sed -i 's|^#\(product.'"${_prod}"'\)$|\1|' "${_set}"
     done
   fi
 
@@ -212,7 +212,7 @@ package_python-matlabengine() {
 
   msg2 "Fixing erroneous references in the _arch.txt files..."
   errstr=$(realpath "${srcdir}/build/extern/engines/python/")
-  trustr="/${instdir}/extern/engines/python/"
+  trustr="/${_instdir}/extern/engines/python/"
   for _dir in \
     "${srcdir}/build/extern/engines/python/build/lib/matlab/engine" \
     "${pkgdir}/${_prefix}/lib/python3.${_pytminor}/site-packages/matlab/engine" \
@@ -271,7 +271,7 @@ package_matlab() {
 
   msg2 "Moving files from build area..."
   install -dm755 "${pkgdir}/usr/lib/"
-  mv "${srcdir}/build" "${pkgdir}/${instdir}"
+  mv "${srcdir}/build" "${pkgdir}/${_instdir}"
 
   msg2 "Installing license..."
   install -D -m644 "${srcdir}/${pkgbase}/license_agreement.txt" \
@@ -280,14 +280,14 @@ package_matlab() {
   msg2 "Symlinking executables..."
   install -d -m755 "${pkgdir}/usr/bin/"
   for _executable in deploytool matlab mbuild activate_matlab.sh; do
-    ln -s "/${instdir}/bin/${_executable}" "${pkgdir}/usr/bin/${_executable}"
+    ln -s "/${_instdir}/bin/${_executable}" "${pkgdir}/usr/bin/${_executable}"
   done
   # This would otherwise conflict with mixtex.
-  ln -s "/${instdir}/bin/mex" "${pkgdir}/usr/bin/mex-${pkgbase}"
+  ln -s "/${_instdir}/bin/mex" "${pkgdir}/usr/bin/mex-${pkgbase}"
   # This would otherwise conflict with Mathematica.
-  ln -s "/${instdir}/bin/mcc" "${pkgdir}/usr/bin/mcc-${pkgbase}"
+  ln -s "/${_instdir}/bin/mcc" "${pkgdir}/usr/bin/mcc-${pkgbase}"
   # Allow external software to find the MATLAB linter binary.
-  ln -s "/${instdir}/bin/glnxa64/mlint" "${pkgdir}/usr/bin/mlint"
+  ln -s "/${_instdir}/bin/glnxa64/mlint" "${pkgdir}/usr/bin/mlint"
 
   msg2 "Installing desktop files..."
   install -D -m644 "${srcdir}/${pkgbase}.desktop" \
@@ -296,26 +296,26 @@ package_matlab() {
 
   msg2 "Linking mex options to ancient libraries..."
   sysdir="bin/glnxa64/mexopts"
-  mkdir -p "${pkgdir}/${instdir}/backup/${sysdir}"
-  cp "${pkgdir}/${instdir}/${sysdir}/gcc_glnxa64.xml" \
-    "${pkgdir}/${instdir}/backup/${sysdir}/"
-  sed -i "s/gcc/${gccexc}/g" "${pkgdir}/${instdir}/${sysdir}/gcc_glnxa64.xml"
-  cp "${pkgdir}/${instdir}/${sysdir}/g++_glnxa64.xml" \
-    "${pkgdir}/${instdir}/backup/${sysdir}/"
-  sed -i "s/g++/${gppexc}/g" "${pkgdir}/${instdir}/${sysdir}/g++_glnxa64.xml"
-  cp "${pkgdir}/${instdir}/${sysdir}/gfortran.xml" \
-    "${pkgdir}/${instdir}/backup/${sysdir}/"
-  sed -i "s/gfortran/${gfortranexc}/g" "${pkgdir}/${instdir}/${sysdir}/gfortran.xml"
-  cp "${pkgdir}/${instdir}/${sysdir}/gfortran6.xml" \
-    "${pkgdir}/${instdir}/backup/${sysdir}/"
-  sed -i "s/gfortran/${gfortranexc}/g" "${pkgdir}/${instdir}/${sysdir}/gfortran6.xml"
+  mkdir -p "${pkgdir}/${_instdir}/backup/${sysdir}"
+  cp "${pkgdir}/${_instdir}/${sysdir}/gcc_glnxa64.xml" \
+    "${pkgdir}/${_instdir}/backup/${sysdir}/"
+  sed -i "s/gcc/${gccexc}/g" "${pkgdir}/${_instdir}/${sysdir}/gcc_glnxa64.xml"
+  cp "${pkgdir}/${_instdir}/${sysdir}/g++_glnxa64.xml" \
+    "${pkgdir}/${_instdir}/backup/${sysdir}/"
+  sed -i "s/g++/${gppexc}/g" "${pkgdir}/${_instdir}/${sysdir}/g++_glnxa64.xml"
+  cp "${pkgdir}/${_instdir}/${sysdir}/gfortran.xml" \
+    "${pkgdir}/${_instdir}/backup/${sysdir}/"
+  sed -i "s/gfortran/${gfortranexc}/g" "${pkgdir}/${_instdir}/${sysdir}/gfortran.xml"
+  cp "${pkgdir}/${_instdir}/${sysdir}/gfortran6.xml" \
+    "${pkgdir}/${_instdir}/backup/${sysdir}/"
+  sed -i "s/gfortran/${gfortranexc}/g" "${pkgdir}/${_instdir}/${sysdir}/gfortran6.xml"
 
   msg2 "Removing unused library files..."
   # <MATLABROOT>/sys/os/glnxa64/README.libstdc++
   sysdir="sys/os/glnxa64"
-  install -d -m755 "${pkgdir}/${instdir}/backup/${sysdir}"
-  mv "${pkgdir}/${instdir}/${sysdir}/"{libstdc++.so.*,libgcc_s.so.*,libgfortran.so.*,libquadmath.so.*} \
-    "${pkgdir}/${instdir}/backup/${sysdir}/"
-  mv "${pkgdir}/${instdir}"/bin/glnxa64/libfreetype.so.* \
-    "${pkgdir}/${instdir}"/backup/bin/glnxa64/
+  install -d -m755 "${pkgdir}/${_instdir}/backup/${sysdir}"
+  mv "${pkgdir}/${_instdir}/${sysdir}/"{libstdc++.so.*,libgcc_s.so.*,libgfortran.so.*,libquadmath.so.*} \
+    "${pkgdir}/${_instdir}/backup/${sysdir}/"
+  mv "${pkgdir}/${_instdir}"/bin/glnxa64/libfreetype.so.* \
+    "${pkgdir}/${_instdir}"/backup/bin/glnxa64/
 }
