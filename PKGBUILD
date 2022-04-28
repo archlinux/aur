@@ -1,7 +1,7 @@
 # Maintainer: Charalampos Kardaris <ckardaris at outlook dot com>
 
 pkgname=ucollage
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=0
 pkgdesc="An extensible command line image viewer inspired by vim"
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=(
   'xclip: Clipboard pasting'
 )
 source=("https://github.com/ckardaris/ucollage/releases/download/v${pkgver}/ucollage-${pkgver}.tar.gz")
-sha256sums=('3193549d3e2a202b209f0d159412e2c90609b006233b8a6e086c1078b671423a')
+sha256sums=('8f911b6632e2beae58bc205b4f9edab4cc1ce6f5132ee116ba7b0bc25a8ce59d')
 
 package() {
     cd "${pkgname}-${pkgver}"
