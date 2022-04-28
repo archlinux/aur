@@ -2,7 +2,7 @@
 
 pkgname=dl_poly-git
 pkgver=r60.f2712ca
-pkgrel=1
+pkgrel=2
 pkgdesc='General purpose molecular dynamics simulation package'
 arch=($CARCH)
 url='https://gitlab.com/DL_POLY_Classic/dl_poly'
@@ -30,6 +30,6 @@ build() {
 
 package() {
   cd ${pkgname%-git}
-  install -Dm755 execute/DLPOLY.X "$pkgdir/usr/bin/dlpoly"
+  install -Dm755 execute/DLPOLY.X -t "$pkgdir/usr/bin/"
   install -Dm644 Licence.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
 }
