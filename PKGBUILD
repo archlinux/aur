@@ -1,7 +1,7 @@
 # Maintainer: Polis Minus <polisminus2247@tuta.io>
 pkgname=activate-linux-git
 _pkgname=activate-linux
-pkgver=r68.05aef15
+pkgver=r69.5e97a92
 pkgrel=1
 pkgdesc="The \"Activate Windows\" watermark ported to Linux with Xlib and cairo in C"
 arch=("x86_64")
