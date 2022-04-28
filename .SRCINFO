@@ -1,0 +1,12 @@
+pkgbase = gofork
+	pkgdesc = CLI tool to find forks that are ahead of a github repository.
+	pkgver = 1.0
+	pkgrel = 1
+	arch = x86_64
+	license = GPL-3.0
+	depends = git
+	depends = go
+	source = git+https://github.com/syycorax/gofork
+	sha1sums = SKIP
+
+pkgname = gofork
