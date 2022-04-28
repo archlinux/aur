@@ -2,7 +2,7 @@
 # Maintainer: Heavysink <winstonwu91 at gmail>
 pkgname=openmsx-git
 _pkgname=openMSX
-pkgver=14263.13cf90b8b
+pkgver=15160.cc2e19fc1
 pkgrel=1
 pkgdesc="The MSX emulator that aims for perfection."
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ optdepends=('python' 'jack-audio-connection-kit' 'catalyst-utils' 'nvidia-utils'
 install=openmsx.install
 provides=('openmsx')
 conflicts=('openmsx')
-source=("git://github.com/openMSX/openMSX")
+source=("git+https://github.com/openMSX/openMSX")
 
 pkgver() {
   cd "${srcdir}/openMSX"
