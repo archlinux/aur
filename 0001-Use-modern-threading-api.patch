@@ -1,0 +1,50 @@
+From 9dff4ed97d8a7feb88714e59c4a477e7b98a11bb Mon Sep 17 00:00:00 2001
+From: Ritesh Raj Sarraf <rrs@debian.org>
+Date: Fri, 22 Apr 2022 12:33:57 +0530
+Subject: [PATCH] Use modern threading api
+
+Instead of the old camelCase api naming convention
+---
+ apt_offline_core/AptOfflineCoreLib.py | 2 +-
+ apt_offline_core/AptOfflineLib.py     | 5 ++---
+ 2 files changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/apt_offline_core/AptOfflineCoreLib.py b/apt_offline_core/AptOfflineCoreLib.py
+index 36663f1..99da343 100644
+--- a/apt_offline_core/AptOfflineCoreLib.py
++++ b/apt_offline_core/AptOfflineCoreLib.py
+@@ -1301,7 +1301,7 @@ def fetcher( args ):
+ 
+                 #INFO: Everything
+                 (url, pkgFile, download_size, checksum) = stripper(item)
+-                thread_name = threading.currentThread().getName()
++                thread_name = threading.current_thread().name
+                 log.verbose("Thread is %s\n" % (thread_name) )
+ 
+                 if url.endswith(".deb"):
+diff --git a/apt_offline_core/AptOfflineLib.py b/apt_offline_core/AptOfflineLib.py
+index 3595ee8..cb63a18 100644
+--- a/apt_offline_core/AptOfflineLib.py
++++ b/apt_offline_core/AptOfflineLib.py
+@@ -688,8 +688,7 @@ class MyThread( threading.Thread ):
+ 
+         def run( self, item=None):
+                 while True:
+-                        if threading.currentThread().guiTerminateSignal:
+-                                #print threading.currentThread().getName(), "has been stopped :D"
++                        if threading.current_thread().guiTerminateSignal:
+                                 break
+                         if self.requestQueue is not None:
+                                 item = self.requestQueue.get()
+@@ -697,7 +696,7 @@ class MyThread( threading.Thread ):
+                         if item is None:
+                                 break
+ 
+-                        thread_name = threading.currentThread().getName()
++                        thread_name = threading.current_thread().name
+ 
+                         if self.responseQueue is not None:
+                                 self.responseQueue.put( self.WorkerFunction( item, thread_name ) )
+-- 
+2.36.0
+

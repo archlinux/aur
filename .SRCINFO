@@ -1,13 +1,15 @@
 pkgbase = apt-offline
 	pkgdesc = Offline APT Package Manager
 	pkgver = 1.8.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://rickysarraf.github.io/apt-offline/
 	arch = any
 	license = GPL
 	depends = python3
 	depends = python-pyqt5
 	source = apt-offline-1.8.4.tar.gz::https://github.com/rickysarraf/apt-offline/releases/download/v1.8.4/apt-offline-1.8.4.tar.gz
+	source = 0001-Use-modern-threading-api.patch
 	sha256sums = c6f4afae6082d1eeada7791793ae29ec02a2444b95edfa46956a0299878c3882
+	sha256sums = 7974748142903b8d3968b87770995cd3a856eab18553f6044fb7ed4eaed3ceca
 
 pkgname = apt-offline
