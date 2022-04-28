@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=hydrapaper
-pkgver=3.3.0
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="A Gtk utility to set different backgrounds for each monitor on GNOME"
 arch=('any')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('libadwaita' 'dbus-python' 'python-gobject' 'python-pillow')
 makedepends=('blueprint-compiler' 'git' 'gobject-introspection' 'meson' 'pandoc')
 checkdepends=('appstream')
-_commit=4acd3d3d9ff82563b70a3fcf8ae4bf5da2f800cb
+_commit=876d292b616f31534292bd036ef23150026483f8
 source=("git+https://gitlab.gnome.org/GabMus/HydraPaper.git#commit=$_commit")
 #source=("https://gitlab.gnome.org/GabMus/HydraPaper/-/archive/$pkgver/HydraPaper-$pkgver.tar.gz")
 sha256sums=('SKIP')
@@ -17,11 +17,6 @@ sha256sums=('SKIP')
 pkgver() {
   cd "$srcdir/HydraPaper"
   git describe --tags | sed 's/-/+/g'
-}
-
-prepare() {
-  cd "$srcdir/HydraPaper"
-  sed -i 's/1.0.0.alpha.3/1.0.0/g' meson.build
 }
 
 build() {
