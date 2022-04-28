@@ -12,7 +12,7 @@ pkgbase = vapoursynth-plugin-nlm-git
 	provides = vapoursynth-plugin-nlm
 	conflicts = vapoursynth-plugin-nlm
 	options = debug
-	source = assrender::git+https://github.com/AmusementClub/vs-nlm-ispc.git
+	source = vs-nlm-ispc::git+https://github.com/AmusementClub/vs-nlm-ispc.git
 	sha256sums = SKIP
 
 pkgname = vapoursynth-plugin-nlm-git
