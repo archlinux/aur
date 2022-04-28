@@ -1,0 +1,24 @@
+From 64a7973e86fc3aea49d83372c74cbfa9e6a0731a Mon Sep 17 00:00:00 2001
+From: Jack Kamm <jackkamm@gmail.com>
+Date: Sat, 19 Nov 2022 11:22:39 -0800
+Subject: [PATCH] Ensure lib/modules-load.d exists before installing there
+
+---
+ Makefile | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/Makefile b/Makefile
+index a90293d..41873fa 100644
+--- a/Makefile
++++ b/Makefile
+@@ -63,6 +63,7 @@ install: all
+ 	install -d $(DESTDIR)/etc
+ 	install -d $(DESTDIR)/lib/systemd/system
+ 	install -d $(DESTDIR)/usr/share/doc/mbpfan
++	install -d $(DESTDIR)/lib/modules-load.d
+ 	install $(BIN) $(DESTDIR)/usr/sbin
+ 	install -m644 $(CONF) $(DESTDIR)/etc
+ 	install -m644 $(DEPEND_MODULE) $(DESTDIR)/lib/modules-load.d
+-- 
+2.38.1
+

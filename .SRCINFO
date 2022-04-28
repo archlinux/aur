@@ -11,6 +11,8 @@ pkgbase = mbpfan-git
 	provides = mbpfan
 	backup = etc/mbpfan.conf
 	source = mbpfan-git::git+https://github.com/linux-on-mac/mbpfan.git
+	source = create-modules-load-d.patch
 	md5sums = SKIP
+	md5sums = 48fbe2ae06a9db03e9621ef39eae4ee9
 
 pkgname = mbpfan-git

@@ -13,9 +13,17 @@ license=('GPL3')
 depends=('glibc')
 makedepends=('git')
 provides=('mbpfan')
-source=("$pkgname"::'git+https://github.com/linux-on-mac/mbpfan.git')
-md5sums=('SKIP')
+source=("$pkgname"::'git+https://github.com/linux-on-mac/mbpfan.git' "create-modules-load-d.patch")
+md5sums=('SKIP'
+         '48fbe2ae06a9db03e9621ef39eae4ee9')
 backup=('etc/mbpfan.conf')
+
+prepare(){
+    cd "$srcdir/$pkgname"
+    patch --strip=1 --input=../create-modules-load-d.patch
+    sed -i 's|\$(DESTDIR)/usr/sbin|$(DESTDIR)/usr/bin|g' Makefile
+    sed -i 's|\$(DESTDIR)/lib/|$(DESTDIR)/usr/lib/|g' Makefile
+}
 
 pkgver(){
     cd "$srcdir/$pkgname"
@@ -29,9 +37,6 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname"
-    install -Dm755 "bin/mbpfan" "$pkgdir/usr/bin/mbpfan"
-    install -Dm644 "mbpfan.conf" "$pkgdir/etc/mbpfan.conf"
+    DESTDIR="$pkgdir" make install
     install -Dm644 "mbpfan.service" "$pkgdir/usr/lib/systemd/system/mbpfan.service"
-    install -Dm644 "mbpfan.8.gz" "$pkgdir/usr/share/man/man8/mbpfan.8.gz"
-    install -Dm644 "mbpfan.depend.conf" "$pkgdir/usr/lib/modules-load.d/mbpfan.depend.conf"
 }
