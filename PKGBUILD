@@ -7,11 +7,11 @@
 # https://github.com/dragonation/wechat-devtools
 # https://github.com/cytle/wechat_web_devtools
 
-_wechat_devtools_ver="1.05.2204180"
+_wechat_devtools_ver="1.05.2204250"
 # https://servicewechat.com/wxa-dev-logic/download_redirect?type=x64&from=mpwiki&download_version=1052203030&version_type=1
 _wechat_devtools_url="https://servicewechat.com/wxa-dev-logic/download_redirect?type=x64&from=mpwiki&download_version=${_wechat_devtools_ver//\./}&version_type=1"
 # _wechat_devtools_url="https://dldir1.qq.com/WechatWebDev/release/p-ae42ee2cde4d42ee80ac60b35f183a99/wechat_devtools_1.05.2201240_x64.exe"
-_wechat_devtools_md5="0cd12ab05211bb88c56aa38f8de76a1a"
+_wechat_devtools_md5="0073a70263614777fc41f21afbfc377d"
 
 _wechat_devtools_exe="wechat_devtools_${_wechat_devtools_ver}_x64.exe"
 _nwjs_ver="0.55.0"
@@ -20,7 +20,7 @@ _node_version="16.4.2"
 
 pkgname=wechat-devtools
 pkgver="${_wechat_devtools_ver}"  # 主版本号
-pkgrel=2   # 修订版本号release
+pkgrel=1   # 修订版本号release
 epoch=2    # 大版本迭代强制更新（维护者变更，尽量不用）
 pkgdesc="WeChat Devtools For Linux. "
 arch=("x86_64")
@@ -32,7 +32,7 @@ makedepends=('p7zip' 'python2' 'openssl' 'gcc' 'make' 'libssh2' 'krb5')
 source=("nwjs-v${_nwjs_ver}.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs_ver}/nwjs-sdk-v${_nwjs_ver}-linux-x64.tar.gz"
         "${_wechat_devtools_exe}::${_wechat_devtools_url}"
         "node-v${_node_version}.tar.gz::https://npm.taobao.org/mirrors/node/v${_node_version}/node-v${_node_version}-linux-x64.tar.gz"
-        "compiler.tar.gz::https://github.rc1844.workers.dev/msojocs/wechat-web-devtools-linux/releases/download/v1.05.2204180-2/compiler.tar.gz"
+        "compiler.tar.gz::https://github.rc1844.workers.dev/msojocs/wechat-web-devtools-linux/releases/download/v1.05.2204250-1/compiler.tar.gz"
         "wechat-devtools.desktop"
         "logo.svg"
         "wechat-devtools"
@@ -48,7 +48,7 @@ source=("nwjs-v${_nwjs_ver}.tar.gz::https://npm.taobao.org/mirrors/nwjs/v${_nwjs
 md5sums=(ac7680788544c457daee11aaf69798fe   # nwjs
          "${_wechat_devtools_md5}"
          4d14589085ebbf79ce504dc27330d33b   # nodejs
-         fb119e9fb5d95dde6365ce2cad9e8eec   # compiler
+         c9db65748a8cf499cc9b8c2ade3a6b3f   # compiler
          4d3f5273be80a74741c841fcfa4185d3   # desktop
          0f4353664123320280ea4d6bb295dce2   # svg
          "SKIP"
