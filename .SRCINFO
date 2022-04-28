@@ -1,0 +1,16 @@
+pkgbase = himitsu-git
+	pkgdesc = Himitsu is a secret storage system for Unix systems
+	pkgver = r59.7683be9
+	pkgrel = 1
+	url = https://sr.ht/~sircmpwn/himitsu
+	arch = x86_64
+	license = GPL-3.0
+	makedepends = hare-git
+	makedepends = hiprompt-gtk-git
+	provides = himitsu
+	source = git+https://git.sr.ht/~sircmpwn/hiprompt-gtk
+	source = git+https://git.sr.ht/~sircmpwn/himitsu
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = himitsu-git
