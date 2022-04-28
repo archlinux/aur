@@ -16,9 +16,6 @@ microsofturl='https://github.com/microsoft/vscode.git'
 stableversionurl='https://update.code.visualstudio.com/api/update/darwin/stable/lol'
 license=('MIT')
 
-# Version of NodeJS that will be used to create the build. Sinds 1.64.0, Codium requires version 14 >= 14.17.0.
-_nodejs='14.19.0'
-
 depends=(
     'fontconfig'
     'libxtst'
@@ -110,8 +107,18 @@ build() {
     export NVM_DIR="${srcdir}/.nvm"
     source /usr/share/nvm/init-nvm.sh || [[ $? != 1 ]]
 
-    # Build just like Travis does: install NodeJS and run the build.sh script.
-    nvm install ${_nodejs}
+	# Install the correct version of NodeJS (read from .nvmrc)
+	nvm install $(cat .nvmrc)
+    nvm use
+
+    # Check if the correct version of node is being used
+    if [[ "$(node --version)" != "$(cat .nvmrc)" ]]
+    then
+    	echo "Using the wrong version of NodeJS! Expected ["$(cat .nvmrc)"] but using ["$(node --version)"]."
+    	exit 1
+    fi
+
+    # Build!
     ./build.sh
 }
 
