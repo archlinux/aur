@@ -17,7 +17,7 @@ source=(
   "ymp.sh"
 )
 sha1sums=('6b8693c7069e85149c60f1057a34179a878b57b7'
-          '85990d404c762e5d6fab0643dfbba3a1a475011b')
+          '5b882c18d447ecdb1ca3fb47f760a73f4460e872')
 sha1sums_x86_64=('3cc755931f1fd4d65315b1c702ad77a7b48586f4')
 
 package() {
