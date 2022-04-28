@@ -17,9 +17,9 @@ _releaseurl="https://github.com/$_pkgname/$_pkgname-app/releases/download/v$pkgv
 source_x86_64=("$pkgname-$pkgverorg-$pkgrel-amd64.zip::${_releaseurl}/${_pkgname}_${pkgverorg}_amd64.deb")
 source_armv7l=("$pkgname-$pkgverorg-$pkgrel-armv7l.zip::${_releaseurl}/${_pkgname}_${pkgverorg}_armv7l.deb")
 source_arm64=("$pkgname-$pkgverorg-$pkgrel-arm64.zip::${_releaseurl}/${_pkgname}_${pkgverorg}_arm64.deb")
-sha512sums_x86_64=('SKIP')
-sha512sums_armv7l=('SKIP')
-sha512sums_arm64=('SKIP')
+sha512sums_x86_64=('d0576f4ee082b384c0cb9a8a889208a1f8fb6a69e92bc04b47f523d27e9fb57029c1bcd64bacfa0eb9817796a632643ad7ead3615bc54be82629ea8f080691a9')
+sha512sums_armv7l=('32b4efd5d94408fbca231b129374b24bbae86b1f054139a5d1f0069aa9e999540d2f4aac1c77668bf1f578284da14a7c2de4265ed4b5c4296264f7ef18c41908')
+sha512sums_arm64=('89dc8c88a008846bb2d48014a4996e74ed1200773cc6a230d51ae4fa1d9f37b1435bd4df4ae04fd7f0577d7a015610846e9eec6a5213c52ed78c270ce6a203af')
 
 _sourcedirectory="$pkgname-$pkgverorg-$pkgrel"
 
