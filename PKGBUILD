@@ -6,7 +6,7 @@ pkgver=1.2.22
 pkgrel=1
 pkgdesc='Simple visual task board'
 arch=('any')
-url='http://kanboard.net/'
+url='http://kanboard.org/'
 license=('MIT')
 depends=('php>=7.2' 'php-gd')
 optdepends=('mariadb: For MySQL storage' 'php-sqlite: For sqlite storage' 'php-pgsql: For postgres storage')
