@@ -2,7 +2,7 @@
  
 pkgname=sox-dsd-git
 pkgver=14.4.2.r69.g0be259ea
-pkgrel=1
+pkgrel=2
 pkgdesc="SoX Resampler library dsd branch"
 arch=('i686' 'x86_64' 'aarch64')
 license=('GPL' 'LGPL')
