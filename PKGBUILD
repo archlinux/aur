@@ -2,31 +2,35 @@
 # Contributor: Sam L. Yes <samlukeyes123@gmail.com>
 
 pkgname=python-pyreadstat
-pkgver=1.1.4
-pkgrel=2
+_pkg=${pkgname#python-}
+pkgver=1.1.5
+pkgrel=1
 pkgdesc="Reads sas, spss and stata files into Pandas data frames."
 license=('Apache' 'MIT')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://github.com/Roche/pyreadstat"
 depends=('python-pandas')
-makedepends=('python-setuptools' 'cython')
+makedepends=('python-setuptools' 'cython' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('04d776d195c1f7a9a9b2d2933699e9969ef9791d616191415d0c02a5877a1d83')
+sha256sums=('778967dc2c8b5a5f07e331691022f60e5e7b03e5270e827b83eff706b1fd980f')
 
 build() {
-	cd "pyreadstat-$pkgver"
-	python setup.py build
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
 check() {
-	cd "pyreadstat-$pkgver"
+	cd "$_pkg-$pkgver"
 	local _ver="$(python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))')"
 	PYTHONPATH="$PWD/build/lib.linux-$CARCH-$_ver" python tests/test_basic.py
 }
 
 package() {
-	export PYTHONHASHSEED=0
-	cd "pyreadstat-$pkgver"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
-	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s \
+		"$_site/$_pkg-$pkgver.dist-info/LICENSE" \
+		"$pkgdir/usr/share/licenses/$pkgname/"
 }
