@@ -1,7 +1,7 @@
 pkgbase = aurutils
 	pkgdesc = helper tools for the arch user repository
 	pkgver = 9.6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AladW/aurutils
 	install = aurutils.install
 	changelog = aurutils.changelog
@@ -18,12 +18,12 @@ pkgbase = aurutils
 	optdepends = vifm: default pager
 	optdepends = ninja: aur-sync ninja support
 	source = aurutils-9.6.tar.gz::https://github.com/AladW/aurutils/archive/refs/tags/9.6.tar.gz
-	source = 0001-sync-tsort-exit.patch::https://github.com/AladW/aurutils/commit/6f56ae7e4df06a0142d8970275986754041955c4.patch
-	source = 0002-sync-filter-deps.patch::https://github.com/AladW/aurutils/commit/3c818fccc3b431d7aea4198e82cd1ccda1e43e5c.patch
-	source = 0003-fetch-git-checkout.patch::https://github.com/AladW/aurutils/commit/c9e57188b5bb356b2373bc087474e2e68872505d.patch
+	source = 0001-sync-tsort-exit.patch
+	source = 0002-sync-filter-deps.patch
+	source = 0003-fetch-git-checkout.patch
 	sha256sums = 825d6ab3d66faf84ee3856e677de138dcdb3af2a5c38164f69601ee0a4e96954
 	sha256sums = 2f0e039c6544dc2204dbb25f15f2c3fcefbc742a196fedb60925b7dc3311665e
-	sha256sums = 695d1b77c67ac87304445b593a2d6b0600adf076d81ed007af3f1c26ea9a8539
+	sha256sums = a65dace12d686d8a77380af9875af5633c2fd12e6c6ed8802a202e22861b77c0
 	sha256sums = cca4ea1456d1cd8cde333d7e60c0749c9bc2c78b4f4b3eda751432cc3555aa65
 
 pkgname = aurutils
