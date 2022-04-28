@@ -41,8 +41,9 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         '0103-tick-Detect_and_fix_jiffies_update_stall.patch'
         '0104-tick-rcu-Stop_allowing_RCU_SOFTIRQ_in_idle.patch'
         '0105-lib-irq_poll-Declare_IRQ_POLL_softirq_vector_as_ksoftirqd-parking_safe.patch'
+        '0106-NFSv4.1_provide_mount_option_to_toggle_trunking_discovery.patch'
         # MANJARO Patches
-
+        '0201-rtl_bt_fix_load_firmware.patch'
         # Bootsplash
         '0301-revert-fbcon-remove-now-unusued-softback_lines-cursor-argument.patch'
         '0302-revert-fbcon-remove-no-op-fbcon_set_origin.patch'
