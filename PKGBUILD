@@ -3,7 +3,7 @@
 pkgbase=vosk-api
 pkgname=('vosk-api' 'python-vosk')
 pkgver=0.3.32
-pkgrel=3
+pkgrel=4
 _openblas_ver=0.3.13
 _clapack_ver=3.2.1
 _model_small_ver=0.15
@@ -20,24 +20,24 @@ checkdepends=('ffmpeg' 'python-numpy')
 source=("https://github.com/alphacep/vosk-api/archive/v${pkgver}/${pkgbase}-${pkgver}.tar.gz"
         "https://github.com/xianyi/OpenBLAS/archive/v${_openblas_ver}/openblas-${_openblas_ver}.tar.gz"
         "https://github.com/alphacep/clapack/archive/v${_clapack_ver}/clapack-${_clapack_ver}.tar.gz"
+        "kaldi-vosk-g${_kaldi_commit:0:7}.tar.gz"::"https://github.com/alphacep/kaldi/archive/${_kaldi_commit}.tar.gz"
         "https://alphacephei.com/kaldi/models/vosk-model-small-en-us-${_model_small_ver}.zip"
         "https://alphacephei.com/vosk/models/vosk-model-spk-${_model_spk_ver}.zip"
-        "git+https://github.com/alphacep/openfst.git#commit=${_openfst_commit}"
-        "git+https://github.com/alphacep/kaldi.git#commit=${_kaldi_commit}")
+        "git+https://github.com/alphacep/openfst.git#commit=${_openfst_commit}")
 sha256sums=('acf61c1af48f15e4c6ac299b2aca3c17d83ec48073c5c6229e2de3601b1e6882'
             '79197543b17cc314b7e43f7a33148c308b0807cd6381ee77f77e15acf3e6459e'
             'ed1074b0f396608f304f5ae5e5090ea62aab741ed9f63c7677af9ba99a90ca78'
+            '800844238f1a25be502013dd6048bd14a7472a6082b8ec8b98871b88be16a117'
             '30f26242c4eb449f948e42cb302dd7a686cb29a3423a8367f99ff41780942498'
             'a74d8f51144484813e16af689bb0f916b7a111e2347f467c4933c1166097b5a7'
-            'SKIP'
             'SKIP')
 
 prepare() {
     ln -sf "../../../vosk-model-small-en-us-${_model_small_ver}" "${pkgbase}-${pkgver}/python/example/model"
     ln -sf "../../../vosk-model-spk-${_model_spk_ver}" "${pkgbase}-${pkgver}/python/example/model-spk"
-    ln -sf "../../OpenBLAS-${_openblas_ver}" kaldi/tools/OpenBLAS
-    ln -sf "../../clapack-${_clapack_ver}" kaldi/tools/clapack
-    ln -sf ../../openfst kaldi/tools/openfst
+    ln -sf "../../OpenBLAS-${_openblas_ver}" "kaldi-${_kaldi_commit}/tools/OpenBLAS"
+    ln -sf "../../clapack-${_clapack_ver}" "kaldi-${_kaldi_commit}/tools/clapack"
+    ln -sf ../../openfst "kaldi-${_kaldi_commit}/tools/openfst"
     autoreconf -fi openfst
 }
 
@@ -61,7 +61,7 @@ build() {
     # openfst
     cd openfst
     ./configure \
-        --prefix="${srcdir}/kaldi/tools/openfst" \
+        --prefix="${srcdir}/kaldi-${_kaldi_commit}/tools/openfst" \
         --enable-static \
         --enable-shared \
         --enable-far \
@@ -73,14 +73,14 @@ build() {
     make install
     
     # kaldi
-    cd "${srcdir}/kaldi/src"
+    cd "${srcdir}/kaldi-${_kaldi_commit}/src"
     CXXFLAGS="${CXXFLAGS/-O2/-O3}" ./configure --mathlib='OPENBLAS_CLAPACK' --shared --use-cuda='no'
     sed -i 's/[[:space:]]-O1[[:space:]]/ -O3 /g' kaldi.mk
     make online2 lm rnnlm
     while read -r -d '' _file
     do
         rm "$_file"
-    done < <(find "${srcdir}/kaldi" -type f -name '*.o' -print0)
+    done < <(find "${srcdir}/kaldi-${_kaldi_commit}" -type f -name '*.o' -print0)
     
     # vosk-api
     export CFLAGS="${CFLAGS/ -ffat-lto-objects/}"
@@ -88,9 +88,9 @@ build() {
     make -C "${srcdir}/${pkgbase}-${pkgver}/src" \
         EXTRA_CFLAGS="${CXXFLAGS/-O2/-O3}" \
         EXTRA_LDFLAGS="$LDFLAGS" \
-        KALDI_ROOT="${srcdir}/kaldi" \
-        OPENFST_ROOT="${srcdir}/kaldi/tools/openfst" \
-        OPENBLAS_ROOT="${srcdir}/kaldi/tools/OpenBLAS/install"
+        KALDI_ROOT="${srcdir}/kaldi-${_kaldi_commit}" \
+        OPENFST_ROOT="${srcdir}/kaldi-${_kaldi_commit}/tools/openfst" \
+        OPENBLAS_ROOT="${srcdir}/kaldi-${_kaldi_commit}/tools/OpenBLAS/install"
     
     # java bindings
     gradle -p "${srcdir}/${pkgbase}-${pkgver}/java/lib" clean assemble
