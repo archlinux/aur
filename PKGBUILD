@@ -4,7 +4,7 @@
 
 pkgname=wakatime
 epoch=1
-pkgver='1.38.0'
+pkgver='1.42.2'
 pkgrel=1
 pkgdesc="Command line interface used by all WakaTime text editor plugins"
 arch=('x86_64')
@@ -46,7 +46,6 @@ check () {
   # some weird test assumptions fail
   sed \
     -e "s/<local-build>/${pkgver}/" \
-    -e "s/Equal(t, \"2\\\n\", offlineCount)/Equal(t, \"1\\\n\", offlineCount)/" \
     -i ./main_test.go
   CGO_ENABLED="0" go test -tags=integration ./main_test.go
 }
