@@ -1,7 +1,7 @@
 # Maintainer:
  
 pkgname=irpf
-pkgver=2022.1.3
+pkgver=2022.1.4
 pkgrel=2
 license=('custom')
  
@@ -9,13 +9,13 @@ arch=(any)
 pkgdesc='Programa Oficial da Receita para elaboração do IRPF'
 url='https://www.receita.fazenda.gov.br'
  
-source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2022/irpf/arquivos/IRPF2022-1.3.zip
+source=(https://downloadirpf.receita.fazenda.gov.br/irpf/2022/irpf/arquivos/IRPF2022-1.4.zip
 	Copyright
 	$pkgname.png
 	$pkgname.desktop
 	$pkgname)
  
-md5sums=('08e79920a9fae7e55bf0aea6a07c5d4b'
+md5sums=('5cbabde5163ab46a7fd54e30fb64be1e'
          '0b81ed3a0a6200d2706caf541756d55d'
          '43d8c9617118578f03b2c4eeb1c72c57'
          '5c3f364ed6e30e8aac69ad4394deabba'
