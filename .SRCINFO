@@ -1,13 +1,13 @@
 pkgbase = python-yamk
 	pkgdesc = Yet another make
-	pkgver = 2.4.0
+	pkgver = 2.4.1
 	pkgrel = 1
 	url = https://github.com/spapanik/yamk
 	arch = any
 	license = MIT
 	depends = python-tomli
 	depends = python-yaml
-	source = https://files.pythonhosted.org/packages/source/y/yamk/yamk-2.4.0.tar.gz
-	sha256sums = 1bfcf91bc28938409f8ee6f902991b1dd4e13383b85995d51a0ce9e58432182f
+	source = https://files.pythonhosted.org/packages/source/y/yamk/yamk-2.4.1.tar.gz
+	sha256sums = b6ec4aaf64ec7972e0cdeff9ca5f0f4e67618893f40a99032c0064d2ed021dbd
 
 pkgname = python-yamk
