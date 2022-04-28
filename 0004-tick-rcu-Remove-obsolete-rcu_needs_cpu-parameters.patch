@@ -1,7 +1,7 @@
-From 9c459cce9a715b7e5881b3bc4782eb7e7368066c Mon Sep 17 00:00:00 2001
+From 77443af6c7ded4e8db85c76915086acbac29708b Mon Sep 17 00:00:00 2001
 From: Frederic Weisbecker <frederic@kernel.org>
 Date: Tue, 8 Feb 2022 17:16:33 +0100
-Subject: [PATCH 4/7] tick/rcu: Remove obsolete rcu_needs_cpu() parameters
+Subject: [PATCH 4/8] tick/rcu: Remove obsolete rcu_needs_cpu() parameters
 
 With the removal of CONFIG_RCU_FAST_NO_HZ, the parameters in
 rcu_needs_cpu() are not necessary anymore. Simply remove them.
@@ -62,7 +62,7 @@ index 73a4c9d07b86..5dae0da879ae 100644
  		!rcu_rdp_is_offloaded(this_cpu_ptr(&rcu_data));
  }
 diff --git a/kernel/time/tick-sched.c b/kernel/time/tick-sched.c
-index c89f50a7e690..566ad5bd83e9 100644
+index 0578c9301b17..4c62fa0f70f1 100644
 --- a/kernel/time/tick-sched.c
 +++ b/kernel/time/tick-sched.c
 @@ -785,7 +785,7 @@ static inline bool local_timer_softirq_pending(void)
@@ -97,5 +97,5 @@ index c89f50a7e690..566ad5bd83e9 100644
  
  	/*
 -- 
-2.35.2
+2.36.0
 

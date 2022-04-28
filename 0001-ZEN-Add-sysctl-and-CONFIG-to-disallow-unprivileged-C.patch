@@ -1,7 +1,7 @@
-From 777ff4bb6acdade5c23653c63e2860b01046a358 Mon Sep 17 00:00:00 2001
+From 2b673087f4c4f21fc4da65159d57e96819531b8f Mon Sep 17 00:00:00 2001
 From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
 Date: Mon, 16 Sep 2019 04:53:20 +0200
-Subject: [PATCH 1/7] ZEN: Add sysctl and CONFIG to disallow unprivileged
+Subject: [PATCH 1/8] ZEN: Add sysctl and CONFIG to disallow unprivileged
  CLONE_NEWUSER
 
 Our default behavior continues to match the vanilla kernel.
@@ -150,5 +150,5 @@ index 5481ba44a8d6..423ab2563ad7 100644
  static DEFINE_MUTEX(userns_state_mutex);
  
 -- 
-2.35.2
+2.36.0
 
