@@ -5,9 +5,9 @@
 pkgname=rstudio-desktop
 _vermajor="2022"
 _verminor="02"
-_verpatch="1"
-_versuffix="+461"
-_gitcommit=fc9e217
+_verpatch="2"
+_versuffix="+485"
+_gitcommit="8acbd38"
 _gitname=rstudio-rstudio-${_gitcommit}
 pkgver=${_vermajor}.${_verminor}.${_verpatch}${_versuffix}
 _srcname=rstudio-${_vermajor}.${_verminor}.${_verpatch}${_versuffix//+/-}
@@ -17,7 +17,7 @@ _nodever=14.17.5
 _pandocver="current"
 _quarto="FALSE"
 
-pkgrel=3
+pkgrel=1
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('x86_64')
 url="https://www.rstudio.com/products/rstudio/"
@@ -39,10 +39,9 @@ source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs
         "cran_multithread.patch"
         "sigstksz_gcc11.patch"
         "10952.patch"
-        "quarto_pandoc_location.patch"
         "pandoc_version.patch")
 
-sha256sums=('41e48e21ddc0a9c1ebf06ff16d846b0389720f2ee66d3fcfd5ff0707578b597d'
+sha256sums=('a9351fcd3bb4ab1f7d526b289dad06f02800d5b883655d9a49fa4b7c1ce6b299'
             'b98e704164f54be596779696a3fcd11be5785c9907a99ec535ff6e9525ad5f9a'
             '970701dacc55170088f5eb327137cb4a7581ebb4734188dfcc2fad9941745d1b'
             'dc04c7e60235ff73536ba0d9e50638090f60cacabfd83184082dce3b330afc6e'
@@ -50,7 +49,6 @@ sha256sums=('41e48e21ddc0a9c1ebf06ff16d846b0389720f2ee66d3fcfd5ff0707578b597d'
             'c907e6eec5ef324ad498b44fb9926bb5baafc4e0778ca01f6ba9b49dd3a2a980'
             '7b8420db08f848f7baac0f3104c879ac7ce6e27e463f96a6b1c6589cd4b8df82'
             '71c41818d099c07d928aa9689a5fd57bb3dc187b9788a8d5cc528ef6208b7726'
-            'f496c8d012ec7211b7d76240932c1b33fc76c5bb756b354eb00dd5c4344baeab'
             '71cc9986a02c209960309f0e1dd50f08a8f7e59c1bc09ec45d10058a89299939')
 
 noextract=("gin-${_ginver}.zip")
@@ -64,7 +62,6 @@ prepare() {
     # Fix for quarto/pandoc location
     # https://github.com/rstudio/rstudio/pull/10952
     patch -p1 < ${srcdir}/10952.patch
-    patch -p1 < ${srcdir}/quarto_pandoc_location.patch
     # Do not use outdated version name of pandoc
     patch -p1 < ${srcdir}/pandoc_version.patch
 
