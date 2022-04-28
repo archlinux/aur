@@ -1,14 +1,14 @@
 pkgbase = ptv
 	pkgdesc = A tree directory visualizer
-	pkgver = 1.4.0
+	pkgver = 1.5.0
 	pkgrel = 1
-	url = https://github.com/ICanOnlySuffer/ptv
+	url = https://gitlab.com/ICanOnlySuffer/
 	arch = x86_64
 	arch = armv7a
-	groups = pochita
+	groups = pocha
 	license = MIT
 	makedepends = pul
-	source = https://github.com/ICanOnlySuffer/ptv/archive/refs/tags/v1.4.0.tar.gz
+	source = https://gitlab.com/ICanOnlySuffer//-/archive/v1.5.0/vptv-v1.5.0.tar.gz
 	sha256sums = SKIP
 
 pkgname = ptv
