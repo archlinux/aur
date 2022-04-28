@@ -5,7 +5,7 @@
 
 pkgname=python2-numpy
 pkgver=1.16.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Scientific tools for Python 2"
 arch=('x86_64')
 license=('custom')
@@ -26,6 +26,7 @@ prepare() {
 
 build() {
   cd numpy-$pkgver
+  CFLAGS+=" -ffat-lto-objects" \
   python2 setup.py build
 }
 
