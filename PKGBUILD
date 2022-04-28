@@ -45,5 +45,5 @@ package() {
   cp -r --preserve=mode dist/linux-unpacked/* "$pkgdir/opt/$pkgname/"
   install -Dm644 "../$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
   install -Dm644 "asset/png/FrameAppIcon.png" "$pkgdir/usr/share/pixmaps/frame.png"
-  printf "#!/bin/sh\n\n/opt/$pkgname/frame-eth \"\$@\"\n" | install -Dm755 /dev/stdin "$pkgdir/usr/bin/frame-eth"
+  printf "#!/bin/sh\n\n/opt/$pkgname/frame \"\$@\"\n" | install -Dm755 /dev/stdin "$pkgdir/usr/bin/frame-eth"
 }
