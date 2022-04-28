@@ -1,0 +1,14 @@
+pkgbase = python-kodistubs
+	pkgdesc = Stub modules that re-create Kodi Python API
+	pkgver = 19.0.3
+	pkgrel = 1
+	url = https://pypi.org/project/python-kodistubs
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-sphinx
+	source = https://files.pythonhosted.org/packages/source/K/Kodistubs/Kodistubs-19.0.3.tar.gz
+	sha256sums = d6f3379712fa944704dbb74e49b64fbc32ecc8dbfb5433221f4115e927f5b318
+
+pkgname = python-kodistubs
