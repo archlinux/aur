@@ -1,7 +1,8 @@
 pkgbase = libretro-dosbox-pure-git
 	pkgdesc = MS-DOS core
-	pkgver = 0.26.r0.g1845cd9
+	pkgver = 0.9.1.r0.g562869f
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/schellingb/dosbox-pure
 	arch = aarch64
 	arch = armv7h

@@ -2,8 +2,9 @@
 _reponame=dosbox-pure
 _pkgname=libretro-$_reponame
 pkgname=$_pkgname-git
-pkgver=0.26.r0.g1845cd9
+pkgver=0.9.1.r0.g562869f
 pkgrel=1
+epoch=1
 pkgdesc="MS-DOS core"
 arch=('aarch64' 'armv7h' 'i486' 'i686' 'pentium4' 'x86_64')
 url="https://github.com/schellingb/dosbox-pure"
