@@ -1,6 +1,6 @@
 pkgbase = lib32-pciutils
 	pkgdesc = PCI bus configuration space access library (32-bit)
-	pkgver = 3.7.0
+	pkgver = 3.8.0
 	pkgrel = 1
 	url = https://mj.ucw.cz/sw/pciutils/
 	arch = x86_64
@@ -10,8 +10,10 @@ pkgbase = lib32-pciutils
 	depends = pciutils
 	depends = lib32-kmod
 	depends = lib32-systemd
-	source = git+https://github.com/pciutils/pciutils.git#tag=v3.7.0?signed
+	source = https://mj.ucw.cz/download/linux/pci/pciutils-3.8.0.tar.gz
+	source = https://mj.ucw.cz/download/linux/pci/pciutils-3.8.0.tar.gz.sign
 	validpgpkeys = 5558F9399CD7836850553C6EC28E7847ED70F82D
+	sha512sums = 4b0de02a54c6ed19d5ea85a01d89a62386000bc0f816498872479aba26fb007a8c394cba3f95e77a7ffe52d36ad2726169b7b83bda5ab0647f00e49d8a34bf15
 	sha512sums = SKIP
 
 pkgname = lib32-pciutils
