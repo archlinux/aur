@@ -1,0 +1,18 @@
+pkgbase = vapoursynth-plugin-nlm-git
+	pkgdesc = Plugin for Vapoursynth: vs-nlm-ispc (GIT version)
+	pkgver = v2.0.g06547b7
+	pkgrel = 1
+	url = https://github.com/AmusementClub/vs-nlm-ispc.git
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+    makedepends = ispc
+	depends = vapoursynth
+	provides = vapoursynth-plugin-nlm
+	conflicts = vapoursynth-plugin-nlm
+	options = debug
+	source = assrender::git+https://github.com/AmusementClub/vs-nlm-ispc.git
+	sha256sums = SKIP
+
+pkgname = vapoursynth-plugin-nlm-git
