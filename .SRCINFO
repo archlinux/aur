@@ -1,0 +1,13 @@
+pkgbase = woke
+	pkgdesc = Detect non-inclusive language in your source code.
+	pkgver = 0.18.1
+	pkgrel = 1
+	url = https://getwoke.tech/
+	arch = any
+	license = MIT
+	makedepends = go
+	conflicts = woke-bin
+	source = https://github.com/get-woke/woke/archive/refs/tags/v0.18.1.tar.gz
+	sha256sums = 8771605ffbb98666cf8e566f60cf26532f4f1db52f3e053c566faa4e1cef9d88
+
+pkgname = woke
