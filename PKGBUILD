@@ -1,14 +1,15 @@
-# Maintainer: ny-a <nyaarch64 at gmail dot com>
+# Maintainer: Anthony Wang <ta180m@pm.me>
+# Contributor: ny-a <nyaarch64 at gmail dot com>
 # Contributor: Daniel Moch <daniel@danielmoch.com>
 # Contributor: Jean Lucas <jean@4ray.co>
 # Contributor: Fredrick Brennan <copypaste@kittens.ph>
 
 pkgname=mastodon
-pkgver=3.4.6
+pkgver=3.5.1
 pkgrel=1
-pkgdesc='Self-hosted social media and network server based on ActivityPub and OStatus'
+pkgdesc='Your self-hosted, globally interconnected microblogging community'
 arch=(x86_64)
-url=https://github.com/tootsuite/mastodon
+url=https://github.com/mastodon/mastodon
 license=(AGPL3)
 depends=(ffmpeg
          imagemagick
@@ -27,14 +28,15 @@ depends=(ffmpeg
 makedepends=(git)
 backup=(etc/mastodon.conf)
 install=mastodon.install
-source=(https://github.com/tootsuite/mastodon/archive/v$pkgver.tar.gz
+options=(!strip)
+source=(https://github.com/mastodon/mastodon/archive/v$pkgver.tar.gz
         mastodon.target
         mastodon.sysusers.d
         mastodon.tmpfiles.d)
-sha512sums=('83b79e5fddf3190b921aa942c22ba15bdb740c6bb318e468a87b59f6656a215f218c6e68f8a20e02604399925ad016e18be79944c90748d578309dccae9926d7'
+sha512sums=('1fb6f2f17384f217e5a04f140ca35db33449f68cc780af24a2f6f7611874849b9a6fa86a8a930b2da457e4f40c36505761705d140ccb1a56b17ed287d659ae53'
             'c9820c2a83d08bd5d842a78e924682db97ebd5c7291b682603ad30dafcdcc5816c13e717ad39554f042b9d9ed71ab902ce3f604952264a900a72612ee8060acb'
             '4ee4210bde391e6dc782cb7c14f2cb968c95ad541aa0efcf843a811f8cc5f0d1067ee3c8346bb412aa9fd1dd5a8bd05a4524df7dc4a106957009853dd237074a'
-            '73493680845e690d0cfd769fbbe68978c0a615602375078aea945ca1f1011404eb4b64972aec7a6e5efa720fb425d91b3f30025391c38ccf77e070ccb391e710')
+            '27c4eb01d462c525b59e5808a3b2501b63a34425752128388fbde82f7eb5944b20d2f8d8b1be8ed8adb165cab4cfb8e13f90215f20989ca671a0422ffa37001f')
 
 prepare() {
   cd mastodon-$pkgver
@@ -67,13 +69,9 @@ package() {
   cd mastodon-$pkgver/dist
 
   # Fix path discrepancies
-  for f in mastodon-*.service; do
-    sed -e '0,/home/s/home/var\/lib/' \
-      -e 's/\/live//' \
-      -e 's/=\/usr\/bin/=\/var\/lib\/mastodon/' \
-      -e 's/home\/mastodon\/.rbenv\/shims/usr\/bin/' \
-      -i $f
-  done
+  sed -e 's/home\/mastodon\/live/var\/lib\/mastodon/g' \
+    -e 's/home\/mastodon\/.rbenv\/shims/usr\/bin/' \
+    -i mastodon-*.service
 
   install -Dm 644 mastodon-*.service -t "$pkgdir"/usr/lib/systemd/system
 }
