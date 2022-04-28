@@ -13,7 +13,7 @@ pkgbase = gnome-backgrounds-macos-git
 	provides = gnome-backgrounds-git
 	provides = gnome-backgrounds-macos
 	conflicts = gnome-backgrounds-macos
-	source = git+https://github.com/saltedcoffii/$pkgname.git
+	source = git+https://github.com/saltedcoffii/gnome-backgrounds-macos.git
 	sha256sums = SKIP
 
 pkgname = gnome-backgrounds-macos-git

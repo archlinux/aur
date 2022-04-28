@@ -1,6 +1,7 @@
 # Maintainer: Cassandra Watergate (saltedcoffii) <cassandrawatergate@outlook.com>
 
-pkgname=gnome-backgrounds-macos-git
+_pkgname=gnome-backgrounds-macos
+pkgname=$_pkgname-git
 pkgver=r6.0cfa363
 pkgrel=0
 pkgdesc="Background images for the GNOME desktop from MacOS"
@@ -10,12 +11,12 @@ makedepends=('glib2' 'meson' 'curl')
 license=('CCPL:by-sa' 'GPL3 or any later version')
 provides=('gnome-backgrounds' 'gnome-backgrounds-git' 'gnome-backgrounds-macos')
 conflicts=('gnome-backgrounds-macos')
-source=('git+https://github.com/saltedcoffii/$pkgname.git')
+source=("git+https://github.com/saltedcoffii/$_pkgname.git")
 sha256sums=('SKIP')
 
 build() {
-  $srcdir/$pkgname-$pkgver/download-backgrounds.sh
-  arch-meson $pkgname-$pkgver build
+  $srcdir/$_pkgname/download-backgrounds.sh
+  arch-meson $_pkgname build
   meson compile -C build
 }
 
