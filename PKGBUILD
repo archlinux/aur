@@ -1,21 +1,19 @@
-# $Id$
-# Contributor: Enmanuel Moreira <enmanuelmoreira@gmail.com>
+# Maintainer: Enmanuel Moreira <enmanuelmoreira@gmail.com>
 
-_name=terraboard
 pkgname=terraboard
 pkgver=2.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A web dashboard to inspect Terraform States."
 arch=('x86_64')
 url="https://github.com/camptocamp/terraboard/"
 license=('Apache-2')
-source=("https://github.com/camptocamp/${_name}/releases/download/v${pkgver}/${_name}_${pkgver}_linux_amd64.zip")
+source=("https://github.com/camptocamp/${pkgname}/releases/download/v${pkgver}/${pkgname}_${pkgver}_linux_amd64.zip")
 sha256sums=('d43f3bff8d95138fed816f4dcd025df6dbcfcfdc73579fe96ceaeaae85caafd4')
 
 package() {
   cd "${srcdir}"
-  install -Dm755 ${_name}_v${pkgver} ${pkgdir}/usr/bin/${_name}
-  install -Dm644 README.md ${pkgdir}/usr/share/doc/${_name}/README.md
-  install -Dm644 LICENSE ${pkgdir}/usr/share/doc/${_name}/LICENSE
-  install -Dm644 CHANGELOG.md ${pkgdir}/usr/share/doc/${_name}/CHANGELOG.md
+  install -Dm755 ${pkgname}_v${pkgver} ${pkgdir}/usr/bin/${pkgname}
+  install -Dm644 README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
+  install -Dm644 LICENSE ${pkgdir}/usr/share/doc/${pkgname}/LICENSE
+  install -Dm644 CHANGELOG.md ${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.md
 }
