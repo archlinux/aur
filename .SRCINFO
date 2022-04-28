@@ -1,7 +1,7 @@
 pkgbase = terrascan
 	pkgdesc = Detect compliance and security violations across Infrastructure as Code
 	pkgver = 1.14.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/accurics/terrascan
 	arch = x86_64
 	license = Apache-2
