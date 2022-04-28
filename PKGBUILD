@@ -11,7 +11,7 @@ pkgname=(python-ipalib
          freeipa-common
          freeipa-client-common
          freeipa-client)
-pkgver=4.9.8
+pkgver=4.9.9
 pkgrel=1
 pkgdesc='The Identity, Policy and Audit system'
 arch=('i686' 'x86_64')
@@ -33,15 +33,13 @@ makedepends=('openldap'
              'python-jinja'
              'python-pyasn1-modules')
 options=(emptydirs)
-validpgpkeys=('0E63D716D76AC080A4A33513F40800B6298EB963')
+#validpgpkeys=('0E63D716D76AC080A4A33513F40800B6298EB963')
 source=("https://releases.pagure.org/freeipa/freeipa-${pkgver}.tar.gz"
-        platform.patch
         freeipa-client-update-sshd_config
         freeipa-client-update-sshd_config.hook
         nis-domainname.service
         ipaplatform.tar.gz)
-sha256sums=('2fddaf6de41dfe244e25a3211f756491ffa8e657595b74388249d2287a601782'
-            '4b3629f2733182f68b3d28c28f782773103b814c486cf4fdb15336163b08c82e'
+sha256sums=('4209b5e1cf99d2096dd002cc18f86ff951a941ac88e914d4bd18d567b61d10ab'
             '09894b521258983da988b6d78ed8d5370669ffb7d6a6e3cfbf0c0b8eda67f11b'
             '1e73f394d276357dcd578df7a349b1f381c9edc7b1c053ecf65f7a9255c0490d'
             '74a394af693e3677146eff18a770a4271fba961b2af93b15b8ae26157af1760a'
@@ -52,7 +50,11 @@ prepare() {
 
     rm -rf ipaplatform/arch
 
-    patch -p1 -i "${srcdir}/platform.patch"
+    sed -i 's|/etc/sysconfig/autofs|/etc/autofs/autofs.conf|' 'client/man/ipa-client-automount.1'
+    sed -i 's|/etc/pki/ca-trust/source/ipa.p11-kit|/etc/ca-certificates/trust-source/ipa.p11-kit|' 'client/man/ipa-client-install.1'
+    sed -i 's|/etc/sysconfig/network|/etc/hostname\n.br\n/etc/conf.d/network|' 'client/man/ipa-client-install.1'
+    sed -i '/"ipaplatform.base"/a "ipaplatform.arch",' 'ipaplatform/setup.py'
+    
     tar xf "${srcdir}/ipaplatform.tar.gz"
 
     # Workaround: We want to build Python things twice. To be sure we do not mess
