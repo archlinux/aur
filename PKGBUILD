@@ -1,4 +1,5 @@
-# Maintainer: saltedcoffii <55339220+saltedcoffii@users.noreply.github.com>
+# Maintainer: Cassandra Watergate (saltedcoffii) <cassandrawatergate@outlook.com>
+
 pkgname=tgs-to-gif-cpp-git
 pkgver=0.1.2
 pkgrel=2
