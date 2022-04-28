@@ -3,7 +3,7 @@
 # Contributor: korjjj <korjjj+aur[at]gmail[dot]com>
 
 pkgname=gns3-server
-pkgver=2.2.31
+pkgver=2.2.32
 pkgrel=1
 pkgdesc='GNS3 network simulator, Server package'
 arch=('x86_64' 'aarch64')
@@ -38,20 +38,20 @@ optdepends=(
 install="$pkgname".install
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "$pkgname@.service")
-sha256sums=('10a530866a156cea6b544be9b557f61ca0baa7e58c3064d79a1d523b70301edc'
+sha256sums=('9e208622f91fdca217964e9b93121d85b1415f7d26ba106be035a079beb21519'
             'b43f0ead963a06e613d3303d2c66372b57f46c750b3d6df20eb99c11078de65f')
 
 prepare() {
     cd "$pkgname-$pkgver"
     # Arch usually has the latest versions. Patch requirements to allow them.
     sed -i \
-        -e 's|^aiohttp==3\.7\.4.*|aiohttp>=3.7.4|' \
+        -e 's|^aiohttp==3\.8\.1|aiohttp>=3.8.1|' \
         -e 's|^aiofiles==0\.8\.0$|aiofiles>=0.8.0|' \
         -e 's|^Jinja2==3\.0\.3$|Jinja2>=3.0.3|' \
-        -e 's|^sentry-sdk==1\.5\.4$|sentry-sdk>=1.5.4|' \
+        -e 's|^sentry-sdk==1\.5\.10$|sentry-sdk>=1.5.10|' \
         -e 's|^psutil==5\.9\.0$|psutil>=5.9.0|' \
-        -e 's|^async-timeout==3\.0\.1$|async-timeout>=3.0.1|' \
-        -e 's|^distro==1\.6\.0$|distro>=1.6.0|' \
+        -e 's|^async-timeout==4\.0\.2$|async-timeout>=4.0.2|' \
+        -e 's|^distro==1\.7\.0$|distro>=1.7.0|' \
         -e 's|^py-cpuinfo==8\.0\.0$|py-cpuinfo>=8.0.0|' \
         -e 's|^setuptools==60\.6\.0|setuptools<=60.6.0|' \
         requirements.txt
