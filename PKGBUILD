@@ -21,7 +21,7 @@ optdepends=("apache: HTTP server"
 "postgresql: Database"
 "sqlite: Database")
 source=("${pkgname}-v${pkgver}.tar.gz::${url}/archive/refs/tags/v${pkgver}.tar.gz")
-sha512sums=("d4c10b651c40c85a897fc9bcbbaa471d36d7b01290c12cd975becc244f3e2e89faab10ffb8577fafd670c46d75a4f7af41ac556f75a640673d5522d80dfa7475")
+sha512sums=("1ab6b261ee9bf94c69c07bb066d11bfa049578d5b9116425696db7b15bd486bcf654499c072493eba1fa29088e12c34106b090352276749960d74ea58c3c4c66")
 
 build()
 {
