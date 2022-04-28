@@ -2,7 +2,7 @@
 
 _name=pyrodigal
 pkgname=python-${_name}
-pkgver=1.0.0
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Cython bindings to Prodigal, an ORF finder for genomes and metagenomes"
 url="https://github.com/althonos/pyrodigal"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' 'cython' 'python-build' 'python-installer')
 depends=('python')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
 noextract=()
-sha256sums=(d2cbe78c65a08e0e7eadce1ae472734510c846c004d054483a093948e836ca58)
+sha256sums=(2ada2eb11535556371757de929d9f9696ebbe66068cab7d86329017e07245fe7)
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
