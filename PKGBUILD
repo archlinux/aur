@@ -2,7 +2,7 @@
 pkgname=activate-linux-git
 _pkgname=activate-linux
 pkgver=r69.5e97a92
-pkgrel=1
+pkgrel=2
 pkgdesc="The \"Activate Windows\" watermark ported to Linux with Xlib and cairo in C"
 arch=("x86_64")
 
@@ -10,9 +10,9 @@ url='https://github.com/MrGlockenspiel/activate-linux'
 makedepends=('make' 'clang')
 depends=('cairo' 'libxi' 'libx11' 'libxt')
 license=('custom')
-sha512sums=('SKIP')
+sha512sums=('SKIP' 'SKIP')
 
-source=(git+https://github.com/MrGlockenspiel/activate-linux)
+source=(git+https://github.com/MrGlockenspiel/activate-linux activate-linux.desktop)
 
 pkgver() {
   cd "$srcdir/$_pkgname"
@@ -25,6 +25,7 @@ build() {
 }
 
 package() {
+  install -D activate-linux.desktop "$pkgdir/usr/share/applications/activate-linux.desktop"
   cd "$srcdir/$_pkgname"
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -D bin/activate-linux "$pkgdir/usr/bin/activate-linux"
