@@ -1,7 +1,7 @@
 # Maintainer: sukanka <su975853527 at gmail dot com>
 
 pkgname=astrofox
-pkgver=1.3.0
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="A motion graphics program that lets turn audio into amazing videos"
 arch=('any')
@@ -11,7 +11,7 @@ depends=(electron ffmpeg)
 makedepends=(yarn asar sed)
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/astrofox-io/astrofox/archive/refs/tags/v${pkgver}.tar.gz"
 )
-sha512sums=('551624455f2fc16ef579f10024424a52e3297128eaeef1138b6939cfe52fca401e11d5df3c7f1e53c141ff7a19cd0f27ac8153b1647047a7a83eddb73d66ba76')
+sha512sums=('bf0adc3ea6f8a388c3e08b93ba70fdb950ec36cf847a9382e516e735506a8f0c0ebf1ae03315d13a29382aa70f684b4742443891d5c661ac839b9a8300b7a195')
 
 prepare() {
      # patch for system ffmpeg
@@ -25,6 +25,7 @@ prepare() {
     # delete electron & electron-builder to install deps fast
     sed -i '/"electron"/d' package.json
     sed -i '/"electron-builder"/d' package.json
+    sed -i 's|"autoUpdate": true,|"autoUpdate": false,|g' src/config/app.json
     yarn install
     yarn run  build-main  && yarn run build-prod
     
