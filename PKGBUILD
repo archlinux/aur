@@ -1,7 +1,7 @@
 # Maintainer: Philip Goto <philip.goto@gmail.com>
 
 pkgname=calls-git
-pkgver=42.beta.1.r66.g006673a
+pkgver=43.alpha.0.r1.ga2b08b6
 pkgrel=1
 pkgdesc='Phone dialer and call handler'
 arch=(x86_64 aarch64)
