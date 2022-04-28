@@ -4,7 +4,7 @@
 _pkgname=spotiflyer
 pkgname="${_pkgname}-bin"
 pkgver=3.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Kotlin Multiplatform Music Downloader, Supports Spotify / Gaana / Youtube Music / Jio Saavn / SoundCloud."
 arch=('x86_64')
 url="https://github.com/Shabinder/SpotiFlyer"
