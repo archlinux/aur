@@ -2,7 +2,7 @@
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 
 _cranname=knitr
-_cranver=1.38
+_cranver=1.39
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -48,7 +48,7 @@ optdepends=(
     'rst2pdf: rst2pdf() support'
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('d138e881414eed915cadcb8c82ffbbab002614f1d492cbf413cded255ab5e7ad')
+sha256sums=('c91a65edebdca779af7f7480fa6636667497c9291ad55d6efd982db0bb91ac72')
 
 build() {
   mkdir -p build
