@@ -1,7 +1,7 @@
 pkgbase = freedict-tools-svn
 	pkgdesc = Tools to compile the FreeDict dictionaries
-	pkgver = r443
-	pkgrel = 2
+	pkgver = 0.6.0.r469
+	pkgrel = 1
 	epoch = 1
 	url = https://freedict.org/
 	arch = any
@@ -30,9 +30,15 @@ pkgbase = freedict-tools-svn
 	depends = haskell-transformers
 	depends = haskell-pretty
 	depends = haskell-xml
-	provides = freedict-tools
+	depends = haskell-safe
+	depends = bash
+	depends = sed
+	depends = make
+	depends = coreutils
+	provides = freedict-tools=1:0.6.0.r469
 	conflicts = freedict-tools
 	source = freedict-tools-svn::svn+https://github.com/freedict/tools/trunk
 	sha512sums = SKIP
 
 pkgname = freedict-tools-svn
+	provides = freedict-tools=1:0.6.0.r469
