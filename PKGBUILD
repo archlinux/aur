@@ -2,7 +2,7 @@
 # Based on work by Uncle Hunto <unclehunto äτ ÝãΗ00 Ð0τ ÇÖΜ> and Beini <bane aτ iki dot fi>
 
 pkgname=eddie-cli-git
-pkgver=2.21.5
+pkgver=2.21.6
 pkgrel=1
 pkgdesc='Eddie - VPN tunnel - CLI - beta'
 arch=('i686' 'x86_64')
@@ -28,11 +28,18 @@ build() {
   export TERM=xterm # Fix Mono bug "Magic number is wrong".
 
   # Compile C# sources
+  # Forced target framework, otherwise throw
+  # warning : TargetFrameworkVersion 'v4.8' not supported by this toolset (ToolsVersion: 14.0).
+  # even on recent Manjaro (updated 2022-04-19)
+
+  # throw
+  # xbuild tool is deprecated and will be removed in future updates, use msbuild instead
+  # but never understand right dependencies that works on every Arch distro
   cd "Eddie"
   if [ "cli" = "cli" ]; then
-    xbuild /verbosity:minimal /p:Configuration="Release" /p:Platform="$_pkgarch" src/eddie.linux.cli.sln
+    xbuild /verbosity:minimal /p:TargetFrameworkVersion="v4.5" /p:Configuration="Release" /p:Platform="$_pkgarch" src/eddie.linux.cli.sln
   elif [ "cli" = "ui" ]; then
-    xbuild /verbosity:minimal /p:Configuration="Release" /p:Platform="$_pkgarch" src/eddie2.linux.ui.sln
+    xbuild /verbosity:minimal /p:TargetFrameworkVersion="v4.5" /p:Configuration="Release" /p:Platform="$_pkgarch" src/eddie2.linux.ui.sln
   fi
 
   # Compile C sources (Tray)
