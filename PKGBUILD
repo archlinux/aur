@@ -2,7 +2,7 @@
 # Contributor: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=firecracker-git
-pkgver=1.0.0.r94.ge472386b
+pkgver=1.0.0.r119.gb3cc3317
 pkgrel=1
 epoch=2
 pkgdesc="Secure and fast microVMs for serverless computing"
@@ -11,7 +11,7 @@ license=('Apache:2.0')
 url="https://firecracker-microvm.github.io"
 provides=("firecracker")
 conflicts=("firecracker")
-makedepends=('git' 'rust' 'rust-musl')
+makedepends=('git' 'rust' 'rust-musl' 'kernel-headers-musl')
 options=('!lto')
 source=("$pkgname::git+https://github.com/firecracker-microvm/firecracker.git")
 b2sums=('SKIP')

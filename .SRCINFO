@@ -1,6 +1,6 @@
 pkgbase = firecracker-git
 	pkgdesc = Secure and fast microVMs for serverless computing
-	pkgver = 1.0.0.r94.ge472386b
+	pkgver = 1.0.0.r119.gb3cc3317
 	pkgrel = 1
 	epoch = 2
 	url = https://firecracker-microvm.github.io
@@ -9,6 +9,7 @@ pkgbase = firecracker-git
 	makedepends = git
 	makedepends = rust
 	makedepends = rust-musl
+	makedepends = kernel-headers-musl
 	provides = firecracker
 	conflicts = firecracker
 	options = !lto
