@@ -2,7 +2,7 @@
 # Based on official Arch Linux PKGBUILD
 
 pkgname=libwacom-surface
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Patched libwacom for Microsoft Surface devices"
 arch=('x86_64')
@@ -41,7 +41,7 @@ sha256sums=('40b6834ae423f68f68d3fbd7852aa58eafaa9adb0a29ce132f762e778954553d'
             '89225dde12a795f700d090a484a04e5da01d1d47b792bf4f7128135a70a0a66d'
             'aaab03d55d1fcfed17ea4d6de838cab3a3774d2b8ce0070bea6647d1a211401f'
             '8ff37ac6631be6851c6a521a1e852b182b4cdd6735206ab19056db8735920772'
-            'b900899589c4c1f83e6671a2383a3437cfa70c3a275cb266bddbbc6c4eaf71a2'
+            'e62ac9edb522d36ad2fa99adca35ddc02067383d4668eeaa13d7efccc30bb8c8'
             'SKIP')
 
 prepare() {

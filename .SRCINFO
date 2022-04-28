@@ -1,6 +1,6 @@
 pkgbase = libwacom-surface
 	pkgdesc = Patched libwacom for Microsoft Surface devices
-	pkgver = 2.1.0
+	pkgver = 2.2.0
 	pkgrel = 1
 	url = https://github.com/linux-surface/libwacom
 	arch = x86_64
@@ -14,7 +14,7 @@ pkgbase = libwacom-surface
 	depends = systemd
 	depends = libgudev
 	optdepends = python-libevdev: for libwacom-show-stylus
-	provides = libwacom=2.1.0
+	provides = libwacom=2.2.0
 	conflicts = libwacom
 	source = 0001-Add-support-for-BUS_VIRTUAL.patch
 	source = 0002-Add-support-for-Intel-Management-Engine-bus.patch
@@ -27,8 +27,8 @@ pkgbase = libwacom-surface
 	source = 0009-data-Add-Microsoft-Surface-Book-2-15.patch
 	source = 0010-data-Add-Microsoft-Surface-Book-3-13.5.patch
 	source = 0011-data-Add-Microsoft-Surface-Book-3-15.patch
-	source = https://github.com/linuxwacom/libwacom/releases/download/libwacom-2.1.0/libwacom-2.1.0.tar.xz
-	source = https://github.com/linuxwacom/libwacom/releases/download/libwacom-2.1.0/libwacom-2.1.0.tar.xz.sig
+	source = https://github.com/linuxwacom/libwacom/releases/download/libwacom-2.2.0/libwacom-2.2.0.tar.xz
+	source = https://github.com/linuxwacom/libwacom/releases/download/libwacom-2.2.0/libwacom-2.2.0.tar.xz.sig
 	validpgpkeys = 3C2C43D9447D5938EF4551EBE23B7E70B467F0BF
 	sha256sums = 40b6834ae423f68f68d3fbd7852aa58eafaa9adb0a29ce132f762e778954553d
 	sha256sums = 17a27e9f495ce0d710aa6425bb6edfa5f4123f181754f776d06c4c4fc6f53749
@@ -41,7 +41,7 @@ pkgbase = libwacom-surface
 	sha256sums = 89225dde12a795f700d090a484a04e5da01d1d47b792bf4f7128135a70a0a66d
 	sha256sums = aaab03d55d1fcfed17ea4d6de838cab3a3774d2b8ce0070bea6647d1a211401f
 	sha256sums = 8ff37ac6631be6851c6a521a1e852b182b4cdd6735206ab19056db8735920772
-	sha256sums = b900899589c4c1f83e6671a2383a3437cfa70c3a275cb266bddbbc6c4eaf71a2
+	sha256sums = e62ac9edb522d36ad2fa99adca35ddc02067383d4668eeaa13d7efccc30bb8c8
 	sha256sums = SKIP
 
 pkgname = libwacom-surface
