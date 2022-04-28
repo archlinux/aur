@@ -1,6 +1,6 @@
 pkgbase = chromium-snapshot-bin
 	pkgdesc = The open-source project behind Google Chrome (Latest Snapshot)
-	pkgver = 102.0.4959.0.r983989
+	pkgver = 103.0.5032.0.r997302
 	pkgrel = 1
 	url = https://build.chromium.org
 	install = chromium-snapshot-bin.install
@@ -18,7 +18,7 @@ pkgbase = chromium-snapshot-bin
 	optdepends = flashplugin: support for Flash content
 	optdepends = ttf-liberation: fix fonts for some PDFs [RBug #369991]
 	provides = chromium
-	source = chrome-linux-r983989.zip::https://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/983989/chrome-linux.zip
+	source = chrome-linux-r997340.zip::https://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux_x64/997340/chrome-linux.zip
 	source = chromium-snapshot-bin.sh
 	source = chromium-snapshot-bin.desktop
 	source = chromium-snapshot-bin_16.png
