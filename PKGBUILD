@@ -1,7 +1,7 @@
 # Maintainer: Yu-Hsuan Tu <dobe0331 at gmail dot com>
 _pkgname=metashape-pro
 pkgname=agisoft-${_pkgname}
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 pkgdesc="Photogrammetric processing of digital images and 3D spatial data generation software. Professional edition"
 arch=('x86_64')
@@ -13,7 +13,8 @@ optdepends=('glu: mesa OpenGL lib'
             'opencl-mesa: mesa OpenCL runtime for GPU acceleration'
             'opencl-amd: AMDGPU PRO OpenCL runtime for GPU acceleration'
             'cuda: nvidia CUDA runtime for GPU acceleration'
-            'intel-compute-runtime: Intel Neo OpenCL runtime for GPU acceleration')
+            'intel-compute-runtime: Intel Neo OpenCL runtime for GPU acceleration'
+            'libffi6: QT5 API support in console')
 provides=('agisoft-metashape-pro' 'agisoft-network-monitor' 'agisoft-viewer')
 options=('!strip')
 install=${pkgname}.install
@@ -24,7 +25,7 @@ source=("https://s3-eu-west-1.amazonaws.com/download.agisoft.com/${_pkgname}_${p
         "agisoft-psx-mime-icon-encoded.txt"
         "agisoft-psz-mime-icon-encoded.txt"
         "agisoft-3dv-mime-icon-encoded.txt")
-sha256sums=('df68720fbc887b9f751ab10ffcb4da9fd1e57e644e1b48c70f35a9a400177e9c'
+sha256sums=('6824a68f27b2fc9837c013695fbc8852adc19ed46c8cbb12a907ba95b2deeac9'
             '959eb21ce482a5b1f84a0e04ec6f0d53aaf679c84bce9f813b350afe5dd201ba'
             'ef484e2a60966a722d7989abdbb85464054c47dd56b2ce182b2c0c5602476599'
             'a5e29a00393d55a9b589e1fb30acb57a96ef26756507d2793e7f3494d5778ae3'
