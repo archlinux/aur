@@ -1,6 +1,6 @@
 pkgbase = curl-impersonate-firefox
 	pkgdesc = A special compilation of curl that makes it impersonate Firefox
-	pkgver = r120.7717c22
+	pkgver = r133.3f1c350
 	pkgrel = 1
 	url = https://github.com/lwthiker/curl-impersonate
 	arch = x86_64

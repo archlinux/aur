@@ -1,7 +1,7 @@
 # Maintainer mattf <matheusfillipeag@gmail.com>
 
 pkgname=curl-impersonate-firefox
-pkgver=r120.7717c22
+pkgver=r133.3f1c350
 _gitname=curl-impersonate
 pkgrel=1
 pkgdesc="A special compilation of curl that makes it impersonate Firefox"
@@ -61,9 +61,7 @@ build_nss () {
 
 patch_nghttp2 () {
   cd ${srcdir}
-  cp ${browser_dir}/patches/libnghttp2-*.patch ${NGHTTP2_VERSION}/
   cd ${NGHTTP2_VERSION}
-  for p in $(ls libnghttp2-*.patch); do patch -p1 < $p; done
   autoreconf -i
   automake
   autoconf
@@ -152,6 +150,7 @@ package () {
   cd out/
 
   install -Dm755 curl-impersonate-ff "${pkgdir}/usr/bin/${pkgname}"
+  ln -s "${pkgdir}/usr/bin/${pkgname}" "${pkgdir}/usr/bin/curl-impersonate-ff"
   install -Dm755 curl_* "${pkgdir}/usr/bin/"
   install -Dm755 libcurl-impersonate-ff.so.$ver "${pkgdir}/usr/lib/libcurl-impersonate-ff.so.$ver"
 
