@@ -4,7 +4,7 @@
 
 _pkgname=brotab
 pkgname="${_pkgname}-git"
-pkgver=r161.97a289d
+pkgver=r196.9d21332
 pkgrel=1
 pkgdesc="Control your browser's tabs from the command line"
 arch=('any')
@@ -26,7 +26,8 @@ pkgver() {
 build() {
 	cd "${srcdir}/${_pkgname}"
 	sed -i '/^import pip$/d' setup.py || :
-	python setup.py build
+	sed -i 's/==.*//' requirements/*.txt
+	python3 setup.py build
 }
 
 check() {
