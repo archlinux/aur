@@ -1,6 +1,6 @@
 pkgbase = rke
 	pkgdesc = An extremely simple, lightning fast Kubernetes installer that works everywhere.
-	pkgver = 1.3.8
+	pkgver = 1.3.10
 	pkgrel = 1
 	url = https://github.com/rancher/rke
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = rke
 	makedepends = git
 	makedepends = go>=1.11
 	makedepends = golangci-lint
-	source = rke-1.3.8::git+https://github.com/rancher/rke#tag=v1.3.8
+	source = rke-1.3.10::git+https://github.com/rancher/rke#tag=v1.3.10
 	source = build.patch
 	source = ci.patch
 	source = version.patch
