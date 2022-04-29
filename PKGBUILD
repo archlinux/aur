@@ -1,5 +1,5 @@
 pkgname="md-git"
-pkgver=1.16
+pkgver=1.17
 pkgrel=1
 pkgdesc="Simple MarkDown Reader"
 
