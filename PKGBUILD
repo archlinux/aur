@@ -4,7 +4,7 @@
 _pkgname=spotiflyer
 pkgname="${_pkgname}-bin"
 pkgver=3.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Kotlin Multiplatform Music Downloader, Supports Spotify / Gaana / Youtube Music / Jio Saavn / SoundCloud."
 arch=('x86_64')
 url="https://github.com/Shabinder/SpotiFlyer"
@@ -18,4 +18,6 @@ package() {
     tar -xf data.tar.xz -C $pkgdir
     install -Dm644 $pkgdir/opt/spotiflyer/lib/spotiflyer-SpotiFlyer.desktop $pkgdir/usr/share/applications/spotiflyer.desktop
     install -Dm644 $pkgdir/opt/spotiflyer/lib/SpotiFlyer.png $pkgdir/usr/share/pixmaps/spotiflyer.png
+    mkdir -p $pkgdir/usr/bin/
+    ln -s /opt/spotiflyer/bin/SpotiFlyer $pkgdir/usr/bin/$_pkgname
 }
