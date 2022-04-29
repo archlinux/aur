@@ -11,6 +11,7 @@ pkgbase = python-yt
 	depends = python-sympy
 	depends = python-unyt
 	depends = python-cmyt
+	depends = python-tqdm
 	optdepends = jupyter
 	optdepends = openmp: multithred support
 	optdepends = python-astropy: reading FITS files
