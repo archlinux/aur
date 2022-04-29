@@ -2,7 +2,7 @@
 
 pkgname=svix-server
 _pkgname=${pkgname}
-pkgver=0.47.1
+pkgver=0.57.0
 pkgrel=1
 pkgdesc="Svix webhooks server"
 arch=(x86_64)
