@@ -2,7 +2,7 @@
 
 _pyname=glyphsets
 pkgname=python-${_pyname,,}
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='an API with data about glyph sets for many different scripts and languages'
 arch=(any)
@@ -19,7 +19,7 @@ makedepends=(python-{build,installer}
              python-wheel)
 _archive="$_pyname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${_pyname::1}/$_pyname/$_archive.tar.gz")
-sha256sums=('f5e5d635d47661621fa59fb8d5f9546ef00ca8ee04fb41e1956b83f75c5b906f')
+sha256sums=('f0ff885bbba7ade7e940cd0a04b9093963028a7917d892154692c9bd6011cb30')
 prepare() {
 	cd "$_archive"
 	# Upstream requires outdated setuptools_scm, work around
