@@ -1,0 +1,14 @@
+pkgbase = python-logical-unification
+	pkgdesc = Straightforward unification in Python that's extensible via generic functions.
+	pkgver = 0.4.5
+	pkgrel = 1
+	url = https://github.com/pythological/unification/
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	depends = python-toolz
+	depends = python-multipledispatch
+	source = https://files.pythonhosted.org/packages/source/l/logical-unification/logical-unification-0.4.5.tar.gz
+	sha256sums = 7c6a6c1b7c6baa0f5b9af93f06cfc8d2419b6b793346b678ed1367c05ce74558
+
+pkgname = python-logical-unification
