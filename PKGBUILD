@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=cargo-binstall-git
-pkgver=0.6.2.r0.g5506ffb
+pkgver=0.7.0.r0.g77f51af
 pkgrel=1
 pkgdesc="Binary installation for Rust projects (git)"
 arch=('x86_64')
