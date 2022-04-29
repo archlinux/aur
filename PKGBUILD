@@ -3,16 +3,20 @@
 # Contributor: JJDaNiMoTh <jjdanimoth@gmail.com>
 
 pkgname=qmc2
-pkgver=0.242
+pkgver=0.243
 pkgrel=1
 pkgdesc='Qt based UNIX MAME frontend supporting SDLMAME'
 url='https://qmc2.batcom-it.net/'
 license=(GPL)
 arch=(x86_64)
-depends=(qt5-webkit qt5-svg qt5-multimedia qt5-xmlpatterns sdl2 minizip)
+depends=(qt5-webkit qt5-svg qt5-multimedia qt5-xmlpatterns sdl2 minizip-ng)
 makedepends=(rsync)
 source=(https://github.com/qmc2/qmc2-mame-fe/archive/v$pkgver/$pkgname-$pkgver.tar.gz)
-sha256sums=('e4fdd103289d3d09bc8f38ea39e93a81da432705eb50fbd0370e0c4ae2e292c6')
+sha256sums=('0608a4e08bc451ae01856b85525f1dc767e01eb823e7e294c772876971e7609b')
+
+prepare() {
+  sed -e 's|PKGCONFIG += minizip|PKGCONFIG += minizip-ng|' -i $pkgname-mame-fe-$pkgver/qmc2.pro
+}
 
 build() {
   cd $pkgname-mame-fe-$pkgver
