@@ -1,0 +1,36 @@
+From 2734e9a561ad5c192acb45d21335c1f64a3a2db3 Mon Sep 17 00:00:00 2001
+From: ArenM <aren@peacevolution.org>
+Date: Wed, 5 Apr 2023 17:42:36 -0400
+Subject: [PATCH sxmo-utils 8/9] Fix quoting of strings in service files
+
+Systemd doesn't like these variables without curly braces around them.
+---
+ configs/services/bonsaid.service    | 4 ++--
+ configs/services/sxmo_conky.service | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/configs/services/bonsaid.service b/configs/services/bonsaid.service
+index 1093453..cc474f5 100644
+--- a/configs/services/bonsaid.service
++++ b/configs/services/bonsaid.service
+@@ -5,5 +5,5 @@ BindsTo=graphical-session.target
+ [Service]
+ Type=simple
+ Restart=always
+-ExecStartPre=rm -f $XDG_RUNTIME_DIR/bonsai
+-ExecStart=bonsaid -t $XDG_CONFIG_HOME/sxmo/bonsai_tree.json
++ExecStartPre=rm -f ${XDG_RUNTIME_DIR}/bonsai
++ExecStart=bonsaid -t ${XDG_CONFIG_HOME}/sxmo/bonsai_tree.json
+diff --git a/configs/services/sxmo_conky.service b/configs/services/sxmo_conky.service
+index 79b7e93..15160ac 100644
+--- a/configs/services/sxmo_conky.service
++++ b/configs/services/sxmo_conky.service
+@@ -5,4 +5,4 @@ BindsTo=graphical-session.target
+ [Service]
+ Type=simple
+ Restart=always
+-ExecStart=conky -c "$XDG_CONFIG_HOME"/sxmo/conky.conf
++ExecStart=conky -c "${XDG_CONFIG_HOME}/sxmo/conky.conf"
+-- 
+2.39.2
+
