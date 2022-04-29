@@ -1,18 +1,18 @@
 # Maintainer: Martin Jindra <mjindra[at]derchef[dot]email>
 
 pkgname=volatility3-git
-pkgver=v2.0.0.3081.a2b0bdfe
+pkgver=v2.0.1.3241.48c1533e
 pkgrel=1
 pkgdesc='Advanced memory forensics framework'
 url='https://github.com/volatilityfoundation/volatility3'
 arch=('any')
 license=('custom')
 depends=(
-  'python' 'python-yara' 'python-capstone' 'python-jsonschema'
+  'python>3.6' 'python-yara' 'python-capstone' 'python-jsonschema'
   'python-pycryptodome' 'python-pefile')
 makedepends=('python-setuptools' 'git')
-provides=('volatility')
-replaces=('volatility')
+provides=('volatility3')
+conflicts=('volatility3')
 source=(${pkgname}::git+${url})
 sha256sums=('SKIP')
 
