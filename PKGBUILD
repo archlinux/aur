@@ -5,7 +5,7 @@
 # Contributor: Curtis Smith <kman922002@gmail.com>
 
 pkgname=odamex
-pkgver=10.0.0
+pkgver=10.1.0
 pkgrel=1
 pkgdesc='A free client/server multiplayer engine for the classic FPS Doom.'
 arch=('i686' 'x86_64' 'aarch64')
@@ -15,7 +15,7 @@ depends=('sdl2_mixer' 'portmidi' 'wxgtk2' 'miniupnpc')
 makedepends=('cmake')
 optdepends=('timidity++: Required for music')
 source=("http://downloads.sourceforge.net/odamex/Odamex/${pkgver}/odamex-src-${pkgver}.tar.gz")
-sha256sums=('5d96716c26e5fb3af478ff58b58d41d90d885e7d696adcdc256f8675549edf25')
+sha256sums=('e531eaacf539b1bc50ad58db651a0ff58e823e420fd31193e805e6034432771c')
 
 prepare() {
   cd $pkgname-src-$pkgver
