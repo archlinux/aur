@@ -19,7 +19,7 @@ package() {
     install -D -m644 README.md "$pkgdir/usr/share/doc/${pkgname}/Readme.md"
 
     install -d  "$pkgdir"/usr/share/doc/bashmultitool
-    install -D -m644  documentation/* "$pkgdir"/usr/share/doc/bashmultitool
+    install -D -m644  documentation/*.md "$pkgdir"/usr/share/doc/bashmultitool
 
     install -d  "$pkgdir"/usr/lib/bashmultitool
     install -D -m644  lib/* "$pkgdir"/usr/lib/bashmultitool
