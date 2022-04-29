@@ -8,7 +8,7 @@ pkgdesc="Linux process discovery. Its like nmap -- for pids."
 arch=(x86_64)
 url="https://github.com/kris-nova/xpid"
 license=(MIT)
-makedepends=(go make clang cmake)
+makedepends=(libxpid go make)
 checkdepends=()
 optdepends=()
 backup=()
@@ -22,8 +22,6 @@ build() {
 	GO111MODULE=on
 	go mod vendor
 	go mod download
-	make libxpid
-	make libxpid-install
 	make
 }
 
