@@ -13,10 +13,10 @@ provides=('kaf-bin')
 conflicts=('kaf-bin' 'kaf')
 
 source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/birdayz/kaf/releases/download/v0.1.47/kaf_0.1.47_Linux_arm64.tar.gz")
-sha256sums_aarch64=('647d301969a702dffc60e847581b834143f9a97d48fe163f2ad44a796b51eb10')
+sha256sums_aarch64=('e3855041cf585aaf36db4b2e7f596ee2bcd3b0d6a498f9185f20bc8aecd4014f')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/birdayz/kaf/releases/download/v0.1.47/kaf_0.1.47_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('9c228aed51c1efb9e7c75e2e0dbebcdf8eb10066732fbb1cc57bfbf4fac07f58')
+sha256sums_x86_64=('2a54ea7f7171621f38219afa1195deaa0710182e9992d03d6a291aaba07c0a12')
 
 package() {
   # bin
