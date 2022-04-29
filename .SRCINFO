@@ -1,15 +1,15 @@
 pkgbase = dict-freedict-deu-eng
-	pkgdesc = German -> English dictionary for dictd et al. from Freedict.org
-	pkgver = 1.8.1_fd0.2.1
+	pkgdesc = German -> English dictionary for dictd et al. from FreeDict.org
+	pkgver = 1.9_fd1
 	pkgrel = 1
 	url = https://freedict.org/
 	install = dict-freedict-deu-eng.install
 	arch = any
 	license = GPL
 	license = AGPL3
-	makedepends = freedict-tools-svn>=1:r443-2
+	makedepends = freedict-tools>=1:0.6.0
 	optdepends = dictd: dict client and server
-	source = https://ftp.tu-chemnitz.de/pub/Local/urz/ding/old-releases/ding-1.8.1.tar.gz
-	sha512sums = 7d1b459d40e26482c3c16a79565cb897a492fa5807f44c5c3ed1022bcf65ba90bec9cb503cc67970742c2beeb34bd653c684e56ef5492f536254bf475d3f70a4
+	source = ding-1.9.gz::https://ftp.tu-chemnitz.de/pub/Local/urz/ding/de-en/de-en.txt.gz
+	sha512sums = 172b61d4ee52ea14385608cca62891ecab22a4136aa5967654f56b5ef4c77c9f4feeb294396be43b7787133fabdfb2ace8648d2ee4fa877cf21ec566a0ef2b77
 
 pkgname = dict-freedict-deu-eng
