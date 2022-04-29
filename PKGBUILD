@@ -3,7 +3,7 @@
 pkgname=gucci
 pkgdesc='A simple CLI templating tool written in golang.'
 pkgver=1.5.5
-pkgrel=2
+pkgrel=3
 url="https://github.com/noqcks/${pkgname}"
 license=('MIT')
 arch=('x86_64')
@@ -21,6 +21,7 @@ build() {
   export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
   cd "${pkgname}-${pkgver}"
+  go mod download golang.org/x/net
   go build -ldflags "-X main.AppVersion=${pkgver}" -o "${pkgname}.bin"
 }
 
