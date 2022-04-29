@@ -1,0 +1,74 @@
+From 47263e66497eaff3a83873080fa4b76bd5f6ad7d Mon Sep 17 00:00:00 2001
+From: Christian Hesse <mail@eworm.de>
+Date: Fri, 29 Apr 2022 00:00:09 +0200
+Subject: [PATCH 1/2] simplify code
+
+No need for a lot of if-else... Just add a backslash if required, then
+append the character.
+---
+ incrontab.cpp | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
+
+diff --git a/incrontab.cpp b/incrontab.cpp
+index 5255163..613aad4 100644
+--- a/incrontab.cpp
++++ b/incrontab.cpp
+@@ -168,15 +168,11 @@ std::string IncronTabEntry::GetSafePath(const std::string& rPath)
+   
+   SIZE len = rPath.length();
+   for (SIZE i = 0; i < len; i++) {
+-    if (rPath[i] == ' ') {
+-      stream << "\\ ";
+-    }
+-    else if (rPath[i] == '\\') {
+-      stream << "\\\\";
+-    }
+-    else {
+-      stream << rPath[i];
++    if (rPath[i] == ' ' ||
++        rPath[i] == '\\') {
++      stream << "\\";
+     }
++    stream << rPath[i];
+   }
+   
+   return stream.str();
+-- 
+2.36.0
+
+
+From 35f4298d574151deadbdeb7ccc7785bf36504d3d Mon Sep 17 00:00:00 2001
+From: Christian Hesse <mail@eworm.de>
+Date: Fri, 29 Apr 2022 00:02:18 +0200
+Subject: [PATCH 2/2] also escape single & double quotes, parenthesis and angle
+ brackets
+
+This fixes...
+
+incrond[1714]: cannot exec process: Resource temporarily unavailable
+
+... with bad file name due to messing escaping.
+---
+ incrontab.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/incrontab.cpp b/incrontab.cpp
+index 613aad4..8b951da 100644
+--- a/incrontab.cpp
++++ b/incrontab.cpp
+@@ -169,6 +169,12 @@ std::string IncronTabEntry::GetSafePath(const std::string& rPath)
+   SIZE len = rPath.length();
+   for (SIZE i = 0; i < len; i++) {
+     if (rPath[i] == ' ' ||
++        rPath[i] == '\'' ||
++        rPath[i] == '"' ||
++        rPath[i] == '(' ||
++        rPath[i] == ')' ||
++        rPath[i] == '<' ||
++        rPath[i] == '>' ||
+         rPath[i] == '\\') {
+       stream << "\\";
+     }
+-- 
+2.36.0
+

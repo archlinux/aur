@@ -4,7 +4,7 @@
 
 pkgname=incron
 pkgver=0.5.12
-pkgrel=4
+pkgrel=5
 _commit=f45c2f5ac4baea99b48e99a713d1f4ec1854aa76
 pkgdesc="Like the regular cron but is driven by filesystem events instead of time periods"
 arch=('x86_64')
@@ -15,10 +15,12 @@ makedepends=('git')
 options=('emptydirs')
 #source=("$pkgname-$pkgver.tar.gz::https://github.com/ar-/incron/archive/$pkgver.tar.gz"
 source=("git+https://github.com/ar-/incron.git#commit=${_commit}"
+        '0001-GetSafePath.patch'
         "incron.sysusers"
         "incron.tmpfiles"
         "incrond.service")
 sha256sums=('SKIP'
+            '4a939f4af82c8d972478f2703aea6e524af8f7bf8bd1d8cf516ef78ff5e6713b'
             'e5da0a3af368c286fa2b180015c9efc5aef5018c271a16620b8c30bfe6f9ccc2'
             '422c4a715da4037550d2f97de28f47f91d0b58983c188c6cf1d1233370e048a4'
             '5ff72411c704dd38823892d7fd13992509c3d906bfe0b4a5cafbe382e4e01c24')
@@ -26,6 +28,9 @@ sha256sums=('SKIP'
 prepare() {
   cd "${srcdir}"/$pkgname
   sed -i 's|$(DESTDIR)$(PREFIX)/sbin/|$(DESTDIR)$(PREFIX)/bin/|g' Makefile
+
+  # https://github.com/ar-/incron/pull/91
+  patch -Np1 < ../0001-GetSafePath.patch
 }
 
 build() {
