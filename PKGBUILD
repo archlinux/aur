@@ -2,7 +2,7 @@
 
 pkgbase=xpid
 pkgname=(xpid)
-pkgver=v1.0.1
+pkgver=v1.0.2
 pkgrel=1
 pkgdesc="Linux process discovery. Its like nmap -- for pids."
 arch=(x86_64)
@@ -15,6 +15,7 @@ backup=()
 options=()
 source=("git+https://github.com/kris-nova/xpid.git")
 sha256sums=('SKIP')
+
 build() {
 	cd $pkgname
 	git checkout tags/$pkgver -b $pkgver
