@@ -1,0 +1,16 @@
+pkgbase = python-fenics-dolfinx
+	pkgdesc = Next generation FEniCS problem solving environment (python interface)
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/FEniCS/dolfinx
+	arch = any
+	license = LGPL3
+	makedepends = cmake
+	makedepends = python-setuptools
+	makedepends = pybind11
+	depends = dolfinx
+	depends = python-mpi4py
+	source = https://github.com/FEniCS/dolfinx/archive/v0.4.0.tar.gz
+	sha512sums = 20ea24be431f9bffc509e9e40866b8ddfe8dece09f7e0e6c18ffc5d7fb6e813de17d4f193f4bcf397b3c6e80e8576afc951c372e345702c017c444d79f45ef1a
+
+pkgname = python-fenics-dolfinx
