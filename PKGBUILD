@@ -1,6 +1,6 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 pkgname=yuzu
-pkgver=mainline.0.994
+pkgver=mainline.0.999
 pkgrel=1
 pkgdesc="Nintendo Switch emulator"
 arch=('x86_64')
@@ -90,7 +90,6 @@ build() {
 		-DUSE_DISCORD_PRESENCE=ON \
 		-DYUZU_ENABLE_COMPATIBILITY_REPORTING=ON \
 		-DYUZU_TESTS="$CHECKFUNC" \
-		-DYUZU_USE_BUNDLED_BOOST=OFF \
 		-DYUZU_USE_BUNDLED_FFMPEG=OFF \
 		-DYUZU_USE_BUNDLED_LIBUSB=OFF \
 		-DYUZU_USE_BUNDLED_OPUS=OFF \
