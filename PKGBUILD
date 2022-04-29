@@ -2,7 +2,7 @@
 # Contributor: Julien Nicoulaud <julien.nicoulaud@gmail.com>
 pkgname=yourkit
 _version=2022.3
-_build=96
+_build=100
 pkgver=${_version}b${_build}
 pkgrel=1
 pkgdesc="Java CPU and memory profiler."
@@ -19,11 +19,9 @@ source=(
   yourkit-yjp.desktop
   yourkit.sh
 )
-sha256sums=(
-  '9f18714656ae0396cc57c5762af7e01a23cf256d6daf3579ef67678d32726a93'
-  'b071670d8264f4ec8c61d83f3717e83c7c87873c678a75d60670a002e185373d'
-  '6fc9612a76e2b50bb84130b0c40fcaccd04fe513e23ced398e707087459cc50e'
-)
+sha256sums=('09cbac9b2ec624f241a749bd50707b4f82266232329a8c2b46925595e77a658e'
+            'b071670d8264f4ec8c61d83f3717e83c7c87873c678a75d60670a002e185373d'
+            '6fc9612a76e2b50bb84130b0c40fcaccd04fe513e23ced398e707087459cc50e')
 
 package() {
 
