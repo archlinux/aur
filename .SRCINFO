@@ -1,7 +1,7 @@
 pkgbase = hardinfo-git
 	pkgdesc = A system information and benchmark tool.
 	pkgver = 0.6.alpha.1392.g6ecebbd
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/lpereira/hardinfo
 	arch = x86_64
 	license = GPL2
@@ -19,6 +19,8 @@ pkgbase = hardinfo-git
 	conflicts = hardinfo
 	options = debug
 	source = git+https://github.com/lpereira/hardinfo.git
+	source = benchmark.patch
 	sha256sums = SKIP
+	sha256sums = 5a352377abce848dbb20b5e35d86feba9b62011d1a7cd075c0d14d54e91f3286
 
 pkgname = hardinfo-git

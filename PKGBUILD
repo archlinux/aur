@@ -2,7 +2,7 @@
 # Contributor: Eric Bélanger <eric at archlinux dot org>
 pkgname=hardinfo-git
 pkgver=0.6.alpha.1392.g6ecebbd
-pkgrel=3
+pkgrel=4
 pkgdesc="A system information and benchmark tool."
 arch=('x86_64')
 url="https://github.com/lpereira/hardinfo"
@@ -18,8 +18,10 @@ optdepends=('dmidecode: Memory Devices module'
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 options=('debug')
-source=('git+https://github.com/lpereira/hardinfo.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/lpereira/hardinfo.git'
+        'benchmark.patch')
+sha256sums=('SKIP'
+            '5a352377abce848dbb20b5e35d86feba9b62011d1a7cd075c0d14d54e91f3286')
 
 pkgver() {
   cd "$srcdir/${pkgname%-git}"
@@ -28,6 +30,8 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/${pkgname%-git}"
+
+  patch -Np1 -i ../benchmark.patch
 
   # ignore odr-violation errors
 #  setconf "${pkgname%-git}.desktop.cmake" Exec \
