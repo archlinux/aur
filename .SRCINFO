@@ -1,7 +1,7 @@
 pkgbase = dict-freedict-spa-eng
-	pkgdesc = Spanish -> English dictionary for dictd et al. from Freedict.org
+	pkgdesc = Spanish -> English dictionary for dictd et al. from FreeDict.org
 	pkgver = 0.3.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://freedict.org/
 	install = dict-freedict-spa-eng.install
 	arch = any
@@ -12,4 +12,3 @@ pkgbase = dict-freedict-spa-eng
 	sha512sums = bc8dc9c09b0d4584d1cbaa9c3e75183431ad5cd9a42b31685f0392413a6755504909c35c5ccae3bb8eb66e3b8623df93982c8d5a331dcf516c08bfa5028ce67c
 
 pkgname = dict-freedict-spa-eng
-
