@@ -1,0 +1,12 @@
+pkgbase = kaf-bin
+	pkgdesc = Kafka CLI inspired by kubectl & docker
+	pkgver = 0.1.51
+	pkgrel = 1
+	license = MIT
+	conflicts = kaf-bin
+	provides = kaf-bin
+	arch = aarch64
+	source_aarch64 = https://github.com/birdayz/kaf/releases/download/v0.1.51/kaf_0.1.51_Linux_arm64.tar.gz
+	sha256sums_aarch64 = a28040007decfe197d993fdc04a7fab2b3e162719cc2b9715cf42181e1fd4aea
+	
+pkgname = kaf-bin
