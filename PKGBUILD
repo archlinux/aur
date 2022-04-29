@@ -2,7 +2,7 @@
 
 pkgbase=libxpid
 pkgname=(libxpid)
-pkgver=v1.0.4
+pkgver=v1.0.5
 pkgrel=1
 pkgdesc="Linux process discovery library. Its like nmap -- for pids."
 arch=(x86_64)
