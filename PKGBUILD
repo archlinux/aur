@@ -14,7 +14,7 @@ makedepends=('git' 'python')
 conflicts=('lateralgm')
 provides=('lateralgm')
 install='enigma-dev-git.install'
-source=('lateralgm' 'lateralgm.desktop' 'git://github.com/enigma-dev/enigma-dev.git' 'http://enigma-dev.org/docs/wiki/images/4/47/Lateralgmlogo.png')
+source=('lateralgm' 'lateralgm.desktop' 'https://github.com/enigma-dev/enigma-dev.git' 'http://enigma-dev.org/docs/wiki/images/4/47/Lateralgmlogo.png')
 md5sums=('5e2cff3955ed238666e0c4462c228a01'
          '0eca65efd1ad5b863e22a284be894b59'
          'SKIP'
