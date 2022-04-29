@@ -1,7 +1,7 @@
 # Maintainer: Jonny Stoten <jonny@jonnystoten.com>
 
 pkgname=stripe-cli-bin
-pkgver=1.8.8
+pkgver=1.8.9
 pkgrel=1
 pkgdesc="A command-line tool for Stripe"
 arch=("x86_64")
@@ -11,7 +11,7 @@ depends=()
 provides=()
 conflicts=(stripe-cli)
 source=("https://github.com/stripe/stripe-cli/releases/download/v$pkgver/stripe_${pkgver}_linux_x86_64.tar.gz")
-sha256sums=('4baa0b701103531ab5140bc4242444608dbe1a72ff8c5b9ca3d480a12475fc0a')
+sha256sums=('66fd6b1a6aa3eae3eca31f51ce77b579c88bdcc9cd317e7cd235c7500cb6acfe')
 
 package() {
   install -Dm 0755 stripe "$pkgdir/usr/bin/stripe"
