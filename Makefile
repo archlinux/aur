@@ -34,9 +34,9 @@ all: package
 package:
 	makepkg --clean --cleanbuild --force --syncdeps && makepkg --printsrcinfo > '$(call escape,$(this_dir))/.SRCINFO'
 
-.PHONY: tag
-tag:
-	source PKGBUILD && git tag "aur/v$$pkgver-$$pkgrel"
+.PHONY: commit
+commit:
+	source PKGBUILD && git commit -am "aur: $$pkgver-$$pkgrel"
 
 .PHONY: push
 push:
