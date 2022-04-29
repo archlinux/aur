@@ -83,15 +83,18 @@ build() {
     EXPECTED_NPM_VERSION=$(node -p 'require("./package.json").engines.npm')
     EXPECTED_PNPM_VERSION=$(node -p 'require("./recipes/package.json").engines.pnpm')
 
+	# Empty the cache before building to avoid issues with packages not being found
+	npm cache clean --force
+
 	# Install the correct versions of npm and pnpm
 	npm i -gf npm@${EXPECTED_NPM_VERSION}
 	npm i -gf pnpm@${EXPECTED_PNPM_VERSION}
 
 	# This is useful if we move from 'npm' to 'pnpm' for the main repo as well
     if [[ -s 'pnpm-lock.yaml' ]]; then
-      BASE_CMD=pnpm
+		BASE_CMD=pnpm
     else
-      BASE_CMD=npm
+		BASE_CMD=npm
     fi
 
 	# Build recipe archives
