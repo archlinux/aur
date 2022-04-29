@@ -29,7 +29,7 @@ prepare() {
 
 build() {
 	# https://github.com/Arisotura/melonDS/issues/1103
-	# LDFLAGS+=' -Wl,-z,noexecstack'
+	# LDFLAGS+=" -Wl,-z,noexecstack"
 	make -C $_pkgname
 }
 
