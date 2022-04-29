@@ -1,5 +1,5 @@
 post_install(){
-    chown -R rustdesk-server /opt/rustdesk-server
+    chown -R rustdeskserver:rustdeskserver /opt/rustdesk-server
 } 
 
 post_upgrade(){
