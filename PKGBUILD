@@ -1,7 +1,7 @@
 # Maintainer: Alan Beale <the.mrabz@gmail.com>
 
 pkgname=minecraft-bedrock-server
-pkgver=1.18.30.04
+pkgver=1.18.31.04
 pkgrel=1
 pkgdesc="Minecraft Bedrock Server for Windows 10 and Xbox One versions of Minecraft"
 arch=('x86_64')
@@ -10,13 +10,12 @@ license=('custom')
 noextract=('bedrock-server-${pkgver}.zip')
 backup=(opt/minecraft-bedrock-server/{server.properties,permissions.json,whitelist.json})
 makedepends=('unzip')
-install=minecraft-bedrock-server.install
 source=("https://minecraft.azureedge.net/bin-linux/bedrock-server-${pkgver}.zip"
         'minecraft-bedrock-server.service'
 	'minecraft-bedrock-server.sysusers'
 	'minecraft-bedrock-server.tmpfiles')
 
-sha256sums=('59dd8d03802b41d9610fdc0ca5329af87e0104cf6fb682d5b308788e543b32d3'
+sha256sums=('621f18f16b900c05ec0b232bed826660e07c877e01d42feea7bc9d004680a5ba'
             'cc08effe04701f1ca16a1edd153d12a94ed498e9a3e68a004b74189eef9edb81'
             'a7070301958b58f804bb8dee8b66ef23ad7460403f7ba2cfffb549e29ad834d5'
             '829ff9e583408fcc1d0436a6896ecbd3128f893dcbc2b0147130219a13586ae3')
@@ -29,7 +28,6 @@ build() {
 package() {
 	install -d "$pkgdir"/opt/minecraft-bedrock-server
 	cp -r -fHip "$srcdir"/tmp/* "$pkgdir"/opt/minecraft-bedrock-server
-#	chmod 755 "$pkgdir"/opt/minecraft-bedrock-server/bedrock_server
 	install -Dm 644 minecraft-bedrock-server.service -t "$pkgdir"/usr/lib/systemd/system/
 	install -Dm 644 minecraft-bedrock-server.sysusers "$pkgdir"/usr/lib/sysusers.d/minecraft-bedrock-server.conf
 	install -Dm 644 minecraft-bedrock-server.tmpfiles "$pkgdir"/usr/lib/tmpfiles.d/minecraft-bedrock-server.conf
