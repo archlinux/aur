@@ -13,7 +13,7 @@ pkgbase = pyradio
 	optdepends = mplayer: as backend
 	optdepends = mpv: as backend
 	optdepends = vlc: as backend
-	source = pyradio-0.8.9.16.tar.gz::https://github.com/coderholic/pyradio/archive/0.8.9.16.tar.gz
+	source = pyradio-0.8.9.17.tar.gz::https://github.com/coderholic/pyradio/archive/0.8.9.17.tar.gz
 	sha256sums = aecd8e11c5745593ca5aa63abecd88828ecef537e683c0477e73b76682bb063e
 
 pkgname = pyradio
