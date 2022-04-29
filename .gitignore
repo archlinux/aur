@@ -1,0 +1,7 @@
+pkg/
+src/
+synthclone-qt5/
+synthclone-qt5-git-*.pkg.tar.xz
+synthclone-qt5-git-*.pkg.tar.zst
+synthclone-qt5-git-*.src.pkg.tar.gz
+
