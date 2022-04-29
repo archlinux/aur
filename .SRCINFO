@@ -1,0 +1,14 @@
+pkgbase = python-fenics-basix
+	pkgdesc = Basix Python interface
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/FEniCS/basix
+	arch = any
+	license = MIT
+	makedepends = python-scikit-build
+	makedepends = pybind11
+	depends = python-numpy
+	source = https://github.com/FEniCS/basix/archive/v0.4.0.tar.gz
+	sha512sums = a88085efa3ec8f41a0a3cb2eaa94478eb9f50c8e848d4b93d3a41f9a88499b11a0e151ec7e6ff62f80ea026c6d1ff88d08dff09a80e16f33c0cba34f4c2a4cac
+
+pkgname = python-fenics-basix
