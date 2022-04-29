@@ -17,7 +17,7 @@ source=("git+https://github.com/kris-nova/xpid.git")
 sha256sums=('SKIP')
 
 build() {
-	cd $pkgname
+	cd xpid
 	git checkout tags/$pkgver -b $pkgver
 	make libxpid
 }
