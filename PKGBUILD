@@ -1,11 +1,11 @@
-# Maintainer: Darjan Krijan (daren) <darjan_krijan@gmx.de>
+# Maintainer: Darjan Krijan (daren) <${prename}_${surname}@gmx.de>
 # Manual download of 'aocl-linux-aocc-${pkgver}.tar.gz' required from upstream
 # Manual download of 'aocl-linux-gcc-${pkgver}.tar.gz'  required from upstream
 
 pkgbase=aocl
 pkgname=(aocl-aocc aocl-gcc)
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="AMD Optimizing CPU Libraries"
 arch=('x86_64')
 license=('custom')
@@ -72,8 +72,8 @@ package_aocl-gcc() {
 	mv ${prefix}/${pkgver}/* ${prefix}
 	rm -r ${prefix}/${pkgver}
 
-	# fix amd-libs.cfg containing ${pkgdir}
-	sed -e "s:=.*/opt:=/opt:g" -i ${prefix}/amd-libs.cfg
+	# fix amd-libs.cfg containing ${pkgdir} and ${pkgver}
+	sed -e "s:=.*/opt:=/opt:g" -e "s:/${pkgver}::g" -i ${prefix}/amd-libs.cfg
 
 	# env-modules (optional)
 	cp ${srcdir}/modulefile ${prefix}

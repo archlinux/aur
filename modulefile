@@ -1,6 +1,6 @@
 #%Module1.0
 #
-# Created by Darjan Krijan <darjan_krijan@gmx.de>
+# Created by Darjan Krijan <${prename}_${surname}@gmx.de>
 #
 
 set MODULE      "aocl-aocc"
@@ -11,6 +11,7 @@ set MODULE_TEXT "AMD Optimizing CPU Libraries (AOCL)"
 
 conflict aocl-gcc
 
+setenv       AOCL_ROOT       ${MODULE_ROOT}
 prepend-path CPATH           ${MODULE_ROOT}/include
 prepend-path LIBRARY_PATH    ${MODULE_ROOT}/lib
 prepend-path LD_LIBRARY_PATH ${MODULE_ROOT}/lib
