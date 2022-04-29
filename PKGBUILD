@@ -1,43 +1,56 @@
-# Maintainer: Fan Jiang <i@fanjiang.me>
+# Maintainer: Richard Schneider <richard@schneiderbox.net>
+# Contributor: Fan Jiang <i@fanjiang.me>
 
-# WARNING: You can get the software bundle from https://www.vmware.com/go/download-vmrc
-# And put it under the same directory as this PKGBUILD!
+# IMPORTANT: You must download the VMware-Remote-Console .bundle from
+# https://www.vmware.com/go/download-vmrc and place it in the directory
+# with this PKGBUILD.
+
+# Other VMware packages add files to /usr/lib/vmware/xkeymap. This
+# causes pacman to give "exists in filesystem" errors when installing
+# multiple VMware packages. If you are doing so, you can uncomment this
+# line to remove those file from this package and add a dependency on
+# the AUR vmware-keymaps package. That will remove the errors.
+#_add_vmware_keymaps_dependency=y
 
 pkgname=vmware-vmrc
-pkgver=12.0.0
+pkgver=12.0.1
 pkgrel=1
-pkgdesc="VMWare VMRC Client."
+pkgdesc='VMWare Remote Console'
 arch=('x86_64')
-url="https://www.vmware.com/go/download-vmrc"
+url='https://www.vmware.com/go/download-vmrc'
 license=('custom:vmware')
-depends=('vmware-keymaps')
-optdepends=()
+depends=()
 
-# Note you can change this path to match a newer (or older) version of VMRC
-source=("local://VMware-Remote-Console-12.0.0-17287072.x86_64.bundle"
-        "bootstrap"
-        "config")
+if [ $_add_vmware_keymaps_dependency ]
+then
+    depends+=('vmware-keymaps')
+fi
 
-sha256sums=('3429d897256e80d7e087ff9fc7b5e679695db06a9af2596b40d303e61c5000aa'
-            '22282e8643d8a20e63773435161e5a5d01c6acce53aa81f27a4d20f111acd228'
-            'c5643ebad140391622c57ab88d6071b91d1ea9a8379c1aec573c845a00be30d4')
+source=(
+    "VMware-Remote-Console-$pkgver-18113358.x86_64.bundle"
+    'bootstrap'
+    'config'
+)
+
+sha256sums=(
+    '90eb1d411b15eec77f49cc499d20af8d9b7cdd409bd7b867a18d7740dcf2341b'
+    '67edc40e39686281f5101ced1a250648ae32e4cd5dffe4fd47bc3c7aed929d50'
+    'c5643ebad140391622c57ab88d6071b91d1ea9a8379c1aec573c845a00be30d4'
+)
 
 build() {
     cd "$srcdir"
-    sh ../VMware-Remote-Console-12.0.0-17287072.x86_64.bundle -x ./files
-    cd "$srcdir/files"
+    sh ../${source[0]} -x ./bundle
+    cd "$srcdir/bundle"
 }
 
-package ()
-{
-    local vmware_installer_version=$(cat "$srcdir/files/vmware-installer/manifest.xml" | grep -oPm1 "(?<=<version>)[^<]+")
-    # mkdir -p "$pkgdir/var/log"
-    # mkdir -p "$pkgdir/etc/init.d"
+package () {
+    if [ $_add_vmware_keymaps_dependency ]
+    then
+        rm -r $srcdir/bundle/vmware-vmrc-app/lib/xkeymap
+    fi
 
-    # Depend on vmware-keymaps
-    rm -r $srcdir/files/vmware-vmrc-app/lib/xkeymap
-
-    cd "$srcdir/files"
+    cd "$srcdir/bundle"
     mkdir -p "$pkgdir/usr/share" "$pkgdir/usr/bin" "$pkgdir/usr/lib/vmware" "$pkgdir/usr/lib/vmware/setup"
     cp -r \
         vmware-vmrc/share/* \
@@ -46,13 +59,11 @@ package ()
         "$pkgdir/usr/share"
 
     cp -r \
-        vmware-installer/bin/* \
         vmware-usbarbitrator/bin/* \
         vmware-vmrc-app/bin/* \
         "$pkgdir/usr/bin"
 
     cp -r \
-        vmware-installer/lib/* \
         vmware-player-core/lib/* \
         vmware-vmrc-app/lib/* \
         vmware-vmrc/lib/* \
@@ -62,7 +73,6 @@ package ()
         vmware-vmrc-setup/vmware-config \
         "$pkgdir/usr/lib/vmware/setup"
     
-    # install -Dm 644 vmware-installer/bootstrap "$pkgdir/etc/vmware-installer/bootstrap"
     install -Dm 644 "$srcdir/bootstrap" "$pkgdir/etc/vmware/bootstrap"
     install -Dm 644 "$srcdir/config" "$pkgdir/etc/vmware/config"
 
@@ -84,9 +94,4 @@ package ()
 
     ln -s '/usr/lib/vmware/lib/libvmplayer.so/libvmplayer.so' "$pkgdir/usr/lib/vmware/lib/libvmplayer.so/libvmrc.so"
     ln -s '/usr/lib/vmware/lib/libvmplayer.so' "$pkgdir/usr/lib/vmware/lib/libvmrc.so"
-
-    sed \
-        -e "s/@@VERSION@@/$vmware_installer_version/" \
-        -e "s,@@VMWARE_INSTALLER@@,/usr/lib/vmware-installer/$vmware_installer_version," \
-        -i "$pkgdir/etc/vmware/bootstrap"
 }
