@@ -1,6 +1,6 @@
 pkgbase = dict-freedict-deu-eng-bin
-	pkgdesc = German -> English dictionary for dictd et al. from Freedict.org
-	pkgver = 1.8.1_fd0.2.1
+	pkgdesc = German -> English dictionary for dictd et al. from FreeDict.org
+	pkgver = 1.9_fd1
 	pkgrel = 1
 	url = https://freedict.org/
 	install = dict-freedict-deu-eng-bin.install
@@ -8,10 +8,9 @@ pkgbase = dict-freedict-deu-eng-bin
 	license = GPL
 	license = AGPL3
 	optdepends = dictd: dict client and server
-	provides = dict-freedict-deu-eng
+	provides = dict-freedict-deu-eng=1.9_fd1
 	conflicts = dict-freedict-deu-eng
-	source = https://download.freedict.org/dictionaries/deu-eng/1.8.1-fd0.2.1/freedict-deu-eng-1.8.1-fd0.2.1.dictd.tar.xz
-	sha512sums = adc906f38b4eed8f0b998227b440eb74e757003273f9c37bf6df9fd5d559c6b26ebbd03eb46f5bf4b2bfcfc6325c085998833d6da513ef387f369fc015d3eccc
+	source = https://download.freedict.org/dictionaries/deu-eng/1.9-fd1/freedict-deu-eng-1.9-fd1.dictd.tar.xz
+	sha512sums = 0e6b2f64a3fe201fca6932a7e5c71c027566cb2f73010fbf54e40681720da733243813224e844dd22e503a47b45d651282fd1a2f12f118c6b5b35bfd9905eca9
 
 pkgname = dict-freedict-deu-eng-bin
-
