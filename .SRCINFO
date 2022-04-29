@@ -1,6 +1,6 @@
 pkgbase = tiledb
 	pkgdesc = The Universal Storage Engine
-	pkgver = 2.8.1
+	pkgver = 2.8.2
 	pkgrel = 1
 	url = https://tiledb.com/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = tiledb
 	depends = bzip2
 	depends = zstd
 	depends = zlib
-	source = tiledb-2.8.1.tar.gz::https://github.com/TileDB-Inc/TileDB/archive/refs/tags/2.8.1.tar.gz
-	sha256sums = ffb69528369065971a65bc416886d4d3b65b8af614e21403975bc3d033e873a5
+	source = tiledb-2.8.2.tar.gz::https://github.com/TileDB-Inc/TileDB/archive/refs/tags/2.8.2.tar.gz
+	sha256sums = 9c258258b3fe0b6d0d35c234d4422e7de6cb43f6ce767134f7d7aefbcda15b81
 
 pkgname = tiledb
