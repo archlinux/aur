@@ -2,8 +2,8 @@
 # Maintainer: Tavian Barnes <tavianator@tavianator.com>
 
 pkgname=arcanist
-pkgver=2021.50
-_commit=3f08a11b10a377e15a3268c0cbc2ba4cf0c4c76a
+pkgver=2022.15
+_commit=e1db755478970bb8c09a688dbc316d38f7d8794c
 pkgrel=1
 pkgdesc='The command line interface for Phabricator'
 arch=('any')
@@ -14,7 +14,7 @@ optdepends=('git: Git VCS support'
             'subversion: Subversion VCS support'
             'mercurial: Mercurial VCS support')
 makedepends=('git')
-source=("git://github.com/phacility/arcanist.git#commit=${_commit}")
+source=("git+https://github.com/phacility/arcanist.git#commit=${_commit}")
 sha256sums=('SKIP')
 
 package() {
