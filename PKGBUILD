@@ -5,8 +5,8 @@
 # Contributor:  The Bitcoin Core Developers
 
 pkgname=python-secp256k1-git
-pkgver=1
-pkgrel=2
+pkgver=1.r0.g0
+pkgrel=3
 
 pkgdesc='Python FFI bindings for libsecp256k1'
 arch=('any')
@@ -22,7 +22,8 @@ sha256sums=('SKIP')
 
 pkgver() {
     cd "$srcdir/secp256k1-py/"
-    echo -n "r$(git rev-list --all --count).g$(git rev-parse --short HEAD)"
+    # Append "1." to force update over previous repo versions
+    echo -n "1.r$(git rev-list --all --count).g$(git rev-parse --short HEAD)"
 }
 
 package() {
