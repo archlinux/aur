@@ -3,8 +3,8 @@
 
 
 pkgname=mutt-wizard
-pkgver=3.2.1
-pkgrel=2
+pkgver=3.3
+pkgrel=1
 
 pkgdesc='Easily auto-configure neomutt and isync/mpop with safe passwords (IMAP/POP3/SMTP)'
 arch=('any')
@@ -28,7 +28,7 @@ options=('zipman')
 
 install="$pkgname.install"
 source=("$pkgname-$pkgver.tgz::$url/archive/v$pkgver.tar.gz")
-b2sums=('60087ca8b6cfe2f69e1f078942ef24be8d387fbadcacfdf0105e6ee6df315a57fb21320635b685dad5e5e15860adb9cef147dc9b029d77bfdfd196f219faca91')
+b2sums=('4f3017bdd475aa04973f7884fb95cbae74d7427dc0176df730c2a6f4b0d6db44edb2d640383a4fab749050217407a2b777757252f5cd73b6a0d288ed1ad9bf74')
 
 
 package() {
