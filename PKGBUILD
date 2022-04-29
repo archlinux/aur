@@ -21,7 +21,6 @@ build() {
 	GO111MODULE=on
 	go mod vendor
 	go mod download
-	make clean
 	make libxpid
 	make libxpid-install
 	make
