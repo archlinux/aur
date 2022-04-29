@@ -8,6 +8,7 @@ docker run \
     --workdir /srv \
     docker.io/archlinux -c '\
         pacman -Syu --noconfirm pacman-contrib pacman git sudo binutils go && \
+        git config --global --add safe.directory /srv && \
         git clean -fdx && \
         chmod a+w PKGBUILD .SRCINFO . && \
         sudo -u nobody updpkgsums && \
