@@ -1,7 +1,7 @@
 # Maintainer: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=redpanda-cpp-bin
-pkgver=1.0.0
+pkgver=1.0.6
 pkgrel=1
 pkgdesc="A light-weight C/C++ IDE based on Qt"
 arch=('x86_64')
@@ -13,15 +13,15 @@ optdepends=('gcc' 'gdb' 'make' 'qterminal')
 provides=('redpanda-cpp')
 conflicts=('redpanda-cpp')
 source=(
-  "${url}/releases/download/${pkgver}/redpanda-cpp-ubuntu20.04_${pkgver}-1_amd64.deb"
+  "${url}/releases/download/${pkgver}/redpanda-cpp-debian_${pkgver}-1_amd64.deb"
 )
 sha256sums=(
-  'cd07199c88fc4a311ea48a2b4ce9313a057db18a011345eef5eff646da1ba527'
+  'b178d10b39536eb0ea839724257e6cae94c0f95d425b19a630a157c049817bce'
 )
 noextract=(
-  "redpanda-cpp-ubuntu20.04_${pkgver}-1_amd64.deb"
+  "redpanda-cpp-debian_${pkgver}-1_amd64.deb"
 )
 
 package() {
-  bsdtar -O -xf "redpanda-cpp-ubuntu20.04_${pkgver}-1_amd64.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
+  bsdtar -O -xf "redpanda-cpp-debian_${pkgver}-1_amd64.deb" data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
 }
