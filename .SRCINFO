@@ -1,16 +1,15 @@
 pkgbase = dict-freedict-eng-fra-bin
-	pkgdesc = English -> French dictionary for dictd et al. from Freedict.org
+	pkgdesc = English -> French dictionary for dictd et al. from FreeDict.org
 	pkgver = 0.1.6
-	pkgrel = 4
+	pkgrel = 5
 	url = https://freedict.org/
 	install = dict-freedict-eng-fra-bin.install
 	arch = any
 	license = GPL
 	optdepends = dictd: dict client and server
-	provides = dict-freedict-eng-fra
+	provides = dict-freedict-eng-fra=0.1.6
 	conflicts = dict-freedict-eng-fra
 	source = https://download.freedict.org/dictionaries/eng-fra/0.1.6/freedict-eng-fra-0.1.6.dictd.tar.xz
 	sha512sums = ae83b68b0bf64436eb3bff28293357e57e1caa196397327cf72fdc6f725c9ed68329b5ef32d50ff3a4ff99590791c8eee289f9d9f5f48cf247c9802a042cd43a
 
 pkgname = dict-freedict-eng-fra-bin
-
