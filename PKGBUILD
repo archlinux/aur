@@ -2,20 +2,20 @@
 
 pkgname=eternalmodmanager
 pkgver=1.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform mod manager for DOOM Eternal.'
 arch=('x86_64')
 url='https://github.com/PowerBall253/EternalModManager'
 license=('MIT')
 depends=('electron')
 makedepends=('npm')
-source=("${url}/archive/v${pkgver}/EternalModManager-v${pkgver}.tar.gz"
+source=("git+https://github.com/PowerBall253/EternalModManager.git#tag=v${pkgver}"
         eternalmodmanager)
-sha256sums=('5e4f948246e58afd1047ebb71660d75505a6cd56ddde7a40de42c3622e6e58c3'
+sha256sums=('SKIP'
             '79507cee8c25b5a0553561be1e0386ceb3588e015929308828391f77c5396546')
 
 build() {
-    cd "EternalModManager-${pkgver}"
+    cd "EternalModManager"
 
     # Replace electron with electron type declarations for typescript
     sed -i '/"electron":/c\    "@types/electron": "^1.6.10",' package.json
@@ -29,7 +29,7 @@ package() {
     # Install app's files
     install -Dm755 -t "${pkgdir}/usr/bin" "$pkgname"
 
-    cd "EternalModManager-${pkgver}"
+    cd "EternalModManager"
     install -Dm644 -t "${pkgdir}/usr/share/applications/" "resources/${pkgname}.desktop"
     install -Dm644 -t "${pkgdir}/usr/share/metainfo/" "resources/${pkgname}.appdata.xml"
     install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps/" "resources/${pkgname}.png"
