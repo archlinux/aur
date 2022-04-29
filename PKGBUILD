@@ -4,8 +4,8 @@
 
 _lang=eng-spa
 pkgname="dict-freedict-${_lang}"
-pkgver=0.3.1
-pkgver="${pkgver//_/-}"
+_pkgver=0.3.1
+pkgver="${_pkgver//-/_}"
 pkgrel=2
 pkgdesc="English -> Spanish dictionary for dictd et al. from FreeDict.org"
 arch=('any')
@@ -14,7 +14,7 @@ license=('GPL')
 optdepends=('dictd: dict client and server')
 makedepends=('freedict-tools')
 install="${pkgname}.install"
-source=("https://download.freedict.org/dictionaries/${_lang}/${pkgver}/freedict-${_lang}-${pkgver}.src.tar.xz")
+source=("https://download.freedict.org/dictionaries/${_lang}/${_pkgver}/freedict-${_lang}-${_pkgver}.src.tar.xz")
 sha512sums=('73db7cacf88d7bbe1e385b42ca17daf2ecc61f93b5cc7ba06416f0dd7d4b03ea831523e3a2eb327c398ce6de2c5d8d58bd3a1e7eb5800d7f419c0e451a827d98')
 
 build()
