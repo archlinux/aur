@@ -2,8 +2,8 @@
 _pkgname=rxvt-unicode
 pkgname=rxvt-unicode-truecolor-wide-glyphs
 pkgver=9.30
-pkgrel=2
-pkgdesc='Unicode enabled rxvt-clone terminal emulator (urxvt) with true color, enhanced glyphs and improved font rendering support'
+pkgrel=3
+pkgdesc="Unicode enabled rxvt-clone terminal emulator (urxvt) with true color, enhanced glyphs and improved font rendering support"
 arch=('i686' 'x86_64')
 url='http://software.schmorp.de/pkg/rxvt-unicode.html'
 license=('GPL')
@@ -32,7 +32,7 @@ conflicts=(
     'urxvt-perls-git'
 )
 source=(
-    http://dist.schmorp.de/rxvt-unicode/$_pkgname-$pkgver.tar.bz2
+    http://dist.schmorp.de/$_pkgname/$_pkgname-$pkgver.tar.bz2
     'urxvt.desktop'
     'urxvtc.desktop'
     'urxvt-tabbed.desktop'
@@ -51,6 +51,7 @@ sha1sums=('700265a255eedf0f553cadfe5484bf71f8fb74c2'
           'b5a239179a6da062bcc9c5a36e870387080372d2'
           '5c11265e5c54fdc7e005aa0a3c55de3374f15a73'
           'a62225c18458ed9d1743699ef98f41d3d157f145')
+_dir="$_pkgname-$pkgver"
 
 prepare() {
     ################################################################
@@ -60,7 +61,7 @@ prepare() {
     #                                                              #
     ################################################################
 
-    cd $_pkgname-$pkgver
+    cd $_dir
 
     # the repo with original 24-bit-color.patch is no longer available:
     # https://gist.githubusercontent.com/dan-santana/63271adf12171e0fc0bc/raw/70c6343d1c0b3bca0aba4f587ed501e6cbd98d00/24-bit-color.patch
@@ -83,7 +84,7 @@ prepare() {
 }
 
 build() {
-    cd $_pkgname-$pkgver
+    cd $_dir
 
     ################################################################
     #                                                              #
@@ -138,7 +139,7 @@ package() {
     # install perl script keyboard-select (https://github.com/muennich/urxvt-perls)
     install -Dm 644 keyboard-select "$pkgdir/usr/lib/urxvt/perl/keyboard-select"
 
-    cd $_pkgname-$pkgver
+    cd $_dir
 
     # install terminfo
     export TERMINFO="$pkgdir/usr/share/terminfo"
