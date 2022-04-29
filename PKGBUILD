@@ -2,7 +2,7 @@
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 
 pkgname=python-tifffile
-pkgver=2022.4.26
+pkgver=2022.4.28
 _pyname=${pkgname#python-}
 pkgrel=1
 pkgdesc="Read and write image data from and to TIFF files"
@@ -18,7 +18,7 @@ optdepends=('python-matplotlib>=3.4.3: required only for plotting'
             'python-zarr>=2.11.3: required only for opening zarr storage')
 checkdepends=('python-pytest' 'python-xarray' 'python-fsspec')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-sha256sums=('018054f54b3c2fc06842b224077d059340309addfcd94263988c05d7f19724e9')
+sha256sums=('52d86c507a3cf8f2fd93c1095d52137f273858d5d44af2834921b6944f00e8dc')
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
