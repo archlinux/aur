@@ -23,7 +23,7 @@ build() {
 	go mod download
 	make clean
 	make libxpid
-	make install libxpid
+	make libxpid-install
 	make
 }
 
