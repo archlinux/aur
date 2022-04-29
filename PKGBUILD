@@ -1,8 +1,8 @@
 # Maintainer: topocount <top at counts dot club>
 # Contributor: onbjerg <hi@notbjerg.me>
 pkgname=frame-eth-git
-pkgver="0.5.0"
-pkgrel=16
+pkgver="0.5.0.beta"
+pkgrel="17"
 pkgdesc="System-wide Web3"
 arch=('x86_64')
 url='https://frame.sh'
@@ -13,7 +13,7 @@ makedepends=('npm' 'nvm' 'libusb' 'python3' 'git' 'node-gyp')
 provides=('frame-eth')
 conflicts=('frame-eth' 'frame-eth-dev' 'frame-eth-dev-appimage')
 install=$pkgname.install
-source=("git+https://github.com/floating/frame.git#tag=v0.5.0-beta.16"
+source=("git+https://github.com/floating/frame.git#tag=v0.5.0-beta.17"
         "$pkgname.desktop")
 sha256sums=('SKIP' 'SKIP')
 
