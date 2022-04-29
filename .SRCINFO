@@ -1,7 +1,7 @@
 pkgbase = libptytty
-	pkgdesc = OS independent and secure pty/tty and utmp/wtmp/lastlog handling
+	pkgdesc = libptytty is an offspring of rxvt-unicode that handles pty/tty/utmp/wtmp/lastlog handling in mostly OS-independent ways, so it's less of a hassle for you
 	pkgver = 2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://software.schmorp.de/pkg/libptytty.html
 	arch = i686
 	arch = x86_64
