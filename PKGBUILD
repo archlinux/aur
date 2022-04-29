@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.34.0.r100.g0e76372e86
+pkgver=0.34.0.r283.gee62a1a56e
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -49,6 +49,7 @@ depends=(
          'libgme'
          'libiec61883'
          'libilbc'
+         'libjxl'
          'libmodplug'
          'libmysofa'
          'libomxil-bellagio'
@@ -93,6 +94,7 @@ depends=(
          'sndio'
          'speex'
          'srt'
+         'svt-av1'
          'tesseract'
          'twolame'
          'uchardet'
@@ -177,6 +179,10 @@ backup=('etc/mpv/encoding-profiles.conf')
 # for example
 # MPV_NO_CHECK_OPT_DEPEND=yes makepkg -si
 
+if [ -n ${MPV_BUILD_WITH_CLANG} ]; then
+  makedepends+=(clang lld)
+fi
+
 if [ -z ${MPV_NO_CHECK_OPT_DEPEND+yes} ]; then
   if [ -f /usr/lib/libdavs2.so ]; then
     depends+=('davs2')
@@ -232,8 +238,17 @@ prepare() {
   ln -sf -t . "../ffmpeg"
   ln -sf -t . "../libass"
 
+  if [ -n ${MPV_BUILD_WITH_CLANG} ]; then
+    unset CC CXX
+    export CC=clang
+    export CXX=clang++
+    export LDFLAGS="$LDFLAGS -fuse-ld=lld"
+  fi
+
   # Set ffmpeg/libass/mpv flags
   _ffmpeg_options=(
+    '--cc=clang'
+    '--cxx=clang++'
     '--disable-libopencv'
     '--disable-libtls'
     '--disable-mbedtls'
@@ -253,6 +268,7 @@ prepare() {
     '--enable-gray'
     '--enable-iconv'
     '--enable-ladspa'
+    '--enable-lcms2'
     '--enable-libaom'
     '--enable-libaribb24'
     '--enable-libass'
@@ -274,6 +290,7 @@ prepare() {
     '--enable-libiec61883'
     '--enable-libilbc'
     '--enable-libjack'
+    # '--enable-libjxl'
     '--enable-libkvazaar'
     '--disable-liblensfun'
     '--enable-libmfx'
@@ -295,6 +312,7 @@ prepare() {
     '--enable-libspeex'
     '--enable-libsrt'
     '--enable-libssh'
+    '--enable-libsvtav1'
     '--enable-libtesseract'
     '--enable-libtheora'
     '--enable-libtwolame'
@@ -458,10 +476,6 @@ prepare() {
 
   (IFS=$'\n'; echo "${_ffmpeg_options[*]}" > ffmpeg_options)
   (IFS=$'\n'; echo "${_mpv_options[*]}" > mpv_options)
-
-  pushd ffmpeg > /dev/null
-  sed -i 's|/usr/local/share/|/usr/share/|' libavfilter/vf_libvmaf.c
-  popd > /dev/null
 
   cd mpv
 
