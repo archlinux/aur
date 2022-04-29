@@ -1,0 +1,17 @@
+pkgbase = libretro-mega-bezel-git
+	pkgdesc = Reflection shader for RetroArch
+	pkgver = r192.45223b6
+	pkgrel = 1
+	url = https://forums.libretro.com/t/hsm-mega-bezel-reflection-shader-feedback-and-updates
+	arch = any
+	groups = libretro
+	license = LGPL3
+	makedepends = git
+	depends = libretro-shaders-slang
+	optdepends = retroarch>=1.9.8
+	provides = libretro-mega-bezel
+	conflicts = libretro-mega-bezel
+	source = Mega_Bezel::git+https://github.com/HyperspaceMadness/Mega_Bezel.git
+	b2sums = SKIP
+
+pkgname = libretro-mega-bezel-git
