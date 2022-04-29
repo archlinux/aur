@@ -9,7 +9,6 @@ url='http://pseint.sourceforge.net'
 license=('GPL2')
 conflicts=('pseint-bin')
 depends=('libpng12' 'glu' 'gendesk')
-makedepends=('gzip')
 noextract=(creator.psz)
 source=(https://razaoinfo.dl.sourceforge.net/project/pseint/${pkgver}/pseint-l64-${pkgver}.tgz)
 sha256sums=('a5df4e147c529e3da509b30dee02791642c32cb3b5bbbc6cd3cd7594f10cb9f4')  # 'makepkg -g' para generarlo.
@@ -19,10 +18,8 @@ package () {
     mkdir -p ${pkgdir}/opt/
     cp -r ${srcdir}/${pkgname}/ ${pkgdir}/opt/
 
-    local description='Educational tool to learn the fundamentals and development of programming logic'
-    gendesk -n --pkgname "${pkgname}" --categories "Development,Education" --pkgdesc "${description}" PKGBUILD
-
-    install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm644 "${srcdir}/${pkgname}/imgs/icon.icns" "${pkgdir}/usr/share/pixmaps/${pkgname}.icns"
+    gendesk -n -f --exec='pseint %u' ../PKGBUILD
     install -Dm755 "../${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 "${srcdir}/${pkgname}/imgs/icon.icns" "${pkgdir}/usr/share/pixmaps/${pkgname}.icns"
+    install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 }
