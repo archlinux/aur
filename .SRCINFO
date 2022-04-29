@@ -1,0 +1,15 @@
+pkgbase = transmission-pt-edition
+	pkgdesc = transmission web server with fast hash check, and smart auto recheck
+	pkgver = r12
+	pkgrel = 0
+	url = https://github.com/ChisBread/transmission_pt_edition
+	arch = x86_64
+	license = GPL
+	makedepends = curl
+	makedepends = libevent
+	depends = curl
+	depends = libevent
+	source = https://github.com/ChisBread/transmission_pt_edition/releases/download/3.0-r12/SourceWithSubmodules.tar.gz
+	sha256sums = e4fe322004ba16cd49ad42f6af45b173ebb5c41a4456d21e8752dbfb09525d67
+
+pkgname = transmission-pt-edition
