@@ -1,19 +1,38 @@
+# Maintainer: peippo <christoph+aur@christophfink.com>
 # Contributor: Viktor Drobot (aka dviktor) linux776 [at] gmail [dot] com
 # Contributor: Grey Christoforo <first name at last name dot net>
 
 _bcname=DelayedArray
-_bcver=0.20.0
+_bcver=0.22.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
 pkgrel=1
 pkgdesc="A unified framework for working transparently with on-disk and in-memory array-like datasets"
 arch=(i686 x86_64)
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
-license=(Artistic-2.0)
-depends=('r>=4.0.0' 'r-biocgenerics>=0.37.0' 'r-matrixgenerics>=1.1.3' 'r-s4vectors>=0.27.2' 'r-iranges>=2.17.3')
-optdepends=(r-biocparallel r-hdf5array r-genefilter r-summarizedexperiment r-airway r-lobstr r-delayedmatrixstats r-knitr r-rmarkdown r-biocstyle r-runit)
+license=("Artistic-2.0")
+depends=(
+    "r>=4.0.0"
+	"r-biocgenerics>=0.37.0"
+	"r-matrixgenerics>=1.1.3"
+	"r-s4vectors>=0.27.2"
+	"r-iranges>=2.17.3"
+)
+optdepends=(
+    r-biocparallel
+	"r-hdf5array>=1.17.12"
+	r-genefilter
+	r-summarizedexperiment
+	r-airway
+	r-lobstr
+	r-delayedmatrixstats
+	r-knitr
+	r-rmarkdown
+	r-biocstyle
+	r-runit
+)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
-sha256sums=('f272d2ca627bde399274d93c6fc397dec6fe6a1bf8cc98ffc111ee1a00fca6b2')
+sha256sums=("1ee707dc606f257020c2654b21305045f4da9dc2943e6246a0bd25f5f1302d86")
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
@@ -21,6 +40,9 @@ build() {
 
 package() {
   install -dm0755 "${pkgdir}/usr/lib/R/library"
-
   cp -a --no-preserve=ownership "${_bcname}" "${pkgdir}/usr/lib/R/library"
+
+  if [[ -f "${_cranname}/LICENSE" ]]; then
+    install -Dm0644 "${_cranname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  fi
 }
