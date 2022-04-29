@@ -36,6 +36,6 @@ package() {
   install -Dm644 *{html,md} -t "$pkgdir/usr/share/doc/pyradio"
   install -Dm644 pyradio{,_rb}.1 -t "$pkgdir/usr/share/man/man1"
 
-  PIP_CONFIG_FILE=/dev/null pip install --no-warn-script-location --isolated --root="$pkgdir" --ignore-installed --no-deps .
+  PIP_CONFIG_FILE=/dev/null python -m pip install --no-warn-script-location --isolated --root="$pkgdir" --ignore-installed --no-deps .
 }
 
