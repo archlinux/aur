@@ -1,7 +1,7 @@
 # Maintainer: qwq233 <qwq233@qwq2333.top>
 pkgname=64gram-desktop-no-ad
 _pkgname=64Gram
-pkgver=1.0.32
+pkgver=1.0.34
 pkgrel=1
 pkgdesc='Unofficial desktop version of Telegram messaging app (removed ad)'
 arch=('x86_64')
@@ -20,14 +20,11 @@ optdepends=('gtk3: GTK environment integration'
 provides=("64gram-desktop-no-ad")
 conflicts=("telegram-desktop" "tdesktop-x64" "64gram-desktop")
 replaces=("tdesktop-x64")
-source=(
-        "https://github.com/TDesktop-x64/tdesktop/releases/download/v$pkgver/64Gram-$pkgver-full.tar.gz"
-        "remove-ad.patch"
-        )
+source=("https://github.com/TDesktop-x64/tdesktop/releases/download/v$pkgver/64Gram-$pkgver-full.tar.gz"
+        "remove-ad.patch")
 
-sha512sums=('dcbd44fc89fb19de459d0d28831257a5d727d392a187ab44968dccb172455fd25e6fe34e4bb4c115255364f4baf9a58002cb6d7e2a16c8ef9aaf17ae6806a4d3'
+sha512sums=('8d11ff44d9b8a384180dab7cc4b03b58fba84819b092eb5044d32c27078c885d59b2e0c052336c33cd6c7c8bf40fec547e6724b8bb888efccbc46b481b44b27f'
             'de0662d33062a8c169003095f73ce69f352c21873620841fd53c075ec18990d643fe0a88536aa3f5b9cca2d52a69c01d3e2ce0b279549f0c0ceb0a907e7e3ff7')
-
 
 prepare() {
     echo -e "Please enter the API ID and API HASH\nYou can get one from https://my.telegram.org/apps"
