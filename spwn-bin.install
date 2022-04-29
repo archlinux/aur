@@ -4,5 +4,4 @@ post_install() {
 
 post_remove() {
     unlink /usr/bin/spwn
-    rm -r /usr/bin/spwn-bin
 }

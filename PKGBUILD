@@ -1,19 +1,19 @@
+# Maintainer: Deltara <boided420 at gmail dot com>
 pkgname="spwn-bin"
-_pkgname="spwn"
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A language for Geometry Dash triggers."
 arch=('x86_64')
 url="https://www.github.com/Spu7Nix/SPWN-language"
 license=('MIT')
 provides=('spwn')
 conflicts=('spwn')
-source=('https://github.com/Deltara3/spwn-bin-aur/releases/download/v0.8/spwn-bin.tar.gz')
-sha256sums=('0c2abec613eab5da6f56b77897d4dc31be6b057fad8c3f4c1d52f22add549973')
+source=('https://github.com/Spu7Nix/SPWN-language/releases/download/v0.8-beta/spwn-0.0.8-x86_64.tar.gz')
+sha256sums=('36aeeb2e59480be6e2a238e10cc75c67b994a68c0c5e26592f39c0db47eaba34')
 install=spwn-bin.install
 
 package() {
-	install -Dm755 spwn ${pkgdir}/usr/bin/spwn-bin/spwn
-	cp -r libraries/ ${pkgdir}/usr/bin/spwn-bin/libraries/
-	chmod -R 755 ${pkgdir}/usr/bin/spwn-bin/libraries/
+	install -Dm755 spwn/spwn ${pkgdir}/usr/bin/spwn-bin/spwn
+	cp -r spwn/libraries/ ${pkgdir}/usr/bin/spwn-bin/libraries/
+	chmod -R 644 ${pkgdir}/usr/bin/spwn-bin/libraries/
 }
