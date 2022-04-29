@@ -1,6 +1,6 @@
 # Mainainer: Animo Solutions contact@animo.id
 pkgname="agent-cli"
-pkgver="0.2.0"
+pkgver=0.2.0
 pkgrel="2"
 pkgdesc="A CLI tool for Aries written in Rust"
 arch=(x86_64)
