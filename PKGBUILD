@@ -28,5 +28,5 @@ build() {
 package() {
 	cd xpid
 	cd libxpid/build
-	make install
+	sudo make install
 }
