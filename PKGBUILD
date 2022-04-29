@@ -19,10 +19,14 @@ sha256sums=('SKIP')
 build() {
 	cd xpid
 	git checkout tags/$pkgver -b $pkgver
-	make libxpid
+	cd libxpid
+	./configure
+	cd build
+	make
 }
 
 package() {
 	cd xpid
-	make libxpid-install
+	cd libxpid/build
+	make install
 }
