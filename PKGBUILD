@@ -2,7 +2,7 @@
 
 pkgname=aws-amplify-cli
 _npmname='@aws-amplify/cli'
-pkgver=8.0.2
+pkgver=8.0.3
 pkgrel=1
 pkgdesc='The AWS Amplify CLI is a toolchain for simplifying serverless web and mobile development.'
 arch=('any')
@@ -13,7 +13,7 @@ depends=('nodejs')
 makedepends=('npm')
 _filename="cli-${pkgver}.tgz"
 source=("https://registry.npmjs.org/${_npmname}/-/${_filename}")
-sha512sums=('700b1276a972187018bdb1dc9910035a1704112539af0c1cf11f5ed0ed83b3ac5e5046f8a5d9693bbb3870a2ce972a2c2bcb33767cb61af23ef75667ce6280f1')
+sha512sums=('93ea4315fa194c459dd6395e663c99bb230e1a0abb1967a5eeb88b5f1dc7613027af789fd00d11ba3adc29fb031bd7302b34a0ffe5df8c109a0a69075ca6a02b')
 
 package() {
     install -Dm644 "${srcdir}/package/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
