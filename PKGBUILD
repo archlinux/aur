@@ -1,4 +1,4 @@
-# Melvyn <melvyn2@brcok.tk>
+# Maintainer: Melvyn <melvyn2@brcok.tk>
 
 _srcname=SPIRV-LLVM-Translator
 pkgname=lib32-${_srcname,,}
