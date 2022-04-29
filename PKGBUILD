@@ -1,7 +1,7 @@
 # Maintainer: Eduardo Flores <edfloreshz@gmail.com>
 
 pkgname=do-git
-pkgrel=1
+pkgrel=2
 pkgver=0.1.2
 pkgdesc="Do is a to-do app built for Linux with Rust and GTK."
 arch=('x86_64')
@@ -29,8 +29,8 @@ package() {
 	cd "$pkgname"
 	mkdir $HOME/.local/share/do/
     touch $HOME/.local/share/do/do.db
+	cp src/resources/res/do.db $HOME/.local/share/do/do.db
 	install -Dm644 src/resources/res/do.edfloreshz.github.desktop "$pkgdir/usr/share/applications/do.edfloreshz.github.desktop"
-	install -Dm644 src/resources/res/do.db "$pkgdir/$HOME/.local/share/do/do.db"
 	install -Dm644 src/resources/icons/do.edfloreshz.github.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/do.svg"
 	install -Dm644 src/resources/icons/do.edfloreshz.github.svg "$pkgdir/usr/share/icons/hicolor/256x256/apps/do.svg"
 	install -Dm644 README.md "$pkgdir/usr/share/doc/do/README.md"
