@@ -3,7 +3,7 @@
 # Contributor: Michał Lisowski <lisu@riseup.net>
 
 pkgname='kaf-bin'
-pkgver=0.1.60
+pkgver=0.1.47
 pkgrel=1
 pkgdesc='Kafka CLI inspired by kubectl & docker'
 url=''
@@ -12,11 +12,11 @@ license=('MIT')
 provides=('kaf-bin')
 conflicts=('kaf-bin' 'kaf')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/birdayz/kaf/releases/download/v0.1.60/kaf_0.1.60_Linux_arm64.tar.gz")
-sha256sums_aarch64=('c35076f25783b685c5512db626c1b8725b9c91e0a397e6b7b3f389f5efb41f00')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/birdayz/kaf/releases/download/v0.1.47/kaf_0.1.47_Linux_arm64.tar.gz")
+sha256sums_aarch64=('647d301969a702dffc60e847581b834143f9a97d48fe163f2ad44a796b51eb10')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/birdayz/kaf/releases/download/v0.1.60/kaf_0.1.60_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('4b1d4205eba34713285e6a8019a3ade1fd156fc911705d2b32f7c6cf6ae093bf')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/birdayz/kaf/releases/download/v0.1.47/kaf_0.1.47_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('9c228aed51c1efb9e7c75e2e0dbebcdf8eb10066732fbb1cc57bfbf4fac07f58')
 
 package() {
   # bin
