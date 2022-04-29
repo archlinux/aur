@@ -116,7 +116,7 @@ diff '--color=auto' --unified --recursive --text mujoco-py-2.1.2.14.orig/mujoco_
 -        mujoco_path = join(expanduser('~'), '.mujoco', 'mujoco210')
 +        mujoco_path = join(expanduser('~'), '.mujoco', 'mujoco')
 +        if not exists(mujoco_path):
-+            mujoco_path = "/opt/mujoco"
++            mujoco_path = "/usr/include/mujoco"
  
      # We get lots of github issues that seem to be missing these
      # so check that mujoco is really there and raise errors if not.

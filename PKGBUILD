@@ -2,14 +2,13 @@
 pkgname=python-mujoco-py
 _name=${pkgname#python-}
 pkgver=2.1.2.14
-pkgrel=2
+pkgrel=3
 pkgdesc="Python interface to the MuJoCo physics engine"
 arch=('x86_64')
 url="https://github.com/openai/mujoco-py"
 license=('MIT' 'custom')
 depends=(
 	'cython'
-	'glew'
 	'libgl'
 	'mesa'
 	'mujoco'
@@ -32,6 +31,9 @@ sha256sums=('eb5b14485acf80a3cf8c15f4b080c6a28a9f79e68869aa696d16cbd51ea7706f'
 prepare() {
 	cd "$_name-$pkgver"
 	patch -p1 -i "$srcdir/$_name.patch"
+	sed -i'' 's/glewInitialized/glInitialized/g' \
+		'mujoco_py/pxd/mjrender.pxd' \
+		'mujoco_py/generated/wrappers.pxi'
 }
 
 build() {
