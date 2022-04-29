@@ -18,6 +18,6 @@ package() {
     tar -xf data.tar.xz -C $pkgdir
     install -Dm644 $pkgdir/opt/spotiflyer/lib/spotiflyer-SpotiFlyer.desktop $pkgdir/usr/share/applications/spotiflyer.desktop
     install -Dm644 $pkgdir/opt/spotiflyer/lib/SpotiFlyer.png $pkgdir/usr/share/pixmaps/spotiflyer.png
-    mkdir -p $pkgdir/usr/bin/
+    install -d $pkgdir/usr/bin/
     ln -s /opt/spotiflyer/bin/SpotiFlyer $pkgdir/usr/bin/$_pkgname
 }
