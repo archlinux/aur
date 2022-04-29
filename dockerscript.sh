@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+#
+# This script is called by build.sh and actually does the AUR build inside a Docker container.
+# It is not used in the AUR builds in any way, and is only for debugging purposes.
+#
+
 set -e
 
 pacman -Sy --noconfirm
