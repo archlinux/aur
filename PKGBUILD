@@ -2,19 +2,19 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=termusic
-pkgver=0.6.13
+pkgver=0.6.14
 pkgrel=1
 pkgdesc="Music Player TUI written in Rust"
 arch=('x86_64')
 url="https://github.com/tramhao/termusic"
 license=('MIT' 'GPL3')
-depends=('gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav')
+depends=('gstreamer' 'gst-plugins-base' 'gst-plugins-good' 'gst-plugins-bad' 'gst-plugins-ugly' 'gst-libav' 'dbus')
 optdepends=('ueberzug: display album covers'
             'yt-dlp: download mp3'
             'ffmpeg: download mp3')
 makedepends=('cargo')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('5f16850dba6b871b8d3515156cc9e3aed417e37dc0cade08717be6a111473446c4b77e56872942a053b9c618e303efb7addc8f553a24b40674ddf021dd938f18')
+sha512sums=('3d19aafa3cea9b5979abb3a3a605aec066e58ca5a92cca456953ec33f7be9df0d4fecc78015e5d1a7992f95be969b44e003bb74827fdde1f5ab20e3284210887')
 options=('!lto')
 
 prepare() {
@@ -24,7 +24,7 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
-  cargo build --release --frozen
+  cargo build --features mpris,cover,discord --release --frozen
 }
 
 check() {
