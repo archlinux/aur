@@ -1,6 +1,6 @@
 pkgbase = astc-encoder
 	pkgdesc = A tool for compressing and decompressing images using the ASTC texture compression standard
-	pkgver = 3.6
+	pkgver = 3.7
 	pkgrel = 1
 	url = https://github.com/ARM-software/astc-encoder/
 	arch = x86_64
@@ -9,13 +9,13 @@ pkgbase = astc-encoder
 	makedepends = cmake
 	makedepends = python
 	depends = gcc-libs
-	source = git+https://github.com/ARM-software/astc-encoder.git#tag=3.6
+	source = git+https://github.com/ARM-software/astc-encoder.git#tag=3.7
 	source = git+https://github.com/google/googletest.git
 	source = 010-astc-encoder-fix-install.patch
 	source = 020-astc-encoder-use-shared-library.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 5f14b7a802b0548cdaa05238964d3a0181ea43961782500f7611e6ae9203bf92
-	sha256sums = 5507d79c2033b4258eed77e1498cf835a57b7a9d4b898100c4b1ceff2b230f73
+	sha256sums = e64fe99e5dc5f014156f58eb7ea179c922cafd71fecbd704c86ebaa3b04ed9e6
 
 pkgname = astc-encoder
