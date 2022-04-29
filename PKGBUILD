@@ -7,12 +7,12 @@
 
 pkgname=namecoin-core-wallet
 pkgver=v23.0
-pkgrel=1
+pkgrel=2
 
 
 # Epoch is always set to the most recent PKGBUILD update time.
 # This allows for a forced downgrade without messing up versioning.
-epoch=1651238671
+epoch=1651238672
 
 
 # Release commit for 23.0
@@ -35,19 +35,22 @@ source=('git+https://github.com/namecoin/namecoin-core'
         'namecoin.desktop'
         'namecoin1500x1500.png'
         'namecoind.service'
-        'namecoind@.service')
+        'namecoind@.service'
+        'fix.patch')
 
 sha256sums=('SKIP'
             '0226f5a570bbbde63f332d43d9d712287b316c726280f2ae9e21b1b365b3f0dc'
             'f1e0593b872e18e0aebbf399bb5d77be255cb0aa160964c0528698a33f89ba04'
             '0a8cb03f33a895ccaed63fb9d946db69bee7188b7a9f41bc92879167c2718dcf'
-            '216bf1642feb5c37cc82a0801faf0717308f98e5aed86d75dac8fafd150a4b68')
+            '216bf1642feb5c37cc82a0801faf0717308f98e5aed86d75dac8fafd150a4b68'
+            'bd15bfc46bb56634c1bec23435e2275cfafc3a93abf8cbc3a038b81505e2e8b0')
 
 
 prepare() {
     mkdir -p "$srcdir/tmp"
     cd "$srcdir/namecoin-core/"
     git checkout "$_commit"
+    git apply "$srcdir/fix.patch"
 }
 
 

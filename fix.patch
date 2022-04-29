@@ -1,0 +1,12 @@
+diff --git a/src/qt/buynamespage.h b/src/qt/buynamespage.h
+index 041848213..46f37658b 100644
+--- a/src/qt/buynamespage.h
++++ b/src/qt/buynamespage.h
+@@ -4,6 +4,7 @@
+ #include <qt/platformstyle.h>
+ 
+ #include <QWidget>
++#include <optional>
+ 
+ class WalletModel;
+ 
