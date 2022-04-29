@@ -5,7 +5,6 @@ pkgbase = pseint
 	url = http://pseint.sourceforge.net
 	arch = x86_64
 	license = GPL2
-	makedepends = gzip
 	depends = libpng12
 	depends = glu
 	depends = gendesk
