@@ -23,6 +23,6 @@ build() {
 }
 
 package() {
-	cd $pkgname
+	cd xpid
 	make libxpid-install
 }
