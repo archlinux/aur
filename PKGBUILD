@@ -6,7 +6,7 @@ _bcname=GenomicRanges
 _bcver=1.48.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Representation and manipulation of genomic intervals"
 arch=(i686 x86_64)
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
@@ -42,7 +42,6 @@ optdepends=(
 	r-kegggraph
 	r-keggrest
 	r-knitr
-    r-matrix
 	r-pasillabamsubset
 	r-rmarkdown
 	r-rnaseqdata.hnrnpc.bam.chr14
