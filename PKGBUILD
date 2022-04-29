@@ -5,8 +5,8 @@
 # Contributor:  The Bitcoin Core Developers
 
 pkgname=python-secp256k1-git
-pkgver=r0.g0
-pkgrel=1
+pkgver=1
+pkgrel=2
 
 pkgdesc='Python FFI bindings for libsecp256k1'
 arch=('any')
