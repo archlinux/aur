@@ -2,7 +2,7 @@
 
 pkgname=slade
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='SLADE3 Doom editor'
 arch=('i686' 'x86_64')
 url='http://slade.mancubus.net/'
@@ -23,14 +23,14 @@ depends=('bzip2'
 makedepends=('cmake'
              'p7zip')
 source=("https://github.com/sirjuddington/SLADE/archive/${pkgver}.tar.gz"
-        '0001-compatibility-with-stable-wxWidgets.patch')
+        '0001-Keep-up-wx3.0-compatibility.patch')
 sha256sums=('e23cb1238d184a13912231c22e96208d6dff4eb55f38181ae92d2b67f205dfa5'
-            'ababb76f64b4cfbdabd283ffb8e5d7900f270893161433e84a93f2655767d5d2')
+            '8f89b81ec2ef11581ddac8592ab45a3a90ea02711b07a732ee931359883350dc')
 
 prepare() {
     cd SLADE-${pkgver}
 
-    patch -i "$srcdir"/0001-compatibility-with-stable-wxWidgets.patch -p 1
+    patch -i "$srcdir"/0001-Keep-up-wx3.0-compatibility.patch -p 1
 }
 
 build() {
