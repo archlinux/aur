@@ -3,15 +3,17 @@
 pkgname=azure-storage-cpp
 pkgdesc='Microsoft Azure Storage Client Library for C++'
 pkgver=7.5.0
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 url='https://github.com/Azure/azure-storage-cpp'
 license=('APACHE')
 depends=(
     #'pkgconf'
     'libxml2'
-    'util-linux-libs' # Depending on uuid on Ubuntu means depending on util-linux-libs on Archlinux
-    'boost-libs'
+    #'util-linux-libs'
+    'util-linux' # Depending on uuid on Ubuntu means depending on util-linux on Archlinux
+    #'boost-libs'
+    'boost'
     'cpprestsdk'
     # 'openssl' is already a dependency of aur/cpprestsdk
     # 'xz' is already a dependency of zstd -> boost-libs and libxml2. Still no idea why liblzma.so
@@ -26,9 +28,6 @@ depends=(
 #)
 makedepends=(
     'cmake'
-
-    'util-linux'
-    'boost'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Azure/azure-storage-cpp/archive/v${pkgver}.tar.gz")
 sha256sums=('446a821d115949f6511b7eb01e6a0e4f014b17bfeba0f3dc33a51750a9d5eca5')
