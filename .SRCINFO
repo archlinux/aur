@@ -1,7 +1,7 @@
 pkgbase = latvia-eid-middleware
 	pkgdesc = Middleware for using Latvia-eid smart cards
 	pkgver = 2.0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.eparaksts.lv
 	install = middleware.install
 	arch = x86_64
@@ -12,7 +12,10 @@ pkgbase = latvia-eid-middleware
 	depends = libsm
 	depends = pcsclite
 	depends = glu
+	optdepends = nss: modutil tool for installing PKCS#11 module
 	source = https://www.eparaksts.lv/files/ep3updates/debian/pool/eparaksts/l/latvia-eid-middleware/latvia-eid-middleware_2.0.10-1_amd64.deb
+	source = pintool.patch
 	sha512sums = 6a93c0f564dab7fc03e4eae8c31c63f08385dcffcc0c9d852fc6a847595252e60262f14c675456ab2d59596c4f6a1ca5305566342ca93cf6feb408a786e2cc6e
+	sha512sums = ff5513539072adf213105b473e7509c23ace523aa9d7cd536244ec76dd2afa28bc9494e321c35311d465c73cc1c1ca76eaa7d46c774f24d413b35abe2f54d3d8
 
 pkgname = latvia-eid-middleware

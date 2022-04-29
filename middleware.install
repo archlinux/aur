@@ -26,6 +26,20 @@ post_install() {
   /sbin/ldconfig /opt/latvia-eid/lib
   /sbin/ldconfig /usr/lib/pkcs11
   /sbin/ldconfig
+
+  printf "$(tput setaf 4)NOTE: $(tput sgr0)To start using eID cards in browser either follow Mozilla docs:\n"
+  printf "$(tput setaf 2)    https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/pkcs11\n"
+  printf "$(tput sgr0)  or use $(tput setaf 2)modutil $(tput sgr0)tool from $(tput setaf 2)nss $(tput sgr0)package:\n"
+  printf "$(tput setaf 2)    https://linuxkamarada.com/en/2019/09/26/setting-up-smart-card-authentication-on-google-chrome-chromium/\n"
+  printf "$(tput sgr0)  using $(tput setaf 2)/opt/latvia-eid/lib/eidlv-pkcs11.so $(tput sgr0)library in both cases.\n"
+}
+
+post_upgrade() {
+  printf "$(tput setaf 4)NOTE: $(tput sgr0)To start using eID cards in browser either follow Mozilla docs:\n"
+  printf "$(tput setaf 2)    https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/pkcs11\n"
+  printf "$(tput sgr0)  or use $(tput setaf 2)modutil $(tput sgr0)(from $(tput setaf 2)nss $(tput sgr0)package):\n"
+  printf "$(tput setaf 2)    https://linuxkamarada.com/en/2019/09/26/setting-up-smart-card-authentication-on-google-chrome-chromium/\n"
+  printf "$(tput sgr0)  using $(tput setaf 2)/opt/latvia-eid/lib/eidlv-pkcs11.so $(tput sgr0)library in both cases.\n"
 }
 
 pre_remove() {

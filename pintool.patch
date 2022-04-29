@@ -1,0 +1,11 @@
+--- ./opt.back/latvia-eid/share/doc/latvia-eid/eidlv-pintool.desktop      2022-04-29 10:44:27.789165968 +0300
++++ ./opt/latvia-eid/share/doc/latvia-eid/eidlv-pintool.desktop   2022-04-29 10:46:52.372324610 +0300
+@@ -4,7 +4,7 @@
+ Name[lv]=Latvija-eID PinTool
+ Comment=Manage your Latvia-eID smart card
+ Comment[lv]=Pārvaldīt savu Latvija-eID viedkarti
+-Exec=otlv-pintool
++Exec=eidlv-pintool
+ Terminal=false
+ Type=Application
+ StartupNotify=false
