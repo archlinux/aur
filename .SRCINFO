@@ -1,35 +1,37 @@
 pkgbase = r-rsamtools
 	pkgdesc = Binary alignment (BAM), FASTA, variant call (BCF), and tabix file import
-	pkgver = 2.10.0
+	pkgver = 2.12.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/Rsamtools.html
 	arch = i686
 	arch = x86_64
 	license = Artistic-2.0
 	makedepends = make
+	depends = htslib
 	depends = r>=3.5.0
+	depends = r-biocgenerics>=0.25.1
+	depends = r-biocparallel
+	depends = r-biostrings>=2.47.6
+	depends = r-bitops
 	depends = r-genomeinfodb>=1.1.3
 	depends = r-genomicranges>=1.31.8
-	depends = r-biostrings>=2.47.6
-	depends = r-biocgenerics>=0.25.1
-	depends = r-s4vectors>=0.17.25
 	depends = r-iranges>=2.13.12
+	depends = r-rhtslib>=1.17.7
+	depends = r-s4vectors>=0.17.25
 	depends = r-xvector>=0.19.7
 	depends = r-zlibbioc
-	depends = r-bitops
-	depends = r-biocparallel
-	depends = r-rhtslib>=1.17.7
-	optdepends = r-genomicalignments
-	optdepends = r-shortread
-	optdepends = r-genomicfeatures
-	optdepends = r-txdb.dmelanogaster.ucsc.dm3.ensgene
-	optdepends = r-kegg.db
-	optdepends = r-txdb.hsapiens.ucsc.hg18.knowngene
-	optdepends = r-rnaseqdata.hnrnpc.bam.chr14
-	optdepends = r-bsgenome.hsapiens.ucsc.hg19
-	optdepends = r-runit
 	optdepends = r-biocstyle
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rsamtools_2.10.0.tar.gz
-	sha256sums = d02799a7883b801abb5c0399e22a18f116bfb8dc41bbeb0870a9ed58881ccb6c
+	optdepends = r-bsgenome.hsapiens.ucsc.hg19
+	optdepends = r-genomicalignments
+	optdepends = r-genomicfeatures
+	optdepends = r-rnaseqdata.hnrnpc.bam.chr14
+	optdepends = r-runit
+	optdepends = r-shortread>=1.19.10
+	optdepends = r-txdb.dmelanogaster.ucsc.dm3.ensgene
+	optdepends = r-txdb.hsapiens.ucsc.hg18.knowngene
+	options = !lto
+	options = !buildflags
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rsamtools_2.12.0.tar.gz
+	sha256sums = 20e860c61ef66f8e61f8de7f77c4a244439c8fe39286d080cd580417073894f2
 
 pkgname = r-rsamtools
