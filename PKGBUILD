@@ -63,7 +63,7 @@ prepare() {
 }
 
 build() {
-	LDFLAGS+=' -Wl,-z,noexecstack'
+	LDFLAGS+=" -Wl,-z,noexecstack"
 	make -C $_pkgname
 }
 
