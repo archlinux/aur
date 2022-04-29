@@ -19,7 +19,7 @@ sha512sums=('734b8b7305914eb4294ad56d5e6f420450ef88ea395b11603e664a656ab8b9a081a
 
 prepare()
 {
-	cd "${srcdir}${_lang}"
+	cd "${srcdir}/${_lang}"
 	sed -Ei \
 		-e 's/(10)(10)(100\>)(\s+\(10)(Googol.*(1|Eins) mit einem Googol Nullen)/\1^(\2^\3)\4^\5/' \
 		-e 's/(10)([1-9][0-9]*)(.*(1|Eins) mit \2 Nullen)/\1\^\2\3/' \
