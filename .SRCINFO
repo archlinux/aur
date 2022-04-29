@@ -1,7 +1,7 @@
 pkgbase = transmission-pt-edition
 	pkgdesc = transmission web server with fast hash check, and smart auto recheck
 	pkgver = r12
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/ChisBread/transmission_pt_edition
 	arch = x86_64
 	license = GPL

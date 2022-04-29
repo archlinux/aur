@@ -2,7 +2,7 @@
 
 pkgname=transmission-pt-edition
 pkgver=r12
-pkgrel=0
+pkgrel=1
 pkgdesc="transmission web server with fast hash check, and smart auto recheck"
 arch=(x86_64)
 url='https://github.com/ChisBread/transmission_pt_edition'
@@ -12,11 +12,8 @@ makedepends=(curl libevent)
 source=("https://github.com/ChisBread/transmission_pt_edition/releases/download/3.0-${pkgver}/SourceWithSubmodules.tar.gz")
 sha256sums=('e4fe322004ba16cd49ad42f6af45b173ebb5c41a4456d21e8752dbfb09525d67')
 
-prepare() {
-  # replace Web UI
-  cd ./transmission_pt_edition-3.0-$pkgver
-  cp -r third-party/transmission-web-control/src/* web/
-}
+#prepare() {
+#}
 
 build() {
   cd ./transmission_pt_edition-3.0-$pkgver
