@@ -1,38 +1,45 @@
-# Maintainer: Dasith Gunawardhana <dasith@dg10a.com>
+# Maintainer: Peter Kaplan <peter@pkap.de>
 
 _pkgname=waylock
 pkgname=${_pkgname}-git
-pkgver=0.3.3.r2.gd4f4308
+pkgver=0.3.5.r12.g20be010
 pkgrel=1
 arch=('x86_64')
 url="https://github.com/ifreund/waylock"
-pkgdesc="Waylock is a simple screenlocker for wayland compositors."
-license=('MIT')
-depends=('pam')
-makedepends=('git' 'rust')
+pkgdesc="A simple screenlocker for Wayland compositors"
+license=('ISC')
+depends=('wayland' 'wayland-protocols' 'libxkbcommon' 'pam' 'pkgconf')
+makedepends=('git' 'zig')
 provides=('waylock')
 conflicts=('waylock')
-source=("git+https://github.com/ifreund/waylock.git")
-sha256sums=('SKIP')
+source=(
+    "git+$url"
+    "git+https://github.com/ifreund/zig-wayland.git"
+    "git+https://github.com/ifreund/zig-xkbcommon.git"
+)
+sha256sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+)
 
 pkgver() {
     cd "$_pkgname"
     git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
+prepare() {
     cd "$_pkgname"
-    cargo build --release --locked --all-features --target-dir=target
-}
-
-check(){
-    cd "$_pkgname"
-    cargo test --release --locked --target-dir=target
+    git submodule init
+    for dep in wayland xkbcommon; do
+        git config "submodule.deps/zig-$dep.url" "$srcdir/zig-$dep"
+    done
+    git submodule update
 }
 
 package() {
     cd "$_pkgname"
-    install -Dm 755 target/release/${_pkgname} -t "${pkgdir}/usr/bin"
-    install -vDm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
-    install -vDm 644 {README.md,waylock.toml} -t "${pkgdir}/usr/share/doc/${_pkgname}"
+    DESTDIR="$pkgdir" zig build -Drelease-safe --prefix "/usr" install
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
 }
