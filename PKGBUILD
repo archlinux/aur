@@ -1,6 +1,6 @@
 # Maintainer: Pranav K Anupam <pranavanupam@yahoo.com>
 _cranname=uuid
-_cranver=1.0-3
+_cranver=1.1-0
 _pkgtar=${_cranname}_${_cranver}.tar.gz
 pkgname=r-uuid
 pkgver=${_cranver//[:-]/.}
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('r>=2.9.0')
 optdepends=('r-bigReg')
 
-sha256sums=('456e4633659f20242fd7cd585ad005a3e07265f1d1db383fca6794c8ac2c8346')
+sha256sums=('e75b50ee7dc8c4c8e7083023e954ffd1c6a004431bf5e9094463e46aa760f42f')
 source=("https://cran.r-project.org/src/contrib/${_pkgtar}")
 
 build(){

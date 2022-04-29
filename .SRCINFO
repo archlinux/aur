@@ -1,13 +1,13 @@
 pkgbase = r-uuid
 	pkgdesc = Tools for generating and handling of UUIDs (Universally Unique Identifiers).
-	pkgver = 1.0.3
+	pkgver = 1.1.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=uuid
 	arch = any
 	license = GPL3
 	depends = r>=2.9.0
 	optdepends = r-bigReg
-	source = https://cran.r-project.org/src/contrib/uuid_1.0-3.tar.gz
-	sha256sums = 456e4633659f20242fd7cd585ad005a3e07265f1d1db383fca6794c8ac2c8346
+	source = https://cran.r-project.org/src/contrib/uuid_1.1-0.tar.gz
+	sha256sums = e75b50ee7dc8c4c8e7083023e954ffd1c6a004431bf5e9094463e46aa760f42f
 
 pkgname = r-uuid
