@@ -1,5 +1,5 @@
 pkgbase = dracula-xresources-git
-	pkgdesc = Dracula theme for X11 applications
+	pkgdesc = Dark theme for X11 applications
 	pkgver = r10.8de1197
 	pkgrel = 1
 	url = https://draculatheme.com/xresources
