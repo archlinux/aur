@@ -1,8 +1,8 @@
 # Maintainer: Alexander Kobel <a-kobel@a-kobel.de>
 
 pkgname=mpsolve-git
-pkgver=3.2.1.r9.g5013698
-pkgrel=2
+pkgver=3.2.1.r12.g90f4999
+pkgrel=1
 pkgdesc="Multiprecision rootfinder for complex roots of univariate polynomials"
 url="http://numpi.dm.unipi.it/software/mpsolve"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ makedepends=('git' 'gcc-fortran')
 options=(!libtool)
 provides=('mpsolve')
 conflicts=('mpsolve')
-source=("git://github.com/robol/MPSolve.git")
+source=("git+https://github.com/robol/MPSolve.git")
 sha256sums=('SKIP')
 
 pkgver () {

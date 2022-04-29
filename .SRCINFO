@@ -1,7 +1,7 @@
 pkgbase = mpsolve-git
 	pkgdesc = Multiprecision rootfinder for complex roots of univariate polynomials
-	pkgver = 3.2.1.r9.g5013698
-	pkgrel = 2
+	pkgver = 3.2.1.r12.g90f4999
+	pkgrel = 1
 	url = http://numpi.dm.unipi.it/software/mpsolve
 	arch = i686
 	arch = x86_64
@@ -16,8 +16,7 @@ pkgbase = mpsolve-git
 	provides = mpsolve
 	conflicts = mpsolve
 	options = !libtool
-	source = git://github.com/robol/MPSolve.git
+	source = git+https://github.com/robol/MPSolve.git
 	sha256sums = SKIP
 
 pkgname = mpsolve-git
-
