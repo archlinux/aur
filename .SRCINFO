@@ -1,6 +1,6 @@
 pkgbase = r-biostrings
 	pkgdesc = Efficient manipulation of biological strings
-	pkgver = 2.62.0
+	pkgver = 2.64.0
 	pkgrel = 1
 	url = https://bioconductor.org/packages/release/bioc/html/Biostrings.html
 	arch = i686
@@ -25,7 +25,7 @@ pkgbase = r-biostrings
 	optdepends = r-affy
 	optdepends = r-affydata
 	optdepends = r-runit
-	source = https://bioconductor.org/packages/release/bioc/src/contrib/Biostrings_2.62.0.tar.gz
-	sha256sums = b88fae10bf1bd98b658503dfb21c8ebf0f4eb2ab4fec52581ddfcd3a0ce21387
+	source = https://bioconductor.org/packages/release/bioc/src/contrib/Biostrings_2.64.0.tar.gz
+	sha256sums = e8c1dfbeb4b00d1dec1234693ab5ed6152fdd93c3afabd84173cd1843e14e5eb
 
 pkgname = r-biostrings
