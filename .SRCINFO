@@ -1,6 +1,6 @@
 pkgbase = steamtinkerlaunch
 	pkgdesc = Wrapper script for Steam custom launch options
-	pkgver = 9.2
+	pkgver = 10.0
 	pkgrel = 1
 	url = https://github.com/frostworx/steamtinkerlaunch
 	arch = any
@@ -39,7 +39,8 @@ pkgbase = steamtinkerlaunch
 	optdepends = p7zip: optional for extracting SpecialK archives
 	optdepends = pev: optional for extracting data from the game exe
 	optdepends = gdb: optional for starting the game under the debugger gdb
-	source = steamtinkerlaunch-9.2.tar.gz::https://github.com/frostworx/steamtinkerlaunch/archive/v9.2.tar.gz
-	sha256sums = c31fc489614ed771ec81f795b6c3c0b5a982206a05b46f3539d4ccd7ab1b48f8
+	optdepends = xdg-utils: optional for opening game paths
+	source = steamtinkerlaunch-10.0.tar.gz::https://github.com/frostworx/steamtinkerlaunch/archive/v10.0.tar.gz
+	sha256sums = 9337bf239a00c7fe1ccc53b33311391f8bb47b1865d8bbff8b964ade557537b4
 
 pkgname = steamtinkerlaunch
