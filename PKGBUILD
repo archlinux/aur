@@ -1,4 +1,5 @@
-# Maintainer: Dimitris Kiziridis <ragouel at outlook dot com>
+# Creator: Dimitris Kiziridis <ragouel at outlook dot com>
+# Maintainer: Artem Vasilev <artem.vasilev@rwth-aachen.de>
 
 pkgname=duckstation-qt-bin
 pkgver=latest
