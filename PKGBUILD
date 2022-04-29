@@ -1,4 +1,4 @@
-# Maintainer: melvyn2 <melvyn(dot)depeyrot(at)gmail(dot)com>
+# Maintainer: Melvyn <melvyn2@brcok.tk>
 # Forked from: aur/linux-apfs-dkms-git
 # Contributor: Chih-Hsuan Yen <yan12125@archlinux.org>
 # Contributor: ManU
