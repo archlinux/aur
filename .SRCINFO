@@ -1,0 +1,21 @@
+pkgbase = mingw-w64-vmaf
+	pkgdesc = Perceptual video quality assessment algorithm based on multi-method fusion (mingw-w64)
+	pkgver = 2.3.1
+	pkgrel = 1
+	url = https://github.com/Netflix/vmaf/
+	arch = x86_64
+	license = BSD
+	makedepends = mingw-w64-gcc
+	makedepends = mingw-w64-meson
+	makedepends = nasm
+	depends = mingw-w64-crt
+	depends = vmaf
+	options = !strip
+	options = !buildflags
+	options = staticlibs
+	source = https://github.com/Netflix/vmaf/archive/v2.3.1/vmaf-2.3.1.tar.gz
+	source = staticlib.patch
+	sha256sums = 8d60b1ddab043ada25ff11ced821da6e0c37fd7730dd81c24f1fc12be7293ef2
+	sha256sums = 9d7e03ac0f890e201cf27f1c0adea1e78407ac60b09073c2e3865c7945939bec
+
+pkgname = mingw-w64-vmaf

@@ -1,0 +1,29 @@
+diff -ruN vmaf-2.3.1/libvmaf/src/meson.build patched/libvmaf/src/meson.build
+--- vmaf-2.3.1/libvmaf/src/meson.build	2022-04-13 22:28:53.566666643 +0200
++++ patched/libvmaf/src/meson.build	2022-04-13 22:28:38.143333303 +0200
+@@ -331,6 +331,25 @@
+     install: true,
+ )
+ 
++libvmaf_static = static_library(
++    'vmaf',
++    [libvmaf_sources, rev_target, json_model_c_sources],
++    include_directories : [libvmaf_inc, vmaf_include],
++    c_args : vmaf_cflags_common,
++    cpp_args : vmaf_cflags_common,
++    dependencies : [
++      thread_lib,
++      math_lib,
++      stdatomic_dependency,
++    ],
++    objects : [
++        platform_specific_cpu_objects,
++        libvmaf_feature_static_lib.extract_all_objects(recursive: true),
++        libvmaf_cpu_static_lib.extract_all_objects(recursive: true),
++    ],
++    install: true,
++)
++
+ pkg_mod = import('pkgconfig')
+ pkg_mod.generate(libraries: libvmaf,
+     version: meson.project_version(),
