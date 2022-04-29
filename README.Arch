@@ -6,13 +6,13 @@ then `vagrant ssh`.
 
 There're a bunch of useful one-liners in Makefile.
 
-  * Make the package:
+  * Make the package (this also updates .SRCINFO):
 
       make package
 
-  * Tag the last commit:
+  * Commit the changes:
 
-      make tag
+      make commit
 
   * Push to the AUR repository:
 
