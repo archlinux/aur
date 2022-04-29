@@ -28,7 +28,7 @@ package() {
 	cd $_pkgname
 	# shellcheck disable=SC2154
 	install -d "$pkgdir"/usr/share/libretro/assets
-	cp -r -t "$pkgdir"/usr/share/libretro/assets \
+	cp -dr --no-preserve=ownership -t "$pkgdir"/usr/share/libretro/assets \
 		branding \
 		ctr \
 		glui \
