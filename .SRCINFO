@@ -1,0 +1,14 @@
+pkgbase = libxpid
+	pkgdesc = Linux process discovery library. Its like nmap -- for pids.
+	pkgver = v1.0.2
+	pkgrel = 1
+	url = https://github.com/kris-nova/xpid
+	arch = x86_64
+	license = MIT
+	makedepends = make
+	makedepends = clang
+	makedepends = cmake
+	source = git+https://github.com/kris-nova/xpid.git
+	sha256sums = SKIP
+
+pkgname = libxpid
