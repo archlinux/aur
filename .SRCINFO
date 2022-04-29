@@ -1,6 +1,6 @@
 pkgbase = mujoco-bin
 	pkgdesc = Multi-Joint dynamics with Contact. A general purpose physics simulator.
-	pkgver = 2.1.4
+	pkgver = 2.1.5
 	pkgrel = 1
 	url = https://www.mujoco.org
 	arch = x86_64
@@ -12,9 +12,9 @@ pkgbase = mujoco-bin
 	conflicts = mujoco
 	source = mujoco-bin.patch
 	sha256sums = SKIP
-	source_x86_64 = https://github.com/deepmind/mujoco/releases/download/2.1.4/mujoco-2.1.4-linux-x86_64.tar.gz
-	sha256sums_x86_64 = 42c871c46f96cede78813aa3a2088168eba24b56927564715825cd5776aa0365
-	source_aarch64 = https://github.com/deepmind/mujoco/releases/download/2.1.4/mujoco-2.1.4-linux-aarch64.tar.gz
-	sha256sums_aarch64 = d271d8abab7bb719a2625f9c618a5c1bc9c1a89c741d343c83688ceddfcfce81
+	source_x86_64 = https://github.com/deepmind/mujoco/releases/download/2.1.5/mujoco-2.1.5-linux-x86_64.tar.gz
+	sha256sums_x86_64 = 3f1804d28833295a310aac23279401936f2558dee63cd3778429577e4ab55dff
+	source_aarch64 = https://github.com/deepmind/mujoco/releases/download/2.1.5/mujoco-2.1.5-linux-aarch64.tar.gz
+	sha256sums_aarch64 = e00e5952c79e9164d3ea98d2b9c02b2b94449f428615c7fcbd9182db27b36e6e
 
 pkgname = mujoco-bin
