@@ -9,7 +9,7 @@
 
 pkgname=anki
 pkgver=2.1.51
-pkgrel=1
+pkgrel=2
 pkgdesc="Helps you remember facts (like words/phrases in a foreign language) efficiently"
 url="https://apps.ankiweb.net/"
 license=('AGPL3')
@@ -57,11 +57,13 @@ optdepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ankitects/anki/archive/refs/tags/${pkgver}.tar.gz"
 "no-update.patch"
-"inc_timeout_time.patch"
+"inc_qt_timeout.patch"
+"force_qt5.patch"
 )
 sha256sums=('decc58a45ff6f939d6c8274c50d2c3f896ff22f075bde5026d3deff9b36b74ee'
 '137827586d2a72adddaaf98599afa9fc80cdd73492d7f5cbcf4d2f6082e5f797'
 '281e12217f6b60ff64ad66e58aaf0cdb8bed16ffe2a3e6ab9e6ff5e773b4cabf'
+'fc477627179cbc0f88190e05abe1256bf1e62367620331ddf574303356d21169'
 )
 
 prepare(){
@@ -69,7 +71,8 @@ prepare(){
     # pro-actively prevent "module not found" error
     [ -d ts/node_modules ] && rm -r ts/node_modules
     patch -p1 < "$srcdir/no-update.patch"
-    patch -p1 < "$srcdir/inc_timeout_time.patch"
+    patch -p1 < "$srcdir/inc_qt_timeout.patch"
+    patch -p1 < "$srcdir/force_qt5.patch"
     rm .bazelversion
 }
 
