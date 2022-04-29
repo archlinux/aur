@@ -1,6 +1,6 @@
 pkgbase = python-apprise
 	pkgdesc = Push Notifications that work with just about every platform
-	pkgver = 0.9.8.2
+	pkgver = 0.9.8.3
 	pkgrel = 1
 	url = https://github.com/caronc/apprise
 	arch = any
@@ -17,7 +17,7 @@ pkgbase = python-apprise
 	depends = python-click
 	depends = python-markdown
 	depends = python-yaml
-	source = https://files.pythonhosted.org/packages/source/a/apprise/apprise-0.9.8.2.tar.gz
-	sha256sums = 10329aefbb14d3d1ce069e0d56c1cdc29e92e146c7caa5fc4fcac518e9d5f240
+	source = https://files.pythonhosted.org/packages/source/a/apprise/apprise-0.9.8.3.tar.gz
+	sha256sums = db83980236e7cdeaf42b24d1c7b2adcbc1d5b077689fe97851acdc58c226e36f
 
 pkgname = python-apprise
