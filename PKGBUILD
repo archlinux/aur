@@ -1,11 +1,11 @@
-# Maintainer: Sven-Hendrik Haase <sh@lutzhaase.com>
+# Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Maximilian Stein <maxarchpkgbuild@hmamail.com>
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 # Contributor: Taylor Lookabaugh <jesus.christ.i.love@gmail.com>
 
 _pkgbase=libnl
 pkgname=lib32-${_pkgbase}
-pkgver=3.5.0
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="Library for applications dealing with netlink sockets (32 bit)"
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('lib32-glibc' "${_pkgbase}")
 makedepends=('gcc-multilib')
 source=("https://github.com/thom311/libnl/releases/download/libnl${pkgver//./_}/libnl-${pkgver}.tar.gz")
-sha512sums=('9c94c09bac34297493b3ea482713d7c0865d2839b5042e5c7d1ed008e2402ab63df35a18e272f40b2cce27d0c31dc733fe7e4b2d376e7ca847a2b0d5e90de50c')
+sha512sums=('7d1190ce94f43f5b18b1f7909221ca034d4ea5c8ed5735dbd27224d03e7f95d3c4e8ccdb611e33b58007729a21bfc0e23adc8758b112c712355664d87a81ce1b')
 
 build() {
   export CC='gcc -m32'
