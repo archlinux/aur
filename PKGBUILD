@@ -30,7 +30,7 @@ prepare() {
 
 build() {
   cd "${srcdir}"/$pkgname
-  make
+  make CXXFLAGS+=" --std=c++14"
 }
 
 package() {
