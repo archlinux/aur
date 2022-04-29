@@ -1,17 +1,18 @@
 pkgbase = python-secp256k1-git
 	pkgdesc = Python FFI bindings for libsecp256k1
-	pkgver = 0.13.2.4.2.gf5e4552
-	pkgrel = 5
-	url = https://github.com/ludbb/secp256k1-py
+	pkgver = r0.g0
+	pkgrel = 1
+	url = https://github.com/rustyrussell/secp256k1-py
 	arch = any
 	license = MIT
 	depends = python-cffi
 	depends = python-pycparser
 	depends = libsecp256k1
+	depends = coreutils
 	provides = python-secp256k1-git
 	provides = python-secp256k1
 	conflicts = python-secp256k1
-	source = git+https://github.com/ludbb/secp256k1-py
+	source = git+https://github.com/rustyrussell/secp256k1-py
 	sha256sums = SKIP
 
 pkgname = python-secp256k1-git
