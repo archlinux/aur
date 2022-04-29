@@ -3,12 +3,12 @@ _base=ufl
 pkgname=python-fenics-${_base}
 pkgdesc="UFL - Unified Form Language"
 pkgver=2022.1.0
-pkgrel=1
+pkgrel=2
 arch=(any)
 url="https://github.com/FEniCS/${_base}"
 license=(MIT)
-depends=(python-numpy)
-makedepends=(python-setuptools python-wheel)
+depends=(python-numpy python-setuptools)
+makedepends=(python-wheel)
 source=(${url}/archive/refs/tags/${pkgver}.tar.gz)
 sha512sums=('2827318460bcecd023520f641a501704306dc44ec762256c55cff8da15a6803a780ca82916b140b5a62093ffb55da64230ad2aae1b44b50f74293dc095a38957')
 
