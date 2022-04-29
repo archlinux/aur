@@ -1,7 +1,7 @@
 pkgbase = dict-freedict-eng-fra-svn
-	pkgdesc = English -> French dictionary for dictd et al. from Freedict.org
-	pkgver = r1870
-	pkgrel = 1
+	pkgdesc = English -> French dictionary for dictd et al. from FreeDict.org
+	pkgver = r1905
+	pkgrel = 2
 	url = https://freedict.org/
 	install = dict-freedict-eng-fra-svn.install
 	arch = any
@@ -11,8 +11,7 @@ pkgbase = dict-freedict-eng-fra-svn
 	optdepends = dictd: dict client and server
 	provides = dict-freedict-eng-fra
 	conflicts = dict-freedict-eng-fra
-	source = svn+https://github.com/freedict/fd-dictionaries/trunk/eng-fra
-	md5sums = SKIP
+	source = dict-freedict-eng-fra-svn::svn+https://github.com/freedict/fd-dictionaries/trunk/eng-fra
+	sha512sums = SKIP
 
 pkgname = dict-freedict-eng-fra-svn
-
