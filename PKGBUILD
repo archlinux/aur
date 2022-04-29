@@ -1,12 +1,12 @@
 # Maintainer: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Stephen Zhang <zsrkmyn at gmail dot com>
 
-pkgbase=python-pytorch
-pkgname=("python-pytorch" "python-pytorch-cuda")
-_pkgname="pytorch"
+_pkgname=pytorch
+pkgbase="python-${_pkgname}"
+pkgname=("${pkgbase}" "${pkgbase}-cuda")
 pkgver=1.11.0
 _pkgver=1.11.0
-pkgrel=4
+pkgrel=5
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
