@@ -1,0 +1,14 @@
+pkgbase = russ
+	pkgdesc = Russ is a TUI RSS/Atom reader with vim-like controls and an offline-first focus
+	pkgver = 0.4.0
+	pkgrel = 1
+	url = https://github.com/ckampfe/russ
+	arch = any
+	license = AGPL3
+	makedepends = cargo
+	depends = libxcb
+	noextract = russ-0.4.0.tar.gz
+	source = russ-0.4.0.tar.gz::https://github.com/ckampfe/russ/archive/98456812ed8b29f14bac92546bf9b4c423cc4acb.tar.gz
+	sha256sums = 2abaec20327e20a5e5e58ea98bd72ce15bb71285d08adac21a7eb83e0dbab180
+
+pkgname = russ
