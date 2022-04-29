@@ -1,5 +1,10 @@
 post_install(){
     chown -R rustdeskserver:rustdeskserver /opt/rustdesk-server
+    echo 'This package provides ID/Rendezvous Server and Relay Server'
+    echo -e "\033[32m To use run as ID/Rendezvous Server , you need to run \033[0m"
+    echo -e "\033[32m sudo systemctl enable --now  rustdesk-server-hbbs.service \033[0m"
+    echo -e "\033[32m To use run as Relay Server , you need to run \033[0m"
+    echo -e "\033[32m sudo systemctl enable --now  rustdesk-server-hbbr.service \033[0m"
 } 
 
 post_upgrade(){

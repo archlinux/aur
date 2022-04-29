@@ -9,6 +9,7 @@ arch=('x86_64' 'aarch64')
 url="https://github.com/rustdesk/rustdesk-server"
 license=('Proprietary')
 provides=(${_pkgname})
+conflicts=("rustdesk-server-demo")
 source=(
 "${_pkgname}-hbbs.service"
 "${_pkgname}-hbbr.service"

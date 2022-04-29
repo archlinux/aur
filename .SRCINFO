@@ -8,6 +8,7 @@ pkgbase = rustdesk-server-bin
 	arch = aarch64
 	license = Proprietary
 	provides = rustdesk-server
+	conflicts = rustdesk-server-demo
 	source = rustdesk-server-hbbs.service
 	source = rustdesk-server-hbbr.service
 	source = rustdesk-server.sysusers
