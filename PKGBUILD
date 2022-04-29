@@ -3,7 +3,7 @@
 # Contributor: frichtlm <frichtlm@gmail.com>
 
 _cranname=dplyr
-_cranver=1.0.8
+_cranver=1.0.9
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -47,7 +47,7 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
         "CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
-sha256sums=('3b6aa3a06d67037223da6af4b59ab89cbd342bc450b92c6050fb267127236075'
+sha256sums=('e2e1f7312618b4e32ada9a1da79cef32eaec12acd408c973a6b069c6be4fb46b'
             'e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b')
 
 build() {
