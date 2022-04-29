@@ -1,0 +1,18 @@
+pkgbase = ros-noetic-moveit-resources-pr2-description
+	pkgdesc = ROS - PR2 Resources used for MoveIt! testing
+	pkgver = 0.8.2
+	pkgrel = 1
+	url = https://moveit.ros.org
+	arch = i686
+	arch = x86_64
+	arch = aarch64
+	arch = armv7h
+	arch = armv6h
+	license = BSD
+	makedepends = cmake
+	makedepends = ros-build-tools
+	makedepends = ros-noetic-catkin
+	source = ros-noetic-moveit-resources-pr2-description-0.8.2.tar.gz::https://github.com/ros-planning/moveit_resources/archive/0.8.2.tar.gz
+	sha256sums = eefedc471515f63648924893de796a7533005af8aec86e158fde8b18c0dc95b3
+
+pkgname = ros-noetic-moveit-resources-pr2-description
