@@ -1,7 +1,7 @@
 pkgbase = mingw-w64-ffmpeg
 	pkgdesc = Complete solution to record, convert and stream audio and video (mingw-w64)
 	pkgver = 5.0
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://ffmpeg.org/
 	arch = any
@@ -41,6 +41,7 @@ pkgbase = mingw-w64-ffmpeg
 	depends = mingw-w64-sdl2
 	depends = mingw-w64-speex
 	depends = mingw-w64-srt
+	depends = mingw-w64-vmaf
 	depends = mingw-w64-x264
 	depends = mingw-w64-xvidcore
 	depends = mingw-w64-zimg

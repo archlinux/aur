@@ -2,7 +2,7 @@
 
 pkgname=mingw-w64-ffmpeg
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Complete solution to record, convert and stream audio and video (mingw-w64)"
 arch=('any')
@@ -38,14 +38,13 @@ depends=(
   'mingw-w64-sdl2'
   'mingw-w64-speex'
   'mingw-w64-srt'
+  'mingw-w64-vmaf'
   'mingw-w64-x264'
   'mingw-w64-xvidcore'
   'mingw-w64-zimg'
   'mingw-w64-zlib'
   'mingw-w64-x265'
 )
-# TODO: Add vmaf dependency
-#'mingw-w64-vmaf'
 #'mingw-w64-svt-av1' (only 64 bit support)
 options=(!strip !buildflags staticlibs)
 makedepends=('mingw-w64-amf-headers' 'mingw-w64-avisynthplus' 'mingw-w64-gcc' 'mingw-w64-pkg-config' 'git' 'yasm')
@@ -67,8 +66,7 @@ prepare() {
 
   patch -Np1 -i "${srcdir}/configure.patch"
 
-# TODO: Add vmaf dependency
-#  patch -Np1 -i "${srcdir}"/ffmpeg-vmaf2.x.patch # vmaf 2.x support
+  patch -Np1 -i "${srcdir}"/ffmpeg-vmaf2.x.patch # vmaf 2.x support
 
   patch -Np1 -i "${srcdir}"/add-av_stream_get_first_dts-for-chromium.patch # https://crbug.com/1251779
 }
@@ -123,6 +121,7 @@ build() {
       --enable-libssh \
       --enable-libtheora \
       --enable-libvidstab \
+      --enable-libvmaf \
       --enable-libvorbis \
       --enable-libvpx \
       --enable-libwebp \
@@ -137,8 +136,6 @@ build() {
       --disable-doc \
       --x86asmexe=yasm
 
-# TODO: Add vmaf dependency
-#      --enable-libvmaf \
 # (only  64 bit support)
 #      --enable-libsvtav1 \
 
