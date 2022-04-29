@@ -1,6 +1,6 @@
 pkgbase = nogil-python
 	pkgdesc = Python Multithreading without GIL
-	pkgver = 3.9.9+1+766afea
+	pkgver = 3.9.10+1+5c35dc0
 	pkgrel = 1
 	url = https://github.com/colesbury/nogil
 	arch = x86_64
@@ -27,7 +27,7 @@ pkgbase = nogil-python
 	provides = python=3.9
 	conflicts = python=3.9
 	conflicts = python39
-	source = nogil-766afeaec8f8ed8e875db59c781cbdf785e5a3ed.zip::https://github.com/colesbury/nogil/archive/766afeaec8f8ed8e875db59c781cbdf785e5a3ed.zip
-	sha256sums = aa8d86237f014a6a181ee4cbe2f909e51b23d35c147141927dfefa809d3397b8
+	source = nogil-5c35dc0df4e2ea114dd1a692091ac04ed6b4de23.zip::https://github.com/colesbury/nogil/archive/5c35dc0df4e2ea114dd1a692091ac04ed6b4de23.zip
+	sha256sums = fd35961db7770d942ae0f5e890eb3847897e3b0c80064df254af2150b07569ce
 
 pkgname = nogil-python

@@ -7,9 +7,9 @@
 # Contributor: Jason Chu <jason@archlinux.org>
 
 _srcname=nogil
-_gitcommit=766afeaec8f8ed8e875db59c781cbdf785e5a3ed
+_gitcommit=5c35dc0df4e2ea114dd1a692091ac04ed6b4de23
 _pkgrevision=1
-_pyversion=3.9.9
+_pyversion=3.9.10
 _pybasever=${_pyversion%.*}
 _pymajver=${_pybasever%.*}
 
@@ -34,7 +34,7 @@ source=(
   "${_srcname}-${_gitcommit}.zip::${url}/archive/${_gitcommit}.zip"
 )
 sha256sums=(
-  'aa8d86237f014a6a181ee4cbe2f909e51b23d35c147141927dfefa809d3397b8'
+  'fd35961db7770d942ae0f5e890eb3847897e3b0c80064df254af2150b07569ce'
 )
 
 prepare() {
