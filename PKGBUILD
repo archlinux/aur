@@ -2,28 +2,23 @@
 
 pkgname=talosctl
 pkgver=1.0.4
-_commit=f6696063ecd7ced82fed6d4354a52d73c0c1fb2e
 # https://github.com/siderolabs/talos/blob/master/Makefile#L16
-_pkgs='v1.0.0-10-gbf81bd2'
-_extras='v1.0.0-2-gc5d3ab0'
-pkgrel=1
+pkgrel=2
 pkgdesc='CLI for Talos - A modern OS for Kubernetes'
 arch=('x86_64')
 url='https://github.com/siderolabs/talos'
 license=('MPL2')
 makedepends=('git' 'go')
 options=(!lto)
-source=("git+https://github.com/siderolabs/talos.git#commit=$_commit?signed")
+source=("git+https://github.com/siderolabs/talos.git#tag=v${pkgver}?signed")
 b2sums=('SKIP')
 validpgpkeys=('DB997306E3102F11C4E8F5527B26396447AB6DFD') # "Andrey Smirnov <andrey.smirnov@talos-systems.com>"
 
-pkgver() {
-  cd talos/cmd/talosctl
-  git describe | sed 's/^v//;s/-//;s/-/+/g'
-}
-
 build() {
-  cd talos/cmd/talosctl
+  cd talos
+  export _PKGS=$(grep '^PKGS ?=.*' Makefile | cut -d' ' -f3)
+  export _EXTRA=$(grep '^EXTRAS ?=.*' Makefile | cut -d' ' -f3)
+  cd cmd/talosctl
   export CGO_LDFLAGS="${LDFLAGS}"
   export CGO_CFLAGS="${CFLAGS}"
   export CGO_CPPFLAGS="${CPPFLAGS}"
@@ -32,10 +27,10 @@ build() {
     -buildmode=pie \
     -trimpath \
     -ldflags "-X github.com/talos-systems/talos/pkg/version.Name=Talos \
-              -X github.com/talos-systems/talos/pkg/version.SHA=${_commit} \
+              -X github.com/talos-systems/talos/pkg/version.SHA=$(git rev-parse HEAD) \
               -X github.com/talos-systems/talos/pkg/version.Tag=v${pkgver} \
-              -X github.com/talos-systems/talos/pkg/version.PkgsVersion=${_pkgs} \
-              -X github.com/talos-systems/talos/pkg/version.ExtrasVersion=${_extras} \
+              -X github.com/talos-systems/talos/pkg/version.PkgsVersion=${_PKGS:?_PKGS unset} \
+              -X github.com/talos-systems/talos/pkg/version.ExtrasVersion=${_EXTRA:?_EXTRA unset} \
               -X github.com/talos-systems/talos/pkg/images.Username=talos-systems \
               -X github.com/talos-systems/talos/pkg/images.Registry=ghcr.io \
               -X ggithub.com/talos-systems/talos/cmd/talosctl/pkg/mgmt/helpers.ArtifactsPath=_out \
