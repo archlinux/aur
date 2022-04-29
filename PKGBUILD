@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=gtree
-pkgver=1.5.0
+pkgver=1.5.2
 pkgrel=1
 pkgdesc="Generates tree from Markdown or programmatically"
 arch=('x86_64' 'i686' 'aarch64')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('9023bd9861e3432a69d67922c87254c636dbc50fbe9f16b22f9c0158f2e70f50')
+sha256sums=('0655d7ab1382784e5bcc2771be64901b089cda72d261b44e3c9680bc67a97fb7')
 
 prepare() {
 	cd "$pkgname-$pkgver"
