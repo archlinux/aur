@@ -3,7 +3,7 @@
 # Contributor: Michał Lisowski <lisu@riseup.net>
 
 pkgname='kaf-bin'
-pkgver=0.1.52
+pkgver=0.1.53
 pkgrel=1
 pkgdesc='Kafka CLI inspired by kubectl & docker'
 url=''
@@ -12,18 +12,15 @@ license=('MIT')
 provides=('kaf-bin')
 conflicts=('kaf-bin')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/birdayz/kaf/releases/download/v0.1.52/kaf_0.1.52_Linux_arm64.tar.gz")
-sha256sums_aarch64=('4599f58c90e52a8c5ed59466cd5619e0f607aea17d0a856a83bd6dca13765ede')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/birdayz/kaf/releases/download/v0.1.53/kaf_0.1.53_Linux_arm64.tar.gz")
+sha256sums_aarch64=('46555ac8dde2ee39eed024b2d744f22c0b1b75c36631e3c6cf67cd911fdcd0c4')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/birdayz/kaf/releases/download/v0.1.52/kaf_0.1.52_Linux_x86_64.tar.gz")
-sha256sums_x86_64=('3d18969139a1a66bd15acf8b99870f07a27aaaa12fa2814523f2ffa4684e5402')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/birdayz/kaf/releases/download/v0.1.53/kaf_0.1.53_Linux_x86_64.tar.gz")
+sha256sums_x86_64=('b3650742c3a501abe3d58ed456a85bec2ab4491bd4b95ae0ddf250708ba76c56')
 
 package() {
   # bin
   install -Dm755 "./kaf" "${pkgdir}/usr/bin/kaf"
-
-  # license
-  install -Dm644 "./LICENSE.md" "${pkgdir}/usr/share/licenses/kaf/LICENSE"
 
   # completions
   # bash
