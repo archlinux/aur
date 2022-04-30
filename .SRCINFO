@@ -29,6 +29,7 @@ pkgbase = polybar-git
 	optdepends = i3-wm: i3 module support
 	provides = polybar
 	conflicts = polybar
+	backup = etc/polybar/config.ini
 	source = polybar::git+https://github.com/polybar/polybar.git
 	sha256sums = SKIP
 
