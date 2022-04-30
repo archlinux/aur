@@ -1,14 +1,15 @@
 pkgbase = suckit
 	pkgdesc = Recursively visit and download a website's content to your disk
-	pkgver = 0.1.2
+	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://github.com/Skallwar/suckit
 	arch = any
 	license = Apache
-	makedepends = rust
+	license = MIT
+	makedepends = cargo
 	depends = openssl
 	depends = gcc-libs
-	source = suckit-0.1.2.tar.gz::https://github.com/Skallwar/suckit/archive/v0.1.2.tar.gz
-	sha512sums = b21111152b5c00fb3b92b191d0a125e4487d4caf4c7bbe92be67472c3c14a6d91e377142dd74fe1563e34769b15839be5b2159d389ac21c0d035a0190f5d3fe0
+	source = suckit-0.2.0.tar.gz::https://github.com/Skallwar/suckit/archive/v0.2.0.tar.gz
+	sha512sums = 7e15dc63c4062d537739a5074ccae1669366f1e64e5f34564904aa966d18a9711bd9132195ff5c2da98c5ee5f9fa1ca9b5f4b453ffd814dae82f40027e27288c
 
 pkgname = suckit
