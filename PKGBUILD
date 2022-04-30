@@ -1,9 +1,10 @@
 # Maintainer: Tomkoid <tomkoid@tomkoid.tk>
 pkgname=blurry-text-fix
 pkgver=2
-pkgrel=1
-pkgdesc="Fixes blurry text in GTK4 / GNOME (added support for Flatpak)"
+pkgrel=2
+pkgdesc="Fixes blurry text in GTK4 and Flatpak"
 license=('GPL3')
+provides=('blurry-text-fix')
 install=$pkgname.install
 arch=('x86_64')
 depends=('gtk4')

@@ -22,15 +22,20 @@ post_install() {
 		flatpak override --filesystem=xdg-config/gtk-4.0
 	fi
 
+	echo "The new config file is stored in /usr/share/gtk-4.0/settings.ini."
 	echo "### Done. Please relog to apply changes."
 }
 
 post_upgrade() {
+	echo "### Please ignore file details warnings."
 	post_install
 }
 
 post_remove() {
+	echo "Removing modified settings.ini."
 	rm /usr/share/gtk-4.0/settings.ini
+	echo "Restoring old settings.ini."
 	mv /usr/share/gtk-4.0/settings-old.ini /usr/share/gtk-4.0/settings.ini
+	echo "The old config file is stored in /usr/share/gtk-4.0/settings.ini."
 	echo "### Done. Please relog to apply changes."
 }
