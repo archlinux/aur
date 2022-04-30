@@ -2,7 +2,7 @@
 # Maintainer: e-search-git
 # Contributor: e-search-git
 pkgname=e-search-git
-pkgver=1.3.10
+pkgver=1.4.4
 pkgrel=1
 pkgdesc="识屏 · 搜索"
 arch=('x86_64')
@@ -32,16 +32,20 @@ prepare() {
 
 build() {
     cd "${srcdir}/eSearch"
-    npm run make
+    npm run rebuild
+    sed -i "s/\"tar.gz\",//g" package.json
+    sed -i "s/\"deb\",/\"deb\"/g" package.json
+    sed -i "s/\"rpm\"//g" package.json
+    npm run dist
 }
 
 package(){
-    cd "${srcdir}/eSearch/out/make/deb/x64"
+    cd "${srcdir}/eSearch/build"
 
 	# Extract package data
     ar -x *.deb
 	tar xf data.tar.xz -C "${pkgdir}"
 
-	install -D -m644 "${pkgdir}/usr/lib/e-search/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -D -m644 "${pkgdir}/opt/eSearch/LICENSES.chromium.html" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
 }
