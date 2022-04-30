@@ -6,7 +6,7 @@
 #NOTE: The UT dictionary's project page: http://linuxplayers.g1.xrea.com/mozc-ut.html
 
 pkgname='mozc-ut'
-pkgver=2.26.4695.102.20220403
+pkgver=2.28.4715.102.20220423
 pkgrel=1
 pkgdesc='The Open Source edition of Google Japanese Input bundled with the UT dictionary'
 arch=('x86_64')
@@ -18,12 +18,12 @@ optdepends=('fcitx5-mozc-ut: Fcitx5 integration'
             'fcitx-mozc-ut: Fcitx integration'
             'ibus-mozc: IBus integration'
             'emacs-mozc: Emacs integration')
-provides=('mozc=2.26.4695.102')
+provides=('mozc=2.28.4715.102')
 conflicts=('mozc')
-source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=120fce6efa66e7bfa8e725040c4e3b6b0de192b7"
-        'https://osdn.net/downloads/users/38/38182/mozcdic-ut-20220403.tar.bz2')
+source=("${pkgname}-git::git+https://github.com/google/mozc.git#commit=4c5d516fdff227039305eef3411f12bac9f02246"
+        'https://osdn.net/downloads/users/38/38364/mozcdic-ut-20220423.tar.bz2')
 sha256sums=('SKIP'
-            '091c867c5c8f759f3dff9ba46787e9e6539e9e7877e19c91b7be9f18c144d28e')
+            '41fe6cd1855e8e1c523932a19fe3200ae3ce5daaee4ed13923693e287ef547e9')
 
 prepare() {
     cd ${pkgname}-git/src
@@ -37,7 +37,7 @@ prepare() {
     sed -i -e 's/android_ndk_repository(name = "androidndk")/#android_ndk_repository(name = "androidndk")/' WORKSPACE.bazel
 
     # Append the UT dictionary
-    cat ${srcdir}/mozcdic-ut-20220403/mozcdic-ut-20220403.txt >> data/dictionary_oss/dictionary00.txt
+    cat ${srcdir}/mozcdic-ut-20220423/mozcdic-ut-20220423.txt >> data/dictionary_oss/dictionary00.txt
 }
 
 build() {
@@ -48,7 +48,7 @@ build() {
 }
 
 package() {
-    install -Dm644 mozcdic-ut-20220403/LICENSE                  ${pkgdir}/usr/share/licenses/mozc/LICENSE_UT_DICTIONARY
+    install -Dm644 mozcdic-ut-20220423/LICENSE                  ${pkgdir}/usr/share/licenses/mozc/LICENSE_UT_DICTIONARY
 
     cd ${pkgname}-git/src
 
