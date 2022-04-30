@@ -10,7 +10,7 @@ license=('GPL')
 makedepends=(git make)
 provides=($pkgname=$pkgver)
 conflicts=($pkgname)
-sha256sums=('4378c8343c19eb17fab0878608407273d101e2262e4d5660c4855fc1ec94b840')
+sha256sums=('SKIP')
 
 prepare() {
   git clone git@gitlab.com:sarqx_group/sarqx-reporter.git
