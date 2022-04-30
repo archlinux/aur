@@ -1,0 +1,20 @@
+pkgbase = tal-drum
+	pkgver = 1.0.8
+	pkgrel = 1
+	url = https://tal-software.com/products/tal-drum
+	arch = x86_64
+	license = EULA
+	depends = libcurl-gnutls
+	depends = glibc
+	source = https://tal-software.com/downloads/plugins/TAL-Drum_64_linux.zip
+	md5sums = c6c70683dabd72b44f567a27586e2b10
+
+pkgname = tal-drum-vst
+	pkgdesc = A Simple To Use Drum Sampler By TAL Software (VST)
+	groups = pro-audio
+	groups = vst-plugins
+
+pkgname = tal-drum-vst3
+	pkgdesc = A Simple To Use Drum Sampler By TAL Software (VST)
+	groups = pro-audio
+	groups = vst3-plugins
