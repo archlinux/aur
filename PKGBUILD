@@ -2,7 +2,7 @@
 # Contributor: BrainDamage
 
 pkgname='comic-dl'
-pkgver=2022.04.19
+pkgver=2022.04.23
 pkgrel=1
 pkgdesc='Comic-dl is a command line tool to download Comics and Manga from various Manga and Comic sites easily.'
 arch=(any)
@@ -14,7 +14,7 @@ depends=(
 	'python-clint' 'img2pdf' 'python-colorama' 'python-future' 
 	'python-beautifulsoup4' 'python-cloudscraper' 'phantomjs' 
 	'nodejs' 'python-jsbeautifier')
-sha256sums=('e9a6c694a4f3716d981f84bfb3609c0e7eefdc98c83c461af7bea0528142c1fd')
+sha256sums=('43f9c0f057372a191a2ff6aeff6de64f19f474eae8e29ec18c59b079cc7e3a2d')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/Xonshiz/${pkgname}/archive/$pkgver.tar.gz")
 
 _srcdir="$pkgname-$pkgver"
