@@ -4,9 +4,12 @@ pkgbase = kubebuilder-bin
 	pkgrel = 1
 	url = https://github.com/kubernetes-sigs/kubebuilder
 	arch = x86_64
+	arch = aarch64
 	license = APACHE
 	conflicts = kubebuilder
-	source = https://github.com/kubernetes-sigs/kubebuilder/releases/download/v3.4.0/kubebuilder_linux_amd64
-	sha256sums = cf90dad16d27a9c31db11f2c326aad926036610a75be03f342e28136ae64cf47
+	source_x86_64 = https://github.com/kubernetes-sigs/kubebuilder/releases/download/v3.4.0/kubebuilder_linux_amd64
+	sha256sums_x86_64 = cf90dad16d27a9c31db11f2c326aad926036610a75be03f342e28136ae64cf47
+	source_aarch64 = https://github.com/kubernetes-sigs/kubebuilder/releases/download/v3.4.0/kubebuilder_linux_arm64
+	sha256sums_aarch64 = 9b6fb03d1fe4e0d6ce55baa37af6336affc3f5f3bf34ff03b433b35fd6dfc816
 
 pkgname = kubebuilder-bin
