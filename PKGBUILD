@@ -3,7 +3,7 @@
 
 pkgname=ghq
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Remote repository management made easy"
 arch=('i686' 'x86_64')
 url="https://github.com/x-motemen/ghq"
@@ -30,7 +30,7 @@ package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   install -Dm 755 ghq "$pkgdir/usr/bin/ghq"
-  install -Dm 644 misc/bash/_ghq "$pkgdir/usr/share/bash-completion/completions/_ghq"
+  install -Dm 644 misc/bash/_ghq "$pkgdir/usr/share/bash-completion/completions/ghq"
   install -Dm 644 misc/zsh/_ghq "$pkgdir/usr/share/zsh/site-functions/_ghq"
   install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/ghq/LICENSE"
 }
