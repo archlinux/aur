@@ -1,17 +1,20 @@
 pkgbase = suckit-git
 	pkgdesc = Recursively visit and download a website's content to your disk (git)
-	pkgver = 0.1.2.r0.g7c05a18
+	pkgver = 0.2.0.r3.g13e9d9f
 	pkgrel = 1
 	url = https://github.com/Skallwar/suckit
 	arch = any
 	license = Apache
+	license = MIT
 	makedepends = rust
 	makedepends = git
-	depends = openssl
 	depends = gcc-libs
 	provides = suckit
 	conflicts = suckit
+	options = !lto
 	source = git+https://github.com/Skallwar/suckit
+	source = suckit-git-cargo-lock.patch::https://github.com/Skallwar/suckit/commit/2a88eacc28d3ade3c88b43f00aceccba36652152.patch
 	sha512sums = SKIP
+	sha512sums = 28bd3770600b74854900f3b9eafae5b83063151568e82affc64d66c76d173d85b36d521504ecfe8a43401f7c888b74c32887332fea64fd60e32b9017ae9b75a9
 
 pkgname = suckit-git
