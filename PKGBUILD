@@ -2,15 +2,16 @@
 # Package Repository: https://github.com/mij-aur-packages/log2ram
 
 pkgname=log2ram
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="ramlog like for systemd (Put log into a ram folder)"
 arch=('any')
 url="https://github.com/azlux/log2ram"
 license=('MIT')
 backup=('etc/log2ram.conf')
+optdepends=('rsync: for better performance')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/azlux/${pkgname}/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('844d85c503a8b0e34c5cc7627c229cc581acd0d6f36115195ac9a5f9686efe65')
+sha256sums=('41aeda16080fed76ddab12ecc50a84d1ba1b11cd76547efa37e4fa9a17969d73')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
