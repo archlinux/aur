@@ -1,8 +1,8 @@
 # Maintainer: Drew S. Ortega <orvyx@protonmail.com>
 pkgname=brim
-pkgver=0.28.0
-pkgrel=2
-pkgdesc="Desktop application to efficiently search large packet captures and Zeek logs."
+pkgver=0.29.0
+pkgrel=3
+pkgdesc="Desktop application to efficiently search and analyze super-structured data. Powered by Zed."
 arch=('x86_64')
 url="https://www.brimsecurity.com/download/"
 license=('custom')
@@ -12,7 +12,7 @@ source=("https://github.com/brimdata/brim/releases/download/v${pkgver}/${pkgname
 "https://raw.githubusercontent.com/brimdata/brim/v${pkgver}/LICENSE.txt"
 )
 noextract=("${pkgname}-${pkgver}.deb")
-sha256sums=('a743e779bc4fa12d731558cb7bd6ebaabd5f8c92b108c554f41cda3147f3ef3f'
+sha256sums=('70f8cd660cf3f52c95af634edd957435f88ed22fe3c47af9bf87c09139f3e423'
             'a8b360eb5a0cf91c98f39fd4259d09263d883222a8be42b0ee77ad80937e86ac')
 
 package() {
