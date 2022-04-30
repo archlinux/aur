@@ -5,15 +5,15 @@
 pkgname='moc-pulse'
 _pkgname='moc'
 pkgver=2.5.2
-pkgrel=6
+pkgrel=7
 pkgdesc='An ncurses console audio player with support for pulseaudio'
 arch=('x86_64')
 url="https://moc.daper.net/"
 license=('GPL')
 depends=('libmad' 'libid3tag' 'jack' 'curl' 'libltdl' 'file' 'sndio' 'pulseaudio')
-makedepends=('speex' 'ffmpeg' 'taglib' 'libmpcdec' 'wavpack' 'libmodplug' 'faad2')
+makedepends=('speex' 'ffmpeg4.4' 'taglib' 'libmpcdec' 'wavpack' 'libmodplug' 'faad2')
 optdepends=('speex: for using the speex plugin'
-	          'ffmpeg: for using the ffmpeg plugin'
+	          'ffmpeg4.4: for using the ffmpeg plugin'
 	          'taglib: for using the musepack plugin'
 	          'libmpcdec: for using the musepack plugin'
             'wavpack: for using the wavpack plugin'
@@ -47,6 +47,8 @@ prepare() {
 
 build() {
   cd "${_pkgname}-${pkgver}"
+
+  export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
 
   ./configure --prefix=/usr --without-rcc \
     --with-pulse --with-oss --with-alsa --with-jack --with-aac \
