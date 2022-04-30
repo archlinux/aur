@@ -1,8 +1,8 @@
 # Mantainer: Franco Tortoriello
 
 pkgname=dosbox-x-git
-pkgver=16317.504b33a49
-pkgrel=2
+pkgver=16643.bdb285d31
+pkgrel=1
 pkgdesc="x86 emulator with builtin DOS, with patches with more features"
 arch=(i686 x86_64)
 url="http://dosbox.sourceforge.net"
@@ -14,7 +14,7 @@ optdepends=('openglide-git: Third-party 3dfx Glide API support'
  'libslirp: Allows DosBox-X to connect to the internet rootless solution')
 optdepends=()
 install='dosbox-x.install'
-source=(dosbox-x::git://github.com/joncampbell123/dosbox-x.git)
+source=(dosbox-x::git+https://github.com/joncampbell123/dosbox-x.git)
 
 pkgver() {
   cd "$SRCDEST/dosbox-x"
