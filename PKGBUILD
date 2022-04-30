@@ -1,7 +1,7 @@
 # Maintainer: hellosway hellosway@protonmail.com
 pkgname=mcpppp
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Converter for minecraft resourcepacks"
 arch=('x86_64' 'aarch64')
 url="https://github.com/supsm/MCPPPP"
