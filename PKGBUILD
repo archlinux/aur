@@ -7,7 +7,6 @@
 
 # ALARM: Kevin Mihelich <kevin@archlinuxarm.org>
 #  - use -fPIC in host cflags for v7/v8 to fix print_options.c compile
-#  - explicitly link v5/v6 with libatomic
 #  - remove makedepends on ffnvcodec-headers, remove --enable-nvenc, --enable-nvdec
 #  - remove depends on aom, remove --enable-libaom
 #  - remove depends on intel-media-sdk, remove --enable-libmfx
@@ -18,8 +17,8 @@
 # Upstream: https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/extra/ffmpeg/PKGBUILD
 
 pkgname=ffmpeg-mmal
-pkgver=4.4
-pkgrel=5
+pkgver=5.0
+pkgrel=6
 epoch=2
 pkgdesc='ffmpeg built with MMAL hardware acceleration support for Raspberry Pi'
 arch=('armv6h' 'armv7h' 'aarch64')
@@ -101,33 +100,35 @@ provides=(
   libswscale.so
 )
 conflicts=('ffmpeg')
-_tag=dc91b913b6260e85e1304c74ff7bb3c22a8c9fb1
+_tag=390d6853d0ef408007feb39c0040682c81c02751
+options=(
+  debug
+)
 source=(
   git+https://git.ffmpeg.org/ffmpeg.git#tag=${_tag}
-  vmaf-model-path.patch
+  ffmpeg-vmaf2.x.patch
+  add-av_stream_get_first_dts-for-chromium.patch
 )
-sha256sums=(
-  SKIP
-  8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d
-)
-
-pkgver() {
-  cd ffmpeg
-
-  git describe --tags | sed 's/^n//'
-}
+b2sums=('SKIP'
+        '65039aac811bfd143359e32720cd6ca64124f1789c1b624bd28a5bd75b37362b2a3b6b402203c4e9d137fb1d00895114f3789df40f8381091d38c98e7876cc8a'
+        '3f2ee7606500fa9444380d138959cd2bccfbba7d34629a17f4f6288c6bde29e931bbe922a7c25d861f057ddd4ba0b095bbd675c1930754746d5dd476b3ccbc13')
 
 prepare() {
   cd ffmpeg
   git cherry-pick -n 988f2e9eb063db7c1a678729f58aab6eba59a55b # fix nvenc on older gpus
-  patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
+  patch -Np1 -i ../ffmpeg-vmaf2.x.patch # vmaf 2.x support
+  patch -Np1 -i ../add-av_stream_get_first_dts-for-chromium.patch # https://crbug.com/1251779
+}
+
+pkgver() {
+  cd ffmpeg
+  git describe --tags | sed 's/^n//'
 }
 
 build() {
   cd ffmpeg
 
   [[ $CARCH == "armv7h" || $CARCH == "aarch64" ]] && CONFIG='--host-cflags="-fPIC"'
-  [[ $CARCH == "armv6h" || $CARCH == 'arm' ]] && CONFIG='--extra-libs="-latomic"'
 
   ./configure \
     --prefix=/usr \
