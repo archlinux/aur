@@ -1,7 +1,7 @@
 pkgbase = cylon
 	pkgdesc = Updates, Maintenance, backup and system checks in a menu driven TUI written in Bash
-	pkgver = 6.1
-	pkgrel = 2
+	pkgver = 6.2
+	pkgrel = 3
 	url = https://github.com/gavinlyonsrepo/cylon
 	arch = any
 	license = GPL
@@ -16,9 +16,8 @@ pkgbase = cylon
 	optdepends = bleachbit: used for system clean
 	optdepends = gnu-netcat: used for checking network
 	optdepends = openbsd-netcat: used for checking network
-	optdepends = rsync: used for backup
 	optdepends = libnotify: desktop notifications
-	source = https://github.com/gavinlyonsrepo/cylon/archive/6.1.tar.gz
-	sha256sums = a4a06a4300181499bec37b1dbcad0365f09da0fa78aaf23915ac9d82f47a7d04
+	source = https://github.com/gavinlyonsrepo/cylon/archive/6.2.tar.gz
+	sha256sums = b22a857d71ebdf192e2cfcf70ba5208e3a093c00aa06375509bd7caa4cea4a12
 
 pkgname = cylon
