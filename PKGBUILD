@@ -7,6 +7,7 @@ pkgdesc="CLI application."
 arch=(i686 x86_64)
 url="git@gitlab.com/sarqx_group/sarqx-reporter"
 license=('GPL')
+source=("https://gitlab.com/sarqx_group/sarqx-reporter/-/archive/master/viewer-master.tag.gz")
 sha256sums=('SKIP')
 
 package() {

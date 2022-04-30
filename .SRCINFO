@@ -6,6 +6,7 @@ pkgbase = sarqx-reporter
 	arch = i686
 	arch = x86_64
 	license = GPL
+	source = https://gitlab.com/sarqx_group/sarqx-reporter/-/archive/master/viewer-master.tag.gz
 	sha256sums = SKIP
 
 pkgname = sarqx-reporter
