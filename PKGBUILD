@@ -4,7 +4,7 @@
 
 pkgname=unvanquished
 pkgver=0.52.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A team-based, fast-paced, fps/rts hybrid game which pits aliens against humans.'
 arch=('x86_64')
 url='https://www.unvanquished.net'
@@ -76,6 +76,10 @@ prepare() {
 
 	# Link the NaCL SDK in the Dæmon source tree.
 	ln -sfr "${_naclsdk}"            "${_daemon}/external_deps/${_naclsdk}"
+
+	# Patch breakpad.
+	# TODO: This is fixed upstream; remove this with the next release.
+	sed -i 's/16384, SIGSTKSZ/16384u, static_cast<unsigned>(SIGSTKSZ)/g' $(find ${_breakpad} -name "exception_handler.cc")
 }
 
 build() {
