@@ -1,0 +1,16 @@
+pkgbase = iotas
+	pkgdesc = Simple note taking
+	pkgver = 0.1.1
+	pkgrel = 1
+	url = https://gitlab.gnome.org/cheywood/iotas
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = meson
+	makedepends = gobject-introspection
+	depends = glib2
+	depends = libadwaita
+	source = https://gitlab.gnome.org/cheywood/iotas/-/archive/0.1.1/iotas-0.1.1.tar
+	b2sums = 707ea73cf03c5976b67639fa8c0668eb33f56751e885e206d172b018c8ebed4b7b2a6e68a8a680401773d252843a0ac4e34f71cbf2f59bbfa755003d64fb5de8
+
+pkgname = iotas
