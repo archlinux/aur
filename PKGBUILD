@@ -1,16 +1,16 @@
 pkgname=python-mujoco
-pkgver=2.1.3
+pkgver=2.1.5
 pkgrel=1
 pkgdesc="Mujoco's Python bindings"
-depends=('python' 'absl-py' 'python-glfw' 'python-numpy' 'python-opengl' 'mujoco' 'glew')
-makedepends=('python-setuptools' 'pybind11' 'abseil-cpp' 'eigen' 'cmake')
+depends=('python' 'absl-py' 'python-glfw' 'python-numpy' 'python-opengl' 'mujoco')
+makedepends=('python-setuptools' 'pybind11' 'abseil-cpp' 'eigen' 'cmake' 'git')
 arch=('x86_64')
 url="https://github.com/deepmind/mujoco"
 license=('LGPL3')
 source=("git+https://github.com/deepmind/mujoco.git#tag=$pkgver"
 "mujoco.patch")
 sha256sums=('SKIP'
-            '8852ea463f868859726e92b61d2f40f2f224a520f8b1b8b066933ba935b80452')
+            '980dd530674d497ebe72dc4e822d3a14e904c75a1840d5bfdc40e3c55f57b8db')
 
 build() {
   cd "${srcdir}/mujoco"
