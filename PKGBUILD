@@ -2,14 +2,14 @@
 pkgname=connective-http
 pkgver=1.0.0
 
-pkgrel=31
+pkgrel=32
 pkgdesc="Connective -- Lightweight Java HTTP Server"
 arch=( 'any' )
 url=""
 license=('GPL2')
 groups=( "connective-server" )
-depends=( 'java-environment>=15.0' 'authbind' )
-makedepends=( 'gradle>=6.7' )
+depends=( 'jdk17-openjdk' 'authbind' )
+makedepends=( 'jdk17-openjdk' 'gradle>=6.7' )
 optdepends=()
 provides=()
 conflicts=()
@@ -20,10 +20,11 @@ install=main.install
 changelog=
 source=("git+https://aerialworks.ddns.net/ASF/ConnectiveStandalone.git" "scripts-and-configs.tar.gz")
 noextract=()
-md5sums=('SKIP' 'ae6c8a62f6b863a86b7981883351f0dd')
+md5sums=('SKIP' '0ec265bc6657dfc706654fe6800c8742')
 
 build() {
     cd ConnectiveStandalone
+    export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
     gradle build
 }
 
