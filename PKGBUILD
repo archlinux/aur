@@ -60,27 +60,16 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-bcachefs-git
-pkgver=v5.16.14.arch1.r1061551.7b6fc21abe08
-_srcver_tag=v5.16.14.arch1
+pkgver=v5.17.5.arch1.r1075849.bdf6d7c13504
+_srcver_tag=v5.17.5.arch1
 pkgrel=1
 pkgdesc="Linux"
 url="https://github.com/koverstreet/bcachefs"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-    bc
-    kmod
-    libelf
-    pahole
-    cpio
-    perl
-    tar
-    xz
-    xmlto
-    python-sphinx
-    python-sphinx_rtd_theme
-    graphviz
-    imagemagick
+    bc libelf pahole cpio perl tar xz
+    xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
     git
 )
 options=('!strip')
@@ -117,7 +106,7 @@ sha512sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'd154f68d39cbe0dc25f9a721e987b7b8fbbebe5d08ed1a50c4ef64174814caf13fc8c4cc64d7d057e3d157d72ab1e88543cab397bff47bcca71bc916ec4da189')
+            '95ca435c2bbef680fd0e3b060c3abc190b3cbbc6bbcc0cf0fd768bb4b840ecbeca8bf156d24572c5981ae4393fc4d3bbdf3161cbca834cb9a0d6a79580c8821a')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
@@ -201,22 +190,14 @@ build() {
 _package() {
     pkgdesc="The $pkgdesc kernel and modules $_pkgdesc_extra"
     depends=(
-        coreutils
-        kmod
-        initramfs
-        linux-firmware
-        bcachefs-tools-git
-    )
-    optdepends=(
-        "crda: to set the correct wireless channels of your country"
+        coreutils kmod initramfs
+        wireless-regdb linux-firmware bcachefs-tools-git
     )
     provides=(
-        VIRTUALBOX-GUEST-MODULES
-        WIREGUARD-MODULE
+        VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE
     )
     replaces=(
-        virtualbox-guest-modules-arch
-        wireguard-arch
+        virtualbox-guest-modules-arch wireguard-arch
     )
 
     cd $_reponame
@@ -232,7 +213,8 @@ _package() {
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     msg2 "Installing modules..."
-    make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+    make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+        DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
     # remove build and source links
     rm "$modulesdir"/{source,build}
@@ -339,11 +321,7 @@ _package-docs() {
     ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 }
 
-pkgname=(
-    "$pkgbase"
-    "$pkgbase-headers"
-    "$pkgbase-docs"
-)
+pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
 for _p in "${pkgname[@]}"; do
     eval "package_$_p() {
         $(declare -f "_package${_p#$pkgbase}")
