@@ -1,6 +1,8 @@
-# Maintainer: aksr <aksr at t-com dot me>
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: aksr <aksr at t-com dot me>
+
 pkgname=minised
-pkgver=1.15
+pkgver=1.16
 pkgrel=1
 epoch=
 pkgdesc="A smaller, cheaper, faster SED implementation."
@@ -21,9 +23,7 @@ install=
 changelog=
 source=(http://dl.exactcode.de/oss/$pkgname/$pkgname-$pkgver.tar.gz)
 noextract=()
-md5sums=('2bec1c18ee088a817f463cc2163387f1')
-sha1sums=('c1d7f0c5993d004c75befc580692da925880918a')
-sha256sums=('ada36a55b71d1f2eb61f2f3b95f112708ce51e69f601bf5ea5d7acb7c21b3481')
+sha256sums=('46e072d5d45c9fd3d5b268523501bbea0ad016232b2d3f366a7aad0b1e7b3f71')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
@@ -40,4 +40,3 @@ package() {
   make DESTDIR="$pkgdir/" install
   install -D -m644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
-
