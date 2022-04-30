@@ -1,6 +1,6 @@
 pkgbase = amberol
 	pkgdesc = Plays music, and nothing else
-	pkgver = 0.4.3
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://gitlab.gnome.org/World/amberol
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = amberol
 	depends = gstreamer
 	depends = gst-plugins-base
 	depends = gst-plugins-bad
-	source = https://gitlab.gnome.org/World/amberol/-/archive/0.4.3/amberol-0.4.3.tar
-	b2sums = 065abd0ce70cce37a3b37ceac5d559649e3f3af3e8d9d9d15cba2605a6b87aadba9a0128929b4f684336fba8696101b4e4dfbfbb7a339ba11d2e9360772eda14
+	source = https://gitlab.gnome.org/World/amberol/-/archive/0.5.0/amberol-0.5.0.tar
+	b2sums = b275c7d2139e581902f1ed1b30a39d46f7f3e63fd13a9641234c64555ccac8ddb8654b67d2e94cdede7bcb55b778bca6a7c16f0358678599976e8fed9a23a600
 
 pkgname = amberol
