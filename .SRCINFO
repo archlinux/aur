@@ -1,0 +1,18 @@
+pkgbase = pqmusic
+	pkgdesc = A minimalistic and easy to use audio player for download and use
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/son-link/PQMusic
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	depends = python-pyqt5
+	depends = qt5-multimedia
+	depends = python-mutagen
+	depends = python-magic
+	depends = python-requests
+	source = https://github.com/son-link/PQMusic/archive/refs/tags/v.0.2.0.tar.gz
+	sha256sums = f52952576d7f8cb29cbebda383428e579bb271dad34d70cf41f18faa7fff28d8
+
+pkgname = pqmusic
