@@ -1,6 +1,6 @@
 pkgbase = didyoumean-bin
 	pkgdesc = A CLI spelling corrector
-	pkgver = 1.1.1
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/hisbaan/didyoumean
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = didyoumean-bin
 	optdepends = wayland: Wayland clipboard support
 	provides = didyoumean
 	conflicts = didyoumean
-	source = https://github.com/hisbaan/didyoumean/releases/download/v1.1.1/dym-1.1.1-x86_64.tar.gz
-	sha256sums = c8e00a1ab51d952f317d093d187bce08dbde367ba588fd634e4f726da7484303
+	source = https://github.com/hisbaan/didyoumean/releases/download/v1.1.2/dym-1.1.2-x86_64.tar.gz
+	sha256sums = 4c51cd1fcd5160a967c46007742a71aae9cc85dcdcf0c06e82711755f65d413e
 
 pkgname = didyoumean-bin
