@@ -16,5 +16,6 @@ pkgbase = sarqx-reporter
 	depends = zenity
 	provides = sarqx-reporter=0.0.1
 	conflicts = sarqx-reporter
+	sha256sums = SKIP
 
 pkgname = sarqx-reporter

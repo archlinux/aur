@@ -12,6 +12,7 @@ checkdepends=('systemd' 'sha1sum')
 makedepends=(git make)
 provides=($pkgname=$pkgver)
 conflicts=($pkgname)
+sha256sums=('SKIP')
 
 prepare() {
   git clone git@gitlab.com:sarqx_group/sarqx-reporter.git
