@@ -1,4 +1,5 @@
-# Maintainer: lobomfz <lobomfz@protonmail.com>
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: lobomfz <lobomfz@protonmail.com>
 # Contributor: Muflone http://www.muflone.com/contacts/english/
 # Contributor: Matthew Sexton <wsdmatty@gmail.com>
 # Contributor: sgtxd <mark@sgtxd.de>
@@ -6,7 +7,7 @@
 
 pkgname=ffmpeg-compat-58
 pkgver=4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Compatibility package for ffmpeg to provide versions 58 of libavcodec, libavdevice and libavformat, not anymore provided by ffmpeg-git"
 arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
@@ -64,7 +65,6 @@ depends=(
   srt
   svt-av1
   v4l-utils
-  vmaf
   xz
   zlib
 )
@@ -92,18 +92,11 @@ provides=('libavcodec.so=58' 'libavdevice.so=58' 'libavfilter.so=7'
 
 source=(
   http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz
-  vmaf-model-path.patch
 )
 
 sha256sums=(
 '06b10a183ce5371f915c6bb15b7b1fffbe046e8275099c96affc29e17645d909'
-'8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d'
 )
-
-prepare() {
-  cd ffmpeg-4.4
-  patch -Np1 -i "${srcdir}"/vmaf-model-path.patch
-}
 
 build() {
   cd ffmpeg-${pkgver}
@@ -150,7 +143,7 @@ build() {
     --enable-libtheora \
     --enable-libv4l2 \
     --enable-libvidstab \
-    --enable-libvmaf \
+    --disable-libvmaf \
     --enable-libvorbis \
     --enable-libvpx \
     --enable-libwebp \
