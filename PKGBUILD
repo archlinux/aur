@@ -4,7 +4,7 @@
 
 pkgname=git-interactive-rebase-tool
 _binname=interactive-rebase-tool
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc='Native cross platform full feature terminal based sequence editor for git interactive rebase. Written in Rust using ncurses.'
 arch=('x86_64')
@@ -14,7 +14,7 @@ depends=('libgit2')
 makedepends=('cargo')
 install=$pkgname.install
 source=("$pkgname-$pkgver.tar.gz::https://github.com/MitMaro/$pkgname/archive/$pkgver.tar.gz")
-sha256sums=('f5c2d73a191fe37e1144dca19977e99d2f306ce92ce799acdbf2992524dd4aa2')
+sha256sums=('4d60912c64a1ea25ff3e8a4beca0ecdb6a1c761f81e06f81ebc2a46119b8780c')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
