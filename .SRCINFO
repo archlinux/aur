@@ -1,6 +1,6 @@
 pkgbase = xemu-git
 	pkgdesc = Original Xbox emulator (fork of XQEMU)
-	pkgver = 0.6.3.r0.g87919cfb13
+	pkgver = 0.6.4.r1.ga809d8557d
 	pkgrel = 1
 	url = https://xemu.app/
 	install = xemu.install
@@ -19,7 +19,7 @@ pkgbase = xemu-git
 	makedepends = pixman
 	makedepends = python-yaml
 	makedepends = samurai
-	makedepends = tomlplusplus>=3.0.1.r11
+	makedepends = tomlplusplus>=3.1.0
 	makedepends = xxhash>=0.7.4.r137
 	depends = sdl2
 	provides = xemu
