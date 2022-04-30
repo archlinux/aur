@@ -1,13 +1,13 @@
 pkgbase = otf2
 	pkgdesc = Scalable, memory efficient event trace data format and support library.
 	pkgver = 2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.vi-hps.org/projects/score-p/
 	arch = i686
 	arch = x86_64
 	license = BSD
+	options = staticlibs
 	source = http://perftools.pages.jsc.fz-juelich.de/cicd/otf2/tags/otf2-2.3/otf2-2.3.tar.gz
-	sha256sums = 36957428d37c40d35b6b45208f050fb5cfe23c54e874189778a24b0e9219c7e3
+	md5sums = b85dd4d11e67180e2d5fe66d05112c4b
 
 pkgname = otf2
-
