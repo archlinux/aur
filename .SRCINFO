@@ -10,6 +10,6 @@ pkgbase = sarqx-reporter
 	makedepends = make
 	provides = sarqx-reporter=0.0.1
 	conflicts = sarqx-reporter
-	sha256sums = SKIP
+	sha256sums = 4378c8343c19eb17fab0878608407273d101e2262e4d5660c4855fc1ec94b840
 
 pkgname = sarqx-reporter
