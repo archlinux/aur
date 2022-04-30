@@ -2,14 +2,10 @@ pkgbase = sarqx-reporter
 	pkgdesc = CLI application.
 	pkgver = 0.0.1
 	pkgrel = 1
-	url = https://gitlab.com/sarqx_group/sarqx-reporter
+	url = git@gitlab.com/sarqx_group/sarqx-reporter
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = git
-	makedepends = make
-	provides = sarqx-reporter=0.0.1
-	conflicts = sarqx-reporter
 	sha256sums = SKIP
 
 pkgname = sarqx-reporter
