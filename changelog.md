@@ -1,3 +1,10 @@
+## GE-Proton7-16 Released
+- added patch to fix crash in Elden Ring with fsync enabled after an extended period of time (thanks Paul Gofman!)
+- pull in video playback updates from upstream proton
+- pull in steam client updates from upstream proton
+- dxvk updated to latest git
+- vkd3d-proton updated to latest git
+
 ## GE-Proton7-15 Released
 - vp9 support enabled in gst-plugins-good for ghostwire tokyo videos (they work now)
 - protonfix added for State of Decay 2 crashes (thanks ThisNekoGuy!)
