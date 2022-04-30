@@ -2,11 +2,11 @@
 
 pkgname=3dslicer-bin
 _pkgname=3dslicer
-pkgver=4.11.20210226
-pkgrel=2
-pkgdesc="A multi-platform, free open source software package for visualization and medical image computing"
+pkgver=5.0.0
+pkgrel=1
+pkgdesc='A free, open source and multi-platform software package widely used for medical, biomedical, and related imaging research'
 arch=('x86_64')
-url="https://www.slicer.org"
+url='https://www.slicer.org'
 license=('BSD')
 depends=('dbus' 'glib2')
 makedepends=('gendesk')
