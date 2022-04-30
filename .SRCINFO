@@ -27,6 +27,7 @@ pkgbase = polybar
 	depends = curl
 	optdepends = i3-wm: i3 module support
 	conflicts = polybar-git
+	backup = etc/polybar/config.ini
 	source = https://github.com/polybar/polybar/releases/download/3.6.2/polybar-3.6.2.tar.gz
 	sha256sums = 73becc942e7d2418bc72bd194f2037a2a86792219fd561b663a8509fd5f547a0
 
