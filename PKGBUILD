@@ -3,7 +3,7 @@
 
 pkgname=gnome-shell-extension-workspace-matrix
 _repo=gnome-shell-wsmatrix
-pkgver=6.4
+pkgver=7.0
 pkgrel=1
 pkgdesc='Arrange workspaces in a two dimensional grid with workspace thumbnails'
 arch=(x86_64)
@@ -11,7 +11,7 @@ url=https://github.com/mzur/gnome-shell-wsmatrix
 license=(GPL3)
 depends=(gnome-shell)
 source=(${pkgname}-${pkgver}-${pkgrel}.tar.gz::https://github.com/mzur/${_repo}/archive/v${pkgver}.tar.gz)
-sha256sums=('d9710139e6562d1989ec8688a92f4ff980bd4053cc45195408f1ec18c23c186a')
+sha256sums=('bf163514e2a1aec5e9202e467a20101a08ee341a4184042a02191dbc86bc698f')
 
 _uuid=wsmatrix@martin.zurowietz.de
 
