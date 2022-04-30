@@ -1,0 +1,11 @@
+pkgbase = arm-image-installer
+	pkgdesc = Install and manipulate ARM disk images
+	pkgver = 3.6
+	pkgrel = 1
+	url = https://pagure.io/arm-image-installer
+	arch = any
+	license = GPL2
+	source = https://pagure.io/arm-image-installer/archive/arm-image-installer-3.6/arm-image-installer-arm-image-installer-3.6.tar.gz
+	md5sums = ae245159505c79fef4e1e45c21f5fec8
+
+pkgname = arm-image-installer
