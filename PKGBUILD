@@ -7,7 +7,7 @@
 pkgname=texlive-localmanager-git
 _pkgname="${pkgname%-git}"
 pkgver=r84.bbd8488
-pkgrel=4
+pkgrel=5
 pkgdesc='A shell and command-line utility to manage TeXLive on Arch Linux'
 arch=('any')
 url='https://gitlab.archlinux.org/remy/texlive-localmanager.git'
@@ -15,7 +15,7 @@ license=('GPL')
 provides=("texlive-localmanager=$pkgver")
 conflicts=('texlive-localmanager')
 depends=('texlive-core>=2016'
-         'texlive-core<2022'
+         'texlive-core<2023'
          'perl-libwww'
          'perl-term-shellui'
          'perl-term-readline-gnu'
@@ -24,17 +24,19 @@ depends=('texlive-core>=2016'
 makedepends=('git')
 
 source=("${_pkgname}::git+https://gitlab.archlinux.org/remy/texlive-localmanager.git"
-        'tllocalmgr-2021.patch'
+        'tllocalmgr-2022.patch'
         'tllocalmgr-enhance.patch'
         'tllocalmgr-fix-texlive-local-match.patch'
         'tllocalmgr-pkgs-nicer-error.patch'
-        'tllocalmgr-mirror-opt.patch')
+        'tllocalmgr-mirror-opt.patch'
+        'tllocalmgr-better-conflicts.patch')
 sha256sums=('SKIP'
-            'cd12f1927fa9d950855aab91b30039d0cbb328a8c7899382286d3ace16bb6a3b'
+            '7eb0982890b2d4de29d391db59dd4a8c6308bca2327433f08da265bf69ca71ca'
             '22222ff329919ee6a16ffd489b0213b14f8169d9daf6ef1a82aa5ab37538c236'
             'a7698d0076f4e1a7ef401899c174ed9a290674a7e89e9c818ba078e17548c6e7'
             '23f103c606eb595d8c114aee2ca3006a09588370087b959419f86a4a8ce25a43'
-            'd7064657f6336bed7be230fc05df800e6bdcee31d10c718b4b9b1b55f7f26c8a')
+            'd7064657f6336bed7be230fc05df800e6bdcee31d10c718b4b9b1b55f7f26c8a'
+            '380cdb0dd8531dcab13b8da70506214bccb7252ddd19ad50a5be25fac3b39ea2')
 
 pkgver() {
   cd "$_pkgname"
@@ -47,8 +49,8 @@ pkgver() {
 prepare() {
   cd "$_pkgname"
 
-  # update to handle texlive-2021 releases
-  patch -p1 < "$srcdir/tllocalmgr-2021.patch"
+  # update to handle texlive-2022 releases
+  patch -p1 < "$srcdir/tllocalmgr-2022.patch"
 
   # enhances the tllocalmgr script a bit
   # thanks: @sharethewisdom and @cobaltspace
@@ -63,6 +65,10 @@ prepare() {
 
   # correctly pass --mirror option
   patch -p1 < "$srcdir/tllocalmgr-mirror-opt.patch"
+
+  # some CTAN packages are not in any texlive collection, so there is
+  # no need to set a conflict within PKGBUILD
+  patch -p1 < "$srcdir/tllocalmgr-better-conflicts.patch"
 }
 
 package() {

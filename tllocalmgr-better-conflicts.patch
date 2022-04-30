@@ -1,0 +1,21 @@
+--- a/tllocalmgr	2022-04-30 12:51:53.267184213 +0200
++++ b/tllocalmgr	2022-04-30 12:54:50.636930181 +0200
+@@ -639,6 +639,9 @@
+ 		open PKGBUILD, "> $ROOT/builds/$pkg/PKGBUILD";
+         my $newver = $tlpkg->revision;
+ 		my $col = $collectionsbypkg{$pkg};
++		my $conflict = (defined $col and $col ne '')
++                       ? "conflicts=('texlive-$col>=$YEAR.$newver')"
++                       : "conflicts=()";
+ 		my $pkgsha512 = $tlpkg->containerchecksum;
+ 		#TODO download it first and compare the checksum
+ 		#     if it differs ask the user if the PKGBUILD
+@@ -653,7 +656,7 @@
+ arch=('any')
+ groups=('texlive-local')
+ depends=('texlive-core')
+-conflicts=('texlive-$col>=$YEAR.$newver')
++$conflict
+ url='http://tug.org/texlive/'
+ source=('$TLARCHIVE/$pkg.tar.xz')
+ sha512sums=($pkgsha512)
