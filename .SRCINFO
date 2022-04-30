@@ -1,0 +1,25 @@
+pkgbase = mirrorshades
+	pkgdesc = A tool for mirroring data from remote sources.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/unnecessary-abstraction/mirrorshades
+	changelog = ChangeLog.md
+	arch = any
+	license = Apache
+	license = custom:CC-BY-4.0
+	license = custom:CC0-1.0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-yaml
+	depends = python-desert
+	optdepends = git: Mirroring git repositories
+	optdepends = python-pygithub: Mirroring from GitHub
+	optdepends = python-gitlab: Mirroring from GitLab
+	optdepends = rclone: Mirroring from rclone remotes
+	source = https://files.pythonhosted.org/packages/source/m/mirrorshades/mirrorshades-0.2.0.tar.gz
+	sha256sums = bf53677914e227c07644d09317b4acb94692b44393acfd15efdb86b4b92d777c
+	b2sums = aaef9165181a37c79cc1466952ad8d104414ba2e1519ac84ebf2757925d04d2ccfc206af305fb5cdeff8e49bee23bac0c58c964730f3e701d6d72c579dc2fd08
+
+pkgname = mirrorshades
