@@ -1,7 +1,7 @@
 # Maintainer: Strahinya Radich <contact@strahinja.org>
 pkgname=sled
 pkgver=0.10.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple text editor"
 arch=('x86_64')
 url="https://strahinja.srht.site/sled"
@@ -21,8 +21,6 @@ build() {
 	# Example on how to disable configuration options: turn off wrap
 	# (uncomment next line)
 	#sed -i 's,^\(#define ENABLE_WRAP\),//\1,' config.h
-
-	FALLBACKVER=$pkgver-$pkgrel PREFIX="$pkgdir/usr" ${redo}
 }
 
 package() {
