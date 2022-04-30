@@ -60,7 +60,7 @@ _subarch=
 _localmodcfg=
 
 pkgbase=linux-pds
-pkgver=5.16.14.arch1
+pkgver=5.17.5.arch1
 pkgrel=1
 pkgdesc="Linux"
 _srcver_tag=v${pkgver%.*}-${pkgver##*.}
@@ -68,19 +68,8 @@ url="https://github.com/archlinux/linux/commits/$_srcver_tag"
 arch=(x86_64)
 license=(GPL2)
 makedepends=(
-    bc
-    kmod
-    libelf
-    pahole
-    cpio
-    perl
-    tar
-    xz
-    xmlto
-    python-sphinx
-    python-sphinx_rtd_theme
-    graphviz
-    imagemagick
+    bc libelf pahole cpio perl tar xz
+    xmlto python-sphinx python-sphinx_rtd_theme graphviz imagemagick texlive-latexextra
     git
 )
 options=('!strip')
@@ -95,7 +84,7 @@ _kernel_patch_name="more-uarches-for-kernel-5.15-5.16.patch"
 _pkgdesc_extra="~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG"
 
 PatchesArray=(
-    0009-prjc_v5.16-r0.patch
+    0009-prjc_v5.17-r0.patch
     0005-glitched-pds.patch
 )
 
@@ -113,8 +102,8 @@ validpgpkeys=(
 )
 sha512sums=('SKIP'
             'SKIP'
-            '31cde4b5e465dae677e676dfecec6a9713f2fedc437bd40355d292a3f4854e45df4fe6bccd01133b78870fb1bb66d371317db89077afde8b6c48bdd075e7cb1b'
-            'b95591e917d0b7b6b7fa7af62aac8f850aad7717e76f7ba17edfdb7ecbd53e31cf2c9409e1225f0aa6636564249c23a7f5c2bfc1e521cd1eec25a6e081b2122c'
+            '27b9f49d2aac3b71998635b8504b77a126cbdadcaca70141e6cb54d519856ed458b75efd57f69cf87ad7b9a9bcfa8fddc0f6a80f1967e0c72e0ba8191281f85f'
+            '7b05cbf93bb3db0cc6bef328c8adcda5b8ca7b626b96c8f75172b17110f9340665dac5706686b6c513e0cba74e3ea861330f71e5e03bfbf746b722539b537335'
             '889f0a49f326de3f119290256393b09a9e9241c2a297ca0b7967a2884e4e35d71388d2a559e4c206f55f67228b65e8f2013a1ec61f6ff8f1de3b6a725fd5fa57')
 
 export KBUILD_BUILD_HOST=archlinux
@@ -188,22 +177,14 @@ build() {
 _package() {
     pkgdesc="The $pkgdesc kernel and modules $_pkgdesc_extra"
     depends=(
-        coreutils
-        kmod
-        initramfs
-        linux-firmware
-        thrash-protect
-    )
-    optdepends=(
-        "crda: to set the correct wireless channels of your country"
+        coreutils kmod initramfs
+        wireless-regdb linux-firmware thrash-protect
     )
     provides=(
-        VIRTUALBOX-GUEST-MODULES
-        WIREGUARD-MODULE
+        VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE
     )
     replaces=(
-        virtualbox-guest-modules-arch
-        wireguard-arch
+        virtualbox-guest-modules-arch wireguard-arch
     )
 
     cd $_reponame
@@ -219,7 +200,8 @@ _package() {
     echo "$pkgbase" | install -Dm644 /dev/stdin "$modulesdir/pkgbase"
 
     msg2 "Installing modules..."
-    make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 modules_install
+    make INSTALL_MOD_PATH="$pkgdir/usr" INSTALL_MOD_STRIP=1 \
+        DEPMOD=/doesnt/exist modules_install  # Suppress depmod
 
     # remove build and source links
     rm "$modulesdir"/{source,build}
@@ -326,11 +308,7 @@ _package-docs() {
     ln -sr "$builddir/Documentation" "$pkgdir/usr/share/doc/$pkgbase"
 }
 
-pkgname=(
-    "$pkgbase"
-    "$pkgbase-headers"
-    "$pkgbase-docs"
-)
+pkgname=("$pkgbase" "$pkgbase-headers" "$pkgbase-docs")
 for _p in "${pkgname[@]}"; do
     eval "package_$_p() {
         $(declare -f "_package${_p#$pkgbase}")
