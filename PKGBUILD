@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _cranname=RSQLite
-_cranver=2.2.12
+_cranver=2.2.13
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -33,7 +33,7 @@ optdepends=(
     r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('3a31916b35e267c36b93977234067676d42fd7d4e49b5c2c1c4c87542e4b6a8a')
+sha256sums=('474424e6366d650dd88daf19417bc071782b768beb173f797dd5eb732f296daf')
 
 prepare() {
   cd "${_cranname}"
@@ -49,7 +49,7 @@ prepare() {
   sed -i 's|"vendor/sqlite3/sqlite3.h"|<sqlite3.h>|' src/{import-file.c,sqlite3-cpp.h}
 
   # Skip test that breaks with system sqlite
-  sed -i '/"can read more than standard limit (#314)"/a skip("Does not work with system sqlite")/' \
+  sed -i '/"can read more than standard limit (#314)"/a skip("Does not work with system sqlite")' \
       tests/testthat/test-blob.R
 }
 
