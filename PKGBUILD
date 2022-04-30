@@ -8,7 +8,7 @@ arch=( 'any' )
 url=""
 license=('LGPL3')
 groups=( "connective-server" )
-depends=( 'java-environment' 'connective-http' 'php-cgi' )
+depends=( 'jdk17-openjdk' 'connective-http' 'php-cgi' )
 makedepends=( 'gradle>=6.7' 'cq' )
 optdepends=()
 provides=()
@@ -25,6 +25,7 @@ md5sums=('SKIP')
 build() {
     cd ConnectivePHP
     chmod +x gradlew createlocalserver.sh
+    export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
     ./createlocalserver.sh
     gradle build
 }

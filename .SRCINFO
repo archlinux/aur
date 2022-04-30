@@ -8,7 +8,7 @@ pkgbase = connective-php
 	license = LGPL3
 	makedepends = gradle>=6.7
 	makedepends = cq
-	depends = java-environment
+	depends = jdk17-openjdk
 	depends = connective-http
 	depends = php-cgi
 	source = git+https://aerialworks.ddns.net/ASF/ConnectivePHP.git
