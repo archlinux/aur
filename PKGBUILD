@@ -104,8 +104,9 @@ build() {
   ./configure \
     --prefix=/usr \
     --disable-debug \
+    --disable-doc \
+    --disable-programs \
     --disable-static \
-    --disable-stripping \
     --enable-amf \
     --enable-avisynth \
     --enable-cuda-llvm \
