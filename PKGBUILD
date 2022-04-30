@@ -3,7 +3,7 @@
 pkgname=jadx-bin
 _pkgname=jadx
 _pkgguiname=jadx-gui
-pkgver=1.3.3
+pkgver=1.3.5
 pkgrel=1
 pkgdesc="Command line and GUI tools to produce Java source code from Android Dex and APK files"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('unzip' 'gendesk')
 provides=('jadx')
 conflicts=('jadx')
 source=(https://github.com/skylot/jadx/releases/download/v$pkgver/jadx-$pkgver.zip)
-sha256sums=('861533d8dc1264a712db86b61ff9fe0630b3b2bb52bd21e7cef02e6467a4ab83')
+sha256sums=('2313e6492a85fc2543ee60078b6b970254660ceba140317a5322987b1ee55eb8')
 
 prepare() {
     gendesk -f -n \
@@ -37,7 +37,7 @@ package() {
     ln -s /usr/share/java/${_pkgname}/bin/jadx "${pkgdir}/usr/bin/jadx"
     ln -s /usr/share/java/${_pkgname}/bin/jadx-gui "${pkgdir}/usr/bin/jadx-gui"
 
-    install -Dm 644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -Dm 644 NOTICE README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+    install -Dm 644 NOTICE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
     install -Dm 644 "${_pkgguiname}.desktop" "${pkgdir}/usr/share/applications/${_pkgguiname}.desktop"
 }
