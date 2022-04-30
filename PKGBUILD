@@ -1,7 +1,7 @@
 # Maintainer: musiclover <musiclover382@protonmail.com>
 
 pkgname=desktop-files-creator
-pkgver=1.0.8
+pkgver=1.0.9
 pkgrel=1
 pkgdesc='Simple app to create desktop files on GNU/Linux'
 url="https://github.com/alexkdeveloper/$pkgname"
@@ -11,7 +11,7 @@ depends=('gtk4' 'libadwaita')
 checkdepends=('appstream-glib')
 makedepends=('vala' 'meson')
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('21d1c445a0d48962e19149872b94c7565c62a89b883dc2cc9488bc104397f6ae')
+sha256sums=('105e96dcc96e551c4b5f5cacef27ae877de590498011136d05e41f3067fd752d')
 
 build() {
 	arch-meson $pkgname-$pkgver build
