@@ -1,7 +1,7 @@
 pkgbase = wg++
 	pkgdesc = WebGrab+Plus is a freeware (license via donation) multi-site incremental XMLTV EPG grabber.
 	pkgver = 4.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://webgrabplus.com/
 	arch = any
 	license = custom
@@ -10,9 +10,11 @@ pkgbase = wg++
 	depends = dotnet-runtime-5.0-bin
 	provides = wg++
 	source = http://webgrabplus.com/sites/default/files/download/SW/V4.2.2/WebGrabPlus_V4.2_install.tar.gz
+	source = https://github.com/SilentButeo2/webgrabplus-siteinipack/raw/master/evaluation-builds/WebGrabPlus_V4.2.2.3_eval_install.tar.gz
 	source = git+https://github.com/SilentButeo2/webgrabplus-siteinipack.git
 	source = wg++
 	md5sums = 569b438673a4e1963c52f62c26bbcf16
+	md5sums = 8d106d05122e5d57c0d4e94c09cea87c
 	md5sums = SKIP
 	md5sums = b9fc49688d55da5cf447b7a7b9a45361
 
