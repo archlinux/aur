@@ -1,0 +1,25 @@
+pkgbase = graceful-udisks
+	pkgdesc = 原始项目: https://www.freedesktop.org/wiki/Software/udisks, 本项目仅用于个人调试，不能用于生产环境，否则会造成不可预估的损失，使用本包造成的损失由自己承担。
+	pkgver = 2.9.4
+	pkgrel = 1
+	url = https://github.com/graceful-linux/udisks
+	arch = x86_64
+	license = GPL2
+	makedepends = docbook-xsl
+	makedepends = gobject-introspection
+	makedepends = parted
+	makedepends = gtk-doc
+	depends = polkit
+	depends = libatasmart
+	depends = libgudev
+	depends = libblockdev
+	optdepends = gptfdisk: GUID partition table support
+	optdepends = ntfs-3g: NTFS filesystem management support
+	optdepends = dosfstools: VFAT filesystem management support
+	provides = udisks2=2.9.4
+	conflicts = udisks2
+	backup = etc/udisks2/udisks2.conf
+	source = https://github.com/graceful-linux/udisks/archive/refs/tags/udisks-debug-2.9.4.tar.gz
+	sha512sums = 3836f6d2d6fe02eb9cccbb85d940bb5b4a07db1dafe7beba1f2ded110b04de03b1e0b79e11592c3a9b2f0e047ae4fc4284d895a953e1f4dd042e544634e505ca
+
+pkgname = graceful-udisks
