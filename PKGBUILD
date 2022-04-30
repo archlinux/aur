@@ -4,7 +4,7 @@
 _pkgname="zaread"
 pkgname="$_pkgname-git"
 pkgver=r47.9239db1
-pkgrel=3
+pkgrel=4
 pkgdesc="A (very) lightweight ebook and Office document reader"
 arch=("any")
 url="https://github.com/paoloap/zaread"
@@ -13,6 +13,7 @@ depends=("zathura")
 optdepends=("libreoffice: To view office suite files"
             "calibre: To view MOBI files"
             "md2pdf: To view markdown files")
+makedepends=('git')
 provides=("zaread")
 conflicts=("zaread")
 source=('git+https://github.com/paoloap/zaread.git')
