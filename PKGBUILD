@@ -48,9 +48,9 @@ if [ -z ${_tickrate+x} ]; then
   _tickrate="full"
 fi
 
-## Choose between GCC and CLANG config (default is GCC)
+## Choose between GCC and CLANG config (default is CLANG)
 if [ -z ${_compiler+x} ]; then
-  _compiler=gcc
+  _compiler=clang
 fi
 
 # Compress modules with ZSTD (to save disk space)
