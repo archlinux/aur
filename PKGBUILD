@@ -1,13 +1,13 @@
 # Maintainer: dingjing <dingjing@live.cn>
 
 pkgname=graceful-greeter
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc='A beautiful lightDM login interface'
 url='https://github.com/graceful-linux/graceful-greeter'
 arch=('x86_64')
 license=('MIT')
-groups=('graceful')
+groups=('graceful-linux')
 depends=('imlib2' 'lightdm' 'libxrandr' 'libxtst' 'opencv' 'qt5-svg' 'qt5-x11extras')
 makedepends=('qt5-tools' 'openmpi' 'cmake')
 source=("https://github.com/graceful-linux/graceful-greeter/archive/refs/tags/$pkgver.tar.gz")
