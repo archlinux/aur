@@ -12,7 +12,7 @@ depends=('python')
 optdepends=()
 makedepends=('git')
 source=("${_gitdir}::git+https://github.com/ShadowBlip/${_gitdir}.git")
-md5sums=('SKIP')
+sha256sums=('SKIP')
 pkgver() {
 	cd "$srcdir/${_gitdir}"
 	printf "%s.r%s.%s" $(date '+%y.%m') "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
