@@ -1,6 +1,6 @@
 pkgbase = nautilus-typeahead
 	pkgdesc = Default file manager for GNOME - Patched to bring back the 'typeahead find' feature
-	pkgver = 42.0+r11+gcbc6d9c3e
+	pkgver = 42.1.1
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Files
 	arch = x86_64
@@ -24,7 +24,7 @@ pkgbase = nautilus-typeahead
 	depends = libhandy
 	depends = libportal-gtk3
 	optdepends = nautilus-sendto: right click to send files
-	source = git+https://gitlab.gnome.org/GNOME/nautilus.git#commit=cbc6d9c3ee5ed76ddafd2b533a55fec5956ff9b2
+	source = git+https://gitlab.gnome.org/GNOME/nautilus.git#commit=8dca802ee401677f8d9740ea0622b97666031f3e
 	source = git+https://gitlab.gnome.org/GNOME/libgd.git
 	source = nautilus-restore-typeahead.patch
 	sha256sums = SKIP
