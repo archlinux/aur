@@ -10,7 +10,7 @@ license=('MIT')
 depends=()
 makedepends=('npm')
 source=(
-  "https://github.com/RioChndr/jaksel-language/archive/refs/tags/v${pkgver}.tar.gz"
+  "https://github.com/RioChndr/jaksel-language/archive/v${pkgver}.tar.gz"
 )
 sha256sums=(
   "6cc1c4cda795e15d58b2cc1255341e26f644b53db5e2a08b089b16987f2b423a"
