@@ -1,25 +1,12 @@
---- a/umlet.sh	2018-04-06 09:59:28.000000000 +0200
-+++ b/umlet.sh	2018-08-30 18:54:03.979319149 +0200
-@@ -13,11 +13,8 @@
- #   UMLET_JAVA_OPTS       (optional) additional Java start options (-X..., -D...)
- #   UMLET_HOME            (optional) program directory of UMLet
- # ---------------------------------------------------------------------------------
--#
--# If you want to put umlet.sh in your home bin directory ($HOME/bin/) to start it from anywhere with
--#    $ umlet.sh myDiagram.uxf
--# you must export the UMLET_HOME environment variable with the full qualified path of the UMLet installation directory.
+--- a/umlet.sh	2022-04-30 10:47:45.706328639 +0200
++++ a/umlet.sh	2022-04-30 10:48:48.419563220 +0200
+@@ -17,7 +17,8 @@
+ # If you want to put umlet.sh in your home bin directory ($HOME/bin/) to start it from anywhere with
+ #    $ umlet.sh myDiagram.uxf
+ # you must export the UMLET_HOME environment variable with the full qualified path of the UMLet installation directory.
 -# export UMLET_HOME=/path/to/umlet
 +
 +export UMLET_HOME=/usr/share/umlet
  
  _UMLET_HOME="$(cd $(dirname $0);pwd)"
- 
-@@ -28,7 +25,7 @@
- fi
- 
- # UMLET_HOME wins against deprecated programDir
--if [ ! -x "${UMLET_HOME}" ] ; then
-+if [ ! -z "${UMLET_HOME}" ] ; then
-   _UMLET_HOME="${UMLET_HOME}"
- fi
- 
+

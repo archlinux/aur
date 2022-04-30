@@ -3,8 +3,8 @@
 # Contributor: Gleidson Echeli <gleidson dot echeli at gmail dot com>
 
 pkgname=umlet
-pkgver=14.3.0
-_pkgver=14_3
+pkgver=15.0.0
+_pkgver=15_0
 pkgrel=1
 pkgdesc="Free UML Tool for Fast UML Diagrams (stand-alone version)"
 arch=('any')
@@ -15,9 +15,9 @@ makedepends=('unzip' 'patch')
 source=("http://www.umlet.com/umlet_${_pkgver}/umlet-standalone-${pkgver}.zip"
 	'umlet.desktop'
 	'UMLet.sh.diff')
-md5sums=('1202a9f93780b2187bfcdf96f8984955'
+md5sums=('0d77cc21066a3f8fb7f05f671d818177'
          '4efcfeea2f54b849bc86e3f1905449be'
-         '8117f3f2bf7764d94c38ac8ca02ed279')
+         '6ff2efb31dd588eeebf57720fdd13267')
 
 prepare() {
   cd "$srcdir"/Umlet
