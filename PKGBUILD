@@ -9,7 +9,7 @@ license=('MPL-2.0')
 conflicts=(mcpppp-git)
 makedepends=("cmake")
 source=(https://github.com/supsm/MCPPPP/archive/refs/tags/$pkgver.tar.gz)
-sha256sums=('e5325dbff2940971b39306553bbd6ae78c5cf6b984eebcf4d526ff7addfa085e')
+sha256sums=('bd09e3d594535063aa586aeeab24b700b607998a0193f23a25e119396e3177d1')
 
 prepare() {
     cd "${pkgname^^}-$pkgver"
