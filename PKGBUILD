@@ -1,7 +1,7 @@
 # Maintainer: Darjan Krijan (daren) <darjan_krijan@gmx.de>
 
 pkgname=maqao-bin
-pkgver=2.14.1
+pkgver=2.15.0
 pkgrel=1
 pkgdesc="MAQAO - Modular Assembly Quality Analyzer and Optimizer"
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('LGPL3')
 url="http://www.maqao.org"
 source=("http://www.maqao.org/release/${pkgname%-bin}.intel64.${pkgver}.tar.xz")
 conflicts=('maqao')
-md5sums=("6674c7d4b49ada24fc675e9da4110d78")
+md5sums=("6d5c264890c41f5400e4c269c13125f3")
 
 package() {
 	prefix=${pkgdir}/usr
