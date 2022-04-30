@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="PWM frequency setting on Intel HD Graphics with modprobe.d"
 arch=(x86_64)
 depends=(intel-gpu-tools)
-url="http://devbraindom.blogspot.com/2013/03/eliminate-led-screen-flicker-with-intel.html"
+url="https://127001.me/post/eliminate-backlight-flicker-with-i915/"
 license=(GPL)
 conflicts=()
 install='intelpwm.install'
@@ -14,8 +14,8 @@ backup=('etc/intelpwm.conf')
 source=(i915-pwm.conf intelpwm intelpwm.conf)
 
 sha256sums=('f25b883744dbe177d0ec7efaca17ffb288f4a7994e819883f299c90c27295f85'
-            '51f14a522767ff4c803ac1149980715714966356e36ed1e92cf61110a35bf784'
-            '7fefe55b66278e97eaca2fdf0aad125720cd00c95069dc38ef02ae1ee4e846b0')
+            '3c17d61d623086f05cadfb28eea2d0915942509527b5d4e67ffa309ee13304b7'
+            '4e56f0b32355b268cc942aa67ce3297f70bdba95c8556e42b3ff3c595ab0e88a')
 
 build() {
 	true
