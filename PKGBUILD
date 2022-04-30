@@ -3,7 +3,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=suckit-git
-pkgver=0.2.0.r3.g13e9d9f
+pkgver=0.2.0.r4.g5e58e50
 pkgrel=1
 pkgdesc="Recursively visit and download a website's content to your disk (git)"
 arch=('any')
@@ -13,10 +13,8 @@ depends=('gcc-libs')
 makedepends=('rust' 'git')
 conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
-source=("git+${url}"
-	"$pkgname-cargo-lock.patch::$url/commit/2a88eacc28d3ade3c88b43f00aceccba36652152.patch")
-sha512sums=('SKIP'
-            '28bd3770600b74854900f3b9eafae5b83063151568e82affc64d66c76d173d85b36d521504ecfe8a43401f7c888b74c32887332fea64fd60e32b9017ae9b75a9')
+source=("git+${url}")
+sha512sums=('SKIP')
 options=('!lto')
 
 pkgver() {
@@ -26,7 +24,6 @@ pkgver() {
 
 prepare() {
   cd "${pkgname%-git}"
-  patch -Np1 -i "../$pkgname-cargo-lock.patch"
   cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
