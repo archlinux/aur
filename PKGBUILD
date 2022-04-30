@@ -1,6 +1,6 @@
 pkgbase='python-realesrgan'
 pkgname=('python-realesrgan' 'realesrgan-model')
-pkgver=0.2.4.0
+pkgver=0.2.5.0
 pkgrel=1
 pkgdesc="Real-ESRGAN aims at developing Practical Algorithms for General Image Restoration. "
 arch=('x86_64')
@@ -11,18 +11,16 @@ depends=('python-basicsr>=1.3.4.9' 'python-facexlib' 'python-gfpgan' 'python-num
 makedepends=('python-setuptools')
 
 source=("https://github.com/xinntao/Real-ESRGAN/archive/refs/tags/v$pkgver.tar.gz"
+"https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.5.0/realesr-animevideov3.pth"
 'https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.0/RealESRGAN_x4plus.pth'
 'https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.2.4/RealESRGAN_x4plus_anime_6B.pth'
 'https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.1/RealESRGAN_x2plus.pth'
-'https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.3.0/RealESRGANv2-animevideo-xsx2.pth'
-'https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.3.0/RealESRGANv2-animevideo-xsx4.pth'
 'https://github.com/xinntao/Real-ESRGAN/releases/download/v0.1.1/RealESRNet_x4plus.pth')
-sha256sums=('7797de76a4f7fe11a6dcd846c520af2f3643a906e20750899b90379e15080451'
+sha256sums=('d1439b19f8be1f17c0b4c57fb9cc0cb95d1bec3ef454cb20905f41841c32a193'
+            'b8a8376811077954d82ca3fcf476f1ac3da3e8a68a4f4d71363008000a18b75d'
             '4fa0d38905f75ac06eb49a7951b426670021be3018265fd191d2125df9d682f1'
             'f872d837d3c90ed2e05227bed711af5671a6fd1c9f7d7e91c911a61f155e99da'
             '49fafd45f8fd7aa8d31ab2a22d14d91b536c34494a5cfe31eb5d89c2fa266abb'
-            '27985aa2198711ecd72f9bb274ec7b164e018fc9ce2933daaa7c7ab36a2bd3fe'
-            '5e04b111c16d5b40deb8f8062d09fdff72fa80281fb9607be23b62650c08daff'
             'a820b9bde89a874d7599d545567308ce6c128fc8754a53208eda016d40aa81df')
 
 package_python-realesrgan() {
