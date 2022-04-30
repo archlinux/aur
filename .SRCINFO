@@ -1,16 +1,14 @@
 pkgbase = cproc-git
 	pkgdesc = Small C11 compiler using QBE as backend
-	pkgver = r352.f2e5c6f
+	pkgver = r569.70fe9ef
 	pkgrel = 1
 	url = https://git.sr.ht/~mcf/cproc
 	arch = x86_64
 	license = custom
 	makedepends = git
 	depends = gcc
+	depends = qbe-git
 	source = cproc-git::git+https://git.sr.ht/~mcf/cproc
-	source = cproc-git-qbe::git+https://git.sr.ht/~mcf/qbe
-	sha512sums = SKIP
-	sha512sums = SKIP
+	b2sums = SKIP
 
 pkgname = cproc-git
-
