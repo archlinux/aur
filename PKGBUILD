@@ -2,7 +2,7 @@
 # Contributor: Sonny Piers <sonny at fastmail dot net>
 pkgname=tangram
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Browser for your pinned tabs"
 arch=('any')
 url="https://apps.gnome.org/app/re.sonny.Tangram"
@@ -10,8 +10,7 @@ license=('GPL3')
 depends=('gjs' 'gtk3' 'libsoup' 'webkit2gtk')
 makedepends=('git' 'meson')
 #checkdepends=('appstream-glib')
-conflicts=('gigagram' "$pkgname-web")
-replaces=("$pkgname-web")
+optdepends=('gst-plugins-bad: May be necessary for some websites')
 source=("git+https://github.com/sonnyp/Tangram.git#tag=v$pkgver"
         'git+https://github.com/sonnyp/troll.git')
 sha256sums=('SKIP'
