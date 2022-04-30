@@ -8,6 +8,6 @@ pkgbase = aya-neo-fixes-git
 	makedepends = git
 	depends = python
 	source = aya-neo-fixes::git+https://github.com/ShadowBlip/aya-neo-fixes.git
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = aya-neo-fixes-git
