@@ -1,7 +1,7 @@
 pkgbase = kubebuilder-bin
 	pkgdesc = SDK for building Kubernetes APIs
 	pkgver = 3.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kubernetes-sigs/kubebuilder
 	arch = x86_64
 	arch = aarch64

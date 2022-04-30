@@ -4,7 +4,7 @@
 
 pkgname=kubebuilder-bin
 pkgver=3.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="SDK for building Kubernetes APIs"
 url="https://github.com/kubernetes-sigs/kubebuilder"
 license=('APACHE')
