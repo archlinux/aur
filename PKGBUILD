@@ -13,7 +13,7 @@
 pkgname=lib32-mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
 pkgver=22.2.0_devel.153079.6ba55b40334
-pkgrel=1
+pkgrel=2
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
              'lib32-gcc-libs' 'lib32-libelf' 'git' 'lib32-libglvnd' 
@@ -103,7 +103,8 @@ build () {
         -D valgrind=disabled \
         -D tools=[] \
         -D zstd=enabled \
-        -D microsoft-clc=disabled
+        -D microsoft-clc=disabled \
+        -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc
 
     meson configure _build
     
