@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-compat-58
 	pkgdesc = Compatibility package for ffmpeg to provide versions 58 of libavcodec, libavdevice and libavformat, not anymore provided by ffmpeg-git
-	pkgver = 4.4
-	pkgrel = 2
+	pkgver = 4.4.2
+	pkgrel = 1
 	url = http://ffmpeg.org/
 	arch = i686
 	arch = x86_64
@@ -80,7 +80,7 @@ pkgbase = ffmpeg-compat-58
 	provides = libswresample.so=3
 	provides = libswscale.so=5
 	conflicts = ffmpeg4.4
-	source = http://ffmpeg.org/releases/ffmpeg-4.4.tar.xz
-	sha256sums = 06b10a183ce5371f915c6bb15b7b1fffbe046e8275099c96affc29e17645d909
+	source = http://ffmpeg.org/releases/ffmpeg-4.4.2.tar.xz
+	sha256sums = af419a7f88adbc56c758ab19b4c708afbcae15ef09606b82b855291f6a6faa93
 
 pkgname = ffmpeg-compat-58

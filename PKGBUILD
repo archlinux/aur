@@ -6,8 +6,8 @@
 # Contributor: HurricanePootis <hurricanepootis@protonmail.com>
 
 pkgname=ffmpeg-compat-58
-pkgver=4.4
-pkgrel=2
+pkgver=4.4.2
+pkgrel=1
 pkgdesc="Compatibility package for ffmpeg to provide versions 58 of libavcodec, libavdevice and libavformat, not anymore provided by ffmpeg-git"
 arch=('i686' 'x86_64')
 url="http://ffmpeg.org/"
@@ -96,9 +96,7 @@ source=(
   http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz
 )
 
-sha256sums=(
-'06b10a183ce5371f915c6bb15b7b1fffbe046e8275099c96affc29e17645d909'
-)
+sha256sums=('af419a7f88adbc56c758ab19b4c708afbcae15ef09606b82b855291f6a6faa93')
 
 build() {
   cd ffmpeg-${pkgver}
