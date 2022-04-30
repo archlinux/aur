@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=system-monitoring-center
-pkgver=1.12.1
+pkgver=1.13.0
 _pkgver="$pkgver-deb_for_stores"
-pkgrel=3
+pkgrel=1
 pkgdesc="System performance and usage monitoring tool"
 arch=('any')
 url="https://github.com/hakandundar34coding/system-monitoring-center"
@@ -13,7 +13,7 @@ makedepends=('python-build' 'python-installer' 'python-setuptools' 'python-wheel
 changelog="$pkgname.changelog"
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$_pkgver.tar.gz"
         "org.freedesktop.$pkgname.policy")
-sha256sums=('852cb8d343849e9d18420f7bbde2bcb5bca0d6f69a8ac64efb18d70bb1976db3'
+sha256sums=('4d235b861225ce3c40de6107a7d14c6f8e5e8bbfa9d642065f4deb3f82b6f3a7'
             '468d309c8c2520ee09d68fbac8161f1034f6ea04b7b30b5127d3a83066415bd1')
 
 build() {
