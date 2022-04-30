@@ -1,6 +1,6 @@
 pkgbase = boosteroid
 	pkgdesc = Boosteroid client desktop
-	pkgver = 1.4.5
+	pkgver = 1.4.6
 	pkgrel = 1
 	url = https://boosteroid.com/downloads
 	arch = x86_64
@@ -15,6 +15,6 @@ pkgbase = boosteroid
 	depends = ocl-icd
 	depends = pcre2
 	source = boosteroid-install-x64.md5
-	md5sums = 5921964bd0f4ad651ce139d3e6c09035
+	md5sums = 094d1dc420781b73c06a165eeb5b1c08
 
 pkgname = boosteroid
