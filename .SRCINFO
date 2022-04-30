@@ -1,0 +1,20 @@
+pkgbase = sarqx-reporter
+	pkgdesc = CLI application.
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://gitlab.com/sarqx_group/sarqx-reporter
+	arch = i686
+	arch = x86_64
+	license = GPL
+	checkdepends = systemd
+	checkdepends = sha1sum
+	makedepends = git
+	makedepends = make
+	depends = erlang
+	depends = elixir
+	depends = dmidecode
+	depends = zenity
+	provides = sarqx-reporter=0.0.1
+	conflicts = sarqx-reporter
+
+pkgname = sarqx-reporter
