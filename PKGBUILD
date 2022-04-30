@@ -8,7 +8,7 @@ arch=( 'any' )
 url=""
 license=('LGPL3')
 groups=( "connective-server" )
-depends=( 'java-environment' 'connective-http' )
+depends=( 'jdk17-openjdk' 'connective-http' )
 makedepends=( 'gradle>=6.7' 'cq' )
 optdepends=()
 provides=()
@@ -25,6 +25,7 @@ md5sums=('SKIP')
 build() {
     cd CustomIndexPages
     chmod +x gradlew createlocalserver.sh
+    export JAVA_HOME=/usr/lib/jvm/java-17-openjdk
     ./createlocalserver.sh
     gradle build
 }

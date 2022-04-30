@@ -8,7 +8,7 @@ pkgbase = connective-index-pages
 	license = LGPL3
 	makedepends = gradle>=6.7
 	makedepends = cq
-	depends = java-environment
+	depends = jdk17-openjdk
 	depends = connective-http
 	source = git+https://aerialworks.ddns.net/ASF/CustomIndexPages.git
 	md5sums = SKIP
