@@ -1,17 +1,18 @@
-# Maintainer: Jan-Erik Rediger <badboy at archlinux dot us>
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Jan-Erik Rediger <badboy at archlinux dot us>
 
 pkgname=sozu-git
-pkgver=0.11.46
-pkgrel=1
+pkgver=0.13.6.r26.g7fb636fe
+pkgrel=2
 pkgdesc="HTTP reverse proxy, configurable at runtime, fast and safe, built in Rust"
 arch=('i686' 'x86_64')
 url="https://github.com/sozu-proxy/sozu"
 license=('GPL')
 depends=('openssl>=1.0.1')
-makedepends=('cargo')
+makedepends=('cargo' 'git')
 backup=('etc/sozu/config.toml')
 source=(
-  'git://github.com/sozu-proxy/sozu'
+  'git+https://github.com/sozu-proxy/sozu'
   'config.toml'
   'sozu.service'
 )
@@ -59,5 +60,3 @@ package() {
 
   install -Dm644 ../sozu.service "$pkgdir"/usr/lib/systemd/system/sozu.service
 }
-
-# vim:set ts=2 sw=2 sts=2 et:
