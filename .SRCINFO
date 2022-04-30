@@ -1,14 +1,14 @@
 pkgbase = cubew
 	pkgdesc = High-performance library for writing a multi-dimensional performance space.
-	pkgver = 4.6
+	pkgver = 4.7
 	pkgrel = 1
 	url = http://www.scalasca.org/software/cube-4.x/download.html
 	arch = i686
 	arch = x86_64
 	license = BSD
 	depends = zlib
-	source = http://apps.fz-juelich.de/scalasca/releases/cube/4.6/dist/cubew-4.6.tar.gz
-	sha256sums = 99fe58ce7ab13061ebfbc360aedaecc28099a30636c5269a42c0cbaf57149aa8
+	options = staticlibs
+	source = http://apps.fz-juelich.de/scalasca/releases/cube/4.7/dist/cubew-4.7.tar.gz
+	md5sums = a4468a84c7906d017f7d013b64f6849d
 
 pkgname = cubew
-
