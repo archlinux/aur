@@ -1,7 +1,7 @@
 pkgbase = python-pyvips
 	pkgdesc = binding for the libvips image processing library, API mode
-	pkgver = 2.1.16
-	pkgrel = 2
+	pkgver = 2.2
+	pkgrel = 1
 	url = https://github.com/libvips/pyvips
 	arch = any
 	license = MIT

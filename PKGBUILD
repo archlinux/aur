@@ -2,8 +2,8 @@
 
 pipname=pyvips
 pkgname=python-$pipname
-pkgver=2.1.16
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="binding for the libvips image processing library, API mode"
 arch=(any)
 url="https://github.com/libvips/pyvips"
@@ -25,10 +25,4 @@ package() {
 		--quiet
 
 	python -O -m compileall "$pkgdir"
-
-  [ -e "$pkgdir/LICENSE.txt" ] && rm -f "$pkgdir/LICENSE.txt"
-  curl -o "$pkgdir/LICENSE.txt" https://raw.githubusercontent.com/libvips/pyvips/master/LICENSE.txt
-
-	install -Dm644 $(find $pkgdir -name LICENSE*) \
-		-t "$pkgdir/usr/share/licenses/$pkgname"
 }
