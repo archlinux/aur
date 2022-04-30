@@ -7,7 +7,6 @@ pkgbase = sarqx-reporter
 	arch = x86_64
 	license = GPL
 	checkdepends = systemd
-	checkdepends = sha1sum
 	makedepends = git
 	makedepends = make
 	depends = erlang
