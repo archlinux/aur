@@ -2,8 +2,8 @@
 
 pkgname=qcard
 pkgver=0.5.0
-pkgrel=1
-pkgdesc='Console-based quick addressbook for CalDAV'
+pkgrel=2
+pkgdesc='Console-based quick addressbook for CardDAV'
 arch=('x86_64')
 url='https://git.sr.ht/~psic4t/qcard'
 license=('GPL')
