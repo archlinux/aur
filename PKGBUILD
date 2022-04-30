@@ -3,7 +3,7 @@
 _pkgname=qt4-serialport
 pkgname=$_pkgname
 pkgver=4.8.7
-pkgrel=2
+pkgrel=35
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL' 'FDL' 'custom')

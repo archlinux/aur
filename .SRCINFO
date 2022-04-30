@@ -1,7 +1,7 @@
 pkgbase = qt4-serialport
 	pkgdesc = Qt4 Serial Port support
 	pkgver = 4.8.7
-	pkgrel = 1
+	pkgrel = 35
 	url = https://www.qt.io
 	arch = x86_64
 	license = GPL3
