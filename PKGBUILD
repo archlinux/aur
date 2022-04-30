@@ -1,7 +1,8 @@
-# Maintainer: James Spencer <james.s.spencer@gmail.com>
+# Maintainers: James Spencer <james.s.spencer@gmail.com>
+#              Darjan Krijan <darjan_krijan@gmx.de>
 
 pkgname=cubegui
-_version=4.6
+_version=4.7
 _patch=
 pkgver=${_version}${_patch}
 pkgrel=1
@@ -9,19 +10,25 @@ pkgdesc="Performance report explorer for displaying a multi-dimensional performa
 arch=('i686' 'x86_64')
 url="http://www.scalasca.org/software/cube-4.x/download.html"
 license=('BSD')
-depends=('qt5-base' 'cubelib')
+depends=('qt5-base' 'cubelib=4.7')
+options=('staticlibs')
 source=(http://apps.fz-juelich.de/scalasca/releases/cube/${_version}/dist/${pkgname}-${pkgver}.tar.gz)
-sha256sums=('1871c6736121d94a22314cb5daa8f3cbb978b58bfe54f677c4c9c9693757d0c5')
+md5sums=('c99da41343348d13abab0832503f24b4')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  sed -e "s/mksec/µs/g" -e "s/\([a-z]\)sec/\1s/g" -i src/GUI-qt/display/PrecisionWidget.cpp
+}
 
 build() {
-  cd "$srcdir/${pkgname}-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr
   sed -i -e 's/--as-needed,//' Makefile build-frontend/Makefile
   make
 }
 
 package() {
-  cd "$srcdir/${pkgname}-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="$pkgdir/" install
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
