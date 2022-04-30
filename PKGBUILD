@@ -2,29 +2,27 @@
 
 _projectname=Mamba
 pkgname="${_projectname,,}"
-pkgver=2.2
-pkgrel=2
-pkgdesc="A virtual MIDI keyboard and file player/recorder for ALSA/JACK"
-arch=('i686' 'x86_64')
-url="https://github.com/brummer10/${_projectname}"
-license=('0BSD')
-depends=('cairo')
-makedepends=('alsa-lib' 'fluidsynth' 'jack' 'liblo' 'libsigc++' 'libsmf' 'xxd')
+pkgver=2.3
+pkgrel=1
+pkgdesc='A virtual MIDI keyboard and file player/recorder for ALSA/JACK'
+arch=(i686 x86_64 aarch64)
+url="https://github.com/brummer10/$_projectname"
+license=('custom:0BSD')
+depends=(cairo)
+makedepends=(alsa-lib fluidsynth jack liblo libsigc++ libsmf xxd)
 optdepends=('new-session-manager: for NSM support')
-groups=('pro-audio')
-source=("https://github.com/brummer10/Mamba/files/6329780/${_projectname}_${pkgver}.tar.gz")
-sha256sums=('974403e08ab5d0bc92dcfad7cfdc4c95df87c5d8ca586794923bdb2254569838')
-
+groups=(pro-audio)
+source=("https://github.com/brummer10/Mamba/releases/download/v$pkgver/${_projectname}_$pkgver.tar.gz")
+sha256sums=('c12ce0721a2924eb38d86f511115fedaeef0dfe09a9fabc2d7ee8e94497d2dd9')
 
 build() {
-  cd "${srcdir}/${_projectname}_${pkgver}"
+  cd ${_projectname}_$pkgver
   make
 }
 
 package() {
-  depends+=('libasound.so' 'libfluidsynth.so' 'libjack.so' 'liblo.so' 'libsigc++' 'libsmf.so')
-  cd "${srcdir}/${_projectname}_${pkgver}"
-  make DESTDIR="${pkgdir}" PREFIX=/usr install
-
-  install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  depends+=(libasound.so libfluidsynth.so libjack.so liblo.so libsigc-2.0.so libsmf.so)
+  cd ${_projectname}_$pkgver
+  make DESTDIR="$pkgdir" PREFIX=/usr install
+  install -Dm644 LICENSE -t "$pkgdir"/usr/share/licenses/$pkgname
 }
