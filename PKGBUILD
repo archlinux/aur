@@ -3,7 +3,7 @@ pkgname=goverlay-bin
 _id="io.github.benjamimgois.${pkgname%-bin}"
 _pkgver=0_8_1
 pkgver=${_pkgver//_/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="A GUI to help manage Vulkan/OpenGL overlays"
 arch=('x86_64')
 url="https://github.com/benjamimgois/goverlay"
@@ -19,11 +19,11 @@ optdepends=('vkbasalt: Configure vkBasalt'
             'breeze: for Breeze style')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
-source=("$url/releases/download/$pkgver/${pkgname%-bin}_${_pkgver}.tar.xz"
-        "https://github.com/benjamimgois/goverlay/raw/$pkgver/data/${pkgname%-bin}.1"
-        "https://github.com/benjamimgois/goverlay/raw/$pkgver/data/$_id.desktop"
-        "https://github.com/benjamimgois/goverlay/raw/$pkgver/data/$_id.metainfo.xml"
-        "https://github.com/benjamimgois/goverlay/raw/$pkgver/data/icons/512x512/${pkgname%-bin}.png")
+source=("https://github.com/benjamimgois-zz/goverlay/releases/download/$pkgver/${pkgname%-bin}_${_pkgver}.tar.xz"
+        "https://github.com/benjamimgois-zz/goverlay/raw/$pkgver/data/${pkgname%-bin}.1"
+        "https://github.com/benjamimgois-zz/goverlay/raw/$pkgver/data/$_id.desktop"
+        "https://github.com/benjamimgois-zz/goverlay/raw/$pkgver/data/$_id.metainfo.xml"
+        "https://github.com/benjamimgois-zz/goverlay/raw/$pkgver/data/icons/512x512/${pkgname%-bin}.png")
 sha256sums=('e5b6d0a4deca2c4609aa46a87b00b901eac58272b05f82f618d61f50ba5fb2c9'
             'd87db8157e4ef57e14b98e4d1b001c571f5ad4bfd4a12f3bfbe686a1a5541fed'
             '4d3493dc383ee336f4451ab09604632214e0be6562df69ee30a2721bc08df989'
