@@ -17,7 +17,7 @@ pkgver=12.0.1
 pkgrel=1
 pkgdesc='VMWare Remote Console'
 arch=('x86_64')
-url='https://www.vmware.com/go/download-vmrc'
+url="http://www.vmware.com/go/download-vmrc"
 license=('custom:vmware')
 depends=()
 
@@ -32,11 +32,9 @@ source=(
     'config'
 )
 
-sha256sums=(
-    '90eb1d411b15eec77f49cc499d20af8d9b7cdd409bd7b867a18d7740dcf2341b'
-    '67edc40e39686281f5101ced1a250648ae32e4cd5dffe4fd47bc3c7aed929d50'
-    'c5643ebad140391622c57ab88d6071b91d1ea9a8379c1aec573c845a00be30d4'
-)
+sha256sums=('90eb1d411b15eec77f49cc499d20af8d9b7cdd409bd7b867a18d7740dcf2341b'
+            '22282e8643d8a20e63773435161e5a5d01c6acce53aa81f27a4d20f111acd228'
+            'c5643ebad140391622c57ab88d6071b91d1ea9a8379c1aec573c845a00be30d4')
 
 build() {
     cd "$srcdir"
