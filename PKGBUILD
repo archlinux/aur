@@ -4,14 +4,16 @@
 # Contributor: Olivier Ramonat <olivier at ramonat dot fr>
 
 pkgname=gource-git
-pkgver=0.51.r25.g134a0a6
+pkgver=0.53.r1.g3a90a6c
 pkgrel=2
 pkgdesc="software version control visualization"
 license=(GPL3)
 arch=(i686 x86_64)
 url="https://gource.io/"
-depends=(sdl2 sdl2_image pcre2 glew boost-libs freetype2 )
+depends=(sdl2 sdl2_image pcre2 glew boost-libs freetype2)
 makedepends=(boost glm mesa git)
+provides=(gource)
+conflicts=(gource)
 source=("${pkgname%-git}::git+https://github.com/acaudwell/Gource.git"
         "git+https://github.com/acaudwell/Core.git")
 sha512sums=('SKIP'
