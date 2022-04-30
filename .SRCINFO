@@ -1,11 +1,10 @@
 pkgbase = zaread-git
-	pkgdesc = A (very) lightweight MS Office file reader
+	pkgdesc = A (very) lightweight ebook and Office document reader
 	pkgver = r47.9239db1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/paoloap/zaread
 	arch = any
 	license = GPL
-	makedepends = git
 	depends = zathura
 	optdepends = libreoffice
 	optdepends = calibre
