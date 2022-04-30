@@ -4,14 +4,14 @@
 ## Valid numbers between: 0 to 99
 ## Default is: 0 => generic
 ## Good option if your package is for one machine: 98 (Intel native) or 99 (AMD native)
-_microarchitecture=0
+_microarchitecture=98
 
 ## --- PKGBUILD
 
 ## Major kernel version
 _major=5.17
 ## Minor kernel version
-_minor=4
+_minor=5
 
 pkgbase=linux-multimedia
 #pkgver=${_major}
@@ -39,7 +39,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
   'A2FF3A36AAA56654109064AB19802F8B0D70FC30'  # Jan Alexander Steffens (heftig)
 )
-sha256sums=('6e3cd56ee83a9cb5ac3fde1442c40367ab67368946c4c93bbeb1c65664a0d3c5'
+sha256sums=('9bbcd185b94436f9c8fe977fa0e862f60d34003562327fcebb27c9fa342fe987'
             'SKIP'
             'SKIP'
             'SKIP'
