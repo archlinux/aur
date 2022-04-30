@@ -13,7 +13,7 @@ _pgo=true
 
 _pkgname=firefox
 pkgname=$_pkgname-kde-opensuse
-pkgver=97.0.1
+pkgver=99.0.1
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org with OpenSUSE patch, integrate better with KDE"
 arch=('i686' 'x86_64')
@@ -52,7 +52,7 @@ optdepends=('networkmanager: Location detection via available WiFi networks'
             'pulseaudio: Audio support')
 provides=("firefox=${pkgver}")
 conflicts=('firefox')
-_patchrev=536158d6ee8110971fc9fc861432ae26c0d9c6a3
+_patchrev=081e705dab36a3b67d60f8e4ba9ee426095d0227
 options=('!emptydirs')
 _patchurl=https://raw.githubusercontent.com/openSUSE/firefox-maintenance/$_patchrev
 _repo=https://hg.mozilla.org/mozilla-unified
@@ -82,8 +82,6 @@ source=("hg+$_repo#tag=FIREFOX_${pkgver//./_}_RELEASE"
         0005-bmo-847568-Support-system-graphite2.patch
         # use sytem av1
         0006-bmo-1559213-Support-system-av1.patch
-        # https://bugzilla.mozilla.org/show_bug.cgi?id=1530052
-        0001-Use-remoting-name-for-GDK-application-names.patch
         # reenable system sqlite
         5022efe33088.patch
         # Force disable elfhack to fix build errors
@@ -151,9 +149,6 @@ prepare() {
   patch -Np1 -i "$srcdir"/0005-bmo-847568-Support-system-graphite2.patch
   # use sytem av1
   patch -Np1 -i "$srcdir"/0006-bmo-1559213-Support-system-av1.patch
-
-  # Fix MOZILLA#1530052
-  patch -Np1 -i "$srcdir"/0001-Use-remoting-name-for-GDK-application-names.patch
 
   # reenable system sqlite
   patch -p1 -i "$srcdir"/5022efe33088.patch
@@ -284,15 +279,14 @@ md5sums=('SKIP'
          '05bb69d25fb3572c618e3adf1ee7b670'
          'b386ac38ffb7e545b9473e516455a25f'
          '1d5e9215530ef6778299b67dc6dba65e'
-         '0eeb274bd4f1783075cfac3a5a852e3c'
+         '52681df0a4fde83d8060724283ee681c'
          '0a5733b7a457a2786c2dd27626a1bf88'
-         '5c1d49167ee43fb952075867605dd5f7'
+         'a9967bd9cd5cae2c2678cb5635236c4f'
          'fe24f5ea463013bb7f1c12d12dce41b2'
          '3c383d371d7f6ede5983a40310518715'
          '350c258cdaeef99b4638c5181fda3ad2'
          '9e518b30cf2ff9afd0423c79d12ae7b2'
-         '4fa2216039664edad586b230b05fbd0a'
-         'e7994b3b78b780ebe610ba3d87247e40'
+         '0b9e288a675494e744291ede6a4d5c2b'
          '548de130fc0f470bff0b6d994a0a91cd'
          'c7b492df4fbf42ffe8aea4c0afb89921'
          '316d71d9cec400890db2ee8c362e672f'

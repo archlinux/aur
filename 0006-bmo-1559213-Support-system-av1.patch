@@ -112,3 +112,25 @@ index d98e748bb9..1e704a4765 100644
 -- 
 2.33.1
 
+diff --git a/media/ffvpx/libavcodec/moz.build b/media/ffvpx/libavcodec/moz.build
+index 0069865..e806fc8 100644
+--- a/media/ffvpx/libavcodec/moz.build
++++ b/media/ffvpx/libavcodec/moz.build
+@@ -112,9 +112,15 @@ if not CONFIG['MOZ_FFVPX_AUDIOONLY']:
+             'vaapi_vp8.c',
+             'vaapi_vp9.c',
+         ]
++        if CONFIG["MOZ_SYSTEM_AV1"]:
++          CFLAGS += CONFIG['MOZ_SYSTEM_LIBDAV1D_CFLAGS']
++          OS_LIBS += CONFIG['MOZ_SYSTEM_LIBDAV1D_LIBS']
++        else:
++          USE_LIBS += [
++            'dav1d',
++            'media_libdav1d_asm',
++          ]
+         USE_LIBS += [
+-          'dav1d',
+-          'media_libdav1d_asm',
+           'mozva'
+         ]
+ 
