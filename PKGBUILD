@@ -90,6 +90,8 @@ provides=('libavcodec.so=58' 'libavdevice.so=58' 'libavfilter.so=7'
           'libavformat.so=58' 'libavutil.so=56'
           'libpostproc.so=55' 'libswresample.so=3' 'libswscale.so=5')
 
+conflicts=('ffmpeg4.4')
+
 source=(
   http://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz
 )
