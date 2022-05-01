@@ -7,7 +7,7 @@ url="https://github.com/hashcat/princeprocessor"
 license=('MIT')
 makedepends=('git' 'make')
 provides=('princeprocessor')
-source=(git://github.com/hashcat/princeprocessor.git)
+source=(git+https://github.com/hashcat/princeprocessor.git)
 md5sums=('SKIP')
 
 _gitroot='https://github.com/hashcat/princeprocessor.git'
