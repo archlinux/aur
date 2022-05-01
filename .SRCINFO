@@ -1,0 +1,13 @@
+pkgbase = jakartaee10-doc
+	pkgdesc = Jakarta EE 10 documentation.
+	pkgver = 10.0.0
+	pkgrel = 1
+	url = https://github.com/eclipse-ee4j/jakartaee-api
+	arch = any
+	license = EPL
+	makedepends = java-environment-openjdk=11
+	makedepends = maven
+	source = jakartaee10-doc-10.0.0.tar.gz::https://github.com/eclipse-ee4j/jakartaee-api/archive/10.0.0.tar.gz
+	sha256sums = 84468709f3514694ce4c9801e57252783862cfe2a47196f95bd6b517396e7cf6
+
+pkgname = jakartaee10-doc
