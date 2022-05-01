@@ -1,0 +1,8 @@
+{
+  "solution": {
+    "path": "YTSubConverter\\YTSubConverter.sln",
+    "projects": [
+      "YTSubConverter.UI.Linux\\YTSubConverter.UI.Linux.csproj"
+    ]
+  }
+}
