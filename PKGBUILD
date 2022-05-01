@@ -14,7 +14,7 @@ replaces=()
 backup=()
 options=()
 install=
-source=(git://github.com/hashcat/hashcat-utils.git)
+source=(git+https://github.com/hashcat/hashcat-utils.git)
 noextract=()
 md5sums=('SKIP')
 
