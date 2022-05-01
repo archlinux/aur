@@ -5,14 +5,14 @@
 # Contributor: Helder Bertoldo <helder.bertoldo@gmail.com>
 
 pkgname=gamehub-git
-pkgver=0.16.2.1.dev.r0.g448a0bd
+pkgver=0.16.2.4.dev.r0.ge37f52e
 pkgrel=1
 pkgdesc="Games manager, downloader, library that supports GOG, Steam and Humble Bundle"
 arch=(i686 x86_64 armv6h armv7h aarch64)
 url="https://tkashkin.github.io/projects/gamehub/"
 license=(GPL3)
 depends=(gtk3 glib2 libgee libsoup json-glib sqlite webkit2gtk libmanette libxtst)
-makedepends=(git meson ninja vala)
+makedepends=(git meson ninja vala0.54)
 provides=(gamehub)
 conflicts=(gamehub)
 options=(!strip debug)
