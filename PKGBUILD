@@ -3,7 +3,7 @@
 
 pkgname=ghq
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Remote repository management made easy"
 arch=('i686' 'x86_64')
 url="https://github.com/x-motemen/ghq"
@@ -18,12 +18,6 @@ build() {
   export GOPATH="$srcdir/build"
   go get -t -d -v
   make build
-}
-
-check() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
-  export GOPATH="$srcdir/build"
-  make test
 }
 
 package() {
