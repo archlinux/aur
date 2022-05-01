@@ -17,12 +17,12 @@ _nodever=14.17.5
 _pandocver="current"
 _quarto="FALSE"
 
-pkgrel=1
+pkgrel=2
 pkgdesc="A powerful and productive integrated development environment (IDE) for R programming language"
 arch=('x86_64')
 url="https://www.rstudio.com/products/rstudio/"
 license=('AGPL3')
-depends=('r>=3.0.1' boost-libs qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns postgresql-libs sqlite3 soci clang hunspell-en_US mathjax2 pandoc yaml-cpp)
+depends=('r>=3.3.0' boost-libs qt5-sensors qt5-svg qt5-webengine qt5-xmlpatterns postgresql-libs sqlite3 soci clang hunspell-en_US mathjax2 pandoc yaml-cpp)
 makedepends=(git 'cmake>=3.1.0' boost desktop-file-utils jdk8-openjdk apache-ant unzip openssl libcups pam patchelf wget yarn)
 optdepends=('git: for git support'
             'subversion: for subversion support'
@@ -36,7 +36,6 @@ source=("rstudio-$pkgver.tar.gz::https://github.com/rstudio/rstudio/archive/refs
         "https://storage.googleapis.com/gwt-releases/gwt-${_gwtver}.zip"
         "https://nodejs.org/dist/v${_nodever}/node-v${_nodever}-linux-x64.tar.gz"
         "qt.conf"
-        "cran_multithread.patch"
         "sigstksz_gcc11.patch"
         "10952.patch"
         "pandoc_version.patch")
@@ -46,7 +45,6 @@ sha256sums=('a9351fcd3bb4ab1f7d526b289dad06f02800d5b883655d9a49fa4b7c1ce6b299'
             '970701dacc55170088f5eb327137cb4a7581ebb4734188dfcc2fad9941745d1b'
             'dc04c7e60235ff73536ba0d9e50638090f60cacabfd83184082dce3b330afc6e'
             '723626bfe05dafa545e135e8e61a482df111f488583fef155301acc5ecbbf921'
-            'c907e6eec5ef324ad498b44fb9926bb5baafc4e0778ca01f6ba9b49dd3a2a980'
             '7b8420db08f848f7baac0f3104c879ac7ce6e27e463f96a6b1c6589cd4b8df82'
             '71c41818d099c07d928aa9689a5fd57bb3dc187b9788a8d5cc528ef6208b7726'
             '71cc9986a02c209960309f0e1dd50f08a8f7e59c1bc09ec45d10058a89299939')
@@ -55,9 +53,6 @@ noextract=("gin-${_ginver}.zip")
 
 prepare() {
     cd ${srcdir}/${_srcname}
-    local JOBS; JOBS="$(grep -oP -- "-j\s*\K[0-9]+" <<< "${MAKEFLAGS}")" || JOBS="1"
-    sed "s/@@proc_num@@/${JOBS}/" -i ${srcdir}/cran_multithread.patch
-    patch -p1 < ${srcdir}/cran_multithread.patch
     patch -p1 < ${srcdir}/sigstksz_gcc11.patch
     # Fix for quarto/pandoc location
     # https://github.com/rstudio/rstudio/pull/10952
@@ -116,7 +111,14 @@ build() {
     cd ${srcdir}
 
     msg "Downloading and installing R packages..."
-    bash "${srcdir}/${_srcname}"/dependencies/common/install-packages
+    export R_LIBS_USER="${srcdir}/${_srcname}/dependencies/R"
+    _JOBS="$(grep -oP -- "-j\s*\K[0-9]+" <<< "${MAKEFLAGS}")" || _JOBS="1"
+    mkdir -p "${R_LIBS_USER}"
+    for RPKG in rmarkdown renv testthat xml2 yaml; do
+        RINSTALLCMD="if("'!'"require($RPKG, quietly = TRUE)) { options(Ncpus = ${_JOBS} ); install.packages('$RPKG', lib='$R_LIBS_USER', repos='https://cran.rstudio.com/') }"
+        echo "> $RINSTALLCMD"
+        Rscript -e "$RINSTALLCMD"
+    done
 
     export PATH=/usr/lib/jvm/java-8-openjdk/jre/bin/:${PATH}
     export RSTUDIO_VERSION_MAJOR=${_vermajor}
