@@ -1,7 +1,7 @@
 # Maintainer: ABOhiccups <https://twitter.com/ABOhiccups>
 pkgname=slippi-launcher
 _tagname='2.1.15'
-pkgver='v2.1.15.r0.g1a6cb24c'
+pkgver='v2.1.15.r0.g1a6cb24'
 pkgrel=1
 pkgdesc="The way to play Slippi Online and watch replays."
 arch=('x86_64')

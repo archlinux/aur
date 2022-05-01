@@ -1,6 +1,6 @@
 pkgbase = slippi-launcher
 	pkgdesc = The way to play Slippi Online and watch replays.
-	pkgver = v2.1.15.r0.g1a6cb24c
+	pkgver = v2.1.15.r0.g1a6cb24
 	pkgrel = 1
 	url = https://slippi.gg/
 	arch = x86_64
