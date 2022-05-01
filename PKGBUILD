@@ -5,14 +5,14 @@
 pkgname=audacity-systemlibs
 _pkgname=audacity
 pkgver=3.1.3
-pkgrel=4
+pkgrel=5
 pkgdesc="A program that lets you manipulate digital audio waveforms - Pure System Libraries"
 arch=(x86_64)
 url="https://www.audacityteam.org/"
 license=(GPL2 CCPL)
 depends=(
   flac
-  gtk3
+  gtk4
   jack
   libid3tag
   libmad
@@ -43,7 +43,7 @@ makedepends=(
   sratom
   sord
   sqlite
-  #wxgtk3-dev
+  wxgtk-audacity
 )
 optdepends=('ffmpeg: additional import/export capabilities')
 provides=(audacity)
@@ -58,10 +58,8 @@ build() {
   cmake -S . -B build \
     -DCMAKE_BUILD_TYPE=Release \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DwxBUILD_TOOLKIT:STRING=gtk3 \
-    -Daudacity_obey_system_dependencies=On \
-    -Daudacity_lib_preference=system \
-    -Daudacity_use_wxwidgets=local
+    -DwxBUILD_TOOLKIT:STRING=gtk4 \
+    -Daudacity_conan_enabled=false
   cmake --build build
 }
 
