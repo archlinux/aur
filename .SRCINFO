@@ -1,0 +1,13 @@
+pkgbase = python-irgen
+	pkgdesc = A python module/tool for generating and converting InfraRed commands.
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/elupus/irgen
+	arch = any
+	license = MIT
+	depends = python>=3.7
+	source = python-irgen-0.2.0.tar.gz::https://github.com/elupus/irgen/archive/refs/tags/0.2.0.tar.gz
+	md5sums = fd3545116459c7bc7f020c588f78776b
+	sha512sums = 191a59a30584fe0808903aae8912ae83006ccf7b027695f2d283b85e7c3cb606a9881fc8b6af5fc56333fe83bfda0abe101a8666146daeca905d33fc10010639
+
+pkgname = python-irgen
