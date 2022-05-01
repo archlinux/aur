@@ -2,7 +2,7 @@
 
 _pkgname=SwiftLint
 pkgname=swiftlint
-pkgver=0.47.0
+pkgver=0.47.1
 pkgrel=1
 pkgdesc="A tool to enforce Swift style and conventions."
 arch=("i686" "x86_64")
@@ -15,7 +15,7 @@ conflicts=("${pkgname}")
 # options=()
 # install=$pkgname.install
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/realm/SwiftLint/archive/${pkgver}.tar.gz")
-sha256sums=('a59a244ffc88749fe243089a445a926ce08ced52b870ab1459ec57cb2b73c393')
+sha256sums=('cb9668b83a38aff15cdc213227b06087fe08927741d3d7c0dc3bfb9db3dbb66a')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
