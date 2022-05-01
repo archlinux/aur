@@ -1,8 +1,8 @@
 # Maintainer: Mohammadreza Abdollahzadeh <morealaz at gmail dot com>
 # Contributor: Parham <parham at tuta dot io>
 pkgname=icu4j
-pkgver=70.1
-pkgrel=3
+pkgver=71.1
+pkgrel=1
 pkgdesc="International Components for Unicode for Java"
 arch=('any')
 url="https://icu.unicode.org"
@@ -23,14 +23,14 @@ noextract=("${pkgname}-${pkgver//./_}.jar"
            "${pkgname}-charset-${pkgver//./_}-src.jar"
            "${pkgname}-localespi-${pkgver//./_}.jar"
            "${pkgname}-localespi-${pkgver//./_}-src.jar")
-sha256sums=('2b4d8d4e098e86aa5f905ec81c46751d218b16afd3f7fc02b64f80dd20fffa20'
-            '72afed415f6ffb5fa2e0eeec884d5b81afd83a135044d71408b0debe2e60e621'
-            '4b8d6b2926db8a8a5a8756ef9dd866589fef316d536a4d602643c01d625b294b'
-            'a2d52b2f42eb74c539a07d6dbeb9a41c80c0fb96def700d668517f905c56a0b4'
-            '5e5352f5615b0f876956ed9e43639a15ddec3fcc709c6a2a799ed2790e07f3d3'
-            '36d7e221d84855fe45de059a12efdcde42e03aafbd726302406b021814faaf4f'
-            '683770060b534b69d2300b4f0c667ffe5c45b3603a8d9412bf4a8cd8cf2f5de2'
-            'SKIP')
+sha256sums=('91c4f8ebf0ceb489547098fe9d5c09a65eb419caea6ed714867f5280800bcf1a'
+            'b775182c507e9b2efce231275abfeaee6dfdcc11cd4aacddb7d3f1709fc6f8d7'
+            'db804ebf5b8cc1aed3e034bd714a68ca973d8ff3c9f3d1b23d67dc83fc596055'
+            '5ac6b3c9e1edd55d10f473a780705d3b14a96d238b745a638fbcf9f8af02204e'
+            'dd615da4a1bb44b9a665253e4a231b9d050e830b264c7f4ef525ad29bc4c1c10'
+            '857061c37cfc4f7e02696e4a0859befbf2caa38a64a250d9e40dffb627749f67'
+            '7c94733bf21bb135914e65927aba84aa4023f83b6db1d8cc6ae9284afc6e399a'
+            '2dc50618eb621aabc10d33c77266326ce73c6e11a6fa8fe96701d4e964e96434')
 
 package() {
     install -D -t "${pkgdir}/usr/share/java/${pkgname}" -m 644 icu4j*.jar
