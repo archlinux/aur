@@ -1,4 +1,5 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
+# Co-Maintainer: Tony Lambiris <tony@libpcap.net>
 # Contributor: Shaleen Jain <shaleen(at)jain(dot)sh>
 pkgname=system76-dkms-git
 pkgver=1.0.13.r0.g68bd479
@@ -20,9 +21,8 @@ pkgver() {
 }
 
 package() {
-  local install_dir="$pkgdir/usr/src/system76-${pkgver//.r*/}"
-
   cd "$srcdir/${pkgname%-git}"
+  local install_dir="$pkgdir/usr/src/system76-${pkgver//.r*/}"
 
   # Install source files
   for file in {Makefile,*.c,*.h}; do
