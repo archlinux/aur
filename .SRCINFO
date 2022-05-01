@@ -9,6 +9,7 @@ pkgbase = eric
 	depends = python-qscintilla-qt6
 	depends = python-pyqt6-webengine
 	depends = python-pyqt6-charts
+	depends = qt6-tools
 	depends = qt6-svg
 	depends = python-editorconfig
 	depends = python-asttokens
