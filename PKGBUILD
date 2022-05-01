@@ -36,5 +36,5 @@ package() {
 
     cp -r "${srcdir}/${_gitname}/dist/"* "${pkgdir}/opt/${_gitname}" -R
     
-    ln -s "${pkgdir}/opt/${_gitname}" "${pkgdir}/usr/share/${_gitname}"
+    ln -s "${pkgdir}/opt/${_gitname}/${_gitname}" "${pkgdir}/usr/bin/${_gitname}"
 }
