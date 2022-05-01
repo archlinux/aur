@@ -2,7 +2,7 @@
 
 pkgname=chatterino2-homies-git
 _pkgname=chatterino7
-pkgver=r3551.fbfbf143
+pkgver=r3705.61816ebd
 pkgrel=1
 pkgdesc='A fork of Chatterino7 with features that are not into the upstream repo (7tv emotes included)'
 arch=('any')

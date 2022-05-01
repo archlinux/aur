@@ -1,6 +1,6 @@
 pkgbase = chatterino2-homies-git
 	pkgdesc = A fork of Chatterino7 with features that are not into the upstream repo (7tv emotes included)
-	pkgver = r3551.fbfbf143
+	pkgver = r3705.61816ebd
 	pkgrel = 1
 	url = https://github.com/itzAlex/chatterino7
 	install = chatterino2-homies-git.install
