@@ -2,7 +2,7 @@
 # Contributor: malacology
 
 pkgname=tpsutil
-pkgver=1.81
+pkgver=2021.04.30
 pkgrel=1
 pkgdesc="tps file utility program"
 arch=('any')
@@ -15,7 +15,7 @@ depends=(
 	'wine-mono'
 )
 source=("https://sbmorphometrics.org/morphmet/tpsutilw64.exe" "tpsUtil.desktop" "tpsUtil.png")
-md5sums=('1f72cbb8bf720f3f192b6f8847237e92'
+md5sums=('18da32fb82f3521f04b167bd3280bb32'
          '64baf6b610dcecc53a15342218579d18'
          '6e52ff5a9df8898532610845c973b23a')
 build(){
