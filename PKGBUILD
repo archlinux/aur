@@ -4,7 +4,7 @@ pkgname=codelldb
 _reponame=vscode-lldb
 pkgdesc="A native debugger extension for VSCode based on LLDB. Also known as vscode-lldb (NOT lldb-vscode)"
 pkgver=1.7.0
-pkgrel=2
+pkgrel=3
 url="https://github.com/vadimcn/$_reponame"
 arch=("x86_64" "aarch64" "arm7h")
 license=("custom:MIT")
@@ -15,7 +15,7 @@ depends=(lldb)
 makedepends=(cmake cargo npm python)
 build() {    
 	export RUSTUP_TOOLCHAIN=stable
-	export CFLAGS="-march=x86-64 -mtune=generic -O2 -pipe -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security"
+	export CFLAGS="-mtune=generic -O2 -pipe -fexceptions -Wp,-D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security"
 	# Doesn't build with -fno-plt 
 	cd "$_reponame-$pkgver"
 	cmake -B build -DLLDB_PACKAGE=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -Wno-dev
