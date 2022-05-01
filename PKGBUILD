@@ -2,7 +2,7 @@
 
 pkgname=('enigma-dev-git')
 pkgver=4768.d4771fde1
-pkgrel=2
+pkgrel=3
 pkgdesc="ENIGMA, the Extensible Non-Interpreted Game Maker Augmentation."
 url="http://enigma-dev.org"
 arch=('x86_64' 'i686')
@@ -18,7 +18,7 @@ provides=('lateralgm')
 install='enigma-dev-git.install'
 source=('lateralgm' 'emake' 'lateralgm.desktop' 'git+https://github.com/enigma-dev/enigma-dev.git' 'http://enigma-dev.org/docs/wiki/images/4/47/Lateralgmlogo.png')
 sha256sums=('465270e7d8042b6022936509e3e59563f38c5df94827979aca3d4429919b20b3'
-         '0e3965d44fba153ed78cc9b33701397b951291a7cc23c2cbc1ead17a67a131d7'
+         '9a84e88a82569a9da5e017f52dcfad4334b0775631f7fb9b149c0bbe2ff09fdb'
          '967f3d6f315a4568dc081ec55664998d68e0556eb5e25c87506179dc41db8008'
          'SKIP'
          '775377940f41bec376cf4656312341efa034315e61130b6c5748bff9752b4d01')
