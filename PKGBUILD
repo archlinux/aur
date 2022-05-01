@@ -1,29 +1,27 @@
-# Maintainer: Jiachen YANG <farseerfc@gmail.com>
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: lilac <lilac@build.archlinuxcn.org>
+# Contributor: Jiachen YANG <farseerfc@gmail.com>
+
 _pkgname=conoha-iso
 pkgname=${_pkgname}-git
-pkgver=0.4.3.r78.g94c2ee6
+pkgver=0.4.4.r80.g0bf6cca
 pkgrel=1
 pkgdesc="ISO image management tool for ConoHa"
 arch=(x86_64)
 url="https://github.com/hironobu-s/conoha-iso"
 license=('MIT')
-makedepends=(go git dep)
+makedepends=(go git)
 source=("git+https://github.com/hironobu-s/conoha-iso.git")
 md5sums=('SKIP')
 
 pkgver() {
 	cd "$_pkgname"
 	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g' | sed "s/current/$(grep -oP 'APP_VERSION.*"\K([.0-9]*)(?=")' app.go)/g"
-#	printf "0.4.3.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
 	mkdir -p gopath/src/github.com/$_pkgname
 	ln -rTsf $_pkgname gopath/src/github.com/$_pkgname/$_pkgname
-	export GOPATH="$srcdir"/gopath
-	cd gopath/src/github.com/$_pkgname/$_pkgname
-        dep init
-	dep ensure
 }
 
 build() {
