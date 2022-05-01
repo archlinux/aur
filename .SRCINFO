@@ -1,0 +1,18 @@
+pkgbase = python-chumpy
+	pkgdesc = Autodifferentiation tool for Python
+	pkgver = 0.70
+	pkgrel = 1
+	url = https://pypi.org/project/chumpy
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	makedepends = python-setuptools
+	depends = python-numpy
+	depends = python-scipy
+	depends = python-six
+	source = python-chumpy-0.70.tar.gz::https://files.pythonhosted.org/packages/source/c/chumpy/chumpy-0.70.tar.gz
+	source = LICENSE::https://github.com/mattloper/chumpy/raw/master/LICENSE.txt
+	sha512sums = a5bbef9da5065520ed7aecb92c82deedf41bcc2caccc48642571244a03a12f6aa6935b85149372d2b8a2257ec8f4514ab8e8c7f60fd485647cf3e12280f95312
+	sha512sums = dffa3b1e3f03ff837da0071f9cdd8b47198c6dd87e4a90bdf601711dde59be65798fb2ae0ed1aa3efe2660c9f76dff18c17f0b1cc0eb77f6ee871efc3d559c24
+
+pkgname = python-chumpy
