@@ -1,19 +1,16 @@
 # Maintainer: mcol <mcol@posteo.net>
 # Contributor: roger <roger@rogerpc.com.ar>
 
+# This PKGBUILD packages Qtile with X11 dependencies.
+
 pkgname=qtile-git
 pkgver=0.20.0.r33.gc1f50739
 pkgrel=2
-pkgdesc="A full-featured, pure-Python tiling window manager. (git version)"
+pkgdesc="A full-featured, pure-Python tiling window manager - X11. (git version)"
 arch=('x86_64')
 url="http://www.qtile.org"
 license=('MIT')
 
-_pywlroots_requirement="0.15.12"
-
-# Technically the X-related dependencies are *not* required, if the user only
-# wants to use the Wayland backend. However this would cause disruption, so
-# let's hold off on changing that for now.
 depends=(
   'gdk-pixbuf2'
   'glibc'
@@ -28,7 +25,6 @@ makedepends=(
   'python-setuptools'
   'python-setuptools-scm'
   'libpulse'
-  "python-pywlroots>=$_pywlroots_requirement" 'python-pywlroots<0.16.0'
 )
 checkdepends=(
   'dbus'
@@ -42,13 +38,10 @@ checkdepends=(
   'python-dbus-next'
   'python-gobject'
   'python-pytest'
-  "python-pywlroots>=$_pywlroots_requirement" 'python-pywlroots<0.16.0'
   'python-xdg'
   'python-xvfbwrapper'
-  'wlroots'
   'xorg-server-xephyr'
   'xorg-xrandr'
-  'xorg-xwayland'
 )
 optdepends=(
   'alsa-utils: volume widget'
@@ -93,8 +86,7 @@ check() {
   # export MYPYPATH="$PWD:$PWD/stubs"
   # mypy-based tests are ignored until I figure out how to fix them
   # Plus they won't change from merge to package
-  #pytest -vv --backend x11 --backend wayland \
-  #  --ignore test/test_check.py --ignore test/test_migrate.py test
+  #pytest -vv --backend x11 --ignore test/test_check.py --ignore test/test_migrate.py test
 }
 
 package() {
