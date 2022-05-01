@@ -2,7 +2,7 @@
 # Maintainer: <daihydai875939260 at 163 dot com>
 
 pkgname=("iease-music-daihy-git" "iease-music-daihy-electron-git")
-pkgver=1.0.0.r133.g7e20d30
+pkgver=1.0.0.r134.g280ad50
 pkgrel=1
 pkgdesc='网易云音乐第三方(daihy fork)'
 license=('MIT')
@@ -16,7 +16,7 @@ source=("ieaseMusic::git+${url}" "iease-music.desktop" "iease-music")
 sha256sums=('SKIP'
             'e90c3f0a5b153a7e8ad261c627a06bc6a7f4df9bd7cbf425e57cf7803c7bb4c8'
             '5d51192adb5a78dfb4ba9b9eaafe22d443c686b32b0564f3c6990ffaacf12f79')
-_electron=electron16
+_electron=electron
 _lastver=1.0.0
 
 pkgver(){
