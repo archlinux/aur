@@ -2,18 +2,19 @@
 
 _pkgname='ctrtool'
 pkgname="$_pkgname-git"
-pkgver=r205.ac8c9d4
+pkgver=r369.92a4b5f
 pkgrel=1
 pkgdesc="Tools for the Nintendo 3DS"
 arch=('i686' 'x86_64')
-url="https://github.com/profi200/Project_CTR"
-license=('custom')
+url="https://github.com/3DSGuy/Project_CTR/"
+license=('MIT')
+depends=('gcc-libs')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 _pkgbase=ctr
-source=("$_pkgbase::git+https://github.com/profi200/Project_CTR")
+source=("$_pkgbase::git+${url}")
 sha1sums=('SKIP')
 
 pkgver() {
@@ -23,10 +24,13 @@ pkgver() {
 
 build() {
   cd "$srcdir/$_pkgbase/$_pkgname"
-  make
+  make deps
+  make all
 }
 
 package() {
-  cd "$srcdir/$_pkgbase/$_pkgname"
+  cd "$srcdir/$_pkgbase/makerom/"
+  install -D "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd "$srcdir/$_pkgbase/$_pkgname/bin"
   install -Dm755 ctrtool "$pkgdir/usr/bin/$_pkgname"
 }
