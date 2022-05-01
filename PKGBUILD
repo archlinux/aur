@@ -4,7 +4,7 @@
 ## Based on libtorrent [community]
 pkgname=libtorrent-git
 pkgver=0.13.8.r20.g53596afc
-pkgrel=1
+pkgrel=2
 pkgdesc='BitTorrent library with a focus on high performance and good code'
 url='https://github.com/rakshasa/libtorrent'
 arch=('x86_64' 'i686')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('gcc-libs' 'glibc' 'openssl' 'zlib')
 makedepends=('git' 'cppunit')
 conflicts=('libtorrent')
-provides=('libtorrent')
+provides=("libtorrent=${pkgver}")
 options=('debug')
 source=("$pkgname::git+$url.git")
 sha256sums=('SKIP')
