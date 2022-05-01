@@ -1,0 +1,16 @@
+pkgbase = mcl-rs-git
+	pkgdesc = Minecraft launcher written in Rust.
+	pkgver = r20.9ca2098
+	pkgrel = 1
+	url = https://github.com/r4v3n6101/mc-launcher-rs
+	arch = any
+	license = GPL
+	makedepends = rust
+	makedepends = cargo
+	makedepends = git
+	provides = mcl-rs
+	conflicts = mcl-rs
+	source = mcl-rs-git::git+https://github.com/r4v3n6101/mc-launcher-rs#branch=cli
+	md5sums = SKIP
+
+pkgname = mcl-rs-git
