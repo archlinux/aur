@@ -1,6 +1,6 @@
 pkgbase = jdk-temurin
 	pkgdesc = Temurin (OpenJDK 18 Java binaries by Adoptium, formerly AdoptOpenJDK)
-	pkgver = 18.u36
+	pkgver = 18.0.1.u10
 	pkgrel = 1
 	url = https://adoptium.net/
 	install = install_jdk-temurin.sh
@@ -17,18 +17,18 @@ pkgbase = jdk-temurin
 	optdepends = gtk3: for the Gtk+ 3 look and feel
 	provides = java-runtime-headless=18
 	provides = java-runtime-headless-openjdk=18
-	provides = jre18-openjdk-headless=18.u36
-	provides = jre-openjdk-headless=18.u36
+	provides = jre18-openjdk-headless=18.0.1.u10
+	provides = jre-openjdk-headless=18.0.1.u10
 	provides = java-runtime=18
 	provides = java-runtime-openjdk=18
-	provides = jre18-openjdk=18.u36
-	provides = jre-openjdk=18.u36
+	provides = jre18-openjdk=18.0.1.u10
+	provides = jre-openjdk=18.0.1.u10
 	provides = java-environment=18
 	provides = java-environment-openjdk=18
-	provides = jdk18-openjdk=18.u36
-	provides = jdk-openjdk=18.u36
-	provides = openjdk18-src=18.u36
-	provides = openjdk-src=18.u36
+	provides = jdk18-openjdk=18.0.1.u10
+	provides = jdk-openjdk=18.0.1.u10
+	provides = openjdk18-src=18.0.1.u10
+	provides = openjdk-src=18.0.1.u10
 	replaces = jdk-adoptopenjdk
 	backup = etc/java-temurin/logging.properties
 	backup = etc/java-temurin/management/jmxremote.access
@@ -45,11 +45,11 @@ pkgbase = jdk-temurin
 	backup = etc/java-temurin/security/policy/unlimited/default_local.policy
 	backup = etc/java-temurin/security/policy/unlimited/default_US_export.policy
 	backup = etc/java-temurin/sound.properties
-	source = https://github.com/adoptium/temurin18-binaries/releases/download/jdk-18%2B36/OpenJDK18U-jdk_x64_linux_hotspot_18_36.tar.gz
+	source = https://github.com/adoptium/temurin18-binaries/releases/download/jdk-18.0.1%2B10/OpenJDK18U-jdk_x64_linux_hotspot_18.0.1_10.tar.gz
 	source = freedesktop-java.desktop
 	source = freedesktop-jconsole.desktop
 	source = freedesktop-jshell.desktop
-	sha256sums = 82d67983f92f16b5fb57176fa4c228e44ecc6f671b3c3523140fba7fb904dceb
+	sha256sums = 16b1d9d75f22c157af04a1fd9c664324c7f4b5163c022b382a2f2e8897c1b0a2
 	sha256sums = ea75ce65e1393a91fcb83beed3b84759a88bbe9df1ab4efa440062bbd2fe6c1f
 	sha256sums = 36b2ff191c81ce5eef9e1eed2acc54dba78b2bcdf47532607f0cc9302503a265
 	sha256sums = b73453a639017037627d926cf2179d1c7e296d9c0804747848d1c799ca38652c
