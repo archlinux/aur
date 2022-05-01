@@ -1,0 +1,43 @@
+From 78556fc13026220f800384accf04e139f11e099a Mon Sep 17 00:00:00 2001
+From: Joan Bruguera <joanbrugueram@gmail.com>
+Date: Thu, 17 Feb 2022 22:27:34 +0100
+Subject: [PATCH] Workaround mbsrtowcs fortify crash in GLIBC 2.35
+
+Reproduces with:
+    gcc -O2 -Wp,-D_FORTIFY_SOURCE=2 test.c -o test && ./test
+
+And test.c:
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <wchar.h>
+
+    int main (void)
+    {
+        const char *hw = "HelloWorld";
+        mbstate_t ps = {0};
+        mbsrtowcs (NULL, &hw, (size_t)-1, &ps);
+        return 0;
+    }
+
+Output:
+    *** buffer overflow detected ***: terminated
+---
+ utf8.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/utf8.c b/utf8.c
+index 2db18f2..806d528 100644
+--- a/utf8.c
++++ b/utf8.c
+@@ -167,7 +167,7 @@ static size_t xmbstowcs (wchar_t *dest, const char *src, size_t len,
+ 	while (src && (len || !dest)) {
+ 		size_t res;
+ 
+-		res = mbsrtowcs (dest, &src, len, &ps);
++		res = mbsrtowcs (dest, &src, dest ? len : 0, &ps);
+ 		if (res != (size_t)-1) {
+ 			count += res;
+ 			src = NULL;
+-- 
+2.35.1
+
