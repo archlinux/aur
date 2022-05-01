@@ -2,7 +2,7 @@
 
 pkgname=nmap-grab-beacon-config-git
 _pkgname=nmap-grab-beacon-config
-pkgver=r6.c1bf891
+pkgver=r9.b9b56bb
 pkgrel=1
 pkgdesc="NMAP script for probing Cobalt Strike Beacon config"
 arch=('any')
