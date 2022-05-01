@@ -1,5 +1,5 @@
 pkgbase = qtile-wayland-git
-	pkgdesc = A full-featured, pure-Python tiling window manager - Wayland deps. (git version)
+	pkgdesc = A full-featured, pure-Python tiling window manager - Wayland. (git version)
 	pkgver = 0.20.0.r33.gc1f50739
 	pkgrel = 2
 	url = http://www.qtile.org
@@ -27,7 +27,7 @@ pkgbase = qtile-wayland-git
 	depends = glibc
 	depends = pango
 	depends = python-cairocffi
-	depends = python-pywlroots>=0.15.12
+	depends = python-pywlroots>=0.15.13
 	depends = python-pywlroots<0.16.0
 	depends = xorg-xwayland
 	optdepends = alsa-utils: volume widget

@@ -1,10 +1,12 @@
 # Maintainer: mcol <mcol@posteo.net>
 # Contributor: roger <roger@rogerpc.com.ar>
 
+# This PKGBUILD packages Qtile with Wayland dependencies.
+
 pkgname=qtile-wayland-git
 pkgver=0.20.0.r33.gc1f50739
 pkgrel=2
-pkgdesc="A full-featured, pure-Python tiling window manager - Wayland deps. (git version)"
+pkgdesc="A full-featured, pure-Python tiling window manager - Wayland. (git version)"
 arch=('x86_64')
 url="http://www.qtile.org"
 license=('MIT')
@@ -14,7 +16,7 @@ depends=(
   'glibc'
   'pango'
   'python-cairocffi'
-  'python-pywlroots>=0.15.12' 'python-pywlroots<0.16.0'
+  'python-pywlroots>=0.15.13' 'python-pywlroots<0.16.0'
   'xorg-xwayland'
 )
 
@@ -80,8 +82,7 @@ check() {
   # export MYPYPATH="$PWD:$PWD/stubs"
   # mypy-based tests are ignored until I figure out how to fix them
   # Plus they won't change from merge to package
-  #pytest -vv --backend wayland \
-  #  --ignore test/test_check.py --ignore test/test_migrate.py test
+  #pytest -vv --backend wayland --ignore test/test_check.py --ignore test/test_migrate.py test
 }
 
 package() {
@@ -90,5 +91,6 @@ package() {
   install -vDm 644 LICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
   install -vDm 644 CHANGELOG README.rst libqtile/resources/default_config.py \
     -t "${pkgdir}/usr/share/doc/$pkgname/"
+  install -vDm 644 resources/qtile.desktop -t "$pkgdir/usr/share/xsessions/"
   install -vDm 644 resources/qtile-wayland.desktop -t "$pkgdir/usr/share/wayland-sessions/"
 }
