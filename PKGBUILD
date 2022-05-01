@@ -5,7 +5,7 @@
 
 # Maintainer: Mücahit Saratar <trregen222@gmail.com>
 pkgname=all2done
-pkgver=1.1
+pkgver=1.1.1
 pkgrel=1
 epoch=
 pkgdesc="Flutter based to-do application"
