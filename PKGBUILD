@@ -7,7 +7,7 @@
 pkgbase=tuxguitar
 pkgname=(tuxguitar tuxguitar-common tuxguitar-gtk2)
 pkgver=1.5.6
-pkgrel=1
+pkgrel=2
 pkgdesc="multitrack guitar tablature editor and player"
 arch=('any')
 url="https://sourceforge.net/projects/tuxguitar/"
@@ -50,7 +50,7 @@ build() {
 }
 
 package_tuxguitar-common () {
-  # tuxguitar
+  arch=('x86_64')
   cd tuxguitar-$pkgver-src/build-scripts
   install -d "$pkgdir"/usr/share
   cp -a tuxguitar-linux-$_arch/target/tuxguitar-$pkgver-linux-$_arch "$pkgdir"/usr/share/tuxguitar
