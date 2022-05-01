@@ -1,0 +1,14 @@
+pkgbase = ppfetch-rs-bin
+	pkgdesc = ppfetch, but written in Rust. GitHub release binary
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/RedsonBr140/ppfetch-rs
+	arch = x86_64
+	license = MIT
+	depends = wmctrl
+	source = https://github.com/RedsonBr140/ppfetch-rs/releases/download/v2.0.0/ppfetch-rs
+	source = https://raw.githubusercontent.com/RedsonBr140/ppfetch-rs/master/LICENSE
+	sha256sums = 5b334d9468457a44032fe1ca655ac457820278ab44bf623966c3ff6d5e4e47e3
+	sha256sums = 843ea84c4c40e0f95f7e50627ad7d2981ff9adb74fffd36a3f800b4b4d4dbdd1
+
+pkgname = ppfetch-rs-bin
