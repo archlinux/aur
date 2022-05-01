@@ -1,0 +1,27 @@
+pkgbase = ttf-twemoji-color-git
+	pkgdesc = A color and B&W emoji SVG-in-OpenType font by Twitter with support for ZWJ, skin tone modifiers and country flags (git)
+	pkgver = v13.1.0.r2.g3239f32
+	pkgrel = 1
+	url = https://github.com/eosrei/twemoji-color-font
+	arch = any
+	license = custom:CCPL:by-4.0
+	license = MIT
+	makedepends = git
+	makedepends = inkscape
+	makedepends = imagemagick
+	makedepends = potrace
+	makedepends = python-fonttools
+	makedepends = fontforge
+	makedepends = svgo
+	makedepends = nodejs
+	makedepends = python-yaml
+	provides = twemoji-color-font
+	provides = ttf-twemoji-color
+	provides = emoji-font
+	conflicts = twemoji-color-font
+	conflicts = ttf-twemoji-color
+	replaces = twemoji-color-font
+	source = git+https://github.com/eosrei/twemoji-color-font.git
+	b2sums = SKIP
+
+pkgname = ttf-twemoji-color-git
