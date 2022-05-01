@@ -1,7 +1,7 @@
 # Maintainer: Eduardo Flores <edfloreshz@gmail.com>
 
 pkgname=do-git
-pkgrel=5
+pkgrel=6
 pkgver=0.1.2
 pkgdesc="Do is a to-do app built for Linux with Rust and GTK."
 arch=('x86_64')
