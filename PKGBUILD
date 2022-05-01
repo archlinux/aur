@@ -4,8 +4,8 @@
 # Contributor: Bruno Filipe < gmail-com: bmilreu >
 
 pkgname=ffmpeg-amd-full
-pkgver=5.0
-pkgrel=2
+pkgver=5.0.1
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features for AMD)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -26,7 +26,7 @@ depends=(
         'vulkan-icd-loader' 'libxv' 'libx11'  'libxext' 'zlib'
         'libomxil-bellagio' 'libdrm' 'libva' 'libvdpau'
     # AUR:
-        'davs2' 'flite1-patched' 'libklvanc-git' 'openh264'
+        'davs2' 'flite1' 'libklvanc-git' 'openh264'
         'librist' 'shine' 'uavs3d-git' 'vo-amrwbenc' 'xavs' 'xavs2' 
         'pocketsphinx' 'lensfun-git'
 )
@@ -40,32 +40,32 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'libavutil.so' 'libpostproc.so' 'libswscale.so'
           'libswresample.so' 'ffmpeg' 'ffmpeg-full')
 conflicts=('ffmpeg')
-_svt_hevc_ver='111eef187fd7b91ad27573421c7238ef787e164f'
-_svt_vp9_ver='308ef4464568a824f1f84c4491cb08ab4f535f6c'
+_svt_hevc_ver='6e677e0017cb27bfdd62effcfd2a0dc83b48bb16'
+_svt_vp9_ver='41819e71950883655dcfa2a8b60cf0a75d50db74'
 source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '010-ffmpeg-vmaf2.x.patch'
-        "020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
-        "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
-        "040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
+        #"020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/master-0001-lavc-svt_hevc-add-libsvt-hevc-encoder-wrapper.patch"
+        #"030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-HEVC/${_svt_hevc_ver}/ffmpeg_plugin/0002-doc-Add-libsvt_hevc-encoder-docs.patch"
+        #"040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"::"https://raw.githubusercontent.com/OpenVisualCloud/SVT-VP9/${_svt_vp9_ver}/ffmpeg_plugin/master-0001-Add-ability-for-ffmpeg-to-run-svt-vp9.patch"
         "050-add-av_stream_get_first_dts-for-chromium.patch"
         'LICENSE')
-sha256sums=('51e919f7d205062c0fd4fae6243a84850391115104ccf1efc451733bc0ac7298'
+sha256sums=('ef2efae259ce80a240de48ec85ecb062cecca26e4352ffb3fda562c21a93007b'
             'SKIP'
             '42bd572442a4eba4e9559953c72f9e980b78286ab288ac01e659be39d8bc7298'
-            'efd01f96c1f48ea599881dfc836d20ba18c758a3588d616115546912aebeb77f'
-            '837cac5a64234f34d136d18c8f7dc14203cdea11406fdb310cef2f62504d9e0c'
-            '9565b3eed177ce5d109876f2a56f3781a2c7fae41e32601bf6ec805ea199d21b'
+            #'778030cdd6a097c013e562d3be091280ff92fbd625e5336cd075fbee93589ed0'
+            #'837cac5a64234f34d136d18c8f7dc14203cdea11406fdb310cef2f62504d9e0c'
+            #'1cdedb9e8c2912986d6acf20dd9d8ef0f1e21995d9b1898120dc55b714b4de0d'
             '91973c465f01446a999f278f0c2a3763304994dba1ac35de0e4c72f12f39409e'
             '04a7176400907fd7db0d69116b99de49e582a6e176b3bfb36a03e50a4cb26a36')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
 
 prepare() {
     rm -f "ffmpeg-${pkgver}/libavcodec/"libsvt_{hevc,vp9}.c
-    sed -i 's/general.texi/general_contents.texi/g' "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
+    #sed -i 's/general.texi/general_contents.texi/g' "030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/010-ffmpeg-vmaf2.x.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
+    #patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/020-ffmpeg-add-svt-hevc-g${_svt_hevc_ver:0:7}.patch"
     #patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/030-ffmpeg-add-svt-hevc-docs-g${_svt_hevc_ver:0:7}.patch"
-    patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
+    #patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/040-ffmpeg-add-svt-vp9-g${_svt_vp9_ver:0:7}.patch"
     # https://crbug.com/1251779
     patch -d "ffmpeg-${pkgver}" -Np1 -i "${srcdir}/050-add-av_stream_get_first_dts-for-chromium.patch"
 }
@@ -148,7 +148,6 @@ build() {
         --enable-libspeex \
         --enable-libsrt \
         --enable-libssh \
-        --enable-libsvthevc \
         --enable-libsvtav1 \
         --disable-libtensorflow \
         --enable-libtesseract \
@@ -162,7 +161,6 @@ build() {
         --enable-libvo-amrwbenc \
         --enable-libvorbis \
         --enable-libvpx \
-        --enable-libsvtvp9 \
         --enable-libwebp \
         --enable-libx264 \
         --enable-libx265 \
