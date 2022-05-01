@@ -2,7 +2,7 @@
 pkgname=protonmail-bridge-nokeychain
 provides=("protonmail-bridge")
 conflicts=("protonmail-bridge")
-pkgver=2.1.1
+pkgver=2.1.3
 pkgrel=1
 pkgdesc="An IMAP/SMTP bridge to a ProtonMail account (patched, stores secrets in a file)"
 arch=("x86_64")
@@ -17,8 +17,8 @@ source=(
     "protonmail-bridge.service"
 )
 sha256sums=(
-    "e1ef9baa1fe96278230fe498a81fd4134ab74ebd0611cf4143b8c540bff39d86"
-    "60e1394fed0ae4feb4111476aa68817f2da72bb6bf516bc60ad9d618aead5ce8"
+    "81c2e3fb2980971dfef11e4f1c961af9fb13524e44622ea0b6c0cb027ecd832f"
+    "62dadd44cd093d805d710527413a785bc6010a751db052da5e1c67b8558238db"
     "5ffaaa5acc030ebed82b3b13f1ddc2791b50851fb93964a5d6a20a11000c18c2"
 )
 

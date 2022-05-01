@@ -1,8 +1,8 @@
 diff --git a/pkg/keychain/helper_linux.go b/pkg/keychain/helper_linux.go
-index f1221d2..f9216dc 100644
+index 2a517ae..5d36ddb 100644
 --- a/pkg/keychain/helper_linux.go
 +++ b/pkg/keychain/helper_linux.go
-@@ -18,46 +18,39 @@
+@@ -18,57 +18,39 @@
  package keychain
  
  import (
@@ -18,28 +18,35 @@ index f1221d2..f9216dc 100644
  )
  
  const (
--	Pass         = "pass-app"
--	GnomeKeyring = "gnome-keyring"
+-	Pass              = "pass-app"
+-	SecretService     = "secret-service"
+-	SecretServiceDBus = "secret-service-dbus"
 +	secrets = "~/.config/protonmail/bridge/secrets"
  )
  
  func init() { // nolint[noinit]
  	Helpers = make(map[string]helperConstructor)
  
--	if _, err := exec.LookPath("pass"); err == nil {
+-	if isUsable(newDBusHelper("")) {
+-		Helpers[SecretServiceDBus] = newDBusHelper
+-	}
+-
+-	if _, err := exec.LookPath("gnome-keyring"); err == nil && isUsable(newSecretServiceHelper("")) {
+-		Helpers[SecretService] = newSecretServiceHelper
+-	}
+-
+-	if _, err := exec.LookPath("pass"); err == nil && isUsable(newPassHelper("")) {
 -		Helpers[Pass] = newPassHelper
 -	}
 -
--	if _, err := exec.LookPath("gnome-keyring"); err == nil {
--		Helpers[GnomeKeyring] = newGnomeKeyringHelper
--	}
+-	defaultHelper = SecretServiceDBus
 -
 -	// If Pass is available, use it by default.
--	// Otherwise, if GnomeKeyring is available, use it by default.
--	if _, ok := Helpers[Pass]; ok && isUsable(newPassHelper("")) {
+-	// Otherwise, if SecretService is available, use it by default.
+-	if _, ok := Helpers[Pass]; ok {
 -		defaultHelper = Pass
--	} else if _, ok := Helpers[GnomeKeyring]; ok && isUsable(newGnomeKeyringHelper("")) {
--		defaultHelper = GnomeKeyring
+-	} else if _, ok := Helpers[SecretService]; ok {
+-		defaultHelper = SecretService
 +	// Use keyFile as the only secrets handler
 +	if isUsable(newKeyFileHelper("")) {
 +		defaultHelper = "file-keychain"
@@ -47,6 +54,10 @@ index f1221d2..f9216dc 100644
  	}
  }
  
+-func newDBusHelper(string) (credentials.Helper, error) {
+-	return &SecretServiceDBusHelper{}, nil
+-}
+-
 -func newPassHelper(string) (credentials.Helper, error) {
 -	return &pass.Pass{}, nil
 +func expandTilde(path string) string {
@@ -58,7 +69,7 @@ index f1221d2..f9216dc 100644
 +	}
  }
  
--func newGnomeKeyringHelper(string) (credentials.Helper, error) {
+-func newSecretServiceHelper(string) (credentials.Helper, error) {
 -	return &secretservice.Secretservice{}, nil
 +func newKeyFileHelper(string) (credentials.Helper, error) {
 +	return &keyFile{expandTilde(secrets)}, nil
