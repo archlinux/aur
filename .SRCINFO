@@ -1,13 +1,13 @@
 pkgbase = ps7b_libpicoipp
 	pkgdesc = Library for Pico Technology PicoScope 7 Beta Oscilloscope Software
-	pkgver = 1.4.0_4r133
+	pkgver = 1.4.0_4r136
 	pkgrel = 1
 	url = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libpicoipp/
 	arch = x86_64
 	license = custom
 	depends = gcc-libs
 	options = !strip
-	source = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libpicoipp/libpicoipp_1.4.0-4r133_amd64.deb
-	md5sums = aa22a84cb99c8ab59367811ba3dfd725
+	source = https://labs.picotech.com/rc/picoscope7/debian/pool/main/libp/libpicoipp/libpicoipp_1.4.0-4r136_amd64.deb
+	md5sums = 180f8ba3647bbd9353cd4ab972bedf2d
 
 pkgname = ps7b_libpicoipp
