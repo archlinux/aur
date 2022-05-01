@@ -1,6 +1,6 @@
 pkgbase = primenote-git
 	pkgdesc = Fanciest sticky note-taking application
-	pkgver = r539.e14b34f
+	pkgver = r614.1c17dd2
 	pkgrel = 1
 	url = https://gitlab.com/william.belanger/primenote
 	arch = any
@@ -11,6 +11,7 @@ pkgbase = primenote-git
 	depends = python-pyqt5
 	depends = qt5-svg
 	depends = python-requests
+	depends = python-cryptography
 	optdepends = qtermwidget: support for console and Vim modes
 	optdepends = gvim: support for Vim mode
 	provides = primenote
