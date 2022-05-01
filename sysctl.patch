@@ -1,0 +1,12 @@
+diff --color -Naur clean/cngpijmon/cnijnpr/cnijnpr/cnijnpr.c fixed/cngpijmon/cnijnpr/cnijnpr/cnijnpr.c
+--- clean/cngpijmon/cnijnpr/cnijnpr/cnijnpr.c	2011-03-01 06:52:18.000000000 +0100
++++ fixed/cngpijmon/cnijnpr/cnijnpr/cnijnpr.c	2022-05-01 15:39:55.566630124 +0200
+@@ -33,7 +33,7 @@
+ #include <signal.h>
+ #include <sys/ioctl.h>
+ #include <net/if.h>
+-#include <sys/sysctl.h>
++#include <linux/sysctl.h>
+ #include <config.h>
+ 
+ #include <dlfcn.h>
