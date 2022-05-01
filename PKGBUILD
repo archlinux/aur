@@ -4,8 +4,8 @@
 
 pkgbase=unicorn-git
 pkgname=('unicorn-git' 'python-unicorn-git' 'ruby-unicorn-git')
-pkgver=2.0.0.rc6.r0.gc10639fd
-pkgrel=2
+pkgver=2.0.0.rc7.r1.g659a62a0
+pkgrel=1
 pkgdesc='Lightweight, multi-platform, multi-architecture CPU emulator framework based on QEMU'
 url='http://www.unicorn-engine.org'
 arch=('i686' 'x86_64')
@@ -24,7 +24,7 @@ build() {
   cd ${pkgbase}
   (mkdir -p build
     cd build
-    cmake .. -DCMAKE_BUILD_TYPE=Release
+    cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
     make
   )
   (cd bindings

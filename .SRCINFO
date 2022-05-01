@@ -1,7 +1,7 @@
 pkgbase = unicorn-git
 	pkgdesc = Lightweight, multi-platform, multi-architecture CPU emulator framework based on QEMU
-	pkgver = 2.0.0.rc6.r0.gc10639fd
-	pkgrel = 2
+	pkgver = 2.0.0.rc7.r1.g659a62a0
+	pkgrel = 1
 	url = http://www.unicorn-engine.org
 	arch = i686
 	arch = x86_64
