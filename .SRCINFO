@@ -1,0 +1,14 @@
+pkgbase = aconcat
+	pkgdesc = FFmpeg wrapper for concatenating audio files
+	pkgver = 0.1
+	pkgrel = 1
+	arch = any
+	license = MIT
+	depends = ffmpeg
+	depends = sed
+	depends = bash
+	provides = aconcat
+	source = aconcat.sh
+	md5sums = SKIP
+
+pkgname = aconcat
