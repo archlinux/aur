@@ -1,8 +1,8 @@
 # Maintainer: Maxime Gauduin <alucryd@archlinux.org>
 
 pkgname=glewlwyd
-pkgver=2.6.1
-pkgrel=3
+pkgver=2.7.0
+pkgrel=1
 pkgdesc='Single-Sign-On (SSO) server with multiple factor authentication'
 arch=(x86_64)
 url=https://github.com/babelouest/glewlwyd
@@ -33,7 +33,7 @@ makedepends=(
   systemd
 )
 backup=(etc/glewlwyd/glewlwyd.conf)
-_tag=a7ddc5b3c2981cf15fc477fbd12397afcc559e4b
+_tag=c948baf67c6f066b41c2c3beaa83028b4f96972e
 source=(
   git+https://github.com/babelouest/glewlwyd.git#tag=${_tag}
   glewlwyd.service
@@ -48,7 +48,6 @@ pkgver() {
 }
 
 build() {
- export CFLAGS+=" -Wno-implicit-function-declaration"
   cmake -S glewlwyd -B build -G Ninja \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
