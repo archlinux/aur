@@ -7,10 +7,10 @@ language designed to build optimal, maintainable, reliable and efficient softwar
 url='https://github.com/hascal/hascal'
 arch=('i686' 'x86_64')
 pkgrel=1
-pkgver=v1.3.7.r31.g09fadda
+pkgver=v1.3.9.alpha.1.r11.g90d2e18
 license=('MIT')
 depends=('gcc' 'python' 'python-wheel' 'python-colorama' 'python-requests' )
-makedepends=('python-pip')
+makedepends=('python-pip' 'git' 'pyinstaller')
 provides=("${pkgname%}")
 conflicts=("${pkgname%}")
 source=("git+https://github.com/hascal/hascal.git")
@@ -21,7 +21,20 @@ pkgver() {
     git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
+build(){
+	cd "$srcdir/$_gitname"
+	make build
+}
+
 package() {
-    cd "$srcdir/$_gitname"
-    python setup.py install --prefix=/usr --root="$pkgdir/" --optimize=1
+
+    install -d "${pkgdir}/usr/share/licenses/${_gitname}"
+    install -d "${pkgdir}/opt/${_gitname}"
+    install -d "${pkgdir}/usr/bin"
+
+    install -m644 "${srcdir}/${_gitname}/LICENSE" "${pkgdir}/usr/share/licenses/${_gitname}/LICENSE"
+
+    cp -r "${srcdir}/${_gitname}/dist/"* "${pkgdir}/opt/${_gitname}" -R
+    
+    ln -s "${pkgdir}/opt/${_gitname}" "${pkgdir}/usr/share/${_gitname}"
 }
