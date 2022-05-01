@@ -2,7 +2,7 @@
 
 pkgbase=xpid
 pkgname=(xpid)
-pkgver=v1.0.5
+pkgver=v1.0.6
 pkgrel=1
 pkgdesc="Linux Process Scanning. (CLI Runtime). Find eBPF programs, containers, hidden pids. Like nmap for pids in the kernel."
 arch=(x86_64)
