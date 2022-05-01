@@ -13,20 +13,16 @@ makedepends=(git make)
 provides=($pkgname=$pkgver)
 conflicts=($pkgname)
 source=("https://gitlab.com/sarqx_group/sarqx-reporter/-/archive/master/sarqx-reporter-master.tar.gz")
-sha256sums=('1d01c9bfeca776ac567d43f43c61da490695a34f227b93abb9ab66eb30d2853a')
-
-prepare() {
-  git clone git@gitlab.com:sarqx_group/sarqx-reporter.git
-}
+sha256sums=('SKIP')
 
 build() {
-  cd $pkgname
+  cd $pkgname-master
 
   make install
 }
 
 package() {
-  cd $pkgname
+  cd $pkgname-master
 
   mkdir -p $pkgdir/opt/$pkgname/share/licenses
   install -Dm644 LICENSE $pkgdir/opt/$pkgname/share/licenses
