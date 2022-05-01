@@ -13,12 +13,11 @@ checkdepends=(libxpid)
 optdepends=()
 backup=()
 options=()
-source=("git+https://github.com/kris-nova/xpid.git")
+source=("git+https://github.com/kris-nova/xpid.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 build() {
 	cd $pkgname
-	git checkout tags/$pkgver -b $pkgver
 	GO111MODULE=on
 	go mod vendor
 	go mod download
@@ -27,5 +26,5 @@ build() {
 
 package() {
 	cd $pkgname
-	make install
+	make DESTDIR="$pkgdir" install
 }

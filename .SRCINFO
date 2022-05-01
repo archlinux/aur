@@ -9,7 +9,7 @@ pkgbase = xpid
 	makedepends = libxpid
 	makedepends = go
 	makedepends = make
-	source = git+https://github.com/kris-nova/xpid.git
+	source = git+https://github.com/kris-nova/xpid.git#tag=v1.1.1
 	sha256sums = SKIP
 
 pkgname = xpid
