@@ -6,7 +6,6 @@ pkgbase = mylar3
 	arch = any
 	license = GPL3
 	depends = python
-	depends = pyinstaller
 	depends = python-apscheduler
 	depends = python-beautifulsoup4
 	depends = python-cfscrape

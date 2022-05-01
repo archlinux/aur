@@ -9,7 +9,6 @@ url="https://github.com/mylar3/mylar3"
 license=('GPL3')
 depends=(
   'python'
-  'pyinstaller'
   'python-apscheduler'
   'python-beautifulsoup4'
   'python-cfscrape'
