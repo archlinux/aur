@@ -5,6 +5,7 @@ pkgbase = xpid
 	url = https://github.com/kris-nova/xpid
 	arch = x86_64
 	license = MIT
+	checkdepends = libxpid
 	makedepends = libxpid
 	makedepends = go
 	makedepends = make
