@@ -1,10 +1,11 @@
 # Maintainer: David Husička <contact@bydave.net>
 # Contributor: Tyler Nelson <neo@cybercat.cc>
 # Contributor: Tuhana GAYRETLİ <tuhana at tuta dot io>
+# Contributor: Quenten Schoonderwoerd <ellie at nicecock dot eu>
 
 pkgname=osu-lazer-bin
 _pkgname=${pkgname%-bin}
-pkgver=2022.424.1
+pkgver=2022.501.0
 pkgrel=1
 pkgdesc="The future of osu! and the beginning of an open era! Commonly known by the codename osu!lazer. Pew pew."
 arch=("x86_64")
@@ -29,12 +30,11 @@ source=(
 )
 noextract=("osu.AppImage")
 sha256sums=(
-  "ee5cbcf6b3ba598124ea9c61aa4428e8b196f7802d11466f9cd202fa608cd637"
+  "966c2707326b83009ae5809ca175786378415791c92580f013c1b155e31688df"
   "36f73cfe0a84cd65a8bb54fcde5a01c419b134bee4a88cc92eb4f33236343a10"
   "30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244"
   "43aba829341aa5542d7cedf9e95215d553a7db73a65f169f0de5a25aac75b801"
-  "a9a2ea43849e9cb94d40f8668406078b619e96d3b66fc5bce112d9b0e4d6c8a0"
-)
+  "a9a2ea43849e9cb94d40f8668406078b619e96d3b66fc5bce112d9b0e4d6c8a0")
 
 package() {
   cd "$srcdir"
