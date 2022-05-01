@@ -1,6 +1,6 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname=trunk
-pkgver=0.14.0
+pkgver=0.15.0
 pkgrel=1
 pkgdesc='Build, bundle & ship your Rust WASM application to the web.'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('APACHE' 'MIT')
 depends=()
 makedepends=('cargo')
 source=("$url/archive/v$pkgver.tar.gz")
-sha256sums=('c72914740b6b557c7b0b0c3cd97bf104abb020f5f4dbe0bf9e201c3d18995d61')
+sha256sums=('cb11302aa1d41ad6cd2ad7734a6717a4d4a947d59605e831adbf84df1940618e')
 
 build() {
     cd "$pkgname-$pkgver"
