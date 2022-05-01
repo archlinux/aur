@@ -28,6 +28,7 @@ makedepends=(
 optdepends=(
     'logrotate: for logfile rotation support'
     'hicolor-icon-theme: for gui'
+    'python-qt-material: for gui'
     "python-pyasn: display IP's network name"
 )
 backup=(

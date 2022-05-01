@@ -24,6 +24,7 @@ pkgbase = opensnitch
 	depends = python-notify2
 	optdepends = logrotate: for logfile rotation support
 	optdepends = hicolor-icon-theme: for gui
+	optdepends = python-qt-material: for gui
 	optdepends = python-pyasn: display IP's network name
 	backup = etc/opensnitchd/default-config.json
 	backup = etc/opensnitchd/system-fw.json
