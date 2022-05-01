@@ -15,6 +15,7 @@ pkgbase = r-rhtslib
 	optdepends = r-knitr
 	optdepends = r-rmarkdown
 	optdepends = r-biocstyle
+	options = !lto
 	options = staticlibs
 	source = https://bioconductor.org/packages/release/bioc/src/contrib/Rhtslib_1.28.0.tar.gz
 	sha256sums = 4e48c8643e5d3429238ee76faa4c68ed8a7028e7f594c109ee75f5e994d17c1e

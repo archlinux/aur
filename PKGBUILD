@@ -16,7 +16,7 @@ makedepends=(make)
 optdepends=(r-knitr r-rmarkdown r-biocstyle)
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
 sha256sums=('4e48c8643e5d3429238ee76faa4c68ed8a7028e7f594c109ee75f5e994d17c1e')
-options=(staticlibs)
+options=(!lto staticlibs)
 
 build() {
   R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
