@@ -11,7 +11,7 @@ pkgbase = hashcat-utils-git
 	depends = perl
 	provides = hashcat-utils
 	conflicts = hashcat-utils
-	source = git://github.com/hashcat/hashcat-utils.git
+	source = git+https://github.com/hashcat/hashcat-utils.git
 	md5sums = SKIP
 
 pkgname = hashcat-utils-git
