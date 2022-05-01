@@ -1,12 +1,12 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-experimental
-_srctag=7.0-20220228
+_srctag=7.0-20220427c
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
-_monover=7.1.5
-_asyncver=2c41ae8
+_monover=7.2.0
+_asyncver=1.10.1
 pkgrel=1
 epoch=1
 pkgdesc="Compatibility tool for Steam Play based on Wine and additional components, experimental branch"
@@ -242,7 +242,7 @@ prepare() {
     for submodule in gst-plugins-rs media-converter; do
     pushd $submodule
         export RUSTUP_TOOLCHAIN=stable
-        export CARGO_HOME="${srcdir}"/build/.cargo
+        export CARGO_HOME="${SRCDEST}"/proton-cargo
         cargo update
         cargo fetch --locked --target "i686-unknown-linux-gnu"
         cargo fetch --locked --target "x86_64-unknown-linux-gnu"
@@ -337,6 +337,7 @@ build() {
     export CXXFLAGS+=" -mno-avx2"
 
     export RUSTUP_TOOLCHAIN=stable
+    export CARGO_HOME="${SRCDEST}"/proton-cargo
     export WINEESYNC=0
     export WINEFSYNC=0
     export DISPLAY=
@@ -401,11 +402,11 @@ sha256sums=('SKIP'
             'SKIP'
             '8fab46ea2110b2b0beed414e3ebb4e038a3da04900e7a28492ca3c3ccf9fea94'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
-            'cb03854b5d868b2d0912da42e01536bb673e009ed5263f4eeb8836a2a9c36f43'
+            '25a4d08fee9197be83307e65553da450b6d4446cc9188d0a85212cc2cee2660d'
             'e6f042cdfd1d20d3bad0e5732696d453efde0502beacc3788e2af3568eeacd68'
             '11aa65bb6b8da1814557edf18a3cdada80135b021634236feabf93d2a194838b'
             'd76b87410047f623accc846f15f849fe13275924c685ccfb95a91a8b22943e51'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
-            '85b334d33bf1f4424f8ca8c613c16ee08716fb952aaa9e93528f4c3320694669'
+            'b024da38462b5a6da271b3e1d6212d317e69e6103ae627be4016f4c044bb58a0'
             '6ba5728332e5ea2b717855b1cd5c6e13ddc5b3ec34bfed4a78dbe3ef8e289806'
             '6126f8c93d73b7309fb22c244dae645c755c1ed8759caac3edc91d81a71e8f45')
