@@ -14,6 +14,7 @@ depends=("libxkbcommon" "libglvnd" "hicolor-icon-theme")
 package(){
 	cd $srcdir
 	tar xpf data.tar.xz -C $pkgdir
+	chmod -R 755 "$pkgdir/usr"
 	install -Dm644 "$srcdir/user-agreement" "$pkgdir/usr/share/licenses/$pkgname/user-agreement.html"
 	rm -rf "$pkgdir/usr/local"
 }
