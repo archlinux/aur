@@ -1,7 +1,10 @@
+# shellcheck shell=bash
+# shellcheck disable=SC2034  # Various variables that are used by makepkg
+# shellcheck disable=SC2154  # Various variables that are provided by makepkg
 # Maintainer: eomanis at web dot de
 
 pkgname='pulse-autoconf'
-_pkgverUpstream="1.8.0"
+_pkgverUpstream="1.8.1"
 pkgver="${_pkgverUpstream//-/.}"
 pkgrel=1
 pkgdesc="PulseAudio server dynamic configuration daemon"
@@ -10,26 +13,19 @@ url='https://eomanis.duckdns.org/permshare/pulse-autoconf/'
 license=('GPL3')
 depends=('bash' 'bc' 'coreutils' 'findutils' 'grep' 'libpulse' 'sed' 'util-linux')
 source=("https://eomanis.duckdns.org/permshare/pulse-autoconf/pulse-autoconf-${_pkgverUpstream}.tar.gz")
-sha384sums=('772aeed699c2d4fd6771909f413947ca2e9e24d8fe760dd14aabda4f974dce8e0113c9b6870f5ba3209d3ae22390b8cf')
+sha384sums=('0ca3b1de98a33aa4f72f91e915e0c6bb08cf4f922691a2e5afbcfc34301e1409c84ed61e623c17fcbd9f7b76f634e3a5')
 
-package() {
+package () {
     local srcRootDir="${srcdir}/${pkgname}-${_pkgverUpstream}"
 
-    # Place the main bash script into /usr/bin
-    mkdir -p "${pkgdir}/usr/bin"
-    cd "${pkgdir}/usr/bin"
-    cp -t . "${srcRootDir}/pulse-autoconf"
-    chmod u=rwx,go=rx "pulse-autoconf"
+    # Create the required directories
+    install --mode=u=rwx,go=rx --directory \
+        "${pkgdir}/usr/bin" \
+        "${pkgdir}/usr/lib/systemd/user" \
+        "${pkgdir}/usr/share/applications"
 
-    # Place the Desktop Entry file into /usr/share/applications
-    mkdir -p "${pkgdir}/usr/share/applications"
-    cd "${pkgdir}/usr/share/applications"
-    cp -t . "${srcRootDir}/pulse-autoconf.desktop"
-    chmod u=rw,go=r "pulse-autoconf.desktop"
-
-    # Place the systemd unit file into /usr/lib/systemd/user
-    mkdir -p "${pkgdir}/usr/lib/systemd/user"
-    cd "${pkgdir}/usr/lib/systemd/user"
-    cp -t . "${srcRootDir}/systemd/pulse-autoconf.service"
-    chmod u=rw,go=r "pulse-autoconf.service"
+    # Place the files
+    install --mode=u=rwx,go=rx  --target-directory="${pkgdir}/usr/bin"                  "${srcRootDir}/pulse-autoconf"
+    install --mode=u=rw,go=r    --target-directory="${pkgdir}/usr/lib/systemd/user"     "${srcRootDir}/systemd/pulse-autoconf.service"
+    install --mode=u=rw,go=r    --target-directory="${pkgdir}/usr/share/applications"   "${srcRootDir}/freedesktop/pulse-autoconf.desktop"
 }
