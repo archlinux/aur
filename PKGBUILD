@@ -20,7 +20,7 @@ prepare() {
 }
 
 package() {
-	_blender=$(pacman -Sddp --print-format %v blender|grep -oP '(?<=\:)[[:digit:]]{1}\.[[:digit:]]{2}(?=)')
+	_blender=$(pacman -Sddp --print-format %v blender| cut -d: -f2 | cut -d\. -f1-2)
 	install -d -m755 "${pkgdir}"/usr/share/blender/"${_blender}"/scripts/addons
 	cp -a "${srcdir}"/${pkgname}-${pkgver} "${pkgdir}"/usr/share/blender/"${_blender}"/scripts/addons/${pkgname}
 }
