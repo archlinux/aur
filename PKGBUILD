@@ -3,7 +3,7 @@
 pkgname=moodle-dl-git
 _pkgname=Moodle-Downloader-2
 pkgver=v2.2.1.7.r0.g5aa8887
-pkgrel=2
+pkgrel=3
 pkgdesc='Moodle downloader to download course content automatically'
 arch=('any')
 url='https://github.com/C0D3D3V/Moodle-Downloader-2'
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('python' 'ffmpeg' 'python-sentry_sdk' 'python-colorama'
          'yt-dlp' 'python-certifi' 'python-html2text'
          'python-requests' 'python-aioxmpp')
-makedepends=('python-build' 'python-installer')
+makedepends=('python-build' 'python-installer', 'python-wheel')
 conflicts=('moodle-dl')
 provides=('moodle-dl')
 source=('git+https://github.com/C0D3D3V/Moodle-Downloader-2.git')
