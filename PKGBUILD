@@ -1,11 +1,12 @@
-# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# Maintainer: Robin Lange <robin.langenc@gmail.com>
+# Contributor: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Contributor: Jan de Groot <jgc@archlinux.org>
 
 pkgbase=gdm-prime
 pkgname=(gdm-prime libgdm-prime)
-pkgver=41.3
+pkgver=42.0+r11+g4a52f026
 pkgrel=1
-pkgdesc="Display manager and login screen"
+pkgdesc="Display manager and login screen - patched with Prime support for Optimus laptops"
 url="https://wiki.gnome.org/Projects/GDM"
 arch=(x86_64)
 license=(GPL)
@@ -13,7 +14,8 @@ depends=(gnome-shell gnome-session upower xorg-xrdb xorg-server xorg-xhost
          libxdmcp systemd libcanberra)
 makedepends=(yelp-tools gobject-introspection git docbook-xsl meson)
 checkdepends=(check)
-_commit=cb49bac2fe1160094eae360f985e54073be3c49a  # tags/41.3^0
+options=(debug)
+_commit=4a52f026dc0b218a2ca33fa32853c71a0f88a2b4  # main
 source=("git+https://gitlab.gnome.org/GNOME/gdm.git#commit=$_commit"
         0001-Xsession-Don-t-start-ssh-agent-by-default.patch
         0002-nvidia-prime.patch)
@@ -23,7 +25,7 @@ sha256sums=('SKIP'
 
 pkgver() {
   cd gdm
-  git describe --tags | sed 's/\.rc/rc/;s/[^-]*-g/r&/;s/-/+/g'
+  git describe --tags | sed 's/[^-]*-g/r&/;s/-/+/g'
 }
 
 prepare() {
@@ -68,7 +70,6 @@ _pick() {
 package_gdm-prime() {
   provides=(gdm)
   conflicts=(gdm)
-  pkgdesc="Display manager and login screen - patched with Prime support for Optimus laptops"
   depends+=(libgdm)
   optdepends=('fprintd: fingerprint authentication')
   backup=(etc/pam.d/gdm-autologin etc/pam.d/gdm-fingerprint etc/pam.d/gdm-launch-environment
@@ -115,7 +116,7 @@ END
 }
 
 package_libgdm-prime() {
-  pkgdesc="GDM support library - patched with Prime support for Optimus laptops"
+  pkgdesc+=" - support library"
   depends=(libsystemd.so libg{lib,object,io}-2.0.so)
   provides=(libgdm.so libgdm)
   conflicts=(libgdm)
