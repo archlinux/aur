@@ -1,7 +1,7 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
 
 pkgname=signald
-pkgver=0.16.1
+pkgver=0.18.3
 pkgrel=1
 pkgdesc='An unofficial daemon that facilitates communication with the Signal messaging app.'
 url='https://gitlab.com/signald/signald'
@@ -13,7 +13,7 @@ optdepends=('qrencode: display account linking token as QR code')
 conflicts=('signald-git')
 source=("${pkgname}-${pkgver}.tar.gz::https://gitlab.com/signald/signald/-/archive/${pkgver}/signald-${pkgver}.tar.gz"
         'gradle-no-daemon.patch')
-sha512sums=('156e049cc32329ccdeb514eeeecf44b3f5097a48c1196ab5d31f99a935177c5ec92e82f8432ebcb6cdc3abebd537716675ac76372ffaa8e6341cebfabc43a195'
+sha512sums=('aedeacf0ee9f1251d311b10158628cd2d25e21f4176085a055355d249e917f2bb34ecaccd0ea5fe0ca961eb0e2dec16ff5385774d59668f78f9cc6a68533b5a5'
             'aa2ff9eef6ebd8ad31275a587b7b24e34938e9744b06892c96d43e274b18a15d2f0258f56cea8fea9163e85a754ebde1e66c20781876bcb524960defe02ce535')
 
 backup=('var/lib/signald/data')
@@ -46,5 +46,5 @@ package() {
     mkdir "${pkgdir}/usr/lib/sysusers.d/"
     mkdir "${pkgdir}/usr/lib/tmpfiles.d/"
     echo 'u signald - "Signald Daemon User"' > "${pkgdir}/usr/lib/sysusers.d/signald.conf"
-    echo 'Z /var/lib/signald 0700 signald signald - -' > "${pkgdir}/usr/lib/tmpfiles.d/signald.conf"
+    echo 'Z /var/lib/signald 0750 signald signald - -' > "${pkgdir}/usr/lib/tmpfiles.d/signald.conf"
 }
