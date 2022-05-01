@@ -6,13 +6,12 @@ _bcname=Rsamtools
 _bcver=2.12.0
 pkgname=r-${_bcname,,}
 pkgver=${_bcver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Binary alignment (BAM), FASTA, variant call (BCF), and tabix file import"
 arch=(i686 x86_64)
 url="https://bioconductor.org/packages/release/bioc/html/${_bcname}.html"
 license=("Artistic-2.0")
 depends=(
-    htslib
     "r>=3.5.0"
     "r-biocgenerics>=0.25.1"
     r-biocparallel
@@ -39,9 +38,10 @@ optdepends=(
     r-txdb.hsapiens.ucsc.hg18.knowngene
 )
 source=("https://bioconductor.org/packages/release/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
+#source=("https://bioconductor.org/packages/3.14/bioc/src/contrib/${_bcname}_${_bcver}.tar.gz")
 sha256sums=('20e860c61ef66f8e61f8de7f77c4a244439c8fe39286d080cd580417073894f2')
 
-options=(!lto !buildflags)
+options=(!lto !buildflags staticlibs)
 
 build() {
     R CMD INSTALL ${_bcname}_${_bcver}.tar.gz -l "${srcdir}"
