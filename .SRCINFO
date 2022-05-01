@@ -1,14 +1,19 @@
 pkgbase = python-pims
 	pkgdesc = Python Image Sequence: Load video and sequential images
-	pkgver = 0.5
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/soft-matter/pims
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
-	depends = python-slicerator
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.7
+	depends = python-imageio
 	depends = python-numpy
-	source = https://files.pythonhosted.org/packages/source/P/PIMS/PIMS-0.5.tar.gz
-	sha256sums = a02cdcbb153e2792042fb0bae7df4f30878bbba1f2d176114a87ee0dc18715a0
+	depends = python-slicerator
+	source = python-pims-0.6.0.tar.gz::https://files.pythonhosted.org/packages/source/P/PIMS/PIMS-0.6.0.tar.gz
+	sha256sums = 1102742d642c8b8acc710d35d502b5d7085ee1288c3618373ef8c472030bc683
 
 pkgname = python-pims
