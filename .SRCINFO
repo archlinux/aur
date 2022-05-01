@@ -1,6 +1,6 @@
 pkgbase = system76-power-git
 	pkgdesc = System76 Power Management
-	pkgver = 1.1.20.r15.gae01b2f
+	pkgver = 1.1.20.r27.g31a639b
 	pkgrel = 1
 	url = https://github.com/pop-os/system76-power
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = system76-power-git
 	source = makefile.patch
 	source = mkinitcpio.patch
 	sha256sums = SKIP
-	sha256sums = 59c2b6a4ee4d5bf728d8f68fd9c066ba33cf9c91bf173bf16734924f6e641643
+	sha256sums = 35af9e2c62deee200ac550f9390a3a43811d3336e1833e577deeda06482ad488
 	sha256sums = fefd4bd1c173cca2aafd3d5f03af20b9cfc5553f9a53f510a12d565cc90fe7ba
 
 pkgname = system76-power-git
