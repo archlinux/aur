@@ -32,8 +32,10 @@ validpgpkeys=()
 
 package() {
 	cd gefangen
-	sudo mkdir -p /opt/all2done
-	sudo cp -r * /opt/all2done/
-	sudo ln -s /opt/all2done/gefangen /usr/bin/all2done
-	sudo cp /opt/all2done/all2done.desktop /usr/share/applications/
+	mkdir -p ${pkgdir}/opt/all2done/
+	mkdir -p ${pkgdir}/usr/bin/
+	mkdir -p ${pkgdir}/usr/share/applications/
+	cp -r * ${pkgdir}/opt/all2done/
+	ln -s ${pkgdir}/opt/all2done/gefangen ${pkgdir}/usr/bin/all2done
+	cp all2done.desktop ${pkgdir}/usr/share/applications/
 }
