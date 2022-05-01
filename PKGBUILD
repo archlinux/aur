@@ -15,7 +15,7 @@
 # ExecStop=/usr/bin/screen -X -S bridgedaemon quit
 
 pkgname=protonmail-bridge-nogui
-pkgver=2.1.1
+pkgver=2.1.3
 _srcname=br-"$pkgver"
 pkgrel=1
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
@@ -24,13 +24,14 @@ url="https://github.com/ProtonMail/proton-bridge"
 license=('GPL3')
 makedepends=('go' 'gcc')
 depends=('libsecret')
-optdepends=('gnome-keyring: supported password manager (password manager is required)'
-            'pass: supported password manager (password manager is required)')
+optdepends=('org.freedesktop.secrets: Applications that support Freedesktop secrets api'
+            'gnome-keyring: support for gnome keyring'
+            'pass: support for password-store')
 conflicts=('protonmail-bridge-bin' 'protonmail-bridge')
 options=('!emptydirs' '!strip')
 source=("$_srcname.tar.gz::https://github.com/ProtonMail/proton-bridge/archive/"$_srcname".tar.gz"
         "bridge.service")
-sha256sums=('b5e09a8edf9dbd6c06df516a32544e309f1f32c857d05cdecc25286d1634ef1d'
+sha256sums=('c2736fec4d0b491aef624692423ba3d7274f63ccd515a59e281aed1d71e776f3'
             '6b2fd1e042b55dc6d0ffe5eb44e82ffd233452b4571ef571132600e7ec0d5d82')
 
 prepare() {
