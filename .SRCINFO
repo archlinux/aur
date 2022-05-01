@@ -1,0 +1,14 @@
+pkgbase = perl-file-pid-patched
+	pkgdesc = Pid File Manipulation. Patched for bug #18960.
+	pkgver = 1.01
+	pkgrel = 1
+	url = http://search.cpan.org/dist/File-Pid
+	arch = any
+	license = PerlArtistic
+	license = GPL
+	depends = perl-class-accessor
+	options = !emptydirs
+	source = http://search.cpan.org/CPAN/authors/id/C/CW/CWEST/File-Pid-1.01.tar.gz
+	sha256sums = bafeee8fdc96eb06306a0c58bbdb7209b6de45f850e75fdc6b16db576e05e422
+
+pkgname = perl-file-pid-patched
