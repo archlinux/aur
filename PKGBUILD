@@ -43,11 +43,6 @@ if [ -z ${use_tracers+x} ]; then
   use_tracers=n
 fi
 
-# Selecting between tickless idle, perodic tics or full tickless
-if [ -z ${_tickrate+x} ]; then
-  _tickrate="full"
-fi
-
 ## Choose between GCC and CLANG config (default is CLANG)
 if [ -z ${_compiler+x} ]; then
   _compiler=clang
@@ -196,13 +191,13 @@ prepare() {
     if [ $_use_llvm_type = "thin" ]; then
       msg2 "Enable LTO_CLANG_THIN"
       scripts/config --disable LTO_NONE \
-      --enable LTO \
-      --enable LTO_CLANG \
-      --enable ARCH_SUPPORTS_LTO_CLANG \
-      --enable ARCH_SUPPORTS_LTO_CLANG_THIN \
-      --enable HAS_LTO_CLANG \
-      --enable LTO_CLANG_THIN \
-      --enable HAVE_GCC_PLUGINS
+        --enable LTO \
+        --enable LTO_CLANG \
+        --enable ARCH_SUPPORTS_LTO_CLANG \
+        --enable ARCH_SUPPORTS_LTO_CLANG_THIN \
+        --enable HAS_LTO_CLANG \
+        --enable LTO_CLANG_THIN \
+        --enable HAVE_GCC_PLUGINS
     elif [ $_use_llvm_type = "full" ]; then
       msg2 "Enable LTO_CLANG_FULL"
       scripts/config --disable LTO_NONE \
@@ -233,32 +228,6 @@ prepare() {
       scripts/config --disable CONFIG_FUNCTION_TRACER \
                      --disable CONFIG_STACK_TRACER
     fi
-  fi
-
-  if [ "$_tickrate" = "perodic" ]; then
-    msg2 "Enabling periodic ticks..."
-    scripts/config --disable CONFIG_NO_HZ_IDLE
-    scripts/config --disable CONFIG_NO_HZ_FULL
-    scripts/config --disable CONFIG_NO_HZ
-    scripts/config --disable CONFIG_NO_HZ_COMMON
-    scripts/config --enable CONFIG_HZ_PERIODIC
-  elif [ "$_tickrate" = "idle" ]; then
-    msg2 "Enabling tickless idle..."
-    scripts/config --disable CONFIG_HZ_PERIODIC
-    scripts/config --disable CONFIG_NO_HZ_FULL
-    scripts/config --enable CONFIG_NO_HZ_IDLE
-    scripts/config --enable CONFIG_NO_HZ
-    scripts/config --enable CONFIG_NO_HZ_COMMON
-  elif [ "$_tickrate" = "full" ]; then
-    msg2 "Enabling tickless idle..."
-    scripts/config --disable CONFIG_HZ_PERIODIC
-    scripts/config --disable CONFIG_NO_HZ_IDLE
-    scripts/config --disable CONFIG_CONTEXT_TRACKING_FORCE
-    scripts/config --enable CONFIG_NO_HZ_FULL_NODEF
-    scripts/config --enable CONFIG_NO_HZ_FULL
-    scripts/config --enable CONFIG_NO_HZ
-    scripts/config --enable CONFIG_NO_HZ_COMMON
-    scripts/config --enable CONFIG_CONTEXT_TRACKING
   fi
 
   if [ "$use_numa" = "n" ]; then
