@@ -2,12 +2,12 @@
 
 pkgname=slit-git
 pkgver=1.3.0.r4.gb552962
-pkgrel=1
+pkgrel=2
 pkgdesc='A modern PAGER for viewing logs, get more than most in less time'
 arch=(x86_64)
 url="https://github.com/tigrawap/slit"
 license=(MIT)
-makedepends=(go dep)
+makedepends=(go)
 conflicts=(slit)
 provides=(slit)
 source=("${pkgname}::git+${url}")
@@ -37,15 +37,14 @@ build() {
 	mkdir -p build
 
 	export GOPATH="${srcdir}/go"
-	go build -modcacherw -ldflags "-s -w" \
-		-gcflags="all=-trimpath=${GOPATH}/src" \
-		-asmflags="all=-trimpath=${GOPATH}/src" \
-		-o build/slit ./cmd/slit
+	go build -o build/slit \
+		-trimpath -modcacherw -ldflags "-s -w" \
+		./cmd/slit
 }
 
 package() {
 	cd "${srcdir}/go/src/github.com/tigrawap/slit"
 
-	install -Dm755 "./build/slit" "${pkgdir}/usr/bin/slit"
-	install -Dm644 "./LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm755 "build/slit" "${pkgdir}/usr/bin/slit"
+	install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
