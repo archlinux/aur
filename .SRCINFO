@@ -1,6 +1,6 @@
 pkgbase = dcrdata-git
 	pkgdesc = Decred block explorer
-	pkgver = 20180228
+	pkgver = 20220501
 	pkgrel = 1
 	url = https://github.com/decred/dcrdata
 	arch = aarch64
@@ -10,7 +10,8 @@ pkgbase = dcrdata-git
 	arch = x86_64
 	groups = decred
 	license = ISC
-	makedepends = dep
+	makedepends = nodejs
+	makedepends = npm
 	makedepends = git
 	makedepends = go
 	provides = dcrdata
@@ -21,4 +22,3 @@ pkgbase = dcrdata-git
 	sha256sums = SKIP
 
 pkgname = dcrdata-git
-
