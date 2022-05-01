@@ -2,7 +2,7 @@
 
 pkgname=ignition-msgs-5
 pkgver=5.9.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Standard set of message definitions, used by Ignition Transport, and other applications."
 arch=('i686' 'x86_64')
 url="https://ignitionrobotics.org/libs/msgs"
