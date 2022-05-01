@@ -1,0 +1,11 @@
+post_install() {
+    _pkgname='openasar'
+    pkgname="${_pkgname}-git"
+    mv "${pkgdir}/opt/discord/resources/app.asar" "${pkgdir}/opt/discord/resources/app.asar.backup"
+    mv "/opt/${pkgname}/app.asar" "/opt/discord/resources/app.asar"
+}
+
+post_remove() {
+    rm "/opt/discord/resources/app.asar"
+    mv "/opt/discord/resources/app.asar.backup" "/opt/discord/resources/app.asar"
+}
