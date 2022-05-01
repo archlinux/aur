@@ -1,7 +1,7 @@
 pkgbase = puppeteer
-	pkgdesc = Renderer for OpenSeeFace data made with Godot 3.4
+	pkgdesc = VTuber application made with Godot 3.4 (former OpenSeeFace)
 	pkgver = 0.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/virtual-puppet-project/puppeteer
 	arch = x86_64
 	license = MIT
