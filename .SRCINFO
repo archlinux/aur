@@ -1,0 +1,17 @@
+pkgbase = doctree
+	pkgdesc = First-class library docs tool for every language
+	pkgver = r62.98639ba
+	pkgrel = 1
+	url = https://github.com/sourcegraph/doctree
+	arch = x86_64
+	license = Apache
+	makedepends = git
+	makedepends = go
+	makedepends = nodejs
+	makedepends = npm
+	depends = glibc
+	options = !lto
+	source = doctree::git+https://github.com/sourcegraph/doctree#commit=98639ba60c4bab37b38b6a75c0715c4dddb9e83a
+	md5sums = SKIP
+
+pkgname = doctree
