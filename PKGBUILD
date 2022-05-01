@@ -1,6 +1,6 @@
 # Maintainer: Qirui Wang <wqr.prg@gmail.com>
 
-pkgname=wxgtk3-audacity
+pkgname=wxgtk-audacity
 pkgver=3.1.5
 pkgrel=1
 arch=('x86_64')
