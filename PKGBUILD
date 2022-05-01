@@ -2,16 +2,16 @@
 
 pkgname=chatterino2-homies-git
 _pkgname=chatterino7
-pkgver=r3705.61816ebd
+pkgver=7.3.5H1
 pkgrel=1
 pkgdesc='A fork of Chatterino7 with features that are not into the upstream repo (7tv emotes included)'
 arch=('any')
-url=https://github.com/itzAlex/chatterino7
+url="https://github.com/itzAlex/chatterino7"
 license=('MIT')
 depends=('qt5-multimedia' 'qt5-base' 'qt5-tools' 'qt5-imageformats' 'boost-libs' 'openssl')
 makedepends=('git' 'qt5-svg' 'boost' 'cmake')
 optdepends=('streamlink: For piping streams to video players'
-            'pulseaudio: For audio output'
+            'pipewire-pulse: For audio output'
             'gst-plugins-good: For audio output')
 provides=('chatterino')
 conflicts=('chatterino2-git' 'chatterino2-appimage' 'chatterino2-nightly-appimage' 'chatterino2-7tv-git' 'chatterino2-dankerino-bin' 'chatterino2-dankerino-git')
@@ -39,7 +39,7 @@ sha256sums=('SKIP'
 
 pkgver() {
     cd "$srcdir/$_pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "7.3.5H1.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare () {

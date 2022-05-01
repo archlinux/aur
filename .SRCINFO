@@ -1,6 +1,6 @@
 pkgbase = chatterino2-homies-git
 	pkgdesc = A fork of Chatterino7 with features that are not into the upstream repo (7tv emotes included)
-	pkgver = r3705.61816ebd
+	pkgver = 7.3.5H1
 	pkgrel = 1
 	url = https://github.com/itzAlex/chatterino7
 	install = chatterino2-homies-git.install
@@ -17,7 +17,7 @@ pkgbase = chatterino2-homies-git
 	depends = boost-libs
 	depends = openssl
 	optdepends = streamlink: For piping streams to video players
-	optdepends = pulseaudio: For audio output
+	optdepends = pipewire-pulse: For audio output
 	optdepends = gst-plugins-good: For audio output
 	provides = chatterino
 	conflicts = chatterino2-git
