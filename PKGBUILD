@@ -2,7 +2,7 @@
 
 pkgbase=libxpid
 pkgname=(libxpid)
-pkgver=v1.0.5
+pkgver=v1.0.6
 pkgrel=1
 pkgdesc="Linux Process Scanning. (C Library). Find eBPF programs, containers, hidden pids. Like nmap for pids in the kernel."
 arch=(x86_64)
@@ -13,12 +13,11 @@ checkdepends=()
 optdepends=()
 backup=()
 options=()
-source=("git+https://github.com/kris-nova/xpid.git")
+source=("git+https://github.com/kris-nova/xpid.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 build() {
 	cd xpid
-	git checkout tags/$pkgver -b $pkgver
 	cd libxpid
 	./configure
 	cd build
@@ -28,5 +27,5 @@ build() {
 package() {
 	cd xpid
 	cd libxpid/build
-	sudo make install
+	make DESTDIR="$pkgdir" install
 }
