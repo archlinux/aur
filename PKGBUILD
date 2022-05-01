@@ -1,12 +1,12 @@
 # Maintainer: ByteDream
 pkgname=puppeteer
-pkgdesc="VTuber application made with Godot 3.4 (former OpenSeeFace)"
+pkgdesc="VTuber application made with Godot 3.4 (former OpenSeeFace-GD)"
 arch=('x86_64')
 url="https://github.com/virtual-puppet-project/puppeteer"
 license=('MIT')
 
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 
 replaces=(
   'openseeface-gd'
