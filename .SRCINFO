@@ -1,0 +1,17 @@
+pkgbase = python-minikanren
+	pkgdesc = An extensible, lightweight relational/logic programming DSL written in pure Python
+	pkgver = 1.0.3
+	pkgrel = 1
+	url = https://github.com/pythological/kanren/
+	arch = any
+	license = custom
+	makedepends = python-setuptools
+	depends = python-toolz
+	depends = python-cons
+	depends = python-multipledispatch
+	depends = python-etuples
+	depends = python-logical-unification
+	source = https://files.pythonhosted.org/packages/source/m/miniKanren/miniKanren-1.0.3.tar.gz
+	sha256sums = 1ec8bdb01144ad5e8752c7c297fb8a122db920f859276d25a72d164e998d7f6e
+
+pkgname = python-minikanren
