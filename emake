@@ -2,4 +2,4 @@
 
 # excute emake
 cd /opt/enigma-dev-git/
-emake "$@"
+./emake "$@"

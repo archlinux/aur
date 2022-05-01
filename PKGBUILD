@@ -2,7 +2,7 @@
 
 pkgname=('enigma-dev-git')
 pkgver=4768.d4771fde1
-pkgrel=1
+pkgrel=2
 pkgdesc="ENIGMA, the Extensible Non-Interpreted Game Maker Augmentation."
 url="http://enigma-dev.org"
 arch=('x86_64' 'i686')
