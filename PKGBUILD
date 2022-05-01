@@ -1,4 +1,5 @@
-# Maintainer: Heiko Baums <heiko@baums-on-web.de>
+# Maintainer: nemesys <nemstar at zoho dot com>
+# Contributor: Heiko Baums <heiko@baums-on-web.de>
 # Contributor: dibblethewrecker dibblethewrecker.at.jiwe.dot.org
 
 pkgname=miscsplashutils
@@ -7,9 +8,10 @@ pkgrel=5
 pkgdesc='Miscellaneous framebuffer utilities including fbres and fbtruetype'
 arch=('i686' 'x86_64')
 url='http://dev.gentoo.org/~spock/projects/gensplash/'
+sourcecode_url='http://distfiles.gentoo.org/distfiles/${pkgname}-${pkgver}.tar.bz2'
 license=('GPL')
 depends=('freetype2')
-source=("http://distfiles.gentoo.org/distfiles/${pkgname}-${pkgver}.tar.bz2" 
+source=("${pkgname}-${pkgver}.tar.bz2" 
 	'miscsplashutils-freetype-fix.patch')
 md5sums=('0a9505c5c5ed169e6158d2c1b06ff40b'
          '05285f0a2b42e206e20e2973e69bd4c8')
