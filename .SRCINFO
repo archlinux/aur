@@ -1,0 +1,12 @@
+pkgbase = all2done
+	pkgdesc = Flutter based to-do application
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/MucahitSaratar/gefangen
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	source = git+https://github.com/MucahitSaratar/gefangen
+	md5sums = SKIP
+
+pkgname = all2done
