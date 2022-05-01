@@ -1,7 +1,7 @@
 pkgbase = v2raya
 	pkgdesc = A web GUI client of Project V which supports VMess, VLESS, SS, SSR, Trojan and Pingtunnel protocols
 	pkgver = 1.5.7
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/v2rayA/v2rayA
 	install = .INSTALL
 	arch = i686
@@ -23,4 +23,3 @@ pkgbase = v2raya
 	sha512sums = SKIP
 
 pkgname = v2raya
-
