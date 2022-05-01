@@ -1,16 +1,16 @@
-# Maintainer: silverhikari
+# Maintainer: silverhikari <kerrickethan@gmail.com>
 pkgname=gingerblue
-pkgver=3.0.1
+pkgver=4.0.1
 pkgrel=1
 epoch=
 pkgdesc="for musicians who compose, record, and share original music"
 arch=("x86_64")
 url="https://www.gingerblue.org/"
 license=("GPL")
-depends=("intltool" "gst-plugins-bad" "libshout" "gtk3" "libchamplain" "geocode-glib")
+depends=("intltool" "gst-plugins-bad" "libshout" "gtk3" "libchamplain" "geocode-glib" "geoclue")
 provides=("gingerblue")
 source=("https://www.gingerblue.org/src/${pkgname}-${pkgver}.tar.xz")
-sha256sums=("cf8183e0e2455dcaf97f16c58908f3f533a18f2beeee0f66093cf8d5092e0d74")
+sha256sums=("dd63cd1442fd9b8c0c6b31a9c9dc68d9a992a72c0642b0d7942889d8eb280f27")
 
 build() {
 	cd "$pkgname-$pkgver"
