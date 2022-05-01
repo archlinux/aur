@@ -8,7 +8,6 @@ pkgdesc='Console-based Audio Visualizer for Alsa'
 arch=('any')
 url='https://github.com/karlstav/cava'
 license=('MIT')
-makedepends=('vim')
 depends=('fftw' 'alsa-lib' 'ncurses' 'iniparser')
 optdepends=('sndio' 'pulseaudio' 'portaudio')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/karlstav/cava/archive/${pkgver}.tar.gz")

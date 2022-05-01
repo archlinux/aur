@@ -5,7 +5,6 @@ pkgbase = cava
 	url = https://github.com/karlstav/cava
 	arch = any
 	license = MIT
-	makedepends = vim
 	depends = fftw
 	depends = alsa-lib
 	depends = ncurses
