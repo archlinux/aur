@@ -16,6 +16,6 @@ pkgbase = sarqx-reporter
 	provides = sarqx-reporter=0.0.1
 	conflicts = sarqx-reporter
 	source = https://gitlab.com/sarqx_group/sarqx-reporter/-/archive/master/sarqx-reporter-master.tar.gz
-	sha256sums = 1d01c9bfeca776ac567d43f43c61da490695a34f227b93abb9ab66eb30d2853a
+	sha256sums = SKIP
 
 pkgname = sarqx-reporter
