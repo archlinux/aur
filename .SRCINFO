@@ -6,7 +6,6 @@ pkgbase = hascal-git
 	arch = i686
 	arch = x86_64
 	license = MIT
-	makedepends = python-pip
 	makedepends = git
 	makedepends = pyinstaller
 	depends = gcc
