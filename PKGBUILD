@@ -1,7 +1,7 @@
 # Maintainer: Andy Weidenbaum <archbaum@gmail.com>
 
 pkgname=dcrdata
-pkgver=6.1.0.beta
+pkgver=6.1.0beta
 pkgrel=1
 pkgdesc="Decred block explorer"
 arch=('aarch64' 'armv6h' 'armv7h' 'i686' 'x86_64')

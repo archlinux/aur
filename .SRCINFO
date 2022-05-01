@@ -1,6 +1,6 @@
 pkgbase = dcrdata
 	pkgdesc = Decred block explorer
-	pkgver = 6.1.0.beta
+	pkgver = 6.1.0beta
 	pkgrel = 1
 	url = https://dcrdata.decred.org
 	arch = aarch64
@@ -16,7 +16,7 @@ pkgbase = dcrdata
 	makedepends = npm
 	options = !strip
 	options = !emptydirs
-	source = dcrdata-6.1.0.beta.tar.gz::https://codeload.github.com/decred/dcrdata/tar.gz/release-v6.1.0-beta
+	source = dcrdata-6.1.0beta.tar.gz::https://codeload.github.com/decred/dcrdata/tar.gz/release-v6.1.0-beta
 	sha256sums = afc773bb582a3d0b2b4a26414e13cd3305dd5518c9d7d1d1b2ca2555bba7b45f
 
 pkgname = dcrdata
