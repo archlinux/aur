@@ -1,0 +1,14 @@
+pkgbase = txdx
+	pkgdesc = Todo's like you've never seen before
+	pkgver = 1.1.1
+	pkgrel = 21
+	url = https://gitlab.devroom.io/ariejan/txdx
+	arch = x86_64
+	arch = aarch64
+	depends = gtk3
+	depends = zenity
+	source = txdx-1.1.1.tar.gz::https://gitlab.devroom.io/ariejan/txdx/-/archive/1.1.1/txdx-1.1.1.tar.gz
+	sha256sums = 5da8bcdae8a61e7d38a0e2068021d884737b7150323ea07d9d5407d0847144a6
+
+pkgname = txdx
+
