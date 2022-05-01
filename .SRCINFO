@@ -1,18 +1,23 @@
-pkgbase = mingw-w64-brotli
+pkgbase = mingw-w64-brotli-static
 	pkgdesc = Brotli compression library (mingw-w64)
 	pkgver = 1.0.9
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/google/brotli
 	arch = any
 	license = MIT
 	makedepends = mingw-w64-cmake
 	makedepends = git
 	depends = mingw-w64-gcc
+	provides = mingw-w64-brotli=1.0.9
+	conflicts = mingw-w64-brotli
 	options = !buildflags
 	options = !strip
 	options = staticlibs
 	source = brotli::git+https://github.com/google/brotli#commit=e61745a6b7add50d380cfd7d3883dd6c62fc2c71
+	source = 0001-cmake-static-libs.patch
+	source = 0002-cmake-no-exe.patch
 	sha512sums = SKIP
+	sha512sums = 23d807f6563fc33720af074cc0996e332da9ee7aa7b45c958ec94e75da34b1947bff0ec05b8db8613d413e344f00b694c983d6a0578dc11dc722cb2feda7d2df
+	sha512sums = 8b340ec3a6fc3e88e8a338cc3f2358f100e22ceda70207d511660fd5e7a68fe9502e3a15bfa6ed6197281f7f8d830c5737159f1323a2660a0536c6085f60ea59
 
-pkgname = mingw-w64-brotli
-
+pkgname = mingw-w64-brotli-static

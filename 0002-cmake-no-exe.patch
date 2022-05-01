@@ -1,0 +1,23 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a2420f1..00ed7fe 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -189,18 +189,9 @@ if(BROTLI_PARENT_DIRECTORY)
+   set(BROTLI_LIBRARIES "${BROTLI_LIBRARIES}" PARENT_SCOPE)
+ endif()
+ 
+-# Build the brotli executable
+-add_executable(brotli ${BROTLI_CLI_C})
+-target_link_libraries(brotli ${BROTLI_LIBRARIES_CORE})
+-
+ # Installation
+ if(NOT BROTLI_EMSCRIPTEN)
+ if(NOT BROTLI_BUNDLED_MODE)
+-  install(
+-    TARGETS brotli
+-    RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
+-  )
+-
+   install(
+     TARGETS ${BROTLI_LIBRARIES_CORE}
+     ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
