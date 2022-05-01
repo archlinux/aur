@@ -1,7 +1,7 @@
 # Maintainer: GI_Jack <GI_Jack@hackermail.com>
 pkgname=dumpsterdiver-git
 _pkgname=${pkgname%-git}
-pkgver=r99.436982c
+pkgver=r108.a54c190
 pkgrel=1
 pkgdesc="DumpsterDiver is a tool used to analyze big volumes of various file types in search of hardcoded secret keys"
 arch=('any')
