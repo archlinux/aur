@@ -1,7 +1,7 @@
 # Maintainer: Ray Shirohara <RShirohara@gmail.com>
 
 pkgname=textimg
-pkgver=3.1.6
+pkgver=3.1.7
 pkgrel=1
 pkgdesc='Command to convert from color text (ANSI or 256) to image.'
 arch=('x86_64')
@@ -13,7 +13,7 @@ optdepends=('noto-fonts-cjk: Default font used in linux')
 provides=('textimg')
 options=('!strip')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha256sums=('bf95c9311b5017576920765d87672943106a8be3a5438857cf0cc2cd95d9b142')
+sha256sums=('b3df9fdcc36559f1f9c85f874ac1aa2a3dd36dc62d76ca06105e7425cce1a5d3')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
