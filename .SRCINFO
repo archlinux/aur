@@ -1,12 +1,14 @@
 pkgbase = hascal-git
 	pkgdesc = Hascal is a general purpose and open source programming language designed to build optimal, maintainable, reliable and efficient software.
-	pkgver = v1.3.7.r31.g09fadda
+	pkgver = v1.3.9.alpha.1.r11.g90d2e18
 	pkgrel = 1
 	url = https://github.com/hascal/hascal
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = python-pip
+	makedepends = git
+	makedepends = pyinstaller
 	depends = gcc
 	depends = python
 	depends = python-wheel
