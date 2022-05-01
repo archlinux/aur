@@ -1,7 +1,7 @@
 pkgbase = pcmanx-gtk2
 	pkgdesc = A gtk+ based free BBS client
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/pcman-bbs/pcmanx
 	install = pcmanx.install
 	arch = i686
@@ -17,8 +17,9 @@ pkgbase = pcmanx-gtk2
 	options = !libtool
 	source = https://github.com/pcman-bbs/pcmanx/releases/download/1.3/pcmanx-gtk2-1.3.tar.xz
 	source = pcmanx.install
+	source = patch-src-mainframe.cpp
 	md5sums = 9796c55ca5df674251be713a5019e3bc
 	md5sums = 6374916400684c2db957be0250a4ca98
+	md5sums = 5de241f8226b7cc6aea6b184cdc7b9ea
 
 pkgname = pcmanx-gtk2
-
