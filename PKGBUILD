@@ -3,9 +3,9 @@
 # NOTE: Please fill out the license field for your package! If it is unknown,
 # then please put 'unknown'.
 
-# Maintainer: Your Name <youremail@domain.com>
+# Maintainer: Mücahit Saratar <trregen222@gmail.com>
 pkgname=all2done
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 epoch=
 pkgdesc="Flutter based to-do application"
@@ -32,7 +32,8 @@ validpgpkeys=()
 
 package() {
 	cd gefangen
-	mkdir -p ${pkgdir}/opt/all2done
-	cp -r * ${pkgdir}/opt/all2done/
-	sudo ln -s ${pkgdir}/opt/all2done/gefangen /usr/bin/all2done
+	sudo mkdir -p /opt/all2done
+	sudo cp -r * /opt/all2done/
+	sudo ln -s /opt/all2done/gefangen /usr/bin/all2done
+	sudo cp /opt/all2done/all2done.desktop /usr/share/applications/
 }
