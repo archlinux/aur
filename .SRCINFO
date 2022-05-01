@@ -1,13 +1,11 @@
 pkgbase = mingw-w64-harfbuzz-static
 	pkgdesc = OpenType text shaping engine (mingw-w64)
 	pkgver = 4.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.freedesktop.org/wiki/Software/HarfBuzz
 	arch = any
 	license = MIT
 	makedepends = mingw-w64-meson
-	makedepends = mingw-w64-cairo
-	makedepends = mingw-w64-icu
 	makedepends = python
 	makedepends = ragel
 	depends = mingw-w64-crt
@@ -22,10 +20,3 @@ pkgbase = mingw-w64-harfbuzz-static
 pkgname = mingw-w64-harfbuzz-static
 	provides = mingw-w64-harfbuzz=4.2.0
 	conflicts = mingw-w64-harfbuzz
-
-pkgname = mingw-w64-harfbuzz-static-icu
-	pkgdesc = OpenType text shaping engine (ICU integration, mingw-w64)
-	depends = mingw-w64-harfbuzz-static
-	depends = mingw-w64-icu
-	provides = mingw-w64-harfbuzz-icu=4.2.0
-	conflicts = mingw-w64-harfbuzz-icu

@@ -5,10 +5,9 @@
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
-pkgbase=mingw-w64-harfbuzz-static
-pkgname=('mingw-w64-harfbuzz-static' 'mingw-w64-harfbuzz-static-icu')
+pkgname=mingw-w64-harfbuzz-static
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="OpenType text shaping engine (mingw-w64)"
 arch=('any')
 url="https://www.freedesktop.org/wiki/Software/HarfBuzz"
@@ -17,13 +16,16 @@ depends=('mingw-w64-crt'
          'mingw-w64-glib2'
          'mingw-w64-freetype2')
 makedepends=('mingw-w64-meson'
-             'mingw-w64-cairo'
-             'mingw-w64-icu'
              'python'
              'ragel')
 options=('!strip' 'staticlibs' '!buildflags')
 source=("https://github.com/harfbuzz/harfbuzz/archive/refs/tags/$pkgver.tar.gz")
 sha256sums=('7152d1bdcbd2bf6ba777cfe9161d40564fe0a7583e04e55e0a057d5f4414d3c9')
+
+prepare() {
+  cd "$srcdir/harfbuzz-$pkgver"
+  sed -Ei "/^\s*subdir\('util'\)\s*$/d" meson.build
+}
 
 build() {
   cd "$srcdir/harfbuzz-$pkgver"
@@ -31,8 +33,11 @@ build() {
     mkdir -p build-${_arch}-static && pushd build-${_arch}-static
     ${_arch}-meson \
       --default-library static \
+      -D cairo=disabled \
+      -D icu=disabled \
       -D b_lto=false \
       -D tests=disabled \
+      -D benchmark=disabled \
       -D docs=disabled \
       ..
     # fix linker selection error
@@ -49,26 +54,6 @@ package_mingw-w64-harfbuzz-static() {
   for _arch in ${_architectures}; do
     cd "$srcdir/harfbuzz-$pkgver/build-${_arch}-static"
     DESTDIR="${pkgdir}" ninja install
-    find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec rm {} \;
-    find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.a' | xargs ${_arch}-strip -g
-
-    mkdir -p hb-icu/usr/${_arch}/{bin,include/harfbuzz,lib/pkgconfig}; cd hb-icu
-    mv "${pkgdir}"/usr/${_arch}/lib/libharfbuzz-icu* ./usr/${_arch}/lib
-    mv "${pkgdir}"/usr/${_arch}/lib/pkgconfig/harfbuzz-icu.pc ./usr/${_arch}/lib/pkgconfig
-    mv "${pkgdir}"/usr/${_arch}/include/harfbuzz/hb-icu.h ./usr/${_arch}/include/harfbuzz
-  done
-}
-
-package_mingw-w64-harfbuzz-static-icu() {
-  pkgdesc="OpenType text shaping engine (ICU integration, mingw-w64)"
-  depends=('mingw-w64-harfbuzz-static'
-           'mingw-w64-icu')
-  provides=("mingw-w64-harfbuzz-icu=$pkgver")
-  conflicts=('mingw-w64-harfbuzz-icu')
-  for _arch in ${_architectures}; do
-    cd "$srcdir/harfbuzz-$pkgver/build-${_arch}-static"
-    mkdir -p "${pkgdir}/usr/${_arch}"
-    mv hb-icu/usr/${_arch}/* "${pkgdir}/usr/${_arch}"
   done
 }
