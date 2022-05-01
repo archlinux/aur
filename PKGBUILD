@@ -1,7 +1,7 @@
 # Maintainer:  Luo Yi <langisme_at_qq_dot_com>
 
 pkgname="terminal-gtk4-git"
-pkgver=v42.alpha2
+pkgver=v42.alpha2.r12.g00a7a5a
 pkgrel=1
 pkgdesc="A beautiful and simple GTK 4 terminal."
 license=("GPL3")
@@ -10,9 +10,9 @@ url="https://gitlab.gnome.org/raggesilver/terminal"
 depends=(gtk4 glib2 libadwaita marble-gtk4-git vte4-git json-glib pcre2)
 makedepends=(git meson vala)
 source=("$pkgname::git+https://gitlab.gnome.org/raggesilver/terminal"
-        build_fix.diff)
+        launch_fix.diff)
 sha256sums=('SKIP'
-            '0db5209d9b7238c7a805992f1c392070cf54237fddf1df872d9e5ac3902c1d59')
+            '6d675227f2e2217e823a12638c9a08eb2d35f25416dd47656135132eddef956c')
 
 pkgver() {
   cd $pkgname
@@ -21,7 +21,7 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  patch -p1 < $srcdir/build_fix.diff
+  patch -p1 < $srcdir/launch_fix.diff
 }
 
 build() {

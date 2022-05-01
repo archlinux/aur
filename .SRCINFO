@@ -1,6 +1,6 @@
 pkgbase = terminal-gtk4-git
 	pkgdesc = A beautiful and simple GTK 4 terminal.
-	pkgver = v42.alpha2
+	pkgver = v42.alpha2.r12.g00a7a5a
 	pkgrel = 1
 	url = https://gitlab.gnome.org/raggesilver/terminal
 	arch = any
@@ -16,8 +16,8 @@ pkgbase = terminal-gtk4-git
 	depends = json-glib
 	depends = pcre2
 	source = terminal-gtk4-git::git+https://gitlab.gnome.org/raggesilver/terminal
-	source = build_fix.diff
+	source = launch_fix.diff
 	sha256sums = SKIP
-	sha256sums = 0db5209d9b7238c7a805992f1c392070cf54237fddf1df872d9e5ac3902c1d59
+	sha256sums = 6d675227f2e2217e823a12638c9a08eb2d35f25416dd47656135132eddef956c
 
 pkgname = terminal-gtk4-git
