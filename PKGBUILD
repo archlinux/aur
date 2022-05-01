@@ -6,22 +6,30 @@ pkgname=ame
 pkgver=3.0.1
 pkgrel=1
 pkgdesc="Fast, efficient and lightweight AUR helper/pacman wrapper"
-arch=('any')
+arch=('x86_64')
 url="https://git.tar.black/crystal/ame"
 license=('Nolicense')
-source=("git+https://git.tar.black/crystal/ame")
+source=("git+https://git.tar.black/crystal/programs/amethyst.git")
 sha256sums=('SKIP')
-depends=('git' 'binutils' 'fakeroot')
-makedepends=('cargo' 'make')
-conflicts=('ame')
+depends=('git' 'binutils' 'fakeroot' 'openssl' 'sqlite')
+makedepends=('cargo')
+options=('!lto')
+
+prepare() {
+    cd ${srcdir}/amethyst
+    export RUSTUP_TOOLCHAIN=stable
+    cargo fetch --target ${CARCH}-unknown-linux-gnu
+}
 
 build() {
-    cd ${srcdir}/ame
-    cargo build --release --all-features
+    cd ${srcdir}/amethyst
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --release 
 }
 
 package() {
-    mkdir -p $pkgdir/usr/bin
-    chmod +x ${srcdir}/ame/target/release/{ame,apt,apt-get,dnf,eopkg,yum,zypper}
-    cp ${srcdir}/ame/target/release/{ame,apt,apt-get,dnf,eopkg,yum,zypper}  $pkgdir/usr/bin/.
+    cd ${srcdir}/amethyst
+    install -Dm755 target/release/${pkgname} -t "${pkgdir}"/usr/bin
+    install -Dm644 LICENSE.md -t "${pkgdir}" /usr/share/licenses/${pkgname}/
 }
