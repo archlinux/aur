@@ -9,7 +9,7 @@ pkgbase = princeprocessor-git
 	makedepends = git
 	makedepends = make
 	provides = princeprocessor
-	source = git://github.com/hashcat/princeprocessor.git
+	source = git+https://github.com/hashcat/princeprocessor.git
 	md5sums = SKIP
 
 pkgname = princeprocessor-git
