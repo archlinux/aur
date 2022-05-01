@@ -2,14 +2,14 @@
 # Maintainer: Daniel Vogt <marioortizmanero@gmail.com>
 pkgname=moodle-dl-git
 _pkgname=Moodle-Downloader-2
-pkgver=v2.2.1.6.r13.gab4560d
+pkgver=v2.2.1.7.r0.g5aa8887
 pkgrel=2
 pkgdesc='Moodle downloader to download course content automatically'
 arch=('any')
 url='https://github.com/C0D3D3V/Moodle-Downloader-2'
 license=('GPL3')
 depends=('python' 'ffmpeg' 'python-sentry_sdk' 'python-colorama'
-         'python-readchar' 'yt-dlp' 'python-certifi' 'python-html2text'
+         'yt-dlp' 'python-certifi' 'python-html2text'
          'python-requests' 'python-aioxmpp')
 makedepends=('python-build' 'python-installer')
 conflicts=('moodle-dl')
