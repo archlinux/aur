@@ -1,5 +1,5 @@
 pkgname=mingw-w64-mesa-git
-pkgver=22.0.0_devel.147904.77db4e27b18
+pkgver=22.2.0_devel.153080.53fe6f10846
 pkgrel=1
 pkgdesc="An open-source implementation of the OpenGL specification (mingw-w64)"
 arch=('any')
@@ -24,7 +24,7 @@ pkgver() {
 build() {
   cd "${srcdir}"/mesa
   for _arch in ${_architectures}; do
-    ${_arch}-meson build-${_arch} -Db_lto=false -Dgallium-drivers=swrast,zink -Dvulkan-drivers=swrast
+    ${_arch}-meson build-${_arch} -Db_lto=false -Dgallium-drivers=swrast,zink -Dvulkan-drivers=swrast -Dvulkan-icd-dir=bin
     ninja -C build-${_arch} ${MAKEFLAGS}
   done
 }
