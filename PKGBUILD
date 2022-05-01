@@ -11,6 +11,8 @@ arch=(x86_64)
 url="https://github.com/hironobu-s/conoha-iso"
 license=('MIT')
 makedepends=(go git)
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 source=("git+https://github.com/hironobu-s/conoha-iso.git")
 md5sums=('SKIP')
 
@@ -22,6 +24,9 @@ pkgver() {
 prepare() {
 	mkdir -p gopath/src/github.com/$_pkgname
 	ln -rTsf $_pkgname gopath/src/github.com/$_pkgname/$_pkgname
+
+	cd gopath/src/github.com/$_pkgname/$_pkgname
+	go get "${url#https://}" # strip https:// from canonical URL
 }
 
 build() {

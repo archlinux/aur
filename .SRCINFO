@@ -7,6 +7,8 @@ pkgbase = conoha-iso-git
 	license = MIT
 	makedepends = go
 	makedepends = git
+	provides = conoha-iso
+	conflicts = conoha-iso
 	source = git+https://github.com/hironobu-s/conoha-iso.git
 	md5sums = SKIP
 
