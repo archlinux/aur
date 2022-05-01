@@ -3,13 +3,13 @@
 
 pkgname=electricsheep
 pkgver=3.0.2
-pkgrel=3
+pkgrel=4
 _gitcommit=1c4af20b384d19c6844083845004e8f467c9ce39
 pkgdesc='Screensaver that realize the collective dream of sleeping computers from all over the internet'
 url='http://community.electricsheep.org/'
 arch=('x86_64')
 license=('GPL')
-depends=('curl' 'flam3' 'ffmpeg' 'lua51' 'libgtop' 'boost-libs' 'freeglut' 'glee' 'wxgtk2')
+depends=('curl' 'flam3' 'ffmpeg4.4' 'lua51' 'libgtop' 'boost-libs' 'freeglut' 'glee' 'wxgtk2')
 makedepends=('boost' 'mesa' 'glu' 'tinyxml')
 optdepends=('xscreensaver: to use electricsheep with xscreensaver')
 options=('!emptydirs')
@@ -29,6 +29,7 @@ prepare() {
 
 build() {
   cd ${pkgname}-${_gitcommit}/client_generic
+  export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
   CPPFLAGS+=" -I/usr/include/lua5.1" ./configure --prefix=/usr
   sed -i 's|-I /usr/include/libavutil||' MSVC/SettingsGUI/Makefile
   make CXXFLAGS+="-DUSE_NEW_FFMPEG_API=1 -DGL_GLEXT_PROTOTYPES" GLEE_LIBS="-lGLee" LDFLAGS+="-lpthread"
