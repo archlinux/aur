@@ -4,7 +4,7 @@ _pkgname=osu-handler
 pkgname="$_pkgname-git"
 pkgdesc='Provides a handler for osu! file formats (Git version)'
 pkgver=0.3.0.r3.g4376b24
-pkgrel=2
+pkgrel=3
 arch=(any)
 license=(GPL3)
 depends=(osu-mime glib2)
@@ -17,7 +17,7 @@ source=('git+https://github.com/openglfreak/osu-handler-wine.git'
         osu-url-handler.desktop)
 sha256sums=('SKIP'
             'd280e18bea335ebce642993d3f975dc644dfb367232c093277a09fd6e39d0120'
-            'e5e8d5c1ff6c2e464cb61c88a7ea74b7062ba9f3b8a69e18d5313b9eec3c1e76')
+            'f6e82a297061754ac363abd9caa25caccc1d8315de1831ee3d2e7d63bab17639')
 
 pkgver() {
   cd "$srcdir"
