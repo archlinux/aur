@@ -10,7 +10,7 @@ url="https://github.com/ENGO150/WHY2.git"
 license=('MIT')
 groups=()
 depends=()
-makedepends=(git gcc curl json-c sudo)
+makedepends=(git gcc curl json-c)
 checkdepends=()
 optdepends=()
 provides=(why2)
@@ -31,15 +31,11 @@ pkgver() {
 	printf "vr%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-build() {
+package() {
 	cd WHY2/
 
 	chmod +x build.sh
-	sudo ./build.sh install
-}
-
-package() {
-	cd WHY2/
+	./build.sh install
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
