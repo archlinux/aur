@@ -3,7 +3,7 @@
 
 pkgname=firefly-iii
 pkgver=5.7.2
-pkgrel=1
+pkgrel=2
 pkgdesc='PHP personal finances manager'
 arch=('any')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -19,7 +19,7 @@ backup=(
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    composer install --no-scripts --no-dev --ignore-platform-reqs
+    COMPOSER_ALLOW_SUPERUSER=1 composer install --no-scripts --no-dev --ignore-platform-reqs
 
     install -d "$pkgdir/usr/share/webapps/$pkgname" "$pkgdir/usr/share/licenses/$pkgname" "$pkgdir/etc/webapps/$pkgname"
     cp -rv * "$pkgdir/usr/share/webapps/$pkgname"
