@@ -3,7 +3,7 @@
 
 pkgname=python-vk_api
 _pkgname=vk_api
-pkgver=11.9.7
+pkgver=11.9.8
 pkgrel=1
 pkgdesc='vk.com API wrapper'
 url=https://github.com/python273/vk_api
@@ -14,7 +14,7 @@ depends=(python python-requests)
 optdepends=('python-websocket-client: vkstreaming'
 			'python-beautifulsoup4: vkaudio')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('e88f69f4df4378995a43d00283c8c80a7d4c2f36aecacae1ff1e9fe4562f9e0d')
+sha256sums=('11c731e214ebc7fa911db81efb021f97587493a5402b992f24748fe1cd9d7afc')
 
 package() {
 	cd "$srcdir/$_pkgname-$pkgver"
