@@ -3,7 +3,7 @@
 _basename="jsrclone"
 pkgname=jsrclone-git
 pkgver=22.2.0.0.alpha.2.r2.g81064b6
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple multidirectional shoot em up game written in Java."
 url="https://github.com/493msi/plutoengine"
 license=(MIT)

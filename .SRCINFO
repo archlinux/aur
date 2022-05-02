@@ -1,7 +1,7 @@
 pkgbase = jsrclone-git
 	pkgdesc = A simple multidirectional shoot em up game written in Java.
 	pkgver = 22.2.0.0.alpha.2.r2.g81064b6
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/493msi/plutoengine
 	arch = x86_64
 	license = MIT
