@@ -1,10 +1,10 @@
 [Desktop Entry]
 Categories=
 Encoding=UTF-8
-Exec=wine /usr/share/tnt/tnt.exe
+Exec=wine /usr/share/tnt-gui/tnt.exe
 GenericName=
 GenericName[zh]=
-Icon=/usr/share/tnt/tnt.png
+Icon=/usr/share/tnt-gui/tnt.png
 MimeType=
 Name=TNT
 Name[zh]=TNT
@@ -16,3 +16,4 @@ TerminalOptions=
 Type=Application
 X-KDE-SubstituteUID=false
 X-KDE-Username=root
+
