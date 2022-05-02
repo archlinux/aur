@@ -1,17 +1,17 @@
 pkgbase = gatling-bin
 	pkgdesc = A high performance http, ftp and smb server (binary version)
 	pkgver = 0.13
-	pkgrel = 1
+	pkgrel = 2
 	url = http://www.fefe.de/gatling/
 	arch = x86_64
 	arch = i686
 	license = GPL
 	depends = libowfat-bin
+	depends = libxcrypt-compat
 	options = !strip
-	source_x86_64 = http://ftp.debian.org/debian/pool/main/g/gatling/gatling_0.13-6+b3_amd64.deb
-	sha1sums_x86_64 = 9251fbf573a7de622296456338dbf787771000a0
-	source_i686 = http://ftp.debian.org/debian/pool/main/g/gatling/gatling_0.13-6+b3_i386.deb
-	sha1sums_i686 = ce541442356cb8d9774190e8c06dee7b062ef99a
+	source_x86_64 = http://ftp.debian.org/debian/pool/main/g/gatling/gatling_0.13-6.1+b1_amd64.deb
+	sha1sums_x86_64 = 1da23fc6308b45a4daeb0b71ac8bfa72e49fcf60
+	source_i686 = http://ftp.debian.org/debian/pool/main/g/gatling/gatling_0.13-6.1+b1_i386.deb
+	sha1sums_i686 = d1f1cad39901c5bb278a13c03eb5861de319b9bc
 
 pkgname = gatling-bin
-
