@@ -2,7 +2,7 @@
 
 pkgname=abeluna
 pkgver=1.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple GUI to-do/task manager with CalDAV support."
 arch=('any')
 url="https://github.com/Ninjaclasher/abeluna"
@@ -18,6 +18,7 @@ depends=(
 	'python-caldav'
 	'libnotify'
 	'python-setuptools'
+    'python-tzlocal'
 )
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}" || exit 2
