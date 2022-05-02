@@ -1,0 +1,17 @@
+pkgbase = wayclip-git
+	pkgdesc = wayclip is a pair of command-line utilities: waycopy and waypaste, which allow access to the Wayland clipboard
+	pkgver = 0.1.r9.9bc59e2
+	pkgrel = 1
+	url = https://github.com/noocsharp/wayclip
+	arch = x86_64
+	groups = shironeko
+	license = ISC
+	makedepends = git
+	makedepends = wayland
+	depends = wlroots
+	provides = wayclip
+	conflicts = wayclip
+	source = wayclip::git+https://github.com/noocsharp/wayclip.git
+	md5sums = SKIP
+
+pkgname = wayclip-git
