@@ -6,8 +6,8 @@
 # Contributer: nightuser <nightuser.android at gmail.com>
 
 pkgname=lxd
-pkgver=5.0.0
-pkgrel=3
+pkgver=5.1
+pkgrel=1
 pkgdesc="Daemon based on liblxc offering a REST API to manage containers"
 arch=('x86_64')
 url="https://linuxcontainers.org/lxd"
@@ -30,7 +30,7 @@ source=("https://linuxcontainers.org/downloads/${pkgname}/${pkgname}-${pkgver}.t
         "lxd.service"
         "lxd.sysusers")
 validpgpkeys=('602F567663E593BCBD14F338C638974D64792D67')
-sha256sums=('a99b7edfb52c8195b2de4988844d32d73be6426f6cff28408250517b238fdef9'
+sha256sums=('319f4e93506e2144edaa280b0185fb37c4374cf7d7468a5e5c8c1b678189250a'
             'SKIP'
             'b89a725223ef72b25eab25184084d069af312f8c23612c57fdb75427a510232e'
             '102d1d54186e0fc606a58f030231d76df6bd662b16dfd8f946e1f48e2b473b54'
@@ -74,9 +74,9 @@ package() {
   install -v -dm700 "${pkgdir}/var/log/lxd"
 
   # documentation
-  install -d "${pkgdir}/usr/share/doc/lxd/html"
+  install -d "${pkgdir}/usr/share/doc/lxd/"
   rm -rf doc/html
-  install -p -Dm644 "doc/"* "${pkgdir}/usr/share/doc/lxd/"
+  cp -vr doc/* "${pkgdir}/usr/share/doc/lxd/"
 
   # Bash completions
   install -v -p -Dm644 "scripts/bash/lxd-client" "${pkgdir}/usr/share/bash-completion/completions/lxd"
