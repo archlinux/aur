@@ -9,6 +9,7 @@ pkgbase = why2
 	makedepends = gcc
 	makedepends = curl
 	makedepends = json-c
+	makedepends = sudo
 	provides = why2
 	source = git+https://github.com/ENGO150/WHY2.git
 	md5sums = SKIP
