@@ -2,9 +2,8 @@
 
 pkgname=iverilog-git
 _gitname=$(printf ${pkgname%%-git})
-_gitbranch=master
 _gitauthor=steveicarus
-pkgver=s20141205.r283.g437dc10
+pkgver=s20150603.r1490.g0a86773c5
 pkgrel=1
 pkgdesc="Icarus Verilog simulation and synthesis tool"
 arch=('i686' 'x86_64')
@@ -15,7 +14,7 @@ provides=("$_gitname")
 conflicts=("$_gitname-snapshot" "$_gitname-legacy" "$_gitname")
 options=('staticlibs')
 makedepends=('gperf' 'bison' 'flex' 'readline')
-source=("git://github.com/$_gitauthor/$_gitname.git#branch=$_gitbranch")
+source=("git+https://github.com/$_gitauthor/$_gitname.git")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -32,5 +31,5 @@ build() {
 
 package() {
   cd "$srcdir/$_gitname"
-  make -j1 prefix="$pkgdir/usr" install # It failed awhile ago without the -j1, going to leave it.
+  make prefix="$pkgdir/usr" install
 }
