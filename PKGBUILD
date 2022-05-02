@@ -2,7 +2,7 @@
 
 pkgname=dict-git
 _name=dict
-pkgver=r20.0d40ace
+pkgver=r28.5b97458
 pkgrel=1
 pkgdesc="A dictionary, for the command line."
 arch=('x86_64')
@@ -27,11 +27,11 @@ build() {
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	go build -o dict ./main.go
+	go build -o main ./main.go
 }
 
 package() {
 	cd "$_name"
-	install -Dm755 dict "$pkgdir/usr/bin/dict"
+	install -Dm755 main "$pkgdir/usr/bin/dict"
 	install -Dm644 license "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
