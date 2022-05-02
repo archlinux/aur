@@ -1,7 +1,7 @@
 pkgbase = abeluna
 	pkgdesc = A simple GUI to-do/task manager with CalDAV support.
 	pkgver = 1.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Ninjaclasher/abeluna
 	arch = any
 	license = AGPL3

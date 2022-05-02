@@ -2,7 +2,7 @@
 
 pkgname=abeluna
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple GUI to-do/task manager with CalDAV support."
 arch=('any')
 url="https://github.com/Ninjaclasher/abeluna"
