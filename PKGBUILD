@@ -2,56 +2,89 @@
 # Contributor: Fabio 'Lolix' Loli <lolix@disroot.org>
 
 pkgname=gittyup
-pkgver=1.0.0
-pkgrel=0
+pkgver=1.1.0
+pkgrel=1
 pkgdesc='Graphical Git client (GitAhead fork)'
 url="https://github.com/Murmele/${pkgname^}"
 arch=(x86_64)
 license=(MIT)
 depends=(cmark
-         libgit2
          libssh2
-         org.freedesktop.secrets
+         libsecret
+         lua
          qt5-base)
 makedepends=(cmake
              git
+             hunspell
+             libgit2
+             libgnome-keyring
              ninja
+             openssl
              qt5-tools
              qt5-translations)
-_archive="${pkgname^}-${pkgname}_v$pkgver"
-source=("$_archive.tar.gz::$url/archive/refs/tags/${pkgname}_v$pkgver.tar.gz"
-        "$pkgname.desktop")
-sha256sums=('63b1b68a5f1968202b423a577cc8777d52c08076abb9325a975f4b251d6734c9'
+optdepends=('git-lfs: git-lfs support'
+            'libgnome-keyring: for GNOME Keyring for auth credentials'
+            'qt5-translations: translations')
+source=("$pkgname::git+https://github.com/Murmele/Gittyup.git#tag=${pkgname}_v$pkgver"
+        "$pkgname-cmark::git+https://github.com/commonmark/cmark.git"
+        "$pkgname-git::git+https://github.com/git/git.git"
+        "$pkgname-hunspell::git+https://github.com/hunspell/hunspell.git"
+        "$pkgname-libgit2::git+https://github.com/stinb/libgit2.git" # a fork, not the official upstream!
+        "$pkgname-libssh2::git+https://github.com/libssh2/libssh2.git"
+        "$pkgname-openssl::git+https://github.com/openssl/openssl.git"
+        "$pkgname-zip::git+https://github.com/kuba--/zip.git"
+        'gittyup.desktop')
+sha256sums=('SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
+            'SKIP'
             'fb900e4d101c19a5b3e1dc4c7619780e1d38fd78d0b9d951e794fbf36eebf21a')
 
 prepare() {
-	cd "$_archive/dep"
+	cd "$pkgname"
+	git config advice.detachedHead false
+	git submodule init
+	git config submodule.test/dep/zip.url "$srcdir/$pkgname-zip"
+	git config submodule.dep/libgit2/libgit2.url "$srcdir/$pkgname-libgit2"
+	git config submodule.dep/git/git.url "$srcdir/$pkgname-git"
+	git config submodule.dep/libssh2/libssh2.url "$srcdir/$pkgname-libssh2"
+	git config submodule.dep/hunspell/hunspell.url "$srcdir/$pkgname-hunspell"
+	git config submodule.dep/openssl/openssl.url "$srcdir/$pkgname-openssl"
+	git config submodule.dep/cmark/cmark.url "$srcdir/$pkgname-cmark"
+	git submodule update
 }
 
 build() {
 	cmake \
 		-G Ninja \
 		-W no-dev \
-		-DCMAKE_BUILD_TYPE=Release \
-		-DCMAKE_PREFIX_PATH=/usr/lib \
-		-DENABLE_REPRODUCIBLE_BUILDS=ON \
-		-DBUILD_SHARED_LIBS=OFF \
+		-D CMAKE_BUILD_TYPE=None \
+		-D CMAKE_INSTALL_PREFIX=/usr/lib/gittyup \
+		-D CMAKE_INSTALL_MANDIR=/usr/share/man \
+		-D ENABLE_REPRODUCIBLE_BUILDS=ON \
+		-D BUILD_SHARED_LIBS=OFF \
+		-D BUILD_TESTS=OFF \
 		-B build \
-		-S "$_archive"
+		-S "$pkgname"
 	ninja -C build
 }
 
 package() {
-	cd "$_archive"
-	# install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.md
-	# install -Dm0644 -t "$pkgdir/usr/share/applications/" "../$pkgname.desktop"
-	# cmake --build ../build --target package
-	# mkdir -p "$pkgdir/usr/"{share,bin}
-	# cp -r "../build/_CPack_Packages/Linux/STGZ/GitAhead-$pkgver" "$pkgdir/usr/share/gitahead"
-	# rm -rf "$pkgdir/usr/share/gitahead/"*.so.*
-	# ln -s "/usr/share/gitahead/GitAhead" "$pkgdir/usr/bin/gitahead"
-	# cd "$pkgdir/usr/share"
-	# for s in 16x16 32x32 64x64 128x128 256x256 512x512; do
-	#     install -Dm0644 "rsrc/Gittyup.iconset/icon_$s.png" "icons/hicolor/$s/apps/$pkgname.png"
-	# done
+	cd "$pkgname"
+	DESTDIR="$pkgdir" ninja -C ../build install
+	rm -rf "$pkgdir/usr/lib/gittyup/"*.so.*
+	local _bin="$pkgdir/usr/lib/$pkgname/${pkgname^}"
+	install -Dm0755 "$_bin" "$pkgdir/usr/bin/$pkgname"
+	rm "$_bin"
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.md
+	install -Dm0644 -t "$pkgdir/usr/share/applications/" ../$pkgname.desktop
+	install -Dm0644 rsrc/Gittyup.iconset/gittyup_logo.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/gittyup.svg"
+	for s in 16x16 32x32 64x64 128x128 256x256 512x512; do
+		install -Dm0644 "rsrc/Gittyup.iconset/icon_$s.png" "icons/hicolor/$s/apps/$pkgname.png"
+	done
+	rm -rf "$pkgdir/usr/share/man" # libssh2 man pages
 }
