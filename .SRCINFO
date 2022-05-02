@@ -1,6 +1,6 @@
 pkgbase = python-hyperspy
 	pkgdesc = Hyperspectral data analysis
-	pkgver = 1.6.5
+	pkgver = 1.7.0
 	pkgrel = 2
 	url = http://hyperspy.org
 	arch = any
@@ -13,8 +13,7 @@ pkgbase = python-hyperspy
 	makedepends = python-setuptools
 	depends = python
 	depends = python-scipy>=1.1
-	depends = python-matplotlib>=3.1.0
-	depends = python-matplotlib<3.5
+	depends = python-matplotlib>=3.1.3
 	depends = python-numpy>=1.17.1
 	depends = python-traits>=4.5.0
 	depends = python-natsort
@@ -22,16 +21,24 @@ pkgbase = python-hyperspy
 	depends = python-tqdm>=4.9.0
 	depends = python-sympy
 	depends = python-h5py>=2.3
+	depends = python-jinja
+	depends = python-packaging
 	depends = python-dateutil>=2.5.0
+	depends = python-ipython>=8.1.0
 	depends = python-dask>2.1.0
 	depends = python-pint>=0.10
 	depends = python-numexpr
 	depends = python-pyaml
 	depends = python-prettytable
+	depends = python-importlib-metadata>=3.6
+	depends = python-toolz
 	depends = python-dill
 	depends = python-ipyparallel
 	depends = python-scikit-image>=0.15
 	depends = python-sparse
+	depends = python-zarr
+	depends = python-tifffile>=2020.2.16
+	depends = python-numba>=0.52
 	optdepends = python-scikit-learn: machine learning features
 	optdepends = python-hyperspy-gui-ipywidgets: GUI components for Jupyter
 	optdepends = python-hyperspy-gui-traitsui: GUI components for desktop
@@ -44,7 +51,7 @@ pkgbase = python-hyperspy
 	provides = hyperspy
 	conflicts = hyperspy
 	replaces = hyperspy
-	source = https://github.com/hyperspy/hyperspy/archive/v1.6.5.tar.gz
-	md5sums = 67aebe07b41f1bd945b0edaae0e8f976
+	source = https://github.com/hyperspy/hyperspy/archive/v1.7.0.tar.gz
+	md5sums = e5eafa10c3f8d630e1ab16eb478c6b72
 
 pkgname = python-hyperspy
