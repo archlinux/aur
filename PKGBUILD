@@ -1,9 +1,9 @@
 # Maintainer: bacteriostat <dev.bacteriostat at aleeas dot com>
 # Contributor: Hugues Chabot <at google mail>
 _npmname=serverless
-_npmver=3.15.2
+_npmver=3.16.0
 pkgname=nodejs-serverless # All lowercase
-pkgver=3.15.2
+pkgver=3.16.0
 pkgrel=1
 pkgdesc="Serverless Framework - Build web, mobile and IoT applications with serverless architectures using AWS Lambda, Azure Functions, Google CloudFunctions & more"
 arch=(any)
@@ -13,7 +13,7 @@ depends=('nodejs' 'npm')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha1sums=(e746d9b1a9c86192e112d77d36e784333e11ac31)
+sha1sums=('d721f6f12ba12661e50974c7895d6dab35efdf90')
 
 package() {
   cd $srcdir
@@ -22,5 +22,3 @@ package() {
   cd $_npmdir
   npm install -g --prefix "$pkgdir/usr" --ignore-scripts $_npmname@$_npmver
 }
-
-# vim:set ts=2 sw=2 et:
