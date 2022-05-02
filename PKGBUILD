@@ -17,7 +17,6 @@ source=("git+https://github.com/kris-nova/xpid.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 build() {
-    depends=(libxpid-$pkgver)
 	cd $pkgname
 	GO111MODULE=on
 	go mod vendor
@@ -26,6 +25,7 @@ build() {
 }
 
 package() {
+    depends=(libxpid)
 	cd $pkgname
 	make DESTDIR="$pkgdir" install
 }

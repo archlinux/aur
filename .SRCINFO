@@ -13,3 +13,4 @@ pkgbase = xpid
 	sha256sums = SKIP
 
 pkgname = xpid
+	depends = libxpid
