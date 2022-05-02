@@ -1,16 +1,20 @@
 pkgbase = astra-launcher
-	pkgdesc = A cross-platform FFXIV launcher
-	pkgver = 0.3.1
+	pkgdesc = Cross-platform FFXIV launcher
+	pkgver = 0.4.0
 	pkgrel = 1
 	url = https://git.sr.ht/~redstrate/astra
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
+	makedepends = git
 	depends = qt5-base
 	depends = quazip-qt5
 	depends = qtkeychain-qt5
 	depends = libxcomposite
-	source = astra-launcher-0.3.1::https://git.sr.ht/~redstrate/astra/archive/v0.3.1-beta.tar.gz
-	sha256sums = 3816d6b69faa98b4b7ed0f2dbcb5922b6d8e5b7cb9555ff0a4dfa51372fa0d69
+	depends = unshield
+	depends = fmt
+	depends = pugixml
+	source = astra-launcher-0.4.0::https://xiv.zone/distrib/astra/0.4.0/astra-source.tar.gz
+	sha256sums = 6484f57ca563514daf176a771a7374e2bf1441a3604741899e2b0a7270698a80
 
 pkgname = astra-launcher
