@@ -1,6 +1,6 @@
 pkgbase = python-photutils
 	pkgdesc = Astropy Affiliated package for image photometry utilities
-	pkgver = 1.3.0
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = http://photutils.readthedocs.io/
 	arch = i686
@@ -10,24 +10,28 @@ pkgbase = python-photutils
 	checkdepends = python-gwcs
 	makedepends = cython>=0.28
 	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-extension-helpers
+	makedepends = python-numpy
 	makedepends = python-astropy
 	makedepends = python-scikit-learn
 	makedepends = python-scikit-image
 	makedepends = python-sphinx-astropy
 	makedepends = graphviz
-	source = https://files.pythonhosted.org/packages/source/p/photutils/photutils-1.3.0.tar.gz
-	md5sums = ba383cb09f2e2c46be2a4054dbc37247
+	source = https://files.pythonhosted.org/packages/source/p/photutils/photutils-1.4.0.tar.gz
+	md5sums = 39647bdd3ca2d10564c44fe2a4196f72
 
 pkgname = python-photutils
-	depends = python>=3.7
-	depends = python-numpy>=1.17
-	depends = python-astropy>=4.0
+	depends = python>=3.8
+	depends = python-numpy>=1.18
+	depends = python-astropy>=5.0
 	optdepends = python-scipy>=1.6.0: To power a variety of features in several modules (strongly recommended)
-	optdepends = python-scikit-image>=0.14.2: Used in deblend_sources for deblending segmented sources
+	optdepends = python-scikit-image>=0.15.0: Used in deblend_sources for deblending segmented sources
 	optdepends = python-scikit-learn>=0.19: Used in DBSCANGroup to create star groups
-	optdepends = python-matplotlib>=2.2: To power a variety of plotting features (e.g. plotting apertures
-	optdepends = python-gwcs>=0.12: Used in make_gwcs to create a simple celestial gwcs object
+	optdepends = python-matplotlib>=3.1: To power a variety of plotting features (e.g. plotting apertures
+	optdepends = python-gwcs>=0.16: Used in make_gwcs to create a simple celestial gwcs object
 	optdepends = python-photutils-doc: Documentation for python-photutils
 	optdepends = python-bottleneck: Improves the performance of sigma clipping and other functionality that may require computing statistics on arrays with NaN values
 
