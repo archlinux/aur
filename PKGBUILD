@@ -1,26 +1,27 @@
 # Maintainer: Stella <jens300304@gmail.com>
 pkgname=danser
 url="https://github.com/Wieku/danser-go"
-pkgver=0.6.8
-pkgrel=2
+pkgver=0.6.9
+pkgrel=1
 pkgdesc="Dancing visualizer of osu! maps and custom osu! client written in Go."
 arch=('any')
 license=('MIT')
 conflicts=('danser-git')
 source=(
     "https://github.com/Wieku/danser-go/archive/refs/tags/${pkgver}.tar.gz"
-    "danser"
 )
-sha256sums=('d043386c9ac612b2602aed8963aa1193e093604601c43b33b68081ebabe15f79'
-            'ae1b9fddfa393c1e0f3e58581d8587973d4551e98a34058db8e23e6beee844e3')
+sha256sums=('8a4c7c61b8b91d3d50a22a1d14280af9fd792622ad957210f66c512e6d72451f')
 depends=(
     'libyuv'
     'ffmpeg'
 )
 makedepends=(
-    'xorg-server-devel'
-    'go>=1.17'
     'gcc'
+    'go>=1.17'
+    'libxi'
+    'libxinerama'
+    'libxrandr'
+    'xorg-server-devel'
 )
 
 build() {
@@ -49,7 +50,5 @@ package() {
     install -Dm755 danser-go "${pkgdir}/usr/lib/danser/${pkgname}"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-    # until 0.6.9 we will not symlink, instead we'll use a bash script
-    # ln -s "/usr/lib/danser/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm755 "${srcdir}/danser" "${pkgdir}/usr/bin/${pkgname}"
+    ln -s "/usr/lib/danser/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
