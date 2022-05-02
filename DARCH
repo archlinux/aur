@@ -1,0 +1,76 @@
+#!/bin/bash
+CONFIG_FILES=/usr/share/darch
+
+# add flatpak remote
+sudo flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+
+# Installs flatpak packages
+xargs -r -a $CONFIG_FILES/flatpak.txt flatpak install -y
+
+# Installs snap packages
+xargs -r -a $CONFIG_FILES/snap.txt snap install
+
+# Teams fix (https://aur.archlinux.org/packages/teams)
+mkdir -p "${XDG_DATA_HOME:-$HOME/.local/share}/applications"
+cp -a "/usr/share/applications/teams.desktop" \
+    "${XDG_DATA_HOME:-$HOME/.local/share}/applications/teams.desktop"
+sed -i -e 's,teams %U,teams --disable-seccomp-filter-sandbox %U,' \
+    "${XDG_DATA_HOME:-$HOME/.local/share}/applications/teams.desktop"
+
+# qBittorrent theme
+wget https://github.com/dracula/qbittorrent/raw/master/qbittorrent.qbtheme
+if [ ! -d "/home/$USER/.config/qBittorrent" ]; then
+    mkdir -p /home/"$USER"/.config/qBittorrent
+fi
+mv qbittorrent.qbtheme /home/"$USER"/.config/qBittorrent/
+
+# LibreOffice Theme
+git clone https://github.com/dracula/libreoffice.git
+cd libreoffice || exit
+if [ ! -d "/home/"$USER"/.config/libreoffice/4/user/config/" ]; then
+    mkdir -p /home/"$USER"/.config/libreoffice/4/user/config/
+fi
+cp dracula.soc /home/"$USER"/.config/libreoffice/4/user/config/
+# bash install.sh
+cd ../
+rm -rf libreoffice
+
+# NVM
+cd "$HOME" || exit
+FILE="./.bashrc"
+STRING="source /usr/share/nvm/init-nvm.sh"
+if [ -z "$(grep "$STRING" "$FILE")" ]; then
+    echo "$STRING" >>$FILE
+fi
+FILE=./.zshrc
+if [ -z "$(grep "$STRING" "$FILE")" ]; then
+    echo "$STRING" >>$FILE
+fi
+
+# ncmpcpp spotify
+cp --force "$CONFIG_FILES/config" "$HOME/.ncmpcpp/"
+sudo chmod 777 "$HOME/.ncmpcpp/config"
+
+FILE="/etc/mopidy/mopidy.conf"
+STRING="client_secret"
+isInFile=$(cat $FILE | grep -c "$STRING")
+if [ $isInFile -eq 0 ]; then
+    sudo cp --force "$CONFIG_FILES/mopidy.conf" "/etc/mopidy/"
+    sudo chmod 777 "/etc/mopidy/mopidy.conf"
+fi
+
+FILE="/etc/pulse/default.pa"
+STRING="load-module module-native-protocol-tcp auth-ip-acl=127.0.0.1"
+if [ -z "$(grep "$STRING" "$FILE")" ]; then
+    echo "$STRING" | sudo tee -a $FILE
+fi
+
+if command -v mpd &>/dev/null; then
+    pkill mpd
+    sudo systemctl disable mpd
+fi
+pulseaudio --kill
+start-pulseaudio-x11
+sudo systemctl restart mopidy
+
+echo "Darch is installed!"
