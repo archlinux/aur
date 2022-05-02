@@ -1,0 +1,12 @@
+pkgbase = ripser
+	pkgdesc = Computes Vietoris-Rips persistance barcodes
+	pkgver = 1.2.1
+	pkgrel = 1
+	url = https://github.com/ripser/ripser
+	arch = x86_64
+	license = MIT
+	depends = gcc-libs
+	source = ripser-1.2.1.tar.gz::https://github.com/ripser/ripser/archive/v1.2.1.tar.gz
+	sha256sums = 4be600591dced310550a78b718f3f4019f11049bad0fbf14eea1f85d835b16e1
+
+pkgname = ripser
