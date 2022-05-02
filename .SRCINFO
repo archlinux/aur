@@ -1,0 +1,12 @@
+pkgbase = salwyrr
+	pkgdesc = The best launcher of Minecraft since 2017
+	pkgver = 4
+	pkgrel = 1
+	url = https://salwyrr.com
+	arch = any
+	license = custom:unknown
+	depends = java-environment
+	source = https://salwyrr.com/4/Salwyrr%20Minecraft%20Launcher%204.jar
+	sha512sums = e3c3d8d6287ad48a7fe6e2f7bce3b8732031373c15ddd1c4f56973b922df01ed0a3088c372a9939679a284e6c2e87e37519480525ee2fded1024442421f370d4
+
+pkgname = salwyrr
