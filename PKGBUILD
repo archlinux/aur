@@ -1,7 +1,7 @@
 # Maintainer: Magnus Groß, for email contact see AUR commit author email
 _pkgname=blobdrop
 pkgname="$_pkgname"-git
-pkgver=0.1.r5.g0c192de
+pkgver=0.1.r8.gdfb56e9
 pkgrel=1
 pkgdesc="Drag and drop files directly out of the terminal"
 arch=('i686' 'x86_64')
@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
 	cd "$_pkgname"
-	cmake -B build -G Ninja -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release
+	cmake -B build -G Ninja -DCMAKE_INSTALL_PREFIX="/usr"
 	cmake --build build
 }
 
