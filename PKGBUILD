@@ -12,7 +12,7 @@ license=('GPL')
 depends=('gtk3' 'nss')
 optdepends=('libnotify: Playback notifications')
 source=("cider.desktop")
-sha256sums=("SKIP")
+sha256sums=('7bf97dfa92b312ceb95d005a8aa7f225af079ee450f38b58b894e951a529d997')
 
 pkgver() {
     wget $_url \
