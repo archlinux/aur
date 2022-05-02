@@ -19,7 +19,7 @@ optdepends=('libuvc: optical tracking support'
             'basalt-monado-git: experimental SLAM tracking through basalt'
             'kimera-vio-monado-git: experimental SLAM tracking through kimera'
             'percetto: tracing support for performance debugging')
-provides=("openxr-runtime")
+provides=("openxr-runtime" "monado")
 install=monado.install
 
 license=('boost')

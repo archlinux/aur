@@ -31,6 +31,7 @@ pkgbase = monado-git
 	optdepends = kimera-vio-monado-git: experimental SLAM tracking through kimera
 	optdepends = percetto: tracing support for performance debugging
 	provides = openxr-runtime
+	provides = monado
 	source = monado::git+https://gitlab.freedesktop.org/monado/monado.git#branch=main
 	md5sums = SKIP
 
