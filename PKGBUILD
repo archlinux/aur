@@ -1,4 +1,5 @@
-# Maintainer: Hugues Chabot <at google mail>
+# Maintainer: bacteriostat <dev.bacteriostat at aleeas dot com>
+# Contributor: Hugues Chabot <at google mail>
 _npmname=serverless
 _npmver=3.15.2
 pkgname=nodejs-serverless # All lowercase
