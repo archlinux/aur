@@ -8,7 +8,6 @@ pkgbase = audacity-systemlibs
 	license = CCPL
 	makedepends = alsa-lib
 	makedepends = cmake
-	makedepends = conan
 	makedepends = expat
 	makedepends = ffmpeg
 	makedepends = lame

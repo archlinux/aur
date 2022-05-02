@@ -30,7 +30,6 @@ depends=(
 makedepends=(
   alsa-lib
   cmake
-  conan
   expat
   ffmpeg
   lame
