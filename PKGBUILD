@@ -1,19 +1,17 @@
 # Maintainer: Thom Wiggers <aur@thomwiggers.nl>
 # Contributor: Radeox <dawid.weglarz95@gmail.com>
 pkgname="pomodoneapp"
-pkgver="1.5.1545"
+pkgver="1.5.1547"
 pkgrel=1
 pkgdesc="Pomodoro timer for your favourite productivity tool"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://pomodoneapp.com/"
 depends=('gtk2' 'gconf' 'alsa-lib' 'fontconfig' 'libxtst' 'nss')
 license=('custom')
-source_i686=("https://app.pomodoneapp.com/installers/PomoDoneApp_${pkgver}_i386.deb")
 source_x86_64=("https://app.pomodoneapp.com/installers/PomoDoneApp_${pkgver}_amd64.deb")
 source=("pomodoneapp.sh")
 sha256sums=('be9261737bbc09f811b17bc37bcaa4b1d753c281b46f53eb04923f327be87cea')
-sha256sums_i686=('d5d24a36bc213348e3c51f2e6809a7dd5a64b08b3a5523c5491935a9c7ff0662')
-sha256sums_x86_64=('a77a3e199181e7d8d121274d12a5b833d771b094bd259ee956bee20a524ef700')
+sha256sums_x86_64=('9d4af9e07335c28cde659171a0b9444c27af1c2b620dc2b385891c980a7ff932')
 
 package() {
     cd "$srcdir"
