@@ -1,7 +1,7 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=albert-git
-pkgver=v0.17.2.r10.g83e6ceb1
+pkgver=v0.17.2.r12.gedd178d2
 pkgrel=1
 pkgdesc="A sophisticated standalone keyboard launcher."
 arch=('any')
