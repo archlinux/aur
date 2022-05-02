@@ -4,7 +4,7 @@
 # Contributor: Kosava <kosava@gmail.com>
 
 pkgname=butt
-pkgver=0.1.33
+pkgver=0.1.34
 pkgrel=1
 pkgdesc="Easy to use, multi OS streaming tool"
 arch=('i686' 'x86_64' 'aarch64' 'armv7h')
@@ -12,7 +12,7 @@ license=('GPL2')
 url="http://butt.sourceforge.net/"
 depends=('fltk' 'dbus' 'portaudio' 'libfdk-aac' 'libvorbis' 'libogg' 'lame' 'flac' 'opus' 'libsamplerate')
 source=(${pkgname}-${pkgver}.tar.gz::"http://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
-b2sums=('31da54364c0a1dbcffe9904f7865aa67fdb7e31a83b61b5f94b639d5d97d7d41137c41bec474cbd4129af79b2cf2bd3b9318899975571c5d8dea5dbef42466c2')
+b2sums=('2f5bf14b79805103e6d5fe72669103b1fabfa567da051225c5ab733d53d413b74c727c23ac8cf11cdb86a56f1c810c0bf45203cc41441bdfbdaaa781941e0f89')
 
 build() {
   cd "${pkgname}-${pkgver}"
