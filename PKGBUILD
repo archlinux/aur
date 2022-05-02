@@ -3,7 +3,7 @@
 _basename="jsrclone"
 pkgname=jsrclone-git
 pkgver=22.2.0.0.alpha.2.r2.g81064b6
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple multidirectional shoot em up game written in Java."
 url="https://github.com/493msi/plutoengine"
 license=(MIT)
@@ -47,7 +47,7 @@ pkgver() {
 package() {
     install -d "$pkgdir/opt"
     cp -rf "$srcdir/"jsr-clone* "$pkgdir/opt/$_basename"
-    install -dm666 "$pkgdir/opt/$_basename/logs"
+    install -dm777 "$pkgdir/opt/$_basename/logs"
     install -Dm644 "$srcdir/$_basename.desktop" "$pkgdir/usr/share/applications/$_basename.desktop"
     install -Dm644 plutoengine/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
