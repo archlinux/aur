@@ -18,7 +18,7 @@ package() {
   install -dm755 "${pkgdir}/opt/lf"
   cp -r "${srcdir}/epoch" "${pkgdir}/opt/lf"
   install -dm755 "${pkgdir}/usr/bin"
-  ln -s "${pkgdir}/opt/lf/epoch/epoch" "${pkgdir}/usr/bin/epoch"
+  ln -s "/opt/lf/epoch/epoch" "${pkgdir}/usr/bin/epoch"
   install -Dm644 "${startdir}/epoch.desktop" "${pkgdir}/usr/share/applications/epoch.desktop"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/epoch-bin/LICENSE"
 }
