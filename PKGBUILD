@@ -1,6 +1,6 @@
 # Maintainer: matt kasun <matt  at gravil.com>
 pkgname=netclient
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="A component of netmaker"
 arch=(x86_64)
