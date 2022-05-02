@@ -1,17 +1,17 @@
 diff --git a/Action.c b/Action.c
-index 07e21dc..4d6d801 100644
+index ce3cd13..451d8ec 100644
 --- a/Action.c
 +++ b/Action.c
-@@ -459,7 +459,7 @@ static const struct {
-    bool roInactive;
+@@ -503,7 +503,7 @@ static const struct {
     const char* info;
  } helpLeft[] = {
+    { .key = "    Tab: ",  .roInactive = false, .info = "switch to next screen tab" },
 -   { .key = " Arrows: ",  .roInactive = false, .info = "scroll process list" },
 +   { .key = "   hjkl: ",  .roInactive = false, .info = "scroll process list" },
     { .key = " Digits: ",  .roInactive = false, .info = "incremental PID search" },
     { .key = "   F3 /: ",  .roInactive = false, .info = "incremental name search" },
     { .key = "   F4 \\: ", .roInactive = false, .info = "incremental name filtering" },
-@@ -486,7 +486,7 @@ static const struct {
+@@ -531,7 +531,7 @@ static const struct {
     { .key = "  Space: ", .roInactive = false, .info = "tag process" },
     { .key = "      c: ", .roInactive = false, .info = "tag process and its children" },
     { .key = "      U: ", .roInactive = false, .info = "untag all processes" },
@@ -20,7 +20,7 @@ index 07e21dc..4d6d801 100644
     { .key = "   F7 ]: ", .roInactive = true,  .info = "higher priority (root only)" },
     { .key = "   F8 [: ", .roInactive = false, .info = "lower priority (+ nice)" },
  #if (defined(HAVE_LIBHWLOC) || defined(HAVE_AFFINITY))
-@@ -494,12 +494,12 @@ static const struct {
+@@ -539,12 +539,12 @@ static const struct {
  #endif
     { .key = "      e: ", .roInactive = false, .info = "show process environment" },
     { .key = "      i: ", .roInactive = true,  .info = "set IO priority" },
@@ -36,7 +36,7 @@ index 07e21dc..4d6d801 100644
     { .key = "  F10 q: ", .roInactive = false, .info = "quit" },
     { .key = NULL, .info = NULL }
  };
-@@ -673,12 +673,14 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -718,12 +718,14 @@ void Action_setBindings(Htop_Action* keys) {
     keys['H'] = actionToggleUserlandThreads;
     keys['I'] = actionInvertSortOrder;
     keys['K'] = actionToggleKernelThreads;
@@ -51,7 +51,7 @@ index 07e21dc..4d6d801 100644
     keys['Z'] = actionTogglePauseProcessUpdate;
     keys['['] = actionLowerPriority;
     keys['\014'] = actionRedraw; // Ctrl+L
-@@ -688,17 +690,15 @@ void Action_setBindings(Htop_Action* keys) {
+@@ -733,17 +735,15 @@ void Action_setBindings(Htop_Action* keys) {
     keys['a'] = actionSetAffinity;
     keys['c'] = actionTagAllChildren;
     keys['e'] = actionShowEnvScreen;
@@ -72,10 +72,10 @@ index 07e21dc..4d6d801 100644
     keys[KEY_F(2)] = actionSetup;
     keys[KEY_F(3)] = actionIncSearch;
 diff --git a/CategoriesPanel.c b/CategoriesPanel.c
-index 30867ee..635140e 100644
+index 6e905ce..e7253ac 100644
 --- a/CategoriesPanel.c
 +++ b/CategoriesPanel.c
-@@ -101,6 +101,12 @@ static HandlerResult CategoriesPanel_eventHandler(Panel* super, int ch) {
+@@ -103,6 +103,12 @@ static HandlerResult CategoriesPanel_eventHandler(Panel* super, int ch) {
     HandlerResult result = IGNORED;
  
     int selected = Panel_getSelectedIndex(super);
@@ -89,10 +89,10 @@ index 30867ee..635140e 100644
        case EVENT_SET_SELECTED:
           result = HANDLED;
 diff --git a/MainPanel.c b/MainPanel.c
-index 07dc631..a528238 100644
+index 44915df..4747788 100644
 --- a/MainPanel.c
 +++ b/MainPanel.c
-@@ -50,7 +50,7 @@ static const char* MainPanel_getValue(Panel* this, int i) {
+@@ -51,7 +51,7 @@ static const char* MainPanel_getValue(Panel* this, int i) {
     return Process_getCommand(p);
  }
  
@@ -102,10 +102,10 @@ index 07dc631..a528238 100644
  
     HandlerResult result = IGNORED;
 diff --git a/MainPanel.h b/MainPanel.h
-index 04f4c0a..cc6b0ed 100644
+index bd22acd..069d0b3 100644
 --- a/MainPanel.h
 +++ b/MainPanel.h
-@@ -46,4 +46,6 @@ void MainPanel_setState(MainPanel* this, State* state);
+@@ -47,4 +47,6 @@ void MainPanel_setState(MainPanel* this, State* state);
  
  void MainPanel_delete(Object* object);
  
@@ -113,10 +113,10 @@ index 04f4c0a..cc6b0ed 100644
 +
  #endif
 diff --git a/Panel.c b/Panel.c
-index a5773d5..b1afa98 100644
+index 4ea03f6..83a4acf 100644
 --- a/Panel.c
 +++ b/Panel.c
-@@ -351,6 +351,7 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -358,6 +358,7 @@ bool Panel_onKey(Panel* this, int key) {
  
     switch (key) {
     case KEY_DOWN:
@@ -124,7 +124,7 @@ index a5773d5..b1afa98 100644
     case KEY_CTRL('N'):
     #ifdef KEY_C_DOWN
     case KEY_C_DOWN:
-@@ -359,6 +360,7 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -366,6 +367,7 @@ bool Panel_onKey(Panel* this, int key) {
        break;
  
     case KEY_UP:
@@ -132,7 +132,7 @@ index a5773d5..b1afa98 100644
     case KEY_CTRL('P'):
     #ifdef KEY_C_UP
     case KEY_C_UP:
-@@ -367,7 +369,7 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -374,7 +376,7 @@ bool Panel_onKey(Panel* this, int key) {
        break;
  
     case KEY_LEFT:
@@ -141,7 +141,7 @@ index a5773d5..b1afa98 100644
        if (this->scrollH > 0) {
           this->scrollH -= MAXIMUM(CRT_scrollHAmount, 0);
           this->needsRedraw = true;
-@@ -375,16 +377,28 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -382,16 +384,28 @@ bool Panel_onKey(Panel* this, int key) {
        break;
  
     case KEY_RIGHT:
@@ -171,7 +171,7 @@ index a5773d5..b1afa98 100644
        PANEL_SCROLL(+(this->h - Panel_headerHeight(this)));
        break;
  
-@@ -397,10 +411,12 @@ bool Panel_onKey(Panel* this, int key) {
+@@ -404,10 +418,12 @@ bool Panel_onKey(Panel* this, int key) {
        break;
  
     case KEY_HOME:
@@ -185,7 +185,7 @@ index a5773d5..b1afa98 100644
        break;
  
 diff --git a/ScreenManager.c b/ScreenManager.c
-index 96e9c47..93afc79 100644
+index e4b04bd..d5d7ccd 100644
 --- a/ScreenManager.c
 +++ b/ScreenManager.c
 @@ -16,6 +16,7 @@ in the source distribution for its full text.
@@ -193,10 +193,10 @@ index 96e9c47..93afc79 100644
  #include "CRT.h"
  #include "FunctionBar.h"
 +#include "MainPanel.h"
+ #include "Macros.h"
  #include "Object.h"
  #include "Platform.h"
- #include "ProcessList.h"
-@@ -229,14 +230,16 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+@@ -294,14 +295,16 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey, con
           redraw = false;
           continue;
        }
@@ -219,7 +219,7 @@ index 96e9c47..93afc79 100644
           result = Panel_eventHandler(panelFocus, ch);
        }
        if (result & SYNTH_KEY) {
-@@ -270,7 +273,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey) {
+@@ -335,7 +338,7 @@ void ScreenManager_run(ScreenManager* this, Panel** lastFocus, int* lastKey, con
           continue;
        }
        case KEY_LEFT:
@@ -228,7 +228,7 @@ index 96e9c47..93afc79 100644
           if (this->panelCount < 2) {
              goto defaultHandler;
           }
-@@ -291,7 +294,7 @@ tryLeft:
+@@ -356,7 +359,7 @@ tryLeft:
  
           break;
        case KEY_RIGHT:
@@ -238,13 +238,13 @@ index 96e9c47..93afc79 100644
           if (this->panelCount < 2) {
              goto defaultHandler;
 diff --git a/htop.1.in b/htop.1.in
-index 49c4a52..a288507 100644
+index c81c819..af5e0b6 100644
 --- a/htop.1.in
 +++ b/htop.1.in
-@@ -95,27 +95,30 @@ held.
- The following commands are supported while in
- .BR htop :
- .TP 5
+@@ -100,27 +100,29 @@ The following commands are supported while in
+ Select the next / the previous screen tab to display.
+ You can enable showing the screen tab names in the Setup screen (F2).
+ .TP
 -.B Up, Alt-k
 +.B Up, k
  Select (highlight) the previous process in the process list. Scroll the list
@@ -270,7 +270,6 @@ index 49c4a52..a288507 100644
 -.B Home
 +.B Ctrl-U, Ctrl-D
 +Scroll the process list up or down half a window.
-+.TP
 +.B Home, g
  Scroll to the top of the process list and select the first process.
  .TP
@@ -279,16 +278,7 @@ index 49c4a52..a288507 100644
  Scroll to the bottom of the process list and select the last process.
  .TP
  .B Ctrl-A, ^
-@@ -142,7 +145,7 @@ Trace process system calls: if strace(1) is installed, pressing this key
- will attach it to the currently selected process, presenting a live
- update of system calls issued by the process.
- .TP
--.B l
-+.B L
- Display open files for a process: if lsof(1) is installed, pressing this key
- will display the list of file descriptors opened by the process.
- .TP
-@@ -150,10 +153,10 @@ will display the list of file descriptors opened by the process.
+@@ -155,7 +157,7 @@ will display the list of file descriptors opened by the process.
  Display the command line of the selected process in a separate screen, wrapped
  onto multiple lines as needed.
  .TP
@@ -296,12 +286,8 @@ index 49c4a52..a288507 100644
 +.B X
  Display the active file locks of the selected process in a separate screen.
  .TP
--.B F1, h, ?
-+.B F1, ?
- Go to the help screen
- .TP
- .B F2, S
-@@ -182,7 +185,7 @@ between them as a tree. Toggling the key will switch between tree and
+ .B F1, h, ?
+@@ -189,7 +191,7 @@ between them as a tree. Toggling the key will switch between tree and
  your previously selected sort view. Selecting a sort view will exit
  tree view.
  .TP
@@ -310,7 +296,7 @@ index 49c4a52..a288507 100644
  Selects a field for sorting, also accessible through < and >.
  The current sort field is indicated by a highlight in the header.
  .TP
-@@ -200,7 +203,7 @@ This can only be done by the superuser.
+@@ -207,7 +209,7 @@ This can only be done by the superuser.
  .B Shift-F8, {
  Decrease the selected process's autogroup priority (add to autogroup 'nice' value)
  .TP
@@ -319,7 +305,7 @@ index 49c4a52..a288507 100644
  "Kill" process: sends a signal which is selected in a menu, to one or a group
  of processes. If processes were tagged, sends the signal to all tagged processes.
  If none is tagged, sends to the currently selected process.
-@@ -212,7 +215,7 @@ Quit
+@@ -219,7 +221,7 @@ Quit
  Invert the sort order: if sort order is increasing, switch to decreasing, and
  vice-versa.
  .TP
