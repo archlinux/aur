@@ -1,20 +1,19 @@
 # Maintainer: Ben Westover <kwestover.kw@gmail.com>
 
 pkgname='chia-git'
-pkgver=1.2.11.r127.gaf0d6385b
+pkgver=1.3.4.r93.g6fe711673
 pkgrel=1
 pkgdesc="A new blockchain and smart transaction platform that is easier to use, more efficient, and secure."
 arch=('x86_64' 'aarch64')
 url="https://www.chia.net/"
 license=('Apache')
 install=chia-git.install
-depends=('python39' # https://github.com/Chia-Network/chia-blockchain/issues/8807
-         'git')
-conflicts=('chia')
-provides=('chia')
+depends=('python' 'git')
+conflicts=('chia' 'chia-cli')
+provides=('chia' 'chia-cli')
 options=('!strip')
 source=("git+https://github.com/Chia-Network/chia-blockchain.git"
-        "git+https://github.com/Chia-Network/mozilla-ca#commit=b1b808ab930004fc6b4afc4b248dee0a136f3f00")
+        "git+https://github.com/Chia-Network/mozilla-ca.git")
 sha256sums=('SKIP'
             'SKIP')
 
@@ -31,7 +30,7 @@ prepare() {
 
 build() {
 	cd chia-blockchain 
-	python3.9 -m venv venv
+	python -m venv venv
 	ln -s venv/bin/activate .
 	source activate
 	pip install --upgrade pip
