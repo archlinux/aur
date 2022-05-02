@@ -2,7 +2,7 @@ pkgbase = privacy-protection-messenger_imper
 	pkgdesc = Secure messenger backend
 	pkgver = 1.2
 	pkgrel = 3
-	url = https://github.com/imperzer0/privacy-protection-messenger_imper
+	url = https://github.com/imperzer0/privacy-protection-messenger
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake>=3.0
@@ -16,12 +16,12 @@ pkgbase = privacy-protection-messenger_imper
 	depends = iptables-nft
 	depends = themispp>=0.14.1
 	depends = mariadb
-	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger_imper/imper/CMakeLists.txt
-	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger_imper/imper/main.cpp
-	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger_imper/imper/color.hpp
-	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger_imper/imper/messenger.hpp
-	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger_imper/imper/constants.hpp
-	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger_imper/imper/privacy-protection-messenger_imper.service
+	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger/imper/CMakeLists.txt
+	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger/imper/main.cpp
+	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger/imper/color.hpp
+	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger/imper/messenger.hpp
+	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger/imper/constants.hpp
+	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger/imper/privacy-protection-messenger.service
 	md5sums = a7abc0672242dedcd5e4f563456e7dbc
 	md5sums = a2dba69f4367abe24cd54ba931c693bd
 	md5sums = 058646ab78672c97a2f18dffc1b56ebf
