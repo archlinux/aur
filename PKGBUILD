@@ -1,6 +1,6 @@
 # Maintainer: Dominik Schwaiger <mail@dominik-schwaiger.ch>
 pkgname=darch-conf
-pkgver=2.2.0
+pkgver=2.3.0
 pkgrel=1
 epoch=0
 pkgdesc='Configuration files, scripts and packages for an Archcraft based system'
