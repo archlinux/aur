@@ -9,7 +9,7 @@ url="https://github.com/493msi/plutoengine"
 license=(MIT)
 arch=(x86_64)
 makedepends=(git jdk-openjdk)
-provides=(eam)
+provides=()
 source=("git+${url}.git"
         "git+https://github.com/493msi/libra.git")
 sha256sums=("SKIP"
