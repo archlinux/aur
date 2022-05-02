@@ -2,7 +2,7 @@
 
 pkgname=lib32-sdl12-compat
 pkgver=1.2.52
-pkgrel=2
+pkgrel=3
 pkgdesc='SDL 1.2 runtime compatibility library using SDL 2.0'
 arch=(x86_64)
 url=https://www.libsdl.org
@@ -20,7 +20,8 @@ build() {
   export CXX='g++ -m32'
   cmake -B build -S sdl12-compat-release-$pkgver \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_INSTALL_LIBDIR=lib32
+    -DCMAKE_INSTALL_LIBDIR=lib32 \
+    -DCMAKE_C_FLAGS="$CFLAGS -ffat-lto-objects"
   cmake --build build
 }
 
