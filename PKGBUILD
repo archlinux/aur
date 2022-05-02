@@ -15,4 +15,6 @@ sha512sums=('d8e43dde4d6334f8892c0a5ed6d18269b4b42bd7fa8074d8b811c2e912e367d6164
 package() {
   mkdir -p "${pkgdir}/opt/lf"
   cp -r "${srcdir}/epoch" "${pkgdir}/opt/lf"
+  mkdir -p "${pkgdir}/usr/bin"
+  ln -s "${pkgdir}/opt/lf/epoch/epoch" "${pkgdir}/usr/bin/epoch"
 }
