@@ -1,0 +1,16 @@
+pkgbase = deadshot
+	pkgdesc = terminal based trading bot
+	pkgver = 0.0.6
+	pkgrel = 1
+	url = https://github.com/jon4hz/deadshot
+	arch = aarch64
+	arch = armv7h
+	arch = i686
+	arch = x86_64
+	license = MIT
+	makedepends = go
+	depends = glibc
+	source = deadshot-0.0.6.tar.gz::https://github.com/jon4hz/deadshot/archive/v0.0.6.tar.gz
+	sha256sums = 2cb0e0111fa2d9ba8eb29cc7617f9beff48657f0f3a949622f49de4c07baa79f
+
+pkgname = deadshot
