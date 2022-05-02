@@ -16,10 +16,11 @@ source=('git+https://gitlab.freedesktop.org/mateosss/basalt.git#branch=xrtslam'
 	'disable-werror.patch'
 	'279c17d9c9eb9374c89489b449f92cb93350e8cd.patch')
 sha256sums=('SKIP'
-			'7f85404aec5ec73f5dca2cbf68fd05f1578d3036f0e6f05b60af539e304cc600'
-			'e83d1f4243d319d0d3acbcfaa501b5b6b97109204194e26f55a6a17df4f9ee07'
-			'04d4185309a72be30f508a9961c54b5cf69da323f54ea754482a79a999914b4c')
-# options=(debug '!strip')
+            '7f85404aec5ec73f5dca2cbf68fd05f1578d3036f0e6f05b60af539e304cc600'
+            'e83d1f4243d319d0d3acbcfaa501b5b6b97109204194e26f55a6a17df4f9ee07'
+            '04d4185309a72be30f508a9961c54b5cf69da323f54ea754482a79a999914b4c')
+#options=('debug' '!strip')
+options=('!strip')
 
 pkgver() {
 cd "$_pkgname"
@@ -50,12 +51,12 @@ build() {
 
 	cmake \
 		-DCMAKE_INSTALL_PREFIX="/usr" \
-		-DCMAKE_BUILD_TYPE="Release" \
+		-DCMAKE_BUILD_TYPE="RelWithDebInfo" \
 		-Bbuild \
 		-GNinja
 
 	msg "Building the project"
-	ninja -C build
+	ninja -C build -j12 # only increase if you have a lot of ram
 }
 
 package() {
@@ -69,4 +70,7 @@ package() {
 	do
 		sed -i "s#/home/mateo/Documents/apps/bsltdeps/basalt/data/#/usr/etc/basalt/#" "$i"
 	done
+
+	mkdir -p "$pkgdir"/usr/share/basalt/thirdparty/basalt-headers/thirdparty
+	cp -Ra "$srcdir"/basalt/thirdparty/basalt-headers/thirdparty/eigen "$pkgdir"/usr/share/basalt/thirdparty
 }

@@ -23,6 +23,7 @@ pkgbase = basalt-monado-git
 	depends = fmt
 	depends = python
 	optdepends = librealsense: Intel realsense support
+	options = !strip
 	source = git+https://gitlab.freedesktop.org/mateosss/basalt.git#branch=xrtslam
 	source = fix_basalt_passed_cxx_flags.patch
 	source = disable-werror.patch
