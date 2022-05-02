@@ -7,7 +7,6 @@ pkgbase = jsrclone-git
 	license = MIT
 	makedepends = git
 	makedepends = jdk-openjdk
-	provides = eam
 	source = git+https://github.com/493msi/plutoengine.git
 	source = git+https://github.com/493msi/libra.git
 	sha256sums = SKIP
