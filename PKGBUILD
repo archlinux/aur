@@ -2,7 +2,7 @@
 
 pkgname=lib32-sdl12-compat
 pkgver=1.2.52
-pkgrel=1
+pkgrel=2
 pkgdesc='SDL 1.2 runtime compatibility library using SDL 2.0'
 arch=(x86_64)
 url=https://www.libsdl.org
@@ -10,7 +10,7 @@ license=(MIT)
 depends=(lib32-glu lib32-sdl2 sdl12-compat)
 makedepends=(cmake)
 conflicts=(lib32-sdl)
-provides=(lib32-sdl)
+provides=(lib32-sdl=1.2.15)
 replaces=('lib32-sdl<=1.2.15-8')
 source=($pkgname-$pkgver.tar.gz::https://github.com/libsdl-org/sdl12-compat/archive/refs/tags/release-$pkgver.tar.gz)
 sha256sums=('5bd7942703575554670a8767ae030f7921a0ac3c5e2fd173a537b7c7a8599014')
