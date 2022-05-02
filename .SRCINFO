@@ -1,26 +1,36 @@
 pkgbase = dav1d-git
-	pkgdesc = AV1 cross-platform Decoder, focused on speed and correctness
-	pkgver = 0.8.2.r22.gd432a39
-	pkgrel = 1
+	pkgdesc = AV1 cross-platform decoder focused on speed and correctness
+	pkgver = 1.0.0.r12.gffb5968
+	pkgrel = 2
 	url = https://code.videolan.org/videolan/dav1d
 	arch = x86_64
 	arch = armv7h
 	arch = aarch64
 	license = BSD
+	makedepends = git
 	makedepends = meson
 	makedepends = ninja
-	makedepends = git
 	makedepends = nasm
+	makedepends = doxygen
+	makedepends = graphviz
 	makedepends = xxhash
 	makedepends = sdl2
 	makedepends = vulkan-headers
 	makedepends = libplacebo
-	optdepends = sdl2: for the dav1dplay example
-	optdepends = libplacebo: for the dav1dplay example
-	provides = dav1d
-	provides = libdav1d.so
-	conflicts = dav1d
 	source = git+https://code.videolan.org/videolan/dav1d.git
 	sha256sums = SKIP
 
 pkgname = dav1d-git
+	depends = glibc
+	optdepends = dav1d-doc-git: HTML documentation
+	optdepends = libplacebo: for the dav1dplay example
+	optdepends = sdl2: for the dav1dplay example
+	provides = dav1d=1.0.0.r12.gffb5968
+	provides = libdav1d.so
+	conflicts = dav1d
+
+pkgname = dav1d-doc-git
+	pkgdesc = AV1 cross-platform decoder focused on speed and correctness (documentation)
+	arch = any
+	provides = dav1d-doc
+	conflicts = dav1d-doc
