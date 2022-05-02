@@ -1,0 +1,10 @@
+pkgbase = arch-btw
+	pkgdesc = arch-btw - A package to make you neofetch say "Arch BTW".
+	pkgver = 0.1.0
+	pkgrel = 1
+	arch = any
+	license = GPL
+	provides = lsb-release
+	conflicts = lsb-release
+
+pkgname = arch-btw
