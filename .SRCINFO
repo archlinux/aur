@@ -1,0 +1,23 @@
+pkgbase = python-pyglet-git
+	pkgdesc = A cross-platform windowing and multimedia library for Python
+	pkgver = r5378.65b862d3
+	pkgrel = 1
+	url = https://github.com/pyglet/pyglet
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = git
+	depends = python
+	depends = glu
+	depends = python-future
+	optdepends = ffmpeg: provides audio&video support
+	optdepends = openal: live audio
+	provides = python-pyglet
+	conflicts = python-pyglet
+	source = git+https://github.com/pyglet/pyglet.git
+	md5sums = SKIP
+
+pkgname = python-pyglet-git
+	depends = python
+	depends = glu
+	depends = python-future
