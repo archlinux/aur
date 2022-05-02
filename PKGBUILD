@@ -3,31 +3,24 @@
 pkgname='eruption-git'
 _pkgname='eruption'
 pkgdesc='Linux user-mode input and LED driver for keyboards, mice and other devices'
-pkgver=0.1.22.r324.g630aafc
-pkgrel=1
-epoch=
+pkgver='0.1.23'
+pkgrel='0'
 arch=('i686' 'x86_64')
 url='https://github.com/X3n0m0rph59/eruption'
 license=('GPL3+')
-groups=()
 depends=('libevdev' 'hidapi' 'systemd-libs' 'dbus' 'libpulse' 'lua' 'lua-socket' 'gtksourceview4')
 makedepends=('git' 'rust' 'pkgconf' 'xorg-server-devel' 'libxrandr' 'gtk3')
-checkdepends=()
-optdepends=()
 provides=('eruption')
-conflicts=('eruption-roccat-vulcan' 'eruption-roccat-vulcan-git')
+conflicts=('eruption' 'eruption-roccat-vulcan')
 replaces=('eruption-roccat-vulcan-git')
-backup=(etc/eruption/eruption.conf usr/share/eruption/scripts/lib/themes/* usr/share/eruption/scripts/lib/macros/*)
-options=()
+backup=(etc/eruption/eruption.conf etc/eruption/process-monitor.conf etc/eruption/audio-proxy.conf)
 install='eruption.install'
-changelog=
-source=('eruption::git+https://github.com/X3n0m0rph59/eruption.git#commit=630aafc42df1680452ad64635e9375d1092766f5')
-noextract=()
+source=('eruption::git+https://github.com/X3n0m0rph59/eruption.git')
 sha512sums=('SKIP')
 
 pkgver() {
   cd "$_pkgname"
-  git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
@@ -42,8 +35,6 @@ package() {
     mkdir -p "$pkgdir/usr/bin"
     mkdir -p "$pkgdir/etc/eruption"
     mkdir -p "$pkgdir/usr/share/doc/eruption"
-    mkdir -p "$pkgdir/usr/share/eruption/scripts"
-    mkdir -p "$pkgdir/usr/share/eruption/scripts/lib"
     mkdir -p "$pkgdir/usr/share/eruption/scripts/lib/macros"
     mkdir -p "$pkgdir/usr/share/eruption/scripts/lib/themes"
     mkdir -p "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/keyboards"
@@ -287,7 +278,9 @@ package() {
     install -m 644 "eruption/src/scripts/lib/hwdevices/keyboards/corsair_strafe.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/keyboards/"
     install -m 644 "eruption/src/scripts/lib/hwdevices/mice/generic_mouse.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/mice/"
     install -m 644 "eruption/src/scripts/lib/hwdevices/mice/roccat_kone_aimo.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/mice/"
+    install -m 644 "eruption/src/scripts/lib/hwdevices/mice/roccat_kain_100.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/mice/"
     install -m 644 "eruption/src/scripts/lib/hwdevices/mice/roccat_kain_2xx.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/mice/"
+    install -m 644 "eruption/src/scripts/lib/hwdevices/mice/roccat_kone_xp.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/mice/"
     install -m 644 "eruption/src/scripts/lib/hwdevices/mice/roccat_kone_xtd.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/mice/"
     install -m 644 "eruption/src/scripts/lib/hwdevices/mice/roccat_burst_pro.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/mice/"
     install -m 644 "eruption/src/scripts/lib/hwdevices/mice/roccat_kone_aimo_remastered.lua" "$pkgdir/usr/share/eruption/scripts/lib/hwdevices/mice/"

@@ -1,7 +1,7 @@
 pkgbase = eruption-git
 	pkgdesc = Linux user-mode input and LED driver for keyboards, mice and other devices
-	pkgver = 0.1.22.r324.g630aafc
-	pkgrel = 1
+	pkgver = 0.1.23
+	pkgrel = 0
 	url = https://github.com/X3n0m0rph59/eruption
 	install = eruption.install
 	arch = i686
@@ -22,13 +22,13 @@ pkgbase = eruption-git
 	depends = lua-socket
 	depends = gtksourceview4
 	provides = eruption
+	conflicts = eruption
 	conflicts = eruption-roccat-vulcan
-	conflicts = eruption-roccat-vulcan-git
 	replaces = eruption-roccat-vulcan-git
 	backup = etc/eruption/eruption.conf
-	backup = usr/share/eruption/scripts/lib/themes/*
-	backup = usr/share/eruption/scripts/lib/macros/*
-	source = eruption::git+https://github.com/X3n0m0rph59/eruption.git#commit=630aafc42df1680452ad64635e9375d1092766f5
+	backup = etc/eruption/process-monitor.conf
+	backup = etc/eruption/audio-proxy.conf
+	source = eruption::git+https://github.com/X3n0m0rph59/eruption.git
 	sha512sums = SKIP
 
 pkgname = eruption-git
