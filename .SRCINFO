@@ -1,6 +1,6 @@
 pkgbase = darch-conf
 	pkgdesc = Configuration files, scripts and packages for an Archcraft based system
-	pkgver = 2.0.0
+	pkgver = 2.1.0
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/quiode/DARCH
@@ -63,7 +63,7 @@ pkgbase = darch-conf
 	depends = spotifyd
 	depends = github-desktop
 	depends = teams
-	depends = joplin-desktop-bin
+	depends = joplin-appimage
 	depends = drawio-desktop
 	depends = muon-ssh
 	depends = write_stylus
