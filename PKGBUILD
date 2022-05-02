@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('ncurses' 'libconfig')
 makedepends=('autoconf' 'automake' 'libconfig' 'acl')
 source=(https://github.com/roberthawdon/dfshow/archive/v${pkgver}${_pkgversub}.tar.gz)
-sha1sums=('85c897a08b9715a761e0af3ea2a752104bc17bdd')
+sha1sums=('0a74301f21636e6e554369d69d69a03b0763a68a')
 options=('!buildflags' '!makeflags')
 
 build() {
