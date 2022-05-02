@@ -1,7 +1,7 @@
 pkgbase = synapse-compress-state
 	pkgdesc = A tool to compress some state in a Synapse instance's database
-	pkgver = 0.1.0
-	pkgrel = 2
+	pkgver = 0.1.2
+	pkgrel = 1
 	url = https://github.com/matrix-org/rust-synapse-compress-state
 	arch = x86_64
 	arch = armv6h
@@ -9,8 +9,8 @@ pkgbase = synapse-compress-state
 	arch = aarch64
 	license = Apache
 	makedepends = rust
-	source = synapse-compress-state-0.1.0::https://github.com/matrix-org/rust-synapse-compress-state/archive/v0.1.0.tar.gz
-	sha256sums = ac57d264a99157174cfb6564cb12ef9453229ec5771e57cd990f3eb78efdb1b1
+	makedepends = python
+	source = synapse-compress-state-0.1.2::https://github.com/matrix-org/rust-synapse-compress-state/archive/v0.1.2.tar.gz
+	sha256sums = e8cd1933545fc4d97e5f68d7da242fba53ab642869937e4fb65f4ba39ddc8fab
 
 pkgname = synapse-compress-state
-
