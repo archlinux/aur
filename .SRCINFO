@@ -1,0 +1,26 @@
+pkgbase = bazel4
+	pkgdesc = Correct, reproducible, and fast builds for everyone
+	pkgver = 4.2.2
+	pkgrel = 1
+	url = https://bazel.build/
+	arch = x86_64
+	license = Apache
+	makedepends = gcc10
+	makedepends = git
+	makedepends = protobuf
+	makedepends = python
+	depends = java-environment=11
+	depends = libarchive
+	depends = zip
+	depends = unzip
+	provides = bazel-4.2.2
+	conflicts = bazel
+	options = !distcc
+	options = !strip
+	source = https://github.com/bazelbuild/bazel/releases/download/4.2.2/bazel-4.2.2-dist.zip
+	source = https://github.com/bazelbuild/bazel/releases/download/4.2.2/bazel-4.2.2-dist.zip.sig
+	validpgpkeys = 71A1D0EFCFEB6281FD0437C93D5919B448457EE0
+	sha512sums = 123f73dc87053e37705bb729f82bd722d6d2799fe106f79c51cf5566fb2771d824108cbe275aad55ae590b970c549008b433704cbf1245394769e950796eb8db
+	sha512sums = SKIP
+
+pkgname = bazel4
