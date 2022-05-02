@@ -4,10 +4,10 @@ pkgname=lfc-bin
 pkgver=0.2.0
 pkgrel=1
 pkgdesc="The Lingua Franca compiler"
-arch=('x86_64')
+arch=('any')
 url="https://lf-lang.org"
 license=('BSD')
-depends=('java-runtime=17')
+depends=('java-runtime=17' 'bash')
 source=("https://github.com/lf-lang/lingua-franca/releases/download/v${pkgver}/lfc_${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/lf-lang/lingua-franca/v${pkgver}/LICENSE")
 sha512sums=('d28d7b901204d32f564399b1b633c73fc4816ee5eaea099bea643cb4662b5d9e319773f123a8fa04a48c8026d56b5a369e8659b693817bcdaa037d8b1b5e8751'
