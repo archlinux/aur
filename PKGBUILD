@@ -35,7 +35,7 @@ build() {
 	cd WHY2/
 
 	chmod +x build.sh
-	./build.sh install
+	sudo ./build.sh install
 }
 
 package() {
