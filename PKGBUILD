@@ -1,7 +1,7 @@
 # Mainained by imper <imperator999mcpe@gmail.com>
 pkgname="privacy-protection-messenger"
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Secure messenger backend"
 author="imperzer0"
 branch="master"
@@ -21,17 +21,18 @@ install=
 changelog=
 
 _srcprefix="https://raw.githubusercontent.com/$author/$pkgname/$branch"
-_libfiles=("CMakeLists.txt" "main.cpp" "color.hpp" "network.hpp" "$pkgname.service")
+_libfiles=("CMakeLists.txt" "main.cpp" "color.hpp" "messenger.hpp" "constants.hpp" "$pkgname.service")
 
 for _libfile in ${_libfiles[@]}
 {
     source=(${source[@]} "$_srcprefix/$_libfile")
 }
 
-md5sums=('22e1b421db28f59f6827e4179ab39541'
-         'a3b00d0b47d875eb4c00c1468cd36fd2'
+md5sums=('a7abc0672242dedcd5e4f563456e7dbc'
+         'a2dba69f4367abe24cd54ba931c693bd'
          '058646ab78672c97a2f18dffc1b56ebf'
-         '4b700bff185758024c5aeb0054b0e010'
+         '5870cc285cd690761cd23c994737fa54'
+         'd17f4a822e966a71ea10bac39429811d'
          'cc8e63452b809611b046e7f27934c12e')
 
 _package_version=$pkgname" ("$pkgver"-"$pkgrel")"

@@ -1,7 +1,7 @@
 pkgbase = privacy-protection-messenger
 	pkgdesc = Secure messenger backend
 	pkgver = 1.2
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/imperzer0/privacy-protection-messenger
 	arch = x86_64
 	license = GPL3
@@ -19,12 +19,14 @@ pkgbase = privacy-protection-messenger
 	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger/master/CMakeLists.txt
 	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger/master/main.cpp
 	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger/master/color.hpp
-	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger/master/network.hpp
+	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger/master/messenger.hpp
+	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger/master/constants.hpp
 	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger/master/privacy-protection-messenger.service
-	md5sums = 22e1b421db28f59f6827e4179ab39541
-	md5sums = a3b00d0b47d875eb4c00c1468cd36fd2
+	md5sums = a7abc0672242dedcd5e4f563456e7dbc
+	md5sums = a2dba69f4367abe24cd54ba931c693bd
 	md5sums = 058646ab78672c97a2f18dffc1b56ebf
-	md5sums = 4b700bff185758024c5aeb0054b0e010
+	md5sums = 5870cc285cd690761cd23c994737fa54
+	md5sums = d17f4a822e966a71ea10bac39429811d
 	md5sums = cc8e63452b809611b046e7f27934c12e
 
 pkgname = privacy-protection-messenger
