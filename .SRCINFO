@@ -1,6 +1,6 @@
 pkgbase = darktile-git
 	pkgdesc = A GPU-rendered terminal emulator designed for tiling window managers
-	pkgver = 0.0.10.r0.g41f8406
+	pkgver = 0.0.10.r3.g62453da
 	pkgrel = 1
 	url = https://github.com/liamg/darktile
 	arch = x86_64

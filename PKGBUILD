@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=darktile-git
-pkgver=0.0.10.r0.g41f8406
+pkgver=0.0.10.r3.g62453da
 pkgrel=1
 pkgdesc="A GPU-rendered terminal emulator designed for tiling window managers"
 arch=('x86_64')
@@ -28,7 +28,7 @@ build() {
 	export CGO_CFLAGS="${CFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+	export GOFLAGS="-buildmode=pie -trimpath -modcacherw -ldflags=-linkmode=external -mod=readonly -modcacherw"
 
 	cd "$pkgname"
 	go build -o build -ldflags="-linkmode=external -X github.com/liamg/darktile/internal/app/darktile/version.Version=$pkgver" ./cmd/darktile

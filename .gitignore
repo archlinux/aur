@@ -1,0 +1,5 @@
+src
+pkg
+darktile-git
+*.pkg.tar.*
+tags
