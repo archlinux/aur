@@ -1,6 +1,6 @@
 pkgbase = gomplate-git
 	pkgdesc = A flexible commandline tool for template rendering.
-	pkgver = v3.10.0.r4.gd57887e6
+	pkgver = v3.10.0.r161.gdf96eb38
 	pkgrel = 1
 	url = https://gomplate.hairyhenderson.ca/
 	arch = i686
