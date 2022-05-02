@@ -10,7 +10,7 @@ depends=('wireguard-tools')
 makedepends=('go')
 
 source=("${pkgver}.tar.zst::${url}/releases/download/v${pkgver}/netclient-${pkgver}-1-x86_64.pkg.tar.zst")
-sha256sums=('fec8e6100c1b0ec0326aab71afb184fe8aa980f59d517fc91c6be868c2140fec')
+sha256sums=('243b7b1fd25a4ae1f03ee19a560f68b4685f35fd9bb3a68ffaba7cfe49bac23f')
 
 
 package() {
