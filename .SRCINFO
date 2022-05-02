@@ -24,7 +24,7 @@ pkgbase = python-hyperspy
 	depends = python-jinja
 	depends = python-packaging
 	depends = python-dateutil>=2.5.0
-	depends = python-ipython>=8.1.0
+	depends = ipython>=8.1.0
 	depends = python-dask>2.1.0
 	depends = python-pint>=0.10
 	depends = python-numexpr
