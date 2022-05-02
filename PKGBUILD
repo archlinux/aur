@@ -4,7 +4,7 @@
 
 pkgname=dosbox-binutils
 pkgver=2.35
-pkgrel=1
+pkgrel=2
 pkgdesc="binutils for the djgpp dosbox cross-compiler"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/binutils"
@@ -16,7 +16,6 @@ source=("http://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz"
       	"binutils-bfd-djgpp.patch"
 	      "binutils-djgpp.patch")
 sha256sums=('SKIP'
-            'SKIP'
             'SKIP'
             'SKIP')
 _target="i586-pc-msdosdjgpp"
