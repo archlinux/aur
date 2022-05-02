@@ -1,12 +1,13 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=zafiro-icon-theme-git
-pkgver=1.2.r1.g167d614
+pkgver=1.2.r37.gf60cede
 pkgrel=1
 pkgdesc="Icon pack flat with light colors"
 arch=('any')
 url="https://github.com/zayronxio/Zafiro-icons"
 license=('GPL3')
+options=(!strip)
 makedepends=('git')
 conflicts=('zafiro-icon-theme')
 provides=('zafiro-icon-theme')
@@ -22,11 +23,13 @@ pkgver() {
 package() {
 	cd "${srcdir}/${pkgname}"
 
-	install -dm 755 "${pkgdir}/usr/share/icons"
+	msg "Checking filenames for any non-ascii characters..."
+	while read file; do
+		msg2 "$(mv -vf "$file" "$(tr -cd '\000-\177' <<<$file)")"
+	done < <( find . -type f | grep -P "[^\x00-\x7F|\x80-\xFF]" )
+
+	install -dm755 "${pkgdir}/usr/share/icons/Zafiro"
+	cp -a * "${pkgdir}/usr/share/icons/Zafiro"
+
 	install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-
-	cp -a "${srcdir}/${pkgname}" "${pkgdir}/usr/share/icons/Zafiro"
-
-    # fix icon cache rebuilding
-    find -L "${pkgdir}/usr/share/icons/Zafiro" -type f -name "* *" -delete
 }
