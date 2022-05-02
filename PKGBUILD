@@ -1,6 +1,6 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 pkgname=aws-c-common-git
-pkgver=v0.6.11.r4.g73067c19
+pkgver=v0.7.0.r0.g9b2a8b75
 pkgrel=1
 pkgdesc="AWS SDK for C++"
 arch=(x86_64)
