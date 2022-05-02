@@ -2,7 +2,7 @@
 #  by the DJGPP ports of binutils and gdb.
 
 
-2020-03-01  Juan Manuel Guerrero  <juan.guerrero@gmx.de>
+2020-12-18  Juan Manuel Guerrero  <juan.guerrero@gmx.de>
 
 	* bfd/bfd-in.h [__DJGPP__]:  Provide the declaration of
 	coff_64k_relocation_enabled.
@@ -11,34 +11,8 @@
 	to check for the amount of files that can be opened.  Use a fixed value
 	of 16.
 
-	* bfd/coff-go32.c: Define COFF_GO32 macro.
-	Add _bfd_go32_mkobject prototype.
-	Define coff_mkobject macro to _bfd_go32_mkobject.
-	Define IMAGE_SCN_LNK_NRELOC_OVFL.  Signals that relocation counter
-	has overflown.
-
-	* bfd/coff-stgo32.c: Add _bfd_go32_mkobject prototype.
-	Define coff_mkobject macro to _bfd_go32_mkobject.
-	Add _bfd_go32_mkobject definition.
-	Define IMAGE_SCN_LNK_NRELOC_OVFL.  Signals that relocation counter
-	has overflown.
-	(_bfd_go32_mkobject):  Set go32 flag to 1 or 0 according to the value
-	of coff_64k_relocation_enabled.
-
-	* bfd/coffcode.h [COFF_GO32_EXE, COFF_GO32, COFF_WITH_PE]: Define new
-	macro COFF_WITH_PE_OR_COFF_WITH_EXTENDED_RELOC_COUNTER.
-	(coff_write_relocs, coff_write_object_contents): Replace COFF_WITH_PE
-	with COFF_WITH_PE_OR_COFF_WITH_EXTENDED_RELOC_COUNTER where appropriate
-	and add obj_go32 to the check if relocation counter >= 0xFFFF.
-	(coff_set_alignment_hook): Implementation for DJGPP.
-	[COFF_GO32_EXE, COFF_GO32]:  Define COFF_PAD_SECTION_HEADERS.
-	Taken from bnu219s2.zip.
-	(coff_set_alignment_hook) [COFF_GO32_EXE, COFF_GO32]: Use
-	coff_64k_relocation_enabled where appropriate to enable/disable the
-	coff 64k relocation support.
-
-	* bfd/cofflink.c (_bfd_coff_final_link): If it is an obj_go32 allow
-	relocations larger than 65535.
+	* bfd/coffcode.h (coff_set_alignment_hook): Use coff_64k_relocation_enabled
+	where appropriate to enable/disable the coff 64k relocation support.
 
 	* bfd/coffswap.h (coff_swap_scnhdr_in) [COFF_GO32_EXE, COFF_GO32]:
 	Iff reading an executable file and iff it is the ".text" section
@@ -66,9 +40,6 @@
 	* bfd/init.c [__DJGPP__]:  Define coff_64k_relocation_enabled.
 	(bfd_init):  Read the environment variable DISABLE_64K_RELOC_SUPPORT
 	to set the value of coff_64k_relocation_enabled.
-
-	* bfd/libcoff-in.h: Define obj_go32 macro.
-	Add go32 flag to struct coff_tdata.  1 if DJGPP else 0.
 
 	* bfd/Makefile.in:  Force the regenaration of bfd-in2.h to provide the
 	declaration of coff_64k_relocation_enabled.  Force the regenaration of
@@ -133,9 +104,9 @@
 
 
 
-diff -aprNU5 binutils-2.34.orig/bfd/bfd-in.h binutils-2.34/bfd/bfd-in.h
---- binutils-2.34.orig/bfd/bfd-in.h	2020-01-18 13:55:46 +0000
-+++ binutils-2.34/bfd/bfd-in.h	2020-03-01 19:17:02 +0000
+diff -aprNU5 binutils-2.35.1.orig/bfd/bfd-in.h binutils-2.35.1/bfd/bfd-in.h
+--- binutils-2.35.1.orig/bfd/bfd-in.h	2016-07-22 23:34:12 +0000
++++ binutils-2.35.1/bfd/bfd-in.h	2020-12-18 16:24:46 +0000
 @@ -562,5 +562,11 @@ extern bfd *bfd_elf_bfd_from_remote_memo
  struct ecoff_debug_info;
  struct ecoff_debug_swap;
@@ -148,9 +119,9 @@ diff -aprNU5 binutils-2.34.orig/bfd/bfd-in.h binutils-2.34/bfd/bfd-in.h
 +#if defined(__DJGPP__) || defined(COFF_GO32_EXE) || defined(COFF_GO32)
 +extern bfd_boolean coff_64k_relocation_enabled;
 +#endif
-diff -aprNU5 binutils-2.34.orig/bfd/cache.c binutils-2.34/bfd/cache.c
---- binutils-2.34.orig/bfd/cache.c	2020-01-18 13:55:46 +0000
-+++ binutils-2.34/bfd/cache.c	2020-03-01 19:10:00 +0000
+diff -aprNU5 binutils-2.35.1.orig/bfd/cache.c binutils-2.35.1/bfd/cache.c
+--- binutils-2.35.1.orig/bfd/cache.c	2016-07-22 23:34:12 +0000
++++ binutils-2.35.1/bfd/cache.c	2020-12-18 16:27:06 +0000
 @@ -75,11 +75,11 @@ static int
  bfd_cache_max_open (void)
  {
@@ -164,296 +135,70 @@ diff -aprNU5 binutils-2.34.orig/bfd/cache.c binutils-2.34/bfd/cache.c
  	 RLIMIT_NOFILE to a value that is not supported by libc, resulting
  	 in "Too many open files" errors.  This can happen here even though
  	 max_open_files is set to rlim.rlim_cur / 8.  For example, if
-diff -aprNU5 binutils-2.34.orig/bfd/coff-go32.c binutils-2.34/bfd/coff-go32.c
---- binutils-2.34.orig/bfd/coff-go32.c	2020-01-18 13:55:46 +0000
-+++ binutils-2.34/bfd/coff-go32.c	2020-03-01 19:10:00 +0000
-@@ -20,10 +20,11 @@
-    MA 02110-1301, USA.  */
+diff -aprNU5 binutils-2.35.1.orig/bfd/coffcode.h binutils-2.35.1/bfd/coffcode.h
+--- binutils-2.35.1.orig/bfd/coffcode.h	2016-07-22 23:34:12 +0000
++++ binutils-2.35.1/bfd/coffcode.h	2020-12-18 17:29:24 +0000
+@@ -1971,35 +1971,38 @@ coff_set_alignment_hook (bfd *abfd, asec
+ #if defined (COFF_GO32_EXE) || defined (COFF_GO32)
  
- #define TARGET_SYM		i386_coff_go32_vec
- #define TARGET_NAME		"coff-go32"
- #define TARGET_UNDERSCORE	'_'
-+#define COFF_GO32
- #define COFF_LONG_SECTION_NAMES
- #define COFF_SUPPORT_GNU_LINKONCE
- #define COFF_LONG_FILENAMES
- 
- #define COFF_SECTION_ALIGNMENT_ENTRIES \
-@@ -40,6 +41,16 @@
- { COFF_SECTION_NAME_PARTIAL_MATCH (".debug"), \
-   COFF_ALIGNMENT_FIELD_EMPTY, COFF_ALIGNMENT_FIELD_EMPTY, 0 }, \
- { COFF_SECTION_NAME_PARTIAL_MATCH (".gnu.linkonce.wi"), \
-   COFF_ALIGNMENT_FIELD_EMPTY, COFF_ALIGNMENT_FIELD_EMPTY, 0 }
- 
-+/* Section contains extended relocations. */
-+#define IMAGE_SCN_LNK_NRELOC_OVFL  0x01000000
-+
-+#include "sysdep.h"
-+#include "bfd.h"
-+
-+bfd_boolean _bfd_go32_mkobject (bfd *abfd);
-+
-+#define coff_mkobject  _bfd_go32_mkobject
-+
- #include "coff-i386.c"
-diff -aprNU5 binutils-2.34.orig/bfd/coff-stgo32.c binutils-2.34/bfd/coff-stgo32.c
---- binutils-2.34.orig/bfd/coff-stgo32.c	2020-01-18 13:55:46 +0000
-+++ binutils-2.34/bfd/coff-stgo32.c	2020-03-01 19:10:00 +0000
-@@ -51,10 +51,13 @@
- { COFF_SECTION_NAME_PARTIAL_MATCH (".debug"), \
-   COFF_ALIGNMENT_FIELD_EMPTY, COFF_ALIGNMENT_FIELD_EMPTY, 0 }, \
- { COFF_SECTION_NAME_PARTIAL_MATCH (".gnu.linkonce.wi"), \
-   COFF_ALIGNMENT_FIELD_EMPTY, COFF_ALIGNMENT_FIELD_EMPTY, 0 }
- 
-+/* Section contains extended relocations. */
-+#define IMAGE_SCN_LNK_NRELOC_OVFL  0x01000000
-+
- #include "sysdep.h"
- #include "bfd.h"
- 
- /* All that ..._PRE and ...POST functions are called from the corresponding
-    coff_swap... functions. The ...PRE functions are called at the beginning
-@@ -100,10 +103,14 @@ static const bfd_target *go32_check_form
- static bfd_boolean
-   go32_stubbed_coff_bfd_copy_private_bfd_data (bfd *, bfd *);
- 
- #define coff_bfd_copy_private_bfd_data go32_stubbed_coff_bfd_copy_private_bfd_data
- 
-+bfd_boolean _bfd_go32_mkobject (bfd *abfd);
-+
-+#define coff_mkobject  _bfd_go32_mkobject
-+
- #include "coff-i386.c"
- 
- /* This macro is used, because I cannot assume the endianness of the
-    host system.  */
- #define _H(index) (H_GET_16 (abfd, (header + index * 2)))
-@@ -420,5 +427,31 @@ go32_check_format (bfd *abfd)
-   if (bfd_seek (abfd, 0, SEEK_SET) != 0)
-     return NULL;
- 
-   return coff_object_p (abfd);
- }
-+
-+/*  This function is not static because it is used
-+    by both targets coff-go32 and coff-go32-exe.  */
-+
-+bfd_boolean
-+_bfd_go32_mkobject (bfd *abfd)
-+{
-+  coff_data_type *coff;
-+  bfd_size_type amt = sizeof (coff_data_type);
-+
-+  abfd->tdata.coff_obj_data = bfd_zalloc (abfd, amt);
-+  if (abfd->tdata.coff_obj_data == NULL)
-+    return FALSE;
-+  coff = coff_data (abfd);
-+  coff->symbols = NULL;
-+  coff->conversion_table = NULL;
-+  coff->raw_syments = NULL;
-+  coff->relocbase = 0;
-+  coff->local_toc_sym_map = 0;
-+
-+  /* Setting go32 does not only identify a go32 bfd
-+     but also that more than 64k relocations are supported.  */
-+  coff->go32 = coff_64k_relocation_enabled ? 1 : 0;
-+
-+  return TRUE;
-+}
-diff -aprNU5 binutils-2.34.orig/bfd/coffcode.h binutils-2.34/bfd/coffcode.h
---- binutils-2.34.orig/bfd/coffcode.h	2020-01-18 13:55:46 +0000
-+++ binutils-2.34/bfd/coffcode.h	2020-03-01 19:10:00 +0000
-@@ -362,10 +362,14 @@ CODE_FRAGMENT
- #define DOT_ZDEBUG	".zdebug"
- #define GNU_LINKONCE_WI ".gnu.linkonce.wi."
- #define GNU_LINKONCE_WT ".gnu.linkonce.wt."
- #define DOT_RELOC	".reloc"
- 
-+#if defined(COFF_WITH_PE) || defined(COFF_GO32_EXE) || defined(COFF_GO32)
-+# define COFF_WITH_PE_OR_COFF_WITH_EXTENDED_RELOC_COUNTER
-+#endif
-+
- #if defined (COFF_LONG_SECTION_NAMES)
- /* Needed to expand the inputs to BLANKOR1TOODD.  */
- #define COFFLONGSECTIONCATHELPER(x,y)    x ## y
- /* If the input macro Y is blank or '1', return an odd number; if it is
-    '0', return an even number.  Result undefined in all other cases.  */
-@@ -1953,17 +1957,57 @@ coff_set_alignment_hook (bfd *abfd, asec
-     }
- }
- 
- #else /* ! RS6000COFF_C */
- 
-+#if defined (COFF_GO32_EXE) || defined (COFF_GO32)
-+
-+static void
-+coff_set_alignment_hook (bfd * abfd ATTRIBUTE_UNUSED,
-+			 asection * section,
-+			 void * scnhdr)
-+{
-+  if (coff_64k_relocation_enabled)
-+    {
-+      struct internal_scnhdr *hdr = (struct internal_scnhdr *) scnhdr;
-+
-+      /* Check for extended relocs.  */
-+      if (hdr->s_flags & IMAGE_SCN_LNK_NRELOC_OVFL)
-+        {
-+	  struct external_reloc dst;
-+	  struct internal_reloc n;
-+	  file_ptr oldpos = bfd_tell (abfd);
-+	  bfd_size_type relsz = bfd_coff_relsz (abfd);
-+
-+	  if (bfd_seek (abfd, (file_ptr) hdr->s_relptr, 0) != 0)
-+	    return;
-+	  if (bfd_bread (& dst, relsz, abfd) != relsz)
-+	    return;
-+
-+	  coff_swap_reloc_in (abfd, &dst, &n);
-+	  if (bfd_seek (abfd, oldpos, 0) != 0)
-+	    return;
-+	  section->reloc_count = hdr->s_nreloc = n.r_vaddr - 1;
-+	  section->rel_filepos += relsz;
-+        }
-+      else if (hdr->s_nreloc == 0xffff)
-+	(*_bfd_error_handler)
-+	  ("%s: warning: claims to have 0xffff relocs, without overflow",
-+	   bfd_get_filename (abfd));
-+    }
-+}
-+
-+#else /* ! COFF_GO32_EXE && ! COFF_GO32 */
-+
  static void
- coff_set_alignment_hook (bfd *abfd ATTRIBUTE_UNUSED,
- 			 asection *section ATTRIBUTE_UNUSED,
- 			 void *scnhdr ATTRIBUTE_UNUSED)
+ coff_set_alignment_hook (bfd * abfd, asection * section, void * scnhdr)
  {
- }
- 
-+#endif /* ! COFF_GO32_EXE && ! COFF_GO32 */
- #endif /* ! RS6000COFF_C */
- #endif /* ! COFF_WITH_PE */
- #endif /* ! COFF_ALIGN_IN_SECTION_HEADER */
- 
- #ifndef coff_mkobject
-@@ -2521,12 +2565,12 @@ coff_write_relocs (bfd * abfd, int first
- #endif
- 
-       if (bfd_seek (abfd, s->rel_filepos, SEEK_SET) != 0)
- 	return FALSE;
- 
--#ifdef COFF_WITH_PE
--      if (obj_pe (abfd) && s->reloc_count >= 0xffff)
-+#ifdef COFF_WITH_PE_OR_COFF_WITH_EXTENDED_RELOC_COUNTER
-+      if ((obj_pe (abfd) || obj_go32 (abfd)) && s->reloc_count >= 0xffff)
- 	{
- 	  /* Encode real count here as first reloc.  */
- 	  struct internal_reloc n;
- 
- 	  memset (& n, 0, sizeof (n));
-@@ -3337,10 +3381,14 @@ coff_apply_checksum (bfd *abfd)
-   return TRUE;
- }
- 
- #endif /* COFF_IMAGE_WITH_PE */
- 
-+#if defined (COFF_GO32_EXE) || defined (COFF_GO32)
-+# define COFF_PAD_SECTION_HEADERS
-+#endif
-+
- static bfd_boolean
- coff_write_object_contents (bfd * abfd)
- {
-   asection *current;
-   bfd_boolean hasrelocs = FALSE;
-@@ -3381,13 +3429,13 @@ coff_write_object_contents (bfd * abfd)
-   /* Work out the size of the reloc and linno areas.  */
- 
-   for (current = abfd->sections; current != NULL; current =
-        current->next)
+-  struct internal_scnhdr *hdr = (struct internal_scnhdr *) scnhdr;
+-
+-  /* Check for extended relocs.  */
+-  if (hdr->s_flags & IMAGE_SCN_LNK_NRELOC_OVFL)
++  if (coff_64k_relocation_enabled)
      {
--#ifdef COFF_WITH_PE
-+#ifdef COFF_WITH_PE_OR_COFF_WITH_EXTENDED_RELOC_COUNTER
-       /* We store the actual reloc count in the first reloc's addr.  */
--      if (obj_pe (abfd) && current->reloc_count >= 0xffff)
-+      if ((obj_pe (abfd) || obj_go32 (abfd)) && current->reloc_count >= 0xffff)
- 	reloc_count ++;
- #endif
-       reloc_count += current->reloc_count;
-     }
- 
-@@ -3411,13 +3459,13 @@ coff_write_object_contents (bfd * abfd)
- 
-       if (current->reloc_count)
- 	{
- 	  current->rel_filepos = reloc_base;
- 	  reloc_base += current->reloc_count * bfd_coff_relsz (abfd);
--#ifdef COFF_WITH_PE
-+#ifdef COFF_WITH_PE_OR_COFF_WITH_EXTENDED_RELOC_COUNTER
- 	  /* Extra reloc to hold real count.  */
--	  if (obj_pe (abfd) && current->reloc_count >= 0xffff)
-+	  if ((obj_pe (abfd) || obj_go32 (abfd)) && current->reloc_count >= 0xffff)
- 	    reloc_base += bfd_coff_relsz (abfd);
- #endif
- 	}
-       else
- 	current->rel_filepos = 0;
-@@ -3748,10 +3796,22 @@ coff_write_object_contents (bfd * abfd)
- 	}
-     }
- #endif
- #endif
- 
-+#ifdef COFF_PAD_SECTION_HEADERS
-+  if (abfd->flags & EXEC_P)
-+  {
-+    file_ptr cur_ptr = scn_base + abfd->section_count * bfd_coff_scnhsz(abfd);
-+    long fill_size = (abfd->sections->filepos - cur_ptr);
-+    bfd_byte *b = bfd_zmalloc(fill_size);
-+    if (b)
-+      bfd_bwrite ((PTR)b, fill_size, abfd);
-+    free (b);
-+  }
-+#endif
+-      struct external_reloc dst;
+-      struct internal_reloc n;
+-      const file_ptr oldpos = bfd_tell (abfd);
+-      const bfd_size_type relsz = bfd_coff_relsz (abfd);
++        struct internal_scnhdr *hdr = (struct internal_scnhdr *) scnhdr;
 +
-   /* OK, now set up the filehdr...  */
++        /* Check for extended relocs.  */
++        if (hdr->s_flags & IMAGE_SCN_LNK_NRELOC_OVFL)
++          {
++            struct external_reloc dst;
++            struct internal_reloc n;
++            const file_ptr oldpos = bfd_tell (abfd);
++            const bfd_size_type relsz = bfd_coff_relsz (abfd);
  
-   /* Don't include the internal abs section in the section count */
+-      if (bfd_seek (abfd, (file_ptr) hdr->s_relptr, 0) != 0)
++            if (bfd_seek (abfd, (file_ptr) hdr->s_relptr, 0) != 0)
+ 	return;
+-      if (bfd_bread (& dst, relsz, abfd) != relsz)
++            if (bfd_bread (& dst, relsz, abfd) != relsz)
+ 	return;
  
-   /* We will NOT put a fucking timestamp in the header here. Every time you
-diff -aprNU5 binutils-2.34.orig/bfd/cofflink.c binutils-2.34/bfd/cofflink.c
---- binutils-2.34.orig/bfd/cofflink.c	2020-01-18 13:55:46 +0000
-+++ binutils-2.34/bfd/cofflink.c	2020-03-01 19:10:00 +0000
-@@ -687,11 +687,11 @@ _bfd_coff_final_link (bfd *abfd,
- 	  o->flags |= SEC_RELOC;
- 	  o->rel_filepos = rel_filepos;
- 	  rel_filepos += o->reloc_count * relsz;
- 	  /* In PE COFF, if there are at least 0xffff relocations an
- 	     extra relocation will be written out to encode the count.  */
--	  if (obj_pe (abfd) && o->reloc_count >= 0xffff)
-+	  if ((obj_pe (abfd) || obj_go32 (abfd)) && o->reloc_count >= 0xffff)
- 	    rel_filepos += relsz;
- 	}
+-      coff_swap_reloc_in (abfd, &dst, &n);
+-      if (bfd_seek (abfd, oldpos, 0) != 0)
++            coff_swap_reloc_in (abfd, &dst, &n);
++            if (bfd_seek (abfd, oldpos, 0) != 0)
+ 	return;
+-      section->reloc_count = hdr->s_nreloc = n.r_vaddr - 1;
+-      section->rel_filepos += relsz;
++            section->reloc_count = hdr->s_nreloc = n.r_vaddr - 1;
++            section->rel_filepos += relsz;
++          }
++        else if (hdr->s_nreloc == 0xffff)
++          _bfd_error_handler
++            (_("%pB: warning: claims to have 0xffff relocs, without overflow"),
++             abfd);
+     }
+-  else if (hdr->s_nreloc == 0xffff)
+-    _bfd_error_handler
+-      (_("%pB: warning: claims to have 0xffff relocs, without overflow"),
+-       abfd);
+ }
  
-       if (bfd_coff_long_section_names (abfd)
- 	  && strlen (o->name) > SCNNMLEN)
-@@ -1106,11 +1106,11 @@ _bfd_coff_final_link (bfd *abfd,
- 	      bfd_coff_swap_reloc_out (abfd, irel, erel);
- 	    }
+ #else /* ! COFF_GO32_EXE && ! COFF_GO32 */
  
- 	  if (bfd_seek (abfd, o->rel_filepos, SEEK_SET) != 0)
- 	    goto error_return;
--	  if (obj_pe (abfd) && o->reloc_count >= 0xffff)
-+	  if ((obj_pe (abfd) || obj_go32 (abfd)) && o->reloc_count >= 0xffff)
- 	    {
- 	      /* In PE COFF, write the count of relocs as the first
- 		 reloc.  The header overflow bit will be set
- 		 elsewhere. */
- 	      struct internal_reloc incount;
-diff -aprNU5 binutils-2.34.orig/bfd/coffswap.h binutils-2.34/bfd/coffswap.h
---- binutils-2.34.orig/bfd/coffswap.h	2020-01-18 13:55:46 +0000
-+++ binutils-2.34/bfd/coffswap.h	2020-03-01 19:10:00 +0000
-@@ -744,10 +744,23 @@ coff_swap_scnhdr_in (bfd * abfd, void *
+ static void
+diff -aprNU5 binutils-2.35.1.orig/bfd/coffswap.h binutils-2.35.1/bfd/coffswap.h
+--- binutils-2.35.1.orig/bfd/coffswap.h	2016-07-22 23:34:12 +0000
++++ binutils-2.35.1/bfd/coffswap.h	2020-12-18 18:22:18 +0000
+@@ -745,10 +745,23 @@ coff_swap_scnhdr_in (bfd * abfd, void *
    scnhdr_int->s_relptr = GET_SCNHDR_RELPTR (abfd, scnhdr_ext->s_relptr);
    scnhdr_int->s_lnnoptr = GET_SCNHDR_LNNOPTR (abfd, scnhdr_ext->s_lnnoptr);
    scnhdr_int->s_flags = GET_SCNHDR_FLAGS (abfd, scnhdr_ext->s_flags);
@@ -477,7 +222,7 @@ diff -aprNU5 binutils-2.34.orig/bfd/coffswap.h binutils-2.34/bfd/coffswap.h
  #endif
  }
  
-@@ -768,10 +781,65 @@ coff_swap_scnhdr_out (bfd * abfd, void *
+@@ -770,10 +783,65 @@ coff_swap_scnhdr_out (bfd * abfd, void *
    PUT_SCNHDR_SIZE (abfd, scnhdr_int->s_size, scnhdr_ext->s_size);
    PUT_SCNHDR_SCNPTR (abfd, scnhdr_int->s_scnptr, scnhdr_ext->s_scnptr);
    PUT_SCNHDR_RELPTR (abfd, scnhdr_int->s_relptr, scnhdr_ext->s_relptr);
@@ -543,7 +288,7 @@ diff -aprNU5 binutils-2.34.orig/bfd/coffswap.h binutils-2.34/bfd/coffswap.h
    else
      {
        char buf[sizeof (scnhdr_int->s_name) + 1];
-@@ -799,10 +867,13 @@ coff_swap_scnhdr_out (bfd * abfd, void *
+@@ -801,10 +869,13 @@ coff_swap_scnhdr_out (bfd * abfd, void *
        bfd_set_error (bfd_error_file_truncated);
        PUT_SCNHDR_NRELOC (abfd, 0xffff, scnhdr_ext->s_nreloc);
        ret = 0;
@@ -557,9 +302,9 @@ diff -aprNU5 binutils-2.34.orig/bfd/coffswap.h binutils-2.34/bfd/coffswap.h
  #endif
    return ret;
  }
-diff -aprNU5 binutils-2.34.orig/bfd/config.in binutils-2.34/bfd/config.in
---- binutils-2.34.orig/bfd/config.in	2020-02-01 11:49:18 +0000
-+++ binutils-2.34/bfd/config.in	2020-03-01 19:10:00 +0000
+diff -aprNU5 binutils-2.35.1.orig/bfd/config.in binutils-2.35.1/bfd/config.in
+--- binutils-2.35.1.orig/bfd/config.in	2016-09-18 00:39:16 +0000
++++ binutils-2.35.1/bfd/config.in	2020-12-19 00:45:16 +0000
 @@ -414,5 +414,39 @@
     this defined. */
  #undef _POSIX_1_SOURCE
@@ -600,9 +345,9 @@ diff -aprNU5 binutils-2.34.orig/bfd/config.in binutils-2.34/bfd/config.in
 +#else
 +# define STRIP_FULL_PATH_AND_EXTENSION(file_name)  (file_name)
 +#endif
-diff -aprNU5 binutils-2.34.orig/bfd/init.c binutils-2.34/bfd/init.c
---- binutils-2.34.orig/bfd/init.c	2020-01-18 13:55:46 +0000
-+++ binutils-2.34/bfd/init.c	2020-03-01 19:10:00 +0000
+diff -aprNU5 binutils-2.35.1.orig/bfd/init.c binutils-2.35.1/bfd/init.c
+--- binutils-2.35.1.orig/bfd/init.c	2016-07-22 23:34:12 +0000
++++ binutils-2.35.1/bfd/init.c	2020-12-18 18:22:18 +0000
 @@ -21,10 +21,16 @@
  
  #include "sysdep.h"
@@ -634,41 +379,10 @@ diff -aprNU5 binutils-2.34.orig/bfd/init.c binutils-2.34/bfd/init.c
 +#endif
    return BFD_INIT_MAGIC;
  }
-diff -aprNU5 binutils-2.34.orig/bfd/libcoff-in.h binutils-2.34/bfd/libcoff-in.h
---- binutils-2.34.orig/bfd/libcoff-in.h	2020-01-18 13:55:46 +0000
-+++ binutils-2.34/bfd/libcoff-in.h	2020-03-01 19:10:00 +0000
-@@ -31,12 +31,13 @@ extern "C" {
- 
- /* Object file tdata; access macros.  */
- 
- #define coff_data(bfd)		      ((bfd)->tdata.coff_obj_data)
- #define obj_pe(bfd)		      (coff_data (bfd)->pe)
-+#define obj_go32(bfd)		      (coff_data (bfd)->go32)
- #define obj_symbols(bfd)	      (coff_data (bfd)->symbols)
--#define	obj_sym_filepos(bfd)	      (coff_data (bfd)->sym_filepos)
-+#define obj_sym_filepos(bfd)	      (coff_data (bfd)->sym_filepos)
- #define obj_relocbase(bfd)	      (coff_data (bfd)->relocbase)
- #define obj_raw_syments(bfd)	      (coff_data (bfd)->raw_syments)
- #define obj_raw_syment_count(bfd)     (coff_data (bfd)->raw_syment_count)
- #define obj_convert(bfd)	      (coff_data (bfd)->conversion_table)
- #define obj_conv_table_size(bfd)      (coff_data (bfd)->conv_table_size)
-@@ -112,10 +113,12 @@ typedef struct coff_tdata
- 
-   /* Copy of some of the f_flags bits in the COFF filehdr structure,
-      used by ARM code.  */
-   flagword flags;
- 
-+  /* Is this a GO32 coff file?  */
-+  int go32;
-   /* coff-stgo32 EXE stub header after BFD tdata has been allocated.  Its data
-      is kept in internal_filehdr.go32stub beforehand.  */
-   char *go32stub;
- } coff_data_type;
- 
-diff -aprNU5 binutils-2.34.orig/bfd/Makefile.in binutils-2.34/bfd/Makefile.in
---- binutils-2.34.orig/bfd/Makefile.in	2020-02-01 11:49:12 +0000
-+++ binutils-2.34/bfd/Makefile.in	2020-03-01 19:10:00 +0000
-@@ -2033,11 +2033,11 @@ host-aout.lo: Makefile
+diff -aprNU5 binutils-2.35.1.orig/bfd/Makefile.in binutils-2.35.1/bfd/Makefile.in
+--- binutils-2.35.1.orig/bfd/Makefile.in	2016-09-18 00:39:10 +0000
++++ binutils-2.35.1/bfd/Makefile.in	2020-12-19 00:45:16 +0000
+@@ -2010,11 +2010,11 @@ host-aout.lo: Makefile
  aout-params.h: gen-aout
  	./gen-aout host > aout-params.h
  gen-aout: $(srcdir)/gen-aout.c Makefile
@@ -681,7 +395,7 @@ diff -aprNU5 binutils-2.34.orig/bfd/Makefile.in binutils-2.34/bfd/Makefile.in
  	rm -f bfd-tmp.h
  	cp bfd-in3.h bfd-tmp.h
  	$(SHELL) $(srcdir)/../move-if-change bfd-tmp.h $(BFD_H)
-@@ -2055,11 +2055,11 @@ headers:
+@@ -2032,11 +2032,11 @@ headers:
  	$(SHELL) $(srcdir)/../move-if-change libcoff.h-new $(srcdir)/libcoff.h
  
  # We only rebuild the header files automatically if we have been
@@ -694,10 +408,10 @@ diff -aprNU5 binutils-2.34.orig/bfd/Makefile.in binutils-2.34/bfd/Makefile.in
  	cp $(bfddocdir)/bfd.h bfd-in2.h-new
  	$(SHELL) $(srcdir)/../move-if-change bfd-in2.h-new $(srcdir)/bfd-in2.h
  	touch stmp-bin2-h
-diff -aprNU5 binutils-2.34.orig/include/bfdlink.h binutils-2.34/include/bfdlink.h
---- binutils-2.34.orig/include/bfdlink.h	2020-01-18 13:55:48 +0000
-+++ binutils-2.34/include/bfdlink.h	2020-03-01 19:10:00 +0000
-@@ -302,11 +302,11 @@ struct bfd_elf_version_tree;
+diff -aprNU5 binutils-2.35.1.orig/include/bfdlink.h binutils-2.35.1/include/bfdlink.h
+--- binutils-2.35.1.orig/include/bfdlink.h	2016-07-22 23:34:12 +0000
++++ binutils-2.35.1/include/bfdlink.h	2020-12-18 18:29:46 +0000
+@@ -313,11 +313,11 @@ struct bfd_elf_version_tree;
  enum output_type
  {
    type_pde,
@@ -710,25 +424,9 @@ diff -aprNU5 binutils-2.34.orig/include/bfdlink.h binutils-2.34/include/bfdlink.
  #define bfd_link_pde(info)	   ((info)->type == type_pde)
  #define bfd_link_dll(info)	   ((info)->type == type_dll)
  #define bfd_link_relocatable(info) ((info)->type == type_relocatable)
-diff -aprNU5 binutils-2.34.orig/include/coff/internal.h binutils-2.34/include/coff/internal.h
---- binutils-2.34.orig/include/coff/internal.h	2020-01-18 13:55:48 +0000
-+++ binutils-2.34/include/coff/internal.h	2020-03-01 19:10:00 +0000
-@@ -165,11 +165,11 @@ typedef struct _CODEVIEW_INFO
- {
-   unsigned long CVSignature;
-   char          Signature[CV_INFO_SIGNATURE_LENGTH];
-   unsigned int  SignatureLength;
-   unsigned long Age;
--  // char PdbFileName[];
-+  /* char PdbFileName[]; */
- } CODEVIEW_INFO;
- 
- /* Default image base for NT.  */
- #define NT_EXE_IMAGE_BASE 0x400000
- #define NT_DLL_IMAGE_BASE 0x10000000
-diff -aprNU5 binutils-2.34.orig/include/simple-object.h binutils-2.34/include/simple-object.h
---- binutils-2.34.orig/include/simple-object.h	2020-01-18 13:55:48 +0000
-+++ binutils-2.34/include/simple-object.h	2020-03-01 19:10:00 +0000
+diff -aprNU5 binutils-2.35.1.orig/include/simple-object.h binutils-2.35.1/include/simple-object.h
+--- binutils-2.35.1.orig/include/simple-object.h	2016-07-22 23:34:12 +0000
++++ binutils-2.35.1/include/simple-object.h	2020-12-18 18:22:20 +0000
 @@ -204,11 +204,11 @@ simple_object_release_write (simple_obje
     If an error occurs, return the errno value in ERR and an error string.  */
  
@@ -742,9 +440,9 @@ diff -aprNU5 binutils-2.34.orig/include/simple-object.h binutils-2.34/include/si
  }
  #endif
  
-diff -aprNU5 binutils-2.34.orig/libiberty/config.in binutils-2.34/libiberty/config.in
---- binutils-2.34.orig/libiberty/config.in	2020-01-18 13:55:48 +0000
-+++ binutils-2.34/libiberty/config.in	2020-03-01 19:10:00 +0000
+diff -aprNU5 binutils-2.35.1.orig/libiberty/config.in binutils-2.35.1/libiberty/config.in
+--- binutils-2.35.1.orig/libiberty/config.in	2016-07-22 23:34:12 +0000
++++ binutils-2.35.1/libiberty/config.in	2020-12-19 00:45:16 +0000
 @@ -573,5 +573,59 @@
     pointer, if such a type exists, and if the system does not define it. */
  #undef uintptr_t
@@ -805,10 +503,10 @@ diff -aprNU5 binutils-2.34.orig/libiberty/config.in binutils-2.34/libiberty/conf
 +#else  /* !__DJGPP__ */
 +# define STRIP_FULL_PATH_AND_EXTENSION(file_name)  (file_name)
 +#endif  /* !__DJGPP__ */
-diff -aprNU5 binutils-2.34.orig/libiberty/cp-demangle.c binutils-2.34/libiberty/cp-demangle.c
---- binutils-2.34.orig/libiberty/cp-demangle.c	2020-01-18 13:55:48 +0000
-+++ binutils-2.34/libiberty/cp-demangle.c	2020-03-01 19:10:00 +0000
-@@ -2950,11 +2950,11 @@ d_parmlist (struct d_info *di)
+diff -aprNU5 binutils-2.35.1.orig/libiberty/cp-demangle.c binutils-2.35.1/libiberty/cp-demangle.c
+--- binutils-2.35.1.orig/libiberty/cp-demangle.c	2016-07-22 23:34:12 +0000
++++ binutils-2.35.1/libiberty/cp-demangle.c	2020-12-19 00:45:16 +0000
+@@ -2952,11 +2952,11 @@ d_parmlist (struct d_info *di)
  }
  
  /* <bare-function-type> ::= [J]<type>+  */
@@ -821,7 +519,7 @@ diff -aprNU5 binutils-2.34.orig/libiberty/cp-demangle.c binutils-2.34/libiberty/
    struct demangle_component *tl;
    char peek;
  
-@@ -2962,14 +2962,14 @@ d_bare_function_type (struct d_info *di,
+@@ -2964,14 +2964,14 @@ d_bare_function_type (struct d_info *di,
       is the return type.  */
    peek = d_peek_char (di);
    if (peek == 'J')
@@ -838,7 +536,7 @@ diff -aprNU5 binutils-2.34.orig/libiberty/cp-demangle.c binutils-2.34/libiberty/
        if (return_type == NULL)
  	return NULL;
      }
-@@ -3323,26 +3323,26 @@ d_expression_1 (struct d_info *di)
+@@ -3325,26 +3325,26 @@ d_expression_1 (struct d_info *di)
  			  d_expression_1 (di), NULL);
      }
    else if (peek == 'f' && d_peek_next_char (di) == 'p')
@@ -871,7 +569,7 @@ diff -aprNU5 binutils-2.34.orig/libiberty/cp-demangle.c binutils-2.34/libiberty/
  	   || (peek == 'o' && d_peek_next_char (di) == 'n'))
      {
        /* We can get an unqualified name as an expression in the case of
-@@ -4683,11 +4683,11 @@ d_print_comp_inner (struct d_print_info
+@@ -4685,11 +4685,11 @@ d_print_comp_inner (struct d_print_info
       without needing to modify *dc.  */
    struct demangle_component *mod_inner = NULL;
  
@@ -884,7 +582,7 @@ diff -aprNU5 binutils-2.34.orig/libiberty/cp-demangle.c binutils-2.34/libiberty/
    int need_template_restore = 0;
  
    if (dc == NULL)
-@@ -6271,11 +6271,11 @@ d_demangle_callback (const char *mangled
+@@ -6273,11 +6273,11 @@ d_demangle_callback (const char *mangled
        DCT_GLOBAL_CTORS,
        DCT_GLOBAL_DTORS
      }
@@ -897,9 +595,9 @@ diff -aprNU5 binutils-2.34.orig/libiberty/cp-demangle.c binutils-2.34/libiberty/
    if (mangled[0] == '_' && mangled[1] == 'Z')
      type = DCT_MANGLED;
    else if (strncmp (mangled, "_GLOBAL_", 8) == 0
-diff -aprNU5 binutils-2.34.orig/libiberty/floatformat.c binutils-2.34/libiberty/floatformat.c
---- binutils-2.34.orig/libiberty/floatformat.c	2020-01-18 13:55:48 +0000
-+++ binutils-2.34/libiberty/floatformat.c	2020-03-01 19:10:00 +0000
+diff -aprNU5 binutils-2.35.1.orig/libiberty/floatformat.c binutils-2.35.1/libiberty/floatformat.c
+--- binutils-2.35.1.orig/libiberty/floatformat.c	2016-07-22 23:34:12 +0000
++++ binutils-2.35.1/libiberty/floatformat.c	2020-12-19 00:45:16 +0000
 @@ -484,20 +484,20 @@ floatformat_to_double (const struct floa
    /* If the exponent indicates a NaN, we don't have information to
       decide what to do.  So we handle it like IEEE, except that we
@@ -923,9 +621,9 @@ diff -aprNU5 binutils-2.34.orig/libiberty/floatformat.c binutils-2.34/libiberty/
  	dto = INFINITY;
  
        if (get_field (ufrom, fmt->byteorder, fmt->totalsize, fmt->sign_start, 1))
-diff -aprNU5 binutils-2.34.orig/libiberty/hashtab.c binutils-2.34/libiberty/hashtab.c
---- binutils-2.34.orig/libiberty/hashtab.c	2020-01-18 13:55:48 +0000
-+++ binutils-2.34/libiberty/hashtab.c	2020-03-01 19:10:00 +0000
+diff -aprNU5 binutils-2.35.1.orig/libiberty/hashtab.c binutils-2.35.1/libiberty/hashtab.c
+--- binutils-2.35.1.orig/libiberty/hashtab.c	2016-07-22 23:34:12 +0000
++++ binutils-2.35.1/libiberty/hashtab.c	2020-12-19 00:45:16 +0000
 @@ -478,28 +478,28 @@ htab_empty (htab_t htab)
     HASH is the hash value for the element to be inserted.  */
  
@@ -1080,9 +778,9 @@ diff -aprNU5 binutils-2.34.orig/libiberty/hashtab.c binutils-2.34/libiberty/hash
  /* Like htab_find_slot_with_hash, but compute the hash value from the
     element.  */
  
-diff -aprNU5 binutils-2.34.orig/libiberty/make-relative-prefix.c binutils-2.34/libiberty/make-relative-prefix.c
---- binutils-2.34.orig/libiberty/make-relative-prefix.c	2020-01-18 13:55:48 +0000
-+++ binutils-2.34/libiberty/make-relative-prefix.c	2020-03-01 19:10:00 +0000
+diff -aprNU5 binutils-2.35.1.orig/libiberty/make-relative-prefix.c binutils-2.35.1/libiberty/make-relative-prefix.c
+--- binutils-2.35.1.orig/libiberty/make-relative-prefix.c	2016-07-22 23:34:12 +0000
++++ binutils-2.35.1/libiberty/make-relative-prefix.c	2020-12-19 00:45:16 +0000
 @@ -79,10 +79,11 @@ relative prefix can be found, return @co
  #if defined (_WIN32) || defined (__MSDOS__) \
      || defined (__DJGPP__) || defined (__OS2__)
@@ -1135,9 +833,9 @@ diff -aprNU5 binutils-2.34.orig/libiberty/make-relative-prefix.c binutils-2.34/l
  
    /* If there are no common directories, there can be no relative prefix.  */
    if (common == 0)
-diff -aprNU5 binutils-2.34.orig/libiberty/make-temp-file.c binutils-2.34/libiberty/make-temp-file.c
---- binutils-2.34.orig/libiberty/make-temp-file.c	2020-01-18 13:55:48 +0000
-+++ binutils-2.34/libiberty/make-temp-file.c	2020-03-01 19:10:00 +0000
+diff -aprNU5 binutils-2.35.1.orig/libiberty/make-temp-file.c binutils-2.35.1/libiberty/make-temp-file.c
+--- binutils-2.35.1.orig/libiberty/make-temp-file.c	2016-07-22 23:34:12 +0000
++++ binutils-2.35.1/libiberty/make-temp-file.c	2020-12-19 00:45:16 +0000
 @@ -52,16 +52,31 @@ extern int mkstemps (char *, int);
  /* '/' works just fine on MS-DOS based systems.  */
  #ifndef DIR_SEPARATOR
@@ -1198,9 +896,9 @@ diff -aprNU5 binutils-2.34.orig/libiberty/make-temp-file.c binutils-2.34/libiber
  #else /* defined(_WIN32) && !defined(__CYGWIN__) */
        DWORD len;
  
-diff -aprNU5 binutils-2.34.orig/libiberty/pex-common.c binutils-2.34/libiberty/pex-common.c
---- binutils-2.34.orig/libiberty/pex-common.c	2020-01-18 13:55:48 +0000
-+++ binutils-2.34/libiberty/pex-common.c	2020-03-01 19:10:00 +0000
+diff -aprNU5 binutils-2.35.1.orig/libiberty/pex-common.c binutils-2.35.1/libiberty/pex-common.c
+--- binutils-2.35.1.orig/libiberty/pex-common.c	2016-07-22 23:34:12 +0000
++++ binutils-2.35.1/libiberty/pex-common.c	2020-12-19 00:45:16 +0000
 @@ -115,11 +115,11 @@ temp_file (struct pex_obj *obj, int flag
  
            if (len >= 6
@@ -1240,9 +938,9 @@ diff -aprNU5 binutils-2.34.orig/libiberty/pex-common.c binutils-2.34/libiberty/p
        obj->next_input = -1;
      }
    else if ((obj->flags & PEX_USE_PIPES) == 0)
-diff -aprNU5 binutils-2.34.orig/libiberty/simple-object-coff.c binutils-2.34/libiberty/simple-object-coff.c
---- binutils-2.34.orig/libiberty/simple-object-coff.c	2020-01-18 13:55:48 +0000
-+++ binutils-2.34/libiberty/simple-object-coff.c	2020-03-01 19:10:00 +0000
+diff -aprNU5 binutils-2.35.1.orig/libiberty/simple-object-coff.c binutils-2.35.1/libiberty/simple-object-coff.c
+--- binutils-2.35.1.orig/libiberty/simple-object-coff.c	2016-07-22 23:34:12 +0000
++++ binutils-2.35.1/libiberty/simple-object-coff.c	2020-12-19 00:45:16 +0000
 @@ -649,17 +649,17 @@ simple_object_coff_write_to_file (simple
        new_offset = offset & mask;
        new_offset &= ~ mask;
@@ -1266,9 +964,9 @@ diff -aprNU5 binutils-2.34.orig/libiberty/simple-object-coff.c binutils-2.34/lib
  	}
  
        scnsize = 0;
-diff -aprNU5 binutils-2.34.orig/libiberty/simple-object-elf.c binutils-2.34/libiberty/simple-object-elf.c
---- binutils-2.34.orig/libiberty/simple-object-elf.c	2020-01-18 13:55:48 +0000
-+++ binutils-2.34/libiberty/simple-object-elf.c	2020-03-01 19:10:00 +0000
+diff -aprNU5 binutils-2.35.1.orig/libiberty/simple-object-elf.c binutils-2.35.1/libiberty/simple-object-elf.c
+--- binutils-2.35.1.orig/libiberty/simple-object-elf.c	2016-07-22 23:34:12 +0000
++++ binutils-2.35.1/libiberty/simple-object-elf.c	2020-12-19 00:45:16 +0000
 @@ -998,20 +998,20 @@ simple_object_elf_write_to_file (simple_
        new_sh_offset = sh_offset + mask;
        new_sh_offset &= ~ mask;
@@ -1296,9 +994,9 @@ diff -aprNU5 binutils-2.34.orig/libiberty/simple-object-elf.c binutils-2.34/libi
        sh_size = 0;
        for (buffer = section->buffers; buffer != NULL; buffer = buffer->next)
  	{
-diff -aprNU5 binutils-2.34.orig/libiberty/simple-object-mach-o.c binutils-2.34/libiberty/simple-object-mach-o.c
---- binutils-2.34.orig/libiberty/simple-object-mach-o.c	2020-01-18 13:55:48 +0000
-+++ binutils-2.34/libiberty/simple-object-mach-o.c	2020-03-01 19:10:00 +0000
+diff -aprNU5 binutils-2.35.1.orig/libiberty/simple-object-mach-o.c binutils-2.35.1/libiberty/simple-object-mach-o.c
+--- binutils-2.35.1.orig/libiberty/simple-object-mach-o.c	2016-07-22 23:34:12 +0000
++++ binutils-2.35.1/libiberty/simple-object-mach-o.c	2020-12-19 00:45:16 +0000
 @@ -424,11 +424,11 @@ simple_object_mach_o_segment (simple_obj
    unsigned int index_index;
    unsigned int nametab_index;
@@ -1567,9 +1265,9 @@ diff -aprNU5 binutils-2.34.orig/libiberty/simple-object-mach-o.c binutils-2.34/l
  
    /* Write out the segment header.  */
  
-diff -aprNU5 binutils-2.34.orig/libiberty/simple-object-xcoff.c binutils-2.34/libiberty/simple-object-xcoff.c
---- binutils-2.34.orig/libiberty/simple-object-xcoff.c	2020-01-18 13:55:48 +0000
-+++ binutils-2.34/libiberty/simple-object-xcoff.c	2020-03-01 19:10:00 +0000
+diff -aprNU5 binutils-2.35.1.orig/libiberty/simple-object-xcoff.c binutils-2.35.1/libiberty/simple-object-xcoff.c
+--- binutils-2.35.1.orig/libiberty/simple-object-xcoff.c	2016-07-22 23:34:12 +0000
++++ binutils-2.35.1/libiberty/simple-object-xcoff.c	2020-12-19 00:45:16 +0000
 @@ -905,17 +905,17 @@ simple_object_xcoff_write_to_file (simpl
        new_offset = offset & mask;
        new_offset &= ~ mask;
@@ -1593,9 +1291,9 @@ diff -aprNU5 binutils-2.34.orig/libiberty/simple-object-xcoff.c binutils-2.34/li
  	}
  
        scnsize = 0;
-diff -aprNU5 binutils-2.34.orig/libiberty/simple-object.c binutils-2.34/libiberty/simple-object.c
---- binutils-2.34.orig/libiberty/simple-object.c	2020-01-18 13:55:48 +0000
-+++ binutils-2.34/libiberty/simple-object.c	2020-03-01 19:10:00 +0000
+diff -aprNU5 binutils-2.35.1.orig/libiberty/simple-object.c binutils-2.35.1/libiberty/simple-object.c
+--- binutils-2.35.1.orig/libiberty/simple-object.c	2016-07-22 23:34:12 +0000
++++ binutils-2.35.1/libiberty/simple-object.c	2020-12-19 00:45:16 +0000
 @@ -258,40 +258,40 @@ simple_object_find_section (simple_objec
     Returns non-NULL if NAME is a LTO debug section, NULL if not.
     If RENAME is true it will rename LTO debug sections to non-LTO
@@ -1641,9 +1339,9 @@ diff -aprNU5 binutils-2.34.orig/libiberty/simple-object.c binutils-2.34/libibert
    /* Copy over .note.GNU-stack section under the same name if present.  */
    else if (strcmp (name, ".note.GNU-stack") == 0)
      return strcpy (newname, name);
-   /* Copy over .comment section under the same name if present.  Solaris
-      ld uses them to relax its checking of ELF gABI access rules for
-@@ -320,11 +320,11 @@ handle_lto_debug_sections_norename (cons
+   /* Copy over .note.gnu.property section under the same name if present.  */
+   else if (strcmp (name, ".note.gnu.property") == 0)
+@@ -326,11 +326,11 @@ handle_lto_debug_sections_norename (cons
  
  /* Copy LTO debug sections.  */
  
@@ -1656,7 +1354,7 @@ diff -aprNU5 binutils-2.34.orig/libiberty/simple-object.c binutils-2.34/libibert
    simple_object_write *dest_sobj;
    simple_object_attributes *attrs;
    int outfd;
-@@ -343,11 +343,11 @@ simple_object_copy_lto_debug_sections (s
+@@ -349,11 +349,11 @@ simple_object_copy_lto_debug_sections (s
    if (! dest_sobj)
      return errmsg;
  
@@ -1669,9 +1367,9 @@ diff -aprNU5 binutils-2.34.orig/libiberty/simple-object.c binutils-2.34/libibert
      {
        simple_object_release_write (dest_sobj);
        return errmsg;
-diff -aprNU5 binutils-2.34.orig/libiberty/stack-limit.c binutils-2.34/libiberty/stack-limit.c
---- binutils-2.34.orig/libiberty/stack-limit.c	2020-01-18 13:55:48 +0000
-+++ binutils-2.34/libiberty/stack-limit.c	2020-03-01 19:10:00 +0000
+diff -aprNU5 binutils-2.35.1.orig/libiberty/stack-limit.c binutils-2.35.1/libiberty/stack-limit.c
+--- binutils-2.35.1.orig/libiberty/stack-limit.c	2016-07-22 23:34:12 +0000
++++ binutils-2.35.1/libiberty/stack-limit.c	2020-12-19 00:45:16 +0000
 @@ -49,11 +49,11 @@ stack_limit_increase (unsigned long pref
  #if defined(HAVE_SETRLIMIT) && defined(HAVE_GETRLIMIT) \
      && defined(RLIMIT_STACK) && defined(RLIM_INFINITY)

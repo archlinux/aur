@@ -3,7 +3,7 @@
 # Contributor: janezz55
 
 pkgname=dosbox-binutils
-pkgver=2.34
+pkgver=2.35
 pkgrel=1
 pkgdesc="binutils for the djgpp dosbox cross-compiler"
 arch=('i686' 'x86_64')
@@ -14,8 +14,7 @@ depends=('zlib' 'patch')
 options=('!libtool' '!emptydirs')
 source=("http://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz"
       	"binutils-bfd-djgpp.patch"
-	      "binutils-djgpp.patch"
-        "lto-discard.patch")
+	      "binutils-djgpp.patch")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -30,7 +29,6 @@ prepare() {
 
   patch -Np1 <${srcdir}/binutils-djgpp.patch
   patch -Np1 <${srcdir}/binutils-bfd-djgpp.patch
-  patch -Np2 <${srcdir}/lto-discard.patch
 }
 
 build() {
