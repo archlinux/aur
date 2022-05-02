@@ -1,0 +1,17 @@
+pkgbase = scarab
+	pkgdesc = Hollow Knight mod manager
+	pkgver = 1.11.0.0
+	pkgrel = 1
+	url = https://github.com/fifty-six/Scarab
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = dotnet-sdk
+	depends = dotnet-runtime
+	options = !strip
+	source = Scarab-1.11.0.0.tar.gz::https://github.com/fifty-six/Scarab/archive/v1.11.0.0.tar.gz
+	source = scarab.desktop
+	sha1sums = 43e30feb000a777cd41e2b546fa014bb55df5001
+	sha1sums = 8ff187bcb309790529ef723de39ba1b9fc0a449d
+
+pkgname = scarab
