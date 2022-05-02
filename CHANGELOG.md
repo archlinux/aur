@@ -18,6 +18,52 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## 📚 Documentation -->
 
+# [0.5.4] - 2022-04-26
+
+## 🐛 Fixes
+
+- **_Really_ fixes v0.5.2/v0.5.3 broken npm installs - @EverlastingBugstopper**
+
+  It turns out that it's hard to test changes to npm installers without actually publishing to npm. In order to save burning another patch version I release v0.5.4-rc.0 to ensure that my changes would actually fix things.
+
+# [0.5.3] - 2022-04-26
+
+## 🐛 Fixes
+
+- **Fixes v0.5.2 broken npm installs - @EverlastingBugstopper, #1108**
+
+# [0.5.2] - 2022-04-26
+
+## 🚀 Features
+
+- **Default `rover supergraph compose` to Federation 2 if a `@link` directive is found in a subgraph schema - @EverlastingBugstopper, #1097 fixes #1090**
+
+  When running `rover supergraph compose`, if `supergraph.yaml` refers to a subgraph that contains an `@link` directive and you haven't set the `federation_version` key, then Rover will use Federation 2 composition by default.
+
+- **Output Federation version information when running `rover supergraph compose` - @EverlastingBugstopper, #1102**
+
+  When running `rover supergraph compose`, Rover will print the Federation version number that it is using. You can access this version string programatically by running the command with the `--output json` argument and accessing the `federation_version` field.
+
+- **Accept `-` as valid `supergraph.yaml` to read config from stdin - @EverlastingBugstopper, #1092 fixes #525**
+
+  You can now run commands like `cat supergraph.yaml | rover supergraph compose --config -` much like you've always been able to do with the `--schema` argument in other Rover commands.
+
+## 🐛 Fixes
+
+- **Hides `rover-fed2` from `rover --help` - @EverlastingBugstopper, #1091 fixes #1085**
+
+## 🛠 Maintenance
+
+- **Address Rust 1.60.0 lints - @EverlastingBugstopper, #1098**
+
+- **Updates `binary-install` to v1.0.0 for the npm installer - @EverlastingBugstopper, #1099**
+
+## 📚 Documentation
+
+- **Fixes some broken Federation 2 links - @StephenBarlow, #1084**
+
+- **Documents dynamic composition versions - @EverlastingBugstopper, #1087**
+
 # [0.5.1] - 2022-04-11
 
 ## 🐛 Fixes
