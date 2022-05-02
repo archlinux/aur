@@ -2,15 +2,18 @@
  
 pkgname="monado-git"
 _dirname="monado"
-pkgver=21.0.0.r1187.g1203cf38
+pkgver=21.0.0.r1747.g7a039543d
 pkgrel=1
 pkgdesc='The open source OpenXR runtime.'
 arch=('i686' 'x86_64')
 url='https://monado.dev'
-depends=('openxr' 'vulkan-icd-loader' 'libgl' 'wayland' 'xr-hardware' 'libcap' 'libbsd')
-makedepends=('eigen' 'ninja' 'shaderc' 'meson' 'git' 'vulkan-headers')
+depends=('openxr' 'vulkan-icd-loader' 'libgl' 'wayland' 'xr-hardware' 'libcap' 'libbsd' 'libdrm')
+#'doxygen' #When building docs
+makedepends=('eigen' 'ninja' 'shaderc' 'cmake' 'git' 'vulkan-headers')
 optdepends=('libuvc: optical tracking support'
             'opencv: optical tracking support'
+            'onnxruntime: optical hand tracking support'
+            'librealsense: intel realsense camera support'
             'libsurvive-git: lighthouse positional tracking support'
             'openhmd: additional hardware support (Oculus Rift, Nolo)'
             'basalt-monado-git: experimental SLAM tracking through basalt'
@@ -18,9 +21,6 @@ optdepends=('libuvc: optical tracking support'
             'percetto: tracing support for performance debugging')
 provides=("openxr-runtime")
 install=monado.install
-
-#'doxygen' #When building docs
-makedepend=('cmake' 'eigen' 'git')
 
 license=('boost')
 source=("$_dirname::git+https://gitlab.freedesktop.org/monado/monado.git#branch=main")
@@ -39,7 +39,7 @@ prepare() {
 
 build() {
   cd "$_dirname"
-  meson --prefix=/usr/ --libdir=lib -Dbuildtype=debugoptimized "$srcdir"/"$_dirname"-build
+  cmake -DCMAKE_LIBDIR=lib -DCMAKE_INSTALL_PREFIX=/usr/ -DCMAKE_BUILD_TYPE=RelWithDebInfo -GNinja -B"$srcdir"/"$_dirname"-build
   ninja -C "$srcdir"/"$_dirname"-build
 }
 
