@@ -1,0 +1,12 @@
+pkgbase = pipewatch-git
+	pkgdesc = Pipe Watch: Monitor recent lines of output from pipe
+	pkgver = r66.f05725f
+	pkgrel = 1
+	url = https://github.com/nhorman/dropwatch
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	source = git+https://www.kylheku.com/git/pw
+	sha256sums = SKIP
+
+pkgname = pipewatch-git
