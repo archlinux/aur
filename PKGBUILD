@@ -42,6 +42,7 @@ _var_directory="/var/lib/$pacname"
 prepare()
 {
     curl -L "$_srcprefix/PKGBUILD" > PKGBUILD-git
+    ln -sf "$pacname-$pkgver-$pkgrel-$arch.pkg.tar.zst" "../$pkgname-$pkgver-$pkgrel-$arch.pkg.tar.zst"
 }
 
 build()
