@@ -2,7 +2,7 @@
 Type=Application
 Name=osu!
 MimeType=x-scheme-handler/osu;
-Exec=/usr/lib/osu-handler/osu-handler-wine 'C:\\windows\\system32\\start.exe' /ProgIDOpen osu %u
+Exec=/usr/lib/osu-handler/osu-handler-wine 'C:\\windows\\system32\\start.exe' %u
 NoDisplay=true
 StartupNotify=true
 Icon=osu!
