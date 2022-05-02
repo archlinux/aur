@@ -14,7 +14,7 @@ pkgname=(pipewire-common-git
          pipewire-common-zeroconf-git
          gst-plugin-pipewire-common-git
          )
-pkgver=0.3.48.r13.g8026b65c
+pkgver=0.3.51.r12.g8358f020
 pkgrel=1
 pkgdesc="Low-latency audio/video router and processor"
 url="https://pipewire.org"
@@ -46,13 +46,14 @@ build() {
   # make AUR helper happy
   rm -rf build || true
   arch-meson $_pkgbase build \
+    -D bluez5-codec-lc3plus=disabled \
     -D docs=enabled \
-    -D test=enabled \
+    -D jack-devel=true \
     -D libcamera=disabled \
+    -D libjack-path=/usr/lib \
     -D sdl2=disabled \
     -D session-managers=[] \
-    -D jack-devel=true \
-    -D libjack-path=/usr/lib \
+    -D test=enabled \
     -D jack=disabled \
     -D vulkan=disabled \
     -D ffmpeg=disabled \
