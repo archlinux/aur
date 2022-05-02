@@ -1,27 +1,36 @@
-# Maintainer: acxz <akashpatel2008 at yahoo dot com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: acxz <akashpatel2008 at yahoo dot com>
 
 pkgname=python-ax-platform
-pkgver=0.1.20
+pkgver=0.2.5.1
 pkgrel=1
 pkgdesc='Adaptive Experimentation Platform'
-arch=('x86_64')
-url='https://ax.dev'
+arch=('any')
+url='https://github.com/facebook/ax'
 license=('MIT')
-depends=('python' 'python-botorch' 'python-jinja' 'python-pandas' 'python-scipy'
-'python-scikit-learn' 'python-plotly' 'python-typeguard')
-optdepends=()
-makedepends=('python' 'python-setuptools')
-source=("$pkgname-$pkgver::https://github.com/facebook/Ax/archive/v$pkgver.tar.gz")
-sha256sums=('be40948a6dcd38b9ab3fe182d66d8a234cd016acdced1cf424730a84692b79cb')
-
-_pkgname=Ax
+depends=(
+	'python-botorch'
+	'python-jinja'
+	'python-pandas'
+	'python-scipy'
+	'python-scikit-learn'
+	'python-plotly'
+	'python-typeguard')
+makedepends=('python-setuptools-scm' 'python-build' 'python-installer' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('17efb87da3ff864d65f861d7f1827c3756dc0c9350e4dc52cce37765c7d3f01e')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py build
+	cd "Ax-$pkgver"
+	SETUPTOOLS_SCM_PRETEND_VERSION="$pkgver" python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir"/ --optimize=1
+	cd "Ax-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s \
+		"$_site/ax_platform-$pkgver.dist-info/LICENSE" \
+		"$pkgdir/usr/share/licenses/$pkgname/"
 }

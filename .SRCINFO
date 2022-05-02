@@ -1,13 +1,14 @@
 pkgbase = python-ax-platform
 	pkgdesc = Adaptive Experimentation Platform
-	pkgver = 0.1.20
+	pkgver = 0.2.5.1
 	pkgrel = 1
-	url = https://ax.dev
-	arch = x86_64
+	url = https://github.com/facebook/ax
+	arch = any
 	license = MIT
-	makedepends = python
-	makedepends = python-setuptools
-	depends = python
+	makedepends = python-setuptools-scm
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-botorch
 	depends = python-jinja
 	depends = python-pandas
@@ -15,8 +16,7 @@ pkgbase = python-ax-platform
 	depends = python-scikit-learn
 	depends = python-plotly
 	depends = python-typeguard
-	source = python-ax-platform-0.1.20::https://github.com/facebook/Ax/archive/v0.1.20.tar.gz
-	sha256sums = be40948a6dcd38b9ab3fe182d66d8a234cd016acdced1cf424730a84692b79cb
+	source = python-ax-platform-0.2.5.1.tar.gz::https://github.com/facebook/ax/archive/0.2.5.1.tar.gz
+	sha256sums = 17efb87da3ff864d65f861d7f1827c3756dc0c9350e4dc52cce37765c7d3f01e
 
 pkgname = python-ax-platform
-
