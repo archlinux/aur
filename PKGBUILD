@@ -2,16 +2,16 @@
 
 pkgname=xviewer-git
 _pkgbasename=xviewer
-pkgver=3.2.4.r0.g0ec47bc
+pkgver=3.2.4.r10.g82bb9d2
 pkgrel=1
 pkgdesc="A simple and easy to use image viewer. X-Apps Project (git version)."
 arch=('i686' 'x86_64' 'armv7h')
 license=('GPL')
 depends=('xapp' 'gtk3' 'cinnamon-desktop' 'libpeas' 'libexif' 'libjpeg-turbo'
          'exempi')
-makedepends=('git' 'gnome-common' 'gobject-introspection' 'librsvg')
+makedepends=('git' 'gobject-introspection' 'librsvg' 'meson' 'itstool'
+             'gtk-doc')
 optdepends=('xviewer-plugins-git: Extra plugins'
-            'exempi: XMP metadata support'
             'librsvg: for scaling svg images')
 provides=(${_pkgbasename})
 conflicts=(${_pkgbasename})
@@ -20,22 +20,25 @@ url='https://github.com/linuxmint/xviewer'
 source=("${pkgname}::git+${url}.git")
 md5sums=('SKIP')
 
+
 pkgver() {
     cd ${srcdir}/${pkgname}
     git describe --long --tags --exclude 'master*' | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-    cd ${srcdir}/${pkgname}
+    mkdir -p "${srcdir}"/${pkgname}/build
+    cd "${srcdir}"/${pkgname}/build
 
-    NOCONFIGURE=1 gnome-autogen.sh
-    gnome-autogen.sh --prefix="/usr" \
-        --localstatedir="/var" \
-         --libexecdir="/usr/lib"
-    make
+    meson --prefix=/usr \
+          --libexecdir=lib/${pkgname} \
+          --buildtype=plain \
+          ..
+    ninja
 }
 
 package(){
-    cd ${srcdir}/${pkgname}
-    make DESTDIR="$pkgdir/" install
+    cd "${srcdir}"/${pkgname}/build
+
+    DESTDIR="$pkgdir/" ninja install
 }
