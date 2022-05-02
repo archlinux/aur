@@ -1,7 +1,7 @@
 # Maintainer: Morteza NourelahiAlamdari <m@0t1.me>
 
 pkgname=google-cloud-cpp
-pkgver=1.39.1
+pkgver=1.40.0
 pkgrel=1
 pkgdesc="C++ Client Libraries for Google Cloud Services"
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('Apache-2.0')
 makedepends=('gcc' 'cmake' 'm4')
 depends=('protobuf' 'grpc' 'nlohmann-json' 'c-ares' 'zlib' 'openssl' 'curl' 'abseil-cpp' 'google-crc32c')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/googleapis/google-cloud-cpp/archive/v$pkgver.tar.gz")
-sha256sums=('9f9a2f1250efd47a3c8fbe2a3874b3d8aa45ef43c6d54cfcc764ad27bc78d21d')
+sha256sums=('32487ddd862d047b3721e7ae354d5bae889117526a190b532d8b65b6c043960b')
 
 build() {
   cd "$pkgname-$pkgver"
@@ -26,4 +26,6 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   cmake --build cmake-out --target install
+  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
