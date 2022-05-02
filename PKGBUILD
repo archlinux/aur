@@ -4,7 +4,7 @@ pkgname=epoch-bin
 pkgver=0.2.0
 pkgrel=1
 pkgdesc="The Epoch IDE for Lingua Franca"
-arch=('x86_64')
+arch=('any')
 url="https://lf-lang.org"
 license=('BSD')
 depends=('java-runtime=17' 'gtk3')
@@ -20,5 +20,5 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
   ln -s "${pkgdir}/opt/lf/epoch/epoch" "${pkgdir}/usr/bin/epoch"
   install -Dm644 "${startdir}/epoch.desktop" "${pkgdir}/usr/share/applications/epoch.desktop"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/epoch/LICENSE"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/epoch-bin/LICENSE"
 }
