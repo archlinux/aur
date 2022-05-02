@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=ghw-git
-pkgver=v0.8.0.r78.g4d0ed8f
-pkgrel=3
+pkgver=v0.9.0.r7.g2ea05cb
+pkgrel=1
 pkgdesc="Golang hardware discovery/inspection library"
 arch=('x86_64')
 url="https://github.com/jaypipes/ghw.git"
