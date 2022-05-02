@@ -1,12 +1,12 @@
-# Maintainer: Ariejan de Vroom <ariejan at devroom dot io>
+# Maintainer: Ariejan de Vroom <ariejan[at]devroom[dot]io>
 pkgname=txdx
 pkgver=1.1.1
 pkgrel=21
-pkgdesc="A free todo app that supports todo.txt"
+pkgdesc="Todo's like you've never seen before"
 arch=('x86_64' 'aarch64')
 url=https://gitlab.devroom.io/ariejan/txdx
 depends=('gtk3' 'zenity')
-makepends=('clang' 'ninja' 'cmake' 'git' 'unzip' 'flutter-beta' 'flutter-group-pacman-hook')
+makedepends=('clang' 'ninja' 'cmake' 'git' 'unzip' 'flutter-beta' 'flutter-group-pacman-hook')
 
 source=("txdx-${pkgver}.tar.gz::https://gitlab.devroom.io/ariejan/txdx/-/archive/${pkgver}/txdx-${pkgver}.tar.gz")
 sha256sums=('5da8bcdae8a61e7d38a0e2068021d884737b7150323ea07d9d5407d0847144a6')
