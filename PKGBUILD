@@ -2,9 +2,9 @@
 # Contributor: Nick B <Shirakawasuna at gmail _dot_com>
 
 pkgname=seaview
-pkgver=5.0.4
-pkgrel=2
-pkgdesc="GUI for multiple sequence alignment and molecular phylogeny"
+pkgver=5.0.5
+pkgrel=6
+pkgdesc="GUI for multiple sequence alignment and molecular phylogeny. https://doi.org/10.1093/molbev/msp259"
 arch=('x86_64')
 url="http://doua.prabi.fr/software/seaview"
 license=('GPL3')
@@ -12,10 +12,10 @@ optdepends=('clustal-omega'
       'muscle'
 	    'gblocks-bin'
 	    'phyml')
-source=("http://doua.prabi.fr/software/seaview_data/seaview5-64.tgz"
+source=("http://doua.prabi.fr/software/seaview_data/seaview${pkgver: 0: 1}-64.tgz"
         'seaview.desktop'
         'seaview.png')
-md5sums=('c22422d4da24da45a0aa8a3c35e941bf'
+md5sums=('64884b3237b795fb76927c61a3c2b242'
          '43fa9e52949a5cd73f202af76e2cab56'
          '337583df60b24d724d96e511a3f063ce')
 
