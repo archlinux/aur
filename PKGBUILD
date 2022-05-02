@@ -32,7 +32,7 @@ pkgver() {
 }
 
 package() {
-	cd WHY2/
+	cd "$_pkgname"
 
 	chmod +x build.sh
 	./build.sh install
