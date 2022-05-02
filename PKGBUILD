@@ -1,4 +1,5 @@
-# Maintainer: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
+# Maintainer: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Emmanuel Gil Peyrot <linkmauve@linkmauve.fr>
 
 pkgname=dav1d-git
 pkgver=0.8.2.r22.gd432a39
