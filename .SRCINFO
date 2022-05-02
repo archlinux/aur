@@ -1,6 +1,6 @@
 pkgbase = leo
 	pkgdesc = Outliner, Editor, and Personal Information Manager
-	pkgver = 6.6
+	pkgver = 6.6.1
 	pkgrel = 1
 	url = https://github.com/leo-editor/leo-editor
 	arch = any
@@ -25,10 +25,10 @@ pkgbase = leo
 	depends = shared-mime-info
 	optdepends = python-pyenchant: spellchecking support
 	provides = leo-editor
-	source = leo-6.6.tar.gz::https://github.com/leo-editor/leo-editor/archive/v6.6.tar.gz
+	source = leo-6.6.1.tar.gz::https://github.com/leo-editor/leo-editor/archive/v6.6.1.tar.gz
 	source = leo.desktop
 	source = leo.xml
-	sha256sums = aa08ad516c3ef20d2d0c9190f2c0cb2786656e98b68091cc37bf720ece9123ee
+	sha256sums = 653902e67d359fcaf60aeeca88fb64c9c207f992e8ff9a8dbf91eea06647ed2b
 	sha256sums = 4633876eb91eff206660359ee7da459211e8f87fd73ebbc680fd437c70b63467
 	sha256sums = 630852279324b0d9acf656c4684f16777d64f49b4062bd101c5cddbfc33c82cb
 

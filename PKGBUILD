@@ -5,7 +5,7 @@
 # Contributor: David Scholl <djscholl at gmail dot com>
 
 pkgname=leo
-pkgver=6.6
+pkgver=6.6.1
 pkgrel=1
 pkgdesc="Outliner, Editor, and Personal Information Manager"
 arch=('any')
@@ -35,7 +35,7 @@ provides=('leo-editor')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'leo.desktop'
         'leo.xml')
-sha256sums=('aa08ad516c3ef20d2d0c9190f2c0cb2786656e98b68091cc37bf720ece9123ee'
+sha256sums=('653902e67d359fcaf60aeeca88fb64c9c207f992e8ff9a8dbf91eea06647ed2b'
             '4633876eb91eff206660359ee7da459211e8f87fd73ebbc680fd437c70b63467'
             '630852279324b0d9acf656c4684f16777d64f49b4062bd101c5cddbfc33c82cb')
 
