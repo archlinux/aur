@@ -2,7 +2,7 @@
 pkgname=webcord-git
 pkgver=3.1.3.r459.964e2e1
 pkgrel=2
-pkgdesc="A Discord client based on the Electron engine."
+pkgdesc="A Discord and Fosscord API-less client made with the Electron."
 arch=("any")
 
 _repo="WebCord"
