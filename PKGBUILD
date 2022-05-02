@@ -4,10 +4,10 @@
 # Maintainer: Uffe Jakobsen <_microtop_-at-_starion_-_dot_-_dk_>
 #
 
-_pkgver="1_8l"
+_pkgver="1_9"
 
 pkgname=vasm
-pkgver=1.8l
+pkgver=1.9
 pkgrel=1
 pkgdesc="Portable and retargetable 6502 6800 6809 arm c16x jagrisc m68k pdp11 ppc qnice test tr3200 vidcore x86 z80 assembler."
 arch=('i686' 'x86_64')
@@ -18,7 +18,7 @@ depends=()
 #source=(http://sun.hasenbraten.de/vasm/release/vasm.tar.gz) # latest unversioned source url
 #source=(http://server.owl.de/~frank/tags/${pkgname}${_pkgver}.tar.gz)
 source=(http://phoenix.owl.de/tags/${pkgname}${_pkgver}.tar.gz)
-md5sums=('eccbef769b4e29a6eaf613709f607466')
+sha256sums=('1986e21096a7a08f18699921c719098152f0e981468fa8bf651fe44681526482')
 
 
 # TODO: dynamic lists based on dirs below vasm/cpus, vasm/syntax, vasm/output_*.c/.h
