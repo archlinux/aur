@@ -2,14 +2,14 @@
 
 pkgname=doh-curl-git
 pkgrel=1
-pkgver=doh.0.1.r16.gacc9ab5
+pkgver=doh.0.1.r20.g17fd81d
 pkgdesc='stand-alone application for DoH (DNS-over-HTTPS) name resolves and lookups'
 arch=(any)
 url=https://github.com/curl/doh
 license=('MIT')
 depends=('gcc-libs')
 makedepends=('git' 'make' 'gcc')
-source=("git://github.com/curl/doh.git")
+source=("git+https://github.com/curl/doh.git")
 sha256sums=('SKIP')
 provides=('doh')
 pkgver() {
