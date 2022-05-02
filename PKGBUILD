@@ -2,19 +2,19 @@
 
 pkgname=nodejs-addon-api
 _npmname=${pkgname/js}
-pkgver=4.3.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc='Node.js API (N-API)'
 arch=(any)
 url="https://github.com/nodejs/$_npmname"
 license=(MIT)
-depends=(nodejs)
+depends=('nodejs>=14')
 makedepends=(jq
              moreutils
              npm)
 _archive="$_npmname-$pkgver"
 source=("$url/archive/v$pkgver/$_archive.tar.gz")
-sha256sums=('0e4b59fe0fb9c61b2d38850ae4e9fc1f2e284757e1780e67d4f43249a1a375c4')
+sha256sums=('2bdf9c540f67c43036d58b3146e61b437148939efc8d4cde2d1314fdaeb39e9b')
 
 prepare() {
 	cd "$_archive"
