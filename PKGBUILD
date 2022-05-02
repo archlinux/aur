@@ -7,7 +7,7 @@ pkgdesc="The Epoch IDE for Lingua Franca"
 arch=('any')
 url="https://lf-lang.org"
 license=('BSD')
-depends=('java-runtime=17' 'gtk3')
+depends=('java-runtime=17' 'python' 'nodejs' 'lib32-gcc-libs' 'perl')
 
 source=("https://github.com/lf-lang/lingua-franca/releases/download/v${pkgver}/epoch_ide_${pkgver}-linux.gtk.x86_64.tar.gz"
         "https://raw.githubusercontent.com/lf-lang/lingua-franca/v${pkgver}/LICENSE")

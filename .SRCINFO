@@ -3,10 +3,13 @@ pkgbase = epoch-bin
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://lf-lang.org
-	arch = x86_64
+	arch = any
 	license = BSD
 	depends = java-runtime=17
-	depends = gtk3
+	depends = python
+	depends = nodejs
+	depends = lib32-gcc-libs
+	depends = perl
 	source = https://github.com/lf-lang/lingua-franca/releases/download/v0.2.0/epoch_ide_0.2.0-linux.gtk.x86_64.tar.gz
 	source = https://raw.githubusercontent.com/lf-lang/lingua-franca/v0.2.0/LICENSE
 	sha512sums = c954255f159c1f271acd38a6a5a8f64b2425c5bed3a05fdf1c11d9c51be21c745b5e9127e423a39545b26b9394e1efbbc60ba7b64d93f58fea8a09a220e70378
