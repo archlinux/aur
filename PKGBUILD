@@ -1,6 +1,6 @@
 # Maintainer: Spacingbat3 <git@spacingbat3.anonaddy.com> (https://github.com/spacingbat3)
 pkgname=webcord-git
-pkgver=2.1.2.r324.3342d53
+pkgver=3.1.3.r459.964e2e1
 pkgrel=2
 pkgdesc="A Discord client based on the Electron engine."
 arch=("any")
@@ -21,9 +21,15 @@ md5sums=('SKIP'
 _TIMES='1'
 _TIMES_MAX='?'
 
+_CACHE="${srcdir}/npm-cache"
+
 _echo_times() {
   echo "(${_TIMES}/${_TIMES_MAX})" "${@}"
   let _TIMES++
+}
+
+_npm() {
+  ELECTRON_SKIP_BINARY_DOWNLOAD=1 npm --cache="${_CACHE}" "$@"
 }
 
 pkgver() {
@@ -105,13 +111,12 @@ _pack() {
 _postcompile() {
   cd "${srcdir}/${pkgname%-git}"
   _echo_times "Removing build dependencies..."
-  npm i --cache "${_cache}" --only=prod
+  _npm --only=prod i
   rmdir node_modules/* --ignore-fail-on-non-empty
 }
 
 build() {
   _TIMES_MAX=5
-  _cache="${srcdir}/npm-cache"
   cd "${srcdir}/${pkgname%-git}"
 
   # Remove unnecesary developer dependencies
@@ -125,7 +130,7 @@ build() {
   )
 
   _echo_times "Installing dependencies..."
-  npm r --cache "${_cache}" --save ${_remove_deps[@]}
+  _npm --save r ${_remove_deps[@]}
 
   _cleanup && _compile && _genico
 }
