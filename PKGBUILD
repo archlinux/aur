@@ -1,7 +1,7 @@
 # Maintainer: Magnus Groß, for email contact see AUR commit author email
 _pkgname=grandorgue
 pkgname="$_pkgname"-git
-pkgver=3.6.5.0.r4.g2c34375d
+pkgver=3.6.6.1.r0.g5be48044
 pkgrel=1
 pkgdesc="Virtual Pipe Organ Software"
 arch=('i686' 'x86_64')
@@ -23,7 +23,7 @@ pkgver() {
 
 build() {
 	cd "$_pkgname"
-	cmake -B build -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE=Release -DUSE_INTERNAL_RTAUDIO=Off -DUSE_INTERNAL_PORTAUDIO=Off -DUSE_INTERNAL_ZITACONVOLVER=Off
+	cmake -B build -DCMAKE_INSTALL_PREFIX="/usr" -DUSE_INTERNAL_RTAUDIO=Off -DUSE_INTERNAL_PORTAUDIO=Off -DUSE_INTERNAL_ZITACONVOLVER=Off
 	cmake --build build
 }
 
