@@ -2,7 +2,7 @@
 
 _target=ft32-elf
 pkgname=$_target-gcc
-pkgver=8.5.0
+pkgver=11.3.0
 _islver=0.24
 pkgrel=2
 pkgdesc='The GNU Compiler Collection - cross compiler for Bridgetek FT9xx (bare-metal) target'
@@ -15,7 +15,7 @@ optdepends=("$_target-newlib: Standard C library optimized for embedded systems"
 options=(!emptydirs !strip)
 source=("https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"{,.sig}
         "https://libisl.sourceforge.io/isl-$_islver.tar.xz")
-sha512sums=('92f599680e6b7fbce88bcdda810f468777d541e5fddfbb287f7977d51093de2a5178bd0e6a08dfe37090ea10a0508a43ccd00220041abbbec33f1179bfc174d8'
+sha512sums=('f0be5ad705c73b84477128a69c047f57dd47002f375eb60e1e842e08cf2009a509e92152bca345823926d550b7395ae6d4de7db51d1ee371c2dc37313881fca7'
             'SKIP'
             'ff6bdcff839e1cd473f2a0c1e4dd4a3612ec6fee4544ccbc62b530a7248db2cf93b4b99bf493a86ddf2aba00e768927265d5d411f92061ea85fd7929073428e8')
 validpgpkeys=('13975A70E63C361C73AE69EF6EEB81F8981C74C7'  # Richard Guenther <richard.guenther@gmail.com>
