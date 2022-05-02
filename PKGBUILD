@@ -19,4 +19,5 @@ package() {
   echo "#!/bin/bash" > "${pkgdir}/usr/bin/lfc"
   echo "java -jar \"/usr/share/java/lfc/org.lflang.lfc-${pkgver}-SNAPSHOT-all.jar\" \"\$@\"" >> "${pkgdir}/usr/bin/lfc"
   chmod 755 "${pkgdir}/usr/bin/lfc"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/lfc-bin/LICENSE"
 }

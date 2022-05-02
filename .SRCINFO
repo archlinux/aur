@@ -3,9 +3,10 @@ pkgbase = lfc-bin
 	pkgver = 0.2.0
 	pkgrel = 1
 	url = https://lf-lang.org
-	arch = x86_64
+	arch = any
 	license = BSD
 	depends = java-runtime=17
+	depends = bash
 	source = https://github.com/lf-lang/lingua-franca/releases/download/v0.2.0/lfc_0.2.0.tar.gz
 	source = https://raw.githubusercontent.com/lf-lang/lingua-franca/v0.2.0/LICENSE
 	sha512sums = d28d7b901204d32f564399b1b633c73fc4816ee5eaea099bea643cb4662b5d9e319773f123a8fa04a48c8026d56b5a369e8659b693817bcdaa037d8b1b5e8751
