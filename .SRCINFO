@@ -1,12 +1,12 @@
 pkgbase = inet-comm
 	pkgdesc = ipv4 internet tcp socket c++ library
-	pkgver = 3.8
-	pkgrel = 1
+	pkgver = 3.9
+	pkgrel = 0
 	url = https://github.com/imperzer0/inet-comm
 	arch = x86_64
 	license = GPL3
 	depends = log-console>=1.18-1
 	source = https://raw.githubusercontent.com/imperzer0/inet-comm/master/inet-comm
-	md5sums = 724e233a064358cdf2199fe251870c0c
+	md5sums = 7c2b16cde8bfef5de0507ed9ded1c3d7
 
 pkgname = inet-comm
