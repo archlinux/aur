@@ -19,9 +19,9 @@ backup=()
 options=()
 install=
 changelog=
-source=('flatpak.txt' 'snap.txt' 'DARCH' 'xprofile' 'mopidy.conf' 'config' 'LICENSE' 'autostart')
+source=('flatpak.txt' 'snap.txt' 'DARCH' 'xprofile' 'mopidy.conf' 'config' 'LICENSE')
 noextract=()
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855' 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855' '63ff81f192496a8c3c4ea552016d8392a513660881192acc46f7ed7fd954be70' 'cb3ffd0957a4c13a42d0e48c76957fddcdcb2d545937780d31b5f0e968359925' '38bf3e66075dc258cd9b404187ede3dad4fc709796aa8b52bb543d766a7e073d' '59f7fcbd8adc8645d7a8f43c91502d91a028062cba587e5a0320aef84dc18961' 'fff425b318f8fd6918fe3e45c8464cbfc6437c01cea84d21e79003e13044a6d6' '3d60110c856cde2e36d3c497255a3b546a6067ce0aa7ab1aadea6f3c01e63f1d')
+sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855' 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855' '63ff81f192496a8c3c4ea552016d8392a513660881192acc46f7ed7fd954be70' 'cb3ffd0957a4c13a42d0e48c76957fddcdcb2d545937780d31b5f0e968359925' '38bf3e66075dc258cd9b404187ede3dad4fc709796aa8b52bb543d766a7e073d' '59f7fcbd8adc8645d7a8f43c91502d91a028062cba587e5a0320aef84dc18961' 'fff425b318f8fd6918fe3e45c8464cbfc6437c01cea84d21e79003e13044a6d6')
 validpgpkeys=()
 
 # prepare() {
@@ -53,9 +53,6 @@ package() {
 
 	# X11
 	install -Dm755 "$srcdir/xprofile" "$pkgdir/etc/xprofile"
-
-	# openbox
-	install -Dm755 "$srcdir/autostart" "$pkgdir/etc/xdg/openbox/autostart"
 
 	# Spotify Music
 	install -Dm644 "$srcdir/mopidy.conf" "$pkgdir/usr/share/darch/mopidy.conf"
