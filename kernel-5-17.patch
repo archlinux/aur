@@ -11,11 +11,11 @@ diff --git a/kernel/generic_raw_uart.c b/kernel/generic_raw_uart.c
 index f61b338..b730bf4 100644
 --- a/kernel/generic_raw_uart.c
 +++ b/kernel/generic_raw_uart.c
-@@ -773,7 +773,11 @@ static int generic_raw_uart_proc_show(struct seq_file *m, void *v)
+@@ -800,7 +800,11 @@ static int generic_raw_uart_proc_show(struct seq_file *m, void *v)
  
  static int generic_raw_uart_proc_open(struct inode *inode, struct file *file)
  {
-+#ifdef PDE_DATA
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 17, 0)
    struct generic_raw_uart_instance *instance = PDE_DATA(inode);
 +#else
 +  struct generic_raw_uart_instance *instance = pde_data(inode);

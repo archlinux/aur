@@ -15,7 +15,7 @@ source=('pivccu::git+https://github.com/alexreinert/piVCCU#commit=04a72ced028793
         'kernel-5-17.patch'
         'dkms.conf')
 sha256sums=('SKIP'
-            '76ac6067ec9d98f36ede54d158b2ad4e61c737cdb8f99b0cbd2e2234e777f595'
+            'bd0db7653c8c073449db2fcab02a08247301c281135a5945765ce6a35b35657e'
             '3f821472f7ea0d7e41f7182beb545312da6b03fbade7f00e44f376fdec98580b')
 
 prepare() {
