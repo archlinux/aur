@@ -1,0 +1,23 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Tue, 31 Aug 2021 22:42:24 +0000
+Subject: [PATCH] sdl-1.2.14-disable-mmx
+
+and another one from FS#26020
+---
+ src/video/SDL_yuv_sw.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/video/SDL_yuv_sw.c b/src/video/SDL_yuv_sw.c
+index c555ce06c261..86f436b1b371 100644
+--- a/src/video/SDL_yuv_sw.c
++++ b/src/video/SDL_yuv_sw.c
+@@ -89,6 +89,8 @@
+ #include "SDL_yuvfuncs.h"
+ #include "SDL_yuv_sw_c.h"
+ 
++#undef __OPTIMIZE__
++
+ /* The functions used to manipulate software video overlays */
+ static struct private_yuvhwfuncs sw_yuvfuncs = {
+ 	SDL_LockYUV_SW,

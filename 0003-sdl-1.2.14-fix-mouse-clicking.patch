@@ -1,0 +1,34 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: "Jan Alexander Steffens (heftig)" <jan.steffens@gmail.com>
+Date: Tue, 31 Aug 2021 22:41:53 +0000
+Subject: [PATCH] sdl-1.2.14-fix-mouse-clicking
+
+---
+ src/video/x11/SDL_x11events.c | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/src/video/x11/SDL_x11events.c b/src/video/x11/SDL_x11events.c
+index be19a69a8b81..9f13b4640c3e 100644
+--- a/src/video/x11/SDL_x11events.c
++++ b/src/video/x11/SDL_x11events.c
+@@ -451,12 +451,15 @@ printf("Mode: NotifyGrab\n");
+ if ( xevent.xcrossing.mode == NotifyUngrab )
+ printf("Mode: NotifyUngrab\n");
+ #endif
+-		if ( this->input_grab == SDL_GRAB_OFF ) {
+-			posted = SDL_PrivateAppActive(1, SDL_APPMOUSEFOCUS);
++		if ( (xevent.xcrossing.mode != NotifyGrab) &&
++		     (xevent.xcrossing.mode != NotifyUngrab) ) {
++			if ( this->input_grab == SDL_GRAB_OFF ) {
++				posted = SDL_PrivateAppActive(1, SDL_APPMOUSEFOCUS);
++			}
++			posted = SDL_PrivateMouseMotion(0, 0,
++					xevent.xcrossing.x,
++					xevent.xcrossing.y);
+ 		}
+-		posted = SDL_PrivateMouseMotion(0, 0,
+-				xevent.xcrossing.x,
+-				xevent.xcrossing.y);
+ 	    }
+ 	    break;
+ 
