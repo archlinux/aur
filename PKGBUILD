@@ -1,12 +1,12 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 # Based on canon-pixma-mx920-complete by: Miroslav Koškár <http://mkoskar.com/>
 
 _cnijfilterver=5.50
 _scangearmpver=3.50
 
-pkgname='canon-pixma-lt7500-complete'
+pkgname=canon-pixma-lt7500-complete
 pkgver="$_cnijfilterver.$_scangearmpver"
-pkgrel=2
+pkgrel=3
 pkgdesc='Complete driver set (printing and scanning) for Canon Pixma TR7500 series'
 url='http://www.canon.co.uk/Support/Consumer_Products/product_ranges/printers/pixma/index.aspx'
 license=(custom)

@@ -1,7 +1,7 @@
 pkgbase = canon-pixma-lt7500-complete
 	pkgdesc = Complete driver set (printing and scanning) for Canon Pixma TR7500 series
 	pkgver = 5.50.3.50
-	pkgrel = 2
+	pkgrel = 3
 	url = http://www.canon.co.uk/Support/Consumer_Products/product_ranges/printers/pixma/index.aspx
 	arch = i686
 	arch = x86_64
@@ -17,4 +17,3 @@ pkgbase = canon-pixma-lt7500-complete
 	sha256sums = 4a500f4c62fa30f4ded100aa07c95f3ee24ec1afbf2269222fc7801399b19b0a
 
 pkgname = canon-pixma-lt7500-complete
-
