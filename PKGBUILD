@@ -1,6 +1,6 @@
 # Maintainer: Dominik Schwaiger <mail@dominik-schwaiger.ch>
 pkgname=darch-conf
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 epoch=0
 pkgdesc='Configuration files, scripts and packages for an Archcraft based system'
@@ -50,9 +50,6 @@ package() {
 	install -Dm755 "$srcdir/DARCH" "$pkgdir/usr/bin/DARCH"
 	install -Dm644 "$srcdir/flatpak.txt" "$pkgdir/usr/share/darch/flatpak.txt"
 	install -Dm644 "$srcdir/snap.txt" "$pkgdir/usr/share/darch/snap.txt"
-
-	# X11
-	install -Dm755 "$srcdir/xprofile" "$pkgdir/etc/xprofile"
 
 	# Spotify Music
 	install -Dm644 "$srcdir/mopidy.conf" "$pkgdir/usr/share/darch/mopidy.conf"
