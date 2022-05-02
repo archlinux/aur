@@ -1,11 +1,14 @@
 # Maintainer: krisdoodle45
 pkgname=harsh-bin
-pkgver=v0.8.16
-pkgrel=1
+pkgver=0.8.16
+pkgrel=2
 pkgdesc="CLI habit tracking for geeks"
 arch=('any')
 url="https://github.com/wakatara/harsh"
 license=('MIT')
+
+provides=('harsh')
+conflicts=('harsh')
 
 case "$CARCH" in
     armv6h) _pkgarch="armv6"
@@ -22,7 +25,7 @@ case "$CARCH" in
            ;;
 esac
 
-source=("$pkgname-$pkgver.tgz::https://github.com/wakatara/harsh/releases/download/$pkgver/harsh_Linux_$_pkgarch.tar.gz")
+source=("$pkgname-$pkgver.tgz::https://github.com/wakatara/harsh/releases/download/v$pkgver/harsh_Linux_$_pkgarch.tar.gz")
 
 package() {
     install -Dm755 harsh -t"$pkgdir/usr/bin/"
