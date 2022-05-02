@@ -1,12 +1,12 @@
-diff -ur src/binutils-2.29.1.orig/ld/scripttempl/i386go32.sc src/binutils-2.29.1/ld/scripttempl/i386go32.sc
---- src/binutils-2.29.1.orig/ld/scripttempl/i386go32.sc	2017-12-28 16:44:53.887247994 +0200
-+++ src/binutils-2.29.1/ld/scripttempl/i386go32.sc	2017-12-28 16:54:10.917217558 +0200
+diff -ur src/binutils-2.34.orig/ld/scripttempl/i386go32.sc src/binutils-2.34/ld/scripttempl/i386go32.sc
+--- src/binutils-2.34.orig/ld/scripttempl/i386go32.sc	2020-05-16 07:42:54.856946631 +0300
++++ src/binutils-2.34/ld/scripttempl/i386go32.sc	2020-05-16 07:54:52.886973462 +0300
 @@ -84,7 +84,7 @@
      ${RELOCATING+ . = ALIGN(${SEGMENT_SIZE});}
    }
    /* Discard LTO sections.  */
--  /DISCARD/ : { *(gnu.lto_*) } 
-+  /DISCARD/ : { *(.note.GNU-stack) *(.gnu_debuglink) *(gnu.lto_*) }
+-  /DISCARD/ : { *(.gnu.lto_*) } 
++  /DISCARD/ : { *(.note.GNU-stack) *(.gnu_debuglink) *(.gnu.lto_*) }
    /* Stabs debugging sections.  */
    .stab 0 : { *(.stab) }
    .stabstr 0 : { *(.stabstr) }

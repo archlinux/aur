@@ -2,7 +2,7 @@
 #  excluding the changes specific to libbfd and libiberty.
 
 
-2019-02-13 Juan Manuel Guerrero  <juan.guerrero@gmx.de>
+2020-03-01 Juan Manuel Guerrero  <juan.guerrero@gmx.de>
 
 	* binutils/addr2line.c (main):  Use STRIP_FULL_PATH_AND_EXTENSION to adjust file name.
 
@@ -99,16 +99,24 @@
 	* opcodes/config.in [__DJGPP__]:  Added DJGPP specific macros definitions.
 	They are all NO-OPS for other OSes.
 
+	* libctf/config.h.in [__DJGPP__]:  Added DJGPP specific macros definitions.
+	Define HAVE_TSL_SUPPORT if the gcc version is greather equal than 4.3.0.
+
+	* libctf/swap.h [__DJGPP__]:  bswap_identity_64, bswap_16, bswap_32 and
+	bswap_64 reimplemented as macros to avoid issues with the inline versions
+	of those functions with different gcc versions.
+
+	* libctf/ctf-archive.c [HAVE_TSL_SUPPORT]: Do not use __thread if not supported
+	by gcc.
 
 
 
 
 
-
-diff -aprNU5 binutils-2.32.orig/binutils/ar.c binutils-2.32/binutils/ar.c
---- binutils-2.32.orig/binutils/ar.c	2019-01-19 16:01:32 +0000
-+++ binutils-2.32/binutils/ar.c	2019-02-13 22:00:24 +0000
-@@ -694,11 +694,11 @@ main (int argc, char **argv)
+diff -aprNU5 binutils-2.34.orig/binutils/ar.c binutils-2.34/binutils/ar.c
+--- binutils-2.34.orig/binutils/ar.c	2020-01-18 13:55:46 +0000
++++ binutils-2.34/binutils/ar.c	2020-03-01 19:35:24 +0000
+@@ -719,11 +719,11 @@ main (int argc, char **argv)
    setlocale (LC_CTYPE, "");
  #endif
    bindtextdomain (PACKAGE, LOCALEDIR);
@@ -121,9 +129,9 @@ diff -aprNU5 binutils-2.32.orig/binutils/ar.c binutils-2.32/binutils/ar.c
  #if BFD_SUPPORTS_PLUGINS
    bfd_plugin_set_program_name (program_name);
  #endif
-diff -aprNU5 binutils-2.32.orig/binutils/coffdump.c binutils-2.32/binutils/coffdump.c
---- binutils-2.32.orig/binutils/coffdump.c	2019-01-19 16:01:32 +0000
-+++ binutils-2.32/binutils/coffdump.c	2019-02-13 22:00:24 +0000
+diff -aprNU5 binutils-2.34.orig/binutils/coffdump.c binutils-2.34/binutils/coffdump.c
+--- binutils-2.34.orig/binutils/coffdump.c	2020-01-18 13:55:46 +0000
++++ binutils-2.34/binutils/coffdump.c	2020-03-01 19:35:24 +0000
 @@ -497,11 +497,11 @@ main (int ac, char **av)
    setlocale (LC_CTYPE, "");
  #endif
@@ -137,10 +145,10 @@ diff -aprNU5 binutils-2.32.orig/binutils/coffdump.c binutils-2.32/binutils/coffd
  
    expandargv (&ac, &av);
  
-diff -aprNU5 binutils-2.32.orig/binutils/config.in binutils-2.32/binutils/config.in
---- binutils-2.32.orig/binutils/config.in	2019-02-02 15:54:12 +0000
-+++ binutils-2.32/binutils/config.in	2019-02-13 22:00:24 +0000
-@@ -297,5 +297,40 @@
+diff -aprNU5 binutils-2.34.orig/binutils/config.in binutils-2.34/binutils/config.in
+--- binutils-2.34.orig/binutils/config.in	2020-02-01 11:50:08 +0000
++++ binutils-2.34/binutils/config.in	2020-03-01 19:35:24 +0000
+@@ -300,5 +300,40 @@
  /* Define to 1 if you need to in order for `stat' and other things to work. */
  #undef _POSIX_SOURCE
  
@@ -181,9 +189,9 @@ diff -aprNU5 binutils-2.32.orig/binutils/config.in binutils-2.32/binutils/config
 +#else
 +# define STRIP_FULL_PATH_AND_EXTENSION(file_name)  (file_name)
 +#endif
-diff -aprNU5 binutils-2.32.orig/binutils/cxxfilt.c binutils-2.32/binutils/cxxfilt.c
---- binutils-2.32.orig/binutils/cxxfilt.c	2019-01-19 16:01:32 +0000
-+++ binutils-2.32/binutils/cxxfilt.c	2019-02-13 22:00:24 +0000
+diff -aprNU5 binutils-2.34.orig/binutils/cxxfilt.c binutils-2.34/binutils/cxxfilt.c
+--- binutils-2.34.orig/binutils/cxxfilt.c	2020-01-18 13:55:46 +0000
++++ binutils-2.34/binutils/cxxfilt.c	2020-03-01 19:35:24 +0000
 @@ -142,11 +142,11 @@ main (int argc, char **argv)
  {
    int c;
@@ -197,10 +205,10 @@ diff -aprNU5 binutils-2.32.orig/binutils/cxxfilt.c binutils-2.32/binutils/cxxfil
  
    expandargv (&argc, &argv);
  
-diff -aprNU5 binutils-2.32.orig/binutils/nm.c binutils-2.32/binutils/nm.c
---- binutils-2.32.orig/binutils/nm.c	2019-01-19 16:01:32 +0000
-+++ binutils-2.32/binutils/nm.c	2019-02-13 22:00:24 +0000
-@@ -1651,11 +1651,11 @@ main (int argc, char **argv)
+diff -aprNU5 binutils-2.34.orig/binutils/nm.c binutils-2.34/binutils/nm.c
+--- binutils-2.34.orig/binutils/nm.c	2020-01-18 13:55:46 +0000
++++ binutils-2.34/binutils/nm.c	2020-03-01 19:35:24 +0000
+@@ -1695,11 +1695,11 @@ main (int argc, char **argv)
    setlocale (LC_COLLATE, "");
  #endif
    bindtextdomain (PACKAGE, LOCALEDIR);
@@ -213,10 +221,10 @@ diff -aprNU5 binutils-2.32.orig/binutils/nm.c binutils-2.32/binutils/nm.c
  #if BFD_SUPPORTS_PLUGINS
    bfd_plugin_set_program_name (program_name);
  #endif
-diff -aprNU5 binutils-2.32.orig/binutils/objcopy.c binutils-2.32/binutils/objcopy.c
---- binutils-2.32.orig/binutils/objcopy.c	2019-01-19 16:01:32 +0000
-+++ binutils-2.32/binutils/objcopy.c	2019-02-13 22:00:24 +0000
-@@ -5654,11 +5654,11 @@ main (int argc, char *argv[])
+diff -aprNU5 binutils-2.34.orig/binutils/objcopy.c binutils-2.34/binutils/objcopy.c
+--- binutils-2.34.orig/binutils/objcopy.c	2020-01-28 09:32:00 +0000
++++ binutils-2.34/binutils/objcopy.c	2020-03-01 19:35:24 +0000
+@@ -5935,11 +5935,11 @@ main (int argc, char *argv[])
    setlocale (LC_CTYPE, "");
  #endif
    bindtextdomain (PACKAGE, LOCALEDIR);
@@ -229,10 +237,10 @@ diff -aprNU5 binutils-2.32.orig/binutils/objcopy.c binutils-2.32/binutils/objcop
    START_PROGRESS (program_name, 0);
  
    expandargv (&argc, &argv);
-diff -aprNU5 binutils-2.32.orig/binutils/objdump.c binutils-2.32/binutils/objdump.c
---- binutils-2.32.orig/binutils/objdump.c	2019-01-19 16:01:32 +0000
-+++ binutils-2.32/binutils/objdump.c	2019-02-13 22:00:24 +0000
-@@ -4022,11 +4022,11 @@ main (int argc, char **argv)
+diff -aprNU5 binutils-2.34.orig/binutils/objdump.c binutils-2.34/binutils/objdump.c
+--- binutils-2.34.orig/binutils/objdump.c	2020-01-18 13:55:46 +0000
++++ binutils-2.34/binutils/objdump.c	2020-03-01 19:35:24 +0000
+@@ -5031,11 +5031,11 @@ main (int argc, char **argv)
  #endif
  
    bindtextdomain (PACKAGE, LOCALEDIR);
@@ -245,10 +253,10 @@ diff -aprNU5 binutils-2.32.orig/binutils/objdump.c binutils-2.32/binutils/objdum
  
    START_PROGRESS (program_name, 0);
  
-diff -aprNU5 binutils-2.32.orig/binutils/readelf.c binutils-2.32/binutils/readelf.c
---- binutils-2.32.orig/binutils/readelf.c	2019-01-19 16:01:32 +0000
-+++ binutils-2.32/binutils/readelf.c	2019-02-13 22:00:24 +0000
-@@ -571,11 +571,16 @@ print_symbol (signed int width, const ch
+diff -aprNU5 binutils-2.34.orig/binutils/readelf.c binutils-2.34/binutils/readelf.c
+--- binutils-2.34.orig/binutils/readelf.c	2020-01-18 13:55:46 +0000
++++ binutils-2.34/binutils/readelf.c	2020-03-01 19:35:24 +0000
+@@ -584,11 +584,16 @@ print_symbol (signed int width, const ch
  
  #ifdef HAVE_MBSTATE_T
  	  /* Try to find out how many bytes made up the character that was
@@ -265,10 +273,10 @@ diff -aprNU5 binutils-2.32.orig/binutils/readelf.c binutils-2.32/binutils/readel
  #endif
  	  if (n != (size_t) -1 && n != (size_t) -2 && n > 0)
  	    symbol += (n - 1);
-diff -aprNU5 binutils-2.32.orig/binutils/size.c binutils-2.32/binutils/size.c
---- binutils-2.32.orig/binutils/size.c	2019-01-19 16:01:32 +0000
-+++ binutils-2.32/binutils/size.c	2019-02-13 22:00:24 +0000
-@@ -129,11 +129,11 @@ main (int argc, char **argv)
+diff -aprNU5 binutils-2.34.orig/binutils/size.c binutils-2.34/binutils/size.c
+--- binutils-2.34.orig/binutils/size.c	2020-01-18 13:55:46 +0000
++++ binutils-2.34/binutils/size.c	2020-03-01 19:35:24 +0000
+@@ -141,11 +141,11 @@ main (int argc, char **argv)
    setlocale (LC_CTYPE, "");
  #endif
    bindtextdomain (PACKAGE, LOCALEDIR);
@@ -281,9 +289,9 @@ diff -aprNU5 binutils-2.32.orig/binutils/size.c binutils-2.32/binutils/size.c
  
    expandargv (&argc, &argv);
  
-diff -aprNU5 binutils-2.32.orig/binutils/srconv.c binutils-2.32/binutils/srconv.c
---- binutils-2.32.orig/binutils/srconv.c	2019-01-19 16:01:32 +0000
-+++ binutils-2.32/binutils/srconv.c	2019-02-13 22:00:24 +0000
+diff -aprNU5 binutils-2.34.orig/binutils/srconv.c binutils-2.34/binutils/srconv.c
+--- binutils-2.34.orig/binutils/srconv.c	2020-01-18 13:55:46 +0000
++++ binutils-2.34/binutils/srconv.c	2020-03-01 19:35:24 +0000
 @@ -1731,11 +1731,11 @@ main (int ac, char **av)
    setlocale (LC_CTYPE, "");
  #endif
@@ -297,9 +305,9 @@ diff -aprNU5 binutils-2.32.orig/binutils/srconv.c binutils-2.32/binutils/srconv.
  
    expandargv (&ac, &av);
  
-diff -aprNU5 binutils-2.32.orig/binutils/strings.c binutils-2.32/binutils/strings.c
---- binutils-2.32.orig/binutils/strings.c	2019-01-19 16:01:32 +0000
-+++ binutils-2.32/binutils/strings.c	2019-02-13 22:00:24 +0000
+diff -aprNU5 binutils-2.34.orig/binutils/strings.c binutils-2.34/binutils/strings.c
+--- binutils-2.34.orig/binutils/strings.c	2020-01-18 13:55:46 +0000
++++ binutils-2.34/binutils/strings.c	2020-03-01 19:35:24 +0000
 @@ -153,11 +153,11 @@ main (int argc, char **argv)
    setlocale (LC_ALL, "");
  #endif
@@ -313,9 +321,9 @@ diff -aprNU5 binutils-2.32.orig/binutils/strings.c binutils-2.32/binutils/string
  
    expandargv (&argc, &argv);
  
-diff -aprNU5 binutils-2.32.orig/binutils/sysdump.c binutils-2.32/binutils/sysdump.c
---- binutils-2.32.orig/binutils/sysdump.c	2019-01-19 16:01:32 +0000
-+++ binutils-2.32/binutils/sysdump.c	2019-02-13 22:00:24 +0000
+diff -aprNU5 binutils-2.34.orig/binutils/sysdump.c binutils-2.34/binutils/sysdump.c
+--- binutils-2.34.orig/binutils/sysdump.c	2020-01-18 13:55:46 +0000
++++ binutils-2.34/binutils/sysdump.c	2020-03-01 19:35:24 +0000
 @@ -668,11 +668,11 @@ main (int ac, char **av)
    setlocale (LC_CTYPE, "");
  #endif
@@ -329,9 +337,9 @@ diff -aprNU5 binutils-2.32.orig/binutils/sysdump.c binutils-2.32/binutils/sysdum
  
    expandargv (&ac, &av);
  
-diff -aprNU5 binutils-2.32.orig/config.sub binutils-2.32/config.sub
---- binutils-2.32.orig/config.sub	2019-01-19 16:01:32 +0000
-+++ binutils-2.32/config.sub	2019-02-13 22:00:24 +0000
+diff -aprNU5 binutils-2.34.orig/config.sub binutils-2.34/config.sub
+--- binutils-2.34.orig/config.sub	2020-01-18 13:55:46 +0000
++++ binutils-2.34/config.sub	2020-03-01 19:35:24 +0000
 @@ -301,10 +301,19 @@ case $1 in
  				basic_machine=i686-pc
  				os=dicos
@@ -352,9 +360,9 @@ diff -aprNU5 binutils-2.32.orig/config.sub binutils-2.32/config.sub
  			ebmon29k)
  				basic_machine=a29k-amd
  				os=ebmon
-diff -aprNU5 binutils-2.32.orig/djgpp/build.sh binutils-2.32/djgpp/build.sh
---- binutils-2.32.orig/djgpp/build.sh	1970-01-01 00:00:00 +0000
-+++ binutils-2.32/djgpp/build.sh	2019-02-13 22:15:42 +0000
+diff -aprNU5 binutils-2.34.orig/djgpp/build.sh binutils-2.34/djgpp/build.sh
+--- binutils-2.34.orig/djgpp/build.sh	1970-01-01 00:00:00 +0000
++++ binutils-2.34/djgpp/build.sh	2020-03-01 19:35:24 +0000
 @@ -0,0 +1,490 @@
 +#  This script only works in the ./djgpp directory.
 +
@@ -721,7 +729,7 @@ diff -aprNU5 binutils-2.32.orig/djgpp/build.sh binutils-2.32/djgpp/build.sh
 +EOF
 +
 +
-+for file in ../ltmain.sh ../configure ../bfd/configure ../binutils/configure ../gas/configure ../gprof/configure ../ld/configure ../opcodes/configure ../zlib/configure; do
++for file in ../ltmain.sh ../configure ../bfd/configure ../binutils/configure ../gas/configure ../gprof/configure ../ld/configure ../opcodes/configure ../zlib/configure ../libctf/configure; do
 +  if test ! -f ${file}.orig; then
 +    cp -vf ${file} ${file}.orig
 +    touch ${file}.orig -r ${file}
@@ -780,7 +788,7 @@ diff -aprNU5 binutils-2.32.orig/djgpp/build.sh binutils-2.32/djgpp/build.sh
 +EOF
 +
 +
-+for file in ./../bfd/Makefile.in ./../bfd/doc/Makefile.in ./../binutils/doc/Makefile.in ./../etc/Makefile.in ./../gas/doc/Makefile.in ./../gprof/Makefile.in ./../ld/Makefile.in ./../libiberty/Makefile.in; do
++for file in ./../bfd/Makefile.in ./../bfd/doc/Makefile.in ./../binutils/doc/Makefile.in ./../etc/Makefile.in ./../gas/doc/Makefile.in ./../gprof/Makefile.in ./../ld/Makefile.in ./../libiberty/Makefile.in ./../libctf/Makefile.in; do
 +  if test ! -f ${file}.orig; then
 +    cp -vf ${file} ${file}.orig
 +    touch ${file}.orig -r ${file}
@@ -846,10 +854,10 @@ diff -aprNU5 binutils-2.32.orig/djgpp/build.sh binutils-2.32/djgpp/build.sh
 +make >> build_log.txt  2>&1
 +
 +touch stop_build.txt
-diff -aprNU5 binutils-2.32.orig/gas/as.c binutils-2.32/gas/as.c
---- binutils-2.32.orig/gas/as.c	2019-01-19 16:01:32 +0000
-+++ binutils-2.32/gas/as.c	2019-02-13 22:00:26 +0000
-@@ -1223,11 +1223,11 @@ main (int argc, char ** argv)
+diff -aprNU5 binutils-2.34.orig/gas/as.c binutils-2.34/gas/as.c
+--- binutils-2.34.orig/gas/as.c	2020-01-18 13:55:46 +0000
++++ binutils-2.34/gas/as.c	2020-03-01 19:35:24 +0000
+@@ -1240,11 +1240,11 @@ main (int argc, char ** argv)
  
  #ifdef HOST_SPECIAL_INIT
    HOST_SPECIAL_INIT (argc, argv);
@@ -862,9 +870,9 @@ diff -aprNU5 binutils-2.32.orig/gas/as.c binutils-2.32/gas/as.c
    expandargv (&argc, &argv);
  
    START_PROGRESS (myname, 0);
-diff -aprNU5 binutils-2.32.orig/gas/config/obj-coff-seh.c binutils-2.32/gas/config/obj-coff-seh.c
---- binutils-2.32.orig/gas/config/obj-coff-seh.c	2019-01-19 16:01:32 +0000
-+++ binutils-2.32/gas/config/obj-coff-seh.c	2019-02-13 22:00:26 +0000
+diff -aprNU5 binutils-2.34.orig/gas/config/obj-coff-seh.c binutils-2.34/gas/config/obj-coff-seh.c
+--- binutils-2.34.orig/gas/config/obj-coff-seh.c	2020-01-18 13:55:46 +0000
++++ binutils-2.34/gas/config/obj-coff-seh.c	2020-03-01 19:35:24 +0000
 @@ -62,11 +62,11 @@ get_pxdata_name (segT seg, const char *b
    else if (dot < dollar)
      name = dot;
@@ -878,10 +886,10 @@ diff -aprNU5 binutils-2.32.orig/gas/config/obj-coff-seh.c binutils-2.32/gas/conf
  }
  
  /* Allocate a seh_seg_list structure.  */
-diff -aprNU5 binutils-2.32.orig/gas/config.in binutils-2.32/gas/config.in
---- binutils-2.32.orig/gas/config.in	2019-02-02 15:50:24 +0000
-+++ binutils-2.32/gas/config.in	2019-02-13 22:00:26 +0000
-@@ -409,5 +409,42 @@
+diff -aprNU5 binutils-2.34.orig/gas/config.in binutils-2.34/gas/config.in
+--- binutils-2.34.orig/gas/config.in	2020-02-01 11:49:54 +0000
++++ binutils-2.34/gas/config.in	2020-03-01 19:35:24 +0000
+@@ -412,5 +412,42 @@
  #undef inline
  #endif
  
@@ -924,14 +932,14 @@ diff -aprNU5 binutils-2.32.orig/gas/config.in binutils-2.32/gas/config.in
 +#else
 +# define STRIP_FULL_PATH_AND_EXTENSION(file_name)  (file_name)
 +#endif
-diff -aprNU5 binutils-2.32.orig/gas/dw2gencfi.c binutils-2.32/gas/dw2gencfi.c
---- binutils-2.32.orig/gas/dw2gencfi.c	2019-01-19 16:01:32 +0000
-+++ binutils-2.32/gas/dw2gencfi.c	2019-02-13 22:00:26 +0000
+diff -aprNU5 binutils-2.34.orig/gas/dw2gencfi.c binutils-2.34/gas/dw2gencfi.c
+--- binutils-2.34.orig/gas/dw2gencfi.c	2020-01-18 13:55:46 +0000
++++ binutils-2.34/gas/dw2gencfi.c	2020-03-01 19:35:24 +0000
 @@ -255,11 +255,11 @@ get_debugseg_name (segT seg, const char
- 	name = dot;
-       else
- 	name = dollar;
-     }
+   else if (dot < dollar)
+     name = dot;
+   else
+     name = dollar;
  
 -  return concat (base_name, name, NULL);
 +  return concat (base_name, name, (char *)NULL);
@@ -940,9 +948,9 @@ diff -aprNU5 binutils-2.32.orig/gas/dw2gencfi.c binutils-2.32/gas/dw2gencfi.c
  /* Allocate a dwcfi_seg_list structure.  */
  
  static struct dwcfi_seg_list *
-diff -aprNU5 binutils-2.32.orig/gold/config.in binutils-2.32/gold/config.in
---- binutils-2.32.orig/gold/config.in	2019-01-19 16:33:26 +0000
-+++ binutils-2.32/gold/config.in	2019-02-13 22:00:26 +0000
+diff -aprNU5 binutils-2.34.orig/gold/config.in binutils-2.34/gold/config.in
+--- binutils-2.34.orig/gold/config.in	2020-01-18 14:04:34 +0000
++++ binutils-2.34/gold/config.in	2020-03-01 19:35:24 +0000
 @@ -295,5 +295,39 @@
     this defined. */
  #undef _POSIX_1_SOURCE
@@ -983,9 +991,9 @@ diff -aprNU5 binutils-2.32.orig/gold/config.in binutils-2.32/gold/config.in
 +#else
 +# define STRIP_FULL_PATH_AND_EXTENSION(file_name)  (file_name)
 +#endif
-diff -aprNU5 binutils-2.32.orig/gprof/gconfig.in binutils-2.32/gprof/gconfig.in
---- binutils-2.32.orig/gprof/gconfig.in	2019-02-02 15:56:30 +0000
-+++ binutils-2.32/gprof/gconfig.in	2019-02-13 22:00:26 +0000
+diff -aprNU5 binutils-2.34.orig/gprof/gconfig.in binutils-2.34/gprof/gconfig.in
+--- binutils-2.34.orig/gprof/gconfig.in	2020-02-01 11:52:24 +0000
++++ binutils-2.34/gprof/gconfig.in	2020-03-01 19:35:24 +0000
 @@ -117,5 +117,42 @@
     this defined. */
  #undef _POSIX_1_SOURCE
@@ -1029,9 +1037,9 @@ diff -aprNU5 binutils-2.32.orig/gprof/gconfig.in binutils-2.32/gprof/gconfig.in
 +#else
 +# define STRIP_FULL_PATH_AND_EXTENSION(file_name)  (file_name)
 +#endif
-diff -aprNU5 binutils-2.32.orig/gprof/gprof.c binutils-2.32/gprof/gprof.c
---- binutils-2.32.orig/gprof/gprof.c	2019-01-19 16:01:32 +0000
-+++ binutils-2.32/gprof/gprof.c	2019-02-13 22:00:26 +0000
+diff -aprNU5 binutils-2.34.orig/gprof/gprof.c binutils-2.34/gprof/gprof.c
+--- binutils-2.34.orig/gprof/gprof.c	2020-01-18 13:55:48 +0000
++++ binutils-2.34/gprof/gprof.c	2020-03-01 19:35:24 +0000
 @@ -196,11 +196,17 @@ main (int argc, char **argv)
  #ifdef ENABLE_NLS
    bindtextdomain (PACKAGE, LOCALEDIR);
@@ -1051,9 +1059,9 @@ diff -aprNU5 binutils-2.32.orig/gprof/gprof.c binutils-2.32/gprof/gprof.c
    expandargv (&argc, &argv);
  
    while ((ch = getopt_long (argc, argv,
-diff -aprNU5 binutils-2.32.orig/ld/config.in binutils-2.32/ld/config.in
---- binutils-2.32.orig/ld/config.in	2019-02-02 15:54:48 +0000
-+++ binutils-2.32/ld/config.in	2019-02-13 22:00:26 +0000
+diff -aprNU5 binutils-2.34.orig/ld/config.in binutils-2.34/ld/config.in
+--- binutils-2.34.orig/ld/config.in	2020-02-01 11:50:28 +0000
++++ binutils-2.34/ld/config.in	2020-03-01 19:35:24 +0000
 @@ -252,5 +252,52 @@
     this defined. */
  #undef _POSIX_1_SOURCE
@@ -1107,10 +1115,10 @@ diff -aprNU5 binutils-2.32.orig/ld/config.in binutils-2.32/ld/config.in
 +#else
 +# define STRIP_FULL_PATH_AND_EXTENSION(file_name)  (file_name)
 +#endif
-diff -aprNU5 binutils-2.32.orig/ld/configure binutils-2.32/ld/configure
---- binutils-2.32.orig/ld/configure	2019-02-02 15:54:42 +0000
-+++ binutils-2.32/ld/configure	2019-02-13 22:00:26 +0000
-@@ -17667,10 +17667,19 @@ ac_config_commands="$ac_config_commands
+diff -aprNU5 binutils-2.34.orig/ld/configure binutils-2.34/ld/configure
+--- binutils-2.34.orig/ld/configure	2020-02-01 11:50:24 +0000
++++ binutils-2.34/ld/configure	2020-03-01 19:35:24 +0000
+@@ -17700,10 +17700,19 @@ ac_config_commands="$ac_config_commands
  
  
  
@@ -1130,10 +1138,10 @@ diff -aprNU5 binutils-2.32.orig/ld/configure binutils-2.32/ld/configure
  cat >confcache <<\_ACEOF
  # This file is a shell script that caches the results of configure
  # tests run on this system so they can be shared between configure
-diff -aprNU5 binutils-2.32.orig/ld/ldfile.c binutils-2.32/ld/ldfile.c
---- binutils-2.32.orig/ld/ldfile.c	2019-01-19 16:01:32 +0000
-+++ binutils-2.32/ld/ldfile.c	2019-02-14 21:15:36 +0000
-@@ -62,10 +62,127 @@ typedef struct search_arch
+diff -aprNU5 binutils-2.34.orig/ld/ldfile.c binutils-2.34/ld/ldfile.c
+--- binutils-2.34.orig/ld/ldfile.c	2020-01-18 13:55:48 +0000
++++ binutils-2.34/ld/ldfile.c	2020-03-01 19:35:24 +0000
+@@ -63,10 +63,127 @@ typedef struct search_arch
  
  static search_dirs_type **search_tail_ptr = &search_head;
  static search_arch_type *search_arch_head;
@@ -1261,7 +1269,7 @@ diff -aprNU5 binutils-2.32.orig/ld/ldfile.c binutils-2.32/ld/ldfile.c
  
  static bfd_boolean
  is_sysrooted_pathname (const char *name)
-@@ -122,12 +239,23 @@ ldfile_add_library_path (const char *nam
+@@ -123,12 +240,23 @@ ldfile_add_library_path (const char *nam
  
  bfd_boolean
  ldfile_try_open_bfd (const char *attempt,
@@ -1285,7 +1293,7 @@ diff -aprNU5 binutils-2.32.orig/ld/ldfile.c binutils-2.32/ld/ldfile.c
        if (entry->the_bfd == NULL)
  	info_msg (_("attempt to open %s failed\n"), attempt);
        else
-@@ -369,11 +497,11 @@ ldfile_open_file_search (const char *arc
+@@ -370,11 +498,11 @@ ldfile_open_file_search (const char *arc
        if (entry->flags.maybe_archive && !entry->flags.full_name_provided)
  	string = concat (search->name, slash, lib, entry->filename,
  			 arch, suffix, (const char *) NULL);
@@ -1298,10 +1306,10 @@ diff -aprNU5 binutils-2.32.orig/ld/ldfile.c binutils-2.32/ld/ldfile.c
  	{
  	  entry->filename = string;
  	  return TRUE;
-diff -aprNU5 binutils-2.32.orig/ld/ldmain.c binutils-2.32/ld/ldmain.c
---- binutils-2.32.orig/ld/ldmain.c	2019-01-19 16:01:32 +0000
-+++ binutils-2.32/ld/ldmain.c	2019-02-13 22:00:26 +0000
-@@ -200,11 +200,11 @@ main (int argc, char **argv)
+diff -aprNU5 binutils-2.34.orig/ld/ldmain.c binutils-2.34/ld/ldmain.c
+--- binutils-2.34.orig/ld/ldmain.c	2020-01-18 13:55:48 +0000
++++ binutils-2.34/ld/ldmain.c	2020-03-01 19:35:24 +0000
+@@ -203,11 +203,11 @@ main (int argc, char **argv)
    setlocale (LC_CTYPE, "");
  #endif
    bindtextdomain (PACKAGE, LOCALEDIR);
@@ -1314,7 +1322,7 @@ diff -aprNU5 binutils-2.32.orig/ld/ldmain.c binutils-2.32/ld/ldmain.c
    START_PROGRESS (program_name, 0);
  
    expandargv (&argc, &argv);
-@@ -988,10 +988,34 @@ multiple_definition (struct bfd_link_inf
+@@ -992,10 +992,34 @@ multiple_definition (struct bfd_link_inf
  	  || (nsec->output_section != NULL
  	      && !bfd_is_abs_section (nsec)
  	      && bfd_is_abs_section (nsec->output_section))))
@@ -1349,9 +1357,9 @@ diff -aprNU5 binutils-2.32.orig/ld/ldmain.c binutils-2.32/ld/ldmain.c
      {
        nbfd = obfd;
        nsec = osec;
-diff -aprNU5 binutils-2.32.orig/ld/libnames.tab binutils-2.32/ld/libnames.tab
---- binutils-2.32.orig/ld/libnames.tab	1970-01-01 00:00:00 +0000
-+++ binutils-2.32/ld/libnames.tab	2019-02-13 22:00:26 +0000
+diff -aprNU5 binutils-2.34.orig/ld/libnames.tab binutils-2.34/ld/libnames.tab
+--- binutils-2.34.orig/ld/libnames.tab	1970-01-01 00:00:00 +0000
++++ binutils-2.34/ld/libnames.tab	2020-03-01 19:35:24 +0000
 @@ -0,0 +1,31 @@
 +#
 +#  Table to map libraries long file name to short file names.
@@ -1384,9 +1392,9 @@ diff -aprNU5 binutils-2.32.orig/ld/libnames.tab binutils-2.32/ld/libnames.tab
 +pcre2-16       pcr216
 +pcre2-32       pcr232
 +pcre2-posix    pcr2posix
-diff -aprNU5 binutils-2.32.orig/ld/scripttempl/i386go32.sc binutils-2.32/ld/scripttempl/i386go32.sc
---- binutils-2.32.orig/ld/scripttempl/i386go32.sc	2019-01-19 16:01:32 +0000
-+++ binutils-2.32/ld/scripttempl/i386go32.sc	2019-02-13 22:00:26 +0000
+diff -aprNU5 binutils-2.34.orig/ld/scripttempl/i386go32.sc binutils-2.34/ld/scripttempl/i386go32.sc
+--- binutils-2.34.orig/ld/scripttempl/i386go32.sc	2020-01-18 13:55:48 +0000
++++ binutils-2.34/ld/scripttempl/i386go32.sc	2020-03-01 19:35:24 +0000
 @@ -45,18 +45,27 @@ SECTIONS
    }
    .data ${RELOCATING+ ${DATA_ALIGNMENT}} : {
@@ -1434,9 +1442,147 @@ diff -aprNU5 binutils-2.32.orig/ld/scripttempl/i386go32.sc binutils-2.32/ld/scri
    .stabstr 0 : { *(.stabstr) }
  EOF
  
-diff -aprNU5 binutils-2.32.orig/opcodes/config.in binutils-2.32/opcodes/config.in
---- binutils-2.32.orig/opcodes/config.in	2019-02-02 15:49:40 +0000
-+++ binutils-2.32/opcodes/config.in	2019-02-13 22:00:26 +0000
+diff -aprNU5 binutils-2.34.orig/libctf/config.h.in binutils-2.34/libctf/config.h.in
+--- binutils-2.34.orig/libctf/config.h.in	2020-01-18 14:02:32 +0000
++++ binutils-2.34/libctf/config.h.in	2020-03-01 19:35:24 +0000
+@@ -153,5 +153,35 @@
+    this defined. */
+ #undef _POSIX_1_SOURCE
+ 
+ /* Define to 1 if you need to in order for `stat' and other things to work. */
+ #undef _POSIX_SOURCE
++
++#ifdef __DJGPP__
++/*  gcc no longer includes this by default.  */
++# include <sys/version.h>
++
++/*
++ *  (ENOTSUP and EOPNOTSUPP have the same value on Linux,
++ *  but according to POSIX.1 these error values should be
++ *  distinct.)
++ */
++
++# if !defined(ENOTSUP) && defined(EOPNOTSUPP)
++#  define ENOTSUP  EOPNOTSUPP
++# endif
++
++/* Values taken from FreeBSD.  */
++# ifndef ENOTSUP
++#  define ENOTSUP  9926  /* Operation not supported (POSIX.1-2001).  */
++# endif
++
++# undef  DJGPP_GCC_VERSION
++# define DJGPP_GCC_VERSION  ((__GNUC__) * 10000 + (__GNUC_MINOR__) * 100 + (__GNUC_PATCHLEVEL__))
++# if DJGPP_GCC_VERSION < 40300
++#  define HAVE_TSL_SUPPORT  0
++# else
++#  define HAVE_TSL_SUPPORT  1
++# endif  /* DJGPP_GCC_VERSION */
++# undef DJGPP_GCC_VERSION
++
++#endif  /* __DJGPP__ */
+diff -aprNU5 binutils-2.34.orig/libctf/ctf-archive.c binutils-2.34/libctf/ctf-archive.c
+--- binutils-2.34.orig/libctf/ctf-archive.c	2020-01-18 13:55:48 +0000
++++ binutils-2.34/libctf/ctf-archive.c	2020-03-01 19:58:00 +0000
+@@ -43,11 +43,15 @@ static void *arc_mmap_file (int fd, size
+ static int arc_mmap_writeout (int fd, void *header, size_t headersz,
+ 			      const char **errmsg);
+ static int arc_mmap_unmap (void *header, size_t headersz, const char **errmsg);
+ 
+ /* bsearch() internal state.  */
++#if (HAVE_TSL_SUPPORT - 1) == 0
+ static __thread char *search_nametbl;
++#else
++static char *search_nametbl;
++#endif
+ 
+ /* Write out a CTF archive to the start of the file referenced by the passed-in
+    fd.  The entries in CTF_FILES are referenced by name: the names are passed in
+    the names array, which must have CTF_FILES entries.
+ 
+diff -aprNU5 binutils-2.34.orig/libctf/swap.h binutils-2.34/libctf/swap.h
+--- binutils-2.34.orig/libctf/swap.h	2020-01-18 13:55:48 +0000
++++ binutils-2.34/libctf/swap.h	2020-03-01 19:59:52 +0000
+@@ -25,10 +25,11 @@
+ 
+ #ifdef HAVE_BYTESWAP_H
+ #include <byteswap.h>
+ #else
+ 
++#ifndef __DJGPP__
+ /* Provide our own versions of the byteswap functions.  */
+ static inline uint16_t
+ bswap_16 (uint16_t v)
+ {
+   return ((v >> 8) & 0xff) | ((v & 0xff) << 8);
+@@ -59,8 +60,64 @@ bswap_64 (uint64_t v)
+ 	  | ((v & 0x00000000ff000000ULL) <<  8)
+ 	  | ((v & 0x0000000000ff0000ULL) << 24)
+ 	  | ((v & 0x000000000000ff00ULL) << 40)
+ 	  | ((v & 0x00000000000000ffULL) << 56));
+ }
++#else  /* __DJGPP__ */
++
++/*  The inline functions make trouble with diferent versions of gcc thus use macros.  */
++# if defined (__GNUC__) && (__GNUC__ > 2 || (__GNUC__ == 2 && __GNUC_MINOR__ >= 8))
++#  define __gnuc_extension__  __extension__
++# else
++#  define __gnuc_extension__
++# endif
++
++# define bswap_identity_64(v)                                      \
++  (__gnuc_extension__                                              \
++    ({                                                             \
++       uint64_t value = (v);                                       \
++       value;                                                      \
++    })                                                             \
++  )
++
++# define bswap_16(v)                                               \
++  (__gnuc_extension__                                              \
++    ({                                                             \
++       uint16_t _v = (v);                                          \
++       uint16_t value = (  ((_v >> 8) & 0xFF)                      \
++                         | ((_v & 0xFF) << 8));                    \
++       value;                                                      \
++    })                                                             \
++  )
++
++# define bswap_32(v)                                               \
++  (__gnuc_extension__                                              \
++    ({                                                             \
++       uint32_t _v = (v);                                          \
++       uint32_t value = (  ((_v & 0xFF000000) >> 24)               \
++                         | ((_v & 0x00FF0000) >>  8)               \
++                         | ((_v & 0x0000FF00) <<  8)               \
++                         | ((_v & 0x000000FF) << 24));             \
++       value;                                                      \
++    })                                                             \
++  )
++
++# define bswap_64(v)                                               \
++  (__gnuc_extension__                                              \
++    ({                                                             \
++       uint64_t _v = (v);                                          \
++       uint64_t value = (  ((_v & 0xFF00000000000000ULL) >> 56)    \
++                         | ((_v & 0x00FF000000000000ULL) >> 40)    \
++                         | ((_v & 0x0000FF0000000000ULL) >> 24)    \
++                         | ((_v & 0x000000FF00000000ULL) >>  8)    \
++                         | ((_v & 0x00000000FF000000ULL) <<  8)    \
++                         | ((_v & 0x0000000000FF0000ULL) << 24)    \
++                         | ((_v & 0x000000000000FF00ULL) << 40)    \
++                         | ((_v & 0x00000000000000FFULL) << 56));  \
++       value;                                                      \
++    })                                                             \
++  )
++#endif /* __DJGPP__ */
++
+ #endif /* !defined(HAVE_BYTESWAP_H) */
+ 
+ #endif /* !defined(_CTF_SWAP_H) */
+diff -aprNU5 binutils-2.34.orig/opcodes/config.in binutils-2.34/opcodes/config.in
+--- binutils-2.34.orig/opcodes/config.in	2020-02-01 11:49:44 +0000
++++ binutils-2.34/opcodes/config.in	2020-03-01 19:35:24 +0000
 @@ -118,5 +118,42 @@
     this defined. */
  #undef _POSIX_1_SOURCE
@@ -1480,3 +1626,35 @@ diff -aprNU5 binutils-2.32.orig/opcodes/config.in binutils-2.32/opcodes/config.i
 +#else
 +# define STRIP_FULL_PATH_AND_EXTENSION(file_name)  (file_name)
 +#endif
+
+
+
+
+
+
+
+2020-03-16 Juan Manuel Guerrero  <juan.guerrero@gmx.de>
+
+	* ld/scripttempl/i386go32.sc:  Added missing leading dot to the
+	gnu.lto_ symbol.
+
+
+
+
+
+diff -aprNU5 binutils-2.34.orig/ld/scripttempl/i386go32.sc binutils-2.34/ld/scripttempl/i386go32.sc
+--- binutils-2.34.orig/ld/scripttempl/i386go32.sc	2020-03-16 20:51:36 +0000
++++ binutils-2.34/ld/scripttempl/i386go32.sc	2020-03-16 20:58:40 +0000
+@@ -82,11 +82,11 @@ SECTIONS
+     *(COMMON)
+     ${RELOCATING+ end = . ; PROVIDE(_end = .) ;}
+     ${RELOCATING+ . = ALIGN(${SEGMENT_SIZE});}
+   }
+   /* Discard LTO sections.  */
+-  /DISCARD/ : { *(gnu.lto_*) } 
++  /DISCARD/ : { *(.gnu.lto_*) } 
+   /* Stabs debugging sections.  */
+   .stab 0 : { *(.stab) }
+   .stabstr 0 : { *(.stabstr) }
+ EOF
+ 
