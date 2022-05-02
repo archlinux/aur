@@ -15,4 +15,8 @@ sha512sums=('d28d7b901204d32f564399b1b633c73fc4816ee5eaea099bea643cb4662b5d9e319
 
 package() {
   install -Dm644 "${srcdir}/lfc_${pkgver}/lib/jars/org.lflang.lfc-${pkgver}-SNAPSHOT-all.jar" "${pkgdir}/usr/share/java/lfc/org.lflang.lfc-${pkgver}-SNAPSHOT-all.jar"
+  install -dm755 "${pkgdir}/usr/bin"
+  echo "#!/bin/bash" > "${pkgdir}/usr/bin/lfc"
+  echo "java -jar \"/usr/share/java/lfc/org.lflang.lfc-${pkgver}-SNAPSHOT-all.jar\" \"\$@\"" >> "${pkgdir}/usr/bin/lfc"
+  chmod 755 "${pkgdir}/usr/bin/lfc"
 }
