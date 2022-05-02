@@ -11,7 +11,7 @@ pkgbase = plasma5-wallpapers-xml
 	depends = knewstuff
 	depends = qt5-base
 	depends = qt5-declarative
-	source = plasma5-wallpapers-xml-1.1.0.tar.gz::https://github.com/easyteacher/plasma-wallpapers-xml/archive/refs/tags/v1.1.1.tar.gz
+	source = plasma5-wallpapers-xml-1.1.1.tar.gz::https://github.com/easyteacher/plasma-wallpapers-xml/archive/refs/tags/v1.1.1.tar.gz
 	sha256sums = 35870c5be32bb6970fc762e058651177373b54373c73c7dc7f5895cbce53d451
 
 pkgname = plasma5-wallpapers-xml
