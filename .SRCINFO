@@ -1,0 +1,17 @@
+pkgbase = fccf
+	pkgdesc = fccf: A command-line tool that quickly searches through C/C++ source code in a directory based on a search string and prints relevant code snippets that match the query.
+	pkgver = 0.6.0
+	pkgrel = 1
+	url = https://github.com/p-ranav/fccf
+	arch = x86_64
+	license = MIT
+	makedepends = cmake
+	makedepends = clang
+	makedepends = llvm
+	makedepends = zlib
+	depends = clang
+	depends = llvm
+	source = fccf-0.6.0.tar.gz::https://github.com/p-ranav/fccf/archive/refs/tags/v0.6.0.tar.gz
+	sha256sums = 684403084fb2838338e8dc8792e16d85e744a3b7fe0b15765266fb801a25af65
+
+pkgname = fccf
