@@ -2,16 +2,16 @@
 # Contributor: Johannes Schriewer <jschriewer@arcor.de>
 
 pkgname=kmidimon
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Drumstick MIDI Monitor (kmidimon) is a MIDI monitor for Linux using ALSA sequencer and Qt5 user interface."
 arch=('i686' 'x86_64')
 url="https://kmidimon.sourceforge.io/"
 license=('GPL')
 depends=('alsa-lib' 'drumstick')
-makedepends=('cmake')
+makedepends=('cmake' 'pandoc')
 source=("https://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('e245aaa7e6be47c6f5980ff610eaca97')
+md5sums=('cb016c68c1daa1ea2d55c3bda933f371')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
