@@ -3,7 +3,7 @@
 pkgname=tiledb
 _pkgname=TileDB
 pkgver=2.8.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The Universal Storage Engine"
 arch=('x86_64')
 url="https://tiledb.com/"
@@ -24,4 +24,6 @@ build() {
 package() {
   cd "$_pkgname-$pkgver"
   make install
+  install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }
