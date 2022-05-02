@@ -3,7 +3,7 @@
 
 pkgname=thunderbird-beta
 _pkgname=thunderbird
-pkgver=100.0b3
+pkgver=100.0b4
 pkgrel=1
 pkgdesc='Beta version of standalone mail and news reader from mozilla.org'
 arch=('x86_64')
@@ -24,7 +24,7 @@ source=(https://ftp.mozilla.org/pub/mozilla.org/thunderbird/releases/$pkgver/sou
         install-dir.patch
         "$pkgname".desktop
         psutil.patch)
-sha256sums=('e83c3290faf74acf86383a6513cd6fd128f225a54de3550b34ad3874cf29b77d'
+sha256sums=('4875b08119b57b425e037b5862073cf3420c4e880b5da586a86abf4b7341c617'
             'SKIP'
             'c959c9f2b60a42dc937f744c018196906727d468d8f1d7402fb4f743484c414b'
             '336db628f428ea5efd2a58231fdb202db1521b604c8317b7151d1aa40793f3d3'
