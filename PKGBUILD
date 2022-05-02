@@ -38,8 +38,29 @@ prepare() {
 }
 
 build() {
+
+  BASALT_EIGEN_INCLUDE=""
+  BASALT_C_FLAGS=""
+  BASALT_CXX_FLAGS=""
+
+  # If compiling with basalt support, we have to use basalt's eigen version
+  # https://gitlab.freedesktop.org/mateosss/basalt#monado-specifics
+  if [ -d "/usr/share/basalt/thirdparty/eigen" ]
+  then
+      echo "Found eigen headers form basalt. Using them and compiling for march=native..."
+      BASALT_EIGEN_INCLUDE="-DEIGEN3_INCLUDE_DIR=/usr/share/basalt/thirdparty/eigen"
+      BASALT_C_FLAGS="-DCMAKE_C_FLAGS=-march=native"
+      BASALT_CXX_FLAGS="-DCMAKE_CXX_FLAGS=-march=native"
+  else
+      echo "Using system eigen."
+  fi
+
   cd "$_dirname"
-  cmake -DCMAKE_LIBDIR=lib -DCMAKE_INSTALL_PREFIX=/usr/ -DCMAKE_BUILD_TYPE=RelWithDebInfo -GNinja -B"$srcdir"/"$_dirname"-build
+  cmake $BASALT_EIGEN_INCLUDE $BASALT_C_FLAGS $BASALT_CXX_FLAGS \
+    -DCMAKE_LIBDIR=lib \
+    -DCMAKE_INSTALL_PREFIX=/usr/ \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -GNinja -B"$srcdir"/"$_dirname"-build
   ninja -C "$srcdir"/"$_dirname"-build
 }
 
