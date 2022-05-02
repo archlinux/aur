@@ -4,7 +4,8 @@ pkgver=1.1.1
 pkgrel=21
 pkgdesc="Todo's like you've never seen before"
 arch=('x86_64' 'aarch64')
-url=https://gitlab.devroom.io/ariejan/txdx
+url='https://www.txdx.eu'
+license=('GPL2')
 depends=('gtk3' 'zenity')
 makedepends=('clang' 'ninja' 'cmake' 'git' 'unzip' 'flutter-beta' 'flutter-group-pacman-hook')
 
