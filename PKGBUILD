@@ -1,20 +1,22 @@
 # Maintainer: Redson <redson@riseup.net>
 pkgname=ppfetch-rs-git
 _pkgname=ppfetch-rs
-pkgver=2.0.0
+pkgver=2.0.0.r0.gbb6974c
 pkgrel=1
 pkgdesc="ppfetch, but written in Rust."
 arch=('x86_64')
 url="https://github.com/RedsonBr140/ppfetch-rs"
 license=('MIT')
+provides=(${_pkgname}-bin)
+conflicts=(${_pkgname}-bin)
 makedepends=('rust' 'git')
 depends=('wmctrl')
-source=("git+https://github.com/RedsonBr140/ppfetch-rs.git")
+source=("$pkgname::git+https://github.com/RedsonBr140/ppfetch-rs.git")
 sha256sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-  echo "r$(git rev-list --count HEAD).$(git rev-parse --short HEAD)"
+  git describe --tags --long | sed -r -e 's,^[^0-9]*,,;s,([^-]*-g),r\1,;s,[-_],.,g'
 }
 
 build() {
