@@ -3,8 +3,8 @@
 # Contributor: Ronuk Raval <ronuk.raval at gmail dot com>
 
 pkgname=python-flexx
-pkgver=0.8.3
-pkgrel=2
+pkgver=0.8.4
+pkgrel=1
 pkgdesc='Write desktop and web apps in pure Python'
 arch=('any')
 url='https://github.com/flexxui/flexx'
@@ -18,7 +18,7 @@ makedepends=(
   'python-wheel')
 # checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('213bcd79a3758a755c3f5ef92e4b576ac83b2fd879d81c772435b777d0f53ef3')
+sha256sums=('9d4ba7b94a2aa60157eae7727d973fbf8fc97fc7e3309632dd1390d78515d707')
 
 build() {
   cd "flexx-$pkgver"
