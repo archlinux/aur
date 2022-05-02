@@ -2,7 +2,7 @@
 # Contributor: Tiago Cardoso <tbcardoso at outlook dot com>
 
 pkgname=evans
-pkgver=0.10.4
+pkgver=0.10.6
 pkgrel=1
 pkgdesc='More expressive universal gRPC client'
 arch=('x86_64' 'i686' 'arm' 'aarch64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('go')
 # checkdepends=('git' 'vim')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('1602cefe5175af5b970ebdd2be4bb75176401f7b5be7aabec67fb699e0c518d9')
+sha256sums=('0ae70056aaf8fbb4dc673b105986fd9e29f86c289ea66c1f0ea22c6ffa95960d')
 
 prepare() {
 	cd "$pkgname-$pkgver"

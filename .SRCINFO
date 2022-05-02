@@ -1,6 +1,6 @@
 pkgbase = evans
 	pkgdesc = More expressive universal gRPC client
-	pkgver = 0.10.4
+	pkgver = 0.10.6
 	pkgrel = 1
 	url = https://github.com/ktr0731/evans
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = evans
 	license = MIT
 	makedepends = go
 	depends = glibc
-	source = evans-0.10.4.tar.gz::https://github.com/ktr0731/evans/archive/v0.10.4.tar.gz
-	sha256sums = 1602cefe5175af5b970ebdd2be4bb75176401f7b5be7aabec67fb699e0c518d9
+	source = evans-0.10.6.tar.gz::https://github.com/ktr0731/evans/archive/v0.10.6.tar.gz
+	sha256sums = 0ae70056aaf8fbb4dc673b105986fd9e29f86c289ea66c1f0ea22c6ffa95960d
 
 pkgname = evans
