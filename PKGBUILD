@@ -2,7 +2,7 @@
 _pkgname=grandorgue
 pkgname="$_pkgname"-git
 pkgver=3.6.6.1.r0.g5be48044
-pkgrel=1
+pkgrel=2
 pkgdesc="Virtual Pipe Organ Software"
 arch=('i686' 'x86_64')
 url="https://github.com/GrandOrgue/$_pkgname"
@@ -29,5 +29,5 @@ build() {
 
 package() {
 	cd "$_pkgname"
-	DESTDIR=$pkgdir cmake --install build
+	DESTDIR="$pkgdir" cmake --install build
 }
