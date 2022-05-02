@@ -10,7 +10,7 @@
 
 pkgname=thunderbird-localized-beta-bin
 _pkgname=thunderbird-beta
-pkgver=100.0b3
+pkgver=100.0b4
 pkgrel=1
 pkgdesc='Standalone mail and news reader from mozilla.org — localized beta version'
 arch=('i686' 'x86_64')
@@ -26,8 +26,6 @@ depends=(
   libglib-2.0.so pixman libpixman-1.so gnupg
 )
 optdepends=(
-  'hyphen: Hyphenation'
-  'libcanberra: Sound support'
   'libotr: OTR support for active one-to-one chats'
   'libnotify: Notification integration'
 )
