@@ -2,7 +2,7 @@
 # Maintainer: Alexander Konarev (avkonarev) <AVKonarev@gmail.com>
 
 pkgname=aksusbd-bin
-pkgver=8.31
+pkgver=8.41
 pkgrel=1
 pkgdesc="Sentinel AKSUSB daemon supporting Sentinel HASP, HASP HL, HASP4 and Hardlock keys."
 arch=('i686' 'x86_64')
