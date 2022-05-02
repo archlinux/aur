@@ -1,5 +1,5 @@
 # Maintainer: Dominik Schwaiger <mail@dominik-schwaiger.ch>
-pkgname=darch
+pkgname=darch-conf
 pkgver=2.0.0
 pkgrel=1
 epoch=0
