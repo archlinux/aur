@@ -1,33 +1,39 @@
-# Maintainer: Audric Schiltknecht <storm+arch@chemicalstorm.org>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Audric Schiltknecht <storm+arch@chemicalstorm.org>
 
 pkgname=rohc
-pkgver=1.7.0
-pkgrel=2
+pkgver=2.3.1
+pkgrel=1
 pkgdesc="RObust Header Compression (ROHC) library"
-arch=('i686' 'x86_64')
+arch=('x86_64')
+url='https://github.com/didier-barveux/rohc'
+license=('LGPL2.1')
 depends=('glibc')
 makedepends=('libpcap' 'cmocka')
-options=('!libtool')
-url="http://rohc-lib.org/"
-license=('LGPL')
-source=("https://rohc-lib.org/download/rohc-1.7.x/1.7.0/rohc-1.7.0.tar.xz")
-sha256sums=("0f42adf9f29235bd9965c27ebaedf7517eb852a87e067d6cb39e8c0f92ed7e36")
+provides=('librohc.so=3-64')
+source=("$pkgname-$pkgver.tar.xz::https://rohc-lib.org/download/$pkgname-2.3.x/$pkgver/$pkgname-$pkgver.tar.xz")
+sha256sums=('e5c3808518239a6a4673c0c595356d5054b208f32e39015a487a0490d03f9bec')
+
+PURGE_TARGETS=(usr/share/doc/rohc/*)
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  ./configure --prefix=/usr \
-              --enable-rohc-debug=no \
-              --disable-static \
-              --enable-rohc-tests
-  make
+	cd "$pkgname-$pkgver"
+	./autogen.sh
+	./configure \
+		--prefix=/usr \
+		--enable-rohc-debug=no \
+		--disable-static \
+		--enable-fortify-sources \
+		--enable-rohc-tests
+	make
 }
 
 check() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  make -k check
+	cd "$pkgname-$pkgver"
+	make check || true
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
-  make DESTDIR=${pkgdir} install
+	cd "$pkgname-$pkgver"
+	make DESTDIR="$pkgdir/" install
 }
