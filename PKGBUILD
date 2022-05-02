@@ -13,7 +13,7 @@ provides=("laze")
 conflicts=("laze")
 depends=('ninja')
 source=("https://github.com/kaspar030/laze/releases/download/${pkgver}/laze-${pkgver}-${arch}-unknown-linux-musl.tar.gz")
-sha256sums=("02b6a9d5295e9bf3343d34909e262caa1d10c45e3e1064ddf5643eeca83a8ba4")
+sha256sums=("ddb6910a8a29482a1e0acc65bc7ec3f2a6566194b03cf07b405ec01386f296f4")
 
 package() {
     install -Dm755 laze-${pkgver}-${arch}-unknown-linux-musl/laze -t "$pkgdir/usr/bin"
