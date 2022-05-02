@@ -1,4 +1,4 @@
-pkgbase = mingw-w64-curl
+pkgbase = mingw-w64-curl-static
 	pkgdesc = An URL retrival utility and library (mingw-w64)
 	pkgver = 7.83.0
 	pkgrel = 1
@@ -6,20 +6,24 @@ pkgbase = mingw-w64-curl
 	arch = any
 	license = MIT
 	makedepends = mingw-w64-configure
+	depends = mingw-w64-brotli-static
 	depends = mingw-w64-crt
 	depends = mingw-w64-libidn2
 	depends = mingw-w64-libpsl
-	depends = mingw-w64-libssh2
 	depends = mingw-w64-openssl
 	depends = mingw-w64-zlib
+	provides = mingw-w64-curl=7.83.0
+	conflicts = mingw-w64-curl
 	options = staticlibs
 	options = !strip
 	options = !buildflags
 	source = https://curl.haxx.se/download/curl-7.83.0.tar.bz2
 	source = 0002-nghttp2-static.patch
 	source = 0003-libpsl-static-libs.patch
+	source = 0004-only-build-lib.patch
 	sha256sums = 247c7ec7521c4258e65634e529270d214fe32969971cccb72845e7aa46831f96
 	sha256sums = e330a7c9bfa88b1347d8ffda2b278a719d658ec99eff68bfa0568e2bc32dffeb
 	sha256sums = 7492d019036b5bec251bfbc3c0b40e5f16d3dd6b2515068835e087a6c21f19ad
+	sha256sums = 2362b8415aab8eaf6cd0146f576c2cbe4ba8c32ffce20bc445db6ec59a0d5f75
 
-pkgname = mingw-w64-curl
+pkgname = mingw-w64-curl-static
