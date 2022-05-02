@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=ginkgo-git
-pkgver=v1.16.5.r2.g71572c1
-pkgrel=3
+pkgver=v2.1.4.r0.g4fbf042
+pkgrel=1
 pkgdesc="BDD Testing Framework for Go"
 arch=('x86_64')
 url="http://onsi.github.io/ginkgo/"
