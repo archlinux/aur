@@ -29,7 +29,7 @@ for _libfile in ${_libfiles[@]}
 }
 
 md5sums=('a7abc0672242dedcd5e4f563456e7dbc'
-         'd17f4a822e966a71ea10bac39429811d'
+         '2da9c648c0162c0a5f45f6d1f81e92b6'
          '058646ab78672c97a2f18dffc1b56ebf'
          '5870cc285cd690761cd23c994737fa54'
          'd17f4a822e966a71ea10bac39429811d'
