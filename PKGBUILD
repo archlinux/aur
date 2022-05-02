@@ -1,13 +1,13 @@
 # Maintainer: xXR01I1Xx <xxr01i1xx@tuta.io>
 pkgname=session-desktop
-pkgver=1.7.6
+pkgver=1.7.9
 pkgrel=1
 pkgdesc="Private messaging from your desktop"
 arch=(x86_64)
 url="https://getsession.org"
 license=('GPL-3.0')
 depends=(libxtst nss alsa-lib libxss libnotify xdg-utils)
-makedepends=('git' 'nvm' 'yarn')
+makedepends=('git' 'git-lfs' 'nvm' 'yarn' 'nodejs>=14.16.0')
 optdepends=('libappindicator-gtk3: for tray support')
 provides=(session-messenger-desktop)
 conflicts=(session-desktop-bin session-desktop-git session-desktop-appimage)
@@ -20,17 +20,23 @@ sha256sums=('SKIP'
 
 prepare() {
   cd $srcdir/session-desktop
-  git checkout $(git describe --tags)
-  source /usr/share/nvm/init-nvm.sh && nvm install 10.19.0
+  git checkout v$pkgver
+  source /usr/share/nvm/init-nvm.sh && nvm install 14.16.0
+  git lfs install
+  nvm install
+  nvm use
+  yarn remove better-sqlite3
+  yarn add https://github.com/signalapp/better-sqlite3.git#better-sqlcipher
 }
 
 build() {
   cd "$srcdir/session-desktop"
-  source /usr/share/nvm/init-nvm.sh && nvm use --delete-prefix v10.13.0 --silent
+  source /usr/share/nvm/init-nvm.sh && nvm use --delete-prefix v14.16.0 --silent
   export SIGNAL_ENV=production
-  yarn install --frozen-lockfile
+  yarn install
   yarn generate
-  yarn lint-full
+  npm install
+  yarn grunt
   $(yarn bin)/electron-builder --config.extraMetadata.environment=$SIGNAL_ENV --publish=never --config.directories.output=release --linux tar.xz
 }
 
@@ -38,7 +44,6 @@ package() {
   mkdir -p $pkgdir/usr/share/applications
   mkdir -p $pkgdir/opt/
   mkdir -p $pkgdir/usr/share/icons/hicolor/16x16/apps/
-  mkdir -p $pkgdir/usr/share/icons/hicolor/24x24/apps/
   mkdir -p $pkgdir/usr/share/icons/hicolor/32x32/apps/
   mkdir -p $pkgdir/usr/share/icons/hicolor/48x48/apps/
   mkdir -p $pkgdir/usr/share/icons/hicolor/64x64/apps/
@@ -47,15 +52,14 @@ package() {
   mkdir -p $pkgdir/usr/share/icons/hicolor/512x512/apps/
   mkdir -p $pkgdir/usr/share/icons/hicolor/1024x1024/apps/
 
-  cp $srcdir/session-desktop/build/icons/png/16x16.png $pkgdir/usr/share/icons/hicolor/16x16/apps/session-messenger-desktop.png
-  cp $srcdir/session-desktop/build/icons/png/24x24.png $pkgdir/usr/share/icons/hicolor/24x24/apps/session-messenger-desktop.png
-  cp $srcdir/session-desktop/build/icons/png/32x32.png $pkgdir/usr/share/icons/hicolor/32x32/apps/session-messenger-desktop.png
-  cp $srcdir/session-desktop/build/icons/png/48x48.png $pkgdir/usr/share/icons/hicolor/48x48/apps/session-messenger-desktop.png
-  cp $srcdir/session-desktop/build/icons/png/64x64.png $pkgdir/usr/share/icons/hicolor/64x64/apps/session-messenger-desktop.png
-  cp $srcdir/session-desktop/build/icons/png/128x128.png $pkgdir/usr/share/icons/hicolor/128x128/apps/session-messenger-desktop.png
-  cp $srcdir/session-desktop/build/icons/png/256x256.png $pkgdir/usr/share/icons/hicolor/256x256/apps/session-messenger-desktop.png
-  cp $srcdir/session-desktop/build/icons/png/512x512.png $pkgdir/usr/share/icons/hicolor/512x512/apps/session-messenger-desktop.png
-  cp $srcdir/session-desktop/build/icons/png/1024x1024.png $pkgdir/usr/share/icons/hicolor/1024x1024/apps/session-messenger-desktop.png
+  cp $srcdir/session-desktop/build/icons/icon_16x16.png $pkgdir/usr/share/icons/hicolor/16x16/apps/session-messenger-desktop.png
+  cp $srcdir/session-desktop/build/icons/icon_32x32.png $pkgdir/usr/share/icons/hicolor/32x32/apps/session-messenger-desktop.png
+  cp $srcdir/session-desktop/build/icons/icon_48x48.png $pkgdir/usr/share/icons/hicolor/48x48/apps/session-messenger-desktop.png
+  cp $srcdir/session-desktop/build/icons/icon_64x64.png $pkgdir/usr/share/icons/hicolor/64x64/apps/session-messenger-desktop.png
+  cp $srcdir/session-desktop/build/icons/icon_128x128.png $pkgdir/usr/share/icons/hicolor/128x128/apps/session-messenger-desktop.png
+  cp $srcdir/session-desktop/build/icons/icon_256x256.png $pkgdir/usr/share/icons/hicolor/256x256/apps/session-messenger-desktop.png
+  cp $srcdir/session-desktop/build/icons/icon_512x512.png $pkgdir/usr/share/icons/hicolor/512x512/apps/session-messenger-desktop.png
+  cp $srcdir/session-desktop/build/icons/icon_1024x1024.png $pkgdir/usr/share/icons/hicolor/1024x1024/apps/session-messenger-desktop.png
 
   tar xf $srcdir/session-desktop/release/session-desktop-linux-x64-$pkgver.tar.xz -C $pkgdir/opt/
   mv $pkgdir/opt/session-desktop-linux-x64-$pkgver $pkgdir/opt/Session
