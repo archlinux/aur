@@ -1,6 +1,6 @@
 pkgbase = double-conversion-git
 	pkgdesc = Efficient binary-decimal and decimal-binary conversion routines for IEEE doubles.
-	pkgver = v3.1.5.r12.g4a51e73
+	pkgver = v3.2.0.r6.ga109d7d
 	pkgrel = 1
 	url = https://github.com/google/double-conversion
 	arch = i686
@@ -16,4 +16,3 @@ pkgbase = double-conversion-git
 	sha256sums = SKIP
 
 pkgname = double-conversion-git
-
