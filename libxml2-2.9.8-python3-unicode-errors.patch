@@ -1,8 +1,8 @@
-Index: libxml2-2.9.5/python/libxml.c
-===================================================================
---- libxml2-2.9.5.orig/python/libxml.c
-+++ libxml2-2.9.5/python/libxml.c
-@@ -1620,6 +1620,7 @@ libxml_xmlErrorFuncHandler(ATTRIBUTE_UNU
+diff --git i/python/libxml.c w/python/libxml.c
+index ef630254..65a51af0 100644
+--- i/python/libxml.c
++++ w/python/libxml.c
+@@ -1621,28 +1621,37 @@ libxml_xmlErrorFuncHandler(ATTRIBUTE_UNUSED void *ctx, const char *msg,
      PyObject *message;
      PyObject *result;
      char str[1000];
@@ -10,7 +10,16 @@ Index: libxml2-2.9.5/python/libxml.c
  
  #ifdef DEBUG_ERROR
      printf("libxml_xmlErrorFuncHandler(%p, %s, ...) called\n", ctx, msg);
-@@ -1636,12 +1637,20 @@ libxml_xmlErrorFuncHandler(ATTRIBUTE_UNU
+ #endif
+ 
+ 
+     if (libxml_xmlPythonErrorFuncHandler == NULL) {
+         va_start(ap, msg);
+         vfprintf(stderr, msg, ap);
+         va_end(ap);
+     } else {
+         va_start(ap, msg);
+         if (vsnprintf(str, 999, msg, ap) >= 998)
  	    str[999] = 0;
          va_end(ap);
  

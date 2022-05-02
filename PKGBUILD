@@ -1,11 +1,12 @@
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
-# Maintainer: Jan de Groot <jgc@archlinux.org>
+# Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: John Proctor <jproctor@prium.net>
 
 pkgname=libxml2
-pkgver=2.9.13
-pkgrel=2
+pkgver=2.9.14
+pkgrel=1
 pkgdesc='XML parsing library, version 2'
 url='http://www.xmlsoft.org/'
 arch=(x86_64)
@@ -14,13 +15,14 @@ depends=(zlib readline ncurses xz icu)
 makedepends=(python git)
 optdepends=('python: Python bindings')
 provides=(libxml2.so)
-_commit=a075d256fd9ff15590b86d981b75a50ead124fca  # tags/v2.9.13^0
+options=(debug)
+_commit=7846b0a677f8d3ce72486125fa281e92ac9970e8  # tags/v2.9.14^0
 source=("git+https://gitlab.gnome.org/GNOME/libxml2.git#commit=$_commit"
         libxml2-2.9.8-python3-unicode-errors.patch
         no-fuzz.diff
         https://www.w3.org/XML/Test/xmlts20130923.tar.gz)
 sha256sums=('SKIP'
-            '37eb81a8ec6929eed1514e891bff2dd05b450bcf0c712153880c485b7366c17c'
+            'd331748e504e69603dac9c57f7b110a98a4bd4cb87e63d0c1bbcd71ec3635383'
             '3fc010d8c42b93e6d6f1fca6b598a561e9d2c8780ff3ca0c76a31efabaea404f'
             '9b61db9f5dbffa545f4b8d78422167083a8568c59bd1129f94138f936cf6fc1f')
 
@@ -43,10 +45,10 @@ prepare() {
   # Do not run fuzzing tests
   git apply -3 ../no-fuzz.diff
 
-  autoreconf -fiv
+  NOCONFIGURE=1 ./autogen.sh
 }
 
-build() (
+build() {
   cd build
 
   ../libxml2/configure \
@@ -59,7 +61,7 @@ build() (
   make
 
   find doc -type f -exec chmod -c 0644 {} +
-)
+}
 
 check() {
   make -C build check
@@ -67,9 +69,9 @@ check() {
 
 package() {
   make -C build DESTDIR="$pkgdir" install
-  
+
   python -m compileall -d /usr/lib "$pkgdir/usr/lib"
-  python -O -m compileall -d /usr/lib "$pkgdir/usr/lib" 
+  python -O -m compileall -d /usr/lib "$pkgdir/usr/lib"
 
   install -Dm 644 build/COPYING -t "$pkgdir/usr/share/licenses/$pkgname"
 }
