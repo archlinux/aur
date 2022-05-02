@@ -14,7 +14,7 @@ makedepends=("cmake>=3.0" "curl" "inet-comm>=3.8-1" "openssl" "themispp" "mariad
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=()
+conflicts=("privacy-protection-messenger")
 replaces=()
 backup=()
 options=()

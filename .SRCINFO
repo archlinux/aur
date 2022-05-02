@@ -16,6 +16,7 @@ pkgbase = privacy-protection-messenger_imper
 	depends = iptables-nft
 	depends = themispp>=0.14.1
 	depends = mariadb
+	conflicts = privacy-protection-messenger
 	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger/imper/CMakeLists.txt
 	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger/imper/main.cpp
 	source = https://raw.githubusercontent.com/imperzer0/privacy-protection-messenger/imper/color.hpp
