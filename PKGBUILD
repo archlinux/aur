@@ -13,7 +13,7 @@ license=('GPLv3')
 
 depends=('python-hyperspy>=1.7.0'
          'python-traitsui>=6.1'
-         'python-link-traits>=5.0')
+         'python-link-traits')
 
 #optdepends=()
 
