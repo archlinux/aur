@@ -2,7 +2,7 @@
 
 pkgname=cxx2flow-gui-bin
 _pkgname=cxx2flow-gui
-pkgver=0.1.4
+pkgver=0.1.5
 pkgrel=1
 pkgdesc="GUI for cxx2flow."
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('libappindicator-gtk3' 'webkit2gtk' 'gtk3')
 source=("${_pkgname}-${pkgver}-${arch}.deb::https://github.com/Enter-tainer/cxx2flow-gui/releases/download/v${pkgver}/cxx2flow-gui_${pkgver}_amd64.deb")
 
-sha512sums=('06f4d115640a109319ce4bff73ccea1011fd6bd9d4bb824ae4e52879d60ac92d272853d2731b959469132dc94fda46b5a0db225944d21b516b33a3120f370f8b')
+sha512sums=('ad7afd13d42d9be69220b0cc4edaa6c9f51cc32b40713012f54fe85d9a372c319f11ffdb85f1e9591eb0d3dbee55884dc9a8c0bf329dfe7058f1c9c9407b6f8d')
 
 package() {
 	tar xpf data.tar.gz -C ${pkgdir}

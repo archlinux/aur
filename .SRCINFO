@@ -1,6 +1,6 @@
 pkgbase = cxx2flow-gui-bin
 	pkgdesc = GUI for cxx2flow.
-	pkgver = 0.1.4
+	pkgver = 0.1.5
 	pkgrel = 1
 	url = https://github.com/Enter-tainer/cxx2flow-gui
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = cxx2flow-gui-bin
 	depends = libappindicator-gtk3
 	depends = webkit2gtk
 	depends = gtk3
-	source = cxx2flow-gui-0.1.4-x86_64.deb::https://github.com/Enter-tainer/cxx2flow-gui/releases/download/v0.1.4/cxx2flow-gui_0.1.4_amd64.deb
-	sha512sums = 06f4d115640a109319ce4bff73ccea1011fd6bd9d4bb824ae4e52879d60ac92d272853d2731b959469132dc94fda46b5a0db225944d21b516b33a3120f370f8b
+	source = cxx2flow-gui-0.1.5-x86_64.deb::https://github.com/Enter-tainer/cxx2flow-gui/releases/download/v0.1.5/cxx2flow-gui_0.1.5_amd64.deb
+	sha512sums = ad7afd13d42d9be69220b0cc4edaa6c9f51cc32b40713012f54fe85d9a372c319f11ffdb85f1e9591eb0d3dbee55884dc9a8c0bf329dfe7058f1c9c9407b6f8d
 
 pkgname = cxx2flow-gui-bin
