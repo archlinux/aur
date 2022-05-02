@@ -1,2 +1,3 @@
-z /etc/inadyn.conf 0600 inadyn inadyn
-d /var/cache/inadyn 0755 inadyn inadyn
+z /etc/inadyn.conf    0600 inadyn inadyn
+z /etc/default/inadyn 0644 inadyn inadyn
+d /var/cache/inadyn   0755 inadyn inadyn
