@@ -1,6 +1,6 @@
 pkgbase = ant-bloody-theme-git
 	pkgdesc = Bloody variant of the Ant theme
-	pkgver = v1.3.0.r95.g9e5aeab
+	pkgver = v1.3.0.r99.g7ccaba6
 	pkgrel = 1
 	url = https://github.com/EliverLara/Ant-Bloody
 	arch = any
