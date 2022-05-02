@@ -2,13 +2,13 @@
 
 pkgname=journal-notify
 pkgver=0.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Notify about journal log entries'
 arch=('i686' 'x86_64')
 url='https://github.com/eworm-de/journal-notify'
 depends=('libnotify' 'systemd')
 optdepends=('gnome-icon-theme: icons in notifications')
-makedepends=('markdown')
+makedepends=('discount')
 license=('GPL')
 validpgpkeys=('BD84DE71F493DF6814B0167254EDC91609BC9183')
 source=("https://www.eworm.de/download/${pkgname}/${pkgname}-${pkgver}.tar.xz"{,.asc})

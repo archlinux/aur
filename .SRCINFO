@@ -1,12 +1,12 @@
 pkgbase = journal-notify
 	pkgdesc = Notify about journal log entries
 	pkgver = 0.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/eworm-de/journal-notify
 	arch = i686
 	arch = x86_64
 	license = GPL
-	makedepends = markdown
+	makedepends = discount
 	depends = libnotify
 	depends = systemd
 	optdepends = gnome-icon-theme: icons in notifications
@@ -17,4 +17,3 @@ pkgbase = journal-notify
 	sha256sums = SKIP
 
 pkgname = journal-notify
-
