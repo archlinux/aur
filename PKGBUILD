@@ -4,7 +4,7 @@
 
 pkgname=laze-bin
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A declarative build system for C projects aiming to be simple, fast and correct"
 url="https://github.com/kaspar030/laze"
 license=("Apache-2.0")
@@ -13,7 +13,7 @@ provides=("laze")
 conflicts=("laze")
 depends=('ninja')
 source=("https://github.com/kaspar030/laze/releases/download/${pkgver}/laze-${pkgver}-${arch}-unknown-linux-musl.tar.gz")
-sha256sums=("5ce525fb89f1684f1eb8a75140b2aa441d25b6eac58b4eb0e0d8e093b24a1a40")
+sha256sums=("02b6a9d5295e9bf3343d34909e262caa1d10c45e3e1064ddf5643eeca83a8ba4")
 
 package() {
     install -Dm755 laze-${pkgver}-${arch}-unknown-linux-musl/laze -t "$pkgdir/usr/bin"
