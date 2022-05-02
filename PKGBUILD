@@ -2,7 +2,7 @@
 
 pkgbase=xpid
 pkgname=(xpid)
-pkgver=v1.1.1
+pkgver=v1.2.0
 pkgrel=1
 pkgdesc="Linux Process Scanning. (CLI Runtime). Find eBPF programs, containers, hidden pids. Like nmap for pids in the kernel."
 arch=(x86_64)
@@ -17,11 +17,12 @@ source=("git+https://github.com/kris-nova/xpid.git#tag=$pkgver")
 sha256sums=('SKIP')
 
 build() {
+    depends=(libxpid-$pkgver)
 	cd $pkgname
 	GO111MODULE=on
 	go mod vendor
 	go mod download
-	make
+	make compile
 }
 
 package() {
