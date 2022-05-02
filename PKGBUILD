@@ -36,5 +36,5 @@ package() {
 
     cp -r "${srcdir}/${_gitname}/dist/"* "${pkgdir}/opt/${_gitname}" -R
     echo "#!/usr/bin/bash\n/opt/hascal/hascal" > "${pkgdir}/usr/bin/${_gitname}"  
-    chmod 644 /usr/bin/hascal
+    chmod 644 "${pkgdir}/usr/bin/${_gitname}"
 }
