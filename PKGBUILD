@@ -7,14 +7,14 @@
 
 pkgname=libvirt-git
 _pkgname=libvirt
-pkgver=7.7.0.r334.g49d74124a5
+pkgver=8.3.0.r1.ga12b2d8f21
 pkgrel=1
 pkgdesc="API for controlling virtualization engines (openvz,kvm,qemu,virtualbox,xen,etc)"
 arch=('i686' 'x86_64')
 url="http://libvirt.org/"
 license=('LGPL' 'GPL3')
 depends=('libpciaccess' 'yajl' 'fuse2' 'gnutls' 'parted' 'libssh' 'numactl' 'polkit' 'netcf' 'glusterfs' 'ceph-libs' 'libiscsi' 'fmt')
-makedepends=('libxslt' 'python-docutils' 'lvm2' 'open-iscsi' 'bash-completion' 'rpcsvc-proto' 'dnsmasq' 'iproute2' 'qemu-headless' 'git' 'meson' 'ninja')
+makedepends=('libxslt' 'python-docutils' 'lvm2' 'open-iscsi' 'bash-completion' 'rpcsvc-proto' 'dnsmasq' 'iproute2' 'git' 'meson' 'ninja')
 checkdepends=('ebtables')
 optdepends=('libvirt-storage-gluster: Gluster storage backend'
             'libvirt-storage-iscsi-direct: iSCSI-direct storage backend'
@@ -115,9 +115,9 @@ prepare() {
     src/locking/virtlockd.service.in
   sed -i 's|@sbindir@|/usr/bin|g' src/locking/virtlockd.service.in
   # 78 is kvm group: https://wiki.archlinux.org/index.php/DeveloperWiki:UID_/_GID_Database
-  sed -i 's|#group =.*|group="78"|' src/qemu/qemu.conf
+  sed -i 's|#group =.*|group="78"|' src/qemu/qemu.conf.in
   sed -i 's|/usr/libexec/qemu-bridge-helper|/usr/lib/qemu/qemu-bridge-helper|g' \
-    src/qemu/qemu{.conf,_conf.c} \
+    src/qemu/qemu{.conf.in,_conf.c} \
     src/qemu/test_libvirtd_qemu.aug.in
 
   sed -i 's/notify/simple/' src/remote/libvirtd.service.in
