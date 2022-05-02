@@ -3,12 +3,12 @@
 
 pkgname=streamdeck-ui
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A Linux compatible UI for the Elgato Stream Deck"
 arch=('any')
 url="https://timothycrosley.github.io/streamdeck-ui/"
 license=('MIT')
-depends=('python-pillow' 'python-hidapi' 'pyside2' 'python-pynput' 'python-elgato-streamdeck' 'python-xlib')
+depends=('python-pillow' 'python-hidapi' 'pyside2' 'python-pynput' 'python-elgato-streamdeck' 'python-xlib' 'python-filetype' 'python-cairosvg')
 makedepends=('git' 'python-dephell' 'python-setuptools')
 provides=('streamdeck-ui')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/timothycrosley/streamdeck-ui/archive/refs/tags/v${pkgver}.tar.gz"
