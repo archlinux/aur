@@ -1,6 +1,6 @@
 pkgbase = python-gensim
 	pkgdesc = Library for topic modelling, document indexing and similarity retrieval with large corpora
-	pkgver = 4.1.2
+	pkgver = 4.2.0
 	pkgrel = 1
 	url = https://radimrehurek.com/gensim/
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = python-gensim
 	depends = python-smart_open
 	optdepends = python-pyro: Usage in a distributed environment
 	optdepends = python-levenshtein: Similarity measure
-	source = python-gensim-4.1.2.tar.gz::https://github.com/RaRe-Technologies/gensim/archive/4.1.2.tar.gz
-	sha512sums = 959db56a280af83db581ede012fcae91f428bdcbd92f9d82de6631a3ad52e04cb3d448b545f04b7d75695cb7de75dd9c6f7bbdda13ac6fc6745e37a1f25e3e5e
+	source = python-gensim-4.2.0.tar.gz::https://github.com/RaRe-Technologies/gensim/archive/4.2.0.tar.gz
+	sha512sums = db3d8a2f9d0e1de1848419ba49175fffa791d365c09a9079e70cff68cbb0303d66fb1c260048a906c8120f2d66c6d6bd597e30ff421a400d1eb6acf155f37e03
 
 pkgname = python-gensim
