@@ -1,7 +1,7 @@
 # Maintainer: AlphaJack <alphajack at tuta dot io>
 
 pkgname="veracrypt-console-bin"
-pkgver=1.25.4
+pkgver=1.25.9
 pkgrel=1
 pkgdesc="Disk encryption with strong security based on TrueCrypt - headless console only"
 url="https://www.veracrypt.fr/"
@@ -14,9 +14,9 @@ optdepends=("sudo: mounting encrypted volumes as nonroot users")
 source_x86_64=("$pkgname-$pkgver-amd64.deb::https://launchpad.net/veracrypt/trunk/$pkgver/+download/${pkgname/-bin/}-$pkgver-Debian-11-amd64.deb")
 source_aarch64=("$pkgname-$pkgver-arm64.deb::https://launchpad.net/veracrypt/trunk/$pkgver/+download/${pkgname/-bin/}-$pkgver-Debian-11-arm64.deb")
 source_armv7h=("$pkgname-$pkgver-armv7.deb::https://launchpad.net/veracrypt/trunk/$pkgver/+download/${pkgname/-bin/}-$pkgver-Debian-11-armhf.deb")
-sha256sums_x86_64=('a8827cbe806c6d572fe325b6a15c70b4a39b9b48024d59806139d9abfa2d4337')
-sha256sums_aarch64=('f483cdd5d5da0f4f5dbe664a289aaf85610047fbcd735e81920044b2df91ac63')
-sha256sums_armv7h=('f942dfbb5d241555d2ffc18a0fda9f9741d9152661c8cd48c19a510f096a5974')
+sha256sums_x86_64=('4c64cd7212a93ad80ffe216d4ac9520703b206d105cbf56b485c6f2bc231ee2e')
+sha256sums_armv7h=('549c251e756b5108fde7ea9ee736d1081739a04406c21719a7c5f42dad94df51')
+sha256sums_aarch64=('bc37ddd5e8e96b149c04ad57fe412fed68c144c15a70349a7a5e162b25fd3f83')
 install="veracrypt.install"
 
 prepare(){
