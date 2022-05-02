@@ -3,7 +3,7 @@
 
 pkgname=rancher-desktop
 pkgdesc='Rancher Desktop is an open-source project to bring Kubernetes and container management to the desktop'
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 arch=('x86_64')
 license=('Apache')
@@ -15,7 +15,7 @@ optdepends=('kubectl: Kubernetes control, can be downloaded from settings'
 provides=('rancher-desktop' 'docker' 'helm' 'kubectl' 'nerdctl' 'limactl')
 depends=('qemu')
 source=("https://github.com/rancher-sandbox/rancher-desktop/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('fdcf88f33741c6a838c344389ecb7d77a4c9b6b92c8586ff1b5e57cbe521196a')
+sha256sums=('c50001a79510bf95c2b700e1d07ace26ae09eb29f5a6077360a9cb089b2d810c')
 
 # https://wiki.archlinux.org/title/Node.js_package_guidelines#Using_nvm
 _ensure_local_nvm() {
@@ -76,5 +76,4 @@ package() {
   # Creating the symlink for better usage
   install -d "$pkgdir"/usr/bin/
   ln -sf /opt/${pkgname}/${pkgname} ${pkgdir}/usr/bin/${pkgname}
-  ln -sf /opt/${pkgname}/resources/resources/linux/lima/bin/limactl ${pkgdir}/usr/bin/limactl
 }
