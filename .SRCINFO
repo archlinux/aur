@@ -1,12 +1,18 @@
 pkgbase = pam-ssh-add
 	pkgdesc = Standalone pam_ssh_add plugin from cockpit
 	pkgver = 268.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://cockpit-project.org/
 	arch = x86_64
 	license = LGPL
-	makedepends = pam
+	makedepends = json-glib
+	makedepends = xmlto
+	makedepends = python
+	makedepends = docbook-xsl
 	depends = pam
+	depends = libssh
+	depends = openssh
+	depends = systemd
 	source = https://github.com/cockpit-project/cockpit/releases/download/268.1/cockpit-268.1.tar.xz
 	sha256sums = 01baf9a92e5d6f67eb4dcd7b9803192f27ab58b18e9bea5b5acad433b50e7a08
 
