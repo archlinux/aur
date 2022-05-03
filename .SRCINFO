@@ -1,17 +1,19 @@
 pkgbase = amberol
 	pkgdesc = Plays music, and nothing else
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.gnome.org/World/amberol
 	arch = x86_64
 	license = GPL3
 	checkdepends = appstream-glib
+	checkdepends = reuse
 	makedepends = meson
 	makedepends = rust
 	depends = libadwaita
 	depends = gstreamer
 	depends = gst-plugins-base
 	depends = gst-plugins-bad
+	depends = gst-plugins-good
 	source = https://gitlab.gnome.org/World/amberol/-/archive/0.5.0/amberol-0.5.0.tar
 	b2sums = b275c7d2139e581902f1ed1b30a39d46f7f3e63fd13a9641234c64555ccac8ddb8654b67d2e94cdede7bcb55b778bca6a7c16f0358678599976e8fed9a23a600
 
