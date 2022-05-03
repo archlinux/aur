@@ -1,6 +1,6 @@
 pkgbase = musictube
 	pkgdesc = YouTube streaming music player
-	pkgver = 1.16
+	pkgver = 1.17
 	pkgrel = 1
 	url = https://flavio.tordini.org/musictube
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = musictube
 	depends = qt5-declarative
 	depends = qt5-x11extras
 	depends = mpv
-	source = musictube-1.16.deb::https://flavio.tordini.org/files/musictube/musictube.deb
-	sha256sums = 8d90ccad5a2dfe32cef7d823d82f8fb53ad456f021e5b1e2cfd874bc9a6695f3
+	source = musictube-1.17.deb::https://flavio.tordini.org/files/musictube/musictube.deb
+	sha256sums = 59cac934ff4abba5667c978e428cca24d0f76a3d27502e8e8cee4dabf51b99a0
 
 pkgname = musictube
