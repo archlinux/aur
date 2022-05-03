@@ -1,0 +1,15 @@
+[Unit]
+Description=自动将网易云的歌单同步到本地
+Documentation=https://github.com/Clansty/netease-music-sync
+After=network-online.target
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/netease-music-sync.conf
+WorkingDirectory=/usr/share/netease-music-sync
+ExecStart=/usr/bin/node -r ./.pnp.cjs build/index.js
+Restart=on-failure
+RestartSec=120
+
+[Install]
+WantedBy=multi-user.target

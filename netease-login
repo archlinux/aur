@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+cd /usr/share/netease-music-sync
+/usr/bin/node -r ./.pnp.cjs build/login.js
