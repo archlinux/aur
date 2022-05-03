@@ -1,13 +1,13 @@
 pkgbase = godot-headers
 	pkgdesc = Headers for the Godot API supplied by the GDNative module
-	pkgver = 3.4.3
+	pkgver = 3.4.4
 	pkgrel = 1
 	url = https://godotengine.org
 	arch = any
 	license = MIT
-	source = https://github.com/godotengine/godot-headers/archive/refs/tags/godot-3.4.3-stable.tar.gz
+	source = https://github.com/godotengine/godot-headers/archive/refs/tags/godot-3.4.4-stable.tar.gz
 	source = godot.pc.in
-	sha256sums = a28810f9c3281bb79ae4722396d3fc913baa71944d5ae71e5646a507498b3085
+	sha256sums = bb0eac00a4d5b800a4ca2555d11b4a35981bdb730b630e9bd31a0649fa1d6fd7
 	sha256sums = f8e4f4cc7e5a221d6364ad5b520cafebdafb5de4f139d200f028b8cdc229647a
 
 pkgname = godot-headers
