@@ -3,7 +3,7 @@
 
 _pkgname=vdirsyncer
 pkgname=${_pkgname}-git
-pkgver=0.18.1.dev128+gf3f8eb6
+pkgver=0.18.1.dev130+g8557c6e
 pkgrel=1
 pkgdesc="Synchronize CalDAV and CardDAV."
 arch=('any')
@@ -22,6 +22,7 @@ makedepends=(
   "python-setuptools-scm"
   "python-sphinx"
   "python-sphinx_rtd_theme"
+  python-wheel
   python-build
   python-installer
 )
