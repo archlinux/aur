@@ -1,6 +1,6 @@
 pkgbase = inform7-git
 	pkgdesc = A design system for interactive fiction based on natural language (git version)
-	pkgver = r1390.31c156b2b
+	pkgver = r1393.16ed0ae71
 	pkgrel = 1
 	url = https://ganelson.github.io/inform
 	arch = aarch64
@@ -19,9 +19,11 @@ pkgbase = inform7-git
 	source = git+https://github.com/ganelson/inweb
 	source = git+https://github.com/ganelson/intest
 	source = make-integration-settings.mk
+	source = wrapper.sh
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = SKIP
 	md5sums = 97f4a478c9055ef8adc0717b6c23b1af
+	md5sums = cf9ed2c63688be27bc2ad132d9c9d82b
 
 pkgname = inform7-git
