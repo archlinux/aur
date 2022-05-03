@@ -1,15 +1,11 @@
 pkgbase = ttf-amstelvar
 	pkgdesc = Parametric variable font by David Berlow
-	pkgver = 20210603
+	pkgver = 20220321
 	pkgrel = 1
-	url = https://github.com/TypeNetwork/Amstelvar
+	url = https://github.com/googlefonts/amstelvar
 	arch = any
 	license = custom:OFL
-	source = https://github.com/TypeNetwork/Amstelvar/raw/54e6bea24bb49536ad5de73adca23ee3e21e9fac/fonts/Amstelvar-Italic[wdth,wght,opsz].ttf
-	source = https://github.com/TypeNetwork/Amstelvar/raw/54e6bea24bb49536ad5de73adca23ee3e21e9fac/fonts/Amstelvar-Roman[wdth,wght,opsz].ttf
-	source = https://github.com/TypeNetwork/Amstelvar/raw/54e6bea24bb49536ad5de73adca23ee3e21e9fac/OFL.txt
-	sha256sums = 298c5a045490cfaa8131584af6624f42ba6d12799c5dd9edf50cf852f5e811d9
-	sha256sums = b9f00d24f1be8e614bc82e86254dea4106581337a11482657b1e21b675e5724b
-	sha256sums = 06c79c896894160a5810d869a822fa7d02a0e2ccffd97920b8cf3b880380f6e5
+	source = ttf-amstelvar-29db3945bf0ef6937f308ba240767b32ac2a474f.tar.gz::https://github.com/googlefonts/amstelvar/archive/29db3945bf0ef6937f308ba240767b32ac2a474f.zip
+	sha256sums = e09511d8cfdbce530ca240a5999af6ebdbe17a44ceed4e04bc5115d3de7777d9
 
 pkgname = ttf-amstelvar
