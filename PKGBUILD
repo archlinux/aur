@@ -16,14 +16,15 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='A simple password store using AES-256-CBC encryption via OpenSSL'
 license=('GPL')
 depends=('qt6-base' 'qtutilities-qt6' 'passwordfile' 'openssl' 'libxkbcommon-x11' 'desktop-file-utils' 'xdg-utils')
-makedepends=('cmake' 'ninja' 'qt6-tools' 'clang' 'mesa' 'kirigami2')
+makedepends=('cmake' 'ninja' 'qt6-tools' 'clang' 'mesa')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
 sha256sums=('c2ad78bd57308a7424c4c856e7404f4bb3cdf23b83d98a7b0e6c03beaf008875')
 
 # add further dependencies for the Qt Quick GUI (only kirigami2 is "pluggable")
 if [[ $_quick_gui == ON ]]; then
-    depends+=('qt6-quickcontrols2')
+    depends+=('qt6-declarative')
+    makedepends+=('kirigami2')
     optdepends+=('kirigami2: Qt Quick GUI')
 fi
 

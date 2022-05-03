@@ -14,7 +14,6 @@ pkgbase = passwordmanager-qt6
 	makedepends = qt6-tools
 	makedepends = clang
 	makedepends = mesa
-	makedepends = kirigami2
 	depends = qt6-base
 	depends = qtutilities-qt6
 	depends = passwordfile
