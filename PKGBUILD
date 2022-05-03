@@ -34,11 +34,13 @@ pkgver() {
 package() {
 	cd "$_pkgname"
 
-	chmod +x build.sh
-	./build.sh install lib
+#	chmod +x build.sh
+#	./build.sh install lib
+#
+#	install -Dm644 libwhy2.so "${pkgdir}/usr/lib/libwhy2.so"
+#	install -Dm644 include/*.h "${pkgdir}/usr/include/${pkgname}/"
 
-	install -Dm644 libwhy2.so "${pkgdir}/usr/lib/libwhy2.so"
-	install -Dm644 include/*.h "${pkgdir}/usr/include/${pkgname}/"
+	echo "You're gay."
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
