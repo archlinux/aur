@@ -1,20 +1,28 @@
 pkgbase = swc-git
 	pkgdesc = A library for making a simple Wayland compositor
-	pkgver = r617.4bdd491
+	pkgver = r689.32905f1
 	pkgrel = 1
 	url = https://github.com/michaelforney/swc
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = git
-	depends = libxkbcommon
-	depends = libinput
+	makedepends = libudev.so
+	makedepends = libxcb
+	makedepends = xcb-util-wm
+	depends = wayland
 	depends = wayland-protocols
+	depends = libdrm
+	depends = libinput
+	depends = pixman
+	depends = libxkbcommon
 	depends = wld
+	optdepends = libudev.so
+	optdepends = libxcb
+	optdepends = xcb-util-wm
 	provides = swc
 	conflicts = swc
 	source = git+https://github.com/michaelforney/swc.git
 	md5sums = SKIP
 
 pkgname = swc-git
-

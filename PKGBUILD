@@ -1,14 +1,15 @@
 # Maintainer: Maël Kerbiriou <m431.kerbiriou@gmail.com>
 
 pkgname=swc-git
-pkgver=r617.4bdd491
+pkgver=r689.32905f1
 pkgrel=1
 pkgdesc='A library for making a simple Wayland compositor'
 arch=('i686' 'x86_64')
 license=('MIT')
 url='https://github.com/michaelforney/swc'
-depends=('libxkbcommon' 'libinput' 'wayland-protocols' 'wld')
-makedepends=('git')
+depends=('wayland' 'wayland-protocols' 'libdrm' 'libinput' 'pixman' 'libxkbcommon' 'wld')
+optdepends=('libudev.so' 'libxcb' 'xcb-util-wm')
+makedepends=('git' "${optdepends[@]}")
 provides=('swc')
 conflicts=('swc')
 source=('git+https://github.com/michaelforney/swc.git')
