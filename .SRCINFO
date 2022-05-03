@@ -1,0 +1,23 @@
+pkgbase = python-pyglet-ffmpeg4
+	pkgdesc = A cross-platform windowing and multimedia library for Python
+	pkgver = 1.5.23
+	pkgrel = 1
+	url = https://github.com/pyglet/pyglet
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	depends = python
+	depends = glu
+	depends = python-future
+	depends = python-gobject
+	optdepends = ffmpeg4.4: provides audio&video support
+	optdepends = openal: live audio
+	provides = python-pyglet
+	conflicts = python-pyglet
+	source = https://files.pythonhosted.org/packages/source/p/pyglet/pyglet-1.5.23.zip
+	md5sums = a9b2190cf12af4f0eb6d5a0e788f4ffe
+
+pkgname = python-pyglet-ffmpeg4
+	depends = python
+	depends = glu
+	depends = python-future
