@@ -1,0 +1,62 @@
+post_install() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	# https://github.com/electron-userland/electron-builder/blob/master/packages/app-builder-lib/templates/linux/after-install.tpl
+
+	# Link to the binary
+	ln -sf '/opt/Surfshark/surfshark' '/usr/bin/surfshark'
+
+	# SUID chrome-sandbox for Electron 5+
+	chmod 4755 '/opt/Surfshark/chrome-sandbox' || true
+
+	update-mime-database /usr/share/mime || true
+	update-desktop-database /usr/share/applications || true
+
+	# Surfshark post-install
+
+	echo "
+	[Unit]
+	Description=Surfshark Daemon
+
+	[Service]
+	ExecStart=/opt/Surfshark/resources/dist/resources/surfsharkd.js
+	Restart=on-failure
+	RestartSec=5
+
+	[Install]
+	WantedBy=default.target
+	" > /usr/lib/systemd/user/surfsharkd.service
+
+	chmod 755 '/opt/Surfshark/resources/dist/resources/surfsharkd.js' || :
+	chmod 755 '/opt/Surfshark/resources/dist/resources/update' || :
+	chmod 755 '/opt/Surfshark/resources/dist/resources/diagnostics' || :
+
+	systemctl enable --global surfsharkd.service &>/dev/null || :
+	update-desktop-database -q
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+	# https://github.com/electron-userland/electron-builder/blob/master/packages/app-builder-lib/templates/linux/after-remove.tpl
+
+	systemctl disable --global surfsharkd.service &>/dev/null || :
+
+	kill -15 $(pidof surfshark) || :
+	kill -15 $(pgrep surfsharkd) || :
+
+	rm -f /usr/lib/systemd/user/surfsharkd.service || :
+
+	# Delete the link to the binary
+	rm -f '/usr/bin/surfshark'
+
+	# Surfshark post-remove
+	nmcli connection delete surfshark_ipv6 &>/dev/null  || :
+	nmcli connection delete surfshark_wg &>/dev/null || :
+	nmcli connection delete surfshark_openvpn &>/dev/null || :
+	rm -rf /home/**/.config/Surfshark
+	rm -rf /home/**/.cache/Surfshark
+	update-desktop-database -q
+}
