@@ -2,7 +2,7 @@
 
 pkgname=diff-pdf
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 pkgdesc='A simple tool for visually comparing two PDF files'
 arch=(x86_64)
 url="http://vslavik.github.io/$pkgname"
@@ -16,9 +16,7 @@ sha256sums=('e7b8414ed68c838ddf6269d11abccdb1085d73aa08299c287a374d93041f172e')
 
 prepare() {
 	cd "$_archive"
-	aclocal
-	autoconf
-	automake --add-missing --copy --foreign
+	./bootstrap
 }
 
 build() {
