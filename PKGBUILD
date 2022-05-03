@@ -1,19 +1,19 @@
 # Maintainer: George Rawlinson <george@rawlinson.net.nz>
 
 pkgname=homebridge
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
-pkgdesc="HomeKit support for the impatient"
+pkgdesc='HomeKit support for the impatient'
 arch=('any')
-url="https://github.com/homebridge/homebridge"
+url='https://github.com/homebridge/homebridge'
 license=('Apache')
 depends=('nodejs')
 makedepends=('npm')
 optdepends=('homebridge-config-ui-x: for web-based management tool')
 options=('!emptydirs' '!strip')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('51f9490f01f0b0c03f0d74852c84689053806a8f42d64884c4d6a0f50c539e2a79b4df73fe49824ddffd664cf064b98184b298d2298c7da36a9bb8e8c71e2fab')
-b2sums=('6f8a8a17b7b5c4ae89d7df2dce986072548735f61cf9a7cf5fc0394a974e5ff3b039e7e40324aa577c8e8c3096f42b05353a698f3649bbba8a727e02f58fc304')
+sha512sums=('68eb0aa8030452b8c54614f651956ac9a8cc2e2cc95b083b1d68401578f83dea88e094833f1c3e786141f2a3cf0e69d7339a1c3fe2eb9068e2dab3e6bbddd903')
+b2sums=('2903cac86a7b07765c52d8d779381fcbb5b795696a191eaf11ee93a6f6d683f29cb54f236796f5b7bd8be24efa35138b9cc6cb3a444ec120bdb47f0403dcab63')
 
 build() {
   cd "$pkgname-$pkgver"
