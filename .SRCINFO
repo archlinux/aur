@@ -1,5 +1,5 @@
 pkgbase = netclient
-	pkgdesc = A component of netmaker
+	pkgdesc = netclient daemon - a platform for modern, blazing fast virtual networks
 	pkgver = 0.13.1
 	pkgrel = 1
 	url = https://github.com/gravitl/netmaker
