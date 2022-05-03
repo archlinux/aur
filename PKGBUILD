@@ -1,7 +1,7 @@
 # Maintainer: Kamack38 <kamack38.biznes@gmail.com>
 _pkgname='oh-my-posh'
 pkgname="${_pkgname}-bin"
-pkgver=7.75.0
+pkgver=7.77.0
 pkgrel=1
 pkgdesc="A prompt theme engine for any shell."
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -17,8 +17,8 @@ source_aarch64=("https://github.com/JanDeDobbeleer/oh-my-posh/releases/download/
 noextract=('themes.zip')
 sha256sums=('1f539abafa451dc804e12eb615149df648fda64aeaa29376ef73b7ece866952f')
 sha256sums_x86_64=('772d6ea734b7f6c1414260b54b587e6fd738dcfa38480776f6350a36a3d935e1')
-sha256sums_armv7h=('78d56de332293c368250645db2440827be1afd2d86e709538bd6ec55b4aeef4c')
-sha256sums_aarch64=('b07f7100b2c30178c9e13b1b203bc1b02ee0b4d1e259d7d179a3fd0fcbe7f44c')
+sha256sums_armv7h=('5802cd7e2a8cfe79f9b88fd98411cfba4b54518bcf1efbb7a5e66868e8e71531')
+sha256sums_aarch64=('a3d2cba2b367c7e2b0e69d23d0f8707309d827e5a780b65a2ac2f7c221d44027')
 
 pkgver() {
     curl --silent -L "https://api.github.com/repos/JanDeDobbeleer/oh-my-posh/releases/latest" | # Get latest release from GitHub api
