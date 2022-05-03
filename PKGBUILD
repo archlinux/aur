@@ -2,12 +2,12 @@
 # Contributor: Light2Yellow <oleksii.vilchanskyi@gmail.com>
 pkgname=ckb-next
 pkgver=0.4.4
-pkgrel=4
+pkgrel=5
 pkgdesc="Corsair Keyboard and Mouse Input Driver, release version"
 arch=('i686' 'x86_64')
 url="https://github.com/ckb-next/ckb-next"
 license=('GPL2')
-depends=('qt5-base' 'hicolor-icon-theme' 'quazip-qt5' 'qt5-tools' 'libxcb' 'xcb-util-wm' 'qt5-x11extras' 'libdbusmenu-qt5')
+depends=('qt5-base' 'hicolor-icon-theme' 'quazip-qt5' 'qt5-tools' 'libxcb' 'xcb-util-wm' 'qt5-x11extras' 'libdbusmenu-qt5' 'python3' 'python-pyqt5')
 makedepends=('git' 'cmake')
 optdepends=('libpulse')
 conflicts=('ckb-git' 'ckb-git-latest' 'ckb-next-git')
@@ -15,10 +15,12 @@ provides=('ckb-next')
 install=ckb-next.install
 source=("https://github.com/ckb-next/$pkgname/archive/v$pkgver.tar.gz"
         'dc4dc54c5ebac7e4b455d8df35076fc044a581a7.patch'
-        'c2c12fc981458ca59d515dc5d9c007ea78f141ef.patch')
+        'c2c12fc981458ca59d515dc5d9c007ea78f141ef.patch'
+        'AUR-wrapper::git+https://github.com/ckb-next/AUR-wrapper.git')
 sha256sums=('6946bd035cdbbbd2f139e543d2ca84ba422176c62c3a3665b544118dc6d618d0'
             'ca662407404a0b22c3f2706f729717ab73575101247689ce80b7528fea0de87e'
-            '97d56be2873f61d54518e4fa8fdc429ca48a8c5b53ed907ec9abdb08a3bbad0b')
+            '97d56be2873f61d54518e4fa8fdc429ca48a8c5b53ed907ec9abdb08a3bbad0b'
+            'SKIP')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
@@ -44,4 +46,10 @@ package() {
   cd "$srcdir/${pkgname}-${pkgver}"
 
   DESTDIR="$pkgdir" cmake --build build --target install
+
+  # Rename the real binary and add the wrapper
+  mv "$pkgdir/usr/bin/ckb-next" "$pkgdir/usr/bin/ckb-next.real"
+
+  cd "$srcdir/AUR-wrapper"
+  install -Dm755 AUR_wrapper.py "$pkgdir/usr/bin/ckb-next"
 }
