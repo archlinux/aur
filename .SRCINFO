@@ -1,8 +1,8 @@
 pkgbase = xwinwrap-git
-	pkgdesc = Fork of XwinWrap from ujjwal96 on GitHub
+	pkgdesc = Fork of XwinWrap from takase1121 on GitHub
 	pkgver = r5.ec32e9b
 	pkgrel = 1
-	url = https://github.com/ujjwal96/xwinwrap
+	url = https://github.com/takase1121/xwinwrap
 	arch = x86_64
 	license = custom
 	makedepends = git
@@ -11,10 +11,9 @@ pkgbase = xwinwrap-git
 	depends = libxrender
 	provides = xwinwrap
 	conflicts = xwinwrap
-	source = git+https://github.com/ujjwal96/xwinwrap#branch=master
+	source = git+https://github.com/takase1121/xwinwrap#branch=master
 	source = LICENSE
 	sha256sums = SKIP
 	sha256sums = 9b445615c864519effd483f60c9877de671708f6c3807841ef1514490ae61903
 
 pkgname = xwinwrap-git
-

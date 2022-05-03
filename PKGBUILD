@@ -1,13 +1,14 @@
 ##
-# Maintainer: pyamsoft <pyam(dot)soft(at)gmail(dot)com>
+# Maintainer: zjuyk <ownbyzjuyk(at)gmail(dot)com>
+# Contributer: pyamsoft <pyam(dot)soft(at)gmail(dot)com>
 #
 # Updated by jonathon: https://aur.archlinux.org/account/jonathon
 ##
 
 _gitname=xwinwrap
 pkgname="${_gitname}"-git
-pkgdesc="Fork of XwinWrap from ujjwal96 on GitHub"
-pkgver=r5.ec32e9b
+pkgdesc="Fork of XwinWrap from takase1121 on GitHub"
+pkgver=r20.539fc47
 pkgrel=1
 arch=('x86_64')
 makedepends=('git')
@@ -15,9 +16,10 @@ depends=('libx11' 'libxext' 'libxrender')
 provides=('xwinwrap')
 conflicts=('xwinwrap')
 license=(custom)
-url="https://github.com/ujjwal96/xwinwrap"
+url="https://github.com/takase1121/xwinwrap"
 source=("git+${url}#branch=master" LICENSE)
-sha256sums=('SKIP' '9b445615c864519effd483f60c9877de671708f6c3807841ef1514490ae61903')
+sha256sums=('SKIP'
+            '9b445615c864519effd483f60c9877de671708f6c3807841ef1514490ae61903')
 
 pkgver() {
   cd "${_gitname}" || return 1
