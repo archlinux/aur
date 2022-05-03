@@ -20,6 +20,10 @@ build() {
 package() {
   cd numpy-$pkgver
   pypy3 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  install -D -m644 LICENSE.txt -t "$pkgdir"/usr/share/licenses/pypy3-numpy/
 
-  install -D -m644 LICENSE.txt -t "$pkgdir"/usr/share/licenses/python-numpy/
+  cd "$pkgdir/usr/bin"
+  for i in f2py f2py3 f2py3.8; do
+    mv $i $i-pypy3
+  done
 }
