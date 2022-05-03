@@ -3,13 +3,13 @@
 
 _pkgname=lxqt-session
 pkgname=$_pkgname-git
-pkgver=0.16.0.38.g4fb423c
-pkgrel=2
+pkgver=1.1.0.3.gdb2bf51
+pkgrel=1
 pkgdesc="LXQt session"
 arch=("i686" "x86_64")
 url="https://lxqt.org"
 license=("GPL2")
-depends=("liblxqt-git" "xdg-user-dirs" "libx11" "udev" "kwindowsystem" "procps-ng")
+depends=("liblxqt-git" "qtxdg-tools-git" "xdg-user-dirs" "libx11" "udev" "kwindowsystem" "procps-ng")
 optdepends=("sddm: The recommended LXQt display manager")
 makedepends=("git" "cmake" "qt5-tools" "lxqt-build-tools-git")
 provides=("$_pkgname=$pkgver")
