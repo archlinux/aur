@@ -5,7 +5,7 @@
 
 pkgname=dosbox-djcrx
 pkgver=2.05
-pkgrel=12
+pkgrel=13
 pkgdesc="Headers and utilities for the djgpp dosbox cross-compiler"
 arch=('i686' 'x86_64')
 url="http://www.delorie.com/djgpp/"
@@ -51,13 +51,11 @@ prepare() {
   # allow using dxe3gen without DJDIR and without dxe3res in PATH
   patch -Np0 < dxegen.patch
 
+  # optimize for pentium
+  sed -i "s/O2/O3/g;s/i386/i586/g;/Werror/d" src/makefile.cfg
+
   # be verbose
   #sed -i '/@$(MISC) echo - / d; s/^\t@/\t/' src/makefile.inc src/libc/makefile src/utils/makefile
-
-  # optimize for pentium
-  sed -i "s/O2/O3/" src/makefile.cfg
-  sed -i "s/march=i386/march=i586/" src/makefile.cfg
-  sed -i "/Werror/d" src/makefile.cfg
 }
 
 build() {
