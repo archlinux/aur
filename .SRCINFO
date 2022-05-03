@@ -1,0 +1,17 @@
+pkgbase = python-matplotlib-backend-notcurses
+	pkgdesc = a sixel graphics backend for matplotlib
+	pkgver = 1.0.1
+	pkgrel = 1
+	url = https://github.com/jktr/matplotlib-backend-notcurses
+	arch = any
+	license = Custom:CC0
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python-matplotlib
+	depends = notcurses
+	depends = python
+	source = python-matplotlib-backend-notcurses-1.0.1.tar.gz::https://github.com/jktr/matplotlib-backend-notcurses/archive/v1.0.1.tar.gz
+	sha256sums = 252411c3e0368bce59432e1e414026c35e7a0990ea11d70ee892e6a1883f88eb
+
+pkgname = python-matplotlib-backend-notcurses
