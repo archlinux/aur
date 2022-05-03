@@ -7,7 +7,7 @@
 pkgname=wechat-uos
 _pkgname=wechat
 pkgver=2.1.2
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc="微信官方原生桌面版 WeChat desktop"
 arch=('x86_64')
@@ -28,7 +28,7 @@ sha512sums=('cb1b5ca8d18a73b8acae2d0c5518f1471451b35ef5a678ece37bca4d6a8e1ff0421
             '5a54b2362ad199951b1445bc075ae69770804e16708b1f7072f48be21112de3ce6e1a6feee15ec91522c4b48b4ff396a2b49bb83c0ad41aee3839ac093f8a169'
             '68d31d9e7a6ee14d5cc330acf55d9905be86c4ac187279e33494bc479a60c078b38eef0fa7833ba9fda2b14978f212d8647dd609b6f3037b0133701fe8f5e72b'
             '8b9d70162a5a71584cf85a309da48730de9db03f49a7e9611de04441864be80267e53e3155f7856c87ed53f99def277d74132392816c4f07893a02e99043ed6c')
-options=(!strip)
+
 
 package(){
     echo "  -> Extracting the data.tar.xz..."

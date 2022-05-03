@@ -1,7 +1,7 @@
 pkgbase = wechat-uos
 	pkgdesc = 微信官方原生桌面版 WeChat desktop
 	pkgver = 2.1.2
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 2
 	url = https://weixin.qq.com/
 	arch = x86_64
@@ -9,7 +9,6 @@ pkgbase = wechat-uos
 	depends = electron
 	depends = bubblewrap
 	depends = lsb-release
-	options = !strip
 	source = wechat-2.1.2.deb::https://home-store-packages.uniontech.com/appstore/pool/appstore/c/com.tencent.weixin/com.tencent.weixin_2.1.2_amd64.deb
 	source = wechat.sh
 	source = wechat-uos.desktop
