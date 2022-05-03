@@ -2,7 +2,7 @@
 
 pkgname=swop
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='i3 open but for Wayland'
 url='https://git.sr.ht/~brocellous/swop'
 arch=('x86_64')
@@ -12,9 +12,9 @@ source=(
 	"40-swop.conf"
 )
 depends=('wayland')
-md5sums=(
-	'ef0d2578ef02b690cb70c89e71c501e8'
-	'SKIP'
+sha256sums=(
+	'd14cce30cf98928b1b92b0f0bab8acc262e7e46a85785bff97ebe2102daee87a'
+    'SKIP'
 )
 
 build() {
