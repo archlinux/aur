@@ -1,0 +1,14 @@
+pkgbase = packwiz-bin
+	pkgdesc = A command line tool for editing and distributing Minecraft modpacks
+	pkgver = 0.r86
+	pkgrel = 1
+	url = https://github.com/AgregoreWeb/agregore-browser
+	arch = x86_64
+	license = AGPL3
+	makedepends = curl
+	makedepends = git
+	makedepends = htmlq
+	source = https://nightly.link/packwiz/packwiz/workflows/go/master/Linux%2064-bit%20x86.zip
+	sha256sums = d6b53bd44f75381073314dc3b447ce077ea3cf44a200cd6f02822f247c0df19d
+
+pkgname = packwiz-bin
