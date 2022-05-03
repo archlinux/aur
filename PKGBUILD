@@ -1,14 +1,14 @@
 # Contributor: Andreas Wagner < Andreas dot Wagner at em dot uni-frankfurt dot de >
 
 pkgname=qvv
-pkgver=4.04.2
+pkgver=4.05
 pkgrel=1
 pkgdesc="Qt-based image browser"
 arch=('i686' 'x86_64')
 url="http://cade.datamax.bg/qvv/"
 license=('GPL2')
 depends=('qt5-base')
-source=($pkgname-$pkgver.tar.gz::https://github.com/cade-vs/$pkgname/archive/$pkgver.tar.gz)
+source=("http://cade.noxrun.com/projects/qvv/$pkgname-$pkgver.tar.gz")
 
 build() {
   cd "$pkgname-$pkgver/src"
@@ -27,4 +27,4 @@ package() {
   install -m644 images/qvv_icon_16x16.png "$pkgdir/usr/share/icons/hicolor/16x16/apps/qvv.png"
 }
 
-md5sums=('258b42527abec739d3496244aa495b7e')
+sha256sums=('eb95a51f5a897486d2a2045be1d4c2fd289ce9d351f1ba0cea7da20bb282d29e')
