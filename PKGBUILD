@@ -1,7 +1,7 @@
 # Maintainer: Myrddin Wyllt <darknesseatsall at aim dot com>
 
 pkgname=openrgb-git
-pkgver=r1772.84de7ebc
+pkgver=r2379.6ae5242e
 pkgrel=1
 pkgdesc="Configuration utility for RGB lights supporting motherboards, RAM, & peripherals"
 arch=('x86_64')
@@ -13,10 +13,8 @@ optdepends=('i2c-tools: Motherboard & RAM access')
 provides=('openrgb')
 conflicts=('openrgb')
 source=("openrgb::git+https://gitlab.com/CalcProgrammer1/openrgb.git"
-        'openrgb.desktop'
         'openrgb.conf')
 sha256sums=('SKIP'
-            '2e8d24575773b17d86d8ad01789a40be2ecaa7840e51e346b851b3910d45ae1b'
             'b5a53d747422f8b594e3e9615e238457d696732efce94050cdd72182a8645ef2')
 
 pkgver() {
@@ -27,14 +25,15 @@ pkgver() {
 build() {
     cd "$srcdir/openrgb"
     qmake OpenRGB.pro
-    make -j$(($(nproc)+1))
+    make
+    ./scripts/build-udev-rules.sh "."
 }
 
 package() {
     cd "$srcdir/openrgb"
-    install -Dm755 openrgb "$pkgdir"/usr/bin/openrgb
-    install -Dm644 qt/OpenRGB.png "$pkgdir"/usr/share/pixmaps/openrgb.png
-    install -Dm644 -t "$pkgdir"/usr/share/applications ../openrgb.desktop
+    install -Dm755 -t "$pkgdir"/usr/bin openrgb
+    install -Dm644 -t "$pkgdir"/usr/share/icons/hicolor/128x128 "."/qt/OpenRGB.png
+    install -Dm644 -t "$pkgdir"/usr/share/applications "."/qt/OpenRGB.desktop
     install -Dm644 -t "$pkgdir"/usr/lib/udev/rules.d 60-openrgb.rules
-    install -Dm644 -t "$pkgdir"/usr/lib/modules-load.d ../openrgb.conf
+    install -Dm644 -t "$pkgdir"/usr/lib/modules-load.d ".."/openrgb.conf
 }
