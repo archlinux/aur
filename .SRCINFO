@@ -1,16 +1,16 @@
 pkgbase = vscodium-bin-marketplace
 	pkgdesc = Enable vscode marketplace in vscodium-bin
 	pkgver = 1.56.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://marketplace.visualstudio.com/vscode
 	install = vscodium-bin-marketplace.install
 	arch = any
 	license = unknown
-	depends = vscodium-bin
-	depends = sed
 	source = vscodium-bin-marketplace.hook
 	source = patch.sh
 	sha256sums = bd53744ef5bd5b0521af26f9f0774e92f39d37a19d3fb76ed764e591e8052c00
 	sha256sums = 891ff64322af487b247e12548042ab24aa21236e383011787260093d6ae5500a
 
 pkgname = vscodium-bin-marketplace
+	depends = vscodium-bin
+	depends = sed
