@@ -1,0 +1,13 @@
+pkgbase = rres-bin
+	pkgdesc = A xrandr replacement to gather display resolutions
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://gitlab.com/forkbomb9/rres
+	arch = x86_64
+	license = GPLv3
+	provides = rres
+	conflicts = rres
+	source_x86_64 = https://gitlab.com/forkbomb9/rres/uploads/dbd6dea1efc97679f377677f6d1899d6/rres-v0.1.2-x86_64-unknown-linux-musl
+	sha256sums_x86_64 = f73969a7a0bc8afd78b06cdd6f20198286092a716bc470200a6da24765c85874
+
+pkgname = rres-bin
