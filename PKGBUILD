@@ -3,7 +3,7 @@
 pkgname=inform7-git
 _gitpkg=inform
 pkgver=r1393.16ed0ae71
-pkgrel=1
+pkgrel=2
 pkgdesc="A design system for interactive fiction based on natural language (git version)"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'pentium4' 'x86_64')
 url="https://ganelson.github.io/inform"
@@ -51,5 +51,5 @@ package() {
   # moving i6/7 binaries here for now
   mv "${pkgdir}/usr/bin/inform[67]" "${pkgdir}/usr/share"
 
-  install -Dm755 wrapper.sh "${pkgdir}/usr/bin/${_gitpkg}"
+  install -Dm755 wrapper.sh "${pkgdir}/usr/bin/inform7"
 }
