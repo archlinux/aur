@@ -1,7 +1,7 @@
 # Maintainer: Graeme Gott <graeme@gottcode.org>
 
 pkgname=cutemaze
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Top-down maze game'
 arch=('x86_64')
@@ -10,7 +10,7 @@ license=('GPL3')
 depends=('qt6-base' 'qt6-svg')
 makedepends=('cmake' 'qt6-tools')
 source=("https://gottcode.org/$pkgname/$pkgname-$pkgver-src.tar.bz2")
-sha256sums=('87bf87d84dfb6554a794f6ba203fa5344bc5b54e4f7dd3129418ea06e9a88e85')
+sha256sums=('6944931cd39e9ef202c11483b7b2b7409a068c52fa5fd4419ff938b1158c72ab')
 
 build() {
   cmake -B build -S $pkgbase-$pkgver \

@@ -1,6 +1,6 @@
 pkgbase = cutemaze
 	pkgdesc = Top-down maze game
-	pkgver = 1.3.0
+	pkgver = 1.3.1
 	pkgrel = 1
 	url = https://gottcode.org/cutemaze/
 	arch = x86_64
@@ -9,8 +9,7 @@ pkgbase = cutemaze
 	makedepends = qt6-tools
 	depends = qt6-base
 	depends = qt6-svg
-	source = https://gottcode.org/cutemaze/cutemaze-1.3.0-src.tar.bz2
-	sha256sums = 87bf87d84dfb6554a794f6ba203fa5344bc5b54e4f7dd3129418ea06e9a88e85
+	source = https://gottcode.org/cutemaze/cutemaze-1.3.1-src.tar.bz2
+	sha256sums = 6944931cd39e9ef202c11483b7b2b7409a068c52fa5fd4419ff938b1158c72ab
 
 pkgname = cutemaze
-
