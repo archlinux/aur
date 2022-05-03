@@ -1,8 +1,9 @@
 [Trigger]
 Operation = Install
 Operation = Upgrade
-Type = Package
-Target = nvidia-utils*
+Type = File
+Target = usr/lib/libnvidia-encode.so.*
+Target = usr/lib/libnvidia-fbc.so.*
 
 [Action]
 Description = Re-Applying nvlax

@@ -5,7 +5,7 @@
 _gitname=nvlax
 pkgname=$_gitname-git
 pkgver=r11.b3699ad
-pkgrel=4
+pkgrel=5
 pkgdesc='Future-proof NvENC & NvFBC patcher'
 arch=('x86_64')
 url='https://github.com/illnyang/nvlax'
@@ -19,8 +19,8 @@ source=("$_gitname"::"git+https://github.com/illnyang/$_gitname.git"
         'nvlax-upgrade.hook'
         'nvlax-install.hook')
 sha256sums=('SKIP'
-            '09c135c0a372f0b0020fea2665301249e73d32919d9b83d37718d402897ba5f7'
-            '5d7eae6a93cd66b602a723f615d1c768f131dbb1e14432783f2a452a87e4501e')
+            '347ba347a37f70c008be340c40cd55fff8588ce7aa3dd1dd7ef0241bd2f5e09a'
+            '120488c0831ae4b347432c46add9f56f146f69580ebedfece4bb4ed947fb12df')
 
 prepare() {
   cd $_gitname
