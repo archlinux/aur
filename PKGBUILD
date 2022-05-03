@@ -3,34 +3,26 @@
 
 pkgname=kde-material-you-colors-git
 _pkgname=${pkgname%-git}
-pkgver=0.2.0BETA.r51.g865262f
+pkgver=0.2.0BETA.r54.g57f706b
 pkgrel=1
 pkgdesc="Automatic Material You Colors generator from your wallpaper for the Plasma Desktop - Git dev branch version"
-arch=("x86_64")
+arch=(x86_64)
 url="https://github.com/luisbocanegra/kde-material-you-colors/tree/dev"
-license=("APACHE")
-makedepends=("git")
+license=(APACHE)
+makedepends=(git)
 depends=(
-  "dbus-python"
-  "python-numpy"
+  dbus-python
+  python-numpy
 )
 optdepends=(
   "python-colr: colored hex codes printing"
   "python-pywal: theme other programs using Material You Colors"
 )
-options=("!strip")
+options=(!strip)
 conflicts=("$_pkgname")
 provides=("$_pkgname")
-source=(
-  "$pkgname::git+${url/\/tree\/dev/}.git#branch=dev"
-  "material-color-utility"
-  "kde-material-you-colors"
-)
-sha256sums=(
-  "SKIP"
-  "5092efc5ef592272576d0c1a96ca8bad380221aaea4a7e531b8eddf1a9aae39c"
-  "42303dad13a9c4bbdd9f1c409979526a6d3c47a89f4a326cc312ed83a4d557bb"
-)
+source=("$pkgname::git+${url/\/tree\/dev/}.git#branch=dev")
+sha256sums=(SKIP)
 
 pkgver() {
   cd "$srcdir/$pkgname"
@@ -64,7 +56,9 @@ package() {
     install -Dm755 -t "$pkgdir/usr/lib/$_pkgname" "$file"
   done
 
-  install -Dm755 -t "$pkgdir/usr/bin" "$srcdir/kde-material-you-colors"
-  install -Dm755 -t "$pkgdir/usr/bin" "$srcdir/material-color-utility"
+  install -d "$pkgdir/usr/bin"
+  ln -s /usr/lib/$_pkgname/material-color-utility-bin "$pkgdir/usr/bin/material-color-utility"
+  ln -s /usr/lib/$_pkgname/kde-material-you-colors "$pkgdir/usr/bin/kde-material-you-colors"
+
   install -Dm644 -t "$pkgdir/usr/share/doc/$_pkgname" README.md
 }
