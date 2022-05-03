@@ -1,0 +1,17 @@
+pkgbase = falco-ebpf
+	pkgdesc = Cloud native runtime security. eBPF (Perf Buffer)
+	pkgver = 0.31.0
+	pkgrel = 1
+	url = https://falco.org/
+	arch = x86_64
+	license = Apache
+	makedepends = cmake
+	makedepends = git
+	makedepends = c-ares
+	makedepends = jq
+	makedepends = grpc
+	makedepends = yaml-cpp
+	source = falco-0.31.0.tar.gz::https://github.com/falcosecurity/falco/archive/refs/tags/0.31.0.tar.gz
+	sha256sums = 0c7d88bfa2ec8e17e6e27158fabfb1d05982ede3138138b44a0f3ac6ffba5545
+
+pkgname = falco-ebpf
