@@ -1,6 +1,6 @@
 pkgbase = ebview-git
 	pkgdesc = A GTK2 based EPWING dictionary viewer.
-	pkgver = r61.4dc3ae8
+	pkgver = r64.390e6ed
 	pkgrel = 1
 	url = http://ebview.sourceforge.net
 	arch = i686
@@ -8,12 +8,11 @@ pkgbase = ebview-git
 	license = GPL
 	makedepends = git
 	depends = gtk2
-	depends = eb-library
+	depends = libeb
 	depends = pangox-compat
 	provides = ebview
 	conflicts = ebview
-	source = git://github.com/fujii/ebview.git
+	source = git+https://github.com/fujii/ebview.git
 	md5sums = SKIP
 
 pkgname = ebview-git
-

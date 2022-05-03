@@ -1,20 +1,21 @@
-# Maintainer: Victor Schulz <schulz89 at gmail dot com>
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Victor Schulz <schulz89 at gmail dot com>
 # Contributor: 2ion <dev at 2ion dot de>
 # Contributor: TDY <tdy at archlinux dot info>
 # Contributor: system <system at tou dot de>
 
 pkgname=ebview-git
-pkgver=r61.4dc3ae8
+pkgver=r64.390e6ed
 pkgrel=1
 pkgdesc="A GTK2 based EPWING dictionary viewer."
 arch=('i686' 'x86_64')
 url="http://ebview.sourceforge.net"
 license=('GPL')
-depends=('gtk2' 'eb-library' 'pangox-compat')
+depends=('gtk2' 'libeb' 'pangox-compat')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=('git://github.com/fujii/ebview.git')
+source=('git+https://github.com/fujii/ebview.git')
 md5sums=('SKIP')
 
 pkgver() {
