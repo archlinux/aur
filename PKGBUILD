@@ -1,7 +1,7 @@
 # Maintainer: rern <rernrern@gmail.com>
 
 pkgname=python-pycamilladsp
-pkgver=0.6.0
+pkgver=1.0.0
 pkgrel=1
 pkgdesc='Communication with CamillaDSP via a websocket'
 url=https://github.com/HEnquist/pycamilladsp
@@ -10,7 +10,7 @@ arch=(any)
 depends=(python-websocket-client python-websockets)
 makedepends=(python)
 source=(https://github.com/HEnquist/pycamilladsp/archive/refs/tags/v$pkgver.tar.gz)
-sha256sums=(37a749440e17882b5ec8761f45af1ac17f0183752abcfa7849abd917970e124a)
+sha256sums=(2b77195a4b7402821fb410cd9924ec622124264393ea59e63cfed5344076061c)
 
 package() {
 	cd $srcdir/pycamilladsp-$pkgver
