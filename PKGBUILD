@@ -7,14 +7,14 @@ pkgver=11.3.0
 _target="i586-pc-msdosdjgpp"
 _islver=0.24
 _djver=2.05
-pkgrel=1
+pkgrel=2
 pkgdesc="djgpp cross-compiler for the dosbox environment"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
 license=('GPL' 'LGPL' 'FDL' 'custom')
 groups=('djgpp')
 depends=('zlib' 'libmpc' 'dosbox-binutils')
-makedepends=('unzip')
+makedepends=('unzip' 'tar' 'xz')
 optdepends=('dosbox-djcrx: headers and utilities')
 options=('!strip' 'staticlibs' '!emptydirs')
 source=("https://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-$pkgver.tar.xz"
@@ -56,19 +56,18 @@ prepare() {
 }
 
 build() {
-  export ac_cv_func_shl_load=no
-  export ac_cv_lib_dld_shl_load=no
-  export ac_cv_func_dlopen=no
-  export ac_cv_lib_dl_dlopen=no
-  export ac_cv_lib_svld_dlopen=no
-  export ac_cv_lib_dld_dld_link=no
-
   cd gcc-build-$_target
   ../gcc-$pkgver/configure \
     --prefix=/usr \
     --libexecdir=/usr/lib \
     --datarootdir=/usr/$_target/share \
     --target="$_target" \
+    --with-arch=i586 \
+    --with-cpu=i586 \
+    --with-isl \
+    --with-system-zlib \
+    --disable-decimal-float \
+    --disable-gcov \
     --disable-ld \
     --disable-nls \
     --disable-install-libiberty \
@@ -77,23 +76,27 @@ build() {
     --disable-libquadmath-support \
     --disable-libgomp \
     --disable-libsanitizer \
-    --disable-decimal-float \
+    --disable-multilib \
     --enable-gold \
     --enable-languages=c,c++ \
+    --enable-lto \
     --enable-shared \
     --enable-static \
-    --with-isl \
-    --with-system-zlib \
-    --with-arch=i586 \
-    --with-cpu=i586 \
     --disable-threads \
     --disable-libstdcxx-pch \
     --disable-libstdcxx-threads \
-    --enable-lto \
+    --enable-cxx-flags="-O3 -fno-plt" \
     --enable-libstdcxx-filesystem-ts \
-    --disable-libstdcxx-time \
-    --disable-multilib --enable-checking=release
+    --enable-libstdcxx-time=no \
+    --enable-checking=release
   make all-gcc
+
+  export ac_cv_func_dlopen=no
+  export ac_cv_func_shl_load=no
+  export ac_cv_lib_dld_shl_load=no
+  export ac_cv_lib_dl_dlopen=no
+  export ac_cv_lib_svld_dlopen=no
+  export ac_cv_lib_dld_dld_link=no
 
   cd $srcdir/gcc-build-$_target
   make all
