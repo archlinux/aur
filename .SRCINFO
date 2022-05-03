@@ -1,7 +1,7 @@
 pkgbase = vivado
 	pkgdesc = FPGA/CPLD design suite for Xilinx devices
-	pkgver = 2021.2
-	pkgrel = 2
+	pkgver = 2022.1
+	pkgrel = 1
 	url = https://www.xilinx.com/products/design-tools/vivado.html
 	arch = x86_64
 	license = custom
@@ -18,9 +18,9 @@ pkgbase = vivado
 	optdepends = matlab: Model Composer
 	optdepends = qt4: Model Composer
 	options = !strip
-	source = file:///Xilinx_Unified_2021.2_1021_0703.tar.gz
+	source = file:///Xilinx_Unified_2022.1_0420_0327.tar.gz
 	source = spoof_homedir.c
-	md5sums = c6f91186f332528a7b74a6a12a759fb6
+	md5sums = 0bf810cf5eaa28a849ab52b9bfdd20a5
 	md5sums = 69d14ad64f6ec44e041eaa8ffcb6f87c
 
 pkgname = vivado
