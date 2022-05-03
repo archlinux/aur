@@ -237,7 +237,7 @@ build() {
         -DSCORE_PCH=0 \
         -DSCORE_STATIC_PLUGINS=1 \
         -DSCORE_FHS_BUILD=1 \
-	      -DDEPLOYMENT_BUILD=1 \
+	      -DSCORE_DEPLOYMENT_BUILD=1 \
 	      -DCMAKE_SKIP_RPATH=1 \
 	      -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" \
 	      "$srcdir/$_gitname"
