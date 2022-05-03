@@ -1,0 +1,16 @@
+pkgbase = python-spacy-de_dep_news_trf
+	pkgdesc = German transformer pipeline (bert-base-german-cased). Components: transformer, tagger, morphologizer, parser, lemmatizer (trainable_lemmatizer).
+	pkgver = 3.3.0
+	pkgrel = 1
+	url = https://spacy.io/models/de#de_dep_news_trf
+	arch = any
+	license = MIT
+	makedepends = python-pip
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python-spacy
+	depends = python-spacy-transformers
+	source = https://github.com/explosion/spacy-models/releases/download/de_dep_news_trf-3.3.0/de_dep_news_trf-3.3.0.tar.gz
+	sha256sums = 074ae711e98f5b796934b16e04fb6918c2bff9c39ae258d3989587c95ae994a1
+
+pkgname = python-spacy-de_dep_news_trf
