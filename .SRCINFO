@@ -1,0 +1,14 @@
+pkgbase = python-task2dot
+	pkgdesc = Convert taskwarrior export to graphviz format and analyse projects
+	pkgver = 0.0.15
+	pkgrel = 1
+	url = https://github.com/garykl/task2dot
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/t/task2dot/task2dot-0.0.15.tar.gz
+	sha256sums = 81ba3f67d16435e4f4b45e286dc429a19db8afd999bb99095e02d1c0877effc9
+
+pkgname = python-task2dot
+	depends = python
