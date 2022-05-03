@@ -21,7 +21,7 @@ install=
 changelog=
 
 _srcprefix="https://raw.githubusercontent.com/$author/$pkgname/$branch"
-_libfiles=("CMakeLists.txt" "main.cpp" "color.hpp" "messenger.hpp" "constants.hpp" "$pkgname.service")
+_libfiles=("CMakeLists.txt" "color.hpp" "constants.hpp" "main.cpp" "messenger.hpp" "$pkgname.service")
 
 for _libfile in ${_libfiles[@]}
 {
@@ -29,10 +29,10 @@ for _libfile in ${_libfiles[@]}
 }
 
 md5sums=('a7abc0672242dedcd5e4f563456e7dbc'
-         '2da9c648c0162c0a5f45f6d1f81e92b6'
          '058646ab78672c97a2f18dffc1b56ebf'
-         '5870cc285cd690761cd23c994737fa54'
          'd17f4a822e966a71ea10bac39429811d'
+         '2da9c648c0162c0a5f45f6d1f81e92b6'
+         'fc085353cd83df9bcca751675006fd40'
          'cc8e63452b809611b046e7f27934c12e')
 
 _package_version=$pkgname" ("$pkgver"-"$pkgrel")"
