@@ -5,7 +5,7 @@
 
 pkgname=dosbox-djcrx
 pkgver=2.05
-pkgrel=15
+pkgrel=16
 pkgdesc="Headers and utilities for the djgpp dosbox cross-compiler"
 arch=('i686' 'x86_64')
 url="http://www.delorie.com/djgpp/"
@@ -52,7 +52,7 @@ prepare() {
   patch -Np0 < dxegen.patch
 
   # optimize for pentium
-  sed -i "s/O2/O3/g;s/i386/i586/g;/Werror/d" src/makefile.cfg
+  sed -i "s/O2/O3/g;s/i386/i586/g;/Werror/d" src/makefile src/makefile.cfg src/makefile.def
 
   # be verbose
   #sed -i '/@$(MISC) echo - / d; s/^\t@/\t/' src/makefile.inc src/libc/makefile src/utils/makefile
@@ -68,15 +68,15 @@ build() {
 }
 
 package() {
-  install -d "$pkgdir"/usr/bin
-  install -d "$pkgdir"/usr/$_target/bin
+  install -d $pkgdir/usr/bin
+  install -d $pkgdir/usr/$_target/bin
 
-  cp -r lib include "$pkgdir"/usr/$_target
+  cp -r lib include $pkgdir/usr/$_target
 
   cd hostbin
   for _file in djasm mkdoc stubedit stubify; do
-    install -m0755 $_file.exe "$pkgdir"/usr/$_target/bin/$_file
-    ln -s ../$_target/bin/$_file "$pkgdir"/usr/bin/$_target-$_file
+    install -m0755 $_file.exe $pkgdir/usr/$_target/bin/$_file
+    ln -s ../$_target/bin/$_file $pkgdir/usr/bin/$_target-$_file
   done
 
   cd ../src/dxe
@@ -89,8 +89,8 @@ package() {
   cd "$srcdir"
   install -Dm644 copying.dj "$pkgdir"/usr/share/licenses/$pkgname/copying.dj
 
-  cd info
-  for _file in *.info; do
-    install -Dm0644 $_file "$pkgdir"/usr/share/info/djgpp-$_file
-  done
+  #cd info
+  #for _file in *.info; do
+  #  install -Dm0644 $_file "$pkgdir"/usr/share/info/djgpp-$_file
+  #done
 }
