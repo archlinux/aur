@@ -1,4 +1,4 @@
-# Maintainer:  khvalera <khvalera at ukr dot net>
+# Maintainer:  khvalera <khvalera[at]ukr[dot]net>
 # Contributor: Matthias Fulz <mfulz@olznet.net>
 # Contributor: Michael Spradling <mike@mspradling.com>
 
@@ -53,8 +53,6 @@ md5sums=('SKIP'
          '926d71d75bb40c2023583c33712f6e2b'
          'e35a03f09797b00c098ecb829f1ad5f8'
          'e78b88f897cfc3e60129eec360521e3d')
-conflicts=("bareos")
-provides=("bareos")
 python3_ver="3.10"
 
 #=========================================
@@ -121,7 +119,6 @@ _cp() {
 
 #=========================================
 package_bareos-common() {
-  conflicts=("bareos-common")
   pkgdesc="${pkgdesc} - Common files"
   depends=('libcap' 'openssl' 'acl' 'bash' 'lzo' 'jansson' 'zlib')
   install=bareos-common.install
@@ -160,7 +157,6 @@ package_bareos-common() {
 
 #=========================================
 package_bareos-bconsole() {
-  conflicts=("bareos-bconsole")
   pkgdesc="${pkgdesc} - Admin Tool (CLI)"
   depends=("bareos-common=${pkgver}" 'readline' 'jansson')
   groups+=("bareos-client")
@@ -182,7 +178,6 @@ package_bareos-bconsole() {
 
 #=========================================
 package_bareos-database-common() {
-  conflicts=("bareos-database-common")
   pkgdesc="${pkgdesc} - Generic abstration libs and tools for sql catalog"
   depends=("bareos-common=${pkgver}" 'libcap' 'lzo' 'zlib' 'openssl' 'bash' 'jansson')
 
@@ -207,7 +202,6 @@ package_bareos-database-common() {
 
 #=========================================
 package_bareos-database-mysql() {
-  conflicts=("bareos-database-mysql")
   pkgdesc="${pkgdesc} - Libs and tools for mysql catalog"
   provides=("bareos-database=${pkgver}")
   depends=("bareos-database-common=${pkgver}" 'libmariadbclient')
@@ -235,7 +229,6 @@ package_bareos-database-mysql() {
 
 #=========================================
 package_bareos-database-postgresql() {
-  conflicts=("bareos-database-postgresql")
   pkgdesc="${pkgdesc} - Libs and tools for postgresql catalog"
   provides=("bareos-database=${pkgver}")
   depends=("bareos-database-common=${pkgver}" "postgresql-libs")
@@ -265,7 +258,6 @@ package_bareos-database-postgresql() {
 
 #=========================================
 package_bareos-database-sqlite3() {
-  conflicts=("bareos-database-sqlite3")
   pkgdesc="${pkgdesc} - Libs and tools for sqlite3 catalog"
   provides=("bareos-database=${pkgver}")
   depends=("bareos-database-common=${pkgver}" "sqlite3")
@@ -289,7 +281,6 @@ package_bareos-database-sqlite3() {
 
 #=========================================
 package_bareos-database-tools() {
-  conflicts=("bareos-database-tools")
   pkgdesc="${pkgdesc} - CLI tools with database dpendencies (dbcheck, bscan)"
   depends=("bareos-database-common=${pkgver}" 'openssl' 'jansson')
 
@@ -305,7 +296,6 @@ package_bareos-database-tools() {
 
 #=========================================
 package_bareos-devel() {
-  conflicts=("bareos-devel")
   pkgdesc="${pkgdesc} - Devel headers"
   arch=(any)
   # TODO
@@ -315,7 +305,6 @@ package_bareos-devel() {
 
 #=========================================
 package_bareos-director() {
-  conflicts=("bareos-director")
   pkgdesc="${pkgdesc} - Director daemon"
   depends=("bareos-common=${pkgver}" 'openssl' 'bash' 'jansson')
   install=bareos-director.install
@@ -365,7 +354,6 @@ package_bareos-director() {
 
 #=========================================
 package_bareos-storage-fifo() {
-  conflicts=("bareos-storage-fifo")
   pkgdesc="${pkgdesc} - FIFO support for storage daemon"
   depends=("bareos-storage=${pkgver}" 'zlib' 'libcap' 'openssl' 'jansson' 'lzo')
   for f in \
@@ -379,7 +367,6 @@ package_bareos-storage-fifo() {
 
 #=========================================
 package_bareos-tools() {
-  conflicts=("bareos-tools")
   pkgdesc="${pkgdesc} - CLI tools (bcopy, bextract, bls, bregeq, bwild)"
   depends=("bareos-common=${pkgver}" 'glibc')
 
@@ -403,7 +390,6 @@ package_bareos-tools() {
 
 #=========================================
 package_bareos-filedaemon() {
-  conflicts=("bareos-filedaemon")
   pkgdesc="${pkgdesc} - File daemon"
   depends=("bareos-common=${pkgver}" 'jansson' 'zlib' 'gcc-libs')
   groups+=('bareos-client')
@@ -428,7 +414,6 @@ package_bareos-filedaemon() {
 
 #=========================================
 package_bareos-storage() {
-  conflicts=("bareos-storage")
   pkgdesc="${pkgdesc} - Storage daemon"
   depends=("bareos-common=${pkgver}" 'zlib' 'lzo' 'jansson' 'openssl' 'libcap')
   install=bareos-storage.install
@@ -456,7 +441,6 @@ package_bareos-storage() {
 
 #=========================================
 package_bareos-storage-tape() {
-  conflicts=("bareos-storage-tape")
   pkgdesc="${pkgdesc} - Tape support for storage daemon"
   depends=("bareos-storage=${pkgver}" 'zlib' 'libcap' 'bash' 'openssl' 'jansson' 'lzo' "mtx")
   backup=(etc/bareos/mtx-changer.conf)
@@ -480,7 +464,6 @@ package_bareos-storage-tape() {
 
 #=========================================
 package_bareos-director-python-plugins-common() {
-  conflicts=("bareos-director-python-plugins-common")
   pkgdesc="${pkgdesc} - This package contains the common files for the python 2 and python 3 director plugins"
   depends=("bareos-director=${pkgver}")
 
@@ -495,7 +478,6 @@ package_bareos-director-python-plugins-common() {
 
 #=========================================
 package_bareos-filedaemon-python-plugins-common() {
-  conflicts=("bareos-filedaemon-python-plugins-common")
   pkgdesc="${pkgdesc} - This package contains the common files for the python 2 and python 3 filedaemon plugins"
   depends=("bareos-filedaemon=${pkgver}")
 
@@ -512,7 +494,6 @@ package_bareos-filedaemon-python-plugins-common() {
 
 #=========================================
 package_bareos-storage-python-plugins-common() {
-  conflicts=("bareos-storage-python-plugins-common")
   pkgdesc="${pkgdesc} - This package contains the common files for the python 2 and python 3 storage plugins"
   depends=("bareos-storage=${pkgver}")
 
@@ -527,8 +508,7 @@ package_bareos-storage-python-plugins-common() {
 
 #=========================================
 package_bareos-director-python2-plugin() {
-  conflicts=("bareos-director-python-plugin"
-             "bareos-director-python-plugin")
+  conflicts=("bareos-director-python-plugin")
   pkgdesc="${pkgdesc} - Python plugin for director daemon"
   depends=("bareos-director=${pkgver}"
            "bareos-director-python-plugins-common=${pkgver}"
@@ -544,8 +524,7 @@ package_bareos-director-python2-plugin() {
 
 #=========================================
 package_bareos-director-python3-plugin() {
-  conflicts=("bareos-director-python-plugin"
-             "bareos-director-python-plugin")
+  conflicts=("bareos-director-python-plugin")
   pkgdesc="${pkgdesc} - Python plugin for director daemon"
   depends=("bareos-director=${pkgver}"
            "bareos-director-python-plugins-common=${pkgver}"
@@ -561,8 +540,7 @@ package_bareos-director-python3-plugin() {
 
 #=========================================
 package_bareos-filedaemon-python2-plugin() {
-  conflicts=("bareos-filedaemon-python-plugin"
-             "bareos-filedaemon-python-plugin")
+  conflicts=("bareos-filedaemon-python-plugin")
   pkgdesc="${pkgdesc} - Python plugin for file daemon"
   depends=("bareos-filedaemon=${pkgver}"
            "bareos-filedaemon-python-plugins-common=${pkgver}"
@@ -578,8 +556,7 @@ package_bareos-filedaemon-python2-plugin() {
 
 #=========================================
 package_bareos-filedaemon-python3-plugin() {
-  conflicts=("bareos-filedaemon-python-plugin"
-             "bareos-filedaemon-python-plugin")
+  conflicts=("bareos-filedaemon-python-plugin")
   pkgdesc="${pkgdesc} - Python plugin for file daemon"
   depends=("bareos-filedaemon=${pkgver}"
            "bareos-filedaemon-python-plugins-common=${pkgver}"
@@ -595,8 +572,7 @@ package_bareos-filedaemon-python3-plugin() {
 
 #=========================================
 package_bareos-storage-python2-plugin() {
-  conflicts=("bareos-storage-python-plugin"
-             "bareos-storage-python-plugin")
+  conflicts=("bareos-storage-python-plugin")
   pkgdesc="${pkgdesc} - Python plugin for storage daemon"
   depends=("bareos-storage=${pkgver}"
            "bareos-storage-python-plugins-common=${pkgver}"
@@ -612,8 +588,7 @@ package_bareos-storage-python2-plugin() {
 
 #=========================================
 package_bareos-storage-python3-plugin() {
-  conflicts=("bareos-storage-python-plugin"
-             "bareos-storage-python-plugin")
+  conflicts=("bareos-storage-python-plugin")
   pkgdesc="${pkgdesc} - Python plugin for storage daemon"
   depends=("bareos-storage=${pkgver}"
            "bareos-storage-python-plugins-common=${pkgver}"
@@ -629,7 +604,6 @@ package_bareos-storage-python3-plugin() {
 
 #=========================================
 package_bareos-filedaemon-ldap-python-plugin() {
-  conflicts=("bareos-filedaemon-ldap-python-plugin")
   pkgdesc="${pkgdesc} - LDAP Python plugin for Bareos File daemon"
   depends=("bareos-filedaemon=${pkgver}"
            "bareos-filedaemon-python3-plugin=${pkgver}"
@@ -650,7 +624,6 @@ package_bareos-filedaemon-ldap-python-plugin() {
 #=========================================
 package_bareos-traymonitor() {
   groups+=("bareos-client")
-  conflicts=("bareos-traymonitor")
   pkgdesc="${pkgdesc} - This package contains the tray monitor (QT based)"
   depends=("bareos-common=${pkgver}")
   #backup=("etc/bareos/tray-monitor.d/tray-monitor.conf")
@@ -671,8 +644,6 @@ package_bareos-traymonitor() {
 
 #=========================================
 package_bareos-webui() {
-
-  conflicts=("bareos-webui")
   pkgdesc="${pkgdesc} - Webui (Bareos web administration)"
   depends=('php7' 'php7-fpm' 'jansson')
   optdepend=('nginx' 'php7-apache')
