@@ -1,0 +1,7 @@
+post_install() {
+  /usr/bin/blockheaders-meta-extractor /usr/share/floweepay
+}
+
+post_upgrade() {
+  /usr/bin/blockheaders-meta-extractor /usr/share/floweepay
+}
