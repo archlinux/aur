@@ -2,7 +2,7 @@
 
 pkgname='p2pool-git'
 _pkgname='p2pool'
-pkgver=1.0.r16.g2a3cd13
+pkgver=2.0.r1.g6b4640c
 pkgrel=1
 pkgdesc='Decentralized pool for Monero mining'
 arch=('x86_64' 'armv7h' 'aarch64' 'i686')
@@ -27,8 +27,6 @@ prepare() {
   git submodule init
   git submodule update
   mkdir -p build
-  # Removing libgss from build dependencies.
-  sed -i 's/gss//g' CMakeLists.txt
 }
 
 build() {
