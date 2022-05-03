@@ -4,9 +4,9 @@
 
 pkgname=graceful-udisks
 _pkgname=udisks2
+myver=12
 pkgver=2.9.4
-myver=3
-pkgrel=1
+pkgrel=$myver
 pkgdesc='原始项目: https://www.freedesktop.org/wiki/Software/udisks, 本项目仅用于个人调试，不能用于生产环境，否则会造成不可预估的损失，使用本包造成的损失由自己承担。'
 arch=('x86_64')
 url="https://github.com/graceful-linux/udisks"
@@ -20,7 +20,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 backup=('etc/udisks2/udisks2.conf')
 source=("https://github.com/graceful-linux/udisks/archive/refs/tags/udisks-debug-$pkgver-$myver.tar.gz")
-sha512sums=('fb67dd66641058edcbbcaab3f468734dbe89e6c978f6f741dfe530968bbf64e1203ba3a504193bb34e43fc586c39547380d926d1697e8cca5d29995c83b2a29a')
+sha512sums=('5ac771ffd376d66fa5e877c6969f0bc0ad6666a28a09ba92eb8e75000fdf9d9eebc73f7b6a3748172391e19d5c36931d8c83b8c9870663b46e0a9deb28768a0e')
 
 prepare() {
   mv udisks-udisks-debug-$pkgver-$myver udisks-udisks-$pkgver 
