@@ -1,7 +1,7 @@
 # Maintainer: Tom Zander
 
 pkgname=flowee
-pkgver=2021.06.2
+pkgver=2022.04.1
 pkgrel=1
 pkgdesc="Flowee provides the shortest path to Bitcoin Cash"
 arch=('x86_64' 'aarch64')
@@ -15,23 +15,18 @@ backup=("etc/flowee/flowee.conf" "etc/flowee/rest-service.conf")
 install=flowee.install
 source=("https://gitlab.com/FloweeTheHub/thehub/-/archive/$pkgver/thehub-$pkgver.tar.gz"
     "flowee.logrotate"
-    "flowee.conf"
-    "std.diff")
+    "flowee.conf")
 
-sha256sums=("81829dccf49be1ea7950a3ea33087a09cbf08f9a7ab8c8b6daf87d41556ecd8c"
+sha256sums=("9bb35450ad11cb43841b29f266e0a3539af9fec1b8f079b9be8931c55a6e5acd"
     "0438e1a44523aeb3bbecd60fd920ca7b2aacd267b5cf988ab77a44eb7c03929e"
-    "59c1928ddb33fed1d4bf35df8fecd1dbdda0b308eac943503a2e3afb8c64bc89"
-    "1257e6f40c54d99099d9180ab95ffb661141c97ac0c983de9f7155237f4709d8")
+    "59c1928ddb33fed1d4bf35df8fecd1dbdda0b308eac943503a2e3afb8c64bc89")
 
 build() {
-  cd thehub-$pkgver
-  patch -p1 < $srcdir/std.diff
-  cd ..
   mkdir -p build
   cd build
-  cmake -Denable_gui=false -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/ ../thehub-$pkgver
-  echo '#define GIT_COMMIT_ID "c71ebb9be"' > include/build.h
-  echo '#define BUILD_DATE "2021-11-26 18:10:31 +0100"' >> include/build.h
+  cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$pkgdir/usr/ ../thehub-$pkgver
+  echo '#define GIT_COMMIT_ID "738c66e41"' > include/build.h
+  echo '#define BUILD_DATE "2022-05-03 19:48:34 +0200"' >> include/build.h
   make
 }
 
