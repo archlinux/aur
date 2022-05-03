@@ -1,6 +1,6 @@
 pkgbase = gnome-shell-extension-openweather
 	pkgdesc = Display weather information for any location on Earth in the GNOME Panel
-	pkgver = 109
+	pkgver = 110
 	pkgrel = 1
 	url = https://gitlab.com/skrewball/openweather
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = gnome-shell-extension-openweather
 	depends = gnome-shell
 	conflicts = gnome-shell-extension-openweather-git
 	conflicts = gnome-shell-extension-weather-git
-	source = openweather-v109.tar.gz::https://gitlab.com/skrewball/openweather/-/archive/v109/openweather-v109.tar.gz
-	sha256sums = 5a7421d603140c351b5d3b45df746b2ef915545f76eaa753b105c70914eb49c6
+	source = openweather-v110.tar.gz::https://gitlab.com/skrewball/openweather/-/archive/v110/openweather-v110.tar.gz
+	sha256sums = 68c83af5ae2c02539e48d989c939cd930cbb25e4f39ee9360bb459e7f09f18df
 
 pkgname = gnome-shell-extension-openweather
