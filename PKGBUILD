@@ -1,10 +1,10 @@
 # Maintainer: Caleb Jamison <cbjamo@gmail.com> 
 pkgname=python-kinparse
-pkgver=0.1.2
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Parser for KiCad schematic netlists."
 arch=(any)
-url="https://xesscorp.github.io/kinparse/docs/_build/singlehtml/index.html"
+url="https://github.com/devbisme/kinparse"
 license=('MIT')
 groups=()
 depends=('python' 'python-future' 'python-pyparsing')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 options=(!emptydirs)
 _name=${pkgname#python-}
 source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz)
-sha256sums=('01b58c997169649988a9a33392fd7e0a6afd40b288643dc6de1ba685d289bab7')
+sha256sums=('1d951aa25688a7485edb69810ffcb5257df1803b78490dc680b8138d5fdc56e3')
 
 build() {
   cd "$srcdir/$_name-$pkgver"
