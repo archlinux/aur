@@ -18,7 +18,7 @@ _hostver=7.0.0-preview.3.22175.4
 _dotnetruntimever=7.0.0-preview.3.22175.4
 _aspnetruntimever=7.0.0-preview.3.22178.4
 _sdkver=7.0.100-preview.3.22179.4
-pkgrel=1
+pkgrel=2
 arch=(x86_64 aarch64 armv7h)
 url=https://www.microsoft.com/net/core
 license=(MIT)
@@ -70,7 +70,7 @@ package_dotnet-runtime-preview-bin() {
   )
 
   optdepends=('lttng-ust: CoreCLR tracing'
-              'msquic>=1.4: HTTP/3 support with System.Net.Quic')
+              'msquic>=1.4,<=1.9: HTTP/3 support with System.Net.Quic')
   provides=(dotnet-runtime=${_dotnetruntimever%-*} dotnet-runtime-7.0)
   conflicts=(dotnet-runtime=${_dotnetruntimever%-*})
   replaces=(dotnet-runtime-preview-bin)
