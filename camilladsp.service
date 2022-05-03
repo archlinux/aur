@@ -5,7 +5,7 @@ StartLimitBurst=10
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/camilladsp --port 1234 /srv/http/data/camilladsp/configs/camilladsp.yml
+ExecStart=/usr/bin/camilladsp --port 1234 /etc/camilladsp/configs/camilladsp.yml
 Restart=always
 RestartSec=1
 CPUSchedulingPolicy=fifo
