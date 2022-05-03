@@ -1,16 +1,20 @@
 pkgbase = boolector-git
 	pkgdesc = A Satisfiability Modulo Theories (SMT) solver for the theories of fixed-size bit-vectors, arrays and uninterpreted functions
-	pkgver = r10285.6fce0ac3
+	pkgver = 3.2.2.r18.g1a89c229
 	pkgrel = 1
 	url = https://github.com/Boolector/boolector
-	arch = any
+	arch = x86_64
 	license = MIT
+	checkdepends = python
+	makedepends = git
+	makedepends = cmake
+	makedepends = lingeling
+	makedepends = gtest
 	depends = btor2tools-git
-	provides = boolector
+	provides = boolector=3.2.2.r18.g1a89c229
 	conflicts = boolector
-	source = git://github.com/Boolector/boolector.git
+	source = git+https://github.com/Boolector/boolector.git
 	sha256sums = SKIP
 	sha512sums = SKIP
 
 pkgname = boolector-git
-

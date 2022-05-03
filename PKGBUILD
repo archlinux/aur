@@ -1,49 +1,43 @@
-# Maintainer: Deian Stefan
+# Maintainer: xiretza <xiretza+aur@xiretza.xyz>
+# Contributor: Deian Stefan
 
 _pkgname=boolector
 pkgname=boolector-git
-pkgver=r10285.6fce0ac3
+pkgver=3.2.2.r18.g1a89c229
 pkgrel=1
 pkgdesc="A Satisfiability Modulo Theories (SMT) solver for the theories of fixed-size bit-vectors, arrays and uninterpreted functions"
-arch=('any')
+arch=('x86_64')
 url="https://github.com/Boolector/boolector"
 license=('MIT')
 depends=('btor2tools-git')
-makedepends=()
-provides=(boolector)
-conflicts=(boolector)
-source=("git://github.com/Boolector/boolector.git")
+makedepends=('git' 'cmake' 'lingeling' 'gtest')
+checkdepends=('python')
+provides=("$_pkgname=$pkgver")
+conflicts=("$_pkgname")
+source=("git+$url.git")
 sha256sums=('SKIP')
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
-prepare() {
-  cd $srcdir
+  cd "$_pkgname"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
+  cmake -B build -S "$_pkgname" \
+    -DCMAKE_INSTALL_PREFIX="/usr" \
+    -DBUILD_SHARED_LIBS=on \
+    -DTESTING=on
+  make -C build
+}
 
-  cd "$srcdir/boolector"
-
-  # Download and build Lingeling
-  ./contrib/setup-lingeling.sh
-
-  CFLAGS="" ./configure.sh --shared
-  cd build
-  make
-
+check() {
+  make -C build test
 }
 
 package() {
-  mkdir -p "$pkgdir/usr/bin/"
-  mkdir -p "$pkgdir/usr/lib/"
-   
-  mkdir -p "$pkgdir/usr/include/boolector"
-  install -m755 boolector/build/bin/boolector "$pkgdir/usr/bin/"
-  install -m755 boolector/build/lib/*.so "$pkgdir/usr/lib/"
-  install -m644 boolector/src/*.h "$pkgdir/usr/include/boolector/"
+  make -C build DESTDIR="$pkgdir" install
+
+  install -Dm644 "$_pkgname/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
+# vim: set et ts=2:
