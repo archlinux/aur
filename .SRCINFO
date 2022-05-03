@@ -1,0 +1,17 @@
+pkgbase = brother-dcpj772dw
+	pkgdesc = Brother DCP-J772DW CUPS driver
+	pkgver = 1.0.5
+	pkgrel = 0
+	url = http://brother.co.jp/
+	install = brother-dcpj772dw.install
+	arch = i686
+	arch = x86_64
+	license = EULA
+	depends = cups
+	depends = a2ps
+	source = fix_lp.patch
+	source = https://download.brother.com/welcome/dlf103541/dcpj772dwpdrv-1.0.5-0.i386.rpm
+	md5sums = dec4817defb24fd91a59396d9b887b2f
+	md5sums = 93fa90e28fa298c77d116e0fbf7f6113
+
+pkgname = brother-dcpj772dw
