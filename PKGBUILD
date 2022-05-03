@@ -5,7 +5,7 @@
 pkgbase=openxcom-git
 pkgname=('openxcom-git' 'openxcom-docs-git')
 _gitname=OpenXcom
-pkgver=1.0_r2996_gb008e3196
+pkgver=1.0_r3059_g3af9628ba
 pkgrel=1
 pkgdesc="An open-source reimplementation of the famous X-COM game (git-version)"
 arch=('i686' 'x86_64')
@@ -48,7 +48,7 @@ package_openxcom-git() {
 
   make DESTDIR="${pkgdir}" install
   # Fix manpage location
-  mv "${pkgdir}/usr/man" "${pkgdir}/usr/share/man"
+  install -Dm644 "${srcdir}/OpenXcom/docs/openxcom.6" "${pkgdir}/usr/share/man/man6/openxcom.6"
 }
 
 package_openxcom-docs-git() {

@@ -1,6 +1,6 @@
 pkgbase = openxcom-git
 	pkgdesc = An open-source reimplementation of the famous X-COM game (git-version)
-	pkgver = 1.0_r2996_gb008e3196
+	pkgver = 1.0_r3059_g3af9628ba
 	pkgrel = 1
 	url = https://openxcom.org/
 	arch = i686
@@ -46,4 +46,3 @@ pkgname = openxcom-git
 pkgname = openxcom-docs-git
 	pkgdesc = Documentation for the open-source reimplementation of the famous X-COM game (git-version)
 	arch = any
-
