@@ -2,7 +2,7 @@
 
 _plug=tcanny
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=14.0.g14d7a15
+pkgver=14.1.g14ac2ce
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('x86_64')
@@ -15,6 +15,7 @@ makedepends=('git'
              'boost'
              'opencl-headers'
              'meson'
+             'clang'
              )
 provides=("vapoursynth-plugin-${_plug}")
 conflicts=("vapoursynth-plugin-${_plug}")
@@ -32,6 +33,12 @@ prepare() {
 }
 
 build() {
+
+  export CC=clang
+  export CXX=clang++
+  export CFLAGS="${CFLAGS/-fvar-tracking-assignments/}"
+  export CXXFLAGS="${CXXFLAGS/-fvar-tracking-assignments/}"
+
   cd build
   arch-meson "../${_plug}" \
     --buildtype=release \
