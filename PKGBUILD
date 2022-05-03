@@ -13,10 +13,10 @@ source=(https://github.com/HEnquist/camilladsp/archive/refs/tags/v$pkgver.tar.gz
         camilladsp.install
         camilladsp.service
         camilladsp.yml)
-sha256sums=(9de8d7759fa738206e6dd21596a72736aa1841927cc81c359c8d726d22c8a4ad
-            37a71ff6b1348e46f380e5a6fc2f6a4bfec985497a965dfbc2a03d3fba531fa4
-            ebad4fa2726c3288aa3c01ef5e9936918b1ed32be9fa4a16495f8aaf6dca5f2c
-            dd7932754e220e3e68250dae326ce6a81f6a61ce7923f6e001c9c3c1787a3b07)
+sha256sums=('9de8d7759fa738206e6dd21596a72736aa1841927cc81c359c8d726d22c8a4ad'
+            'f459bd73066354dcbbf365091df6711dc392535bf2da3cbeeeb37be8c608a804'
+            'ebad4fa2726c3288aa3c01ef5e9936918b1ed32be9fa4a16495f8aaf6dca5f2c'
+            'dd7932754e220e3e68250dae326ce6a81f6a61ce7923f6e001c9c3c1787a3b07')
 
 build() {
 	cd $srcdir/$pkgname-$pkgver
