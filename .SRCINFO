@@ -14,6 +14,7 @@ pkgbase = passwordfile
 	makedepends = ninja
 	depends = c++utilities
 	depends = openssl
+	depends = zlib
 	optdepends = passwordfile-doc: API documentation
 	source = passwordfile-5.0.7.tar.gz::https://github.com/Martchus/passwordfile/archive/v5.0.7.tar.gz
 	sha256sums = 03a0ced7ecfce18ec35104dedb73eec457875ff72859290c11616b36b2da0bbb
