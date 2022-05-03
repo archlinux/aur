@@ -1,24 +1,34 @@
-# Maintainer: Steven Honeyman <stevenhoneyman at gmail com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Steven Honeyman <stevenhoneyman at gmail com>
 
 pkgname=udis86
 pkgver=1.7.2
-pkgrel=1
-pkgdesc="A minimalistic disassembler library"
-arch=('i686' 'x86_64')
-url="http://udis86.sourceforge.net/"
+pkgrel=2
+pkgdesc="Minimalistic disassembler library"
+arch=('x86_64')
+url='https://github.com/vmt/udis86'
 license=('BSD')
-depends=('python2')
-options=('staticlibs')
-source=('https://downloads.sourceforge.net/udis86/udis86-1.7.2.tar.gz')
-sha1sums=('f55dec2d5319aac9d0a7ae2614ddcc7aa73d3744')
+depends=('glibc')
+makedepends=('python2')
+provides=('libudis86.so=0-64')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('43567f7e12168943c5b5ffb3d3f5b7a33cb36328f8938a993458f3ded0ba5779')
+
+prepare() {
+	cd "$pkgname-$pkgver"
+	./autogen.sh
+}
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	./configure --prefix=/usr --with-python=/usr/bin/python2
+	cd "$pkgname-$pkgver"
+	./configure \
+		--prefix=/usr \
+		--with-python=/usr/bin/python2 \
+		--enable-shared
 	make
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
+	cd "$pkgname-$pkgver"
 	make DESTDIR="$pkgdir" install
 }
