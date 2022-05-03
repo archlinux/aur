@@ -26,7 +26,7 @@ _reponame=syncthingtray
 _cfg=qt6
 pkgname=syncthingtray-$_cfg
 _name=${pkgname%-$_cfg}
-pkgver=1.1.17
+pkgver=1.1.18
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Tray application for Syncthing (using Qt 6)'
@@ -39,13 +39,13 @@ depends=('qtutilities-qt6' 'qtforkawesome-qt6' 'boost-libs' 'qt6-svg' 'openssl' 
 [[ $_js_provider == qml ]] && depends+=('qt6-declarative')
 [[ $_enable_kio_plugin ]] && optdepends+=('kio: KIO plugin for Syncthing actions in Dolphin')
 [[ $_enable_plasmoid ]] && optdepends+=('plasma-workspace: Plasmoid for Plasma 6 desktop')
-makedepends=('cmake' 'ninja' 'qt6-tools' 'clang' 'mesa' 'boost')
+makedepends=('cmake' 'ninja' 'qt6-tools' 'qt6-declarative' 'clang' 'mesa' 'boost')
 checkdepends=('cppunit' 'syncthing' 'iproute2')
 [[ $_enable_kio_plugin ]] && makedepends+=('kio')
 [[ $_enable_plasmoid ]] && makedepends+=('plasma-framework' 'extra-cmake-modules')
 url="https://github.com/Martchus/${_reponame}"
 source=("${_name}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz")
-sha256sums=('11cdc8fdc3f5109af0bff0359ecb12f254348abf55c64c790c487d2c9b0af973')
+sha256sums=('d87a7a76d1f7195cce50c48f211654bbca6ec4b5bd2da620cef4934222dfdf4e')
 
 ephemeral_port() {
   comm -23 <(seq 49152 65535) <(ss -tan | awk '{print $4}' | cut -d':' -f2 | grep "[0-9]\{1,5\}" | sort | uniq) | shuf | head -n 1
