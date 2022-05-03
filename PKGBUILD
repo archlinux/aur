@@ -16,9 +16,9 @@ noextract=("${_pkgbase}")
 source=("https://github.com/NewFuture/DDNS/releases/download/v${pkgver}/${_pkgbase}"
 				"newfuture_ddns.service"
 				"newfuture_ddns.timer")
-md5sums=('a59227a7704a0c06201dd1486e235c9a' 
+md5sums=('cc1509c53c3c0f17f9d3a74a0ffbcbf8'
          'd3d9a73fd7d7766caf1431d34e18f2c2'
-				 '6d718f657902ccd5cd32f5271084dbb8')
+	 '6d718f657902ccd5cd32f5271084dbb8')
 install="${pkgname}.install"
 
 package() {
