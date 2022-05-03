@@ -6,11 +6,11 @@
 pkgname='cnrdrvcups-lb'
 
 # The download link changes with every version, try to keep changes in one place
-#https://gdlp01.c-wss.com/gds/8/0100007658/25/linux-UFRII-drv-v540-uken-08.tar.gz
-_pkgver='5.40';  _dl='8/0100007658/25';_suffix='08'
+# https://gdlp01.c-wss.com/gds/8/0100007658/27/linux-UFRII-drv-v550-m17n-00.tar.gz
+_pkgver='5.50';  _dl='8/0100007658/27';_suffix='00'
 
 pkgver="${_pkgver}"
-pkgrel='3'
+pkgrel='1'
 pkgdesc='CUPS Canon UFR II LIPSLX CARPS2 printer driver for LBP iR MF ImageCLASS ImageRUNNER Laser Shot i-SENSYS ImagePRESS ADVANCE printers and copiers'
 arch=('x86_64')
 # Direct links to the download reference go bad on the next version. We want something that will persist for a while.
@@ -21,15 +21,15 @@ makedepends=('jbigkit' 'gzip' 'gtk2')
 depends=('gcc-libs' 'libxml2' 'libglade')
 optdepends=('libjpeg6-turbo: solves cpu hang on some color imageRUNNER/i-SENSYS LBP devices'
                        'libjbig-shared: port of debian/fedora specific jbigkit funtionality that can prevent cpu hangs on some models'
-                        'gtk2: for cnsetuputil2')
+                        'gtk3: for cnsetuputil2')
 
 
 conflicts=('cndrvcups-lb' 'cndrvcups-common-lb')
 options=('!emptydirs' '!strip' '!libtool')
 
-source=(  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-uken-${_suffix}.tar.gz")
-md5sums=('79d4f933795528dc217c344d5aff079d')
-sha512sums=('c488fbaee081b3cd601282e737af0ce1d141a9ae940daa2335ef4da833cdb9fbdda3cc378f4e49b26700b36911dc7b142ef0665e1cacef505f91a666736e62dc')
+source=(  "http://gdlp01.c-wss.com/gds/${_dl}/linux-UFRII-drv-v${_pkgver//\./}-m17n-${_suffix}.tar.gz")
+md5sums=('c5226e974498218bf969ae145f168d81')
+sha512sums=('b38ddfc465a3de18ed31b89e5fd28a807ff82586028ce7f5ededbe36e595b6a7a6bb0abc35a93f05ca4423aed364ff672cc61c3e4969f4409fb9bc8dfa489a7e')
 
 
 # Canon provides the sourcecode in a tarball within the dowload and we need to extract the code manually
@@ -51,7 +51,7 @@ prepare() {
     # extract sources
     mkdir "${_srcdir}"
     cd "${_srcdir}"
-    bsdtar -xf "${srcdir}/linux-UFRII-drv-v${_pkgver//\./}-uken/Sources/${pkgname}-${pkgver}-1.tar.gz"
+    bsdtar -xf "${srcdir}/linux-UFRII-drv-v${_pkgver//\./}-m17n/Sources/${pkgname}-${pkgver}-1.00.tar.xz"
 
     local _specs=(cnrdrvcups-lb.spec)
 
@@ -67,7 +67,7 @@ prepare() {
     for i in "backend" "buftool" "cngplp" "cnjbig" "rasterfilter"
     do
         pushd "$i"
-        autoreconf -i
+        autoreconf --install --warnings=none
         popd
     done
     popd
@@ -75,7 +75,7 @@ prepare() {
     for i in "cngplp/files" "cngplp" "cpca" "pdftocpca"
     do
         pushd "$i"
-        autoreconf -i
+        autoreconf --install --warnings=none
         popd
     done
     popd
@@ -188,10 +188,34 @@ package() {
     popd 
     
     # documentation
-    pushd "$srcdir/linux-UFRII-drv-v${_pkgver//\./}-uken/Documents"
-    install -Dpm644 "README-ufr2-5.4xUK.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.2xUK.html"
-    install -Dpm644 "UsersGuide-ufr2-UK.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-UK.html"
-    install -Dpm644 "LICENSE-EN.txt" "${pkgdir}/usr/share/licenses/${pkgname}/Documents/LICENSE-EN.txt"
+    pushd "$srcdir/linux-UFRII-drv-v${_pkgver//\./}-m17n/Documents"
+    
+    install -Dpm644 deutsch/"README-ufr2-5.5xDE.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.5xDE.html"
+    install -Dpm644 espanol/"README-ufr2-5.5xSP.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.5xSP.html"
+    install -Dpm644 francais/"README-ufr2-5.5xFR.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.5xFR.html"
+    install -Dpm644 italiano/"README-ufr2-5.5xIT.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.5xIT.html"
+    install -Dpm644 korean/"README-ufr2-5.5xKR.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.5xKR.html"
+    install -Dpm644 simplified_chinese/"README-ufr2-5.5xSC.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.5xSC.html"
+    install -Dpm644 traditional_chinese/"README-ufr2-5.5xTC.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.5xTC.html"
+    install -Dpm644 uk_eng/"README-ufr2-5.5xUK.html" "${pkgdir}/usr/share/doc/${pkgname}/README-ufr2-5.5xUK.html"
+    
+    install -Dpm644 deutsch/"UsersGuide-ufr2-DE.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-DE.html"
+    install -Dpm644 espanol/"UsersGuide-ufr2-SP.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-SP.html"
+    install -Dpm644 francais/"UsersGuide-ufr2-FR.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-FR.html"
+    install -Dpm644 italiano/"UsersGuide-ufr2-IT.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-IT.html"
+    install -Dpm644 korean/"UsersGuide-ufr2-KR.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-KR.html"
+    install -Dpm644 simplified_chinese/"UsersGuide-ufr2-SC.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-SC.html"
+    install -Dpm644 traditional_chinese/"UsersGuide-ufr2-TC.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-TC.html"
+    install -Dpm644 uk_eng/"UsersGuide-ufr2-UK.html" "${pkgdir}/usr/share/doc/${pkgname}/UsersGuide-ufr2-UK.html"
+    
+    install -Dpm644 deutsch/"LICENSE-DE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-DE.txt"
+    install -Dpm644 espanol/"LICENSE-ES.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-ES.txt"
+    install -Dpm644 francais/"LICENSE-FR.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-FR.txt"
+    install -Dpm644 italiano/"LICENSE-IT.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-IT.txt"
+    install -Dpm644 korean/"LICENSE-KO.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-KO.txt"
+    install -Dpm644 simplified_chinese/"LICENSE-CN.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-CN.txt"
+    install -Dpm644 traditional_chinese/"LICENSE-TW.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-TW.txt"
+    install -Dpm644 uk_eng/"LICENSE-EN.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE-EN.txt"
     popd
     
 }
