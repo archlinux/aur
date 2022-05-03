@@ -7,7 +7,7 @@ _reponame=qtforkawesome
 _pkgver_forkawesome=1.2.0
 _reponame_forkawesome=Fork-Awesome-$_pkgver_forkawesome
 pkgname=qtforkawesome
-pkgver=0.0.3
+pkgver=0.0.4
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc='Library that bundles ForkAwesome for use within Qt applications'
@@ -21,7 +21,7 @@ optdepends=(
 url="https://github.com/Martchus/${_reponame}"
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/Martchus/${_reponame}/archive/v${pkgver}.tar.gz"
         "${_reponame_forkawesome}::https://github.com/ForkAwesome/Fork-Awesome/archive/refs/tags/${_pkgver_forkawesome}.tar.gz")
-sha256sums=('052cb462ee2711692ea13528a21a3fc907421ed370c0f18658fe40693eb46e3a'
+sha256sums=('35db0d10365fef90788fa70f50743f76eff2d36cae51955f300d57b84a76893f'
             '23fba5f191f204e0414c547bf4c9b10fd7ca42c151260e8f64698449a75fbdb3')
 
 build() {
