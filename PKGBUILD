@@ -1,37 +1,42 @@
-# Maintainer: Marko Korhonen <reekymarko at reekynet.com>
-# Based on Fedora python-yubico.spec
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Marko Korhonen <reekymarko at reekynet.com>
 
 pkgname=python-yubico
+_pkg="${pkgname#python-}"
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Pure-python library for interacting with Yubikeys"
 arch=('any')
 url="https://github.com/Yubico/python-yubico"
 license=('BSD')
-depends=('python-pyusb>=1.0.0')
-makedepends=('python-setuptools')
+depends=('python-pyusb')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-nose')
-source=("https://github.com/Yubico/python-yubico/archive/python-yubico-$pkgver.tar.gz")
-sha256sums=('fa5c7b40322b31899060b65831a95429c5bbe1c1c800f95cb4b5ff00655523fe')
+changelog=ChangeLog
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz"
+        "$pkgname-$pkgver.tar.gz.asc::https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz.asc")
+sha256sums=('d8466427aa5922ac5d4b7e9c65b693108427cf537d653d68cb212c0713e8e6f5'
+            'SKIP')
+validpgpkeys=('20EE325B86A81BCBD3E56798F04367096FBA95E8') ## Dain Nilsson
 
 build() {
-    cd "python-yubico-python-yubico-$pkgver"
-
-    python3 setup.py build
+	cd "$pkgname-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
 check() {
-    cd "python-yubico-python-yubico-$pkgver"
+	cd "$pkgname-$pkgver"
 
-    # Exclude tests that require a physical yubikey attached.
-    nosetests3 -e test_challenge_response -e test_serial -e test_status
+	# Exclude tests that require a physical yubikey attached.
+	nosetests3 -e test_challenge_response -e test_serial -e test_status
 }
 
 package() {
-    cd "python-yubico-python-yubico-$pkgver"
-
-    python3 setup.py install -O1 --skip-build --root "$pkgdir"
-
-    install -D -m644 -t "$pkgdir"/usr/share/licenses/"$pkgname" COPYING
-    install -D -m644 -t "$pkgdir"/usr/share/doc/"$pkgname" NEWS README
+	cd "$pkgname-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s \
+		"$_site/${pkgname/-/_}-$pkgver.dist-info/COPYING" \
+		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
