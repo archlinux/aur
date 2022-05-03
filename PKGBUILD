@@ -1,8 +1,8 @@
 # Maintainer: Posi<posi1981@gmail.com>
 pkgname=betterbird-fr-bin
 _pkgname=betterbird
-pkgver=91.8.1
-_build=bb30
+pkgver=91.9.0
+_build=bb31
 pkgrel=1
 pkgdesc="FRENCH // Betterbird is a fine-tuned version of Mozilla Thunderbird, Thunderbird on steroids, if you will."
 arch=('x86_64')
@@ -32,6 +32,6 @@ package() {
             "$pkgdir"/usr/share/icons/hicolor/${i}x${i}/apps/$_pkgname.png
     done
 }
-sha256sums=('fbfae5c928971239989559bb5e2b1298fbce961da4dfeea1182e5a8275af116a'
+sha256sums=('9bffbbaaa4953e22591bd4897c53a01e546a932cb7f1e2988b23c46dad4f732f'
             'c99879de5ec8e8f98c2436bf414c7c167762c06df0846b42bb51195d6c8a3031')
 
