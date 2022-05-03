@@ -1,4 +1,4 @@
-# Maintainer:  khvalera <khvalera[at]ukr[dot]net>
+# Maintainer:  khvalera <khvalera at ukr dot net>
 # Contributor: Matthias Fulz <mfulz@olznet.net>
 # Contributor: Michael Spradling <mike@mspradling.com>
 
