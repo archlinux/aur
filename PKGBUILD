@@ -2,12 +2,12 @@
 
 pkgname=amberol-git
 pkgver=0.4.2.r3.gc9f0216
-pkgrel=1
+pkgrel=2
 pkgdesc="Plays music, and nothing else"
 arch=('x86_64')
 url="https://gitlab.gnome.org/World/amberol"
 license=('GPL3')
-depends=('libadwaita' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad')
+depends=('libadwaita' 'gstreamer' 'gst-plugins-base' 'gst-plugins-bad' 'gst-plugins-good')
 makedepends=('git' 'meson' 'rust')
 checkdepends=('appstream-glib' 'reuse')
 provides=("${pkgname%-git}")
