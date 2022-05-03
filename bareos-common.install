@@ -1,31 +1,31 @@
 # arg 1:  the new package version
 pre_install() {
-	# Create User/Group
-	getent group bareos > /dev/null || groupadd --system bareos
-	getent passwd bareos > /dev/null || useradd --system --gid bareos \
-		--home-dir /var/lib/bareos --no-create-home bareos
-
+   # Create User/Group
+   getent group bareos > /dev/null || groupadd --system bareos
+   getent passwd bareos > /dev/null || useradd --system --gid bareos \
+                          --home-dir /var/lib/bareos --no-create-home bareos
 }
 
 # arg 1:  the new package version
 post_install() {
-	chown bareos:bareos /var/lib/bareos/
-	chown bareos:bareos /run/bareos/
-	#chown bareos:bareos /var/log/bareos/
+   chown bareos:bareos /etc/bareos/
+   chown bareos:bareos /var/lib/bareos/
+   chown bareos:bareos /run/bareos/
+   chown bareos:bareos /var/log/bareos/
 }
 
 # arg 1:  the new package version
 # arg 2:  the old package version
 pre_upgrade() {
-	pre_install
+   pre_install
 }
 
 post_upgrade() {
-	post_install
+   post_install
 }
 
 # arg 1:  the old package version
 post_remove() {
-	getent passwd bareos > /dev/null && userdel bareos
-	rm -f /etc/bareos/.rndpwd
+   getent passwd bareos > /dev/null && userdel bareos
+   rm -f /etc/bareos/.rndpwd
 }

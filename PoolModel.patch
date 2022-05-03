@@ -1,0 +1,15 @@
+--- a/webui/module/Pool/src/Pool/Model/PoolModel.php	2021-06-10 16:18:18.371213388 +0300
++++ b/webui/module/Pool/src/Pool/Model/PoolModel.php	2021-06-11 00:44:00.000000000 +0300
+@@ -146,9 +146,10 @@
+       if(isset($bsock, $pool)) {
+          $cmd = 'show pool="'.$pool.'"';
+          $result = $bsock->send_command($cmd, 0);
+-
+          $matches = [];
+-         preg_match('/\s*Next\s*Pool\s*=\s*("|\')?(?<value>.*)(?(1)\1|)/i', $result, $matches);
++         //preg_match('/\s*Next\s*Pool\s*=\s*("|\')?(?<value>.*)(?(1)\1|)/i', $result, $matches);
++         preg_match('/\s*Pool\s*=?(?<value>.*)(?(1)\1|)/i', $result, $matches);
++         //print_r($matches);
+          return $matches["value"];
+       }
+       else {

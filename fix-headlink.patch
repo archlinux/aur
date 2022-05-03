@@ -1,0 +1,193 @@
+--- a/webui/vendor/zendframework/zend-view/src/Helper/HeadLink.php	2021-04-16 20:54:47.655312342 +0300
++++ b/webui/vendor/zendframework/zend-view/src/Helper/HeadLink.php	2021-04-16 23:17:00.000000000 +0300
+@@ -13,21 +13,23 @@
+ use Zend\View;
+ use Zend\View\Exception;
+ 
++// @codingStandardsIgnoreStart
+ /**
+  * Zend_Layout_View_Helper_HeadLink
+  *
+  * @see http://www.w3.org/TR/xhtml1/dtds.html
+  *
+  * Creates the following virtual methods:
+- * @method HeadLink appendStylesheet($href, $media = 'screen', $conditionalStylesheet = '', $extras = array())
+- * @method HeadLink offsetSetStylesheet($index, $href, $media = 'screen', $conditionalStylesheet = '', $extras = array())
+- * @method HeadLink prependStylesheet($href, $media = 'screen', $conditionalStylesheet = '', $extras = array())
+- * @method HeadLink setStylesheet($href, $media = 'screen', $conditionalStylesheet = '', $extras = array())
+- * @method HeadLink appendAlternate($href, $type, $title, $extras = array())
+- * @method HeadLink offsetSetAlternate($index, $href, $type, $title, $extras = array())
+- * @method HeadLink prependAlternate($href, $type, $title, $extras = array())
+- * @method HeadLink setAlternate($href, $type, $title, $extras = array())
++ * @method HeadLink appendStylesheet($href, $media = 'screen', $conditionalStylesheet = '', $extras = [])
++ * @method HeadLink offsetSetStylesheet($index, $href, $media = 'screen', $conditionalStylesheet = '', $extras = [])
++ * @method HeadLink prependStylesheet($href, $media = 'screen', $conditionalStylesheet = '', $extras = [])
++ * @method HeadLink setStylesheet($href, $media = 'screen', $conditionalStylesheet = '', $extras = [])
++ * @method HeadLink appendAlternate($href, $type, $title, $extras = [])
++ * @method HeadLink offsetSetAlternate($index, $href, $type, $title, $extras = [])
++ * @method HeadLink prependAlternate($href, $type, $title, $extras = [])
++ * @method HeadLink setAlternate($href, $type, $title, $extras = [])
+  */
++// @codingStandardsIgnoreEnd
+ class HeadLink extends Placeholder\Container\AbstractStandalone
+ {
+     /**
+@@ -35,7 +37,7 @@
+      *
+      * @var string[]
+      */
+-    protected $itemKeys = array(
++    protected $itemKeys = [
+         'charset',
+         'href',
+         'hreflang',
+@@ -46,8 +48,12 @@
+         'sizes',
+         'type',
+         'title',
+-        'extras'
+-    );
++        'extras',
++        'itemprop',
++        'crossorigin',
++        'integrity',
++        'as',
++    ];
+ 
+     /**
+      * Registry key for placeholder
+@@ -80,7 +86,7 @@
+      */
+     public function headLink(array $attributes = null, $placement = Placeholder\Container\AbstractContainer::APPEND)
+     {
+-        return call_user_func_array(array($this, '__invoke'), func_get_args());
++        return call_user_func_array([$this, '__invoke'], func_get_args());
+     }
+ 
+     /**
+@@ -142,7 +148,11 @@
+      */
+     public function __call($method, $args)
+     {
+-        if (preg_match('/^(?P<action>set|(ap|pre)pend|offsetSet)(?P<type>Stylesheet|Alternate|Prev|Next)$/', $method, $matches)) {
++        if (preg_match(
++            '/^(?P<action>set|(ap|pre)pend|offsetSet)(?P<type>Stylesheet|Alternate|Prev|Next)$/',
++            $method,
++            $matches
++        )) {
+             $argc   = count($args);
+             $action = $matches['action'];
+             $type   = $matches['type'];
+@@ -190,7 +200,7 @@
+      */
+     protected function isValid($value)
+     {
+-        if (!$value instanceof stdClass) {
++        if (! $value instanceof stdClass) {
+             return false;
+         }
+ 
+@@ -213,7 +223,7 @@
+      */
+     public function append($value)
+     {
+-        if (!$this->isValid($value)) {
++        if (! $this->isValid($value)) {
+             throw new Exception\InvalidArgumentException(
+                 'append() expects a data token; please use one of the custom append*() methods'
+             );
+@@ -232,7 +242,7 @@
+      */
+     public function offsetSet($index, $value)
+     {
+-        if (!$this->isValid($value)) {
++        if (! $this->isValid($value)) {
+             throw new Exception\InvalidArgumentException(
+                 'offsetSet() expects a data token; please use one of the custom offsetSet*() methods'
+             );
+@@ -250,7 +260,7 @@
+      */
+     public function prepend($value)
+     {
+-        if (!$this->isValid($value)) {
++        if (! $this->isValid($value)) {
+             throw new Exception\InvalidArgumentException(
+                 'prepend() expects a data token; please use one of the custom prepend*() methods'
+             );
+@@ -268,7 +278,7 @@
+      */
+     public function set($value)
+     {
+-        if (!$this->isValid($value)) {
++        if (! $this->isValid($value)) {
+             throw new Exception\InvalidArgumentException(
+                 'set() expects a data token; please use one of the custom set*() methods'
+             );
+@@ -315,7 +325,7 @@
+         }
+ 
+         if (isset($attributes['conditionalStylesheet'])
+-            && !empty($attributes['conditionalStylesheet'])
++            && ! empty($attributes['conditionalStylesheet'])
+             && is_string($attributes['conditionalStylesheet'])
+         ) {
+             // inner wrap with comment end and start if !IE
+@@ -340,7 +350,7 @@
+                 ? $this->getWhitespace($indent)
+                 : $this->getIndent();
+ 
+-        $items = array();
++        $items = [];
+         $this->getContainer()->ksort();
+         foreach ($this as $item) {
+             $items[] = $this->itemToString($item);
+@@ -378,7 +388,7 @@
+             return false;
+         }
+ 
+-        if (0 < count($args)) {
++        if ($args) {
+             $media = array_shift($args);
+             if (is_array($media)) {
+                 $media = implode(',', $media);
+@@ -386,18 +396,20 @@
+                 $media = (string) $media;
+             }
+         }
+-        if (0 < count($args)) {
++        if ($args) {
+             $conditionalStylesheet = array_shift($args);
+-            if (!empty($conditionalStylesheet) && is_string($conditionalStylesheet)) {
++            if (! empty($conditionalStylesheet) && is_string($conditionalStylesheet)) {
+                 $conditionalStylesheet = (string) $conditionalStylesheet;
+             } else {
+                 $conditionalStylesheet = null;
+             }
+         }
+ 
+-        if (0 < count($args) && is_array($args[0])) {
++        if ($args && is_array($args[0])) {
+             $extras = array_shift($args);
+             $extras = (array) $extras;
++        } else {
++            $extras = array();
+         }
+ 
+         $attributes = compact('rel', 'type', 'href', 'media', 'conditionalStylesheet', 'extras');
+@@ -443,13 +455,15 @@
+         $type  = array_shift($args);
+         $title = array_shift($args);
+ 
+-        if (0 < count($args) && is_array($args[0])) {
++        if ($args && is_array($args[0])) {
+             $extras = array_shift($args);
+             $extras = (array) $extras;
+ 
+             if (isset($extras['media']) && is_array($extras['media'])) {
+                 $extras['media'] = implode(',', $extras['media']);
+             }
++        } else {
++            $extras = array();
+         }
+ 
+         $href  = (string) $href;

@@ -1,0 +1,44 @@
+--- a/core/src/droplet/libdroplet/src/utils.c	2021-04-16 00:09:37.856912334 +0300
++++ b/core/src/droplet/libdroplet/src/utils.c	2021-04-16 00:32:28.058300432 +0300
+@@ -33,7 +33,7 @@
+  */
+ #include <dropletp.h>
+ #include <linux/xattr.h>
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
+ #include <errno.h>
+ 
+ /** @file */
+--- a/core/src/droplet/libdroplet/include/droplet/cdmi/crcmodel.h	2021-04-16 17:25:43.613478257 +0300
++++ b/core/src/droplet/libdroplet/include/droplet/cdmi/crcmodel.h	2021-04-16 17:31:53.449697759 +0300
+@@ -78,7 +78,7 @@
+ #ifndef DONE_STYLE
+ 
+ typedef unsigned long   ulong;
+-typedef unsigned        bool;
++/*typedef unsigned        bool;*/
+ typedef unsigned char * p_ubyte_;
+ 
+ #ifndef TRUE
+@@ -107,8 +107,8 @@
+    int   cm_width;   /* Parameter: Width in bits [8,32].       */
+    ulong cm_poly;    /* Parameter: The algorithm's polynomial. */
+    ulong cm_init;    /* Parameter: Initial register value.     */
+-   bool  cm_refin;   /* Parameter: Reflect input bytes?        */
+-   bool  cm_refot;   /* Parameter: Reflect output CRC?         */
++   _Bool cm_refin;   /* Parameter: Reflect input bytes? */
++   _Bool cm_refot;   /* Parameter: Reflect output CRC? */
+    ulong cm_xorot;   /* Parameter: XOR this to output CRC.     */
+ 
+    ulong cm_reg;     /* Context: Context during execution.     */
+--- a/core/src/droplet/libdroplet/src/backend/posix/reqbuilder.c	2021-04-16 17:32:41.619204579 +0300
++++ b/core/src/droplet/libdroplet/src/backend/posix/reqbuilder.c	2021-04-16 17:33:54.938453657 +0300
+@@ -39,7 +39,7 @@
+ #include <dirent.h>
+ #include <sys/types.h>
+ #include <linux/xattr.h>
+-#include <attr/xattr.h>
++#include <sys/xattr.h>
+ #include <utime.h>
+ #include <pwd.h>
+ #include <grp.h>
