@@ -3,7 +3,7 @@
 _basename=decentr-browser
 _pkgname=$_basename-unstable
 pkgname=$_pkgname-bin
-pkgver=1.1.6
+pkgver=1.2.1
 pkgrel=1
 pkgdesc='A secure browser that gives you access to the blockchain'
 arch=('x86_64')
@@ -13,7 +13,11 @@ provides=(${_pkgname})
 conflicts=(${_pkgname})
 depends=()
 source=("https://decentr.net/files/Ubuntu_x64_Decentr_${pkgver}.zip")
-sha256sums=('de9325ffc32cb86e4f4667d8ba61ec876b29f12f9dc844368d5901b96d400498')
+sha256sums=('1354c06c8ccf82f6567a3b18c47fb5a86ddace41b0bd396ba638b4e4d8c55d8b')
+
+_pkgver() {
+	curl -s "https://decentr.net" | grep -oP "(?<=https://decentr.net/files/Ubuntu_x64_Decentr_).*(?=.zip)"
+}
 
 package() {
 	bsdtar -xf ${srcdir}/decentr-browser-unstable_*-1_amd64.deb -C "$srcdir/"
