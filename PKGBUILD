@@ -2,7 +2,7 @@
 pkgname=netclient
 pkgver=0.13.1
 pkgrel=1
-pkgdesc="A component of netmaker"
+pkgdesc="netclient daemon - a platform for modern, blazing fast virtual networks"
 arch=(x86_64)
 url='https://github.com/gravitl/netmaker'
 license=("custom:SSPL")
