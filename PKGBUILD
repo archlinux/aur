@@ -4,12 +4,12 @@ pkgname=openscenegraph-openmw-git
 epoch=1
 _pkgver=3.6.5
 pkgver=3.6.5.r16157.ada34a6d3
-pkgrel=2
+pkgrel=3
 pkgdesc="Fork of OpenSceneGraph , with openmw-specific changes"
 arch=('x86_64')
 url="http://www.openscenegraph.org/"
 license=('custom:OSGPL')
-depends=('libglvnd' 'fontconfig' 'jasper' 'libxinerama' 'libxrandr')
+depends=('libglvnd' 'fontconfig' 'jasper' 'libxinerama' 'libxrandr' 'collada-dom')
 makedepends=('git' 'cmake')
 provides=('openscenegraph')
 conflicts=('openscenegraph')
@@ -34,7 +34,7 @@ build() {
         -D CMAKE_DISABLE_FIND_PACKAGE_GStreamer=1 -D CMAKE_DISABLE_FIND_PACKAGE_TIFF=1  -D CMAKE_DISABLE_FIND_PACKAGE_GTA=1 -D CMAKE_DISABLE_FIND_PACKAGE_FFmpeg=1 \
         -D CMAKE_DISABLE_FIND_PACKAGE_Poppler-glib=1 -D CMAKE_DISABLE_FIND_PACKAGE_RSVG=1 -D CMAKE_DISABLE_FIND_PACKAGE_GtkGl=1 -D CMAKE_DISABLE_FIND_PACKAGE_LibVNCServer=1 \
         -D CMAKE_DISABLE_FIND_PACKAGE_ilmbase=1 -D CMAKE_DISABLE_FIND_PACKAGE_Inventor=1 -D CMAKE_DISABLE_FIND_PACKAGE_OpenEXR=1 -D CMAKE_DISABLE_FIND_PACKAGE_OpenCascade=1 \
-        -D CMAKE_DISABLE_FIND_PACKAGE_COLLADA=1 -D CMAKE_DISABLE_FIND_PACKAGE_FBX=1 -D CMAKE_DISABLE_FIND_PACKAGE_DirectShow=1 -D CMAKE_DISABLE_FIND_PACKAGE_DirectInput=1 \
+        -D CMAKE_DISABLE_FIND_PACKAGE_FBX=1 -D CMAKE_DISABLE_FIND_PACKAGE_DirectShow=1 -D CMAKE_DISABLE_FIND_PACKAGE_DirectInput=1 \
         -D CMAKE_DISABLE_FIND_PACKAGE_NVTT=1 -D CMAKE_DISABLE_FIND_PACKAGE_GIFLIB=1 -D CMAKE_DISABLE_FIND_PACKAGE_Asio=1 -D CMAKE_DISABLE_FIND_PACKAGE_ZeroConf=1 \
         -D CMAKE_DISABLE_FIND_PACKAGE_LIBLAS=1 \
         -D BUILD_OSG_PLUGINS_BY_DEFAULT=0 \
