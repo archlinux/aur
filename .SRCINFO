@@ -1,6 +1,6 @@
 pkgbase = python-abjad
 	pkgdesc = Python API for building LilyPond files
-	pkgver = 3.8
+	pkgver = 3.9
 	pkgrel = 1
 	url = https://github.com/Abjad/abjad
 	arch = any
@@ -23,7 +23,7 @@ pkgbase = python-abjad
 	optdepends = python-abjad-ext-nauert: quantization extension
 	optdepends = python-abjad-ext-rmakers: rhythm-maker extension
 	optdepends = timidity++: playback generated MIDI files
-	source = python-abjad-3.8.tar.gz::https://github.com/Abjad/abjad/archive/v3.8.tar.gz
-	sha256sums = a5c387a60475262e95745ef42821d54510c32f6e9d381a345f480e87709a4702
+	source = python-abjad-3.9.tar.gz::https://github.com/Abjad/abjad/archive/v3.9.tar.gz
+	sha256sums = 24ceee8f0049c65512d92efb86386deb70bfe5622e563269baa6777f5e3233cf
 
 pkgname = python-abjad
