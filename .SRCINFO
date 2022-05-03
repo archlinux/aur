@@ -1,0 +1,14 @@
+pkgbase = rres-git
+	pkgdesc = A xrandr replacement to gather display resolutions
+	pkgver = 0.1.2.r0.g0180c36
+	pkgrel = 1
+	url = https://gitlab.com/forkbomb9/rres
+	arch = any
+	license = GPLv3
+	makedepends = rust
+	provides = rres
+	conflicts = rres
+	source = git+https://gitlab.com/forkbomb9/rres.git
+	sha256sums = SKIP
+
+pkgname = rres-git
