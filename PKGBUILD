@@ -1,5 +1,5 @@
 pkgname='netease-music-sync'
-pkgver=1.0.0.r1.gd401b7f
+pkgver=1.0.1.r0.0000000
 pkgrel=1
 pkgdesc='自动将网易云的歌单同步到本地'
 license=('MIT')
@@ -12,7 +12,7 @@ source=("${pkgname}::git+${url}"
         ${pkgname}.{conf,service})
 sha256sums=('SKIP'
             'bc5412b89178fd04d9120fc06d3c86fa979c03edcc4d1708fb6d545690ef0b0d'
-            '9012f326199922bbbd8bb2e95a75ec940580d5887afbd080ac2360cec9a95e36'
+            '176314b0e966499f9535f3f6cd752ef6d3e0c2c91cc43d4729753a3618511f32'
             'bc6803ca7126c5bf50dfc471f73feb907d4033a0ce6ea04a6cd3e42953eca53d')
 backup=("etc/${pkgname}.conf")
 
