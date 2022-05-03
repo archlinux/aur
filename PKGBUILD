@@ -16,7 +16,7 @@ md5sums=('a9b2190cf12af4f0eb6d5a0e788f4ffe')
 
 prepare() {
 	cd "$srcdir/pyglet-$pkgver"
-        curl -L https://github.com/pyglet/pyglet/pull/604.patch
+        curl -L https://github.com/pyglet/pyglet/pull/604.patch | patch -p1
 	# https://bitbucket.org/pyglet/pyglet/issues/157/please-do-not-bundle-the-future-module
 	rm -rf pyglet/extlibs/future/
 }
