@@ -1,11 +1,12 @@
 pkgbase = bannertool
 	pkgdesc = A tool for creating 3DS banners
 	pkgver = 1.2.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/Steveice10/bannertool/
 	arch = i686
 	arch = x86_64
 	license = MIT
+	makedepends = git
 	depends = zip
 	source = bannertool::git+https://github.com/Steveice10/bannertool.git#tag=1.2.0
 	source = buildtools::git+https://github.com/Steveice10/buildtools.git#commit=4524b3a
@@ -13,4 +14,3 @@ pkgbase = bannertool
 	sha256sums = SKIP
 
 pkgname = bannertool
-

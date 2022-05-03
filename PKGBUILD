@@ -1,12 +1,13 @@
 # Maintainer: Yacob Zitouni <yacob.zitouni@gmail.com>
 pkgname=('bannertool')
 pkgver=1.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for creating 3DS banners"
 arch=('i686' 'x86_64')
 url="https://github.com/Steveice10/bannertool/"
 license=('MIT')
 depends=('zip')
+makedepends=('git')
 sha256sums=('SKIP' 'SKIP')
 
 source=("$pkgname::git+https://github.com/Steveice10/bannertool.git#tag=1.2.0"
