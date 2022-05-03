@@ -1,7 +1,7 @@
 # Maintainer: Martin Reboredo <yakoyoku@gmail.com>
 
 pkgname=godot-cpp
-pkgver=3.4.3
+pkgver=3.4.4
 pkgrel=1
 pkgdesc='C++ bindings for the Godot script API'
 arch=('x86_64')
@@ -13,11 +13,11 @@ source=(
   https://github.com/godotengine/$pkgname/archive/refs/tags/godot-$pkgver-stable.tar.gz
   godot-cpp.pc.in
 )
-sha256sums=('d8502bacde2e45231ee886b7154da61a453a77b0d286104b8761aaaffc2d6e38'
+sha256sums=('ffc5fa74b9c37ff75051af152c7f4ef0330d4091c9af09517e837de0c5fb880d'
             'fc0b47b2b2edbeef088d0c1a124e597df7474d820eba833ce7822ed670f92974')
 
 prepare() {
-  cd "$srcdir"/godot-cpp-*
+  cd "$srcdir"/${pkgname}-godot-${pkgver}-stable
 
   sed "s/@VERSION@/$pkgver/" "$srcdir"/godot-cpp.pc.in > godot-cpp.pc
 
@@ -26,13 +26,13 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir"/godot-cpp-*
+  cd "$srcdir"/${pkgname}-godot-${pkgver}-stable
 
   scons -j16 platform=linux use_llvm=yes generate_bindings=yes target=release
 }
 
 package() {
-  cd "$srcdir"/godot-cpp-*
+  cd "$srcdir"/${pkgname}-godot-${pkgver}-stable
 
   install -dm00755 "$pkgdir"/usr/{lib,include}
   install -Dm00644 bin/libgodot-cpp.linux.*.a "$pkgdir"/usr/lib/libgodot-cpp.a
