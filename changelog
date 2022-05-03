@@ -1,10 +1,11 @@
-What's new in version 1.0.6-r2:
-
-    - fixed evaluation issues (eg. now if/else works when evaluated
-      indirectly)
-    - now for guish core command (eg. keywords) no implied subject is checked
-      (TODO refactor to reduce comlexity/improve performance)
-
-What's new in version 1.0.6-r3:
-
-    - fixed autotools conf issue
+What's new in version 1.0.7:
+	- now elements too can have aliases.
+	- now if syntax file is not found at specified location,
+	  try to see if it is already present in doc dir (es.
+	  /usr/share/doc/guish/syntaxes/...).
+	- added command to bypass window manager (see bypasswm).
+	- added new special form when using 'define' command, es "var = 2"
+	  or "var define 2".
+	- added additional aliases to commands.
+	- minor addition on webpage.
+	- added eso syntax file :D
