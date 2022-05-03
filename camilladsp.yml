@@ -2,11 +2,9 @@
 devices:
   adjust_period: 10
   capture:
-    avoid_blocking_read: false
     channels: 2
     device: hw:Loopback,0
     format: S32LE
-    retry_on_error: false
     type: Alsa
   capture_samplerate: 0
   chunksize: 2048

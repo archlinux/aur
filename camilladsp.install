@@ -1,0 +1,12 @@
+#!/bin/bash
+
+pre_upgrade() {
+	if [[ $( camilladsp -V ) == 'CamillaDSP 0.6.3' ]]; then
+		readarray -t files <<< $( grep -rl avoid_blocking_read /srv/http/data/camilladsp/configs )
+		if [[ $files ]]; then
+			for file in "${files[@]}"; then
+				sed -i '/avoid_blocking_read\|retry_on_error/ d' "$file"
+			done
+		fi
+	fi
+}
