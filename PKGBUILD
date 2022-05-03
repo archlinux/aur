@@ -1,7 +1,10 @@
 # Maintainer: Florian Maunier <fmauneko@dissidence.ovh>
 pkgname=msquic
-pkgver=1.1.8
-pkgrel=3
+pkgver=2.0.2
+_clog_commit=9cbba2eea80d11faba83266c7f0f5e3b72a1f266
+_googletest_commit=ae1b7ad4308249bfa928e65d1a33be117fc0992c
+_openssl_commit=c3d4eb57dc74ba18ce70acee68b9a086ccc806aa
+pkgrel=1
 epoch=1
 pkgdesc="Microsoft implementation of the IETF QUIC protocol (release)"
 arch=('x86_64' 'armv7h' 'aarch64')
@@ -12,20 +15,24 @@ makedepends=('cmake>=3.16' 'dotnet-sdk>=3.1')
 provides=('libmsquic.so')
 conflicts=('libmsquic.so')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/microsoft/$pkgname/archive/refs/tags/v$pkgver.tar.gz"
-        'openssl-484fcc7.tar.gz::https://github.com/akamai/openssl/archive/484fcc7392f3d7f4c257448f9aa70ad4f788ed33.tar.gz'
-        'cmake_args.patch')
-sha512sums=('246f5f42ddd2b8449a8add694902e43ea426fd43e3a851989ba1050f35ee1397e94251a5f9d04115280d31a3b9aa9fed302546393a7c9ee724670af4e8a457cf'
-            '5ab9ceffb2d7a09360dd4ceeb66b868f6e2a073d8a5b649d5812652a57f3dd3290c1115b6b2a4848fee18d4c523b3d081ae24ab308ae9432959f21eb67c27b26'
-            'f0eb23f885b9577f93101f9e68c6863dc896086068d3ed29e7b6924a1286ab8aa478feec42cf0fa3cfee2e5e2fb42e5be3f15451ff0954c4db2059de6ebe7c27')
-noextract=('openssl-484fcc7.tar.gz')
+        "clog-$_clog_commit.tar.gz::https://github.com/microsoft/CLOG/archive/$_clog_commit.tar.gz"
+        "googletest-$_googletest_commit.tar.gz::https://github.com/google/googletest/archive/$_googletest_commit.tar.gz"
+        "openssl-$_openssl_commit.tar.gz::https://github.com/quictls/openssl/archive/$_openssl_commit.tar.gz")
+sha512sums=('b1e3a305bd454858f0cbe691decc893bfe9987e8e912989a4106e745fc897d21d124d3486911c8be711861cb365a6064b4a6f789a5818486b2d098cfbd1d0fcf'
+            'b4f69af2e3676570179590cd752ccb5b9d771b6221369214c16ab6d03763c498350474722fdfdc0b3937f689c4c8dd057ae46c58787a6277bf06f9dca592f270'
+            '4a921ee7fdcb508ea1b59fad2bf20405a6f1dbd754ffd1dea4d1845805a14e8c67614dd3082f97a0da9c138751ca082fe55812f6f38b480b074bfe4c76d074bd'
+            '69ddbe18961b563f2b6d045d8046ec875080e526d5615cda2c3b374b50ba72e0b7b36132bcd5cdda8bbcb7f8ee5ac43160cd2988740f8df4492435e5879d3266')
+noextract=("clog-$_clog_commit.tar.gz"
+           "googletest-$_googletest_commit.tar.gz"
+           "openssl-$_openssl_commit.tar.gz")
 
 prepare() {
 	cd "$pkgname-$pkgver"
 
   mkdir -p "submodules/openssl"
-  tar xzf "$srcdir/openssl-484fcc7.tar.gz" -C "submodules/openssl" --strip-components=1
-
-  patch -p1 -i "$srcdir/cmake_args.patch"
+  tar xzf "$srcdir/clog-$_clog_commit.tar.gz" -C "submodules/clog" --strip-components=1
+  tar xzf "$srcdir/googletest-$_googletest_commit.tar.gz" -C "submodules/googletest" --strip-components=1
+  tar xzf "$srcdir/openssl-$_openssl_commit.tar.gz" -C "submodules/openssl" --strip-components=1
 }
 
 build() {
@@ -35,10 +42,12 @@ build() {
     -DCMAKE_BUILD_TYPE:STRING='Release' \
     -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
     -DCMAKE_SKIP_INSTALL_RPATH:BOOL='YES' \
-    -DQUIC_BUILD_TOOLS:BOOL='NO' \
-    -DQUIC_BUILD_TEST:BOOL='NO' \
     -Wno-dev
-  make -C "$pkgname-$pkgver/build" all
+  make -C "$pkgname-$pkgver/build"
+}
+
+check() {
+  make -C "$pkgname-$pkgver/build" test
 }
 
 package() {
