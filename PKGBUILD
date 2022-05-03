@@ -1,22 +1,25 @@
-# Maintainer: Rph <rphsoftware@gmail.com>
-pkgname='shaka-packager-bin'
-pkgrel=1
-pkgver='2.5.1'
-arch=('x86_64')
-pkgdesc='Shaka Packager is a tool and a media packaging SDK for DASH and HLS packaging and encryption. It can prepare and package media content for online streaming.'
-license=('BSD')
-source=(
-    "https://github.com/google/shaka-packager/releases/download/v2.5.1/packager-linux"
-    "https://raw.githubusercontent.com/google/shaka-packager/cfbe5c08c2285bd22f1ba900629e9a6fcac4dde4/LICENSE"
-)
-sha256sums=('e7ea0fc7ec6523e2df63a38eeb2c6cb1dc06fcc91a0dbd2e02e6b7d5655080f2'
-            '16f1483c4e6e0f851f2606587a222cf8fe6215837ce309a1ad0e3f21580b99f7')
-url='https://github.com/google/shaka-packager'
-package() {
-    mkdir -p "$pkgdir"/usr/bin
-    mkdir -p "$pkgdir"/usr/share/licenses/shaka-packager-bin
-    cp -a packager-linux "$pkgdir"/usr/bin/shaka-packager
-    cp -a LICENSE "$pkgdir"/usr/share/licenses/shaka-packager-bin
+# Maintainer: Luc Khai Hai <lkh42t@gmail.com>
+# Contributor: Rph <rphsoftware@gmail.com>
 
-    chmod +x "$pkgdir"/usr/bin/shaka-packager
+_name=shaka-packager
+pkgname="$_name-bin"
+pkgver='2.6.1'
+pkgrel=1
+pkgdesc='A tool and a media packaging SDK for DASH and HLS packaging and encryption.'
+arch=('x86_64' 'aarch64')
+url='https://github.com/shaka-project/shaka-packager'
+license=('BSD')
+provides=("$_name")
+conflicts=("$_name")
+replaces=("$_name")
+source=("https://raw.githubusercontent.com/shaka-project/shaka-packager/v$pkgver/LICENSE")
+source_x86_64=("packager-x86_64-$pkgver::https://github.com/shaka-project/shaka-packager/releases/download/v$pkgver/packager-linux-x64")
+source_aarch64=("packager-aarch64-$pkgver::https://github.com/shaka-project/shaka-packager/releases/download/v$pkgver/packager-linux-arm64")
+sha256sums=('16f1483c4e6e0f851f2606587a222cf8fe6215837ce309a1ad0e3f21580b99f7')
+sha256sums_x86_64=('328317e8f12dbcf9a5a172704699c2da51e54feb68cec5787666c2ab07b2c88d')
+sha256sums_aarch64=('ebeed27e7c1546ca85c08effd45ef2a95b64255228385526868194dcfea0750d')
+
+package() {
+    install -Dm755 "packager-$CARCH-$pkgver" "$pkgdir"/usr/bin/packager
+    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/shaka-packager-bin/LICENSE
 }
