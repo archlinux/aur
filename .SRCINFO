@@ -1,0 +1,14 @@
+pkgbase = ttf-roboto-flex-git
+	pkgdesc = Upgrades Roboto to become a more powerful typeface system
+	pkgver = 3.100.r0.gb329879500
+	pkgrel = 1
+	url = https://github.com/googlefonts/roboto-flex
+	arch = any
+	license = custom:OFL
+	makedepends = git
+	makedepends = python
+	conflicts = ttf-roboto-flex
+	source = git+https://github.com/googlefonts/roboto-flex.git#commit=b3298795004723896df6568a8acba8efca8520e7
+	sha256sums = SKIP
+
+pkgname = ttf-roboto-flex-git
