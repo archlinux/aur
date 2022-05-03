@@ -1,4 +1,4 @@
-pkgbase = msquic-prerelease
+pkgbase = msquic-1.9
 	pkgdesc = Microsoft implementation of the IETF QUIC protocol (prerelease)
 	pkgver = 1.9.0
 	pkgrel = 1
@@ -22,4 +22,4 @@ pkgbase = msquic-prerelease
 	sha512sums = 4eb7596bb7b35c17b1d713dfe62e8a4f470d6c9d41eae14955f534aa4527ec3f14532155b8111d7b390ae82888207247c5b205ce5648aceeb59d959e88a7d870
 	sha512sums = 9d18293f34d1d83574cdcfb544bf6c0ff5f98f90ea33335bf0c7bfff9f4101b60d18c176e81f8249065b30e643be691ee2800c26727da97b6a56d79da8cd0d7f
 
-pkgname = msquic-prerelease
+pkgname = msquic-1.9

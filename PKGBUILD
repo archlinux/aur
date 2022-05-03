@@ -1,6 +1,6 @@
 # Maintainer: Florian Maunier <fmauneko@dissidence.ovh>
 _pkgname=msquic
-pkgname=$_pkgname-prerelease
+pkgname=$_pkgname-1.9
 pkgver=1.9.0
 pkgrel=1
 pkgdesc="Microsoft implementation of the IETF QUIC protocol (prerelease)"
