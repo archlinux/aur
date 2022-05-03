@@ -1,0 +1,14 @@
+pkgbase = vim-flake8
+	pkgdesc = Flake8 plugin for Vim
+	pkgver = 1.6
+	pkgrel = 1
+	url = https://github.com/nvie/vim-flake8
+	arch = any
+	groups = vim-plugins
+	license = BSD 2-Clause
+	depends = vim>=8
+	depends = flake8
+	source = https://github.com/nvie/vim-flake8/archive/refs/tags/1.6.tar.gz
+	sha512sums = a4208478f9754ef2d188a51e3262c449ef16b48fc0208425795d71c304118c129ae20a723fff96863291bae66237f1479a591cc23e5ec90222e0614d2dcccce9
+
+pkgname = vim-flake8
