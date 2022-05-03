@@ -1,0 +1,15 @@
+pkgbase = txdx-bin
+	pkgdesc = Todo's like you've never seen before
+	pkgver = 1.1.2
+	pkgrel = 1
+	url = https://www.txdx.eu
+	arch = x86_64
+	license = GPL2
+	depends = gtk3
+	depends = zenity
+	provides = txdx
+	conflicts = txdx
+	source = https://gitlab.devroom.io/api/v4/projects/17/packages/generic/txdx/1.1.2/txdx-1.1.2-linux-x64.tar.gz
+	sha256sums = 5cda92be41721bd1dc8af7437f739051f108a12f80be9f726f818718682b8d68
+
+pkgname = txdx-bin
