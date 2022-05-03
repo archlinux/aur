@@ -1,16 +1,16 @@
 # Maintainer: Carlos Galindo < arch -at - cgj.es >
 _appname=twofactor_totp
 pkgname=nextcloud-app-twofactor-totp
-pkgver=6.2.0
+pkgver=6.3.0
 pkgrel=1
 pkgdesc="Second factor TOTP (RFC 6238) provider for Nextcloud"
 arch=("any")
 url="https://github.com/nextcloud/twofactor_totp"
 license=('AGPL3')
-depends=('nextcloud>=21' 'nextcloud<24')
+depends=('nextcloud>=21' 'nextcloud<25')
 makedepends=("npm" "composer")
 source=("$_appname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha512sums=('c351facdb38b0ff4683c11b15fbbf6aaa04e5893b161253afdc06af4f21690c77d67ad10557f2ebeadb9a616b989378b2b6ec5fb149e7cb045395d87f20f4be2')
+sha512sums=('9e9c85a5b121973f2bdc87674ae28b993b7489ff787ee7b38671039d89341ef9034785a0511cb32632fa90b6741803f0fd1153d26fa978cbe560459d299491fe')
 
 build() {
 	cd "$_appname-$pkgver"
