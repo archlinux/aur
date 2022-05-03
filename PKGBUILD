@@ -55,6 +55,7 @@ check() {
   PYTHONDONTWRITEBYTECODE=1 python -m tests || warning "python tests failed"
 
   cd "$srcdir/$pkgbase-$pkgver-py2"
+  TOX_INI_DIR="$srcdir/$pkgbase-$pkgver-py2" \
   PYTHONDONTWRITEBYTECODE=1 python2 -m tests || warning "python2 tests failed"
 }
 
