@@ -3,9 +3,9 @@
 pkgbase=antora
 pkgname=(
   antora-cli
-  antora-site-generator-default
+  antora-site-generator
 )
-pkgver=2.3.4
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="A modular documentation site generator"
 arch=('any')
@@ -15,15 +15,15 @@ depends=('nodejs')
 makedepends=('npm')
 source=(
   "https://registry.npmjs.org/@$pkgbase/cli/-/cli-$pkgver.tgz"
-  "https://registry.npmjs.org/@$pkgbase/site-generator-default/-/site-generator-default-$pkgver.tgz"
+  "https://registry.npmjs.org/@$pkgbase/site-generator/-/site-generator-$pkgver.tgz"
 )
 noextract=(
- "cli-$pkgver.tgz"
- "site-generator-default-$pkgver.tgz"
+  "cli-$pkgver.tgz"
+  "site-generator-$pkgver.tgz"
 )
 sha256sums=(
- 'b496b2a1f4ae02f4e792811eeb66a3d912d7c59087ea7cbb2091cbff38764c57'
- 'cbfbade98643696108b90bcf27be1024271307bf1a9ac36c03763a3b7f494afe'
+  'ffe7ec8eb3a76a4d4224e188f467aa0f1638b214ecffb2597e15484a0ea09c54'
+  'be89c14c51dd9c32b7048488f16d47999b3bdb833b76b22318162b395e723745'
 )
 
 _package() {
@@ -44,6 +44,6 @@ package_antora-cli() {
   _package cli
 }
 
-package_antora-site-generator-default() {
-  _package site-generator-default
+package_antora-site-generator() {
+  _package site-generator
 }
