@@ -1,10 +1,9 @@
 pkgbase = txdx
 	pkgdesc = Todo's like you've never seen before
 	pkgver = 1.1.1
-	pkgrel = 21
+	pkgrel = 1
 	url = https://www.txdx.eu
 	arch = x86_64
-	arch = aarch64
 	license = GPL2
 	makedepends = clang
 	makedepends = ninja
@@ -12,10 +11,9 @@ pkgbase = txdx
 	makedepends = git
 	makedepends = unzip
 	makedepends = flutter-beta
-	makedepends = flutter-group-pacman-hook
 	depends = gtk3
 	depends = zenity
-	source = txdx-1.1.1.tar.gz::https://gitlab.devroom.io/ariejan/txdx/-/archive/1.1.1/txdx-1.1.1.tar.gz
+	source = https://gitlab.devroom.io/ariejan/txdx/-/archive/1.1.1/txdx-1.1.1.tar.gz
 	sha256sums = 5da8bcdae8a61e7d38a0e2068021d884737b7150323ea07d9d5407d0847144a6
 
 pkgname = txdx
