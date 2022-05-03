@@ -1,5 +1,3 @@
-#!/bin/bash
-
 pre_upgrade() {
 	if [[ $( camilladsp -V ) == 'CamillaDSP 0.6.3' ]]; then
 		readarray -t files <<< $( grep -rl avoid_blocking_read /srv/http/data/camilladsp/configs )
@@ -9,4 +7,9 @@ pre_upgrade() {
 			done
 		fi
 	fi
+	mv /srv/http/data/camilladsp/configs/camilladsp.yml{,.backup}
+}
+
+post_upgrade() {
+	mv -f /srv/http/data/camilladsp/configs/camilladsp.yml{.backup,}
 }
