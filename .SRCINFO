@@ -1,7 +1,7 @@
 pkgbase = icu4j
 	pkgdesc = International Components for Unicode for Java
 	pkgver = 71.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://icu.unicode.org
 	arch = any
 	license = custom:icu
@@ -27,6 +27,6 @@ pkgbase = icu4j
 	sha256sums = dd615da4a1bb44b9a665253e4a231b9d050e830b264c7f4ef525ad29bc4c1c10
 	sha256sums = 857061c37cfc4f7e02696e4a0859befbf2caa38a64a250d9e40dffb627749f67
 	sha256sums = 7c94733bf21bb135914e65927aba84aa4023f83b6db1d8cc6ae9284afc6e399a
-	sha256sums = 2dc50618eb621aabc10d33c77266326ce73c6e11a6fa8fe96701d4e964e96434
+	sha256sums = SKIP
 
 pkgname = icu4j

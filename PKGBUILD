@@ -2,7 +2,7 @@
 # Contributor: Parham <parham at tuta dot io>
 pkgname=icu4j
 pkgver=71.1
-pkgrel=1
+pkgrel=2
 pkgdesc="International Components for Unicode for Java"
 arch=('any')
 url="https://icu.unicode.org"
@@ -30,7 +30,7 @@ sha256sums=('91c4f8ebf0ceb489547098fe9d5c09a65eb419caea6ed714867f5280800bcf1a'
             'dd615da4a1bb44b9a665253e4a231b9d050e830b264c7f4ef525ad29bc4c1c10'
             '857061c37cfc4f7e02696e4a0859befbf2caa38a64a250d9e40dffb627749f67'
             '7c94733bf21bb135914e65927aba84aa4023f83b6db1d8cc6ae9284afc6e399a'
-            '2dc50618eb621aabc10d33c77266326ce73c6e11a6fa8fe96701d4e964e96434')
+            'SKIP')
 
 package() {
     install -D -t "${pkgdir}/usr/share/java/${pkgname}" -m 644 icu4j*.jar
