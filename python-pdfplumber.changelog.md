@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](http://keepachangelog.com/).
 
+## [0.6.1] - 2022-04-23
+
+### Changed
+- Bump pinned `pdfminer.six` version to `20220319`. ([e434ed0](https://github.com/jsvine/pdfplumber/commit/e434ed0b196f1f2c0b7f76e8ea2663e40c99e93c))
+- Bump minimum `Pillow` version to `>=9.1`. ([d88eff1](https://github.com/jsvine/pdfplumber/commit/d88eff1e5354baa219ebff244fd4ab0e74db49c5))
+- Drop support for Python 3.6 (EOL Dec. 2021) ([a32473e](https://github.com/jsvine/pdfplumber/commit/a32473ee5f9113d5c5a96b30270cafc58d170f46))
+
+### Fixed
+- If `pdfplumber.open(...)` opens a file but a `pdfminer.pdfparser.PSException` is raised during the process, `pdfplumber` now makes sure to close that file. ([#581](https://github.com/jsvine/pdfplumber/pull/581) + ([#578](https://github.com/jsvine/pdfplumber/issues/578)) [h/t @johnhuge]
+- Fix incompatibility with `Pillow>=9.1`. ([#637](https://github.com/jsvine/pdfplumber/issues/637))
+
 ## [0.6.0] - 2021-12-21
 ### Added
 - Add `.extract_text(layout=True)`, an *experimental feature* which attempts to mimic the structural layout of the text on the page. ([#10](https://github.com/jsvine/pdfplumber/issues/10))
