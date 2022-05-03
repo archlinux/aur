@@ -8,6 +8,7 @@ pkgbase = netease-music-sync
 	makedepends = yarn
 	makedepends = git
 	depends = nodejs>=17.5
+	backup = etc/netease-music-sync.conf
 	source = netease-music-sync::git+https://github.com/Clansty/netease-music-sync
 	source = netease-login
 	source = netease-music-sync.conf

@@ -14,6 +14,7 @@ sha256sums=('SKIP'
             'bc5412b89178fd04d9120fc06d3c86fa979c03edcc4d1708fb6d545690ef0b0d'
             '9012f326199922bbbd8bb2e95a75ec940580d5887afbd080ac2360cec9a95e36'
             'f1150b9ce85eeba175f3c3f3aab65fc9fcc6a604e7d17e44cd2f935efba5ecb1')
+backup=("etc/${pkgname}.conf")
 
 pkgver(){
     cd "${srcdir}/${pkgname}"
