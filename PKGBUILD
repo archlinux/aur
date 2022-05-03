@@ -5,11 +5,11 @@
 
 pkgname=dosbox-djcrx
 pkgver=2.05
-pkgrel=13
+pkgrel=14
 pkgdesc="Headers and utilities for the djgpp dosbox cross-compiler"
 arch=('i686' 'x86_64')
 url="http://www.delorie.com/djgpp/"
-depends=('glibc' 'gcc-libs')
+depends=('glibc' 'gcc-libs' 'bison')
 license=('GPL' 'LGPL' 'custom:djgpp')
 source=("ftp://www.delorie.com/pub/djgpp/current/v2/djcrx${pkgver//./}.zip"
         "ftp://www.delorie.com/pub/djgpp/current/v2/djlsr${pkgver//./}.zip"
