@@ -1,19 +1,14 @@
 pkgbase = python-sphinxcontrib-youtube
 	pkgdesc = Sphinx extension to defines the directives, “youtube” and “vimeo”, for embedding YouTube and Vimeo videos, respectively
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sphinx-contrib/youtube
 	arch = any
 	license = GPL
 	makedepends = python-setuptools
-	makedepends = python2-setuptools
 	source = https://github.com/sphinx-contrib/youtube/archive/refs/tags/1.1.0.tar.gz
 	md5sums = 54c571fcf88773ac2422517ffb2f5e3d
 
 pkgname = python-sphinxcontrib-youtube
 	depends = python
 	depends = python-sphinx
-
-pkgname = python2-sphinxcontrib-youtube
-	depends = python2
-	depends = python2-sphinx
