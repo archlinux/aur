@@ -26,6 +26,7 @@ pkgbase = ossia-score-git
 	optdepends = sdl2
 	optdepends = libfreenect2
 	optdepends = qt5-shadertools-git
+	optdepends = ysfx-git
 	provides = ossia-score-git
 	conflicts = ossia-score
 	replaces = i-score
