@@ -1,9 +1,9 @@
 # Maintainer: csicar <aur@csicar.de>
 # Maintainer: Sam A. Horvath-Hunt <hello@samhh.com>
 _npmname=spago
-_npmver=0.20.8
+_npmver=0.20.9
 pkgname=nodejs-spago
-pkgver=0.20.8
+pkgver=0.20.9
 pkgrel=1
 pkgdesc="PureScript package manager and build tool powered by Dhall and package-sets"
 arch=(any)
@@ -13,7 +13,7 @@ depends=('nodejs' 'npm' 'purescript' 'ncurses5-compat-libs')
 optdepends=()
 source=(https://registry.npmjs.org/$_npmname/-/$_npmname-$_npmver.tgz)
 noextract=($_npmname-$_npmver.tgz)
-sha256sums=('d10f2c3801c9e6fbc2c9e477edae31bb34a4f31b861d3681aa3224fb5c0373da')
+sha256sums=('fed9f858dc4595e298a6d1e8797a47786a86a84e5ccb575f2c25b55f103316f6')
 
 package() {
   cd $srcdir
