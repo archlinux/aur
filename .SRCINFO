@@ -31,6 +31,6 @@ pkgbase = ossia-score
 	conflicts = ossia-score-git
 	replaces = i-score
 	source = https://github.com/ossia/score/releases/download/v3.0.8/ossia.score-3.0.8-src.tar.xz
-	sha512sums = 440c13f690d07005f241ecceaad8454ff6094bebf676df39e9de9fcadef3d2f0d3dfe684ff03d04a47aac9fd506f51d4dad1d8efa7d830dee264125586db0ae8
+	sha512sums = 41cbe167d92c6a693cfb41b38898c46f44b795cd07dca6f08fcdea40cdb472df823754ffe28ca24dba3141d247af8626aca6af08fa90c5ee56de0f987acefd28
 
 pkgname = ossia-score
