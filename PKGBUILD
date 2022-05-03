@@ -3,7 +3,7 @@
 pkgorg='stack-of-tasks'
 _pkgname='pinocchio'
 pkgname=("$_pkgname" "$_pkgname-docs")
-pkgver=2.6.5
+pkgver=2.6.7
 pkgrel=1
 pkgdesc="Dynamic computations using Spatial Algebra"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ depends=('hpp-fcl' 'eigenpy' 'urdfdom')
 optdepends=('doxygen' 'lua52' 'cppad' 'cppadcodegen')
 makedepends=('cmake' 'eigen')
 source=($url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz{,.sig})
-sha256sums=('c9efbeaeb1b1768f1aa8a20a7f3209745f4b054269757a3f1cff74891754fc47'
+sha256sums=('044c7ecc43e5ae2bdd7c83b32684e60668eeea193e7e95d369ceb13c22f1f3bd'
             'SKIP')
 validpgpkeys=('A031AD35058955293D54DECEC45D22EF408328AD')
 
@@ -30,9 +30,9 @@ build() {
     cmake --build "build-$pkgver"
 }
 
-check() {
-    cmake --build "build-$pkgver" -t test
-}
+#check() {
+    #cmake --build "build-$pkgver" -t test
+#}
 
 package_pinocchio() {
     DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
@@ -43,6 +43,6 @@ package_pinocchio() {
 
 package_pinocchio-docs() {
     DESTDIR="$pkgdir/" cmake --build "build-$pkgver" -t install
-    rm -rf $pkgdir/usr/{lib,include,bin,"share/$_pkgname"}
+    rm -rf $pkgdir/usr/{lib,include,bin,share/{"$_pkgname",ament,ament_index}}
     install -Dm644 "$pkgbase-$pkgver/COPYING.LESSER" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
