@@ -2,11 +2,9 @@
 # Co-Maintainer: Tech <technetium1337 at gmail dot com>
 # Contributor: taotieren <admin at taotieren dot com>
 
-# Note: The 1.1.8 codebase just doesn't build, I believe through no fault of my own. Will continue fixing this at next release. Ticket in with developers.
-
 pkgname=rustdesk
-pkgver=1.1.8
-pkgrel=3
+pkgver=1.1.9
+pkgrel=1
 pkgdesc="Yet another remote desktop software, written in Rust. Works out of the box, no configuration required. Great alternative to TeamViewer and AnyDesk!"
 arch=('any')
 url="https://github.com/rustdesk/rustdesk"
@@ -25,7 +23,7 @@ source=("${pkgname}-${pkgver}.tar.gz::https://github.com/rustdesk/rustdesk/archi
         "${pkgname}.service"
         "${pkgname}.desktop"
         "${pkgname}.png::https://avatars.githubusercontent.com/u/71636191?v=4")
-sha256sums=('2878fd1e414916e900e091608927a7469e238814dfa755c9ba5758aa04bbaada'
+sha256sums=('e26ee7de1b788962e12940a1b46708b9576ee5ade9e935ef5fa1a3108601b055'
             'a1682fbf55e004f1862d6ace31b5220121d20906bdbf308d0a9237b451e4db86'
             '830d3985e6292851cb33f703f58c1513a9162cca3ccd5ebf669ffe7b14637f3e'
             '642d5ee9d8286d1b95e3580fdea135832f609a643b98a13874e9bfe8eb8e71a4'
