@@ -1,9 +1,9 @@
 # Maintainer: Amanoel Dawod <amoka at amanoel dot com>
 
 pkgname=ttf-spline-sans-mono
-pkgver=1.000
+pkgver=1.002
 pkgrel=1
-_commit='fd94fa5f329b3b586fcda16a0547bca62b2269b3'
+_commit='635218dc887e4f8f39f4c0ee8b95462df1be4866'
 pkgdesc="Monospaced Grotesque purpose-built for UI interfaces, checkout processes, and programming"
 arch=('any')
 url="https://github.com/SorkinType/SplineSansMono"
@@ -14,11 +14,11 @@ source=("$url/raw/$_commit/fonts/ttf/SplineSansMono-Bold.ttf"
         "$url/raw/$_commit/fonts/ttf/SplineSansMono-Regular.ttf"
         "$url/raw/$_commit/fonts/ttf/SplineSansMono-SemiBold.ttf"
         "$url/raw/$_commit/OFL.txt")
-sha256sums=('20ad66150548e5df503c82e0c203cb4ab57bc2f3a6e0db03f8de8fce65346d01'
-            '4029e9d9d4e75fa09e6aa7a4a70e517a78c5cfabb3d9ced3b22a7b7367721dda'
-            'cf9e3f0ea43be1d33028683fb17b8c4179cfa30e42159bb9f5d929047817b2a9'
-            '84cd44a3ef3b51dd2522c1dc445170a8d1b7edcbb4265fe050b026470a7fcdce'
-            'cbd1ab8ccf50722bbcd21330dc1c684882e33f76e2921c4f144d3bfdf9172c59'
+sha256sums=('455691b19152f0f823b2cf62f898da3c5cc8a09568494e47b0b4897dcaf7999e'
+            '5931fe8ec9f6de01cad8b519fe2a17b2d50f98ec66a3f0a37aacaa5affda9bc8'
+            '088fcc19a6ade38d93c29524dd18f9f0472eec4f481cafd860006411bcfea9b3'
+            'bb9af4e0c8b0db6bae0f190dd0b588b634565bfafbfab058ebfd719f17b9edcb'
+            'cc330c58b629060e7f86f475929da1ff5f73486d3c4f631e7a597b935ec08835'
             '4abb88162e4c0c5f9fc6c2f15d7085f7b7e27fd89f541a13488e1bcb829bde3f')
 
 package() {
