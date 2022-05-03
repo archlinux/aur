@@ -4,9 +4,9 @@
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor: Antonio Orefice <kokokork@gmail.com>
 
-pkgname=qt4
+pkgname=qt4-revert80e3108
 pkgver=4.8.7
-pkgrel=29
+pkgrel=30
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL' 'FDL' 'custom')
@@ -25,7 +25,8 @@ optdepends=('postgresql-libs: PostgreSQL driver'
             'icu: Unicode support'
             'sni-qt: StatusNotifierItem (AppIndicators) support')
 replaces=('qt<=4.8.4')
-conflicts=('qt')
+conflicts=('qt4')
+provides=('qt4')
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
 source=("https://ftp.desolve.ru/ftp/viktor/qt4/${_pkgfqn}.tar.gz"
         'qtconfig-qt4.desktop' 'assistant-qt4.desktop' 'designer-qt4.desktop'
