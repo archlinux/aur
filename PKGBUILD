@@ -1,32 +1,41 @@
+# Maintainer: Caleb Maclennan <caleb@alerque.com>
+# Contributor: aksr <aksr at t-com dot me>
 # Contributor: xduugu
-# Maintainer: aksr <aksr at t-com dot me>
+
 pkgname=diff-pdf-git
-pkgver=0.4.1.r3.0e893a8
+pkgver=0.5.r1.g201dab3
 pkgrel=1
-pkgdesc="A simple tool for visually comparing two PDF files"
-arch=('i686' 'x86_64')
-url="http://vslavik.github.io/diff-pdf"
-license=('GPL')
-depends=('poppler-glib' 'wxgtk2')
-makedepends=('git')
-provides=("${pkgname%-*}")
-conflicts=("${pkgname%-*}")
-source=("git+https://github.com/vslavik/diff-pdf.git")
+pkgdesc='A simple tool for visually comparing two PDF files'
+arch=(x86_64 i686)
+url="http://vslavik.github.io/${pkgname%-git}"
+_url="https://github.com/vslavik/${pkgname%-git}"
+license=(GPL)
+depends=(poppler-glib
+         wxgtk2)
+makedepends=(git)
+provides=("${pkgname%-git}=$pkgver")
+conflicts=("${pkgname%-git}")
+source=("git+$_url.git")
 md5sums=('SKIP')
 
+prepare() {
+	cd "${pkgname%-git}"
+	./bootstrap
+}
+
 pkgver() {
-	cd "$srcdir/${pkgname%-*}"
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g;s/^v//')"
+	cd "${pkgname%-git}"
+	git describe --long --tags --abbrev=7 --match="v*" HEAD |
+		sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
-	cd "$srcdir/${pkgname%-*}"
-	./bootstrap
-	./configure --prefix=/usr
+	cd "${pkgname%-git}"
+	./configure --prefix /usr
 	make
 }
 
 package() {
-	cd "$srcdir/${pkgname%-*}"
-	make DESTDIR="$pkgdir/" install
+	cd "${pkgname%-git}"
+	make DESTDIR="$pkgdir" install
 }
