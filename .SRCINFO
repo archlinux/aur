@@ -1,0 +1,13 @@
+pkgbase = pypy3-beniget
+	pkgdesc = A static analyzer for Python code
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/serge-sans-paille/beniget
+	arch = any
+	license = BSD
+	makedepends = pypy3-setuptools
+	depends = pypy3-gast
+	source = https://files.pythonhosted.org/packages/source/b/beniget/beniget-0.4.1.tar.gz
+	sha256sums = 75554b3b8ad0553ce2f607627dad3d95c60c441189875b98e097528f8e23ac0c
+
+pkgname = pypy3-beniget
