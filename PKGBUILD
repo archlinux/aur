@@ -2,7 +2,7 @@
 # Maintainer: Chmouel Boudjnah <chmouel@chmouel.com>
 
 pkgname='snazy-bin'
-pkgver=0.7.0
+pkgver=0.8.0
 pkgrel=1
 pkgdesc='snazy - a snazzy json log viewer'
 url='https://github.com/chmouel/snazy'
@@ -11,8 +11,8 @@ license=('Apache 2.0')
 provides=('snazy')
 conflicts=('snazy')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/snazy/releases/download/0.7.0/snazy_0.7.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('93e3cb1c7baf6b85ce0d90732428f9c7c2ac9e537cedbe99866b23cfd5b1c04b')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/snazy/releases/download/0.8.0/snazy_0.8.0_linux_amd64.tar.gz")
+sha256sums_x86_64=('beac2e3894b003f9b09cb220c9803275af223ecf3dfdeca73d361d30125bf176')
 
 package() {
   # bin
