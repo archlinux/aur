@@ -1,7 +1,7 @@
 # Maintainer: Derek J. Clark <derekjohn dot clark at gmail dot com>
 pkgname=steam-removable-media-git
 _gitdir=steam-removable-media
-pkgver=22.05.r3.7139f58
+pkgver=22.05.r4.9289ef9
 pkgrel=1
 pkgdesc="Automounts and imports removable media as a Steam library"
 arch=('any')
@@ -26,8 +26,8 @@ package() {
 	mkdir -p ${pkgdir}/usr
 	mkdir -p ${pkgdir}/usr/lib
 	mkdir -p ${pkgdir}/usr/lib/media-support
-	install -m 744 99-media-mount.rules ${pkgdir}/etc/udev/rules.d/99-media-mount.rules
-	install -m 744 "media-mount@.service" "${pkgdir}/etc/systemd/system/media-mount@.service"
+	install -m 644 99-media-mount.rules ${pkgdir}/etc/udev/rules.d/99-media-mount.rules
+	install -m 644 "media-mount@.service" "${pkgdir}/etc/systemd/system/media-mount@.service"
 	install -m 744 media-support/* ${pkgdir}/usr/lib/media-support
 
 }
