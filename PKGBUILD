@@ -1,10 +1,10 @@
-# Maintainer: 
+# Maintainer: Martin Reboredo <yakoyoku@gmail.com>
 # Contributor: Mark Wagie <mark dot wagie at tutanota dot com>
 # Contributor: aspen <aspen@aspenuwu.me>
 pkgname=zulip-desktop-electron
-pkgver=5.8.1
+pkgver=5.9.3
 pkgrel=1
-_electronversion=13
+_electronversion=18
 pkgdesc="Real-time team chat based on the email threading model"
 arch=('x86_64')
 url="https://zulip.com"
@@ -15,15 +15,15 @@ provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=("${pkgname%-*}-$pkgver.tar.gz::https://github.com/zulip/zulip-desktop/archive/v$pkgver.tar.gz"
         "${pkgname%-*}.desktop"
-        "${pkgname%-*}.sh")
-sha256sums=('870a3ccbae76ee8dba53b30cd00edc16e68fc2822a1d2dca0d955f6648353e7c'
+        "${pkgname%-*}.sh.in")
+sha256sums=('2d5288204a0395ac2c9303678c4c0dcb852083e4806a1e4e885e096be5b6664c'
             '5d7a8831cdef6686339bc6581ed750d90f804e5fb0bebe897feed0b8eefba702'
-            'e03dbea7a85783012a59bdfe476ee4777c9970973f8f166e7596d613129b3d82')
+            '70ed0f08158c6ea8ef99dbbe360861e2c63911c2fadc74c0154bd6567abc8979')
 
 build() {
   cd "${pkgname%-*}-$pkgver"
-  electronDist="/usr/lib/electron$_electronversion"
-  electronVer="$(sed s/^v// /usr/lib/electron$_electronversion/version)"
+  electronDist="/usr/lib/electron" # $_electronversion"
+  electronVer="$(sed s/^v// $electronDist/version)"
   HOME="$srcdir/.electron-gyp" npm install --cache "$srcdir/npm-cache"
   ./node_modules/.bin/tsc
   ./node_modules/.bin/electron-builder --linux --x64 --dir \
@@ -32,8 +32,9 @@ build() {
 
 package() {
   cd "${pkgname%-*}-$pkgver"
+  sed "s/@@VERSION@@/$_electronversion/" "$srcdir/${pkgname%-*}.sh.in" > "${pkgname%-*}.sh"
   install -Dm644 dist/linux-unpacked/resources/app.asar -t "$pkgdir/usr/lib/${pkgname%-*}/resources/"
-  install -Dm755 "$srcdir/${pkgname%-*}.sh" "$pkgdir/usr/bin/zulip"
+  install -Dm755 "${pkgname%-*}.sh" "$pkgdir/usr/bin/zulip"
   install -Dm644 "$srcdir/${pkgname%-*}.desktop" -t "$pkgdir/usr/share/applications/"
 
   for i in 16 24 32 48 64 96 128 256 512 1024; do
