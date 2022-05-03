@@ -19,7 +19,7 @@ pkgbase = graceful-udisks
 	provides = udisks2=2.9.4
 	conflicts = udisks2
 	backup = etc/udisks2/udisks2.conf
-	source = https://github.com/graceful-linux/udisks/archive/refs/tags/udisks-debug-2.9.4.tar.gz
-	sha512sums = 3836f6d2d6fe02eb9cccbb85d940bb5b4a07db1dafe7beba1f2ded110b04de03b1e0b79e11592c3a9b2f0e047ae4fc4284d895a953e1f4dd042e544634e505ca
+	source = https://github.com/graceful-linux/udisks/archive/refs/tags/udisks-debug-2.9.4-3.tar.gz
+	sha512sums = fb67dd66641058edcbbcaab3f468734dbe89e6c978f6f741dfe530968bbf64e1203ba3a504193bb34e43fc586c39547380d926d1697e8cca5d29995c83b2a29a
 
 pkgname = graceful-udisks
