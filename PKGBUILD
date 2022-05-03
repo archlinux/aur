@@ -1,4 +1,5 @@
-# Maintainer: Edoardo Brogiolo <edoardo@brogiolo.eu>
+# Maintainer: Jiří Klimeš <blueowl@centrum.cz>
+# Contributor: Edoardo Brogiolo <edoardo@brogiolo.eu>
 # Contributor: Jelle van der Waa <jelle@vdwaa.nl>
 # Contributor: Paulo Matias <matiasΘarchlinux-br·org>
 
