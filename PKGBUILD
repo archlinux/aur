@@ -29,7 +29,7 @@ pkgname=("bareos-common"
          "bareos-storage-python2-plugin"
          "bareos-storage-python3-plugin"
          "bareos-filedaemon-ldap-python-plugin"
-         "bareos-traymonitor"
+         #"bareos-traymonitor"
          )
 
 pkgver=20.0.1
@@ -106,7 +106,7 @@ build() {
     -Darchivedir=/var/lib/bareos/storage \
     -Dbsrdir=/var/lib/bareos \
     -Dsystemd=yes \
-    -Dtraymonitor=yes
+    -Dtraymonitor=no
 
   make DESTDIR="${srcdir}/install" install
 }
