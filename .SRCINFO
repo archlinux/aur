@@ -1,0 +1,23 @@
+pkgbase = ghostcloud-git
+	pkgdesc = A modern cross-platform Qt client for Nextcloud, ownCloud & WebDav. Clean and simple interface, originally for SailfishOS and perfect for convergent/mobile devices.
+	pkgver = 0.9.9.r1.g5fbf320
+	pkgrel = 1
+	url = https://github.com/fredldotme/harbour-owncloud
+	arch = any
+	license = GPL2
+	makedepends = qt5-base
+	makedepends = qt5-declarative
+	makedepends = qt5-imageformats
+	makedepends = qt5-quickcontrols
+	makedepends = qt5-quickcontrols2
+	makedepends = qt5-svg
+	makedepends = qt5-tools
+	makedepends = qt5-x11extras
+	depends = qt5-multimedia
+	depends = qt5-script
+	provides = ghostcloud
+	conflicts = ghostcloud
+	source = ghostcloud::git+https://github.com/fredldotme/harbour-owncloud.git
+	sha512sums = SKIP
+
+pkgname = ghostcloud-git
