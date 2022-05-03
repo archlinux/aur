@@ -1,5 +1,29 @@
+--- a/docs/index.rst	2022-02-18 05:36:06.000000000 +0800
++++ b/docs/index.rst	2022-05-03 22:13:14.761866848 +0800
+@@ -51,7 +51,8 @@
+ 
+     Now we load the dataset from its canonical source:
+ 
+-    >>> f = fits.open('https://data.sdss.org/sas/dr16/sdss/spectro/redux/26/spectra/1323/spec-1323-52797-0012.fits')  # doctest: +IGNORE_OUTPUT +REMOTE_DATA
++    >>> try: f = fits.open('https://data.sdss.org/sas/dr16/sdss/spectro/redux/26/spectra/1323/spec-1323-52797-0012.fits')  # doctest: +IGNORE_OUTPUT +REMOTE_DATA
++    >>> except Exception: f = fits.open('spec-1323-52797-0012.fits')  # Use local fits if no network when doc building
+     >>> # The spectrum is in the second HDU of this file.
+     >>> specdata = f[1].data # doctest: +REMOTE_DATA
+     >>> f.close() # doctest: +REMOTE_DATA
+--- a/docs/manipulation.rst	2022-01-28 00:59:43.000000000 +0800
++++ b/docs/manipulation.rst	2022-05-03 22:13:31.251116458 +0800
+@@ -150,7 +150,8 @@
+     >>> from astropy.visualization import quantity_support
+     >>> quantity_support()  # for getting units on the axes below  # doctest: +IGNORE_OUTPUT
+ 
+-    >>> f = fits.open('https://data.sdss.org/sas/dr16/sdss/spectro/redux/26/spectra/1323/spec-1323-52797-0012.fits')  # doctest: +IGNORE_OUTPUT +REMOTE_DATA
++    >>> try: f = fits.open('https://data.sdss.org/sas/dr16/sdss/spectro/redux/26/spectra/1323/spec-1323-52797-0012.fits')  # doctest: +IGNORE_OUTPUT +REMOTE_DATA
++    >>> except Exception: f = fits.open('spec-1323-52797-0012.fits')  # Use local fits if no network when doc building
+     >>> # The spectrum is in the second HDU of this file.
+     >>> specdata = f[1].data[1020:1250] # doctest: +REMOTE_DATA
+     >>> f.close() # doctest: +REMOTE_DATA
 --- a/docs/spectral_cube.rst	2022-01-28 00:59:43.000000000 +0800
-+++ b/docs/spectral_cube.rst	2022-01-31 01:57:10.941416370 +0800
++++ b/docs/spectral_cube.rst	2022-05-03 21:46:26.169193983 +0800
 @@ -173,7 +173,8 @@
      from specutils.manipulation import spectral_slab
  

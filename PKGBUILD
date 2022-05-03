@@ -2,21 +2,23 @@
 pkgbase=python-specutils
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}" "python-${_pyname}-doc")
-pkgver=1.6.0
+pkgver=1.7.0
 pkgrel=1
 pkgdesc="Astropy Affiliated package for 1D spectral operations"
 arch=('any')
 url="http://specutils.readthedocs.io"
 license=('BSD')
-makedepends=('python-setuptools-scm' 'python-sphinx-astropy' 'python-gwcs' 'python-ndcube>=2.0' 'python-mpl-animators' 'graphviz')
-checkdepends=('python-pytest-astropy-header')
+makedepends=('python-setuptools-scm' 'python-wheel' 'python-build' 'python-installer' 'python-sphinx-astropy' 'python-gwcs' 'python-ndcube>=2.0' 'python-mpl-animators' 'graphviz')
+checkdepends=('python-pytest-remotedata' 'python-pytest-astropy-header')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz"
         "https://stsci.box.com/shared/static/28a88k1qfipo4yxc4p4d40v4axtlal8y.fits"
+        "https://data.sdss.org/sas/dr16/sdss/spectro/redux/26/spectra/1323/spec-1323-52797-0012.fits"
         'use_local_doc_fits_offline.patch')
 #https://dr15.sdss.org/sas/dr15/manga/spectro/redux/v2_4_3/8485/stack/manga-8485-1901-LOGRSS.fits.gz
-md5sums=('73f44f3e67923dd8a7aa7abbf71f6b4a'
+md5sums=('63817ee43fa13d5339ef4198d95d54b0'
          '6de4c8ee5659e87a302e3de595074ba5'
-         '81ee414974a5b6fc22f61e6fc7b36273')
+         '3586c5d0810108a182ba9146908dc180'
+         'b527ca1f834de432631d530c937d6cd1')
 
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -27,7 +29,7 @@ prepare() {
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
-    python setup.py build
+    python -m build --wheel --no-isolation
 
     msg "Building Docs"
     cd ${srcdir}/${_pyname}-${pkgver}/docs
@@ -38,7 +40,7 @@ check() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
     # skip some tests that need lots of online data or cost lots of time
-    PYTHONPATH="build/lib" pytest "build/lib" \
+    pytest "build/lib" \
         --ignore=build/lib/specutils/io/asdf/tags/tests/test_spectra.py \
         --ignore=build/lib/specutils/io/default_loaders/tests/test_apogee.py \
         --deselect=build/lib/specutils/tests/test_loaders.py::test_ctypye_not_compliant[remote_data_path0] \
@@ -64,7 +66,8 @@ check() {
         --deselect=build/lib/specutils/tests/test_loaders.py::test_iraf_multispec_chebyshev \
         --deselect=build/lib/specutils/tests/test_loaders.py::test_iraf_multispec_legendre \
         --deselect=build/lib/specutils/tests/test_loaders.py::test_muscles_loader \
-        --deselect=build/lib/specutils/tests/test_loaders.py::test_subaru_pfs_loader || warning "Tests failed"
+        --deselect=build/lib/specutils/tests/test_loaders.py::test_subaru_pfs_loader \
+        --deselect=build/lib/specutils/tests/test_spectral_axis.py::test_create_spectral_axis || warning "Tests failed"
 }
 
 package_python-specutils() {
@@ -74,7 +77,7 @@ package_python-specutils() {
 
     install -D -m644 -t "${pkgdir}/usr/share/licenses/${pkgname}" licenses/*
     install -D -m644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
-    python setup.py install --root=${pkgdir} --prefix=/usr --optimize=1
+    python -m installer --destdir="${pkgdir}" dist/*.whl
 }
 
 package_python-specutils-doc() {
