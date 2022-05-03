@@ -7,7 +7,7 @@ After=network-online.target
 Type=simple
 EnvironmentFile=/etc/netease-music-sync.conf
 WorkingDirectory=/usr/share/netease-music-sync
-ExecStart=/usr/bin/node -r ./.pnp.cjs build/index.js
+ExecStart=/usr/bin/node --experimental-fetch -r ./.pnp.cjs build/index.js
 Restart=on-failure
 RestartSec=120
 
