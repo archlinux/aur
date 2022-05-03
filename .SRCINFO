@@ -1,6 +1,6 @@
 pkgbase = kdeconnect-git
 	pkgdesc = Adds communication between KDE and your smartphone
-	pkgver = 20.08.0.r189.b2036bd3
+	pkgver = 21.07.80.r160.77047268
 	pkgrel = 1
 	url = https://community.kde.org/KDEConnect
 	arch = x86_64
@@ -10,6 +10,7 @@ pkgbase = kdeconnect-git
 	makedepends = kdoctools
 	makedepends = qt5-declarative
 	makedepends = qqc2-desktop-style
+	makedepends = plasma-wayland-protocols
 	depends = hicolor-icon-theme
 	depends = kcmutils
 	depends = kwayland
@@ -28,4 +29,3 @@ pkgbase = kdeconnect-git
 	sha256sums = SKIP
 
 pkgname = kdeconnect-git
-
