@@ -1,6 +1,6 @@
 pkgbase = python-pynbody-git
-	pkgdesc = Pynbody is a light-weight, portable, format-transparent analysis framework for N-body and hydrodynamic astrophysical simulations
-	pkgver = 2508.d2a716f0
+	pkgdesc = Light-weight,portable,format-transparent analysis framework for N-body and hydrodynamic astrophysical simulations
+	pkgver = 1.1.0.1bbec4d
 	pkgrel = 1
 	url = http://pynbody.github.io/
 	arch = any
@@ -9,16 +9,10 @@ pkgbase = python-pynbody-git
 	makedepends = cython>=0.2
 	optdepends = python-matplotlib: plotting pynbody built-in plots
 	optdepends = ipython: makes using python much easier
-	source = pynbody::git://github.com/pynbody/pynbody.git#branch=master
-	md5sums = SKIP
+	source = https://github.com/pynbody/pynbody/archive/refs/heads/master.zip
+	sha256sums = cc9fe3bcb8902b707a30af91cc06ef9d18667959685c0b8235276a7ae86f81aa
 
 pkgname = python-pynbody-git
 	depends = python>=3.3
 	depends = python-numpy
 	depends = python-scipy
-
-pkgname = python2-pynbody-git
-	depends = python2>=2.6
-	depends = python2-numpy
-	depends = python2-scipy
-
