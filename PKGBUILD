@@ -1,9 +1,9 @@
 # Maintainer: Roman Mishin <xtradev (a) yandex (.) ru>
 
-_commit=cf5bf508d8482cf02f895d91ce9572d67235e58f
+_commit=3c6d3c925ae3a2d58c9e3b59dd79dd283333149c
 pkgname=bracmat-git
-pkgver=6.9.3.r252
-pkgrel=2
+pkgver=6.10.0.r255
+pkgrel=1
 pkgdesc='Programming language for symbolic computation with pattern matching features'
 arch=('i686' 'x86_64')
 url='https://github.com/BartJongejan/Bracmat'
@@ -48,5 +48,5 @@ package() {
 	install -m644 "$srcdir"/Bracmat/Changelog "$pkgdir"/usr/share/doc/bracmat/changelog.txt
 
 	cd "$srcdir"/Bracmat/src
-	make clean   &>/dev/null
+	make clean  &> /dev/null
 }
