@@ -1,34 +1,39 @@
-# Maintainer: Sam L. Yes <samlukeyes123@gmail.com>
+# Maintainer: vvxxp8 <concatenate[g] the characters[x] in square[b] brackets[1] in[5] order[3] at gmail dot com>
+
 pkgname=lx-music-desktop-appimage
-pkgver=1.7.1
+pkgver=1.20.0
 pkgrel=1
-pkgdesc="A music assistant based on Electron + Vue."
+pkgdesc="一个基于electron的音乐软件"
 arch=("x86_64")
 url="https://github.com/lyswhut/lx-music-desktop"
-license=("Apache" "custom")
-depends=('zlib' 'hicolor-icon-theme')
-options=(!strip)
-_filename="lx-music-desktop-v${pkgver}-x64.AppImage"
-_launcher="lx-music-desktop.desktop"
-provides=("lx-music-desktop=${pkgver}")
-conflicts=('lx-music-desktop' 'lx-music-desktop-bin')
-source=("https://github.com/lyswhut/lx-music-desktop/releases/download/v${pkgver}/${_filename}"
-        ${_launcher})
-noextract=(${_filename})
-sha256sums=('7b77a1ec467476189956045da797200fd7f86f02eeb8ef5ecc70b008498e3566'
-            '88d199167894812929c2ed8a14451f8565c392ac63900d0deaa47a0c01257072')
-_icon='/usr/share/icons/hicolor/512x512/apps/lx-music-desktop.png'
-_licensedir=/usr/share/licenses/${pkgname}
+license=("APACHE")
+_pkgname="lx-music-desktop-v${pkgver}-x64.AppImage"
+noextract=(${_pkgname})
+options=("!strip")
+provides=("lx-music-desktop")
+conflicts=("lx-music-desktop")
+source=("https://github.com/lyswhut/lx-music-desktop/releases/download/v${pkgver}/${_pkgname}")
+sha512sums=("8cf8a04e270636c356111b356d3ae0ade676e1f24ec7790b77b9bcff61a51beaa8c9bea02116baa7f650c7ae61aa81f08fec6795b2010262aaab6c35e64a6101")
+
+_installdir=/opt/appimages
 
 prepare() {
-    chmod +x ${_filename}
-    ./${_filename} --appimage-extract
+    chmod a+x ${_pkgname}
+    ${srcdir}/${_pkgname} --appimage-extract >/dev/null
+    _desktop_file="${srcdir}/squashfs-root/lx-music-desktop.desktop"
+    sed -i "s+Name=lx-music-desktop+Name=LX Music+" ${_desktop_file}
+    sed -i "s+AppRun+env DESKTOPINTEGRATION=no ${_installdir}/lx-music-desktop.AppImage+" ${_desktop_file}
+    sed -i "/^Comment=/d" ${_desktop_file}
+    sed -i "/^Name[zh_CN]=/d" ${_desktop_file}
+    sed -i "3iName[zh_CN]=洛雪音乐助手" ${_desktop_file}
+    sed -i "4iComment[zh_CN]=一个免费的音乐查找助手" ${_desktop_file}
+    sed -i "4iComment=A free music search helper" ${_desktop_file}
+    find "${srcdir}/squashfs-root/usr/share/icons/hicolor" -type d -exec chmod 755 {} \;
 }
 
 package() {
-    install -Dm755 ${_filename} "${pkgdir}/usr/bin/lx-music-desktop"
-    install -Dm644 "${_launcher}" "${pkgdir}/usr/share/applications/${_launcher}"
-    install -d ${pkgdir}/${_licensedir}
-    install -m644 ${srcdir}/squashfs-root/resources/licenses/* ${pkgdir}/${_licensedir}
-    install -Dm644 "${srcdir}/squashfs-root/${_icon}" "${pkgdir}/${_icon}"
+    install -dm755 "${pkgdir}/usr/share/icons"
+    install -Dm755 ${_pkgname} "${pkgdir}/${_installdir}/lx-music-desktop.AppImage"
+    install -Dm644 "${srcdir}/squashfs-root/lx-music-desktop.desktop" "${pkgdir}/usr/share/applications/lx-music-desktop.desktop"
+    cp -R "${srcdir}/squashfs-root/usr/share/icons/hicolor" "${pkgdir}/usr/share/icons"
 }
