@@ -1,4 +1,3 @@
-
 # Maintainer: Leonidas P. <jpegxguy at outlook dot com>
 # Maintainer: Jerry <isjerryxiao at outlook dot com>
 # Contributor: Anes Belfodil <ans.belfodil at gmail dot com>
@@ -7,10 +6,10 @@
 
 _pkgname=qemu-user-static
 _pkgver="7.0"
-_pkgadditver="+dfsg-2"
+_pkgadditver="+dfsg-2+b1"
 pkgname=${_pkgname}-bin
 pkgver=${_pkgver//\~}
-pkgrel=2
+pkgrel=3
 pkgdesc='A generic and open source machine emulator, statically linked'
 arch=('x86_64' 'i686' 'aarch64' 'armv7h' 'armv6h')
 url="http://wiki.qemu.org"
