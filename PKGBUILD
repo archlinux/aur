@@ -1,7 +1,7 @@
 # Maintainer: Florian Maunier <fmauneko@dissidence.ovh>
 pkgname=msquic-release-git
-pkgver=1.1.8.r0.g794436f54
-pkgrel=3
+pkgver=2.0.3
+pkgrel=1
 pkgdesc="Microsoft implementation of the IETF QUIC protocol (release, git)"
 arch=('x86_64' 'armv7h' 'aarch64')
 url="https://github.com/microsoft/msquic"
@@ -10,10 +10,8 @@ depends=('glibc')
 makedepends=('cmake>=3.16' 'dotnet-sdk>=3.1' 'git')
 provides=('msquic' 'libmsquic.so')
 conflicts=('msquic' 'libmsquic.so')
-source=("$pkgname::git+https://github.com/microsoft/msquic.git#branch=release/1.1"
-        'cmake_args.patch')
-sha512sums=('SKIP'
-            'f0eb23f885b9577f93101f9e68c6863dc896086068d3ed29e7b6924a1286ab8aa478feec42cf0fa3cfee2e5e2fb42e5be3f15451ff0954c4db2059de6ebe7c27')
+source=("$pkgname::git+https://github.com/microsoft/msquic.git#branch=release/2.0")
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
@@ -23,7 +21,6 @@ pkgver() {
 prepare() {
 	cd "$pkgname"
   git submodule update --init --recursive --depth=1
-  patch -p1 -i "$srcdir/cmake_args.patch"
 }
 
 build() {
@@ -37,6 +34,10 @@ build() {
     -DQUIC_BUILD_TEST:BOOL='NO' \
     -Wno-dev
   make -C "$pkgname/build" all
+}
+
+check() {
+  make -C "$pkgname/build" test
 }
 
 package() {
