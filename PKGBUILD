@@ -22,8 +22,8 @@
 ## guide when making this one.
 
 pkgname=matlab-support
-pkgver=9.11.0
-pkgrel=3
+pkgver=9.12.0
+pkgrel=1
 pkgdesc='Provides dependencies desktop file and common fixes for MATLAB.'
 arch=('x86_64')
 url='http://www.mathworks.com'
@@ -82,34 +82,38 @@ depends=(
     'zlib'
     'lsb-release'
     'dconf'
-    )
+)
+optdepends=(
+    'gcc6: For MEX support'
+    'gcc7: For MEX support'
+    'gcc8: For MEX support'
+    'gcc9: For MEX support'
+    'gcc: For MEX support'
+    'libselinux: for Addon manager support'
+    'python-pip: for setting up Python engine'
+    'gconf: may be needed for Live Scripts'
+)
+makedepends=('gendesk')
+provides=('matlab=$pkgver')
+conflicts=('matlab')
+source=()
 
-    optdepends=('gcc6: For MEX support'
-        'gcc7: For MEX support'
-        'gcc8: For MEX support'
-        'gcc9: For MEX support'
-        'gcc: For MEX support'
-        'libselinux: for Addon manager support'
-        'gconf: may be needed for Live Scripts')
-    makedepends=('gendesk')
-    provides=('matlab')
-    conflicts=('matlab')
+prepare() {
+    # desktop file links matlab to system glib's as opposed to the ones shipped with matlab
+    # see https://wiki.archlinux.org/index.php/Matlab#Addon_manager_not_working for more info
 
-        prepare() {
-            # desktop file links matlab to system glib's as opposed to the ones shipped with matlab
-            # see https://wiki.archlinux.org/index.php/Matlab#Addon_manager_not_working for more info
+        msg2 'Creating desktop file'
+        gendesk -f -n --pkgname 'matlab' \
+        --pkgdesc 'A high-level language for numerical computation and visualization.' \
+        --categories 'Development;Education;Science;Mathematics;IDE' \
+        --exec 'env LD_PRELOAD=/usr/lib/libfreetype.so.6:/usr/lib/libstdc++.so.6:/usr/lib/libgio-2.0.so:/usr/lib/libglib-2.0.so:/usr/lib/libgmodule-2.0.so:/usr/lib/libgobject-2.0.so:/usr/lib/libgthread-2.0.so matlab -desktop' \
+        --mimetypes 'text/x-matlab' \
+        "${srcdir}/matlab.desktop" >/dev/null 
+}
 
-            msg2 'Creating desktop file'
-            gendesk -f -n --pkgname 'matlab' \
-                --pkgdesc 'A high-level language for numerical computation and visualization.' \
-                --categories 'Development;Education;Science;Mathematics;IDE' \
-                --exec 'env env LD_PRELOAD=/usr/lib/libfreetype.so.6:/usr/lib/libstdc++.so.6:/usr/lib/libgio-2.0.so:/usr/lib/libglib-2.0.so:/usr/lib/libgmodule-2.0.so:/usr/lib/libgobject-2.0.so:/usr/lib/libgthread-2.0.so matlab -desktop' \
-                --mimetypes 'text/x-matlab' \
-                "${srcdir}/matlab.desktop" >/dev/null 
-            }
+package() {
+    msg2 'Installing desktop files'
+    install -D -m644 "matlab.desktop" "${pkgdir}/usr/share/applications/matlab.desktop"
+}
 
-        package() {
-            msg2 'Installing desktop files'
-            install -D -m644 "matlab.desktop" "${pkgdir}/usr/share/applications/matlab.desktop"
-        }
 
