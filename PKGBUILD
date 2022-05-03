@@ -3,7 +3,7 @@ _npmname=svlangserver
 _npmid="@$_npmscope/$_npmname"
 
 pkgname="$_npmname"
-pkgver=0.3.5
+pkgver=0.4.0
 pkgrel=1
 pkgdesc="A language server for systemverilog"
 arch=('any')
@@ -14,7 +14,7 @@ source=("$pkgname-$pkgver.tar.gz::https://registry.npmjs.org/$_npmid/-/$_npmname
 noextract=("${source[@]%%::*}")
 # we can easly find the sha1sum (instead of md5sum) as "shasum"
 # curl -s "https://registry.npmjs.org/@angular/cli" | jq '.versions."9.0.3".dist.shasum'
-md5sums=('131e1a0f686c9e9534731429cc052763')
+md5sums=('0ec80591113e1e580e70b887c05b3fcd')
 
 package() {
     # Setting temporary cache
