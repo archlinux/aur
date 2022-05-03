@@ -1,0 +1,12 @@
+pkgbase = rres
+	pkgdesc = A xrandr replacement to gather display resolutions
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://gitlab.com/forkbomb9/rres
+	arch = any
+	license = GPLv3
+	makedepends = rust
+	source = https://gitlab.com/forkbomb9/rres/-/archive/v0.1.2/rres-v0.1.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = rres
