@@ -2,7 +2,7 @@
 
 _pkgname=yuzu
 pkgname=$_pkgname-mainline-git
-pkgver=r19936.dd43a7f8c
+pkgver=r21377.896616808
 pkgrel=1
 pkgdesc='An experimental open-source emulator for the Nintendo Switch (newest features)'
 arch=('i686' 'x86_64')
@@ -39,7 +39,6 @@ source=("$_pkgname::git+https://github.com/yuzu-emu/yuzu-mainline"
         'git+https://github.com/benhoyt/inih.git'
         'git+https://github.com/kinetiknz/cubeb.git'
         'git+https://github.com/MerryMage/dynarmic.git'
-        'git+https://github.com/citra-emu/ext-soundtouch.git'
         'libressl::git+https://github.com/citra-emu/ext-libressl-portable.git'
         'git+https://github.com/libusb/libusb.git'
         'git+https://github.com/discord/discord-rpc.git'
@@ -71,7 +70,6 @@ md5sums=('SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
-         'SKIP'
          'SKIP')
 
 pkgver() {
@@ -82,10 +80,10 @@ pkgver() {
 prepare() {
     cd "$srcdir/$_pkgname"
 
-    for submodule in externals/{inih/inih,cubeb,dynarmic,soundtouch,libressl,libusb/libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus/opus,ffmpeg,SDL,cpp-httplib}; do
+    for submodule in externals/{inih/inih,cubeb,dynarmic,libressl,libusb/libusb,discord-rpc,Vulkan-Headers,sirit,mbedtls,xbyak,opus/opus,ffmpeg,SDL,cpp-httplib}; do
         git submodule init ${submodule}
         git config submodule.${submodule}.url "$srcdir/${submodule##*/}"
-        git submodule update
+        git submodule update --init
     done
 
     cd "$srcdir/$_pkgname"/externals/cubeb
@@ -93,7 +91,7 @@ prepare() {
     for submodule in cmake/sanitizers-cmake; do
         git submodule init ${submodule}
         git config submodule.${submodule}.url "$srcdir/${submodule##*/}"
-        git submodule update
+        git submodule update --init
     done
     
     cd "$srcdir/$_pkgname"/externals/sirit
@@ -101,7 +99,7 @@ prepare() {
     for submodule in externals/SPIRV-Headers; do
         git submodule init ${submodule}
         git config submodule.${submodule}.url "$srcdir/${submodule##*/}"
-        git submodule update
+        git submodule update --init
     done
 }
 
