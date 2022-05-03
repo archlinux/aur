@@ -5,7 +5,7 @@
 
 pkgname=dosbox-djcrx
 pkgver=2.05
-pkgrel=16
+pkgrel=17
 pkgdesc="Headers and utilities for the djgpp dosbox cross-compiler"
 arch=('i686' 'x86_64')
 url="http://www.delorie.com/djgpp/"
@@ -32,8 +32,8 @@ options=('!buildflags' '!strip')
 _target='i586-pc-msdosdjgpp'
 
 prepare() {
-  sed -i "s/i586-pc-msdosdjgpp/$_target/" src/makefile.def src/dxe/makefile.dxe
   sed -i 's/ln/ln -f/' src/dxe/makefile.dxe
+  sed -i 's/O2/O3/g;s/i[[:digit:]]86/i586/g;/Werror/d' src/makefile src/makefile.cfg src/makefile.def src/dxe/makefile.dxe
 
   # fix build with gcc >= 8 
   patch -Np1 < djgpp-djcrx-gcccompat.patch
@@ -50,9 +50,6 @@ prepare() {
 
   # allow using dxe3gen without DJDIR and without dxe3res in PATH
   patch -Np0 < dxegen.patch
-
-  # optimize for pentium
-  sed -i "s/O2/O3/g;s/i386/i586/g;/Werror/d" src/makefile src/makefile.cfg src/makefile.def
 
   # be verbose
   #sed -i '/@$(MISC) echo - / d; s/^\t@/\t/' src/makefile.inc src/libc/makefile src/utils/makefile
@@ -81,16 +78,11 @@ package() {
 
   cd ../src/dxe
   for _file in dxe3gen dxe3res; do
-    install -m0755 $_file "$pkgdir"/usr/$_target/bin/$_file
-    ln -s ../$_target/bin/$_file "$pkgdir"/usr/bin/$_target-$_file
+    install -m0755 $_file $pkgdir/usr/$_target/bin/$_file
+    ln -s ../$_target/bin/$_file $pkgdir/usr/bin/$_target-$_file
   done
-  ln -s dxe3gen "$pkgdir"/usr/$_target/bin/dxegen
+  ln -s dxe3gen $pkgdir/usr/$_target/bin/dxegen
 
-  cd "$srcdir"
-  install -Dm644 copying.dj "$pkgdir"/usr/share/licenses/$pkgname/copying.dj
-
-  #cd info
-  #for _file in *.info; do
-  #  install -Dm0644 $_file "$pkgdir"/usr/share/info/djgpp-$_file
-  #done
+  cd $srcdir
+  install -Dm644 copying.dj $pkgdir/usr/share/licenses/$pkgname/copying.dj
 }
