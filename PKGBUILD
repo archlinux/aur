@@ -2,7 +2,7 @@
 
 pkgname=('enigma-dev-git')
 pkgver=4768.d4771fde1
-pkgrel=3
+pkgrel=4
 pkgdesc="ENIGMA, the Extensible Non-Interpreted Game Maker Augmentation."
 url="http://enigma-dev.org"
 arch=('x86_64' 'i686')
@@ -16,12 +16,12 @@ makedepends=('git' 'make')
 conflicts=('lateralgm')
 provides=('lateralgm')
 install='enigma-dev-git.install'
-source=('lateralgm' 'emake' 'lateralgm.desktop' 'git+https://github.com/enigma-dev/enigma-dev.git' 'http://enigma-dev.org/docs/wiki/images/4/47/Lateralgmlogo.png')
+source=('enigma' 'emake' 'enigma-dev.desktop' 'git+https://github.com/enigma-dev/enigma-dev.git' 'https://github.com/enigma-dev/enigma-dev/raw/master/Resources/logo.png')
 sha256sums=('465270e7d8042b6022936509e3e59563f38c5df94827979aca3d4429919b20b3'
          '9a84e88a82569a9da5e017f52dcfad4334b0775631f7fb9b149c0bbe2ff09fdb'
-         '967f3d6f315a4568dc081ec55664998d68e0556eb5e25c87506179dc41db8008'
+         '29edd95e3ba543c85a68e073a0b07f5e59c533e174108f6ff07b832f48546b8d'
          'SKIP'
-         '775377940f41bec376cf4656312341efa034315e61130b6c5748bff9752b4d01')
+         '158c62f513d9c2da92bb3f31416256d9efdf9319a7b6b761ed39b0a5ac28fc90')
 
 build() {
   # install lateralgm
@@ -55,16 +55,16 @@ package() {
   msg "Installing files..."
   cp -r -a "${srcdir}/enigma-dev" "${pkgdir}/opt/${pkgname}"
   chmod -R 755 "${pkgdir}/opt/${pkgname}"
-  install -D "${srcdir}/Lateralgmlogo.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/lateralgm.png"
+  install -D "${srcdir}/logo.png" "${pkgdir}/usr/share/icons/hicolor/128x128/apps/enigma-dev.png"
   
   msg "Setting up binaries..."
-  install -D "${srcdir}/lateralgm" "${pkgdir}/usr/bin/lateralgm"
+  install -D "${srcdir}/enigma" "${pkgdir}/usr/bin/enigma-dev"
   install -D "${srcdir}/emake" "${pkgdir}/usr/bin/emake"
-  chmod +x "${pkgdir}/usr/bin/lateralgm"
+  chmod +x "${pkgdir}/usr/bin/enigma-dev"
   chmod +x "${pkgdir}/usr/bin/emake"
 
   msg "Adding menu shortcuts..."
-  install -D "${srcdir}/lateralgm.desktop" "${pkgdir}/usr/share/applications/lateralgm.desktop"
+  install -D "${srcdir}/enigma-dev.desktop" "${pkgdir}/usr/share/applications/enigma-dev.desktop"
   
   # remove some extra stuff to help reduce package size; more of this is may be possible.
   rm -rf "${pkgdir}/opt/${pkgname}/.git"
