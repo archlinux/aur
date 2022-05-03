@@ -35,7 +35,12 @@ package() {
 	cd "$_pkgname"
 
 	chmod +x build.sh
-	./build.sh install
+	./build.sh install lib
+
+	mkdir -p "/usr/include/why2"
+
+	cp libwhy2.so "/usr/lib/"
+	cp include/*.h "/usr/include/why2/"
 
 	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 	install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
