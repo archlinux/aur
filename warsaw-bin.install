@@ -1,20 +1,13 @@
 post_install() {
-    if [ -e "/usr/share/hunspell/pt_BR.dic" ]
-    then
-        echo -e "\e[34;1m==>\e[39;1m Para usar o Warsaw, inicie seu serviço com: \e[0m"
-        echo -e "\e[34;1m==>\e[39;1m $ sudo systemctl start warsaw \e[0m"
-        echo -e "\e[34;1m==>\e[39;1m Para iniciar o Warsaw na inicialização do sistema, utilize o comando: \e[0m"
-        echo -e "\e[34;1m==>\e[39;1m $ sudo systemctl enable warsaw \e[0m"
-        echo -e "\e[34;1m==>\e[39;1m Conclua a configuração do seu banco no site abaixo: \e[0m"
+    if [ "$(locale | grep "LANG")" = "LANG=pt_BR.UTF-8" ]; then
+        echo -e "\e[34;1m==>\e[39;1m Reinicie o sistema e conclua a configuração do seu banco no site abaixo: \e[0m"
         echo -e "\e[34;1m==>\e[39;1m https://diagnostico.gasantifraud.com \e[0m"
     else
-        echo -e "\e[34;1m==>\e[39;1m To use Warsaw, start its service using: \e[0m"
-        echo -e "\e[34;1m==>\e[39;1m $ sudo systemctl start warsaw \e[0m"
-        echo -e "\e[34;1m==>\e[39;1m To start Warsaw at system startup, use the command: \e[0m"
-        echo -e "\e[34;1m==>\e[39;1m $ sudo systemctl enable warsaw \e[0m"
-        echo -e "\e[34;1m==>\e[39;1m Complete your bank setup on the website below: \e[0m"
+        echo -e "\e[34;1m==>\e[39;1m Restart the system and complete your bank setup on the website below: \e[0m"
         echo -e "\e[34;1m==>\e[39;1m https://diagnostico.gasantifraud.com \e[0m"
     fi
+
+    systemctl enable --now warsaw.service
 }
 
 post_upgrade() {
