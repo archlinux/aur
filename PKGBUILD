@@ -2,7 +2,7 @@
 
 pkgbase=yesplaymusic-git
 pkgname=(yesplaymusic-git yesplaymusic-electron-git)
-pkgver=0.4.4.1.r0.g999bf6f
+pkgver=0.4.5.r7.g9e787ba
 pkgrel=1
 pkgdesc="高颜值的第三方网易云播放器，支持 Windows / macOS / Linux"
 arch=("x86_64" "aarch64")
@@ -21,7 +21,7 @@ _electron=electron13
 
 pkgver(){
     cd "${srcdir}/YesPlayMusic"
-    git describe --tags --long | sed 's/v//;s/-/./;s/-/.r/;s/-/./g'
+    git describe --tags --long | sed 's/v//;s/-/.r/;s/-/./g'
 }
 prepare(){
     cd "${srcdir}/YesPlayMusic"
