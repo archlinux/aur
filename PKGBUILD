@@ -3,7 +3,7 @@
 pkgname=ttf-roboto-flex-git
 _pkgname=roboto-flex
 pkgver=3.100.r0.gb329879500
-pkgrel=1
+pkgrel=2
 pkgdesc="Upgrades Roboto to become a more powerful typeface system"
 makedepends=('git' 'python')
 arch=('any')
@@ -25,6 +25,7 @@ build() {
   . venv/bin/activate
   pip install -r requirements.txt
   gftools builder sources/config.yaml
+  python scripts/set_bit6.py
 }
 
 package() {
