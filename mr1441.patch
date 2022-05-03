@@ -439,10 +439,10 @@ index d3608e81ca71dfc5acdccc0111dd0f032025e0d0..06c5f7f28a58d421994036036a2f67d9
 +
  #endif /* CLUTTER_FRAME_H */
 diff --git a/clutter/clutter/clutter-stage-view.c b/clutter/clutter/clutter-stage-view.c
-index 8a82de71edff0ef302bb9c7df4c96b6380c5ecf9..45d0093521b9388d57c5a9000d3993aecd11d193 100644
+index 2e47237f0ad469b3ae512ddd182c337c3cf63e1e..8f5e896d01ffed4f54c62b27b112c0399e4bcbd2 100644
 --- a/clutter/clutter/clutter-stage-view.c
 +++ b/clutter/clutter/clutter-stage-view.c
-@@ -1190,8 +1190,9 @@ handle_frame_clock_frame (ClutterFrameClock *frame_clock,
+@@ -1191,8 +1191,9 @@ handle_frame_clock_frame (ClutterFrameClock *frame_clock,
  
        _clutter_stage_window_redraw_view (stage_window, view, &frame);
  
@@ -512,10 +512,10 @@ index ad72dba645c660be3ce7ca5f36bf14348366ba80..24e9b0a6a48a637db8a8b798a89e76ec
                                    kms_crtc,
                                    gamma->size,
 diff --git a/src/backends/native/meta-cursor-renderer-native.c b/src/backends/native/meta-cursor-renderer-native.c
-index 0eada201c1b865985f14634a53baf8916584109f..0db76426d8e7c289415fde435eab419ef3a65b57 100644
+index 96c54baf026d304465aa2f343df4b04d03fb9104..f80f31a93dd8bcba3937ad79021bb94473df81cb 100644
 --- a/src/backends/native/meta-cursor-renderer-native.c
 +++ b/src/backends/native/meta-cursor-renderer-native.c
-@@ -57,19 +57,6 @@
+@@ -58,19 +58,6 @@
  #include "wayland/meta-wayland-buffer.h"
  #endif
  
@@ -535,7 +535,7 @@ index 0eada201c1b865985f14634a53baf8916584109f..0db76426d8e7c289415fde435eab419e
  static GQuark quark_cursor_sprite = 0;
  
  typedef struct _CrtcCursorData
-@@ -103,19 +90,10 @@ typedef struct _MetaCursorRendererNativeGpuData
+@@ -104,19 +91,10 @@ typedef struct _MetaCursorRendererNativeGpuData
    uint64_t cursor_height;
  } MetaCursorRendererNativeGpuData;
  
@@ -556,7 +556,7 @@ index 0eada201c1b865985f14634a53baf8916584109f..0db76426d8e7c289415fde435eab419e
  } MetaCursorNativeGpuState;
  
  typedef struct _MetaCursorNativePrivate
-@@ -196,44 +174,17 @@ meta_cursor_renderer_native_finalize (GObject *object)
+@@ -197,44 +175,17 @@ meta_cursor_renderer_native_finalize (GObject *object)
    G_OBJECT_CLASS (meta_cursor_renderer_native_parent_class)->finalize (object);
  }
  
@@ -605,7 +605,7 @@ index 0eada201c1b865985f14634a53baf8916584109f..0db76426d8e7c289415fde435eab419e
  }
  
  static void
-@@ -308,10 +259,7 @@ assign_cursor_plane (MetaCursorRendererNative *native,
+@@ -309,10 +260,7 @@ assign_cursor_plane (MetaCursorRendererNative *native,
    MetaKmsUpdate *kms_update;
    MetaKmsPlaneAssignment *plane_assignment;
  
@@ -617,7 +617,7 @@ index 0eada201c1b865985f14634a53baf8916584109f..0db76426d8e7c289415fde435eab419e
  
    kms_crtc = meta_crtc_kms_get_kms_crtc (crtc_kms);
    kms_device = meta_kms_crtc_get_device (kms_crtc);
-@@ -340,8 +288,8 @@ assign_cursor_plane (MetaCursorRendererNative *native,
+@@ -341,8 +289,8 @@ assign_cursor_plane (MetaCursorRendererNative *native,
      flags |= META_KMS_ASSIGN_PLANE_FLAG_FB_UNCHANGED;
  
    kms_update =
@@ -628,7 +628,7 @@ index 0eada201c1b865985f14634a53baf8916584109f..0db76426d8e7c289415fde435eab419e
    plane_assignment = meta_kms_update_assign_plane (kms_update,
                                                     kms_crtc,
                                                     cursor_plane,
-@@ -362,13 +310,6 @@ assign_cursor_plane (MetaCursorRendererNative *native,
+@@ -363,13 +311,6 @@ assign_cursor_plane (MetaCursorRendererNative *native,
                                         native);
  
    crtc_cursor_data->buffer = buffer;
@@ -642,7 +642,7 @@ index 0eada201c1b865985f14634a53baf8916584109f..0db76426d8e7c289415fde435eab419e
  }
  
  static float
-@@ -496,7 +437,7 @@ unset_crtc_cursor (MetaCursorRendererNative *native,
+@@ -497,7 +438,7 @@ unset_crtc_cursor (MetaCursorRendererNative *native,
        MetaKms *kms = meta_kms_device_get_kms (kms_device);
        MetaKmsUpdate *kms_update;
  
@@ -651,7 +651,7 @@ index 0eada201c1b865985f14634a53baf8916584109f..0db76426d8e7c289415fde435eab419e
        meta_kms_update_unassign_plane (kms_update, kms_crtc, cursor_plane);
      }
  
-@@ -596,19 +537,7 @@ has_valid_cursor_sprite_buffer (MetaCursorSprite *cursor_sprite,
+@@ -597,19 +538,7 @@ has_valid_cursor_sprite_buffer (MetaCursorSprite *cursor_sprite,
    if (!cursor_gpu_state)
      return FALSE;
  
@@ -672,7 +672,7 @@ index 0eada201c1b865985f14634a53baf8916584109f..0db76426d8e7c289415fde435eab419e
  }
  
  static void
-@@ -1114,16 +1043,14 @@ unset_crtc_cursor_renderer_privates (MetaGpu       *gpu,
+@@ -1115,16 +1044,14 @@ unset_crtc_cursor_renderer_privates (MetaGpu       *gpu,
  static void
  cursor_gpu_state_free (MetaCursorNativeGpuState *cursor_gpu_state)
  {
@@ -691,7 +691,7 @@ index 0eada201c1b865985f14634a53baf8916584109f..0db76426d8e7c289415fde435eab419e
    g_free (cursor_gpu_state);
  }
  
-@@ -1160,14 +1087,7 @@ invalidate_cursor_gpu_state (MetaCursorSprite *cursor_sprite)
+@@ -1161,14 +1088,7 @@ invalidate_cursor_gpu_state (MetaCursorSprite *cursor_sprite)
  
    g_hash_table_iter_init (&iter, cursor_priv->gpu_states);
    while (g_hash_table_iter_next (&iter, NULL, (gpointer *) &cursor_gpu_state))
@@ -707,21 +707,13 @@ index 0eada201c1b865985f14634a53baf8916584109f..0db76426d8e7c289415fde435eab419e
  }
  
  static void
-@@ -1305,8 +1225,8 @@ load_cursor_sprite_gbm_buffer_for_gpu (MetaCursorRendererNative *native,
-           return;
-         }
- 
--      set_pending_cursor_sprite_buffer (cursor_sprite, gpu_kms,
--                                        META_DRM_BUFFER (buffer_gbm));
-+      set_cursor_sprite_buffer (cursor_sprite, gpu_kms,
-+                                META_DRM_BUFFER (buffer_gbm));
+@@ -1404,35 +1324,7 @@ load_cursor_sprite_gbm_buffer_for_gpu (MetaCursorRendererNative *native,
+       return;
      }
-   else
-     {
-@@ -1314,34 +1234,6 @@ load_cursor_sprite_gbm_buffer_for_gpu (MetaCursorRendererNative *native,
-     }
- }
  
+-  set_pending_cursor_sprite_buffer (cursor_sprite, gpu_kms, buffer);
+-}
+-
 -static gboolean
 -is_cursor_hw_state_valid (MetaCursorSprite *cursor_sprite,
 -                          MetaGpuKms       *gpu_kms)
@@ -748,12 +740,11 @@ index 0eada201c1b865985f14634a53baf8916584109f..0db76426d8e7c289415fde435eab419e
 -
 -  g_assert_not_reached ();
 -  return FALSE;
--}
--
++  set_cursor_sprite_buffer (cursor_sprite, gpu_kms, buffer);
+ }
+ 
  static gboolean
- is_cursor_scale_and_transform_valid (MetaCursorRenderer *renderer,
-                                      MetaCursorSprite   *cursor_sprite)
-@@ -1506,7 +1398,7 @@ realize_cursor_sprite_from_wl_buffer_for_gpu (MetaCursorRenderer      *renderer,
+@@ -1599,7 +1491,7 @@ realize_cursor_sprite_from_wl_buffer_for_gpu (MetaCursorRenderer      *renderer,
    if (!cursor_renderer_gpu_data || cursor_renderer_gpu_data->hw_cursor_broken)
      return;
  
@@ -762,7 +753,7 @@ index 0eada201c1b865985f14634a53baf8916584109f..0db76426d8e7c289415fde435eab419e
        is_cursor_scale_and_transform_valid (renderer, cursor_sprite))
      return;
  
-@@ -1648,8 +1540,8 @@ realize_cursor_sprite_from_wl_buffer_for_gpu (MetaCursorRenderer      *renderer,
+@@ -1744,8 +1636,8 @@ realize_cursor_sprite_from_wl_buffer_for_gpu (MetaCursorRenderer      *renderer,
            return;
          }
  
@@ -773,7 +764,7 @@ index 0eada201c1b865985f14634a53baf8916584109f..0db76426d8e7c289415fde435eab419e
      }
  }
  #endif
-@@ -1673,7 +1565,7 @@ realize_cursor_sprite_from_xcursor_for_gpu (MetaCursorRenderer      *renderer,
+@@ -1769,7 +1661,7 @@ realize_cursor_sprite_from_xcursor_for_gpu (MetaCursorRenderer      *renderer,
    if (!cursor_renderer_gpu_data || cursor_renderer_gpu_data->hw_cursor_broken)
      return;
  
@@ -967,7 +958,7 @@ index 73dd8e69717ccac77cda6e360c25163187bd8ec7..787d05acda62a93a15f3de467de8d911
                          &error))
      goto err;
 diff --git a/src/backends/native/meta-kms-impl-device-simple.c b/src/backends/native/meta-kms-impl-device-simple.c
-index 882cd97cc958623e2bea943f5a9ced3a28b665ee..8aa78343a7d300981353bb6f48e9429ac1ec5c91 100644
+index fa6bca3486730ce7b2bd01fb4d436962aed75d96..6f9669a8bc3e65c204badef24ca834f47e319468 100644
 --- a/src/backends/native/meta-kms-impl-device-simple.c
 +++ b/src/backends/native/meta-kms-impl-device-simple.c
 @@ -470,6 +470,8 @@ process_mode_set (MetaKmsImplDevice  *impl_device,
@@ -1072,7 +1063,7 @@ index 882cd97cc958623e2bea943f5a9ced3a28b665ee..8aa78343a7d300981353bb6f48e9429a
                                      refresh_rate,
                                      page_flip_data,
                                      g_steal_pointer (&custom_page_flip));
-@@ -1290,7 +1300,7 @@ process_plane_assignment (MetaKmsImplDevice       *impl_device,
+@@ -1279,7 +1289,7 @@ process_plane_assignment (MetaKmsImplDevice       *impl_device,
      {
      case META_KMS_PLANE_TYPE_PRIMARY:
        /* Handled as part of the mode-set and page flip. */
@@ -1081,7 +1072,7 @@ index 882cd97cc958623e2bea943f5a9ced3a28b665ee..8aa78343a7d300981353bb6f48e9429a
      case META_KMS_PLANE_TYPE_CURSOR:
        if (!process_cursor_plane_assignment (impl_device, update,
                                              plane_assignment,
-@@ -1304,7 +1314,7 @@ process_plane_assignment (MetaKmsImplDevice       *impl_device,
+@@ -1293,7 +1303,7 @@ process_plane_assignment (MetaKmsImplDevice       *impl_device,
          }
        else
          {
@@ -1090,7 +1081,7 @@ index 882cd97cc958623e2bea943f5a9ced3a28b665ee..8aa78343a7d300981353bb6f48e9429a
          }
      case META_KMS_PLANE_TYPE_OVERLAY:
        error = g_error_new_literal (G_IO_ERROR, G_IO_ERROR_FAILED,
-@@ -1317,6 +1327,12 @@ process_plane_assignment (MetaKmsImplDevice       *impl_device,
+@@ -1306,6 +1316,12 @@ process_plane_assignment (MetaKmsImplDevice       *impl_device,
      }
  
    g_assert_not_reached ();
