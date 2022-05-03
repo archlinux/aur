@@ -1,0 +1,31 @@
+pkgbase = kde-applications-nogames-nodevel-noedu-meta
+	pkgver = 22.04
+	pkgrel = 1
+	url = https://www.archlinux.org/
+	arch = any
+	license = None
+
+pkgname = kde-applications-nogames-nodevel-noedu-meta
+	pkgdesc = Meta package for KDE Applications without games
+	depends = kde-accessibility-meta
+	depends = kde-graphics-meta
+	depends = kde-multimedia-meta
+	depends = kde-network-meta
+	depends = kde-pim-meta
+	depends = kde-sdk-nodevel-meta
+	depends = kde-system-meta
+	depends = kde-utilities-meta
+	provides = kde-applications-meta
+	provides = kde-games-meta
+	provides = kde-education-meta
+	conflicts = kde-applications-meta
+	conflicts = kde-games-meta
+	conflicts = kde-education-meta
+
+pkgname = kde-sdk-nodevel-meta
+	pkgdesc = Meta package for KDE SDK applications - nodevel
+	depends = dolphin-plugins
+	depends = kdesdk-thumbnailers
+	provides = kde-sdk-meta
+	conflicts = kde-sdk-meta
+	replaces = kdesdk-meta
