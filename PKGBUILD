@@ -1,26 +1,29 @@
 # Maintainer: Andrzej Giniewicz <gginiu@gmail.com>
+
 pkgname=python-visvis
-pkgver=1.10.0
+_pkg="${pkgname#python-}"
+pkgver=1.13.0
 pkgrel=1
-pkgdesc="A pure Python library for visualization of 1D to 4D data in an object oriented way"
+pkgdesc="Python library for visualization of 1D to 4D data"
 url="https://github.com/almarklein/visvis"
 arch=('any')
 license=('BSD')
-depends=('python-numpy' 'python-opengl' 'python-imageio')
-makedepends=('python-distribute')
+depends=('python-numpy' 'python-opengl')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 optdepends=('python-pyqt4: for Qt4 backend'
             'python-pyside: for another Qt4 backend'
             'wxpython: for WxWidgets backend'
             'pygtk: for GTK backend')
-source=(https://github.com/almarklein/visvis/archive/v${pkgver}.tar.gz)
-md5sums=('ee0dd00926602b80028792cb441d6261')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
+sha256sums=('a2858c61b9b2ff17d1f9e8bffb0445077e2e9bb93fe59ee3812dcaa7e0d43fda')
 
 build() {
-  cd "${srcdir}"/visvis-$pkgver
-  python setup.py build
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-  cd "${srcdir}"/visvis-$pkgver
-  python setup.py install --prefix=/usr --root="$pkgdir"
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	install -Dm644 license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
