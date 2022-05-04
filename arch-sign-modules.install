@@ -1,7 +1,7 @@
 #!/bin/sh
 
 post_install() {
-	local x= module_list="zfs nvidia lkrg"
+	local x= module_list="zfs nvidia p_lkrg"
 	local dkms_dir=/etc/dkms dkms_link=
 	local kernel_sign=${dkms_dir}/kernel-sign.conf
 
@@ -21,7 +21,7 @@ post_upgrade() {
 }
 
 post_remove() {
-	local x= module_list="zfs nvidia lkrg"
+	local x= module_list="zfs nvidia p_lkrg"
         local dkms_dir=/etc/dkms dkms_link=
 
         for x in $module_list; do
