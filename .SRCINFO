@@ -10,7 +10,6 @@ pkgbase = xorgxrdp-nvidia
 	makedepends = nasm
 	makedepends = xorg-server-devel
 	makedepends = xrdp
-	depends = nvidia
 	provides = xorgxrdp
 	conflicts = xorgxrdp
 	options = staticlibs
