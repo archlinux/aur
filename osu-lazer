@@ -1,2 +1,2 @@
-#!/usr/bin/env sh
-env OSU_EXTERNAL_UPDATE_PROVIDER=1 LD_LIBRARY_PATH=/usr/lib/ffmpeg4.4:"$LD_LIBRARY_PATH" /opt/osu-lazer/osu.AppImage "$@"
+#!/bin/sh
+env OSU_EXTERNAL_UPDATE_PROVIDER=1 /opt/osu-lazer/osu.AppImage "$@"

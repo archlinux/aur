@@ -6,9 +6,9 @@
 pkgname=osu-lazer-bin
 _pkgname=${pkgname%-bin}
 pkgver=2022.501.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The future of osu! and the beginning of an open era! Commonly known by the codename osu!lazer. Pew pew."
-arch=("x86_64")
+arch=(x86_64)
 url="https://osu.ppy.sh"
 license=("MIT" "custom:CC-BY-NC 4.0")
 depends=(
@@ -34,7 +34,8 @@ sha256sums=(
   "36f73cfe0a84cd65a8bb54fcde5a01c419b134bee4a88cc92eb4f33236343a10"
   "30b914824784b6ba6b30a44b22bea4f3c6fbc10f3f0e74fde5ca76a92ef57244"
   "43aba829341aa5542d7cedf9e95215d553a7db73a65f169f0de5a25aac75b801"
-  "a9a2ea43849e9cb94d40f8668406078b619e96d3b66fc5bce112d9b0e4d6c8a0")
+  "baeea5b234e65707a4e6a563eacac89063bf20047d64125cd1f26c3c52aae957"
+)
 
 package() {
   cd "$srcdir"
