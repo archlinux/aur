@@ -1,4 +1,4 @@
-# Maintainer: tommiss <tommivs+aur@gmail.com>
+# Maintainer: tommiss <tommivs+archlinux@gmail.com>
 
 pkgname=dragit-git
 _execname='dragit'
@@ -7,6 +7,7 @@ pkgrel=1
 pkgdesc='Application for intuitive file sharing between devices.'
 arch=('any')
 provides=("${pkgname}")
+depends=('gtk3')
 makedepends=('cargo' 'git' 'rust')
 url='https://github.com/sireliah/dragit'
 license=('GPL3')
