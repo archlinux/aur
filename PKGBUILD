@@ -1,5 +1,5 @@
 # Maintainer: William Huang <wp /at/ nerde /period/ pw>
-# Maintainer: Morten Linderud <foxboron@archlinux.org>
+# Contributor: Morten Linderud <foxboron@archlinux.org>
 # Contributor: Akaash Suresh <https://github.com/Curry>
 # Contributor: Batuhan Baserdem <lastname dot firstname at gmail>
 
