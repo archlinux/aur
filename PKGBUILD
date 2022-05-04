@@ -1,7 +1,7 @@
-# Maintainer: DATSD <DAStudio *dot* 71e6fd52 *at* gmail *dot* com>
+# Maintainer: Romain Chardiny <romain.chardiny@gmail.com>
 _basename=xmake
 pkgname=${_basename}-git
-pkgver=2.6.5.r2
+pkgver=2.6.5.r40
 pkgrel=1
 pkgdesc='A make-like build utility based on Lua'
 arch=('i686' 'x86_64')
