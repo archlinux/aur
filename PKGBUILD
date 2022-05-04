@@ -3,7 +3,7 @@
 pkgname=ttf-advent-pro
 pkgver=20131203
 # fc-query -f '%{fontversion[0]}\n' ./AdventPro-*.ttf
-pkgrel=1
+pkgrel=2
 pkgdesc="Google's Advent Pro font"
 arch=(any)
 license=(custom:OFL)
@@ -11,7 +11,7 @@ url='https://fonts.google.com/specimen/Advent+Pro'
 provides=(google-crosextra-carlito-fonts)
 source=("$pkgname-$pkgver.zip::https://fonts.google.com/download?family=Advent%20Pro"
         "99-google-advent-pro.conf")
-sha256sums=('54c921aa6490090439c37608a9d8b97439a3fb7bbb3a7ec708c6d5448dfb9ad4'
+sha256sums=('ac4168295dc35d68bc19ba25592c67ad57d0051c0c4e1604bb4ab2becec3de5d'
             'c926c45dcc2f46a93ef9fb7f27143744d5bb7ae71c23b2584cd5fc09850b1a56')
 
 package() {
