@@ -1,19 +1,21 @@
 pkgbase = python-imbalanced-learn
-	pkgdesc = imbalanced-learn is a python package offering a number of re-sampling techniques commonly used in datasets showing strong between-class imbalance.
-	pkgver = 0.7.0
+	pkgdesc = Toolbox for imbalanced dataset in machine learning
+	pkgver = 0.9.0
 	pkgrel = 1
 	url = https://github.com/scikit-learn-contrib/imbalanced-learn
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
-	depends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python>=3.7
 	depends = python-scipy
 	depends = python-numpy
 	depends = python-scikit-learn
 	optdepends = python-keras
 	optdepends = python-tensorflow
-	source = https://files.pythonhosted.org/packages/3e/c1/2a1b332589b3e668a560c0cb00d98c204ece60f178a0dbde4e2165194ce7/imbalanced-learn-0.7.0.tar.gz
-	sha256sums = da59de0d1c0fa66f62054dd9a0a295a182563aa1abbb3bf9224a3678fcfe8fa4
+	source = python-imbalanced-learn-0.9.0.tar.gz::https://files.pythonhosted.org/packages/source/i/imbalanced-learn/imbalanced-learn-0.9.0.tar.gz
+	sha256sums = 836a4c137cc3c10310d4f6cd5ec34600ff488d7f8c243a997c3f9b551c91d0b2
 
 pkgname = python-imbalanced-learn
-
