@@ -1,7 +1,7 @@
 # Maintainer: Stuart Cardall <developer__at__it-offshore.co.uk>
 pkgname=arch-sign-modules
 _pkgname=Arch-SKM
-pkgver=0.3
+pkgver=0.3.1
 pkgrel=0
 pkgdesc="Signed (In Tree & Out of Tree) Kernel Modules for linux linux-lts linux-hardened linux-zen + AUR kernels"
 arch=(x86_64)
@@ -12,7 +12,7 @@ optdepends=('pacman-contrib')
 makedepends=()
 install="$pkgname.install"
 source=($pkgname-$pkgver.tar.gz::https://github.com/itoffshore/$_pkgname/archive/$pkgver.tar.gz)
-md5sums=('83bbd42dac189198b50db3f49c30c98c')
+md5sums=('bc75aa16c6e0c305db4093e46dc61555')
 
 build() {
   return 0
