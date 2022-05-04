@@ -15,16 +15,16 @@ sha256sums=("97da1d1c61bb0730b203629488c00514c5f4672aa9bf3574e6255cb9a42bfa85"
     "be6c30de864c812edc897c9d7bf4896f646fa73268d945646032eb1a9a8926f0")
 
 prepare() {
-    cd $pkgname
+    cd $pkgname-$pkgver
     patch --forward --strip=1 --input="${srcdir}/0001-Update-links-for-ArchLinux.patch"
 }
 
 build() {
-    cd $pkgname
+    cd $pkgname-$pkgver
     make DISTRO=ArchLinux
 }
 
 package() {
-    cd $pkgname
+    cd $pkgname-$pkgver
     make DESTDIR=$pkgdir install
 }
