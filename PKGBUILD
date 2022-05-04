@@ -3,7 +3,7 @@
 
 pkgname='perl-curry'
 pkgver='2.000001'
-pkgrel='1'
+pkgrel='2'
 pkgdesc="Perl/CPAN Module curry: Create automatic curried method call closures for any class or object"
 arch=('any')
 license=('PerlArtistic' 'GPL')
