@@ -1,8 +1,8 @@
 
-# Maintainer: Jack Johannesen <jack AT insertdomain DOT name>
-
+# Maintainer: Julia <julia AT insertdomain DOT name>
+# Maintainer: Cristian <cristian@crstian.me>
 pkgname="freshfetch-git"
-pkgver=v0.2.0.r5.g1383c8f
+pkgver=v0.2.0.r7.gace04ea
 pkgrel=1
 pkgdesc="A fresh take on Neofetch"
 arch=('any')
