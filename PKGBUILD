@@ -7,7 +7,7 @@ pkgver=11.3.0
 _target="i586-pc-msdosdjgpp"
 _islver=0.24
 _djver=2.05
-pkgrel=4
+pkgrel=5
 pkgdesc="djgpp cross-compiler for the dosbox environment"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
@@ -112,9 +112,8 @@ package_dosbox-gcc() {
   ln -sf $_target-gcc $pkgdir/usr/bin/$_target-cc
 
   # remove unnecessary files
-  rm -rf $pkgdir/usr/$_target/share/{man,info,locale}
+  rm -rf $pkgdir/usr/$_target/share/{man,info,locale,gcc-$pkgver/python}
   rm -rf $pkgdir/usr/share/{man,info,locale}
-  rm -rf $pkgdir/usr/share/gcc-$pkgver/python
   rm -rf $pkgdir/usr/lib/gcc/$_target/$pkgver/include-fixed
   rm -f $pkgdir/usr/lib/libcc1.*
 }
