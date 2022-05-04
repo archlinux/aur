@@ -1,6 +1,7 @@
 # Maintainer Harvies <delverjw@gmail.com>
+# Co-Maintainer xcupen <xcupen@gmail.com>
 pkgname=feishu
-pkgver=4.11.6_2
+pkgver=5.4.13
 pkgrel=1
 pkgdesc="飞书官网Linux客户端(视频会议分享屏幕可用)"
 arch=('x86_64')
@@ -9,8 +10,8 @@ license=('unknown')
 depends=('nss' 'libx11' 'libxcb' 'libxext' 'wget' 'xdg-utils')
 makedepends=()
 optdepends=()
-source=('https://sf3-cn.feishucdn.com/obj/suite-public-file-cn/v5x9pa/bytedance-feishu-beta_4.11.6-2_amd64.deb')
-sha256sums=('9a844502ee721defb1bfe37764c7a3c0fe1dc64c99185ae9b6368826e2fefb5a')
+source=('https://sf3-cn.feishucdn.com/obj/ee-appcenter/e734d9e40e6a/Feishu-linux_x64-5.4.13.deb')
+sha256sums=('26dddc20e13f733640dbf8669f4dc24f8c098d5db71f9f86ffe33546a68a5986')
 
 package() {
   cd ${pkgdir}
