@@ -1,0 +1,16 @@
+pkgbase = speedtest
+	pkgdesc = Official Ookla Speedtest CLI for personal, non-commercial use
+	pkgver = 1.1.1.28
+	pkgrel = 1
+	url = https://www.speedtest.net/
+	arch = x86_64
+	license = custom
+	makedepends = wget
+	makedepends = tar
+	makedepends = binutils
+	depends = ca-certificates
+	conflicts = speedtest-cli
+	source = https://packagecloud.io/ookla/speedtest-cli/packages/debian/bullseye/speedtest_1.1.1.28-1.c732eb82cf_amd64.deb/download.deb
+	sha256sums = 0a957d6cfc1915e143d1a11f9fb05d52d9015f0b196e52e6093af5e53bee446c
+
+pkgname = speedtest
