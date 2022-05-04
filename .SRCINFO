@@ -5,6 +5,7 @@ pkgbase = python-ddns
 	url = https://pypi.org/project/ddns
 	install = python-ddns.install
 	arch = any
+	license = MIT
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-wheel

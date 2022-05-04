@@ -7,6 +7,7 @@ pkgver=2.10.3
 pkgdesc="Automatically update DNS records to dynamic local IP."
 url=https://pypi.org/project/ddns
 arch=('any')
+license=("MIT")
 provides=("ddns")
 conflicts=("ddns" "newfuture-ddns-bin")
 makedepends=('python-pip' 'python-installer')
