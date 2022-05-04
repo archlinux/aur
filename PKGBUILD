@@ -4,8 +4,8 @@
 
 pkgname=firedragon
 _pkgname=FireDragon
-pkgver=99.0.1
-pkgrel=2
+pkgver=100.0
+pkgrel=1
 pkgdesc="Librewolf fork build using custom branding, settings & KDE patches by OpenSUSE"
 arch=(x86_64 x86_64_v3)
 backup=('usr/lib/firedragon/firedragon.cfg'
@@ -40,7 +40,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "git+https://gitlab.com/dr460nf1r3/common.git"
         "git+https://gitlab.com/dr460nf1r3/settings.git")
 
-sha256sums=('76d22279ce99588a728bb2d034064be0d5918b5900631f2148d4565b8a72e00b'
+sha256sums=('664c0cc4e0fb70886aa4e652d144996045d533a18eebc7d61093103cbb2d5e7f'
             '158152bdb9ef6a83bad62ae03a3d9bc8ae693b34926e53cc8c4de07df20ab22d'
             'SKIP'
             'SKIP')
@@ -70,7 +70,7 @@ prepare() {
   patch -Np1 -i ${_patches_dir}/gentoo/0001-Don-t-use-build-id.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0002-Fortify-sources-properly.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0003-Check-additional-plugins-dir.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0007-Support-sndio-audio-framework.patch
+  #patch -Np1 -i ${_patches_dir}/gentoo/0007-Support-sndio-audio-framework.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0008-bmo-878089-Don-t-fail-when-TERM-is-not-set.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0009-bmo-1516803-Fix-building-sandbox.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0019-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
@@ -156,6 +156,7 @@ prepare() {
   # Pref pane - custom FireDragon svg
   patch -Np1 -i ${_patches_dir}/librewolf/librewolf-pref-pane.patch
   patch -Np1 -i ${_patches_dir}/misc/add_firedragon_svg.patch
+  patch -Np1 -i ${_patches_dir}/librewolf-ui/website-appearance-ui-rfp.patch
 
   # fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example
   patch -Np1 -i ${_patches_dir}/librewolf/disable-data-reporting-at-compile-time.patch
