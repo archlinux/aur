@@ -1,0 +1,13 @@
+pkgbase = pypy3-psutil
+	pkgdesc = A cross-platform process and system utilities module for Python
+	pkgver = 5.9.0
+	pkgrel = 1
+	url = https://github.com/giampaolo/psutil
+	arch = x86_64
+	license = custom: BSD
+	makedepends = pypy3-setuptools
+	depends = pypy3
+	source = https://github.com/giampaolo/psutil/archive/release-5.9.0.tar.gz
+	sha512sums = 8f105b84773c901a7969937bac2289281dc48f160f20e2d3d5f9b11f4a108fddf9864b477884c00ec33c3809f9f514a5f5faea623b7445dd8e637b96105a865b
+
+pkgname = pypy3-psutil
