@@ -1,0 +1,10 @@
+We do not know the license. Assume commercial by
+
+  CHAPS spol. s r.o.
+  Bráfova 1617/21
+  CZ-616 00 Brno
+  Czech republic
+
+  http://www.chaps.cz/
+
+Upstream URL: http://www.chaps.cz/eng/download/idos#kotvaprg
