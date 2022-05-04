@@ -1,8 +1,8 @@
-# Maintainer: skrewball <jason at joickle dot com>
+# Maintainer: skrewball <aur at joickle dot com> gitlab.com/skrewball/aur
 
 pkgname=gnome-shell-extension-app-icons-taskbar
 _pkgbase=aztaskbar
-pkgver=7
+pkgver=9
 pkgrel=1
 pkgdesc="A simple app icon taskbar extension for GNOME"
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=('dconf' 'gnome-shell>=1:41')
 conflicts=('gnome-shell-extension-app-icons-taskbar-git')
 source=("${url}/-/archive/v${pkgver}/${_pkgbase}-v${pkgver}.tar.gz")
-sha256sums=('825753d65ffa0c9279e035bbae54a99bb623c86d4362f3a0c9463e5d235b795b')
+sha256sums=('47dba930cb77c6fb45ec79b57f7b6aa8779019e1902a34617f8e7861ab52d97e')
 
 build() {
   cd "${_pkgbase}-v${pkgver}"
