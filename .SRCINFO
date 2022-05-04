@@ -1,6 +1,6 @@
 pkgbase = rdm-bin
 	pkgdesc = Cross-platform open source database management tool for Redis ®
-	pkgver = 2022.2
+	pkgver = 2022.3
 	pkgrel = 1
 	url = https://resp.app/
 	arch = x86_64
@@ -25,10 +25,10 @@ pkgbase = rdm-bin
 	conflicts = redis-desktop-manager-bin
 	conflicts = redis-desktop-manager
 	source = rdm.desktop
-	source = https://github.com/pidario/rdm-build/releases/download/2022.2/rdm-2022.2+7f5408a3
+	source = https://github.com/pidario/rdm-build/releases/download/2022.3/rdm-2022.3+577a8e5
 	source = https://raw.githubusercontent.com/uglide/RedisDesktopManager/2022/src/resources/images/resp.png
 	sha256sums = 5e96ea919336c483fba09fd40839a77f33dc98a0aa5e9de0c7570d9fd888f62e
-	sha256sums = b55658d02584ac8d48a3ac50af28f6982b114dba92f22b7eecd0ffd370cd90d9
+	sha256sums = f9d291f93503684b8cdbd2adb8b5c1e429bd2303d1119d8194d99b052077b98b
 	sha256sums = SKIP
 
 pkgname = rdm-bin
