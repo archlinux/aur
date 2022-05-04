@@ -4,7 +4,7 @@
 
 pkgname=dosbox-binutils
 pkgver=2.35
-pkgrel=2
+pkgrel=3
 pkgdesc="binutils for the djgpp dosbox cross-compiler"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/binutils"
@@ -22,30 +22,30 @@ _target="i586-pc-msdosdjgpp"
 
 prepare() {
   cd binutils-$pkgver
-
-  # hack! - libiberty configure tests for header files break with FORTIFY_SOURCE
-  sed -i "/ac_cpp=/s/\$CPPFLAGS/\$CPPFLAGS -O2/" libiberty/configure
-
   patch -Np1 <${srcdir}/binutils-djgpp.patch
   patch -Np1 <${srcdir}/binutils-bfd-djgpp.patch
 }
 
 build() {
-  mkdir -p binutils-$_target
-
   export CPPFLAGS="$CPPFLAGS -Ofast"
+
+  mkdir -p binutils-$_target
   cd binutils-$_target
-  ../binutils-$pkgver/configure --prefix=/usr \
+  ../binutils-$pkgver/configure \
+    --prefix=/usr \
     --target="$_target" \
     --infodir="/usr/share/info/$_target" \
     --datadir="/usr/$_target/share" \
-    --enable-lto --enable-plugins \
+    --enable-lto \
     --disable-install-libiberty \
-    --disable-multilib --disable-nls \
+    --disable-multilib \
+    --disable-nls \
+    --disable-plugins \
     --disable-werror
   make
 }
 
 package() {
   make -C binutils-$_target DESTDIR="$pkgdir/" install
+  rm -rf $pkgdir/usr/share/{man,info}
 }
