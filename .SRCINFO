@@ -1,12 +1,11 @@
 pkgbase = reveng
 	pkgdesc = Arbitrary-precision CRC calculator and algorithm finder
-	pkgver = 2.1.0
+	pkgver = 3.0.2
 	pkgrel = 1
 	url = http://reveng.sourceforge.net/
 	arch = x86_64
 	license = GPL
-	source = https://sourceforge.net/projects/reveng/files/2.1.0/reveng-2.1.0.tar.xz/download
-	sha256sums = 0b9bdaa8593d657594f7f03654232ab3ed0d38c7e388de04c5d8e029ded12399
+	source = https://sourceforge.net/projects/reveng/files/3.0.2/reveng-3.0.2.tar.xz/download
+	sha256sums = 7851d2b18c56ed37f671231f593e0bdaf6328720826102c452cd2ddd55c80d08
 
 pkgname = reveng
-
