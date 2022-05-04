@@ -14,17 +14,13 @@
 
 pkgname=vmware-vmrc
 pkgver=12.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='VMWare Remote Console'
 arch=('x86_64')
 url='https://www.vmware.com/go/download-vmrc'
 license=('custom:vmware')
 depends=()
-
-if [ $_add_vmware_keymaps_dependency ]
-then
-    depends+=('vmware-keymaps')
-fi
+optdepends=('vmware-keymaps')
 
 source=(
     "VMware-Remote-Console-$pkgver-18113358.x86_64.bundle"
@@ -32,23 +28,20 @@ source=(
     'config'
 )
 
-sha256sums=(
-    '90eb1d411b15eec77f49cc499d20af8d9b7cdd409bd7b867a18d7740dcf2341b'
-    '67edc40e39686281f5101ced1a250648ae32e4cd5dffe4fd47bc3c7aed929d50'
-    'c5643ebad140391622c57ab88d6071b91d1ea9a8379c1aec573c845a00be30d4'
-)
+sha256sums=('90eb1d411b15eec77f49cc499d20af8d9b7cdd409bd7b867a18d7740dcf2341b'
+            '22282e8643d8a20e63773435161e5a5d01c6acce53aa81f27a4d20f111acd228'
+            'c5643ebad140391622c57ab88d6071b91d1ea9a8379c1aec573c845a00be30d4')
 
 build() {
     cd "$srcdir"
+    rm -fr ./bundle
     sh ../${source[0]} -x ./bundle
     cd "$srcdir/bundle"
 }
 
 package () {
-    if [ $_add_vmware_keymaps_dependency ]
-    then
-        rm -r $srcdir/bundle/vmware-vmrc-app/lib/xkeymap
-    fi
+    # Remove files provided by vmware-keymaps
+    rm -r $srcdir/bundle/vmware-vmrc-app/lib/xkeymap
 
     cd "$srcdir/bundle"
     mkdir -p "$pkgdir/usr/share" "$pkgdir/usr/bin" "$pkgdir/usr/lib/vmware" "$pkgdir/usr/lib/vmware/setup"
@@ -94,4 +87,6 @@ package () {
 
     ln -s '/usr/lib/vmware/lib/libvmplayer.so/libvmplayer.so' "$pkgdir/usr/lib/vmware/lib/libvmplayer.so/libvmrc.so"
     ln -s '/usr/lib/vmware/lib/libvmplayer.so' "$pkgdir/usr/lib/vmware/lib/libvmrc.so"
+
+    install -Dm644 "vmware-vmrc/doc/EULA" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
