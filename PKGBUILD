@@ -2,7 +2,7 @@
 
 pkgname=protonmail-import-export-app
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Integrate ProtonMail paid account with any program that supports IMAP and SMTP"
 arch=('x86_64')
 url="https://protonmail.com/import-export"
@@ -15,7 +15,7 @@ optdepends=(
 )
 conflicts=('protonmail-import-export-app-bin')
 options=('!emptydirs' '!strip')
-source=("git://github.com/ProtonMail/proton-bridge.git"
+source=("git+https://github.com/ProtonMail/proton-bridge.git"
         "protonmail-import-export-app.desktop")
 sha256sums=('SKIP'
             '5364e91cce218cae19921855b7ff6f2f2b4747ec85537fcbaa237339effafedf')
