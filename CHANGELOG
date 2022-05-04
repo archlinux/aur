@@ -1,0 +1,28 @@
+0.1.2 Clarified MIT License
+
+0.1.1 Add missing weakrefmethod dependency.
+
+0.1.0 Thread safety. Slot class.
+
+0.0.11 Support for Python 3.4
+
+0.0.10 Added a name property to Signal for logging purposes
+
+0.0.9 Bugfixes on Task
+
+0.0.8 Removed Queue and DynamicState, Added Task
+
+0.0.7 Made Queue's deque public.
+
+0.0.6 Added a simple queue system.
+
+0.0.5 Use a descriptor for DynamicState.fetch_attribute to avoid conflicts.
+
+0.0.4 Added signalslot.contrib.dynamic_state.
+
+0.0.3 Removed signal.connect_once(), simplified the code and improved
+      documentation.
+
+0.0.2 Added Signal.connect_once()
+
+0.0.1 First release.
