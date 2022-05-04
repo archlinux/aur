@@ -1,14 +1,14 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2019-12-10.
+# PKGBUILD last time manually edited: At least on 2022-05-04.
 
-_year=21
+_year=22
 
 _pkgname=idos-timetable-data-chaps-trains-common
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2021_7_2
-pkgrel=1
+pkgver=2022_5_4
+pkgrel=2
 pkgdesc="Common files needed for train timetable data for the timetable search engines by CHAPS."
 arch=(any)
 url="http://chaps.cz/eng/download/idos/zip#kotvatt"
