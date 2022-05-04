@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-curry'
-pkgver='1.001000'
+pkgver='2.000001'
 pkgrel='1'
 pkgdesc="Perl/CPAN Module curry: Create automatic curried method call closures for any class or object"
 arch=('any')
@@ -12,8 +12,8 @@ depends=('perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/curry'
 source=("http://search.cpan.org/CPAN/authors/id/M/MS/MSTROUT/curry-$pkgver.tar.gz")
-md5sums=('80feac47010dcc244bac64babfc2be52')
-sha512sums=('1d934ceb64a73784484ac73a529f9f6cdd3cbcaff7175515ddce75bbc7933f2f3105f3a4ef12e33eb82db5792c435e32aae12f64b3e334064db4305910e86d14')
+md5sums=('9f0287738a1352cc8bddfe4f7e73e54f')
+sha512sums=('ed86de9dd5af7a3413d0b601975b3efbbcb72fe8c02ca351afcc3af872a59cd78f5a392dea6e545211a97f9994d0655d3f1787973e9f0bf44aa01db97c9afd76')
 _distdir="curry-$pkgver"
 
 build() {
