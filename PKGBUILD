@@ -1,5 +1,11 @@
 # Maintainer: Ranieri Althoff <ranisalt+aur at gmail dot com>
 
+_imgui_ver=1.81
+_imgui_wrap_ver=1
+
+_spdlog_ver=1.8.5
+_spdlog_wrap_ver=1
+
 pkgbase=mangohud
 pkgname=('mangohud' 'lib32-mangohud' 'mangohud-common')
 pkgver=0.6.7
@@ -10,13 +16,24 @@ arch=('x86_64')
 makedepends=('meson' 'python-mako' 'glslang' 'libglvnd' 'lib32-libglvnd'
              'vulkan-headers' 'vulkan-icd-loader' 'lib32-vulkan-icd-loader'
              'libxnvctrl' 'dbus')
-source=("$pkgbase-$pkgver.tar.gz::https://github.com/flightlessmango/MangoHud/archive/v$pkgver.tar.gz")
-sha256sums=('ccfbbee87960889e2396f322c057b14d4143620a1cc66b11d573adccdae7a079')
+source=("$pkgbase-$pkgver.tar.gz::https://github.com/flightlessmango/MangoHud/archive/v$pkgver.tar.gz"
+        "imgui-$_imgui_ver.tar.gz::https://github.com/ocornut/imgui/archive/refs/tags/v$_imgui_ver.tar.gz"
+        "imgui-$_imgui_ver-$_imgui_wrap_ver-wrap.zip::https://wrapdb.mesonbuild.com/v1/projects/imgui/$_imgui_ver/$_imgui_wrap_ver/get_zip"
+        "spdlog-$_spdlog_ver.tar.gz::https://github.com/gabime/spdlog/archive/refs/tags/v$_spdlog_ver.tar.gz"
+        "spdlog-$_spdlog_ver-$_spdlog_wrap_ver-wrap.zip::https://wrapdb.mesonbuild.com/v1/projects/spdlog/$_spdlog_ver/$_spdlog_wrap_ver/get_zip")
+sha256sums=('ccfbbee87960889e2396f322c057b14d4143620a1cc66b11d573adccdae7a079'
+            'f7c619e03a06c0f25e8f47262dbc32d61fd033d2c91796812bf0f8c94fca78fb'
+            '6d00b442690b6a5c5d8f898311daafbce16d370cf64f53294c3b8c5c661e435f'
+            '944d0bd7c763ac721398dca2bb0f3b5ed16f67cef36810ede5061f35a543b4b8'
+            '3c38f275d5792b1286391102594329e98b17737924b344f98312ab09929b74be')
 
 _srcdir="MangoHud-$pkgver"
 
 build() {
-    arch-meson --wrap-mode default -Dappend_libdir_mangohud=false -Duse_system_vulkan=enabled "$_srcdir" build64
+    ln -s "$srcdir/imgui-$_imgui_ver" "$_srcdir/subprojects/imgui"
+    ln -s "$srcdir/spdlog-$_spdlog_ver" "$_srcdir/subprojects/spdlog"
+
+    arch-meson -Dappend_libdir_mangohud=false -Duse_system_vulkan=enabled "$_srcdir" build64
     ninja -C build64
 
     export CC="gcc -m32"
