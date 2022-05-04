@@ -1,8 +1,10 @@
 # Contributor: Roman Zimbelmann <romanz@lavabit.com>
 # Contributor: nfnty <arch at nfnty dot se>
-# Maintainer: aksr <aksr at t-com dot me>
+# Contributor: aksr <aksr at t-com dot me>
+# Mantainer: XavRan <leandro.espinozar@protonmail.com>
+
 pkgname=ranger-git
-pkgver=1.9.3.26.g4bb83b37
+pkgver=1.9.3.27
 pkgrel=1
 pkgdesc="A simple, vim-like file manager."
 arch=('any')
@@ -19,6 +21,7 @@ optdepends=('atool: for previews of archives'
             'poppler: for pdf previews'
             'python-bidi: for bidi algorithm support'
             'python-chardet: in case of encoding detection problems'
+	    'python-pillow: image preview with kitty'
             'python-ueberzug: w3mimgdisplay alternative'
             'sudo: to use the "run as root"-feature'
             'transmission-cli: for viewing bittorrent information'
