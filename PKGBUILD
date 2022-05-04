@@ -3,7 +3,7 @@
 pkgname=feishu
 pkgver=5.4.13
 pkgrel=1
-pkgdesc="飞书官网Linux客户端(视频会议分享屏幕可用)"
+pkgdesc="The official client of Bytedance Feishu"
 arch=('x86_64')
 url="https://www.feishu.cn"
 license=('unknown')
