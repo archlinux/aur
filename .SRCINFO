@@ -1,6 +1,6 @@
 pkgbase = gaku
 	pkgdesc = A experimental command line based spaced repetition software (SRS) Installs to /opt
-	pkgver = 1.2.0
+	pkgver = 1.2.1
 	pkgrel = 1
 	url = https://github.com/jsageryd/gaku
 	arch = i686
@@ -9,8 +9,7 @@ pkgbase = gaku
 	depends = ruby>=1.9
 	provides = gaku
 	conflicts = gaku
-	source = https://github.com/jsageryd/gaku/archive/v1.2.0.tar.gz
-	sha256sums = edd6f436f949a97207dbe5204d853ec14be78a9eeb64b48b574a95ce76c9779c
+	source = https://github.com/jsageryd/gaku/archive/v1.2.1.tar.gz
+	sha256sums = a94e45293ad9f923904f7f04c7056f80bed89135c65d2a033cb06eabaf8c1978
 
 pkgname = gaku
-

@@ -2,7 +2,7 @@
 # AUR Maintainer: Raansu <Gero3977@gmail.com>
 
 pkgname=gaku
-pkgver=1.2.0
+pkgver=1.2.1
 pkgrel=1
 pkgdesc="A experimental command line based spaced repetition software (SRS) Installs to /opt"
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ depends=('ruby>=1.9')
 provides=('gaku')
 conflicts=('gaku')
 source=("https://github.com/jsageryd/gaku/archive/v${pkgver}.tar.gz")
-sha256sums=('edd6f436f949a97207dbe5204d853ec14be78a9eeb64b48b574a95ce76c9779c')
+sha256sums=('a94e45293ad9f923904f7f04c7056f80bed89135c65d2a033cb06eabaf8c1978')
 
 package() {
 	mkdir -p "$pkgdir/opt" "$pkgdir/usr/bin"
