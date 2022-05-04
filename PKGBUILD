@@ -2,7 +2,7 @@
 
 pkgbase=mangohud
 pkgname=('mangohud' 'lib32-mangohud' 'mangohud-common')
-pkgver=0.6.6
+pkgver=0.6.7
 pkgrel=1
 url='https://github.com/flightlessmango/MangoHud'
 license=('MIT')
@@ -11,7 +11,7 @@ makedepends=('meson' 'python-mako' 'glslang' 'libglvnd' 'lib32-libglvnd'
              'vulkan-headers' 'vulkan-icd-loader' 'lib32-vulkan-icd-loader'
              'libxnvctrl' 'dbus')
 source=("$pkgbase-$pkgver.tar.gz::https://github.com/flightlessmango/MangoHud/archive/v$pkgver.tar.gz")
-sha256sums=('8221aa46c6a86e9b249f26b9ce9dd6208e95cb0f7ab42ab219dfba3c6bcbe3b5')
+sha256sums=('ccfbbee87960889e2396f322c057b14d4143620a1cc66b11d573adccdae7a079')
 
 _srcdir="MangoHud-$pkgver"
 
@@ -47,6 +47,7 @@ package_lib32-mangohud() {
     DESTDIR="$pkgdir" ninja -C build32 install
     rm -r "$pkgdir/usr/bin" "$pkgdir/usr/share/doc" "$pkgdir/usr/share/man"
     mv "$pkgdir/usr/share/vulkan/implicit_layer.d/MangoHud.json" "$pkgdir/usr/share/vulkan/implicit_layer.d/MangoHud.x86.json"
+    mv "$pkgdir/usr/share/vulkan/implicit_layer.d/libMangoApp.json" "$pkgdir/usr/share/vulkan/implicit_layer.d/libMangoApp.x86.json"
 
     install -Dm644 "$_srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
