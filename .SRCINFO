@@ -1,0 +1,16 @@
+pkgbase = gosniff
+	pkgdesc = A fancy-schmancy tcpdump-esque TUI, programmed in Go
+	pkgver = r38.17ac522
+	pkgrel = 1
+	url = https://github.com/c-grimshaw/gosniff
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = go
+	depends = glibc
+	depends = libpcap
+	options = !lto
+	source = gosniff::git+https://github.com/c-grimshaw/gosniff#commit=17ac522a8bb0c0ea3545e06f864f8db476fa5f8e
+	md5sums = SKIP
+
+pkgname = gosniff
