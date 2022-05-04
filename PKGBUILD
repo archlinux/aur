@@ -2,15 +2,15 @@
 
 pkgname=ttf-roboto-flex-git
 _pkgname=roboto-flex
-pkgver=3.100.r0.gb329879500
-pkgrel=2
+pkgver=3.100.r3.g21a94eabbe
+pkgrel=1
 pkgdesc="Upgrades Roboto to become a more powerful typeface system"
-makedepends=('git' 'python')
+makedepends=('git')
 arch=('any')
 conflicts=('ttf-roboto-flex')
 url="https://github.com/googlefonts/roboto-flex"
 license=('custom:OFL')
-source=("git+$url.git#commit=b3298795004723896df6568a8acba8efca8520e7")
+source=("git+$url.git")
 sha256sums=(SKIP)
 
 pkgver() {
@@ -18,21 +18,9 @@ pkgver() {
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
-build() {
-  cd $_pkgname
-
-  python -m venv venv
-  . venv/bin/activate
-  pip install -r requirements.txt
-  gftools builder sources/config.yaml
-  python scripts/set_bit6.py
-}
-
 package() {
   cd $_pkgname
 
-  echo $_pkgname
-  echo $pkgdir
-  install -Dm644 fonts/variable/*.ttf "$pkgdir"/usr/share/fonts/TTF/RobotoFlex-VF.ttf
+  install -Dm644 fonts/*.ttf "$pkgdir"/usr/share/fonts/TTF/RobotoFlex-VF.ttf
   install -Dt "$pkgdir"/usr/share/licenses/$pkgname -m644 OFL.txt
 }
