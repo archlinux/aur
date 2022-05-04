@@ -1,30 +1,30 @@
 pkgbase = freetype2-ultimate5
 	pkgdesc = FreeType patched for effect similar to Infinality's ultimate5 preset.
-	pkgver = 2.11.1
+	pkgver = 2.12.1
 	pkgrel = 1
 	url = https://www.freetype.org/
 	install = freetype2-ultimate5.install
 	arch = x86_64
 	license = GPL
 	makedepends = libx11
-	depends = zlib
-	depends = bzip2
-	depends = libpng
-	depends = harfbuzz
-	provides = freetype2=2.11.1
+	makedepends = qt5-base
+	makedepends = meson
+	makedepends = librsvg
+	provides = freetype2=2.12.1
 	provides = libfreetype.so
 	conflicts = freetype2
+	options = debug
 	source = like-ultimate5.patch
-	source = upstream_01.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/e6ceca9800b40ad065f319b4944745bbb7fc176a/trunk/0001-Enable-table-validation-modules.patch
-	source = upstream_02.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/e6ceca9800b40ad065f319b4944745bbb7fc176a/trunk/0002-Enable-subpixel-rendering.patch
-	source = upstream_03.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/e6ceca9800b40ad065f319b4944745bbb7fc176a/trunk/0003-Enable-infinality-subpixel-hinting.patch
-	source = upstream_04.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/e6ceca9800b40ad065f319b4944745bbb7fc176a/trunk/0004-Enable-long-PCF-family-names.patch
-	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-2.11.1.tar.xz
+	source = upstream_01.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/943d7dcb1d33b6d05dfa4d10c1b7286c0d1753e0/trunk/0001-Enable-table-validation-modules.patch
+	source = upstream_02.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/943d7dcb1d33b6d05dfa4d10c1b7286c0d1753e0/trunk/0002-Enable-subpixel-rendering.patch
+	source = upstream_03.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/943d7dcb1d33b6d05dfa4d10c1b7286c0d1753e0/trunk/0003-Enable-infinality-subpixel-hinting.patch
+	source = upstream_04.patch::https://raw.githubusercontent.com/archlinux/svntogit-packages/943d7dcb1d33b6d05dfa4d10c1b7286c0d1753e0/trunk/0004-Enable-long-PCF-family-names.patch
+	source = https://download-mirror.savannah.gnu.org/releases/freetype/freetype-2.12.1.tar.xz
 	sha256sums = 9554d3a23619a46cf48e512e5b6336afd0802f42fdaf9b2e47ba0c718143f1dd
-	sha256sums = e606bdba5c0ee698902886140e4643551ffc8327b1b7d2b0c9129d1f93b1f36c
-	sha256sums = 17ab1609cdbcaba3c5975f5cf1ffd078e067d560f906d5507390d41997e6c468
-	sha256sums = 561d2f2503d180b796f868470612610f6d7fcb34efa0620ecab38fd39002e27a
-	sha256sums = 9c068a984e7b9a27ff9e709839d522b66815ac4e8c7a5bd4ea0224335f7f2ef6
-	sha256sums = 3333ae7cfda88429c97a7ae63b7d01ab398076c3b67182e960e5684050f2c5c8
+	sha256sums = 12c869eeba212c74d07d3d7815848b047ecb5282d5463dffb3bb6d219315d4da
+	sha256sums = 2497dcb3650271db9bb7ad4f3379b5b3c6a19f5ca5388dd9ba7d42b5c15c8c4f
+	sha256sums = caa0bc7d3dfa3b4c6b9beecda6141405dafe540f99a655dc83d1704fa232ac20
+	sha256sums = 8bf978cd1abd73f54c53f7d214c368b1fd8921cd9800d2cc84427c662ffbbdcb
+	sha256sums = 4766f20157cc4cf0cd292f80bf917f92d1c439b243ac3018debf6b9140c41a7f
 
 pkgname = freetype2-ultimate5
