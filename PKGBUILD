@@ -1,5 +1,5 @@
 # Maintainer: William Huang <wp@nerde.pw>
-# Maintainer: Andreas Radke <andyrtr@archlinux.org>
+# Contributor: Andreas Radke <andyrtr@archlinux.org>
 
 _pkgname=claws-mail
 pkgname=$_pkgname-title-superset
