@@ -17,19 +17,19 @@
 #
 
 pkgname='perl-http-oai'
-pkgver='4.10'
+pkgver='4.11'
 pkgrel='1'
-pkgdesc="Perl/CPAN Module HTTP:.OAI: API for the OAI-PMH"
+pkgdesc="Perl/CPAN Module HTTP::OAI: API for the OAI-PMH"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-http-message' 'perl-module-build>=0.4229' 'perl-uri' 'perl-xml-libxml>=1.60' 'perl-xml-namespacesupport>=0' 'perl-xml-sax' 'perl-xml-sax-base>=1.04' 'perl-libwww')
+depends=('perl-http-message' 'perl-module-build>=0.4229' 'perl-uri' 'perl-xml-libxml>=1.60' 'perl-xml-namespacesupport' 'perl-xml-sax' 'perl-xml-sax-base>=1.04' 'perl-libwww')
 makedepends=()
 checkdepends=('perl-test-deep>=0.112' 'perl-test-lwp-useragent' 'perl-test-pod')
 url='https://metacpan.org/release/HTTP-OAI'
 source=("http://search.cpan.org/CPAN/authors/id/H/HO/HOCHSTEN/HTTP-OAI-$pkgver.tar.gz")
-md5sums=('ab344a636963c785e2836fb1ef398fce')
-sha512sums=('e81bee1e1f143432dd13d52108212c41df74e8ab85a65bab1e29df897b77514ce8c7074711083e03c92fb4bb386b2ba10b9fd018300860f852e8fee396aa1e72')
+md5sums=('a2b44e852a091b00e0f9ad577539284e')
+sha512sums=('eb78b9c18e60b36e7346bc1463e21d5a0959b1660afe20dde2260ce8002dc176f197d338130371399b46e098ebcf52be4c8ebf14d3dc128f675a0dce4693b838')
 _distdir="HTTP-OAI-$pkgver"
 
 build() {
