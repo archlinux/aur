@@ -1,0 +1,19 @@
+pkgbase = mpfr-git
+	pkgdesc = C library for multiple-precision floating-point computations with correct rounding
+	pkgver = r13607.gec77070d4
+	pkgrel = 1
+	url = https://www.mpfr.org/
+	arch = i686
+	arch = x86_64
+	license = GPL3
+	license = LGPL3
+	makedepends = git
+	depends = glibc
+	depends = gmp
+	provides = mpfr
+	conflicts = mpfr
+	options = staticlibs
+	source = git+https://gitlab.inria.fr/mpfr/mpfr.git
+	sha256sums = SKIP
+
+pkgname = mpfr-git
