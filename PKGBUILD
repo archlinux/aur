@@ -1,3 +1,5 @@
+# Maintainer: AnnikaV9 <carrot.moncher@gmail.com>
+
 pkgname=kbuilder
 pkgver=0.1.0
 pkgrel=1
