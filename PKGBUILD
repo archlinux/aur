@@ -1,11 +1,11 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2021-07-04.
+# PKGBUILD last time manually edited: At least on 20212-05-04.
 
 _pkgname=idos-timetable-maps-chaps-all
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2021_7_2
+pkgver=2022_4_30
 pkgrel=1
 pkgdesc="Map data for the timetable search engines by CHAPS: European railway, Czech/Slovak trains + bus, Czech public transport. Note that some timetables need the purchased version of IDOS to run."
 arch=(any)
