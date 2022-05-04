@@ -7,7 +7,7 @@ url="https://github.com/AnnikaV9/$pkgname"
 license=("Unlicense")
 provides=("$pkgname")
 depends=("run-parts" "sed" "sudo" "curl" "coreutils")
-source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkname-$pkgver.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 b2sums=('c1939e02a909cffede32d4c90040eeaa0cb0ef0dfd75ea352e20be6b723a85eed226ce126eee74af5c17a13bf50730695e1c87cba5e029e6c75e8ca635550ddb')
 
 package() {
