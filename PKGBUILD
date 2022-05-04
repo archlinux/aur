@@ -3,7 +3,7 @@
 pkgname=inform7-git
 _gitpkg=inform
 pkgver=r1393.16ed0ae71
-pkgrel=3
+pkgrel=4
 pkgdesc="A design system for interactive fiction based on natural language (git version)"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'pentium4' 'x86_64')
 url="https://ganelson.github.io/inform"
@@ -22,7 +22,7 @@ md5sums=('SKIP'
 	 'SKIP'
 	 'SKIP'
 	 '97f4a478c9055ef8adc0717b6c23b1af'
-	 'cf9ed2c63688be27bc2ad132d9c9d82b')
+	 'ddac46959271ebb9fbd31341b7ebd1af')
 
 pkgver() {
   cd "${_gitpkg}"
