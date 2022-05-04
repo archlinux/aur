@@ -8,7 +8,7 @@
 
 pkgname=iproute2-selinux
 pkgver=5.17.0
-pkgrel=2
+pkgrel=3
 pkgdesc='IP Routing Utilities with SELinux support'
 arch=('x86_64' 'aarch64')
 license=('GPL2')
@@ -20,7 +20,10 @@ optdepends=('db: userspace arp daemon'
             'linux-atm: ATM support')
 provides=('iproute' "${pkgname/-selinux}=${pkgver}-${pkgrel}")
 conflicts=("${pkgname/-selinux}")
-backup=('etc/iproute2/ematch_map'
+backup=('etc/iproute2/bpf_pinning'
+        'etc/iproute2/ematch_map'
+        'etc/iproute2/group'
+        'etc/iproute2/nl_protos'
         'etc/iproute2/rt_dsfield'
         'etc/iproute2/rt_protos'
         'etc/iproute2/rt_realms'
