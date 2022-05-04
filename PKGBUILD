@@ -4,7 +4,7 @@
 
 pkgname=dosbox-binutils
 pkgver=2.35
-pkgrel=4
+pkgrel=5
 pkgdesc="binutils for the djgpp dosbox cross-compiler"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/binutils"
@@ -38,12 +38,10 @@ build() {
     --datadir="/usr/$_target/share" \
     --enable-lto \
     --disable-install-libiberty \
-    --disable-ld \
     --disable-multilib \
     --disable-nls \
     --disable-plugins \
-    --disable-werror \
-    --enable-gold
+    --disable-werror
   make
 }
 
