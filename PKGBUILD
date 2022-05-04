@@ -10,13 +10,18 @@ license=('MIT')
 depends=('python' 'ghidra')
 makedepends=()
 source=("$pkgname.zip::$url/releases/download/latest/ghidra2dwarf.zip")
-sha512sums=('71c4c3d47dde92b66d4990f59ec975d32368e6eb673a97c1827645858d6f7c12045d72b26871b31db9efe8277f07ceab227596d028d75e8a8ab6e155dc5d8af3')
+sha512sums=('23e43ce0bbc0ba6667f6647a896b75c951f9031fd050a0512f6b0c498f4ade7295d41377a7559b63d5a9d47a30d4e123b794717b093f42bfb5e6982c3a41895f')
 
 package() {
     cd "$srcdir/$pkgname"
-    [ -z $GHIDRA_HOME ] && GHIDRA_HOME="/opt/ghidra/Ghidra/Features/FileFormats/ghidra_scripts"
+    [ -z $GHIDRA_HOME ] && GHIDRA_HOME='/opt/ghidra/'
+    subdir="Ghidra/Extensions/$pkgname/"
 
-    install -D -m644 "libdwarf.jar" "$pkgdir/$GHIDRA_HOME/libdwarf.jar"
-    install -D -m644 "elf.py" "$pkgdir/$GHIDRA_HOME/elf.py"
-    install -D -m644 "ghidra2dwarf.py" "$pkgdir/$GHIDRA_HOME/ghidra2dwarf.py"
+    install_dir="$GHIDRA_HOME$subdir"
+
+    install -D -m644 "libdwarf.jar" "$pkgdir/$install_dir/libdwarf.jar"
+    install -D -m644 "elf.py" "$pkgdir/$install_dir/elf.py"
+    install -D -m644 "ghidra2dwarf.py" "$pkgdir/$install_dir/ghidra2dwarf.py"
+
+    msg "Remember to select the directory ($install_dir) in 'script manager' -> 'script directories'"
 }
