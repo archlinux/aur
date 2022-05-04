@@ -8,7 +8,7 @@ license=("Unlicense")
 provides=("$pkgname")
 depends=("run-parts" "sed" "sudo" "curl" "coreutils")
 source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkname-$pkgver.tar.gz")
-b2sums=('3e53b6a692732b891fb5215b693d9043e5b803c18724b8c8133431df486dca9d6659d343d69a7d1a6cf7224194089692fdd4ddccf6980118551ec26f0f9f2abf')
+b2sums=('c1939e02a909cffede32d4c90040eeaa0cb0ef0dfd75ea352e20be6b723a85eed226ce126eee74af5c17a13bf50730695e1c87cba5e029e6c75e8ca635550ddb')
 
 package() {
   install -Dm755 "$srcdir/$pkgname-$pkgver/kbuilder" "$pkgdir/usr/bin/kbuilder"
