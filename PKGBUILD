@@ -3,7 +3,7 @@
 
 _name=globus-sdk
 pkgname=python-globus-sdk
-pkgver=3.7.0
+pkgver=3.8.0
 pkgrel=1
 pkgdesc="This SDK provides a convenient Pythonic interface to Globus REST APIs, including the Transfer API and the Globus Auth API."
 arch=('any')
@@ -11,7 +11,7 @@ url="https://github.com/globus/globus-sdk-python"
 license=('Apache')
 depends=('python-cryptography' 'python-six' 'python-requests' 'python-pyjwt')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha256sums=('81dbcb7bb7072bf9a5f730becc65e4a0f15f0fa0e2022faf2d943a99b5ce1fb5')
+sha256sums=('492611636c190806409198cdadc9960227fa712281dce95ef3ec0d7e8f9823a9')
 
 prepare() {
   cd "${srcdir}/${_name}-${pkgver}"
