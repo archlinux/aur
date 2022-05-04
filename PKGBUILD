@@ -1,5 +1,5 @@
 # Maintainer: William Huang <wp /at/ nerde /period/ pw>
-# Maintener: Anatol Pomozov
+# Contributor: Anatol Pomozov
 # Contributor: Llewelyn Trahaearn <woefulderelict [at] gmail [dot] com>
 # Contributor: Daniel Micay <danielmicay [at] gmail [dot] com>
 # Contributor: MThinkCpp <mtc [dot] maintainer [at] outlook [dot] com>
