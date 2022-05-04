@@ -1,0 +1,14 @@
+pkgbase = proxyswarm
+	pkgdesc = Lightweight proxy that allows redirect HTTP(S) traffic through a proxy.
+	pkgver = 0.1.5
+	pkgrel = 1
+	url = https://github.com/jorgeajimenezl/proxyswarm
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = cargo
+	provides = proxyswarm
+	source = proxyswarm-0.1.5::git+https://github.com/jorgeajimenezl/proxyswarm.git
+	sha1sums = SKIP
+
+pkgname = proxyswarm
