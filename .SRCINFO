@@ -1,6 +1,6 @@
 pkgbase = python-hyperspy-gui-traitsui
 	pkgdesc = traitsui (desktop) GUI elements for HyperSpy
-	pkgver = 1.5.0
+	pkgver = 1.5.1
 	pkgrel = 1
 	url = https://github.com/hyperspy/hyperspy_gui_traitsui
 	arch = any
@@ -12,7 +12,7 @@ pkgbase = python-hyperspy-gui-traitsui
 	provides = hyperspy-gui-traitsui
 	conflicts = hyperspy-gui-traitsui
 	replaces = hyperspy-gui-traitsui
-	source = https://github.com/hyperspy/hyperspy_gui_traitsui/archive/v1.5.0.tar.gz
-	md5sums = 3c5ffc1ecabdcbca99cbed4a14daedb1
+	source = https://github.com/hyperspy/hyperspy_gui_traitsui/archive/v1.5.1.tar.gz
+	md5sums = ba7b933343252d0cbdd6d02edf71dd25
 
 pkgname = python-hyperspy-gui-traitsui
