@@ -4,7 +4,7 @@ pkgorg='humanoid-path-planner'
 _pkgname='hpp-fcl'
 pkgname=("$_pkgname" "$_pkgname-docs")
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="An extension of the Flexible Collision Library"
 arch=('i686' 'x86_64')
 url="https://github.com/$pkgorg/$pkgname"
@@ -21,7 +21,7 @@ build() {
     cmake -B "build-$pkgver" -S "$pkgbase-$pkgver" \
         -DCMAKE_CXX_STANDARD=14 \
         -DHPP_FCL_HAS_QHULL=ON \
-        -DCMAKE_BUILD_TYPE=None \
+        -DCMAKE_BUILD_TYPE=Release \
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -Wno-dev
