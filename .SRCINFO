@@ -1,0 +1,14 @@
+pkgbase = tpmtool
+	pkgdesc = Program that allows handling cryptographic data from the TPM chip
+	pkgver = 3.7.4
+	pkgrel = 1
+	url = https://www.gnutls.org/
+	arch = x86_64
+	license = GPL3
+	license = LGPL2.1
+	depends = gnutls
+	depends = trousers
+	source = https://www.gnupg.org/ftp/gcrypt/gnutls/v3.7/gnutls-3.7.4.tar.xz
+	sha256sums = e6adbebcfbc95867de01060d93c789938cf89cc1d1f6ef9ef661890f6217451f
+
+pkgname = tpmtool
