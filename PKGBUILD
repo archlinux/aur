@@ -9,7 +9,7 @@ pkgrel=1
 _clang_major=13
 _clang_minor=0
 _clang_ver="${_clang_major}.${_clang_minor}"
-pkgdesc="A tool for use with clang to analyze #includes in C and C++ source files"
+pkgdesc="A tool for use with clang to analyze #includes in C and C++ source files - clang_13 git branch"
 url="http://include-what-you-use.org"
 license=('LLVM Release License')
 source=("$_pkgbase::git+https://github.com/include-what-you-use/include-what-you-use#branch=clang_13")

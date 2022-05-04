@@ -1,17 +1,16 @@
 pkgbase = include-what-you-use-clang13-git
-	pkgdesc = A tool for use with clang to analyze #includes in C and C++ source files
+	pkgdesc = A tool for use with clang to analyze #includes in C and C++ source files - clang_13 git branch
 	pkgver = r1091.fbd921d
 	pkgrel = 1
 	url = http://include-what-you-use.org
 	install = iwyu.install
 	arch = x86_64
 	license = LLVM Release License
-	makedepends = clang>=13.0
-	makedepends = clang<14.0
 	makedepends = cmake
 	makedepends = llvm>=13.0
 	makedepends = llvm<14.0
 	makedepends = ninja
+	makedepends = git
 	depends = clang>=13.0
 	depends = clang<14.0
 	depends = python3
