@@ -7,7 +7,7 @@ pkgver=11.3.0
 _target="i586-pc-msdosdjgpp"
 _islver=0.24
 _djver=2.05
-pkgrel=2
+pkgrel=3
 pkgdesc="djgpp cross-compiler for the dosbox environment"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
@@ -17,7 +17,7 @@ depends=('zlib' 'libmpc' 'dosbox-binutils')
 makedepends=('unzip' 'tar' 'xz')
 optdepends=('dosbox-djcrx: headers and utilities')
 options=('!strip' 'staticlibs' '!emptydirs')
-source=("https://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/gcc-$pkgver.tar.xz"
+source=("https://ftp.gnu.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
         "ftp://www.delorie.com/pub/djgpp/current/v2/djcrx${_djver//./}.zip"
         "https://libisl.sourceforge.io/isl-${_islver}.tar.xz"
         "gcc-djgpp.diff"
@@ -37,10 +37,7 @@ prepare() {
   cd $srcdir/gcc-$pkgver
 
   # link isl for in-tree build
-  ln -fs "../isl-${_islver}" isl
-
-  # hack! - some configure tests for header files break with FORTIFY_SOURCE
-  sed -i "/ac_cpp=/ s/\$CPPFLAGS/\$CPPFLAGS -O2/" {libiberty,gcc}/configure
+  ln -fs ../isl-${_islver} isl
 
   # build the lto plugin
   patch -Np0 < ../lto.patch
@@ -50,12 +47,14 @@ prepare() {
 
   # extract bootstrap djcrx
   mkdir -p ../gcc-build-$_target/lib/gcc/$_target/$pkgver
-  cd ../gcc-build-${_target}/lib/gcc/$_target/$pkgver
+  cd ../gcc-build-$_target/lib/gcc/$_target/$pkgver
   unzip -qoW "$srcdir/djcrx${_djver//./}.zip" 'include/**' 'lib/*.[oa]'
   mv lib/* .
 }
 
 build() {
+  export CPPFLAGS="$CPPFLAGS -Ofast"
+
   cd gcc-build-$_target
   ../gcc-$pkgver/configure \
     --prefix=/usr \
@@ -68,15 +67,17 @@ build() {
     --with-system-zlib \
     --disable-decimal-float \
     --disable-gcov \
-    --disable-ld \
-    --disable-nls \
     --disable-install-libiberty \
+    --disable-ld \
     --disable-libssp \
     --disable-libquadmath \
     --disable-libquadmath-support \
     --disable-libgomp \
     --disable-libsanitizer \
     --disable-multilib \
+    --disable-nls \
+    --disable-plugin \
+    --enable-__cxa_atexit \
     --enable-gold \
     --enable-languages=c,c++ \
     --enable-lto \
@@ -91,31 +92,30 @@ build() {
     --enable-checking=release
   make all-gcc
 
-  export ac_cv_func_dlopen=no
-  export ac_cv_func_shl_load=no
-  export ac_cv_lib_dld_shl_load=no
-  export ac_cv_lib_dl_dlopen=no
-  export ac_cv_lib_svld_dlopen=no
-  export ac_cv_lib_dld_dld_link=no
-
   cd $srcdir/gcc-build-$_target
+  ac_cv_func_dlopen=no \
+  ac_cv_func_shl_load=no \
+  ac_cv_lib_dld_shl_load=no \
+  ac_cv_lib_dl_dlopen=no \
+  ac_cv_lib_svld_dlopen=no \
+  ac_cv_lib_dld_dld_link=no \
   make all
 }
 
 package_dosbox-gcc() {
   echo ...installing
-  make -C gcc-build-$_target DESTDIR="$pkgdir/" install
+  make -C gcc-build-$_target DESTDIR=$pkgdir/ install
 
   # strip manually, djgpp libs spew errors otherwise
-  strip -s "$pkgdir"/usr/bin/$_target-*
-  strip -s "$pkgdir"/usr/lib/gcc/$_target/$pkgver/{cc1*,collect2,lto*}
+  strip -s $pkgdir/usr/bin/$_target-* $pkgdir/usr/lib/gcc/$_target/$pkgver/{cc1*,collect2,lto*}
 
   # for compatibility
-  ln -sf $_target-gcc "$pkgdir"/usr/bin/$_target-cc
+  ln -sf $_target-gcc $pkgdir/usr/bin/$_target-cc
 
   # remove unnecessary files
-  rm -rf "$pkgdir"/usr/$_target/share/{man,info,locale}
-  rm -rf "$pkgdir"/usr/share/{man,info,locale}
-  rm -rf "$pkgdir"/usr/lib/gcc/$_target/$pkgver/include-fixed
-  rm -f "$pkgdir"/usr/lib/libcc1.*
+  rm -rf $pkgdir/usr/$_target/share/{man,info,locale}
+  rm -rf $pkgdir/usr/share/{man,info,locale}
+  rm -rf $pkgdir/usr/share/gcc-$pkgver/python
+  rm -rf $pkgdir/usr/lib/gcc/$_target/$pkgver/include-fixed
+  rm -f $pkgdir/usr/lib/libcc1.*
 }
