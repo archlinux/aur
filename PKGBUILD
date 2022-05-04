@@ -2,7 +2,7 @@
 
 _basename=tblock
 pkgname=${_basename}-openrc
-pkgver=2.0.0
+pkgver=2.1.0
 pkgrel=1
 provides=("$_basename")
 pkgdesc="An anti-capitalist ad-blocker that uses the hosts file"
@@ -21,13 +21,12 @@ depends=(
         "python-urllib3"
         "python-requests"
         "python-colorama"
-        "python-defusedxml"
 )
 source=(
         "${pkgname}-${pkgver}.tar.gz::https://codeberg.org/tblock/tblock/archive/${pkgver}.tar.gz"
 )
 sha512sums=(
-        "4679aa834f760f6c938004d3c2738ba91fa4e4293cee1223de960c81bcc1cd1b80720ecc82f82ac5a0964fc34236deba22bf1a46c4b619294a445b25ba2a74ad"
+        "b47352f822e671e18405c4c0834c905be7d48d81dc9326d0f3b37e164c2c749bb3742bebea1ba979bf2fd07830cf20cee4291675fcbf15db4def0c14cc0a77f5"
 )
 backup=("etc/tblock.conf")
 
