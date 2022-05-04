@@ -4,8 +4,8 @@ BUILTINCOMPS=../dist/usr/bin
 INTERNAL=../dist/usr/share/inform7
 
 INBLORBNAME=inblorb
-INFORM6NAME=inform6
-INFORM7NAME=inform7
+INFORM6NAME=i6
+INFORM7NAME=i7
 INTESTNAME=intest
 
 BUILTINHTML=$(INTERNAL)/Documentation/
