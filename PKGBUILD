@@ -9,7 +9,10 @@ arch=('any')
 url="https://facelessuser.github.io/pymdown-extensions"
 license=('MIT')
 depends=('python-markdown')
-makedepends=('python-build' 'python-editables' 'python-hatchling' 'python-installer' 'python-packaging>=21.3' 'python-wheel')
+# FS#74636 - [python-hatchling] Missing dependency on python-editables
+# https://bugs.archlinux.org/task/74636
+makedepends=('python-build' 'python-editables' 'python-hatchling' 'python-installer'
+             'python-packaging>=21.3' 'python-wheel')
 optdepends=('python-pygments>=2.12: syntax highlighting')
 checkdepends=('python-pyaml' 'python-pygments>=2.12' 'python-pytest-cov')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_name-$pkgver.tar.gz")
