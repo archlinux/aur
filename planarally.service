@@ -1,0 +1,10 @@
+[Unit]
+Description=Planar Ally Server
+After=network.target
+
+[Service]
+User=planarally
+ExecStart=planarally
+
+[Install]
+WantedBy=multi-user.target

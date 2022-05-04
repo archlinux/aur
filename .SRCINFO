@@ -1,6 +1,6 @@
 pkgbase = planarally-bin
 	pkgdesc = A companion tool for when you travel into the planes.
-	pkgver = 0.29.0
+	pkgver = 2022.1.0
 	pkgrel = 1
 	url = https://www.planarally.io
 	arch = x86_64
@@ -16,7 +16,11 @@ pkgbase = planarally-bin
 	depends = python-socketio
 	depends = python-peewee
 	depends = python-typing_extensions
-	source = https://github.com/Kruptein/PlanarAlly/releases/download/0.29.0/planarally-bin-0.29.0.tar.gz
-	sha256sums = 7fd765984f77b8f82873e66517d4904835ac2d9b1204a1a5375f45839deae361
+	source = https://github.com/Kruptein/PlanarAlly/releases/download/2022.1.0/planarally-bin-2022.1.0.tar.gz
+	source = planarally.service
+	source = planarally.sysusers
+	sha256sums = c29dcf6fdfec2e30ce367de99610886c32c0cfb8854c76f3cda195db8fe89af6
+	sha256sums = f3b1af046393e61b4fd56f80a7e6cc7f468681df798da1539da8db1560d7eb90
+	sha256sums = 105743e89c8cdc794af1e43701c64c9c097215d88c336d246ec3cbc364a79887
 
 pkgname = planarally-bin
