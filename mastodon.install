@@ -1,17 +1,11 @@
 post_install() {
-  cd /var/lib/mastodon
-
-  echo "Setting ownership of mastodon files"
-  chown mastodon:mastodon -R .
-  echo "Precompiling assets"
-  sudo -u mastodon RAILS_ENV=production bundle exec rails assets:precompile
-
   echo "To setup Mastodon, enable and start PostgreSQL and Redis:
 # systemctl enable --now postgresql redis
 Create the Mastodon PostgreSQL user and grant it the ability to create databases with:
 # sudo -u postgres createuser -d mastodon
 Then, run:
 # cd /var/lib/mastodon
+# sudo chown mastodon:mastodon -R .
 # sudo -u mastodon RAILS_ENV=production bundle exec rails mastodon:setup
 Finally, enable and start all the required services:
 # systemctl enable --now mastodon.target"
