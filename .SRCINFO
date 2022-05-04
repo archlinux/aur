@@ -1,0 +1,14 @@
+pkgbase = python-ddns
+	pkgdesc = Automatically update DNS records to dynamic local IP.
+	pkgver = 2.10.3
+	pkgrel = 1
+	url = https://pypi.org/project/ddns
+	install = python-ddns.install
+	arch = any
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	source = https://files.pythonhosted.org/packages/py2.py3/d/ddns/ddns-2.10.3-py2.py3-none-any.whl
+	sha256sums = ef84efaf305d656400eca8a924754d9d31b28378f96b2704b1f3c162de609d5a
+
+pkgname = python-ddns

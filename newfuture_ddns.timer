@@ -1,0 +1,11 @@
+[Unit]
+Description=NewFuture DDNS Timer
+Wants=network-online.target
+After=network-online.target
+
+[Timer]
+OnStartupSec=60
+OnUnitActiveSec=300
+
+[Install]
+WantedBy=timers.target
