@@ -18,7 +18,7 @@ depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse
 makedepends=(unzip zip diffutils yasm mesa imake inetutils
              rust xorg-server-xwayland xorg-server-xvfb ccache
              autoconf2.13 clang llvm jack nodejs cbindgen nasm
-             python-setuptools python-psutil python-zstandard git binutils
+             python-setuptools python-zstandard git binutils
              lld dump_syms wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi)
 optdepends=('firejail-git: Sandboxing the browser using the included profiles'
             'profile-sync-daemon: Load the browser profile into RAM'
@@ -86,8 +86,8 @@ prepare() {
   patch -Np1 -i ${_patches_dir}/gentoo/0028-bmo-1670333-OpenH264-Fix-decoding-if-it-starts-on-no.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0029-bmo-1663844-OpenH264-Allow-using-OpenH264-GMP-decode.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0030-bgo-816975-fix-build-on-x86.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0031-bgo-831903-pip-dont-fail-with-optional-deps.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0032-skip-pip-check.patch
+  #patch -Np1 -i ${_patches_dir}/gentoo/0031-bgo-831903-pip-dont-fail-with-optional-deps.patch
+  #patch -Np1 -i ${_patches_dir}/gentoo/0032-skip-pip-check.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0033-bmo-1559213-fix-system-av1-libs.patch
 
   # Use more system libs
@@ -237,7 +237,7 @@ build() {
 
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
-  export MACH_USE_SYSTEM_PYTHON=1
+  export BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
 
   # LTO needs more open files
   ulimit -n 4096
