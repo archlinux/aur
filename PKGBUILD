@@ -23,5 +23,5 @@ package() {
     install -D -m644 "elf.py" "$pkgdir/$install_dir/elf.py"
     install -D -m644 "ghidra2dwarf.py" "$pkgdir/$install_dir/ghidra2dwarf.py"
 
-    msg "Remember to select the directory ($install_dir) in 'script manager' -> 'script directories'"
+    msg "Remember to add the script's directory ($install_dir) by choosing 'Display Script Manager' -> 'Manage Script Directories' -> 'Display file chooser to add bundles to list'"
 }
