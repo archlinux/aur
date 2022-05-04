@@ -1,0 +1,21 @@
+pkgbase = php-parle-git
+	pkgdesc = Parser and lexer for PHP
+	pkgver = 0.8.3.r1.gc06528f
+	pkgrel = 1
+	url = https://github.com/weltling/parle
+	arch = aarch64
+	arch = armv7h
+	arch = i486
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = custom
+	makedepends = git
+	depends = php>=7.4
+	provides = php-parle=0.8.3.r1.gc06528f
+	conflicts = php-parle
+	backup = etc/php/conf.d/parle.ini
+	source = php-parle::git+https://github.com/weltling/parle.git
+	b2sums = SKIP
+
+pkgname = php-parle-git
