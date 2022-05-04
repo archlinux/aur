@@ -1,8 +1,8 @@
 # Maintainer: tuxzz <dorazzsoft@gmail.com>
 
 pkgname=fftw-amd
-pkgver=3.3.8.amd3.0.1
-pkgrel=1
+pkgver=3.3.8.amd3.1.0
+pkgrel=0
 pkgdesc="A library for computing the discrete Fourier transform (DFT) - AMD Ryzen/EPYC Optimized Version"
 arch=('x86_64')
 license=('GPL2')
@@ -15,15 +15,15 @@ provides=('libfftw3q_threads.so' 'libfftw3q_omp.so' 'libfftw3q.so'
 'libfftw3_threads.so' 'libfftw3_omp.so' 'libfftw3_mpi.so' 'libfftw3.so' 'fftw=3.3.8-3')
 conflicts=('fftw')
 source=(
-  "https://github.com/amd/amd-fftw/archive/3.0.1.tar.gz"
+  "https://github.com/amd/amd-fftw/archive/3.1.tar.gz"
 )
 sha512sums=(
-  '9afd61405e60d43abfa3977b357c5937443d7154e1895a2eddeb599383d946b01960f67ecdffd72862c80b3522f584f71f60c5ed67a4937c45ece0a38e9a5ffb'
+  '65f99619cec968a3a247a21e70fb8d583726095b06d93122ecd1d13e139e9443653cd2217d03f81e5f00ad701a36318bc05508614e74f7ef46668a1766142a60'
 )
 
 prepare() {
   rm -r "${pkgname}-${pkgver}" || true
-  mv -v amd-fftw-3.0.1 "${pkgname}-${pkgver}"
+  mv -v amd-fftw-3.1 "${pkgname}-${pkgver}"
   cp -av "${pkgname}-${pkgver}" "${pkgname}-${pkgver}-double"
   cp -av "${pkgname}-${pkgver}" "${pkgname}-${pkgver}-double"
   cp -av "${pkgname}-${pkgver}" "${pkgname}-${pkgver}-long-double"
