@@ -1,0 +1,5 @@
+/pkg
+/src
+/linux-hunter
+*.pkg.*
+*.zip
