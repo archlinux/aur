@@ -7,7 +7,7 @@ pkgver=11.3.0
 _target="i586-pc-msdosdjgpp"
 _islver=0.24
 _djver=2.05
-pkgrel=3
+pkgrel=4
 pkgdesc="djgpp cross-compiler for the dosbox environment"
 arch=('i686' 'x86_64')
 url="http://gcc.gnu.org"
@@ -77,7 +77,6 @@ build() {
     --disable-multilib \
     --disable-nls \
     --disable-plugin \
-    --enable-__cxa_atexit \
     --enable-gold \
     --enable-languages=c,c++ \
     --enable-lto \
