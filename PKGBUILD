@@ -1,17 +1,18 @@
-# Maintainer: Brodie Robertson <brodierobertsonbusiness at gmail dot com>
+# Maintainer: Ács Zoltán <acszoltan111 at gmail dot com>
+# Contributor: Brodie Robertson <brodierobertsonbusiness at gmail dot com>
 # Contributor: Lennard Hofmann <lennard dot hofmann at web dot de>
 
 pkgname='tiramisu-git'
 _pkgname='tiramisu'
-pkgver=r59.3b30a0f
-pkgrel=2
+pkgver=r159.55cec2d
+pkgrel=1
 pkgdesc="Desktop notifications, the UNIX way"
-makedepends=("git")
+makedepends=("vala")
 arch=('x86_64')
 url="https://github.com/Sweets/tiramisu"
 license=('MIT')
 depends=('glib2')
-source=('tiramisu::git://github.com/Sweets/tiramisu.git')
+source=('tiramisu::git+https://github.com/Sweets/tiramisu.git')
 md5sums=('SKIP')
 
 pkgver() {
