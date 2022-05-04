@@ -18,6 +18,48 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## 📚 Documentation -->
 
+# [0.6.0] - 2022-05-03
+
+> Important: 1 breaking change below, indicated by **❗ BREAKING ❗**
+
+## ❗ BREAKING ❗
+
+- **Use Apollo's Platform API - @pcarrier, #1074**
+
+  Rover now uses Apollo's Platform API instead of the old Studio API. The breaking change is that the hostname is now `api.apollographql.com` where it used to be `graphql.api.apollographql.com`, you may need to update your firewall rules. Other behavior should remain unchanged.
+
+## 🐛 Fixes
+
+- **Fixes Input Value Definition block string encoding for descriptions.  - @lrlna, #1116 # fixes #1088**
+
+  Input values are now multilined when a description is present to allow for a more readable generated SDL.
+
+## 🛠 Maintenance
+
+- **Removes upper bound on Node engines for npm installer - @EverlastingBugstopper, #1120 fixes #1119**
+
+  Previously, Rover required that your node engine was between v14 and v17. We have removed the upper bound on this limit so you can now use Node 18 and any future versions.
+
+- **Adds `cargo xtask docs` - @EverlastingBugstopper, #1118**
+
+  Developers of the Rover project can now run `cargo xtask docs` to spin up a local netlify server with your local docset. After running the command, you can navigate to http://localhost:8000/rover in your browser and changes you make to ./docs/source/**.md files will be updated automatically on save.
+
+- **Updates dependencies - @renovate-bot, #1117**
+
+  `node` 16.14.2 -> 16.15.0
+  `npm` 8.7.0 -> 8.8.0
+  `os_info` 3.2 -> 3.3
+
+- **Removes unused dependencies - @EverlastingBugstopper, #1113**
+
+- **Separate Studio client code from generalized GraphQL client code - @Geal, #1061**
+
+  Introduces the `launchpad` workspace crate which contains operations not specific to Apollo Studio such as:
+
+  - launching GraphQL queries using reqwest
+  - running an introspection query on a graph
+  - transforming a JSON SDL to a schema
+
 # [0.5.4] - 2022-04-26
 
 ## 🐛 Fixes
