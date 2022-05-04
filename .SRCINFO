@@ -1,11 +1,10 @@
 pkgbase = ttf-advent-pro
 	pkgdesc = Google's Advent Pro font
 	pkgver = 20131203
-	pkgrel = 2
+	pkgrel = 3
 	url = https://fonts.google.com/specimen/Advent+Pro
 	arch = any
 	license = custom:OFL
-	provides = google-crosextra-carlito-fonts
 	source = ttf-advent-pro-20131203.zip::https://fonts.google.com/download?family=Advent%20Pro
 	source = 99-google-advent-pro.conf
 	sha256sums = ac4168295dc35d68bc19ba25592c67ad57d0051c0c4e1604bb4ab2becec3de5d
