@@ -7,6 +7,8 @@ pkgver=2.10.3
 pkgdesc="Automatically update DNS records to dynamic local IP."
 url=https://pypi.org/project/ddns
 arch=('any')
+provides=("ddns")
+conflicts=("ddns" "newfuture-ddns-bin")
 makedepends=('python-pip' 'python-installer')
 source=(
 	"https://files.pythonhosted.org/packages/py2.py3/${_name::1}/$_name/${_name//-/_}-$pkgver-py2.py3-none-any.whl"
