@@ -3,7 +3,7 @@
 # Contributor: Morten Linderud <morten@linderud.pw>
 # Contributor: Andreas Krinke <andreas dot krinke at gmx dot de>
 pkgname=gephi
-pkgver=0.9.4
+pkgver=0.9.5
 pkgrel=1
 pkgdesc="An interactive graph visualization and exploration platform"
 arch=('x86_64')
@@ -13,7 +13,7 @@ depends=('java-runtime=11' 'java-environment=11' 'libxxf86vm')
 makedepends=('gendesk')
 options=(!strip)
 source=("https://github.com/gephi/gephi/releases/download/v$pkgver/gephi-$pkgver-linux-x64.tar.gz")
-sha256sums=('63419c60b51246c736ef09bf3d1c731a23375f3f1ad9f264a2e07fec87be1bfc')
+sha256sums=('20796de0af955011b92ef83b4c2deb58167138c46ddcc10f544050f0ee5b197f')
 
 prepare() {
   gendesk -n --name "Gephi - The Open Graph Viz Platform" \
