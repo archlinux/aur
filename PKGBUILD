@@ -5,13 +5,6 @@
 # https://www.vmware.com/go/download-vmrc and place it in the directory
 # with this PKGBUILD.
 
-# Other VMware packages add files to /usr/lib/vmware/xkeymap. This
-# causes pacman to give "exists in filesystem" errors when installing
-# multiple VMware packages. If you are doing so, you can uncomment this
-# line to remove those file from this package and add a dependency on
-# the AUR vmware-keymaps package. That will remove the errors.
-#_add_vmware_keymaps_dependency=y
-
 pkgname=vmware-vmrc
 pkgver=12.0.1
 pkgrel=2
