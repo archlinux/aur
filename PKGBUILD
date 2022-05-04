@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-data-validate-domain'
-pkgver='0.14'
+pkgver='0.15'
 pkgrel='1'
 pkgdesc="Domain and host name validation"
 arch=('any')
@@ -13,8 +13,8 @@ makedepends=()
 checkdepends=('perl-test2-suite>=0')
 url='https://metacpan.org/release/Data-Validate-Domain'
 source=("http://search.cpan.org/CPAN/authors/id/D/DR/DROLSKY/Data-Validate-Domain-$pkgver.tar.gz")
-md5sums=('699d4bde18afa56554d2579c1137ca8d')
-sha512sums=('07cc397559bc412c456e3dbe55d792c4a0e93b3bf297565e26cc9c55919b3f643e8aa2c33a2c418de9264c1305448ffc287776eecfe9d125b3dfe369c4a95ed4')
+md5sums=('451840424e781e00ccbbe194fa5733bd')
+sha512sums=('76cfae536841e69f3694f2cf88321718ffbafa0376faec6763f295650c67e550c90c640a444616482acf7175337a646f80938255eeb32204f827a891a91d0195')
 _distdir="Data-Validate-Domain-$pkgver"
 
 build() {
