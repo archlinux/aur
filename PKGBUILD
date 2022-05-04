@@ -24,7 +24,7 @@ package() {
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
-    ln -s "/opt/Netflix/Netflix" "$pkgdir/usr/bin/netflix"
+    ln -s "/opt/Netflix/netflix" "$pkgdir/usr/bin/netflix"
 
     # Desktop Entry
     install -Dm644 "$srcdir/$_pkgname/Netflix.desktop" \
