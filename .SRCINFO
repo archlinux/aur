@@ -1,6 +1,6 @@
 pkgbase = perl-mojo-dom58
 	pkgdesc = Minimalistic HTML/XML DOM parser with CSS selectors
-	pkgver = 3.000
+	pkgver = 3.001
 	pkgrel = 1
 	url = https://metacpan.org/release/Mojo-DOM58
 	arch = any
@@ -8,9 +8,8 @@ pkgbase = perl-mojo-dom58
 	license = GPL
 	depends = perl>=5.8.1
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/D/DB/DBOOK/Mojo-DOM58-3.000.tar.gz
-	md5sums = 9b6010e91b568ffaaafa8876a1d8670b
-	sha512sums = fd44b58c1e0eb9821b456ca05d36f795d1c9fac1e262c89ba611d92b1633de241d0063f5f8d13820d45a915daea26e4aeb5dfdcc57d8744423f4c597aa4659e9
+	source = http://search.cpan.org/CPAN/authors/id/D/DB/DBOOK/Mojo-DOM58-3.001.tar.gz
+	md5sums = 4d4d95c331b3f9ff6ebc533312e30c57
+	sha512sums = 67d8282f974b005a5f7d47bf9f8fd837315e790304da155f8a2092ed2a50e34522df703d70bac2ecbcce806e645ba69bcfd6ea8ca8adb8ae1aa9eb23ec666a47
 
 pkgname = perl-mojo-dom58
-
