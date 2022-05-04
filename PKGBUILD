@@ -1,7 +1,7 @@
 pkgname=binge-bin
 _pkgname=Binge-bin
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.0.2
+pkgrel=1
 _pkgrel_x86_64=1
 pkgdesc="Unnofficial Binge desktop application"
 arch=('x86_64')
