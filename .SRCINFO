@@ -1,0 +1,15 @@
+pkgbase = dragit-git
+	pkgdesc = Application for intuitive file sharing between devices.
+	pkgver = r205.fcdd4ed
+	pkgrel = 1
+	url = https://github.com/sireliah/dragit
+	arch = any
+	license = GPL3
+	makedepends = cargo
+	makedepends = git
+	makedepends = rust
+	provides = dragit-git
+	source = git+https://github.com/sireliah/dragit.git
+	sha256sums = SKIP
+
+pkgname = dragit-git
