@@ -1,0 +1,23 @@
+pkgbase = osk-sdl
+	pkgdesc = SDL2 On-screen Keyboard for FDE
+	pkgver = 0.66
+	pkgrel = 2
+	url = https://gitlab.com/postmarketOS/osk-sdl
+	arch = x86_64
+	license = GPL3
+	makedepends = scdoc
+	makedepends = meson
+	depends = device-mapper
+	depends = cryptsetup
+	depends = sdl2
+	depends = sdl2_ttf
+	depends = mesa
+	depends = ttf-dejavu
+	source = osk-sdl-0.66.tar.gz::https://gitlab.com/postmarketOS/osk-sdl/-/archive/0.66/osk-sdl-0.66.tar.gz
+	source = osk-sdl-hooks
+	source = osk-sdl-install
+	md5sums = fb608060dea423d221bdfff9a6101624
+	md5sums = 2081d2bdf45d4559e6d8d3a2032c443e
+	md5sums = 3025fb91626943901f33437ac74a748c
+
+pkgname = osk-sdl
