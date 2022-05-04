@@ -30,7 +30,7 @@ pkgver() {
 }
 
 build() {
-        pip2 install html2text
+        sudo pip2 install html2text
 }
 
 package() {
