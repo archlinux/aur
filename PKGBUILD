@@ -24,7 +24,7 @@ depends=(
 provides=("$_pyname")
 conflicts=("$_pyname")
 options=(!emptydirs)
-source=(git://github.com/iheanyi/bandcamp-dl.git)
+source=(https://github.com/iheanyi/bandcamp-dl.git)
 sha512sums=('SKIP')
 
 pkgver() {
