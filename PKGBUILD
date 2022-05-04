@@ -2,8 +2,8 @@
 # Contributor: Simon Doppler (dopsi) <dop.simon@gmail.com>
 
 pkgname=firefly-iii
-pkgver=5.7.2
-pkgrel=2
+pkgver=5.7.4
+pkgrel=1
 pkgdesc='PHP personal finances manager'
 arch=('any')
 url="https://github.com/${pkgname}/${pkgname}"
@@ -11,7 +11,7 @@ license=('custom')
 depends=('php-intl')
 makedepends=('composer')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/${pkgname}/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('8f11d15bb1973c74fa76a7c33290da7300d44279e265617db487b2676a57e16f')
+sha256sums=('ab7a48a59956c5ba16af2cc1c57cfe1e7a18eb88ce6cce57f9c191473786e8f0')
 
 backup=(
     "etc/webapps/$pkgname/config.env"
