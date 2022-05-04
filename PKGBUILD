@@ -1,12 +1,14 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2021-07-04.
+# PKGBUILD last time manually edited: At least on 2021-05-04.
+### WARNING 2022-05-04: There does not seem to be flight data anymore available upstream. Download of LETADLA.ZIP gives error 404 not found.
+
 
 _pkgname=idos-timetable-data-chaps-flights
 pkgname="${_pkgname}-latest"
 epoch=0
 pkgver=2021_6_30
-pkgrel=1
+pkgrel=2
 pkgdesc="Flight timetable data from Galileo to be used with IDOS timetable browser"
 arch=(any)
 url="http://chaps.cz/eng/download/idos/zip#kotvatt"
