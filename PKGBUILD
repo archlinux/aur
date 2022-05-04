@@ -1,5 +1,5 @@
 pkgname=mingw-w64-mumps
-pkgver=5.4.1
+pkgver=5.5.0
 pkgrel=1
 pkgdesc='Sparse solver library using Gaussian elimination (mingw-w64)'
 url='http://mumps.enseeiht.fr'
@@ -9,7 +9,7 @@ makedepends=('mingw-w64-gcc')
 arch=('any')
 options=('!buildflags' '!strip' 'staticlibs')
 source=("http://mumps.enseeiht.fr/MUMPS_${pkgver}.tar.gz")
-sha256sums=('93034a1a9fe0876307136dcde7e98e9086e199de76f1c47da822e7d4de987fa8')
+sha256sums=('e54d17c5e42a36c40607a03279e0704d239d71d38503aab68ef3bfe0a9a79c13')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
@@ -36,6 +36,7 @@ package() {
     cd "${srcdir}"/build-${_arch}
     install -d "${pkgdir}"/usr/${_arch}/{include/MUMPS,lib}
     install -m644 include/*.h "${pkgdir}"/usr/${_arch}/include/MUMPS
-    install -m644 lib/*.a libseq/*.a "${pkgdir}"/usr/${_arch}/lib
+    install -m644 lib/*.a "${pkgdir}"/usr/${_arch}/lib
+    install -m644 libseq/*.a "${pkgdir}"/usr/${_arch}/lib
   done
 }
