@@ -3,11 +3,11 @@ _base=codepy
 pkgname=python-${_base}
 pkgdesc="Generate and execute native code at run time, from Python"
 pkgver=2019.1
-pkgrel=3
+pkgrel=4
 arch=('x86_64')
 url="https://documen.tician.de/${_base}"
 license=(MIT)
-depends=(python-cgen boost)
+depends=(python-six python-appdirs python-cgen boost)
 makedepends=(python-setuptools git)
 checkdepends=(python-pytest)
 source=("git+https://github.com/inducer/${_base}.git?signed#tag=v${pkgver}")
