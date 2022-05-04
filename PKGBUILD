@@ -1,0 +1,27 @@
+# Maintainer: Onur BÜBER <onurbuber@engineer.com>
+
+pkgname=python-pyfzf
+pkgdesc="A python wrapper for fzf"
+pkgver=0.3.1
+pkgrel=1
+arch=('any')
+license=('MIT')
+depends=('python-plumbum')
+makedepends=('git' 'python-setuptools')
+provides=('python-pyfzf')
+conflicts=('python-pyfzf')
+url="https://github.com/nk412/pyfzf"
+_pyname="pyfzf"
+source=("$pkgname-$pkgver.tar.gz::https://github.com/nk412/pyfzf/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('SKIP')
+
+build() {
+    cd $srcdir/$_pyname-$pkgver
+    python setup.py build
+}
+
+package() {
+    cd $srcdir/$_pyname-$pkgver
+    python setup.py install --root="$pkgdir"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

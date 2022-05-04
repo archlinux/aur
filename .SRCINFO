@@ -1,0 +1,16 @@
+pkgbase = python-pyfzf
+	pkgdesc = A python wrapper for fzf
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/nk412/pyfzf
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = python-setuptools
+	depends = python-plumbum
+	provides = python-pyfzf
+	conflicts = python-pyfzf
+	source = python-pyfzf-0.3.1.tar.gz::https://github.com/nk412/pyfzf/archive/refs/tags/0.3.1.tar.gz
+	sha256sums = SKIP
+
+pkgname = python-pyfzf
