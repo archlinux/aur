@@ -7,8 +7,8 @@ url="https://github.com/AnnikaV9/$pkgname"
 license=("Unlicense")
 provides=("$pkgname")
 depends=("run-parts" "sed" "sudo" "curl" "coreutils")
-source=("$pkgname-$pkgver.tar.gz")
-b2sums=('e77facd57a91e628fc74823c8ddb55743e20b366a99c27ed5208d0c4727a4d3d6d8ae282f3826621c3e80b6242a45cbc4e11033e17955718947d13f1d1c55e9f')
+source=("$pkgname-$pkgver.tar.gz::$url/releases/download/v$pkgver/$pkname-$pkgver.tar.gz")
+b2sums=('c1939e02a909cffede32d4c90040eeaa0cb0ef0dfd75ea352e20be6b723a85eed226ce126eee74af5c17a13bf50730695e1c87cba5e029e6c75e8ca635550ddb')
 
 package() {
   install -Dm755 "$srcdir/$pkgname-$pkgver/kbuilder" "$pkgdir/usr/bin/kbuilder"
