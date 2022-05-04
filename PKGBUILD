@@ -1,17 +1,21 @@
 # Maintainer: gardenapple <gardenapple at posteo.net>
 
 pkgname=packwiz-bin
-pkgver=r194.efb434d
+pkgver=r195.d7bfed5
 pkgrel=1
 pkgdesc='A command line tool for editing and distributing Minecraft modpacks (Git auto-update)'
-arch=('x86_64')
+arch=('x86_64' 'i686' 'aarch64')
 url='https://packwiz.infra.link/'
 license=('MIT')
-source=("https://nightly.link/packwiz/packwiz/workflows/go/master/Linux%2064-bit%20x86.zip")
+source_x86_64=("packwiz-x86_64-$pkgver.zip::https://nightly.link/packwiz/packwiz/workflows/go/master/Linux%2064-bit%20x86.zip")
+source_i686=("packwiz-i686-$pkgver.zip::https://nightly.link/packwiz/packwiz/workflows/go/master/Linux%2032-bit%20x86.zip")
+source_aarch64=("packwiz-aarch64-$pkgver.zip::https://nightly.link/packwiz/packwiz/workflows/go/master/Linux%2064-bit%20ARM.zip")
 provides=('packwiz')
-conflicts=('packwiz')
+conflicts=('packwiz' 'packwiz-git')
 makedepends=('curl' 'git' 'htmlq')
-sha256sums=('SKIP')
+sha256sums_x86_64=('SKIP')
+sha256sums_i686=('SKIP')
+sha256sums_aarch64=('SKIP')
 
 pkgver() {
 	commit_count="$(curl 'https://github.com/packwiz/packwiz/' | htmlq --text '.d-sm-inline strong')"
@@ -21,4 +25,8 @@ pkgver() {
 
 package() {
 	install -Dm755 packwiz -t "$pkgdir/usr/bin"
+	chmod +x packwiz
+	./packwiz completion bash | install -Dm644 /dev/stdin "${pkgdir}"/usr/share/bash-completion/completions/packwiz
+	./packwiz completion zsh | install -Dm644 /dev/stdin "${pkgdir}"/usr/share/zsh/site-functions/_packwiz
+	./packwiz completion fish | install -Dm644 /dev/stdin "${pkgdir}"/usr/share/fish/vendor_completions.d/packwiz.fish
 }
