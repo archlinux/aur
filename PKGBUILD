@@ -3,7 +3,7 @@
 
 pkgname='mobile-config-firefox'
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Mobile and privacy friendly configuration for Firefox"
 url="https://gitlab.com/postmarketOS/mobile-config-firefox"
 license=('GPL')

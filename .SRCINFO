@@ -1,7 +1,7 @@
 pkgbase = mobile-config-firefox
 	pkgdesc = Mobile and privacy friendly configuration for Firefox
 	pkgver = 2.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/postmarketOS/mobile-config-firefox
 	arch = x86_64
 	arch = i686
