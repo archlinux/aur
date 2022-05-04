@@ -1,7 +1,7 @@
 pkgbase = snappymail
 	pkgdesc = A simple, modern & fast web-based email client
 	pkgver = 2.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://snappymail.eu
 	arch = any
 	license = AGPL3

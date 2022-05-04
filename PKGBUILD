@@ -2,7 +2,7 @@
 
 pkgname=snappymail
 pkgver=2.15.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, modern & fast web-based email client'
 arch=('any')
 license=('AGPL3')
@@ -42,14 +42,24 @@ pkgver() {
 }
 
 prepare() {
-  # ensure data path is set to /var/lib/snappymail
-  sed -i "s/\$sCustomDataPath = '';/\$sCustomDataPath = '\/var\/lib\/$pkgname';/" "$pkgname/$pkgname/v/0.0.0/include.php"
-
   # create folder for build output
   mkdir -p build
 
+  cd "$pkgname"
+
   # fix version string for v2.15.1
-  git -C "$pkgname" cherry-pick --no-commit f7a238952375b9171a58d796b43c029f1cc2f250
+  git cherry-pick --no-commit f7a238952375b9171a58d796b43c029f1cc2f250
+
+  # ensure data path is set to /var/lib/snappymail
+  sed \
+    -i snappymail/v/0.0.0/include.php \
+    -e "s/\$sCustomDataPath = '';/\$sCustomDataPath = '\/var\/lib\/$pkgname';/" 
+
+  # remove unnecessary $PATH variables
+  sed \
+    -i snappymail/v/0.0.0/app/libraries/snappymail/pgp/gpg.php \
+    -e '/\(\/sw\/bin\|local\/bin\)/d'
+
 }
 
 build() {
