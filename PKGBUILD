@@ -7,7 +7,7 @@ _pkgname=firefox
 _patchurl=https://raw.githubusercontent.com/openSUSE/firefox-maintenance/master
 
 pkgname=firefox-kde
-pkgver=99.0.1
+pkgver=100.0
 pkgrel=1
 pkgdesc="Standalone web browser from mozilla.org"
 arch=(x86_64)
@@ -16,7 +16,7 @@ url="https://www.mozilla.org/firefox/"
 depends=(gtk3 libxt mime-types dbus-glib ffmpeg nss ttf-font libpulse kmozillahelper)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
              autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
-             python-setuptools python-psutil python-zstandard lld dump_syms
+             python-setuptools python-zstandard lld dump_syms
              wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
@@ -34,11 +34,11 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         mozilla-kde.patch::$_patchurl/mozilla-kde.patch
         firefox-branded-icons.patch::$_patchurl/firefox/firefox-branded-icons.patch
         firefox-kde.patch::$_patchurl/firefox/firefox-kde.patch)
-sha256sums=('76d22279ce99588a728bb2d034064be0d5918b5900631f2148d4565b8a72e00b'
+sha256sums=('664c0cc4e0fb70886aa4e652d144996045d533a18eebc7d61093103cbb2d5e7f'
             'SKIP'
             '298eae9de76ec53182f38d5c549d0379569916eebf62149f9d7f4a7edef36abf'
             'a9b8b4a0a1f4a7b4af77d5fc70c2686d624038909263c795ecc81e0aec7711e9'
-            'bc5397bbccf158e12e058646ab88a636040ba810e5f8270a2efa914e3b8b52d0'
+            'e74a04219a498a57aae35added4dcdc6a396774437a97ecf67e3b78875eb2ad3'
             'bcedaf4feb3ec56c86cb3b99c0fa99c3f38090485454d4beacf23bd90056433a'
             'da420deac6bfdcbf0bba31011ec23be31cdc5ab10f95a6fef5a2d6d6defc739d')
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>

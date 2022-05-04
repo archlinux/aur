@@ -941,12 +941,13 @@ diff --git a/uriloader/exthandler/unix/nsKDERegistry.cpp b/uriloader/exthandler/
 new file mode 100644
 --- /dev/null
 +++ b/uriloader/exthandler/unix/nsKDERegistry.cpp
-@@ -0,0 +1,86 @@
+@@ -0,0 +1,89 @@
 +/* -*- Mode: C++; tab-width: 2; indent-tabs-mode: nil; c-basic-offset: 2 -*- */
 +/* This Source Code Form is subject to the terms of the Mozilla Public
 + * License, v. 2.0. If a copy of the MPL was not distributed with this
 + * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 +
++#include "mozilla/StaticPrefs_browser.h"
 +#include "nsKDERegistry.h"
 +#include "prlink.h"
 +#include "prmem.h"
@@ -1022,8 +1023,10 @@ new file mode 100644
 +        nsCString description = output[ 1 ];
 +        mimeInfo->SetDescription(NS_ConvertUTF8toUTF16(description));
 +        nsCString handlerAppName = output[ 2 ];
++        mozilla::StaticPrefs::browser_download_improvements_to_download_panel()
++            ? mimeInfo->SetPreferredAction(nsIMIMEInfo::saveToDisk)
++            : mimeInfo->SetPreferredAction(nsIMIMEInfo::useSystemDefault);
 +        mimeInfo->SetDefaultDescription(NS_ConvertUTF8toUTF16(handlerAppName));
-+        mimeInfo->SetPreferredAction(nsIMIMEInfo::useSystemDefault);
 +        return mimeInfo.forget();
 +        }
 +    return nullptr;
