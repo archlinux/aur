@@ -6,17 +6,16 @@ pkgver=1.4.5
 pkgrel=1
 pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Compiled from the GitHub repositories main branch."
 arch=("armv7h" "i686" "x86_64")
-url="https://github.com/CiderApp/${_pkgname}-releases.git"
+url="https://github.com/CiderApp/${_pkgname}.git"
 _url="https://api.github.com/repos/ciderapp/cider-releases/releases/latest"
 license=('GPL')
-depends=('gtk3' 'nss')
+depends=('gtk3' 'nss' 'wget')
 optdepends=('libnotify: Playback notifications')
 source=("cider.desktop")
 sha256sums=('7bf97dfa92b312ceb95d005a8aa7f225af079ee450f38b58b894e951a529d997')
 
 pkgver() {
-    wget $_url \
-        -qO- | grep tag_name | cut -d '"' -f 4 | sed 's/v//' | xargs
+    curl $_url | grep tag_name | cut -d '"' -f 4 | sed 's/v//' | xargs
 }
 
 build() {
@@ -37,14 +36,9 @@ build() {
 
     # Fetch the Various Useful Files
     echo "Fetching additional Files"
-    wget -qO- https://raw.githubusercontent.com/CiderApp/cider/master/README.md |
-        sed 's/^/  /' >README
-
-    wget -qO- https://raw.githubusercontent.com/CiderApp/cider/master/LICENSE |
-        sed 's/^/  /' >LICENSE
-
-    wget -qO- https://raw.githubusercontent.com/CiderApp/cider/master/resources/icons/cider.png |
-        sed 's/^/  /' >icon.png
+    curl https://raw.githubusercontent.com/CiderApp/cider/master/README.md > README
+    curl https://raw.githubusercontent.com/CiderApp/cider/master/LICENSE > LICENSE
+    curl https://raw.githubusercontent.com/CiderApp/cider/master/resources/icons/cider.png > icon.png
 
 }
 
