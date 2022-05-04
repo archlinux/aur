@@ -1,0 +1,25 @@
+pkgbase = arigram
+	pkgdesc = A fork of tg -- a hackable telegram TUI client
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://github.com/TruncatedDinosour/arigram.git
+	arch = x86_64
+	license = Unlicense
+	makedepends = python
+	makedepends = python-pip
+	makedepends = python-telegram
+	makedepends = python-plumbum
+	makedepends = python-pyfzf
+	makedepends = python-pyperclip
+	makedepends = bash
+	makedepends = git
+	optdepends = ffmpeg
+	optdepends = nnn
+	optdepends = fzf
+	optdepends = ranger
+	provides = arigram
+	conflicts = arigram
+	source = arigram-0.1.2.tar.gz::https://github.com/TruncatedDinosour/arigram/archive/refs/tags/v0.1.2.tar.gz
+	sha256sums = SKIP
+
+pkgname = arigram
