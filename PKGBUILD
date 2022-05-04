@@ -197,16 +197,16 @@ export MOZ_ADDON_SIGNING=1
 export MOZ_APP_REMOTINGNAME=${pkgname}
 
 # System libraries
-ac_add_options --with-system-av1
-ac_add_options --with-system-graphite2
-ac_add_options --with-system-harfbuzz
-ac_add_options --with-system-icu
-ac_add_options --with-system-jpeg
-ac_add_options --with-system-libevent
-ac_add_options --with-system-libvpx
+# ac_add_options --with-system-av1
+# ac_add_options --with-system-graphite2
+# ac_add_options --with-system-harfbuzz
+# ac_add_options --with-system-icu
+# ac_add_options --with-system-jpeg
+# ac_add_options --with-system-libevent
+# ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
-ac_add_options --with-system-zlib
+# ac_add_options --with-system-zlib
 
 # Features
 ac_add_options --disable-crashreporter
