@@ -3,10 +3,10 @@
 
 pkgname='atto-bin'
 _pkgname=${pkgname%%-bin}
-pkgver=1.4.1
+pkgver=1.5.0
 pkgrel=1
-_atto_ver=1.4.0
-_atto_safesign_ver=1.2.0
+_atto_ver=1.5.0
+_atto_safesign_ver=1.3.0
 pkgdesc='A tiny Nano wallet, focused on ease of use through simplicity (pre-compiled)'
 arch=('x86_64')
 url='https://github.com/codesoap/atto'
@@ -20,31 +20,6 @@ source=(
   "LICENSE::$_rawurl/master/LICENSE"
   "README.md::$_rawurl/master/README.md"
 )
-md5sums=(
-  '5cfe06da0720c1fd0b321dd661826f5b'
-  '25197de3b60485cec3e40bd9f033c85a'
-  'SKIP' 'SKIP'
-)
-sha1sums=(
-  'ba7b1782f442f4d0c8b8e04dc2f89f32116575be'
-  'a95df08ff6b330ed3847da7370ef12173f6e5f07'
-  'SKIP' 'SKIP'
-)
-sha256sums=(
-  'd263cf403aee0add44bb8b5442b89c7b7a8b4b0e1f9e0c861fe7bb2a815b310e'
-  'a337a70e3868a45f12e29a68d6cb19c61186e27652e37cebfcb6dd1a7b0abd85'
-  'SKIP' 'SKIP'
-)
-sha512sums=(
-  'bb5a56a29b0d323b6099b17c94494933dbebdc74ed16305ed8af6c4e9e90edd20eb405aa9f38a69bdfd7c42311254a97924100048d26535557413282ea2ceb6a'
-  '818e2a105cf2d126b6540deb3b720c37bac736ffb829cf2d2739d787e3831420d2bf8433ffa288760038de3b40545d631d28c7d1d0db7751bff189bed0bdb446'
-  'SKIP' 'SKIP'
-)
-b2sums=(
-  '321f19560e01d96f8b4df58119e287d5fd16fff637efc630246a02298bb30959eeecee07179e641fa3a41cce74f7b7b10658028b9ec56efd61ee4b2c9560610b'
-  '0146167b7f0eda6909afddde1f153a27b4713b4cf6931dbcc0f169b7a79f05936c2c222cb93857496974723cf04fca9a7dd486d10aa6454d8672ff17f3e0f17e'
-  'SKIP' 'SKIP'
-)
 
 package() {
   cd "$srcdir" || exit 1
@@ -56,5 +31,21 @@ package() {
   install -Dm0644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm0644 LICENSE   "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
+
+sha256sums=(
+  'c1d19cf2e3b83c26a51ad66650ff9f896eeff6be9183608c861304745dcd6194'
+  'b9c1d9b76e603ba580d636cec217ba105e3f68865c5fb6e9624028fd8a7346dd'
+  'SKIP' 'SKIP'
+)
+sha512sums=(
+  'ee41adfab6d3acb9d90b1f78954822030039270edaf7ba9e277ba0019f14412188d59690ea98225dfbd64d82990242b06e805c805eb04fb04defbf1174bb2eaa'
+  'ae9bd1a2182dc6364ae97a7d139b124f5fc355421c50b523aedf9f5ab1a5771bfdb629999815824d85fbc85e46ffb8789d7ed844902e212b77d01c043edc5bfe'
+  'SKIP' 'SKIP'
+)
+b2sums=(
+  'ffe3f4e7c77aac83a1d301f24ced9bc3188f1178e9d24a79f865d4a6b0c930bc37eb4170eb53d501f99b6492e94c76791e3b0334b3f91126841ca931eba60dc6'
+  'e3c05acf62938ce4b3d92a2967ae9fb701c10347363d4f1308cdb5040c944beecb6578203ec374b585d33c802263812a3119a6a69b64163b253c7f1a2bf7cd61'
+  'SKIP' 'SKIP'
+)
 
 # eof
