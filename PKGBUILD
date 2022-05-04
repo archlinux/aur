@@ -1,6 +1,6 @@
 # Maintainer: jabra11 <jabra11.gpg@gmail.com>
 pkgname=seer-gdb-git
-pkgver=r184.9d3984c761
+pkgver=1.4.r39.g1a89d48
 pkgrel=1
 pkgdesc="Seer - a gui frontend to gdb"
 arch=('x86_64')
@@ -15,7 +15,7 @@ md5sums=('SKIP')
 
 pkgver() {
         cd "${pkgname%-gdb-git}"
-        printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short=10 HEAD)"
+        git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 build() {
