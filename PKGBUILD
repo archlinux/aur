@@ -2,8 +2,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-moosex-types-uri'
-pkgver='0.08'
-pkgrel='2'
+pkgver='0.09'
+pkgrel='1'
 pkgdesc="URI related types and coercions for Moose"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -11,10 +11,10 @@ options=('!emptydirs')
 depends=('perl-moose>=0' 'perl-moosex-types>=0.40' 'perl-moosex-types-path-class>=0' 'perl-uri>=0' 'perl-uri-fromhash>=0' 'perl-namespace-autoclean>=0' 'perl>=5.006')
 makedepends=()
 url='https://metacpan.org/release/MooseX-Types-URI'
-source=('https://cpan.metacpan.org/authors/id/E/ET/ETHER/MooseX-Types-URI-0.08.tar.gz')
-md5sums=('d1d6a34136b9447cebe30b0b3d465c00')
-sha512sums=('0cf93dd965b618963945a1783af70c40389ca58818f0ea6ee7f168b70dadca5d332fd9391522fcaabb8e1d9e4baaa1b59606865db05a21a5ee548ccac1e08ed6')
-_distdir="MooseX-Types-URI-0.08"
+source=("https://cpan.metacpan.org/authors/id/E/ET/ETHER/MooseX-Types-URI-$pkgver.tar.gz")
+md5sums=('69b5a5271ac6279f609e90b4d31c4bfc')
+sha512sums=('b55fcb34a7033fe3e9d24b66aea4caf9bbc5508f609cd299fc2a31e1869e8b5b0b2007721a2c62f842890bfabbeb3787137c3c9684268228e6061e7c758b027c')
+_distdir="MooseX-Types-URI-$pkgver"
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                      \
