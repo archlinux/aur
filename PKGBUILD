@@ -1,11 +1,11 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2021-07-04.
+# PKGBUILD last time manually edited: At least on 2022-05-04.
 
 _pkgname=idos-timetable-additionalinfo-chaps-trains
 pkgname="${_pkgname}-latest"
 epoch=0
-pkgver=2020_12_14
+pkgver=2021_12_13
 pkgrel=1
 pkgdesc="Links for additional information on Czech trains and railway stations, to be used with the timetable search engines by CHAPS."
 arch=('any')
@@ -30,9 +30,9 @@ options=('!strip')
 
 provides=(
   "${_pkgname}=${pkgver}"
-  
+
   "idos-timetable-additionalinfo-trains=${pkgver}"
-  
+
   "idos-timetable-additionalinfo-trains-cz=${pkgver}"
 )
 
