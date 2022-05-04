@@ -1,8 +1,8 @@
 # Maintainer: dreieck
 
-# PKGBUILD last time manually edited: At least on 2021-07-04.
+# PKGBUILD last time manually edited: At least on 2022-05-04.
 
-_year='21'
+_year='22'
 
 _fullyear="20${_year}"
 
