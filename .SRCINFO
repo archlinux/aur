@@ -1,6 +1,6 @@
 pkgbase = perl-lwp-consolelogger
 	pkgdesc = LWP tracing and debugging
-	pkgver = 0.000043
+	pkgver = 0.000044
 	pkgrel = 1
 	url = https://metacpan.org/release/LWP-ConsoleLogger
 	arch = any
@@ -46,9 +46,8 @@ pkgbase = perl-lwp-consolelogger
 	depends = perl-libwww>=0
 	depends = perl>=5.13.10
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/O/OA/OALDERS/LWP-ConsoleLogger-0.000043.tar.gz
-	md5sums = 64a4029c84ef50e54c56ffc81129cd11
-	sha512sums = 3be483324be6acda923caf534853db2074d7bfff1f98a8508e363d99a2a1e79aca2b7b91a3df4890e7b902cd9ceaa6905b306e45afc78a336ca94e812da8f8ec
+	source = https://cpan.metacpan.org/authors/id/O/OA/OALDERS/LWP-ConsoleLogger-0.000044.tar.gz
+	md5sums = c81656c591cd1ecba91a1c537e2c89aa
+	sha512sums = c3685cb15fcc30d8bca121db9953adbb1271725cb1bb9a1f3e84f57741027489e2f0ba34ba9a4a71d8d201591c7dea2024574e44421d9660a21db60396a4daeb
 
 pkgname = perl-lwp-consolelogger
-
