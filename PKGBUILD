@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-dbix-runsql'
-pkgver='0.21'
+pkgver='0.22'
 pkgrel='1'
 pkgdesc="Perl/CPAN Module DBIx::RunSQL: run SQL from a file"
 arch=('any')
@@ -13,8 +13,8 @@ optdepends=('perl-dbd-sqlite: SQLite support')
 makedepends=()
 url='https://metacpan.org/release/DBIx-RunSQL'
 source=("http://search.cpan.org/CPAN/authors/id/C/CO/CORION/DBIx-RunSQL-$pkgver.tar.gz")
-md5sums=('39debe543db19b1e00a5ca3c5817f44b')
-sha512sums=('a9b57f2a1f6a0f7f0d58c6dfe218979a4ee50a87cbc827821db835393a4abeb411802842c9259896bfa782c3bb32243a22c887560eae4baf39e353691aad303f')
+md5sums=('87addde9a3e6d3880f2bd76ff21632f6')
+sha512sums=('eb0b17c4cdfbfdac86d4ffceb16eb07db5ec79523da1525a603bc6953749f7b1e168f74c0ed52bb3f67206dbe343a894317e54657c0e597e1708a015d445527e')
 _distdir="DBIx-RunSQL-$pkgver"
 
 build() {
