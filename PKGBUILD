@@ -1,14 +1,14 @@
 # Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=boundary
-pkgver=0.7.6
+pkgver=0.8.0
 # UI version found at: internal/ui/VERSION
 # tar -O -xf boundary-$pkgver.tar.gz boundary-$pkgver/internal/ui/VERSION | head -n 1 | cut -d ' ' -f 1
-_uiver='8496c054888329073c568e9bd4944b209e966923'
+_uiver='8545697b430a432bd50c1bde6a080759f803f157'
 pkgrel=1
-pkgdesc="Enables identity-based access management for dynamic infrastructure"
+pkgdesc='Enables identity-based access management for dynamic infrastructure'
 arch=('x86_64')
-url="https://www.boundaryproject.io/"
+url='https://www.boundaryproject.io/'
 license=('MPL2')
 depends=('glibc')
 makedepends=(
@@ -27,13 +27,13 @@ source=(
   'sysusers.conf'
 )
 noextract=("$pkgname-ui-$_uiver.tar.gz")
-sha512sums=('31bf38246bf7b239b0c78d35a58bb961970f30b82d2029148d025ccc12d3ff5d2be6280ae72be146f9343de177f91928ea3600b694a0f440605a881dfbbcc659'
-            '497d1a8c3cd41fd049634b5905c6eaee1ecf8077e4383301599d56595401d375632b4f8724d64794d8c1a73c4995e47d8aee47bc3a89cdfc40922d095c160621'
+sha512sums=('acd746de0d8bc588154a46e44d3e0c91f5d7fa56b95a77b28dfe38b621c23916a1892c8bcf9331196ae46e3adae3f43dc4ab3710d08a595298029bcd472ce152'
+            '05062ce329308d620aa47594577daa711f8f94e075b091a2353d50dc413410daaac9a5baedffc063d2bc8ae925b0834f75a1d4bcce1dc9650e857d8a61d1036b'
             '051fc1fff51f9f9a4323b2596d31392a1f47b59880741bf7c1e6d53dd968190c0b5c0aacb5549549c0a47cbbc70b63c003cec0b04f081b44bfb3ed78417e70c9'
             'afaa4ffc99b0c2192f060b6fe04088d7ef9702f68aef626af34fdede3fb874aea76986102f91f5b7df93bcaedf406c46aa7226573ed8d68981c8174b7fd4fb32'
             'f4f3e00b08145faa5a7c4ec60c49b6c0eb7399965571cdf8e81ccc81dc97f9b130d45de77df7b2eb10b9c7caf6804fcaf5975892c0ef56ced4eba453f6a68d28')
-b2sums=('c1fca1dc0aeb5e798cdf76ca4e3c34a9c1eb74c17592a0ef42bfb767e22b3f9da1fec46c4072625c71c78bc4e10c2a0ac30261b0d35909004262e891c931302f'
-        '81a676edb70b92fcaf0fb5672806e884497dd7d3a735a5b7e8df094d252a4897e78cd74a1a09efe165125f3ad45770fc023638d88564aefca89740d3cd00e1d9'
+b2sums=('6e957218471a0e7f85a1deebf45fe06fedd40ab86cbec719c0ef5277b56f429ce6826c476a0a95eeb9aa14de588762755d5fe6be0d5391a27a113d372045bba3'
+        '154f532bd28ff528c6d8b0468892bef0b5e6d6641d1d06004abd5f789bfd4f7ed1c373c5712691f2a3e5eea664d38193936bea6e2647125f50b7b58139602fac'
         'c35684fbcd28d6aa23abf9e3765321a9434f3826c5d84f5dc95f0695df78007b2f1cb535eeab3a8157f27f7cb6c2444bf40efc468b6a8017de07f87a095e50a1'
         '155721b62bf6d820c59b711f547cfdb5c42c7ad713e1e0bb3d973af511b4d5fd57a913c59a39045af7213b19e6fb76e5836190a2c630e2f93bba975657cd719d'
         '6c1cf64c430d711b544d9655af746b6525d9ee9c441f7842ee2f115b52886e37c684f97cf30b753971b3ac18a731b4249c7ed8e5311cc759bd69d2a62e089aff')
