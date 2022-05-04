@@ -68,7 +68,6 @@ build() {
     --disable-decimal-float \
     --disable-gcov \
     --disable-install-libiberty \
-    --disable-ld \
     --disable-libssp \
     --disable-libquadmath \
     --disable-libquadmath-support \
@@ -77,8 +76,10 @@ build() {
     --disable-multilib \
     --disable-nls \
     --disable-plugin \
-    --enable-gold \
+    --enable-compressed-debug-sections=all \
+    --enable-gold=yes \
     --enable-languages=c,c++ \
+    --enable-ld=no \
     --enable-lto \
     --enable-shared \
     --enable-static \
