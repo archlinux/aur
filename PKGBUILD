@@ -20,6 +20,8 @@ build() {
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="$pkgdir" PREFIX=/usr/ MANDIR=/usr/share/man install
+  mv "$pkgdir/usr/local/"* "$pkgdir/usr/"
+  rmdir "$pkgdir/usr/local"
 }
 
 # vim:set ts=2 sw=2 et:
