@@ -1,7 +1,7 @@
 pkgname=netflix-bin
 _pkgname=Netflix-bin
-pkgver=1.0.3
-pkgrel=3
+pkgver=1.0.4
+pkgrel=1
 _pkgrel_x86_64=1
 pkgdesc="Unnofficial FoxtelGo desktop application"
 arch=('x86_64')
