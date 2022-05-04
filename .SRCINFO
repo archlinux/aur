@@ -1,7 +1,7 @@
 pkgbase = dosbox-binutils
 	pkgdesc = binutils for the djgpp dosbox cross-compiler
 	pkgver = 2.35
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.gnu.org/software/binutils
 	arch = i686
 	arch = x86_64
