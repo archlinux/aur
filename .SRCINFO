@@ -1,7 +1,7 @@
 pkgbase = rofi-mpc
-	pkgdesc = Fast graphical Rofi-Interface for contolling MPD
+	pkgdesc = Fast graphical Rofi-Interface for controlling MPD
 	pkgver = 1.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Marco98/rofi-mpc
 	arch = any
 	makedepends = git
@@ -10,4 +10,3 @@ pkgbase = rofi-mpc
 	md5sums = SKIP
 
 pkgname = rofi-mpc
-
