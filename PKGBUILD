@@ -3,8 +3,8 @@
 
 _pkgname=claws-mail
 pkgname=$_pkgname-title-superset
-pkgver=4.0.0
-pkgrel=3
+pkgver=4.1.0
+pkgrel=1
 pkgdesc="A GTK+ based e-mail client - patched to use charset supersets to decode titles"
 arch=('x86_64')
 license=('GPL3')
@@ -39,14 +39,10 @@ provides=('claws' 'claws-mail')
 conflicts=('claws-mail')
 install=$_pkgname.install
 source=(https://www.claws-mail.org/download.php?file=releases/claws-mail-$pkgver.tar.xz{,.asc}
-        0001_move_OAuth2_to_last_place_in_auto_auth_selection.diff
-        0002_Fancy_crashes_when_opening_an_email.diff
-        0003_encoding.diff
+        0001_encoding.diff
         bash_completion)
-sha256sums=('4af2bd26a5d91eacb2a9c09f67a6a46c2222b40817c1f525dc050bdc7b0ee475'
+sha256sums=('0e1a9ca0db8d2a9e058ae30cdc7fc919779214ec3c56ee0c8a7f88cc23817a8e'
             'SKIP'
-            'ffd5dfe8929a86667218512095a794263a2ae56fae4add83d3ad987f94e7f786'
-            'f56256a9535958063b966ab52abdf787422ff71ed2a5c41b3d9fea8716defe85'
             '79e2b664d039f5cc0cf642359923e3d100ffc4ab070fc54c02d5792b624e26f6'
             '3f6c248b8658cd7a62186bff572cce2525712a498f363cbbda1ed459021c28cb')
 validpgpkeys=('8B3B297A03468356692F8D592CD716D654D6BBD4') # Paul <paul@claws-mail.org>
@@ -54,11 +50,7 @@ validpgpkeys=('8B3B297A03468356692F8D592CD716D654D6BBD4') # Paul <paul@claws-mai
 
 prepare() {
   cd "${_pkgname}"-${pkgver}
-  # upstream fixes
-  patch -Np1 -i ../0001_move_OAuth2_to_last_place_in_auto_auth_selection.diff
-  patch -Np1 -i ../0002_Fancy_crashes_when_opening_an_email.diff
-
-  patch -Np1 -i ../0003_encoding.diff
+  patch -Np1 -i ../0001_encoding.diff
 }
 
 build() {

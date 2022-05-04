@@ -1,7 +1,7 @@
 pkgbase = claws-mail-title-superset
 	pkgdesc = A GTK+ based e-mail client - patched to use charset supersets to decode titles
-	pkgver = 4.0.0
-	pkgrel = 3
+	pkgver = 4.1.0
+	pkgrel = 1
 	url = https://www.claws-mail.org
 	install = claws-mail.install
 	arch = x86_64
@@ -51,17 +51,13 @@ pkgbase = claws-mail-title-superset
 	provides = claws
 	provides = claws-mail
 	conflicts = claws-mail
-	source = https://www.claws-mail.org/download.php?file=releases/claws-mail-4.0.0.tar.xz
-	source = https://www.claws-mail.org/download.php?file=releases/claws-mail-4.0.0.tar.xz.asc
-	source = 0001_move_OAuth2_to_last_place_in_auto_auth_selection.diff
-	source = 0002_Fancy_crashes_when_opening_an_email.diff
-	source = 0003_encoding.diff
+	source = https://www.claws-mail.org/download.php?file=releases/claws-mail-4.1.0.tar.xz
+	source = https://www.claws-mail.org/download.php?file=releases/claws-mail-4.1.0.tar.xz.asc
+	source = 0001_encoding.diff
 	source = bash_completion
 	validpgpkeys = 8B3B297A03468356692F8D592CD716D654D6BBD4
-	sha256sums = 4af2bd26a5d91eacb2a9c09f67a6a46c2222b40817c1f525dc050bdc7b0ee475
+	sha256sums = 0e1a9ca0db8d2a9e058ae30cdc7fc919779214ec3c56ee0c8a7f88cc23817a8e
 	sha256sums = SKIP
-	sha256sums = ffd5dfe8929a86667218512095a794263a2ae56fae4add83d3ad987f94e7f786
-	sha256sums = f56256a9535958063b966ab52abdf787422ff71ed2a5c41b3d9fea8716defe85
 	sha256sums = 79e2b664d039f5cc0cf642359923e3d100ffc4ab070fc54c02d5792b624e26f6
 	sha256sums = 3f6c248b8658cd7a62186bff572cce2525712a498f363cbbda1ed459021c28cb
 
