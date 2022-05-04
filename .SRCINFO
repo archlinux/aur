@@ -7,6 +7,7 @@ pkgbase = freshfetch
 	license = MIT
 	makedepends = cargo
 	makedepends = luajit
+	makedepends = git
 	optdepends = xorg-xrandr
 	optdepends = xorg-xwininfo
 	provides = freshfetch
