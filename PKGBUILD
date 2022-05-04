@@ -1,5 +1,6 @@
 
-# Maintainer: Jack Johannesen <jack AT insertdomain DOT name>
+# Maintainer: Julia <julia AT insertdomain DOT name>
+# Maintainer: Cristian <cristian@crstian.me>
 
 pkgname="freshfetch"
 pkgver=0.2.0
@@ -13,7 +14,7 @@ makedepends=('cargo' 'luajit')
 optdepends=('xorg-xrandr' 'xorg-xwininfo')
 provides=('freshfetch')
 conflicts=('freshfetch-git' 'freshfetch-bin')
-source=('git://github.com/K4rakara/freshfetch.git'
+source=('git+https://github.com/K4rakara/freshfetch.git'
 		"https://raw.githubusercontent.com/K4rakara/${pkgname//-git}/master/LICENSE.md")
 md5sums=('SKIP'
          'a4c191c500e67564935777e1abaebbab')
