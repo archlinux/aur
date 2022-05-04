@@ -10,10 +10,10 @@
 
 pkgbase=systemd-selinux
 pkgname=('systemd-selinux' 'systemd-libs-selinux' 'systemd-resolvconf-selinux' 'systemd-sysvcompat-selinux')
-_tag='5aba21f1561d48fdcf7f4670263ba109c25c1ea6' # git rev-parse v${_tag_name}
-_tag_name=250.4
+_tag='20e3fdcb595febff92fe3e89ee33da2c04c5c682' # git rev-parse v${_tag_name}
+_tag_name=250.5
 pkgver="${_tag_name/-/}"
-pkgrel=2
+pkgrel=1
 arch=('x86_64' 'aarch64')
 url='https://www.github.com/systemd/systemd'
 groups=('selinux')
@@ -71,8 +71,6 @@ sha512sums=('SKIP'
 _backports=(
   # bus: Use OrderedSet for introspection
   'acac88340ace3cd631126eebb6d0390cd54e8231'
-  # resolved: DoT fixes (https://github.com/systemd/systemd-stable/pull/187)
-  '88b4e8f74ed981000ded8e23ead930a6f68eebc8~..6d3e2f0188f8a10412c56dc987198104a4dfff0f'
 )
 
 _reverts=(
