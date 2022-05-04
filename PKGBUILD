@@ -1,4 +1,4 @@
-# Maintainer: DATSD <DAStudio *dot* 71e6fd52 *at* gmail *dot* com>
+# Maintainer: Romain Chardiny <romain.chardiny@gmail.com>
 _basename=xmake
 pkgname=${_basename}-dev-git
 pkgver=2.6.5.r40
