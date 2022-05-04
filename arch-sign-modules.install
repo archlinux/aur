@@ -1,7 +1,7 @@
 #!/bin/sh
 
 post_install() {
-	local x= module_list="zfs nvidia p_lkrg"
+	local x= module_list="zfs nvidia"
 	local dkms_dir=/etc/dkms dkms_link=
 	local kernel_sign=${dkms_dir}/kernel-sign.conf
 
@@ -14,6 +14,15 @@ post_install() {
 			fi
 		fi
 	done
+
+	# LKRG's module is p_lkrg but has sources in /usr/src/lkrg
+	if modinfo p_lkrg &>/dev/null; then
+		dkms_link="$dkms_dir/lkrg.conf"
+		if [ ! -L $dkms_link ]; then
+			echo "Creating DKMS symlink: $kernel_sign => $dkms_link"
+			ln -sf $kernel_sign $dkms_link
+		fi
+	fi
 }
 
 post_upgrade() {
@@ -21,10 +30,10 @@ post_upgrade() {
 }
 
 post_remove() {
-	local x= module_list="zfs nvidia p_lkrg"
-        local dkms_dir=/etc/dkms dkms_link=
+	local x= module_list="zfs nvidia lkrg"
+	local dkms_dir=/etc/dkms dkms_link=
 
-        for x in $module_list; do
+	for x in $module_list; do
 		dkms_link="$dkms_dir/$x.conf"
 		if [ -L $dkms_link ]; then
 			echo "Removing DKMS symlink: $dkms_link"

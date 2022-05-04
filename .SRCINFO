@@ -1,7 +1,7 @@
 pkgbase = arch-sign-modules
 	pkgdesc = Signed (In Tree & Out of Tree) Kernel Modules for linux linux-lts linux-hardened linux-zen + AUR kernels
 	pkgver = 0.3.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/itoffshore/Arch-SKM
 	install = arch-sign-modules.install
 	arch = x86_64
