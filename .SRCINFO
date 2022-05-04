@@ -1,6 +1,6 @@
-pkgbase = include-what-you-use
+pkgbase = include-what-you-use-clang13-git
 	pkgdesc = A tool for use with clang to analyze #includes in C and C++ source files
-	pkgver = 0.17
+	pkgver = r1091.fbd921d
 	pkgrel = 1
 	url = http://include-what-you-use.org
 	install = iwyu.install
@@ -15,7 +15,7 @@ pkgbase = include-what-you-use
 	depends = clang>=13.0
 	depends = clang<14.0
 	depends = python3
-	source = https://github.com/include-what-you-use/include-what-you-use/archive/0.17.tar.gz
-	sha512sums = 2439e3dd37163d3953fc1e45614fb4325be093a162f25d0f45fa8126b2313942a7c8d45ed12454dfbfeb4cb4fcf2f4e3eebdc0ec5da14dad23533f7a0bf58290
+	source = include-what-you-use::git+https://github.com/include-what-you-use/include-what-you-use#branch=clang_13
+	sha512sums = SKIP
 
-pkgname = include-what-you-use
+pkgname = include-what-you-use-clang13-git
