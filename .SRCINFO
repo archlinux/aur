@@ -1,0 +1,16 @@
+pkgbase = python-editables
+	pkgdesc = A Python library for creating 'editable wheels'
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/pfmoore/editables
+	arch = any
+	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python
+	source = https://files.pythonhosted.org/packages/source/e/editables/editables-0.3.tar.gz
+	sha256sums = 167524e377358ed1f1374e61c268f0d7a4bf7dbd046c656f7b410cde16161b1a
+
+pkgname = python-editables
