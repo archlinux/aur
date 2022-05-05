@@ -8,7 +8,7 @@
 pkgname=vmware-vmrc
 pkgver=12.0.1
 pkgrel=2
-pkgdesc='VMWare Remote Console'
+pkgdesc='VMware Remote Console'
 arch=('x86_64')
 url="https://www.vmware.com/go/download-vmrc"
 license=('custom:vmware')
