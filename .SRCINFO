@@ -1,6 +1,6 @@
 pkgbase = lte-cell-scanner-git
 	pkgdesc = An OpenCL accelerated TDD/FDD LTE Scanner
-	pkgver = r20.3152eb7
+	pkgver = r24.bef6ef4
 	pkgrel = 1
 	url = https://github.com/JiaoXianjun/LTE-Cell-Scanner
 	arch = i686

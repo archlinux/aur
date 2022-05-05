@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=lte-cell-scanner-git
-pkgver=r20.3152eb7
+pkgver=r24.bef6ef4
 pkgrel=1
 pkgdesc="An OpenCL accelerated TDD/FDD LTE Scanner"
 arch=('i686' 'x86_64')
