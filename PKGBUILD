@@ -6,7 +6,7 @@ pkgbase="python-${_pkgname}"
 pkgname=("${pkgbase}" "${pkgbase}-cuda")
 pkgver=1.11.0
 _pkgver=1.11.0
-pkgrel=6
+pkgrel=7
 _pkgdesc='Tensors and Dynamic neural networks in Python with strong GPU acceleration'
 pkgdesc="${_pkgdesc}"
 arch=('x86_64')
@@ -61,6 +61,7 @@ source=("${_pkgname}-${pkgver}::git+https://github.com/pytorch/pytorch.git#tag=v
         fix_include_system.patch
         use-system-libuv.patch
         fix-building-for-torchvision.patch
+        98f9ff90268ae62ab6d794cce0786121bf17edc9.patch
         ffmpeg4.4.patch)
 sha256sums=('SKIP'
             'SKIP'
@@ -104,6 +105,7 @@ sha256sums=('SKIP'
             '557761502bbd994d9795bef46779e4b8c60ba0b45e7d60841f477d3b7f28a00a'
             'cd9ac4aaa9f946ac5eafc57cf66c5c16b3ea7ac8af32c2558fad0705411bb669'
             '600bd6a4bbcec9f99ab815d82cee1c2875530b2b75f4010da5ba72ce9bf31aff'
+            'cf6ec8e4952765b190e1cae247a814dd1e6b3e9c8b3ad5600118d69d6faa6eb5'
             '75001b59e76831b0c93a547f851cb980e00b0d8cc7b66fb507eaeac217dc6ff9')
 options=('!lto')
 
@@ -160,6 +162,9 @@ prepare() {
 
   # https://bugs.archlinux.org/task/64981
   patch -N torch/utils/cpp_extension.py "${srcdir}"/fix_include_system.patch
+
+  # Fix https://bugs.archlinux.org/task/74593
+  patch -Np1 -i "${srcdir}"/98f9ff90268ae62ab6d794cce0786121bf17edc9.patch
 
   # Use system libuv
   patch -Np1 -i "${srcdir}"/use-system-libuv.patch
