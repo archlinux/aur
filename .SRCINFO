@@ -1,6 +1,6 @@
 pkgbase = juicefs-oss
 	pkgdesc = A distributed POSIX file system built on top of Redis and S3. (FOSS version)
-	pkgver = 1.0.0beta2
+	pkgver = 1.0.0beta3
 	pkgrel = 1
 	url = https://github.com/juicedata/juicefs
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = juicefs-oss
 	makedepends = go
 	depends = glibc
 	conflicts = juicefs
-	source = juicefs-1.0.0-beta2.tar.gz::https://github.com/juicedata/juicefs/archive/refs/tags/v1.0.0-beta2.tar.gz
-	sha256sums = a93984b8a4f18928e34aff6cfbdf893d74a64b8ec977a68fe259a2efb13f4aad
+	source = juicefs-1.0.0-beta3.tar.gz::https://github.com/juicedata/juicefs/archive/refs/tags/v1.0.0-beta3.tar.gz
+	sha256sums = 5a52ac1516e23e07086292a155ba734dda0852543c1f89251a69411b9451f7e4
 
 pkgname = juicefs-oss
