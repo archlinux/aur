@@ -6,12 +6,12 @@
 
 pkgname=ebview-git
 pkgver=r64.390e6ed
-pkgrel=1
+pkgrel=2
 pkgdesc="A GTK2 based EPWING dictionary viewer."
 arch=('i686' 'x86_64')
 url="http://ebview.sourceforge.net"
 license=('GPL')
-depends=('gtk2' 'libeb' 'pangox-compat')
+depends=('gtk2' 'libeb' 'pango')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
