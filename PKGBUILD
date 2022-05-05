@@ -4,7 +4,7 @@
 _pkgname=openvpn3-linux
 pkgname=openvpn3
 pkgver=17_beta
-pkgrel=3
+pkgrel=4
 pkgdesc='OpenVPN 3 Linux client'
 arch=('any')
 url="https://github.com/OpenVPN/$_pkgname"
