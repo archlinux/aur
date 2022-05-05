@@ -51,8 +51,6 @@ package_gstreamer0.10-ugly-plugins() {
   pkgdesc="GStreamer Multimedia Framework Ugly Plugins (gst-plugins-ugly)"
   depends=('gstreamer0.10-ugly' 'libdvdread' 'lame' 'twolame' 'libmpeg2' 'a52dec' 'libmad' 'libcdio' 'libx264' 'opencore-amr')
   groups=('gstreamer0.10-plugins')
-  replaces=('gstreamer0.10-dvdread' 'gstreamer0.10-mpeg2dec' 'gstreamer0.10-mad' 'gstreamer0.10-lame' 'gstreamer0.10-a52dec')
-  conflicts=('gstreamer0.10-dvdread' 'gstreamer0.10-mpeg2dec' 'gstreamer0.10-mad' 'gstreamer0.10-lame' 'gstreamer0.10-a52dec')
 
   cd ${_pkgname}-${pkgver}
   make -C ext DESTDIR="${pkgdir}" install
