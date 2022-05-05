@@ -1,11 +1,11 @@
-# $Id$
-# Maintainer: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
-# Previous maintainer: Allan McRae <allan@archlinux.org>
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Giovanni 'ItachiSan' Santini <giovannisantini93@yahoo.it>
+# Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
 
 pkgname=make-3.81
 pkgver=3.81
-pkgrel=3
+pkgrel=4
 pkgdesc="GNU make utility to maintain groups of programs (3.81 version)"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/make"
@@ -23,7 +23,7 @@ validpgpkeys=('3D2554F0A15338AB9AF1BB9D96B047156338B6D4') # Paul Smith
 sha256sums=('16b77de9f013bcd536b7bc1efbe314223aedfe250f9063e33cbb4dfd347215a2'
             'SKIP'
             '7145e958d5209c3de5a40fe77f71141363dadfbbe7a206826d7b7d7c09c8f98f'
-            '4a4c500fce66348a1d6a46d6bfb97263d90c4a9441aea6a42f7b0f3decedd8d8')
+            '24831f321e7ecc0c9c9daa13ae3397922cd46dc1e7e21636d3e16bc181f2a30c')
 
 prepare() {
     cd ${srcdir}/${pkgname}
