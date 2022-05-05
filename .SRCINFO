@@ -1,0 +1,13 @@
+pkgbase = python-udbserver
+	pkgdesc = Python bindings for udbserver
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/bet4it/udbserver
+	arch = x86_64
+	license = MIT
+	depends = udbserver
+	depends = python-unicorn-git
+	source = https://files.pythonhosted.org/packages/source/u/udbserver/udbserver-0.1.tar.gz
+	sha256sums = a5c3ef3585787d73d035412a6645bfee5b7e13c7a2822ecb2ac3a0445e18c26f
+
+pkgname = python-udbserver
