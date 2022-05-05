@@ -1,4 +1,4 @@
-# Maintainer: graysky <graysky AT archlinux DOT us>
+# Maintainer: graysky <therealgraysky AT protonmail DOT com>
 # Contributor: germar <germar DOT reitze AT gmail DOT com>
 
 pkgname=(backintime backintime-cli)
