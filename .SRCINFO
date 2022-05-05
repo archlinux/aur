@@ -1,0 +1,13 @@
+pkgbase = brother-mfc-8510dn-lpr-bin
+	pkgdesc = LPR driver for Brother MFC-8510DN printer
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://support.brother.com/g/b/producttop.aspx?c=nz&lang=en&prod=mfc8510dn_eu_as_cn
+	arch = i686
+	arch = x86_64
+	groups = base-devel
+	license = EULA
+	source = https://download.brother.com/welcome/dlf006336/mfc8510dnlpr-3.0.0-1.i386.deb
+	md5sums = 887d2cbd9e4fb52e81968f3d805a5b95
+
+pkgname = brother-mfc-8510dn-lpr-bin
