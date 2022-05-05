@@ -1,37 +1,32 @@
+#!/hint/bash -e
 # Maintainer: jason ryan <jasonwryan@gmail.com>
 # Contributor: megadriver <megadriver at gmx dot com>
 # Contributor: Vasil Yonkov <bustervill at gmail dot com>
 # Contributor: Guten Ye <ywzhaifei [at] gmail [dot] com>
 
 pkgname=ruby-build-git
-pkgver=v20211124
+pkgver=20220426.r1.gc0d87ea
 pkgrel=1
 pkgdesc="Compile and install Ruby"
 arch=('any')
-url="https://github.com/rbenv/ruby-build"
+url="https://github.com/rbenv/${pkgname%-git}"
 license=("MIT")
 depends=('bash')
 makedepends=('git')
 provides=('ruby-build')
 conflicts=('ruby-build')
-_gitname="ruby-build"
-source=("git+https://github.com/rbenv/ruby-build.git")
-sha1sums=('SKIP')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
-    cd "$srcdir"/"$_gitname"
-    git describe --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
+  cd "${pkgname%-git}"
+  git describe --long | sed 's/^v//;s/-/.r/;s/-/./'
 }
 
 package() {
-  cd "$srcdir"/"$_gitname"
-
-  mkdir -p "$pkgdir"/usr/bin
-  mkdir -p "$pkgdir"/usr/share/ruby-build
-
-  cp bin/* "$pkgdir"/usr/bin
-  cp share/ruby-build/* "$pkgdir"/usr/share/ruby-build
-  install -D -m644 LICENSE "$pkgdir"/usr/share/licenses/"$_gitname"/LICENSE
+  cd "${pkgname%-git}"
+  PREFIX="$pkgdir/usr" ./install.sh
+  install -D -m644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:
