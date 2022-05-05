@@ -1,7 +1,7 @@
 pkgbase = udp-over-tcp
 	pkgdesc = Proxy UDP traffic over a TCP stream
 	pkgver = 0.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/mullvad/udp-over-tcp
 	arch = i686
 	arch = x86_64

@@ -2,7 +2,7 @@
 
 pkgname=udp-over-tcp
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Proxy UDP traffic over a TCP stream"
 arch=('i686' 'x86_64')
 url="https://github.com/mullvad/udp-over-tcp"
@@ -15,7 +15,7 @@ sha256sums=('2879d579533154b7825b59c22bb9287a99cc017e0377fe2526313822eebd1ba6')
 package() {
   cd "$srcdir"/udp-over-tcp-"$pkgver"
 
-  cargo install \
+  RUSTUP_TOOLCHAIN=stable cargo install \
     --all-features \
     --no-track \
     --locked \
