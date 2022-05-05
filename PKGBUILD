@@ -1,6 +1,6 @@
 # Maintainer: Martin Piatka <(lastname) @ cesnet.cz>
 pkgname='ultragrid-git'
-pkgver=v1.7.r292.gf642e68e
+pkgver=v1.7.r559.g5313a342
 pkgrel=1
 pkgdesc='Low-latency audio and video network transmission system (from git)'
 arch=('x86_64')
@@ -23,7 +23,7 @@ optdepends=(
 	'v4l-utils: v4l device support (webcams, etc.)'
 	'sdl2: SDL sw. display support'
 	'glew: OpenGL sw. display support'
-	'freeglut: OpenGL sw. display support'
+	'glfw: OpenGL sw. display support'
 	'glm: 360 video displays support'
 	'openxr: 360 video hmd display support'
 	'cuda: gpu accelerated FEC, DXT'

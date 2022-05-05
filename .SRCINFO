@@ -1,6 +1,6 @@
 pkgbase = ultragrid-git
 	pkgdesc = Low-latency audio and video network transmission system (from git)
-	pkgver = v1.7.r292.gf642e68e
+	pkgver = v1.7.r559.g5313a342
 	pkgrel = 1
 	url = https://www.ultragrid.cz/
 	arch = x86_64
@@ -16,7 +16,7 @@ pkgbase = ultragrid-git
 	optdepends = v4l-utils: v4l device support (webcams, etc.)
 	optdepends = sdl2: SDL sw. display support
 	optdepends = glew: OpenGL sw. display support
-	optdepends = freeglut: OpenGL sw. display support
+	optdepends = glfw: OpenGL sw. display support
 	optdepends = glm: 360 video displays support
 	optdepends = openxr: 360 video hmd display support
 	optdepends = cuda: gpu accelerated FEC, DXT
