@@ -7,6 +7,7 @@ url="https://github.com/Baldomo/asusctltray"
 license=("MIT")
 arch=("any")
 depends=("python3" "supergfxctl" "asusctl")
+makedepends=("git")
 provides=("asusctltray")
 source=("${pkgname%-git}::git+https://github.com/Baldomo/asusctltray.git")
 md5sums=("SKIP")
