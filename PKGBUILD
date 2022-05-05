@@ -1,27 +1,18 @@
 # Maintainer: Tony <tony@libpcap.net>
 
 pkgname=rocksdb-lite
-pkgver=6.22.1
+pkgver=7.1.2
 pkgrel=1
 pkgdesc='Embedded key-value store for fast storage (lite version)'
 arch=(i686 x86_64)
 url='http://rocksdb.org'
 license=('Apache')
 depends=('gperftools' 'zlib' 'bzip2' 'lz4' 'snappy' 'gcc-libs')
-checkdepends=('python2')
+checkdepends=('python')
 conflicts=('rocksdb')
 provides=('rocksdb')
 source=("https://github.com/facebook/rocksdb/archive/v${pkgver}.tar.gz")
-sha256sums=('2df8f34a44eda182e22cf84dee7a14f17f55d305ff79c06fb3cd1e5f8831e00d')
-
-prepare() {
-    cd "${srcdir}/rocksdb-${pkgver}"
-
-    sed -e 's/\bpython\b/python2/' -i Makefile
-    if [ "$CARCH"  == "armv6h" ]; then
-        sed -e 's/-momit-leaf-frame-pointer//' -i Makefile
-    fi
-}
+sha256sums=('4dded5503a87098d55084dbb1f88eebbf1078ea4b827e9508fdb4c9fccb98977')
 
 build() {
     cd "${srcdir}/rocksdb-${pkgver}"

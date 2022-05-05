@@ -1,12 +1,12 @@
 pkgbase = rocksdb-lite
 	pkgdesc = Embedded key-value store for fast storage (lite version)
-	pkgver = 6.22.1
+	pkgver = 7.1.2
 	pkgrel = 1
 	url = http://rocksdb.org
 	arch = i686
 	arch = x86_64
 	license = Apache
-	checkdepends = python2
+	checkdepends = python
 	depends = gperftools
 	depends = zlib
 	depends = bzip2
@@ -15,7 +15,7 @@ pkgbase = rocksdb-lite
 	depends = gcc-libs
 	provides = rocksdb
 	conflicts = rocksdb
-	source = https://github.com/facebook/rocksdb/archive/v6.22.1.tar.gz
-	sha256sums = 2df8f34a44eda182e22cf84dee7a14f17f55d305ff79c06fb3cd1e5f8831e00d
+	source = https://github.com/facebook/rocksdb/archive/v7.1.2.tar.gz
+	sha256sums = 4dded5503a87098d55084dbb1f88eebbf1078ea4b827e9508fdb4c9fccb98977
 
 pkgname = rocksdb-lite
