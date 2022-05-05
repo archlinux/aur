@@ -20,7 +20,8 @@ pkgname="${_pkgname}${_major}"
 #_minor='301'; _bundleid='245050'; _hash='d3c52aa6bfa54d3ca74e617f18309292'
 #_minor='311'; _bundleid='245469'; _hash='4d5417147a92418ea8b615e228bb6935'
 #_minor='321'; _bundleid='245797'; _hash='df5ad55fdd604472a86a45a217032c7d'
-_minor='331'; _bundleid='246255'; _hash='165374ff4ea84ef0bbd821706e29b123'
+#_minor='331'; _bundleid='246255'; _hash='165374ff4ea84ef0bbd821706e29b123'
+_minor='333'; _bundleid='246464'; _hash='2dee051a5d0647d5be72a7c0abff270e'
 pkgver="${_major}u${_minor}"
 pkgrel='1'
 pkgdesc="Oracle Java ${_major} Runtime Environment"
@@ -74,9 +75,9 @@ source=(
   #"https://download.oracle.com/otn-pub/java/jdk/${pkgver}-${_build}/${_hash}/${_pkgname}-${pkgver}-linux-x64.tar.gz" # Now /otn/, Oracle sso required
   "policytool-${_jname}.desktop"
 )
-md5sums=('e42fa60ad2d9f6f2f1fb0cda71a5a7a9'
+md5sums=('184faa4b0793807684ce69cbc0568ded'
          'ef3ff483db5d38ed106e0b819006bdae')
-sha256sums=('88bb4e5ad9afada2bf53c575e96cc9ac12ab443ac5c4a4a2fd03642e46f49512'
+sha256sums=('c847b7ec9b15f8677551258aca886f46dd05de122473b32377b4cccd9b8b7b7f'
             '614b2a74b53728b7914c1407126a7ecfed781a79fb11e9963528c7cad39dbca8')
 
 #PKGEXT='.pkg.tar.zst' # gz is much faster than .xz, zst is much faster than gz
