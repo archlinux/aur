@@ -1,13 +1,13 @@
 pkgbase = scaleft-url-handler
 	pkgdesc = ScaleFT(TM) URL handler
-	pkgver = 1.58.0
+	pkgver = 1.60.0
 	pkgrel = 1
 	url = https://scaleft.com
 	arch = any
 	license = custom
 	depends = scaleft-client-tools-bin
 	depends = python
-	source = https://pkg.scaleft.com/rpm/scaleft-url-handler-1.58.0-1.noarch.rpm
-	sha256sums = 7ffb65c5218997af17177317459f73cc190b61f090b5733a48cbf23e21c04218
+	source = https://pkg.scaleft.com/rpm/scaleft-url-handler-1.60.0-1.noarch.rpm
+	sha256sums = 14708f248dda22dad0714683add1078e421e86edb7be6bd01c4331baebf72708
 
 pkgname = scaleft-url-handler
