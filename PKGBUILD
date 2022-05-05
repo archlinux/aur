@@ -1,4 +1,5 @@
-# Maintainer: 4679 <4679@pm.me>
+# Maintainer 2021-2021: 4679 <4679@pm.me>
+# Maintainer 2022-: spyophobia <76800505+spyophobia@users.noreply.github.com>
 # Co-Maintainer: DuckSoft <realducksoft@gmail.com>
 
 pkgname=shadowsocks-rust-bin
