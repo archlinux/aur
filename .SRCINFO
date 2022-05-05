@@ -1,7 +1,7 @@
 pkgbase = python-pytorch-rocm
 	pkgdesc = Tensors and Dynamic neural networks in Python with strong GPU acceleration
 	pkgver = 1.11.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pytorch.org
 	arch = x86_64
 	license = BSD
@@ -78,6 +78,7 @@ pkgbase = python-pytorch-rocm
 	source = fix_include_system.patch
 	source = use-system-libuv.patch
 	source = fix-building-for-torchvision.patch
+	source = 98f9ff90268ae62ab6d794cce0786121bf17edc9.patch
 	source = ffmpeg4.4.patch
 	source = https://github.com/pytorch/pytorch/commit/eb4e6ca30c2cd876007cd2dbbdea7f7803af0518.patch
 	sha256sums = SKIP
@@ -122,6 +123,7 @@ pkgbase = python-pytorch-rocm
 	sha256sums = 557761502bbd994d9795bef46779e4b8c60ba0b45e7d60841f477d3b7f28a00a
 	sha256sums = cd9ac4aaa9f946ac5eafc57cf66c5c16b3ea7ac8af32c2558fad0705411bb669
 	sha256sums = 600bd6a4bbcec9f99ab815d82cee1c2875530b2b75f4010da5ba72ce9bf31aff
+	sha256sums = cf6ec8e4952765b190e1cae247a814dd1e6b3e9c8b3ad5600118d69d6faa6eb5
 	sha256sums = 75001b59e76831b0c93a547f851cb980e00b0d8cc7b66fb507eaeac217dc6ff9
 	sha256sums = SKIP
 
