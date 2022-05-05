@@ -14,4 +14,3 @@ pkgbase = libevhtp-git
 	sha256sums = SKIP
 
 pkgname = libevhtp-git
-
