@@ -1,4 +1,5 @@
 src
 pkg
-vg
-*pkg.tar.xz
+vg-git
+*.pkg.tar.*
+tags
