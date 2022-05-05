@@ -1,0 +1,15 @@
+pkgbase = python-wora-git
+	pkgdesc = Write once run anywhere, a python library with general purpose utilities.
+	pkgver = 0.1.6
+	pkgrel = 1
+	url = https://github.com/jmdaemon/wora
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python-toml
+	provides = python-wora
+	conflicts = python-wora
+	source = python-wora-git::git+https://github.com/jmdaemon/wora#branch=master
+	sha512sums = SKIP
+
+pkgname = python-wora-git
