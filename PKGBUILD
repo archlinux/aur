@@ -1,16 +1,8 @@
-# Maintainer: Martchus <martchus@gmx.net>
+# Maintainer: Dominic Meiser <git at msrd0 dot de>
+# Contributor: Martchus <martchus@gmx.net>
 # Based on: AUR packages qt6-base-git and mingw-w64-qt6-base-git, official qt5-base package
 
-# All my PKGBUILDs are managed at https://github.com/Martchus/PKGBUILDs where
-# you also find the URL of a binary repository.
-
-# This file is created from PKGBUILD.sh.ep contained by the mentioned repository.
-# Do not edit it manually! See README.md in the repository's root directory
-# for more information.
-
-# All patches are managed at https://github.com/Martchus/qtbase
-
-pkgname=mingw-w64-qt6-base-static
+pkgname=mingw-w64-qt6-base-static-nosql
 _qtver=6.3.0
 pkgver=${_qtver/-/}
 pkgrel=1
@@ -18,15 +10,15 @@ arch=(any)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
 pkgdesc='A cross-platform application and UI framework (mingw-w64)'
-depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-libjpeg-turbo' 'mingw-w64-sqlite'
+depends=('mingw-w64-crt' 'mingw-w64-zlib' 'mingw-w64-libjpeg-turbo'
          'mingw-w64-libpng' 'mingw-w64-openssl' 'mingw-w64-dbus' 'mingw-w64-harfbuzz'
          'mingw-w64-brotli' 'mingw-w64-pcre2' 'mingw-w64-zstd')
-makedepends=('mingw-w64-cmake-static' 'mingw-w64-postgresql' 'mingw-w64-mariadb-connector-c'
+makedepends=('mingw-w64-cmake-static'
              'mingw-w64-vulkan-headers' 'mingw-w64-vulkan-icd-loader' 'mingw-w64-pkg-config'
              'qt6-base' 'ninja')
-optdepends=('mingw-w64-postgresql: PostgreSQL driver'
-            'mingw-w64-mariadb-connector-c: MariaDB driver'
-            'qt6-base: development tools')
+optdepends=('qt6-base: development tools')
+provides=("mingw-w64-qt6-base-static=$pkgver")
+conflicts=('mingw-w64-qt6-base-static')
 options=('!strip' '!buildflags' 'staticlibs' '!emptydirs')
 groups=(mingw-w64-qt6)
 _pkgfqn="qtbase-everywhere-src-${_qtver}"
@@ -72,7 +64,6 @@ build() {
       -DFEATURE_system_pcre2=ON \
       -DFEATURE_system_freetype=ON \
       -DFEATURE_system_harfbuzz=ON \
-      -DFEATURE_system_sqlite=ON \
       -DINSTALL_BINDIR=lib/qt6/bin \
       -DINSTALL_DOCDIR=share/doc/qt6 \
       -DINSTALL_ARCHDATADIR=lib/qt6 \
@@ -80,8 +71,9 @@ build() {
       -DINSTALL_INCLUDEDIR=include/qt6 \
       -DINSTALL_MKSPECSDIR=lib/qt6/mkspecs \
       -DINSTALL_EXAMPLESDIR=share/doc/qt6/examples \
-      -DINPUT_openssl=linked
-    VERBOSE=1 cmake --build build-$_arch
+      -DINPUT_openssl=linked \
+      -DQT_FEATURE_sql=OFF
+    cmake --build build-$_arch
   done
 }
 
