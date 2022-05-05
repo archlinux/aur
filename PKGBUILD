@@ -6,7 +6,7 @@ packager='Natalia Portillo <claunia@claunia.com>'
 pkgbase='aaru-git'
 pkgname=('aaru-git')
 pkgver=v6.0.0.3f0f4f1a
-pkgrel=1
+pkgrel=2
 pkgdesc='Disc image management and creation tool for disks, tapes, optical and solid state media'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='http://www.aaru.app'
@@ -17,7 +17,7 @@ options=('!strip' 'staticlibs')
 sha256sums=('SKIP')
 provides=('aaru')
 conflicts=('aaru')
-depends=('icu' 'krb5' 'libcurl.so' 'libunwind' 'openssl-1.0' 'zlib')
+depends=('icu70' 'krb5' 'libcurl.so' 'libunwind' 'openssl-1.0' 'zlib')
 
 if [ $arch == 'aarch64' ]; then
     dotnet_rid=linux-arm64
