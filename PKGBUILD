@@ -1,6 +1,6 @@
 # Maintainer: Ariejan de Vroom <ariejan[at]devroom[dot]io>
 pkgname=txdx
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Todo's like you've never seen before"
 arch=('x86_64')
@@ -9,8 +9,8 @@ license=('GPL2')
 depends=('gtk3' 'zenity')
 makedepends=('clang' 'ninja' 'cmake' 'git' 'unzip' 'flutter')
 
-source=("https://gitlab.devroom.io/ariejan/txdx/-/archive/1.1.2/txdx-1.1.2.tar.gz")
-sha256sums=('bbd42b7f034c84715a2d4fe42dc9f4de08d03f1021c8f3c0e84690f674824397')
+source=("https://gitlab.devroom.io/ariejan/txdx/-/archive/1.1.3/txdx-1.1.3.tar.gz")
+sha256sums=('f4eae4f50c6f081c0b64f91453a0696f46c111266daaf9ec7880b31dcf4512d9')
 
 prepare() {
 	_flutter_dir="${srcdir}/flutter"

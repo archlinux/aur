@@ -1,6 +1,6 @@
 pkgbase = txdx
 	pkgdesc = Todo's like you've never seen before
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://www.txdx.eu
 	arch = x86_64
@@ -13,7 +13,7 @@ pkgbase = txdx
 	makedepends = flutter
 	depends = gtk3
 	depends = zenity
-	source = https://gitlab.devroom.io/ariejan/txdx/-/archive/1.1.2/txdx-1.1.2.tar.gz
-	sha256sums = bbd42b7f034c84715a2d4fe42dc9f4de08d03f1021c8f3c0e84690f674824397
+	source = https://gitlab.devroom.io/ariejan/txdx/-/archive/1.1.3/txdx-1.1.3.tar.gz
+	sha256sums = f4eae4f50c6f081c0b64f91453a0696f46c111266daaf9ec7880b31dcf4512d9
 
 pkgname = txdx
