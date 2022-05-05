@@ -1,7 +1,7 @@
 # Maintainer: Thomas Quillan <tjquillan@gmail.com>
 
 pkgname=harmonoid-bin
-pkgver=0.2.1_hotfix2
+pkgver=0.2.2
 pkgrel=1
 pkgdesc="Elegant music app to play & manage music library. Lyrics & playlists. YouTube Music support."
 arch=("x86_64")
