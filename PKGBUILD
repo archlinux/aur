@@ -1,4 +1,4 @@
-# Maintainer: graysky <graysky AT archlinux DOT us>
+# Maintainer: graysky <therealgraysky AT protonmail DOT com>
 
 pkgname=flac2all
 _commit=ffc9dc6762c1cb5249f497e20378081d40f60f85
