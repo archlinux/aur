@@ -26,7 +26,7 @@ validpgpkeys=()
 
 pkgver() {
         cd "${_pkgname}"
-        printf "${pkgname}.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+        printf "gtfobins.explorer.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
