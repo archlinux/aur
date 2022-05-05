@@ -17,4 +17,3 @@ pkgbase = orion-git
 	sha256sums = SKIP
 
 pkgname = orion-git
-
