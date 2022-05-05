@@ -1,4 +1,4 @@
-# Maintainer: graysky <graysky AT archlinux dot us>
+# Maintainer: graysky <therealgraysky AT protonmail DOT com>
 # Contributor: Chrysalis <mindaxis@gmail.com>
 
 pkgname=mprime-bin
