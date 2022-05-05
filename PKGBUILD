@@ -17,7 +17,7 @@ pkgname=(
 )
 pkgver=18.0.1.u2
 pkgrel=1
-pkgdesc="Java OpenJFX 17 client application platform (open-source implementation of JavaFX)"
+pkgdesc="Java OpenJFX client application platform (open-source implementation of JavaFX) - latest version"
 arch=(x86_64)
 url=https://wiki.openjdk.java.net/display/OpenJFX/Main
 license=(custom)
