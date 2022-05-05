@@ -1,18 +1,19 @@
-# Maintainer: farwayer <farwayer@gmail.com>
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: farwayer <farwayer@gmail.com>
 
 _gemname=retriable
 pkgname=ruby-$_gemname
 pkgver=3.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Retriable is an simple DSL to retry failed code blocks with randomized exponential backoff'
 arch=(any)
-url='http://github.com/kamui/retriable'
+url='https://rubygems.org/gems/retriable'
 license=(MIT)
 depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha1sums=('ea7e34ceb39e6185b57d654992c0ade6985b18b9')
+sha256sums=('0a5a5d0ca4ba61a76fb31a17ab8f7f80281beb040c329d34dfc137a1398688e0')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
