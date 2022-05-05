@@ -1,5 +1,5 @@
 # vim:set ts=2 sw=2 et:
-# Maintainer graysky <graysky AT archlinux DOT us>
+# Maintainer graysky <therealgraysky AT protonmail DOT com>
 # Contributor: BlackIkeEagle < ike DOT devolder AT gmail DOT com >
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: DonVla <donvla@users.sourceforge.net>
