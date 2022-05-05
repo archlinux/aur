@@ -1,6 +1,6 @@
 pkgbase = logc-git
 	pkgdesc = A simple logging library implemented in C99
-	pkgver = 1.f9ea349
+	pkgver = rf9ea349
 	pkgrel = 1
 	url = https://github.com/rxi/log.c
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = logc-git
 	makedepends = make
 	provides = logc
 	conflicts = logc
-	source = pkgname::git+https://github.com/rxi/log.c#branch=master
+	source = logc::git+https://github.com/rxi/log.c#branch=master
 	sha512sums = SKIP
 
 pkgname = logc-git
