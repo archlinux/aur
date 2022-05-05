@@ -1,6 +1,6 @@
 # Maintainer: Y7n05h <Y7n05h(aT)protonmail--d0t--com>
 pkgname=matrixone
-pkgver=0.3.0
+pkgver=0.4.0
 pkgrel=1
 pkgdesc='Planet scale, cloud-edge native big data engine crafted for heterogeneous workloads'
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('Apache')
 makedepends=('go')
 depends=('glibc')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('7da976de74dbaad827aca2c96cb242a373832c57caf2526243cc8d43b3f20d0a')
+sha256sums=('66fffaf8abc6829ef9fa5c6f5d861c3a1ce4be9813650721a5d98f284172a961')
 
 prepare(){
   cd "$pkgname-$pkgver"
