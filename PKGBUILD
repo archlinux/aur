@@ -2,7 +2,7 @@
 
 pkgbase=snowball-git
 pkgname=(snowball-git libstemmer-git)
-pkgver=v2.2.0.r1.gfda00a2
+pkgver=2.2.0.r2.g3f8581b
 pkgrel=1
 pkgdesc="String processing language for creating stemming algorithms"
 arch=(x86_64)
@@ -18,13 +18,14 @@ sha256sums=('SKIP'
 prepare() {
     cd "${pkgbase}"
 
-    patch -Np1 -i ../dynamiclib.patch
+    rm -f libstemmer/symbol.map
+    patch -f -Np1 -i ../dynamiclib.patch
 }
 
 pkgver() {
     cd "${pkgbase}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 build() {
