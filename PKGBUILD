@@ -1,20 +1,17 @@
-# Maintainer: lsf
-# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
-# Contributor: Ionut Biru <ibiru@archlinux.org>
-# Contributor: Jakub Schmidtke <sjakub@gmail.com>
+# Maintainer: lsf <lsf at pfho dot net>
 
 pkgname=librewolf
 _pkgname=LibreWolf
-pkgver=99.0.1
-pkgrel=4
+pkgver=100.0
+pkgrel=2
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 aarch64)
 license=(MPL GPL LGPL)
-url="https://librewolf-community.gitlab.io/"
+url="https://librewolf.net/"
 depends=(gtk3 libxt mime-types dbus-glib nss ttf-font libpulse ffmpeg)
 makedepends=(unzip zip diffutils yasm mesa imake inetutils xorg-server-xvfb
              autoconf2.13 rust clang llvm jack nodejs cbindgen nasm
-             python-setuptools python-psutil python-zstandard git binutils lld dump_syms
+             python-setuptools python-zstandard git binutils lld dump_syms
              wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi pciutils) # pciutils: only to avoid some PGO warning
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
@@ -27,8 +24,8 @@ backup=('usr/lib/librewolf/librewolf.cfg'
 options=(!emptydirs !makeflags !strip !lto !debug)
 _arch_git=https://raw.githubusercontent.com/archlinux/svntogit-packages/packages/firefox/trunk
 _source_tag="${pkgver}-${pkgrel}"
-# _source_commit='94365400be86a22b7aaaba86627c0aca7dc8f50a' # not 'stable', but current source head
-_settings_tag='6.3'
+# _source_commit='63e85e5a55c9efc38b9ff45e822fb55c076f045a' # not 'stable', but current source head
+_settings_tag='6.4'
 # _settings_commit='1a84d38bab56551f9ec2650644c4906650e75603' # hottest of fixes: 6.1 with a pref fix on top ^^
 install='librewolf.install'
 source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-$pkgver.source.tar.xz{,.asc}
@@ -36,21 +33,17 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         "git+https://gitlab.com/${pkgname}-community/browser/source.git#tag=${_source_tag}"
         "git+https://gitlab.com/${pkgname}-community/settings.git#tag=${_settings_tag}"
         "default192x192.png"
-        "0028-bgo-831903-pip-dont-fail-with-optional-deps.patch"
-        "0029-skip-pip-check.patch"
-        "0031-pgo-use-toolchain-disable-watchdog-fix-on-gcc.patch"
+        "0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch"
         )
-source_aarch64=("${pkgver}-${pkgrel}_psutil-remove-version-cap.patch::https://github.com/archlinuxarm/PKGBUILDs/raw/434abe24fa6bc70940b2f1e69e047af38b4be68a/extra/firefox/psutil-remove-version-cap.patch")
-sha256sums=('76d22279ce99588a728bb2d034064be0d5918b5900631f2148d4565b8a72e00b'
+# source_aarch64=()
+sha256sums=('664c0cc4e0fb70886aa4e652d144996045d533a18eebc7d61093103cbb2d5e7f'
             'SKIP'
-            '0b28ba4cc2538b7756cb38945230af52e8c4659b2006262da6f3352345a8bed2'
+            '21054a5f41f38a017f3e1050ccc433d8e59304864021bef6b99f0d0642ccbe93'
             'SKIP'
             'SKIP'
             '959c94c68cab8d5a8cff185ddf4dca92e84c18dccc6dc7c8fe11c78549cdc2f1'
-            '582303b7d97dae11f1c760e129be03e270a0800a0bae9e140c032e57ae00c06d'
-            '35eaa5ad3ade5351dc072f7e3e240265818d40c77c637dfdb492a91128b65d27'
-            '9dd0d63d46e478b0a80c2ea80bddb3075f622864caa88e0bdc8f218c41d240ed')
-sha256sums_aarch64=('2bb0ac385b54972eb3e665ac70fb13565ed9da77b33349b844b2e0ad4948cff5')
+            'ea172cd8ade700fc46e9afcdec52718d9fea17bb7ddf93c75b3b6bb4944cef78')
+# sha256sums_aarch64=()
 validpgpkeys=('14F26682D0916CDD81E37B6D61B7B526D98F0353') # Mozilla Software Releases <release@mozilla.com>
 
 # change this to false if you do not want to run a PGO build for aarch64 as well
@@ -70,6 +63,13 @@ mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 ac_add_options --disable-tests
 ac_add_options --disable-debug
 
+# TODO: use source/assets/moczonfig in the future
+# NOTE: let us use it for one last build, otherwise, there might be some conflicts
+mk_add_options MOZ_CRASHREPORTER=0
+mk_add_options MOZ_DATA_REPORTING=0
+mk_add_options MOZ_SERVICES_HEALTHREPORT=0
+mk_add_options MOZ_TELEMETRY_REPORTING=0
+
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
 ac_add_options --enable-hardening
@@ -85,16 +85,6 @@ ac_add_options --enable-update-channel=release
 ac_add_options --with-app-name=${pkgname}
 
 # ac_add_options --with-app-basename=${_pkgname}
-
-# switch to env vars like in librewolf source repo
-# this is in browser/branding/librewolf/configure.sh as well
-# so it _should_ already be applied, buuuuut just in case?
-
-MOZ_APP_NAME=${pkgname}
-MOZ_APP_BASENAME=${_pkgname}
-MOZ_APP_PROFILE=${pkgname}
-MOZ_APP_VENDOR=${_pkgname}
-MOZ_APP_DISPLAYNAME=${_pkgname}
 
 ac_add_options --with-branding=browser/branding/${pkgname}
 # ac_add_options --with-distribution-id=io.gitlab.${pkgname}-community
@@ -112,14 +102,6 @@ ac_add_options --enable-alsa
 ac_add_options --enable-jack
 ac_add_options --disable-crashreporter
 ac_add_options --disable-updater
-ac_add_options --disable-tests
-
-# obsoleted?
-# TODO: use source/assets/moczonfig in the future
-mk_add_options MOZ_CRASHREPORTER=0
-mk_add_options MOZ_DATA_REPORTING=0
-mk_add_options MOZ_SERVICES_HEALTHREPORT=0
-mk_add_options MOZ_TELEMETRY_REPORTING=0
 
 # options for ci / weaker build systems
 # mk_add_options MOZ_MAKE_FLAGS="-j4"
@@ -146,15 +128,6 @@ END
   # patch -Np1 -i ${_patches_dir}/arm.patch # not required anymore?
   # patch -Np1 -i ../${pkgver}-${pkgrel}_build-arm-libopus.patch
 
-  # https://github.com/archlinuxarm/PKGBUILDs/commit/434abe24fa6bc70940b2f1e69e047af38b4be68a
-  # Firefox 98+ fails to draw its window on aarch64.
-  # Upstream: https://bugzilla.mozilla.org/show_bug.cgi?id=1757571
-
-  # Also add a hack to remove the psutil version cap, since otherwise it
-  # fails to build with the latest python-psutil version (for no reason).
-
-  patch -Np1 -i ../${pkgver}-${pkgrel}_psutil-remove-version-cap.patch
-
 else
 
   cat >>../mozconfig <<END
@@ -174,13 +147,11 @@ fi
   # patch -Np1 -i ${srcdir}/0001-Use-remoting-name-for-GDK-application-names.patch
 
   # upstream patches from gentoo
-  # hopefully fixing the pip issues people have every now and then
-
-  patch -Np1 -i ../0028-bgo-831903-pip-dont-fail-with-optional-deps.patch
-  patch -Np1 -i ../0029-skip-pip-check.patch
 
   # pgo improvements
-  patch -Np1 -i ../0031-pgo-use-toolchain-disable-watchdog-fix-on-gcc.patch
+  patch -Np1 -i ../0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
+
+  # pip issues seem to be fixed upstream?
 
   # LibreWolf
 
@@ -218,11 +189,6 @@ fi
   patch -Np1 -i ${_patches_dir}/context-menu.patch
   patch -Np1 -i ${_patches_dir}/urlbarprovider-interventions.patch
 
-
-  # allow overriding the color scheme light/dark preference with RFP
-  # deprecated, will probably be dropped soon
-  # patch -Np1 -i ${_patches_dir}/allow_dark_preference_with_rfp.patch
-
   # change some hardcoded directory strings that could lead to unnecessarily
   # created directories
   patch -Np1 -i ${_patches_dir}/mozilla_dirs.patch
@@ -230,6 +196,9 @@ fi
   # somewhat experimental patch to fix bus/dbus/remoting names to io.gitlab.librewolf
   # should not break things, buuuuuuuuuut we'll see.
   patch -Np1 -i ${_patches_dir}/dbus_name.patch
+
+  # add v100 about dialog
+  patch -Np1 -i ${_patches_dir}/aboutLogos.patch
 
   # allow uBlockOrigin to run in private mode by default, without user intervention.
   patch -Np1 -i ${_patches_dir}/allow-ubo-private-mode.patch
@@ -270,6 +239,9 @@ fi
   # add warning that sanitizing exceptions are bypassed by the options in History > Clear History when LibreWolf closes > Settings
   patch -Np1 -i ${_patches_dir}/ui-patches/sanitizing-description.patch
 
+  # add patch to hide website appearance settings
+  patch -Np1 -i ${_patches_dir}/ui-patches/website-appearance-ui-rfp.patch
+
   #
   patch -Np1 -i ${_patches_dir}/ui-patches/handlers.patch
 
@@ -293,15 +265,10 @@ build() {
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
   # export MOZ_ENABLE_FULL_SYMBOLS=1
-  export MACH_USE_SYSTEM_PYTHON=1
+  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
 
   # LTO needs more open files
   ulimit -n 4096
-
-  # -fno-plt with cross-LTO causes obscure LLVM errors
-  # LLVM ERROR: Function Import: link error
-  # CFLAGS="${CFLAGS/-fno-plt/}"
-  # CXXFLAGS="${CXXFLAGS/-fno-plt/}"
 
   # Do 3-tier PGO
   echo "Building instrumented browser..."
@@ -395,6 +362,7 @@ END
 
   local distini="$pkgdir/usr/lib/$pkgname/distribution/distribution.ini"
   install -Dvm644 /dev/stdin "$distini" <<END
+
 [Global]
 id=io.gitlab.${pkgname}-community
 version=1.0
