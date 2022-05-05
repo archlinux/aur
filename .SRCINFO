@@ -1,0 +1,15 @@
+pkgbase = snipesharp
+	pkgdesc = Minecraft Name Sniper
+	pkgver = 1.7.6
+	pkgrel = 1
+	url = https://github.com/snipesharp/snipesharp
+	arch = arm64
+	arch = x86_64
+	license = GPL3
+	makedepends = dotnet-sdk
+	provides = snipesharp
+	options = !strip
+	source = git+https://github.com/snipesharp/snipesharp
+	md5sums = SKIP
+
+pkgname = snipesharp
