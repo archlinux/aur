@@ -1,13 +1,13 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=code-features-insiders
 pkgver=1.66.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Unblock some features in Code OSS, including features in VSCode Insiders'
 arch=('any')
 url='https://github.com/microsoft/vscode'
 license=('unknown')
-depends=('code' 'sed')
-optdepends=('org.freedesktop.secrets: for settings sync feature')
+depends=('code' 'sed' 'org.freedesktop.secrets')
+optdepends=()
 provides=('code-features')
 conflicts=('code-features')
 install="${pkgname}.install"

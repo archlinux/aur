@@ -1,14 +1,14 @@
 pkgbase = code-features-insiders
 	pkgdesc = Unblock some features in Code OSS, including features in VSCode Insiders
 	pkgver = 1.66.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/microsoft/vscode
 	install = code-features-insiders.install
 	arch = any
 	license = unknown
 	depends = code
 	depends = sed
-	optdepends = org.freedesktop.secrets: for settings sync feature
+	depends = org.freedesktop.secrets
 	provides = code-features
 	conflicts = code-features
 	source = code-features-insiders.hook
