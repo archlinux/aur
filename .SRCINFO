@@ -1,0 +1,26 @@
+pkgbase = php-dbus-git
+	pkgdesc = Extension for interaction with DBUS busses
+	pkgver = r90.b147624
+	pkgrel = 1
+	url = https://github.com/derickr/pecl-dbus
+	arch = aarch64
+	arch = armv7h
+	arch = i486
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	license = PHP
+	makedepends = dbus
+	makedepends = git
+	makedepends = libxml2
+	depends = php
+	provides = php-dbus=r90.b147624
+	conflicts = php-dbus
+	backup = etc/php/conf.d/dbus.ini
+	source = php-dbus::git+https://github.com/derickr/pecl-dbus.git
+	b2sums = SKIP
+
+pkgname = php-dbus-git
+	depends = php
+	depends = libdbus-1.so
+	depends = libxml2.so
