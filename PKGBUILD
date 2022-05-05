@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=nauz-file-detector-git
-pkgver=0.06.r440.g71ad86a
+pkgver=0.08.r6.g11a5fbf
 pkgrel=1
 pkgdesc="Nauz File Detector is a portable linker/compiler/packer identifier utility."
 arch=(x86_64)
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 prepare() {
@@ -51,5 +51,5 @@ package() {
 
 	install -Dm755 build/release/nfd "${pkgdir}/usr/bin/nfd"
 	install -Dm755 build/release/nfdc "${pkgdir}/usr/bin/nfdc"
-	install -Dm644 DEBIAN/nfd.desktop "${pkgdir}/usr/share/applications/nfd.desktop"
+	install -Dm644 LINUX/nfd.desktop "${pkgdir}/usr/share/applications/nfd.desktop"
 }
