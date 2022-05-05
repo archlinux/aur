@@ -1,6 +1,6 @@
 pkgbase = assh-git
 	pkgdesc = make your ssh client smarter https://manfred.life/assh
-	pkgver = 2.11.3
+	pkgver = 2.12.2
 	pkgrel = 1
 	url = https://github.com/moul/assh.git
 	arch = any
@@ -12,4 +12,3 @@ pkgbase = assh-git
 	sha256sums = SKIP
 
 pkgname = assh-git
-
