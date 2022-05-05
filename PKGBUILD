@@ -2,7 +2,7 @@
 pkgname=hexyl-git
 pkgdesc="A command-line hex viewer"
 pkgrel=1
-pkgver=v0.9.0.r7.g27f039d
+pkgver=v0.9.0.r26.ga23645d
 arch=('i686' 'x86_64')
 conflicts=("hexyl")
 provides=("hexyl")
