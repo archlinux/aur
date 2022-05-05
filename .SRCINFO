@@ -1,7 +1,7 @@
 pkgbase = jfrog-cli
 	pkgdesc = Simple interface to Artifactory, Bintray and Mission Control
 	pkgver = 2.16.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jfrog/jfrog-cli
 	arch = x86_64
 	license = Apache
