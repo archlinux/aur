@@ -1,6 +1,6 @@
 pkgbase = darch-conf
 	pkgdesc = Configuration files, scripts and packages for an Archcraft based system
-	pkgver = 2.4.2
+	pkgver = 2.4.1
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/quiode/DARCH
@@ -76,6 +76,7 @@ pkgbase = darch-conf
 	depends = mopidy-local
 	depends = mopidy-mpd
 	depends = heroic-games-launcher-bin
+	depends = seahorse
 	source = flatpak.txt
 	source = snap.txt
 	source = DARCH
