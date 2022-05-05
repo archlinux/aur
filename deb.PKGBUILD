@@ -12,9 +12,9 @@ arch=('any')
 #manually version for now
 pkgver='0.6.0'
 _pkgver=${pkgver}
-pkgrel=3
+pkgrel=4
 _pkgrel=${pkgrel}
-#pkgrel=3
+#pkgrel=4
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 url="https://${_pkggopath}"
 license=()
@@ -27,7 +27,7 @@ _scripts="skywire-deb-scripts"
 source=( "${url}/archive/refs/tags/v${pkgver}.tar.gz"
 "${_scripts}.tar.gz"  )
 sha256sums=('f1c6ae2dbe36cda0767855ac1b8676751358ca782e2c3d8ee16ba9b0de9b2bc3'
-            '85cea451eec057fa7e734548ca3ba6d779ed5836a3f9de14b8394575ef0d7d8e')
+            '1ff213945f7c009572f71fdf00aea28c464996fbc4bf946b03c8787ac0cd47d9')
 
 #tar -czvf skywire-deb-scripts.tar.gz skywire-deb-scripts
 #updpkgsums deb.PKGBUILD
@@ -46,10 +46,6 @@ local GOBIN=${GOPATH}/bin
 local _GOAPPS=${GOPATH}/apps
 local GOOS=linux
 export CC=musl-gcc
-
-#create read only cache binary
-cd ${srcdir}/${_scripts}/skycache
-go build -trimpath --ldflags '-s -w -linkmode external -extldflags "-static" -buildid=' -o $GOBIN/ skycache.go
 
 #create the skywire binaries
 cd ${srcdir}/go/src/${_pkggopath}
@@ -81,7 +77,6 @@ echo "Architecture: ${_pkgarch}" >> ${srcdir}/control
 echo "Depends: ${_debdeps}" >> ${srcdir}/control
 echo "Maintainer: skycoin" >> ${srcdir}/control
 echo "Description: ${pkgdesc}" >> ${srcdir}/control
-
 }
 
 #speed up the build for testing - there's a risk of using old binaries.
@@ -95,7 +90,6 @@ if [[ ! -f ${_GOHERE}/${_binname} ]] ; then #don't waste time rebuilding existin
   go build -trimpath --ldflags '-s -w -linkmode external -extldflags "-static" -buildid=' -o $_GOHERE/ .
 fi
 }
-
 
 package() {
 _msg2 'creating dirs'
@@ -129,14 +123,13 @@ for i in ${_skywireapps}; do
   _install2 ${srcdir}/go/apps/${i} ${_skyapps}
 done
 
-
 _msg2 'installing scripts'
 _skywirescripts=$( ls ${srcdir}/${_scripts}/${_pkgname} )
 for i in ${_skywirescripts}; do
   _install2 ${srcdir}/${_scripts}/${_pkgname}/${i} ${_skyscripts}
 done
 
-mv ${_pkgdir}/usr/bin/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}
+ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}
 
 _msg2 'installing dmsghttp-config.json'
 install -Dm644 ${srcdir}/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
