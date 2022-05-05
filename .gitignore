@@ -9,3 +9,5 @@ sources-*.zip
 android-sources-*.pkg.tar.xz
 src
 pkg
+*.zst
+*.log
