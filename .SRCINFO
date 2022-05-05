@@ -1,0 +1,13 @@
+pkgbase = animdustry
+	pkgdesc = the anime gacha bullet hell rhythm game; originally created as a mindustry april 1st event
+	pkgver = 1.1
+	pkgrel = 1
+	arch = x86_64
+	source = https://github.com/Anuken/animdustry/releases/download/v1.1/animdustry_1_1_linux
+	source = https://github.com/Anuken/animdustry/raw/master/assets-raw/icon.png
+	source = animdustry.desktop
+	md5sums = 5f845eee753b34f5c2044fabccd24091
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = animdustry

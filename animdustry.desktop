@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Animdustry
+Type=Application
+Category=Games
+Exec=/usr/bin/animdustry
+Icon=/usr/share/animdustry/icon.png
