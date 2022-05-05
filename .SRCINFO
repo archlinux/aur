@@ -1,0 +1,17 @@
+pkgbase = python-esbonio
+	pkgdesc = A language server for working with Sphinx projects.
+	pkgver = 0.11.1
+	pkgrel = 1
+	url = https://github.com/swyddfa/esbonio
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python-appdirs
+	depends = python-sphinx
+	depends = python-pygls
+	depends = python-pyspellchecker
+	depends = python-typing_extensions
+	source = https://files.pythonhosted.org/packages/49/79/1d19be7c08399f003c4a797697e080b4cc91eadb4b27a75ea43258f0460f/esbonio-0.11.1.tar.gz
+	sha256sums = e18e5f90b944a850e90a75a60841ff628a5746eb9664e8676e17f87bafd94c34
+
+pkgname = python-esbonio
