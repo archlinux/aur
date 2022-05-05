@@ -1,4 +1,5 @@
-# Maintainer: graysky <graysky AT archlinux dot us>
+# Maintainer: graysky <therealgraysky AT protonmail DOT com>
+
 pkgname=modprobed-db
 pkgver=2.46
 pkgrel=1
