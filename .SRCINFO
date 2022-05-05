@@ -1,6 +1,6 @@
 pkgbase = ark-git
 	pkgdesc = Archiving Tool
-	pkgver = r3038.f42c580
+	pkgver = 22.04.0.r13.g3981425a
 	pkgrel = 1
 	url = http://kde.org/applications/utilities/ark/
 	arch = i686
@@ -10,9 +10,11 @@ pkgbase = ark-git
 	makedepends = git
 	makedepends = kdoctools-git
 	makedepends = python
+	depends = kparts-git
 	depends = kpty-git
-	depends = khtml-git
-	depends = libarchive
+	depends = libarchive-git
+	depends = libzip
+	depends = kitemmodels-git
 	depends = hicolor-icon-theme
 	optdepends = p7zip
 	optdepends = zip
@@ -20,9 +22,7 @@ pkgbase = ark-git
 	optdepends = unrar
 	provides = ark
 	conflicts = ark
-	conflicts = kdeutils-ark
-	source = git://anongit.kde.org/ark.git
+	source = git+https://invent.kde.org/utilities/ark.git
 	md5sums = SKIP
 
 pkgname = ark-git
-

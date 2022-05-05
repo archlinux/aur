@@ -1,24 +1,33 @@
-# Maintainer: Alexey D. <lq07829icatm at rambler.ru>
+# Contributor: Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: Alexey D. <lq07829icatm at rambler.ru>
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 
 pkgname=ark-git
-pkgver=r3038.f42c580
+pkgver=22.04.0.r13.g3981425a
 pkgrel=1
 pkgdesc="Archiving Tool"
 arch=(i686 x86_64)
 url='http://kde.org/applications/utilities/ark/'
 license=(GPL)
-depends=(kpty-git khtml-git libarchive hicolor-icon-theme)
+depends=(kparts-git kpty-git libarchive-git libzip kitemmodels-git hicolor-icon-theme)
 makedepends=(extra-cmake-modules-git git kdoctools-git python)
 optdepends=(p7zip zip unzip unrar)
 provides=(ark)
-conflicts=(ark kdeutils-ark)
-source=('git://anongit.kde.org/ark.git')
+conflicts=(ark)
+source=('git+https://invent.kde.org/utilities/ark.git')
 md5sums=('SKIP')
 
 pkgver() {
-  cd ark
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  cd ${pkgname%-git}
+
+  # Generate git tag based version. Count only proper v#.#* [#=number] tags.
+  local _gitversion=$(git describe --long --tags --match 'v[0-9][0-9.][0-9.]*' | sed -e 's|^v||' | tr '[:upper:]' '[:lower:]') 
+
+  # Format git-based version for pkgver
+  echo "${_gitversion}" | sed \
+    -e 's|^\([0-9][0-9.]*\)-\([a-zA-Z]\+\)|\1\2|' \
+    -e 's|\([0-9]\+-g\)|r\1|' \
+    -e 's|-|.|g'
 }
 
 prepare() {
