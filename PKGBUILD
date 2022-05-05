@@ -1,4 +1,4 @@
-# Maintainer: graysky <graysky AT archlinux DOT us>
+# Maintainer: graysky <therealgraysky AT protonmail DOT com>
  
 pkgname=speedtest-netperf
 _commit=463590e2bcf94e09890f7ba98e910ff58090e29b
