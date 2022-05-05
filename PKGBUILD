@@ -1,9 +1,9 @@
 # Maintainer: Lev Levitsky <levlev@mail.ru>
 pkgbase="percolator-git"
-pkgname=('percolator-git' 'percolator-converters-git' 'elude-git')
-pkgver=3.05.r137.ge806a0c5
+pkgname=('percolator-git' 'percolator-converters-git')
+pkgver=3.05.r140.g74a8b157
 pkgrel=1
-pkgdesc="Software for postprocessing of shotgun proteomics data + format converters + Elude tool"
+pkgdesc="Software for postprocessing of shotgun proteomics data + format converters"
 url="http://percolator.ms/"
 license=('Apache')
 depends=('xerces-c' 'sqlite' 'libtirpc-compat' 'boost')
@@ -48,16 +48,6 @@ build() {
     echo "Running make for percolator-converters ..."
     echo ".........................................."
     make -j 4
-    echo "------------------------"
-    echo "Building Elude ..."
-    echo "------------------------"
-    cd "../${pkgname[2]%-git}"
-    echo "Running cmake for elude ..."
-    echo "..........................."
-    cmake -DTARGET_ARCH=x86_64 -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release "${srcdir}/source/src/elude_tool"
-    echo "Running make for elude ..."
-    echo ".........................."
-    make -j 4
 }
 
 package_percolator-git() {
@@ -80,12 +70,4 @@ package_percolator-converters-git() {
     make DESTDIR="$pkgdir/" install
 }
 
-package_elude-git() {
-    pkgdesc="Software package for prediction of retention times in mass spectorometry experiments."
-    name="${pkgname[2]%-git}"
-    provides=("$name")
-    conflicts=("$name")
 
-    cd "$BUILDDIR/$name"
-    make DESTDIR="$pkgdir/" install
-}

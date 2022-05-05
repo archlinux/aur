@@ -1,6 +1,6 @@
 pkgbase = percolator-git
-	pkgdesc = Software for postprocessing of shotgun proteomics data + format converters + Elude tool
-	pkgver = 3.05.r137.ge806a0c5
+	pkgdesc = Software for postprocessing of shotgun proteomics data + format converters
+	pkgver = 3.05.r140.g74a8b157
 	pkgrel = 1
 	url = http://percolator.ms/
 	arch = x86_64
@@ -23,10 +23,5 @@ pkgname = percolator-git
 
 pkgname = percolator-converters-git
 	pkgdesc = Parsers of different database search engines to percolator input format.
-	provides = 
-	conflicts = 
-
-pkgname = elude-git
-	pkgdesc = Software package for prediction of retention times in mass spectorometry experiments.
 	provides = 
 	conflicts = 
