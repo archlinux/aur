@@ -1,19 +1,19 @@
 # Maintainer: Valters Tomsons <valters.tomsons at protonmail dot com>
 
 pkgname="dsbattery"
-pkgver=1.2.1
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="DualShock 4 controller utility for status bars"
 arch=('x86_64' 'aarch64')
 url='https://github.com/valters-tomsons/dsbattery'
 license=('MIT')
 
-makedepends=('dotnet-sdk>=5.0.0')
+makedepends=('dotnet-sdk>=6.0.0')
 optdepends=('bluez-tools: disconnect support')
 
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/valters-tomsons/dsbattery/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('2642c5a91c530a6b89a25dc5a490340d721f1b2f1ffcebc9393bb7cc56ef86bd')
+sha256sums=('2672b4881d8fb4e6a8d0876e6e759c767db6dcacba61e8a1e706d24455c2c348')
 
 _outputdir="Release"
 
@@ -21,11 +21,11 @@ build() {
     cd "$pkgname-$pkgver"
 
     # Determine RID for build
-    case $CARCH in "aarch64") RID=arm64;;
-    "x86_64") RID=x64;;
+    case $CARCH in "aarch64") RID=arm64 ;;
+    "x86_64") RID=x64 ;;
     esac
-    
-    dotnet publish -c Release -r linux-"${RID}" -o="${_outputdir}"
+
+    dotnet publish -c Release --self-contained -r linux-"${RID}" -o="${_outputdir}"
 }
 
 package() {
