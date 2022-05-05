@@ -12,9 +12,9 @@ arch=('any')
 #manually version for now
 pkgver='0.6.0'
 _pkgver=${pkgver}
-pkgrel=4
+pkgrel=5
 _pkgrel=${pkgrel}
-#pkgrel=4
+#pkgrel=5
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 url="https://${_pkggopath}"
 license=()
@@ -25,8 +25,10 @@ _debdeps=""
 _scripts="skywire-deb-scripts"
 #source=("git+${url}.git#branch=${BRANCH:-develop}"
 source=( "${url}/archive/refs/tags/v${pkgver}.tar.gz"
+"${url}/raw/develop/dmsghttp-config.json"
 "${_scripts}.tar.gz"  )
 sha256sums=('f1c6ae2dbe36cda0767855ac1b8676751358ca782e2c3d8ee16ba9b0de9b2bc3'
+            'dcb3b8bc1f6fa58dd64b95045b8b010489352c815f737bf2cbf8812973a8dc49'
             '1ff213945f7c009572f71fdf00aea28c464996fbc4bf946b03c8787ac0cd47d9')
 
 #tar -czvf skywire-deb-scripts.tar.gz skywire-deb-scripts
@@ -141,6 +143,7 @@ install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-visor.service ${_pkgdir
 _msg2 'installing desktop files and icon'
 install -Dm644 ${srcdir}/${_scripts}/desktop/com.skywire.Skywire.desktop ${_pkgdir}/usr/share/applications/com.skywire.Skywire.desktop
 install -Dm644 ${srcdir}/${_scripts}/desktop/skywire.png ${_pkgdir}/${_skydir}/icon.png
+mkdir -p ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/
 ln -rTsf ${_pkgdir}/${_skydir}/icon.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/skywire.png
 
 _msg2 'installing skywire control file, postinst & postrm scripts'

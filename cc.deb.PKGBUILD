@@ -5,8 +5,8 @@ _githuborg=${_projectname}
 pkgdesc="Skywire Mainnet Node implementation. Debian package; cross-compile."
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 pkgver=0.6.0
-pkgrel=4
-#pkgrel=4
+pkgrel=5
+#pkgrel=5
 arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
 url="https://${_pkggopath}"
 license=()
@@ -21,9 +21,11 @@ _debdeps=""
 install=skywire.install
 _scripts="skywire-deb-scripts"
 source=("${url}/archive/refs/tags/v${pkgver}.tar.gz"
+"${url}/raw/develop/dmsghttp-config.json"
 "${_scripts}.tar.gz"
 )
 sha256sums=('f1c6ae2dbe36cda0767855ac1b8676751358ca782e2c3d8ee16ba9b0de9b2bc3'
+            'dcb3b8bc1f6fa58dd64b95045b8b010489352c815f737bf2cbf8812973a8dc49'
             '1ff213945f7c009572f71fdf00aea28c464996fbc4bf946b03c8787ac0cd47d9')
 #tar -czvf skywire-deb-scripts.tar.gz skywire-deb-scripts
 #updpkgsums deb.PKGBUILD
@@ -165,6 +167,7 @@ install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-autoconfig-remote.servi
 _msg2 'installing desktop files and icon'
 install -Dm644 ${srcdir}/${_scripts}/desktop/com.skywire.Skywire.desktop ${_pkgdir}/usr/share/applications/com.skywire.Skywire.desktop
 install -Dm644 ${srcdir}/${_scripts}/desktop/skywire.png ${_pkgdir}/${_skydir}/icon.png
+mkdir -p ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/
 ln -rTsf ${_pkgdir}/${_skydir}/icon.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/skywire.png
 
 _msg2 'installing control file and install scripts'
