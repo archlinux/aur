@@ -1,0 +1,14 @@
+pkgbase = udbserver
+	pkgdesc = Unicorn Emulator Debug Server
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/bet4it/udbserver
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	makedepends = cargo-c
+	depends = unicorn-git
+	source = https://github.com/bet4it/udbserver/archive/0.1.0.tar.gz
+	sha256sums = cf90ea5ede2e18cf20e71236d78680d8380ca83f4d395dcfd8a0e776cf89d80e
+
+pkgname = udbserver
