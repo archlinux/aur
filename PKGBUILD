@@ -4,7 +4,7 @@ pkgname=avvie
 _reponame=Avvie
 pkgver=2.1
 _commit=e42f8833a59c516ce112b0797a2a031801568e6a
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility for quickly cropping images"
 arch=(x86_64)
 url=https://github.com/Taiko2k/Avvie
@@ -16,7 +16,8 @@ depends=(gtk4
          python-gobject
          python-piexif
          python-pillow)
-makedepends=(git)
+makedepends=(git meson)
+checkdepends=(appstream-glib)
 source=("git+$url.git#commit=$_commit")
 md5sums=(SKIP)
 
