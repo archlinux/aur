@@ -3,16 +3,16 @@
 # Contributor: Giacomo Longo <gabibbo97@gmail.com>
 
 pkgname=kubebuilder-bin
-pkgver=3.4.0
-pkgrel=2
+pkgver=3.4.1
+pkgrel=1
 pkgdesc="SDK for building Kubernetes APIs"
 url="https://github.com/kubernetes-sigs/kubebuilder"
 license=('APACHE')
 conflicts=('kubebuilder')
 source_x86_64=("https://github.com/kubernetes-sigs/kubebuilder/releases/download/v${pkgver}/kubebuilder_linux_amd64")
 source_aarch64=("https://github.com/kubernetes-sigs/kubebuilder/releases/download/v${pkgver}/kubebuilder_linux_arm64")
-sha256sums_x86_64=('cf90dad16d27a9c31db11f2c326aad926036610a75be03f342e28136ae64cf47')
-sha256sums_aarch64=('9b6fb03d1fe4e0d6ce55baa37af6336affc3f5f3bf34ff03b433b35fd6dfc816')
+sha256sums_x86_64=('1cf6330f697a6d54d75954f09014772c66cb4361e21db445d2dcdb756bc3759e')
+sha256sums_aarch64=('dbc0b12c3c37d69b0c759d6e36f5c5068013ed76eafe233c78ed9c771fc88311')
 arch=('x86_64' 'aarch64')
 
 package() {
