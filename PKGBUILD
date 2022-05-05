@@ -2,7 +2,7 @@
 
 _gemname=can_cli
 pkgname=can
-pkgver=0.1.8
+pkgver=0.2.0
 pkgrel=1
 pkgdesc='Command-line trash manager'
 arch=(any)
@@ -12,7 +12,7 @@ depends=(ruby ruby-highline)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('a99a9b4a132b5c4db28e880c1bbef82f1ec06a2512d0412e63cbbaf3fc6bdedd')
+sha256sums=('f7cfeb025e0699712a3594ed10bd470f491704af36cb5431884aa6535ab2b4f3')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
