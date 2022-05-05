@@ -2,7 +2,7 @@
 
 pkgname=macterial-theme-git
 _pkgname=macterial
-pkgver=v2.3.1.r15.g95c184c
+pkgver=2.3.1.r15.g95c184c
 pkgrel=1
 pkgdesc="A mac inspired Gtk+ theme based on Material design"
 arch=("any")
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 pkgver() {
   	cd "${srcdir}/${_pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 build() {
