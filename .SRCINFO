@@ -4,6 +4,7 @@ pkgbase = ruby-atlassian-jwt
 	pkgrel = 1
 	url = https://rubygems.org/gems/atlassian-jwt
 	arch = any
+	license = Apache
 	depends = ruby
 	depends = ruby-jwt>=2.1.0
 	noextract = atlassian-jwt-0.2.1.gem

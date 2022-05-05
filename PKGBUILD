@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc='Encode and decode JWT tokens for use with the Atlassian Connect REST APIs.'
 arch=(any)
 url='https://rubygems.org/gems/atlassian-jwt'
-license=()
+license=('Apache')
 depends=('ruby' 'ruby-jwt>=2.1.0')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
