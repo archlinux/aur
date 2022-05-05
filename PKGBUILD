@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=go-rainbow-git
-pkgver=v1.2.1.r0.g9e34118
+pkgver=1.2.1.r0.g9e34118
 pkgrel=1
 pkgdesc='Tasty rainbows for your terminal! (lolcat clone)'
 url="https://github.com/arsham/rainbow"
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 prepare() {

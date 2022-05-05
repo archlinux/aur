@@ -1,6 +1,6 @@
 pkgbase = go-rainbow-git
 	pkgdesc = Tasty rainbows for your terminal! (lolcat clone)
-	pkgver = v1.2.1.r0.g9e34118
+	pkgver = 1.2.1.r0.g9e34118
 	pkgrel = 1
 	url = https://github.com/arsham/rainbow
 	arch = x86_64
