@@ -1,0 +1,10 @@
+pkgbase = kubectl-crossplane
+	pkgdesc = Crossplane kubectl plugin
+	pkgver = 1.7.0
+	pkgrel = 0
+	url = https://releases.crossplane.io
+  arch = x86_64
+	license = APACHE
+	source = crossplane::https://releases.crossplane.io/stable/v1.7.0/bin/linux_amd64/crossplane
+	sha512sums = a146104e5bb5e4279d89d798da277e886e4782f02b177a41661491f0fc0573fa5fc7e98ed3a5ac97e298a14d3a7ffcce52060daa8da61131adc1a1f92ead0275 
+pkgname = kubectl-crossplane
