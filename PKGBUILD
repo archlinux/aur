@@ -1,6 +1,6 @@
 # Maintainer: Mario Mansilla <mariomanfer@gmail.com>
 pkgname=gtfobins-explorer-git
-pkgver=.r.
+pkgver=1.0
 pkgrel=1
 epoch=
 pkgdesc="Terminal explorer for GTFOBins web."
