@@ -1,27 +1,25 @@
-# Maintainer: farwayer <farwayer@gmail.com>
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: farwayer <farwayer@gmail.com>
 
 _gemname=google-cloud-env
 pkgname=ruby-${_gemname}
-pkgver=1.2.1
+pkgver=1.6.0
 pkgrel=1
-pkgdesc="google-cloud-env provides information on the Google Cloud Platform hosting environment."
+pkgdesc="Provides information on the Google Cloud Platform hosting environment"
 arch=('any')
-depends=(
-  ruby
-  'ruby-faraday>=0.11' 'ruby-faraday<1'
-)
 url="https://rubygems.org/gems/${_gemname}"
-noextract=($_gemname-$pkgver.gem)
-options=(!emptydirs)
-license=('MIT')
-source=(
-  "https://rubygems.org/downloads/${_gemname}-${pkgver}.gem"
+license=('Apache')
+depends=(
+  'ruby'
+  'ruby-faraday>=0.17.3' 'ruby-faraday<3'
 )
-sha256sums=('271f0233cf6a14964f3d3b91a98e30b6bf31be71ecb15830e85f9ad18736c0fa')
+options=('!emptydirs')
+source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
+noextract=("$_gemname-$pkgver.gem")
+sha256sums=('6179acb946975892c7908748df5722a4ebadfc8cf5bb7b0d8d933ca67183fa15')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" "$_gemname-$pkgver.gem"
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
