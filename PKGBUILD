@@ -13,13 +13,13 @@ makedepends=('cmake')
 checkdepends=()
 optdepends=()
 provides=()
-conflicts=()
+conflicts=()  
 replaces=()
 backup=()
 options=()
 install=
 changelog=
-source=("git://github.com/azonenberg/scopehal-apps" "modules.patch")
+source=("git+https://github.com/azonenberg/scopehal-apps.git" "modules.patch")
 md5sums=('SKIP' 'SKIP')
 validpgpkeys=()
 
