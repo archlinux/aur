@@ -1,4 +1,5 @@
 # Maintainer: grufo <madmurphy333 AT gmail DOT com>
+# Contributor: TheJackiMonster <thejackimonster AT gmail DOT com>
 
 _appname='messenger-gtk'
 pkgname="${_appname}-git"
@@ -8,7 +9,7 @@ pkgdesc='A graphical user interface for GNUnet Messenger'
 arch=('i686' 'x86_64')
 url="https://gnunet.org"
 license=('GPL')
-depends=('gnunet' 'libgnunetchat' 'gtk3' 'libhandy' 'libnotify' 'qrencode'
+depends=('gnunet' 'libgnunetchat-git' 'gtk3' 'libhandy' 'libnotify' 'qrencode'
          'zbar' 'gstreamer')
 provides=("${_appname}")
 conflicts=("${_appname}" "${_appname}-bin")
