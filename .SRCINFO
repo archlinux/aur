@@ -1,23 +1,22 @@
 pkgbase = ruby-signet
-	pkgdesc = Signet is an OAuth 1.0 / OAuth 2.0 implementation.
-	pkgver = 0.12.0
+	pkgdesc = Google's OAuth 1.0 / OAuth 2.0 implementation.
+	pkgver = 0.16.1
 	pkgrel = 1
-	url = https://github.com/google/signet/
+	url = https://rubygems.org/gems/signet
 	arch = any
-	license = Apache-2.0
+	license = Apache
 	depends = ruby
-	depends = ruby-addressable>=2.3
+	depends = ruby-addressable>=2.8
 	depends = ruby-addressable<3
-	depends = ruby-faraday>=0.9
-	depends = ruby-faraday<1
-	depends = ruby-jwt>1.5
+	depends = ruby-faraday>=0.17.5
+	depends = ruby-faraday<3
+	depends = ruby-jwt>=1.5
 	depends = ruby-jwt<3
-	depends = ruby-multi_json>=1.10
+	depends = ruby-multi_json>=1.15
 	depends = ruby-multi_json<2
-	noextract = signet-0.12.0.gem
+	noextract = signet-0.16.1.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/signet-0.12.0.gem
-	sha1sums = e912eb98d64d93cc56a03818dbe3b14136430894
+	source = https://rubygems.org/downloads/signet-0.16.1.gem
+	sha256sums = 016ed0caf471deaa1f58c09b12d11307104682e0b5320f45f4637580fe7b9ecb
 
 pkgname = ruby-signet
-
