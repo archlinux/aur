@@ -1,5 +1,5 @@
-# -*- shell-script -*-
-# Maintainer: Ivan Shapovalov <intelfx@intelfx.name>
+# Maintainer: graysky <therealgraysky AT protonmail DOT com>
+# Contributor: Ivan Shapovalov <intelfx@intelfx.name>
 # Contributor: goodmen <goodmenzy@gmail.com>
 
 pkgname=crosstool-ng-git
@@ -19,8 +19,7 @@ b2sums=('SKIP')
 
 pkgver() {
 	cd crosstool-ng
-
-  git describe --long --tags | sed 's/^crosstool-ng-//;s/-rc/rc/;s/-/.r/;s/-/./'
+  git describe --long | sed -r 's/-([0-9,a-g,A-G]{7}.*)//' | sed 's/-/./g'
 }
 
 prepare () {
