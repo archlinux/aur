@@ -1,6 +1,8 @@
 import os
 import sys
 import glob
+import re
+from pathlib import Path
 from time import sleep
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -22,31 +24,35 @@ def message(msg):
     # sys.stdout.flush()
 
 
+_ldk_filename = "Sentinel_LDK_Linux_Run-time_Installer_script.tar.gz"
+
 def wait_downloading():
     timeout_start = 60
     timeout_download = 60*5
-    for wait_start in range(timeout_start-1):
-        if len(glob.glob(f'{os.getcwd()}/*.part')) > 0:
-            for wait_download in range(timeout_download-1):
-                tmpfiles = glob.glob(f'{os.getcwd()}/*.part')
-                if len(tmpfiles) > 0:
-                    filesize = os.path.getsize(tmpfiles[0])
-                    message(f"Downloading file: {humansize(filesize)}")
-                else:
-                    print("Loading is complete")
-                    return
-                sleep(1)
-            else:
-                if wait_download >= timeout_download:
-                    print("Download interrupted by timeout")
-                return
-        sleep(1)
+    target_path = Path(_ldk_filename)
+    
+    if not (target_path.exists() and target_path.stat().st_size>0):
+        message(f"waiting for download to start {timeout_start} sec.")
+        while not list(Path('.').glob('*.part')) and timeout_start:
+            sleep(1)
+            timeout_start-=1
+        
+        if not list(Path('.').glob('*.part')):
+            raise Exception("Download failed")
+        
+        while (tmp_files:=list(Path('.').glob('*.part'))) and timeout_download:
+            filesize = os.path.getsize(tmp_files[0])
+            message(f"Downloading file: {humansize(filesize)} wait {timeout_download} sec.")
+            sleep(1)
+            timeout_download-=1
 
-    if wait_start >= timeout_start:
-        print("Waiting for download interrupted by timeout")
+        if not (target_path.exists() and target_path.stat().st_size>0):
+            raise Exception("Download failed")
+
+    message("Downloading complete\n")
 
 
-print("Download start..")
+print("Download init..")
 options = webdriver.FirefoxOptions()
 options.headless = True
 options.set_preference("browser.download.folderList", 2)
@@ -64,9 +70,18 @@ try:
     browser.find_element(By.LINK_TEXT, "DOW0003342").click()
 
     browser.find_element(By.CSS_SELECTOR, ".btn-success").click()
-except:
-    pass
-else:
+    
     wait_downloading()
+except:
+    exit(1)
+finally:
+    browser.quit()
 
-browser.quit()
+os.system(f"tar -xvzf {_ldk_filename}")
+for root, dirs, files in os.walk(os.getcwd()):
+    for file in files:
+        if match:=re.match("aksusbd-(\d+\.\d+)\.(\d+)", file):
+            _vers, _rel = match.groups()
+            os.system(f'echo "{_vers} {_rel}">version.txt')
+            exit(0)
+exit(1)

@@ -2,7 +2,7 @@
 # Maintainer: Alexander Konarev (avkonarev) <AVKonarev@gmail.com>
 
 pkgname=aksusbd-bin
-pkgver=8.41
+pkgver=8.41.1
 pkgrel=1
 pkgdesc="Sentinel AKSUSB daemon supporting Sentinel HASP, HASP HL, HASP4 and Hardlock keys."
 arch=('i686' 'x86_64')
@@ -16,16 +16,22 @@ source=(
         "0001-patch.patch"
         "download.py")
 sha256sums=('6fcb6c4fcba1d01c1b3e68258e95297c323b2cbe8ee75c0a14ac0e9006926312'
-            'ad5b14c3eea8acd0195cd2d610958ada9eda05b152a09cf37fa08b934c70593b')
+            '91cb42b81b77b21f29552da1affa3e4d801fef5cbf2910c96f5a728cded952b3')
 makedepends=('libarchive'
             'python'
             'python-pip'
             'firefox'
-            'geckodriver')
+            'geckodriver'
+            'tar')
 
 conflicts=('ehaspd' 'aksusbd')
 options=('!strip')
+_nver=""
+_nrel=""
 
+pkgver() {
+  echo $_nver.$_nrel
+}
 
 prepare(){
   cd $srcdir
@@ -34,11 +40,11 @@ prepare(){
   pip install selenium
   python download.py
   
-  tar -xvzf ${_ldk_filename}.tar.gz
-  tar -xvzf ${_ldk_filename}/aksusbd-${pkgver}.${pkgrel}.tar.gz
+  _nver=$(cat version.txt| cut -d' ' -f 1)
+  _nrel=$(cat version.txt| cut -d' ' -f 2)
+  tar -xvzf ${_ldk_filename}/aksusbd-${_nver}.${_nrel}.tar.gz
 
-  # Extract RPM into $srcdir:
-  bsdtar -xvf ${_pkgname}-${pkgver}.${pkgrel}/pkg/${_pkgname}-${pkgver}-${pkgrel}.${CARCH}.rpm
+  bsdtar -xvf ${_pkgname}-${_nver}.${_nrel}/pkg/${_pkgname}-${_nver}-${_nrel}.${CARCH}.rpm
 
   patch -p1 < 0001-patch.patch
 }
