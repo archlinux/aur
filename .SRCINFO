@@ -1,7 +1,7 @@
 pkgbase = python-torchvision
 	pkgdesc = Datasets, transforms, and models specific to computer vision
 	pkgver = 0.12.0
-	pkgrel = 6
+	pkgrel = 7
 	url = https://github.com/pytorch/vision
 	arch = x86_64
 	license = BSD
@@ -15,7 +15,6 @@ pkgbase = python-torchvision
 	depends = python-pillow
 	depends = python-requests
 	depends = python-scipy
-	depends = python-typing_extensions
 	optdepends = ffmpeg4.4: video reader backend (the recommended one with better performance)
 	optdepends = python-av: video reader backend (the default one)
 	optdepends = python-pycocotools: support for MS-COCO dataset
@@ -31,7 +30,6 @@ pkgname = python-torchvision
 	depends = python-pillow
 	depends = python-requests
 	depends = python-scipy
-	depends = python-typing_extensions
 	depends = python-pytorch
 
 pkgname = python-torchvision-cuda
@@ -40,7 +38,6 @@ pkgname = python-torchvision-cuda
 	depends = python-pillow
 	depends = python-requests
 	depends = python-scipy
-	depends = python-typing_extensions
 	depends = python-pytorch-cuda
 	provides = python-torchvision=0.12.0
 	conflicts = python-torchvision=0.12.0

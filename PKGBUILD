@@ -15,7 +15,7 @@ _CUDA_ARCH_LIST="5.2;5.3;6.0;6.1;6.2;7.0;7.2;7.5;8.0;8.6;8.6+PTX"
 pkgname=('python-torchvision' 'python-torchvision-cuda')
 _pkgname=vision
 pkgver=0.12.0
-pkgrel=6
+pkgrel=7
 pkgdesc='Datasets, transforms, and models specific to computer vision'
 arch=('x86_64')
 url='https://github.com/pytorch/vision'
@@ -25,7 +25,6 @@ depends=(
   python-pillow
   python-requests
   python-scipy
-  python-typing_extensions
 )
 optdepends=(
   'ffmpeg4.4: video reader backend (the recommended one with better performance)'
@@ -75,6 +74,16 @@ build() {
   FORCE_CUDA=1 \
   TORCH_CUDA_ARCH_LIST=${_CUDA_ARCH_LIST} \
   python setup.py build
+}
+
+check() {
+  # check if VideoReader is build
+  # VideoReader depends on ffmpeg
+  PYTHONPATH="${srcdir}/${_pkgname}-${pkgver}/build/lib.linux-${CARCH}-$(get_pyver)" \
+  python -c "from torchvision.io import VideoReader"
+
+  PYTHONPATH="${srcdir}/${_pkgname}-cuda-${pkgver}/build/lib.linux-${CARCH}-$(get_pyver)" \
+  python -c "from torchvision.io import VideoReader"
 }
 
 package_python-torchvision() {
