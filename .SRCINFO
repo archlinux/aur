@@ -1,6 +1,6 @@
 pkgbase = system76-scheduler-git
 	pkgdesc = system76 userspace scheduler
-	pkgver = r22.4b77ff4
+	pkgver = 1.1.0.1.gcbccc2e
 	pkgrel = 1
 	url = https://github.com/pop-os/system76-scheduler
 	install = install.sh
