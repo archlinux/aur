@@ -1,14 +1,15 @@
 pkgbase = libelfin-git
 	pkgdesc = C++11 ELF/DWARF parser
-	pkgver = r148.ac45a09
-	pkgrel = 2
+	pkgver = 0.3.r6.g946dde5
+	pkgrel = 1
 	url = https://github.com/aclements/libelfin
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	depends = glibc
-	source = libelfin-git::git+https://github.com/aclements/libelfin
+	provides = libelfin
+	conflicts = libelfin
+	source = libelfin-git::git+https://github.com/aclements/libelfin.git
 	sha256sums = SKIP
 
 pkgname = libelfin-git
-

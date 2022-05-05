@@ -1,31 +1,33 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=libelfin-git
-pkgver=r148.ac45a09
-pkgrel=2
+pkgver=0.3.r6.g946dde5
+pkgrel=1
 pkgdesc="C++11 ELF/DWARF parser"
 arch=(x86_64)
 url="https://github.com/aclements/libelfin"
 license=(MIT)
 depends=(glibc)
 makedepends=(git)
-source=("$pkgname::git+https://github.com/aclements/libelfin")
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+source=("${pkgname}::git+https://github.com/aclements/libelfin.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd "${srcdir}/${pkgname}"
 
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 build() {
-  cd $pkgname
+  cd "${srcdir}/${pkgname}"
 
   make
 }
 
 package() {
-  cd $pkgname
+  cd "${srcdir}/${pkgname}"
 
-  make PREFIX="$pkgdir/usr" install
+  make PREFIX="${pkgdir}/usr" install
 }
