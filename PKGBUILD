@@ -2,9 +2,9 @@
 
 pkgname=realesrgan-ncnn-vulkan
 _pkgname=Real-ESRGAN-ncnn-vulkan
-pkgver=0.1.3.2
+pkgver=0.2.0
 _pkgver="v$pkgver"
-pkgrel=6
+pkgrel=1
 pkgdesc="NCNN implementation of Real-ESRGAN"
 url="https://github.com/xinntao/Real-ESRGAN-ncnn-vulkan"
 license=('MIT')
@@ -15,12 +15,12 @@ provides=('realesrgan-ncnn-vulkan')
 arch=('x86_64')
 source=(
     "git+https://github.com/xinntao/$_pkgname#tag=${_pkgver}"
-    "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.3.0/realesrgan-ncnn-vulkan-20211212-ubuntu.zip"
+    "https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.5.0/realesrgan-ncnn-vulkan-20220424-ubuntu.zip"
     "realesrgan-ncnn-vulkan"
     )
 
 sha256sums=('SKIP'
-            '9e4b78aa0d7796bbdab06ac50f7a424329920a4ea039655465aeed4cbff4a945'
+            'e5aa6eb131234b87c0c51f82b89390f5e3e642b7b70f2b9bbe95b6a285a40c96'
             '058bc5167a00ff53a6a135ed033797a4d012bdb86e930ba4eb271ab4c848f8df')
 prepare() {
     cd "${srcdir}/${_pkgname}"
@@ -39,8 +39,7 @@ build() {
         -DBUILD_SHARED_LIBS=1 \
         -DUSE_SYSTEM_NCNN=0 \
         -DUSE_SYSTEM_WEBP=1 \
-        -DCMAKE_INSTALL_PREFIX=/usr \
-        -DGLSLANG_TARGET_DIR=/usr/lib/cmake
+        -DCMAKE_INSTALL_PREFIX=/usr
     fi
         make
 
