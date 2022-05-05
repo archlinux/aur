@@ -1,6 +1,6 @@
 # Maintainer: Angelo Gazzola <(firstname) @ nglgzz.com>
 pkgname=neo4j-desktop
-pkgver=1.4.14
+pkgver=1.4.15
 pkgrel=1
 pkgdesc="GUI for managing local and remote Neo4j Graph databases"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=(!strip)
 _appimage="${pkgname}-offline-${pkgver}-${CARCH}.AppImage"
 source=("${_appimage}::https://neo4j.com/artifact.php?name=${_appimage}")
 noextract=("${_appimage}")
-md5sums=('8575972e422f148707af2c3dbb0b6205')
+md5sums=('6125c2433c187e88bfcf80c80e9da1a0')
 
 prepare() {
     chmod +x "${_appimage}"
