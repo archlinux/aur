@@ -1,7 +1,7 @@
 pkgbase = k6
 	pkgdesc = A modern load testing tool, using Go and JavaScript
 	pkgver = 0.38.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/loadimpact/k6
 	arch = x86_64
 	arch = i686
