@@ -2,7 +2,7 @@
 
 pkgname=nordic-polar-theme-git
 _pkgname=Nordic-Polar
-pkgver=v1.9.0.r59.g1e94cba
+pkgver=1.9.0.r64.gceb01d4
 pkgrel=1
 pkgdesc="A Gtk3.20+ theme created using the awesome Nord color palette."
 arch=("any")
@@ -18,7 +18,7 @@ sha256sums=('SKIP')
 pkgver() {
   	cd "${srcdir}/${_pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 build() {
