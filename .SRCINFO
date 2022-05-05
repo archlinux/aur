@@ -1,7 +1,7 @@
 pkgbase = avvie
 	pkgdesc = A utility for quickly cropping images
 	pkgver = 2.1
-	pkgrel = 3
+	pkgrel = 1
 	url = https://github.com/Taiko2k/Avvie
 	arch = x86_64
 	license = GPL3
