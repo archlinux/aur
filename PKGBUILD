@@ -1,5 +1,5 @@
 # Maintainer:  max.bra <max dot bra dot gtalk at gmail dot com>
-# Maintainer:  graysky <graysky AT archlinux DOT us>
+# Maintainer:  graysky <therealgraysky AT protonmail DOT com>
 
 pkgname=pi-hole-server
 _pkgname=pi-hole
