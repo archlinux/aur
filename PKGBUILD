@@ -1,4 +1,4 @@
-# Maintainer: graysky <graysky AT archlinux DOT us>
+# Maintainer: graysky <therealgraysky AT protonmail DOT com>
  
 pkgname=distccd-x86_64
 arch=(armv7h aarch64)
