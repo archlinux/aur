@@ -1,14 +1,14 @@
 pkgbase = markdown-link-check
-	pkgdesc = checks that all of the hyperlinks in a markdown text to determine if they are alive or dead
-	pkgver = 3.10.0
+	pkgdesc = Checks aliveness of hyperlinks in markdown documents
+	pkgver = 3.10.2
 	pkgrel = 1
 	url = https://github.com/tcort/markdown-link-check
 	arch = any
 	license = ICS
 	makedepends = npm
 	depends = nodejs
-	noextract = markdown-link-check-3.10.0.tgz
-	source = https://registry.npmjs.org/markdown-link-check/-/markdown-link-check-3.10.0.tgz
-	sha256sums = c9edea27b7c6b36496ccf9565c157e6cb259102a3ea703bf24299b345e0c7652
+	noextract = markdown-link-check-3.10.2.tgz
+	source = https://registry.npmjs.org/markdown-link-check/-/markdown-link-check-3.10.2.tgz
+	sha256sums = f780e1981804cf6d32c4465891c2d04c4c1ba58e7f7df4803a703555b26b87ab
 
 pkgname = markdown-link-check
