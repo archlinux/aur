@@ -1,9 +1,9 @@
 # Maintainer: Angelo Haller <aur.archlinux@szanni.org>
 pkgname=libui-ng-git
 pkgver=alpha4.1.r484.gbaae3e47
-pkgrel=1
+pkgrel=2
 pkgdesc="A portable GUI library for C."
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/libui-ng/libui-ng"
 license=('MIT')
 depends=('gtk3>=3.10')

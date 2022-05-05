@@ -1,9 +1,10 @@
 pkgbase = libui-ng-git
 	pkgdesc = A portable GUI library for C.
 	pkgver = alpha4.1.r484.gbaae3e47
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/libui-ng/libui-ng
 	arch = x86_64
+	arch = aarch64
 	license = MIT
 	makedepends = git
 	makedepends = meson
