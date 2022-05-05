@@ -1,4 +1,4 @@
-# Maintainer: graysky <graysky AT archlinux DOT us>
+# Maintainer: graysky <therealgraysky AT protonmail DOT com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: Andrea Zucchelli <zukka77@gmail.com>
 # Contributor: Daniel Micay <danielmicay@gmail.com>
