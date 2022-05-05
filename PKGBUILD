@@ -1,7 +1,7 @@
 # Maintainer: Mario Moura <mario.henrique@protonmail.com>
 pkgname=packit
-pkgver=1.7
-pkgrel=2
+pkgver=1.8
+pkgrel=1
 pkgdesc="network packet generator and capture tool"
 arch=('any')
 url="https://github.com/resurrecting-open-source-projects/packit"
@@ -28,6 +28,6 @@ package() {
 	cd "$pkgname"
 	mkdir -p $pkgdir/usr/local/sbin
 	/usr/bin/install  src/packit  $pkgdir/usr/local/sbin
-	mkdir -p $pkgdir/usr/local/share/man/man8
-	/usr/bin/install -m 644 man/packit.8 $pkgdir/usr/local/share/man/man8
+	mkdir -p $pkgdir/usr/local/man/man8
+	/usr/bin/install -m 644 man/packit.8 $pkgdir/usr/local/man/man8
 }
