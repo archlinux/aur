@@ -1,5 +1,5 @@
 pkgbase = calibre-unicode-path
-	pkgdesc = Ebook management application
+	pkgdesc = Ebook management application. With unicode filename and path patch.
 	pkgver = 5.42.0
 	pkgrel = 1
 	url = https://calibre-ebook.com
