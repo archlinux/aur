@@ -259,9 +259,9 @@
         "extra_css": []
       }
     ],
-    "templates_path": "/usr/share/sftpgo/templates",
-    "static_files_path": "/usr/share/sftpgo/static",
-    "openapi_path": "/usr/share/sftpgo/openapi",
+    "templates_path": "templates",
+    "static_files_path": "static",
+    "openapi_path": "openapi",
     "web_root": "",
     "certificate_file": "",
     "certificate_key_file": "",
@@ -328,7 +328,7 @@
     "auth_type": 0,
     "encryption": 0,
     "domain": "",
-    "templates_path": "/usr/share/sftpgo/templates"
+    "templates_path": "templates"
   },
   "plugins": []
 }
