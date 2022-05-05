@@ -2,7 +2,7 @@
 
 _basename=wineasio
 pkgname="${_basename}-git"
-pkgver=1.0.0.r2.g0a97f2f
+pkgver=1.1.0.r0.g56c3e9d
 pkgrel=1
 
 pkgdesc='ASIO driver implementation for Wine'

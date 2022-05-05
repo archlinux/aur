@@ -1,5 +1,6 @@
 src
 pkg
-wineasio-git
-*pkg.tar.xz
+wineasio
+rtaudio
+*.pkg.tar.*
 tags
