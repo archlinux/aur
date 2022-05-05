@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=websocat-git
-pkgver=1.5.0.r6.gbc738c8
+pkgver=1.9.0.r6.g7c95eb7
 pkgrel=1
 pkgdesc="Command-line client for WebSockets"
 arch=(x86_64)
@@ -14,7 +14,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	git describe --long | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 build() {
