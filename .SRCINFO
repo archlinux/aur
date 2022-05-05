@@ -1,0 +1,14 @@
+pkgbase = aurbuilder-git
+	pkgdesc = Build AUR packages on EC2
+	pkgver = r10.768958c
+	pkgrel = 1
+	url = https://github.com/nikicat/archbuilder
+	arch = any
+	license = GPL
+	depends = aws-cli-v2
+	depends = docker
+	depends = openssh
+	source = git+https://github.com/nikicat/archbuilder
+	sha256sums = SKIP
+
+pkgname = aurbuilder-git
