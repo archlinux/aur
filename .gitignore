@@ -1,4 +1,5 @@
 src
 pkg
-libdill
-*pkg.tar.xz
+libdill-git
+*.pkg.tar.*
+tags
