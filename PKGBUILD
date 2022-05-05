@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gotty-git
-pkgver=v2.0.0.alpha.3.r0.ga080c85
-pkgrel=3
+pkgver=2.0.0.alpha.3.r0.ga080c85
+pkgrel=1
 pkgdesc='Share your terminal as a web application'
 url=https://github.com/yudai/gotty
 arch=('any')
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 prepare() {
