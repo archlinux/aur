@@ -1,6 +1,6 @@
 pkgbase = hackrf-git
 	pkgdesc = Driver for HackRF, allowing general purpose software defined radio (SDR).
-	pkgver = v2021.03.1.r38.gac0983fa
+	pkgver = v2021.03.1.r190.g8feda094
 	pkgrel = 1
 	url = https://github.com/mossmann/hackrf
 	arch = i686
