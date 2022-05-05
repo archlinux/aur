@@ -1,54 +1,49 @@
-# Maintainer: Simon Kohlmeyer <simon.kohlmeyer@googlemail.com>
+# Maintainer: Adrien Smith <adrien@panissupraomnia.dev>
+# Contributor: Simon Kohlmeyer <simon.kohlmeyer@googlemail.com>
+
 pkgname=rbenv-git
-pkgver=1.2.0.r14.c6cc0a1
+pkgver=1.2.0.r14.gc6cc0a1
 pkgrel=1
 pkgdesc="Simple Ruby version manager"
-arch=('i686' 'x86_64')
-url="http://github.com/rbenv/rbenv"
-license=('custom:MIT')
-groups=()
-depends=('ruby' 'bash')
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+url="https://github.com/rbenv/rbenv"
+license=('MIT')
+depends=('bash')
 makedepends=('git')
 optdepends=('ruby-build')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-replaces=()
-backup=()
-options=()
 install="rbenv.install"
-source=('git+https://github.com/rbenv/rbenv')
-noextract=()
-md5sums=('SKIP')
+source=('git+https://github.com/rbenv/rbenv.git')
+sha256sums=('SKIP')
 
 
 build() {
-    cd "${pkgname%-git}/src"
-    ./configure
-    make
+    cd "${pkgname%-git}"
+    src/configure
+    make -C src
 }
 
 pkgver() {
-    cd "$srcdir/${pkgname%-git}"
-    printf "%s" "$(git describe --tags --long | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+    cd "${pkgname%-git}"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 package() {
     cd "${pkgname%-git}"
 
-    mkdir -p "$pkgdir/usr/share/licenses/${pkgname}"
-    install -m 644 ./LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm 644 ./LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
 
-    mkdir -p "$pkgdir/usr/lib/rbenv/completions/"
-    install -m 644 ./completions/* "$pkgdir/usr/lib/rbenv/completions/"
+    # mkdir -p "$pkgdir/usr/lib/rbenv/completions/"
+    install -Dm 644 -t "$pkgdir/usr/lib/rbenv/completions/" ./completions/*
 
-    mkdir -p "$pkgdir/usr/lib/rbenv/libexec/"
-    install -m 755 ./libexec/* "$pkgdir/usr/lib/rbenv/libexec/"
+    # mkdir -p "$pkgdir/usr/lib/rbenv/libexec/"
+    install -Dm 755 -t "$pkgdir/usr/lib/rbenv/libexec/" ./libexec/*
 
-    mkdir -p "$pkgdir/usr/bin/"
+    install -d "$pkgdir/usr/bin/"
     ln -s /usr/lib/rbenv/libexec/rbenv "$pkgdir/usr/bin/"
 
-    mkdir -p "$pkgdir/usr/lib/rbenv/hooks/exec/gem-rehash"
-    install -m 644 rbenv.d/exec/gem-rehash/rubygems_plugin.rb \
+    install -Dm 644 rbenv.d/exec/gem-rehash/rubygems_plugin.rb \
         "$pkgdir/usr/lib/rbenv/hooks/exec/gem-rehash/rubygems_plugin.rb"
     install -m 644 rbenv.d/exec/gem-rehash.bash \
         "$pkgdir/usr/lib/rbenv/hooks/exec/gem-rehash.bash"
