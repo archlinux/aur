@@ -1,5 +1,8 @@
 
 ChangeLog for nidaqmx-dummy PKGBUILD
 
+* nidaqmx-dummy-0.0.1-2 (2022-05-05 - AstroFloyd)
+	Make clear in the PKGBUILD how to obtain the source.
+
 * nidaqmx-dummy-0.0.1-1 (2018-09-11 - AstroFloyd)
-	Initial PKGBUILD for nidaqmx-dummy, to be uploaded to AUR
+	Initial PKGBUILD for nidaqmx-dummy, to be uploaded to AUR.
