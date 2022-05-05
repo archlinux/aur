@@ -142,7 +142,7 @@ Terminal=false
 Type=Application
 Icon=ferdium
 StartupWMClass=Ferdium
-Comment=Ferdium is your messaging app / former Emperor of Austria and combines chat & messaging services into one application. Ferdium currently supports Slack, WhatsApp, Gmail, Facebook Messenger, Telegram, Google Hangouts, GroupMe, Skype and many more. You can download Ferdium for free for Mac & Windows.
+Comment=Ferdium is your messaging app / former heir to the throne of Austria-Hungary and combines chat & messaging services into one application. Ferdium currently supports Slack, WhatsApp, Gmail, Facebook Messenger, Telegram, Google Hangouts, GroupMe, Skype and many more. You can download Ferdium for free for Mac, Windows, and Linux.
 MimeType=x-scheme-handler/ferdium;
 Categories=Network;InstantMessaging;
 EOF
