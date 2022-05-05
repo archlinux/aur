@@ -3,7 +3,7 @@
 ## Developed by 케이투웹테크(주)
 
 pkgname=libreoffice-extension-hwp2odt
-pkgver=0.4.2
+pkgver=0.4.3
 _extname=Hwp2Odt
 _filename=${_extname}-${pkgver}.oxt
 pkgrel=1
@@ -11,7 +11,7 @@ pkgdesc="LibreOffice extension that import hwp file and present in OpenDocumentT
 arch=(any)
 url="https://github.com/k2webtech/hwp2odt"
 license=(custom)
-sha512sums=('91ca36b459936f3614e1479f0f31f63166558bafc062078945314f02357cb7c6a67dac4404829181c621eaa3ab93c6d0ba2ae459dfe450e283a6c19920af4431')
+sha512sums=('0358c15c8f6cababa24c24e42447b23cb7d5ab509d04c78b59acd97adf2c1ef917abbc18d9776e5fe619a360bfb5ff2ca3d2c554242db8a7995f1d911cd47c39')
 # About license, please check this https://github.com/k2webtech/hwp2odt/issues/1
 depends=(libreoffice)
 groups=('libreoffice-extensions')
