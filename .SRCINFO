@@ -1,7 +1,7 @@
 pkgbase = vmutils
 	pkgdesc = Victoria Metrics utils
 	pkgver = 1.76.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://victoriametrics.github.io
 	arch = x86_64
 	license = Apache
