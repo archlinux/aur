@@ -4,15 +4,16 @@
 
 pkgname=shadowsocks-rust-bin
 pkgver=1.14.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A Rust port of shadowsocks https://shadowsocks.org/ (binary version)'
 arch=('x86_64' 'arm' 'aarch64')
 url='https://github.com/shadowsocks/shadowsocks-rust'
 license=('MIT')
-depends=('openssl')
+depends=('gcc-libs')
 provides=('shadowsocks-rust')
 conflicts=('shadowsocks-rust')
 source=(
+    "${url}/raw/v${pkgver}/LICENSE"
     "${url}/raw/v${pkgver}/examples/config.json"
     "${url}/raw/v${pkgver}/examples/config_ext.json"
     "shadowsocks-rust@.service::https://aur.archlinux.org/cgit/aur.git/plain/shadowsocks-rust@.service?h=shadowsocks-rust-git"
@@ -23,6 +24,7 @@ source_arm=("${url}/releases/download/v${pkgver}/shadowsocks-v${pkgver}.arm-unkn
 source_aarch64=("${url}/releases/download/v${pkgver}/shadowsocks-v${pkgver}.aarch64-unknown-linux-gnu.tar.xz")
 
 sha512sums=(
+    '6d7014061bf4014faec823aa1da91f990d034c21005cbee30de7ee62744201fba7d09d58a9e536d8e63bfa6fe951107ee68482b583d887b6e358f3c3eec89b85'
     '9a0b81d82bf897c5461d75d941cd604cbd7f32d00c2bf775f17b37b77fcf5734903d2ec666ba9a6a340e77f31018b5dbbb8ea597797c6a00c6b1f3e2f47127e6'
     '4ac52e6fe04e02543f54d57fccfd863f18b157fd28fb61c9a56ba46269b9dff410a80960943d911afa55b45c3fc42e98d91f8bb75e9103abf3f3dbfffb73a6e0'
     'fccb02b922369a6ba01e7d438bd8bf306fe25b15d54e0a91e33832bd2726add8e9c01705f1f7a3afe44f3034f6438c3cc8c0fcad8905d67cb789f4f21feef102'
@@ -38,6 +40,7 @@ package() {
     install -Dm755 ssserver "${pkgdir}/usr/bin/ssserver-rust"
     install -Dm755 ssurl "${pkgdir}/usr/bin/ssurl-rust"
     install -Dm755 ssmanager "${pkgdir}/usr/bin/ssmanager-rust"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 shadowsocks-rust@.service "${pkgdir}/usr/lib/systemd/system/shadowsocks-rust@.service"
     install -Dm644 shadowsocks-rust-server@.service "${pkgdir}/usr/lib/systemd/system/shadowsocks-rust-server@.service"
     install -Dm644 config_ext.json "${pkgdir}/etc/shadowsocks/config_ext_rust.json.example"

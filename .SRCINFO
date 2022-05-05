@@ -1,19 +1,21 @@
 pkgbase = shadowsocks-rust-bin
 	pkgdesc = A Rust port of shadowsocks https://shadowsocks.org/ (binary version)
 	pkgver = 1.14.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/shadowsocks/shadowsocks-rust
 	arch = x86_64
 	arch = arm
 	arch = aarch64
 	license = MIT
-	depends = openssl
+	depends = gcc-libs
 	provides = shadowsocks-rust
 	conflicts = shadowsocks-rust
+	source = https://github.com/shadowsocks/shadowsocks-rust/raw/v1.14.3/LICENSE
 	source = https://github.com/shadowsocks/shadowsocks-rust/raw/v1.14.3/examples/config.json
 	source = https://github.com/shadowsocks/shadowsocks-rust/raw/v1.14.3/examples/config_ext.json
 	source = shadowsocks-rust@.service::https://aur.archlinux.org/cgit/aur.git/plain/shadowsocks-rust@.service?h=shadowsocks-rust-git
 	source = shadowsocks-rust-server@.service::https://aur.archlinux.org/cgit/aur.git/plain/shadowsocks-rust-server@.service?h=shadowsocks-rust-git
+	sha512sums = 6d7014061bf4014faec823aa1da91f990d034c21005cbee30de7ee62744201fba7d09d58a9e536d8e63bfa6fe951107ee68482b583d887b6e358f3c3eec89b85
 	sha512sums = 9a0b81d82bf897c5461d75d941cd604cbd7f32d00c2bf775f17b37b77fcf5734903d2ec666ba9a6a340e77f31018b5dbbb8ea597797c6a00c6b1f3e2f47127e6
 	sha512sums = 4ac52e6fe04e02543f54d57fccfd863f18b157fd28fb61c9a56ba46269b9dff410a80960943d911afa55b45c3fc42e98d91f8bb75e9103abf3f3dbfffb73a6e0
 	sha512sums = fccb02b922369a6ba01e7d438bd8bf306fe25b15d54e0a91e33832bd2726add8e9c01705f1f7a3afe44f3034f6438c3cc8c0fcad8905d67cb789f4f21feef102
