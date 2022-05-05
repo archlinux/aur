@@ -1,7 +1,7 @@
 # Maintainer: AnnikaV9 <carrot.moncher@gmail.com>
 
 pkgname=kbuilder
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="A bash script for building custom kernel packages for Arch Linux"
 arch=("x86_64")
