@@ -4,6 +4,7 @@ _pkgname=system76-scheduler
 pkgname=${_pkgname}-git
 pkgver=1.1.0.1.gcbccc2e
 pkgrel=1
+epoch=2
 pkgdesc='system76 userspace scheduler'
 arch=(x86_64)
 url='https://github.com/pop-os/system76-scheduler'
