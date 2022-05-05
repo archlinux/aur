@@ -1,7 +1,7 @@
 # Contributor: Mettacrawer <metta.crawler@gmail.com>
 # Contributor: luizribeiro <luizribeiro@gmail.com>
 # Maintainer:  max.bra <max dot bra dot gtalk at gmail dot com>
-# Maintainer:  graysky <graysky AT archlinux DOT us>
+# Maintainer:  graysky <therealgraysky AT protonmail DOT com>
 
 pkgname=pi-hole-ftl
 _pkgname=FTL
