@@ -1,6 +1,6 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 pkgname=kolide-git
-pkgver=2.0.2.r4.g2b2866a4
+pkgver=2.3.0.r1.gbf9ae6ec
 pkgrel=1
 pkgdesc="osquery command and control"
 url="https://www.kolide.co/"
