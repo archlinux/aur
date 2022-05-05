@@ -1,0 +1,11 @@
+post_install() {
+  cat << EOF
+Configure inadyn via /etc/inadyn.conf. See \`man 5 inadyn.conf\`.
+
+Configure CLI options used by the systemd service via the INADYN_OPTS
+environment variable in /etc/default/inadyn. See \`man 8 inadyn\`.
+
+Start inadyn and enable its systemd service:
+# systemctl enable --now inadyn
+EOF
+}

@@ -15,6 +15,7 @@ license=('GPL')
 depends=('ca-certificates' 'confuse' 'openssl')
 replaces=("$pkgname-fork")
 backup=("etc/$pkgname.conf" "etc/default/$pkgname")
+install=$pkgname.install
 source=("https://github.com/troglobit/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.xz"
         'override.conf'
         "$pkgname.env"
