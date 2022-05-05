@@ -1,4 +1,4 @@
-# Maintainer: graysky <graysky AT archlinux DOT us>
+# Maintainer: graysky <therealgraysky AT protonmail DOT com>
 # Contributor: Kevin Schmidt <kevin.patrick.schmidt@googlemail.com>
 pkgname=openwrt-devel
 pkgver=0.7
