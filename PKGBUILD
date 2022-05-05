@@ -1,8 +1,8 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=lemonade-git
-pkgver=v1.1.1.r20.g97ad2f7
-pkgrel=4
+pkgver=v1.1.2.r0.gfb41f18
+pkgrel=1
 pkgdesc='A remote utility tool (copy, paste and open browser) over TCP.'
 url="https://github.com/lemonade-command/lemonade"
 arch=('x86_64' 'i686')
