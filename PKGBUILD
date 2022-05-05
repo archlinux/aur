@@ -1,5 +1,5 @@
 # vim:set ts=2 sw=2 et:
-# Maintainer graysky <graysky AT archlinux DOT us>
+# Maintainer graysky <therealgraysky AT protonmail DOT com>
 # Contributor: BlackIkeEagle < ike DOT devolder AT gmail DOT com >
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: DonVla <donvla@users.sourceforge.net>
@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-stable-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r57634.14a3b690e5b
+pkgver=r57678.46938b32f6f
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -41,6 +41,8 @@ makedepends=(
   # gbm
   'libinput'
 )
+options=(!lto)
+
 [[ -n "$_clangbuild" ]] && makedepends+=('clang' 'lld' 'llvm')
 
 _gitname='xbmc'
@@ -69,7 +71,6 @@ _fstrcmp_version="0.7.D001"
 _flatbuffers_version="1.12.0"
 _libudfread_version="1.1.0"
 
-options=(!lto)
 source=(
   "git+https://github.com/xbmc/xbmc.git#branch=$_codename"
   "libdvdcss-$_libdvdcss_version.tar.gz::https://github.com/xbmc/libdvdcss/archive/$_libdvdcss_version.tar.gz"
@@ -82,7 +83,9 @@ source=(
   "http://mirrors.kodi.tv/build-deps/sources/fstrcmp-$_fstrcmp_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/flatbuffers-$_flatbuffers_version.tar.gz"
   "http://mirrors.kodi.tv/build-deps/sources/libudfread-$_libudfread_version.tar.gz"
-  'cheat-sse-build.patch'
+  cheat-sse-build.patch
+  build-fix-for-dav1d-1.0.0.patch
+  0001-add-dav1d-patch-to-build-system.patch
 )
 noextract=(
   "libdvdcss-$_libdvdcss_version.tar.gz"
@@ -107,7 +110,9 @@ b2sums=('SKIP'
         'a8b68fcb8613f0d30e5ff7b862b37408472162585ca71cdff328e3299ff50476fd265467bbd77b352b22bb88c590969044f74d91c5468475504568fd269fa69e'
         '441123be124ad851efa30bda0d828a764ebaf79ba6692a6e5904000b33818e9de78c3a964037ac93ef562890980c58169141e55354dce86857c02bcd917150d6'
         'e7fab72ebecb372c54af77b4907e53f77a5503af66e129bd2083ef7f4209ebfbed163ffd552e32b7181829664fff6ab82a1cdf00c81dc6f3cc6bfc8fa7242f6e'
-        '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0')
+        '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0'
+        '6928d0fb1f4cb2609dee87c7078e02cecc37ddef263485b47be0ae5c281be67b403b39c95ea370c6b6667e1eceb1c7e6fb83ec9b04acd0bdbe4abec17fb84385'
+        '268c7bc34a2f5be044465a8e4d5c4df9d7379b768c682e2d7f1f2937992d829fdebe819a4a0f5f601e4ac67592b602ad18bb330a732778eb23b466751eb95728')
 
 pkgver() {
   cd "$_gitname"
@@ -120,7 +125,13 @@ prepare() {
 
   cd "$_gitname"
 
-  [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i "$srcdir/cheat-sse-build.patch"
+  # make build system patch ffmpeg for dav1d 1.0.0
+  patch -p1 -i ../0001-add-dav1d-patch-to-build-system.patch
+
+  # put patch in source tree so kodi build system can pick it up
+  cp ../build-fix-for-dav1d-1.0.0.patch tools/depends/target/ffmpeg
+
+  [[ "$_sse_workaround" -eq 1 ]] && patch -p1 -i ../cheat-sse-build.patch
 
   if [[ -n "$_clangbuild" ]]; then
     msg "Building with clang"
@@ -143,6 +154,9 @@ build() {
     -DVERBOSE=ON
     -DENABLE_LDGOLD=OFF
     -DENABLE_EVENTCLIENTS=ON
+    -DENABLE_MYSQLCLIENT=ON
+    -DENABLE_VAAPI=ON
+    -DENABLE_VDPAU=ON
     -DENABLE_INTERNAL_FFMPEG=ON
     -DENABLE_INTERNAL_FMT=ON
     -DENABLE_INTERNAL_SPDLOG=ON
@@ -150,9 +164,6 @@ build() {
     -DENABLE_INTERNAL_FSTRCMP=ON
     -DENABLE_INTERNAL_FLATBUFFERS=ON
     -DENABLE_INTERNAL_UDFREAD=ON
-    -DENABLE_MYSQLCLIENT=ON
-    -DENABLE_VAAPI=ON
-    -DENABLE_VDPAU=ON
     -Dlibdvdcss_URL="$srcdir/libdvdcss-$_libdvdcss_version.tar.gz"
     -Dlibdvdnav_URL="$srcdir/libdvdnav-$_libdvdnav_version.tar.gz"
     -Dlibdvdread_URL="$srcdir/libdvdread-$_libdvdread_version.tar.gz"
