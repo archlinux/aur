@@ -1,7 +1,7 @@
 pkgbase = kbuilder
 	pkgdesc = A bash script for building custom kernel packages for Arch Linux
-	pkgver = 0.1.1
-	pkgrel = 2
+	pkgver = 0.2.1
+	pkgrel = 1
 	url = https://github.com/AnnikaV9/kbuilder
 	arch = x86_64
 	license = Unlicense
@@ -13,7 +13,7 @@ pkgbase = kbuilder
 	depends = curl
 	depends = coreutils
 	provides = kbuilder
-	source = kbuilder-0.1.1.tar.gz::https://github.com/AnnikaV9/kbuilder/releases/download/v0.1.1/kbuilder-0.1.1.tar.gz
-	b2sums = 4d5680a7b5b6d661eff9aa5631b4950a14e4b716cca8d0911b01e79c621e3849ffc5820e8c73a5e7646dc789d06def88d11e2b33029da22abae1781e0091a9f5
+	source = kbuilder-0.2.1.tar.gz::https://github.com/AnnikaV9/kbuilder/releases/download/v0.2.1/kbuilder-0.2.1.tar.gz
+	b2sums = be50c9a1ae6366d01ccb065ef7090f440125756faf5f5d48c8a1f58556d58f7154c412097435f80fa34edc4b9028d7df24078d6f513bffc8196f1212a4f34f9a
 
 pkgname = kbuilder
