@@ -1,7 +1,7 @@
 # Maintainer: Manuel Schmitzberger <ms@ms-sw.at>
 
 pkgname=vmutils
-pkgver=1.71.0
+pkgver=1.76.1
 pkgrel=1
 pkgdesc="Victoria Metrics utils"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('glibc')
 makedepends=('go')
 backup=('etc/default/victoriametrics')
 source=("https://github.com/VictoriaMetrics/VictoriaMetrics/releases/download/v$pkgver/vmutils-amd64-v$pkgver.tar.gz")
-b2sums=('c7e438adbb69c1fe72f19cc9ed6225feee82a1ac64314e80ea0734937ddaf946268119cb9b2ced6e59bc9857d2b23ec478d2a27a04d0fa5f7ce80668b8273823')
+sha256sums=('f35f247cf670d6a633f665b58e1cfb052af48018ba4d25ee812ceb1ebbe697e1')
 
 build() {
   # rename binaries
