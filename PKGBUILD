@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=libmodulemd-git
-pkgver=2.13.0.r31.g9c6c0ba
+pkgver=2.14.0.r11.g2dac56f
 pkgrel=1
 pkgdesc="C Library for manipulating module metadata files"
 arch=("any")
@@ -16,7 +16,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	git describe --long --tags | sed -e 's/\([^-]*-g\)/r\1/;s/-/./g' -e 's/libmodulemd.//'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 build() {
