@@ -1,6 +1,6 @@
 pkgbase = juno-theme-git
 	pkgdesc = GTK themes inspired by epic vscode themes
-	pkgver = r150.a7ba1c9
+	pkgver = r154.a036e9a
 	pkgrel = 1
 	url = https://github.com/EliverLara/Juno
 	arch = any
