@@ -1,8 +1,8 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 # Co-Maintainer: Slimbook <dev at slimbook dot es>
 pkgname=slimbookamdcontroller
-pkgver=0.3.7beta
-pkgrel=2
+pkgver=0.3.8beta
+pkgrel=1
 pkgdesc="Application for the performance management of AMD processors"
 arch=('any')
 url="https://github.com/slimbook/slimbookamdcontroller"
@@ -12,26 +12,22 @@ depends=('dbus-python' 'gtk3' 'libayatana-appindicator' 'libnotify' 'python-gobj
 install="$pkgname.install"
 #source=("https://github.com/slimbook/slimbookamdcontroller/releases/download/v0.3.4betA/${pkgname}_${pkgver}_all.deb")
 source=("https://launchpad.net/~slimbook/+archive/ubuntu/slimbook/+files/${pkgname}_${pkgver}_all.deb")
-sha256sums=('15f5a8c09a480b058b41009ef67c6f1fb702baa0f3dfe75a5984a5cc94776163')
+sha256sums=('dff122d8c4483b18e5c6880a41b123372ed11f1945277b52c55d7ad9080356e2')
 
 package() {
   bsdtar xf data.tar.xz -C "$pkgdir"
-  mv "$pkgdir/bin/" "$pkgdir/usr/"
 
   ln -s /usr/bin/ryzenadj "$pkgdir/usr/share/$pkgname"
 
-  # Remove duplicate GPL license & changelog.gz
-  rm -rf "$pkgdir/usr/share/doc"
-
   # Install locales
-  cd "$pkgdir/usr/share/$pkgname/src/translations"
-  for lang in $(ls -d */); do
-    install -d "$pkgdir/usr/share/locale/${lang}LC_MESSAGES"
-    mv "$pkgdir/usr/share/$pkgname/src/translations/${lang}LC_MESSAGES"/*.mo \
-      "$pkgdir/usr/share/locale/${lang}LC_MESSAGES"
-  done
-  rm -rf "$pkgdir/usr/share/$pkgname/src/translations"
-  rm "$pkgdir/usr/share/$pkgname/src/update_po.sh"
+#  cd "$pkgdir/usr/share/$pkgname/src/translations"
+#  for lang in $(ls -d */); do
+#    install -d "$pkgdir/usr/share/locale/${lang}LC_MESSAGES"
+#    mv "$pkgdir/usr/share/$pkgname/src/translations/${lang}LC_MESSAGES"/*.mo \
+#      "$pkgdir/usr/share/locale/${lang}LC_MESSAGES"
+#  done
+#  rm -rf "$pkgdir/usr/share/$pkgname/src/translations"
+#  rm "$pkgdir/usr/share/$pkgname/src/update_po.sh"
 
   # App permissions
   chmod +x "$pkgdir/usr/lib/systemd/system-sleep/$pkgname"
