@@ -5,15 +5,14 @@
 
 pkgname=vmd-src
 _pkgname=vmd
-pkgver=1.9.4a55
-pkgrel=2
+pkgver=1.9.4a57
+pkgrel=1
 pkgdesc="Visual Molecular Dynamics"
 url="http://www.ks.uiuc.edu/Research/vmd/"
 license=('custom')
 arch=('x86_64' 'aarch64')
-depends=('tcsh' 'tk' 'python-numpy' 'fltk' 'netcdf' 'ocl-icd' 'libxi'
-         'opencl-headers')
-makedepends=('gcc')
+depends=('tcsh' 'tk' 'python-numpy' 'fltk' 'netcdf' 'ocl-icd' 'libxi' 'openmpi')
+makedepends=('opencl-headers')
 optdepends=('openbabel: additional file formats support'
             'sqlite: dmsplugin'
             'ospray: accelerated ray tracing for Intel CPUs'
@@ -24,7 +23,7 @@ conflicts=("$_pkgname" "$_pkgname-bin")
 # and put it in the PKGBUILD folder.
 source=("local://$_pkgname-${pkgver}.src.tar.gz"
         "configure.patch")
-sha256sums=('cc8aef24cb61d8f9973e1b8d71c6356668456c115a846c47621b2edcd080508b'
+sha256sums=('de278d0c5d969336d89068e0806fb50aaa0cb0f546ba985d840b279357860679'
             '51f0f26b246ab4b9cf561ae7bdb9c636fb1a8963766299e711d121df21152cbd')
 
 prepare() {
