@@ -1,15 +1,16 @@
-# Maintainer gCurse <gcurse at web dot de>
-# Contributor Yurii Kolesnykov <yurikoles@gmail.com>
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: gCurse <gcurse at web dot de>
+# Contributor: Yurii Kolesnykov <yurikoles@gmail.com>
 # Credit: Jan de Groot <jgc@archlinux.org>
 
 pkgbase=gstreamer0.10-ugly
 _pkgname=gst-plugins-ugly
 pkgname=('gstreamer0.10-ugly' 'gstreamer0.10-ugly-plugins')
 pkgver=0.10.19
-pkgrel=28
+pkgrel=29
 arch=('i686' 'x86_64' 'armv7h')
 license=('LGPL')
-makedepends=('pkgconfig' 'gstreamer0.10-base>=0.10.36-11' 'libdvdread' 'lame' 'libmpeg2' 'a52dec' 'libmad' 'libsidplay' 'libcdio' 'libx264' 'x264' 'opencore-amr')
+makedepends=('pkgconfig' 'gstreamer0.10-base' 'libdvdread' 'lame' 'libmpeg2' 'a52dec' 'libmad' 'libcdio' 'libx264' 'x264' 'opencore-amr')
 url="https://gstreamer.freedesktop.org"
 #source=("git+https://gitlab.com/gstreamer-sdk/$_pkgname.git#commit=d637756a8e569753e9869c2c0728288f5dbc5089"
 source=("https://gstreamer.freedesktop.org/src/${_pkgname}/${_pkgname}-${pkgver}.tar.xz"
@@ -30,7 +31,8 @@ build() {
   cd ${_pkgname}-${pkgver}
   NOCONFIGURE=1 ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
-    --disable-static --enable-experimental --disable-gtk-doc \
+    --disable-static --disable-experimental --disable-gtk-doc \
+    --disable-sidplay \
     --with-package-name="GStreamer Ugly Plugins (Archlinux)" \
     --with-package-origin="http://www.archlinux.org/"
   make
@@ -39,7 +41,7 @@ build() {
 
 package_gstreamer0.10-ugly() {
   pkgdesc="GStreamer Multimedia Framework Ugly plugin libraries"
-  depends=('gstreamer0.10-base>=0.10.36-11')
+  depends=('gstreamer0.10-base')
   
   cd ${_pkgname}-${pkgver}
   make DESTDIR="${pkgdir}" install
@@ -47,10 +49,10 @@ package_gstreamer0.10-ugly() {
 
 package_gstreamer0.10-ugly-plugins() {
   pkgdesc="GStreamer Multimedia Framework Ugly Plugins (gst-plugins-ugly)"
-  depends=("gstreamer0.10-ugly=${pkgver}" 'libdvdread' 'lame' 'twolame' 'libmpeg2' 'a52dec' 'libmad' 'libsidplay' 'libcdio' 'libx264' 'opencore-amr')
+  depends=('gstreamer0.10-ugly' 'libdvdread' 'lame' 'twolame' 'libmpeg2' 'a52dec' 'libmad' 'libcdio' 'libx264' 'opencore-amr')
   groups=('gstreamer0.10-plugins')
-  replaces=('gstreamer0.10-dvdread' 'gstreamer0.10-mpeg2dec' 'gstreamer0.10-mad' 'gstreamer0.10-lame' 'gstreamer0.10-sidplay' 'gstreamer0.10-a52dec')
-  conflicts=('gstreamer0.10-dvdread' 'gstreamer0.10-mpeg2dec' 'gstreamer0.10-mad' 'gstreamer0.10-lame' 'gstreamer0.10-sidplay' 'gstreamer0.10-a52dec')
+  replaces=('gstreamer0.10-dvdread' 'gstreamer0.10-mpeg2dec' 'gstreamer0.10-mad' 'gstreamer0.10-lame' 'gstreamer0.10-a52dec')
+  conflicts=('gstreamer0.10-dvdread' 'gstreamer0.10-mpeg2dec' 'gstreamer0.10-mad' 'gstreamer0.10-lame' 'gstreamer0.10-a52dec')
 
   cd ${_pkgname}-${pkgver}
   make -C ext DESTDIR="${pkgdir}" install
