@@ -1,0 +1,15 @@
+pkgbase = bytesize-git
+	pkgdesc = Convert between Binary & SI Bytes
+	pkgver = 0.3.0
+	pkgrel = 1
+	url = https://github.com/jmdaemon/bytesize
+	arch = any
+	license = AGPL
+	makedepends = make
+	depends = logc
+	provides = bytesize
+	conflicts = bytesize
+	source = bytesize::git+https://github.com/jmdaemon/bytesize
+	sha512sums = SKIP
+
+pkgname = bytesize-git
