@@ -1,12 +1,13 @@
 pkgbase = npt
-	pkgdesc = ANSI Common Lisp implementation
+	pkgdesc = ANSI Common Lisp Implementation
 	pkgver = 1.1.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/nptcl/npt
 	arch = x86_64
 	license = Unlicense
 	makedepends = git
 	depends = glibc
+	depends = readline
 	source = npt::git+https://github.com/nptcl/npt#commit=55cff1db7e6f12f7e87e8ab26393792d33734d62
 	b2sums = SKIP
 
