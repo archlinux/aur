@@ -1,6 +1,6 @@
 # Maintainer: Dominik Schwaiger <mail@dominik-schwaiger.ch>
 pkgname=darch-conf
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
 epoch=0
 pkgdesc='Configuration files, scripts and packages for an Archcraft based system'
@@ -8,7 +8,7 @@ arch=('any')
 url='https://github.com/quiode/DARCH'
 license=('custom:MIT')
 groups=()
-depends=('nextcloud-client' 'github-cli' 'discord' 'thunderbird' 'lutris' 'nvidia-dkms' 'nvidia-utils' 'lib32-nvidia-utils' 'nvidia-settings' 'vulkan-icd-loader' 'lib32-vulkan-icd-loader' 'lib32-mesa' 'vulkan-radeon' 'lib32-vulkan-radeon' 'vulkan-icd-loader' 'lib32-vulkan-icd-loader' 'lib32-mesa' 'vulkan-intel' 'lib32-vulkan-intel' 'vulkan-icd-loader' 'lib32-vulkan-icd-loader' 'steam' 'virtualbox' 'python-pip' 'signal-desktop' 'telegram-desktop' 'qbittorrent' 'converseen' 'inkscape' 'gimp' 'geogebra' 'flatpak' 'bitwarden' 'gparted' 'kdeconnect' 'libreoffice-fresh' 'qalculate-gtk' 'texlive-bibtexextra' 'texlive-core' 'texlive-fontsextra' 'texlive-formatsextra' 'texlive-games' 'texlive-humanities' 'texlive-latexextra' 'texlive-music' 'texlive-pictures' 'texlive-pstricks' 'texlive-publishers' 'texlive-science' 'texlive-bin' 'texlive-langextra' 'texlive-langgreek' 'biber' 'spotify' 'spotifyd' 'github-desktop' 'teams' 'joplin-appimage' 'drawio-desktop' 'muon-ssh' 'write_stylus' 'zotero' 'nvm' 'visual-studio-code-bin' 'ncmpcpp' 'mopidy' 'mopidy-spotify' 'mopidy-local' 'mopidy-mpd' 'heroic-games-launcher-bin' 'seahorse')
+depends=('nextcloud-client' 'github-cli' 'discord' 'thunderbird' 'lutris' 'nvidia-dkms' 'nvidia-utils' 'lib32-nvidia-utils' 'nvidia-settings' 'vulkan-icd-loader' 'lib32-vulkan-icd-loader' 'lib32-mesa' 'vulkan-radeon' 'lib32-vulkan-radeon' 'vulkan-icd-loader' 'lib32-vulkan-icd-loader' 'lib32-mesa' 'vulkan-intel' 'lib32-vulkan-intel' 'vulkan-icd-loader' 'lib32-vulkan-icd-loader' 'steam' 'virtualbox' 'python-pip' 'signal-desktop' 'telegram-desktop' 'qbittorrent' 'converseen' 'inkscape' 'gimp' 'geogebra' 'flatpak' 'bitwarden' 'gparted' 'kdeconnect' 'libreoffice-fresh' 'qalculate-gtk' 'texlive-bibtexextra' 'texlive-core' 'texlive-fontsextra' 'texlive-formatsextra' 'texlive-games' 'texlive-humanities' 'texlive-latexextra' 'texlive-music' 'texlive-pictures' 'texlive-pstricks' 'texlive-publishers' 'texlive-science' 'texlive-bin' 'texlive-langextra' 'texlive-langgreek' 'biber' 'spotify' 'spotifyd' 'github-desktop' 'teams' 'joplin-appimage' 'drawio-desktop' 'muon-ssh' 'write_stylus' 'zotero' 'nvm' 'visual-studio-code-bin' 'ncmpcpp' 'mopidy' 'mopidy-spotify' 'mopidy-local' 'mopidy-mpd' 'heroic-games-launcher-bin' 'seahorse' 'appimagelauncher')
 makedepends=()
 checkdepends=()
 optdepends=()
