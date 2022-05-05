@@ -19,7 +19,7 @@ sha256sums=('SKIP'
 pkgver() {
   cd "${srcdir}/veles"
 
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 prepare() {
