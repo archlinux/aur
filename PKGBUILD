@@ -2,7 +2,7 @@
 
 pkgname=rehex-git
 _gitname=rehex
-pkgver=r1129.080014c
+pkgver=r1155.63a95c9
 pkgrel=1
 pkgdesc="A cross-platform (Windows, Linux, Mac) hex editor for reverse engineering, and everything else (git version)"
 arch=('x86_64')
@@ -25,7 +25,7 @@ build() {
   # gtk3 patch
   sed -i -e 's/wx-config/wx-config-gtk3/g' Makefile
   
-  make
+  make prefix="/usr"
 }
 
 package() {
