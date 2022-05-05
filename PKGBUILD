@@ -2,8 +2,8 @@
 pkgname="utilyre-st-git"
 _reponame="st"
 pkgver="0.8.5"
-pkgrel="2"
-pkgdesc="A simple virtual terminal emulator for X patched with bold-is-not-bright, ligatures, and xresources"
+pkgrel="3"
+pkgdesc="A simple virtual terminal emulator for X"
 arch=("x86_64")
 url="https://github.com/utilyre/st.git"
 license=("MIT")
