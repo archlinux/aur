@@ -1,13 +1,16 @@
 pkgbase = python-ruffus
-	pkgdesc = A lightweight Python library for computational pipelines.
+	pkgdesc = Lightweight Python library for computational pipelines
 	pkgver = 2.8.4
-	pkgrel = 1
-	url = http://www.ruffus.org.uk
+	pkgrel = 2
+	url = https://github.com/cgat-developers/ruffus
 	arch = any
 	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
-	source = https://pypi.org/packages/source/r/ruffus/ruffus-2.8.4.tar.gz
-	sha512sums = 5f38ad4ca5aca007e63b59be6117af85618bc27e8d98cc3b32add82ac48766c37b3fb2633a28c98941397ab3154553ba57509b321d2c80d01c753ac189f092e7
+	source = python-ruffus-2.8.4.tar.gz::https://files.pythonhosted.org/packages/source/r/ruffus/ruffus-2.8.4.tar.gz
+	sha256sums = 6cd3d96e459a1aedcc10341f14fddedfdc13664551757fcd429a241de63826aa
 
 pkgname = python-ruffus

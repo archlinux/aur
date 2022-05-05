@@ -1,0 +1,820 @@
+= v. 2.6=
+	2015-03-12
+	============================================================================================================================================================
+	Bug fixes
+	============================================================================================================================================================
+
+		* ``pipeline_printout_graph()`` incompatibility with python3 fixed
+		* checkpointing did not work correctly with :ref:`@split(...) <decorators.split>` and :ref:`@subdivide(...) <decorators.subdivide>`
+	=====================================================================================================================
+	`@transform `(..., suffix("xxx"),` :red:`output_dir` `= "/new/output/path")`
+	=====================================================================================================================
+
+		* Thanks to the suggestion of Milan Simonovic.
+		* :ref:`@transform <decorators.transform>` takes an optional ``output_dir`` named parameter with :ref:`suffix() <new_manual.suffix>`.
+		* Output files go to the specified directory.
+
+	=====================================================================================================================
+	Named parameters
+	=====================================================================================================================
+
+		* Decorators can take named parameters.
+		* These are self documenting, and improve clarity.
+
+	=============================================
+	New object orientated syntax for Ruffus
+	=============================================
+
+		* Ruffus Pipelines can now be created directly using the new ``Pipeline`` and ``Task`` objects instead of via decorators.
+		* This new syntax is fully compatible and inter-operates with traditional Ruffus syntax using decorators.
+		* Apart from cosmetic changes, the new syntax allows different instances of modular Ruffus sub-pipelines
+		  to be defined separately, in different python modules and then joined together flexible at runtime.
+
+= v. 2.5=
+	2014-08-06
+
+	============================================================================================================================================================
+	Python3 compatability 
+	============================================================================================================================================================
+
+		At least python 2.6 is now required.
+
+	============================================================================================================================================================
+	Ctrl-C interrupts
+	============================================================================================================================================================
+
+		Ruffus now mostly(!) terminates gracefully when interrupted by Ctrl-C .
+
+	============================================================================================================================================================
+	Customising flowcharts in pipeline_printout_graph() with ``@graphviz``
+	============================================================================================================================================================
+
+		*Contributed by Sean Davis, with improved syntax via Jake Biesinger*
+
+		The graphics for each task can have its own attributes (URL, shape, colour) etc. by adding
+		`graphviz attributes  <http://www.graphviz.org/doc/info/attrs.html>`__
+		using the ``@graphviz`` decorator.
+
+	============================================================================================================================================================
+	Consistent verbosity levels
+	============================================================================================================================================================
+
+		The verbosity levels are now more fine-grained and consistent between pipeline_printout and pipeline_run.
+
+	============================================================================================================================================================
+	Allow abbreviated paths from ``pipeline_run`` or ``pipeline_printout``
+	============================================================================================================================================================
+
+		Ruffus now allows either
+			1) Only the nth top level sub-directories to be included
+			2) The message to be truncated to a specified number of characters (to fit on a line, for example)
+
+	============================================================================================================================================================
+	Bug fixes
+	============================================================================================================================================================
+		* BUG FIX: Output producing wild cards was not saved in the checksum files!!!
+		* BUG FIX: @mkdir bug under Windows. Thanks to Sean Turley. (Aargh! Different exceptions are thrown in Windows vs. Linux for the same condition!)
+		* Added :ref:`pipeline_get_task_names(...) <pipeline_functions.pipeline_get_task_names>` which returns all task name as a list of strings. Thanks to Clare Sloggett
+
+= v. 2.4.1=
+	2014-04-26
+	* Breaking changes to drmaa API suggested by Bernie Pope to ensure portability across different drmaa implementations (SGE, SLURM etc.)
+= v. 2.4=
+	2014-04-03
+	============================================================================================================================================================
+	Additions to ``ruffus`` namespace
+	============================================================================================================================================================
+
+		* :ref:`formatter() <new_manual.formatter>` (:ref:`syntax <decorators.formatter>`)
+		* :ref:`originate() <new_manual.originate>` (:ref:`syntax <decorators.originate>`)
+		* :ref:`subdivide() <new_manual.subdivide>` (:ref:`syntax <decorators.subdivide>`)
+
+	============================================================================================================================================================
+	Installation: use pip
+	============================================================================================================================================================
+
+		::
+
+			sudo pip install ruffus --upgrade
+
+	============================================================================================================================================================
+	1) Command Line support
+	============================================================================================================================================================
+
+		The optional ``Ruffus.cmdline`` module provides support for a set of common command
+		line arguments which make writing *Ruffus* pipelines much more pleasant.
+		See :ref:`manual <new_manual.cmdline>`
+
+	============================================================================================================================================================
+	2) Check pointing
+	============================================================================================================================================================
+
+		* Contributed by **Jake Biesinger**
+		* See :ref:`Manual <new_manual.checkpointing>`
+		* Uses a fault resistant sqlite database file to log i/o files, and additional checksums
+		* defaults to checking file timestamps stored in the current directory (``ruffus_utilility.RUFFUS_HISTORY_FILE = '.ruffus_history.sqlite'``)
+		* :ref:`pipeline_run(..., checksum_level = N, ...) <pipeline_functions.pipeline_run>`
+
+		   * level 0 = CHECKSUM_FILE_TIMESTAMPS      : Classic mode. Use only file timestamps (no checksum file will be created)
+		   * level 1 = CHECKSUM_HISTORY_TIMESTAMPS   : Also store timestamps in a database after successful job completion
+		   * level 2 = CHECKSUM_FUNCTIONS            : As above, plus a checksum of the pipeline function body
+		   * level 3 = CHECKSUM_FUNCTIONS_AND_PARAMS : As above, plus a checksum of the pipeline function default arguments and the additional arguments passed in by task decorators
+
+		   * defaults to level 1
+
+		* Can speed up trivial tasks: Previously Ruffus always added an extra 1 second pause between tasks
+		  to guard against file systems (Ext3, FAT, some NFS) with low timestamp granularity.
+
+
+	============================================================================================================================================================
+	3) :ref:`subdivide() <new_manual.subdivide>` (:ref:`syntax <decorators.subdivide>`)
+	============================================================================================================================================================
+
+		*
+		* Take a list of input jobs (like :ref:`@transform <decorators.transform>`) but further splits each into multiple jobs, i.e. it is a **many->even more** relationship
+		* synonym for the deprecated ``@split(..., regex(), ...)``
+
+	========================================================================================================================================================================================================================================================================================================================
+	4) :ref:`mkdir() <new_manual.mkdir>` (:ref:`syntax <decorators.mkdir>`) with :ref:`formatter() <new_manual.formatter>`, :ref:`suffix() <decorators.suffix>`  and :ref:`regex() <decorators.regex>`
+	========================================================================================================================================================================================================================================================================================================================
+
+		* allows directories to be created depending on runtime parameters or the output of previous tasks
+		* behaves just like :ref:`@transform <decorators.transform>` but with its own (internal) function which does the actual work of making a directory
+		* Previous behavior is retained:``mkdir`` continues to work seamlessly inside :ref:`@follows <decorators.follows>`
+
+	============================================================================================================================================================
+	5) :ref:`originate() <new_manual.originate>` (:ref:`syntax <decorators.originate>`)
+	============================================================================================================================================================
+
+		* Generates output files without dependencies from scratch  (*ex nihilo*!)
+		* For first step in a pipeline
+		* Task function obviously only takes output and not input parameters. (There *are* no inputs!)
+		* synonym for :ref:`@split(None,...) <decorators.split>`
+		* See :ref:`Summary <decorators.originate>` / :ref:`Manual <new_manual.originate>`
+
+	========================================================================================================================================================================================================================================================================================================================
+	6) New flexible :ref:`formatter() <new_manual.formatter>` (:ref:`syntax <decorators.formatter>`) alternative to :ref:`regex() <decorators.regex>`  & :ref:`suffix() <decorators.suffix>`
+	========================================================================================================================================================================================================================================================================================================================
+
+		* Easy manipulation of path subcomponents in the style of `os.path.split()  <http://docs.python.org/2/library/os.path.html#os.path.split>`__
+		* Regular expressions are no longer necessary for path manipulation
+		* Familiar python syntax
+		* Optional regular expression matches
+		* Can refer to any in the list of N input files (not only the first file as for ``regex(...)``)
+		* Can even refer to individual letters within a match
+
+	============================================================================================================================================================
+	7) Combinatorics (all vs. all decorators)
+	============================================================================================================================================================
+
+		* :ref:`@product <new_manual.product>`  (See `itertools.product  <http://docs.python.org/2/library/itertools.html#itertools.product>`__)
+		* :ref:`@permutations <new_manual.permutations>`  (See `itertools.permutations  <http://docs.python.org/2/library/itertools.html#itertools.permutations>`__)
+		* :ref:`@combinations <new_manual.combinations>` (See `itertools.combinations  <http://docs.python.org/2/library/itertools.html#itertools.combinations>`__)
+		* :ref:`@combinations_with_replacement <new_manual.combinations_with_replacement>` (See `itertools.combinations_with_replacement  <http://docs.python.org/2/library/itertools.html#itertools.combinations_with_replacement>`__)
+		* in optional :ref:`combinatorics <new_manual.combinatorics>` module
+		* Only :ref:`formatter() <new_manual.formatter>` provides the necessary flexibility to construct the output. (:ref:`suffix() <decorators.suffix>` and :ref:`regex() <decorators.regex>` are not supported.)
+		* See :ref:`Summary <decorators.combinatorics>` / :ref:`Manual <new_manual.combinatorics>`
+
+
+
+	============================================================================================================================================================
+	8) drmaa support and multithreading:
+	============================================================================================================================================================
+
+		* :ref:`ruffus.drmaa_wrapper.run_job() <new_manual.ruffus.drmaa_wrapper.run_job>` (:ref:`syntax <drmaa_wrapper.run_job>`)
+		* Optional helper module allows jobs to dispatch work to a computational cluster and wait until it completes.
+		* Requires ``multithread`` rather than ``multiprocess``
+
+	============================================================================================================================================================
+	9) ``pipeline_run(...)`` and exceptions
+	============================================================================================================================================================
+		See :ref:`Manual <new_manual.exceptions>`
+
+		* Optionally terminate pipeline after first exception
+		* Display exceptions without delay
+
+
+	============================================================================================================================================================
+	10) Miscellaneous
+	============================================================================================================================================================
+
+		Better error messages for ``formatter()``, ``suffix()`` and ``regex()`` for ``pipeline_printout(..., verbose >= 3, ...)``
+			* Error messages for showing mismatching regular expression and offending file name
+			* Wrong capture group names or out of range indices will raise informative Exception
+
+= v. 2.3=
+    _03/October/2011_
+    * ``@active_if`` turns off tasks at runtime
+        The Design and initial implementation were contributed by Jacob Biesinger
+
+        Takes one or more parameters which can be either booleans or functions or callable objects which return True / False::
+
+                run_if_true_1 = True
+                run_if_true_2 = False
+
+                @active_if(run_if_true, lambda: run_if_true_2)
+                def this_task_might_be_inactive():
+                    pass
+
+        The expressions inside @active_if are evaluated each time
+        ``pipeline_run``, ``pipeline_printout`` or ``pipeline_printout_graph`` is called.
+
+        Dormant tasks behave as if they are up to date and have no output.
+
+    * Command line parsing
+        * Supports both argparse (python 2.7) and optparse (python 2.6):
+        * ``Ruffus.cmdline`` module is optional.
+        * See :ref:`manual <new_manual.cmdline>`
+    * Optionally terminate pipeline after first exception
+        To have all exceptions interrupt immediately::
+
+                pipeline_run(..., exceptions_terminate_immediately = True)
+
+        By default ruffus accumulates ``NN`` errors before interrupting the pipeline prematurely. ``NN`` is the specified parallelism for ``pipeline_run(..., multiprocess = NN)``.
+
+        Otherwise, a pipeline will only be interrupted immediately if exceptions of type ``ruffus.JobSignalledBreak`` are thrown.
+
+    * Display exceptions without delay
+
+        By default, Ruffus re-throws exceptions in ensemble after pipeline termination.
+
+        To see exceptions as they occur::
+
+                pipeline_run(..., log_exceptions = True)
+
+        ``logger.error(...)`` will be invoked with the string representation of the each exception, and associated stack trace.
+
+        The default logger prints to sys.stderr, but this can be changed to any class from the logging module or compatible object via ``pipeline_run(..., logger = ???)``
+
+    * Improved ``pipeline_printout()``
+
+            * `@split` operations now show the 1->many output in pipeline_printout
+
+                This make it clearer that ``@split`` is creating multiple output parameters (rather than a single output parameter consisting of a list)::
+
+                        Task = split_animals
+                             Job = [None
+                                   -> cows
+                                   -> horses
+                                   -> pigs
+                                    , any_extra_parameters]
+            * File date and time are displayed in human readable form and out of date files are flagged with asterisks.
+
+
+
+= v. 2.2=
+    _21/July/2010_
+    * Simplifying **@transform** syntax with **suffix(...)**
+
+        Regular expressions within ruffus are very powerful, and can allow files to be moved
+        from one directory to another and renamed at will.
+
+        However, using consistent file extensions and
+        ``@transform(..., suffix(...))`` makes the code much simpler and easier to read.
+
+        Previously, ``suffix(...)`` did not cooperate well with ``inputs(...)``.
+        For example, finding the corresponding header file (".h") for the matching input
+        required a complicated ``regex(...)`` regular expression and ``input(...)``. This simple case,
+        e.g. matching "something.c" with "something.h", is now much easier in Ruffus.
+
+
+        For example:
+          ::
+
+            source_files = ["something.c", "more_code.c"]
+            @transform(source_files, suffix(".c"), add_inputs(r"\1.h", "common.h"), ".o")
+            def compile(input_files, output_file):
+                ( source_file,
+                  header_file,
+                  common_header) = input_files
+                # call compiler to make object file
+
+          This is equivalent to calling:
+
+            ::
+
+              compile(["something.c", "something.h", "common.h"], "something.o")
+              compile(["more_code.c", "more_code.h", "common.h"], "more_code.o")
+
+        The ``\1`` matches everything *but* the suffix and will be applied to both ``glob``\ s and file names.
+
+    For simplicity and compatibility with previous versions, there is always an implied r"\1" before
+    the output parameters. I.e. output parameters strings are *always* substituted.
+
+
+    * Tasks and glob in **inputs(...)** and **add_inputs(...)**
+
+        ``glob``\ s and tasks can be added as the prerequisites / input files using
+        ``inputs(...)`` and ``add_inputs(...)``. ``glob`` expansions will take place when the task
+        is run.
+
+    * Advanced form of **@split** with **regex**:
+
+        The standard ``@split`` divided one set of inputs into multiple outputs (the number of which
+        can be determined at runtime).
+
+        This is a ``one->many`` operation.
+
+
+        An advanced form of ``@split`` has been added which can split each of several files further.
+
+        In other words, this is a ``many->"many more"`` operation.
+
+        For example, given three starting files:
+            ::
+
+                original_files = ["original_0.file",
+                                  "original_1.file",
+                                  "original_2.file"]
+        We can split each into its own set of sub-sections:
+            ::
+
+                @split(original_files,
+                   regex(r"starting_(\d+).fa"),                         # match starting files
+                         r"files.split.\1.*.fa"                         # glob pattern
+                         r"\1")                                         # index of original file
+                def split_files(input_file, output_files, original_index):
+                    """
+                        Code to split each input_file
+                            "original_0.file" -> "files.split.0.*.fa"
+                            "original_1.file" -> "files.split.1.*.fa"
+                            "original_2.file" -> "files.split.2.*.fa"
+                    """
+
+
+        This is, conceptually, the reverse of the @collate(...) decorator
+
+    * Ruffus will complain about unescaped regular expression special characters:
+
+        Ruffus uses "\\1" and "\\2" in regular expression substitutions. Even seasoned python
+        users may not remember that these have to be 'escaped' in strings. The best option is
+        to use 'raw' python strings e.g.
+
+            ::
+
+                r"\1_substitutes\2correctly\3four\4times"
+
+        Ruffus will throw an exception if it sees an unescaped "\\1" or "\\2" in a file name,
+        which should catch most of these bugs.
+
+    * Prettier output from *pipeline_printout_graph*
+
+        Changed to nicer colours, symbols etc. for a more professional look.
+        @split and @merge tasks now look different from @transform.
+        Colours, size and resolution are now fully customisable::
+
+            pipeline_printout_graph( #...
+                                     user_colour_scheme = {
+                                                            "colour_scheme_index":1,
+                                                            "Task to run"  : {"fillcolor":"blue"},
+                                                             pipeline_name : "My flowchart",
+                                                             size          : (11,8),
+                                                             dpi           : 120)})
+
+        An SVG bug in firefox has been worked around so that font size are displayed correctly.
+
+
+= v. 2.1.1=
+    _12/March/2010_
+    * **@transform(.., add_inputs(...))**
+        ``add_inputs(...)`` allows the addition of extra input dependencies / parameters for each job.
+
+        Unlike ``inputs(...)``, the original input parameter is retained:
+            ::
+
+                from ruffus import *
+                @transform(["a.input", "b.input"], suffix(".input"), add_inputs("just.1.more","just.2.more"), ".output")
+                def task(i, o):
+                ""
+
+        Produces:
+            ::
+
+                Job = [[a.input, just.1.more, just.2.more] ->a.output]
+                Job = [[b.input, just.1.more, just.2.more] ->b.output]
+
+
+        Like ``inputs``, ``add_inputs`` accepts strings, tasks and ``glob`` s
+        This minor syntactic change promises add much clarity to Ruffus code.
+        ``add_inputs()`` is available for ``@transform``, ``@collate`` and ``@split``
+   
+
+
+= v. 2.1.0=
+    _2/March/2010_
+    * **@jobs_limit**
+      Some tasks are resource intensive and too many jobs should not be run at the
+      same time. Examples include disk intensive operations such as unzipping, or
+      downloading from FTP sites.
+
+      Adding::
+
+          @jobs_limit(4)
+          @transform(new_data_list, suffix(".big_data.gz"), ".big_data")
+          def unzip(i, o):
+            "unzip code goes here"
+
+      would limit the unzip operation to 4 jobs at a time, even if the rest of the
+      pipeline runs highly in parallel.
+
+      (Thanks to Rob Young for suggesting this.)
+
+= v. 2.0.10=
+    _27/February/2010_
+    * **touch_files_only** option for **pipeline_run**
+
+      When the pipeline runs, task functions will not be run. Instead, the output files for
+      each job (in each task) will be ``touch``\ -ed if necessary.
+      This can be useful for simulating a pipeline run so that all files look as
+      if they are up-to-date.
+
+      Caveats:
+
+        * This may not work correctly where output files are only determined at runtime, e.g. with **@split**
+        * Only the output from pipelined jobs which are currently out-of-date will be ``touch``\ -ed.
+          In other words, the pipeline runs *as normal*, the only difference is that the
+          output files are ``touch``\ -ed instead of being created by the python task functions
+          which would otherwise have been called.
+
+    * Parameter substitution for **inputs(...)**
+
+      The **inputs(...)** parameter in **@transform**, **@collate** can now take tasks and ``glob`` s,
+      and these will be expanded appropriately (after regular expression replacement).
+
+      For example::
+
+          @transform("dir/a.input", regex(r"(.*)\/(.+).input"),
+                        inputs((r"\1/\2.other", r"\1/*.more")), r"elsewhere/\2.output")
+          def task1(i, o):
+            """
+            Some pipeline task
+            """
+
+      Is equivalent to calling::
+
+            task1(("dir/a.other", "dir/1.more", "dir/2.more"), "elsewhere/a.output")
+
+      \
+
+          Here::
+
+                r"\1/*.more"
+
+          is first converted to::
+
+                r"dir/*.more"
+
+          which matches::
+
+                "dir/1.more"
+                "dir/2.more"
+
+
+
+= v. 2.0.9=
+    _25/February/2010_
+    * Better display of logging output
+    * Advanced form of **@split**
+      This is an experimental feature.
+
+      Hitherto, **@split** only takes 1 set of input (tasks/files/``glob`` s) and split these
+      into an indeterminate number of output.
+
+          This is a one->many operation.
+
+      Sometimes it is desirable to take multiple input files, and split each of them further.
+
+          This is a many->many (more) operation.
+
+      It is possible to hack something together using **@transform** but downstream tasks would not
+      aware that each job in **@transform** produces multiple outputs (rather than one input,
+      one output per job).
+
+      The syntax looks like::
+
+           @split(get_files, regex(r"(.+).original"), r"\1.*.split")
+           def split_files(i, o):
+                pass
+
+      If ``get_files()`` returned ``A.original``, ``B.original`` and ``C.original``,
+      ``split_files()`` might lead to the following operations::
+
+            A.original
+                    -> A.1.original
+                    -> A.2.original
+                    -> A.3.original
+            B.original
+                    -> B.1.original
+                    -> B.2.original
+            C.original
+                    -> C.1.original
+                    -> C.2.original
+                    -> C.3.original
+                    -> C.4.original
+                    -> C.5.original
+
+      Note that each input (``A/B/C.original``) can produce a number of output, the exact
+      number of which does not have to be pre-determined.
+      This is similar to **@split**
+
+      Tasks following ``split_files`` will have ten inputs corresponding to each of the
+      output from ``split_files``.
+
+      If **@transform** was used instead of **@split**, then tasks following ``split_files``
+      would only have 3 inputs.
+
+
+
+
+= v. 2.0.8=
+    _22/January/2010_
+    * File names can be in unicode
+    * File systems with 1 second timestamp granularity no longer cause problems.
+	* Now accepts unicode file names: 
+	  Change `isinstance(x,str)` to `isinstance(x, basestring)`
+	  (Thanks to P.J. Davis for contributing this.)
+	* inputs(...) now raises an exception when passed multiple arguments.
+	  If the input parameter is being passed a tuple, add an extra set of enclosing
+	  brackets. Documentation updated accordingly.
+	  (Thanks to Z. Harris for spotting this.)
+	* tasks where regular expressions are incorrectly specified are a great source of frustration
+	  and puzzlement.
+	  Now if no regular expression matches occur, a warning is printed
+	  (Thanks to C. Nellaker for suggesting this)
+
+= v. 2.0.7=
+    _11/December/2009_
+	* graph printout blows up because of missing run time data error
+	  (Thanks to A. Heger for reporting this!)
+
+
+= v. 2.0.6=
+    _10/December/2009_
+	* several minor bugs
+	* better error messages when eoncountering decorator problems when checking if the pipeline is uptodate
+	* Exception when output specifications in @split were expanded (unnecessarily) in logging.
+	  (Thanks to N. Spies for reporting this!)
+
+= v. 2.0.4=
+    _22/November/2009_
+    * Bug Fix
+
+        * task.get_job_names() dies for jobs with no parameters
+        * JobSignalledBreak was not exported
+
+= v. 2.0.3=
+    _18/November/2009_
+	* @transform accepts single file names. Thanks Chris N.
+
+= v. 2.0.2=
+    _18/November/2009_
+	* pipeline_printout output much prettier
+	* pipeline_run at high verbose levels 
+	  Shows which tasks are being checked
+	  to see if they are up-to-date or not
+	* New tutorial / manual
+	* pretty code figures
+
+= v. 2.0.1=
+    _18/November/2009_
+    All unit tests passed
+    * Numerous bugs to do with ordering of glob / job output consistency
+
+= v. 2.0.1 beta4=
+    _16/November/2009_
+    * Fixed problems with tasks depending on @split
+
+= v. 2.0 beta=
+    _30/October/2009_
+    With the experience and feedback over the past few months, I have reworked **Ruffus** 
+    completely mainly to make the syntax more transparent, with fewer gotchas.
+    Previous limitations to do with parameters have been removed.
+    The experience with what *Ruffus* calls "Indicator Objects" has been very positive
+    and there are more of them. 
+    These are dummy classes with obvious names like "regex" or "suffix" which indicate the
+    type of optional parameters much like named parameters.
+
+    * Revamped documentation:
+
+        * Rewritten tutorial
+        * Comprehensive manual
+        * New syntax help
+
+    * Major redesign. New decorators include
+
+        * :ref:`@split <manual.split>`
+        * :ref:`@transform <manual.transform>`
+        * :ref:`@merge <manual.merge>`
+        * :ref:`@collate <manual.collate>`
+
+    * Major redesign. Decorator *inputs* can mix
+
+        * Output from previous tasks
+        * |glob|_ patterns e.g. ``*.txt``
+        * Files names
+        * Any other data type
+
+    * Deprecated Decorators:
+
+        * @files_re
+
+          Functionality is divided among the new decorators
+            
+    * New Features
+
+        * Files can be chained from task to task, implicit dependencies are inferred automatically
+        * Limitations on parameters removed. Any degree of nesting is allowed.
+        * Strings contain glob letters ``[]?*`` automatically inferred as globs and expanded
+        * input and output parameters containing strings assumed to be filenames, whatever the nested data structures they are found in
+
+    * Documentation
+
+        * New documentation almost complete
+        * New Simplified 7 step tutorial
+        * New manual work in progress
+
+    * Bug Fix
+
+        * Scheduling errors
+
+= v. 1.1.4=
+    _15/October/2009_
+
+    * New Feature
+
+        * Tasks can get their input by automatically chaining to the output from one or more parent tasks using the `@files_re`
+        * Added example showing how files can be split up into multiple jobs and then recombined
+           # Run `test/test_filesre_split_and_combine.py` with `-v|--verbose` `-s|--start_again`
+           # Run with `-D|--debug` to test.
+        * Documentation to follow
+
+    * Bug Fix
+
+        * Scheduling race conditions
+
+= v. 1.1.3=
+    _14/October/2009_
+
+    * Bug Fix
+
+        * Minor (but show stopping) bug in task.generic_job_descriptor
+
+= v. 1.1.2=
+    _9/October/2009_
+    
+    * Bug Fix
+
+        * Nasty (long standing) bug for single job tasks only decorated with `@follows(mkdir(...))` to be caught in an infinite loop
+
+    * Code Changes
+
+        * Add example of combining multiple input files depending on a regular expression pattern. 
+           # Run `test/test_filesre_combine.py` with -v (verbose)
+           # Run with -D (debug) to test.
+
+
+
+= v. 1.1.1=
+    _8/October/2009_
+    
+    * New Feature
+
+        * _Combine multiple input files using a regular expression_
+        * Added `combine` syntax to `@files_re` decorators:
+        * Documentation to follow...
+        * Example from `src/ruffus/test/test_branching_dependencies.py`:
+          ::
+
+			@files_re('*.*', '(.*/)(.*\.[345]$)', combine(r'\1\2'), r'\1final.6')
+			def test(input_files, output_files):
+			  pass`
+
+        * will take all files in the current directory
+        * will identify files which end in `.3`,  `.4` and `.5` as input files
+        * will use `final.6` as the output file
+        * `input_files  == [a.3, a.4, b.3, b.5]`  (for example)
+        * `output_files == [final.6]` 
+           
+    * Bug Fix
+
+        * All (known) bugs for running jobs from independent tasks in parallel
+
+
+
+= v. 1.0.9=
+    _8/October/2009_
+    
+    * New Feature
+
+        _Multitasking independent tasks_
+        * In a major piece of retooling, jobs from independent tasks which do not         depend on each other will be run in parallel.
+        * This involves major changes to the scheduling code. 
+        * Please contact me asap if anything breaks.
+
+    * Code Changes
+        * Add example of independent tasks running concurrently in
+          `test/test_branching_dependencies.py`
+          * Run with -v (verbose) and -j 1 or -j 10 to show the indeterminancy of multiprocessing.
+          * Run with -D (debug) to test.
+
+= v. 1.0.8=
+    _12/August/2009_
+    
+    * Documentation
+
+        * Errors fixed. Thanks to Matteo Bertini!
+
+    * Code Changes
+
+        * Added functions which print out job parameters more prettily.
+        * `task.shorten_filenames_encoder`
+        * `task.ignore_unknown_encoder`
+        * Parameters which look like file paths will only have the file part printed
+          (i.e. `"/a/b/c" -> 'c'`)
+        * Test scripts `simpler_with_shared_logging.py` and `test_follows_mkdir.py`
+          have been changed to test for this.
+
+
+= v. 1.0.7=
+    _17/June/2009_
+    
+    * Code Changes
+
+        * Added `proxy_logger` module for accessing a shared log across multiple jobs in
+          different processes.
+
+= v. 1.0.6=
+    _12/June/2009_
+    
+    * Bug Fix
+
+        * _Ruffus_ version module (`ruffus_version.py`) links fixed
+          Soft links in linux do not travel well
+        * `mkdir` now can take a list of strings
+          added test case
+
+    * Documentation
+
+        * Added history of changes
+
+= v. 1.0.5=
+    _11/June/2009_
+
+    * Bug Fix
+
+        * Changed "graph_printout" to `pipeline_printout_graph` in documentation.
+          This function had been renamed in the code but not in the documentation :-(
+
+    * Documentation
+
+        * Added example for sharing synchronising data between jobs.
+          This shows how different jobs can write to a common log file while still leaveraging the full power of _ruffus_.
+        
+
+    * Code Changes
+
+        * The graph and print_dependencies modules are no longer exported by default from task.
+          Please email me if this breaks anything.
+        * More informative error message when refer to unadorned (without _Ruffus_ decorators) python functions as pipelined Tasks
+        * Added Ruffus version module `ruffus_version.py`
+
+
+
+= v. 1.0.4=
+    _05/June/2009_
+    * Bug fix: 
+
+        * `task.task_names_to_tasks` did not include tasks specified by function rather than name
+        * `task.run_all_jobs_in_task` did not work properly without multiprocessing (# of jobs = 1)
+        * `task.pipeline_run` only uses multiprocessing pools if `multiprocess` (# of jobs)  > 1
+    
+    * Changes to allow python 2.4/2.5 to run
+
+        * `setup.py` changed to remove dependency
+        * `simplejson` can be loaded instead of python 2.6 `json` module
+        * Changed `NamedTemporaryFile` to `mkstemp` because delete parameter is not available before python 2.6
+
+    * Windows programmes
+        It is necessary to protect the "entry point" of the program under windows.
+        Otherwise, a new process with be created recursively, like the magicians's apprentice
+        See: http://docs.python.org/library/multiprocessing.html#multiprocessing-programming
+
+= v. 1.0.3=
+    _04/June/2009_
+    * Documentation 
+
+        
+        Including SGE `qrsh` workaround in FAQ.
+
+= v. 1.0.1=
+    _22/May/2009_
+    * Add simple tutorial.
+
+    
+        No major bugs so far...!!
+
+= v. 1.0.0 beta =
+    _28/April/2009_
+
+    Initial Release in Oxford       
+    

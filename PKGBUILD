@@ -1,28 +1,38 @@
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 # Contributor: Felix Golatofski <contact@xdfr.de>
 # Contributor: Fredrick Brennan <copypaste@kittens.ph>
 # Contributor: mutantmonkey <aur@mutantmonkey.in>
 # Contributor: Stephan Eisvogel <eisvogel at embinet dot de>
-_base=ruffus
-pkgname=python-${_base}
+
+pkgname=python-ruffus
+_pkg="${pkgname#python-}"
 pkgver=2.8.4
-pkgrel=1
-pkgdesc="A lightweight Python library for computational pipelines."
-arch=(any)
-url="http://www.${_base}.org.uk"
-license=(MIT)
-depends=(python)
-makedepends=(python-setuptools)
-source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
-sha512sums=('5f38ad4ca5aca007e63b59be6117af85618bc27e8d98cc3b32add82ac48766c37b3fb2633a28c98941397ab3154553ba57509b321d2c80d01c753ac189f092e7')
+pkgrel=2
+pkgdesc="Lightweight Python library for computational pipelines"
+arch=('any')
+url='https://github.com/cgat-developers/ruffus'
+license=('MIT')
+depends=('python')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('6cd3d96e459a1aedcc10341f14fddedfdc13664551757fcd429a241de63826aa')
+
+prepare() {
+	# test dir does not respect find_packages(exclude=[])
+	rm -rf "$_pkg-$pkgver/$_pkg/test/"
+}
 
 build() {
-  cd ${_base}-${pkgver}
-  export PYTHONHASHSEED=0
-  python setup.py build
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
 package() {
-  cd ${_base}-${pkgver}
-  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
-  install -Dm 644 LICENSE.TXT -t "${pkgdir}/usr/share/licenses/${pkgname}"
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+	local _site="$(python -c 'import site; print(site.getsitepackages()[0])')"
+	install -d "$pkgdir/usr/share/licenses/$pkgname/"
+	ln -s \
+		"$_site/$_pkg-$pkgver.dist-info/LICENSE.TXT" \
+		"$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
