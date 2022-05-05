@@ -1,6 +1,6 @@
 pkgbase = art-rawconverter-git
 	pkgdesc = Rawconverter ART including blackfoxx-Theme built from latest sources
-	pkgver = r9983_4bf728b84
+	pkgver = r10027_a4b169094
 	pkgrel = 1
 	url = https://bitbucket.org/agriggio/art/wiki/Home
 	arch = i686
@@ -25,6 +25,7 @@ pkgbase = art-rawconverter-git
 	depends = libcanberra
 	depends = libiptcdata
 	depends = desktop-file-utils
+	depends = mimalloc
 	optdepends = perl-image-exiftool: metadata support for CR3 images
 	conflicts = art-rawconverter
 	source = art-rawconverter-git_src::git+https://bitbucket.org/agriggio/art.git#branch=master

@@ -1,12 +1,12 @@
 # Maintainer: René Wagner <rwagner at rw-net dot de>
 pkgname=art-rawconverter-git
-pkgver=r9983_4bf728b84
+pkgver=r10027_a4b169094
 pkgrel=1
 pkgdesc="Rawconverter ART including blackfoxx-Theme built from latest sources"
 arch=('i686' 'x86_64' 'aarch64')
 url="https://bitbucket.org/agriggio/art/wiki/Home"
 license=('GPL3')
-depends=('lensfun' 'libraw' 'exiv2' 'fftw' 'gtk3' 'glibmm' 'gtkmm3' 'lcms2' 'libcanberra' 'libiptcdata' 'desktop-file-utils') 
+depends=('lensfun' 'libraw' 'exiv2' 'fftw' 'gtk3' 'glibmm' 'gtkmm3' 'lcms2' 'libcanberra' 'libiptcdata' 'desktop-file-utils' 'mimalloc') 
 optdepends=('perl-image-exiftool: metadata support for CR3 images' )
 makedepends=('pkgconf' 'make' 'cmake' 'git' 'gcc' 'hicolor-icon-theme' 'fakeroot')
 conflicts=('art-rawconverter')
@@ -30,8 +30,8 @@ build() {
     -DCMAKE_BUILD_TYPE=Release \
     -DPROC_TARGET_NUMBER=2 \
     -DWITH_LTO="ON" \
-	-DENABLE_LIBRAW="ON"
-
+	-DENABLE_LIBRAW="ON" \
+	-DENABLE_MIMALLOC="ON"
  	make
 }
 
