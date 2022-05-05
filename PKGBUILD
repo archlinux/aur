@@ -4,7 +4,7 @@
 
 pkgname=tmux-bash-completion-git
 pkgver=r16.f5d5323
-pkgrel=1
+pkgrel=2
 pkgdesc="Bash completion for tmux"
 arch=('any')
 url="https://github.com/imomaliev/tmux-bash-completion"
@@ -13,8 +13,8 @@ depends=('bash-completion' 'tmux')
 makedepends=('git')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
-source=("git+$url")
-md5sums=('SKIP')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 pkgver() {
   cd "${pkgname%-git}"
@@ -22,8 +22,6 @@ pkgver() {
 }
 
 package() {
-  cd "${pkgname%-git}/completions"
-  for file in * ; do
-    install -Dm644 "$file" "$pkgdir/usr/share/bash-completion/completions/$file"
-  done
+  cd "${pkgname%-git}"
+  install -Dm644 -t "$pkgdir/usr/share/bash-completion/completions/" completions/*
 }
