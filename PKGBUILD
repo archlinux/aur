@@ -2,16 +2,16 @@
 
 pkgname=apipost-bin
 _pkgname=${pkgname%-bin}
-pkgver=6.1.0
-pkgrel=2
+pkgver=6.1.1
+pkgrel=1
 pkgdesc="An API debugging and management tool that supports team collaboration and can generate documents directly."
 arch=('x86_64')
 url="https://www.apipost.cn/"
 license=('unknown')
 source=("${_pkgname}.desktop"
-        "https://img.cdn.apipost.cn/dl/linux/${_pkgname}_linuxgz_x64_$pkgver.tar.gz")
+        "https://www.apipost.cn/dl.php?client=LinuxGz&arch=x64&version=$pkgver#/${_pkgname}.tar.gz")
 md5sums=("74c20618584d247486311abf144089ea"
-        "6ed3a632d2838ca14f93194953feda24")
+        "5616d8415fd250af825a0b98cd47e530")
 
 package() {
   install -dm755 "${pkgdir}/opt/${_pkgname}"
