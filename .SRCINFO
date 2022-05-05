@@ -1,0 +1,19 @@
+pkgbase = citations-git
+	pkgdesc = Manage your bibliographies using the BibTeX format
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://gitlab.gnome.org/msandova/citations
+	arch = x86_64
+	license = GPL3
+	checkdepends = appstream-glib
+	makedepends = git
+	makedepends = meson
+	makedepends = rust
+	depends = glib2
+	depends = libadwaita-git
+	provides = citations
+	conflicts = citations
+	source = git+https://gitlab.gnome.org/msandova/citations.git
+	b2sums = SKIP
+
+pkgname = citations-git
