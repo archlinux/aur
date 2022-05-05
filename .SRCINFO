@@ -1,6 +1,6 @@
 pkgbase = logc-git
 	pkgdesc = A simple logging library implemented in C99
-	pkgver = rf9ea349
+	pkgver = f9ea349
 	pkgrel = 1
 	url = https://github.com/rxi/log.c
 	arch = any
