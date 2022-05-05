@@ -1,7 +1,7 @@
 # Maintainer: Alexander Sulfrian <asulfrian@zedat.fu-berlin.de>
 pkgname=webex-bin
 pkgver=42.4.0.21893
-pkgrel=2
+pkgrel=3
 pkgdesc="Webex for Linux"
 arch=('x86_64')
 url="https://www.webex.com/"
@@ -32,9 +32,11 @@ depends=('alsa-lib'
          'xcb-util-wm'
          'xdg-utils')
 source=("$pkgname-$pkgver.deb::https://binaries.webex.com/WebexDesktop-Ubuntu-Gold/20220405181901/Webex.deb"
-        'webex.xml')
+        'webex.xml'
+        'https://archive.archlinux.org/packages/l/libsecret/libsecret-0.20.4-1-x86_64.pkg.tar.zst')
 sha256sums=('7d0fb41d683c2b55624f6fcbfd35611e47bf1f15a8ac356514ced3493c730f44'
-            '0d0b2664ac4aeb9a4a4b9f530dee4a14c13875735b87a3d96bf81f43eeec00ab')
+            '0d0b2664ac4aeb9a4a4b9f530dee4a14c13875735b87a3d96bf81f43eeec00ab'
+            '7bc3f4e27d141cf8d1979cd49adc58ee599686f6c1a898a013ef84ac22fd1f90')
 options=('!strip')
 
 prepare() {
@@ -46,6 +48,8 @@ package() {
     cd "$pkgname-$pkgver"
     cp -dpr --no-preserve=ownership opt/ "$pkgdir/"
     rm "$pkgdir/opt/Webex/lib/libstdc++.so.6"
+
+    cp -dp --no-preserve=ownership ../usr/lib/libsecret-1.so* "$pkgdir/opt/Webex/lib"
 
     mkdir -p "$pkgdir/usr/share/applications/"
     mv "$pkgdir/opt/Webex/bin/webex.desktop" "$pkgdir/usr/share/applications/"
