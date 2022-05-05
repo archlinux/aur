@@ -1,13 +1,12 @@
 # Maintainer: Sainnhe Park <sainnhe@gmail.com>
 pkgname=code-features
 pkgver=1.66.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Unblock some features in Code OSS'
 arch=('any')
 url='https://github.com/microsoft/vscode'
 license=('unknown')
-depends=('code' 'sed')
-optdepends=('org.freedesktop.secrets: for settings sync feature')
+depends=('code' 'sed' 'org.freedesktop.secrets')
 provides=('code-features')
 conflicts=('code-features')
 install="${pkgname}.install"
