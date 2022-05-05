@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/wfpaisa/plane-icon-theme"
 license=('GPL3')
 depends=('gnome-shell')
+options=(!strip)
 makedepends=('git' 'gulp' 'npm')
 source=("${pkgname}::git+https://github.com/wfpaisa/plane-icon-theme.git")
 sha256sums=('SKIP')
