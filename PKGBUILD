@@ -10,7 +10,6 @@ arch=('i686' 'x86_64')
 url="http://${_framework}.org"
 license=('AGPL')
 conflicts=("${pkgname}-bin" "${pkgname}-git")
-provides=("${pkgname}")
 depends=("${_framework}")
 options=('!makeflags' '!buildflags')
 source=("https://ftp.gnu.org/gnu/${_framework}/${pkgname}-${pkgver}.tar.gz"{,.sig})
