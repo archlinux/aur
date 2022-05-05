@@ -3,7 +3,7 @@
 
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-bin
-pkgver=6.5.3.1454
+pkgver=6.5.5.1525
 pkgrel=2
 _releasename="Alchemy Project AgileAkita"
 _releasename_underscored="${_releasename// /_}"
@@ -31,9 +31,11 @@ optdepends=(
   'nvidia-libgl: NVIDIA support'
   'nvidia-utils: NVIDIA support')
 provides=('alchemy-viewer')
-source=("${_pkgfolder}.tar.bz2"::'https://git.alchemyviewer.org/api/v4/projects/78/packages/generic/'"${_releasename_underscored}/${pkgver}/${_pkgfolder}.tar.bz2")
-sha1sums=('791e755a5dad859b7a9b1f125284d38e0f729e21')
-b2sums=('dcec836077c3cc17bcb82f7a89508d0e29bd8dbcfb2d907598dc3d9febaba36ea2773c3b4b82848f086fa78f07c4e68d6090ec351c15c5ab19420b19ef7e80a7')
+# The release url format changes often, please keep this comment for easy switching.
+# source=("${_pkgfolder}.tar.bz2"::'https://git.alchemyviewer.org/api/v4/projects/78/packages/generic/'"${_releasename_underscored}/${pkgver}/${_pkgfolder}.tar.bz2")
+source=("${_pkgfolder}.tar.bz2"::'https://git.alchemyviewer.org/alchemy/alchemy-next/-/package_files/1340/download')
+sha1sums=('ab870655dd3d6c5d950fd1ad10d6f49bab69dc5b')
+b2sums=('1a3087e0c792e48a4c57e6137292b7f88cb6c7a9177bf49ef90f855c84118a7acddb220efc1ea525280ae39b21b3dc796ddfd568e64069ef624cd519dd76f545')
 # pkgver() {
   # echo "${pkgver}"
 # }
