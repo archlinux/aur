@@ -1,17 +1,17 @@
 # Maintainer: a821
 
 pkgname=litecoin-daemon
-pkgver=0.21.1
+pkgver=0.21.2
 pkgrel=1
 arch=('x86_64')
 url="https://www.litecoin.org/"
 license=('MIT')
 pkgdesc="Peer-to-peer digital currency (includes litecoind and litecoin-cli)"
-depends=('openssl' 'boost-libs' 'libevent' 'miniupnpc' 'zeromq' 'db4.8')
+depends=('boost-libs' 'db4.8' 'fmt' 'libevent' 'miniupnpc' 'openssl' 'sqlite' 'zeromq')
 makedepends=('boost')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/litecoin-project/litecoin/archive/refs/tags/v${pkgver}.tar.gz"
         "Fix-build-with-Boost-1.77.0.patch")
-sha256sums=('8f9c77c291c7824154d2dd7821b833ba51789ba4bab2af9d142e596f2acd899d'
+sha256sums=('d6c00ae33d9ec3a5b5afefa6b4bbdd60288ab48ca8e3917d713a3618fba23392'
             '0eb6bb4bb1c82560b063da9e0c2d0404df90637ab13b5db4a75f7959e29bfa44')
 
 prepare() {
