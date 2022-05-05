@@ -1,0 +1,14 @@
+pkgbase = ruby-trailblazer-option
+	pkgdesc = Wrap options for runtime evaluation (e.g. for introspection, lambda or Callable patterns)
+	pkgver = 0.1.2
+	pkgrel = 1
+	url = https://rubygems.org/gems/trailblazer-option
+	arch = any
+	license = MIT
+	depends = ruby
+	noextract = trailblazer-option-0.1.2.gem
+	options = !emptydirs
+	source = https://rubygems.org/downloads/trailblazer-option-0.1.2.gem
+	sha256sums = 20e4f12ea4e1f718c8007e7944ca21a329eee4eed9e0fa5dde6e8ad8ac4344a3
+
+pkgname = ruby-trailblazer-option
