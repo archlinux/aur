@@ -6,7 +6,7 @@
 _pkgname=PDFStudio
 pkgname=${_pkgname,,}-bin
 _pkgver=2021
-pkgver=$_pkgver.1.3
+pkgver=$_pkgver.1.4
 pkgrel=1
 pkgdesc='Review, annotate, and edit PDF Documents'
 arch=(x86_64)
@@ -21,7 +21,7 @@ source=("${pkgname%-bin}.desktop"
         "https://download.qoppa.com/${pkgname%-bin}/v$_pkgver/${_pkgname}_v${pkgver//./_}_linux64.deb")
 sha256sums=('7af4b3af56c1c36f10c04bca81fabdcdedadac7dabd3e782b82cfe1bbf34cf43'
             '0a3c1c337a22228f3df28412ca65d45d0d8067b508cf7b1cf93810fc17c9b447'
-            'd9acfcfec95678b63b97b742c324da4f5f0a15fbec3bbd6f2450d912f6c31c63')
+            'de737cfef58905e2f80dbef0a61c5147b813ea7e1187d22f221afa7547b4553a')
 
 prepare() {
   bsdtar xf data.tar.gz
