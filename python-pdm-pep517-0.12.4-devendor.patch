@@ -1,6 +1,6 @@
 diff -ruN a/pdm/pep517/license.py b/pdm/pep517/license.py
---- a/pdm/pep517/license.py	2022-04-01 15:46:56.455537300 +0200
-+++ b/pdm/pep517/license.py	2022-04-16 16:58:15.646946868 +0200
+--- a/pdm/pep517/license.py	2022-05-02 15:34:09.672311000 +0200
++++ b/pdm/pep517/license.py	2022-05-06 00:16:08.870022181 +0200
 @@ -1,6 +1,6 @@
  import warnings
  
@@ -10,8 +10,8 @@ diff -ruN a/pdm/pep517/license.py b/pdm/pep517/license.py
      Licensing,
      get_spdx_licensing,
 diff -ruN a/pdm/pep517/metadata.py b/pdm/pep517/metadata.py
---- a/pdm/pep517/metadata.py	2022-04-01 15:46:56.455537300 +0200
-+++ b/pdm/pep517/metadata.py	2022-04-16 16:55:33.869757913 +0200
+--- a/pdm/pep517/metadata.py	2022-05-02 15:34:09.672311000 +0200
++++ b/pdm/pep517/metadata.py	2022-05-06 00:16:37.623454122 +0200
 @@ -17,8 +17,8 @@
      Union,
  )
@@ -24,8 +24,8 @@ diff -ruN a/pdm/pep517/metadata.py b/pdm/pep517/metadata.py
  from pdm.pep517.license import normalize_expression
  from pdm.pep517.scm import get_version_from_scm
 diff -ruN a/pdm/pep517/scm.py b/pdm/pep517/scm.py
---- a/pdm/pep517/scm.py	2022-04-01 15:46:56.455537300 +0200
-+++ b/pdm/pep517/scm.py	2022-04-16 16:55:50.269810924 +0200
+--- a/pdm/pep517/scm.py	2022-05-02 15:34:09.672311000 +0200
++++ b/pdm/pep517/scm.py	2022-05-06 00:17:33.296978562 +0200
 @@ -11,8 +11,8 @@
  from datetime import datetime
  from typing import Any, Dict, Iterable, List, NamedTuple, Optional, Tuple, Union
@@ -38,8 +38,8 @@ diff -ruN a/pdm/pep517/scm.py b/pdm/pep517/scm.py
  DEFAULT_TAG_REGEX = re.compile(
      r"^(?:[\w-]+-)?(?P<version>[vV]?\d+(?:\.\d+){0,2}[^\+]*)(?:\+.*)?$"
 diff -ruN a/pdm/pep517/sdist.py b/pdm/pep517/sdist.py
---- a/pdm/pep517/sdist.py	2022-04-01 15:46:56.455537300 +0200
-+++ b/pdm/pep517/sdist.py	2022-04-16 16:57:56.110217182 +0200
+--- a/pdm/pep517/sdist.py	2022-05-02 15:34:09.672311000 +0200
++++ b/pdm/pep517/sdist.py	2022-05-06 00:18:03.283748195 +0200
 @@ -6,7 +6,8 @@
  from copy import copy
  from typing import Any, Iterator
@@ -51,8 +51,8 @@ diff -ruN a/pdm/pep517/sdist.py b/pdm/pep517/sdist.py
  
  
 diff -ruN a/pdm/pep517/utils.py b/pdm/pep517/utils.py
---- a/pdm/pep517/utils.py	2022-04-01 15:46:56.455537300 +0200
-+++ b/pdm/pep517/utils.py	2022-04-16 16:53:18.682653963 +0200
+--- a/pdm/pep517/utils.py	2022-05-02 15:34:09.672311000 +0200
++++ b/pdm/pep517/utils.py	2022-05-06 00:17:12.223572876 +0200
 @@ -8,10 +8,10 @@
  from pathlib import Path
  from typing import Callable, Generator, Iterable, Optional, Union
@@ -69,8 +69,8 @@ diff -ruN a/pdm/pep517/utils.py b/pdm/pep517/utils.py
  
  
 diff -ruN a/pdm/pep517/validator.py b/pdm/pep517/validator.py
---- a/pdm/pep517/validator.py	2022-04-01 15:46:56.455537300 +0200
-+++ b/pdm/pep517/validator.py	2022-04-16 16:57:30.480134513 +0200
+--- a/pdm/pep517/validator.py	2022-05-02 15:34:09.672311000 +0200
++++ b/pdm/pep517/validator.py	2022-05-06 00:18:23.523817701 +0200
 @@ -1,6 +1,6 @@
  from typing import Mapping
  
@@ -80,8 +80,8 @@ diff -ruN a/pdm/pep517/validator.py b/pdm/pep517/validator.py
  
  README_RULE = [
 diff -ruN a/pdm/pep517/wheel.py b/pdm/pep517/wheel.py
---- a/pdm/pep517/wheel.py	2022-04-01 15:46:56.455537300 +0200
-+++ b/pdm/pep517/wheel.py	2022-04-16 16:52:45.555880020 +0200
+--- a/pdm/pep517/wheel.py	2022-05-02 15:34:09.672311000 +0200
++++ b/pdm/pep517/wheel.py	2022-05-06 00:18:47.387233055 +0200
 @@ -15,8 +15,8 @@
  from typing import Any, Generator, List, Mapping, Optional, TextIO, Tuple, Union
  
@@ -94,51 +94,14 @@ diff -ruN a/pdm/pep517/wheel.py b/pdm/pep517/wheel.py
  from pdm.pep517.exceptions import BuildError
  from pdm.pep517.utils import get_abi_tag, get_platform
 diff -ruN a/pyproject.toml b/pyproject.toml
---- a/pyproject.toml	2022-04-01 15:46:56.455537300 +0200
-+++ b/pyproject.toml	2022-04-16 17:00:29.350711207 +0200
+--- a/pyproject.toml	2022-05-02 15:34:09.672311000 +0200
++++ b/pyproject.toml	2022-05-06 00:21:06.007709884 +0200
 @@ -21,7 +21,7 @@
      "Programming Language :: Python :: 3.9",
      "Programming Language :: Python :: 3.10",
  ]
 -dependencies = []
-+dependencies = ["boolean.py", "cerberus", "license-expression", "packaging", "pyparsing", "tomli", "tomli-w"]
- version = "0.12.3"
++dependencies = ["boolean.py", "cerberus", "license_expression", "packaging", "pyparsing", "tomli", "tomli_w"]
+ version = "0.12.4"
  
  [project.license]
-@@ -60,36 +60,6 @@
- line-length = 88
- exclude = "/(\n    \\.eggs\n  | \\.git\n  | \\.mypy_cache\n  | build\n  | dist\n  | __pypackages__\n  | pdm/pep517/_vendor\n)/\n"
- 
--[tool.vendoring]
--destination = "pdm/pep517/_vendor/"
--requirements = "pdm/pep517/_vendor/vendor.txt"
--namespace = "pdm.pep517._vendor"
--protected-files = [
--    "__init__.py",
--    "README.md",
--    "vendor.txt",
--]
--patches-dir = "scripts/patches"
--
--[tool.vendoring.transformations]
--substitute = []
--drop = [
--    "bin/",
--    "*.so",
--    "typing.*",
--    "*/tests/",
--    "spdx/data/*.txt",
--    "cerberus/benchmarks/",
--    "**/test_*.py",
--    "**/*_test.py",
--]
--
--[tool.vendoring.typing-stubs]
--
--[tool.vendoring.license.directories]
--
--[tool.vendoring.license.fallback-urls]
--
- [tool.towncrier]
- package = "pdm"
- filename = "CHANGELOG.md"

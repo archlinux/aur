@@ -2,7 +2,7 @@
 
 _name=pdm-pep517
 pkgname=python-pdm-pep517
-pkgver=0.12.3
+pkgver=0.12.4
 pkgrel=1
 pkgdesc="A PEP 517 backend for PDM that supports PEP 621 metadata"
 arch=(any)
@@ -16,19 +16,19 @@ optdepends=(
 )
 source=(
   https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz
-  $pkgname-0.12.3-devendor.patch
+  $pkgname-0.12.4-devendor.patch
 )
-sha512sums=('4da765132f278fec2e1fc6705b00e3f660e030264e0d21be8528dd5389fa488a352e09977e850e1e203c50ff5d5e0798fc685505f5bc15a4cd93b28114601377'
-            '177bd0e80b43c8b28c379fb33dd2347fe5d64c7cbc9257b7cf39271e114ad176ddb7f2f4cfae609ccce52f9a10e61a13feb729288ca07c7f6b6a39714232d748')
-b2sums=('8f784e7e0314bd91a9dddd096c6d7b456f60f2305741b648cec38cfa8f7b5e027b56dffae3c3b81307e0fe928f85e4acba32d516ce5c37fd6cff4c0c897fef8f'
-        '6102f342b461e89362a9cd9e45a8667b6fedad1f1c0362d8bb40a5bb0b141acf439c4a9af4880b869300e55270cc355993c13e33f754e33a174b2fba08cedc03')
+sha512sums=('16feb14c9b344357e1853a45e100724a4a3b426867488d9e37493dc9e9c884de51d6b617d2c82daab56f9e2050a0cfea830e84443e9c837854908417de26ad2b'
+            '40ce9ff4490d7bec7b29c9be35e53730a069cfea83d6b2eb9f8a4652a1587cef26fc46fd20e75684cbfc0128e6b975154bdb2bdca0e121b689721e81766e06b3')
+b2sums=('c3c02bac0269b7ef992567c99a4978632b4fc1fb9d07b1000357df39018c69e6d2f081d9b46d861e90eecf8925f14853a530fc4ccd850b48ceebd674a06f2df8'
+        'e87d1a79fc162c34169826367382194ea3fa6066bbea54be9c28a76e4ba8ed8b9035adf7050d03e8477e6376a5a831e311d3a5d877281ac5a9886347fd3405b2')
 
 prepare() {
   cd $_name-$pkgver
   # remove vendoring of python-boolean.py, python-cerberus,
   # python-license-expression, python-packaging, python-pyparsing,
   # python-tomli, python-tomli-w
-  patch -Np1 -i ../$pkgname-0.12.3-devendor.patch
+  patch -Np1 -i ../$pkgname-0.12.4-devendor.patch
   rm -frv pdm/pep517/_vendor
 }
 
