@@ -1,7 +1,7 @@
 
 pkgname=python-pyfreenet3-git
 pkgver=r953.471a62f78b3b8b69a8856f56625f1468c04b6836
-pkgrel=1
+pkgrel=2
 pkgdesc='Python FCPv2 library and utilities '
 arch=('any')
 url='https://github.com/freenet/pyFreenet'
@@ -24,5 +24,5 @@ check() {
 
 package() {
   cd $srcdir/pyFreenet
-  python setup.py install --root="$pkgdir/" --optimize=1
+  python3 setup.py install --root="$pkgdir/" --optimize=1
 }

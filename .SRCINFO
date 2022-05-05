@@ -1,7 +1,7 @@
 pkgbase = python-pyfreenet3-git
 	pkgdesc = Python FCPv2 library and utilities
 	pkgver = r953.471a62f78b3b8b69a8856f56625f1468c04b6836
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/freenet/pyFreenet
 	arch = any
 	makedepends = python-setuptools
