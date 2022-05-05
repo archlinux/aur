@@ -1,6 +1,6 @@
 pkgbase = plasma-mobile-nm
 	pkgdesc = Plasma applet written in QML for managing network connections, built with modules for mobile
-	pkgver = 5.24.4
+	pkgver = 5.24.5
 	pkgrel = 1
 	url = https://kde.org/plasma-desktop/
 	arch = x86_64
@@ -20,10 +20,10 @@ pkgbase = plasma-mobile-nm
 	depends = networkmanager-qt
 	depends = qca-qt5
 	optdepends = openconnect: Cisco AnyConnect VPN plugin
-	provides = plasma-nm=5.24.4
+	provides = plasma-nm=5.24.5
 	conflicts = plasma-nm
 	options = debug
-	source = https://download.kde.org/stable/plasma/5.24.4/plasma-nm-5.24.4.tar.xz
-	sha256sums = 086c28cfdaa6f4de785662ccd8123cd48b2a333fbaa2ca70b2a6d9dc3622ec2f
+	source = https://download.kde.org/stable/plasma/5.24.5/plasma-nm-5.24.5.tar.xz
+	sha256sums = ae1026cf7d2fb60f862ac9b985da4f7001f54267602062e461d0849f1d2fb429
 
 pkgname = plasma-mobile-nm
