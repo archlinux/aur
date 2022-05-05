@@ -2,7 +2,7 @@
 
 pkgname=python-manuf
 _pypiname=${pkgname/python-/}
-pkgver=1.1.3
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="Parser library for Wireshark's OUI database"
 arch=('any')
@@ -10,8 +10,8 @@ url='https://pypi.org/project/manuf/'
 license=('Apache GPL3')
 depends=('python-setuptools')
 
-source=("https://files.pythonhosted.org/packages/e9/02/abe5082ab1da56d240bff0f96efcb882b767801d2c17594f8736d733ee44/manuf-1.1.3.tar.gz")
-sha256sums=('4f6cec3805886a815ac0984ce230fc93a7f2f68f3a990c178b5ad7254d08e65f')
+source=("https://files.pythonhosted.org/packages/0a/a3/9db33765f9d962de4b113c2f07b6d5bab4521ed4feec4cb97cbf18184602/manuf-1.1.5.tar.gz")
+sha256sums=('741989728c8ffd0d5c5782376c00270fcd48cf7544f58bf9492a0ef674d433cd')
 
 package() {
     cd $srcdir/${_pypiname}-${pkgver}
