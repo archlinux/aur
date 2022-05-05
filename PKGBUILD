@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=system76-power-git
-pkgver=1.1.20.r27.g31a639b
+pkgver=1.1.20.r30.gf010065
 pkgrel=1
 pkgdesc="System76 Power Management"
 arch=('any')
@@ -21,7 +21,7 @@ sha256sums=('SKIP'
 pkgver() {
     cd "${srcdir}/${pkgname}"
 
-    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+    git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 prepare() {

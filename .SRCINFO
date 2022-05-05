@@ -1,6 +1,6 @@
 pkgbase = system76-power-git
 	pkgdesc = System76 Power Management
-	pkgver = 1.1.20.r27.g31a639b
+	pkgver = 1.1.20.r30.gf010065
 	pkgrel = 1
 	url = https://github.com/pop-os/system76-power
 	arch = any
