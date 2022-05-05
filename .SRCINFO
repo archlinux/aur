@@ -1,0 +1,23 @@
+pkgbase = python-onnx2pytorch
+	pkgdesc = Library to transform onnx model to pytorch
+	pkgver = 0.4.1
+	pkgrel = 1
+	url = https://github.com/ToriML/onnx2pytorch
+	arch = any
+	license = Apache
+	checkdepends = python-pytest
+	checkdepends = python-onnxruntime
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	depends = python-pytorch
+	depends = python-onnx
+	depends = python-torchvision
+	source = https://github.com/ToriML/onnx2pytorch/archive/v0.4.1/onnx2pytorch-v0.4.1.tar.gz
+	source = onnxruntime-specify-provider.diff
+	sha256sums = afda9f25f3ea639de57a3b432c970ed62878a73084db5febac5c6c2c4c98ba9b
+	sha256sums = e446bd33cfb0ad000d2d4b73e16feb8bbdb245f41b8635be9a9a52d7a911fc52
+
+pkgname = python-onnx2pytorch
