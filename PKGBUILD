@@ -1,5 +1,5 @@
 # Maintainer: acxz <akashpatel2008 at yahoo dot com>
-# Contributor: Sven-Hendrik Haase <svenstaro@gmail.com>
+# Contributor: Sven-Hendrik Haase <svenstaro@archlinux.org>
 # Contributor: Konstantin Gizdov (kgizdov) <arch@kge.pw>
 # Contributor: Adria Arrufat (archdria) <adria.arrufat+AUR@protonmail.ch>
 # Contributor: Thibault Lorrain (fredszaq) <fredszaq@gmail.com>
@@ -16,7 +16,7 @@ pkgname=()
 
 pkgver=2.8.0
 _pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for computation using data flow graphs for scalable machine learning"
 url="https://www.tensorflow.org/"
 license=('APACHE')
@@ -34,7 +34,10 @@ sha512sums=('9cddb78c0392b7810e71917c3731f895e31c250822031ac7f498bf20435408c640b
             'f682368bb47b2b022a51aa77345dfa30f3b0d7911c56515d428b8326ee3751242f375f4e715a37bb723ef20a86916dad9871c3c81b1b58da85e1ca202bc4901e')
 
 # consolidate common dependencies to prevent mishaps
-_common_py_depends=(python-termcolor python-astor python-gast03 python-numpy python-protobuf absl-py python-h5py python-keras python-keras-applications python-keras-preprocessing python-tensorflow-estimator python-opt_einsum python-astunparse python-pasta python-flatbuffers)
+_common_py_depends=(python-termcolor python-astor python-gast03 python-numpy python-protobuf
+                    absl-py python-h5py python-keras python-keras-applications python-keras-preprocessing
+                    python-tensorflow-estimator python-opt_einsum python-astunparse python-pasta
+                    python-flatbuffers python-typing_extensions)
 
 get_pyver () {
   python -c 'import sys; print(str(sys.version_info[0]) + "." + str(sys.version_info[1]))'
