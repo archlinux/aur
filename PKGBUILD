@@ -1,18 +1,17 @@
 pkgname=rdo
-pkgver=1.4
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A simple doas/sudo alternative."
-arch=('x86_64' 'aarch64')
+arch=('any')
 url=https://codeberg.org/sw1tchbl4d3/rdo
 license=('GPL3')
-depends=('libbsd')
 
 source=(
 "https://codeberg.org/sw1tchbl4d3/rdo/archive/${pkgver}.tar.gz"
 )
 
 sha512sums=(
-"0f8251f0c85f0076b8e0a38ef0b6ac84f614b0629ee5778adcaa62728df2c704577b005541e39e76862e20a26986b150f8aa682761c5d32ccb1625d591ef8699"
+"2aeafa33366d461ef53a8f44dbb57756aa42e213a1e1cd9b36edf7358760db0f48d344215941ca9a2e56c2092dd665677d24dc3b895bfbd2a1244ef69dd2f0ae"
 )
 
 build() {
