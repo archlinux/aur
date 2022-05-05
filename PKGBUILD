@@ -2,7 +2,7 @@
 
 pkgname=eternalmodmanager
 pkgver=2.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Cross-platform mod manager for DOOM Eternal.'
 arch=('x86_64')
 url='https://github.com/PowerBall253/EternalModManager-Avalonia'
@@ -12,7 +12,7 @@ makedepends=('dotnet-sdk')
 source=("git+https://github.com/PowerBall253/EternalModManager-Avalonia.git#tag=v${pkgver}"
         eternalmodmanager)
 sha256sums=('SKIP'
-            'c2eaebd3cf4a5a57f0d81107b64e321b70bb2db38904b6caff58a39079f08a5e')
+            'SKIP')
 
 build() {
     cd "EternalModManager-Avalonia"
@@ -30,5 +30,5 @@ package() {
     install -Dm644 -t "${pkgdir}/usr/share/metainfo/" "resources/${pkgname}.appdata.xml"
     install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps/" "resources/${pkgname}.png"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-    find "EternalModManager/bin/Release/net6.0/linux-x64/publish/" -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/eternalmodmanager/" "{}" \;
+    find "EternalModManager/bin/Release/net6.0/linux-x64/publish/" -type f -exec install -Dm775 -t "${pkgdir}/usr/lib/eternalmodmanager/" "{}" \;
 }
