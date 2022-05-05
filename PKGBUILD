@@ -4,7 +4,7 @@ _netcoretarget='netcoreapp3.1'
 _aarubase='Aaru'
 pkgname='aaru'
 pkgver=5.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Disc image management and creation tool for disks, tapes, optical and solid state media'
 arch=('x86_64' 'armv7h' 'aarch64')
 url='http://www.aaru.app'
@@ -18,7 +18,7 @@ options=('staticlibs')
 validpgpkeys=('236F1E21B540FC0D40F7AD1751D20488C724CA9F')
 provides=('aaru')
 conflicts=('aaru')
-depends=('icu' 'krb5' 'libcurl.so' 'libunwind' 'openssl-1.0' 'zlib')
+depends=('icu70' 'krb5' 'libcurl.so' 'libunwind' 'openssl-1.0' 'zlib')
 
 if [ $arch == 'aarch64' ]; then
     dotnet_rid=linux-arm64
