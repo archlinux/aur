@@ -1,6 +1,6 @@
 pkgbase = loxone-app
 	pkgdesc = Desktop application for the loxone home automation system
-	pkgver = 12.2.4
+	pkgver = 12.2.7
 	pkgrel = 1
 	url = https://www.loxone.com/enen/support/downloads/
 	arch = x86_64

@@ -1,7 +1,7 @@
 # Maintainer: Tom < tom at odex dot be >
 
 pkgname=loxone-app
-pkgver=12.2.4
+pkgver=12.2.7
 pkgrel=1
 pkgdesc="Desktop application for the loxone home automation system"
 arch=( 'x86_64' )
