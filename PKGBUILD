@@ -1,4 +1,4 @@
-# Maintainer: graysky <graysky AT archlinux DOT us>
+# Maintainer: graysky <therealgraysky AT protonmail DOT com>
 # Contributer: Bartłomiej Piotrowski <barthalion@gmail.com>
 # Contributor: yugrotavele <yugrotavele at archlinux dot us>
 # Contributor: Arkham <arkham at archlinux dot us>
