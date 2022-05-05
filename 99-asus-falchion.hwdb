@@ -1,0 +1,3 @@
+evdev:input:b*v0B05p193Ee0111*
+  KEYBOARD_KEY_10081=reserved
+  KEYBOARD_KEY_10082=reserved

@@ -1,0 +1,11 @@
+pkgbase = falchion-shutdown
+	pkgdesc = Add hwdb configuration to avoid shutdown or sleeping computer when keyboard go to sleep
+	pkgver = 1.0.0
+	pkgrel = 1
+	install = falchion.install
+	arch = any
+	license = MIT
+	source = 99-asus-falchion.hwdb
+	sha256sums = 5b8649abbd0472dd4167522409a176067ba6ec6c3b271ef98f4a2bbdc38070ba
+
+pkgname = falchion-shutdown
