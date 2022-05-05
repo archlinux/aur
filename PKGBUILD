@@ -1,4 +1,4 @@
-# Maintainer: graysky <graysky AT archlinux DOT us>
+# Maintainer: graysky <therealgraysky AT protonmail DOT com>
 # This package is optional as the xscreensaver will stream the videos directly
 # from apple which will save approx 16.3 GiB of disk space but know that you
 # will be using bandwidth every time your screensaver comes on which might
