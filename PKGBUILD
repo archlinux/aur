@@ -29,10 +29,15 @@ prepare() {
     cd ${srcdir}/${pkgname}
     patch -Np1 -i $srcdir/make-glibc_alloc_fix.patch
     patch -Np1 -i $srcdir/perl-use_safe_inclusion.patch
+
+    # Patch for updated GNU libc (glibc) glob interface version
+    sed -i 's/#define GLOB_INTERFACE_VERSION 1/#define GLOB_INTERFACE_VERSION 2/' configure{,.in}
+
 }
 
 build() {
     cd ${srcdir}/${pkgname}
+
     ./configure --prefix=/usr --program-suffix=-$pkgver
     make
 }
