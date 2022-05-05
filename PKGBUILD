@@ -1,7 +1,7 @@
 # Maintainer: Yacob Zitouni <yacob.zitouni@gmail.com>
 
 pkgname=ttf-menlo-powerline-git
-pkgrel=1
+pkgrel=2
 pkgver=r6.07e91f6
 pkgdesc="Menlo font patched to work with Powerline"
 arch=('any')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('fontconfig' 'xorg-mkfontscale' 'xorg-mkfontdir')
 makedepends=('git')
 install=ttf-menlo-powerline-git.install
-source=('git://github.com/abertsch/Menlo-for-Powerline.git')
+source=('git+https://github.com/abertsch/Menlo-for-Powerline.git')
 license=('unknown')
 md5sums=('SKIP')
 

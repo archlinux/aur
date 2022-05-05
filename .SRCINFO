@@ -1,7 +1,7 @@
 pkgbase = ttf-menlo-powerline-git
 	pkgdesc = Menlo font patched to work with Powerline
 	pkgver = r6.07e91f6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/abertsch/Menlo-for-Powerline
 	install = ttf-menlo-powerline-git.install
 	arch = any
@@ -10,8 +10,7 @@ pkgbase = ttf-menlo-powerline-git
 	depends = fontconfig
 	depends = xorg-mkfontscale
 	depends = xorg-mkfontdir
-	source = git://github.com/abertsch/Menlo-for-Powerline.git
+	source = git+https://github.com/abertsch/Menlo-for-Powerline.git
 	md5sums = SKIP
 
 pkgname = ttf-menlo-powerline-git
-
