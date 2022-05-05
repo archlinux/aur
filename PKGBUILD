@@ -1,4 +1,4 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=libfreesrp-git
 pkgver=0.3.0.r0.g541e7bb
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd ${pkgname}
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 build() {
