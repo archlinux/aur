@@ -1,17 +1,17 @@
 # Maintainer: Adrian Perez de Castro <aperez@igalia.com>
 pkgdesc='VHDL compiler and simulator'
 pkgname=nvc
-pkgver=1.5.0
+pkgver=1.6.2
 pkgrel=1
-url=https://github.com/nickg/nvc
+url=https://www.nickg.me.uk/nvc
 license=(GPL3)
 conflicts=(nvc-git)
 arch=(x86_64 i686)
 depends=(libelf llvm-libs ncurses)
 makedepends=(pkgconfig make flex check llvm tcl automake autoconf)
 optdepends=('ruby: for the scripts to download and install VHDL libraries')
-source=("${url}/releases/download/r${pkgver}/${pkgname}-${pkgver%.0}.tar.gz")
-sha512sums=('b27afd32b86bf6242fae0bb06051eab818936ec457891b43d0a397781851670e8d0e16e17eaa285cf1af0c32c7915b89458e39aa1bbbc305c280bbcb963bd647')
+source=("${url%/nvc}/files/${pkgname}-${pkgver%.0}.tar.gz")
+b2sums=('d201d927722ed4adea3d0888fb2af794277e7dad8c30bff1d2c42f16b82e3d0287240045b42fd171974f704a813eb610da5e41f1b9fa07ed9575ae78bd2cb32d')
 
 build () {
 	cd "${pkgname}-${pkgver%.0}"
@@ -20,20 +20,19 @@ build () {
 	CXXFLAGS="${CXXFLAGS} -pthread" \
 	./configure \
 		--prefix=/usr \
-		--with-llvm \
-		--with-ncurses \
+		--disable-dependency-tracking \
 		--enable-vhpi \
-		--enable-fst-pthread
+		--enable-vital \
+		--enable-lto \
+		--with-llvm=/usr/bin/llvm-config \
+		--with-ncurses
 	make && make bootstrap
 }
 
-# The source distribution is missing VHDL source files which are
-# needed to run the test suite.
-#
-# check () {
-# 	cd "${pkgname}-${pkgver%.0}"
-# 	make check
-# }
+check () {
+	cd "${pkgname}-${pkgver%.0}"
+	make check
+}
  
 package () {
 	cd "${pkgname}-${pkgver%.0}"
