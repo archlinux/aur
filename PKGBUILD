@@ -1,4 +1,5 @@
-# Contributor: graysky <graysky AT archlinux dot us>
+# Maintainer: graysky <therealgraysky AT protonmail dot com>
+
 pkgname=pulseaudio-ctl
 pkgver=1.70
 pkgrel=1
