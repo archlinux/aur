@@ -3,7 +3,7 @@
 
 pkgname=rehex
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform (Windows, Linux, Mac) hex editor for reverse engineering, and everything else"
 arch=('x86_64')
 url="https://github.com/solemnwarning/rehex"
@@ -20,7 +20,7 @@ build() {
   # gtk3 patch
   sed -i -e 's/wx-config/wx-config-gtk3/g' Makefile
   
-  make
+  make prefix="/usr"
 }
 
 package() {
