@@ -1,7 +1,7 @@
 # Maintainer: Ariejan de Vroom <ariejan[at]devroom[dot]io>
 pkgname=txdx-bin
 _pkgname=txdx
-pkgver=1.1.2
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Todo's like you've never seen before"
 arch=('x86_64')
@@ -11,8 +11,8 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 depends=('gtk3' 'zenity')
 
-source=("https://gitlab.devroom.io/api/v4/projects/17/packages/generic/txdx/1.1.2/txdx-1.1.2-linux-x64.tar.gz")
-sha256sums=('5cda92be41721bd1dc8af7437f739051f108a12f80be9f726f818718682b8d68')
+source=("https://gitlab.devroom.io/api/v4/projects/17/packages/generic/txdx/1.1.3/txdx-1.1.3-linux-x64.tar.gz")
+sha256sums=('e8499189c07b292ac1ee0ad68852a34498ee66679a5a60e1d6338f9bf620189e')
 
 package() {
 	install -dm755 ${pkgdir}/opt/${_pkgname}/
