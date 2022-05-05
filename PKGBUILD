@@ -22,7 +22,7 @@ pkgver() {
 
 build() {
   cd "$_srcname/"
-  ./koga --package-path=$pkgdir --extensions=cando,seqan-clasp --jupyter --bin-path=/usr/bin/ --share-path=/usr/share/clasp/ --lib-path=/usr/lib/clasp/
+  ./koga --package-path=$pkgdir --extensions=cando,seqan-clasp --jupyter --bin-path=/usr/bin/ --share-path=/usr/share/clasp/ --lib-path=/usr/lib/clasp/ --jupyter-path=/usr/share/jupyter/
   ninja -C build
 }
 
