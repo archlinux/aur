@@ -1,4 +1,4 @@
-# Maintainer: graysky <graysky AT archlinux DOT us>
+# Maintainer: graysky <therealgraysky AT protonmail DOT com>
 # Contributer: xyne <xyne AT archlinux DOT ca>
 # Contributer: TryA -  https://bbs.archlinux.org/viewtopic.php?id=114996
 
