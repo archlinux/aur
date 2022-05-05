@@ -2,8 +2,8 @@
 # Contributor: Fox Kiester <noct[at]openmailbox[dot]org>
 
 pkgname=tdrop
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="Glorified WM-independent dropdown creator"
 arch=('any')
 url="https://github.com/noctuid/tdrop"
@@ -12,7 +12,7 @@ depends=('coreutils' 'gawk' 'grep' 'procps-ng' 'xdotool' 'xorg-xprop' 'xorg-xwin
 optdepends=('tmux: session starting support'
             'xorg-xrandr: multiple monitor resizing support')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/noctuid/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('ef4c644ad6c2c350b2e0f97ae2712e9871e13a6baef9065bcc1d8125eb073bb1')
+sha256sums=('ac37c76cb936d8e4c1c0aba5874999e09b8acbe07a2e23e8181114bd4a2a0a5d')
 
 package() {
     cd "${pkgname}-${pkgver}"
