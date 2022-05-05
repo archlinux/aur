@@ -4,37 +4,34 @@
 pkgname=('mlt-git')
 _srcname='mlt'
 pkgdesc='Multimedia Framework'
-pkgver=r5645.1621198199.afc1ae47 
+pkgver=r5828.1651704493.928be576 
 pkgrel=1
 arch=('i686' 'x86_64')
 url="https://github.com/mltframework/${_srcname}" license=('GPL2')
-optdepends=( 	'sdl_image: for SDL plugin'
-		'libsamplerate: for libavresample plugin'
-		'sox: for SOX (Audio Swiss Army Knife) plugin'
-		'ffmpeg: for ffmpeg plugin'
-		'vid.stab: for video stabilize plugin'
-		'gtk2: Gtk plugin' 'qt5-svg: for Qt5 plugins'
-		'jack: for JACK sound output plugin'
-		'libexif: for auto rotate plugin'
-		'frei0r-plugins: for additional effects'
-		'movit: opengl plugin'
-		)
-
-makedepends=( 	'ladspa'
-		'frei0r-plugins'
-		'libdv'
-		'sdl_image'
-		'libsamplerate'
+depends=( 	'libsamplerate'
 		'sox'
 		'ffmpeg'
 		'vid.stab'
+		'rtaudio'
+		'libebur128'
+		'opencv'
+		'movit'
+		'rubberband'
 		'qt5-svg'
-		'jack'
+		'gdk-pixbuf2'
+		'sdl12-compat'
+		)
+
+makedepends=( 	'ladspa'
+                'frei0r-plugins'
+		'sdl_image'
+		'gtk2'
+		'libdv'
+		'sox'
 		'libexif'
 		'python2'
 		'swig'
 		'git'
-		'movit'
 		)
 
 provides=("${pkgname[0]%-git}") conflicts=("${pkgname[0]%-git}")
