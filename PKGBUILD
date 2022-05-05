@@ -36,7 +36,7 @@ sha512sums_aarch64=('7bde08bd9018275f65ff34a0dff9101cda10a26fbfbc523318f2df6fef1
         install -Dm755 sslocal "${pkgdir}/usr/bin/sslocal-rust"
         install -Dm755 ssserver "${pkgdir}/usr/bin/ssserver-rust"
         install -Dm755 ssurl "${pkgdir}/usr/bin/ssurl-rust"
-        install -Dm755 ssmanager "${pkgdir}/usr/bin/ssurl-rust"
+        install -Dm755 ssmanager "${pkgdir}/usr/bin/ssmanager-rust"
         install -Dm644 shadowsocks-rust@.service "${pkgdir}/usr/lib/systemd/system/shadowsocks-rust@.service"
         install -Dm644 shadowsocks-rust-server@.service "${pkgdir}/usr/lib/systemd/system/shadowsocks-rust-server@.service"
         install -Dm644 config_ext.json "${pkgdir}/etc/shadowsocks/config_ext_rust.json.example"
