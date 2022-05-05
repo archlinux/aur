@@ -4,7 +4,7 @@
 
 pkgname=k6
 pkgver=0.38.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A modern load testing tool, using Go and JavaScript"
 arch=('x86_64' 'i686')
 url="https://github.com/loadimpact/k6"
@@ -28,4 +28,16 @@ package() {
 	cd "${pkgname}-${pkgver}"
 	install -vDm 755 ${pkgname} -t "${pkgdir}/usr/bin/"
 	install -vDm 644 README.md -t "${pkgdir}/usr/share/doc/${pkgname}"
+
+	# build bash completions
+	mkdir -p "${pkgdir}/usr/share/bash-completion/completions"
+	./${pkgname} completion bash > "${pkgdir}/usr/share/bash-completion/completions/k6"
+
+	# build zsh completions
+	mkdir -p "${pkgdir}/usr/share/zsh/site-functions"
+	./${pkgname} completion zsh > "${pkgdir}/usr/share/zsh/site-functions/_k6"
+
+	# build fish completions
+	mkdir -p "${pkgdir}/usr/share/fish/vendor_completions.d/"
+	./${pkgname} completion fish > "${pkgdir}/usr/share/fish/vendor_completions.d/k6.fish"
 }
