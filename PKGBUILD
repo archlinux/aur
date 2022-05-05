@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=rexgen-git
-pkgver=2.1.3.r8.gcac6cba
+pkgver=2.1.5.r0.gdbac1c2
 pkgrel=1
 pkgdesc="A tool to create words based on regular expressions"
 arch=('i686' 'x86_64')
@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 pkgver() {
 	cd "${srcdir}/${pkgname}"
 
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 prepare() {
