@@ -1,4 +1,4 @@
-# Maintainer: graysky <graysky AT archlinux DOT us>
+# Maintainer: graysky <therealgraysky AT protonmail DOT com>
 pkgname=raspberrypi-stop-initramfs
 pkgver=4
 pkgrel=1
