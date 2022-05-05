@@ -1,7 +1,7 @@
 # Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=tcl-nothreading
-pkgver=8.6.11
+pkgver=8.6.12
 pkgrel=1
 pkgdesc="The Tcl scripting language with threading disabled"
 arch=('x86_64')
@@ -12,7 +12,7 @@ options=('staticlibs')
 provides=("tcl=${pkgver}")
 conflicts=('tcl')
 source=("https://downloads.sourceforge.net/sourceforge/tcl/tcl${pkgver}-src.tar.gz")
-sha256sums=('8c0486668586672c5693d7d95817cb05a18c5ecca2f40e2836b9578064088258')
+sha256sums=('26c995dd0f167e48b11961d891ee555f680c175f7173ff8cb829f4ebcde4c1a6')
 
 prepare() {
   cd tcl${pkgver}
@@ -44,14 +44,14 @@ package() {
       -e "s#${srcdir}/tcl${pkgver}#/usr/include#" \
       -i "${pkgdir}/usr/lib/tclConfig.sh"
 
-  tdbcver=tdbc1.1.2
+  tdbcver=tdbc1.1.3
   sed -e "s#${srcdir}/tcl${pkgver}/unix/pkgs/$tdbcver#/usr/lib/$tdbcver#" \
       -e "s#${srcdir}/tcl${pkgver}/pkgs/$tdbcver/generic#/usr/include#" \
       -e "s#${srcdir}/tcl${pkgver}/pkgs/$tdbcver/library#/usr/lib/tcl${pkgver%.*}#" \
       -e "s#${srcdir}/tcl${pkgver}/pkgs/$tdbcver#/usr/include#" \
       -i "${pkgdir}/usr/lib/$tdbcver/tdbcConfig.sh"
 
-  itclver=itcl4.2.1
+  itclver=itcl4.2.2
   sed -e "s#${srcdir}/tcl${pkgver}/unix/pkgs/$itclver#/usr/lib/$itclver#" \
       -e "s#${srcdir}/tcl${pkgver}/pkgs/$itclver/generic#/usr/include#" \
       -e "s#${srcdir}/tcl${pkgver}/pkgs/$itclver#/usr/include#" \
