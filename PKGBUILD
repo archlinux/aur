@@ -2,7 +2,7 @@
 # Contributor: Thiago França<tfsthiagobr98@outlook.com>
 _pkgname=poetry
 pkgname=python-${_pkgname}-git
-pkgver=1.2.0b1.r0.gdca6ff26
+pkgver=1.2.0b1.r82.gedabfce1
 pkgrel=1
 pkgdesc="Python dependency management and packaging made easy"
 arch=(any)
@@ -10,7 +10,8 @@ url="https://python-poetry.org"
 license=(MIT)
 _deps=(cachecontrol
   cachy
-  cleo
+  cleo-git
+  dulwich
   html5lib
   keyring
   lockfile
@@ -44,10 +45,6 @@ pkgver() {
   )
 }
 
-prepare() {
-  cd ${_pkgname}
-}
-
 build() {
   cd ${_pkgname}
   python -m build -wn
@@ -70,16 +67,16 @@ build() {
 package() {
   cd ${_pkgname}
   PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python -m installer -d "$pkgdir" dist/*.whl
-  install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
+  install -Dm0644 -t "${pkgdir}/usr/share/licenses/${pkgname}/" LICENSE
   # install completions, which for some crazy reason hardcode the filename
   # used to invoke which is __main__.py if we use python -m poetry, and also
   # adds the full directory path???
   ./poetry-completions-generator completions bash |
     sed "#$srcdir#d" |
-    install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/poetry"
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/bash-completion/completions/poetry"
   ./poetry-completions-generator completions zsh |
     sed "#$srcdir#d" |
-    install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_poetry"
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/zsh/site-functions/_poetry"
   ./poetry-completions-generator completions fish |
-    install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/poetry.fish"
+    install -Dm644 /dev/stdin "${pkgdir}/usr/share/fish/vendor_completions.d/poetry.fish"
 }

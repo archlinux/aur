@@ -1,6 +1,6 @@
 pkgbase = python-poetry-git
 	pkgdesc = Python dependency management and packaging made easy
-	pkgver = 1.2.0b1.r0.gdca6ff26
+	pkgver = 1.2.0b1.r82.gedabfce1
 	pkgrel = 1
 	url = https://python-poetry.org
 	arch = any
@@ -13,7 +13,8 @@ pkgbase = python-poetry-git
 	makedepends = git
 	depends = python-cachecontrol
 	depends = python-cachy
-	depends = python-cleo
+	depends = python-cleo-git
+	depends = python-dulwich
 	depends = python-html5lib
 	depends = python-keyring
 	depends = python-lockfile
