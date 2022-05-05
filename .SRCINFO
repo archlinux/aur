@@ -1,14 +1,13 @@
 pkgbase = ruby-os
-	pkgdesc = The OS gem allows for some useful and easy functions, like OS.windows? (=> true or false) OS.bits ( => 32 or 64) etc
-	pkgver = 1.0.1
+	pkgdesc = Provides basic information about the operating system
+	pkgver = 1.1.4
 	pkgrel = 1
-	url = https://github.com/rdp/os
+	url = https://rubygems.org/gems/os
 	arch = any
 	license = MIT
 	depends = ruby
-	noextract = os-1.0.1.gem
-	source = https://rubygems.org/downloads/os-1.0.1.gem
-	sha256sums = e3a8124676944a62f8706e6b3942786aad4ee585460bc7c9df548c17c02c251b
+	noextract = os-1.1.4.gem
+	source = https://rubygems.org/downloads/os-1.1.4.gem
+	sha256sums = 57816d6a334e7bd6aed048f4b0308226c5fb027433b67d90a9ab435f35108d3f
 
 pkgname = ruby-os
-

@@ -1,17 +1,18 @@
-# Maintainer: farwayer <farwayer@gmail.com>
+# Maintainer:  Marcell Meszaros < marcell.meszaros AT runbox.eu >
+# Contributor: farwayer <farwayer@gmail.com>
 
 _gemname=os
 pkgname=ruby-$_gemname
-pkgver=1.0.1
+pkgver=1.1.4
 pkgrel=1
-pkgdesc="The OS gem allows for some useful and easy functions, like OS.windows? (=> true or false) OS.bits ( => 32 or 64) etc"
+pkgdesc='Provides basic information about the operating system'
 arch=('any')
-url="https://github.com/rdp/os"
+url='https://rubygems.org/gems/os'
 license=('MIT')
 depends=('ruby')
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('e3a8124676944a62f8706e6b3942786aad4ee585460bc7c9df548c17c02c251b')
+sha256sums=('57816d6a334e7bd6aed048f4b0308226c5fb027433b67d90a9ab435f35108d3f')
 
 package() {
   cd "$srcdir"
@@ -19,4 +20,3 @@ package() {
   gem install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
   install -Dm644 "$pkgdir$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
