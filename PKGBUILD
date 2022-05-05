@@ -1,4 +1,4 @@
-# Maintainer: graysky <graysky AT archlinux DOT us>
+# Maintainer: graysky <therealgraysky AT protonmail DOT com>
 
 pkgname=kodi-standalone-service
 pkgver=1.135
