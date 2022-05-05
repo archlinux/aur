@@ -25,8 +25,7 @@ package() {
     cd "${srcdir}/${_gitname}"
     mkdir -p "${pkgdir}/usr/share/icons"
 
-    # Use Rsync to show progress bar
-    # Use `--no-i-r` to show more accurate values in the progress bar
+    # We are using --no-i-r to show more accurate values in the progress output
     rsync -ahrH --no-i-r --info=progress2 [Nn]ewaita* "${pkgdir}/usr/share/icons"
 
     find "${pkgdir}" -type f -exec chmod 644 "{}" \+
