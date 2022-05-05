@@ -2,7 +2,7 @@
 # Co-Maintainer: Tony Lambiris <tony@libpcap.net>
 # Contributor: Shaleen Jain <shaleen(at)jain(dot)sh>
 pkgname=system76-dkms-git
-pkgver=1.0.13.r0.g68bd479
+pkgver=1.0.13.r2.g78ede46
 pkgrel=1
 pkgdesc="On newer System76 laptops, this driver controls some of the hotkeys and allows for custom fan control."
 arch=('x86_64')
@@ -16,12 +16,13 @@ source=('git+https://github.com/pop-os/system76-dkms.git')
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/${pkgname%-git}"
-  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+  cd "${srcdir}/${pkgname%-git}"
+
+  git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//g'
 }
 
 package() {
-  cd "$srcdir/${pkgname%-git}"
+  cd "${srcdir}/${pkgname%-git}"
   local install_dir="$pkgdir/usr/src/system76-${pkgver//.r*/}"
 
   # Install source files
