@@ -6,8 +6,8 @@
 
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
-pkgver=0.12.1.r413.g282ac7f1f
-pkgrel=2
+pkgver=0.13.0rc1.r2.gb72125522
+pkgrel=1
 pkgdesc='A peer-to-peer hypermedia distribution protocol'
 url="https://github.com/ipfs/$_pkgname"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -29,8 +29,6 @@ prepare() {
 	export PATH="$PATH:$GOPATH/bin"
 	# fix for broken version
 	chmod u+w -R "$GOPATH"
-	# fix for #8819
-	go get github.com/lucas-clemente/quic-go@v0.26.0
 	go get -d -v ./...
 }
 
