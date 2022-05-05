@@ -1,4 +1,4 @@
-# Maintainer: graysky <graysky AT archlinux DOT us>
+# Maintainer: graysky <therealgraysky AT protonmail DOT com>
 # Contributor: Kevin Mihelich <kevin@archlinuxarm.org>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
