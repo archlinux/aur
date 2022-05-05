@@ -1,0 +1,17 @@
+pkgbase = python-clopy-git
+	pkgdesc = An all purpose general templating program, and project starter program.
+	pkgver = 0.1.13
+	pkgrel = 1
+	url = https://github.com/jmdaemon/clopy
+	arch = any
+	license = GPL
+	makedepends = python-setuptools
+	depends = python-jinja
+	depends = python-wora
+	depends = python-plumbum
+	provides = python-clopy
+	conflicts = python-clopy
+	source = python-clopy-git::git+https://github.com/jmdaemon/clopy#branch=master
+	sha512sums = SKIP
+
+pkgname = python-clopy-git
