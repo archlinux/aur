@@ -1,15 +1,15 @@
 pkgbase = eternalmodmanager
 	pkgdesc = Cross-platform mod manager for DOOM Eternal.
-	pkgver = 1.8.0
-	pkgrel = 2
-	url = https://github.com/PowerBall253/EternalModManager
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/PowerBall253/EternalModManager-Avalonia
 	arch = x86_64
 	license = MIT
-	makedepends = npm
-	depends = electron
-	source = git+https://github.com/PowerBall253/EternalModManager.git#tag=v1.8.0
+	makedepends = dotnet-sdk
+	depends = dotnet-runtime
+	source = git+https://github.com/PowerBall253/EternalModManager-Avalonia.git#tag=v2.0.0
 	source = eternalmodmanager
 	sha256sums = SKIP
-	sha256sums = 79507cee8c25b5a0553561be1e0386ceb3588e015929308828391f77c5396546
+	sha256sums = c2eaebd3cf4a5a57f0d81107b64e321b70bb2db38904b6caff58a39079f08a5e
 
 pkgname = eternalmodmanager

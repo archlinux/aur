@@ -1,38 +1,34 @@
 # Maintainer: Bruno Ancona <bruno at powerball253 dot com>
 
 pkgname=eternalmodmanager
-pkgver=1.8.0
-pkgrel=2
+pkgver=2.0.0
+pkgrel=1
 pkgdesc='Cross-platform mod manager for DOOM Eternal.'
 arch=('x86_64')
-url='https://github.com/PowerBall253/EternalModManager'
+url='https://github.com/PowerBall253/EternalModManager-Avalonia'
 license=('MIT')
-depends=('electron')
-makedepends=('npm')
-source=("git+https://github.com/PowerBall253/EternalModManager.git#tag=v${pkgver}"
+depends=('dotnet-runtime')
+makedepends=('dotnet-sdk')
+source=("git+https://github.com/PowerBall253/EternalModManager-Avalonia.git#tag=v${pkgver}"
         eternalmodmanager)
 sha256sums=('SKIP'
-            '79507cee8c25b5a0553561be1e0386ceb3588e015929308828391f77c5396546')
+            'c2eaebd3cf4a5a57f0d81107b64e321b70bb2db38904b6caff58a39079f08a5e')
 
 build() {
-    cd "EternalModManager"
+    cd "EternalModManager-Avalonia"
 
-    # Replace electron with electron type declarations for typescript
-    sed -i '/"electron":/c\    "@types/electron": "^1.6.10",' package.json
-
-    # Install node packages and build app
-    HOME="${srcdir}/.electron-gyp" npm install
-    HOME="${srcdir}/.electron-gyp" npm run build -- --linux --x64 --dir -c.electronDist="/usr/lib/electron" -c.electronVersion="$(electron --version | tail -c +2)"
+    # Build with dotnet
+    dotnet publish -c Release -r linux-x64 --no-self-contained
 }
 
 package() {
     # Install app's files
     install -Dm755 -t "${pkgdir}/usr/bin" "$pkgname"
 
-    cd "EternalModManager"
+    cd "EternalModManager-Avalonia"
     install -Dm644 -t "${pkgdir}/usr/share/applications/" "resources/${pkgname}.desktop"
     install -Dm644 -t "${pkgdir}/usr/share/metainfo/" "resources/${pkgname}.appdata.xml"
     install -Dm644 -t "${pkgdir}/usr/share/icons/hicolor/256x256/apps/" "resources/${pkgname}.png"
     install -Dm644 -t "${pkgdir}/usr/share/licenses/${pkgname}" LICENSE
-    install -Dm644 "dist/linux-unpacked/resources/app.asar" "${pkgdir}/usr/lib/${pkgname}.asar"
+    find "EternalModManager/bin/Release/net6.0/linux-x64/publish/" -type f -exec install -Dm644 -t "${pkgdir}/usr/lib/eternalmodmanager/" "{}" \;
 }
