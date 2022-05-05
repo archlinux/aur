@@ -1,8 +1,8 @@
-# Maintainer: Tony Lambiris <tony@criticalstack.com>
+# Maintainer: Tony Lambiris <tony@libpcap.net>
 
 pkgname=gposttl-git
 pkgver=r34.4d19dda
-pkgrel=1
+pkgrel=2
 pkgdesc="Brill's Parts-of-Speech Tagger, with built-in Tokenizer and Lemmatizer"
 arch=(x86_64)
 url="http://gposttl.sourceforge.net/"
