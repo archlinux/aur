@@ -1,8 +1,8 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=tmpmail
-pkgver=1.2.1
-_commit=81b733ca469c52ca018bcbcecfa7239c24a95001
+pkgver=1.2.2
+_commit=9f3e2fd2cec51857951106556f8f5593a2e74c36
 pkgrel=1
 pkgdesc='A temporary email right from your terminal written in POSIX sh'
 arch=(any)
