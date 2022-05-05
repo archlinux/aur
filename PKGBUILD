@@ -3,7 +3,7 @@
 
 pkgname=termius-app
 _pkgname=${pkgname%-*}
-pkgver=7.39.0
+pkgver=7.40.2
 pkgrel=1
 pkgdesc="Desktop SSH Client"
 url="https://termius.com/"
@@ -29,8 +29,8 @@ source=(
         "TERMS_OF_USE"
 )
 sha256sums=(
-        "a709034d0c2d2983744f29cf5040786761facd2f274f5d2897e3c0295ac2ce88"
-        "dad8bb6125f7258814cfa5550b12e5b714c5823877d382d6c040b0d93a0302f7"
+        "SKIP"
+        "SKIP"
         "09c7bc00c70480a6b0281a971a15337f98fc440a5d671bb946eea403395432a2"
 )
 
