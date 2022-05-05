@@ -1,6 +1,6 @@
 pkgbase = darch-conf
 	pkgdesc = Configuration files, scripts and packages for an Archcraft based system
-	pkgver = 2.4.1
+	pkgver = 2.4.3
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/quiode/DARCH
