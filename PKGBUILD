@@ -1,25 +1,35 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=mingw-w64-corrosion
-pkgver=0.1.0
+_pkgname=corrosion
+pkgver=0.2.0
+_commit=f617a7f6a85f95bc0d4cc746eee3605b08fd6194
 pkgrel=1
-pkgdesc="Integrate Rust into existing CMake projects (mingw-w64 symlinks)"
+pkgdesc="Tool for integrating Rust into an existing CMake project. (mingw-w64)"
 arch=('any')
 url="https://github.com/corrosion-rs/corrosion"
 license=('MIT')
-depends=('corrosion')
+depends=('rust' 'cmake')
+makedepends=('git')
+source=("git+${url}.git#commit=$_commit")
+sha256sums=('SKIP')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+build() {
+    for _arch in ${_architectures}; do
+        cmake -S "$_pkgname" \
+            -B build/$_arch \
+            -DCORROSION_BUILD_TESTS=OFF \
+            -DCMAKE_INSTALL_PREFIX=/usr/$_arch \
+            -DCMAKE_BUILD_TYPE=Release
+
+        cmake --build build/$_arch --config Release
+    done
+}
+
 package() {
     for _arch in ${_architectures}; do
-        install -dm755 "${pkgdir}"/usr/$_arch/lib/cmake
-        install -dm755 "${pkgdir}"/usr/$_arch/libexec
-        install -dm755 "${pkgdir}"/usr/$_arch/share/cmake
-        
-        ln -s /usr/lib/cmake/Corrosion "${pkgdir}"/usr/$_arch/lib/cmake/Corrosion
-        ln -s /usr/libexec/corrosion-generator "${pkgdir}"/usr/$_arch/libexec/corrosion-generator
-        ln -s /usr/share/cmake/Corrosion.cmake "${pkgdir}"/usr/$_arch/share/cmake/Corrosion.cmake
-        ln -s /usr/share/cmake/FindRust.cmake "${pkgdir}"/usr/$_arch/share/cmake/FindRust.cmake
+        DESTDIR="${pkgdir}" cmake --install build/$_arch --config Release
     done
 }
