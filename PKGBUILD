@@ -2,7 +2,7 @@
 
 pkgname=moosync
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple music player'
 arch=('any')
 url='https://github.com/Moosync/Moosync'
@@ -10,13 +10,12 @@ license=('GPL3')
 provides=("${pkgname}")
 depends=('electron' 'libvips')
 makedepends=('nodejs-lts-gallium' 'yarn')
-_patchcommit="adcdc02036867e93e4aacdf6f0dafb42bc444825"
 source=("${pkgname}-${pkgver}-prebuilt.tar::https://github.com/Moosync/Moosync/releases/download/v${pkgver}/Moosync-${pkgver}-linux-x64.pacman" "${pkgname}-${pkgver}.tar::https://github.com/Moosync/Moosync/archive/v${pkgver}.tar.gz" moosync moosync.desktop)
 sha256sums=('eebdd3f053032dfb786422ec42ab2a2ab8a82938a6dbde7205d196fd3c080ab9'
             '51144d479e4bb695a36276001cd132003954096c1e71aa2c1336da2b4eeb76ad'
             '36867efee6f9a491e64979ed329ce87f2136da2afcce4c9ef5696a9f2538d9ba'
             '4b63fa17717239db8a87ebeae1fdd96c5318b71d7d851d6c5a4f337793d3fecd')
-_sourcedirectory="Moosync-$_patchcommit"
+_sourcedirectory="Moosync-$pkgver"
 
 build() {
     cd "$srcdir/$_sourcedirectory/"
