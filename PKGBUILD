@@ -8,8 +8,8 @@ pkgdesc='Ruby SDK for Oracle Cloud Infrastructure'
 arch=('x86_64')
 url='https://github.com/oracle/oci-ruby-sdk'
 license=('Apache')
-depends=('ruby' 'ruby-rdoc' 'ruby-inifile' 'ruby-jwt')
-makedepends=('ruby-rake')
+depends=('ruby' 'ruby-inifile' 'ruby-jwt')
+makedepends=('ruby-rdoc')
 source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
 sha256sums=('b04ee9e5ebeaa73d77010d1b79ce0bbc496c5a46c2f8b30c7565635fe6fcf5cd')
 
