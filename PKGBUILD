@@ -1,7 +1,7 @@
 # Maintainer: bacteriostat <dev.bacteriostat at aleeas dot com>
 # Contributor: Hugues Chabot <at google mail>
 _npmname=serverless
-pkgname=nodejs-$_npmname # All lowercase
+pkgname=nodejs-$_npmname
 pkgver=3.16.0
 pkgrel=2
 pkgdesc="Serverless Framework - Build web, mobile and IoT applications with serverless architectures using AWS Lambda, Azure Functions, Google CloudFunctions & more"
@@ -24,7 +24,7 @@ package() {
 
   # Non-deterministic race in npm gives 777 permissions to random directories.
   # See https://github.com/npm/npm/issues/9359 for details.
-  # find "${pkgdir}"/usr -type d -exec chmod 755 {} +
+  find "${pkgdir}"/usr -type d -exec chmod 755 {} +
 
   # npm gives ownership of ALL FILES to build user
   # https://bugs.archlinux.org/task/63396
