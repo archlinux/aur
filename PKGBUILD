@@ -4,7 +4,7 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-tytan652
 pkgver=27.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources, V4L2 devices by paths, my bind interface PR, and sometimes backported fixes."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -89,6 +89,7 @@ source=(
   "v4l2_by-path.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/3437.patch
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
   "obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8"
+  "ffmpeg_5_master_fixes.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/6423.patch
 )
 sha256sums=(
   "SKIP"
@@ -96,6 +97,7 @@ sha256sums=(
   "fb55dffcb177fd89c2cbffeb14aaf920dae2ae60dcfa934cff252315f268470e"
   "SKIP"
   "SKIP"
+  "91a08c02b397c49e84400f36559059f03c629b4d0df5b6689ce8eb6923c805f6"
 )
 
 if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
@@ -130,6 +132,9 @@ prepare() {
 
   ## libobs,obs-outputs: Fix librtmp1 dependency interference on some linuxes (https://github.com/obsproject/obs-studio/pull/6377)
   sed -i 's/#define EXPORT/#define EXPORT __attribute__((visibility("default")))/g' libobs/util/c99defs.h
+
+  ## obs-ffmpeg: Several fixes allowing support of FFmpeg 5 (https://github.com/obsproject/obs-studio/pull/6423)
+  patch -Np1 < "$srcdir/ffmpeg_5_master_fixes.patch"
 
   ## Add network interface binding for RTMP on Linux (https://github.com/obsproject/obs-studio/pull/4219)
   patch -Np1 < "$srcdir/bind_iface.patch"

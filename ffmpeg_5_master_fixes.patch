@@ -1,0 +1,285 @@
+From 97bab7276c0ee14f797a171e34fb0913d680113c Mon Sep 17 00:00:00 2001
+From: pkv <pkv@obsproject.com>
+Date: Thu, 5 May 2022 14:56:21 +0200
+Subject: [PATCH 1/3] libobs: Fix missing include due toffmpeg 5 changes
+
+Since [1], avcodec/version.h is not included anymore in codec.h and
+therefore is not included any more  in avformat.h.
+As a result, LIBAVCODEC_VERSION_INT is no longer defined. This commit
+fixes the include.
+Since obviously we can't ifdef the avcodec include by referring to an
+avcodec version, we ifdef it with the avformat version which was bumped
+at the same time [2].
+
+[1] libavcodec: Split version.h
+https://github.com/FFmpeg/FFmpeg/commit/f2da2e1458b76a1d6c068673430b46cf2850bc51
+[2] doc: Add an entry to APIchanges about changes to version.h and version_major.h
+https://github.com/FFmpeg/FFmpeg/commit/f3a0e2ee2b97e2d46b351c29853c056d126884e2
+
+Signed-off-by: pkv <pkv@obsproject.com>
+---
+ libobs/media-io/media-remux.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/libobs/media-io/media-remux.c b/libobs/media-io/media-remux.c
+index 2b39a74e2376..20eaea238f8b 100644
+--- a/libobs/media-io/media-remux.c
++++ b/libobs/media-io/media-remux.c
+@@ -22,7 +22,9 @@
+ #include "../util/platform.h"
+ 
+ #include <libavformat/avformat.h>
+-
++#if LIBAVFORMAT_VERSION_INT >= AV_VERSION_INT(59, 20, 100)
++#include <libavcodec/version.h>
++#endif
+ #include <sys/types.h>
+ #include <sys/stat.h>
+ 
+
+From edc09d87f4c8de1d27eda2a06874c8ea1ebb00c4 Mon Sep 17 00:00:00 2001
+From: pkv <pkv@obsproject.com>
+Date: Thu, 5 May 2022 15:24:35 +0200
+Subject: [PATCH 2/3] obs-ffmpeg: Fix for channel layout API change in FFmpeg 5
+
+The channel_layout API was overhauled by FFmpeg [1-4]. The previous
+bitmask channel_layout is replaced by a struct ch_layout which combines
+the number of channels, a bitmask and other infos. This struct must now
+be supplied to AVframes since avutil >= 57.24.100 and to
+AVCodecContext since avcodec 59.24.100 per (1].
+This commit provides the required info to ffmpeg-mux,
+obs-ffmpeg-output & to obs-ffmpeg-audio-encoders.
+
+[1] Bump minor versions after the channel layout changes
+https://github.com/FFmpeg/FFmpeg/commit/cdba98bb80e2ab73d34659c610771b020afc6a77
+[2] lavc: switch to the new channel layout API
+https://github.com/FFmpeg/FFmpeg/commit/548aeb93834b8425c86d1ce60fddc1d41805724d
+[3] avutil/channel_layout: Add a new channel layout API
+https://github.com/FFmpeg/FFmpeg/commit/086a8048061bf9fb4c63943f6962db48175f655c
+[4] avframe: switch to the new channel layout API db6efa18
+https://github.com/FFmpeg/FFmpeg/commit/db6efa1815e217ed76f39aee8b15ee5c64698537
+
+Signed-off-by: pkv <pkv@obsproject.com>
+---
+ plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c    |  7 +++
+ .../obs-ffmpeg/obs-ffmpeg-audio-encoders.c    | 58 +++++++++++++------
+ plugins/obs-ffmpeg/obs-ffmpeg-output.c        | 12 +++-
+ 3 files changed, 56 insertions(+), 21 deletions(-)
+
+diff --git a/plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c b/plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c
+index 5f569d6a94a3..211fc2070469 100644
+--- a/plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c
++++ b/plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c
+@@ -495,6 +495,7 @@ static void create_audio_stream(struct ffmpeg_mux *ffm, int idx)
+ 	context->time_base = stream->time_base;
+ 	context->extradata = extradata;
+ 	context->extradata_size = ffm->audio_header[idx].size;
++#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(59, 24, 100)
+ 	context->channel_layout =
+ 		av_get_default_channel_layout(context->channels);
+ 	//avutil default channel layout for 4 channels is 4.0 ; fix for quad
+@@ -503,6 +504,12 @@ static void create_audio_stream(struct ffmpeg_mux *ffm, int idx)
+ 	//avutil default channel layout for 5 channels is 5.0 ; fix for 4.1
+ 	if (context->channels == 5)
+ 		context->channel_layout = av_get_channel_layout("4.1");
++#else
++	av_channel_layout_default(&context->ch_layout, context->channels);
++	//avutil default channel layout for 5 channels is 5.0 ; fix for 4.1
++	if (context->channels == 5)
++		context->ch_layout = (AVChannelLayout)AV_CHANNEL_LAYOUT_4POINT1;
++#endif
+ 	if (ffm->output->oformat->flags & AVFMT_GLOBALHEADER)
+ 		context->flags |= CODEC_FLAG_GLOBAL_H;
+ 
+diff --git a/plugins/obs-ffmpeg/obs-ffmpeg-audio-encoders.c b/plugins/obs-ffmpeg/obs-ffmpeg-audio-encoders.c
+index fc9fe6bfb72b..e1e17147f451 100644
+--- a/plugins/obs-ffmpeg/obs-ffmpeg-audio-encoders.c
++++ b/plugins/obs-ffmpeg/obs-ffmpeg-audio-encoders.c
+@@ -57,6 +57,7 @@ struct enc_encoder {
+ 	int frame_size_bytes;
+ };
+ 
++#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(59, 24, 100)
+ static inline uint64_t convert_speaker_layout(enum speaker_layout layout)
+ {
+ 	switch (layout) {
+@@ -81,29 +82,29 @@ static inline uint64_t convert_speaker_layout(enum speaker_layout layout)
+ 	/* shouldn't get here */
+ 	return 0;
+ }
+-
+-static inline enum speaker_layout
+-convert_ff_channel_layout(uint64_t channel_layout)
++#endif
++static inline enum speaker_layout convert_to_speaker_layout(uint8_t channels)
+ {
+-	switch (channel_layout) {
+-	case AV_CH_LAYOUT_MONO:
++	switch (channels) {
++	case 0:
++		return SPEAKERS_UNKNOWN;
++	case 1:
+ 		return SPEAKERS_MONO;
+-	case AV_CH_LAYOUT_STEREO:
++	case 2:
+ 		return SPEAKERS_STEREO;
+-	case AV_CH_LAYOUT_SURROUND:
++	case 3:
+ 		return SPEAKERS_2POINT1;
+-	case AV_CH_LAYOUT_4POINT0:
++	case 4:
+ 		return SPEAKERS_4POINT0;
+-	case AV_CH_LAYOUT_4POINT1:
++	case 5:
+ 		return SPEAKERS_4POINT1;
+-	case AV_CH_LAYOUT_5POINT1_BACK:
++	case 6:
+ 		return SPEAKERS_5POINT1;
+-	case AV_CH_LAYOUT_7POINT1:
++	case 8:
+ 		return SPEAKERS_7POINT1;
++	default:
++		return SPEAKERS_UNKNOWN;
+ 	}
+-
+-	/* shouldn't get here */
+-	return SPEAKERS_UNKNOWN;
+ }
+ 
+ static const char *aac_getname(void *unused)
+@@ -157,7 +158,11 @@ static bool initialize_codec(struct enc_encoder *enc)
+ 	}
+ 	enc->aframe->format = enc->context->sample_fmt;
+ 	enc->aframe->channels = enc->context->channels;
++#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(59, 24, 100)
+ 	enc->aframe->channel_layout = enc->context->channel_layout;
++#else
++	enc->aframe->ch_layout = enc->context->ch_layout;
++#endif
+ 	enc->aframe->sample_rate = enc->context->sample_rate;
+ 
+ 	enc->frame_size = enc->context->frame_size;
+@@ -235,7 +240,15 @@ static void *enc_create(obs_data_t *settings, obs_encoder_t *encoder,
+ 	const struct audio_output_info *aoi;
+ 	aoi = audio_output_get_info(audio);
+ 	enc->context->channels = (int)audio_output_get_channels(audio);
++#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(59, 24, 100)
+ 	enc->context->channel_layout = convert_speaker_layout(aoi->speakers);
++#else
++	av_channel_layout_default(&enc->context->ch_layout,
++				  enc->context->channels);
++	if (aoi->speakers == SPEAKERS_4POINT1)
++		enc->context->ch_layout =
++			(AVChannelLayout)AV_CHANNEL_LAYOUT_4POINT1;
++#endif
+ 	enc->context->sample_rate = audio_output_get_sample_rate(audio);
+ 	enc->context->sample_fmt = enc->codec->sample_fmts
+ 					   ? enc->codec->sample_fmts[0]
+@@ -263,12 +276,18 @@ static void *enc_create(obs_data_t *settings, obs_encoder_t *encoder,
+ 	if (strcmp(enc->codec->name, "aac") == 0) {
+ 		av_opt_set(enc->context->priv_data, "aac_coder", "fast", 0);
+ 	}
+-
++	char buf[256];
++#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(59, 24, 100)
+ 	info("bitrate: %" PRId64 ", channels: %d, channel_layout: %x\n",
+ 	     (int64_t)enc->context->bit_rate / 1000,
+ 	     (int)enc->context->channels,
+ 	     (unsigned int)enc->context->channel_layout);
+-
++#else
++	av_channel_layout_describe(&enc->context->ch_layout, buf, 256);
++	info("bitrate: %" PRId64 ", channels: %d, channel_layout: %s\n",
++	     (int64_t)enc->context->bit_rate / 1000,
++	     (int)enc->context->channels, buf);
++#endif
+ 	init_sizes(enc, audio);
+ 
+ 	/* enable experimental FFmpeg encoder if the only one available */
+@@ -306,7 +325,9 @@ static bool do_encode(struct enc_encoder *enc, struct encoder_packet *packet,
+ 	enc->aframe->pts = av_rescale_q(
+ 		enc->total_samples, (AVRational){1, enc->context->sample_rate},
+ 		enc->context->time_base);
+-
++#if LIBAVUTIL_VERSION_INT >= AV_VERSION_INT(57, 24, 100)
++	enc->aframe->ch_layout = enc->context->ch_layout;
++#endif
+ 	ret = avcodec_fill_audio_frame(
+ 		enc->aframe, enc->context->channels, enc->context->sample_fmt,
+ 		enc->samples[0], enc->frame_size_bytes * enc->context->channels,
+@@ -394,8 +415,7 @@ static void enc_audio_info(void *data, struct audio_convert_info *info)
+ 	struct enc_encoder *enc = data;
+ 	info->format = convert_ffmpeg_sample_format(enc->context->sample_fmt);
+ 	info->samples_per_sec = (uint32_t)enc->context->sample_rate;
+-	info->speakers =
+-		convert_ff_channel_layout(enc->context->channel_layout);
++	info->speakers = convert_to_speaker_layout(enc->context->channels);
+ }
+ 
+ static size_t enc_frame_size(void *data)
+diff --git a/plugins/obs-ffmpeg/obs-ffmpeg-output.c b/plugins/obs-ffmpeg/obs-ffmpeg-output.c
+index e0cc169d5e3c..61fe6e2b777d 100644
+--- a/plugins/obs-ffmpeg/obs-ffmpeg-output.c
++++ b/plugins/obs-ffmpeg/obs-ffmpeg-output.c
+@@ -321,9 +321,12 @@ static bool open_audio_codec(struct ffmpeg_data *data, int idx)
+ 
+ 	data->aframe[idx]->format = context->sample_fmt;
+ 	data->aframe[idx]->channels = context->channels;
++#if LIBAVUTIL_VERSION_INT < AV_VERSION_INT(57, 24, 100)
+ 	data->aframe[idx]->channel_layout = context->channel_layout;
++#else
++	data->aframe[idx]->ch_layout = context->ch_layout;
++#endif
+ 	data->aframe[idx]->sample_rate = context->sample_rate;
+-
+ 	context->strict_std_compliance = -2;
+ 
+ 	ret = avcodec_open2(context, data->acodec, NULL);
+@@ -378,13 +381,18 @@ static bool create_audio_stream(struct ffmpeg_data *data, int idx)
+ 	context->time_base = (AVRational){1, aoi.samples_per_sec};
+ 	context->channels = get_audio_channels(aoi.speakers);
+ 	context->sample_rate = aoi.samples_per_sec;
++#if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(59, 24, 100)
+ 	context->channel_layout =
+ 		av_get_default_channel_layout(context->channels);
+ 
+ 	//avutil default channel layout for 5 channels is 5.0 ; fix for 4.1
+ 	if (aoi.speakers == SPEAKERS_4POINT1)
+ 		context->channel_layout = av_get_channel_layout("4.1");
+-
++#else
++	av_channel_layout_default(&context->ch_layout, context->channels);
++	if (aoi.speakers == SPEAKERS_4POINT1)
++		context->ch_layout = (AVChannelLayout)AV_CHANNEL_LAYOUT_4POINT1;
++#endif
+ 	context->sample_fmt = data->acodec->sample_fmts
+ 				      ? data->acodec->sample_fmts[0]
+ 				      : AV_SAMPLE_FMT_FLTP;
+
+From 25b0d2f410597f54111a65276ba05b855a4e1b6f Mon Sep 17 00:00:00 2001
+From: pkv <pkv@obsproject.com>
+Date: Thu, 5 May 2022 20:12:44 +0200
+Subject: [PATCH 3/3] obs-ffmpeg: Fix 4 channel layout in ffmpeg-mux
+
+Previously SPEAKER_4POINT0 was assigned to AV_CH_LAYOUT_QUAD, but later was changed to AV_CH_LAYOUT_4POINT0 [1]. The change was forgotten in obs-ffmpeg-mux. This is remedied here.
+[1] https://github.com/obsproject/obs-studio/commit/67e48ecc2ca033020210f3aae05617195d37e248
+
+Signed-off-by: pkv <pkv@obsproject.com>
+---
+ plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c | 3 ---
+ 1 file changed, 3 deletions(-)
+
+diff --git a/plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c b/plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c
+index 211fc2070469..359582d6436e 100644
+--- a/plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c
++++ b/plugins/obs-ffmpeg/ffmpeg-mux/ffmpeg-mux.c
+@@ -498,9 +498,6 @@ static void create_audio_stream(struct ffmpeg_mux *ffm, int idx)
+ #if LIBAVCODEC_VERSION_INT < AV_VERSION_INT(59, 24, 100)
+ 	context->channel_layout =
+ 		av_get_default_channel_layout(context->channels);
+-	//avutil default channel layout for 4 channels is 4.0 ; fix for quad
+-	if (context->channels == 4)
+-		context->channel_layout = av_get_channel_layout("quad");
+ 	//avutil default channel layout for 5 channels is 5.0 ; fix for 4.1
+ 	if (context->channels == 5)
+ 		context->channel_layout = av_get_channel_layout("4.1");
