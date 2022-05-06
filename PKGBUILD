@@ -4,17 +4,15 @@
 _gemname=veewee
 pkgname=ruby-$_gemname
 pkgver=0.4.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for building custom Vagrant base boxes and virtual machine images."
 arch=(any)
 url="https://github.com/jedi4ever/veewee"
 license=('MIT')
-depends=('ruby' 'ruby-ansi-1.3' 'ruby-childprocess'
-         'ruby-fission' 'ruby-fog>=1.8' 'ruby-grit' 'ruby-highline'
-         'ruby-json' 'ruby-mime-types-1>=1.16' 'ruby-i18n'
-         'ruby-net-ssh>=2.2.0' 'ruby-os>=0.9.6' 'ruby-popen4>=0.1.2'
-         'ruby-progressbar' 'ruby-ruby-vnc-1.0' 'ruby-ruby-vnc>=1.0.0'
-         'ruby-thor>=0.15' 'ruby-to_slug')
+depends=('ruby' 'ruby-ansi-1.3' 'ruby-childprocess' 'ruby-fission' 'ruby-fog>=1.8'
+         'ruby-grit' 'ruby-highline' 'ruby-json' 'ruby-mime-types-1>=1.16' 'ruby-i18n'
+         'ruby-net-ssh>=2.2.0' 'ruby-os>=0.9.6' 'ruby-popen4>=0.1.2' 'ruby-progressbar'
+         'ruby-ruby-vnc-1.0' 'ruby-thor-0.20' 'ruby-to_slug')
 provides=('veewee')
 conflicts=('veewee')
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)

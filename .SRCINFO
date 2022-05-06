@@ -1,7 +1,7 @@
 pkgbase = ruby-veewee
 	pkgdesc = A tool for building custom Vagrant base boxes and virtual machine images.
 	pkgver = 0.4.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jedi4ever/veewee
 	arch = any
 	license = MIT
@@ -20,8 +20,7 @@ pkgbase = ruby-veewee
 	depends = ruby-popen4>=0.1.2
 	depends = ruby-progressbar
 	depends = ruby-ruby-vnc-1.0
-	depends = ruby-ruby-vnc>=1.0.0
-	depends = ruby-thor>=0.15
+	depends = ruby-thor-0.20
 	depends = ruby-to_slug
 	provides = veewee
 	conflicts = veewee
