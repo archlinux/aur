@@ -1,30 +1,39 @@
 # Maintainer: Martin Schrodt <martin@schrodt.org>
 pkgname=nvme-cli-git
-_gitname=nvme-cli
-pkgver=r1076.eb58f54
+pkgver=r2646.29c66608
 pkgrel=1
-pkgdesc="NVM-Express user space tooling for Linux"
+pkgdesc='NVM-Express user space tooling for Linux'
 arch=('i686' 'x86_64')
 url="https://github.com/linux-nvme/nvme-cli"
 license=('GPL')
-depends=('systemd')
-makedepends=('git')
+depends=('util-linux' 'libsystemd')
+makedepends=('systemd' 'meson' 'git')
 provides=('nvme-cli')
 conflicts=('nvme-cli')
-source=('git://github.com/linux-nvme/nvme-cli.git')
-md5sums=('SKIP')
+source=("$pkgname::git+https://github.com/linux-nvme/nvme-cli.git")
+sha256sums=('SKIP')
+install=nvme-cli-git.install
 
 pkgver() { 
-	cd "${srcdir}/${_gitname}"
+	cd "${pkgname}"
 	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "${srcdir}/${_gitname}"
-	make CFLAGS="${CFLAGS} -I." PREFIX=/usr
+	cd "${pkgname}"
+	meson setup \
+	--prefix /usr \
+	--libexecdir lib \
+	--sbindir bin \
+	--buildtype plain \
+	--auto-features enabled \
+	-D b_lto=true -D b_pie=true \
+	-D udevrulesdir=lib/udev/rules.d \
+	.build
 }
 
 package() {
-	cd "${srcdir}/${_gitname}"
-	make DESTDIR="$pkgdir" PREFIX=/usr SBINDIR=/usr/bin install
+	cd "${pkgname}"
+	DESTDIR="$pkgdir" meson install -C .build
 }
+
