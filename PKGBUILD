@@ -2,13 +2,13 @@
 
 pkgname=minimap2-bin
 pkgver=2.24
-pkgrel=1
+pkgrel=2
 pkgdesc="Aligner for genomic and spliced nucleotide sequences"
 arch=('x86_64')
 url="https://lh3.github.io/minimap2/"
 license=('MIT')
 depends=('glibc' 'zlib')
-provides=('minimap2')
+provides=("minimap2=$pkgver")
 conflicts=('minimap2')
 source_x86_64=("https://github.com/lh3/minimap2/releases/download/v$pkgver/minimap2-${pkgver}_x64-linux.tar.bz2")
 sha256sums_x86_64=('c6e35534b219caaf3d9bbebf7123876e68d317cf90060c0c0607bee4d4f43286')
