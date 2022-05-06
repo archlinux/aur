@@ -1,6 +1,6 @@
 pkgbase = web-xdg-open-git
 	pkgdesc = A smart browser that tries to open content in the appropriate xdg app before resorting to the browser
-	pkgver = 2.12
+	pkgver = 2.13
 	pkgrel = 1
 	url = https://github.com/mendess/web-xdg-open
 	arch = any
@@ -19,4 +19,3 @@ pkgbase = web-xdg-open-git
 	md5sums = SKIP
 
 pkgname = web-xdg-open-git
-
