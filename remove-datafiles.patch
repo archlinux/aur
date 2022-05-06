@@ -1,0 +1,13 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 542d1e9..776a6b4 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -26,8 +26,6 @@ classifiers=[
+ ]
+ 
+ include = [
+-    "CHANGELOG.txt",
+-    "README.md",
+     "pymisp/data/*.json",
+     "pymisp/data/misp-objects/schema_objects.json",
+     "pymisp/data/misp-objects/schema_relationships.json",
