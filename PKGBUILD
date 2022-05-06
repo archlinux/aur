@@ -37,43 +37,48 @@ prepare() {
 	cd teamviewerqs/
 
 	if ! grep -q "^TV_VERSION='${pkgver}'\$" tv_bin/script/tvw_config; then
-		msg "Version does not match!"
+		echo "Source version does not match pkgver!"
 		exit 1
 	fi
 
+	# Delete unneeded empty dirs
 	rmdir config
 	rmdir logfiles
 
 	cd tv_bin/
 
+	# Extract embedded archive
 	tar -xf archive.tar.xz
-
-	rm -rf RTlib/
-	rm -f xdg-utils/xdg-email
-	rm -f archive.tar.xz
-}
-
-build() {
-	cd teamviewerqs/
 
 	# set correct pathes in desktop file
 	sed -e "/^Exec=/c Exec=/opt/teamviewer/tv_bin/script/teamviewer" \
 		-e "/^Icon=/c Icon=teamviewer.png" \
-		< tv_bin/desktop/teamviewer.desktop.template \
+		< desktop/teamviewer.desktop.template \
 		> "${srcdir}"/teamviewer.desktop
-	rm -f tv_bin/desktop/teamviewer.desktop.template
 
 	# Don't try to extract tar archive during application runtime
-	sed -i '/ExtractBinaries/s/^/#/' tv_bin/script/tvw_main
+	sed -i '/ExtractBinaries/s/^/#/' script/tvw_main
 
 	# Don't clear LD_PRELOAD before running application
-	sed -i '/  CheckEnvironment/s/^/#/' tv_bin/script/tvw_main
+	sed -i '/  CheckEnvironment/s/^/#/' script/tvw_main
 
 	# Yes, this is QuickSupport... But we want to use user's home directory.
-	sed -i '/function isInstalledTV/,/^}$/c function isInstalledTV() { return 0; }' tv_bin/script/tvw_aux
+	sed -i '/function isInstalledTV/,/^}$/c function isInstalledTV() { return 0; }' script/tvw_aux
 
 	# Fix check for Qt5 XCB in libcheck script
-	sed -i '/local -r qtxcb/c local -r qtxcb="/usr/lib/qt/plugins/platforms/libqxcb.so"' tv_bin/script/tvw_libcheck
+	sed -i '/local -r qtxcb/c local -r qtxcb="/usr/lib/qt/plugins/platforms/libqxcb.so"' script/tvw_libcheck
+
+	# Fix check for Qt5 QuckControls in setup script
+	sed -e '/CheckQtQuickControls()/{N' \
+		-e 'a ls /usr/lib/qt/qml/QtQuick/Controls/qmldir &>/dev/null && return # ArchLinux' \
+		-e '}' \
+		-i script/teamviewer_setup
+
+	# Delete unneeded files
+	rm -rf RTlib/
+	rm -f desktop/teamviewer.desktop.template
+	rm -f xdg-utils/xdg-email
+	rm -f archive.tar.xz
 }
 
 package() {
