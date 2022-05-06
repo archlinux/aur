@@ -1,6 +1,6 @@
 pkgbase = minizinc-ide
 	pkgdesc = Simple IDE for writing and running MiniZinc models
-	pkgver = 2.6.2
+	pkgver = 2.6.3
 	pkgrel = 1
 	url = http://www.minizinc.org/ide/
 	install = minizinc-ide.install
@@ -11,9 +11,9 @@ pkgbase = minizinc-ide
 	options = !strip
 	source = minizinc-ide.desktop
 	source = https://raw.githubusercontent.com/MiniZinc/MiniZincIDE/master/resources/icon.png
-	source = https://github.com/MiniZinc/MiniZincIDE/releases/download/2.6.2/MiniZincIDE-2.6.2-bundle-linux-x86_64.tgz
+	source = https://github.com/MiniZinc/MiniZincIDE/releases/download/2.6.3/MiniZincIDE-2.6.3-bundle-linux-x86_64.tgz
 	sha256sums = 9928044890140a0f0e6f17df8b5f11acfea0b4fd7a8f494309a38b37bb7d71c2
 	sha256sums = eaa69a6d1b8a3e307d1b400b74273995abb914fbe1246c65fc9b3955b2094023
-	sha256sums = bd612101a72c7a8506cb2c4055f7253db415281adc538de9926465b074d59301
+	sha256sums = 277aa60cf0e7f1ce7b37406e604236262d940337e309dcdcb0179acc8d0e1063
 
 pkgname = minizinc-ide

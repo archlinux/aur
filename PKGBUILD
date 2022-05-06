@@ -1,7 +1,7 @@
 # Maintainer: Dimitris Pappas <mitsakosgr at gmail dot com>
 # Contributor: Fabio Tardivo <x95a31x at gmail dot com>
 pkgname=minizinc-ide
-pkgver=2.6.2
+pkgver=2.6.3
 pkgrel=1
 pkgdesc="Simple IDE for writing and running MiniZinc models"
 arch=(x86_64)
@@ -19,7 +19,7 @@ source=(
 
 sha256sums=('9928044890140a0f0e6f17df8b5f11acfea0b4fd7a8f494309a38b37bb7d71c2'
             'eaa69a6d1b8a3e307d1b400b74273995abb914fbe1246c65fc9b3955b2094023'
-            'bd612101a72c7a8506cb2c4055f7253db415281adc538de9926465b074d59301')
+            '277aa60cf0e7f1ce7b37406e604236262d940337e309dcdcb0179acc8d0e1063')
 
 # Workaround for https://github.com/MiniZinc/MiniZincIDE/issues/90
 # implemented in .desktop file, by adding it as environment variable
