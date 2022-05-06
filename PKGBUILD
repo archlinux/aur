@@ -1,7 +1,7 @@
 # Maintainer: Kamack38 <kamack38.biznes@gmail.com>
 _pkgname='openasar'
 pkgname="${_pkgname}-git"
-pkgver=r736.ec4c892
+pkgver=r737.029123e
 pkgrel=1
 pkgdesc="Open-source alternative of Discord desktop's app.asar"
 arch=('i686' 'x86_64')
@@ -28,6 +28,5 @@ package() {
     sed -i -e "s/nightly/nightly-$(git rev-parse HEAD | cut -c 1-7)/" src/index.js
     node scripts/strip.js
     asar pack src app.asar
-    # mv "${pkgdir}/opt/discord/resources/app.asar" "${pkgdir}/opt/discord/resources/app.asar.backup"
     install -Dm 644 app.asar "${pkgdir}/opt/${pkgname}/app.asar"
 }
