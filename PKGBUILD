@@ -2,7 +2,7 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-web-mention'
-pkgver='0.720'
+pkgver='0.721'
 pkgrel='1'
 pkgdesc="Implementation of the IndieWeb Webmention protocol"
 arch=('any')
@@ -12,10 +12,10 @@ depends=('perl-datetime>=0' 'perl-datetime-format-iso8601>=0' 'perl-http-link>=0
 makedepends=()
 checkdepends=('perl-test-exception>=0' 'perl-test-lwp-useragent>=0' 'perl-test-warn>=0')
 url='https://metacpan.org/release/Web-Mention'
-source=('http://search.cpan.org/CPAN/authors/id/J/JM/JMAC/Web-Mention-0.720.tar.gz')
-md5sums=('468fb6cac4b61cc66e3ee17c863a4f01')
-sha512sums=('f3728e9ab0a9e01b03f33a6e596756de5efce575cc68616174aae85cb1173836cb143609cd0810872fc3e542cd931dc90de03f5af2bb6e36bb84abe381405bc5')
-_distdir="Web-Mention-0.720"
+source=("https://cpan.metacpan.org/authors/id/J/JM/JMAC/Web-Mention-$pkgver.tar.gz")
+md5sums=('7622f6ee5ecb105ba549a3c209b0a105')
+sha512sums=('3b6ceb3e982bf7242d5244dd3d0fdf264c416f2835b19df6f2c2b92d1d5f8aac9a87d615b408c1610dd4dd3d245ad22b53a02314432af3c961780317577ac272')
+_distdir="Web-Mention-$pkgver"
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                      \
