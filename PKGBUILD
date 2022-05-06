@@ -3,8 +3,8 @@
 
 _gemname=yajl-ruby
 pkgname=ruby-$_gemname
-pkgver=1.4.1
-pkgrel=2
+pkgver=1.4.2
+pkgrel=1
 pkgdesc='Ruby C bindings to the excellent Yajl JSON stream-based parser library.'
 arch=('x86_64' 'i686' 'armv7h')
 url='http://github.com/brianmario/yajl-ruby'
@@ -13,7 +13,7 @@ depends=('ruby' 'ruby-rdoc')
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha256sums=('6e32e6e681c2861e99e7389ebcca70d56cb9357b223f09fb0857e2444ee1609b')
+sha256sums=('8228a1de1b53e346de619c5dcb0ed2ac82cc4c9ca6b0a41fc5bae98ee2c7cc51')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"

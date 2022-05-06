@@ -1,7 +1,7 @@
 pkgbase = ruby-yajl-ruby
 	pkgdesc = Ruby C bindings to the excellent Yajl JSON stream-based parser library.
-	pkgver = 1.4.1
-	pkgrel = 2
+	pkgver = 1.4.2
+	pkgrel = 1
 	url = http://github.com/brianmario/yajl-ruby
 	arch = x86_64
 	arch = i686
@@ -9,10 +9,9 @@ pkgbase = ruby-yajl-ruby
 	license = MIT
 	depends = ruby
 	depends = ruby-rdoc
-	noextract = yajl-ruby-1.4.1.gem
+	noextract = yajl-ruby-1.4.2.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/yajl-ruby-1.4.1.gem
-	sha256sums = 6e32e6e681c2861e99e7389ebcca70d56cb9357b223f09fb0857e2444ee1609b
+	source = https://rubygems.org/downloads/yajl-ruby-1.4.2.gem
+	sha256sums = 8228a1de1b53e346de619c5dcb0ed2ac82cc4c9ca6b0a41fc5bae98ee2c7cc51
 
 pkgname = ruby-yajl-ruby
-
