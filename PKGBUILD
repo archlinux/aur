@@ -2,12 +2,12 @@
 
 pkgname=wasm3-bin
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The fastest WebAssembly interpreter and the most universal runtime"
 arch=('x86_64')
 url="https://github.com/wasm3/wasm3"
 license=('MIT')
-provides=('wasm3')
+provides=("wasm3=$pkgver")
 conflicts=('wasm3')
 source=("https://raw.githubusercontent.com/wasm3/wasm3/main/LICENSE")
 source_x86_64=("wasm3::https://github.com/wasm3/wasm3/releases/download/v$pkgver/wasm3-linux-x64.elf")
