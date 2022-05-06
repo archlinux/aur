@@ -1,0 +1,8 @@
+post_install(){
+	if [ ! -f /etc/nvme/hostnqn ]; then
+		nvme gen-hostnqn > /etc/nvme/hostnqn
+	fi
+	if [ ! -f /etc/nvme/hostid ]; then
+		uuidgen > /etc/nvme/hostid
+	fi
+}
