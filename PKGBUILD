@@ -1,7 +1,7 @@
 # Maintainer: Valters Tomsons <valters.tomsons at protonmail dot com>
 
 pkgname="dsbattery"
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="DualShock 4 controller utility for status bars"
 arch=('x86_64' 'aarch64')
