@@ -1,0 +1,25 @@
+pkgbase = messenger-gtk
+	pkgdesc = A graphical user interface for GNUnet Messenger
+	pkgver = 0.7.0
+	pkgrel = 1
+	url = https://gnunet.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gnunet
+	depends = libgnunetchat
+	depends = gtk3
+	depends = libhandy
+	depends = libnotify
+	depends = qrencode
+	depends = zbar
+	depends = gstreamer
+	conflicts = messenger-gtk-bin
+	conflicts = messenger-gtk-git
+	source = https://ftp.gnu.org/gnu/gnunet/messenger-gtk-0.7.0.tar.gz
+	source = https://ftp.gnu.org/gnu/gnunet/messenger-gtk-0.7.0.tar.gz.sig
+	validpgpkeys = 3D11063C10F98D14BD24D1470B0998EF86F59B6A
+	sha256sums = b6ba577ca32766a52e8efddacd123e2390ca475ed8bd330336965989e61ff255
+	sha256sums = SKIP
+
+pkgname = messenger-gtk
