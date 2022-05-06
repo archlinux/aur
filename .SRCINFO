@@ -1,6 +1,6 @@
 pkgbase = sdrangel-git
 	pkgdesc = Qt5/OpenGL SDR and signal analyzer frontend.
-	pkgver = 6.19.0.r27.8e79cd7ff
+	pkgver = 6.20.3.r0.cbacc162b
 	pkgrel = 1
 	url = https://github.com/f4exb/sdrangel
 	arch = x86_64
@@ -22,7 +22,7 @@ pkgbase = sdrangel-git
 	makedepends = sgp4
 	makedepends = aptdec
 	makedepends = codec2
-	makedepends = libmirisdr4
+	makedepends = libmirisdr4<2.0.0
 	makedepends = rtl-sdr
 	makedepends = hackrf
 	makedepends = libiio
@@ -61,7 +61,7 @@ pkgbase = sdrangel-git
 	optdepends = sgp4: satellite tracker
 	optdepends = aptdec: APT (weather satellite) decoder
 	optdepends = codec2: FreeDV modulator/demodulator
-	optdepends = libmirisdr4: SDRPlay support
+	optdepends = libmirisdr4<2.0.0: SDRPlay support
 	optdepends = rtl-sdr: RTLSDR support
 	optdepends = hackrf: HackRF support
 	optdepends = libiio: PlutoSDR support
@@ -72,7 +72,7 @@ pkgbase = sdrangel-git
 	optdepends = airspyhf: Airspy HF+ support
 	optdepends = libxtrx: XTRX SDR support
 	optdepends = libuhd: USRP support
-	provides = sdrangel=6.19.0.r27.8e79cd7ff
+	provides = sdrangel=6.20.3.r0.cbacc162b
 	conflicts = sdrangel
 	source = git+https://github.com/f4exb/sdrangel
 	sha512sums = SKIP

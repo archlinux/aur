@@ -4,7 +4,7 @@
 
 _pkgname=sdrangel
 pkgname=$_pkgname-git
-pkgver=6.19.0.r27.8e79cd7ff
+pkgver=6.20.3.r0.cbacc162b
 pkgrel=1
 pkgdesc='Qt5/OpenGL SDR and signal analyzer frontend.'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -18,7 +18,7 @@ depends=('pkg-config' 'log4cpp' 'opencv' 'fftw'
 # libsigmf requires the vendored version at https://github.com/f4exb/libsigmf/tree/new-namespaces, which isn't packaged yet
 makedepends=('git' 'cmake' 'boost' 'doxygen' 'graphviz'
              'ffmpeg' 'libdab' 'zlib' 'faad2' 'sgp4' 'aptdec' 'codec2'
-             'libmirisdr4' 'rtl-sdr' 'hackrf' 'libiio' 'limesuite' 'bladerf' 'libperseus-sdr' 'airspy' 'airspyhf' 'libxtrx' 'libuhd')
+             'libmirisdr4<2.0.0' 'rtl-sdr' 'hackrf' 'libiio' 'limesuite' 'bladerf' 'libperseus-sdr' 'airspy' 'airspyhf' 'libxtrx' 'libuhd')
 optdepends=('ffmpeg: DATV demodulator'
             'libdab: DAB demodulator'
             'zlib: DAB demodulator'
@@ -27,7 +27,7 @@ optdepends=('ffmpeg: DATV demodulator'
             'aptdec: APT (weather satellite) decoder'
             'codec2: FreeDV modulator/demodulator'
 
-            'libmirisdr4: SDRPlay support'
+            'libmirisdr4<2.0.0: SDRPlay support'
             'rtl-sdr: RTLSDR support'
             'hackrf: HackRF support'
             'libiio: PlutoSDR support'
