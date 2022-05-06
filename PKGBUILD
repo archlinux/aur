@@ -2,8 +2,8 @@
 # Contributor: Kohei Suzuki <eagletmt@gmail.com>
 
 pkgname=ghq
-pkgver=1.2.1
-pkgrel=3
+pkgver=1.3.0
+pkgrel=1
 pkgdesc="Remote repository management made easy"
 arch=('i686' 'x86_64')
 url="https://github.com/x-motemen/ghq"
@@ -31,4 +31,4 @@ package() {
 
 # vim: set et sw=2 sts=2:
 
-sha512sums=('7df1cb669058ddeae088ba7a68a98b8bdcd892d67e4335e90c5fe67027894e74d7f14aea26d44d8ccedb11d3a9b5dc836fb36d0079046ca7d6bbb25c169b70f1')
+sha512sums=('838ca38f0a04b498c1e620c7c4b3e759a2c96ab86db0e12911f999f4ddd41261eae03f768adf3f4b63585fddae573efa559291e78756d78a32a7a9c4fff3c731')
