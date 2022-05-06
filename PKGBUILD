@@ -4,7 +4,7 @@
 ## GPG key is available for download from upstream's repo
 
 pkgname=doppler-cli
-pkgver=3.38.0
+pkgver=3.39.0
 pkgrel=1
 pkgdesc="CLI utility for Doppler, environment and secrets manager"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ makedepends=('go')
 source=(
 	"$pkgname-$pkgver.tar.gz::$url/releases/download/$pkgver/doppler_${pkgver}_src.tar.gz"
   "$pkgname-$pkgver.tar.gz.sig::$url/releases/download/$pkgver/doppler_${pkgver}_src.tar.gz.sig")
-sha256sums=('9f66dfb56bd015db4f6b5caafc367d224cafe238afdf03ad70a6e6958be37e20'
+sha256sums=('da6acf805e6b090b37ce41159477e3697fc537e558668ca37266073cb2d24fb9'
             'SKIP')
 validpgpkeys=('B70BD7FCA460C4A3D0EEB965D3D593D50EE79DEC')
 
@@ -23,6 +23,7 @@ prepare() {
 	mkdir -p build
 	## remove self-update functionality
 	sed -i '/rootCmd.AddCommand/d' pkg/cmd/update.go
+	go mod download
 }
 
 build() {
