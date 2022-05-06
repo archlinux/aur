@@ -5,8 +5,8 @@
 
 pkgbase=mutter-dynamic-buffering
 pkgname=(mutter-dynamic-buffering)
-pkgver=42.0
-pkgrel=2
+pkgver=42.1
+pkgrel=1
 pkgdesc="A window manager for GNOME (with dynamic triple/double buffering)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -19,7 +19,7 @@ makedepends=(gobject-introspection git egl-wayland meson xorg-server
              wayland-protocols sysprof gi-docgen)
 #checkdepends=(xorg-server-xvfb wireplumber python-dbusmock)
 #options=(debug)
-_commit=9249aba72a5c4454894c08735a4963ca1665e34d  # tags/42.0^0
+_commit=94bd385bf3ece2a746d8755049fc1fa5c8c0a808  # tags/42.1^0
 source=("$pkgname::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
         'mr1441.patch')
 
@@ -33,13 +33,6 @@ pkgver() {
 
 prepare() {
   cd "$srcdir/$pkgname"
-
-  # Fix Dash-to-dock not autohiding
-  git cherry-pick -n 2aad56b949b8 0280b0aaa563
-
-  # https://bugs.archlinux.org/task/74360
-  git cherry-pick -n f9857cb8bd7af20e819283917ae165fa40c19f07
-
   patch -p1 < "$srcdir/mr1441.patch"
 }
 
