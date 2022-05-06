@@ -1,12 +1,15 @@
 pkgbase = libkvkontakte
 	pkgdesc = C++ library for asynchronous interaction with VK social network via its web API
 	pkgver = 5.0.0
-	pkgrel = 3
-	url = https://www.digikam.org
+	pkgrel = 4
+	url = https://github.com/kde/libkvkontakte
 	arch = x86_64
 	license = GPL
+	license = LGPL
+	makedepends = cmake
 	makedepends = extra-cmake-modules
 	depends = kdewebkit
+	provides = libKF5Vkontakte.so=2-64
 	source = https://download.kde.org/stable/libkvkontakte/5.0.0/src/libkvkontakte-5.0.0.tar.xz
 	source = https://download.kde.org/stable/libkvkontakte/5.0.0/src/libkvkontakte-5.0.0.tar.xz.sig
 	validpgpkeys = 7C35920F1CE2899E8EA9AAD02E7C0367B9BFA089
