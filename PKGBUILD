@@ -2,7 +2,7 @@
 
 _pkgname=gnome-remote-desktop
 pkgname=$_pkgname-git
-pkgver=42.beta.0.g7ad1023
+pkgver=42.1.1.2.gbfa4b2c
 pkgrel=1
 pkgdesc='Remote desktop daemon for GNOME using pipewire'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -21,6 +21,7 @@ depends=(
 )
 makedepends=(
   'git'
+  'asciidoc'
   'ffnvcodec-headers'
   'meson'
 )
