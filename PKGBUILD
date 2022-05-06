@@ -3,7 +3,7 @@
 
 pkgname=aksusbd-bin
 pkgver=8.41
-pkgrel=2
+pkgrel=1
 pkgdesc="Sentinel AKSUSB daemon supporting Sentinel HASP, HASP HL, HASP4 and Hardlock keys."
 arch=('i686' 'x86_64')
 url="https://supportportal.thalesgroup.com"
@@ -26,12 +26,10 @@ makedepends=('libarchive'
 
 conflicts=('ehaspd' 'aksusbd')
 options=('!strip')
-_nver=""
-_nrel=""
 
 pkgver() {
-  #echo $_nver.$_nrel
-  echo $_nver  
+  cd $srcdir  
+  cat version.txt| cut -d' ' -f 1
 }
 
 prepare(){
