@@ -1,13 +1,13 @@
 pkgbase = pyston-bin
 	pkgdesc = A fork of CPython with additional optimizations for performance
 	pkgver = 2.3.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://blog.pyston.org/
 	arch = aarch64
 	arch = x86_64
 	license = custom
 	depends = glibc
-	provides = pyston
+	provides = pyston=2.3.3
 	conflicts = pyston
 	options = !strip
 	source = LICENSE::https://raw.githubusercontent.com/pyston/pyston/pyston_master/LICENSE

@@ -2,13 +2,13 @@
 
 pkgname=pyston-bin
 pkgver=2.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A fork of CPython with additional optimizations for performance"
 arch=('aarch64' 'x86_64')
 url="https://blog.pyston.org/"
 license=('custom')
 depends=('glibc')
-provides=('pyston')
+provides=("pyston=$pkgver")
 conflicts=('pyston')
 options=('!strip')
 source=("LICENSE::https://raw.githubusercontent.com/pyston/pyston/pyston_master/LICENSE")
