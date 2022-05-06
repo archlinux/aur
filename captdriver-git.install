@@ -1,0 +1,50 @@
+post_install(){
+    cat << EOF
+    >>> Installation:
+    >>>
+    >>> 1) Before doing anything, be sure to add your user to the lp group:
+    >>> eg.
+    >>>     gpasswd -a your_user lp
+    >>> and then reboot, or relogin
+    >>>
+    >>> 2) Connect the printer to your computer, turn it on and start CUPS, or restart it if it was already running
+    >>> eg.
+    >>>     systemctl restart cups.service
+    >>>
+    >>> Ensure that the printer device is connected and switched on.
+    >>>
+    >>> With captdriver and the CUPS command-line programs already
+    >>> installed, run the following command
+    >>> to identify the printer's URI:
+    >>>     lpinfo -v
+    >>> Example output of "lpinfo -v" :
+    >>>    file cups-brf:/
+    >>>    network beh
+    >>>    network lpd
+    >>>    network https
+    >>>    network ipps
+    >>>    file cups-pdf:/
+    >>>    network ipp
+    >>>    network http
+    >>>    network socket
+    >>>    direct usb://Canon/LBP2900?serial=0000C3J0LGaQ
+    >>>    network smb
+    >>>
+    >>> 3) Run this command to add the printer to CUPS:
+    >>>     /usr/bin/lpadmin -p <name> -m <corresponding ppd> -v <device path in lpinfo -v> -E
+    >>> eg.
+    >>>     /usr/bin/lpadmin -p 'LBP2900' -m CANON-LBP2900-3000.ppd -v 'usb://Canon/LBP2900?serial=0000C3J0LGaQ' -E
+    >>> (you can find ppds in the /usr/share/cups/model/ directory)
+    >>> 4) Optionally, you can set the newly-installed printer as default with this command:
+    >>>     lpadmin -d 'LBP3000'
+    >>>
+    >>> For more details check out the project wiki: https://github.com/mounaiban/captdriver/wiki
+    >>> and the project official install guide:
+    >>> https://github.com/mounaiban/captdriver/wiki/Building-and-Installing-captdriver%3A-A-Unified-Guide
+    >>>
+EOF
+}
+
+op=$1
+shift
+$op $*

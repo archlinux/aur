@@ -3,6 +3,7 @@ pkgbase = captdriver-git
 	pkgver = r103.c798add
 	pkgrel = 1
 	url = https://github.com/mounaiban/captdriver
+	install = captdriver-git.install
 	arch = any
 	license = GPL
 	makedepends = automake
