@@ -1,5 +1,5 @@
 From a45725ef721e737fae16e4348bc1214139c19f5e Mon Sep 17 00:00:00 2001
-From: graysky <graysky AT archlinux DOT us>
+From: graysky <therealgraysky AT protonmail DOT com>
 Date: Sat, 30 Apr 2022 14:10:29 -0400
 Subject: [PATCH] add dav1d patch to build system
 

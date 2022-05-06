@@ -22,7 +22,7 @@ _clangbuild=
 
 pkgbase=kodi-stable-git
 pkgname=("$pkgbase" "$pkgbase-eventclients" "$pkgbase-tools-texturepacker" "$pkgbase-dev")
-pkgver=r57678.46938b32f6f
+pkgver=r57682.b9f2909137a
 pkgrel=1
 arch=('x86_64')
 url="https://kodi.tv"
@@ -112,7 +112,7 @@ b2sums=('SKIP'
         'e7fab72ebecb372c54af77b4907e53f77a5503af66e129bd2083ef7f4209ebfbed163ffd552e32b7181829664fff6ab82a1cdf00c81dc6f3cc6bfc8fa7242f6e'
         '6d647177380c619529fb875374ec46f1fff6273be1550f056c18cb96e0dea8055272b47664bb18cdc964496a3e9007fda435e67c4f1cee6375a80c048ae83dd0'
         '6928d0fb1f4cb2609dee87c7078e02cecc37ddef263485b47be0ae5c281be67b403b39c95ea370c6b6667e1eceb1c7e6fb83ec9b04acd0bdbe4abec17fb84385'
-        '268c7bc34a2f5be044465a8e4d5c4df9d7379b768c682e2d7f1f2937992d829fdebe819a4a0f5f601e4ac67592b602ad18bb330a732778eb23b466751eb95728')
+        'f1769867f7bb998e9705cfe7709072436bc4824775ad6ccd151bb240798413a92c4a5c92452f5b781a439660a3d9a0846ebf6fefebdfa50b95f076ffdc6ff55e')
 
 pkgver() {
   cd "$_gitname"
