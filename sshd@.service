@@ -1,8 +1,8 @@
 [Unit]
-Description=OpenSSH Per-Connection Daemon
-After=sshdgenkeys.service
+Description=OpenSSH-HPN Per-Connection Daemon
+After=hpnsshdgenkeys.service
 
 [Service]
-ExecStart=-/usr/bin/sshd -i
+ExecStart=-/usr/bin/hpnsshd -i
 StandardInput=socket
 StandardError=syslog

@@ -1,11 +1,11 @@
 [Unit]
-Description=OpenSSH Daemon
-Wants=sshdgenkeys.service
-After=sshdgenkeys.service
+Description=OpenSSH-HPN Daemon
+Wants=hpnsshdgenkeys.service
+After=hpnsshdgenkeys.service
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/sshd -D
+ExecStart=/usr/bin/hpnsshd -D
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=process
 Restart=always

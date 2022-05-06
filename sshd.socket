@@ -1,6 +1,6 @@
 [Unit]
-Conflicts=sshd.service
-Wants=sshdgenkeys.service
+Conflicts=hpnsshd.service
+Wants=hpnsshdgenkeys.service
 
 [Socket]
 ListenStream=22
