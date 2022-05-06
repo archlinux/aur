@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=python-dymos
-pkgver=1.4.0
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="Open-source optimization of dynamic multidisciplinary systems"
 arch=('any')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel
 checkdepends=('python-pytest' 'python-pep8' 'python-testflo' 'python-matplotlib')
 optdepends=('ipython' 'python-notebook' 'python-tabulate')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/d/dymos/dymos-$pkgver.tar.gz")
-sha256sums=('ebda14a3f857e4fc2ed2a7d5c7c88be1edd8286b1ca92b7288ccf70b83930c2b')
+sha256sums=('e9e8b17967ae31efa96f896d1212a850de42edcf49264aac6460fcd6ffdac715')
 
 prepare() {
 	cd "dymos-$pkgver"
@@ -26,11 +26,10 @@ build() {
 
 check() {
 	cd "dymos-$pkgver"
-	pytest -x --disable-warnings
+	PYTHONPATH="$PWD" pytest -x --disable-warnings
 }
 
 package() {
-	export PYTHONHASHSEED=0
 	cd "dymos-$pkgver"
-	python -m installer --destdir="$pkgdir/" dist/*.whl
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 }
