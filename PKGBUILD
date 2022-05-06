@@ -1,7 +1,7 @@
 # Maintainer: Inochi Amaoto <libraryindexsky@gmail.com>
 
 pkgname=mpv-full-build-git
-pkgver=0.34.0.r283.gee62a1a56e
+pkgver=0.34.0.r292.g3458651010
 pkgrel=1
 pkgdesc="Video player based on MPlayer/mplayer2 with all possible libs (uses statically linked ffmpeg with all possible libs). (GIT version )"
 arch=('x86_64')
@@ -122,8 +122,8 @@ url='http://mpv.io'
 makedepends=(
              'amf-headers'
              'avisynthplus'
-             'clang'
              'ffnvcodec-headers'
+             'clang'
              'fontconfig'
              'git'
              'intel-media-sdk'
@@ -179,7 +179,7 @@ backup=('etc/mpv/encoding-profiles.conf')
 # for example
 # MPV_NO_CHECK_OPT_DEPEND=yes makepkg -si
 
-if [ -n ${MPV_BUILD_WITH_CLANG} ]; then
+if [[ -n ${MPV_BUILD_WITH_CLANG} ]]; then
   makedepends+=(clang lld)
 fi
 
@@ -238,7 +238,7 @@ prepare() {
   ln -sf -t . "../ffmpeg"
   ln -sf -t . "../libass"
 
-  if [ -n ${MPV_BUILD_WITH_CLANG} ]; then
+  if [[ -n ${MPV_BUILD_WITH_CLANG} ]]; then
     unset CC CXX
     export CC=clang
     export CXX=clang++
@@ -247,8 +247,6 @@ prepare() {
 
   # Set ffmpeg/libass/mpv flags
   _ffmpeg_options=(
-    '--cc=clang'
-    '--cxx=clang++'
     '--disable-libopencv'
     '--disable-libtls'
     '--disable-mbedtls'
@@ -420,6 +418,11 @@ prepare() {
     '--enable-gl-x11'
     '--enable-vdpau-gl-x11'
   )
+
+  if [[ -n ${MPV_BUILD_WITH_CLANG} ]]; then
+    _ffmpeg_options+=('--cc=clang')
+    _ffmpeg_options+=('--cxx=clang++')
+  fi
 
   local _ffmpeg_cflags=''
   local _ffmpeg_ldflags=''
