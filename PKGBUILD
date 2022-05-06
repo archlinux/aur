@@ -2,7 +2,7 @@
 # Maintainer: Ilesh Thiada <ileshkt@gmail.com>
 pkgname=ferium-bin
 _pkgname=ferium
-pkgver=3.25.1
+pkgver=3.26.0
 pkgrel=1
 pkgdesc="Ferium is an easy to use CLI program for downloading and updating Minecraft mods from Modrinth, CurseForge, and GitHub Releases."
 arch=("x86_64")
@@ -13,7 +13,7 @@ url="https://github.com/theRookieCoder/ferium"
 license=('MPL2')
 source=("$_pkgname-$pkgver-$pkgrel.zip::https://github.com/theRookieCoder/ferium/releases/download/v$pkgver/ferium-linux-gnu-nogui.zip"
 	"ferium.desktop")
-sha256sums=('cc4e725cc4ef4a3d655cdd9fe02d8fe165bf3e012c293770e313306df590643d'
+sha256sums=('b203949c8ab9773f95fa9a7a17ae359f6522bc80fa3407408f475fe450276399'
             '594cdfb846ab9cbac0fd781a445501ebb1e3f491fd21202bf3733b00f2151018')
 
 package() {
