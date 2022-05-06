@@ -2,6 +2,20 @@
 
 // scriv-insert-here
 
+== 3.5.0 (2022-05-05)
+
+Bugfixes:
+
+* `globus endpoint activate --web` now correctly respects the environment when
+  it is set
+
+Enhancements:
+
+* Add a new command, `globus api`, which can be used to make requests to curl-like
+  requests to Globus services using the credentials from a globus-cli login
+* Add commands for interacting with individual documents in Globus Search:
+  `globus search subject show` and `globus search subject delete`
+
 == 3.4.0 (2022-03-11)
 
 Enhancements:

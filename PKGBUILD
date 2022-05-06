@@ -2,7 +2,7 @@
 # Contributor: Aetf <aetf at unlimitedcodeworks dot xyz>
 
 pkgname=globus-cli
-pkgver=3.4.0
+pkgver=3.5.0
 pkgrel=1
 pkgdesc='CLI for Globus'
 arch=('any')
@@ -32,7 +32,6 @@ build() {
 }
 
 package() {
-	export PYTHONHASHSEED=0
 	cd "$pkgname"
-	python -m installer --destdir="$pkgdir/" dist/*.whl
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
 }
