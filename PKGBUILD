@@ -1,6 +1,6 @@
 # Maintainer: fenrig <fenrig.linux at outlook.com>
 pkgname=mod_sahtrace-git
-pkgver=0.0.9.r1.ged1ec2e
+pkgver=0.0.10.r0.g8ab6de6
 pkgrel=1
 pkgdesc="Ambiorix module for sahtrace"
 arch=("x86_64" "i686" "i486" "pentium4" "arm" "armv6h" "armv7h" "aarch64")
