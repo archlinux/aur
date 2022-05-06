@@ -1,7 +1,7 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=o-bin
-pkgver=2.50.0
+pkgver=2.51.0
 pkgrel=1
 pkgdesc='Text editor'
 arch=(aarch64 armv6 armv7 x86_64)
@@ -47,8 +47,8 @@ optdepends=('asciidoctor: for writing man pages'
             'v: for compiling and formatting V'
             'yasm: for compiling Assembly'
             'zig: for compiling and formatting Zig')
-sha256sums=('49f71b018edc4a0217f79b6e6d88d35574493073c80b1d82e54bb94bd461284b')
-b2sums=('48ad9e51ef237e30aba3b9d799fe233cd34f6d1aacf36b29c8a2da5fb2197b2aa63fb129f154dcf5ce29c2fba485e3dff193a6be93212ece4e2d377c8efced34')
+sha256sums=('45de6fb5068620136b313c105894c8e14a8b0e25a68f0c2f9577d8a6338ea2fa')
+b2sums=('98c6cc70eb43111ba1496c8d78f91e17228c53f41798febda8ecddbd4811564bb1e26e481ab3765154bb058a2606fbf9efd7e317fbbbbc85db682dfa315d8b84')
 
 package() {
   cd o-$pkgver-linux_${CARCH}_static
