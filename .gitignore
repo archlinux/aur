@@ -1,4 +1,5 @@
-/ctags/
-/pkg/
-/src/
-*.tar.xz
+src
+pkg
+uctags-git
+*.pkg.tar.*
+tags
