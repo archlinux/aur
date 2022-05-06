@@ -1,7 +1,7 @@
 pkgbase = obs-studio-rc
 	pkgdesc = Beta cycle of the free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources. Service integration unavailable and only patches for dependencies compatibility
 	pkgver = 27.2.4
-	pkgrel = 2
+	pkgrel = 3
 	epoch = 2
 	url = https://github.com/obsproject/obs-studio
 	arch = i686
@@ -57,8 +57,10 @@ pkgbase = obs-studio-rc
 	source = obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=27.2.4
 	source = obs-browser::git+https://github.com/obsproject/obs-browser.git
 	source = obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8
+	source = ffmpeg_5_master_fixes.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
+	sha256sums = 91a08c02b397c49e84400f36559059f03c629b4d0df5b6689ce8eb6923c805f6
 
 pkgname = obs-studio-rc

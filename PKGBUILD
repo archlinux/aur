@@ -5,7 +5,7 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 pkgname=obs-studio-rc
 _pkgver=27.2.4
 pkgver=${_pkgver//-/_}
-pkgrel=2
+pkgrel=3
 epoch=2
 pkgdesc="Beta cycle of the free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources. Service integration unavailable and only patches for dependencies compatibility"
 arch=("i686" "x86_64" "aarch64")
@@ -89,11 +89,13 @@ source=(
   "obs-studio::git+https://github.com/obsproject/obs-studio.git#tag=$_pkgver"
   "obs-browser::git+https://github.com/obsproject/obs-browser.git"
   "obs-vst::git+https://github.com/obsproject/obs-vst.git#commit=cca219fa3613dbc65de676ab7ba29e76865fa6f8"
+  "ffmpeg_5_master_fixes.patch" # https://patch-diff.githubusercontent.com/raw/obsproject/obs-studio/pull/6423.patch
 )
 sha256sums=(
   "SKIP"
   "SKIP"
   "SKIP"
+  "91a08c02b397c49e84400f36559059f03c629b4d0df5b6689ce8eb6923c805f6"
 )
 
 if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
@@ -128,6 +130,9 @@ prepare() {
 
   ## libobs,obs-outputs: Fix librtmp1 dependency interference on some linuxes (https://github.com/obsproject/obs-studio/pull/6377)
   sed -i 's/#define EXPORT/#define EXPORT __attribute__((visibility("default")))/g' libobs/util/c99defs.h
+
+  ## obs-ffmpeg: Several fixes allowing support of FFmpeg 5 (https://github.com/obsproject/obs-studio/pull/6423)
+  patch -Np1 < "$srcdir/ffmpeg_5_master_fixes.patch"
 }
 
 build() {
