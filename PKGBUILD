@@ -1,19 +1,20 @@
 # Maintainer: grufo <madmurphy333 AT gmail DOT com>
 # Contributor: TheJackiMonster <thejackimonster AT gmail DOT com>
 
+_framework='gnunet'
 _appname='messenger-gtk'
 pkgname="${_appname}-git"
 pkgver='r107.8e8f7bf'
 pkgrel=1
 pkgdesc='A graphical user interface for GNUnet Messenger'
 arch=('i686' 'x86_64')
-url="https://gnunet.org"
-license=('GPL')
+url="https://${_framework}.org"
+license=('AGPL')
 depends=('gnunet' 'libgnunetchat-git' 'gtk3' 'libhandy' 'libnotify' 'qrencode'
          'zbar' 'gstreamer')
 provides=("${_appname}")
 conflicts=("${_appname}" "${_appname}-bin")
-source=("git+https://git.gnunet.org/${_appname}.git")
+source=("git+https://git.${_framework}.org/${_appname}.git")
 md5sums=('SKIP')
 
 pkgver() {
