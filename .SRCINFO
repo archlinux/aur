@@ -1,0 +1,51 @@
+pkgbase = jasper-git
+	pkgdesc = Implementation of the JPEG-2000 Part-1 standard codec (git version)
+	pkgver = 3.0.3.r6.g411571c
+	pkgrel = 1
+	url = https://www.ece.uvic.ca/~mdadams/jasper/
+	arch = x86_64
+	license = custom:JasPer2.0
+	makedepends = git
+	makedepends = glibc
+	makedepends = libjpeg
+	makedepends = libheif
+	makedepends = freeglut
+	makedepends = glu
+	makedepends = cmake
+	makedepends = doxygen
+	makedepends = texlive-bin
+	makedepends = texlive-core
+	makedepends = texlive-latexextra
+	makedepends = biber
+	makedepends = texlive-bibtexextra
+	makedepends = texlive-pictures
+	makedepends = texlive-fontsextra
+	makedepends = texlive-formatsextra
+	makedepends = texlive-pstricks
+	makedepends = texlive-games
+	makedepends = texlive-humanities
+	makedepends = texlive-science
+	makedepends = ghostscript
+	makedepends = plantuml
+	options = staticlibs
+	source = jasper::git+https://github.com/jasper-software/jasper.git
+	sha512sums = SKIP
+
+pkgname = jasper-git
+	depends = glibc
+	depends = libjpeg
+	depends = libjpeg.so
+	depends = libheif
+	optdepends = jasper-doc-git: documentation
+	optdepends = freeglut: jiv support
+	optdepends = glu: jiv support
+	provides = jasper=3.0.3.r6.g411571c
+	provides = libjasper.so
+	conflicts = jasper
+
+pkgname = jasper-doc-git
+	pkgdesc = Implementation of the JPEG-2000 Part-1 standard codec (git version) (documentation)
+	arch = any
+	optdepends = jasper-git
+	provides = jasper-doc=3.0.3.r6.g411571c
+	conflicts = jasper-doc
