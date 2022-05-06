@@ -1,6 +1,6 @@
 pkgbase = system76-scheduler-git
 	pkgdesc = system76 userspace scheduler
-	pkgver = 1.1.0.1.gcbccc2e
+	pkgver = 1.1.0.2.g7d107f3
 	pkgrel = 1
 	epoch = 2
 	url = https://github.com/pop-os/system76-scheduler
@@ -10,6 +10,9 @@ pkgbase = system76-scheduler-git
 	makedepends = git
 	makedepends = rust
 	makedepends = make
+	provides = system76-scheduler
+	conflicts = system76-scheduler
+	backup = etc/system76-scheduler/assignments/default.ron
 	source = git+https://github.com/pop-os/system76-scheduler
 	sha256sums = SKIP
 
