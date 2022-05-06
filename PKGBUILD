@@ -7,12 +7,13 @@ _vlcver=3.0.17.4
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=4
+pkgrel=5
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64' 'aarch64')
 license=('LGPL2.1' 'GPL2')
 _aomver=3
+_dav1dver=1.0.0
 _libmicrodnsver=0.2
 _libplacebover=4.192
 _libupnpver=1.14
@@ -52,7 +53,7 @@ makedepends=(
   'libvorbis' 'speex' 'opus' 'libtheora' 'libpng' 'libjpeg-turbo'
   'zvbi' 'libass' 'libkate' 'libtiger'
   'sdl_image' 'libpulse' 'alsa-lib' 'jack' 'libsamplerate' 'libsoxr'
-  'lirc' 'libgoom2' 'projectm' 'chromaprint' 'dav1d'
+  'lirc' 'libgoom2' 'projectm' 'chromaprint'
   'aribb24' 'aribb25' 'pcsclite' 'lua51' 'lsb-release'
 )
 # To manage dependency rebuild easily, this will prevent you to rebuild VLC on non-updated system
@@ -60,6 +61,7 @@ makedepends=(
 if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
   makedepends+=(
     'aom'
+    'dav1d'
     'libmicrodns'
     'libvpx'
     'libx264.so'
@@ -70,6 +72,7 @@ if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
 else
   makedepends+=(
     "aom>=$_aomver"
+    "dav1d>=$_dav1dver"
     "libmicrodns>=$_libmicrodnsver"
     "libvpx>=$_libvpxver"
     "libx264.so>=$_libx264ver"
@@ -142,6 +145,7 @@ optdepends=(
 if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
   optdepends+=(
     'aom: AOM AV1 codec'
+    'dav1d: dav1d AV1 decoder'
     'protobuf: chromecast streaming'
     'libmicrodns: mDNS services discovery (chromecast etc)'
     'libvpx: VP8 and VP9 codec'
@@ -152,6 +156,7 @@ if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
 else
   optdepends+=(
     "aom>=$_aomver: AOM AV1 codec"
+    "dav1d>=$_dav1dver: dav1d AV1 decoder"
     "protobuf>=$_protobufver: chromecast streaming"
     "libmicrodns>=$_libmicrodnsver: mDNS services discovery (chromecast etc)"
     "libvpx>=$_libvpxver: VP8 and VP9 codec"
@@ -166,10 +171,14 @@ provides=("${_name}=${pkgver}")
 options=('debug' '!emptydirs')
 source=(https://download.videolan.org/${_name}/${_vlcver}/${_name}-${_vlcver}${_vlcfixupver}.tar.xz
         'update-vlc-plugin-cache.hook'
-        'vlc-live-media-2021.patch')
+        'vlc-live-media-2021.patch'
+        'dav1d_v1.patch' # https://code.videolan.org/videolan/vlc/-/commit/2202c892c8dc1381b596c53c2ebd3ca680061f95
+        'dav1d_v1_limit.patch') # https://code.videolan.org/videolan/vlc/-/commit/d38ddd7270ffaea705981b6a48086778850d3c96
 sha512sums=('dac14c6586603c064294672eb878253e52b3a7bef431fb10303345e5400591b5c1f2d452a2af03f503db0ca186582a84be06fdf05ab011c33f7b0bd5389c51fb'
             'b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3'
-            'ad17d6f4f2cc83841c1c89623c339ec3ee94f6084ea980e2c8cbc3903854c85e5396e31bfd8dc90745b41794670903d854c4d282d8adec263087a9d47b226ccc')
+            'ad17d6f4f2cc83841c1c89623c339ec3ee94f6084ea980e2c8cbc3903854c85e5396e31bfd8dc90745b41794670903d854c4d282d8adec263087a9d47b226ccc'
+            '5f7aa43a7b248812758a8ef82d15d59fb566327fc3e837002a8f4741cabde09ed7caca905f6fe168554b9a4b7561816b3eff877f4dd6664ceaf0964281facb4f'
+            '4aca4979fe7516ee9d39ae8e2c91c0f981a033ed5c6a74eaf86569df8bbcf72ab0be037f27c8af78f26c23dc181e52bbf4a3e0209e07160fdb03e8fa33e6bc38')
 
 if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
 source+=(
@@ -178,8 +187,7 @@ source+=(
 )
 sha512sums+=(
   "387bc13bd61ab926228d58e102271a964415f11a175778323487080a7ebc424d1a6148d5705e1563eee49c9ea6407643f82e274478b589664c9fcdffb6177f99"
-  "698b3ee23d02677cd46950adc5188320ff4e5ead76d655db8d276558ee6745a567bec878c68a76b65728a6d893919b2cd4c9c6fec544461762df52476e4a8fe6"
-)
+  "698b3ee23d02677cd46950adc5188320ff4e5ead76d655db8d276558ee6745a567bec878c68a76b65728a6d893919b2cd4c9c6fec544461762df52476e4a8fe6")
 fi
 
 prepare() {
