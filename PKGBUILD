@@ -7,7 +7,7 @@
 
 pkgname=linux-api-headers
 pkgver=5.17.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Kernel headers sanitized for use in userspace'
 arch=(any)
 url='https://www.gnu.org/software/libc'
