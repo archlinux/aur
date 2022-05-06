@@ -2,50 +2,31 @@
 # Contributor: ava1ar <mail(at)ava1ar(dot)me>
 # Contributor: Corey Hinshaw <corey(at)electrickite(dot)org>
 pkgname=system76-driver
-pkgver=20.04.50
+pkgver=20.04.51
 pkgrel=1
 pkgdesc="Universal driver for System76 computers"
 arch=('any')
 url="https://github.com/pop-os/system76-driver"
 license=('GPL')
-depends=(
-  'at'
-  'dmidecode'
-  'ethtool'
-  'gtk3'
-  'lm_sensors'
-  'pciutils'
-  'polkit'
-  'python'
-  'python-cffi'
-  'python-dbus'
-  'python-distro'
-  'python-evdev'
-  'python-gobject'
-  'python-pynacl'
-  'python-systemd'
-  'python-xlib'
-  'system76-firmware-daemon'
-  'usbutils'
-  'wireless_tools')
-makedepends=(
-  'git'
-  'python-pyflakes')
+depends=('at' 'dmidecode' 'ethtool' 'gtk3' 'lm_sensors' 'pciutils' 'polkit'
+         'python' 'python-cffi' 'python-dbus' 'python-distro' 'python-evdev'
+         'python-gobject' 'python-pynacl' 'python-systemd' 'python-xlib'
+         'system76-firmware-daemon' 'usbutils' 'wireless_tools')
+makedepends=('git' 'python-build' 'python-installer' 'python-pyflakes' 'python-wheel')
 optdepends=(
   'firmware-manager: Manage System76 firmware updates via standalone application'
-  'gnome-control-center-system76: Manage System76 firmware updates via Settings'
   'grub: Required to apply kernel parameters'
   'pm-utils: For power management features'
   'pulseaudio: To apply microphone fix'
   'system76-dkms: Control hotkeys and fan on certain System76 laptops'
-  'system76-acpi-dkms: Provides the system76_acpi in-tree driver'
+  'system76-acpi-dkms: Provides the system76_acpi in-tree driver (only for (<5.16)'
   'system76-io-dkms: Enable System76 I/O daughterboard'
   'system76-oled: Control brightness on OLED displays'
   'system76-power: System76 Power Management'
   'xorg-xhost: To enable GUI applications on Wayland'
   'xorg-xbacklight: To use the backlight service')
 install="$pkgname.install"
-_commit=ab5bdf18859bb3d5c024dbc95d0987f6665fbbc7
+_commit=056f9bb3370e8ce5a11f1ddd666c93de0d036dcb
 source=(
   "git+https://github.com/pop-os/system76-driver.git#commit=$_commit?signed"
   'cli.patch'
@@ -74,21 +55,19 @@ prepare() {
   # Use mkinitcpio instead of initramfs-tools
   patch --no-backup-if-mismatch -Np1 -i $srcdir/actions.patch
 
-  # Force Composition Pipeline no longer necessary on serw12
+  # Force Composition Pipeline no longer necessary
   sed -i '/            actions.nvidia_forcefullcompositionpipeline,/d' \
     system76driver/products.py
 }
 
 build() {
   cd "$srcdir/$pkgname"
-  python setup.py build
+  python -m build --wheel --no-isolation
 }
 
 package() {
   cd "$srcdir/$pkgname"
-
-  # Install base package
-  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1 --skip-build
+  python -m installer --destdir="$pkgdir" dist/*.whl
 
   # Install daemons and executables
   install -Dm755 system76-daemon -t "$pkgdir/usr/lib/$pkgname"
