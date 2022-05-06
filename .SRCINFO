@@ -1,6 +1,6 @@
 pkgbase = octave-generate_html
 	pkgdesc = This package provides functions for generating HTML pages that contain the help texts for a set of functions. The package is designed to be as general as possible, but also contains convenience functions for generating a set of pages for entire packages.
-	pkgver = 0.3.1
+	pkgver = 0.3.3
 	pkgrel = 1
 	url = https://octave.sourceforge.io/generate_html/
 	install = octave-generate_html.install
@@ -9,9 +9,8 @@ pkgbase = octave-generate_html
 	license = GPL3
 	makedepends = texinfo
 	depends = octave>=3.2.0
-	noextract = generate_html-0.3.1.tar.gz
-	source = https://downloads.sourceforge.net/octave/generate_html-0.3.1.tar.gz
-	sha256sums = 2ab9d33181865e2b324b8936034dd9dd951db1a5f31173dfed57ce294b766768
+	noextract = generate_html-0.3.3.tar.gz
+	source = https://downloads.sourceforge.net/octave/generate_html-0.3.3.tar.gz
+	sha256sums = 087274fbdd3e48d5e6b252eb41cfbc69eb529c72b49bd3ea1018a916e163c07c
 
 pkgname = octave-generate_html
-
