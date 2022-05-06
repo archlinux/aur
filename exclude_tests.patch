@@ -1,0 +1,13 @@
+diff --git a/setup.py b/setup.py
+index 12b81a9..0b97c0c 100644
+--- a/setup.py
++++ b/setup.py
+@@ -9,7 +9,7 @@ setup(
+     version='1.3.10',
+     author='SparkPost',
+     author_email='developers@sparkpost.com',
+-    packages=find_packages(),
++    packages=find_packages(exclude=['*test*']),
+     url='https://github.com/SparkPost/python-sparkpost',
+     license='Apache 2.0',
+     description='SparkPost Python API client',

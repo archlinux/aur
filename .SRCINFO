@@ -1,12 +1,18 @@
 pkgbase = python-sparkpost
 	pkgdesc = SparkPost client library for Python
-	pkgver = 1.3.5
+	pkgver = 1.3.10
 	pkgrel = 1
 	url = https://github.com/SparkPost/python-sparkpost
 	arch = any
 	license = Apache
-	makedepends = python-pip
-	depends = python
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-setuptools
+	makedepends = python-wheel
+	depends = python-requests
+	source = python-sparkpost-1.3.10.tar.gz::https://files.pythonhosted.org/packages/source/s/sparkpost/sparkpost-1.3.10.tar.gz
+	source = exclude_tests.patch
+	sha256sums = a151261d514923e2d3055d122bba86c4d2c7c806419ae1c10ba689cacc3aa3a3
+	sha256sums = c7003c7e6c29c91a0d0a643a798fd28617bf6cdafc7dc1e7466a548189c45831
 
 pkgname = python-sparkpost
-
