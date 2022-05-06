@@ -1,6 +1,6 @@
 pkgbase = libyang
 	pkgdesc = A YANG data modelling language parser and toolkit written (and providing API) in C
-	pkgver = 2.0.164
+	pkgver = 2.0.194
 	pkgrel = 1
 	url = https://github.com/CESNET/libyang
 	arch = x86_64
@@ -12,10 +12,11 @@ pkgbase = libyang
 	makedepends = cmake
 	makedepends = swig
 	makedepends = doxygen
+	makedepends = graphviz
 	depends = pcre2
 	conflicts = libyang-git
 	conflicts = libyang-devel-git
-	source = https://github.com/CESNET/libyang/archive/v2.0.164.tar.gz
-	sha256sums = 7ed65c3e180eb14183d72676468b2b81682baef0957d88d0114341d886c19093
+	source = https://github.com/CESNET/libyang/archive/v2.0.194.tar.gz
+	sha256sums = 94898ee391c238dcd29ff21092e5dcab4e17b9623e88862a55b72fc6168846f8
 
 pkgname = libyang
