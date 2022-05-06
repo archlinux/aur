@@ -1,7 +1,7 @@
 pkgbase = gr-foo-git
 	pkgdesc = gnuradio custom blocks by bastibl. Latest git checkout.
-	pkgver = 1.1.0.git+r169.20210805.cc8bfc6
-	pkgrel = 2
+	pkgver = r169.cc8bfc6
+	pkgrel = 1
 	epoch = 0
 	url = https://github.com/bastibl/gr-foo
 	arch = i686
@@ -19,7 +19,7 @@ pkgbase = gr-foo-git
 	depends = libsndfile
 	depends = log4cpp
 	depends = pybind11
-	provides = gr-foo=1.1.0.git+r169.20210805.cc8bfc6
+	provides = gr-foo=r169.cc8bfc6
 	conflicts = gr-foo
 	source = gr-foo::git+https://github.com/bastibl/gr-foo#branch=maint-3.10
 	sha256sums = SKIP

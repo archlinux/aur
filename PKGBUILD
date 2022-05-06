@@ -5,8 +5,8 @@
 _pkgname='gr-foo'
 pkgname="${_pkgname}-git"
 epoch=0
-pkgver=1.1.0.git+r169.20210805.cc8bfc6
-pkgrel=2
+pkgver=r169.cc8bfc6
+pkgrel=1
 pkgdesc="gnuradio custom blocks by bastibl. Latest git checkout."
 arch=(
   'i686'
@@ -48,28 +48,7 @@ prepare() {
 
 pkgver() {
   cd "${srcdir}/${_pkgname}"
-
-  _ver_major="$( grep -E '^[[:space:]]*set\(VERSION_MAJOR' CMakeLists.txt | tail -n1 | awk '{print $2}' | sed 's|).*||' )"
-  _ver_api="$(   grep -E '^[[:space:]]*set\(VERSION_API'   CMakeLists.txt | tail -n1 | awk '{print $2}' | sed 's|).*||' )"
-  _ver_abi="$(   grep -E '^[[:space:]]*set\(VERSION_ABI'   CMakeLists.txt | tail -n1 | awk '{print $2}' | sed 's|).*||' )"
-  _ver_patch="$( grep -E '^[[:space:]]*set\(VERSION_PATCH' CMakeLists.txt | tail -n1 | awk '{print $2}' | sed 's|).*||' )"
-
-  _ver="${_ver_major}.${_ver_api}.${_ver_abi}"
-  if [ -n "${_ver_patch}" ]; then
-    _ver+=".${_ver_patch}"
-  fi
-
-  _rev="$(git rev-list --count HEAD)"
-  _date="$(git log -1 --date=format:"%Y%m%d" --format="%ad")"
-  _hash="$(git rev-parse --short HEAD)"
-
-  if [ -z "${_ver}" ]; then
-    error "Version could not be determined."
-    return 1
-  else
-    printf '%s' "${_ver}+r${_rev}.${_date}.${_hash}"
-  fi
-
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
