@@ -1,7 +1,7 @@
 pkgbase = nodejs-serverless
 	pkgdesc = Serverless Framework - Build web, mobile and IoT applications with serverless architectures using AWS Lambda, Azure Functions, Google CloudFunctions & more
 	pkgver = 3.16.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://serverless.com/framework/docs/
 	arch = any
 	license = MIT
