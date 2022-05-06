@@ -1,0 +1,21 @@
+pkgbase = upwork-desktop
+	pkgdesc = Desktop Application
+	pkgver = 5.6.10.13
+	pkgrel = 1
+	url = https://www.upwork.com/downloads/
+	arch = x86_64
+	license = custom
+	depends = alsa-lib
+	depends = gtk3
+	depends = libjpeg-turbo
+	depends = nss
+	conflicts = upwork-alpha
+	conflicts = upwork
+	source = https://upwork-usw2-desktopapp.upwork.com/binaries/v5_6_10_13_3c485d1dd2af4f61/upwork_5.6.10.13_amd64.deb
+	source = LICENSE
+	source = upwork
+	sha256sums = c3e1ecf14c99596f434edf93a2e08f031fbaa167025d1280cf19f68b829d6b79
+	sha256sums = 793d8d7bc0f088c48798bda3d5483972636c6b8c5dcd9aeaf85411f7d4547b38
+	sha256sums = 53bbbd18d7dbbcc27a1405ce9745d95f08be64a234b8fb3312cc2e6ef70e3e9b
+
+pkgname = upwork-desktop

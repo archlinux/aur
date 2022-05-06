@@ -1,0 +1,10 @@
+#!/bin/bash
+
+IS_UNITY_FAMILY=`echo $XDG_CURRENT_DESKTOP | awk -F: "{print $1}"`
+
+if [ "$IS_UNITY_FAMILY" == "Unity" ]; then
+  export XDG_CURRENT_DESKTOP=Unity
+fi
+
+cd "/opt/Upwork"
+exec "./upwork" "$@"
