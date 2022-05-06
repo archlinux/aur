@@ -1,0 +1,12 @@
+pkgbase = vscode-node-debug2
+	pkgdesc = A VS Code debug adapter that supports debugging Node via the Chrome Debugging Protocol.
+	pkgver = 1.43.0
+	pkgrel = 1
+	url = https://github.com/microsoft/vscode-node-debug2
+	arch = i686
+	arch = x86_64
+	license = MIT
+	source = https://github.com/microsoft/vscode-node-debug2/archive/refs/tags/v1.43.0.tar.gz
+	sha256sums = 3cb1440a381808a04c24b2a164de84e2d08ac5946f01b51ad0e52b4fd9f82cf0
+
+pkgname = vscode-node-debug2
