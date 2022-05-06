@@ -2,17 +2,17 @@
 # Maintainer: Daniel Milde <daniel@milde.cz>
 
 pkgbase='pypy-setuptools'
-pkgname=(pypy-setuptools pypy3-setuptools)
+pkgname=(pypy3-setuptools)
 _name=setuptools
-pkgver=40.7.1
+pkgver=62.1.0
 pkgrel=1
 epoch=1
 pkgdesc="Easily download, build, install, upgrade, and uninstall Python packages"
 arch=('any')
 license=('PSF')
 url="http://pypi.python.org/pypi/setuptools"
-source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.zip")
-sha512sums=('384d38afa56409f828cf26443271514feaf82b1d9d99a4a0bb4a9004f9b7a262a0d5ae48905e808381074e948988417e3f7e81a84dcd09359f9185a2305f8cac')
+source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
+sha512sums=('41f39b5aa22e908c123e8e04c11e505e23cd3aaaae72793e106015dc14b1a44ff3b17aa15ca3da34f34a4becc887ceea7f41932650e38d409f95d7227707d2e1')
 makedepends=('pypy3' 'pypy')
 
 prepare() {
