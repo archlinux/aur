@@ -1,6 +1,6 @@
 pkgbase = phocus-gtk-theme-git
 	pkgdesc = gtk theme based on the phocus colors
-	pkgver = r97.513ec38
+	pkgver = r192.945ad39
 	pkgrel = 1
 	url = https://github.com/phocus/gtk
 	arch = any
@@ -8,8 +8,7 @@ pkgbase = phocus-gtk-theme-git
 	makedepends = npm
 	conflicts = phocus-gtk-theme
 	replaces = phocus-gtk-theme
-	source = phocus-gtk-theme-git::git://github.com/phocus/gtk.git
+	source = phocus-gtk-theme-git::git+https://github.com/phocus/gtk.git
 	sha256sums = SKIP
 
 pkgname = phocus-gtk-theme-git
-

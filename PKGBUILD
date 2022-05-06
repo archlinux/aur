@@ -1,7 +1,7 @@
 # Maintainer: Philipp Schaffrath <aur at philipp dot schaffrath dot email>
 
 pkgname=phocus-gtk-theme-git
-pkgver=r97.513ec38
+pkgver=r192.945ad39
 pkgrel=1
 pkgdesc='gtk theme based on the phocus colors'
 url='https://github.com/phocus/gtk'
@@ -10,7 +10,7 @@ arch=('any')
 makedepends=('npm')
 conflicts=('phocus-gtk-theme')
 replaces=('phocus-gtk-theme')
-source=("$pkgname::git://github.com/phocus/gtk.git")
+source=("$pkgname::git+https://github.com/phocus/gtk.git")
 sha256sums=('SKIP')
 
 pkgver() {
