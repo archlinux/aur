@@ -60,12 +60,13 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=ffmpeg-obs
 pkgver=5.0
-pkgrel=7
+pkgrel=8
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('i686' 'x86_64' 'aarch64')
 url=https://ffmpeg.org/
 license=(GPL3)
 _aomver=3
+_libdav1dver=6
 _libristver=0.2.6
 _libvpxsover=7
 _libx264ver=164
@@ -85,7 +86,6 @@ depends=(
   libass.so
   libavc1394
   libbluray.so
-  libdav1d.so
   libdrm
   libfreetype.so
   libiec61883
@@ -126,6 +126,7 @@ depends=(
 if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
   depends+=(
     'aom'
+    'libdav1d.so'
     'libvpx.so'
     'libx264.so'
     'libx265.so'
@@ -134,6 +135,7 @@ if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
 else
   depends+=(
     "aom>=$_aomver"
+    "libdav1d.so>=$_libdav1dver"
     "libvpx.so>=$_libvpxsover"
     "libx264.so>=$_libx264ver"
     "libx265.so>=$_libx265ver"
