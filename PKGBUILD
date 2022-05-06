@@ -2,14 +2,14 @@
 
 pkgname=buildcache-bin
 pkgver=0.27.6
-pkgrel=1
+pkgrel=2
 pkgdesc="An advanced compiler accelerator"
 arch=('x86_64')
 url="https://github.com/mbitsnbites/buildcache"
 license=('zlib')
 depends=('gcc-libs' 'openssl')
 optdepends=('lua')
-provides=('buildcache')
+provides=("buildcache=$pkgver")
 conflicts=('buildcache')
 source=("LICENSE::https://raw.githubusercontent.com/mbitsnbites/buildcache/master/LICENSE")
 source_x86_64=("https://github.com/mbitsnbites/buildcache/releases/download/v$pkgver/buildcache-linux.tar.gz")
