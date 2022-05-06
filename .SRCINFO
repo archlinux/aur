@@ -1,14 +1,13 @@
 pkgbase = hponcfg
 	pkgdesc = RILOE II/iLo online configuration utility
-	pkgver = 5.5.0_0
+	pkgver = 5.6.0_0
 	pkgrel = 1
 	url = https://downloads.linux.hpe.com/SDR/downloads/mcp
 	arch = x86_64
 	groups = hpproliant
 	license = CUSTOM
 	depends = libxslt
-	source = https://downloads.linux.hpe.com/SDR/downloads/mcp/centos/8/x86_64/current/hponcfg-5.5.0-0.x86_64.rpm
-	sha256sums = e993841ed98a74bd3060b275a9b4f8449f38eaa0949c45254d29c41aa510d779
+	source = https://downloads.linux.hpe.com/SDR/downloads/mcp/centos/8/x86_64/current/hponcfg-5.6.0-0.x86_64.rpm
+	sha256sums = 1cb0d04aba5504a35b5925e262bc0a5a9d7827d3f34075b7f8e9444a19d55f32
 
 pkgname = hponcfg
-
