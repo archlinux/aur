@@ -31,8 +31,7 @@ package() {
     cp -r "${srcdir}/${_targzname}" "${pkgdir}/usr/lib/miraktest"
 
     # bin as symbolic link
-    ln -s "${pkgdir}/usr/lib/miraktest/miraktest" "${pkgdir}/usr/bin/miraktest"
-    chmod 755 "${pkgdir}/usr/bin/miraktest"
+    ln -s "/usr/lib/miraktest/miraktest" "${pkgdir}/usr/bin/miraktest"
 
     # desktop
     touch "${pkgdir}/usr/share/applications/miraktest.desktop"
