@@ -2,7 +2,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-rc
-pkgrel=1
+pkgrel=2
 _srcname=linux-5.17
 _major=5.17
 ### on initial release this is null otherwise it is the current stable subversion
@@ -36,6 +36,7 @@ source=(
   0005-tick-rcu-Stop-allowing-RCU_SOFTIRQ-in-idle.patch
   0006-lib-irq_poll-Declare-IRQ_POLL-softirq-vector-as-ksof.patch
   0007-NFSv4.1-provide-mount-option-to-toggle-trunking-disc.patch
+  0008-Revert-ASoC-Intel-sof_es8336-Add-a-quirk-for-Huawei-.patch::https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/5.17/revert-5.17-patches/0001-Revert-ASoC-Intel-sof_es8336-Add-a-quirk-for-Huawei-.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -54,7 +55,8 @@ b2sums=('16ae7c49d2d4ed0535b7643f0c5477e161716e42ab6e500f6a3c1bece9c8d262807fa5e
         '6d54cf6d55d036f15870fd0531dbab2d6dc84c47ac92240c991b76f8c441f283257d612c6ce41f60a190f87cec10c04b28fefba58656d6fced34fb8011e35aa5'
         'fbc9290ef523e85a292f9c369396229e708ccabb5785a4422bac5eb43a24e2be6a6dec7799b3639d911437b48b76c5f3d857d6d61ec944d50a88c0d7145cf3da'
         'cc2b7c3327d4050c3ce09b80b2a148ca8c31dc8ba11d2da39274b746ecf648fd3b902673c7a84ea611e85f9cc329d6f39b04e040acfd1c3c3ef3da1c2b6422a8'
-        '847d2bad98c5473aa4cc955618ffd84fabf805c6290fb7d4afd7c41a7dfb685ec22b1370ed5e31923bad4f1fb7ee435e588a55ab805cbeea5ac86dd33519fdb8')
+        '847d2bad98c5473aa4cc955618ffd84fabf805c6290fb7d4afd7c41a7dfb685ec22b1370ed5e31923bad4f1fb7ee435e588a55ab805cbeea5ac86dd33519fdb8'
+        '7cfc7e80ba1a6131ca0224292869cf40cdec6d3946aff3e33ab8f1fca48b9a2958c006b32df83ecd45c585e953bdd81cc9bd0863090ed7cb60689a9e09d49d70')
 
 
 export KBUILD_BUILD_HOST=archlinux
