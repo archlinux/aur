@@ -40,9 +40,10 @@ package() {
     install -Dm755 ssserver "${pkgdir}/usr/bin/ssserver-rust"
     install -Dm755 ssurl "${pkgdir}/usr/bin/ssurl-rust"
     install -Dm755 ssmanager "${pkgdir}/usr/bin/ssmanager-rust"
+
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+    install -Dm644 config.json "${pkgdir}/etc/shadowsocks/config_rust.json.example"
+    install -Dm644 config_ext.json "${pkgdir}/etc/shadowsocks/config_ext_rust.json.example"
     install -Dm644 shadowsocks-rust@.service "${pkgdir}/usr/lib/systemd/system/shadowsocks-rust@.service"
     install -Dm644 shadowsocks-rust-server@.service "${pkgdir}/usr/lib/systemd/system/shadowsocks-rust-server@.service"
-    install -Dm644 config_ext.json "${pkgdir}/etc/shadowsocks/config_ext_rust.json.example"
-    install -Dm644 config.json "${pkgdir}/etc/shadowsocks/config_rust.json.example"
 }
