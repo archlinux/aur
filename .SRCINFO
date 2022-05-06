@@ -6,6 +6,7 @@ pkgbase = nginx-mainline-mod-brotli
 	url = https://github.com/google/ngx_brotli
 	arch = i686
 	arch = x86_64
+	arch = aarch64
 	license = CUSTOM
 	makedepends = nginx-mainline-src
 	depends = nginx-mainline
@@ -14,4 +15,3 @@ pkgbase = nginx-mainline-mod-brotli
 	sha256sums = c85cdcfd76703c95aa4204ee4c2e619aa5b075cac18f428202f65552104add3b
 
 pkgname = nginx-mainline-mod-brotli
-

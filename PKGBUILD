@@ -8,7 +8,7 @@ pkgrel=5
 _modname="ngx_${pkgname#nginx-mainline-mod-}"
 
 pkgdesc="Brotli compression filter module for mainline nginx"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 depends=('nginx-mainline' 'brotli')
 makedepends=('nginx-mainline-src')
 url="https://github.com/google/ngx_brotli"
