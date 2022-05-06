@@ -2,7 +2,7 @@
 # Maintainer: Alexander Konarev (avkonarev) <AVKonarev@gmail.com>
 
 pkgname=aksusbd-bin
-pkgver=8.41.1
+pkgver=8.41
 pkgrel=1
 pkgdesc="Sentinel AKSUSB daemon supporting Sentinel HASP, HASP HL, HASP4 and Hardlock keys."
 arch=('i686' 'x86_64')
@@ -16,7 +16,7 @@ source=(
         "0001-patch.patch"
         "download.py")
 sha256sums=('6fcb6c4fcba1d01c1b3e68258e95297c323b2cbe8ee75c0a14ac0e9006926312'
-            '91cb42b81b77b21f29552da1affa3e4d801fef5cbf2910c96f5a728cded952b3')
+            '955d038821b7deee240f98713b39d6aa8aae12b86b8a4cb8d2005e8e22b9cd79')
 makedepends=('libarchive'
             'python'
             'python-pip'
@@ -30,7 +30,8 @@ _nver=""
 _nrel=""
 
 pkgver() {
-  echo $_nver.$_nrel
+  #echo $_nver.$_nrel
+  echo $_nver  
 }
 
 prepare(){
