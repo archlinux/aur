@@ -3,7 +3,7 @@
 pkgname=('ytsubconverter-git')
 _gitname=('YTSubConverter')
 pkgver=1.6.2.r6.gff65b3f
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool for creating styled YouTube subtitles (srv3) and converting them back to ass"
 url="https://github.com/arcusmaximus/YTSubConverter"
 license=('MIT')
@@ -15,10 +15,7 @@ b2sums=('SKIP'
 	'25a3b36f5e2e3743456726714f7f9adac2f3174c623e52f6827b26623e2380db7b2ccd3887782f3ee92bdc0e7493ab5738d06e134a2ab7afbc3e6a547ebdfe0c')
 arch=('any')
 depends=('mono')
-# extra/mono can't build C# projects as of 2022-04-14. See FS#71007.
-# Not sure what version of mono has the fix, but the latest stable release doesn't.
-# The very latest version from git works so we'll depend on a git version of mono.
-makedepends=('git' 'mono-git' 'mono-msbuild' 'nuget')
+makedepends=('git' 'mono-msbuild' 'nuget')
 optdepends=('ttf-ms-fonts: to provide Comic Sans MS, Courier New, Lucida Console, and Times New Roman which are used in YouTube subtitles and reverse-converted YouTube subtitles'
             'ttf-carrois-gothic-sc: to provide Carrois Gothic SC which is used in YouTube subtitles and reverse-converted YouTube subtitles'
             'ttf-monotype-corsiva: to provide Monotype Corsiva which is used in YouTube subtitles and reverse-converted YouTube subtitles'

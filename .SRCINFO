@@ -1,12 +1,11 @@
 pkgbase = ytsubconverter-git
 	pkgdesc = A tool for creating styled YouTube subtitles (srv3) and converting them back to ass
 	pkgver = 1.6.2.r6.gff65b3f
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/arcusmaximus/YTSubConverter
 	arch = any
 	license = MIT
 	makedepends = git
-	makedepends = mono-git
 	makedepends = mono-msbuild
 	makedepends = nuget
 	depends = mono
