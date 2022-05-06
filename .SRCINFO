@@ -1,13 +1,14 @@
 pkgbase = python-tika
 	pkgdesc = Apache Tika Python library
-	pkgver = 1.16
+	pkgver = 1.24
 	pkgrel = 1
 	url = http://github.com/chrismattmann/tika-python
 	arch = any
 	license = Apache
 	makedepends = python-setuptools
 	makedepends = python2-setuptools
-	source = git+https://github.com/chrismattmann/tika-python#tag=1.16
+	makedepends = git
+	source = git+https://github.com/chrismattmann/tika-python#tag=1.24
 	sha256sums = SKIP
 
 pkgname = python-tika
@@ -15,4 +16,3 @@ pkgname = python-tika
 
 pkgname = python2-tika
 	depends = python2
-

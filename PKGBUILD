@@ -1,13 +1,14 @@
-# Maintainer: Karol Babioch <karol@babioch.de>
+# Maintainer: Khorne <khorne AT khorne DOT me>
+# Contributor: Karol Babioch <karol@babioch.de>
 
 pkgname=('python-tika' 'python2-tika')
-pkgver=1.16
+pkgver=1.24
 pkgrel=1
 pkgdesc="Apache Tika Python library"
 arch=('any')
 url="http://github.com/chrismattmann/tika-python"
 license=('Apache')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools' 'python2-setuptools' 'git')
 source=("git+https://github.com/chrismattmann/tika-python#tag=$pkgver")
 sha256sums=('SKIP')
 
