@@ -44,6 +44,7 @@ main() {
   echo "Committing and pushing to GitHub"
   git add .
   git commit -m "chore: updating version $CODE_SERVER_VERSION_TO_UPDATE"
+  git push
   echo "Action requried: make sure to push to aur: git push aur"
 }
 
