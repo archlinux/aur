@@ -6,14 +6,14 @@
 
 pkgname=latin-words
 pkgver=1.97FC
-pkgrel=6
+pkgrel=7
 pkgdesc="William Whitaker's Latin-English-Latin intelligent dictionary and Latin text analyser."
 arch=("i686" "x86_64")
 url="http://archives.nd.edu/whitaker/words.htm"
 license=('custom')
 depends=('bash')
 makedepends=('gcc-ada')
-source=("$pkgname-$pkgver.zip::http://archives.nd.edu/whitaker/wordsall.zip")
+source=("$pkgname-$pkgver.zip::http://archives.nd.edu/whitaker/old/wordsall.zip")
 sha256sums=('592134d7602879e0937b6f977a6f63aa1d14b813edaf6de04a1d8596a9a2c18e')
 
 # Alternative source:
