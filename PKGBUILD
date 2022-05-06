@@ -3,8 +3,8 @@
 
 pkgname='perl-search-elasticsearch'
 _pkgname='Search-Elasticsearch'
-pkgver='6.00'
-pkgrel='2'
+pkgver='7.715'
+pkgrel='1'
 pkgdesc="The official client for Elasticsearch"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -13,9 +13,9 @@ depends=('perl-any-uri-escape' 'perl-devel-globaldestruction' 'perl-http-message
 makedepends=()
 checkdepends=('perl-test-deep' 'perl-test-exception' 'perl-test-sharedfork')
 url='https://metacpan.org/release/Search-Elasticsearch'
-source=("http://search.cpan.org/CPAN/authors/id/D/DR/DRTECH/$_pkgname-$pkgver.tar.gz")
-md5sums=('0bce60edd54161510e0578d65495b482')
-sha512sums=('c25e31523f63915ac56d953ef601537f2e6a76fb82d20eda837950bf4043de1e48a16758c5c1391383e17784fd740d01a522271c34757500ff47de152552f621')
+source=("https://cpan.metacpan.org/authors/id/E/EZ/EZIMUEL/$_pkgname-$pkgver.tar.gz")
+md5sums=('7cd320092379b1e49de67483690cf15e')
+sha512sums=('82a53115ef9f24e935b8a105e51b32a1b21ccd9ae0f491685b51c1c425de99c01cf538a937479053ce9a55f0653b8640281e98eefb3d2db279f5b41a801ca03b')
 _distdir="$_pkgname-$pkgver"
 
 build() {
