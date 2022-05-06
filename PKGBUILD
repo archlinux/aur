@@ -1,7 +1,7 @@
 # Maintainer: Asger Hautop Drewsen <asgerdrewsen@gmail.com>
 
 pkgname=pdfbox-preflight
-pkgver=2.0.25
+pkgver=2.0.26
 pkgrel=1
 pkgdesc="Java tool that implements a parser compliant with PDF/A-1"
 arch=(any)
