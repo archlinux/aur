@@ -2,8 +2,8 @@
 # Contributor: Iacopo Isimbaldi <isiachi@rhye.it>
 
 pkgname=ffmpeg-full
-pkgver=5.0
-pkgrel=4
+pkgver=5.0.1
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (all possible features including libfdk-aac)'
 arch=('x86_64')
 url='https://www.ffmpeg.org/'
@@ -21,7 +21,7 @@ depends=(
         'v4l-utils' 'vid.stab' 'vmaf' 'libvorbis' 'libvpx' 'libwebp' 'x264' 'x265'
         'libxcb' 'xvidcore' 'libxml2' 'zimg' 'zeromq' 'zvbi' 'lv2' 'lilv' 'xz'
         'libmysofa' 'openal' 'ocl-icd' 'libgl' 'sndio' 'sdl2' 'vapoursynth'
-        'vulkan-icd-loader' 'libxv' 'libx11'  'libxext' 'zlib' 'cuda'
+        'vulkan-icd-loader' 'libxv' 'libx11' 'libxext' 'zlib' 'cuda'
         'libomxil-bellagio' 'libdrm' 'intel-media-sdk' 'libva' 'libvdpau'
     # AUR:
         'chromaprint-fftw' 'davs2' 'flite1' 'libklvanc-git' 'openh264'
@@ -51,7 +51,7 @@ source=("https://ffmpeg.org/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         '070-ffmpeg-libsvtav1-0.9.0-part1.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/c33b4048859a191acf9b6aa22acaea248a4eb18f'
         '080-ffmpeg-libsvtav1-0.9.0-part2.patch'::'https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/1dddb930aaf0cadaa19f86e81225c9c352745262'
         'LICENSE')
-sha256sums=('51e919f7d205062c0fd4fae6243a84850391115104ccf1efc451733bc0ac7298'
+sha256sums=('ef2efae259ce80a240de48ec85ecb062cecca26e4352ffb3fda562c21a93007b'
             'SKIP'
             'efd01f96c1f48ea599881dfc836d20ba18c758a3588d616115546912aebeb77f'
             '9565b3eed177ce5d109876f2a56f3781a2c7fae41e32601bf6ec805ea199d21b'
