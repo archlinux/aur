@@ -1,12 +1,12 @@
 pkgbase = man-pages-samba-ja
 	pkgdesc = Japanese man pages for the Samba4
-	pkgver = 4.15.0
+	pkgver = 4.16.0
 	pkgrel = 1
 	url = http://wiki.samba.gr.jp/
 	arch = any
 	license = GPL3
 	license = custom
-	source = https://ja.osdn.net/dl/samba-jp/samba-ja-docs-manpages-4.15.0-1.tar.gz
-	md5sums = f989653b2b9ab29a74411dcee38f2eec
+	source = https://ja.osdn.net/dl/samba-jp/samba-ja-docs-manpages-4.16.0.tar.gz
+	md5sums = 3d8a93dcb4cacd801455dc60e4867c4a
 
 pkgname = man-pages-samba-ja
