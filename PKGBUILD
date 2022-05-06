@@ -1,36 +1,45 @@
 # Maintainer: Vyacheslav Konovalov <🦀vk@protonmail.com>
 
 pkgname=nym
-pkgver=0.12.0
+pkgver=1.0.1
 pkgrel=1
-pkgdesc='The next generation of privacy infrastructure (Nym mixnet)'
+pkgdesc='The next generation of privacy infrastructure (Nym Mixnet)'
 arch=('x86_64')
 url='https://nymtech.net/'
-license=('Apache' 'MIT' 'CC0')
-depends=(openssl)
-makedepends=(git cargo)
+license=('Apache-2.0' 'MIT' 'CC0')
+depends=('openssl')
+makedepends=('git' 'cargo')
 source=(
-    # Build process requires git repo
-    "git+https://github.com/nymtech/nym#tag=v$pkgver"
+    # Can't fetch sources here because of error
+    # > the reference 'HEAD' cannot be peeled ...
+    # from clients/native/build.rs:7:31
+    # "git+https://github.com/nymtech/nym#tag=v$pkgver"
     'nym.sysusers'
     'nym.tmpfiles'
     'nym-mixnode@.service'
     'nym-gateway@.service'
 )
 sha512sums=(
-    'SKIP'
     '3646ee43df7904b959f50fcd191d1dfbdf8ed36f6d2cbe420669f4ffcc2886f0d30d5307a073462271ad40cbbf2b930ddd187852926271731beb57690a0abc81'
     '459e9fa6bc24675e4d7d2df448ea60ecb9ed0170f244a9659fb2811589bb6784b307475a4ee4d92c143ac3163446e603d60157b0f1f060d7aa0de96c51abc5d2'
-    '0b7848cf0f769f2bae114999785d9f9618dffb69ae615cb19167475eaddc5bf936f28e78eb0c8d2a67fcaf3d2664de864d35ffd0a317d943dbfa086c8bfa35aa'
-    '5e493343bbbb7728913a60b4bf6a6e3d45392ce027035d9e2e2fba6dc2c9d79cb640409bd11828b0261bda80cc51700b0d968cd8323c53b66fc3e1c9cc919b2f'
+    '7aec10201cf8d51eaf9078911db44a3ec1206f26d45dd4cfbf6213c890c6be295d03707692c33de21dc5e876bfd6c6c9daf5225c5ed55b017085506e041f1b29'
+    '9a1d9939b7fa0e4fb50e24c917565081be017466d65bf008ef8598076f2ec450b08bf25dee1d853187a8d488e6a0fa91769519d740a8e532cdca0692fb2e42c8'
 )
 install='nym.install'
 
+prepare() {
+    git clone https://github.com/nymtech/nym.git -b v$pkgver
+    cd nym
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
+
 build() {
     cd nym
-    # Temporary remove --all-features flag because of error
-    # https://t.me/nymchan_help_chat/42601
-    cargo build --release --locked --target-dir=target
+
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+
+    cargo build --frozen --release
 }
 
 package() {
@@ -40,7 +49,7 @@ package() {
 
     cd nym
     install -Dm755 \
-        target/release/nym-{client,gateway,mixnode,network-requester,socks5-client} \
+        target/release/nym-{client,gateway,mixnode,network-requester,socks5-client,validator-api} \
         -t "$pkgdir/usr/bin"
     install -Dm644 LICENSES/*.txt -t "$pkgdir/usr/share/licenses/nym"
 }
