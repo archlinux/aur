@@ -1,13 +1,18 @@
 pkgbase = python-takethetime
-	pkgdesc = A time-taking library for Python.
+	pkgdesc = Time-taking library for Python.
 	pkgver = 0.3.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/ErikBjare/TakeTheTime
 	arch = any
-	license = custom:
+	license = MIT
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python
-	source = https://files.pythonhosted.org/packages/source/T/TakeTheTime/TakeTheTime-0.3.1.tar.gz
-	md5sums = ef7414c5776087754abfe073cf6e6430
+	source = python-takethetime-0.3.1.tar.gz::https://files.pythonhosted.org/packages/source/T/TakeTheTime/TakeTheTime-0.3.1.tar.gz
+	source = LICENSE
+	sha256sums = dbe30453a1b596a38f9e2e3fa8e1adc5af2dbf646ca0837ad5c2059a16fe2ff9
+	sha256sums = d0d27338849d3a12a8d8a8fe790250025837703e6ca597ee84ffbcf740105c43
 
 pkgname = python-takethetime
