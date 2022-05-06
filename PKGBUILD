@@ -1,8 +1,8 @@
 # Contributor: ordoban <dirk.langer@vvovgonik.de>
 
 pkgname='perl-http-cookiemonster'
-pkgver='0.09'
-pkgrel='2'
+pkgver='0.11'
+pkgrel='1'
 pkgdesc="Easy read/write access to your jar of HTTP::Cookies"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -17,10 +17,10 @@ checkdepends=(
   'perl-safe-isa'
 )
 url='https://metacpan.org/pod/HTTP::CookieMonster'
-source=('https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTTP-CookieMonster-0.09.tar.gz')
-md5sums=('0fb7bc98f77a9847fcdbfb692fdaea6a')
-sha512sums=('aa55750c502ab1a30615987adca7fa65c3288ee5d19cab82363342627def54b1def405aab8b04ffde998744f7b71798802351d2e4fcc51c844ee95df763e9e4f')
-_distdir="HTTP-CookieMonster-0.09"
+source=("https://cpan.metacpan.org/authors/id/O/OA/OALDERS/HTTP-CookieMonster-$pkgver.tar.gz")
+md5sums=('f327b6f0e243d8e8181a5c30b6fd428c')
+sha512sums=('d6cbd96e9847f2bb3fe7351e5673b2d5bc24814fd1c2e46ddafd0f7e63082bdf08bf90ca243b32b92b22643da5e9f4ef1c1f51ebe6638f0b581b3bbade212fb7')
+_distdir="HTTP-CookieMonster-$pkgver"
 
 build() {
    export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
