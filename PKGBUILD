@@ -1,11 +1,11 @@
 # Maintainer: Azad Ahmadi <azadahmadi@mailo.com>
 pkgname=gscal
 pkgver=0.2.0
-pkgrel=0
+pkgrel=1
 pkgdesc="GTK Simple Calendar"
 arch=(any)
 url="https://github.com/Akmadan23/gscal"
-license=(GPLv3)
+license=("GPL-3")
 depends=(python-gobject python-toml)
 makedepends=(python-build python-setuptools python-installer python-wheel)
 provides=(gscal)
