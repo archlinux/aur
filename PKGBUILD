@@ -1,12 +1,11 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
-# Contributor: Gustavo Castro < gustawho [ at ] gmail [ dot ] com >
 
 pkgname=corrosion
-pkgver=0.1.0
-_commit=9e42e832d1ce207d6669a4ff898d705fdc3c98c2
+pkgver=0.2.0
+_commit=f617a7f6a85f95bc0d4cc746eee3605b08fd6194
 pkgrel=1
-pkgdesc="Integrate Rust into existing CMake projects"
-arch=('x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
+pkgdesc="Tool for integrating Rust into an existing CMake project."
+arch=('x86_64')
 url="https://github.com/corrosion-rs/corrosion"
 license=('MIT')
 depends=('rust' 'cmake')
@@ -15,11 +14,11 @@ source=("git+${url}.git#commit=$_commit")
 sha256sums=('SKIP')
 
 build() {
-    cmake -DCMAKE_INSTALL_PREFIX=/usr \
-        -DCMAKE_BUILD_TYPE=Release \
-        -DCORROSION_BUILD_TESTS=OFF \
+    cmake -S "$pkgname" \
         -B build \
-        -S "$pkgname"
+        -DCORROSION_BUILD_TESTS=OFF \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_BUILD_TYPE=Release
 
     cmake --build build --config Release
 }
