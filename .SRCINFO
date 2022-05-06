@@ -1,6 +1,6 @@
 pkgbase = fluffychat-bin
 	pkgdesc = Chat with your friends
-	pkgver = 1.3.1
+	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://fluffychat.im/
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = fluffychat-bin
 	optdepends = libolm: E2E Encryption support
 	provides = fluffychat
 	conflicts = fluffychat
-	source_x86_64 = fluffychat-v1.3.1_x86_64.tar.zst::https://gap.cdn.entr0py.cloud/garionion/fluffychat/releases/download/tag:v1.3.1/fluffychat-linux-x86.tar.zst
+	source_x86_64 = fluffychat-v1.4.0_x86_64.tar.zst::https://gap.cdn.entr0py.cloud/garionion/fluffychat/releases/download/tag:v1.4.0/fluffychat-linux-x86.tar.zst
 	sha256sums_x86_64 = 56c0a5ec299642a0ae809b482adf7af7feaca9153703879466c3e8170376e6fe
 
 pkgname = fluffychat-bin
