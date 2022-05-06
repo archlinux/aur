@@ -3,7 +3,7 @@
 
 pkgname=aksusbd-bin
 pkgver=8.41
-pkgrel=1
+pkgrel=2
 pkgdesc="Sentinel AKSUSB daemon supporting Sentinel HASP, HASP HL, HASP4 and Hardlock keys."
 arch=('i686' 'x86_64')
 url="https://supportportal.thalesgroup.com"
