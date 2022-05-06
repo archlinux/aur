@@ -1,0 +1,15 @@
+pkgbase = ppac-git
+	pkgdesc = A package installer/updater helper.
+	pkgver = 0.1
+	pkgrel = 1
+	url = https://github.com/raycekar/ppac.git#branch=aurRelease
+	arch = any
+	license = GPL3
+	makedepends = gcc
+	depends = pacman
+	optdepends = yay: replacment for pacman
+	optdepends = paru: replacment for pacman
+	source = git+https://github.com/raycekar/ppac.git#branch=aurRelease
+	md5sums = SKIP
+
+pkgname = ppac-git
