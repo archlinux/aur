@@ -1,0 +1,11 @@
+post_upgrade() {
+    echo 
+    echo "If you don't need the English documentation, you can remove '/opt/Mathmatica/Documentation/English' to save disk space."
+    echo 
+}
+
+post_install() {
+    echo 
+    echo "If you don't need the English documentation, you can remove '/opt/Mathmatica/Documentation/English' to save disk space."
+    echo 
+}
