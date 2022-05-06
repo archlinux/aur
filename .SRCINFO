@@ -1,7 +1,7 @@
 pkgbase = gimp-brush-max-512
 	pkgdesc = Gimp with easy-to-handle tool sizes
 	pkgver = 2.10.30
-	pkgrel = 2
+	pkgrel = 3
 	url = https://www.gimp.org/
 	install = gimp.install
 	arch = x86_64
