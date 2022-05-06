@@ -2,5 +2,6 @@
 /src
 /pkg
 *.deb
+*.log
 *.pkg.*
 *.tar.*
