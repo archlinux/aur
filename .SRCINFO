@@ -1,6 +1,6 @@
 pkgbase = treesheets-git
 	pkgdesc = The ultimate replacement for spreadsheets, mind mappers, outliners, PIMs, text editors and small databases
-	pkgver = r297.7c4ad33
+	pkgver = r341.ae6506a
 	pkgrel = 1
 	url = http://treesheets.com
 	arch = i686
@@ -12,10 +12,9 @@ pkgbase = treesheets-git
 	makedepends = cmake
 	makedepends = git
 	depends = wxgtk2
-	source = git://github.com/aardappel/treesheets.git
+	source = git+https://github.com/aardappel/treesheets.git
 	source = myframe.patch
 	sha512sums = SKIP
 	sha512sums = 7ea8b6947c334adebba774bcdd4db27670206a216de0c023c2b69aa3ad3b621165733a36f03f2e23bab1e7721982a24c29c4446754ba79c11c5735961ad04816
 
 pkgname = treesheets-git
-
