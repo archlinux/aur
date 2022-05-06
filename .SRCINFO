@@ -33,7 +33,7 @@ pkgbase = mutter-dynamic-buffering
 	source = mutter-dynamic-buffering::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=94bd385bf3ece2a746d8755049fc1fa5c8c0a808
 	source = mr1441.patch
 	sha256sums = SKIP
-	sha256sums = fc1963c134b4548950241d175a7389ec5f1a0b6a86cefb6d0918d958d66252a2
+	sha256sums = 0eba7abe0eb036a05809a961f9e63de5e1611c6e32ffb55170b8e2aa190009c1
 
 pkgname = mutter-dynamic-buffering
 	groups = gnome

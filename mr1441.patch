@@ -1,7 +1,7 @@
 Author: Daniel van Vugt <daniel.van.vugt@canonical.com>
 Source: https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/1441
-Commit: 163776ae49fa9af98405d8225be6e23473d550dc
-Rebase: Fri Mar 11 14:09:17 2022 +0800
+Commit: bf7030b8b898e621cd3ef535d3daae815dc98134
+Rebase: Fri May 6 16:34:46 2022 +0800
 
 diff --git a/clutter/clutter/clutter-frame-clock.c b/clutter/clutter/clutter-frame-clock.c
 index 6fa2b2588..7a6444ec4 100644
@@ -426,10 +426,10 @@ index d3608e81c..06c5f7f28 100644
 +
  #endif /* CLUTTER_FRAME_H */
 diff --git a/clutter/clutter/clutter-stage-view.c b/clutter/clutter/clutter-stage-view.c
-index 8a82de71e..45d009352 100644
+index 2e47237f0..8f5e896d0 100644
 --- a/clutter/clutter/clutter-stage-view.c
 +++ b/clutter/clutter/clutter-stage-view.c
-@@ -1190,8 +1190,9 @@ handle_frame_clock_frame (ClutterFrameClock *frame_clock,
+@@ -1191,8 +1191,9 @@ handle_frame_clock_frame (ClutterFrameClock *frame_clock,
  
        _clutter_stage_window_redraw_view (stage_window, view, &frame);
  
@@ -486,35 +486,24 @@ index c45aaf852..683f4ff6c 100644
                                          stage_view,
                                          scanout,
 diff --git a/src/backends/native/meta-crtc-kms.c b/src/backends/native/meta-crtc-kms.c
-index 584a780ba..773b540b4 100644
+index ad72dba64..24e9b0a6a 100644
 --- a/src/backends/native/meta-crtc-kms.c
 +++ b/src/backends/native/meta-crtc-kms.c
-@@ -211,6 +211,7 @@ meta_crtc_kms_maybe_set_gamma (MetaCrtcKms   *crtc_kms,
-   MetaMonitorManagerNative *monitor_manager_native =
-     META_MONITOR_MANAGER_NATIVE (monitor_manager);
-   MetaKms *kms = meta_kms_device_get_kms (kms_device);
-+  MetaKmsCrtc *kms_crtc = meta_crtc_kms_get_kms_crtc (crtc_kms);
-   MetaKmsUpdate *kms_update;
-   MetaKmsCrtcGamma *gamma;
- 
-@@ -222,9 +223,9 @@ meta_crtc_kms_maybe_set_gamma (MetaCrtcKms   *crtc_kms,
+@@ -226,7 +226,7 @@ meta_crtc_kms_maybe_set_gamma (MetaCrtcKms   *crtc_kms,
    if (!gamma)
      return;
  
 -  kms_update = meta_kms_ensure_pending_update (kms, kms_device);
 +  kms_update = meta_kms_ensure_pending_update_for_crtc (kms, kms_crtc);
    meta_kms_update_set_crtc_gamma (kms_update,
--                                  meta_crtc_kms_get_kms_crtc (crtc_kms),
-+                                  kms_crtc,
+                                   kms_crtc,
                                    gamma->size,
-                                   gamma->red,
-                                   gamma->green,
 diff --git a/src/backends/native/meta-cursor-renderer-native.c b/src/backends/native/meta-cursor-renderer-native.c
-index df5862c4c..606fcad97 100644
+index 96c54baf0..f80f31a93 100644
 --- a/src/backends/native/meta-cursor-renderer-native.c
 +++ b/src/backends/native/meta-cursor-renderer-native.c
-@@ -64,19 +64,6 @@
- #define DRM_CAP_CURSOR_HEIGHT 0x9
+@@ -58,19 +58,6 @@
+ #include "wayland/meta-wayland-buffer.h"
  #endif
  
 -/* When animating a cursor, we usually call drmModeSetCursor2 once per frame.
@@ -533,7 +522,7 @@ index df5862c4c..606fcad97 100644
  static GQuark quark_cursor_sprite = 0;
  
  typedef struct _CrtcCursorData
-@@ -110,19 +97,10 @@ typedef struct _MetaCursorRendererNativeGpuData
+@@ -104,19 +91,10 @@ typedef struct _MetaCursorRendererNativeGpuData
    uint64_t cursor_height;
  } MetaCursorRendererNativeGpuData;
  
@@ -554,7 +543,7 @@ index df5862c4c..606fcad97 100644
  } MetaCursorNativeGpuState;
  
  typedef struct _MetaCursorNativePrivate
-@@ -199,44 +177,17 @@ meta_cursor_renderer_native_finalize (GObject *object)
+@@ -197,44 +175,17 @@ meta_cursor_renderer_native_finalize (GObject *object)
    G_OBJECT_CLASS (meta_cursor_renderer_native_parent_class)->finalize (object);
  }
  
@@ -603,7 +592,7 @@ index df5862c4c..606fcad97 100644
  }
  
  static void
-@@ -311,10 +262,7 @@ assign_cursor_plane (MetaCursorRendererNative *native,
+@@ -309,10 +260,7 @@ assign_cursor_plane (MetaCursorRendererNative *native,
    MetaKmsUpdate *kms_update;
    MetaKmsPlaneAssignment *plane_assignment;
  
@@ -615,7 +604,7 @@ index df5862c4c..606fcad97 100644
  
    kms_crtc = meta_crtc_kms_get_kms_crtc (crtc_kms);
    kms_device = meta_kms_crtc_get_device (kms_crtc);
-@@ -343,8 +291,8 @@ assign_cursor_plane (MetaCursorRendererNative *native,
+@@ -341,8 +289,8 @@ assign_cursor_plane (MetaCursorRendererNative *native,
      flags |= META_KMS_ASSIGN_PLANE_FLAG_FB_UNCHANGED;
  
    kms_update =
@@ -626,7 +615,7 @@ index df5862c4c..606fcad97 100644
    plane_assignment = meta_kms_update_assign_plane (kms_update,
                                                     kms_crtc,
                                                     cursor_plane,
-@@ -365,13 +313,6 @@ assign_cursor_plane (MetaCursorRendererNative *native,
+@@ -363,13 +311,6 @@ assign_cursor_plane (MetaCursorRendererNative *native,
                                         native);
  
    crtc_cursor_data->buffer = buffer;
@@ -640,7 +629,7 @@ index df5862c4c..606fcad97 100644
  }
  
  static float
-@@ -499,7 +440,7 @@ unset_crtc_cursor (MetaCursorRendererNative *native,
+@@ -497,7 +438,7 @@ unset_crtc_cursor (MetaCursorRendererNative *native,
        MetaKms *kms = meta_kms_device_get_kms (kms_device);
        MetaKmsUpdate *kms_update;
  
@@ -649,7 +638,7 @@ index df5862c4c..606fcad97 100644
        meta_kms_update_unassign_plane (kms_update, kms_crtc, cursor_plane);
      }
  
-@@ -599,19 +540,7 @@ has_valid_cursor_sprite_buffer (MetaCursorSprite *cursor_sprite,
+@@ -597,19 +538,7 @@ has_valid_cursor_sprite_buffer (MetaCursorSprite *cursor_sprite,
    if (!cursor_gpu_state)
      return FALSE;
  
@@ -705,21 +694,13 @@ index df5862c4c..606fcad97 100644
  }
  
  static void
-@@ -1306,8 +1226,8 @@ load_cursor_sprite_gbm_buffer_for_gpu (MetaCursorRendererNative *native,
-           return;
-         }
- 
--      set_pending_cursor_sprite_buffer (cursor_sprite, gpu_kms,
--                                        META_DRM_BUFFER (buffer_gbm));
-+      set_cursor_sprite_buffer (cursor_sprite, gpu_kms,
-+                                META_DRM_BUFFER (buffer_gbm));
+@@ -1404,35 +1324,7 @@ load_cursor_sprite_gbm_buffer_for_gpu (MetaCursorRendererNative *native,
+       return;
      }
-   else
-     {
-@@ -1315,34 +1235,6 @@ load_cursor_sprite_gbm_buffer_for_gpu (MetaCursorRendererNative *native,
-     }
- }
  
+-  set_pending_cursor_sprite_buffer (cursor_sprite, gpu_kms, buffer);
+-}
+-
 -static gboolean
 -is_cursor_hw_state_valid (MetaCursorSprite *cursor_sprite,
 -                          MetaGpuKms       *gpu_kms)
@@ -746,12 +727,11 @@ index df5862c4c..606fcad97 100644
 -
 -  g_assert_not_reached ();
 -  return FALSE;
--}
--
++  set_cursor_sprite_buffer (cursor_sprite, gpu_kms, buffer);
+ }
+ 
  static gboolean
- is_cursor_scale_and_transform_valid (MetaCursorRenderer *renderer,
-                                      MetaCursorSprite   *cursor_sprite)
-@@ -1507,7 +1399,7 @@ realize_cursor_sprite_from_wl_buffer_for_gpu (MetaCursorRenderer      *renderer,
+@@ -1599,7 +1491,7 @@ realize_cursor_sprite_from_wl_buffer_for_gpu (MetaCursorRenderer      *renderer,
    if (!cursor_renderer_gpu_data || cursor_renderer_gpu_data->hw_cursor_broken)
      return;
  
@@ -760,7 +740,7 @@ index df5862c4c..606fcad97 100644
        is_cursor_scale_and_transform_valid (renderer, cursor_sprite))
      return;
  
-@@ -1649,8 +1541,8 @@ realize_cursor_sprite_from_wl_buffer_for_gpu (MetaCursorRenderer      *renderer,
+@@ -1744,8 +1636,8 @@ realize_cursor_sprite_from_wl_buffer_for_gpu (MetaCursorRenderer      *renderer,
            return;
          }
  
@@ -771,7 +751,7 @@ index df5862c4c..606fcad97 100644
      }
  }
  #endif
-@@ -1674,7 +1566,7 @@ realize_cursor_sprite_from_xcursor_for_gpu (MetaCursorRenderer      *renderer,
+@@ -1769,7 +1661,7 @@ realize_cursor_sprite_from_xcursor_for_gpu (MetaCursorRenderer      *renderer,
    if (!cursor_renderer_gpu_data || cursor_renderer_gpu_data->hw_cursor_broken)
      return;
  
@@ -781,7 +761,7 @@ index df5862c4c..606fcad97 100644
      return;
  
 diff --git a/src/backends/native/meta-kms-crtc.c b/src/backends/native/meta-kms-crtc.c
-index 685a3737c..45c7eb78e 100644
+index 8c2f8d783..f5e7d28d9 100644
 --- a/src/backends/native/meta-kms-crtc.c
 +++ b/src/backends/native/meta-kms-crtc.c
 @@ -32,6 +32,12 @@ typedef struct _MetaKmsCrtcPropTable
@@ -806,7 +786,7 @@ index 685a3737c..45c7eb78e 100644
  };
  
  G_DEFINE_TYPE (MetaKmsCrtc, meta_kms_crtc, G_TYPE_OBJECT)
-@@ -441,20 +449,91 @@ meta_kms_crtc_new (MetaKmsImplDevice  *impl_device,
+@@ -460,20 +468,91 @@ meta_kms_crtc_new (MetaKmsImplDevice  *impl_device,
    return crtc;
  }
  
@@ -898,7 +878,7 @@ index 685a3737c..45c7eb78e 100644
  }
  
  static void
-@@ -462,5 +541,6 @@ meta_kms_crtc_class_init (MetaKmsCrtcClass *klass)
+@@ -481,5 +560,6 @@ meta_kms_crtc_class_init (MetaKmsCrtcClass *klass)
  {
    GObjectClass *object_class = G_OBJECT_CLASS (klass);
  
@@ -906,7 +886,7 @@ index 685a3737c..45c7eb78e 100644
    object_class->finalize = meta_kms_crtc_finalize;
  }
 diff --git a/src/backends/native/meta-kms-crtc.h b/src/backends/native/meta-kms-crtc.h
-index 218bec9a1..29fdfcb5d 100644
+index 54801dd96..deafeb61e 100644
 --- a/src/backends/native/meta-kms-crtc.h
 +++ b/src/backends/native/meta-kms-crtc.h
 @@ -25,6 +25,7 @@
@@ -917,7 +897,7 @@ index 218bec9a1..29fdfcb5d 100644
  #include "core/util-private.h"
  #include "meta/boxes.h"
  
-@@ -82,4 +83,12 @@ MetaKmsCrtcGamma * meta_kms_crtc_gamma_new (MetaKmsCrtc    *crtc,
+@@ -84,4 +85,12 @@ MetaKmsCrtcGamma * meta_kms_crtc_gamma_new (MetaKmsCrtc    *crtc,
                                              const uint16_t *green,
                                              const uint16_t *blue);
  
@@ -965,7 +945,7 @@ index 73dd8e697..787d05acd 100644
                          &error))
      goto err;
 diff --git a/src/backends/native/meta-kms-impl-device-simple.c b/src/backends/native/meta-kms-impl-device-simple.c
-index 882cd97cc..8aa78343a 100644
+index ca4ffe245..679dd8600 100644
 --- a/src/backends/native/meta-kms-impl-device-simple.c
 +++ b/src/backends/native/meta-kms-impl-device-simple.c
 @@ -470,6 +470,8 @@ process_mode_set (MetaKmsImplDevice  *impl_device,
@@ -1070,7 +1050,7 @@ index 882cd97cc..8aa78343a 100644
                                      refresh_rate,
                                      page_flip_data,
                                      g_steal_pointer (&custom_page_flip));
-@@ -1290,7 +1300,7 @@ process_plane_assignment (MetaKmsImplDevice       *impl_device,
+@@ -1286,7 +1296,7 @@ process_plane_assignment (MetaKmsImplDevice       *impl_device,
      {
      case META_KMS_PLANE_TYPE_PRIMARY:
        /* Handled as part of the mode-set and page flip. */
@@ -1079,7 +1059,7 @@ index 882cd97cc..8aa78343a 100644
      case META_KMS_PLANE_TYPE_CURSOR:
        if (!process_cursor_plane_assignment (impl_device, update,
                                              plane_assignment,
-@@ -1304,7 +1314,7 @@ process_plane_assignment (MetaKmsImplDevice       *impl_device,
+@@ -1300,7 +1310,7 @@ process_plane_assignment (MetaKmsImplDevice       *impl_device,
          }
        else
          {
@@ -1088,7 +1068,7 @@ index 882cd97cc..8aa78343a 100644
          }
      case META_KMS_PLANE_TYPE_OVERLAY:
        error = g_error_new_literal (G_IO_ERROR, G_IO_ERROR_FAILED,
-@@ -1317,6 +1327,12 @@ process_plane_assignment (MetaKmsImplDevice       *impl_device,
+@@ -1313,6 +1323,12 @@ process_plane_assignment (MetaKmsImplDevice       *impl_device,
      }
  
    g_assert_not_reached ();
@@ -1102,10 +1082,10 @@ index 882cd97cc..8aa78343a 100644
  
  static gboolean
 diff --git a/src/backends/native/meta-kms-impl-device.c b/src/backends/native/meta-kms-impl-device.c
-index b05bf5fda..1177707fa 100644
+index ec1a0e5a4..afea2c486 100644
 --- a/src/backends/native/meta-kms-impl-device.c
 +++ b/src/backends/native/meta-kms-impl-device.c
-@@ -1022,8 +1022,12 @@ meta_kms_impl_device_init_mode_setting (MetaKmsImplDevice  *impl_device,
+@@ -1028,8 +1028,12 @@ meta_kms_impl_device_init_mode_setting (MetaKmsImplDevice  *impl_device,
  void
  meta_kms_impl_device_prepare_shutdown (MetaKmsImplDevice *impl_device)
  {
@@ -1157,10 +1137,17 @@ index a613cbc5d..1d964ff21 100644
                                               uint64_t                rotation);
  
 diff --git a/src/backends/native/meta-kms-update.c b/src/backends/native/meta-kms-update.c
-index 53fc92eb8..1e43f3f0f 100644
+index 53fc92eb8..0d457c49e 100644
 --- a/src/backends/native/meta-kms-update.c
 +++ b/src/backends/native/meta-kms-update.c
-@@ -31,6 +31,7 @@
+@@ -25,12 +25,14 @@
+ #include "backends/meta-display-config-shared.h"
+ #include "backends/native/meta-kms-connector.h"
+ #include "backends/native/meta-kms-crtc.h"
++#include "backends/native/meta-kms-device.h"
+ #include "backends/native/meta-kms-mode-private.h"
+ #include "backends/native/meta-kms-plane.h"
+ 
  struct _MetaKmsUpdate
  {
    MetaKmsDevice *device;
@@ -1168,7 +1155,7 @@ index 53fc92eb8..1e43f3f0f 100644
  
    gboolean is_locked;
    uint64_t sequence_number;
-@@ -149,6 +150,7 @@ static void
+@@ -149,6 +151,7 @@ static void
  meta_kms_plane_assignment_free (MetaKmsPlaneAssignment *plane_assignment)
  {
    g_clear_pointer (&plane_assignment->fb_damage, meta_kms_fb_damage_free);
@@ -1176,7 +1163,7 @@ index 53fc92eb8..1e43f3f0f 100644
    g_free (plane_assignment);
  }
  
-@@ -228,7 +230,7 @@ meta_kms_update_assign_plane (MetaKmsUpdate          *update,
+@@ -228,7 +231,7 @@ meta_kms_update_assign_plane (MetaKmsUpdate          *update,
      .update = update,
      .crtc = crtc,
      .plane = plane,
@@ -1185,43 +1172,76 @@ index 53fc92eb8..1e43f3f0f 100644
      .src_rect = src_rect,
      .dst_rect = dst_rect,
      .flags = flags,
-@@ -237,6 +239,8 @@ meta_kms_update_assign_plane (MetaKmsUpdate          *update,
+@@ -237,6 +240,8 @@ meta_kms_update_assign_plane (MetaKmsUpdate          *update,
    update->plane_assignments = g_list_prepend (update->plane_assignments,
                                                plane_assignment);
  
-+  g_hash_table_insert (update->crtcs, crtc, NULL);
++  g_hash_table_add (update->crtcs, crtc);
 +
    return plane_assignment;
  }
  
-@@ -262,6 +266,8 @@ meta_kms_update_unassign_plane (MetaKmsUpdate *update,
+@@ -262,6 +267,8 @@ meta_kms_update_unassign_plane (MetaKmsUpdate *update,
    update->plane_assignments = g_list_prepend (update->plane_assignments,
                                                plane_assignment);
  
-+  g_hash_table_insert (update->crtcs, crtc, NULL);
++  g_hash_table_add (update->crtcs, crtc);
 +
    return plane_assignment;
  }
  
-@@ -284,6 +290,8 @@ meta_kms_update_mode_set (MetaKmsUpdate *update,
+@@ -284,6 +291,8 @@ meta_kms_update_mode_set (MetaKmsUpdate *update,
    };
  
    update->mode_sets = g_list_prepend (update->mode_sets, mode_set);
 +
-+  g_hash_table_insert (update->crtcs, crtc, NULL);
++  g_hash_table_add (update->crtcs, crtc);
  }
  
  static MetaKmsConnectorUpdate *
-@@ -402,6 +410,8 @@ meta_kms_update_set_crtc_gamma (MetaKmsUpdate  *update,
+@@ -292,6 +301,8 @@ ensure_connector_update (MetaKmsUpdate    *update,
+ {
+   GList *l;
+   MetaKmsConnectorUpdate *connector_update;
++  MetaKmsDevice *device;
++  const MetaKmsConnectorState *state;
+ 
+   for (l = update->connector_updates; l; l = l->next)
+     {
+@@ -306,6 +317,23 @@ ensure_connector_update (MetaKmsUpdate    *update,
+ 
+   update->connector_updates = g_list_prepend (update->connector_updates,
+                                               connector_update);
++  device = meta_kms_connector_get_device (connector);
++  state = meta_kms_connector_get_current_state (connector);
++  if (device && state && state->current_crtc_id)
++    {
++      GList *l;
++
++      for (l = meta_kms_device_get_crtcs (device); l; l = l->next)
++        {
++          MetaKmsCrtc *kms_crtc = l->data;
++
++          if (meta_kms_crtc_get_id (kms_crtc) == state->current_crtc_id)
++            {
++              g_hash_table_add (update->crtcs, kms_crtc);
++              break;
++            }
++        }
++    }
+ 
+   return connector_update;
+ }
+@@ -402,6 +430,8 @@ meta_kms_update_set_crtc_gamma (MetaKmsUpdate  *update,
    gamma = meta_kms_crtc_gamma_new (crtc, size, red, green, blue);
  
    update->crtc_gammas = g_list_prepend (update->crtc_gammas, gamma);
 +
-+  g_hash_table_insert (update->crtcs, crtc, NULL);
++  g_hash_table_add (update->crtcs, crtc);
  }
  
  void
-@@ -665,6 +675,20 @@ meta_kms_update_get_device (MetaKmsUpdate *update)
+@@ -665,6 +695,20 @@ meta_kms_update_get_device (MetaKmsUpdate *update)
    return update->device;
  }
  
@@ -1229,20 +1249,20 @@ index 53fc92eb8..1e43f3f0f 100644
 +meta_kms_update_includes_crtc (MetaKmsUpdate *update,
 +                               MetaKmsCrtc   *crtc)
 +{
-+  return g_hash_table_lookup_extended (update->crtcs, crtc, NULL, NULL);
++  return g_hash_table_contains (update->crtcs, crtc);
 +}
 +
 +void
 +meta_kms_update_include_crtc (MetaKmsUpdate *update,
 +                              MetaKmsCrtc   *crtc)
 +{
-+  g_hash_table_insert (update->crtcs, crtc, NULL);
++  g_hash_table_add (update->crtcs, crtc);
 +}
 +
  MetaKmsCustomPageFlip *
  meta_kms_update_take_custom_page_flip_func (MetaKmsUpdate *update)
  {
-@@ -693,12 +717,15 @@ meta_kms_update_new (MetaKmsDevice *device)
+@@ -693,12 +737,15 @@ meta_kms_update_new (MetaKmsDevice *device)
    update->device = device;
    update->sequence_number = sequence_number++;
  
@@ -1259,7 +1279,7 @@ index 53fc92eb8..1e43f3f0f 100644
                      (GDestroyNotify) meta_kms_result_listener_free);
    g_list_free_full (update->plane_assignments,
 diff --git a/src/backends/native/meta-kms.c b/src/backends/native/meta-kms.c
-index 052ec8a65..9acc17b0d 100644
+index 052ec8a65..f05cbf9df 100644
 --- a/src/backends/native/meta-kms.c
 +++ b/src/backends/native/meta-kms.c
 @@ -23,6 +23,7 @@
@@ -1270,7 +1290,13 @@ index 052ec8a65..9acc17b0d 100644
  #include "backends/native/meta-kms-device-private.h"
  #include "backends/native/meta-kms-impl.h"
  #include "backends/native/meta-kms-update-private.h"
-@@ -181,6 +182,11 @@ struct _MetaKms
+@@ -177,10 +178,17 @@ struct _MetaKms
+ 
+   GList *pending_callbacks;
+   guint callback_source_id;
++
++  gboolean shutting_down;
+ };
  
  G_DEFINE_TYPE (MetaKms, meta_kms, G_TYPE_OBJECT)
  
@@ -1282,7 +1308,7 @@ index 052ec8a65..9acc17b0d 100644
  void
  meta_kms_discard_pending_updates (MetaKms *kms)
  {
-@@ -247,12 +253,105 @@ meta_kms_take_pending_update (MetaKms       *kms,
+@@ -247,23 +255,115 @@ meta_kms_take_pending_update (MetaKms       *kms,
    return NULL;
  }
  
@@ -1388,7 +1414,10 @@ index 052ec8a65..9acc17b0d 100644
    MetaKmsFeedback *feedback;
    GList *result_listeners;
    GList *l;
-@@ -260,10 +359,6 @@ meta_kms_post_pending_update_sync (MetaKms           *kms,
+ 
++  if (kms->shutting_down)
++    return NULL;
++
    COGL_TRACE_BEGIN_SCOPED (MetaKmsPostUpdateSync,
                             "KMS (post update)");
  
@@ -1399,6 +1428,15 @@ index 052ec8a65..9acc17b0d 100644
    meta_kms_update_lock (update);
  
    feedback = meta_kms_device_process_update_sync (device, update, flags);
+@@ -752,6 +852,8 @@ prepare_shutdown_in_impl (MetaKmsImpl  *impl,
+ void
+ meta_kms_prepare_shutdown (MetaKms *kms)
+ {
++  kms->shutting_down = TRUE;
++
+   meta_kms_run_impl_task_sync (kms, prepare_shutdown_in_impl, NULL, NULL);
+   flush_callbacks (kms);
+ }
 diff --git a/src/backends/native/meta-kms.h b/src/backends/native/meta-kms.h
 index bd9fe5cea..84f1bed49 100644
 --- a/src/backends/native/meta-kms.h
@@ -1431,7 +1469,7 @@ index bd9fe5cea..84f1bed49 100644
  
  void meta_kms_notify_modes_set (MetaKms *kms);
 diff --git a/src/backends/native/meta-onscreen-native.c b/src/backends/native/meta-onscreen-native.c
-index 3eb550319..24d7f7385 100644
+index 36d6e291e..fbe3e26ca 100644
 --- a/src/backends/native/meta-onscreen-native.c
 +++ b/src/backends/native/meta-onscreen-native.c
 @@ -67,13 +67,12 @@ typedef struct _MetaOnscreenNativeSecondaryGpuState
@@ -1843,7 +1881,14 @@ index 3eb550319..24d7f7385 100644
  copy_shared_framebuffer_primary_gpu (CoglOnscreen                        *onscreen,
                                       MetaOnscreenNativeSecondaryGpuState *secondary_gpu_state,
                                       const int                           *rectangles,
-@@ -761,7 +746,7 @@ copy_shared_framebuffer_primary_gpu (CoglOnscreen                        *onscre
+@@ -759,13 +744,13 @@ copy_shared_framebuffer_primary_gpu (CoglOnscreen                        *onscre
+ 
+   if (!secondary_gpu_state ||
+       secondary_gpu_state->egl_surface == EGL_NO_SURFACE)
+-    return FALSE;
++    return NULL;
+ 
+   primary_gpu = meta_renderer_native_get_primary_gpu (renderer_native);
    primary_gpu_data =
      meta_renderer_native_get_gpu_data (renderer_native, primary_gpu);
    if (!primary_gpu_data->secondary.has_EGL_EXT_image_dma_buf_import_modifiers)
@@ -1852,7 +1897,7 @@ index 3eb550319..24d7f7385 100644
  
    buffer_dumb = secondary_gpu_get_next_dumb_buffer (secondary_gpu_state);
    buffer = META_DRM_BUFFER (buffer_dumb);
-@@ -784,7 +769,7 @@ copy_shared_framebuffer_primary_gpu (CoglOnscreen                        *onscre
+@@ -788,7 +773,7 @@ copy_shared_framebuffer_primary_gpu (CoglOnscreen                        *onscre
      {
        meta_topic (META_DEBUG_KMS,
                    "Failed to create DMA buffer: %s", error->message);
@@ -1861,7 +1906,7 @@ index 3eb550319..24d7f7385 100644
      }
  
    dmabuf_fb =
-@@ -802,7 +787,7 @@ copy_shared_framebuffer_primary_gpu (CoglOnscreen                        *onscre
+@@ -806,7 +791,7 @@ copy_shared_framebuffer_primary_gpu (CoglOnscreen                        *onscre
        meta_topic (META_DEBUG_KMS,
                    "Failed to create DMA buffer for blitting: %s",
                    error->message);
@@ -1870,7 +1915,7 @@ index 3eb550319..24d7f7385 100644
      }
    /* Limit the number of individual copies to 16 */
  #define MAX_RECTS 16
-@@ -815,7 +800,7 @@ copy_shared_framebuffer_primary_gpu (CoglOnscreen                        *onscre
+@@ -819,7 +804,7 @@ copy_shared_framebuffer_primary_gpu (CoglOnscreen                        *onscre
                                    &error))
          {
            g_object_unref (dmabuf_fb);
@@ -1879,7 +1924,7 @@ index 3eb550319..24d7f7385 100644
          }
      }
    else
-@@ -832,20 +817,19 @@ copy_shared_framebuffer_primary_gpu (CoglOnscreen                        *onscre
+@@ -836,20 +821,19 @@ copy_shared_framebuffer_primary_gpu (CoglOnscreen                        *onscre
                                        &error))
              {
                g_object_unref (dmabuf_fb);
@@ -1903,7 +1948,7 @@ index 3eb550319..24d7f7385 100644
  copy_shared_framebuffer_cpu (CoglOnscreen                        *onscreen,
                               MetaOnscreenNativeSecondaryGpuState *secondary_gpu_state,
                               MetaRendererNativeGpuData           *renderer_gpu_data)
-@@ -897,17 +881,19 @@ copy_shared_framebuffer_cpu (CoglOnscreen                        *onscreen,
+@@ -901,17 +885,19 @@ copy_shared_framebuffer_cpu (CoglOnscreen                        *onscreen,
  
    cogl_object_unref (dumb_bitmap);
  
@@ -1925,7 +1970,7 @@ index 3eb550319..24d7f7385 100644
  
    COGL_TRACE_BEGIN_SCOPED (MetaRendererNativeGpuStatePreSwapBuffers,
                             "Onscreen (secondary gpu pre-swap-buffers)");
-@@ -933,10 +919,11 @@ update_secondary_gpu_state_pre_swap_buffers (CoglOnscreen *onscreen,
+@@ -937,10 +923,11 @@ update_secondary_gpu_state_pre_swap_buffers (CoglOnscreen *onscreen,
            /* prepare fallback */
            G_GNUC_FALLTHROUGH;
          case META_SHARED_FRAMEBUFFER_COPY_MODE_PRIMARY:
@@ -1941,7 +1986,7 @@ index 3eb550319..24d7f7385 100644
              {
                if (!secondary_gpu_state->noted_primary_gpu_copy_failed)
                  {
-@@ -946,9 +933,9 @@ update_secondary_gpu_state_pre_swap_buffers (CoglOnscreen *onscreen,
+@@ -950,9 +937,9 @@ update_secondary_gpu_state_pre_swap_buffers (CoglOnscreen *onscreen,
                    secondary_gpu_state->noted_primary_gpu_copy_failed = TRUE;
                  }
  
@@ -1954,7 +1999,7 @@ index 3eb550319..24d7f7385 100644
              }
            else if (!secondary_gpu_state->noted_primary_gpu_copy_ok)
              {
-@@ -960,11 +947,15 @@ update_secondary_gpu_state_pre_swap_buffers (CoglOnscreen *onscreen,
+@@ -964,11 +951,15 @@ update_secondary_gpu_state_pre_swap_buffers (CoglOnscreen *onscreen,
            break;
          }
      }
@@ -1972,7 +2017,7 @@ index 3eb550319..24d7f7385 100644
  {
    MetaOnscreenNative *onscreen_native = META_ONSCREEN_NATIVE (onscreen);
    MetaRendererNative *renderer_native = onscreen_native->renderer_native;
-@@ -977,6 +968,7 @@ update_secondary_gpu_state_post_swap_buffers (CoglOnscreen *onscreen,
+@@ -981,6 +972,7 @@ update_secondary_gpu_state_post_swap_buffers (CoglOnscreen *onscreen,
    if (secondary_gpu_state)
      {
        MetaRendererNativeGpuData *renderer_gpu_data;
@@ -1980,7 +2025,7 @@ index 3eb550319..24d7f7385 100644
  
        renderer_gpu_data =
          meta_renderer_native_get_gpu_data (renderer_native,
-@@ -984,23 +976,30 @@ update_secondary_gpu_state_post_swap_buffers (CoglOnscreen *onscreen,
+@@ -988,23 +980,30 @@ update_secondary_gpu_state_post_swap_buffers (CoglOnscreen *onscreen,
        switch (renderer_gpu_data->secondary.copy_mode)
          {
          case META_SHARED_FRAMEBUFFER_COPY_MODE_ZERO:
@@ -2019,7 +2064,7 @@ index 3eb550319..24d7f7385 100644
      }
  }
  
-@@ -1034,34 +1033,39 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
+@@ -1038,34 +1037,39 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
    CoglRendererEGL *cogl_renderer_egl = cogl_renderer->winsys;
    MetaRendererNativeGpuData *renderer_gpu_data = cogl_renderer_egl->platform;
    MetaRendererNative *renderer_native = renderer_gpu_data->renderer_native;
@@ -2074,7 +2119,7 @@ index 3eb550319..24d7f7385 100644
  
    parent_class = COGL_ONSCREEN_CLASS (meta_onscreen_native_parent_class);
    parent_class->swap_buffers_with_damage (onscreen,
-@@ -1077,9 +1081,6 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
+@@ -1081,9 +1085,6 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
    switch (renderer_gpu_data->mode)
      {
      case META_RENDERER_NATIVE_MODE_GBM:
@@ -2084,7 +2129,7 @@ index 3eb550319..24d7f7385 100644
        buffer_flags = META_DRM_BUFFER_FLAG_NONE;
        if (!meta_renderer_native_use_modifiers (renderer_native))
          buffer_flags |= META_DRM_BUFFER_FLAG_DISABLE_MODIFIERS;
-@@ -1097,7 +1098,12 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
+@@ -1101,7 +1102,12 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
            return;
          }
  
@@ -2098,7 +2143,7 @@ index 3eb550319..24d7f7385 100644
  
        break;
      case META_RENDERER_NATIVE_MODE_SURFACELESS:
-@@ -1109,7 +1115,46 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
+@@ -1113,7 +1119,46 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
  #endif
      }
  
@@ -2146,7 +2191,7 @@ index 3eb550319..24d7f7385 100644
  
    /*
     * If we changed EGL context, cogl will have the wrong idea about what is
-@@ -1120,23 +1165,71 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
+@@ -1124,23 +1169,71 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
    if (egl_context_changed)
      _cogl_winsys_egl_ensure_current (cogl_display);
  
@@ -2222,7 +2267,7 @@ index 3eb550319..24d7f7385 100644
        return;
      }
  
-@@ -1154,9 +1247,6 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
+@@ -1158,9 +1251,6 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
                        "Postponing primary plane composite update for CRTC %u (%s)",
                        meta_kms_crtc_get_id (kms_crtc),
                        meta_kms_device_get_path (kms_device));
@@ -2232,7 +2277,7 @@ index 3eb550319..24d7f7385 100644
            return;
          }
        else if (meta_renderer_native_has_pending_mode_set (renderer_native))
-@@ -1166,8 +1256,6 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
+@@ -1170,8 +1260,6 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
  
            meta_renderer_native_notify_mode_sets_reset (renderer_native);
            meta_renderer_native_post_mode_set_updates (renderer_native);
@@ -2241,7 +2286,7 @@ index 3eb550319..24d7f7385 100644
            return;
          }
        break;
-@@ -1180,8 +1268,6 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
+@@ -1184,8 +1272,6 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
          {
            meta_renderer_native_notify_mode_sets_reset (renderer_native);
            meta_renderer_native_post_mode_set_updates (renderer_native);
@@ -2250,7 +2295,7 @@ index 3eb550319..24d7f7385 100644
            return;
          }
        break;
-@@ -1194,18 +1280,16 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
+@@ -1198,18 +1284,16 @@ meta_onscreen_native_swap_buffers_with_damage (CoglOnscreen  *onscreen,
                meta_kms_device_get_path (kms_device));
  
    flags = META_KMS_UPDATE_FLAG_NONE;
@@ -2273,7 +2318,7 @@ index 3eb550319..24d7f7385 100644
        feedback_error = meta_kms_feedback_get_error (kms_feedback);
        if (!g_error_matches (feedback_error,
                              G_IO_ERROR,
-@@ -1292,6 +1376,18 @@ meta_onscreen_native_direct_scanout (CoglOnscreen   *onscreen,
+@@ -1296,6 +1380,18 @@ meta_onscreen_native_direct_scanout (CoglOnscreen   *onscreen,
        return FALSE;
      }
  
@@ -2292,7 +2337,7 @@ index 3eb550319..24d7f7385 100644
    renderer_gpu_data = meta_renderer_native_get_gpu_data (renderer_native,
                                                           render_gpu);
  
-@@ -1344,7 +1440,9 @@ meta_onscreen_native_direct_scanout (CoglOnscreen   *onscreen,
+@@ -1348,7 +1444,9 @@ meta_onscreen_native_direct_scanout (CoglOnscreen   *onscreen,
                meta_kms_device_get_path (kms_device));
  
    flags = META_KMS_UPDATE_FLAG_PRESERVE_ON_ERROR;
@@ -2303,7 +2348,7 @@ index 3eb550319..24d7f7385 100644
    switch (meta_kms_feedback_get_result (kms_feedback))
      {
      case META_KMS_FEEDBACK_PASSED:
-@@ -1358,7 +1456,6 @@ meta_onscreen_native_direct_scanout (CoglOnscreen   *onscreen,
+@@ -1362,7 +1460,6 @@ meta_onscreen_native_direct_scanout (CoglOnscreen   *onscreen,
                             G_IO_ERROR, G_IO_ERROR_PERMISSION_DENIED))
          break;
  
@@ -2311,7 +2356,7 @@ index 3eb550319..24d7f7385 100644
        g_propagate_error (error, g_error_copy (feedback_error));
        return FALSE;
      }
-@@ -1394,7 +1491,10 @@ meta_onscreen_native_finish_frame (CoglOnscreen *onscreen,
+@@ -1398,7 +1495,10 @@ meta_onscreen_native_finish_frame (CoglOnscreen *onscreen,
    g_autoptr (MetaKmsFeedback) kms_feedback = NULL;
    const GError *error;
  
@@ -2323,7 +2368,7 @@ index 3eb550319..24d7f7385 100644
    if (!kms_update)
      {
        clutter_frame_set_result (frame, CLUTTER_FRAME_RESULT_IDLE);
-@@ -1409,9 +1509,9 @@ meta_onscreen_native_finish_frame (CoglOnscreen *onscreen,
+@@ -1413,9 +1513,9 @@ meta_onscreen_native_finish_frame (CoglOnscreen *onscreen,
                                            g_object_unref);
  
    flags = META_KMS_UPDATE_FLAG_NONE;
@@ -2336,7 +2381,7 @@ index 3eb550319..24d7f7385 100644
    switch (meta_kms_feedback_get_result (kms_feedback))
      {
      case META_KMS_FEEDBACK_PASSED:
-@@ -1433,6 +1533,17 @@ meta_onscreen_native_finish_frame (CoglOnscreen *onscreen,
+@@ -1437,6 +1537,17 @@ meta_onscreen_native_finish_frame (CoglOnscreen *onscreen,
      }
  }
  
@@ -2354,7 +2399,7 @@ index 3eb550319..24d7f7385 100644
  static gboolean
  should_surface_be_sharable (CoglOnscreen *onscreen)
  {
-@@ -1981,6 +2092,21 @@ pick_secondary_gpu_framebuffer_format_for_cpu (CoglOnscreen *onscreen)
+@@ -1985,6 +2096,21 @@ pick_secondary_gpu_framebuffer_format_for_cpu (CoglOnscreen *onscreen)
    return DRM_FORMAT_INVALID;
  }
  
@@ -2376,7 +2421,7 @@ index 3eb550319..24d7f7385 100644
  static gboolean
  init_secondary_gpu_state_cpu_copy_mode (MetaRendererNative         *renderer_native,
                                          CoglOnscreen               *onscreen,
-@@ -2037,6 +2163,12 @@ init_secondary_gpu_state_cpu_copy_mode (MetaRendererNative         *renderer_nat
+@@ -2041,6 +2167,12 @@ init_secondary_gpu_state_cpu_copy_mode (MetaRendererNative         *renderer_nat
          }
  
        secondary_gpu_state->cpu.dumb_fbs[i] = META_DRM_BUFFER_DUMB (dumb_buffer);
@@ -2389,7 +2434,7 @@ index 3eb550319..24d7f7385 100644
      }
  
    /*
-@@ -2116,7 +2248,7 @@ meta_onscreen_native_new (MetaRendererNative *renderer_native,
+@@ -2130,7 +2262,7 @@ meta_onscreen_native_new (MetaRendererNative *renderer_native,
    onscreen_native->renderer_native = renderer_native;
    onscreen_native->render_gpu = render_gpu;
    onscreen_native->output = output;
@@ -2398,7 +2443,7 @@ index 3eb550319..24d7f7385 100644
  
    return onscreen_native;
  }
-@@ -2137,7 +2269,6 @@ meta_onscreen_native_dispose (GObject *object)
+@@ -2151,7 +2283,6 @@ meta_onscreen_native_dispose (GObject *object)
      {
      case META_RENDERER_NATIVE_MODE_GBM:
        g_clear_object (&onscreen_native->gbm.next_fb);
@@ -2406,7 +2451,7 @@ index 3eb550319..24d7f7385 100644
        break;
      case META_RENDERER_NATIVE_MODE_SURFACELESS:
        g_assert_not_reached ();
-@@ -2165,9 +2296,12 @@ meta_onscreen_native_dispose (GObject *object)
+@@ -2179,9 +2310,12 @@ meta_onscreen_native_dispose (GObject *object)
  
    G_OBJECT_CLASS (meta_onscreen_native_parent_class)->dispose (object);
  
@@ -2433,7 +2478,7 @@ index 3a85ace26..676c4c445 100644
                                                              MetaDrmBuffer *fb);
  
 diff --git a/src/backends/native/meta-renderer-native.c b/src/backends/native/meta-renderer-native.c
-index 41bf04d66..58e6339a8 100644
+index d538cc25a..6ad3dba3b 100644
 --- a/src/backends/native/meta-renderer-native.c
 +++ b/src/backends/native/meta-renderer-native.c
 @@ -661,12 +661,18 @@ static gboolean
