@@ -18,8 +18,8 @@ optdepends=('fatresize: The FAT16/FAT32 non-destructive resizer.')
 source=("${pkgname}-${pkgver}.tar.bz2::http://liveusb.info/${pkgname}/${pkgname}.tar.bz2"
         "Packages::http://liveusb.info/${pkgname}/depot/dists/all/main/binary-i386/Packages"
 )
-sha256sums=('c2a7b085ee11945cb4918f1ae14960d5ad7de38dfb847ed3f1244da9764ad5fd'
-            'afd17929120102ff0acfd20a677fff37c7d786552afb2b1afa76275d31514317')
+sha256sums=('ba44f528837f7bdb39653b3b7f17be22e236b43507ce68cd221ccc96ef87924d'
+            'ab52342429be8c16c815d95ee1bf6b1f51c97004f4a8ef214d966d3556d18678')
 
 _multisystem="#!/usr/bin/sh
 exec /usr/local/share/multisystem/gui_multisystem.sh
