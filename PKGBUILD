@@ -2,12 +2,12 @@
 
 pkgname=rav1e-bin
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="The fastest and safest AV1 encoder"
 arch=('x86_64' 'aarch64')
 url="https://github.com/xiph/rav1e"
 license=('BSD' 'custom')
-provides=('rav1e')
+provides=("rav1e=$pkgver")
 conflicts=('rav1e')
 source=("https://raw.githubusercontent.com/xiph/rav1e/master/LICENSE"
         "https://raw.githubusercontent.com/xiph/rav1e/master/PATENTS")
