@@ -4,18 +4,17 @@
 _base=datashader
 pkgname=python-${_base}
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Quickly and accurately render even the largest data"
 arch=(any)
 url="https://${_base}.org"
 license=('custom')
 depends=(python-dask python-datashape python-numba python-pillow python-xarray python-colorcet python-scipy)
 source=(${_base}-${pkgver}::https://github.com/holoviz/${_base}/archive/v${pkgver}.tar.gz)
-sha512sums=('a3cfdc11b9247040140deb03a93f80898b98ea01abe96031b721252e93db47b55618e992deae0cc34dfa05869eebf80f5eb84db6f5ecb6a1c01752d0bf6e7794')
+sha512sums=('470d930e5e86dd77bcf0d08811cfe4efea0337d59539c96998f20dd1173b8359d5eb0ae9c85baa05e348345b4cb4ad779aaf6032137d22f5afb342e5bc2eb594')
 
 build() {
   cd ${_base}-${pkgver}
-  export PYTHONHASHSEED=0
   python setup.py build
 }
 
