@@ -1,7 +1,7 @@
 pkgbase = mutter-rounded
 	pkgdesc = A window manager for GNOME, with rounded corners patch (integrate mr1441)
-	pkgver = 42.0
-	pkgrel = 2.2
+	pkgver = 42.1
+	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	install = mutter-rounded.install
 	arch = x86_64
@@ -37,8 +37,8 @@ pkgbase = mutter-rounded
 	provides = libmutter-10.so
 	provides = mutter
 	conflicts = mutter
-	source = mutter-rounded::git+https://gitee.com/mirrors_GNOME/mutter.git#commit=9249aba72a5c4454894c08735a4963ca1665e34d
-	source = mutter_settings::git+https://gitee.com/lluo/mutter-rounded-setting/
+	source = mutter-rounded::git+https://gitlab.gnome.org/GNOME/mutter.git#commit=94bd385bf3ece2a746d8755049fc1fa5c8c0a808
+	source = mutter_settings::git+https://github.com/yilozt/mutter-rounded-setting
 	source = rounded_corners.patch
 	source = shell_blur_effect.patch
 	source = meta_clip_effect.c
