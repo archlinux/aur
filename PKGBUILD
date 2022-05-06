@@ -2,7 +2,7 @@
 
 pkgname="dsbattery"
 pkgver=1.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="DualShock 4 controller utility for status bars"
 arch=('x86_64' 'aarch64')
 url='https://github.com/valters-tomsons/dsbattery'
@@ -13,7 +13,7 @@ optdepends=('bluez-tools: disconnect support')
 
 options=('!strip')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/valters-tomsons/dsbattery/archive/refs/tags/${pkgver}.tar.gz")
-sha256sums=('2672b4881d8fb4e6a8d0876e6e759c767db6dcacba61e8a1e706d24455c2c348')
+sha256sums=('61a28fb1aea059fe99a3228b9511aec08599cdac991c10cec352c1930e5e2cea')
 
 _outputdir="Release"
 
