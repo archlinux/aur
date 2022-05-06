@@ -1,7 +1,7 @@
 # Maintainer: Daniel Poellmann <aur@<lastname><firstname>.de>
 pkgname=cpachecker
-pkgver=1.9
-pkgrel=2
+pkgver=2.1.1
+pkgrel=3
 pkgdesc="Tool for configurable software verification."
 arch=("x86_64")
 url="https://svn.sosy-lab.org/software/cpachecker/trunk"
@@ -10,10 +10,10 @@ depends=("java-environment=11" "python" "bash" "jre-openjdk")
 makedepends=()
 checkdepends=()
 conflicts=("cpachecker-svn")
-source=("https://cpachecker.sosy-lab.org/CPAchecker-1.9-unix.tar.bz2")
-md5sums=("feee336b472cda8e81e70b7b6fa49c6e")
+source=("https://cpachecker.sosy-lab.org/CPAchecker-2.1.1-unix.zip")
+md5sums=("77f82582b3fc62ce62f3318c49b47e29")
 validpgpkeys=()
-_dir=CPAchecker-1.9-unix
+_dir=CPAchecker-2.1.1-unix
 
 prepare() {
         cd "$srcdir/$_dir"
