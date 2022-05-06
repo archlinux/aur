@@ -1,6 +1,6 @@
 # Maintainer: Lev Lybin <lev.lybin at gmail dot com>
-# Maintainer: Maksym Sheremet <msheremet at sheremets dot com>
-# Maintainer: bajaco <admin at agyx dot org>
+# Contributor: Maksym Sheremet <msheremet at sheremets dot com>
+# Contributor: bajaco <admin at agyx dot org>
 
 pkgname=upwork-desktop
 pkgver=5.6.10.13
