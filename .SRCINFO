@@ -1,14 +1,14 @@
 pkgbase = graphql-lsp
 	pkgdesc = GraphQL Language Service provides an interface for building GraphQL language services for IDEs.
-	pkgver = 3.1.14
+	pkgver = 3.2.23
 	pkgrel = 3
 	url = https://www.npmjs.com/package/graphql-language-service-cli
 	arch = any
 	makedepends = npm
 	depends = nodejs
 	provides = graphql-language-service-cli
-	noextract = graphql-language-service-cli-3.1.14.tgz
-	source = graphql-language-service-cli-3.1.14.tgz::https://registry.npmjs.org/graphql-language-service-cli/-/graphql-language-service-cli-3.1.14.tgz
-	sha256sums = f7ef14fca0ddd06bdd1da9bfd2a51f95759c122c16605d0390dbf8733aa2c244
+	noextract = graphql-language-service-cli-3.2.23.tgz
+	source = graphql-language-service-cli-3.2.23.tgz::https://registry.npmjs.org/graphql-language-service-cli/-/graphql-language-service-cli-3.2.23.tgz
+	sha256sums = 28a79267b8e61f7b3185fa2df0ec03e66c8c31a8d97d9624cd4fc7baed09d692
 
 pkgname = graphql-lsp
