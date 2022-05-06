@@ -2,7 +2,7 @@
 
 pkgname=bcbasic-bin
 ghpkgname=BCBASIC
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="ByteCodeBASIC"
 
