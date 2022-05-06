@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Comment=Audio Assault Duality Bass Studio Bass Amplifier Next Generation
+Type=Application
+Categories=AudioVideo;X-AudioEditing
+Terminal=false
+Exec="/usr/bin/Duality EX Standalone"
+Name=Duality EX Amp
