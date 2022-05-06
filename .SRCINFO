@@ -1,0 +1,16 @@
+pkgbase = i2pchat-git
+	pkgdesc = Secure, anonymous p2p chat client for the I2P network
+	pkgver = r649.ge070834
+	pkgrel = 1
+	url = https://vituperative.github.io/i2pchat/
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = qt5-base
+	makedepends = make
+	depends = qt5-multimedia
+	depends = hicolor-icon-theme
+	source = git+https://github.com/vituperative/i2pchat.git
+	sha256sums = SKIP
+
+pkgname = i2pchat-git
