@@ -1,7 +1,7 @@
 pkgbase = astronciaiptv-bin
 	pkgdesc = IPTV player with EPG support
 	pkgver = 0.0.95
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/astroncia/iptv
 	arch = any
 	license = GPL3
@@ -18,6 +18,7 @@ pkgbase = astronciaiptv-bin
 	depends = python-setproctitle
 	depends = ffmpeg
 	optdepends = yt-dlp: YouTube channel support
+	optdepends = dconf: Importing playlists from Hypnotix
 	conflicts = astronciaiptv
 	conflicts = astronciaiptv-git
 	source = astronciaiptv-0.0.95.tar.gz::https://file-store.rosalinux.ru/api/v1/file_stores/fee7fc707e006acd8fe9f3a9edd22012ad7e8d75
