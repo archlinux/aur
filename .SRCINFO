@@ -1,12 +1,12 @@
 pkgbase = lean4-bin
 	pkgdesc = An interactive theorem prover
 	pkgver = 4.0.0.m4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://leanprover.github.io/
 	arch = x86_64
 	license = apache
 	optdepends = bash
-	provides = lean4
+	provides = lean4=4.0.0.m4
 	conflicts = lean4
 	options = staticlibs
 	source = LICENSE::https://raw.githubusercontent.com/leanprover/lean4/master/LICENSE

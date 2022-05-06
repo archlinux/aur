@@ -3,13 +3,13 @@
 pkgname=lean4-bin
 _pkgver=4.0.0-m4
 pkgver=$(echo "$_pkgver" | sed  's/-/./')
-pkgrel=1
+pkgrel=2
 pkgdesc="An interactive theorem prover"
 arch=('x86_64')
 url="https://leanprover.github.io/"
 license=('apache')
 optdepends=('bash')
-provides=('lean4')
+provides=("lean4=$pkgver")
 conflicts=('lean4')
 options=('staticlibs')
 source=("LICENSE::https://raw.githubusercontent.com/leanprover/lean4/master/LICENSE")
