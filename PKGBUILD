@@ -19,7 +19,6 @@ license=(
 depends=(
   'boost-libs'
   'gnuradio>=3.9'
-  'gnuradio<3.10'
   'libuhd'
   'libvolk'
   'libsndfile'
@@ -31,7 +30,7 @@ makedepends=(
   'cmake>=3.8'
   'doxygen'
   'git'
-  'swig'
+  'spdlog'
 )
 provides=(
   "${_pkgname}=${pkgver}"
@@ -39,7 +38,7 @@ provides=(
 conflicts=(
   "${_pkgname}"
 )
-source=("${_pkgname}::git+https://github.com/bastibl/gr-foo#branch=maint-3.9")
+source=("${_pkgname}::git+https://github.com/bastibl/gr-foo#branch=maint-3.10")
 sha256sums=('SKIP')
 
 prepare() {
