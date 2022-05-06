@@ -2,7 +2,7 @@
 
 pkgbase=linux-zen
 pkgver=5.17.5.zen1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux ZEN'
 _srctag=v${pkgver%.*}-${pkgver##*.}
 url="https://github.com/zen-kernel/zen-kernel/commits/$_srctag"
