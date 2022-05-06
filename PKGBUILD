@@ -2,8 +2,8 @@
 # Generator  : CPANPLUS::Dist::Arch 1.32
 
 pkgname='perl-throwable-sugarfactory'
-pkgver='0.152700'
-pkgrel='2'
+pkgver='0.213360'
+pkgrel='1'
 pkgdesc="build a library of syntax-sugared Throwable-based exceptions"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -12,10 +12,10 @@ depends=('perl-class-inspector>=0' 'perl-import-into>=0' 'perl-module-runtime>=0
 makedepends=()
 checkdepends=('perl-test-fatal>=0' 'perl-test-indistdir>=0')
 url='https://metacpan.org/release/Throwable-SugarFactory'
-source=('http://search.cpan.org/CPAN/authors/id/M/MI/MITHALDU/Throwable-SugarFactory-0.152700.tar.gz')
-md5sums=('8b19d41ada31bbca4dce246985e26c07')
-sha512sums=('2229a6713597f4f161e5c4dea6ce74f2e46861d2a29f7e7aa158852af0c80020b6016b899a89ac0c52c6620a3eb6020f5074c0ad9011b39c6a7d67b5839f56bf')
-_distdir="Throwable-SugarFactory-0.152700"
+source=("https://cpan.metacpan.org/authors/id/M/MI/MITHALDU/Throwable-SugarFactory-$pkgver.tar.gz")
+md5sums=('3f1f7bf411755d731b4144ba9803da49')
+sha512sums=('5db2830520172f3f46735bb993d865a1b62228cef0d6af3872ab38b655fa5bf210ad957e4c5cbcffc80139ab04778bc83eaca0d5a795fdb008a504c7602e2309')
+_distdir="Throwable-SugarFactory-$pkgver"
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                      \
