@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc='A graphical user interface for GNUnet Messenger'
 arch=('i686' 'x86_64')
 url="https://gnunet.org"
-license=('GPL')
+license=('AGPL')
 depends=('gnunet' 'libgnunetchat' 'gtk3' 'libhandy' 'libnotify' 'qrencode'
          'zbar' 'gstreamer')
 conflicts=("${pkgname}-bin" "${pkgname}-git")
