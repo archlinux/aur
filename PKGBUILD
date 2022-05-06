@@ -2,7 +2,7 @@
 
 pkgname=bcbasic
 ghpkgname=BCBASIC
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
 pkgdesc="ByteCodeBASIC"
 arch=(x86_64 i686 pentium4 arm armv6h armv7h aarch64)
