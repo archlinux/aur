@@ -1,7 +1,7 @@
 pkgbase = code-server
 	pkgdesc = VS Code in the browser
 	pkgver = 4.3.0
-	pkgrel = 0
+	pkgrel = 1
 	url = https://github.com/cdr/code-server
 	arch = x86_64
 	arch = aarch64
@@ -17,4 +17,3 @@ pkgbase = code-server
 	sha512sums_aarch64 = 8df885698addff944afc4b69f743ec14f464eb00d3ddd61e8e9665a130aaacb6487db65d549ec401bbda2c81631c9b088c3950551e26672f3be93a804913787e
 
 pkgname = code-server
-

@@ -1,12 +1,12 @@
 # Maintainer: Colin Adler <colin@coder.com>
 # Maintainer: Asher <ash@coder.com>
 # Maintainer: Joe Previte <joe@coder.com>
-# Maintainer: Teffen Ellis <teffen@coder.com>
+# Contributor: Teffen Ellis <teffen@coder.com>
 # Contributor: Anmol <anmol@coder.com>
 
 pkgname=code-server
 pkgver=4.3.0
-pkgrel=0
+pkgrel=1
 pkgdesc="VS Code in the browser"
 arch=("x86_64" "aarch64")
 url="https://github.com/cdr/code-server"
@@ -29,7 +29,7 @@ sha512sums_x86_64=('9f7fc56b69a928dcd348cf27ce65a93b2732b9001cc51388807aa78e68a3
 sha512sums_aarch64=('8df885698addff944afc4b69f743ec14f464eb00d3ddd61e8e9665a130aaacb6487db65d549ec401bbda2c81631c9b088c3950551e26672f3be93a804913787e')
 
 package() {
-  if [[ $(uname -m) == x86_64 ]]; then
+  if [[ ${CARCH} == x86_64 ]]; then
     release_name+=-amd64
   else
     release_name+=-arm64
@@ -48,5 +48,5 @@ package() {
   cp -aL "$pkgname-$pkgver-user.service" "$pkgdir/usr/lib/systemd/user/$pkgname.service"
 
   mkdir -p "$pkgdir/usr/share/licenses"
-  cp -a "$release_name/LICENSE.txt" "$pkgdir/usr/share/licenses/$pkgname"
+  cp -a "$release_name/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
 }
