@@ -2,7 +2,7 @@
 # Contributor: Rohan Jain <crodjer [@] protonmail [dot] com>
 
 pkgname=babashka-bin
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc='A Clojure babashka for the grey areas of Bash.'
 arch=('x86_64' 'aarch64')
@@ -12,11 +12,11 @@ depends=('gcc-libs' 'zlib')
 provides=("${pkgname%-bin}")
 conflicts=("${pkgname%-bin}")
 
-source_x86_64=("${pkgname}-${pkgver}-linux-amd64-static.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64-static.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-linux-aarch64-static.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-aarch64-static.tar.gz")
+source_x86_64=("${pkgname}-${pkgver}-linux-amd64-static.tar.gz::${url}/releases/download/v${pkgver}/${pkgname%-bin}-${pkgver}-linux-amd64-static.tar.gz")
 
-sha256sums_x86_64=('1eab59c15b744098063198b25569e459a097e30e2492d073ffe8d7f5d3938615')
-sha256sums_aarch64=('68fcec3585c3fc20f2d88a7b12646ab0601cffc2e4ee2a0a26f3449a16c9c933')
+sha256sums_x86_64=('265a6ececf519d7db5bda547bf615937716fc163075cca9a310d15c18ce6a507')
+sha256sums_aarch64=('5191d7675fe3b4586639253797d7a45895dc9015d6a5cfa8d0aae45d8f735566')
 
 package() {
   install -Dm755 "${srcdir}/bb" "${pkgdir}/usr/bin/bb"
