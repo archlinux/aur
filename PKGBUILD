@@ -13,7 +13,7 @@ pkgname=('pipewire-git'
          'pipewire-libcamera-git'
          'pipewire-x11-bell-git'
          )
-pkgver=0.3.49.53.gdf6fb25e0
+pkgver=0.3.51.21.g15431570f
 pkgrel=1
 pkgdesc='Low-latency audio/video router and processor (GIT version)'
 arch=('x86_64')
@@ -84,7 +84,8 @@ build() {
     -D vulkan=enabled \
     -D jack-devel=true \
     -D libjack-path=/usr/lib \
-    -D session-managers=[]
+    -D session-managers=[] \
+    -D bluez5-codec-lc3plus=disabled
 
   ninja
 }
@@ -154,6 +155,8 @@ package_pipewire-git() {
 
   # directories for overrides
   mkdir -p "${pkgdir}/etc/pipewire/"{client-rt,client,minimal,pipewire}.conf.d
+
+  rm -fr "${srcdir}"/{alsa,camera,docs,ffmpeg,jack,pulse,roc,v4l2,x11-bell,zeroconf}
 
   (cd "${pkgdir}"
 
