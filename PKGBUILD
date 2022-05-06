@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=libusb-git
-pkgver=1.0.24.r66.g1a906274
+pkgver=1.0.26.r3.gba698478
 pkgrel=1
 pkgdesc="A cross-platform library to access USB devices"
 arch=('i686' 'x86_64')
@@ -9,7 +9,7 @@ url="https://libusb.info/"
 license=('LGPL')
 depends=('glibc' 'libudev.so')
 makedepends=('git')
-provides=('libusb' 'libusb-1.0.so')
+provides=("libusb=$pkgver" 'libusb-1.0.so')
 conflicts=('libusb')
 options=('staticlibs')
 source=("git+https://github.com/libusb/libusb.git")
