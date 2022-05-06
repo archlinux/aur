@@ -1,7 +1,7 @@
 # Maintainer: John Downey <jdowney@gmail.com>
 pkgname=smug
 pkgver=0.2.8
-pkgrel=1
+pkgrel=2
 pkgdesc='A session manager for tmux written in Go'
 arch=('x86_64')
 url="https://github.com/ivaaaan/smug"
@@ -28,4 +28,5 @@ check() {
 package() {
   cd "$pkgname-$pkgver"
   install -Dm755 build/$pkgname "$pkgdir"/usr/bin/$pkgname
+  install -Dm644 man/man1/smug.1 "$pkgdir/usr/share/man/man1/smug.1"
 }
