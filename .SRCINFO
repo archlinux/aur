@@ -1,15 +1,15 @@
 pkgbase = ruby-oauth
 	pkgdesc = OAuth Core Ruby implementation
-	pkgver = 0.5.7
+	pkgver = 0.5.10
 	pkgrel = 1
 	url = https://github.com/oauth-xx/oauth-ruby
 	arch = any
 	license = MIT
 	makedepends = ruby-rdoc
 	depends = ruby
-	noextract = oauth-0.5.7.gem
+	noextract = oauth-0.5.10.gem
 	options = !emptydirs
-	source = https://rubygems.org/downloads/oauth-0.5.7.gem
-	sha256sums = f11449eb08708f6c9ea7e1ee02beb9d165a885de603cbf724af9b47295653520
+	source = https://rubygems.org/downloads/oauth-0.5.10.gem
+	sha256sums = c31c1f70825ae8a8f456618e7d7ed9092bef7f41878195530eeebfff56ee59ab
 
 pkgname = ruby-oauth
