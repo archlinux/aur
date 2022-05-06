@@ -3,8 +3,8 @@
 
 pkgname=claws-mail-gtk2
 _pkgname=claws-mail
-pkgver=3.18.0
-pkgrel=2
+pkgver=3.19.0
+pkgrel=1
 pkgdesc="A GTK+ based e-mail client."
 arch=('x86_64' 'i686')
 license=('GPL3')
@@ -38,7 +38,7 @@ provides=('claws' "$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 source=(https://www.claws-mail.org/download.php?file=releases/claws-mail-$pkgver.tar.xz{,.asc}
         bash_completion)
-sha256sums=('cb5819e66b4bb3bbd44eb79c58f516a932389367a7900554321c24b509ece6bb'
+sha256sums=('0d0c757a9975da1f97bf5309cd051c18ad6c765fefe9319276aa3a9e48229fa2'
             'SKIP'
             '3f6c248b8658cd7a62186bff572cce2525712a498f363cbbda1ed459021c28cb')
 validpgpkeys=('8B3B297A03468356692F8D592CD716D654D6BBD4') # Paul <paul@claws-mail.org>
@@ -53,7 +53,8 @@ build() {
     --enable-pgpmime-plugin \
     --enable-spamassassin-plugin \
     --enable-bogofilter-plugin
-  sed -i -e 's/ -shared / -Wl,-O1,--as-needed\0/g' libtool
+  # Fight unused direct deps
+  sed -i -e "s| -shared | $LDFLAGS\0 |g" libtool
   make
 }
 
