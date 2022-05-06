@@ -1,7 +1,7 @@
 pkgbase = perl-test-lwp-useragent
 	pkgdesc = A LWP::UserAgent suitable for simulating and testing network calls
-	pkgver = 0.033
-	pkgrel = 2
+	pkgver = 0.036
+	pkgrel = 1
 	url = https://metacpan.org/release/Test-LWP-UserAgent
 	arch = any
 	license = PerlArtistic
@@ -22,9 +22,8 @@ pkgbase = perl-test-lwp-useragent
 	depends = perl-uri>=1.62
 	depends = perl>=5.006
 	options = !emptydirs
-	source = http://search.cpan.org/CPAN/authors/id/E/ET/ETHER/Test-LWP-UserAgent-0.033.tar.gz
-	md5sums = 0ec577e7c12c5a1c56ad97822e0f46a6
-	sha512sums = d04dd50a5039149c81a80aabda741c9373601e1d84a878e9a48a77b476d3e2f69a604ad02776297bf99b1ce0bbb9d5a22b276389912fd3fc83964e3931217312
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETHER/Test-LWP-UserAgent-0.036.tar.gz
+	md5sums = 92c88afe67f9d2caf8b1cd75beae7457
+	sha512sums = 6cf34dbd9c6fee3ab25ee31a97694f24499c7f41cd3d08e915176235148e69729f9434d58da78645e306d966031d2807f333f9847ddcc53b33474e6e6bea9e8e
 
 pkgname = perl-test-lwp-useragent
-
