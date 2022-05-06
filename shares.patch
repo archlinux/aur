@@ -1,0 +1,11 @@
+--- src/shares.c	2009-12-09 10:42:09.000000000 +0000
++++ src/shares_fix.c	2022-03-28 07:17:53.061229610 +0000
+@@ -626,7 +626,7 @@
+ 		return FALSE;
+ 
+ 	argv[0] = "add";
+-	argv[1] = "-l";
++	argv[1] = "--long";
+ 	argv[2] = info->share_name;
+ 	argv[3] = info->path;
+ 	argv[4] = info->comment;
