@@ -2,12 +2,12 @@
 
 pkgname=tokei-bin
 pkgver=12.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Display statistics about your code"
 arch=('i686' 'x86_64' 'aarch64' 'arm' 'armv7h')
 url="https://github.com/XAMPPRocky/tokei"
 license=('apache' 'MIT')
-provides=('tokei')
+provides=("tokei=$pkgver")
 conflicts=('tokei')
 source=("https://raw.githubusercontent.com/XAMPPRocky/tokei/master/LICENCE-MIT")
 source_i686=("https://github.com/XAMPPRocky/tokei/releases/download/v$pkgver/tokei-i686-unknown-linux-musl.tar.gz")

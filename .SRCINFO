@@ -1,7 +1,7 @@
 pkgbase = tokei-bin
 	pkgdesc = Display statistics about your code
 	pkgver = 12.1.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/XAMPPRocky/tokei
 	arch = i686
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = tokei-bin
 	arch = armv7h
 	license = apache
 	license = MIT
-	provides = tokei
+	provides = tokei=12.1.2
 	conflicts = tokei
 	source = https://raw.githubusercontent.com/XAMPPRocky/tokei/master/LICENCE-MIT
 	sha256sums = SKIP
@@ -26,4 +26,3 @@ pkgbase = tokei-bin
 	sha256sums_armv7h = cfd9b2cf23fbe4f8693a87f1e7652126205e0ef3c79c05c38dfaff238d557e71
 
 pkgname = tokei-bin
-
