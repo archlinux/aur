@@ -1,0 +1,18 @@
+pkgbase = messenger-cli-git
+	pkgdesc = A command line interface for GNUnet Messenger
+	pkgver = r13.31f06ba
+	pkgrel = 1
+	url = https://gnunet.org
+	arch = i686
+	arch = x86_64
+	license = GPL
+	depends = gnunet
+	depends = libgnunetchat
+	depends = ncurses
+	provides = messenger-cli
+	conflicts = messenger-cli
+	conflicts = messenger-cli-bin
+	source = git+https://git.gnunet.org/messenger-cli.git
+	md5sums = SKIP
+
+pkgname = messenger-cli-git
