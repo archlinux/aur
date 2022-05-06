@@ -1,7 +1,7 @@
 # Maintainer: Tobias Beeh <tobias beeh at tum de>
 
 pkgname=eclipse-modeling-tools
-pkgver=2020_12
+pkgver=2022_03
 pkgrel=1
 pkgdesc="The Eclipse IDE with the Eclipse Modeling Tools as a standalone package (does not interfere with a standard Eclipse installation)"
 url="https://www.eclipse.org/modeling"
@@ -17,7 +17,7 @@ source=(
     "eclipse-modeling.desktop"
 )
 
-sha512sums=('8528b720bf9f5a19547c4258bf82c53bb58d6d9a62a1f02034665b10e2014b45697877c9e58e9428c28c2df4251b78659002f98e0fdc10929bfda7780f11db8d'
+sha512sums=('706de6304262b8dad57c5cb99cd915a82d8ea4c784e42d62bb6e84f8b286c30201c2a3e826d1413d184b746542ef72b00c344af03132bab5ec8856a5eb476ffe'
             'e3460b10b2424cec30ac05560451d9cd8cb221ba06e0781b3076e5fedbc2cc9756b3749691ed895349d0afb1f7da6910576e52a37a07490140e856210a1e03d0'
             '7662740ea565329b7a7960269c8e485a13016c39a5db16f5ba02290ce41aa6629b7effcfb472674d00c47b89114eea3c88ab755606ab68d35d0f4f4050e8a37e')
 
