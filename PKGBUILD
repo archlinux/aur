@@ -1,7 +1,7 @@
 # Contributor: ordoban <dirk.langer@vvovgonik.de>
 pkgname='perl-crypt-ecb'
-pkgver='2.21'
-pkgrel='2'
+pkgver='2.22'
+pkgrel='1'
 pkgdesc="Use block ciphers using ECB mode within perl scripts"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -10,10 +10,10 @@ depends=('perl')
 checkdepens=()
 makedepends=()
 url='https://metacpan.org/pod/Crypt::ECB'
-source=('https://cpan.metacpan.org/authors/id/A/AP/APPEL/Crypt-ECB-2.21.tar.gz')
-md5sums=('696e0658c344f5859f382dac7af92c3a')
-sha512sums=('3d02e4f4937c925fe98aca702928ac3b9119ca133fec631c51f640585577ea0e50f3ee93d31f3915c5282cbe4ea1803e7f047b12dfbb0f32250a73719b41cbbf')
-_distdir="Crypt-ECB-2.21"
+source=("https://cpan.metacpan.org/authors/id/A/AP/APPEL/Crypt-ECB-$pkgver.tar.gz")
+md5sums=('1930bfc9afefd65f50499e53781cb767')
+sha512sums=('1d186001674ed4a0ee6933e441cd20e177e63a5809abcf865d48041712f31db312f0206883601369f031451ab702f6f9ef8be5c3f1cec6088ad200f541c04459')
+_distdir="Crypt-ECB-$pkgver"
 
 build() {
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
