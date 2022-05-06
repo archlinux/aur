@@ -1,6 +1,6 @@
 pkgbase = drawio-desktop-bin
 	pkgdesc = Diagram drawing application built on web technology
-	pkgver = 17.4.2
+	pkgver = 18.0.1
 	pkgrel = 1
 	url = https://github.com/jgraph/drawio-desktop
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = drawio-desktop-bin
 	depends = nss
 	provides = drawio-desktop
 	conflicts = drawio-desktop
-	source = drawio-desktop-bin-17.4.2.deb::https://github.com/jgraph/drawio-desktop/releases/download/v17.4.2/drawio-amd64-17.4.2.deb
-	sha256sums = c75eb228a6acf5a835ed300a35dbe91bfccc3dd6fc9b26438845943117cafdd9
+	source = drawio-desktop-bin-18.0.1.deb::https://github.com/jgraph/drawio-desktop/releases/download/v18.0.1/drawio-amd64-18.0.1.deb
+	sha256sums = 2ef085dfe5eda3096cca644d89eafef10ebf4ebaf3990b4c9ecd802c3f70a776
 
 pkgname = drawio-desktop-bin
