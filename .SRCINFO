@@ -1,6 +1,6 @@
 pkgbase = giph-git
 	pkgdesc = video recorder that records the desktop, a window or a selection
-	pkgver = 1.1.1.r0.gcf0eb7f
+	pkgver = 1.1.1.r6.g6cee978
 	pkgrel = 1
 	url = https://github.com/phisch/giph
 	arch = any
@@ -14,8 +14,7 @@ pkgbase = giph-git
 	optdepends = procps-ng: for pgrep used in the --stop flag
 	provides = giph
 	conflicts = giph
-	source = giph-git::git://github.com/phisch/giph.git
+	source = giph-git::git+https://github.com/phisch/giph.git
 	sha256sums = SKIP
 
 pkgname = giph-git
-
