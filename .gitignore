@@ -1,0 +1,5 @@
+/src/
+/pkg/
+/*.tgz
+/*.pkg.tar.zst
+setup-deb-64

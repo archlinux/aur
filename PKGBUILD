@@ -1,6 +1,6 @@
 # Maintainer: Gabriel Cangussu <gabrielcangussu g-mail>
 pkgname=lacuna-webpki
-pkgver=2.11.6
+pkgver=2.11.8
 pkgrel=1
 pkgdesc="The Lacuna WebPKI native application. An easy solution for using digital certificates in Web applications."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('desktop-file-utils' 'glib2' 'gtk3>=3.6' 'hicolor-icon-theme' 'xdg-util
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 source_x86_64=("https://get.webpkiplugin.com/Downloads/${pkgver}/setup-deb-64")
-sha512sums_x86_64=('d32d494ae58d306164499ad9c8c956edb4d6126024d037827befe867563fe0eed255a06f10c1941062394cc9a2779eb5324da0acc572eefa9eb7000651b5b5ab')
+sha512sums_x86_64=('fce3e35c6184bd6ab1a53d95ce0e8f04a3a30a1bc0f3011c52db921694d5311c63564e58b9b4b60b9b5ab6d6430e1438b1e16cde157991dc61b6babe66567d7f')
 
 package(){
 	# Extract package data
