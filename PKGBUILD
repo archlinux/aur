@@ -2,7 +2,7 @@
 pkgname=python-numpy-mkl-bin
 _pkgname=numpy-base
 _pkgver=1.21.5
-_build=py310h9585f30_1
+_build=py310h9585f30_2
 pkgver="${_pkgver}.anaconda${_build##*_}"
 pkgrel=1
 pkgdesc="Scientific tools for Python - with Intel MKL - prebuilt binaries from Anaconda"
@@ -14,7 +14,7 @@ conflicts=('python-numpy')
 depends=('python-mkl-service')
 makedepends=('jq')
 source=("https://repo.anaconda.com/pkgs/main/linux-64/${_pkgname}-${_pkgver}-${_build}.tar.bz2")
-sha256sums=('58feb3d333af26285e165e3cd568451ade0ea9e3e76c4523e1da55ced8834e34')
+sha256sums=('ee20583430e3bfc7e7c963c4e13d3a5577db08a0f954ced81b09cf461bb3b717')
 
 prepare() {
   # Prefix replacement
