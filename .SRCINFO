@@ -1,0 +1,18 @@
+pkgbase = system76-scheduler
+	pkgdesc = system76 userspace scheduler
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://github.com/pop-os/system76-scheduler
+	install = install.sh
+	arch = x86_64
+	license = MPL-2
+	makedepends = git
+	makedepends = rust
+	makedepends = make
+	provides = system76-scheduler
+	conflicts = system76-scheduler-git
+	backup = etc/system76-scheduler/assignments/default.ron
+	source = https://github.com/pop-os/system76-scheduler/archive/refs/tags/1.1.0.tar.gz
+	sha256sums = SKIP
+
+pkgname = system76-scheduler
