@@ -1,7 +1,7 @@
 # Contributer: abcfy2 <abcfy2@163.com>
 
 pkgname=('deepin-wine6-stable' 'deepin-wine6-stable-i386' 'deepin-wine6-stable-amd64')
-pkgver=6.0.0.19
+pkgver=6.0.0.24
 pkgrel=1
 pkgdesc="Deepin wine6 stable"
 arch=('x86_64')
@@ -9,18 +9,18 @@ url="http://www.deepin.org"
 license=('Proprietary')
 makedepends=('tar')
 source=(
-    "https://community-store-packages.deepin.com/appstore/pool/appstore/d/deepin-wine6-stable/deepin-wine6-stable_${pkgver}-${pkgrel}_amd64.deb"
-    "https://community-store-packages.deepin.com/appstore/pool/appstore/d/deepin-wine6-stable/deepin-wine6-stable-amd64_${pkgver}-${pkgrel}_amd64.deb"
-    "https://community-store-packages.deepin.com/appstore/pool/appstore/d/deepin-wine6-stable/deepin-wine6-stable-i386_${pkgver}-${pkgrel}_i386.deb"
+    "https://com-store-packages.uniontech.com/appstore/pool/appstore/d/deepin-wine6-stable/deepin-wine6-stable_${pkgver}-${pkgrel}_amd64.deb"
+    "https://com-store-packages.uniontech.com/appstore/pool/appstore/d/deepin-wine6-stable/deepin-wine6-stable-amd64_${pkgver}-${pkgrel}_amd64.deb"
+    "https://com-store-packages.uniontech.com/appstore/pool/appstore/d/deepin-wine6-stable/deepin-wine6-stable-i386_${pkgver}-${pkgrel}_i386.deb"
 )
 noextract=(
     "deepin-wine6-stable_${pkgver}-${pkgrel}_amd64.deb"
     "deepin-wine6-stable-amd64_${pkgver}-${pkgrel}_amd64.deb"
     "deepin-wine6-stable-i386_${pkgver}-${pkgrel}_i386.deb"
 )
-sha256sums=('e0c0b52b8467646d9a1e10a0feec20dfc98bc111efd999540619ba4ab1a2910f'
-            'c49e12504699f36836f138c035c1e6067278760c51843e3132f63581d74be817'
-            '7456c846388676f568290601663afaa3ef75659d45c3d9f6df442f71e450ac2f')
+sha256sums=('5d4ce070001d3b1ca90d5ff5d810101c34dc923da8579a90b9905ee1c46dccfc'
+            'bee9a50ed58fd5a7c140d1ba17812586b3d4e42bbb7553b368151f31e591b001'
+            'ec1592e9786b38e6322df3402cf70d28687dceb0e4b70b6129411730d8ae2323')
 
 package_deepin-wine6-stable() {
     depends=("deepin-wine6-stable-i386=$pkgver" "deepin-wine6-stable-amd64=$pkgver")
