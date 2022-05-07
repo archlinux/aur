@@ -1,12 +1,12 @@
 # Maintainer: Sanpi <sanpi+aur@homecomputing.fr>
 pkgname='qmapshack-git'
 pkgver=1.16.1.r11.g2bf08eb5
-pkgrel=1
+pkgrel=2
 pkgdesc='Plan your next outdoor trip'
 arch=('x86_64')
 url='https://github.com/Maproom/qmapshack/wiki'
 license=('GPL3')
-depends=('alglib' 'gdal' 'proj' 'qt5-tools' 'qt5-webengine' 'quazip' 'routino>=3.1')
+depends=('alglib' 'dav1d' 'gdal' 'proj' 'qt5-tools' 'qt5-webengine' 'quazip' 'routino>=3.1')
 makedepends=('cmake' 'git')
 conflicts=('qmapshack')
 provides=('qmapshack')

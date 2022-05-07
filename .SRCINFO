@@ -1,13 +1,14 @@
 pkgbase = qmapshack-git
 	pkgdesc = Plan your next outdoor trip
 	pkgver = 1.16.1.r11.g2bf08eb5
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Maproom/qmapshack/wiki
 	arch = x86_64
 	license = GPL3
 	makedepends = cmake
 	makedepends = git
 	depends = alglib
+	depends = dav1d
 	depends = gdal
 	depends = proj
 	depends = qt5-tools
