@@ -1,0 +1,250 @@
+﻿fastcluster: Fast hierarchical clustering routines for R and Python
+
+Copyright:
+  • Until package version 1.1.23: © 2011 Daniel Müllner <http://danifold.net>
+  • All changes from version 1.1.24 on: © Google Inc. <http://google.com>
+
+
+Version history
+‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
+Version 1.0.0, 03/14/2011:
+
+  • Initial release, dependent on Rcpp. Not available on CRAN.
+
+Version 1.0.1, 03/15/2011:
+
+  • Removed the dependence on Rcpp; only R's original C interface is used.
+
+Version 1.0.2, 03/17/2011:
+
+  • File DESCRIPTION: Fixed a typo
+
+Version 1.0.3, 03/20/2011:
+
+  • File README: Removed the warning about false results from the flashClust
+    package since the new flashClust version 1.01 has this error corrected.
+
+  • Cleaned the test file fastcluster_test.R up. (No dependence on the MASS
+    package any more)
+
+Version 1.0.4, 03/21/2011:
+
+  • Changed the name of the external function from the outdated "Rcpp_linkage"
+    to "fastcluster".
+
+  • Registered the external function "fastcluster" in R.
+
+  • Configured the C header inclusions to work on Fedora (thanks to Peter
+    Langfelder).
+
+Version 1.1.0, 08/21/2011
+
+  • Routines for clustering vector data.
+
+  • Added a User's manual
+
+  • Revision of all files
+
+Version 1.1.1, 10/08/2011
+
+  • Fixed test scripts, which indicated an error on some architectures, even
+    if results were correct. (The assumption was that ties in single linkage
+    clustering are resolved in the same way, both for dissimilarity input and
+    for vector input. This is not necessarily true if the floating point unit
+    uses "excess precision". Now the test scripts are content with arbitrary
+    resolution of ties and do not assume a specific scheme.)
+
+  • Bug fix: uninitialized function pointer in Version 1.1.0
+
+Version 1.1.2, 10/11/2011
+
+  • Fix for Solaris: replaced ssize_t by ptrdiff_t in the C++ code.
+
+  • Removed the NN-chain algorithm for vector input: it was not clear that
+    it would work under all circumstances with the intricacies of floating-
+    point arithmetic. Especially the effects of the excess precision on the
+    x87 are impossible to control in a portable way. Now, the memory-saving
+    routines for the “Ward” linkage use the generic algorithm, as “centroid”
+    and “median” linkage do.
+
+Version 1.1.3, 12/10/2011
+
+  • Replaced ptrdiff_t by std::ptrdiff_t, as GCC 4.6.1 complains about this.
+
+Version 1.1.4, 02/01/2012
+
+  • Release the GIL in the Python package, so that it can be used efficiently
+    in multithreaded applications.
+
+  • Improved performance for the "Ward" method with vector input.
+
+  • The "members" parameter in the R interface is now treated as a double
+    array, not an integer array as before. This was a slight incompatibility
+    with the stats::hclust function. Thanks to Matthias Studer, University of
+    Geneva, for pointing this out.
+
+Version 1.1.5, 02/14/2012
+
+  • Updated the "members" specification in the User's manual to reflect the
+    recent change.
+
+Version 1.1.6, 03/12/2012
+
+  • Bug fix related to GIL release in the Python wrapper. Thanks to Massimo
+    Di Stefano for the bug report.
+
+  • Small compatibility changes in the Python test scripts (again thanks to
+    Massimo Di Stefano for the report).
+
+Version 1.1.7, 09/17/2012
+
+  • Scipy import is now optional (suggested by Forest Gregg)
+
+  • Compatibility fix for NumPy 1.7. Thanks to Semihcan Doken for the bug
+    report.
+
+Version 1.1.8, 08/28/2012
+
+  • Test for NaN dissimilarity values: Now the algorithms produce an error
+    message instead of silently giving false results. The documentation was
+    updated accordingly. This is the final design as intended: the fastcluster
+    package handles infinity values correctly but complains about NaNs.
+
+  • The Python interface now works with both Python 2 and Python 3.
+
+  • Changed the license to BSD.
+
+Version 1.1.9, 03/15/2013
+
+  • Compatibility fix for the MSVC compilers on Windows.
+
+  • Simplified GIL release in the Python interface.
+
+Version 1.1.10, 05/22/2013
+
+  • Updated citation information (JSS paper).
+
+  • Suppress warnings where applicable. Compilation with GCC should
+    not produce any warning at all, even if all compiler warnings
+    are enabled. (The switch -pedantic still does not work, but this
+    is due to the Python headers.)
+
+  • Optimization: Hidden symbols. Only the interface functions are
+    exported to the symbol table with GCC.
+
+Version 1.1.11, 05/23/2013
+
+  • Compatibility fix for Solaris.
+
+Version 1.1.12, 12/10/2013
+
+  • Tiny maintenance updates: new author web page and e-mail address,
+    new location for R vignette.
+
+Version 1.1.13, 12/17/2013
+
+  • Moved the "python" directory due to CRAN requirements.
+
+Version 1.1.14, 01/02/2015
+
+  • Updated the DESCRIPTION file according to CRAN rules.
+  • Renamed the “ward” method for dissimilarity input to “ward.D” in the R
+    interface and created a new method “ward.D2”, following changes in R's
+    hclust package.
+
+Version 1.1.15, 01/05/2015
+
+  • Fixed the unit test to work with old and new R versions (see the changes
+    in stats::hclust in R 3.1.0).
+
+Version 1.1.16, 01/07/2015
+
+  • Support for large distance matrices (more than 2^31 entries, R's long
+    vector support since version 3.0.0).
+
+Version 1.1.17, 07/03/2015
+
+  • Resolved MSVC compiler warnings.
+
+Version 1.1.18, 07/16/2015
+
+  • Fixed missing NumPy header include path.
+
+Version 1.1.19, 07/19/2015
+
+  • Fixed unit tests. They can be run with "python setup.py test" now.
+
+Version 1.1.20, 07/19/2015
+
+  • New version number due to PyPI upload error.
+
+Version 1.1.21, 09/18/2016
+
+  • Appropiate use of std namespace, as required by CRAN.
+
+Version 1.1.22, 06/12/2016
+
+  • No fenv header usage if software floating-point emulation is used (bug
+    report: NaN test failed on Debian armel).
+
+Version 1.1.23, 03/24/2017
+
+  • setup.py: Late NumPy import for better dependency management.
+
+Version 1.1.24, 08/04/2017
+
+ • R 3.5 corrects the formula for the “Canberra” metric. See
+   https://bugs.r-project.org/bugzilla/show_bug.cgi?id=17285.
+   The formula in the fastcluster package was changed accordingly. This
+   concerns only the R interface. SciPy and fastcluster's Python interface
+   always had the correct formula.
+
+Version 1.1.25, 05/27/2018
+
+ • Removed all “#pragma GCC diagnostic” directives in .cpp files due to changed
+   CRAN requirements (CRAN repository only, not the GitHub repository).
+ • Updated build scripts for Python 3.7 (thanks to Forest Gregg).
+ • Simplified setup.py.
+ • Updated and corrected documentation.
+
+Version 1.1.26, 12/30/2019
+
+• Small updates for Python 3.8.
+
+Version 1.1.27, 01/20/2021
+
+• Updated NumPy dependency for Python 3.9.
+
+Version 1.1.28, 02/03/2021
+
+• Replace deprecated “numpy.bool” and “numpy.int” by “bool” and “int”.
+
+Version 1.2.0, 05/23/2021
+
+• Dropped support for Python 2.
+• Python interface: Updated definition of the Yule distance function, following
+  a change in SciPy 1.6.3.
+
+Version 1.2.1, 05/24/2021
+
+• Documentation update.
+
+Version 1.2.2, 05/24/2021
+
+• Documentation update.
+
+Version 1.2.3, 05/24/2021
+
+• Fixed #pragma in fastcluster.cpp.
+
+Version 1.2.4, 08/21/2021
+
+• Fixed NumPy versions in Travis builds.
+
+Version 1.2.5, 02/26/2022
+
+• Updated pyproject.toml to work with Python 3.10 and future Python versions.
+
+Version 1.2.6, 02/27/2022
+
+• Move to GitHub action for CI. No code changes.
