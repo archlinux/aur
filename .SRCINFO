@@ -1,0 +1,16 @@
+pkgbase = timetrackrs-git
+	pkgdesc = automatically track your pc usage with custom data processing. inspired by arbtt.
+	pkgver = 0.1.0.r6.gd33a51a
+	pkgrel = 1
+	url = https://github.com/phiresky/timetrackrs
+	arch = x86_64
+	license = AGPL
+	makedepends = git
+	makedepends = cargo
+	makedepends = yarn
+	provides = timetrackrs
+	conflicts = timetrackrs
+	source = timetrackrs::git+https://github.com/phiresky/timetrackrs.git
+	md5sums = SKIP
+
+pkgname = timetrackrs-git
