@@ -1,6 +1,6 @@
 pkgbase = dra
 	pkgdesc = A command line tool to download assets from GitHub releases
-	pkgver = 0.3.3
+	pkgver = 0.3.4
 	pkgrel = 1
 	url = https://github.com/devmatteini/dra
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = dra
 	makedepends = cargo
 	depends = gcc-libs
 	options = !lto
-	source = dra-0.3.3.tar.gz::https://github.com/devmatteini/dra/archive/0.3.3.tar.gz
-	sha512sums = 42bc3c4cba486fa3e4ed47ad2ebf37c95911a5d6f0f022196182098c8cba6620f529a86cc05f269bef613a5e81d2db3abba745f22755f832acb04fc4f95121b8
+	source = dra-0.3.4.tar.gz::https://github.com/devmatteini/dra/archive/0.3.4.tar.gz
+	sha512sums = 6371b3422e088cad71706bd21dccd98cee54a0fc82009f619e030d099d519396a3ad3030a2e30e6f5418f497fcf828539f3075019acf28df1d4ed9dc2b5cf5f9
 
 pkgname = dra
