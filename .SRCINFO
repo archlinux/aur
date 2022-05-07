@@ -1,7 +1,7 @@
 pkgbase = jasper-git
 	pkgdesc = Implementation of the JPEG-2000 Part-1 standard codec (git version)
 	pkgver = 3.0.3.r6.g411571c
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.ece.uvic.ca/~mdadams/jasper/
 	arch = x86_64
 	license = custom:JasPer2.0
@@ -34,7 +34,6 @@ pkgbase = jasper-git
 pkgname = jasper-git
 	depends = glibc
 	depends = libjpeg
-	depends = libjpeg.so
 	depends = libheif
 	optdepends = jasper-doc-git: documentation
 	optdepends = freeglut: jiv support

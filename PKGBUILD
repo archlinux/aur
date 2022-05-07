@@ -5,7 +5,7 @@
 pkgbase=jasper-git
 pkgname=('jasper-git' 'jasper-doc-git')
 pkgver=3.0.3.r6.g411571c
-pkgrel=1
+pkgrel=2
 pkgdesc='Implementation of the JPEG-2000 Part-1 standard codec (git version)'
 url='https://www.ece.uvic.ca/~mdadams/jasper/'
 arch=('x86_64')
@@ -83,7 +83,7 @@ check() {
 }
 
 package_jasper-git() {
-  depends=('glibc' 'libjpeg' 'libjpeg.so' 'libheif')
+  depends=('glibc' 'libjpeg' 'libheif')
   optdepends=('jasper-doc-git: documentation'
               'freeglut: jiv support'
               'glu: jiv support')
