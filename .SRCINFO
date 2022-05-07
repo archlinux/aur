@@ -1,0 +1,23 @@
+pkgbase = vdr-channeleditor
+	pkgdesc = Editor for VDR channels.conf (written in Java)
+	pkgver = 1.9.2.1
+	pkgrel = 1
+	url = https://sites.google.com/site/reniershomepage/channeleditor
+	arch = any
+	license = GPL2
+	makedepends = ant
+	makedepends = dos2unix
+	makedepends = gendesk
+	depends = java-runtime
+	source = vdr-channeleditor-1.9.2.1.tar.gz::https://sourceforge.net/projects/channeleditor/files/channeleditor/1.9.2/channeleditor_1.9.2.1_src.tar.gz/download
+	source = build.xml
+	source = messages.properties.patch
+	source = messages_en.properties.patch
+	source = icon.svg
+	sha256sums = 590ef8daa83244833136f317fc5599c7d998a186ee4f76c9953e4546605435d8
+	sha256sums = 78e628bff081096eed6220366352c0ac02603d674a20fb9333ad9e191b312976
+	sha256sums = 3759fc5a5f8784593015fcc47ab6466fbb40d7110d3dc9e3eeca32b3186a6d42
+	sha256sums = 60543cc1571a4194fa662ad1a62c88529c977f0c50a0f1d114730d063cd48fef
+	sha256sums = 9b4dd712c93fab7ed923116eca9e9dfbfc5330ab1c148ad3c4f31f82d0e40cd3
+
+pkgname = vdr-channeleditor
