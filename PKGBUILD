@@ -13,8 +13,8 @@
 # Marco Trevisan: <https://salsa.debian.org/gnome-team/mutter/-/blob/ubuntu/master/debian/patches/x11-Add-support-for-fractional-scaling-using-Randr.patch>
 
 pkgname=mutter-x11-scaling
-pkgver=42.0
-pkgrel=4
+pkgver=42.1
+pkgrel=1
 pkgdesc="A window manager for GNOME with X11 fractional scaling patch"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -29,14 +29,14 @@ checkdepends=(xorg-server-xvfb wireplumber python-dbusmock)
 options=(debug)
 provides=(mutter libmutter-10.so)
 conflicts=(mutter)
-_scaling_commit=0b41b3dfc234e29e7b049e08c41593baab89f6b7 # Commit 0b41b3df
-_commit=9249aba72a5c4454894c08735a4963ca1665e34d  # tags/42.0^0
+_scaling_commit=dcf6b2a1d0292c46036086c617cdbcbae7ee88c1 # Commit dcf6b2a1
+_commit=94bd385bf3ece2a746d8755049fc1fa5c8c0a808  # tags/42.1^0
 source=("git+https://gitlab.gnome.org/GNOME/mutter.git#commit=$_commit"
 	"x11-Add-support-for-fractional-scaling-using-Randr.patch::https://salsa.debian.org/gnome-team/mutter/-/raw/$_scaling_commit/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch"
-	"Support-Dynamic-triple-double-buffering.patch::https://salsa.debian.org/gnome-team/mutter/-/raw/f57e36e25ec2db36498b5b630638c67f25eef03a/debian/patches/Support-Dynamic-triple-double-buffering.patch")
+	"Support-Dynamic-triple-double-buffering.patch::https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/1001a44d8db27e130e883561a90ea6dc399490fa/Support-Dynamic-triple-double-buffering.patch")
 sha256sums=('SKIP'
-            'ca02dd8479ddfedeabbe2581b52591c2180cba9b0a34515bf1489cc71b974793'
-            '9cd474af41c2b51d9c4c3da37b0d0b8edd51953e021ad64f3546d0b4f2db2636')
+            '92515a44539e410783a4c5f8de5d0199820e953654bbc6f5328f92dc605a00ae'
+            '62cf931276689bf8be9e92b601d05323e7cc4478215a8ffd5266cb5c0d33e958')
 
 pkgver() {
   cd mutter
@@ -45,12 +45,6 @@ pkgver() {
 
 prepare() {
   cd mutter
-
-  # Fix Dash-to-dock not autohiding
-  git cherry-pick -n 2aad56b949b8 0280b0aaa563
-
-  # https://bugs.archlinux.org/task/74360
-  git cherry-pick -n f9857cb8bd7af20e819283917ae165fa40c19f07
 
   # Add scaling support using randr under x11 and dynamic triple buffering support
   patch -p1 -i "${srcdir}/x11-Add-support-for-fractional-scaling-using-Randr.patch"

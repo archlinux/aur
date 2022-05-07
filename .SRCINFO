@@ -1,7 +1,7 @@
 pkgbase = mutter-x11-scaling
 	pkgdesc = A window manager for GNOME with X11 fractional scaling patch
-	pkgver = 42.0
-	pkgrel = 4
+	pkgver = 42.1
+	pkgrel = 1
 	url = https://gitlab.gnome.org/GNOME/mutter
 	arch = x86_64
 	license = GPL
@@ -37,11 +37,11 @@ pkgbase = mutter-x11-scaling
 	provides = libmutter-10.so
 	conflicts = mutter
 	options = debug
-	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=9249aba72a5c4454894c08735a4963ca1665e34d
-	source = x11-Add-support-for-fractional-scaling-using-Randr.patch::https://salsa.debian.org/gnome-team/mutter/-/raw/0b41b3dfc234e29e7b049e08c41593baab89f6b7/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch
-	source = Support-Dynamic-triple-double-buffering.patch::https://salsa.debian.org/gnome-team/mutter/-/raw/f57e36e25ec2db36498b5b630638c67f25eef03a/debian/patches/Support-Dynamic-triple-double-buffering.patch
+	source = git+https://gitlab.gnome.org/GNOME/mutter.git#commit=94bd385bf3ece2a746d8755049fc1fa5c8c0a808
+	source = x11-Add-support-for-fractional-scaling-using-Randr.patch::https://salsa.debian.org/gnome-team/mutter/-/raw/dcf6b2a1d0292c46036086c617cdbcbae7ee88c1/debian/patches/ubuntu/x11-Add-support-for-fractional-scaling-using-Randr.patch
+	source = Support-Dynamic-triple-double-buffering.patch::https://raw.githubusercontent.com/puxplaying/mutter-x11-scaling/1001a44d8db27e130e883561a90ea6dc399490fa/Support-Dynamic-triple-double-buffering.patch
 	sha256sums = SKIP
-	sha256sums = ca02dd8479ddfedeabbe2581b52591c2180cba9b0a34515bf1489cc71b974793
-	sha256sums = 9cd474af41c2b51d9c4c3da37b0d0b8edd51953e021ad64f3546d0b4f2db2636
+	sha256sums = 92515a44539e410783a4c5f8de5d0199820e953654bbc6f5328f92dc605a00ae
+	sha256sums = 62cf931276689bf8be9e92b601d05323e7cc4478215a8ffd5266cb5c0d33e958
 
 pkgname = mutter-x11-scaling
