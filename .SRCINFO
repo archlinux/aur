@@ -5,6 +5,14 @@ pkgbase = arm-image-installer
 	url = https://pagure.io/arm-image-installer
 	arch = any
 	license = GPL2
+	depends = btrfs-progs
+	depends = e2fsprogs
+	depends = libselinux
+	depends = parted
+	depends = sudo
+	depends = util-linux
+	depends = xfsprogs
+	depends = xz
 	source = https://pagure.io/arm-image-installer/archive/arm-image-installer-3.6/arm-image-installer-arm-image-installer-3.6.tar.gz
 	md5sums = ae245159505c79fef4e1e45c21f5fec8
 

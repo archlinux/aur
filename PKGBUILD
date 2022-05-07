@@ -6,6 +6,7 @@ pkgdesc="Install and manipulate ARM disk images"
 arch=(any)
 url="https://pagure.io/arm-image-installer"
 license=(GPL2)
+depends=('btrfs-progs' 'e2fsprogs' 'libselinux' 'parted' 'sudo' 'util-linux' 'xfsprogs' 'xz')
 source=(https://pagure.io/arm-image-installer/archive/arm-image-installer-$pkgver/arm-image-installer-arm-image-installer-$pkgver.tar.gz)
 md5sums=('ae245159505c79fef4e1e45c21f5fec8')
 
