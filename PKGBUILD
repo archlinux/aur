@@ -1,5 +1,5 @@
 pkgname=fheroes2
-pkgver=0.9.14
+pkgver=0.9.15
 pkgrel=1
 pkgdesc="Free Heroes of Might and Magic II (fheroes2) is a recreation of HoMM2 game engine"
 arch=('i686' 'x86_64' 'armv7h')
@@ -14,13 +14,11 @@ conflicts=('fheroes2-git' 'fheroes2-svn')
 source=(
   $pkgname-$pkgver.tar.gz::https://github.com/ihhub/$pkgname/archive/$pkgver.tar.gz
 )
-md5sums=(
-  '5e963f889d22a8e1ca7d775231d0bc67'
-)
+md5sums=('9c12a7a206230ce04c55f8fe8294c740')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  FHEROES2_WITH_IMAGE=1 FHEROES2_DATA=/usr/share/fheroes2 make 
+  FHEROES2_DATA=/usr/share/fheroes2 FHEROES2_WITH_IMAGE=1 make
   make -C files/lang
 }
 
@@ -35,7 +33,6 @@ package() {
   install -dm755                                            "$pkgdir/usr/share/fheroes2/maps"
   install -Dm755 "script/demo/download_demo_version.sh"     "$pkgdir/usr/share/fheroes2/download_demo_version.sh"
   install -Dm755 "script/homm2/extract_homm2_resources.sh"  "$pkgdir/usr/share/fheroes2/extract_homm2_resources.sh"
-  install -Dm644 "fheroes2.key"                             "$pkgdir/usr/share/fheroes2/fheroes2.key"
   install -Dm644 src/resources/fheroes2.png                 "$pkgdir/usr/share/pixmaps/fheroes2.png"
 }
 
