@@ -1,8 +1,8 @@
 # Maintainer: Spacingbat3 <git@spacingbat3.anonaddy.com> (https://github.com/spacingbat3)
 pkgname=webcord-git
-pkgver=3.1.3.r459.964e2e1
-pkgrel=2
-pkgdesc="A Discord and Fosscord API-less client made with the Electron."
+pkgver=3.1.3.r460.f89f426
+pkgrel=1
+pkgdesc="A Discord and Fosscord client made with the Electron."
 arch=("any")
 
 _repo="WebCord"
@@ -16,7 +16,7 @@ conflicts=("${pkgname%-git}")
 source=("${pkgname%-git}::git+https://github.com/${_author}/${_repo}.git"
     "${pkgname%-git}.desktop")
 md5sums=('SKIP'
-         '85d234a65c69f3cf817fac5c54c194c8')
+         'c420b0dd4b9a360b0b2f35840f562e39')
 
 _TIMES='1'
 _TIMES_MAX='?'

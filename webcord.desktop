@@ -4,12 +4,18 @@ Type=Application
 Name=WebCord
 GenericName=Instant Messenger
 GenericName[pl]=Komunikator internetowy
-Comment=Discord web app that uses the Electron API
-Comment[pl]=Aplikacja internetowa Discorda wykorzystująca API Elektron'a
+Comment=Discord and Fosscord client based on Electron framework.
+Comment[pl]=Klient Discord'a i Fosscord'a oparty o framework: „Electron”.
 Exec=webcord
 Icon=webcord
-Categories=Network;Chat;InstantMessaging;
-Keywords=Electron;Web;Talk;Chat;Message;Internet;Screen share;Meeting
-Keywords[pl]=Electron;Sieć;Rozmowa;Czat;Wiadomość;Internet;Przesyłanie ekranu;Spotkanie
+Categories=Network;Chat;InstantMessaging
+Keywords=Electron;Web;Talk;Chat;Message;Internet;Screen share;Meeting;Fosscord
+Keywords[pl]=Electron;Sieć;Rozmowa;Czat;Wiadomość;Internet;Przesyłanie ekranu;Spotkanie;Fosscord
 Terminal=false
 StartupNotify=false
+Actions=StartHidden
+
+[Desktop Action StartHidden]
+Name=Start hidden in system tray
+Name[pl]=Uruchom ukrywając w zasobniku systemowym.
+Exec=webcord -m
