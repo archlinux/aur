@@ -4,7 +4,7 @@ _cranname=vdiffr
 _cranver=1.0.4
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="Visual Regression Testing and Graphical Diffing"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
@@ -17,8 +17,8 @@ depends=(
     r-rlang
     r-testthat
     r-xml2
-    r-cpp11
 )
+makedepends=(r-cpp11)
 checkdepends=(r-ggplot2)
 optdepends=(
     r-covr
