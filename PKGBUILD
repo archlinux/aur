@@ -4,7 +4,7 @@
 #       Guidelines (as there will never be a source release)
 pkgname=rtt-rstudio
 pkgver=5.0.5007
-pkgrel=4
+pkgrel=5
 # INFO: Full publisher-provided description for reference:
 #   R-Studio is a powerful cost-effective undelete and data recovery software utility.
 #   Empowered by the new unique data recovery technologies, it is the most comprehensive
@@ -15,7 +15,6 @@ pkgrel=4
 #   Flexible parameter settings give you absolute control over data recovery.
 pkgdesc="R-Studio is a powerful cost-effective undelete and data recovery software utility (non-free)."
 arch=('x86_64' 'i686')
-# INFO: for further reference, see: "https://www.r-studio.com/downloads/Linux_Recovery_Manual.pdf"
 url="http://www.r-studio.com/data_recovery_linux/"
 license=('custom')
 depends=(
@@ -24,10 +23,16 @@ depends=(
 )
 provides=('r-studio-for-linux-bin')
 conflicts=('r-studio-for-linux-bin')
-source=("${pkgname}-eula.html::https://www.r-studio.com/includes/eula/PopupEulaDRC.shtml?R-Studio%20for%20Linux")
+source=(
+  "${pkgname}-eula.html::https://www.r-studio.com/includes/eula/PopupEulaDRC.shtml?R-Studio%20for%20Linux"
+  "${pkgname}-usage-recovery-manual.pdf::https://www.r-studio.com/downloads/Linux_Recovery_Manual.pdf"
+)
 source_x86_64=("https://www.r-studio.com/downloads/RStudio5_x64.rpm")
 source_i686=("https://www.r-studio.com/downloads/RStudio5_i386.rpm")
-sha512sums=('fc35d65f69d850ccdbff1a7c87fa7745f609556d777266eec81349b885f4e24c3a5421c7df7979bf9e41dc3dc17a7861aa12575805084232118a5ffb40592545')
+sha512sums=(
+  'fc35d65f69d850ccdbff1a7c87fa7745f609556d777266eec81349b885f4e24c3a5421c7df7979bf9e41dc3dc17a7861aa12575805084232118a5ffb40592545'
+  '40af753652abf76b16075e7faf1005626bc6b49437de75b0c443e8de7cd5fef846de0ad30f72330a5a5ca4cd7cce2c436794a731bfb787f9768323a30917fef9'
+)
 sha512sums_x86_64=('b08696f4c0fc6981a95b9c30b8ee096cd574701a1729b0e1042d3cd110c2a40330fa802b644661983aa491f3fd1e93a89b6b1687126868aa3384fc9e49d1d7eb')
 sha512sums_i686=('47b9023def6ebf7154cae8366c8203a8dab766ae1567514b2ab629d66ec86b557578f99eb4a34b9bde9f5d2550d243e05265a157aecb16b79c75339e393356fa')
 
@@ -66,4 +71,7 @@ package() {
 
   # install end-user license agreement
   install -D -m644 "${srcdir}/${pkgname}-eula.html" "${pkgdir}/usr/share/licenses/${pkgname}/${pkgname}-eula.html"
+
+  # install usage / recovery manual
+  install -D -m644 "${srcdir}/${pkgname}-usage-recovery-manual.pdf" "${pkgdir}/usr/share/doc/${pkgname}/${pkgname}-usage-recovery-manual.pdf"
 }
