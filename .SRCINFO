@@ -1,7 +1,7 @@
 pkgbase = crow
 	pkgdesc = A Fast and Easy to use C++ microframework for the web.
-	pkgver = 1.0+2
-	pkgrel = 2
+	pkgver = 1.0+3
+	pkgrel = 1
 	url = https://crowcpp.org
 	changelog = changelog.md
 	arch = any
@@ -11,8 +11,8 @@ pkgbase = crow
 	optdepends = zlib: HTTP compression support
 	optdepends = cmake: Choose this if you plan on using CMake for your Crow project
 	conflicts = crow-git
-	source = https://github.com/CrowCpp/crow/releases/download/v1.0+2/crow-v1.0+2.tar.gz
-	md5sums = 6ed49d015253f7bfe70b66dcd3051282
-	sha256sums = 09e752a96aff6e233871308db7186b8a3f23b786c821ad9b3a900befc680d841
+	source = https://github.com/CrowCpp/crow/releases/download/v1.0+3/crow-v1.0+3.tar.gz
+	md5sums = 9e5bbbf5e32a12f547268da7579b00bd
+	sha256sums = 49e6e1162457cd4da49da76c50af3e725d6f7d1f4698bef44d65563f06514fa4
 
 pkgname = crow
