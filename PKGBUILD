@@ -2,7 +2,7 @@
 # Maintainer: Mikhail f. Shiryaev <mr dot felixoid at gmail dot com>
 
 pkgname=clickhouse
-pkgver=22.2.2.1
+pkgver=22.4.5.9
 pkgrel=1
 pkgdesc='An open-source column-oriented database management system that allows generating analytical data reports in real time'
 arch=('x86_64')
@@ -15,14 +15,14 @@ noextract=(
   clickhouse-server_${pkgver}_all.deb
 )
 source=(
-  https://repo.clickhouse.tech/deb/stable/main/clickhouse-client_${pkgver}_all.deb
-  https://repo.clickhouse.tech/deb/stable/main/clickhouse-common-static_${pkgver}_amd64.deb
-  https://repo.clickhouse.tech/deb/stable/main/clickhouse-server_${pkgver}_all.deb
+  https://packages.clickhouse.com/deb/pool/stable/clickhouse-client_${pkgver}_all.deb
+  https://packages.clickhouse.com/deb/pool/stable/clickhouse-common-static_${pkgver}_amd64.deb
+  https://packages.clickhouse.com/deb/pool/stable/clickhouse-server_${pkgver}_all.deb
 )
 sha256sums=(
-  941614824d3d675165a7f506f461bc5f3f2e4b8ed32fd5a9203affc4cee501fd
-  9f20641dd038f01850a7dfd14b87a46d7fe7c97ffc53c47c73f1d35b856431a7
-  e860673b59851b09f734afdb79dbc9b5e52361085b47e95e480efb916178bcc7
+  b408e1479eb8e72d89f4cb8a1c310d2abd73e40247cbaa7000f55421b3c865e9
+  7372591360497670b736697d3bd7d1548f0761adab0295c8d03102368ab552e0
+  22e685245f5a5bcb42d020050cb363ebca2e8058eb31c2be6ea702d42646e6d8
 )
 install=$pkgname.install
 backup=(
@@ -37,7 +37,6 @@ package() {
     tar xf data.tar.gz -C "${pkgdir}"
   done
 
-  gzip -d "${pkgdir}/usr/share/doc/${pkgname}-server/LICENSE.gz"
   mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
   mv "${pkgdir}/lib" "${pkgdir}/usr/lib"
   mv "${pkgdir}/usr/share/doc/clickhouse-server/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/"
