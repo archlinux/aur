@@ -1,6 +1,6 @@
 # Maintainer: Frédéric Tobias Christ <dev+mautrix-signal@ntr.li> <ftchrist:matrix.org>
 pkgname='mautrix-signal'
-pkgver=0.2.2
+pkgver=0.3.0
 pkgrel=1
 pkgdesc="A Matrix-Signal puppeting bridge"
 arch=('any')
@@ -15,18 +15,18 @@ depends=(
 'python-magic'
 'python-ruamel-yaml'
 'python-yarl' 
-'signald>=0.16' )
+'signald' )
 makedepends=('python-setuptools')
 #checkdepends
 optdepends=(
 'python-aiosqlite: Support for SQLite-Database '
-'python-olm>=3: end-to-bridge encryption support'
+'python-olm: end-to-bridge encryption support'
 'python-phonenumbers: Formatted phone numbers'
-'python-pillow>=4: webp conversion and qr code login'
-'python-prometheus_client>=0.6: metrics upload'
-'python-pycryptodome>=3'
-'python-qrcode>=6: qr code login'
-'python-signalstickers-client>=3'
+'python-pillow: webp conversion and qr code login'
+'python-prometheus_client: metrics upload'
+'python-pycryptodome'
+'python-qrcode: qr code login'
+'python-signalstickers-client'
 'python-unpaddedbase64: end-to-bridge encryption support')
 backup=(
     "etc/${pkgname}/config.yaml"
@@ -34,7 +34,7 @@ backup=(
     )
 install="${pkgname}.install"
 source=( "${url}/archive/refs/tags/v${pkgver}.tar.gz" "${pkgname}.service" "${pkgname}.sysusers" "${pkgname}.tmpfiles")
-sha256sums=('c409699ae833db52e436a136fddc6d9af1e51e2d631998b0541649147739d38f'
+sha256sums=('ea1ed7848dbb8cbb947d441a01f6f0c8fad0791601d6e36d90c3e50cbade30d3'
             '87a479c5216fa79dbe20ff776f67f5ab70ad0f9705da4b274cc662003545c4be'
             '3203dcff48579a2420eff4289a03ea1b3a9f47031c39f514e8c9a2d119625725'
             '5badc8727dfbf4531f93e86ae475c64753952ee60090a043be22b9dd9a124ca5')
