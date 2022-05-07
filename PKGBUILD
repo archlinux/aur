@@ -1,7 +1,7 @@
 # Maintainer: ferreum <code at ferreum de>
 pkgname=i3-match-git
 pkgver=0.1.50.rd3a0e91
-pkgrel=2
+pkgrel=5
 pkgdesc="Match and query i3/sway window properties and events"
 arch=('i686' 'x86_64')
 url='https://gitlab.com/ferreum/i3-match'
@@ -36,8 +36,8 @@ package() {
   cd "$_gitname"
 
   install -Dm755 -t "${pkgdir}/usr/bin/" "src/i3-match"
-  install -Dm755 -t "${pkgdir}/usr/bin/" "src/swaymatch"
   install -Dm644 -t "${pkgdir}/usr/share/man/man1/" man/*.1
+  ln -s i3-match "${pkgdir}/usr/bin/swaymatch"
   ln -s i3-match.1.gz "${pkgdir}/usr/share/man/man1/swaymatch.1.gz"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
