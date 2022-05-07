@@ -1,0 +1,17 @@
+pkgbase = eprosima-fast-dds-monitor
+	pkgdesc = eProsima Fast DDS Monitor is a graphical desktop application aimed at monitoring DDS environments deployed using the eProsima Fast DDS library.
+	pkgver = 1.1.0
+	pkgrel = 0
+	url = https://github.com/eProsima/Fast-DDS-monitor
+	arch = x86_64
+	license = GPL3
+	makedepends = ninja
+	makedepends = cmake
+	depends = eprosima-fast-dds
+	depends = eprosima-fast-dds-statistics-backend
+	depends = qt5-quickcontrols
+	provides = eprosima-fast-dds-monitor
+	source = https://github.com/eProsima/Fast-DDS-monitor/archive/refs/tags/v1.1.0.tar.gz
+	sha512sums = e35a1b215f1a3b192ae9e433bd343481443a75936cbad402d3d71060c5feaf6ec5c909430cbb3b5a06ca449b42e18d825408d9e8029b511ff21b3e4d69671a08
+
+pkgname = eprosima-fast-dds-monitor
