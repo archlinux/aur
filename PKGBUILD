@@ -12,7 +12,7 @@ provides=('tkn-watch')
 conflicts=('tkn-watch')
 
 source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/chmouel/tkn-watch/releases/download/0.1.0/tkn-watch_0.1.0_linux_amd64.tar.gz")
-sha256sums_x86_64=('00feebf1d7d882afd0bd55601a7983ccbead316f6e22d186e064df1ee9b19f7f')
+sha256sums_x86_64=('203963e91dfd4565a92e7be490737d18d1570e34b3dd295d2da438cc038537b4')
 
 package() {
   # bin
