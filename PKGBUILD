@@ -1,6 +1,6 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=pika-backup
-_pkgver=0.4.0-beta.5
+_pkgver=0.4.0-rc.1
 pkgver=${_pkgver//-/.}
 pkgrel=1
 pkgdesc="Simple backups based on borg"
@@ -11,7 +11,7 @@ depends=('borg' 'libadwaita' 'libsecret' 'python-llfuse')
 makedepends=('cargo' 'itstool' 'meson')
 source=("https://gitlab.gnome.org/World/pika-backup/-/archive/v$_pkgver/$pkgname-v$_pkgver.tar.gz"
         'remove-install_script.patch')
-sha256sums=('3797c1bbe61e1dc081ba0d58ba5b4657ca7202abc4cb1e7243e3d4c6f9b8fedc'
+sha256sums=('935443b145e76cabf0880612a28e1b3423cdf5e86ec2d4bdf9c85cfc4e7effcf'
             '3045a0dc5069bf7ff5fafb0d6702dbc2168fe79af2a184cbc802d76f1be82a9b')
 
 prepare() {
