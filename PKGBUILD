@@ -1,14 +1,14 @@
 # Maintainer: Albert Vaca Cintora <albertvaka@gmail.com>
 
 pkgname=datadog-agent
-pkgver=7.35.1
+pkgver=7.35.2
 _agentrel=1
 pkgrel=1
 pkgdesc='Datadog Agent: collect metrics and events from your systems and apps'
 arch=('x86_64' 'aarch64')
 license=('Apache')
 url='https://datadoghq.com'
-depends=('sysstat')
+depends=('sysstat' 'libxcrypt-compat')
 options=('!strip')
 source=("${pkgname}-${pkgver}-${_agentrel}-Release::https://apt.datadoghq.com/dists/stable/Release"
         "${pkgname}-${pkgver}-${_agentrel}-Release.sig::https://apt.datadoghq.com/dists/stable/Release.gpg"
@@ -24,9 +24,9 @@ sha512sums=('SKIP'
             '20cacea9611af70f3a8802dfd545313cf40fe7784cc44555cfe50602676d624072caf3803193e23d38d9a24f5a2c2a7ee336f9a9ca87562326b21b5ed677032f'
             '2a3e873d88b8f3a5d90591f955894273eb28d0f9b352e54be4f1125d4229a8f1d7eece8bf6ad41b85ee194390821e9c851393fb36ac249069cfdf7470925ce21')
 sha512sums_x86_64=('SKIP'
-                   'aeb86366164a941f43763dafd945eec9550579eb67a9d73abd5d09e1de03088cba4c708c3b8f183b4a38aaef887a1f21b783224ba4f5fc2abc5862cb73c05893')
+                   '131c8ff6f6bbf0aae63b1b2ebac6402e0a04de2064bc3720f9b5403e1629ec587adf0e848a31924010aa6c3df05f805726ee958d27165adc29eb34dd21a72515')
 sha512sums_aarch64=('SKIP'
-                    '5ed017b86f3f72f1fafcae2a5bc171f83c82f136a1c75d2f37c6db08b5a94ea695d66fd9a93e5e37783a7c78990d94bef4b9438946b3001105bc4374153f2696')
+                    'c9dd8abe850897904fce04005839e954d23f1861dbf0d9f7335bd52515360aed52a402212124a83f48496cde222fee5d154993a53172778eec5fc059334eebf5')
 
 
 prepare() {
