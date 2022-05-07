@@ -3,25 +3,29 @@
 
 _pkgname='rapidfuzz'
 pkgname="python-${_pkgname}"
-pkgver=2.0.9
+pkgver=2.0.11
 pkgrel=1
-pkgdesc='Rapid fuzzy string matching in Python and C++ using the Levenshtein Distance'
+pkgdesc='Rapid fuzzy string matching in Python using various string metrics'
 arch=('x86_64')
 url='https://github.com/maxbachmann/rapidfuzz'
 license=('MIT')
 depends=('python-jarowinkler')
 makedepends=(
+    'git'
+    'jarowinkler-cpp'
     'python-numpy'
     'python-rapidfuzz-capi'
     'python-scikit-build'
     'python-setuptools'
+    'rapidfuzz-cpp'
 )
 optdepends=('python-numpy')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha256sums=('c5ac9477bc7479799ef81d5bb02e657503eda5241490fd6f632a8db5e4a29639')
+sha256sums=('934b65fea75e3bd310d74903ec69ff3df061b3058ab5b7f49ab772958109bca8')
 
 build() {
   cd "${_pkgname}-${pkgver}"
+  # Use vendored version of Taskflow until cpp-taskflow package is fixed
   python setup.py build \
       -G "Unix Makefiles" \
       --build-type None \
@@ -31,8 +35,6 @@ build() {
 package() {
   cd "${_pkgname}-${pkgver}"
   python setup.py --skip-cmake install --root="$pkgdir" --optimize=1 --skip-build
-  # remove unnecessary files (upstream issue #201)
-  rm -r "$pkgdir/usr/include"
 
   install -Dvm644 'README.md' -t "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dvm644 'LICENSE' -t "${pkgdir}/usr/share/licenses/${pkgname}"
