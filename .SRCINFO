@@ -1,6 +1,6 @@
 pkgbase = luau-bin
 	pkgdesc = A fast, small, safe, gradually typed embeddable scripting language derived from Lua
-	pkgver = 0.525
+	pkgver = 0.526
 	pkgrel = 1
 	url = https://github.com/Roblox/luau
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = luau-bin
 	provides = luau
 	conflicts = luau
 	conflicts = luau-git
-	source = luau-0.525.zip::https://github.com/Roblox/luau/releases/download/0.525/luau-ubuntu.zip
-	sha512sums = 35501b8c7c09812d9b49685f78ca017964424ef611af6d40765dcdad32c2ecff1ae54c92923f2d26276a7bddbdee45453fa59b68640595072c44aaa7d0714849
+	source = luau-0.526.zip::https://github.com/Roblox/luau/releases/download/0.526/luau-ubuntu.zip
+	sha512sums = 9d82bae28162c7651a664874edc64a84c505a86d3079f132f5197a8e4710c472ea33b117c46fa80ec65e202ab876b0b420ff48798a4ad7c505d3be37c1ab371d
 
 pkgname = luau-bin
