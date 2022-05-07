@@ -1,9 +1,10 @@
 pkgname=timetrackrs-git
 pkgver=0.1.0.r6.gd33a51a
-pkgrel=1
+pkgrel=2
 pkgdesc="automatically track your pc usage with custom data processing. inspired by arbtt."
 arch=(x86_64)
 license=('AGPL')
+depends=(xscreensaver)
 makedepends=(git cargo nodejs)
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
@@ -23,7 +24,7 @@ build() {
     cd "$srcdir/${pkgname%-git}"
     pushd frontend
     yarn=.yarn/releases/yarn-3.2.0.cjs
-    $yarn install
+    $yarn install --immutable
     $yarn build
     popd
     export RUSTUP_TOOLCHAIN=stable
