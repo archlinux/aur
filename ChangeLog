@@ -373,3 +373,17 @@ Fixes:
 - We are also bringing some fixes for problems that have been reported to us, for example
 - We fixed an issue saving events with some CalDAV providers.
 - We fixed a problem causing tasks lists to disappear when renamed using an empty title.
+
+=== Morgen 2.5.4
+New Features:
+- We have made some major redesign to our onboarding to guide you through the configuration and first steps with Morgen. This will arguably benefit new users first, but it is the foundation of a proper Help Center that will help everyone use Morgen at its full potential!
+
+Improvements:
+- An improved Month view, where the current day is better highlighted and the time of the events is visible again 😉.
+- We made private Office 365 / Exchange events actually private - it turns out that Microsoft does not redact the private information from your private events. Instead, Microsoft confidently relies on calendar clients to do that 🤔.
+- We added some more options for the duration and buffer time of the Morgen Scheduling Links.
+
+Fixes:
+- We resolved an issue while moving an event from one calendar to another. Before, the event was often not deleted from the old calendar, thus resulting in a duplicate.
+- We fixed a couple of small glitches, with Tasks and Scheduling Links.
+- We fixed a bug causing inconsistent calendar names in different parts of the Morgen app interface.
