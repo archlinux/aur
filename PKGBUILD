@@ -3,7 +3,7 @@
 
 _pkgname=ecrire
 pkgname=$_pkgname-git
-pkgver=r175.ea7c024
+pkgver=r176.4e3ff1c
 pkgrel=1
 epoch=1
 pkgdesc="Simple text editor based on EFL"
@@ -16,7 +16,7 @@ provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 install=$_pkgname.install
 options=('debug')
-source=("git+https://git.enlightenment.org/apps/$_pkgname.git")
+source=("git+https://git.enlightenment.org/enlightenment/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {

@@ -1,6 +1,6 @@
 pkgbase = ecrire-git
 	pkgdesc = Simple text editor based on EFL
-	pkgver = r175.ea7c024
+	pkgver = r176.4e3ff1c
 	pkgrel = 1
 	epoch = 1
 	url = http://www.enlightenment.org
@@ -11,11 +11,10 @@ pkgbase = ecrire-git
 	makedepends = git
 	makedepends = meson
 	depends = efl
-	provides = ecrire=r175.ea7c024
+	provides = ecrire=r176.4e3ff1c
 	conflicts = ecrire
 	options = debug
-	source = git+https://git.enlightenment.org/apps/ecrire.git
+	source = git+https://git.enlightenment.org/enlightenment/ecrire.git
 	sha256sums = SKIP
 
 pkgname = ecrire-git
-
