@@ -3,7 +3,7 @@
 
 pkgname=guacamole-server
 pkgver=1.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Guacamole proxy daemon"
 arch=('i686' 'x86_64' 'armv7h')
 url="http://guacamole.sourceforge.net/"
@@ -29,7 +29,7 @@ backup=('etc/guacamole/guacd.conf')
 
 md5sums=('b17c6152e96af0488ca4c0608e5ec3ae'
          'ab0ac97ad76d16be73768f89abb6ee7e'
-         'd2d4b33532da5dd2d85e4bb7b3db8c31')
+         'bd58fffb01f7f6ab9bae306bdbea61ea')
 
 prepare() {
 	cd "$srcdir"/$pkgname-$pkgver

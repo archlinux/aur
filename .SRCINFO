@@ -1,7 +1,7 @@
 pkgbase = guacamole-server
 	pkgdesc = Guacamole proxy daemon
 	pkgver = 1.4.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://guacamole.sourceforge.net/
 	install = guacamole-server.install
 	arch = i686
@@ -38,6 +38,6 @@ pkgbase = guacamole-server
 	source = https://github.com/apache/guacamole-server/commit/bc6b5cef25cb2c66cb4e0e96df6d2639a61a197a.patch
 	md5sums = b17c6152e96af0488ca4c0608e5ec3ae
 	md5sums = ab0ac97ad76d16be73768f89abb6ee7e
-	md5sums = d2d4b33532da5dd2d85e4bb7b3db8c31
+	md5sums = bd58fffb01f7f6ab9bae306bdbea61ea
 
 pkgname = guacamole-server
