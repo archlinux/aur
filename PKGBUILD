@@ -3,14 +3,14 @@
 
 pkgname=gcompris-qt
 pkgver=2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Educational software suite comprising of numerous activities for children aged 2 to 10"
 arch=('x86_64')
 url="https://gcompris.net/"
 license=('AGPL3')
 depends=('qt5-base' 'qt5-declarative' 'qt5-multimedia' 'qt5-svg' 'qt5-sensors'
-         'qt5-quickcontrols' 'qt5-graphicaleffects' 'qml-box2d'
-         'hicolor-icon-theme')
+         'qt5-quickcontrols' 'qt5-graphicaleffects' 'qt5-imageformats'
+         'qml-box2d' 'gst-plugins-good' 'hicolor-icon-theme')
 makedepends=('cmake' 'extra-cmake-modules' 'qt5-tools' 'kdoctools')
 replaces=('gcompris' 'gcompris-data')
 source=(https://download.kde.org/stable/gcompris/qt/src/$pkgname-$pkgver.tar.xz{,.sig})
