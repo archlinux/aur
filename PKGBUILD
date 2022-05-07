@@ -4,7 +4,7 @@ pkgname=cider
 _pkgname=Cider
 pkgver=1.4.5
 pkgrel=1
-pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Compiled from the GitHub repositories main branch."
+pkgdesc="Project Cider. An open-source Apple Music client built from the ground up with Vue.js and Electron. Installed using the debian release builds from CircleCI."
 arch=("armv7h" "i686" "x86_64")
 url="https://github.com/CiderApp/${_pkgname}.git"
 _url="https://api.github.com/repos/ciderapp/cider-releases/releases/latest"
@@ -39,12 +39,14 @@ build() {
     curl https://raw.githubusercontent.com/CiderApp/cider/master/README.md > README
     curl https://raw.githubusercontent.com/CiderApp/cider/master/LICENSE > LICENSE
     curl https://raw.githubusercontent.com/CiderApp/cider/master/resources/icons/cider.png > icon.png
-
 }
 
 package() {
     # Extract package data
     tar -xJ -f data.tar.xz -C "${pkgdir}"
+
+    install -d "$pkgdir/usr/bin/"
+    ln -sf "/opt/${_pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 
     # Desktop File
     install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
