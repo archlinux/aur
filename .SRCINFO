@@ -1,8 +1,8 @@
 pkgbase = openldap-migrationtools
 	pkgdesc = scripts for migrating data from local files or a NIS domain to an LDAP directory
 	pkgver = 47
-	pkgrel = 4
-	url = https://www.padl.com/OSS/MigrationTools.html
+	pkgrel = 5
+	url = http://web.archive.org/web/20150802074048/https://www.padl.com/OSS/MigrationTools.html
 	arch = x86_64
 	groups = openldap
 	groups = openldap-beta
