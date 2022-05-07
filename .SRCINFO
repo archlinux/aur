@@ -1,39 +1,24 @@
 pkgbase = lua-penlight-git
 	pkgdesc = Lua libraries for on input data handling, functional programming, and OS interface
-	pkgver = 1.9.2.r0.gce0bdba
+	pkgver = 1.12.0.r9.ga7b9f88
 	pkgrel = 1
-	url = https://tieske.github.io/Penlight
+	url = https://github.com/lunarmodules/Penlight
 	arch = any
 	license = MIT
-	checkdepends = lua-filesystem
+	makedepends = git
 	makedepends = lua
-	makedepends = lua53
-	makedepends = lua52
 	makedepends = lua51
-	source = penlight::git+https://github.com/Tieske/Penlight.git
+	makedepends = lua52
+	makedepends = lua53
+	makedepends = luarocks
+	options = debug
+	source = penlight::git+https://github.com/lunarmodules/Penlight.git
 	sha256sums = SKIP
 
 pkgname = lua-penlight-git
-	depends = lua
-	depends = lua-filesystem
-	provides = lua-penlight
-	conflicts = lua-penlight
 
 pkgname = lua53-penlight-git
-	depends = lua53
-	depends = lua53-filesystem
-	provides = lua53-penlight
-	conflicts = lua53-penlight
 
 pkgname = lua52-penlight-git
-	depends = lua52
-	depends = lua52-filesystem
-	provides = lua52-penlight
-	conflicts = lua52-penlight
 
 pkgname = lua51-penlight-git
-	depends = lua51
-	depends = lua51-filesystem
-	provides = lua51-penlight
-	conflicts = lua51-penlight
-
