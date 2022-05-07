@@ -1,19 +1,19 @@
 # Maintainer: Riccardo Sacchetto <rsacchetto@nexxontech.it>
 pkgname=antares-sql
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="Open source and cross platform SQL client made to be simple and complete"
 arch=('x86_64')
 url="https://antares-sql.app/"
 license=('MIT')
-depends=('electron')
+depends=('electron17')
 makedepends=('nvm' 'npm' 'yarn' 'python')
 source=("https://github.com/Fabio286/antares/archive/refs/tags/v${pkgver}.tar.gz"
         "antares-sql.desktop"
         "antares-sql.sh")
-sha512sums=("c87595e1d79e8e7511f84b79e3f866f3128647da9a4749e05adca146644f19f2093eb3f3cd05ff1c8bce549961a1267451eac0bdacf3ac501e1a7c6b8452320a"
+sha512sums=("5e99915e3f295c5a4d58eda1b7273756ebfeb4661e89b0e16bd99652d2bf668fdd51d08f69e465cec6f32f81f508e18ea14977903a8e557b0620d4c6d7286486"
             "4dc1837ee4a8e9e4c610a9fc8b8724a903ebaea1aeed32f30c4ee469d2e12198549bfc760327c413534053f54ffe8248905a925fc5d63d2c6e31d75a413da4dc"
-            "376ca0474b4bb295c7791f73d84ab1058127adc57e5c4a59944ccb6932a0c06b118ec16b84198b987edd380850704f6451c3ea6d8d6d031737e9c7d7542425ad")
+            "b3b1e1c9dfb59fc3e89f3c53194550634a2cd9e45ee9ae1b725c315e1ee3fdf657487409cb044a0c28875031608b6d128475095597de7031a8aa3b601a34baf4")
 
 _ensure_local_nvm() {
     # Check if NVM is enabled (and, if so, disable it)
@@ -27,8 +27,8 @@ _ensure_local_nvm() {
 prepare() {
     # Load NVM with temp path
     _ensure_local_nvm
-    # Install Node.JS 16 with NVM to avoid compatibility issues
-    nvm install 16
+    # Install Node.JS 14 with NVM to avoid compatibility issues
+    nvm install 14
 
     # Enter the Antares source folder downloaded from GitHub
     cd "${srcdir}/antares-${pkgver}"
@@ -42,7 +42,7 @@ build() {
     # Build (WebPack) the application
     yarn build
     # Run Electron Builder
-    yarn run electron-builder --linux --"x64" --dir -c.npmRebuild=false -c.electronDist=/usr/lib/electron -c.electronVersion=$(</usr/lib/electron/version)
+    yarn run electron-builder --linux --"x64" --dir -c.npmRebuild=false -c.electronDist=/usr/lib/electron17 -c.electronVersion=$(</usr/lib/electron17/version)
 }
 
 package() {
