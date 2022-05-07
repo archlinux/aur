@@ -1,11 +1,14 @@
 pkgbase = python-click-man
 	pkgdesc = Automate generation of man pages for python click applications
 	pkgver = 0.4.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://pypi.python.org/pypi/click-man
 	arch = any
 	license = MIT
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-setuptools
+	makedepends = python-wheel
 	depends = python
 	depends = python-click
 	source = https://files.pythonhosted.org/packages/source/c/click-man/click-man-0.4.1.tar.gz
