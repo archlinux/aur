@@ -4,7 +4,7 @@
 
 _pkgname=terminology
 pkgname=$_pkgname-git
-pkgver=1.9.99.r3186.09b5c4e2
+pkgver=1.12.1.r3272.9f371e0b
 pkgrel=1
 pkgdesc="EFL based terminal emulator - Development version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -15,7 +15,7 @@ makedepends=('git' 'meson')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('debug')
-source=("git+https://git.enlightenment.org/apps/$_pkgname.git")
+source=("git+https://git.enlightenment.org/enlightenment/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {

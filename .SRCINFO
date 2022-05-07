@@ -1,6 +1,6 @@
 pkgbase = terminology-git
 	pkgdesc = EFL based terminal emulator - Development version
-	pkgver = 1.9.99.r3186.09b5c4e2
+	pkgver = 1.12.1.r3272.9f371e0b
 	pkgrel = 1
 	url = http://www.enlightenment.org/p.php?p=about/terminology
 	arch = i686
@@ -13,11 +13,10 @@ pkgbase = terminology-git
 	makedepends = git
 	makedepends = meson
 	depends = efl
-	provides = terminology=1.9.99.r3186.09b5c4e2
+	provides = terminology=1.12.1.r3272.9f371e0b
 	conflicts = terminology
 	options = debug
-	source = git+https://git.enlightenment.org/apps/terminology.git
+	source = git+https://git.enlightenment.org/enlightenment/terminology.git
 	sha256sums = SKIP
 
 pkgname = terminology-git
-
