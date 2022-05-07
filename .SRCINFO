@@ -1,12 +1,10 @@
 pkgbase = amberol-git
 	pkgdesc = Plays music, and nothing else
-	pkgver = 0.4.2.r3.gc9f0216
-	pkgrel = 2
+	pkgver = 0.6.0.r4.g38139d8
+	pkgrel = 1
 	url = https://gitlab.gnome.org/World/amberol
 	arch = x86_64
 	license = GPL3
-	checkdepends = appstream-glib
-	checkdepends = reuse
 	makedepends = git
 	makedepends = meson
 	makedepends = rust
