@@ -4,12 +4,13 @@ _cranname=svglite
 _cranver=2.1.0
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=1
+pkgrel=2
 pkgdesc="An 'SVG' Graphics Device"
 arch=(i686 x86_64)
 url="https://cran.r-project.org/package=${_cranname}"
 license=(GPL)
-depends=(libpng r-systemfonts r-cpp11)
+depends=(libpng r-systemfonts)
+makedepends=(r-cpp11)
 checkdepends=(
     r-fontquiver
     r-testthat
