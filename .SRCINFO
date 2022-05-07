@@ -1,0 +1,12 @@
+pkgbase = crystal-remix-icon-theme-git
+	pkgdesc = A remixed Crystal icon theme for KDE Plasma 5
+	pkgver = v1.1.r0.g238b626
+	pkgrel = 1
+	url = https://www.pling.com/p/1226130
+	arch = any
+	license = LGPL
+	makedepends = git
+	source = crystal-remix-icon-theme-git::git+https://github.com/dangvd/crystal_remix.git
+	sha256sums = SKIP
+
+pkgname = crystal-remix-icon-theme-git
