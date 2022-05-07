@@ -1,0 +1,13 @@
+pkgbase = tkn-watch-bin
+	pkgdesc = tkn-watch - watch tekton pipelinerun execution
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/chmouel/tkn-watch
+	license = Apache 2.0
+	conflicts = tkn-watch
+	provides = tkn-watch
+	arch = x86_64
+	source_x86_64 = https://github.com/chmouel/tkn-watch/releases/download/0.1.0/tkn-watch_0.1.0_linux_amd64.tar.gz
+	sha256sums_x86_64 = 00feebf1d7d882afd0bd55601a7983ccbead316f6e22d186e064df1ee9b19f7f
+	
+pkgname = tkn-watch-bin
