@@ -1,7 +1,7 @@
 pkgbase = perl-gnome2-wnck
 	pkgdesc = Perl interface to the Window Navigator Construction Kit
 	pkgver = 0.18
-	pkgrel = 2
+	pkgrel = 3
 	url = https://metacpan.org/pod/Gnome2::Wnck
 	arch = x86_64
 	license = GPL
