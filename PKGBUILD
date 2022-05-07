@@ -1,10 +1,10 @@
 # Maintainer: Funami
 pkgname=mullvad-vpn-s6
-pkgver=20211202
+pkgver=20220507
 pkgrel=1
 pkgdesc="s6-rc service scripts for mullvad-vpn"
 arch=('any')
-depends=('mullvad-vpn' 's6-base')
+depends=('mullvad-vpn' 's6')
 provides=('init-mullvad-vpn')
 conflicts=('init-mullvad-vpn')
 backup=('etc/s6/config/mullvad-vpn.conf')

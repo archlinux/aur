@@ -1,10 +1,10 @@
 pkgbase = mullvad-vpn-s6
 	pkgdesc = s6-rc service scripts for mullvad-vpn
-	pkgver = 20211202
+	pkgver = 20220507
 	pkgrel = 1
 	arch = any
 	depends = mullvad-vpn
-	depends = s6-base
+	depends = s6
 	provides = init-mullvad-vpn
 	conflicts = init-mullvad-vpn
 	backup = etc/s6/config/mullvad-vpn.conf
