@@ -1,7 +1,7 @@
 # Maintainer: Ckat <ckat@teknik.io>
 pkgname=chatterino2-git
 _pkgname=chatterino2
-pkgver=r3420.82009982
+pkgver=r3508.f97780d8
 pkgrel=1
 pkgdesc='Second installment of the Twitch chat client series "Chatterino", dev/git version'
 arch=('any')
@@ -25,8 +25,10 @@ source=("git+https://github.com/Chatterino/chatterino2"
         "git+https://github.com/Tencent/rapidjson"
         "git+https://github.com/Chatterino/qtkeychain"
         "git+https://github.com/arsenm/sanitizers-cmake"
-        "git+https://github.com/zaphoyd/websocketpp")
+        "git+https://github.com/zaphoyd/websocketpp"
+        "git+https://github.com/Neargye/magic_enum")
 md5sums=('SKIP'
+         'SKIP'
          'SKIP'
          'SKIP'
          'SKIP'
