@@ -1,0 +1,18 @@
+pkgbase = python-sapply-git
+	pkgdesc = Apply a series of string manipulations on text easily.
+	pkgver = 0.1.9
+	pkgrel = 1
+	url = https://github.com/jmdaemon/sapply
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	depends = python-wora
+	depends = python-regex
+	depends = python-spacy
+	provides = python-sapply
+	conflicts = python-sapply
+	source = python-sapply-git::git+https://github.com/jmdaemon/sapply#branch=master
+	sha512sums = SKIP
+
+pkgname = python-sapply-git
