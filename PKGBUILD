@@ -1,9 +1,9 @@
 # Maintainer: Wüstengecko <1579756+Wuestengecko@users.noreply.github.com>
 pkgname=python-poetry-dynamic-versioning
 _name=${pkgname#python-}
-pkgver=0.14.1
+pkgver=0.16.0
 pkgrel=1
-pkgdesc="Plugin for Poetry to enable dynamic versioning based on VCS tags"
+pkgdesc="Plugin for Poetry to enable dynamic versioning based on VCS tags (import-hack version)"
 arch=(any)
 url="https://github.com/mtkennerly/poetry-dynamic-versioning"
 license=('MIT')

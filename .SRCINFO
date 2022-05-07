@@ -1,6 +1,6 @@
 pkgbase = python-poetry-dynamic-versioning
-	pkgdesc = Plugin for Poetry to enable dynamic versioning based on VCS tags
-	pkgver = 0.14.1
+	pkgdesc = Plugin for Poetry to enable dynamic versioning based on VCS tags (import-hack version)
+	pkgver = 0.16.0
 	pkgrel = 1
 	url = https://github.com/mtkennerly/poetry-dynamic-versioning
 	arch = any
@@ -16,7 +16,7 @@ pkgbase = python-poetry-dynamic-versioning
 	depends = python-poetry
 	depends = python-tomlkit
 	options = !strip
-	source = poetry-dynamic-versioning::git+https://github.com/mtkennerly/poetry-dynamic-versioning.git#tag=v0.14.1
+	source = poetry-dynamic-versioning::git+https://github.com/mtkennerly/poetry-dynamic-versioning.git#tag=v0.16.0
 	sha256sums = SKIP
 
 pkgname = python-poetry-dynamic-versioning
