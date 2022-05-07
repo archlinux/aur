@@ -9,28 +9,26 @@
 # Just edit the --enable-languages option as well as the pkgname array, and comment out the pkg functions :)
 
 pkgbase=gcc-git
-pkgname=({gcc,gcc-libs,gcc-fortran,gcc-objc,gcc-ada,gcc-go,gcc-d,libgccjit}-git)
-pkgver=12.0.1_r192241.g6459e653763
+pkgname=({gcc,gcc-libs,gcc-fortran,gcc-objc,gcc-ada,gcc-go,libgccjit}-git)
+pkgver=13.0.0_r192889.g0c723bb4be2
 _majorver=${pkgver%%.*}
-_islver=0.24
 pkgrel=1
 pkgdesc='The GNU Compiler Collection'
 arch=(x86_64)
-license=(GPL LGPL FDL custom)
+license=(GPL3 LGPL FDL custom)
 url='https://gcc.gnu.org'
 makedepends=(
   binutils
   doxygen
   gcc-ada
-  gcc-d
   git
   lib32-glibc
   lib32-gcc-libs
+  libisl
   libmpc
   libxcrypt
   python
   zstd
-  isl
 )
 checkdepends=(
   dejagnu
@@ -43,13 +41,11 @@ options=(!emptydirs !lto !debug)
 _libdir=usr/lib/gcc/$CHOST/${pkgver%_*}
 source=(git://gcc.gnu.org/git/gcc.git
         c89 c99
-        gdc_phobos_path.patch
         gcc-ada-repro.patch
 )
 sha256sums=('SKIP'
             'de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931'
             '2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a'
-            'c86372c207d174c0918d4aedf1cb79f7fc093649eb1ad8d9450dccc46849d308'
             '1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f')
 
 pkgver() {
@@ -66,9 +62,6 @@ prepare() {
 
   # Arch Linux installs x86_64 libraries /lib
   sed -i '/m64=/s/lib64/lib/' gcc/config/i386/t-linux64
-
-  # D hacks
-  patch -Np1 -i "$srcdir/gdc_phobos_path.patch"
 
   # Reproducible gcc-ada
   patch -Np0 < "$srcdir/gcc-ada-repro.patch"
@@ -95,7 +88,6 @@ build() {
       --enable-gnu-indirect-function \
       --enable-gnu-unique-object \
       --enable-linker-build-id \
-      --disable-bootstrap \
       --enable-lto \
       --enable-multilib \
       --enable-plugin \
@@ -104,7 +96,8 @@ build() {
       --disable-libssp \
       --disable-libstdcxx-pch \
       --disable-werror \
-      gdc_include_dir=/usr/include/dlang/gdc"
+      --with-build-config=bootstrap-lto \
+      --enable-link-serialization=1"
 
   cd gcc-build
 
@@ -115,7 +108,7 @@ build() {
   CXXFLAGS=${CXXFLAGS/-Werror=format-security/}
 
   "$srcdir/gcc/configure" \
-    --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++,d \
+    --enable-languages=c,c++,ada,fortran,go,lto,objc,obj-c++ \
     --enable-bootstrap \
     $_confflags
 
@@ -123,7 +116,8 @@ build() {
   make -O STAGE1_CFLAGS="-O2" \
           BOOT_CFLAGS="$CFLAGS" \
           BOOT_LDFLAGS="$LDFLAGS" \
-          LDFLAGS_FOR_TARGET="$LDFLAGS" 
+          LDFLAGS_FOR_TARGET="$LDFLAGS" \
+          profiledbootstrap
 
   # make documentation
   make -O -C $CHOST/libstdc++-v3/doc doc-man-doxygen
@@ -151,19 +145,15 @@ build() {
 check() {
   cd gcc-build
 
-  # disable libphobos test to avoid segfaults and other unfunny ways to waste my time
-  sed -i '/maybe-check-target-libphobos \\/d' Makefile
-
   # do not abort on error as some are "expected"
   make -O -k check || true
   "$srcdir/gcc/contrib/test_summary"
 }
-
 package_gcc-libs-git() {
-  pkgdesc='Runtime libraries shipped by GCC'
+  pkgdesc='Runtime libraries shipped by GCC (git version)'
   depends=('glibc>=2.27')
   options=(!emptydirs !strip)
-  provides=("gcc-libs=$pkgver-$pkgrel" gcc-multilib{,-git} libgo.so libgfortran.so libgphobos.so
+  provides=("gcc-libs=$pkgver-$pkgrel" gcc-multilib{,-git} libgo.so libgfortran.so
             libubsan.so libasan.so libtsan.so liblsan.so)
   conflicts=(gcc-libs)
   replaces=(gcc-multilib-git libgphobos-git)
@@ -187,10 +177,6 @@ package_gcc-libs-git() {
   make -C $CHOST/libobjc DESTDIR="$pkgdir" install-libs
   make -C $CHOST/libstdc++-v3/po DESTDIR="$pkgdir" install
 
-  make -C $CHOST/libphobos DESTDIR="$pkgdir" install
-  rm -rf "$pkgdir"/$_libdir/include/d/
-  rm -f "$pkgdir"/usr/lib/libgphobos.spec
-
   for lib in libgomp \
              libitm \
              libquadmath; do
@@ -206,8 +192,8 @@ package_gcc-libs-git() {
 }
 
 package_gcc-git() {
-  pkgdesc="The GNU Compiler Collection - C and C++ frontends"
-  depends=("gcc-libs-git=$pkgver-$pkgrel" "binutils>=2.28" libmpc zstd)
+  pkgdesc="The GNU Compiler Collection - C and C++ frontends (git version)"
+  depends=("gcc-libs-git=$pkgver-$pkgrel" "binutils>=2.28" libmpc zstd libisl.so)
   groups=(base-devel-git)
   optdepends=('lib32-gcc-libs-git: for generating code for 32-bit ABI')
   provides=(gcc{,-multilib{,-git}})
@@ -262,8 +248,8 @@ package_gcc-git() {
   make -C $CHOST/32/libsanitizer/asan DESTDIR="$pkgdir" install-nodist_toolexeclibHEADERS
 
   make -C gcc DESTDIR="$pkgdir" install-man install-info
-  rm "$pkgdir"/usr/share/man/man1/{gccgo,gfortran,gdc}.1
-  rm "$pkgdir"/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn,gdc}.info
+  rm "$pkgdir"/usr/share/man/man1/{gccgo,gfortran}.1
+  rm "$pkgdir"/usr/share/info/{gccgo,gfortran,gnat-style,gnat_rm,gnat_ugn}.info
 
   make -C libcpp DESTDIR="$pkgdir" install
   make -C gcc DESTDIR="$pkgdir" install-po
@@ -292,8 +278,8 @@ package_gcc-git() {
 }
 
 package_gcc-fortran-git() {
-  pkgdesc='Fortran front-end for GCC'
-  depends=("gcc-git=$pkgver-$pkgrel")
+  pkgdesc='Fortran front-end for GCC (git version)'
+  depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
   provides=(gcc-fortran gcc-multilib{,-git})
   conflicts=(gcc-fortran)
   replaces=(gcc-multilib-git)
@@ -316,8 +302,8 @@ package_gcc-fortran-git() {
 }
 
 package_gcc-objc-git() {
-  pkgdesc='Objective-C front-end for GCC'
-  depends=("gcc-git=$pkgver-$pkgrel")
+  pkgdesc='Objective-C front-end for GCC (git version)'
+  depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
   provides=(gcc-multilib{,-git})
   conflicts=(gcc-objc)
   replaces=(gcc-multilib-git)
@@ -334,8 +320,8 @@ package_gcc-objc-git() {
 }
 
 package_gcc-ada-git() {
-  pkgdesc='Ada front-end for GCC (GNAT)'
-  depends=("gcc-git=$pkgver-$pkgrel")
+  pkgdesc='Ada front-end for GCC (GNAT) (git version)'
+  depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
   provides=(gcc-ada gcc-multilib{,-git})
   conflicts=(gcc-ada)
   replaces=(gcc-multilib-git)
@@ -374,9 +360,9 @@ package_gcc-ada-git() {
 }
 
 package_gcc-go-git() {
-  pkgdesc='Go front-end for GCC'
-  depends=("gcc-git=$pkgver-$pkgrel")
-  provides=("go=1.12.2" gcc-multilib{,-git})
+  pkgdesc='Go front-end for GCC (git version)'
+  depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
+  provides=("go=1.18" gcc-multilib{,-git})
   conflicts=(gcc-go go{,-git})
   replaces=(gcc-multilib-git)
 
@@ -396,7 +382,7 @@ package_gcc-go-git() {
 }
 
 #package_lib32-gcc-libs-git() {
-#  pkgdesc='32-bit runtime libraries shipped by GCC'
+#  pkgdesc='32-bit runtime libraries shipped by GCC (git version)'
 #  depends=('lib32-glibc>=2.27')
 #  provides=(libgo.so libgfortran.so libubsan.so libasan.so)
 #  groups=(multilib-devel)
@@ -432,36 +418,9 @@ package_gcc-go-git() {
 #    "$pkgdir/usr/share/licenses/lib32-gcc-libs/RUNTIME.LIBRARY.EXCEPTION"
 #}
 
-package_gcc-d-git() {
-  pkgdesc="D frontend for GCC"
-  depends=("gcc-git=$pkgver-$pkgrel")
-  provides=(gcc-d gdc{,-git})
-  conflicts=(gcc-d)
-  replaces=(gdc-git)
-  options=(staticlibs)
-
-  cd gcc-build
-  make -C gcc DESTDIR="$pkgdir" d.install-{common,man,info}
-
-  install -Dm755 gcc/gdc "$pkgdir"/usr/bin/gdc
-  install -Dm755 gcc/d21 "$pkgdir"/"$_libdir"/d21
-
-  make -C $CHOST/libphobos DESTDIR="$pkgdir" install
-  rm -f "$pkgdir/usr/lib/"lib{gphobos,gdruntime}.so*
-  rm -f "$pkgdir/usr/lib32/"lib{gphobos,gdruntime}.so*
-
-  install -d "$pkgdir"/usr/include/dlang
-  ln -s /"${_libdir}"/include/d "$pkgdir"/usr/include/dlang/gdc
-
-  # Install Runtime Library Exception
-  install -d "$pkgdir/usr/share/licenses/$pkgname/"
-  ln -s /usr/share/licenses/gcc-libs/RUNTIME.LIBRARY.EXCEPTION \
-    "$pkgdir/usr/share/licenses/$pkgname/"
-}
-
 package_libgccjit-git() {
-  pkgdesc="Just-In-Time Compilation with GCC backend"
-  depends=("gcc-git=$pkgver-$pkgrel")
+  pkgdesc="Just-In-Time Compilation with GCC backend (git version)"
+  depends=("gcc-git=$pkgver-$pkgrel" libisl.so)
 
   cd gcc-build
   make -C gcc DESTDIR="$pkgdir" jit.install-common jit.install-info

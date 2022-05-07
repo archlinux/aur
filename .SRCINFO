@@ -1,10 +1,10 @@
 pkgbase = gcc-git
 	pkgdesc = The GNU Compiler Collection
-	pkgver = 12.0.1_r192241.g6459e653763
+	pkgver = 13.0.0_r192889.g0c723bb4be2
 	pkgrel = 1
 	url = https://gcc.gnu.org
 	arch = x86_64
-	license = GPL
+	license = GPL3
 	license = LGPL
 	license = FDL
 	license = custom
@@ -16,36 +16,34 @@ pkgbase = gcc-git
 	makedepends = binutils
 	makedepends = doxygen
 	makedepends = gcc-ada
-	makedepends = gcc-d
 	makedepends = git
 	makedepends = lib32-glibc
 	makedepends = lib32-gcc-libs
+	makedepends = libisl
 	makedepends = libmpc
 	makedepends = libxcrypt
 	makedepends = python
 	makedepends = zstd
-	makedepends = isl
 	options = !emptydirs
 	options = !lto
 	options = !debug
 	source = git://gcc.gnu.org/git/gcc.git
 	source = c89
 	source = c99
-	source = gdc_phobos_path.patch
 	source = gcc-ada-repro.patch
 	sha256sums = SKIP
 	sha256sums = de48736f6e4153f03d0a5d38ceb6c6fdb7f054e8f47ddd6af0a3dbf14f27b931
 	sha256sums = 2513c6d9984dd0a2058557bf00f06d8d5181734e41dcfe07be7ed86f2959622a
-	sha256sums = c86372c207d174c0918d4aedf1cb79f7fc093649eb1ad8d9450dccc46849d308
 	sha256sums = 1773f5137f08ac1f48f0f7297e324d5d868d55201c03068670ee4602babdef2f
 
 pkgname = gcc-git
-	pkgdesc = The GNU Compiler Collection - C and C++ frontends
+	pkgdesc = The GNU Compiler Collection - C and C++ frontends (git version)
 	groups = base-devel-git
-	depends = gcc-libs-git=12.0.1_r192241.g6459e653763-1
+	depends = gcc-libs-git=13.0.0_r192889.g0c723bb4be2-1
 	depends = binutils>=2.28
 	depends = libmpc
 	depends = zstd
+	depends = libisl.so
 	optdepends = lib32-gcc-libs-git: for generating code for 32-bit ABI
 	provides = gcc
 	provides = gcc-multilib
@@ -57,14 +55,13 @@ pkgname = gcc-git
 	options = debug
 
 pkgname = gcc-libs-git
-	pkgdesc = Runtime libraries shipped by GCC
+	pkgdesc = Runtime libraries shipped by GCC (git version)
 	depends = glibc>=2.27
-	provides = gcc-libs=12.0.1_r192241.g6459e653763-1
+	provides = gcc-libs=13.0.0_r192889.g0c723bb4be2-1
 	provides = gcc-multilib
 	provides = gcc-multilib-git
 	provides = libgo.so
 	provides = libgfortran.so
-	provides = libgphobos.so
 	provides = libubsan.so
 	provides = libasan.so
 	provides = libtsan.so
@@ -76,8 +73,9 @@ pkgname = gcc-libs-git
 	options = !strip
 
 pkgname = gcc-fortran-git
-	pkgdesc = Fortran front-end for GCC
-	depends = gcc-git=12.0.1_r192241.g6459e653763-1
+	pkgdesc = Fortran front-end for GCC (git version)
+	depends = gcc-git=13.0.0_r192889.g0c723bb4be2-1
+	depends = libisl.so
 	provides = gcc-fortran
 	provides = gcc-multilib
 	provides = gcc-multilib-git
@@ -85,16 +83,18 @@ pkgname = gcc-fortran-git
 	replaces = gcc-multilib-git
 
 pkgname = gcc-objc-git
-	pkgdesc = Objective-C front-end for GCC
-	depends = gcc-git=12.0.1_r192241.g6459e653763-1
+	pkgdesc = Objective-C front-end for GCC (git version)
+	depends = gcc-git=13.0.0_r192889.g0c723bb4be2-1
+	depends = libisl.so
 	provides = gcc-multilib
 	provides = gcc-multilib-git
 	conflicts = gcc-objc
 	replaces = gcc-multilib-git
 
 pkgname = gcc-ada-git
-	pkgdesc = Ada front-end for GCC (GNAT)
-	depends = gcc-git=12.0.1_r192241.g6459e653763-1
+	pkgdesc = Ada front-end for GCC (GNAT) (git version)
+	depends = gcc-git=13.0.0_r192889.g0c723bb4be2-1
+	depends = libisl.so
 	provides = gcc-ada
 	provides = gcc-multilib
 	provides = gcc-multilib-git
@@ -104,9 +104,10 @@ pkgname = gcc-ada-git
 	options = staticlibs
 
 pkgname = gcc-go-git
-	pkgdesc = Go front-end for GCC
-	depends = gcc-git=12.0.1_r192241.g6459e653763-1
-	provides = go=1.12.2
+	pkgdesc = Go front-end for GCC (git version)
+	depends = gcc-git=13.0.0_r192889.g0c723bb4be2-1
+	depends = libisl.so
+	provides = go=1.18
 	provides = gcc-multilib
 	provides = gcc-multilib-git
 	conflicts = gcc-go
@@ -114,16 +115,7 @@ pkgname = gcc-go-git
 	conflicts = go-git
 	replaces = gcc-multilib-git
 
-pkgname = gcc-d-git
-	pkgdesc = D frontend for GCC
-	depends = gcc-git=12.0.1_r192241.g6459e653763-1
-	provides = gcc-d
-	provides = gdc
-	provides = gdc-git
-	conflicts = gcc-d
-	replaces = gdc-git
-	options = staticlibs
-
 pkgname = libgccjit-git
-	pkgdesc = Just-In-Time Compilation with GCC backend
-	depends = gcc-git=12.0.1_r192241.g6459e653763-1
+	pkgdesc = Just-In-Time Compilation with GCC backend (git version)
+	depends = gcc-git=13.0.0_r192889.g0c723bb4be2-1
+	depends = libisl.so
