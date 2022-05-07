@@ -1,7 +1,7 @@
 # Maintainer: Alexandre Bouvier <contact@amb.tf>
 _pkgname=xemu
 pkgname=$_pkgname-git
-pkgver=0.6.4.r1.ga809d8557d
+pkgver=0.7.0.r0.g9c06980275
 pkgrel=1
 pkgdesc="Original Xbox emulator (fork of XQEMU)"
 arch=('x86_64')
@@ -54,13 +54,13 @@ pkgver() {
 
 prepare() {
 	cd $_pkgname
-	git submodule init genconfig tests/fp/berkeley-{soft,test}float-3 ui/{imgui,implot,keycodemapdb}
+	git submodule init genconfig tests/fp/berkeley-{soft,test}float-3 ui/{keycodemapdb,thirdparty/{imgui,implot}}
 	git config submodule.genconfig.url ../genconfig
 	git config submodule.tests/fp/berkeley-softfloat-3.url ../berkeley-softfloat-3
 	git config submodule.tests/fp/berkeley-testfloat-3.url ../berkeley-testfloat-3
-	git config submodule.ui/imgui.url ../imgui
-	git config submodule.ui/implot.url ../implot
 	git config submodule.ui/keycodemapdb.url ../keycodemapdb
+	git config submodule.ui/thirdparty/imgui.url ../imgui
+	git config submodule.ui/thirdparty/implot.url ../implot
 	git submodule update
 	python scripts/gen-license.py > XEMU_LICENSE
 	# unbundle tomlplusplus
