@@ -1,0 +1,20 @@
+pkgbase = done-git
+	pkgdesc = Done is a simple to do app that aims to improve on the existing set of features provided to do apps to deliver the ultimate experience.
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/edfloreshz/done
+	arch = x86_64
+	license = GPL2
+	makedepends = cargo
+	makedepends = git
+	makedepends = meson
+	makedepends = ninja
+	depends = gtk4
+	depends = libadwaita
+	depends = pkg-config
+	provides = done
+	conflicts = done
+	source = done-git::git+https://github.com/edfloreshz/done#branch=main
+	md5sums = SKIP
+
+pkgname = done-git
