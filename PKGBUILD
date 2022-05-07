@@ -1,7 +1,8 @@
-# Maintainer: Tom < reztho at archlinux dot us >
+# Maintainer: Aseem Athale <athaleaseem@gmail.com>
+# Contributor: Tom < reztho at archlinux dot us >
 # Based on an AUR contribution of: Juraj Misur <juraj.misur@gmail.com>
 # Contributors:
-# - veger 
+# - veger
 pkgname=capt-src
 pkgver=2.71
 pkgrel=3
@@ -23,7 +24,7 @@ _endlibdir=/usr/lib
 
 prepare() {
     _capt_dir=${srcdir}/cndrvcups-capt-${pkgver}
-    
+
     cd ${srcdir}
     tar xvzf ${srcdir}/${_tardir}/Src/cndrvcups-common-${_pkgcommonver}-1.tar.gz
     tar xvzf ${srcdir}/${_tardir}/Src/cndrvcups-capt-${pkgver}-1.tar.gz
@@ -67,7 +68,7 @@ _package_cndrvcups_common() {
     msg "Installing: c3plmod_ipc"
     cd ${_common_dir}/c3plmod_ipc/
     make install DESTDIR=${pkgdir} LIBDIR=/usr/lib
-    
+
     cd ${_common_dir}
     install -dm755 ${pkgdir}/usr/bin
     install -c -m 755 libs/c3pldrv ${pkgdir}/usr/bin
@@ -99,7 +100,7 @@ _package_cndrvcups_common() {
     ln -s libColorGearC.so.0.0.0 libColorGearC.so
 
     install -dm755 ${pkgdir}/usr/share/caepcm
-    
+
     cd ${_common_dir}
     install -c -m 644 data/*.ICC  ${pkgdir}/usr/share/caepcm
 }
@@ -110,16 +111,16 @@ _build_cndrvcups_capt() {
     msg "cndrvcups-capt package"
 
     msg "Configuring cndrvcups-capt package"
-    
+
     for _dir in driver ppd backend pstocapt pstocapt2 pstocapt3
     do
         msg "Configuring: "${_dir}
         cd ${_capt_dir}/$_dir && /usr/bin/autoreconf -fi && LDFLAGS="-L${pkgdir}/usr/lib" CPPFLAGS=-I${pkgdir}/usr/include ./autogen.sh --prefix=/usr --enable-progpath=/usr/bin --disable-static
     done
-        
+
     msg "Configuring: statusui"
     cd ${_capt_dir}/statusui && /usr/bin/autoreconf -fi && LDFLAGS="-z muldefs -L${pkgdir}/usr/lib" LIBS='-lpthread -lgdk-x11-2.0 -lgobject-2.0 -lglib-2.0 -latk-1.0 -lgdk_pixbuf-2.0' CPPFLAGS=-I${pkgdir}/usr/include ./autogen.sh --prefix=/usr --disable-static
-    
+
     msg "Configuring: cngplp"
     cd ${_capt_dir}/cngplp/ && LDFLAGS=-L${pkgdir}/usr/lib /usr/bin/autoreconf -fi && LDFLAGS=-L${pkgdir}/usr/lib CPPFLAGS=-I${pkgdir}/usr/include ./autogen.sh --prefix=/usr --libdir=/usr/lib
 
@@ -140,14 +141,14 @@ _package_cndrvcups_capt() {
         msg "installing: $_dir"
         cd ${_capt_dir}/$_dir && make install DESTDIR=${pkgdir}
     done
-    
+
     cd ${_capt_dir}
     install -dm755 ${pkgdir}${_endlibdir}
     install -c libs/libcaptfilter.so.1.0.0  ${pkgdir}${_endlibdir}
     install -c libs/libcaiocaptnet.so.1.0.0 ${pkgdir}${_endlibdir}
     install -c libs/libcncaptnpm.so.2.0.1   ${pkgdir}${_endlibdir}
     install -c -m 755 libs/libcnaccm.so.1.0   ${pkgdir}${_endlibdir}
-    
+
     cd ${pkgdir}${_endlibdir}
     ln -s libcaptfilter.so.1.0.0 libcaptfilter.so.1
     ln -s libcaptfilter.so.1.0.0 libcaptfilter.so
@@ -159,14 +160,14 @@ _package_cndrvcups_capt() {
     ln -s libcnaccm.so.1.0 libcnaccm.so
 
     install -dm755 ${pkgdir}/usr/bin
-    
+
     cd ${_capt_dir}
     install -c libs/captdrv                 ${pkgdir}/usr/bin
     install -c libs/captfilter              ${pkgdir}/usr/bin
     install -c libs/captmon/captmon         ${pkgdir}/usr/bin
     install -c libs/captmon2/captmon2       ${pkgdir}/usr/bin
     install -c libs/captemon/captmon*       ${pkgdir}/usr/bin
-  
+
     if [ "${CARCH}" == "x86_64" ]; then
         install -c libs64/ccpd                    ${pkgdir}/usr/bin
         install -c libs64/ccpdadmin               ${pkgdir}/usr/bin

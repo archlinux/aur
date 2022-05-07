@@ -28,4 +28,3 @@ pkgbase = capt-src
 	depends_x86_64 = lib32-gcc-libs
 
 pkgname = capt-src
-
