@@ -1,6 +1,6 @@
 pkgbase = nco
 	pkgdesc = netCDF Operators allow users to manipulate and analyse data stored in NetCDF files
-	pkgver = 5.0.6
+	pkgver = 5.0.7
 	pkgrel = 1
 	url = http://nco.sourceforge.net/
 	arch = x86_64
@@ -9,8 +9,11 @@ pkgbase = nco
 	depends = netcdf
 	depends = udunits
 	depends = gsl
+	depends = curl
 	options = !libtool
-	source = nco-5.0.6.tar.gz::https://github.com/nco/nco/archive/5.0.6.tar.gz
-	sha256sums = d4c74e0268af94bdddcb0c77189830992f61c04147c23669b66470f1a8595d60
+	source = nco-5.0.7.tar.gz::https://github.com/nco/nco/archive/5.0.7.tar.gz
+	source = use_antlr2.patch
+	sha256sums = 6ddb397e7de4a7876e7d84ea82d4ee716cfd60ad8ee50ef49716945c505cbc1d
+	sha256sums = 242be592df0682ea06b6562cb313c97b7efa4fe56bbd5d700d833a8c14e88bc3
 
 pkgname = nco

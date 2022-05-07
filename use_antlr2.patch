@@ -1,0 +1,10 @@
+--- configure
++++ configure
+
+@@ -20465,5 +20465,5 @@
+ # AC_CHECK_PROGS (variable, progs-to-check-for, [value-if-not-found], [path]
+ # Check for antlr executable installed as runantlr (runantlr ~= java antlr.Tool)
+-for ac_prog in runantlr antlr
++for ac_prog in runantlr2 antlr
+ do
+   # Extract the first word of "$ac_prog", so it can be a program name with args.
