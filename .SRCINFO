@@ -1,8 +1,8 @@
 pkgbase = kb-simple-http-server-git
 	pkgdesc = Simple http server scripted in lua
-	pkgver = 1.0.0.r116.a33d5af
+	pkgver = 1.0.0.r1.93b9f52
 	pkgrel = 1
-	url = https://gitlab.com/bochmkrzysztof/http-server.git
+	url = https://gitlab.com/bochmkrzysztof/http-server.git#tag=v1.0.1
 	arch = x86_64
 	license = MIT
 	makedepends = gcc
@@ -13,7 +13,7 @@ pkgbase = kb-simple-http-server-git
 	depends = lua
 	depends = liburing
 	provides = kb-simple-http-server
-	source = git+https://gitlab.com/bochmkrzysztof/http-server.git
+	source = git+https://gitlab.com/bochmkrzysztof/http-server.git#tag=v1.0.1
 	sha256sums = SKIP
 
 pkgname = kb-simple-http-server-git

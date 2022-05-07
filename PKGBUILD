@@ -5,12 +5,12 @@
 
 # Maintainer: Krzysztof Bochm <bochmkrzysztof@gmail.com>
 pkgname=kb-simple-http-server-git
-pkgver=1.0.0.r116.a33d5af
+pkgver=1.0.0.r1.93b9f52
 pkgrel=1
 epoch=
 pkgdesc="Simple http server scripted in lua"
 arch=(x86_64)
-url="https://gitlab.com/bochmkrzysztof/http-server.git"
+url="https://gitlab.com/bochmkrzysztof/http-server.git#tag=v1.0.1"
 license=('MIT')
 groups=()
 depends=(boost lua liburing)
