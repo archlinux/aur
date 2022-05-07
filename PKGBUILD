@@ -3,7 +3,7 @@
 
 _pkgname=rage
 pkgname=$_pkgname-git
-pkgver=0.3.1.r250.db95c4c
+pkgver=0.4.0.r258.5d31883
 pkgrel=1
 pkgdesc="Video Player based on EFL - Development version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
