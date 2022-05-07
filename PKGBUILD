@@ -9,7 +9,7 @@
 
 _pkgname=enlightenment
 pkgname=$_pkgname-git-asan
-pkgver=0.24.99.24576.g3faf1a462
+pkgver=0.25.99.24774.gc8b1077de
 pkgrel=1
 pkgdesc="Enlightenment window manager - Development version - Asan debug build"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -28,7 +28,7 @@ conflicts=("$_pkgname" $_pkgname-git=$pkgver)
 backup=('etc/enlightenment/sysactions.conf'
         'etc/xdg/menus/e-applications.menu')
 options=('!strip' 'ccache')
-source=("git+https://git.enlightenment.org/core/$_pkgname.git"
+source=("git+https://git.enlightenment.org/enlightenment/$_pkgname.git"
         "enlightenment_start")
 sha256sums=('SKIP'
             'SKIP')

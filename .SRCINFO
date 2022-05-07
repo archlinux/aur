@@ -1,6 +1,6 @@
 pkgbase = enlightenment-git-asan
 	pkgdesc = Enlightenment window manager - Development version - Asan debug build
-	pkgver = 0.24.99.24576.g3faf1a462
+	pkgver = 0.25.99.24774.gc8b1077de
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
@@ -34,16 +34,16 @@ pkgbase = enlightenment-git-asan
 	optdepends = geoclue2: needed for geolocation module
 	optdepends = packagekit: needed for packagekit module
 	optdepends = ddcutil: from AUR needed for desktop monitor backlight etc. controls
-	provides = enlightenment=0.24.99.24576.g3faf1a462
-	provides = enlightenment-git=0.24.99.24576.g3faf1a462
+	provides = enlightenment=0.25.99.24774.gc8b1077de
+	provides = enlightenment-git=0.25.99.24774.gc8b1077de
 	provides = notification-daemon
 	conflicts = enlightenment
-	conflicts = enlightenment-git=0.24.99.24576.g3faf1a462
+	conflicts = enlightenment-git=0.25.99.24774.gc8b1077de
 	options = !strip
 	options = ccache
 	backup = etc/enlightenment/sysactions.conf
 	backup = etc/enlightenment/system.conf
-	source = git+https://git.enlightenment.org/core/enlightenment.git
+	source = git+https://git.enlightenment.org/enlightenment/enlightenment.git
 	source = enlightenment_start
 	sha256sums = SKIP
 	sha256sums = SKIP
