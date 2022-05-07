@@ -1,7 +1,7 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 pkgname=nanoemoji
-pkgver=0.13.1
+pkgver=0.13.2
 pkgrel=1
 pkgdesc='A wee tool to build color fonts'
 arch=(any)
@@ -29,7 +29,7 @@ checkdepends=(python-pytest
               resvg)
 _archive="$pkgname-$pkgver"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$_archive.tar.gz")
-sha256sums=('900bfa6b4ce8e08266bc5695308c524bb552042bbd254cdc0f7203db12954337')
+sha256sums=('0549fe2a671e73bf3acc8bbc6f58e1e78b88d497754be3684d0e5d0c7d2cb0e1')
 
 build() {
 	cd "$_archive"
