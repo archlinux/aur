@@ -1,8 +1,8 @@
 # Maintainer: Fernandez Ludovic <lfernandez dot dev at gmail dot com>
 
 pkgname='nfpm'
-pkgver=v2.14.0
-pkgrel=2
+pkgver=v2.15.1
+pkgrel=1
 pkgdesc='A simple deb and rpm packager written in Go '
 url='https://github.com/goreleaser/nfpm'
 arch=('x86_64')
