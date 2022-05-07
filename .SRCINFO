@@ -1,0 +1,16 @@
+pkgbase = termdbms-git
+	pkgdesc = A TUI for viewing and editing database files.
+	pkgver = r104.fb71ac6
+	pkgrel = 1
+	url = https://github.com/mathaou/termdbms
+	arch = x86_64
+	arch = armv7h
+	license = MIT
+	makedepends = git
+	makedepends = go
+	provides = termdbms
+	conflicts = termdbms
+	source = git+https://github.com/mathaou/termdbms.git
+	sha1sums = SKIP
+
+pkgname = termdbms-git
