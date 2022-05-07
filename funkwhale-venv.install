@@ -1,0 +1,14 @@
+post_install() {
+  echo "Follow instructions on the upstream page or on the Arch Wiki for setting up the Funkwhale server:"
+  echo "https://wiki.archlinux.org/index.php/Funkwhale"
+}
+
+post_upgrade() {
+  #echo "Follow instructions on the upstream page or on the Arch Wiki for updating"
+  sudo systemctl stop funkwhale.service
+  sudo systemctl daemon-reload
+  sudo funkwhale_manage collectstatic --no-input
+  sudo funkwhale_manage migrate
+  sudo systemctl start funkwhale.service
+}
+

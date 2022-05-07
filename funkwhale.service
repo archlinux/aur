@@ -1,0 +1,13 @@
+[Unit]
+Description=Funkwhale
+After=httpd.service nginx.service
+Wants=funkwhale-server.service funkwhale-beat.service funkwhale-worker.service
+
+[Service]
+Type=oneshot
+ExecStart=/bin/true
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+
