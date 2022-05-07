@@ -1,6 +1,6 @@
 # Maintainer: <abishekj274@gmail.com>
 pkgname=salad-git
-pkgver=0.5.8.r45.gf3419660
+pkgver=0.5.8.r49.g6416d126
 pkgrel=1
 pkgdesc="Allows gamers to mine crypto in their downtime [git version]."
 arch=(x86_64)
