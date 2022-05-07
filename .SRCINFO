@@ -1,32 +1,23 @@
 pkgbase = lua-pegdebug
 	pkgdesc = Trace debugger for LPeg rules and captures
 	pkgver = 0.41
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/pkulchenko/PegDebug
 	arch = i686
 	arch = x86_64
 	license = MIT
 	makedepends = lua
-	makedepends = lua53
-	makedepends = lua52
 	makedepends = lua51
+	makedepends = lua52
+	makedepends = lua53
 	makedepends = luarocks
-	source = pegdebug-0.41.tar.gz::https://github.com/pkulchenko/PegDebug/archive/0.41.tar.gz
+	source = https://github.com/pkulchenko/PegDebug/archive/0.41/PegDebug-0.41.tar.gz
 	sha256sums = 0ba8c5ee25cf24e011b29d40cfa5577b19cb4d9d8a086e9238187e7831fb39d1
 
 pkgname = lua-pegdebug
-	depends = lua
-	depends = lua-lpeg
 
 pkgname = lua53-pegdebug
-	depends = lua53
-	depends = lua53-lpeg
 
 pkgname = lua52-pegdebug
-	depends = lua52
-	depends = lua52-lpeg
 
 pkgname = lua51-pegdebug
-	depends = lua51
-	depends = lua51-lpeg
-
