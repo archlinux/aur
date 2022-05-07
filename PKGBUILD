@@ -2,7 +2,7 @@
 
 pkgname=fish-prompt-nai-dusan-git
 _reponame=theme-nai
-pkgver=r8.0319c8e
+pkgver=r12.99c9b4b
 pkgrel=1
 pkgdesc="A minimalist fish theme which displays git branch and status information"
 arch=(any)
@@ -23,6 +23,7 @@ pkgver() {
 package() {
 	cd "$_reponame"
 	install -Dm644 "functions/fish_prompt.fish" -t "$pkgdir/etc/fish/functions"
+	install -Dm644 conf.d/theme_nai.fish -t "$pkgdir/etc/fish/conf.d"
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/${pkgname%-git}"
 }
