@@ -1,5 +1,4 @@
 /pkg
-/qmapshack-*.pkg.tar.xz
-/qmapshack-*.tar.gz
+/*.tar.*
 /qmapshack-git
 /src
