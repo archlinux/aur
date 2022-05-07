@@ -10,7 +10,7 @@ depends=('java-runtime>=8' 'sh')
 source=("https://dlcdn.apache.org/avro/avro-${pkgver}/java/avro-tools-${pkgver}.jar")
 provides=('avro-tools')
 noextract=("avro-tools-${pkgver}.jar")
-sha256sums=("9af5531404a8b4749e116b605a0e9584cca51f180273a0cecf8f5e448aba6d61")
+sha256sums=("43ba8e1d63d6273e8ca72fee68b4125bfdbbbb3112ea0b021fa29d0c0d2f2276")
 
 build() {
 	cd "$srcdir"
