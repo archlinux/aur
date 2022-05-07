@@ -93,12 +93,6 @@ prepare() {
   patch -Np1 -i ${_patches_dir}/gentoo/0032-bmo-1765361-resolve_objdir_from_virtualenv_if_mozinfo_not_ancestor.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0033-bmo-1761691-fix_audio_thread_priority_when_dbus_is_disabled.patch
 
-  # Use more system libs
-  echo "---- Patching for system libs"
-  patch -Np1 -i ${_patches_dir}/gentoo/0004-bmo-847568-Support-system-harfbuzz.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0005-bmo-847568-Support-system-graphite2.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0006-bmo-1559213-Support-system-av1.patch
-
   # Remove some pre-installed addons that might be questionable
   echo "---- Librewolf patches"
   patch -Np1 -i ${_patches_dir}/librewolf/remove_addons.patch
