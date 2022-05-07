@@ -2,7 +2,7 @@
 
 _pkgname=efl
 pkgname=($_pkgname-git-asan)
-pkgver=1.25.99.66579.g6297159c5d
+pkgver=1.26.99.66907.g7743b17dba
 pkgrel=1
 pkgdesc="Enlightenment Foundation Libraries - Development version - Asan debug build"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -27,7 +27,7 @@ optdepends=('gst-plugins-base: Video and thumbnail codecs'
 provides=("$_pkgname=$pkgver" $_pkgname-git=$pkgver elementary{,-git}=$pkgver "evas_generic_loaders=$pkgver")
 conflicts=("$_pkgname" $_pkgname-git elementary{,-git} elementary_test{,-git} evas_generic_loaders{,-git})
 options=('!strip' 'ccache')
-source=("git+https://git.enlightenment.org/core/$_pkgname.git")
+source=("git+https://git.enlightenment.org/enlightenment/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
