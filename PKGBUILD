@@ -2,7 +2,7 @@
 
 pkgbase=lightway-core-git
 pkgname=('lightway-core-git' 'lightway-core-doc-git')
-pkgver=1.2.r0.g9a7801c
+pkgver=1.5.r0.g8c3b8fd
 pkgrel=1
 pkgdesc='A VPN protocol by ExpressVPN (git version)'
 arch=('x86_64')
@@ -14,7 +14,7 @@ source=('git+https://github.com/expressvpn/lightway-core.git'
         '010-lightway-core-disable-werror-on-wolfssl.patch')
 sha256sums=('SKIP'
             'SKIP'
-            '60e4d5490192bc1ed6840665345e854eca5715a898824b90fa012245272f619b')
+            'fd82affc9e605a7963e5b4908d8decc877980ac007f9ba5aabeccf9019cf5727')
 
 prepare() {
     local _wolfssl_commit
@@ -48,8 +48,8 @@ package_lightway-core-git() {
     provides=('lightway-core')
     conflicts=('lightway-core')
     
-    install -D -m644 lightway-core/public/*.h -t "${pkgdir}/usr/include"
-    install -D -m644 lightway-core/build/release/libhelium.a -t "${pkgdir}/usr/lib"
+    install -D -m644 lightway-core/build/release/*.a -t "${pkgdir}/usr/lib"
+    cp -dr --no-preserve='ownership' lightway-core/public "${pkgdir}/usr/include"
 }
 
 package_lightway-core-doc-git() {

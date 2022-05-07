@@ -35,7 +35,7 @@
          ])
  
        AS_IF([test "$ax_enable_debug" = "yes"], [
-@@ -168,9 +168,9 @@
+@@ -167,9 +167,9 @@
  
        ax_append_compile_cxxflags_extra=
        AS_IF([test "$ac_cv_warnings_as_errors" = "yes"],[
@@ -47,7 +47,7 @@
          ])
  
        AS_IF([test "$ax_enable_debug" = "yes" ], [
-@@ -182,7 +182,7 @@
+@@ -181,7 +181,7 @@
          ])
  
        AS_IF([test "$ac_cv_vcs_checkout" = "yes" ], [
