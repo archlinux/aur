@@ -1,6 +1,6 @@
 # Maintainer: Eric Semeniuc <eric.semeniuc@gmail.com>
 pkgname=avro-tools
-pkgver=1.10.2
+pkgver=1.11.0
 pkgrel=1
 pkgdesc='Avro command line tools and utilities'
 arch=('any')
@@ -10,7 +10,7 @@ depends=('java-runtime>=8' 'sh')
 source=("https://dlcdn.apache.org/avro/avro-${pkgver}/java/avro-tools-${pkgver}.jar")
 provides=('avro-tools')
 noextract=("avro-tools-${pkgver}.jar")
-sha256sums=("ab158f4af8f767d2358a29d8678939b2a0f96017490acfb4e7ed0708cea07913")
+sha256sums=("9af5531404a8b4749e116b605a0e9584cca51f180273a0cecf8f5e448aba6d61")
 
 build() {
 	cd "$srcdir"
