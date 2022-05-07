@@ -57,6 +57,15 @@ EOF
             err "Failed to open encryption mapping: The device ${cryptdev} is not a LUKS volume."
         fi
     fi
+
+    IFS=,
+    if [ -n "${osk_kms}" ]; then
+      for i in $osk_kms
+      do
+        echo "Resetting $i module"
+        rmmod -f "$i"
+      done
+    fi
 }
 
 # vim: set ft=sh ts=4 sw=4 et:
