@@ -1,0 +1,12 @@
+pkgbase = dolphin-wezterm
+	pkgdesc = Change the default terminal emulator for Dolphin to WezTerm
+	pkgver = 0.1.0
+	pkgrel = 1
+	install = dolphin-wezterm.install
+	arch = any
+	depends = dolphin
+	depends = wezterm
+	source = dolphin-open-wezterm.sh
+	sha256sums = 53c595fa527837bf9816f6cb9bdc5ab8aa32e36be99b25d6f42f2033b95201c1
+
+pkgname = dolphin-wezterm

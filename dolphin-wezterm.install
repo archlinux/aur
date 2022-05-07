@@ -1,0 +1,15 @@
+post_install() {
+  echo
+  echo 'Change the default terminal emulator for Dolphin to WezTerm by adding this to the ~/.config/kdeglobals file:'
+  echo '[General]'
+  echo 'TerminalApplication=/usr/lib/dolphin-wezterm/dolphin-open-wezterm.sh'
+  echo
+}
+
+post_remove() {
+  echo
+  echo 'Remember to remove the added section in the ~/.config/kdeglobals file:'
+  echo '[General]'
+  echo 'TerminalApplication=/usr/lib/dolphin-wezterm/dolphin-open-wezterm.sh'
+  echo
+}
