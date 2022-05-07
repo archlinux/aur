@@ -12,7 +12,7 @@
 
 _pkgname=enlightenment
 pkgname=$_pkgname-git
-pkgver=0.25.0.24713.g45bd61df3
+pkgver=0.25.99.24774.gc8b1077de
 pkgrel=1
 pkgdesc="Enlightenment window manager - Development version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
@@ -33,7 +33,7 @@ backup=('etc/enlightenment/sysactions.conf'
         'etc/enlightenment/system.conf'
         'etc/xdg/menus/e-applications.menu')
 options=('debug' 'ccache')
-source=("git+https://git.enlightenment.org/core/$_pkgname.git")
+source=("git+https://git.enlightenment.org/enlightenment/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {

@@ -1,6 +1,6 @@
 pkgbase = enlightenment-git
 	pkgdesc = Enlightenment window manager - Development version
-	pkgver = 0.25.0.24713.g45bd61df3
+	pkgver = 0.25.99.24774.gc8b1077de
 	pkgrel = 1
 	url = http://www.enlightenment.org
 	arch = i686
@@ -38,7 +38,7 @@ pkgbase = enlightenment-git
 	optdepends = geoclue2: needed for geolocation module
 	optdepends = packagekit: needed for packagekit module
 	optdepends = ddcutil: from AUR needed for desktop monitor backlight etc. controls
-	provides = enlightenment=0.25.0.24713.g45bd61df3
+	provides = enlightenment=0.25.99.24774.gc8b1077de
 	provides = notification-daemon
 	conflicts = enlightenment
 	options = debug
@@ -46,7 +46,7 @@ pkgbase = enlightenment-git
 	backup = etc/enlightenment/sysactions.conf
 	backup = etc/enlightenment/system.conf
 	backup = etc/xdg/menus/e-applications.menu
-	source = git+https://git.enlightenment.org/core/enlightenment.git
+	source = git+https://git.enlightenment.org/enlightenment/enlightenment.git
 	sha256sums = SKIP
 
 pkgname = enlightenment-git
