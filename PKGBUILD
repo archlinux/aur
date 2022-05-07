@@ -1,3 +1,4 @@
+# Mainteiner: gigablaster <gigakek [at] protonmail.com>
 # Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
 # Maintainer: Kenny Levinsen <aur [at] kl [dot] wtf>
 
@@ -12,7 +13,7 @@ source=("https://git.sr.ht/~kennylevinsen/greetd/archive/$pkgver.tar.gz"
         'greetd.pam')
 sha256sums=('47a73709df60f04b63fc50cfc409e47a451a9620777638f527b9d9333256035f'
             '993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92')
-depends=(systemd pam)
+depends=(pam)
 makedepends=(git rust scdoc)
 optdepends=(
   'greetd-gtkgreet: Simple GTK based greeter'
@@ -51,9 +52,6 @@ package() {
       done
     done
   )
-
-  install -Dm644 "$srcdir/greetd-$pkgver/greetd.service" \
-    "$pkgdir/usr/lib/systemd/system/greetd.service"
 
   echo 'u greeter - "greetd greeter user" - /bin/bash' |
     install -Dm644 /dev/stdin "$pkgdir/usr/lib/sysusers.d/greetd.conf"
