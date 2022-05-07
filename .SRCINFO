@@ -1,6 +1,6 @@
 pkgbase = evisum-git
 	pkgdesc = PRocess monitor like top based on EFL - Development version
-	pkgver = 0.5.99.r1136.1f2536f
+	pkgver = 0.5.99.r1161.38ad17b
 	pkgrel = 1
 	url = https://www.enlightenment.org/about-evisum
 	arch = i686
@@ -18,11 +18,10 @@ pkgbase = evisum-git
 	makedepends = binutils
 	makedepends = fakeroot
 	depends = efl
-	provides = evisum=0.5.99.r1136.1f2536f
+	provides = evisum=0.5.99.r1161.38ad17b
 	conflicts = evisum
 	options = debug
-	source = git+https://git.enlightenment.org/apps/evisum.git
+	source = git+https://git.enlightenment.org/enlightenment/evisum.git
 	sha256sums = SKIP
 
 pkgname = evisum-git
-

@@ -2,7 +2,7 @@
 
 _pkgname=evisum
 pkgname=$_pkgname-git
-pkgver=0.5.99.r1136.1f2536f
+pkgver=0.5.99.r1161.38ad17b
 pkgrel=1
 pkgdesc="PRocess monitor like top based on EFL - Development version"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
