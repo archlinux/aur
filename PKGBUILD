@@ -3,7 +3,7 @@
 # Contributor: ant32 < antreimer at gmail dot com >
 # Contributor: Filip Brcic < brcha at gna dot org >
 
-_pkgver=3.0.2
+_pkgver=1.1.1o
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
 pkgname=mingw-w64-openssl
@@ -19,7 +19,7 @@ makedepends=('mingw-w64-gcc'
              'perl')
 options=('!strip' 'staticlibs' '!buildflags' '!lto')
 source=("https://www.openssl.org/source/openssl-${_pkgver}.tar.gz"{,.asc})
-sha256sums=('98e91ccead4d4756ae3c9cde5e09191a8e586d9f4d50838e7ec09d6411dfdb63'
+sha256sums=('9384a2b0570dd80358841464677115df785edb941c71211f75076d72fe6b438f'
             'SKIP')
 validpgpkeys=('7953AC1FBC3DC8B3B292393ED5E9E43F7DF9EE8C' # Richard Levitte <levitte@openssl.org>
               '8657ABB260F056B1E5190839D9C4D26D0E604491' # Matt Caswell <matt@openssl.org>
@@ -49,14 +49,14 @@ build() {
       no-ssl3-method \
       zlib-dynamic \
       "${CFLAGS}"
-    make LIBDIR=lib
+    make
   done
 }
 
 package() {
   for _arch in ${_architectures}; do
     cd "${srcdir}/build-${_arch}"
-    make -j1 DESTDIR="${pkgdir}" LIBDIR=lib install_sw
+    make -j1 DESTDIR="${pkgdir}" install_sw
     install -m644 ms/applink.c "${pkgdir}/usr/${_arch}/include/openssl/"
     find "${pkgdir}/usr/${_arch}" -name '*.exe' -exec ${_arch}-strip {} \;
     find "${pkgdir}/usr/${_arch}" -name '*.dll' -exec ${_arch}-strip --strip-unneeded {} \;
