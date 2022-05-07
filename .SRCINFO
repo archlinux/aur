@@ -1,5 +1,6 @@
 pkgbase = python-columnize
-	pkgver = 0.3.10
+	pkgdesc = Python module to align a simple (not nested) list in columns.
+	pkgver = 0.3.11
 	pkgrel = 1
 	url = https://github.com/rocky/pycolumnize
 	arch = any
@@ -8,8 +9,7 @@ pkgbase = python-columnize
 	checkdepends = python-pytest
 	checkdepends = python-pytest-cov
 	makedepends = python-setuptools
-	source = columnize-0.3.0.tar.gz::https://github.com/rocky/pycolumnize/archive/refs/tags/0.3.10.tar.gz
-	sha256sums = c7947a57a126b6e5b4b585a19945909c3e64213979113948968304ebcf23daa4
+	source = columnize-0.3.11.tar.gz::https://github.com/rocky/pycolumnize/archive/refs/tags/3.11.tar.gz
+	sha256sums = dbcb3fc33f93da7d34542e7cd649f513cbe3cae7ad23f797c97499fc4ccba91e
 
 pkgname = python-columnize
-
