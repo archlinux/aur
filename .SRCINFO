@@ -1,6 +1,6 @@
 pkgbase = libxpid
 	pkgdesc = Linux Process Scanning. (C Library). Find eBPF programs, containers, hidden pids. Like nmap for pids in the kernel.
-	pkgver = v1.2.0
+	pkgver = v1.2.1
 	pkgrel = 1
 	url = https://github.com/kris-nova/xpid
 	arch = x86_64
@@ -8,7 +8,7 @@ pkgbase = libxpid
 	makedepends = make
 	makedepends = clang
 	makedepends = cmake
-	source = git+https://github.com/kris-nova/xpid.git#tag=v1.2.0
+	source = git+https://github.com/kris-nova/xpid.git#tag=v1.2.1
 	sha256sums = SKIP
 
 pkgname = libxpid
