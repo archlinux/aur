@@ -13,7 +13,7 @@ makedepends=('git' 'meson' 'ninja' 'pkgconf' 'gcc' 'binutils' 'fakeroot')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
 options=('debug')
-source=("git+https://git.enlightenment.org/apps/$_pkgname.git")
+source=("git+https://git.enlightenment.org/enlightenment/$_pkgname.git")
 sha256sums=('SKIP')
 
 pkgver() {
