@@ -1,7 +1,7 @@
 pkgbase = guiscrcpy
 	pkgdesc = Open Source GUI based Android Screen Mirroring System
-	pkgver = 4.11.3
-	pkgrel = 2
+	pkgver = 4.12.0
+	pkgrel = 1
 	url = https://guiscrcpy.github.io
 	arch = any
 	license = GPL3
@@ -9,17 +9,21 @@ pkgbase = guiscrcpy
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-poetry
-	depends = scrcpy
-	depends = python-pynput
-	depends = python-qtpy
-	depends = python-psutil
+	makedepends = setconf
+	depends = libxinerama
+	depends = pyside6
+	depends = python
 	depends = python-cairosvg
 	depends = python-click
 	depends = python-colorama
-	depends = libxinerama
+	depends = python-coloredlogs
+	depends = python-psutil
+	depends = python-pynput
+	depends = python-qtpy
+	depends = scrcpy
 	optdepends = usbaudio: audio mirroring for Android <8.0
 	optdepends = sndcpy: audio mirroring for Android >=10
-	source = git+https://github.com/srevinsaju/guiscrcpy.git#commit=44da9572c84d16345cae776e0a81812779c5e0ee?signed
+	source = git+https://github.com/srevinsaju/guiscrcpy.git#commit=06c5cf7dae06664741fe2f1d2c5d3700cff2e8e1?signed
 	validpgpkeys = 7427D25413635E1E39657B6B1007816766D390D7
 	sha256sums = SKIP
 
