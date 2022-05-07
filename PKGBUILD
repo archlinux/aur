@@ -1,6 +1,6 @@
 # Maintainer: Falko Galperin <dr (dot) asasteghof (at) gmail (dot) com>
 pkgname=python-pdfplumber
-pkgver=0.6.1
+pkgver=0.6.2
 pkgrel=1
 pkgdesc="Plumb a PDF for detailed information about each char, rectangle, line, et cetera."
 arch=(any)
@@ -11,7 +11,7 @@ makedepends=('python-setuptools')
 changelog=$pkgname.changelog.md
 _name=${pkgname#python-}
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=("3fb571389e993cf091c805170c248be79ba88a91d75aa95b9f141cef9304ae82")
+sha256sums=("696ad9d724ad3730c8bc46ed8977528bad63035a21fd42460f9ef9123e3c1675")
 
 build() {
     cd "$_name-$pkgver/"
