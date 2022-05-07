@@ -2,19 +2,19 @@
 
 _pkgbin=steam-rom-manager
 pkgname=steam-rom-manager-git
-pkgdesc='An app for managing ROMs in Steam (Git version).'
-license=('GPL3')
-url='https://github.com/SteamGridDB/steam-rom-manager'
+pkgdesc="An app for managing ROMs in Steam (Git version)."
+license=("GPL3")
+url="https://github.com/SteamGridDB/steam-rom-manager"
 pkgver=2.3.29.r20.g71c11eb
 pkgrel=1
-arch=(x86_64)
-makedepends=(git nodejs-lts-gallium npm)
-provides=('steam-rom-manager')
-conflicts=('steam-rom-manager-git' 'steam-rom-manager')
+arch=("x86_64")
+makedepends=("git" "nodejs-lts-gallium" "npm")
+provides=("steam-rom-manager")
+conflicts=("steam-rom-manager-git" "steam-rom-manager")
 source=("$pkgname::git+https://github.com/SteamGridDB/steam-rom-manager"
         "steam-rom-manager.desktop")
-sha512sums=('SKIP'
-            'ff714e294c4fe0282327614ee93249d154ee77086d41e0964e61ad297472e9a0787b71ef274ecd5b86fd97ec23ab655870519f673b113e893f1678f0897abaac')
+sha512sums=("SKIP"
+            "ff714e294c4fe0282327614ee93249d154ee77086d41e0964e61ad297472e9a0787b71ef274ecd5b86fd97ec23ab655870519f673b113e893f1678f0897abaac")
 
 pkgver() {
   cd $pkgname
