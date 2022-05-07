@@ -79,7 +79,7 @@ _repo_url="https://github.com/archlinux/linux.git"
 
 _reponame_kernel_patch="kernel_compiler_patch"
 _repo_url_kernel_patch="https://github.com/graysky2/${_reponame_kernel_patch}.git"
-_kernel_patch_name="more-uarches-for-kernel-5.15-5.16.patch"
+_kernel_patch_name="more-uarches-for-kernel-5.17+.patch"
 
 _pkgdesc_extra="~ featuring Alfred Chen's PDS CPU scheduler, rebased by TkG"
 
