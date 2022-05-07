@@ -1,10 +1,10 @@
 # Maintainer: Funami
 pkgname=coredns-s6
-pkgver=20211203
+pkgver=20220507
 pkgrel=1
 pkgdesc="s6-rc service scripts for coredns"
 arch=('any')
-depends=('coredns' 'util-linux' 's6-base')
+depends=('coredns' 'util-linux' 's6')
 provides=('init-coredns')
 conflicts=('init-coredns')
 backup=('etc/s6/config/coredns.conf')

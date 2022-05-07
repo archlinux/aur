@@ -1,11 +1,11 @@
 pkgbase = coredns-s6
 	pkgdesc = s6-rc service scripts for coredns
-	pkgver = 20211203
+	pkgver = 20220507
 	pkgrel = 1
 	arch = any
 	depends = coredns
 	depends = util-linux
-	depends = s6-base
+	depends = s6
 	provides = init-coredns
 	conflicts = init-coredns
 	backup = etc/s6/config/coredns.conf
