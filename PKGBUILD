@@ -9,7 +9,7 @@
 
 pkgname=mutter-rounded
 pkgver=42.1
-pkgrel=1
+pkgrel=1.1
 pkgdesc="A window manager for GNOME, with rounded corners patch (integrate mr1441)"
 url="https://gitlab.gnome.org/GNOME/mutter"
 arch=(x86_64)
@@ -55,7 +55,7 @@ sha256sums=('SKIP'
             'f818921dd63cf592663817280c7481eae0852854dd4cd8865ac5fe92423c6fd5'
             '8fb024306843153b28db2f5347775ef7e8add1dd846345148a572ad5336e168b'
             '5093c7afd6ad66c0ee9fa1565ef61109f5edf958d1d32789a34ab41d0112771d'
-            'fc1963c134b4548950241d175a7389ec5f1a0b6a86cefb6d0918d958d66252a2')
+            '484604741ae85e778c7054b855b8506e3396759f3eee7a030a5964742b8ace19')
 
 pkgver() {
   cd $pkgname
@@ -72,7 +72,7 @@ prepare() {
   cp $srcdir/*.[ch] $srcdir/$pkgname/src
   patch -p1 < $srcdir/rounded_corners.patch
   patch -p1 < $srcdir/shell_blur_effect.patch
-  # patch -p1 < $srcdir/mr1441.patch
+  patch -p1 < $srcdir/mr1441.patch
 }
 
 build() {
