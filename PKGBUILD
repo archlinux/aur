@@ -2,7 +2,7 @@
 
 pkgbase=lightway-core
 pkgname=('lightway-core' 'lightway-core-doc')
-pkgver=1.4.1
+pkgver=1.5
 pkgrel=1
 pkgdesc='A VPN protocol by ExpressVPN'
 arch=('x86_64')
@@ -12,9 +12,9 @@ makedepends=('git' 'ruby-ceedling' 'doxygen' 'graphviz')
 source=("https://github.com/expressvpn/lightway-core/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
         'git+https://github.com/wolfSSL/wolfssl.git'
         '010-lightway-core-disable-werror-on-wolfssl.patch')
-sha256sums=('5f73f8d4e08932420c9d077e8ecaa4763f958a551aa4a6bee1ff7e29a283068c'
+sha256sums=('61254de5e7e3ba03851efa345c48cf6fda175996cc74993b46843f44520a967c'
             'SKIP'
-            '60e4d5490192bc1ed6840665345e854eca5715a898824b90fa012245272f619b')
+            'fd82affc9e605a7963e5b4908d8decc877980ac007f9ba5aabeccf9019cf5727')
 
 prepare() {
     local _wolfssl_commit
@@ -41,8 +41,8 @@ check() {
 }
 
 package_lightway-core() {
-    install -D -m644 "${pkgname}-${pkgver}"/public/*.h -t "${pkgdir}/usr/include"
-    install -D -m644 "${pkgname}-${pkgver}"/build/release/libhelium.a -t "${pkgdir}/usr/lib"
+    install -D -m644 "${pkgname}-${pkgver}/build/release"/*.a -t "${pkgdir}/usr/lib"
+    cp -dr --no-preserve='ownership' "${pkgname}-${pkgver}/public" "${pkgdir}/usr/include"
 }
 
 package_lightway-core-doc() {
@@ -50,5 +50,5 @@ package_lightway-core-doc() {
     arch=('any')
     
     install -d -m755 "${pkgdir}/usr/share/doc"
-    cp -dr --no-preserve='ownership' "lightway-core-${pkgver}"/html "${pkgdir}/usr/share/doc/lightway-core"
+    cp -dr --no-preserve='ownership' "lightway-core-${pkgver}/html" "${pkgdir}/usr/share/doc/lightway-core"
 }
