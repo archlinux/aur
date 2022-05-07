@@ -1,0 +1,16 @@
+pkgbase = screen-nosuid-bin-not-git
+	pkgdesc = Screen, repacked without suid
+	pkgver = 4.9.0+rel1
+	pkgrel = 1
+	url = https://www.gnu.org/software/screen/
+	arch = x86_64
+	license = GPL
+	depends = ncurses
+	depends = pam
+	provides = screen
+	conflicts = screen
+	options = !strip
+	backup = etc/screenrc
+	backup = etc/pam.d/screen
+
+pkgname = screen-nosuid-bin-not-git
