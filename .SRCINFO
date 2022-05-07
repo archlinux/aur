@@ -7,7 +7,7 @@ pkgbase = pam-oauth2
 	license = MIT
 	makedepends = curl
 	backup = etc/pam.d/oauth2
-	source = pam-oauth2-1.0.1.tar.gz::https://github.com/CyberDem0n/pam-oauth2/archive/v1.0.1.tar.gz
+	source = https://github.com/CyberDem0n/pam-oauth2/archive/v1.0.1/pam-oauth2-1.0.1.tar.gz
 	source = pam-oauth2.pam
 	source = jsmn-1.1.0.tar.gz::https://github.com/zserge/jsmn/archive/v1.1.0.tar.gz
 	sha256sums = 7eabb1be36183a6c6c7505c5dcfde284b7722c095d925c6a03add9bd0a82774b
@@ -15,4 +15,3 @@ pkgbase = pam-oauth2
 	sha256sums = 5f0913a10657fe7ec8d5794ccf00a01000e3e1f2f1e1f143c34a0f7b47edcb38
 
 pkgname = pam-oauth2
-
