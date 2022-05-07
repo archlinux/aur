@@ -1,6 +1,6 @@
 pkgbase = whalebird-bin
 	pkgdesc = Electron based multi-platform client for Mastodon, Misskey & Pleroma
-	pkgver = 4.6.0beta.1
+	pkgver = 4.6.0beta.2
 	pkgrel = 1
 	url = https://whalebird.social
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = whalebird-bin
 	depends = libappindicator-gtk3
 	provides = whalebird
 	conflicts = whalebird
-	source = https://github.com/h3poteto/whalebird-desktop/releases/download/4.6.0-beta.1/Whalebird-4.6.0-beta.1-linux-x64.rpm
-	sha256sums = 40c85361a420804a6ca61b4aab89c0b510064995b00ab9fcc520198028456055
+	source = https://github.com/h3poteto/whalebird-desktop/releases/download/4.6.0-beta.2/Whalebird-4.6.0-beta.2-linux-x64.rpm
+	sha256sums = 2c392f68ed59602e39b5eb263ebd59bebbde34894de4d95fa6b6f914fcec885e
 
 pkgname = whalebird-bin
