@@ -6,11 +6,10 @@ pkgbase = miraktest
 	arch = x86_64
 	license = MIT
 	makedepends = vlc
-	makedepends = imagemagick
 	depends = vlc
 	source = https://github.com/ci7lus/MirakTest/releases/download/v2.0.0-beta.3/miraktest-2.0.0-beta.3.tar.gz
-	source = https://raw.githubusercontent.com/ci7lus/MirakTest/feat/v2/assets/miraktest.ico
+	source = https://raw.githubusercontent.com/ci7lus/MirakTest/master/assets/miraktest.iconset/icon_512x512.png
 	md5sums = 500af8a73ff6ec48fa6bc8893cf1a853
-	md5sums = de36cb346dc226f833159374452a5ad0
+	md5sums = 271674ef5efdd9b3b33a7e622bacae39
 
 pkgname = miraktest

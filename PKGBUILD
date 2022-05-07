@@ -8,12 +8,12 @@ arch=('x86_64')
 url="https://github.com/ci7lus/MirakTest"
 license=('MIT')
 depends=('vlc')
-makedepends=('vlc' 'imagemagick')
+makedepends=('vlc')
 _releasename="v${pkgver}${_suffix}"
 _targzname="miraktest-${pkgver}${_suffix}"
 source=(
     "https://github.com/ci7lus/MirakTest/releases/download/${_releasename}/${_targzname}.tar.gz"
-    "https://raw.githubusercontent.com/ci7lus/MirakTest/feat/v2/assets/miraktest.ico"
+    "https://raw.githubusercontent.com/ci7lus/MirakTest/master/assets/miraktest.iconset/icon_512x512.png"
 )
 
 package() {
@@ -45,8 +45,8 @@ Terminal=false
 MimeType=text/plain' > "${pkgdir}/usr/share/applications/miraktest.desktop"
 
     # Icon
-    convert "${srcdir}/miraktest.ico" "${pkgdir}/usr/share/pixmaps/miraktest.png"
+    cp "${srcdir}/icon_512x512.png" "${pkgdir}/usr/share/pixmaps/miraktest.png"
 }
 
 md5sums=('500af8a73ff6ec48fa6bc8893cf1a853'
-         'de36cb346dc226f833159374452a5ad0')
+         '271674ef5efdd9b3b33a7e622bacae39')
