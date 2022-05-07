@@ -1,0 +1,20 @@
+pkgbase = avm
+	pkgdesc = AOM Video Model - the reference software for next codec from Alliance for Open Media
+	pkgver = 3.0.0rc1
+	pkgrel = 1
+	url = https://gitlab.com/AOMediaCodec/avm/
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = cmake
+	makedepends = yasm
+	makedepends = perl
+	depends = gcc-libs
+	provides = libaom.so
+	conflicts = aom
+	source = git+https://gitlab.com/AOMediaCodec/avm.git#tag=research-v3.0.0-rc1
+	source = git+https://github.com/tensorflow/tensorflow.git
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = avm
