@@ -42,15 +42,15 @@ source=("${_pkgname}-${pkgver}-api.zip::${_source_api}build_api"
         "env-template"
         "funkwhale_manage"
 )
-sha256sums=('8a1ff070b7bd7205fcfebdb2e8f1c92dd1ffb60fb2fe084a2bab36026575059e'
-            '82e99ee29d2306cd379a61ae4c2c1d461625b74d24001d51193dafb2f18d9628'
+sha256sums=('c941c7aefa6bbacdec246f3af2b2b3f86c47892138835d20fca2acbff71dbaaa'
+            'cb1df2630ab4818250d4363d43600258bdb33f21622b4c58d9cad6589e95b3ae'
             '2906a075b41dcd2375c601482cb5a00e42cb87c613012b176c570d77918afbf2'
             '37fa894055ce94b2d0752c48a89c04d67a2610a3572a788ba7a3cf65e1641c90'
             '01104122e3df765735b1062aa15e7a73c7949f2d9b7332c0e02e02db66345349'
             '9015716bca869766eca58f7a14eda274d211f189c5d3d7cde741739fe7744fb7'
             'dac163ac314992692f5743fed8b0c3791e36fbb465c1c07e3fc88a51a263410a'
             'efefea0ebd84c99ec17a766519dd3a67ddcae87af453b99fc01f47976f4425e3'
-            'f37b1b6257c5b92272f36773041c83fc72276ff4040100fba92db8136cc9177d'
+            '0279c68ccf7442571eb8bcab6cd0148dd89b3a1c33181406bcbb7afeecf9a2fa'
             'cea307055e9f8001a1507c507e1be91352d896cab17260a221f4ab8c298506d8'
             'ff2f7db927720f11eb9a3b698ad12e5a6e0045a315969b5dd6cff2e7d95dca82')
 install=${pkgname}.install
