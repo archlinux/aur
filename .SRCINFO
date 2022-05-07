@@ -1,7 +1,7 @@
 pkgbase = ffmpeg-shinobi
 	pkgdesc = FFmpeg from the release/4.3 branch for use with Shinobi
 	pkgver = 4.3.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://ffmpeg.org/
 	arch = x86_64
 	arch = aarch64
@@ -85,8 +85,10 @@ pkgbase = ffmpeg-shinobi
 	source = git+https://git.ffmpeg.org/ffmpeg.git#tag=e23098a712d532a393a0ae7ed6e22eb905ad06d2
 	source = vmaf-model-path.patch
 	source = 0001-configure-use-no-narrowing-for-cuda-llvm-compilation.patch::https://git.ffmpeg.org/gitweb/ffmpeg.git/patch/52cc323735ced6e8095cfd3acea0e36e35c76eb2
+	source = 0002-add-build-fix-for-dav1d-1.0.0.patch
 	sha256sums = SKIP
 	sha256sums = 8dff51f84a5f7460f8893f0514812f5d2bd668c3276ef7ab7713c99b71d7bd8d
 	sha256sums = 9a661c1e4f0cbad393fb76da1d9fde6dced3918c29bc39b22b996ec4f4c6cecd
+	sha256sums = bcde6299a805430c3ca1f2807101edc7001e77b1934088db9057f74d9a9dd8f6
 
 pkgname = ffmpeg-shinobi
