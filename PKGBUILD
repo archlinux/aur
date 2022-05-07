@@ -4,10 +4,10 @@
 # Contributor: wagnerflo <florian@wagner-flo.net>
 
 _cranname=ggplot2
-_cranver=3.3.5
+_cranver=3.3.6
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
-pkgrel=3
+pkgrel=1
 pkgdesc="Create Elegant Data Visualisations Using the Grammar of Graphics"
 arch=(any)
 url="https://cran.r-project.org/package=${_cranname}"
@@ -60,7 +60,7 @@ optdepends=(
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz"
         "CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT")
-sha256sums=('b075294faf3af31b18e415f260c62d6000b218770e430484fe38819bdc3224ea'
+sha256sums=('bfcb4eb92a0fcd3fab713aca4bb25e916e05914f2540271a45522ad7e43943a9'
             'e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b')
 
 build() {
