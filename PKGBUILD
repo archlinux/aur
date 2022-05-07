@@ -1,6 +1,6 @@
 # Maintainer: Mineralwater Xu <mineralwater@m1neralwater.com>
 pkgname=mkvtool
-pkgver=3.6.9
+pkgver=3.7.0
 pkgrel=1
 pkgdesc="Automatic fonts subset tool."
 arch=('x86_64')
@@ -9,7 +9,7 @@ license=('GPL3')
 depends=('python-fonttools' 'mkvtoolnix-cli')
 makedepends=('python' 'go')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/MkvAutoSubset/MkvAutoSubset/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('87d72b54bcd277cf943d1696b1cc087473617ee61412979050342e22ae47ab13')
+sha256sums=('83f39e315b797be56a5db7d6a4868f6c73a7a0f6a661e5f1c6264e66e23ef507')
 
 build() {
 	cd "MkvAutoSubset-$pkgver/mkvtool"
