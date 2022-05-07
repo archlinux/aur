@@ -1,6 +1,6 @@
 pkgbase = mkvtool
 	pkgdesc = Automatic fonts subset tool.
-	pkgver = 3.6.0
+	pkgver = 3.6.1
 	pkgrel = 1
 	url = https://github.com/MkvAutoSubset/MkvAutoSubset
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = mkvtool
 	makedepends = go
 	depends = python-fonttools
 	depends = mkvtoolnix-cli
-	source = mkvtool-3.6.0.tar.gz::https://github.com/MkvAutoSubset/MkvAutoSubset/archive/refs/tags/v3.6.0.tar.gz
-	sha256sums = 37ff0a512458948078b712b1ba0f06521263c2529e30b835ff5849d27e6e2b6f
+	source = mkvtool-3.6.1.tar.gz::https://github.com/MkvAutoSubset/MkvAutoSubset/archive/refs/tags/v3.6.1.tar.gz
+	sha256sums = b046bf7747f208329ce82431926a2ac5ea77b8ce13b995c696b10789c0e0a088
 
 pkgname = mkvtool
