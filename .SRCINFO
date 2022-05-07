@@ -1,6 +1,6 @@
 pkgbase = r-furrr
 	pkgdesc = Apply Mapping Functions in Parallel using Futures
-	pkgver = 0.2.3
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://cran.r-project.org/package=furrr
 	arch = any
@@ -8,7 +8,6 @@ pkgbase = r-furrr
 	checkdepends = r-dplyr
 	checkdepends = r-testthat
 	depends = r-future
-	depends = r-ellipsis
 	depends = r-globals
 	depends = r-lifecycle
 	depends = r-purrr
@@ -24,9 +23,9 @@ pkgbase = r-furrr
 	optdepends = r-testthat
 	optdepends = r-withr
 	optdepends = r-tidyselect
-	source = https://cran.r-project.org/src/contrib/furrr_0.2.3.tar.gz
+	source = https://cran.r-project.org/src/contrib/furrr_0.3.0.tar.gz
 	source = CRAN-MIT-TEMPLATE::https://cran.r-project.org/web/licenses/MIT
-	sha256sums = 0a213422dc0a2e84173f2d3e6c7900dcb677f980c255d6b6ccf666fba1173700
+	sha256sums = 3fe91cc1614f9404c708ea3a15b6a40289fa57f40f3ece54452093408d91fd84
 	sha256sums = e76e4aad5d3d9d606db6f8c460311b6424ebadfce13f5322e9bae9d49cc6090b
 
 pkgname = r-furrr
