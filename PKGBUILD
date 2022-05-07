@@ -3,8 +3,6 @@
 # NOTE: '-bin' suffix not applied as per Arch Nonfree Applications Package
 #       Guidelines (as there will never be a source release)
 pkgname=rtt-rstudio
-#pkgname=rtt-rstudio-bin
-#_pkgname=${pkgname%-bin}
 pkgver=5.0.5007
 pkgrel=4
 # INFO: Full publisher-provided description for reference:
@@ -24,10 +22,6 @@ depends=(
   'xdg-utils'
   'polkit'
 )
-makedepends=(
-  #'rpmextract'  # for binary extraction - not needed as system bsdtar is used instead
-  #'w3m'         # for license html-txt conversion
-)
 provides=('r-studio-for-linux-bin')
 conflicts=('r-studio-for-linux-bin')
 source=("${pkgname}-eula.html::https://www.r-studio.com/includes/eula/PopupEulaDRC.shtml?R-Studio%20for%20Linux")
@@ -40,12 +34,7 @@ sha512sums_i686=('47b9023def6ebf7154cae8366c8203a8dab766ae1567514b2ab629d66ec86b
 prepare() {
   cd "${srcdir}"
 
-  # convert eula from HTML to plaintext
-  # NOTE: disabled since apparently HTML license files are acceptable
-  #w3m -dump "${srcdir}/${pkgname}-eula.html" > "${srcdir}/${pkgname}-eula.txt"
-
-  # remove menu file irrelevant to Arch Linux et al
-  #rm -rf "${srcdir}/usr/share/menu"
+  # remove menu file (irrelevant to Arch Linux and friends)
   rm -rf "${srcdir}/usr/share"
 
   # remove error reporter (nobody likes a snitch; also - this is not a supported distribution)
@@ -74,10 +63,7 @@ package() {
   for i in 16 24 32 48 64 256; do
     install -D -m644 "${pkgdir}/usr/local/R-Studio/share/logo_${i}.png" "${pkgdir}/usr/share/icons/hicolor/${i}x${i}/apps/${pkgname}.png"
   done
-  #install -D -m644 "${pkgdir}/usr/local/R-Studio/share/logo_32.xpm" "${pkgdir}/usr/share/pixmaps/${pkgname}.xpm"
-  #install -D -m644 "${pkgdir}/usr/local/R-Studio/share/logo_32.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 
   # install end-user license agreement
-  #install -D -m644 "${srcdir}/${pkgname}-eula.txt" "${pkgdir}/usr/share/licenses/${pkgname}/${pkgname}-eula.txt"
   install -D -m644 "${srcdir}/${pkgname}-eula.html" "${pkgdir}/usr/share/licenses/${pkgname}/${pkgname}-eula.html"
 }
