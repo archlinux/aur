@@ -11,7 +11,7 @@ pkgbase = lua-colors-git
 	makedepends = lua52
 	makedepends = lua51
 	makedepends = luarocks
-	source = lua-colors-repo::git+https://github.com/yuri/lua-colors.git
+	source = git+https://github.com/yuri/lua-colors.git
 	sha256sums = SKIP
 
 pkgname = lua-colors-git

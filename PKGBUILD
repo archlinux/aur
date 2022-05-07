@@ -15,18 +15,18 @@ makedepends=(git
              lua52
              lua51
              luarocks)
-source=("$_project-repo::git+$url.git")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "$_project-repo"
+	cd "$_project"
 	# repo has no tags, this is the commit of the last luarocks bump
 	git tag 8.05.26 aedcd28a23a76f0072c4c60e87a7fa545162a3e6 ||:
 	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 _package() {
-	cd "$_project-repo"
+	cd "$_project"
 	depends=("${pkgname%-git}")
 	provides=("${pkgname/-git}")
 	conflicts=("${pkgname/-git}")
