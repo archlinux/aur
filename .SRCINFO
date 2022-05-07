@@ -1,7 +1,7 @@
 pkgbase = emberly-font
 	pkgdesc = A display font inspired by the Didone style created by Rajesh Rajput
 	pkgver = 1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.behance.net/gallery/87667103/Emberly-Free-Typeface-54-Styles
 	arch = any
 	license = OFL
@@ -19,4 +19,3 @@ pkgname = otf-emberly-variable
 
 pkgname = ttf-emberly-variable
 	provides = emberly-font-variable
-
