@@ -1,6 +1,6 @@
 pkgbase = cyberdropdownloader
 	pkgdesc = Bulk downloader for multiple file hosts
-	pkgver = 2.17.8
+	pkgver = 2.18.6
 	pkgrel = 1
 	url = https://github.com/Jules-WinnfieldX/CyberDropDownloader
 	arch = any
@@ -21,7 +21,7 @@ pkgbase = cyberdropdownloader
 	conflicts = cyberdropdownloader-bin
 	conflicts = cyberdrop-dl
 	conflicts = cyberdrop-dl-git
-	source = https://files.pythonhosted.org/packages/source/c/cyberdrop-dl/cyberdrop-dl-2.17.8.tar.gz
-	sha256sums = 8f0a0224957e062a94f5addc3f477539783b05e4a860c5af911ed1930776017b
+	source = https://files.pythonhosted.org/packages/source/c/cyberdrop-dl/cyberdrop-dl-2.18.6.tar.gz
+	sha256sums = 860b3f7c3d0d24be18cb07059c929e88d657fae1f4ba945e212598625030e846
 
 pkgname = cyberdropdownloader
