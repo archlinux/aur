@@ -1,8 +1,8 @@
 pkgbase='python-proglog'
 pkgname=('python-proglog')
 _module='proglog'
-pkgver='0.1.9'
-pkgrel=2
+pkgver='0.1.10'
+pkgrel=1
 pkgdesc="Log and progress bar manager for console, notebooks, web..."
 url=""
 depends=('python')
@@ -10,7 +10,7 @@ makedepends=('python-setuptools')
 license=('unknown')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_module::1}/$_module/$_module-$pkgver.tar.gz")
-sha256sums=('d8c4ccbf2138e0c5e3f3fc0d80dc51d7e69dcfe8bfde4cacb566725092a5b18d')
+sha256sums=('658c28c9c82e4caeb2f25f488fff9ceace22f8d69b15d0c1c86d64275e4ddab4')
 
 build() {
     cd "${srcdir}/${_module}-${pkgver}"
