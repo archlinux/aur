@@ -1,7 +1,7 @@
 pkgbase = funkwhale
 	pkgdesc = A community-driven project that lets you listen and share music and audio within a decentralized, open network.
 	pkgver = 1.2.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://funkwhale.audio/
 	install = funkwhale.install
 	arch = any
@@ -65,6 +65,8 @@ pkgbase = funkwhale
 	optdepends = certbot-apache: for the server to be accessible from outside
 	optdepends = mod_xsendfile: needed if Apache server is used
 	optdepends = nginx: to use nginx web server
+	provides = funkwhale
+	conflicts = funkwhale-venv
 	source = funkwhale-1.2.1-api.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/1.2.1/download?job=build_api
 	source = funkwhale-1.2.1-front.zip::https://dev.funkwhale.audio/funkwhale/funkwhale/-/jobs/artifacts/1.2.1/download?job=build_front
 	source = https://dev.funkwhale.audio/funkwhale/funkwhale/raw/1.2.1/deploy/funkwhale_proxy.conf

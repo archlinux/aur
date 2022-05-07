@@ -1,9 +1,11 @@
 post_install() {
+  echo "This package is subject to dependency incompatibilities, use `funkwhale-venv` instead."
   echo "Follow instructions on the upstream page or on the Arch Wiki for setting up the Funkwhale server:"
   echo "https://wiki.archlinux.org/index.php/Funkwhale"
 }
 
 post_upgrade() {
+  echo "This package is subject to dependency incompatibilities, use `funkwhale-venv` instead."
   echo "Follow instructions on the upstream page or on the Arch Wiki for updating"
   #echo "Type the password for the funkwhale user, then environment variables are loaded, static files are collected and the database is migrated."
   #sudo -u funkwhale -H bash

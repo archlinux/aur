@@ -2,11 +2,13 @@
 
 pkgname=funkwhale
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A community-driven project that lets you listen and share music and audio within a decentralized, open network."
 arch=(any)
 url="https://funkwhale.audio/"
 license=(GPL3)
+provides=('funkwhale')
+conflicts=('funkwhale-venv')
 optdepends=('apache: to use the Apache web server'
             'certbot-apache: for the server to be accessible from outside'
             'mod_xsendfile: needed if Apache server is used'
