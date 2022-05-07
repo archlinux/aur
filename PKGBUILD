@@ -5,7 +5,7 @@
 # Contributor: Alex Branham <branham@utexas.edu>
 
 _cranname=quantreg
-_cranver=5.88
+_cranver=5.93
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -27,7 +27,7 @@ optdepends=(
     r-conquer
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('1940e553711ed50655b2692ba29432d1083ed83c2db06e31a031ce8f82823a3f')
+sha256sums=('d4a94984a500bf4c92dec21013441f001a4aa0541c4c651384e257a4b4e9e539')
 
 build() {
   mkdir -p build
