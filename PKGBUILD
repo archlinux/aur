@@ -8,7 +8,6 @@ url="https://github.com/SteamGridDB/steam-rom-manager"
 pkgver=2.3.32
 pkgrel=1
 arch=("x86_64")
-depends=("electron17")
 makedepends=("git" "nodejs" "npm" "libxcrypt-compat")
 provides=("steam-rom-manager")
 conflicts=("steam-rom-manager")

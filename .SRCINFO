@@ -9,7 +9,6 @@ pkgbase = steam-rom-manager-git
 	makedepends = nodejs
 	makedepends = npm
 	makedepends = libxcrypt-compat
-	depends = electron17
 	provides = steam-rom-manager
 	conflicts = steam-rom-manager
 	source = steam-rom-manager-git::git+https://github.com/SteamGridDB/steam-rom-manager
