@@ -7,7 +7,7 @@
 pkgname=cachy-browser
 _pkgname=Cachy
 __pkgname=cachy
-pkgver=99.0
+pkgver=100.0
 pkgrel=1
 pkgdesc="Community-maintained fork of Firefox, focused on privacy, security and freedom."
 arch=(x86_64 x86_64_v3)
@@ -20,7 +20,7 @@ depends=(gtk3 libxt mime-types dbus-glib
 makedepends=(unzip zip diffutils yasm mesa imake inetutils ccache
              rust xorg-server-xwayland xorg-server-xvfb
              autoconf2.13 clang llvm jack nodejs cbindgen nasm
-             python-setuptools python-psutil python-zstandard git binutils lld dump_syms
+             python-setuptools python-zstandard git binutils lld dump_syms
              wasi-compiler-rt wasi-libc wasi-libc++ wasi-libc++abi)
 optdepends=('networkmanager: Location detection via available WiFi networks'
             'libnotify: Notification integration'
@@ -41,7 +41,7 @@ source=(https://archive.mozilla.org/pub/firefox/releases/$pkgver/source/firefox-
         $pkgname.desktop
         "git+https://github.com/cachyos/cachyos-browser-settings.git"
         "git+https://github.com/cachyos/cachyos-browser-common.git")
-sha256sums=('513f8d2cafa39a2d50f2c4a25cc48093e89f715a706b941170fa48e397976327'
+sha256sums=('664c0cc4e0fb70886aa4e652d144996045d533a18eebc7d61093103cbb2d5e7f'
             'SKIP'
             'c0786df2fd28409da59d0999083914a65e2097cda055c9c6c2a65825f156e29f'
             'SKIP'
@@ -61,9 +61,9 @@ mk_add_options MOZ_OBJDIR=${PWD@Q}/obj
 ac_add_options --enable-linker=lld
 ac_add_options --prefix=/usr
 ac_add_options --enable-release
+ac_add_options --with-ccache
 ac_add_options --enable-hardening
 ac_add_options --enable-rust-simd
-ac_add_options --with-ccache
 ac_add_options --enable-default-toolkit=cairo-gtk3-wayland
 ac_add_options --with-wasi-sysroot=/usr/share/wasi-sysroot
 export CC='clang'
@@ -82,16 +82,16 @@ export MOZ_ADDON_SIGNING=1
 export MOZ_APP_REMOTINGNAME=${pkgname//-/}
 
 # System libraries
+#ac_add_options --with-system-av1
+#ac_add_options --with-system-graphite2
+ac_add_options --with-system-harfbuzz
+ac_add_options --with-system-icu
+ac_add_options --with-system-jpeg
+ac_add_options --with-system-libevent
+ac_add_options --with-system-libvpx
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
-ac_add_options --with-system-libvpx
-ac_add_options --with-system-libevent
-ac_add_options --with-system-icu
 ac_add_options --with-system-zlib
-ac_add_options --with-system-jpeg
-ac_add_options --with-system-harfbuzz
-ac_add_options --with-system-graphite2
-ac_add_options --with-system-av1
 
 # Features
 ac_add_options --enable-pulseaudio
@@ -135,30 +135,33 @@ END
   patch -Np1 -i ${_patches_dir}/gentoo/0001-Don-t-use-build-id.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0002-Fortify-sources-properly.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0003-Check-additional-plugins-dir.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0007-Support-sndio-audio-framework.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0008-bmo-878089-Don-t-fail-when-TERM-is-not-set.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0009-bmo-1516803-Fix-building-sandbox.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0019-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0018-Make-PGO-use-toolchain.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0020-bmo-1516803-force-one-LTO-partition-for-sandbox-when.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0021-bmo-1196777-Set-GDK_FOCUS_CHANGE_MASK.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0022-Fix-building-with-PGO-when-using-GCC.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0023-libaom-Use-NEON_FLAGS-instead-of-VPX_ASFLAGS-for-lib.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0024-build-Disable-Werror.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0025-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0026-Disable-FFVPX-with-VA-API.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0027-Enable-FLAC-on-platforms-without-ffvpx-via-ffmpeg.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0028-bmo-1670333-OpenH264-Fix-decoding-if-it-starts-on-no.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0029-bmo-1663844-OpenH264-Allow-using-OpenH264-GMP-decode.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0030-bgo-816975-fix-build-on-x86.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0031-bgo-831903-pip-dont-fail-with-optional-deps.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0032-skip-pip-check.patch
-  # Use more system libs
-  msg2 "---- Patching for system libs"
   patch -Np1 -i ${_patches_dir}/gentoo/0004-bmo-847568-Support-system-harfbuzz.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0005-bmo-847568-Support-system-graphite2.patch
   patch -Np1 -i ${_patches_dir}/gentoo/0006-bmo-1559213-Support-system-av1.patch
-  patch -Np1 -i ${_patches_dir}/gentoo/0033-bmo-1559213-fix-system-av1-libs.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0007-bmo-878089-Don-t-fail-when-TERM-is-not-set.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0008-bmo-1516803-Fix-building-sandbox.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0017-Make-PGO-use-toolchain.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0018-bmo-1516081-Disable-watchdog-during-PGO-builds.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0019-bmo-1516803-force-one-LTO-partition-for-sandbox-when.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0020-Fix-building-with-PGO-when-using-GCC.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0021-libaom-Use-NEON_FLAGS-instead-of-VPX_ASFLAGS-for-lib.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0022-build-Disable-Werror.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0023-LTO-Only-enable-LTO-for-Rust-when-complete-build-use.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0024-Disable-FFVPX-with-VA-API.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0025-Enable-FLAC-on-platforms-without-ffvpx-via-ffmpeg.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0026-bmo-1670333-OpenH264-Fix-decoding-if-it-starts-on-no.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0027-bmo-1663844-OpenH264-Allow-using-OpenH264-GMP-decode.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0028-bgo-816975-fix-build-on-x86.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0029-bmo-1559213-fix-system-av1-libs.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0030-bmo-1196777-Set-GDK_FOCUS_CHANGE_MASK.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0031-bmo-1762050-fix-pgo-with-virtualenv.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0032-bmo-1765361-resolve_objdir_from_virtualenv_if_mozinfo_not_ancestor.patch
+  patch -Np1 -i ${_patches_dir}/gentoo/0033-bmo-1761691-fix_audio_thread_priority_when_dbus_is_disabled.patch
+  # Use more system libs
+  msg2 "---- Patching for system libs"
+#  patch -Np1 -i ${_patches_dir}/gentoo/0004-bmo-847568-Support-system-harfbuzz.patch
+#  patch -Np1 -i ${_patches_dir}/gentoo/0005-bmo-847568-Support-system-graphite2.patch
+#  patch -Np1 -i ${_patches_dir}/gentoo/0033-bmo-1559213-fix-system-av1-libs.patch
 
 
   msg2 "---- Librewolf patches"
@@ -194,12 +197,12 @@ END
   cp "${srcdir}/cachyos-browser-common/source_files/search-config.json" services/settings/dumps/main/search-config.json
 
   msg2  "stop some undesired requests (https://gitlab.com/librewolf-community/browser/common/-/issues/10)"
-  patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests2.patch
+  patch -Np1 -i ${_patches_dir}/sed-patches/stop-undesired-requests.patch # fails with 100
 
   msg2 "Assorted patches"
-  patch -Np1 -i ${_patches_dir}/librewolf/context-menu.patch
-  patch -Np1 -i ${_patches_dir}/librewolf/urlbarprovider-interventions.patch
-
+  patch -Np1 -i ${_patches_dir}/librewolf/context-menu.patch # fails with 100
+ # patch -Np1 -i ${_patches_dir}/librewolf/urlbarprovider-interventions.patch fails with 100
+  patch -Np1 -i ${_patches_dir}/librewolf/native-messaging-registry-path.patch
 
   #msg2 "allow overriding the color scheme light/dark preference with RFP"
   #patch -Np1 -i ${_patches_dir}/allow_dark_preference_with_rfp.patch
@@ -249,13 +252,21 @@ END
   msg2 "add warning that sanitizing exceptions are bypassed by the options in History > Clear History when LibreWolf closes > Settings"
   patch -Np1 -i ${_patches_dir}/librewolf-ui/sanitizing-description.patch
 
+  msg2 "website-appearance-ui-rfp.patch"
+  patch -Np1 -i ${_patches_dir}/librewolf-ui/website-appearance-ui-rfp.patch
+
+  msg2 "lw-logo-devtools.patch"
+  patch -Np1 -i ${_patches_dir}/librewolf-ui/lw-logo-devtools.patch
+
   msg2 "customized pref panel"
   patch -Np1 -i ${_patches_dir}/librewolf/librewolf-pref-pane.patch
 
-  msg2 "fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example"
-  patch -Np1 -i ${_patches_dir}/librewolf/disable-data-reporting-at-compile-time.patch
+#  msg2 "fix telemetry removal, see https://gitlab.com/librewolf-community/browser/linux/-/merge_requests/17, for example"
+ # patch -Np1 -i ${_patches_dir}/librewolf/disable-data-reporting-at-compile-time.patch # fails with 100
 
-  patch -Np1 -i ${_patches_dir}/fix-psutil.patch
+  msg2 "Hide passwordmgr"
+  patch -Np1 -i ${_patches_dir}/librewolf/hide-passwordmgr.patch
+#  patch -Np1 -i ${_patches_dir}/fix-psutil-dev.patch
 
   rm -f ${srcdir}/cachyos-browser-common/source_files/mozconfig
   cp -r ${srcdir}/cachyos-browser-common/source_files/browser ./
@@ -267,7 +278,7 @@ build() {
 
   export MOZ_NOSPAM=1
   export MOZBUILD_STATE_PATH="$srcdir/mozbuild"
-  export MACH_USE_SYSTEM_PYTHON=1
+  export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
 
   # LTO needs more open files
   ulimit -n 4096
