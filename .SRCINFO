@@ -1,7 +1,7 @@
 pkgbase = picacg-qt
 	pkgdesc = PicACG Comic PC Client For Linux
-	pkgver = 1.3.6
-	pkgrel = 4
+	pkgver = 1.3.7
+	pkgrel = 1
 	url = https://github.com/tonquer/picacg-qt
 	arch = any
 	license = LGPL3
@@ -15,10 +15,10 @@ pkgbase = picacg-qt
 	optdepends = python-waifu2x-vulkan: Waifu2x-Vulkan support
 	provides = bika
 	conflicts = bika
-	source = picacg-qt-1.3.6.tar.gz::https://github.com/tonquer/picacg-qt/archive/refs/tags/v1.3.6.tar.gz
+	source = picacg-qt-1.3.7.tar.gz::https://github.com/tonquer/picacg-qt/archive/refs/tags/v1.3.7.tar.gz
 	source = picacg-qt.desktop
 	source = picacg-qt.sh
-	sha256sums = 3f707cd561e74bf8fd78dd5ffae8a8b7a4f2989c1367ae3e643ed3760728e435
+	sha256sums = af0b268dc0c1781e3daa07507685198c06f1d0b33a879b601ccbfa828315a578
 	sha256sums = 2da544814d26a95d1b4f88e19b2957059d9bd3c074424cb6553eaf84ed71c765
 	sha256sums = 9c35b0e474517cbbf1b88dde5a5333e273a531e53657a839bd193a2f05842361
 
