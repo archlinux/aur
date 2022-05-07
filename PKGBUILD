@@ -1,8 +1,8 @@
 # Maintainer: Bruno Ancona <bruno at powerball253 dot com>
 
 pkgname=eternalmodmanager
-pkgver=2.0.2
-pkgrel=2
+pkgver=2.0.3
+pkgrel=1
 pkgdesc='Cross-platform mod manager for DOOM Eternal.'
 arch=('x86_64')
 url='https://github.com/PowerBall253/EternalModManager-Avalonia'
@@ -12,7 +12,7 @@ makedepends=('dotnet-sdk')
 source=("git+https://github.com/PowerBall253/EternalModManager-Avalonia.git#tag=v${pkgver}"
         eternalmodmanager)
 sha256sums=('SKIP'
-            'SKIP')
+            '97bfa23542997c5f26e719d1c33cd15f5fb67475f1465e923e94fe51e9da7d29')
 
 build() {
     cd "EternalModManager-Avalonia"
