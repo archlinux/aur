@@ -1,6 +1,6 @@
 # Maintainer: Stanisław Jasiewicz <stjasiewicz@protonmail.com>
 pkgname=nasher
-pkgver=0.17.2
+pkgver=0.17.3
 pkgrel=1
 pkgdesc="A command-line utility for managing a Neverwinter Nights script or module repository"
 arch=('any')
@@ -8,7 +8,7 @@ url="https://github.com/squattingmonk/nasher.nim"
 license=('MIT')
 depends=('nwnsc-bin' 'neverwinter.nim')
 source=("https://github.com/squattingmonk/nasher/releases/download/$pkgver/nasher_linux.tar.gz")
-md5sums=('8a9cc308413ce57d4ab8b0872cf9923f')
+md5sums=('116d7aa93220689d07290838477227ff')
 
 package() {
 	cd nasher_linux
