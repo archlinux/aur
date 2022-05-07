@@ -9,7 +9,7 @@ url="https://github.com/hisbaan/didyoumean"
 license=('GPL3')
 depends=('gcc-libs')
 optdepends=('libxcb: X11 clipboard support'
-            'wayland: Wayland clipboard support')
+            'wl-clipboard: Wayland clipboard support')
 provides=('didyoumean')
 conflicts=('didyoumean')
 source=("https://github.com/hisbaan/didyoumean/releases/download/v${pkgver}/dym-${pkgver}-x86_64.tar.gz")
