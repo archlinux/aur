@@ -2,7 +2,7 @@
 
 _name=dearpygui
 pkgname=python-$_name
-pkgver=1.6.1
+pkgver=1.6.2
 pkgrel=1
 pkgdesc='A fast and powerful Graphical User Interface Toolkit for Python with minimal dependencies'
 arch=(x86_64)
