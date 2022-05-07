@@ -1,7 +1,7 @@
 # Maintainer: Spacingbat3 <git@spacingbat3.anonaddy.com> (https://github.com/spacingbat3)
 pkgname=webcord-git
 pkgver=3.1.3.r460.f89f426
-pkgrel=1
+pkgrel=2
 pkgdesc="A Discord and Fosscord client made with the Electron."
 arch=("any")
 
@@ -21,7 +21,7 @@ md5sums=('SKIP'
 _TIMES='1'
 _TIMES_MAX='?'
 
-_CACHE="${srcdir}/npm-cache"
+
 
 _echo_times() {
   echo "(${_TIMES}/${_TIMES_MAX})" "${@}"
@@ -29,7 +29,7 @@ _echo_times() {
 }
 
 _npm() {
-  ELECTRON_SKIP_BINARY_DOWNLOAD=1 npm --cache="${_CACHE}" "$@"
+  ELECTRON_SKIP_BINARY_DOWNLOAD=1 npm --cache="${srcdir:-.}/npm-cache" "$@"
 }
 
 pkgver() {
