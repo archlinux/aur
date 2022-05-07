@@ -5,12 +5,13 @@ pkgname=steam-rom-manager-git
 pkgdesc="An app for managing ROMs in Steam (Git version)."
 license=("GPL3")
 url="https://github.com/SteamGridDB/steam-rom-manager"
-pkgver=2.3.29.r20.g71c11eb
+pkgver=2.3.32
 pkgrel=1
 arch=("x86_64")
-makedepends=("git" "nodejs-lts-gallium" "npm")
+depends=("electron17")
+makedepends=("git" "nodejs" "npm" "libxcrypt-compat")
 provides=("steam-rom-manager")
-conflicts=("steam-rom-manager-git" "steam-rom-manager")
+conflicts=("steam-rom-manager")
 source=("$pkgname::git+https://github.com/SteamGridDB/steam-rom-manager"
         "steam-rom-manager.desktop")
 sha512sums=("SKIP"
