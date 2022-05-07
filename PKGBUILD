@@ -1,12 +1,12 @@
 # Maintainer: Nicola Squartini <tensor5@gmail.com>
 
 _use_suffix=1
-pkgver=16.2.2
-_commit=f1d7143310bfdf1dc1dc8f8512789bff94cd0804
+pkgver=16.2.5
+_commit=32f91f19e08ddf96ac114ae6b0f0c7483241ec1e
 _chromiumver=96.0.4664.174
 _gcc_patchset=4
 # shellcheck disable=SC2034
-pkgrel=2
+pkgrel=1
 
 _major_ver=${pkgver%%.*}
 if [[ ${_use_suffix} != 0 ]]; then
