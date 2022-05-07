@@ -15,10 +15,14 @@ _install_directory=/usr
 
 source=(
 	"https://github.com/eProsima/Fast-DDS-monitor/archive/refs/tags/v${pkgver}.tar.gz"
+	"file://fast-dds-monitor.desktop"
+	"file://eprosima.png"
 )
 
 sha512sums=(
 	"e35a1b215f1a3b192ae9e433bd343481443a75936cbad402d3d71060c5feaf6ec5c909430cbb3b5a06ca449b42e18d825408d9e8029b511ff21b3e4d69671a08"
+	"5dd6d0486e13765e498f9d499bcbe7a2ba78ae12e62be0b5af2997bdcc3a86a4c36baa1c919fd2745c130fdc9eada17621c4ac30a8e0d36bea23b60da5d8e138"
+	"54132f15c6f770d8e7a844500a15a16b42f592d7295d09b04130cb8248587d2b825f32bf743c4d0927019392e70fc4d26277f52f03a4b56a65faa0343216e2fa"
 )
 
 prepare() {
@@ -48,4 +52,9 @@ package() {
 	mkdir -p "${pkgdir}"/usr/share/licenses/eprosima/fastdds_monitor
 	mv "${pkgdir}"/usr/share/fastdds_monitor/LICENSE "${pkgdir}"/usr/share/licenses/eprosima/fastdds_monitor/LICENSE
 	rmdir "${pkgdir}"/usr/share/fastdds_monitor
+
+	mkdir -p ${pkgdir}/usr/share/applications
+	cp -ar ${srcdir}/../fast-dds-monitor.desktop ${pkgdir}/usr/share/applications
+	mkdir -p ${pkgdir}/usr/share/eprosima
+	cp -ar ${srcdir}/../eprosima.png ${pkgdir}/usr/share/eprosima
 }
