@@ -1,16 +1,16 @@
 # Maintainer: Duncan Deveaux <duncan.at.hikounomizu.dot.org>
 
 pkgname=hikounomizu
-pkgver=0.9
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Platform-based, anime-styled fighting game"
 arch=('x86_64')
 url="https://hikounomizu.org"
 license=('custom')
-depends=('sdl2' 'sdl2_image' 'glu' 'freetype2' 'openal' 'libvorbis' 'tinyxml')
+depends=('sdl2' 'sdl2_image' 'glu' 'freetype2' 'openal' 'libvorbis' 'pugixml')
 makedepends=('cmake>=3.13' 'gendesk')
-source=("https://download.tuxfamily.org/hnm/0.9/hikounomizu-0.9-src-withdata.tar.bz2")
-md5sums=('04408ed2a90471c1ead870c0b51299d0')
+source=("https://download.tuxfamily.org/hnm/0.9.2/hikounomizu-0.9.2-src-withdata.tar.bz2")
+md5sums=('f8ecea96166ee979242b2c37fe3580fe')
 
 
 prepare() {
