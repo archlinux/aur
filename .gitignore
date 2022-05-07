@@ -1,0 +1,13 @@
+# .gitignore for rtt-rstudio
+
+# ignore built packages
+*.pkg.t*
+
+# ignore intermediate directories
+pkg/
+src/
+
+# ignore source files
+RStudio5_x64.rpm
+RStudio5_i386.rpm
+rtt-rstudio-eula.html
