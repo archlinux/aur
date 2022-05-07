@@ -1,17 +1,17 @@
 # Maintainer: Hisbaan Noorani <hisbaan@gmail.com>
 pkgname=didyoumean-git
-pkgver=1.1.1
+pkgver=1.1.2.r0.c2c4c10
 pkgrel=1
 pkgdesc="A CLI spelling corrector"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
 url="https://github.com/hisbaan/didyoumean"
 license=('GPL3')
 depends=('gcc-libs')
-makedepends=('git' 'cargo')
+makedepends=('git' 'cargo' 'binutils')
 optdepends=('libxcb: X11 clipboard support'
-            'wayland: Wayland clipboard support')
-provides=("didyoumean")
-conflicts=("didyoumean")
+            'wl-clipboard: Wayland clipboard support')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
 source=('git+https://github.com/hisbaan/didyoumean')
 sha256sums=('SKIP')
 
