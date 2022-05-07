@@ -7,7 +7,7 @@
 pkgname=todotxt
 #pkgver=2.13.0
 pkgver=2.12.0.post2
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple and extensible shell script for managing your todo.txt file"
 arch=('any')
 url="https://github.com/todotxt/todo.txt-cli"
@@ -20,6 +20,11 @@ install=$pkgname.install
 source=($pkgname-$pkgver::git+$url.git#commit=ea32af34e6a0efef59bdf9acaa1c38d5d32bef0d)
 sha256sums=('SKIP')
 
+prepare() {
+  # Rename completion file to "todo.sh"
+  sed -i 's/\(todo_completion.*todo$\)/\1.sh/' $pkgname-$pkgver/Makefile
+}
+
 build() {
   make -C $pkgname-$pkgver
 }
@@ -29,7 +34,8 @@ check() {
 }
 
 package() {
-  make -C $pkgname-$pkgver install CONFIG_DIR="$pkgdir/etc" INSTALL_DIR="$pkgdir/usr/bin" BASH_COMPLETION="$pkgdir/usr/share/bash-completion/completions"
-  mv "$pkgdir/usr/share/bash-completion/completions/todo"{,.sh}
+  make -C $pkgname-$pkgver install CONFIG_DIR="$pkgdir/etc" \
+                                   INSTALL_DIR="$pkgdir/usr/bin" \
+                                   BASH_COMPLETION="$pkgdir/usr/share/bash-completion/completions"
 }
 

@@ -1,7 +1,7 @@
 pkgbase = todotxt
 	pkgdesc = Simple and extensible shell script for managing your todo.txt file
 	pkgver = 2.12.0.post2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/todotxt/todo.txt-cli
 	install = todotxt.install
 	arch = any
