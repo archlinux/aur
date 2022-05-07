@@ -1,41 +1,55 @@
 # Maintainer: Caleb Maclennan <caleb@alerque.com>
 
 _rockname=colors
+_project=lua-$_rockname
 pkgname=("lua-$_rockname" "lua53-$_rockname" "lua52-$_rockname" "lua51-$_rockname")
 pkgver=8.05.26
-_rockrel=1
-pkgrel=5
+_rockrel=0
+pkgrel=6
 pkgdesc='HSL Color Theory Computation in Lua'
-arch=('i686' 'x86_64')
-url="http://sputnik.freewisdom.org/lib/$_rockname/"
-license=('MIT')
-makedepends=('lua' 'lua53' 'lua52' 'lua51' 'luarocks')
-_archive='https://web.archive.org/web/20200627071925'
-source=("$_rockname-$pkgver.tar.gz::$_archive/http://sputnik.freewisdom.org/files/$_rockname-$pkgver.tar.gz")
+arch=(any)
+url="https://github.com/yuri/$_project"
+license=(MIT)
+makedepends=(lua
+             lua53
+             lua52
+             lua51
+             luarocks)
+_web='https://web.archive.org/web/20200627071925'
+_archive="$_rockname-$pkgver"
+_rock="$_archive-$_rockrel.all.rock"
+source=("$_web/http://sputnik.freewisdom.org/files/$_archive.tar.gz")
 sha256sums=('64ec89fb6938cfdadca5ba1dc9c549dc61c62a585bb8ff5ac593b33b709f814b')
 
-_package_helper() {
-  cd "$_rockname-$pkgver"
-  luarocks --lua-version="$1" --tree="$pkgdir/usr/" \
-    make --deps-mode=none --no-manifest "rockspec"
+build() {
+	cd "$_archive"
+	for LUAVER in 5.{1,2,3,4}; do
+		luarocks --lua-version "$LUAVER" \
+			make --pack-binary-rock --deps-mode none -- rockspec
+		install -Dm0644 -t "lua-$LUAVER/" "$_rock"
+	done
+}
+
+_package() {
+	cd "$_archive"
+	depends=("${pkgname%-git}")
+	luarocks --lua-version "$1" --tree "$pkgdir/usr/" \
+		install --deps-mode none --no-manifest -- "lua-$1/$_rock"
+	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE.txt
 }
 
 package_lua-colors() {
-  depends+=('lua')
-  _package_helper 5.4
-}
-
-package_lua53-colors() {
-  depends+=('lua53')
-  _package_helper 5.3
-}
-
-package_lua52-colors() {
-  depends+=('lua52')
-  _package_helper 5.2
+  _package 5.4
 }
 
 package_lua51-colors() {
-  depends+=('lua51')
-  _package_helper 5.1
+  _package 5.1
+}
+
+package_lua52-colors() {
+  _package 5.2
+}
+
+package_lua53-colors() {
+  _package 5.3
 }

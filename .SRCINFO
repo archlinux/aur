@@ -1,28 +1,22 @@
 pkgbase = lua-colors
 	pkgdesc = HSL Color Theory Computation in Lua
 	pkgver = 8.05.26
-	pkgrel = 5
-	url = http://sputnik.freewisdom.org/lib/colors/
-	arch = i686
-	arch = x86_64
+	pkgrel = 6
+	url = https://github.com/yuri/lua-colors
+	arch = any
 	license = MIT
 	makedepends = lua
 	makedepends = lua53
 	makedepends = lua52
 	makedepends = lua51
 	makedepends = luarocks
-	source = colors-8.05.26.tar.gz::https://web.archive.org/web/20200627071925/http://sputnik.freewisdom.org/files/colors-8.05.26.tar.gz
+	source = https://web.archive.org/web/20200627071925/http://sputnik.freewisdom.org/files/colors-8.05.26.tar.gz
 	sha256sums = 64ec89fb6938cfdadca5ba1dc9c549dc61c62a585bb8ff5ac593b33b709f814b
 
 pkgname = lua-colors
-	depends = lua
 
 pkgname = lua53-colors
-	depends = lua53
 
 pkgname = lua52-colors
-	depends = lua52
 
 pkgname = lua51-colors
-	depends = lua51
-
