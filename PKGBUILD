@@ -4,7 +4,7 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=obs-studio-tytan652
 pkgver=27.2.4
-pkgrel=3
+pkgrel=4
 pkgdesc="Free and open source software for video recording and live streaming. With Browser dock and sources, VST 2 filter, FTL protocol, VLC sources, V4L2 devices by paths, my bind interface PR, and sometimes backported fixes."
 arch=("i686" "x86_64" "aarch64")
 url="https://github.com/obsproject/obs-studio"
@@ -129,6 +129,34 @@ prepare() {
   git config submodule.plugins/obs-vst.url $srcdir/obs-vst
   git config submodule.plugins/obs-browser.url $srcdir/obs-browser
   git submodule update
+
+  ## UI: Fix display affinity logic when re-applying (https://github.com/obsproject/obs-studio/commit/a8ecf3c8f2c2c28624a01249d3ec8b6435198009)
+  git cherry-pick -n a8ecf3c8f2c2c28624a01249d3ec8b6435198009
+
+  ## UI: Truncate displayed file paths in the middle in Remux window (https://github.com/obsproject/obs-studio/commit/2d75167e4c82207d0380512de4757521eeade0ba)
+  git cherry-pick -n 2d75167e4c82207d0380512de4757521eeade0ba
+
+  ## libobs: Fix image source not loading upper case file extensions (https://github.com/obsproject/obs-studio/commit/9903d73f36809c20795d5a918f2898fa6b8b88f8)
+  git cherry-pick -n 9903d73f36809c20795d5a918f2898fa6b8b88f8
+
+  ## linux-capture: Don't initialize format info if init_obs_pipewire fails (https://github.com/obsproject/obs-studio/commit/9903d73f36809c20795d5a918f2898fa6b8b88f8)
+  sed -i '1438 a return NULL; }' plugins/linux-capture/pipewire.c
+  sed -i '1437 a {' plugins/linux-capture/pipewire.c
+
+  ## linux-pipewire: Version check call to pw_deinit (https://github.com/obsproject/obs-studio/commit/bf660b1d8dc1905527bb5919b1034c7b43c55dac)
+  sed -i '74,77d' plugins/linux-capture/linux-capture.c
+
+  ## libobs, UI: Fix --verbose logging for stdout (https://github.com/obsproject/obs-studio/commit/af67ef8e57fbf05e772f4cd6fcd3649e15689304)
+  git cherry-pick -n af67ef8e57fbf05e772f4cd6fcd3649e15689304
+
+  ## vlc-source: Fix surround sound not properly downmixed (https://github.com/obsproject/obs-studio/commit/5e4081e5637c7b6761ce54d5aef344fa85414e29)
+  git cherry-pick -n 5e4081e5637c7b6761ce54d5aef344fa85414e29
+
+  ## vlc-video: Fix video rotation and aspect ratio (https://github.com/obsproject/obs-studio/commit/59bdac1569304cd2112154b51fa5d25df61569cf)
+  git cherry-pick -n 59bdac1569304cd2112154b51fa5d25df61569cf
+
+  ## libobs-opengl: Use gl helpers in create_dmabuf_image (https://github.com/obsproject/obs-studio/commit/f695b14edc59e7c778566820988f9998df5190ba)
+  git cherry-pick -n f695b14edc59e7c778566820988f9998df5190ba
 
   ## libobs,obs-outputs: Fix librtmp1 dependency interference on some linuxes (https://github.com/obsproject/obs-studio/pull/6377)
   sed -i 's/#define EXPORT/#define EXPORT __attribute__((visibility("default")))/g' libobs/util/c99defs.h
