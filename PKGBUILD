@@ -60,19 +60,19 @@ DISTRIB_ID=`lsb_release --id | cut -f2 -d$'\t'`
 
 pkgname=ffmpeg-obs
 pkgver=5.0
-pkgrel=8
+pkgrel=9
 pkgdesc='Complete solution to record, convert and stream audio and video with fixes for OBS Studio. And various options in the PKGBUILD'
 arch=('i686' 'x86_64' 'aarch64')
 url=https://ffmpeg.org/
 license=(GPL3)
 _aomver=3
-_libdav1dver=6
+_dav1dver=1.0.0
 _libristver=0.2.6
-_libvpxsover=7
-_libx264ver=164
-_libx265ver=199
+_libvpxver=1.11.0
 _srtver=1.4.3
 _vmafver=2
+_x264ver=0.164
+_x265ver=3.5
 depends=(
   alsa-lib
   bzip2
@@ -83,35 +83,32 @@ depends=(
   gsm
   jack
   lame
-  libass.so
+  'libass'
   libavc1394
-  libbluray.so
+  'libbluray'
   libdrm
-  libfreetype.so
+  'freetype2'
   libiec61883
   libmodplug
   libpulse
-  librav1e.so
+  'rav1e'
   libraw1394
-  librsvg-2.so
+  'librsvg'
   libsoxr
   libssh
   libtheora
-  libva.so
-  libva-drm.so
-  libva-x11.so
+  'libva'
   libvdpau
-  libvidstab.so
-  libvorbisenc.so
-  libvorbis.so
+  'vid.stab'
+  'libvorbis'
   libwebp
   libx11
   libxcb
   libxext
   libxml2
   libxv
-  libxvidcore.so
-  libzimg.so
+  'xvidcore'
+  'zimg'
   opencore-amr
   openjpeg2
   opus
@@ -135,10 +132,10 @@ if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
 else
   depends+=(
     "aom>=$_aomver"
-    "libdav1d.so>=$_libdav1dver"
-    "libvpx.so>=$_libvpxsover"
-    "libx264.so>=$_libx264ver"
-    "libx265.so>=$_libx265ver"
+    "dav1d>=$_dav1dver"
+    "libvpx>=$_libvpxver"
+    "x264>=$_x264ver"
+    "x265>=$_x265ver"
     "srt>=$_srtver"
   )
 fi
@@ -150,6 +147,7 @@ makedepends=(
   ffnvcodec-headers
   ladspa
   nasm
+  'lsb-release'
 )
 optdepends=(
   'avisynthplus: AviSynthPlus support'
