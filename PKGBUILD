@@ -1,4 +1,4 @@
-# Maintainer: Legacy Installer <contact.legacyinstaller@gmail.com>
+# Maintainer: David McInnis <dave@dave3.xyz>
 # Contributer: Jan de Groot <jgc@archlinux.org>
 
 pkgname=gnome-vfs
