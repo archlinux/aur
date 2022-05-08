@@ -2,7 +2,7 @@
 # Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
 # Contributor: Kenny Levinsen <aur [at] kl [dot] wtf>
 
-pkgname=greetd
+pkgname=greetd-artix-runit
 pkgver=0.8.0
 pkgrel=2
 pkgdesc="Generic greeter daemon, packaged for artix-runit"

@@ -1,4 +1,4 @@
-pkgbase = greetd
+pkgbase = greetd-artix-runit
 	pkgdesc = Generic greeter daemon, packaged for artix-runit
 	pkgver = 0.8.0
 	pkgrel = 2
@@ -24,4 +24,4 @@ pkgbase = greetd
 	sha256sums = cad9073f77421e21752806ae74dbbc4c3ccf30978e196b6a1ae07382e4a7caa8
 	sha256sums = fd0b5b517874c135a9dbce1cbc132ea9386d100b477b4dcf111f44d997b9bdc3
 
-pkgname = greetd
+pkgname = greetd-artix-runit
