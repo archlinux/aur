@@ -2,7 +2,7 @@
 pkgname=albafetch-git
 pkgver=2.5.r306.b445a89
 pkgrel=1
-pkgdesc="Noefetch, but written in C; both faster and worse than the original"
+pkgdesc="Neofetch, but written in C; both faster and worse than the original"
 arch=(x86_64)
 url="https://github.com/alba4k/albafetch"
 license=('MIT')
