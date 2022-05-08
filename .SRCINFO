@@ -18,3 +18,4 @@ pkgbase = saladbind-git
 	sha256sums = 07d8a5e0a4ddae657a6839142ebcc54f94b8cba92920bedded536f3ffcc43809
 
 pkgname = saladbind-git
+
