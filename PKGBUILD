@@ -6,19 +6,20 @@
 
 pkgname=qgis-git
 _pkgname=qgis
-pkgver=3.99_master.r76684.2ce495f4391
+pkgver=3.99_master.r77074.5e142c8933a
 _pkgver=3.99_master  # fake pkgver prefix for the name
-pkgrel=2
+pkgrel=1
 pkgdesc='Geographic Information System (GIS) that supports vector, raster & database formats - Development master'
 url='http://qgis.org/'
 license=('GPL')
 arch=('i686' 'x86_64')
 depends=(
   'proj' 'geos' 'sqlite' 'qwtpolar' 'expat' 'spatialindex' 'gsl' 'libzip' 'exiv2' 'ocl-icd' 'protobuf' 'pdal-git'
-  'qt5-tools' 'qt5-script' 'qtkeychain' 'sip' 'qca-qt5' 'qt5-webkit' 'qt5-3d' 'qt5-serialport' 'qt5-xmlpatterns'
+  'qt5-tools' 'qt5-script' 'qtkeychain' 'sip<=6.5.1' 'qca-qt5' 'qt5-webkit' 'qt5-3d' 'qt5-serialport' 'qt5-xmlpatterns'
   'python-gdal' 'python-owslib' 'python-future' 'python-psycopg2' 'python-yaml' 'python-numpy' 'python-jinja' 'python-pygments'
   'python-pyqt5' 'python-qscintilla-qt5'
 )
+# sip<=6.5.1 until https://www.riverbankcomputing.com/pipermail/pyqt/2022-April/044584.html is fixed
 
 options=(debug !strip)
 
