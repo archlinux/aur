@@ -7,7 +7,7 @@ pkgdesc="plainDE control center"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://plainde.org"
 license=(GPL3)
-depends=(qt6-base noto-fonts-emoji polkit ttf-opensans make alsa-utils kwindowsystem plainpanel)
+depends=(qt6-base noto-fonts-emoji polkit ttf-opensans make alsa-utils kwindowsystem plainpanel plainabout)
 makedepends=(git)
 source=("git+https://github.com/plainDE/plainControlCenter.git#tag=v${pkgver}")
 sha256sums=('SKIP')

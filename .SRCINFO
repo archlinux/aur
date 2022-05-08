@@ -19,6 +19,7 @@ pkgbase = plaincontrolcenter
         depends = alsa-utils
         depends = kwindowsystem
         depends = plainpanel
+        depends = plainabout
         source = git+https://github.com/plainDE/plainControlCenter.git#tag=v0.1.2
         sha256sums = SKIP
 
