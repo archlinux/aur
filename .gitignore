@@ -1,0 +1,4 @@
+clicraft-git/
+src/
+pkg/
+*.pkg.tar.*
