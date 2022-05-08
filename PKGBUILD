@@ -3,15 +3,15 @@
 # Contributor: Masoud <mpoloton@gmail.com>
 
 pkgname=python-pyfr
-pkgver=1.13.0
-_commit=ddab8b0
-pkgrel=2
+pkgver=1.14.0
+_commit=ec32646
+pkgrel=1
 pkgdesc="Framework for solving advection-diffusion type problems on streaming architectures"
 arch=('any')
 url='https://github.com/pyfr/pyfr'
 license=('BSD')
 depends=(
-	'python>=3.8'
+	'python>=3.9'
 	'python-appdirs'
 	'python-gimmik'
 	'python-h5py-openmpi'
