@@ -2,9 +2,9 @@ pkgdesc="ROS - The Kinematics and Dynamics Library (KDL) defines a tree structur
 url='https://wiki.ros.org/kdl_parser'
 
 pkgname='ros-noetic-kdl-parser'
-pkgver='1.14.1'
+pkgver='1.14.2'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=3
+pkgrel=1
 license=('BSD')
 
 ros_makedepends=(
@@ -35,7 +35,7 @@ depends=(
 
 _dir="kdl_parser-${pkgver}/kdl_parser"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/kdl_parser/archive/${pkgver}.tar.gz")
-sha256sums=('5892b145bc5bf4fe8a5d287e83d600a5f7a324ab9b243b45c53d82f733b76963')
+sha256sums=('da528dfdf8dd0939f6f7ddba3c9f86ab7de6e27c4119d3fe6df65134ca35fb5a')
 
 prepare(){
     sed -i '5s/14/17/' ./${_dir}/CMakeLists.txt

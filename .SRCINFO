@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-kdl-parser
 	pkgdesc = ROS - The Kinematics and Dynamics Library (KDL) defines a tree structure to represent the kinematic and dynamic parameters of a robot mechanism.
-	pkgver = 1.14.1
-	pkgrel = 3
+	pkgver = 1.14.2
+	pkgrel = 1
 	url = https://wiki.ros.org/kdl_parser
 	arch = i686
 	arch = x86_64
@@ -21,7 +21,7 @@ pkgbase = ros-noetic-kdl-parser
 	depends = orocos-kdl
 	depends = tinyxml
 	depends = tinyxml2
-	source = ros-noetic-kdl-parser-1.14.1.tar.gz::https://github.com/ros/kdl_parser/archive/1.14.1.tar.gz
-	sha256sums = 5892b145bc5bf4fe8a5d287e83d600a5f7a324ab9b243b45c53d82f733b76963
+	source = ros-noetic-kdl-parser-1.14.2.tar.gz::https://github.com/ros/kdl_parser/archive/1.14.2.tar.gz
+	sha256sums = da528dfdf8dd0939f6f7ddba3c9f86ab7de6e27c4119d3fe6df65134ca35fb5a
 
 pkgname = ros-noetic-kdl-parser
