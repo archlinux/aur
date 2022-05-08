@@ -1,0 +1,18 @@
+pkgbase = eprosima-micro-xrce-dds-gen
+	pkgdesc = DDS-XRCE IDL code generator tool
+	pkgver = 1.1.0
+	pkgrel = 0
+	url = https://github.com/eProsima/Micro-XRCE-DDS-Gen
+	arch = any
+	license = Apache
+	makedepends = gradle
+	makedepends = git
+	makedepends = jdk8-openjdk
+	depends = java-environment
+	depends = bash
+	source = https://github.com/eProsima/Micro-XRCE-DDS-Gen/archive/refs/tags/v1.1.0.tar.gz
+	source = https://github.com/eProsima/IDL-Parser/archive/9e36ac4b18c8083ac7106761a8a6e908e04ae458.zip
+	sha512sums = 4ca2299c27d592798b5a904b4255537664160fb9759d5184fbc1cc1210b17ca2ce295d4ce04c41b32fb9937a3dd362a3960c36c9fc814a4d75b3c4a2345bb9e0
+	sha512sums = 482a4c39baaafa9fd5a751b955e1a2b97bf7b762e86850965518c371f48fd6d931cc0d1c3ed00f138500def23c359b08bf7e6f64743f191b882d4a88e9269064
+
+pkgname = eprosima-micro-xrce-dds-gen
