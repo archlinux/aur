@@ -1,7 +1,7 @@
 pkgbase = audio-offset-finder
 	pkgdesc = audio-offset-finder is a simple tool CLI for finding the offset of an audio file within another file. Can help to post-synchronize audio on a video
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/bbc/audio-offset-finder
 	arch = any
 	license = Apache License v2.0
