@@ -1,10 +1,10 @@
 # Maintainer: Vaporeon <vaporeon@vaporeon.io>
 
 pkgname=corrosion
-pkgver=0.2.0
-_commit=f617a7f6a85f95bc0d4cc746eee3605b08fd6194
+pkgver=0.2.1
+_commit=28fa50ca44f68313e7345dd59d79599a91df57a7
 pkgrel=1
-pkgdesc="Tool for integrating Rust into an existing CMake project."
+pkgdesc="Tool for integrating Rust into an existing CMake project"
 arch=('x86_64')
 url="https://github.com/corrosion-rs/corrosion"
 license=('MIT')
