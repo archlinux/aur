@@ -5,7 +5,7 @@ pkgbase=python-sunpy
 _pyname=${pkgbase#python-}
 pkgname=("python-${_pyname}")
 #"python-${_pyname}-doc")
-pkgver=3.1.6
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="Python library for solar physics"
 arch=('i686' 'x86_64')
@@ -63,7 +63,7 @@ source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname
 #        "http://data.sunpy.org/sunpy/v1/aiacalibim5.fits.gz"
 #        "http://data.sunpy.org/sunpy/v1/glg_cspec_n5_110607_v00.pha")
 ##       "http://netdrms01.nispdc.nso.edu/VSO/WSDL/VSOi_rpc_literal.wsdl")
-md5sums=('966708b0746775a72e363994f5941535')
+md5sums=('8f7920bb2334acd07ebdfaa2d005f52a')
 #        'bde3bd7a691b38e2e4c4e1d17b143b24'
 #        '01efaf052d81efc32a92050a249aa557'
 #        'ead6d3ce4c183c471d76bf1bc3be44a3'
@@ -93,6 +93,10 @@ md5sums=('966708b0746775a72e363994f5941535')
 #        'b1255ddcf10d91ae81439aadfe8cbccd')
 #        '09e93384ceff4aecfef1ad4b0ca89290')
 
+get_pyver() {
+    python -c 'import sys; print(".".join(map(str, sys.version_info[:2])))'
+}
+
 prepare() {
     cd ${srcdir}/${_pyname}-${pkgver}
 
@@ -101,7 +105,6 @@ prepare() {
 #   cp -v ${srcdir}/*.txt ${HOME}/.local/share/${_pyname}
 #   cp -v ${srcdir}/*.pha ${HOME}/.local/share/${_pyname}
     sed -i "/oldest-supported-numpy/d" pyproject.toml
-    export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
 }
 
 build() {
@@ -109,33 +112,33 @@ build() {
     python -m build --wheel --no-isolation
 
 #   msg "Building Docs"
-#   export _pyver=$(python -c 'import sys; print("%d.%d" % sys.version_info[:2])')
 #   cd ${srcdir}/${_pyname}-${pkgver}/docs
 #   ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname}*egg-info \
-#       ../build/lib.linux-${CARCH}-${_pyver}/${_pyname}-${pkgver}-py${_pyver}.egg-info
+#       ../build/lib.linux-${CARCH}-$(get_pyver)/${_pyname}-${pkgver}-py$(get_pyver).egg-info
 #   mkdir -p ${HOME}/.local/share/${_pyname}
 #   ln -rs ${srcdir}/*.fit* ${HOME}/.local/share/${_pyname}
 #   ln -rs ${srcdir}/*.txt ${HOME}/.local/share/${_pyname}
 #   ln -rs ${srcdir}/*.pha ${HOME}/.local/share/${_pyname}
 #   ln -rs ${srcdir}/VSOi_rpc_literal.wsdl .
-#   PYTHONPATH="../build/lib.linux-${CARCH}-${_pyver}" make html
+#   PYTHONPATH="../build/lib.linux-${CARCH}-$(get_pyver)" make html
 }
 
 #check() {
 #    cd ${srcdir}/${_pyname}-${pkgver}
 #
 #    ln -rs ${srcdir}/${_pyname}-${pkgver}/${_pyname}*egg-info \
-#        build/lib.linux-${CARCH}-${_pyver}/${_pyname}-${pkgver}-py${_pyver}.egg-info
+#        build/lib.linux-${CARCH}-$(get_pyver)/${_pyname}-${pkgver}-py$(get_pyver).egg-info
 #    mkdir -p ${HOME}/.local/share/${_pyname}
 #    ln -rs ${srcdir}/*.fit* ${HOME}/.local/share/${_pyname}
 #    ln -rs ${srcdir}/*.txt ${HOME}/.local/share/${_pyname}
 #    ln -rs ${srcdir}/*.pha ${HOME}/.local/share/${_pyname}
-#    PYTHONPATH="build/lib.linux-${CARCH}-${_pyver}" pytest "build/lib.linux-${CARCH}-${_pyver}" #|| warning "Tests failed"
+#    PYTHONPATH="build/lib.linux-${CARCH}-$(get_pyver)" pytest "build/lib.linux-${CARCH}-$(get_pyver)" #|| warning "Tests failed"
 #}
 
 package_python-sunpy() {
-    depends=('python>=3.8' 'python-astropy>=4.2.1' 'python-parfive>=1.2.0' 'python-packaging>=19.0')
-    optdepends=('python-asdf>=2.6.0: asdf'
+    depends=('python>=3.8' 'python-astropy>=4.2.1' 'python-parfive>=1.2.0' 'python-aioftp' 'python-packaging>=19.0')
+    optdepends=('python-asdf>=2.8.0: asdf'
+                'python-asdf-astropy>=0.1.1: asdf'
                 'python-dask>=2.0.0: dask'
                 'python-sqlalchemy>=1.3.4: database'
                 'python-scikit-image>=0.16.0: image'
