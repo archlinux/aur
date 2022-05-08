@@ -1,7 +1,7 @@
 # Maintainer: Mark Wagie <mark dot wagie at tutanota dot com>
 pkgname=guiscrcpy
 pkgver=4.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open Source GUI based Android Screen Mirroring System"
 arch=('any')
 url="https://guiscrcpy.github.io"
@@ -26,7 +26,7 @@ prepare() {
   cd "$srcdir/$pkgname"
 
   # Force launching with PySide6
-  setconf "appimage/$pkgname.desktop Exec" 'env QT_API=pyside6 guiscrcpy'
+  setconf "appimage/$pkgname.desktop" Exec 'env QT_API=pyside6 guiscrcpy'
 }
 
 build() {
