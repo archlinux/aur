@@ -5,7 +5,7 @@ pkgname=tachidesk-sorayomi
 __pkgname="$pkgname"
 __PkgName="$(echo "$__pkgname" | sed -e "s/\b./\u\0/g")"
 __binname="$(echo "$__pkgname" | tr - _)"
-pkgver=0.2.2
+pkgver=0.2.3
 pkgrel=1
 pkgdesc='A free and open source manga reader to read manga from a Tachidesk-Server instance'
 arch=('x86_64')
@@ -15,7 +15,7 @@ depends=('zenity')
 optdepends=('tachidesk-server')
 makedepends=('flutter-beta' 'cmake' 'clang' 'ninja')
 source=("$url/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('3d38d60dfd9d4cb98c559393d65cf28e21500f66fab232ea68b990af7dedda9c')
+sha256sums=('11f5774119364637163fbd791248dc1d035c9a5c2e7ab9b4a82ddcc79fcca939')
 
 build() {
     cd "$__PkgName-$pkgver/"
