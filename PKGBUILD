@@ -3,7 +3,7 @@
 _name=cloup
 
 pkgname=python-cloup
-pkgver=0.13.0
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="Cloup (= Click + groups) contains a set of Click extensions for multiple purposes."
 
@@ -12,7 +12,7 @@ license=('MIT')
 url="https://github.com/janLuke/cloup"
 
 source=("https://github.com/janLuke/$_name/archive/refs/tags/v$pkgver.tar.gz")
-sha512sums=('125ff69f81827eab1d272f7448d0f5222dd8f3cf7dafa225f4a2c730fa17691b19f7c4f32ffa6f08cf27cfd4342f82b8175cdc54445e765b33dac24c17031fef')
+sha512sums=('014523cfcaf5aaebffd638d71046520e71f2323fec8ab7eca5c57cdb47d283a745a47081dc5c2b0ad064c3354f6d99321f45edee93f9201055211a4f9e930d0f')
 
 depends=('python')
 makedepends=(
