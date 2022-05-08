@@ -1,7 +1,7 @@
 pkgbase = plainabout
-        pkgdesc = plainDE panel
+        pkgdesc = plainDE about screen
         pkgver = 0.1.2
-        pkgrel = 1
+        pkgrel = 2
         url = https://plainde.org
         arch = x86_64
         arch = i686
@@ -16,8 +16,6 @@ pkgbase = plainabout
         depends = polkit
         depends = ttf-opensans
         depends = make
-        depends = alsa-utils
-        depends = kwindowsystem
         source = git+https://github.com/plainDE/plainAbout.git#tag=v0.1.2
         sha256sums = SKIP
 
