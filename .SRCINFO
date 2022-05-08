@@ -1,0 +1,14 @@
+pkgbase = sempl
+	pkgdesc = A simple, line-oriented template utility for the command line.
+	pkgver = 0.r55.gaa909e8
+	pkgrel = 1
+	url = https://github.com/DMBuce/sempl
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = perl
+	depends = bash
+	source = sempl::git+https://github.com/DMBuce/sempl.git
+	md5sums = SKIP
+
+pkgname = sempl
