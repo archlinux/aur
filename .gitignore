@@ -1,0 +1,4 @@
+pacrepo-git/
+src/
+pkg/
+*.pkg.tar.*
