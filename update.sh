@@ -26,7 +26,13 @@ update_sums () {
   local SUMS=()
   for SRC_RAW in $(eval echo \${$SRC_NAME[@]}); do
     local SRC_URL=$(echo $SRC_RAW | sed -E 's/.+::(.+)/\1/g')
-    local SRC_SUM=$(curl -sL "$SRC_URL" | sha512sum | cut -d " " -f 1)
+    if [[ "$SRC_URL" =~ "http" ]]; then
+      # online source
+      local SRC_SUM=$(curl -sL "$SRC_URL" | sha512sum | cut -d " " -f 1)
+    else
+      # local source
+      local SRC_SUM=$(sha512sum "$SRC_URL" | cut -d " " -f 1)
+    fi
     SUMS+=("'$SRC_SUM'")
 
     echo -e "Sum of <$SRC_URL>:\n\t$SRC_SUM"
