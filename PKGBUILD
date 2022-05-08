@@ -4,7 +4,7 @@ pkgdesc="ROS - rqt_tf_tree provides a GUI plugin for visualizing the ROS TF fram
 url='https://wiki.ros.org/rqt_tf_tree'
 
 pkgname='ros-noetic-rqt-tf-tree'
-pkgver='0.6.2'
+pkgver='0.6.3'
 _pkgver_patch=0
 arch=('any')
 pkgrel=1
@@ -42,7 +42,7 @@ _dir="rqt_tf_tree-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_tf_tree/archive/${pkgver}.tar.gz"
         "https://github.com/ros-visualization/rqt_tf_tree/pull/28.patch"
         "https://github.com/ros-visualization/rqt_tf_tree/pull/30.patch")
-sha256sums=('2167fefc172a02d9ae829e96a8dd3280a41c125d3f8840134247f60dd9f6d505'
+sha256sums=('d020db10eda6799d2e45d9e7808fcb7d4b474ead28d6166d12ade597fe4b9e5e'
         'SKIP'
         'SKIP')
 
