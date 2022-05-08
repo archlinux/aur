@@ -1,0 +1,14 @@
+pkgbase = albafetch-git
+	pkgdesc = Noefetch, but written in C; both faster and worse than the original
+	pkgver = 2.5.r306.b445a89
+	pkgrel = 1
+	url = https://github.com/alba4k/albafetch
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = make
+	makedepends = gcc
+	source = git+https://github.com/alba4k/albafetch
+	md5sums = SKIP
+
+pkgname = albafetch-git
