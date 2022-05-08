@@ -1,7 +1,7 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=zxpy
-pkgver=1.6.0
+pkgver=1.6.1
 pkgrel=1
 pkgdesc="Shell scripts made simple"
 arch=('any')
@@ -10,7 +10,7 @@ license=("MIT")
 depends=("python")
 makedepends=('python-setuptools')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha512sums=('c4fc8c59e2b6eb74ebec6c9ab6f0849b18ee1401f2634abc0bf3ba9568e37b5e599d80d06f47ff449c4bbe38266478b8cfa9ce1f300db5499fcf0de716aa801c')
+sha512sums=('78bd1d7f56fb6a0fd330e4065f2676ad05ce7343deaa0101f02ba05db3ec04b5ed622d6beae2eb4f7addd07ec3ca4c5e525cbf6c9b60188cbfb7b5f5029b85cc')
 
 build() {
   cd "$pkgname-$pkgver"
