@@ -1,7 +1,7 @@
 pkgbase = python-hyperspy
 	pkgdesc = Hyperspectral data analysis
 	pkgver = 1.7.0
-	pkgrel = 2
+	pkgrel = 3
 	url = http://hyperspy.org
 	arch = any
 	license = GPL3
@@ -38,7 +38,8 @@ pkgbase = python-hyperspy
 	depends = python-sparse
 	depends = python-zarr
 	depends = python-tifffile>=2020.2.16
-	depends = python-numba>=0.52
+	depends = python-numba-git>=0.52
+	depends = python-llvmlite-git
 	optdepends = python-scikit-learn: machine learning features
 	optdepends = python-hyperspy-gui-ipywidgets: GUI components for Jupyter
 	optdepends = python-hyperspy-gui-traitsui: GUI components for desktop
