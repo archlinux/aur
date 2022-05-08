@@ -12,7 +12,7 @@ post_install() {
   printf "$(tput setaf 4)Re-login your terminal in to the group flutterusers:$(tput sgr0)\n"
   printf "$(tput setaf 2)newgrp flutterusers$(tput sgr0)\n"
   printf "$(tput setaf 4)$(tput sgr0)\n"
-  printf "$(tput setaf 4)To run flutter doctor correctly run:$(tput sgr0)\n"
+  printf "$(tput setaf 4)To run flutter doctor correctly:$(tput sgr0)\n"
   printf "$(tput setaf 2)git config --global --add safe.directory /opt/flutter$(tput sgr0)\n"
 }
 
