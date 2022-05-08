@@ -1,31 +1,52 @@
-# Maintainer: Stefan Husmann <stefan-husmann@t-online.de>
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Contributor: Stefan Husmann <stefan-husmann@t-online.de>
 
 pkgname=cl-alexandria
-_pkgname=${pkgname#cl-}
-pkgver=20170814
-pkgrel=2
-pkgdesc="A set of common-lisp help functions"
+_pkgname="${pkgname#cl-}"
+pkgver=1.4.r16.g72882fc
+pkgrel=1
+pkgdesc='A set of Common Lisp Utilities'
 arch=('any')
-url="https://common-lisp.net/project/alexandria/"
-license=('custom')
-source=("git+https://github.com/keithj/alexandria.git#commit=e5c54bc30b0887c237bde2827036d17315f88737")
-md5sums=('SKIP')
+url='https://alexandria.common-lisp.dev'
+license=('MIT')
+depends=('cl-asdf' 'common-lisp')
+makedepends=('git' 'sbcl' 'texlive-core')
+_commit='72882fc73e1818c51490a22c4670f35af545d868'
+source=("$pkgname::git+https://gitlab.common-lisp.net/alexandria/alexandria.git#commit=$_commit")
+b2sums=('SKIP')
 
 pkgver() {
-  cd "${_pkgname%}"
-  echo $(git log -1 --format="%cd" --date=short | sed 's|-||g')
+  cd "$pkgname"
+
+  git describe --tags | sed -e 's/^v//' -e 's/-/.r/' -e 's/-/./g'
+}
+
+build() {
+  cd "$pkgname"
+
+  make -C doc html info
 }
 
 package() {
-  cd ${_pkgname}
-  install -Dm644 LICENCE "$pkgdir"/usr/share/licenses/$pkgname/LICENCE
-  install -d "$pkgdir"/usr/share/common-lisp/source/${_pkgname}
-  install -d "$pkgdir"/usr/share/common-lisp/systems
-  
-  install -m 644 -t "$pkgdir"/usr/share/common-lisp/source/${_pkgname} *.lisp
-  install -m 644 -t "$pkgdir"/usr/share/common-lisp/source/${_pkgname} *.asd
+  cd "$pkgname"
 
-  cd "$pkgdir"/usr/share/common-lisp/systems
-  ln -s ../source/${_pkgname}/${_pkgname}.asd .
-  ln -s ../source/${_pkgname}/${_pkgname}.asd $pkgname-unicode.asd
+  # create directories
+  install -vd \
+    "$pkgdir/usr/share/common-lisp/source/$_pkgname" \
+    "$pkgdir/usr/share/common-lisp/systems"
+
+  # library
+  cp -vr "$_pkgname.asd" alexandria-{1,2} "$pkgdir/usr/share/common-lisp/source/$_pkgname"
+
+  pushd "$pkgdir/usr/share/common-lisp/systems"
+  ln -s "../source/$_pkgname/$_pkgname.asd" .
+  popd
+
+  # documentation
+  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README
+  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" doc/alexandria.html
+  install -vDm644  doc/alexandria.info "$pkgdir/usr/share/info/$pkgname.info"
+
+  # license
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENCE
 }
