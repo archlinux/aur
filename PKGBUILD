@@ -9,6 +9,7 @@ arch=('any')
 url="https://guacamole.apache.org/"
 license=('GPL3')
 depends=('guacamole-client')
+install=guacamole-auth.install
 source=("https://archive.apache.org/dist/guacamole/${pkgver}/binary/guacamole-auth-sso-${pkgver}.tar.gz")
 
 md5sums=('54311f74ccc1e49c66f80c2acbb89003')

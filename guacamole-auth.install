@@ -1,0 +1,15 @@
+. /usr/share/makepkg/util/message.sh
+colorize
+
+post_upgrade() {
+    msg "NOTE: For a clean use of this package, remove the unnecessary jars of unused Single Sign On. Otherwise, you could see errors in client startup."
+    msg "      For example, if you want OpenID only:"
+    msg "        rm /etc/guacamole/extensions/guacamole-auth-sso-cas-VERSION.jar /etc/guacamole/extensions/guacamole-auth-sso-saml-VERSION.jar"
+    msg "Documentation: https://guacamole.incubator.apache.org/doc/gug/cas-auth.html"
+    msg "               https://guacamole.incubator.apache.org/doc/gug/openid-auth.html"
+    msg "               https://guacamole.incubator.apache.org/doc/gug/saml-auth.html"
+}
+
+post_install(){
+    post_upgrade
+}
