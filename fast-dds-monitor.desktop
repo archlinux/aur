@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Exec=/usr/bin/fastdds_monitor
+Name=eProsima Fast DDS Monitor
+Icon=/usr/share/eprosima/eprosima.png
+Categories=Development
+Comment=An application aimed at monitoring DDS environments deployed using the eProsima Fast DDS library.

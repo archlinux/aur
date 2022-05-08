@@ -15,8 +15,8 @@ _install_directory=/usr
 
 source=(
 	"https://github.com/eProsima/Fast-DDS-monitor/archive/refs/tags/v${pkgver}.tar.gz"
-	"file://fast-dds-monitor.desktop"
-	"file://eprosima.png"
+	"fast-dds-monitor.desktop"
+	"eprosima.png"
 )
 
 sha512sums=(
