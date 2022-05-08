@@ -1,7 +1,7 @@
 pkgbase = ideaseed-git
 	pkgdesc = Note down your ideas and get them to the right place, without switching away from your terminal (bleeding edge)
-	pkgver = r330.f740be3
-	pkgrel = 2
+	pkgver = r331.09eb5df
+	pkgrel = 1
 	url = https://github.com/ewen-lbh/ideaseed
 	arch = any
 	license = MIT

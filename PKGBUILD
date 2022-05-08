@@ -21,7 +21,7 @@ pkgver() {
 
 package() {
   sed -i "s/ideaseed v{version}/ideaseed v{version} (bleeding edge: $pkgver)/" $_gitname/ideaseed/ui.py
-  pip install --root="$pkgdir" --prefix=/usr $_gitname
+  pip install $_gitname/ --prefix=usr/ --root="$pkgdir"
 }
 
 # vim:set ts=2 sw=2 et:
