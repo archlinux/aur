@@ -1,6 +1,6 @@
-pkgbase = input-remapper-git
+pkgbase = input-remapper-beta-git
 	pkgdesc = A tool to change and program the mapping of your input device buttons.
-	pkgver = 1.4.1
+	pkgver = 1.4.2.r10.g2d23120
 	pkgrel = 1
 	url = https://github.com/sezanzeb/input-remapper/
 	install = input-remapper-git.install
@@ -18,7 +18,8 @@ pkgbase = input-remapper-git
 	depends = python-pydantic
 	provides = input-remapper
 	conflicts = key-mapper
+	replaces = input-remapper-git
 	source = git+https://github.com/sezanzeb/input-remapper.git
 	md5sums = SKIP
 
-pkgname = input-remapper-git
+pkgname = input-remapper-beta-git
