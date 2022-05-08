@@ -1,7 +1,7 @@
 # Maintainer: François Guerraz <kubrick@fgv6.net>
 pkgname=snaphu
-pkgver=1.4.2
-pkgrel=2
+pkgver=2.0.5
+pkgrel=1
 pkgdesc="Statistical-Cost, Network-Flow Algorithm for Phase Unwrapping"
 arch=('x86_64')
 url="https://web.stanford.edu/group/radar/softwareandlinks/sw/snaphu/"
@@ -17,15 +17,12 @@ backup=()
 options=()
 install=
 changelog=
-source=( "https://web.stanford.edu/group/radar/softwareandlinks/sw/snaphu/$pkgname-v$pkgver.tar.gz" 
-         'fix-64-bit-segfault.patch' )
+source=( "https://web.stanford.edu/group/radar/softwareandlinks/sw/snaphu/$pkgname-v$pkgver.tar.gz" ) 
 noextract=( )
-sha256sums=( '30e7be7889fc2d2ce8606de01a29f2d908de5e8eb8e32619cf6d2deff9186eb7'
-             '75b163cb6f2ba5de3a240d5d853c25d92431b9591de2ab9eedb81c0337a2704b' )
+sha256sums=( 'ad3917de3efa7b86bb31c5cfeb612a4759ad53de16e8875c9899f58d20ddd571')
 
 prepare() {
   cd ${pkgname}-v${pkgver}
-  patch -p1 < ${srcdir}/fix-64-bit-segfault.patch
 }
 
 build() {
