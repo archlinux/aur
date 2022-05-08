@@ -1,18 +1,25 @@
-# Maintainer: Antony Lee <anntzer dot lee at gmail dot com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: Antony Lee <anntzer dot lee at gmail dot com>
 
 pkgname=python-statprof
+_pkg="${pkgname#python-}-smarkets"
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Statistical profiling for Python'
 arch=('any')
-url='http://pypi.python.org/pypi/statprof-smarkets/'
+url='https://pypi.python.org/pypi/statprof-smarkets'
 license=('GPL2')
-depends=('python')
-source=("http://pypi.python.org/packages/source/s/statprof-smarkets/statprof-smarkets-$pkgver.tar.gz")
-md5sums=('723d9c727da43a342042fe00486857d9')
+depends=('python-six')
+makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
+source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/${_pkg::1}/$_pkg/$_pkg-$pkgver.tar.gz")
+sha256sums=('b1ecadfb86ead5c75d987fbc8cc0f53e1a3a6c6ea644918a67b3e8bb5036372f')
 
-package() {
-  cd "$srcdir/statprof-smarkets-$pkgver"
-  python setup.py install --root="$pkgdir/" --optimize=1
+build() {
+	cd "$_pkg-$pkgver"
+	python -m build --wheel --no-isolation
 }
 
+package() {
+	cd "$_pkg-$pkgver"
+	PYTHONHASHSEED=0 python -m installer --destdir="$pkgdir/" dist/*.whl
+}
