@@ -1,17 +1,16 @@
 pkgbase = python-generic
 	pkgdesc = Library for Generic programming, also known as Multiple dispatch
-	pkgver = 1.0.1
-	pkgrel = 2
+	pkgver = 1.1.0
+	pkgrel = 1
 	url = https://github.com/gaphor/generic
 	arch = any
 	license = BSD
 	checkdepends = python-pytest
-	checkdepends = python-pytest-runner
 	makedepends = python-build
 	makedepends = python-installer
 	makedepends = python-poetry-core
 	depends = python
-	source = python-generic-1.0.1.tar.gz::https://github.com/gaphor/generic/archive/1.0.1.tar.gz
-	sha256sums = 784301c7e6bdaca9c85c9d34b0fc51fdd7ebb808f24a98b0f819599ecaa12c20
+	source = python-generic-1.1.0.tar.gz::https://github.com/gaphor/generic/archive/1.1.0.tar.gz
+	sha256sums = 8628d1bce4044e7664c149f785d7ad17a388e96c648ee09aef39d73578d52943
 
 pkgname = python-generic

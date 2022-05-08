@@ -3,8 +3,8 @@
 
 _name=generic
 pkgname=python-${_name}
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Library for Generic programming, also known as Multiple dispatch"
 arch=('any')
 url="https://github.com/gaphor/generic"
@@ -13,7 +13,7 @@ depends=('python')
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
-sha256sums=('784301c7e6bdaca9c85c9d34b0fc51fdd7ebb808f24a98b0f819599ecaa12c20')
+sha256sums=('8628d1bce4044e7664c149f785d7ad17a388e96c648ee09aef39d73578d52943')
 
 build() {
 	cd "${_name}-${pkgver}"
