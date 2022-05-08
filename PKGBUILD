@@ -1,7 +1,7 @@
 # Maintainer: Wren Baxter <aur [at] wren.dev>
 
 pkgname=astap-bin-qt5
-pkgver=2022.4.11
+pkgver=2022.5.7
 pkgrel=1
 pkgdesc="Astrometric (plate) solver, stacking of images, photometry and FITS viewer"
 provides=('astap')
@@ -10,7 +10,7 @@ arch=('x86_64') # no 32-bit version provided
 url="https://www.hnsky.org/astap.htm"
 license=('LGPL3')
 source=("astap.tar.gz::https://sourceforge.net/projects/astap-program/files/linux_installer/astap_amd64_qt5.tar.gz/download")
-sha256sums=('56176c23161f7a6a671006a29b9c3b0d04407f564b348ad6ad5d8e8be7f6e706')
+sha256sums=('24d20b825bc78e03c053b05af13bfbc885535b3ecc83e2f7f51f8c782b5a465f')
 
 noextract=("astap.tar.gz") # bsdtar can't handle this archive because it contains a self-referential hardlink
 makedepends=('tar') # but gnu tar is just fine
@@ -25,11 +25,11 @@ optdepends=('hyperleda-galaxy-db-astap: database of 1.3m galaxies and 171k other
             'h18-star-db-astap: database of stars up to magnitude 18, reliable with 0.25-10° FOV')
 
 prepare() {
-    tar xpfv astap.tar.gz
+    tar xpf astap.tar.gz
 }
 
 package() {
-    cp -rv "${srcdir}"/opt "${pkgdir}"/opt
-    cp -rv "${srcdir}"/usr "${pkgdir}"/usr
+    cp -r "${srcdir}"/opt "${pkgdir}"/opt
+    cp -r "${srcdir}"/usr "${pkgdir}"/usr
 }
 
