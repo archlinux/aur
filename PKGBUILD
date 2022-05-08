@@ -3,14 +3,14 @@
 
 pkgname=py3status-github-notifications
 pkgdesc="Python module for py3status to keep track of your Github notifications."
-pkgver=0.1.3
+pkgver=0.1.4
 pkgrel=1
 arch=('any')
 license=('MIT')
 makedepends=('python-setuptools' "python-dephell")
 url="https://github.com/mcgillij/py3status-github-notifications"
-source=("https://github.com/mcgillij/py3status-github-notifications/releases/download/0.1.3/py3status-github-notifications-0.1.3.tar.gz")
-md5sums=('0348d79b18b5d0177bb545b4f88ad76d')
+source=("https://github.com/mcgillij/py3status-github-notifications/releases/download/$pkgver/py3status-github-notifications-$pkgver.tar.gz")
+md5sums=('d399daec3df14da8d67800de23245864')
 
 prepare() {
   cd "$pkgname-$pkgver"
