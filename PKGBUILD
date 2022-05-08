@@ -1,8 +1,8 @@
 # Maintainer: Aloxaf <aloxafx at gamil>
 
 pkgname=jbr-linux-x64
-_pkgver=2022-02-01_08-58
-pkgver=20220201
+_pkgver=2022-04-15_00-02
+pkgver=20220415
 pkgrel=1
 pkgdesc="A patched JetBrainsRuntime which fix fcitx5 cursor bug"
 arch=('x86_64')
@@ -14,8 +14,8 @@ source=(
   'jbr-linux-x64.install'
 )
 sha256sums=(
-  '7e35c51218e11c2bfe06c0553a680680950139928dea4e70ecfad8d47ccd51c0'
-  '6764b372940b76bb6a030c392d8ae53a468c1f70855ce207073f786586243bd6'
+  '0ed574567482600cd00191ebdbf85940fadcda3ff9cbfa7d19beb1b0e0f6346f'
+  '29a37d3d9c6059f688d91187ff0a249c90f2ddb1add3ff980e0fe0619a5411ec'
 )
 install=jbr-linux-x64.install
 

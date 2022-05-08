@@ -1,3 +1,4 @@
 post_install() {
   echo ">>>> Enable jbr-linux-x64: Help -> Find Action -> Choose Boot Java Runtime for the IDE"
+  echo ">>>> And use /opt/jbr-linux-x64"
 }
