@@ -19,8 +19,8 @@ pkgbase = plainpanel
         depends = alsa-utils
         depends = kwindowsystem
         depends = python3
+        depends = plainabout
         optdepends = plaincontrolcenter: Edit config from AUR
-        optdepends = plainabout: About Screen from AUR
         source = git+https://github.com/plainDE/plainPanel.git#tag=v0.1.2
         sha256sums = SKIP
 
