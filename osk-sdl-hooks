@@ -41,8 +41,8 @@ EOF
                 echo "A password is required to access the ${cryptname} volume"
 
                 #loop until we get a real password
-                while ! eval osk-sdl -G -d ${resolved} -n ${cryptname} -c /etc/osk.conf; do
-                    sleep 2;
+                while ! [ -b "/dev/mapper/${cryptname}" ]; do
+                   osk-sdl -G -d ${resolved} -n ${cryptname} -c /etc/osk.conf
                 done
             fi
             if [ -e "/dev/mapper/${cryptname}" ]; then
