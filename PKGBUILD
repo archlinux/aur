@@ -1,51 +1,48 @@
-# Maintainer: Dacoda Strack <dacoda.strack@gmail.com>
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
+# Contributor: Dacoda Strack <dacoda.strack@gmail.com>
 
 pkgname=cl-bordeaux-threads
-pkgver=0.8.5
+_pkgname="${pkgname#cl-}"
+pkgver=0.8.8
 pkgrel=1
-pkgdesc="Portable shared-state concurrency for Common Lisp"
+pkgdesc='Portable shared-state concurrency for Common Lisp'
 arch=('any')
-url="https://common-lisp.net/project/bordeaux-threads/"
+url='https://sionescu.github.io/bordeaux-threads/'
 license=('MIT')
-depends=('cl-alexandria')
-# makedepends=()
-# checkdepends=()
-# optdepends=()
-provides=()
-conflicts=()
-# replaces=()
-# backup=()
-# options=()
-# install=
-# changelog=
-source=("git+https://github.com/sionescu/bordeaux-threads.git#commit=92e6a89486a9469a36b4c0f73f4efc38f4ddeecc")
-# noextract=()
-md5sums=(SKIP)
-# validpgpkeys=()
+depends=('cl-alexandria') # common-lisp & cl-asdf also...
+makedepends=('git')
+_commit='076fe2380abbc59b06e495dc7a35aea8eb26ba3b'
+source=("$pkgname::git+https://github.com/sionescu/bordeaux-threads#commit=$_commit")
+md5sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname#cl-}
-  echo $(cat version.sexp | tail -n1 | sed -e 's/\"\(.*\)\"/\1/')
+  cd "$pkgname"
+
+  git describe --tags | sed -e 's/^v//' -e 's/-/.r/' -e 's/-/./g'
 }
 
 package() {
-  # cd into source, removing cl- prefix from package name
-  cd ${pkgname#cl-}
+  cd "$pkgname"
 
-  # install documentation
-  install -d ${pkgdir}/usr/share/doc/$pkgname/
-  install -m644 -t ${pkgdir}/usr/share/doc/$pkgname/ site/*
+  # create directories
+  install -vd \
+    "$pkgdir/usr/share/common-lisp/source/$_pkgname" \
+    "$pkgdir/usr/share/common-lisp/systems"
 
-  # install sources
-  install -d ${pkgdir}/usr/share/common-lisp/source/${pkgname}
-  install -d ${pkgdir}/usr/share/common-lisp/source/${pkgname}/src
-  install -d ${pkgdir}/usr/share/common-lisp/systems
-  
-  install -m 644 -t ${pkgdir}/usr/share/common-lisp/source/${pkgname}/src src/*.lisp
-  install -m 644 -t ${pkgdir}/usr/share/common-lisp/source/${pkgname} version.sexp
-  install -m 644 -t ${pkgdir}/usr/share/common-lisp/source/${pkgname} *.asd
+  # library
+  install -vDm644 -t "$pkgdir/usr/share/common-lisp/source/$_pkgname" \
+    src/*.lisp \
+    ./*.asd \
+    version.sexp
 
-  # link asd files
-  cd ${pkgdir}/usr/share/common-lisp/systems
-  ln -s ../source/${pkgname}/*.asd .
+  # asdf
+  pushd "$pkgdir/usr/share/common-lisp/systems"
+  ln -s "../source/$_pkgname/$_pkgname.asd" .
+  popd
+
+  # documentation
+  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README site/*
+
+  # license
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
