@@ -3,6 +3,7 @@ pkgbase = guacamole-auth-jdbc-bin
 	pkgver = 1.4.0
 	pkgrel = 1
 	url = https://guacamole.apache.org/
+	install = guacamole-auth.install
 	arch = any
 	license = GPL3
 	depends = guacamole-client

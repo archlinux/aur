@@ -10,6 +10,7 @@ url="https://guacamole.apache.org/"
 license=('GPL3')
 depends=('guacamole-client')
 source=("https://archive.apache.org/dist/guacamole/${pkgver}/binary/guacamole-auth-jdbc-${pkgver}.tar.gz")
+install=guacamole-auth.install
 
 md5sums=('c220f37d41322aee21e477f4e3b43afa')
 

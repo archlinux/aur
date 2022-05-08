@@ -1,0 +1,15 @@
+. /usr/share/makepkg/util/message.sh
+colorize
+
+post_upgrade() {
+    msg "NOTE1: For a clean use of this package, remove the unnecessary jars of unused databases. Otherwise, you could see errors in client startup."
+    msg "       For example, if you have MySQL:"
+    msg "         rm /etc/guacamole/extensions/guacamole-auth-jdbc-postgresql-VERSION.jar /etc/guacamole/extensions/guacamole-auth-jdbc-sqlserver-VERSION.jar"
+    msg "NOTE2: Initial sql schemas are located in /usr/share/guacamole/sql/YOUR_DRIVER/schema/*.sql"
+    msg "NOTE3: If you are upgrading from a previous version schema, check if you need to apply any sql (do it in order). All files are located in /usr/share/guacamole/sql/YOUR_DRIVER/schema/upgrade/*.sql"
+    msg "Documentation: https://guacamole.incubator.apache.org/doc/gug/jdbc-auth.html"
+}
+
+post_install(){
+    post_upgrade
+}
