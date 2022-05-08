@@ -1,0 +1,12 @@
+pkgbase = hive-server-git
+	pkgdesc = Lua microservices framework.
+	pkgver = r1.8bf6530
+	pkgrel = 1
+	url = https://github.com/hackerer1c/hive
+	arch = x86_64
+	license = MIT
+	makedepends = cargo
+	source = hive-server-git-r1.8bf6530.tar.gz::https://github.com/hackerer1c/hive/archive/8bf65304ab5cae499f6fa0a647a4565f6672aa26.tar.gz
+	sha512sums = 2c5453fbc860d7389adbbbf45c0ecdc09f1e92eaa9880027dd6f8b2330c056c88767ab64b34f854b3a42b55cd3d8571b40de05fa0e426523a48e3159b4b20114
+
+pkgname = hive-server-git
