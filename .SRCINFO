@@ -1,0 +1,13 @@
+pkgbase = python-face
+	pkgdesc = Straightforward CLI parsing and dispatching microframework
+	pkgver = 20.1.1
+	pkgrel = 1
+	url = https://github.com/mahmoud/face
+	arch = any
+	license = BSD-3
+	makedepends = python-setuptools
+	depends = python-boltons
+	source = https://files.pythonhosted.org/packages/source/f/face/face-20.1.1.tar.gz
+	sha256sums = 7d59ca5ba341316e58cf72c6aff85cca2541cf5056c4af45cb63af9a814bed3e
+
+pkgname = python-face
