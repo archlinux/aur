@@ -1,32 +1,24 @@
-commit 0a56bbe3d561ebabba6850edc79ae6cbdc3895a8
+commit cc1b5ead1bb6f553c8952271267c6dfcb242c065
 Author: Thomas Hebb <tommyhebb@gmail.com>
-Date:   Sun Sep 8 22:14:22 2019 -0700
+Date:   Sun May 8 11:46:08 2022 -0700
 
     Remove Debian-specific bits from Makefiles
 
 diff --git a/Common.mk b/Common.mk
-index f16d4bdb..571373d2 100644
+index c941f787..9674bc66 100755
 --- a/Common.mk
 +++ b/Common.mk
-@@ -62,7 +62,6 @@ else
-    TARGET_BINDIR   ?= ../PackageFiles/bin/$(MULTIARCH)
-    TARGET_LIBDIR   ?= ../PackageFiles/lib/$(MULTIARCH)
-    BUILDDIR_SUFFIX ?= .$(MULTIARCH)
--   include /usr/share/java/java_defaults.mk
- endif
- 
- ifeq ($(UNAME_S),Windows)
-@@ -249,7 +248,7 @@ ifeq ($(UNAME_S),Windows)
+@@ -257,7 +257,7 @@ ifeq ($(UNAME_S),Windows)
     JAVA_INC := -I$(JAVA_DIR)/include
     JAVA_INC += -I$(JAVA_DIR)/include/win32
  else
--   JAVA_INC := -I/usr/lib/jvm/default-java/include $(jvm_includes)
-+   JAVA_INC := -I/usr/lib/jvm/default/include -I/usr/lib/jvm/default/include/linux
+-   JAVA_INC := -I/usr/lib/jvm/default-java/include -I/usr/lib/jvm/default-java/include/linux $(jvm_includes)
++   JAVA_INC := -I/usr/lib/jvm/default/include -I/usr/lib/jvm/default/include/linux $(jvm_includes)
  endif
  
  #=============================================================
 diff --git a/Library.mk b/Library.mk
-index 00e780a3..b1797b47 100644
+index 00e780a3..e4eec7bd 100644
 --- a/Library.mk
 +++ b/Library.mk
 @@ -39,17 +39,8 @@ ifeq ($(UNAME_S),Windows)
@@ -49,45 +41,38 @@ index 00e780a3..b1797b47 100644
  endif
  
  ifeq ($(UNAME_S),Windows)
-diff --git a/USBDM_API_Example/Common.mk b/USBDM_API_Example/Common.mk
-index a0c70866..aa20dfc0 100644
---- a/USBDM_API_Example/Common.mk
-+++ b/USBDM_API_Example/Common.mk
-@@ -62,7 +62,6 @@ else
-    TARGET_BINDIR   ?= ../PackageFiles/bin/$(MULTIARCH)
-    TARGET_LIBDIR   ?= ../PackageFiles/lib/$(MULTIARCH)
-    BUILDDIR_SUFFIX ?= .$(MULTIARCH)
--   include /usr/share/java/java_defaults.mk
+@@ -248,7 +239,7 @@ ifeq ($(UNAME_S),Windows)
+    JAVA_INC := -I$(PROGRAM_DIR_JAVA)/Java/jdk1.8.0_31/include
+    JAVA_INC += -I$(PROGRAM_DIR_JAVA)/Java/jdk1.8.0_31/include/win32
+ else
+-   JAVA_INC := -I/usr/lib/jvm/default-java/include
++   JAVA_INC := -I/usr/lib/jvm/default/include
  endif
  
- ifeq ($(UNAME_S),Windows)
-@@ -246,7 +245,7 @@ ifeq ($(UNAME_S),Windows)
+ #=============================================================
+diff --git a/USBDM_API_Example/Common.mk b/USBDM_API_Example/Common.mk
+index 5f79c882..e27e4090 100755
+--- a/USBDM_API_Example/Common.mk
++++ b/USBDM_API_Example/Common.mk
+@@ -258,7 +258,7 @@ ifeq ($(UNAME_S),Windows)
     JAVA_INC := -I$(JAVA_DIR)/include
     JAVA_INC += -I$(JAVA_DIR)/include/win32
  else
--   JAVA_INC := -I/usr/lib/jvm/default-java/include $(jvm_includes)
-+   JAVA_INC := -I/usr/lib/jvm/default/include -I/usr/lib/jvm/default/include/linux
+-   JAVA_INC := -I/usr/lib/jvm/default-java/include -I/usr/lib/jvm/default-java/include/linux $(jvm_includes)
++   JAVA_INC := -I/usr/lib/jvm/default/include -I/usr/lib/jvm/default/include/linux $(jvm_includes)
  endif
  
  #=============================================================
 diff --git a/USBDM_Programmer_API_Example/Common.mk b/USBDM_Programmer_API_Example/Common.mk
-index a0c70866..aa20dfc0 100644
+index 5f79c882..e27e4090 100755
 --- a/USBDM_Programmer_API_Example/Common.mk
 +++ b/USBDM_Programmer_API_Example/Common.mk
-@@ -62,7 +62,6 @@ else
-    TARGET_BINDIR   ?= ../PackageFiles/bin/$(MULTIARCH)
-    TARGET_LIBDIR   ?= ../PackageFiles/lib/$(MULTIARCH)
-    BUILDDIR_SUFFIX ?= .$(MULTIARCH)
--   include /usr/share/java/java_defaults.mk
- endif
- 
- ifeq ($(UNAME_S),Windows)
-@@ -246,7 +245,7 @@ ifeq ($(UNAME_S),Windows)
+@@ -258,7 +258,7 @@ ifeq ($(UNAME_S),Windows)
     JAVA_INC := -I$(JAVA_DIR)/include
     JAVA_INC += -I$(JAVA_DIR)/include/win32
  else
--   JAVA_INC := -I/usr/lib/jvm/default-java/include $(jvm_includes)
-+   JAVA_INC := -I/usr/lib/jvm/default/include -I/usr/lib/jvm/default/include/linux
+-   JAVA_INC := -I/usr/lib/jvm/default-java/include -I/usr/lib/jvm/default-java/include/linux $(jvm_includes)
++   JAVA_INC := -I/usr/lib/jvm/default/include -I/usr/lib/jvm/default/include/linux $(jvm_includes)
  endif
  
  #=============================================================
