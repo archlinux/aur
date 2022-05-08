@@ -1,7 +1,7 @@
 pkgbase = plainpanel
         pkgdesc = plainDE panel
         pkgver = 0.1.2
-        pkgrel = 1
+        pkgrel = 2
         url = https://plainde.org
         arch = x86_64
         arch = i686
@@ -18,8 +18,8 @@ pkgbase = plainpanel
         depends = make
         depends = alsa-utils
         depends = kwindowsystem
-        optdepends = plainControlCenter: Edit config from AUR
-        optdepends = plainAbout: About Screen from AUR
+        optdepends = plaincontrolcenter: Edit config from AUR
+        optdepends = plainabout: About Screen from AUR
         source = git+https://github.com/plainDE/plainPanel.git#tag=v0.1.2
         sha256sums = SKIP
 
