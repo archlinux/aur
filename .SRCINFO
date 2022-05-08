@@ -1,0 +1,15 @@
+pkgbase = python-glom
+	pkgdesc = Python's nested data operator
+	pkgver = 22.1.0
+	pkgrel = 1
+	url = https://github.com/mahmoud/glom
+	arch = any
+	license = BSD-3
+	makedepends = python-setuptools
+	depends = python-boltons
+	depends = python-attrs
+	depends = python-face
+	source = https://files.pythonhosted.org/packages/source/g/glom/glom-22.1.0.tar.gz
+	sha256sums = 1510c6587a8f9c64a246641b70033cbc5ebde99f02ad245693678038e821aeb5
+
+pkgname = python-glom
