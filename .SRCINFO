@@ -1,16 +1,16 @@
 pkgbase = audio-offset-finder
-	pkgdesc = audio-offset-finder is a simple tool CLI for finding the offset of an audio file within another file.
-	pkgver = 0.1
-	pkgrel = 2
+	pkgdesc = audio-offset-finder is a simple tool CLI for finding the offset of an audio file within another file. Can help to post-synchronize audio on a video
+	pkgver = 0.5.0
+	pkgrel = 1
 	url = https://github.com/bbc/audio-offset-finder
 	arch = any
 	license = Apache License v2.0
-	makedepends = python2-setuptools
+	makedepends = python-pip
 	depends = ffmpeg
-	depends = python2-scipy
-	depends = python2-scikits-talkbox
+	depends = python-scipy>=0.12.0
+	depends = python-matplotlib
+	depends = python-librosa
 	source = git+https://github.com/bbc/audio-offset-finder.git
 	md5sums = SKIP
 
 pkgname = audio-offset-finder
-
