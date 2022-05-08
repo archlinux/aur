@@ -36,10 +36,10 @@ sha512sums_aarch64=('2cd040b43f1e76b46d4d25be5ddc76805dc6e64016ad676c6281f44ce65
 
 package() {
     cd "${srcdir}"
-    install -Dm755 sslocal "${pkgdir}/usr/bin/sslocal-rust"
-    install -Dm755 ssserver "${pkgdir}/usr/bin/ssserver-rust"
-    install -Dm755 ssurl "${pkgdir}/usr/bin/ssurl-rust"
-    install -Dm755 ssmanager "${pkgdir}/usr/bin/ssmanager-rust"
+    install -Dm755 sslocal "${pkgdir}/usr/bin/sslocal"
+    install -Dm755 ssserver "${pkgdir}/usr/bin/ssserver"
+    install -Dm755 ssurl "${pkgdir}/usr/bin/ssurl"
+    install -Dm755 ssmanager "${pkgdir}/usr/bin/ssmanager"
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 config.json "${pkgdir}/etc/shadowsocks/config_rust.json.example"
