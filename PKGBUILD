@@ -1,7 +1,7 @@
 # MAINTAINER: haagch <christoph.haag@collabora.com>
 
 pkgname=basalt-monado-git
-pkgver=r488.2f9e054
+pkgver=r430.b379a7c
 pkgrel=1
 pkgdesc="Visual-Inertial Mapping with Non-Linear Factor Recovery"
 arch=('i686' 'x86_64')
