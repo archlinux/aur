@@ -2,7 +2,7 @@
 
 pkgname='python-web3'
 _pkgname=${pkgname#python-}
-pkgver=5.28.0
+pkgver=5.29.0
 pkgrel=1
 pkgdesc="A Python library for interacting with Ethereum, inspired by web3.js"
 arch=('any')
@@ -14,7 +14,7 @@ makedepends=('python-setuptools')
 url="https://github.com/ethereum/$_pkgname"
 license=('GPL3')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('15209f1da8b99f85dadaa10f1117a8ec0624fc04426c62d8fe2d126bf0498b6e')
+sha256sums=('a78acc0f0150013755398ae185c8c7063d9db0777aa09733de22242a746bd30c')
 
 build() {
   cd $_pkgname-$pkgver
