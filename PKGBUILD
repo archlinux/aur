@@ -1,18 +1,29 @@
-# Maintainer: Olivier Le Moal <mail at olivierlemoal dot fr>
+# Maintainer: Nikita Ermakov <sh1r4s3 at mail dot si-head dot nl>
+# Previous maintainer: Olivier Le Moal <mail at olivierlemoal dot fr>
 
 pkgname=dirb
 pkgver=2.22
 _name=dirb222
-pkgrel=1
+pkgrel=2
 pkgdesc="DIRB is a web content scanner, brute forceing for hidden files"
 url="http://dirb.sourceforge.net/"
 arch=('i686' 'x86_64')
 license=("GPL2")
 depends=('curl')
-source=("http://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgver}/${_name}.tar.gz")
-sha512sums=('57305160b11be9d48b44ece5848a102ab7a493a7ac30a44c31339fd7ca659866521ba621dc0639dc28bf21c3b5315390b934441590dac7d5b463e68df4b80b81')
-build () {
+source=(
+	"http://sourceforge.net/projects/${pkgname}/files/${pkgname}/${pkgver}/${_name}.tar.gz"
+	"GCC-now-defaults-to-fno-common.-Use-the-common-modul.patch"
+)
+sha512sums=(
+	'57305160b11be9d48b44ece5848a102ab7a493a7ac30a44c31339fd7ca659866521ba621dc0639dc28bf21c3b5315390b934441590dac7d5b463e68df4b80b81'
+	'76b4463f4bb7d3baae5c1d0ea6137e44c0840d1e60028283673ac03ea2f644e81a7c81627bd2eb69c86e75e52515c3d012bc1fff1a90798acd6839ea565370b5'
+)
+prepare() {
 	chmod -R 750 "${srcdir}"
+	cd "${srcdir}/${_name}"
+	patch -p1 < "${srcdir}/GCC-now-defaults-to-fno-common.-Use-the-common-modul.patch"
+}
+build () {
 	cd "${srcdir}/${_name}"
 	./configure --prefix=/usr
 	make
