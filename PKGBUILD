@@ -1,7 +1,7 @@
 # Maintainer: Buce <dmbuce@gmail.com>
 
 pkgname=i3b
-pkgver=0.r65.g853be23
+pkgver=0.r73.g51d1912
 pkgver() {
   cd "$srcdir/$pkgname"
   if ! git describe --tags 2>/dev/null; then
@@ -30,6 +30,9 @@ depends=(
   rofi
   rofi-blezz
   sed
+
+  # i3blocks-monit
+  monit
 )
 makedepends=('git')
 provides=()
