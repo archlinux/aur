@@ -8,6 +8,7 @@ arch=('any')
 url="https://github.com/ZingyTomato/Harmony-Music"
 license=('GPL')
 depends=('mpv' 'yt-dlp' 'python-requests' 'python-pip')
+conflicts=('youtube-dl')
 source=("${pkgname}::https://github.com/ZingyTomato/Harmony-Music/releases/download/v${pkgver}/harmony")
 sha256sums=('6393ceaf04d76844d5b7a4198b01e4f294aa9fde39768acb6b624226012b96da')
 
