@@ -1,0 +1,23 @@
+pkgbase = trac-svn
+	pkgdesc = Enhanced wiki and issue tracking system for software development projects, SVN version
+	pkgver = 1.5.4.r17595
+	pkgrel = 1
+	url = https://trac.edgewall.org/
+	arch = any
+	license = BSD
+	makedepends = subversion
+	makedepends = python-babel
+	depends = python
+	depends = python-jinja
+	depends = python-setuptools
+	optdepends = python-psycopg2: PostgreSQL database support
+	optdepends = python-pygments: Syntax highlighting
+	optdepends = python-docutils: reStructuredText support
+	optdepends = python-babel: localization support
+	optdepends = python-pytz: complete list of time zones
+	provides = trac
+	conflicts = trac
+	source = trac::svn+https://svn.edgewall.org/repos/trac/trunk/
+	sha256sums = SKIP
+
+pkgname = trac-svn
