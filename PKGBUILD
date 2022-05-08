@@ -4,7 +4,7 @@
 # Contributor: Ivan Sichmann Freitas <ivansichfreitas@gmail.com>
 
 pkgname=vit-git
-pkgver=r676.df39beb
+pkgver=r710.7a05bc2
 pkgrel=1
 pkgdesc="Visual Interactive Taskwarrior full-screen terminal interface (GIT version)"
 arch=('any')
@@ -13,9 +13,7 @@ license=('MIT')
 conflicts=('vit')
 provides=('vit')
 depends=('python'
-         'python-pytz'
          'python-tasklib'
-         'python-tzlocal'
          'python-urwid'
          'task')
 makedepends=('git'
