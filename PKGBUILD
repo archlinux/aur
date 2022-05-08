@@ -1,16 +1,16 @@
 # Maintainer: Aloxaf <aloxafx@gmail.com>
 
 pkgname=realesrgan-ncnn-vulkan-bin
-pkgver=0.2.3.0
+pkgver=0.2.5.0
 pkgrel=1
-_release_date=20211212
+_release_date=20220424
 pkgdesc="Real-ESRGAN aims at developing Practical Algorithms for General Image Restoration"
 arch=("x86_64")
 depends=("vulkan-icd-loader" "gcc-libs")
 url="https://github.com/xinntao/Real-ESRGAN"
 license=("BSD-3")
 source=("https://github.com/xinntao/Real-ESRGAN/releases/download/v${pkgver}/realesrgan-ncnn-vulkan-${_release_date}-ubuntu.zip")
-sha256sums=("9e4b78aa0d7796bbdab06ac50f7a424329920a4ea039655465aeed4cbff4a945")
+sha256sums=("e5aa6eb131234b87c0c51f82b89390f5e3e642b7b70f2b9bbe95b6a285a40c96")
 
 package() {
     cd $srcdir

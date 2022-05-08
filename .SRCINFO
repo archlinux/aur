@@ -1,13 +1,13 @@
 pkgbase = realesrgan-ncnn-vulkan-bin
 	pkgdesc = Real-ESRGAN aims at developing Practical Algorithms for General Image Restoration
-	pkgver = 0.2.3.0
+	pkgver = 0.2.5.0
 	pkgrel = 1
 	url = https://github.com/xinntao/Real-ESRGAN
 	arch = x86_64
 	license = BSD-3
 	depends = vulkan-icd-loader
 	depends = gcc-libs
-	source = https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.3.0/realesrgan-ncnn-vulkan-20211212-ubuntu.zip
-	sha256sums = 9e4b78aa0d7796bbdab06ac50f7a424329920a4ea039655465aeed4cbff4a945
+	source = https://github.com/xinntao/Real-ESRGAN/releases/download/v0.2.5.0/realesrgan-ncnn-vulkan-20220424-ubuntu.zip
+	sha256sums = e5aa6eb131234b87c0c51f82b89390f5e3e642b7b70f2b9bbe95b6a285a40c96
 
 pkgname = realesrgan-ncnn-vulkan-bin
