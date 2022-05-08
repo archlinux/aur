@@ -40,6 +40,7 @@ package() {
     install -Dm755 ssserver "${pkgdir}/usr/bin/ssserver"
     install -Dm755 ssurl "${pkgdir}/usr/bin/ssurl"
     install -Dm755 ssmanager "${pkgdir}/usr/bin/ssmanager"
+    install -Dm755 ssservice "${pkgdir}/usr/bin/ssservice"
 
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 config.json "${pkgdir}/etc/shadowsocks/config_rust.json.example"
