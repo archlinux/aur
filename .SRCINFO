@@ -1,13 +1,13 @@
 pkgbase = docx-you-want
 	pkgdesc = An unusual PDF-to-DOCX converter
-	pkgver = 0.1.1
+	pkgver = 0.1.2
 	pkgrel = 1
 	url = https://github.com/MikeWalrus/docx-you-want
 	arch = x86_64
 	license = GPL3
 	makedepends = cargo
 	depends = inkscape
-	source = docx-you-want-0.1.1.tar.gz::https://github.com/MikeWalrus/docx-you-want/archive/v0.1.1.tar.gz
-	sha256sums = 82ba9ce977f0e1d44b2619c2aac0901d61b3f6ceb217a4dc6f0cc961e3d84ef2
+	source = docx-you-want-0.1.2.tar.gz::https://github.com/MikeWalrus/docx-you-want/archive/v0.1.2.tar.gz
+	sha256sums = 3ecb3ddcd6c5f64a5c23e21a25ec6f002544665ea15dbcd7c6c050e8ad8d8a5a
 
 pkgname = docx-you-want
