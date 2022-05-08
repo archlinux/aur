@@ -1,0 +1,12 @@
+pkgbase = guacamole-auth-header-bin
+	pkgdesc = The HTTP header authentication extension for Guacamole Client
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://guacamole.apache.org/
+	arch = any
+	license = GPL3
+	depends = guacamole-client
+	source = https://archive.apache.org/dist/guacamole/1.4.0/binary/guacamole-auth-header-1.4.0.tar.gz
+	md5sums = 8794b9e4291a4fedf54590659a07f2f8
+
+pkgname = guacamole-auth-header-bin
