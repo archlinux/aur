@@ -1,6 +1,6 @@
 # Maintainer: <abishekj274@gmail.com>
 pkgname=saladbind-git
-pkgver=v1.7.7.r2.g032d272
+pkgver=1.7.7.r3.gb8870b1
 pkgrel=1
 pkgdesc='A tool for Salad to customize your miner [git version]'
 arch=('x86_64')
@@ -18,7 +18,7 @@ _gitname="SaladBind"
 
 pkgver(){
 	cd ${srcdir}/${_gitname}
-	git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+	git describe --long --tags | sed 's/^v-//;s/\([^-]*-g\)/r\1/;s/-/./g' | sed 's/v//'
 }
 
 build(){
