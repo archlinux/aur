@@ -3,3 +3,5 @@
 !.SRCINFO
 !.gitignore
 !greetd.pam
+!*.patch
+!run

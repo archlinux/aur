@@ -4,15 +4,19 @@
 
 pkgname=greetd
 pkgver=0.8.0
-pkgrel=1
-pkgdesc="Generic greeter daemon"
+pkgrel=2
+pkgdesc="Generic greeter daemon, packaged for artix-runit"
 arch=(x86_64)
 url="https://git.sr.ht/~kennylevinsen/greetd"
 license=(GPL3)
 source=("https://git.sr.ht/~kennylevinsen/greetd/archive/$pkgver.tar.gz"
-        'greetd.pam')
+        'greetd.pam'
+        'change-default-vt.patch'
+        'run')
 sha256sums=('47a73709df60f04b63fc50cfc409e47a451a9620777638f527b9d9333256035f'
-            '993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92')
+            '993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92'
+            'cad9073f77421e21752806ae74dbbc4c3ccf30978e196b6a1ae07382e4a7caa8'
+            'fd0b5b517874c135a9dbce1cbc132ea9386d100b477b4dcf111f44d997b9bdc3')
 depends=(pam)
 makedepends=(git rust scdoc)
 optdepends=(
@@ -24,6 +28,11 @@ backup=(
   'etc/greetd/config.toml'
   'etc/pam.d/greetd'
 )
+
+prepare() {
+    cd greetd-$pkgver
+    patch < ../change-default-vt.patch
+}
 
 build() {
   cd greetd-$pkgver
@@ -40,6 +49,8 @@ package() {
     "$pkgdir/usr/bin/greetd"
   install -Dm755 "$srcdir/greetd-$pkgver/target/release/agreety" \
     "$pkgdir/usr/bin/agreety"
+  install -Dm755 "run" \
+      "$pkgdir/etc/runit/sv/greetd/run"
 
   (
     cd greetd-$pkgver/man
@@ -61,4 +72,5 @@ package() {
 
   install -Dm644 "$srcdir/greetd-$pkgver/config.toml" \
     "$pkgdir/etc/greetd/config.toml"
+
 }
