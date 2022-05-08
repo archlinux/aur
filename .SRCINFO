@@ -8,8 +8,7 @@ pkgbase = libcsa-git
 	license = GPL3
 	makedepends = git
 	depends = glibc
-	source = libcsa-git::git://github.com/sakov/csa-c.git
+	source = libcsa-git::git+https://github.com/sakov/csa-c.git
 	md5sums = SKIP
 
 pkgname = libcsa-git
-

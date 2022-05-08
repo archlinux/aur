@@ -8,7 +8,7 @@ url="https://github.com/sakov/csa-c"
 license=('GPL3')
 depends=('glibc')
 makedepends=('git')
-source=($pkgname::"git://github.com/sakov/csa-c.git")
+source=($pkgname::"git+https://github.com/sakov/csa-c.git")
 md5sums=('SKIP')
 
 pkgver() {
