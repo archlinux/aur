@@ -1,6 +1,6 @@
 pkgbase = gdm-settings
 	pkgdesc = A settings app for Gnome's Login Manager (GDM)
-	pkgver = 0.5.2
+	pkgver = 0.5.3
 	pkgrel = 1
 	url = https://github.com/realmazharhussain/gdm-settings
 	arch = any
@@ -13,7 +13,7 @@ pkgbase = gdm-settings
 	depends = glib2
 	depends = python-gobject
 	depends = gettext
-	source = gdm-settings-0.5.2.tar.gz::https://github.com/realmazharhussain/gdm-settings/archive/refs/tags/v0.5.2.tar.gz
-	md5sums = abc04433b776833f226b25558c1c3f4c
+	source = gdm-settings-0.5.3.tar.gz::https://github.com/realmazharhussain/gdm-settings/archive/refs/tags/v0.5.3.tar.gz
+	md5sums = 5a4e6445b0a8d12513ce311720255047
 
 pkgname = gdm-settings

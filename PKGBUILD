@@ -1,6 +1,6 @@
 # Maintainer: Mazhar Hussain <mmazharhussainkgb1145@gmail.com>
 pkgname=gdm-settings
-__pkgver='0.5.2'
+__pkgver='0.5.3'
 pkgver=${__pkgver/-/+}
 pkgrel=1
 pkgdesc="A settings app for Gnome's Login Manager (GDM)"
@@ -12,7 +12,7 @@ makedepends=('meson' 'blueprint-compiler-git' 'gobject-introspection')
 checkdepends=('appstream-glib')
 backup=()
 source=("${pkgname}-${__pkgver}.tar.gz"::"$url/archive/refs/tags/v${__pkgver}.tar.gz")
-md5sums=('abc04433b776833f226b25558c1c3f4c')
+md5sums=('5a4e6445b0a8d12513ce311720255047')
 
 prepare() {
   cd "$srcdir/$pkgname-${__pkgver}"
