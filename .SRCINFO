@@ -1,0 +1,12 @@
+pkgbase = guacamole-auth-duo-bin
+	pkgdesc = The Duo authentication extension for Guacamole Client
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://guacamole.apache.org/
+	arch = any
+	license = GPL3
+	depends = guacamole-client
+	source = https://archive.apache.org/dist/guacamole/1.4.0/binary/guacamole-auth-duo-1.4.0.tar.gz
+	md5sums = 62f708d4d7a1e8e8fad7a6caf4525b76
+
+pkgname = guacamole-auth-duo-bin
