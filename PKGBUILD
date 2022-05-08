@@ -1,9 +1,9 @@
 # Maintainer: "Amhairghin" Oscar Garcia Amor (https://ogarcia.me)
 
-_commit='f4523b51af0787795973b403b978ff74737a47ef'
+_commit='6f578aa8944cd27b4d5337d20cfb7b5362b926ff'
 pkgname=alps
-pkgver=2022.03.01
-pkgrel=4
+pkgver=2022.07.05
+pkgrel=1
 pkgdesc='A simple and extensible webmail'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://git.sr.ht/~migadu/alps'
@@ -18,18 +18,21 @@ source=("${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~migadu/${pkgname}/archi
         "${pkgname}-user.service"
         "${pkgname}-plugins-path.patch"
         "${pkgname}-themes-path.patch"
+        "${pkgname}-fix-156.patch"
         "${pkgname}-fix-160.patch")
-b2sums=('ad632b1978b03b6ce491b5e6eb47dad39a4d4d33b317de8efd660f2c56bbe175b59822fa8f29ae3abeaf687122b4499fa10f53e7bcc989fe09d257f4cbea8653'
+b2sums=('77273ae7d0401b0adfee61014685b0b24da1cab6c6957e4ed887192f38e1faf497d95173d97595478f72d1eb9de0771943fbd83d217e253cdbe289698792a0dc'
         '8c9109649da6b030cd1c7ff32a5db1034391a8858593b649e953bd074b7329181c52575403d22b59113760423d15e0fb3cb3e8cdf5feb8415efe5aba936ae0c5'
         '56f6f6439e537901c953a840ff08c70c9acf63b029e3298e612fb75c152d198f4d1535327b911790c01ca74b5ef5bba2a98c2fb4f14180727a457ea5b846a74e'
         'a9ef4a29b26f950f3a1bd9f262a3c23bb731b79d15ff0cee979692b0b99cb0b678ed54da7fe36449ca146aa7e1da7ba7302fb7afc4620ef1a07a119ba789464c'
         'b3bc983fa8350e36ff176e882bf7b67cb5ba4c0863e70c9cb5c2bd78a0ee12504ae997dec44cb008e68ead14d08dd30ea33719f0a107b170d6906ee4d69f8e5d'
         'f34d00a82db978ade7c92ca13109e73be25fdff5046e2e9f279c09733a7ce7a5e11b368ddd76234d154b9af0fd917901fda2c2b33d3f41342b3a5f6d8e6afb21'
+        'd4120519c80efb2ae4ba486aaa02f1fa78520c004627ec86a816ba05bf8080ea7ea254337a54084eeab83f262a0887c2f83fee817a8df83d471bfd9853bb8264'
         '225f9d365c6c44cb4c0526229f27984d9bc95010b38131a1a26d96b5a49370822d4a976d3a552d4009d1612293da035948dd4f7445e36c0ade987a5dd3af22c8')
 
 prepare(){
   patch -d "${pkgname}-${_commit}" -p1 <"${pkgname}-plugins-path".patch
   patch -d "${pkgname}-${_commit}" -p1 <"${pkgname}-themes-path".patch
+  patch -d "${pkgname}-${_commit}" -p1 <"${pkgname}-fix-156".patch
   patch -d "${pkgname}-${_commit}" -p1 <"${pkgname}-fix-160".patch
 }
 
