@@ -1,6 +1,6 @@
 pkgbase = blender-wayland-git
 	pkgdesc = A fully integrated 3D graphics creation suite (development)
-	pkgver = 3.1.r111319.g5457b663011
+	pkgver = 3.3.r114671.g2a2261d7e19
 	pkgrel = 1
 	url = https://blender.org/
 	arch = i686
@@ -47,14 +47,12 @@ pkgbase = blender-wayland-git
 	source = blender-dev-tools.git::git://git.blender.org/blender-dev-tools.git
 	source = usd_python.patch
 	source = embree.patch
-	source = openexr3.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = 333b6fd864d55da2077bc85c55af1a27d4aee9764a1a839df26873a9f19b8703
-	sha256sums = ab353b7a9fdb5e9a87fefdade6915f44660299b67446735a9720833aa45f6be8
-	sha256sums = 5297dc61cc4edcc1d5bad3474ab882264b69d68036cebbd0f2600d9fe21d5a1b
+	sha256sums = d587135fd9b815d60e8b7f48976aa835472922fc8f64c256dc397bfcd3c2642a
 
 pkgname = blender-wayland-git
