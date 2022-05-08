@@ -36,6 +36,7 @@ build() {
 	./MakeAll
 }
 
+# This function tracks the CreateDebFile script from upstream.
 package() {
 	SOURCE_DIRECTORY="${srcdir}/usbdm-eclipse-makefiles-build"
 
@@ -64,9 +65,6 @@ package() {
 
 	# Binary files
 	USBDM_BINDIR="${DUMMY_ROOT}/usr/bin"
-
-	# Control files
-	USBDM_CONTROL_DIR="${DUMMY_ROOT}/DEBIAN"
 
 	# Icon files
 	PIXMAP_DIR="${DUMMY_ROOT}/usr/share/pixmaps"
@@ -115,7 +113,7 @@ package() {
 	${RM} ${USBDM_BINDIR}/CopyFlash
 	${RM} ${USBDM_BINDIR}/*TestImage
 	${RM} ${USBDM_BINDIR}/*Example*   
-	${RM} ${USBDM_BINDIR}/*-debug
+	#${RM} ${USBDM_BINDIR}/*-debug
 	${RM} ${USBDM_BINDIR}/Test*
 	chmod 755  ${USBDM_BINDIR}/*
 
