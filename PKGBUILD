@@ -1,10 +1,11 @@
+# shellcheck disable=SC2034,SC2148,SC2154,SC2164
 # Maintainer: Alessandro Cerruti
 # Contributor: Alessandro Cerruti
 
 _pkgbase=i3bard
 pkgname=i3bard-git
-pkgver=r16.1b9dfb4
-pkgrel=2
+pkgver=r27.4911002
+pkgrel=1
 pkgdesc='async i3blocks clone that can synchronize multiple instances'
 arch=('any')
 url='https://gitlab.com/chrooti/i3bard'
