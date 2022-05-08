@@ -3,14 +3,13 @@
 # Contributor: otaj
 pkgname=drata-agent
 pkgver=3.1.0
-pkgrel=7
+pkgrel=8
 pkgdesc="The Drata Agent is a light-weight tray-application that runs in the background, reporting important read-only data to Drata about your machine’s state for compliance tracking."
 arch=('x86_64')
 url="https://github.com/drata/the-agent"
-license=('unknown')
+license=("custom:${pkgdir}/usr/share/licenses/${pkgname}/LICENSE")
 depends=('at-spi2-core' 'desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'nss' 'util-linux-libs' 'xdg-utils')
-makedepends=('binutils')
-optdepends=('libappindicator-gtk3')
+optdepends=('libappindicator-gtk3: systray indicator')
 options=('!strip' '!emptydirs')
 install=${pkgname}.install
 validpgpkeys=('2DCE07BE62610800B1E4BEDE955D29B1F039BC43')
@@ -21,14 +20,11 @@ package(){
   cd "${srcdir}"
 
   # Extract debian package
-  ar xf ${pkgname}-${pkgver}.deb
+  ar xf "${pkgname}"-"${pkgver}".deb
 
   # Extract data to pkgdir
   tar xf data.tar.xz -C "${pkgdir}/"
 
   # Install license file
-  license_file="${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  if [[ ! -f "$license_file" ]]; then
-    install -D -m644 "${pkgdir}/opt/Drata Agent/LICENSES.chromium.html" "$license_file"
-  fi
+  # install -Dm644 "${pkgdir}/opt/Drata Agent/LICENSES.chromium.html" "$pkgdir"/usr/share/licenses/"$pkgname"/LICENSE
 }
