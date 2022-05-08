@@ -9,6 +9,6 @@ pkgbase = nodejs-live-server
 	depends = npm
 	noextract = live-server-1.2.2.tgz
 	source = https://registry.npmjs.org/live-server/-/live-server-1.2.2.tgz
-	sha256sums = b55db556232443fbbafa67adb57f06e1009e2d7a49e512fecd03c8639f97cd33
+	sha256sums = 0b2416905687b27ecf49b994485adce24080b0412f07f8c7b382b3723dfa40bc
 
 pkgname = nodejs-live-server

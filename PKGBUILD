@@ -12,7 +12,7 @@ license=('MIT')
 depends=('nodejs' 'npm')
 source=("https://registry.npmjs.org/${_npmname}/-/${_npmname}-${_npmver}.tgz")
 noextract=("${_npmname}-${_npmver}.tgz")
-sha256sums=('b55db556232443fbbafa67adb57f06e1009e2d7a49e512fecd03c8639f97cd33')
+sha256sums=('0b2416905687b27ecf49b994485adce24080b0412f07f8c7b382b3723dfa40bc')
 
 package() {
     cd "${srcdir}"
