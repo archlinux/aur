@@ -1,0 +1,12 @@
+pkgbase = jupyterlab-language-pack-zh-cn
+	pkgdesc = Simplified Chinese(简体中文) language pack for JupyterLab
+	pkgver = 3.3.post4
+	pkgrel = 1
+	url = https://github.com/jupyterlab/language-packs/tree/master/language-packs/jupyterlab-language-pack-zh-CN
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	source = https://files.pythonhosted.org/packages/source/j/jupyterlab-language-pack-zh-CN/jupyterlab-language-pack-zh-CN-3.3.post4.tar.gz
+	sha256sums = 0e13fad7764f3ae9216e746984e21c7253c8b40f81e0c42c2ddaf48e39f0fed8
+
+pkgname = jupyterlab-language-pack-zh-cn
