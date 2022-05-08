@@ -1,7 +1,7 @@
 # Maintainer: Thomas Hebb <tommyhebb@gmail.com>
 pkgname=usbdm-git
 pkgver=1657.d74be9b5
-pkgrel=1
+pkgrel=2
 pkgdesc="Debugger interface for Freescale RS08,HCS08,HCS12,Coldfire and ARM-Kinetis Devices."
 arch=("x86_64")
 url="http://usbdm.sourceforge.net/"
