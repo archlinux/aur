@@ -1,0 +1,22 @@
+pkgbase = yafu-git
+	pkgdesc = Automated integer factorization.
+	pkgver = r468.ca48c65
+	pkgrel = 1
+	url = https://github.com/bbuhrow/yafu
+	arch = x86_64
+	license = MIT
+	depends = gmp
+	depends = gmp-ecm
+	provides = yafu
+	provides = ysieve
+	conflicts = yafu
+	source = git+https://github.com/bbuhrow/yafu.git
+	source = git+https://github.com/bbuhrow/ytools.git
+	source = git+https://github.com/bbuhrow/ysieve.git
+	source = msieve::svn+svn://svn.code.sf.net/p/msieve/code/trunk
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = yafu-git
