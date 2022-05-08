@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=tree-game
+GenericName=tree-game
+Comment=Powder toy like sandbox game focused on nature
+Exec=tree-game
+Terminal=false
+Type=Application
+Categories=Game;
