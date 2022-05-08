@@ -1,21 +1,19 @@
-# Maintainer : Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
+# Maintainer : Legacy Installer <contact [dot] legacyinstaller [at] gmail [dot] com>
+# Contributor: Özgür Sarıer <echo b3pndXJzYXJpZXIxMDExNjAxMTE1QGdtYWlsLmNvbQo= | base64 -d>
 # Contributor: Auguste Pop <auguste [at] gmail [dot] com>
-
-_build_book=0 # 0=Uses defauld book.bin
-	      # 1=Builds book.bin from book.pgn (Recommended if big book file not bothers you.)
 
 pkgname=crafty
 pkgver=25.2
-pkgrel=3
+pkgrel=4
 makedepends=('gzip')
 pkgdesc="A free, open-source computer chess program developed by Dr. Robert M. (Bob) Hyatt"
 arch=('i686' 'x86_64')
 url="http://www.craftychess.com/"
 license=('custom')
-source=("http://www.craftychess.com/downloads/source/$pkgname-$pkgver.zip"
-	"http://www.craftychess.com/downloads/book/start.pgn.gz"
-	"http://www.craftychess.com/downloads/book/startc.pgn.gz"
-	"http://www.craftychess.com/downloads/book/book.`[[ "$_build_book" = '0' ]] && echo bin || echo pgn.gz`"
+source=("https://web.archive.org/web/20210304095819/https://www.craftychess.com/downloads/source/$pkgname-$pkgver.zip"
+	"https://web.archive.org/web/20170315111827/https://www.craftychess.com/downloads/book/start.pgn.gz"
+	"https://web.archive.org/web/20170315114413/https://www.craftychess.com/downloads/book/startc.pgn.gz"
+	"https://web.archive.org/web/20170315073701/https://www.craftychess.com/downloads/book/book.bin"
 	"copyright"
 	"crafty.6"
 	"crafty.doc.v18.html"
@@ -29,7 +27,7 @@ source=("http://www.craftychess.com/downloads/source/$pkgname-$pkgver.zip"
 md5sums=('d8ad87d9b0fc39a437595203d7b302fc'
 	 '880279c223dc34164837a351faafe2f0'
 	 '7a53d5f09d2baa5e7f0df4ee81961cfb'
-	 "`[[ "$_build_book" = '0' ]] && echo f8f93189c64324b1959a489da822438e || echo 05efad71289b2d328da5110df4a19f85`"
+	 'f8f93189c64324b1959a489da822438e'
 	 '438cec9f32fb79f58822f97cf64e7afb' 
 	 '8f9c577aa6e99bb3e5ada83d1868a8ad' 
 	 '584ef65843016328d67a7c9df4007e87' 
@@ -59,10 +57,6 @@ build() {
 	# create crafty's rc-files within the BUILD directory
 	homeorj=$HOME; HOME=.
 	msg "Creating bookfiles, this might take a moment..."
-	if [[ "$_build_book" = '1' ]]; then
-		msg "Creating book.bin..."
-		./crafty "book create book.pgn 60" quit
-	fi
 	# create books.bin (for crafty's opening strategy)
 	msg "Creating books.bin..."
 	./crafty "books create start.pgn 60" quit
