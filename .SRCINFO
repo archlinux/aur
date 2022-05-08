@@ -1,7 +1,7 @@
 pkgbase = cpu-x
 	pkgdesc = A Free software that gathers information on CPU, motherboard and more
-	pkgver = 4.3.0
-	pkgrel = 4
+	pkgver = 4.3.1
+	pkgrel = 1
 	url = http://X0rg.github.io/CPU-X/
 	arch = i686
 	arch = x86_64
@@ -18,7 +18,7 @@ pkgbase = cpu-x
 	depends = opencl-icd-loader
 	depends = procps-ng
 	optdepends = opencl-driver: packaged opencl driver
-	source = cpu-x-4.3.0.tar.gz::https://github.com/X0rg/CPU-X/archive/v4.3.0.tar.gz
-	sha512sums = 0edd706dae2ab84e4fa07ea5dc6798132cd6155219acdc20fd32a3a98ca6f17606496a6f578a53b93d5cf2e27f18787ee50329651cf9782d1dedd347818f8811
+	source = cpu-x-4.3.1.tar.gz::https://github.com/X0rg/CPU-X/archive/v4.3.1.tar.gz
+	sha512sums = 43e7bc4b82a15545e4c2f69f598a94706ef2c5f5594ff50763f71722d1b98e6dd56e907a4f35917500debf11522c5908dbebf51f515fe5a51af7282254210bc1
 
 pkgname = cpu-x
