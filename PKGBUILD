@@ -1,18 +1,19 @@
 # Maintainer: Yellow <yellow@example.com>
+# Maintainer: Lenny McLennington <lennymclennington@protonmail.com>
+# Maintainer: Sefa Eyeoglu <contact@scrumplex.net>
 # Contributor: Elijah Gregg <lovetocode999@tilde.team>
-# Contributor: Lenny McLennington <lennymclennington@protonmail.com>
 # Contributor: Miko <mikoxyzzz@gmail.com>
 # Contributor: Cheru Berhanu <aur attt cheru doot dev>
 # Contributor: dada513 <dada513@protonmail.com>
 
 pkgname=polymc
-pkgver=1.2.1
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="Minecraft launcher with ability to manage multiple instances."
 arch=('i686' 'x86_64')
 url="https://github.com/PolyMC/PolyMC"
 license=('GPL3')
-depends=('java-runtime' 'libgl' 'qt5-base' 'zlib' 'qt5-imageformats' 'qt5-svg' 'hicolor-icon-theme')
+depends=('java-runtime' 'libgl' 'qt5-base' 'zlib' 'qt5-imageformats' 'qt5-svg' 'hicolor-icon-theme' 'quazip-qt5')
 conflicts=('polymc')
 makedepends=('cmake' 'git' 'java-environment')
 optdepends=('glfw: to use system GLFW libraries'
@@ -22,7 +23,7 @@ optdepends=('glfw: to use system GLFW libraries'
 )
 source=("https://github.com/PolyMC/PolyMC/releases/download/$pkgver/PolyMC-$pkgver.tar.gz")
 
-sha256sums=('cec7b0175bd0dc3ff2a43e822d1218772e0833332026ae681c81ecc5c51bf608')
+sha256sums=('4ce46406040b5315a598e412feecb70e5248cfc07fac9e3086597af12c102137')
 
 build() {
   cd "${srcdir}/PolyMC-$pkgver"
@@ -33,7 +34,7 @@ build() {
     -DCMAKE_INSTALL_PREFIX="/usr" \
     -DLauncher_BUILD_PLATFORM="archlinux" \
     -DLauncher_APP_BINARY_NAME="${pkgname}" \
-    -DENABLE_LTO=ON \
+    -Wno-dev \
     ..
   cmake --build .
 }
