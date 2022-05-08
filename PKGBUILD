@@ -14,13 +14,13 @@ source=(
   "https://raw.githubusercontent.com/segfaultdev/tree/master/LICENSE"
 )
 sha256sums=(
-  'a63215504502002f442bcd7281bcd4f88fdbf1a1065e667d676c38c56eb8edef '
+  'a63215504502002f442bcd7281bcd4f88fdbf1a1065e667d676c38c56eb8edef'
   '9c6638d0971105517fbb244d7c00220fb34786597d6107fb6172b11008a1a018'
   '78f3201cff6e5a760db10ce3d7456f0f0a9c130fe132095d90f3eb16cb6296ea'
 )
 
 build() {
-    bash build_quick.sh
+    bash "${srcdir}/build_quick.sh"
 }
 
 package() {
