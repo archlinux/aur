@@ -2,13 +2,13 @@
 
 pkgname=keepassxc-cryptomator
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Store Cryptomator vault passwords in KeePassXC"
 arch=('x86_64')
 url="https://plugin.purejava.org/"
 license=('MIT')
 depends=('cryptomator' 'keepassxc')
-makedepends=('java-environment=17' 'maven')
+makedepends=('java-environment>=17' 'maven')
 source=("keepassxc-cryptomator-${pkgver}.tar.gz::https://github.com/purejava/keepassxc-cryptomator/archive/refs/tags/${pkgver}.tar.gz"
         "keepassxc-cryptomator-${pkgver}.tar.gz.sig::https://github.com/purejava/keepassxc-cryptomator/releases/download/${pkgver}/keepassxc-cryptomator-${pkgver}.tar.gz.sig")
 sha256sums=('9754d152f1c1559911e8d5649b4a51ab7c11f499f3bdb72fee9709c64a667719'
@@ -29,10 +29,10 @@ prepare() {
     local _COL_DEFAULT_='\e[0m'
   fi
 
-  if ! archlinux-java status | grep default | grep 17 ; then
-    echo -e "\n  ${_COL_BBLUE_}->${_COL_DEFAULT_} ${_COL_BRED_}Configuration hint:${_COL_DEFAULT_} You don't have a ${_COL_BWHITE_}Java 17 JDK${_COL_DEFAULT_} selected as your Java environment but the following installed on your system:"
-    echo -e "${_COL_BWHITE_}     `archlinux-java status | grep 17`${_COL_DEFAULT_}"
-    echo -e "     Select a Java 17 JDK using ${_COL_LIGHTGREY_}\"sudo archlinux-java set <name from the list above>\"${_COL_DEFAULT_}\n"
+  if ! archlinux-java get | grep -E "17|18" ; then
+    echo -e "\n  ${_COL_BBLUE_}->${_COL_DEFAULT_} ${_COL_BRED_}Configuration hint:${_COL_DEFAULT_} You don't have a ${_COL_BWHITE_}Java 17 or Java 18 JDK${_COL_DEFAULT_} selected as your Java environment but the following installed on your system:"
+    echo -e "${_COL_BWHITE_}`archlinux-java status | sed '1,${/^Available Java environments/d}' | sed 's/^/     /'`${_COL_DEFAULT_}\n"
+    echo -e "     Select a Java 17 JDK or later using ${_COL_LIGHTGREY_}\"sudo archlinux-java set <name from the list above>\"${_COL_DEFAULT_}\n"
     echo -e "     If done so, please re-run the installation.\n"
     return 1
   fi
