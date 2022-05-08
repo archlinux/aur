@@ -6,7 +6,7 @@ pkgver=0.10.1
 pkgrel=1
 pkgdesc="A program to monitor and control your cooling devices"
 arch=('any')
-url="https://gitlab.com/codifryed/coolero"
+url="https://gitlab.com/coolero/coolero"
 license=('GPL3')
 depends=('hicolor-icon-theme' 'polkit' 'python' 'liquidctl' 'pyside6' 'qt6-svg' 'python-apscheduler'
          'python-matplotlib' 'python-numpy' 'python-psutil' 'python-setproctitle' 'python-jeepney'
@@ -16,7 +16,7 @@ checkdepends=('appstream-glib' 'desktop-file-utils')
 optdepends=('nvidia-utils: NVIDIA GPU support')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("https://gitlab.com/codifryed/coolero/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+source=("https://gitlab.com/coolero/coolero/-/archive/$pkgver/$pkgname-$pkgver.tar.gz")
 sha256sums=('09ab33c374720cefa3c8f977dedae6d3fc1a862d5498253ccbda9e2fd9a74958')
 
 build() {
