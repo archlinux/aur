@@ -1,6 +1,6 @@
-# Mainteiner: gigablaster <gigakek [at] protonmail.com>
-# Maintainer: Eric Engestrom <aur [at] engestrom [dot] ch>
-# Maintainer: Kenny Levinsen <aur [at] kl [dot] wtf>
+# Mainteiner: gigablaster <gigakek [at] protonmail [dot] com>
+# Contributor: Eric Engestrom <aur [at] engestrom [dot] ch>
+# Contributor: Kenny Levinsen <aur [at] kl [dot] wtf>
 
 pkgname=greetd
 pkgver=0.8.0
