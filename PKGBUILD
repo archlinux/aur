@@ -1,6 +1,7 @@
+# Maintainer: Alfred Jophy alfredjophy <at> protonmail <dot> com
 # Maintainer: 01189998819991197253 <dev.ben01189998819991197253+aur@gmail.com>
 _npmname=live-server
-_npmver=1.2.1
+_npmver=1.2.2
 pkgname="nodejs-${_npmname}"
 pkgver="${_npmver}"
 pkgrel=1
