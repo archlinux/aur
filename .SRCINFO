@@ -1,6 +1,6 @@
 pkgbase = neomutt-git
 	pkgdesc = A version of mutt with added features - development branch
-	pkgver = 20220415.r12.gd88d7b783
+	pkgver = 20220429.r45.g3c37651f7
 	pkgrel = 1
 	url = http://www.neomutt.org/
 	arch = i686
@@ -11,6 +11,7 @@ pkgbase = neomutt-git
 	makedepends = libxslt
 	makedepends = docbook-xsl
 	makedepends = w3m
+	makedepends = patch
 	depends = glibc
 	depends = gpgme
 	depends = lua53
