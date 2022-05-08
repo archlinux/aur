@@ -1,6 +1,6 @@
 pkgbase = emacs-pgtk-native-comp-git
 	pkgdesc = GNU Emacs. Development master branch.
-	pkgver = 29.0.50.154614
+	pkgver = 29.0.50.155762
 	pkgrel = 1
 	url = http://www.gnu.org/software/emacs/
 	install = emacs-git.install
@@ -46,7 +46,7 @@ pkgbase = emacs-pgtk-native-comp-git
 	replaces = emacs-seq
 	replaces = emacs-nox
 	options = !strip
-	source = emacs-git::git://git.savannah.gnu.org/emacs.git
+	source = emacs-git::git+https://git.savannah.gnu.org/git/emacs.git
 	b2sums = SKIP
 
 pkgname = emacs-pgtk-native-comp-git

@@ -89,7 +89,7 @@ if [[ $CLI == "YES" ]] ; then
 else
   pkgname="emacs-pgtk-native-comp-git"
 fi
-pkgver=29.0.50.155210
+pkgver=29.0.50.156250
 pkgrel=1
 pkgdesc="GNU Emacs. Development master branch."
 arch=('x86_64')
@@ -101,7 +101,8 @@ makedepends=('git')
 provides=('emacs' 'emacs-pretest' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-git' 'emacs-seq' 'emacs-nox')
 conflicts=('emacs' 'emacs-pretest' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-git' 'emacs-seq' 'emacs-nox')
 replaces=('emacs' 'emacs-pretest' 'emacs26-git' 'emacs-27-git' 'emacs28-git' 'emacs-git' 'emacs-seq' 'emacs-nox')
-source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
+#source=("emacs-git::git://git.savannah.gnu.org/emacs.git")
+source=("emacs-git::git+https://git.savannah.gnu.org/git/emacs.git")
 options=(!strip)
 install=emacs-git.install
 b2sums=('SKIP')
@@ -199,7 +200,7 @@ if [[ $GPM == "YES" ]]; then
   fi
 fi
 
-if [[ $DOCS_PDF == "YES" ]]; then
+if [[ $DOCS_PDF == "YES" ]] && [[ ! -d '/usr/local/texlive' ]]; then
   makedepends+=( 'texlive-core' );
 fi
 ################################################################################
@@ -219,17 +220,18 @@ pkgver() {
 prepare() {
   cd "$srcdir/emacs-git"
   [[ -x configure ]] || ( ./autogen.sh git && ./autogen.sh autoconf )
+  mkdir -p "$srcdir/emacs-git/build"
 }
 
 if [[ $CHECK == "YES" ]]; then
 check() {
-  cd "$srcdir/emacs-git"
+  cd "$srcdir/emacs-git/build"
   make check
 }
 fi
 
 build() {
-  cd "$srcdir/emacs-git"
+  cd "$srcdir/emacs-git/build"
 
   local _conf=(
     --prefix=/usr
@@ -238,7 +240,6 @@ build() {
     --localstatedir=/var
     --mandir=/usr/share/man
     --with-gameuser=:games
-    --with-sound=alsa
     --with-modules
     --without-libotf
     --without-m17n-flt
@@ -313,7 +314,7 @@ _conf+=('--program-transform-name=s/\([ec]tags\)/\1.emacs/')
 
 ################################################################################
 
-  ./configure "${_conf[@]}"
+  ../configure "${_conf[@]}"
 
   # Using "make" instead of "make bootstrap" enables incremental
   # compiling. Less time recompiling. Yay! But you may
@@ -332,7 +333,7 @@ _conf+=('--program-transform-name=s/\([ec]tags\)/\1.emacs/')
   # You may need to run this if 'loaddefs.el' files become corrupt.
   #cd "$srcdir/emacs-git/lisp"
   #make autoloads
-  #cd ../
+  #cd ../build
 
   # Optional documentation formats.
   if [[ $DOCS_HTML == "YES" ]]; then
@@ -345,7 +346,7 @@ _conf+=('--program-transform-name=s/\([ec]tags\)/\1.emacs/')
 }
 
 package() {
-  cd "$srcdir/emacs-git"
+  cd "$srcdir/emacs-git/build"
 
   make DESTDIR="$pkgdir/" install
 
