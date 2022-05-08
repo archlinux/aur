@@ -1,7 +1,7 @@
 # Mainained by imper <imperator999mcpe@gmail.com>
 pkgname="privacy-protection-messenger"
 pkgver=1.3
-pkgrel=0
+pkgrel=1
 pkgdesc="Secure messenger backend"
 author="imperzer0"
 branch="master"
