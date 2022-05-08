@@ -1,0 +1,26 @@
+pkgbase = guacamole-client-bin
+	pkgdesc = Apache Guacamole is a clientless remote desktop gateway. It supports standard protocols like VNC, RDP, and SSH. guacamole-client provides the client to be served by your servlet container. Binary prebuilt from Apache.
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://guacamole.apache.org/
+	install = guacamole-client.install
+	arch = any
+	license = GPL3
+	depends = java-runtime
+	depends = java-environment<=19
+	optdepends = tomcat8: open source Java Servlet container
+	optdepends = tomcat9: open source Java Servlet container
+	provides = guacamole-client
+	conflicts = guacamole-client
+	replaces = guacamole-client
+	noextract = guacamole-1.4.0.war
+	backup = etc/guacamole/guacamole.properties
+	backup = etc/guacamole/user-mapping.xml
+	source = https://archive.apache.org/dist/guacamole/1.4.0/binary/guacamole-1.4.0.war
+	source = guacamole.properties
+	source = user-mapping.xml
+	md5sums = 12ac814b223a330425b03937f396203e
+	md5sums = 1f3ec0a32cc3c6b4f7aeb8a3b2e7531b
+	md5sums = c39b825c0ee68a60c42b94ed3d568d64
+
+pkgname = guacamole-client-bin
