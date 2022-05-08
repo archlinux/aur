@@ -20,14 +20,14 @@ sha256sums=(
 )
 
 build() {
-    cd "${srcdir}"
+    cd "${srcdir}/tree-0.10"
     gcc -O1 $(find . -name "*.c") -Llib -Iinclude -lraylib -lGL -lm -lpthread -ldl -lrt -lX11 -o tree
 }
 
 package() {
     # Copy executable and make it runnable
     install -D -m755 \
-        "${srcdir}/tree" \
+        "${srcdir}/tree-0.10/tree" \
         "${pkgdir}/usr/bin/${pkgname}"
     
 
