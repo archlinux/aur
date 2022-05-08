@@ -2,7 +2,7 @@
 pkgname=input-remapper-beta-git
 pkgver=1.5.0.beta.r10.g2d23120
 pkgrel=1
-pkgdesc="A tool to change and program the mapping of your input device buttons."
+pkgdesc="Beta of input-remapper version, here be dragons. Contains unfinished features."
 arch=('any')
 url="https://github.com/sezanzeb/input-remapper/"
 license=('GPL3')
