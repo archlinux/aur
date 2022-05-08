@@ -34,4 +34,3 @@ pkgbase = gnome-vfs
 	sha256sums = 510bf732a7c2cd6a1de71a0dc7c96907d52c82942feaf6a8b0575be95d6ed4b9
 
 pkgname = gnome-vfs
-
