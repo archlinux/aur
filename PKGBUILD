@@ -1,7 +1,7 @@
 pkgname=messages-bin
 _pkgname=Messages-bin
-pkgver=1.0.2
-pkgrel=4
+pkgver=1.0.3
+pkgrel=1
 _pkgrel_x86_64=1
 _pkgrel_armv7h=1
 _pkgrel_aarch64=1
@@ -24,8 +24,9 @@ package() {
     for dir in Messages-linux-*/ ; do mv "${dir}" "$_pkgname" ;done
     cd $_pkgname
     install -dm755 "$pkgdir/opt/Messages"
+    install -dm755 "$pkgdir/usr/share/pixmaps"    
     cp -r ./ "$pkgdir/opt/Messages"
-
+    cp -r "$pkgdir/opt/Messages/resources/app/messages.svg" "$pkgdir/usr/share/pixmaps"  
 
     # Link to binary
     install -dm755 "$pkgdir/usr/bin"
