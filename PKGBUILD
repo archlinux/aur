@@ -7,7 +7,7 @@ _vlcver=3.0.17.4
 # optional fixup version including hyphen
 _vlcfixupver=
 pkgver=${_vlcver}${_vlcfixupver//-/.r}
-pkgrel=5
+pkgrel=6
 pkgdesc='Multi-platform MPEG, VCD/DVD, and DivX player built with luajit for OBS Studio compatibility'
 url='https://www.videolan.org/vlc/'
 arch=('i686' 'x86_64' 'aarch64')
@@ -20,8 +20,8 @@ _libupnpver=1.14
 _libvpxver=1.11
 _protobufver=3.20
 _srtver=1.4.3
-_x264ver=0.164; _libx264ver=164
-_x265ver=3.5; _libx265ver=199
+_x264ver=0.164
+_x265ver=3.5
 depends=(
   'a52dec' 'libdvbpsi' 'libxpm' 'libdca' 'libproxy' 'luajit' 'libidn'
   'libmatroska' 'taglib' 'libmpcdec' 'faad2' 'libmad'
@@ -35,12 +35,12 @@ depends=(
 if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
   depends+=(
     'libplacebo'
-    'libupnp' 'libixml.so' 'libupnp.so'
+    'libupnp'
   )
 else
   depends+=(
     "libplacebo>=$_libplacebover"
-    "libupnp>=$_libupnpver" 'libixml.so' 'libupnp.so'
+    "libupnp>=$_libupnpver"
   )
 fi
 makedepends=(
@@ -64,8 +64,8 @@ if [[ $DISTRIB_ID == 'ManjaroLinux' ]]; then
     'dav1d'
     'libmicrodns'
     'libvpx'
-    'libx264.so'
-    'libx265.so'
+    'x264'
+    'x265'
     'protobuf'
     'srt'
   )
@@ -75,8 +75,8 @@ else
     "dav1d>=$_dav1dver"
     "libmicrodns>=$_libmicrodnsver"
     "libvpx>=$_libvpxver"
-    "libx264.so>=$_libx264ver"
-    "libx265.so>=$_libx265ver"
+    "x264>=$_x264ver"
+    "x265>=$_x265ver"
     "protobuf>=$_protobufver"
     "srt>=$_srtver"
   )
