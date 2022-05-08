@@ -1,6 +1,6 @@
 # Maintainer: sezanzeb proxima@seanzeb.de
 pkgname=input-remapper-beta-git
-pkgver=1.4.2.r10.g2d23120
+pkgver=1.5.0.beta.r10.g2d23120
 pkgrel=1
 pkgdesc="A tool to change and program the mapping of your input device buttons."
 arch=('any')
@@ -19,8 +19,7 @@ _gitname="input-remapper"
 pkgver() {
 	cd "$srcdir"/"$_gitname"
 	( set -o pipefail
-	  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-	  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	  echo 1.5.0-beta$(git describe --tags | grep -Po "\-.+") | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
 	)
 }
 
