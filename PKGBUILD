@@ -13,8 +13,8 @@
 # All my PKGBUILDs are managed at https://github.com/tmn505/AUR
 
 pkgname=ffmpeg3.4
-pkgver=3.4.9
-pkgrel=2
+pkgver=3.4.10
+pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video'
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'armv7h' 'aarch64')
 url='https://ffmpeg.org'
@@ -34,10 +34,11 @@ provides=('libavcodec.so=57' 'libavdevice.so=57' 'libavfilter.so=6' 'libavformat
           'libavresample.so=3' 'libavutil.so=55' 'libpostproc.so=54' 'libswresample.so=2'
           'libswscale.so=4')
 conflicts=('ffmpeg-full3.4' 'ffmpeg-compat-57')
+options=('!lto')
 source=("${url}/releases/ffmpeg-${pkgver}.tar.xz"{,.asc}
         'fs56089.patch')
 validpgpkeys=('FCF986EA15E6E293A5644F10B4322F04D67658D8')
-sha256sums=('496fb4a9c396406e24841f3f3f108a7ae6397d6d1106ac1f953317c4529b1635'
+sha256sums=('aafb865e09f3b79e7cc8f3b2d6569b6a592a7b606b65d08d0a407e52da193f13'
             'SKIP'
             '0bfcd12d1992903f21c146ae56d9ad89b52818cfb2303197ee905347c25a5427')
 
