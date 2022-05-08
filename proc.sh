@@ -6,13 +6,12 @@ if [[ $outDir == '' ]]; then
   exit 1
 fi
 
-for mdInFile in Tutorial*.md; do
+mkdir -p ${outDir}
 
-  mkdir -p ${outDir}
-
+for mdInFile in *.md; do
   htmlOutFile=$(basename ${mdInFile} .md)".html"
   echo "Processing ${mdInFile} -> ${htmlOutFile}"
-cat <<EOF > ${outDir}/${htmlOutFile}
+  cat <<EOF > ${outDir}/${htmlOutFile}
 <!DOCTYPE html>
 <html>
   <head>
@@ -23,13 +22,13 @@ cat <<EOF > ${outDir}/${htmlOutFile}
   <body>
 EOF
 
-markdown -f +fencedcode ${mdInFile} >> ${outDir}/${htmlOutFile}
+  markdown -f +fencedcode ${mdInFile} >> ${outDir}/${htmlOutFile}
 
-cat <<EOF >> ${outDir}/${htmlOutFile}
+  cat <<EOF >> ${outDir}/${htmlOutFile}
   </body>
 </html>
 EOF
 
-sed -i -E 's/href="Tutorial(.+?)"/href="Tutorial\1.html"/g' ${outDir}/${htmlOutFile}
+sed -i -E 's/a href="(.+?)"/a href="\1.html"/g' ${outDir}/${htmlOutFile}
 
 done
