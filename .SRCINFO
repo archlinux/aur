@@ -1,6 +1,6 @@
 pkgbase = neovim-notify
 	pkgdesc = Notification manager for Neovim
-	pkgver = 3.0.0
+	pkgver = 3.0.1
 	pkgrel = 1
 	url = https://github.com/rcarriga/nvim-notify
 	install = notify.install
@@ -10,7 +10,7 @@ pkgbase = neovim-notify
 	checkdepends = neovim-plenary
 	depends = neovim
 	optdepends = neovim-telescope
-	source = neovim-notify-3.0.0.tar.gz::https://github.com/rcarriga/nvim-notify/archive/v3.0.0.tar.gz
-	sha256sums = ad1caf7ce991326bd619255655f3734fe4f9a9700b4d60930e9bfe9746bdcbe5
+	source = neovim-notify-3.0.1.tar.gz::https://github.com/rcarriga/nvim-notify/archive/v3.0.1.tar.gz
+	sha256sums = 4e9e2415e00e4afb18eb33591609fff2601ab6e44ac675c8e3803af253743d95
 
 pkgname = neovim-notify
