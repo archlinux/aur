@@ -40,16 +40,13 @@ depends=(
 
 _dir="rqt_tf_tree-${pkgver}"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros-visualization/rqt_tf_tree/archive/${pkgver}.tar.gz"
-        "https://github.com/ros-visualization/rqt_tf_tree/pull/28.patch"
-        "https://github.com/ros-visualization/rqt_tf_tree/pull/30.patch")
+        "https://github.com/ros-visualization/rqt_tf_tree/pull/28.patch")
 sha256sums=('d020db10eda6799d2e45d9e7808fcb7d4b474ead28d6166d12ade597fe4b9e5e'
-        'SKIP'
         'SKIP')
 
 prepare() {
     cd "$srcdir/$_dir"
     patch --forward --strip=1 --input="${srcdir}/28.patch"
-    patch --forward --strip=1 --input="${srcdir}/30.patch"
 }
 
 build() {

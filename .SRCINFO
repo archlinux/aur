@@ -21,9 +21,7 @@ pkgbase = ros-noetic-rqt-tf-tree
 	depends = python-rospkg
 	source = ros-noetic-rqt-tf-tree-0.6.3.tar.gz::https://github.com/ros-visualization/rqt_tf_tree/archive/0.6.3.tar.gz
 	source = https://github.com/ros-visualization/rqt_tf_tree/pull/28.patch
-	source = https://github.com/ros-visualization/rqt_tf_tree/pull/30.patch
 	sha256sums = d020db10eda6799d2e45d9e7808fcb7d4b474ead28d6166d12ade597fe4b9e5e
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = ros-noetic-rqt-tf-tree
