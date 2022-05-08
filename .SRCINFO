@@ -1,5 +1,5 @@
 pkgbase = albafetch-git
-	pkgdesc = Noefetch, but written in C; both faster and worse than the original
+	pkgdesc = Neofetch, but written in C; both faster and worse than the original
 	pkgver = 2.5.r306.b445a89
 	pkgrel = 1
 	url = https://github.com/alba4k/albafetch
