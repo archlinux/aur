@@ -1,0 +1,4 @@
+sempl/
+src/
+pkg/
+*.pkg.tar.*
