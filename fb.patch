@@ -1,0 +1,11 @@
+--- src/utils/util.cc	2022-04-07 23:23:09.000000000 +0530
++++ src/utils/util.cc.new	2022-05-08 08:40:54.290299789 +0530
+@@ -116,7 +116,7 @@
+     LogMessage("           Using PCRE version %s\n", pcre_version());
+     LogMessage("           Using ZLIB version %s\n", zlib_version);
+ #ifdef HAVE_FLATBUFFERS
+-    LogMessage("           Using %s\n", flatbuffers::flatbuffer_version_string);
++    LogMessage("           Using %s\n", flatbuffers::flatbuffers_version_string);
+ #endif
+ #ifdef HAVE_HYPERSCAN
+     LogMessage("           Using Hyperscan version %s\n", hs_version());
