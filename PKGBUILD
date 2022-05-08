@@ -2,9 +2,9 @@
 
 _pkgname=WowUp
 pkgname=${_pkgname,,}
-_pkgver=2.7.0
+_pkgver=2.7.1
 pkgver=${_pkgver/-/.}
-pkgrel=2
+pkgrel=1
 pkgdesc='WowUp the World of Warcraft addon updater'
 arch=('x86_64')
 
@@ -12,7 +12,7 @@ url='https://github.com/WowUp/WowUp'
 license=('GPL3')
 # no depends
 makedepends=(
-    'nodejs-lts-gallium' # cannot build with nodejs 17+
+    'nodejs-lts-gallium' # may fail with latest nodejs, use lts
     'npm'
     'imagemagick'
 )
@@ -21,7 +21,7 @@ source=(
     wowup.desktop
     run_wowup.sh
 )
-sha256sums=('8cb02422f6f075f0d719435aaad02b29ab7fb36b582963c4e5247e4abf06f858'
+sha256sums=('ef9d9fe2718eb8fc01b5b42c9b7359ded0f89c53983e9768655f1ec0cec82da7'
             '5c18235b5c92c98a405335916efce577c8b9b5582b717abb1c49834884fbe1db'
             '9a21969b0e9393f25a37a924fcf7c99ff7d671e252db0f99d46072e42ab670b7')
 
