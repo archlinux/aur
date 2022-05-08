@@ -2,7 +2,7 @@
 pkgname=debian-whois-mkpasswd
 pkgver=5.5.13
 _debian_backport=''
-pkgrel=1
+pkgrel=2
 pkgdesc="A features-rich front end to the password encryption function crypt(3)."
 arch=('i686' 'x86_64')
 url="http://packages.debian.org/sid/whois"
