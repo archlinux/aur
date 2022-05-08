@@ -1,7 +1,7 @@
 # Maintainer: loathingkernel <loathingkernel _a_ gmail _d_ com>
 
 pkgname=proton-ge-custom
-_srctag=GE-Proton7-16
+_srctag=GE-Proton7-17
 _commit=
 pkgver=${_srctag//-/.}
 _geckover=2.47.2
@@ -130,8 +130,8 @@ source=(
     https://dl.winehq.org/wine/wine-gecko/${_geckover}/wine-gecko-${_geckover}-x86{,_64}.tar.xz
     https://github.com/madewokherd/wine-mono/releases/download/wine-mono-${_monover}/wine-mono-${_monover}-x86.tar.xz
     wine-more_8x5_res.patch
-    proton-sanitize_makefile.patch
-    proton-disable_lock.patch
+    0001-AUR-pkgbuild-changes.patch
+    0002-RevertMe-Use-one-job-for-autoconf-targets-because-of.patch
     proton-user_compat_data.patch
 )
 noextract=(
@@ -266,8 +266,8 @@ prepare() {
         patch -p1 -i "$srcdir"/wine-more_8x5_res.patch
     popd
 
-    patch -p1 -i "$srcdir"/proton-sanitize_makefile.patch
-    patch -p1 -i "$srcdir"/proton-disable_lock.patch
+    patch -p1 -i "$srcdir"/0001-AUR-pkgbuild-changes.patch
+    patch -p1 -i "$srcdir"/0002-RevertMe-Use-one-job-for-autoconf-targets-because-of.patch
     patch -p1 -i "$srcdir"/proton-user_compat_data.patch
 
     # Remove repos from srcdir to save space
@@ -404,6 +404,6 @@ sha256sums=('SKIP'
             'b4476706a4c3f23461da98bed34f355ff623c5d2bb2da1e2fa0c6a310bc33014'
             '25a4d08fee9197be83307e65553da450b6d4446cc9188d0a85212cc2cee2660d'
             '9005d8169266ba0b93be30e1475fe9a3697464796f553886c155ec1d77d71215'
-            'e15b9aee16ac73f63b1844df9332abeeef32806f601905584e25083131517a79'
-            'e5cb2054a5d23e956d7cd85c2f716c03852fe78c54ad689f2946ffe68a76c56a'
+            'c6504b7b2635d5c0cac4d5f2e7490b38634d30271163baa26eaefaf789e27966'
+            'f8ff6fd8e467bd927428e7c7c959aa82e73acde9d127368e4a9300519801bdc9'
             '242566c092f83a71ba06c3aefe0400af65a6fa564dd63196af54403c2c4d09e2')

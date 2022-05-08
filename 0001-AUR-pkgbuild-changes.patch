@@ -1,3 +1,21 @@
+From f8bdd56c8ed9a94a8f07bbc895d975563f711b0d Mon Sep 17 00:00:00 2001
+From: Stelios Tsampas <loathingkernel@gmail.com>
+Date: Mon, 18 Oct 2021 22:21:12 +0300
+Subject: [PATCH 1/2] AUR pkgbuild changes
+
+---
+ Makefile.in             | 51 ++++++++++++++++++++++++++++++-----------
+ configure.sh            |  2 ++
+ make/rules-autoconf.mk  |  4 ++--
+ make/rules-cargo.mk     |  4 +++-
+ make/rules-cmake.mk     |  4 ++--
+ make/rules-common.mk    | 18 +++++++++------
+ make/rules-configure.mk |  4 ++--
+ make/rules-meson.mk     |  2 +-
+ make/rules-winemaker.mk |  2 +-
+ proton                  |  6 ++---
+ 10 files changed, 64 insertions(+), 33 deletions(-)
+
 diff --git a/Makefile.in b/Makefile.in
 index b5385130..1a7f038e 100644
 --- a/Makefile.in
@@ -348,3 +366,37 @@ index 69688a03..1c0d1d3b 100644
  	cd "$$($(2)_OBJ$(3))" && touch "$(basename $(4)).spec" && env $$($(2)_ENV$(3)) \
  	winebuild --$(lastword $(subst ., ,$(4))) --fake-module -E "$(basename $(4)).spec" -o "$(4).fake"
  	mkdir -p $$($(2)_LIBDIR$(3))/$(LIBDIR_WINE_$(3))
+diff --git a/proton b/proton
+index fd9c27eb..371fd931 100755
+--- a/proton
++++ b/proton
+@@ -356,7 +356,6 @@ class Proton:
+         self.wine_bin = self.bin_dir + "wine"
+         self.wine64_bin = self.bin_dir + "wine64"
+         self.wineserver_bin = self.bin_dir + "wineserver"
+-        self.dist_lock = FileLock(self.path("dist.lock"), timeout=-1)
+ 
+     def path(self, d):
+         return self.base_dir + d
+@@ -1591,8 +1590,6 @@ if __name__ == "__main__":
+ 
+     g_proton = Proton(os.path.dirname(sys.argv[0]))
+ 
+-    g_proton.cleanup_legacy_dist()
+-    g_proton.do_steampipe_fixups()
+ 
+     g_compatdata = CompatData(os.environ["STEAM_COMPAT_DATA_PATH"])
+ 
+@@ -1601,7 +1598,8 @@ if __name__ == "__main__":
+     g_session.init_wine()
+ 
+     if g_proton.missing_default_prefix():
+-        g_proton.make_default_prefix()
++        log("Default prefix is missing, something is very wrong.")
++        sys.exit(1)
+ 
+     import protonfixes
+ 
+-- 
+2.36.1
+
