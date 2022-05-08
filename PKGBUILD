@@ -2,8 +2,8 @@
 
 _realname=CPU-X
 pkgname=cpu-x-git
-pkgver=4.3.0.r2.g159a93a
-pkgrel=2
+pkgver=4.3.1.r0.gf64853d
+pkgrel=1
 pkgdesc="A Free software that gathers information on CPU, motherboard and more"
 arch=('i686' 'x86_64')
 url="http://X0rg.github.io/CPU-X/"
