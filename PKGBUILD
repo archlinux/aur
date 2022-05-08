@@ -1,11 +1,11 @@
 pkgname=webcord
-pkgver=3.1.3
-pkgrel=2
+pkgver=3.1.4
+pkgrel=1
 pkgdesc="A Discord and Fosscord client made with the Electron."
 arch=('any')
 url="https://github.com/SpacingBat3/WebCord"
 license=('MIT')
-depends=('electron17')
+depends=('electron>=18' 'electron<19')
 makedepends=('npm' 'typescript' 'git')
 options=('!strip' '!emptydirs')
 
@@ -19,8 +19,8 @@ source=(
 )
 
 sha256sums=(
-    'b4f739b9ca38db3cad1bd3af0931e9d7797b3a3c9bbe8bcf55966be4b5b635fb'
-    '6c2969684c8cbdf4410cc491b7750c6622084eeffc7aa0fca8f5c35caadde146'
+    'c3ce9e77eceec6b8c0771329e828e7bbc08135168abfeff40b299e7510937fc0'
+    '1339d6cc4e66b75131531f7bec8aacad5c9b2bce3eafd3e1615966c355a9b759'
     'c803c7227982fad22390a8d6d11f3707171d5e9b1a394731a6a07773eab75b1f'
     '3a9b6df6be84741b5839d559301b95cb75e012fd7f20f3f8eac10cc11bccc4a1'
 )
@@ -30,12 +30,12 @@ prepare() {
     npm i --ignore-scripts=true \
         "@tsconfig/node16-strictest"@"^1.0.0" \
         "@types/dompurify"@"^2.2.3" \
-        "@types/marked"@"^4.0.1" \
-        "@types/semver"@"^7.3.8" \
-        "@types/source-map-support"@"^0.5.3" \
+        "@types/marked"@"^4.0.2" \
+        "@types/semver"@"^7.3.9" \
+        "@types/source-map-support"@"^0.5.4" \
         "@types/spdx-expression-parse"@"^3.0.1" \
         "@types/ws"@"^8.5.1" \
-        "electron"@"^17.0.0"
+        "electron"@"^18.0.1"
 
     cd "${_srcname}"
     npm i --omit=dev --ignore-scripts=true
