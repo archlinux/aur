@@ -4,7 +4,7 @@
 
 pkgname=shadowsocks-rust-bin
 pkgver=1.14.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A Rust port of shadowsocks https://shadowsocks.org/ (binary version)'
 arch=('x86_64' 'arm' 'aarch64')
 url='https://github.com/shadowsocks/shadowsocks-rust'

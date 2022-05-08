@@ -1,7 +1,7 @@
 pkgbase = shadowsocks-rust-bin
 	pkgdesc = A Rust port of shadowsocks https://shadowsocks.org/ (binary version)
 	pkgver = 1.14.3
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/shadowsocks/shadowsocks-rust
 	arch = x86_64
 	arch = arm
