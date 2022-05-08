@@ -1,0 +1,13 @@
+--- a/lib-src/zipios++/zipios++/zipheadio.h	2021-06-18 22:04:12.000000000 +0200
++++ b/lib-src/zipios++/zipios++/zipheadio.h	2022-05-08 13:58:16.936444854 +0200
+@@ -150,7 +150,9 @@
+ }
+ 
+ inline void writeByteSeq ( ostream &os, const vector < unsigned char > &vec ) {
+-  os.rdbuf()->sputn( reinterpret_cast< const char * >( &( vec[ 0 ] ) ), vec.size() ) ;
++  if ( vec.size () != 0 ) {
++    os.rdbuf()->sputn( reinterpret_cast< const char * >( &( vec[ 0 ] ) ), vec.size() ) ;
++  }
+ }
+ 
+ istream& operator>> ( istream &is, ZipLocalEntry &zlh         ) ;

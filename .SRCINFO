@@ -1,7 +1,7 @@
 pkgbase = enigma_sdl
 	pkgdesc = Puzzle game inspired by Oxyd on the Atari ST and Rock'n'Roll on the Amiga.
-	pkgver = 1.21
-	pkgrel = 4
+	pkgver = 1.30
+	pkgrel = 1
 	url = http://www.nongnu.org/enigma/
 	arch = i686
 	arch = x86_64
@@ -16,14 +16,12 @@ pkgbase = enigma_sdl
 	depends = xdg-utils
 	depends = curl
 	depends = hicolor-icon-theme
-	source = http://downloads.sourceforge.net/enigma-game/enigma-1.21.tar.gz
-	source = src_client.cc.patch
-	source = src_lev_Proxy.cc.patch
-	source = src_Value.cc.patch
-	sha256sums = d872cf067d8eb560d3bb1cb17245814bc56ac3953ae1f12e2229c8eb6f82ce01
-	sha256sums = 0d4ec33182e481b6856ceb029b1f144b8c31b0902e8f49ceb08093a66fe67304
-	sha256sums = b27c2f114bbf76a3a0f7032380db885bdb3983e2a2a4648aed520c1b066e5aad
-	sha256sums = 4899aa6f7f965deb441840400b42d6fda65ea6e44c7fb131521db9a4e6fb4f2f
+	depends = sdl2_ttf
+	depends = sdl2_mixer
+	depends = sdl2_image
+	source = https://github.com/Enigma-Game/Enigma/releases/download/1.30/Enigma-1.30-src.tar.gz
+	source = fix_invalid_access.patch
+	sha256sums = ae64b91fbc2b10970071d0d78ed5b4ede9ee3868de2e6e9569546fc58437f8af
+	sha256sums = 61709cbf9fe420d062fb8b24e56a6165242626f4f211bf798ee90155a0208bb2
 
 pkgname = enigma_sdl
-
