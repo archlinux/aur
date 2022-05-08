@@ -1,0 +1,4 @@
+c10t-git/
+src/
+pkg/
+*.pkg.tar.*
