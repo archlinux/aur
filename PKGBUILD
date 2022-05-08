@@ -2,12 +2,12 @@
 
 pkgname=plainpanel
 pkgver=0.1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="plainDE panel"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://plainde.org"
 license=(GPL3)
-depends=(qt6-base noto-fonts-emoji polkit ttf-opensans make alsa-utils kwindowsystem)
+depends=(qt6-base noto-fonts-emoji polkit ttf-opensans make alsa-utils kwindowsystem python3)
 makedepends=(git)
 source=("git+https://github.com/plainDE/plainPanel.git#tag=v${pkgver}")
 sha256sums=('SKIP')
