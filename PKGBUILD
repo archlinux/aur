@@ -23,6 +23,7 @@ optdepends=(
   'greetd-gtkgreet: Simple GTK based greeter'
   'greetd-dlm: Dumb Login Manager'
   'greetd-wlgreet: Wayland greeter'
+  'greetd-tuigreet: TUI based greeter'
 )
 backup=(
   'etc/greetd/config.toml'
