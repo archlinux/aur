@@ -11,8 +11,8 @@ fi
 
 _pluginname=tuna
 pkgname=obs-$_pluginname
-pkgver=1.6.1
-pkgrel=4
+pkgver=1.6.2
+pkgrel=1
 arch=("i686" "x86_64" "aarch64")
 pkgdesc="Get song info from right within obs"
 url="https://obsproject.com/forum/resources/tuna.843/"
