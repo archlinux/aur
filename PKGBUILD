@@ -37,7 +37,7 @@ package() {
 
   # Remove duplicate license files
   local site_packages=$(python -c "import site; print(site.getsitepackages()[0])")
-  rm "${pkgdir}${site_packages}/$pkgname-$pkgver.dist-info"/{COPYING.txt,LICENSE}
+  rm "${pkgdir}${site_packages}/$pkgname-$pkgver.dist-info"/{COPYING,LICENSE}
 
   install -Dm644 "metadata/$_app_id.desktop" -t "$pkgdir/usr/share/applications/"
   install -Dm644 "metadata/$_app_id.metainfo.xml" -t "$pkgdir/usr/share/metainfo/"
