@@ -3,7 +3,7 @@
 _upkgname=asgardex
 _pkgname=ASGARDEX
 pkgname=asgardex-appimage
-pkgver=0.14.0
+pkgver=0.14.1
 msgver=(${pkgver//./})
 pkgrel=1
 pkgdesc="Thorchain wallet desktop app"
