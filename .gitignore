@@ -1,4 +1,5 @@
-pkg/
+python-transliterate/
 src/
+pkg/
 *.pkg.tar.*
 *.tar.gz
