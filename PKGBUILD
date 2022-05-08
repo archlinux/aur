@@ -1,10 +1,11 @@
-# Maintainer: MFW78 <mfw78@chasingseed.com>
+# Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
+# Contributor: MFW78 <mfw78@chasingseed.com>
 
 pkgname=swarm-bee-clef
-pkgver=0.12.0
+pkgver=0.13.1
 _clefver=1.10.17
 pkgrel=1
-pkgdesc="Go Ethereum's external signer packaged for bee"
+pkgdesc="Go Ethereum's external signer"
 arch=('x86_64')
 url='https://github.com/ethersphere/bee-clef'
 license=('GPL3')
@@ -17,7 +18,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         "go-ethereum-bee-clef-$_clefver.tar.gz::https://github.com/ethereum/go-ethereum/archive/v$_clefver.tar.gz"
         'bee-clef.sysusers'
         'bee-clef.tmpfiles')
-sha256sums=('e23f6f8ffef749999e810fdb0565595361279067c69029308680d0fa81f947ba'
+sha256sums=('ab64c812ff310e5a7309a62620ce0c39be559a151364c608111039c1bfd6b243'
             '00db123e1b23d3d904bd8a6bd4de8f3330d14db1622e8f22bf1653c94f03e09c'
             '7314d2aa0ce149621a5d59b881ada3ea37231743b5875389b3041bb845233491'
             'c5dbcb978de5b7c31482f4fd1cff3101a738df85e27758ec2b4e469a1762384c')
