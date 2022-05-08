@@ -1,0 +1,16 @@
+pkgbase = ea-command
+	pkgdesc = ea: make your CLI output actionable
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/dduan/ea
+	arch = i686
+	arch = x86_64
+	arch = armv6h
+	arch = armv7h
+	license = MIT
+	makedepends = rust
+	makedepends = cargo
+	source = https://github.com/dduan/ea/archive/refs/tags/0.1.0.tar.gz
+	sha256sums = 269d57cf78645bd2b238bd3dbde965c05d1be631bcaffc354d9fcff4c77e06e7
+
+pkgname = ea-command
