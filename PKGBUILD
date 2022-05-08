@@ -3,7 +3,7 @@
 # Contributor: otaj
 pkgname=drata-agent
 pkgver=3.1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="The Drata Agent is a light-weight tray-application that runs in the background, reporting important read-only data to Drata about your machine’s state for compliance tracking."
 arch=('x86_64')
 url="https://github.com/drata/the-agent"
@@ -28,8 +28,7 @@ package(){
 
   # Install license file
   license_file="${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  if [[ -f "$license_file" ]]; then
-    rm "$license_file"
+  if [[ ! -f "$license_file" ]]; then
+    install -D -m644 "${pkgdir}/opt/Drata Agent/LICENSES.chromium.html" "$license_file"
   fi
-  install -D -m644 "${pkgdir}/opt/Drata Agent/LICENSES.chromium.html" "$license_file"
 }
