@@ -1,13 +1,13 @@
 pkgbase = snake-asm
 	pkgdesc = Terminal-based snake game written in x86_64 assembly
 	pkgver = 0.4.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/NikitaIvanovV/snake-asm
 	arch = x86_64
 	license = MIT
 	source = https://github.com/NikitaIvanovV/snake-asm/releases/download/v0.4.1/snake-asm.tar.gz
 	source = https://github.com/NikitaIvanovV/snake-asm/archive/refs/tags/v0.4.1.tar.gz
-	sha256sums = c7ba22f90976827e9a7ac55a4c14a3334cd3ddf8529eac60060074088c0543bf
+	sha256sums = ef5ace03e40c69247e15188a876acbfdf58389b86e522fe2734d69cb9bb01c9e
 	sha256sums = f1d4c098913db2c363c5b924f45f0a94118fa6fde511c3c8473ebd89f0200aa8
 
 pkgname = snake-asm
