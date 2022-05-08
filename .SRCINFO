@@ -1,6 +1,6 @@
 pkgbase = nwg-shell-config
 	pkgdesc = nwg-shell configuration utility
-	pkgver = 0.2.5
+	pkgver = 0.3.0
 	pkgrel = 1
 	url = https://github.com/nwg-piotr/nwg-shell-config
 	arch = x86_64
@@ -11,7 +11,8 @@ pkgbase = nwg-shell-config
 	depends = python-gobject
 	depends = python-i3ipc
 	depends = python-geopy
-	source = nwg-shell-config-0.2.5.tar.gz::https://github.com/nwg-piotr/nwg-shell-config/archive/v0.2.5.tar.gz
-	md5sums = 36830e05eeb1086fc71bcc4a71cda750
+	depends = nwg-shell
+	source = nwg-shell-config-0.3.0.tar.gz::https://github.com/nwg-piotr/nwg-shell-config/archive/v0.3.0.tar.gz
+	md5sums = 7879dd853445b92b604ead0db3cb634c
 
 pkgname = nwg-shell-config
