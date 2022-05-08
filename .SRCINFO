@@ -16,9 +16,11 @@ pkgbase = usbdm-git
 	options = !makeflags
 	source = git+https://github.com/podonoghue/usbdm-eclipse-makefiles-build.git
 	source = undebian.patch
+	source = makepkg-cflags.patch
 	source = 60-usbdm.rules
 	sha256sums = SKIP
 	sha256sums = 1df36643f505b6869e3135f43ff1e738b25b19be58a3742978158873898f6e13
+	sha256sums = d1e58e0a45c2eed831171850b3594ad01521a192f3271f4deab65453a22c71b2
 	sha256sums = 88eaab73a1020ac84d4979a4f70f122214b0042d167942a95bddd0560f0e3aa8
 
 pkgname = usbdm-git

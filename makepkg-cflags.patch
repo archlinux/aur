@@ -1,0 +1,128 @@
+From ee0348722629ecafee9d1db3c0d37d149622521c Mon Sep 17 00:00:00 2001
+Message-Id: <ee0348722629ecafee9d1db3c0d37d149622521c.1652042168.git.tommyhebb@gmail.com>
+In-Reply-To: <11c8680c8d0ec0e9c834f57efdfd3827453f4c6a.1652042168.git.tommyhebb@gmail.com>
+References: <11c8680c8d0ec0e9c834f57efdfd3827453f4c6a.1652042168.git.tommyhebb@gmail.com>
+From: Thomas Hebb <tommyhebb@gmail.com>
+Date: Sun, 8 May 2022 13:04:07 -0700
+Subject: [PATCH 2/2] Don't set our own CFLAGS and LDFLAGS
+
+Instead, use the ones from the environment as much as possible. makepkg
+is opinionated about what flags to set, and we want to respect them.
+---
+ Common.mk                              | 11 +----------
+ Library.mk                             | 11 +----------
+ USBDM_API_Example/Common.mk            | 11 +----------
+ USBDM_Programmer_API_Example/Common.mk | 11 +----------
+ 4 files changed, 4 insertions(+), 40 deletions(-)
+
+diff --git a/Common.mk b/Common.mk
+index aa94a528..18eea2b4 100755
+--- a/Common.mk
++++ b/Common.mk
+@@ -302,21 +302,12 @@ ifeq ($(UNAME_S),Windows)
+ else
+    GCC_VISIBILITY_DEFS :=-fvisibility=hidden -fvisibility-inlines-hidden
+    THREADS := 
+-   CFLAGS := -fPIC
++   CFLAGS += -fPIC
+ endif
+ 
+ ifdef DEBUG
+-   # Compiler flags
+-   CFLAGS += -O0 -g3
+-   # Compiler flags (Linking)
+-   LDFLAGS = -O0 -g3
+    # C Definitions
+    DEFS   := -DLOG
+-else
+-   # Compiler flags
+-   CFLAGS += -O3 -g3 
+-   # Compiler flags (Linking) - include DEBUG info as can be stripped later
+-   LDFLAGS = -O3 -g3 
+ endif
+ 
+ ifneq ($(UNAME_S),Windows)
+diff --git a/Library.mk b/Library.mk
+index 76b8047d..d7fb7393 100644
+--- a/Library.mk
++++ b/Library.mk
+@@ -286,21 +286,12 @@ ifeq ($(UNAME_S),Windows)
+ else
+    GCC_VISIBILITY_DEFS :=-fvisibility=hidden -fvisibility-inlines-hidden
+    THREADS := 
+-   CFLAGS := -fPIC
++   CFLAGS += -fPIC
+ endif
+ 
+ ifdef DEBUG
+-   # Compiler flags
+-   CFLAGS += -O0 -g3
+-   # Compiler flags (Linking)
+-   LDFLAGS = 
+    # C Definitions
+    DEFS   := -DLOG
+-else
+-   # Compiler flags
+-   CFLAGS += -O3 -g0 
+-   # Compiler flags (Linking)
+-   LDFLAGS = -s
+ endif
+ 
+ ifneq ($(OS),Windows_NT)
+diff --git a/USBDM_API_Example/Common.mk b/USBDM_API_Example/Common.mk
+index bc877eab..32f82fc5 100755
+--- a/USBDM_API_Example/Common.mk
++++ b/USBDM_API_Example/Common.mk
+@@ -303,21 +303,12 @@ ifeq ($(UNAME_S),Windows)
+ else
+    GCC_VISIBILITY_DEFS :=-fvisibility=hidden -fvisibility-inlines-hidden
+    THREADS := 
+-   CFLAGS := -fPIC
++   CFLAGS += -fPIC
+ endif
+ 
+ ifdef DEBUG
+-   # Compiler flags
+-   CFLAGS += -O0 -g3
+-   # Compiler flags (Linking)
+-   LDFLAGS = -O0 -g3
+    # C Definitions
+    DEFS   := -DLOG
+-else
+-   # Compiler flags
+-   CFLAGS += -O3 -g3 
+-   # Compiler flags (Linking) - include DEBUG info as can be stripped later
+-   LDFLAGS = -O3 -g3 
+ endif
+ 
+ ifneq ($(UNAME_S),Windows)
+diff --git a/USBDM_Programmer_API_Example/Common.mk b/USBDM_Programmer_API_Example/Common.mk
+index bc877eab..32f82fc5 100755
+--- a/USBDM_Programmer_API_Example/Common.mk
++++ b/USBDM_Programmer_API_Example/Common.mk
+@@ -303,21 +303,12 @@ ifeq ($(UNAME_S),Windows)
+ else
+    GCC_VISIBILITY_DEFS :=-fvisibility=hidden -fvisibility-inlines-hidden
+    THREADS := 
+-   CFLAGS := -fPIC
++   CFLAGS += -fPIC
+ endif
+ 
+ ifdef DEBUG
+-   # Compiler flags
+-   CFLAGS += -O0 -g3
+-   # Compiler flags (Linking)
+-   LDFLAGS = -O0 -g3
+    # C Definitions
+    DEFS   := -DLOG
+-else
+-   # Compiler flags
+-   CFLAGS += -O3 -g3 
+-   # Compiler flags (Linking) - include DEBUG info as can be stripped later
+-   LDFLAGS = -O3 -g3 
+ endif
+ 
+ ifneq ($(UNAME_S),Windows)
+-- 
+2.36.0
+
