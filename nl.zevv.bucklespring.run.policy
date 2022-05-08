@@ -6,7 +6,7 @@
 	<vendor_url>https://github.com/zevv/bucklespring</vendor_url>
 
 	<action id="nl.zevv.bucklespring.run">
-		<message>Prevent running the inpulse-to-talk daemon</message>
+		<message>The bucklespring daemon reads the input events directly</message>
 		<icon_name>keyboard</icon_name>
 		<defaults>
 			<!-- Any program (in a session) can run the daemon, with the root password -->
