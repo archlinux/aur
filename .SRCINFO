@@ -1,7 +1,7 @@
 pkgbase = tree-game
 	pkgdesc = Powder toy like sandbox game focused on nature
 	pkgver = 0.10
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/segfaultdev/tree
 	arch = x86_64
 	license = MIT
