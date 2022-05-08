@@ -1,7 +1,7 @@
 # Maintainer: Thomas Hebb <tommyhebb@gmail.com>
 pkgname=usbdm-git
-pkgver=1657.d74be9b5
-pkgrel=2
+pkgver=1660.73fa3f5d
+pkgrel=1
 pkgdesc="Debugger interface for Freescale RS08,HCS08,HCS12,Coldfire and ARM-Kinetis Devices."
 arch=("x86_64")
 url="http://usbdm.sourceforge.net/"
@@ -15,12 +15,10 @@ install="usbdm.install"
 
 source=("git+https://github.com/podonoghue/usbdm-eclipse-makefiles-build.git"
         "undebian.patch"
-        "makepkg-cflags.patch"
-        "60-usbdm.rules")
+        "makepkg-cflags.patch")
 sha256sums=('SKIP'
             '1df36643f505b6869e3135f43ff1e738b25b19be58a3742978158873898f6e13'
-            'd1e58e0a45c2eed831171850b3594ad01521a192f3271f4deab65453a22c71b2'
-            '88eaab73a1020ac84d4979a4f70f122214b0042d167942a95bddd0560f0e3aa8')
+            'd1e58e0a45c2eed831171850b3594ad01521a192f3271f4deab65453a22c71b2')
 
 pkgver() {
 	cd "usbdm-eclipse-makefiles-build"
@@ -78,12 +76,19 @@ package() {
 	# Where to put Man page files
 	USBDM_MANUAL_DIR="${DUMMY_ROOT}/usr/share/man/man1"
 
+	# Binary files (changed from /etc/ to /usr/lib/ for Arch)
+	USBDM_RULESDIR="${DUMMY_ROOT}/usr/lib/udev/rules.d"
+
 	${MKDIR} ${PIXMAP_DIR}
 	${CP} "${SOURCE_DIRECTORY}/PackageFiles"/MiscellaneousLinux/Hardware-Chip.png ${PIXMAP_DIR}
 
 	${MKDIR} ${LINUX_APPLICATIONS_DIR}
 	${CP} "${SOURCE_DIRECTORY}/PackageFiles"/MiscellaneousLinux/*.desktop       ${LINUX_APPLICATIONS_DIR}
 	chmod  644 ${LINUX_APPLICATIONS_DIR}/*.desktop
+
+	${MKDIR} ${USBDM_RULESDIR}
+	${CP} "${SOURCE_DIRECTORY}/PackageFiles"/MiscellaneousLinux/usbdm.rules      ${USBDM_RULESDIR}/46-usbdm.rules
+	chmod  644 ${USBDM_RULESDIR}/46-usbdm.rules
 
 	${MKDIR} ${USBDM_SHARED_DOC_DIR}
 	${CP} "${SOURCE_DIRECTORY}/PackageFiles"/MiscellaneousLinux/changelog.Debian.gz   ${USBDM_SHARED_DOC_DIR}
@@ -133,6 +138,4 @@ package() {
 	find ${USBDM_LIBDIR} -type f -executable -exec chmod 755 {} \; -exec strip {} \;
 	find ${USBDM_LIBDIR} -type f -name \*.so\* -exec chmod 644 {} \;
 	find ${DUMMY_ROOT}   -type f ! -executable -exec chmod 644 {} \;
-
-	install -pD -m=664 "${srcdir}/60-usbdm.rules" "${pkgdir}/usr/lib/udev/rules.d/60-usbdm.rules"
 }
