@@ -1,0 +1,13 @@
+pkgbase = sswb-git
+	pkgdesc = Stupid simple Web Browser - a simply gtk webkit browser
+	pkgver = 0.1
+	pkgrel = 2
+	url = https://github.com/BlackCodec/sswb
+	arch = any
+	license = GPL
+	depends = webkit2gtk
+	depends = python-gobject
+	source = https://github.com/BlackCodec/sswb-git/archive/master.zip
+	md5sums = SKIP
+
+pkgname = sswb-git
