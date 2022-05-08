@@ -1,7 +1,7 @@
 pkgbase = vit-git
 	pkgdesc = Visual Interactive Taskwarrior full-screen terminal interface (GIT version)
 	pkgver = r710.7a05bc2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/vit-project/vit
 	arch = any
 	license = MIT

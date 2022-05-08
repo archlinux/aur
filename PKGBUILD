@@ -4,8 +4,9 @@
 # Contributor: Ivan Sichmann Freitas <ivansichfreitas@gmail.com>
 
 pkgname=vit-git
+_pkgname="${pkgname%-git}"
 pkgver=r710.7a05bc2
-pkgrel=1
+pkgrel=2
 pkgdesc="Visual Interactive Taskwarrior full-screen terminal interface (GIT version)"
 arch=('any')
 url='https://github.com/vit-project/vit'
@@ -22,19 +23,28 @@ source=(git+https://github.com/vit-project/vit.git)
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname%-git}
+  cd "${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd "${_pkgname}"
+  sed -i -e 's|^REFRESH_SCRIPT=.*|REFRESH_SCRIPT="/usr/share/vit/scripts/vit-external-refresh.sh"|g' scripts/hooks/on-exit-refresh-vit.sh
+}
+
 build() {
-  cd ${pkgname%-git}
+  cd "${_pkgname}"
   python setup.py build
 }
 
 package() {
-  cd ${pkgname%-git}
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  python setup.py install --root="$pkgdir/" --optimize=1 --skip-build
+  cd "${_pkgname}"
+  python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+  install -Dm 644 scripts/bash/vit.bash_completion "${pkgdir}/usr/share/bash-completion/completions/${_pkgname}"
+  install -Dm 755 scripts/hooks/on-exit-refresh-vit.sh "${pkgdir}/usr/share/${_pkgname}/scripts/hooks/on-exit-refresh-vit.sh"
+  install -Dm 755 scripts/vit-external-refresh.sh "${pkgdir}/usr/share/${_pkgname}/scripts/vit-external-refresh.sh"
+  install -Dm 644 *.md -t "${pkgdir}/usr/share/doc/${_pkgname}"
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/${_pkgname}/LICENSE"
 }
 
 # vim: ts=2 sw=2 et:
