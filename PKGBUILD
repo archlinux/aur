@@ -2,7 +2,7 @@
 pkgname=input-remapper-beta-git
 pkgver=1.5.0.beta.r10.g2d23120
 pkgrel=1
-pkgdesc="Beta of input-remapper version, here be dragons. Contains unfinished features."
+pkgdesc="Beta version of input-remapper. Contains unfinished features that require testing."
 arch=('any')
 url="https://github.com/sezanzeb/input-remapper/"
 license=('GPL3')
