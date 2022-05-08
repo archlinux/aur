@@ -1,10 +1,10 @@
 pkgbase = python-lsp-all
 	pkgver = 1
-	pkgrel = 5
+	pkgrel = 6
 	arch = any
 	depends = python-lsp-server
 	depends = python-lsp-black
-	depends = python-lsp-isort
+	depends = python-pyls-isort
 	depends = python-pylsp-mypy
 	depends = python-rope
 	depends = python-pyflakes
