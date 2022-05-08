@@ -10,15 +10,15 @@
 
 pkgname=mpd-light-pulse-ffmpeg
 _pkgname=mpd
-pkgver=0.23.5
-pkgrel=3
+pkgver=0.23.6
+pkgrel=1
 pkgdesc='Flexible, powerful, server-side application for playing music. Light version without openal, ao, jack, mikmod, modplug, mpg123, openmpt, pipewire, shout, sidplay, soundcloud, wavpack, fluidsynth, avahi, zziplib and gme support.'
 url='https://www.musicpd.org/'
 license=('GPL2')
 arch=('x86_64')
 depends=('gcc-libs' 'glibc' 'libcdio-paranoia' 'libmad' 'sqlite'
          'libmms' 'libnfs' 'libsoxr' 'zlib'
-         'alsa-lib' 'audiofile' 'curl' 'faad2' 'ffmpeg4.4' 'flac' 'fmt'
+         'alsa-lib' 'audiofile' 'curl' 'faad2' 'ffmpeg' 'flac' 'fmt'
          'icu' 'libid3tag' 'libmpdclient' 'libogg' 'libpulse' 'libsamplerate'
          'libupnp' 'liburing' 'libvorbis')
 makedepends=('boost' 'meson' 'python-sphinx')
@@ -30,7 +30,7 @@ source=("https://www.musicpd.org/download/${_pkgname}/${pkgver%.*}/${_pkgname}-$
         "${_pkgname}.sysusers"
         "${_pkgname}.tmpfiles"
         "${_pkgname}.service.override")
-sha512sums=('3a870e79bb82c9e8877958d271e933daa3dd970a4510aff4aeea91feab521d7927cd59c7f1ea16a36e84ff879e4f24e4347602ac449c5da31853acb5a3b46f34'
+sha512sums=('1595fcc53a67f1a68b0c0516697d242da53b91626e37bc2f49095add78eb497a52c67c961a421f20b40f3c57a571557a76559a212838de2a3ec4aec6c7a3288d'
             'SKIP'
             '25a823740d92da8e186916701413114142eb6ad91a172c592e68b569c8e4f50fa99580e555ccf6cd31fc4f55a09bfe0278efa46e4e76ee0fe02846292fadf3c1'
             '6e467481406279767b709ec6d5c06dbd825c0de09045c52ffa2d21d0604dcfe19b7a92bf42bed25163d66a3a0d1dbde6185a648b433eaf5eac56be90491e2e18'
@@ -73,10 +73,6 @@ build() {
          '-Dyajl=disabled'
          '-Dgme=disabled'
   )
-
-  # we currently require ffmpeg4.4 as otherwise database update is broken:
-  # https://github.com/MusicPlayerDaemon/MPD/issues/1448
-  export PKG_CONFIG_PATH='/usr/lib/ffmpeg4.4/pkgconfig'
 
   arch-meson ${_opts[@]} build "${_pkgname}-${pkgver}"
   ninja -C build
