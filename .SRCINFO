@@ -1,6 +1,6 @@
 pkgbase = salad-git
 	pkgdesc = Allows gamers to mine crypto in their downtime [git version].
-	pkgver = 0.5.8.r49.g6416d126
+	pkgver = 0.5.8.r50.g6da8d38e
 	pkgrel = 1
 	url = https://salad.com
 	arch = x86_64
