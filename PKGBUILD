@@ -2,7 +2,7 @@
 
 pkgname=plainpanel
 pkgver=0.1.2a
-pkgrel=1
+pkgrel=2
 pkgdesc="plainDE panel"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://plainde.org"
@@ -21,8 +21,7 @@ build() {
 
 package() {
   mkdir -p $pkgdir/usr/share/plainDE/ $pkgdir/usr/bin
-  mv $srcdir/plainPanel/plainPanel $pkgdir/usr/share/plainDE/
-  ln -s $pkgdir/usr/share/plainDE/plainPanel $pkgdir/usr/bin/plainPanel
+  mv $srcdir/plainPanel/plainPanel $pkgdir/usr/bin/
   cp $srcdir/plainPanel/tools/genconfig.py $pkgdir/usr/share/plainDE/
   cp $srcdir/plainPanel/readme-icon.png $pkgdir/usr/share/plainDE/menuIcon.png
 }
