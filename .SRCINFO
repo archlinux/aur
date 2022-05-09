@@ -1,7 +1,7 @@
 pkgbase = makehuman-plugin-mhx
 	pkgdesc = MHX (blender/makehuman interchange format) exporter for makehuman
 	pkgver = latest
-	pkgrel = 3
+	pkgrel = 4
 	url = http://www.makehumancommunity.org/
 	arch = any
 	license = GPLv2

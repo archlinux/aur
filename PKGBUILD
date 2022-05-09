@@ -2,7 +2,7 @@
 
 pkgname=makehuman-plugin-mhx
 pkgver=latest
-pkgrel=3
+pkgrel=4
 pkgdesc="MHX (blender/makehuman interchange format) exporter for makehuman"
 arch=('any')
 url="http://www.makehumancommunity.org/"
@@ -10,8 +10,6 @@ license=('GPLv2')
 depends=('makehuman')
 conflicts=('makehuman-community-plugins')
 source=("https://download.tuxfamily.org/makehuman/plugins/mhx-mh-latest.zip")
-#looks like being (currently) daily updated, even the latest one
-#relying on direct version numbering broken the other day
 sha512sums=('SKIP')
 
 prepare(){
