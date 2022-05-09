@@ -1,0 +1,17 @@
+pkgbase = algernon-bin
+	pkgdesc = Web server with Lua, Markdown, QUIC, Redis and PostgreSQL support
+	pkgver = 1.13.0
+	pkgrel = 1
+	url = https://algernon.roboticoverlords.org/
+	arch = x86_64
+	license = BSD
+	makedepends = go
+	optdepends = mariadb: For using the MariaDB/MySQL database backend
+	optdepends = postgresql: For using the PostgreSQL database backend
+	optdepends = redis: For using the Redis database backend
+	conflicts = algernon
+	replaces = algernon
+	source = algernon-1.13.0.tar.gz::https://github.com/xyproto/algernon/releases/download/v1.13.0/algernon-1.13.0-linux_x86_64_static.tar.xz
+	b2sums = bd2a56b01850c1040ef1f63dd4fcc0b3b0c45dbac9251f3864d2cc9b9c3bc8b8fe8905e180274105c7bd9f5004a7d37a1627d60ddd33fa3f10e67b76f81422b1
+
+pkgname = algernon-bin
