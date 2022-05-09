@@ -5,12 +5,13 @@ pkgname=slack-wayland-gnome
 _name="slack"
 pkgver=4.25.1
 pkgrel=1
-pkgdesc="Slack Desktop with system Electron and Ozone enabled for native Wayland support"
+pkgdesc="Slack Desktop with system Electron, Ozone and window decoration enabled for native Wayland support"
 arch=('x86_64')
 url="https://slack.com/downloads"
 license=('custom:proprietary')
 depends=('electron17')
-optdepends=('libappindicator-gtk3: for notification indicator in the status bar on GNOME')
+optdepends=('libappindicator-gtk3: for notification indicator in the status bar on GNOME'
+            'xdg-desktop-portal-gnome: for screen sharing')
 provides=("${_name}" "${_name}-desktop")
 conflicts=("${_name}-desktop")
 source=("https://downloads.slack-edge.com/releases/linux/$pkgver/prod/x64/slack-desktop-$pkgver-amd64.deb"
