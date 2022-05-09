@@ -3,7 +3,7 @@
 
 pkgname=river
 pkgver=0.1.3
-pkgrel=2
+pkgrel=3
 pkgdesc='A dynamic tiling wayland compositor.'
 arch=('x86_64')
 url='https://github.com/riverwm/river'
@@ -26,4 +26,7 @@ package() {
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname"
 	install -Dm644 contrib/river.desktop \
 		-t "$pkgdir/usr/share/wayland-sessions"
+
+	install -d "$pkgdir/usr/share/$pkgname"
+	cp -fR example "$pkgdir/usr/share/$pkgname"
 }
