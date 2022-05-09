@@ -1,13 +1,13 @@
 pkgbase = pacmc
-	pkgdesc = An easy to use package manager for Fabric Minecraft mods.
-	pkgver = 0.4.2
+	pkgdesc = An easy-to-use Minecraft package manager and launcher
+	pkgver = 0.5.0
 	pkgrel = 1
 	url = https://github.com/jakobkmar/pacmc
 	arch = any
-	license = GPL3
+	license = AGPL3 or any later version
 	depends = java-runtime=11
 	optdepends = minecraft-launcher: The game launcher, managing the .minecraft folder
-	source = https://github.com/jakobkmar/pacmc/releases/download/0.4.2/pacmc-0.4.2.tar
-	sha256sums = ecb41494a928cb24bafc21660ea30f3d2fd1d203e980f6d77a53c72bb298fc02
+	source = https://github.com/jakobkmar/pacmc/releases/download/0.5.0/pacmc-0.5.0.tar
+	sha256sums = f90b5773a125e99ca10423be615f805337d394561cd25bbbf4d80f37aa3459fe
 
 pkgname = pacmc
