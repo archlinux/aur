@@ -1,0 +1,15 @@
+pkgbase = python-mopidy-qobuz
+	pkgdesc = Mopidy extension for playing music from Qobuz..
+	pkgver = 0.0.1
+	pkgrel = 1
+	url = https://github.com/taschenb/mopidy-qobuz
+	arch = any
+	license = Apache2
+	depends = mopidy
+	depends = python-pykka
+	depends = python-qobuz
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/M/Mopidy-Qobuz/Mopidy-Qobuz-0.0.1.tar.gz
+	sha256sums = 0bfa07505347b5243ac68722575bc76d56f17cde32a4c04dc93490ac52c4cda8
+
+pkgname = python-mopidy-qobuz
