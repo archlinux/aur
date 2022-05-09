@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/x86 5.4.191 Kernel Configuration
+# Linux/x86 5.4.192 Kernel Configuration
 #
 
 #
@@ -3481,7 +3481,6 @@ CONFIG_MISDN_NETJET=m
 CONFIG_MISDN_HDLC=m
 CONFIG_MISDN_IPAC=m
 CONFIG_MISDN_ISAR=m
-# CONFIG_NVM is not set
 
 #
 # Input device support
