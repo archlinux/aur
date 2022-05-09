@@ -1,7 +1,7 @@
 # Maintainer: Daniel Bermond <dbermond@archlinux.org>
 
 pkgname=cargo-c-git
-pkgver=0.6.2.r0.g59ee00a
+pkgver=0.9.9.r0.g3273eff
 pkgrel=1
 pkgdesc='A cargo subcommand to build and install C-ABI compatibile dynamic and static libraries (git version)'
 arch=('x86_64')
@@ -23,6 +23,7 @@ pkgver() {
 }
 
 build() {
+    export CFLAGS+=' -ffat-lto-objects'
     cargo build --release --frozen --manifest-path='cargo-c/Cargo.toml'
 }
 
@@ -31,6 +32,6 @@ check() {
 }
 
 package() {
-    install -D -m755 cargo-c/target/release/cargo-c{build,install} -t "${pkgdir}/usr/bin"
+    cargo install --frozen --offline --no-track --path cargo-c --root "${pkgdir}/usr"
     install -D -m644 cargo-c/LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname}"
 }

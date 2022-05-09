@@ -1,6 +1,6 @@
 pkgbase = cargo-c-git
 	pkgdesc = A cargo subcommand to build and install C-ABI compatibile dynamic and static libraries (git version)
-	pkgver = 0.6.2.r0.g59ee00a
+	pkgver = 0.9.9.r0.g3273eff
 	pkgrel = 1
 	url = https://github.com/lu-zero/cargo-c/
 	arch = x86_64
@@ -16,4 +16,3 @@ pkgbase = cargo-c-git
 	sha256sums = SKIP
 
 pkgname = cargo-c-git
-
