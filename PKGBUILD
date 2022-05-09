@@ -1,6 +1,7 @@
 # Maintainer: Pierre-Alain TORET <pierre-alain.toret@protonmail.com>
 # Maintainer: Tom Hacohen <tom@stosb.com>
 
+_pkgname=server
 pkgname=etebase-server
 pkgver=0.8.3
 pkgrel=2
@@ -18,11 +19,11 @@ optdepends=(
 	'postgresql: storage backend'
 	'python-daphne: application container'
 )
-url="https://github.com/etesync/server"
+url="https://github.com/etesync/$_pkgname"
 license=('AGPL3')
-backup=('etc/etebase-server/etebase-server.ini')
+backup=("etc/$pkgname/$pkgname.ini")
 options=(!emptydirs)
-source=(https://github.com/etesync/server/archive/v"$pkgver".tar.gz
+source=("$url/archive/v$pkgver.tar.gz"
         $pkgname.sysusers
         $pkgname.tmpfiles
         $pkgname)
