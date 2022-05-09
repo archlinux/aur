@@ -6,6 +6,7 @@ arch=('any')
 pkgdesc='Alphabetizes word lists' 
 url='https://github.com/jmdaemon/alphasort'
 license=('AGPL3')
+options=(!strip) # Mandatory as stripping the binary removes the sbcl runtime
 depends=('sbcl')
 optdepends=()
 makedepends=('git' 'make')
