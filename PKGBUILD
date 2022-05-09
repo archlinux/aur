@@ -3,14 +3,14 @@
 
 _name=PotatoPresenter
 pkgname=potatopresenter
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="Tool to create presentation slides that can be exported as PDF."
 arch=('x86_64')
 url="https://github.com/thgier/PotatoPresenter"
 license=('LGPL2.1')
 depends=('ktexteditor' 'antlr4-runtime')
-makedepends=('cmake')
+makedepends=('cmake' 'antlr4')
 optdepends=('texlive-latexextra: for LaTeX formular support'
             'texlive-fontsextra: for LaTeX formular support'
             'texlive-science: for LaTeX formular support')
@@ -19,11 +19,18 @@ conflicts=('potatopresenter')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/thgier/PotatoPresenter/master/potato_logo.svg"
         "potatopresenter.desktop")
-sha256sums=('cc45b4a9494608a59205b33cecddf4d9ff391810dc160319ec6114264fdcb915'
+sha256sums=('65b954265ac4f364566ebbaf5e41e25509d57b5eb18153d33d1b5b122787308c'
             'd96b384a4e8ba5365785f9be8cd77e2f54d0ae767de7ae4c2f2f52c9de0e083b'
             '030597070eefe827d1895f3736cf2c70753e2ca13812350610122193976a2a7c')
 
-build() {
+prepare() {
+  cd $_name-$pkgver/src/antlr/markdown/
+  ./generate.sh
+  cd ../potato/
+  ./generate.sh
+}
+
+build() {  
   cmake -B build -S $_name-$pkgver
   cmake --build build
 }
