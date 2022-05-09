@@ -9,7 +9,7 @@ pkgbase = logc-git
 	makedepends = make
 	provides = logc
 	conflicts = logc
-	source = logc::git+https://github.com/rxi/log.c#branch=master
+	source = logc-git::git+https://github.com/rxi/log.c#branch=master
 	sha512sums = SKIP
 
 pkgname = logc-git

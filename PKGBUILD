@@ -37,6 +37,4 @@ package() {
   cd "$pkgname"
   cd src
   package-lib
-  #install logc.so "$pkgdir"
-  #install log.h "$pkgdir"
 }
