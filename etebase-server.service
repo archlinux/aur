@@ -1,0 +1,36 @@
+[Unit]
+Description=Etebase server
+
+[Service]
+User=etebase
+Group=etebase
+ExecStart=/usr/bin/uvicorn etebase_server.asgi:application --uds /run/etebase-server/etebase-server.sock
+
+RemoveIPC=true
+CapabilityBoundingSet=
+NoNewPrivileges=true
+PrivateDevices=true
+ProtectClock=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+ProtectKernelModules=true
+SystemCallArchitectures=native
+MemoryDenyWriteExecute=true
+RestrictNamespaces=true
+RestrictSUIDSGID=true
+ProtectHostname=true
+LockPersonality=true
+ProtectKernelTunables=true
+RestrictAddressFamilies=AF_UNIX
+PrivateNetwork=true
+RestrictRealtime=true
+ProtectSystem=strict
+ProtectProc=invisible
+ProcSubset=pid
+ProtectHome=true
+PrivateUsers=true
+PrivateTmp=true
+SystemCallFilter=@system-service
+
+[Install]
+WantedBy=multi-user.target
