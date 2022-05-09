@@ -1,0 +1,21 @@
+pkgbase = fcitx5-pinyin-zhwiktionary-git
+	pkgdesc = Fcitx 5 Pinyin Dictionary from zh.wiktionary.org
+	pkgver = 0.20220501
+	pkgrel = 1
+	url = https://github.com/kaseiwang/fcitx5-pinyin-zhwiki
+	arch = any
+	license = CCPL:by-sa
+	license = custom:GFDL
+	makedepends = libime
+	makedepends = opencc
+	makedepends = pypinyin
+	source = git+https://github.com/kaseiwang/fcitx5-pinyin-zhwiki
+	source = https://dumps.wikimedia.org/zhwiktionary/20220501/zhwiktionary-20220501-all-titles-in-ns0.gz
+	source = https://www.gnu.org/licenses/fdl-1.3.txt
+	sha512sums = SKIP
+	sha512sums = 943434dbb3bd87bfc60fe22636d99a4355eeabfa5e0a538221520b1f11b7f81e5d85839d146a582aa86fcec4de09077838965aae8e6533ebaedc77d95e528cb5
+	sha512sums = 22d46818d3998ad841f537af4de7c50440dd918099fb6c5d4ab324cd71dc03066bfe1b67210a5efde77abd1d97b88da3c3dbfc39a24ae7248ee2d64e7f0fe6bb
+
+pkgname = fcitx5-pinyin-zhwiktionary
+
+pkgname = rime-pinyin-zhwiktionary
