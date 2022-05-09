@@ -1,3 +1,4 @@
+# Maintainer: Joseph Diza <josephm.diza@gmail.com>
 pkgname=alphasort-git
 pkgver=1.0.0
 pkgrel=1
