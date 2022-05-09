@@ -1,0 +1,19 @@
+pkgbase = sanctity
+	pkgdesc = Test the 16 terminal colors in all combinations
+	pkgver = 1.3.0
+	pkgrel = 1
+	url = https://codeberg.org/papojari/sanctity
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = LGPL3
+	makedepends = just
+	makedepends = cargo
+	source = sanctity-1.3.0.tar.gz::https://codeberg.org/papojari/sanctity/archive/v1.3.0.tar.gz
+	sha256sums = 5910a26ce15c874e12bdaefbcabcbb0119bdb868be8b1e105050fa08ab32cb14
+
+pkgname = sanctity
