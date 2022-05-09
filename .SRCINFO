@@ -1,6 +1,6 @@
 pkgbase = karma-dashboard-bin
   pkgdesc = Alert dashboard for Alertmanager (binary, not built from source)
-  pkgver = 0.102
+  pkgver = 0.103
   pkgrel = 1
   url = https://github.com/prymitive/karma
   arch = x86_64
@@ -10,10 +10,9 @@ pkgbase = karma-dashboard-bin
   source = karma.service
   source = karma.yml
   source = karma.sysusers
-  source = karma-0.102.tar.gz::https://github.com/prymitive/karma/archive/refs/tags/v0.102.tar.gz
+  source = karma-0.103.tar.gz::https://github.com/prymitive/karma/archive/refs/tags/v0.103.tar.gz
   sha512sums = b71a5c1f5ecc5a82dc612bc4a9a84810e8a185b33036c00bb8af822a557d86297c1c600bd2dcf6e2c3deb137fa66c58136f221f7d5d0369f286ff3dbc150a4af
   sha512sums = b71a5c1f5ecc5a82dc612bc4a9a84810e8a185b33036c00bb8af822a557d86297c1c600bd2dcf6e2c3deb137fa66c58136f221f7d5d0369f286ff3dbc150a4af
   sha512sums = 008b496aad7b92fe1f884cd89a55b15eb320dfff5ce277eea0c05777f3e5c3044310c16bb6f40153f8e9ed2d1af633fbd0cfff46bb04a96e2df35dba17815d95
-  sha512sums = 9cd62f56961ffdae2744a0fa3cf8444431d413fe135843b6b160a056731c06b0e718f83dab35451ad5025216b3f20d6abac505ec028ed8bd9e65c635b2d20953
-
+  sha512sums = 7edb301aa04a3a5172b0d783a1f4056cb01340fd573453384a9401ba0696343f50ab52e8ad9f51145f5d9559be36206da8bd1c37e0f173bb2124d37db57dd4d8
 pkgname = karma-dashboard-bin
