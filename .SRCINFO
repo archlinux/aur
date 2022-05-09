@@ -1,9 +1,8 @@
 pkgbase = openflap
 	pkgdesc = A game about bouncing balls through holes
 	pkgver = 1.0.2r56
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jazztickets/openflap
-	changelog = Changelog
 	arch = i686
 	arch = x86_64
 	license = GPL3
