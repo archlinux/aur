@@ -1,7 +1,7 @@
 # Maintainer: Keinv Yue <yuezk001@gmail.com>
 
-_pkgver="1.4.2+15snapshot.g405f32e"
-_commit="405f32e1aa77e80c7198f07c62b29e0e6a7db580"
+_pkgver="1.4.2+16snapshot.g8f0475b"
+_commit="8f0475b5a2a048546f0d8a74374c5e53f003affd"
 pkgname=globalprotect-openconnect-git
 pkgver=${_pkgver}
 pkgrel=1
