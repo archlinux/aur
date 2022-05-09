@@ -1,17 +1,17 @@
 # Maintainer: Carlo Sala <carlosalag@protonmail.com>
 
 pkgname=surfshark-gui-bin
-pkgver=1.0.5
-pkgrel=5
+pkgver=1.0.6
+pkgrel=1
 pkgdesc="Surfshark VPN client. Keep your online activity and personal information secure. Put your privacy-conscious mind at rest and enjoy unrestricted internet."
 arch=('x86_64')
 url="https://surfshark.com"
 license=('custom:surfshark')
-depends=('alsa-lib' 'atk' 'at-spi2-atk' 'at-spi2-core' 'cairo' 'curl' 'dbus' 'desktop-file-utils' 'discord' 'expat' 'gdk-pixbuf2' 'gjs' 'glib2' 'gnome-keyring' 'gtk3' 'hicolor-icon-theme' 'libappindicator-gtk2' 'libcups' 'libdrm' 'libnotify' 'libsecret' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'libxtst' 'mesa' 'networkmanager>=1.20.0' 'networkmanager-openvpn' 'nspr' 'nss' 'pango' 'wireguard-tools' 'zip')
-optdepends=('libappindicator-gtk3')
+depends=('alsa-lib' 'atk' 'at-spi2-atk' 'at-spi2-core' 'cairo' 'curl' 'dbus' 'discord' 'expat' 'gdk-pixbuf2' 'gjs' 'glib2' 'gnome-keyring' 'gtk3' 'kwalletmanager' 'libcups' 'libdrm' 'libnotify' 'libsecret' 'libx11' 'libxcb' 'libxcomposite' 'libxdamage' 'libxext' 'libxfixes' 'libxkbcommon' 'libxrandr' 'libxtst' 'mesa' 'networkmanager>=1.20.0' 'networkmanager-openvpn' 'nspr' 'nss' 'pango' 'wireguard-tools' 'zip')
+optdepends=('fonts-noto-color-emoji' 'libappindicator-gtk3')
 options=('!strip' '!emptydirs')
-source=("https://ocean.surfshark.com/debian/pool/main/s/surfshark/surfshark_1.0.5-547_amd64.deb")
-sha512sums=('b4d030f73fc575d908e57c71db5c59ed2a3a138fa7a3e40d5643a50beef8048a981af3b16070d9f8a6dfeed1e32a34d09de10b6c0a0fc06beb1319dc64738522')
+source=("https://ocean.surfshark.com/debian/pool/main/s/surfshark/surfshark_1.0.6-631_amd64.deb")
+sha512sums=('b421b10904d5bbb1dafb1119408f94258b64b6274d27852c150f342ea6885b29034b3f9b341991c1bf8f286c9572aaf8b616cbc33adc1f9cf4945b6f8e880202')
 install=${pkgname}.install
 
 package() {
