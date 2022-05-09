@@ -6,10 +6,15 @@ pkgbase = paddlepaddle-bin
 	arch = x86_64
 	license = Apache
 	makedepends = python-pip
-	depends = python-protobuf
+	depends = python-requests
 	depends = python-numpy
-	depends = python-gast
+	depends = python-protobuf
+	depends = python-pillow
+	depends = python-six
+	depends = python-decorator
 	depends = python-astor
+	depends = paddle_bfloat
+	depends = python-opt_einsum
 	depends = perl
 	provides = paddlepaddle=2.3.0
 	conflicts = paddlepaddle

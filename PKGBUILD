@@ -6,8 +6,8 @@ pkgver=2.3.0
 pkgrel=1
 pkgdesc="Machine Learning Framework from Industrial Practice"
 url="https://${_base}.org.cn"
-depends=(python-protobuf python-numpy python-gast python-astor perl)
-makedepends=(python-pip) # python-wheel
+depends=(python-requests python-numpy python-protobuf python-pillow python-six python-decorator python-astor paddle_bfloat python-opt_einsum perl)
+makedepends=(python-pip)
 provides=(${_base}=${pkgver})
 conflicts=(${_base} ${_base}-gpu)
 license=('Apache')
