@@ -1,7 +1,7 @@
 pkgbase = zettlr-git
 	pkgdesc = A Markdown Editor for the 21st century
-	pkgver = 2.1.3.r55.g3d4749f
-	pkgrel = 2
+	pkgver = 2.2.6.r0.g7dea2fe
+	pkgrel = 1
 	url = https://www.zettlr.com
 	arch = x86_64
 	license = GPL
@@ -10,12 +10,12 @@ pkgbase = zettlr-git
 	makedepends = nodejs-lts-gallium
 	makedepends = yarn
 	depends = crimson-font
-	depends = electron
+	depends = electron17
 	depends = pandoc
 	depends = ttf-inconsolata
 	depends = ttf-liberation
 	optdepends = texlive-bin: For Latex support
-	provides = zettlr=2.1.3.r55.g3d4749f
+	provides = zettlr=2.2.6.r0.g7dea2fe
 	conflicts = zettlr
 	source = zettlr-git::git+https://github.com/Zettlr/Zettlr.git
 	source = zettlr.sh

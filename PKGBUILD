@@ -3,14 +3,14 @@
 
 pkgname=zettlr-git
 _pkgname=Zettlr
-pkgver=2.1.3.r55.g3d4749f
-pkgrel=2
+pkgver=2.2.6.r0.g7dea2fe
+pkgrel=1
 pkgdesc='A Markdown Editor for the 21st century'
 arch=(x86_64)
 url=https://www.zettlr.com
 _url="https://github.com/$_pkgname/$_pkgname"
 license=(GPL)
-_electron=electron
+_electron=electron17
 depends=(crimson-font
          $_electron
          pandoc
@@ -33,13 +33,13 @@ sha256sums=('SKIP'
 _yarnargs="--cache-folder '$srcdir/cache' --link-folder '$srcdir/link'"
 
 prepare() {
-	local _electronVersion=$(electron --version | sed -e 's/^v//')
+	local _electronVersion=$($_electron --version | sed -e 's/^v//')
 	gendesk -q -f -n \
 		--pkgname "$pkgname" \
 		--pkgdesc "$pkgdesc" \
 		--name "$_pkgname" \
-		--categories 'Office;' \
-		--mimetypes 'text-markdown;' \
+		--categories 'Office' \
+		--mimetypes 'text/markdown' \
 		--custom StartupWMClass="$_pkgname"
 	cd "$pkgname"
 	echo -ne '#!/usr/bin/env bash\n\nexit 0' > scripts/get-pandoc.sh
