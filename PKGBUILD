@@ -1,12 +1,12 @@
 # Maintainer: Mantas Mikulėnas <grawity@gmail.com>
 pkgname=remctl
-pkgver=3.17
+pkgver=3.18
 pkgrel=1
 pkgdesc="Tool for running commands on remote hosts using Kerberos authentication"
 arch=(i686 x86_64)
 url="https://www.eyrie.org/~eagle/software/remctl/"
 license=(custom)
-depends=("krb5")
+depends=("krb5" "pcre2")
 makedepends=(
   "perl"
   "perl-module-build"
@@ -24,7 +24,7 @@ provides=(
 backup=("etc/remctl/remctl.conf")
 source=("https://archives.eyrie.org/software/kerberos/$pkgname-$pkgver.tar.gz"
         "https://archives.eyrie.org/software/kerberos/$pkgname-$pkgver.tar.gz.asc")
-sha256sums=('bace4c7617fb567924a15191edb53ccbe22ca06b5578ca9f979993a694d229d6'
+sha256sums=('393c896b6bd9585e75fbc33d8299e23785b5e6418c5b15456c8d27b04f357d42'
             'SKIP')
 validpgpkeys=('E784364E8DDE7BB370FBD9EAD15D313882004173')
 install="install.sh"

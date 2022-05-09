@@ -1,6 +1,6 @@
 pkgbase = remctl
 	pkgdesc = Tool for running commands on remote hosts using Kerberos authentication
-	pkgver = 3.17
+	pkgver = 3.18
 	pkgrel = 1
 	url = https://www.eyrie.org/~eagle/software/remctl/
 	install = install.sh
@@ -14,16 +14,16 @@ pkgbase = remctl
 	makedepends = python-setuptools
 	makedepends = ruby
 	depends = krb5
-	provides = perl-net-remctl=3.17
-	provides = php-remctl=3.17
-	provides = python-remctl=3.17
-	provides = ruby-net-remctl=3.17
+	depends = pcre2
+	provides = perl-net-remctl=3.18
+	provides = php-remctl=3.18
+	provides = python-remctl=3.18
+	provides = ruby-net-remctl=3.18
 	backup = etc/remctl/remctl.conf
-	source = https://archives.eyrie.org/software/kerberos/remctl-3.17.tar.gz
-	source = https://archives.eyrie.org/software/kerberos/remctl-3.17.tar.gz.asc
+	source = https://archives.eyrie.org/software/kerberos/remctl-3.18.tar.gz
+	source = https://archives.eyrie.org/software/kerberos/remctl-3.18.tar.gz.asc
 	validpgpkeys = E784364E8DDE7BB370FBD9EAD15D313882004173
-	sha256sums = bace4c7617fb567924a15191edb53ccbe22ca06b5578ca9f979993a694d229d6
+	sha256sums = 393c896b6bd9585e75fbc33d8299e23785b5e6418c5b15456c8d27b04f357d42
 	sha256sums = SKIP
 
 pkgname = remctl
-
