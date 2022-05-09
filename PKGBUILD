@@ -2,7 +2,7 @@
 pkgname=suricata-nfqueue
 _pkgname=suricata
 pkgver=6.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A high performance Network IDS, IPS and Network Security Monitoring engine"
 arch=('i686' 'x86_64')
 url="https://suricata.io/"
@@ -54,10 +54,10 @@ package() {
     "${pkgdir}/etc/${_pkgname}/${_pkgname}.yaml"
 
   install -Dm644 etc/"${_pkgname}".logrotate "${pkgdir}/etc/logrotate.d/${_pkgname}"
-  sed -i -e 's:/var/run:/run:g' \
+  sed -i -e 's:/var/run:/run/suricata:g' \
     "${pkgdir}/etc/logrotate.d/${_pkgname}"
   install -Dm644 -t "${pkgdir}"/usr/lib/systemd/system etc/"${_pkgname}".service "${srcdir}"/suricata-update.{service,timer}
-  sed -i -e 's:/var/run:/run:g' \
+  sed -i -e 's:/var/run:/run/suricata:g' \
     -e 's:^Description=.*:Description=Suricata IDS/IPS daemon:g' \
     -e 's:^After=.*:After=network.target:g' \
     -e 's:^ExecStartPre=.*:PIDFile=suricata/suricata.pid:g' \
