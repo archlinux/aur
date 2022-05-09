@@ -6,17 +6,17 @@ pkgver=1.4.1
 pkgrel=1
 pkgdesc="Ignition tools provide the ign command line tool that accepts multiple subcommands."
 arch=('any')
-url="https://github.com/ignitionrobotics/ign-tools"
+url="https://github.com/gazebosim/gz-tools"
 license=('Apache')
 groups=('development')
 makedepends=('cmake' 'doxygen' 'pkg-config' 'ruby-ronn')
 depends=('ruby')
 optdepends=()
 conflicts=()
-source=("https://github.com/ignitionrobotics/ign-tools/archive/${pkgname}_${pkgver}.tar.gz")
-sha256sums=('6774ecf88bde9154fcbb52b491b85040e7c3d3e21986839cfe181001104a0cb9')
+source=("$url/archive/${pkgname}_${pkgver}.tar.gz")
+sha256sums=('950059424c2de42e825d31cab63015e18fe4c61a2b54911d375c138093139cac')
 
-_dir="ign-tools-${pkgname}_${pkgver}"
+_dir="gz-tools-${pkgname}_${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
