@@ -2,13 +2,14 @@
 # Co-Maintainer: Aaron J. Graves <linux@ajgraves.com>
 pkgname=tutanota-desktop-bin
 pkgver=3.96.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Tutanota email client"
 arch=('x86_64')
 url="https://tutanota.com"
 license=('GPL3')
-depends=('nss' 'libappindicator-gtk3' 'libnotify' 'org.freedesktop.secrets')
+depends=('alsa-lib' 'gtk3' 'libsecret' 'nss')
 makedepends=('openssl')
+optdepends=('libappindicator-gtk3: StatusNotifierItem support')
 source=("${pkgname%-bin}-$pkgver.AppImage::https://mail.tutanota.com/desktop/${pkgname%-bin}-linux.AppImage"
         "linux-sig-$pkgver.bin::https://mail.tutanota.com/desktop/linux-sig.bin"
         "tutao-pub-$pkgver.pem::https://github.com/tutao/tutanota/raw/${pkgname%-bin}-release-$pkgver/tutao-pub.pem")
