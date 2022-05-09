@@ -2,7 +2,6 @@
 
 pkgname=jdk18-openj9-bin
 pkgrel=10
-_pkgver_minor="4"
 _j9_version="0.32.0"
 pkgver=18.0.1
 pkgdesc="IBM Semeru OpenJ9 with openjdk18"
