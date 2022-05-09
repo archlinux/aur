@@ -2,7 +2,7 @@
 
 pkgname=acl4ssr-acl-git
 pkgver=r101.6f8e28d
-pkgrel=1
+pkgrel=2
 pkgdesc='Ad-removal & GFW-bypass ACL rules for Shadowsocks & SSR (git version)'
 arch=('any')
 url='https://github.com/ACL4SSR/ACL4SSR'
@@ -22,6 +22,7 @@ package() {
     cd "${srcdir}/acl4ssr"
     # upstream misspelled "LICENSE" :facepalm:
     install -Dm644 LICENCE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 README.md "${pkgdir}/usr/share/acl4ssr-acl/README.md"
 
     cd "${srcdir}/acl4ssr/Acl"
     install -Dm644 -t "${pkgdir}/usr/share/acl4ssr-acl" \

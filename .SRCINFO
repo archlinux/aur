@@ -1,7 +1,7 @@
 pkgbase = acl4ssr-acl-git
 	pkgdesc = Ad-removal & GFW-bypass ACL rules for Shadowsocks & SSR (git version)
 	pkgver = r101.6f8e28d
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/ACL4SSR/ACL4SSR
 	arch = any
 	license = custom:CCPL-cc-by-sa-4.0
