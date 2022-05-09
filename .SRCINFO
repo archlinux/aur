@@ -1,8 +1,11 @@
 pkgbase = algernon-bin
 	pkgdesc = Web server with Lua, Markdown, QUIC, Redis and PostgreSQL support
 	pkgver = 1.13.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://algernon.roboticoverlords.org/
+	arch = aarch64
+	arch = armv6
+	arch = armv7
 	arch = x86_64
 	license = BSD
 	makedepends = go
