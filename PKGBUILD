@@ -2,8 +2,8 @@
 
 pkgname=inform7-git
 _gitpkg=inform
-pkgver=r1395.6ff3fd8db
-pkgrel=2
+pkgver=r1421.62bfb9d45
+pkgrel=1
 pkgdesc="A design system for interactive fiction based on natural language (git version)"
 arch=('aarch64' 'arm' 'armv6h' 'armv7h' 'i686' 'pentium4' 'x86_64')
 url="https://ganelson.github.io/inform"
