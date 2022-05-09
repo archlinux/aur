@@ -4,7 +4,7 @@
 
 pkgname=dosbox-binutils
 pkgver=2.35
-pkgrel=6
+pkgrel=7
 pkgdesc="binutils for the djgpp dosbox cross-compiler"
 arch=('i686' 'x86_64')
 url="http://www.gnu.org/software/binutils"
@@ -41,7 +41,6 @@ build() {
     --disable-nls \
     --disable-plugins \
     --disable-werror \
-    --enable-compressed-debug-sections=all \
     --enable-lto
   make
 }
