@@ -1,0 +1,17 @@
+diff -pNaru5 a/drv_pty.cxx b/drv_pty.cxx
+--- a/drv_pty.cxx	2020-10-27 23:21:29.000000000 -0400
++++ b/drv_pty.cxx	2022-01-15 22:50:52.012576657 -0500
+@@ -582,10 +582,13 @@ PBoolean PseudoModemPty::OpenPty()
+       myPTRACE(1, "T38Modem\tPseudoModemPty::OpenPty ptsname_r " << ptyname << " ERROR: " << strerror(err));
+       ClosePty();
+       return FALSE;
+     }
+ 
++    chown(ptsName,0,@UUCP@); /* root:uucp same as ttyS0 */
++    chmod(ptsName,0660); /* rw-rw---- */
++
+     if (::symlink(ptsName, ttypath) != 0) {
+       int err = errno;
+       myPTRACE(1, "T38Modem\tPseudoModemPty::OpenPty symlink " << ttypath << " -> " << ptsName << " ERROR: " << strerror(err));
+       ClosePty();
+       return FALSE;

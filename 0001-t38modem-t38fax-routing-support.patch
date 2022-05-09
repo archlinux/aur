@@ -1,0 +1,16 @@
+diff -pNaru5 a/opal/modemep.cxx b/opal/modemep.cxx
+--- a/opal/modemep.cxx	2020-10-27 23:21:29.000000000 -0400
++++ b/opal/modemep.cxx	2022-01-18 01:13:47.288427748 -0500
+@@ -279,11 +279,11 @@ void ModemEndPoint::OnMyCallback(PObject
+ 
+     if (command == "dial") {
+       PseudoModem *modem = pmodem_pool->Dequeue(modemToken);
+       if (modem != NULL) {
+         PString partyA = m_prefix + request("localpartyname");
+-        PString partyB = request("number") + "@" + modem->ttyName();
++        PString partyB = request("number") + "@@SIPSVR@";
+ 
+         PString originalPartyB;
+         long tries = request("trynextcount").AsInteger();
+ 
+         if (tries++ > 0) {
