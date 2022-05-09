@@ -2,14 +2,14 @@
 
 pkgname=ppp-git
 pkgver=2.4.9.r132.gd7e62a8
-pkgrel=1
+pkgrel=2
 pkgdesc="A package which implements the Point-to-Point Protocol"
 arch=('i686' 'x86_64')
 url="https://ppp.samba.org/"
 license=('BSD' 'GPL')
 depends=('glibc' 'libpcap' 'libxcrypt' 'openssl' 'pam')
 makedepends=('git')
-provides=('ppp')
+provides=("ppp=$pkgver")
 conflicts=('ppp')
 backup=(etc/ppp/{chap-secrets,ip-down,ip-down.d/00-dns.sh,ip-up,ip-up.d/00-dns.sh,ipv6-up.d/00-iface-config.sh,,options,pap-secrets})
 source=("git+https://github.com/paulusmack/ppp.git"
