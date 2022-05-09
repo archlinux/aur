@@ -1,26 +1,26 @@
 # Maintainer: Alexander F. Rødseth <xyproto@archlinux.org>
 
 pkgname=algernon
-pkgver=1.12.14
+pkgver=1.13.0
 pkgrel=1
 pkgdesc='Web server with Lua, Markdown, QUIC, Redis and PostgreSQL support'
 arch=(x86_64)
 url='https://algernon.roboticoverlords.org/'
-license=(MIT)
+license=(BSD)
 makedepends=(go)
 optdepends=('mariadb: For using the MariaDB/MySQL database backend'
             'postgresql: For using the PostgreSQL database backend'
             'redis: For using the Redis database backend')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/xyproto/algernon/archive/$pkgver.tar.gz")
-b2sums=('575173552d25b92717b0bca6b0be80394e1f42b24709650a334ac255eeed4845c14f25e57eba06ecaa92d0ee9d8df0b9c6087e6877223b103275884d9595af48')
+source=("git+https://github.com/xyproto/algernon#commit=9181256438b9a738127b9ac202ae03c2d8b50939")
+b2sums=(SKIP)
 
 prepare() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   go build -v -mod=vendor -trimpath -buildmode=pie -ldflags="-s -w -extldflags $LDFLAGS"
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd $pkgname
   install -Dm755 algernon "$pkgdir/usr/bin/algernon"
   install -d "$pkgdir/usr/share/doc/$pkgname/samples"
   cp -r samples "$pkgdir/usr/share/doc/$pkgname/samples"
