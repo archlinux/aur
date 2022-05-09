@@ -1,7 +1,7 @@
 # Maintainer: Antonin Décimo <antonin dot decimo at gmail dot com>
 # Contributor: Adrian Perez de Castro <aperez@igalia.com>
 pkgname=wlroots-hidpi-git
-pkgver=0.16.0.r5339.2c59435e
+pkgver=0.16.0.r5476.0326ceff
 pkgrel=1
 license=(custom:MIT)
 pkgdesc='Modular Wayland compositor library, with XWayland HiDPI (git version)'
@@ -37,8 +37,8 @@ source=("${pkgname}::git+${url}.git"
         "0002-xwayland-add-support-for-changing-global-scale-facto.patch"
        )
 sha256sums=('SKIP'
-            '68f1c7c550a317d8175311325b6c4809b0ec761b0badba7926eca7475d1bc27f'
-            '9004f727c18129c667804fa987938c8d4a1a27ec8fed6bb2668f03284a884dcc')
+            '2d3736475593a4644e93c839a5d19644551bb459b8a59e8c03c18dfbafeecdfc'
+            '89ddc2d7bece7992e9913d03144b475da3c594ff7552ac2da6b5ae4ad6ffe2eb')
 
 _builddir="build"
 _builddir_pkgver="build-pkgver"
