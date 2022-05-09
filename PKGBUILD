@@ -2,7 +2,7 @@
 _pkgname=imjtool
 pkgname=${_pkgname}-bin
 pkgver=1.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Rudimentary Android image and partition unpacking tool."
 	arch=('x86_64')
 url="http://newandroidbook.com/tools/imjtool.html"
@@ -12,7 +12,7 @@ source=(
   "${_pkgname}-${pkgver}.tgz::http://newandroidbook.com/tools/imjtool.tgz"
 )
 sha512sums=(
-  '078eac3363706da7c070bb1e4280b450c57043cf30d23ebe0883a482134267f98e5770a31e3fdec2cf8d31951bc36685c95e2878e8406b5a25179521a2e2d5c2'
+  '440c212933ebddd4c2ee3fde01fbc58636ba0001dd83e28b21fa8a81df9907230066fa02ecc3c9b19d43478380d71465f76b6c331ced18eabbd27113dabfbe83'
 )
 
 package() {
