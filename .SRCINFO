@@ -1,0 +1,16 @@
+pkgbase = alphasort-git
+	pkgdesc = Alphabetizes word lists
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jmdaemon/alphasort
+	arch = any
+	license = AGPL3
+	makedepends = git
+	makedepends = make
+	depends = sbcl
+	provides = alphasort
+	conflicts = alphasort
+	source = alphasort-git::git+https://github.com/jmdaemon/alphasort
+	sha512sums = SKIP
+
+pkgname = alphasort-git
