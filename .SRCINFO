@@ -1,6 +1,6 @@
 pkgbase = opman-git
 	pkgdesc = Opinionated ArchLinux Package Manager (WIP)
-	pkgver = r8.1c0d6fc
+	pkgver = r9.98f4c09
 	pkgrel = 1
 	url = https://github.com/CRISPYricePC/opman
 	arch = any

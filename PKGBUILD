@@ -1,7 +1,7 @@
 # Maintainer: Ben Mitchell <bjosephmitchell@gmail.com>
 _pkgname=opman
 pkgname="$_pkgname-git"
-pkgver=r8.1c0d6fc
+pkgver=r9.98f4c09
 pkgver() {
   cd "$_pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
