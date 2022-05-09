@@ -1,7 +1,7 @@
 pkgbase = cheat-bin
 	pkgdesc = cheat allows you to create and view interactive cheatsheets on the command-line
 	pkgver = 4.2.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/cheat/cheat
 	arch = i686
 	arch = x86_64
@@ -19,5 +19,7 @@ pkgbase = cheat-bin
 	sha256sums_armv6h = 91c16e3c68bdb97aaec7ec0669ab9d6e7025abf175148a32911d1033d9e38f2d
 	source_armv7h = cheat-bin-4.2.3.gz::https://github.com/cheat/cheat/releases/download/4.2.3/cheat-linux-arm7.gz
 	sha256sums_armv7h = 4ac2fea19ff1dd063f7fa7e76b5329babeaee8c10756eeeffa8fafecd8c8dabc
+	source_aarch64 = cheat-bin-4.2.3.gz::https://github.com/cheat/cheat/releases/download/4.2.3/cheat-linux-arm64.gz
+	sha256sums_aarch64 = c97f6f861fa9f13c941a0e3f991d3460e13a81c1140e9d4f4ecd66b9275d5eb5
 
 pkgname = cheat-bin
