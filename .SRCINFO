@@ -1,5 +1,5 @@
 pkgbase = quassel
-	pkgver = 0.14.0
+	pkgver = 0.14.0.r5.g4251006e
 	pkgrel = 1
 	url = http://quassel-irc.org
 	arch = i686
@@ -21,6 +21,8 @@ pkgbase = quassel
 	makedepends = boost
 	makedepends = rsync
 	source = git+https://github.com/quassel/quassel.git
+	source = git+https://github.com/quassel/quassel-i18n.git
+	md5sums = SKIP
 	md5sums = SKIP
 
 pkgname = quassel-git

@@ -10,7 +10,7 @@ pkgname=("${pkgbase}-git"
          "${pkgbase}-common-git"
         )
 
-pkgver=0.14.0
+pkgver=0.14.0.r5.g4251006e
 pkgrel=1
 url='http://quassel-irc.org'
 license=('GPL')
@@ -20,8 +20,12 @@ makedepends=('git' 'cmake' 'extra-cmake-modules' 'hicolor-icon-theme'
              'qt5-tools' 'qt5-webkit' 'boost' 'rsync')
 source=(
   'git+https://github.com/quassel/quassel.git'
+  'git+https://github.com/quassel/quassel-i18n.git'
 )
-md5sums=('SKIP')
+md5sums=(
+  'SKIP'
+  'SKIP'
+)
 ## Common build options
 _build_common=(
   -Wno-dev
@@ -67,10 +71,17 @@ _build_core_git=(
   -DWANT_QTCLIENT=OFF
 )
 
+prepare() {
+  cd "${srcdir}/${pkgbase}"
+  git submodule init
+  git config submodule.mysubmodule.url "$srcdir/quassel-i18n"
+  git submodule update
+}
+
 pkgver() {
   #git describe --always | sed 's/-beta/.0.beta/; s/-/./g;'
-  git -C "${srcdir}/${pkgbase}" describe --always \
-  | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
+  git -C "${srcdir}/${pkgbase}" describe --always |
+    sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//'
 }
 
 build() {
