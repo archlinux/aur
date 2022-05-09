@@ -1,6 +1,6 @@
 # Maintainer: Cody Schafer <dev at codyps.com>
 pkgname=ioztat
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="storage load analysis tool for OpenZFS"
 arch=(any)
@@ -15,7 +15,7 @@ options=()
 install=
 source=("$pkgname-$pkgver.tar.gz::https://github.com/jimsalterjrs/ioztat/archive/refs/tags/v${pkgver}.tar.gz")
 noextract=()
-md5sums=('e1f02315bc79e7f583f045a9753f53c4')
+sha384sums=('521a1db6b7ad8a2fd7ff5635ac5025f0dad673574bc2f042d6499d39dd56ae5939c681d524cc7f38fb2fb237db420558')
 
 package() {
 	cd "$pkgname-$pkgver"
