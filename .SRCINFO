@@ -1,8 +1,8 @@
 pkgbase = linux-rt-lts
 	pkgdesc = Linux RT LTS
-	pkgver = 5.15.34.40.realtime1
+	pkgver = 5.15.36.41.realtime1
 	pkgrel = 1
-	url = https://gitlab.archlinux.org/dvzrv/linux-rt-lts/-/commits/v5.15.34.40.realtime1
+	url = https://gitlab.archlinux.org/dvzrv/linux-rt-lts/-/commits/v5.15.36.41.realtime1
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -17,15 +17,15 @@ pkgbase = linux-rt-lts
 	makedepends = texlive-latexextra
 	makedepends = xmlto
 	options = !strip
-	source = git+https://gitlab.archlinux.org/dvzrv/linux-rt-lts.git/#tag=v5.15.34.40.realtime1?signed
+	source = git+https://gitlab.archlinux.org/dvzrv/linux-rt-lts.git/#tag=v5.15.36.41.realtime1?signed
 	source = config
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 5ED9A48FC54C0A22D1D0804CEBC26CDB5A56DE73
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha512sums = SKIP
-	sha512sums = 6f13259c004e19632cf78cb6cf93eb1ccb6d11e16ec89ac685e5826428703dadffcf2bfe06d8441513446fdc9eea065a68ca9147fbdddc30ef8c5abb015c7ade
+	sha512sums = 9f0bff7104f067b0d23ed5a199c9d76c0e57c7f9a524b3cce36aef00d6568a4af249158ae6c96f7a3bde09cab1a8f3328515b13d5bebb15cd02cac1d4e039e9c
 	b2sums = SKIP
-	b2sums = 4d18ba3285200c6ec10061c02d48fc01cc964fc97e551a66abceafd9daaef3823581333912cbc1d39fb81cbc5ca5b39b7ca8f717334d5986b6fc1ab20da4cf0c
+	b2sums = 43b0f729da2a6767f68dfe9f0680dcdb153a9bd133f72b0b6b4329ee0dbec132c7429d01198fa08da69b191140e173c034e070cbb0da77c495c20679bcc307a8
 
 pkgname = linux-rt-lts
 	pkgdesc = The Linux RT LTS kernel and modules
