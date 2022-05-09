@@ -1,7 +1,7 @@
 pkgbase = teal
 	pkgdesc = The compiler for Teal, a typed dialect of Lua
 	pkgver = 0.13.2
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/teal-language/tl
 	arch = any
 	license = MIT
