@@ -1,2 +1,3 @@
 u lshttpd - "OpenLiteSpeed Web Server" /opt/lsws
 u lsadm - "OpenLiteSpeed Admin" /opt/lsws
+m lsadm lshttpd

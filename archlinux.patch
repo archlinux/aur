@@ -1,6 +1,6 @@
-diff -ur --no-dereference openlitespeed-1.7.15-dist/addon/example/mtgetters.c openlitespeed-1.7.15/addon/example/mtgetters.c
---- openlitespeed-1.7.15-dist/addon/example/mtgetters.c	2022-02-22 10:46:35.000000000 -0500
-+++ openlitespeed-1.7.15/addon/example/mtgetters.c	2022-02-26 02:42:21.072588741 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/addon/example/mtgetters.c openlitespeed-1.7.15/addon/example/mtgetters.c
+--- openlitespeed-1.7.15-dist/addon/example/mtgetters.c	2022-04-27 16:24:47.000000000 -0400
++++ openlitespeed-1.7.15/addon/example/mtgetters.c	2022-05-09 04:56:06.182569202 -0400
 @@ -315,7 +315,7 @@
      }
  
@@ -10,9 +10,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/addon/example/mtgetters.c op
      if (LS_FAIL == g_api->get_file_stat(session, statpath, strlen(statpath), &st))
      {
          LSM_ERR((&MNAME), session, "get file stat failed\n");
-diff -ur --no-dereference openlitespeed-1.7.15-dist/build.sh openlitespeed-1.7.15/build.sh
---- openlitespeed-1.7.15-dist/build.sh	2022-02-22 10:46:35.000000000 -0500
-+++ openlitespeed-1.7.15/build.sh	2022-02-26 02:43:03.431812857 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/build.sh openlitespeed-1.7.15/build.sh
+--- openlitespeed-1.7.15-dist/build.sh	2022-04-27 16:24:47.000000000 -0400
++++ openlitespeed-1.7.15/build.sh	2022-05-09 05:00:11.250106415 -0400
 @@ -29,7 +29,7 @@
  if [ "${OS}" = "FreeBSD" ] ; then
      APP_MGRS="pkg"
@@ -101,9 +101,18 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/build.sh openlitespeed-1.7.1
  OPENLSWS_EXAMPLEPORT=8088
  CONFFILE=./ols.conf
      
-diff -ur --no-dereference openlitespeed-1.7.15-dist/configure openlitespeed-1.7.15/configure
---- openlitespeed-1.7.15-dist/configure	2022-02-22 11:28:56.000000000 -0500
-+++ openlitespeed-1.7.15/configure	2022-02-26 02:42:21.072588741 -0500
+@@ -669,7 +673,7 @@
+         echo OPENLSWS_PASSWORD=\${OPENLSWS_PASSWORD} >> ./ols.conf
+     fi
+ 
+-    echo "WebAdmin user/password is admin/\${OPENLSWS_PASSWORD}" > \$SERVERROOT/adminpasswd
++    echo "WebAdmin user/password is lsadm/\${OPENLSWS_PASSWORD}" > \$SERVERROOT/adminpasswd
+     chmod 600 \$SERVERROOT/adminpasswd
+ fi
+ 
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/configure openlitespeed-1.7.15/configure
+--- openlitespeed-1.7.15-dist/configure	2022-04-28 16:36:37.000000000 -0400
++++ openlitespeed-1.7.15/configure	2022-05-09 04:56:06.186569130 -0400
 @@ -595,7 +595,7 @@
  PACKAGE_BUGREPORT='info@litespeedtech.com'
  PACKAGE_URL='http://www.litespeedtech.com/'
@@ -131,9 +140,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/configure openlitespeed-1.7.
  fi
  
  
-diff -ur --no-dereference openlitespeed-1.7.15-dist/configure.ac openlitespeed-1.7.15/configure.ac
---- openlitespeed-1.7.15-dist/configure.ac	2022-02-22 10:46:35.000000000 -0500
-+++ openlitespeed-1.7.15/configure.ac	2022-02-26 02:42:21.072588741 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/configure.ac openlitespeed-1.7.15/configure.ac
+--- openlitespeed-1.7.15-dist/configure.ac	2022-04-27 16:24:47.000000000 -0400
++++ openlitespeed-1.7.15/configure.ac	2022-05-09 04:56:06.186569130 -0400
 @@ -13,7 +13,7 @@
  AC_CONFIG_HEADERS(src/config.h:src/config.h.in)
  
@@ -154,9 +163,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/configure.ac openlitespeed-1
  
  AC_ARG_WITH([pidfile],
              AS_HELP_STRING([--with-pidfile],[Set a customized pid file path name[default: $DEFAULT_TMP_DIR/lshttpd.pid]]),
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/add-ons/snmp_monitoring/class.litespeed_snmp_bridge.php openlitespeed-1.7.15/dist/add-ons/snmp_monitoring/class.litespeed_snmp_bridge.php
---- openlitespeed-1.7.15-dist/dist/add-ons/snmp_monitoring/class.litespeed_snmp_bridge.php	2022-02-22 10:46:35.000000000 -0500
-+++ openlitespeed-1.7.15/dist/add-ons/snmp_monitoring/class.litespeed_snmp_bridge.php	2022-02-26 02:42:21.072588741 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/add-ons/snmp_monitoring/class.litespeed_snmp_bridge.php openlitespeed-1.7.15/dist/add-ons/snmp_monitoring/class.litespeed_snmp_bridge.php
+--- openlitespeed-1.7.15-dist/dist/add-ons/snmp_monitoring/class.litespeed_snmp_bridge.php	2022-04-27 16:24:47.000000000 -0400
++++ openlitespeed-1.7.15/dist/add-ons/snmp_monitoring/class.litespeed_snmp_bridge.php	2022-05-09 04:56:06.186569130 -0400
 @@ -34,12 +34,12 @@
  class litespeed_snmp_bridge
  {
@@ -172,9 +181,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/add-ons/snmp_monitoring
      {
          $this->processes = (int) $processes;
          $this->report_path = trim($report_path);
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/add-ons/snmp_monitoring/class.litespeed_stats.php openlitespeed-1.7.15/dist/add-ons/snmp_monitoring/class.litespeed_stats.php
---- openlitespeed-1.7.15-dist/dist/add-ons/snmp_monitoring/class.litespeed_stats.php	2022-02-22 10:46:35.000000000 -0500
-+++ openlitespeed-1.7.15/dist/add-ons/snmp_monitoring/class.litespeed_stats.php	2022-02-26 02:42:21.072588741 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/add-ons/snmp_monitoring/class.litespeed_stats.php openlitespeed-1.7.15/dist/add-ons/snmp_monitoring/class.litespeed_stats.php
+--- openlitespeed-1.7.15-dist/dist/add-ons/snmp_monitoring/class.litespeed_stats.php	2022-04-27 16:24:47.000000000 -0400
++++ openlitespeed-1.7.15/dist/add-ons/snmp_monitoring/class.litespeed_stats.php	2022-05-09 04:56:06.186569130 -0400
 @@ -55,12 +55,12 @@
      //misc settings
  
@@ -190,9 +199,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/add-ons/snmp_monitoring
      {
          $this->processes = (int) $processes;
          $this->report_path = trim($report_path);
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/add-ons/snmp_monitoring/sample.php openlitespeed-1.7.15/dist/add-ons/snmp_monitoring/sample.php
---- openlitespeed-1.7.15-dist/dist/add-ons/snmp_monitoring/sample.php	2022-02-22 10:46:35.000000000 -0500
-+++ openlitespeed-1.7.15/dist/add-ons/snmp_monitoring/sample.php	2022-02-26 02:42:21.076588668 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/add-ons/snmp_monitoring/sample.php openlitespeed-1.7.15/dist/add-ons/snmp_monitoring/sample.php
+--- openlitespeed-1.7.15-dist/dist/add-ons/snmp_monitoring/sample.php	2022-04-27 16:24:47.000000000 -0400
++++ openlitespeed-1.7.15/dist/add-ons/snmp_monitoring/sample.php	2022-05-09 04:56:06.186569130 -0400
 @@ -12,7 +12,7 @@
  require_once("class.litespeed_snmp_bridge.php");
  
@@ -202,9 +211,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/add-ons/snmp_monitoring
  
  $cache_time = 0; //<-- seconds to cache parsed data
  $cache_file = "/tmp/_lsws_sampe_cache.txt"; //<-- cache file..full path.
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/add-ons/webcachemgr/src/Context/RootPanelContextOption.php openlitespeed-1.7.15/dist/add-ons/webcachemgr/src/Context/RootPanelContextOption.php
---- openlitespeed-1.7.15-dist/dist/add-ons/webcachemgr/src/Context/RootPanelContextOption.php	2022-01-10 13:57:18.000000000 -0500
-+++ openlitespeed-1.7.15/dist/add-ons/webcachemgr/src/Context/RootPanelContextOption.php	2022-02-26 02:42:21.076588668 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/add-ons/webcachemgr/src/Context/RootPanelContextOption.php openlitespeed-1.7.15/dist/add-ons/webcachemgr/src/Context/RootPanelContextOption.php
+--- openlitespeed-1.7.15-dist/dist/add-ons/webcachemgr/src/Context/RootPanelContextOption.php	2022-04-13 19:48:56.000000000 -0400
++++ openlitespeed-1.7.15/dist/add-ons/webcachemgr/src/Context/RootPanelContextOption.php	2022-05-09 04:56:06.186569130 -0400
 @@ -36,7 +36,7 @@
          $sharedTplDir = realpath(__DIR__ . '/../View/Tpl');
  
@@ -214,9 +223,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/add-ons/webcachemgr/src
          }
  
          $this->sharedTplDir = $sharedTplDir;
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/add-ons/webcachemgr/src/Panel/ControlPanel.php openlitespeed-1.7.15/dist/add-ons/webcachemgr/src/Panel/ControlPanel.php
---- openlitespeed-1.7.15-dist/dist/add-ons/webcachemgr/src/Panel/ControlPanel.php	2022-01-10 13:57:18.000000000 -0500
-+++ openlitespeed-1.7.15/dist/add-ons/webcachemgr/src/Panel/ControlPanel.php	2022-02-26 02:42:21.076588668 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/add-ons/webcachemgr/src/Panel/ControlPanel.php openlitespeed-1.7.15/dist/add-ons/webcachemgr/src/Panel/ControlPanel.php
+--- openlitespeed-1.7.15-dist/dist/add-ons/webcachemgr/src/Panel/ControlPanel.php	2022-04-13 19:48:56.000000000 -0400
++++ openlitespeed-1.7.15/dist/add-ons/webcachemgr/src/Panel/ControlPanel.php	2022-05-09 04:56:06.186569130 -0400
 @@ -429,7 +429,7 @@
       */
      public function isCacheEnabled()
@@ -226,9 +235,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/add-ons/webcachemgr/src
  
          if ( !file_exists($statusFile) ) {
              throw new LSCMException(
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/admin/html.open/lib/ows/RealTimeStats.php openlitespeed-1.7.15/dist/admin/html.open/lib/ows/RealTimeStats.php
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/admin/html.open/lib/ows/RealTimeStats.php openlitespeed-1.7.15/dist/admin/html.open/lib/ows/RealTimeStats.php
 --- openlitespeed-1.7.15-dist/dist/admin/html.open/lib/ows/RealTimeStats.php	2021-12-08 01:54:38.000000000 -0500
-+++ openlitespeed-1.7.15/dist/admin/html.open/lib/ows/RealTimeStats.php	2022-02-26 02:42:21.076588668 -0500
++++ openlitespeed-1.7.15/dist/admin/html.open/lib/ows/RealTimeStats.php	2022-05-09 04:56:06.186569130 -0400
 @@ -50,7 +50,7 @@
      {
          $this->_rawdata = '';
@@ -238,9 +247,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/admin/html.open/lib/ows
  
          $rtrpt = rtrim($statsDir, '/') . '/.rtreport';
          for ($i = 1; $i <= $processes; $i ++) {
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/admin/html.open/lib/SInfo.php openlitespeed-1.7.15/dist/admin/html.open/lib/SInfo.php
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/admin/html.open/lib/SInfo.php openlitespeed-1.7.15/dist/admin/html.open/lib/SInfo.php
 --- openlitespeed-1.7.15-dist/dist/admin/html.open/lib/SInfo.php	2021-12-08 01:54:38.000000000 -0500
-+++ openlitespeed-1.7.15/dist/admin/html.open/lib/SInfo.php	2022-02-26 02:42:21.076588668 -0500
++++ openlitespeed-1.7.15/dist/admin/html.open/lib/SInfo.php	2022-05-09 04:56:06.186569130 -0400
 @@ -22,8 +22,8 @@
      private $_serverLog = null;
      private $_serverLastModTime = 100;
@@ -261,9 +270,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/admin/html.open/lib/SIn
          $status = rtrim($statsDir, '/') . '/.status';
          return $status;
      }
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/admin/html.open/res/lang/en-US_tips.php openlitespeed-1.7.15/dist/admin/html.open/res/lang/en-US_tips.php
---- openlitespeed-1.7.15-dist/dist/admin/html.open/res/lang/en-US_tips.php	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/admin/html.open/res/lang/en-US_tips.php	2022-02-26 02:42:21.076588668 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/admin/html.open/res/lang/en-US_tips.php openlitespeed-1.7.15/dist/admin/html.open/res/lang/en-US_tips.php
+--- openlitespeed-1.7.15-dist/dist/admin/html.open/res/lang/en-US_tips.php	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/admin/html.open/res/lang/en-US_tips.php	2022-05-09 04:56:06.190569057 -0400
 @@ -160,7 +160,7 @@
  
  $_tipsdb['cgi_path'] = new DAttrHelp("Path", 'Specifies the location of CGI scripts.', '', 'The path can be a directory that contains a group of CGI scripts, like $VH_ROOT/myapp/cgi-bin/. In this case, the context &quot;URI&quot; must end with &quot;/&quot;, like /app1/cgi/. The Path can also specify only one CGI script, like $VH_ROOT/myapp/myscript.pl. This script should have the corresponding &quot;URI&quot; /myapp/myscript.pl.', '');
@@ -363,9 +372,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/admin/html.open/res/lan
  
  $_tipsdb['EDTP:extAppName'] = array('Give a name that easy to remember, other places will refer to this app by its name.');
  
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/admin/html.open/res/lang/ja-JP_tips.php openlitespeed-1.7.15/dist/admin/html.open/res/lang/ja-JP_tips.php
---- openlitespeed-1.7.15-dist/dist/admin/html.open/res/lang/ja-JP_tips.php	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/admin/html.open/res/lang/ja-JP_tips.php	2022-02-26 02:42:21.076588668 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/admin/html.open/res/lang/ja-JP_tips.php openlitespeed-1.7.15/dist/admin/html.open/res/lang/ja-JP_tips.php
+--- openlitespeed-1.7.15-dist/dist/admin/html.open/res/lang/ja-JP_tips.php	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/admin/html.open/res/lang/ja-JP_tips.php	2022-05-09 04:56:06.190569057 -0400
 @@ -160,7 +160,7 @@
  
  $_tipsdb['cgi_path'] = new DAttrHelp("パス", 'CGIスクリプトの場所を指定します。', '', 'パスは$VH_ROOT/myapp/cgi-bin/のようなCGIスクリプトのグループが含まれているディレクトリにすることができます。 この場合、コンテキスト&quot;URI&quot;は/app1/cgi/のように &quot;/&quot;で終わらなければなりません。 パスは、$VH_ROOT/myapp/myscript.plのように、CGIスクリプトを1つだけ指定することもできます。 このスクリプトには対応する&quot;URI&quot;/myapp/myscript.plが必要です。', '');
@@ -447,9 +456,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/admin/html.open/res/lan
  
  $_tipsdb['EDTP:extAppName'] = array('覚えやすい名前をつけ、他の場所はその名前でこのアプリを参照します。');
  
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/admin/html.open/res/lang/zh-CN_tips.php openlitespeed-1.7.15/dist/admin/html.open/res/lang/zh-CN_tips.php
---- openlitespeed-1.7.15-dist/dist/admin/html.open/res/lang/zh-CN_tips.php	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/admin/html.open/res/lang/zh-CN_tips.php	2022-02-26 02:42:21.076588668 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/admin/html.open/res/lang/zh-CN_tips.php openlitespeed-1.7.15/dist/admin/html.open/res/lang/zh-CN_tips.php
+--- openlitespeed-1.7.15-dist/dist/admin/html.open/res/lang/zh-CN_tips.php	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/admin/html.open/res/lang/zh-CN_tips.php	2022-05-09 04:56:06.190569057 -0400
 @@ -160,7 +160,7 @@
  
  $_tipsdb['cgi_path'] = new DAttrHelp("路径", '指定CGI脚本的位置.', '', 'The path can be a directory that contains a group of CGI scripts, like $VH_ROOT/myapp/cgi-bin/. In this case, the context &quot;URI&quot; must end with &quot;/&quot;, like /app1/cgi/. The Path can also specify only one CGI script, like $VH_ROOT/myapp/myscript.pl. This script should have the corresponding &quot;URI&quot; /myapp/myscript.pl.', '');
@@ -549,9 +558,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/admin/html.open/res/lan
  
  $_tipsdb['EDTP:extAppName'] = array('Give a name that easy to remember, other places will refer to this app by its name.');
  
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/admin/html.open/view/compilePHP.php openlitespeed-1.7.15/dist/admin/html.open/view/compilePHP.php
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/admin/html.open/view/compilePHP.php openlitespeed-1.7.15/dist/admin/html.open/view/compilePHP.php
 --- openlitespeed-1.7.15-dist/dist/admin/html.open/view/compilePHP.php	2021-12-08 01:54:38.000000000 -0500
-+++ openlitespeed-1.7.15/dist/admin/html.open/view/compilePHP.php	2022-02-26 02:42:21.076588668 -0500
++++ openlitespeed-1.7.15/dist/admin/html.open/view/compilePHP.php	2022-05-09 04:56:06.194568984 -0400
 @@ -191,7 +191,7 @@
  
  		$phpversion = BuildConfig::GetVersion(BuildConfig::PHP_VERSION);
@@ -570,9 +579,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/admin/html.open/view/co
  		$buf .= $this->form_group(DMsg::ALbl('buildphp_addonmodules'), false, $input, '', $note);
  
  		$buf .= $this->form_end();
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/admin/misc/convertxml.sh openlitespeed-1.7.15/dist/admin/misc/convertxml.sh
---- openlitespeed-1.7.15-dist/dist/admin/misc/convertxml.sh	2022-02-22 10:46:35.000000000 -0500
-+++ openlitespeed-1.7.15/dist/admin/misc/convertxml.sh	2022-02-26 02:42:21.076588668 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/admin/misc/convertxml.sh openlitespeed-1.7.15/dist/admin/misc/convertxml.sh
+--- openlitespeed-1.7.15-dist/dist/admin/misc/convertxml.sh	2022-04-27 16:24:47.000000000 -0400
++++ openlitespeed-1.7.15/dist/admin/misc/convertxml.sh	2022-05-09 04:56:06.194568984 -0400
 @@ -7,7 +7,7 @@
  echo "Coverting XML fortmat configuration files to plain text configuration files."
  
@@ -582,21 +591,27 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/admin/misc/convertxml.s
          echo Usage: $0 Server_Root
          echo .
          exit 1
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/admin/misc/lshttpd.service.in openlitespeed-1.7.15/dist/admin/misc/lshttpd.service.in
---- openlitespeed-1.7.15-dist/dist/admin/misc/lshttpd.service.in	2022-02-22 10:46:35.000000000 -0500
-+++ openlitespeed-1.7.15/dist/admin/misc/lshttpd.service.in	2022-02-26 02:42:21.076588668 -0500
-@@ -11,7 +11,7 @@
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/admin/misc/lshttpd.service.in openlitespeed-1.7.15/dist/admin/misc/lshttpd.service.in
+--- openlitespeed-1.7.15-dist/dist/admin/misc/lshttpd.service.in	2022-04-27 16:24:47.000000000 -0400
++++ openlitespeed-1.7.15/dist/admin/misc/lshttpd.service.in	2022-05-09 04:56:06.194568984 -0400
+@@ -6,12 +6,12 @@
+ 
+ [Service]
+ Type=forking
+-PIDFile=/var/run/openlitespeed.pid
++PIDFile=/run/lshttpd/lshttpd.pid
+ ExecStart=%LSWS_CTRL% start
  ExecReload=%LSWS_CTRL% restart 
  ExecStop=%LSWS_CTRL% delay-stop
  
 -KillMode=none
-+KillMode=mixed
++KillMode=control-group
  PrivateTmp=false
  Restart=on-failure
  RestartSec=5
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/admin/misc/lsup.sh openlitespeed-1.7.15/dist/admin/misc/lsup.sh
---- openlitespeed-1.7.15-dist/dist/admin/misc/lsup.sh	2022-02-22 11:28:38.000000000 -0500
-+++ openlitespeed-1.7.15/dist/admin/misc/lsup.sh	2022-02-26 02:42:21.076588668 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/admin/misc/lsup.sh openlitespeed-1.7.15/dist/admin/misc/lsup.sh
+--- openlitespeed-1.7.15-dist/dist/admin/misc/lsup.sh	2022-04-28 16:36:21.000000000 -0400
++++ openlitespeed-1.7.15/dist/admin/misc/lsup.sh	2022-05-09 04:56:06.194568984 -0400
 @@ -3,7 +3,7 @@
  LSUPVERSION=v2.83-9/29/2020
  LOCKFILE=/tmp/olsupdatingflag
@@ -687,9 +702,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/admin/misc/lsup.sh open
  if [ -e /dev/shm/ols ] ; then
      rm -rf /dev/shm/ols/*
  else 
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/bin/lswsctrl openlitespeed-1.7.15/dist/bin/lswsctrl
---- openlitespeed-1.7.15-dist/dist/bin/lswsctrl	2022-02-22 10:46:35.000000000 -0500
-+++ openlitespeed-1.7.15/dist/bin/lswsctrl	2022-02-26 02:42:21.076588668 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/bin/lswsctrl openlitespeed-1.7.15/dist/bin/lswsctrl
+--- openlitespeed-1.7.15-dist/dist/bin/lswsctrl	2022-04-27 16:24:47.000000000 -0400
++++ openlitespeed-1.7.15/dist/bin/lswsctrl	2022-05-09 04:56:06.194568984 -0400
 @@ -19,8 +19,8 @@
  
  # if the lsws_env is empty or not exist, still need to set the default values
@@ -701,9 +716,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/bin/lswsctrl openlitesp
  fi
  
  RESTART_LOG="$BASE_DIR/../logs/lsrestart.log"
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/admin.html openlitespeed-1.7.15/dist/docs/admin.html
---- openlitespeed-1.7.15-dist/dist/docs/admin.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/admin.html	2022-02-26 02:42:21.076588668 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/admin.html openlitespeed-1.7.15/dist/docs/admin.html
+--- openlitespeed-1.7.15-dist/dist/docs/admin.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/admin.html	2022-05-09 04:56:06.194568984 -0400
 @@ -112,19 +112,19 @@
  	<span class="cmd">[your install dir]/admin/misc/admpass.sh</span> </p>
  </li>
@@ -739,9 +754,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/admin.html openlit
  	<p>By running a &quot;ps&quot; command:<br>
  		FreeBSD: <span class="cmd">ps -x | grep lshttpd</span><br>
  		Others: <span class="cmd">ps -ef | grep lshttpd</span><br>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/CompilePHP_Help.html openlitespeed-1.7.15/dist/docs/CompilePHP_Help.html
---- openlitespeed-1.7.15-dist/dist/docs/CompilePHP_Help.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/CompilePHP_Help.html	2022-02-26 02:42:21.076588668 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/CompilePHP_Help.html openlitespeed-1.7.15/dist/docs/CompilePHP_Help.html
+--- openlitespeed-1.7.15-dist/dist/docs/CompilePHP_Help.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/CompilePHP_Help.html	2022-05-09 04:56:06.194568984 -0400
 @@ -100,7 +100,7 @@
  <a href="#extrapathenv">Extra PATH Environment Variables</a> | <a href="#installpathprefix">Installation Path Prefix</a> | <a href="#compilerflags">Compiler Flags</a> | <a href="#configureparams">Configure Parameters</a> | <a href="#addonmodules">Add-on Modules</a></p></section>
  </section>
@@ -751,9 +766,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/CompilePHP_Help.ht
  <div class="helpitem"><article class="ls-helpitem"><div><header id="compilerflags"><h3>Compiler Flags<span class="ls-permlink"><a href="#compilerflags"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Add additional compiler flags, like optimized compiler options.</p> <h4>Syntax</h4><p>Supported flags are CFLAGS, CXXFLAGS, CPPFLAGS, LDFLAGS. Use a space to separate different flags.  Use single quotes (not double quotes) for flag values.</p> <h4>Example</h4><div class="ls-example">CFLAGS='-O3 -msse2 -msse3 -msse4.1 -msse4.2 -msse4 -mavx'</div></article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="configureparams"><h3>Configure Parameters<span class="ls-permlink"><a href="#configureparams"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Configure parameters for PHP build. Apache-specific parameters and "--prefix" value will be automatically  removed and "--with-litespeed" will be automatically appended when you click Next Step.  (Prefix can be set in the field above.) This way you can simply copy and paste the configure  parameters from the phpinfo() output of an existing working PHP build.</p> <h4>Syntax</h4><p>Space-delimited series of options (with or without double quotes)</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="addonmodules"><h3>Add-on Modules<span class="ls-permlink"><a href="#addonmodules"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Select the add-on modules you wish to use.   If you want to use a version not listed here, you can manually update the source code.  (The location of the source code is shown in a prompt at this step of the PHP build.)</p> <h4>Syntax</h4><p>Select from checkbox</p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/External_FCGI_Auth.html openlitespeed-1.7.15/dist/docs/External_FCGI_Auth.html
---- openlitespeed-1.7.15-dist/dist/docs/External_FCGI_Auth.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/External_FCGI_Auth.html	2022-02-26 02:42:21.076588668 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/External_FCGI_Auth.html openlitespeed-1.7.15/dist/docs/External_FCGI_Auth.html
+--- openlitespeed-1.7.15-dist/dist/docs/External_FCGI_Auth.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/External_FCGI_Auth.html	2022-05-09 04:56:06.194568984 -0400
 @@ -100,7 +100,7 @@
  <a href="#extAppName">Name</a> | <a href="#extAppAddress">Address</a> | <a href="#maxConns">Max Connections</a> | <a href="#env">Environment</a> | <a href="#initTimeout">Initial Request Timeout (secs)</a> | <a href="#retryTimeout">Retry Timeout (secs)</a> | <a href="#persistConn">Persistent Connection</a> | <a href="#pcKeepAliveTimeout">Connection Keepalive Timeout</a> | <a href="#respBuffer">Response Buffering</a> | <a href="#autoStart">Start By Server</a> | <a href="#extAppPath">Command</a> | <a href="#backlog">Back Log</a> | <a href="#instances">Instances</a> | <a href="#extUser">Run As User</a> | <a href="#extGroup">Run As Group</a> | <a href="#extUmask">umask</a> | <a href="#runOnStartUp">Run On Start Up</a> | <a href="#extMaxIdleTime">Max Idle Time</a> | <a href="#extAppPriority">Priority</a> | <a href="#memSoftLimit">Memory Soft Limit (bytes)</a> | <a href="#memHardLimit">Memory Hard Limit (bytes)</a> | <a href="#procSoftLimit">Process Soft Limit</a> | <a href="#procHardLimit">Process Hard Limit</a></p></section>
  </section>
@@ -763,9 +778,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/External_FCGI_Auth
  <div class="helpitem"><article class="ls-helpitem"><div><header id="maxConns"><h3>Max Connections<span class="ls-permlink"><a href="#maxConns"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies the maximum number of concurrent connections that can be established between the server and an external application. This setting controls how many requests can be processed concurrently by an external application, however, the real limit also depends on the external application itself. Setting this value higher will not help if the external application is not fast enough or cannot scale to a large number of concurrent requests.</p> <h4>Syntax</h4><p>Integer number</p> <h4>Tips</h4><p><span title="Performance" class="ls-icon-performance"></span> Setting a high value does not directly translate to higher performance. Setting the limit to a value that will not overload the external application will provide the best performance/throughput.</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="env"><h3>Environment<span class="ls-permlink"><a href="#env"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies extra environment variables for the external application.</p> <h4>Syntax</h4><p>Key=value. Multiple variables can be separated by "ENTER"</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="initTimeout"><h3>Initial Request Timeout (secs)<span class="ls-permlink"><a href="#initTimeout"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies the maximum time in seconds the server will wait for the external application to respond to the first request over a new established connection. If the server does not receive any data from the external application within this timeout limit, it will mark this connection as bad. This helps to identify communication problems with external applications as quickly as possible. If some requests take longer to process, increase this limit to avoid 503 error messages.</p> <h4>Syntax</h4><p>Integer number</p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/External_FCGI.html openlitespeed-1.7.15/dist/docs/External_FCGI.html
---- openlitespeed-1.7.15-dist/dist/docs/External_FCGI.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/External_FCGI.html	2022-02-26 02:42:21.080588595 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/External_FCGI.html openlitespeed-1.7.15/dist/docs/External_FCGI.html
+--- openlitespeed-1.7.15-dist/dist/docs/External_FCGI.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/External_FCGI.html	2022-05-09 04:56:06.194568984 -0400
 @@ -100,7 +100,7 @@
  <a href="#extAppName">Name</a> | <a href="#extAppAddress">Address</a> | <a href="#maxConns">Max Connections</a> | <a href="#env">Environment</a> | <a href="#initTimeout">Initial Request Timeout (secs)</a> | <a href="#retryTimeout">Retry Timeout (secs)</a> | <a href="#persistConn">Persistent Connection</a> | <a href="#pcKeepAliveTimeout">Connection Keepalive Timeout</a> | <a href="#respBuffer">Response Buffering</a> | <a href="#autoStart">Start By Server</a> | <a href="#extAppPath">Command</a> | <a href="#backlog">Back Log</a> | <a href="#instances">Instances</a> | <a href="#extUser">Run As User</a> | <a href="#extGroup">Run As Group</a> | <a href="#extUmask">umask</a> | <a href="#runOnStartUp">Run On Start Up</a> | <a href="#extMaxIdleTime">Max Idle Time</a> | <a href="#extAppPriority">Priority</a> | <a href="#memSoftLimit">Memory Soft Limit (bytes)</a> | <a href="#memHardLimit">Memory Hard Limit (bytes)</a> | <a href="#procSoftLimit">Process Soft Limit</a> | <a href="#procHardLimit">Process Hard Limit</a></p></section>
  </section>
@@ -775,9 +790,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/External_FCGI.html
  <div class="helpitem"><article class="ls-helpitem"><div><header id="maxConns"><h3>Max Connections<span class="ls-permlink"><a href="#maxConns"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies the maximum number of concurrent connections that can be established between the server and an external application. This setting controls how many requests can be processed concurrently by an external application, however, the real limit also depends on the external application itself. Setting this value higher will not help if the external application is not fast enough or cannot scale to a large number of concurrent requests.</p> <h4>Syntax</h4><p>Integer number</p> <h4>Tips</h4><p><span title="Performance" class="ls-icon-performance"></span> Setting a high value does not directly translate to higher performance. Setting the limit to a value that will not overload the external application will provide the best performance/throughput.</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="env"><h3>Environment<span class="ls-permlink"><a href="#env"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies extra environment variables for the external application.</p> <h4>Syntax</h4><p>Key=value. Multiple variables can be separated by "ENTER"</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="initTimeout"><h3>Initial Request Timeout (secs)<span class="ls-permlink"><a href="#initTimeout"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies the maximum time in seconds the server will wait for the external application to respond to the first request over a new established connection. If the server does not receive any data from the external application within this timeout limit, it will mark this connection as bad. This helps to identify communication problems with external applications as quickly as possible. If some requests take longer to process, increase this limit to avoid 503 error messages.</p> <h4>Syntax</h4><p>Integer number</p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/External_LSAPI.html openlitespeed-1.7.15/dist/docs/External_LSAPI.html
---- openlitespeed-1.7.15-dist/dist/docs/External_LSAPI.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/External_LSAPI.html	2022-02-26 02:42:21.080588595 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/External_LSAPI.html openlitespeed-1.7.15/dist/docs/External_LSAPI.html
+--- openlitespeed-1.7.15-dist/dist/docs/External_LSAPI.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/External_LSAPI.html	2022-05-09 04:56:06.198568911 -0400
 @@ -100,7 +100,7 @@
  <a href="#extAppName">Name</a> | <a href="#extAppAddress">Address</a> | <a href="#maxConns">Max Connections</a> | <a href="#env">Environment</a> | <a href="#initTimeout">Initial Request Timeout (secs)</a> | <a href="#retryTimeout">Retry Timeout (secs)</a> | <a href="#persistConn">Persistent Connection</a> | <a href="#pcKeepAliveTimeout">Connection Keepalive Timeout</a> | <a href="#respBuffer">Response Buffering</a> | <a href="#autoStart">Start By Server</a> | <a href="#extAppPath">Command</a> | <a href="#backlog">Back Log</a> | <a href="#instances">Instances</a> | <a href="#extUser">Run As User</a> | <a href="#extGroup">Run As Group</a> | <a href="#extUmask">umask</a> | <a href="#runOnStartUp">Run On Start Up</a> | <a href="#extMaxIdleTime">Max Idle Time</a> | <a href="#extAppPriority">Priority</a> | <a href="#memSoftLimit">Memory Soft Limit (bytes)</a> | <a href="#memHardLimit">Memory Hard Limit (bytes)</a> | <a href="#procSoftLimit">Process Soft Limit</a> | <a href="#procHardLimit">Process Hard Limit</a></p></section>
  </section>
@@ -787,9 +802,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/External_LSAPI.htm
  <div class="helpitem"><article class="ls-helpitem"><div><header id="maxConns"><h3>Max Connections<span class="ls-permlink"><a href="#maxConns"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies the maximum number of concurrent connections that can be established between the server and an external application. This setting controls how many requests can be processed concurrently by an external application, however, the real limit also depends on the external application itself. Setting this value higher will not help if the external application is not fast enough or cannot scale to a large number of concurrent requests.</p> <h4>Syntax</h4><p>Integer number</p> <h4>Tips</h4><p><span title="Performance" class="ls-icon-performance"></span> Setting a high value does not directly translate to higher performance. Setting the limit to a value that will not overload the external application will provide the best performance/throughput.</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="env"><h3>Environment<span class="ls-permlink"><a href="#env"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies extra environment variables for the external application.</p> <h4>Syntax</h4><p>Key=value. Multiple variables can be separated by "ENTER"</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="initTimeout"><h3>Initial Request Timeout (secs)<span class="ls-permlink"><a href="#initTimeout"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies the maximum time in seconds the server will wait for the external application to respond to the first request over a new established connection. If the server does not receive any data from the external application within this timeout limit, it will mark this connection as bad. This helps to identify communication problems with external applications as quickly as possible. If some requests take longer to process, increase this limit to avoid 503 error messages.</p> <h4>Syntax</h4><p>Integer number</p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/External_PL.html openlitespeed-1.7.15/dist/docs/External_PL.html
---- openlitespeed-1.7.15-dist/dist/docs/External_PL.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/External_PL.html	2022-02-26 02:42:21.080588595 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/External_PL.html openlitespeed-1.7.15/dist/docs/External_PL.html
+--- openlitespeed-1.7.15-dist/dist/docs/External_PL.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/External_PL.html	2022-05-09 04:56:06.198568911 -0400
 @@ -100,7 +100,7 @@
  <a href="#extAppName">Name</a> | <a href="#extAppAddress">Address</a> | <a href="#maxConns">Max Connections</a> | <a href="#env">Environment</a> | <a href="#extAppPath">Command</a> | <a href="#instances">Instances</a> | <a href="#extUser">Run As User</a> | <a href="#extGroup">Run As Group</a> | <a href="#extUmask">umask</a> | <a href="#extAppPriority">Priority</a></p></section>
  </section>
@@ -799,9 +814,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/External_PL.html o
  <div class="helpitem"><article class="ls-helpitem"><div><header id="maxConns"><h3>Max Connections<span class="ls-permlink"><a href="#maxConns"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies the maximum number of concurrent connections that can be established between the server and an external application. This setting controls how many requests can be processed concurrently by an external application, however, the real limit also depends on the external application itself. Setting this value higher will not help if the external application is not fast enough or cannot scale to a large number of concurrent requests.</p> <h4>Syntax</h4><p>Integer number</p> <h4>Tips</h4><p><span title="Performance" class="ls-icon-performance"></span> Setting a high value does not directly translate to higher performance. Setting the limit to a value that will not overload the external application will provide the best performance/throughput.</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="env"><h3>Environment<span class="ls-permlink"><a href="#env"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies extra environment variables for the external application.</p> <h4>Syntax</h4><p>Key=value. Multiple variables can be separated by "ENTER"</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="extAppPath"><h3>Command<span class="ls-permlink"><a href="#extAppPath"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies the full command line including parameters to execute the external application. Required value if <span class="tagl"><a href="#autoStart">Start By Server</a></span> is enabled. A parameter should be quoted with a double or single quote if the parameter contains space or tab characters.</p> <h4>Syntax</h4><p>Full path to the executable with optional parameters.</p> <h4>See Also</h4><p class="ls-text-small"><span class="tagl"><a href="#autoStart">Start By Server</a></span></p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/External_Servlet.html openlitespeed-1.7.15/dist/docs/External_Servlet.html
---- openlitespeed-1.7.15-dist/dist/docs/External_Servlet.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/External_Servlet.html	2022-02-26 02:42:21.080588595 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/External_Servlet.html openlitespeed-1.7.15/dist/docs/External_Servlet.html
+--- openlitespeed-1.7.15-dist/dist/docs/External_Servlet.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/External_Servlet.html	2022-05-09 04:56:06.198568911 -0400
 @@ -100,7 +100,7 @@
  <a href="#extAppName">Name</a> | <a href="#extAppAddress">Address</a> | <a href="#maxConns">Max Connections</a> | <a href="#pcKeepAliveTimeout">Connection Keepalive Timeout</a> | <a href="#env">Environment</a> | <a href="#initTimeout">Initial Request Timeout (secs)</a> | <a href="#retryTimeout">Retry Timeout (secs)</a> | <a href="#respBuffer">Response Buffering</a></p></section>
  </section>
@@ -811,9 +826,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/External_Servlet.h
  <div class="helpitem"><article class="ls-helpitem"><div><header id="maxConns"><h3>Max Connections<span class="ls-permlink"><a href="#maxConns"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies the maximum number of concurrent connections that can be established between the server and an external application. This setting controls how many requests can be processed concurrently by an external application, however, the real limit also depends on the external application itself. Setting this value higher will not help if the external application is not fast enough or cannot scale to a large number of concurrent requests.</p> <h4>Syntax</h4><p>Integer number</p> <h4>Tips</h4><p><span title="Performance" class="ls-icon-performance"></span> Setting a high value does not directly translate to higher performance. Setting the limit to a value that will not overload the external application will provide the best performance/throughput.</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="pcKeepAliveTimeout"><h3>Connection Keepalive Timeout<span class="ls-permlink"><a href="#pcKeepAliveTimeout"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies the maximum time in seconds to keep an idle persistent connection open.<br/><br/> When set to "-1", the connection will never timeout. When set to 0 or greater, the connection will be closed after this time in seconds has passed.</p> <h4>Syntax</h4><p>int</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="env"><h3>Environment<span class="ls-permlink"><a href="#env"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies extra environment variables for the external application.</p> <h4>Syntax</h4><p>Key=value. Multiple variables can be separated by "ENTER"</p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/External_WS.html openlitespeed-1.7.15/dist/docs/External_WS.html
---- openlitespeed-1.7.15-dist/dist/docs/External_WS.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/External_WS.html	2022-02-26 02:42:21.080588595 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/External_WS.html openlitespeed-1.7.15/dist/docs/External_WS.html
+--- openlitespeed-1.7.15-dist/dist/docs/External_WS.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/External_WS.html	2022-05-09 04:56:06.198568911 -0400
 @@ -100,7 +100,7 @@
  <a href="#extAppName">Name</a> | <a href="#expWSAddress">Address</a> | <a href="#maxConns">Max Connections</a> | <a href="#pcKeepAliveTimeout">Connection Keepalive Timeout</a> | <a href="#env">Environment</a> | <a href="#initTimeout">Initial Request Timeout (secs)</a> | <a href="#retryTimeout">Retry Timeout (secs)</a> | <a href="#respBuffer">Response Buffering</a></p></section>
  </section>
@@ -823,9 +838,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/External_WS.html o
  <div class="helpitem"><article class="ls-helpitem"><div><header id="maxConns"><h3>Max Connections<span class="ls-permlink"><a href="#maxConns"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies the maximum number of concurrent connections that can be established between the server and an external application. This setting controls how many requests can be processed concurrently by an external application, however, the real limit also depends on the external application itself. Setting this value higher will not help if the external application is not fast enough or cannot scale to a large number of concurrent requests.</p> <h4>Syntax</h4><p>Integer number</p> <h4>Tips</h4><p><span title="Performance" class="ls-icon-performance"></span> Setting a high value does not directly translate to higher performance. Setting the limit to a value that will not overload the external application will provide the best performance/throughput.</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="pcKeepAliveTimeout"><h3>Connection Keepalive Timeout<span class="ls-permlink"><a href="#pcKeepAliveTimeout"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies the maximum time in seconds to keep an idle persistent connection open.<br/><br/> When set to "-1", the connection will never timeout. When set to 0 or greater, the connection will be closed after this time in seconds has passed.</p> <h4>Syntax</h4><p>int</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="env"><h3>Environment<span class="ls-permlink"><a href="#env"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies extra environment variables for the external application.</p> <h4>Syntax</h4><p>Key=value. Multiple variables can be separated by "ENTER"</p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/install.html openlitespeed-1.7.15/dist/docs/install.html
---- openlitespeed-1.7.15-dist/dist/docs/install.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/install.html	2022-02-26 02:42:21.080588595 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/install.html openlitespeed-1.7.15/dist/docs/install.html
+--- openlitespeed-1.7.15-dist/dist/docs/install.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/install.html	2022-05-09 04:56:06.198568911 -0400
 @@ -233,7 +233,7 @@
        The swapping directory is configured in the server's XML configuration
        file: [your_install_dir]/conf/httpd_config.xml. Search the XML file for
@@ -835,9 +850,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/install.html openl
      </p>
      <p>
        If you still have problems with installation, please check out our wiki
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/admin.html openlitespeed-1.7.15/dist/docs/ja-JP/admin.html
---- openlitespeed-1.7.15-dist/dist/docs/ja-JP/admin.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/ja-JP/admin.html	2022-02-26 02:42:21.080588595 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/admin.html openlitespeed-1.7.15/dist/docs/ja-JP/admin.html
+--- openlitespeed-1.7.15-dist/dist/docs/ja-JP/admin.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/ja-JP/admin.html	2022-05-09 04:56:06.198568911 -0400
 @@ -96,19 +96,19 @@
  	<span class="cmd">[your install dir]/admin/misc/admpass.sh</span> </p>
  </li>
@@ -873,9 +888,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/admin.html o
  	<p>'ps'コマンドを実行することにより：<br>
  		FreeBSD: <span class="cmd">ps -x | grep lshttpd</span><br>
  		Others: <span class="cmd">ps -ef | grep lshttpd</span><br>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/CompilePHP_Help.html openlitespeed-1.7.15/dist/docs/ja-JP/CompilePHP_Help.html
---- openlitespeed-1.7.15-dist/dist/docs/ja-JP/CompilePHP_Help.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/ja-JP/CompilePHP_Help.html	2022-02-26 02:42:21.080588595 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/CompilePHP_Help.html openlitespeed-1.7.15/dist/docs/ja-JP/CompilePHP_Help.html
+--- openlitespeed-1.7.15-dist/dist/docs/ja-JP/CompilePHP_Help.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/ja-JP/CompilePHP_Help.html	2022-05-09 04:56:06.198568911 -0400
 @@ -85,7 +85,7 @@
  <a href="#extrapathenv">特別なPATH環境変数</a> | <a href="#installpathprefix">インストールパスのプレフィックス</a> | <a href="#compilerflags">コンパイラフラグ</a> | <a href="#configureparams">パラメータの設定</a> | <a href="#addonmodules">アドオンモジュール</a></p></section>
  </section>
@@ -885,9 +900,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/CompilePHP_H
  <div class="helpitem"><article class="ls-helpitem"><div><header id="compilerflags"><h3>コンパイラフラグ<span class="ls-permlink"><a href="#compilerflags"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>最適化されたコンパイラオプションのような追加のコンパイラフラグを追加します。</p> <h4>構文</h4><p>サポートされているフラグは、CFLAGS、CXXFLAGS、CPPFLAGS、LDFLAGSです。 スペースを使用して、異なるフラグを区切ります。 フラグ値には一重引用符（二重引用符ではない）を使用します。</p> <h4>例</h4><div class="ls-example">CFLAGS='-O3 -msse2 -msse3 -msse4.1 -msse4.2 -msse4 -mavx'</div></article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="configureparams"><h3>パラメータの設定<span class="ls-permlink"><a href="#configureparams"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>PHPビルド用のパラメータを設定します。 Apache固有のパラメータと " - prefix"の値は自動的に削除され、次のステップをクリックすると "--with-litespeed"が自動的に追加されます。 （前のフィールドにプレフィックスを設定することができます）このようにして、既存の動作中のPHPビルドのphpinfo（）出力からconfigureパラメータをコピーして貼り付けることができます。</p> <h4>構文</h4><p>スペース区切りの一連のオプション（二重引用符を使用する場合と使用しない場合）</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="addonmodules"><h3>アドオンモジュール<span class="ls-permlink"><a href="#addonmodules"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>使用するアドオンモジュールを選択します。 ここに記載されていないバージョンを使用する場合は、手動でソースコードを更新することができます。 （PHPビルドのこのステップでは、ソースコードの場所がプロンプトに表示されます）。</p> <h4>構文</h4><p>チェックボックスから選択</p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/External_FCGI_Auth.html openlitespeed-1.7.15/dist/docs/ja-JP/External_FCGI_Auth.html
---- openlitespeed-1.7.15-dist/dist/docs/ja-JP/External_FCGI_Auth.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/ja-JP/External_FCGI_Auth.html	2022-02-26 02:42:21.080588595 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/External_FCGI_Auth.html openlitespeed-1.7.15/dist/docs/ja-JP/External_FCGI_Auth.html
+--- openlitespeed-1.7.15-dist/dist/docs/ja-JP/External_FCGI_Auth.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/ja-JP/External_FCGI_Auth.html	2022-05-09 04:56:06.198568911 -0400
 @@ -85,7 +85,7 @@
  <a href="#extAppName">名前</a> | <a href="#extAppAddress">アドレス</a> | <a href="#maxConns">最大接続数</a> | <a href="#env">環境</a> | <a href="#initTimeout">初期要求タイムアウト（秒）</a> | <a href="#retryTimeout">リトライタイムアウト（秒）</a> | <a href="#persistConn">永続的な接続</a> | <a href="#pcKeepAliveTimeout">キープアライブタイムアウト（秒）</a> | <a href="#respBuffer">応答バッファリング</a> | <a href="#autoStart">自動スタート</a> | <a href="#extAppPath">コマンド</a> | <a href="#backlog">バックログ</a> | <a href="#instances">インスタンス</a> | <a href="#extUser">suEXECユーザー</a> | <a href="#extGroup">suEXECグループ</a> | <a href="#extUmask">umask</a> | <a href="#runOnStartUp">起動時に実行</a> | <a href="#extMaxIdleTime">最大アイドル時間</a> | <a href="#extAppPriority">優先度</a> | <a href="#memSoftLimit">メモリソフトリミット（バイト）</a> | <a href="#memHardLimit">メモリハードリミット</a> | <a href="#procSoftLimit">プロセスソフトリミット</a> | <a href="#procHardLimit">プロセスハードリミット</a></p></section>
  </section>
@@ -897,9 +912,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/External_FCG
  <div class="helpitem"><article class="ls-helpitem"><div><header id="maxConns"><h3>最大接続数<span class="ls-permlink"><a href="#maxConns"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>サーバーと外部アプリケーションの間で確立できる同時接続の最大数を指定します。 この設定は、外部アプリケーションによって同時に処理できる要求の数を制御しますが、実際の制限は外部アプリケーション自体によっても異なります。 この値を高く設定すると、外部アプリケーションの速度が不十分であるか、多数の同時要求に対応できない場合に役立ちません。</p> <h4>構文</h4><p>整数</p> <h4>ヒント</h4><p>[パフォーマンス]高い値を設定しても、高いパフォーマンスに直接変換されるわけではありません。 制限を外部アプリケーションに負荷をかけない値に設定すると、最高のパフォーマンス/スループットが得られます。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="env"><h3>環境<span class="ls-permlink"><a href="#env"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>外部アプリケーション用の追加の環境変数を指定します。</p> <h4>構文</h4><p>Key=value. 複数の変数は "ENTER"で区切ることができます。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="initTimeout"><h3>初期要求タイムアウト（秒）<span class="ls-permlink"><a href="#initTimeout"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>サーバーが、新しいアプリケーションが新しい確立された接続を介して最初の要求に応答するのを待つ最長時間を秒単位で指定します。 サーバーがこのタイムアウト制限内に外部アプリケーションからデータを受信しない場合、この接続は不良とマークされます。 これにより、外部アプリケーションとの通信の問題をできるだけ迅速に特定することができます。 処理に時間がかかるリクエストがある場合は、この制限を増やして503のエラー・メッセージを避けてください。</p> <h4>構文</h4><p>整数</p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/External_FCGI.html openlitespeed-1.7.15/dist/docs/ja-JP/External_FCGI.html
---- openlitespeed-1.7.15-dist/dist/docs/ja-JP/External_FCGI.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/ja-JP/External_FCGI.html	2022-02-26 02:42:21.080588595 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/External_FCGI.html openlitespeed-1.7.15/dist/docs/ja-JP/External_FCGI.html
+--- openlitespeed-1.7.15-dist/dist/docs/ja-JP/External_FCGI.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/ja-JP/External_FCGI.html	2022-05-09 04:56:06.198568911 -0400
 @@ -85,7 +85,7 @@
  <a href="#extAppName">名前</a> | <a href="#extAppAddress">アドレス</a> | <a href="#maxConns">最大接続数</a> | <a href="#env">環境</a> | <a href="#initTimeout">初期要求タイムアウト（秒）</a> | <a href="#retryTimeout">リトライタイムアウト（秒）</a> | <a href="#persistConn">永続的な接続</a> | <a href="#pcKeepAliveTimeout">キープアライブタイムアウト（秒）</a> | <a href="#respBuffer">応答バッファリング</a> | <a href="#autoStart">自動スタート</a> | <a href="#extAppPath">コマンド</a> | <a href="#backlog">バックログ</a> | <a href="#instances">インスタンス</a> | <a href="#extUser">suEXECユーザー</a> | <a href="#extGroup">suEXECグループ</a> | <a href="#extUmask">umask</a> | <a href="#runOnStartUp">起動時に実行</a> | <a href="#extMaxIdleTime">最大アイドル時間</a> | <a href="#extAppPriority">優先度</a> | <a href="#memSoftLimit">メモリソフトリミット（バイト）</a> | <a href="#memHardLimit">メモリハードリミット</a> | <a href="#procSoftLimit">プロセスソフトリミット</a> | <a href="#procHardLimit">プロセスハードリミット</a></p></section>
  </section>
@@ -909,9 +924,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/External_FCG
  <div class="helpitem"><article class="ls-helpitem"><div><header id="maxConns"><h3>最大接続数<span class="ls-permlink"><a href="#maxConns"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>サーバーと外部アプリケーションの間で確立できる同時接続の最大数を指定します。 この設定は、外部アプリケーションによって同時に処理できる要求の数を制御しますが、実際の制限は外部アプリケーション自体によっても異なります。 この値を高く設定すると、外部アプリケーションの速度が不十分であるか、多数の同時要求に対応できない場合に役立ちません。</p> <h4>構文</h4><p>整数</p> <h4>ヒント</h4><p>[パフォーマンス]高い値を設定しても、高いパフォーマンスに直接変換されるわけではありません。 制限を外部アプリケーションに負荷をかけない値に設定すると、最高のパフォーマンス/スループットが得られます。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="env"><h3>環境<span class="ls-permlink"><a href="#env"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>外部アプリケーション用の追加の環境変数を指定します。</p> <h4>構文</h4><p>Key=value. 複数の変数は "ENTER"で区切ることができます。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="initTimeout"><h3>初期要求タイムアウト（秒）<span class="ls-permlink"><a href="#initTimeout"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>サーバーが、新しいアプリケーションが新しい確立された接続を介して最初の要求に応答するのを待つ最長時間を秒単位で指定します。 サーバーがこのタイムアウト制限内に外部アプリケーションからデータを受信しない場合、この接続は不良とマークされます。 これにより、外部アプリケーションとの通信の問題をできるだけ迅速に特定することができます。 処理に時間がかかるリクエストがある場合は、この制限を増やして503のエラー・メッセージを避けてください。</p> <h4>構文</h4><p>整数</p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/External_LSAPI.html openlitespeed-1.7.15/dist/docs/ja-JP/External_LSAPI.html
---- openlitespeed-1.7.15-dist/dist/docs/ja-JP/External_LSAPI.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/ja-JP/External_LSAPI.html	2022-02-26 02:42:21.080588595 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/External_LSAPI.html openlitespeed-1.7.15/dist/docs/ja-JP/External_LSAPI.html
+--- openlitespeed-1.7.15-dist/dist/docs/ja-JP/External_LSAPI.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/ja-JP/External_LSAPI.html	2022-05-09 04:56:06.198568911 -0400
 @@ -85,7 +85,7 @@
  <a href="#extAppName">名前</a> | <a href="#extAppAddress">アドレス</a> | <a href="#maxConns">最大接続数</a> | <a href="#env">環境</a> | <a href="#initTimeout">初期要求タイムアウト（秒）</a> | <a href="#retryTimeout">リトライタイムアウト（秒）</a> | <a href="#persistConn">永続的な接続</a> | <a href="#pcKeepAliveTimeout">キープアライブタイムアウト（秒）</a> | <a href="#respBuffer">応答バッファリング</a> | <a href="#autoStart">自動スタート</a> | <a href="#extAppPath">コマンド</a> | <a href="#backlog">バックログ</a> | <a href="#instances">インスタンス</a> | <a href="#extUser">suEXECユーザー</a> | <a href="#extGroup">suEXECグループ</a> | <a href="#extUmask">umask</a> | <a href="#runOnStartUp">起動時に実行</a> | <a href="#extMaxIdleTime">最大アイドル時間</a> | <a href="#extAppPriority">優先度</a> | <a href="#memSoftLimit">メモリソフトリミット（バイト）</a> | <a href="#memHardLimit">メモリハードリミット</a> | <a href="#procSoftLimit">プロセスソフトリミット</a> | <a href="#procHardLimit">プロセスハードリミット</a></p></section>
  </section>
@@ -921,9 +936,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/External_LSA
  <div class="helpitem"><article class="ls-helpitem"><div><header id="maxConns"><h3>最大接続数<span class="ls-permlink"><a href="#maxConns"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>サーバーと外部アプリケーションの間で確立できる同時接続の最大数を指定します。 この設定は、外部アプリケーションによって同時に処理できる要求の数を制御しますが、実際の制限は外部アプリケーション自体によっても異なります。 この値を高く設定すると、外部アプリケーションの速度が不十分であるか、多数の同時要求に対応できない場合に役立ちません。</p> <h4>構文</h4><p>整数</p> <h4>ヒント</h4><p>[パフォーマンス]高い値を設定しても、高いパフォーマンスに直接変換されるわけではありません。 制限を外部アプリケーションに負荷をかけない値に設定すると、最高のパフォーマンス/スループットが得られます。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="env"><h3>環境<span class="ls-permlink"><a href="#env"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>外部アプリケーション用の追加の環境変数を指定します。</p> <h4>構文</h4><p>Key=value. 複数の変数は "ENTER"で区切ることができます。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="initTimeout"><h3>初期要求タイムアウト（秒）<span class="ls-permlink"><a href="#initTimeout"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>サーバーが、新しいアプリケーションが新しい確立された接続を介して最初の要求に応答するのを待つ最長時間を秒単位で指定します。 サーバーがこのタイムアウト制限内に外部アプリケーションからデータを受信しない場合、この接続は不良とマークされます。 これにより、外部アプリケーションとの通信の問題をできるだけ迅速に特定することができます。 処理に時間がかかるリクエストがある場合は、この制限を増やして503のエラー・メッセージを避けてください。</p> <h4>構文</h4><p>整数</p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/External_PL.html openlitespeed-1.7.15/dist/docs/ja-JP/External_PL.html
---- openlitespeed-1.7.15-dist/dist/docs/ja-JP/External_PL.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/ja-JP/External_PL.html	2022-02-26 02:42:21.080588595 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/External_PL.html openlitespeed-1.7.15/dist/docs/ja-JP/External_PL.html
+--- openlitespeed-1.7.15-dist/dist/docs/ja-JP/External_PL.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/ja-JP/External_PL.html	2022-05-09 04:56:06.202568839 -0400
 @@ -85,7 +85,7 @@
  <a href="#extAppName">名前</a> | <a href="#extAppAddress">アドレス</a> | <a href="#maxConns">最大接続数</a> | <a href="#env">環境</a> | <a href="#extAppPath">コマンド</a> | <a href="#instances">インスタンス</a> | <a href="#extUser">suEXECユーザー</a> | <a href="#extGroup">suEXECグループ</a> | <a href="#extUmask">umask</a> | <a href="#extAppPriority">優先度</a></p></section>
  </section>
@@ -933,9 +948,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/External_PL.
  <div class="helpitem"><article class="ls-helpitem"><div><header id="maxConns"><h3>最大接続数<span class="ls-permlink"><a href="#maxConns"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>サーバーと外部アプリケーションの間で確立できる同時接続の最大数を指定します。 この設定は、外部アプリケーションによって同時に処理できる要求の数を制御しますが、実際の制限は外部アプリケーション自体によっても異なります。 この値を高く設定すると、外部アプリケーションの速度が不十分であるか、多数の同時要求に対応できない場合に役立ちません。</p> <h4>構文</h4><p>整数</p> <h4>ヒント</h4><p>[パフォーマンス]高い値を設定しても、高いパフォーマンスに直接変換されるわけではありません。 制限を外部アプリケーションに負荷をかけない値に設定すると、最高のパフォーマンス/スループットが得られます。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="env"><h3>環境<span class="ls-permlink"><a href="#env"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>外部アプリケーション用の追加の環境変数を指定します。</p> <h4>構文</h4><p>Key=value. 複数の変数は "ENTER"で区切ることができます。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="extAppPath"><h3>コマンド<span class="ls-permlink"><a href="#extAppPath"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>外部アプリケーションを実行するためのパラメータを含む完全なコマンドラインを指定します。 <span class="tagl"><a href="#autoStart">自動スタート</a></span>が有効な場合は必須値です。 パラメータにスペースまたはタブ文字が含まれている場合は、パラメータを二重引用符または一重引用符で囲む必要があります。</p> <h4>構文</h4><p>オプションのパラメータを含む実行可能ファイルへのフルパス。</p> <h4>参照</h4><p class="ls-text-small"><span class="tagl"><a href="#autoStart">自動スタート</a></span></p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/External_Servlet.html openlitespeed-1.7.15/dist/docs/ja-JP/External_Servlet.html
---- openlitespeed-1.7.15-dist/dist/docs/ja-JP/External_Servlet.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/ja-JP/External_Servlet.html	2022-02-26 02:42:21.080588595 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/External_Servlet.html openlitespeed-1.7.15/dist/docs/ja-JP/External_Servlet.html
+--- openlitespeed-1.7.15-dist/dist/docs/ja-JP/External_Servlet.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/ja-JP/External_Servlet.html	2022-05-09 04:56:06.202568839 -0400
 @@ -85,7 +85,7 @@
  <a href="#extAppName">名前</a> | <a href="#extAppAddress">アドレス</a> | <a href="#maxConns">最大接続数</a> | <a href="#pcKeepAliveTimeout">キープアライブタイムアウト（秒）</a> | <a href="#env">環境</a> | <a href="#initTimeout">初期要求タイムアウト（秒）</a> | <a href="#retryTimeout">リトライタイムアウト（秒）</a> | <a href="#respBuffer">応答バッファリング</a></p></section>
  </section>
@@ -945,9 +960,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/External_Ser
  <div class="helpitem"><article class="ls-helpitem"><div><header id="maxConns"><h3>最大接続数<span class="ls-permlink"><a href="#maxConns"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>サーバーと外部アプリケーションの間で確立できる同時接続の最大数を指定します。 この設定は、外部アプリケーションによって同時に処理できる要求の数を制御しますが、実際の制限は外部アプリケーション自体によっても異なります。 この値を高く設定すると、外部アプリケーションの速度が不十分であるか、多数の同時要求に対応できない場合に役立ちません。</p> <h4>構文</h4><p>整数</p> <h4>ヒント</h4><p>[パフォーマンス]高い値を設定しても、高いパフォーマンスに直接変換されるわけではありません。 制限を外部アプリケーションに負荷をかけない値に設定すると、最高のパフォーマンス/スループットが得られます。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="pcKeepAliveTimeout"><h3>キープアライブタイムアウト（秒）<span class="ls-permlink"><a href="#pcKeepAliveTimeout"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>アイドル状態の永続的な接続を開いたままにする最大時間を指定します。 "-1"に設定すると、接続はタイムアウトしません。 0以上に設定すると、この時間が経過した後に接続が閉じられます。</p> <h4>構文</h4><p>int</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="env"><h3>環境<span class="ls-permlink"><a href="#env"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>外部アプリケーション用の追加の環境変数を指定します。</p> <h4>構文</h4><p>Key=value. 複数の変数は "ENTER"で区切ることができます。</p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/install.html openlitespeed-1.7.15/dist/docs/ja-JP/install.html
---- openlitespeed-1.7.15-dist/dist/docs/ja-JP/install.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/ja-JP/install.html	2022-02-26 02:42:21.080588595 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/install.html openlitespeed-1.7.15/dist/docs/ja-JP/install.html
+--- openlitespeed-1.7.15-dist/dist/docs/ja-JP/install.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/ja-JP/install.html	2022-05-09 04:56:06.202568839 -0400
 @@ -185,7 +185,7 @@
  スワップディレクトリは、サーバーのXML構成ファイルで構成されます。
  [your_install_dir]/conf/httpd_config.xmlに移動します。
@@ -957,9 +972,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/install.html
  		<p>まだインストールに問題がある場合は、私たちのwikiをチェックするか、サポートフォーラムで問題を投稿してください。</p>
  	</li>
  </ol>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/ServGeneral_Help.html openlitespeed-1.7.15/dist/docs/ja-JP/ServGeneral_Help.html
---- openlitespeed-1.7.15-dist/dist/docs/ja-JP/ServGeneral_Help.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/ja-JP/ServGeneral_Help.html	2022-02-26 02:42:21.080588595 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/ServGeneral_Help.html openlitespeed-1.7.15/dist/docs/ja-JP/ServGeneral_Help.html
+--- openlitespeed-1.7.15-dist/dist/docs/ja-JP/ServGeneral_Help.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/ja-JP/ServGeneral_Help.html	2022-05-09 04:56:06.202568839 -0400
 @@ -108,12 +108,12 @@
  <div class="helpitem"><article class="ls-helpitem"><div><header id="serverPriority"><h3>プライオリティ<span class="ls-permlink"><a href="#serverPriority"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>サーバープロセスの優先度を指定します。値の範囲は<span class="val">-20</span>〜<span class="val">20</span>です。 数値が小さいほど優先度が高くなります。</p> <h4>構文</h4><p>整数</p> <h4>ヒント</h4><p>[パフォーマンス]通常、ビジー状態のサーバーで優先度を高くすると、Webパフォーマンスが若干高くなります。 データベースプロセスの優先度よりも高い優先度を設定しないでください。</p> <h4>参照</h4><p class="ls-text-small">External App <span class="tagl"><a href="ExtApp_Help.html#extAppPriority">優先度</a></span>, <span class="tagl"><a href="ServSecurity_Help.html#CGIPriority">CGI プライオリティ</a></span></p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="cpuAffinity"><h3>CPU Affinity<span class="ls-permlink"><a href="#cpuAffinity"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>CPU affinity binds a process to one or more CPUs (cores). It is beneficial for a process to always use the same CPU because then the process can make use of data left in CPU cache. If the process moves to a different CPU, there is no use of CPU cache and unnecessary overhead is required.<br/><br/> The CPU Affinity setting controls how many CPUs (cores) one server process will be associated with. The minimum value is <span class="val">0</span>, which will disable this feature. The maximum value is the number of cores the server has. Generally, <span class="val">1</span> is the best setting because because it creates the strictest use of CPU affinity and thus makes the most use of CPU cache.<br/><br/> Default value: 0</p> <h4>構文</h4><p>Integer value from 0 to 64. (0 will disable this feature)</p> <h4>適用</h4><p>再インストールが必要です。</p> </article> </div>
@@ -984,9 +999,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/ServGeneral_
  <div class="helpitem"><article class="ls-helpitem"><div><header id="uploadTmpFilePermission"><h3>一時ファイルのアクセス許可<span class="ls-permlink"><a href="#uploadTmpFilePermission"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>一時ディレクトリに格納されているファイルに使用されるファイルのアクセス権を決定します。 サーバーレベルの設定はグローバルで、VHostレベルでオーバーライドできます。</p> <h4>構文</h4><p>3桁の8進数。 デフォルト値は666です。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="uploadPassByPath"><h3>ファイルパスによるアップロードデータの転送<span class="ls-permlink"><a href="#uploadPassByPath"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>ファイルデータをパスでアップロードするかどうかを指定します。 有効にすると、アップロード時にファイル自体ではなく、バックエンドハンドラにファイルパスと他の情報が送信されます。 これにより、CPUリソースとファイル転送時間が節約されますが、実装するためにバックエンドに若干の更新が必要です。 無効にすると、ファイルの内容はバックエンドハンドラに転送され、要求本文は引き続きファイルに解析されます。</p> <h4>構文</h4><p>ラジオボックスから選択</p> <h4>ヒント</h4><p>[パフォーマンス]下位互換性が問題にならないようにするには、これを有効にしてファイルのアップロード処理を高速化します。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="geolocationDB"><h3>IPからジオロケーションDB<span class="ls-permlink"><a href="#geolocationDB"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p> 複数のMaxMindジオロケーションデータベースをここで指定できます。 MaxMindには、国、地域、市区町村、組織、ISP、Netspeedの各タイプのDBがあります。 「国」、「地域」、および「都市」タイプの複数のデータベースが構成されている場合は、最後のデータベースが有効になります。</p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/ServSecurity_Help.html openlitespeed-1.7.15/dist/docs/ja-JP/ServSecurity_Help.html
---- openlitespeed-1.7.15-dist/dist/docs/ja-JP/ServSecurity_Help.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/ja-JP/ServSecurity_Help.html	2022-02-26 02:42:21.080588595 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/ServSecurity_Help.html openlitespeed-1.7.15/dist/docs/ja-JP/ServSecurity_Help.html
+--- openlitespeed-1.7.15-dist/dist/docs/ja-JP/ServSecurity_Help.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/ja-JP/ServSecurity_Help.html	2022-05-09 04:56:06.202568839 -0400
 @@ -114,7 +114,7 @@
  <div class="helpitem"><article class="ls-helpitem"><div><header id="gracePeriod"><h3>猶予期間（秒）<span class="ls-permlink"><a href="#gracePeriod"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>1つのIPから確立された接続の数が<span class="tagl"><a href="#softLimit">接続ソフトリミット</a></span>を超えた後に新しい接続が受け入れられる期間を指定します。 この期間内に、総接続数が<span class="tagl"><a href="#hardLimit">接続ハードリミット</a></span>未満の場合は、新しい接続が受け入れられます。 この期間が経過した後、まだ接続数が<span class="tagl"><a href="#softLimit">接続ソフトリミット</a></span>よりも高い場合、問題のIPは<span class="tagl"><a href="#banPeriod">禁止期間（秒）</a></span>でブロックされます。</p> <h4>構文</h4><p>整数</p> <h4>ヒント</h4><p>[パフォーマンス & セキュリティ]ダウンロードに十分な大きさに設定してください。 完全なページですが、故意の攻撃を防ぐのに十分な低さです。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="banPeriod"><h3>禁止期間（秒）<span class="ls-permlink"><a href="#banPeriod"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p><span class="tagl"><a href="#gracePeriod">猶予期間（秒）</a></span>経過後、接続数がまだ<span class="tagl"><a href="#softLimit">接続ソフトリミット</a></span>以上の場合、新しい接続がIPから拒否される期間を指定します。 IPが繰り返し禁止されている場合は、禁止期間を延長して虐待のペナルティを強化することをお勧めします。</p> <h4>構文</h4><p>整数</p> </article> </div>
@@ -996,9 +1011,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/ServSecurity
  <div class="helpitem"><article class="ls-helpitem"><div><header id="maxCGIInstances"><h3>最大CGIインスタンス<span class="ls-permlink"><a href="#maxCGIInstances"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>サーバーが開始できる同時CGIプロセスの最大数を指定します。 CGIスクリプトに対する各要求に対して、サーバーはスタンドアロンCGIプロセスを開始する必要があります。 Unixシステムでは、並行プロセスの数が制限されています。 過度の並行処理は、システム全体のパフォーマンスを低下させ、DoS攻撃を実行する1つの方法です。 LiteSpeedサーバーはCGIスクリプトへの要求をパイプライン処理し、同時のCGIプロセスを制限して最適なパフォーマンスと信頼性を確保します。 上限は<span class="val">2000</span>です。</p> <h4>構文</h4><p>整数</p> <h4>ヒント</h4><p>[セキュリティ & パフォーマンス]上限が高いと必ずしもパフォーマンスが向上するとは限りません。 ほとんどの場合、下限値を指定するとパフォーマンスとセキュリティが向上します。 上限は、CGI処理中にI / O待ち時間が過大になる場合にのみ役立ちます。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="minUID"><h3>最小UID<span class="ls-permlink"><a href="#minUID"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>外部アプリケーションの最小ユーザーIDを指定します。 ここで指定した値よりも小さいユーザーIDを持つ外部スクリプトの実行は拒否されます。 LiteSpeed Webサーバーが「root」ユーザーによって起動された場合、Apacheなどの「suEXEC」モードで外部アプリケーションを実行できます（Webサーバー以外のユーザー/グループIDに変更する）。</p> <h4>構文</h4><p>整数</p> <h4>ヒント</h4><p>[セキュリティ]すべてのシステム/特権ユーザーを除外するのに十分な高さに設定します。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="minGID"><h3>最小GID<span class="ls-permlink"><a href="#minGID"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>外部アプリケーションの最小グループIDを指定します。 ここで指定した値よりも小さいグループIDを持つ外部の実行は拒否されます。 LiteSpeed Webサーバーが "root"ユーザーによって起動された場合、Apacheで見つかった "suEXEC"モードで外部アプリケーションを実行できます（Webサーバー以外のユーザー/グループIDに変更する）。</p> <h4>構文</h4><p>整数</p> <h4>ヒント</h4><p>[セキュリティ]システムユーザーが使用するすべてのグループを除外するのに十分な高さに設定します。</p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/VHGeneral_Help.html openlitespeed-1.7.15/dist/docs/ja-JP/VHGeneral_Help.html
---- openlitespeed-1.7.15-dist/dist/docs/ja-JP/VHGeneral_Help.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/ja-JP/VHGeneral_Help.html	2022-02-26 02:42:21.080588595 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/VHGeneral_Help.html openlitespeed-1.7.15/dist/docs/ja-JP/VHGeneral_Help.html
+--- openlitespeed-1.7.15-dist/dist/docs/ja-JP/VHGeneral_Help.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/ja-JP/VHGeneral_Help.html	2022-05-09 04:56:06.202568839 -0400
 @@ -131,7 +131,7 @@
  <div class="helpitem"><article class="ls-helpitem"><div><header id="expiresDefault"><h3>デフォルトの期限<span class="ls-permlink"><a href="#expiresDefault"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>Expiresヘッダー生成のデフォルト設定を指定します。 この設定は、<span class="tagl"><a href="#enableExpires">有効期限を有効にする</a></span>が "はい"に設定されているときに有効になります。 <span class="tagl"><a href="#expiresByType">タイプ別の期限</a></span>で上書きできます。 すべてのページのExpiresヘッダーが生成されるため、必要がない限り、このデフォルトをサーバーまたはバーチャルホストレベルで設定しないでください。 ほとんどの場合、これは頻繁に変更されない特定のディレクトリのコンテキストレベルで設定する必要があります。 デフォルト設定がない場合、<span class="tagl"><a href="#expiresByType">タイプ別の期限</a></span>で指定されていないタイプに対してExpiresヘッダーは生成されません。</p> <h4>構文</h4><p>A|M秒<br/> このファイルは、基本時間（A | M）に指定された秒を加えた後に期限切れになります。 ベース時刻 "A"はクライアントのアクセス時間に値を設定し、 "M"はファイルの最終変更時刻を設定します。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="expiresByType"><h3>タイプ別の期限<span class="ls-permlink"><a href="#expiresByType"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>各MIMEタイプのExpiresヘッダー設定を指定します。</p> <h4>構文</h4><p>"MIME-type=A|Mseconds"のカンマで区切られたリスト。 このファイルは、基本時間（A|M）に指定された秒を加えた後に期限切れになります。<br/><br/> ベース時刻 "A"はクライアントのアクセス時間に値を設定し、 "M"はファイルの最終変更時刻を設定します。 MIMEタイプはimage/*のようなワイルドカード "*"を受け入れます。</p> </article> </div>
@@ -1008,9 +1023,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/VHGeneral_He
  <div class="helpitem"><article class="ls-helpitem"><div><header id="uploadTmpFilePermission"><h3>一時ファイルのアクセス許可<span class="ls-permlink"><a href="#uploadTmpFilePermission"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>一時ディレクトリに格納されているファイルに使用されるファイルのアクセス権を決定します。 サーバーレベルの設定はグローバルで、VHostレベルでオーバーライドできます。</p> <h4>構文</h4><p>3桁の8進数。 デフォルト値は666です。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="uploadPassByPath"><h3>ファイルパスによるアップロードデータの転送<span class="ls-permlink"><a href="#uploadPassByPath"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>ファイルデータをパスでアップロードするかどうかを指定します。 有効にすると、アップロード時にファイル自体ではなく、バックエンドハンドラにファイルパスと他の情報が送信されます。 これにより、CPUリソースとファイル転送時間が節約されますが、実装するためにバックエンドに若干の更新が必要です。 無効にすると、ファイルの内容はバックエンドハンドラに転送され、要求本文は引き続きファイルに解析されます。</p> <h4>構文</h4><p>ラジオボックスから選択</p> <h4>ヒント</h4><p>[パフォーマンス]下位互換性が問題にならないようにするには、これを有効にしてファイルのアップロード処理を高速化します。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="suffix"><h3>サフィックス<span class="ls-permlink"><a href="#suffix"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>説明</h4><p>このスクリプトハンドラによって処理されるスクリプトファイルのサフィックスを指定します。 接尾辞は一意である必要があります。</p> <h4>構文</h4><p>カンマ区切りリストでピリオド"."は禁止されています。</p> <h4>ヒント</h4><p><span title="Information" class="ls-icon-info"></span> サーバーは、リスト内の最初の接尾辞に特殊なMIMEタイプ（ "application / x-httpd- [suffix]"）を自動的に追加します。 たとえば、接尾辞 "php53"にMIMEタイプ "application / x-httpd-php53"が追加されます。 接尾辞は<span class="tagl"><a href="#mime">MIME設定</a></span>設定で最初に設定する必要があります。<br/> このフィールドではサフィックスを列挙していますが、スクリプトハンドラは接尾辞ではなくMIMEタイプを使用して、処理するスクリプトを決定します。<br/> [パフォーマンスとセキュリティ]本当に必要なサフィックスのみを指定してください。</p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/VHWebSocket_Help.html openlitespeed-1.7.15/dist/docs/ja-JP/VHWebSocket_Help.html
---- openlitespeed-1.7.15-dist/dist/docs/ja-JP/VHWebSocket_Help.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/ja-JP/VHWebSocket_Help.html	2022-02-26 02:42:21.080588595 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/VHWebSocket_Help.html openlitespeed-1.7.15/dist/docs/ja-JP/VHWebSocket_Help.html
+--- openlitespeed-1.7.15-dist/dist/docs/ja-JP/VHWebSocket_Help.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/ja-JP/VHWebSocket_Help.html	2022-05-09 04:56:06.202568839 -0400
 @@ -88,7 +88,7 @@
  <a href="#wsuri">URI</a> | <a href="#wsaddr">アドレス</a></p></section>
  </section>
@@ -1020,9 +1035,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ja-JP/VHWebSocket_
  </section>
  </article><div  class="ls-col-1-1"><footer class="copyright">Copyright &copy; 2013-2020. <a href="https://www.litespeedtech.com">LiteSpeed Technologies Inc.</a> All rights reserved.</footer>
  </div></div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ServGeneral_Help.html openlitespeed-1.7.15/dist/docs/ServGeneral_Help.html
---- openlitespeed-1.7.15-dist/dist/docs/ServGeneral_Help.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/ServGeneral_Help.html	2022-02-26 02:42:21.080588595 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ServGeneral_Help.html openlitespeed-1.7.15/dist/docs/ServGeneral_Help.html
+--- openlitespeed-1.7.15-dist/dist/docs/ServGeneral_Help.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/ServGeneral_Help.html	2022-05-09 04:56:06.202568839 -0400
 @@ -123,12 +123,12 @@
  <div class="helpitem"><article class="ls-helpitem"><div><header id="serverPriority"><h3>Priority<span class="ls-permlink"><a href="#serverPriority"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies priority of the server processes. Value ranges from <span class="val">-20</span> to <span class="val">20</span>. A lower number means higher priority.</p> <h4>Syntax</h4><p>Integer number</p> <h4>Tips</h4><p><span title="Performance" class="ls-icon-performance"></span> Usually a higher priority leads to slightly higher web performance on a busy server. Do not set priority higher than that of database processes.</p> <h4>See Also</h4><p class="ls-text-small">External App <span class="tagl"><a href="ExtApp_Help.html#extAppPriority">Priority</a></span>, <span class="tagl"><a href="ServSecurity_Help.html#CGIPriority">CGI Priority</a></span></p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="cpuAffinity"><h3>CPU Affinity<span class="ls-permlink"><a href="#cpuAffinity"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>CPU affinity binds a process to one or more CPUs (cores). It is beneficial for a process to always use the same CPU because then the process can make use of data left in CPU cache. If the process moves to a different CPU, there is no use of CPU cache and unnecessary overhead is required.<br/><br/> The CPU Affinity setting controls how many CPUs (cores) one server process will be associated with. The minimum value is <span class="val">0</span>, which will disable this feature. The maximum value is the number of cores the server has. Generally, <span class="val">1</span> is the best setting because because it creates the strictest use of CPU affinity and thus makes the most use of CPU cache.<br/><br/> Default value: 0</p> <h4>Syntax</h4><p>Integer value from 0 to 64. (0 will disable this feature)</p> <h4>Apply</h4><p>Reinstall required.</p> </article> </div>
@@ -1048,9 +1063,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ServGeneral_Help.h
  <div class="helpitem"><article class="ls-helpitem"><div><header id="uploadTmpFilePermission"><h3>Temporary File Permissions<span class="ls-permlink"><a href="#uploadTmpFilePermission"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Determines file permissions used for files stored in temporary directory.  Server level setting is global, can be overridden at VHost level.</p> <h4>Syntax</h4><p>3 digits octet number. Default value is 666.</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="uploadPassByPath"><h3>Pass Upload Data by File Path<span class="ls-permlink"><a href="#uploadPassByPath"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specify whether or not to pass upload file data by path. If enabled, file path along with some other information is sent to backend handler instead of file itself when uploading. This saves on CPU resources and file transfer time but requires some updates to backend to implement. If disabled, file content will be transferred to backend handler, request body is still parsed to files.</p> <h4>Syntax</h4><p>Select from radio box</p> <h4>Tips</h4><p><span title="Performance" class="ls-icon-performance"></span> Enable this to speed up file upload processing if backward compatibility is not an issue.</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="geolocationDB"><h3>MaxMind GeoIP DB<span class="ls-permlink"><a href="#geolocationDB"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Multiple MaxMind geolocation databases can be specified here. MaxMind has the following type of DBs: Country, Region, City, Organization, ISP and Netspeed. If multiple databases of types "Country", "Region", and "City" are configured, the last configuration will be effective.</p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ServSecurity_Help.html openlitespeed-1.7.15/dist/docs/ServSecurity_Help.html
---- openlitespeed-1.7.15-dist/dist/docs/ServSecurity_Help.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/ServSecurity_Help.html	2022-02-26 02:42:21.080588595 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ServSecurity_Help.html openlitespeed-1.7.15/dist/docs/ServSecurity_Help.html
+--- openlitespeed-1.7.15-dist/dist/docs/ServSecurity_Help.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/ServSecurity_Help.html	2022-05-09 04:56:06.202568839 -0400
 @@ -129,7 +129,7 @@
  <div class="helpitem"><article class="ls-helpitem"><div><header id="gracePeriod"><h3>Grace Period (sec)<span class="ls-permlink"><a href="#gracePeriod"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies how long new connections can be accepted after the number of connections established from one IP is over the <span class="tagl"><a href="#softLimit">Connection Soft Limit</a></span>. Within this period, new connections will be accepted if the total connections is still below the <span class="tagl"><a href="#hardLimit">Connection Hard Limit</a></span>. After this period has elapsed, if the number of connections still higher than the <span class="tagl"><a href="#softLimit">Connection Soft Limit</a></span>, then the offending IP will be blocked for the <span class="tagl"><a href="#banPeriod">Banned Period (sec)</a></span>.</p> <h4>Syntax</h4><p>Integer number</p> <h4>Tips</h4><p><span title="Performance" class="ls-icon-performance"></span><span title="Security" class="ls-icon-security"></span> Set to a proper number big enough for downloading a complete page but low enough to prevent deliberate attacks.</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="banPeriod"><h3>Banned Period (sec)<span class="ls-permlink"><a href="#banPeriod"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies how long new connections will be rejected from an IP if, after the <span class="tagl"><a href="#gracePeriod">Grace Period (sec)</a></span> has elapsed, the number of connections is still more than the <span class="tagl"><a href="#softLimit">Connection Soft Limit</a></span>. If IPs are getting banned repeatedly, we suggest that you increase your banned period to stiffen the penalty for abuse.</p> <h4>Syntax</h4><p>Integer number</p> </article> </div>
@@ -1060,9 +1075,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/ServSecurity_Help.
  <div class="helpitem"><article class="ls-helpitem"><div><header id="maxCGIInstances"><h3>Max CGI Instances<span class="ls-permlink"><a href="#maxCGIInstances"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies the maximum number of concurrent CGI processes the server can start. For each request to a CGI script, the server needs to start a standalone CGI process. On a Unix system, the number of concurrent processes is limited. Excessive concurrent processes will degrade the performance of the whole system and are one way to perform a DoS attack. LiteSpeed server pipelines requests to CGI scripts and limits concurrent CGI processes to ensure the optimal performance and reliability. The hard limit is <span class="val">2000</span>.</p> <h4>Syntax</h4><p>Integer number</p> <h4>Tips</h4><p><span title="Security" class="ls-icon-security"></span><span title="Performance" class="ls-icon-performance"></span> A higher limit does not necessarily translate to faster performance. In most cases, a lower limit gives better performance and security. A higher limit will only help when I/O latency is excessive during CGI processing.</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="minUID"><h3>Minimum UID<span class="ls-permlink"><a href="#minUID"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies the minimum user ID allowed to run external applications when running as a specified user. Execution of an external script with a user ID lower than the value specified here will be denied.</p> <h4>Syntax</h4><p>Integer number</p> <h4>Tips</h4><p><span title="Security" class="ls-icon-security"></span> Set it high enough to exclude all system/privileged users.</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="minGID"><h3>Minimum GID<span class="ls-permlink"><a href="#minGID"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies the minimum group ID allowed to run external applications when running as a specified group. Execution of an external script with a group ID lower than the value specified here will be denied.</p> <h4>Syntax</h4><p>Integer number</p> <h4>Tips</h4><p><span title="Security" class="ls-icon-security"></span> Set it high enough to exclude all groups used by system users.</p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/VHGeneral_Help.html openlitespeed-1.7.15/dist/docs/VHGeneral_Help.html
---- openlitespeed-1.7.15-dist/dist/docs/VHGeneral_Help.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/VHGeneral_Help.html	2022-02-26 02:42:21.080588595 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/VHGeneral_Help.html openlitespeed-1.7.15/dist/docs/VHGeneral_Help.html
+--- openlitespeed-1.7.15-dist/dist/docs/VHGeneral_Help.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/VHGeneral_Help.html	2022-05-09 04:56:06.206568765 -0400
 @@ -146,7 +146,7 @@
  <div class="helpitem"><article class="ls-helpitem"><div><header id="expiresDefault"><h3>Expires Default<span class="ls-permlink"><a href="#expiresDefault"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies default settings for Expires header generation. This setting takes effect when <span class="tagl"><a href="#enableExpires">Enable Expires</a></span> is set to "Yes". It can be overridden by <span class="tagl"><a href="#expiresByType">Expires By Type</a></span>. Do not set this default at the server or virtual host level unless you have to, since it will generate Expires headers for all pages. Most of time this should be set at the context level for certain directories that do not change often. If there is no default setting, no Expires header will be generated for types not specified in <span class="tagl"><a href="#expiresByType">Expires By Type</a></span>.</p> <h4>Syntax</h4><p>A|Mseconds<br/> The file will expire after base time(A|M) plus specified seconds. Base time "A" sets the value to the client's access time and "M" to the file's last modified time.</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="expiresByType"><h3>Expires By Type<span class="ls-permlink"><a href="#expiresByType"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies Expires header settings for individual MIME types.</p> <h4>Syntax</h4><p>Comma delimited list of "MIME-type=A|Mseconds". The file will expire after base time (A|M) plus specified seconds.<br/><br/> Base time "A" sets the value to the client's access time and "M" to the file's last modified time. MIME-type accepts wildcard "*", like image/*.</p> </article> </div>
@@ -1072,9 +1087,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/VHGeneral_Help.htm
  <div class="helpitem"><article class="ls-helpitem"><div><header id="uploadTmpFilePermission"><h3>Temporary File Permissions<span class="ls-permlink"><a href="#uploadTmpFilePermission"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Determines file permissions used for files stored in temporary directory.  Server level setting is global, can be overridden at VHost level.</p> <h4>Syntax</h4><p>3 digits octet number. Default value is 666.</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="uploadPassByPath"><h3>Pass Upload Data by File Path<span class="ls-permlink"><a href="#uploadPassByPath"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specify whether or not to pass upload file data by path. If enabled, file path along with some other information is sent to backend handler instead of file itself when uploading. This saves on CPU resources and file transfer time but requires some updates to backend to implement. If disabled, file content will be transferred to backend handler, request body is still parsed to files.</p> <h4>Syntax</h4><p>Select from radio box</p> <h4>Tips</h4><p><span title="Performance" class="ls-icon-performance"></span> Enable this to speed up file upload processing if backward compatibility is not an issue.</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="suffix"><h3>Suffix<span class="ls-permlink"><a href="#suffix"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>Specifies the script file suffixes that will be handled by this  script handler. Suffixes must be unique.</p> <h4>Syntax</h4><p>Comma delimited list with period "." character prohibited.</p> <h4>Tips</h4><p><span title="Information" class="ls-icon-info"></span> The server will automatically add a special MIME type ("application/x-httpd-[suffix]") for the first  suffix in the list. For example, MIME type "application/x-httpd-php53" will be added  for suffix "php53". Suffixes after the first need to set up in the <span class="tagl"><a href="#mime">MIME Settings</a></span> settings.<br/> Though we list suffixes in this field, the script handlers use MIME types, not suffixes,  to decide which scripts to handle. <br/> <span title="Performance" class="ls-icon-performance"></span><span title="Security" class="ls-icon-security"></span> Only specify the suffixes you really need.</p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/VHWebSocket_Help.html openlitespeed-1.7.15/dist/docs/VHWebSocket_Help.html
---- openlitespeed-1.7.15-dist/dist/docs/VHWebSocket_Help.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/VHWebSocket_Help.html	2022-02-26 02:42:21.080588595 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/VHWebSocket_Help.html openlitespeed-1.7.15/dist/docs/VHWebSocket_Help.html
+--- openlitespeed-1.7.15-dist/dist/docs/VHWebSocket_Help.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/VHWebSocket_Help.html	2022-05-09 04:56:06.206568765 -0400
 @@ -105,7 +105,7 @@
  <a href="#wsuri">URI</a> | <a href="#wsaddr">Address</a></p></section>
  </section>
@@ -1084,9 +1099,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/VHWebSocket_Help.h
  </section>
  </article><div  class="ls-col-1-1"><footer class="copyright">Copyright &copy; 2013-2020. <a href="https://www.litespeedtech.com">LiteSpeed Technologies Inc.</a> All rights reserved.</footer>
  </div></div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/admin.html openlitespeed-1.7.15/dist/docs/zh-CN/admin.html
---- openlitespeed-1.7.15-dist/dist/docs/zh-CN/admin.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/zh-CN/admin.html	2022-02-26 02:42:21.084588521 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/admin.html openlitespeed-1.7.15/dist/docs/zh-CN/admin.html
+--- openlitespeed-1.7.15-dist/dist/docs/zh-CN/admin.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/zh-CN/admin.html	2022-05-09 04:56:06.206568765 -0400
 @@ -112,19 +112,19 @@
  	<span class="cmd">[your install dir]/admin/misc/admpass.sh</span> </p>
  </li>
@@ -1122,9 +1137,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/admin.html o
  	<p>通过使用 &quot;ps&quot; 命令:<br>
  		FreeBSD: <span class="cmd">ps -x | grep lshttpd</span><br>
  		Others: <span class="cmd">ps -ef | grep lshttpd</span><br>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/CompilePHP_Help.html openlitespeed-1.7.15/dist/docs/zh-CN/CompilePHP_Help.html
---- openlitespeed-1.7.15-dist/dist/docs/zh-CN/CompilePHP_Help.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/zh-CN/CompilePHP_Help.html	2022-02-26 02:42:21.084588521 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/CompilePHP_Help.html openlitespeed-1.7.15/dist/docs/zh-CN/CompilePHP_Help.html
+--- openlitespeed-1.7.15-dist/dist/docs/zh-CN/CompilePHP_Help.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/zh-CN/CompilePHP_Help.html	2022-05-09 04:56:06.206568765 -0400
 @@ -100,7 +100,7 @@
  <a href="#extrapathenv">额外的PATH环境变量</a> | <a href="#installpathprefix">安装路径前缀</a> | <a href="#compilerflags">编译器标志</a> | <a href="#configureparams">配置参数</a> | <a href="#addonmodules">附加模块</a></p></section>
  </section>
@@ -1134,9 +1149,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/CompilePHP_H
  <div class="helpitem"><article class="ls-helpitem"><div><header id="compilerflags"><h3>编译器标志<span class="ls-permlink"><a href="#compilerflags"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>添加其他编译器标志，例如优化的编译器选项。</p> <h4>Syntax</h4><p>支持的标志有CFLAGS, CXXFLAGS, CPPFLAGS, LDFLAGS.使用空格分隔不同的标志。 对于标志值，请使用单引号（而不是双引号）</p> <h4>例子</h4><div class="ls-example">CFLAGS='-O3 -msse2 -msse3 -msse4.1 -msse4.2 -msse4 -mavx'</div></article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="configureparams"><h3>配置参数<span class="ls-permlink"><a href="#configureparams"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>为PHP构建配置参数。当您单击下一步时，Apache特定的参数和“--prefix”值将被自动删除，并且“--with-litespeed”将自动追加。（前缀可以在上面的字段中设置）通过这种方式，您可以简单地复制并粘贴现有PHP的phpinfo()输出的配置参数。</p> <h4>Syntax</h4><p>空格分隔多个选项(带或不带双引号）</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="addonmodules"><h3>附加模块<span class="ls-permlink"><a href="#addonmodules"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>选择您想使用的附加模块。 如果你想使用一个没有在这里列出的版本，你可以手动更新源代码。(源代码的位置会在PHP构建的这一步中显示出来。)</p> <h4>Syntax</h4><p>从复选框中选择</p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_FCGI_Auth.html openlitespeed-1.7.15/dist/docs/zh-CN/External_FCGI_Auth.html
---- openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_FCGI_Auth.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/zh-CN/External_FCGI_Auth.html	2022-02-26 02:42:21.084588521 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_FCGI_Auth.html openlitespeed-1.7.15/dist/docs/zh-CN/External_FCGI_Auth.html
+--- openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_FCGI_Auth.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/zh-CN/External_FCGI_Auth.html	2022-05-09 04:56:06.206568765 -0400
 @@ -100,7 +100,7 @@
  <a href="#extAppName">名称</a> | <a href="#extAppAddress">地址</a> | <a href="#maxConns">最大连接数</a> | <a href="#env">环境</a> | <a href="#initTimeout">初次请求超时时间 (secs)</a> | <a href="#retryTimeout">重试超时时间 (secs)</a> | <a href="#persistConn">持久连接</a> | <a href="#pcKeepAliveTimeout">持久连接超时时间</a> | <a href="#respBuffer">响应缓冲</a> | <a href="#autoStart">开机自启</a> | <a href="#extAppPath">命令</a> | <a href="#backlog">Back Log</a> | <a href="#instances">实例数</a> | <a href="#extUser">Run As User</a> | <a href="#extGroup">以特定组运行</a> | <a href="#extUmask">umask</a> | <a href="#runOnStartUp">开机自启</a> | <a href="#extMaxIdleTime">最大空闲时间</a> | <a href="#extAppPriority">优先级</a> | <a href="#memSoftLimit">内存软限制 (bytes)</a> | <a href="#memHardLimit">内存硬限制 (bytes)</a> | <a href="#procSoftLimit">进程软限制</a> | <a href="#procHardLimit">进程硬限制</a></p></section>
  </section>
@@ -1146,9 +1161,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_FCG
  <div class="helpitem"><article class="ls-helpitem"><div><header id="maxConns"><h3>最大连接数<span class="ls-permlink"><a href="#maxConns"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>指定服务器与外部应用之间可建立的最大并发连接数。该设置控制外部应用程序可同时处理多少个请求。 然而，真正的限制还取决于外部应用本身。如果外部的速度不够快，或者无法处理大量的并发请求，那么将这个值设置得更高也无济于事。</p> <h4>Syntax</h4><p>整数</p> <h4>提示</h4><p>[性能建议] 设置一个高值并不能直接变成高性能。设置为一个不会使外部应用程序过载的值，将提供最佳的性能/吞吐量。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="env"><h3>环境<span class="ls-permlink"><a href="#env"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>为外部应用程序指定额外的环境变量。</p> <h4>Syntax</h4><p>Key=value. Multiple variables can be separated by "ENTER"</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="initTimeout"><h3>初次请求超时时间 (secs)<span class="ls-permlink"><a href="#initTimeout"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>指定服务器等待外部应用响应新建立的连接的第一个请求的最大时间  如果服务器在这个限制时间内没有收到外部应用的任何数据，它将把这个连接标记为坏(Bad)。这有助于识别与外部应用程序的通信问题。 这有助于尽快发现与外部应用的通信问题。如果某些请求的处理时间较长，则增加这个限制以避免503错误信息。</p> <h4>Syntax</h4><p>整数</p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_FCGI.html openlitespeed-1.7.15/dist/docs/zh-CN/External_FCGI.html
---- openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_FCGI.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/zh-CN/External_FCGI.html	2022-02-26 02:42:21.084588521 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_FCGI.html openlitespeed-1.7.15/dist/docs/zh-CN/External_FCGI.html
+--- openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_FCGI.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/zh-CN/External_FCGI.html	2022-05-09 04:56:06.206568765 -0400
 @@ -100,7 +100,7 @@
  <a href="#extAppName">名称</a> | <a href="#extAppAddress">地址</a> | <a href="#maxConns">最大连接数</a> | <a href="#env">环境</a> | <a href="#initTimeout">初次请求超时时间 (secs)</a> | <a href="#retryTimeout">重试超时时间 (secs)</a> | <a href="#persistConn">持久连接</a> | <a href="#pcKeepAliveTimeout">持久连接超时时间</a> | <a href="#respBuffer">响应缓冲</a> | <a href="#autoStart">开机自启</a> | <a href="#extAppPath">命令</a> | <a href="#backlog">Back Log</a> | <a href="#instances">实例数</a> | <a href="#extUser">Run As User</a> | <a href="#extGroup">以特定组运行</a> | <a href="#extUmask">umask</a> | <a href="#runOnStartUp">开机自启</a> | <a href="#extMaxIdleTime">最大空闲时间</a> | <a href="#extAppPriority">优先级</a> | <a href="#memSoftLimit">内存软限制 (bytes)</a> | <a href="#memHardLimit">内存硬限制 (bytes)</a> | <a href="#procSoftLimit">进程软限制</a> | <a href="#procHardLimit">进程硬限制</a></p></section>
  </section>
@@ -1158,9 +1173,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_FCG
  <div class="helpitem"><article class="ls-helpitem"><div><header id="maxConns"><h3>最大连接数<span class="ls-permlink"><a href="#maxConns"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>指定服务器与外部应用之间可建立的最大并发连接数。该设置控制外部应用程序可同时处理多少个请求。 然而，真正的限制还取决于外部应用本身。如果外部的速度不够快，或者无法处理大量的并发请求，那么将这个值设置得更高也无济于事。</p> <h4>Syntax</h4><p>整数</p> <h4>提示</h4><p>[性能建议] 设置一个高值并不能直接变成高性能。设置为一个不会使外部应用程序过载的值，将提供最佳的性能/吞吐量。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="env"><h3>环境<span class="ls-permlink"><a href="#env"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>为外部应用程序指定额外的环境变量。</p> <h4>Syntax</h4><p>Key=value. Multiple variables can be separated by "ENTER"</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="initTimeout"><h3>初次请求超时时间 (secs)<span class="ls-permlink"><a href="#initTimeout"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>指定服务器等待外部应用响应新建立的连接的第一个请求的最大时间  如果服务器在这个限制时间内没有收到外部应用的任何数据，它将把这个连接标记为坏(Bad)。这有助于识别与外部应用程序的通信问题。 这有助于尽快发现与外部应用的通信问题。如果某些请求的处理时间较长，则增加这个限制以避免503错误信息。</p> <h4>Syntax</h4><p>整数</p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_LSAPI.html openlitespeed-1.7.15/dist/docs/zh-CN/External_LSAPI.html
---- openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_LSAPI.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/zh-CN/External_LSAPI.html	2022-02-26 02:42:21.084588521 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_LSAPI.html openlitespeed-1.7.15/dist/docs/zh-CN/External_LSAPI.html
+--- openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_LSAPI.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/zh-CN/External_LSAPI.html	2022-05-09 04:56:06.206568765 -0400
 @@ -100,7 +100,7 @@
  <a href="#extAppName">名称</a> | <a href="#extAppAddress">地址</a> | <a href="#maxConns">最大连接数</a> | <a href="#env">环境</a> | <a href="#initTimeout">初次请求超时时间 (secs)</a> | <a href="#retryTimeout">重试超时时间 (secs)</a> | <a href="#persistConn">持久连接</a> | <a href="#pcKeepAliveTimeout">持久连接超时时间</a> | <a href="#respBuffer">响应缓冲</a> | <a href="#autoStart">开机自启</a> | <a href="#extAppPath">命令</a> | <a href="#backlog">Back Log</a> | <a href="#instances">实例数</a> | <a href="#extUser">Run As User</a> | <a href="#extGroup">以特定组运行</a> | <a href="#extUmask">umask</a> | <a href="#runOnStartUp">开机自启</a> | <a href="#extMaxIdleTime">最大空闲时间</a> | <a href="#extAppPriority">优先级</a> | <a href="#memSoftLimit">内存软限制 (bytes)</a> | <a href="#memHardLimit">内存硬限制 (bytes)</a> | <a href="#procSoftLimit">进程软限制</a> | <a href="#procHardLimit">进程硬限制</a></p></section>
  </section>
@@ -1170,9 +1185,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_LSA
  <div class="helpitem"><article class="ls-helpitem"><div><header id="maxConns"><h3>最大连接数<span class="ls-permlink"><a href="#maxConns"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>指定服务器与外部应用之间可建立的最大并发连接数。该设置控制外部应用程序可同时处理多少个请求。 然而，真正的限制还取决于外部应用本身。如果外部的速度不够快，或者无法处理大量的并发请求，那么将这个值设置得更高也无济于事。</p> <h4>Syntax</h4><p>整数</p> <h4>提示</h4><p>[性能建议] 设置一个高值并不能直接变成高性能。设置为一个不会使外部应用程序过载的值，将提供最佳的性能/吞吐量。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="env"><h3>环境<span class="ls-permlink"><a href="#env"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>为外部应用程序指定额外的环境变量。</p> <h4>Syntax</h4><p>Key=value. Multiple variables can be separated by "ENTER"</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="initTimeout"><h3>初次请求超时时间 (secs)<span class="ls-permlink"><a href="#initTimeout"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>指定服务器等待外部应用响应新建立的连接的第一个请求的最大时间  如果服务器在这个限制时间内没有收到外部应用的任何数据，它将把这个连接标记为坏(Bad)。这有助于识别与外部应用程序的通信问题。 这有助于尽快发现与外部应用的通信问题。如果某些请求的处理时间较长，则增加这个限制以避免503错误信息。</p> <h4>Syntax</h4><p>整数</p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_PL.html openlitespeed-1.7.15/dist/docs/zh-CN/External_PL.html
---- openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_PL.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/zh-CN/External_PL.html	2022-02-26 02:42:21.084588521 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_PL.html openlitespeed-1.7.15/dist/docs/zh-CN/External_PL.html
+--- openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_PL.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/zh-CN/External_PL.html	2022-05-09 04:56:06.206568765 -0400
 @@ -100,7 +100,7 @@
  <a href="#extAppName">名称</a> | <a href="#extAppAddress">地址</a> | <a href="#maxConns">最大连接数</a> | <a href="#env">环境</a> | <a href="#extAppPath">命令</a> | <a href="#instances">实例数</a> | <a href="#extUser">Run As User</a> | <a href="#extGroup">以特定组运行</a> | <a href="#extUmask">umask</a> | <a href="#extAppPriority">优先级</a></p></section>
  </section>
@@ -1182,9 +1197,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_PL.
  <div class="helpitem"><article class="ls-helpitem"><div><header id="maxConns"><h3>最大连接数<span class="ls-permlink"><a href="#maxConns"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>指定服务器与外部应用之间可建立的最大并发连接数。该设置控制外部应用程序可同时处理多少个请求。 然而，真正的限制还取决于外部应用本身。如果外部的速度不够快，或者无法处理大量的并发请求，那么将这个值设置得更高也无济于事。</p> <h4>Syntax</h4><p>整数</p> <h4>提示</h4><p>[性能建议] 设置一个高值并不能直接变成高性能。设置为一个不会使外部应用程序过载的值，将提供最佳的性能/吞吐量。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="env"><h3>环境<span class="ls-permlink"><a href="#env"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>为外部应用程序指定额外的环境变量。</p> <h4>Syntax</h4><p>Key=value. Multiple variables can be separated by "ENTER"</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="extAppPath"><h3>命令<span class="ls-permlink"><a href="#extAppPath"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>指定包含外部应用程序的执行参数在内的完整命令行。  需要<span class="tagl"><a href="#autoStart">开机自启</a></span>的值为enable.如果参数中包含空格或制表符,应使用双引号或单引号将其引起。</p> <h4>Syntax</h4><p>Full path to the executable with optional parameters.</p> <h4>See Also</h4><p class="ls-text-small"><span class="tagl"><a href="#autoStart">开机自启</a></span></p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_Servlet.html openlitespeed-1.7.15/dist/docs/zh-CN/External_Servlet.html
---- openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_Servlet.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/zh-CN/External_Servlet.html	2022-02-26 02:42:21.084588521 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_Servlet.html openlitespeed-1.7.15/dist/docs/zh-CN/External_Servlet.html
+--- openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_Servlet.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/zh-CN/External_Servlet.html	2022-05-09 04:56:06.206568765 -0400
 @@ -100,7 +100,7 @@
  <a href="#extAppName">名称</a> | <a href="#extAppAddress">地址</a> | <a href="#maxConns">最大连接数</a> | <a href="#pcKeepAliveTimeout">持久连接超时时间</a> | <a href="#env">环境</a> | <a href="#initTimeout">初次请求超时时间 (secs)</a> | <a href="#retryTimeout">重试超时时间 (secs)</a> | <a href="#respBuffer">响应缓冲</a></p></section>
  </section>
@@ -1194,9 +1209,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_Ser
  <div class="helpitem"><article class="ls-helpitem"><div><header id="maxConns"><h3>最大连接数<span class="ls-permlink"><a href="#maxConns"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>指定服务器与外部应用之间可建立的最大并发连接数。该设置控制外部应用程序可同时处理多少个请求。 然而，真正的限制还取决于外部应用本身。如果外部的速度不够快，或者无法处理大量的并发请求，那么将这个值设置得更高也无济于事。</p> <h4>Syntax</h4><p>整数</p> <h4>提示</h4><p>[性能建议] 设置一个高值并不能直接变成高性能。设置为一个不会使外部应用程序过载的值，将提供最佳的性能/吞吐量。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="pcKeepAliveTimeout"><h3>持久连接超时时间<span class="ls-permlink"><a href="#pcKeepAliveTimeout"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>指定保持持久连接的最大时间，以秒为单位。<br/><br/> 如果设置成"-1",连接将不会超时. 当设置成0或者更大, 连接将在这些秒数后被关闭。</p> <h4>Syntax</h4><p>int</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="env"><h3>环境<span class="ls-permlink"><a href="#env"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>为外部应用程序指定额外的环境变量。</p> <h4>Syntax</h4><p>Key=value. Multiple variables can be separated by "ENTER"</p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_WS.html openlitespeed-1.7.15/dist/docs/zh-CN/External_WS.html
---- openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_WS.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/zh-CN/External_WS.html	2022-02-26 02:42:21.084588521 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_WS.html openlitespeed-1.7.15/dist/docs/zh-CN/External_WS.html
+--- openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_WS.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/zh-CN/External_WS.html	2022-05-09 04:56:06.206568765 -0400
 @@ -100,7 +100,7 @@
  <a href="#extAppName">名称</a> | <a href="#expWSAddress">地址</a> | <a href="#maxConns">最大连接数</a> | <a href="#pcKeepAliveTimeout">持久连接超时时间</a> | <a href="#env">环境</a> | <a href="#initTimeout">初次请求超时时间 (secs)</a> | <a href="#retryTimeout">重试超时时间 (secs)</a> | <a href="#respBuffer">响应缓冲</a></p></section>
  </section>
@@ -1206,9 +1221,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/External_WS.
  <div class="helpitem"><article class="ls-helpitem"><div><header id="maxConns"><h3>最大连接数<span class="ls-permlink"><a href="#maxConns"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>指定服务器与外部应用之间可建立的最大并发连接数。该设置控制外部应用程序可同时处理多少个请求。 然而，真正的限制还取决于外部应用本身。如果外部的速度不够快，或者无法处理大量的并发请求，那么将这个值设置得更高也无济于事。</p> <h4>Syntax</h4><p>整数</p> <h4>提示</h4><p>[性能建议] 设置一个高值并不能直接变成高性能。设置为一个不会使外部应用程序过载的值，将提供最佳的性能/吞吐量。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="pcKeepAliveTimeout"><h3>持久连接超时时间<span class="ls-permlink"><a href="#pcKeepAliveTimeout"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>指定保持持久连接的最大时间，以秒为单位。<br/><br/> 如果设置成"-1",连接将不会超时. 当设置成0或者更大, 连接将在这些秒数后被关闭。</p> <h4>Syntax</h4><p>int</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="env"><h3>环境<span class="ls-permlink"><a href="#env"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>为外部应用程序指定额外的环境变量。</p> <h4>Syntax</h4><p>Key=value. Multiple variables can be separated by "ENTER"</p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/install.html openlitespeed-1.7.15/dist/docs/zh-CN/install.html
---- openlitespeed-1.7.15-dist/dist/docs/zh-CN/install.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/zh-CN/install.html	2022-02-26 02:42:21.084588521 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/install.html openlitespeed-1.7.15/dist/docs/zh-CN/install.html
+--- openlitespeed-1.7.15-dist/dist/docs/zh-CN/install.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/zh-CN/install.html	2022-05-09 04:56:06.210568693 -0400
 @@ -213,7 +213,7 @@
        如果交换目录不可写，则可以将交换目录的写权限授予运行Web服务器的用户，也可以手动更改交换目录的配置。 
        交换目录在服务器的XML配置文件中配置:
@@ -1218,9 +1233,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/install.html
      </p>
      <p>
        如果您仍然有安装问题，请查看我们的Wiki或将您的问题发布在我们的支持论坛上。
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/ServGeneral_Help.html openlitespeed-1.7.15/dist/docs/zh-CN/ServGeneral_Help.html
---- openlitespeed-1.7.15-dist/dist/docs/zh-CN/ServGeneral_Help.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/zh-CN/ServGeneral_Help.html	2022-02-26 02:42:21.084588521 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/ServGeneral_Help.html openlitespeed-1.7.15/dist/docs/zh-CN/ServGeneral_Help.html
+--- openlitespeed-1.7.15-dist/dist/docs/zh-CN/ServGeneral_Help.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/zh-CN/ServGeneral_Help.html	2022-05-09 04:56:06.210568693 -0400
 @@ -120,12 +120,12 @@
  <div class="helpitem"><article class="ls-helpitem"><div><header id="serverPriority"><h3>优先级<span class="ls-permlink"><a href="#serverPriority"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>指定服务进程的优先级。数值范围从 <span class="val">-20</span> 到 <span class="val">20</span>。数值越小，优先级越高。</p> <h4>Syntax</h4><p>Integer number</p> <h4>提示</h4><p>[性能] 通常，较高的优先级会导致繁忙的服务器上的Web性能稍有提高。 不要将优先级设置为高于数据库进程的优先级。</p> <h4>See Also</h4><p class="ls-text-small">External App <span class="tagl"><a href="ExtApp_Help.html#extAppPriority">优先级</a></span>, <span class="tagl"><a href="ServSecurity_Help.html#CGIPriority">CGI优先级</a></span></p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="cpuAffinity"><h3>处理器亲和性<span class="ls-permlink"><a href="#cpuAffinity"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>CPU关联将进程绑定到一个或多个CPU（核心）。 始终使用同一CPU对进程来说是有益的，因为这样进程可以利用CPU缓存中剩余的数据。 如果进程移至其他CPU，则不会使用CPU缓存，并且会产生不必要的开销。<br/><br/> CPU Affinity设置控制一个服务器进程将与多少个CPU（核心）相关联。 最小值为<span class="val">0</span>，它将禁用此功能。 最大值是服务器具有的核心数。 通常，<span class="val">1</span>是最佳设置，因为它会最严格地使用CPU亲和力，从而最大程度地利用CPU缓存。<br/><br/> Default value: 0</p> <h4>Syntax</h4><p>Integer value from 0 to 64. (0 will disable this feature)</p> <h4>应用</h4><p>Reinstall required.</p> </article> </div>
@@ -1246,9 +1261,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/ServGeneral_
  <div class="helpitem"><article class="ls-helpitem"><div><header id="uploadTmpFilePermission"><h3>临时文件权限<span class="ls-permlink"><a href="#uploadTmpFilePermission"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>设置<b>临时文件路径</b>目录中的文件权限。 服务器级别是全局设置，可以被虚拟主机级别的设置覆盖。</p> <h4>Syntax</h4><p>3 digits octet number. Default value is 666.</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="uploadPassByPath"><h3>通过文件路径传递上传数据<span class="ls-permlink"><a href="#uploadPassByPath"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>指定是否按文件路径传递上传数据。 如果启用，则上传时文件路径以及其他一些信息将发送到后端处理程序，而不是文件本身。 这样可以节省CPU资源和文件传输时间，但需要一些更新才能实现。 如果禁用，则文件内容将传输到后端处理程序，请求主体仍解析为文件。</p> <h4>Syntax</h4><p>从单选框选择</p> <h4>提示</h4><p>[性能] 如果向下兼容不是问题，启用此功能可加快文件上传处理速度。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="geolocationDB"><h3>IP地理定位数据库<span class="ls-permlink"><a href="#geolocationDB"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>多个MaxMind地理定位数据库可以在这里指定。MaxMind有以下数据库类型: 国家，地区，城市，组织，ISP和NETSPEED。如果混合配置“国家”，“地区”，和“城市”类型数据库，则最后一项将会生效。</p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/ServSecurity_Help.html openlitespeed-1.7.15/dist/docs/zh-CN/ServSecurity_Help.html
---- openlitespeed-1.7.15-dist/dist/docs/zh-CN/ServSecurity_Help.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/zh-CN/ServSecurity_Help.html	2022-02-26 02:42:21.084588521 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/ServSecurity_Help.html openlitespeed-1.7.15/dist/docs/zh-CN/ServSecurity_Help.html
+--- openlitespeed-1.7.15-dist/dist/docs/zh-CN/ServSecurity_Help.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/zh-CN/ServSecurity_Help.html	2022-05-09 04:56:06.210568693 -0400
 @@ -129,7 +129,7 @@
  <div class="helpitem"><article class="ls-helpitem"><div><header id="gracePeriod"><h3>宽限期（秒）<span class="ls-permlink"><a href="#gracePeriod"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>指定来自一个IP的连接数超过<span class="tagl"><a href="#softLimit">连接软限制</a></span>之后， 多长时间之内可以继续接受新连接。在此期间，如果总连接数仍然 低于<span class="tagl"><a href="#hardLimit">连接硬限制</a></span>，将继续接受新连接。之后，如果连接数 仍然高于<span class="tagl"><a href="#softLimit">连接软限制</a></span>，相应的IP将被封锁<span class="tagl"><a href="#banPeriod">禁止期（秒）</a></span>里设置的时长。</p> <h4>Syntax</h4><p>整数</p> <h4>提示</h4><p>[性能与安全建议] 设置为足够大的数量，以便下载完整网页， 但也要足够低以防范蓄意攻击。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="banPeriod"><h3>禁止期（秒）<span class="ls-permlink"><a href="#banPeriod"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>指定在<span class="tagl"><a href="#gracePeriod">宽限期（秒）</a></span>之后，如果连接数仍然高于 <span class="tagl"><a href="#softLimit">连接软限制</a></span>，来自该IP的新连接将被拒绝多长时间。如果IP 经常被屏蔽，我们建议您延长禁止期以更强硬地惩罚滥用.</p> <h4>Syntax</h4><p>整数</p> </article> </div>
@@ -1258,9 +1273,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/ServSecurity
  <div class="helpitem"><article class="ls-helpitem"><div><header id="maxCGIInstances"><h3>最大CGI实例数量<span class="ls-permlink"><a href="#maxCGIInstances"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>S指定服务器可以启动的CGI进程最大并发数量。 对于每个对CGI脚本的请求，服务器需要启动一个独立的CGI进程。 在Unix系统中，并发进程的数量是有限的。过多的并发进程会降 低整个系统的性能，也是一种进行拒绝服务攻击的方法。 LiteSpeed服务器将对CGI脚本的请求放入管道队列，限制并发 CGI进程数量，以确保最优性能和可靠性。 硬限制为<span class="val">2000</span>。</p> <h4>Syntax</h4><p>整数</p> <h4>提示</h4><p>[安全和性能建议] 更高的数量并不一定转化为更快的性能。 在大多数情况下，更低的数量提供更好的性能和安全性。更高的数量 只在CGI处理过程中读写延迟过高时有帮助。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="minUID"><h3>最小的UID<span class="ls-permlink"><a href="#minUID"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>指定外部应用程序的最小用户ID。 如果用户ID比这里指定的值更低。其外部脚本的执行将被拒绝。 如果的LiteSpeed Web服务器由“Root”用户启动，它可以在“suEXEC” 模式运行外部应用程序，类似Apache（可以切换到与Web服务器不同的用户/组ID）。</p> <h4>Syntax</h4><p>整数</p> <h4>提示</h4><p><span title="Security" class="ls-icon-security"></span> Set it high enough to exclude all system/privileged users.</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="minGID"><h3>最小的GID<span class="ls-permlink"><a href="#minGID"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>指定外部应用程序的最小组ID。 如果组ID比这里指定的值更小，其外部脚本的执行将被拒绝。 如果的LiteSpeed Web服务器是由“Root”用户启动，它可以在“suEXEC” 模式运行外部应用程序，类似Apache（可以切换到与Web服务器不同的用户/组ID）。</p> <h4>Syntax</h4><p>整数</p> <h4>提示</h4><p>[安全] 设置足够高的值以排除所有系统用户所属的组。</p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/VHGeneral_Help.html openlitespeed-1.7.15/dist/docs/zh-CN/VHGeneral_Help.html
---- openlitespeed-1.7.15-dist/dist/docs/zh-CN/VHGeneral_Help.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/zh-CN/VHGeneral_Help.html	2022-02-26 02:42:21.084588521 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/VHGeneral_Help.html openlitespeed-1.7.15/dist/docs/zh-CN/VHGeneral_Help.html
+--- openlitespeed-1.7.15-dist/dist/docs/zh-CN/VHGeneral_Help.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/zh-CN/VHGeneral_Help.html	2022-05-09 04:56:06.210568693 -0400
 @@ -146,7 +146,7 @@
  <div class="helpitem"><article class="ls-helpitem"><div><header id="expiresDefault"><h3>默认过期<span class="ls-permlink"><a href="#expiresDefault"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>指定生成Expires头的默认设置。该设置在<span class="tagl"><a href="#enableExpires">启用过期</a></span> 设为“启用”时有效。它可以被<span class="tagl"><a href="#expiresByType">按类型过期</a></span>覆盖。 除非必要，否则不要在服务器或虚拟主机级别设置该默认值。 因为它会为所有网页生成Expires头。大多数时候，应该是 为不常变动的某些目录在Context级别设置。如果没有默认设置，<span class="tagl"><a href="#expiresByType">按类型过期</a></span>中未指定的类型不会生成Expires头。</p> <h4>Syntax</h4><p>A|Mseconds<br/> 文件将在基准时间（A|M）加指定秒数的时间后失效。 “A”代表基准时间为客户端的访问时间，“M”代表文件的最后修改时间。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="expiresByType"><h3>按类型过期<span class="ls-permlink"><a href="#expiresByType"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>为各个MIME类型分别指定Expires头设置。</p> <h4>Syntax</h4><p>逗号分隔的“MIME-类型=A|M秒数”的列表。 文件将在基准时间（A|M）加指定秒数的时间后失效。<br/><br/> “A”代表基准时间为客户端的访问时间，“M”代表文件的最后修改时间。 MIME-类型可使用通配符“*”，如image/*。</p> </article> </div>
@@ -1270,9 +1285,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/VHGeneral_He
  <div class="helpitem"><article class="ls-helpitem"><div><header id="uploadTmpFilePermission"><h3>临时文件权限<span class="ls-permlink"><a href="#uploadTmpFilePermission"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>设置<b>临时文件路径</b>目录中的文件权限。 服务器级别是全局设置，可以被虚拟主机级别的设置覆盖。</p> <h4>Syntax</h4><p>3 digits octet number. Default value is 666.</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="uploadPassByPath"><h3>通过文件路径传递上传数据<span class="ls-permlink"><a href="#uploadPassByPath"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>指定是否按文件路径传递上传数据。 如果启用，则上传时文件路径以及其他一些信息将发送到后端处理程序，而不是文件本身。 这样可以节省CPU资源和文件传输时间，但需要一些更新才能实现。 如果禁用，则文件内容将传输到后端处理程序，请求主体仍解析为文件。</p> <h4>Syntax</h4><p>从单选框选择</p> <h4>提示</h4><p>[性能] 如果向下兼容不是问题，启用此功能可加快文件上传处理速度。</p> </article> </div>
  <div class="helpitem"><article class="ls-helpitem"><div><header id="suffix"><h3>后缀<span class="ls-permlink"><a href="#suffix"></a></span><span class="top"><a href="#top">&#8657;</a></span></h3></header></div><h4>Description</h4><p>指定将由此脚本处理程序处理的脚本文件后缀。 后缀必须是唯一的。</p> <h4>Syntax</h4><p>Comma delimited list with period "." character prohibited.</p> <h4>提示</h4><p><span title="Information" class="ls-icon-info"></span> 服务器将为列表中的第一个后缀自动添加特殊的MIME类型 ("application/x-httpd-[suffix]") 。 例如，将为后缀“ php53”添加MIME类型“ application/x-httpd-php53”。 首先需要在<span class="tagl"><a href="#mime">MIME设置</a></span>设置中设置后缀。<br/> 尽管我们在此字段中列出了后缀，但是脚本处理程序使用MIME类型而非后缀来确定要处理的脚本。<br/> [性能和安全建议] 仅指定您真正需要的后缀。</p> </article> </div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/VHWebSocket_Help.html openlitespeed-1.7.15/dist/docs/zh-CN/VHWebSocket_Help.html
---- openlitespeed-1.7.15-dist/dist/docs/zh-CN/VHWebSocket_Help.html	2022-02-22 11:28:30.000000000 -0500
-+++ openlitespeed-1.7.15/dist/docs/zh-CN/VHWebSocket_Help.html	2022-02-26 02:42:21.084588521 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/VHWebSocket_Help.html openlitespeed-1.7.15/dist/docs/zh-CN/VHWebSocket_Help.html
+--- openlitespeed-1.7.15-dist/dist/docs/zh-CN/VHWebSocket_Help.html	2022-04-28 16:36:14.000000000 -0400
++++ openlitespeed-1.7.15/dist/docs/zh-CN/VHWebSocket_Help.html	2022-05-09 04:56:06.210568693 -0400
 @@ -102,7 +102,7 @@
  <a href="#wsuri">URI</a> | <a href="#wsaddr">地址</a></p></section>
  </section>
@@ -1282,9 +1297,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/docs/zh-CN/VHWebSocket_
  </section>
  </article><div  class="ls-col-1-1"><footer class="copyright">Copyright &copy; 2013-2020. <a href="https://www.litespeedtech.com">LiteSpeed Technologies Inc.</a> 版权所有.</footer>
  </div></div>
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/functions.sh openlitespeed-1.7.15/dist/functions.sh
---- openlitespeed-1.7.15-dist/dist/functions.sh	2022-02-22 10:46:35.000000000 -0500
-+++ openlitespeed-1.7.15/dist/functions.sh	2022-02-26 02:42:21.084588521 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/functions.sh openlitespeed-1.7.15/dist/functions.sh
+--- openlitespeed-1.7.15-dist/dist/functions.sh	2022-04-27 16:24:47.000000000 -0400
++++ openlitespeed-1.7.15/dist/functions.sh	2022-05-09 04:56:06.210568693 -0400
 @@ -134,7 +134,7 @@
      SET_LOGIN=1
  
@@ -1303,9 +1318,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/functions.sh openlitesp
  
  ATTENTION: The user '$WS_USER' must be able to access the destination
             directory.
-diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/install.sh openlitespeed-1.7.15/dist/install.sh
---- openlitespeed-1.7.15-dist/dist/install.sh	2022-02-22 10:46:35.000000000 -0500
-+++ openlitespeed-1.7.15/dist/install.sh	2022-02-26 02:42:21.084588521 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/dist/install.sh openlitespeed-1.7.15/dist/install.sh
+--- openlitespeed-1.7.15-dist/dist/install.sh	2022-04-27 16:24:47.000000000 -0400
++++ openlitespeed-1.7.15/dist/install.sh	2022-05-09 04:56:06.210568693 -0400
 @@ -35,16 +35,17 @@
      fi
          
@@ -1333,9 +1348,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/dist/install.sh openlitespee
          
  #        if [ -f  "$LSWS_HOME/admin/fcgi-bin/admin_php" ] ; then
  #            HASADMINPHP=y
-diff -ur --no-dereference openlitespeed-1.7.15-dist/src/config.h.cmake openlitespeed-1.7.15/src/config.h.cmake
---- openlitespeed-1.7.15-dist/src/config.h.cmake	2022-02-22 10:46:35.000000000 -0500
-+++ openlitespeed-1.7.15/src/config.h.cmake	2022-02-26 02:42:21.084588521 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/src/config.h.cmake openlitespeed-1.7.15/src/config.h.cmake
+--- openlitespeed-1.7.15-dist/src/config.h.cmake	2022-04-27 16:24:47.000000000 -0400
++++ openlitespeed-1.7.15/src/config.h.cmake	2022-05-09 04:56:06.210568693 -0400
 @@ -2,8 +2,8 @@
  #define __CONFIG_H__
  
@@ -1347,9 +1362,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/src/config.h.cmake openlites
  
  #define PACKAGE_VERSION "1.7.15"
  #define LS_MODULE_VERSION_INFO "\tlsquic 3.0.4\n\tmodgzip 1.1\n\tcache 1.64\n\tmod_security 1.4\n"
-diff -ur --no-dereference openlitespeed-1.7.15-dist/src/http/httpvhost.cpp openlitespeed-1.7.15/src/http/httpvhost.cpp
---- openlitespeed-1.7.15-dist/src/http/httpvhost.cpp	2022-02-22 10:46:35.000000000 -0500
-+++ openlitespeed-1.7.15/src/http/httpvhost.cpp	2022-02-26 02:42:21.084588521 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/src/http/httpvhost.cpp openlitespeed-1.7.15/src/http/httpvhost.cpp
+--- openlitespeed-1.7.15-dist/src/http/httpvhost.cpp	2022-04-27 16:24:47.000000000 -0400
++++ openlitespeed-1.7.15/src/http/httpvhost.cpp	2022-05-09 04:56:06.210568693 -0400
 @@ -1420,7 +1420,7 @@
      int app_name_len = strlen(pAppName);
      if (vhost_len + app_name_len > max_len - 24)
@@ -1359,9 +1374,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/src/http/httpvhost.cpp openl
      p += 18;
      if (vhost_len < 0)
          app_name_len += vhost_len;
-diff -ur --no-dereference openlitespeed-1.7.15-dist/src/modules/mod_lsphp/src/config.m4 openlitespeed-1.7.15/src/modules/mod_lsphp/src/config.m4
---- openlitespeed-1.7.15-dist/src/modules/mod_lsphp/src/config.m4	2022-02-22 10:46:35.000000000 -0500
-+++ openlitespeed-1.7.15/src/modules/mod_lsphp/src/config.m4	2022-02-26 02:42:21.084588521 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/src/modules/mod_lsphp/src/config.m4 openlitespeed-1.7.15/src/modules/mod_lsphp/src/config.m4
+--- openlitespeed-1.7.15-dist/src/modules/mod_lsphp/src/config.m4	2022-04-27 16:24:47.000000000 -0400
++++ openlitespeed-1.7.15/src/modules/mod_lsphp/src/config.m4	2022-05-09 04:56:06.214568620 -0400
 @@ -17,7 +17,7 @@
  
  if test "$PHP_MOD_LSPHP" != "no"; then
@@ -1371,9 +1386,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/src/modules/mod_lsphp/src/co
    else
      PHP_EXPAND_PATH($PHP_MOD_LSPHP, LSR_PATH)
    fi
-diff -ur --no-dereference openlitespeed-1.7.15-dist/src/modules/modreqparser/modreqparser.cpp openlitespeed-1.7.15/src/modules/modreqparser/modreqparser.cpp
---- openlitespeed-1.7.15-dist/src/modules/modreqparser/modreqparser.cpp	2022-02-22 10:46:35.000000000 -0500
-+++ openlitespeed-1.7.15/src/modules/modreqparser/modreqparser.cpp	2022-02-26 02:42:21.084588521 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/src/modules/modreqparser/modreqparser.cpp openlitespeed-1.7.15/src/modules/modreqparser/modreqparser.cpp
+--- openlitespeed-1.7.15-dist/src/modules/modreqparser/modreqparser.cpp	2022-04-27 16:24:47.000000000 -0400
++++ openlitespeed-1.7.15/src/modules/modreqparser/modreqparser.cpp	2022-05-09 04:56:06.214568620 -0400
 @@ -34,7 +34,7 @@
  extern lsi_module_t MNAME;
  /***
@@ -1392,9 +1407,9 @@ diff -ur --no-dereference openlitespeed-1.7.15-dist/src/modules/modreqparser/mod
          pConfig->ownDir = 1;
      }
  
-diff -ur --no-dereference openlitespeed-1.7.15-dist/test/serverroot/bin/lshttpd.sh openlitespeed-1.7.15/test/serverroot/bin/lshttpd.sh
---- openlitespeed-1.7.15-dist/test/serverroot/bin/lshttpd.sh	2022-02-22 10:46:35.000000000 -0500
-+++ openlitespeed-1.7.15/test/serverroot/bin/lshttpd.sh	2022-02-26 02:42:21.084588521 -0500
+diff '--color=auto' -ur --no-dereference openlitespeed-1.7.15-dist/test/serverroot/bin/lshttpd.sh openlitespeed-1.7.15/test/serverroot/bin/lshttpd.sh
+--- openlitespeed-1.7.15-dist/test/serverroot/bin/lshttpd.sh	2022-04-27 16:24:47.000000000 -0400
++++ openlitespeed-1.7.15/test/serverroot/bin/lshttpd.sh	2022-05-09 04:56:06.214568620 -0400
 @@ -1,7 +1,7 @@
  
  # resolve links - $0 may be a softlink
