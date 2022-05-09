@@ -7,7 +7,7 @@
 # mupen64plus component receives a new commit.
 
 pkgname=mupen64plus-git
-pkgver=2.5.9.r164.gaf812317.20210102.183932
+pkgver=2.5.9.r299.g9eb6a7cb.20220424.200347
 pkgrel=1
 pkgdesc='Nintendo64 Emulator (git version)'
 arch=('x86_64')
@@ -38,10 +38,7 @@ sha256sums=('SKIP'
 _m64p_components='core rsp-hle video-rice video-glide64mk2 audio-sdl input-sdl ui-console'
 
 prepare() {
-    # extract install script
     bsdtar -xf "${srcdir}/mupen64plus-core/tools/m64p_helper_scripts.tar.gz" m64p_install.sh
-    
-    # remove uneedeed 'source' directory references from install script
     patch -Np1 -i 010-mupen64plus-git-install-fix.patch
 }
 
@@ -49,16 +46,17 @@ pkgver() {
     local _component
     local _date
     local _latest_date
+    local _tag
     
     for _component in $_m64p_components
     do
-        cd "${srcdir}/mupen64plus-${_component}"
-        _date="$(TZ='UTC' date -d "$(git log -1 --date='short' --pretty='format:%ci')" '+%Y%m%d.%H%M%S')"
+        _date="$(TZ='UTC' date -d "$(git -C "mupen64plus-${_component}" log -1 --date='short' --pretty='format:%ci')" '+%Y%m%d.%H%M%S')"
         [ "$(vercmp "$_date" "$_latest_date")" -gt '0' ] && _latest_date="$_date"
     done
     
-    cd "${srcdir}/mupen64plus-core"
-    printf "%s.${_latest_date}\n" "$(git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g;s/^v//')"
+    _tag="$(git -C mupen64plus-core tag --list --sort='-v:refname' '[[:digit:]]*' | head -n1)"
+    printf "${_tag}.r%s.g%s.${_latest_date}" "$(git -C mupen64plus-core rev-list --count "${_tag}..HEAD")" \
+                                             "$(git -C mupen64plus-core rev-parse --short HEAD)"
     
 }
 
