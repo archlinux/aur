@@ -1,7 +1,6 @@
 #!/bin/bash
 read -r DOPPLERTEXT <<<"$(doppler --version | sed 's/v//g')"
-read -r GITHUBTEXT <<<"$(curl -s https://github.com/DopplerHQ/cli/releases/latest | grep -Eo '[0-9]{1,2}\.[0-9]{1,3}\.[0-9]{1,3}')"
-# yes we're relying on the redirect
+read -r GITHUBTEXT <<<"$(wget --quiet https://github.com/DopplerHQ/cli/releases/latest -O /dev/stdout | grep -Eo 'Release [0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,2}' | head -n 1 | sed 's/Release //g')"
 
 if [ "$DOPPLERTEXT" == "$GITHUBTEXT" ]; then
 	echo "No update available"
