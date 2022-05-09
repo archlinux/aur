@@ -1,0 +1,13 @@
+pkgbase = gaalop
+	pkgdesc = Geometric Algebra ALgorithms OPtimizer is a software to optimize geometric algebra files.
+	pkgver = 2.2.5
+	pkgrel = 1
+	url = http://www.gaalop.de/
+	arch = any
+	license = GPL
+	makedepends = unzip
+	depends = jre-openjdk
+	source = http://www.gaalop.de/wp-content/uploads/gaalop-2.2.5-bin.zip
+	sha256sums = 2bb721ba76c46042a1f4c0d80c194e049d4837682141eba4697dcdeb086dbaec
+
+pkgname = gaalop
