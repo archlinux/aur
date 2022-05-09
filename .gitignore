@@ -1,0 +1,5 @@
+pkg
+src
+*.png
+*.tar.zst
+*.pkg.tar.*
