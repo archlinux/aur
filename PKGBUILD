@@ -4,7 +4,7 @@
 pkgname=nfm-git
 _pkgname=${pkgname%-*}
 pkgver=r132.1048d2d
-pkgrel=1
+pkgrel=2
 pkgdesc='Neat terminal file manager.'
 arch=('x86_64')
 url='https://sr.ht/~leon_plickat/nfm'
@@ -43,4 +43,6 @@ package() {
 	DESTDIR="$pkgdir" zig build -Drelease-safe --prefix '/usr'
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
+	install -d "$pkgdir/usr/share/$_pkgname"
+	cp -fR example "$pkgdir/usr/share/$_pkgname"
 }
