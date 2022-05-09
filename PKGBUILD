@@ -1,8 +1,8 @@
 # Maintainer: Agustin Carrasco <asermax at gmail dot com>
 pkgname=plasma5-runners-nordvpn
 reponame=NordVPNKrunner
-pkgver=2.1.0
-pkgrel=3
+pkgver=2.1.1
+pkgrel=1
 pkgdesc="Nordvpn plasma runner"
 arch=("any")
 url="https://github.com/alex1701c/${reponame}"
@@ -11,8 +11,8 @@ depends=("nordvpn-bin" "krunner" "kcmutils")
 makedepends=("cmake" "extra-cmake-modules" "gettext" "qt5-tools")
 source=("https://github.com/alex1701c/${reponame}/archive/${pkgver}.tar.gz"
         "https://s1.nordcdn.com/nordvpn/media/1.170.0/images/global/favicon/apple-touch-icon-57x57.png")
-md5sums=('1c65eb2578217931dfb768cd19be1336'
-    '45c79777d364ca2cc1665165aca77ea6')
+md5sums=('6b621be641b9145d5675f42f57e0815f'
+         '45c79777d364ca2cc1665165aca77ea6')
 
 build () {
   cd "${reponame}-${pkgver}"
