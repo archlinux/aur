@@ -1,5 +1,9 @@
+Version 6.18.8
+09 May 2022
+    - #118: redirect_uri requirements in Microsoft's OAuth 2.0
+
 Version 6.18.7
-TODO
+08 May 2022
     - #116: Update to avoid use of depreciated Google OAuth2 flow
     - #114: Fails with "Killed" when retrieving large emails
             use timeout for socket also as wait timeout for child
