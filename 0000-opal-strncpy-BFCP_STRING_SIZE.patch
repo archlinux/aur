@@ -1,0 +1,48 @@
+diff -pNaru5 a/src/sdp/BFCP/libbfcp/BFCP_fsm.cpp b/src/sdp/BFCP/libbfcp/BFCP_fsm.cpp
+--- a/src/sdp/BFCP/libbfcp/BFCP_fsm.cpp	2022-02-06 22:26:50.825527423 -0500
++++ b/src/sdp/BFCP/libbfcp/BFCP_fsm.cpp	2022-02-06 22:27:44.145861620 -0500
+@@ -5,11 +5,11 @@ BFCP_fsm::~BFCP_fsm(void)
+ {
+ }
+ 
+ void BFCP_fsm::setName(const char* p_name ){
+     if ( p_name ) {
+-        strncpy( m_name , p_name , BFCP_STRING_SIZE ) ; 
++        strncpy( m_name , p_name , BFCP_STRING_SIZE-1 ) ; 
+     }
+     else
+         memset ( m_name , 0 , BFCP_STRING_SIZE );
+ }
+ 
+diff -pNaru5 a/src/sdp/BFCP/libbfcp/bfcpsrvctl/bfcpcli/bfcp_participant.cpp b/src/sdp/BFCP/libbfcp/bfcpsrvctl/bfcpcli/bfcp_participant.cpp
+--- a/src/sdp/BFCP/libbfcp/bfcpsrvctl/bfcpcli/bfcp_participant.cpp	2022-02-06 22:26:50.825527423 -0500
++++ b/src/sdp/BFCP/libbfcp/bfcpsrvctl/bfcpcli/bfcp_participant.cpp	2022-02-06 22:27:47.375881911 -0500
+@@ -1366,11 +1366,11 @@ bool BFCP_Participant::OnBFCPConnected(B
+     Log(INF,_T("BFCP connection callback sock fd [%d] [%s:%d]"), socket, remoteIp ,remotePort);
+     m_PartSocket = socket ;
+     s_bfcp_msg_event evt ;
+     memset ( &evt , 0 , sizeof(s_bfcp_msg_event));
+     if ( remoteIp ) 
+-        strncpy(evt.c_param , remoteIp , BFCP_STRING_SIZE );
++        strncpy(evt.c_param , remoteIp , BFCP_STRING_SIZE-1 );
+     if ( remotePort )
+         evt.i_parm = remotePort ;
+     return FsmCtrlPerform( BFCP_fsm::BFCP_ACT_CONNECTED , &evt ) ;
+ }
+ 
+diff -pNaru5 a/src/sdp/BFCP/libbfcp/bfcpsrvctl/bfcpsrv/bfcp_server.cpp b/src/sdp/BFCP/libbfcp/bfcpsrvctl/bfcpsrv/bfcp_server.cpp
+--- a/src/sdp/BFCP/libbfcp/bfcpsrvctl/bfcpsrv/bfcp_server.cpp	2022-02-06 22:26:50.825527423 -0500
++++ b/src/sdp/BFCP/libbfcp/bfcpsrvctl/bfcpsrv/bfcp_server.cpp	2022-02-06 22:27:52.095911572 -0500
+@@ -821,11 +821,11 @@ bool BFCP_Server::OnBFCPConnected(BFCP_S
+     s_bfcp_msg_event evt ;
+     
+     memset ( &evt , 0 , sizeof(s_bfcp_msg_event));
+     if ( remoteIp ) 
+     {
+-	strncpy(evt.c_param , remoteIp , BFCP_STRING_SIZE );
++	strncpy(evt.c_param , remoteIp , BFCP_STRING_SIZE-1 );
+ 	evt.c_param[BFCP_STRING_SIZE-1] = 0;
+     }
+ 
+     if ( remotePort > 0 ) evt.i_parm = remotePort ;
+     return FsmCtrlPerform( BFCP_fsm::BFCP_ACT_CONNECTED , &evt ) ;
