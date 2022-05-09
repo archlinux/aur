@@ -1,0 +1,16 @@
+pkgbase = treeleaves-git
+	pkgver = 0.3.1
+	pkgrel = 1
+	url = https://github.com/jmdaemon/treeleaves
+	arch = any
+	license = AGPL3
+	makedepends = git
+	makedepends = make
+	depends = sbcl
+	provides = treeleaves
+	conflicts = treeleaves
+	options = !strip
+	source = treeleaves-git::git+https://github.com/jmdaemon/treeleaves#branch=master
+	sha512sums = SKIP
+
+pkgname = treeleaves-git
