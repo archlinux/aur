@@ -1,14 +1,14 @@
 pkgbase = arkenfox-user.js
 	pkgdesc = Firefox privacy, security and anti-tracking: a comprehensive user.js template for configuration and hardening.
-	pkgver = 99.0
+	pkgver = 100.0
 	pkgrel = 1
 	url = https://github.com/arkenfox/user.js
 	arch = any
 	license = MIT
 	options = !strip
-	source = arkenfox-user.js-99.0.tar.gz::https://github.com/arkenfox/user.js/archive/99.0.tar.gz
+	source = arkenfox-user.js-100.0.tar.gz::https://github.com/arkenfox/user.js/archive/100.0.tar.gz
 	source = updater.patch
-	sha256sums = 9313af70e29847bf90a69ac6b2b85937ce255390d58ea966a2348db286d8c00e
+	sha256sums = 45f8a3fc6d6ea30b07d09649db8db61d4a139dcb74a684c3aebb469a0cf2fac0
 	sha256sums = 61d9058c971e732dfe7626851b4b2380622b931578fe009b7c5f143fb3135362
 
 pkgname = arkenfox-user.js
