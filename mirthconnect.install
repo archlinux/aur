@@ -1,0 +1,48 @@
+# variables filled in by PKGBUILD
+
+_usercheck() {
+  if ! getent group "${_mirthgroup}" &> /dev/null; then
+    groupadd -r "${_mirthgroup}"
+    echo "mirth: Group ${_mirthgroup} added"
+  fi
+  if ! getent passwd "${_mirthuser}" &> /dev/null; then
+    useradd -r -g "${_mirthgroup}" -G 'http' -d "${_mirthhome}" -s '/usr/bin/bash' -c 'mirth document server' "${_mirthuser}"
+    echo "mirth: User ${_mirthuser} added"
+  fi
+}
+
+post_upgrade() {
+  set -u
+  chown "${_mirthuser}:${_mirthgroup}" "${_mirthhome}"
+  chown -R "${_mirthuser}:${_mirthgroup}" "${_mirthhome}/conf"
+  set +u
+}
+
+post_install() {
+  set -u
+  _usercheck
+  post_upgrade
+  set +u
+}
+
+pre_remove() {
+  set -u
+  systemctl stop 'mirthconnect.service'
+  set +u
+}
+
+post_remove() {
+  set -u
+  if getent passwd "${_mirthuser}" &> /dev/null; then
+    userdel "${_mirthuser}"
+    echo "mirth: User ${_mirthgroup} removed"
+  fi
+  if getent group "${_mirthgroup}" &> /dev/null; then
+    groupdel "${_mirthgroup}"
+    echo "mirth: Group ${_mirthgroup} removed"
+  fi
+  if [ -d "${_mirthhome}" ]; then
+    echo "Uninstall all settings: sudo rm -rf '${_mirthhome}'"
+  fi
+  set +u
+}

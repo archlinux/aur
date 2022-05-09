@@ -1,0 +1,111 @@
+diff -pNaru5 a/src/main/java/com/jcraft/jsch/JSch.java b/src/main/java/com/jcraft/jsch/JSch.java
+--- a/src/main/java/com/jcraft/jsch/JSch.java	2018-11-20 05:58:55.000000000 -0500
++++ b/src/main/java/com/jcraft/jsch/JSch.java	2022-05-05 16:32:00.569792636 -0400
+@@ -38,31 +38,31 @@ public class JSch{
+    */
+   public static final String VERSION  = "0.1.54";
+ 
+   static java.util.Hashtable config=new java.util.Hashtable();
+   static{
+-    config.put("kex", "ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha256,diffie-hellman-group-exchange-sha1,diffie-hellman-group1-sha1");
+-    config.put("server_host_key", "ssh-rsa,ssh-dss,ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521");
++    config.put("kex", "ecdh-sha2-nistp521,ecdh-sha2-nistp384,ecdh-sha2-nistp256,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha1,diffie-hellman-group-exchange-sha1");
++    config.put("server_host_key", "ecdsa-sha2-nistp521,ecdsa-sha2-nistp384,ecdsa-sha2-nistp256,ssh-rsa");
+     config.put("cipher.s2c", 
+-               "aes128-ctr,aes128-cbc,3des-ctr,3des-cbc,blowfish-cbc,aes192-ctr,aes192-cbc,aes256-ctr,aes256-cbc");
++               "aes256-ctr,aes256-cbc,aes192-ctr,aes192-cbc,aes128-ctr,aes128-cbc");
+     config.put("cipher.c2s",
+-               "aes128-ctr,aes128-cbc,3des-ctr,3des-cbc,blowfish-cbc,aes192-ctr,aes192-cbc,aes256-ctr,aes256-cbc");
++               "aes256-ctr,aes256-cbc,aes192-ctr,aes192-cbc,aes128-ctr,aes128-cbc");
+ 
+-    config.put("mac.s2c", "hmac-md5,hmac-sha1,hmac-sha2-256,hmac-sha1-96,hmac-md5-96");
+-    config.put("mac.c2s", "hmac-md5,hmac-sha1,hmac-sha2-256,hmac-sha1-96,hmac-md5-96");
++    config.put("mac.s2c", "hmac-sha2-256,hmac-sha1");
++    config.put("mac.c2s", "hmac-sha2-256,hmac-sha1");
+     config.put("compression.s2c", "none");
+     config.put("compression.c2s", "none");
+ 
+     config.put("lang.s2c", "");
+     config.put("lang.c2s", "");
+ 
+     config.put("compression_level", "6");
+ 
+     config.put("diffie-hellman-group-exchange-sha1", 
+                                 "com.jcraft.jsch.DHGEX");
+-    config.put("diffie-hellman-group1-sha1", 
+-	                        "com.jcraft.jsch.DHG1");
++//    config.put("diffie-hellman-group1-sha1", 
++//	                        "com.jcraft.jsch.DHG1");
+     config.put("diffie-hellman-group14-sha1", 
+                "com.jcraft.jsch.DHG14");    // available since JDK8.
+     config.put("diffie-hellman-group-exchange-sha256", 
+                "com.jcraft.jsch.DHGEX256"); // available since JDK1.4.2.
+                                             // On JDK8, 2048bits will be used.
+@@ -75,28 +75,28 @@ public class JSch{
+     config.put("ecdh-sha2-nistp521", "com.jcraft.jsch.DHEC521");
+ 
+     config.put("ecdh-sha2-nistp", "com.jcraft.jsch.jce.ECDHN");
+ 
+     config.put("dh",            "com.jcraft.jsch.jce.DH");
+-    config.put("3des-cbc",      "com.jcraft.jsch.jce.TripleDESCBC");
+-    config.put("blowfish-cbc",  "com.jcraft.jsch.jce.BlowfishCBC");
++    //config.put("3des-cbc",      "com.jcraft.jsch.jce.TripleDESCBC");
++    //config.put("blowfish-cbc",  "com.jcraft.jsch.jce.BlowfishCBC");
+     config.put("hmac-sha1",     "com.jcraft.jsch.jce.HMACSHA1");
+-    config.put("hmac-sha1-96",  "com.jcraft.jsch.jce.HMACSHA196");
++    //config.put("hmac-sha1-96",  "com.jcraft.jsch.jce.HMACSHA196");
+     config.put("hmac-sha2-256",  "com.jcraft.jsch.jce.HMACSHA256");
+     // The "hmac-sha2-512" will require the key-length 2048 for DH,
+     // but Sun's JCE has not allowed to use such a long key.
+     //config.put("hmac-sha2-512",  "com.jcraft.jsch.jce.HMACSHA512");
+-    config.put("hmac-md5",      "com.jcraft.jsch.jce.HMACMD5");
+-    config.put("hmac-md5-96",   "com.jcraft.jsch.jce.HMACMD596");
++    //config.put("hmac-md5",      "com.jcraft.jsch.jce.HMACMD5");
++    //config.put("hmac-md5-96",   "com.jcraft.jsch.jce.HMACMD596");
+     config.put("sha-1",         "com.jcraft.jsch.jce.SHA1");
+     config.put("sha-256",         "com.jcraft.jsch.jce.SHA256");
+     config.put("sha-384",         "com.jcraft.jsch.jce.SHA384");
+     config.put("sha-512",         "com.jcraft.jsch.jce.SHA512");
+     config.put("md5",           "com.jcraft.jsch.jce.MD5");
+-    config.put("signature.dss", "com.jcraft.jsch.jce.SignatureDSA");
++    //config.put("signature.dss", "com.jcraft.jsch.jce.SignatureDSA");
+     config.put("signature.rsa", "com.jcraft.jsch.jce.SignatureRSA");
+-    config.put("keypairgen.dsa",   "com.jcraft.jsch.jce.KeyPairGenDSA");
++    //config.put("keypairgen.dsa",   "com.jcraft.jsch.jce.KeyPairGenDSA");
+     config.put("keypairgen.rsa",   "com.jcraft.jsch.jce.KeyPairGenRSA");
+     config.put("keypairgen.ecdsa", "com.jcraft.jsch.jce.KeyPairGenECDSA");
+     config.put("random",        "com.jcraft.jsch.jce.Random");
+ 
+     config.put("none",           "com.jcraft.jsch.CipherNone");
+@@ -106,14 +106,14 @@ public class JSch{
+     config.put("aes256-cbc",    "com.jcraft.jsch.jce.AES256CBC");
+ 
+     config.put("aes128-ctr",    "com.jcraft.jsch.jce.AES128CTR");
+     config.put("aes192-ctr",    "com.jcraft.jsch.jce.AES192CTR");
+     config.put("aes256-ctr",    "com.jcraft.jsch.jce.AES256CTR");
+-    config.put("3des-ctr",      "com.jcraft.jsch.jce.TripleDESCTR");
+-    config.put("arcfour",      "com.jcraft.jsch.jce.ARCFOUR");
+-    config.put("arcfour128",      "com.jcraft.jsch.jce.ARCFOUR128");
+-    config.put("arcfour256",      "com.jcraft.jsch.jce.ARCFOUR256");
++    //config.put("3des-ctr",      "com.jcraft.jsch.jce.TripleDESCTR");
++    //config.put("arcfour",      "com.jcraft.jsch.jce.ARCFOUR");
++    //config.put("arcfour128",      "com.jcraft.jsch.jce.ARCFOUR128");
++    //config.put("arcfour256",      "com.jcraft.jsch.jce.ARCFOUR256");
+ 
+     config.put("userauth.none",    "com.jcraft.jsch.UserAuthNone");
+     config.put("userauth.password",    "com.jcraft.jsch.UserAuthPassword");
+     config.put("userauth.keyboard-interactive",    "com.jcraft.jsch.UserAuthKeyboardInteractive");
+     config.put("userauth.publickey",    "com.jcraft.jsch.UserAuthPublicKey");
+@@ -128,11 +128,11 @@ public class JSch{
+     config.put("StrictHostKeyChecking",  "ask");
+     config.put("HashKnownHosts",  "no");
+ 
+     config.put("PreferredAuthentications", "gssapi-with-mic,publickey,keyboard-interactive,password");
+ 
+-    config.put("CheckCiphers", "aes256-ctr,aes192-ctr,aes128-ctr,aes256-cbc,aes192-cbc,aes128-cbc,3des-ctr,arcfour,arcfour128,arcfour256");
++    config.put("CheckCiphers", "aes256-ctr,aes256-cbc,aes192-ctr,aes192-cbc,aes128-ctr,aes128-cbc");
+     config.put("CheckKexes", "diffie-hellman-group14-sha1,ecdh-sha2-nistp256,ecdh-sha2-nistp384,ecdh-sha2-nistp521");
+     config.put("CheckSignatures", "ecdsa-sha2-nistp256,ecdsa-sha2-nistp384,ecdsa-sha2-nistp521");
+ 
+     config.put("MaxAuthTries", "6");
+     config.put("ClearAllForwardings", "no");
