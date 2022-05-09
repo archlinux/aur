@@ -1,14 +1,11 @@
 pkgbase = subsync
 	pkgdesc = Subtitle Speech Synchronizer
 	pkgver = 0.17
-	pkgrel = 3
+	pkgrel = 4
 	url = https://subsync.online
 	arch = x86_64
 	license = GPL3
-	makedepends = python-build
-	makedepends = python-installer
 	makedepends = python-setuptools
-	makedepends = python-wheel
 	depends = ffmpeg4.4
 	depends = git
 	depends = pocketsphinx
