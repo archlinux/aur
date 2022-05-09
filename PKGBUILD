@@ -7,7 +7,7 @@
 
 pkgname='electron-cash-git'
 pkgdesc='Lightweight Bitcoin Cash wallet'
-pkgver=4.2.4.r3.g977b23c4a
+pkgver=4.2.8.r4.g603773e59
 pkgrel=1
 url='http://www.electroncash.org/'
 arch=('any')
@@ -49,6 +49,7 @@ optdepends=(
   'python-rpyc: send commands to Electrum Python console from an external script'
   'python-trezor: Trezor hardware wallet support'
   'python-keepkey: Trezor hardware wallet support'
+  'python-web3: LNS support'
   'zbar: QR code reading support'
 )
 provides=("${pkgname/-git/}")
@@ -72,6 +73,8 @@ build() {
   protoc --proto_path=electroncash/ --python_out=electroncash/ electroncash/paymentrequest.proto
   # Create translations (optional):
   python contrib/make_locale
+  # Use libsecp
+  bash contrib/make_secp
   # Build
   python setup.py build
 }
@@ -79,7 +82,7 @@ build() {
 check() {
   cd "${pkgname}"
 
-  tox -e py39
+  tox -e py310
 }
 
 package() {

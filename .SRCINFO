@@ -1,6 +1,6 @@
 pkgbase = electron-cash-git
 	pkgdesc = Lightweight Bitcoin Cash wallet
-	pkgver = 4.2.4.r3.g977b23c4a
+	pkgver = 4.2.8.r4.g603773e59
 	pkgrel = 1
 	url = http://www.electroncash.org/
 	arch = any
@@ -37,6 +37,7 @@ pkgbase = electron-cash-git
 	optdepends = python-rpyc: send commands to Electrum Python console from an external script
 	optdepends = python-trezor: Trezor hardware wallet support
 	optdepends = python-keepkey: Trezor hardware wallet support
+	optdepends = python-web3: LNS support
 	optdepends = zbar: QR code reading support
 	provides = electron-cash
 	conflicts = electron-cash
@@ -44,4 +45,3 @@ pkgbase = electron-cash-git
 	sha256sums = SKIP
 
 pkgname = electron-cash-git
-
