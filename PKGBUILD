@@ -3,7 +3,7 @@
 #
 pkgname=go4
 _Pkgname=Go4
-pkgver=6.1.2
+pkgver=6.2.0
 pkgrel=1
 pkgdesc='Object-oriented system (GSI Object Oriented On-line Off-line system) based on ROOT'
 arch=('x86_64')
@@ -13,7 +13,7 @@ conflicts=('mbseventapi')
 url="https://www.gsi.de/en/work/research/experiment_electronics/data_processing/data_analysis/the_go4_home_page.htm"
 license=('GPL')
 source=("http://web-docs.gsi.de/~go4/download/go4-${pkgver}.tar.gz")
-md5sums=('c30e2d9e1108550e6a0330a81e9a3369')
+sha256sums=('5742ae0eec0fee7e61763b8fe940b568d4983be2abbff1b99b6937cccfcddd09')
 
 prepare() {
 
