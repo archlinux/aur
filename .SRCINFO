@@ -1,7 +1,7 @@
 pkgbase = mkvtool
 	pkgdesc = Automatic fonts subset tool.
 	pkgver = 3.9.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MkvAutoSubset/MkvAutoSubset
 	arch = x86_64
 	license = GPL3

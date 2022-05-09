@@ -1,7 +1,8 @@
 # Maintainer: Mineralwater Xu <mineralwater@m1neralwater.com>
+
 pkgname=mkvtool
 pkgver=3.9.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatic fonts subset tool."
 arch=('x86_64')
 url="https://github.com/MkvAutoSubset/MkvAutoSubset"
