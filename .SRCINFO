@@ -1,0 +1,14 @@
+pkgbase = python-qobuz
+	pkgdesc = Unofficial python library for the Qobuz-API.
+	pkgver = 0.0.2
+	pkgrel = 1
+	url = https://github.com/taschenb/mopidy-qobuz
+	arch = any
+	license = Apache2
+	makedepends = python-setuptools
+	depends = python-requests
+	options = !emptydirs
+	source = https://files.pythonhosted.org/packages/source/q/qobuz/qobuz-0.0.2.tar.gz
+	sha256sums = 0914ed019396e124927cafc09588e5e770d4bafc9b5fec43fc4b31d12c353fb9
+
+pkgname = python-qobuz
