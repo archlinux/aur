@@ -1,15 +1,14 @@
+# Maintainer: Jake Barnes <me+aur@jakebarn.es>
 # Maintainer: Philipp Schmitt <philipp@schmitt.co>
-# GitHub: https://github.com/pschmitt/aur-flicd
 pkgname=flicd
-pkgver=0.4
-pkgrel=4
+pkgver=2.0.3
+pkgrel=1
 pkgdesc="Flic SDK for Linux"
-arch=('i386' 'x86_64' 'armv6h' 'armv6l' 'armv7l' 'armv7h')
+arch=('i386' 'x86_64' 'armv6h' 'armv6l' 'armv7h' 'armv7l' 'aarch64')
 url="https://github.com/50ButtonsEach/fliclib-linux-hci"
 license=('unknown')
-source=("git+https://github.com/50ButtonsEach/fliclib-linux-hci#tag=0.4"
+source=("git+https://github.com/50ButtonsEach/fliclib-linux-hci#tag=${pkgver}"
         "flicd.service")
-makedepends=('make')
 md5sums=('SKIP'
          '6144a880dd1975c63140f1754320812c')
 sha256sums=('SKIP'
@@ -25,7 +24,7 @@ build() {
 package() {
   local cpu_arch
   case "$CARCH" in
-    x86_64|i386)
+    x86_64|i386|aarch64)
       cpu_arch="$CARCH" ;;
     arm*)
       cpu_arch=armv6l ;;
@@ -42,5 +41,3 @@ package() {
     "${pkgdir}/usr/lib/systemd/system/flicd.service"
   install -dDm 755 "${pkgdir}/etc/flicd"
 }
-
-# vim:set ts=2 sw=2 et:
