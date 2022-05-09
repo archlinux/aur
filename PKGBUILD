@@ -40,6 +40,7 @@ makedepends=(
     'patch'
     'python'
     'pkg-config'
+    'systemd-sysvcompat'
 )
 source=(
     "git+${url}#tag=${pkgver}"
