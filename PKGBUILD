@@ -111,8 +111,6 @@ build() {
           BOOT_LDFLAGS="$LDFLAGS" \
           LDFLAGS_FOR_TARGET="$LDFLAGS" \
           all-gcc
-
-  cp -a gcc/libgccjit.so* ../gcc-build/gcc/
 }
 
 check() {
