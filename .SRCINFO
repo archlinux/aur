@@ -12,12 +12,11 @@ pkgbase = lfp
 	depends = ueberzug
 	depends = graphicsmagick
 	depends = ghostscript
+	optdepends = dialog: Required by many lfp functions outside the scope of image and video previews
+	optdepends = dunst: To receive notifications upon task completion and so forth
 	source = https://concise.cc/pkg/lfp-1.0.2-1-x86_64.pkg.tar.zst
-	source = https://concise.cc/pkg/lfp-1.0.2-1-x86_64.pkg.tar.zst.sig
 	validpgpkeys = 81BACEEBC3EA26E127166E4A819BB92A9A48160E
-	md5sums = f4d85f2d39e0dc24bcbc24b5e739a98b
-	md5sums = 7035e0d038b0ec7ae344c16215825396
-	sha512sums = d15046114cb61f2d9066f8bda60f2fc3a301ae9298640f4e50e6264b2260c894744099c8e43b2839152e16d924946b411f47d7fd81d5e95785699b857c010246
-	sha512sums = 7a134ffda115def3180c90912580ab448ae87885bb13c3b63a54b56132164477c9c65a7ab626db551bc3e95d2ec21e60b6a857e928a325695dd1fb328d31e043
+	md5sums = d732a30e696e8deabc8911ce44127761
+	sha256sums = 6e9821e4cc503fb9bb551551dddfa972c5329c4811f60ec0210b1e4a1d8eb8b6
 
 pkgname = lfp
