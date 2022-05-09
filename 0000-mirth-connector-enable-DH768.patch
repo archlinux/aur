@@ -1,0 +1,16 @@
+diff -pNaru5 a/jre/lib/security/java.security b/jre/lib/security/java.security
+--- a/jre/lib/security/java.security	2021-04-14 18:50:45.000000000 -0400
++++ b/jre/lib/security/java.security	2022-02-11 17:16:44.159260698 -0500
+@@ -639,11 +639,11 @@ jdk.jar.disabledAlgorithms=MD2, MD5, RSA
+ # Note: This property is currently used by the JDK Reference implementation.
+ # It is not guaranteed to be examined and used by other implementations.
+ #
+ # Example:
+ #   jdk.tls.disabledAlgorithms=MD5, SSLv3, DSA, RSA keySize < 2048
+-jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize < 1024, \
++jdk.tls.disabledAlgorithms=SSLv3, RC4, MD5withRSA, DH keySize < 768, \
+     EC keySize < 224, DES40_CBC, RC4_40, 3DES_EDE_CBC
+ 
+ # Legacy algorithms for Secure Socket Layer/Transport Layer Security (SSL/TLS)
+ # processing in JSSE implementation.
+ #
