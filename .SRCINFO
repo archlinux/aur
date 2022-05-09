@@ -1,0 +1,16 @@
+pkgbase = nodejs-ngrok
+	pkgdesc = Node.js module and implementation of ngrok
+	pkgver = 4.3.1
+	pkgrel = 1
+	url = https://github.com/bubenshchykov/ngrok
+	arch = any
+	license = BSD-2-Clause
+	makedepends = npm
+	depends = nodejs
+	provides = ngrok
+	conflicts = ngrok
+	noextract = ngrok-4.3.1.tgz
+	source = http://registry.npmjs.org/ngrok/-/ngrok-4.3.1.tgz
+	sha256sums = a76c5fc9d623ed3718817b9549de1a5a0d140ae449961e75019964f1850634a9
+
+pkgname = nodejs-ngrok
