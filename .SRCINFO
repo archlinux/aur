@@ -1,6 +1,6 @@
 pkgbase = apertium-lex-tools
 	pkgdesc = Module for compiling lexical selection rules and processing them in the pipeline.
-	pkgver = 0.2.7
+	pkgver = 0.3.1
 	pkgrel = 1
 	url = https://wiki.apertium.org/wiki/Constraint-based_lexical_selection_module
 	arch = i686
@@ -9,15 +9,14 @@ pkgbase = apertium-lex-tools
 	makedepends = pkgconf
 	makedepends = gcc
 	makedepends = make
-	makedepends = autogen
 	makedepends = flex
 	makedepends = autoconf
 	makedepends = automake
 	makedepends = libtool
 	makedepends = zlib
 	depends = apertium
-	source = apertium-lex-tools-0.2.7.tar.gz::https://github.com/apertium/apertium-lex-tools/archive/refs/tags/v0.2.7.tar.gz
-	sha256sums = 4f8cb74a53210d3868624ba0fb1045692c8d1ba049b7e28089c0153619bfd006
+	depends = lttoolbox
+	source = apertium-lex-tools-0.3.1.tar.gz::https://github.com/apertium/apertium-lex-tools/archive/refs/tags/v0.3.1.tar.gz
+	sha256sums = 113e65de15634c7d3fbb9322a7edc09107ebf8bdf1169fd1eb5cce184a017ebb
 
 pkgname = apertium-lex-tools
-
