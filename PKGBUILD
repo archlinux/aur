@@ -2,15 +2,15 @@
 
 pkgname=blender-plugin-mhx
 pkgver=2
-pkgrel=3
-_blender_version=3.0
+pkgrel=4
+# this may stop working so please insert your current /usr/share/blender/$blender_version
+_blender_version=$(pacman -Qi blender | grep Version | cut -b 22-24)
 pkgdesc="MHX (blender/makehuman interchange format) importer for blender"
 arch=('any')
 url="http://www.makehumancommunity.org/"
 license=('GPLv2')
+depends=('blender')
 source=("https://download.tuxfamily.org/makehuman/plugins/mhx-blender-latest.zip")
-#looks like being (currently) daily updated, even the latest one
-#relying on direct version numbering broken the other day
 sha512sums=('SKIP')
 
 prepare(){
