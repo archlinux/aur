@@ -3,8 +3,8 @@
 
 _pkgname=server
 pkgname=etebase-server
-pkgver=0.8.3
-pkgrel=2
+pkgver=0.9.1
+pkgrel=1
 pkgdesc="A self-hostable Etebase (EteSync 2.0) server"
 arch=(any)
 depends=(
@@ -15,9 +15,16 @@ depends=(
 	'python-pynacl'
 	'python-msgpack'
 )
+makedepends=(
+	'python-setuptools'
+	'python-build'
+	'python-installer'
+	'python-wheel'
+)
 optdepends=(
 	'postgresql: storage backend'
 	'python-daphne: application container'
+	'python-ldap: LDAP user verification'
 )
 url="https://github.com/etesync/$_pkgname"
 license=('AGPL3')
@@ -28,35 +35,34 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         $pkgname.tmpfiles
         $pkgname.ini.patch
         $pkgname)
-sha256sums=('53680e044c976b862f7dacde72402f86bbff3f7a7455ef517f8ad591a42e0944'
+sha256sums=('217b6072d87368f605f46212b495851eb81c213447a5d8b4bf3119e14e3e298e'
             'd42e2518975363aed2900fe4e03eefade98ed9b6f8b8140fd1eddc081d4081e7'
             'f8b9bdbfdd90365a6b463ab2af4320eb2fddb527e6c33d0f02f4f8820864eb43'
-            '7b0f45aab22b02698dce4b94608f764d445a74a8fdbdbb1d8ddb4928c5391f5f'
-            'fb2d4fbec4faf951b0c5df0552eb8afaa8aff85278b43faa018e2e9a77e23591')
+            'd4b4dc44deab70c0d4c9e485763721fedff3eb938c201d96e6dacc75592b24c2'
+            '3f040318ab3fac72c8033b0b567f635e7da5afb9e6e8f8b391d4978226136983')
+
+build() {
+	cd "$_pkgname-$pkgver"
+
+	python -m build --wheel --no-isolation
+}
 
 package() {
-	mkdir -p "$pkgdir/etc/etebase-server/"
-	mkdir -p "$pkgdir/usr/bin/"
-	mkdir -p "$pkgdir/usr/lib"
-	mkdir -p "$pkgdir/usr/share/doc/$pkgname"
-	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+	cd "$_pkgname-$pkgver"
 
-	install -Dm644 "$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
-	install -Dm644 "$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+	python -m installer --destdir="$pkgdir" dist/*.whl
 
-	install -Dm644 "server-$pkgver/$pkgname.ini.example" "$pkgdir/etc/$pkgname/$pkgname.ini"
+	DJANGO_STATIC_ROOT="$pkgdir/usr/share/webapps/$pkgname/static" ./manage.py collectstatic
+
+	install -Dm644 "$srcdir/$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+	install -Dm644 "$srcdir/$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
+
+	install -Dm644 "$pkgname.ini.example" "$pkgdir/etc/$pkgname/$pkgname.ini"
 	patch --directory="$pkgdir/etc/$pkgname/" -p1 < "$srcdir/$pkgname.ini.patch"
 
-	install -Dm644 "server-$pkgver/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
-	mv "server-$pkgver/example-configs" "$pkgdir/usr/share/doc/$pkgname/"
-	rm -f "server-$pkgver/README.md"
+	install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
 
-	install -Dm644 "server-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-	rm -f "server-$pkgver/LICENSE"
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-	rm -f "server-$pkgver/icon.svg"
-
-	cp -r "server-$pkgver" "$pkgdir/usr/lib/$pkgname"
-
-	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
+	install -Dm755 "$srcdir/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }

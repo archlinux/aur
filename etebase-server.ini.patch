@@ -8,14 +8,17 @@
  ;Set the paths where data will be stored at
 -static_root = /path/to/static
 -media_root = /path/to/media
-+static_root = /var/lib/etebase-server/static
++static_root = /usr/share/webapps/etebase-server/static
 +media_root = /var/lib/etebase-server/media
  
  ;Advanced options, only uncomment if you know what you're doing:
  ;static_url = /static/
-@@ -17,4 +17,4 @@
+@@ -17,7 +17,7 @@
  
  [database]
  engine = django.db.backends.sqlite3
 -name = db.sqlite3
 +name = /var/lib/etebase-server/db.sqlite3
+ 
+ [database-options]
+ ; Add engine-specific options here, such as postgresql parameter key words
