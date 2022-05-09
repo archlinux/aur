@@ -9,13 +9,13 @@ license=('GPL3')
 depends=()
 optdepends=()
 makedepends=('git' 'make')
-source=("pkgname::git+https://github.com/rxi/log.c#branch=master")
+source=("$pkgname::git+https://github.com/rxi/log.c#branch=master")
 provides=(logc)
 conflicts=(logc)
 sha512sums=("SKIP")
 
 build() {
-  cd "pkgname"
+  cd "$pkgname"
   cd src
   relflags="-O3 -DNDEBUG"
   gcc -c $relflags -fPIC -o logc.o log.c 
@@ -23,7 +23,7 @@ build() {
 }
 
 package() {
-  cd "pkgname"
+  cd "$pkgname"
   cd src
   install logc.so "$pkgdir"
   install log.h "$pkgdir"
