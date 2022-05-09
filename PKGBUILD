@@ -1,13 +1,13 @@
 # Maintainer: Lionel Hernou <lionel.hernou@gmail.com>
 pkgname=netradiant-custom
-pkgver=20210105
-pkgrel=6
+pkgver=20220211
+pkgrel=1
 pkgdesc="Open-source, cross-platform level editor for id Tech based games."
 url="https://github.com/Garux/netradiant-custom"
 depends=('gtk2' 'gtkglext' 'libxml2' 'zlib' 'libpng')
 makedepends=('svn' 'gcc' 'make')
-source=('https://github.com/Garux/netradiant-custom/archive/refs/tags/20210105.tar.gz')
-sha256sums=('aee2540808f8b3922acc569bc53ea7e2904dfc48f2953e3668585b519dae8134')
+source=('https://github.com/Garux/netradiant-custom/archive/refs/tags/20220211.tar.gz')
+sha256sums=('c1f26ba21d113bc59ba6f9232f1b984c6455133f4a7984d081e79057148fdba1')
 license=('custom')
 arch=('any')
 
