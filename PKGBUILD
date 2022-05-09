@@ -23,7 +23,7 @@ url="https://github.com/etesync/$_pkgname"
 license=('AGPL3')
 backup=("etc/$pkgname/$pkgname.ini")
 options=(!emptydirs)
-source=("$url/archive/v$pkgver.tar.gz"
+source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         $pkgname.sysusers
         $pkgname.tmpfiles
         $pkgname)
