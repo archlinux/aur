@@ -23,6 +23,7 @@ makedepends=(
 )
 optdepends=(
 	'postgresql: storage backend'
+	'uvicorn: application container, systemd service'
 	'python-daphne: application container'
 	'python-ldap: LDAP user verification'
 )

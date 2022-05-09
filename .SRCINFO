@@ -16,6 +16,7 @@ pkgbase = etebase-server
 	depends = python-pynacl
 	depends = python-msgpack
 	optdepends = postgresql: storage backend
+	optdepends = uvicorn: application container, systemd service
 	optdepends = python-daphne: application container
 	optdepends = python-ldap: LDAP user verification
 	options = !emptydirs
