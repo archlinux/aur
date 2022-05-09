@@ -1,6 +1,6 @@
 {
   "ms-vscode.js-debug": "=1.50.0",
-  "ms-vscode.js-debug-companion": "=",
+  "ms-vscode.js-debug-companion": "",
   "ms-vscode.node-debug" : "",
   "ms-vscode.node-debug2" : "",
   "vscode-builtin-extensions-pack": "",

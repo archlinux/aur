@@ -4,7 +4,7 @@
 
 pkgname=theia-electron
 pkgver=1.25.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'aarch64')
 url='https://www.theia-ide.org/'
 pkgdesc="Cloud & Desktop IDE Platform"
@@ -27,7 +27,7 @@ source=(
 )
 sha256sums=('49dc3027c1bed942afde93608248765178d8f32145c1f8c75b68f4b191bf0af0'
             '4389fe32082820b5f89578ce85006507f9d17b8496dd2e00b41189da9754fd87'
-            '216a626a6d6893b4f20c78a892b25f320a70f68fddd145d159ef75922cc405c7'
+            'bced2cecb21434563f72c6a46e577a802d9d6a756c178a870db1f69ac010c4ba'
             'f43cc8aaf4738166acdf4e54817ad7e9c031c4dacf23eb8496f9edae33b3f1d0'
             '76f48bbc421d298113c73cee628c9d0fd8b14381590d871928f4f0bd87e812ce'
             '25f7748c49f29bd35a28b1f9509357367f2c83c5a275162a969e3c2210432d54'
