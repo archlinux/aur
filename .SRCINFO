@@ -1,7 +1,7 @@
 pkgbase = netatalk
 	pkgdesc = Open-source implementation of the Apple Filing Protocol
-	pkgver = 3.1.12
-	pkgrel = 8
+	pkgver = 3.1.13
+	pkgrel = 1
 	url = https://netatalk.sourceforge.net
 	install = netatalk.install
 	arch = i686
@@ -23,11 +23,9 @@ pkgbase = netatalk
 	replaces = netatalk2
 	backup = etc/afp.conf
 	backup = etc/extmap.conf
-	source = http://downloads.sourceforge.net/project/netatalk/netatalk/3.1.12/netatalk-3.1.12.tar.bz2
-	source = gcc10.patch
+	source = http://downloads.sourceforge.net/project/netatalk/netatalk/3.1.13/netatalk-3.1.13.tar.bz2
 	source = python3.patch
-	md5sums = 021d2330cb7f7cd2977aec46299dcc1b
-	md5sums = 9e0c57f07b100bcdf5229224edf25a2b
+	md5sums = 697421623c32ee0ab9c8076191766e5f
 	md5sums = 8a81f88e01bcb4225e39e667b01dc1c6
 
 pkgname = netatalk
