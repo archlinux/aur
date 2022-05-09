@@ -1,13 +1,13 @@
 pkgbase = vial-appimage
 	pkgdesc = Vial is an open-source cross-platform (Windows, Linux and Mac) GUI and a QMK fork for configuring your keyboard in real time, similar to VIA.
-	pkgver = v0.5
-	pkgrel = 2
+	pkgver = v0.5.2
+	pkgrel = 1
 	url = https://get.vial.today/
 	arch = x86_64
 	license = GPL2
-	noextract = Vial-v0.5-x86_64.AppImage
+	noextract = Vial-v0.5.2-x86_64.AppImage
 	options = !strip
-	source_x86_64 = Vial-v0.5-x86_64.AppImage::https://github.com/vial-kb/vial-gui/releases/download/v0.5/Vial-v0.5-x86_64.AppImage
-	sha256sums_x86_64 = d75200f16783167ba49ba92c92303a42ee3eacfa0b4c18f3e8d222c4020e1f95
+	source_x86_64 = Vial-v0.5.2-x86_64.AppImage::https://github.com/vial-kb/vial-gui/releases/download/v0.5.2/Vial-v0.5.2-x86_64.AppImage
+	sha256sums_x86_64 = c0a824127d81a097e4de43173802a516f5e009c9f01e582ed958302f640cd3a4
 
 pkgname = vial-appimage
