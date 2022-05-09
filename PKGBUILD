@@ -11,11 +11,6 @@ _pkgname=Marwaita-Icons
 source=("${_pkgname}::git+https://github.com/darkomarko42/Marwaita-Icons")
 sha256sums=('SKIP')
 
-pkgver() {
-    cd "$_pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 package() {
   cd "$_pkgname"
 
