@@ -6,13 +6,12 @@
 pkgname=osu-lazer-bin
 _pkgname=${pkgname%-bin}
 pkgver=2022.509.0
-pkgrel=2
+pkgrel=3
 pkgdesc="The future of osu! and the beginning of an open era! Commonly known by the codename osu!lazer. Pew pew."
 arch=(x86_64)
 url="https://osu.ppy.sh"
 license=("MIT" "custom:CC-BY-NC 4.0")
 depends=(
-  ffmpeg4.4
   zlib
   libgl
   fuse2

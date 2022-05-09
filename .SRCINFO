@@ -1,12 +1,11 @@
 pkgbase = osu-lazer-bin
 	pkgdesc = The future of osu! and the beginning of an open era! Commonly known by the codename osu!lazer. Pew pew.
 	pkgver = 2022.509.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://osu.ppy.sh
 	arch = x86_64
 	license = MIT
 	license = custom:CC-BY-NC 4.0
-	depends = ffmpeg4.4
 	depends = zlib
 	depends = libgl
 	depends = fuse2
