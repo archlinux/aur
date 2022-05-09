@@ -1,0 +1,14 @@
+pkgbase = python-gscholar
+	pkgdesc = Query Google Scholar with Python
+	pkgver = 2.0.0
+	pkgrel = 1
+	url = https://github.com/venthur/gscholar
+	arch = any
+	license = MIT
+	makedepends = python-installer
+	provides = gscholar
+	conflicts = gscholar
+	source = gscholar::https://files.pythonhosted.org/packages/source/g/gscholar/python-gscholar-2.0.0.tar.gz
+	sha256sums = 44ab51a0f9c153515cfc48e87286b5088a9c7ba534b2728ca92e9637d233ccd4
+
+pkgname = python-gscholar
