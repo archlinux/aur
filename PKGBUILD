@@ -1,8 +1,8 @@
 # Maintainer: Ivan 'ivabus' Bushchik ivabus@ivabus.dev -> https://github.com/ivabus
 
 pkgname=plainpanel
-pkgver=0.1.2
-pkgrel=3
+pkgver=0.1.2a
+pkgrel=1
 pkgdesc="plainDE panel"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://plainde.org"
@@ -24,5 +24,6 @@ package() {
   mv $srcdir/plainPanel/plainPanel $pkgdir/usr/share/plainDE/
   ln -s $pkgdir/usr/share/plainDE/plainPanel $pkgdir/usr/bin/plainPanel
   cp $srcdir/plainPanel/tools/genconfig.py $pkgdir/usr/share/plainDE/
+  cp $srcdir/plainPanel/readme-icon.png $pkgdir/usr/share/plainDE/menuIcon.png
 }
 
