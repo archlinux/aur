@@ -5,7 +5,7 @@ pkgdesc='GNU Image Manipulation Program (development version, stripped from most
 url='https://www.gimp.org/'
 arch=('x86_64')
 license=('GPL' 'LGPL')
-depends=('gtk3' 'babl' 'gegl' 'glib-networking' 'mypaint-brushes1' 'poppler-data')
+depends=('gtk3' 'babl' 'gegl' 'glib-networking' 'mypaint-brushes1' 'poppler-data' 'appstream-glib')
 makedepends=('intltool' 'iso-codes' 'gobject-introspection')
 options=('!emptydirs' '!docs')
 

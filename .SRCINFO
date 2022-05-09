@@ -15,6 +15,7 @@ pkgbase = gimp-devel-stripped
 	depends = glib-networking
 	depends = mypaint-brushes1
 	depends = poppler-data
+	depends = appstream-glib
 	provides = gimp
 	conflicts = gimp
 	options = !emptydirs
