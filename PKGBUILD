@@ -2,7 +2,7 @@
 
 pkgname=plaincontrolcenter
 pkgver=0.1.2a
-pkgrel=1
+pkgrel=2
 pkgdesc="plainDE control center"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
 url="https://plainde.org"
@@ -19,8 +19,7 @@ build() {
 }
 
 package() {
-  mkdir -p $pkgdir/usr/share/plainDE/ $pkgdir/usr/bin
-  mv $srcdir/plainControlCenter/plainControlCenter $pkgdir/usr/share/plainDE/
-  ln -s $pkgdir/usr/share/plainDE/plainControlCenter $pkgdir/usr/bin/plainControlCenter
+  mkdir -p $pkgdir/usr/bin
+  mv $srcdir/plainControlCenter/plainControlCenter $pkgdir/usr/bin/
 }
 
