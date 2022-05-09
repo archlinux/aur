@@ -1,0 +1,21 @@
+--- a/etebase-server.ini	2022-05-09 16:40:04.530320735 +0200
++++ b/etebase-server.ini	2022-05-09 16:50:09.369001300 +0200
+@@ -1,9 +1,9 @@
+ [global]
+-secret_file = secret.txt
++secret_file = /var/lib/etebase-server/secret.txt
+ debug = false
+ ;Set the paths where data will be stored at
+-static_root = /path/to/static
+-media_root = /path/to/media
++static_root = /var/lib/etebase-server/static
++media_root = /var/lib/etebase-server/media
+ 
+ ;Advanced options, only uncomment if you know what you're doing:
+ ;static_url = /static/
+@@ -17,4 +17,4 @@
+ 
+ [database]
+ engine = django.db.backends.sqlite3
+-name = db.sqlite3
++name = /var/lib/etebase-server/db.sqlite3

@@ -26,10 +26,12 @@ options=(!emptydirs)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         $pkgname.sysusers
         $pkgname.tmpfiles
+        $pkgname.ini.patch
         $pkgname)
 sha256sums=('53680e044c976b862f7dacde72402f86bbff3f7a7455ef517f8ad591a42e0944'
             'd42e2518975363aed2900fe4e03eefade98ed9b6f8b8140fd1eddc081d4081e7'
             'f8b9bdbfdd90365a6b463ab2af4320eb2fddb527e6c33d0f02f4f8820864eb43'
+            '7b0f45aab22b02698dce4b94608f764d445a74a8fdbdbb1d8ddb4928c5391f5f'
             'fb2d4fbec4faf951b0c5df0552eb8afaa8aff85278b43faa018e2e9a77e23591')
 
 package() {
@@ -43,7 +45,7 @@ package() {
 	install -Dm644 "$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 
 	install -Dm644 "server-$pkgver/$pkgname.ini.example" "$pkgdir/etc/$pkgname/$pkgname.ini"
-	sed -i "s@secret.txt@/var/lib/$pkgname/secret.txt@;s@db.sqlite3@/var/lib/$pkgname/db.sqlite3@" "$pkgdir/etc/$pkgname/$pkgname.ini"
+	patch --directory="$pkgdir/etc/$pkgname/" -p1 < "$srcdir/$pkgname.ini.patch"
 
 	install -Dm644 "server-$pkgver/README.md" "$pkgdir/usr/share/doc/$pkgname/README.md"
 	mv "server-$pkgver/example-configs" "$pkgdir/usr/share/doc/$pkgname/"
