@@ -30,9 +30,9 @@ for _libfile in ${_libfiles[@]}
 
 md5sums=('a7abc0672242dedcd5e4f563456e7dbc'
          '058646ab78672c97a2f18dffc1b56ebf'
-         'd17f4a822e966a71ea10bac39429811d'
-         '2da9c648c0162c0a5f45f6d1f81e92b6'
-         'fc085353cd83df9bcca751675006fd40'
+         '9a8192ef2ec5aef183e197811f30fddc'
+         'febc74dd3ef10aae0c37daf36c241a79'
+         'dc2d9e85c9dca012992c25c5e34d2acf'
          'cc8e63452b809611b046e7f27934c12e')
 
 _package_version=$pkgname" ("$pkgver"-"$pkgrel")"
