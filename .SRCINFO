@@ -1,0 +1,14 @@
+pkgbase = mlpolygen-git
+	pkgdesc = a maximal-length polynomial generator for linear feedback shift registers
+	pkgver = r14.1948ebd
+	pkgrel = 1
+	url = https://github.com/hayguen/mlpolygen
+	arch = any
+	license = GPL3
+	makedepends = git
+	makedepends = cmake
+	depends = gmp
+	source = git+https://github.com/hayguen/mlpolygen.git#branch=main
+	sha256sums = SKIP
+
+pkgname = mlpolygen-git
