@@ -1,16 +1,20 @@
 pkgbase = python-pyvidia
 	pkgdesc = NVIDIA driver version detector for Linux
 	pkgver = 1.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ntpeters/pyvidia
 	arch = any
 	license = MIT
-	depends = python
+	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-lxml
 	depends = python-beautifulsoup4
-	provides = pyvidia=1.0.1
-	source = https://pypi.python.org/packages/source/p/pyvidia/pyvidia-1.0.1.tar.gz
+	depends = python-six
+	source = python-pyvidia-1.0.1.tar.gz::https://files.pythonhosted.org/packages/source/p/pyvidia/pyvidia-1.0.1.tar.gz
+	source = LICENSE
 	sha256sums = b2b2f04c6f2b873e7c290a45db0b3e85e9ae3daac9b643d48966b23439c4fdea
+	sha256sums = 35e680322daa98915180af76a4bacd02c1dc65c6da057f7d26ada64c571113e4
 
 pkgname = python-pyvidia
-
