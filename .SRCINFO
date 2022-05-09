@@ -1,0 +1,18 @@
+pkgbase = colorpanes
+	pkgdesc = Panes in the 8 bright terminal colors with shadows of the respective darker color
+	pkgver = 3.0.0
+	pkgrel = 1
+	url = https://codeberg.org/papojari/colorpanes
+	arch = x86_64
+	arch = i686
+	arch = pentium4
+	arch = arm
+	arch = armv6h
+	arch = armv7h
+	arch = aarch64
+	license = LGPL3
+	makedepends = cargo
+	source = sanctity-3.0.0.tar.gz::https://codeberg.org/papojari/colorpanes/archive/v3.0.0.tar.gz
+	sha256sums = 678ac8506c9e09ac361b38947e5b46f64424082281166f8058f8b18ec8ec07bf
+
+pkgname = colorpanes
