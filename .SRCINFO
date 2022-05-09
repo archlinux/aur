@@ -1,6 +1,6 @@
 pkgbase = ppp-git
 	pkgdesc = A package which implements the Point-to-Point Protocol
-	pkgver = 2.4.9.r45.g93fd8a0
+	pkgver = 2.4.9.r132.gd7e62a8
 	pkgrel = 1
 	url = https://ppp.samba.org/
 	arch = i686

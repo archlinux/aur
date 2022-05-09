@@ -1,7 +1,7 @@
 # Maintainer: Chocobo1 <chocobo1 AT archlinux DOT net>
 
 pkgname=ppp-git
-pkgver=2.4.9.r45.g93fd8a0
+pkgver=2.4.9.r132.gd7e62a8
 pkgrel=1
 pkgdesc="A package which implements the Point-to-Point Protocol"
 arch=('i686' 'x86_64')
@@ -43,23 +43,19 @@ pkgver() {
 build() {
   cd "ppp"
 
-  ./configure \
-    --prefix="/usr"
-  sed -i 's:^#FILTER=y:FILTER=y:' "pppd/Makefile"  # enable active filter
-  sed -i 's:^#HAVE_INET6=y:HAVE_INET6=y:' "pppd/Makefile"  # enable ipv6 support
-  sed -i 's:^#CBCP=y:CBCP=y:' "pppd/Makefile"  # enable Microsoft proprietary CallBack Control Protocol
-  sed -i 's:^#USE_PAM=y:USE_PAM=y:' "pppd/Makefile"
-  sed -i 's:^#SYSTEMD=y:SYSTEMD=y:' "pppd/Makefile"
+  ./autogen.sh \
+    --prefix="/usr" \
+    --sbindir="/usr/bin" \
+    --sysconfdir="/etc" \
+    --enable-cbcp \
+    --enable-systemd
   make
 }
 
 package() {
   cd "ppp"
 
-  make \
-    BINDIR="$pkgdir/usr/bin" \
-    INSTROOT="$pkgdir" \
-    install
+  make DESTDIR="$pkgdir" install
 
   install -Dm644 "$srcdir/options" -t "$pkgdir/etc/ppp"
   install -Dm755 "$srcdir"/{ip,ipv6}-{down,up} -t "$pkgdir/etc/ppp"
