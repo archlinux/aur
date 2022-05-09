@@ -1,0 +1,15 @@
+pkgbase = python-difftime-git
+	pkgdesc = Calculate interval time differences
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/jmdaemon/difftime
+	arch = any
+	license = GPL3
+	makedepends = python-setuptools
+	depends = python
+	provides = python-difftime
+	conflicts = python-difftime
+	source = python-difftime-git::git+https://github.com/jmdaemon/difftime#branch=master
+	sha512sums = SKIP
+
+pkgname = python-difftime-git
