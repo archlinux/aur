@@ -12,8 +12,8 @@
 
 pkgname=lib32-mesa-minimal-git
 pkgdesc="an open-source implementation of the OpenGL specification, git version"
-pkgver=22.2.0_devel.153079.6ba55b40334
-pkgrel=2
+pkgver=22.2.0_devel.153476.b4957cdfcae
+pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'lib32-libxml2' 'lib32-libx11' 'xorgproto'
              'lib32-gcc-libs' 'lib32-libelf' 'git' 'lib32-libglvnd' 
@@ -28,17 +28,16 @@ license=('custom')
 source=('mesa::git+https://gitlab.freedesktop.org/mesa/mesa.git'
                 'LICENSE'
                 'llvm32.native'
-                'workaround--LLVM15-FTBFS-no-more-Coroutines.h.patch'
 )
 
 md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a'
          '6b4a19068a323d7f90a3d3cd315ed1f9'
-         'a4e1e8a8a90b6434b80d8ec859747e0c')
+)
 sha512sums=('SKIP'
             '25da77914dded10c1f432ebcbf29941124138824ceecaf1367b3deedafaecabc082d463abcfa3d15abff59f177491472b505bcb5ba0c4a51bb6b93b4721a23c2'
             'c7dbb390ebde291c517a854fcbe5166c24e95206f768cc9458ca896b2253aabd6df12a7becf831998721b2d622d0c02afdd8d519e77dea8e1d6807b35f0166fe'
-            'ee96c9c3c29cfd7bffc1ee72fecf6bdd9a4ac7245afa11e7b28432e8695fc9d16d241cb8330029e5460cc54898258b87bc73d99fc1bf9743ce9bb718a85f5806')
+)
 
 # NINJAFLAGS is an env var used to pass commandline options to ninja
 # NOTE: It's your responbility to validate the value of $NINJAFLAGS. If unsure, don't set it.
@@ -55,10 +54,6 @@ prepare() {
     if [  -d _build ]; then
         rm -rf _build
     fi
-    
-    # see https://gitlab.freedesktop.org/mesa/mesa/-/issues/6359
-    patch --directory="mesa" --forward --strip=1 --input="${srcdir}/workaround--LLVM15-FTBFS-no-more-Coroutines.h.patch"
-
 }
 
 build () {
