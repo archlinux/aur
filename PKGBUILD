@@ -1,7 +1,8 @@
 # Maintainer: Mineralwater Xu <mineralwater@m1neralwater.com>
+
 pkgname=ass2bdnxml
 pkgver=1.04
-pkgrel=1
+pkgrel=2
 pkgdesc="ASS/SSA to BluRay SUP/PGS and BDN XML"
 arch=('x86_64')
 url="https://github.com/Masaiki/ass2bdnxml"

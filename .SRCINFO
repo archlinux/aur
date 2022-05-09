@@ -1,7 +1,7 @@
 pkgbase = ass2bdnxml
 	pkgdesc = ASS/SSA to BluRay SUP/PGS and BDN XML
 	pkgver = 1.04
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Masaiki/ass2bdnxml
 	arch = x86_64
 	license = GPL3
