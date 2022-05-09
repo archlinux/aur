@@ -1,12 +1,11 @@
 pkgbase = esbuild
 	pkgdesc = An extremely fast JavaScript/TypeScript bundler and minifier
 	pkgver = 0.14.38
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/evanw/esbuild
 	arch = x86_64
 	license = MIT
 	makedepends = go
-	depends = glibc
 	source = esbuild-0.14.38.tar.gz::https://github.com/evanw/esbuild/archive/v0.14.38.tar.gz
 	b2sums = a76c8a943dc63704176afa923c99da55fa9c3917b7a3c95a71ff505cbf5f43e86d2e959027da7ef122fba81bd64d18738a04ef47d3a3ce2f8f226681edd606c2
 
