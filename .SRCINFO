@@ -17,6 +17,7 @@ pkgbase = vscodium-git
 	makedepends = patch
 	makedepends = python
 	makedepends = pkg-config
+	makedepends = systemd-sysvcompat
 	depends = fontconfig
 	depends = libxtst
 	depends = gtk3
