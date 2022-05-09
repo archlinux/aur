@@ -18,6 +18,7 @@ sha256sums=('SKIP')
 
 build() {
 	cd xpid
+	make DESTDIR="$pkgdir" purge
 	cd libxpid
 	./configure
 	cd build
@@ -25,8 +26,8 @@ build() {
 }
 
 package() {
+    depends=(libxpid)
 	cd xpid
 	cd libxpid/build
-	make DESTDIR="$pkgdir" purge
 	make DESTDIR="$pkgdir" install
 }
