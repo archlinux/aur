@@ -1,0 +1,19 @@
+pkgbase = nfm-git
+	pkgdesc = Neat terminal file manager.
+	pkgver = r132.1048d2d
+	pkgrel = 1
+	url = https://sr.ht/~leon_plickat/nfm
+	arch = x86_64
+	license = GPL3
+	makedepends = zig
+	makedepends = git
+	provides = nfm
+	conflicts = nfm
+	source = git+https://git.sr.ht/~leon_plickat/nfm
+	source = git+https://github.com/tiehuis/zig-regex
+	source = git+https://git.sr.ht/~leon_plickat/zig-spoon
+	sha256sums = SKIP
+	sha256sums = SKIP
+	sha256sums = SKIP
+
+pkgname = nfm-git
