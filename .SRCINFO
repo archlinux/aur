@@ -1,14 +1,14 @@
 pkgbase = raxmlgui
-	pkgdesc = A new user-friendly program integrating RAxML-NG and ModelTest-NG for cutting-edge phylogenetic analysis
-	pkgver = 2.0.5
+	pkgdesc = A new user-friendly program integrating RAxML-NG and ModelTest-NG for cutting-edge phylogenetic analysis. https://doi.org/10.1111/2041-210X.13512
+	pkgver = 2.0.8
 	pkgrel = 1
 	url = https://antonellilab.github.io/raxmlGUI
 	arch = x86_64
 	license = AGPL3
 	provides = raxmlgui
-	source = https://github.com/AntonelliLab/raxmlGUI/releases/download/v2.0.5/raxmlGUI-2.0.5.AppImage
+	source = https://github.com/AntonelliLab/raxmlGUI/releases/download/v2.0.8/raxmlGUI-2.0.8.AppImage
 	source = raxmlgui.desktop
-	sha256sums = 4bf56ed2728fc0d6f68f9ef6b8cda987cb3a37742e9925a3d276aa43cf021db5
-	sha256sums = 0925bc8e4ae1d0fb7fbe5a5605cda7c044d8f8bda99b556dd54bd55ba7b3b0c5
+	sha256sums = 15d9bba2f533a01cba1b08cc43d40834036200daea6144ef54474dfc57908965
+	sha256sums = a589d49d17a9d07a7b6cf1e41334d5c014a57e1b4faa31f22f106223bb994596
 
 pkgname = raxmlgui
