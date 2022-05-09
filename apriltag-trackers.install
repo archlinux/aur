@@ -1,0 +1,21 @@
+#!/bin/sh
+
+## arg 1:  the new package version
+post_install() {
+  echo "
+Please install a symlink into your SteamVR drivers directory as the user you're
+running Steam with, e.g.:
+
+  $ ln -s /usr/lib/steamvr/apriltagtrackers/ ~/.steam/steam/steamapps/common/SteamVR/drivers/apriltagtrackers
+"
+}
+
+## arg 1:  the old package version
+post_remove() {
+  echo "
+If you installed a symlink into your StwamVR drivers directory, do not forget
+to remove it as your Steam user:
+
+  $ unlink ~/.steam/steam/steamapps/common/SteamVR/drivers/apriltagtrackers
+"
+}

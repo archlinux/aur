@@ -1,0 +1,22 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ab4db65..6d4d415 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -5,7 +5,7 @@ project("Simple_SteamVR_Driver_Tutorial")
+ set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+ 
+ # Deps
+-set(OPENVR_INCLUDE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/libraries/openvr/headers")
++set(OPENVR_INCLUDE_DIR "/usr/include/openvr/")
+ 
+ set(SIZEOF_VOIDP ${CMAKE_SIZEOF_VOID_P})
+ if(CMAKE_SIZEOF_VOID_P EQUAL 8)
+@@ -22,7 +22,7 @@ elseif(APPLE)
+     set(PLATFORM_NAME "osx")
+ endif()
+ 
+-find_library(OPENVR_LIB openvr_api HINTS "${CMAKE_CURRENT_SOURCE_DIR}/libraries/openvr/lib/${PLATFORM_NAME}${PROCESSOR_ARCH}/" NO_DEFAULT_PATH )
++find_library(OPENVR_LIB openvr_api)
+ 
+ add_subdirectory("example")
+ 
