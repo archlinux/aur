@@ -22,9 +22,21 @@ build() {
   gcc -shared -o logc.so logc.o
 }
 
+package-lib() {
+    # Install the shared library and library header
+    LIB_DIR="$pkgdir"/usr/lib
+    HEADER_DIR="$pkgdir"/usr/include
+    mkdir -p $LIB_DIR
+    mkdir -p $HEADER_DIR
+    install logc.so "$LIB_DIR"
+    install log.h "$HEADER_DIR"
+}
+
+
 package() {
   cd "$pkgname"
   cd src
-  install logc.so "$pkgdir"
-  install log.h "$pkgdir"
+  package-lib
+  #install logc.so "$pkgdir"
+  #install log.h "$pkgdir"
 }
