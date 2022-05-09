@@ -7,18 +7,21 @@ pkgrel=2
 pkgdesc="A self-hostable Etebase (EteSync 2.0) server"
 arch=(any)
 depends=(
-         'python-aioredis'
-         'python-aiofiles'
-         'python-django'
-         'python-django-rest-framework'
-         'python-drf-nested-routers'
-         'python-django-cors-headers'
-         'python-fastapi'
-         'python-pynacl'
-         'python-msgpack'
-         'python-pytz')
-optdepends=('postgresql: storage backend'
-            'python-daphne: application container')
+	'python-aioredis'
+	'python-aiofiles'
+	'python-django'
+	'python-django-rest-framework'
+	'python-drf-nested-routers'
+	'python-django-cors-headers'
+	'python-fastapi'
+	'python-pynacl'
+	'python-msgpack'
+	'python-pytz'
+)
+optdepends=(
+	'postgresql: storage backend'
+	'python-daphne: application container'
+)
 url="https://github.com/etesync/server"
 license=('AGPL3')
 backup=('etc/etebase-server/etebase-server.ini')
