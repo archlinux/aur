@@ -2,10 +2,10 @@
 
 _pkgname=grapejuice
 _repository=https://gitlab.com/brinkervii/grapejuice.git
-_pkgver=5.0.0
+_pkgver=5.1.1
 pkgname="${_pkgname}"
 pkgver="${_pkgver}"
-pkgrel=2
+pkgrel=1
 pkgdesc='A Wine+Roblox management tool'
 arch=('x86_64')
 url="${_repository}"
@@ -41,7 +41,7 @@ provides=("${_pkgname}")
 license=('GPL3')
 source=("${_pkgname}-${pkgver}.zip::https://gitlab.com/brinkervii/grapejuice/-/archive/v${_pkgver}/grapejuice-v${_pkgver}.zip")
 sha512sums=(
-    'ffebd9594552f5fdfa0be4c8e6b082cc60c96a1274e200fb5d2a460984429f437dbdd60d8d53227e013037525060366459224c657e896cce973198c5ab1f1830'
+    '214660a33bf404d03c17a8ff359746ea4a3f1c503586247c8e7fc8cbaebc0535a9faef8e1d9b3cd741db385371a99ce8ead0b18830468ce529c95431a94a9238'
 )
 
 prepare() {
