@@ -1,6 +1,6 @@
 pkgbase = punes
 	pkgdesc = Nintendo Entertaiment System emulator
-	pkgver = 0.108
+	pkgver = 0.109
 	pkgrel = 1
 	url = https://github.com/punesemu/puNES
 	install = punes.install
@@ -21,9 +21,7 @@ pkgbase = punes
 	provides = punes
 	conflicts = punes-git
 	options = !buildflags
-	source = https://github.com/punesemu/puNES/archive/v0.108.tar.gz
-	source = punes-0.108-Fixed-make-install.patch
-	md5sums = 1845c9106b619883a84d9089ac917ed7
-	md5sums = 24c9169a69413dca7cd35d3c655297ad
+	source = https://github.com/punesemu/puNES/archive/v0.109.tar.gz
+	md5sums = 1dad44051a40790a03063d6ae6a4e5ed
 
 pkgname = punes
