@@ -20,7 +20,7 @@ depends=(
 optdepends=('postgresql: storage backend'
             'python-daphne: application container')
 url="https://github.com/etesync/server"
-license=('AGPLv3')
+license=('AGPL3')
 backup=('etc/etebase-server/etebase-server.ini')
 options=(!emptydirs)
 source=(https://github.com/etesync/server/archive/v"$pkgver".tar.gz
