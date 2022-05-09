@@ -1,7 +1,7 @@
 pkgbase = bspwm-rounded-corners-git
 	pkgdesc = A tiling window manager based on binary space partitioning with rounded corners
-	pkgver = 0.9.10.r12.g98e9642
-	pkgrel = 3
+	pkgver = 0.9.10.r41.ga510c36
+	pkgrel = 1
 	url = https://github.com/phuhl/bspwm-rounded
 	arch = x86_64
 	license = custom:BSD
@@ -18,8 +18,7 @@ pkgbase = bspwm-rounded-corners-git
 	optdepends = python3: for some scripting examples
 	provides = bspwm
 	conflicts = bspwm
-	source = bspwm-rounded-corners-git::git+https://github.com/phuhl/bspwm-rounded.git#branch=master
+	source = bspwm-rounded-corners-git::git+https://github.com/phuhl/bspwm-rounded.git#branch=round_corners
 	md5sums = SKIP
 
 pkgname = bspwm-rounded-corners-git
-

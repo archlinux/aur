@@ -1,8 +1,8 @@
 # Maintainer: Philipp Uhl <git@ph-uhl.com>
 
 pkgname=bspwm-rounded-corners-git
-pkgver=0.9.10.r12.g98e9642
-pkgrel=3
+pkgver=0.9.10.r41.ga510c36
+pkgrel=1
 pkgdesc="A tiling window manager based on binary space partitioning with rounded corners"
 url="https://github.com/phuhl/bspwm-rounded"
 arch=('x86_64')
@@ -15,7 +15,7 @@ optdepends=('sxhkd-git: to define keyboard and pointer bindings'
 	    'sutils-git: for the example panel'
 	    'terminus-font: for the example panel'
 	    'python3: for some scripting examples')
-source=("$pkgname::git+https://github.com/phuhl/bspwm-rounded.git#branch=master")
+source=("$pkgname::git+https://github.com/phuhl/bspwm-rounded.git#branch=round_corners")
 md5sums=('SKIP')
 provides=("bspwm")
 conflicts=("bspwm")
