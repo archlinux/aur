@@ -2,14 +2,14 @@
 
 pkgname=posy-cursors
 pkgver=3.7.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Port of Posy's improved cursors"
 arch=(any)
-url="https://gitlab.com/ykkzde/posy-cursors"
+url="https://github.com/Icelk/posy-cursors"
 license=(unknown)
-source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/-/archive/v$pkgver/posy-cursors-v$pkgver.tar.gz?path=themes") # automatically set in CI, see: /.gitlab-ci.yml
+source=("$pkgname-$pkgver-$pkgrel.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
 
-sha256sums=('SKIP') # automatically set in CI, see: /.gitlab-ci.yml
+sha256sums=('4c9341b74265b65cdac68d0a41515f8b00492add4c2677828626761bfc504af0')
 
 package() {
     echo "-------------------------------------------------------"
@@ -23,7 +23,7 @@ package() {
     echo "-------------------------------------------------------"
     echo "-------------------------------------------------------"
     echo "-------------------------------------------------------"
-    cd $pkgname-v$pkgver-themes/themes
+    cd $pkgname-$pkgver/themes
     install -Ddm755 "$pkgdir/usr/share/icons"
     cp -dr --no-preserve=ownership posy-white/ "$pkgdir/usr/share/icons/posy-white"
     cp -dr --no-preserve=ownership posy-black/ "$pkgdir/usr/share/icons/posy-black"

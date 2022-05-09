@@ -1,12 +1,11 @@
 pkgbase = posy-cursors
 	pkgdesc = Port of Posy's improved cursors
 	pkgver = 3.7.10
-	pkgrel = 1
-	url = https://gitlab.com/ykkzde/posy-cursors
+	pkgrel = 2
+	url = https://github.com/Icelk/posy-cursors
 	arch = any
 	license = unknown
-	source = posy-cursors-3.7.10-1.tar.gz::https://gitlab.com/ykkzde/posy-cursors/-/archive/v3.7.10/posy-cursors-v3.7.10.tar.gz?path=themes
-	sha256sums = SKIP
+	source = posy-cursors-3.7.10-2.tar.gz::https://github.com/Icelk/posy-cursors/archive/refs/tags/v3.7.10.tar.gz
+	sha256sums = 4c9341b74265b65cdac68d0a41515f8b00492add4c2677828626761bfc504af0
 
 pkgname = posy-cursors
-
