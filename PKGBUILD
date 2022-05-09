@@ -3,7 +3,7 @@
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 pkgname=suricata
 pkgver=6.0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A high performance Network IDS, IPS and Network Security Monitoring engine"
 arch=('i686' 'x86_64')
 url="https://suricata.io/"
@@ -54,10 +54,10 @@ package() {
     "${pkgdir}/etc/${pkgname}/${pkgname}.yaml"
 
   install -Dm644 etc/"${pkgname}".logrotate "${pkgdir}/etc/logrotate.d/${pkgname}"
-  sed -i -e 's:/var/run:/run:g' \
+  sed -i -e 's:/var/run:/run/suricata:g' \
     "${pkgdir}/etc/logrotate.d/${pkgname}"
   install -Dm644 -t "${pkgdir}"/usr/lib/systemd/system etc/"${pkgname}".service "${srcdir}"/suricata-update.{service,timer}
-  sed -i -e 's:/var/run:/run:g' \
+  sed -i -e 's:/var/run:/run/suricata:g' \
     -e 's:^Description=.*:Description=Suricata IDS/IPS daemon:g' \
     -e 's:^After=.*:After=network.target:g' \
     -e 's:^ExecStartPre=.*:PIDFile=suricata/suricata.pid:g' \
