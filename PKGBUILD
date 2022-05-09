@@ -2,12 +2,12 @@
 
 pkgname=withings-sync
 pkgver=v3.1.2.r5.g3bb410b
-pkgrel=3
+pkgrel=4
 pkgdesc="A tool for synchronisation of Withings (ex. Nokia Health Body) to Garmin Connect and Trainer Road."
 arch=(any)
 url="https://github.com/jaroslawhartman/withings-sync"
 license=(MIT)
-depends=("python-cloudscraper")
+depends=("python-cloudscraper" "python-h2" "python-httpx" "python-lxml")
 makedepends=("python")
 source=("$pkgname::git+https://github.com/jaroslawhartman/withings-sync.git"
         "${pkgname}.service"
