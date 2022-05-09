@@ -1,7 +1,7 @@
 pkgbase = python-pdfplumber
 	pkgdesc = Plumb a PDF for detailed information about each char, rectangle, line, et cetera.
 	pkgver = 0.6.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/jsvine/pdfplumber
 	changelog = python-pdfplumber.changelog.md
 	arch = any
