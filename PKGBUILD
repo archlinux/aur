@@ -17,7 +17,7 @@ noextract=(${_pkgname}-${pkgver}.tgz)
 sha256sums=('a76c5fc9d623ed3718817b9549de1a5a0d140ae449961e75019964f1850634a9')
 
 package() {
-    npm install -g --user root --prefix "$pkgdir/usr" "$srcdir"/${_pkgname}-${pkgver}.tgz
+    npm install -g --prefix "$pkgdir/usr" "$srcdir"/${_pkgname}-${pkgver}.tgz
 
     find "$pkgdir/usr" -type d -exec chmod 755 '{}' +
 }
