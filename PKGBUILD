@@ -4,12 +4,14 @@
 _name=generic
 pkgname=python-${_name}
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for Generic programming, also known as Multiple dispatch"
 arch=('any')
 url="https://github.com/gaphor/generic"
 license=('BSD')
-depends=('python')
+# Note: python-exceptiongroup is a requirement until we switch over to
+# Python 3.11
+depends=('python' 'python-exceptiongroup')
 makedepends=(python-build python-installer python-poetry-core)
 checkdepends=(python-pytest)
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
