@@ -10,13 +10,9 @@ depends=(
 	'python-aioredis'
 	'python-aiofiles'
 	'python-django'
-	'python-django-rest-framework'
-	'python-drf-nested-routers'
-	'python-django-cors-headers'
 	'python-fastapi'
 	'python-pynacl'
 	'python-msgpack'
-	'python-pytz'
 )
 optdepends=(
 	'postgresql: storage backend'
