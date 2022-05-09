@@ -1,6 +1,6 @@
 pkgbase = linux-acs-manjaro
 	pkgver = 5.17.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.kernel.org/
 	arch = x86_64
 	license = GPL2
@@ -47,7 +47,7 @@ pkgbase = linux-acs-manjaro
 	source = 0999-acs.gitpatch
 	sha256sums = 555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1
 	sha256sums = 59d429643f4874cd24ed71c7d32881e3b337264b8d486c866703b3e96f9ae4cc
-	sha256sums = 84ca995ed4dc942643474b2730533f6815d03f817829d988c31f66e3c723fc24
+	sha256sums = b0b5d7ef7013fc80f188ffd2462fb0eb4ff2e6bd1197b895aafd3c35a7743f51
 	sha256sums = f85b07d73b2f4ad8bb6b59ee6624b2dd06a03824fc7b00131a01df36c8d899fe
 	sha256sums = fc9223bf2d430ab1c122daada4f51d835a74f56c007c82842eeca3acd2d788be
 	sha256sums = f7eb15d563cdbb2c5d780559a1c9564ca8d2dd1ea79fc73a5cc8545278605dad
