@@ -1,14 +1,14 @@
 # Maintainer: kleintux <reg-archlinux AT klein DOT tuxli DOT ch> 
 
 pkgname=schain
-pkgver=3.0.1
+pkgver=3.0.2
 pkgrel=1
 pkgdesc='A simple habit tracker'
 arch=('x86_64' 'aarch64')
 url="https://sr.ht/~arivigo/${pkgname}"
 license=('MIT')
 source=("${pkgname}-${pkgver}.tar.gz::https://git.sr.ht/~arivigo/${pkgname}/archive/${pkgver}.tar.gz")
-sha256sums=('69b9a8a055f826e37cc6892960afc95b9ad36453337ef11a22bfb7fdfce92a88')
+sha256sums=('d3ed3517f016d37b0fca7d44514544ec20f7392bcc74c51ca163d68a93bd864b')
 conflicts=("${pkgname}-git")
 
 build() {
