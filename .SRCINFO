@@ -10,6 +10,7 @@ pkgbase = alphasort-git
 	depends = sbcl
 	provides = alphasort
 	conflicts = alphasort
+	options = !strip
 	source = alphasort-git::git+https://github.com/jmdaemon/alphasort
 	sha512sums = SKIP
 
