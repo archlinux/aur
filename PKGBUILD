@@ -59,5 +59,4 @@ package() {
 	cp -r "server-$pkgver" "$pkgdir/usr/lib/$pkgname"
 
 	install -Dm755 "$pkgname" "$pkgdir/usr/bin/$pkgname"
-	chmod +x "$pkgdir/usr/bin/etebase-server"
 }
