@@ -2,19 +2,19 @@
 # Previous maintainer: Joel Teichroeb <joel@teichroeb.net>
 
 pkgname=rr-git
-pkgver=5.3.0.r123.gd3c235a1
-pkgrel=2
+pkgver=5.5.0.r259.g969710ba
+pkgrel=1
 pkgdesc='Record and Replay framework: lightweight recording and deterministic debugging'
 arch=(i686 x86_64)
 url='http://rr-project.org/'
 license=('custom')
-depends=('python-pexpect' 'gdb' 'capnproto')
-makedepends=('git' 'cmake' 'gdb')
-[ "$CARCH" = 'x86_64' ] && makedepends+=('gcc-multilib')
-source=(git://github.com/mozilla/rr)
+depends=('gdb' 'capnproto')
+makedepends=('git' 'cmake' 'gdb' 'ninja')
+source=("git+https://github.com/rr-debugger/rr.git")
 sha1sums=('SKIP')
 provides=('rr')
 conflicts=('rr')
+options=(!strip)
 
 pkgver() {
 	cd rr
@@ -28,14 +28,26 @@ prepare() {
 
 build() {
 	cd rr/build
-	cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX:PATH=/usr -DBUILD_TESTS=OFF -DWILL_RUN_TESTS=OFF ..
+	cmake \
+		-GNinja \
+		-Ddisable32bit=true \
+		-DCMAKE_BUILD_TYPE=plain \
+		-DCMAKE_INSTALL_PREFIX:PATH=/usr \
+		-DBUILD_TESTS=OFF \
+		-DWILL_RUN_TESTS=OFF \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DCMAKE_CXX_STANDARD=14 \
+		..
 
-	make
+	cmake --build .	 -- -v
 }
 
 package() {
 	cd rr/build
-	make DESTDIR="${pkgdir}" install
+	DESTDIR="${pkgdir}" cmake --build . -- -v install
+	if check_option 'debug' n; then
+		find "${pkgdir}/usr/bin" -type f -executable -exec strip $STRIP_BINARIES {} + || :
+	fi
 	cd ..
 	install -D LICENSE "${pkgdir}/usr/share/licenses/rr/LICENSE"
 }
