@@ -1,5 +1,6 @@
 # Maintainer: Pierre-Alain TORET <pierre-alain.toret@protonmail.com>
 # Maintainer: Tom Hacohen <tom@stosb.com>
+# Contributor: xiretza <xiretza+aur@xiretza.xyz>
 
 _pkgname=server
 pkgname=etebase-server
