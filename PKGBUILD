@@ -8,14 +8,13 @@
 #
 # This is original kernel of Manjaro Linux + ACS patch
 
-
 pkgbase=linux-acs-manjaro
 pkgname=('linux-acs-manjaro' 'linux-acs-manjaro-headers')
 _kernelname=-ACS-MANJARO
 _basekernel=5.17
 _basever=517
-pkgver=5.17.5
-pkgrel=2
+pkgver=5.17.6
+pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -39,9 +38,10 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         '0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch'
         '0102-random-treat_bootloader_trust_toggle_the_same_way_as_cpu_trust_toggle.patch'
         '0103-tick-Detect_and_fix_jiffies_update_stall.patch'
-        '0104-tick-rcu-Stop_allowing_RCU_SOFTIRQ_in_idle.patch'
-        '0105-lib-irq_poll-Declare_IRQ_POLL_softirq_vector_as_ksoftirqd-parking_safe.patch'
-        '0106-NFSv4.1_provide_mount_option_to_toggle_trunking_discovery.patch'
+        '0104-tick-rcu-Remove_obsolete_parameters.patch'
+        '0105-tick-rcu-Stop_allowing_RCU_SOFTIRQ_in_idle.patch'
+        '0106-lib-irq_poll-Declare_IRQ_POLL_softirq_vector_as_ksoftirqd-parking_safe.patch'
+        '0107-NFSv4.1_provide_mount_option_to_toggle_trunking_discovery.patch'
         # MANJARO Patches
         '0201-rtl_bt_fix_load_firmware.patch'
         # Bootsplash
@@ -64,11 +64,12 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         # ACS override patch
         '0999-acs.gitpatch')
 sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
-            '486bf7ca199a9b2ed1acbe47a0e000404e27228d4df14fb67ecbb229c9f7b965'
+            '59d429643f4874cd24ed71c7d32881e3b337264b8d486c866703b3e96f9ae4cc'
             '84ca995ed4dc942643474b2730533f6815d03f817829d988c31f66e3c723fc24'
             'f85b07d73b2f4ad8bb6b59ee6624b2dd06a03824fc7b00131a01df36c8d899fe'
             'fc9223bf2d430ab1c122daada4f51d835a74f56c007c82842eeca3acd2d788be'
             'f7eb15d563cdbb2c5d780559a1c9564ca8d2dd1ea79fc73a5cc8545278605dad'
+            'e17f4175131fd5224b438be00b55ac6496ec6c25ac2c6fcc3ec6f9a94e6b3221'
             'ca5bb1ba3cb70020d712fa7f684de7d20d2bd6ad2efe6d92b578ab3b12749b04'
             '6a7cd911548f2b6618ce667f8b88cf1159e6b455e64b74d802710b4fe83ef0a2'
             '305e5f1844c5f919f8de1873e11b88dec305dfa8cc2245e75e7c157e01bc1443'
