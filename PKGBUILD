@@ -1,8 +1,9 @@
 # Maintainer: Chiwan Park <chiwanpark@hotmail.com>
+DLAGENTS=("https::/usr/bin/curl -k -o %o %u")
 
 pkgname=pulse-secure
 pkgver=9.1r15.0_b15819
-pkgrel=1
+pkgrel=2
 pkgdesc='Pulse Connect Secure (PCS) Client'
 arch=(x86_64)
 license=(custom)

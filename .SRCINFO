@@ -1,7 +1,7 @@
 pkgbase = pulse-secure
 	pkgdesc = Pulse Connect Secure (PCS) Client
 	pkgver = 9.1r15.0_b15819
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.pulsesecure.net/
 	install = pulse-secure.install
 	arch = x86_64
