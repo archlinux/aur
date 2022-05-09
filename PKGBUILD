@@ -1,7 +1,7 @@
 # Maintainer: Romain Chardiny <romain.chardiny@gmail.com>
 _basename=xmake
 pkgname=${_basename}-dev-git
-pkgver=2.6.5.r40
+pkgver=2.6.5.r82
 pkgrel=1
 pkgdesc='A make-like build utility based on Lua'
 arch=('i686' 'x86_64')
@@ -17,9 +17,10 @@ source=("git+https://github.com/xmake-io/xmake.git#branch=dev"
         "git+https://github.com/xmake-io/xmake-core-luajit.git"
         "git+https://github.com/xmake-io/xmake-core-pdcurses.git"
         "git+https://github.com/xmake-io/xmake-core-sv.git"
+        "git+https://github.com/xmake-io/xmake-core-lz4.git"
         "git+https://github.com/tboox/tbox.git")
 
-sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha256sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver()
 {
@@ -36,6 +37,7 @@ prepare()
   git config submodule.core/src/luajit/luajit.url "$srcdir/xmake-core-luajit"
   git config submodule.core/src/pdcurses/pdcurses.url "$srcdir/xmake-core-pdcurses"
   git config submodule.core/src/sv/sv.url "$srcdir/xmake-core-sv"
+  git config submodule.core/src/lz4/lz4.url "$srcdir/xmake-core-lz4"
   git config submodule.core/src/tbox/tbox.url "$srcdir/tbox"
   git submodule update
 }
