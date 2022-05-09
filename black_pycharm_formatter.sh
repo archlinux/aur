@@ -13,4 +13,7 @@ case $ext in
 "sh")
 	shfmt -w $file_path
 	;;
+"json")
+	prettier --print-width 88 --write $file_path
+	;;
 esac
