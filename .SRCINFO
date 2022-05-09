@@ -1,6 +1,6 @@
 pkgbase = copperspice
 	pkgdesc = Libraries for developing cross platform software applications in C++
-	pkgver = 1.7.3
+	pkgver = 1.7.4
 	pkgrel = 1
 	url = https://www.copperspice.com/
 	arch = x86_64
@@ -40,9 +40,9 @@ pkgbase = copperspice
 	optdepends = mariadb-libs: for MySQL database support
 	optdepends = postgresql-libs: for PostgreSQL database support
 	options = !lto
-	source = https://github.com/copperspice/copperspice/archive/cs-1.7.3/copperspice-1.7.3.tar.gz
+	source = https://github.com/copperspice/copperspice/archive/cs-1.7.4/copperspice-1.7.4.tar.gz
 	source = 010-copperspice-fix-cmake-include-dirs.patch
-	sha256sums = c1c1318f04aae0e4af10fffa6d20267768c2b1acc4c339f41609629584f81c39
+	sha256sums = 3619285fff80d9f0f7cfcc2e2d3229045a3354af4c1274650bf11257a3b53cdd
 	sha256sums = ad8764d825950dcb98a1088a2f778d449c39e33a3c2edf037a45c30c341045d4
 
 pkgname = copperspice
