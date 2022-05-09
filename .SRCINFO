@@ -13,7 +13,7 @@ pkgbase = paddlepaddle-bin
 	depends = python-six
 	depends = python-decorator
 	depends = python-astor
-	depends = paddle_bfloat
+	depends = python-paddle_bfloat
 	depends = python-opt_einsum
 	depends = perl
 	provides = paddlepaddle=2.3.0
