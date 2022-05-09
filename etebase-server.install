@@ -1,4 +1,0 @@
-post_install() {
-    mkdir -p /var/lib/etebase-server
-    chown -R etebase:etebase /var/lib/etebase-server &>/dev/null
-}

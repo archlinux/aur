@@ -24,14 +24,13 @@ license=('AGPL3')
 backup=('etc/etebase-server/etebase-server.ini')
 options=(!emptydirs)
 source=(https://github.com/etesync/server/archive/v"$pkgver".tar.gz
-        $pkgname.install
         $pkgname.sysusers
+        $pkgname.tmpfiles
         $pkgname)
 sha256sums=('53680e044c976b862f7dacde72402f86bbff3f7a7455ef517f8ad591a42e0944'
-            '22ecfe8c6df3fe615a90db03afbdbc53c0c46cb9546eb61ca433392587725b41'
             'd42e2518975363aed2900fe4e03eefade98ed9b6f8b8140fd1eddc081d4081e7'
+            'f8b9bdbfdd90365a6b463ab2af4320eb2fddb527e6c33d0f02f4f8820864eb43'
             'fb2d4fbec4faf951b0c5df0552eb8afaa8aff85278b43faa018e2e9a77e23591')
-install=$pkgname.install
 
 package() {
 	mkdir -p "$pkgdir/etc/etebase-server/"
@@ -41,6 +40,7 @@ package() {
 	mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
 
 	install -Dm644 "$pkgname.sysusers" "$pkgdir/usr/lib/sysusers.d/$pkgname.conf"
+	install -Dm644 "$pkgname.tmpfiles" "$pkgdir/usr/lib/tmpfiles.d/$pkgname.conf"
 
 	install -Dm644 "server-$pkgver/$pkgname.ini.example" "$pkgdir/etc/$pkgname/$pkgname.ini"
 	sed -i "s@secret.txt@/var/lib/$pkgname/secret.txt@;s@db.sqlite3@/var/lib/$pkgname/db.sqlite3@" "$pkgdir/etc/$pkgname/$pkgname.ini"
