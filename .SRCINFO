@@ -4,12 +4,12 @@ pkgbase = bytesize-git
 	pkgrel = 1
 	url = https://github.com/jmdaemon/bytesize
 	arch = any
-	license = AGPL
+	license = AGPL3
 	makedepends = make
 	depends = logc
 	provides = bytesize
 	conflicts = bytesize
-	source = bytesize::git+https://github.com/jmdaemon/bytesize
+	source = bytesize-git::git+https://github.com/jmdaemon/bytesize
 	sha512sums = SKIP
 
 pkgname = bytesize-git

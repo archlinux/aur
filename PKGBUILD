@@ -8,13 +8,13 @@ license=('AGPL3')
 depends=('logc')
 optdepends=()
 makedepends=('make')
-source=("pkgname::git+https://github.com/jmdaemon/bytesize")
+source=("$pkgname::git+https://github.com/jmdaemon/bytesize")
 provides=(bytesize)
 conflicts=(bytesize)
 sha512sums=("SKIP")
 
 build() {
-    cd "pkgname"
+    cd "$pkgname"
     export DESTDIR="$pkgdir"
     export PREFIX="/usr"
     make release lib
@@ -34,7 +34,7 @@ package-lib() {
 }
 
 package() {
-    cd "pkgname"
+    cd "$pkgname"
     package-bin
     package-lib
 }
