@@ -4,8 +4,8 @@
 
 pkgname=river-git
 _pkgname=${pkgname%-*}
-pkgver=0.1.0.r7.g93afdb3
-pkgrel=2
+pkgver=0.1.0.r69.g90b3764
+pkgrel=1
 pkgdesc='A dynamic tiling wayland compositor.'
 arch=('x86_64')
 url='https://github.com/riverwm/river'
@@ -54,6 +54,8 @@ package() {
 		--prefix '/usr'
 	install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
 	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
+	install -d "$pkgdir/usr/share/$_pkgname"
+	cp -fR example "$pkgdir/usr/share/$_pkgname"
 
 	cd "$srcdir"
 	install -Dm644 river.desktop -t "$pkgdir/usr/share/wayland-sessions"
