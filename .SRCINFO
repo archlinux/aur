@@ -1,6 +1,6 @@
 pkgbase = ferium-gui-bin
 	pkgdesc = Ferium is an easy to use CLI program for downloading and updating Minecraft mods from Modrinth, CurseForge, and GitHub Releases.
-	pkgver = 3.28.0
+	pkgver = 3.28.2
 	pkgrel = 1
 	url = https://github.com/theRookieCoder/ferium
 	arch = x86_64
@@ -8,9 +8,9 @@ pkgbase = ferium-gui-bin
 	depends = gtk3
 	provides = ferium
 	conflicts = ferium-bin
-	source = ferium-gui-3.28.0-1.zip::https://github.com/theRookieCoder/ferium/releases/download/v3.28.0/ferium-linux-gnu.zip
+	source = ferium-gui-3.28.2-1.zip::https://github.com/theRookieCoder/ferium/releases/download/v3.28.2/ferium-linux-gnu.zip
 	source = ferium.desktop
-	sha256sums = 86c12d26c1adc46f822599b80dc92f51123db670a9b6bebacc75a1aebac92642
+	sha256sums = f66927038dbc135e759f2c0dbbeee175b7b70f62e3d503c830d3d4501c04157e
 	sha256sums = 594cdfb846ab9cbac0fd781a445501ebb1e3f491fd21202bf3733b00f2151018
 
 pkgname = ferium-gui-bin
