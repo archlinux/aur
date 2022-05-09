@@ -15,6 +15,7 @@ install="${pkgname%-git}.install"
 source=("${_name}::git+https://github.com/ju1ce/April-Tag-VR-FullBody-Tracker#branch=linux"
 		"bridge-driver::git+https://github.com/ju1ce/Simple-OpenVR-Bridge-Driver#branch=linux"
 		"https://raw.githubusercontent.com/sgorsten/linalg/main/linalg.h"
+		"${_name}.sh"
 		"cmake.patch"
 		"trackers.patch"
 		"driver.patch"
@@ -22,6 +23,7 @@ source=("${_name}::git+https://github.com/ju1ce/April-Tag-VR-FullBody-Tracker#br
 sha256sums=('SKIP'
             'SKIP'
             'b67b4c9000da87525d897be3cbd82bc333026c818fb9fd6edba3372568419a40'
+            'c6c1e85a6f559d5acdb88112e77d0b76568995527c60296b081ccea7ff17ba0a'
             'b564a70f77293520bbc20b65858428785fc6d711848a554db0a027503130064f'
             'f0426aa8e254e4590f73812bc8a0ddf28195df0395654ab0acf78aec6b478941'
             'c0b90491f06c6768ba912c5e8850a60625b4d97066d67678bc91096588c7e163')
@@ -68,7 +70,9 @@ package() {
 	cd "$srcdir/${_name}"
 	install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
 
-	install -Dm755 build/AprilTagTrackers "$pkgdir/usr/bin/apriltag-trackers"
+	install -Dm755 "$srcdir/${_name}.sh" "$pkgdir/usr/bin/${_name}"
+	install -Dm755 build/AprilTagTrackers -t "$pkgdir/usr/lib/apriltagtrackers/"
+
 
 	cd "$srcdir/bridge-driver"
 
