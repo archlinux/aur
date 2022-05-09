@@ -1,6 +1,6 @@
 pkgbase = pulse-secure
 	pkgdesc = Pulse Connect Secure (PCS) Client
-	pkgver = 9.1r14.0_b13525
+	pkgver = 9.1r15.0_b15819
 	pkgrel = 1
 	url = https://www.pulsesecure.net/
 	install = pulse-secure.install
@@ -18,7 +18,7 @@ pkgbase = pulse-secure
 	conflicts = pulse-connect-secure
 	source = EULA.txt
 	md5sums = 261848a28201e5386ec4bf587473a48b
-	source_x86_64 = https://webdev.web3.technion.ac.il/docs/cis/public/ssl-vpn/v.9.1R14.0/ps-pulse-linux-9.1r14.0-b13525-64bit-installer.rpm
-	md5sums_x86_64 = 0cfdc37cb498f696bdc23752b1f2394f
+	source_x86_64 = https://webdev.web3.technion.ac.il/docs/cis/public/ssl-vpn/v.9.1R15.0/ps-pulse-linux-9.1r15.0-b15819-64bit-installer.rpm
+	md5sums_x86_64 = 2c6b2dc62d74449692849e819dfcc21e
 
 pkgname = pulse-secure
