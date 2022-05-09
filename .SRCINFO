@@ -1,6 +1,6 @@
 pkgbase = libvpx-git
 	pkgdesc = VP8 and VP9 video codecs (git version)
-	pkgver = 1.10.0.r15.gd55cab425d
+	pkgver = 1.11.0.r198.ge8579cc3d4
 	pkgrel = 1
 	url = https://www.webmproject.org/
 	arch = x86_64
@@ -15,4 +15,3 @@ pkgbase = libvpx-git
 	sha256sums = SKIP
 
 pkgname = libvpx-git
-

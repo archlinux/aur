@@ -5,7 +5,7 @@
 # Contributor: julroy67 <gmail.com: julroy67>
 
 pkgname=libvpx-git
-pkgver=1.10.0.r15.gd55cab425d
+pkgver=1.11.0.r198.ge8579cc3d4
 pkgrel=1
 pkgdesc='VP8 and VP9 video codecs (git version)'
 arch=('x86_64')
@@ -25,6 +25,9 @@ pkgver() {
 }
 
 build() {
+    export CFLAGS+=' -ffat-lto-objects'
+    export CXXFLAGS+=' -ffat-lto-objects'
+    
     cd libvpx
     ./configure \
         --prefix='/usr' \
