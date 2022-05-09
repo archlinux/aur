@@ -2,10 +2,10 @@
 
 pkgname=oscclip
 pkgver=0.4.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Utilities for managing the clipboard using OSC52'
 arch=(any)
-url="https://codeberg.org/rumpelsepp/oscclip"
+url="https://github.com/rumpelsepp/oscclip"
 license=("GPLv3")
 depends=("python")
 makedepends=("python-poetry" "python-installer")

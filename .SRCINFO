@@ -1,8 +1,8 @@
 pkgbase = oscclip
 	pkgdesc = Utilities for managing the clipboard using OSC52
 	pkgver = 0.4.0
-	pkgrel = 2
-	url = https://codeberg.org/rumpelsepp/oscclip
+	pkgrel = 3
+	url = https://github.com/rumpelsepp/oscclip
 	arch = any
 	license = GPLv3
 	makedepends = python-poetry
