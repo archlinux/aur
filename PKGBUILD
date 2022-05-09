@@ -2,7 +2,7 @@
 
 pkgname=xd-torrent
 pkgver=0.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc='An I2P BitTorrent client'
 arch=('x86_64')
 url='https://xd-torrent.github.io/'
@@ -17,6 +17,7 @@ source=("https://github.com/majestrate/XD/archive/v${pkgver}/${pkgname}-${pkgver
         'xd-torrent.sysusers'
         'xd-torrent.tmpfiles'
         'xd.conf')
+options=('!lto')
 sha256sums=('77490f37ea979d559490611f874acbb618072e3685f15d7b6254bedfe31a0b03'
             '0eb00a6df35028549286fce92cb158d3c84ec49fad72e1e437de5b5e309719d2'
             '6b3d959b55623c3f907be0e1c53c7092e9328cb0b10c336102d012d716438a14'

@@ -1,12 +1,13 @@
 pkgbase = xd-torrent
 	pkgdesc = An I2P BitTorrent client
 	pkgver = 0.4.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://xd-torrent.github.io/
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = glibc
+	options = !lto
 	backup = etc/xd.conf
 	source = https://github.com/majestrate/XD/archive/v0.4.2/xd-torrent-0.4.2.tar.gz
 	source = 010-xd-torrent-use-arch-ldflags.patch
