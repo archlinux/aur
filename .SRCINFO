@@ -1,0 +1,13 @@
+pkgbase = beancount-language-server
+	pkgdesc = A Language Server Protocol (LSP) for beancount files
+	pkgver = 1.1.1
+	pkgrel = 1
+	url = https://github.com/polarmutex/beancount-language-server
+	arch = any
+	license = MIT
+	makedepends = cargo
+	depends = beancount
+	source = https://github.com/polarmutex/beancount-language-server/archive/v1.1.1.tar.gz
+	sha512sums = 3b0aa1a66274f53f2b08b8aa841306a53bca7105043b4b22f4b4b126605abff1c76b440c4251e6fb7351aa201a21c64616abd42e743f7c5a7d6b723cb6c08356
+
+pkgname = beancount-language-server
