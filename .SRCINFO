@@ -1,7 +1,7 @@
 pkgbase = openboardview
 	pkgdesc = Linux SDL/ImGui edition software for viewing .brd files
-	pkgver = 8.0
-	pkgrel = 2
+	pkgver = 9.0.0
+	pkgrel = 1
 	url = https://openboardview.org/
 	arch = i686
 	arch = x86_64
@@ -15,17 +15,19 @@ pkgbase = openboardview
 	depends = fontconfig
 	depends = gtk3
 	depends = libpng
-	source = git+https://github.com/OpenBoardView/OpenBoardView.git#tag=8.0
-	source = git+https://github.com/madler/zlib.git
-	source = git+https://github.com/sheredom/utf8.h.git
+	source = git+https://github.com/OpenBoardView/OpenBoardView.git#tag=9.0.0
+	source = git+https://github.com/gulrak/filesystem.git
 	source = git+https://github.com/Dav1dde/glad.git
-	source = git+https://github.com/OpenBoardView/imgui
-	source = fix-build-gcc10.patch
+	source = git+https://github.com/ocornut/imgui.git
+	source = git+https://github.com/nothings/stb.git
+	source = git+https://github.com/sheredom/utf8.h.git
+	source = git+https://github.com/madler/zlib.git
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
 	b2sums = SKIP
-	b2sums = 6fb0e86dc317ee55896050b541cf53cf178831a553c3d574d02982e5dab341683925f06b211f6c916ea13747fb6f39215164933954feeb174aaa6f9e6bea1265
+	b2sums = SKIP
+	b2sums = SKIP
 
 pkgname = openboardview
