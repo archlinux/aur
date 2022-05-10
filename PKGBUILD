@@ -3,8 +3,8 @@
 
 pkgbase=intel-oneapi-ippcp
 pkgname=(intel-oneapi-ippcp intel-oneapi-ippcp-static)
-_pkgver=2021.5.1
-_debpkgrel=462
+_pkgver=2021.6.0
+_debpkgrel=536
 pkgver=${_pkgver}_${_debpkgrel}
 pkgrel=1
 pkgdesc="Intel® Integrated Performance Primitives Cryptography common"
@@ -17,6 +17,7 @@ source=(
 	"https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-common-${_pkgver}-${_pkgver}-${_debpkgrel}_all.deb"
 	"https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-common-devel-${_pkgver}-${_pkgver}-${_debpkgrel}_all.deb"
 	"${pkgname}.conf"
+	"${pkgname}.sh"
 )
 noextract=(
 	"${pkgname}-${_pkgver}-${_pkgver}-${_debpkgrel}_amd64.deb"
@@ -24,11 +25,12 @@ noextract=(
 	"${pkgname}-common-${_pkgver}-${_pkgver}-${_debpkgrel}_all.deb"
 	"${pkgname}-common-devel-${_pkgver}-${_pkgver}-${_debpkgrel}_all.deb"
 )
-sha256sums=('4a9e69f6ca80995af4b0947aaf5a2e3a7a329fb34d0426dadb923f659babe6e3'
-            '680ffc4946a555ec13863ee61dd1885c45dccac5b5010f502ce3a05c6846fdb7'
-            'a32b92b6641a0310c46dc585a0967069d7149baae68156b5421e98c17cdcea45'
-            '0190cb204ebff78bcd4631979ddbd0491a70dce29fea8b7588de19c4b64a03d2'
-            '76925aa5c6d4dfcb5f87dbc6b51f5480a36abd05ff9e5cc7531bb95c7bee059c')
+sha256sums=('b76fe7205a9d7d36942afaef70bd2fbf41f8ba7b3d64024225f398c93c5696c5'
+            'c9c49c3ae07393ceb86055dfb6e7dd777be3adbd29678265e1e7027484eb4300'
+            'd89cc7b3e290673891c72f303b11fa2422fd79faa6756c4ab3080e1a2c36e736'
+            '314658f2bed9e4d816179b8fd315baa86c2f3188ee570c0d5832df855bc5a44e'
+            '76925aa5c6d4dfcb5f87dbc6b51f5480a36abd05ff9e5cc7531bb95c7bee059c'
+            '8c52433232e6b703f31298646385430887676b2c6fdbcb909d181b3fb436dd7f')
 
 build() {
 	ar x ${pkgname}-${_pkgver}-${_pkgver}-${_debpkgrel}_amd64.deb
@@ -47,14 +49,22 @@ build() {
 }
 
 package_intel-oneapi-ippcp() {
-	depends=('intel-oneapi-common-vars>=2022.0.0' 'intel-oneapi-common-licensing=2022.0.0')
+	depends=('intel-oneapi-common=2022.1.0')
 	cp -r ${srcdir}/opt ${pkgdir}
 	ln -sfT "$_pkgver" ${pkgdir}/opt/intel/oneapi/ippcp/latest
 
 	install -Dm644 ${pkgname}.conf ${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf
+	install -Dm755 ${pkgname}.sh ${pkgdir}/etc/profile.d/${pkgname}.sh
 
 	mkdir -p ${pkgdir}/usr/lib/cmake
 	ln -sfT "/opt/intel/oneapi/ippcp/latest/lib/cmake/ippcp" ${pkgdir}/usr/lib/cmake/ippcp
+
+	# pkgconfig
+	cd ${pkgdir}/opt/intel/oneapi/ippcp/latest/lib/pkgconfig
+	install -d ${pkgdir}/usr/share/pkgconfig
+	for _file in $(find . -mindepth 1 -name '*.pc' -printf "%f\n"); do
+		ln -sf /opt/intel/oneapi/ippcp/latest/lib/pkgconfig/${_file} ${pkgdir}/usr/share/pkgconfig/${_file}
+	done
 }
 
 package_intel-oneapi-ippcp-static() {
