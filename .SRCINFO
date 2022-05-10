@@ -1,7 +1,7 @@
 pkgbase = imgbrd-grabber
 	pkgdesc = Very customizable imageboard/booru downloader with powerful filenaming features.
 	pkgver = 7.8.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/Bionus/imgbrd-grabber
 	arch = x86_64
 	license = Apache
