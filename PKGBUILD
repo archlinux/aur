@@ -2,12 +2,12 @@
 
 pkgname=ignition-gui
 pkgver=6.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Builds on top of Qt to provide widgets which are useful when developing
 robotics applications, such as a 3D view, plots, dashboard, etc, and can be used
 together in a convenient unified interface."
 arch=('x86_64')
-url="https://ignitionrobotics.org/libs/gui"
+url="https://gazebosim.org/libs/gui"
 license=('Apache')
 depends=(
 	qt5-base
@@ -22,10 +22,10 @@ depends=(
 	ignition-tools
 )
 makedepends=('cmake')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-gui/archive/${pkgname}6_${pkgver}.tar.gz")
-sha256sums=('f13d4af907c72b100dcfef75ec8155cc94db891626455c3ad2579d416953235c')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-gui/archive/${pkgname}6_${pkgver}.tar.gz")
+sha256sums=('dae9f6e4578be49da34cf032caf65fb76324c9b6ac2018b6fd555bef3108f0bc')
 
-_dir="ign-gui-${pkgname}6_${pkgver}"
+_dir="gz-gui-${pkgname}6_${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
