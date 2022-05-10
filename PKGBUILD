@@ -3,7 +3,7 @@
 
 pkgbase=linux-rt-lts
 pkgver=5.15.36.41.realtime1
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux RT LTS'
 arch=(x86_64)
 url="https://gitlab.archlinux.org/dvzrv/linux-rt-lts/-/commits/v$pkgver"
