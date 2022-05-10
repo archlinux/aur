@@ -1,7 +1,7 @@
 pkgbase = uvesafb-dkms-git
 	pkgdesc = uvesafb DKMS driver.
 	pkgver = 1.0.4+r10.20210102.cada654
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/jghodd/uvesafb-dkms
 	arch = i686
 	arch = x86_64
@@ -14,11 +14,12 @@ pkgbase = uvesafb-dkms-git
 	provides = UVESAFB-MODULE
 	conflicts = uvesafb-dkms
 	options = !makeflags
+	backup = etc/modprobe.d/uvesafb.conf
 	source = uvesafb-dkms::git+https://github.com/jghodd/uvesafb-dkms.git
 	source = dkms.conf
 	source = modprobe_uvesafb.conf
 	sha256sums = SKIP
 	sha256sums = 3afc65ee7ec66978910aae2d5247d81b64c07a5f0770e89c4ce359e1aac9c6b7
-	sha256sums = 5d5949ec23a546d1468327e5496e8cc2b0b2015b84ff8bedb6d0b462df59bd19
+	sha256sums = 5b3805ccda2535b1737c838c17110cfa12b7537ed6ed5f33fba4751cdd7030bf
 
 pkgname = uvesafb-dkms-git

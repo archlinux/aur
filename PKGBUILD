@@ -4,7 +4,7 @@
 _pkgname=uvesafb-dkms
 pkgname="${_pkgname}-git"
 pkgver=1.0.4+r10.20210102.cada654
-pkgrel=2
+pkgrel=3
 pkgdesc="uvesafb DKMS driver."
 arch=('i686' 'x86_64')
 url="https://github.com/jghodd/uvesafb-dkms"
@@ -27,6 +27,9 @@ optdepends=(
   "mkinitcpio-uvesafb: For mkinitcpio hook to load the 'uvesafb' module."
 )
 options=('!makeflags')
+backup=(
+  'etc/modprobe.d/uvesafb.conf'
+)
 
 source=(
   "${_pkgname}::git+https://github.com/jghodd/uvesafb-dkms.git"
@@ -37,7 +40,7 @@ source=(
 sha256sums=(
   'SKIP'
   '3afc65ee7ec66978910aae2d5247d81b64c07a5f0770e89c4ce359e1aac9c6b7'
-  '5d5949ec23a546d1468327e5496e8cc2b0b2015b84ff8bedb6d0b462df59bd19'
+  '5b3805ccda2535b1737c838c17110cfa12b7537ed6ed5f33fba4751cdd7030bf'
 )
 
 prepare() {
@@ -77,8 +80,9 @@ package() {
   cp -rv "${_pkgname}/src" "${_pkgname}/Makefile" \
         "${pkgdir}/usr/src/${_pkgname}-${pkgver}"/
 
-  # Install example modprobe configuration
+  # Install modprobe configuration
   install -D -v -m644 "${srcdir}/modprobe_uvesafb.conf" "${pkgdir}/usr/share/doc/${_pkgname}/examples/etc/modprobe.d/uvesafb.conf"
+  install -D -v -m644 "${srcdir}/modprobe_uvesafb.conf" "${pkgdir}/etc/modprobe.d/uvesafb.conf"
 
   # Install documentation
   install -D -v -m644 "${srcdir}/${_pkgname}/README.md" "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
