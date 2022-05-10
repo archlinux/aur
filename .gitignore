@@ -1,0 +1,12 @@
+# Directories
+pkg/
+src/
+
+# File formats
+*.bz2
+*.gz
+*.log
+*.pkg.*
+*.tar.*
+*.xz
+*.zst
