@@ -1,27 +1,34 @@
 # Maintainer: Astro Benzene <universebenzene at sina dot com>
 pkgname=python-poliastro
 _pyname=${pkgname#python-}
-pkgver=0.16.2
+pkgver=0.16.3
 pkgrel=1
 pkgdesc="Astrodynamics and Orbital Mechanics computations"
 arch=('any')
 url="http://docs.poliastro.space"
 license=('MIT')
-makedepends=('python-flit-core' 'python-wheel' 'python-build' 'python-installer' 'python-oldest-supported-numpy')
-#checkdepends=('python-pytest'
-#              'python-wheel'
-#              'python-hypothesis'
-#              'python-pandas'
-#              'jupyter-nbformat'
-#              'python-matplotlib'
-#              'python-retrying'
-#              'python-pyrsistent'
-#              'python-astroquery'
-#              'python-plotly'
-#              'python-jplephem'
-#              'python-numba')
+makedepends=('python-flit-core' 'python-wheel' 'python-build' 'python-installer')
+checkdepends=('python-pytest-doctestplus'
+              'python-astroquery'
+              'python-scipy'
+#             'python-hypothesis'
+#             'python-pandas'
+#             'jupyter-nbformat'
+#             'python-matplotlib'
+#             'python-retrying'
+#             'python-pyrsistent'
+              'python-plotly'
+#             'python-jplephem'
+              'python-czml3'
+              'python-numba>0.55.1')
 source=("https://files.pythonhosted.org/packages/source/${_pyname:0:1}/${_pyname}/${_pyname}-${pkgver}.tar.gz")
-md5sums=('c7c32e6bad2b913f66a2a50491a72704')
+md5sums=('67ae7d2c7deb100038b0eee65fcebd91')
+
+prepare() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    sed -i "/oldest-supported-numpy/d" pyproject.toml
+}
 
 build() {
     cd ${srcdir}/${_pyname}-${pkgver}
@@ -29,17 +36,18 @@ build() {
     python -m build --wheel --no-isolation
 }
 
-#check() {
-#    cd ${srcdir}/${_pyname}-${pkgver}
-#
-##   PYTHONPATH="build/lib" pytest || warning "Tests failed"
-#    python setup.py test
-#}
+check() {
+    cd ${srcdir}/${_pyname}-${pkgver}
+
+    mkdir -p dist/lib
+    bsdtar -xpf dist/${_pyname}-${pkgver}-py3-none-any.whl -C dist/lib
+    PYTHONPATH="dist/lib" pytest "dist/lib" || warning "Tests failed"
+#   pytest #|| warning "Tests failed"
+}
 
 package() {
-    depends=('python-scipy>=1.4.0' 'python-astroquery>=0.3.9"' 'python-jplephem' 'python-matplotlib>3.0.1' 'python-plotly<6' 'python-numba>=0.53.0' 'python-pyerfa' 'python-pandas')
+    depends=('python-scipy>=1.4.0' 'python-astroquery>=0.3.9"' 'python-jplephem' 'python-matplotlib>3.0.1' 'python-plotly<6' 'python-numba>0.55.1' 'python-pyerfa' 'python-pandas')
     optdepends=('python-poliastro-doc: Documentation for poliastro'
-#               'python-numba: For accelerating the code'
                 'python-pytest: For running the tests from the package')
     cd ${srcdir}/${_pyname}-${pkgver}
 
