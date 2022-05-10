@@ -3,8 +3,8 @@
 
 pkgbase=intel-oneapi-mkl
 pkgname=(intel-oneapi-mkl intel-oneapi-mkl-static)
-_pkgver=2022.0.2
-_debpkgrel=136
+_pkgver=2022.1.0
+_debpkgrel=223
 pkgver=${_pkgver}_${_debpkgrel}
 pkgrel=1
 pkgdesc="Intel® oneAPI Math Kernel Library"
@@ -25,10 +25,10 @@ noextract=(
 	"${pkgname}-common-${_pkgver}-${_pkgver}-${_debpkgrel}_all.deb"
 	"${pkgname}-common-devel-${_pkgver}-${_pkgver}-${_debpkgrel}_all.deb"
 )
-sha256sums=('0d01beddf0d6b8f2fd017322a1ef150bc3d483f9f0a3fe774f08977037327bcf'
-            '9041a804d7b41813c1816d15bba749fbca59cb56603d66b8b9fe99fc133b48fe'
-            '136bf4a2208350a7e45a0d6fc741af7999b8c4bc192b070bdb1bad858cb4b0b7'
-            '5ab00cbc8c7d9cf1f83b1947ee40c6eab0f574cc7f6d0923ea88d4a41020aea0'
+sha256sums=('10974019f1bf2c3bcbb76880892b39d436e8d95faebbb62004fa9727e0eaae4b'
+            '49399449a4e834124b63d3a4a1a48a154fe7e8a43f5617aea3bf6e9aa3337d64'
+            '93b461332d506ba74900518f0d65a309b203391d91b33b399f37262dbb23bdfc'
+            '789924d0506f55d9d0db23636402e9a0f73026d2849eac460d73ee7d083c4701'
             'f2932e9ab3d2c75bc354f55322e2a2821877b84f0e3d5dbbefa233144d14ba09'
             'e8f67c2e5fbc91e9de48c5ff745c8077a23427676d834f60c0126e95ac1547fb')
 
@@ -49,9 +49,9 @@ build() {
 }
 
 package_intel-oneapi-mkl() {
-	depends=('intel-oneapi-common-vars>=2022.0.0' 'intel-oneapi-common-licensing=2022.0.0'
-    'intel-oneapi-tbb>=2021.5.1' 'intel-oneapi-compiler>=2022.0.2' 
-	'intel-oneapi-tbb<2021.5.2' 'intel-oneapi-compiler<2022.0.3' )
+	depends=('intel-oneapi-common=2022.1.0'
+    'intel-oneapi-tbb>=2021.6.0' 'intel-oneapi-compiler>=2022.1.0' 
+	'intel-oneapi-tbb<2021.6.1' 'intel-oneapi-compiler<2022.1.1' )
 	provides=('intel-mkl')
 	conflicts=('intel-mkl')
 	cp -r ${srcdir}/opt ${pkgdir}
