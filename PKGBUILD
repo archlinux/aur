@@ -1,60 +1,53 @@
-# $Id$
-# Maintainer: Gaetan Bisson <bisson@archlinux.org>
+# Maintainer: X0rg
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
-_pkgname=procps-ng
+_realname=procps
 pkgname=procps-ng-git
-pkgver=3.3.11
-pkgrel=42
+pkgver=4.0.0.r54.g6e78355d
+pkgrel=1
 pkgdesc='Utilities for monitoring your system and its processes'
-url='http://gitlab.com/procps-ng/procps/'
-license=('GPL' 'LGPL')
+url='https://gitlab.com/procps-ng/procps'
+license=('GPL2' 'LGPL2')
 arch=('i686' 'x86_64')
-depends=('ncurses' 'systemd')
-makedepends=('git' 'm4' 'autoconf' 'libtool')
-source=()
-sha256sums=()
-_gitroot="https://gitlab.com/procps-ng/procps.git"
-_gitname="procps-ng"
+depends=('glibc' 'ncurses' 'libncursesw.so' 'systemd-libs')
+makedepends=('git' 'm4' 'autoconf' 'libtool' 'systemd')
+conflicts=('procps' 'procps-ng' 'sysvinit-tools')
+provides=('procps' 'procps-ng' 'sysvinit-tools' 'libproc-2.so')
+replaces=('procps' 'procps-ng' 'sysvinit-tools')
+options=('!emptydirs')
+source=("git+https://gitlab.com/procps-ng/procps.git")
+sha512sums=('SKIP')
 
-groups=('base')
-
-conflicts=('procps' 'sysvinit-tools' 'procps-ng')
-provides=('procps' 'sysvinit-tools' 'procps-ng')
-replaces=('procps' 'sysvinit-tools')
-
-install=install
+pkgver() {
+	cd "$_realname"
+	git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
 
 prepare() {
-cd ${srcdir}
-  msg "Downloading from upstream git ...."
-
-  if [ -d "${srcdir}/${_gitname}" ] ; then
-    cd ${_gitname} && git pull --rebase
-  else
-    git clone ${_gitroot} ${_gitname}
-    cd ${_gitname}
-  fi
+	cd "$_realname"
+	sed 's:<ncursesw/:<:g' -i watch.c
 }
 
 build() {
-  cd "${srcdir}/${_gitname}"
-  ./autogen.sh
-  ./configure \
-    --prefix=/usr \
-    --exec-prefix=/ \
-    --sysconfdir=/etc \
-    --libdir=/usr/lib \
-    --bindir=/usr/bin \
-    --sbindir=/usr/bin \
-    --disable-kill \
+	cd "$_realname"
+	./autogen.sh
+	./configure \
+		--prefix=/usr \
+		--exec-prefix=/ \
+		--sysconfdir=/etc \
+		--libdir=/usr/lib \
+		--bindir=/usr/bin \
+		--sbindir=/usr/bin \
+		--enable-watch8bit \
+		--with-systemd \
+		--disable-modern-top \
+		--disable-kill
 
-  make
+	make
 }
 
 package() {
-  cd "${srcdir}/${_gitname}"
-  msg PKGDIR=${pkgdir}
-  make DESTDIR="${pkgdir}" install
-
+	cd "$_realname"
+	make DESTDIR="$pkgdir" install
 }
