@@ -11,7 +11,7 @@ url="https://www.github.com/zellij-org/zellij"
 license=('MIT')
 groups=()
 depends=()
-makedepends=('rustup' 'cargo' 'git' 'binaryen')
+makedepends=('rustup' 'cargo' 'git' 'binaryen' 'cargo-make')
 checkdepends=()
 optdepends=()
 provides=('zellij')
@@ -22,7 +22,6 @@ sha256sums=(SKIP)
 
 build() {
     cd "$srcdir/$_pkgname"
-    cargo install --force cargo-make
     cargo make install ./zellij
     mkdir -p assets/completions
     ./zellij setup --generate-completion bash > assets/completions/zellij.bash

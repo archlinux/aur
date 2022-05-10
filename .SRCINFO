@@ -12,6 +12,7 @@ pkgbase = zellij-git
 	makedepends = cargo
 	makedepends = git
 	makedepends = binaryen
+	makedepends = cargo-make
 	provides = zellij
 	conflicts = zellij
 	source = git+https://github.com/zellij-org/zellij
