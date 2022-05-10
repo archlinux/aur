@@ -1,11 +1,11 @@
 pkgbase = python-poliastro-doc
 	pkgdesc = Documentation for Python poliastro module
-	pkgver = 0.16.0
+	pkgver = 0.16.3
 	pkgrel = 1
 	url = http://docs.poliastro.space
 	arch = any
 	license = MIT
-	makedepends = python-poliastro=0.16.0
+	makedepends = python-poliastro=0.16.3
 	makedepends = python-sphinx-copybutton
 	makedepends = pandoc
 	makedepends = python-nbsphinx>=0.8.6
@@ -14,14 +14,14 @@ pkgbase = python-poliastro-doc
 	makedepends = python-sphinx-notfound-page
 	makedepends = python-sphinx-gallery
 	makedepends = python-sphinx-hoverxref
-	makedepends = python-astroquery
 	makedepends = python-myst-parser
 	makedepends = python-jupytext
-	makedepends = python-tenacity
+	makedepends = python-httpx
 	makedepends = python-czml3
-	source = https://github.com/poliastro/poliastro/archive/v0.16.0.tar.gz
+	makedepends = python-sgp4
+	source = https://github.com/poliastro/poliastro/archive/v0.16.3.tar.gz
 	source = fix_nbsphinx_errors.patch
-	md5sums = 2e8fb841e5931f190c3adc0afeb942b9
+	md5sums = d816d12f2542455edf164666f3f9d0ee
 	md5sums = 92c9d10567556123b294c89645a5e4c8
 
 pkgname = python-poliastro-doc
