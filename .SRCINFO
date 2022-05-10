@@ -1,5 +1,5 @@
 pkgbase = kbuilder
-	pkgdesc = Build script that builds and installs your own custom kernel packages with custom patches and configurations
+	pkgdesc = Build script for custom kernels
 	pkgver = 0.2.4
 	pkgrel = 3
 	url = https://github.com/AnnikaV9/kbuilder
