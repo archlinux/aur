@@ -1,7 +1,7 @@
 pkgbase = linux-rt
 	pkgdesc = Linux RT
 	pkgver = 5.17.1.17.realtime2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.archlinux.org/dvzrv/linux-rt/-/commits/v5.17.1.17.realtime2
 	arch = x86_64
 	license = GPL2
