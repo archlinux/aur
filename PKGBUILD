@@ -1,6 +1,6 @@
 # Maintainer: leonekmi <usingarchbtw@leonekmi.fr>
 pkgname=karaokemugen
-pkgver=6.1.3
+pkgver=6.1.8
 pkgrel=1
 pkgdesc="Karaoke playlist manager/player app used in parties or events."
 arch=('x86_64')
@@ -16,7 +16,7 @@ replaces=()
 backup=()
 options=()
 install=${pkgname}.install
-source=('karaokemugen::git+https://gitlab.com/karaokemugen/karaokemugen-app.git#tag=v6.1.3'
+source=('karaokemugen::git+https://gitlab.com/karaokemugen/karaokemugen-app.git#tag=v6.1.8'
         'karaokemugen-lib::git+https://gitlab.com/karaokemugen/lib.git'
         'karaokemugen-avatars::git+https://gitlab.com/karaokemugen/medias/guest-avatars.git'
         'install.sh'
