@@ -1,7 +1,7 @@
 pkgbase = python-git-pp
 	pkgdesc = Git utility for auto-commiting and concurrent pushing
 	pkgver = 1.10.3
-	pkgrel = 01
+	pkgrel = 02
 	url = https://pypi.org/project/git-pp/
 	arch = any
 	license = MIT
