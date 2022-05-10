@@ -1,27 +1,38 @@
-# Maintainer : Jingbei Li <i@jingbei.li>
+# Contributor: Jingbei Li <i@jingbei.li>
 # Contributor: Intel Corporation <http://www.intel.com/software/products/support>
 
 pkgbase=intel-oneapi-vtune
 pkgname=(intel-oneapi-vtune intel-oneapi-vtune-static)
-_pkgver=2022.1.0
-_debpkgrel=98
+_pkgver=2022.2.0
+_debpkgrel=172
 pkgver=${_pkgver}_${_debpkgrel}
 pkgrel=1
 pkgdesc="Intel® VTune(TM) Profiler"
 arch=('x86_64')
 url='https://software.intel.com/content/www/us/en/develop/tools/oneapi.html'
 license=("custom")
-source=("https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-vtune-${_pkgver}-${_debpkgrel}_amd64.deb")
-sha256sums=('4e91aa1e233ecf62208941e367386733715d63e269fcec789fb9cf7ceb51fafe')
+source=("https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-vtune-${_pkgver}-${_debpkgrel}_amd64.deb"
+"${pkgbase}.sh")
+sha256sums=('b9cfe2ecbe8150c76b4c19f23774672841b7d1e62b63c4cad3c0415f6e89307c'
+            'b1647fa8a328380b2f1c52fcdac3c8c7408db0d16d819064d3d9e2cdc13df93a')
 
 build() {
 	tar xvf data.tar.xz
 }
 
 package_intel-oneapi-vtune() {
-	depends=('intel-oneapi-common-vars>=2022.0.0' 'intel-oneapi-common-licensing=2022.0.0')
+	depends=('intel-oneapi-common=2022.1.0')
 	cp -r ${srcdir}/opt ${pkgdir}
 	ln -sfT "$_pkgver" ${pkgdir}/opt/intel/oneapi/vtune/latest
+
+	install -Dm644 ${pkgname}.sh ${pkgdir}/etc/profile.d/${pkgname}.sh
+
+	# pkgconfig
+	cd ${pkgdir}/opt/intel/oneapi/vtune/latest/include/pkgconfig/lib64
+	install -d ${pkgdir}/usr/share/pkgconfig
+	for _file in $(find . -mindepth 1 -name '*.pc' -printf "%f\n"); do
+		ln -sf /opt/intel/oneapi/vtune/latest/include/pkgconfig/lib64/${_file} ${pkgdir}/usr/share/pkgconfig/${_file}
+	done
 }
 
 package_intel-oneapi-vtune-static() {
