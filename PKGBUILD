@@ -75,7 +75,7 @@ package_mangohud-x11() {
   provides=("${pkgname%-x11}")
   conflicts=("${pkgname%-x11}")
 
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 
   mv -f "$pkgdir"/usr/share/{doc,man} "$srcdir/common"
 }
@@ -87,7 +87,7 @@ package_lib32-mangohud-x11() {
   provides=("${pkgname%-x11}")
   conflicts=("${pkgname%-x11}")
 
-  DESTDIR="$pkgdir" meson install -C build32
+  meson install -C build32 --destdir "$pkgdir"
 
   rm -rf "$pkgdir"/usr/{bin,share}
 }
