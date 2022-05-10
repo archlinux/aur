@@ -8,7 +8,6 @@ pkgdesc="Windows 98 Second Edition inspired icon theme"
 arch=(any)
 url="https://github.com/nestoris/Win98SE"
 license=('GPLv2')
-depends=(gtk3)
 makedepends=(git)
 optdepends=('gawk: for Win2K/Win98 toggling awk scripts'
 			'nawk: for Win2K/Win98 toggling awk scripts'

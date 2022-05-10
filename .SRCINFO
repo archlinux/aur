@@ -6,7 +6,6 @@ pkgbase = se98-icon-theme-git
 	arch = any
 	license = GPLv2
 	makedepends = git
-	depends = gtk3
 	optdepends = gawk: for Win2K/Win98 toggling awk scripts
 	optdepends = nawk: for Win2K/Win98 toggling awk scripts
 	optdepends = mawk: for Win2K/Win98 toggling awk scripts
