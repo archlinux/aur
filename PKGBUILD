@@ -5,7 +5,7 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 
 pkgname=python-git-pp
 epoch=
-pkgver=1.1.0
+pkgver=1.10.3
 pkgrel=00
 pkgdesc='Git utility for auto-commiting and concurrent pushing'
 arch=(any)

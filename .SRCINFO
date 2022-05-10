@@ -1,6 +1,6 @@
 pkgbase = python-git-pp
 	pkgdesc = Git utility for auto-commiting and concurrent pushing
-	pkgver = 1.1.0
+	pkgver = 1.10.3
 	pkgrel = 00
 	url = https://pypi.org/project/git-pp/
 	arch = any
