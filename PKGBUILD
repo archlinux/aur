@@ -49,7 +49,7 @@ build() {
 
 package() {
 	depends=('intel-oneapi-common=2022.1.0')
-	provides=('tbb=${_pkgver}' 'intel-tbb=${_pkgver}')
+	provides=("tbb=${_pkgver}" "intel-tbb=${_pkgver}")
 	conflicts=('tbb' 'intel-tbb')
 	cp -r ${srcdir}/opt ${pkgdir}
 	ln -sfT "$_pkgver" ${pkgdir}/opt/intel/oneapi/tbb/latest

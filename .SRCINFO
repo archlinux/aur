@@ -24,7 +24,7 @@ pkgbase = intel-oneapi-tbb
 
 pkgname = intel-oneapi-tbb
 	depends = intel-oneapi-common=2022.1.0
-	provides = tbb=${_pkgver}
-	provides = intel-tbb=${_pkgver}
+	provides = tbb=2021.6.0
+	provides = intel-tbb=2021.6.0
 	conflicts = tbb
 	conflicts = intel-tbb
