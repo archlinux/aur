@@ -6,7 +6,7 @@
 
 pkgbase=pjproject
 pkgname=("$pkgbase" "python-$pkgbase")
-pkgver=2.12
+pkgver=2.12.1
 pkgrel=1
 pkgdesc='Open source SIP stack and media stack'
 arch=(x86_64 aarch64 armv7h i686)
@@ -26,14 +26,16 @@ _libdepends=(python)
 makedepends=("${_pkgdepends[@]}"
              "${_libdepends[@]}"
              e2fsprogs
+             python-{build,installer}
              python-setuptools
+             python-wheel
              swig)
 _archive="$pkgbase-$pkgver"
 _repourl="https://github.com/pjsip/$pkgbase"
 source=("$_archive.tar.gz::$_repourl/archive/$pkgver.tar.gz"
         0001-Don-t-build-Java-bindings.patch
         config_site.h)
-sha256sums=('b3b94d9be4aba8f6d2d1cb164603e81b0a6ee17352f9e2ba5b58e325e610ca5a'
+sha256sums=('d0feef6963b07934e821ba4328aecb4c36358515c1b3e507da5874555d713533'
             'c6673d97185c2383140b6d915aeaa7e525c9cfb5f51c097472cf4773b4f87ab4'
             '61fa2a76d069aa5c95b6e2c539f7b20e2ccf0b126fc60c18117762541d0a7472')
 
@@ -68,7 +70,7 @@ build() {
 	make
 	make -C pjsip-apps/src/swig
 	pushd 'pjsip-apps/src/swig/python'
-	python setup.py build
+	python -m build -wn
 }
 
 package_pjproject() {
@@ -82,5 +84,5 @@ package_pjproject() {
 package_python-pjproject() {
 	depends=("$pkgbase" "${_libdepends[@]}")
 	pushd "$_archive/pjsip-apps/src/swig/python"
-	python setup.py install --root="$pkgdir" --optimize=1 --skip-build
+	python -m installer -d "$pkgdir" dist/*.whl
 }
