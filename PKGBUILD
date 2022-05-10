@@ -45,7 +45,7 @@ package_intel-oneapi-ccl() {
 	install -Dm644 ${pkgname}.sh ${pkgdir}/etc/profile.d/${pkgname}.sh
 
 	mkdir -p ${pkgdir}/usr/lib/cmake
-	ln -sfT "/opt/intel/oneapi/dpl/latest/lib/cmake/oneCCL" ${pkgdir}/usr/lib/cmake/oneCCL
+	ln -sfT "/opt/intel/oneapi/ccl/latest/lib/cmake/oneCCL" ${pkgdir}/usr/lib/cmake/oneCCL
 
 	# pkgconfig
 	cd ${pkgdir}/opt/intel/oneapi/ccl/latest/lib/pkgconfig
