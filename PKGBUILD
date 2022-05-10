@@ -15,7 +15,7 @@
 
 pkgbase='ceph-git'
 pkgname=('ceph-git' 'ceph-libs-git' 'ceph-mgr-git')
-pkgver=17.0.0.12062.g396ff7b7026
+pkgver=17.0.0.12069.gab6b68efe47
 pkgrel=1
 epoch=1
 pkgdesc='Distributed, fault-tolerant storage platform delivering object, block, and file system'
@@ -49,21 +49,19 @@ makedepends=(
     'python-virtualenv' 'python-werkzeug' 'python-wrapt' 'rabbitmq'
     'sed' 'snappy' 'socat' 'systemd' 'systemd-libs' 'valgrind'
     'xfsprogs' 'xmlstarlet' 'xmlsec' 'xxhash' 'yaml-cpp' 'yasm' 'zlib'
-    'ninja'
+    'ninja' 'lua' 'thrift'
 )
 options=('!emptydirs')
 source=("git+https://github.com/ceph/ceph.git"
         "ceph.sysusers"
         "ceph-osd@.service"
         "ceph-mon@.service"
-        "ceph-mds@.service"
-        "ceph.install")
+        "ceph-mds@.service")
 sha512sums=('SKIP'
             '4354001c1abd9a0c385ba7bd529e3638fb6660b6a88d4e49706d4ac21c81b8e829303a20fb5445730bdac18c4865efb10bc809c1cd56d743c12aa9a52e160049'
             '39acff4ecc8ad445fa7a2ace9e5ea1ab52cc1fcceb2a91e6a6e80554782751cc6d692e436b1932847f8369ac5a50d60604f988cc5266857023c3233da3ff2a58'
             'bd5e4e80f2d4503598177bce9a9939434f9015f7e6582708d55a1552f022dbf9185bd99623d281d622bf61a129d4ef818615dd5a573adff1d800b4c5a960364e'
-            'bfaea76402f4e136a0ee2088647380dcf895922a7693e8b10c2ab178265ca2b9622f87eced61d6fa6d929a31c92db2eb5ca62add53d349bb3b083aa1356c8663'
-            '91141bac8a334251bf12b8e6da6ce91112bcd6b3529080bd230a614f58771d4bdc81bd239fb1e9680dc370a156b34ad753a07f15cae10aa8a811518199447336')
+            'bfaea76402f4e136a0ee2088647380dcf895922a7693e8b10c2ab178265ca2b9622f87eced61d6fa6d929a31c92db2eb5ca62add53d349bb3b083aa1356c8663')
 
 # -fno-plt causes linker errors (undefined reference to internal methods)
 # https://tracker.ceph.com/issues/40745
