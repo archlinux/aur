@@ -1,6 +1,6 @@
 pkgbase = berty-gui-bin
 	pkgdesc = GUI for a secure peer-to-peer messenger which works with or without internet access, cellular data or trust in the network and uses IPFS.
-	pkgver = 2.380.0
+	pkgver = 2.384.1
 	pkgrel = 1
 	url = https://github.com/berty/berty
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = berty-gui-bin
 	depends = berty
 	provides = berty-gui
 	conflicts = berty-gui
-	source = berty-gui-bin-2.380.0.tar.gz::https://github.com/berty/berty/releases/download/v2.380.0/bertygui_linux_amd64.tar.gz
-	b2sums = e758a5dfe9777b85512f548a9c075663a22bea8671cde11e340f2f16002b4bf09509f219e63a511b2bd0b74e44ca010dabe121bf2c1f51b9d3317ad3e62f89e1
+	source = berty-gui-bin-2.384.1.tar.gz::https://github.com/berty/berty/releases/download/v2.384.1/bertygui_linux_amd64.tar.gz
+	b2sums = ca417c53ca910d39b136e0b5a6962b7afc8e1954d7e689496a883dd948ff672acf40a388c40697c22830b3a4305a15d4b386bbd5466b5f96637df9db90230093
 
 pkgname = berty-gui-bin
