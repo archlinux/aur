@@ -1,7 +1,7 @@
 pkgbase = synfig-dev
 	pkgdesc = Professional vector animation program (CLI renderer only)
 	pkgver = 1.5.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://synfig.org
 	arch = x86_64
 	arch = armv7h
@@ -14,7 +14,7 @@ pkgbase = synfig-dev
 	depends = libsigc++2.0
 	depends = etl-dev>=1.5.0
 	depends = imagemagick
-	depends = ffmpeg
+	depends = ffmpeg4.4
 	depends = fontconfig
 	depends = libpng
 	depends = libtiff

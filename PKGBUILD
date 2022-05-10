@@ -5,12 +5,12 @@
 
 pkgname=synfig-dev
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Professional vector animation program (CLI renderer only)"
 arch=(x86_64 armv7h armv8 riscv32 riscv64)
 url="https://synfig.org"
 license=('GPL3')
-depends=('libxml++2.6' 'libsigc++2.0' 'etl-dev>=1.5.0' 'imagemagick' 'ffmpeg' 'fontconfig'
+depends=('libxml++2.6' 'libsigc++2.0' 'etl-dev>=1.5.0' 'imagemagick' 'ffmpeg4.4' 'fontconfig'
          'libpng' 'libtiff' 'libdv' 'libmng' 'cairo' 'pango' 'boost-libs' 'mlt'
          'fftw')
 makedepends=('boost')
