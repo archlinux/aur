@@ -5,7 +5,7 @@
 
 pkgname=synfig-dev
 pkgver=1.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Professional vector animation program (CLI renderer only)"
 arch=(x86_64 armv7h armv8 riscv32 riscv64)
 url="https://synfig.org"
@@ -32,7 +32,9 @@ build() {
 
   ./bootstrap.sh
   intltoolize --force --copy
-
+  export LDFLAGS=-L/usr/lib/ffmpeg4.4/
+  export CFLAGS=-I/usr/include/ffmpeg4.4/
+  export CPPFLAGS=-I/usr/include/ffmpeg4.4/
   ./configure --prefix=/usr \
     --sysconfdir=/etc \
     --disable-static \

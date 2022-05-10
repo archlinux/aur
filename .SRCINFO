@@ -1,7 +1,7 @@
 pkgbase = synfig-dev
 	pkgdesc = Professional vector animation program (CLI renderer only)
 	pkgver = 1.5.1
-	pkgrel = 2
+	pkgrel = 3
 	url = https://synfig.org
 	arch = x86_64
 	arch = armv7h
