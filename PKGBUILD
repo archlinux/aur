@@ -3,7 +3,7 @@
 
 pkgname=winegui
 pkgver=1.5.4
-pkgrel=1
+pkgrel=2
 pkgdesc="A user-friendly WINE manager (build from source)"
 arch=('x86_64')
 url="https://gitlab.melroy.org/melroy/winegui"
