@@ -1,7 +1,7 @@
 pkgbase = v86d
 	pkgdesc = userspace helper for uvesafb that runs x86 code in an emulated environment.
 	pkgver = 0.1.10
-	pkgrel = 11
+	pkgrel = 12
 	url = https://github.com/mjanusz/v86d
 	arch = i686
 	arch = x86_64
@@ -12,12 +12,6 @@ pkgbase = v86d
 	optdepends = UVESAFB-MODULE: For uvesafb kernel module, the ownly known thing that makes use of 'v86d'.
 	options = !makeflags
 	source = v86d::git+https://github.com/mjanusz/v86d.git#tag=v86d-0.1.10
-	source = initcpio_uvesafb_install
-	source = initcpio_uvesafb_hook
-	source = modprobe_uvesafb.conf
 	sha256sums = SKIP
-	sha256sums = b33de32a20303dbae9a4ef20636852170d740afb832249903ff37e7454311663
-	sha256sums = e1c05aabfb25d40de51555865286b22a5511ff1dc85cb7af0ab1baa896e32dd5
-	sha256sums = 5d5949ec23a546d1468327e5496e8cc2b0b2015b84ff8bedb6d0b462df59bd19
 
 pkgname = v86d
