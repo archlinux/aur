@@ -1,7 +1,7 @@
 pkgbase = ignition-msgs
 	pkgdesc = Standard set of message definitions, used by Ignition Transport, and other applications.
 	pkgver = 8.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gazebosim.org/libs/msgs
 	arch = i686
 	arch = x86_64
