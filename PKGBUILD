@@ -9,6 +9,7 @@ url="https://revolt.chat"
 license=("AGPL3")
 depends=("electron17")
 makedepends=("git" "npm" "nodejs")
+conflicts=("${pkgname%-git}")
 provides=("${pkgname%-git}")
 source=("git+https://github.com/revoltchat/desktop.git")
 md5sums=('SKIP')
