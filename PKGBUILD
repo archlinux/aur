@@ -2,7 +2,7 @@
 
 pkgname=python-numpy-groupies
 _name=numpy_groupies
-pkgver=0.9.15
+pkgver=0.9.16
 pkgrel=1
 pkgdesc='Optimised tools for group-indexing operations for python numpy'
 arch=("any")
@@ -15,7 +15,7 @@ optdepends=(
     'python-pandas: for pandas backend'
 )
 source=("${pkgname}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('5263345c8b5143090383164496fc85b6420eb621a6a0a27e94c6a30255f78373')
+sha256sums=('793123bf53e1fa722ce7798efd735f12f915d404362618d1747b7fb580687046')
 
 build() {
     cd "${_name}-${pkgver}"
