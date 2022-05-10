@@ -1,12 +1,11 @@
 pkgbase = crow-translate
 	pkgdesc = A simple and lightweight translator that allows you to translate and speak text using Google, Yandex Bing, LibreTranslate and Lingva
-	pkgver = 2.9.2
+	pkgver = 2.9.3
 	pkgrel = 1
 	url = https://github.com/crow-translate/crow-translate
 	arch = x86_64
 	arch = aarch64
 	license = GPL3
-	makedepends = git
 	makedepends = qt5-tools
 	makedepends = extra-cmake-modules
 	depends = qt5-svg
@@ -15,7 +14,7 @@ pkgbase = crow-translate
 	depends = gst-plugins-good
 	depends = openssl
 	depends = tesseract
-	source = crow-translate-2.9.2.tar.gz::https://github.com/crow-translate/crow-translate/archive/2.9.2.tar.gz
-	sha256sums = 910686504e4ec6002ba292c07811ad0634308e99a4b7ab19776a8dc61fde441d
+	source = crow-translate-2.9.3.tar.gz::https://github.com/crow-translate/crow-translate/releases/download/2.9.3/crow-translate-2.9.3-source.tar.gz
+	sha256sums = 1c2e1d55d670813c564d353a96f5cad38b1848177e2cb4dea8407f43a8382595
 
 pkgname = crow-translate
