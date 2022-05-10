@@ -73,12 +73,13 @@ prepare() {
 
 build () {
     meson setup mesa _build \
-        -D b_ndebug=true \
         -D prefix=/usr \
         -D sysconfdir=/etc \
+        -D b_ndebug=true \
         -D platforms=x11,wayland \
-        -D gallium-drivers=r300,r600,radeonsi,nouveau,svga,swrast,virgl,iris,zink,crocus,d3d12 \
+        -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,zink,d3d12 \
         -D vulkan-drivers=amd,intel,swrast \
+        -D vulkan-layers=device-select,intel-nullhw,overlay \
         -D dri3=enabled \
         -D egl=enabled \
         -D gallium-extra-hud=true \
@@ -98,9 +99,8 @@ build () {
         -D lmsensors=enabled \
         -D osmesa=true \
         -D shared-glapi=enabled \
-        -D valgrind=enabled \
-        -D vulkan-layers=device-select,intel-nullhw,overlay \
         -D microsoft-clc=disabled \
+        -D valgrind=enabled \
         -D gallium-rusticl=true \
         -D opencl-spirv=true \
         -D shader-cache=enabled \
