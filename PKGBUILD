@@ -2,7 +2,7 @@
 # Contributor: Konstantin Gizdov <arch@kge.pw>
 
 pkgname=(tensorflow_metadata)
-pkgver='1.7.0'
+pkgver='1.8.0'
 pkgrel=1
 url="https://github.com/tensorflow/metadata"
 pkgdesc="Utilities for passing TensorFlow-related metadata between tools"
@@ -13,8 +13,8 @@ makedepends=('python-pip'
              'python-wheel')
 license=('Apache')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/ed/c4/e4fa9d2725eff8eeed00f2c959d1cbb0a7f027f46ea36b9987b99d4e0d8c/${pkgname}-${pkgver}-py3-none-any.whl")
-sha256sums=('d05600bf0f42371d3ebf12e4a431a16836c039918d24c4b9634235c9b8fc686a')
+source=("https://files.pythonhosted.org/packages/20/e7/b4dcc898ca1c250ff1f1e431a3fdd2b347663283e8aea282704d59e92ad9/${pkgname}-${pkgver}-py3-none-any.whl")
+sha256sums=('65c47207efeaff6b514196d2d420dbb7762f0a07336e1798731f90c81541ab11')
 
 package() {
   cd "${srcdir}"
