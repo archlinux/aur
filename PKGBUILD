@@ -2,7 +2,7 @@
 
 pkgname=qbpm-git
 pkgver=0.3.r2.g8e35376
-pkgrel=1
+pkgrel=2
 pkgdesc="A profile manager for qutebrowser"
 url="https://github.com/pvsr/qbpm"
 license=('GPL')
