@@ -25,11 +25,12 @@ sha256sums=(
 )
 makedepends=(python-build python-installer python-wheel)
 install=$pkgname.install
+#backup=("etc/ddns/config.json" "usr/lib/systemd/system/newfuture_ddns.service" "usr/lib/systemd/system/newfuture_ddns.timer")
 backup=("etc/ddns/config.json")
 
 package() {
 	python -m installer --destdir="$pkgdir" *.whl
-        install -Dm644 newfuture_ddns.service  "${pkgdir}/usr/lib/systemd/system/newfuture_ddns.service"
-        install -Dm644 newfuture_ddns.timer "${pkgdir}/usr/lib/systemd/system/newfuture_ddns.timer";
-        [[ ! -f /etc/ddns/config.json ]] || install -Dm644 config.json "${pkgdir}/etc/ddns/config.json";
+    i[[ -f /usr/lib/systemd/system/newfuture_ddns.service ]] || nstall -Dm644 newfuture_ddns.service  "${pkgdir}/usr/lib/systemd/system/newfuture_ddns.service"
+    i[[ -f /usr/lib/systemd/system/newfuture_ddns.service ]] || nstall -Dm644 newfuture_ddns.timer "${pkgdir}/usr/lib/systemd/system/newfuture_ddns.timer";
+    [[ -f /etc/ddns/config.json ]] || install -Dm644 config.json "${pkgdir}/etc/ddns/config.json";
 }
