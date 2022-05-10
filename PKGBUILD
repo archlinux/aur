@@ -1,7 +1,7 @@
 # Maintainer: Ashley Bone <ashley DOT bone AT pm DOT me>
 pkgname=python-cronsim
 _name=${pkgname#python-}
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="A python cron expression parser and evaluator."
 arch=('any')
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://github.com/cuu508/cronsim/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('60201910d7dad1307848c3e9f09a8187732058cd5eea661d54fe38f7caea51b0')
+sha256sums=('7f11c640d0091f113591376a4db85b4b7689f7cabb45faabfc9b3bbc7ee2f61f')
 
 build() {
   cd "$_name-$pkgver"
