@@ -1,6 +1,6 @@
 pkgbase = docker-rootless-extras-bin
 	pkgdesc = Extras to run docker as non-root.
-	pkgver = 20.10.14
+	pkgver = 20.10.15
 	pkgrel = 1
 	url = https://docs.docker.com/engine/security/rootless/
 	install = docker-rootless-extras-bin.install
@@ -21,9 +21,9 @@ pkgbase = docker-rootless-extras-bin
 	sha256sums = 7c31c7f7755776bf9571e551ff4006035562e4394d88166809dd71b2ba847fc5
 	sha256sums = d8695293e5d4a814763f13e1d36ed37273040666b4b91363d6c33171df8934c7
 	sha256sums = d0d790d4c3d887b10b2b155b83a58a44980b9fa638f8c0f1faec0739dc0ef473
-	source_x86_64 = docker-rootless-extras-bin-x86_64-20.10.14.tgz::https://download.docker.com/linux/static/stable/x86_64/docker-rootless-extras-20.10.14.tgz
-	sha256sums_x86_64 = 24b793b79d2cf56e8a63be21829433e079c8d14d18d0b739df2e95738f7f841b
-	source_aarch64 = docker-rootless-extras-bin-aarch64-20.10.14.tgz::https://download.docker.com/linux/static/stable/aarch64/docker-rootless-extras-20.10.14.tgz
-	sha256sums_aarch64 = 48bdcabc9ba5203ce20ab42307da94640f5ec2e955e7693a4bb5a8d8f9039a81
+	source_x86_64 = docker-rootless-extras-bin-x86_64-20.10.15.tgz::https://download.docker.com/linux/static/stable/x86_64/docker-rootless-extras-20.10.15.tgz
+	sha256sums_x86_64 = c3ce8baa27ed6040d618a97d39ff66ef2c45cb357d901806fe0994a9705f7238
+	source_aarch64 = docker-rootless-extras-bin-aarch64-20.10.15.tgz::https://download.docker.com/linux/static/stable/aarch64/docker-rootless-extras-20.10.15.tgz
+	sha256sums_aarch64 = e451daace8a52c6faca225d325e3ba67e5b2b97a5d2a00724e6b87b6a4a13a35
 
 pkgname = docker-rootless-extras-bin

@@ -3,7 +3,7 @@
 # Contributors: koba1t <kobdotsh at gmail dot com>
 
 pkgname=docker-rootless-extras-bin
-pkgver=20.10.14
+pkgver=20.10.15
 pkgrel=1
 pkgdesc="Extras to run docker as non-root."
 arch=('x86_64' 'aarch64')
@@ -30,8 +30,8 @@ source_aarch64=(
 sha256sums=('7c31c7f7755776bf9571e551ff4006035562e4394d88166809dd71b2ba847fc5'
             'd8695293e5d4a814763f13e1d36ed37273040666b4b91363d6c33171df8934c7'
             'd0d790d4c3d887b10b2b155b83a58a44980b9fa638f8c0f1faec0739dc0ef473')
-sha256sums_x86_64=('d47be8ef7c10748f3815304ce3deca3939655a5c5fcabeef97a76d579b8165f4')
-sha256sums_aarch64=('144b6912d77109179551f22b5c77dcc0621fd7ceb6b2576613f820fe9839d95c')
+sha256sums_x86_64=('c3ce8baa27ed6040d618a97d39ff66ef2c45cb357d901806fe0994a9705f7238')
+sha256sums_aarch64=('e451daace8a52c6faca225d325e3ba67e5b2b97a5d2a00724e6b87b6a4a13a35')
 
 package() {
 	mkdir -p "$pkgdir/usr/bin/"
