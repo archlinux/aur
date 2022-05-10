@@ -1,12 +1,24 @@
-
 post_install() {
-  /usr/bin/groupadd sensu
-  /usr/bin/useradd -s /sbin/nologin -d /opt/sensu -G sensu sensu
-  /usr/bin/systemctl restart sensu-backend.service
+  if [ -z $(getent group sensu) ]; then
+    /usr/bin/groupadd sensu
+  fi
+  if [ -z $(getent passwd sensu) ]; then
+    /usr/bin/useradd -s /sbin/nologin -d /var/lib/sensu -m -g sensu sensu
+  fi
+  /usr/bin/mkdir -p /var/log/sensu && chown sensu:sensu /var/log/sensu
 }
 
 post_upgrade() {
-  /usr/bin/groupadd sensu
-  /usr/bin/useradd -s /sbin/nologin -d /opt/sensu -G sensu sensu
-  /usr/bin/systemctl restart sensu-backend.service
+  if [ -z $(getent group sensu) ]; then
+    /usr/bin/groupadd sensu
+  fi
+  if [ -z $(getent passwd sensu) ]; then
+    /usr/bin/useradd -s /sbin/nologin -d /var/lib/sensu -m -g sensu sensu
+  fi
+  /usr/bin/mkdir -p /var/log/sensu && chown sensu:sensu /var/log/sensu
+}
+
+post_remove() {
+  userdel sensu
+  groupdel sensu
 }
