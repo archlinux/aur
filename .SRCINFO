@@ -2,7 +2,7 @@ pkgbase = ignition-msgs
 	pkgdesc = Standard set of message definitions, used by Ignition Transport, and other applications.
 	pkgver = 8.2.0
 	pkgrel = 1
-	url = https://ignitionrobotics.org/libs/msgs
+	url = https://gazebosim.org/libs/msgs
 	arch = i686
 	arch = x86_64
 	groups = development
@@ -15,7 +15,7 @@ pkgbase = ignition-msgs
 	depends = protobuf-c
 	depends = ignition-math>=6
 	depends = ignition-tools
-	source = ignition-msgs-8.2.0::https://github.com/ignitionrobotics/ign-msgs/archive/ignition-msgs8_8.2.0.tar.gz
-	sha256sums = 83671fac95273a3a4b2cc444cef88f00935fd55fb64085436d79d6e95221a9e7
+	source = ignition-msgs-8.2.0::https://github.com/gazebosim/gz-msgs/archive/ignition-msgs8_8.2.0.tar.gz
+	sha256sums = 82f14983847ff3731fb81634e6de64b301d9b87f231155ae1d336436e229ffb3
 
 pkgname = ignition-msgs
