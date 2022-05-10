@@ -1,6 +1,6 @@
 # Maintainer: <abishekj274@gmail.com>
 pkgname=saladbind-git
-pkgver=1.7.7.r3.gb8870b1
+pkgver=1.7.7.r4.g5c1e7ea
 pkgrel=1
 pkgdesc='A tool for Salad to customize your miner [git version]'
 arch=('x86_64')
