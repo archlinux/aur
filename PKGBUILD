@@ -4,7 +4,7 @@
 _with_plasma=false
 
 pkgname=optimus-manager-qt-git
-pkgver=1.6.4.r13.gdc88c90
+pkgver=1.6.6.r0.g98d630c
 pkgrel=1
 pkgdesc='A Qt interface for Optimus Manager that allows to configure and switch GPUs on Optimus laptops using the tray menu'
 arch=(x86_64)
@@ -25,6 +25,12 @@ fi
 pkgver() {
   cd ${pkgname%-git}
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd ${pkgname%-git}
+  git submodule init
+  git submodule update
 }
 
 build() {
