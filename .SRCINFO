@@ -1,8 +1,8 @@
 pkgbase = setcd
-	pkgdesc = Control the behaviour of your cdrom device
+	pkgdesc = Control the behaviour of your Linux cdrom player
 	pkgver = 1.5_6
-	pkgrel = 2
-	url = http://packages.debian.org/squeeze/setcd
+	pkgrel = 3
+	url = https://packages.debian.org/bullseye/setcd
 	arch = i686
 	arch = x86_64
 	license = GPL
@@ -12,4 +12,3 @@ pkgbase = setcd
 	sha256sums = a0c6f01afac08144359e37e97db3cf66651dd01bcd3421fd58a01ff300d93e8e
 
 pkgname = setcd
-

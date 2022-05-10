@@ -1,13 +1,14 @@
-# Maintainer: Antoine Lubineau <antoine@lubignon.info>
+# Maintainer: Rhinoceros <https://aur.archlinux.org/account/rhinoceros>
+# Contributor: Antoine Lubineau <antoine@lubignon.info>
 
 pkgname=setcd
 _basever=1.5
 _extver=6
 pkgver=${_basever}_${_extver}
-pkgrel=2
-pkgdesc="Control the behaviour of your cdrom device"
+pkgrel=3
+pkgdesc='Control the behaviour of your Linux cdrom player'
 arch=('i686' 'x86_64')
-url="http://packages.debian.org/squeeze/setcd"
+url='https://packages.debian.org/bullseye/setcd'
 license=('GPL')
 source=("http://ftp.de.debian.org/debian/pool/main/s/${pkgname}/${pkgname}_${_basever}.orig.tar.gz"
         "http://ftp.de.debian.org/debian/pool/main/s/${pkgname}/${pkgname}_${_basever}-${_extver}.diff.gz")
@@ -28,5 +29,3 @@ package() {
   install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
   install -Dm644 $pkgname.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
 }
-
-# vim:set ts=2 sw=2 et:
