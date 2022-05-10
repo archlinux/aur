@@ -1,6 +1,6 @@
 pkgbase = jitsi-videobridge
 	pkgdesc = Jitsi Meet Videobridge
-	pkgver = 2.1+665+g3a90ccdc
+	pkgver = 2.1+681+g3544ed05
 	pkgrel = 1
 	url = https://jitsi.org/jitsi-meet/
 	install = install
@@ -19,7 +19,7 @@ pkgbase = jitsi-videobridge
 	backup = etc/jitsi-videobridge/callstats-java-sdk.properties
 	backup = etc/jitsi-videobridge/sip-communicator.properties
 	backup = etc/jitsi-videobridge/jvb.conf
-	source = jitsi-videobridge::git+https://github.com/jitsi/jitsi-videobridge#tag=2.1-665-g3a90ccdc
+	source = jitsi-videobridge::git+https://github.com/jitsi/jitsi-videobridge#tag=2.1-681-g3544ed05
 	source = config
 	source = sip-communicator.properties
 	source = service
