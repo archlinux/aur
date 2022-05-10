@@ -1,8 +1,9 @@
 pkgbase = sensu-agent
 	pkgdesc = Sensu Go Agent
 	pkgver = 6.7.1
-	pkgrel = 0
+	pkgrel = 1
 	url = https://sensu.io
+	install = sensu-agent.install
 	arch = x86_64
 	arch = armv7h
 	license = MIT
