@@ -1,8 +1,8 @@
 pkgbase = linux-rt
 	pkgdesc = Linux RT
-	pkgver = 5.16.2.19.realtime1
-	pkgrel = 3
-	url = https://gitlab.archlinux.org/dvzrv/linux-rt/-/commits/v5.16.2.19.realtime1
+	pkgver = 5.17.1.17.realtime2
+	pkgrel = 1
+	url = https://gitlab.archlinux.org/dvzrv/linux-rt/-/commits/v5.17.1.17.realtime2
 	arch = x86_64
 	license = GPL2
 	makedepends = bc
@@ -19,22 +19,22 @@ pkgbase = linux-rt
 	makedepends = tar
 	makedepends = xmlto
 	options = !strip
-	source = git+https://gitlab.archlinux.org/dvzrv/linux-rt#tag=v5.16.2.19.realtime1?signed
+	source = git+https://gitlab.archlinux.org/dvzrv/linux-rt#tag=v5.17.1.17.realtime2?signed
 	source = config
 	validpgpkeys = 647F28654894E3BD457199BE38DBBDC86092693E
 	validpgpkeys = 64254695FFF0AA4466CC19E67B96E8162A8CF5D1
 	validpgpkeys = C7E7849466FE2358343588377258734B41C31549
 	sha512sums = SKIP
-	sha512sums = f4fc5614c4606cd12114adbec3d9444d3bf7528280c895a54ba7421a4326e7413ff6b6bd9a185fdaf4b91ed8c3d9b2b8a7c8a7a40cb9487ddd60b111521833e6
+	sha512sums = 238205183b23467f8f6d24d84992252b914e49b30c6e2f0aadebec69d5d74d94ed91d899b270045de3d7ac862ef2c656bf5f916c26cc357c659ae3bea76c008e
 	b2sums = SKIP
-	b2sums = fa493cfbcd0147f91c4a7d7d492a11bb56361849aa3d01a0bcf9c486f151f9048a8c3d92b0ecd3f38002e059587b2baf26afd1042ba3f9739db328f3381eb913
+	b2sums = 065e9b9fb9cfa0c1a6918758afae3c63181bbdedb0ca88851b34308932bb71bcd6dbc6dc4fa7b4db2dcd6dcbf4d4be10c4e7a8c226dd0f10abff4152dae1e62a
 
 pkgname = linux-rt
 	pkgdesc = The Linux RT kernel and modules
 	depends = coreutils
 	depends = initramfs
 	depends = kmod
-	optdepends = crda: to set the correct wireless channels of your country
+	optdepends = wireless-regdb: to set the correct wireless channels of your country
 	optdepends = linux-firmware: firmware images needed for some devices
 	provides = VIRTUALBOX-GUEST-MODULES
 	provides = WIREGUARD-MODULE

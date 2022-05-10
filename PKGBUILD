@@ -2,8 +2,8 @@
 # Contributor:  Joakim Hernberg <jbh@alchemy.lu>
 
 pkgbase=linux-rt
-pkgver=5.16.2.19.realtime1
-pkgrel=3
+pkgver=5.17.1.17.realtime2
+pkgrel=1
 pkgdesc='Linux RT'
 arch=(x86_64)
 url="https://gitlab.archlinux.org/dvzrv/linux-rt/-/commits/v${pkgver}"
@@ -16,9 +16,9 @@ source=(
   config
 )
 sha512sums=('SKIP'
-            'f4fc5614c4606cd12114adbec3d9444d3bf7528280c895a54ba7421a4326e7413ff6b6bd9a185fdaf4b91ed8c3d9b2b8a7c8a7a40cb9487ddd60b111521833e6')
+            '238205183b23467f8f6d24d84992252b914e49b30c6e2f0aadebec69d5d74d94ed91d899b270045de3d7ac862ef2c656bf5f916c26cc357c659ae3bea76c008e')
 b2sums=('SKIP'
-        'fa493cfbcd0147f91c4a7d7d492a11bb56361849aa3d01a0bcf9c486f151f9048a8c3d92b0ecd3f38002e059587b2baf26afd1042ba3f9739db328f3381eb913')
+        '065e9b9fb9cfa0c1a6918758afae3c63181bbdedb0ca88851b34308932bb71bcd6dbc6dc4fa7b4db2dcd6dcbf4d4be10c4e7a8c226dd0f10abff4152dae1e62a')
 validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman <gregkh@kernel.org>
   '64254695FFF0AA4466CC19E67B96E8162A8CF5D1'  # Sebastian Andrzej Siewior
@@ -66,7 +66,7 @@ build() {
 _package() {
   pkgdesc="The $pkgdesc kernel and modules"
   depends=(coreutils initramfs kmod)
-  optdepends=('crda: to set the correct wireless channels of your country'
+  optdepends=('wireless-regdb: to set the correct wireless channels of your country'
               'linux-firmware: firmware images needed for some devices')
   provides=(VIRTUALBOX-GUEST-MODULES WIREGUARD-MODULE)
 
