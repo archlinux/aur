@@ -1,0 +1,15 @@
+pkgbase = cl-trivial-gray-streams
+	pkgdesc = Compatibility layer for Gray Streams
+	pkgver = r70.g2b3823e
+	pkgrel = 1
+	url = https://trivial-gray-streams.common-lisp.dev
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = sbcl
+	depends = common-lisp
+	depends = cl-asdf
+	source = cl-trivial-gray-streams::git+https://github.com/trivial-gray-streams/trivial-gray-streams#commit=2b3823edbc78a450db4891fd2b566ca0316a7876
+	b2sums = SKIP
+
+pkgname = cl-trivial-gray-streams
