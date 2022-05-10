@@ -4,7 +4,7 @@
 pkgname=cl-bordeaux-threads
 _pkgname="${pkgname#cl-}"
 pkgver=0.8.8
-pkgrel=2
+pkgrel=3
 pkgdesc='Portable shared-state concurrency for Common Lisp'
 arch=('any')
 url='https://sionescu.github.io/bordeaux-threads/'
@@ -30,7 +30,7 @@ package() {
     "$pkgdir/usr/share/common-lisp/systems"
 
   # library
-  cp -vr src test version.sexp "$_pkgname.asd"
+  cp -vr src test version.sexp "$_pkgname.asd" "$pkgdir/usr/share/common-lisp/source/$_pkgname"
   pushd "$pkgdir/usr/share/common-lisp/systems"
   ln -s "../source/$_pkgname/$_pkgname.asd" .
   popd
