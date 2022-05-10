@@ -1,0 +1,18 @@
+pkgbase = bigsh0t-plugins-release-git
+	pkgdesc = Plugins like frei0r for dealing with VR (git version)
+	pkgver = 2.5.1.r0.gdd6b0f7
+	pkgrel = 1
+	url = https://bitbucket.org/leo_sutic/bigsh0t/src/main/
+	arch = i686
+	arch = x86_64
+	license = GPL
+	makedepends = git
+	makedepends = opencv
+	depends = git
+	optdepends = opencv
+	provides = bigsh0t-plugins
+	conflicts = bigsh0t-plugins
+	source = git+https://bitbucket.org/leo_sutic/bigsh0t.git#branch=rel-2.5
+	sha256sums = SKIP
+
+pkgname = bigsh0t-plugins-release-git
