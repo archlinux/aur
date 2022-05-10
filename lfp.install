@@ -1,11 +1,5 @@
 post_install() {
-echo -e '\n \033[1m\033[32m\e[4mFor on-exit directory changing, echo the following lines into your bash/zshrc\e[0m :\e[36m
-
-  lfpcd(){ \
-    local tmp=$(mktemp) ; /usr/share/lfp/lfp -last-dir-path="$tmp" "$@"
-    [ -f "$tmp" ] && dir="$(cat "$tmp")" && rm -f "$tmp" >/dev/null 2>&1 
-    [ -d "$dir" ] && [[ "$dir" != "$(pwd)" ]] && cd "$dir" || return 0
-  }
-
- \e[33mAnd furthermore, use "lfpcd" instead of "lfp"\e[0m\n\n\n'
+echo -e "\n \033[1m\033[32m For on-exit directory changing, add the following line into your bash/zshrc\e[0m :\e[36m\n\n  source '/usr/share/lf/lfpcd'\n\n\n\e[0m"
 }
+
+post_install
