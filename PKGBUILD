@@ -1,7 +1,7 @@
 # Maintainer: Shatur <genaloner@gmail.com>
 
 pkgname=crow-translate-git
-pkgver=2.9.1.r14.g231ba47
+pkgver=2.9.3.r0.g2c6214e
 pkgrel=1
 pkgdesc='A simple and lightweight translator that allows you to translate and speak text using Google, Yandex Bing, LibreTranslate and Lingva'
 arch=(x86_64 aarch64)
@@ -17,6 +17,12 @@ sha256sums=(SKIP)
 pkgver() {
   cd ${pkgname%-git}
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+prepare() {
+  cd ${pkgname%-git}
+  git submodule init
+  git submodule update
 }
 
 build() {
