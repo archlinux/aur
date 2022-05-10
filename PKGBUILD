@@ -3,7 +3,7 @@
 # Contributor: bitwave
 
 pkgname=python-pycaption
-pkgver=2.0.8
+pkgver=2.0.9
 pkgrel=1
 pkgdesc="Python module to read/write popular video caption formats"
 arch=('any')
@@ -13,11 +13,11 @@ depends=('python-beautifulsoup4' 'python-lxml' 'python-cssutils')
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest' 'python-pytest-lazy-fixture')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/p/pycaption/pycaption-$pkgver.tar.gz")
-sha256sums=('deed87d38e7f03c0a4ecedad7914b937bf698ed00f46ad15ee94ec9560e98797')
+sha256sums=('a9d434a13fc387566d2a329c7ea1ce423034cf6deb8b28757123bc05656840c5')
 
 prepare() {
 	cd "pycaption-$pkgver"
-	sed -i "/packages=/s/()/(exclude=('tests*',))/" setup.py
+	sed -i "/packages=/s/()/(exclude=['tests*'])/" setup.py
 }
 
 build() {
