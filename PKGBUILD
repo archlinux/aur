@@ -3,17 +3,18 @@
 
 pkgname=nodejs-serverless
 _pkgname=${pkgname#nodejs-}
-pkgver=3.16.0
-pkgrel=2
+pkgver=3.17.0
+pkgrel=1
 pkgdesc="Serverless Framework - Build web, mobile and IoT applications with serverless architectures using AWS Lambda, Azure Functions, Google CloudFunctions & more"
 arch=(any)
 url="https://serverless.com/framework/docs/"
 license=(MIT)
 depends=('nodejs' 'npm')
 optdepends=()
+conflicts=('nodejs-serverless-git')
 source=(https://registry.npmjs.org/$_pkgname/-/$_pkgname-$pkgver.tgz)
 noextract=($_pkgname-$pkgver.tgz)
-sha1sums=('d721f6f12ba12661e50974c7895d6dab35efdf90')
+sha256sums=('dc6a82dd78562a894275a2e6c76fdb941da12ef65fd906e76292cf708756e124')
 
 prepare() {
   tar -xf "$srcdir/$_pkgname-$pkgver.tgz" --directory "$srcdir" "package/LICENSE.txt"

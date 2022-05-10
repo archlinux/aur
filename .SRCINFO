@@ -1,14 +1,15 @@
 pkgbase = nodejs-serverless
 	pkgdesc = Serverless Framework - Build web, mobile and IoT applications with serverless architectures using AWS Lambda, Azure Functions, Google CloudFunctions & more
-	pkgver = 3.16.0
-	pkgrel = 2
+	pkgver = 3.17.0
+	pkgrel = 1
 	url = https://serverless.com/framework/docs/
 	arch = any
 	license = MIT
 	depends = nodejs
 	depends = npm
-	noextract = serverless-3.16.0.tgz
-	source = https://registry.npmjs.org/serverless/-/serverless-3.16.0.tgz
-	sha1sums = d721f6f12ba12661e50974c7895d6dab35efdf90
+	conflicts = nodejs-serverless-git
+	noextract = serverless-3.17.0.tgz
+	source = https://registry.npmjs.org/serverless/-/serverless-3.17.0.tgz
+	sha256sums = dc6a82dd78562a894275a2e6c76fdb941da12ef65fd906e76292cf708756e124
 
 pkgname = nodejs-serverless
