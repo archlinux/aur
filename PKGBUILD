@@ -1,7 +1,7 @@
 # Maintainer: Peter Rice <{first name}@peterrice.xyz>
 
 pkgname=qbpm-git
-pkgver=0.3.r2.g8e35376
+pkgver=1.0.rc1.r16.g0359824
 pkgrel=2
 pkgdesc="A profile manager for qutebrowser"
 url="https://github.com/pvsr/qbpm"
