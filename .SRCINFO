@@ -1,0 +1,15 @@
+pkgbase = intel-oneapi-common
+	pkgdesc = oneAPI Common
+	pkgver = 2022.1.0
+	pkgrel = 1
+	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
+	arch = any
+	license = custom
+	noextract = intel-oneapi-common-vars-2022.1.0-161_all.deb
+	noextract = intel-oneapi-common-licensing-2022.1.0-2022.1.0-161_all.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-common-vars-2022.1.0-161_all.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-common-licensing-2022.1.0-2022.1.0-161_all.deb
+	sha256sums = 52a2726739652b4d3021a9f21d8ca664cd5582853b561e421f003b94789a4469
+	sha256sums = 30f36ef653964ac629ce77c2c2d21a923c7ba4ff88936c39a8f39237b7446cca
+
+pkgname = intel-oneapi-common
