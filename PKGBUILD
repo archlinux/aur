@@ -2,8 +2,8 @@
 
 _basename=jitsi
 _pkgname=meet
-_tag=6091
-_version=1.0.6091
+_tag=6155
+_version=1.0.6155
 
 pkgname=${_basename}-${_pkgname}
 pkgver=${_version}
@@ -48,9 +48,6 @@ package() {
 
         tar xjvf "jitsi-meet.tar.bz2" -C "$DESTDIR" --strip 1
         install -Dm644 -t "$DESTDIR" manifest.json
-
-        install -d "$DESTDIR/load-test"
-        cp -r resources/load-test/{index.html,libs} "$DESTDIR/load-test"
 
         for l in $(node -p "Object.keys(require('./lang/languages.json')).join(' ')")
         do
