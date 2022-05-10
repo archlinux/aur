@@ -1,0 +1,14 @@
+pkgbase = nodejs-mssql
+	pkgdesc = Microsoft SQL Server client for Node.js
+	pkgver = 8.1.0
+	pkgrel = 1
+	url = https://github.com/tediousjs/node-mssql
+	arch = any
+	license = MIT
+	makedepends = npm
+	depends = nodejs
+	noextract = mssql-8.1.0.tgz
+	source = http://registry.npmjs.org/mssql/-/mssql-8.1.0.tgz
+	sha1sums = d660eafdf0fcf529e2c839705b9455d60ccbacf5
+
+pkgname = nodejs-mssql
