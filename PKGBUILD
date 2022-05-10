@@ -3,7 +3,7 @@
 # Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
 
 pkgbase=linux-mainline-anbox-git
-pkgver=5.18rc6.r0.gc5eb0a61238d
+pkgver=5.18rc6.r7.g9be9ed2612b5
 pkgrel=1
 pkgdesc='Linux Mainline'
 url="https://www.kernel.org"
