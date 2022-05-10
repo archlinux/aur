@@ -1,0 +1,16 @@
+pkgbase = lrpt-pp-git
+	pkgdesc = Meteor LRPT image post-processor
+	pkgver = r20.d6cfdb7
+	pkgrel = 1
+	url = https://github.com/dbdexter-dev/lrpt_pp
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = cmake
+	depends = gtk3
+	provides = lrpt-pp
+	conflicts = lrpt-pp
+	source = lrpt-pp-git::git+https://github.com/dbdexter-dev/lrpt_pp.git
+	sha256sums = SKIP
+
+pkgname = lrpt-pp-git
