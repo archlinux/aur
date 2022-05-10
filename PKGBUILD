@@ -4,7 +4,7 @@
 _pkgname=uvesafb-dkms
 pkgname="${_pkgname}-git"
 pkgver=1.0.4+r10.20210102.cada654
-pkgrel=3
+pkgrel=4
 pkgdesc="uvesafb DKMS driver."
 arch=('i686' 'x86_64')
 url="https://github.com/jghodd/uvesafb-dkms"
@@ -22,6 +22,7 @@ provides=(
 )
 conflicts=(
   "${_pkgname}"
+  'UVESAFB-MODULE'
 )
 optdepends=(
   "mkinitcpio-uvesafb: For mkinitcpio hook to load the 'uvesafb' module."
