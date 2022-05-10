@@ -2,8 +2,8 @@
 # Contributor: Intel Corporation <http://www.intel.com/software/products/support>
 
 pkgname=intel-oneapi-onevpl
-_pkgver=2022.0.0
-_debpkgrel=58
+_pkgver=2022.1.0
+_debpkgrel=154
 pkgver=${_pkgver}_${_debpkgrel}
 pkgrel=1
 pkgdesc="Intel® oneAPI Video Processing Library"
@@ -13,8 +13,8 @@ license=("custom")
 source=("https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-${_pkgver}-${_pkgver}-${_debpkgrel}_amd64.deb"
 "https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-devel-${_pkgver}-${_pkgver}-${_debpkgrel}_amd64.deb"
 "${pkgname}.conf")
-sha256sums=('085293355fd18e312b3f2458c6e4f83aecdd39037ab87a877a98b6d60c9962b3'
-            'cd9cdbe2e12f0b9cbe23ded828945ce2487e2632b610e98497aaa5b8c1d2e81a'
+sha256sums=('6d9f9bf1858edf9140fcdd2d384c8a2c83ca31305a5ca2746a19e932568ade61'
+            '707f3baf298aede3be4dcf7ffe812b902da97cf42119359422ea3015e6bf340d'
             '7f0a84aaa902934869e93ba0af66c4eb56f0df6c133a4d60af425e6ecc354f15')
 
 noextract=(
@@ -31,7 +31,7 @@ build() {
 }
 
 package() {
-	depends=('intel-oneapi-common-vars>=2022.0.0' 'intel-oneapi-common-licensing=2022.0.0')
+	depends=('intel-oneapi-common=2022.1.0')
 	mv ${srcdir}/opt ${pkgdir}
 	ln -sfT "$_pkgver" ${pkgdir}/opt/intel/oneapi/vpl/latest
 
@@ -39,4 +39,11 @@ package() {
 
 	mkdir -p ${pkgdir}/usr/lib/cmake
 	ln -sfT "/opt/intel/oneapi/vpl/latest/lib/cmake/vpl" ${pkgdir}/usr/lib/cmake/vpl
+
+	# pkgconfig
+	cd ${pkgdir}/opt/intel/oneapi/vpl/latest/lib/pkgconfig
+	install -d ${pkgdir}/usr/share/pkgconfig
+	for _file in $(find . -mindepth 1 -name '*.pc' -printf "%f\n"); do
+		ln -sf /opt/intel/oneapi/vpl/latest/lib/pkgconfig/${_file} ${pkgdir}/usr/share/pkgconfig/${_file}
+	done
 }
