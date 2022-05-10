@@ -1,7 +1,7 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 pkgname=jicofo-git
-pkgver=1.0.871+0+g6670106d
+pkgver=1.0.877+0+gd8cca3d5
 pkgrel=1
 pkgdesc="JItsi Meet COnference FOcus git build"
 arch=('any')
@@ -33,7 +33,7 @@ install=install
 
 pkgver() {
     cd "$pkgname"
-    printf "1.0.%s" "$(git describe --exclude jitsi-meet_\* --long | sed 's/-/+/g')"
+    printf "1.0.%s" "$(git describe --exclude \*jitsi-meet\* --long | sed 's/-/+/g')"
 }
 
 build() {
