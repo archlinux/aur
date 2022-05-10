@@ -1,7 +1,7 @@
 # Maintainer: Riccardo Sacchetto <rsacchetto@nexxontech.it>
 pkgname=antares-sql
-pkgver=0.5.3
-pkgrel=2
+pkgver=0.5.4
+pkgrel=1
 pkgdesc="Open source and cross platform SQL client made to be simple and complete"
 arch=('x86_64')
 url="https://antares-sql.app/"
@@ -11,7 +11,7 @@ makedepends=('nvm' 'yarn' 'python')
 source=("https://github.com/Fabio286/antares/archive/refs/tags/v${pkgver}.tar.gz"
         "antares-sql.desktop"
         "antares-sql.sh")
-sha512sums=("809cded44811c8646b246c628cf24eb543d7a1c19330452d72b95efcf73a73bf65cef1891dff3acd6774c7fb165fd1b81792ea4e5f4bf9419f865a0b2cba729c"
+sha512sums=("0b45234b495b91a26ca7c8cc40f82cb22f335bf05486a9b1e4ec4c617eb3c7583cd9da15de3f7d4495172911903b2cdb061a9dfc37a770ef647348f23b83f007"
             "4dc1837ee4a8e9e4c610a9fc8b8724a903ebaea1aeed32f30c4ee469d2e12198549bfc760327c413534053f54ffe8248905a925fc5d63d2c6e31d75a413da4dc"
             "b3b1e1c9dfb59fc3e89f3c53194550634a2cd9e45ee9ae1b725c315e1ee3fdf657487409cb044a0c28875031608b6d128475095597de7031a8aa3b601a34baf4")
 
