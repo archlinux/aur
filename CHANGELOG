@@ -1,10 +1,13 @@
-# New Features and Improvements
-See the [User Guide](https://www.jetuml.org/docs/user-guide.html) for details.
+# New and Improved Features
 
-It is now possible to change the size of the text in diagrams (#426)
-Using the shortcut key combination Ctrl-Q inserts UML stereotype delimiters (#434)
-Field nodes in object diagrams have a tighter visual layout (#428)
+- This release features new layout algorithms for the class diagram (#375). The algorithms leverage a number of heuristics to keep diagram clears by avoiding overlap and edge crossings, while selecting intuitive-looking paths and more effective label placement (#446).
+- In sequence diagrams, we no longer delete the implicit parameter when a constructor call is deleted (#437);
 
-# Refactorings
-Node position is no longer stored as a property (#427)
-Enums are now used to define property values (#429)
+# Bug Fixes
+
+- Cannot select overlapped implicit parameters in sequence diagram (#438);
+- Drag package content to bottom of viewport. Subsequence dragging misbehaves (#445)
+- Code Refactorings
+- Refactor the PersistenceTests (#439)
+- Update Checkstyle style file to 8.44 (#440)
+- Code Modernization and Cleanup (#456). JetUML now runs on Java 17.
