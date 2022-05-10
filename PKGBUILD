@@ -6,7 +6,7 @@ export PIP_DISABLE_PIP_VERSION_CHECK=true
 pkgname=python-git-pp
 epoch=
 pkgver=1.10.3
-pkgrel=00
+pkgrel=01
 pkgdesc='Git utility for auto-commiting and concurrent pushing'
 arch=(any)
 url=https://pypi.org/project/git-pp/
@@ -20,11 +20,11 @@ conflicts=(${provides%=*})  # No quotes, to avoid an empty entry.
 source=(PKGBUILD_EXTRAS)
 md5sums=(SKIP)
 noextract=()
-source+=(https://files.pythonhosted.org/packages/e9/67/ce2acca4bf296204f396541f07d5bdeb8d04d3c1db64a5aa2463be6c9fdf/git_pp-1.1.0-py3-none-any.whl)
+source+=(https://files.pythonhosted.org/packages/7a/6d/3a521769da0771c8831c539f75d1af947f458829b86bc089b089583d2270/git_pp-1.10.3-py3-none-any.whl)
 md5sums+=(7285653f15395646351c6d3f40ccf267)
-noextract+=(git_pp-1.1.0-py3-none-any.whl)
+noextract+=(git_pp-1.10.3-py3-none-any.whl)
 source+=(LICENSE)
-md5sums+=(1fe59d4f50424e38fadd8dd659303de6)
+md5sums+=(ce4c88d45c55e94a004eabe153fdf630)
 
 _first_source() {
     echo " ${source_i686[@]} ${source_x86_64[@]} ${source[@]}" |
