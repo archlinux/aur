@@ -1,3 +1,7 @@
+# v0.7.3
+
+- [bugfix](https://github.com/sstadick/crabz/issues/14) Fixes feature flags to allow for compiling rust-only backend
+
 # v0.7.2
 
 - Includes updated THRIDPARYT.yml 

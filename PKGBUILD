@@ -1,7 +1,7 @@
 # Maintainer: Luis Martinez <luis dot martinez at disroot dot org>
 
 pkgname=crabz
-pkgver=0.7.2
+pkgver=0.7.3
 pkgrel=1
 pkgdesc="Cross-platform compression and decompression tool"
 arch=('x86_64')
@@ -10,8 +10,9 @@ license=('Unlicense' 'MIT')
 depends=('gcc-libs')
 makedepends=('cargo' 'cmake')
 changelog=CHANGELOG.md
+options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('c4c5a0ec5f8164774f7d83347c321dd9b37f3b3ed40d30e08b6ffed62bffd8ee')
+sha256sums=('a8f0c16939b28cbd74561a4db9fba4c67d386fd51dd9aa403d6e2fc2b6a2fc26')
 
 prepare() {
 	cd "$pkgname-$pkgver"
@@ -34,6 +35,6 @@ check() {
 package() {
 	cd "$pkgname-$pkgver"
 	install -D target/release/crabz -t "$pkgdir/usr/bin/"
-	install -Dm 644 LICENSE-MIT UNLICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
-	install -Dm 644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
+	install -Dm644 LICENSE-MIT UNLICENSE -t "$pkgdir/usr/share/licenses/$pkgname/"
+	install -Dm644 README.md -t "$pkgdir/usr/share/doc/$pkgname/"
 }
