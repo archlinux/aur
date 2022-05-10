@@ -1,5 +1,5 @@
 pkgname=qutebrowser-not-only-latin-git
-pkgver=2.2.3.r5.g45b1a9d43
+pkgver=2.2.3.r827.g2b251da57
 pkgrel=1
 pkgdesc="A keyboard-driven, vim-like browser based on PyQt5. Fork to support OTHER LAYOUTS, 
 unlike the original, where only LATIN LAYOUT worked. 
