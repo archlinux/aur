@@ -1,6 +1,6 @@
 pkgbase = python-ndcube
 	pkgdesc = Package for multi-dimensional contiguious and non-contiguious coordinate aware arrays
-	pkgver = 2.0.1
+	pkgver = 2.0.2
 	pkgrel = 1
 	url = https://docs.sunpy.org/projects/ndcube
 	arch = any
@@ -9,6 +9,9 @@ pkgbase = python-ndcube
 	checkdepends = python-reproject
 	checkdepends = python-sunpy
 	makedepends = python-setuptools-scm
+	makedepends = python-wheel
+	makedepends = python-build
+	makedepends = python-installer
 	makedepends = python-sphinx-automodapi
 	makedepends = python-sphinx-changelog
 	makedepends = python-sunpy-sphinx-theme
@@ -18,8 +21,8 @@ pkgbase = python-ndcube
 	makedepends = python-pytest-doctestplus
 	makedepends = graphviz
 	makedepends = subversion
-	source = https://files.pythonhosted.org/packages/source/n/ndcube/ndcube-2.0.1.tar.gz
-	md5sums = 7b457d2e3c49d7e8395ee52b27ce67a1
+	source = https://files.pythonhosted.org/packages/source/n/ndcube/ndcube-2.0.2.tar.gz
+	md5sums = a042518ca2c97ccc61de8f7fc8150ce0
 
 pkgname = python-ndcube
 	depends = python>=3.7
