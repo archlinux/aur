@@ -39,9 +39,10 @@ build() {
   cd "${_pkgname}-${pkgver}"
   ./configure \
     --prefix='/usr' \
-    --libexecdir="/usr/lib/${_pkgname}" \
+    --libexecdir="/usr/lib/${pkgname}" \
+    --localstatedir="/var/lib/${pkgname}" \
     --sysconfdir='/etc' \
-    --with-pkgdocdir="/usr/share/doc/${_pkgname}" \
+    --with-pkgdocdir="/usr/share/doc/${pkgname}" \
     --disable-silent-rules \
     --disable-static
   make
