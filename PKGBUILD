@@ -7,7 +7,7 @@
 
 pkgbase=gcc11
 pkgname=($pkgbase gcc11-libs gcc11-fortran)
-pkgver=11.2.0
+pkgver=11.3.0
 _majorver=${pkgver%%.*}
 _islver=0.24
 pkgrel=1
@@ -27,7 +27,7 @@ validpgpkeys=(F3691687D867B81B51CE07D9BBE43771487328A9  # bpiotrowski@archlinux.
               86CFFCA918CF3AF47147588051E8B148A9999C34  # evangelos@foutrelis.com
               13975A70E63C361C73AE69EF6EEB81F8981C74C7  # richard.guenther@gmail.com
               D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62) # Jakub Jelinek <jakub@redhat.com>
-b2sums=('69b61234ac436edfea2933df68c434a2ce7aa4454ef4da573e82587e1a42dc420189e949cfdadaf4cb37fc0de9674822210a95b77ff03aca0dbedfe67df19cc6'
+b2sums=('7e562d25446ca4ab9fe8cdb714866f66aba3744d78bf84f31bfb097c1a981e4c7f990cb1e6bcfec5ae6671836a4984e2b70eb8fed81dcef5e244f88da8623469'
         'SKIP'
         '39cbfd18ad05778e3a5a44429261b45e4abc3efe7730ee890674d968890fe5e52c73bc1f8d271c7c3bc72d5754e3f7fcb209bd139e823d19cb9ea4ce1440164d'
         '9298d353fbbb3a136211eace67c3acb1989fcf225549c921902a8303590b51c91736bb4584d32c577b1b1dc4f5e4d6125b4e039cc400c4767f01827667d15533'
