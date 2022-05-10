@@ -1,9 +1,9 @@
-# Maintainer : Jingbei Li <i@jingbei.li>
+# Contributor: Jingbei Li <i@jingbei.li>
 # Contributor: Intel Corporation <http://www.intel.com/software/products/support>
 
 pkgname=intel-oneapi-dnnl
-_pkgver=2022.0.2
-_debpkgrel=43
+_pkgver=2022.1.0
+_debpkgrel=132
 pkgver=${_pkgver}_${_debpkgrel}
 pkgrel=1
 pkgdesc="Intel® oneAPI Deep Neural Network Library"
@@ -12,10 +12,12 @@ url='https://software.intel.com/content/www/us/en/develop/tools/oneapi.html'
 license=("custom")
 source=("https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-${_pkgver}-${_debpkgrel}_amd64.deb"
 "https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-devel-${_pkgver}-${_debpkgrel}_amd64.deb"
-"${pkgname}.conf")
-sha256sums=('a7d855bfad11f23c399bace8bb420c76ebbff9b7d7da89a81739b0d98d727fd3'
-            '1b8360e0e2cc8807634c27fcb2c53fa243feec7e97029037fbc0f5c65ac76932'
-            'f1fe419d6cbab4411c5fe68515b1fc8f317185b70a0c2b7400ba7c88dbd32c63')
+"${pkgname}.conf"
+"${pkgname}.sh")
+sha256sums=('21b2d93e74428814cae8f4050d8f4967fc9346bf5dca456d54e47d34605dca8f'
+            '0f9cb9f28f60b05e9a26cf9769be8781407c390c8aa56a63378c027449a2cf56'
+            'f1fe419d6cbab4411c5fe68515b1fc8f317185b70a0c2b7400ba7c88dbd32c63'
+            'd3fff0cb761be49b766d4fa2e9c34b38e5f99379520201f60654893db47b7dd7')
 
 noextract=(
 	"${pkgname}-${_pkgver}-${_debpkgrel}_amd64.deb"
@@ -31,14 +33,33 @@ build() {
 }
 
 package() {
-	depends=('intel-oneapi-common-vars>=2022.0.0' 'intel-oneapi-common-licensing=2022.0.0'
-    'intel-oneapi-tbb>=2021.5.1' 'intel-oneapi-compiler>=2022.0.2' 
-	'intel-oneapi-tbb<2021.5.2' 'intel-oneapi-compiler<2022.0.3' )
+	depends=('intel-oneapi-common=2022.1.0'
+    'intel-oneapi-tbb>=2021.6.0' 'intel-oneapi-compiler>=2022.1.0' 
+	'intel-oneapi-tbb<2021.6.1' 'intel-oneapi-compiler<2022.1.1' )
+	provides=('onednn=2.6')
+	conflicts=('onednn')
 	mv ${srcdir}/opt ${pkgdir}
 	ln -sfT "$_pkgver" ${pkgdir}/opt/intel/oneapi/dnnl/latest
 
 	install -Dm644 ${pkgname}.conf ${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf
+	install -Dm644 ${pkgname}.sh ${pkgdir}/etc/profile.d/${pkgname}.sh
 
-	#mkdir -p ${pkgdir}/usr/lib/cmake
-	#ln -sfT "/opt/intel/oneapi/dpl/latest/lib/cmake/dnnl" ${pkgdir}/usr/lib/cmake/dnnl
+	# provide commuity/onednn
+	# include
+	mkdir -p ${pkgdir}/usr/include/
+	mkdir -p ${pkgdir}/usr/include/oneapi/
+	cd ${pkgdir}/opt/intel/oneapi/dnnl/latest/cpu_dpcpp_gpu_dpcpp/include
+	for _file in $(find . -mindepth 1 -type f -printf "%f\n"); do
+		ln -sf /opt/intel/oneapi/dnnl/latest/cpu_dpcpp_gpu_dpcpp/include/${_file} ${pkgdir}/usr/include/${_file}
+	done
+	ln -sf /opt/intel/oneapi/dnnl/latest/cpu_dpcpp_gpu_dpcpp/include/oneapi/dnnl ${pkgdir}/usr/include/oneapi/dnnl
+	# lib
+	mkdir -p ${pkgdir}/usr/lib/
+	cd ${pkgdir}/opt/intel/oneapi/dnnl/latest/cpu_dpcpp_gpu_dpcpp/lib
+	for _file in $(find . -mindepth 1 -name '*.so*' -printf "%f\n"); do
+		ln -sf /opt/intel/oneapi/dnnl/latest/cpu_dpcpp_gpu_dpcpp/lib/${_file} ${pkgdir}/usr/lib/${_file}
+	done
+	# cmake
+	mkdir -p ${pkgdir}/usr/lib/cmake
+	ln -sfT "/opt/intel/oneapi/dnnl/latest/lib/cmake/dnnl" ${pkgdir}/usr/lib/cmake/dnnl
 }
