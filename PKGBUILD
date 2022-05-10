@@ -1,7 +1,7 @@
 # Maintainer: Achmad Fathoni<fathoni.id(at)gmail.com>
 pkgname=python-fundamentalanalysis
 _pkgname=FundamentalAnalysis
-pkgver=0.2.12
+pkgver=0.2.14
 pkgrel=1
 pkgdesc="Fully-fledged Fundamental Analysis package"
 arch=('any')
