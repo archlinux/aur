@@ -1,0 +1,17 @@
+pkgbase = cl-ironclad
+	pkgdesc = A cryptographic toolkit written in Common Lisp
+	pkgver = 0.57
+	pkgrel = 1
+	url = https://github.com/sharplispers/ironclad
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = sbcl
+	depends = common-lisp
+	depends = cl-asdf
+	depends = cl-bordeaux-threads
+	depends = cl-flexi-streams
+	source = cl-ironclad::git+https://github.com/sharplispers/ironclad#commit=36663e5afb677890702a2e94386ef8fc8b05b5c1
+	b2sums = SKIP
+
+pkgname = cl-ironclad
