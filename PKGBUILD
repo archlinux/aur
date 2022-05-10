@@ -42,7 +42,7 @@ prepare() {
 
   local sp
   for sp in {dvar-1,ini-1,list-3,rbtree-3,shquote-1,stdaux-1,utf8-1}; do
-    ln -fs "$srcdir/c-$sp" "subprojects/libc$sp"
+    ln -fs "$(realpath --relative-to "subprojects" "$srcdir/c-$sp")" "subprojects/libc$sp"
   done
 }
 
