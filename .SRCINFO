@@ -1,5 +1,5 @@
 pkgbase = linux-phicomm-n1
-	pkgver = 5.17.5
+	pkgver = 5.17.6
 	pkgrel = 1
 	url = https://www.kernel.org/
 	arch = aarch64
@@ -39,10 +39,10 @@ pkgbase = linux-phicomm-n1
 	source = general-usb-core-improve-handling-of-hubs-with-no-ports.patch
 	source = general-increase-cma-pool-896MB.patch
 	source = general-sound-soc-remove-mono-channel-as-it-curren.patch
-	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.17.5.xz
+	source = https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-5.17.6.xz
 	md5sums = 07321a70a48d062cebd0358132f11771
 	md5sums = 14b9c040a7a9320ea91a779cd8f14f02
-	md5sums = 10c1eda8b8518668006a77350693ff31
+	md5sums = 72a07f465f7fe214f6da3380839ad2d3
 	md5sums = 30130b4dcd8ad4364ddbfd56c3058d5e
 	md5sums = ce6c81ad1ad1f8b333fd6077d47abdaf
 	md5sums = 0d0435888ecad675870ecda4045a9d45
@@ -64,7 +64,7 @@ pkgbase = linux-phicomm-n1
 	md5sums = 425ec378dc6973e6185895d7a13a8d66
 	md5sums = 38e3b2c9490ac3b8201db37e73ff2534
 	md5sums = dfcd0e763405a425b3f277394ed65a5d
-	md5sums = cdcffeee90d436b93ecb621d3ce940d8
+	md5sums = 7ce7d9536f1b70b8190f2675cd03ee5b
 
 pkgname = linux-phicomm-n1
 	pkgdesc = The Linux Kernel and modules - AArch64 kernel for Phicomm N1
@@ -74,7 +74,7 @@ pkgname = linux-phicomm-n1
 	depends = kmod
 	depends = mkinitcpio>=0.7
 	optdepends = crda: to set the correct wireless channels of your country
-	provides = linux=5.17.5
+	provides = linux=5.17.6
 	provides = WIREGUARD-MODULE
 	conflicts = linux
 	replaces = linux-armv8
@@ -82,5 +82,5 @@ pkgname = linux-phicomm-n1
 
 pkgname = linux-phicomm-n1-headers
 	pkgdesc = Header files and scripts for building modules for linux kernel - AArch64 kernel for Phicomm N1
-	provides = linux-headers=5.17.5
+	provides = linux-headers=5.17.6
 	conflicts = linux-headers
