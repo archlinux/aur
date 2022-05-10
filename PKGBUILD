@@ -9,7 +9,7 @@
 
 _target="arm-linux-gnueabihf"
 pkgname=${_target}-binutils
-pkgver=2.37
+pkgver=2.38
 pkgrel=1
 pkgdesc="A set of programs to assemble and manipulate binary and object files (${_target})"
 arch=(i686 x86_64)
@@ -20,7 +20,7 @@ depends=(glibc zlib elfutils)
 options=(staticlibs !distcc !ccache)
 source=(https://ftp.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig})
 #source=(https://ftpmirror.gnu.org/gnu/binutils/binutils-$pkgver.tar.xz{,.sig})
-sha256sums=('820d9724f020a3e69cb337893a0b63c2db161dadcb0e06fc11dc29eb1e84a32c'
+sha256sums=('e316477a914f567eccc34d5d29785b8b0f5a10208d36bbacedcc39048ecfe024'
             'SKIP')
 validpgpkeys=(3A24BC1E8FB409FA9F14371813FCEF89DD9E3C4F)
 
