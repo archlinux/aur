@@ -1,4 +1,4 @@
-# Maintainer: tommiss <tommivs+archlinux@gmail.com>
+# Maintainer: tommis <tommi@saira.fi>
 
 pkgname=dragit-git
 _execname='dragit'
@@ -6,6 +6,7 @@ pkgver=r205.fcdd4ed
 pkgrel=1
 pkgdesc='Application for intuitive file sharing between devices.'
 arch=('any')
+conflicts=("dragit")
 provides=("${pkgname}")
 depends=('gtk3')
 makedepends=('cargo' 'git' 'rust')

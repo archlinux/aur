@@ -10,6 +10,7 @@ pkgbase = dragit-git
 	makedepends = rust
 	depends = gtk3
 	provides = dragit-git
+	conflicts = dragit
 	source = git+https://github.com/sireliah/dragit.git
 	sha256sums = SKIP
 
