@@ -2,7 +2,7 @@
 
 pkgname=mesa-rusticl-git
 pkgdesc="An open-source implementation of the OpenGL specification, with Rusticl"
-pkgver=22.1.0_devel.150548.320d00f985a.d41d8cd98f00b204e9800998ecf8427e
+pkgver=22.2.0_devel.153603.2fb29042fa4.d41d8cd98f00b204e9800998ecf8427e
 pkgrel=1
 arch=('x86_64')
 makedepends=('python-mako' 'libxml2' 'libx11' 'xorgproto' 'libdrm' 'libxshmfence' 'libxxf86vm'
@@ -26,8 +26,7 @@ conflicts=('vulkan-mesa-layers' 'opencl-mesa' 'vulkan-intel' 'vulkan-radeon' 'vu
            'vulkan-mesa-layer' 'vulkan-mesa' 'mesa-libgl')
 url="https://www.mesa3d.org"
 license=('custom')
-# I couldn't build rusticl/wip branch, so I set branch to rusticl/main.
-source=('mesa::git+https://gitlab.freedesktop.org/karolherbst/mesa.git#branch=rusticl/main'
+source=('mesa::git+https://gitlab.freedesktop.org/karolherbst/mesa.git#branch=rusticl/wip'
         'LICENSE')
 md5sums=('SKIP'
          '5c65a0fe315dd347e09b1f2826a1df5a')
@@ -104,7 +103,8 @@ build () {
         -D microsoft-clc=disabled \
         -D gallium-rusticl=true \
         -D opencl-spirv=true \
-        -D shader-cache=enabled
+        -D shader-cache=enabled \
+        -D c_args="-Wno-error=incompatible-pointer-types-discards-qualifiers"
        
     meson configure _build
     
