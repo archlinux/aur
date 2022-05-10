@@ -1,12 +1,16 @@
 pkgbase = openvpn-xor-git
 	pkgdesc = OpenVPN with XOR patch to bypass DPI monitoring in places like China (also known as OpenVPN stealth/scramble mode)
 	pkgver = 2.5.6
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/openvpn/openvpn
 	arch = x86_64
 	license = custom
 	makedepends = git
 	makedepends = systemd
+	makedepends = make
+	makedepends = pkgconf
+	makedepends = automake
+	makedepends = autoconf
 	depends = openssl
 	depends = lzo
 	depends = iproute2
