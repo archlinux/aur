@@ -1,0 +1,17 @@
+pkgbase = cl-unicode
+	pkgdesc = Unicode library for Common Lisp
+	pkgver = 0.1.6.r11.g2790a6b
+	pkgrel = 1
+	url = https://edicl.github.io/cl-unicode/
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = sbcl
+	makedepends = cl-flexi-streams
+	depends = common-lisp
+	depends = cl-asdf
+	depends = cl-ppcre
+	source = cl-unicode::git+https://github.com/edicl/cl-unicode#commit=2790a6b8912be1cb051437f463400b4a7198748a
+	b2sums = SKIP
+
+pkgname = cl-unicode
