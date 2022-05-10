@@ -6,7 +6,7 @@
 pkgname=arachnophilia
 _pkgname=Arachnophilia
 pkgver=5.5.2947
-pkgrel=4
+pkgrel=5
 pkgdesc="A web page development workshop and general programming tool"
 arch=('any')
 url="http://www.arachnoid.com/arachnophilia/index.php"
@@ -18,7 +18,7 @@ source=("$_pkgname-$pkgver.jar::http://www.arachnoid.com/$pkgname/$_pkgname.jar"
 	"http://www.arachnoid.com/arachnophilia/index.php"
         "${pkgname}.desktop"
         "${pkgname}.sh")
-sha256sums=('e4fccb6fed127a87fce6bd9073e670ef0270684c8a054a8396f27d8f2aa29a39'
+sha256sums=('131763f167ab011692b0a2bc4772b635de4b3c72d231f6a6533dc36fec662b49'
             'b170b0beb4fee26fb9f60529cf87d418396571459b95210b19437596407d3426'
             'f8c92cd6537cd76cc075b699549fe58cb29de6046c3909fab32287bd317e610e'
             'e1ae7e1cdfcf66011fae5f4e2e1c46b4f00fb2ea58edf74ba146896f04d70c98'
