@@ -1,7 +1,7 @@
 pkgbase = ptv
 	pkgdesc = A tree directory visualizer
 	pkgver = 1.6.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://gitlab.com/ICanOnlySuffer/ptv
 	arch = x86_64
 	arch = armv7a

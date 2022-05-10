@@ -2,7 +2,7 @@
 
 pkgname='ptv'
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A tree directory visualizer'
 arch=('x86_64' 'armv7a')
 makedepends=('pul')
@@ -14,6 +14,6 @@ source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 package () {
-	make -C $pkgname-$pkgver install clean INSTALL_DIR=$pkgdir
+	make -C $pkgname-v$pkgver install clean INSTALL_DIR=$pkgdir
 }
 
