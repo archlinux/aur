@@ -1,11 +1,14 @@
 pkgbase = cl-bordeaux-threads
 	pkgdesc = Portable shared-state concurrency for Common Lisp
 	pkgver = 0.8.8
-	pkgrel = 1
+	pkgrel = 2
 	url = https://sionescu.github.io/bordeaux-threads/
 	arch = any
 	license = MIT
 	makedepends = git
+	makedepends = sbcl
+	depends = common-lisp
+	depends = cl-asdf
 	depends = cl-alexandria
 	source = cl-bordeaux-threads::git+https://github.com/sionescu/bordeaux-threads#commit=076fe2380abbc59b06e495dc7a35aea8eb26ba3b
 	md5sums = SKIP

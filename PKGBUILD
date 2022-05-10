@@ -4,13 +4,13 @@
 pkgname=cl-bordeaux-threads
 _pkgname="${pkgname#cl-}"
 pkgver=0.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc='Portable shared-state concurrency for Common Lisp'
 arch=('any')
 url='https://sionescu.github.io/bordeaux-threads/'
 license=('MIT')
-depends=('cl-alexandria') # common-lisp & cl-asdf also...
-makedepends=('git')
+depends=('common-lisp' 'cl-asdf' 'cl-alexandria')
+makedepends=('git' 'sbcl')
 _commit='076fe2380abbc59b06e495dc7a35aea8eb26ba3b'
 source=("$pkgname::git+https://github.com/sionescu/bordeaux-threads#commit=$_commit")
 md5sums=('SKIP')
@@ -30,12 +30,7 @@ package() {
     "$pkgdir/usr/share/common-lisp/systems"
 
   # library
-  install -vDm644 -t "$pkgdir/usr/share/common-lisp/source/$_pkgname" \
-    src/*.lisp \
-    ./*.asd \
-    version.sexp
-
-  # asdf
+  cp -vr src test version.sexp "$_pkgname.asd"
   pushd "$pkgdir/usr/share/common-lisp/systems"
   ln -s "../source/$_pkgname/$_pkgname.asd" .
   popd
