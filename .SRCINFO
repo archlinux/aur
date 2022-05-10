@@ -9,6 +9,7 @@ pkgbase = docker-rootless-extras-bin
 	license = Apache
 	depends = docker
 	depends = rootlesskit
+	depends = vpnkit
 	optdepends = fuse-overlayfs: overlayfs support
 	optdepends = slirp4netns: faster network stack
 	provides = docker-rootless

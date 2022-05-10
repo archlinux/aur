@@ -4,14 +4,15 @@
 
 pkgname=docker-rootless-extras-bin
 pkgver=20.10.15
-pkgrel=2
+pkgrel=3
 pkgdesc="Extras to run docker as non-root."
 arch=('x86_64' 'aarch64')
 url="https://docs.docker.com/engine/security/rootless/"
 license=('Apache')
 depends=('docker' 'rootlesskit')
 optdepends=('fuse-overlayfs: overlayfs support'
-            'slirp4netns: faster network stack')
+            'slirp4netns: faster network stack'
+            'vpnkit: unknown')
 provides=('docker-rootless' 'docker-rootless-extras')
 conflicts=('docker-rootless' 'docker-rootless-extras')
 install=$pkgname.install
@@ -35,7 +36,6 @@ package() {
 	mkdir -p "$pkgdir/usr/bin/"
 
 	install -Dm755 "$srcdir/docker-rootless-extras/dockerd-rootless.sh" "$pkgdir/usr/bin/"
-	install -Dm755 "$srcdir/docker-rootless-extras/vpnkit" "$pkgdir/usr/bin/"
 	install -Dm644 "$srcdir/docker.socket" "$pkgdir/usr/lib/systemd/user/docker.socket"
 	install -Dm644 "$srcdir/99-docker-rootless.conf" "$pkgdir/usr/lib/sysctl.d/99-docker-rootless.conf"
 
