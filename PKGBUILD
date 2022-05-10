@@ -46,4 +46,3 @@ package() {
 	install -Dm644 "${srcdir}/salad-applications/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
-
