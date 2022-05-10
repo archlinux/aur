@@ -5,7 +5,7 @@
 pkgname=dida-bin
 _pkgname=dida
 pkgver=1.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Official Dida client, a todo list."
 arch=("any")
 url="https://dida365.com/home"
@@ -16,7 +16,7 @@ source=("${_pkgname}_${pkgver}-${arch}.deb::https://cdn.dida365.cn/download/linu
 "${_pkgname}".sh
 )
 sha512sums=('38fddbbe150d5361727396f774f03c366db6239b0384347836d95ba935e7c49ffe24e88df0b1cc6cacb8fe3a9d915b3efd869b0c3fa21869dc36c697fdd123f2'
-            'd4051b2f7bedd263a80b2d8e4a05bba59806f35f7b3072a8a9fc3026eade0c2f06cd9e8eea9343292db30636a71f9ae6e44a9b1c9b5871ece2d2590cdb564e72')
+            '6044bb26cc7bb096072bfae02ff9ffb989513c22b802d5bc04bed36043e1195e01747541a97f9b3df57372cb0560a4ce9bb13f51d16d0838b0d246aeb9883eee')
 
 prepare(){
     cd ${srcdir}
