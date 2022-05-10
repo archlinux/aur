@@ -6,7 +6,7 @@
 # shellcheck disable=SC2034,SC2154 # allow unused/uninitialized variables.
 
 name=cloudcompare
-_fragment="#tag=v2.12.0"
+_fragment="#tag=v2.12.1"
 pkgname=${name}
 pkgver="${_fragment###tag=v}"
 pkgrel=1
