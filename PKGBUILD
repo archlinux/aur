@@ -2,7 +2,7 @@
 # Maintainer: jonah <me@jon4hz.io>
 
 pkgname='wishbox-bin'
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='wishlist using netbox as inventory source'
 url='https://jon4hz.io'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('wishbox')
 conflicts=('wishbox')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jon4hz/wishbox/releases/download/v0.4.0/wishbox-v0.4.0-linux-arm64.tar.gz")
-sha256sums_aarch64=('381f9cc41b63c3be60f100179fbb202ad9241cec171c3e2b7b02cc697883795a')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/jon4hz/wishbox/releases/download/v0.5.0/wishbox-v0.5.0-linux-arm64.tar.gz")
+sha256sums_aarch64=('34637314f4b63f3154bb4c225c7a59178eef03f45757eea3c434598d21d2810a')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jon4hz/wishbox/releases/download/v0.4.0/wishbox-v0.4.0-linux-armv7.tar.gz")
-sha256sums_armv7h=('23a948b2346e8d8aa3c398179d861a7a6434a5a2e9cb4261f48e1539a53e9ced')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/jon4hz/wishbox/releases/download/v0.5.0/wishbox-v0.5.0-linux-armv7.tar.gz")
+sha256sums_armv7h=('8144c1b8641ac11381d1ae4261c3fd9bedaea2bf6621c48b189b17796204a178')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/jon4hz/wishbox/releases/download/v0.4.0/wishbox-v0.4.0-linux-386.tar.gz")
-sha256sums_i686=('e8f4b16d67d12263b5e707826d4f9d5eb6a6d6ff5f4d7c50d9a3528a984ca803')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/jon4hz/wishbox/releases/download/v0.5.0/wishbox-v0.5.0-linux-386.tar.gz")
+sha256sums_i686=('88a123334f27276eaa9608976654fb44daf5d4140da63f7de8041bd50796f4cc')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jon4hz/wishbox/releases/download/v0.4.0/wishbox-v0.4.0-linux-amd64.tar.gz")
-sha256sums_x86_64=('f20b1a7f21d46a852085209961cfc2b4d62ede07dd73dae63385d3dafb37d21e')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/jon4hz/wishbox/releases/download/v0.5.0/wishbox-v0.5.0-linux-amd64.tar.gz")
+sha256sums_x86_64=('f8eade130a12cbddd56b5f1b7c76557b13651c8443f68d34fb29ee0b5da0b1b5')
 
 package() {
   # bin
