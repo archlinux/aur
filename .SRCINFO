@@ -11,6 +11,7 @@ pkgbase = sixpair
 	depends = libx11
 	depends = glibc
 	depends = bluez-utils
+	depends = bluez-hcitool
 	source = http://www.pabr.org/sixlinux/sixpair.c
 	source = http://www.pabr.org/sixlinux/sixhidtest.c
 	source = http://www.pabr.org/sixlinux/xsixhidtest.c
@@ -19,4 +20,3 @@ pkgbase = sixpair
 	md5sums = 6fc492ddf084827b5876871dfa5fa3a6
 
 pkgname = sixpair
-

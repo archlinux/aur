@@ -9,7 +9,7 @@ pkgdesc="Associate PS3 Sixaxis controller to system bluetoothd via USB"
 arch=('i686' 'x86_64')
 url="http://www.pabr.org/sixlinux/"
 license=('GPL')
-depends=('libusb' 'libusb-compat' 'libx11' 'glibc' 'bluez-utils')
+depends=('libusb' 'libusb-compat' 'libx11' 'glibc' 'bluez-utils' 'bluez-hcitool')
 source=(http://www.pabr.org/sixlinux/sixpair.c 
         http://www.pabr.org/sixlinux/sixhidtest.c 
         http://www.pabr.org/sixlinux/xsixhidtest.c)
