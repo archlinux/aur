@@ -1,0 +1,34 @@
+pkgbase = python-h5pyd
+	pkgdesc = h5py distributed - Python client library for HDF Rest API
+	pkgver = 0.10.1
+	pkgrel = 1
+	url = https://github.com/HDFGroup/h5pyd
+	arch = any
+	license = BSD
+	makedepends = python-setuptools
+	makedepends = python-pkgconfig
+	makedepends = python-sphinx-furo
+	source = https://files.pythonhosted.org/packages/source/h/h5pyd/h5pyd-0.10.1.tar.gz
+	source = https://raw.githubusercontent.com/h5py/h5py/master/examples/bytesio.py
+	source = https://raw.githubusercontent.com/h5py/h5py/master/examples/swmr_inotify_example.py
+	source = https://raw.githubusercontent.com/h5py/h5py/master/examples/swmr_multiprocess.py
+	md5sums = e4df4642e23b42d8ad42d51501575fab
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = python-h5pyd
+	depends = python-numpy>=1.17.3
+	depends = python-requests-unixsocket
+	depends = python-pytz
+	depends = python-pyjwt
+	depends = python-msrestazure
+	depends = python-cryptography
+	depends = python-google-api-python-client
+	depends = python-google-auth-oauthlib
+	depends = python-google-auth<=2.0
+	depends = python-adal
+	optdepends = python-h5pyd-doc: Documentation for h5pyd
+
+pkgname = python-h5pyd-doc
+	pkgdesc = Documentation for Python h5pyd
