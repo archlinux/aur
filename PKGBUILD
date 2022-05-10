@@ -3,7 +3,7 @@
 
 pkgname=qemu-user-static
 pkgdesc="Statically linked binaries of Qemu with user emulation. Useful for containers/chroot environment with binfmt."
-pkgver=6.2.0
+pkgver=7.0.0
 pkgrel=1
 arch=(x86_64 aarch64)
 license=(GPL2 LGPL2.1)
@@ -11,7 +11,7 @@ url="http://wiki.qemu.org/"
 depends=()
 makedepends=(python meson glib2-static pcre-static)
 source=(https://download.qemu.org/qemu-$pkgver.tar.xz{,.sig})
-sha512sums=('e9f8231c9e1cfcc41cb47f10a55d63f6b8aee307af00cf6acf64acb7aa4f49fa7e9d6330703a2abea15d8b7bbaba7d3cb08c83edd98d82642367b527df730817'
+sha512sums=('44ecd10c018a3763e1bc87d1d35b98890d0d5636acd69fe9b5cadf5024d5af6a31684d60cbe1c3370e02986434c1fb0ad99224e0e6f6fe7eda169992508157b1'
             'SKIP')
 validpgpkeys=('CEACC9E15534EBABB82D3FA03353C9CEF108B584')
 
@@ -53,7 +53,6 @@ _configure() {
             --disable-vnc \
             --disable-kvm \
             --disable-libssh \
-            --disable-libxml2 \
             --disable-vde \
             --disable-sdl \
             --disable-opengl \
