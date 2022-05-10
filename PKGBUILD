@@ -4,7 +4,7 @@
 # Contributor: DrZaius <lou at fakeoutdoorsman.com>
 
 pkgname=ffmpeg-git
-pkgver=5.1.r106386.ge78173557d
+pkgver=5.1.r106894.g260d7d5a6c
 pkgrel=1
 pkgdesc='Complete solution to record, convert and stream audio and video (git version)'
 arch=('x86_64')
@@ -85,14 +85,14 @@ provides=('libavcodec.so' 'libavdevice.so' 'libavfilter.so' 'libavformat.so'
           'ffmpeg')
 conflicts=('ffmpeg')
 source=('git+https://git.ffmpeg.org/ffmpeg.git'
-        '010-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
+        '040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch'
         '060-ffmpeg-fix-segfault-with-avisynthplus.patch')
 sha256sums=('SKIP'
-            '91973c465f01446a999f278f0c2a3763304994dba1ac35de0e4c72f12f39409e'
+            '2df82046908015bf26bc1303275cf52ba01fa380029a54ea6415373e389e423c'
             '0d6b53940a81ebaf4e6b1a2208a178eb8a824d6a3d8e863bf9c4c7e0060d88ec')
 
 prepare() {
-    patch -d ffmpeg -Np1 -i "${srcdir}/010-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
+    patch -d ffmpeg -Np1 -i "${srcdir}/040-ffmpeg-add-av_stream_get_first_dts-for-chromium.patch"
     patch -d ffmpeg -Np1 -i "${srcdir}/060-ffmpeg-fix-segfault-with-avisynthplus.patch"
 }
 
