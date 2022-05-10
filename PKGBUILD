@@ -8,7 +8,6 @@ arch=('any')
 conflicts=("${pkgname}-git")
 provides=("${pkgname}")
 depends=('gtk3')
-makedepends=('cargo' 'git' 'rust')
 url='https://github.com/sireliah/dragit'
 license=('GPL3')
 source=('https://github.com/sireliah/dragit/releases/download/v0.6.1/dragit_v0.6.1_linux_amd_64.tar.gz'
