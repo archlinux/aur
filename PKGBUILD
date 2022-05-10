@@ -1,24 +1,26 @@
 # Maintainer: Damjan Georgievski <gdamjan@gmail.com>
 
 pkgname=copilot-cli
-pkgver=1.17.0
+pkgver=1.18.0
 pkgrel=1
 pkgdesc='A tool to help deploy containerized applications on Amazon ECS'
 arch=(x86_64)
 url='https://github.com/aws/copilot-cli'
 license=(Apache)
+depends=('glibc')
 makedepends=('go')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
 
 build() {
   cd $pkgname-$pkgver
+  export CGO_CPPFLAGS="${CPPFLAGS}"
+  export CGO_CFLAGS="${CFLAGS}"
+  export CGO_CXXFLAGS="${CXXFLAGS}"
+  export CGO_LDFLAGS="${LDFLAGS}"
+  export GOFLAGS="-buildmode=pie -trimpath -mod=readonly -modcacherw"
 
   go build \
-    -trimpath \
-    -buildmode=pie \
-    -mod=readonly \
-    -modcacherw \
-    -ldflags="-X github.com/aws/copilot-cli/internal/pkg/version.Version=v$pkgver" \
+    -ldflags="-linkmode=external -X github.com/aws/copilot-cli/internal/pkg/version.Version=v$pkgver" \
     ./cmd/copilot
 }
 
@@ -32,4 +34,4 @@ package() {
   "$pkgdir/usr/bin/copilot" completion zsh > "$pkgdir/usr/share/zsh/site-functions/_copilot"
 }
 
-sha256sums=('3616176814ffa80ff3fec3d4dad71afa18ea0e1cef4243d4310bc68ebf13bcc2')
+sha256sums=('c5b0c29c417ddce2d54e3e7ec6e25ed7557d93f71f291f375f0e8cff81bd5413')
