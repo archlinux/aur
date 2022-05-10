@@ -9,14 +9,14 @@ license=('LGPL')
 conflicts=('freecad')
 depends=(
 	# Copied from Freecad package
-	'boost-libs' 'curl' 'opencascade>=7.2' 'xerces-c' 'libspnav' 'glew' 'netcdf' 'utf8cpp'
+	'boost-libs' 'curl' 'opencascade>=7.2' 'openmpi' 'xerces-c' 'libspnav' 'glew' 'netcdf' 'utf8cpp'
 	'shared-mime-info' 'hicolor-icon-theme' 'jsoncpp' 'qt5-base' 'qt5-declarative'
 	'qt5-svg' 'qt5-tools' 'qt5-x11extras' 'qt5-xmlpatterns' 'qt5-webkit' 'med'
 	'python-pivy' 'pyside2' 'python-matplotlib' 'pyside2-tools' 'shiboken2'
 )
 
 ## BEGIN generated variables
-pkgver=2022.05.07.edge.r2.g03e432f9ac
+pkgver=2022.05.09.edge.r0.g0da34268a2
 sha1sums=(SKIP)
 
 ## END generated variables
