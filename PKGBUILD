@@ -2,10 +2,10 @@
 
 pkgname=ignition-gazebo
 pkgver=6.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open source robotics simulator."
 arch=('x86_64')
-url="https://ignitionrobotics.org/libs/gazebo"
+url="https://gazebosim.org/libs/gazebo"
 license=('Apache')
 depends=('benchmark' 'gflags' 'tinyxml2' 'tinyxml' 'eigen' 'qt5-declarative'
          'ignition-cmake' 'ignition-common' 'ignition-math'
@@ -13,10 +13,10 @@ depends=('benchmark' 'gflags' 'tinyxml2' 'tinyxml' 'eigen' 'qt5-declarative'
          'ignition-tools' 'ignition-transport' 'ignition-gui' 'ignition-msgs'
          'sdformat' 'ignition-fuel_tools' 'ignition-sensors')
 makedepends=('cmake' 'ruby-ronn' 'doxygen')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-gazebo/archive/${pkgname}6_${pkgver}.tar.gz")
-sha256sums=('f6efc0bd21f25710dce192e7f67d940a5963cb9cce2d4bbb32e266f0c6e21785')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-gazebo/archive/${pkgname}6_${pkgver}.tar.gz")
+sha256sums=('97b628d6ae92fc2cc7013e45ec593ce0841524609d6111d4bb95c39e967b6d8e')
 
-_dir="ign-gazebo-${pkgname}6_${pkgver}"
+_dir="gz-sim-${pkgname}6_${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
