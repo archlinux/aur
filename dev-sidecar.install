@@ -1,0 +1,25 @@
+post_install() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	# Link to the binary
+	ln -sf '/opt/dev-sidecar/@docmirrordev-sidecar-gui' '/usr/bin/@docmirrordev-sidecar-gui'
+
+	# SUID chrome-sandbox for Electron 5+
+	chmod 4755 '/opt/dev-sidecar/chrome-sandbox' || true
+
+	update-mime-database /usr/share/mime || true
+	update-desktop-database /usr/share/applications || true
+	update-desktop-database -q
+}
+
+post_upgrade() {
+	post_install
+}
+
+post_remove() {
+	gtk-update-icon-cache -q -t -f usr/share/icons/hicolor
+
+	# Delete the link to the binary
+	rm -f '/usr/bin/@docmirrordev-sidecar-gui'
+	update-desktop-database -q
+}
