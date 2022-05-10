@@ -1,4 +1,6 @@
 # Maintainer: Hugo Osvaldo Barrera <hugo@barrera.io>
+# Contributors: PastLeo <chgu82837@gmail.com>
+# Contributors: koba1t <kobdotsh at gmail dot com>
 
 pkgname=docker-rootless-extras
 pkgver=20.10.15
@@ -10,6 +12,8 @@ license=('Apache')
 depends=('docker' 'rootlesskit')
 optdepends=('fuse-overlayfs: overlayfs support'
             'slirp4netns: faster network stack')
+provides=('docker-rootless' 'docker-rootless-extras' 'docker-rootless-extras-bin')
+conflicts=('docker-rootless' 'docker-rootless-extras' 'docker-rootless-extras-bin')
 install=$pkgname.install
 source=(
         "dockerd-rootless-${pkgver}.sh::https://raw.githubusercontent.com/moby/moby/v${pkgver}/contrib/dockerd-rootless.sh"
