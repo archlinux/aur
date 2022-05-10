@@ -1,6 +1,6 @@
 pkgbase = freeplane-git
 	pkgdesc = A Java mindmapping tool
-	pkgver = 1.10.x.f4142b05d
+	pkgver = 1.10.x.218147bf2
 	pkgrel = 1
 	url = https://github.com/freeplane/freeplane.git
 	arch = any
@@ -9,7 +9,7 @@ pkgbase = freeplane-git
 	makedepends = gradle
 	makedepends = ttf-opensans
 	makedepends = fontconfig
-	makedepends = jdk-openjdk
+	makedepends = jdk17-openjdk
 	depends = java-environment
 	depends = desktop-file-utils
 	provides = freeplane

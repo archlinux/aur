@@ -3,13 +3,13 @@
 
 pkgname=freeplane-git
 _NEXT_VERSION=1.10.x
-pkgver=1.10.x.f4142b05d
+pkgver=1.10.x.218147bf2
 pkgrel=1
 pkgdesc="A Java mindmapping tool"
 arch=('any')
 url="https://github.com/freeplane/freeplane.git"
 license=('GPL')
-makedepends=('git' 'gradle' 'ttf-opensans' 'fontconfig' 'jdk-openjdk')
+makedepends=('git' 'gradle' 'ttf-opensans' 'fontconfig' 'jdk17-openjdk')
 conflicts=('freeplane')
 provides=('freeplane')
 depends=('java-environment' 'desktop-file-utils')
