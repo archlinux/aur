@@ -24,7 +24,7 @@ optdepends=('faac: AAC transcoding support'
 source=("git+$url.git#commit=b0db8137224f5a293329a60187365168304c3768"
         'wait_for_chromecast.patch::https://github.com/masmu/pulseaudio-dlna/commit/d46f419abd5105e48342ee45219cbf557d342af4.patch')
 b2sums=('SKIP'
-        '4e846ebd9ab9ee005a8809ab33523fdcfcba5bfd9e1ed7ca28bfd17fa3af4440ba44dfdeeee93c8103bf041858ace939184d39e919b050c56d6fbc9cde6cfdb7')
+        '66b5247cae12cc52df910f1594a6d181cb7bdc252a58bed4802101dbd2b02e30791faff542ffc7cfa23a3d82b2446a5be9c1a046f1b53a8287b7ea436aee8067')
 
 pkgver() {
   cd $pkgname
