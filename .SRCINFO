@@ -1,7 +1,7 @@
 pkgbase = netatalk
 	pkgdesc = Open-source implementation of the Apple Filing Protocol
 	pkgver = 3.1.13
-	pkgrel = 1
+	pkgrel = 2
 	url = https://netatalk.sourceforge.net
 	install = netatalk.install
 	arch = i686
@@ -10,14 +10,15 @@ pkgbase = netatalk
 	arch = armv7h
 	arch = aarch64
 	license = GPL
+	depends = acl
 	depends = avahi>=0.6
 	depends = cracklib
 	depends = dbus-glib
 	depends = dbus-python
 	depends = libevent
-	depends = libgcrypt>=1.2.3
-	depends = libldap
-	depends = pam
+	depends = mariadb-libs
+	depends = perl
+	depends = python
 	depends = tdb>=1.4.5
 	replaces = netatalk-git
 	replaces = netatalk2
