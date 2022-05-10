@@ -1,7 +1,7 @@
 pkgbase = pul
 	pkgdesc = C utils library for the average project
 	pkgver = 0.5.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/ICanOnlySuffer/pul
 	arch = x86_64
 	arch = armv7a

@@ -2,7 +2,7 @@
 
 pkgname='pul'
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='C utils library for the average project'
 arch=('x86_64' 'armv7a')
 makedepends=('nasm')
