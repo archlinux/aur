@@ -1,0 +1,16 @@
+pkgbase = mkinitcpio-uvesafb
+	pkgdesc = mkinitcpio hook to load uvesafb module.
+	pkgver = 0.1
+	pkgrel = 1
+	arch = i686
+	arch = x86_64
+	license = GPL2
+	depends = UVESAFB-MODULE
+	optdepends = mkinitcpio: To make use of this hook.
+	options = !makeflags
+	source = initcpio_uvesafb_install
+	source = initcpio_uvesafb_hook
+	sha256sums = d7f5d56b7e2ed2cafba7bdc1b3def5d91299974818c81bda2448fdef767c0471
+	sha256sums = e1c05aabfb25d40de51555865286b22a5511ff1dc85cb7af0ab1baa896e32dd5
+
+pkgname = mkinitcpio-uvesafb
