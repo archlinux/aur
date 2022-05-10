@@ -3,20 +3,26 @@
 _pkgorg=bus1
 _pkgname=dbus-broker
 pkgdesc='Linux D-Bus Message Broker'
-pkgver=r1405.72da24b
+pkgver=r1484.cf3b49c
 pkgrel=1
 
 pkgname=$_pkgname-git
 arch=('x86_64')
 url="https://github.com/$_pkgorg/$_pkgname"
 license=('Apache')
-depends=('audit' 'expat' 'systemd-libs')
-makedepends=('git' 'meson' 'systemd' 'python-docutils')
+depends=('audit>=3.0' 'expat>=2.2' 'libcap-ng>=0.6' 'linux>=4.17' 'systemd-libs>=230')
+makedepends=('git' 'meson>=0.60.0' 'systemd' 'python-docutils')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 
 source=("$pkgname::git+https://github.com/$_pkgorg/$_pkgname"
-        git+https://github.com/c-util/c-{dvar,ini,list,rbtree,shquote,stdaux,utf8})
+        "c-dvar-1::git+https://github.com/c-util/c-dvar#branch=v1"
+        "c-ini-1::git+https://github.com/c-util/c-ini#branch=v1"
+        "c-list-3::git+https://github.com/c-util/c-list#branch=v3"
+        "c-rbtree-3::git+https://github.com/c-util/c-rbtree#branch=v3"
+        "c-shquote-1::git+https://github.com/c-util/c-shquote#branch=v1"
+        "c-stdaux-1::git+https://github.com/c-util/c-stdaux#branch=v1"
+        "c-utf8-1::git+https://github.com/c-util/c-utf8#branch=v1")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
@@ -34,14 +40,10 @@ pkgver() {
 prepare() {
   cd $pkgname
 
-  git submodule init
-
-  local sm
-  for sm in c-{dvar,ini,list,rbtree,shquote,stdaux,utf8}; do
-    git submodule set-url subprojects/$sm "$srcdir/$sm"
+  local sp
+  for sp in {dvar-1,ini-1,list-3,rbtree-3,shquote-1,stdaux-1,utf8-1}; do
+    ln -fs "$srcdir/c-$sp" "subprojects/libc$sp"
   done
-
-  git submodule update
 }
 
 build() {
