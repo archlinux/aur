@@ -1,7 +1,7 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 pkgname=jitsi-meet-git
-pkgver=1.0.5995+0+g7208e781b
+pkgver=1.0.6172+0+g0fe738315
 pkgrel=1
 pkgdesc="Jitsi Meet Web git build"
 arch=('any')
@@ -27,7 +27,7 @@ install=install
 
 pkgver() {
     cd "$pkgname"
-    printf "1.0.%s" "$(git describe --exclude jitsi-meet_\* --long | sed 's/-/+/g')"
+    printf "1.0.%s" "$(git describe --exclude \*jitsi-meet\* --long | sed 's/-/+/g')"
 }
 
 build() {
@@ -47,10 +47,7 @@ package() {
         install -d "$CONFDIR"
 
         tar xjvf "jitsi-meet.tar.bz2" -C "$DESTDIR" --strip 1
-	install -Dm644 -t "$DESTDIR" manifest.json
-
-        install -d "$DESTDIR/load-test"
-        cp -r resources/load-test/{index.html,libs} "$DESTDIR/load-test"
+        install -Dm644 -t "$DESTDIR" manifest.json
 
         for l in $(node -p "Object.keys(require('./lang/languages.json')).join(' ')")
         do
