@@ -14,6 +14,6 @@ source=("$url/-/archive/v$pkgver/$pkgname-v$pkgver.tar.gz")
 sha256sums=('SKIP')
 
 package () {
-	make -C $pkgname-$pkgver install clean INSTALL_DIR=$pkgdir
+	make -C $pkgname-v$pkgver install clean INSTALL_DIR=$pkgdir
 }
 
