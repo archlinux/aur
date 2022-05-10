@@ -1,7 +1,7 @@
 # Maintainer: thorko contact@thorko.de
 pkgname=sensu-backend
 pkgver=6.7.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Sensu Go Backend"
 arch=('x86_64' 'armv7h')
 url='https://sensu.io'
