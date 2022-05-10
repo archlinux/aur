@@ -2,21 +2,21 @@
 # Contributor: Tim Rakowski <tim.rakowski@gmail.com>
 pkgname=ignition-fuel_tools
 pkgver=7.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A C++ client library and command line tools for interacting with Ignition Fuel servers"
 arch=('i686' 'x86_64')
-url="https://ignitionrobotics.org/libs/fuel_tools"
+url="https://gazebosim.org/libs/fuel_tools"
 license=('Apache')
 groups=('development')
-depends=('curl' 'jsoncpp' 'libyaml' 'libzip' 'ignition-common>=3'
-         'ignition-msgs>=5' 'ignition-tools')
-makedepends=('ignition-cmake>=2')
+depends=('curl' 'jsoncpp' 'libyaml' 'libzip' 'ignition-common'
+         'ignition-msgs' 'ignition-tools')
+makedepends=('ignition-cmake')
 optdepends=('ruby')
 conflicts=()
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-fuel-tools/archive/${pkgname//_/-}7_${pkgver}.tar.gz")
-sha256sums=('b963abcb8ba04f9ca3bc2ddbe3b0e6305c87171bdf4849d95c3921790cc667aa')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-fuel-tools/archive/${pkgname//_/-}7_${pkgver}.tar.gz")
+sha256sums=('8a4e8a155d3780c8d3543f27c3b15d715918f338e5e1e8a5ed2b364366ba216b')
 
-_dir="ign-fuel-tools-${pkgname//_/-}7_${pkgver}"
+_dir="gz-fuel-tools-${pkgname//_/-}7_${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
