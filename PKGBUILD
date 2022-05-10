@@ -9,7 +9,7 @@ license=('GPL')
 sha512sums=('SKIP')
 arch=('any')
 depends=('python' 'python-pyxdg')
-makedepends=('git' 'python-setuptools' 'python-setuptools-scm')
+makedepends=('git' 'python-setuptools' 'python-setuptools-scm' 'scdoc')
 provides=('qbpm')
 source=("git+https://github.com/pvsr/qbpm")
 
@@ -22,5 +22,9 @@ package() {
   cd qbpm
   install -D -m644 completions/qbpm.fish ${pkgdir}/usr/share/fish/vendor_completions.d/qbpm.fish
   install -D -m644 LICENSE ${pkgdir}/usr/share/licenses/qbpm/LICENSE
+
+  scdoc < qbpm.1.scd > qbpm.1
+  install -D -m644 qbpm.1 ${pkgdir}/usr/share/man/man1/qbpm.1
+
   python setup.py install --root="$pkgdir" --optimize=1
 }
