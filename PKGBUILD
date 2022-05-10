@@ -1,7 +1,7 @@
 # Maintainer: Celogeek <arch-aur-f5d67e@celogeek.com>
 
 pkgname=jitsi-meet-prosody-git
-pkgver=1.0.5995+0+g7208e781b
+pkgver=1.0.6172+0+g0fe738315
 pkgrel=1
 pkgdesc="Jitsi Meet Prosody Plugins git build"
 arch=('any')
@@ -21,7 +21,7 @@ source=(
 
 pkgver() {
     cd "$pkgname"
-    printf "1.0.%s" "$(git describe --exclude jitsi-meet_\* --long | sed 's/-/+/g')"
+    printf "1.0.%s" "$(git describe --exclude \*jitsi-meet\* --long | sed 's/-/+/g')"
 }
 
 package() {
