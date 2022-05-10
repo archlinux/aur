@@ -1,0 +1,15 @@
+pkgbase = cl-rt
+	pkgdesc = Common Lisp regression tester from MIT
+	pkgver = r20.ga6a7503
+	pkgrel = 1
+	url = http://git.kpe.io/?p=rt.git
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = sbcl
+	depends = common-lisp
+	depends = cl-asdf
+	source = cl-rt::git+http://git.kpe.io/rt.git#commit=a6a7503a0b47953bc7579c90f02a6dba1f6e4c5a
+	b2sums = SKIP
+
+pkgname = cl-rt
