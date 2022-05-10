@@ -3,7 +3,7 @@
 pkgname=dev-sidecar
 pkgver=1.7.3
 pkgrel=1
-pkgdesc=""
+pkgdesc="开发者边车，github打不开，github加速，git clone加速，git release下载加速，stackoverflow加速"
 arch=('x86_64')
 url="https://github.com/docmirror/dev-sidecar"
 license=('')
