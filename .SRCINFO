@@ -1,7 +1,7 @@
 pkgbase = python-zimports
 	pkgdesc = Python import rewriter
-	pkgver = 0.5.0
-	pkgrel = 2
+	pkgver = 0.5.1
+	pkgrel = 1
 	url = https://github.com/sqlalchemyorg/zimports
 	arch = any
 	license = MIT
@@ -14,7 +14,7 @@ pkgbase = python-zimports
 	depends = python-pyflakes
 	depends = python-flake8-import-order
 	depends = python-tomli
-	source = python-zimports-0.5.0.tar.gz::https://github.com/sqlalchemyorg/zimports/archive/v0.5.0.tar.gz
-	sha256sums = 0fdedf4d796e9e4d05b4bc2a3494984a1359d9b8ab7036472ac175999f6bc5a9
+	source = python-zimports-0.5.1.tar.gz::https://github.com/sqlalchemyorg/zimports/archive/v0.5.1.tar.gz
+	sha256sums = cc83bb97497f88026bb339415cb3006f6a44a172121e27324a17183388870c87
 
 pkgname = python-zimports
