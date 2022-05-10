@@ -7,10 +7,11 @@ pkgbase = networkmanager-dispatcher-ntpd
 	license = MIT
 	depends = networkmanager
 	depends = ntp
+	depends = bash
+	depends = systemd
 	source = 10-ntpd
 	source = LICENSE
 	md5sums = d5560568ec1ca8694595328809fbeefe
 	md5sums = bade437c691452a83923e5064da20757
 
 pkgname = networkmanager-dispatcher-ntpd
-
