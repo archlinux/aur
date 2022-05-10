@@ -1,0 +1,19 @@
+pkgbase = sgsearch
+	pkgdesc = SGSearch is a frontend to the find and grep commands allowing respectively to search for file names or file content. It is meant to be a companion to file managers like Thunar (extension is provided) and works over GVFS.
+	pkgver = 1.2.3
+	pkgrel = 1
+	url = https://sgsearch.tuxfamily.org/
+	arch = x86_64
+	arch = i686
+	license = Other
+	makedepends = gcc
+	makedepends = cmake
+	makedepends = make
+	makedepends = imagemagick
+	depends = gtk3
+	depends = atk
+	depends = thunar
+	source = https://download.tuxfamily.org/sgsearch/sgsearch-1.2.3.tar.gz
+	sha256sums = e761a9833af0892fd44eefc376c399d3a589a5b12e3cf694e28d78c8162b6afa
+
+pkgname = sgsearch
