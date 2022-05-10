@@ -1,14 +1,13 @@
 pkgbase = intel-oneapi-advisor
 	pkgdesc = Intel® Advisor
-	pkgver = 2022.0.0_92
+	pkgver = 2022.1.0_171
 	pkgrel = 1
 	url = https://software.intel.com/content/www/us/en/develop/tools/oneapi.html
 	arch = x86_64
 	license = custom
-	noextract = intel-oneapi-advisor-2022.0.0-92_amd64.deb
-	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-advisor-2022.0.0-92_amd64.deb
-	sha256sums = c561b2470a2cbcbe940904db7fbab80d627f20e6b966091a1dcc4c1ede64c581
+	noextract = intel-oneapi-advisor-2022.1.0-171_amd64.deb
+	source = https://apt.repos.intel.com/oneapi/pool/main/intel-oneapi-advisor-2022.1.0-171_amd64.deb
+	sha256sums = 09484eeef06a05d8d7a8a17e29d9e21fd13c62a71ff513f883f0b271bfc786bd
 
 pkgname = intel-oneapi-advisor
-	depends = intel-oneapi-common-vars>=2022.0.0
-	depends = intel-oneapi-common-licensing=2022.0.0
+	depends = intel-oneapi-common=2022.1.0

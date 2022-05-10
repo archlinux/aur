@@ -1,9 +1,9 @@
-# Maintainer : Jingbei Li <i@jingbei.li>
+# Contributor: Jingbei Li <i@jingbei.li>
 # Contributor: Intel Corporation <http://www.intel.com/software/products/support>
 
 pkgname=intel-oneapi-advisor
-_pkgver=2022.0.0
-_debpkgrel=92
+_pkgver=2022.1.0
+_debpkgrel=171
 pkgver=${_pkgver}_${_debpkgrel}
 pkgrel=1
 pkgdesc="Intel® Advisor"
@@ -16,7 +16,7 @@ source=(
 noextract=(
 	"${pkgname}-${_pkgver}-${_debpkgrel}_amd64.deb"
 )
-sha256sums=('c561b2470a2cbcbe940904db7fbab80d627f20e6b966091a1dcc4c1ede64c581')
+sha256sums=('09484eeef06a05d8d7a8a17e29d9e21fd13c62a71ff513f883f0b271bfc786bd')
 
 build() {
 	ar x ${pkgname}-${_pkgver}-${_debpkgrel}_amd64.deb
@@ -24,7 +24,7 @@ build() {
 }
 
 package() {
-	depends=('intel-oneapi-common-vars>=2022.0.0' 'intel-oneapi-common-licensing=2022.0.0')
+	depends=('intel-oneapi-common=2022.1.0')
 	cp -r ${srcdir}/opt ${pkgdir}
 	ln -sfT "${_pkgver}" ${pkgdir}/opt/intel/oneapi/advisor/latest
 }
