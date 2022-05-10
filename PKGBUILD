@@ -33,14 +33,11 @@ pkgver() {
 }
 
 prepare() {
-  export PATH="${srcdir}/flutter/bin:$PATH"
-  [ -d "${srcdir}/flutter" ] || cp -pR --reflink=auto /opt/flutter "${srcdir}/flutter"
   cd "$_pkgname"
   ./scripts/prepare-web.sh
 }
 
 build() {
-  export PATH="${srcdir}/flutter/bin:$PATH"
   cd "$_pkgname"
   ./scripts/build-web.sh
 }
