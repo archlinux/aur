@@ -24,7 +24,7 @@ source+=(https://files.pythonhosted.org/packages/7a/6d/3a521769da0771c8831c539f7
 md5sums+=(7285653f15395646351c6d3f40ccf267)
 noextract+=(git_pp-1.10.3-py3-none-any.whl)
 source+=(LICENSE)
-md5sums+=(ce4c88d45c55e94a004eabe153fdf630)
+md5sums+=(1fe59d4f50424e38fadd8dd659303de6)
 
 _first_source() {
     echo " ${source_i686[@]} ${source_x86_64[@]} ${source[@]}" |

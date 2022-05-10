@@ -13,6 +13,6 @@ pkgbase = python-git-pp
 	source = LICENSE
 	md5sums = SKIP
 	md5sums = 7285653f15395646351c6d3f40ccf267
-	md5sums = ce4c88d45c55e94a004eabe153fdf630
+	md5sums = 1fe59d4f50424e38fadd8dd659303de6
 
 pkgname = python-git-pp
