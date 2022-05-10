@@ -5,13 +5,17 @@
 _pkgname=v86d
 pkgname="${_pkgname}"
 pkgver=0.1.10
-pkgrel=10
+pkgrel=11
 pkgdesc="userspace helper for uvesafb that runs x86 code in an emulated environment."
 arch=('i686' 'x86_64')
 url="https://github.com/mjanusz/v86d"
 license=('GPL2')
 depends=('glibc')
 makedepends=('git')
+optdepends=(
+  "uvesafb-dkms: For uvesafb kernel module, the ownly known thing that makes use of '${_pkgname}'."
+  "UVESAFB-MODULE: For uvesafb kernel module, the ownly known thing that makes use of '${_pkgname}'."
+)
 options=('!makeflags')
 source=(
   "${_pkgname}::git+https://github.com/mjanusz/v86d.git#tag=${pkgname}-${pkgver}"
