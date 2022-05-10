@@ -3,7 +3,7 @@
 pkgname=watt-toolkit-git
 pkgdesc=一个开源跨平台的多功能Steam工具箱。
 pkgver=2.7.2.r44.g60c8395e
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'aarch64')
 url=https://steampp.net/
 license=('GPL3')
@@ -79,6 +79,6 @@ package(){
         mkdir -p "${pkgdir}/usr/share/icons/hicolor/${width}x${width}/apps"
         install -Dm644 Logo_${width}.png "${pkgdir}/usr/share/icons/hicolor/${width}x${width}/apps/watt-toolkit.png"
     done
-    ln -sf /opt/steam++/Steam++ "${pkgdir}/usr/bin/watt-toolkit"
+    ln -sf /opt/watt-toolkit/Steam++ "${pkgdir}/usr/bin/watt-toolkit"
     install -Dm644 "${srcdir}/watt-toolkit.desktop" "${pkgdir}/usr/share/applications/watt-toolkit.desktop"
 }
