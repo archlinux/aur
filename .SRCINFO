@@ -1,0 +1,14 @@
+pkgbase = a
+	pkgdesc = Graphical text editor inspired by Sam and Acme
+	pkgver = 0.8.4
+	pkgrel = 1
+	url = https://github.com/as/a
+	arch = x86_64
+	license = BSD
+	makedepends = go
+	depends = glibc
+	provides = a-editor
+	source = a-0.8.4.tar.gz::https://github.com/as/a/archive/v0.8.4.tar.gz
+	sha256sums = a752cbb047abdbef1e24f5e309144a66dad436885e26d43e3c6d61f513415362
+
+pkgname = a
