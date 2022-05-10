@@ -1,7 +1,7 @@
 pkgbase = kbuilder
-	pkgdesc = A bash script for building custom kernel packages for Arch Linux
+	pkgdesc = Build script that builds and installs your own custom kernel packages with custom patches and configurations
 	pkgver = 0.2.4
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/AnnikaV9/kbuilder
 	arch = x86_64
 	license = Unlicense
