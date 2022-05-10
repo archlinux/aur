@@ -1,6 +1,6 @@
 pkgbase = termpdf.py-git
 	pkgdesc = A graphical pdf (and epub, cbz, ...) reader that works inside the kitty terminal
-	pkgver = r0.gcbb19e0
+	pkgver = r0.ge7bd082
 	pkgrel = 1
 	url = https://github.com/dsanson/termpdf.py
 	arch = x86_64

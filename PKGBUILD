@@ -1,6 +1,6 @@
 # Maintainer: Elijah Gregg <lovetocode999 at tilde dot team>
 pkgname=termpdf.py-git
-pkgver=r0.gcbb19e0
+pkgver=r0.ge7bd082
 pkgrel=1
 pkgdesc="A graphical pdf (and epub, cbz, ...) reader that works inside the kitty terminal"
 arch=("x86_64")
