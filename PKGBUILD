@@ -2,7 +2,7 @@
 
 pkgname=docker-rootless-extras
 pkgver=20.10.15
-pkgrel=1
+pkgrel=2
 pkgdesc="Extras to run docker as non-root."
 arch=('x86_64' 'aarch64')
 url="https://docs.docker.com/engine/security/rootless/"
@@ -13,18 +13,34 @@ optdepends=('fuse-overlayfs: overlayfs support'
 install=$pkgname.install
 source=(
         "dockerd-rootless-${pkgver}.sh::https://raw.githubusercontent.com/moby/moby/v${pkgver}/contrib/dockerd-rootless.sh"
-        "docker.service"
+        "dockerd-rootless-setuptool-${pkgver}.sh::https://raw.githubusercontent.com/moby/moby/v${pkgver}/contrib/dockerd-rootless-setuptool.sh"
         "docker.socket"
         "99-docker-rootless.conf")
 
 sha256sums=('07fd43a5adad652bb9d15d5cec851c0f563fe1cf8c5f0d5123b45b0e118404dd'
-            '7c31c7f7755776bf9571e551ff4006035562e4394d88166809dd71b2ba847fc5'
+            '0fdbf7a5a61a816e3f9bcf70a85bd3792ef574b7253c01f979a5629c119c10bc'
             'd8695293e5d4a814763f13e1d36ed37273040666b4b91363d6c33171df8934c7'
             'd0d790d4c3d887b10b2b155b83a58a44980b9fa638f8c0f1faec0739dc0ef473')
 
 package() {
   install -Dm755 "$srcdir/dockerd-rootless-${pkgver}.sh" "$pkgdir/usr/bin/dockerd-rootless.sh"
-  install -Dm644 "$srcdir/docker.service" "$pkgdir/usr/lib/systemd/user/docker.service"
   install -Dm644 "$srcdir/docker.socket" "$pkgdir/usr/lib/systemd/user/docker.socket"
   install -Dm644 "$srcdir/99-docker-rootless.conf" "$pkgdir/usr/lib/sysctl.d/99-docker-rootless.conf"
+
+  # The systemd service file is bundled inside the setup script. The script is
+  # unsuitable to run in this PKGBUILD, since it tampers with $HOME and other
+  # similar paths, so would mess up the environment for users who run
+  # `makepkg` on their host.
+  # TODO: Send a patch upstream so we can make the script JUST print this.
+  awk '/Unit/,/EOT/' "$srcdir/dockerd-rootless-setuptool-$pkgver.sh" | \
+    head -n-1 | \
+    sed 's/^[[:space:]]*//' | \
+    sed 's|$BIN|/usr/bin|' | \
+    sed 's| $DOCKERD_ROOTLESS_SH_FLAGS||' \
+    > "$pkgdir/usr/lib/systemd/user/docker.service"
+
+  # Remove the $PATH override, since this will be dependant on $PATH at build
+  # time and is usually undesirable.
+  # TODO: Patch this upstream.
+  sed -i '/Environment=PATH=/d' "$pkgdir/usr/lib/systemd/user/docker.service"
 }
