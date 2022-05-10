@@ -1,15 +1,14 @@
 pkgbase = eac3to
 	pkgdesc = Audio/Video processing software with focus on new generation HD formats, Blu-ray and HD DVD.
-	pkgver = 3.34
+	pkgver = 3.36
 	pkgrel = 1
 	url = https://forum.doom9.org/showthread.php?t=125966
 	arch = x86_64
 	license = custom
 	depends = wine
-	source = eac3to-3.34.zip::http://madshi.net/eac3to.zip
+	source = eac3to-3.36.zip::http://madshi.net/eac3to.zip
 	source = start-eac3to.sh
-	sha256sums = 6538ea65d4dd31bce914bf0757ee421a590829582bec7de43710fc6b424ee07d
+	sha256sums = e7977cf3e87310619986b3d1d30385f66b297b189594ead3d6518b0673c05905
 	sha256sums = 4f432b56086214d16e38687db5fd077fddebd7c0e6586980e3b4df35a42021d0
 
 pkgname = eac3to
-
