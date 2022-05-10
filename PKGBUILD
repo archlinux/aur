@@ -3,7 +3,7 @@
 # Maintainer: Roelof Rietbroek <roelof@wobbly.earth>
 pkgbase=python-shtools
 pkgname=(shtools python-shtools)
-pkgver=4.9.1
+pkgver=4.10
 pkgrel=1
 pkgdesc="SHTOOLS: Tools for working with spherical harmonics"
 arch=('any')
@@ -13,14 +13,13 @@ depends=("fftw" "blas" "lapack")
 makedepends=("gcc-fortran" "python-setuptools")
 source=("https://github.com/SHTOOLS/SHTOOLS/archive/v$pkgver.tar.gz" "site.cfg" "Makefile.patch" )
 noextract=()
-sha256sums=('5c22064f9daf6e9aa08cace182146993aa6b25a6ea593d92572c59f4013d53c2'
+sha256sums=('03811abb576a1ebc697487256dc6e3d97ab9f88288efea8a2951d25613940dd1'
             '19a427bf02f65ffc062ad817c3fa1d56ded3b53a362c4d1258e3ed98c840cdb2'
             '579a7ee861ba3841969d4b2e7e7cced23ee819f46e86d2ce629737e7b1b8d55a')
-
 prepare(){
    cd ${srcdir}/SHTOOLS-${pkgver}/
    cp ../site.cfg .
-   #patch Makefile so it uses AR/RANLIB
+   ##patch Makefile so it uses AR/RANLIB
    patch src/Makefile < ../Makefile.patch
    cd ${_startdir}
 }
@@ -40,6 +39,7 @@ package_shtools(){
    provides=(shtools-fortran)
    pkgdesc="Fortran interface for SHTOOLS "
    cd ${srcdir}/SHTOOLS-${pkgver}/
+   export MAKEFLAGS="-j1"
    make fortran fortran-mp
    make DESTDIR="$pkgdir/" PREFIX=usr/ install
    install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
