@@ -71,7 +71,7 @@ package_mangohud-wayland() {
   provides=("${pkgname%-wayland}")
   conflicts=("${pkgname%-wayland}")
 
-  DESTDIR="$pkgdir" meson install -C build
+  meson install -C build --destdir "$pkgdir"
 
   mv "$pkgdir"/usr/share/{doc,man} "$srcdir/common"
 
@@ -85,7 +85,7 @@ package_lib32-mangohud-wayland() {
   provides=("${pkgname%-wayland}")
   conflicts=("${pkgname%-wayland}")
 
-  DESTDIR="$pkgdir" meson install -C build32
+  meson install -C build32 --destdir "$pkgdir"
 
   rm -rf "$pkgdir"/usr/{bin,share}
 }
