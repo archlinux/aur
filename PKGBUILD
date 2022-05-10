@@ -2,13 +2,13 @@
 _srcname=clasp
 pkgname=clasp-cl-git
 pkgver=1.0.0.r107.g88fb4bb9d
-pkgrel=2
+pkgrel=3
 pkgdesc="Bringing Common Lisp and C++ Together"
 arch=('x86_64')
 url="https://github.com/clasp-developers/clasp"
 license=('LGPL')
 options+=(!strip)
-depends=('boost' 'expat' 'gmp' 'libbsd' 'libedit' 'clang' 'zeromq' 'seqan'
+depends=('boost' 'expat' 'fmt' 'gmp' 'libbsd' 'libedit' 'clang' 'zeromq' 'seqan'
          'libelf' 'libffi' 'llvm' 'netcdf' 'ncurses' 'zlib')
 makedepends=('git' 'sbcl' 'ninja' 'pkg-config')
 provides=('cclasp-boehm' 'common-lisp' 'clasp-cl' 'cando')
