@@ -1,6 +1,6 @@
 pkgbase = betterlockscreen-git
 	pkgdesc = A simple lock script for i3lock-color
-	pkgver = r176.c625f8b
+	pkgver = v4.0.4.r0.ge6c5530
 	pkgrel = 1
 	url = https://github.com/pavanjadhaw/betterlockscreen
 	install = betterlockscreen.install
@@ -13,7 +13,7 @@ pkgbase = betterlockscreen-git
 	depends = bc
 	optdepends = feh: Allows setting wallpaper
 	conflicts = betterlockscreen
-	source = betterlockscreen::git+https://github.com/pavanjadhaw/betterlockscreen.git
+	source = betterlockscreen::git+https://github.com/pavanjadhaw/betterlockscreen.git#branch=main
 	md5sums = SKIP
 
 pkgname = betterlockscreen-git
