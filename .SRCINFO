@@ -1,0 +1,16 @@
+pkgbase = cl-flexi-streams
+	pkgdesc = Flexible bivalent streams for Common Lisp
+	pkgver = 1.0.19.r4.g74a1027
+	pkgrel = 1
+	url = https://edicl.github.io/flexi-streams/
+	arch = any
+	license = BSD
+	makedepends = git
+	makedepends = sbcl
+	depends = common-lisp
+	depends = cl-asdf
+	depends = cl-trivial-gray-streams
+	source = cl-flexi-streams::git+https://github.com/edicl/flexi-streams#commit=74a1027311371a57258eba1bc908e050f5702277
+	b2sums = SKIP
+
+pkgname = cl-flexi-streams
