@@ -3,7 +3,7 @@
 
 pkgname=python-pyreadstat
 _pkg=${pkgname#python-}
-pkgver=1.1.5
+pkgver=1.1.6
 pkgrel=1
 pkgdesc="Reads sas, spss and stata files into Pandas data frames."
 license=('Apache' 'MIT')
@@ -12,7 +12,7 @@ url="https://github.com/Roche/pyreadstat"
 depends=('python-pandas')
 makedepends=('python-setuptools' 'cython' 'python-build' 'python-installer' 'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('778967dc2c8b5a5f07e331691022f60e5e7b03e5270e827b83eff706b1fd980f')
+sha256sums=('cbf53d997f895f0fa66727c52e24dae26d430b499d24ea69a617af4b0b899049')
 
 build() {
 	cd "$_pkg-$pkgver"
