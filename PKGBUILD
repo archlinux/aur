@@ -3,8 +3,8 @@
 
 pkgbase=intel-oneapi-ipp
 pkgname=(intel-oneapi-ipp intel-oneapi-ipp-static)
-_pkgver=2021.5.2
-_debpkgrel=544
+_pkgver=2021.6.0
+_debpkgrel=626
 pkgver=${_pkgver}_${_debpkgrel}
 pkgrel=1
 pkgdesc="Intel® Integrated Performance Primitives"
@@ -17,6 +17,7 @@ source=(
 	"https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-common-${_pkgver}-${_pkgver}-${_debpkgrel}_all.deb"
 	"https://apt.repos.intel.com/oneapi/pool/main/${pkgname}-common-devel-${_pkgver}-${_pkgver}-${_debpkgrel}_all.deb"
 	"${pkgname}.conf"
+	"${pkgname}.sh"
 )
 noextract=(
 	"${pkgname}-${_pkgver}-${_pkgver}-${_debpkgrel}_amd64.deb"
@@ -24,11 +25,12 @@ noextract=(
 	"${pkgname}-common-${_pkgver}-${_pkgver}-${_debpkgrel}_all.deb"
 	"${pkgname}-common-devel-${_pkgver}-${_pkgver}-${_debpkgrel}_all.deb"
 )
-sha256sums=('19020402a758e73c53791d0b56669b3b37663ea5ce5a53de91b929e0c60c40fb'
-            'bfba9918763d6fa4412d9d6672caf0470ed5e46e7b7540b28602ad903a8fb922'
-            'fd0c2017b726e9b8f24d945a8c4d1240798dc47f0d210962fa846e0e78069572'
-            '926a1a514b66829f2750ea87032076967fc8db0a38facd84e489d2d32d25ff3c'
-            'a323ca2483f6ef07422fb19798447ac7ca43d59b5f42aa47710ec940eb2bbaff')
+sha256sums=('abb9f14df006db5684f3b54a2a664adfaf10ca90320d97443104ffcc9e3c650f'
+            'e7bbff3f04f6e7e9618c71aa6291a14198391abdbad25927119dc9c0127ea3aa'
+            '8635703ac473eff8aa251e5324bd339cbccdbefd3c3fe1d895e9a6508fdd49fe'
+            'c0683abd09e5d3759e62dcd96e496c9581416bee80300c189e4e81b55c145c4b'
+            '6d107c6b8da27adb2d643596512282c26f557387d184b8271298df831b29421f'
+            '140334f0e2bed5ecfaa1a9a5f8a65034aa87ad8104ec63c579259f21c97c24d8')
 
 build() {
 	ar x ${pkgname}-${_pkgver}-${_pkgver}-${_debpkgrel}_amd64.deb
@@ -47,13 +49,18 @@ build() {
 }
 
 package_intel-oneapi-ipp() {
-	depends=('intel-oneapi-common-vars>=2022.0.0' 'intel-oneapi-common-licensing=2022.0.0'
-    'intel-oneapi-tbb>=2021.5.1' 'intel-oneapi-compiler>=2022.0.2'
-	'intel-oneapi-tbb<2021.5.2' 'intel-oneapi-compiler<2022.0.3')
+	depends=('intel-oneapi-common=2022.1.0'
+    'intel-oneapi-tbb>=2021.6.0' 'intel-oneapi-compiler>=2022.1.0'
+	'intel-oneapi-tbb<2021.6.1' 'intel-oneapi-compiler<2022.1.1')
 	cp -r ${srcdir}/opt ${pkgdir}
 	ln -sfT "$_pkgver" ${pkgdir}/opt/intel/oneapi/ipp/latest
 
 	install -Dm644 ${pkgname}.conf ${pkgdir}/etc/ld.so.conf.d/${pkgname}.conf
+	install -Dm644 ${pkgname}.sh ${pkgdir}/etc/profile.d/${pkgname}.sh
+
+	# cmake
+	mkdir -p ${pkgdir}/usr/lib/cmake
+	ln -sfT "/opt/intel/oneapi/ipp/latest/lib/cmake/ipp" ${pkgdir}/usr/lib/cmake/ipp
 }
 
 
