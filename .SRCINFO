@@ -1,12 +1,13 @@
 pkgbase = dovecot-fts-flatcurve
 	pkgdesc = Dovecot FTS Flatcurve plugin (Xapian)
-	pkgver = r335.452ae0f
+	pkgver = r351.7bbbdaf
 	pkgrel = 1
 	url = https://github.com/slusarz/dovecot-fts-flatcurve
 	install = dovecot-fts-flatcurve.install
 	arch = x86_64
 	license = LGPL2.1
-	depends = dovecot=2.3.18
+	depends = dovecot>=2.3.0
+	depends = dovecot<2.4.0
 	depends = icu
 	depends = xapian-core
 	source = git+https://github.com/slusarz/dovecot-fts-flatcurve.git

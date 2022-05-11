@@ -1,19 +1,13 @@
 # Maintainer: Elisamuel Resto <sam@samresto.dev>
 
-# This must be built against the version of dovecot being used,
-# otherwise it will fail to load and thus work.
-# Specify the version of dovecot to be used here:
-_dcpkgver=2.3.18
-# Make sure to bump pkgrel if changing this.
-
 pkgname=dovecot-fts-flatcurve
-pkgver=r335.452ae0f
+pkgver=r351.7bbbdaf
 pkgrel=1
 pkgdesc="Dovecot FTS Flatcurve plugin (Xapian)"
 arch=('x86_64')
 url="https://github.com/slusarz/dovecot-fts-flatcurve"
 license=('LGPL2.1')
-depends=("dovecot=${_dcpkgver}" 'icu' 'xapian-core')
+depends=("dovecot>=2.3.0" "dovecot<2.4.0" 'icu' 'xapian-core')
 install="$pkgname.install"
 sha256sums=('SKIP')
 
