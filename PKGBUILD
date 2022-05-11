@@ -13,6 +13,12 @@ sha256sums=('8ff641ec6b1ae290ee8d67ba5880fb636659c5f150e84daa826d93140500b3ed')
 
 _architectures="i686-w64-mingw32 x86_64-w64-mingw32"
 
+prepare() {
+  cd hmat-oss-$pkgver
+  curl -L https://github.com/jeromerobert/hmat-oss/pull/80.patch | patch -p1
+  curl -L https://github.com/jeromerobert/hmat-oss/pull/81.patch | patch -p1
+}
+
 build() {
   cd "$srcdir/hmat-oss-${pkgver}"
   for _arch in ${_architectures}; do
