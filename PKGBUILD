@@ -2,7 +2,7 @@
 # vim: ft=sh:
 pkgname=runit-conversion
 pkgver=9
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert your system to use runit instead of systemd"
 arch=('any')
 url="https://github.com/42LoCo42/runit-conversion"
@@ -17,4 +17,5 @@ sha256sums=('d112763dad55c1d1284593d1727c383d41f4e122264a325421702437f35cccdd')
 package() {
 	cd "$pkgname-$pkgver"
 	cp -aP ./* "$pkgdir/"
+	mkdir -p "$pkgdir/run/systemd/users"
 }
