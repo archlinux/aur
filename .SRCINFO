@@ -1,6 +1,6 @@
 pkgbase = gog-factorio
 	pkgdesc = A game in which you build and maintain factories
-	pkgver = 1.1.57
+	pkgver = 1.1.59
 	pkgrel = 1
 	url = https://www.gog.com/game/factorio
 	arch = x86_64
@@ -12,15 +12,15 @@ pkgbase = gog-factorio
 	depends = alsa-lib
 	depends = libpulse
 	depends = libglvnd
-	provides = factorio=1.1.57
+	provides = factorio=1.1.59
 	conflicts = factorio
 	conflicts = factorio-demo
 	conflicts = factorio-experimental
 	conflicts = factorio-headless
 	conflicts = factorio-headless-experimental
-	source = factorio_1_1_57_40478.sh::gogdownloader://1238653230/en3installer0
+	source = factorio_1_1_59_40478.sh::gogdownloader://1238653230/en3installer0
 	source = Factorio.desktop
-	sha512sums = 674891a4caa49c3efab08a8ac98b8c72ab40702db7468a63d101603bfb0e1f454a431029949419996a933f3695afc685026dc8c3dd058a26614425bc01966066
+	sha512sums = e06de363ce03dc799936b5b7e3c4bd55bd0df56c07ea8664deb3cb944af7f700802d8d81708323146c49725218100a0df2ed34fd9a88c860d5e423de66e3e9c2
 	sha512sums = 32df74d21fdd19b70b3b81beb5b5735e82602c002e55eb40b77a365472f68294bbefbdf44c2fb6e6bfa1ff454f87751094506009d754a20697789f610cadb71a
 
 pkgname = gog-factorio
