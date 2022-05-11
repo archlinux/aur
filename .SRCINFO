@@ -1,6 +1,6 @@
 pkgbase = latte-dock-git
 	pkgdesc = Latte is a dock based on plasma frameworks that provides an elegant and intuitive experience for your tasks and plasmoids
-	pkgver = r5865.f1472db6
+	pkgver = r5892.3ea1e904
 	pkgrel = 1
 	url = https://invent.kde.org/plasma/latte-dock
 	arch = x86_64
@@ -13,6 +13,7 @@ pkgbase = latte-dock-git
 	depends = kirigami2
 	depends = knewstuff
 	depends = hicolor-icon-theme
+	depends = plasma-wayland-protocols
 	optdepends = libunity: quicklists, counters, and progress bars for apps using libunity
 	provides = latte-dock
 	conflicts = latte-dock
