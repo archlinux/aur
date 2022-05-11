@@ -1,0 +1,23 @@
+pkgbase = makeimg-git
+	pkgdesc = Declarative way to build Arch Linux images
+	pkgver = v0.1.0.r3.gb6eb1c7
+	pkgrel = 1
+	url = https://anemos.io/projects/makeimg/
+	arch = any
+	license = GPL2
+	makedepends = asciidoc
+	makedepends = git
+	makedepends = make
+	depends = arch-install-scripts
+	depends = coreutils
+	depends = devtools
+	depends = pacman
+	depends = util-linux
+	optdepends = parted: for building disk images
+	optdepends = patch: for applying patches
+	provides = makeimg
+	conflicts = makeimg
+	source = makeimg-git::git+https://gitlab.com/anemos-io/makeimg.git
+	sha512sums = SKIP
+
+pkgname = makeimg-git
