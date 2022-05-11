@@ -1,5 +1,5 @@
 pkgbase = fbmessenger-bin
-	pkgdesc = Unofficial Facebook messenger desktop application.
+	pkgdesc = (BETA) Unofficial Facebook messenger desktop application.
 	pkgver = 1.0.0
 	pkgrel = 2
 	url = https://gitlab.com/facebookmessenger/application
