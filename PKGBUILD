@@ -21,7 +21,7 @@ source=(
 sha256sums=('SKIP'
             'SKIP'
             '760596d2e182e0edf05f4a10bd0fa266086d700fdd96438d2663f28e538912e3'
-            'c0350e404913647813bffe4d200ca22651046c743f07d438925de0a58b585fe3')
+            'e8480ba1b19e8375c80e8ae776645ca3bb86e45731c4938e059d37a09227a60e')
 pkgver(){
     cd "${srcdir}/SteamTools"
     git describe --tags --long | sed 's/v//;s/-/.r/;s/-/./g'
