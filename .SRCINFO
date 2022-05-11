@@ -1,0 +1,11 @@
+pkgbase = muteme-client
+	pkgdesc = Companion app for MuteMe button
+	pkgver = 0.0.5
+	pkgrel = 1
+	url = https://muteme.com/pages/downloads
+	arch = x86_64
+	license = custom
+	source = https://downloads.muteme.com/download/flavor/default/0.0.5/linux_64/muteme-client_00.0.5_amd64.deb
+	sha512sums = 55caece423aac156ac7d19aafb01abff85df8f44e7254798ffc0910ccec70fc13b7e5ed113a801c59e728db28a0ab9e18599dbbc81fb71e77994d86aa546b2a7
+
+pkgname = muteme-client
