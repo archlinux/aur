@@ -1,0 +1,14 @@
+pkgbase = wf-msg-git
+	pkgdesc = Wayfire goodies: dbus interface, wf-msg (inspired by swaymsg) and wf-utils
+	pkgver = r18.ff26b8f
+	pkgrel = 1
+	url = https://github.com/tombh/wf-msg
+	arch = any
+	license = MIT
+	depends = wayfire-plugins-extra-git
+	provides = wf-msg
+	conflicts = wf-msg
+	source = wf-msg-git::git+https://github.com/tombh/wf-msg
+	sha256sums = SKIP
+
+pkgname = wf-msg-git
