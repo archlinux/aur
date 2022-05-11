@@ -1,12 +1,12 @@
 ## Maintainer: realasking
 pkgname=essential-pathway-git
-pkgver=1.0.2
-pkgrel=1
+pkgver=1.0.3
+pkgrel=2
 pkgdesc='A tool that helps people quickly access to their most commonly used folders in command line in some operation systems like linux,written in python3.'
 arch=(x86_64 i686)
 url='https://github.com/realasking/essential-pathway'
 license=('GPL')
-depends=('python' 'env-modules-tcl' 'python-prettytable' 'python-setuptools')
+depends=('python' 'env-modules' 'python-prettytable' 'python-setuptools')
 provides=('essential-pathway')
 source=()
 md5sums=()

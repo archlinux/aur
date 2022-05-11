@@ -1,16 +1,15 @@
 pkgbase = essential-pathway-git
 	pkgdesc = A tool that helps people quickly access to their most commonly used folders in command line in some operation systems like linux,written in python3.
-	pkgver = 1.0.2
-	pkgrel = 1
+	pkgver = 1.0.3
+	pkgrel = 2
 	url = https://github.com/realasking/essential-pathway
 	arch = x86_64
 	arch = i686
 	license = GPL
 	depends = python
-	depends = env-modules-tcl
+	depends = env-modules
 	depends = python-prettytable
 	depends = python-setuptools
 	provides = essential-pathway
 
 pkgname = essential-pathway-git
-
