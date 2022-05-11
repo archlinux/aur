@@ -2,7 +2,7 @@
 # Contributor: sh0rez <me@shorez.de>
 
 pkgname=gmailctl
-pkgver=0.10.0
+pkgver=0.10.2
 pkgrel=1
 pkgdesc="Declarative configuration for Gmail filters"
 arch=('i686' 'x86_64' 'arm' 'aarch64')
