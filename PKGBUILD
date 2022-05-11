@@ -2,7 +2,7 @@
 
 pkgname=python-rtoml
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A better TOML library for python implemented in rust."
 arch=('x86_64')
 url="https://pypi.org/project/rtoml"
@@ -10,8 +10,8 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools' 'python-setuptools-rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/samuelcolvin/rtoml/archive/v$pkgver.tar.gz")
-sha256sums=('6a5c6f0c1dd956276cccd331aabfd0593588d8dbb29714ae5d89dd5583f846c4')
-b2sums=('a0f3c9a6126357e37bf49325da24a1918d7b3fb0a7e3a05b938448deb9b922359880832dca3dd51b50fa3c1cbaf3c03a13daff184b7ebc9bc4550694602fff27')
+sha256sums=('6f7c47762b8a0e908633d8f2cdbbaddc4e79d7abc46ac555584c2f80657cb32c')
+b2sums=('6798b81d7a2ff3000694ee2cdd200bd2d6483e1d0f487977b6b2ce61bdb493352893d1225c431c5bdcf8c05ead86645ff2698fc330c76d4a33d55f2dfbf96aaa')
 
 export RUSTUP_TOOLCHAIN=${RUSTUP_TOOLCHAIN:-stable}
 
