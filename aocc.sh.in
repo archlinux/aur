@@ -1,0 +1,24 @@
+#!/usr/bin/bash
+#
+#   aocc.sh - Compile with the fast aocc compiler from amd
+#
+
+[[ -n "$LIBMAKEPKG_BUILDENV_AOCC_SH" ]] && return
+LIBMAKEPKG_BUILDENV_AOCC_SH=1
+
+LIBRARY=${LIBRARY:-'/usr/share/makepkg'}
+
+source "$LIBRARY/util/option.sh"
+
+build_options+=('aocc')
+buildenv_functions+=('buildenv_aocc')
+
+buildenv_aocc() {
+  if
+  check_buildoption "aocc" "y"; then
+	source /opt/aocc/setenv_AOCC.sh
+	export CC=clang
+	export CXX=clang++
+	export LD=lld
+  fi
+}

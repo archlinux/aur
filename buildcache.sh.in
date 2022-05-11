@@ -1,0 +1,20 @@
+#!/usr/bin/bash
+
+[[ -n "$LIBMAKEPKG_EXECUTABLE_BUILDCACHE_SH" ]] && return
+LIBMAKEPKG_EXECUTABLE_BUILDCACHE_SH=1
+
+LIBRARY=${LIBRARY:-'/usr/share/makepkg'}
+
+source "$LIBRARY/util/message.sh"
+source "$LIBRARY/util/option.sh"
+
+executable_functions+=('executable_buildcache')
+
+executable_buildcache() {
+	if check_buildoption "buildcache" "y"; then
+		if ! type -p buildcache >/dev/null; then
+			error "$(gettext "Cannot find the %s binary required for compiler cache usage.")" "buildcache"
+			return 1
+		fi
+	fi
+}

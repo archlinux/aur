@@ -6,7 +6,7 @@
 [[ -n "$LIBMAKEPKG_BUILDENV_GRAPHITE_SH" ]] && return
 LIBMAKEPKG_BUILDENV_GRAPHITE_SH=1
 
-LIBRARY=${LIBRARY:-'@libmakepkgdir@'}
+LIBRARY=${LIBRARY:-'/usr/share/makepkg'}
 
 source "$LIBRARY/util/option.sh"
 

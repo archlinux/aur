@@ -1,0 +1,34 @@
+#!/usr/bin/bash
+#
+#   bolt.sh - Compile with the fast bolt compiler
+#
+
+[[ -n "$LIBMAKEPKG_BUILDENV_BOLT_SH" ]] && return
+LIBMAKEPKG_BUILDENV_BOLT_SH=1
+
+LIBRARY=${LIBRARY:-'/usr/share/makepkg'}
+
+source "$LIBRARY/util/option.sh"
+
+build_options+=('bolt')
+buildenv_functions+=('buildenv_bolt')
+
+buildenv_bolt() {
+  if
+  check_buildoption "bolt" "y"; then
+  export CC=/home/ptr1337/llvm/bin/clang
+  export CXX=/home/ptr1337/llvm/bin/clang++
+  export CC_LD=/home/ptr1337/llvm/bin/lld
+  export CXX_LD=/home/ptr1337/llvm/bin/lld
+  export AR=/home/ptr1337/llvm/bin/llvm-ar
+  export NM=/home/ptr1337/llvm/bin/llvm-nm
+  export STRIP=/home/ptr1337/llvm/bin/llvm-strip
+  export OBJCOPY=/home/ptr1337/llvm/bin/llvm-objcopy
+  export OBJDUMP=/home/ptr1337/llvm/bin/llvm-objdump
+  export READELF=/home/ptr1337/llvm/bin/llvm-readelf
+  export RANLIB=/home/ptr1337/llvm/bin/llvm-ranlib
+  export HOSTCC=/home/ptr1337/llvm/bin/clang
+  export HOSTCXX=/home/ptr1337/llvm/bin/clang++
+  export HOSTAR=/home/ptr1337/llvm/bin/llvm-ar
+  fi
+}

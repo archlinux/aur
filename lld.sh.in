@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+#
+#   lld.sh - Compile with the lld linker
+#
+
+[[ -n "$LIBMAKEPKG_BUILDENV_LLD_SH" ]] && return
+LIBMAKEPKG_BUILDENV_LLD_SH=1
+
+LIBRARY=${LIBRARY:-'/usr/share/makepkg'}
+
+source "$LIBRARY/util/option.sh"
+
+build_options+=('lld')
+buildenv_functions+=('buildenv_mold')
+
+buildenv_mold() {
+  if
+  check_buildoption "lld" "y"; then
+	export LDFLAGS="${LDFLAGS} -fuse-ld=lld"
+  fi
+}

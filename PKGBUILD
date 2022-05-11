@@ -3,8 +3,8 @@
 # Contributor: bartus ( aur\at\bartus.33mail.com )
 
 pkgname=makepkg-optimize-mold
-pkgver=23
-pkgrel=2
+pkgver=25
+pkgrel=1
 pkgdesc='Supplemental build and packaging optimizations for makepkg'
 arch=('any')
 license=('GPL')
@@ -15,9 +15,15 @@ optdepends=("upx: Compress executables"
             "svgo: Optimize SVG files"
             "openmp: Parallelize loops"
             "polly: Polyhedral model optimization for clang"
-            "mold: a modern fast linker")
-backup=(etc/makepkg-optimize.conf)
-_buildenv=({pgo,graphite,rice,mold}.sh.in)
+            "mold: a modern fast linker"
+            "lld: the clang linker"
+            "bolt: use yourself bolted toolchain for compiling"
+            "aocc: use amd's llvm compiler for compiling"
+            "aocl: use amd's compiler libary for compiling"
+            "buildcache: a alternative to ccache")
+backup=(etc/makepkg-optimize.conf
+        usr/share/makepkg/buildenv/compiler.sh)
+_buildenv=({pgo,graphite,rice,mold,bolt,buildcache,lld,aocc,compiler}.sh.in)
 _executable=({upx,optipng,svgo}-exec.sh.in)
 _tidy=({upx,optipng,svgo}.sh.in)
 _conf=({{c,cxx,make,ld,debug-make,cmake-}flags,{buildenv,destdirs,pkgopts{,-param}}_ext,compress-param_max}.conf)
@@ -26,26 +32,31 @@ source=(${_buildenv[@]}
         ${_tidy[@]}
         ${_conf[@]})
 sha1sums=('4c5f0be71638a6ec2f18c01675d99f19eb6dd45d'
-          '81547a110d9e28897e41f2f8accabb7721dbcc19'
+          '996ed46bddb2898bc8d4a26c019df62721acfea3'
           '14cb27e5e45dacf8e59cfb498235036716393014'
           '53d6d080e26bcb450a3e082cf039f891efa6a88c'
+          '418991215fb59646d3d345a182b5bfc10e15a49a'
+          '22aeaf0766c4de926633f93bfa9aa2ab64bc50f3'
+          '7060ba26bf4be4cc25f0e138d3ca27530a8798a8'
+          '64ffc9141af0e2c44d327e019c8d4d4a09585259'
+          '311b9481c7c27dd4805241df047291505cfc54d5'
           'a893c32f2a3fff8b279025ec60f0c3d88143dc1e'
           '9270b5e33d4508a959688a10c20dec3732763937'
           '34a33b47a8b667f9dc810737c0f598660b962d4c'
           '4def44ef53ba3b579bed40af897d6f0c038ec78d'
           '0022423564ed30dfe91bb3faa7f0c03ddcf4f25f'
           'fbd6ee512b6486320d41a007b9670dcf5a3430b6'
-          '4d11331aeff1c1ec3de3759710acc060769ef274'
+          '55170acd48805465d6b0c45b3a29eee2a2523de8'
           '4cd8012f8946761d7288a198af7edb3ebaf0ece0'
           'dea4d727d81ac040846555e59ac7c34eb0978233'
-          'eef21d80145bf64133206beba26fd7fab5a8f5bc'
+          '841853602f93c20dee173341424b1de5bef19243'
           '2e2cd8c680a86518652543fda9092bf2ab594660'
           '981eab856abb43c5e093620cdf4d8bfa2d690805'
-          'cb14aaa95406b2a796635bcbf6936e4424e4b6d6'
+          '0fb7ea1cb5f259a61a8633638817693e8ed6ecb6'
           'efb3ed7d7d5516259709149d7bcd6ec208c07593'
           '1fc8035e64b739e20c70fbb4eaa5cb7aa1c63c90'
           '5d0cde13b50641371e4ec4d813d6b2dfae493889'
-          '2f26e982500c7e799e99d150beec7b04fed99851')
+          '8f54d9798899123aa28085ce74ae9dd34b84c075')
 
 prepare() {
   # Use the current makepkg config as a base
