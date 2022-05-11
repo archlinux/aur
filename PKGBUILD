@@ -1,5 +1,5 @@
 pkgname=website-stalker-bin
-pkgver=0.18.1
+pkgver=0.19.0
 pkgrel=1
 pkgdesc="Track changes on websites via git"
 arch=('x86_64' 'aarch64' 'armv6h' 'armv7h')
@@ -14,10 +14,10 @@ source_aarch64=("$url/releases/download/v${pkgver}/${pkgname/-bin/}-v${pkgver}-a
 source_armv6h=("$url/releases/download/v${pkgver}/${pkgname/-bin/}-v${pkgver}-arm-unknown-linux-gnueabihf.tar.gz")
 source_armv7h=("$url/releases/download/v${pkgver}/${pkgname/-bin/}-v${pkgver}-armv7-unknown-linux-gnueabihf.tar.gz")
 
-sha256sums_x86_64=('5c9a2363a8e4c7e1637115aaf43b99d5c244171534c5b6d261d806260930d10a')
-sha256sums_aarch64=('1d35250441dff827cf8f5b408676a8fd556fe035a5ca9f87250e54c0fb8eb340')
-sha256sums_armv6h=('fb95f3b75b5d3dc455d84396c95c4ff58df4b0b5c821a8db9ed05c7ff825f4cf')
-sha256sums_armv7h=('a3a19068ab98a4303d9db6f86bb99d89fbe3203a3a3809b17e02dde3d0cbc601')
+sha256sums_x86_64=('39e09f3b200a3409337bda667828933625e80a599d800e2035f35b526ee7dcd7')
+sha256sums_aarch64=('313206b6afea683b8e95626e2a44c752634f654d241d1a9e2ca0984ab8415c7c')
+sha256sums_armv6h=('bc3af84f0098e41537b3fd6e158414da7dcebf28a8343f74a2d141d1d2aebdb7')
+sha256sums_armv7h=('5f503e8e359ef896cb0747c9d79e47415a4a8dd23c6a0e62a0dfb8667a5fb199')
 
 package() {
   install -Dm755 "${pkgname/-bin/}" "${pkgdir}/usr/bin/${pkgname/-bin/}"
@@ -28,18 +28,13 @@ package() {
   install -Dm644 "completions/${pkgname/-bin/}.fish" "${pkgdir}/usr/share/fish/vendor_completions.d/${pkgname/-bin/}.fish"
   install -Dm644 "completions/_${pkgname/-bin/}" "${pkgdir}/usr/share/zsh/site-functions/_${pkgname/-bin/}"
 
-  # migrate all /usr/local/lib thingies to /usr/lib
-  sed -i "s#/local/#/#g" systemd/**/*
-  # Set the executable path
-  sed -i "s#^ExecStart=.*${pkgname/-bin/}#ExecStart=/usr/bin/${pkgname/-bin/}#g" systemd/**/*.service
+  install -Dm644 "systemd/system/service" "${pkgdir}/usr/lib/systemd/system/${pkgname/-bin/}.service"
+  install -Dm644 "systemd/system/timer" "${pkgdir}/usr/lib/systemd/system/${pkgname/-bin/}.timer"
+  install -Dm644 "systemd/system/sysuser" "${pkgdir}/usr/lib/sysusers.d/${pkgname/-bin/}.conf"
+  install -Dm644 "systemd/system/tmpfile" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname/-bin/}.conf"
 
-  install -Dm644 "systemd/system/systemd.service" "${pkgdir}/usr/lib/systemd/system/${pkgname/-bin/}.service"
-  install -Dm644 "systemd/system/systemd.timer" "${pkgdir}/usr/lib/systemd/system/${pkgname/-bin/}.timer"
-  install -Dm644 "systemd/system/sysusers.conf" "${pkgdir}/usr/lib/sysusers.d/${pkgname/-bin/}.conf"
-  install -Dm644 "systemd/system/tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${pkgname/-bin/}.conf"
-
-  install -Dm644 "systemd/user/systemd.service" "${pkgdir}/usr/lib/systemd/user/${pkgname/-bin/}.service"
-  install -Dm644 "systemd/user/systemd.timer" "${pkgdir}/usr/lib/systemd/user/${pkgname/-bin/}.timer"
+  install -Dm644 "systemd/user/service" "${pkgdir}/usr/lib/systemd/user/${pkgname/-bin/}.service"
+  install -Dm644 "systemd/user/timer" "${pkgdir}/usr/lib/systemd/user/${pkgname/-bin/}.timer"
 }
 
 check() {
