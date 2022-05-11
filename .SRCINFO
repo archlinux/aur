@@ -1,0 +1,12 @@
+pkgbase = spicetify-theme-dracula-git
+	pkgdesc = Dracula theme for Spotify through spicetify-cli
+	pkgver = r19.g97bf149
+	pkgrel = 1
+	url = https://github.com/Darkempire78/Dracula-Spicetify
+	arch = any
+	license = custom
+	depends = spicetify-cli
+	source = git+https://github.com/Darkempire78/Dracula-Spicetify.git
+	sha256sums = SKIP
+
+pkgname = spicetify-theme-dracula-git
