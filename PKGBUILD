@@ -8,7 +8,7 @@
 
 pkgname=gazebo
 pkgver=11.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
@@ -25,7 +25,7 @@ optdepends=('bullet: Bullet support'
             'libusb: USB peripherals support'
             'simbody: Simbody support'
             'urdfdom: Load URDF files')
-makedepends=('cmake' 'git' 'ninja' 'doxygen' 'ruby-ronn')
+makedepends=('cmake' 'git' 'doxygen' 'ruby-ronn')
 install="${pkgname}.install"
 source=("git+https://github.com/osrf/gazebo.git#tag=gazebo11_$pkgver")
 sha256sums=('SKIP')
@@ -47,14 +47,13 @@ build() {
   mkdir -p build && cd build
 
   export PKG_CONFIG_PATH=/usr/lib/ffmpeg4.4/pkgconfig
-  cmake .. -GNinja \
-           -DCMAKE_BUILD_TYPE="Release" \
+  cmake .. -DCMAKE_BUILD_TYPE="Release" \
            -DCMAKE_INSTALL_PREFIX="/usr" \
            -DCMAKE_INSTALL_LIBDIR="lib"
-  ninja
+  make
 }
 
 package() {
   cd "${srcdir}/${pkgname}/build"
-  DESTDIR="${pkgdir}" ninja install
+  DESTDIR="${pkgdir}" make install
 }
