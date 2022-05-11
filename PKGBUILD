@@ -10,6 +10,12 @@ makedepends=('cmake')
 source=("https://github.com/jeromerobert/hmat-oss/archive/${pkgver}.tar.gz")
 sha256sums=('8ff641ec6b1ae290ee8d67ba5880fb636659c5f150e84daa826d93140500b3ed')
 
+prepare() {
+  cd $pkgname-$pkgver
+  curl -L https://github.com/jeromerobert/hmat-oss/pull/80.patch | patch -p1
+  curl -L https://github.com/jeromerobert/hmat-oss/pull/81.patch | patch -p1
+}
+
 build() {
   cd $pkgname-$pkgver
   cmake -DHMAT_GIT_VERSION=OFF -DCMAKE_INSTALL_PREFIX=/usr .
