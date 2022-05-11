@@ -1,6 +1,6 @@
 pkgbase = teamtalk-client
 	pkgdesc = a software conferencing system client which enables a group of people to collaborate and share information using voice and video
-	pkgver = 5.8.3
+	pkgver = 5.9
 	pkgrel = 1
 	url = http://www.bearware.dk
 	install = teamtalk-client.install
@@ -11,7 +11,7 @@ pkgbase = teamtalk-client
 	depends = qt5-multimedia
 	depends = qt5-speech
 	depends = qt5-x11extras
-	source = https://bearware.dk/teamtalk/v5.8.3/teamtalk-v5.8.3-ubuntu18-x86_64.tgz
+	source = https://bearware.dk/teamtalk/v5.9/teamtalk-v5.9-ubuntu18-x86_64.tgz
 	source = teamtalk-client.install
 	source = TeamTalk.desktop
 	source = teamtalk
