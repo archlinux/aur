@@ -2,7 +2,7 @@
 
 pkgname=('teleport' 'teleport-client')
 _pkgname=teleport
-pkgver=9.0.2
+pkgver=9.2.1
 pkgrel=1
 pkgdesc="Modern SSH server for teams managing distributed infrastructure"
 arch=('i386' 'x86_64' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ depends=('glibc')
 makedepends=('go>=1.17.0' 'rust')
 provides=('tctl' 'tsh')
 
-_webassets_ref='db2dbcfaba9e35b00bdfda1415a42f086caf5b5e'
+_webassets_ref='4c555ddd7f4e8c6d74dd1ac467db5d17ad5c4ecc'
 
 _go_srcpath="go/src/github.com/gravitational"
 
@@ -22,8 +22,8 @@ source=("${_pkgname}-${pkgver}.tar.gz::https://github.com/gravitational/teleport
         "teleport@.service"
         "teleport.install")
 
-sha256sums=('3c05a19e3523a31388cf038939ffbda438ed00242f9e313dff0f96ce7df17e79'
-            '7e875ad361d3d75fd89d2738c5d97ec84c7e6c8d9a4221de03aded80fc3c8411'
+sha256sums=('1fde014338e137cfced6ebb2661b55966264abc1a7624379859b31e3107a1f2f'
+            '00ba592b9a5f790e115d41a2a42127b178b75a362292b68b40577881a0984b19'
             '10ac25cea1b5c193d7f968ca28a1da0e54b847f29c2a0186b46fd853194be38a'
             '4bc17fdde981f91c5d9972ae0555ee5e8b63a6b67e007c28f83ada80823980fd'
             'ce2dd61cae3c0c3684e7e629f98b77551e66ddedca2194250a34f0efbc674f3a')
