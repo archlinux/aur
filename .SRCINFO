@@ -1,7 +1,7 @@
 pkgbase = prosody-filer
 	pkgdesc = Golang mod_http_upload_external server for Prosody
 	pkgver = 1.0.2
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/ThomasLeister/prosody-filer
 	install = prosody-filer.install
 	arch = i686

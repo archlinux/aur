@@ -1,8 +1,9 @@
-# Maintainer: Silvio Ankermann < silvio at booq dot org >
+# Contributor: Lex Black <autumn-wind@web.de>
+# Contributor: Silvio Ankermann < silvio at booq dot org >
 
 pkgname=prosody-filer
 pkgver=1.0.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Golang mod_http_upload_external server for Prosody'
 url='https://github.com/ThomasLeister/prosody-filer'
 license=('MIT')
@@ -18,7 +19,8 @@ sha256sums=('SKIP'
 prepare() {
     cd "${pkgname}"
     if [ ! -e go.mod ]; then
-    	go mod init prosody-filer
+        go mod init "${url#https://}"
+        go mod tidy
     fi
 }
 
