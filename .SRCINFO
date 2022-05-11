@@ -1,0 +1,21 @@
+pkgbase = brother-dcpt420w
+	pkgdesc = Driver for the Brother DCP-T420W wifi multifuncional printer, modified from Chiwan Park's DCP-T520W pack.
+	pkgver = 3.5.0
+	pkgrel = 1
+	url = http://solutions.brother.com/linux/en_us/index.html
+	install = brother-dcpt420w.install
+	arch = i686
+	arch = x86_64
+	license = custom:brother
+	depends = a2ps
+	depends = cups
+	depends = lib32-glibc
+	optdepends = sane: scanning support
+	optdepends = brscan4: making dcpt420w available to sane
+	optdepends = brscan-skey: scankey support if connected via usb
+	source = https://download.brother.com/welcome/dlf105168/dcpt420wpdrv-3.5.0-1.i386.deb
+	source = fix_lp.patch
+	sha256sums = 3ede819a65aec379ec7676f7ac0cacabd70879fbaaf2c7978eeae406c0e1c1f2
+	sha256sums = ddb53ba14356b1fb98f19e3b32f124e878f06819a2cb6cb40a719d2250fababf
+
+pkgname = brother-dcpt420w
