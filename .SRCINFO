@@ -1,7 +1,7 @@
 pkgbase = katago-cuda
 	pkgdesc = Baduk engine with no human-provided knowledge
 	pkgver = 1.11.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lightvector/KataGo
 	arch = x86_64
 	license = MIT

@@ -3,7 +3,7 @@
 
 pkgname=katago-cuda
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Baduk engine with no human-provided knowledge'
 arch=(x86_64)
 provides=(katago)
@@ -30,6 +30,7 @@ build() {
     -B build \
     -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX=/usr \
+    -D NO_GIT_REVISION=1 \
     -D USE_BACKEND=CUDA \
     -G Ninja \
     -S $pkgname/cpp
