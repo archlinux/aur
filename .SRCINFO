@@ -1,7 +1,7 @@
 pkgbase = linux-clear-lts2017
 	pkgdesc = Clear Linux lts2017
 	pkgver = 4.14.277
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux-lts2017
 	arch = x86_64
 	license = GPL2
