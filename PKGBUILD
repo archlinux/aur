@@ -1,5 +1,5 @@
 pkgname=autorest
-pkgver=3.2.3
+pkgver=3.6.1
 pkgrel=1
 pkgdesc='The AutoRest tool generates client libraries for accessing RESTful web services.'
 arch=(any)
@@ -8,7 +8,7 @@ license=('MIT')
 depends=('nodejs' 'npm')
 source=(http://registry.npmjs.org/$pkgname/-/$pkgname-$pkgver.tgz)
 noextract=($npmname-$pkgver.tgz)
-sha512sums=('8909174739b9d81f4e5a057c4cbda2a0782a16fc0e875f94c4fea7b6f22d83e64108f15701e156345e53a39d3002e9ed4cf98fa12a3ed22dcdb970bb4a08e4af')
+sha512sums=('b533a77d0abe2c0caa9f116b38e9f2084684ad79e345381db9437b6bc2d4bf6bb975ea83948d33a099651de204603652da8d8aaf5b3ca438f63716853ce5a576')
 
 package() {
   cd $srcdir
