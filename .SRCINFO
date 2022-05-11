@@ -1,0 +1,21 @@
+pkgbase = bilibili-bin
+	pkgdesc = Bilibili desktop client
+	pkgver = 1.1.0
+	pkgrel = 1
+	url = https://bilibili.com
+	install = bilibili-bin.install
+	arch = x86_64
+	license = custom
+	depends = ffmpeg
+	depends = electron
+	depends = libappindicator-gtk3
+	source = https://dl.hdslb.com/mobile/fixed/bili_win/bili_win-install.exe
+	source = bilibili
+	source = bilibili.png
+	source = bilibili.desktop
+	sha256sums = df008294d66a4a30672cdb1c0839d316e94141284dbb14fb8613ea1029f66973
+	sha256sums = 94d6d7816f2f31e1e0bc051be1a5398740de74c2771b51e6d97a17de07fc2ebb
+	sha256sums = 33cba5d0271d5783f353e60dacc01d2edc6629ca760d35427189e316a48f911f
+	sha256sums = 76dce057c03c8f75b011c2072d32948a8db3de0961aec3fd445f40bf1fe79418
+
+pkgname = bilibili-bin
