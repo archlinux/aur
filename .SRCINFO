@@ -1,27 +1,29 @@
 pkgbase = python-telegram-bot-git
 	pkgdesc = A Python wrapper around the Telegram Bot API
-	pkgver = 13.6.r3.52ce0392
+	pkgver = 20.0a0.r5.23ed0880
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/python-telegram-bot/python-telegram-bot
 	changelog = CHANGES.rst
 	arch = any
 	license = LGPL3
+	checkdepends = python-cryptography
+	checkdepends = python-pytest>=7.1.2
+	checkdepends = python-pytest-asyncio
+	checkdepends = python-flaky
 	makedepends = git
 	makedepends = python-setuptools
-	depends = python-certifi
-	depends = python-tornado>=5.1
-	depends = python-apscheduler>=3.6.3
+	depends = python-httpx>=0.22.0
+	depends = python-tornado>=6.1
+	depends = python-apscheduler
 	depends = python-pytz>=2018.6
-	depends = python-cachetools>=4.2.2
-	optdepends = python-pysocks: SOCKS or HTTP proxy support
+	depends = python-cachetools>=5.0.0
+	optdepends = python-socksio: SOCKS proxy support
 	optdepends = python-ujson: Ultra fast JSON parsing
 	optdepends = python-cryptography: Telegram Passport support
 	provides = python-telegram-bot
 	conflicts = python-telegram-bot
 	source = python-telegram-bot::git+https://github.com/python-telegram-bot/python-telegram-bot.git
-	source = urllib3::git+https://github.com/python-telegram-bot/urllib3.git#branch=ptb
-	sha256sums = SKIP
 	sha256sums = SKIP
 
 pkgname = python-telegram-bot-git

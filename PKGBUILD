@@ -3,7 +3,7 @@
 
 pkgname=('python-telegram-bot-git')
 epoch=1
-pkgver=13.6.r3.52ce0392
+pkgver=20.0a0.r5.23ed0880
 pkgrel=1
 pkgdesc="A Python wrapper around the Telegram Bot API"
 arch=('any')
@@ -11,18 +11,24 @@ _provide=${pkgname%-git}
 url=https://github.com/$_provide/$_provide
 license=('LGPL3')
 depends=(
-    'python-certifi'
-    'python-tornado>=5.1'
-    'python-apscheduler>=3.6.3'  # requirements.txt forces this to be ==3.6.3
+    'python-httpx>=0.22.0'
+    'python-tornado>=6.1'
+    'python-apscheduler'  # FIXME: requirements.txt: apscheduler~=3.9.1
     'python-pytz>=2018.6'
-    'python-cachetools>=4.2.2'  # requirements.txt forces this to be ==4.2.2
+    'python-cachetools>=5.0.0'
 )
 makedepends=(
     'git'
     'python-setuptools'
 )
+checkdepends=(
+    'python-cryptography'
+    'python-pytest>=7.1.2'
+    'python-pytest-asyncio'  # FIXME: requirements-dev.txt: pytest-asyncio==0.18.3
+    'python-flaky'
+)
 optdepends=(
-    'python-pysocks: SOCKS or HTTP proxy support'
+    'python-socksio: SOCKS proxy support'
     'python-ujson: Ultra fast JSON parsing'
     'python-cryptography: Telegram Passport support'
 )
@@ -31,34 +37,38 @@ conflicts=($_provide)
 changelog='CHANGES.rst'
 source=(
     $_provide::git+${url}.git
-    "urllib3::git+https://github.com/python-telegram-bot/urllib3.git#branch=ptb"
 )
-sha256sums=('SKIP' 'SKIP')
+sha256sums=('SKIP')
 
 prepare() {
-    msg2 "Updating dependencies..."
     cd $srcdir/$_provide
-    git submodule init
-    git config submodule.telegram/vendor/urllib3.url $srcdir/urllib3
-    git submodule update
     msg2 "Updating changelog..."
     cp ./CHANGES.rst ../../
-    msg2 "Unpinning python-apscheduler..."
-    sed -i 's/APScheduler==.*$/APScheduler/' requirements.txt
-    msg2 "Unpinning python-cachetools..."  # just in case
-    sed -i 's/cachetools==.*$/cachetools/' requirements.txt
 }
 
 pkgver() {
     cd $srcdir/$_provide
-    printf "%s.r%s.%s" "$(python -c 'import telegram; print(telegram.__version__)')" \
-        "$(git rev-list --count $(git log --oneline | grep Bump | head -n1 | awk '{print $1}')..HEAD)" "$(git rev-parse --short HEAD)"
-    # printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g')"
+    #printf "%s.r%s.%s" "$(python -c 'import telegram; print(telegram.__version__)')" \
+    #    "$(git rev-list --count $(git log --oneline | grep Bump | head -n1 | awk '{print $1}')..HEAD)" "$(git rev-parse --short HEAD)"
+    git describe --long --tags | sed 's/^v//;s/\([^-]*-\)g/r\1/;s/-/./g'
 }
 
 build() {
     cd $srcdir/$_provide
     python setup.py build
+}
+
+check() {
+    cd $srcdir/$_provide
+    # https://github.com/python-telegram-bot/python-telegram-bot/blob/23ed0880d211999e0fb28e8703372129646896b7/.github/workflows/test.yml#L35-L60
+    export TEST_NO_PYTZ='true'
+    export TEST_NO_PASSPORT='true'
+    export TEST_BUILD='true'
+    pytest -k test_no_passport.py
+    export TEST_NO_PASSPORT='false'
+    pytest -k test_helpers.py
+    export TEST_NO_PYTZ='false'
+    pytest
 }
 
 package() {
