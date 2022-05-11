@@ -72,6 +72,9 @@ prepare() {
 }
 
 build () {
+    export CC="clang"
+    export CXX="clang++"
+
     meson setup mesa _build \
         -D prefix=/usr \
         -D sysconfdir=/etc \
