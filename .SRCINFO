@@ -1,6 +1,6 @@
 pkgbase = sdkmanager
 	pkgdesc = a drop-in replacement for sdkmanager from the Android SDK written in Python
-	pkgver = 0.5.3
+	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://gitlab.com/fdroid/sdkmanager
 	arch = any
@@ -10,7 +10,7 @@ pkgbase = sdkmanager
 	depends = python-argcomplete
 	depends = python-requests
 	optdepends = gpg
-	source = https://gitlab.com/fdroid/sdkmanager/-/archive/0.5.3/sdkmanager-0.5.3.tar.gz
-	sha256sums = a75007ed2ea03c36a9f2e40951fa52787b9d6ab716398f3e33efb998644e4875
+	source = https://gitlab.com/fdroid/sdkmanager/-/archive/0.5.4/sdkmanager-0.5.4.tar.gz
+	sha256sums = b9cb37c7d67d977e1588d78452520b0a75bb93ba31855336014ca60c14fb1fa3
 
 pkgname = sdkmanager
