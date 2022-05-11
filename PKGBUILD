@@ -76,10 +76,10 @@
 _major=5.4
 _minor=192
 _srcname=linux-${_major}
-_clr=${_major}.191-183
+_clr=${_major}.192-184
 pkgbase=linux-clear-lts2019
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux lts2019'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2019"
