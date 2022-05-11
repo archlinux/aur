@@ -27,4 +27,4 @@ package() {
   install -Dm644 -t "$pkgdir/usr/share/licenses/$pkgname/" "$srcdir/felix-$pkgver/LICENSE"
 }
 
-sha256sums=('c6f95a35125ddddb07be6d1d62badcf9c3aa4af4976e2e2decb26df9b864c1ca')
+sha256sums=('7b92c69678a9ee759f769fc75ab6f8960e3f612250f94ea104f4bb6a06315e62')
