@@ -1,6 +1,6 @@
 # Maintainer: ml <>
 pkgname=kind
-pkgver=0.12.0
+pkgver=0.13.0
 pkgrel=1
 pkgdesc='Kubernetes IN Docker - local clusters for testing Kubernetes'
 arch=('x86_64' 'aarch64')
@@ -15,7 +15,7 @@ install=kind.install
 source=("https://github.com/kubernetes-sigs/kind/archive/v$pkgver/$pkgname-$pkgver.tar.gz"
         modules-load.conf
         registry-aliases.conf)
-sha256sums=('cd1d09921b3c8a0f58c6423e5706be0c6e556f0c3d2b9e62f42be59263b209bb'
+sha256sums=('e07e3a06c8a1d3861ebee3c2fecb027e839da8abf79c6f00c394b077e1f990fd'
             '87bc2d0263e7393c66d540375efa9b68f2e3fdd72d5b12688587e0c3d6b99d88'
             '82b71230a61f9b1f5072c841bb637aac200272a9cbbddcfc6fd01c308dbb5923')
 
