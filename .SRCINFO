@@ -1,7 +1,7 @@
 pkgbase = drive-bin
 	pkgdesc = Google Drive client for the commandline (binary version)
 	pkgver = 0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/odeke-em/drive
 	arch = x86_64
 	arch = arm
@@ -11,16 +11,15 @@ pkgbase = drive-bin
 	license = APACHE
 	provides = drive
 	conflicts = drive
-	source_x86_64 = drive-bin-0.4.0::https://github.com/odeke-em/drive/releases/download/v0.4.0/drive_linux
+	source_x86_64 = drive-bin-0.4.0-x86_64::https://github.com/odeke-em/drive/releases/download/v0.4.0/drive_linux
 	md5sums_x86_64 = 01c25e18252cc2090f03ffa636f09c20
-	source_arm = drive-bin-0.4.0::https://github.com/odeke-em/drive/releases/download/v0.4.0/drive_armv5
-	md5sums_arm = 01c25e18252cc2090f03ffa636f09c20
-	source_armv6h = drive-bin-0.4.0::https://github.com/odeke-em/drive/releases/download/v0.4.0/drive_armv6
-	md5sums_armv6h = 01c25e18252cc2090f03ffa636f09c20
-	source_armv7h = drive-bin-0.4.0::https://github.com/odeke-em/drive/releases/download/v0.4.0/drive_armv7
-	md5sums_armv7h = 01c25e18252cc2090f03ffa636f09c20
-	source_aarch64 = drive-bin-0.4.0::https://github.com/odeke-em/drive/releases/download/v0.4.0/drive_armv8
-	md5sums_aarch64 = 01c25e18252cc2090f03ffa636f09c20
+	source_arm = drive-bin-0.4.0-arm::https://github.com/odeke-em/drive/releases/download/v0.4.0/drive_armv5
+	md5sums_arm = bda6c82ab14870dbeb1976a07ec5daa3
+	source_armv6h = drive-bin-0.4.0-armv6h::https://github.com/odeke-em/drive/releases/download/v0.4.0/drive_armv6
+	md5sums_armv6h = eb5339e40eefe685836d609fc4c1adcf
+	source_armv7h = drive-bin-0.4.0-armv7h::https://github.com/odeke-em/drive/releases/download/v0.4.0/drive_armv7
+	md5sums_armv7h = 8adae2737f7510328a755a11335510e1
+	source_aarch64 = drive-bin-0.4.0-aarch64::https://github.com/odeke-em/drive/releases/download/v0.4.0/drive_armv8
+	md5sums_aarch64 = d9a406d7f5f1b821173529940f8b5393
 
 pkgname = drive-bin
-
