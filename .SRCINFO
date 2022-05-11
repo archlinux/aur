@@ -1,6 +1,6 @@
 pkgbase = darktile-bin
 	pkgdesc = A GPU-rendered terminal emulator designed for tiling window managers
-	pkgver = 0.0.10
+	pkgver = 0.0.11
 	pkgrel = 1
 	url = https://github.com/liamg/darktile
 	arch = x86_64
@@ -9,11 +9,11 @@ pkgbase = darktile-bin
 	depends = libx11
 	provides = darktile
 	conflicts = darktile
-	source = darktile-bin-0.0.10::https://github.com/liamg/darktile/releases/download/v0.0.10/darktile-linux-amd64
-	source = LICENSE-0.0.10::https://raw.githubusercontent.com/liamg/darktile/v0.0.10/LICENSE
-	source = README-0.0.10.md::https://raw.githubusercontent.com/liamg/darktile/v0.0.10/README.md
-	sha256sums = 618727950b870d910669b291793580bcaa04117531b4502aaa7ae5ca7e551eac
+	source = LICENSE-0.0.11::https://raw.githubusercontent.com/liamg/darktile/v0.0.11/LICENSE
+	source = README-0.0.11.md::https://raw.githubusercontent.com/liamg/darktile/v0.0.11/README.md
 	sha256sums = 58420d88b82b14fb713a9a1725146c154b9a7edbc0f372e36e33e32ef1050547
 	sha256sums = 7f3e2be8b9711eca6d07f52ae7b0233fec0d35909e54540ed55164fcf1106c57
+	source_x86_64 = darktile-bin-0.0.11::https://github.com/liamg/darktile/releases/download/v0.0.11/darktile-linux-amd64
+	sha256sums_x86_64 = 3671bc6fbaaa968e2b2b0779be4884753acc77be76889039109c511c594a627a
 
 pkgname = darktile-bin
