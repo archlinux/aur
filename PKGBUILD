@@ -2,11 +2,11 @@
 #			Jake <aur@ja-ke.tech>
 
 # These variables should be updated with ./update_download_id.sh
-_download_url='https://magentacloud.de/s/KZq5cNYGrWdim2M/download/cgm-rc-flight-simulator-linux-2037.zip'
+_download_url='https://magentacloud.de/s/pfzR9ZaBD7bd6sK/download/cgm-rc-flight-simulator-linux-2041.zip'
 # _download_[id|file] can be cleaned up later
-_download_id='KZq5cNYGrWdim2M'
-_download_file='cgm-rc-flight-simulator-linux-2037.zip'
-_pkgver='2.037'
+_download_id='pfzR9ZaBD7bd6sK'
+_download_file='cgm-rc-flight-simulator-linux-2041.zip'
+_pkgver='2.041'
 
 pkgname=next
 pkgver="${_pkgver}"
@@ -24,7 +24,7 @@ source=("${pkgname}-${pkgver}.zip::${_download_url}"
         "next.desktop"
         "next.sh")
 
-sha512sums=('94ce68f18d327bc0bc8890955b9ae6f71358cb92c2ec296d209880636e47d2ddb4cb94b4dcb165bbe6d6a8af2a2bff80178785ca1083f0f52397815a2f4ceedf'
+sha512sums=('9616e0249aabd41f19cd2f189b7baee1f30f1875d68c23de383c572fa1c05e9d0db6fd745d0fce693aa20058e69418be8e3fa7f35b5148c5b9fe84d5311180b4'
             '73fa793d92ef60e052b82776e89316024fbe46634a695516820b0f2740727c92e94da72f318bb22817686e53f827106ce3048126852c23608295464d90ee4b6d'
             'c982aea8a23d6259069f97a8a71f74270811488818ad0e5c8496047f94cf357d64fe3267f04628030d6b766dc3dd62d5d56ab0387e4ad5bd943a7e7a39598669')
 
