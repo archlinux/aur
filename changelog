@@ -1,3 +1,18 @@
+2022-05-11 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.2.5.6-1:
+    Fixed PasswordFormat of EnvironmentVariable and File not working properly, regression from V5.2.5.5 (#2571, @JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+2022-04-30 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.2.5.5-1:
+    Added --no-steam-parental-generation command-line argument for advanced setups (@JustArchi).
+    ASF suggestions about weak passwords are a bit more specific now in some cases (@JustArchi).
+    Changed default value of SkipAutoGrantPackages in SteamTokenDumper plugin from false to true. Using value of false is very situational and usually not wanted for people that are actually affected by this setting, regardless, it's up to user's configuration (@JustArchi #2558).
+    Fixed obsolete language codes used by Chinese language by moving them to modern ones: zh-CN -> zh-Hans, zh-TW -> zh-Hant, zh-HK -> zh-Hant-HK. This change should have no effect on automatic language detection or Chinese translations in ASF, but if you're currently using obsolete language tag (such as zh-CN) and your OS is unable to map it correctly to modern tag (such as zh-Hans), consider setting CurrentCulture yourself (@JustArchi).
+    Fixed a potential ASF crash that could happen after SteamPassword input prompt (@JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
+    Usual amount of other core improvements, optimizations and bugfixes (@JustArchi).
 2022-03-26 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.2.4.2-1:
     Added KeyboardSkin item type, this resolves unrecognized by ASF item_class_16 error (@Abrynos #2535).
