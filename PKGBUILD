@@ -5,7 +5,7 @@
 pkgname=sway
 pkgver=1.7
 epoch=1
-pkgrel=4
+pkgrel=5
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 arch=(x86_64)
 url='https://swaywm.org/'
@@ -17,7 +17,6 @@ depends=(
   'pango'
   'pcre'
   'seatd'
-  'swaybg'
   'ttf-font'
   'wlroots'
 )
@@ -29,6 +28,7 @@ optdepends=(
   'foot: Terminal emulator used in the default configuration'
   'mako: Lightweight notification daemon'
   'polkit: System privilege control. Required if not using seatd service'
+  'swaybg: Wallpaper tool for sway'
   'swayidle: Idle management daemon'
   'swaylock: Screen locker'
   'waybar: Highly customizable bar'
