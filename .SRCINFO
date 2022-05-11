@@ -4,7 +4,7 @@ pkgbase = fbmessenger-bin
 	pkgrel = 2
 	url = https://gitlab.com/facebookmessenger/application
 	arch = x86_64
-	arch = arm7h
+	arch = armv7h
 	arch = aarch64
 	license = GPL
 	makedepends = unzip
@@ -14,6 +14,8 @@ pkgbase = fbmessenger-bin
 	conflicts = fbmessenger-git
 	source_x86_64 = https://gitlab.com/facebookmessenger/binaries/1.0.0-2/-/raw/main/Messenger-linux-x64.tar.gz
 	sha256sums_x86_64 = SKIP
+	source_armv7h = https://gitlab.com/facebookmessenger/binaries/1.0.0-2/-/raw/main/Messenger-linux-armv7l.tar.gz
+	sha256sums_armv7h = SKIP
 	source_aarch64 = https://gitlab.com/facebookmessenger/binaries/1.0.0-2/-/raw/main/Messenger-linux-arm64.tar.gz
 	sha256sums_aarch64 = SKIP
 
