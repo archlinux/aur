@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=atuin-git
-pkgver=0.8.1.r0.gac0d29f6
+pkgver=0.9.1.r33.ge0291f67
 pkgrel=1
 pkgdesc="Magical shell history (git)"
 arch=('x86_64')
@@ -29,7 +29,7 @@ prepare() {
 
 build() {
   cd "${pkgname%-git}"
-  cargo build --release --frozen
+  cargo build --release --frozen --all-features
   for sh in 'bash' 'fish' 'zsh'; do
     "target/release/${pkgname%-git}" gen-completions -s "$sh" -o completions/
   done
