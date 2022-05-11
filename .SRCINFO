@@ -6,9 +6,10 @@ pkgbase = myuzi
 	arch = any
 	license = MIT
 	depends = python-gobject
-	depends = yt-dlp
-	depends = gst-libav
 	depends = python-beautifulsoup4
+	depends = gst-libav
+	depends = gst-plugins-good
+	depends = yt-dlp
 	source = https://gitlab.com/zehkira/myuzi/-/archive/v0.4.0/myuzi-v0.4.0.tar.gz
 	sha256sums = SKIP
 
