@@ -3,8 +3,8 @@
 # Contributor: yesuu zhang <yesuu79@qq.com>
 # Contributor: Tomasz Żok <tomasz.zok [at] gmail.com>
 pkgname=vim-go
-pkgver=1.25
-pkgrel=2
+pkgver=1.26
+pkgrel=1
 pkgdesc="Go development plugin for Vim"
 arch=(any)
 url=https://github.com/fatih/vim-go
@@ -13,7 +13,7 @@ groups=('vim-plugins')
 options=('!strip')
 depends=('vim' 'go' 'asmfmt' 'delve' 'errcheck' 'reftools-git' 'godef' 'go-tools' 'golint-git' 'revive' 'gopls' 'golangci-lint' 'staticcheck' 'gomodifytags' 'gotags' 'go-impl' 'go-honnef-tools' 'go-motion' 'iferr-git')
 source=("https://github.com/fatih/vim-go/archive/v${pkgver}.tar.gz")
-sha512sums=('42263050893c9ab939346d5572b67e86e3ef3095ab0164ce7932bcf8702703bddffe621e6a658fd772af0e20a9ed06906d9f6b7db4a1cbfb1095e948d5883f56')
+sha512sums=('30722557c2c66e3601a001b490bf4949bf9949a2b41db838f0fa3fba91abb30469d3726cee293afdd1afd385871d62db09e9e9bf2acf48d947b469a5a19888ac')
 
 package() {
 	cd "${srcdir}/vim-go-${pkgver}/"
