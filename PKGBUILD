@@ -5,7 +5,7 @@
 _android_arch=aarch64
 
 pkgname=android-${_android_arch}-libunistring
-pkgver=0.9.10
+pkgver=1.0
 pkgrel=1
 pkgdesc="Library for manipulating Unicode strings and C strings (android)"
 arch=('any')
@@ -16,9 +16,10 @@ depends=('android-ndk'
 options=(!strip !buildflags staticlibs !emptydirs)
 makedepends=('android-configure')
 source=("https://ftp.gnu.org/gnu/libunistring/libunistring-${pkgver}.tar.xz"{,.sig})
-sha256sums=('eb8fb2c3e4b6e2d336608377050892b54c3c983b646c561836550863003c05d7'
+validpgpkeys=('462225C3B46F34879FC8496CD605848ED7E69871'  # Daiki Ueno <ueno@unixuser.org>
+              '9001B85AF9E1B83DF1BDA942F5BE8B267C6A406D') # Bruno Haible (Open Source Development) <bruno@clisp.org>
+sha256sums=('5bab55b49f75d77ed26b257997e919b693f29fd4a1bc22e0e6e024c246c72741'
             'SKIP')
-validpgpkeys=('462225C3B46F34879FC8496CD605848ED7E69871') # Daiki Ueno <ueno@gnu.org>
 
 build() {
     cd "${srcdir}"/libunistring-${pkgver}
