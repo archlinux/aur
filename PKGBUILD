@@ -3,7 +3,7 @@
 
 pkgname=writefreely
 pkgver=0.13.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Federated blogging from write.as'
 arch=('x86_64')
 url='https://writefreely.org/'
