@@ -1,9 +1,11 @@
 pkgbase = budgie-control-center
 	pkgdesc = Budgie's main interface to configure various aspects of the desktop
 	pkgver = 1.0.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/BuddiesOfBudgie/budgie-control-center
 	arch = x86_64
+	arch = aarch64
+	arch = armv7h
 	license = GPL2
 	checkdepends = python-dbusmock
 	checkdepends = python-gobject

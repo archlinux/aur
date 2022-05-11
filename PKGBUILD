@@ -2,11 +2,11 @@
 
 pkgname=budgie-control-center
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="Budgie's main interface to configure various aspects of the desktop"
 url="https://github.com/BuddiesOfBudgie/budgie-control-center"
 license=(GPL2)
-arch=(x86_64)
+arch=(x86_64 aarch64 armv7h)
 depends=(budgie-desktop gnome-online-accounts libgtop libpwquality smbclient libcheese libnma
          udisks2 libhandy gsound colord-gtk icu)
 makedepends=(docbook-xsl modemmanager git python meson)
