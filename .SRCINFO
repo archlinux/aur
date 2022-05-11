@@ -1,0 +1,17 @@
+pkgbase = manga-sharp
+	pkgdesc = CLI manga downloader and reader with lightweight web interface
+	pkgver = 0.1.0
+	pkgrel = 1
+	url = https://github.com/LiteracyFanatic/manga-sharp
+	arch = x86_64
+	license = MIT
+	makedepends = dotnet-sdk
+	makedepends = npm
+	makedepends = git
+	depends = dotnet-runtime
+	depends = aspnet-runtime
+	options = !strip
+	source = git+https://github.com/LiteracyFanatic/manga-sharp#tag=v0.1.0
+	sha256sums = SKIP
+
+pkgname = manga-sharp
