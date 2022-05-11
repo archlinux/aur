@@ -1,0 +1,16 @@
+pkgbase = stan-bin
+	pkgdesc = Unnofficial Stan desktop application
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://gitlab.com/Stan-desktop/application
+	arch = x86_64
+	license = GPL
+	makedepends = unzip
+	depends = nss
+	depends = gtk3
+	depends = libxss
+	conflicts = stan-git
+	source_x86_64 = https://gitlab.com/stan-desktop/binaries/1.0.0-1/-/raw/main/Stan-linux-x64.tar.gz
+	sha256sums_x86_64 = SKIP
+
+pkgname = stan-bin
