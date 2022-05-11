@@ -1,0 +1,13 @@
+pkgbase = python-agithub
+	pkgdesc = Agnostic Github client API -- An EDSL for connecting to REST servers
+	pkgver = 20220511
+	pkgrel = 1
+	url = https://github.com/mozilla/agithub
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = git+https://github.com/mozilla/agithub.git
+	sha256sums = SKIP
+
+pkgname = python-agithub
