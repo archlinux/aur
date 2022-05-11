@@ -1,8 +1,8 @@
 {
     "default_server_config": {
         "m.homeserver": {
-            "base_url": "https://matrix.georgefloyd.link",
-            "server_name": "matrix.georgefloyd.link"
+            "base_url": "https://midov.pl",
+            "server_name": "midov.pl"
         },
         "m.identity_server": {
             "base_url": "https://midov.pl"

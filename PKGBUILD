@@ -11,12 +11,12 @@
 _electron=electron17
 pkgname=(element-{desktop,web}-greentext)
 pkgver=1.10.12
-pkgrel=3
+pkgrel=1
 pkgdesc="Glossy Matrix collaboration client with greentext baked in — "
-arch=(any)
+arch=(x86_64)
 url="https://element.io"
 license=(Apache)
-makedepends=(npm git yarn python rust sqlcipher ${_electron} nodejs-lts-gallium)
+makedepends=(npm git yarn python rust tcl ${_electron} nodejs-lts-gallium)
 optdepends=('darkhttpd: using element-web without electron')
 provides=(element-{desktop,web})
 conflicts=(element-{desktop,web}{,-git})
@@ -27,7 +27,6 @@ source=(element-web-${pkgver}.tar.gz::${_url}-web/archive/v${pkgver}.tar.gz
         element-desktop-${pkgver}.tar.gz.asc::${_url}-desktop/releases/download/v${pkgver}/v${pkgver}-src.tar.gz.asc
         custom-emoji.json
         autolaunch.patch
-        encapsulate-sqlcipher.diff
         io.element.Element.desktop
         greentext.patch
         element-config.json
@@ -39,10 +38,9 @@ sha256sums=('c5934d529fad95a4336e2c09bc5389fcd0d1556493ffe1453607b379e795ada1'
             'SKIP'
             '63ff6e4264b85da29f9147f5cbe58cc3ff395a936683988bca6ef6d0ebeabc99'
             'aaae4ffa41590361dac0c159aecc1166f69e459e89faa9d5cab1202f0277e06f'
-            '3b2112d25b258b67d18b9329faeb9e5c5b218732c9c020ee01911347a90a1cb8'
             '0103f28a32fe31f698836516783c1c70a76a0117b5df7fd0af5c422c224220f9'
             '0d65ffa85e486a48e8a844fcc8c21b4eaadb28756a74566b22e44f3bdb257e2c'
-            '77fddb9f55c3dad10598873cca36b4e74c7a188aa81fbd7dfe79dab0dbc1da08'
+            'c0a5581ab0dfca07c26888cfb7b75cf9f21567955d0b3982d965434096130b36'
             'bf4892cb7b76ea049d76e443c7d7c93afd19c44bd41839f378661275642cf9cd'
             'c1bd9ace215e3ec9af14d7f28b163fc8c8b42e23a2cf04ce6f4ce2fcc465feba')
 validpgpkeys=(712BFBEE92DCA45252DB17D7C7BE97EFA179B100) # Element Releases <releases@riot.im>
@@ -84,17 +82,14 @@ with open(emoji_file, "w") as ef:
 
   cd -- "$srcdir/element-desktop-${pkgver}"
   patch -p1 < ../autolaunch.patch
-  patch -p1 < ../encapsulate-sqlcipher.diff
   sed -i 's|"target": "deb"|"target": "dir"|' package.json
-  sed -i 's|"version": "\([^"]*\)"|"version": "\1+greentext"|' package.json
-  sed -i 's|"electron": "13.5"|"electron": "13.6.7"|' package.json
   sed -i 's|"https://packages.element.io/desktop/update/"|null|' element.io/release/config.json
+  sed -i 's|"version": "\([^"]*\)"|"version": "\1+greentext"|' package.json
   yarn install --no-fund
 
   # Patch to include greentext.
   cd -- "$srcdir/element-web-${pkgver}/node_modules/matrix-react-sdk"
   patch -p1 --forward < "$srcdir/greentext.patch" || true
-  yarn reskindex
 }
 
 build() {
@@ -131,10 +126,10 @@ package_element-web-greentext() {
 package_element-desktop-greentext() {
   pkgdesc+="desktop version."
   replaces=(riot-desktop)
-  depends=("element-web" ${_electron} sqlcipher)
   provides=(element-desktop)
   conflicts=(element-desktop{,-git,-git-greentext})
-  backup=("etc/element/config.json")
+  depends=("element-web" ${_electron} libsecret)
+  backup=('etc/element/config.json')
 
   cd -- "element-desktop-${pkgver}"
 
