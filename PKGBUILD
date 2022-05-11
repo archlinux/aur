@@ -12,6 +12,8 @@ options=(!emptydirs)
 depends=('ffmpeg' 'python-future')
 makedepends=('python-setuptools' 'python-pytest-runner')
 checkdepends=('python-pytest' 'python-pytest-mock')
+provides=(python-ffmpeg)
+conflicts=(python-ffmpeg)
 source=("git+https://github.com/kkroening/ffmpeg-python.git")
 sha256sums=(SKIP)
 
