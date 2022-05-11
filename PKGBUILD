@@ -1,35 +1,35 @@
-# Contributor: shacristo <shacristo at gmail dot com>
-# Maintainer: Zeph <zeph33@gmail.com>
+# Maintainer: Igor Dyatlov <dyatlov.igor@protonmail.com>
 
 pkgname=workbench
-_pkgname=WorkBench
-pkgver=1.8.1
+_pkgname=Workbench
+pkgver=1.2.0
 pkgrel=1
-pkgdesc="Subversion client written in python."
-arch=('i686' 'x86_64')
-url="http://pysvn.tigris.org/"
-license=('APACHE')
-depends=('python2-pysvn>=1.8.0' 'wxpython')
-source=(http://pysvn.barrys-emacs.org/source_kits/pysvn-$pkgname-$pkgver.tar.gz \
-  workbench \
-  workbench.desktop)
-md5sums=('3b707a95f09e3fb4d674b8a73df7631a'
-         '53bfd152b2c12ab2ead9b2d3f01c4f45'
-         '671568d7cf11a327e21f2b3f89a80495')
+pkgdesc="Learn and prototype with GNOME technologies"
+arch=('x86_64')
+url="https://github.com/sonnyp/Workbench"
+license=('GPL3')
+depends=('libadwaita' 'glib2' 'gtksourceview5' 'gjs' 'vte4-git' 'libportal-gtk4')
+makedepends=('git' 'meson')
+checkdepends=('appstream-glib')
+source=($url/archive/v$pkgver.tar.gz)
+b2sums=('b9e5382d6175a134d7bac570e44b3304fdc010f6d26c38a040d23a137742c858597f57dcf5649a82a105bc3fd0c0abc0cc7941a33fe007f67ee16eb25140f8f0')
+
+prepare() {
+   cd "$_pkgname-$pkgver"
+   git submodule init
+   git submodule update
+   sed -i 's/\/app\//\/usr\//' src/re.sonny.Workbench
+}
 
 build() {
-  cd $srcdir/pysvn-$pkgname-$pkgver/Source
-	sed -i -e "s/\['2.9'\]/\['2.8'\]/g" wb_main.py
-}
-package() {
-  _pyver=`python2 -V 2>&1|sed -e 's/.* 2\.\([0-9]\).*/\1/'`
-  cd $srcdir/pysvn-$pkgname-$pkgver
-  mkdir -p ${pkgdir}/usr/share/doc/
-  install -Dm644 Source/wb.png $pkgdir/usr/share/pixmaps/wb.png
-  install -Dm644 $srcdir/workbench.desktop $pkgdir/usr/share/applications/workbench.desktop
-  mv Docs ${pkgdir}/usr/share/doc/workbench
-  mkdir -p ${pkgdir}/usr/lib/python2.${_pyver}/site-packages
-  mv Source ${pkgdir}/usr/lib/python2.${_pyver}/site-packages/workbench
-  install -D -m755 ${srcdir}/workbench ${pkgdir}/usr/bin/workbench
+  arch-meson "$_pkgname-$pkgver" build
+  meson compile -C build
 }
 
+#check() {
+#  meson test -C build
+#}
+
+package() {
+  meson install -C build --destdir "$pkgdir"
+}
