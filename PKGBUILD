@@ -106,9 +106,9 @@ _thin_lto_cachedir=
 _use_cfi=
 
 if [ -n "$_use_llvm_lto" ]; then
-    pkgbase=linux-cachyos-${_cpusched}-lto
+    pkgbase=linux-cachyos-lto
 else
-    pkgbase=linux-cachyos-${_cpusched}
+    pkgbase=linux-cachyos
 fi
 _major=5.17
 _minor=6

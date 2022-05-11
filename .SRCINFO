@@ -1,4 +1,4 @@
-pkgbase = linux-cachyos-cfs
+pkgbase = linux-cachyos
 	pkgdesc = Linux CFS scheduler Kernel by CachyOS with other patches and improvements
 	pkgver = 5.17.6
 	pkgrel = 4
