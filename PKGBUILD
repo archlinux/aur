@@ -2,7 +2,7 @@
 
 pkgname=zsync2-git
 pkgver=2.0.0pre
-pkgrel=1
+pkgrel=2
 pkgdesc="A file transfer program that's able to connect to rsync servers"
 arch=(x86_64)
 url="https://github.com/AppImage/zsync2"
@@ -13,7 +13,7 @@ depends=(curl)
 makedepends=(cmake git gnutls openssl zlib)
 source=(git+$url.git
         git+https://github.com/Taywee/args.git
-        git+https://github.com/AppImage/cpr.git
+        git+https://github.com/libcpr/cpr.git
         git+https://github.com/google/googletest.git)
 b2sums=('SKIP'
         'SKIP'
@@ -40,7 +40,7 @@ prepare() {
 build() {
   cmake -B build ${pkgname/-git/} \
     -DUSE_SYSTEM_CURL=1 -DBUILD_CPR_TESTS=0 \
-    -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib -DCMAKE_BUILD_TYPE=None
+    -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_LIBDIR=lib
   make -C build
 }
 
