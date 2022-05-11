@@ -6,6 +6,7 @@ pkgbase = bilibili-bin
 	install = bilibili-bin.install
 	arch = x86_64
 	license = custom
+	makedepends = asar
 	depends = ffmpeg
 	depends = electron
 	depends = libappindicator-gtk3

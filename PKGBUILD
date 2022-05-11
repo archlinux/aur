@@ -7,6 +7,7 @@ pkgrel=1
 pkgdesc='Bilibili desktop client'
 license=('custom')
 depends=('ffmpeg' 'electron' 'libappindicator-gtk3')
+makedepends=('asar')
 arch=('x86_64')
 url='https://bilibili.com'
 install="${pkgname}.install"
@@ -20,10 +21,11 @@ sha256sums=('df008294d66a4a30672cdb1c0839d316e94141284dbb14fb8613ea1029f66973'
             '76dce057c03c8f75b011c2072d32948a8db3de0961aec3fd445f40bf1fe79418')
 
 package() {
-    sed -i "s/PingFang SC,HarmonyOS_Medium,Helvetica Neue,Microsoft YaHei,//g" "${srcdir}/resources/render/assets/index.36ba380d.css"
+    asar e "${srcdir}/resources/app.asar" "${srcdir}/unpacked"
+    sed -i "s/PingFang SC,HarmonyOS_Medium,Helvetica Neue,Microsoft YaHei,//g" "${srcdir}/unpacked/render/assets/index.36ba380d.css"
+    asar p "${srcdir}/unpacked" "${srcdir}/resources/app.asar"
     install -Dm644 -t "${pkgdir}/usr/share/applications" "${_pkgname}.desktop"
     install -Dm644 "${_pkgname}.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
     install -Dm644 "${srcdir}/resources/app.asar" "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}.asar"
     install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
-    ln -s "/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/bilibili"
 }
