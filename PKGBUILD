@@ -3,7 +3,7 @@
 
 _gemname='bcrypt'
 pkgname="ruby-${_gemname}"
-pkgver=3.1.16
+pkgver=3.1.17
 pkgrel=1
 pkgdesc="bcrypt() is a sophisticated and secure hash algorithm designed by The OpenBSD project for hashing passwords. The bcrypt Ruby gem provides a simple wrapper for safely handling passwords"
 arch=('x86_64')
@@ -13,7 +13,7 @@ options=(!emptydirs)
 depends=('ruby')
 makedepends=('ruby-rake' 'ruby-rake-compiler' 'ruby-rspec')
 source=("${url}/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('37d2a7394c8d4ffe722a93722e821b684cfb5966014f1b0aea1d0145de1830598b6619d34b69e9d0982bd60dc71b2f78cf4b81702f9f01da2c8cdd3e66f82e8d')
+sha512sums=('34be6b896ddba5bf605774672d1a2e406c71d047b5e805949075f57906ca5d43a24853906a17da66d3477351bc57d2bbf783750ec49165da9f42cd347d5a54f1')
 
 prepare() {
   cd "bcrypt-ruby-${pkgver}"
