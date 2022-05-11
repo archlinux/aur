@@ -1,6 +1,6 @@
 pkgbase = kraft
 	pkgdesc = A program suitable for all trades or crafts
-	pkgver = 0.97
+	pkgver = 0.98pre1
 	pkgrel = 1
 	url = http://www.volle-kraft-voraus.de/
 	arch = i686
@@ -15,7 +15,7 @@ pkgbase = kraft
 	depends = python-reportlab
 	depends = python-pypdf2
 	optdepends = python-weasyprint: alternative PDF generator
-	source = kraft-v0.97::https://github.com/dragotin/kraft/archive/v0.97.tar.gz
-	sha256sums = 9d16c259e2eb44adfcc0682b0e9a09ad5c9dd249db16f3f56c1fee9236fe9af5
+	source = kraft-v0.98pre1::https://github.com/dragotin/kraft/archive/162ff491f8a3d2fd8fae232da7a20a39a4b7f527.tar.gz
+	sha256sums = be9bb3f300aa330331325bc67453f85e01d0398f71b143595381c8f88b195c83
 
 pkgname = kraft
