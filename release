@@ -13,3 +13,9 @@ git add PKGBUILD .SRCINFO
 git commit -m "$commit_msg"
 git push aur master
 git status
+
+# push to gitlab too
+git checkout main
+git pull
+git merge master
+git push origin main

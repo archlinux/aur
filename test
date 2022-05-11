@@ -10,3 +10,7 @@ sed -i "/sha256sums/c$(makepkg -fg)" ./PKGBUILD
 echo "Testing Again!"
 makepkg --printsrcinfo > .SRCINFO
 makepkg --check --clean build -f
+
+# cleanup
+rm *.tar.zst
+rm *.AppImage
