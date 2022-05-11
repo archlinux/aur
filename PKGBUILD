@@ -10,7 +10,7 @@ pkgrel=1
 epoch=
 pkgdesc="Simple http server scripted in lua"
 arch=(x86_64)
-url="https://gitlab.com/bochmkrzysztof/http-server.git#tag=v1.0.2"
+url="https://gitlab.com/bochmkrzysztof/http-server.git#tag=v1.1.0"
 license=('MIT')
 groups=()
 depends=(boost lua liburing)
@@ -31,7 +31,7 @@ validpgpkeys=()
 
 pkgver() {
     cd "${_pkgname}"
-    printf "1.0.2.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    printf "1.1.0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
