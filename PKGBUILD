@@ -2,7 +2,7 @@
 
 pkgname=ppp-git
 pkgver=2.4.9.r132.gd7e62a8
-pkgrel=2
+pkgrel=3
 pkgdesc="A package which implements the Point-to-Point Protocol"
 arch=('i686' 'x86_64')
 url="https://ppp.samba.org/"
@@ -34,6 +34,12 @@ sha256sums=('SKIP'
             'SKIP')
 
 
+prepare() {
+  cd "ppp"
+
+  sed -i --follow-symlinks 's/noipx/#noipx/' "$srcdir/options"
+}
+
 pkgver() {
   cd "ppp"
 
@@ -47,6 +53,7 @@ build() {
     --prefix="/usr" \
     --sbindir="/usr/bin" \
     --sysconfdir="/etc" \
+    --localstatedir="/var" \
     --enable-cbcp \
     --enable-systemd
   make
