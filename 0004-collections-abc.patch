@@ -61,22 +61,6 @@ index 0439728d..f4a75eda 100644
  # --------------------------
  # prediction.common
  # --------------------------
-diff --git a/platform/bundledpythonunix/lib/python3.8/site-packages/pip-21.1.3-py3.8.egg/pip/_vendor/distlib/compat.py b/platform/bundledpythonunix/lib/python3.8/site-packages/pip-21.1.3-py3.8.egg/pip/_vendor/distlib/compat.py
-index c316fd97..41917884 100644
---- a/platform/bundledpythonunix/lib/python3.8/site-packages/pip-21.1.3-py3.8.egg/pip/_vendor/distlib/compat.py
-+++ b/platform/bundledpythonunix/lib/python3.8/site-packages/pip-21.1.3-py3.8.egg/pip/_vendor/distlib/compat.py
-@@ -481,7 +481,10 @@ else:
- try:
-     from collections import ChainMap
- except ImportError: # pragma: no cover
--    from collections import MutableMapping
-+    if sys.version_info > (3, 3):
-+        from collections.abc import MutableMapping
-+    else:
-+        from collections import MutableMapping
- 
-     try:
-         from reprlib import recursive_repr as _recursive_repr
 diff --git a/platform/gsutil/gslib/vendored/boto/boto/dynamodb/types.py b/platform/gsutil/gslib/vendored/boto/boto/dynamodb/types.py
 index d9aaaa4c..1d50fb0c 100644
 --- a/platform/gsutil/gslib/vendored/boto/boto/dynamodb/types.py
