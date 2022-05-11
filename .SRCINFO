@@ -1,9 +1,8 @@
 pkgbase = matrix-conduit-git
 	pkgdesc = A Matrix homeserver written in Rust
-	pkgver = 0.3.0.1468.g2fcb3c8
+	pkgver = 0.3.0.1470.g8bb5806
 	pkgrel = 1
 	url = https://conduit.rs
-	install = install-script.install
 	arch = i686
 	arch = x86_64
 	arch = armv6h
@@ -17,12 +16,6 @@ pkgbase = matrix-conduit-git
 	provides = conduit
 	backup = etc/matrix-conduit/conduit.toml
 	source = conduit::git+https://gitlab.com/famedly/conduit
-	source = install-script.install
-	source = 0001-update-service-dynamicuser_paths.patch
-	source = 0002-example-info.patch
 	sha256sums = SKIP
-	sha256sums = 085e69c4589597f0b58509f72f04ecc497aaddcc5de6138f4ae5009f0d0cf4c9
-	sha256sums = 88ff8d11d9617bc7af8025452d89231ae84f80605da3f183acf90bfddf57feda
-	sha256sums = c9f63b25049e51688911d8ec816fe5676d3cc70d889c321891e6f27888973ce9
 
 pkgname = matrix-conduit-git
