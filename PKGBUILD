@@ -1,7 +1,7 @@
 # Maintainer: Munzir Taha <munzirtaha@gmail.com>
 pkgname=ttf-qurancomplex-fonts
 pkgver=20220401
-pkgrel=1
+pkgrel=2
 pkgdesc="Arabic fonts by King Fahd Glorious Quran Printing Complex in al-Madinah al-Munawwarah"
 arch=('any')
 url="http://fonts.qurancomplex.gov.sa"
@@ -55,5 +55,5 @@ package() {
   cd "$srcdir"
   shopt -s globstar
   install -Dm644 **/*.[ot]tf -t "$pkgdir/usr/share/fonts/qurancomplex"
-  install -Dm644 **/*.doc -t "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm644 **/*.doc **/*.docx -t "$pkgdir/usr/share/doc/$pkgname/"
 }
