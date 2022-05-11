@@ -1,7 +1,7 @@
 # Maintainer: katt <magunasu.b97@gmail.com>
 
 pkgname=qimgv-light-git
-pkgver=0.9.2.alpha2.r73.gdee226f6
+pkgver=1.0.3alpha.r15.g48dd2ea3
 pkgrel=1
 pkgdesc='Qt6 image viewer (git, without any optional features)'
 arch=(x86_64 i686 armv6h armv7h aarch64)
@@ -17,7 +17,7 @@ source=(git+"${url}".git)
 sha256sums=('SKIP')
 
 pkgver() {
-    git -C "${pkgname%-light-git}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+    git -C "${pkgname%-light-git}" describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-alpha/alpha/g;s/-/./g'
 }
 
 build() {

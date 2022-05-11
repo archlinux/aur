@@ -1,6 +1,6 @@
 pkgbase = qimgv-light-git
 	pkgdesc = Qt6 image viewer (git, without any optional features)
-	pkgver = 0.9.2.alpha2.r73.gdee226f6
+	pkgver = 1.0.3alpha.r15.g48dd2ea3
 	pkgrel = 1
 	url = https://github.com/easymodo/qimgv
 	arch = x86_64
