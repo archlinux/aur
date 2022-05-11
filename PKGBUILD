@@ -4,14 +4,14 @@
 
 pkgname=shadowsocks-rust-bin
 pkgver=1.14.3
-pkgrel=4
+pkgrel=5
 pkgdesc='A Rust port of shadowsocks https://shadowsocks.org/ (binary version)'
 arch=('x86_64' 'arm' 'aarch64')
 url='https://github.com/shadowsocks/shadowsocks-rust'
 license=('MIT')
 depends=('gcc-libs')
 provides=('shadowsocks-rust')
-conflicts=('shadowsocks-rust')
+conflicts=('shadowsocks-rust' 'shadowsocks-rust-git')
 source=(
     "${url}/raw/v${pkgver}/LICENSE"
     "${url}/raw/v${pkgver}/examples/config.json"

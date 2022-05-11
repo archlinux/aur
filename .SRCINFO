@@ -1,7 +1,7 @@
 pkgbase = shadowsocks-rust-bin
 	pkgdesc = A Rust port of shadowsocks https://shadowsocks.org/ (binary version)
 	pkgver = 1.14.3
-	pkgrel = 4
+	pkgrel = 5
 	url = https://github.com/shadowsocks/shadowsocks-rust
 	arch = x86_64
 	arch = arm
@@ -10,6 +10,7 @@ pkgbase = shadowsocks-rust-bin
 	depends = gcc-libs
 	provides = shadowsocks-rust
 	conflicts = shadowsocks-rust
+	conflicts = shadowsocks-rust-git
 	source = https://github.com/shadowsocks/shadowsocks-rust/raw/v1.14.3/LICENSE
 	source = https://github.com/shadowsocks/shadowsocks-rust/raw/v1.14.3/examples/config.json
 	source = https://github.com/shadowsocks/shadowsocks-rust/raw/v1.14.3/examples/config_ext.json
