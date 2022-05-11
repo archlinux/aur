@@ -21,4 +21,5 @@ post_upgrade() {
 post_remove() {
   /usr/bin/userdel sensu
   /usr/bin/groupdel sensu
+  rm -rf /var/lib/sensu
 }
