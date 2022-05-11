@@ -1,9 +1,9 @@
 post_install() {
-	echo "     ______________________________________________________ "
-	echo "==> /                                                      \"
-  	echo "==> |          Don't forget to Restart GNOME Shell         |"
-  	echo "==> |                   (Alt+F2, type r)                   |"
-	echo "    \______________________________________________________/"
+	     echo "       ______________________________________________________ "
+	     echo " ==>  /                                                      \\"
+  	     echo " ==> /          Don't forget to Restart GNOME Shell           \\"
+  	     echo " ==> \                   (Alt+F2, type r)                     /"
+	     echo "      \______________________________________________________/"
 }
 
 post_upgrade() {
