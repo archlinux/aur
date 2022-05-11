@@ -4,7 +4,7 @@
 pkgname=prosody-filer
 pkgver=1.0.2
 pkgrel=4
-pkgdesc='Golang mod_http_upload_external server for Prosody'
+pkgdesc='Golang mod_http_upload_external server for Prosody and Ejabberd'
 url='https://github.com/ThomasLeister/prosody-filer'
 license=('MIT')
 arch=('i686' 'x86_64')
@@ -12,7 +12,7 @@ makedepends=(go git)
 backup=("etc/prosody-filer.toml")
 install=prosody-filer.install
 source=("git+https://github.com/ThomasLeister/${pkgname}.git#tag=v${pkgver}"
-	"prosody-filer.service")
+        "prosody-filer.service")
 sha256sums=('SKIP'
             '3f64c61eb4bd0d801c8a24d4bf3eae1e04c82ade000d363081d0d673eaaabe9f')
 

@@ -1,5 +1,5 @@
 pkgbase = prosody-filer
-	pkgdesc = Golang mod_http_upload_external server for Prosody
+	pkgdesc = Golang mod_http_upload_external server for Prosody and Ejabberd
 	pkgver = 1.0.2
 	pkgrel = 4
 	url = https://github.com/ThomasLeister/prosody-filer
