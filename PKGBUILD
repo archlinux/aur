@@ -76,10 +76,10 @@
 _major=4.19
 _minor=241
 _srcname=linux-${_major}
-_clr=${_major}.240-252
+_clr=${_major}.241-253
 pkgbase=linux-clear-lts2018
 pkgver=${_major}.${_minor}
-pkgrel=1
+pkgrel=2
 pkgdesc='Clear Linux lts2018'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2018"
