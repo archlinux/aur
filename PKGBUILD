@@ -2,7 +2,7 @@
 # Maintainer: Carlos A Becker <carlos@charm.sh>
 
 pkgname='wishlist-bin'
-pkgver=0.4.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='The SSH directory'
 url='https://charm.sh/'
@@ -11,17 +11,17 @@ license=('MIT')
 provides=('wishlist')
 conflicts=('wishlist')
 
-source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/wishlist/releases/download/v0.4.0/wishlist_0.4.0_linux_arm64.tar.gz")
-sha256sums_aarch64=('51b7aa614aaeda0a19dc814a21f344e171d36820d24aa703756c73f101ca58b9')
+source_aarch64=("${pkgname}_${pkgver}_aarch64.tar.gz::https://github.com/charmbracelet/wishlist/releases/download/v0.5.0/wishlist_0.5.0_linux_arm64.tar.gz")
+sha256sums_aarch64=('d763e7a1e3b058677415145023d915e0ac4890821fa70e1a07ef6853ae6e53b2')
 
-source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/wishlist/releases/download/v0.4.0/wishlist_0.4.0_linux_armv7.tar.gz")
-sha256sums_armv7h=('67bbea56532f10d5edfcf4a2967027df819d9f32bfc8873658e78be0a1e2f8a4')
+source_armv7h=("${pkgname}_${pkgver}_armv7h.tar.gz::https://github.com/charmbracelet/wishlist/releases/download/v0.5.0/wishlist_0.5.0_linux_armv7.tar.gz")
+sha256sums_armv7h=('fd713821913fc13c52dd4d5f9034669b2a65094aaa36fad8571afb7cdf80c8a3')
 
-source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/wishlist/releases/download/v0.4.0/wishlist_0.4.0_linux_i386.tar.gz")
-sha256sums_i686=('455c79c033cb0b14dea83ba632d182ad8208375f3785ca3701668c9c0b81f07f')
+source_i686=("${pkgname}_${pkgver}_i686.tar.gz::https://github.com/charmbracelet/wishlist/releases/download/v0.5.0/wishlist_0.5.0_linux_i386.tar.gz")
+sha256sums_i686=('39d26bdac4bfb92014f79a03af7c213f2b6ec2b9cdb82d53b7ce99af6cc52f52')
 
-source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/wishlist/releases/download/v0.4.0/wishlist_0.4.0_linux_x86_64.tar.gz")
-sha256sums_x86_64=('87934b8adc5cbc4096e1144dfb9d3cac634803d7ebb1bd936e38f4e861843c1e')
+source_x86_64=("${pkgname}_${pkgver}_x86_64.tar.gz::https://github.com/charmbracelet/wishlist/releases/download/v0.5.0/wishlist_0.5.0_linux_x86_64.tar.gz")
+sha256sums_x86_64=('b1834e196974287f7050bec38d7a0973d093e6260cab79cd942d605b955187a3')
 
 package() {
   # bin
