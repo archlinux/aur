@@ -1,0 +1,33 @@
+pkgbase = 86box-qt5-git
+	pkgdesc = An emulator for classic IBM PC clones (Built with qt5)
+	pkgver = 3.4.1.r64.g932f817a6
+	pkgrel = 1
+	url = https://86box.net/
+	arch = pentium4
+	arch = x86_64
+	arch = arm7h
+	arch = aarch64
+	license = GPL2
+	makedepends = git
+	makedepends = cmake>=3.21
+	makedepends = ninja
+	makedepends = qt5-tools
+	depends = alsa-lib
+	depends = faudio
+	depends = freetype2
+	depends = libpng
+	depends = libslirp
+	depends = qt5-base
+	depends = rtmidi
+	depends = sdl2
+	optdepends = 86box-roms-git: ROM files
+	optdepends = discord-game-sdk: Discord Rich Presence
+	optdepends = libpcap: Networking not limited to TCP/IP
+	provides = 86box
+	conflicts = 86box
+	conflicts = 86box-git
+	options = !buildflags
+	source = 86box-qt5-git::git+https://github.com/86Box/86Box.git
+	sha512sums = SKIP
+
+pkgname = 86box-qt5-git
