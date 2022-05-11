@@ -1,0 +1,25 @@
+pkgbase = libretro-ecwolf-git
+	pkgdesc = Wolfenstein 3D core
+	pkgver = r1758.1c82ef9
+	pkgrel = 1
+	url = https://github.com/libretro/ecwolf
+	arch = aarch64
+	arch = armv7h
+	arch = i486
+	arch = i686
+	arch = pentium4
+	arch = x86_64
+	groups = libretro
+	license = BSD
+	license = LGPL
+	makedepends = git
+	depends = gcc-libs
+	depends = libretro-core-info
+	provides = libretro-ecwolf
+	conflicts = libretro-ecwolf
+	source = libretro-ecwolf::git+https://github.com/libretro/ecwolf.git
+	source = libretro-common::git+https://github.com/libretro/libretro-common.git
+	b2sums = SKIP
+	b2sums = SKIP
+
+pkgname = libretro-ecwolf-git
