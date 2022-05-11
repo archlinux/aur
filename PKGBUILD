@@ -7,7 +7,7 @@ arch=('any')
 url="https://github.com/openmc-dev/openmc"
 license=('MIT')
 makedepends=('cmake' 'git' 'python-setuptools')
-depends=('hdf5-cpp-fortran' 'python-numpy' 'python-matplotlib' 'python-scipy'
+depends=('hdf5' 'python-numpy' 'python-matplotlib' 'python-scipy'
     'python-pandas' 'python-h5py' 'python-uncertainties' 'python-lxml' 'pugixml' 'fmt')
 provides=("${pkgname%-git}" "libopenmc.so")
 source=("${pkgname}::git+${url}.git")
