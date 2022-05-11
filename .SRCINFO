@@ -1,7 +1,7 @@
 pkgbase = linux-clear-lts2020
 	pkgdesc = Clear Linux lts2020
 	pkgver = 5.10.114
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux-lts2020
 	arch = x86_64
 	license = GPL2
