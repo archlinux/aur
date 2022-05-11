@@ -4,24 +4,22 @@ Date: Wed, 23 Mar 2022 11:46:32 +0100
 Subject: [PATCH] AURNEWS patch
 
 ---
- pikaur/install_cli.py      | 7 +++++++
+ pikaur/install_cli.py      | 5 +++++
  pikaur/print_department.py | 2 +-
- 2 files changed, 8 insertions(+), 1 deletion(-)
+ 2 files changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/pikaur/install_cli.py b/pikaur/install_cli.py
-index ee268bb..bf2fbcb 100644
+index ee268bb..6bfc020 100644
 --- a/pikaur/install_cli.py
 +++ b/pikaur/install_cli.py
-@@ -736,6 +736,13 @@ class InstallPackagesCLI():
+@@ -736,6 +736,11 @@ class InstallPackagesCLI():
              _pkg_label = bold_line(', '.join(pkg_build.package_names))
              _skip_diff_label = translate("Not showing diff for {pkg} package ({reason})")
- 
+
 +            for pkgname_eggz in pkg_build.package_names:
-+                print_stdout(color_line("------------ Packager News for " + pkgname_eggz + " ------------",11))
-+                os.system("curl -s https://aur.archlinux.org/packages/" + str(pkgname_eggz) + " | sed -n '/<div id=\"pinned/,/<\/div>/p' | grep -v '<div' | sed 's/.*<p>//g' | sed 's/<\/p>//g' | grep -v '</div>'")
-+                print_stdout(color_line("------------ User News for " + pkgname_eggz + " ------------",11))
-+                os.system("curl -s https://aur.archlinux.org/packages/" + str(pkgname_eggz) + " | grep '<div id=\"comment-' -A10 | grep 'p>' | sed 's/.*<p>//g' | sed 's/<\/p>/\\n/g' | grep -v '</div>'")
-+                print_stdout(color_line("/----------- End News for " + pkgname_eggz + " -----------/",11))
++                print_stdout(color_line("------------ Package comments for " + pkgname_eggz + " ------------",11))
++                os.system("curl -s https://aur.archlinux.org/packages/" + str(pkgname_eggz) + " | grep '<div id=\"comment-' -A10 | grep 'p>' | sed 's/.*<p>//g' | sed 's/<\/p>/\\n/g' | grep -v '</div>' | head -n20")
++                print_stdout(color_line("/----------- End comments for " + pkgname_eggz + " -----------/",11))
 +
              if (
                      pkg_build.last_installed_hash != pkg_build.current_hash
