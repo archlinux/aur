@@ -1,0 +1,19 @@
+pkgbase = lammps-ryzen-opencl
+	pkgdesc = lammps with opencl support ONLY for ryzen cpu and amd gpu, modified from pyskets's lammps package
+	pkgver = r30482.1b8641685a
+	pkgrel = 1
+	url = https://lammps.sandia.gov/
+	arch = x86_64
+	license = GPL
+	makedepends = cmake>=3.1
+	depends = fftw
+	depends = openmpi
+	depends = opencl-amd
+	depends = voro++
+	depends = env-modules
+	provides = lammps
+	conflicts = lammps
+	source = git+https://github.com/lammps/lammps.git
+	sha512sums = SKIP
+
+pkgname = lammps-ryzen-opencl
