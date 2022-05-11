@@ -1,7 +1,7 @@
 pkgbase = myuzi
 	pkgdesc = Spotify alternative with no ads, payments or accounts
 	pkgver = v0.4.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://gitlab.com/zehkira/myuzi
 	arch = any
 	license = MIT

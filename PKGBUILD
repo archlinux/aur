@@ -1,7 +1,7 @@
 # Maintainer: zehkira <(same as my name) at pm me>
 pkgname="myuzi"
 pkgver="v0.4.0"
-pkgrel=1
+pkgrel=2
 pkgdesc="Spotify alternative with no ads, payments or accounts"
 arch=("any")
 url="https://gitlab.com/zehkira/myuzi"
