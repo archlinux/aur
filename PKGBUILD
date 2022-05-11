@@ -2,15 +2,15 @@
 # Contributer: Salim Perchy <yamil-salim.perchy@inria.fr>
 
 pkgname=icesl
-pkgver=2.4.2
+pkgver=2.4.4
 pkgrel=1
 pkgdesc="A GPU accelerated modeler and slicer for 3D printing"
 arch=('x86_64')
 url="https://icesl.loria.fr"
 license=('custom')
 depends=('qt4' 'freeglut' 'glu' 'libpng' 'zlib' 'freetype2' 'libxext' 'perl' 'glfw')
-source=("https://icesl.loria.fr/assets/packages/linux/amd64/IceSL_amd64.zip")
-sha512sums=('23f15cbc6e27a47387259ecf50c7d58b4c4465c34e7328902a7d97f9ffe12854ccaf06aa200c97b50adaf1d7c41a0d256ebc3b8654ad6c4d4582476262ca3c1b')
+source=("https://icesl.loria.fr/assets/other/download.php?build=$pkgver&version=stable&os=amd64")
+sha512sums=('00aa55792ae467a3a7b14c6911da86322f91b61fc2319a7b6451deb94551332908ea41fc83e42352ee3af77cee64d163f3a3815cc085deca31c33cb28101cc19')
 
 package() {
 	mkdir -p $pkgdir/usr/{,bin,share{,/licenses}/$pkgname}
