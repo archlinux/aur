@@ -1,7 +1,7 @@
 pkgbase = linux-clear-preempt-rt
 	pkgdesc = Clear Linux Preempt-RT
 	pkgver = 5.10.109.65
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/clearlinux-pkgs/linux-preempt-rt
 	arch = x86_64
 	license = GPL2
