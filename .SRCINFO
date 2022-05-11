@@ -1,7 +1,7 @@
 pkgbase = extrattor
 	pkgdesc = A simple bash wrapper to manage one or more archives from the terminal
-	pkgver = 1.4
-	pkgrel = 2
+	pkgver = 1.5
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/Mirko-r/extrattor
 	arch = any
@@ -14,7 +14,7 @@ pkgbase = extrattor
 	depends = gzip
 	depends = unzip
 	depends = xz
-	source = https://github.com/Mirko-r/extrattor/releases/download/1.4/extrattor.sh
+	source = https://github.com/Mirko-r/extrattor/releases/download/1.5/extrattor-1.5.zip
 	sha512sums = SKIP
 
 pkgname = extrattor
