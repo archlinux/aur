@@ -1,6 +1,6 @@
 pkgbase = lazydocker-bin
 	pkgdesc = A simple terminal UI for docker and docker-compose, written in Go with the gocui library.
-	pkgver = 0.12
+	pkgver = 0.18.1
 	pkgrel = 1
 	url = https://github.com/jesseduffield/lazydocker
 	arch = aarch64
@@ -10,14 +10,13 @@ pkgbase = lazydocker-bin
 	license = MIT
 	provides = lazydocker
 	conflicts = lazydocker
-	source_aarch64 = https://github.com/jesseduffield/lazydocker/releases/download/v0.12/lazydocker_0.12_Linux_arm64.tar.gz
-	sha256sums_aarch64 = 46a236c55ac143f72b7c01eedfb9317942b743f6fc1d6d00d80ca9b31b2eb5ab
-	source_armv7h = https://github.com/jesseduffield/lazydocker/releases/download/v0.12/lazydocker_0.12_Linux_armv7.tar.gz
-	sha256sums_armv7h = 1a4d523d71c9cf3541271c90e2f08873e980da1cf1c474ea9256f45d4ca5aae5
-	source_i686 = https://github.com/jesseduffield/lazydocker/releases/download/v0.12/lazydocker_0.12_Linux_x86.tar.gz
-	sha256sums_i686 = 031b97a34efa178db7ca3979e0285be2cd0e8a8692db6c627ceb959d053173de
-	source_x86_64 = https://github.com/jesseduffield/lazydocker/releases/download/v0.12/lazydocker_0.12_Linux_x86_64.tar.gz
-	sha256sums_x86_64 = a52d6e33aceb88099ccecca76fce1122a0bda29aae704c1a727a98379d0271fc
+	source_aarch64 = https://github.com/jesseduffield/lazydocker/releases/download/v0.18.1/lazydocker_0.18.1_Linux_arm64.tar.gz
+	sha256sums_aarch64 = e6b64c5fd9fee45630175ecb19241b6589a9db10225d4da36de853d218815861
+	source_armv7h = https://github.com/jesseduffield/lazydocker/releases/download/v0.18.1/lazydocker_0.18.1_Linux_armv7.tar.gz
+	sha256sums_armv7h = 449bbd310310ca4b232a095901c8a4adac33988145a428ad34216eae662402b0
+	source_i686 = https://github.com/jesseduffield/lazydocker/releases/download/v0.18.1/lazydocker_0.18.1_Linux_x86.tar.gz
+	sha256sums_i686 = 6e33a107ac687054fb633cc12d4c81d352b8657a6a9827119833d78f37dcf5e6
+	source_x86_64 = https://github.com/jesseduffield/lazydocker/releases/download/v0.18.1/lazydocker_0.18.1_Linux_x86_64.tar.gz
+	sha256sums_x86_64 = c42ac84b27c9c2a1508f61379dd730bd9006bfd5919b4776466f6f0e582a991a
 
 pkgname = lazydocker-bin
-
