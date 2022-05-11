@@ -10,7 +10,7 @@ license=('none')
 
 install=$pkgname.install
 source=(
-    'git://github.com/GTAmodding/re3.git#branch=miami'
+    'git+https://github.com/erorcun/re3.git#branch=miami'
     'git+https://github.com/aap/librw.git'
     'git+https://github.com/xiph/ogg.git'
     'git+https://github.com/xiph/opus.git'
