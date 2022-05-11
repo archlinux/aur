@@ -1,0 +1,17 @@
+pkgbase = hotdog
+	pkgdesc = X11 Window Manager with Windows 3.1 Hot Dog Stand, Amiga Workbench, Atari ST GEM, Mac Classic and Aqua UI
+	pkgver = 20220331
+	pkgrel = 1
+	url = https://github.com/arthurchoung/HOTDOG
+	arch = x86_64
+	license = GPL3
+	depends = alsa-lib
+	depends = libglvnd
+	depends = perl
+	optdepends = compton: Aqua mode window drop shadows
+	optdepends = feh: Aqua mode wallpaper
+	source = https://hotdoglinux.com/download/HOTDOGbuntu_20220331_amd64.deb
+	md5sums = d069317a38a8e8c684e3727fd490fefc
+	sha256sums = 530319406e20ea9a8b0bcca4fbd1cdf0313bcd5333e0b6cda00aea8733552eed
+
+pkgname = hotdog
