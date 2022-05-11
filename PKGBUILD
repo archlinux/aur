@@ -1,142 +1,160 @@
+# Maintainer: katt <magunasu.b97@gmail.com>
 # Contributor: Maxime Gauduin <alucryd@archlinux.org>
 # Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
 # Contributor: Ionut Biru <ibiru@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
 # Contributor: Paul Mattal <paul@archlinux.org>
 
-_pkgname=ffmpeg
 pkgname=ffmpeg-headless
 pkgver=5.0.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Complete solution to record, convert and stream audio and video; optimised for server (headless) systems'
 arch=(i686 x86_64 armv7h armv6h aarch64)
 url=https://ffmpeg.org/
 license=(GPL3)
 depends=(
-  aom
-  bzip2
-  fribidi
-  gmp
-  gnutls
-  gsm
-  lame
-  libbluray.so
-  libdav1d.so
-  libdrm
-  libmodplug
-  librav1e.so
-  libtheora
-  libva.so
-  libvidstab.so
-  libvorbisenc.so
-  libvorbis.so
-  libvpx.so
-  libwebp
-  libx264.so
-  libx265.so
-  libxml2
-  libxvidcore.so
-  libzimg.so
-  opencore-amr
-  openjpeg2
-  opus
-  speex
-  v4l-utils
-  xz
-  zlib
-  rtmpdump
+    aom
+    bzip2
+    fontconfig
+    fribidi
+    gmp
+    gnutls
+    gsm
+    lame
+    libass.so
+    libbluray.so
+    libdav1d.so
+    libdrm
+    libfreetype.so
+    libmodplug
+    librav1e.so
+    librsvg-2.so
+    libsoxr
+    libssh
+    libtheora
+    libva.so
+    libvdpau
+    libvidstab.so
+    libvorbisenc.so
+    libvorbis.so
+    libvpx.so
+    libwebp
+    libx264.so
+    libx265.so
+    libxml2
+    libxvidcore.so
+    libzimg.so
+    opencore-amr
+    openjpeg2
+    opus
+    speex
+    srt
+    v4l-utils
+    vmaf
+    xz
+    zlib
 )
 makedepends=(
-  nasm
+    amf-headers
+    avisynthplus
+    clang
+    ffnvcodec-headers
+    git
+    ladspa
+    nasm
+)
+optdepends=(
+    'avisynthplus: AviSynthPlus support'
+    'intel-media-sdk: Intel QuickSync support'
+    'ladspa: LADSPA filters'
+    'nvidia-utils: Nvidia NVDEC/NVENC support'
 )
 provides=(
-  libavcodec.so
-  libavdevice.so
-  libavfilter.so
-  libavformat.so
-  libavutil.so
-  libpostproc.so
-  libswresample.so
-  libswscale.so
-  ffmpeg
+    libavcodec.so
+    libavdevice.so
+    libavfilter.so
+    libavformat.so
+    libavutil.so
+    libpostproc.so
+    libswresample.so
+    libswscale.so
+    "${pkgname%-headless}"
 )
-conflicts=('ffmpeg')
-source=("https://ffmpeg.org/releases/${_pkgname}-${pkgver}.tar.xz")
-sha256sums=('ef2efae259ce80a240de48ec85ecb062cecca26e4352ffb3fda562c21a93007b')
+conflicts=("${pkgname%-headless}")
+source=(git+https://git.ffmpeg.org/ffmpeg.git#tag=9687cae2b468e09e35df4cea92cc2e6a0e6c93b3)
+b2sums=('SKIP')
+
+pkgver() {
+    git -C "${pkgname%-headless}" describe --tags | sed 's/^n//'
+}
 
 build() {
-  cd ${_pkgname}-${pkgver}
+    cd ${pkgname%-headless}
 
-  CFLAGS="$CFLAGS -Wno-deprecated-declarations"
+    ./configure \
+        --prefix=/usr \
+        --disable-debug \
+        --disable-static \
+        --disable-stripping \
+        --disable-amf \
+        --enable-avisynth \
+        --enable-cuda-llvm \
+        --enable-lto \
+        --enable-fontconfig \
+        --enable-gmp \
+        --enable-gnutls \
+        --enable-gpl \
+        --enable-ladspa \
+        --enable-libaom \
+        --enable-libass \
+        --enable-libbluray \
+        --enable-libdav1d \
+        --enable-libdrm \
+        --enable-libfreetype \
+        --enable-libfribidi \
+        --enable-libgsm \
+        --disable-libiec61883 \
+        --disable-libjack \
+        --disable-libmfx \
+        --enable-libmodplug \
+        --enable-libmp3lame \
+        --enable-libopencore_amrnb \
+        --enable-libopencore_amrwb \
+        --enable-libopenjpeg \
+        --enable-libopus \
+        --disable-libpulse \
+        --enable-librav1e \
+        --enable-librsvg \
+        --disable-libsoxr \
+        --enable-libspeex \
+        --enable-libsrt \
+        --enable-libssh \
+        --enable-libtheora \
+        --enable-libv4l2 \
+        --enable-libvidstab \
+        --enable-libvmaf \
+        --enable-libvorbis \
+        --enable-libvpx \
+        --enable-libwebp \
+        --enable-libx264 \
+        --enable-libx265 \
+        --disable-libxcb \
+        --enable-libxml2 \
+        --enable-libxvid \
+        --enable-libzimg \
+        --enable-nvdec \
+        --enable-nvenc \
+        --enable-shared \
+        --enable-version3 \
+        --disable-xlib \
+        --disable-sdl2 \
+        --disable-htmlpages \
+        --disable-ffplay
 
-  ./configure \
-    --prefix=/usr \
-    --disable-debug \
-    --disable-static \
-    --disable-stripping \
-    --disable-amf \
-    --disable-avisynth \
-    --disable-cuda-llvm \
-    --enable-lto \
-    --disable-fontconfig \
-    --enable-gmp \
-    --enable-gnutls \
-    --enable-gpl \
-    --disable-ladspa \
-    --enable-libaom \
-    --disable-libass \
-    --enable-libbluray \
-    --enable-libdav1d \
-    --enable-libdrm \
-    --disable-libfreetype \
-    --enable-libfribidi \
-    --enable-libgsm \
-    --disable-libiec61883 \
-    --disable-libjack \
-    --disable-libmfx \
-    --enable-libmodplug \
-    --enable-libmp3lame \
-    --enable-libopencore_amrnb \
-    --enable-libopencore_amrwb \
-    --enable-libopenjpeg \
-    --enable-libopus \
-    --disable-libpulse \
-    --enable-librav1e \
-    --disable-librsvg \
-    --disable-libsoxr \
-    --enable-libspeex \
-    --disable-libsrt \
-    --disable-libssh \
-    --enable-libtheora \
-    --enable-libv4l2 \
-    --enable-libvidstab \
-    --disable-libvmaf \
-    --enable-libvorbis \
-    --enable-libvpx \
-    --enable-libwebp \
-    --enable-libx264 \
-    --enable-libx265 \
-    --disable-libxcb \
-    --enable-libxml2 \
-    --enable-libxvid \
-    --disable-libzimg \
-    --disable-nvdec \
-    --disable-nvenc \
-    --enable-shared \
-    --enable-version3 \
-    --enable-vaapi \
-    --enable-librtmp \
-    --enable-runtime-cpudetect \
-    --disable-vdpau \
-    --disable-xlib  \
-    --disable-sdl2 \
-    --disable-htmlpages \
-    --disable-ffplay
-
-  make
+    make
 }
 
 package() {
-  make DESTDIR="${pkgdir}" -C ${_pkgname}-${pkgver} install install-man
+    make DESTDIR="${pkgdir}" -C ${pkgname%-headless} install install-man
 }
