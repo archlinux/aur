@@ -11,7 +11,7 @@ license=("MIT")
 provides=("yesplaymusic")
 conflicts=("yesplaymusic")
 depends=("gtk3" "nss" "libxss" "c-ares" "ffmpeg" "http-parser" "libevent" "libvpx" "libxslt" "minizip" "re2" "snappy" "libnotify" "libappindicator-gtk3")
-makedepends=("yarn" "git" "libvips" "nodejs<=17.9.0")
+makedepends=("yarn" "git" "libvips" "nodejs<=17.9.0" "nodejs>=14.0.0")
 optdepends=('yt-dlp: Youtube source for built-in UnblockNeteaseMusic')
 source=("git+https://github.com/qier222/YesPlayMusic" "yesplaymusic.desktop" "yesplaymusic")
 sha256sums=('SKIP'
