@@ -65,7 +65,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         '0999-acs.gitpatch')
 sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
             '0757b5248e6f7f062d1f2ec2442510b52bb2acbcd94fe2f7d68a72087b8046b8'
-            '4cb8deeb02f5eec92f40bde3f93240c22f75c9cbf50e129bce9f4f5034cbc1f1'
+            '6b4a9eb9338c3028133c9eff826bcf66c6aa5ec4fcf3be676c6f51afacda691a'
             'f85b07d73b2f4ad8bb6b59ee6624b2dd06a03824fc7b00131a01df36c8d899fe'
             'fc9223bf2d430ab1c122daada4f51d835a74f56c007c82842eeca3acd2d788be'
             'f7eb15d563cdbb2c5d780559a1c9564ca8d2dd1ea79fc73a5cc8545278605dad'
