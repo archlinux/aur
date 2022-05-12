@@ -1,17 +1,20 @@
 pkgbase = python-gateway-addon
 	pkgdesc = WebThings Gateway add-on bindings for Python
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/WebThingsIO/gateway-addon-python
 	arch = any
 	license = MPL2
 	makedepends = git
 	makedepends = python-setuptools
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
 	depends = python-jsonschema
 	depends = python-singleton-decorator
 	depends = python-websocket-client
-	source = git+https://github.com/WebThingsIO/gateway-addon-python.git
+	source = python-gateway-addon::git+https://github.com/WebThingsIO/gateway-addon-python#commit=71813a8?signed
+	validpgpkeys = C1B2DF99809504447B2C7209FEDD596D296F7400
 	sha256sums = SKIP
 
 pkgname = python-gateway-addon
-
