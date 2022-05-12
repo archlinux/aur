@@ -1,0 +1,12 @@
+diff --git a/modmanager.pro b/modmanager.pro
+index 1b6ea1f..435795b 100644
+--- a/modmanager.pro
++++ b/modmanager.pro
+@@ -410,6 +410,7 @@ unix {
+   }
+   LIBS += -L$$quote(/usr/local/lib) -laria2
+   INCLUDEPATH += \
++      /usr/include/QuaZip-Qt5-1.3/quazip \
+       /usr/include/QuaZip-Qt5-1.2/quazip \
+       /usr/include/QuaZip-Qt5-1.1/quazip \
+       /usr/include/quazip

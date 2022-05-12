@@ -1,7 +1,7 @@
 # Maintainer: Yuuta Liang <yuuta@yuuta.moe>
 pkgname=modmanager
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Qt-based mod manager for minecraft."
 arch=(x86_64)
 url="https://github.com/kaniol-lck/modmanager"
@@ -15,12 +15,15 @@ replaces=()
 backup=()
 options=()
 install=
-source=("modmanager-$pkgver.zip::https://github.com/kaniol-lck/modmanager/archive/refs/tags/v$pkgver.zip")
+source=("modmanager-$pkgver.zip::https://github.com/kaniol-lck/modmanager/archive/refs/tags/v$pkgver.zip"
+"1.1.0-quazip-1.3.patch")
 noextract=()
-md5sums=('150e18a3fa90154893904affc16cbfb2')
+md5sums=('150e18a3fa90154893904affc16cbfb2'
+         'b26a3cd2e0852dc818b564253b79bcdf')
 
 prepare() {
 	cd "$srcdir/$pkgname-$pkgver"
+	patch -p1 -i "$srcdir/1.1.0-quazip-1.3.patch"
 }
 
 build() {

@@ -1,7 +1,7 @@
 pkgbase = modmanager
 	pkgdesc = A Qt-based mod manager for minecraft.
 	pkgver = 1.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/kaniol-lck/modmanager
 	arch = x86_64
 	license = GPL
@@ -13,6 +13,8 @@ pkgbase = modmanager
 	provides = modmanager-git
 	conflicts = modmanager-git
 	source = modmanager-1.1.0.zip::https://github.com/kaniol-lck/modmanager/archive/refs/tags/v1.1.0.zip
+	source = 1.1.0-quazip-1.3.patch
 	md5sums = 150e18a3fa90154893904affc16cbfb2
+	md5sums = b26a3cd2e0852dc818b564253b79bcdf
 
 pkgname = modmanager
