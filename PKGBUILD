@@ -2,7 +2,7 @@
 
 _pkgname=gnome-backgrounds-macos
 pkgname=$_pkgname
-pkgver=42.0.1
+pkgver=42.0.2
 pkgrel=0
 pkgdesc="Background images for the GNOME desktop from MacOS"
 url="https://github.com/saltedcoffii/gnome-backgrounds-macos"
@@ -11,8 +11,8 @@ makedepends=('glib2' 'meson' 'curl')
 license=('CCPL:by-sa' 'GPL3 or any later version')
 provides=('gnome-backgrounds' 'gnome-backgrounds-git' 'gnome-backgrounds-macos-git')
 conflicts=('gnome-backgrounds-macos-git')
-source=("https://github.com/saltedcoffii/$_pkgname/archive/$pkgver.tar.gz")
-sha256sums=('073303d5bedc8f6ed6910d9cc08d7248839023c1ac1e58bafbac9504b00cb945')
+source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
+sha256sums=('9bfc1321b753bd97257e4edb447d6a9608200527fe0ccdec0e557a6271e7f3ce')
 
 build() {
   $srcdir/$_pkgname-$pkgver/download-backgrounds.sh

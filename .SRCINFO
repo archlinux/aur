@@ -13,7 +13,7 @@ pkgbase = gnome-backgrounds-macos
 	provides = gnome-backgrounds-git
 	provides = gnome-backgrounds-macos-git
 	conflicts = gnome-backgrounds-macos-git
-	source = https://github.com/saltedcoffii/gnome-backgrounds-macos/archive/42.0.1.tar.gz
+	source = gnome-backgrounds-macos-42.0.1.tar.gz::https://github.com/saltedcoffii/gnome-backgrounds-macos/archive/42.0.1.tar.gz
 	sha256sums = 073303d5bedc8f6ed6910d9cc08d7248839023c1ac1e58bafbac9504b00cb945
 
 pkgname = gnome-backgrounds-macos
