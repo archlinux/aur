@@ -2,7 +2,7 @@
 # https://github.com/orhun/pkgbuilds
 
 pkgname=dra-git
-pkgver=0.3.4.r0.g70200e8
+pkgver=0.3.5.r0.g2a282c1
 pkgrel=1
 pkgdesc="A command line tool to download assets from GitHub releases (git)"
 arch=('x86_64')
