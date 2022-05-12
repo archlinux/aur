@@ -8,6 +8,7 @@ pkgbase = ms-office-electron-git
 	makedepends = git
 	makedepends = yarn
 	makedepends = nodejs
+	depends = libxcrypt-compat
 	depends = at-spi2-core
 	depends = desktop-file-utils
 	depends = gtk3

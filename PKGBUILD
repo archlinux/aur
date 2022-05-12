@@ -7,7 +7,7 @@ pkgdesc="An Unofficial Microsoft Office Online Desktop Client. Free of Cost."
 arch=('x86_64')
 url="https://github.com/agam778/MS-Office-Electron"
 license=('MIT')
-depends=('at-spi2-core' 'desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'util-linux-libs' 'xdg-utils')
+depends=('libxcrypt-compat' 'at-spi2-core' 'desktop-file-utils' 'gtk3' 'hicolor-icon-theme' 'libappindicator-gtk3' 'libnotify' 'libsecret' 'libxss' 'libxtst' 'util-linux-libs' 'xdg-utils')
 makedepends=('git' 'yarn' 'nodejs')
 provides=("ms-office-electron" 'MS-Office-Electron')
 conflicts=("ms-office-electron-bin")
@@ -16,17 +16,20 @@ sha256sums=('SKIP')
 
 build() {
     cd "$srcdir/${pkgname%-git}"
-    export YARN_CACHE_FOLDER="$srcdir/yarn-cache"
+    yarn config set cache-folder "$srcdir/yarn-cache"
     yarn install
-    yarn electron-builder -l deb
+    yarn dist -l deb
 }
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    bsdtar -xf "${srcdir}/${pkgname%-git}/release/MS-Office-Electron-Setup-v${pkgver}-linux-amd64.deb" -C "${srcdir}" --include data.tar.bz2
-    bsdtar -xf ${srcdir}/data.tar.bz2 -C ${pkgdir}
-	install -d ${pkgdir}/usr/bin/
-	ln -s /opt/MS-Office-Electron/MS-Office-Electron ${pkgdir}/usr/bin/MS-Office-Electron
-	install -Dm 644 "${pkgdir}/usr/share/icons/hicolor/0x0/apps/MS-Office-Electron.png"  "${pkgdir}/usr/share/pixmaps/MS-Office-Electron.png"
-	rm -rfv "${pkgdir}/usr/share/icons/hicolor"
+    bsdtar -xf "${srcdir}/${pkgname%-git}/release/MS-Office-Electron-Setup-v${pkgver}-linux-amd64.deb" -C "${srcdir}" --include data.tar.xz
+    bsdtar -xf ${srcdir}/data.tar.xz -C ${pkgdir}
+    install -d ${pkgdir}/usr/bin/
+    ln -s /opt/MS-Office-Electron/ms-office-electron ${pkgdir}/usr/bin/ms-office-electron
+    for icon_size in 16 24 32 48 64 128 256 512 1024; do
+        icons_dir=/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
+        install -Dm644 assets/generated/icons/png/${icon_size}x${icon_size}.png \
+        $pkgdir$icons_dir/${pkgname%-git}.png
+    done
 }
