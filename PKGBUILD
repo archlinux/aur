@@ -36,7 +36,10 @@ prepare() {
 build() {
     cd "$srcdir/gprbuild-$pkgver"
 
-    export GNATMAKEFLAGS="$MAKEFLAGS"
+    CFLAGS="${CFLAGS//-Wformat}"
+    CFLAGS="${CFLAGS//-Werror=format-security}"
+
+    GNATMAKEFLAGS="$MAKEFLAGS"
 
     ./bootstrap.sh \
         --with-xmlada="$srcdir/xmlada-$pkgver" \
