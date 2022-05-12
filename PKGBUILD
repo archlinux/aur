@@ -4,7 +4,7 @@ DOC_DIRS=(opt/hydrus/help)
 
 pkgname=hydrus
 _pkgname=hydrus
-pkgver=483
+pkgver=484
 pkgrel=1
 pkgdesc="Danbooru-like image tagging and searching system for the desktop"
 arch=(any)
@@ -24,7 +24,7 @@ optdepends=('ffmpeg: show duration and other information on video thumbnails'
             'python-cloudscraper: bypass cloudflare "checking your browser" challenges'
             'python-pyqt5-chart: display bandwidth usage charts'
             'python-pyopenssl: to generate certificates for accessing client API and server via HTTPS')
-source=("${_pkgname}::git+https://github.com/hydrusnetwork/${_pkgname}.git#commit=ef19e2167e24433d960a0811a93a683d62203518"
+source=("${_pkgname}::git+https://github.com/hydrusnetwork/${_pkgname}.git#commit=16bf34db225eabbeb7b1da3295a2592b26811cff"
         paths-in-opt.patch
         hydrus-client
         hydrus-server
