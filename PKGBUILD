@@ -2,16 +2,22 @@
 _pkgname=parui
 pkgname=${_pkgname}-git
 pkgver=0.1.14.r0.e79f9bb
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple TUI frontend for paru."
 arch=('x86_64')
 url="https://github.com/Vonr/parui"
 license=('MIT')
 depends=('glibc' 'git' 'pacman')
+makedepends=('cargo')
 optdepends=('paru: default AUR interface'
             'yay: alternative AUR interface')
 source=('git+https://github.com/Vonr/parui')
 md5sums=('SKIP')
+
+prepare() {
+    cd "$srcdir/${_pkgname}"
+    cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+}
 
 pkgver() {
 	cd "${_pkgname}"
@@ -20,7 +26,9 @@ pkgver() {
 
 build() {
 	cd "$srcdir/${_pkgname}"
-    cargo build -r
+    export RUSTUP_TOOLCHAIN=stable
+    export CARGO_TARGET_DIR=target
+    cargo build --frozen --release --all-features
 }
 
 package() {
