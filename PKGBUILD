@@ -3,7 +3,7 @@
 
 # Helper variables for updaurpkg (https://aur.archlinux.org/packages/updaurpkg-git)
 _nextcloud_appname='video_converter'
-_upstreamver='1.0.4'
+_upstreamver='1.0.5'
 _upstreamver_regex='^[0-9]+\.[0-9]+\.[0-9]+$'
 _source_type='github-releases'
 _repo='PaulLereverend/NextcloudVideo_Converter'
@@ -20,7 +20,7 @@ makedepends=()
 depends=('nextcloud')
 options=('!strip')
 source=("${_nextcloud_appname}-v${pkgver}.tar.gz::${url}/releases/download/${pkgver}/${_nextcloud_appname}.tar.gz")
-sha512sums=('1f9ac9041036e8707d6a860cac8c88150a8521d76e4bc641584070e5641559c790748ae584267d4a82ce0e648d6d7ecd60c5942622a672d5af70006287818bb2')
+sha512sums=('d0ad25e22b10db03650ad13d353ddad532aef650c30cc389d09e64d12f9e4354f3a4c4bf07343bb7af02ac9d8015978aae869701b4308b93d0bacb895801bef2')
 
 package() {
 	install -d "${pkgdir}/usr/share/webapps/nextcloud/apps"
