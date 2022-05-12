@@ -5,7 +5,7 @@
 
 pkgname=lyx
 pkgver=2.3.6.1
-pkgrel=5
+pkgrel=6
 pkgdesc="An advanced WYSIWYM document processor & LaTeX front-end"
 arch=('x86_64')
 url="https://www.lyx.org"
@@ -25,10 +25,21 @@ sha512sums=('b2f24d32c3716144fc19a5187d59dce86c718e9180b3b33826a04477c5deeed8238
   'SKIP'
   'eef777cf6033a7b1e04700f33068b07309f8d5c6931c16927305dafb3a00fd46d4b536149349ab56b7455e7dea195c8889da2b6fbf9caa9e76bc0557f9358bc3')
 
+prepare() {
+  # Expand the automake compatibility version
+  sed -i 's/2.6\[5-9\]/2.7\[1-9\]/' "${pkgname}-${pkgver}"/autogen.sh
+  # Add missing headers for work with GCC 12.1.0 or later
+  sed -i '54 a #include <iterator>' "${pkgname}-${pkgver}"/src/lyxfind.cpp
+  sed -i '45 a #include <cstring>' "${pkgname}-${pkgver}"/src/insets/InsetListings.cpp
+}
+
 build() {
   cd "${pkgname}-${pkgver}"
-  ./configure --prefix=/usr \
-    --enable-qt5 --without-included-boost \
+  ./autogen.sh
+  ./configure \
+    --prefix=/usr \
+    --enable-qt5 \
+    --without-included-boost \
     --without-included-mythes
   make
 }

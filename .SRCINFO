@@ -1,7 +1,7 @@
 pkgbase = lyx
 	pkgdesc = An advanced WYSIWYM document processor & LaTeX front-end
 	pkgver = 2.3.6.1
-	pkgrel = 5
+	pkgrel = 6
 	url = https://www.lyx.org
 	arch = x86_64
 	license = GPL
