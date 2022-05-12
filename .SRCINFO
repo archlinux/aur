@@ -1,12 +1,12 @@
 pkgbase = bun
 	pkgdesc = A runtime for JavaScript and TypeScript
-	pkgver = 0.0.81
+	pkgver = 0.0.82
 	pkgrel = 1
 	url = https://github.com/Jarred-Sumner/bun-releases-for-updater
 	arch = x86_64
 	license = MIT
 	provides = bun
-	source = bun-0.0.81.zip::https://github.com/Jarred-Sumner/bun-releases-for-updater/releases/download/bun-v0.0.81/bun-linux-x64.zip
-	sha256sums = 10f1e1ab85680e0fa4ea3d54b51d93adaa429282fd77567b73a782c33b8631ee
+	source = bun-0.0.82.zip::https://github.com/Jarred-Sumner/bun-releases-for-updater/releases/download/bun-v0.0.82/bun-linux-x64.zip
+	sha256sums = a2dd7e44bbe9eb15344595698d75236a7e9c9dec88de42c9adb9bfde82bb196d
 
 pkgname = bun
