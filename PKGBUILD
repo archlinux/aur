@@ -1,6 +1,6 @@
 # Maintainer: Dominik Schwaiger <mail@dominik-schwaiger.ch>
 pkgname=darch-conf
-pkgver=2.4.4
+pkgver=2.4.5
 pkgrel=1
 epoch=0
 pkgdesc='Configuration files, scripts and packages for an Archcraft based system'
@@ -21,7 +21,7 @@ install=
 changelog=
 source=('flatpak.txt' 'snap.txt' 'DARCH' 'mopidy.conf' 'config' 'LICENSE')
 noextract=()
-sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855' 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855' '63ff81f192496a8c3c4ea552016d8392a513660881192acc46f7ed7fd954be70' '38bf3e66075dc258cd9b404187ede3dad4fc709796aa8b52bb543d766a7e073d' '59f7fcbd8adc8645d7a8f43c91502d91a028062cba587e5a0320aef84dc18961' 'fff425b318f8fd6918fe3e45c8464cbfc6437c01cea84d21e79003e13044a6d6')
+sha256sums=('e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855' 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855' '982ce139cc5451adf33d7387a5a54bc23a994eedd1dc2240f78bf4196e2d2e18' '38bf3e66075dc258cd9b404187ede3dad4fc709796aa8b52bb543d766a7e073d' '59f7fcbd8adc8645d7a8f43c91502d91a028062cba587e5a0320aef84dc18961' 'fff425b318f8fd6918fe3e45c8464cbfc6437c01cea84d21e79003e13044a6d6')
 validpgpkeys=()
 
 # prepare() {

@@ -47,6 +47,27 @@ if [ -z "$(grep "$STRING" "$FILE")" ]; then
     echo "$STRING" >>$FILE
 fi
 
+# ssh-agent
+cd "$HOME" || exit
+FILE="./.bashrc"
+STRING="if [ ! -S ~/.ssh/ssh_auth_sock ]; then
+  eval $(ssh-agent)
+  ln -sf \"\$SSH_AUTH_SOCK\" ~/.ssh/ssh_auth_sock
+fi
+export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+ssh-add -lq > /dev/null || ssh-add"
+if [ -z "$(grep "# ssh-agent at startup" "$FILE")" ]; then
+    echo "
+    # ssh-agent at startup
+    $STRING" >>$FILE
+fi
+FILE="./.zshrc"
+if [ -z "$(grep "# ssh-agent at startup" "$FILE")" ]; then
+    echo "
+    # ssh-agent at startup
+    $STRING" >>$FILE
+fi
+
 # ncmpcpp spotify
 cp --force "$CONFIG_FILES/config" "$HOME/.ncmpcpp/"
 sudo chmod 777 "$HOME/.ncmpcpp/config"
