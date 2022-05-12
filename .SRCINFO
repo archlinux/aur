@@ -1,6 +1,6 @@
 pkgbase = interlink-gtk2-bin
 	pkgdesc = Interlink is a Mail, RSS, and Newsgroups client based on Mozilla-sourced Community Code and built on the Unified XUL Platform.
-	pkgver = 52.9.7899
+	pkgver = 52.9.8165
 	pkgrel = 1
 	url = http://binaryoutcast.com/projects/interlink/
 	arch = x86_64
@@ -15,12 +15,12 @@ pkgbase = interlink-gtk2-bin
 	depends = mime-types
 	depends = nss
 	optdepends = 
-	provides = interlink=52.9.7899
+	provides = interlink=52.9.8165
 	conflicts = interlink-bin
 	options = !strip
 	source = interlink.desktop
 	sha256sums = df4404ee7715b5686143223690ac7a5562fd285cf0d3f3957b72b78878f30649
-	source_x86_64 = http://projects.binaryoutcast.com/interlink/releases/latest/interlink-52.9.7899.linux-x86_64-gtk2.tar.xz
-	sha256sums_x86_64 = 8f7f1e812cb8f195608d2f41b9dfdece3fd75eae4c19e11a11044756198bdbcc
+	source_x86_64 = http://projects.binaryoutcast.com/interlink/releases/latest/interlink-52.9.8165.Linux_x86_64-gcc3-gtk2.tar.xz
+	sha256sums_x86_64 = 16b382e09a67c177e53b538f0038313e805877bc72039234bc0ea7f453aa3c05
 
 pkgname = interlink-gtk2-bin
