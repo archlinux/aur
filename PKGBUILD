@@ -1,7 +1,7 @@
 # Maintainer: Gilbert Gilb's <gilbsgilbert@gmail.com>
 
 pkgname=fleet-orbit
-pkgver=0.0.10
+pkgver=0.0.11
 pkgrel=1
 pkgdesc='Eases the deployment of osquery connected with a Fleet server.'
 arch=(x86_64)
@@ -19,7 +19,7 @@ source=(
   'fleet-orbit.service'
 )
 sha512sums=(
-  'cd1323204a25978fde48de7b24726ff99b252561c0506f0c9c06f2ff2e08950a7fc7c299819d0edf55defe423527b09389ba0c4ade505739f02483b3bf18be2c'
+  '84116aad0739384081997401c91a4d4bbe96ec6e25d6ec9b04a0abdf875d2e8bf9ec990b607d84c5741dd0dcfd26942ccac72df17a1de469b402c8e81608435c'
   '449f29d82564b3a0e56d529e0550bf83b22cfd672b960e20441015ef5c106f4d7508f4f0bb47631fe399e477e31b05c4a223549a36d23dc89ba9571d6468a75e'
   'c4d4fdf980a891f5e56ca82173c57b60d0e157ef4af769fc5d9ecd7b9c70124402d694f35d48101e6633d0134ade9ab33cff3c129e2f603a6b7df1ee560eab5a'
   '781ba7743f8f176aeeef702cce67478af70981596029677e1e50f1a57b479c66832436e39d66b5e7f879477733b661326d306064050968acfb246adddfddf30a'
@@ -36,7 +36,7 @@ build() {
     -o build/ \
     -trimpath \
     -buildvcs=false \
-    -ldflags "-s -w -X github.com/fleetdm/fleet/v4/orbit/pkg/build.Version=v$pkgver -X github.com/fleetdm/fleet/v4/orbit/pkg/build.Commit=7372777c56248aa10a7a15de971c63328e6d6b69 -X github.com/fleetdm/fleet/v4/orbit/pkg/build.Date=$isodate" \
+    -ldflags "-s -w -X github.com/fleetdm/fleet/v4/orbit/pkg/build.Version=v$pkgver -X github.com/fleetdm/fleet/v4/orbit/pkg/build.Commit=716e06a7d388289f36a6b06b648a1594d9df1689 -X github.com/fleetdm/fleet/v4/orbit/pkg/build.Date=$isodate" \
     ./orbit/cmd/orbit/
 }
 
