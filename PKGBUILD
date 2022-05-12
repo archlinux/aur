@@ -3,7 +3,7 @@
 pkgname=visual-studio-code-bin
 _pkgname=visual-studio-code
 pkgver=1.67.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Visual Studio Code (vscode): Editor for building and debugging modern web and cloud applications (official binary version)"
 arch=('x86_64' 'i686' 'aarch64' 'armv7h')
 url="https://code.visualstudio.com/"
@@ -16,7 +16,9 @@ install=$pkgname.install
 depends=(libxkbfile gnupg gtk3 libsecret nss gcc-libs libnotify libxss glibc lsof shared-mime-info xdg-utils)
 optdepends=('glib2: Needed for move to trash functionality'
             'libdbusmenu-glib: Needed for KDE global menu'
-            'org.freedesktop.secrets: Needed for settings sync')
+            'org.freedesktop.secrets: Needed for settings sync'
+             # See https://github.com/MicrosoftDocs/live-share/issues/4650
+            'icu69: Needed for live share' )
 source=(${_pkgname}.desktop ${_pkgname}-url-handler.desktop ${_pkgname}-workspace.xml ${_pkgname}-bin.sh)
 source_x86_64=(code_x64_${pkgver}.tar.gz::https://update.code.visualstudio.com/${pkgver}/linux-x64/stable)
 source_aarch64=(code_arm64_${pkgver}.tar.gz::https://update.code.visualstudio.com/${pkgver}/linux-arm64/stable)
