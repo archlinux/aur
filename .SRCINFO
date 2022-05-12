@@ -1,13 +1,13 @@
 pkgbase = gyro
 	pkgdesc = An unofficial package manager for the Zig programming language
-	pkgver = 0.5.0
+	pkgver = 0.6.0
 	pkgrel = 1
 	url = https://github.com/mattnite/gyro
 	arch = x86_64
 	license = MIT
 	makedepends = git
 	makedepends = zig
-	source = git+https://github.com/mattnite/gyro.git#commit=b3aa10462ccf073701023d74221e388d33b70820
-	sha256sums = SKIP
+	source = gyro-0.6.0.tar.gz::https://github.com/mattnite/gyro/archive/refs/tags/0.6.0.tar.gz
+	sha256sums = 053228c8947b15b2c935a9d507b4737a03ff69af8317ba91e0668b177aecd715
 
 pkgname = gyro
