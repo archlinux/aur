@@ -2,12 +2,12 @@
 _pkgname=parui
 pkgname=${_pkgname}-git
 pkgver=0.1.14.r0.e79f9bb
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple TUI frontend for paru."
 arch=('x86_64')
 url="https://github.com/Vonr/parui"
 license=('MIT')
-depends=('glibc' 'git' 'pacman')
+depends=('glibc' 'git' 'pacman' 'gcc-libs')
 makedepends=('cargo')
 optdepends=('paru: default AUR interface'
             'yay: alternative AUR interface')
