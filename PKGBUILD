@@ -1,8 +1,9 @@
+# Maintainer: Jordan Cook <JCook83@gmail.com>
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 _base=requests-ratelimiter
 pkgname=python-${_base}
 pkgdesc="Rate-limiting for the requests library"
-pkgver=0.3.1
+pkgver=0.3.2
 pkgrel=1
 arch=(any)
 url="https://github.com/JWCook/${_base}"
@@ -11,11 +12,10 @@ depends=(python-requests python-pyrate-limiter)
 makedepends=(python-build python-install python-poetry-core)
 checkdepends=(python-pytest python-requests-mock)
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('dadf24e711075352c74c4b49ab43c33d444d14248752ac1bf53a15f8d9f103a5f19c0b7cc59539e6d697144b39718eaee828c27527ae8562d00ebbb895e5b8e6')
+sha512sums=('eabb434a2ef007e9fe2aaaaa98afdaffbe0e3b0b2f11df62148b833e037fc6d592b63d95c9bfb4a3d7ed00e526c1fea403003c90f3d35842e28a3727de33ab46')
 
 build() {
   cd ${_base}-${pkgver}
-  export PYTHONHASHSEED=0
   python -m build --wheel --skip-dependency-check --no-isolation
 }
 
@@ -23,7 +23,7 @@ check() {
   cd ${_base}-${pkgver}
   python -m venv --system-site-packages test-env
   test-env/bin/python -m install --optimize=1 dist/*.whl
-  test-env/bin/python -m pytest test -k 'not limiter_adapter'
+  test-env/bin/python -m pytest test
 }
 
 package() {
