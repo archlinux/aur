@@ -1,20 +1,25 @@
 pkgbase = workbench
 	pkgdesc = Learn and prototype with GNOME technologies
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/sonnyp/Workbench
-	arch = x86_64
+	arch = any
 	license = GPL3
 	checkdepends = appstream-glib
 	makedepends = git
 	makedepends = meson
-	depends = libadwaita
-	depends = glib2
-	depends = gtksourceview5
+	makedepends = npm
 	depends = gjs
-	depends = vte4-git
+	depends = gtksourceview5
+	depends = libadwaita
 	depends = libportal-gtk4
-	source = https://github.com/sonnyp/Workbench/archive/v1.2.0.tar.gz
-	b2sums = b9e5382d6175a134d7bac570e44b3304fdc010f6d26c38a040d23a137742c858597f57dcf5649a82a105bc3fd0c0abc0cc7941a33fe007f67ee16eb25140f8f0
+	depends = vte4-git
+	optdepends = gtk4-demos: GTK Demo, GTK Widget Factory, GTK Icon Browser
+	optdepends = highlight: syntax highlighting
+	optdepends = libadwaita-demos: Adwaita Demo
+	source = git+https://github.com/sonnyp/Workbench.git#tag=v1.2.0
+	source = git+https://github.com/sonnyp/troll.git
+	sha256sums = SKIP
+	sha256sums = SKIP
 
 pkgname = workbench
