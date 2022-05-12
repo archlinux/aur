@@ -1,0 +1,23 @@
+pkgbase = cbetar2
+	pkgdesc = A Buddhist text reader using CBETA APIs
+	pkgver = 19.2.2
+	pkgrel = 1
+	url = https://github.com/MrMYHuang/cbetar2
+	arch = x86_64
+	arch = aarch64
+	groups = base-devel
+	license = MIT
+	makedepends = python3
+	makedepends = wget
+	depends = gtk3
+	depends = libnotify
+	depends = nss
+	depends = at-spi2-core
+	depends = alsa-lib
+	depends = mesa
+	depends = libdrm
+	provides = cbetar2
+	conflicts = cbetar2
+	source = git+https://github.com/MrMYHuang/cbetar2.git#tag=19.2.2
+
+pkgname = cbetar2
