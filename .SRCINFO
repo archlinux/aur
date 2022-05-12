@@ -1,7 +1,7 @@
 pkgbase = skywire-bin
 	pkgdesc = Skywire: Decentralize the web. Skycoin.com
 	pkgver = 0.6.0
-	pkgrel = 17
+	pkgrel = 18
 	url = https://github.com/skycoin/skywire
 	install = skywire.install
 	arch = i686
