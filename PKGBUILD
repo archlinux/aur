@@ -2,19 +2,19 @@
 
 pkgname=ignition-physics
 pkgver=5.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Abstract physics interface designed to support simulation and rapid
 development of robot applications."
 arch=('x86_64')
-url="https://ignitionrobotics.org/libs/physics"
+url="https://gazebosim.org/libs/physics"
 license=('Apache')
 depends=('ignition-cmake' 'ignition-math' 'ignition-plugin' 'ignition-common'
          'libdart' 'sdformat')
 makedepends=('cmake')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-physics/archive/${pkgname}5_${pkgver}.tar.gz")
-sha256sums=('8b83eacaaf83196fd3a3ff164cb36a5859d434e359299ecf9259a6d4aebd7280')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-physics/archive/${pkgname}5_${pkgver}.tar.gz")
+sha256sums=('804acb8703b8bdc8601e865eb9f3944cd620d861122e933943017087719aef0e')
 
-_dir="ign-physics-${pkgname}5_${pkgver}"
+_dir="gz-physics-${pkgname}5_${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
