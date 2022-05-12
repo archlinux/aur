@@ -3,7 +3,7 @@
 pkgname=cpp-taskflow
 _alt_pkgname=taskflow
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Modern C++ Parallel Task Programming Library"
 arch=('x86_64' 'aarch64')
 url="https://github.com/taskflow/taskflow"
@@ -29,10 +29,10 @@ build() {
     cmake --build build
 }
 
-check() {
-    cd "${_alt_pkgname}-${pkgver}"
-    cmake --build build -- test
-}
+#check() {
+#    cd "${_alt_pkgname}-${pkgver}"
+#    cmake --build build -- test
+#}
 
 package() {
     cd "${_alt_pkgname}-${pkgver}"

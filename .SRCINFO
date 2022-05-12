@@ -1,7 +1,7 @@
 pkgbase = cpp-taskflow
 	pkgdesc = Modern C++ Parallel Task Programming Library
 	pkgver = 3.3.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/taskflow/taskflow
 	arch = x86_64
 	arch = aarch64
