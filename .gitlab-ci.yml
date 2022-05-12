@@ -50,7 +50,7 @@ push_package:
     - eval $(ssh-agent -s)
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
-    - ssh-keyscan gitlab.com aur.archlinux.com >> ~/.ssh/known_hosts
+    - ssh-keyscan gitlab.com aur.archlinux.org >> ~/.ssh/known_hosts
     - echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add -
     - git clone git@gitlab.com:nlr/fleet-orbit-aur.git
     - cp PKGBUILD .SRCINFO metadata.json fleet-orbit-aur/
