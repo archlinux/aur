@@ -11,7 +11,7 @@ depends=('c-ares' 'ffmpeg' 'gtk3' 'libevent' 'libxslt' 'minizip' 'nss' 're2' 'sn
 source=(
 	"https://cdn.apifox.cn/download/Apifox-linux-latest.zip"
 	"apifox.desktop")
-sha256sums=('68b417af6786499e70f7a8bc621460121b6fcd0d622ad5881d27fb3aa6f40839'
+sha256sums=('20951e47e17acc244fd40dd70f1511727f79cf8fa1640ff7bed920434a1728be'
             '538bd986b582053799128254b4fcd6edfd51d096b127cf6398555664497d76b0')
 options=(!strip)
 
