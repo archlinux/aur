@@ -1,6 +1,6 @@
 pkgbase = postgresql-lts
 	pkgdesc = Sophisticated object-relational DBMS
-	pkgver = 11.16
+	pkgver = 11.15
 	pkgrel = 1
 	url = https://www.postgresql.org/
 	arch = x86_64
@@ -8,6 +8,7 @@ pkgbase = postgresql-lts
 	makedepends = krb5
 	makedepends = libxml2
 	makedepends = python
+	makedepends = python2
 	makedepends = perl
 	makedepends = tcl>=8.6.0
 	makedepends = openssl>=1.0.0
@@ -18,8 +19,7 @@ pkgbase = postgresql-lts
 	makedepends = libldap
 	makedepends = llvm
 	makedepends = clang
-	options = debug
-	source = https://ftp.postgresql.org/pub/source/v11.16/postgresql-11.16.tar.bz2
+	source = https://ftp.postgresql.org/pub/source/v11.15/postgresql-11.15.tar.bz2
 	source = postgresql-run-socket.patch
 	source = postgresql-perl-rpath.patch
 	source = postgresql-lts.pam
@@ -28,7 +28,7 @@ pkgbase = postgresql-lts
 	source = postgresql-check-db-dir
 	source = postgresql-lts.sysusers
 	source = postgresql-lts.tmpfiles
-	sha256sums = 2dd9e111f0a5949ee7cacc065cea0fb21092929bae310ce05bf01b4ffc5103a5
+	sha256sums = c8f58e8ebd4f4567f4f9ba1032eb3e99e0251d87cbe3e564b485590e37a879e3
 	sha256sums = 8538619cb8bea51078b605ad64fe22abd6050373c7ae3ad6595178da52f6a7d9
 	sha256sums = fa7cc63936bce336fedf8ce8d11c8a0e051d6424a10570b991164386e96058cb
 	sha256sums = 57dfd072fd7ef0018c6b0a798367aac1abb5979060ff3f9df22d1048bb71c0d5
@@ -54,12 +54,11 @@ pkgname = postgresql-lts-docs
 	pkgdesc = HTML documentation for PostgreSQL
 	provides = postgresql-docs=11
 	conflicts = postgresql-docs
-	options = debug
 	options = docs
 
 pkgname = postgresql-lts
 	pkgdesc = Sophisticated object-relational DBMS
-	depends = postgresql-lts-libs>=11.16
+	depends = postgresql-lts-libs>=11.15
 	depends = krb5
 	depends = libxml2
 	depends = readline>=6.0
@@ -68,6 +67,7 @@ pkgname = postgresql-lts
 	depends = icu
 	depends = systemd-libs
 	depends = libldap
+	optdepends = python2: for PL/Python 2 support
 	optdepends = python: for PL/Python 3 support
 	optdepends = perl: for PL/Perl support
 	optdepends = tcl: for PL/Tcl support
@@ -75,7 +75,6 @@ pkgname = postgresql-lts
 	optdepends = postgresql-old-upgrade: upgrade from previous major version using pg_upgrade
 	provides = postgresql=11
 	conflicts = postgresql
-	options = debug
 	options = staticlibs
 	backup = etc/pam.d/postgresql-lts
 	backup = etc/logrotate.d/postgresql-lts
