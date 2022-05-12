@@ -1,6 +1,6 @@
 pkgbase = gog-stellaris
 	pkgdesc = A strategy game with space exploration at its core
-	pkgver = 3.3.4
+	pkgver = 3.4.2
 	pkgrel = 1
 	url = https://www.gog.com/game/stellaris
 	arch = x86_64
@@ -16,12 +16,12 @@ pkgbase = gog-stellaris
 	depends = libx11
 	depends = libglvnd
 	depends = gcc-libs
-	optdepends = gog-stellaris-anniversary-portraits=3.3.4
-	optdepends = gog-stellaris-horizon-signal=3.3.4
-	source = stellaris_3_3_4.sh::gogdownloader://1508702879/en3installer0
+	optdepends = gog-stellaris-anniversary-portraits=3.4.2
+	optdepends = gog-stellaris-horizon-signal=3.4.2
+	source = stellaris_3_4_2.sh::gogdownloader://1508702879/en3installer0
 	source = Stellaris.desktop
 	source = start-stellaris.sh
-	sha512sums = 5e074fc548fb8a823c660aca848dc052adb1a59774b0a04e16aa6eaf22191a1e41f9bbb1f94d8bfb9dff1f5555270d204415936793d434d9e017b4f23215643d
+	sha512sums = 7733e1e1cd00be924a2357346a68f71e965b31d77b29d8dbc5cb727816d5c43b6e7c5514e84d285b2fde94d4928929dcc064dd61725c416e5bb8b01fcd8fe61f
 	sha512sums = adb27526719b22f71211cd0398f1323a3821821f12fd6998f592eb5e31c0891234f2505e7eb0b685588116b305aaf33b78670539b26440744befc351b4776827
 	sha512sums = 909ba5ce65d6906f7357ad12f5f9cf3a2c81c15bd6414298b91616236754c1d4bff32f0ab0f83f6449e8c6adda669351ce23fbdd80c1366b6d36c862c6435603
 
