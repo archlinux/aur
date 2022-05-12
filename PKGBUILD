@@ -42,7 +42,9 @@ pkgver() {
 
 prepare() {
     echo -n "    Verifying checksum for ${_debname} ..."
-    sha256sum -c ${_debname}.sha256 >/dev/null
+    _expected=$(cut -d ' ' -f1 ${_debname}.sha256)
+    _actual=$(sha256sum ${_debname} | cut -d ' ' -f1)
+    [[ ${_expected} == ${_actual} ]]
     echo " Passed"
 
     echo -n "    Verifying PGP for ${_debname} ..."
