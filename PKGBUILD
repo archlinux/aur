@@ -51,7 +51,7 @@ _major=5.17
 _minor=7
 pkgver=${_major}.${_minor}
 _srcname=linux-${pkgver}
-pkgrel=1
+pkgrel=2
 pkgdesc='Linux UKSM'
 arch=('x86_64')
 url="https://github.com/dolohow/uksm"
@@ -62,7 +62,7 @@ makedepends=('bc' 'libelf' 'python-sphinx' 'python-sphinx_rtd_theme'
              'texlive-latexextra' 'xmlto')
 #_lucjanpath="https://raw.githubusercontent.com/sirlucjan/kernel-patches/master/${_major}"
 _lucjanpath="https://gitlab.com/sirlucjan/kernel-patches/raw/master/${_major}"
-_uksm_path="uksm-patches"
+_uksm_path="uksm-patches-v3"
 #_uksm_path="https://raw.githubusercontent.com/dolohow/uksm/master/v5.x"
 #_uksm_path="https://raw.githubusercontent.com/zaza42/uksm/master"
 _uksm_patch="0001-UKSM-for-${_major}.patch"
@@ -322,7 +322,7 @@ done
 
 sha512sums=('c70ce704b65bba14237e1ca042add6ca075b08d65e9b90d5441962ee2e6a70a58da72ee847a17917e5d170021933eea6b681a5774454f2228b2153e76b440c97'
             'SKIP'
-            'bb458673cd6d1d71c78edeb06c1c5e9ee663e43c0a058c87ac7a0cf542192d8478d06c9df60c2d7032289d7bf31953b41475638c30cd52e54c18c6e7c06f09bd'
+            'bb4112478bddf199b8acdce1bc98368c5014b163952f63f43e1b83b2396534650245a47fd92ea4569129fc94c4279b995b999c9c47bb0f33f455c65631a09765'
             'b63921b6246bd1b9545a8042d76334bef8a7ee46e5404c5efec4a842a455a84046e92423b2bc6d950f19dcf85805d7493fe71d6d177e3b46b52a279b0a44d0c9'
             'db7645d57a8439e60f68dc58bcf26c106f170847a4dc2ce8de1fae1e021382d5330676fadd7af49519b5bb7e1f0b28a66595b4eaf32ea1c616d4e2c95fae9a23'
             'e898db1663004c60758f74868da0fc4c36cb9c20cb53768b875f12b1af86c9b9d1891f6046ae3a06213b4a6e4259d34b86be865713c85883fef80259a966e558'
