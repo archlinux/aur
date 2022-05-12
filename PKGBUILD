@@ -1,7 +1,7 @@
 # Maintainer: Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=python-galois
 _name=${pkgname#python-}
-pkgver=0.0.26
+pkgver=0.0.28
 pkgrel=1
 pkgdesc="A performant NumPy extension for Galois fields and their applications"
 arch=('x86_64')
@@ -20,7 +20,7 @@ makedepends=(
 )
 checkdepends=('python-pytest')
 source=("${_name}-${pkgver}.tar.gz::https://github.com/mhostetter/${_name}/archive/refs/tags/v${pkgver}.tar.gz")
-sha256sums=('911131602a6c628579d1ef60a9fb0e08ff7e412be9dd19c75815f53d57ca7430')
+sha256sums=('ed374bfde45fac376cd4a68e50d69497f10b26a9cabfa81560af8227db3e0e5d')
 
 build() {
     cd "${srcdir}/${_name}-${pkgver}"
