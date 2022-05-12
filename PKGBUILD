@@ -1,6 +1,6 @@
 # Maintainer: Zacharias Knudsen <zachasme@gmail.com>
 pkgname=gog-unreal-tournament-goty
-pkgver=2.0.0.5
+pkgver=2.0.0.6
 pkgrel=10
 pkgdesc="Unreal Tournament (99): Game of the Year Edition. GOG Version."
 arch=('x86_64')
