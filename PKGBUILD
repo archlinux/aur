@@ -2,7 +2,7 @@
 # Contributor: Gaël Donval <gdonval+aur at google mail>
 pkgname=dynd
 pkgver=0.7.2
-pkgrel=3
+pkgrel=4
 pkgdesc="C++ dynamic ndarray library, with Python exposure"
 arch=('x86_64')
 url="http://lib${pkgname}.org"
@@ -23,7 +23,7 @@ build() {
     -B build \
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_CXX_FLAGS="-Wno-error=tautological-compare -Wno-error=class-memaccess -Wno-error=deprecated-copy -Wno-error=implicit-fallthrough -Wno-error=parentheses" \
+    -DCMAKE_CXX_FLAGS="-Wno-error=tautological-compare -Wno-error=class-memaccess -Wno-error=deprecated-copy -Wno-error=implicit-fallthrough -Wno-error=parentheses -Wno-error=deprecated-declarations" \
     -DCMAKE_CXX_STANDARD=14 \
     -DCMAKE_CXX_COMPILER=g++ \
     -DDYND_SHARED_LIB=ON \
