@@ -40,11 +40,11 @@ cd "$HOME" || exit
 FILE="./.bashrc"
 STRING="source /usr/share/nvm/init-nvm.sh"
 if [ -z "$(grep "$STRING" "$FILE")" ]; then
-    echo "$STRING" >>$FILE
+    echo "\n$STRING" >>$FILE
 fi
 FILE=./.zshrc
 if [ -z "$(grep "$STRING" "$FILE")" ]; then
-    echo "$STRING" >>$FILE
+    echo "\n$STRING" >>$FILE
 fi
 
 # ssh-agent
@@ -64,19 +64,19 @@ ssh-add -lq > /dev/null || ssh-add
 EOF
 )
 if [ -z "$(grep "# ssh-agent at startup" "$FILE")" ]; then
-    echo "$STRING" >>$FILE
+    echo "\n$STRING" >>$FILE
 fi
 FILE="./.zshrc"
 if [ -z "$(grep "# ssh-agent at startup" "$FILE")" ]; then
-    echo "$STRING" >>$FILE
+    echo "\n$STRING" >>$FILE
 fi
 
 # ssh-config
 cd "$HOME" || exit
 FILE="./.ssh/config"
-STRING="\nAddKeysToAgent  yes"
+STRING="AddKeysToAgent  yes"
 if [ -z "$(grep "$STRING" "$FILE")" ]; then
-    echo "$STRING" >>$FILE
+    echo "\n$STRING" >>$FILE
 fi
 
 # ncmpcpp spotify
