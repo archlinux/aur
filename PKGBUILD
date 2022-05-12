@@ -1,38 +1,51 @@
-# Maintainer:  mrshpot <mrshpot at gmail dot com>
-# Contributor:  veox <box 55 [shift-two] mail [dot] ru>
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=cl-trivial-garbage
-_clname=trivial-garbage   # used in CL scope, not package scope
-pkgver=0.20
+_pkgname="${pkgname#cl-}"
+pkgver=0.21.r8.gb3af9c0
 pkgrel=1
-pkgdesc="Provides a portable API to finalizers, weak hash-tables and weak pointers on all major implementations of the Common Lisp programming language"
-arch=('i686' 'x86_64')
-url="https://common-lisp.net/project/trivial-garbage/"
-license=('BSD')
+pkgdesc='Provides a portable API to finalizers, weak hash-tables & weak pointers across multiple Common Lisp implementations'
+arch=('any')
+url='https://trivial-garbage.common-lisp.dev/'
+license=('custom:Public')
+depends=('common-lisp' 'cl-asdf')
+makedepends=('git' 'sbcl')
+#checkdepends=('cl-rt')
+_commit='b3af9c0c25d4d4c271545f1420e5ea5d1c892427'
+source=("$pkgname::git+https://github.com/trivial-garbage/trivial-garbage#commit=$_commit")
+b2sums=('SKIP')
 
-depends=('common-lisp')
+pkgver() {
+  cd "$pkgname"
 
-install=cl-trivial-garbage.install
-source=("https://github.com/trivial-garbage/trivial-garbage/archive/v0.20.tar.gz")
-md5sums=('fa4c768866c7a2b76c43422233bea5d0')
-options=(docs)
+  git describe --tags | sed -e 's/^v//' -e 's/-/.r/' -e 's/-/./g'
+}
 
+prepare() {
+  cd "$pkgname"
+
+  # extract license
+  sed -n '/^It/p' README.md > LICENSE
+}
 
 package() {
+  cd "$pkgname"
 
-	install -d ${pkgdir}/usr/share/common-lisp/source/${_clname}
-        install -d ${pkgdir}/usr/share/common-lisp/systems
-#	install -d ${pkgdir}/usr/share/licenses/${pkgname}
+  # create directories
+  install -vd \
+    "$pkgdir/usr/share/common-lisp/source/$_pkgname" \
+    "$pkgdir/usr/share/common-lisp/systems"
 
-	install -m 644 -t ${pkgdir}/usr/share/common-lisp/source/${_clname} \
-		${srcdir}/${_clname}-${pkgver}/*.lisp
-	install -m 644 -t ${pkgdir}/usr/share/common-lisp/source/${_clname} \
-		${srcdir}/${_clname}-${pkgver}/*.asd
-#	install -m 644 -t ${pkgdir}/usr/share/licenses/${pkgname} \
-#		${srcdir}/${pkgname}-${pkgver}/COPYING
+  # library
+  install -vDm644 -t "$pkgdir/usr/share/common-lisp/source/$_pkgname" ./*.{lisp,asd} build.xcvb
 
-	cd ${pkgdir}/usr/share/common-lisp/systems
-	ln -s ../source/${_clname}/${_clname}.asd .
+  pushd "$pkgdir/usr/share/common-lisp/systems"
+  ln -s "../source/$_pkgname"/*.asd .
+  popd
 
-	# TODO: docs (SPEC/README)
+  # documentation
+  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
+
+  # license
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE
 }
