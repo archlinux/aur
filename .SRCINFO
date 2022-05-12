@@ -1,7 +1,7 @@
 pkgbase = zoneminder
 	pkgdesc = A full-featured, open source, state-of-the-art video surveillance software system
-	pkgver = 1.36.12
-	pkgrel = 2
+	pkgver = 1.36.15
+	pkgrel = 1
 	url = https://www.zoneminder.com/
 	install = zoneminder.install
 	arch = any
@@ -54,7 +54,7 @@ pkgbase = zoneminder
 	backup = etc/nginx/sites-available/zoneminder.conf
 	backup = etc/httpd/conf/extra/zoneminder.conf
 	backup = etc/php/conf.d/zoneminder.ini
-	source = zoneminder-git::git+https://github.com/ZoneMinder/zoneminder.git#tag=1.36.12
+	source = zoneminder-git::git+https://github.com/ZoneMinder/zoneminder.git#tag=1.36.15
 	source = zoneminder-nginx.conf
 	source = zoneminder-httpd.conf
 	source = zoneminder-php.ini

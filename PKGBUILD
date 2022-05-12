@@ -14,8 +14,8 @@
 
 
 pkgname=zoneminder
-pkgver=1.36.12
-pkgrel=2
+pkgver=1.36.15
+pkgrel=1
 pkgdesc='A full-featured, open source, state-of-the-art video surveillance software system'
 arch=('any')
 url='https://www.zoneminder.com/'
@@ -92,6 +92,7 @@ build() {
           -DZM_WEBDIR=/usr/share/webapps/$pkgname/www \
           -DZM_CGIDIR=/usr/share/webapps/$pkgname/cgi-bin \
           -DZM_WEB_USER=http .
+          #-DCMAKE_CXX_FLAGS=-fpermissive .
 
     make
 }
