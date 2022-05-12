@@ -1,21 +1,23 @@
 pkgname=briar-desktop-bin
 _pkgname=briar-desktop
-pkgver=0.2.0.beta
-pkgrel=3
-_bin_ver=0.2.0
+pkgver=0.2.1.beta
+pkgrel=1
+_bin_ver=0.2.1
 _build_type=beta
 pkgdesc='Prototyping the next generation for Briar on desktop devices'
 arch=(any)
 url="https://code.briarproject.org/briar/briar-desktop"
 license=('GPL')
 depends=('java-runtime=17' 'bash')
+conflicts=(${_pkgname})
+provides=(${_pkgname})
 source=("https://desktop.briarproject.org/jars/linux/${_bin_ver}-${_build_type}/${_pkgname}-linux-${_bin_ver}-${_build_type}.jar"
         "${_pkgname}.svg::https://code.briarproject.org/briar/${_pkgname}/-/raw/main/src/main/resources/images/logo_circle.svg"
         "briar16.png" "briar32.png" "briar48.png" "briar64.png" "briar128.png" "briar192.png"
         "${_pkgname}.desktop"
         "https://code.briarproject.org/briar/briar-desktop/-/raw/${_bin_ver}-${_build_type}/src/appResources/linux/org.briarproject.Briar.metainfo.xml")
 noextract=("${_pkgname}-linux-${_bin_ver}-${_build_type}.jar")
-sha256sums=('1f31a0e0e3a1364172f8bfbf1d24bc34d4fe654fba83168d728ed0fb379ea591'
+sha256sums=('900023fdb986bceb0da754ed76fae6163e60316b5c5db7cdbee4f71c0af80de4'
             '95400a8578272600e0b350c4b664c09631c737ce11e750faefe27473460d7923'
             '965d7c617e345b809f84c8bf73d9cb0acaf763c16a4b367698218b90c1c92669'
             '3feb96f9b9c01085170a44fdbf8bca43b1e586fe3b68dab37fb5cb9fd4ca1fa6'
@@ -24,7 +26,7 @@ sha256sums=('1f31a0e0e3a1364172f8bfbf1d24bc34d4fe654fba83168d728ed0fb379ea591'
             '2a3e508279c2a440372bf73da2c4acf56a9b7a0bcad886a74863f5a723413a93'
             'a00d60b7aa59fb573c2e42f8bb4c23eb7038c91ea5ced47ebf9d537e3f3925cf'
             'ac7f0dc86bce256dc80fbee7c65705b6dc9cdbd8f0ad942f0535f82b65ef2f83'
-            '96dbb546cea8de1be1beeb1b221dfce0a152f9b9428c5b01c8b7b4eabe5deb84')
+            '11245c91ad0784c50a7c71cdc6820ab7f64d088805eaa24066f6b967af19df35')
 
 package() {
   install -dm755 "$pkgdir/usr/bin/"
