@@ -53,7 +53,6 @@ push_package:
     - ssh-keyscan gitlab.com aur.archlinux.com >> ~/.ssh/known_hosts
     - echo "${SSH_PRIVATE_KEY}" | tr -d '\r' | ssh-add -
     - git clone git@gitlab.com:nlr/fleet-orbit-aur.git
-    - git remote add aur ssh://aur@aur.archlinux.org/fleet-orbit.git
     - cp PKGBUILD .SRCINFO metadata.json fleet-orbit-aur/
     - cd fleet-orbit-aur/
     - git config user.name "[BOT] Gilbert Gilb's"
@@ -65,4 +64,5 @@ push_package:
           git commit -m "Update to ${pkgver}."
         fi
     - git push origin HEAD:main
+    - git remote add aur ssh://aur@aur.archlinux.org/fleet-orbit.git
     - git push aur HEAD:master
