@@ -1,24 +1,25 @@
 pkgbase = nvidia-beta-dkms
 	pkgdesc = NVIDIA driver sources for linux (beta version)
-	pkgver = 510.68.02
+	pkgver = 515.43.04
 	pkgrel = 1
 	url = https://www.nvidia.com/
 	arch = x86_64
 	license = custom
-	provides = nvidia=510.68.02
-	provides = nvidia-dkms=510.68.02
-	provides = nvidia-beta=510.68.02
+	provides = nvidia=515.43.04
+	provides = nvidia-dkms=515.43.04
+	provides = nvidia-beta=515.43.04
 	provides = NVIDIA-MODULE
 	conflicts = nvidia
 	conflicts = nvidia-dkms
-	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/510.68.02/NVIDIA-Linux-x86_64-510.68.02-no-compat32.run
+	options = !strip
+	source = https://us.download.nvidia.com/XFree86/Linux-x86_64/515.43.04/NVIDIA-Linux-x86_64-515.43.04-no-compat32.run
 	source = 110-nvidia-change-dkms-conf.patch
 	source = 120-nvidia-linux-rt-gift.patch
-	sha256sums = 570570b42a982ee91f05e89672e6dccf9739336a94f411cd33208536c8122917
-	sha256sums = 1580a25f57c6722e1736abe595b2f35f5b02f4ba3e9fdf04978bf7524c2af8b1
-	sha256sums = d669f45bbe75bf5b490168eb599b8492fca502930b8a34d730b803adba13381f
+	sha256sums = 2a7010cbdfd0fbbbfbd81b2a95b8624fb3c8e3c2d37d9fdeed96f06e7ff1443e
+	sha256sums = 925553c2491d3726bce65f9d0b5be62b006c824cc2fc0398c710150453128056
+	sha256sums = 291bc6568e18496a4c2e732fd8616f6d536d8e9f3ab51f1959e3fc08f0de126b
 
 pkgname = nvidia-beta-dkms
 	depends = dkms
-	depends = nvidia-utils-beta>=510.68.02
+	depends = nvidia-utils-beta=515.43.04
 	depends = libglvnd
