@@ -1,7 +1,7 @@
 # Author: futpib <futpib@gmail.com>
 
 pkgname=pagraphcontrol-git
-pkgver=1.0.13.r4.g128d65c
+pkgver=1.0.13.r8.gf27d135
 pkgrel=1
 pkgdesc="PulseAudio Graph Control"
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('papeaks-git')
 makedepends=('git' 'nodejs' 'yarn' 'node-gyp' 'python' 'unzip')
 provides=('pagraphcontrol')
 conflicts=('pagraphcontrol')
-source=("git://github.com/futpib/pagraphcontrol.git")
+source=("git+https://github.com/futpib/pagraphcontrol.git")
 sha256sums=('SKIP')
 
 _pkgname=${pkgname%%-git}
