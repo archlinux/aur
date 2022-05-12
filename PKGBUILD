@@ -1,7 +1,7 @@
 # Maintainer: Pekka Ristola <pekkarr [at] protonmail [dot] com>
 
 _cranname=RSQLite
-_cranver=2.2.13
+_cranver=2.2.14
 pkgname=r-${_cranname,,}
 pkgver=${_cranver//[:-]/.}
 pkgrel=1
@@ -33,7 +33,7 @@ optdepends=(
     r-xml2
 )
 source=("https://cran.r-project.org/src/contrib/${_cranname}_${_cranver}.tar.gz")
-sha256sums=('474424e6366d650dd88daf19417bc071782b768beb173f797dd5eb732f296daf')
+sha256sums=('2ae36a875ebc02497985b2ad9ddc6a5434f576e2ab25769580749d9e4f3b607c')
 
 prepare() {
   cd "${_cranname}"

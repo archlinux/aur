@@ -1,6 +1,6 @@
 pkgbase = r-rsqlite
 	pkgdesc = SQLite Interface for R
-	pkgver = 2.2.13
+	pkgver = 2.2.14
 	pkgrel = 1
 	url = https://cran.r-project.org/package=RSQLite
 	arch = i686
@@ -27,7 +27,7 @@ pkgbase = r-rsqlite
 	optdepends = r-rvest
 	optdepends = r-testthat
 	optdepends = r-xml2
-	source = https://cran.r-project.org/src/contrib/RSQLite_2.2.13.tar.gz
-	sha256sums = 474424e6366d650dd88daf19417bc071782b768beb173f797dd5eb732f296daf
+	source = https://cran.r-project.org/src/contrib/RSQLite_2.2.14.tar.gz
+	sha256sums = 2ae36a875ebc02497985b2ad9ddc6a5434f576e2ab25769580749d9e4f3b607c
 
 pkgname = r-rsqlite
