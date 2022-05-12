@@ -1,7 +1,7 @@
 pkgbase = runit-conversion
 	pkgdesc = Convert your system to use runit instead of systemd
 	pkgver = 9
-	pkgrel = 2
+	pkgrel = 3
 	url = https://github.com/42LoCo42/runit-conversion
 	arch = any
 	license = GPL
