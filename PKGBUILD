@@ -4,8 +4,8 @@
 # Maintainers: Xenhat Hex (me@xenh.at), Justin Jagieniak <justin@jagieniak.net>
 # shellcheck disable=2034,3030,2154
 pkgname=alchemy-next-viewer-git
-pkgver=6.5.3.48028.1339287b13
-pkgrel=4
+pkgver=6.5.5.48672.53b082b0a2
+pkgrel=1
 pkgdesc="This is the next generation of Alchemy Viewer! - Git Source build"
 arch=('x86_64')
 url=https://www.alchemyviewer.org
@@ -50,8 +50,9 @@ prepare() {
 
 build() {
     cd "${pkgname}" || exit 1
-    virtualenv ".venv" -p python3
-    source ".venv/bin/activate"
+    # virtualenv ".venv" -p python3
+    # source ".venv/bin/activate"
+    pip install --upgrade certifi
     if command -v autobuild; then
         abver="$(autobuild --version)"
         echo "Found ${abver}"
