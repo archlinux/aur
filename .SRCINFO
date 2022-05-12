@@ -1,7 +1,7 @@
 pkgbase = phive
 	pkgdesc = The Phar Installation and Verification Environment (PHIVE)
 	pkgver = 0.15.1
-	pkgrel = 1
+	pkgrel = 2
 	url = https://phar.io/
 	arch = any
 	license = BSD
@@ -9,6 +9,6 @@ pkgbase = phive
 	source = https://github.com/phar-io/phive/releases/download/0.15.1/phive-0.15.1.phar
 	source = https://raw.githubusercontent.com/phar-io/phive/0.15.1/LICENSE
 	sha256sums = dfd3804452a20bca40c1c8e5f7a2cd0f470bc442c43f256c890990becc467bb0
-	sha256sums = f62736135d723e01824a7cf72e6f0de43730ef6dadab5c57fbc1681f1fed4e3d
+	sha256sums = 0f82a7f0e108b2619484f62ef2e4d4d198edbee328be61c0def642c4b42be9a6
 
 pkgname = phive
