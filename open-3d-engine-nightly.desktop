@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Open 3D Engine (Nightly)
+GenericName=Game Engine
+Comment=An open-source, real-time 3D development engine
+Type=Application
+Exec=/usr/bin/o3de-nightly %U
+Icon=o3de-nightly
+Terminal=false
+Categories=Development;Graphics;3DGraphics;
+Keywords=o3de;3d;animation;lumberyard;aws;amazon;cryengine;game;
