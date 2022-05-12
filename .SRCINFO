@@ -1,7 +1,7 @@
 pkgbase = git-pile
 	pkgdesc = Manage a pile of patches on top of a git branch
 	pkgver = 0.99
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/git-pile/git-pile
 	arch = any
 	license = LGPL
