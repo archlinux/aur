@@ -11,7 +11,7 @@ pkgdesc='Sophisticated object-relational DBMS'
 url='https://www.postgresql.org/'
 arch=('x86_64')
 license=('custom:PostgreSQL')
-makedepends=('krb5' 'libxml2' 'python' 'python2' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0'
+makedepends=('krb5' 'libxml2' 'python' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0'
              'pam' 'zlib' 'icu' 'systemd' 'libldap' 'llvm' 'clang')
 options=('debug')
 source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2
@@ -84,7 +84,7 @@ build() {
 
   # regular build with everything
   ./configure ${configure_options[@]} \
-    PYTHON=/usr/bin/python2
+    PYTHON=/usr/bin/python3
   make -s world
 }
 
@@ -166,8 +166,7 @@ package_postgresql-lts() {
   provides=("postgresql=$_majorver")
   conflicts=("postgresql")
   depends=("postgresql-lts-libs>=${pkgver}" 'krb5' 'libxml2' 'readline>=6.0' 'openssl>=1.0.0' 'pam' 'icu' 'systemd-libs' 'libldap')
-  optdepends=('python2: for PL/Python 2 support'
-              'python: for PL/Python 3 support'
+  optdepends=('python: for PL/Python 3 support'
               'perl: for PL/Perl support'
               'tcl: for PL/Tcl support'
               'llvm: for JIT compilation support'
