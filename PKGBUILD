@@ -1,23 +1,23 @@
 # Maintainer: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
-
+# Maintainer: Solomon Choina <shlomochoina@gmail.com>
 pkgname=bluefish-svn
-pkgver=8580
+pkgver=r8904
 pkgrel=1
 pkgdesc="SVN version of the programmer's HTML editor written using GTK"
 arch=('i686' 'x86_64')
 url="http://bluefish.openoffice.nl/"
 license=('GPL')
-depends=('aspell>=0.60.4-2' 'libxml2' 'gtk2' 'desktop-file-utils' 'hicolor-icon-theme')
+depends=('gtk3' 'enchant')
 makedepends=('intltool' 'perl-xml-libxml' 'pkgconfig' 'subversion' 'automake' 'autoconf' 'libtool')
-optdepends=('python2: for self written extensions')
+optdepends=('python: for self written extensions')
 provides=('bluefish')
 conflicts=('bluefish')
-install=$pkgname.install
 source=(svn+svn://svn.code.sf.net/p/bluefish/code/trunk/bluefish)
 
 pkgver() {
   cd "${srcdir}/bluefish"
-   svnversion | tr -d [A-z]
+  local ver="$(svnversion)"
+  printf "r%s" "${ver//[[:alpha:]]}"
 }
 
 build() {
