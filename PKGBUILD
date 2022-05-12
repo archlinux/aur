@@ -2,18 +2,18 @@
 
 pkgname=ignition-rendering
 pkgver=6.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="C++ library designed to provide an abstraction for different rendering
 engines. It offers unified APIs for creating 3D graphics applications."
 arch=('x86_64')
-url="https://ignitionrobotics.org/libs/rendering"
+url="https://gazebosim.org/libs/rendering"
 license=('Apache')
 depends=('ignition-common' 'ignition-math' 'ignition-plugin' 'ogre=1.9')
 makedepends=('cmake' 'ignition-cmake')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-rendering/archive/${pkgname}6_${pkgver}.tar.gz")
-sha256sums=('ca39bd98777c87ad4010a70f915e46b78baaa74e64a43f0b6468819f1aa20f1e')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-rendering/archive/${pkgname}6_${pkgver}.tar.gz")
+sha256sums=('5418ddda96dbf65cd93d08c71710073bc1ef0ea3e6bc6a45989fb7e10f266615')
 
-_dir="ign-rendering-${pkgname}6_${pkgver}"
+_dir="gz-rendering-${pkgname}6_${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
