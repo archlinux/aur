@@ -2,7 +2,7 @@
 
 pkgname="mymonero"
 pkgver=1.2.7
-pkgrel=1
+pkgrel=2
 
 pkgdesc="The simplest way to use the next-generation private digital currency Monero, at the sweet spot between security, convenience, and features."
 arch=('x86_64')
@@ -66,6 +66,6 @@ package() {
 
 	# Remove unused files
 	rm -vrf "${pkgdir}/opt/${pkgname}"/{usr,swiftshader,AppRun,${pkgname}.{desktop,png}}
-	rm -vrf "${pkgdir}/opt/${pkgname}"/{libGLESv2.so,libEGL.so,libvk_swiftshader.so,libvulkan.so}
-	rm -vrf "${pkgdir}/opt/${pkgname}"/{locales,LICENSE*}
+	#rm -vrf "${pkgdir}/opt/${pkgname}"/{libGLESv2.so,libEGL.so,libvk_swiftshader.so,libvulkan.so}
+	#rm -vrf "${pkgdir}/opt/${pkgname}"/{locales,LICENSE*}
 }
