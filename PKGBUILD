@@ -1,9 +1,9 @@
 # Maintainer: Ludvig Hozman <ludvig.hozman@gmail.com>
 
 pkgname=plex-htpc
-pkgver=1.15.1
+pkgver=1.16.0
 pkgrel=1
-_snaprev=2976-fcfa7363
+_snaprev=2993-114696e8
 pkgdesc="Plex HTPC application for linux"
 arch=('x86_64')
 url='http://plex.tv'
@@ -12,7 +12,7 @@ makedepends=('squashfs-tools')
 depends=('qt5-base' 'qt5-svg' 'qt5-webengine' 'qt5-quickcontrols' 'mpv')
 optdepends=('qt5-wayland: Wayland support' 'libva: GPU accelerated decoding')
 source=("https://downloads.plex.tv/htpc/${pkgver}.${_snaprev}/linux/plex-htpc_${pkgver}_amd64.snap" "qt.conf")
-sha256sums=('5521d9b06175a484e778140e046cec781b0ef78b5c0ec45e8765adb2cf2a58a9'
+sha256sums=('ddf0e8d59a5fd4595a2b7a2821b8cb320d33f4ff58e2f3afc812ae72494e9aa9'
             '40d1b22236d9d2312d16563493b8c6d69134c5aa54ff6d1531243133fb46f083')
 
 prepare() {
