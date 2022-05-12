@@ -1,7 +1,7 @@
 # Maintainer: Michał Wojdyła < micwoj9292 at gmail dot com >
 _name=pyHanko
 pkgname='python-pyhanko'
-pkgver=0.12.1
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="Tools for stamping and signing PDF files"
 url="https://github.com/MatthiasValvekens/pyHanko"
@@ -11,7 +11,7 @@ depends=('python-pyhanko-certvalidator' 'python-pytz' 'python-qrcode' 'python-tz
          'python-click' 'python-pyyaml')
 makedepends=('python-setuptools' 'python-pytest-runner' 'python-wheel')
 source=("${_name}-${pkgver}.tar.gz::https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-$pkgver.tar.gz")
-sha256sums=('59072dcd50ff45ef770880a74a9a3f96765ad70fba63075ade532bab21b30327')
+sha256sums=('0aec55960fb39160bdf83dfb8177b5b7359ad225d40a31344f0b0413348f2f0a')
 
 build() {
   cd "$srcdir/${_name}-${pkgver}"
