@@ -1,8 +1,8 @@
 # Maintainer: Benjamin Landis <bmlandis2010@gmail.com>
 
 pkgname=mpv-vapoursynth
-_tag='79b4060a573e83ae42d51d995bca1ccf80690997' # git rev-parse v${pkgver}
-pkgver=0.34.0
+_tag='df6d84c1cf4bbc2b998f4d320542c78df674512d' # git rev-parse v${pkgver}
+pkgver=0.34.1
 pkgrel=1
 pkgdesc='A free, open source, and cross-platform media player (with Vapoursynth libs)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
