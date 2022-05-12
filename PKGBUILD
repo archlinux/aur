@@ -1,8 +1,8 @@
 # Maintainer: Dušan Simić <dusan.simic1810@gmail.com>
 
 pkgname=colorway
-_commit=40c29cb0d3fa2aadb199d8154bce954710489120
-pkgver=1.1.0
+_commit=b7ff8cf47032251b62e55798c6808f226bd21392
+pkgver=1.2.0
 pkgrel=1
 pkgdesc='Generate color pairings'
 arch=(x86_64)
@@ -20,9 +20,7 @@ build() {
 }
 
 check() {
-	:
-	# TODO: Add once desktop file is fixed
-	#meson test -C build
+	meson test -C build
 }
 
 package() {
