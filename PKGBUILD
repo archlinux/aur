@@ -1,8 +1,8 @@
 # Maintainer: Amirabbas Fazelinia <utilyre@protonmail.com>
 pkgname="utilyre-st-git"
 _reponame="st"
-pkgver="0.8.5"
-pkgrel="4"
+pkgver="0.8.6"
+pkgrel="1"
 pkgdesc="A simple virtual terminal emulator for X"
 arch=("x86_64")
 url="https://github.com/utilyre/st.git"
