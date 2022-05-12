@@ -2,11 +2,11 @@
 
 pkgname=ignition-sensors
 pkgver=6.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides numerous sensor models designed to generate realistic data
 from simulation environments."
 arch=('x86_64')
-url="https://ignitionrobotics.org/libs/sensors"
+url="https://gazebosim.org/libs/sensors"
 license=('Apache')
 depends=(
     ignition-transport
@@ -16,10 +16,10 @@ depends=(
     sdformat
 )
 makedepends=('cmake')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/ignitionrobotics/ign-sensors/archive/${pkgname}6_${pkgver}.tar.gz")
-sha256sums=('c0dc02e948f119ebe1173da312041e65ace11051c1f572732233d2b121cc74d5')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/gazebosim/gz-sensors/archive/${pkgname}6_${pkgver}.tar.gz")
+sha256sums=('c8a4d813cc6b689b27552a40dea75687b244111df720726b485a9d1ad89ad1f4')
 
-_dir="ign-sensors-${pkgname}6_${pkgver}"
+_dir="gz-sensors-${pkgname}6_${pkgver}"
 
 build() {
   cd "$srcdir/$_dir"
