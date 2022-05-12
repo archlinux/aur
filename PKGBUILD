@@ -6,7 +6,7 @@
 pkgbase=linux-hardened-git
 _srcname=${pkgbase/-git/}
 _gitbranch=5.17
-pkgver=5.17.5.r1076480.g15066880c14f
+pkgver=5.17.7.r1076846.g16074dafd33b
 pkgrel=1
 pkgdesc='Security-Hardened Linux'
 url='https://github.com/anthraxx/linux-hardened'
@@ -28,7 +28,7 @@ validpgpkeys=(
   'E240B57E2C4630BA768E2F26FC1B547C8D8172C8'  # Levente Polyak
 )
 sha256sums=('SKIP'
-            'dad3d8436c34cf14e44d767f9a3a587004a4de124e20c6a356c02b873776e223')
+            '41d587552be62a8507ca843727b0a2f5a859240da947d2099ea33fe831368ba3')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase
