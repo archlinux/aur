@@ -14,7 +14,7 @@ _kernelname=-ACS-MANJARO
 _basekernel=5.17
 _basever=517
 pkgver=5.17.6
-pkgrel=2
+pkgrel=3
 arch=('x86_64')
 url="https://www.kernel.org/"
 license=('GPL2')
@@ -65,7 +65,7 @@ source=("https://www.kernel.org/pub/linux/kernel/v5.x/linux-${_basekernel}.tar.x
         '0999-acs.gitpatch')
 sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'
             '59d429643f4874cd24ed71c7d32881e3b337264b8d486c866703b3e96f9ae4cc'
-            'b0b5d7ef7013fc80f188ffd2462fb0eb4ff2e6bd1197b895aafd3c35a7743f51'
+            'ed3ab90a05858c95894117c27eafaf1f1f33dffe1f4a4f3df3e3755476ae1630'
             'f85b07d73b2f4ad8bb6b59ee6624b2dd06a03824fc7b00131a01df36c8d899fe'
             'fc9223bf2d430ab1c122daada4f51d835a74f56c007c82842eeca3acd2d788be'
             'f7eb15d563cdbb2c5d780559a1c9564ca8d2dd1ea79fc73a5cc8545278605dad'
