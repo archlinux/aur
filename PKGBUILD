@@ -2,7 +2,7 @@
 
 pkgname=nut-monitor
 pkgver=2.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI to manage devices connected a NUT server"
 arch=('any')
 url="http://www.networkupstools.org/"
@@ -37,7 +37,7 @@ package() {
   install -m 755 scripts/python/app/NUT-Monitor-py3qt5 ${pkgdir}/usr/bin
   install -m 644 scripts/python/app/nut-monitor.appdata.xml ${pkgdir}/usr/share/appdata
   install -m 644 scripts/python/app/pixmaps/* ${pkgdir}/usr/share/nut-monitor/pixmaps
-  install -m 644 scripts/python/app/ui/* ${pkgdir}/usr/share/nut-monitor/ui
+  install -m 644 scripts/python/app/ui/*.ui ${pkgdir}/usr/share/nut-monitor/ui
   install -m 644 scripts/python/app/icons/256x256/nut-monitor.png ${pkgdir}/usr/share/nut-monitor/icons/256x256
 
   for size in {48x48,64x64,256x256,scalable}; do
