@@ -1,6 +1,6 @@
 pkgbase = perl-pdl
 	pkgdesc = The Perl Data Language, a perl extension designed for scientific and bulk numeric data processing and display
-	pkgver = 2.078
+	pkgver = 2.079
 	pkgrel = 1
 	url = http://search.cpan.org/dist/PDL
 	arch = i686
@@ -37,10 +37,10 @@ pkgbase = perl-pdl
 	optdepends = plplot: for PDL::Graphics::PLplot support
 	optdepends = proj: for PDL::GIS::Proj and PDL::Transform::Proj4 support
 	options = !emptydirs
-	source = https://cpan.metacpan.org/authors/id/E/ET/ETJ/PDL-2.078.tar.gz
+	source = https://cpan.metacpan.org/authors/id/E/ET/ETJ/PDL-2.079.tar.gz
 	source = perldl.conf
 	source = Makefile.patch
-	md5sums = 06bfefeb90555ebe5fa2363d6864f891
+	md5sums = 420150b5543bc3087003f1304606db6c
 	md5sums = ac56f2a88b89d359a0dc80063d31cf59
 	md5sums = e2b2dff48643a5051a8f7d1ee9dc4ea9
 
