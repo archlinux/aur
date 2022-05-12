@@ -16,7 +16,7 @@ pkgver=${_gtkver}
 pkgrel=1
 pkgdesc="GTK3 patched to provide a more classic experience"
 url="https://github.com/lah7/gtk3-classic"
-conflicts=(gtk3 gtk3-typeahead gtk3-print-backends)
+conflicts=(gtk3 gtk3-typeahead gtk3-print-backends gtk3-nocsd gtk3-nocsd-git gtk3-nocsd-legacy-git)
 provides=(gtk3=$_gtkver gtk3-typeahead=$_gtkver gtk3-mushrooms=$_gtkver gtk3-print-backends
           libgtk-3.so libgdk-3.so libgailutil-3.so)
 arch=(x86_64)
@@ -122,7 +122,7 @@ package_lib32-gtk3-classic()
 		lib32-librsvg lib32-mesa lib32-libcups lib32-krb5 lib32-e2fsprogs
 		"gtk3-classic>=$pkgver"
 	)
-	conflicts=("lib32-gtk3")
+	conflicts=(lib32-gtk3 lib32-libgtk3-nocsd-git)
 	provides=("lib32-gtk3=$pkgver")
 
 	DESTDIR="$pkgdir" linux32 meson install -C build32
