@@ -28,6 +28,7 @@ class TagInfo(typing.TypedDict):
 class Metadata(typing.TypedDict):
     tag_info: TagInfo
     release_sha512sum: str
+    pkgrel: int
 
 
 def query_latest_tag_info() -> TagInfo:
@@ -46,15 +47,24 @@ def query_latest_tag_info() -> TagInfo:
 
 def refresh_metadata(tag_info: TagInfo) -> Metadata:
     release_sha512sum: typing.Optional[str] = None
+    pkgrel = 1
     if METADATA_PATH.exists():
         old_metadata: Metadata = json.loads(METADATA_PATH.read_text())
-        if tag_info == old_metadata["tag_info"]:
+        if tag_info["name"] == old_metadata["tag_info"]["name"]:
+            # Existing release, no need to re-compute checksum.
             release_sha512sum = old_metadata["release_sha512sum"]
+            # Get pkgrel from existing metadata.
+            pkgrel = old_metadata["pkgrel"]
+        else:
+            # New release, reset pkgrel.
+            pkgrel = 1
 
     metadata: Metadata = {
         "tag_info": tag_info,
-        "release_sha512sum": release_sha512sum
-        or compute_remote_checksum(tag_info["tarball_url"]),
+        "release_sha512sum": (
+            release_sha512sum or compute_remote_checksum(tag_info["tarball_url"])
+        ),
+        "pkgrel": pkgrel,
     }
 
     METADATA_PATH.write_text(json.dumps(metadata, sort_keys=True, indent=2))

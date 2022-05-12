@@ -61,7 +61,8 @@ push_package:
     - |
         if ! git diff --cached --exit-code; then
           pkgver="$(grep -E '^pkgver=' PKGBUILD | cut -d'=' -f2)"
-          git commit -m "Update to ${pkgver}."
+          pkgrel="$(grep -E '^pkgrel=' PKGBUILD | cut -d'=' -f2)"
+          git commit -m "Update to ${pkgver}-${pkgrel}."
         fi
     - git push origin HEAD:main
     - git remote add aur ssh://aur@aur.archlinux.org/fleet-orbit.git
