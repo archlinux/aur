@@ -1,7 +1,7 @@
 pkgbase = river-levee
 	pkgdesc = Statusbar for the river wayland compositor.
 	pkgver = 0.1.0
-	pkgrel = 2
+	pkgrel = 3
 	url = https://sr.ht/~andreafeletto/levee
 	arch = x86_64
 	license = MIT
@@ -12,6 +12,7 @@ pkgbase = river-levee
 	depends = fcft
 	depends = pixman
 	depends = libpulse
+	provides = levee
 	conflicts = river-levee-git
 	source = https://git.sr.ht/~andreafeletto/levee/refs/download/v0.1.0/levee-v0.1.0.tar.gz
 	sha256sums = 271caefe6673fdb8334c7d171f9ef17a458ae152fdcc24f96a84ceb6e49f64e2
