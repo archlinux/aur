@@ -1,7 +1,7 @@
 pkgbase = cbetar2
 	pkgdesc = A Buddhist text reader using CBETA APIs
 	pkgver = 19.2.2
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/MrMYHuang/cbetar2
 	arch = x86_64
 	arch = aarch64
@@ -19,5 +19,6 @@ pkgbase = cbetar2
 	provides = cbetar2
 	conflicts = cbetar2
 	source = git+https://github.com/MrMYHuang/cbetar2.git#tag=19.2.2
+	md5sums = SKIP
 
 pkgname = cbetar2

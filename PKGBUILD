@@ -1,7 +1,7 @@
 # Maintainer: Meng-Yuan Huang <myh@live.com>
 pkgname=cbetar2
 pkgver=19.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A Buddhist text reader using CBETA APIs"
 arch=('x86_64' 'aarch64')
 url="https://github.com/MrMYHuang/cbetar2"
@@ -15,6 +15,7 @@ options=()
 install=
 source=('git+https://github.com/MrMYHuang/cbetar2.git#tag=19.2.2')
 noextract=()
+md5sums=('SKIP')
 
 build() {
 	cd "$srcdir/${pkgname}"
