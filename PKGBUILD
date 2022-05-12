@@ -4,7 +4,7 @@
 # Contributor: Dan Vratil
 
 pkgname=nvidia-beta
-pkgver=510.68.02
+pkgver=515.43.04
 pkgrel=1
 pkgdesc="NVIDIA drivers for Arch's official 'linux' package (beta version)"
 arch=('x86_64')
@@ -17,8 +17,8 @@ options=('!strip')
 _pkg="NVIDIA-Linux-${CARCH}-${pkgver}-no-compat32"
 source=("http://us.download.nvidia.com/XFree86/Linux-${CARCH}/${pkgver}/${_pkg}.run"
         '110-nvidia-change-dkms-conf.patch')
-sha256sums=('570570b42a982ee91f05e89672e6dccf9739336a94f411cd33208536c8122917'
-            '1580a25f57c6722e1736abe595b2f35f5b02f4ba3e9fdf04978bf7524c2af8b1')
+sha256sums=('2a7010cbdfd0fbbbfbd81b2a95b8624fb3c8e3c2d37d9fdeed96f06e7ff1443e'
+            '925553c2491d3726bce65f9d0b5be62b006c824cc2fc0398c710150453128056')
 
 prepare() {
     # extract the source file
@@ -35,13 +35,12 @@ build() {
 }
 
 package() {
-    depends=('linux' "nvidia-utils-beta>=${pkgver}" 'libglvnd')
+    depends=('linux' "nvidia-utils-beta=${pkgver}" 'libglvnd')
     
     local _kernver
     _kernver="$(</usr/src/linux/version)"
     
     install -D -m644 "nvidia/${pkgver}/${_kernver}/${CARCH}/module"/* -t "${pkgdir}/usr/lib/modules/${_kernver}/extramodules"
-    find "$pkgdir" -name '*.ko' -exec xz -T1 {} +
-    install -D -m644 <(printf '%s\n' 'blacklist nouveau') "${pkgdir}/usr/lib/modprobe.d/nvidia.conf"
     install -D -m644 "${_pkg}/LICENSE" -t "${pkgdir}/usr/share/licenses/${pkgname}"
+    find "$pkgdir" -name '*.ko' -exec xz -T1 {} +
 }
