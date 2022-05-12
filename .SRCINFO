@@ -1,6 +1,6 @@
 pkgbase = ionosctl
 	pkgdesc = IONOS Cloud CLI
-	pkgver = 6.1.5
+	pkgver = 6.1.6
 	pkgrel = 1
 	url = https://github.com/ionos-cloud/ionosctl
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = ionosctl
 	license = Apache
 	makedepends = go
 	depends = glibc
-	source = https://github.com/ionos-cloud/ionosctl/archive/v6.1.5/ionosctl-6.1.5.tar.gz
-	sha256sums = 3ab07b9b09d340b5fe501233dbf9178bb54ed3ccc53d63a413a49b426f6f0293
+	source = https://github.com/ionos-cloud/ionosctl/archive/v6.1.6/ionosctl-6.1.6.tar.gz
+	sha256sums = 3529d64de2e5d6e84ea716cc61c7b0f09da79ee91507e9eb896340b7ecd30f2f
 
 pkgname = ionosctl
