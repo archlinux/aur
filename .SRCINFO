@@ -1,6 +1,6 @@
 pkgbase = whitesur-icon-theme
 	pkgdesc = MacOS Big Sur like icon theme for linux desktops
-	pkgver = 2022.03.18
+	pkgver = 2022.05.11
 	pkgrel = 1
 	url = https://github.com/vinceliuice/WhiteSur-icon-theme
 	arch = any
@@ -11,7 +11,7 @@ pkgbase = whitesur-icon-theme
 	optdepends = whitesur-cursor-theme: Recommended cursor theme
 	conflicts = whitesur-icon-theme-git
 	options = !strip
-	source = WhiteSur-icon-theme-2022-03-18.tar.gz::https://github.com/vinceliuice/WhiteSur-icon-theme/archive/2022-03-18.tar.gz
-	sha256sums = 0572f65e78a88f6e2221a468a3623ea1b62cdbe5d617ea72ab67aeb823eaf11f
+	source = WhiteSur-icon-theme-2022-05-11.tar.gz::https://github.com/vinceliuice/WhiteSur-icon-theme/archive/2022-05-11.tar.gz
+	sha256sums = 45e0bb409e32f6cb4d746529fafbeda18a40376c11cfd5c04a44d74bba8aeefa
 
 pkgname = whitesur-icon-theme
