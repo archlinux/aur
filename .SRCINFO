@@ -1,0 +1,15 @@
+pkgbase = cl-global-vars
+	pkgdesc = Define efficient global variables in Common Lisp
+	pkgver = 1.0.0.r2.gc749f32
+	pkgrel = 1
+	url = https://github.com/lmj/global-vars
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = sbcl
+	depends = common-lisp
+	depends = cl-asdf
+	source = cl-global-vars::git+https://github.com/lmj/global-vars#commit=c749f32c9b606a1457daa47d59630708ac0c266e
+	b2sums = SKIP
+
+pkgname = cl-global-vars
