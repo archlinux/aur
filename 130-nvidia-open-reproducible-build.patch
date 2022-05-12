@@ -1,0 +1,19 @@
+--- a/utils.mk
++++ v/utils.mk
+@@ -101,13 +101,13 @@ MKDIR                 ?= mkdir -p
+ RM                    ?= rm -f
+ TOUCH                 ?= touch
+ HARDLINK              ?= ln -f
+-DATE                  ?= date
++DATE                  ?= date -r version.mk
+ GZIP_CMD              ?= gzip
+ CHMOD                 ?= chmod
+ OBJCOPY               ?= objcopy
+ XZ                    ?= xz
+-WHOAMI                ?= whoami
+-HOSTNAME              ?= hostname
++WHOAMI                ?= archlinux_builder
++HOSTNAME              ?= archlinux
+ 
+ NV_AUTO_DEPEND        ?= 1
+ NV_VERBOSE            ?= 0
