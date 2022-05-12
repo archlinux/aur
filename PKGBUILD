@@ -18,7 +18,7 @@ sha256sums=('SKIP'
             '594cdfb846ab9cbac0fd781a445501ebb1e3f491fd21202bf3733b00f2151018')
 pkgver() {
   cd "$_pkgname"
-  git describe --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 build(){
     cd "$srcdir/ferium"
