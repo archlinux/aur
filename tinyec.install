@@ -1,0 +1,4 @@
+post_install() {
+	echo ':: WARNING'
+	echo ':: This library is not suitable for production!'
+}
