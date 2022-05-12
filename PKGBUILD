@@ -4,21 +4,21 @@
 # Contributor: Benjamin Chrétien <chretien dot b plus aur at gmail dot com>
 pkgname=ignition-transport
 pkgver=11.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The transport library combines ZeroMQ with Protobufs to create a fast and efficient message passing system. Asynchronous message publication and subscription is provided along with service calls and discovery."
 arch=('i686' 'x86_64')
-url="https://ignitionrobotics.org/libs/transport"
+url="https://gazebosim.org/libs/transport"
 license=('Apache')
 groups=('development')
 depends=('protobuf' 'protobuf-c' 'zeromq' 'ignition-msgs>=7' 'ignition-tools'
-         'ignition-utils>=1' 'libutil-linux')
+         'ignition-utils>=1' 'libutil-linux' 'tinyxml2')
 makedepends=('ignition-cmake>=2' 'util-linux')
 optdepends=()
 conflicts=()
-source=("https://github.com/ignitionrobotics/ign-transport/archive/${pkgname}11_${pkgver}.tar.gz")
-sha256sums=('b549f73751556ef30f38c35f8fd357da500313a41588c08efaca341cf8c0341f')
+source=("https://github.com/gazebosim/gz-transport/archive/${pkgname}11_${pkgver}.tar.gz")
+sha256sums=('b42ead6228ef0c867b84bd904aa829e25d24bffb63e84c7cd6471314dd14d453')
 
-_dir="ign-transport-${pkgname}11_${pkgver}"
+_dir="gz-transport-${pkgname}11_${pkgver}"
 
 build() {
   cd "${srcdir}/${_dir}"
