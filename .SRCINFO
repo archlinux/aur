@@ -1,0 +1,12 @@
+pkgbase = vim-solidity
+	pkgdesc = Vim syntax file for Solidity.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/tomlion/vim-solidity
+	arch = any
+	license = MIT
+	depends = vim
+	source = vim-solidity::git+https://github.com/tomlion/vim-solidity#commit=569bbbedc3898236d5912fed0caf114936112ae4
+	sha256sums = SKIP
+
+pkgname = vim-solidity
