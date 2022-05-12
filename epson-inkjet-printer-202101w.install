@@ -1,0 +1,13 @@
+post_install(){
+    printf "$(tput setaf 4)Run the following command to fix filter not found error:$(tput sgr0)\n"
+    printf "$(tput setaf 2)sudo ln -s /opt/epson-inkjet-printer-202101w/cups/lib/filter/epson_inkjet_printer_filter /usr/lib/cups/filter/epson_inkjet_printer_filter$(tput sgr0)\n"
+}
+
+post_upgrade(){
+    post_install
+}
+
+post_remove(){
+    printf "$(tput setaf 4)Use this command to delete symlink or do it manually:$(tput sgr0)\n"
+    printf "$(tput setaf 2)sudo rm /usr/lib/cups/filter/epson_inkjet_printer_filter$(tput sgr0)\n"
+}
