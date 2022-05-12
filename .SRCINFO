@@ -1,12 +1,12 @@
 pkgbase = gnome-shell-extension-no-overview
 	pkgdesc = Disable the start up overview in Gnome 40
-	pkgver = 11.r8.857c685
-	pkgrel = 1
+	pkgver = 11.0
+	pkgrel = 2
 	url = https://github.com/fthx/no-overview
 	arch = any
 	license = GPL3
-	depends = gnome-shell-extensions
-	source = gnome-shell-extension-no-overview-11.r8.857c685.tar.gz::https://github.com/fthx/no-overview/archive/857c68537c8b01b295d9df8599f27e8b7eaa2721.tar.gz
-	sha512sums = 0af40089f8ec4c96248a7141aacf74e4a151c2f09bb3fb69091121a6eaaf5e89bb093dcb464c47040bb69753d798e93119911b7cf8406f8bc5748f89f2013a14
+	depends = gnome-shell
+	source = gnome-shell-extension-no-overview-11.0.tar.gz::https://github.com/fthx/no-overview/archive/refs/tags/v11.tar.gz
+	sha256sums = 1baa0aca882d355f86440869e9a88bc8708319f12f2b25fa8e0f752ba53195e3
 
 pkgname = gnome-shell-extension-no-overview
