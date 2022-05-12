@@ -10,7 +10,7 @@
 
 pkgname=osc-git
 _pkgname=osc
-pkgver=0.173.0.r3668.9fb287c7
+pkgver=0.178.0.r3855.f2acd615
 pkgrel=1
 pkgdesc="Command line client for the openSUSE Build Service"
 arch=(any)
@@ -41,9 +41,10 @@ build() {
 }
 
 check() {
-    cd "${srcdir}/${_pkgname}/tests"
-	python suite.py
+    cd "${srcdir}/${_pkgname}"
+    python setup.py test
 }
+
 package() {
     cd "${srcdir}/${_pkgname}"
     python setup.py install --root="${pkgdir}/" --optimize=1 --prefix=/usr
