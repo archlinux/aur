@@ -1,13 +1,13 @@
 pkgbase = docker-compose-cli
 	pkgdesc = Easily run your Compose application to the cloud with compose-cli
-	pkgver = 1.0.23
+	pkgver = 1.0.24
 	pkgrel = 1
 	url = https://github.com/docker/compose-cli
 	arch = x86_64
 	license = Apache
 	makedepends = go
 	depends = docker
-	source = https://github.com/docker/compose-cli/archive/refs/tags/v1.0.23.tar.gz
-	sha256sums = 132ac0ddd77bf8b302a735dafde04f522143517a5974449e42d6b90b5d009242
+	source = https://github.com/docker/compose-cli/archive/refs/tags/v1.0.24.tar.gz
+	sha256sums = d7989bdd736035cd27e0a9667fba217763883e29d38fb4fa20f283b706cb94ac
 
 pkgname = docker-compose-cli
