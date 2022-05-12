@@ -1,0 +1,11 @@
+--- a/CPP/7zip/7zip_gcc.mak	2021-12-25 15:00:00.000000000 +0100
++++ b/CPP/7zip/7zip_gcc.mak	2022-05-12 21:06:28.101951648 +0200
+@@ -7,7 +7,7 @@
+ 
+ MY_ARCH_2 = $(MY_ARCH)
+ 
+-MY_ASM = asmc
++MY_ASM = uasm
+ ifdef USE_JWASM
+ MY_ASM = jwasm
+ endif
