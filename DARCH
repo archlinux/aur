@@ -71,6 +71,14 @@ if [ -z "$(grep "# ssh-agent at startup" "$FILE")" ]; then
     echo "$STRING" >>$FILE
 fi
 
+# ssh-config
+cd "$HOME" || exit
+FILE="./.ssh/config"
+STRING="\nAddKeysToAgent  yes"
+if [ -z "$(grep "$STRING" "$FILE")" ]; then
+    echo "$STRING" >>$FILE
+fi
+
 # ncmpcpp spotify
 cp --force "$CONFIG_FILES/config" "$HOME/.ncmpcpp/"
 sudo chmod 777 "$HOME/.ncmpcpp/config"

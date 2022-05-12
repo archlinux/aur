@@ -1,6 +1,6 @@
 pkgbase = darch-conf
 	pkgdesc = Configuration files, scripts and packages for an Archcraft based system
-	pkgver = 2.4.6
+	pkgver = 2.4.7
 	pkgrel = 1
 	epoch = 0
 	url = https://github.com/quiode/DARCH
@@ -86,7 +86,7 @@ pkgbase = darch-conf
 	source = LICENSE
 	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
 	sha256sums = e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
-	sha256sums = 2b464a921a193768dda919b0606a5f40dc6c14258bdbfe21ed53d9d21c411583
+	sha256sums = 6e6fbdb6ebe622485908bc1de5c95b371ad451a19f867311f34040ac71afcb22
 	sha256sums = 38bf3e66075dc258cd9b404187ede3dad4fc709796aa8b52bb543d766a7e073d
 	sha256sums = 59f7fcbd8adc8645d7a8f43c91502d91a028062cba587e5a0320aef84dc18961
 	sha256sums = fff425b318f8fd6918fe3e45c8464cbfc6437c01cea84d21e79003e13044a6d6
