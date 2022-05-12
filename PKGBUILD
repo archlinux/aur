@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 pkgname=dolfinx
 pkgdesc="Next generation FEniCS problem solving environment"
-pkgver=0.4.0
+pkgver=0.4.1
 pkgrel=1
 arch=(any)
 url="https://github.com/FEniCS/${pkgname}"
@@ -9,7 +9,7 @@ license=(LGPL3)
 makedepends=(cmake)
 depends=(boost xtensor xsimd python-fenics-basix python-fenics-ffcx hdf5-openmpi petsc parmetis)
 source=(${url}/archive/v${pkgver}.tar.gz)
-sha512sums=('20ea24be431f9bffc509e9e40866b8ddfe8dece09f7e0e6c18ffc5d7fb6e813de17d4f193f4bcf397b3c6e80e8576afc951c372e345702c017c444d79f45ef1a')
+sha512sums=('b0824e48ad2ea23db7ca93af390891a09bd6a975f28501fc870dcf555d951764625b04614d4c28eeecb690bb95e9443ba6be52ae4e31ea51c5475fdd7710c56b')
 
 build() {
   cmake \
