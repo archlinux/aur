@@ -1,7 +1,7 @@
 # Maintainer:  Florian Lindner <florian.lindner@xgm.de>
 
 pkgname=precice
-pkgver=2.3.0
+pkgver=2.4.0
 pkgrel=1
 pkgdesc="A Coupling Library for Partitioned Multi-Physics Simulations on Massively Parallel Systems"
 arch=('x86_64')
@@ -12,7 +12,7 @@ makedepends=('cmake' 'eigen')
 optdepends=()
 provides=('precice')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/precice/precice/archive/v${pkgver}.tar.gz")
-sha256sums=('57bab08e8b986f5faa364689d470940dbd9c138e5cfa7b861793e7db56b89da3')
+sha256sums=('762e603fbcaa96c4fb0b378b7cb6789d09da0cf6193325603e5eeb13e4c7601c')
 
 build() {
     cd "${pkgname}-${pkgver}"
