@@ -13,6 +13,7 @@ arch=('x86_64')
 license=('custom:PostgreSQL')
 makedepends=('krb5' 'libxml2' 'python' 'python2' 'perl' 'tcl>=8.6.0' 'openssl>=1.0.0'
              'pam' 'zlib' 'icu' 'systemd' 'libldap' 'llvm' 'clang')
+options=('debug')
 source=(https://ftp.postgresql.org/pub/source/v${pkgver}/postgresql-${pkgver}.tar.bz2
         postgresql-run-socket.patch
         postgresql-perl-rpath.patch
@@ -40,7 +41,7 @@ prepare() {
 
 build() {
   cd postgresql-${pkgver}
-  local options=(
+  local configure_options=(
     --prefix=/usr
     --mandir=/usr/share/man
     --datadir=/usr/share/postgresql
@@ -52,6 +53,7 @@ build() {
     --with-python
     --with-tcl
     --with-pam
+    --with-readline
     --with-system-tzdata=/usr/share/zoneinfo
     --with-uuid=e2fs
     --with-icu
@@ -63,8 +65,11 @@ build() {
     --disable-rpath
   )
 
+  # Fix static libs
+  CFLAGS+=" -ffat-lto-objects"
+
   # only build plpython3 for now
-  ./configure ${options[@]} \
+  ./configure ${configure_options[@]} \
     PYTHON=/usr/bin/python
   make -sC src/pl/plpython all
   make -sC contrib/hstore_plpython all
@@ -78,7 +83,7 @@ build() {
   make -s distclean
 
   # regular build with everything
-  ./configure ${options[@]} \
+  ./configure ${configure_options[@]} \
     PYTHON=/usr/bin/python2
   make -s world
 }
@@ -141,7 +146,7 @@ package_postgresql-lts-docs() {
   pkgdesc="HTML documentation for PostgreSQL"
   provides=("postgresql-docs=${_majorver}")
   conflicts=('postgresql-docs')
-  options=('docs')
+  options+=('docs')
 
   cd postgresql-${pkgver}
 
@@ -167,7 +172,7 @@ package_postgresql-lts() {
               'tcl: for PL/Tcl support'
               'llvm: for JIT compilation support'
               'postgresql-old-upgrade: upgrade from previous major version using pg_upgrade')
-  options=('staticlibs')
+  options+=('staticlibs')
 
   cd postgresql-${pkgver}
 
