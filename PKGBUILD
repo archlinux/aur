@@ -50,8 +50,8 @@ prepare() {
 
 build() {
     cd "${pkgname}" || exit 1
-    # virtualenv ".venv" -p python3
-    # source ".venv/bin/activate"
+    virtualenv "/tmp/${pkgname}/.venv" -p python3
+    source "/tmp/${pkgname}/.venv/bin/activate"
     pip install --upgrade certifi
     if command -v autobuild; then
         abver="$(autobuild --version)"
