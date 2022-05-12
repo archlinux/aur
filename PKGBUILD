@@ -6,7 +6,7 @@ _pkgname=audio
 pkgver=0.11.0
 pkgrel=1
 pkgdesc="Data manipulation and transformation for audio signal processing, powered by PyTorch"
-arch=('any')
+arch=('x86_64' 'i686')
 url="https://github.com/pytorch/audio"
 license=('BSD')
 depends=('python' 'python-pytorch')
@@ -15,6 +15,9 @@ makedepends=('git' 'python-setuptools' 'cmake' 'ninja')
 conflicts=('python-torchaudio-git')
 source=("git+$url#tag=v${pkgver}")
 sha512sums=('SKIP')
+
+# Temporarily disable CUDA as it does not build with GCC 12
+export USE_CUDA=0
 
 prepare() {
   cd "$srcdir/${_pkgname}"
