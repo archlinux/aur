@@ -1,43 +1,60 @@
-# Maintainer: Solomon Choina <shlomochoina@gmail.com>
+# https://aur.archlinux.org/packages/tau-editor-git
+groups=('modified')
+
 pkgname=tau-editor-git
-pkgver=v0.12.0.r0.e3a4f034
+pkgver=0.12.0.r2.g6215e469
 pkgrel=1
-pkgdesc="GTK frontend for the Xi text editor, written in Rus"
-arch=(x86_64)
+pkgdesc="GTK frontend for the Xi text editor, written in Rust"
+arch=('x86_64')
 url="https://gitlab.gnome.org/World/tau"
 license=('MIT')
-depends=('rust'  'xi-core-git' 'glib2'
-         'pango' 'gtk3' 'cairo'
-         'gdk-pixbuf2' 'libhandy0' 'gsettings-desktop-schemas' 'pkgconf')
-makedepends=('git' 'meson' 'ninja' )
-provides=("tau-editor")
-conflicts=("tau-editor")
-source=(git+$url)
-sha256sums=('SKIP')
+depends=('libhandy0' 'vte3')
+makedepends=('cargo' 'git' 'meson')
+checkdepends=('appstream-glib')
+provides=("${pkgname%-git}")
+conflicts=("${pkgname%-git}")
+options=('!lto')
+source=('git+https://gitlab.gnome.org/World/tau.git'
+        'git+https://github.com/Cogitri/xi-editor.git')
+sha256sums=('SKIP'
+            'SKIP')
 
 pkgver() {
-	cd "$srcdir/tau"
-
-	printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
-}
-
-build() {
-	arch-meson tau build
-  ninja -C build
+  cd "$srcdir/tau"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
 }
 
 prepare() {
   cd "$srcdir/tau"
-  git submodule update --init --recursive
-  cargo update
-  sed -i 's/--frozen//g' scripts/cargo.sh
+  git submodule init
+  git config submodule.vendor/xi-editor.url "$srcdir/xi-editor"
+  git submodule update
 
+  export RUSTUP_TOOLCHAIN=stable
+  cargo fetch --target "$CARCH-unknown-linux-gnu"
+
+  # Workaround 'Function does not take positional arguments' error
+  sed -i "s/i18n.merge_file ('desktop-file',/i18n.merge_file (/g" data/meson.build
+  sed -i "s/i18n.merge_file ('appdata-file',/i18n.merge_file (/g" data/meson.build
+
+  # Fails to download syntect plugin if --frozen is used
+  sed -i 's/--frozen//g' scripts/cargo.sh
 }
-#check() {
-#	make -k check
-#}
+
+build() {
+  export RUSTUP_TOOLCHAIN=stable
+  arch-meson tau build
+  meson compile -C build
+}
+
+check() {
+  meson test 'validate-desktop' 'Validate schema file' -C build --print-errorlogs
+#  meson test 'cargo test --all' -C tau --print-errorlogs
+}
 
 package() {
- DESTDIR="$pkgdir/" ninja -C build install
-   install -Dm 644 $srcdir/tau/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  meson install -C build --destdir "$pkgdir"
+
+  cd "$srcdir/tau"
+  install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/${pkgname%-git}/"
 }
