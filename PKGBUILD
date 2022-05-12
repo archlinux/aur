@@ -1,8 +1,8 @@
 # Maintainer: Julian Brost <julian@0x4a42.net>
 
 pkgname=icinga-php-library
-pkgver=0.8.0
-pkgrel=2
+pkgver=0.8.1
+pkgrel=1
 pkgdesc="Bundle for all Icinga PHP libraries"
 arch=(any)
 makedepends=('patchutils')
@@ -16,14 +16,14 @@ source=("$pkgname-$pkgver.tar.gz::https://github.com/Icinga/icinga-php-library/a
         'ipl-stdlib-php-8.1.patch::https://github.com/Icinga/ipl-stdlib/pull/29.patch'
         'ipl-validator-php-8.1.patch::https://github.com/Icinga/ipl-validator/pull/5.patch'
         'ipl-web-php-8.1.patch::https://github.com/Icinga/ipl-web/pull/64.patch')
-sha256sums=('0a23388b1397e450959d6ac7a7e9895acc1e85c389c30fb3c20b84d57b01acda'
+sha256sums=('0c32b0468b2563c02b94a7a39da852a8c58796a9fc34c3b23311a2edd636fd81'
             '951039b04a4b8a812eb4a6c423542e01bd96a139bffacf2dd8f068b41f1693b5'
             '2129194b5ee1b6f20d833608922774e0a85d0254c0f8f71cb2b0b53ea5cad5ee'
             'c1a22b9c720c99e63a3853c006218405c77d821dec9d8f92ccf56545760f3a52'
             '23c8719af42127f6c591def515fcc761e0630161ead98d18a151f4b1c8e8f81f'
             '3863d09aa1cfd33b979698bc446688ec84bb6c1cd9ec5e3d217af83ead2822a2'
             '6781dbd24ffb1009bee3a4b778fd7f9f08e6217c30b7991227259da4099e6e64'
-            '5f7b217560aa751576b2c196b0091de5458e436ae903110a1bdf48c435cffdab')
+            '23f19247a9e6c2d32bd8906dd699703ea3f618ffe7aa3f3e4a183f30cc6f3799')
 
 prepare() {
 	cd "$pkgname-$pkgver"
