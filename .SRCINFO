@@ -1,13 +1,13 @@
 pkgbase = nextcloud-app-passwords
 	pkgdesc = Easy to use yet feature-rich and secure password manager for Nextcloud
-	pkgver = 2022.4.20
+	pkgver = 2022.5.20
 	pkgrel = 1
 	url = https://apps.nextcloud.com/apps/passwords
 	arch = any
 	license = AGPL3
 	depends = nextcloud
 	options = !strip
-	source = passwords-v2022.4.20.tar.gz::https://git.mdns.eu/nextcloud/passwords/-/jobs/13876/artifacts/raw/passwords.tar.gz
-	sha512sums = ae2e35eec618b1da04ecb9a2c492a940426a31dcd4a3c009d0979ba8823c8272893ff2407dbee03471bcb4db1cca4dc9a7fc93d07d4bf83a11d22e339a9a2d6d
+	source = passwords-v2022.5.20.tar.gz::https://git.mdns.eu/nextcloud/passwords/-/jobs/13944/artifacts/raw/passwords.tar.gz
+	sha512sums = bbcc6c61e8aa989fa3ff5642bd00cb0224cfdb570c3981ad84b0265fa6b4b802704ad9def109b9520aa826eafac7af69f9dd1a74de331118065785107df237cb
 
 pkgname = nextcloud-app-passwords
