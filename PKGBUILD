@@ -2,7 +2,7 @@
 
 pkgname=7-zip
 pkgver=21.07
-pkgrel=3
+pkgrel=4
 pkgdesc="File archiver with a high compression ratio"
 url="https://www.7-zip.org"
 license=(LGPL)
@@ -15,7 +15,7 @@ source=(https://7-zip.org/a/7z2107-src.7z
 sha256sums=('d1074d56f415aab99d99e597a7b66dc455dba6349ae8a4c89df76475b6a1284c'
             '76cabefa3bdf9fa2b6a7af1fc549534684b17f6785a32b0e1bc1f459d401eb74'
             'e4d34366e091b8404dd04f02bcad46518d2930ec0b4a420e1316db020234b085'
-            '0fd25bfb4f9f330573f94c61c9708dc15791bb51a5b294a5ab81b0463de08453')
+            '4be9968d05ab7163e7ded473202abcf465229d96b133c702091fc1b91dee0c06')
 
 prepare() {
 	patch -Np1 -i 01-uasm.patch
