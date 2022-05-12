@@ -16,7 +16,7 @@ source=("wavebox-$pkgver.tar.gz::https://download.wavebox.app/beta/linux/aur/Wav
         'wavebox.appdata.xml'
         'wavebox.menu'
         'LICENSE')
-md5sums=('c'
+md5sums=('c4aeacda63b1c3b51f6f754987ff8fc0'
          '170a7d4e04402fa5c759e8f5e87e9d9c'
          '4f08794ea93eafd0e77b522ac7738638'
          'b92c8854e4553540df6bc998afe68cc4')
