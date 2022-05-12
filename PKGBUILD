@@ -3,7 +3,7 @@
 # Contributor: Florian Lindner <florian.lindner@xgm.de>
 _base=precice
 pkgname=${_base}-git
-pkgver=2.3.0.r166.g82ebe916
+pkgver=2.4.0.r1.g073ca3ad5
 pkgrel=1
 pkgdesc="A Coupling Library for Partitioned Multi-Physics Simulations on Massively Parallel Systems (git version)"
 arch=(x86_64)
@@ -30,8 +30,6 @@ build() {
     -DCMAKE_BUILD_TYPE=None \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_CXX_STANDARD=14 \
-    -DCMAKE_C_COMPILER=gcc \
-    -DCMAKE_CXX_COMPILER=g++ \
     -DPRECICE_MPICommunication=ON \
     -DPRECICE_PETScMapping=ON \
     -DPRECICE_PythonActions=ON \
@@ -53,7 +51,7 @@ check() {
   if [ -z "$(ldconfig -p | grep libcuda.so.1)" ]; then
     export OMPI_MCA_opal_warn_on_missing_libcuda=0
   fi
-  ctest -E "(${_base}.*arallel)" --test-dir build
+  ctest --test-dir build
 }
 
 package() {
