@@ -7,21 +7,25 @@ pkgname=('boost-65-compat' 'boost-65-compat-libs')
 _pkgname=boost
 pkgver=1.65.1
 _boostver=${pkgver//./_}
-pkgrel=5
+pkgrel=6
 pkgdesc="Free peer-reviewed portable C++ source libraries - compat version"
 arch=('x86_64')
 url='https://www.boost.org/'
 license=('custom')
 makedepends=('python' 'python2' 'python-numpy' 'python2-numpy' )
 source=(https://boostorg.jfrog.io/artifactory/main/release/${pkgver}/source/${_pkgname}_${_boostver}.tar.bz2
-    https://github.com/boostorg/python/commit/660487c43fde76f3e64f1cb2e644500da92fe582.patch)
+    https://github.com/boostorg/python/commit/660487c43fde76f3e64f1cb2e644500da92fe582.patch
+    https://src.fedoraproject.org/fork/thrnciar/rpms/boost/raw/047403fc9c6ea6f581f38214f680f3173e157138/f/boost-1.73-python3.10-Py_fopen.patch)
 #source=(https://downloads.sourceforge.net/project/${_pkgname}/${_pkgname}/${pkgver}/${_pkgname}_${_boostver}.tar.bz2)
 sha256sums=('9807a5d16566c57fd74fb522764e0b134a8bbe6b6e8967b83afefd30dcd3be81'
-            '00d66b49b548aa6254ec8dc5b6b859ab3ff9ca7c0cf0ceba72401f71a572bffd')
+            '00d66b49b548aa6254ec8dc5b6b859ab3ff9ca7c0cf0ceba72401f71a572bffd'
+            'a03de50c3b7a6c07fc797551c6f52368aba2a139db0780bfd385db9039f5627d')
 
 prepare() {
-    cd ${_pkgname}_${_boostver}/libs/python
+    cd $srcdir/${_pkgname}_${_boostver}/libs/python
     patch -p1 < "${srcdir}"/660487c43fde76f3e64f1cb2e644500da92fe582.patch
+    cd $srcdir/${_pkgname}_${_boostver}
+    patch -p1 < "${srcdir}"/boost-1.73-python3.10-Py_fopen.patch
 }
 
 build() {
@@ -79,7 +83,7 @@ build() {
       runtime-link=shared \
       link=shared,static \
       toolset=gcc \
-      python=3.9 \
+      python=3.10 \
       cflags="${CPPFLAGS} ${CFLAGS} -fPIC -O3" \
       cxxflags="${CPPFLAGS} ${CXXFLAGS} -std=c++14 -fPIC -O3" \
       linkflags="${LDFLAGS}" \
