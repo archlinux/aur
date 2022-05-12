@@ -1,6 +1,6 @@
 pkgname=briar-desktop-git
 _pkgname=briar-desktop
-pkgver=r389.d48afe8
+pkgver=r403.77a3a75
 pkgrel=1
 _build_type=nightly
 pkgdesc='Prototyping the next generation for Briar on desktop devices'
@@ -9,7 +9,8 @@ url="https://code.briarproject.org/briar/briar-desktop"
 license=('GPL')
 depends=('java-runtime=17' 'bash')
 makedepends=('git' 'java-environment=17')
-conflicts=('briar-desktop')
+conflicts=(${_pkgname})
+provides=(${_pkgname})
 source=("${_pkgname}::git+https://code.briarproject.org/briar/${_pkgname}.git"
         "briar::git+https://code.briarproject.org/briar/briar"
         "briar16.png" "briar32.png" "briar48.png" "briar64.png" "briar128.png" "briar192.png"
