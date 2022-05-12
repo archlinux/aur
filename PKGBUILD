@@ -1,10 +1,13 @@
 # Maintainer: xaque <xaque at duck dot com>
 
-pkgname=o3de-nightly-bin
-# <Stable release>.<Build date>
-_stablever=2111.2
-pkgver=${_stablever}_20220420
+_stablever=2205.0
 _engver=0.0.0.0
+_builddate="20220512"
+_debname="O3DE_latest.deb"
+_binname="o3de-nightly"
+
+pkgname=o3de-nightly-bin
+pkgver="${_stablever}_${_builddate}"
 pkgrel=1
 pkgdesc='Open 3D Engine - An open-source, real-time 3D development engine (Nightly build)'
 arch=('x86_64')
@@ -14,11 +17,11 @@ depends=('clang' 'cmake' 'curl' 'fontconfig' 'gcc-libs' 'glibc' 'glu' 'libffi7' 
 optdepends=('ninja: Support for multiple build configurations per project')
 makedepends=('icoutils')
 options=('!strip')
-provides=('o3de-nightly')
-install="${pkgname}.install"
+provides=("${_binname}")
+install="o3de.install"
 source=("open-3d-engine-nightly.desktop"
-        "https://o3debinaries.org/development/Latest/Linux/O3DE_latest.deb"
-        "https://o3debinaries.org/development/Latest/Linux/O3DE_latest.deb.sha256"
+        "https://o3debinaries.org/development/Latest/Linux/${_debname}"
+        "https://o3debinaries.org/development/Latest/Linux/${_debname}.sha256"
         "https://o3debinaries.org/main/Latest/Linux/o3de-releases.gpg"
         "LICENSE.txt::https://raw.githubusercontent.com/o3de/o3de/development/LICENSE.txt"
         "LICENSE_MIT.txt::https://raw.githubusercontent.com/o3de/o3de/development/LICENSE_MIT.TXT"
@@ -33,16 +36,17 @@ sha256sums=('SKIP'
 
 pkgver() {
     # Look at modified date of gpg signature to determine build date
-    echo ${_stablever}_$(date -r ${srcdir}/_gpgbuilder "+%Y%m%d")
+    _builddate=$(date -r ${srcdir}/_gpgbuilder "+%Y%m%d")
+    echo "${_stablever}_${_builddate}"
 }
 
 prepare() {
-    echo -n "    Verifying checksum for O3DE_latest.deb ..."
-    sha256sum -c O3DE_latest.deb.sha256 >/dev/null
+    echo -n "    Verifying checksum for ${_debname} ..."
+    sha256sum -c ${_debname}.sha256 >/dev/null
     echo " Passed"
 
-    echo -n "    Verifying PGP for O3DE_latest.deb ..."
-    gpgv --keyring "./o3de-releases.gpg" "O3DE_latest.deb" >/dev/null 2>&1
+    echo -n "    Verifying PGP for ${_debname} ..."
+    gpgv --keyring "./o3de-releases.gpg" "${_debname}" >/dev/null 2>&1
     echo " Passed"
 }
 
@@ -63,16 +67,17 @@ package() {
 
     # Script in /usr/bin to run o3de with modified env
     mkdir -p "${pkgdir}/usr/bin"
-    echo '#!/bin/sh' >"${pkgdir}/usr/bin/o3de-nightly"
-    echo "PATH=\""'$PATH'":/opt/O3DE/${_engver}/.symbin\" /opt/O3DE/${_engver}/bin/Linux/profile/Default/o3de" >>"${pkgdir}/usr/bin/o3de-nightly"
-    chmod +x "${pkgdir}/usr/bin/o3de-nightly"
+    echo '#!/bin/sh' >"${pkgdir}/usr/bin/${_binname}"
+    echo "PATH=\""'$PATH'":/opt/O3DE/${_engver}/.symbin\" /opt/O3DE/${_engver}/bin/Linux/profile/Default/o3de" >>"${pkgdir}/usr/bin/${_binname}"
+    chmod +x "${pkgdir}/usr/bin/${_binname}"
 
     # Extract .ico and install icons
     icotool -x "${pkgdir}"/opt/O3DE/${_engver}/cmake/Platform/Windows/Packaging/product_icon.ico -o .
-    iter=1
-    for size in 256 128 64 48 32 16; do
+    install -Dm644 "product_icon_1_256x256x64.png" "${pkgdir}/usr/share/icons/hicolor/256x256/apps/${_binname}.png"
+    iter=2
+    for size in 128 64 48 32 16; do
         install -Dm644 "product_icon_${iter}_${size}x${size}x32.png" \
-            "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/o3de-nightly.png"
+            "${pkgdir}/usr/share/icons/hicolor/${size}x${size}/apps/${_binname}.png"
         ((iter++))
     done
 
