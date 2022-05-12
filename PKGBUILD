@@ -5,8 +5,8 @@
 
 pkgname=gprbuild-bootstrap
 epoch=1
-pkgver=21.0.0
-pkgrel=3
+pkgver=22.0.0
+pkgrel=1
 pkgdesc="Static GPRbuild to bootstrap XML/Ada and GPRbuild itself"
 arch=('i686' 'x86_64')
 url='https://github.com/AdaCore/gprbuild/'
@@ -18,9 +18,9 @@ source=(
 	"xmlada-$pkgver.tar.gz::https://github.com/AdaCore/xmlada/archive/v$pkgver.tar.gz"
 	"gprconfig_kb-$pkgver.tar.gz::https://github.com/AdaCore/gprconfig_kb/archive/v$pkgver.tar.gz"
 )
-sha256sums=('54b7d1a3298160109aaee4d8c263c1ab3ab4abae75d354f3e90a4c51639167a2'
-            '923024931f0c57451aa52cb9a3333874646102cb75957f27e3689670f90edc1e'
-            '2aec26afad5bb1a4685d9c041c9c797ff5beda211a5e81f2a97452d2ceabc557')
+sha256sums=('076e2b6ac0c7170753a6499094a6d30a98698aca2551c6796b3a617dd9ffc704'
+            '853ed895defd395c0bc96c23a50812168b656b31befc1336f45c5541f2bec06d'
+            'cc19437e0982d9af31e09ad7c42eac6a445dac65336bd53d67ba61f630be7f13')
 
 prepare() {
     cd "$srcdir/gprbuild-$pkgver"
