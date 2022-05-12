@@ -50,22 +50,25 @@ fi
 # ssh-agent
 cd "$HOME" || exit
 FILE="./.bashrc"
-STRING="if [ ! -S ~/.ssh/ssh_auth_sock ]; then
-  eval $(ssh-agent)
-  ln -sf \"\$SSH_AUTH_SOCK\" ~/.ssh/ssh_auth_sock
+STRING=$(
+    cat <<EOF
+
+# ssh-agent at startup
+
+if [ ! -S ~/.ssh/ssh_auth_sock ]; then
+  eval \$(ssh-agent)
+  ln -sf "\$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
 fi
 export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
-ssh-add -lq > /dev/null || ssh-add"
+ssh-add -lq > /dev/null || ssh-add
+EOF
+)
 if [ -z "$(grep "# ssh-agent at startup" "$FILE")" ]; then
-    echo "
-    # ssh-agent at startup
-    $STRING" >>$FILE
+    echo "$STRING" >>$FILE
 fi
 FILE="./.zshrc"
 if [ -z "$(grep "# ssh-agent at startup" "$FILE")" ]; then
-    echo "
-    # ssh-agent at startup
-    $STRING" >>$FILE
+    echo "$STRING" >>$FILE
 fi
 
 # ncmpcpp spotify
