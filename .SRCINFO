@@ -1,12 +1,16 @@
 pkgbase = python-singleton-decorator
-	pkgdesc = A testable decorator that allows you to easily create singleton objects
+	pkgdesc = Testable decorator for creating singleton objects
 	pkgver = 1.0.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://pypi.org/project/singleton-decorator
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
-	source = https://pypi.org/packages/source/s/singleton-decorator/singleton-decorator-1.0.0.tar.gz
-	sha512sums = 180376a79a7db65a9959b365cb0b44a1d165e31a5a50ff268c1f994eef635fd87414307074db13d7329ec989a0c23589f07119d3319a47f2387b09f9c71f1f3f
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	depends = python
+	source = python-singleton-decorator-1.0.0.tar.gz::https://files.pythonhosted.org/packages/source/s/singleton-decorator/singleton-decorator-1.0.0.tar.gz
+	sha256sums = 1a90ad8a8a738be591c9c167fdd677c5d4a43d1bc6b1c128227be1c5e03bee07
 
 pkgname = python-singleton-decorator
