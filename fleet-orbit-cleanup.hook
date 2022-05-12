@@ -1,0 +1,8 @@
+[Trigger]
+Operation = Remove
+Type = Package
+Target = fleet-orbit
+
+[Action]
+When = PreTransaction
+Exec = /usr/bin/rm -Rf /opt/fleet-orbit/

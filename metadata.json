@@ -1,0 +1,9 @@
+{
+  "release_sha512sum": "cd1323204a25978fde48de7b24726ff99b252561c0506f0c9c06f2ff2e08950a7fc7c299819d0edf55defe423527b09389ba0c4ade505739f02483b3bf18be2c",
+  "tag_info": {
+    "commit_sha": "7372777c56248aa10a7a15de971c63328e6d6b69",
+    "name": "orbit-v0.0.10",
+    "pkgver": "0.0.10",
+    "tarball_url": "https://github.com/fleetdm/fleet/archive/refs/tags/orbit-v0.0.10.tar.gz"
+  }
+}

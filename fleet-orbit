@@ -1,0 +1,8 @@
+#!/bin/sh
+
+. /etc/default/fleet-orbit
+
+export ORBIT_ROOT_DIR="${ORBIT_ROOT_DIR:-/opt/fleet-orbit}"
+export ORBIT_DISABLE_UPDATES="${ORBIT_DISABLE_UPDATES:-true}"
+
+exec /opt/fleet-orbit/bin/orbit/orbit "$@"

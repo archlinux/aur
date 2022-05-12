@@ -1,0 +1,15 @@
+[Unit]
+Description=Orbit osquery
+After=network.service syslog.service
+
+[Service]
+TimeoutStartSec=0
+ExecStart=/usr/bin/fleet-orbit
+Restart=always
+RestartSec=60
+KillMode=control-group
+KillSignal=SIGTERM
+CPUQuota=5%
+
+[Install]
+WantedBy=multi-user.target

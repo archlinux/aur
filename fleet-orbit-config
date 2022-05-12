@@ -1,0 +1,29 @@
+# Root directory for Orbit state
+#ORBIT_ROOT_DIR=/opt/fleet-orbit
+
+# Disable TLS certificate verification
+#ORBIT_INSECURE=false
+
+# URL (host:port) of Fleet server
+#ORBIT_FLEET_URL=
+
+# Path to server certificate chain
+#ORBIT_FLEET_CERTIFICATE=
+
+# URL for update server
+#ORBIT_UPDATE_URL=https://tuf.fleetctl.com
+
+# Enroll secret for authenticating to Fleet server
+#ORBIT_ENROLL_SECRET=
+
+# Disables auto updates
+#ORBIT_DISABLE_UPDATES=false
+
+# Path to file containing enroll secret
+#ORBIT_ENROLL_SECRET_PATH=
+
+# Runs in development mode
+#ORBIT_DEV_MODE=false
+
+# Enable debug logging
+#ORBIT_DEBUG=false
