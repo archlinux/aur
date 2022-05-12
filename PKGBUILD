@@ -1,30 +1,32 @@
-# Maintainer: Felix Yan <felixonmars@archlinux.org>
+# Maintainer: Carlos Aznarán <caznaranl@uni.pe>
+# Contributor: Antonio Rojas <arojas@archlinux.org>
+# Contributor: Felix Yan <felixonmars@archlinux.org>
 
-pkgname=python-flake8-debugger
-pkgver=4.0.0
-pkgrel=2
-pkgdesc='ipdb/pdb statement checker plugin for flake8'
-arch=('any')
-license=('MIT')
-url='https://github.com/JBKahn/flake8-debugger'
-depends=('flake8')
-makedepends=('python-poetry' 'python-setuptools' 'python-pytest-runner')
-source=(https://pypi.python.org/packages/source/f/flake8-debugger/flake8-debugger-$pkgver.tar.gz)
-sha512sums=('b2f234a294c010561298efac548d4ed327dccb34cd765993b31966cbd2609c4a1976559fd6698031365b83c98f9a03b4693b334cef402ddda2a9e13354371aa3')
+_base=flake8-debugger
+pkgname=python-${_base}
+pkgver=4.1.2
+pkgrel=1
+pkgdesc="ipdb/pdb statement checker plugin for flake8"
+url="https://github.com/JBKahn/${_base}"
+depends=(flake8 python-pycodestyle)
+makedepends=(python-setuptools)
+checkdepends=(python-pytest)
+license=(MIT)
+arch=(any)
+source=(https://pypi.org/packages/source/${_base::1}/${_base}/${_base}-${pkgver}.tar.gz)
+sha512sums=('2f65ebe2c97d144e2104142f5739998e7b09937c27c1710e4a5e26c1837895b834293543f574ac4872229533213d26436cc8598afabf283ede8b4fdc6fdbb1ed')
 
 build() {
-  cd flake8-debugger-$pkgver
+  cd ${_base}-${pkgver}
   python setup.py build
 }
 
 check() {
-  cd flake8-debugger-$pkgver
-  python setup.py test
+  cd ${_base}-${pkgver}
+  python test_linter.py
 }
 
 package() {
-  cd flake8-debugger-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
+  cd ${_base}-${pkgver}
+  PYTHONPYCACHEPREFIX="${PWD}/.cache/cpython/" python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1 --skip-build
 }
-
-# vim:set ts=2 sw=2 et:
