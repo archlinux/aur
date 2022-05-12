@@ -20,12 +20,12 @@
 ### IMPORTANT: Do no edit below this line unless you know what you're doing
 
 _major=4.14
-_minor=277
+_minor=278
 _srcname=linux-${_major}
 _clr=${_major}.273-199
 pkgbase=linux-clear-lts2017
 pkgver=${_major}.${_minor}
-pkgrel=2
+pkgrel=1
 pkgdesc='Clear Linux lts2017'
 arch=('x86_64')
 url="https://github.com/clearlinux-pkgs/linux-lts2017"
@@ -279,7 +279,7 @@ done
 
 sha256sums=('f81d59477e90a130857ce18dc02f4fbe5725854911db1e7ba770c7cd350f96a7'
             'SKIP'
-            '9b17bada9adc011388c6e9843aacb9aecadd107df8c5e85531fe89bb95b86b8d'
+            'a5cff69aa4d474b433eca97a1d3686be745ac34d87f4e04c881af71b1837548d'
             'SKIP')
 
 validpgpkeys=(
