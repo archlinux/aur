@@ -18,9 +18,9 @@ sha256sums=('d1074d56f415aab99d99e597a7b66dc455dba6349ae8a4c89df76475b6a1284c'
             '0fd25bfb4f9f330573f94c61c9708dc15791bb51a5b294a5ab81b0463de08453')
 
 prepare() {
-	patch -Np1 -i ../01-uasm.patch
-	patch -Np1 -i ../02-gcc-12.patch
-	patch -Np1 -i ../03-hardening.patch
+	patch -Np1 -i 01-uasm.patch
+	patch -Np1 -i 02-gcc-12.patch
+	patch -Np1 -i 03-hardening.patch
 }
 
 build() {
