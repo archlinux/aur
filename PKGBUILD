@@ -26,6 +26,6 @@ build() {
 
 package() {
 	cd "$_archive"
-	make DESTDIR="$pkgdir/usr" install
+	make DESTDIR="$pkgdir" install
 	install -Dm0644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE
 }
