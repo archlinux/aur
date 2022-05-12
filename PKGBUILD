@@ -1,33 +1,33 @@
 # Maintainer: Lucas Puntillo <laniku@envs.net>
 
 pkgname=tree-game
-pkgver=0.10
-pkgrel=2
+pkgver=0.11
+pkgrel=1
 pkgdesc="Powder toy like sandbox game focused on nature"
 url="https://github.com/segfaultdev/tree"
 arch=('x86_64')
 license=('MIT')
 depends=('libglvnd')
 source=(
-  "https://github.com/segfaultdev/tree/archive/refs/tags/v0.10.tar.gz"
+  "https://github.com/segfaultdev/tree/archive/refs/tags/v0.11.tar.gz"
   tree-game.desktop
   "https://raw.githubusercontent.com/segfaultdev/tree/master/LICENSE"
 )
 sha256sums=(
-  'a63215504502002f442bcd7281bcd4f88fdbf1a1065e667d676c38c56eb8edef'
+  '3cc26c514fbbfbfdf85db5dbcc3a5eb02a6db71dfbc135ce5a482925090c0e91'
   '9c6638d0971105517fbb244d7c00220fb34786597d6107fb6172b11008a1a018'
-  '78f3201cff6e5a760db10ce3d7456f0f0a9c130fe132095d90f3eb16cb6296ea'
+  'e52bc9b76627c882c7f65113d57b8874062ac647e7a720a8b5ca7be3cad5a205'
 )
 
 build() {
-    cd "${srcdir}/tree-0.10"
-    gcc -O1 $(find . -name "*.c") -Llib -Iinclude -lraylib -lGL -lm -lpthread -ldl -lrt -lX11 -o tree
+    cd "${srcdir}/tree-0.11"
+    gcc -O3 $(find . -name "*.c") -Llib -Iinclude -lraylib -lGL -lm -lpthread -ldl -lrt -lX11 -o tree
 }
 
 package() {
     # Copy executable and make it runnable
     install -D -m755 \
-        "${srcdir}/tree-0.10/tree" \
+        "${srcdir}/tree-0.11/tree" \
         "${pkgdir}/usr/bin/${pkgname}"
     
 
