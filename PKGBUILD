@@ -1,7 +1,7 @@
 # Maintainer: Bruno Pagani <archange@archlinux.org>
 
 pkgname=cozy-desktop
-pkgver=3.34.2
+pkgver=3.35.0
 pkgrel=1
 pkgdesc="File synchronisation for Cozy Cloud on Desktop"
 arch=(any)
@@ -15,8 +15,8 @@ source=(https://github.com/cozy-labs/${pkgname}/archive/v${pkgver}/${pkgname}-${
         watcher-1.3.5.tar.gz::https://github.com/atom/watcher/archive/refs/tags/v1.3.5.tar.gz
         ${pkgname}.desktop
         ${pkgname}.sh)
-sha256sums=('1d82c8decb770b9ab58c026de768c8a75e95c01ad848ccaf27393ca0da54403a'
-            '737a597596bf789c949e83e053fc1d6db92a9ca5638f23e630d55c3a6f470966'
+sha256sums=('b7641b1275b3b5111f9ba92011b3ba58ad2921d00656fdf28ffdcfc4cb1fcd4a'
+            '821b9fa83fc7f937acb9a0f59f0343694ef47aadb10d6954628875764d7447ad'
             'a674bf8f633a7d0a146d90db384e8761a9c430fc65a4e9028d9b19ad07a0f6d2'
             '563edd5a43c7f06080e03bec5f4e46154227f7e163500950ea39ecad466b198a'
             'a8783d3f6ce2da344ffe403f8e1a4f9da8de3b59e8bfda10e15a4ff5643244cf')
