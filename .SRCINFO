@@ -1,13 +1,13 @@
 pkgbase = fleet-orbit
 	pkgdesc = Eases the deployment of osquery connected with a Fleet server.
 	pkgver = 0.0.11
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/fleetdm/fleet/tree/main/orbit
 	arch = x86_64
 	license = MIT
 	makedepends = go
 	depends = osquery
-	backup = etc/default/orbit
+	backup = etc/default/fleet-orbit
 	source = https://github.com/fleetdm/fleet/archive/refs/tags/orbit-v0.0.11.tar.gz
 	source = fleet-orbit
 	source = fleet-orbit-cleanup.hook

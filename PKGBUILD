@@ -2,14 +2,14 @@
 
 pkgname=fleet-orbit
 pkgver=0.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Eases the deployment of osquery connected with a Fleet server.'
 arch=(x86_64)
 url='https://github.com/fleetdm/fleet/tree/main/orbit'
 license=(MIT)
 depends=(osquery)
 makedepends=(go)
-backup=(etc/default/orbit)
+backup=(etc/default/fleet-orbit)
 optdepends=()
 source=(
   "https://github.com/fleetdm/fleet/archive/refs/tags/orbit-v$pkgver.tar.gz"
