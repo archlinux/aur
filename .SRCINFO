@@ -1,7 +1,7 @@
 pkgbase = entropy-assessment
 	pkgdesc = C++ implementation of the NIST Special Publication 800-90B
 	pkgver = 1.1.3
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/usnistgov/SP800-90B_EntropyAssessment
 	arch = x86_64
 	license = custom:public-domain

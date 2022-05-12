@@ -1,7 +1,8 @@
 # Maintainer:  Iyán Méndez Veiga <me (at) iyanmv (dot) com>
 pkgname=entropy-assessment
 pkgver=1.1.3
-pkgrel=1
+_pkgname=SP800-90B_EntropyAssessment-$pkgver
+pkgrel=2
 pkgdesc="C++ implementation of the NIST Special Publication 800-90B"
 url="https://github.com/usnistgov/SP800-90B_EntropyAssessment"
 arch=('x86_64')
@@ -14,17 +15,17 @@ source=("https://github.com/usnistgov/SP800-90B_EntropyAssessment/archive/refs/t
 b2sums=("68c141aaef6e03ed448b654e2f0cf93cb4ed113ed41f718f34653922c70f4a0929a60fceedd05de4d4b264a8b3812ba585bd78388857e3dd0719224c94665c15")
 
 build() {
-    cd "SP800-90B_EntropyAssessment-1.1.3/cpp"
+    cd "$_pkgname/cpp"
     make all
 }
 
 check() {
-    cd "SP800-90B_EntropyAssessment-1.1.3/cpp/selftest"
+    cd "$_pkgname/cpp/selftest"
     /bin/bash selftest
 }
 
 package() {
-    cd "SP800-90B_EntropyAssessment-1.1.3/cpp"
+    cd "$_pkgname/cpp"
     install -Dm755 ea_iid "$pkgdir/usr/bin/ea_iid"
     install -Dm755 ea_non_iid "$pkgdir/usr/bin/ea_non_iid"
     install -Dm755 ea_restart "$pkgdir/usr/bin/ea_restart"
