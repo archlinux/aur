@@ -17,8 +17,7 @@ upgrade_userdata() {
   fi
 
   if [ -e "$WORK_DIR/userdata2.dat" -a ! -e "$WORK_DIR/data/e21fb121.bin" ]; then
-    /usr/bin/printf "----------------------------------------------\n"
-    /usr/bin/printf " Upgrading userdata\n"
+    /usr/bin/printf " Upgrading userdata...\n"
 
     mkdir -p "$WORK_DIR/data"
     chmod 700 "$WORK_DIR/data"
@@ -27,7 +26,6 @@ upgrade_userdata() {
       --client-version "$CLIENT_VERSION" \
       --client-build "$BUILD_VERSION" \
       migrate 2>&1
-    /usr/bin/printf "----------------------------------------------\n"
   fi
 }
 
@@ -53,20 +51,9 @@ post_install() {
 
 post_upgrade() {
   gen_key
-  upgrade_userdata $1
-  if [ "$(/usr/bin/vercmp 1.2.0 "$2")" -eq 1 ]; then
-    /usr/bin/printf "------------------------------------------------------------------------------\n"
-    /usr/bin/printf " Upstream now ship a systemd service file with a different name to the one we\n"
-    /usr/bin/printf " previously shipped. The new service name is:\n"
-    /usr/bin/printf "     'expressvpn.service'\n"
-    /usr/bin/printf " Please remember to enable it if you want the service to start at boot.\n"
-    /usr/bin/printf " If you had enabled the previous service file please manually remove its\n"
-    /usr/bin/printf " symlink:\n"
-    /usr/bin/printf "     # rm /etc/systemd/system/multi-user.target.wants/expressvpnd.service\n"
-    /usr/bin/printf " Unfortunately, you will need to reactivate your expressvpn after this update\n"
-    /usr/bin/printf "------------------------------------------------------------------------------\n"
-  fi
   /usr/bin/printf "--------------------------------------------------\n"
+  upgrade_userdata $1
+  /usr/bin/printf "\n"
   /usr/bin/printf " You will need to re-start the expressvpn daemon:\n"
   /usr/bin/printf "     # systemctl start expressvpn.service\n"
   /usr/bin/printf "--------------------------------------------------\n"
@@ -78,6 +65,7 @@ post_remove() {
   /usr/bin/rm -f "$WORK_DIR/certs/client.p12"
   /usr/bin/rm -f "$WORK_DIR/certs/clientca.crt"
   /usr/bin/rm -f "$WORK_DIR/certs/clientca.key"
+  /usr/bin/printf " NOTE: You may need to clean up residual artefacts from /var/lib/expressvpn manually\n"
 }
 
 pre_remove() {
