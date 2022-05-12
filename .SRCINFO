@@ -1,11 +1,11 @@
 pkgbase = otf-ibm-plex
 	pkgdesc = IBM Plex Mono, Sans, and Serif typefaces in otf format
-	pkgver = 6.0.0
+	pkgver = 6.0.1
 	pkgrel = 1
 	url = https://github.com/IBM/plex
 	arch = any
 	license = custom
-	source = ibm-plex-6.0.0-opentype.zip::https://github.com/IBM/plex/releases/download/v6.0.0/OpenType.zip
-	sha256sums = a26a2b220181bd9097c5badb9a5b9de5cada25abd6267bd678bd5e390203454d
+	source = ibm-plex-6.0.1-opentype.zip::https://github.com/IBM/plex/releases/download/v6.0.1/OpenType.zip
+	sha256sums = d837e2fdfdef8eedc50d219dd3a8a093705c73c0574964069200924450fe7bd9
 
 pkgname = otf-ibm-plex
