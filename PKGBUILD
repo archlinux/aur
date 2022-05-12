@@ -2,7 +2,7 @@
 
 pkgname=papeaks-git
 pkgver=1.0.0.r3.g9f35743
-pkgrel=1
+pkgrel=2
 pkgdesc="PulseAudio volume peaks on standard output"
 arch=('x86_64')
 url='https://github.com/futpib/papeaks'
@@ -11,7 +11,7 @@ depends=('libpulse')
 makedepends=('git' 'rust')
 provides=('papeaks')
 conflicts=('papeaks')
-source=("git://github.com/futpib/papeaks.git")
+source=("git+https://github.com/futpib/papeaks.git")
 sha256sums=('SKIP')
 
 _pkgname=${pkgname%%-git}
