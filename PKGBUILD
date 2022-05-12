@@ -1,6 +1,6 @@
 # Maintainer: Hisbaan Noorani <hisbaan@gmail.com>
 pkgname=didyoumean-git
-pkgver=1.1.2.r0.c2c4c10
+pkgver=1.1.2
 pkgrel=1
 pkgdesc="A CLI spelling corrector"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -50,6 +50,15 @@ package() {
 
     install -Dm755 target/release/dym -t "${pkgdir}/usr/bin/"
 
+    # Install license and readme.
     install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname%-git}/"
     install -Dm644 docs/README.md -t "${pkgdir}/usr/share/doc/${pkgname%-git}/"
+
+    # Install man page
+    install -Dm644 man/dym.1 -t "${pkgdir}/usr/share/man/man1/"
+
+    # Install shell completions
+    install -Dm644 completions/dym.bash -t "${pkgdir}/usr/share/bash-completion/completions/"
+    install -Dm644 completions/dym.fish -t "${pkgdir}/usr/share/fish/vendor_completions.d/"
+    install -Dm644 completions/_dym -t "${pkgdir}/usr/share/zsh/site-functions/"
 }

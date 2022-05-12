@@ -1,6 +1,6 @@
 pkgbase = didyoumean-git
 	pkgdesc = A CLI spelling corrector
-	pkgver = 1.1.2.r0.c2c4c10
+	pkgver = 1.1.2
 	pkgrel = 1
 	url = https://github.com/hisbaan/didyoumean
 	arch = i686
