@@ -3,7 +3,7 @@
 # $ updaurpkg .
 _repo=lyokha/g3kb-switch
 _source_type=github-releases
-_upstreamver='1.0'
+_upstreamver='1.1'
 _pkgname=$(tr A-Z a-z <<< ${_repo##*/})
 
 pkgname=$_pkgname
@@ -25,7 +25,7 @@ source=("$_pkgname-$pkgver::$url/archive/$_upstreamver.tar.gz")
 # source=("$_pkgname-$pkgver::https://files.pythonhosted.org/packages/source/${_pkgname:0:1}/$_pkgname/$pkgname-$pkgver.tar.gz")
 # _py=py2.py3
 # source=("$_pkgname-$pkgver::https://files.pythonhosted.org/packages/$_py/${_pkgname:0:1}/$_pkgname/${_pkgname//-/_}-$pkgver-$_py-none-any.whl")
-sha256sums=('b582a3448d4bbc7cefc896513ba8979bdabea66b2b5881060b60ef3602d73aa3')
+sha256sums=('9d4f093c482a03064c185c8ff22feafcf9f81b84f4d99ff9ec69d7939a681cdb')
 
 build() {
 	cd "$srcdir/$_pkgname-$pkgver"
