@@ -32,6 +32,10 @@ build() {
     cd "$srcdir/$pkgname-$pkgver"
     ./configure --prefix=/usr --libexecdir=/lib --enable-shared
 
+    # Rid flags not used by Ada.
+    CFLAGS="${CFLAGS//-Wformat}"
+    CFLAGS="${CFLAGS//-Werror=format-security}"
+
     # Make using a single job (-j1) to avoid the same file being compiled at the same time.
     make -j1 GPRBUILD_OPTIONS=-R
 }
