@@ -11,7 +11,7 @@ makedepends=('glib2' 'meson' 'curl')
 license=('CCPL:by-sa' 'GPL3 or any later version')
 provides=('gnome-backgrounds' 'gnome-backgrounds-git' 'gnome-backgrounds-macos')
 conflicts=('gnome-backgrounds-macos')
-source=("git+https://github.com/saltedcoffii/$_pkgname.git")
+source=("git+$url.git")
 sha256sums=('SKIP')
 
 build() {
