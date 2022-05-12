@@ -11,7 +11,7 @@ license=('LGPL')
 depends=('pango')
 makedepends=('git')
 source=(
-  "git+https://gitlab.gnome.org/Archive/pangox-compat"
+  "git+https://gitlab.gnome.org/Archive/pangox-compat.git"
   '0001-Re-add-pango_x_get_shaper_map-it-is-still-used-in-th.patch'
   '0002-disable-shaper.patch'
 )
