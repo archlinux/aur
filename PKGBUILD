@@ -1,18 +1,19 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: Simon Legner <Simon.Legner@gmail.com>
 pkgname=picopt
-pkgver=2.2.1
-pkgrel=4
+pkgver=3.1.2
+pkgrel=1
 pkgdesc="A multi format lossless image optimizer that uses external tools"
 url="https://github.com/ajslater/${pkgname}"
-depends=(python-pillow python-dateutil python-rarfile python-argparse optipng python-setuptools)
+depends=(python-confuse python-humanize python-dateutil python-rarfile python-treestamps python-pillow python-argparse optipng)
+makedepends=(python-setuptools)
 optdepends=('gifsicle: for animated GIFs support'
   'pngout: for optimize PNG images'
   'mozjpeg: for optimize JPEG images')
 license=(GPL2)
-arch=('any')
+arch=(any)
 source=(https://pypi.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz)
-sha512sums=('7d34f61defb71780be89bf8ae30e6a9e0247db40fbce03ba0d715c6d1546efb95a569c426144a29a16c40ad392a7003644e6713842b845acc9ac0403ef0638d8')
+sha512sums=('3ef57ecf0153235140613529ccdb800a63a78764ce21002e5cbfb65464e67c41786ee6f3a1d5ba9fce7dcfb9a330bd9d371584c0d1990bc336742c62bad863b0')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -21,7 +22,7 @@ build() {
 
 # check() {
 #   cd "${pkgname}-${pkgver}"
-#   python -m pytest tests
+#   python setup.py test
 # }
 
 package() {
