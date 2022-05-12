@@ -1,6 +1,6 @@
 # Maintainer: xiretza <xiretza+aur@gmail.com>
 # Maintainer: Rod Kay <rodakay5 at gmail dot com>
-# Contributor: Pierre-Marie de Rodat <pmderodat on #ada at freenode.net>
+# Contributor: Pierre-Marie de Rodat <pmderodat on #ada at irc.libera.chat>
 # Contributor: Earnestly <zibeon AT googlemail.com>
 
 pkgbase=gprbuild
@@ -17,9 +17,9 @@ makedepends=('gprbuild-bootstrap' 'xmlada')
 source=(
 	"$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	"gprconfig_kb-$pkgver.tar.gz::https://github.com/AdaCore/gprconfig_kb/archive/v$pkgver.tar.gz"
-    'relocatable-build.patch'
-    'always-use-host-gprinstall.patch'
-    '0002-compilers.xml-use-gcc-version-to-get-version-number-.patch'
+        "relocatable-build.patch"
+        "always-use-host-gprinstall.patch"
+        "0002-compilers.xml-use-gcc-version-to-get-version-number-.patch"
 )
 sha256sums=('076e2b6ac0c7170753a6499094a6d30a98698aca2551c6796b3a617dd9ffc704'
             'cc19437e0982d9af31e09ad7c42eac6a445dac65336bd53d67ba61f630be7f13'
@@ -43,9 +43,9 @@ prepare() {
 
     # GPRbuild hard-codes references to /usr/libexec, but ArchLinux packages
     # must use /usr/lib instead.
-    sed -i 's/libexec/lib/g' doinstall gprbuild.gpr \
+    sed -i 's/libexec/lib/g' doinstall gprbuild.gpr     \
         "$srcdir/gprconfig_kb-$pkgver/db/compilers.xml" \
-        "$srcdir/gprconfig_kb-$pkgver/db/linker.xml" \
+        "$srcdir/gprconfig_kb-$pkgver/db/linker.xml"    \
         "$srcdir/gprconfig_kb-$pkgver/db/gnat.xml"
 }
 
