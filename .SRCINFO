@@ -1,0 +1,13 @@
+pkgbase = rofi-checklist-git
+	pkgdesc = A minimalist checklist menu for rofi
+	pkgver = 1.0.0
+	pkgrel = 1
+	url = https://github.com/ElnuDev/rofi-checklist
+	arch = any
+	license = GPLv3
+	makedepends = git
+	depends = rofi
+	source = git+https://github.com/ElnuDev/rofi-checklist
+	md5sums = SKIP
+
+pkgname = rofi-checklist-git
