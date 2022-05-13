@@ -22,7 +22,7 @@ pkgbase = linux-xanmod-edge
 	sha256sums = 555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1
 	sha256sums = SKIP
 	sha256sums = bd58952f92badc91fd52e3a8c07605546c7ece1620f63b9837677ded73647e1c
-	sha256sums = 1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee
+	sha256sums = 110f3412c902cdbf34b42d94b95a9c74faa3bd4bc3e9fd1efc8eb94c09ae43aa
 
 pkgname = linux-xanmod-edge
 	pkgdesc = The Linux kernel and modules with Xanmod patches
