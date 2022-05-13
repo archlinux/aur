@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=xiasl
+Comment=Cross-platform DSDT&SSDT IDE
+Exec=/usr/bin/xiasl
+Icon=xiasl
+Terminal=false
+Type=Application
+Categories=Application;
