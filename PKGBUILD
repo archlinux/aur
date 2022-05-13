@@ -2,8 +2,8 @@
 
 _pkgname=git-fuzzy
 pkgname=$_pkgname-git
-pkgver=0.r34
-pkgrel=2
+pkgver=0.r69
+pkgrel=1
 pkgdesc="interactive git with the help of fzf"
 license=('MIT')
 arch=('any')
@@ -26,7 +26,7 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${_pkgname}"
-  sed -i 's%lib_dir="$script_dir/../lib"%lib_dir=/usr/lib/git-fuzzy%' bin/git-fuzzy
+  sed -i 's%git_fuzzy_dir=.*%git_fuzzy_dir=/usr/lib/git-fuzzy%' bin/git-fuzzy
 
   sed -i 's%gifs/%https://github.com/bigH/git-fuzzy/raw/master/gifs/%' README.md
 }
@@ -34,7 +34,7 @@ build() {
 package() {
   cd "${srcdir}/${_pkgname}"
   install -Dm755 bin/git-fuzzy -t "${pkgdir}/usr/bin"
-  install -d "${pkgdir}/usr/lib"
+  install -d "${pkgdir}/usr/lib/git-fuzzy"
   cp -r lib "${pkgdir}/usr/lib/git-fuzzy"
 
   install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${_pkgname}"
