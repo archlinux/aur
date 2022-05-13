@@ -56,7 +56,7 @@ optdepends=(
 )
 source=("$pkgname-$pkgver.tar.gz::https://github.com/ankitects/anki/archive/refs/tags/${pkgver}.tar.gz"
 "no-update.patch"
-"inc_timeout_time.patch"
+"inc_qt_timeout.patch"
 )
 sha256sums=('decc58a45ff6f939d6c8274c50d2c3f896ff22f075bde5026d3deff9b36b74ee'
 '137827586d2a72adddaaf98599afa9fc80cdd73492d7f5cbcf4d2f6082e5f797'
@@ -68,7 +68,7 @@ prepare(){
     # pro-actively prevent "module not found" error
     [ -d ts/node_modules ] && rm -r ts/node_modules
     patch -p1 < "$srcdir/no-update.patch"
-    patch -p1 < "$srcdir/inc_timeout_time.patch"
+    patch -p1 < "$srcdir/inc_qt_timeout.patch"
     rm .bazelversion
 }
 
