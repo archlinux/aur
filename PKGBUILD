@@ -11,7 +11,7 @@ arch=('x86_64')
 url="https://github.com/ethereum-mining/ethminer"
 license=('GPL3')
 depends=('mesa' 'npth' 'cuda')
-makedepends=('gcc10' 'cmake' 'python' 'git')
+makedepends=('cmake' 'python' 'git')
 provides=('ethminer')
 conflicts=('ethminer' 'ethminer-git')
 source=("git+${url}.git#tag=v${pkgver}")
@@ -34,10 +34,14 @@ build () {
   # Enable sm_80 and sm_86
   git cherry-pick 8f48e43f9232655340badc626863e88cbc960b73 --no-commit
 
+  # Prevent creating files in the user's homedir
+  mkdir -p $srcdir/home
+  export HOME=$srcdir/home
+
   mkdir -p build && cd build
 
-  export CC=gcc-10
-  export CXX=g++-10
+  export CC=gcc
+  export CXX=g++
   cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DETHASHCUDA=ON
   cmake --build .
 }

@@ -5,7 +5,6 @@ pkgbase = ethminer-cuda
 	url = https://github.com/ethereum-mining/ethminer
 	arch = x86_64
 	license = GPL3
-	makedepends = gcc10
 	makedepends = cmake
 	makedepends = python
 	makedepends = git
