@@ -1,11 +1,12 @@
 # Maintainer: Armin Preiml <apreiml@strohwolke.at>
 pkgname=harec-git
 _pkgname=harec
-pkgver=r1240.c1caaf0
+pkgver=r1264.4a97bd2
 pkgrel=1
 license=("GPL3")
 pkgdesc="The Hare compiler"
-makedepends=("qbe-git")
+makedepends=("qbe-git" "git")
+depends=("qbe-git" "binutils")
 
 arch=("x86_64")
 url="https://harelang.org"

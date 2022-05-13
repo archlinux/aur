@@ -1,11 +1,14 @@
 pkgbase = harec-git
 	pkgdesc = The Hare compiler
-	pkgver = r1240.c1caaf0
+	pkgver = r1264.4a97bd2
 	pkgrel = 1
 	url = https://harelang.org
 	arch = x86_64
 	license = GPL3
 	makedepends = qbe-git
+	makedepends = git
+	depends = qbe-git
+	depends = binutils
 	provides = harec
 	conflicts = harec
 	source = harec::git+https://git.sr.ht/~sircmpwn/harec
