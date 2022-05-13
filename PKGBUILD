@@ -2,7 +2,7 @@
 
 pkgname=yabar-git
 _pkgname=yabar
-pkgver=0.4.0.r166.gd9f7593
+pkgver=0.4.0.r179.ga0d3fdf
 pkgrel=1
 pkgdesc="A modern and lightweight status bar for X window managers"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ optdepends=('playerctl: playerctl integration')
 makedepends=('git' 'asciidoc')
 provides=('yabar')
 conflicts=('yabar')
-source=(git://github.com/geommer/yabar.git)
+source=(git+https://github.com/geommer/yabar.git)
 md5sums=('SKIP')
 
 pkgver() {
