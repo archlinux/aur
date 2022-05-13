@@ -13,8 +13,11 @@ makedepends=('git' 'meson')
 source=("git+${url}.git#tag=v${pkgver}")
 b2sums=('SKIP')
 
-build() {
+prepare() {
   arch-meson ${pkgname} build
+}
+
+build() {
   meson compile -C build
 }
 
