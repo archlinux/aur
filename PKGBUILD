@@ -2,7 +2,7 @@
 # Contributor: Ben Westover <kwestover.kw@gmail.com>
 
 pkgname=python-blspy
-pkgver=1.0.11
+pkgver=1.0.12
 pkgrel=1
 pkgdesc='Python BLS Signatures implementation'
 url='https://github.com/Chia-Network/bls-signatures'
@@ -21,7 +21,7 @@ makedepends=(
 	'python-wheel')
 source=("$pkgname-$pkgver.tar.gz::https://files.pythonhosted.org/packages/source/b/blspy/blspy-$pkgver.tar.gz"
         'CXXFLAGS.patch')
-sha256sums=('dd361c21eff064b912f49a6e0d8f6b9125942b0f498554aa8c2e4818d89c1ed0'
+sha256sums=('19fdb64767d46e84891f83095fd7de4e937d3b755a4844efcd5eb2f1e9ac167e'
             '15b18c754175b1a697e62c509e26864316c6a39825f5e2c87495a2f9a1b7bb7f')
 
 prepare() {
