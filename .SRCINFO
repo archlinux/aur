@@ -1,6 +1,6 @@
 pkgbase = ms-office-electron-git
 	pkgdesc = An Unofficial Microsoft Office Online Desktop Client. Free of Cost.
-	pkgver = 0.6.0
+	pkgver = 0.7.0
 	pkgrel = 1
 	url = https://github.com/agam778/MS-Office-Electron
 	arch = x86_64
