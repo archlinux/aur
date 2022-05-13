@@ -2,12 +2,12 @@
 # Acknowledgment: Borrowed a lot from logseq-desktop-git, thank @pychuang 
 pkgname=logseq-desktop
 pkgver=0.6.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A privacy-first, open-source platform for knowledge sharing and management."
 arch=("x86_64")
 url="https://github.com/logseq/logseq"
 license=('AGPL3')
-makedepends=("git" "yarn" "npm" "clojure" "nodejs")
+makedepends=("git" "yarn" "npm" "clojure" "nodejs-lts-gallium")
 provides=("logseq-desktop")
 conflicts=("logseq-desktop-git" "logseq-desktop-bin")
 source=("${pkgname}-${pkgver}.zip::https://github.com/logseq/logseq/archive/refs/tags/${pkgver}.zip"
