@@ -12,7 +12,7 @@ makedepends=(go)
 backup=(etc/default/fleet-orbit)
 optdepends=()
 source=(
-  "https://github.com/fleetdm/fleet/archive/refs/tags/orbit-v$pkgver.tar.gz"
+  "https://github.com/fleetdm/fleet/archive/refs/tags/orbit-v0.0.11.tar.gz"
   'fleet-orbit'
   'fleet-orbit-cleanup.hook'
   'fleet-orbit-config'
