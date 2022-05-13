@@ -18,7 +18,6 @@ makedepends=(
     cmake
     ros-build-tools
     ${ros_makedepends[@]}
-    log4cxx
     boost
 )
 
@@ -32,7 +31,7 @@ depends=(
     ${ros_depends[@]}
     apr
     apr-util
-    google-glog
+    log4cxx
 )
 
 _dir="rosconsole-${pkgver}/"
