@@ -27,13 +27,11 @@ conflicts=('spark2014')
 source=('git+https://github.com/AdaCore/spark2014#branch=fsf'
         'why3-adacore::git+https://github.com/AdaCore/why3'
         'git+https://github.com/gcc-mirror/gcc'
-        'makefile-installdir-fixes.diff'
-        'why3-menhirLib-fix.diff')
+        'makefile-fixes.patch')
 
 
 sha256sums=('SKIP' 'SKIP' 'SKIP'
-            'c8d302caf1cb470ddf60bac3aecbe71c3e6560177aa1ad9cfca1fd9b999b6fa4'
-            '8bcf62beb5773a6da910a512d8384343774aa3561d6d5b5c1891e545aef635aa')
+            'beccfa221c9c2675b62d61f669a2792e91e37614bccd7e23d190c80b60be8e0d')
 
 prepare() {
     cd spark2014
@@ -46,9 +44,7 @@ prepare() {
 
     # Use install instead of mv to install the various targets while also
     # houring the INSTALLDIR convention used within this Makefile.
-    patch -Np1 -i "$srcdir"/makefile-installdir-fixes.diff
-
-    patch -Np1 -i "$srcdir"/why3-menhirLib-fix.diff
+    patch -Np2 -i "${srcdir}/makefile-fixes.patch"
 
     # Arch Linux doesn't use libexec, everything lives under lib.
     sed -i 's/libexec/lib/g' gnatprove/configuration.ads

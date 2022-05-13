@@ -1,0 +1,38 @@
+diff --color --unified --recursive --text src.orig/spark2014/Makefile src.new/spark2014/Makefile
+--- src.orig/spark2014/Makefile	2022-05-12 14:41:28.440880794 -0600
++++ src.new/spark2014/Makefile	2022-05-12 14:44:29.869703151 -0600
+@@ -77,9 +77,9 @@
+ #   install-all  install of gnatprove and why3
+ 
+ setup:
+-	cd why3 && ./configure --prefix=$(INSTALLDIR)/libexec/spark \
++	cd why3 && ./configure --prefix=$(INSTALLDIR)/lib/spark \
+ 		--enable-relocation --disable-js-of-ocaml \
+-		--disable-hypothesis-selection --disable-re
++		--disable-hypothesis-selection --disable-re --disable-emacs-compilation
+ 
+ why3:
+ 	$(MAKE) -C why3 -j $(nproc)
+@@ -89,7 +89,7 @@
+ 	$(MAKE) install
+ 	$(MAKE) -C why3 install_spark2014_dev
+ 	# Create the fake prover scripts to help extract benchmarks.
+-	$(CP) benchmark_script/fake_* install/libexec/spark/bin
++	$(CP) benchmark_script/fake_* $(INSTALLDIR)/lib/spark/bin
+ 
+ install:
+ 	mkdir -p $(INSTALLDIR)/bin $(CONFIGDIR) $(THEORIESDIR) \
+diff --color --unified --recursive --text src.orig/spark2014/why3/Makefile.in src.new/spark2014/why3/Makefile.in
+--- src.orig/spark2014/why3/Makefile.in	2022-05-12 14:41:38.180638636 -0600
++++ src.new/spark2014/why3/Makefile.in	2022-05-12 14:44:58.682320067 -0600
+@@ -152,8 +152,8 @@
+ 
+ # external libraries common to all binaries
+ 
+-EXTOBJS = menhirLib
+-EXTLIBS = @SEQLIB@ @RELIB@ unix nums dynlink result easy_format biniou yojson @ZIPLIB@ @MLMPFR@ @WHY3LIB@ @INFERLIB@
++EXTOBJS =
++EXTLIBS = menhirLib @SEQLIB@ @RELIB@ unix nums dynlink result easy_format biniou yojson @ZIPLIB@ @MLMPFR@ @WHY3LIB@ @INFERLIB@
+ EXTPKGS = menhirLib @SEQLIB@ @RELIB@ unix num dynlink yojson @ZIPLIB@ @WHY3LIB@ @INFERPKG@ @SEXPLIB@ @SEXPLIBPPX@
+ 
+ EXTCMA	= $(addsuffix .cmo,$(EXTOBJS)) $(addsuffix .cma,$(EXTLIBS))
