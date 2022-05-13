@@ -1,8 +1,11 @@
-pkgname=spark2014-git
-pkgver=0.3.draft.r19318.g3559419bef
-pkgrel=4
+# Maintainer: nytpu <alex at nytpu dot com>
+# Send patches or reports to the mailing list linked at:
+# https://git.sr.ht/~nytpu/PKGBUILDs/
 
-pkgdesc='formally defined programming language based on ada (gnat fsf)'
+pkgname=spark2014-git
+pkgver=0.3.draft.r22203.g30299b3035
+pkgrel=1
+pkgdesc='Formally defined programming language based on Ada (GNAT FSF version)'
 url='https://www.spark-2014.org'
 arch=('x86_64')
 license=('GPL')
