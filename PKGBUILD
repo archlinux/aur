@@ -1,12 +1,11 @@
 # Maintainer: Chen Jicheng <git@chenjicheng.com>
 pkgname=arduino-cli-bin
 pkgver=0.22.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Arduino command line tool"
 arch=('x86_64' 'i686' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/arduino/arduino-cli"
 license=('GPL3')
-groups=('arduino')
 depends=('glibc')
 conflicts=('arduino-cli' 'arduino-cli-git' 'arduino-cli-rc')
 
