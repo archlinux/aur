@@ -1,0 +1,13 @@
+[Desktop Entry]
+Type=Application
+Categories=Game
+Exec=hikari-field-client %u
+Icon=hikari-field-client
+Name=Hikari Field Client
+Name[zh_CN]=Hikari Field客户端
+Name[zh_TW]=Hikari Field客戶端
+Comment=Hikari Field Client
+Comment[zh_CN]=Hikari Field客户端
+Comment[zh_TW]=Hikari Field客戶端
+StartupNotify=true
+Terminal=false

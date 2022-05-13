@@ -1,0 +1,21 @@
+pkgbase = hikari-field-client-bin
+	pkgdesc = Hikari Field Client For Linux.
+	pkgver = 1.1.1
+	pkgrel = 1
+	epoch = 1
+	url = https://store.hikarifield.co.jp/client
+	arch = x86_64
+	license = unknown
+	makedepends = asar
+	depends = electron13
+	options = !strip
+	source = HIKARI-FIELD-CLIENT-Setup-1.1.1.zip::https://client.hikarifield.co.jp/release/HIKARI-FIELD-CLIENT-Setup-1.1.1.zip
+	source = hikari-field-client.desktop
+	source = hikari-field-client.svg
+	source = hikari-field-client
+	md5sums = 62486f9270ead23f2bbbe20a1dcd524d
+	md5sums = SKIP
+	md5sums = SKIP
+	md5sums = SKIP
+
+pkgname = hikari-field-client-bin
