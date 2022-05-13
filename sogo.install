@@ -5,8 +5,7 @@ post_install() {
   /usr/sbin/systemctl daemon-reload
   echo "NOTE: If migrating from a version of SOGo prior to 2.3.0, you must run the SQL"
   echo "update script(s) for your SQL server, located in /usr/lib/sogo/scripts."
-  echo "WARNING: Do not run the 3.0.0-to-combined scripts unless you intend to move"
-  echo "to the new table format. Please consult the documentation before doing so."
+  echo "Please consult the documentation before doing so."
 
 }
 
@@ -17,8 +16,7 @@ pre_remove() {
 
 post_upgrade() {
   /usr/sbin/systemctl daemon-reload
-  echo "NOTE: If upgrading from a version of SOGo prior to 2.3.0, you must run the SQL"
-  echo "update script(s) for your SQL server, located in /usr/lib/sogo/scripts."
-  echo "WARNING: Do not run the 3.0.0-to-combined script unless you intend to move"
-  echo "to the new table format. Please consult the documentation before doing so."
+  echo "NOTE: If upgrading SOGo, you must run the SQL update script(s)"
+  echo "applicable to your upgrade, located in /usr/lib/sogo/scripts."
+  echo "Please consult the documentation before doing so."
 }

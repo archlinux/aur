@@ -4,7 +4,7 @@
 # Contributor:  Andre Wayand <aur-sogo@awayand.sleepmail.com>
 pkgname=sogo
 pkgdesc="groupware server built around OpenGroupware.org (OGo) and the SOPE application server"
-pkgver=5.5.1
+pkgver=5.6.0
 pkgrel=1
 arch=('x86_64')
 url="http://www.sogo.nu/"
@@ -40,9 +40,9 @@ backup=('etc/sogo/sogo.conf'
 source=("https://packages.inverse.ca/SOGo/sources/SOGo-${pkgver}.tar.gz"
         "sogo.service"
         "sogo.confd")
-sha256sums=('acde56d070c301f35d4893ec1824a18527bf00f0220ec14cd7cc5c9475b5e830'
-            '7565a09d2b9daebaf2814a2bb55bf5bcae4cd3c72426f14a7ad6cd07e337c68b'
-            '8ee0d1ad77e998ea801053fce175d8c4a1c55dcc5ee1ff78f0a8e3797187a6a7')
+sha512sums=('61f7da4500d11907326a2ee656f143e4942e19a259a726239132ffa43c157027aa0677d60fd6497d45ee838923bc6d8b9e3449adfce41f8f36d237fc870ec7fb'
+            '73de6719ba3c17fb03dba4c7390f1e99ac4adff4c3413b6031ebb807fcef8a3f5eb0b8e3767a9560c2106b2f3470447b52803f5bd2f562b382e99c6382be2879'
+            '51803a53f5ae32017281e3c891ae21c126a6adc10529669bd659cc4bffaeaae46a59db34c0c97bbc83e9e3be5e619e4ced170e18b31c1267d3c14ce20b54ccf4')
 
 build() {
   cd "SOGo-${pkgver}"
@@ -62,11 +62,7 @@ package() {
   install -D -m 0644 "${srcdir}"/SOGo-${pkgver}/Scripts/logrotate \
                      "${pkgdir}"/etc/logrotate.d/sogo
   install -d -m 0755 "${pkgdir}"/usr/lib/sogo/scripts
-  install    -m 0755 "${srcdir}"/SOGo-${pkgver}/Scripts/sql-update-2.2.17_to_2.3.0{,-mysql}.sh \
-                      "${pkgdir}"/usr/lib/sogo/scripts/
-  install    -m 0755 "${srcdir}"/SOGo-${pkgver}/Scripts/sql-update-3.0.0-to-combined{,-mysql}.sh \
-                      "${pkgdir}"/usr/lib/sogo/scripts/
-  install    -m 0755 "${srcdir}"/SOGo-${pkgver}/Scripts/sql-update-3.2.10_to_4.0.0{,-mysql}.sh \
+  install    -m 0755 "${srcdir}"/SOGo-${pkgver}/Scripts/sql-*.sh \
                       "${pkgdir}"/usr/lib/sogo/scripts/
   install -D -m 0644 "${srcdir}"/sogo.confd \
                      "${pkgdir}"/etc/conf.d/sogo
