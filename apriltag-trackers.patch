@@ -1,0 +1,136 @@
+diff --git a/AprilTagTrackers/CMakeLists.txt b/AprilTagTrackers/CMakeLists.txt
+index db697a2..515bee3 100644
+--- a/AprilTagTrackers/CMakeLists.txt
++++ b/AprilTagTrackers/CMakeLists.txt
+@@ -12,9 +12,12 @@ AprilTagTrackers_options()
+ 
+ # Find our dependencies
+ att_find_dep(OpenCV REQUIRED)
+-att_find_dep(apriltag REQUIRED)
+-att_find_dep(openvr REQUIRED)
+-att_find_dep(wxWidgets REQUIRED core base)
++find_library(APRILTAG_LIB apriltag REQUIRED)
++find_library(OPENVR_LIB openvr_api REQUIRED)
++find_package(wxWidgets COMPONENTS core base REQUIRED)
++include(${wxWidgets_USE_FILE})
++
++include_directories("/usr/include/openvr/")
+ 
+ # Explicitly list source files as recommended by cmake
+ set(ATT_SOURCE_FILES
+@@ -53,7 +56,7 @@ endif()
+ 
+ # Link libraries defined as targets, includes are automatic
+ target_link_libraries(AprilTagTrackers PUBLIC
+-    ${OpenCV_LIBS} wx::wx openvr::openvr apriltag::apriltag)
++    ${OpenCV_LIBS} ${wxWidgets_LIBRARIES} ${OPENVR_LIB} ${APRILTAG_LIB})
+ 
+ # Ensure compiler with c++17 language features
+ target_compile_features(AprilTagTrackers PUBLIC cxx_std_17)
+diff --git a/AprilTagTrackers/Tracker.cpp b/AprilTagTrackers/Tracker.cpp
+index 598a39a..e05dd33 100644
+--- a/AprilTagTrackers/Tracker.cpp
++++ b/AprilTagTrackers/Tracker.cpp
+@@ -933,7 +933,7 @@ void Tracker::CalibrateTracker()
+             {
+                 if (cv::aruco::estimatePoseBoard(corners, ids, arBoard, calib_config.camMat, calib_config.distCoeffs, boardRvec[i], boardTvec[i], false) > 0) // try to estimate current trackers pose
+                 {
+-                    cv::aruco::drawAxis(image, calib_config.camMat, calib_config.distCoeffs, boardRvec[i], boardTvec[i], 0.1f); // if found, draw axis and mark it found
++                    cv::drawFrameAxes(image, calib_config.camMat, calib_config.distCoeffs, boardRvec[i], boardTvec[i], 0.1f); // if found, draw axis and mark it found
+                     boardFound[i] = true;
+                 }
+                 else
+@@ -1258,7 +1258,7 @@ void Tracker::MainLoop()
+                 tvec[1] = rpos.at<double>(1, 0);
+                 tvec[2] = rpos.at<double>(2, 0);
+ 
+-                cv::aruco::drawAxis(drawImg, calib_config.camMat, calib_config.distCoeffs, rvec, tvec, 0.10f);
++                cv::drawFrameAxes(drawImg, calib_config.camMat, calib_config.distCoeffs, rvec, tvec, 0.10f);
+ 
+                 if (!trackerStatus[i].boardFound) // if tracker was found in previous frame, we use that position for masking. If not, we use position from driver for masking.
+                 {
+diff --git a/CMake/helpers.cmake b/CMake/helpers.cmake
+index 3692db2..171c67a 100644
+--- a/CMake/helpers.cmake
++++ b/CMake/helpers.cmake
+@@ -196,5 +196,5 @@ endfunction()
+ 
+ # Find a <package_name>Config.cmake in DEPS_INSTALL_DIR
+ macro(att_find_dep package_name)
+-    find_package(${package_name} ${ARGN} PATHS "${DEPS_INSTALL_DIR}" NO_DEFAULT_PATH)
++    find_package(${package_name} ${ARGN} PATHS "${DEPS_INSTALL_DIR}")
+ endmacro()
+diff --git a/deps/CMakeLists.txt b/deps/CMakeLists.txt
+index 716a557..568ca62 100644
+--- a/deps/CMakeLists.txt
++++ b/deps/CMakeLists.txt
+@@ -2,69 +2,6 @@ project(deps)
+ 
+ set_directory_properties(PROPERTIES EP_UPDATE_DISCONNECTED TRUE)
+ 
+-# --- AprilTag ---
+-att_add_dep(
+-    apriltag
+-
+-    EXTRA_CMAKE_ARGS
+-    -DBUILD_EXAMPLES:BOOL=OFF
+-    -DBUILD_PYTHON_WRAPPER:BOOL=OFF
+-)
+-
+-# --- wxWidgets ---
+-# TODO: Allow picking preinstalled on linux as its usually available
+-# Should be compatible with version 3.1 and up
+-att_add_dep(
+-    wxWidgets
+-
+-    EXTRA_CMAKE_ARGS
+-    -DwxBUILD_SHARED:BOOL=OFF
+-    -DwxBUILD_OPTIMISE:BOOL=$<AND:$<BOOL:${ENABLE_LTO}>,$<CONFIG:Release>>
+-    -DwxBUILD_USE_STATIC_RUNTIME:BOOL=$<NOT:$<BOOL:${BUILD_SHARED_LIBS}>>
+-)
+-att_configure_package_config(wxWidgets)
+-
+-# --- OpenCV Contrib ---
+-set(CVC_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/opencv_contrib")
+-set(CVC_BIN_DIR "${CMAKE_CURRENT_BINARY_DIR}/opencv_contrib")
+-
+-# --- OpenCV ---
+-att_add_dep(
+-    opencv
+-
+-    EXTRA_CMAKE_ARGS
+-    -DVIDEOIO_PLUGIN_LIST:STRING=ffmpeg
+-    "-DOPENCV_EXTRA_MODULES_PATH:PATH=${CVC_BIN_DIR}/modules" # The modules folder with aruco created by opencv_contrib
+-    -DBUILD_WITH_STATIC_CRT:BOOL=$<NOT:$<BOOL:${BUILD_SHARED_LIBS}>>
+-    -DENABLE_LTO:BOOL=$<AND:$<BOOL:${ENABLE_LTO}>,$<CONFIG:Release>>
+-    -DWITH_ITT=OFF
+-    -DBUILD_ITT=OFF
+-    -DINSTALL_CREATE_DISTRIB:BOOL=$<BOOL:${BUILD_SHARED_LIBS}>
+-    -DOPENCV_GENERATE_SETUPVARS:BOOL=OFF # random file opencv creates that we dont use
+-    -DBUILD_PERF_TESTS:BOOL=OFF
+-    -DBUILD_TESTS:BOOL=OFF
+-    -DBUILD_JAVA:BOOL=OFF
+-    -DBUILD_DOCS:BOOL=OFF
+-    -DBUILD_EXAMPLES:BOOL=OFF
+-    -DBUILD_opencv_apps:BOOL=OFF
+-    -DBUILD_opencv_python3:BOOL=OFF
+-    -DBUILD_opencv_python_bindings_generator:BOOL=OFF
+-    -DBUILD_opencv_js:BOOL=OFF
+-)
+-
+-ExternalProject_Add_Step(opencv aruco DEPENDERS configure
+-    COMMAND ${CMAKE_COMMAND} -E copy_directory
+-    "${CVC_PREFIX}/modules/aruco" "${CVC_BIN_DIR}/modules/aruco")
+-
+-# --- OpenVR ---
+-att_add_dep(
+-    openvr
+-
+-    EXTRA_CMAKE_ARGS
+-    -DBUILD_SHARED:BOOL=$<BOOL:${BUILD_SHARED_LIBS}>
+-    -DUSE_LIBCXX:BOOL=OFF
+-)
+-
+ # --- libusb ---
+ set(USB_PREFIX "${CMAKE_CURRENT_SOURCE_DIR}/libusb-compiled")
+ set(USB_INSTALL "${DEPS_INSTALL_DIR}/libusb")

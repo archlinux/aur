@@ -1,7 +1,7 @@
 # Maintainer: Łukasz Mariański <lmarianski at protonmail dot com>
 pkgname=apriltag-trackers-git
 _name="${pkgname%-git}"
-pkgver=r241.a7bf334
+pkgver=r424.27d3098
 pkgrel=1
 pkgdesc="Full-body tracking in VR using AprilTag markers."
 arch=('x86_64')
@@ -12,21 +12,19 @@ makedepends=('cmake' 'git' 'wxgtk3-dev')
 provides=("${_name}")
 conflicts=("${_name}")
 install="${pkgname%-git}.install"
-source=("${_name}::git+https://github.com/ju1ce/April-Tag-VR-FullBody-Tracker#branch=linux"
-		"bridge-driver::git+https://github.com/ju1ce/Simple-OpenVR-Bridge-Driver#branch=linux"
+source=("${_name}::git+https://github.com/ju1ce/April-Tag-VR-FullBody-Tracker"
+		"bridge-driver::git+https://github.com/ju1ce/Simple-OpenVR-Bridge-Driver"
 		"https://raw.githubusercontent.com/sgorsten/linalg/main/linalg.h"
+		"${_name}.patch"
+		"bridge-driver.patch"
 		"${_name}.sh"
-		"cmake.patch"
-		"trackers.patch"
-		"driver.patch"
 )
 sha256sums=('SKIP'
             'SKIP'
             'b67b4c9000da87525d897be3cbd82bc333026c818fb9fd6edba3372568419a40'
-            'c6c1e85a6f559d5acdb88112e77d0b76568995527c60296b081ccea7ff17ba0a'
-            'b564a70f77293520bbc20b65858428785fc6d711848a554db0a027503130064f'
-            'f0426aa8e254e4590f73812bc8a0ddf28195df0395654ab0acf78aec6b478941'
-            'c0b90491f06c6768ba912c5e8850a60625b4d97066d67678bc91096588c7e163')
+            '83cc6fbb47993a72caed209fb753bb4f28de50c3dcf7d5cb6118252f08c71cff'
+            'aa2da0e7c3f97bbb5da2d9c6637d8802d5c46f54fd48be464387ff13154d3bd1'
+            'c6c1e85a6f559d5acdb88112e77d0b76568995527c60296b081ccea7ff17ba0a')
 
 pkgver() {
 	cd "$srcdir/${_name}"
@@ -36,13 +34,18 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${_name}"
-	# patch --binary -p1 -i "$srcdir/${_name}.patch"
+	
+	# git submodule init deps/apriltag deps/openvr
+	# git config submodule.deps/apriltag.url "$srcdir/apriltag"
+	# git config submodule.deps/openvr.url   "$srcdir/openvr"
+	# git submodule update deps/apriltag deps/openvr
 
-	patch -p1 -i "$srcdir/trackers.patch"
-	patch --binary -p1 -i "$srcdir/cmake.patch"
+	patch -p1 -i "$srcdir/${_name}.patch"
 
 	cd "$srcdir/bridge-driver"
-	patch -p1 -i "$srcdir/driver.patch"
+	sed -n '/MIT License/,/ IN THE SOFTWARE./p' README.md > LICENSE.md
+
+	patch -p1 -i "$srcdir/bridge-driver.patch"
 
 	cp "$srcdir/linalg.h" libraries/linalg/
 }
@@ -50,11 +53,13 @@ prepare() {
 build() {
 	cd "$srcdir/${_name}"
 
-	cmake -B build -S "$srcdir/${_name}/AprilTagTrackers" \
+	cmake -B build -S "$srcdir/${_name}" \
         -DCMAKE_BUILD_TYPE='None' \
         -DCMAKE_INSTALL_PREFIX='/usr' \
+		-DSKIP_BUILD_DEPS=true \
         -Wno-dev
-	cmake --build build
+	DESTDIR="./fakedir" cmake --build build
+	rm -rf ./fakedir
 
 	cd "$srcdir/bridge-driver"
 
@@ -66,15 +71,16 @@ build() {
 }
 
 package() {
-	# DESTDIR="$pkgdir" cmake --install build # Doesn't do anything
 	cd "$srcdir/${_name}"
+	# DESTDIR="$pkgdir" cmake --install build
+
 	install -Dm644 LICENSE.md -t "$pkgdir/usr/share/licenses/$pkgname/"
 
 	install -Dm755 "$srcdir/${_name}.sh" "$pkgdir/usr/bin/${_name}"
-	install -Dm755 build/AprilTagTrackers -t "$pkgdir/usr/lib/apriltagtrackers/"
-
+	install -Dm755 build/AprilTagTrackers/AprilTagTrackers -t "$pkgdir/usr/lib/apriltagtrackers/"
 
 	cd "$srcdir/bridge-driver"
+	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE-Bridge-Driver.md"
 
 	install -Dm644 build/apriltagtrackers/bin/linux64/driver_apriltagtrackers.so -t "$pkgdir/usr/lib/steamvr/apriltagtrackers/bin/linux64/"
     install -Dm644 build/apriltagtrackers/driver.vrdrivermanifest -t "$pkgdir/usr/lib/steamvr/apriltagtrackers/"

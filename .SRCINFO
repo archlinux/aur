@@ -1,6 +1,6 @@
 pkgbase = apriltag-trackers-git
 	pkgdesc = Full-body tracking in VR using AprilTag markers.
-	pkgver = r241.a7bf334
+	pkgver = r424.27d3098
 	pkgrel = 1
 	url = https://github.com/ju1ce/April-Tag-VR-FullBody-Tracker
 	install = apriltag-trackers.install
@@ -15,19 +15,17 @@ pkgbase = apriltag-trackers-git
 	depends = wxgtk3
 	provides = apriltag-trackers
 	conflicts = apriltag-trackers
-	source = apriltag-trackers::git+https://github.com/ju1ce/April-Tag-VR-FullBody-Tracker#branch=linux
-	source = bridge-driver::git+https://github.com/ju1ce/Simple-OpenVR-Bridge-Driver#branch=linux
+	source = apriltag-trackers::git+https://github.com/ju1ce/April-Tag-VR-FullBody-Tracker
+	source = bridge-driver::git+https://github.com/ju1ce/Simple-OpenVR-Bridge-Driver
 	source = https://raw.githubusercontent.com/sgorsten/linalg/main/linalg.h
+	source = apriltag-trackers.patch
+	source = bridge-driver.patch
 	source = apriltag-trackers.sh
-	source = cmake.patch
-	source = trackers.patch
-	source = driver.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = b67b4c9000da87525d897be3cbd82bc333026c818fb9fd6edba3372568419a40
+	sha256sums = 83cc6fbb47993a72caed209fb753bb4f28de50c3dcf7d5cb6118252f08c71cff
+	sha256sums = aa2da0e7c3f97bbb5da2d9c6637d8802d5c46f54fd48be464387ff13154d3bd1
 	sha256sums = c6c1e85a6f559d5acdb88112e77d0b76568995527c60296b081ccea7ff17ba0a
-	sha256sums = b564a70f77293520bbc20b65858428785fc6d711848a554db0a027503130064f
-	sha256sums = f0426aa8e254e4590f73812bc8a0ddf28195df0395654ab0acf78aec6b478941
-	sha256sums = c0b90491f06c6768ba912c5e8850a60625b4d97066d67678bc91096588c7e163
 
 pkgname = apriltag-trackers-git

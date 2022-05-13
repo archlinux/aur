@@ -20,3 +20,16 @@ index ab4db65..6d4d415 100644
  
  add_subdirectory("example")
  
+diff --git a/driver_files/src/Driver/TrackerDevice.cpp b/driver_files/src/Driver/TrackerDevice.cpp
+index 355beea..8510408 100644
+--- a/driver_files/src/Driver/TrackerDevice.cpp
++++ b/driver_files/src/Driver/TrackerDevice.cpp
+@@ -99,7 +99,7 @@ void ExampleDriver::TrackerDevice::Update()
+     bool pose_nan = false;
+     for (int i = 0; i < 7; i++)
+     {
+-        if (isnan(next_pose[i]))
++        if (std::isnan(next_pose[i]))
+             pose_nan = true;
+     }
+ 
