@@ -1,7 +1,7 @@
 #!/bin/bash
 
-_pkgcode=oVRx7
-pkgver=0_99_7822
+_pkgcode=ATPd2
+pkgver=1_00_8151
 pkgrel=1
 
 wget --post-data "RefMem=&PostBack=${_pkgcode}" https://smath.com/file/${_pkgcode}/SMathStudioDesktop.${pkgver}.Mono.tar.gz
