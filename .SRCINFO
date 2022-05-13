@@ -1,7 +1,7 @@
 pkgbase = caj2pdf-qt
 	pkgdesc = CAJ 转 PDF 转换器（GUI 版本）
 	pkgver = 0.1.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://caj2pdf-qt.sainnhe.dev
 	arch = x86_64
 	license = GPL
@@ -42,11 +42,13 @@ pkgbase = caj2pdf-qt
 	depends = libxau
 	depends = libxdmcp
 	depends = openssl
+	depends = jbig2dec
+	depends = mupdf-tools
 	provides = caj2pdf-qt
 	conflicts = caj2pdf-qt
-	source = caj2pdf-qt::git+https://github.com/sainnhe/caj2pdf-qt.git#tag=v0.1.4
+	source = caj2pdf-qt::https://github.com/sainnhe/caj2pdf-qt/archive/refs/tags/v0.1.4.tar.gz
 	source = dev.sainnhe.caj2pdf-qt.desktop
-	md5sums = SKIP
+	md5sums = a8701f20d3ee0ec30d220abd7b4114f1
 	md5sums = 3068f1cbf4fb1d8c04a9f8afb3fb7d54
 
 pkgname = caj2pdf-qt
