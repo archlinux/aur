@@ -2,7 +2,7 @@
 # Contributor: Kevin Majewski < kevin.majewski02 AT gmail.com >
 
 pkgname=video-downloader
-pkgver=0.9.6
+pkgver=0.9.7
 pkgrel=1
 pkgdesc='GTK application to download videos from websites like YouTube and many others (based on yt-dlp)'
 arch=('any')
