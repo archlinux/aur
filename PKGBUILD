@@ -4,16 +4,21 @@
 pkgname=cl-alexandria
 _pkgname="${pkgname#cl-}"
 pkgver=1.4.r16.g72882fc
-pkgrel=1
+pkgrel=2
 pkgdesc='A set of Common Lisp Utilities'
 arch=('any')
 url='https://alexandria.common-lisp.dev'
 license=('MIT')
 depends=('cl-asdf' 'common-lisp')
 makedepends=('git' 'sbcl' 'texlive-core')
+checkdepends=('cl-rt') # sbcl required, but it's already in makedepends
 _commit='72882fc73e1818c51490a22c4670f35af545d868'
-source=("$pkgname::git+https://gitlab.common-lisp.net/alexandria/alexandria.git#commit=$_commit")
-b2sums=('SKIP')
+source=(
+  "$pkgname::git+https://gitlab.common-lisp.net/alexandria/alexandria.git#commit=$_commit"
+  'run-tests.lisp'
+)
+b2sums=('SKIP'
+        'b148bbc7eaa4554f124a8ec0432080ea4d817eaac199184552acbbeb84d75d5e78891402955b54013e63214d877c197069015ed88fc8c30c7d4a7bb1768a0929')
 
 pkgver() {
   cd "$pkgname"
@@ -25,6 +30,12 @@ build() {
   cd "$pkgname"
 
   make -C doc html info
+}
+
+check() {
+  cd "$pkgname"
+
+  sbcl --script ../run-tests.lisp
 }
 
 package() {

@@ -1,16 +1,19 @@
 pkgbase = cl-alexandria
 	pkgdesc = A set of Common Lisp Utilities
 	pkgver = 1.4.r16.g72882fc
-	pkgrel = 1
+	pkgrel = 2
 	url = https://alexandria.common-lisp.dev
 	arch = any
 	license = MIT
+	checkdepends = cl-rt
 	makedepends = git
 	makedepends = sbcl
 	makedepends = texlive-core
 	depends = cl-asdf
 	depends = common-lisp
 	source = cl-alexandria::git+https://gitlab.common-lisp.net/alexandria/alexandria.git#commit=72882fc73e1818c51490a22c4670f35af545d868
+	source = run-tests.lisp
 	b2sums = SKIP
+	b2sums = b148bbc7eaa4554f124a8ec0432080ea4d817eaac199184552acbbeb84d75d5e78891402955b54013e63214d877c197069015ed88fc8c30c7d4a7bb1768a0929
 
 pkgname = cl-alexandria
