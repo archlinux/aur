@@ -1,0 +1,18 @@
+pkgbase = gpp-decrypt-git
+	pkgdesc = gpp-decrypt fixed for arch.
+	pkgver = 1.0
+	pkgrel = 1
+	url = https://github.com/t0thkr1s/gpp-decrypt.git
+	install = gpp-decrypt.install
+	arch = x86_64
+	arch = i686
+	license = GPL
+	makedepends = git
+	makedepends = python3
+	makedepends = python-pip
+	makedepends = gcc
+	provides = gpp-decrypt
+	source = git+https://github.com/t0thkr1s/gpp-decrypt.git
+	md5sums = SKIP
+
+pkgname = gpp-decrypt-git
