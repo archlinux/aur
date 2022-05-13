@@ -1,7 +1,7 @@
 pkgbase = ros-noetic-rosconsole
 	pkgdesc = ROS - ROS console output library.
 	pkgver = 1.14.3
-	pkgrel = 6
+	pkgrel = 7
 	url = https://wiki.ros.org/rosconsole
 	arch = i686
 	arch = x86_64
@@ -15,7 +15,7 @@ pkgbase = ros-noetic-rosconsole
 	makedepends = ros-noetic-cpp-common
 	makedepends = ros-noetic-rosunit
 	makedepends = ros-noetic-catkin
-	makedepends = google-glog
+	makedepends = log4cxx
 	makedepends = boost
 	depends = ros-noetic-rostime
 	depends = ros-noetic-cpp-common
@@ -24,7 +24,7 @@ pkgbase = ros-noetic-rosconsole
 	depends = apr-util
 	depends = google-glog
 	source = ros-noetic-rosconsole-1.14.3.tar.gz::https://github.com/ros/rosconsole/archive/1.14.3.tar.gz
-	source = https://github.com/ros/rosconsole/pull/51.patch
+	source = https://github.com/ros/rosconsole/pull/54.patch
 	sha256sums = 0b2cbc4f9a92466c0fbae7863482b286ef87692de4941527cb429e6c74639246
 	sha256sums = SKIP
 

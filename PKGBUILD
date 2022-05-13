@@ -4,7 +4,7 @@ url='https://wiki.ros.org/rosconsole'
 pkgname='ros-noetic-rosconsole'
 pkgver='1.14.3'
 arch=('i686' 'x86_64' 'aarch64' 'armv7h' 'armv6h')
-pkgrel=6
+pkgrel=7
 license=('BSD')
 
 ros_makedepends=(
@@ -18,7 +18,7 @@ makedepends=(
     cmake
     ros-build-tools
     ${ros_makedepends[@]}
-    google-glog
+    log4cxx
     boost
 )
 
@@ -37,12 +37,13 @@ depends=(
 
 _dir="rosconsole-${pkgver}/"
 source=("${pkgname}-${pkgver}.tar.gz"::"https://github.com/ros/rosconsole/archive/${pkgver}.tar.gz"
-        "https://github.com/ros/rosconsole/pull/51.patch")
+        "https://github.com/ros/rosconsole/pull/54.patch")
 sha256sums=('0b2cbc4f9a92466c0fbae7863482b286ef87692de4941527cb429e6c74639246'
             'SKIP')
 prepare() {
     cd "$_dir"
-    patch --forward --strip=1 --input="${srcdir}/51.patch"
+    #This patch is only for log4cxx
+    patch --forward --strip=1 --input="${srcdir}/54.patch"
 }
 
 build() {
@@ -60,7 +61,7 @@ build() {
         -DCMAKE_INSTALL_PREFIX=/opt/ros/noetic \
         -DPYTHON_EXECUTABLE=/usr/bin/python \
         -DSETUPTOOLS_DEB_LAYOUT=OFF \
-        -DROSCONSOLE_BACKEND=glog #log4cxx/glog/print, for now log4cxx is broken
+        -DROSCONSOLE_BACKEND=log4cxx #log4cxx/glog/print
     make
 }
 
