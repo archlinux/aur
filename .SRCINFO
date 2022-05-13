@@ -1,6 +1,6 @@
 pkgbase = microsip
 	pkgdesc = Open source portable SIP softphone for Windows based on PJSIP stack
-	pkgver = 3.20.7
+	pkgver = 3.21.1
 	pkgrel = 1
 	url = https://www.microsip.org/
 	arch = x86_64
@@ -9,9 +9,9 @@ pkgbase = microsip
 	depends = lib32-libpulse
 	depends = xorg-xdpyinfo
 	conflicts = wine-staging
-	source = MicroSIP-Lite-3.20.7.zip::https://www.microsip.org/downloads/?file=MicroSIP-Lite-3.20.7.zip
+	source = MicroSIP-Lite-3.21.1.zip::https://www.microsip.org/downloads/?file=MicroSIP-Lite-3.21.1.zip
 	source = microsip-1.1.tar.bz2::https://gitlab.com/post-factum/microsip/-/archive/v1.1/microsip-v1.1.tar.bz2
-	sha256sums = e51f9a3ef83d61e1ac59a577344f1102753901256855226e2ad83d2f139e194e
+	sha256sums = cf8ba25a5e92a33e76ebf0038c749ccb55c0a99910324897ba3703e9cfd34c8f
 	sha256sums = f7d29a286382d10f4c467a2441c5cfe1df0c4eef94ffe12bdb96055348bd52b8
 
 pkgname = microsip
