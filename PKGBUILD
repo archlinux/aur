@@ -15,7 +15,7 @@ source=('https://dl.hdslb.com/mobile/fixed/bili_win/bili_win-install.exe'
         "${_pkgname}"
         "${_pkgname}.png"
         "${_pkgname}.desktop")
-sha256sums=('df008294d66a4a30672cdb1c0839d316e94141284dbb14fb8613ea1029f66973'
+sha256sums=('5d5d86963f5a922ce5f616159e0d5705602aa39c7520dc8a5f0f020adb74a3da'
             '94d6d7816f2f31e1e0bc051be1a5398740de74c2771b51e6d97a17de07fc2ebb'
             '33cba5d0271d5783f353e60dacc01d2edc6629ca760d35427189e316a48f911f'
             '76dce057c03c8f75b011c2072d32948a8db3de0961aec3fd445f40bf1fe79418')
