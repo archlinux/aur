@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc='Bilibili desktop client'
 license=('custom')
 depends=('ffmpeg' 'electron' 'libappindicator-gtk3')
-makedepends=('asar')
+#makedepends=('asar')
 arch=('x86_64')
 url='https://bilibili.com'
 install="${pkgname}.install"
@@ -21,9 +21,9 @@ sha256sums=('5d5d86963f5a922ce5f616159e0d5705602aa39c7520dc8a5f0f020adb74a3da'
             '76dce057c03c8f75b011c2072d32948a8db3de0961aec3fd445f40bf1fe79418')
 
 package() {
-    asar e "${srcdir}/resources/app.asar" "${srcdir}/unpacked"
-    sed -i "s/PingFang SC,HarmonyOS_Medium,Helvetica Neue,Microsoft YaHei,//g" "${srcdir}/unpacked/render/assets/index.36ba380d.css"
-    asar p "${srcdir}/unpacked" "${srcdir}/resources/app.asar"
+    #asar e "${srcdir}/resources/app.asar" "${srcdir}/unpacked"
+    #sed -i "s/PingFang SC,HarmonyOS_Medium,Helvetica Neue,Microsoft YaHei,//g" "${srcdir}/unpacked/render/assets/index.36ba380d.css"
+    #asar p "${srcdir}/unpacked" "${srcdir}/resources/app.asar"
     install -Dm644 -t "${pkgdir}/usr/share/applications" "${_pkgname}.desktop"
     install -Dm644 "${_pkgname}.png" "$pkgdir/usr/share/icons/hicolor/512x512/apps/${_pkgname}.png"
     install -Dm644 "${srcdir}/resources/app.asar" "${pkgdir}/usr/lib/${_pkgname}/${_pkgname}.asar"
