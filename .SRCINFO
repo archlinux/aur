@@ -1,7 +1,7 @@
 pkgbase = hydroxide
 	pkgdesc = A third-party, open-source ProtonMail CardDAV, IMAP and SMTP bridge
 	pkgver = 0.2.23
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/emersion/hydroxide
 	arch = x86_64
 	license = MIT
@@ -9,8 +9,10 @@ pkgbase = hydroxide
 	depends = glibc
 	source = https://github.com/emersion/hydroxide/releases/download/v0.2.23/hydroxide-0.2.23.tar.gz
 	source = https://github.com/emersion/hydroxide/releases/download/v0.2.23/hydroxide-0.2.23.tar.gz.sig
+	source = hydroxide.service
 	validpgpkeys = 34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48
 	sha512sums = 9f2c9b59cb7c1dfcfec9cc626767f340b1d5caea4db69e81de6b87c4bcf26840d14cd6568a0d3aad36d8e31184e2f1827a5e27745338bc2f38265ce64fe2d4a4
 	sha512sums = SKIP
+	sha512sums = 1890e0e1df999242f66ce8fe4744e5ae18c38f8780adddd903e466d1c2d5ac8fffb3c840f6d60e897bd14c7355b8784a784e5be76ddf6a54a44718e0b27edce0
 
 pkgname = hydroxide
