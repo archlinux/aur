@@ -7,6 +7,7 @@ license=("MPL2")
 pkgdesc="The Hare systems programming language"
 makedepends=(
 	"scdoc"
+	"git"
 )
 
 depends=(

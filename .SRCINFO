@@ -6,6 +6,7 @@ pkgbase = hare-git
 	arch = x86_64
 	license = MPL2
 	makedepends = scdoc
+	makedepends = git
 	depends = qbe-git
 	depends = harec-git
 	provides = hare
