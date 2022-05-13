@@ -1,6 +1,6 @@
 pkgbase = lib32-pcsclite
 	pkgdesc = PC/SC Architecture smartcard middleware library (for proprietary 32-bit drivers)
-	pkgver = 1.9.5
+	pkgver = 1.9.6
 	pkgrel = 1
 	url = https://pcsclite.apdu.fr/
 	arch = x86_64
@@ -10,10 +10,10 @@ pkgbase = lib32-pcsclite
 	depends = lib32-systemd
 	depends = pcsclite
 	options = !docs
-	source = https://pcsclite.apdu.fr/files/pcsc-lite-1.9.5.tar.bz2
-	source = https://pcsclite.apdu.fr/files/pcsc-lite-1.9.5.tar.bz2.asc
+	source = https://pcsclite.apdu.fr/files/pcsc-lite-1.9.6.tar.bz2
+	source = https://pcsclite.apdu.fr/files/pcsc-lite-1.9.6.tar.bz2.asc
 	validpgpkeys = F5E11B9FFE911146F41D953D78A1B4DFE8F9C57E
-	sha256sums = 9ee3f9b333537562177893559ad4f7b8d5c23ebe828eef53056c02db14049d08
+	sha256sums = fdb3fe8f68049019523801909b2a336d0d4ee315edafe363c30d375e3706537a
 	sha256sums = SKIP
 
 pkgname = lib32-pcsclite
