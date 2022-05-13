@@ -1,6 +1,6 @@
 # Maintainer: Firegem <mrfiregem [at] protonail [dot] ch>
 pkgname=cbqn-git
-pkgver=r773.588350d
+pkgver=r968.cd38b37
 pkgrel=1
 pkgdesc="A BQN implementation in C."
 arch=('x86_64' 'i686' 'aarch64' 'arm')
@@ -36,7 +36,7 @@ check() {
 }
 
 package() {
-  install -Dm755 ./rlwrap-shim "${pkgdir}/usr/bin/BQN"
+  install -Dm755 ./rlwrap-shim "${pkgdir}/usr/bin/bqn"
 
   cd "${srcdir}/${pkgname%-git}"
   install -Dm755 -t "${pkgdir}/usr/share/${pkgname}" BQN
