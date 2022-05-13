@@ -25,9 +25,7 @@ prepare() {
 
 	sed -i 's:../../../lib64/libalvr_vulkan_layer.so:libalvr_vulkan_layer.so:' alvr/vulkan-layer/layer/alvr_x86_64.json
 
-	sed -i '/experiments/d' ./Cargo.toml
-	cargo fetch --target "$CARCH-unknown-linux-gnu"
-	# cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
