@@ -17,7 +17,7 @@ pkgbase = apifox-latest
 	options = !strip
 	source = https://cdn.apifox.cn/download/Apifox-linux-latest.zip
 	source = apifox.desktop
-	sha256sums = 20951e47e17acc244fd40dd70f1511727f79cf8fa1640ff7bed920434a1728be
+	sha256sums = 3a7711d2a34f0edbb44a15780e7e1372c6edc4ac11733f0fabd349e64c970159
 	sha256sums = 538bd986b582053799128254b4fcd6edfd51d096b127cf6398555664497d76b0
 
 pkgname = apifox-latest
