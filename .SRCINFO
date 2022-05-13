@@ -4,11 +4,17 @@ pkgbase = arduino-cli-bin
 	pkgrel = 1
 	url = https://github.com/arduino/arduino-cli
 	arch = x86_64
+	arch = i386
+	arch = aarch64
+	arch = arm6h
+	arch = arm7h
 	license = GPL3
 	conflicts = arduino-cli
 	conflicts = arduino-cli-git
 	conflicts = arduino-cli-rc
 	source_x86_64 = https://github.com/arduino/arduino-cli/releases/download/0.22.0/arduino-cli_0.22.0_Linux_64bit.tar.gz
 	sha256sums_x86_64 = 45ae384886f25797c7a77cd30f2c2170e110fc36f9817353985d4f77db888a7a
+	source_aarch64 = https://github.com/arduino/arduino-cli/releases/download/0.22.0/arduino-cli_0.22.0_Linux_ARM64.tar.gz
+	sha256sums_aarch64 = e194bbbc4694d2c38e94b928cb8feea16b996860963d98decee5872cc08179ca
 
 pkgname = arduino-cli-bin
