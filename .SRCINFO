@@ -1,20 +1,19 @@
 pkgbase = alloy
 	pkgdesc = A lightweight modelling language for software design.
-	pkgver = 5.1.0
+	pkgver = 6.1.0
 	pkgrel = 1
 	url = https://alloytools.org/
 	arch = i686
 	arch = x86_64
 	license = MIT
 	depends = java-runtime
-	source = https://github.com/AlloyTools/org.alloytools.alloy/releases/download/v5.1.0/org.alloytools.alloy.dist.jar
+	source = https://github.com/AlloyTools/org.alloytools.alloy/releases/download/v6.0.0/org.alloytools.alloy.dist.jar
 	source = alloy
 	source = alloy.png
 	source = alloy.desktop
-	md5sums = bdaaae36f353dbe9bb885364d6e38316
-	md5sums = 55a6b2408daf2ff9d93bc5bb232d9fc7
+	md5sums = 44cddd0fe1b7faf21d0f405159efb586
+	md5sums = 022d3b7cfbdf281b6c5d8fcefaf747b0
 	md5sums = e117c6a2bb28826e9307cbf094e980ab
 	md5sums = 3ad162df79191af3509afe9e232b1269
 
 pkgname = alloy
-

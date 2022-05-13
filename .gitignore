@@ -1,0 +1,4 @@
+org.alloytools.alloy.dist.jar
+alloy-*.pkg.tar.zst
+pkg/
+src/
