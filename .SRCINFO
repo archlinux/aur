@@ -1,15 +1,15 @@
 pkgbase = arduino-cli-bin
 	pkgdesc = Arduino command line tool
 	pkgver = 0.22.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/arduino/arduino-cli
 	arch = x86_64
 	arch = i686
 	arch = aarch64
 	arch = armv6h
 	arch = armv7h
-	groups = arduino
 	license = GPL3
+	depends = glibc
 	conflicts = arduino-cli
 	conflicts = arduino-cli-git
 	conflicts = arduino-cli-rc

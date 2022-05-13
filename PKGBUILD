@@ -6,6 +6,7 @@ pkgdesc="Arduino command line tool"
 arch=('x86_64' 'i686' 'aarch64' 'armv6h' 'armv7h')
 url="https://github.com/arduino/arduino-cli"
 license=('GPL3')
+depends=('glibc')
 conflicts=('arduino-cli' 'arduino-cli-git' 'arduino-cli-rc')
 
 source_x86_64=("https://github.com/arduino/arduino-cli/releases/download/${pkgver}/arduino-cli_${pkgver}_Linux_64bit.tar.gz")
