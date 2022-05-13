@@ -3,7 +3,7 @@
 #
 
 pkgname=aurtool-git
-pkgver=0.7
+pkgver=1.0
 pkgrel=1
 pkgdesc="Minimal aur package management utility written in bash script"
 arch=('any')

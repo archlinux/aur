@@ -1,6 +1,6 @@
 pkgbase = aurtool-git
 	pkgdesc = Minimal aur package management utility written in bash script
-	pkgver = 7
+	pkgver = 1.0
 	pkgrel = 1
 	url = https://www.github.com/m1ndflay3r/aurtool
 	arch = any
@@ -32,7 +32,7 @@ pkgbase = aurtool-git
 	depends = which
 	depends = git
 	depends = package-query
-        depends = pacman-contrib
+	depends = pacman-contrib
 	optdepends = nano: for editing PKGBUILD during install
 	optdepends = vim: for editing PKGBUILD during install
 
