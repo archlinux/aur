@@ -3,8 +3,8 @@
 #
 
 pkgname=aurtool-git
-pkgver=0.4
-pkgrel=6
+pkgver=0.5
+pkgrel=1
 pkgdesc="Minimal aur package management utility written in bash script"
 arch=('any')
 url="https://www.github.com/m1ndflay3r/aurtool"
@@ -37,6 +37,7 @@ depends=(
          'which'
          'git'
          'package-query'
+         'pacman-contrib'
 )
 optdepends=(
         'nano: for editing PKGBUILD during install'
