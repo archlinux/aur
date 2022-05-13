@@ -3,13 +3,13 @@
 pkgbase=nvidia-open-beta
 pkgname=('nvidia-open-beta' 'nvidia-open-beta-dkms')
 pkgver=515.43.04
-pkgrel=1
+pkgrel=2
 pkgdesc='NVIDIA open GPU kernel modules (beta version)'
 arch=('x86_64')
 url='https://github.com/NVIDIA/open-gpu-kernel-modules/'
 license=('MIT' 'GPL2')
 makedepends=('linux-headers')
-options=('!lto' '!strip')
+options=('!buildflags' '!lto' '!strip')
 source=("https://github.com/NVIDIA/open-gpu-kernel-modules/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz"
         '110-nvidia-open-change-dkms-conf.patch'
         '120-nvidia-open-linux-rt-gift.patch'
@@ -17,7 +17,7 @@ source=("https://github.com/NVIDIA/open-gpu-kernel-modules/archive/${pkgver}/${p
 sha256sums=('8fa571bcbb737ac546b13d94b0767607d99dcc14fc8531f1d2d553b3b63b50f4'
             '7a73338083b58caf35f79f2443e1f57e9b1866bec29b76b771ab4241e815d03f'
             'b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45'
-            '8f4840a36a685fa50c6dd78f65135bffe7120dd3fec30748ade383f80f9cfd3b')
+            'deb3a33519fe62a60eb9d35861576dd8d67fc3d17834195e54fe374c6ece387b')
 
 prepare() {
     patch -d "open-gpu-kernel-modules-${pkgver}" -Np1 -i "${srcdir}/110-nvidia-open-change-dkms-conf.patch"
@@ -29,7 +29,6 @@ prepare() {
 }
 
 build() {
-    export CFLAGS="${CFLAGS/-fno-plt/}"
     make -C "open-gpu-kernel-modules-${pkgver}" SYSSRC='/usr/src/linux' modules
 }
 
