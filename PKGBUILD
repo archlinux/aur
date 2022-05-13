@@ -1,6 +1,6 @@
 # Maintainer: ninni <soelder@hotmail.com>
 pkgname=awakened-poe-trade-git
-pkgver=3.17.10004.r0.g338ef94
+pkgver=3.17.10005.r0.gda02a7d
 pkgrel=1
 pkgdesc='Path of Exile trading app for price checking'
 arch=('x86_64')
@@ -32,8 +32,8 @@ pkgver() {
 
 prepare() {
     cd "${srcdir}/awakened-poe-trade"
-    LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
-    git checkout $LATEST_TAG
+    # LATEST_TAG=$(git describe --tags `git rev-list --tags --max-count=1`)
+    # git checkout $LATEST_TAG
     _ensure_local_nvm
     nvm install 14
 }
@@ -41,18 +41,25 @@ prepare() {
 build() {
     cd "${srcdir}/awakened-poe-trade"
     _ensure_local_nvm
-    yarn
+
+    cd "${srcdir}/awakened-poe-trade/renderer"
+    yarn --frozen-lockfile
     yarn make-index-files
-    yarn electron:build
-}
+    yarn build
+
+    cd "${srcdir}/awakened-poe-trade/main"
+    yarn --frozen-lockfile
+    yarn build
+    yarn package
+    }
 
 package() {
     mkdir -p "${pkgdir}/usr/share/applications"
     mkdir -p "${pkgdir}/usr/share/pixmaps"
     mkdir -p "${pkgdir}/usr/bin"
 
-    cp ${srcdir}/awakened-poe-trade/dist_electron/*.AppImage ${pkgdir}/usr/bin/awakened-poe-trade
-    cp ${srcdir}/awakened-poe-trade/dist_electron/bundled/icon.png ${pkgdir}/usr/share/pixmaps/awakened-poe-trade.png
+    cp ${srcdir}/awakened-poe-trade/main/dist/*.AppImage ${pkgdir}/usr/bin/awakened-poe-trade
+    cp ${srcdir}/awakened-poe-trade/main/build/icons/icon.ico ${pkgdir}/usr/share/pixmaps/awakened-poe-trade.ico
     cp ${srcdir}/awakened-poe-trade.desktop ${pkgdir}/usr/share/applications/awakened-poe-trade.desktop
 }
 
