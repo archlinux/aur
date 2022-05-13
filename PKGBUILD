@@ -36,11 +36,11 @@ sha256sums=('SKIP' 'SKIP' 'SKIP'
 prepare() {
     cd spark2014
     git submodule init
-    git config submodule.why3.url "$srcdir"/why3-adacore
+    git config submodule.why3.url "${srcdir}/why3-adacore"
     git submodule update why3
     cd why3 && git reset --hard && cd ..
 
-    ln -sf "$srcdir"/gcc/gcc/ada gnat2why/gnat_src
+    ln -sf "${srcdir}/gcc/gcc/ada gnat2why/gnat_src"
 
     # Use install instead of mv to install the various targets while also
     # houring the INSTALLDIR convention used within this Makefile.
@@ -58,7 +58,7 @@ pkgver() {
 
 build() {
     cd spark2014
-    make setup INSTALLDIR="$pkgdir"/usr
+    make setup INSTALLDIR="${pkgdir}/usr"
     make
     make -C docs/lrm man
     make -C docs/ug man
@@ -71,7 +71,7 @@ check() {
 
 package() {
     cd spark2014
-    make INSTALLDIR="$pkgdir"/usr install-all install-examples
+    make INSTALLDIR="${pkgdir}/usr" install-all install-examples
 
     cd gnat2why
     gprinstall -r --mode=usage -p -Pgnat2why --prefix="${pkgdir}/usr"
@@ -79,8 +79,8 @@ package() {
 
     gprinstall -r --mode=usage -p -Pgnatprove --prefix="${pkgdir}/usr"
 
-    rm -f -- "$pkgdir"/usr/bin/target.atp
+    rm -f -- "${pkgdir}/usr/bin/target.atp"
 
-    install -Dm0644 docs/lrm/_build/man/spark2014refman.1 "$pkgdir"/usr/share/man/man7/spark2014_reference.7
-    install -Dm0644 docs/ug/_build/man/spark2014usersguide.1 "$pkgdir"/usr/share/man/man7/spark2014_userguide.7
+    install -Dm0644 docs/lrm/_build/man/spark2014refman.1 "${pkgdir}/usr/share/man/man7/spark2014_reference.7"
+    install -Dm0644 docs/ug/_build/man/spark2014usersguide.1 "${pkgdir}/usr/share/man/man7/spark2014_userguide.7"
 }
