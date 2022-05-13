@@ -21,9 +21,9 @@
  const FeatureEntry::FeatureVariation
      kOmniboxUIMaxAutocompleteMatchesVariations[] = {
 +        {"1 matches", kOmniboxUIMaxAutocompleteMatches1,
-+         base::size(kOmniboxUIMaxAutocompleteMatches1), nullptr},
++         std::size(kOmniboxUIMaxAutocompleteMatches1), nullptr},
 +        {"2 matches", kOmniboxUIMaxAutocompleteMatches2,
-+         base::size(kOmniboxUIMaxAutocompleteMatches2), nullptr},
++         std::size(kOmniboxUIMaxAutocompleteMatches2), nullptr},
          {"3 matches", kOmniboxUIMaxAutocompleteMatches3,
-          base::size(kOmniboxUIMaxAutocompleteMatches3), nullptr},
+          std::size(kOmniboxUIMaxAutocompleteMatches3), nullptr},
          {"4 matches", kOmniboxUIMaxAutocompleteMatches4,

@@ -10,7 +10,7 @@
 # Contributor: Daniel J Griffiths <ghost1227@archlinux.us>
 
 pkgname=ungoogled-chromium-xdg
-pkgver=100.0.4896.127
+pkgver=101.0.4951.54
 pkgrel=1
 _launcher_ver=8
 _gcc_patchset=4
@@ -31,32 +31,36 @@ options=('debug' '!lto') # Chromium adds its own flags for ThinLTO
 source=(https://commondatastorage.googleapis.com/chromium-browser-official/chromium-$pkgver.tar.xz
         https://github.com/foutrelis/chromium-launcher/archive/v$_launcher_ver/chromium-launcher-$_launcher_ver.tar.gz
         https://github.com/stha09/chromium-patches/releases/download/chromium-${pkgver%%.*}-patchset-$_gcc_patchset/chromium-${pkgver%%.*}-patchset-$_gcc_patchset.tar.xz
-        webcodecs-stop-using-AudioOpusEncoder.patch
-        webrtc-check-existence-of-cursor-metadata.patch
         enable-GlobalMediaControlsCastStartStop.patch
+        chromium-libxml-unbundle.patch
         sql-make-VirtualCursor-standard-layout-type.patch
         use-oauth2-client-switches-as-default.patch
         xdg-basedir.patch
-        no-omnibox-suggestion-autocomplete.patch)
-sha256sums=('4710e3453c972c91e68a21f6b0b76ba73d4d617f299a5208615ed6e41b1af84d'
+        no-omnibox-suggestion-autocomplete.patch
+        index.html)
+sha256sums=('c26cc6fd453d9a42a6b5e46fa4f3ee62ed368bb78101512b6816bc5d8f4200b5'
             '213e50f48b67feb4441078d50b0fd431df34323be15be97c55302d3fdac4483a'
-            'a6120e7d4eb5e131b87b6ab3b922e0c6cd78e15501e54cfb2019875173688d80'
-            '064daaa2b9d95b96ec04d8ddebf4af441f92263d123365b58fe73966866080af'
-            '88b2c8d9c6c1917f6632453f18aad7a3fd94d605eecb6c77ae2394ac5856ba95'
+            '8ed519d21ccd8b382ddd384e9c15306a60d2e3495f48a62dea07c9be9bbffebd'
             '779fb13f2494209d3a7f1f23a823e59b9dded601866d3ab095937a1a04e19ac6'
+            'fd3bf124aacc45f2d0a4f1dd86303fa7f2a3d4f4eeaf33854631d6cb39e12485'
             'b94b2e88f63cfb7087486508b8139599c89f96d7a4181c61fec4b4e250ca327a'
             'e393174d7695d0bafed69e868c5fbfecf07aa6969f3b64596d0bae8b067e1711'
             'cd844867b5b2197ad097662fee32579a7091dfba1d46cb438c4c7e696690440a'
-            'a0aae463d3190c358b018922aa25ef8b0d4dabf46d4e1a29437e983a2ea125c6')
+            'ff1591fa38e0ede7e883dc7494b813641b7a1a7cb1ded00d9baaee987c1dbea8'
+            'a4cdd2b86f32d5302c2792be841ff40d982b19bb58a4e63df9d77f4c706b8665')
 provides=('chromium')
 conflicts=('chromium')
+_uc_usr=Eloston
+_uc_ver=$pkgver-1
 source=(${source[@]}
-        ${pkgname%-*}-$pkgver-1.tar.gz::https://github.com/Eloston/ungoogled-chromium/archive/$pkgver-1.tar.gz
+        ${pkgname%-*}-$_uc_ver.tar.gz::https://github.com/$_uc_usr/ungoogled-chromium/archive/$_uc_ver.tar.gz
         chromium-drirc-disable-10bpc-color-configs.conf
+        ozone-add-va-api-support-to-wayland.patch
         wayland-egl.patch)
 sha256sums=(${sha256sums[@]}
-            '855e12e68ee767571f9032e1465ba4acd97f500fe8cf0cf67ce15f2bd9573154'
+            '8c5da085191a8586bf52ff3bbd0548f1af0fe1792c5db8530d4b158df83a092b'
             'babda4f5c1179825797496898d77334ac067149cac03d797ab27ac69671a7feb'
+            '07bdc1b3fc8f0d0a4804d111c46ce3343cd7824de562f2848d429b917ce4bcfd'
             '34d08ea93cb4762cb33c7cffe931358008af32265fc720f2762f0179c3973574')
 
 # Possible replacements are listed in build/linux/unbundle/replace_gn_files.py
@@ -105,12 +109,12 @@ prepare() {
   patch -Np1 -i ../use-oauth2-client-switches-as-default.patch
 
   # Upstream fixes
-  patch -Np1 -i ../webcodecs-stop-using-AudioOpusEncoder.patch
-  patch -Np1 -d third_party/webrtc <../webrtc-check-existence-of-cursor-metadata.patch
-
   # Revert kGlobalMediaControlsCastStartStop enabled by default
   # https://crbug.com/1314342
   patch -Rp1 -F3 -i ../enable-GlobalMediaControlsCastStartStop.patch
+
+  # https://chromium-review.googlesource.com/c/chromium/src/+/3488058
+  patch -Np1 -i ../chromium-libxml-unbundle.patch
 
   # https://chromium-review.googlesource.com/c/chromium/src/+/2862724
   patch -Np1 -i ../sql-make-VirtualCursor-standard-layout-type.patch
@@ -128,6 +132,9 @@ prepare() {
 
   # Wayland/EGL regression (crbug #1071528 #1071550)
   patch -Np1 -i ../wayland-egl.patch
+
+  # Enable vaapi on wayland
+  patch -Np1 -i ../ozone-add-va-api-support-to-wayland.patch
 
   # Ungoogled Chromium changes
   _ungoogled_repo="$srcdir/${pkgname%xdg*}$pkgver-1"
@@ -174,6 +181,7 @@ build() {
     'host_toolchain="//build/toolchain/linux/unbundle:default"'
     'is_official_build=true' # implies is_cfi=true on x86_64
     'symbol_level=0' # sufficient for backtraces on x86(_64)
+    'chrome_pgo_phase=0' # needs newer clang to read the bundled PGO profile
     'disable_fieldtrial_testing_config=true'
     'blink_enable_generated_code_formatting=false'
     'ffmpeg_branding="Chrome"'
