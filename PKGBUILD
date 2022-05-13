@@ -4,7 +4,7 @@
 
 pkgname=spark2014-git
 pkgver=0.3.draft.r22203.g30299b3035
-pkgrel=1
+pkgrel=2
 pkgdesc='Formally defined programming language based on Ada (GNAT FSF version)'
 url='https://www.spark-2014.org'
 arch=('x86_64')
@@ -43,7 +43,7 @@ prepare() {
     git submodule update why3
     cd why3 && git reset --hard && cd ..
 
-    ln -sf "${srcdir}/gcc/gcc/ada gnat2why/gnat_src"
+    ln -sf "${srcdir}/gcc/gcc/ada" gnat2why/gnat_src
 
     # Use install instead of mv to install the various targets while also
     # houring the INSTALLDIR convention used within this Makefile.
