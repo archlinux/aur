@@ -9,7 +9,6 @@ pkgbase = arduino-cli-bin
 	arch = armv6h
 	arch = armv7h
 	license = GPL3
-	depends = glibc
 	conflicts = arduino-cli
 	conflicts = arduino-cli-git
 	conflicts = arduino-cli-rc
