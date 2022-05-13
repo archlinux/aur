@@ -1,6 +1,6 @@
 pkgbase = intelpwm
 	pkgdesc = PWM frequency setting on Intel HD Graphics with modprobe.d
-	pkgver = 1.0
+	pkgver = 1.1
 	pkgrel = 1
 	url = https://127001.me/post/eliminate-backlight-flicker-with-i915/
 	install = intelpwm.install
@@ -12,8 +12,7 @@ pkgbase = intelpwm
 	source = intelpwm
 	source = intelpwm.conf
 	sha256sums = f25b883744dbe177d0ec7efaca17ffb288f4a7994e819883f299c90c27295f85
-	sha256sums = 51f14a522767ff4c803ac1149980715714966356e36ed1e92cf61110a35bf784
-	sha256sums = 7fefe55b66278e97eaca2fdf0aad125720cd00c95069dc38ef02ae1ee4e846b0
+	sha256sums = 3c17d61d623086f05cadfb28eea2d0915942509527b5d4e67ffa309ee13304b7
+	sha256sums = e16a943287e3104dc8869651f00f75281abf78dd20e3e601404f8bd4f7bbbdc5
 
 pkgname = intelpwm
-

@@ -1,16 +1,24 @@
 #!/usr/bin/env bash
-CONFIG=/etc/intelpwm.conf
-if [ ! -f "$CONFIG" ]; then
-    echo "$CONFIG not found"
-    exit 1
+
+source /etc/intelpwm.conf 1>/dev/null 2>&1 || >&2 echo "WARN:  /etc/intelpwm.conf does not exit"
+
+
+if [ -z "$FREQ" ]; then
+  >&2 echo "ERROR: FREQ is not defined. Specify in /etc/intelpwm.conf or in environment"
+  exit 1
 fi
 
-source $CONFIG
+function reg_read() {
+  # this assumes fixed position of the value in intel_reg output
+  # so far this has been the case though
+  intel_reg  read "$1" | cut -c51-60
+}
 
-RAW_DATA="$(intel_reg read ${REGISTER})"
-CYCLE="${RAW_DATA:56:4}"
-HEX=$(printf "0x%08x" $((1000000*0x7d/128/FREQ)))
+PCH_FREQ="$(reg_read ${PCH_RAWCLK_FREQ_REG})"
+BLC_CTL2="$(reg_read ${BLC_PWM_PCH_CTL2_REG})"
+CYCLE="${BLC_CTL2:6:4}"
+HEX=$(printf "0x%08x" $((1000000*PCH_FREQ/128/FREQ)))
 PERIOD="${HEX:6:9}"
 
-intel_reg write "${REGISTER}" "0x${PERIOD}${CYCLE}"
-
+>&2 echo "Writing 0x${PERIOD}${CYCLE} to register ${BLC_PWM_PCH_CTL2_REG}"
+intel_reg write "${BLC_PWM_PCH_CTL2_REG}" "0x${PERIOD}${CYCLE}"
