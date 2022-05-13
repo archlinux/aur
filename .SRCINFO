@@ -5,7 +5,6 @@ pkgbase = harec-git
 	url = https://harelang.org
 	arch = x86_64
 	license = GPL3
-	makedepends = qbe-git
 	makedepends = git
 	depends = qbe-git
 	depends = binutils
