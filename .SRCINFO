@@ -1,6 +1,6 @@
 pkgbase = electron16-bin
 	pkgdesc = Build cross platform desktop apps with web technologies - binary version 16
-	pkgver = 16.2.3
+	pkgver = 16.2.6
 	pkgrel = 1
 	url = https://electronjs.org/
 	arch = x86_64
@@ -22,24 +22,24 @@ pkgbase = electron16-bin
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron16=16.2.3
-	provides = electron=16.2.3
+	provides = electron16=16.2.6
+	provides = electron=16.2.6
 	conflicts = electron16
-	source_x86_64 = electron16-bin-chromedriver-16.2.3-1-x86_64.zip::https://github.com/electron/electron/releases/download/v16.2.3/chromedriver-v16.2.3-linux-x64.zip
-	source_x86_64 = electron16-bin-16.2.3-1-x86_64.zip::https://github.com/electron/electron/releases/download/v16.2.3/electron-v16.2.3-linux-x64.zip
-	sha256sums_x86_64 = 403f43c411535506a42fa1e1bbae6887ae27e84f9b71b29cb6d34d381339d694
-	sha256sums_x86_64 = 2c032baff08b40f106dfcd86e7b63c6275f13e64d26b8c301af704563edf8600
-	source_i686 = electron16-bin-chromedriver-16.2.3-1-i686.zip::https://github.com/electron/electron/releases/download/v16.2.3/chromedriver-v16.2.3-linux-ia32.zip
-	source_i686 = electron16-bin-16.2.3-1-i686.zip::https://github.com/electron/electron/releases/download/v16.2.3/electron-v16.2.3-linux-ia32.zip
-	sha256sums_i686 = 93485a4b79b36cae5af5e8573cb04425fa3e8e03ea01aa71ead0d89488e9207a
-	sha256sums_i686 = 227e9f5670a2d92a814eeda41c7ef4efd8fc6150bee659e0f322a8d2481ecdec
-	source_armv7h = electron16-bin-chromedriver-16.2.3-1-armv7h.zip::https://github.com/electron/electron/releases/download/v16.2.3/chromedriver-v16.2.3-linux-armv7l.zip
-	source_armv7h = electron16-bin-16.2.3-1-armv7h.zip::https://github.com/electron/electron/releases/download/v16.2.3/electron-v16.2.3-linux-armv7l.zip
-	sha256sums_armv7h = 8f7f7e73cd9a42bceb7186c29c72e1a563a0d8e04553431fcd6a1ce4c95a5d50
-	sha256sums_armv7h = 9b442b17349dcec08e6efadecf9d338a7f4b2955635fed2a78374af850ceee5d
-	source_aarch64 = electron16-bin-chromedriver-16.2.3-1-aarch64.zip::https://github.com/electron/electron/releases/download/v16.2.3/chromedriver-v16.2.3-linux-arm64.zip
-	source_aarch64 = electron16-bin-16.2.3-1-aarch64.zip::https://github.com/electron/electron/releases/download/v16.2.3/electron-v16.2.3-linux-arm64.zip
-	sha256sums_aarch64 = 9c5e996a82970823537c40dfcc8edd1c3555e2c0adb87b4b5b9c2932dd4378b5
-	sha256sums_aarch64 = eec581d162b494a7bcba4b0221f3beac9f359b48fb8612c83ce6ad7ac63094cd
+	source_x86_64 = electron16-bin-chromedriver-16.2.6-1-x86_64.zip::https://github.com/electron/electron/releases/download/v16.2.6/chromedriver-v16.2.6-linux-x64.zip
+	source_x86_64 = electron16-bin-16.2.6-1-x86_64.zip::https://github.com/electron/electron/releases/download/v16.2.6/electron-v16.2.6-linux-x64.zip
+	sha256sums_x86_64 = cc98a079ab5d8aa3778cb476e6ba83c682fd34c5cd8c3e3050cbb923bad09ce8
+	sha256sums_x86_64 = 983fd6a0157882dae82de1fd9705c144bfd9b7d9614d9b5bee731beeaca43533
+	source_i686 = electron16-bin-chromedriver-16.2.6-1-i686.zip::https://github.com/electron/electron/releases/download/v16.2.6/chromedriver-v16.2.6-linux-ia32.zip
+	source_i686 = electron16-bin-16.2.6-1-i686.zip::https://github.com/electron/electron/releases/download/v16.2.6/electron-v16.2.6-linux-ia32.zip
+	sha256sums_i686 = 4ff22b702e6ec4cb69487447333dadfedd76647027fa2114a1aa7621718ec18e
+	sha256sums_i686 = f7f67b51f7f788cd09ff6f7f54ca821a8c96f3a7cdac62842eeb9261a688b020
+	source_armv7h = electron16-bin-chromedriver-16.2.6-1-armv7h.zip::https://github.com/electron/electron/releases/download/v16.2.6/chromedriver-v16.2.6-linux-armv7l.zip
+	source_armv7h = electron16-bin-16.2.6-1-armv7h.zip::https://github.com/electron/electron/releases/download/v16.2.6/electron-v16.2.6-linux-armv7l.zip
+	sha256sums_armv7h = 9c56e6a5a433fb24b88477458306cd439a17f24c09ea00b5b387a5f2a00002a6
+	sha256sums_armv7h = 02af94cc0e056f3f44772891ae48c0ff913b20bbe26cb4f9e2c7e59779ae7abd
+	source_aarch64 = electron16-bin-chromedriver-16.2.6-1-aarch64.zip::https://github.com/electron/electron/releases/download/v16.2.6/chromedriver-v16.2.6-linux-arm64.zip
+	source_aarch64 = electron16-bin-16.2.6-1-aarch64.zip::https://github.com/electron/electron/releases/download/v16.2.6/electron-v16.2.6-linux-arm64.zip
+	sha256sums_aarch64 = b8f57ef8f0f8d7542a89244bb9dd984ed6652ffed783f787382237d9632180af
+	sha256sums_aarch64 = 82641ecbad10a82160e4b0f612fa27a42bf4cc3e31f76260f40b2b6bde583af1
 
 pkgname = electron16-bin
