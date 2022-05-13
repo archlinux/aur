@@ -1,6 +1,6 @@
 # Maintainer: Łukasz Mariański <lmarianski at protonmail dot com>
 pkgname=alvr
-pkgver=18.2.2.r0.ge0147a42
+pkgver=18.2.3.r0.gc1c251c4
 pkgrel=1
 pkgdesc="Experimental Linux version of ALVR. Stream VR games from your PC to your headset via Wi-Fi."
 arch=('x86_64')
@@ -11,7 +11,7 @@ depends=('vulkan-driver' 'ffmpeg-vulkan' 'gtk3' 'libunwind')
 makedepends=('git' 'cargo' 'clang' 'imagemagick' 'vulkan-headers')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
-_tag="v18.2.2"
+_tag="v18.2.3"
 source=('alvr'::"git+https://github.com/alvr-org/ALVR.git#tag=${_tag}")
 md5sums=('SKIP')
 
@@ -25,7 +25,9 @@ prepare() {
 
 	sed -i 's:../../../lib64/libalvr_vulkan_layer.so:libalvr_vulkan_layer.so:' alvr/vulkan-layer/layer/alvr_x86_64.json
 
-	cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
+	sed -i '/experiments/d' ./Cargo.toml
+	cargo fetch --target "$CARCH-unknown-linux-gnu"
+	# cargo fetch --locked --target "$CARCH-unknown-linux-gnu"
 }
 
 build() {
