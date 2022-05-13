@@ -1,56 +1,57 @@
 # Maintainer: Colin Arnott <colin@urandom.co.uk>
+# Contributor: Morten Linderud <foxboron@archlinux.org>
+# Contributor: Daniel Martí <mvdan@mvdan.cc>
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Alexander F. Rødseth <xyproto@archlinux.org>
+# Contributor: Pierre Neidhardt <ambrevar@gmail.com>
+# Contributor: Vesa Kaihlavirta <vegai@iki.fi>
+# Contributor: Rémy Oudompheng <remy@archlinux.org>
+# Contributor: Andres Perera <andres87p gmail>
+# Contributor: Matthew Bauer <mjbauer95@gmail.com>
+# Contributor: Christian Himpel <chressie@gmail.com>
+# Contributor: Mike Rosset <mike.rosset@gmail.com>
+# Contributor: Daniel YC Lin <dlin.tw@gmail.com>
+# Contributor: John Luebs <jkluebs@gmail.com>
 
 pkgname=go-dev
-pkgver=1.17rc1
+pkgver=1.18.2
 pkgrel=1
 pkgdesc='Core compiler tools for the Go programming language'
 arch=(x86_64)
 url='https://golang.org/'
 license=(BSD)
 makedepends=(git go perl)
-provides=(go go-pie)
-conflicts=(go go-pie)
+replaces=(go-pie)
+provides=(go-pie)
 options=(!strip staticlibs)
 source=(https://storage.googleapis.com/golang/go$pkgver.src.tar.gz{,.asc})
 validpgpkeys=('EB4C1BFD4F042F6DDDCCEC917721F63BD38B4796')
-sha256sums=('0d63be0f3abc79d35efcb60dfce4445e64bb1ea194edcfd9783a76316b7e85e2'
+sha512sums=('9214cbc051cf26b49ab1bd4d8d30b060865944b831578a9ea7fcfe33f84009f77932a39f2948efbfc412b151e4734a3bc1f8332f3bea11b35a912b0e23a4118f'
             'SKIP')
 
 build() {
   export GOARCH=amd64
+  export GOAMD64=v1 # make sure we're building for the right x86-64 version
   export GOROOT_FINAL=/usr/lib/go
   export GOROOT_BOOTSTRAP=/usr/lib/go
-  export GOPATH="$srcdir/"
-  export GOROOT="$srcdir/${pkgname%-dev}"
-  export GOBIN="$GOROOT/bin"
 
   cd "${pkgname%-dev}/src"
-  ./make.bash --no-clean -v
-
-  PATH="$GOBIN:$PATH" go install -v -race std
-  PATH="$GOBIN:$PATH" go install -v -buildmode=shared std
+  ./make.bash -v
 }
 
 check() {
-  export GOARCH=amd64
-  export GOROOT_FINAL=/usr/lib/go
-  export GOROOT_BOOTSTRAP=/usr/lib/go
-  export GOROOT="$srcdir/${pkgname%-dev}"
-  export GOBIN="$GOROOT/bin"
-  export PATH="$srcdir/${pkgname%-dev}/bin:$PATH"
-  export GO_TEST_TIMEOUT_SCALE=2
+  export GO_TEST_TIMEOUT_SCALE=3
 
-  cd "${pkgname%-dev}/src"
-  # rm os/signal/signal_cgo_test.go  # TODO: There is a bug somewhere.
-  #                                  # Should only affect containers
-  #                                  # so lets just say No.
+  cd ${pkgname%-dev}/src
   ./run.bash --no-rebuild -v -v -v -k
 }
 
 package() {
   cd "${pkgname%-dev}"
 
-  install -d "$pkgdir/usr/bin" "$pkgdir/usr/lib/go" "$pkgdir/usr/share/doc/go"
+  install -d "$pkgdir/usr/bin" "$pkgdir/usr/lib/go" "$pkgdir/usr/share/doc/go" \
+    "$pkgdir/usr/lib/go/pkg/linux_amd64_"{dynlink,race}
+
   cp -a bin pkg src lib misc api test "$pkgdir/usr/lib/go"
   cp -r doc/* "$pkgdir/usr/share/doc/go"
 
