@@ -12,7 +12,7 @@ options=('!makeflags')
 depends=('python2')
 makedepends=('git' 'gprbuild' 'coq' 'gnatcoll-core' 'gprbuild' 'ocaml-num'
              'ocaml-menhir' 'ocaml-ocamlgraph' 'ocaml-zarith' 'ocaml-zip'
-             'ocaml-ocplib-simplex' 'ocaml-yojson' 'python-sphinx')
+             'ocaml-ocplib-simplex' 'ocaml-yojson' 'python' 'python-sphinx')
 optdepends=('alt-ergo: alternative prover'
             'z3: alternative prover'
             'cvc4: alternative prover')
@@ -66,9 +66,7 @@ build() {
 
 check() {
     cd spark2014
-    # XXX ImportError: No module named gnatpython.env
-    # python2 testsuite/gnatprove/run-tests
-    # python2 testsuite/gnatmerge/run-tests
+    python testsuite/gnatprove/run-tests
 }
 
 package() {

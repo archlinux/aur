@@ -17,6 +17,7 @@ pkgbase = spark2014-git
 	makedepends = ocaml-zip
 	makedepends = ocaml-ocplib-simplex
 	makedepends = ocaml-yojson
+	makedepends = python
 	makedepends = python-sphinx
 	depends = python2
 	optdepends = alt-ergo: alternative prover
