@@ -1,0 +1,18 @@
+pkgbase = i686-elf-gdb
+	pkgdesc = GNU debugger crosscompiled for i686 development
+	pkgver = 11.1
+	pkgrel = 4
+	url = https://www.gnu.org/software/gdb
+	arch = x86_64
+	groups = i686-elf-toolchain
+	license = GPL
+	makedepends = gmp
+	makedepends = mpfr
+	depends = xz
+	depends = libmpc
+	depends = i686-elf-gcc
+	depends = gdb
+	source = http://ftpmirror.gnu.org/gdb/gdb-11.1.tar.xz
+	sha256sums = cccfcc407b20d343fb320d4a9a2110776dd3165118ffd41f4b1b162340333f94
+
+pkgname = i686-elf-gdb
