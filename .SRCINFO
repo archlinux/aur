@@ -1,14 +1,14 @@
 pkgbase = nats-server
 	pkgdesc = Simple, secure and high performance open source messaging system
-	pkgver = 2.8.1
+	pkgver = 2.8.2
 	pkgrel = 1
 	url = https://nats.io
 	arch = x86_64
 	license = Apache
 	provides = nats-server
-	source = https://github.com/nats-io/nats-server/releases/download/v2.8.1/nats-server-v2.8.1-linux-amd64.zip
+	source = https://github.com/nats-io/nats-server/releases/download/v2.8.2/nats-server-v2.8.2-linux-amd64.zip
 	source = local://nats-server.service
-	sha256sums = a04367cff12e1e334e535a7e607757496d7e52a3eff863854404be351f9758d3
+	sha256sums = bc485dc4fcf1edf35f14fe14b114f8c96345b388aada3d655c3ad1f929126d5c
 	sha256sums = 3dcf497f31d8502712773d63801e6aa33416851fcf5e58a504a72c7d105960ce
 
 pkgname = nats-server
