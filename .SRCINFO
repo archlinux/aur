@@ -1,14 +1,13 @@
 pkgbase = gazebo
 	pkgdesc = A multi-robot simulator for outdoor environments
 	pkgver = 11.10.2
-	pkgrel = 2
+	pkgrel = 3
 	url = http://gazebosim.org/
 	install = gazebo.install
 	arch = i686
 	arch = x86_64
 	license = Apache
 	makedepends = cmake
-	makedepends = git
 	makedepends = doxygen
 	makedepends = ruby-ronn
 	depends = boost
@@ -41,7 +40,9 @@ pkgbase = gazebo
 	optdepends = libusb: USB peripherals support
 	optdepends = simbody: Simbody support
 	optdepends = urdfdom: Load URDF files
-	source = git+https://github.com/osrf/gazebo.git#tag=gazebo11_11.10.2
-	sha256sums = SKIP
+	source = gazebo-11.10.2.tar.gz::https://github.com/osrf/gazebo/archive/gazebo11_11.10.2.tar.gz
+	source = string.patch::https://github.com/osrf/gazebo/commit/2f0f7af4868883d1a6fea30086b3fcd703d583fc.patch
+	sha256sums = 9570454e0341e40881ed8659f8ec9aa45e24d172421e8556d0714cf7b5018511
+	sha256sums = a94a7e22696074f88ae1a8f2af3f39ef5041b91785b2b52a73dbf8b9a1c4fd52
 
 pkgname = gazebo

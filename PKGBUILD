@@ -1,4 +1,5 @@
 # Maintainer: Alex Dewar <a.dewar@sussex.ac.uk>
+# Contributor: acxz <akashpatel2008 at yahoo dot com>
 # Contributor: Troy Patrick <patrictroy at gmail dot com>
 # Contributor: racko <tim dot rakowski at gmail dot com>
 # Contributor: marauder <abhinav dot kssk at gmail dot com>
@@ -8,7 +9,7 @@
 
 pkgname=gazebo
 pkgver=11.10.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A multi-robot simulator for outdoor environments"
 arch=('i686' 'x86_64')
 url="http://gazebosim.org/"
@@ -25,24 +26,21 @@ optdepends=('bullet: Bullet support'
             'libusb: USB peripherals support'
             'simbody: Simbody support'
             'urdfdom: Load URDF files')
-makedepends=('cmake' 'git' 'doxygen' 'ruby-ronn')
+makedepends=('cmake' 'doxygen' 'ruby-ronn')
 install="${pkgname}.install"
-source=("git+https://github.com/osrf/gazebo.git#tag=gazebo11_$pkgver")
-sha256sums=('SKIP')
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/osrf/gazebo/archive/${pkgname}11_$pkgver.tar.gz"
+        "string.patch"::"https://github.com/osrf/gazebo/commit/2f0f7af4868883d1a6fea30086b3fcd703d583fc.patch")
+sha256sums=('9570454e0341e40881ed8659f8ec9aa45e24d172421e8556d0714cf7b5018511'
+            'a94a7e22696074f88ae1a8f2af3f39ef5041b91785b2b52a73dbf8b9a1c4fd52')
 
 prepare() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgname}11_$pkgver"
 
-  # Fix for newer versions of protobuf
-  git cherry-pick 2f0f7af4868883d1a6fea30086b3fcd703d583fc
-
-  # Gazebo's CMake package file forces projects using it to use C++11 by default
-  # which screws over anyone wanting to use C++14 or newer
-  sed -i '/-std=c++11/d' cmake/gazebo-config.cmake.in
+  patch --strip=1 < "${srcdir}/string.patch"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgname}11_$pkgver"
 
   mkdir -p build && cd build
 
@@ -54,6 +52,6 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}/build"
+  cd "${srcdir}/${pkgname}-${pkgname}11_$pkgver/build"
   DESTDIR="${pkgdir}" make install
 }
