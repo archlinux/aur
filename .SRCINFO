@@ -1,0 +1,15 @@
+pkgbase = tokay-git
+	pkgdesc = Tokay is an imperative, procedural programming language dedicated to parsing and other text-processing tasks.
+	pkgver = v0.4.r167.44e7425
+	pkgrel = 1
+	url = https://tokay.dev
+	arch = x86_64
+	license = MIT
+	makedepends = git
+	makedepends = rust
+	provides = tokay
+	conflicts = tokay
+	source = tokay::git+https://github.com/tokay-lang/tokay.git#branch=main
+	md5sums = SKIP
+
+pkgname = tokay-git
