@@ -12,3 +12,21 @@
 @@ -2 +2 @@
 -O=b/g_$(PLATFORM)
 +O=$(BUILD_DIR)
+
+--- C/LzmaEnc.c
++++ C/LzmaEnc.c
+@@ -2993,12 +2993,13 @@
+ 
+   nowPos64 = p->nowPos64;
+   RangeEnc_Init(&p->rc);
+-  p->rc.outStream = &outStream.vt;
+ 
+   if (desiredPackSize == 0)
+     return SZ_ERROR_OUTPUT_EOF;
+ 
++  p->rc.outStream = &outStream.vt;
+   res = LzmaEnc_CodeOneBlock(p, desiredPackSize, *unpackSize);
++  p->rc.outStream = NULL;
+   
+   *unpackSize = (UInt32)(p->nowPos64 - nowPos64);
+   *destLen -= outStream.rem;
