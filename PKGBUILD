@@ -47,7 +47,8 @@ prepare() {
     patch -Np2 -i "${srcdir}/makefile-fixes.patch"
 
     # Arch Linux doesn't use libexec, everything lives under lib.
-    sed -i 's/libexec/lib/g' gnatprove/configuration.ads
+    sed -i 's/libexec/lib/g' src/gnatprove/configuration.ads
+    sed -i 's/libexec/lib/g' share/spark/unix/doinstall
 }
 
 pkgver() {
