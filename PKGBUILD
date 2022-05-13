@@ -3,28 +3,29 @@
 pkgname=uksmd
 _repouser=post-factum
 _reponame=uksmd
-_rev=e1d4b12d22fd710f0155d75585940f0d439f1544
-pkgver=0.0.0.r11.${_rev:0:10}
+_rev=e9b06f4f8e982d2d0cd1830c7dd6803db56b7e72
+pkgver=0.0.0.r12.${_rev:0:10}
 pkgrel=1
 pkgdesc="Userspace KSM helper daemon"
 url="https://gitlab.com/post-factum/uksmd"
 license=(GPL3)
 arch=(x86_64)
-depends=(UKSMD-BUILTIN procps-ng libcap-ng)
+depends=(UKSMD-BUILTIN systemd procps-ng libcap-ng)
+makedepends=(meson)
 source=(${pkgname}-${pkgver}.tar.gz::https://gitlab.com/${_repouser}/${_reponame}/-/archive/${_rev}/${_reponame}-${_rev}.tar.gz)
-sha256sums=('da2ad62bbafbaa66396c20a5a657ba6be5dec37eb4f25260a3060f860465accc')
+sha256sums=('cee4d81ae2efaa705ffda079f1892e091378bec122718df70fd754ffefb4b7e8')
 
 build() {
-	cd "${_reponame}-${_rev}"
+	cd ${_reponame}-${_rev}
 
-	make
+	arch-meson . build
+
+	meson compile -C build
 }
 
 package() {
-	cd "${_reponame}-${_rev}"
+	cd ${_reponame}-${_rev}
 
-	make DESTDIR="${pkgdir}" PREFIX="/usr" install
-
-	install -Dt "${pkgdir}"/usr/lib/systemd/system -m0644 distro/${pkgname}.service
+	meson install -C build --destdir "${pkgdir}"
 }
 
