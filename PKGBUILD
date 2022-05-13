@@ -4,14 +4,14 @@
 _pkgname='rapidfuzz'
 pkgname="python-${_pkgname}"
 pkgver=2.0.11
-pkgrel=1
+pkgrel=2
 pkgdesc='Rapid fuzzy string matching in Python using various string metrics'
 arch=('x86_64')
 url='https://github.com/maxbachmann/rapidfuzz'
 license=('MIT')
 depends=('python-jarowinkler')
 makedepends=(
-    'git'
+    'cpp-taskflow'
     'jarowinkler-cpp'
     'python-numpy'
     'python-rapidfuzz-capi'
@@ -25,7 +25,6 @@ sha256sums=('934b65fea75e3bd310d74903ec69ff3df061b3058ab5b7f49ab772958109bca8')
 
 build() {
   cd "${_pkgname}-${pkgver}"
-  # Use vendored version of Taskflow until cpp-taskflow package is fixed
   python setup.py build \
       -G "Unix Makefiles" \
       --build-type None \
