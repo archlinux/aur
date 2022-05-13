@@ -5,7 +5,7 @@
 _gitname=darling
 pkgbase=$_gitname-git
 pkgname=('darling-git' 'darling-mach-dkms-git')
-pkgver=r3690.156c30623
+pkgver=r3717.26e55e111
 pkgrel=1
 pkgdesc="Darwin/macOS emulation layer for Linux"
 arch=('x86_64')
@@ -27,6 +27,7 @@ source=('dkms.conf'
         'git+https://github.com/darlinghq/cctools-port.git'
         'git+https://github.com/darlinghq/darling-adv_cmds.git'
         'git+https://github.com/darlinghq/darling-apr.git'
+        'git+https://github.com/darlinghq/darling-AvailabilityVersions'
         'git+https://github.com/darlinghq/darling-awk.git'
         'git+https://github.com/darlinghq/darling-bash.git'
         'git+https://github.com/darlinghq/darling-basic_cmds.git'
@@ -54,6 +55,7 @@ source=('dkms.conf'
         'git+https://github.com/darlinghq/darling-doc_cmds.git'
         'git+https://github.com/darlinghq/darling-DSTools.git'
         'git+https://github.com/darlinghq/darling-dtrace.git'
+        'git+https://github.com/darlinghq/darling-dyld.git'
         'git+https://github.com/darlinghq/darling-energytrace.git'
         'git+https://github.com/darlinghq/darling-expat.git'
         'git+https://github.com/darlinghq/darling-file_cmds.git'
@@ -81,15 +83,19 @@ source=('dkms.conf'
         'git+https://github.com/darlinghq/darling-less.git'
         'git+https://github.com/darlinghq/darling-libarchive.git'
         'git+https://github.com/darlinghq/darling-libauto.git'
+        'git+https://github.com/darlinghq/darling-Libc.git'
         'git+https://github.com/darlinghq/darling-libclosure.git'
         'git+https://github.com/darlinghq/darling-libcxxabi.git'
         'git+https://github.com/darlinghq/darling-libcxx.git'
         'git+https://github.com/darlinghq/darling-libdispatch.git'
         'git+https://github.com/darlinghq/darling-libffi.git'
         'git+https://github.com/darlinghq/darling-liblzma.git'
+        'git+https://github.com/darlinghq/darling-libmalloc.git'
         'git+https://github.com/darlinghq/darling-libnetwork.git'
+        'git+https://github.com/darlinghq/darling-Libnotify.git'
         'git+https://github.com/darlinghq/darling-libplatform.git'
         'git+https://github.com/darlinghq/darling-libpthread.git'
+        'git+https://github.com/darlinghq/darling-Libsystem.git'
         'git+https://github.com/darlinghq/darling-libtelnet.git'
         'git+https://github.com/darlinghq/darling-libtrace.git'
         'git+https://github.com/darlinghq/darling-libxml2.git'
@@ -162,7 +168,8 @@ md5sums=('d6d3b392245a45c6fb5f82037bfdbd19'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
           'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
-          'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+          'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP'
+          'SKIP' 'SKIP' 'SKIP')
 options=('!buildflags')
 
 pkgver() {
@@ -180,6 +187,7 @@ prepare() {
     echo "Updating git submodule paths."
     git config submodule.src/external/adv_cmds.url "$srcdir/darling-adv_cmds"
     git config submodule.src/external/apr.url "$srcdir/darling-apr"
+    git config submodule.src/external/AvailabilityVersions.url "$srcdir/darling-AvailabilityVersions"
     git config submodule.src/external/awk.url "$srcdir/darling-awk"
     git config submodule.src/external/bash.url "$srcdir/darling-bash"
     git config submodule.src/external/basic_cmds.url "$srcdir/darling-basic_cmds"
@@ -208,6 +216,7 @@ prepare() {
     git config submodule.src/external/doc_cmds.url "$srcdir/darling-doc_cmds"
     git config submodule.src/external/DSTools.url "$srcdir/darling-DSTools"
     git config submodule.src/external/dtrace.url "$srcdir/darling-dtrace"
+    git config submodule.src/external/dyld.url "$srcdir/darling-dyld"
     git config submodule.src/external/energytrace.url "$srcdir/darling-energytrace"
     git config submodule.src/external/expat.url "$srcdir/darling-expat"
     git config submodule.src/external/file_cmds.url "$srcdir/darling-file_cmds"
@@ -233,19 +242,23 @@ prepare() {
     git config submodule.src/external/less.url "$srcdir/darling-less"
     git config submodule.src/external/libarchive.url "$srcdir/darling-libarchive"
     git config submodule.src/external/libauto.url "$srcdir/darling-libauto"
+    git config submodule.src/external/libc.url "$srcdir/darling-Libc"
     git config submodule.src/external/libclosure.url "$srcdir/darling-libclosure"
     git config submodule.src/external/libcxxabi.url "$srcdir/darling-libcxxabi"
     git config submodule.src/external/libcxx.url "$srcdir/darling-libcxx"
     git config submodule.src/external/libdispatch.url "$srcdir/darling-libdispatch"
     git config submodule.src/external/libffi.url "$srcdir/darling-libffi"
     git config submodule.src/external/liblzma.url "$srcdir/darling-liblzma"
+    git config submodule.src/external/libmalloc.url "$srcdir/darling-libmalloc"
     git config submodule.src/external/libnetwork.url "$srcdir/darling-libnetwork"
+    git config submodule.src/external/libnotify.url "$srcdir/darling-Libnotify"
     git config submodule.src/external/libplatform.url "$srcdir/darling-libplatform"
     git config submodule.src/external/libpthread.url "$srcdir/darling-libpthread"
     git config submodule.src/external/libressl-2.2.9.url "$srcdir/darling-libressl-2.2.9"
     git config submodule.src/external/libressl-2.5.5.url "$srcdir/darling-libressl-2.5.5"
     git config submodule.src/external/libressl-2.6.5.url "$srcdir/darling-libressl-2.6.5"
     git config submodule.src/external/libressl-2.8.3.url "$srcdir/darling-libressl-2.8.3"
+    git config submodule.src/external/libsystem.url "$srcdir/darling-Libsystem"
     git config submodule.src/external/libtelnet.url "$srcdir/darling-libtelnet"
     git config submodule.src/external/libtrace.url "$srcdir/darling-libtrace"
     git config submodule.src/external/libxml2.url "$srcdir/darling-libxml2"
