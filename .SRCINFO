@@ -1,6 +1,6 @@
 pkgbase = electron17-bin
 	pkgdesc = Build cross platform desktop apps with web technologies - binary version 17
-	pkgver = 17.4.1
+	pkgver = 17.4.4
 	pkgrel = 1
 	url = https://electronjs.org/
 	arch = x86_64
@@ -22,24 +22,24 @@ pkgbase = electron17-bin
 	optdepends = pipewire: WebRTC desktop sharing under Wayland
 	optdepends = trash-cli: file deletion support (trash-put)
 	optdepends = xdg-utils: open URLs with desktop's default (xdg-email, xdg-open)
-	provides = electron17=17.4.1
-	provides = electron=17.4.1
+	provides = electron17=17.4.4
+	provides = electron=17.4.4
 	conflicts = electron17
-	source_x86_64 = electron17-bin-chromedriver-17.4.1-1-x86_64.zip::https://github.com/electron/electron/releases/download/v17.4.1/chromedriver-v17.4.1-linux-x64.zip
-	source_x86_64 = electron17-bin-17.4.1-1-x86_64.zip::https://github.com/electron/electron/releases/download/v17.4.1/electron-v17.4.1-linux-x64.zip
-	sha256sums_x86_64 = eb1eb31f82b4e40031c6426e0560ee87b57f6e93f7112608a674c07f834f776a
-	sha256sums_x86_64 = f9437a86947c418d92eabea14b268dcc4a5dde74cc6927530c1e9195e4aeddf8
-	source_i686 = electron17-bin-chromedriver-17.4.1-1-i686.zip::https://github.com/electron/electron/releases/download/v17.4.1/chromedriver-v17.4.1-linux-ia32.zip
-	source_i686 = electron17-bin-17.4.1-1-i686.zip::https://github.com/electron/electron/releases/download/v17.4.1/electron-v17.4.1-linux-ia32.zip
-	sha256sums_i686 = b20fd198242e840c1bdd94c26df20318a7ca77fd7772e8fff70ebf8192c06b9f
-	sha256sums_i686 = 436f44d778acc41a4a07cc4ee23ab861e2c4d72e4b1335e3c4ccfd4855deb594
-	source_armv7h = electron17-bin-chromedriver-17.4.1-1-armv7h.zip::https://github.com/electron/electron/releases/download/v17.4.1/chromedriver-v17.4.1-linux-armv7l.zip
-	source_armv7h = electron17-bin-17.4.1-1-armv7h.zip::https://github.com/electron/electron/releases/download/v17.4.1/electron-v17.4.1-linux-armv7l.zip
-	sha256sums_armv7h = f7eb811e41623396c582b57022adbd940df026843014fc48c3cadbeeec0272ae
-	sha256sums_armv7h = d1329468cb21039fb5b503fc813381f9be4d43422383b44f859b450be0e4200c
-	source_aarch64 = electron17-bin-chromedriver-17.4.1-1-aarch64.zip::https://github.com/electron/electron/releases/download/v17.4.1/chromedriver-v17.4.1-linux-arm64.zip
-	source_aarch64 = electron17-bin-17.4.1-1-aarch64.zip::https://github.com/electron/electron/releases/download/v17.4.1/electron-v17.4.1-linux-arm64.zip
-	sha256sums_aarch64 = 1f7b0e4768c43e6d8287e8a7abb2a92bdcd2e1e9047e513e2447112bc56123b7
-	sha256sums_aarch64 = 70d29bca5f884753341a11b0445ccf159c0f43dfae16eb60c53946582c3128b0
+	source_x86_64 = electron17-bin-chromedriver-17.4.4-1-x86_64.zip::https://github.com/electron/electron/releases/download/v17.4.4/chromedriver-v17.4.4-linux-x64.zip
+	source_x86_64 = electron17-bin-17.4.4-1-x86_64.zip::https://github.com/electron/electron/releases/download/v17.4.4/electron-v17.4.4-linux-x64.zip
+	sha256sums_x86_64 = 997caca6b3b108b8312595ddb9e484ecdb278f66c0138530e1fce0095107eddf
+	sha256sums_x86_64 = eec75000c24a206f6c03ee6abeb237ed80da28daec9403c4fbb8a122eaa8e4f7
+	source_i686 = electron17-bin-chromedriver-17.4.4-1-i686.zip::https://github.com/electron/electron/releases/download/v17.4.4/chromedriver-v17.4.4-linux-ia32.zip
+	source_i686 = electron17-bin-17.4.4-1-i686.zip::https://github.com/electron/electron/releases/download/v17.4.4/electron-v17.4.4-linux-ia32.zip
+	sha256sums_i686 = b5eb3877600ced4bc100f0f37881d0fffd4ab129c2363b63417162fab8880072
+	sha256sums_i686 = e17a3315123bb33a3ddbc0de4d22893583d9c4638f00a352d952f7b94a629b61
+	source_armv7h = electron17-bin-chromedriver-17.4.4-1-armv7h.zip::https://github.com/electron/electron/releases/download/v17.4.4/chromedriver-v17.4.4-linux-armv7l.zip
+	source_armv7h = electron17-bin-17.4.4-1-armv7h.zip::https://github.com/electron/electron/releases/download/v17.4.4/electron-v17.4.4-linux-armv7l.zip
+	sha256sums_armv7h = 111b2a96f18ef77126ff87ef0976f4edb97fec2efc1078e693c30b188f895159
+	sha256sums_armv7h = 441bf5cf0a9f5e1676542ad41ac1641883a3a3bf14689c91f0a4a88c576aea40
+	source_aarch64 = electron17-bin-chromedriver-17.4.4-1-aarch64.zip::https://github.com/electron/electron/releases/download/v17.4.4/chromedriver-v17.4.4-linux-arm64.zip
+	source_aarch64 = electron17-bin-17.4.4-1-aarch64.zip::https://github.com/electron/electron/releases/download/v17.4.4/electron-v17.4.4-linux-arm64.zip
+	sha256sums_aarch64 = b1fe1554f80a1a85c168adcd9180759155b812df75748c068e16178414add6e6
+	sha256sums_aarch64 = 35175f129f47a230ac8de313bb6b428c48b60b968f38ac290cfda60dbf27ce0c
 
 pkgname = electron17-bin
