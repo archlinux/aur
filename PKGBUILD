@@ -1,28 +1,57 @@
 # Maintainer: Chinmay Dalal <w5vwg64uy@relay.firefox.com>
+
 pkgname=river-levee-git
-pkgver=r23.7c8a37d
+_pkgname=levee
+pkgver=0.1.0.r7.g3e383f3
 pkgrel=1
 pkgdesc="Statusbar for the river wayland compositor"
 arch=('x86_64')
-url="https://sr.ht/~andreafeletto/levee/"
-makedepends=("zig")
-source=($pkgname::"git+https://git.sr.ht/~andreafeletto/levee")
-sha256sums=('SKIP')
+url="https://sr.ht/~andreafeletto/levee"
 license=('MIT')
+depends=('wayland' 'wayland-protocols' 'fcft' 'pixman' 'libpulse')
+makedepends=('zig' 'git')
+provides=('levee')
+conflicts=('river-levee')
+source=(
+    "git+https://git.sr.ht/~andreafeletto/$_pkgname"
+    'git+https://github.com/ifreund/zig-wayland'
+    'git+https://github.com/ifreund/zig-pixman'
+    'git+https://git.sr.ht/~andreafeletto/zig-fcft'
+    'git+https://git.sr.ht/~andreafeletto/zig-udev'
+    'git+https://github.com/Hejsil/zig-clap'
+)
+sha256sums=(
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+    'SKIP'
+)
+
+prepare() {
+   cd "$srcdir/$_pkgname"
+   git submodule init
+   for dep in wayland pixman fcft udev clap; do
+       git config "submodule.deps/zig-$dep.url" "$srcdir/zig-$dep"
+   done
+   git submodule update
+}
 
 pkgver() {
-    cd "$pkgname"
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+    cd "$srcdir/$_pkgname"
+    git describe --long | sed 's/v//;s/-/.r/;s/-/./'
 }
 
 build() {
-    cd "$srcdir/$pkgname"
-    git submodule update --init --recursive
+    cd "$srcdir/$_pkgname"
     zig build -Drelease-safe
 }
 
 
 package() {
-    cd "$srcdir/$pkgname"
-    install -Dm755 "$srcdir/$pkgname/zig-out/bin/levee" "$pkgdir/usr/bin/levee"
+    cd "$srcdir/$_pkgname"
+    DESTDIR="$pkgdir" zig build -Drelease-safe --prefix '/usr'
+    install -Dm644 LICENSE -t "$pkgdir/usr/share/licenses/$_pkgname"
+    install -Dm644 README.md -t "$pkgdir/usr/share/doc/$_pkgname"
 }
