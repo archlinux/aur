@@ -1,7 +1,7 @@
-From 51105664980e12f8f34730c20725ae3ca2229c3e Mon Sep 17 00:00:00 2001
+From 911e551ff47ec3e18b776b9d86b4c2e64cd675be Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Wed, 13 Apr 2022 14:10:01 -0700
-Subject: [PATCH 01/31] x86/sgx: Add short descriptions to ENCLS wrappers
+Date: Tue, 10 May 2022 11:08:37 -0700
+Subject: [PATCH 06/36] x86/sgx: Add short descriptions to ENCLS wrappers
 
 The SGX ENCLS instruction uses EAX to specify an SGX function and
 may require additional registers, depending on the SGX function.
@@ -105,5 +105,5 @@ index fa04a73daf9c..0e22fa8f77c5 100644
  			void *va)
  {
 -- 
-2.35.2
+2.36.1
 

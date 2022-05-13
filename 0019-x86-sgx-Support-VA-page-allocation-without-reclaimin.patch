@@ -1,7 +1,7 @@
-From dc8e57ec148e5f440afaedea7705742bf2f00236 Mon Sep 17 00:00:00 2001
+From fd4616da8dc62cdf1976b27742a567efd5aac146 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Wed, 13 Apr 2022 14:10:14 -0700
-Subject: [PATCH 14/31] x86/sgx: Support VA page allocation without reclaiming
+Date: Tue, 10 May 2022 11:08:50 -0700
+Subject: [PATCH 19/36] x86/sgx: Support VA page allocation without reclaiming
 
 struct sgx_encl should be protected with the mutex
 sgx_encl->lock. One exception is sgx_encl->page_cnt that
@@ -34,7 +34,7 @@ initialization.
 No functional change.
 
 Reported-by: Haitao Huang <haitao.huang@intel.com>
-Tested-by: Haitao Huang <haitao.huang@intel.com>
+Reviewed-by: Jarkko Sakkinen <jarkko@kernel.org>
 Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
 ---
  arch/x86/kernel/cpu/sgx/encl.c  | 6 ++++--
@@ -43,10 +43,10 @@ Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
  3 files changed, 10 insertions(+), 8 deletions(-)
 
 diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
-index 38e42c2d3592..8729b254b0cc 100644
+index 5e6a64d8e3d6..ea81e597dd18 100644
 --- a/arch/x86/kernel/cpu/sgx/encl.c
 +++ b/arch/x86/kernel/cpu/sgx/encl.c
-@@ -828,6 +828,8 @@ void sgx_zap_enclave_ptes(struct sgx_encl *encl, unsigned long addr)
+@@ -964,6 +964,8 @@ void sgx_zap_enclave_ptes(struct sgx_encl *encl, unsigned long addr)
  
  /**
   * sgx_alloc_va_page() - Allocate a Version Array (VA) page
@@ -55,7 +55,7 @@ index 38e42c2d3592..8729b254b0cc 100644
   *
   * Allocate a free EPC page and convert it to a Version Array (VA) page.
   *
-@@ -835,12 +837,12 @@ void sgx_zap_enclave_ptes(struct sgx_encl *encl, unsigned long addr)
+@@ -971,12 +973,12 @@ void sgx_zap_enclave_ptes(struct sgx_encl *encl, unsigned long addr)
   *   a VA page,
   *   -errno otherwise
   */
@@ -71,7 +71,7 @@ index 38e42c2d3592..8729b254b0cc 100644
  		return ERR_CAST(epc_page);
  
 diff --git a/arch/x86/kernel/cpu/sgx/encl.h b/arch/x86/kernel/cpu/sgx/encl.h
-index 253ebdd1c5be..66adb8faec45 100644
+index 2cb58ab868e5..3d0e0ba3edf5 100644
 --- a/arch/x86/kernel/cpu/sgx/encl.h
 +++ b/arch/x86/kernel/cpu/sgx/encl.h
 @@ -116,14 +116,14 @@ struct sgx_encl_page *sgx_encl_page_alloc(struct sgx_encl *encl,
@@ -132,5 +132,5 @@ index bb8cdb2ad0d1..5d41aa204761 100644
  		ret = PTR_ERR(va_page);
  		goto err_out_free;
 -- 
-2.35.2
+2.36.1
 

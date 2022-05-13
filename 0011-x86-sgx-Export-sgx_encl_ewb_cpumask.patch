@@ -1,7 +1,7 @@
-From 100959e3e9bf237de44f769e204aee46e61b5765 Mon Sep 17 00:00:00 2001
+From 3d04d12e9ee7efadb490cba7ba12e8d4b833b9af Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Wed, 13 Apr 2022 14:10:06 -0700
-Subject: [PATCH 06/31] x86/sgx: Export sgx_encl_ewb_cpumask()
+Date: Tue, 10 May 2022 11:08:42 -0700
+Subject: [PATCH 11/36] x86/sgx: Export sgx_encl_ewb_cpumask()
 
 Using sgx_encl_ewb_cpumask() to learn which CPUs might have executed
 an enclave is useful to ensure that TLBs are cleared when changes are
@@ -31,10 +31,10 @@ Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
  3 files changed, 68 insertions(+), 29 deletions(-)
 
 diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
-index b45fcecea4bd..2845ec4faf24 100644
+index 7ad8b475306a..6953d331f8d5 100644
 --- a/arch/x86/kernel/cpu/sgx/encl.c
 +++ b/arch/x86/kernel/cpu/sgx/encl.c
-@@ -570,6 +570,73 @@ int sgx_encl_mm_add(struct sgx_encl *encl, struct mm_struct *mm)
+@@ -714,6 +714,73 @@ int sgx_encl_mm_add(struct sgx_encl *encl, struct mm_struct *mm)
  	return 0;
  }
  
@@ -109,7 +109,7 @@ index b45fcecea4bd..2845ec4faf24 100644
  					      pgoff_t index)
  {
 diff --git a/arch/x86/kernel/cpu/sgx/encl.h b/arch/x86/kernel/cpu/sgx/encl.h
-index 6b34efba1602..d2acb4debde5 100644
+index 522a17e4fd2d..c6afa58ea3e6 100644
 --- a/arch/x86/kernel/cpu/sgx/encl.h
 +++ b/arch/x86/kernel/cpu/sgx/encl.h
 @@ -105,6 +105,7 @@ int sgx_encl_may_map(struct sgx_encl *encl, unsigned long start,
@@ -119,12 +119,12 @@ index 6b34efba1602..d2acb4debde5 100644
 +const cpumask_t *sgx_encl_ewb_cpumask(struct sgx_encl *encl);
  int sgx_encl_get_backing(struct sgx_encl *encl, unsigned long page_index,
  			 struct sgx_backing *backing);
- void sgx_encl_put_backing(struct sgx_backing *backing, bool do_write);
+ void sgx_encl_put_backing(struct sgx_backing *backing);
 diff --git a/arch/x86/kernel/cpu/sgx/main.c b/arch/x86/kernel/cpu/sgx/main.c
-index 4b41efc9e367..d481e8b0e7bc 100644
+index ab4ec54bbdd9..2a926278dd29 100644
 --- a/arch/x86/kernel/cpu/sgx/main.c
 +++ b/arch/x86/kernel/cpu/sgx/main.c
-@@ -203,35 +203,6 @@ static void sgx_ipi_cb(void *info)
+@@ -205,35 +205,6 @@ static void sgx_ipi_cb(void *info)
  {
  }
  
@@ -161,5 +161,5 @@ index 4b41efc9e367..d481e8b0e7bc 100644
   * Swap page to the regular memory transformed to the blocked state by using
   * EBLOCK, which means that it can no longer be referenced (no new TLB entries).
 -- 
-2.35.2
+2.36.1
 

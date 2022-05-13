@@ -1,7 +1,7 @@
-From 588655546cf6bda0ae880233e40240b6a0a6cbbe Mon Sep 17 00:00:00 2001
+From f00cceb541c0ed451da982dd4bcf2df721c23902 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Wed, 13 Apr 2022 14:10:11 -0700
-Subject: [PATCH 11/31] x86/sgx: Keep record of SGX page type
+Date: Tue, 10 May 2022 11:08:47 -0700
+Subject: [PATCH 16/36] x86/sgx: Keep record of SGX page type
 
 SGX2 functions are not allowed on all page types. For example,
 ENCLS[EMODPR] is only allowed on regular SGX enclave pages and
@@ -27,7 +27,6 @@ while only using three bits. Transition to a bitfield for the two
 members to support the additional information without increasing
 the space consumed by the struct.
 
-Acked-by: Jarkko Sakkinen <jarkko@kernel.org>
 Reviewed-by: Jarkko Sakkinen <jarkko@kernel.org>
 Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
 ---
@@ -51,7 +50,7 @@ index d67810b50a81..eae20fa52b93 100644
  enum sgx_page_type {
  	SGX_PAGE_TYPE_SECS,
 diff --git a/arch/x86/kernel/cpu/sgx/encl.h b/arch/x86/kernel/cpu/sgx/encl.h
-index 1b15d22f6757..07abfc70c8e3 100644
+index f72a674e2605..799d4cdb12d5 100644
 --- a/arch/x86/kernel/cpu/sgx/encl.h
 +++ b/arch/x86/kernel/cpu/sgx/encl.h
 @@ -27,7 +27,8 @@
@@ -85,5 +84,5 @@ index a66795e0b685..21078c6643f7 100644
  
  	if (flags & SGX_PAGE_MEASURE) {
 -- 
-2.35.2
+2.36.1
 

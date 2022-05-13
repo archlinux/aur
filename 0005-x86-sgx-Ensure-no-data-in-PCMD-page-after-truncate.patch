@@ -1,0 +1,59 @@
+From 5e9c8f738e0c7feee2121685e15e653cdbb998e9 Mon Sep 17 00:00:00 2001
+From: Reinette Chatre <reinette.chatre@intel.com>
+Date: Thu, 12 May 2022 14:51:01 -0700
+Subject: [PATCH 05/36] x86/sgx: Ensure no data in PCMD page after truncate
+
+A PCMD (Paging Crypto MetaData) page contains the PCMD
+structures of enclave pages that have been encrypted and
+moved to the shmem backing store. When all enclave pages
+sharing a PCMD page are loaded in the enclave, there is no
+need for the PCMD page and it can be truncated from the
+backing store.
+
+A few issues appeared around the truncation of PCMD pages. The
+known issues have been addressed but the PCMD handling code could
+be made more robust by loudly complaining if any new issue appears
+in this area.
+
+Add a check that will complain with a warning if the PCMD page is not
+actually empty after it has been truncated. There should never be data
+in the PCMD page at this point since it is was just checked to be empty
+and truncated with enclave mutex held and is updated with the
+enclave mutex held.
+
+Suggested-by: Dave Hansen <dave.hansen@linux.intel.com>
+Tested-by: Haitao Huang <haitao.huang@intel.com>
+Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
+---
+ arch/x86/kernel/cpu/sgx/encl.c | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
+index 243f3bd78145..3c24e6124d95 100644
+--- a/arch/x86/kernel/cpu/sgx/encl.c
++++ b/arch/x86/kernel/cpu/sgx/encl.c
+@@ -187,12 +187,20 @@ static int __sgx_encl_eldu(struct sgx_encl_page *encl_page,
+ 	kunmap_atomic(pcmd_page);
+ 	kunmap_atomic((void *)(unsigned long)pginfo.contents);
+ 
++	get_page(b.pcmd);
+ 	sgx_encl_put_backing(&b);
+ 
+ 	sgx_encl_truncate_backing_page(encl, page_index);
+ 
+-	if (pcmd_page_empty && !reclaimer_writing_to_pcmd(encl, pcmd_first_page))
++	if (pcmd_page_empty && !reclaimer_writing_to_pcmd(encl, pcmd_first_page)) {
+ 		sgx_encl_truncate_backing_page(encl, PFN_DOWN(page_pcmd_off));
++		pcmd_page = kmap_atomic(b.pcmd);
++		if (memchr_inv(pcmd_page, 0, PAGE_SIZE))
++			pr_warn("PCMD page not empty after truncate.\n");
++		kunmap_atomic(pcmd_page);
++	}
++
++	put_page(b.pcmd);
+ 
+ 	return ret;
+ }
+-- 
+2.36.1
+

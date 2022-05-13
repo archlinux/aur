@@ -1,0 +1,167 @@
+From 16c0d19cdf8ea458d7388593e7f9537bd545f3a7 Mon Sep 17 00:00:00 2001
+From: Reinette Chatre <reinette.chatre@intel.com>
+Date: Thu, 12 May 2022 14:50:57 -0700
+Subject: [PATCH 01/36] x86/sgx: Disconnect backing page references from dirty
+ status
+
+SGX uses shmem backing storage to store encrypted enclave pages
+and their crypto metadata when enclave pages are moved out of
+enclave memory. Two shmem backing storage pages are associated with
+each enclave page - one backing page to contain the encrypted
+enclave page data and one backing page (shared by a few
+enclave pages) to contain the crypto metadata used by the
+processor to verify the enclave page when it is loaded back into
+the enclave.
+
+sgx_encl_put_backing() is used to release references to the
+backing storage and, optionally, mark both backing store pages
+as dirty.
+
+Managing references and dirty status together in this way results
+in both backing store pages marked as dirty, even if only one of
+the backing store pages are changed.
+
+Additionally, waiting until the page reference is dropped to set
+the page dirty risks a race with the page fault handler that
+may load outdated data into the enclave when a page is faulted
+right after it is reclaimed.
+
+Consider what happens if the reclaimer writes a page to the backing
+store and the page is immediately faulted back, before the reclaimer
+is able to set the dirty bit of the page:
+
+sgx_reclaim_pages() {                    sgx_vma_fault() {
+  ...
+  sgx_encl_get_backing();
+  ...                                      ...
+  sgx_reclaimer_write() {
+    mutex_lock(&encl->lock);
+    /* Write data to backing store */
+    mutex_unlock(&encl->lock);
+  }
+                                           mutex_lock(&encl->lock);
+                                           __sgx_encl_eldu() {
+                                             ...
+                                             /*
+                                              * Enclave backing store
+                                              * page not released
+                                              * nor marked dirty -
+                                              * contents may not be
+                                              * up to date.
+                                              */
+                                              sgx_encl_get_backing();
+                                              ...
+                                              /*
+                                               * Enclave data restored
+                                               * from backing store
+                                               * and PCMD pages that
+                                               * are not up to date.
+                                               * ENCLS[ELDU] faults
+                                               * because of MAC or PCMD
+                                               * checking failure.
+                                               */
+                                               sgx_encl_put_backing();
+                                            }
+                                            ...
+  /* set page dirty */
+  sgx_encl_put_backing();
+  ...
+                                            mutex_unlock(&encl->lock);
+}                                        }
+
+Remove the option to sgx_encl_put_backing() to set the backing
+pages as dirty and set the needed pages as dirty right after
+receiving important data while enclave mutex is held. This ensures that
+the page fault handler can get up to date data from a page and prepares
+the code for a following change where only one of the backing pages
+need to be marked as dirty.
+
+Cc: stable@vger.kernel.org
+Fixes: 1728ab54b4be ("x86/sgx: Add a page reclaimer")
+Suggested-by: Dave Hansen <dave.hansen@linux.intel.com>
+Tested-by: Haitao Huang <haitao.huang@intel.com>
+Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
+Link: https://lore.kernel.org/linux-sgx/8922e48f-6646-c7cc-6393-7c78dcf23d23@intel.com/
+---
+ arch/x86/kernel/cpu/sgx/encl.c | 10 ++--------
+ arch/x86/kernel/cpu/sgx/encl.h |  2 +-
+ arch/x86/kernel/cpu/sgx/main.c |  6 ++++--
+ 3 files changed, 7 insertions(+), 11 deletions(-)
+
+diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
+index 7c63a1911fae..398695a20605 100644
+--- a/arch/x86/kernel/cpu/sgx/encl.c
++++ b/arch/x86/kernel/cpu/sgx/encl.c
+@@ -94,7 +94,7 @@ static int __sgx_encl_eldu(struct sgx_encl_page *encl_page,
+ 	kunmap_atomic(pcmd_page);
+ 	kunmap_atomic((void *)(unsigned long)pginfo.contents);
+ 
+-	sgx_encl_put_backing(&b, false);
++	sgx_encl_put_backing(&b);
+ 
+ 	sgx_encl_truncate_backing_page(encl, page_index);
+ 
+@@ -645,15 +645,9 @@ int sgx_encl_get_backing(struct sgx_encl *encl, unsigned long page_index,
+ /**
+  * sgx_encl_put_backing() - Unpin the backing storage
+  * @backing:	data for accessing backing storage for the page
+- * @do_write:	mark pages dirty
+  */
+-void sgx_encl_put_backing(struct sgx_backing *backing, bool do_write)
++void sgx_encl_put_backing(struct sgx_backing *backing)
+ {
+-	if (do_write) {
+-		set_page_dirty(backing->pcmd);
+-		set_page_dirty(backing->contents);
+-	}
+-
+ 	put_page(backing->pcmd);
+ 	put_page(backing->contents);
+ }
+diff --git a/arch/x86/kernel/cpu/sgx/encl.h b/arch/x86/kernel/cpu/sgx/encl.h
+index fec43ca65065..d44e7372151f 100644
+--- a/arch/x86/kernel/cpu/sgx/encl.h
++++ b/arch/x86/kernel/cpu/sgx/encl.h
+@@ -107,7 +107,7 @@ void sgx_encl_release(struct kref *ref);
+ int sgx_encl_mm_add(struct sgx_encl *encl, struct mm_struct *mm);
+ int sgx_encl_get_backing(struct sgx_encl *encl, unsigned long page_index,
+ 			 struct sgx_backing *backing);
+-void sgx_encl_put_backing(struct sgx_backing *backing, bool do_write);
++void sgx_encl_put_backing(struct sgx_backing *backing);
+ int sgx_encl_test_and_clear_young(struct mm_struct *mm,
+ 				  struct sgx_encl_page *page);
+ 
+diff --git a/arch/x86/kernel/cpu/sgx/main.c b/arch/x86/kernel/cpu/sgx/main.c
+index 8e4bc6453d26..e71df40a4f38 100644
+--- a/arch/x86/kernel/cpu/sgx/main.c
++++ b/arch/x86/kernel/cpu/sgx/main.c
+@@ -191,6 +191,8 @@ static int __sgx_encl_ewb(struct sgx_epc_page *epc_page, void *va_slot,
+ 			  backing->pcmd_offset;
+ 
+ 	ret = __ewb(&pginfo, sgx_get_epc_virt_addr(epc_page), va_slot);
++	set_page_dirty(backing->pcmd);
++	set_page_dirty(backing->contents);
+ 
+ 	kunmap_atomic((void *)(unsigned long)(pginfo.metadata -
+ 					      backing->pcmd_offset));
+@@ -320,7 +322,7 @@ static void sgx_reclaimer_write(struct sgx_epc_page *epc_page,
+ 		sgx_encl_free_epc_page(encl->secs.epc_page);
+ 		encl->secs.epc_page = NULL;
+ 
+-		sgx_encl_put_backing(&secs_backing, true);
++		sgx_encl_put_backing(&secs_backing);
+ 	}
+ 
+ out:
+@@ -411,7 +413,7 @@ static void sgx_reclaim_pages(void)
+ 
+ 		encl_page = epc_page->owner;
+ 		sgx_reclaimer_write(epc_page, &backing[i]);
+-		sgx_encl_put_backing(&backing[i], true);
++		sgx_encl_put_backing(&backing[i]);
+ 
+ 		kref_put(&encl_page->encl->refcount, sgx_encl_release);
+ 		epc_page->flags &= ~SGX_EPC_PAGE_RECLAIMER_TRACKED;
+-- 
+2.36.1
+

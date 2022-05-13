@@ -1,7 +1,7 @@
-From 836478d4e8f9a6b1ce067e597f29e59eb1422423 Mon Sep 17 00:00:00 2001
+From d88ad0efa7127c861cd5aaf241349b5f9a0fbd53 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Wed, 13 Apr 2022 14:10:05 -0700
-Subject: [PATCH 05/31] x86/sgx: Support loading enclave page without VMA
+Date: Tue, 10 May 2022 11:08:41 -0700
+Subject: [PATCH 10/36] x86/sgx: Support loading enclave page without VMA
  permissions check
 
 sgx_encl_load_page() is used to find and load an enclave page into
@@ -30,10 +30,10 @@ Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
  2 files changed, 40 insertions(+), 19 deletions(-)
 
 diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
-index 001808e3901c..b45fcecea4bd 100644
+index 3c24e6124d95..7ad8b475306a 100644
 --- a/arch/x86/kernel/cpu/sgx/encl.c
 +++ b/arch/x86/kernel/cpu/sgx/encl.c
-@@ -90,25 +90,10 @@ static struct sgx_epc_page *sgx_encl_eldu(struct sgx_encl_page *encl_page,
+@@ -232,25 +232,10 @@ static struct sgx_epc_page *sgx_encl_eldu(struct sgx_encl_page *encl_page,
  	return epc_page;
  }
  
@@ -61,7 +61,7 @@ index 001808e3901c..b45fcecea4bd 100644
  
  	/* Entry successfully located. */
  	if (entry->epc_page) {
-@@ -134,6 +119,40 @@ static struct sgx_encl_page *sgx_encl_load_page(struct sgx_encl *encl,
+@@ -276,6 +261,40 @@ static struct sgx_encl_page *sgx_encl_load_page(struct sgx_encl *encl,
  	return entry;
  }
  
@@ -102,7 +102,7 @@ index 001808e3901c..b45fcecea4bd 100644
  static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
  {
  	unsigned long addr = (unsigned long)vmf->address;
-@@ -155,7 +174,7 @@ static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
+@@ -297,7 +316,7 @@ static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
  
  	mutex_lock(&encl->lock);
  
@@ -111,7 +111,7 @@ index 001808e3901c..b45fcecea4bd 100644
  	if (IS_ERR(entry)) {
  		mutex_unlock(&encl->lock);
  
-@@ -303,7 +322,7 @@ static struct sgx_encl_page *sgx_encl_reserve_page(struct sgx_encl *encl,
+@@ -445,7 +464,7 @@ static struct sgx_encl_page *sgx_encl_reserve_page(struct sgx_encl *encl,
  	for ( ; ; ) {
  		mutex_lock(&encl->lock);
  
@@ -121,7 +121,7 @@ index 001808e3901c..b45fcecea4bd 100644
  			break;
  
 diff --git a/arch/x86/kernel/cpu/sgx/encl.h b/arch/x86/kernel/cpu/sgx/encl.h
-index fec43ca65065..6b34efba1602 100644
+index d44e7372151f..522a17e4fd2d 100644
 --- a/arch/x86/kernel/cpu/sgx/encl.h
 +++ b/arch/x86/kernel/cpu/sgx/encl.h
 @@ -116,5 +116,7 @@ unsigned int sgx_alloc_va_slot(struct sgx_va_page *va_page);
@@ -133,5 +133,5 @@ index fec43ca65065..6b34efba1602 100644
  
  #endif /* _X86_ENCL_H */
 -- 
-2.35.2
+2.36.1
 

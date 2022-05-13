@@ -1,7 +1,7 @@
-From 1e61402b92958e49b5cbb4e47fb8238273e279f4 Mon Sep 17 00:00:00 2001
+From 3068bc10f54b083eb4d7b85e1420fa1d57ff5b1d Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Wed, 13 Apr 2022 14:10:08 -0700
-Subject: [PATCH 08/31] x86/sgx: Move PTE zap code to new
+Date: Tue, 10 May 2022 11:08:44 -0700
+Subject: [PATCH 13/36] x86/sgx: Move PTE zap code to new
  sgx_zap_enclave_ptes()
 
 The SGX reclaimer removes page table entries pointing to pages that are
@@ -32,10 +32,10 @@ Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
  3 files changed, 47 insertions(+), 31 deletions(-)
 
 diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
-index f241596ba411..a872bd7e953a 100644
+index 7539cef6e66b..c6cac43b40d6 100644
 --- a/arch/x86/kernel/cpu/sgx/encl.c
 +++ b/arch/x86/kernel/cpu/sgx/encl.c
-@@ -562,7 +562,7 @@ int sgx_encl_mm_add(struct sgx_encl *encl, struct mm_struct *mm)
+@@ -706,7 +706,7 @@ int sgx_encl_mm_add(struct sgx_encl *encl, struct mm_struct *mm)
  
  	spin_lock(&encl->mm_lock);
  	list_add_rcu(&encl_mm->list, &encl->mm_list);
@@ -44,7 +44,7 @@ index f241596ba411..a872bd7e953a 100644
  	smp_wmb();
  	encl->mm_list_version++;
  	spin_unlock(&encl->mm_lock);
-@@ -751,6 +751,49 @@ int sgx_encl_test_and_clear_young(struct mm_struct *mm,
+@@ -887,6 +887,49 @@ int sgx_encl_test_and_clear_young(struct mm_struct *mm,
  	return ret;
  }
  
@@ -95,11 +95,11 @@ index f241596ba411..a872bd7e953a 100644
   * sgx_alloc_va_page() - Allocate a Version Array (VA) page
   *
 diff --git a/arch/x86/kernel/cpu/sgx/encl.h b/arch/x86/kernel/cpu/sgx/encl.h
-index e59c2cbf71e2..1b15d22f6757 100644
+index ef8cf106904b..f72a674e2605 100644
 --- a/arch/x86/kernel/cpu/sgx/encl.h
 +++ b/arch/x86/kernel/cpu/sgx/encl.h
 @@ -111,7 +111,7 @@ int sgx_encl_get_backing(struct sgx_encl *encl, unsigned long page_index,
- void sgx_encl_put_backing(struct sgx_backing *backing, bool do_write);
+ void sgx_encl_put_backing(struct sgx_backing *backing);
  int sgx_encl_test_and_clear_young(struct mm_struct *mm,
  				  struct sgx_encl_page *page);
 -
@@ -108,7 +108,7 @@ index e59c2cbf71e2..1b15d22f6757 100644
  unsigned int sgx_alloc_va_slot(struct sgx_va_page *va_page);
  void sgx_free_va_slot(struct sgx_va_page *va_page, unsigned int offset);
 diff --git a/arch/x86/kernel/cpu/sgx/main.c b/arch/x86/kernel/cpu/sgx/main.c
-index 60b166bff7b4..06492dcffcf1 100644
+index 7b53a69d501f..9df2221af498 100644
 --- a/arch/x86/kernel/cpu/sgx/main.c
 +++ b/arch/x86/kernel/cpu/sgx/main.c
 @@ -137,36 +137,9 @@ static void sgx_reclaimer_block(struct sgx_epc_page *epc_page)
@@ -151,5 +151,5 @@ index 60b166bff7b4..06492dcffcf1 100644
  	mutex_lock(&encl->lock);
  
 -- 
-2.35.2
+2.36.1
 

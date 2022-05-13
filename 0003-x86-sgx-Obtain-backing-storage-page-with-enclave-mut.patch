@@ -1,0 +1,130 @@
+From a455a2c6f55a696cfe170f3f62c1390760dab06c Mon Sep 17 00:00:00 2001
+From: Reinette Chatre <reinette.chatre@intel.com>
+Date: Thu, 12 May 2022 14:50:59 -0700
+Subject: [PATCH 03/36] x86/sgx: Obtain backing storage page with enclave mutex
+ held
+
+Haitao reported encountering a WARN triggered by the ENCLS[ELDU]
+instruction faulting with a #GP.
+
+The WARN is encountered when the reclaimer evicts a range of
+pages from the enclave when the same pages are faulted back
+right away.
+
+The SGX backing storage is accessed on two paths: when there
+are insufficient free pages in the EPC the reclaimer works
+to move enclave pages to the backing storage and as enclaves
+access pages that have been moved to the backing storage
+they are retrieved from there as part of page fault handling.
+
+An oversubscribed SGX system will often run the reclaimer and
+page fault handler concurrently and needs to ensure that the
+backing store is accessed safely between the reclaimer and
+the page fault handler. This is not the case because the
+reclaimer accesses the backing store without the enclave mutex
+while the page fault handler accesses the backing store with
+the enclave mutex.
+
+Consider the scenario where a page is faulted while a page sharing
+a PCMD page with the faulted page is being reclaimed. The
+consequence is a race between the reclaimer and page fault
+handler, the reclaimer attempting to access a PCMD at the
+same time it is truncated by the page fault handler. This
+could result in lost PCMD data. Data may still be
+lost if the reclaimer wins the race, this is addressed in
+the following patch.
+
+The reclaimer accesses pages from the backing storage without
+holding the enclave mutex and runs the risk of concurrently
+accessing the backing storage with the page fault handler that
+does access the backing storage with the enclave mutex held.
+
+In the scenario below a PCMD page is truncated from the backing
+store after all its pages have been loaded in to the enclave
+at the same time the PCMD page is loaded from the backing store
+when one of its pages are reclaimed:
+
+sgx_reclaim_pages() {              sgx_vma_fault() {
+                                     ...
+                                     mutex_lock(&encl->lock);
+                                     ...
+                                     __sgx_encl_eldu() {
+                                       ...
+                                       if (pcmd_page_empty) {
+/*
+ * EPC page being reclaimed              /*
+ * shares a PCMD page with an             * PCMD page truncated
+ * enclave page that is being             * while requested from
+ * faulted in.                            * reclaimer.
+ */                                       */
+sgx_encl_get_backing()  <---------->      sgx_encl_truncate_backing_page()
+                                        }
+                                       mutex_unlock(&encl->lock);
+}                                    }
+
+In this scenario there is a race between the reclaimer and the page fault
+handler when the reclaimer attempts to get access to the same PCMD page
+that is being truncated. This could result in the reclaimer writing to
+the PCMD page that is then truncated, causing the PCMD data to be lost,
+or in a new PCMD page being allocated. The lost PCMD data may still occur
+after protecting the backing store access with the mutex - this is fixed
+in the next patch. By ensuring the backing store is accessed with the mutex
+held the enclave page state can be made accurate with the
+SGX_ENCL_PAGE_BEING_RECLAIMED flag accurately reflecting that a page
+is in the process of being reclaimed.
+
+Consistently protect the reclaimer's backing store access with the
+enclave's mutex to ensure that it can safely run concurrently with the
+page fault handler.
+
+Cc: stable@vger.kernel.org
+Fixes: 1728ab54b4be ("x86/sgx: Add a page reclaimer")
+Reported-by: Haitao Huang <haitao.huang@intel.com>
+Reviewed-by: Jarkko Sakkinen <jarkko@kernel.org>
+Tested-by: Jarkko Sakkinen <jarkko@kernel.org>
+Tested-by: Haitao Huang <haitao.huang@intel.com>
+Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
+---
+ arch/x86/kernel/cpu/sgx/main.c | 9 ++++++---
+ 1 file changed, 6 insertions(+), 3 deletions(-)
+
+diff --git a/arch/x86/kernel/cpu/sgx/main.c b/arch/x86/kernel/cpu/sgx/main.c
+index e71df40a4f38..ab4ec54bbdd9 100644
+--- a/arch/x86/kernel/cpu/sgx/main.c
++++ b/arch/x86/kernel/cpu/sgx/main.c
+@@ -310,6 +310,7 @@ static void sgx_reclaimer_write(struct sgx_epc_page *epc_page,
+ 	sgx_encl_ewb(epc_page, backing);
+ 	encl_page->epc_page = NULL;
+ 	encl->secs_child_cnt--;
++	sgx_encl_put_backing(backing);
+ 
+ 	if (!encl->secs_child_cnt && test_bit(SGX_ENCL_INITIALIZED, &encl->flags)) {
+ 		ret = sgx_encl_get_backing(encl, PFN_DOWN(encl->size),
+@@ -381,11 +382,14 @@ static void sgx_reclaim_pages(void)
+ 			goto skip;
+ 
+ 		page_index = PFN_DOWN(encl_page->desc - encl_page->encl->base);
++
++		mutex_lock(&encl_page->encl->lock);
+ 		ret = sgx_encl_get_backing(encl_page->encl, page_index, &backing[i]);
+-		if (ret)
++		if (ret) {
++			mutex_unlock(&encl_page->encl->lock);
+ 			goto skip;
++		}
+ 
+-		mutex_lock(&encl_page->encl->lock);
+ 		encl_page->desc |= SGX_ENCL_PAGE_BEING_RECLAIMED;
+ 		mutex_unlock(&encl_page->encl->lock);
+ 		continue;
+@@ -413,7 +417,6 @@ static void sgx_reclaim_pages(void)
+ 
+ 		encl_page = epc_page->owner;
+ 		sgx_reclaimer_write(epc_page, &backing[i]);
+-		sgx_encl_put_backing(&backing[i]);
+ 
+ 		kref_put(&encl_page->encl->refcount, sgx_encl_release);
+ 		epc_page->flags &= ~SGX_EPC_PAGE_RECLAIMER_TRACKED;
+-- 
+2.36.1
+

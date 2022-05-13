@@ -1,7 +1,7 @@
-From 467c051f0ccb4a65846d9c174fbb4587e028d008 Mon Sep 17 00:00:00 2001
+From a819692d9ebd58f1791a63fdaf5d412ac41a0147 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Wed, 13 Apr 2022 14:10:16 -0700
-Subject: [PATCH 16/31] x86/sgx: Support adding of pages to an initialized
+Date: Tue, 10 May 2022 11:08:52 -0700
+Subject: [PATCH 21/36] x86/sgx: Support adding of pages to an initialized
  enclave
 
 With SGX1 an enclave needs to be created with its maximum memory demands
@@ -42,16 +42,18 @@ ENCLU[EACCEPT].
 
 Reviewed-by: Jarkko Sakkinen <jarkko@kernel.org>
 Tested-by: Jarkko Sakkinen <jarkko@kernel.org>
+Tested-by: Haitao Huang <haitao.huang@intel.com>
+Tested-by: Vijay Dhanraj <vijay.dhanraj@intel.com>
 Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
 ---
  arch/x86/kernel/cpu/sgx/encl.c | 117 +++++++++++++++++++++++++++++++++
  1 file changed, 117 insertions(+)
 
 diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
-index 8729b254b0cc..91d648f68080 100644
+index ea81e597dd18..e5b61a59199f 100644
 --- a/arch/x86/kernel/cpu/sgx/encl.c
 +++ b/arch/x86/kernel/cpu/sgx/encl.c
-@@ -153,6 +153,112 @@ struct sgx_encl_page *sgx_encl_load_page(struct sgx_encl *encl,
+@@ -295,6 +295,112 @@ struct sgx_encl_page *sgx_encl_load_page(struct sgx_encl *encl,
  	return __sgx_encl_load_page(encl, entry);
  }
  
@@ -71,13 +73,13 @@ index 8729b254b0cc..91d648f68080 100644
 +static vm_fault_t sgx_encl_eaug_page(struct vm_area_struct *vma,
 +				     struct sgx_encl *encl, unsigned long addr)
 +{
++	vm_fault_t vmret = VM_FAULT_SIGBUS;
 +	struct sgx_pageinfo pginfo = {0};
 +	struct sgx_encl_page *encl_page;
 +	struct sgx_epc_page *epc_page;
 +	struct sgx_va_page *va_page;
 +	unsigned long phys_addr;
 +	u64 secinfo_flags;
-+	vm_fault_t vmret;
 +	int ret;
 +
 +	if (!test_bit(SGX_ENCL_INITIALIZED, &encl->flags))
@@ -94,19 +96,18 @@ index 8729b254b0cc..91d648f68080 100644
 +	if (IS_ERR(encl_page))
 +		return VM_FAULT_OOM;
 +
-+	epc_page = sgx_alloc_epc_page(encl_page, true);
-+	if (IS_ERR(epc_page)) {
-+		kfree(encl_page);
-+		return VM_FAULT_SIGBUS;
-+	}
-+
 +	mutex_lock(&encl->lock);
 +
-+	va_page = sgx_encl_grow(encl, false);
-+	if (IS_ERR(va_page)) {
-+		ret = PTR_ERR(va_page);
++	epc_page = sgx_alloc_epc_page(encl_page, false);
++	if (IS_ERR(epc_page)) {
++		if (PTR_ERR(epc_page) == -EBUSY)
++			vmret =  VM_FAULT_NOPAGE;
 +		goto err_out_unlock;
 +	}
++
++	va_page = sgx_encl_grow(encl, false);
++	if (IS_ERR(va_page))
++		goto err_out_epc;
 +
 +	if (va_page)
 +		list_add(&va_page->list, &encl->va_pages);
@@ -153,18 +154,19 @@ index 8729b254b0cc..91d648f68080 100644
 +
 +err_out_shrink:
 +	sgx_encl_shrink(encl, va_page);
++err_out_epc:
++	sgx_encl_free_epc_page(epc_page);
 +err_out_unlock:
 +	mutex_unlock(&encl->lock);
-+	sgx_encl_free_epc_page(epc_page);
 +	kfree(encl_page);
 +
-+	return VM_FAULT_SIGBUS;
++	return vmret;
 +}
 +
  static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
  {
  	unsigned long addr = (unsigned long)vmf->address;
-@@ -172,6 +278,17 @@ static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
+@@ -314,6 +420,17 @@ static vm_fault_t sgx_vma_fault(struct vm_fault *vmf)
  	if (unlikely(!encl))
  		return VM_FAULT_SIGBUS;
  
@@ -183,5 +185,5 @@ index 8729b254b0cc..91d648f68080 100644
  
  	entry = sgx_encl_load_page_in_vma(encl, addr, vma->vm_flags);
 -- 
-2.35.2
+2.36.1
 

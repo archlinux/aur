@@ -1,7 +1,7 @@
-From 0ed2b241836b30d344da4f8f73ce87878aea5c87 Mon Sep 17 00:00:00 2001
+From 1414f7b29435dc53d5e0d685244210e50f55c1e5 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Wed, 13 Apr 2022 14:10:20 -0700
-Subject: [PATCH 20/31] x86/sgx: Free up EPC pages directly to support large
+Date: Tue, 10 May 2022 11:08:56 -0700
+Subject: [PATCH 25/36] x86/sgx: Free up EPC pages directly to support large
  page ranges
 
 The page reclaimer ensures availability of EPC pages across all
@@ -32,7 +32,7 @@ Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
  3 files changed, 18 insertions(+)
 
 diff --git a/arch/x86/kernel/cpu/sgx/ioctl.c b/arch/x86/kernel/cpu/sgx/ioctl.c
-index f9a1654a49b7..83674d054c13 100644
+index 1a2595f261d3..ebe79d60619f 100644
 --- a/arch/x86/kernel/cpu/sgx/ioctl.c
 +++ b/arch/x86/kernel/cpu/sgx/ioctl.c
 @@ -745,6 +745,8 @@ sgx_enclave_restrict_permissions(struct sgx_encl *encl,
@@ -44,7 +44,7 @@ index f9a1654a49b7..83674d054c13 100644
  		mutex_lock(&encl->lock);
  
  		entry = sgx_encl_load_page(encl, addr);
-@@ -910,6 +912,8 @@ static long sgx_enclave_modify_type(struct sgx_encl *encl,
+@@ -910,6 +912,8 @@ static long sgx_enclave_modify_types(struct sgx_encl *encl,
  	for (c = 0 ; c < modt->length; c += PAGE_SIZE) {
  		addr = encl->base + modt->offset + c;
  
@@ -53,7 +53,7 @@ index f9a1654a49b7..83674d054c13 100644
  		mutex_lock(&encl->lock);
  
  		entry = sgx_encl_load_page(encl, addr);
-@@ -1095,6 +1099,8 @@ static long sgx_encl_remove_pages(struct sgx_encl *encl,
+@@ -1096,6 +1100,8 @@ static long sgx_encl_remove_pages(struct sgx_encl *encl,
  	for (c = 0 ; c < params->length; c += PAGE_SIZE) {
  		addr = encl->base + params->offset + c;
  
@@ -63,10 +63,10 @@ index f9a1654a49b7..83674d054c13 100644
  
  		entry = sgx_encl_load_page(encl, addr);
 diff --git a/arch/x86/kernel/cpu/sgx/main.c b/arch/x86/kernel/cpu/sgx/main.c
-index 1a3014aec490..c6adb7edebca 100644
+index 180ad840b226..5acd4c54d904 100644
 --- a/arch/x86/kernel/cpu/sgx/main.c
 +++ b/arch/x86/kernel/cpu/sgx/main.c
-@@ -378,6 +378,17 @@ static bool sgx_should_reclaim(unsigned long watermark)
+@@ -375,6 +375,17 @@ static bool sgx_should_reclaim(unsigned long watermark)
  	       !list_empty(&sgx_active_page_list);
  }
  
@@ -97,5 +97,5 @@ index b30cee4de903..0f2020653fba 100644
  int sgx_unmark_page_reclaimable(struct sgx_epc_page *page);
  struct sgx_epc_page *sgx_alloc_epc_page(void *owner, bool reclaim);
 -- 
-2.35.2
+2.36.1
 

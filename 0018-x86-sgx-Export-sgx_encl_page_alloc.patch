@@ -1,7 +1,7 @@
-From 25c6413856fe1d73bef5dfb3c8a6bddc728fe37a Mon Sep 17 00:00:00 2001
+From dd73a72bdd8afde9390e4cb281a858ba1482413c Mon Sep 17 00:00:00 2001
 From: Jarkko Sakkinen <jarkko@kernel.org>
-Date: Wed, 13 Apr 2022 14:10:13 -0700
-Subject: [PATCH 13/31] x86/sgx: Export sgx_encl_page_alloc()
+Date: Tue, 10 May 2022 11:08:49 -0700
+Subject: [PATCH 18/36] x86/sgx: Export sgx_encl_page_alloc()
 
 Move sgx_encl_page_alloc() to encl.c and export it so that it can be
 used in the implementation for support of adding pages to initialized
@@ -16,10 +16,10 @@ Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
  3 files changed, 35 insertions(+), 32 deletions(-)
 
 diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
-index a872bd7e953a..38e42c2d3592 100644
+index c6cac43b40d6..5e6a64d8e3d6 100644
 --- a/arch/x86/kernel/cpu/sgx/encl.c
 +++ b/arch/x86/kernel/cpu/sgx/encl.c
-@@ -751,6 +751,38 @@ int sgx_encl_test_and_clear_young(struct mm_struct *mm,
+@@ -887,6 +887,38 @@ int sgx_encl_test_and_clear_young(struct mm_struct *mm,
  	return ret;
  }
  
@@ -59,11 +59,11 @@ index a872bd7e953a..38e42c2d3592 100644
   * sgx_zap_enclave_ptes() - remove PTEs mapping the address from enclave
   * @encl: the enclave
 diff --git a/arch/x86/kernel/cpu/sgx/encl.h b/arch/x86/kernel/cpu/sgx/encl.h
-index 9d673d9531f0..253ebdd1c5be 100644
+index b6b53c0346ad..2cb58ab868e5 100644
 --- a/arch/x86/kernel/cpu/sgx/encl.h
 +++ b/arch/x86/kernel/cpu/sgx/encl.h
 @@ -112,6 +112,9 @@ int sgx_encl_get_backing(struct sgx_encl *encl, unsigned long page_index,
- void sgx_encl_put_backing(struct sgx_backing *backing, bool do_write);
+ void sgx_encl_put_backing(struct sgx_backing *backing);
  int sgx_encl_test_and_clear_young(struct mm_struct *mm,
  				  struct sgx_encl_page *page);
 +struct sgx_encl_page *sgx_encl_page_alloc(struct sgx_encl *encl,
@@ -116,5 +116,5 @@ index 2df27dd8b30d..bb8cdb2ad0d1 100644
  {
  	u64 perm = secinfo->flags & SGX_SECINFO_PERMISSION_MASK;
 -- 
-2.35.2
+2.36.1
 

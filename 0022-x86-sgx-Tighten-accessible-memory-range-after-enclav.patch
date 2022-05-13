@@ -1,7 +1,7 @@
-From e190e78cfceb89eb658cb27afe5456dc2ba24dd4 Mon Sep 17 00:00:00 2001
+From 1f35f20bc83570295e19d6fbf5fb053527975e9b Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Wed, 13 Apr 2022 14:10:17 -0700
-Subject: [PATCH 17/31] x86/sgx: Tighten accessible memory range after enclave
+Date: Tue, 10 May 2022 11:08:53 -0700
+Subject: [PATCH 22/36] x86/sgx: Tighten accessible memory range after enclave
  initialization
 
 Before an enclave is initialized the enclave's memory range is unknown.
@@ -38,10 +38,10 @@ Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
  1 file changed, 5 insertions(+)
 
 diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
-index 91d648f68080..ae4f444f4a43 100644
+index e5b61a59199f..295a9c946cef 100644
 --- a/arch/x86/kernel/cpu/sgx/encl.c
 +++ b/arch/x86/kernel/cpu/sgx/encl.c
-@@ -361,6 +361,11 @@ int sgx_encl_may_map(struct sgx_encl *encl, unsigned long start,
+@@ -503,6 +503,11 @@ int sgx_encl_may_map(struct sgx_encl *encl, unsigned long start,
  
  	XA_STATE(xas, &encl->page_array, PFN_DOWN(start));
  
@@ -54,5 +54,5 @@ index 91d648f68080..ae4f444f4a43 100644
  	 * Disallow READ_IMPLIES_EXEC tasks as their VMA permissions might
  	 * conflict with the enclave page permissions.
 -- 
-2.35.2
+2.36.1
 

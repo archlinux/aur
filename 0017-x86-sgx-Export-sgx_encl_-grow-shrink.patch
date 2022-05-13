@@ -1,7 +1,7 @@
-From 224652fefdf04993c3e61f8a5beefe395489c7d0 Mon Sep 17 00:00:00 2001
+From f2b77aae84955b467adb8e9b570c04d84cebb863 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Wed, 13 Apr 2022 14:10:12 -0700
-Subject: [PATCH 12/31] x86/sgx: Export sgx_encl_{grow,shrink}()
+Date: Tue, 10 May 2022 11:08:48 -0700
+Subject: [PATCH 17/36] x86/sgx: Export sgx_encl_{grow,shrink}()
 
 In order to use sgx_encl_{grow,shrink}() in the page augmentation code
 located in encl.c, export these functions.
@@ -15,7 +15,7 @@ Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
  2 files changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/arch/x86/kernel/cpu/sgx/encl.h b/arch/x86/kernel/cpu/sgx/encl.h
-index 07abfc70c8e3..9d673d9531f0 100644
+index 799d4cdb12d5..b6b53c0346ad 100644
 --- a/arch/x86/kernel/cpu/sgx/encl.h
 +++ b/arch/x86/kernel/cpu/sgx/encl.h
 @@ -120,5 +120,7 @@ bool sgx_va_page_full(struct sgx_va_page *va_page);
@@ -49,5 +49,5 @@ index 21078c6643f7..2df27dd8b30d 100644
  	encl->page_cnt--;
  
 -- 
-2.35.2
+2.36.1
 

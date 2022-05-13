@@ -1,7 +1,7 @@
-From 87e7f3c34d6cdd9e2e4d5ff630e85c954c087122 Mon Sep 17 00:00:00 2001
+From 7e214d2e919619ab3dbc4547f0f03986009245f3 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Wed, 13 Apr 2022 14:10:10 -0700
-Subject: [PATCH 10/31] x86/sgx: Create utility to validate user provided
+Date: Tue, 10 May 2022 11:08:46 -0700
+Subject: [PATCH 15/36] x86/sgx: Create utility to validate user provided
  offset and length
 
 User provided offset and length is validated when parsing the parameters
@@ -64,5 +64,5 @@ index 83df20e3e633..a66795e0b685 100644
  
  	if (copy_from_user(&secinfo, (void __user *)add_arg.secinfo,
 -- 
-2.35.2
+2.36.1
 

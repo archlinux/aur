@@ -1,7 +1,7 @@
-From 7f9ca1bdebe92d16d0e176e7dbb0425e3563a2b5 Mon Sep 17 00:00:00 2001
+From 5c8cc5465580ccb7614303a2ba49f9ec253a6ff1 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Wed, 13 Apr 2022 14:10:02 -0700
-Subject: [PATCH 02/31] x86/sgx: Add wrapper for SGX2 EMODPR function
+Date: Tue, 10 May 2022 11:08:38 -0700
+Subject: [PATCH 07/36] x86/sgx: Add wrapper for SGX2 EMODPR function
 
 Add a wrapper for the EMODPR ENCLS leaf function used to
 restrict enclave page permissions as maintained in the
@@ -79,5 +79,5 @@ index 0e22fa8f77c5..2b091912f038 100644
 +
  #endif /* _X86_ENCLS_H */
 -- 
-2.35.2
+2.36.1
 

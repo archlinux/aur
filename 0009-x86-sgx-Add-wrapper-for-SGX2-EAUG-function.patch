@@ -1,7 +1,7 @@
-From c2eaa596a76f7f407e8e590d8b78839a8ac034a8 Mon Sep 17 00:00:00 2001
+From 904af2dd1bb04758ad2327793ee10f24a944f7b6 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Wed, 13 Apr 2022 14:10:04 -0700
-Subject: [PATCH 04/31] x86/sgx: Add wrapper for SGX2 EAUG function
+Date: Tue, 10 May 2022 11:08:40 -0700
+Subject: [PATCH 09/36] x86/sgx: Add wrapper for SGX2 EAUG function
 
 Add a wrapper for the EAUG ENCLS leaf function used to
 add a page to an initialized enclave.
@@ -38,5 +38,5 @@ index 7a1ecf704ec1..99004b02e2ed 100644
 +
  #endif /* _X86_ENCLS_H */
 -- 
-2.35.2
+2.36.1
 

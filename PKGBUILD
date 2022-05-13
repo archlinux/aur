@@ -1,7 +1,7 @@
 # Maintainer: Jarkko Sakkinen <jarkko.sakkinen@iki.fi>
 
 pkgbase=linux-sgx
-pkgver=5.17.4.arch1
+pkgver=5.17.7.arch1
 pkgrel=1
 pkgdesc='Linux'
 _srctag=v${pkgver%.*}-${pkgver##*.}
@@ -18,26 +18,42 @@ _srcname=archlinux-linux
 source=(
   "$_srcname::git+https://github.com/archlinux/linux?signed#tag=$_srctag"
   config         # the main kernel config file
-  0001-x86-sgx-Add-short-descriptions-to-ENCLS-wrappers.patch
-  0002-x86-sgx-Add-wrapper-for-SGX2-EMODPR-function.patch
-  0003-x86-sgx-Add-wrapper-for-SGX2-EMODT-function.patch
-  0004-x86-sgx-Add-wrapper-for-SGX2-EAUG-function.patch
-  0005-x86-sgx-Support-loading-enclave-page-without-VMA-per.patch
-  0006-x86-sgx-Export-sgx_encl_ewb_cpumask.patch
-  0007-x86-sgx-Rename-sgx_encl_ewb_cpumask-as-sgx_encl_cpum.patch
-  0008-x86-sgx-Move-PTE-zap-code-to-new-sgx_zap_enclave_pte.patch
-  0009-x86-sgx-Make-sgx_ipi_cb-available-internally.patch
-  0010-x86-sgx-Create-utility-to-validate-user-provided-off.patch
-  0011-x86-sgx-Keep-record-of-SGX-page-type.patch
-  0012-x86-sgx-Export-sgx_encl_-grow-shrink.patch
-  0013-x86-sgx-Export-sgx_encl_page_alloc.patch
-  0014-x86-sgx-Support-VA-page-allocation-without-reclaimin.patch
-  0015-x86-sgx-Support-restricting-of-enclave-page-permissi.patch
-  0016-x86-sgx-Support-adding-of-pages-to-an-initialized-en.patch
-  0017-x86-sgx-Tighten-accessible-memory-range-after-enclav.patch
-  0018-x86-sgx-Support-modifying-SGX-page-type.patch
-  0019-x86-sgx-Support-complete-page-removal.patch
-  0020-x86-sgx-Free-up-EPC-pages-directly-to-support-large-.patch
+  0001-x86-sgx-Disconnect-backing-page-references-from-dirt.patch
+  0002-x86-sgx-Mark-PCMD-page-as-dirty-when-modifying-conte.patch
+  0003-x86-sgx-Obtain-backing-storage-page-with-enclave-mut.patch
+  0004-x86-sgx-Fix-race-between-reclaimer-and-page-fault-ha.patch
+  0005-x86-sgx-Ensure-no-data-in-PCMD-page-after-truncate.patch
+  0006-x86-sgx-Add-short-descriptions-to-ENCLS-wrappers.patch
+  0007-x86-sgx-Add-wrapper-for-SGX2-EMODPR-function.patch
+  0008-x86-sgx-Add-wrapper-for-SGX2-EMODT-function.patch
+  0009-x86-sgx-Add-wrapper-for-SGX2-EAUG-function.patch
+  0010-x86-sgx-Support-loading-enclave-page-without-VMA-per.patch
+  0011-x86-sgx-Export-sgx_encl_ewb_cpumask.patch
+  0012-x86-sgx-Rename-sgx_encl_ewb_cpumask-as-sgx_encl_cpum.patch
+  0013-x86-sgx-Move-PTE-zap-code-to-new-sgx_zap_enclave_pte.patch
+  0014-x86-sgx-Make-sgx_ipi_cb-available-internally.patch
+  0015-x86-sgx-Create-utility-to-validate-user-provided-off.patch
+  0016-x86-sgx-Keep-record-of-SGX-page-type.patch
+  0017-x86-sgx-Export-sgx_encl_-grow-shrink.patch
+  0018-x86-sgx-Export-sgx_encl_page_alloc.patch
+  0019-x86-sgx-Support-VA-page-allocation-without-reclaimin.patch
+  0020-x86-sgx-Support-restricting-of-enclave-page-permissi.patch
+  0021-x86-sgx-Support-adding-of-pages-to-an-initialized-en.patch
+  0022-x86-sgx-Tighten-accessible-memory-range-after-enclav.patch
+  0023-x86-sgx-Support-modifying-SGX-page-type.patch
+  0024-x86-sgx-Support-complete-page-removal.patch
+  0025-x86-sgx-Free-up-EPC-pages-directly-to-support-large-.patch
+  0026-Documentation-x86-Introduce-enclave-runtime-manageme.patch
+  0027-selftests-sgx-Add-test-for-EPCM-permission-changes.patch
+  0028-selftests-sgx-Add-test-for-TCS-page-permission-chang.patch
+  0029-selftests-sgx-Test-two-different-SGX2-EAUG-flows.patch
+  0030-selftests-sgx-Introduce-dynamic-entry-point.patch
+  0031-selftests-sgx-Introduce-TCS-initialization-enclave-o.patch
+  0032-selftests-sgx-Test-complete-changing-of-page-type-fl.patch
+  0033-selftests-sgx-Test-faulty-enclave-behavior.patch
+  0034-selftests-sgx-Test-invalid-access-to-removed-enclave.patch
+  0035-selftests-sgx-Test-reclaiming-of-untouched-page.patch
+  0036-selftests-sgx-Page-removal-stress-test.patch
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
@@ -46,7 +62,7 @@ validpgpkeys=(
   'C7E7849466FE2358343588377258734B41C31549'  # David Runge <dvzrv@archlinux.org>
 )
 sha256sums=('SKIP'
-            '3f02a0f2fe820f678d15fb0efce04e3716bdc7590d452317bf1b0b63f3b31cd2')
+            'fb37785c43d90085ab4e7d7cee522cb8232713b6c601d74cfc7234eeaeb1e6b5')
 
 export KBUILD_BUILD_HOST=archlinux
 export KBUILD_BUILD_USER=$pkgbase

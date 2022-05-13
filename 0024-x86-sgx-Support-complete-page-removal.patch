@@ -1,7 +1,7 @@
-From 9a8e4129b4520df5f77037e8be9a69d9878dc949 Mon Sep 17 00:00:00 2001
+From 7d00f6a6de9df6f5daf6f6d866220de01cedd7c7 Mon Sep 17 00:00:00 2001
 From: Reinette Chatre <reinette.chatre@intel.com>
-Date: Wed, 13 Apr 2022 14:10:19 -0700
-Subject: [PATCH 19/31] x86/sgx: Support complete page removal
+Date: Tue, 10 May 2022 11:08:55 -0700
+Subject: [PATCH 24/36] x86/sgx: Support complete page removal
 
 The SGX2 page removal flow was introduced in previous patch and is
 as follows:
@@ -32,6 +32,9 @@ If the user omits running SGX_IOC_ENCLAVE_REMOVE_PAGES the pages will
 still be removed when the enclave is unloaded.
 
 Reviewed-by: Jarkko Sakkinen <jarkko@kernel.org>
+Tested-by: Haitao Huang <haitao.huang@intel.com>
+Tested-by: Vijay Dhanraj <vijay.dhanraj@intel.com>
+Tested-by: Jarkko Sakkinen <jarkko@kernel.org>
 Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
 ---
  arch/x86/include/uapi/asm/sgx.h |  21 +++++
@@ -39,19 +42,19 @@ Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
  2 files changed, 166 insertions(+)
 
 diff --git a/arch/x86/include/uapi/asm/sgx.h b/arch/x86/include/uapi/asm/sgx.h
-index de4d1af628d5..ec708bd30528 100644
+index 567f6166c24a..2dd35bbdc822 100644
 --- a/arch/x86/include/uapi/asm/sgx.h
 +++ b/arch/x86/include/uapi/asm/sgx.h
 @@ -33,6 +33,8 @@ enum sgx_page_flags {
  	_IOWR(SGX_MAGIC, 0x05, struct sgx_enclave_restrict_permissions)
  #define SGX_IOC_ENCLAVE_MODIFY_TYPES \
- 	_IOWR(SGX_MAGIC, 0x06, struct sgx_enclave_modify_type)
+ 	_IOWR(SGX_MAGIC, 0x06, struct sgx_enclave_modify_types)
 +#define SGX_IOC_ENCLAVE_REMOVE_PAGES \
 +	_IOWR(SGX_MAGIC, 0x07, struct sgx_enclave_remove_pages)
  
  /**
   * struct sgx_enclave_create - parameter structure for the
-@@ -116,6 +118,25 @@ struct sgx_enclave_modify_type {
+@@ -117,6 +119,25 @@ struct sgx_enclave_modify_types {
  	__u64 count;
  };
  
@@ -78,10 +81,10 @@ index de4d1af628d5..ec708bd30528 100644
  
  /**
 diff --git a/arch/x86/kernel/cpu/sgx/ioctl.c b/arch/x86/kernel/cpu/sgx/ioctl.c
-index 8709f131ae40..f9a1654a49b7 100644
+index 9ccafbfc4811..1a2595f261d3 100644
 --- a/arch/x86/kernel/cpu/sgx/ioctl.c
 +++ b/arch/x86/kernel/cpu/sgx/ioctl.c
-@@ -1070,6 +1070,148 @@ static long sgx_ioc_enclave_modify_type(struct sgx_encl *encl, void __user *arg)
+@@ -1071,6 +1071,148 @@ static long sgx_ioc_enclave_modify_types(struct sgx_encl *encl,
  	return ret;
  }
  
@@ -230,9 +233,9 @@ index 8709f131ae40..f9a1654a49b7 100644
  long sgx_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
  {
  	struct sgx_encl *encl = filep->private_data;
-@@ -1098,6 +1240,9 @@ long sgx_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
+@@ -1099,6 +1241,9 @@ long sgx_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
  	case SGX_IOC_ENCLAVE_MODIFY_TYPES:
- 		ret = sgx_ioc_enclave_modify_type(encl, (void __user *)arg);
+ 		ret = sgx_ioc_enclave_modify_types(encl, (void __user *)arg);
  		break;
 +	case SGX_IOC_ENCLAVE_REMOVE_PAGES:
 +		ret = sgx_ioc_enclave_remove_pages(encl, (void __user *)arg);
@@ -241,5 +244,5 @@ index 8709f131ae40..f9a1654a49b7 100644
  		ret = -ENOIOCTLCMD;
  		break;
 -- 
-2.35.2
+2.36.1
 

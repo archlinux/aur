@@ -1,0 +1,39 @@
+From 29ebcc3dd06578be9cb3d59007e9466cb336f618 Mon Sep 17 00:00:00 2001
+From: Reinette Chatre <reinette.chatre@intel.com>
+Date: Thu, 12 May 2022 14:50:58 -0700
+Subject: [PATCH 02/36] x86/sgx: Mark PCMD page as dirty when modifying
+ contents
+
+Recent commit 08999b2489b4 ("x86/sgx: Free backing memory
+after faulting the enclave page") expanded __sgx_encl_eldu()
+to clear an enclave page's PCMD (Paging Crypto MetaData)
+from the PCMD page in the backing store after the enclave
+page is restored to the enclave.
+
+Since the PCMD page in the backing store is modified the page
+should be marked as dirty to ensure the modified data is retained.
+
+Cc: stable@vger.kernel.org
+Fixes: 08999b2489b4 ("x86/sgx: Free backing memory after faulting the enclave page")
+Reviewed-by: Jarkko Sakkinen <jarkko@kernel.org>
+Tested-by: Haitao Huang <haitao.huang@intel.com>
+Signed-off-by: Reinette Chatre <reinette.chatre@intel.com>
+---
+ arch/x86/kernel/cpu/sgx/encl.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/arch/x86/kernel/cpu/sgx/encl.c b/arch/x86/kernel/cpu/sgx/encl.c
+index 398695a20605..5104a428b72c 100644
+--- a/arch/x86/kernel/cpu/sgx/encl.c
++++ b/arch/x86/kernel/cpu/sgx/encl.c
+@@ -84,6 +84,7 @@ static int __sgx_encl_eldu(struct sgx_encl_page *encl_page,
+ 	}
+ 
+ 	memset(pcmd_page + b.pcmd_offset, 0, sizeof(struct sgx_pcmd));
++	set_page_dirty(b.pcmd);
+ 
+ 	/*
+ 	 * The area for the PCMD in the page was zeroed above.  Check if the
+-- 
+2.36.1
+
