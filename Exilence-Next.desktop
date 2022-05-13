@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Exilence Next
 Exec=/usr/bin/exilence-next
+Icon=/usr/share/pixmaps/exilence.ico
 Terminal=false
 Type=Application
 MimeType=x-scheme-handler/exilence;

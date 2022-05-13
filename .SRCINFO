@@ -1,6 +1,6 @@
 pkgbase = exilence-next-git
 	pkgdesc = Desktop application that helps you summarize your wealth in Path of Exile
-	pkgver = 1.1.7.r2.gdb2da7ad
+	pkgver = 1.1.7.r38.g91d273e6
 	pkgrel = 1
 	url = https://github.com/viktorgullmark/exilence-next
 	arch = x86_64
@@ -8,6 +8,8 @@ pkgbase = exilence-next-git
 	makedepends = git
 	makedepends = npm
 	makedepends = nvm
+	depends = fuse2
+	depends = fuse-common
 	provides = exilence-next-git
 	conflicts = exilence-next-git
 	options = !strip

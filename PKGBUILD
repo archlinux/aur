@@ -1,12 +1,13 @@
 # Maintainer: ninni <soelder@hotmail.com>
 pkgname=exilence-next-git
-pkgver=1.1.7.r2.gdb2da7ad
+pkgver=1.1.7.r38.g91d273e6
 pkgrel=1
 pkgdesc='Desktop application that helps you summarize your wealth in Path of Exile'
 arch=('x86_64')
 url='https://github.com/viktorgullmark/exilence-next'
 license=('CC BY-NC 3.0')
 makedepends=('git' 'npm' 'nvm')
+depends=('fuse2' 'fuse-common')
 provides=("${pkgname}")
 conflicts=("${pkgname}")
 options=(!strip)
@@ -25,8 +26,8 @@ _ensure_local_nvm() {
 }
 
 pkgver() {
-	cd "${srcdir}/exilence-next"
-	printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
+    cd "${srcdir}/exilence-next"
+    printf "%s" "$(git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g')"
 }
 
 prepare() {
@@ -42,21 +43,23 @@ build() {
 }
 
 package() {
-	mkdir -p "${pkgdir}/usr/bin"
-	mkdir -p "${pkgdir}/usr/share/applications"
-	cp ${srcdir}/exilence-next/ExilenceNextApp/dist/*.AppImage ${pkgdir}/usr/bin/exilence-next
-	cp ${srcdir}/Exilence-Next.desktop ${pkgdir}/usr/share/applications/Exilence-Next.desktop
+    mkdir -p "${pkgdir}/usr/bin"
+    mkdir -p "${pkgdir}/usr/share/applications"
+    mkdir -p "${pkgdir}/usr/share/pixmaps"
+    cp ${srcdir}/exilence-next/ExilenceNextApp/dist/*.AppImage ${pkgdir}/usr/bin/exilence-next
+    cp ${srcdir}/exilence-next/ExilenceNextApp/build/icon.ico ${pkgdir}/usr/share/pixmaps/exilence.ico
+    cp ${srcdir}/Exilence-Next.desktop ${pkgdir}/usr/share/applications/Exilence-Next.desktop
 }
 
 post_install() {
-  update-mime-database
-  update-desktop-database
+    update-mime-database
+    update-desktop-database
 }
 
 post_upgrade() {
-  post_install "$1"
+    post_install "$1"
 }
 
 post_remove() {
-  post_install "$1"
+    post_install "$1"
 }
