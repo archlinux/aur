@@ -2,7 +2,7 @@
 pkgname=apriltag-trackers-git
 _name="${pkgname%-git}"
 pkgver=r424.27d3098
-pkgrel=1
+pkgrel=2
 pkgdesc="Full-body tracking in VR using AprilTag markers."
 arch=('x86_64')
 url="https://github.com/ju1ce/April-Tag-VR-FullBody-Tracker"
@@ -22,9 +22,9 @@ source=("${_name}::git+https://github.com/ju1ce/April-Tag-VR-FullBody-Tracker"
 sha256sums=('SKIP'
             'SKIP'
             'b67b4c9000da87525d897be3cbd82bc333026c818fb9fd6edba3372568419a40'
-            '83cc6fbb47993a72caed209fb753bb4f28de50c3dcf7d5cb6118252f08c71cff'
+            'bd802d24fc738eeb787092c8c3a0d9f15cbc519aa9b5e87be6dd5984838f677a'
             'aa2da0e7c3f97bbb5da2d9c6637d8802d5c46f54fd48be464387ff13154d3bd1'
-            'c6c1e85a6f559d5acdb88112e77d0b76568995527c60296b081ccea7ff17ba0a')
+            '32bfe37436cab8b85360077d5cf1b331d5436d54fa0d15c78df6b686786fee7c')
 
 pkgver() {
 	cd "$srcdir/${_name}"
@@ -74,6 +74,9 @@ package() {
 	install -Dm755 "$srcdir/${_name}.sh" "$pkgdir/usr/bin/${_name}"
 	install -Dm755 build/AprilTagTrackers/AprilTagTrackers -t "$pkgdir/usr/lib/apriltagtrackers/"
 
+	install -d "$pkgdir/usr/share/apriltagtrackers/bindings/"
+	cp -r bindings/** "$pkgdir/usr/share/apriltagtrackers/bindings/"
+
 	cd "$srcdir/bridge-driver"
 	install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE-Bridge-Driver.md"
 
@@ -81,5 +84,5 @@ package() {
     install -Dm644 build/apriltagtrackers/driver.vrdrivermanifest -t "$pkgdir/usr/lib/steamvr/apriltagtrackers/"
 	install -d "$pkgdir/usr/lib/steamvr/apriltagtrackers/resources/"
 
-	cp -r build/apriltagtrackers/resources/ "$pkgdir/usr/lib/steamvr/apriltagtrackers/resources/"
+	cp -r build/apriltagtrackers/resources/** "$pkgdir/usr/lib/steamvr/apriltagtrackers/resources/"
 }

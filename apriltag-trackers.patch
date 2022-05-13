@@ -27,6 +27,19 @@ index db697a2..515bee3 100644
  
  # Ensure compiler with c++17 language features
  target_compile_features(AprilTagTrackers PUBLIC cxx_std_17)
+diff --git a/AprilTagTrackers/Connection.cpp b/AprilTagTrackers/Connection.cpp
+index 442ff05..16e8fbb 100644
+--- a/AprilTagTrackers/Connection.cpp
++++ b/AprilTagTrackers/Connection.cpp
+@@ -159,7 +159,7 @@ void Connection::Connect()
+ 
+     */
+     // TODO: Maybe move to bindings/att_actions.json
+-    const auto bindingsPath = std::filesystem::absolute("att_actions.json");
++    const auto bindingsPath = std::filesystem::absolute("bindings/att_actions.json");
+     if (!std::filesystem::exists(bindingsPath))
+     {
+         gui->ShowErrorPopup(lc.CONNECT_BINDINGS_ERROR);
 diff --git a/AprilTagTrackers/Tracker.cpp b/AprilTagTrackers/Tracker.cpp
 index 598a39a..e05dd33 100644
 --- a/AprilTagTrackers/Tracker.cpp
