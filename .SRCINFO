@@ -1,14 +1,13 @@
 pkgbase = python-pypdf2
-	pkgdesc = A utility to read and write PDFs with Python
-	pkgver = 1.26.0
-	pkgrel = 2
-	url = https://mstamy2.github.com/PyPDF2
+	pkgdesc = A pure-python PDF library capable of splitting, merging, cropping, and transforming the pages of PDF files
+	pkgver = 1.27.12
+	pkgrel = 1
+	url = https://github.com/py-pdf/PyPDF2
 	arch = any
 	license = BSD
 	makedepends = python-setuptools
 	depends = python
-	source = python-pypdf2-1.26.0.tar.gz::https://github.com/mstamy2/PyPDF2/archive/1.26.0.tar.gz
-	sha256sums = 140b1fed792f487f2fd814eb0e832a5b6ef5ae362da302c1fc5a9786d5acb469
+	source = python-pypdf2-1.27.12.tar.gz::https://github.com/py-pdf/PyPDF2/archive/1.27.12.tar.gz
+	sha256sums = 2f953639cc0c2722aac61411c4ba4f03116825946c13cc9d01500a183862632c
 
 pkgname = python-pypdf2
-
