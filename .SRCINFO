@@ -1,6 +1,6 @@
 pkgbase = didyoumean
 	pkgdesc = A CLI spelling corrector
-	pkgver = 1.1.2
+	pkgver = 1.1.3
 	pkgrel = 1
 	url = https://github.com/hisbaan/didyoumean
 	arch = x86_64
@@ -9,7 +9,7 @@ pkgbase = didyoumean
 	depends = gcc-libs
 	depends = libxcb
 	depends = openssl
-	source = didyoumean-1.1.2.tar.gz::https://github.com/hisbaan/didyoumean/archive/v1.1.2.tar.gz
-	sha512sums = 1e6cce23bdbb70b4039e252058141a4dc7705f312cd1ed7dc7a8fd389e7f3a975527b2033ac2e3e89b2b1daeea46970b630c763d904e5aa299e643b229bbfbb9
+	source = didyoumean-1.1.3.tar.gz::https://github.com/hisbaan/didyoumean/archive/v1.1.3.tar.gz
+	sha512sums = b23b0c5ef1a984032461c1d5144b5162c87bed561e19e9bea6f059d282e1a482aa240e52b6a237e864d3bcca7ade8b46ef90452d51a1de3dc34761b69325f7ec
 
 pkgname = didyoumean
