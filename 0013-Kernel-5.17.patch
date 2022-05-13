@@ -1,0 +1,26 @@
+From c5971dc50955de809d696928124611bdacb7731c Mon Sep 17 00:00:00 2001
+From: Tomasz Maciej Nowak <tmn505@gmail.com>
+Date: Fri, 13 May 2022 16:46:57 +0200
+Subject: [PATCH 13/13] Kernel 5.17
+
+https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=359745d78351c6f5442435f81549f0207ece28aa
+---
+ vtunerc_main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/vtunerc_main.c b/vtunerc_main.c
+index d1c7d55f1168..3e6b6233c2fc 100644
+--- a/vtunerc_main.c
++++ b/vtunerc_main.c
+@@ -196,7 +196,7 @@ static int vtunerc_read_proc(struct seq_file *seq, void *v)
+ static int vtunerc_proc_open(struct inode *inode, struct file *file)
+ {
+ 	int ret;
+-	struct vtunerc_ctx *ctx = PDE_DATA(inode);
++	struct vtunerc_ctx *ctx = pde_data(inode);
+ 
+ 	if (!try_module_get(THIS_MODULE))
+ 		return -ENODEV;
+-- 
+2.36.1
+

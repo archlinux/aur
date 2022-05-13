@@ -1,11 +1,21 @@
-https://www.spinics.net/lists/linux-media/msg97066.html
-https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=bb31d2381c730485be00a7da44c45416e9781709
+From db88a9d9b75480087309eea1ad4d6206a3bac991 Mon Sep 17 00:00:00 2001
+From: Tomasz Maciej Nowak <tmn505@gmail.com>
+Date: Fri, 13 May 2022 15:43:50 +0200
+Subject: [PATCH 07/13] Kernel 4.6
+
+https://lore.kernel.org/all/cover.1454600641.git.mchehab@osg.samsung.com
+---
+ vtunerc_proxyfe.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/vtunerc_proxyfe.c b/vtunerc_proxyfe.c
+index e2822865b8ed..3ae04fa800a0 100644
 --- a/vtunerc_proxyfe.c
 +++ b/vtunerc_proxyfe.c
 @@ -107,9 +107,9 @@ static int dvb_proxyfe_read_ucblocks(struct dvb_frontend *fe, u32 *ucblocks)
  	return 0;
  }
-
+ 
 -static int dvb_proxyfe_get_frontend(struct dvb_frontend *fe)
 +static int dvb_proxyfe_get_frontend(struct dvb_frontend *fe,
 +					struct dtv_frontend_properties *c)
@@ -14,3 +24,6 @@ https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=bb
  	struct dvb_proxyfe_state *state = fe->demodulator_priv;
  	struct vtunerc_ctx *ctx = state->ctx;
  	struct vtuner_message msg;
+-- 
+2.36.1
+

@@ -1,4 +1,15 @@
+From 729304d7c8866e53ce2fa6da7bc2e9a90f3e76ed Mon Sep 17 00:00:00 2001
+From: Tomasz Maciej Nowak <tmn505@gmail.com>
+Date: Fri, 13 May 2022 16:05:15 +0200
+Subject: [PATCH 11/13] Kernel 5.3
+
 https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit?id=a035d552a93bb9ef6048733bb9f2a0dc857ff869
+---
+ vtunerc_ctrldev.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/vtunerc_ctrldev.c b/vtunerc_ctrldev.c
+index 589e16cfb207..36c24b5bbfa3 100644
 --- a/vtunerc_ctrldev.c
 +++ b/vtunerc_ctrldev.c
 @@ -205,6 +205,7 @@ static long vtunerc_ctrldev_ioctl(struct file *file, unsigned int cmd,
@@ -9,3 +20,6 @@ https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit?id=a03
  	case VTUNER_SET_TYPE:
  		dprintk(ctx, "msg VTUNER_SET_TYPE\n");
  		if (strcasecmp((char *)arg, "DVB-S") == 0) {
+-- 
+2.36.1
+

@@ -1,5 +1,17 @@
+From 033dcbf0936bd78f08526674f7e8bb219e3166bd Mon Sep 17 00:00:00 2001
+From: Tomasz Maciej Nowak <tmn505@gmail.com>
+Date: Fri, 13 May 2022 15:28:31 +0200
+Subject: [PATCH 02/13] Replace Z with z
+
 According to kernel trace and printf.3, Z shouldn't be used and is
 synonym to z. So replace accordingly.
+---
+ vtunerc_ctrldev.c | 4 ++--
+ vtunerc_main.c    | 2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/vtunerc_ctrldev.c b/vtunerc_ctrldev.c
+index 6d0f05c329d1..8aa1346b8f04 100644
 --- a/vtunerc_ctrldev.c
 +++ b/vtunerc_ctrldev.c
 @@ -59,11 +59,11 @@ static ssize_t vtunerc_ctrldev_write(struct file *filp, const char *buff,
@@ -14,8 +26,10 @@ synonym to z. So replace accordingly.
 -		printk(KERN_INFO "vtunerc%d: allocated buffer of %Zu bytes\n", ctx->idx, len);
 +		printk(KERN_INFO "vtunerc%d: allocated buffer of %zu bytes\n", ctx->idx, len);
  	}
-
+ 
  	if (down_interruptible(&ctx->tswrite_sem)) {
+diff --git a/vtunerc_main.c b/vtunerc_main.c
+index 1ba466a871d7..b2c8398ce735 100644
 --- a/vtunerc_main.c
 +++ b/vtunerc_main.c
 @@ -406,7 +406,7 @@ static void __exit vtunerc_exit(void)
@@ -26,4 +40,7 @@ synonym to z. So replace accordingly.
 +			printk(KERN_INFO "vtunerc%d: deallocated buffer of %zu bytes\n", idx, ctx->kernel_buf_size);
  			ctx->kernel_buf = NULL;
  			ctx->kernel_buf_size = 0;
+ 
+-- 
+2.36.1
 

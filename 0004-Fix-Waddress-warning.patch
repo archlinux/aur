@@ -1,0 +1,25 @@
+From 4c5e5591cc7da2f5175be1927c3cce5d3c975201 Mon Sep 17 00:00:00 2001
+From: Tomasz Maciej Nowak <tmn505@gmail.com>
+Date: Fri, 13 May 2022 16:51:29 +0200
+Subject: [PATCH 04/13] Fix -Waddress warning
+
+---
+ vtunerc_main.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/vtunerc_main.c b/vtunerc_main.c
+index a7683c84dc94..38cb40290bc8 100644
+--- a/vtunerc_main.c
++++ b/vtunerc_main.c
+@@ -173,7 +173,7 @@ static int vtunerc_stop_feed(struct dvb_demux_feed *feed)
+ 
+ static char *get_fe_name(struct dvb_frontend_info *feinfo)
+ {
+-	return (feinfo && feinfo->name) ? feinfo->name : "(not set)";
++	return feinfo ? feinfo->name : "(not set)";
+ }
+ 
+ /**
+-- 
+2.36.1
+

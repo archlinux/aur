@@ -1,4 +1,15 @@
+From 329863379978c78e895dc4028bbc6e6019b4783a Mon Sep 17 00:00:00 2001
+From: Tomasz Maciej Nowak <tmn505@gmail.com>
+Date: Fri, 13 May 2022 16:11:15 +0200
+Subject: [PATCH 12/13] Kernel 5.6
+
 https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d56c0d45f0e27f814e87a1676b6bdccccbc252e9
+---
+ vtunerc_main.c | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/vtunerc_main.c b/vtunerc_main.c
+index 4b153d9342fa..d1c7d55f1168 100644
 --- a/vtunerc_main.c
 +++ b/vtunerc_main.c
 @@ -213,11 +213,11 @@ static int vtuner_proc_release(struct inode *inode, struct file *file)
@@ -27,3 +38,6 @@ https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=d5
  							ctx) == 0)
  				printk(KERN_WARNING
  					"vtunerc%d: Unable to register '%s' proc file\n",
+-- 
+2.36.1
+

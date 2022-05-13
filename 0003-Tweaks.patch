@@ -1,4 +1,17 @@
-Few tweaks from https://code.google.com/p/satip
+From a9b6a141074a6fc85b9de68e4301c0c88ea80839 Mon Sep 17 00:00:00 2001
+From: Tomasz Maciej Nowak <tmn505@gmail.com>
+Date: Fri, 13 May 2022 15:29:58 +0200
+Subject: [PATCH 03/13] Tweaks
+
+Some tweaks from https://code.google.com/p/satip
+---
+ vtunerc_ctrldev.c |  8 ++++----
+ vtunerc_main.c    | 10 +++++++---
+ vtunerc_proxyfe.c | 48 ++++-------------------------------------------
+ 3 files changed, 15 insertions(+), 51 deletions(-)
+
+diff --git a/vtunerc_ctrldev.c b/vtunerc_ctrldev.c
+index 8aa1346b8f04..589e16cfb207 100644
 --- a/vtunerc_ctrldev.c
 +++ b/vtunerc_ctrldev.c
 @@ -404,7 +404,7 @@ void vtunerc_unregister_ctrldev(struct vtunerc_config *config)
@@ -9,18 +22,18 @@ Few tweaks from https://code.google.com/p/satip
 +	dprintk(ctx, "XCH_MSG: %d: entered\n", msg->type);
  	if (down_interruptible(&ctx->xchange_sem))
  		return -ERESTARTSYS;
-
+ 
 @@ -413,7 +413,7 @@ int vtunerc_ctrldev_xchange_message(struct vtunerc_ctx *ctx,
  		up(&ctx->xchange_sem);
  		return 0;
  	}
 -	//dprintk(ctx, "XCH_MSG: %d: continue\n", msg->type);
 +	dprintk(ctx, "XCH_MSG: %d: continue\n", msg->type);
-
+ 
  #if 0
  	BUG_ON(ctx->ctrldev_request.type != -1);
 @@ -433,7 +433,7 @@ int vtunerc_ctrldev_xchange_message(struct vtunerc_ctx *ctx,
-
+ 
  	if (wait_event_interruptible(ctx->ctrldev_wait_response_wq,
  				ctx->ctrldev_response.type != -1)) {
 -		//dprintk(ctx, "XCH_MSG: %d: wait_event interrupted\n", msg->type);
@@ -29,51 +42,55 @@ Few tweaks from https://code.google.com/p/satip
  		up(&ctx->xchange_sem);
  		return -ERESTARTSYS;
 @@ -441,7 +441,7 @@ int vtunerc_ctrldev_xchange_message(struct vtunerc_ctx *ctx,
-
+ 
  	BUG_ON(ctx->ctrldev_response.type == -1);
-
+ 
 -	//dprintk(ctx, "XCH_MSG: %d -> %d (DONE)\n", msg->type, ctx->ctrldev_response.type);
 +	dprintk(ctx, "XCH_MSG: %d -> %d (DONE)\n", msg->type, ctx->ctrldev_response.type);
  	memcpy(msg, &ctx->ctrldev_response, sizeof(struct vtuner_message));
  	ctx->ctrldev_response.type = -1;
-
+ 
+diff --git a/vtunerc_main.c b/vtunerc_main.c
+index b2c8398ce735..a7683c84dc94 100644
 --- a/vtunerc_main.c
 +++ b/vtunerc_main.c
 @@ -102,9 +102,9 @@ static void pidtab_copy_to_msg(struct vtunerc_ctx *ctx,
  {
  	int i;
-
+ 
 -	for (i = 0; i < (MAX_PIDTAB_LEN - 1); i++)
 +	for (i = 0; i < MAX_PIDTAB_LEN ; i++)
  		msg->body.pidlist[i] = ctx->pidtab[i]; /*TODO: optimize it*/
 -	msg->body.pidlist[MAX_PIDTAB_LEN - 1] = 0;
 +	/* msg->body.pidlist[MAX_PIDTAB_LEN - 1] = 0; */
  }
-
+ 
  static int vtunerc_start_feed(struct dvb_demux_feed *feed)
 @@ -128,8 +128,12 @@ static int vtunerc_start_feed(struct dvb_demux_feed *feed)
  		return -EINVAL;
  	}
-
+ 
 -	/* organize PID list table */
 +	if (feed->pid >= 0x2000 ) {
 +		printk(KERN_ERR "vtunerc%d: full mux not supported\n",ctx->idx);
 +		return -EINVAL;
 +	}
-
+ 
 +	/* organize PID list table */
  	if (pidtab_find_index(ctx->pidtab, feed->pid) < 0) {
  		pidtab_add_pid(ctx->pidtab, feed->pid);
-
+ 
+diff --git a/vtunerc_proxyfe.c b/vtunerc_proxyfe.c
+index f4e5044781e7..f90c4b723d90 100644
 --- a/vtunerc_proxyfe.c
 +++ b/vtunerc_proxyfe.c
 @@ -174,52 +174,12 @@ static int dvb_proxyfe_set_frontend(struct dvb_frontend *fe)
-
+ 
  		if (ctx->vtype == VT_S2 && c->delivery_system == SYS_DVBS2) {
  			/* DELIVERY SYSTEM: S2 delsys in use */
 -			msg.body.fe_params.u.qpsk.fec_inner = 9;
 +			msg.body.fe_params.u.qpsk.fec_inner |= 32;
-
+ 
  			/* MODULATION */
  			if (c->modulation == PSK_8)
  				/* signal PSK_8 modulation used */
@@ -119,7 +136,7 @@ Few tweaks from https://code.google.com/p/satip
 -				break;
 -			}
 +				msg.body.fe_params.u.qpsk.fec_inner |= 64;
-
+ 
  			/* ROLLOFF */
  			switch (c->rolloff) {
 @@ -508,8 +468,8 @@ static struct dvb_frontend_ops dvb_proxyfe_qpsk_ops = {
@@ -131,5 +148,8 @@ Few tweaks from https://code.google.com/p/satip
 +			FE_CAN_FEC_4_5 | FE_CAN_FEC_5_6 | FE_CAN_FEC_7_8 |
 +			FE_CAN_FEC_8_9 | FE_CAN_QPSK | FE_CAN_RECOVER
  	},
-
+ 
  	.release = dvb_proxyfe_release,
+-- 
+2.36.1
+

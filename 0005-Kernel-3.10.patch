@@ -1,5 +1,15 @@
-https://lore.kernel.org/patchwork/cover/372524
+From cdd1fe09cbc7c02186f6fca173b11a64b2e4d277 Mon Sep 17 00:00:00 2001
+From: Tomasz Maciej Nowak <tmn505@gmail.com>
+Date: Fri, 13 May 2022 15:39:09 +0200
+Subject: [PATCH 05/13] Kernel 3.10
+
 https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3cb5bf1bf947d325fcf6e9458952b51cfd7e6677
+---
+ vtunerc_main.c | 98 +++++++++++++++++++++++---------------------------
+ 1 file changed, 44 insertions(+), 54 deletions(-)
+
+diff --git a/vtunerc_main.c b/vtunerc_main.c
+index 38cb40290bc8..7cc870b0d988 100644
 --- a/vtunerc_main.c
 +++ b/vtunerc_main.c
 @@ -22,6 +22,7 @@
@@ -7,13 +17,13 @@ https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3c
  #include <asm/uaccess.h>
  #include <linux/delay.h>
 +#include <linux/seq_file.h>
-
+ 
  #include "demux.h"
  #include "dmxdev.h"
 @@ -176,64 +177,53 @@ static char *get_fe_name(struct dvb_frontend_info *feinfo)
- 	return (feinfo && feinfo->name) ? feinfo->name : "(not set)";
+ 	return feinfo ? feinfo->name : "(not set)";
  }
-
+ 
 -/**
 - * @brief  procfs file handler
 - * @param  buffer:
@@ -80,7 +90,7 @@ https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3c
 +		seq_printf(seq, "  msg xchg: %d/%d\n", ctx->ctrldev_request.type, ctx->ctrldev_response.type);
 +	return 0;
 +}
-
+ 
 -	strcpy(buffer, outbuf);
 +static int vtunerc_proc_open(struct inode *inode, struct file *file)
 +{
@@ -94,7 +104,7 @@ https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3c
 +		module_put(THIS_MODULE);
 +	return ret;
 +}
-
+ 
 -	/* signal EOF */
 -	*eof = 1;
 +static int vtuner_proc_release(struct inode *inode, struct file *file)
@@ -103,7 +113,7 @@ https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3c
 +	module_put(THIS_MODULE);
 +	return ret;
 +}
-
+ 
 -	return blen;
 +static const struct file_operations vtunerc_read_proc_fops = {
 +	.open		= vtunerc_proc_open,
@@ -111,10 +121,10 @@ https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3c
 +	.llseek		= seq_lseek,
 +	.release	= vtuner_proc_release,
 +	};
-
+ 
 -}
  #endif
-
+ 
  static char *my_strdup(const char *s)
 @@ -346,8 +336,8 @@ static int __init vtunerc_init(void)
  			sprintf(procfilename, VTUNERC_PROC_FILENAME,
@@ -127,26 +137,6 @@ https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=3c
  							ctx) == 0)
  				printk(KERN_WARNING
  					"vtunerc%d: Unable to register '%s' proc file\n",
---- a/vtunerc_priv.h
-+++ b/vtunerc_priv.h
-@@ -20,6 +20,7 @@
- #include <linux/module.h>	/* Specifically, a module */
- #include <linux/kernel.h>	/* We're doing kernel work */
- #include <linux/cdev.h>
-+#include <linux/version.h>
+-- 
+2.36.1
 
- #include "demux.h"
- #include "dmxdev.h"
-@@ -108,4 +109,12 @@ if (ctx->config && (ctx->config->debug))				\
- 	printk(KERN_DEBUG "vtunerc%d: " fmt, ctx->idx, ##arg);	\
- } while (0)
-
-+/* backward compatibility stuff */
-+#if LINUX_VERSION_CODE < KERNEL_VERSION(3,10,0)
-+static inline void *PDE_DATA(const struct inode *inode)
-+{
-+	return PROC_I(inode)->pde->data;
-+}
-+#endif
-+
- #endif

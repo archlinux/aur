@@ -1,0 +1,26 @@
+From 2a81f7e5611bbb4f4ce534e90a9ec00a5385fa9e Mon Sep 17 00:00:00 2001
+From: Tomasz Maciej Nowak <tmn505@gmail.com>
+Date: Fri, 13 May 2022 16:09:55 +0200
+Subject: [PATCH 01/13] Replace make old syntax
+
+M replaced SUBDIRS.
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 18f30a3efada..c169f65628bc 100644
+--- a/Makefile
++++ b/Makefile
+@@ -35,7 +35,7 @@ endif
+ PWD := $(shell pwd)
+ 
+ default:
+-	$(MAKE) -C $(KDIR) SUBDIRS=$(PWD) modules
++	$(MAKE) -C $(KDIR) M=$(PWD) modules
+ 
+ clean:
+ 	rm -f *.o
+-- 
+2.36.1
+

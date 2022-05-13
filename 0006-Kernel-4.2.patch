@@ -1,10 +1,21 @@
+From 43166c67563a7d0548b8eeea836375d778dd4c2e Mon Sep 17 00:00:00 2001
+From: Tomasz Maciej Nowak <tmn505@gmail.com>
+Date: Fri, 13 May 2022 15:41:16 +0200
+Subject: [PATCH 06/13] Kernel 4.2
+
 https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0df289a209e02f0926042ab07d7d2595ea2d2e9b
+---
+ vtunerc_proxyfe.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/vtunerc_proxyfe.c b/vtunerc_proxyfe.c
+index f90c4b723d90..e2822865b8ed 100644
 --- a/vtunerc_proxyfe.c
 +++ b/vtunerc_proxyfe.c
 @@ -36,7 +36,7 @@ struct dvb_proxyfe_state {
  };
-
-
+ 
+ 
 -static int dvb_proxyfe_read_status(struct dvb_frontend *fe, fe_status_t *status)
 +static int dvb_proxyfe_read_status(struct dvb_frontend *fe, enum fe_status *status)
  {
@@ -13,7 +24,7 @@ https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0d
 @@ -254,7 +254,7 @@ static int dvb_proxyfe_init(struct dvb_frontend *fe)
  	return 0;
  }
-
+ 
 -static int dvb_proxyfe_set_tone(struct dvb_frontend *fe, fe_sec_tone_mode_t tone)
 +static int dvb_proxyfe_set_tone(struct dvb_frontend *fe, enum fe_sec_tone_mode tone)
  {
@@ -22,7 +33,7 @@ https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0d
 @@ -267,7 +267,7 @@ static int dvb_proxyfe_set_tone(struct dvb_frontend *fe, fe_sec_tone_mode_t tone
  	return 0;
  }
-
+ 
 -static int dvb_proxyfe_set_voltage(struct dvb_frontend *fe, fe_sec_voltage_t voltage)
 +static int dvb_proxyfe_set_voltage(struct dvb_frontend *fe, enum fe_sec_voltage voltage)
  {
@@ -31,9 +42,12 @@ https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=0d
 @@ -293,7 +293,7 @@ static int dvb_proxyfe_send_diseqc_msg(struct dvb_frontend *fe, struct dvb_diseq
  	return 0;
  }
-
+ 
 -static int dvb_proxyfe_send_diseqc_burst(struct dvb_frontend *fe, fe_sec_mini_cmd_t burst)
 +static int dvb_proxyfe_send_diseqc_burst(struct dvb_frontend *fe, enum fe_sec_mini_cmd burst)
  {
  	struct dvb_proxyfe_state *state = fe->demodulator_priv;
  	struct vtunerc_ctx *ctx = state->ctx;
+-- 
+2.36.1
+

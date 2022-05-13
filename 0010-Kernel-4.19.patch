@@ -1,4 +1,15 @@
-https://www.spinics.net/lists/linux-media/msg137367.html
+From 119ad680800737d9b1328fcaad3c17e432ab0924 Mon Sep 17 00:00:00 2001
+From: Tomasz Maciej Nowak <tmn505@gmail.com>
+Date: Fri, 13 May 2022 16:03:55 +0200
+Subject: [PATCH 10/13] Kernel 4.19
+
+https://lore.kernel.org/all/cover.1530830503.git.mchehab+samsung@kernel.org
+---
+ vtunerc_proxyfe.c | 23 ++++++++++-------------
+ 1 file changed, 10 insertions(+), 13 deletions(-)
+
+diff --git a/vtunerc_proxyfe.c b/vtunerc_proxyfe.c
+index 8f1fbc01fff0..d6b19a48e6e3 100644
 --- a/vtunerc_proxyfe.c
 +++ b/vtunerc_proxyfe.c
 @@ -392,10 +392,9 @@ static struct dvb_frontend_ops dvb_proxyfe_ofdm_ops = {
@@ -45,3 +56,6 @@ https://www.spinics.net/lists/linux-media/msg137367.html
  		.symbol_rate_min	= 1000000,
  		.symbol_rate_max	= 45000000,
  		.caps = FE_CAN_INVERSION_AUTO |
+-- 
+2.36.1
+
