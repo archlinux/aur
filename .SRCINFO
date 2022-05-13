@@ -1,7 +1,7 @@
 pkgbase = milter-greylist
 	pkgdesc = A stand-alone milter written in C that implements the greylist filtering method.
 	pkgver = 4.6.4
-	pkgrel = 1
+	pkgrel = 2
 	url = http://hcpnet.free.fr/milter-greylist/
 	arch = x86_64
 	arch = i686
@@ -18,4 +18,3 @@ pkgbase = milter-greylist
 	md5sums = 51665e97390bf7df11bb509bfb57544b
 
 pkgname = milter-greylist
-
