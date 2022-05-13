@@ -35,11 +35,6 @@ pkgver() {
 prepare() {
 	cd "$srcdir/${_name}"
 	
-	# git submodule init deps/apriltag deps/openvr
-	# git config submodule.deps/apriltag.url "$srcdir/apriltag"
-	# git config submodule.deps/openvr.url   "$srcdir/openvr"
-	# git submodule update deps/apriltag deps/openvr
-
 	patch -p1 -i "$srcdir/${_name}.patch"
 
 	cd "$srcdir/bridge-driver"
