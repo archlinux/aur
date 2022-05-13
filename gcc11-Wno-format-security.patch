@@ -1,6 +1,6 @@
-From 107db5008b826d46f4eeb569b7199f0874839112 Mon Sep 17 00:00:00 2001
+From 6ac7bf174a803ab74aa7b01d0f59b2b89bb488e7 Mon Sep 17 00:00:00 2001
 From: Joey Dumont <joey.dumont@gmail.com>
-Date: Thu, 17 Jun 2021 22:17:13 -0400
+Date: Tue, 10 May 2022 20:54:05 -0400
 Subject: [PATCH] Workaround for Werror=format-security errors in the libcpp
  and gcc components.
 
@@ -16,16 +16,16 @@ In the libcpp component, we add the --disable-build-format-warnings option
 to the configure script, and give it the same options as gcc's option.
 ---
  gcc/configure       |  4 ++--
- gcc/configure.ac    |  6 +++---
+ gcc/configure.ac    |  4 ++--
  libcpp/configure    | 20 +++++++++++++++++---
  libcpp/configure.ac |  8 +++++++-
- 4 files changed, 29 insertions(+), 9 deletions(-)
+ 4 files changed, 28 insertions(+), 8 deletions(-)
 
 diff --git a/gcc/configure b/gcc/configure
-index 7184dd6c0..90d3a97e3 100755
+index 5ce055771..fbff64a79 100755
 --- a/gcc/configure
 +++ b/gcc/configure
-@@ -6833,7 +6833,7 @@ else
+@@ -7080,7 +7080,7 @@ else
  fi
  
  if test $enable_build_format_warnings = no; then :
@@ -34,7 +34,7 @@ index 7184dd6c0..90d3a97e3 100755
  else
    wf_opt=
  fi
-@@ -6960,7 +6960,7 @@ ac_compiler_gnu=$ac_cv_cxx_compiler_gnu
+@@ -7207,7 +7207,7 @@ ac_compiler_gnu=$ac_cv_cxx_compiler_gnu
  
  strict_warn=
  save_CXXFLAGS="$CXXFLAGS"
@@ -44,10 +44,10 @@ index 7184dd6c0..90d3a97e3 100755
    # accepts any -Wno-* option on purpose
    case $real_option in
 diff --git a/gcc/configure.ac b/gcc/configure.ac
-index 96a6f62b0..379acef47 100644
+index 23bee7010..571e2424a 100644
 --- a/gcc/configure.ac
 +++ b/gcc/configure.ac
-@@ -523,17 +523,17 @@ AC_ARG_ENABLE(build-format-warnings,
+@@ -570,7 +570,7 @@ AC_ARG_ENABLE(build-format-warnings,
    AS_HELP_STRING([--disable-build-format-warnings],[don't use -Wformat while building GCC]),
    [],[enable_build_format_warnings=yes])
  AS_IF([test $enable_build_format_warnings = no],
@@ -55,12 +55,9 @@ index 96a6f62b0..379acef47 100644
 +      [wf_opt=-Wno-format -Wno-format-security],[wf_opt=])
  ACX_PROG_CXX_WARNING_OPTS(
  	m4_quote(m4_do([-W -Wall -Wno-narrowing -Wwrite-strings ],
- 		       [-Wcast-qual -Wno-error=format-diag $wf_opt])),
- 		       [loose_warn])
- ACX_PROG_CC_WARNING_OPTS(
- 	m4_quote(m4_do([-Wstrict-prototypes -Wmissing-prototypes ],
--	 	       [-Wno-error=format-diag])), [c_loose_warn])
-+	 	       [-Wno-error=format-diag ])), [c_loose_warn])
+ 		       [-Wcast-qual $wf_opt])),
+@@ -580,7 +580,7 @@ ACX_PROG_CC_WARNING_OPTS(
+ 		       [])), [c_loose_warn])
  ACX_PROG_CXX_WARNING_OPTS(
  	m4_quote(m4_do([-Wmissing-format-attribute ],
 -		       [-Woverloaded-virtual])), [strict_warn])
@@ -69,10 +66,10 @@ index 96a6f62b0..379acef47 100644
  	m4_quote(m4_do([-Wold-style-definition -Wc++-compat])), [c_strict_warn])
  ACX_PROG_CXX_WARNING_ALMOST_PEDANTIC(
 diff --git a/libcpp/configure b/libcpp/configure
-index 7e28606f6..f91a07b34 100755
+index 751453902..54e7d017c 100755
 --- a/libcpp/configure
 +++ b/libcpp/configure
-@@ -728,6 +728,7 @@ ac_subst_files=''
+@@ -729,6 +729,7 @@ ac_subst_files=''
  ac_user_opts='
  enable_option_checking
  enable_largefile
@@ -80,7 +77,7 @@ index 7e28606f6..f91a07b34 100755
  enable_werror_always
  with_gnu_ld
  enable_rpath
-@@ -1367,6 +1368,8 @@ Optional Features:
+@@ -1368,6 +1369,8 @@ Optional Features:
    --disable-FEATURE       do not include FEATURE (same as --enable-FEATURE=no)
    --enable-FEATURE[=ARG]  include FEATURE [ARG=yes]
    --disable-largefile     omit support for large files
@@ -89,7 +86,7 @@ index 7e28606f6..f91a07b34 100755
    --enable-werror-always  enable -Werror despite compiler version
    --disable-rpath         do not hardcode runtime library paths
    --enable-maintainer-mode enable rules only needed by maintainers
-@@ -4898,6 +4901,18 @@ test -n "$AUTOHEADER" || AUTOHEADER="$MISSING autoheader"
+@@ -4904,6 +4907,18 @@ fi
  
  # Figure out what compiler warnings we can enable.
  # See config/warnings.m4 for details.
@@ -108,7 +105,7 @@ index 7e28606f6..f91a07b34 100755
  
  ac_ext=c
  ac_cpp='$CPP $CPPFLAGS'
-@@ -4907,8 +4922,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
+@@ -4913,8 +4928,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
  
  warn=
  save_CFLAGS="$CFLAGS"
@@ -118,7 +115,7 @@ index 7e28606f6..f91a07b34 100755
    # Do the check with the no- prefix removed since gcc silently
    # accepts any -Wno-* option on purpose
    case $real_option in
-@@ -4983,7 +4997,7 @@ else
+@@ -4989,7 +5003,7 @@ else
    CFLAGS="$option"
      cat confdefs.h - <<_ACEOF >conftest.$ac_ext
  /* end confdefs.h.  */
@@ -128,10 +125,10 @@ index 7e28606f6..f91a07b34 100755
  main ()
  {
 diff --git a/libcpp/configure.ac b/libcpp/configure.ac
-index 1efa96f7c..fe1e90a61 100644
+index 9b6042518..f1fe3a407 100644
 --- a/libcpp/configure.ac
 +++ b/libcpp/configure.ac
-@@ -25,8 +25,14 @@ AC_CHECK_PROGS([AUTOHEADER], [autoheader], [$MISSING autoheader])
+@@ -30,8 +30,14 @@ AC_SUBST([ETAGS])
  # Figure out what compiler warnings we can enable.
  # See config/warnings.m4 for details.
  
@@ -148,5 +145,5 @@ index 1efa96f7c..fe1e90a61 100644
  			  -Wold-style-definition -Wc++-compat], [c_warn])
  ACX_PROG_CC_WARNING_ALMOST_PEDANTIC([-Wno-long-long])
 -- 
-2.32.0
+2.36.1
 

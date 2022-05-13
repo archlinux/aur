@@ -1,9 +1,9 @@
 # Maintainer: Joey Dumont <joey.dumont@gmail.com>
 _target=mips64-ultra-elf
 pkgname=${_target}-gcc-stage1
-_gccver=11.3.0
+_gccver=12.1.0
 _islver=0.24
-pkgver=11.3.0_r170.c2bd862
+pkgver=12.1.0_r170.c2bd862
 pkgrel=1
 pkgdesc="The GNU Compiler Collection. Stage 1 for toolchain building (${_target})"
 arch=('x86_64')
@@ -17,10 +17,10 @@ source=("http://gcc.gnu.org/pub/gcc/releases/gcc-${_gccver}/gcc-${_gccver}.tar.x
         "http://isl.gforge.inria.fr/isl-${_islver}.tar.xz"
         "git+https://github.com/glankk/n64.git#branch=n64-ultra"
         "gcc11-Wno-format-security.patch")
-sha256sums=('b47cf2818691f5b1e21df2bb38c795fac2cfbd640ede2d0a5e1c89e338a3ac39'
+sha256sums=('62fd634889f31c02b64af2c468f064b47ad1ca78411c45abe6ac4b5f8dd19c7b'
             '043105cc544f416b48736fff8caf077fb0663a717d06b1113f16e391ac99ebad'
             'SKIP'
-            '6f9a34812a07e49a568467df11d6ab19b9fd7d953e9ecd739c7a38d9df821b52')
+            'e388ee3f6871034ac021b0711f58f278c97eb1e749b466f896ae3dd35b165219')
 
 pkgver() {
   cd "${srcdir}/n64/"
