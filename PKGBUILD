@@ -30,6 +30,6 @@ package() {
 	install -m755 mt7921e.shutdown ${pkgdir}/usr/lib/systemd/system-shutdown/mt7921e.shutdown
 	install -m755 neo-controller.py ${pkgdir}/usr/local/bin/neo-controller.py
 	install -m755 neo-controller.service ${pkgdir}/etc/systemd/system/neo-controller.service
-	install -m755 phantom-input.py ${pkgdir}/usr/local/bin/phanaton-input.py
+	install -m755 phantom-input.py ${pkgdir}/usr/local/bin/phantom-input.py
 	install -m755 phantom-input.service ${pkgdir}/etc/systemd/system/phantom-input.service
 }
