@@ -49,7 +49,7 @@ _hpn_ver=hpn17v0
 #_pkgver="$(sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver})_new"
 _pkgver="$(sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver})"
 pkgver="${_openssh_ver}.${_hpn_ver}"
-pkgrel=3
+pkgrel=4
 pkgdesc='A Secure SHell server/client fork with High Performance patches included'
 url='https://www.psc.edu/index.php/hpn-ssh/'
 license=('custom:BSD')
@@ -76,6 +76,9 @@ source=(
   'sshd.conf'
 )
 backup=(
+  'etc/ssh/ssh_config'
+  'etc/ssh/sshd_config'
+  'etc/pam.d/sshd'
   'etc/hpnssh/ssh_config'
   'etc/hpnssh/sshd_config'
   'etc/pam.d/hpnsshd'
@@ -215,14 +218,6 @@ package_openssh-hpn-shim(){
   depends=('openssh-hpn')
   provides=('openssh')
   conflicts=('openssh' 'openssh-hpn-git')
-  backup=(
-    'etc/ssh/ssh_config'
-    'etc/ssh/sshd_config'
-    'etc/pam.d/sshd'
-    'etc/hpnssh/ssh_config'
-    'etc/hpnssh/sshd_config'
-    'etc/pam.d/hpnsshd'
-  )
 
   cd "${srcdir}/openssh-portable-hpn-${_pkgver}/"
 
