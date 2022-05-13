@@ -1,2 +1,2 @@
 #!/bin/bash
-electron13 /opt/hikari-field-client/app.asar
+electron13 /usr/share/hikari-field-client-bin/app.asar
