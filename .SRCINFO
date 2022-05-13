@@ -1,0 +1,15 @@
+pkgbase = cl-lift
+	pkgdesc = The LIsp Framework for Testing
+	pkgver = 1.7.1.r47.ge08e84e
+	pkgrel = 1
+	url = https://lift.common-lisp.dev
+	arch = any
+	license = MIT
+	checkdepends = sbcl
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	source = cl-lift::git+https://github.com/gwkkwg/lift#commit=e08e84e5800b5d62b048b0b96e7298d6b0917987
+	b2sums = SKIP
+
+pkgname = cl-lift
