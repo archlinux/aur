@@ -1,15 +1,15 @@
 [Unit]
-Description=SSH-HPN Key Generation
-ConditionPathExists=|!/etc/hpnssh/ssh_host_dsa_key
-ConditionPathExists=|!/etc/hpnssh/ssh_host_dsa_key.pub
-ConditionPathExists=|!/etc/hpnssh/ssh_host_ecdsa_key
-ConditionPathExists=|!/etc/hpnssh/ssh_host_ecdsa_key.pub
-ConditionPathExists=|!/etc/hpnssh/ssh_host_ed25519_key
-ConditionPathExists=|!/etc/hpnssh/ssh_host_ed25519_key.pub
-ConditionPathExists=|!/etc/hpnssh/ssh_host_key
-ConditionPathExists=|!/etc/hpnssh/ssh_host_key.pub
-ConditionPathExists=|!/etc/hpnssh/ssh_host_rsa_key
-ConditionPathExists=|!/etc/hpnssh/ssh_host_rsa_key.pub
+Description=SSH-HPN Key Generation (upstream shim)
+ConditionPathExists=|!/etc/ssh/ssh_host_dsa_key
+ConditionPathExists=|!/etc/ssh/ssh_host_dsa_key.pub
+ConditionPathExists=|!/etc/ssh/ssh_host_ecdsa_key
+ConditionPathExists=|!/etc/ssh/ssh_host_ecdsa_key.pub
+ConditionPathExists=|!/etc/ssh/ssh_host_ed25519_key
+ConditionPathExists=|!/etc/ssh/ssh_host_ed25519_key.pub
+ConditionPathExists=|!/etc/ssh/ssh_host_key
+ConditionPathExists=|!/etc/ssh/ssh_host_key.pub
+ConditionPathExists=|!/etc/ssh/ssh_host_rsa_key
+ConditionPathExists=|!/etc/ssh/ssh_host_rsa_key.pub
 
 [Service]
 ExecStart=/usr/bin/hpnssh-keygen -A
