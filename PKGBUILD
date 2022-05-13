@@ -2,7 +2,7 @@
 
 _name=PyMCTranslate
 pkgname=python-${_name,,}
-pkgver=1.1.1
+pkgver=1.1.2
 pkgrel=1
 pkgdesc='A library of block mappings that can be used to convert from any Minecraft format into any other Minecraft format'
 arch=('any')
@@ -11,7 +11,7 @@ license=('custom')
 depends=('python' 'python-amulet-nbt' 'python-numpy')
 makedepends=('python-pip' 'python-setuptools' 'python-wheel')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/$_name/$_name-$pkgver.tar.gz")
-sha256sums=('71e4751abb1c1a52375ee7a56e90a9d2f1506c70cbab8027b4332bfe328a1837')
+sha256sums=('624280fe2b8c964b08ec0ad10842ebce3d9e2489755454e7b221f1d92ad19467')
 
 build() {
   cd "$_name-$pkgver"
