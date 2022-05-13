@@ -5,4 +5,5 @@ mkdir -p $CONFIG
 
 [ ! -L "$CONFIG/bindings" ] && ln -s "/usr/share/apriltagtrackers/bindings/$1" "$CONFIG/"
 
-(cd $CONFIG; /usr/lib/apriltagtrackers/AprilTagTrackers)
+cd $CONFIG
+exec /usr/lib/apriltagtrackers/AprilTagTrackers

@@ -40,6 +40,19 @@ index 442ff05..16e8fbb 100644
      if (!std::filesystem::exists(bindingsPath))
      {
          gui->ShowErrorPopup(lc.CONNECT_BINDINGS_ERROR);
+diff --git a/AprilTagTrackers/Serializable.h b/AprilTagTrackers/Serializable.h
+index 05f619d..5c06e90 100644
+--- a/AprilTagTrackers/Serializable.h
++++ b/AprilTagTrackers/Serializable.h
+@@ -175,7 +175,7 @@ inline void ReadNode(const cv::FileNode&, const char*, const Comment&)
+ void WriteNode(cv::FileStorage& fs, const char*, const cv::Ptr<cv::aruco::DetectorParameters>& field);
+ inline void ReadNode(const cv::FileNode& fn, const char*, cv::Ptr<cv::aruco::DetectorParameters>& field)
+ {
+-    cv::aruco::DetectorParameters::readDetectorParameters(fn, field);
++    field->readDetectorParameters(fn);
+ }
+ 
+ /// Controls access through setter and calls a validator on update.
 diff --git a/AprilTagTrackers/Tracker.cpp b/AprilTagTrackers/Tracker.cpp
 index 598a39a..e05dd33 100644
 --- a/AprilTagTrackers/Tracker.cpp

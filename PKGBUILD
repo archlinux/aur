@@ -12,9 +12,11 @@ makedepends=('cmake' 'git' 'wxgtk3-dev')
 provides=("${_name}")
 conflicts=("${_name}")
 install="${pkgname%-git}.install"
-source=("${_name}::git+https://github.com/ju1ce/April-Tag-VR-FullBody-Tracker"
+source=(
+		# "${_name}::git+https://github.com/funnbot/April-Tag-VR-FullBody-Tracker#branch=pr/uncheck-close-preview"
+		"${_name}::git+https://github.com/ju1ce/April-Tag-VR-FullBody-Tracker"
 		"bridge-driver::git+https://github.com/ju1ce/Simple-OpenVR-Bridge-Driver"
-		"https://raw.githubusercontent.com/sgorsten/linalg/main/linalg.h"
+		"https://raw.githubusercontent.com/sgorsten/linalg/105866d4b558b50cea61f0bd0253531b6f875152/linalg.h"
 		"${_name}.patch"
 		"bridge-driver.patch"
 		"${_name}.sh"
@@ -22,9 +24,9 @@ source=("${_name}::git+https://github.com/ju1ce/April-Tag-VR-FullBody-Tracker"
 sha256sums=('SKIP'
             'SKIP'
             'b67b4c9000da87525d897be3cbd82bc333026c818fb9fd6edba3372568419a40'
-            'bd802d24fc738eeb787092c8c3a0d9f15cbc519aa9b5e87be6dd5984838f677a'
+            '8d5bb3fd1a86d89153c537e9c31e6641ceff160bfca52b314437c9cd67c53658'
             'aa2da0e7c3f97bbb5da2d9c6637d8802d5c46f54fd48be464387ff13154d3bd1'
-            '32bfe37436cab8b85360077d5cf1b331d5436d54fa0d15c78df6b686786fee7c')
+            '9cc3bf832456119b2f9f978eb3aad0dfd644f2a899333214268b3b9620c257e0')
 
 pkgver() {
 	cd "$srcdir/${_name}"
@@ -34,7 +36,7 @@ pkgver() {
 
 prepare() {
 	cd "$srcdir/${_name}"
-	
+
 	patch -p1 -i "$srcdir/${_name}.patch"
 
 	cd "$srcdir/bridge-driver"
