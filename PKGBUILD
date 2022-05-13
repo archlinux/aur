@@ -1,66 +1,55 @@
+# Maintainer: c0repwn3r <core@coredoes.dev>
 # Maintainer: Finlay Maroney <finman292004@protonmail.com>
-
-_target=i686-elf
-pkgname=$_target-gcc
-pkgver=11.1.0
-pkgrel=1
-pkgdesc='The GNU Compiler Collection - cross compiler for i686-elf target'
-arch=(i686 x86_64)
-url='http://gcc.gnu.org/'
-license=(GPL LGPL)
-depends=($_target-binutils zlib libmpc mpfr gmp)
-options=(!emptydirs)
-source=("https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
-        "libiberty-ignore-cflags.patch"
-        "https://mirrors.kernel.org/gnu/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz.sig")
-sha256sums=('4c4a6fb8a8396059241c2e674b85b351c26a5d678274007f076957afa1cc9ddf'
-            '8b2aea00e98f7c311b1d0fb14e4b435a03c65fde32bc992c924edb6fa7b83c9c'
-            'SKIP')
-_basedir=gcc-$pkgver
-validpgpkeys=("D3A93CAD751C2AF4F8C7AD516C35B99309B5FA62")
-prepare() {
-  cd $_basedir
- 
-  patch -p1 -i $srcdir/libiberty-ignore-cflags.patch
-
-  mkdir $srcdir/gcc-build
-}
+pkgname=i686-elf-gcc
+pkgver=11.2.0
+pkgrel=3
+epoch=
+pkgdesc="GNU gcc for the i686- toolchain"
+arch=(x86_64)
+url="https://www.gnu.org/software/gcc"
+license=('GPL')
+groups=(i686-elf-toolchain)
+makedepends=(gmp mpfr gcc)
+depends=(xz libmpc i686-elf-binutils)
+source=(
+    "http://ftpmirror.gnu.org/gcc/gcc-$pkgver/gcc-$pkgver.tar.xz"
+    "gcc11-Wno-format-security.patch" # https://bugs.archlinux.org/task/70701
+)
+sha256sums=(
+    d08edc536b54c372a1010ff6619dd274c0f1603aa49212ba20f7aa2cda36fa8b
+    9b5953cf105151f88bf0608c1c8dc583b605a22667affc982865383cadc23d10
+)
 
 build() {
-  cd gcc-build
+    # Patch gcc
+    cd "gcc-$pkgver"
+    patch --strip=1 --input="$srcdir/gcc11-Wno-format-security.patch"
+    cd ..
+    # Create temporary build dir
+    mkdir -p "i686-gcc-$pkgver-build"
+    cd "i686-gcc-$pkgver-build"
+    # Configure, we are building in seperate directory to cleanly seperate the binaries from the source
+    ../gcc-$pkgver/configure \
+	--prefix=/usr \
+	--target=i686-elf \
+	--disable-nls \
+	--disable-werror \
+	--disable-multilib \
+	--without-headers \
+	--enable-languages=c,c++ \
+	--disable-build-format-warnings # https://bugs.archlinux.org/task/70701
 
-  $srcdir/$_basedir/configure \
-    --target=$_target \
-    --prefix=/usr \
-    --disable-nls \
-    --disable-plugin \
-    --enable-languages=c,c++ \
-    --without-headers
-
-  make all-gcc
-  make all-target-libgcc
-}
-
-check() {
-  cd gcc-build
-
-  # increase stack size to prevent test failures
-  # http://gcc.gnu.org/bugzilla/show_bug.cgi?id=31827
-  ulimit -s 32768
-
-  # do not abort on error as some are "expected"
-  make -k check || true
-  $srcdir/$_basedir/contrib/test_summary
+    # Build
+    make all-gcc
+    make all-target-libgcc
 }
 
 package() {
-  cd gcc-build
-
-  make DESTDIR="$pkgdir" install-gcc
-  make DESTDIR="$pkgdir" install-target-libgcc
-
-  # Remove files that conflict with host gcc package
-  rm -r "$pkgdir"/usr/share/man/man7
-  rm -r "$pkgdir"/usr/share/info
+    cd "i686-gcc-$pkgver-build"
+    make install-gcc DESTDIR=$pkgdir
+    make install-target-libgcc DESTDIR=$pkgdir
+    # Remove conflicting files
+    rm -rf $pkgdir/usr/share/info
+    rm -rf $pkgdir/usr/share/man/man7
 }
 
