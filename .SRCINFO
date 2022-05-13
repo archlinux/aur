@@ -1,0 +1,18 @@
+pkgbase = cl-fiveam
+	pkgdesc = A regression testing framework for Common Lisp
+	pkgver = 1.4.2.r12.ge11dee7
+	pkgrel = 1
+	url = https://fiveam.common-lisp.dev
+	arch = any
+	license = MIT
+	makedepends = git
+	makedepends = sbcl
+	depends = cl-asdf
+	depends = common-lisp
+	depends = cl-alexandria
+	depends = cl-asdf-flv
+	depends = cl-trivial-backtrace
+	source = cl-fiveam::git+https://github.com/lispci/fiveam#commit=e11dee752a8f59065033ef9d60641d4a2f1e8379
+	b2sums = SKIP
+
+pkgname = cl-fiveam
