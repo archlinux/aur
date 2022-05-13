@@ -1,6 +1,6 @@
 pkgbase = amxb_ubus-git
 	pkgdesc = Ubus baapi back-end
-	pkgver = 3.0.15.r0.g141a730
+	pkgver = 3.0.16.r0.g6dd1809
 	pkgrel = 1
 	url = https://gitlab.com/soft.at.home/ambiorix/modules/amxb_backends/amxb_ubus.git
 	arch = x86_64
