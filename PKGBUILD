@@ -3,13 +3,13 @@ pkgname=piavpn-bin
 pkgver=3.3.1_06924
 _pkgver=${pkgver/\.0_/_}
 _pkgver=${_pkgver/_/-}
-pkgrel=1
+pkgrel=2
 pkgdesc="Private Internet Access client"
 # https://www.privateinternetaccess.com/pages/changelog
 arch=('x86_64' 'aarch64')
 url="https://privateinternetaccess.com/"
 license=('custom')
-depends=(libxkbcommon-x11 libnl)
+depends=(libxkbcommon-x11 libnl zip)
 optdepends=('WIREGUARD-MODULE: to use the wireguard kernel module instead')
 makedepends=(libcap)
 provides=(piavpn)
