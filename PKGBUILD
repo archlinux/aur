@@ -12,7 +12,7 @@ options=('!makeflags')
 depends=('python2')
 makedepends=('git' 'gprbuild' 'coq' 'gnatcoll-core' 'gprbuild' 'ocaml-num'
              'ocaml-menhir' 'ocaml-ocamlgraph' 'ocaml-zarith' 'ocaml-zip'
-             'ocaml-ocplib-simplex' 'python-sphinx')
+             'ocaml-ocplib-simplex' 'ocaml-yojson' 'python-sphinx')
 optdepends=('alt-ergo: alternative prover'
             'z3: alternative prover'
             'cvc4: alternative prover')
