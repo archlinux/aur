@@ -3,7 +3,7 @@
 # shellcheck disable=SC2016,SC2034,SC2154,SC2148
 
 pkgname="pacmc"
-pkgver="0.5.0"
+pkgver="0.5.2"
 pkgrel=1
 pkgdesc="An easy-to-use Minecraft package manager and launcher"
 arch=("any")
@@ -12,7 +12,7 @@ license=("AGPL3 or any later version")
 depends=("java-runtime=11")
 optdepends=("minecraft-launcher: The game launcher, managing the .minecraft folder")
 source=("https://github.com/jakobkmar/pacmc/releases/download/${pkgver}/pacmc-${pkgver}.tar")
-sha256sums=("f90b5773a125e99ca10423be615f805337d394561cd25bbbf4d80f37aa3459fe")
+sha256sums=("b0f4d338779acfb4a8898799beb545beb0a86ce9df19709765a871e33e7f5191")
 
 build() {
   cd "${srcdir}" || exit
