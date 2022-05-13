@@ -9,7 +9,7 @@
 
 pkgname=smath
 pkgver=1_00_8151
-pkgrel=1
+pkgrel=2
 pkgdesc="A mathematical program with many features and paper-like interface, similar to Mathcad"
 _pkgcode=ATPd2
 arch=('i686' 'x86_64')
