@@ -1,7 +1,7 @@
 pkgbase = minisatip-git
 	pkgdesc = SAT>IP server, tested with DVB-S, DVB-S2, DVB-T, DVB-T2, DVB-C, DVB-C2, ATSC and ISDB-T cards (experimental)
-	pkgver = 1.1.78.r0.gb5f6328
-	pkgrel = 1
+	pkgver = 1.2.1.r0.g5a740db
+	pkgrel = 2
 	url = https://minisatip.org
 	install = minisatip.install
 	arch = x86_64
@@ -13,7 +13,6 @@ pkgbase = minisatip-git
 	license = GPL2
 	makedepends = git
 	depends = libdvbcsa
-	depends = linuxtv-dvb-apps
 	optdepends = oscam: channels descrambling
 	provides = minisatip
 	conflicts = minisatip
