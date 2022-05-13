@@ -41,9 +41,18 @@ if [ -z ${use_tracers+x} ]; then
   use_tracers=y
 fi
 
+## NOTICE: clang config is not ready yet in 5.17.x
 ## Choose between GCC and CLANG config (default is GCC)
-if [ -z ${_compiler+x} ]; then
+if [ -z ${_compiler+x} ] || [ "$_compiler" = "clang" ]; then
   _compiler=gcc
+fi
+
+# Choose between the 3 main configs for EDGE branch. Default x86-64-v2 which use CONFIG_GENERIC_CPU2:
+# Possible values: config_x86-64 (default) / config_x86-64-v2 / config_x86-64-v3
+# This will be overwritten by selecting any option in microarchitecture script
+# Source files: https://github.com/xanmod/linux/tree/5.17/CONFIGS/xanmod/gcc
+if [ -z ${_config+x} ]; then
+  _config=config_x86-64
 fi
 
 # Compress modules with ZSTD (to save disk space)
@@ -73,8 +82,8 @@ fi
 
 pkgbase=linux-manjaro-xanmod
 pkgname=("${pkgbase}" "${pkgbase}-headers")
-_major=5.15
-pkgver=${_major}.30
+_major=5.17
+pkgver=${_major}.7
 _branch=5.x
 xanmod=1
 pkgrel=1
@@ -82,7 +91,7 @@ pkgdesc='Linux Xanmod'
 url="http://www.xanmod.org/"
 arch=(x86_64)
 
-__commit="c224d3b685fbde4e13bc85da1b0d31cf59cabfab" # 5.15.30
+__commit="a7ee13522a80f6f7eaa897dff215dbd676478331" # 5.17.7
 
 license=(GPL2)
 makedepends=(
@@ -109,11 +118,11 @@ for _patch in ${_patches[@]}; do
     source+=("${_patch}::https://raw.githubusercontent.com/archlinux/svntogit-packages/${_commit}/trunk/${_patch}")
 done
         
-sha256sums=('57b2cf6991910e3b67a1b3490022e8a0674b6965c74c12da1e99d138d1991ee8'  # kernel tar.xz
+sha256sums=('555fef61dddb591a83d62dd04e252792f9af4ba9ef14683f64840e46fa20b1b1'  # kernel tar.xz
             'SKIP'                                                              #        tar.sign
-            '58771b3611e8241a894564cdd200fb02424118cbf24dec5b65cc2278347e9fee'  # xanmod
+            'bd58952f92badc91fd52e3a8c07605546c7ece1620f63b9837677ded73647e1c'  # xanmod
             '1ac18cad2578df4a70f9346f7c6fccbb62f042a0ee0594817fdef9f2704904ee'  # choose-gcc-optimization.sh
-            '45a58760094df2e5c8216d802db1ca0baf99fab0dae988d9c8c9c2f458fb092c') # manjaro
+            'b32d9211d63eccb40e56e3ca880b52de4b9b2d0ba54a0b119809adee292985bb') # manjaro
 
 validpgpkeys=(
     'ABAF11C65A2970B130ABE3C479BE3E4300411886' # Linux Torvalds
@@ -145,12 +154,11 @@ prepare() {
     patch -Np1 < "../$src"
   done
   
-  # Manjaro patches
-  rm ../linux${_major//.}-$__commit/0103-futex.patch  # remove conflicting ones
-  rm ../linux${_major//.}-$__commit/0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-CLONE_NEWUSER.patch
-  rm ../linux${_major//.}-$__commit/0101-i2c-nuvoton-nc677x-hwmon-driver.patch
-  rm ../linux${_major//.}-$__commit/0102-iomap-iomap_bmap-should-accept-unwritten-maps.patch
-
+  # Manjaro patches 
+  
+  # remove conflicting ones
+  rm ../linux${_major//.}-$__commit/0101-ZEN_Add_sysctl_and_CONFIG_to_disallow_unprivileged_CLONE_NEWUSER.patch
+  
   local _patch
   for _patch in ../linux${_major//.}-$__commit/*; do
       [[ $_patch = *.patch ]] || continue
@@ -161,7 +169,7 @@ prepare() {
   
   
   # Applying configuration
-  cp -vf CONFIGS/xanmod/${_compiler}/config .config
+  cp -vf CONFIGS/xanmod/${_compiler}/${_config} .config
   # enable LTO_CLANG_THIN
   if [ "${_compiler}" = "clang" ]; then
     scripts/config --disable LTO_CLANG_FULL
