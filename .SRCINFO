@@ -1,6 +1,6 @@
 pkgbase = palemoon-gtk3
 	pkgdesc = Open source web browser based on Firefox focusing on efficiency.
-	pkgver = 29.4.6
+	pkgver = 31.0.0
 	pkgrel = 1
 	epoch = 1
 	url = https://www.palemoon.org/
@@ -15,9 +15,8 @@ pkgbase = palemoon-gtk3
 	makedepends = zip
 	makedepends = yasm
 	makedepends = libpulse
-	makedepends = gcc10
+	makedepends = gtk2
 	makedepends = git
-	depends = gtk2
 	depends = gtk3
 	depends = dbus-glib
 	depends = desktop-file-utils
@@ -29,13 +28,13 @@ pkgbase = palemoon-gtk3
 	optdepends = ffmpeg: various video and audio support
 	provides = palemoon
 	conflicts = palemoon
-	source = git+https://repo.palemoon.org/MoonchildProductions/Pale-Moon?signed#commit=f694a76857
+	source = git+https://repo.palemoon.org/MoonchildProductions/Pale-Moon?signed#commit=8440447a99
 	source = git+https://repo.palemoon.org/MoonchildProductions/UXP
 	source = mozconfig.in
 	validpgpkeys = 3DAD8CD107197488D2A2A0BD40481E7B8FCF9CEC
 	validpgpkeys = 3059E09144F56804F0FBF4E126B40624BDBFD9F3
 	sha1sums = SKIP
 	sha1sums = SKIP
-	sha1sums = 8b0c53f8975677b864ecfb04eb8611d129e1c05b
+	sha1sums = eb839b808b98106ccd0cbeb6b00ace5b2404db0f
 
 pkgname = palemoon-gtk3
