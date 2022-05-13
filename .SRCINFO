@@ -6,6 +6,7 @@ pkgbase = video-downloader
 	arch = any
 	license = GPL3
 	makedepends = git
+	makedepends = librsvg
 	makedepends = meson
 	depends = ffmpeg
 	depends = gtk3
