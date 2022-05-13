@@ -2,7 +2,7 @@
 
 pkgname=bzip3
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc='A better and stronger spiritual successor to BZip2'
 arch=(x86_64)
 license=(LGPL3)
@@ -10,13 +10,8 @@ url="https://github.com/kspalaiologos/$pkgname"
 depends=(glibc)
 provides=(libbzip3.so)
 _archive="$pkgname-$pkgver"
-source=("$url/archive/$pkgver/$_archive.tar.gz")
-sha256sums=('1262ebfa6a531dede3543d14efd14813d067cfc4c720c0998dc2f1243ccd08b0')
-
-prepare() {
-	cd "$_archive"
-	./bootstrap.sh
-}
+source=("$url/releases/download/$pkgver/$_archive.tar.xz")
+sha256sums=('39e9adce449f85a44506cfe5ae10e2dec6e125b359b9c0b145f15af9b5c8889a')
 
 build() {
 	cd "$_archive"
