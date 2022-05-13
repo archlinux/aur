@@ -3,7 +3,7 @@
 pkgname=bilibili-bin
 _pkgname=bilibili
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Bilibili desktop client'
 license=('custom')
 depends=('ffmpeg' 'electron' 'libappindicator-gtk3')
