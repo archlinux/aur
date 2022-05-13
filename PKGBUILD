@@ -2,7 +2,7 @@
 # Maintainer: amo <https://aur.archlinux.org/account/amo>
 
 pkgname="paperless-ngx"
-pkgver=1.7.0
+pkgver=1.7.1
 pkgrel=1
 pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents"
 url="https://github.com/paperless-ngx/paperless-ngx"
@@ -104,7 +104,7 @@ depends=("file"
          "python-zope-interface")
 optdepends=("jbig2enc: smaller PDF size"
             "postgresql: postgres database")
-source=("$url/releases/download/ngx-$pkgver/$pkgname-$pkgver.tar.xz"
+source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.xz"
         "paperless.hook"
         "paperless.sysusers"
         "paperless.tmpfiles"
@@ -112,7 +112,7 @@ source=("$url/releases/download/ngx-$pkgver/$pkgname-$pkgver.tar.xz"
         "paperless-consumer.service"
         "paperless-scheduler.service"
         "paperless-webserver.service")
-sha256sums=('7a06ece28c1196594a30233f7147acf7a911412bc96893cb212e1dc6b47f0235'
+sha256sums=('f2fc7886f6c8a9a0a18cfc92f10d1aaf66f3fe92f311dc6817b3f680111e1737'
             '4e2ca67d7eedf14ba839af852907e1d76aa0a5ee5f4f740a3aee786c24035ace'
             'a002bd55b8e5b1ef89a10b907483c56df99d52d03951d464472d8c375e9835d6'
             '3971deb5721eb4e01c2cc0348546cc22a861a1e84458061fce4fbd2cf01b2a1e'
