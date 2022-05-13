@@ -1,3 +1,0 @@
-resolver: lts-15.11
-extra-deps:
-- ghc-lib-parser-9.0.1.20210324
