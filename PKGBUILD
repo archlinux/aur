@@ -1,5 +1,5 @@
 pkgname=115pc
-pkgver=1.0.5.18
+pkgver=1.0.6.7
 pkgrel=1
 epoch=
 pkgdesc="115.com PC client"
@@ -25,7 +25,7 @@ source=(
 )
 noextract=()
 sha256sums=(
-    'e2c8e2c94b4f056246df22907829580426d02c1ec0b012e66bfd8166953b9d12'
+    '6625074e2f1fe13528a58eeca5f96035a535861670c04f74c7b5ffc717e34533'
     'SKIP'
     'SKIP'
 )
