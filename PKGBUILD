@@ -5,7 +5,7 @@ pkgver=r1264.4a97bd2
 pkgrel=1
 license=("GPL3")
 pkgdesc="The Hare compiler"
-makedepends=("qbe-git" "git")
+makedepends=("git")
 depends=("qbe-git" "binutils")
 
 arch=("x86_64")
