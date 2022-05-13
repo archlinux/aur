@@ -11,10 +11,5 @@ source_x86_64=("https://github.com/arduino/arduino-cli/releases/download/${pkgve
 sha256sums_x86_64=('45ae384886f25797c7a77cd30f2c2170e110fc36f9817353985d4f77db888a7a')
 
 package() {
-	if [[ -d $HOME/.local/bin ]]
-	then
-		install -Dm755 "${srcdir}/arduino-cli" "$HOME/.local/bin/arduino-cli"
-	else
-		install -Dm755 "${srcdir}/arduino-cli" "${pkgdir}/usr/bin/arduino-cli"
-	fi
+	install -Dm755 "${srcdir}/arduino-cli" "${pkgdir}/usr/bin/arduino-cli"
 }
