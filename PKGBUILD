@@ -73,10 +73,11 @@ package() {
     cd spark2014
     make INSTALLDIR="$pkgdir"/usr install-all install-examples
 
-    for p in gnat2why gnatprove
-    do
-      (cd $p && gprinstall -r --mode=usage -p -P$p --prefix="$pkgdir"/usr)
-    done
+    cd gnat2why
+    gprinstall -r --mode=usage -p -Pgnat2why --prefix="${pkgdir}/usr"
+    cd ..
+
+    gprinstall -r --mode=usage -p -Pgnatprove --prefix="${pkgdir}/usr"
 
     rm -f -- "$pkgdir"/usr/bin/target.atp
 
