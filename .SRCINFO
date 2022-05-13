@@ -1,0 +1,13 @@
+pkgbase = nmap-ncc-scripts-git
+	pkgdesc = NMAP Vulnerability Scanning Scripts by NCC Group
+	pkgver = r15.0a71040
+	pkgrel = 1
+	url = https://github.com/nccgroup/nmap-nse-vulnerability-scripts
+	arch = any
+	license = none
+	makedepends = git
+	depends = nmap
+	source = git+https://github.com/nccgroup/nmap-nse-vulnerability-scripts.git
+	sha512sums = SKIP
+
+pkgname = nmap-ncc-scripts-git
