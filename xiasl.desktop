@@ -5,4 +5,4 @@ Exec=/usr/bin/xiasl
 Icon=xiasl
 Terminal=false
 Type=Application
-Categories=Application;
+Categories=Application;Utilities

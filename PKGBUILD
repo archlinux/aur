@@ -1,7 +1,7 @@
 # Maintainer: Basso Daniele <daniele05 dot bass at gmail dot com>
 pkgname=xiasl
 pkgver=1.1.65
-pkgrel=1
+pkgrel=2
 pkgdesc="Cross-platform DSDT&SSDT IDE"
 arch=(x86_64)
 url="https://github.com/ic005k/$pkgname"
@@ -12,7 +12,7 @@ provides=()
 conflicts=()
 source=("$url/archive/refs/tags/$pkgver.tar.gz" "$pkgname.desktop")
 sha256sums=('b3dcce7f00927cd43764fef7f21091e1c2f431032475733c97a723dafa2730f6'
-            '519895f885ed6e0260f6469dfd7ada412424a3a14efce122339cedd8c4b081df')
+            'b22c9061b8e51333318374202eba41f0fe1d65267b6fa200c185d298b9e042cd')
 
 build() {
   cd "$srcdir/Xiasl-$pkgver"
