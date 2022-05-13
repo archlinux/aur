@@ -13,9 +13,6 @@ conflicts=("${pkgname%-git}")
 source=('git+https://github.com/messense/cargo-xwin')
 md5sums=('SKIP')
 
-# Please refer to the 'USING git SOURCES' section of the PKGBUILD man page for
-# a description of each element in the source array.
-
 pkgver() {
         cd "$srcdir/${pkgname%-git}"
         printf "%s" "$(git describe --long | sed 's/\([^-]*-\)g/r\1/;s/-/./g')"
