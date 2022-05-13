@@ -1,10 +1,11 @@
 pkgbase = bzip3
 	pkgdesc = A better and stronger spiritual successor to BZip2
 	pkgver = 1.1.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/kspalaiologos/bzip3
 	arch = x86_64
 	license = LGPL3
+	makedepends = clang
 	depends = glibc
 	provides = libbzip3.so
 	source = https://github.com/kspalaiologos/bzip3/releases/download/1.1.1/bzip3-1.1.1.tar.xz
