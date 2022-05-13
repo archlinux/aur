@@ -4,7 +4,7 @@
 
 pkgname=hydroxide
 pkgver=0.2.23
-pkgrel=1
+pkgrel=2
 pkgdesc="A third-party, open-source ProtonMail CardDAV, IMAP and SMTP bridge"
 arch=('x86_64')
 url="https://github.com/emersion/${pkgname}"
@@ -12,9 +12,11 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go')
 source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz"
-	"${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.sig")
+	"${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz.sig"
+        "${pkgname}.service")
 sha512sums=('9f2c9b59cb7c1dfcfec9cc626767f340b1d5caea4db69e81de6b87c4bcf26840d14cd6568a0d3aad36d8e31184e2f1827a5e27745338bc2f38265ce64fe2d4a4'
-            'SKIP')
+            'SKIP'
+            '1890e0e1df999242f66ce8fe4744e5ae18c38f8780adddd903e466d1c2d5ac8fffb3c840f6d60e897bd14c7355b8784a784e5be76ddf6a54a44718e0b27edce0')
 validpgpkeys=("34FF9526CFEF0E97A340E2E40FDE7BE0E88F5E48")
 
 prepare() {
@@ -38,4 +40,6 @@ package() {
 	cd "${pkgname}-${pkgver}"
 	install -Dm755 -- "build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 	install -Dm644 -- "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	install -Dm644 -- "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+	install -Dm644 -- "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/user/${pkgname}.service"
 }

@@ -1,0 +1,10 @@
+[Unit]
+Description=A third-party, open-source ProtonMail CardDAV, IMAP and SMTP bridge
+Wants=network.service
+
+[Service]
+ExecStart=/usr/bin/hydroxide serve
+Restart=always
+
+[Install]
+WantedBy=default.target
