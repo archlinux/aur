@@ -1,6 +1,6 @@
 # Maintainer: DarkBlackChocolate <dbchoco.muezzin@gmail.com>
 pkgname="muezzin-bin"
-pkgver=2.4.3
+pkgver=2.5.8
 pkgrel=1
 pkgdesc="Islamic prayer times and adhan application"
 arch=('x86_64')
