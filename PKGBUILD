@@ -2,7 +2,7 @@
 # pkgver, source, and sha1sums are to be generated
 pkgname=freecad-linkstage3-bin
 pkgdesc='A general purpose 3D CAD modeler - Daily build of LinkDaily branch'
-pkgrel=1
+pkgrel=2
 arch=(x86_64)
 url='http://www.freecadweb.org/'
 license=('LGPL')
@@ -21,7 +21,7 @@ sha1sums=(SKIP)
 
 ## END generated variables
 
-source=("https://github.com/Bonnee/freecad-build-arch/releases/download/${pkgver}/freecad-archive.tar.gz")
+source=("$pkgname-$pkgver.tar.gz::https://github.com/Bonnee/freecad-build-arch/releases/download/${pkgver}/freecad-archive.tar.gz")
 
 package() {
 	# Symlink to /usr/bin
