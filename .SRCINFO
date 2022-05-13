@@ -1,7 +1,7 @@
 pkgbase = duality-ex-amp-bin
 	pkgdesc = Audio Assault Duality Bass Studio Bass Amplifier Next Generation
 	pkgver = 20220513
-	pkgrel = 1
+	pkgrel = 2
 	url = https://audioassault.mx/collections/plugins/products/duality-bass-studio
 	arch = x86_64
 	groups = pro-audio
@@ -12,7 +12,7 @@ pkgbase = duality-ex-amp-bin
 	makedepends = unzip
 	depends = libcurl-gnutls
 	depends = glibc
-	source = Duality EX Amp.desktop
+	source = Duality EX Bass Amp.desktop
 	sha256sums = 525811ad46b800f3a6010bac3d89abd1057e7f19150a9dbb11a45cd8ce25d06c
 
 pkgname = duality-ex-amp-bin
