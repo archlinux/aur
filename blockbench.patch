@@ -1,5 +1,5 @@
 diff --git a/main.js b/main.js
-index 53dfa9f..5102b74 100644
+index 4f3546f..1194078 100644
 --- a/main.js
 +++ b/main.js
 @@ -1,7 +1,6 @@
@@ -9,9 +9,9 @@ index 53dfa9f..5102b74 100644
  const url = require('url')
 -const { autoUpdater } = require('electron-updater');
  const fs = require('fs');
- 
- let orig_win;
-@@ -39,7 +38,7 @@ function createWindow(second_instance) {
+ const {getColorHexRGB} = require('electron-color-picker')
+ require('@electron/remote/main').initialize()
+@@ -41,7 +40,7 @@ function createWindow(second_instance) {
  		return;
  	}
  	let win = new BrowserWindow({
@@ -19,8 +19,8 @@ index 53dfa9f..5102b74 100644
 +		icon: nativeImage.createFromPath(path.join(__dirname, 'icon.ico')),
  		show: false,
  		backgroundColor: '#21252b',
- 		frame: false,
-@@ -170,42 +169,7 @@ ipcMain.on('edit-launch-setting', (event, arg) => {
+ 		frame: LaunchSettings.get('native_window_frame') === true,
+@@ -201,45 +200,7 @@ ipcMain.on('request-color-picker', async (event, arg) => {
  })
  
  app.on('ready', () => {
@@ -37,6 +37,9 @@ index 53dfa9f..5102b74 100644
 -	
 -			autoUpdater.autoInstallOnAppQuit = true;
 -			autoUpdater.autoDownload = false;
+-			if (LaunchSettings.get('update_to_prereleases') === true) {
+-				autoUpdater.allowPrerelease = true;
+-			}
 -	
 -			autoUpdater.on('update-available', (a) => {
 -				console.log('update-available', a)
@@ -63,15 +66,3 @@ index 53dfa9f..5102b74 100644
  })
  
  app.on('window-all-closed', () => {
-diff --git a/package-lock.json b/package-lock.json
-index de995a0..7fdb2ab 100644
---- a/package-lock.json
-+++ b/package-lock.json
-@@ -1,6 +1,6 @@
- {
- 	"name": "Blockbench",
--	"version": "3.8.1",
-+	"version": "3.8.3",
- 	"lockfileVersion": 1,
- 	"requires": true,
- 	"dependencies": {
