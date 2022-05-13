@@ -1,24 +1,25 @@
-# Maintainer: ThatOneCalculator <kainoa@t1c.dev>, Sander van Kasteel <info@sandervankasteel.nl>
+# Maintainer: Sander van Kasteel <info@sandervankasteel.nl>, ThatOneCalculator <kainoa@t1c.dev>
 
-pkgname=hyprland-git
+_pkgname="hyprland"
+pkgname="${_pkgname}-git"
 pkgver=r446.gbef4d7c
-pkgrel=2
-pkgdesc="Hyprland is a Dynamic Tiling Wayland Compositor"
+pkgrel=3
+pkgdesc="Hyprland is a dynamic tiling Wayland compositor based on wlroots that doesn't sacrifice on its looks."
 arch=(any)
 url="https://github.com/vaxerski/Hyprland"
 license=('BSD')
 depends=(libxcb xcb-proto xcb-util xcb-util-keysyms libinput libxfixes libx11 libxcomposite xorg-xinput libxrender pixman wayland-protocols wlroots-git)
 makedepends=(git cmake ninja gcc)
-source=("${pkgname%-git}::git+https://github.com/vaxerski/Hyprland.git")
+source=("${_pkgname}::git+https://github.com/vaxerski/Hyprland.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname%-git}"
+  cd "${_pkgname}"
   printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-	cd "${srcdir}/${pkgname%-git}"
+	cd "${srcdir}/${_pkgname}"
 	make config
 	make release
 	cd hyprctl
@@ -26,7 +27,7 @@ build() {
 }
 
 package() {
-	cd "${srcdir}/${pkgname%-git}"
+	cd "${srcdir}/${_pkgname}"
 	install -Dm755 build/Hyprland -t "${pkgdir}/usr/bin"
 	install -Dm755 hyprctl/hyprctl -t "${pkgdir}/usr/bin"
 	install -Dm644 assets/*.png -t "${pkgdir}/usr/share/hyprland"
