@@ -1,5 +1,5 @@
 pkgname=duality-ex-amp-bin
-pkgver=20220505
+pkgver=20220513
 pkgrel=1
 pkgdesc="Audio Assault Duality Bass Studio Bass Amplifier Next Generation"
 arch=('x86_64')
@@ -13,7 +13,7 @@ sha256sums=('525811ad46b800f3a6010bac3d89abd1057e7f19150a9dbb11a45cd8ce25d06c')
 
 prepare () {
 	## Extract Duality Bass Studio
-	_archive="`xdg-user-dir DOWNLOAD`/DualityEXInstallers.zip"
+	_archive="`xdg-user-dir DOWNLOAD`/DualityEX101.zip"
 	ln -srf "${_archive}" "$srcdir/`basename "${_archive}"`"
 	unzip "$srcdir/`basename "${_archive}"`"
 	find $srcdir -name *.DS_Store -delete
@@ -25,7 +25,7 @@ package() {
     cp -rf "$srcdir/Duality EX Linux/Duality EX"/{IRs,MIDI,Presets} "$pkgdir/opt/Audio Assault/Duality EX"
 
     ## Install VST Plugin
-    install -Dm755 "$srcdir/Duality EX Linux/Duality EX vst2.so" "$pkgdir/usr/lib/vst/Duality EX.so"
+    install -Dm755 "$srcdir/Duality EX Linux/Duality EX.so" "$pkgdir/usr/lib/vst/Duality EX.so"
 
     ## Install VST3 Plugin
     mkdir -p "$pkgdir/usr/lib/vst3"
