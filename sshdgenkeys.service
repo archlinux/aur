@@ -6,12 +6,14 @@ ConditionPathExists=|!/etc/ssh/ssh_host_ecdsa_key
 ConditionPathExists=|!/etc/ssh/ssh_host_ecdsa_key.pub
 ConditionPathExists=|!/etc/ssh/ssh_host_ed25519_key
 ConditionPathExists=|!/etc/ssh/ssh_host_ed25519_key.pub
-ConditionPathExists=|!/etc/ssh/ssh_host_key
-ConditionPathExists=|!/etc/ssh/ssh_host_key.pub
 ConditionPathExists=|!/etc/ssh/ssh_host_rsa_key
 ConditionPathExists=|!/etc/ssh/ssh_host_rsa_key.pub
 
 [Service]
-ExecStart=/usr/bin/hpnssh-keygen -A
+# this is horrifying, but doesn't require backflips with prefixes
+ExecStart=/usr/bin/hpnssh-keygen -f /etc/ssh/ssh_host_ed25519_key -t ed25519
+ExecStart=/usr/bin/hpnssh-keygen -f /etc/ssh/ssh_host_ecdsa_key -t ecdsa -b 521
+ExecStart=/usr/bin/hpnssh-keygen -f /etc/ssh/ssh_host_rsa_key -t rsa -b 4096
+ExecStart=/usr/bin/hpnssh-keygen -f /etc/ssh/ssh_host_dsa_key -t dsa
 Type=oneshot
 RemainAfterExit=yes
