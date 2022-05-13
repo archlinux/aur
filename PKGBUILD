@@ -8,8 +8,9 @@ pkgdesc='GTK application to download videos from websites like YouTube and many 
 arch=('any')
 url="https://github.com/Unrud/${pkgname}"
 license=('GPL3')
-depends=('ffmpeg' 'gtk3' 'libhandy' 'python-gobject' 'python-mutagen' 'python-pycryptodomex' 'python-pyxattr' 'python-websockets' 'yt-dlp')
+depends=('ffmpeg' 'gtk3' 'libhandy' 'python-brotli' 'python-gobject' 'python-mutagen' 'python-pycryptodomex' 'python-pyxattr' 'python-websockets' 'yt-dlp')
 makedepends=('git' 'meson')
+optdepends=('rtmpdump: for yt-dlp RTMP streams support')
 source=("git+${url}.git#tag=v${pkgver}")
 b2sums=('SKIP')
 

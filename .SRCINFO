@@ -10,12 +10,14 @@ pkgbase = video-downloader
 	depends = ffmpeg
 	depends = gtk3
 	depends = libhandy
+	depends = python-brotli
 	depends = python-gobject
 	depends = python-mutagen
 	depends = python-pycryptodomex
 	depends = python-pyxattr
 	depends = python-websockets
 	depends = yt-dlp
+	optdepends = rtmpdump: for yt-dlp RTMP streams support
 	source = git+https://github.com/Unrud/video-downloader.git#tag=v0.9.7
 	b2sums = SKIP
 
