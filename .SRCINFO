@@ -1,7 +1,7 @@
 pkgbase = hyprland-git
-	pkgdesc = Hyprland is a Dynamic Tiling Wayland Compositor in early development stages
-	pkgver = r274.2118628
-	pkgrel = 1
+	pkgdesc = Hyprland is a Dynamic Tiling Wayland Compositor
+	pkgver = r446.gbef4d7c
+	pkgrel = 2
 	url = https://github.com/vaxerski/Hyprland
 	arch = any
 	license = BSD

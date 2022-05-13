@@ -1,33 +1,26 @@
-# Maintainer: Sander van Kasteel <info at sandervankasteel dot nl>
+# Maintainer: ThatOneCalculator <kainoa@t1c.dev>, Sander van Kasteel <info@sandervankasteel.nl>
 
 pkgname=hyprland-git
-pkgver=r274.2118628
-pkgrel=1
-pkgdesc="Hyprland is a Dynamic Tiling Wayland Compositor in early development stages"
+pkgver=r446.gbef4d7c
+pkgrel=2
+pkgdesc="Hyprland is a Dynamic Tiling Wayland Compositor"
 arch=(any)
 url="https://github.com/vaxerski/Hyprland"
 license=('BSD')
-depends=(libxcb xcb-proto xcb-util xcb-util-keysyms libinput libxfixes libx11 libxcomposite xorg-xinput libxrender pixman wayland-protocols wlroots-git )
+depends=(libxcb xcb-proto xcb-util xcb-util-keysyms libinput libxfixes libx11 libxcomposite xorg-xinput libxrender pixman wayland-protocols wlroots-git)
 makedepends=(git cmake ninja gcc)
 source=("${pkgname%-git}::git+https://github.com/vaxerski/Hyprland.git")
 sha256sums=('SKIP')
 
 pkgver() {
-	cd "${srcdir}/${pkgname%-git}"
-  ( set -o pipefail
-    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-  )
+  cd "${pkgname%-git}"
+  printf "r%s.g%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
 	cd "${srcdir}/${pkgname%-git}"
 	make config
-	cmake \
-		-B build \
-		-G Ninja \
-		-DCMAKE_BUILD_TYPE=Release
-	ninja -C build
+	make release
 	cd hyprctl
 	make all
 }
