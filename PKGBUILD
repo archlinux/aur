@@ -3,7 +3,7 @@
 pkgname=cpp-taskflow
 _alt_pkgname=taskflow
 pkgver=3.3.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Modern C++ Parallel Task Programming Library"
 arch=('x86_64' 'aarch64')
 url="https://github.com/taskflow/taskflow"
@@ -21,6 +21,7 @@ prepare() {
         -DCMAKE_INSTALL_LIBDIR=lib \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
+        -DTF_BUILD_TESTS=OFF \
         -DTF_BUILD_EXAMPLES=OFF
 }
 
