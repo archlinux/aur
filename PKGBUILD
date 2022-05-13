@@ -2,7 +2,7 @@
 
 pkgname=bzip3
 pkgver=1.1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A better and stronger spiritual successor to BZip2'
 arch=(x86_64)
 license=(LGPL3)
@@ -17,6 +17,11 @@ build() {
 	cd "$_archive"
 	./configure --prefix /usr
 	make all
+}
+
+check() {
+	cd "$_archive"
+	make check
 }
 
 package() {
