@@ -2,7 +2,7 @@
 
 pkgbase=nvidia-open-git
 pkgname=('nvidia-open-git' 'nvidia-open-dkms-git')
-pkgver=515.43.04.r9.gaaaa7d964
+pkgver=515.43.04.r10.gd8f3bcff9
 pkgrel=1
 pkgdesc='NVIDIA open GPU kernel modules (git version)'
 arch=('x86_64')
@@ -15,7 +15,7 @@ source=('git+https://github.com/NVIDIA/open-gpu-kernel-modules.git'
         '120-nvidia-open-linux-rt-gift.patch'
         '130-nvidia-open-reproducible-build.patch')
 sha256sums=('SKIP'
-            '7a73338083b58caf35f79f2443e1f57e9b1866bec29b76b771ab4241e815d03f'
+            '009724e2e07b7be589ba455f225a9742d88a3a29383f2f220cb830ef4c8b7aea'
             'b0f62a78f749ff3a104197c12b6d885352adcf35fb5ecf00c4cd4c51b4195e45'
             'deb3a33519fe62a60eb9d35861576dd8d67fc3d17834195e54fe374c6ece387b')
 
@@ -33,6 +33,7 @@ pkgver() {
 }
 
 build() {
+    sed -i "s/__VERSION_STRING/${pkgver}/" {open-gpu-kernel-modules/kernel-open,dkms-src}/dkms.conf
     make -C open-gpu-kernel-modules SYSSRC='/usr/src/linux' modules
 }
 
