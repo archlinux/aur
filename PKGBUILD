@@ -24,7 +24,7 @@ optdepends=('postgresql-libs: PostgreSQL driver'
 replaces=('qt<=4.8.4')
 conflicts=(qt)
 _pkgfqn="qt-everywhere-opensource-src-${pkgver}"
-source=("https://ftp.desolve.ru/ftp/viktor/qt4/${_pkgfqn}.tar.gz"
+source=("https://src.fedoraproject.org/repo/pkgs/qt/${_pkgfqn}.tar.gz/d990ee66bf7ab0c785589776f35ba6ad/${_pkgfqn}.tar.gz"
         "qtconfig-qt4.desktop"
         "assistant-qt4.desktop"
         "designer-qt4.desktop"
