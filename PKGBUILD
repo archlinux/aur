@@ -46,7 +46,7 @@ mono SMathStudio_Desktop.exe \"$@\"
 
   # install launcher
   install -Dm755 ../$pkgname.sh "$pkgdir"/usr/bin/$pkgname
-  install -Dm644 "../smath.desktop" "${pkgdir}/usr/share/applications/smath.desktop"
-  install -Dm644 "../SMathStudioLogo256.png" "${pkgdir}/usr/share/pixmaps/smath.png"
+  install -Dm644 "${startdir}/smath.desktop" "${pkgdir}/usr/share/applications/smath.desktop"
+  install -Dm644 "${startdir}/SMathStudioLogo256.png" "${pkgdir}/usr/share/pixmaps/smath.png"
 
 }
