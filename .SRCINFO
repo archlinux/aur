@@ -1,10 +1,11 @@
 pkgbase = colorway
 	pkgdesc = Generate color pairings
 	pkgver = 1.2.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/lainsce/colorway
 	arch = x86_64
 	license = GPL3
+	makedepends = git
 	makedepends = meson
 	makedepends = vala
 	depends = libadwaita
