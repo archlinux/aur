@@ -1,7 +1,7 @@
 pkgbase = aurtool-git
 	pkgdesc = Minimal aur package management utility written in bash script
 	pkgver = 0.4
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.github.com/m1ndflay3r/aurtool
 	arch = any
 	license = GPL-3.0
