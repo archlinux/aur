@@ -31,11 +31,13 @@ build() {
   # no need for above when building from git
 	go build -mod=vendor -ldflags "$(./hack/ldflags.sh)" -o ignite ./cmd/ignite	
 	go build -mod=vendor -ldflags "$(./hack/ldflags.sh)" -o ignited ./cmd/ignited
+	go build -mod=vendor -ldflags "$(./hack/ldflags.sh)" -o ignite-spawn ./cmd/ignite-spawn
 }
 
 package() {
  	install -D -m644 "$srcdir/ignited.service" "$pkgdir/usr/lib/systemd/system/ignited.service"
 	install -D -m755 "${_pkgname}/ignite" "${pkgdir}/usr/bin/ignite"
 	install -D -m755 "${_pkgname}/ignited" "${pkgdir}/usr/bin/ignited"
+	install -D -m755 "${_pkgname}/ignite-spawn" "${pkgdir}/usr/bin/ignite-spawn"
 }
 
