@@ -1,7 +1,7 @@
 # Maintainer: Carlos Aznarán <caznaranl@uni.pe>
 # Contributor: CrocoDuck <crocoduck dot oducks at gmail dot com>
 pkgname=gmsh-bin
-pkgver=4.10.1
+pkgver=4.10.2
 pkgrel=1
 pkgdesc="An three-dimensional finite element mesh generator with built-in pre- and post-processing facilities (includes SDK)"
 arch=(x86_64)
@@ -14,7 +14,7 @@ optdepends=('python: for gmsh.py'
 provides=("${pkgname%-*}")
 conflicts=("${pkgname%-*}")
 source=(${url}/bin/Linux/${pkgname%-*}-${pkgver}-Linux64-sdk.tgz)
-sha512sums=('e40774a52af5b8455519f7c4a4ed2669d787f0346e9c1038a8d5e388f85e8c416a0ba82d5e53d9f0eaa46b3a6e983a257eae85940fcf66496a480e94fcce6196')
+sha512sums=('7ba0d36fade61beaae42e4b72e2b2249fa041b6ab72fc1e0c502a7f1806c28420f30a971bc27c1c8d8a6b479e3b2a59c6d6075512a1095ef410afb4214bee8ef')
 
 prepare() {
   # Set Icon and Launcher:
