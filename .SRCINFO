@@ -1,19 +1,19 @@
 pkgbase = v2x-git
 	pkgdesc = A tool for converting specialized annotated Verilog models into XML
-	pkgver = 0.0.r593.gd061333
+	pkgver = 0.0.r616.g1325cb3
 	pkgrel = 1
 	url = https://github.com/SymbiFlow/python-symbiflow-v2x
 	arch = any
-	license = ISC
+	license = Apache
 	checkdepends = python-pytest
-	checkdepends = python-vtr-xml-utils
 	makedepends = git
 	makedepends = python-setuptools
 	makedepends = python-pytest-runner
 	depends = python
 	depends = python-lxml
-	depends = yosys>0.9
-	provides = v2x=0.0.r593.gd061333
+	depends = python-vtr-xml-utils
+	depends = yosys
+	provides = v2x=0.0.r616.g1325cb3
 	conflicts = v2x
 	source = git+https://github.com/SymbiFlow/python-symbiflow-v2x.git
 	sha256sums = SKIP
