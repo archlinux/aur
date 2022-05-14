@@ -8,11 +8,13 @@ arch=('x86_64')
 url="https://git.sr.ht/~kennylevinsen/greetd"
 license=(GPL3)
 source=("https://git.sr.ht/~kennylevinsen/greetd/archive/${pkgver}.tar.gz"
+        "change-default-vt.patch"
         "greetd.initd"
         "greetd.confd"
         "greetd.pam"
         "greetd.sysusers")
 sha256sums=('47a73709df60f04b63fc50cfc409e47a451a9620777638f527b9d9333256035f'
+            'cad9073f77421e21752806ae74dbbc4c3ccf30978e196b6a1ae07382e4a7caa8'
             'd0aa8af224907ccb123369948a97ee1942cc4ac0f18f6a4f5d02b73bc365578f'
             'aeed4de39fdb471e0ad8a7f1471232e97925447213292fe4c57317aab6cf035a'
             '993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92'
@@ -35,6 +37,8 @@ backup=(
 
 prepare() {
     cd "greetd-${pkgver}/"
+
+    patch <"${srcdir}/change-default-vt.patch"
 
     cargo fetch --locked --target "${CARCH}-unknown-linux-gnu"
 }
