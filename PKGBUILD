@@ -2,7 +2,7 @@
 
 pkgname=novelwriter-git
 _pkgname=novelWriter
-pkgver=v1.6.2.r12.g23fd6b81
+pkgver=v1.6.2.r88.gbadb7685
 pkgrel=1
 epoch=1
 pkgdesc="Markdown-like text editor designed for writing novels and larger projects of many smaller plain text documents"
