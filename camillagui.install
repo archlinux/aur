@@ -1,0 +1,4 @@
+post_install() {
+	chown -R http:http srv/http/settings/camillagui
+	chmod -R 755 srv/http/settings/camillagui
+}
