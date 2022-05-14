@@ -2,7 +2,7 @@
 # Contributor: Bruno Pagani <archange@archlinux.org>
 
 pkgname=prusa-slicer-gtk2
-pkgver=2.4.1
+pkgver=2.4.2
 pkgrel=0
 pkgdesc="G-code generator for 3D printers (built with GTK2)"
 arch=(x86_64 i686 arm armv6h armv7h aarch64)
@@ -17,7 +17,7 @@ source=(${url}/archive/version_${pkgver}/${pkgname}-${pkgver}.tar.gz
         ${pkgname}-fix-lcereal-p1.patch::${url}/commit/0ffcfd8393457fd035576436752267c9a1e6bbcc.patch
         ${pkgname}-fix-lcereal-p2.patch::${url}/commit/cc788ebb643b6d4048f3550235ac3e9d3697ada0.patch
         use-system-catch2.patch)
-sha256sums=('a0ba9de6f7c8159d033ea69a2c5ebd6172a97f29902303e9897249447ce5e498'
+sha256sums=('ac3a77212260e8d0baf9df027c29e0ae965bc77f371e59fd27b8fe103ebb1f23'
             'e110c3ca7cd8034f878b22e4992c442cc200a7c001d570dc2c9eef8a6af41786'
             'eb5bce1cb5b3970a1aa92fd9b7fe1943da4d7bb2c9908890811090914fef91c4'
             '3639dc2d290dc9a7d16259e0b421f8d21f16fb4abe46bbb3fab9328930fc5758')
