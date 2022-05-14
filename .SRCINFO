@@ -1,0 +1,16 @@
+pkgbase = scb-git
+	pkgdesc = A simple frontend for grepping around source code.
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/FragmentedCurve/scb/
+	arch = x86_64
+	license = BSD
+	makedepends = git
+	makedepends = make
+	depends = ncurses
+	provides = scb
+	conflicts = scb
+	source = git+https://github.com/FragmentedCurve/scb.git
+	md5sums = SKIP
+
+pkgname = scb-git
