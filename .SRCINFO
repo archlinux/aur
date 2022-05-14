@@ -1,6 +1,6 @@
 pkgbase = holehe-git
 	pkgdesc = Efficiently finding registered accounts from emails.
-	pkgver = r385.aba9857
+	pkgver = r388.7c2bde2
 	pkgrel = 1
 	url = https://github.com/megadose/holehe
 	arch = any
