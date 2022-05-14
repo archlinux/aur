@@ -20,6 +20,7 @@ sha256sums=('47a73709df60f04b63fc50cfc409e47a451a9620777638f527b9d9333256035f'
             '993a3096c2b113e6800f2abbd5d4233ebf1a97eef423990d3187d665d3490b92'
             '4284359a977acec757f97fae11bc8ec8a579b35238594b68d5eb5cc6feb130ba')
 
+provides=('greetd')
 depends=(pam)
 makedepends=(cargo scdoc)
 optdepends=(
