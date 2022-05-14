@@ -1,7 +1,7 @@
 pkgbase = lv2-c++-tools
 	pkgdesc = Tools and libraries that may come in handy when writing LV2 plugins.
-	pkgver = 1.0.5
-	pkgrel = 3
+	pkgver = 1.0.6
+	pkgrel = 1
 	url = http://ll-plugins.nongnu.org/hacking.html
 	arch = i686
 	arch = x86_64
