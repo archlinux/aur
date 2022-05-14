@@ -1,11 +1,11 @@
 # Maintainer: Bjoern Franke <bjo+aur@schafweide.org>
 pkgname=heisenbridge
 pkgver=1.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a bouncer-style Matrix IRC bridge"
 url="https://github.com/hifi/heisenbridge"
 depends=('python' 'python-irc' 'python-ruamel-yaml' 'python-aiohttp-socks'
-	'python-mautrix>=0.14.0' 'python-mautrix<0.15')
+	'python-mautrix>=0.14.0' 'python-mautrix<0.17')
 makedepends=('python-setuptools' 'python-pytest-runner')
 license=('MIT')
 arch=('any')
@@ -23,7 +23,7 @@ prepare() {
 	cd "${srcdir}/${_dirname}"
 	# create an empty registration file so that permissions get written properly from the get go
 	# this way secret keys are never world readable
-#	touch registration.yaml
+	touch registration.yaml
 }
 
 build() {
