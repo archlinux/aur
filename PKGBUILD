@@ -52,7 +52,7 @@ prepare() {
   export CGO_CFLAGS="$CFLAGS"
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
-  export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
+  export GOFLAGS="-buildmode=pie -modcacherw"
 
   # dirty fix go1.18
   sed -i -r 's,^go 1\.[0-9]+,go 1.18,' go.mod
