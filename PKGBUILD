@@ -1,14 +1,14 @@
 # Maintainer:       Misaka13514 <Misaka13514 at gmail dot com>
 # Co-Maintainer:    zzjzxq33 <wojiushixxx at 126 dot com>
 pkgname=bbg-git
-pkgver=20220315.r18.ca6cae1
+pkgver=20220514.r1.4277326
 pkgrel=1
 pkgdesc="A static blog generator built with electron"
 arch=('any')
 url="https://github.com/baiyang-lzy/bbg"
 license=('Unlicense')
 depends=('electron16')
-makedepends=('git' 'yarn')
+makedepends=('git' 'yarn' 'asar')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
 source=(
@@ -32,14 +32,14 @@ pkgver() {
 build() {
 	cd "$srcdir/${pkgname%-git}"
 	yarn install
-	yarn run package_linux
+	asar pack . app.asar
 }
 
 package() {
 	cd "$srcdir"
 	install -dm755 "${pkgdir}/usr/share/${pkgname%-git}"
 	install -Dm755 bbg.sh "${pkgdir}/usr/bin/${pkgname%-git}"
-	install -Dm644 "${pkgname%-git}/bbg-linux-x64/resources/app.asar" "${pkgdir}/usr/share/${pkgname%-git}/app.asar"
+	install -Dm644 "${pkgname%-git}/app.asar" "${pkgdir}/usr/share/${pkgname%-git}/app.asar"
 	install -Dm644 bbg.desktop "${pkgdir}/usr/share/applications/${pkgname%-git}.desktop"
 	install -Dm644 icon.png "${pkgdir}/usr/share/icons/${pkgname%-git}.png"
 
