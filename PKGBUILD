@@ -1,6 +1,6 @@
 # Maintainer: Filippo Falezza <filippo dot falezza at outlook dot it>
 
-pkgname=cross-mipsel-linux-gnu-gcc
+pkgname=cross-mipsel-linux-gnu-gcc91
 _pkgname=gcc
 _target="mipsel-linux-gnu"
 pkgver=9.1.0
@@ -11,6 +11,7 @@ arch=('x86_64')
 license=('GPL' 'LGPL' 'FDL')
 depends=('libmpc' 'xz' "cross-${_target}-binutils")
 makedepends=('gmp' 'mpfr')
+conflicts=('cross-mipsel-linux-gnu-gcc')
 options=('!ccache' '!distcc' '!emptydirs' '!libtool' '!strip')
 source=("ftp://ftp.gnu.org/gnu/gcc/gcc-${pkgver}/${_pkgname}-${pkgver}.tar.xz")
 sha256sums=('79a66834e96a6050d8fe78db2c3b32fb285b230b855d0a66288235bc04b327a0')
