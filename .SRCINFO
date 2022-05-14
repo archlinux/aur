@@ -1,0 +1,71 @@
+pkgbase = kawaiki-grub2-themes-git
+	pkgdesc = Kawaiki Design themes for Grub
+	pkgver = r207.427aa2f
+	pkgrel = 1
+	url = https://github.com/lucidtanooki/kawaiki-grub2-themes
+	arch = any
+	license = GPL3
+	makedepends = git
+	depends = grub
+	source = git+https://github.com/lucidtanooki/kawaiki-grub2-themes.git
+	sha256sums = SKIP
+
+pkgname = grub-theme-kawaiki-color-1080p-git
+	provides = grub-theme-kawaiki-color-1080p
+	conflicts = grub-theme-kawaiki-color-1080p
+
+pkgname = grub-theme-kawaiki-white-1080p-git
+	provides = grub-theme-kawaiki-white-1080p
+	conflicts = grub-theme-kawaiki-white-1080p
+
+pkgname = grub-theme-kawaiki-whitesur-1080p-git
+	provides = grub-theme-kawaiki-whitesur-1080p
+	conflicts = grub-theme-kawaiki-whitesur-1080p
+
+pkgname = grub-theme-kawaiki-color-2k-git
+	provides = grub-theme-kawaiki-color-2k
+	conflicts = grub-theme-kawaiki-color-2k
+
+pkgname = grub-theme-kawaiki-white-2k-git
+	provides = grub-theme-kawaiki-white-2k
+	conflicts = grub-theme-kawaiki-white-2k
+
+pkgname = grub-theme-kawaiki-whitesur-2k-git
+	provides = grub-theme-kawaiki-whitesur-2k
+	conflicts = grub-theme-kawaiki-whitesur-2k
+
+pkgname = grub-theme-kawaiki-color-4k-git
+	provides = grub-theme-kawaiki-color-4k
+	conflicts = grub-theme-kawaiki-color-4k
+
+pkgname = grub-theme-kawaiki-white-4k-git
+	provides = grub-theme-kawaiki-white-4k
+	conflicts = grub-theme-kawaiki-white-4k
+
+pkgname = grub-theme-kawaiki-whitesur-4k-git
+	provides = grub-theme-kawaiki-whitesur-4k
+	conflicts = grub-theme-kawaiki-whitesur-4k
+
+pkgname = grub-theme-kawaiki-color-ultrawide-git
+	provides = grub-theme-kawaiki-color-ultrawide
+	conflicts = grub-theme-kawaiki-color-ultrawide
+
+pkgname = grub-theme-kawaiki-white-ultrawide-git
+	provides = grub-theme-kawaiki-white-ultrawide
+	conflicts = grub-theme-kawaiki-white-ultrawide
+
+pkgname = grub-theme-kawaiki-whitesur-ultrawide-git
+	provides = grub-theme-kawaiki-whitesur-ultrawide
+	conflicts = grub-theme-kawaiki-whitesur-ultrawide
+
+pkgname = grub-theme-kawaiki-color-ultrawide2k-git
+	provides = grub-theme-kawaiki-color-ultrawide2k
+	conflicts = grub-theme-kawaiki-color-ultrawide2k
+
+pkgname = grub-theme-kawaiki-white-ultrawide2k-git
+	provides = grub-theme-kawaiki-white-ultrawide2k
+	conflicts = grub-theme-kawaiki-white-ultrawide2k
+
+pkgname = grub-theme-kawaiki-whitesur-ultrawide2k-git
+	provides = grub-theme-kawaiki-whitesur-ultrawide2k
+	conflicts = grub-theme-kawaiki-whitesur-ultrawide2k
