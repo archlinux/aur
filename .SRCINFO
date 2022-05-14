@@ -1,0 +1,15 @@
+pkgbase = cl-pythonic-string-reader
+	pkgdesc = A simple read table modification inspired by Python three quote strings
+	pkgver = r8.g47a70ba
+	pkgrel = 1
+	url = https://github.com/smithzvk/pythonic-string-reader
+	arch = any
+	license = BSD
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	depends = cl-named-readtables
+	source = cl-pythonic-string-reader::git+https://github.com/smithzvk/pythonic-string-reader#commit=47a70ba1e32362e03dad6ef8e6f36180b560f86a
+	b2sums = SKIP
+
+pkgname = cl-pythonic-string-reader
