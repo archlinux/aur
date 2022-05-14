@@ -1,21 +1,16 @@
+# Maintainer Kyle Ultimate <shiue at gamil dot com>
+
 pkgname=rpmlauncher-git
 pkgver=1.0.6+880.r1.g45fe3b5
 pkgrel=1
 pkgdesc="A better Minecraft Launcher that supports cross-platform and many functionalities for you to explore!"
 license=('GPL3')
-depends=('git')
-makedepends=('ninja' 'cmake' 'clang' 'dart' 'flutter-beta')
+makedepends=('ninja' 'cmake' 'clang' 'flutter' 'git')
 arch=('x86_64')
-checkdepends=()
-optdepends=()
 provides=('rpmlauncher')
 conflicts=('rpmlauncher' 'rpmlauncher-bin')
-replaces=()
-backup=()
-options=()
-changelog=
 source=('RPMLauncher::git+https://github.com/RPMTW/RPMLauncher#branch=develop')
-md5sums=('SKIP')
+sha256sums=('SKIP')
 pkgver(){
   cd "RPMLauncher"
   git describe --long --tags | sed 's/\([^-]*-g\)/r\1/;s/-/./g'

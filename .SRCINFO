@@ -7,13 +7,12 @@ pkgbase = rpmlauncher-git
 	makedepends = ninja
 	makedepends = cmake
 	makedepends = clang
-	makedepends = dart
-	makedepends = flutter-beta
-	depends = git
+	makedepends = flutter
+	makedepends = git
 	provides = rpmlauncher
 	conflicts = rpmlauncher
 	conflicts = rpmlauncher-bin
 	source = RPMLauncher::git+https://github.com/RPMTW/RPMLauncher#branch=develop
-	md5sums = SKIP
+	sha256sums = SKIP
 
 pkgname = rpmlauncher-git
