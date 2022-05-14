@@ -1,7 +1,7 @@
 # Author: Liran Piade <liranpiade@gmail.com>
 
 pkgname=twoinone
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 pkgdesc="Software built to allow convertible 2 in 1s to switch between operation modes manually"
 arch=('any')
