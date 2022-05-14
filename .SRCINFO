@@ -1,0 +1,13 @@
+pkgbase = cl-html-encode
+	pkgdesc = A small library for encoding text in various web-savvy formats
+	pkgver = 1.2
+	pkgrel = 1
+	url = https://cliki.net/html-encode
+	arch = any
+	license = MIT
+	depends = common-lisp
+	depends = cl-asdf
+	source = cl-html-encode-1.2.tar.gz::https://beta.quicklisp.org/archive/html-encode/2010-10-06/html-encode-1.2.tgz
+	b2sums = 98df171e0def56c0d52b2837ee43dc89a61365c6fbfbba6ed2e521e356d2b15bd4c45e72afdc2118512d205db38f3adb7857f238deca61ff375c9df0e9450ea9
+
+pkgname = cl-html-encode
