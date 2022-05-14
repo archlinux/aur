@@ -1,6 +1,6 @@
 _pkgname=cyberdrop-dl
 pkgname="cyberdropdownloader"
-pkgver=2.21.4
+pkgver=2.21.5
 pkgrel=1
 pkgdesc="Bulk downloader for multiple file hosts"
 arch=('any')
@@ -10,7 +10,7 @@ url="https://github.com/Jules-WinnfieldX/CyberDropDownloader"
 license=('GPL3')
 conflicts=('cyberdropdownloader-bin' 'cyberdrop-dl' 'cyberdrop-dl-git')
 source=("https://files.pythonhosted.org/packages/source/c/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha256sums=('8cdca0da9ef905328cb54a7614b294a55041dd248c4c3cadc5251911ad3582e9')
+sha256sums=('fe2380c6340623cc2ba1512b17577647dcf567a21e00a3c7f3c826c9c1587995')
 
 build(){
     cd $_pkgname-$pkgver
