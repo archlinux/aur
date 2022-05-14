@@ -1,7 +1,7 @@
 # Maintainer: Agampreet
 # Contributor: Agampreet
 pkgname=ms-office-electron-git
-pkgver=0.7.0
+pkgver=0
 pkgrel=1
 pkgdesc="An Unofficial Microsoft Office Online Desktop Client. Free of Cost."
 arch=('x86_64')
@@ -14,16 +14,21 @@ conflicts=("ms-office-electron-bin")
 source=("${pkgname%-git}::git+https://github.com/agam778/MS-Office-Electron.git")
 sha256sums=('SKIP')
 
+pkgver() {
+  cd "$srcdir/${pkgname%-git}"
+  git describe --long --tags | sed 's/^v//;s/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 build() {
     cd "$srcdir/${pkgname%-git}"
     yarn config set cache-folder "$srcdir/yarn-cache"
     yarn install
-    yarn dist -l deb
+    yarn dist -l deb --config.artifactName="MS-Office-Electron-Setup.deb"
 }
 
 package() {
     cd "$srcdir/${pkgname%-git}"
-    bsdtar -xf "${srcdir}/${pkgname%-git}/release/MS-Office-Electron-Setup-v${pkgver}-linux-amd64.deb" -C "${srcdir}" --include data.tar.xz
+    bsdtar -xf "${srcdir}/${pkgname%-git}/release/MS-Office-Electron-Setup.deb" -C "${srcdir}" --include data.tar.xz
     bsdtar -xf ${srcdir}/data.tar.xz -C ${pkgdir}
     install -d ${pkgdir}/usr/bin/
     ln -s /opt/MS-Office-Electron/ms-office-electron ${pkgdir}/usr/bin/ms-office-electron
