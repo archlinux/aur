@@ -20,10 +20,6 @@ build() {
     make CHICKEN_CSC=chicken-csc
 }
 
-check() {
-    cd "$_pkgname"
-}
-
 package() {
     cd "$_pkgname"
     mkdir -p "$pkgdir/usr/bin/"
