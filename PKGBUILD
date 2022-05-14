@@ -1,5 +1,4 @@
-#!/hint/bash
-# Maintainer : Daniel Menelkir <dmenelkir@gmail.com>
+# Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
 # Contributor : bartus <arch-local-repo(at).bartus.33mail.com>
 # Contributor : Rafał Kozdrój <kozeid2+aur@gmail.com>
 # Contributor : kikadf <kikadf.01@gmail.com>
@@ -7,8 +6,6 @@
 # Contributor : Miguel Revilla <yo at  miguelrevilla dot com>
 # Contributor : Alfonso Saavedra "Son Link" <sonlink.dourden@gmail.com>
 # Contributor : Hexchain Tong <i at hexchain dot org>
-# shellcheck disable=SC2034,SC2154 # unused/uninitialized variables
-# shellcheck disable=SC2164 # cd safe
 
 pkgname=megasync-nopdfium
 pkgver=4.6.6.0
