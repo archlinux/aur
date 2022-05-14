@@ -5,7 +5,7 @@
 pkgname="odoo"
 pkgver=15.0
 _pkgsubver=20220512
-pkgrel=1
+pkgrel=2
 pkgdesc="Web-based Open Source Business Apps"
 url="https://www.odoo.com/"
 arch=("any")
