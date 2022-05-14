@@ -24,6 +24,10 @@ pkgver() {
 
 package() {
     cd "$srcdir/$_pkgname"
-    install -vDm 755 $_pkgname.sh "$pkgdir/usr/bin/$_pkgname"
+    sed  's/$(dirname "${BASH_SOURCE\[0]}")"/\/var\/lib\/xdg-ninja"/w replaced.txt' $_pkgname.sh > $_pkgname-patched.sh
+    test -s replaced.txt || (echo 'Patch failed, please report out-of-date on AUR' && return 1)
+    install -vDm 755 $_pkgname-patched.sh "$pkgdir/usr/bin/$_pkgname"
+    mkdir -p "$pkgdir/var/lib/$_pkgname/"
+    cp -r programs/ "$pkgdir/var/lib/$_pkgname/"
 }
 
