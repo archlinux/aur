@@ -37,9 +37,9 @@ pkgver() {
   #VERSION=$(grep -E "^const CurrentVersionNumber = " version.go | awk '{ print $4 }' | sed 's/"//g')
   VERSION=$(git tag | grep -vE "floodsub|sharding-pre" | grep -ve "-dev" | sed 's/-/~/g' | sort --version-sort --reverse | sed 's/~/-/g' | head -n1)
   COUNT=$(git rev-list "$VERSION.." --count)
-  CHKSUM=$(git rev-list master | head -n1)
+  CHKSUM="$(git rev-parse --short HEAD)"
   VERSION=$(echo "$VERSION" | sed 's/^v//' | sed 's/-//')
-  printf "%s.%s.%s" "$VERSION" "r$COUNT" "g${CHKSUM:0:9}"
+  printf "%s.%s.%s" "$VERSION" "r$COUNT" "g${CHKSUM}"
 }
 
 build() {
