@@ -17,3 +17,5 @@ git push
 
 echo $currentVersion > lastVersion
 
+rm "mkgmap-r${currentVersion}.zip"
+
