@@ -6,10 +6,10 @@
 # Contributor: Luca Weiss <luca (at) z3ntu (dot) xyz>
 # Contributor: Julian Schacher <jspp@posteo.net>
 
-_electron=electron15
+_electron=electron17
 pkgname=schildichat-desktop
-pkgver=1.10.4.sc.1
-pkgrel=2
+pkgver=1.10.12.sc.1
+pkgrel=1
 pkgdesc="A Matrix client based on Element with a more traditional instant messaging experience"
 arch=(x86_64)
 url="https://schildi.chat"
@@ -22,7 +22,6 @@ source=(git+https://github.com/SchildiChat/schildichat-desktop.git#tag=v${pkgver
         git+https://github.com/SchildiChat/element-web.git
         git+https://github.com/SchildiChat/element-desktop.git
         autolaunch.patch
-        encapsulate-sqlcipher.diff
         schildichat-desktop.desktop
         schildichat-desktop.sh)
 sha256sums=('SKIP'
@@ -31,7 +30,6 @@ sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'e44bd0eec6693a08c368cbeb7707241221c77efa940d4100716c8cd1e1813724'
-            '3b2112d25b258b67d18b9329faeb9e5c5b218732c9c020ee01911347a90a1cb8'
             '04610d85973c320d0fea5853c8a5fd55e701e9d31c0651bb9b698ed31546d3eb'
             'da41f71e000cd64f8da66725c0ff95bbf525d5d5f953a93f355ea8d9f5f6ef53')
 
@@ -53,7 +51,6 @@ prepare() {
 
   cd element-desktop
   patch -p1 < "${srcdir}/autolaunch.patch"
-  patch -p1 < "${srcdir}/encapsulate-sqlcipher.diff"
   cd "${srcdir}/${pkgname}"
   make setup
 }
