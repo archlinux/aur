@@ -13,18 +13,18 @@ license=('GPL3' 'custom')
 
 makedepends=('gprbuild')
          
-source=("https://github.com/AdaCore/VSS/archive/refs/heads/22.0.zip")
-sha1sums=(909c092bbe2626ce18f46ca37c55d04226335d01)
+source=("https://github.com/AdaCore/VSS/archive/refs/tags/v22.0.0.tar.gz")
+sha256sums=(eddccea4b109ce67f13c92937e59e5ae00a93244c8c05b1234c7b6413451f24e)
 
 build()
 {
-   cd "$srcdir/VSS-22.0"
+   cd "$srcdir/VSS-22.0.0"
    make all
 }
 
 package()
 {
-   cd "$srcdir/VSS-22.0"
+   cd "$srcdir/VSS-22.0.0"
 
    gprinstall -p --prefix="$pkgdir/usr" gnat/vss_json.gpr
    gprinstall -p --prefix="$pkgdir/usr" gnat/vss_text.gpr
