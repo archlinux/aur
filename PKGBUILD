@@ -1,14 +1,15 @@
-# Maintainer: Muflone http://www.muflone.com/contacts/english/
+# Maintainer: Muflone https://www.muflone.com/contacts/english/
 
 pkgname=bluewho-git
-pkgver=0.3.0
+pkgver=0.5.0
 pkgrel=1
 pkgdesc="Information and notification of new discovered bluetooth devices"
-url="http://www.muflone.com/bluewho"
+url="https://www.muflone.com/bluewho"
 arch=('any')
 license=('GPL3')
 makedepends=('git')
-depends=('gtk3' 'gobject-introspection' 'python-xdg' 'python-gobject' 'python-pybluez' 'gtk-update-icon-cache')
+depends=('gtk3' 'gobject-introspection' 'libnotify'
+         'python-dbus' 'python-xdg' 'python-gobject' 'python-bluezero')
 optdepends=('libcanberra: to play notification sound using canberra-gtk-play'
             'alsa-utils: to play notification sound using aplay'
             'libpulse: to play notification sound using paplay'
