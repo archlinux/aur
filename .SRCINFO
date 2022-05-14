@@ -1,7 +1,7 @@
 pkgbase = hprt-mt800-drivers
 	pkgdesc = CUPs filter and ppd files for HPRT MT800 serises
 	pkgver = 1.2.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://www.hprt.com/mt800/drivers.html
 	arch = x86_64
 	license = Unlicense

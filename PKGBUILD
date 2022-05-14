@@ -1,7 +1,7 @@
 # Maintainer: Tommy Jerry Mairo <tjm@member.fsf.org>
 pkgname=hprt-mt800-drivers
 pkgver=1.2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="CUPs filter and ppd files for HPRT MT800 serises"
 arch=("x86_64")
 url="https://www.hprt.com/mt800/drivers.html"
@@ -17,5 +17,8 @@ package() {
 	install -m 755 filter/x64/raster-esc "$pkgdir/usr/lib/cups/filter"
 	mkdir -p "$pkgdir/usr/share/cups/drv/hprt"
 	install -m 644 ppd/*.ppd "$pkgdir/usr/share/cups/drv/hprt"
-	ln -T "../drv/hprt" "$pkgdir/usr/share/cups/model/hprt"
+
+	mkdir -p "$pkgdir/usr/share/cups/model"
+	cd "$pkgdir/usr/share/cups/model"
+	ln -T '../drv/hprt' 'hprt'
 }
