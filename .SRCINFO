@@ -1,0 +1,23 @@
+pkgbase = wcc
+	pkgdesc = The Witchcraft Compiler Collection
+	pkgver = 0.0.4
+	pkgrel = 1
+	url = https://github.com/endrazine/wcc
+	arch = i686
+	arch = x86_64
+	license = custom:MIT
+	makedepends = git
+	makedepends = make
+	depends = capstone
+	depends = glibc
+	depends = binutils
+	depends = zlib
+	depends = libelf
+	depends = linenoise
+	depends = lua53
+	source = wcc-0.0.4.tar.gz::https://github.com/endrazine/wcc/archive/refs/tags/v0.0.4.tar.gz
+	source = wsh-system-libs.patch
+	b2sums = b08196fd15657c896cac6cfa309efd082471fdb87b8146b0ee17d686c09c6246e35aae843a979fdb732fc1083b635faeba89e0d124764083fc8335043417c75a
+	b2sums = 18ae4ddf34ebf3d290183c41fe93d899a35d1330addff8ca9ae2be894164ba28d405fcf1eb47930355fd49065e12f3941a7cec9c8b2cb68c4cc22e29aa2dbb4e
+
+pkgname = wcc

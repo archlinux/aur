@@ -1,0 +1,33 @@
+--- src/wsh/Makefile.orig	2022-05-14 21:18:27.497138742 +0300
++++ src/wsh/Makefile	2022-05-14 21:25:29.500992409 +0300
+@@ -7,21 +7,20 @@
+ # This file is licensed under MIT License.
+ #
+ 
+-OBJLIB := ./lua/src/liblua.a ./openlibm/libopenlibm.a
++PKG_CFLAGS := $(shell pkg-config --cflags lua53)
++PKG_LIBS := $(shell pkg-config --libs lua53) -llinenoise
++
++OBJLIB := $(PKG_LIBS)
+ 
+ #CFLAGS := -rdynamic -W -Wall -Wextra -O0 -mpreferred-stack-boundary=12 -mstackrealign -ggdb -g3 -Wno-unused-but-set-variable -Wno-unused-parameter -I./include -rdynamic -I../../include/ -I./luajit-2.0/src/ -Wl,-E -Wl,-z,now
+ #OBJLIB := ./luajit-2.0/src/libluajit.a ./openlibm/libopenlibm.a 
+ 
++all: override CFLAGS += $(PKG_CFLAGS) -fpie -fPIC
+ all::
+-	cd openlibm && make CFLAGS="-fpie -fPIC"
+-	cd lua && make linux CFLAGS="-fpie -fPIC"
+-	$(CC) $(CFLAGS) wsh.c -o wsh.o -c -fpie -fPIC -ldl -lreadline
+-	$(CC) $(CFLAGS) wshmain.c -o wshmain.o -c -fpie -fPIC -ldl -lreadline
+-	$(CC) $(CFLAGS) helper.c -o helper.o -c -fpie -fPIC
+-	$(CC) $(CFLAGS) linenoise/linenoise.c -o linenoise.o -c -fpie -fPIC
+-	$(CC) $(CFLAGS) wsh.o helper.o linenoise.o -shared -fPIC -o libwitch.so
+-	ar cr libwitch.a wsh.o helper.o linenoise.o
+-	$(CC) $(CFLAGS) wsh.o helper.o linenoise.o wshmain.o -o wsh -Wl,-T -Wl,script.lds -liberty $(OBJLIB) -ldl
++	$(CC) $(CFLAGS) wsh.c -o wsh.o -c
++	$(CC) $(CFLAGS) wshmain.c -o wshmain.o -c
++	$(CC) $(CFLAGS) helper.c -o helper.o -c
++	$(CC) $(CFLAGS) wsh.o helper.o wshmain.o -o wsh -Wl,-T -Wl,script.lds -liberty $(OBJLIB) -ldl $(LDFLAGS) -Wl,--as-needed,--no-undefined
+ 
+ 	cp wsh ../../bin/
+ 
