@@ -5,5 +5,10 @@
 # package uses a faster mirror):
 # https://kernel.googlesource.com/pub/scm/linux/kernel/git/${REMOTE}
 
+# These are the default values if none is selected:
 # REMOTE="torvalds/linux"
 # COMMIT="master"
+
+# This is an example if v5.17.7 stable is to be used
+# REMOTE="stable/linux"
+# COMMIT="v5.17.7"
