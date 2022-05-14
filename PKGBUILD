@@ -3,8 +3,8 @@
 
 pkgname=gtkada
 epoch=1
-pkgver=21.0.0
-pkgrel=5
+pkgver=22.0.0
+pkgrel=1
 
 pkgdesc='Ada bindings for the Gtk+ library.'
 url='https://github.com/AdaCore/gtkada'
@@ -14,12 +14,12 @@ license=('GPL3' 'custom')
 depends=('gcc-ada' 'gtk3')
 makedepends=('gprbuild')
 
-_git_hash=013b6f475704f6c75a1d38592b159e3af765391b
+_git_hash=9c54a721320e1271ebc884f6bdae31b1a85e8798
 
 source=("$pkgname-$_git_hash.tar.gz::$url/archive/$_git_hash.tar.gz"
         "Makefile.in-patch")
-md5sums=("385690daefa47a35c16a2f48bd5cfa4c"
-         "fbf1d0e9adf74b03e85fb2d698fe7b85")
+sha256sums=("f4ad2cb3a1444a8abc3173bb9ed76f9b24cdae65504d14fecf442394e516b65d"
+            "f525df1f7c319f1dc95ddafe1a73d961ce162c6171c97b0df3ae756122ca76d4")
 
 prepare()
 {
