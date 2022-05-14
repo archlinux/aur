@@ -5,45 +5,38 @@
 
 pkgname=gnat-gps
 pkgver=2022
-pkgrel=2
+pkgrel=3
 pkgdesc="GNAT Programming Studio for Ada"
 
 arch=('i686' 'x86_64')
 url="https://github.com/AdaCore/gps"
 license=('GPL')
 
-depends=("clang" "ada_language_server"
-         "gnatcoll-python2" "gnatcoll-xref" "gnatcoll-db2ada" "gtkada"
-         "python2-gobject" "python2-gobject2" "python2-cairo"
-         "python2-yaml")
+depends=("clang"            "ada_language_server"
+         "gnatcoll-python2" "gnatcoll-xref"    "gnatcoll-db2ada" "gtkada"
+         "python2-gobject"  "python2-gobject2" "python2-cairo"   "python2-yaml")
 
 makedepends=('gprbuild' 'texlive-latexextra' 'graphviz')
 
-source=("https://github.com/AdaCore/gnatstudio/archive/refs/heads/22.0.zip"
+source=("https://github.com/AdaCore/gnatstudio/archive/refs/heads/22.2.zip"
         gnatstudio-support.zip::https://github.com/charlie5/archlinux-gnatstudio-support/archive/refs/heads/main.zip
         0003-Honour-DESTDIR-in-installation-targets.patch
         0004-Honour-GPRBUILD_FLAGS-in-cli-Makefile.patch
         patch-shared.gpr.in
-        patch-filter_panels.adb
-        patch-gtkada-search_entry.ads
-        patch-gtkada-search_entry.adb
         site-packages.tar.gz
         gps.desktop)
 
-sha1sums=('0780ac1b2b7df17e3d6c52a076f50d4cdd64e79c'
-          '12fe188cc9ddcf06341d52af4dd086c9ded5afda'
-          '4c13859aa25c5142bd5d0fde7b645217ddeccb50'
-          '4e6cb35c4e2e74d343d0917b926c7377a81b1aba'
-          '25a479bc5332e4e863ff6186498645368a1d63cc'
-          '7a928f86dad330590a8c9e9aff04291e458fd1c6'
-          '8815ffbf0077a50c4c2023637d214b1847be40f1'
-          '6ec11d04620cb5225df8a43c9a5dbd98e3e3ca53'
-          '3a7acd93e393a2cc29dc6f6be1a498b13ecc5dc1'
-          'b399c7b3a1fe48152da18081def3dced2e74763b')
+sha256sums=('96f43558be5013df8c41fe61303da114e43244bd30b2dd03b2fd1f4d8865c283'
+            '10820ae36b93501efa7e1d09b2458b6bdbe324f87f045d80ccc7eebed2cbad99'
+            '5607c451dbf63dba346eeb2ef602a86321d310bdfb6ef777870bb32761b596d5'
+            '67b8145d32f555ffab46f41ca52ebbb30d06bc1d814880e42acc7bfb8f68ef6f'
+            'f7f76df3f92dafb523a98c204d526e72bfcb851f96b51944e5c53a68003e7e65'
+            'f0286859acf338c10726f303c325db6f30a743af4a4d7b4895388d14748ea38c'
+            'e21894fc1a0fbc90c25b0c524969703d685f283adc09225744d9013de3b00533')
 
 prepare()
 {
-  cd "$srcdir/gnatstudio-22.0"
+  cd "$srcdir/gnatstudio-22.2"
 
   patch -Np0 -i ../patch-shared.gpr.in
   patch -p1 < "$srcdir/0003-Honour-DESTDIR-in-installation-targets.patch"
@@ -52,7 +45,7 @@ prepare()
 
 build() 
 {
-  cd "$srcdir/gnatstudio-22.0"
+  cd "$srcdir/gnatstudio-22.2"
 
   export OS=unix
 
@@ -69,13 +62,14 @@ build()
   # GPS uses a lot of Unchecked_Conversion (too many to patch), so we have to build with -fno-strict-aliasing.
   # https://gcc.gnu.org/onlinedocs/gcc-10.2.0/gnat_ugn/Optimization-and-Strict-Aliasing.html
 
-  make -j1 OS=unix PROCESSORS=0 BUILD=Production LIBRARY_TYPE=relocatable GPRBUILD_FLAGS="-R -cargs $ADA_FLAGS -fno-strict-aliasing -largs $LDFLAGS -lpython2.7 -lpython3.10 -gargs"
+  export BUILD=Production
+  make -j1 OS=unix PROCESSORS=0 BUILD=Production PRJ_BUILD=Release LIBRARY_TYPE=relocatable GPRBUILD_FLAGS="-R -cargs $ADA_FLAGS -fno-strict-aliasing -largs $LDFLAGS -lpython2.7 -lpython3.10 -gargs"
 #  make -C docs all     ### Docs are currently broken.
 }
 
 package() 
 {
-  cd "$srcdir/gnatstudio-22.0"
+  cd "$srcdir/gnatstudio-22.2"
 
   export OS=unix
   make DESTDIR="$pkgdir/" install
