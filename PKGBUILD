@@ -2,10 +2,10 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-scxml
-_basever=5.15.3
-pkgver=5.15.3+kde+r0
+_basever=5.15.4
+pkgver=5.15.4+kde+r0
 pkgrel=1
-_commit=50d2da3965ed8e85f3f5f5760393c42b12d34a9f
+_commit=dcbd73cf3e8a07dbfa249d7db2257caafa83781b
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
