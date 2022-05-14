@@ -1,7 +1,7 @@
 pkgbase = fbpdf-poppler-git
 	pkgdesc = A small framebuffer pdf and djvu viewer (only poppler backend)
 	pkgver = r101.ba231d2
-	pkgrel = 1
+	pkgrel = 2
 	url = http://litcave.rudi.ir/
 	arch = i686
 	arch = x86_64
@@ -9,6 +9,10 @@ pkgbase = fbpdf-poppler-git
 	makedepends = git
 	depends = poppler
 	depends = djvulibre
+	provides = fbpdf
+	provides = fbpdf-git
+	conflicts = fbpdf
+	conflicts = fbpdf-git
 	source = fbpdf-poppler-git::git+https://github.com/aligrudi/fbpdf.git
 	sha256sums = SKIP
 
