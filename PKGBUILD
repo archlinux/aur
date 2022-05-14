@@ -5,7 +5,7 @@
 pkgname=sway
 pkgver=1.7
 epoch=1
-pkgrel=5
+pkgrel=6
 pkgdesc='Tiling Wayland compositor and replacement for the i3 window manager'
 arch=(x86_64)
 url='https://swaywm.org/'
@@ -13,19 +13,25 @@ license=(MIT)
 depends=(
   'cairo'
   'gdk-pixbuf2'
-  'json-c'
+  'libevdev.so'
+  'libinput'
+  'libjson-c.so'
+  'libudev.so'
+  'libwayland-server.so'
+  'libwlroots.so'
+  'libxcb'
+  'libxkbcommon.so'
   'pango'
   'pcre'
-  'seatd'
   'ttf-font'
-  'wlroots'
 )
-makedepends=(git meson ninja scdoc setconf wayland-protocols)
+makedepends=(meson ninja scdoc setconf wayland-protocols)
 backup=(etc/sway/config)
 optdepends=(
-  'dmenu: Application launcher'
-  'i3status: Status line'
+  'bemenu: Wayland-native alternative to dmenu'
+  'dmenu: Application launcher used in default config'
   'foot: Terminal emulator used in the default configuration'
+  'i3status: Status line generation'
   'mako: Lightweight notification daemon'
   'polkit: System privilege control. Required if not using seatd service'
   'swaybg: Wallpaper tool for sway'
