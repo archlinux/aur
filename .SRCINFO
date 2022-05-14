@@ -1,19 +1,20 @@
 pkgbase = cambalache-git
 	pkgdesc = A new RAD tool for Gtk 4 and 3 with a clear MVC design and data model first philosophy
-	pkgver = 0.7.0.r3.g33f3c44
+	pkgver = 0.8.1.r204.g2f601c6
 	pkgrel = 1
 	url = https://gitlab.gnome.org/jpu/cambalache
 	arch = any
 	license = LGPL
 	makedepends = git
 	makedepends = meson>=0.50.0
+	makedepends = cmake
 	depends = python-gobject
 	depends = glib2
 	depends = gtk3
-	depends = gtk4
 	depends = python-lxml
 	depends = webkit2gtk
-	provides = cambalache=0.7.0.r3.g33f3c44
+	optdepends = gtk4
+	provides = cambalache=0.8.1.r204.g2f601c6
 	conflicts = cambalache
 	source = git+https://gitlab.gnome.org/jpu/cambalache.git
 	sha512sums = SKIP
