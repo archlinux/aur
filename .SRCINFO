@@ -1,6 +1,6 @@
 pkgbase = imagemagick-fftw
 	pkgdesc = An image viewing/manipulation program
-	pkgver = 7.1.0.26
+	pkgver = 7.1.0.33
 	pkgrel = 1
 	url = https://www.imagemagick.org/
 	arch = x86_64
@@ -31,12 +31,12 @@ pkgbase = imagemagick-fftw
 	makedepends = libpng
 	makedepends = djvulibre
 	makedepends = fftw
-	source = https://imagemagick.org/download/ImageMagick-7.1.0-26.tar.xz
-	source = https://imagemagick.org/download/ImageMagick-7.1.0-26.tar.xz.asc
+	source = https://imagemagick.org/download/ImageMagick-7.1.0-33.tar.xz
+	source = https://imagemagick.org/download/ImageMagick-7.1.0-33.tar.xz.asc
 	source = arch-fonts.diff
 	validpgpkeys = D8272EF51DA223E4D05B466989AB63D48277377A
-	sha256sums = 5eb5e48b5785f2e8042563019694f70f09c33e81672a0570375ca0d56e07e752
-	sha256sums = dc33fc754ebf4447bc8868f51ae29c0bfcc89f007ff5fb87c3cffc2b175198d3
+	sha256sums = 13abdfd97e0af5e14c6bb379aa96d6b90dab0fae08714288fbc7c6545ba5c8cc
+	sha256sums = 90f3a082264eabb98e4b113fdfa401f407b6d0f6a3aa475342b49698ade0e05f
 	sha256sums = a85b744c61b1b563743ecb7c7adad999d7ed9a8af816650e3ab9321b2b102e73
 
 pkgname = imagemagick-fftw
@@ -63,7 +63,7 @@ pkgname = imagemagick-fftw
 	optdepends = imagemagick-doc: manual and API docs
 	provides = libmagick
 	provides = libmagick-fftw
-	provides = imagemagick=7.1.0.26
+	provides = imagemagick=7.1.0.33
 	conflicts = imagemagick6
 	conflicts = imagemagick
 	replaces = libmagick-fftw
