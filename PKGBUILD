@@ -2,18 +2,12 @@
 
 pkgname=tricks
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The social network for programmers!"
 arch=('x86_64')
 url="https://tricks.aseman.io/"
 license=('none')
 
-#depends=('hicolor-icon-theme' 'libsecret' 'ttf-dejavu')
-#optdepends=(
-#    'org.freedesktop.secrets: Applications that support Freedesktop secrets api'
-#    'gnome-keyring: gnome-keyring support'
-#    'pass: pass support'
-#)
 conflicts=('tricks-bin')
 options=('!emptydirs' '!strip')
 source=("https://tricks.aseman.io/tricks/static/downloads/Tricks-${pkgver}_linux.tar.xz"

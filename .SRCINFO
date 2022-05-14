@@ -1,7 +1,7 @@
 pkgbase = tricks
 	pkgdesc = The social network for programmers!
 	pkgver = 0.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = https://tricks.aseman.io/
 	arch = x86_64
 	license = none
