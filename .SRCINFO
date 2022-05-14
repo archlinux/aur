@@ -1,0 +1,21 @@
+pkgbase = hpex-git
+	pkgdesc = RPL HP calculator transfer tool with graphical and command line interfaces
+	pkgver = 1.0.0.r19.67c190f
+	pkgrel = 1
+	url = https://github.com/liamhays/hpex
+	arch = x86_64
+	license = GPL3
+	makedepends = git
+	makedepends = python-setuptools
+	depends = ckermit
+	depends = python
+	depends = python-wxpython
+	depends = python-xmodem
+	depends = python-pypubsub
+	depends = python-ptyprocess
+	depends = python-pyserial
+	provides = hpex
+	source = git+https://github.com/liamhays/hpex.git
+	md5sums = SKIP
+
+pkgname = hpex-git
