@@ -2,7 +2,7 @@
 # Contributor: Kaizhao Zhang <zhangkaizhao@gmail.com>
 
 pkgname=python-zimports
-pkgver=0.5.1
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Python import rewriter"
 arch=('any')
@@ -12,7 +12,7 @@ depends=('python>=3.7' 'python-pyflakes' 'python-flake8-import-order' 'python-to
 makedepends=('python-setuptools' 'python-build' 'python-installer' 'python-wheel')
 checkdepends=('python-pytest')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('cc83bb97497f88026bb339415cb3006f6a44a172121e27324a17183388870c87')
+sha256sums=('192aa475dc0fe7fe60d1fe59e708974b755ab2c8769d5430b267198e2ce1d189')
 
 build() {
 	cd "zimports-$pkgver"
