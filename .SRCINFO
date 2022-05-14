@@ -1,0 +1,22 @@
+pkgbase = uplift-bin
+	pkgdesc = Semantic versioning the easy way. Powered by Conventional Commits. Built for use with CI
+	pkgver = 2.12.0
+	pkgrel = 1
+	url = https://upliftci.dev
+	license = MIT
+	conflicts = uplift
+	provides = uplift
+	arch = aarch64
+	source_aarch64 = https://github.com/gembaadvantage/uplift/releases/download/v2.12.0/uplift_2.12.0_linux-arm64.tar.gz
+	sha256sums_aarch64 = 8406963a42234361857b0dffc8418e8432e00327f33444eb951d858e64dd4a2f
+	arch = armv7h
+	source_armv7h = https://github.com/gembaadvantage/uplift/releases/download/v2.12.0/uplift_2.12.0_linux-arm.tar.gz
+	sha256sums_armv7h = 402b0ceb7ea19a1a3fadf2b2ef162e2e5a8969fa333f051f3a5828dd79facad3
+	arch = i686
+	source_i686 = https://github.com/gembaadvantage/uplift/releases/download/v2.12.0/uplift_2.12.0_linux-i386.tar.gz
+	sha256sums_i686 = bbc21403615ff74b30a08965a1053fc054e112b58e170d82350af1c7e3d898c6
+	arch = x86_64
+	source_x86_64 = https://github.com/gembaadvantage/uplift/releases/download/v2.12.0/uplift_2.12.0_linux-x86_64.tar.gz
+	sha256sums_x86_64 = c0d657a961fb1f84875871f8d617d727deca68b1f35b78e0e88254874f761533
+	
+pkgname = uplift-bin
