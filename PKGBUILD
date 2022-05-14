@@ -35,8 +35,6 @@ package() {
   chmod 755 "${pkgdir}/usr/bin/twoinone"
   cp target/release/twoinone "${pkgdir}/usr/share/twoinone/twoinone"
   chmod 755 "${pkgdir}/usr/share/twoinone/twoinone"
-  cp env_sanitizer "${pkgdir}/usr/share/twoinone/env_sanitizer"
-  chmod 755 "${pkgdir}/usr/share/twoinone/env_sanitizer"
   cp twoinone.sudoers "${pkgdir}/etc/sudoers.d/${pkgname}"
   chmod 600 "${pkgdir}/etc/sudoers.d/${pkgname}"
   cp twoinone.group "${pkgdir}/usr/lib/sysusers.d/twoinone.conf"
