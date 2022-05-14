@@ -1,4 +1,5 @@
-# Maintainer: Felix Golatofski <contact@xdfr.de>
+# Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
+# Contributor: Felix Golatofski <contact@xdfr.de>
 
 pkgname=xf86-input-mtrack
 pkgver=0.5.1
