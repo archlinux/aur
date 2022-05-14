@@ -1,4 +1,4 @@
-# Maintainer: Daniel Menelkir <menelkir at itroll dot org>
+# Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
 
 pkgname=g15utils
 pkgver=0.2
