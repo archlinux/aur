@@ -1,0 +1,19 @@
+pkgbase = cl-md5
+	pkgdesc = MD5 Implementation for Common Lisp
+	pkgver = 2.0.5
+	pkgrel = 1
+	url = https://github.com/pmai/md5
+	arch = any
+	license = custom:Public
+	license = custom:CC0-1.0
+	checkdepends = sbcl
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	depends = cl-flexi-streams
+	source = cl-md5::git+https://github.com/pmai/md5#commit=906593fa6f4c3bb351cd02dbb6509062aacdaaf6
+	source = run-tests.lisp
+	b2sums = SKIP
+	b2sums = 43c2f7f1cec316e29178b618aeb307904af4482bbb487f2c6abddd90962e8acbc148e2a5a44ff8c901f7d4606dbcc14eb50bfcf355096fd924623f91b24fbaa8
+
+pkgname = cl-md5
