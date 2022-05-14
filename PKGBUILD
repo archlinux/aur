@@ -1,7 +1,7 @@
 # Maintainer: Steven! Ragnarök <steven@nuclearsandwich.com>
 pkgname=tokay-git
 pkgver=v0.4.r167.44e7425
-pkgrel=1
+pkgrel=2
 pkgdesc="Tokay is an imperative, procedural programming language dedicated to parsing and other text-processing tasks."
 arch=('x86_64')
 url="https://tokay.dev"
@@ -35,4 +35,5 @@ check() {
 package() {
 	cd "$srcdir/${pkgname%-git}"
 	install -D ./target/release/${pkgname%-git} "${pkgdir}/usr/bin/${pkgname%-git}"
+	install -Dm644 ./examples/*.tok -t "${pkgdir}/usr/share/${pkgname%-git}/examples"
 }
