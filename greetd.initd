@@ -1,0 +1,20 @@
+#!/sbin/openrc-run
+
+name="greetd"
+description="Simple greeter daemon"
+
+: "${cfgfile:=/etc/greetd/config.toml}"
+
+command=/usr/bin/greetd
+command_args="--config ${cfgfile} ${command_args:-}"
+command_background=yes
+pidfile=/run/$RC_SVCNAME.pid"
+
+required_files="${cfgfile}"
+
+depend() {
+    need localmount
+    provide display-manager
+}
+
+# vim:set filetype=sh:

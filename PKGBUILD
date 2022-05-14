@@ -7,8 +7,12 @@ pkgdesc="Generic greeter daemon, packaged for artix-openrc"
 arch=('x86_64')
 url="https://git.sr.ht/~kennylevinsen/greetd"
 license=(GPL3)
-source=("https://git.sr.ht/~kennylevinsen/greetd/archive/${pkgver}.tar.gz")
-sha256sums=('47a73709df60f04b63fc50cfc409e47a451a9620777638f527b9d9333256035f')
+source=("https://git.sr.ht/~kennylevinsen/greetd/archive/${pkgver}.tar.gz"
+        "greetd.initd"
+        "greetd.confd")
+sha256sums=('47a73709df60f04b63fc50cfc409e47a451a9620777638f527b9d9333256035f'
+            'd0aa8af224907ccb123369948a97ee1942cc4ac0f18f6a4f5d02b73bc365578f'
+            'aeed4de39fdb471e0ad8a7f1471232e97925447213292fe4c57317aab6cf035a')
 
 depends=(pam)
 makedepends=(cargo scdoc)
@@ -20,6 +24,8 @@ optdepends=(
 
 backup=(
     'etc/greetd/config.toml'
+    'etc/init.d/greetd'
+    'etc/conf.d/greetd'
 )
 
 prepare() {
@@ -48,18 +54,18 @@ check() {
     cargo test --frozen --all-features
 }
 package() {
-    cd "greetd-${pkgver}/"
-
-    find "target/release/" -maxdepth 1 -type f -executable \
+    find "greetd-${pkgver}/target/release/" -maxdepth 1 -type f -executable \
         -exec install -m0755 -Dt "${pkgdir}/usr/bin/" '{}' +
 
-    install -m0644 -Dt "${pkgdir}/etc/greetd/" config.toml
+    install -m0644 -Dt  "${pkgdir}/etc/greetd/" "greetd-${pkgver}/config.toml"
+    install -m0755 -D   greetd.initd            "${pkgdir}/etc/init.d/greetd"
+    install -m0644 -D   greetd.confd            "${pkgdir}/etc/conf.d/greetd"
 
     for section in 1 5 7
     do
-        find "man/" -type f -name "*-${section}.roff"|while read -r manpage
+        find "greetd-${pkgver}/man/" -type f -name "*-${section}.roff"|while read -r manpage
         do
-            install -m0644 -D "${manpage}" "${pkgdir}/usr/share/man/man${section}/${manpage%-*}.${section}"
+            install -m0644 -D "${manpage}" "${pkgdir}/usr/share/man/man${section}/$(basename "${manpage%-*}").${section}"
         done
     done
 }
