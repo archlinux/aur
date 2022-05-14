@@ -12,8 +12,8 @@ DEBUG=0
 
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
-pkgver=0.13.0rc1.r18.ga72753bad
-pkgrel=3
+pkgver=latest
+pkgrel=1
 
 pkgdesc='A peer-to-peer hypermedia distribution protocol'
 url="https://github.com/ipfs/$_pkgname"
