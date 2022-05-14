@@ -24,8 +24,8 @@ md5sums=('SKIP'
          '4aa6ee8199d86dde2a563b4495f41a53'
          'd3dc9d20967362a2e92e3fb1c7f82b57'
          'e68ff412ff73b1ca75f8b17ab6c7069a'
-         'bd5a473153106325233f00b3f35c46d8'
-         '30e13170804c6d6756d74fa1ee7bdcb0'
+         'b9ce6c53ec78251d82460f10e07e6645'
+         'fb7e22a32ee2f35bd5555d13a5700ba6'
          'ac790ec12a558931895504f1ca92c364')
 
 install_examples=false

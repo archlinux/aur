@@ -28,8 +28,8 @@ pkgbase = openvr-git
 	md5sums = 4aa6ee8199d86dde2a563b4495f41a53
 	md5sums = d3dc9d20967362a2e92e3fb1c7f82b57
 	md5sums = e68ff412ff73b1ca75f8b17ab6c7069a
-	md5sums = bd5a473153106325233f00b3f35c46d8
-	md5sums = 30e13170804c6d6756d74fa1ee7bdcb0
+	md5sums = b9ce6c53ec78251d82460f10e07e6645
+	md5sums = fb7e22a32ee2f35bd5555d13a5700ba6
 	md5sums = ac790ec12a558931895504f1ca92c364
 
 pkgname = openvr-git
