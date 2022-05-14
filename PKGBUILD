@@ -5,7 +5,7 @@
 pkgname=whalebird-bin
 _name="${pkgname%-bin}"
 
-_ver=4.6.0-beta.2
+_ver=4.6.0-beta.3
 pkgver="${_ver/-}"
 pkgrel=1
 
