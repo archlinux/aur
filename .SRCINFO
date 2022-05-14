@@ -1,12 +1,12 @@
 pkgbase = amqp-cpp
 	pkgdesc = AMQP-CPP is a C++ library for communicating with a RabbitMQ message broker.
-	pkgver = 4.3.14
+	pkgver = 4.3.16
 	pkgrel = 1
 	url = https://github.com/CopernicaMarketingSoftware/AMQP-CPP
 	arch = any
 	license = Apache2.0
 	makedepends = cmake
-	source = https://github.com/CopernicaMarketingSoftware/AMQP-CPP/archive/v4.3.14.tar.gz
-	sha256sums = 6ac69a407c0edf9f8f56fdbb56acb4e5e9b331e3243cb95f26b861ae794549f4
+	source = https://github.com/CopernicaMarketingSoftware/AMQP-CPP/archive/v4.3.16.tar.gz
+	sha256sums = 66c96e0db1efec9e7ddcf7240ff59a073d68c09752bd3e94b8bc4c506441fbf7
 
 pkgname = amqp-cpp

@@ -2,7 +2,7 @@
 
 pkgname=amqp-cpp
 _pkgnm=AMQP-CPP
-pkgver=4.3.14
+pkgver=4.3.16
 pkgrel=1
 pkgdesc="AMQP-CPP is a C++ library for communicating with a RabbitMQ message broker."
 arch=('any')
@@ -11,10 +11,10 @@ license=('Apache2.0')
 depends=()
 makedepends=('cmake')
 source=(https://github.com/CopernicaMarketingSoftware/AMQP-CPP/archive/v$pkgver.tar.gz)
-sha256sums=('6ac69a407c0edf9f8f56fdbb56acb4e5e9b331e3243cb95f26b861ae794549f4')
+sha256sums=('66c96e0db1efec9e7ddcf7240ff59a073d68c09752bd3e94b8bc4c506441fbf7')
 
 prepare(){
-    sed -i 'N;22 i #include<string>' $srcdir/AMQP-CPP-4.3.14/src/linux_tcp/sslerrorprinter.h 
+    sed -i 'N;22 i #include<string>' $srcdir/AMQP-CPP-4.3.16/src/linux_tcp/sslerrorprinter.h 
 }
 
 package(){
