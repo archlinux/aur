@@ -10,4 +10,3 @@ pkgbase = g15composer
 	sha512sums = 43f1e57df642d599554a454ef6aeb5ebd74aa9f9e002031c7f1d83748a4e3fafae1b9675f1347a5a829f8d8d4433c8f83309c1842ac264f51807d8d38ee36c66
 
 pkgname = g15composer
-
