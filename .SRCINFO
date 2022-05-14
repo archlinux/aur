@@ -1,6 +1,6 @@
 pkgbase = ruby-rubocop
 	pkgdesc = A Ruby static code analyzer and formatter
-	pkgver = 1.28.2
+	pkgver = 1.29.1
 	pkgrel = 1
 	url = https://rubocop.org
 	arch = any
@@ -28,7 +28,7 @@ pkgbase = ruby-rubocop
 	depends = ruby-ruby-progressbar
 	depends = ruby-unicode-display_width
 	options = !emptydirs
-	source = https://github.com/rubocop/rubocop/archive/v1.28.2/rubocop-1.28.2.tar.gz
-	sha256sums = a6171f088596ae072255191e3a0b564341984cca780a9f9009de0f017ecb476f
+	source = https://github.com/rubocop/rubocop/archive/v1.29.1/rubocop-1.29.1.tar.gz
+	sha256sums = e6bbe962d4a10ce45f4fa63d0dfa96d5dd7d6c6d3c75afada3e6295c33a1b16f
 
 pkgname = ruby-rubocop
