@@ -2,15 +2,14 @@
 
 pkgname=budgie-control-center
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Budgie's main interface to configure various aspects of the desktop"
 url="https://github.com/BuddiesOfBudgie/budgie-control-center"
 license=(GPL2)
 arch=(x86_64 aarch64 armv7h)
 depends=(budgie-desktop gnome-online-accounts libgtop libpwquality smbclient libcheese libnma
          udisks2 libhandy gsound colord-gtk icu)
-makedepends=(docbook-xsl modemmanager git python meson)
-checkdepends=(python-dbusmock python-gobject xorg-server-xvfb)
+makedepends=(docbook-xsl modemmanager meson)
 optdepends=('system-config-printer: Printer settings'
             'gnome-user-share: WebDAV file sharing'
             'gnome-remote-desktop: screen sharing'
