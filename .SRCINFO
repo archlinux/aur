@@ -1,0 +1,13 @@
+pkgbase = python-xmodem
+	pkgdesc = Python XMODEM protocol implementation
+	pkgver = 0.4.6
+	pkgrel = 1
+	url = https://github.com/tehmaze/xmodem
+	arch = any
+	license = MIT
+	makedepends = python-setuptools
+	depends = python
+	source = python-xmodem-0.4.6.tar.gz::https://github.com/tehmaze/xmodem/archive/0.4.6.tar.gz
+	sha512sums = a0018569ad14a97b004d3a0385f466b577faa19a9f8356dc9b87e13085360990169dd0b1e7e91929c8416e05a23e5890dd38a00194313c40c1a9c96e3d64db60
+
+pkgname = python-xmodem
