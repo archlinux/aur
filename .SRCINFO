@@ -1,4 +1,4 @@
-pkgbase = haskell-bustle
+pkgbase = bustle-git
 	pkgdesc = Draw sequence diagrams of D-Bus traffic
 	pkgver = 0.8.0.r5.gf074e5a
 	pkgrel = 1
@@ -21,4 +21,4 @@ pkgbase = haskell-bustle
 	source = bustle::git+https://anongit.freedesktop.org/git/bustle.git
 	sha384sums = SKIP
 
-pkgname = haskell-bustle
+pkgname = bustle-git

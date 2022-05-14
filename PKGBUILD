@@ -2,7 +2,7 @@
 # Maintainer: Your Name <youremail@domain.com>
 
 _hkgname=bustle
-pkgname=haskell-bustle
+pkgname=bustle-git
 pkgver=0.8.0.r5.gf074e5a
 pkgrel=1
 pkgdesc="Draw sequence diagrams of D-Bus traffic"
