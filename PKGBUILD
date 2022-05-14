@@ -1,4 +1,4 @@
-# Maintainer: Daniel Menelkir <menelkir@itroll.org>
+# Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
 # Old Maintainer: Caltlgin Stsodaat <contact@fossdaily.xyz>
 
 pkgname='fontpreview'
