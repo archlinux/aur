@@ -1,0 +1,17 @@
+pkgbase = cl-colorize
+	pkgdesc = A syntax highlighting library
+	pkgver = 0.9.r9.gea676b5
+	pkgrel = 1
+	url = https://github.com/kingcons/colorize
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	depends = cl-alexandria
+	depends = cl-html-encode
+	depends = cl-split-sequence
+	source = cl-colorize::git+https://github.com/kingcons/colorize#commit=ea676b584e0899cec82f21a9e6871172fe3c0eb5
+	b2sums = SKIP
+
+pkgname = cl-colorize
