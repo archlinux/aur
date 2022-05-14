@@ -4,7 +4,7 @@
 
 pkgname=aurtool-git
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="Minimal aur package management utility written in bash script"
 arch=('any')
 url="https://www.github.com/m1ndflay3r/aurtool"
