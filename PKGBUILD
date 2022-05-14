@@ -13,7 +13,7 @@ depends=('gnatcoll-iconv' 'python')
 makedepends=('gprbuild' 'texlive-bin' 'python-sphinx' 'python-e3-core' 'python-funcy' 'python-mako')
 
 source=("https://github.com/AdaCore/langkit/archive/refs/tags/v22.0.0.tar.gz")
-sha1sums=("24ed555520e8789b6a0a828605e8d42eac9caf38")
+sha256sums=("45e9f389827f37eee107d4b7f6115fb4a7cf4d9dfc1214a68081db86d6c5ca74")
 
 build()
 {
