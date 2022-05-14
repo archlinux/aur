@@ -2,7 +2,6 @@
 # Maintainer: Rudi [KittyCash] <rudi@skycoinmail.com>
 pkgname=skywire-bin
 _pkgname=${pkgname/-bin/}
-_pkgname1=${pkgname/-bin/-systray}
 _githuborg=skycoin
 pkgdesc="Skywire: Decentralize the web. Skycoin.com. Debian package"
 pkgver='1.0.0'
@@ -21,7 +20,7 @@ depends=()
 _debdeps=""
 #_debdeps=""
 _scripts="skywire-scripts"
-_binarchive=("${_pkgname1}-${_tag_ver}-linux")
+_binarchive=("${_pkgname}-${_tag_ver}-linux")
 _release_url=("${url}/releases/download/${_tag_ver}/${_binarchive}")
 source=(
 "${_scripts}.tar.gz"
@@ -35,9 +34,9 @@ noextract=(
 "${_binarchive}arm.tar.gz"
 )
 sha256sums=('128d688c945e161180aa0d87a34fc655e627a315dd19308f6f3a05c0457f90e4'
-            '284e12906c8656a603477c7a13c51a5266fe289fce3bed61206d88a59de1169c'
-            '12d0c6a72af7c8ec951117982b2ea22dc6d5fc29f1aba174bc8cac3d329a5082'
-            'eb4a85c6eb6ac1280d4a8c4ddb36a2a2f049b807cdbc415acb945d48824e5508')
+            '03ac5a5e71f2c855cd808329b585d845e073e6ec754028bd72a18db8c42070ac'
+            'b4afd149c04f612e1c1bb5edacc768906a4f869945b888160dfcf2b5d6644c41'
+            '03514cb6a95ee535e5ca41b54c1fd88e5f4c381a1d87b7c11e5bcdc39a5a975c')
 
 build() {
   _msg2 'creating the DEBIAN/control files'
@@ -68,7 +67,7 @@ if [[ ${_pkgarch} == "armhf" ]] ; then
   local _pkgarch1=arm
 fi
 
-local _binaryarchive="${_pkgname1}-${_tag_ver}-linux-${_pkgarch1}.tar.gz"
+local _binaryarchive="${_pkgname}-${_tag_ver}-linux-${_pkgarch1}.tar.gz"
 [[ -f ${srcdir}/${_pkgname}-visor ]] && rm -rf ${srcdir}/${_pkgname}-visor
 [[ -f ${srcdir}/${_pkgname}-cli ]] && rm -rf ${srcdir}/${_pkgname}-cli
 [[ -d ${srcdir}/apps ]] && rm -rf ${srcdir}/apps

@@ -1,8 +1,7 @@
 # Maintainer: Moses Narrow <moe_narrow@use.startmail.com>
 # Maintainer: Rudi [KittyCash] <rudi@skycoinmail.com>
 pkgname=skywire-bin
-_pkgname=${pkgname/-bin}
-_pkgname1=${pkgname/-bin/-systray}
+_pkgname=${pkgname/-bin/}
 _githuborg=skycoin
 pkgdesc="Skywire: Decentralize the web. Skycoin.com"
 pkgver='1.0.0'
@@ -21,16 +20,16 @@ install=skywire.install
 _scripts=${_pkgname}-scripts
 source=("${_scripts}.tar.gz" )
 sha256sums=('128d688c945e161180aa0d87a34fc655e627a315dd19308f6f3a05c0457f90e4')
-sha256sums_i686=('ed94d9b60188ab5a535c5e2b0c2cba28b8274f15ea081fcf99856aa2ae7dc927')
-sha256sums_x86_64=('284e12906c8656a603477c7a13c51a5266fe289fce3bed61206d88a59de1169c')
-sha256sums_aarch64=('12d0c6a72af7c8ec951117982b2ea22dc6d5fc29f1aba174bc8cac3d329a5082')
-sha256sums_armv8=('12d0c6a72af7c8ec951117982b2ea22dc6d5fc29f1aba174bc8cac3d329a5082')
-sha256sums_armv7=('eb4a85c6eb6ac1280d4a8c4ddb36a2a2f049b807cdbc415acb945d48824e5508')
-sha256sums_armv7l=('eb4a85c6eb6ac1280d4a8c4ddb36a2a2f049b807cdbc415acb945d48824e5508')
-sha256sums_armv7h=('eb4a85c6eb6ac1280d4a8c4ddb36a2a2f049b807cdbc415acb945d48824e5508')
-sha256sums_arm=('eb4a85c6eb6ac1280d4a8c4ddb36a2a2f049b807cdbc415acb945d48824e5508')
+sha256sums_i686=('96775008409c0cb34384fada6ab332177fbb43ac670d98c66d905543e89b8023')
+sha256sums_x86_64=('03ac5a5e71f2c855cd808329b585d845e073e6ec754028bd72a18db8c42070ac')
+sha256sums_aarch64=('b4afd149c04f612e1c1bb5edacc768906a4f869945b888160dfcf2b5d6644c41')
+sha256sums_armv8=('b4afd149c04f612e1c1bb5edacc768906a4f869945b888160dfcf2b5d6644c41')
+sha256sums_armv7=('03514cb6a95ee535e5ca41b54c1fd88e5f4c381a1d87b7c11e5bcdc39a5a975c')
+sha256sums_armv7l=('03514cb6a95ee535e5ca41b54c1fd88e5f4c381a1d87b7c11e5bcdc39a5a975c')
+sha256sums_armv7h=('03514cb6a95ee535e5ca41b54c1fd88e5f4c381a1d87b7c11e5bcdc39a5a975c')
+sha256sums_arm=('03514cb6a95ee535e5ca41b54c1fd88e5f4c381a1d87b7c11e5bcdc39a5a975c')
 #https://github.com/skycoin/skywire/releases/download/v0.6.0-rc1/skywire-v0.6.0-rc1-linux-amd64.tar.gz
-_binarchive=("${_pkgname1}-${_tag_ver}-linux")
+_binarchive=("${_pkgname}-${_tag_ver}-linux")
 _release_url=("${url}/releases/download/${_tag_ver}/${_binarchive}")
 source_x86_64=("${_release_url}-amd64.tar.gz")
 source_aarch64=("${_release_url}-arm64.tar.gz")
