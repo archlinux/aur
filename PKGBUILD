@@ -3,10 +3,10 @@
 
 pkgname=qt5-gamepad
 _qtver=5.15.2
-_basever=5.15.3
-pkgver=5.15.3+kde+r0
+_basever=5.15.4
+pkgver=5.15.4+kde+r0
 pkgrel=1
-_commit=6b7a6303439f83147680723f4d8142d676cdb928
+_commit=8526b210146a2d030ae2f55ad44261befea4a087
 arch=('x86_64')
 url='https://www.qt.io'
 license=('GPL3' 'LGPL3' 'FDL' 'custom')
@@ -17,7 +17,7 @@ optdepends=('qt5-declarative: QML bindings')
 groups=('qt' 'qt5')
 _pkgfqn=${pkgname/5-/}
 source=(git+https://invent.kde.org/qt/qt/$_pkgfqn#commit=$_commit)
-sha256sums=('SKIP')  
+sha256sums=('SKIP')
 options=(debug)
 
 pkgver() {
