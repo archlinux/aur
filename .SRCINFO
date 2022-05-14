@@ -1,22 +1,22 @@
 pkgbase = bluewho
 	pkgdesc = Information and notification of new discovered bluetooth devices
-	pkgver = 0.3.0
+	pkgver = 0.5.0
 	pkgrel = 1
-	url = http://www.muflone.com/bluewho
+	url = https://www.muflone.com/bluewho
 	arch = any
 	license = GPL3
 	depends = gtk3
 	depends = gobject-introspection
+	depends = libnotify
+	depends = python-dbus
 	depends = python-xdg
 	depends = python-gobject
-	depends = python-pybluez
-	depends = gtk-update-icon-cache
+	depends = python-bluezero
 	optdepends = libcanberra: to play notification sound using canberra-gtk-play
 	optdepends = alsa-utils: to play notification sound using aplay
 	optdepends = libpulse: to play notification sound using paplay
 	optdepends = mplayer: to play notification sound using mplayer
-	source = bluewho-0.3.0.tar.gz::https://github.com/muflone/bluewho/archive/0.3.0.tar.gz
-	sha256sums = 023effbe2d84520cbb8eee592f7663e2296a8977ce6a60b70e43ab77df46d25a
+	source = bluewho-0.5.0.tar.gz::https://github.com/muflone/bluewho/archive/0.5.0.tar.gz
+	sha256sums = 013b4651931aec2c2594badcafbc9f856f6b760bf61f86ef070023f93230d486
 
 pkgname = bluewho
-
