@@ -14,6 +14,7 @@ pkgbase = eddie-ui-git
 	depends = desktop-file-utils
 	depends = libnotify
 	depends = libappindicator-gtk2
+	depends = patchelf
 	optdepends = stunnel: VPN over SSL
 	optdepends = openssh: VPN over SSH
 	provides = eddie-ui
