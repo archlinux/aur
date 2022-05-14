@@ -1,7 +1,7 @@
 pkgbase = timeshift
 	pkgdesc = A system restore utility for Linux
 	pkgver = 21.09.1
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/teejee2008/timeshift
 	install = timeshift.install
 	arch = i686
@@ -27,11 +27,13 @@ pkgbase = timeshift
 	optdepends = grub-btrfs: BtrfS snapshots in grub
 	options = !emptydirs
 	source = git+https://github.com/teejee2008/timeshift.git#commit=ade651c0c8199a6f99344ecf6fc5061b741494eb
+	source = https://github.com/teejee2008/timeshift/pull/904.patch
 	source = read-only-btrfs-snapshot.patch
 	source = grub-btrfs.path
 	source = snapshot-detect.desktop
 	source = snapshot-detect
 	sha256sums = SKIP
+	sha256sums = 561fd266992458da028d31abfda0b15193568bb28e71ece618e2500ac4fd2263
 	sha256sums = 17b4f01d131c4c0b0fe5c5b55142c45deca7d1448e85736a23b65226e6dd6eb1
 	sha256sums = b48a3e22d238fbfd22324d0444312559e7b740fd591fa7eb4e9c3d2717c79dfa
 	sha256sums = 97b38f4dbd6819542eab0a9217e399f55ec7339af4529432cfab1eb3cff8e0eb
