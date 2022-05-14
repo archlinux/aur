@@ -1,10 +1,14 @@
 pkgbase = yade
 	pkgdesc = Yet Another Dynamic Engine, free software for discrete element modeling.
 	pkgver = 2022.01a
-	pkgrel = 3
+	pkgrel = 4
 	url = https://yade-dem.org/doc/index.html
 	arch = x86_64
 	license = GPL2
+	makedepends = mpfrc++
+	makedepends = python-pygraphviz
+	makedepends = python-mpi4py
+	makedepends = utf8cpp
 	depends = cgal
 	depends = coin-or-clp
 	depends = freeglut
@@ -22,7 +26,9 @@ pkgbase = yade
 	optdepends = python-matplotlib: plotting graphs
 	optdepends = python-mpi4py: passing all tests
 	optdepends = tk: passing all tests
-	source = yade-2022.01a-3.tar.gz::https://dl.sukanka.com/d/ali/software/yade/yade-2022.01a-3.tar.gz
-	sha512sums = 7144b5e37b67c6def336ee949324ce102f31a39e71dd46605397a649fd56981df8db3d51a32e13a3b2bbe803521a43caa75cf780550a4d6e4e05b743e7485a67
+	options = !buildflags
+	options = !lto
+	source = trunk-2022.01a::git+https://gitlab.com/yade-dev/trunk.git?commit=fd04d864622a1c628296ccd1697efc93cda98c27
+	sha512sums = SKIP
 
 pkgname = yade
