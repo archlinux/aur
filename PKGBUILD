@@ -33,9 +33,11 @@ prepare() {
 }
 
 pkgver() {
+  EXCLUDE_TAGS="floodsub|sharding-pre|-dev"
+
   cd "$srcdir/$_pkgname"
   #VERSION=$(grep -E "^const CurrentVersionNumber = " version.go | awk '{ print $4 }' | sed 's/"//g')
-  VERSION=$(git tag | grep -vE "floodsub|sharding-pre" | grep -ve "-dev" | sed 's/-/~/g' | sort --version-sort --reverse | sed 's/~/-/g' | head -n1)
+  VERSION=$(git tag | grep -vE "$EXCLUDE_TAGS" | sed 's/-/~/g' | sort --version-sort --reverse | sed 's/~/-/g' | head -n1)
   COUNT=$(git rev-list "$VERSION.." --count)
   CHKSUM="$(git rev-parse --short HEAD)"
   VERSION=$(echo "$VERSION" | sed 's/^v//' | sed 's/-//')
