@@ -1,1 +1,1 @@
-u greeter - "greetd greeter user" - /sbin/nologin
+u greeter - "greetd greeter user" - /bin/sh
