@@ -1,7 +1,7 @@
 # Maintainer: Konsonanz <maximilian.lehmann@protonmail.com>
 pkgname=gpgfrontend
-pkgver=2.0.5
-pkgrel=2
+pkgver=2.0.8
+pkgrel=1
 pkgdesc="OpenPGP crypto tool and gui frontend for modern GnuPG"
 arch=('x86_64')
 url="https://github.com/saturneric/GpgFrontend"
@@ -14,16 +14,14 @@ source=("${pkgname}::git+${url}#tag=v${pkgver}"
         "git+https://github.com/saturneric/easyloggingpp"
         "git+https://github.com/saturneric/Qt-AES"
         "git+https://github.com/saturneric/SmtpClient-for-Qt"
-        "git+https://github.com/saturneric/libarchive"
-        "0000-link-against-shared.patch")
+        "git+https://github.com/saturneric/libarchive")
 sha256sums=('SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
             'SKIP'
-            'SKIP'
-            'bd55e8ac0ad3786df12c1a7e8223e5d1b1bb6d7155d31b9597fcd703a9b92589')
+            'SKIP')
 
 prepare() {
     cd "$pkgname"
@@ -36,8 +34,6 @@ prepare() {
     git config submodule.third_party/SmtpClient-for-Qt.url "$srcdir/SmtpClient-for-Qt"
     git config submodule.third_party/libarchive.url "$srcdir/libarchive"
     git submodule update
-
-    patch -Np1 -i ../0000-link-against-shared.patch
 }
 
 build() {
@@ -48,15 +44,12 @@ build() {
         -B build \
         -DCMAKE_INSTALL_PREFIX=/usr \
         -DCMAKE_BUILD_TYPE=Release \
-        -DGPGFRONTENT_GENERATE_LINUX_INSTALL_SOFTWARE=ON
+        -DGPGFRONTEND_GENERATE_LINUX_INSTALL_SOFTWARE=ON
     ninja -C build
 }
 
 package() {
     cd "$pkgname"
 
-    # TODO: ninja has no install target currently, check if will be added in future release
-    cp -dr --no-preserve='ownership' \
-        "build/release/gpgfrontend/usr" \
-        "$pkgdir/usr"
+    DESTDIR="$pkgdir" ninja -C build install
 }

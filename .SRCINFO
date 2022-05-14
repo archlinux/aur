@@ -1,7 +1,7 @@
 pkgbase = gpgfrontend
 	pkgdesc = OpenPGP crypto tool and gui frontend for modern GnuPG
-	pkgver = 2.0.5
-	pkgrel = 2
+	pkgver = 2.0.8
+	pkgrel = 1
 	url = https://github.com/saturneric/GpgFrontend
 	arch = x86_64
 	license = GPL3
@@ -15,14 +15,13 @@ pkgbase = gpgfrontend
 	depends = libconfig
 	depends = libgpg-error
 	depends = qt5-base
-	source = gpgfrontend::git+https://github.com/saturneric/GpgFrontend#tag=v2.0.5
+	source = gpgfrontend::git+https://github.com/saturneric/GpgFrontend#tag=v2.0.8
 	source = git+https://github.com/saturneric/vmime
 	source = git+https://github.com/saturneric/json
 	source = git+https://github.com/saturneric/easyloggingpp
 	source = git+https://github.com/saturneric/Qt-AES
 	source = git+https://github.com/saturneric/SmtpClient-for-Qt
 	source = git+https://github.com/saturneric/libarchive
-	source = 0000-link-against-shared.patch
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
@@ -30,6 +29,5 @@ pkgbase = gpgfrontend
 	sha256sums = SKIP
 	sha256sums = SKIP
 	sha256sums = SKIP
-	sha256sums = bd55e8ac0ad3786df12c1a7e8223e5d1b1bb6d7155d31b9597fcd703a9b92589
 
 pkgname = gpgfrontend
