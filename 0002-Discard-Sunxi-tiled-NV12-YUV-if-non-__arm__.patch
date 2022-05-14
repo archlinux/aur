@@ -1,0 +1,34 @@
+From 3549d7f6d7409183bf9156510118f393fdda69b1 Mon Sep 17 00:00:00 2001
+From: Nicolas Chauvet <kwizart@gmail.com>
+Date: Fri, 10 Jul 2020 14:12:20 +0200
+Subject: [PATCH 2/2] Discard Sunxi tiled NV12 YUV if non __arm__
+
+Signed-off-by: Nicolas Chauvet <kwizart@gmail.com>
+---
+ src/video.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/src/video.c b/src/video.c
+index 3ccbb29..9fae332 100644
+--- a/src/video.c
++++ b/src/video.c
+@@ -45,6 +45,8 @@ static struct video_format formats[] = {
+ 		.planes_count		= 2,
+ 		.bpp			= 16,
+ 	},
++// Code to handle this DRM_FORMAT is __arm__ only
++#ifdef __arm__
+ 	{
+ 		.description		= "Sunxi tiled NV12 YUV",
+ 		.v4l2_format		= V4L2_PIX_FMT_SUNXI_TILED_NV12,
+@@ -55,6 +57,7 @@ static struct video_format formats[] = {
+ 		.planes_count		= 2,
+ 		.bpp			= 16
+ 	},
++#endif
+ };
+ 
+ static unsigned int formats_count = sizeof(formats) / sizeof(formats[0]);
+-- 
+2.25.4
+

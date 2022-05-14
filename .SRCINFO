@@ -1,6 +1,6 @@
 pkgbase = libva-v4l2-request-git
 	pkgdesc = LibVA implementation for the Linux Video4Linux2 Request API
-	pkgver = 2019.03.r7.g7f359be
+	pkgver = 2019.03.r9.ga3c2476
 	pkgrel = 1
 	url = https://github.com/bootlin/libva-v4l2-request
 	arch = x86_64
@@ -11,11 +11,19 @@ pkgbase = libva-v4l2-request-git
 	arch = aarch64
 	license = LGPL2.1
 	license = MIT
+	makedepends = git
+	makedepends = patch
 	makedepends = meson
 	depends = libva>=2.1.0
 	depends = libdrm>=2.4.52
+	provides = libva-v4l2-request
+	provides = v4l2_request_drv_video.so
+	conflicts = libva-v4l2-request
 	source = libva-v4l2-request-git::git+https://github.com/bootlin/libva-v4l2-request.git
+	source = https://github.com/bootlin/libva-v4l2-request/pull/38.patch
+	source = 0002-Discard-Sunxi-tiled-NV12-YUV-if-non-__arm__.patch
 	sha256sums = SKIP
+	sha256sums = 6dd6cd65604bafe542a15104683674660cd96311ab677cf78372f72e1379d5a0
+	sha256sums = 20aa3fce9b058b7bc5e9d013df5e72b38171c3f203e1e3cc3fb841f32bde2112
 
 pkgname = libva-v4l2-request-git
-
