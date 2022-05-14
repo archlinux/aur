@@ -1,6 +1,6 @@
 pkgbase = jdk11-dragonwell-bin
 	pkgdesc = Alibaba Dragonwell, as a downstream version of OpenJDK, is the OpenJDK implementation at Alibaba optimized for online e-commerce, financial, logistics applications running on 100,000+ servers.
-	pkgver = 11.0.14.10
+	pkgver = 11.0.15.11.9
 	pkgrel = 1
 	url = https://dragonwell-jdk.io/
 	arch = x86_64
@@ -16,9 +16,9 @@ pkgbase = jdk11-dragonwell-bin
 	provides = java-runtime-openjdk=11
 	provides = java-runtime-headless=11
 	provides = java-runtime-headless-openjdk=11
-	source_x86_64 = jdk11-dragonwell-bin-11.0.14.10-x86_64.tar.gz::https://github.com/alibaba/dragonwell11/releases/download/dragonwell-11.0.14.10_jdk-11.0.14-ga/Alibaba_Dragonwell_11.0.14.10_x64_linux.tar.gz
-	sha256sums_x86_64 = f44fe94aa5ef14a67ed446698dd055ac1ab726ecb516de16b3cab24c666a71ae
-	source_aarch64 = jdk11-dragonwell-bin-11.0.14.10-aarch64.tar.gz::https://github.com/alibaba/dragonwell11/releases/download/dragonwell-11.0.14.10_jdk-11.0.14-ga/Alibaba_Dragonwell_11.0.14.10_aarch64_linux.tar.gz
-	sha256sums_aarch64 = 4c45345734076495d5a838d67c7957c078de913a708242087130c0627716187e
+	source_x86_64 = jdk11-dragonwell-bin-11.0.15.11.9-x86_64.tar.gz::https://github.com/alibaba/dragonwell11/releases/download/dragonwell-11.0.15.11.9_jdk-11.0.15-ga/Alibaba_Dragonwell_11.0.15.11.9_x64_linux.tar.gz
+	sha256sums_x86_64 = 2406a9b12682d443aa606213d6c00ec83d96b2d157a70728edd6b9bca80c4eab
+	source_aarch64 = jdk11-dragonwell-bin-11.0.15.11.9-aarch64.tar.gz::https://github.com/alibaba/dragonwell11/releases/download/dragonwell-11.0.15.11.9_jdk-11.0.15-ga/Alibaba_Dragonwell_11.0.15.11.9_aarch64_linux.tar.gz
+	sha256sums_aarch64 = 459bec951d0b2d610bda8cc1fd649406abe4edc8bcda78568b2fca828993f040
 
 pkgname = jdk11-dragonwell-bin
