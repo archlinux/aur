@@ -1,0 +1,15 @@
+pkgbase = cl-trivial-benchmark
+	pkgdesc = Common Lisp library to perform quick benchmark tests
+	pkgver = 2.0.0.r25.g42d7673
+	pkgrel = 1
+	url = https://shinmera.github.io/trivial-benchmark
+	arch = any
+	license = zlib
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	depends = cl-alexandria
+	source = cl-trivial-benchmark::git+https://github.com/Shinmera/trivial-benchmark#commit=42d76733dd2e873471c6f1e27d39113293f7dd5c
+	b2sums = SKIP
+
+pkgname = cl-trivial-benchmark
