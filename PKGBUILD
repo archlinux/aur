@@ -5,7 +5,7 @@ pkgname=(
   'zed'
   'zq'
 )
-pkgver=1.0.0
+pkgver=1.1.0
 pkgrel=1
 pkgdesc='Tooling for super-structured data'
 arch=('x86_64')
@@ -14,7 +14,7 @@ license=('BSD')
 depends=('glibc')
 makedepends=('git' 'go')
 options=('!lto')
-_commit='2cc33836b61dc10d7a1988e3381b09e7b7c2e1ff'
+_commit='c68a120d0c9d696cdd55241fe4569f3fa112f866'
 source=("$pkgbase::git+https://github.com/brimdata/zed#commit=$_commit")
 md5sums=('SKIP')
 
