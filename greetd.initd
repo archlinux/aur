@@ -8,7 +8,7 @@ description="Simple greeter daemon"
 command=/usr/bin/greetd
 command_args="--config ${cfgfile} ${command_args:-}"
 command_background=yes
-pidfile=/run/$RC_SVCNAME.pid"
+pidfile="/run/$RC_SVCNAME.pid"
 
 required_files="${cfgfile}"
 
