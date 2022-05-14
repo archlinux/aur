@@ -3,7 +3,7 @@
 
 pkgname="paperless-ngx"
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A supercharged version of paperless: scan, index and archive all your physical documents"
 url="https://github.com/paperless-ngx/paperless-ngx"
 license=("GPL3")
@@ -66,6 +66,7 @@ depends=("file"
          "python-msgpack"
          "python-numpy"
          "python-pathvalidate"
+         "python-pdf2image"
          "python-portalocker"
          "python-psycopg2"
          "python-pyasn1"
@@ -101,7 +102,8 @@ depends=("file"
          "python-websockets"
          "python-whitenoise"
          "python-whoosh"
-         "python-zope-interface")
+         "python-zope-interface"
+         "pyzbar")
 optdepends=("jbig2enc: smaller PDF size"
             "postgresql: postgres database")
 source=("$url/releases/download/v$pkgver/$pkgname-v$pkgver.tar.xz"
