@@ -6,7 +6,7 @@
 # will be on config.extra file.
 
 pkgbase=linux-mainline-git
-pkgver=v5.18.rc3.r74.b05a5683eba6
+pkgver=v5.18.rc6.r148.ec7f49619d8e
 pkgrel=1
 pkgdesc="Linus Torvalds' Mainline Linux"
 url="https://www.kernel.org"
@@ -40,7 +40,7 @@ validpgpkeys=(
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
 sha256sums=('SKIP'
-            '3f02a0f2fe820f678d15fb0efce04e3716bdc7590d452317bf1b0b63f3b31cd2'
+            'fb37785c43d90085ab4e7d7cee522cb8232713b6c601d74cfc7234eeaeb1e6b5'
             '6e41a729c2f2946d3606ca2c0cb3a058c9700b0f73110eed36dcba91a271e50f'
             'b5ced6ad1f03a5cfe6dccc0b2b31f91420cfe97823e5d15d5b94b7224362daa9'
             '71c6047def065c291127cebd5878389ff1aa103e1a3c20ca4dd5b04cd9069705'
