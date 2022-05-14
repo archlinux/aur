@@ -1,4 +1,4 @@
-# Maintainer: Daniel Menelkir <menelkir at itroll dot org>
+# Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
 
 pkgname=etsh
 pkgver=5.4.0
