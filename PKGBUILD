@@ -1,4 +1,4 @@
-# Maintainer: Matt C <mdc028[at]bucknell[dot]edu>
+# Maintainer: Matt C <matt[at]getcryst[dot]al>
 # Developer: axtlos <axtlos[at]salyut[dot]one>
 # Developer: jnats <jnats[at]salyut[dot]one>
 
@@ -31,5 +31,5 @@ build() {
 package() {
     cd ${srcdir}/amethyst
     install -Dm755 target/release/${pkgname} -t "${pkgdir}"/usr/bin
-    install -Dm644 LICENSE.md -t "${pkgdir}" /usr/share/licenses/${pkgname}/
+    install -Dm644 LICENSE.md -t "${pkgdir}"/usr/share/licenses/${pkgname}/
 }
