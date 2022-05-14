@@ -1,7 +1,7 @@
 pkgbase = vlc-nox
 	pkgdesc = Multi-platform MPEG, VCD/DVD, and DivX player (without X support)
 	pkgver = 3.0.17.4
-	pkgrel = 1
+	pkgrel = 2
 	url = https://www.videolan.org/vlc/
 	arch = x86_64
 	license = LGPL2.1
@@ -164,9 +164,13 @@ pkgbase = vlc-nox
 	source = update-vlc-plugin-cache.hook
 	source = caca-fix-to-newer-version.patch
 	source = vlc-live-media-2021.patch
+	source = dav1d_v1.patch
+	source = dav1d_v1_limit.patch
 	sha512sums = dac14c6586603c064294672eb878253e52b3a7bef431fb10303345e5400591b5c1f2d452a2af03f503db0ca186582a84be06fdf05ab011c33f7b0bd5389c51fb
 	sha512sums = b247510ffeadfd439a5dadd170c91900b6cdb05b5ca00d38b1a17c720ffe5a9f75a32e0cb1af5ebefdf1c23c5acc53513ed983a736e8fa30dd8fad237ef49dd3
 	sha512sums = ef479a246dc98f882a05ca56a1c2872cc67ced154c625790070b887858ddc250d55b1295db82c9122e5ecd3c2c9c712ec9718e28d0a9d21ff6a230eb6c5010ce
 	sha512sums = ad17d6f4f2cc83841c1c89623c339ec3ee94f6084ea980e2c8cbc3903854c85e5396e31bfd8dc90745b41794670903d854c4d282d8adec263087a9d47b226ccc
+	sha512sums = 5f7aa43a7b248812758a8ef82d15d59fb566327fc3e837002a8f4741cabde09ed7caca905f6fe168554b9a4b7561816b3eff877f4dd6664ceaf0964281facb4f
+	sha512sums = 4aca4979fe7516ee9d39ae8e2c91c0f981a033ed5c6a74eaf86569df8bbcf72ab0be037f27c8af78f26c23dc181e52bbf4a3e0209e07160fdb03e8fa33e6bc38
 
 pkgname = vlc-nox
