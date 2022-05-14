@@ -1,0 +1,14 @@
+pkgbase = cl-closer-mop
+	pkgdesc = A compatibility layer that rectifies erroneous CLOS MOP features across Common Lisp implementations
+	pkgver = 1.0.0.r166.g701b637
+	pkgrel = 1
+	url = https://github.com/pcostanza/closer-mop
+	arch = any
+	license = MIT
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	source = cl-closer-mop::git+https://github.com/pcostanza/closer-mop#commit=701b637b7f061c2137f2697df71ef998590479e7
+	b2sums = SKIP
+
+pkgname = cl-closer-mop
