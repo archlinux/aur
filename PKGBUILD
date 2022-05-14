@@ -2,10 +2,10 @@
 
 _java=17
 _pkgname=dragonwell
-pkgname="jdk${_java}-${_pkgname}-bin"
-pkgver=17.0.2.0.2
-_pkgver=17.0.2.0.2+8
-__pkgver=17.0.2
+pkgname=jdk$_java-$_pkgname-bin
+pkgver=17.0.3.0.3
+_pkgver=17.0.3.0.3+7
+__pkgver=17.0.3
 pkgrel=2
 pkgdesc="Alibaba Dragonwell, as a downstream version of OpenJDK, is the OpenJDK implementation at Alibaba optimized for online e-commerce, financial, logistics applications running on 100,000+ servers."
 arch=("x86_64" "aarch64")
@@ -22,8 +22,8 @@ provides=(
 )
 source_x86_64=("${pkgname}-${pkgver}-x86_64.tar.gz::https://github.com/alibaba/dragonwell17/releases/download/dragonwell-${_pkgver}_jdk-${__pkgver}-ga/Alibaba_Dragonwell_${_pkgver}_x64_linux.tar.gz")
 source_aarch64=("${pkgname}-${pkgver}-aarch64.tar.gz::https://github.com/alibaba/dragonwell17/releases/download/dragonwell-${_pkgver}_jdk-${__pkgver}-ga/Alibaba_Dragonwell_${_pkgver}_aarch64_linux.tar.gz")
-sha256sums_x86_64=('a345601439294b56831ecdd1366ac4006c3828e25f18a0fc59f34aa07387a97b')
-sha256sums_aarch64=('cc9f9fbd33c117f164eacfbafa2ae92270d88bc9b3d4ea4a862a20cacdcf9115')
+sha256sums_x86_64=('8431922266c1a476e1ca2d49c68110c22ec4f989ca0438b0b089ecd9c7ade0ce')
+sha256sums_aarch64=('84c9571fccb7e028c59657712e686cd1560d760a560ee8c76d0f99e2795aafcd')
 
 package() {
     install -d $pkgdir/usr/lib/jvm/java-17-dragonwell
