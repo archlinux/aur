@@ -17,9 +17,9 @@ pkgbase = go-ipfs-git
 	conflicts = go-ipfs
 	source = git+https://github.com/ipfs/go-ipfs.git
 	source = rb.patch
-	sha512sums = SKIP
-	sha512sums = 5591bb5b309ccf6464723650831e7ed1bf6ffc7e18645c3563452df965091b94d265b079db92ae0b359aa964540b2ee1c1b60b3000102168bfd32730b640f12c
+	source = strip.patch
 	b2sums = SKIP
 	b2sums = e806cac9fbfa396bdfad6e236bbfe4141b41b81da0a4c92b045b82c5c7237af7048bc16db4d9078c7351dbc4d82e658bb78f07bbc48b603c0589bca59c63f02d
+	b2sums = 5146f8e5ee5bc5894e4200ea6a5074f569e71b353f6f8235e0577c09564587b97d1d4af9077b465e04e504f5ce1573a8e52c02359a6cb0e4d2b20736930d6400
 
 pkgname = go-ipfs-git

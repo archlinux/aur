@@ -8,6 +8,8 @@
 # Contributor: kpcyrd <git@rxv.cc>
 # Contributor: Ian Naval <ianonavy@gmail.com>
 
+DEBUG=0
+
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
 pkgver=0.13.0rc1.r18.ga72753bad
@@ -27,25 +29,38 @@ conflicts=("$_pkgname")
 install="$pkgname.install"
 source=("git+$url.git"
         # https://github.com/ipfs/go-ipfs/pull/8213#issuecomment-881866789
-        rb.patch)
+        rb.patch
+	strip.patch)
 
-sha512sums=('SKIP'
-            '5591bb5b309ccf6464723650831e7ed1bf6ffc7e18645c3563452df965091b94d265b079db92ae0b359aa964540b2ee1c1b60b3000102168bfd32730b640f12c')
 b2sums=('SKIP'
-        'e806cac9fbfa396bdfad6e236bbfe4141b41b81da0a4c92b045b82c5c7237af7048bc16db4d9078c7351dbc4d82e658bb78f07bbc48b603c0589bca59c63f02d')
+        'e806cac9fbfa396bdfad6e236bbfe4141b41b81da0a4c92b045b82c5c7237af7048bc16db4d9078c7351dbc4d82e658bb78f07bbc48b603c0589bca59c63f02d'
+        '5146f8e5ee5bc5894e4200ea6a5074f569e71b353f6f8235e0577c09564587b97d1d4af9077b465e04e504f5ce1573a8e52c02359a6cb0e4d2b20736930d6400')
 
 
 prepare() {
+
   cd "$srcdir/$_pkgname"
   patch -Np1 -i ../rb.patch
 
+  if [ "$DEBUG" -eq 0 ]; then
+    patch -Np1 -i ../strip.patch
+  fi
+
   cd "$srcdir/.."
+
+  # check if it was wiped due to enabled optimizations
+  if [ ! -f "./go/wiped" ]; then
+    chmod u+w -R "./go"
+    rm -fdR ./go
+  fi
+
   mkdir -p "go"
+  touch go/wiped
   export GOPATH="$(pwd)/go" 
 
   # make sure GOPATH is set to writeable
   chmod u+w -R "$GOPATH"
-
+  
   cd "$srcdir/$_pkgname"
 
   export CGO_LDFLAGS="$LDFLAGS"
@@ -82,6 +97,29 @@ build() {
   export CGO_CPPFLAGS="$CPPFLAGS"
   export CGO_CXXFLAGS="$CXXFLAGS"
   export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
+  if [ "$DEBUG" -eq 0 ]; then
+    export CGO_ENABLED=0
+    # only run detection on x86_64 and if makepkg.conf contains no value
+    if [ "$CARCH" == "x86_64" ] && [ -z "$GOAMD64" ]; then
+      # detect cpu feature level
+      version_4="$(/lib/ld-linux-x86-64.so.2 --help | grep supported | grep x86-64-v4 | wc -l)"
+      version_3="$(/lib/ld-linux-x86-64.so.2 --help | grep supported | grep x86-64-v4 | wc -l)"
+      version_2="$(/lib/ld-linux-x86-64.so.2 --help | grep supported | grep x86-64-v4 | wc -l)"
+      
+      if [ "$version_4" -gt 0 ]; then
+        export GOAMD64="v4"
+      elif [ "$version_3" -gt 0 ]; then
+        export GOAMD64="v3"
+      elif [ "$version_2" -gt 0 ]; then
+        export GOAMD64="v2"
+      else
+        export GOAMD64="v1"      
+      fi
+    fi
+  fi
+
+  echo "using x86_64 optimization level: $GOAMD64"
+  
   make nofuse
   cmd/ipfs/ipfs commands completion bash > "$srcdir"/ipfs-completion.bash
 
