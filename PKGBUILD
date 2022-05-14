@@ -2,6 +2,7 @@
 
 pkgname=langkit
 pkgver=20211103
+_pkgver=22.0.0
 pkgrel=2
 pkgdesc='Compiler for syntactic and semantic language analysis libraries.'
 
@@ -17,7 +18,7 @@ sha256sums=("45e9f389827f37eee107d4b7f6115fb4a7cf4d9dfc1214a68081db86d6c5ca74")
 
 build()
 {
-    cd "$srcdir/langkit-22.0.0"
+    cd "$srcdir/$pkgname-$_pkgver"
 
     ADA_FLAGS="$CFLAGS"
     ADA_FLAGS="${ADA_FLAGS//-Wformat}"
@@ -35,7 +36,7 @@ build()
 
 package()
 {
-    cd "$srcdir/langkit-22.0.0"
+    cd "$srcdir/$pkgname-$_pkgver"
 
     python setup.py install --root="$pkgdir" --optimize=1 --skip-build
 
@@ -61,4 +62,3 @@ package()
     done
     popd
 }
-# vim: set et ts=4:
