@@ -11,7 +11,7 @@ pkgbase = elixir-ls-git
 	depends = erlang-nox
 	provides = elixir-ls
 	conflicts = elixir-ls
-	source = elixir-ls::git://github.com/elixir-lsp/elixir-ls.git
+	source = elixir-ls::git+https://github.com/elixir-lsp/elixir-ls.git
 	sha256sums = SKIP
 
 pkgname = elixir-ls-git

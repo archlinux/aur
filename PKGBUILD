@@ -12,7 +12,7 @@ depends=('elixir' 'erlang-nox')
 makedepends=('git' 'rebar3')
 provides=('elixir-ls')
 conflicts=('elixir-ls')
-source=("${_pkgname}::git://github.com/elixir-lsp/elixir-ls.git")
+source=("${_pkgname}::git+https://github.com/elixir-lsp/elixir-ls.git")
 sha256sums=('SKIP')
 
 pkgver() {
