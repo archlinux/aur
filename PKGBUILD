@@ -22,6 +22,10 @@ build()
 {
     cd "$srcdir/$_repo_name-$pkgver/gnatinspect"
 
+    # Rid flags not used by Ada.
+    CFLAGS="${CFLAGS//-Wformat}"
+    CFLAGS="${CFLAGS//-Werror=format-security}"
+
     make setup BUILD=PROD prefix=/usr
     make -j1 GPRBUILD_OPTIONS="-R -cargs $CFLAGS -largs $LDFLAGS -gargs"
 }
