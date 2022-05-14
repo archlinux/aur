@@ -1,6 +1,6 @@
 # Maintainer: Tim-Luca Lagmöller <mail@lagmoellertim.de>
 pkgname=rescreen
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 pkgdesc="Display Manager with fractional scaling support for X11"
 arch=('any')
@@ -19,7 +19,7 @@ install=
 changelog=
 source=("$pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz")
 noextract=()
-sha512sums=('978dd0338a882827cdec896cf3a28a820e5f755180407775cf25d126db40d65a99ac419ba1bf23cecbbdc8cab40a5885656ba3a51fbce8c0e31076a758c0a603')
+sha512sums=('eadd7e39f36965f09ce2ae289d5298418aa1f1691d796c79b6017f722dde36cf62b458bd6c98e8364e2f7a4c946deba84a3899196555b570fbf75140eff7e612')
 
 build() {
   cd ${pkgname}-${pkgver}
