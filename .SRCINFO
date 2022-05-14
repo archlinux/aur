@@ -1,11 +1,11 @@
 pkgbase = zeronsd-git
 	pkgdesc = Unicast DNS resolver for ZeroTier networks
-	pkgver = r398.8d66068
+	pkgver = r452.856a30c
 	pkgrel = 1
 	url = https://github.com/zerotier/zeronsd
 	arch = any
 	license = BSD-3-Clause
-	makedepends = cargo
+	makedepends = rustup
 	makedepends = git
 	depends = zerotier-one
 	provides = zeronsd
