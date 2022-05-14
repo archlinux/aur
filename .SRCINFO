@@ -1,0 +1,18 @@
+pkgbase = cl-split-sequence
+	pkgdesc = Splits a sequence into a list of subsequences
+	pkgver = 2.0.1
+	pkgrel = 1
+	url = https://github.com/sharplispers/split-sequence
+	arch = any
+	license = MIT
+	checkdepends = sbcl
+	checkdepends = cl-fiveam
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	source = cl-split-sequence::git+https://github.com/sharplispers/split-sequence#commit=e1b91281e13e7e1490fdcaf7e8aeda04759ec3b7
+	source = run-tests.lisp
+	b2sums = SKIP
+	b2sums = 93e14dac945dfd1331f3ec12a8489c2361544f59e0fc76157ce0223955dc53e722655fee9e606197251251ba499bc602d6492691477a8bbe3dd78d42418e3cc9
+
+pkgname = cl-split-sequence
