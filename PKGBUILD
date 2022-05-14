@@ -1,9 +1,9 @@
 # Maintainer: Tomkoid <tomkoid@tomkoid.tk>
+# GitLab repo is temporarily unavailable
 pkgname=blurry-text-fix
 pkgver=2
 pkgrel=3
 pkgdesc="Fixes blurry text in GTK4 and Flatpak"
-url='https://gitlab.com/Tomkoid/blurry-text-fix'
 license=('GPL3')
 provides=('blurry-text-fix')
 install=$pkgname.install
