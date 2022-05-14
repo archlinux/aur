@@ -1,13 +1,13 @@
 pkgbase = hush-bin
 	pkgdesc = Hush is a unix shell scripting language based on the Lua programming language
-	pkgver = 0.1.3
+	pkgver = 0.1.4
 	pkgrel = 1
 	url = https://github.com/gahag/hush
 	arch = x86_64
 	license = MIT
 	provides = hush
 	conflicts = hush
-	source = https://github.com/gahag/hush/releases/download/v0.1.3-alpha/hush-0.1.3-x86_64.tar.gz
-	sha256sums = 784ddd2210a4eb42a137996b8ba87b04aadae155a15e7c9bad1903f8d57539f7
+	source = https://github.com/gahag/hush/releases/download/v0.1.4-alpha/hush-0.1.4-x86_64.tar.gz
+	sha256sums = 66c135545a9cae51eb0b879d3be7b4b860a544023e6223dc228b8d977e0b7d50
 
 pkgname = hush-bin
