@@ -1,6 +1,6 @@
 pkgbase = touchegg-nosystemd
 	pkgdesc = Multitouch gesture recognizer (with systemd support disabled)
-	pkgver = 2.0.13
+	pkgver = 2.0.14
 	pkgrel = 1
 	url = https://github.com/JoseExposito/touchegg/
 	arch = i686
@@ -18,10 +18,10 @@ pkgbase = touchegg-nosystemd
 	depends = pugixml
 	optdepends = touchegg-openrc: touchegg daemon OpenRC startup script.
 	optdepends = touche: For a configuration GUI (warning, overwrites user config file without warning).
-	provides = touchegg=2.0.13
-	provides = touchegg-doc=2.0.13
+	provides = touchegg=2.0.14
+	provides = touchegg-doc=2.0.14
 	conflicts = touchegg
-	source = touchegg-2.0.13.tar.gz::https://github.com/JoseExposito/touchegg//archive/2.0.13.tar.gz
-	sha512sums = 4db88b184da0363f35607655739b9b125f99261c3a65018258bb4adcb7f91fb0840b71044c7016245062865eecb7dcc04d05a9d1787c86f6074af26cadb53b0c
+	source = touchegg-2.0.14.tar.gz::https://github.com/JoseExposito/touchegg//archive/2.0.14.tar.gz
+	sha512sums = da0162abfb4f6b2d27406e3446d6829d30eb17187308045dd6c846570aedb786a5e2f84d764e9eb8a2b549e1087e624a901ef44777899ff56fc75b91b068c477
 
 pkgname = touchegg-nosystemd
