@@ -5,6 +5,8 @@ post_install()
 		pycompile -p odio 
 	fi
 
+    gtk-update-icon-cache -q -f usr/share/icons/hicolor
+    update-desktop-database -q
     glib-compile-schemas /usr/share/glib-2.0/schemas/
 }
 
@@ -23,4 +25,11 @@ pre_remove()
 			rm -f "${file}"[co] >/dev/null
 	  	done
 	fi
+}
+
+post_remove()
+{
+    gtk-update-icon-cache -q -f usr/share/icons/hicolor
+    update-desktop-database -q
+    glib-compile-schemas usr/share/glib-2.0/schemas
 }

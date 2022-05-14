@@ -3,6 +3,7 @@ pkgbase = odio
 	pkgver = 22.5.8
 	pkgrel = 1
 	url = https://tari.in/www/software/odio
+	install = odio.install
 	arch = any
 	license = GPL3
 	makedepends = python-setuptools
