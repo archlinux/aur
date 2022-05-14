@@ -1,0 +1,15 @@
+pkgbase = chicken-marks-git
+	pkgver = latest
+	pkgrel = 1
+	url = https://github.com/FragmentedCurve/chicken-marks
+	arch = x86_64
+	license = BSD
+	makedepends = chicken
+	makedepends = openssl
+	depends = openssl
+	provides = chicken-marks
+	conflicts = chicken-marks
+	source = git+https://github.com/FragmentedCurve/chicken-marks.git
+	md5sums = SKIP
+
+pkgname = chicken-marks-git
