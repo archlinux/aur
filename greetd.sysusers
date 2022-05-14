@@ -1,1 +1,3 @@
 u greeter - "greetd greeter user" - /bin/sh
+m greeter input
+m greeter video
