@@ -2,8 +2,8 @@
 # Contributor: Jens Carl <jc [dot] archlinux [at] jens-carl [dot] de>
 
 pkgname=foonathan_memory-shared
-pkgver=0.7.1
 _pkgver=0.7-1
+pkgver=$(echo "$_pkgver" | sed 's/-/./')
 pkgrel=3
 pkgdesc="STL compatible C++ memory allocator library build with BUILD_SHARED_LIBS=ON"
 url="https://www.jonathanmueller.dev/project/#memory"
