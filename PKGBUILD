@@ -1,3 +1,5 @@
+# Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
+
 pkgname="plymouth-theme-artix-logo-new"
 pkgver=0.2
 pkgrel=3
