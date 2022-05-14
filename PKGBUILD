@@ -3,7 +3,7 @@
 pkgbase=python-puremagic
 pkgname='python-puremagic'
 _name=puremagic
-pkgver=1.13
+pkgver=1.14
 pkgrel=1
 pkgdesc="A Python python module that will identify a file based off it’s magic numbers."
 arch=('any')
@@ -12,7 +12,7 @@ license=(MIT)
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-${pkgver}.tar.gz")
-sha512sums=('be2a979e07b08bdc868c8def2a864aaa8725a72a719e153bfb1217ced8628c717d75c0ee189882a99e7159772404143d1cdb91f4e12af8b3f280c523a62253e9')
+sha512sums=('6ea721a5b8997586bdd90f265a34a37178bee4321aa512524b04d9be528b5c1b1c57c93383b448af5b84ce9dc6eaf9cb83e1c81cae9bb323a3a75e709fd9bf27')
 
 package() {
   cd "${srcdir}/${_name}-${pkgver}"
