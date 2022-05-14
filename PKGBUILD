@@ -2,7 +2,7 @@
 
 _plug=soifunc
 pkgname=vapoursynth-plugin-${_plug}-git
-pkgver=2.357f34b
+pkgver=6.917524f
 pkgrel=1
 pkgdesc="Plugin for Vapoursynth: ${_plug} (GIT version)"
 arch=('any')
@@ -13,6 +13,9 @@ depends=('vapoursynth'
          'vapoursynth-plugin-muvsfunc'
          'vapoursynth-plugin-mvsfunc'
          'vapoursynth-plugin-jincresize'
+         'vapoursynth-plugin-kagefunc'
+         'vapoursynth-plugin-debandshit'
+         'vapoursynth-plugin-neo_f3kdb'
          )
 optdepends=('vapoursynth-plugin-bm3dcuda: Fast BM3D cuda/cuda_rtc/cpu support')
 makedepends=('git')
