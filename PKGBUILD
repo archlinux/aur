@@ -13,7 +13,7 @@ DEBUG=0
 _pkgname=go-ipfs
 pkgname=$_pkgname-git
 pkgver=0.13.0rc1.r18.ga72753bad
-pkgrel=2
+pkgrel=3
 
 pkgdesc='A peer-to-peer hypermedia distribution protocol'
 url="https://github.com/ipfs/$_pkgname"
@@ -49,9 +49,9 @@ prepare() {
   cd "$srcdir/.."
 
   # check if it was wiped due to enabled optimizations
-  if [ ! -f "./go/wiped" ]; then
-    chmod u+w -R "./go"
-    rm -fdR ./go
+  if [ ! -f "./go/wiped" ] && [ -d "./go" ]; then
+    chmod u+w -R "./go" 2>/dev/null || true
+    rm -fdR ./go 2>/dev/null || true
   fi
 
   mkdir -p "go"
