@@ -1,7 +1,7 @@
 pkgbase = quicklogic-timings-importer-git
 	pkgdesc = Importer of timing data from Quicklogic EOS-S3 to SDF
 	pkgver = r75.eec0737
-	pkgrel = 1
+	pkgrel = 2
 	url = https://github.com/QuickLogic-Corp/quicklogic-timings-importer
 	arch = any
 	license = Apache
@@ -11,6 +11,8 @@ pkgbase = quicklogic-timings-importer-git
 	makedepends = python-wheel
 	makedepends = python-setuptools
 	depends = python
+	depends = python-termcolor
+	depends = python-sdf-timing
 	provides = quicklogic-timings-importer=r75.eec0737
 	conflicts = quicklogic-timings-importer
 	source = git+https://github.com/QuickLogic-Corp/quicklogic-timings-importer.git

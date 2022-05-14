@@ -3,12 +3,12 @@
 _pkgname=quicklogic-timings-importer
 pkgname="$_pkgname-git"
 pkgver=r75.eec0737
-pkgrel=1
+pkgrel=2
 pkgdesc="Importer of timing data from Quicklogic EOS-S3 to SDF"
 arch=(any)
 url="https://github.com/QuickLogic-Corp/$_pkgname"
 license=('Apache')
-depends=('python')
+depends=('python' 'python-termcolor' 'python-sdf-timing')
 makedepends=('git' 'python-build' 'python-installer' 'python-wheel' 'python-setuptools')
 provides=("$_pkgname=$pkgver")
 conflicts=("$_pkgname")
