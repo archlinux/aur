@@ -1,6 +1,7 @@
-# Maintainer: Daniel Menelkir <menelkir@itroll.org>
+# Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
 # Contributor: Muhammad Herdiansyah <herdiansyah@netc.eu>
 # Contributor: Alexander Keller <git@nycroth.com>
+
 pkgname=sinit
 pkgver=1.1
 pkgrel=3
