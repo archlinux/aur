@@ -1,4 +1,4 @@
-# Maintainer: Daniel Menelkir <menelkir at itroll dot org>
+# Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
 # Contributor: Evgeniy Alekseev <arcanis.arch at gmail dot com>
 # Contributor: onestep_ua <onestep at ukr dot net>
 
