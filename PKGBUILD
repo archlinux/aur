@@ -111,7 +111,7 @@ else
     pkgbase=linux-cachyos-${_cpusched}
 fi
 _major=5.17
-_minor=6
+_minor=7
 #_minorc=$((_minor+1))
 #_rcver=rc8
 pkgver=${_major}.${_minor}
@@ -122,7 +122,7 @@ _srcname=linux-${_stable}
 #_srcname=linux-${_major}
 arch=(x86_64 x86_64_v3)
 pkgdesc='Linux PDS scheduler Kernel by CachyOS with other patches and improvements'
-pkgrel=4
+pkgrel=2
 arch=('x86_64' 'x86_64_v3')
 url="https://github.com/CachyOS/linux-cachyos"
 license=('GPL2')
@@ -159,16 +159,18 @@ source+=(
     "${_patchsource}/0002-anbox.patch"
     "${_patchsource}/0003-bbr2.patch"
     "${_patchsource}/0004-cachy.patch"
-    "${_patchsource}/0005-clearlinux.patch"
-    "${_patchsource}/0006-cpu.patch"
-    "${_patchsource}/0007-fixes-miscellaneous.patch"
-    "${_patchsource}/0008-fs-patches.patch"
-    "${_patchsource}/0009-hwmon.patch"
-    "${_patchsource}/0010-lru-le9.patch"
-    "${_patchsource}/0011-spf-lru.patch"
-    "${_patchsource}/0012-xanmod.patch"
-    "${_patchsource}/0013-lrng.patch"
-    "${_patchsource}/0015-futex-winesync.patch"
+#    "${_patchsource}/0005-migrate.patch"
+    "${_patchsource}/0006-clearlinux.patch"
+    "${_patchsource}/0007-cpu.patch"
+    "${_patchsource}/0008-fixes-miscellaneous.patch"
+    "${_patchsource}/0009-fs-patches.patch"
+    "${_patchsource}/0010-hwmon.patch"
+    "${_patchsource}/0011-lru-le9.patch"
+    "${_patchsource}/0012-spf-lru.patch"
+    "${_patchsource}/0013-xanmod.patch"
+    "${_patchsource}/0014-lrng.patch"
+#    "${_patchsource}/0015-ck-hrtimer.patch"
+#    "${_patchsource}/0016-futex-winesync.patch"
     "auto-cpu-optimization.sh"
 )
 
@@ -506,55 +508,6 @@ prepare() {
                        --enable ANDROID_BINDER_DEVICES="binder,hwbinder,vndbinder"
     fi
 
-    scripts/config --enable ACPI_REV_OVERRIDE_POSSIBLE \
-                   --enable ACPI_TABLE_UPGRADE
-
-    # General architecture-dependent options
-    scripts/config --enable KPROBES
-
-    # Enable loadable module support
-    scripts/config --undefine MODULE_SIG_FORCE \
-                    --enable MODULE_COMPRESS_ZSTD
-
-    # Networking support
-    scripts/config --enable NETFILTER_INGRESS
-
-    # Device Drivers
-    scripts/config --enable FRAMEBUFFER_CONSOLE_DEFERRED_TAKEOVER \
-                   --enable DELL_SMBIOS_SMM \
-                   --module PATA_JMICRON \
-                   --enable-after SOUND SOUND_OSS_CORE \
-                   --enable SND_OSSEMUL \
-                   --module-after SND_OSSEMUL SND_MIXER_OSS \
-                   --module-after SND_MIXER_OSS SND_PCM_OSS \
-                   --enable-after SND_PCM_OSS SND_PCM_OSS_PLUGINS \
-                   --module AGP --module-after AGP AGP_INTEL --module-after AGP_INTEL AGP_VIA \
-                   --enable FW_LOADER_COMPRESS
-
-    # Kernel hacking -> Compile-time checks and compiler options -> Make section mismatch errors non-fatal
-    scripts/config --enable SECTION_MISMATCH_WARN_ONLY
-
-    # File systems
-    scripts/config --module NTFS3_FS \
-                   --enable NTFS3_LZX_XPRESS \
-                   --enable NTFS3_FS_POSIX_ACL
-
-    scripts/config --module SMB_SERVER \
-                   --enable SMB_SERVER_SMBDIRECT \
-                   --enable SMB_SERVER_CHECK_CAP_NET_ADMIN \
-                   --enable SMB_SERVER_KERBEROS5
-
-    # Security options
-    scripts/config --enable SECURITY_SELINUX \
-                   --enable SECURITY_SELINUX_BOOTPARAM \
-                   --enable SECURITY_SMACK \
-                   --enable SECURITY_SMACK_BRINGUP \
-                   --enable SECURITY_SMACK_NETFILTER \
-                   --enable SECURITY_SMACK_APPEND_SIGNALS \
-                   --enable SECURITY_TOMOYO \
-                   --enable SECURITY_APPARMOR \
-                   --enable SECURITY_YAMA
-
     scripts/config --disable DEBUG_INFO \
                    --disable DEBUG_INFO_BTF \
                    --disable DEBUG_INFO_DWARF4 \
@@ -736,21 +689,20 @@ for _p in "${pkgname[@]}"; do
     }"
 done
 
-sha256sums=('64ccf18380be5b5491322a3fd54904538b544e523e4bf86289dd8df7404cb10c'
-            'bce05218cb52e8f70fd0e652483d0413cf3d3f8bcbe0302bfb2d2f195ea6ef7c'
+sha256sums=('22f67ef6b12ef6c0c0353be4b90b4bf4b9b18b858c16c346fa495b67ec718c99'
+            '7ad9dced23394e7db11dc70e5ad95589828001c8b09d3c1f9d54375e3c396dcb'
             '56c7c89373bb1cd1cfb7446b350f4fc590971fc15e0ee16e23fcb40ffc09482a'
             '09aa0e17190ee113a352573b2d2386cc04b522641fd277306e8ace9fd7af0037'
             'ddaf45cc72ed743f70c8754505357e94d6dd4133bfde6e9c6afc59f4cc12ee69'
             '6b31e4655e5ff9dbe95fb7db665426dad2bf3e33b5102d040a256f707cc99a23'
-            '7936c3cc3c7be010539414b392f942664f95d9659a44c614a2e57c5c72cdacbf'
-            'ef7d6253dc8a149ffea1293f65ef43fe9277ba6a629bc54d656f594429813b5e'
+            '8d327824362a7484bf7a8e4bfbe37e969ee39bbbb1c09c9e1e909b7e5941240d'
+            'a13c4f5a688a86c8c67642a4129d2c89efd5f1afd3625e15ce5abe0b983d60d0'
             'ab87b51fcacd9c7c5bf5d363ac45dab994c2c53d0e80e552390c7cbf752d7dca'
-            '748d5b112d10870ce214c5fab1cc793492416faab73637e95c0a1b877b2574b7'
-            '9625dd5a95a07ea94ea903a1bd7100ff2037c31d72c68ec43b9b6435a8f6dbf6'
+            '9b431688e9c7be5b5a75a0d76cb26e2d0121d03d30fc47e257ea3217d42d0e08'
+            '12ebabff02f66e1583232591fc4ddf09c6437f11a4c59045d6d50d4be0f3693e'
             'b834d558c412add87fec0fc0ce117674216c1b8717f48eaf8134ac64249ba8b3'
             '9c2c0ccee49c17663f27dcdf43cfa02cd45ee15d53ff1a05da7e683098abdde1'
             '1b2dd9147b7443a42ec49e9d1bf01d1209bfcbe625e686e90f0276abb3ed52ec'
             '0e5177f086ddcac9b0e6596d29588c0730cce5c827e4c51e57f835a32f25ee85'
             '761abc5bd65c194b6b810af1022df5888ce0ecbe70ffe4cd67e6e0c748fb78a2'
-            '179b540f8848b03ccb1a0d12e24feab63fd0576b5e9eed8f214d6e9cb790f151'
             '65ec9ac5b8b28d5b61df1c72498059be2e7cb1f9b965bac0e4ffed3c05520b2b')
