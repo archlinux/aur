@@ -14,6 +14,7 @@ _pkgname=go-ipfs
 pkgname=$_pkgname-git
 pkgver=latest
 pkgrel=1
+epoch=1
 
 pkgdesc='A peer-to-peer hypermedia distribution protocol'
 url="https://github.com/ipfs/$_pkgname"

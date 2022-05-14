@@ -2,6 +2,7 @@ pkgbase = go-ipfs-git
 	pkgdesc = A peer-to-peer hypermedia distribution protocol
 	pkgver = latest
 	pkgrel = 1
+	epoch = 1
 	url = https://github.com/ipfs/go-ipfs
 	install = go-ipfs-git.install
 	arch = i686
