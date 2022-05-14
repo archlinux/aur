@@ -49,7 +49,7 @@ _hpn_ver=hpn17v0
 #_pkgver="$(sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver})_new"
 _pkgver="$(sed -e 's/\./_/' -e 's/p/_P/' <<< ${_openssh_ver})"
 pkgver="${_openssh_ver}.${_hpn_ver}"
-pkgrel=5
+pkgrel=6
 pkgdesc='A Secure SHell server/client fork with High Performance patches included'
 url='https://www.psc.edu/index.php/hpn-ssh/'
 license=('custom:BSD')
@@ -221,9 +221,14 @@ package_openssh-hpn-shim(){
 
   cd "${srcdir}/openssh-portable-hpn-${_pkgver}/"
 
-  install -dm0755 "${pkgdir}/usr/bin"; pushd "${pkgdir}/usr/bin"
+  install -dm0755 "${pkgdir}/usr/bin" "${pkgdir}/usr/lib/ssh";
+  pushd "${pkgdir}/usr/bin"
   for i in findssl.sh scp sftp ssh ssh-add ssh-agent ssh-copy-id ssh-keygen ssh-keyscan sshd; do
     ln -s "hpn${i}" "${i}"
+  done; popd
+  pushd "${pkgdir}/usr/lib/ssh"
+  for i in sftp-server ssh-keysign ssh-pkcs11-helper ssh-sk-helper; do
+    ln -s "../hpnssh/hpn${i}" "${i}"
   done; popd
 
   install -Dm644 ../sshdgenkeys.service "${pkgdir}"/usr/lib/systemd/system/sshdgenkeys.service
