@@ -1,6 +1,6 @@
 pkgbase = gnome-voice
-	pkgdesc = Listen to KHPR,WNYC,SCPR in this GNOME Voice audio player
-	pkgver = 0.0.1
+	pkgdesc = Record Audio with GNOME Voice
+	pkgver = 0.0.2
 	pkgrel = 1
 	url = https://wiki.gnome.org/Apps/Radio
 	arch = x86_64
@@ -12,7 +12,7 @@ pkgbase = gnome-voice
 	depends = geoclue
 	depends = gst-plugins-base
 	depends = gst-plugins-bad
-	source = https://download.gnome.org/sources/gnome-voice/0.0/gnome-voice-0.0.1.tar.xz
-	sha256sums = 81e220e0c9856de063138a3ea151a4dd457572fe88520e830c31d4d1b21eecea
+	source = https://download.gnome.org/sources/gnome-voice/0.0/gnome-voice-0.0.2.tar.xz
+	sha256sums = bc5300261738a64e51f59fbeb1bb25bf55f90c0346b6b9877c5985d09dbc8574
 
 pkgname = gnome-voice
