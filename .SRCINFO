@@ -1,0 +1,19 @@
+pkgbase = ignite-git
+	pkgdesc = Weaveworks Ignite, combines Firecracker MicroVMs with Docker/OCI images to unify containers and VMs, GIT version.
+	pkgver = r1819.c4162ac6
+	pkgrel = 1
+	url = https://github.com/weaveworks/ignite
+	arch = x86_64
+	license = apache
+	makedepends = go
+	makedepends = git
+	depends = containerd
+	depends = cni-plugins
+	provides = ignite-git
+	conflicts = ignite
+	source = git+https://github.com/weaveworks/ignite/
+	source = ignited.service
+	sha256sums = SKIP
+	sha256sums = d8719fd5744f790f78ff027eb8c82ad917d5a96a688e406f1ab6dcbf2bb9ec30
+
+pkgname = ignite-git
