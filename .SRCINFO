@@ -1,0 +1,18 @@
+pkgbase = cl-anaphora
+	pkgdesc = The Anaphoric Macro Package from Hell
+	pkgver = 0.9.8
+	pkgrel = 1
+	url = https://anaphora.common-lisp.dev
+	arch = any
+	license = MIT
+	checkdepends = sbcl
+	checkdepends = cl-rt
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	source = cl-anaphora::git+https://github.com/spwhitton/anaphora#commit=bcf0f7485eec39415be1b2ec6ca31cf04a8ab5c5
+	source = run-tests.lisp
+	b2sums = SKIP
+	b2sums = ed127d57e783c1f0a478e88369e1f9cc80ac5a54961d4f1fd887c574097b9b958401978ea413ccf5147360c92ff0abb030019d38d5d93d439cbe18f3de5a0837
+
+pkgname = cl-anaphora
