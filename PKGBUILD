@@ -2,7 +2,7 @@
 
 pkgname=docker-compose-cli
 pkgver=1.0.24
-pkgrel=1
+pkgrel=2
 pkgdesc="Easily run your Compose application to the cloud with compose-cli"
 arch=('x86_64')
 url="https://github.com/docker/compose-cli"
@@ -30,7 +30,10 @@ build() {
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
 	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
-	go build -o build ./cli/...
+	go build \
+		-o build \
+		-ldflags="-X github.com/docker/compose-cli/internal.Version=${pkgver}" \
+		./cli/...
 }
 
 check() {
