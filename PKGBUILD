@@ -1,4 +1,4 @@
-# Maintainer: Mathieu OTHACEHE <m.othacehe@gmail.com>
+# Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
 # Contributor: Mathieu OTHACEHE <m.othacehe@gmail.com>
 # Contributor: Brenton <brenton@taylorbyte.com>
 # Contributor: Daniel Menelkir <menelkir at itroll dot org>
