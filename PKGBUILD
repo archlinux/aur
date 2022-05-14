@@ -4,7 +4,7 @@
 
 pkgname=aurtool-git
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Minimal aur package management utility written in bash script"
 arch=('any')
 url="https://www.github.com/m1ndflay3r/aurtool"
@@ -47,6 +47,9 @@ optdepends=(
 package() {
         git clone https://github.com/m1ndflay3r/aurtool aurtool-git
         mv aurtool-git/aurtool .
+        mv aurtool-git/resources/libaurtool .
         mkdir -p "$pkgdir"/usr/bin
+        mkdir -p "$pkgdir"/usr/include
         install -m755 aurtool "$pkgdir"/usr/bin/aurtool
+        install -m644 libaurtool "$pkgdir"/usr/include/libaurtool
 }
