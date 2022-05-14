@@ -9,7 +9,7 @@ pkgbase = go-ipfs-git
 	arch = armv7h
 	arch = aarch64
 	license = MIT
-	makedepends = go>=2:1.18-1
+	makedepends = go>=1.18
 	makedepends = git
 	depends = glibc
 	optdepends = bash-completion: bash completion support

@@ -19,7 +19,7 @@ arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=(MIT)
 
 depends=(glibc)
-makedepends=("go>=2:1.18-1" git)
+makedepends=("go>=1.18" git)
 optdepends=('bash-completion: bash completion support')
 
 provides=("$_pkgname")
@@ -42,16 +42,24 @@ prepare() {
   cd "$srcdir/.."
   mkdir -p "go"
   export GOPATH="$(pwd)/go" 
-  # export PATH="$PATH:$GOPATH/bin" ?
 
-  # fix for broken versions of this package
+  # make sure GOPATH is set to writeable
   chmod u+w -R "$GOPATH"
 
   cd "$srcdir/$_pkgname"
 
-#  # dirty fix go1.18
-#  sed -i -r 's,^go 1\.[0-9]+,go 1.18,' go.mod
-  go get -d -v ./... # old fetch
+  export CGO_LDFLAGS="$LDFLAGS"
+  export CGO_CFLAGS="$CFLAGS"
+  export CGO_CPPFLAGS="$CPPFLAGS"
+  export CGO_CXXFLAGS="$CXXFLAGS"
+  export GOFLAGS="-buildmode=pie -trimpath -modcacherw"
+
+  # dirty fix go1.18
+  sed -i -r 's,^go 1\.[0-9]+,go 1.18,' go.mod
+  go mod tidy
+  go mod vendor
+
+  # go get -d -v ./... # old fetch
   
 }
 
