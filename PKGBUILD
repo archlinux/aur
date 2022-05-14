@@ -18,6 +18,7 @@ source=("git+https://github.com/choff/${_pkgname}.git#commit=8148a162755bf5500a0
   "https://github.com/sickcodes/anbox-modules/commit/7c19d3c66758747d854c63e4c34ef127ce201fa6.patch")
 sha256sums=('SKIP'
   '7589f311fd9a503c30a214b54f1f687c26a2f160d4339098c65f655e9b1e3556')
+conflicts=(anbox-modules-dkms-git)
 
 prepare() {
   cd "${srcdir}/${_pkgname}"

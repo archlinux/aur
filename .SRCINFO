@@ -10,6 +10,7 @@ pkgbase = anbox-modules-dkms
 	makedepends = git
 	depends = dkms
 	provides = anbox-modules-dkms
+	conflicts = anbox-modules-dkms-git
 	source = git+https://github.com/choff/anbox-modules.git#commit=8148a162755bf5500a07cf41a65a02c8f3eb0af9
 	source = https://github.com/sickcodes/anbox-modules/commit/7c19d3c66758747d854c63e4c34ef127ce201fa6.patch
 	sha256sums = SKIP
