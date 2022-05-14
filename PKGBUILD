@@ -3,7 +3,7 @@
 _gemname=git
 pkgname=ruby-$_gemname
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ruby library to manipulate git repositories by wrapping system calls to the git binary"
 arch=(any)
 url=https://github.com/ruby-git/ruby-git
@@ -11,7 +11,7 @@ license=(MIT)
 depends=(ruby git ruby-addressable ruby-rchardet)
 checkdepends=(ruby-bundler ruby-rake ruby-minitar ruby-test-unit ruby-yard)
 makedepends=(rubygems ruby-rdoc)
-source=(git+https://github.com/ruby-git/ruby-git.git?tag=v$pkgver)
+source=(git+https://github.com/ruby-git/ruby-git.git#tag=v$pkgver)
 sha256sums=('SKIP')
 
 prepare() {
