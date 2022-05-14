@@ -2,7 +2,7 @@
 
 pkgname=ada_spawn
 epoch=1
-pkgver=21.0.0
+pkgver=22.0.0
 pkgrel=1
 
 pkgdesc="A simple Ada API to start processes and communicate with them."
@@ -18,27 +18,29 @@ _name=spawn
 _version=2021-20210701-19A43-src
 _hash=28342768afab1e644a660b96051c04e5e9d3bcb0
 
-source=("$pkgname-$pkgver.tar.gz::https://community.download.adacore.com/v1/$_hash?filename=$pkgname-$_version.tar.gz&rand=1809"
+source=("https://github.com/AdaCore/spawn/archive/refs/tags/v22.0.0.tar.gz"
         "Makefile.patch")
-sha1sums=($_hash
-          b77624236aa8988085ae6bddd4ca18c5d2e11cb8)
+sha256sums=(c1a02dac68dd84f18d4cacd4710310ae7d29b83f66a02dd8976d534f369cd769
+            fd4af51cd1eaf12040475425276eb4c5df17b46b948154c3babfae5d0710b105)
 
 prepare()
 {
-   cd "$srcdir/$_name-$_version"
+   cd "$srcdir/spawn-$pkgver"
    patch -Np1 -i ../Makefile.patch
 }
 
 build()
 {
-   cd "$srcdir/$_name-$_version"
+   cd "$srcdir/spawn-$pkgver"
+
    export OS=unix
+   export SPAWN_WARN_ERRORS=false
    make all
 }
 
 package()
 {
-   cd "$srcdir/$_name-$_version"
+   cd "$srcdir/spawn-$pkgver"
 
    export OS=unix
    DESTDIR=$pkgdir make install
