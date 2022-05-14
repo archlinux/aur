@@ -2,11 +2,13 @@
 # Maintainer: Rudi [KittyCash] <rudi@skycoinmail.com>
 pkgname=skywire-bin
 _pkgname=${pkgname/-bin}
+_pkgname1=${pkgname/-bin/-systray}
 _githuborg=skycoin
 pkgdesc="Skywire: Decentralize the web. Skycoin.com"
-pkgver='0.6.0'
-pkgrel=18
-_pkgver=${pkgver}
+pkgver='1.0.0'
+pkgrel=1
+_rc='-rc2'
+_pkgver="${pkgver}${_rc}"
 _tag_ver="v${_pkgver}"
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 arch=( 'i686' 'x86_64' 'aarch64' 'armv8' 'armv7' 'armv7l' 'armv7h' 'armv6h' 'armhf' 'armel' 'arm' )
@@ -18,17 +20,17 @@ conflicts=( 'skywire' )
 install=skywire.install
 _scripts=${_pkgname}-scripts
 source=("${_scripts}.tar.gz" )
-sha256sums=('c73ef43a2e7a9536ce098a6d7a27300ec6afbcda2291e7e8245e393355eebfcf')
-sha256sums_i686=('0b2db6c8bb3877e5da1bb6597c9353ff0527a00a1a2a7e5158a2d28f43b8b70e')
-sha256sums_x86_64=('2358b979e9eb917ffcbaf2236051a300d0d0f684edfeec840399c09d75751aa1')
-sha256sums_aarch64=('bd8e28b1829bb17d6a975c2c0b93c5355ba90540a84541aa3852ea93c1445810')
-sha256sums_armv8=('bd8e28b1829bb17d6a975c2c0b93c5355ba90540a84541aa3852ea93c1445810')
-sha256sums_armv7=('a1e87d6fb8999caab7a9e71760c338faf2a4768141c0b1cfcdf806890090f166')
-sha256sums_armv7l=('a1e87d6fb8999caab7a9e71760c338faf2a4768141c0b1cfcdf806890090f166')
-sha256sums_armv7h=('a1e87d6fb8999caab7a9e71760c338faf2a4768141c0b1cfcdf806890090f166')
-sha256sums_arm=('a1e87d6fb8999caab7a9e71760c338faf2a4768141c0b1cfcdf806890090f166')
+sha256sums=('c4ae79cd455f557c74f19b8cfd206712d4d16224743277e8b2e58db508bbdeba')
+sha256sums_i686=('ed94d9b60188ab5a535c5e2b0c2cba28b8274f15ea081fcf99856aa2ae7dc927')
+sha256sums_x86_64=('284e12906c8656a603477c7a13c51a5266fe289fce3bed61206d88a59de1169c')
+sha256sums_aarch64=('12d0c6a72af7c8ec951117982b2ea22dc6d5fc29f1aba174bc8cac3d329a5082')
+sha256sums_armv8=('12d0c6a72af7c8ec951117982b2ea22dc6d5fc29f1aba174bc8cac3d329a5082')
+sha256sums_armv7=('eb4a85c6eb6ac1280d4a8c4ddb36a2a2f049b807cdbc415acb945d48824e5508')
+sha256sums_armv7l=('eb4a85c6eb6ac1280d4a8c4ddb36a2a2f049b807cdbc415acb945d48824e5508')
+sha256sums_armv7h=('eb4a85c6eb6ac1280d4a8c4ddb36a2a2f049b807cdbc415acb945d48824e5508')
+sha256sums_arm=('eb4a85c6eb6ac1280d4a8c4ddb36a2a2f049b807cdbc415acb945d48824e5508')
 #https://github.com/skycoin/skywire/releases/download/v0.6.0-rc1/skywire-v0.6.0-rc1-linux-amd64.tar.gz
-_binarchive=("${_pkgname}-${_tag_ver}-linux")
+_binarchive=("${_pkgname1}-${_tag_ver}-linux")
 _release_url=("${url}/releases/download/${_tag_ver}/${_binarchive}")
 source_x86_64=("${_release_url}-amd64.tar.gz")
 source_aarch64=("${_release_url}-arm64.tar.gz")
@@ -43,7 +45,7 @@ source_i686=("${_release_url}-386.tar.gz")
 #  tar -czvf skywire-scripts.tar.gz skywire-scripts && updpkgsums
 
 package() {
-_msg2 'creating dirs'
+_msg2 'Creating dirs'
 #create directory trees or the visor might make them with weird permissions
 _pkgdir="${pkgdir}"
 _skydir="opt/skywire"
@@ -57,14 +59,14 @@ mkdir -p ${_pkgdir}/${_skydir}/apps
 mkdir -p ${_pkgdir}/${_skydir}/local
 mkdir -p ${_pkgdir}/${_skydir}/scripts
 
-_msg2 'installing binaries'
+_msg2 'Installing binaries'
 _binaries=("${_pkgname}-cli" "${_pkgname}-visor")
 for i in ${_binaries[@]}; do
 _msg3 "${i}"
  install -Dm755 ${srcdir}/${i} ${_pkgdir}/${_skybin}/${i}
  ln -rTsf ${_pkgdir}/${_skybin}/${i} ${_pkgdir}/usr/bin/${i}
 done
-_msg2 'installing app binaries'
+_msg2 'Installing app binaries'
 _apps=${srcdir}/apps
 _appbinaries=$( ls "${_apps}" )
 for i in ${_appbinaries}; do
@@ -73,7 +75,7 @@ for i in ${_appbinaries}; do
   ln -rTsf ${_pkgdir}/${_skyapps}/${i} ${_pkgdir}/usr/bin/${i}
 done
 
-_msg2 'installing scripts'
+_msg2 'Installing scripts'
 _scripts1=${srcdir}/${_scripts}/${_pkgname}
 _skywirescripts=$( ls ${_scripts1} )
 for i in ${_skywirescripts}; do
@@ -92,14 +94,17 @@ install -Dm644 ${srcdir}/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-con
 
 #install systemd services
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${_pkgdir}/${_systemddir}/${_pkgname}.service
+install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-user.service ${_pkgdir}/${_systemddir}/${_pkgname}-user.service
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-visor.service ${_pkgdir}/${_systemddir}/${_pkgname}-visor.service
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-autoconfig.service ${_pkgdir}/${_systemddir}/${_pkgname}-autoconfig.service
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-autoconfig-remote.service ${_pkgdir}/${_systemddir}/${_pkgname}-autoconfig-remote.service
 
 #desktop integration
 install -Dm644 "${srcdir}"/${_scripts}/desktop/com.skywire.Skywire.desktop ${_pkgdir}/usr/share/applications/com.skywire.Skywire.desktop
-install -Dm644 "${srcdir}"/${_scripts}/desktop/skywire.png ${_pkgdir}/${_skydir}/icon.png
-ln -rTsf ${_pkgdir}/${_skydir}/icon.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/skywire.png
+install -Dm644 "${srcdir}"/${_scripts}/desktop/com.skywirevpn.SkywireVPN.desktop ${_pkgdir}/usr/share/applications/com.skywirevpn.SkywireVPN.desktop
+install -Dm644 "${srcdir}"/${_scripts}/desktop/skywire.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/skywire.png
+install -Dm644 "${srcdir}"/${_scripts}/desktop/skywirevpn.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/skywirevpn.png
+
 }
 
 _install2() {

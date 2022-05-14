@@ -1,14 +1,16 @@
 # Maintainer: Moses Narrow <moe_narrow@use.startmail.com>
 # Maintainer: Rudi [KittyCash] <rudi@skycoinmail.com>
 pkgname=skywire-bin
-_pkgname=${pkgname/-bin}
+_pkgname=${pkgname/-bin/}
+_pkgname1=${pkgname/-bin/-systray}
 _githuborg=skycoin
 pkgdesc="Skywire: Decentralize the web. Skycoin.com. Debian package"
-pkgver='0.6.0'
-pkgrel=18
-_pkgver=${pkgver}
-_pkgrel=${pkgrel}
+pkgver='1.0.0'
+_rc='-rc2'
+_pkgver="${pkgver}${_rc}"
 _tag_ver="v${_pkgver}"
+pkgrel=1
+_pkgrel=${pkgrel}
 _pkggopath="github.com/${_githuborg}/${_pkgname}"
 _pkgarch=$(dpkg --print-architecture)
 _pkgarches=('armhf' 'arm64' 'amd64')
@@ -18,8 +20,8 @@ makedepends=('dpkg') # 'git' 'go' 'musl' 'kernel-headers-musl' 'aarch64-linux-mu
 depends=()
 _debdeps=""
 #_debdeps=""
-_scripts="skywire-deb-scripts"
-_binarchive=("${_pkgname}-${_tag_ver}-linux")
+_scripts="skywire-scripts"
+_binarchive=("${_pkgname1}-${_tag_ver}-linux")
 _release_url=("${url}/releases/download/${_tag_ver}/${_binarchive}")
 source=(
 "${_scripts}.tar.gz"
@@ -32,10 +34,10 @@ noextract=(
 "${_binarchive}-arm64.tar.gz"
 "${_binarchive}arm.tar.gz"
 )
-sha256sums=('fa42fb88711391d6fbf29ab457e3c6044735155707332af03afc77f506693fdc'
-            '2358b979e9eb917ffcbaf2236051a300d0d0f684edfeec840399c09d75751aa1'
-            'bd8e28b1829bb17d6a975c2c0b93c5355ba90540a84541aa3852ea93c1445810'
-            'a1e87d6fb8999caab7a9e71760c338faf2a4768141c0b1cfcdf806890090f166')
+sha256sums=('c4ae79cd455f557c74f19b8cfd206712d4d16224743277e8b2e58db508bbdeba'
+            '284e12906c8656a603477c7a13c51a5266fe289fce3bed61206d88a59de1169c'
+            '12d0c6a72af7c8ec951117982b2ea22dc6d5fc29f1aba174bc8cac3d329a5082'
+            'eb4a85c6eb6ac1280d4a8c4ddb36a2a2f049b807cdbc415acb945d48824e5508')
 
 build() {
   _msg2 'creating the DEBIAN/control files'
@@ -43,14 +45,14 @@ build() {
     _msg2 "_pkgarch=$i"
     local _pkgarch=$i
     #create control file for the debian package
-    echo "Package: skywire-bin" > ${srcdir}/${_pkgarch}.control
-    echo "Version: ${_pkgver}-${_pkgrel}" >> ${srcdir}/${_pkgarch}.control
+    echo "Package: ${pkgname}" > ${srcdir}/${_pkgarch}.control
+    echo "Version: ${pkgver}-${_pkgrel}" >> ${srcdir}/${_pkgarch}.control
     echo "Priority: optional" >> ${srcdir}/${_pkgarch}.control
     echo "Section: web" >> ${srcdir}/${_pkgarch}.control
     echo "Architecture: ${_pkgarch}" >> ${srcdir}/${_pkgarch}.control
     #echo "Depends: ${_debdeps}" >> ${srcdir}/${_pkgarch}.control
-    echo "Provides: ${pkgname}" >> ${srcdir}/${_pkgarch}.control
-    echo "Maintainer: Skycoin" >> ${srcdir}/${_pkgarch}.control
+    echo "Provides: ${_pkgname}" >> ${srcdir}/${_pkgarch}.control
+    echo "Maintainer: ${_githuborg}" >> ${srcdir}/${_pkgarch}.control
     echo "Description: ${pkgdesc}" >> ${srcdir}/${_pkgarch}.control
 
   done
@@ -66,7 +68,7 @@ if [[ ${_pkgarch} == "armhf" ]] ; then
   local _pkgarch1=arm
 fi
 
-local _binaryarchive="${_pkgname}-${_tag_ver}-linux-${_pkgarch1}.tar.gz"
+local _binaryarchive="${_pkgname1}-${_tag_ver}-linux-${_pkgarch1}.tar.gz"
 [[ -f ${srcdir}/${_pkgname}-visor ]] && rm -rf ${srcdir}/${_pkgname}-visor
 [[ -f ${srcdir}/${_pkgname}-cli ]] && rm -rf ${srcdir}/${_pkgname}-cli
 [[ -d ${srcdir}/apps ]] && rm -rf ${srcdir}/apps
@@ -76,7 +78,7 @@ tar -xf ${srcdir}/${_binaryarchive}
 
 _msg2 'creating dirs'
 #set up to create a .deb package
-_debpkgdir="${_pkgname}-bin-${pkgver}-${_pkgrel}-${_pkgarch}"
+_debpkgdir="${pkgname}-${pkgver}-${pkgrel}-${_pkgarch}"
 _pkgdir="${pkgdir}/${_debpkgdir}"
 _skydir="opt/skywire"
 _skyapps="${_skydir}/apps"
@@ -121,7 +123,7 @@ ln -rTsf ${_pkgdir}/${_skybin}/${_pkgname}-visor ${_pkgdir}/usr/bin/${_pkgname}
 chmod +x ${_pkgdir}/usr/bin/*
 
 #install dmsghttp-config.json
-install -Dm644 ${srcdir}/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
+install -Dm644 ${pkgdir}/test/dmsghttp-config.json ${_pkgdir}/${_skydir}/dmsghttp-config.json
 
 _msg2 'installing systemd services'
 install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}.service ${_pkgdir}/${_systemddir}/${_pkgname}.service
@@ -133,9 +135,9 @@ install -Dm644 ${srcdir}/${_scripts}/systemd/${_pkgname}-autoconfig-remote.servi
 
 #desktop integration
 install -Dm644 "${srcdir}"/${_scripts}/desktop/com.skywire.Skywire.desktop ${_pkgdir}/usr/share/applications/com.skywire.Skywire.desktop
-install -Dm644 "${srcdir}"/${_scripts}/desktop/skywire.png ${_pkgdir}/${_skydir}/icon.png
-mkdir -p ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/
-ln -rTsf ${_pkgdir}/${_skydir}/icon.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/skywire.png
+install -Dm644 "${srcdir}"/${_scripts}/desktop/com.skywirevpn.SkywireVPN.desktop ${_pkgdir}/usr/share/applications/com.skywirevpn.SkywireVPN.desktop
+install -Dm644 "${srcdir}"/${_scripts}/desktop/skywire.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/skywire.png
+install -Dm644 "${srcdir}"/${_scripts}/desktop/skywirevpn.png ${_pkgdir}/usr/share/icons/hicolor/48x48/apps/skywirevpn.png
 
 _msg2 'installing control file and install scripts'
 install -Dm755 ${srcdir}/${_pkgarch}.control ${_pkgdir}/DEBIAN/control
@@ -159,7 +161,6 @@ _binname="${1##*/}"
 _binname="${_binname%%.*}"
 install -Dm755 ${1} ${_pkgdir}/${2}/${_binname}
 ln -rTsf ${_pkgdir}/${2}/${_binname} ${_pkgdir}/usr/bin/${_binname}
-chmod +x ${_pkgdir}/usr/bin/${_binname}
 }
 
 _msg2() {
