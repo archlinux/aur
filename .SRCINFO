@@ -1,7 +1,7 @@
 pkgbase = djgpp-gcc
 	pkgdesc = GCC for the djgpp cross-compiler
 	pkgver = 12.1.0
-	pkgrel = 1
+	pkgrel = 2
 	url = http://gcc.gnu.org
 	arch = i686
 	arch = x86_64
@@ -11,6 +11,7 @@ pkgbase = djgpp-gcc
 	makedepends = unzip
 	depends = zlib
 	depends = libmpc
+	depends = libisl
 	depends = djgpp-binutils>=2.30
 	depends = djgpp-djcrx
 	depends = gcc-ada
@@ -20,11 +21,9 @@ pkgbase = djgpp-gcc
 	options = staticlibs
 	options = !emptydirs
 	source = https://ftp.gnu.org/gnu/gcc/gcc-12.1.0/gcc-12.1.0.tar.xz
-	source = http://isl.gforge.inria.fr/isl-0.20.tar.bz2
 	source = lto.patch
 	source = gcc-djgpp.diff
 	sha256sums = 62fd634889f31c02b64af2c468f064b47ad1ca78411c45abe6ac4b5f8dd19c7b
-	sha256sums = b587e083eb65a8b394e833dea1744f21af3f0e413a448c17536b5549ae42a4c2
 	sha256sums = c03dbd61274e1ce14f84366abf348d75779bbd6e0bc32b9f4fd74f1ce54a5ef0
 	sha256sums = 2832a5290bebf8c6c3b58775197dd4b1cbe5bce4d5488de5710b53ed052cff16
 
