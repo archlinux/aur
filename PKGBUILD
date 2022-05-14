@@ -1,6 +1,6 @@
 # Maintainer: Arisa Snowbell <goddess@chizuru.space>
 pkgname=torcheck
-pkgver=0.1.0
+pkgver=r1.266839a
 pkgrel=1
 pkgdesc="A very simple program that checks if your public endpoint IP address is Tor exit node"
 arch=('x86_64' 'aarch64')

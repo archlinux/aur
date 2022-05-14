@@ -1,6 +1,6 @@
 pkgbase = torcheck
 	pkgdesc = A very simple program that checks if your public endpoint IP address is Tor exit node
-	pkgver = 0.1.0
+	pkgver = r1.266839a
 	pkgrel = 1
 	url = https://gitlab.com/Arisa_Snowbell/torcheck
 	arch = x86_64
