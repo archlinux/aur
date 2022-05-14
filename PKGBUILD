@@ -1,4 +1,5 @@
-# Maintainer: Daniel Menelkir <menelkir at itroll dot org>
+# Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
+
 pkgname=ananicy-cpp-openrc
 pkgver=20220109
 pkgrel=3
