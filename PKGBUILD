@@ -2,7 +2,7 @@
 
 _pkgname=xfce4-terminal
 pkgname=${_pkgname}-devel
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 pkgdesc="A modern terminal emulator primarly for the Xfce desktop environment (Development version)"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ makedepends=('intltool')
 conflicts=('terminal' "$_pkgname")
 provides=("${_pkgname}=${pkgver}")
 source=("https://archive.xfce.org/src/apps/$_pkgname/${pkgver%.*}/$_pkgname-$pkgver.tar.bz2")
-sha256sums=('ac1543167b43322ad2483ffb033a7e74669ecb59f4b63016a3c183d96141d326')
+sha256sums=('1c69a6d2edffbaf30d7123da82fd05c12259fc279caf7c491520158cc67ff5ed')
 
 build() {
   cd "${_pkgname}-${pkgver}"

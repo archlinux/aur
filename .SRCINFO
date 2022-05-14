@@ -1,6 +1,6 @@
 pkgbase = xfce4-terminal-devel
 	pkgdesc = A modern terminal emulator primarly for the Xfce desktop environment (Development version)
-	pkgver = 1.0.2
+	pkgver = 1.0.3
 	pkgrel = 1
 	url = https://docs.xfce.org/apps/terminal/start
 	arch = i686
@@ -13,10 +13,10 @@ pkgbase = xfce4-terminal-devel
 	depends = libxfce4ui>=4.17.2
 	depends = vte3
 	depends = hicolor-icon-theme
-	provides = xfce4-terminal=1.0.2
+	provides = xfce4-terminal=1.0.3
 	conflicts = terminal
 	conflicts = xfce4-terminal
-	source = https://archive.xfce.org/src/apps/xfce4-terminal/1.0/xfce4-terminal-1.0.2.tar.bz2
-	sha256sums = ac1543167b43322ad2483ffb033a7e74669ecb59f4b63016a3c183d96141d326
+	source = https://archive.xfce.org/src/apps/xfce4-terminal/1.0/xfce4-terminal-1.0.3.tar.bz2
+	sha256sums = 1c69a6d2edffbaf30d7123da82fd05c12259fc279caf7c491520158cc67ff5ed
 
 pkgname = xfce4-terminal-devel
