@@ -1,6 +1,6 @@
 # Maintainer: Hisbaan Noorani <hisbaan@gmail.com>
 pkgname=whoops-git
-pkgver=0.0.1.r2.f58fbdd
+pkgver=0.0.1
 pkgrel=1
 pkgdesc="A CLI utility to undo common commands"
 arch=('i686' 'pentium4' 'x86_64' 'arm' 'armv7h' 'armv6h' 'aarch64')
@@ -49,8 +49,7 @@ package() {
 
     install -Dm755 target/release/${pkgname%-git} -t "${pkgdir}/usr/bin/"
 
-    # Install license and readme.
-    install -Dm644 LICENSE -t "${pkgdir}/usr/share/licenses/${pkgname%-git}/"
+    # Install readme.
     install -Dm644 docs/README.md -t "${pkgdir}/usr/share/doc/${pkgname%-git}/"
 
     # # Install man page
