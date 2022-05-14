@@ -3,14 +3,14 @@
 _pkgbase=prjxray
 pkgbase="$_pkgbase-git"
 pkgname=("$_pkgbase-tools-git" "python-$_pkgbase-git")
-pkgver=r3457.0ddf03b8
+pkgver=r3579.5937733d
 pkgrel=1
 pkgdesc="Documenting the Xilinx 7-series bit-stream format"
 arch=(x86_64)
 url="https://github.com/SymbiFlow/prjxray"
 license=('ISC')
 depends=()
-_pythondepends=('python' 'python-fasm' 'python-intervaltree' 'python-numpy' 'python-json5'
+_pythondepends=('python' 'python-fasm' 'python-intervaltree' 'python-numpy'
                 'python-yaml' 'python-simplejson')
 makedepends=('git' 'cmake' 'python-setuptools')
 makedepends+=("${_pythondepends[@]}")
@@ -72,6 +72,7 @@ check() {
 }
 
 package_prjxray-tools-git() {
+	depends+=('gcc-libs')
 	provides=("${pkgname%%-git}" "prjxray" "prjxray-git")
 	conflicts=("${pkgname%%-git}" "prjxray")
 	replaces=("prjxray-git")
