@@ -1,9 +1,9 @@
 # Maintainer: Piotr Miller <nwg.piotr@gmail.com>
 # Project: nwg-shell for sway, https://github.com/nwg-piotr/nwg-shell
 pkgname=('nwg-look')
-pkgver=0.1.2
+pkgver=0.1.3
 pkgrel=1
-pkgdesc="GTK3 settings editor adapted to work in the sway/wlroots environment"
+pkgdesc="GTK3 settings editor adapted to work in sway/wlroots environment"
 arch=('x86_64')
 url="https://github.com/nwg-piotr/nwg-look"
 license=('MIT')
@@ -13,7 +13,7 @@ makedepends=('go')
 depends=('gtk3' 'glib2' 'cairo' 'xcur2png')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/nwg-piotr/nwg-look/archive/v"$pkgver".tar.gz")
 
-md5sums=('4550bd4297451c3de5a7c7253c411e3e')
+md5sums=('9d794844e9e83c0b3556ca75fc2e3e62')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
