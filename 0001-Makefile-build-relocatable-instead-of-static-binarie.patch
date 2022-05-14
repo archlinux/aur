@@ -1,0 +1,25 @@
+From eda322bdea193e59ae45bdd3e94c078ec0f25962 Mon Sep 17 00:00:00 2001
+From: Xiretza <xiretza@xiretza.xyz>
+Date: Sun, 23 Jan 2022 13:05:53 +0100
+Subject: [PATCH 1/2] Makefile: build relocatable instead of static binaries
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 2239c1df..d0750332 100644
+--- a/Makefile
++++ b/Makefile
+@@ -78,7 +78,7 @@ LIB_INSTALLER=gprinstall -p -f --target=$(TARGET) $(RBD) "--prefix=${prefix}"
+ CLEANER=gprclean -q $(RBD)
+ 
+ GPRBUILD_BUILDER=$(BUILDER) $(GPRBUILD_GPR) \
+-	-XLIBRARY_TYPE=static -XXMLADA_BUILD=static
++	-XLIBRARY_TYPE=relocatable -XXMLADA_BUILD=relocatable
+ LIBGPR_BUILDER=$(BUILDER) $(GPR_GPR)
+ LIBGPR_INSTALLER=$(LIB_INSTALLER) $(GPR_GPR) -XBUILD=${BUILD} \
+ 	--install-name=gpr \
+-- 
+2.34.1
+

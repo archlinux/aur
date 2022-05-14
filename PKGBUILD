@@ -17,27 +17,25 @@ makedepends=('gprbuild-bootstrap' 'xmlada')
 source=(
 	"$pkgbase-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
 	"gprconfig_kb-$pkgver.tar.gz::https://github.com/AdaCore/gprconfig_kb/archive/v$pkgver.tar.gz"
-        "relocatable-build.patch"
-        "always-use-host-gprinstall.patch"
-        "0002-compilers.xml-use-gcc-version-to-get-version-number-.patch"
+        '0001-Makefile-build-relocatable-instead-of-static-binarie.patch'
+        '0002-Makefile-always-use-host-gprinstall.patch'
+        '0001-compilers.xml-use-gcc-version-to-get-version-number-.patch'
 )
 sha256sums=('076e2b6ac0c7170753a6499094a6d30a98698aca2551c6796b3a617dd9ffc704'
             'cc19437e0982d9af31e09ad7c42eac6a445dac65336bd53d67ba61f630be7f13'
-            'd6479e03e6b6cfb09c133d94e3c47ea5d5e5e756b95554ab3106a679c3d57de4'
-            '3fe0fd1df3156c9a8488d98ee6e7e822ae904ce410838661c8fc14c29abe2620'
-            '9aa8cd9e522fb8a39b2512698885016db1b7286d8fe87d35bdc92e1bc10b20b7')
+            '6ebbea41d4b8b516d0646438338fb228ea907600a2ad2c594bab41a7e1c3680c'
+            'bcb0887eacce9ae609676c1965425847ab4fb27c5a5689f625c1864caeac8ad3'
+            '42c66c412eb2e4949a754d660b04b77395d40d54b26a933ef7c75c5881e94238')
 
 prepare() {
     cd "$srcdir/gprconfig_kb-$pkgver"
 
-    patch -Np1 -i "$srcdir/0002-compilers.xml-use-gcc-version-to-get-version-number-.patch"
+    patch -Np1 -i "$srcdir/0001-compilers.xml-use-gcc-version-to-get-version-number-.patch"
 
     cd "$srcdir/$pkgbase-$pkgver"
 
-    patch -Np1 -i "$srcdir/relocatable-build.patch"
-    # By default, it tries to use the freshly-built gprinstall to install gprbuild, but that requires libgpr,
-    # which can't be installed yet. Simply fall back to gprinstall from gprbuild-bootstrap
-    patch -Np1 -i "$srcdir/always-use-host-gprinstall.patch"
+    patch -Np1 -i "$srcdir/0001-Makefile-build-relocatable-instead-of-static-binarie.patch"
+    patch -Np1 -i "$srcdir/0002-Makefile-always-use-host-gprinstall.patch"
 
     ln -sfT "$srcdir/gprconfig_kb-$pkgver/db/" "share/gprconfig"
 

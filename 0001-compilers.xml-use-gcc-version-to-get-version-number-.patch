@@ -1,7 +1,7 @@
-From 9853bdb0b04ec8cd28483b127699ebd9cb305a77 Mon Sep 17 00:00:00 2001
+From 9dc1dc5559ae72026c8d33fed1e74c9612782b44 Mon Sep 17 00:00:00 2001
 From: Xiretza <xiretza@xiretza.xyz>
 Date: Sat, 4 Dec 2021 19:47:58 +0100
-Subject: [PATCH 2/2] compilers.xml: use gcc --version to get version number
+Subject: [PATCH] compilers.xml: use gcc --version to get version number
  instead of gcc -v
 
 The output of gcc -v is dependent on locale can thus break the regex.
@@ -12,7 +12,7 @@ See also https://github.com/AdaCore/gprconfig_kb/issues/10
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/db/compilers.xml b/db/compilers.xml
-index ac9a701..416329a 100644
+index f8909d2..eee25a2 100644
 --- a/db/compilers.xml
 +++ b/db/compilers.xml
 @@ -22,9 +22,9 @@
