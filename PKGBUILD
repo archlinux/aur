@@ -1,7 +1,7 @@
 # Maintainer: Tommy Jerry Mairo <tjm@member.fsf.org>
 pkgname=hprt-mt800-drivers
 pkgver=1.2.1
-pkgrel=4
+pkgrel=5
 pkgdesc="CUPs filter and ppd files for HPRT MT800 serises"
 arch=("x86_64")
 url="https://www.hprt.com/mt800/drivers.html"
@@ -20,5 +20,5 @@ package() {
 
 	mkdir -p "$pkgdir/usr/share/cups/model"
 	cd "$pkgdir/usr/share/cups/model"
-	ln -T '../drv/hprt' 'hprt'
+	ln -sT '../drv/hprt' 'hprt'
 }
