@@ -3,7 +3,7 @@
 ## Credit to ayatale for the systemd and config files
 
 pkgname=alist
-pkgver=2.5.1
+pkgver=2.5.2
 pkgrel=1
 pkgdesc="File list program that supports multiple storage"
 arch=('x86_64' 'i686' 'arm' 'armv6h' 'arm7vh' 'aarch64')
@@ -17,7 +17,7 @@ source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz"
         'alist.service'
 				'alist.tmpfiles'
 				'config.json')
-sha256sums=('7d11b568f7a2105c25cc24ff4da89c61603a5eb2293f5d4e40fdc4b98bdfed14'
+sha256sums=('2f62ede85e9cabb3a338e2274301ab0389a2e9d986b32247ef9d8b48cec481b0'
             'b96d55f7e83310a7556a5b023be60e12f44c484e3e136f1488d737126c9ed34f'
             '48eb4f8f1070cfd2f9594fe72cb4b1a35fce091251fda11e2082f573f62ac12b'
             'ba9cd5b593313183ad8c0f008a6edba539063193c416d3893a5344e104a3fff1')
