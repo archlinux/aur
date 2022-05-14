@@ -19,7 +19,7 @@ arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 license=(MIT)
 
 depends=(glibc)
-makedepends=("go" git)
+makedepends=(go git)
 optdepends=('bash-completion: bash completion support')
 
 provides=("$_pkgname")
