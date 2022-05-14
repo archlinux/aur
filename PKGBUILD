@@ -9,15 +9,15 @@
 
 pkgbase=tensorrt
 pkgname=('tensorrt' 'python-tensorrt' 'tensorrt-doc')
-pkgver=8.2.4.2
-_ossver=22.04
+pkgver=8.2.5.1
+_ossver=22.05
 _cudaver=11.4
 _cudnnver=8.2
 _protobuf_ver=3.17.3
 _pybind11_ver=2.9.2
 _graphsurgeon_ver=0.4.5
 _uffver=0.6.9
-pkgrel=2
+pkgrel=1
 pkgdesc='A platform for high-performance deep learning inference on NVIDIA hardware'
 arch=('x86_64')
 url='https://developer.nvidia.com/tensorrt/'
@@ -36,7 +36,7 @@ source=("local://TensorRT-${pkgver}.Linux.${CARCH}-gnu.cuda-${_cudaver}.cudnn${_
         '010-tensorrt-use-local-protobuf-sources.patch'
         '020-tensorrt-fix-python.patch')
 noextract=("protobuf-cpp-${_protobuf_ver}.tar.gz")
-sha256sums=('826180eaaecdf9a7e76116855b9f1f3400ea9b06e66b06a3f6a0747ba6f863ad'
+sha256sums=('2dc36962f0e24fb01abeaccad4c4658a3a36a8337b8f39e281e4bbed44bbd771'
             'SKIP'
             'SKIP'
             'SKIP'
@@ -79,14 +79,13 @@ prepare() {
 
 build() {
     export CXXFLAGS+=' -ffat-lto-objects'
-    export LDFLAGS+=' -L/usr/lib'
     cmake -B build -S TensorRT \
         -DBUILD_ONNX_PYTHON:BOOL='ON' \
         -DBUILD_SAMPLES:BOOL='OFF' \
         -DCMAKE_BUILD_TYPE:STRING='None' \
         -DCMAKE_INSTALL_PREFIX:PATH='/usr' \
         -DTRT_LIB_DIR="${srcdir}/TensorRT-${pkgver}/lib" \
-        -DGPU_ARCHS='52 53 60 61 62 70 72 75 80 86' \
+        -DGPU_ARCHS='53 60 61 62 70 72 75 80 86' \
         -DPROTOBUF_VERSION="$_protobuf_ver" \
         -DCUDA_VERSION="$_cudaver" \
         -DCUDNN_VERSION="$_cudnnver" \
