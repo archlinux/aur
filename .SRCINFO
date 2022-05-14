@@ -1,6 +1,6 @@
 pkgbase = glib2-patched-thumbnailer
 	pkgdesc = GLib2 patched with ahodesuka's thumbnailer patch.
-	pkgver = 2.70.4
+	pkgver = 2.72.1
 	pkgrel = 1
 	url = https://gist.github.com/Dudemanguy/d199759b46a79782cc1b301649dec8a5
 	arch = x86_64
@@ -25,7 +25,7 @@ pkgbase = glib2-patched-thumbnailer
 	depends = libffi.so
 	optdepends = python: gdbus-codegen, glib-genmarshal, glib-mkenums, gtester-report
 	optdepends = libelf: gresource inspection tool
-	provides = glib2=2.70.4
+	provides = glib2=2.72.1
 	provides = libgio-2.0.so
 	provides = libglib-2.0.so
 	provides = libgmodule-2.0.so
@@ -33,7 +33,7 @@ pkgbase = glib2-patched-thumbnailer
 	provides = libgthread-2.0.so
 	conflicts = glib2
 	options = !docs
-	source = git+https://gitlab.gnome.org/GNOME/glib.git?signed#tag=2.70.4
+	source = git+https://gitlab.gnome.org/GNOME/glib.git?signed#tag=2.72.1
 	source = 0001-glib-compile-schemas-Remove-noisy-deprecation-warnin.patch
 	source = glib-thumbnailer.patch
 	source = glib-compile-schemas.hook
