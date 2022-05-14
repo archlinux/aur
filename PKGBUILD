@@ -1,5 +1,6 @@
 # Contributor: Vojtech Horky <vojta . horky at-symbol seznam . cz>
-# Maintainer: Shengqi Chen <i at harrychen dot xyz>
+# Contributor: Shengqi Chen <i at harrychen dot xyz>
+#Maintainer: Filippo Falezza <filippo dot falezza at outlook dot it>
 
 pkgname=cross-mipsel-linux-gnu-gcc
 _pkgname=gcc
