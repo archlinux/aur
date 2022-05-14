@@ -1,16 +1,16 @@
 # Maintainer: Magnus Groß, for email contact please see the relevant AUR commits email
 _pkgname=quickcurver
 pkgname="$_pkgname"-git
-pkgver=0.1.r2.g7e294b8
+pkgver=0.1.r36.gd7f2821
 pkgrel=1
 pkgdesc="Qt Material design implementation of Achtung die Kurve with online multiplayer"
 arch=('i686' 'x86_64')
 url="https://github.com/vimpostor/$_pkgname"
 license=('GPL3')
-depends=(qt5-base qt5-declarative qt5-svg qt5-quickcontrols2 qt5-graphicaleffects fluid)
-makedepends=(git)
+depends=(qt6-base qt6-declarative qt6-svg)
+makedepends=(git cmake ninja)
 source=("git+https://github.com/vimpostor/$_pkgname.git"
-		"git+https://github.com/lirios/fluid.git")
+		"git+https://github.com/google/material-design-icons.git")
 md5sums=('SKIP'
 		'SKIP')
 
@@ -25,18 +25,17 @@ pkgver() {
 prepare() {
 	cd "$_pkgname"
 	git submodule init
-	git config submodule.fluid.url $srcdir/fluid
+	git config submodule.material-design-icons.url $srcdir/material-design-icons
 	git submodule update
 }
 
 build() {
 	cd "$_pkgname"
-	mkdir build
-	cd build
-	qmake .. -config release
-	make
+	cmake -B build -G Ninja -DCMAKE_INSTALL_PREFIX="/usr"
+	cmake --build build
 }
 
 package() {
-	install -D "$srcdir/$_pkgname/build/src/QuickCurver" "$pkgdir/usr/bin/$_pkgname"
+	cd "$_pkgname"
+	DESTDIR="$pkgdir" cmake --install build
 }
