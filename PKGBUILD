@@ -2,11 +2,11 @@
 
 pkgname='eruption-git'
 _pkgname='eruption'
-pkgdesc='Linux user-mode input and LED driver for keyboards, mice and other devices'
-pkgver=0.1.23.r51.g5a88400
+pkgdesc='Realtime RGB LED Driver for Linux'
+pkgver=0.1.23.r70.g339bfa2
 pkgrel=1
 arch=('i686' 'x86_64')
-url='https://github.com/X3n0m0rph59/eruption'
+url='https://eruption-project.org/'
 license=('GPL3+')
 depends=('libevdev' 'hidapi' 'systemd-libs' 'dbus' 'libpulse' 'lua' 'lua-socket' 'gtksourceview4')
 makedepends=('git' 'rust' 'pkgconf' 'xorg-server-devel' 'libxrandr' 'gtk3')

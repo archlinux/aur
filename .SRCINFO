@@ -1,8 +1,8 @@
 pkgbase = eruption-git
-	pkgdesc = Linux user-mode input and LED driver for keyboards, mice and other devices
-	pkgver = 0.1.23.r51.g5a88400
+	pkgdesc = Realtime RGB LED Driver for Linux
+	pkgver = 0.1.23.r70.g339bfa2
 	pkgrel = 1
-	url = https://github.com/X3n0m0rph59/eruption
+	url = https://eruption-project.org/
 	install = eruption.install
 	arch = i686
 	arch = x86_64
