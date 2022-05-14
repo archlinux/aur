@@ -1,13 +1,15 @@
 # Maintainer: zhs <zhao4she4@tuta.io>
-# largely based on the release version one by techknowlogick 
+# systemd unit taken from the release version one by techknowlogick
+
 pkgname=ignite-git
 _pkgname=ignite
 pkgver=r1819.c4162ac6
 pkgrel=1
-pkgdesc="Weaveworks Ignite, combines Firecracker MicroVMs with Docker/OCI images to unify containers and VMs, GIT version."
+pkgdesc="Weaveworks Ignite, combines Firecracker MicroVMs with Docker/OCI \
+images to unify containers and VMs, GIT version."
 arch=('x86_64')
 url="https://github.com/weaveworks/ignite"
-makedepends=('go' 'git')
+makedepends=('go' 'git' 'docker')
 depends=('containerd' 'cni-plugins')
 license=('apache')
 provides=('ignite-git')
@@ -25,19 +27,43 @@ pkgver() {
 }
 
 build() {
+  # this uses the official docker way to build this package because quite often
+  # the golang version installed on an arch linux system does not match what it
+  # expects. for example, as of this writing, arch linux ships 1.18 while this
+  # only correctly builds with the latest golang 1.17
+
 	cd "${srcdir}/${_pkgname}"
-	# build assumes git repo, but we're building from tarball, so we need to set state to clean
-	# sed -i hack/ldflags.sh -e "s/IGNITE_GIT_TREE_STATE..dirty/IGNITE_GIT_TREE_STATE\=\"clean/i"
-  # no need for above when building from git
-	go build -mod=vendor -ldflags "$(./hack/ldflags.sh)" -o ignite ./cmd/ignite	
-	go build -mod=vendor -ldflags "$(./hack/ldflags.sh)" -o ignited ./cmd/ignited
-	go build -mod=vendor -ldflags "$(./hack/ldflags.sh)" -o ignite-spawn ./cmd/ignite-spawn
+  
+  # the user building this package should either be a member of 'docker' group
+  # or have sudo rights to run docker
+  if id -nG "${USER}" | grep -qw "docker"; then
+    echo "info: user \'${USER}\' is in 'docker' group. proceeding..."
+    export DOCKER="docker"
+  elif sudo -l | grep -qw "ALL\|/usr/bin/docker"; then
+    echo "info: user '${USER}' is allowed to run 'sudo docker'. proceeding..."
+    export DOCKER="sudo docker"
+  else
+    echo "error: '${USER}' neither is in 'docker' group nor can run 'sudo \
+docker'. aborting..."
+    exit 1
+  fi
+  
+  # docker daemon/engine has to be running
+  while (! ${DOCKER} stats --no-stream 1>/dev/null 2>&1); do
+    echo "waiting for docker daemon to start up..."
+    sleep 1
+  done
+
+  # we need to do this because we are running docker from a script
+  sed -i 's/$(DOCKER) run -i/$(DOCKER) run/' Makefile
+  make DOCKER="${DOCKER}"
 }
 
 package() {
- 	install -D -m644 "$srcdir/ignited.service" "$pkgdir/usr/lib/systemd/system/ignited.service"
-	install -D -m755 "${_pkgname}/ignite" "${pkgdir}/usr/bin/ignite"
-	install -D -m755 "${_pkgname}/ignited" "${pkgdir}/usr/bin/ignited"
-	install -D -m755 "${_pkgname}/ignite-spawn" "${pkgdir}/usr/bin/ignite-spawn"
+  cd "${srcdir}"
+ 	install -D -m644 "ignited.service" "${pkgdir}/usr/lib/systemd/system/ignited.service"
+	install -D -m755 "${_pkgname}/bin/amd64/ignite" "${pkgdir}/usr/bin/ignite"
+	install -D -m755 "${_pkgname}/bin/amd64/ignited" "${pkgdir}/usr/bin/ignited"
+	install -D -m755 "${_pkgname}/bin/amd64/ignite-spawn" "${pkgdir}/usr/bin/ignite-spawn"
 }
 
