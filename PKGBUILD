@@ -2,10 +2,10 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-remoteobjects
-_basever=5.15.3
-pkgver=5.15.3+kde+r0
+_basever=5.15.4
+pkgver=5.15.4+kde+r0
 pkgrel=1
-_commit=581475dfeb44c8b51c0be86e0f2f57df7d117a80
+_commit=809412e1cc2151c21f843796ef67705600f6aafb
 arch=(x86_64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
