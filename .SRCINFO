@@ -1,0 +1,18 @@
+pkgbase = yade-doc
+	pkgdesc = Yet Another Dynamic Engine, free software for discrete element modeling Documentation
+	pkgver = 2022.01a
+	pkgrel = 4
+	url = https://yade-dem.org/doc/index.html
+	arch = x86_64
+	license = GPL2
+	makedepends = yade
+	makedepends = python-sphinx
+	makedepends = python-bibtexparser
+	makedepends = texlive-bin
+	makedepends = help2man
+	source = trunk-2022.01a::git+https://gitlab.com/yade-dev/trunk.git?commit=fd04d864622a1c628296ccd1697efc93cda98c27
+	source = yade-doc.patch
+	sha512sums = SKIP
+	sha512sums = ffd3b27b8ccb9c6a8adaa7858d01b74b2fcbda64e6d1673b11cc33dc52a278b0ba4fd558352d15366f52023a6053c055546b5c8febccce1d1439cf6b5a3a755d
+
+pkgname = yade-doc
