@@ -16,7 +16,7 @@ depends=('libdrm' 'libxcb' 'wayland' 'python'
          'libelf' 'llvm-libs'
          'expat'
          'libxxf86vm' 'libxdamage' 'libomxil-bellagio' 'libunwind' 'lm_sensors' 'libglvnd' 'vulkan-icd-loader'
-         'spirv-llvm-translator')
+         'spirv-llvm-translator' 'spirv-tools')
 optdepends=('opencl-headers: headers necessary for OpenCL development'
             'opengl-man-pages: for the OpenGL API man pages'
             'compiler-rt: opencl')
@@ -79,9 +79,9 @@ build () {
         -D prefix=/usr \
         -D sysconfdir=/etc \
         -D b_ndebug=true \
-        -D platforms=x11,wayland \
-        -D gallium-drivers=r300,r600,radeonsi,nouveau,virgl,svga,swrast,iris,crocus,zink,d3d12 \
-        -D vulkan-drivers=amd,intel,swrast \
+        -D platforms=auto \
+        -D gallium-drivers=auto \
+        -D vulkan-drivers=auto \
         -D vulkan-layers=device-select,intel-nullhw,overlay \
         -D dri3=enabled \
         -D egl=enabled \
@@ -91,9 +91,9 @@ build () {
         -D gallium-va=enabled \
         -D gallium-vdpau=enabled \
         -D gallium-xa=enabled \
-        -D gallium-xvmc=disabled \
+        -D gallium-xvmc=enabled \
         -D gbm=enabled \
-        -D gles1=disabled \
+        -D gles1=enabled \
         -D gles2=enabled \
         -D glvnd=true \
         -D glx=dri \
@@ -104,6 +104,7 @@ build () {
         -D shared-glapi=enabled \
         -D microsoft-clc=disabled \
         -D valgrind=enabled \
+        -D video-codecs=vc1dec,h264dec,h264enc,h265dec,h265enc \
         -D gallium-rusticl=true \
         -D opencl-spirv=true \
         -D shader-cache=enabled \

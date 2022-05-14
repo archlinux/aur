@@ -55,6 +55,7 @@ pkgbase = mesa-rusticl-git
 	depends = libglvnd
 	depends = vulkan-icd-loader
 	depends = spirv-llvm-translator
+	depends = spirv-tools
 	optdepends = opencl-headers: headers necessary for OpenCL development
 	optdepends = opengl-man-pages: for the OpenGL API man pages
 	optdepends = compiler-rt: opencl
