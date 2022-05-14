@@ -1,3 +1,6 @@
+# Maintainer: fordprefect
+# Contributor: phijor <mail [at] phijor [dot] me>
+
 pkgname=soundcloud-dl
 pkgver=2.7.1
 pkgrel=1
