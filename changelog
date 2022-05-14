@@ -1,3 +1,8 @@
+2022-05-14 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
+  * 5.2.5.7-1:
+    Fixed Steam breaking change that made it impossible for ASF to decline trade offers (#2572, @JustArchi).
+    Latest ASF-ui with new features, improvements and bugfixes (@MrBurrBurr).
+    Updated localization provided by our community (@JustArchi-ArchiBot).
 2022-05-11 Gilrain <gilrain+libre.arch A_T castelmo DOT_ re>
   * 5.2.5.6-1:
     Fixed PasswordFormat of EnvironmentVariable and File not working properly, regression from V5.2.5.5 (#2571, @JustArchi).
