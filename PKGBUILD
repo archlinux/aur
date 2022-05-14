@@ -1,4 +1,4 @@
-# Maintainer: Daniel Menelkir <menelkir@itroll.org>
+# Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
 # Contributor: Zach <mikezackles@gmail.com>
 # Contributor: James An <james@jamesan.ca>
 
