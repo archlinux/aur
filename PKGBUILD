@@ -1,6 +1,6 @@
 # Maintainer: ElnuDev <elnu@elnu.com>
 pkgname=rofi-checklist-git
-pkgver=1.0.0r17.af0e116
+pkgver=r17.af0e116
 pkgrel=1
 pkgdesc="A minimalist checklist menu for rofi (and also dmenu)"
 arch=(any)
@@ -12,7 +12,7 @@ source=("git+$url")
 md5sums=('SKIP')
 pkgver() {
 	cd rofi-checklist
-	printf "1.0.0r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+	printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 package() {
         cd rofi-checklist || exit 1
