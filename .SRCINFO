@@ -1,0 +1,18 @@
+pkgbase = cl-ieee-floats
+	pkgdesc = IEEE-754 implementation for Common Lisp
+	pkgver = 1
+	pkgrel = 1
+	url = https://ieee-floats.common-lisp.dev
+	arch = any
+	license = MIT
+	checkdepends = sbcl
+	checkdepends = cl-fiveam
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	source = cl-ieee-floats::git+https://github.com/marijnh/ieee-floats#commit=9566ce8adfb299faef803d95736c780413a1373c
+	source = run-tests.lisp
+	b2sums = SKIP
+	b2sums = 378cac3f5ff6fee4981f5d16ef105a258aa6ea53b4e442bd8288bb12aec0c329d3d70b21113298ba9539f9d54e3d5b55a89ab10058ee6bf49081c0b4425f1885
+
+pkgname = cl-ieee-floats
