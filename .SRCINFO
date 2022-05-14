@@ -14,6 +14,8 @@ pkgbase = watchman-bin
 	conflicts = watchman
 	options = !strip
 	source = https://github.com/facebook/watchman/releases/download/v2022.05.09.00/watchman-v2022.05.09.00-linux.zip
+	source = libgcc_s.so.1
 	sha256sums = 99a4aad800d7ecd6d5d265d40ee3633f5afc1c3c97eaed4a443e72cdef1091f3
+	sha256sums = a82367caaa653296b67007e5db6aa3a7a8103687690cdfa91a0095dacff8cbea
 
 pkgname = watchman-bin

@@ -15,8 +15,10 @@ options=(!strip)
 install=watchman.install
 
 # https://github.com/facebook/watchman/releases
-source=("https://github.com/facebook/watchman/releases/download/v$pkgver/watchman-v$pkgver-linux.zip")
-sha256sums=('99a4aad800d7ecd6d5d265d40ee3633f5afc1c3c97eaed4a443e72cdef1091f3')
+source=("https://github.com/facebook/watchman/releases/download/v$pkgver/watchman-v$pkgver-linux.zip"
+        libgcc_s.so.1)
+sha256sums=('99a4aad800d7ecd6d5d265d40ee3633f5afc1c3c97eaed4a443e72cdef1091f3'
+            'a82367caaa653296b67007e5db6aa3a7a8103687690cdfa91a0095dacff8cbea')
 
 prepare() {
   cd watchman-v$pkgver-linux
@@ -51,6 +53,10 @@ package() {
 
   install -Dt "$pkgdir/usr/bin" bin/*
   install -Dt "$pkgdir/usr/lib/watchman" lib/*
+
+  # Add libgcc from gcc-libs 11.2.0-4 to avoid a crash
+  # https://github.com/facebook/watchman/issues/1019
+  install -t "$pkgdir/usr/lib/watchman" ../libgcc_s.so.1
 
   install -Dm644 /dev/stdin "$pkgdir/usr/lib/tmpfiles.d/watchman.conf" <<END
 d /run/watchman 1777 root root
