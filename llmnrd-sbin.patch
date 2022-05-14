@@ -1,20 +1,11 @@
---- llmnrd/Makefile.orig	2016-08-20 20:08:10.162847600 +0300
-+++ llmnrd/Makefile	2016-08-20 20:08:43.298449900 +0300
-@@ -17,7 +17,7 @@
- CC	= $(CROSS_COMPILE)gcc
- INSTALL	= install
- 
--CFLAGS	?= -W -Wall -O2
-+CFLAGS	?= $(CFLAGS)
- LDFLAGS	?=
- 
- ifeq ($(shell git rev-parse > /dev/null 2>&1; echo $$?), 0)
-@@ -39,7 +39,7 @@
+--- llmnrd/Makefile.orig	2022-05-14 23:21:59.704624788 +0300
++++ llmnrd/Makefile	2022-05-14 23:22:22.281067945 +0300
+@@ -70,7 +70,7 @@
  prefix	?= /usr/local
  
  BINDIR	= $(prefix)/bin
 -SBINDIR	= $(prefix)/sbin
 +SBINDIR	= $(prefix)/bin
+ MAN1DIR = $(prefix)/share/man/man1
+ MAN8DIR = $(prefix)/share/man/man8
  DESTDIR	=
- 
- all: $(D_P) $(Q_P)
