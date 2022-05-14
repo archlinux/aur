@@ -1,4 +1,6 @@
+# Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
 # Contributor: Tom < reztho at archlinux dot us >
+
 pkgname=openmsx
 pkgver=17.0
 pkgrel=3
