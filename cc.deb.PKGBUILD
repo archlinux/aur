@@ -34,7 +34,7 @@ noextract=(
 "${_binarchive}-arm64.tar.gz"
 "${_binarchive}arm.tar.gz"
 )
-sha256sums=('54aaf83d98bdcc801962fd273cb876b0874ef42918f2780e74ead774813f592c'
+sha256sums=('128d688c945e161180aa0d87a34fc655e627a315dd19308f6f3a05c0457f90e4'
             '284e12906c8656a603477c7a13c51a5266fe289fce3bed61206d88a59de1169c'
             '12d0c6a72af7c8ec951117982b2ea22dc6d5fc29f1aba174bc8cac3d329a5082'
             'eb4a85c6eb6ac1280d4a8c4ddb36a2a2f049b807cdbc415acb945d48824e5508')
