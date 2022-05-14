@@ -22,7 +22,21 @@ build() {
 		GOPATH="${srcdir}/go"
 	fi
 	cd $_pkgname
-	go build -trimpath
+
+	export CGO_CPPFLAGS="${CPPFLAGS}"
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export GOFLAGS="-buildmode=pie -trimpath -ldflags=-linkmode=external -mod=readonly -modcacherw"
+
+	# or alternatively you can define some of these flags from the CLI options
+	go build \
+	    -trimpath \
+	    -buildmode=pie \
+	    -mod=readonly \
+	    -modcacherw \
+	    -ldflags "-linkmode external -extldflags \"${LDFLAGS}\"" \
+	    .
 }
 
 package() {
