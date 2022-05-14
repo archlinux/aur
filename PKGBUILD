@@ -2,8 +2,9 @@
 # Co-Maintainer: Ranieri Althoff <ranisalt+aur at gmail dot com>
 pkgname=('mangohud-wayland' 'lib32-mangohud-wayland' 'mangohud-common-wayland')
 pkgbase=mangohud-wayland
-pkgver=0.6.7
-pkgrel=2
+_pkgver=0.6.7-1
+pkgver=${_pkgver//-/.}
+pkgrel=1
 _imgui_ver=1.81
 _spdlog_ver=1.8.5
 pkgdesc="A Vulkan overlay layer for monitoring FPS, temperatures, CPU/GPU load and more."
@@ -13,7 +14,7 @@ license=('MIT')
 makedepends=('dbus' 'git' 'glslang' 'lib32-dbus' 'lib32-libglvnd'
              'lib32-vulkan-icd-loader' 'libglvnd' 'libxrandr' 'meson' 'nlohmann-json'
              'python-mako' 'spdlog' 'vulkan-headers')
-source=("git+https://github.com/flightlessmango/MangoHud.git#tag=v$pkgver"
+source=("git+https://github.com/flightlessmango/MangoHud.git#tag=v$_pkgver"
         'git+https://github.com/flightlessmango/minhook.git'
         "https://github.com/ocornut/imgui/archive/v${_imgui_ver}/imgui-${_imgui_ver}.tar.gz"
         "https://wrapdb.mesonbuild.com/v2/imgui_${_imgui_ver}-1/get_patch#/imgui-${_imgui_ver}-1-wrap.zip"
