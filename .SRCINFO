@@ -1,0 +1,20 @@
+pkgbase = python-quicklogic-fasm-utils-git
+	pkgdesc = A set of tools for creating FASM assemblers for the Symbiflow project
+	pkgver = r13.3d6a375
+	pkgrel = 1
+	url = https://github.com/QuickLogic-Corp/quicklogic-fasm-utils
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-fasm
+	provides = python-quicklogic-fasm-utils=r13.3d6a375
+	conflicts = python-quicklogic-fasm-utils
+	source = git+https://github.com/QuickLogic-Corp/quicklogic-fasm-utils.git
+	sha256sums = SKIP
+
+pkgname = python-quicklogic-fasm-utils-git
