@@ -1,5 +1,7 @@
-# Maintainer: Alad Wenter <alad@mailbox.org>
+# Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
+# Contributor: Alad Wenter <alad@mailbox.org>
 # Contributor: Alex Griffin <griffin.aj@gmail.com>
+
 pkgname=xss
 pkgver=1.0
 pkgrel=1
