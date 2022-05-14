@@ -1,17 +1,16 @@
 pkgbase = lapce-bin
 	pkgdesc = Lightning-fast and Powerful Code Editor written in Rust
-	pkgver = 0.0.12
+	pkgver = 0.1.0
 	pkgrel = 1
 	url = https://github.com/lapce/lapce
 	arch = x86_64
 	license = Apache
 	depends = gcc-libs
+	depends = fontconfig
 	depends = libxcb
-	depends = expat
-	depends = freetype2
-	depends = libxkbcommon
+	depends = zlib
 	provides = lapce
-	source = lapce-bin-0.0.12.tar.gz::https://github.com/lapce/lapce/releases/download/v0.0.12/Lapce-linux.tar.gz
-	sha256sums = 8419bea746ba775cc5511ac5a6e1b295692fcb569df1af90c355aa2c5c5da285
+	source = lapce-bin-0.1.0.tar.gz::https://github.com/lapce/lapce/releases/download/v0.1.0/Lapce-linux.tar.gz
+	sha256sums = d6eff0bb895fa907a82a9b8f9fddbcf215d69e65bebca28e7a6fb65fa9f70b1e
 
 pkgname = lapce-bin
