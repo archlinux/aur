@@ -2,7 +2,7 @@
 
 pkgname=highfive
 _pkgname=HighFive
-pkgver=2.4.0
+pkgver=2.4.1
 pkgrel=1
 pkgdesc="Header-only C++ HDF5 interface"
 arch=('x86_64')
@@ -11,7 +11,7 @@ license=('Boost')
 depends=('boost' 'hdf5' 'eigen')
 makedepends=('cmake')
 source=(https://github.com/BlueBrain/$_pkgname/archive/v$pkgver.tar.gz)
-md5sums=('fd4a24d62f1128ff24966517b23f1392')
+md5sums=('97198c87cae1860f1d4d78ad58f5333f')
 
 prepare() {
   mkdir -p build-$pkgver
