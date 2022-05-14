@@ -1,6 +1,6 @@
 pkgbase = warp-share-files
 	pkgdesc = Share files with each other effortlessly
-	pkgver = 0.1.0
+	pkgver = 0.1.1
 	pkgrel = 1
 	url = https://gitlab.gnome.org/felinira/warp
 	arch = x86_64
@@ -10,7 +10,7 @@ pkgbase = warp-share-files
 	makedepends = rust
 	depends = glib2
 	depends = libadwaita
-	source = https://gitlab.gnome.org/felinira/warp/-/archive/v0.1.0/warp-v0.1.0.tar
-	b2sums = 09b1c462199f2205faa1c6784cd1b5b2501e0f79f29eb80b56a4a334c7104930889a6154c0a93751a3ff4aa9ec64b01dd1574fa2e7317103fbcfc81215dc8c6c
+	source = https://gitlab.gnome.org/felinira/warp/-/archive/v0.1.1/warp-v0.1.1.tar
+	b2sums = 910c1c899430a5a6eaf0b707472591c8d200c5438104b5fee49f32fb1b313fc9e640a1a7d698e1e3d6fa1e3cb4789a8ab39e4fde7fb3731f760fc494c288af3e
 
 pkgname = warp-share-files

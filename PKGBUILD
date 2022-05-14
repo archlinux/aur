@@ -2,7 +2,7 @@
 
 pkgname=warp-share-files
 _pkgname=warp
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=1
 pkgdesc="Share files with each other effortlessly"
 arch=('x86_64')
@@ -12,10 +12,10 @@ depends=('glib2' 'libadwaita')
 makedepends=('meson' 'rust')
 checkdepends=('appstream-glib')
 source=($url/-/archive/v$pkgver/$_pkgname-v$pkgver.tar)
-b2sums=('09b1c462199f2205faa1c6784cd1b5b2501e0f79f29eb80b56a4a334c7104930889a6154c0a93751a3ff4aa9ec64b01dd1574fa2e7317103fbcfc81215dc8c6c')
+b2sums=('910c1c899430a5a6eaf0b707472591c8d200c5438104b5fee49f32fb1b313fc9e640a1a7d698e1e3d6fa1e3cb4789a8ab39e4fde7fb3731f760fc494c288af3e')
 
 build() {
-  arch-meson "$_pkgname-$pkgver" build
+  arch-meson "$_pkgname-v$pkgver" build
   meson compile -C build
 }
 
