@@ -1,14 +1,14 @@
 pkgbase = pingtcp
 	pkgdesc = Small utility to measure TCP handshake time (torify-friendly)
-	pkgver = 0.0.5
+	pkgver = 0.0.6
 	pkgrel = 1
 	url = https://gitlab.com/post-factum/pingtcp
 	arch = x86_64
 	license = GPL3
+	makedepends = meson
 	depends = libbsd
 	optdepends = torsocks: for TOR support
-	source = pingtcp-0.0.5.tar.gz::https://gitlab.com/post-factum/pingtcp/-/archive/v0.0.5/pingtcp-v0.0.5.tar.gz
-	sha256sums = 531d757be2a36b8b25e1577065c13864e595a26df21d467fd4c2f302f910efdc
+	source = pingtcp-0.0.6.tar.gz::https://gitlab.com/post-factum/pingtcp/-/archive/v0.0.6/pingtcp-v0.0.6.tar.gz
+	sha256sums = 323c63039d390f300f705c78dedcf5adfa02364b93a184e506a58fd4ddba7be9
 
 pkgname = pingtcp
-

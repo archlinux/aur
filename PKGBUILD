@@ -1,29 +1,29 @@
 # Maintainer: Oleksandr Natalenko aka post-factum <oleksandr@natalenko.name>
+
 pkgname=pingtcp
-pkgver=0.0.5
+pkgver=0.0.6
 pkgrel=1
 pkgdesc="Small utility to measure TCP handshake time (torify-friendly)"
 url="https://gitlab.com/post-factum/${pkgname}"
 arch=(x86_64)
 license=(GPL3)
 depends=(libbsd)
+makedepends=(meson)
 optdepends=("torsocks: for TOR support")
 source=(${pkgname}-${pkgver}.tar.gz::https://gitlab.com/post-factum/${pkgname}/-/archive/v${pkgver}/${pkgname}-v${pkgver}.tar.gz)
-
-sha256sums=('531d757be2a36b8b25e1577065c13864e595a26df21d467fd4c2f302f910efdc')
+sha256sums=('323c63039d390f300f705c78dedcf5adfa02364b93a184e506a58fd4ddba7be9')
 
 build() {
-	cd "${pkgname}-v${pkgver}"
+	cd ${pkgname}-v${pkgver}
 
-	make
+	arch-meson . build
+
+	meson compile -C build
 }
 
 package() {
-	cd "${pkgname}-v${pkgver}"
+	cd ${pkgname}-v${pkgver}
 
-	make DESTDIR="${pkgdir}" PREFIX="/usr" install
-
-	install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-	install -Dm644 "README.md" "${pkgdir}/usr/share/doc/${pkgname}/README"
+	meson install -C build --destdir "${pkgdir}"
 }
 
