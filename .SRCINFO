@@ -1,11 +1,13 @@
 pkgbase = namedtype-git
 	pkgdesc = C++ strong type library
-	pkgver = v1.1.0.r61.g020be1e
-	pkgrel = 2
+	pkgver = v1.1.0.r63.g77a95c8
+	pkgrel = 1
 	url = https://github.com/joboccara/NamedType
 	arch = any
 	license = MIT
 	makedepends = cmake
+	provides = namedtype
+	conflicts = namedtype
 	source = namedtype-git::git+https://github.com/joboccara/NamedType.git
 	md5sums = SKIP
 

@@ -1,7 +1,9 @@
 # Maintainer: Andrej Radović <r.andrej@gmail.com>
 pkgname=namedtype-git
-pkgver=v1.1.0.r61.g020be1e
-pkgrel=2
+provides=('namedtype')
+conflicts=('namedtype')
+pkgver=v1.1.0.r63.g77a95c8
+pkgrel=1
 pkgdesc="C++ strong type library"
 arch=(any)
 url="https://github.com/joboccara/NamedType"
