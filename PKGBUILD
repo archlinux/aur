@@ -18,7 +18,7 @@ pkgbase=linux-phicomm-n1
 _srcname=linux-5.17
 _kernelname=${pkgbase#linux}
 _desc="AArch64 kernel for Phicomm N1"
-pkgver=5.17.6
+pkgver=5.17.7
 pkgrel=1
 arch=('aarch64')
 url="https://www.kernel.org/"
@@ -56,11 +56,12 @@ source=(
 )
 
 [[ ${pkgver##*.} != 0 ]] && \
-source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
+# source+=("https://cdn.kernel.org/pub/linux/kernel/v5.x/patch-${pkgver}.xz")
+source+=("https://mirror.bjtu.edu.cn/kernel/linux/kernel/v5.x/patch-${pkgver}.xz")
 
 md5sums=('07321a70a48d062cebd0358132f11771'
          '14b9c040a7a9320ea91a779cd8f14f02'
-         '72a07f465f7fe214f6da3380839ad2d3'
+         'cf6bfafe79c9dc3e5fb9e9979b85855d'
          '30130b4dcd8ad4364ddbfd56c3058d5e'
          'ce6c81ad1ad1f8b333fd6077d47abdaf'
          '0d0435888ecad675870ecda4045a9d45'
@@ -68,7 +69,7 @@ md5sums=('07321a70a48d062cebd0358132f11771'
          '7a18066683f3351b2bbd2653db783f80'
          '55f160f63da3d642dc274b9830622187'
          '679e90aa8d00df767dbd9315238bcecc'
-         'f4573afe0c73b90e48186c32fd374040'
+         '353091ec7dc615e242a6e00a712668b2'
          'd590f2af9d150f00bf9e5e4239e16105'
          '116c87fd40aa252e6702ad61af27b824'
          'd3ce443630c8c9768637d4b123dd8c70'
@@ -82,7 +83,7 @@ md5sums=('07321a70a48d062cebd0358132f11771'
          '425ec378dc6973e6185895d7a13a8d66'
          '38e3b2c9490ac3b8201db37e73ff2534'
          'dfcd0e763405a425b3f277394ed65a5d'
-         '7ce7d9536f1b70b8190f2675cd03ee5b')
+         'c942f79b0f310ca6e8d5828fad539a7f')
 
 prepare() {
   cd ${_srcname}
