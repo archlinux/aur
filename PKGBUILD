@@ -3,7 +3,7 @@
 pkgname=task-maker-rust
 pkgver=0.5.4
 pkgrel=1
-pkgdesc="The new cmsMake! (this time in Rust)"
+pkgdesc="Tool for building tasks for informatics competitions, with support for cache, distributed computations and more"
 arch=('i686' 'x86_64' 'armv7h' 'aarch64')
 url="https://github.com/edomora97/task-maker-rust"
 license=('MPL2')

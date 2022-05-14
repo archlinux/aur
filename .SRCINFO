@@ -1,5 +1,5 @@
 pkgbase = task-maker-rust
-	pkgdesc = The new cmsMake! (this time in Rust)
+	pkgdesc = Tool for building tasks for informatics competitions, with support for cache, distributed computations and more
 	pkgver = 0.5.4
 	pkgrel = 1
 	url = https://github.com/edomora97/task-maker-rust
