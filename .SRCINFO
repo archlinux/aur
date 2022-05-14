@@ -10,4 +10,3 @@ pkgbase = g15message
 	sha512sums = aac0bcfa92020abe371cb7023236b8f4590eedb301e9d2731f6b7b012baf9a6898b9139bebe5e6adb004979162f36b6aed27522be67e7829e41a0609dc761af9
 
 pkgname = g15message
-
