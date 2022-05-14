@@ -7,7 +7,7 @@ pkgname=pi-hole-ftl
 _pkgname=FTL
 _servicename=pihole-FTL
 pkgver=5.15
-pkgrel=1
+pkgrel=2
 _now=`date +%N`
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="The Pi-hole FTL engine"
@@ -18,7 +18,7 @@ makedepends=('cmake' 'sqlite')
 conflicts=('dnsmasq')
 provides=('dnsmasq')
 install=$pkgname.install
-backup=('etc/pihole/pihole-FTL.conf' 'etc/pihole/pihole-FTL.db')
+backup=('etc/pihole/pihole-FTL.conf' 'etc/pihole/pihole-FTL.db' 'etc/pihole/dhcp.leases')
 source=($pkgname-v$pkgver.tar.gz::"https://github.com/pi-hole/FTL/archive/v$pkgver.tar.gz"
         arch-ftl-$pkgver-$_now.patch::"https://raw.githubusercontent.com/max72bra/pi-hole-ftl-archlinux-customization/master/arch-ftl-$pkgver.patch"
         "$pkgname.tmpfile"
@@ -54,6 +54,7 @@ package() {
   install -dm775 "$pkgdir"/etc/pihole
   install -Dm644 "$pkgname.conf" "$pkgdir"/etc/pihole/pihole-FTL.conf
   install -Dm644 "$pkgname.db" "$pkgdir"/etc/pihole/pihole-FTL.db
+  install -Dm664 /dev/null "$pkgdir"/etc/pihole/dhcp.leases
 
   install -Dm644 "$pkgname.service" "$pkgdir"/usr/lib/systemd/system/$_servicename.service
   install -dm755 "$pkgdir/usr/lib/systemd/system/multi-user.target.wants"

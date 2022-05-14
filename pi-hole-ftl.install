@@ -1,7 +1,4 @@
 post_install() {
-  # ftl DB permissions
-  #[ -e /etc/pihole/pihole-FTL.db ] && chown pihole.pihole /etc/pihole /etc/pihole/pihole-FTL.db
-
   echo -e "\e[1;33m==>\e[0m Possible configurations in \e[1;31m/etc/pihole/pihole-FTL.conf\e[0m file"
   echo -e "\e[1;33m==>\e[0m Please read the instructions on the project page: \e[1;36mhttps://docs.pi-hole.net/ftldns/configfile/\e[0m"
 }
