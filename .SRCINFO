@@ -1,0 +1,21 @@
+pkgbase = python-quicklogic-fasm-git
+	pkgdesc = Tools, scripts and resources for generating a bitstream from FASM files for QuickLogic FPGAs
+	pkgver = r56.fafa623
+	pkgrel = 1
+	url = https://github.com/antmicro/quicklogic-fasm
+	arch = any
+	license = Apache
+	makedepends = git
+	makedepends = python-build
+	makedepends = python-installer
+	makedepends = python-wheel
+	makedepends = python-setuptools
+	depends = python
+	depends = python-fasm
+	depends = python-quicklogic-fasm-utils
+	provides = python-quicklogic-fasm=r56.fafa623
+	conflicts = python-quicklogic-fasm
+	source = git+https://github.com/antmicro/quicklogic-fasm.git
+	sha256sums = SKIP
+
+pkgname = python-quicklogic-fasm-git
