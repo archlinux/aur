@@ -2,14 +2,14 @@
 # Upstream URL: https://gitlab.gnome.org/gabmus/hydrapaper
 
 pkgname=hydrapaper-no-pandoc-git
-pkgver=3.1.0.r7.gbcc1d1f
+pkgver=3.3.1.r0.g876d292
 pkgrel=1
 pkgdesc="Wallpaper manager with multi monitor support (without pandoc dependency, this disables the man page)"
 arch=('any')
 url="https://hydrapaper.gabmus.org"
 license=('GPL3')
 depends=('gtk4' 'libadwaita' 'dbus-python' 'python-gobject' 'python-pillow')
-makedepends=('git' 'gobject-introspection' 'meson')
+makedepends=('git' 'gobject-introspection' 'meson' 'blueprint-compiler')
 checkdepends=('appstream')
 provides=("${pkgname%-no-pandoc-git}")
 conflicts=("${pkgname%-no-pandoc-git}")
