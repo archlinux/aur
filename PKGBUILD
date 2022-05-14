@@ -1,4 +1,6 @@
+# Maintainer: Daniel Menelkir <dmenelkir at gmail dot com>
 # Contributor: Tom < reztho at archlinux dot us >
+
 pkgname=openmsx-catapult
 pkgver=17.0
 pkgrel=2
