@@ -1,14 +1,14 @@
 # Maintainer: rern <rernrern@gmail.com>
 
 pkgname=camillagui-backend
-pkgver=1.0.0-rc2
+pkgver=1.0.0rc2
 pkgrel=1
 pkgdesc='Backend server for camillagui'
 url=https://github.com/HEnquist/camillagui-backend
 arch=(any)
 license=(GPL)
 install=camillagui.install
-source=(https://github.com/HEnquist/camillagui-backend/archive/refs/tags/v$pkgver.tar.gz
+source=(https://github.com/HEnquist/camillagui-backend/archive/refs/tags/v${pkgver/rc/-rc}.tar.gz
         camillagui.install
         camillagui.service
         camillagui.yml)
@@ -20,8 +20,9 @@ sha256sums=('33196444b920579b0e55ad9db8b676cc2d6237394d5ab9c5d363a4c1ce013b2a'
 build() {
     installdir=$srcdir/srv/http/settings/camillagui
     mkdir -p $installdir
-    bsdtar xf v$pkgver.tar.gz --strip=1 -C $installdir
+    bsdtar xf v${pkgver/rc/-rc}.tar.gz --strip=1 -C $installdir
     rm $installdir/{.gitignore,*.md,*.txt}
+    rm -rf $installdir/{.github,build}
     sed -i 's/"build")$/"build", follow_symlinks=True)/' $installdir/backend/routes.py
     cp -f camillagui.yml $installdir/config
 }
