@@ -27,8 +27,7 @@ build()
   ADA_FLAGS="${ADA_FLAGS//-Werror=format-security}"
 
   python manage.py generate
-  python manage.py                                \
-    build                                         \
+  python manage.py build                          \
     --library-types=static,static-pic,relocatable \
     --build-mode=prod                             \
     --gargs="-R -cargs $ADA_FLAGS -largs $LDFLAGS -gargs"
@@ -52,7 +51,7 @@ package()
   # Install the developers manual
   pushd dev_manual/_build/html
   for file in $(find . -type f); do
-    install -m 644 -D "$file" "$pkgdir/usr/share/doc/$pkgname/$file"
+      install -m 644 -D "$file" "$pkgdir/usr/share/doc/$pkgname/$file"
   done
   popd
 
@@ -76,4 +75,3 @@ package()
   mkdir -p "$pkgdir/usr/lib/ocaml/"
   mv "$pkgdir/usr/ocaml" "$pkgdir/usr/lib/ocaml/libadalang"
 }
-# vim: set et ts=2:
