@@ -4,7 +4,8 @@
 
 pkgbase=qt5-doc
 pkgname=(qt5-doc qt5-examples)
-pkgver=5.15.3
+_basever=5.15.3
+pkgver=$_basever
 pkgrel=1
 arch=('any')
 url='https://www.qt.io'
