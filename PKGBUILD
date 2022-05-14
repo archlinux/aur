@@ -2,7 +2,7 @@
 # Upstream URL: https://gitlab.com/gabmus/gnome-feeds
 
 pkgname=gfeeds-git
-pkgver=1.0.1.r0.gf9c85ea
+pkgver=1.0.3.r28.gb73eeef
 pkgrel=1
 pkgdesc='News reader for GNOME'
 arch=('any')
@@ -29,7 +29,7 @@ depends=(
   'python-magic-ahupp'
 )
 replaces=(gnome-feeds gnome-feeds-git)
-makedepends=('git' 'meson' 'blueprint-compiler-git')
+makedepends=('git' 'meson' 'blueprint-compiler')
 provides=('gfeeds' 'gnome-feeds')
 conflicts=('gnome-feeds' 'gnome-feeds-git' 'gfeeds')
 source=("gfeeds::git+https://gitlab.gnome.org/World/gfeeds")
