@@ -2,10 +2,10 @@
 # Maintainer: Antonio Rojas <arojas@archlinux.org>
 
 pkgname=qt5-webglplugin
-_basever=5.15.3
-pkgver=5.15.3+kde+r0
+_basever=5.15.4
+pkgver=5.15.4+kde+r0
 pkgrel=1
-_commit=4318ad91c2a8bea3a0aaaa64aaf49d3b997e50a1
+_commit=df60c61e640dc4fb6be0d9565a4ab08aee054f93
 arch=(x86_64)
 url='https://www.qt.io'
 license=(GPL3 LGPL3 FDL custom)
