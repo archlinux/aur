@@ -1,6 +1,6 @@
 pkgbase = lapce-git
 	pkgdesc = Lightning-fast and Powerful Code Editor (Git version)
-	pkgver = r1311.4a7275d
+	pkgver = r1320.90d8dbe
 	pkgrel = 1
 	url = https://lapce.dev
 	arch = x86_64
@@ -22,7 +22,9 @@ pkgbase = lapce-git
 	options = !lto
 	source = lapce-git::git+https://github.com/lapce/lapce.git
 	source = lapce-git.desktop
+	source = lapce.png
 	sha512sums = SKIP
 	sha512sums = a5bbe975da32437ca0578567eef51821dd39ad7f4fad955f1589b4f2a74187b5640e9e05594e943bd9bca593cbd6957b6fb1ff69bceed9270530de5d93a70511
+	sha512sums = b1b42a03abf683a1439086bfdcf67ff8e5d77a85a08957c8d208e291dbbcb027365095ce85b70d1fa25418dbf76f8e84219a08a466b7d39b5335c98cabcc8a15
 
 pkgname = lapce-git

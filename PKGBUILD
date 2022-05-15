@@ -3,7 +3,7 @@
 
 pkgname=lapce-git
 pkgbase=lapce-git
-pkgver=r1311.4a7275d
+pkgver=r1320.90d8dbe
 pkgrel=1
 pkgdesc="Lightning-fast and Powerful Code Editor (Git version)"
 arch=('x86_64')
@@ -46,8 +46,8 @@ package() {
     -type f \
     -exec install -Dm0755 -t "$pkgdir/usr/bin/" {} +
 
-  	install -Dvm64 ../lapce.png \
-  		"/usr/share/icons/hicolor/scalable/apps/Lapce.png"
+  	install -Dvm644 lapce.png \
+  		"$pkgdir/usr/share/icons/hicolor/scalable/apps/Lapce.png"
   	install -Dvm644 $pkgname.desktop \
     	"$pkgdir/usr/share/applications/$pkgname.desktop"
 }
