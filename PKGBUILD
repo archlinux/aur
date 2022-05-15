@@ -19,7 +19,7 @@ install=
 changelog=
 source=("$url/archive/refs/tags/v$pkgver.tar.gz")
 noextract=()
-md5sums=('0b4e411bd696090303742ef46df38fb2')
+md5sums=('8b6d98acb7f22ee53f6fb044f6d1f193')
 
 package() {
   cd "$pkgname-$pkgver"

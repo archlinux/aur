@@ -7,6 +7,6 @@ pkgbase = kherson
 	license = GPL3
 	makedepends = go
 	source = https://github.com/alexcoder04/kherson/archive/refs/tags/v1.0.2.tar.gz
-	md5sums = 0b4e411bd696090303742ef46df38fb2
+	md5sums = 8b6d98acb7f22ee53f6fb044f6d1f193
 
 pkgname = kherson
