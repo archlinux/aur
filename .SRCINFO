@@ -1,6 +1,6 @@
 pkgbase = wp-cli-git
 	pkgdesc = A command-line tool for managing WordPress
-	pkgver = r9258.3f4c34bf
+	pkgver = r2717.dc3beeff
 	pkgrel = 1
 	url = http://wp-cli.org/
 	arch = any
@@ -15,4 +15,3 @@ pkgbase = wp-cli-git
 	sha256sums = SKIP
 
 pkgname = wp-cli-git
-
