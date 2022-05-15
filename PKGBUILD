@@ -2,8 +2,8 @@
 
 pkgbase=assaultcube
 pkgname=(${pkgbase}-client ${pkgbase}-server ${pkgbase}-common)
-pkgver=1.3.0.1
-pkgrel=2
+pkgver=1.3.0.2
+pkgrel=1
 pkgdesc='A game based on the open-source AssaultCube first-person shooter (FPS)'
 arch=('i686' 'x86_64')
 url='https://assault.cubers.net/'
@@ -16,7 +16,7 @@ source=("$pkgbase-$pkgver.tar.gz::https://github.com/assaultcube/AC/archive/refs
         'assaultcube.desktop'
         'systemd-sysuser.conf'
         'systemd-assaultcube-server.service')
-sha512sums=('e9144bc4a60c82e7db8ce93d9ffddf680ca522afa847125729804e5510cb9fdc8fe77d44701b7c01b297c7470d6ada6e6b0f835e8e438bd9970523cab9908341'
+sha512sums=('8488c399036532859f7c83d094ac1443c52aa6367d106cc5889b80353ff1d501f7b8ae3b51e34b03215cc88dacc5f29488635047ce90291c601f8f7582498685'
             '6ecfb0320f8f63d3c220032a0e267bd81f89ed33d415991a83e7a662769eec6dcdf374fcf0d4f7e893c0dcd58598379d49cc52550b5907769fdbc6c428013d91'
             '363fbee6e2561677eb7bc1f9d77e1431758063f3ceaf86fd0878c0e376fb9921ad90285dc961b6afaf9b40fa545f9cbb659aaf039e134b8b4c85510916d1a4e2'
             '7510796bd47934e897887123a2b146607a8ca04a521a7d6cd744ea823aa3d13f8c90d87c78d322ffbf0e6178aa34fdbe907e60aeda447532bdb1b373471e3e3a'
