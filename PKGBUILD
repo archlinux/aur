@@ -2,15 +2,15 @@
 # from: git
 
 pkgname=(
-   zapret-{nfqws,tpws,common}-git
+   zapret-{nfqws,tpws,common,docs}-git
 )
 pkgbase=zapret-git
-pkgver=r499.ba5bde8
+pkgver=47.r17.ba5bde8
 pkgrel=1
 pkgdesc="Bypass deep packet inspection."
 arch=('x86_64')
 url="https://github.com/bol-van/zapret"
-license=('GPL')
+license=('MIT')
 depends=('systemd' 'ipset' 'curl' 'iptables')
 makedepends=('libnetfilter_queue' 'git')
 provides=('zapret' 'zapret-git')
@@ -25,9 +25,18 @@ pkgver()
 {
    cd "$srcdir/${pkgbase%-git}"
    (  set -o pipefail
+      read -r sha ver < <(
+         NL=$(awk '/^v[[:digit:]]+/{n=NR}END{print n}' docs/changes.txt)
+
+         git blame master docs/changes.txt \
+            | awk -v NL=$NL 'NR == NL {print $1" "$NF }' \
+            | sed -E 's/ v([[:digit:]]+)/ \1/'
+      )
       git describe --tags --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-   )
+      printf "%s.r%s.%s" "$ver" \
+         "$(git rev-list --count HEAD --since=$sha)" \
+         "$(git rev-parse --short HEAD)"
+   ) | tr -s '[:space:]:\\-' '.'
    pkgrel=$(git diff --shortstat|cut -d' ' -f2)
 }
 build()
@@ -64,6 +73,10 @@ package_zapret-common-git()
    install -Dm755 ipset/*           -t "$pkgdir/opt/zapret/ipset"
    install -Dm644 common/*          -t "$pkgdir/opt/zapret/common"
    install -Dm644 "$srcdir/sysusers.conf" "$pkgdir/usr/lib/sysusers.d/zapret.conf"
+   install -Dm644 docs/LICENSE.txt        "$pkgdir/usr/share/licenses/${pkgbase%-git}/LICENSE"
+   install -Dm644 docs/LICENSE.txt        "$pkgdir/usr/share/doc/${pkgbase%-git}/LICENSE"
+   install -Dm644 docs/changes.txt        "$pkgdir/usr/share/doc/${pkgbase%-git}/CHANGELOG"
+
    sed -i '1s/$/\n\nWS_USER=zapret/' "$pkgdir/opt/zapret/init.d/sysv/functions"
    _symlink init.d/sysv/zapret
 }
@@ -77,8 +90,9 @@ package_zapret-nfqws-git() {
 
    cd "$srcdir/${pkgbase%-git}"
 
-   install -Dm644 config               "$pkgdir/opt/zapret/config.nfqws"
+   install -Dm644 config              "$pkgdir/opt/zapret/config.nfqws"
    install -Dm755 "binaries/my/nfqws" "$pkgdir/opt/zapret/nfq/nfqws"
+   install -Dm644 docs/LICENSE.txt    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
    ln -s config.nfqws "$pkgdir/opt/zapret/config"
 
    _symlink nfq/nfqws
@@ -98,8 +112,9 @@ package_zapret-tpws-git() {
 
    cd "$srcdir/${pkgbase%-git}"
 
-   install -Dm644 config               "$pkgdir/opt/zapret/config.tpws"
+   install -Dm644 config             "$pkgdir/opt/zapret/config.tpws"
    install -Dm755 "binaries/my/tpws" "$pkgdir/opt/zapret/tpws/tpws"
+   install -Dm644 docs/LICENSE.txt    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
    ln -s config.tpws "$pkgdir/opt/zapret/config"
 
    _symlink tpws/tpws
@@ -109,4 +124,20 @@ package_zapret-tpws-git() {
    _set_config MODE_HTTP_KEEPALIVE 1
    _set_config MODE_HTTPS 1
    _set_config MODE_HTTP 1
+}
+
+package_zapret-docs-git() {
+   unset depends
+   provides=('zapret-docs')
+   conflicts=('zapret-docs')
+
+   cd "$srcdir/${pkgbase%-git}"
+   install -Dm644 docs/*.*          -t "$pkgdir/usr/share/docs/${pkgbase%-git}"
+   install -Dm644 docs/LICENSE.txt     "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+   _rm() {
+      rm -rf "$pkgdir/usr/share/docs/${pkgbase%-git}/$1"
+   }
+   _rm LICENSE.txt
+   _rm changes.txt
 }
