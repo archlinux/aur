@@ -1,6 +1,6 @@
 pkgbase = opentyrian-git
 	pkgdesc = Open-source port of the DOS shoot-em-up Tyrian
-	pkgver = 2.1.20220318
+	pkgver = 2.1.20220318+r4+g74245db
 	pkgrel = 1
 	epoch = 1
 	url = https://github.com/opentyrian/opentyrian
