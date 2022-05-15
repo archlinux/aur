@@ -2,7 +2,7 @@
 
 pkgname=tricks-bin
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The social network for programmers!"
 arch=('x86_64')
 url="https://tricks.aseman.io/"
@@ -12,7 +12,7 @@ provides=('tricks')
 options=('!emptydirs' '!strip')
 source=("https://tricks.aseman.io/tricks/static/downloads/Tricks-${pkgver}_linux.tar.xz"
         "tricks.desktop")
-sha256sums=('971ffd0bcbdbcb2ee014d7c6f27c3eb8f37244bc5c5e69960d16fb9a2acc8607'
+sha256sums=('e69aa1332f23295d72ed1bd3660d870a6393f672f8fd1858f89259df599bf432'
             '8cb921da1169ae970e26f46007e2ff4471c3804302bc0089809c09aac35577eb')
 
 prepare() {
