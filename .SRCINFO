@@ -26,6 +26,6 @@ pkgbase = session-desktop
 	source = git+https://github.com/loki-project/session-desktop.git
 	source = session-desktop.desktop
 	sha256sums = SKIP
-	sha256sums = 0c409a40e96e7b1437e9b2f19fddfb63f587b0ad262560a02de32b1469c6d0ff
+	sha256sums = fde2e8851d93a7a8ca2dc0338535362da3240208262d08155a594500e41a199b
 
 pkgname = session-desktop
