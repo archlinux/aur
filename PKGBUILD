@@ -1,18 +1,19 @@
 # Maintainer: Ahmad Hasan Mubashshir <ahmubashshir@gmail.com>
 # from: git
 
-pkgname=(zapret-{nfqws,tpws}-git)
+pkgname=(
+   zapret-{nfqws,tpws,common}-git
+)
 pkgbase=zapret-git
-pkgver=r285.bb7faca
+pkgver=r499.ba5bde8
 pkgrel=1
 pkgdesc="Bypass deep packet inspection."
 arch=('x86_64')
 url="https://github.com/bol-van/zapret"
 license=('GPL')
-depends=('systemd' 'ipset' 'curl')
+depends=('systemd' 'ipset' 'curl' 'iptables')
 makedepends=('libnetfilter_queue' 'git')
-backup=('opt/zapret/config')
-provides=('zapret')
+provides=('zapret' 'zapret-git')
 conflicts=('zapret')
 source=(
    "zapret::git+https://github.com/bol-van/zapret.git"
@@ -34,33 +35,75 @@ build()
     cd "$srcdir/${pkgbase%-git}"
     make
 }
-_package_common()
+_symlink() {
+   mkdir -pm755 "$pkgdir/usr/bin"
+   ln -s "/opt/zapret/$1" "$pkgdir/usr/bin/${1##*/}"
+}
+
+_set_config() {
+   local _cfg="$pkgdir/opt/zapret/config"
+   if grep -q "^#$1=" "$_cfg";then
+      sed -i "/^#$1/s/#//" "$_cfg"
+   fi
+   sed -i "/^$1=/c\\$1=$(printf '%q' "$2")" "$_cfg"
+}
+
+package_zapret-common-git()
 {
+   depends=('systemd' 'ipset' 'curl' 'iptables' 'zapret-git')
+   provides=('zapret-common')
+   conflicts=('zapret-common')
+
+   cd "$srcdir/${pkgbase%-git}"
+
    for n in ip2net mdig;do
       install -Dm755 "binaries/my/$n" "$pkgdir/opt/zapret/$n/$n"
    done
-   install -Dm755 ipset/* -t "$pkgdir/opt/zapret/ipset"
    install -Dm644 init.d/systemd/*  -t "$pkgdir/usr/lib/systemd/system"
    install -Dm755 init.d/sysv/*     -t "$pkgdir/opt/zapret/init.d/sysv"
-   install -Dm644 config               "$pkgdir/opt/zapret/config"
-   install -Ddm755 "$pkgdir/usr/bin"
+   install -Dm755 ipset/*           -t "$pkgdir/opt/zapret/ipset"
+   install -Dm644 common/*          -t "$pkgdir/opt/zapret/common"
    install -Dm644 "$srcdir/sysusers.conf" "$pkgdir/usr/lib/sysusers.d/zapret.conf"
-   sed -ri 's/^#?WS_USER=.*$/WS_USER=zapret/' "$pkgdir/opt/zapret/init.d/sysv/functions"
+   sed -i '1s/$/\n\nWS_USER=zapret/' "$pkgdir/opt/zapret/init.d/sysv/functions"
+   _symlink init.d/sysv/zapret
 }
+
 package_zapret-nfqws-git() {
 
-   depends+=('libnetfilter_queue')
+   depends=('libnetfilter_queue' 'zapret-common-git')
+   provides+=('zapret-nfqws')
+   conflicts+=('zapret-nfqws')
+   backup=('opt/zapret/config.nfqws')
+
    cd "$srcdir/${pkgbase%-git}"
-   _package_common
+
+   install -Dm644 config               "$pkgdir/opt/zapret/config.nfqws"
    install -Dm755 "binaries/my/nfqws" "$pkgdir/opt/zapret/nfq/nfqws"
-   ln -s /opt/zapret/nfq/nfqws "$pkgdir/usr/bin/nfqws"
-   # sed -ri "s/^#?\($1=\).*$/\1$M/" "$pkgdir/opt/zapret/config"
-   sed -ri "s/^#?MODE=.*$/MODE=nfqws_all_desync/" "$pkgdir/opt/zapret/config"
+   ln -s config.nfqws "$pkgdir/opt/zapret/config"
+
+   _symlink nfq/nfqws
+
+   _set_config FWTYPE iptables
+   _set_config MODE nfqws
+   _set_config MODE_HTTP_KEEPALIVE 1
+   _set_config MODE_HTTPS 1
+   _set_config MODE_HTTP 1
 }
+
 package_zapret-tpws-git() {
+   depends=('zapret-common-git')
+   provides+=('zapret-tpws')
+   conflicts+=('zapret-tpws')
+   backup=('opt/zapret/config.tpws')
+
    cd "$srcdir/${pkgbase%-git}"
-   _package_common
+
+   install -Dm644 config               "$pkgdir/opt/zapret/config.tpws"
    install -Dm755 "binaries/my/tpws" "$pkgdir/opt/zapret/tpws/tpws"
-   ln -s /opt/zapret/nfq/tpws "$pkgdir/usr/bin/tpws"
-   sed -ri "s/^#?MODE=.*$/MODE=tpws_all/" "$pkgdir/opt/zapret/config"
+   ln -s config.tpws "$pkgdir/opt/zapret/config"
+
+   _symlink tpws/tpws
+
+   _set_config FWTYPE iptables
+   _set_config MODE tpws
 }
