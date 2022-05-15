@@ -1,35 +1,64 @@
-# Maintainer:  mrshpot <mrshpot at gmail dot com>
-# Contributor:  veox <box 55 [shift-two] mail [dot] ru>
+# Maintainer: George Rawlinson <grawlinson@archlinux.org>
 
 pkgname=cl-iterate
-_clname=iterate   # used in CL scope, not package scope
-pkgver=20140713_darcs
-_pkgver=20140713-darcs
+_pkgname="${pkgname#cl-}"
+pkgver=1.5.3.r12.gea90d81
 pkgrel=1
-pkgdesc="iterate is an iteration construct for Common Lisp."
-arch=('i686' 'x86_64')
-url="http://common-lisp.net/project/iterate/"
-license=('BSD')
-depends=('common-lisp')
-install=cl-iterate.install
-source=("http://beta.quicklisp.org/archive/iterate/2014-07-13/iterate-20140713-darcs.tgz")
-md5sums=('f3d8e9eb6a9241bb1303c9708a37ade4')
-options=(docs)
+pkgdesc='An iteration construct for Common Lisp'
+arch=('any')
+url='https://iterate.common-lisp.dev'
+license=('MIT')
+depends=('common-lisp' 'cl-asdf')
+makedepends=('git')
+checkdepends=('sbcl' 'cl-rt')
+_commit='ea90d8188703cd4c66123a39d4d604f2bb03e96d'
+source=(
+  "$pkgname::git+https://gitlab.common-lisp.net/iterate/iterate.git#commit=$_commit"
+  'run-tests.lisp'
+)
+b2sums=('SKIP'
+        '19e7e1dae5906b3f9a2fa1ca4a5ca8f2c678bf2a681a07910f1cd9340628886a4de05c44f0d5b1a12436cae39a7fe1b11a64e4d83ea3c0ea62532fa58a67db13')
 
+pkgver() {
+  cd "$pkgname"
+
+  git describe --tags | sed -e 's/^v//' -e 's/-/.r/' -e 's/-/./g'
+}
+
+prepare() {
+  cd "$pkgname"
+
+  sed -n '/;;; Copyright/,/;; SOFTWARE/p' iterate-test.lisp | \
+    sed -r 's/^:::?//' > LICENSE-TESTS
+
+  sed -n '/ITERATE, An Iteration Macro/,/;;; SOFTWARE/p' iterate.lisp | \
+    sed -r 's/^:::?//' > LICENSE
+}
+
+check() {
+  cd "$pkgname"
+
+  sbcl --script ../run-tests.lisp
+}
 
 package() {
+  cd "$pkgname"
+  
+  # create directories
+  install -vd \
+    "$pkgdir/usr/share/common-lisp/source/$_pkgname" \
+    "$pkgdir/usr/share/common-lisp/systems"
 
-	install -d ${pkgdir}/usr/share/common-lisp/source/${_clname}
-        install -d ${pkgdir}/usr/share/common-lisp/systems
-	install -d ${pkgdir}/usr/share/licenses/${pkgname}
+  # library
+  install -vDm644 -t "$pkgdir/usr/share/common-lisp/source/$_pkgname" ./*.{lisp,asd}
 
-	install -m 644 -t ${pkgdir}/usr/share/common-lisp/source/${_clname} \
-		${srcdir}/${_clname}-${_pkgver}/*.lisp
-	install -m 644 -t ${pkgdir}/usr/share/common-lisp/source/${_clname} \
-		${srcdir}/${_clname}-${_pkgver}/*.asd
+  pushd "$pkgdir/usr/share/common-lisp/systems"
+  ln -s "../source/$_pkgname/$_pkgname.asd" .
+  popd
 
-	cd ${pkgdir}/usr/share/common-lisp/systems
-	ln -s ../source/${_clname}/${_clname}.asd .
+  # documentation
+  install -vDm644 -t "$pkgdir/usr/share/doc/$pkgname" README.md
 
-	# TODO: docs (SPEC/README)
+  # license
+  install -vDm644 -t "$pkgdir/usr/share/licenses/$pkgname" LICENSE*
 }
