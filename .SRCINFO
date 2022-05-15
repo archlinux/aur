@@ -1,0 +1,17 @@
+pkgbase = cl-unit-test
+	pkgdesc = Unit testing framework for Common Lisp
+	pkgver = r1.g266afaf
+	pkgrel = 1
+	url = https://github.com/hanshuebner/unit-test
+	arch = any
+	license = custom
+	checkdepends = sbcl
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	source = cl-unit-test::git+https://github.com/hanshuebner/unit-test#commit=266afaf4ac091fe0e8803bac2ae72d238144e735
+	source = run-tests.lisp
+	b2sums = SKIP
+	b2sums = 54e93e82e4ac6c3a2bc62132c22f4eef4a28f8625e3f571e2170d3dd80a21c5e196a146283d42c2204035bedec5c6cd8cb360e12fe22aea09d6ae06a10bab934
+
+pkgname = cl-unit-test
