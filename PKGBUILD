@@ -6,7 +6,7 @@
 pkgname=osu-lazer-bin
 _pkgname=${pkgname%-bin}
 pkgver=2022.515.0
-pkgrel=0
+pkgrel=1
 pkgdesc="The future of osu! and the beginning of an open era! Commonly known by the codename osu!lazer. Pew pew."
 arch=(x86_64)
 url="https://osu.ppy.sh"
