@@ -3,7 +3,7 @@
 
 _pkgname=blis
 pkgname=python-${_pkgname}
-pkgver=0.7.7
+pkgver=0.9.0
 pkgrel=1
 pkgdesc='Fast matrix-multiplication as a self-contained Python library'
 arch=(x86_64 aarch64)
@@ -17,7 +17,7 @@ depends=(
 )
 makedepends=(python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-b2sums=('2b4f69317209f808ad7e661392ef6bcd1e3f8e5a7b33a6e4ffe80907f1bdbd4c65a52ca978fa66ea3ad85b2094dd3971e83f0f21e2a0f39f1ee67ce59a95b5b8')
+b2sums=('c214630f5f2a1815eaaf6678db72356f042cc8223812f27d67d404b6658b8a5c47d38fd1b955dc29b6f3e7b3a2240e322e61c14737d92657d175651e5c495920')
 
 build() {
 	cd "blis-${pkgver}"
