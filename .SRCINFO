@@ -1,0 +1,14 @@
+pkgbase = cl-parse-js
+	pkgdesc = A Javascript parser in Common Lisp
+	pkgver = r101.gfbadc60
+	pkgrel = 1
+	url = https://marijnhaverbeke.nl/parse-js/
+	arch = any
+	license = zlib
+	makedepends = git
+	depends = common-lisp
+	depends = cl-asdf
+	source = cl-parse-js::git+https://marijnhaverbeke.nl/git/parse-js#commit=fbadc6029bec7039602abfc06c73bb52970998f6
+	b2sums = SKIP
+
+pkgname = cl-parse-js
