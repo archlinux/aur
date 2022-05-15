@@ -5,10 +5,10 @@
 # Contributor: Julian Schacher <jspp@posteo.net>
 
 _electron=electron17
-_nodeversion=14
+_nodeversion=16
 pkgname=schildichat-desktop-git
 _pkgname=schildichat-desktop
-pkgver=1.10.8.sc.0.test.2.r0.fe615fa
+pkgver=1.10.12.sc.1.r1.3d5935f
 pkgrel=1
 pkgdesc="A Matrix client based on Element with a more traditional instant messaging experience"
 arch=(x86_64)
@@ -17,7 +17,7 @@ license=(Apache)
 conflicts=(schildichat-desktop schildichat-desktop-bin)
 provides=(schildichat-desktop=${pkgver})
 makedepends=(npm git yarn python rust tcl ${_electron} nvm libxcrypt-compat asar)
-depends=(${_electron})
+depends=(${_electron} libsecret)
 source=(git+https://github.com/SchildiChat/schildichat-desktop.git#branch=sc
         git+https://github.com/SchildiChat/matrix-js-sdk.git
         git+https://github.com/SchildiChat/matrix-react-sdk.git
@@ -61,11 +61,9 @@ prepare() {
 
   cd element-desktop
   patch -p1 < ${srcdir}/autolaunch.patch
-  # patch -p1 < ${srcdir}/encapsulate-sqlcipher.diff
-  # seems like it's already implemented upstream, see: https://github.com/SchildiChat/element-desktop/commit/5c2a4c9c
   sed -i 's|"target": "deb"|"target": "dir"|' package.json
   sed -i "s|\"electronVersion\": \".*\"|\"electronVersion\": \"${_electron_ver}\"|" package.json # removed?
-  sed -i "s|\"electron\": \".*\"|\"electron\": \"\^${_electron_ver}\"|" package.json
+  sed -i "s|\"electron\": \".*\"|\"electron\": \"${_electron_ver}\"|" package.json
   sed -i 's|"https://packages.element.io/desktop/update/"|null|' element.io/release/config.json
   cd ${srcdir}/${_pkgname}
   make setup
