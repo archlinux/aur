@@ -1,7 +1,7 @@
 pkgbase = gtkada
 	pkgdesc = Ada bindings for the Gtk+ library.
-	pkgver = 21.0.0
-	pkgrel = 5
+	pkgver = 22.0.0
+	pkgrel = 1
 	epoch = 1
 	url = https://github.com/AdaCore/gtkada
 	arch = i686
@@ -11,9 +11,9 @@ pkgbase = gtkada
 	makedepends = gprbuild
 	depends = gcc-ada
 	depends = gtk3
-	source = gtkada-013b6f475704f6c75a1d38592b159e3af765391b.tar.gz::https://github.com/AdaCore/gtkada/archive/013b6f475704f6c75a1d38592b159e3af765391b.tar.gz
+	source = gtkada-9c54a721320e1271ebc884f6bdae31b1a85e8798.tar.gz::https://github.com/AdaCore/gtkada/archive/9c54a721320e1271ebc884f6bdae31b1a85e8798.tar.gz
 	source = Makefile.in-patch
-	md5sums = 385690daefa47a35c16a2f48bd5cfa4c
-	md5sums = fbf1d0e9adf74b03e85fb2d698fe7b85
+	sha256sums = f4ad2cb3a1444a8abc3173bb9ed76f9b24cdae65504d14fecf442394e516b65d
+	sha256sums = f525df1f7c319f1dc95ddafe1a73d961ce162c6171c97b0df3ae756122ca76d4
 
 pkgname = gtkada
