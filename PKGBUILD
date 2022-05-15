@@ -106,4 +106,7 @@ package_zapret-tpws-git() {
 
    _set_config FWTYPE iptables
    _set_config MODE tpws
+   _set_config MODE_HTTP_KEEPALIVE 1
+   _set_config MODE_HTTPS 1
+   _set_config MODE_HTTP 1
 }
