@@ -3,7 +3,7 @@
 pkgbase=nvidia-open-beta
 pkgname=('nvidia-open-beta' 'nvidia-open-beta-dkms')
 pkgver=515.43.04
-pkgrel=2
+pkgrel=3
 pkgdesc='NVIDIA open GPU kernel modules (beta version)'
 arch=('x86_64')
 url='https://github.com/NVIDIA/open-gpu-kernel-modules/'
@@ -29,7 +29,19 @@ prepare() {
 }
 
 build() {
-    make -C "open-gpu-kernel-modules-${pkgver}" SYSSRC='/usr/src/linux' modules
+    local -x KERNEL_UNAME
+    
+    # allow usage of custom kernel and building in a chroot
+    if [ -d "/usr/lib/modules/$(uname -r)" ]
+    then
+        KERNEL_UNAME="$(uname -r)"
+    else
+        KERNEL_UNAME="$(find /usr/lib/modules -mindepth 1 -maxdepth 1 -type d | head -n1)"
+        KERNEL_UNAME="${KERNEL_UNAME##*/}"
+    fi
+    
+    unset -v SYSSRC
+    make -C "open-gpu-kernel-modules-${pkgver}" modules
 }
 
 package_nvidia-open-beta() {
