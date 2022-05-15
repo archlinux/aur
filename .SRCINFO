@@ -1,6 +1,6 @@
 pkgbase = python-steam
 	pkgdesc = Python package for interacting with Steam
-	pkgver = 1.2.1
+	pkgver = 1.3.0
 	pkgrel = 1
 	url = https://github.com/ValvePython/steam
 	arch = any
@@ -22,7 +22,7 @@ pkgbase = python-steam
 	depends = python-requests
 	depends = python-six
 	depends = python-vdf
-	source = steam-1.2.1.tar.gz::https://github.com/ValvePython/steam/archive/refs/tags/v1.2.1.tar.gz
-	sha256sums = 47dcbace0bb4c0d7715a20886e94deec168be6fe2f4cc6b26b143d6f21febbfa
+	source = steam-1.3.0.tar.gz::https://github.com/ValvePython/steam/archive/refs/tags/v1.3.0.tar.gz
+	sha256sums = 4fbdb35fb5d30e4e5884f30d20a62eb0d4d82de3b95749e682e70769c1437fb6
 
 pkgname = python-steam
