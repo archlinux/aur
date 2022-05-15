@@ -1,7 +1,7 @@
 pkgbase = gnatcoll-core
 	pkgdesc = Gnat components collection - Core packages.
 	pkgver = 2022
-	pkgrel = 1
+	pkgrel = 2
 	epoch = 1
 	url = https://github.com/AdaCore/gnatcoll-core/
 	arch = i686
