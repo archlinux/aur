@@ -2,14 +2,14 @@
 _pkgname=quickcurver
 pkgname="$_pkgname"-git
 pkgver=0.1.r38.g5f3cb73
-pkgrel=1
+pkgrel=2
 pkgdesc="Qt Material design implementation of Achtung die Kurve with online multiplayer"
 arch=('i686' 'x86_64')
 url="https://github.com/vimpostor/$_pkgname"
 license=('GPL3')
 depends=(qt6-base qt6-declarative qt6-svg)
-makedepends=(git cmake ninja)
-source=("git+https://github.com/vimpostor/$_pkgname.git"
+makedepends=(git cmake ninja imagemagick)
+source=("git+$url.git"
 		"git+https://github.com/google/material-design-icons.git")
 md5sums=('SKIP'
 		'SKIP')
