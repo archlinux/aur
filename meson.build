@@ -355,7 +355,6 @@ add_project_arguments(
     '-D_LZMA_DEC_OPT',
     '-DPROG_VARIANT_Z',
     '-D_7ZIP_ASM',
-    '-D_FORTIFY_SOURCE=2',
     '-Waddress',
     '-Waddress-of-packed-member',
     '-Waggressive-loop-optimizations',
@@ -393,6 +392,10 @@ add_project_arguments(
   ],
 )
 
+extra_args = [
+  '-Wp,-U_FORTIFY_SOURCE',
+]
+
 project_target = executable('7zz',
   [
     uasm_files,
@@ -401,7 +404,9 @@ project_target = executable('7zz',
   ],
   dependencies: project_dependencies,
   install: true,
-  link_args : '-Wl,-z,noexecstack',
+  link_args: '-Wl,-z,noexecstack',
+  c_args: extra_args,
+  cpp_args: extra_args,
 )
 
 install_data(
