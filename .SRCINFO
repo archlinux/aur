@@ -14,6 +14,7 @@ pkgbase = pademelon-git
 	depends = imlib2
 	depends = libcanberra
 	depends = libinih
+	depends = libnotify
 	depends = libpulse
 	depends = libx11
 	depends = libxrandr

@@ -7,8 +7,8 @@ arch=(x86_64)
 url="https://github.com/jzbor/pademelon"
 license=('MIT')
 groups=()
-depends=(acpilight arandr gtk3 imagemagick imlib2 libcanberra libinih libpulse libx11 libxrandr
-            lxappearance-gtk3 python-gobject python3 xorg-setxkbmap)
+depends=(acpilight arandr gtk3 imagemagick imlib2 libcanberra libinih libnotify libpulse libx11
+            libxrandr lxappearance-gtk3 python-gobject python3 xorg-setxkbmap)
 makedepends=(go-md2man pkgconf)
 checkdepends=()
 optdepends=( 'moonwm: a good default wm'
