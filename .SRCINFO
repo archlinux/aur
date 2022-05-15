@@ -1,7 +1,7 @@
 pkgbase = privacy-protection-messenger
 	pkgdesc = Secure messenger backend
 	pkgver = 1.3
-	pkgrel = 3
+	pkgrel = 4
 	url = https://github.com/imperzer0/privacy-protection-messenger
 	arch = x86_64
 	license = GPL3
