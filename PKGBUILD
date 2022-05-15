@@ -2,8 +2,8 @@
 
 _pyname="mt940"
 pkgname="python-mt-940"
-pkgver="4.23.0"
-pkgrel=3
+pkgver="4.26.0"
+pkgrel=1
 pkgdesc="A library to parse MT940 files and returns smart Python collections for statistics and manipulation"
 arch=(any)
 url="https://github.com/WoLpH/mt940"
@@ -11,8 +11,8 @@ license=('BSD')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://github.com/WoLpH/mt940/archive/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('be778f0e7bb23d1eb1438ab1da00cb4d75275d7253c06e801b0b8bc4c1fa076fc0e1314d4527c34edb7a3cdb28cf452e5fe23bee5ec65f661ad5c2f76cf4fb37')
-b2sums=('55dbfa387105c67c72c346a1cf2a8dfa796fca94cab71cdfe2ecc1efe62e649c1524cc257084cb11d359d8f4d72469c5ebb703a5de9d90a801b329d70b50b7c6')
+sha512sums=('682e0c5ca9be8d4da1bfb02baeb7031c4bb061fa0ba1789d67f6739d3b30e5f4a11fab05a47eada8407e0b16594194530a681ec25f5b9164f52961bd311ce39c')
+b2sums=('a4afd03c95877b25678e3b909db0c615bac6a0e58d9ad31c2821d59faaac120c236e56a04e65214467c7a9d1dc9cd84299b28f67f7be4081fd72ccface67cbb0')
 
 build() {
   cd "${_pyname}-${pkgver}"
