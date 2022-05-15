@@ -1,6 +1,6 @@
 # Maintainer: Alexander Seiler <seileralex@gmail.com>
 pkgname=sioyek
-pkgver=1.2.0
+pkgver=1.3.0
 pkgrel=1
 pkgdesc="PDF viewer for research papers and technical books."
 arch=('any')
@@ -9,12 +9,15 @@ provides=('sioyek')
 url="https://github.com/ahrm/sioyek"
 depends=('qt5-base' 'qt5-3d' 'harfbuzz' 'gzip' 'libmupdf' 'zlib' 'gumbo-parser' 'openjpeg2' 'jbig2dec')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/v$pkgver.tar.gz")
-sha256sums=('28a67c5e4151a7c71d7fef7ee13c64e8cb928f68594e796e921fdfec2d105b58')
+sha256sums=('153876cecb75c32bed5469a86f24e7f14ea885711dacbac0072e91594d9f9235')
 
 prepare() {
 	cd "$pkgname-$pkgver"
 	sed -i 's/-lmupdf-third -lmupdf-threads -lharfbuzz/-lmupdf-third -lharfbuzz -lfreetype -lgumbo -ljbig2dec -lopenjp2 -ljpeg/' pdf_viewer_build_config.pro
 	sed -i 's/\/\/#define LINUX_STANDARD_PATHS/#define LINUX_STANDARD_PATHS/' pdf_viewer/main.cpp
+
+  # This has been fixed on the `master` branch, remove this for future releases:
+  sed -i '9i #include <cstring>' pdf_viewer/utils.cpp
 }
 
 build() {
