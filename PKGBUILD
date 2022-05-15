@@ -20,7 +20,7 @@ prepare() {
 }
 
 package() {
-	# Install files
+    # Install files
     install -d "${pkgdir}/opt/${pkgname}"
     cp -r "${srcdir}/${pkgname}/." "${pkgdir}/opt/${pkgname}"
 
