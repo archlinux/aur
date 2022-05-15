@@ -3,7 +3,7 @@
 pkgname=libvss
 epoch=1
 pkgver=22.0.0
-pkgrel=1
+pkgrel=2
 
 pkgdesc="A high level string and text processing library for Ada."
 url="https://github.com/AdaCore/VSS"
