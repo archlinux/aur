@@ -1,0 +1,22 @@
+pkgbase = python2-wxpython3
+	pkgdesc = Classic wxWidgets GUI toolkit for Python
+	pkgver = 3.0.2.0
+	pkgrel = 3
+	url = https://www.wxpython.org
+	arch = x86_64
+	license = custom:wxWindows
+	makedepends = mesa
+	makedepends = glu
+	depends = wxgtk3
+	depends = python2
+	provides = wxpython=3.0.2.0
+	conflicts = wxpython
+	replaces = wxpython
+	source = https://downloads.sourceforge.net/wxpython/wxPython-src-3.0.2.0.tar.bz2
+	source = fix-plot.patch
+	source = fix-editra-removal.patch
+	sha256sums = d54129e5fbea4fb8091c87b2980760b72c22a386cb3b9dd2eebc928ef5e8df61
+	sha256sums = 2d8b2bdbf55172738c7bf93955e552aac61842800c3b8b0a2e1f07f4314abc65
+	sha256sums = 559b076f206c44e66b33857f49068d66f59a3fc15b97972486e32a8105885554
+
+pkgname = python2-wxpython3
