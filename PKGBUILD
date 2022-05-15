@@ -1,7 +1,7 @@
 # Maintainer: Alexander Seiler <seileralex@gmail.com>
 pkgname=sioyek
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PDF viewer for research papers and technical books."
 arch=('any')
 license=('GPL3')
@@ -16,8 +16,8 @@ prepare() {
 	sed -i 's/-lmupdf-third -lmupdf-threads -lharfbuzz/-lmupdf-third -lharfbuzz -lfreetype -lgumbo -ljbig2dec -lopenjp2 -ljpeg/' pdf_viewer_build_config.pro
 	sed -i 's/\/\/#define LINUX_STANDARD_PATHS/#define LINUX_STANDARD_PATHS/' pdf_viewer/main.cpp
 
-  # This has been fixed on the `master` branch, remove this for future releases:
-  sed -i '9i #include <cstring>' pdf_viewer/utils.cpp
+    # This has been fixed on the `master` branch, remove this for future releases:
+    sed -i '9i #include <cstring>' pdf_viewer/utils.cpp
 }
 
 build() {
