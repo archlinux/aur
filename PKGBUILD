@@ -4,7 +4,7 @@
 
 pkgname=ledger-git
 pkgver=latest
-pkgrel=4
+pkgrel=5
 pkgdesc="A double-entry accounting system with a command-line reporting interface (development version)"
 arch=('i686' 'x86_64')
 url="http://ledger-cli.org"
@@ -13,7 +13,7 @@ depends=('mpfr' 'boost-libs' 'libedit')
 provides=('ledger')
 conflicts=('ledger')
 makedepends=('boost' 'git' 'sed' 'python2' 'cmake')
-source=("git+git://github.com/ledger/ledger.git")
+source=("git+https://github.com/ledger/ledger.git")
 sha256sums=('SKIP')
 
 pkgver() {
