@@ -2,14 +2,14 @@
 
 pkgname=warp-share-files-git
 _pkgname=warp
-pkgver=r164.193a06b
+pkgver=0.1.1.r5.g338a51e
 pkgrel=1
 pkgdesc="Share files with each other effortlessly"
 arch=('x86_64')
 url="https://gitlab.gnome.org/felinira/warp"
 license=('GPL3')
 depends=('glib2' 'libadwaita')
-makedepends=('git' 'meson' 'rust')
+makedepends=('git' 'meson' 'rust' 'itstool')
 checkdepends=('appstream-glib')
 provides=("${pkgname%-git}")
 conflicts=("${pkgname%-git}")
