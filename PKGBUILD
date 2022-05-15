@@ -2,7 +2,7 @@
 
 pkgname=amule-daemon-git
 pkgver=latest
-pkgrel=5
+pkgrel=6
 pkgdesc='An eMule-like client for the eD2k and Kademlia p2p networks (daemon only, development version)'
 url='http://www.amule.org'
 arch=('i686' 'x86_64')
@@ -10,7 +10,7 @@ license=('GPL')
 depends=('crypto++' 'wxbase' 'boost')
 makedepends=('git')
 conflicts=('amule')
-source=('git+git://github.com/amule-project/amule.git'
+source=('git+https://github.com/amule-project/amule.git'
         'amuled.service'
         'amuled@.service'
         'amuled.tmpfile')
