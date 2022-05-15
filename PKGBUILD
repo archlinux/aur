@@ -39,6 +39,7 @@ pkgver()
    ) | tr -s '[:space:]:\\-' '.'
    pkgrel=$(git diff --shortstat|cut -d' ' -f2)
 }
+
 build()
 {
     cd "$srcdir/${pkgbase%-git}"
