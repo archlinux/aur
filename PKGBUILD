@@ -10,7 +10,7 @@ pkgdesc="Aargau tax declaration software."
 arch=(any)
 url="https://www.ag.ch/de/dfr/steuern/natuerliche_personen/steuererklaerung__easytax/steuererklaerung_easytax1.jsp"
 license=('custom')
-depends=("java-runtime>=8" "bash")
+depends=("java-environment" "bash")
 source=(
   "https://msg-easytax.ch/ag/${yyyy}/EasyTax${yyyy}AG_unix_$(echo ${pkgver} | sed 's/\./_/').tar.gz"
   "$pkgname.desktop"

@@ -5,7 +5,7 @@ pkgbase = easytax-ag-2021
 	url = https://www.ag.ch/de/dfr/steuern/natuerliche_personen/steuererklaerung__easytax/steuererklaerung_easytax1.jsp
 	arch = any
 	license = custom
-	depends = java-runtime>=8
+	depends = java-environment
 	depends = bash
 	source = https://msg-easytax.ch/ag/2021/EasyTax2021AG_unix_1_2.tar.gz
 	source = easytax-ag-2021.desktop
