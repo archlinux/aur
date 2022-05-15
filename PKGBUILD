@@ -2,7 +2,7 @@
 
 pkgname='ptv'
 pkgver=1.6.0
-pkgrel=3
+pkgrel=4
 pkgdesc='A tree directory visualizer'
 arch=('x86_64' 'armv7a')
 makedepends=('pul')
