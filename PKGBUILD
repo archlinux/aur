@@ -2,8 +2,8 @@
 
 pkgbase=linux-amd-raven
 _srcname=linux
-gitver=v5.4.193
-pkgver=5.4.v.193
+gitver=v5.4.194
+pkgver=5.4.v.194
 pkgrel=1
 arch=('x86_64')
 url="https://www.kernel.org/"
@@ -23,7 +23,7 @@ source=("git+https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git#ta
 )
 sha256sums=('SKIP'
             #config.x86_64
-            '7dfdbb2109aa1a11d8a3e82575d6f2d08feedff4680df1375580e09242a6f489'
+            'f4d86ceb11067a8681bec785fd7659b0a4bb3adcaa394b019b6f9002b8929fcc'
             #.preset file
             'fd220b9f47a86162247b042f06311848678f9acb64b92f716572972f3aeb3d18'
             #linux install file
@@ -208,7 +208,7 @@ _package-headers() {
   mkdir -p "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
   cp -a tools/objtool "${pkgdir}/usr/lib/modules/${_kernver}/build/tools"
 
-  chown -R root.root "${pkgdir}/usr/lib/modules/${_kernver}/build"
+  chown -R root:root "${pkgdir}/usr/lib/modules/${_kernver}/build"
   find "${pkgdir}/usr/lib/modules/${_kernver}/build" -type d -exec chmod 755 {} \;
 
   # strip scripts directory
